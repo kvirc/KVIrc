@@ -306,11 +306,11 @@ defpopup(consoletextview)
 		window.dock
 	}
 
-	separator(!$window.isDocked())
+	separator($server)
 
 	extpopup($tr("Channels","defscript"),channels,31) ($server)
 
-	separator
+	separator($server)
 
 	item($tr("&Join Channels...","defscript"),39) ($server)
 	{
@@ -398,7 +398,7 @@ defpopup(consoletextview)
 		}
 	}
 
-	separator
+	separator($server)
 
 	label($tr("You're not connected to a server","defscript")) (!$server)
 
