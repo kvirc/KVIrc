@@ -53,6 +53,7 @@ protected:
 	QPushButton * m_pDeleteToolBarButton;
 	QPushButton * m_pRenameToolBarButton;
 	QPushButton * m_pExportToolBarButton;
+	QPushButton * m_pImportToolBarButton;
 
 public:
 	static CustomizeToolBarsDialog * instance() { return m_pInstance; };
@@ -68,6 +69,7 @@ protected slots:
 	void deleteToolBar();
 	void renameToolBar();
 	void exportToolBar();
+	void importToolBar();
 	void currentToolBarChanged();
 	virtual void reject();
 };

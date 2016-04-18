@@ -36,6 +36,7 @@
 #include "KviImageDialog.h"
 #include "KviFileUtils.h"
 #include "KviFileDialog.h"
+#include "KviInternalCommand.h"
 #include "KviKvsUserAction.h"
 #include "KviTalToolTip.h"
 #include "kvi_fileextensions.h"
@@ -325,14 +326,18 @@ CustomizeToolBarsDialog::CustomizeToolBarsDialog(QWidget * p)
 	connect(m_pExportToolBarButton, SIGNAL(clicked()), this, SLOT(exportToolBar()));
 	g->addWidget(m_pExportToolBarButton, 4, 1);
 
+	m_pImportToolBarButton = new QPushButton(__tr2qs_ctx("Import Toolbar","editor"),this);
+	connect(m_pImportToolBarButton,SIGNAL(clicked()),this,SLOT(importToolBar()));
+	g->addWidget(m_pImportToolBarButton, 5, 1);
+
 	TrashcanLabel * t = new TrashcanLabel(this);
-	g->addWidget(t, 6, 1);
+	g->addWidget(t, 7, 1);
 
-	b = new QPushButton(__tr2qs_ctx("Close", "editor"), this);
-	connect(b, SIGNAL(clicked()), this, SLOT(closeClicked()));
-	g->addWidget(b, 7, 1);
+	b = new QPushButton(__tr2qs_ctx("Close","editor"),this);
+	connect(b,SIGNAL(clicked()),this,SLOT(closeClicked()));
+	g->addWidget(b, 8, 1);
 
-	g->setRowStretch(5, 1);
+	g->setRowStretch(6, 1);
 	g->setColumnStretch(0, 1);
 
 	m_pDrawer->fill();
@@ -472,6 +477,11 @@ void CustomizeToolBarsDialog::exportToolBar()
 	{
 		QMessageBox::warning(this, __tr2qs_ctx("Write to Toolbar File Failed - KVIrc", "editor"), __tr2qs_ctx("Unable to write to the toolbar file.", "editor"), __tr2qs_ctx("OK", "editor"));
 	}
+}
+
+void CustomizeToolBarsDialog::importToolBar()
+{
+	g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_EXECUTE_SCRIPT_FROM_DISK);
 }
 
 void CustomizeToolBarsDialog::renameToolBar()
