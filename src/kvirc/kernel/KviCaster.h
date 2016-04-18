@@ -29,7 +29,7 @@
 	KviCast::dynamic                      \
 	<expr>                                \
 	(expr2,                               \
-	__FILE__":"STRINGIFY(__LINE__),       \
+	__FILE__ ":" STRINGIFY(__LINE__),     \
 	__func__,                             \
 	#expr)                                \
 
