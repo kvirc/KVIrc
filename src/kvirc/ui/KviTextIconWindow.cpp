@@ -30,6 +30,7 @@
 #include "KviTopicWidget.h"
 #include "KviControlCodes.h"
 #include "KviIconManager.h"
+#include "KviCaster.h"
 
 #include <QPainter>
 #include <QLineEdit>
@@ -120,7 +121,7 @@ void KviTextIconWindow::popup(QWidget * pOwner, bool bAltMode)
 	connect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
 
 	show();
-	
+
 	autoSelectBestMatchBasedOnOwnerText();
 }
 
@@ -128,11 +129,16 @@ bool KviTextIconWindow::eventFilter(QObject * o,QEvent *e)
 {
 	if(o != m_pTable)
 		return false;
-	
+
 	if((e->type() == QEvent::KeyPress) || (e->type() == QEvent::KeyRelease))
 	{
-		QKeyEvent * ev = dynamic_cast<QKeyEvent *>(e);
+		QKeyEvent * ev = KVI_DYNAMIC(QKeyEvent *, e);
 		Q_ASSERT(ev);
+
+		// Just in case...
+		if(!ev)
+			return false;
+
 		switch(ev->key())
 		{
 			case Qt::Key_Left:
@@ -188,11 +194,11 @@ void KviTextIconWindow::autoSelectBestMatchBasedOnOwnerText()
 
 	int iRows = m_pTable->rowCount();
 	int iCols = m_pTable->columnCount();
-	
+
 	int iBestR = -1;
 	int iBestC = -1;
 	int iBestLen = 999999;
-	
+
 	for(int r=0;r<iRows;r++)
 	{
 		for(int c=0;c<iCols;c++)
@@ -213,7 +219,7 @@ void KviTextIconWindow::autoSelectBestMatchBasedOnOwnerText()
 			}
 		}
 	}
-	
+
 	if(iBestR > -1)
 		m_pTable->setCurrentCell(iBestR,iBestC);
 }
