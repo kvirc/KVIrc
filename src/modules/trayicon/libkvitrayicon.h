@@ -45,7 +45,7 @@ public:
 	KviTrayIconWidget();
 	~KviTrayIconWidget();
 protected:
-	KviDynamicToolTip m_pTip;
+	KviDynamicToolTip m_Tip;
 	QMenu * m_pContextPopup;
 	QMenu * m_pAwayPopup;
 #ifndef COMPILE_ON_MAC

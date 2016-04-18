@@ -68,7 +68,7 @@ static QPixmap * g_pDock2 = nullptr;
 static QPixmap * g_pDock3 = nullptr;
 
 KviTrayIconWidget::KviTrayIconWidget()
-: QSystemTrayIcon(g_pMainWindow), m_CurrentPixmap(ICON_SIZE,ICON_SIZE), m_pTip(g_pMainWindow,"dock_tooltip")
+: QSystemTrayIcon(g_pMainWindow), m_CurrentPixmap(ICON_SIZE,ICON_SIZE), m_Tip(g_pMainWindow,"dock_tooltip")
 {
 	g_pTrayIcon = this;
 	m_pContextPopup = new QMenu(0);
@@ -240,7 +240,7 @@ bool KviTrayIconWidget::event(QEvent *e)
 
 		if(tmp.isEmpty())tmp = __tr2qs_no_xgettext(idlemsgs[(int)(rand() % NIDLEMSGS)]);
 
-		m_pTip.tip(QRect(pos,QSize(0,0)),tmp);
+		m_Tip.tip(QRect(pos,QSize(0,0)),tmp);
 		return true;
 	}
 	return false;
