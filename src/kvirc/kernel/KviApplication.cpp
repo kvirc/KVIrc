@@ -1669,14 +1669,7 @@ KviConsoleWindow * KviApplication::findConsole(QString & szServer,QString & szNi
 	while(it.current())
 	{
 		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
-		if(pWindow == nullptr)
-		{
-			qDebug("Conversion from %s to KviConsoleWindow* failed. KviApplication.cpp %d",
-				typeid(it.current()).name(), __LINE__);
-			continue;
-		}
-
-		if((it.current()->type() != KviWindow::Console) || (!(pWindow->isConnected())))
+		if(!(pWindow && pWindow->isConnected()))
 		{
 			++it;
 			continue;
