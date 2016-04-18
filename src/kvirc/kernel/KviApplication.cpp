@@ -744,12 +744,9 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 			case KviWindow::Query:
 			{
 				KviQueryWindow * pQuery = dynamic_cast<KviQueryWindow *>(pWnd);
-				if(pQuery == nullptr)
-				{
-					qDebug("Conversion from %s to KviQueryWindow* failed. KviApplication.cpp %d",
-						typeid(pWnd).name(), __LINE__);
+				if(!pQuery)
 					break;
-				}
+
 				KviUserListEntry * pEntry = pQuery->userListView()->findEntry(pWnd->target());
 				if(!pEntry)
 					break;
@@ -1670,7 +1667,7 @@ KviConsoleWindow * KviApplication::findConsole(QString & szServer,QString & szNi
 	while(it.current())
 	{
 		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
-		if(!(pWindow && pWindow->isConnected()))
+		if(!(pWindow && pWindow->type() == KviWindow::Console && pWindow->isConnected()))
 		{
 			++it;
 			continue;
@@ -1706,7 +1703,7 @@ void KviApplication::restartLagMeters()
 	while(it.current())
 	{
 		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
-		if(pWindow && pWindow->connection())
+		if(pWindow && pWindow->type() == KviWindow::Console && pWindow->connection())
 			pWindow->connection()->restartLagMeter();
 		++it;
 	}
@@ -1719,10 +1716,8 @@ void KviApplication::restartNotifyLists()
 	while(it.current())
 	{
 		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
-		if(pWindow && pWindow->connection())
-		{
+		if(pWindow && pWindow->type() == KviWindow::Console && pWindow->connection())
 			pWindow->connection()->restartNotifyList();
-		}
 		++it;
 	}
 }
@@ -1734,7 +1729,7 @@ void KviApplication::resetAvatarForMatchingUsers(KviRegisteredUser * pUser)
 	while(it.current())
 	{
 		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
-		if(pWindow)
+		if(pWindow && pWindow->type() == KviWindow::Console)
 			pWindow->resetAvatarForMatchingUsers(pUser);
 		++it;
 	}
@@ -1771,7 +1766,7 @@ KviConsoleWindow * KviApplication::topmostConnectedConsole()
 	while(it.current())
 	{
 		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
-		if(pWindow && pWindow->isConnected())
+		if(pWindow && pWindow->type() == KviWindow::Console && pWindow->isConnected())
 			return pWindow;
 		++it;
 	}
