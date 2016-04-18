@@ -25,12 +25,18 @@
 #define STRINGIFY_(x) #x
 #define STRINGIFY(x) STRINGIFY_(x)
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+# define KVI_CAST_FUNC __FUNCTION__
+#else
+# define KVI_CAST_FUNC __func__
+#endif
+
 #define KVI_DYNAMIC(expr, expr2)             \
 	KviCast::dynamic                      \
 	<expr>                                \
 	(expr2,                               \
 	__FILE__ ":" STRINGIFY(__LINE__),     \
-	__func__,                             \
+	KVI_CAST_FUNC,                        \
 	#expr)                                \
 
 namespace KviCast
