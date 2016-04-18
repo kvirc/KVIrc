@@ -1121,11 +1121,11 @@ KVSCF(gender)
 		bool bMatch = !szText.isEmpty();
 
 		KviPointerHashTable<QString,KviKvsTimer> * pTimerDict = KviKvsTimerManager::instance()->timerDict();
-		KviKvsArray * a = new KviKvsArray();
 
 		if(!pTimerDict)
 			return true;
 
+		KviKvsArray * a = new KviKvsArray();
 		QRegExp re(szText,bCaseSensitive?Qt::CaseSensitive:Qt::CaseInsensitive,bRegexp?QRegExp::RegExp:QRegExp::Wildcard);
 		KviPointerHashTableIterator<QString,KviKvsTimer> it(*pTimerDict);
 		kvs_int_t idx=0;
