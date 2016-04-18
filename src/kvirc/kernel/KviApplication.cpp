@@ -147,39 +147,39 @@ DO NOT REMOVE THEM EVEN IF THEY ARE DEFINED ALSO IN KviApplication.h
 #include <time.h> // time() in srand()
 
 // Global application pointer
-KVIRC_API KviApplication                          * g_pApp                                 = 0;
+KVIRC_API KviApplication                          * g_pApp                                 = nullptr;
 
-KviConfigurationFile                              * g_pWinPropertiesConfig                 = 0;
-KVIRC_API KviIrcServerDataBase                    * g_pServerDataBase                      = 0;
-KVIRC_API KviProxyDataBase                        * g_pProxyDataBase                       = 0;
+KviConfigurationFile                              * g_pWinPropertiesConfig                 = nullptr;
+KVIRC_API KviIrcServerDataBase                    * g_pServerDataBase                      = nullptr;
+KVIRC_API KviProxyDataBase                        * g_pProxyDataBase                       = nullptr;
 
 // Global windows
-KVIRC_API KviColorWindow                          * g_pColorWindow                         = 0;
-KVIRC_API KviTextIconWindow                       * g_pTextIconWindow                      = 0;
-KVIRC_API QMenu                                   * g_pInputPopup                          = 0;
-KVIRC_API QStringList                             * g_pRecentTopicList                     = 0;
-KVIRC_API KviPointerHashTable<QString,KviWindow>  * g_pGlobalWindowDict = 0;
-KVIRC_API KviMediaManager                         * g_pMediaManager                        = 0;
-KVIRC_API KviSharedFilesManager                   * g_pSharedFilesManager                  = 0;
-KVIRC_API KviNickServRuleSet                      * g_pNickServRuleSet                     = 0;
-KVIRC_API KviCtcpPageDialog                       * g_pCtcpPageDialog                      = 0;
-KVIRC_API KviRegisteredChannelDataBase            * g_pRegisteredChannelDataBase           = 0;
-KVIRC_API KviHistoryWindowWidget                  * g_pHistoryWindow                       = 0;
+KVIRC_API KviColorWindow                          * g_pColorWindow                         = nullptr;
+KVIRC_API KviTextIconWindow                       * g_pTextIconWindow                      = nullptr;
+KVIRC_API QMenu                                   * g_pInputPopup                          = nullptr;
+KVIRC_API QStringList                             * g_pRecentTopicList                     = nullptr;
+KVIRC_API KviPointerHashTable<QString,KviWindow>  * g_pGlobalWindowDict                    = nullptr;
+KVIRC_API KviMediaManager                         * g_pMediaManager                        = nullptr;
+KVIRC_API KviSharedFilesManager                   * g_pSharedFilesManager                  = nullptr;
+KVIRC_API KviNickServRuleSet                      * g_pNickServRuleSet                     = nullptr;
+KVIRC_API KviCtcpPageDialog                       * g_pCtcpPageDialog                      = nullptr;
+KVIRC_API KviRegisteredChannelDataBase            * g_pRegisteredChannelDataBase           = nullptr;
+KVIRC_API KviHistoryWindowWidget                  * g_pHistoryWindow                       = nullptr;
 
 // this is eventually set by libkviident
 KVIRC_API int                                       g_iIdentDaemonRunningUsers             = 0;
 
 // Loaded and destroyed by KviIconManager
-QPixmap                                           * g_pUserChanStatePixmap                 = 0;
-QPixmap                                           * g_pActivityMeterPixmap                 = 0;
+QPixmap                                           * g_pUserChanStatePixmap                 = nullptr;
+QPixmap                                           * g_pActivityMeterPixmap                 = nullptr;
 
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 
 	#include <QImage>
 
-	KVIRC_API QPixmap                         * g_pShadedParentGlobalDesktopBackground = 0; // the pixmap that we use for MdiManager
-	KVIRC_API QPixmap                         * g_pShadedChildGlobalDesktopBackground  = 0; // the pixmap that we use for MdiChild
+	KVIRC_API QPixmap                             * g_pShadedParentGlobalDesktopBackground = nullptr; // the pixmap that we use for MdiManager
+	KVIRC_API QPixmap                             * g_pShadedChildGlobalDesktopBackground  = nullptr; // the pixmap that we use for MdiChild
 	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		#include <winuser.h>
 		#include <QDesktopWidget>
@@ -189,7 +189,7 @@ QPixmap                                           * g_pActivityMeterPixmap      
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "KviCryptEngine.h"
 	// global crypt engine manager
-	KVIRC_API KviCryptEngineManager           * g_pCryptEngineManager                  = 0;
+	KVIRC_API KviCryptEngineManager               * g_pCryptEngineManager                  = nullptr;
 #endif
 
 #include <QStyleFactory>
@@ -207,10 +207,10 @@ KviApplication::KviApplication(int &argc,char ** argv)
 	m_szConfigFile          = QString();
 	m_bCreateConfig         = false;
 	m_bUpdateGuiPending     = false;
-	m_pPendingAvatarChanges = NULL;
-	m_pRecentChannelDict    = NULL;
+	m_pPendingAvatarChanges = nullptr;
+	m_pRecentChannelDict    = nullptr;
 #ifndef COMPILE_NO_IPC
-	m_pIpcSentinel          = NULL;
+	m_pIpcSentinel          = nullptr;
 #endif
 	m_iHeartbeatTimerId     = -1;
 	m_fntDefaultFont        = font();
@@ -517,7 +517,7 @@ KviApplication::~KviApplication()
 	// if we still have a frame: kill it
 	if(g_pMainWindow)
 		delete g_pMainWindow;
-	g_pActiveWindow = NULL; // .. but it should be already 0 anyway
+	g_pActiveWindow = nullptr; // .. but it should be already 0 anyway
 
 	if(g_pCtcpPageDialog)
 		delete g_pCtcpPageDialog;
@@ -743,7 +743,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 			case KviWindow::Channel: eIcon = KviIconManager::Channel; break;
 			case KviWindow::Query:
 			{
-				KviUserListEntry * pEntry = ((KviQueryWindow *)pWnd)->userListView()->findEntry(pWnd->target());
+				KviUserListEntry * pEntry = dynamic_cast<KviQueryWindow *>(pWnd)->userListView()->findEntry(pWnd->target());
 				if(!pEntry)
 					break;
 
@@ -786,7 +786,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 			pIcon = g_pIconManager->getSmallIcon(eIcon);
 
 
-		KNotification * pNotify = 0;
+		KNotification * pNotify = nullptr;
 #if defined(COMPILE_KDE4_SUPPORT)
 	#if KDE_IS_VERSION(4,4,0)
 		pNotify = new KNotification("incomingMessage",KNotification::CloseWhenWidgetActivated,this);
@@ -831,7 +831,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 			args << szText;                       // detailed text
 			args << QStringList();                // actions, optional
 			args << QVariantMap();                // hints, optional
-			args << (int)uMessageLifetime*1000;   // timeout in msecs
+			args << static_cast<int>(uMessageLifetime*1000);   // timeout in msecs
 
 			QDBusInterface * pNotify = new QDBusInterface("org.freedesktop.Notifications","/org/freedesktop/Notifications","org.freedesktop.Notifications",QDBusConnection::sessionBus(),this);
 			QDBusMessage reply = pNotify->callWithArgumentList(QDBus::Block,"Notify",args);
@@ -875,7 +875,7 @@ void KviApplication::showParentFrame()
 
 QTextCodec * KviApplication::defaultTextCodec()
 {
-	QTextCodec * pCodec = 0;
+	QTextCodec * pCodec = nullptr;
 	if(!KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).isEmpty())
 	{
 		pCodec = KviLocale::instance()->codecForName(KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding).toLatin1());
@@ -893,7 +893,7 @@ QTextCodec * KviApplication::defaultTextCodec()
 
 QTextCodec * KviApplication::defaultSrvCodec()
 {
-	QTextCodec * pCodec = 0;
+	QTextCodec * pCodec = nullptr;
 	if(!KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding).isEmpty())
 	{
 		pCodec = KviLocale::instance()->codecForName(KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding).toLatin1());
@@ -1046,9 +1046,8 @@ void KviApplication::createIpcSentinel()
 
 void KviApplication::destroyIpcSentinel()
 {
-	if(m_pIpcSentinel)
-		delete m_pIpcSentinel;
-	m_pIpcSentinel = 0;
+	delete m_pIpcSentinel;
+	m_pIpcSentinel = nullptr;
 }
 
 void KviApplication::ipcMessage(char * pcMessage)
@@ -1154,7 +1153,7 @@ void KviApplication::fileDownloadTerminated(
 	if(m_pPendingAvatarChanges)
 		pAvatar = findPendingAvatarChange(0,szNick,szRemoteUrl);
 	else
-		pAvatar = NULL;
+		pAvatar = nullptr;
 
 	if(!pAvatar)
 	{
@@ -1222,7 +1221,7 @@ void KviApplication::fileDownloadTerminated(
 	if(m_pPendingAvatarChanges->count() == 0)
 	{
 		delete m_pPendingAvatarChanges;
-		m_pPendingAvatarChanges = NULL;
+		m_pPendingAvatarChanges = nullptr;
 	}
 }
 
@@ -1232,12 +1231,12 @@ void KviApplication::destroyPseudoTransparency()
 	if(g_pShadedParentGlobalDesktopBackground)
 	{
 		delete g_pShadedParentGlobalDesktopBackground;
-		g_pShadedParentGlobalDesktopBackground = NULL;
+		g_pShadedParentGlobalDesktopBackground = nullptr;
 	}
 	if(g_pShadedChildGlobalDesktopBackground)
 	{
 		delete g_pShadedChildGlobalDesktopBackground;
-		g_pShadedChildGlobalDesktopBackground = NULL;
+		g_pShadedChildGlobalDesktopBackground = nullptr;
 	}
 }
 
@@ -1300,7 +1299,7 @@ void KviApplication::updatePseudoTransparency()
 			HBITMAP bitmap = CreateCompatibleBitmap(qt_win_display_dc(), size.width(), size.height());
 			HGDIOBJ null_bitmap = SelectObject(bitmap_dc, bitmap);
 
-			PrintWindow (hWnd, bitmap_dc, 0);
+			PrintWindow(hWnd, bitmap_dc, 0);
 
 			SelectObject(bitmap_dc, null_bitmap);
 			DeleteDC(bitmap_dc);
@@ -1598,11 +1597,11 @@ void KviApplication::autoConnectToServers()
 
 void KviApplication::createFrame()
 {
-	Q_ASSERT(g_pMainWindow == NULL);
+	Q_ASSERT(g_pMainWindow == nullptr);
 
 	new KviMainWindow();
 
-	Q_ASSERT(g_pMainWindow != NULL);
+	Q_ASSERT(g_pMainWindow != nullptr);
 
 	g_pMainWindow->createNewConsole(true);
 
@@ -1664,7 +1663,7 @@ KviConsoleWindow * KviApplication::findConsole(QString & szServer,QString & szNi
 	{
 		if(
 			(it.current()->type() != KviWindow::Console) ||
-			(!((KviConsoleWindow *)it.current())->isConnected())
+			(!(dynamic_cast<KviConsoleWindow *>(it.current())->isConnected()))
 		)
 		{
 			++it;
@@ -1674,19 +1673,19 @@ KviConsoleWindow * KviApplication::findConsole(QString & szServer,QString & szNi
 		if(!szServer.isEmpty())
 		{
 			if(KviQString::equalCI(szServer,
-				((KviConsoleWindow *)it.current())->connection()->currentServerName()))
+				dynamic_cast<KviConsoleWindow *>(it.current())->connection()->currentServerName()))
 			{
 				if(szNick.isEmpty())
-					return ((KviConsoleWindow *)it.current());
-			
+					return dynamic_cast<KviConsoleWindow *>(it.current());
+
 				if(KviQString::equalCI(szNick,((KviConsoleWindow *)it.current())->connection()->currentNickName()))
-					return ((KviConsoleWindow *)it.current());
+					return dynamic_cast<KviConsoleWindow *>(it.current());
 			}
 		} else {
 			if(!szNick.isEmpty())
 			{
 				if(KviQString::equalCI(szNick,((KviConsoleWindow *)it.current())->connection()->currentNickName()))
-					return ((KviConsoleWindow *)it.current());
+					return dynamic_cast<KviConsoleWindow *>(it.current());
 			}
 		}
 
@@ -1718,8 +1717,8 @@ void KviApplication::restartNotifyLists()
 	{
 		if(it.current()->type() == KviWindow::Console)
 		{
-			if(((KviConsoleWindow *)it.current())->connection())
-				((KviConsoleWindow *)it.current())->connection()->restartNotifyList();
+			if(dynamic_cast<KviConsoleWindow *>(it.current())->connection())
+				dynamic_cast<KviConsoleWindow *>(it.current())->connection()->restartNotifyList();
 		}
 		++it;
 	}
@@ -1733,7 +1732,7 @@ void KviApplication::resetAvatarForMatchingUsers(KviRegisteredUser * pUser)
 	{
 		if(it.current()->type() == KviWindow::Console)
 		{
-			((KviConsoleWindow *)it.current())->resetAvatarForMatchingUsers(pUser);
+			dynamic_cast<KviConsoleWindow *>(it.current())->resetAvatarForMatchingUsers(pUser);
 		}
 		++it;
 	}
@@ -1747,8 +1746,8 @@ KviConsoleWindow * KviApplication::findConsole(unsigned int uIrcContextId)
 	{
 		if(it.current()->type() == KviWindow::Console)
 		{
-			if(((KviConsoleWindow *)it.current())->context()->id() == uIrcContextId)
-				return ((KviConsoleWindow *)it.current());
+			if(dynamic_cast<KviConsoleWindow *>(it.current())->context()->id() == uIrcContextId)
+				return dynamic_cast<KviConsoleWindow *>(it.current());
 		}
 		++it;
 	}
@@ -1773,8 +1772,8 @@ KviConsoleWindow * KviApplication::topmostConnectedConsole()
 	{
 		if(it.current()->type() == KviWindow::Console)
 		{
-			if(((KviConsoleWindow *)it.current())->isConnected())
-				return (KviConsoleWindow *)(it.current());
+			if(dynamic_cast<KviConsoleWindow *>(it.current())->isConnected())
+				return dynamic_cast<KviConsoleWindow *>(it.current());
 		}
 		++it;
 	}
@@ -1794,7 +1793,7 @@ KviWindow * KviApplication::findWindowByCaption(const QString & szWindowCaption,
 	while(it.current())
 	{
 		if(KviQString::equalCI(szWindowCaption,it.current()->plainTextCaption()) &&
-			(iContextId==-1 || it.current()->context()->id() == (uint) iContextId))
+			(iContextId==-1 || it.current()->context()->id() == static_cast<uint>(iContextId)))
 				return it.current();
 		++it;
 	}
