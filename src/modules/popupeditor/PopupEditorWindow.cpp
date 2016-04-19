@@ -448,7 +448,7 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint &pos)
 
 //	if(!findPrologue(parentMenu))
 //	{
-        m_pContextPopup->addSeparator();
+	m_pContextPopup->addSeparator();
 	bSeparatorInserted = true;
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Prologue)),
 			__tr2qs_ctx("New Menu Prologue","editor"),this,SLOT(contextNewPrologue()));
@@ -456,10 +456,10 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint &pos)
 
 //	if(!findEpilogue(parentMenu))
 //	{
-        if(!bSeparatorInserted)m_pContextPopup->addSeparator();
-		m_pContextPopup->addAction(
-				*(g_pIconManager->getSmallIcon(KviIconManager::Epilogue)),
-				__tr2qs_ctx("New Menu Epilogue","editor"),this,SLOT(contextNewEpilogue()));
+	if(!bSeparatorInserted)m_pContextPopup->addSeparator();
+	m_pContextPopup->addAction(
+			*(g_pIconManager->getSmallIcon(KviIconManager::Epilogue)),
+			__tr2qs_ctx("New Menu Epilogue","editor"),this,SLOT(contextNewEpilogue()));
 //	}
 
 	m_pContextPopup->popup(QCursor::pos());
