@@ -22,6 +22,8 @@
 //
 //=============================================================================
 
+#include <typeinfo>
+
 #define STRINGIFY_(x) #x
 #define STRINGIFY(x) STRINGIFY_(x)
 
