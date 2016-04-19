@@ -93,8 +93,8 @@
 extern KviConfigurationFile * g_pWinPropertiesConfig;
 KVIRC_API KviMainWindow * g_pMainWindow = NULL; // the one and only frame object
 
-KviMainWindow::KviMainWindow()
-: KviTalMainWindow(0,"kvirc_frame")
+KviMainWindow::KviMainWindow(QWidget * pParent)
+: KviTalMainWindow(pParent,"kvirc_frame")
 {
 	g_pMainWindow = this;
 	setAttribute(Qt::WA_DeleteOnClose);
