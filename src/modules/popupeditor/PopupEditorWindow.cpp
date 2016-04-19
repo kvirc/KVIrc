@@ -275,8 +275,8 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 
 SinglePopupEditor::~SinglePopupEditor()
 {
-	if(m_pClipboard)delete m_pClipboard;
-	if(m_pTestPopup)delete m_pTestPopup;
+	delete m_pClipboard;
+	delete m_pTestPopup;
 	KviScriptEditor::destroyInstance(m_pEditor);
 }
 
@@ -370,7 +370,7 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint &pos)
 
 	m_pContextPopup->clear();
 
-	//PopupTreeWidgetItem * parentMenu = 0;
+	//PopupTreeWidgetItem * parentMenu = nullptr;
 	bool bIsMenu = false;
 
 	if(it)
@@ -627,19 +627,17 @@ void SinglePopupEditor::contextCut()
 	if(!m_pLastSelectedItem)return;
 	contextCopy();
 
-	PopupTreeWidgetItem * it = m_pLastSelectedItem;
+	delete m_pLastSelectedItem;
 	m_pLastSelectedItem = nullptr;
-	delete it;
-	if(!m_pLastSelectedItem)selectionChanged();
+	selectionChanged();
 }
 
 void SinglePopupEditor::contextRemove()
 {
 	if(!m_pLastSelectedItem)return;
 
-	PopupTreeWidgetItem * it = m_pLastSelectedItem;
+	delete m_pLastSelectedItem;
 	m_pLastSelectedItem = nullptr;
-	delete it;
 	selectionChanged();
 }
 
@@ -1065,8 +1063,8 @@ PopupEditorWidget::PopupEditorWidget(QWidget * par)
 	m_pContextPopup = new QMenu(this);
 	m_pEmptyContextPopup = new QMenu(this);
 
-	spl->setStretchFactor (0,20);
-	spl->setStretchFactor (1,80);
+	spl->setStretchFactor(0,20);
+	spl->setStretchFactor(1,80);
 
 	currentItemChanged(0,0);
 }
@@ -1226,7 +1224,7 @@ void PopupEditorWidget::exportPopups(bool bSelectedOnly)
 	for(int i=0; i<topcount;i++)
 	{
 		MenuTreeWidgetItem * it = (MenuTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
-		if ( (it->isSelected()) || (bSelectedOnly == true) )
+		if((it->isSelected()) || (bSelectedOnly == true) )
 		{
 			count++;
 			QString tmp;
@@ -1235,7 +1233,7 @@ void PopupEditorWidget::exportPopups(bool bSelectedOnly)
 			out += "\n";
 		}
 	}
-	if (!count && !bSelectedOnly)
+	if(!count && !bSelectedOnly)
 		return;
 
 	QString szName = QDir::homePath();
@@ -1256,10 +1254,9 @@ void PopupEditorWidget::removeCurrentPopup()
 {
 	if(m_pLastEditedItem)
 	{
-		MenuTreeWidgetItem * it = m_pLastEditedItem;
+		delete m_pLastEditedItem;
 		m_pLastEditedItem = nullptr;
-		delete it;
-		if(!m_pLastEditedItem)currentItemChanged(0,0);
+		currentItemChanged(0,0);
 	}
 }
 
@@ -1273,7 +1270,7 @@ void PopupEditorWidget::newPopup()
 
 void PopupEditorWidget::saveLastEditedItem()
 {
-	if(m_pLastEditedItem == 0)return;
+	if(!m_pLastEditedItem)return;
 
 	KviKvsPopupMenu * m = m_pEditor->getMenu();
 	QString tmp = m->popupName();
