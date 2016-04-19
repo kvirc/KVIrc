@@ -183,10 +183,10 @@ void PopupTreeWidgetItem::setIcon(const QString & szIcon)
 SinglePopupEditor::SinglePopupEditor(QWidget * par)
 : QWidget(par)
 {
-	m_pLastSelectedItem = 0;
+	m_pLastSelectedItem = nullptr;
 	m_pContextPopup = new QMenu(this);
-	m_pClipboard = 0;
-	m_pTestPopup = 0;
+	m_pClipboard = nullptr;
+	m_pTestPopup = nullptr;
 
 	QGridLayout * g = new QGridLayout(this);
 	g->setMargin(0);
@@ -628,7 +628,7 @@ void SinglePopupEditor::contextCut()
 	contextCopy();
 
 	PopupTreeWidgetItem * it = m_pLastSelectedItem;
-	m_pLastSelectedItem = 0;
+	m_pLastSelectedItem = nullptr;
 	delete it;
 	if(!m_pLastSelectedItem)selectionChanged();
 }
@@ -983,7 +983,7 @@ void SinglePopupEditor::edit(MenuTreeWidgetItem * it)
 {
 	saveLastSelectedItem();
 
-	m_pLastSelectedItem = 0;
+	m_pLastSelectedItem = nullptr;
 
 	m_pTreeWidget->clear();
 
@@ -1060,7 +1060,7 @@ PopupEditorWidget::PopupEditorWidget(QWidget * par)
 	m_pEditor = new SinglePopupEditor(spl);
 
 	m_bOneTimeSetupDone = false;
-	m_pLastEditedItem = 0;
+	m_pLastEditedItem = nullptr;
 
 	m_pContextPopup = new QMenu(this);
 	m_pEmptyContextPopup = new QMenu(this);
@@ -1257,7 +1257,7 @@ void PopupEditorWidget::removeCurrentPopup()
 	if(m_pLastEditedItem)
 	{
 		MenuTreeWidgetItem * it = m_pLastEditedItem;
-		m_pLastEditedItem = 0;
+		m_pLastEditedItem = nullptr;
 		delete it;
 		if(!m_pLastEditedItem)currentItemChanged(0,0);
 	}
@@ -1408,7 +1408,7 @@ PopupEditorWindow::PopupEditorWindow()
 
 PopupEditorWindow::~PopupEditorWindow()
 {
-	g_pPopupEditorWindow = 0;
+	g_pPopupEditorWindow = nullptr;
 }
 
 void PopupEditorWindow::okClicked()
