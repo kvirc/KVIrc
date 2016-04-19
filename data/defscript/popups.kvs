@@ -382,8 +382,6 @@ defpopup(servertextview)
 		}
 	}
 
-	separator($server)
-
 	label($tr("You're not connected to a server","defscript")) (!$server)
 }
 
