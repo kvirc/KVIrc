@@ -91,33 +91,39 @@ static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
+static KviProxy * proxydb_get_helper(KviKvsModuleFunctionCall * c)
+{
+	QString szProxy;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("proxy",KVS_PT_STRING,0,szProxy)
+	KVSM_PARAMETERS_END(c)
+
+	if(szProxy.isEmpty())
+	{
+		c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter","serverdb"));
+		return nullptr;
+	}
+
+	KviProxy objProxy;
+	objProxy.setHostname(szProxy);
+
+	KviProxy * pRecord = g_pProxyDataBase->findProxy(&objProxy,true);
+	if(!pRecord)
+	{
+		c->error(__tr2qs_ctx("The specified proxy doesn't exist","serverdb"));
+		return nullptr;
+	}
+
+	return pRecord;
+}
+
 #define PROXYDB_GET_PROPERTY(__functionName,__callName,__variantSetCallName) \
 	static bool __functionName(KviKvsModuleFunctionCall * c) \
 	{ \
-		QString szProxy; \
-		\
-		KVSM_PARAMETERS_BEGIN(c) \
-			KVSM_PARAMETER("proxy",KVS_PT_STRING,0,szProxy) \
-		KVSM_PARAMETERS_END(c) \
-		\
-		if(szProxy.isEmpty()) \
-		{ \
-			c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter","serverdb")); \
-			return false; \
-		} \
-		\
-		KviProxy objProxy; \
-		objProxy.setHostname(szProxy); \
-		\
-		KviProxy * pRecord = g_pProxyDataBase->findProxy(&objProxy,true); \
-		if(!pRecord) \
-		{ \
-			c->error(__tr2qs_ctx("The specified proxy doesn't exist","serverdb")); \
-			return false; \
-		} \
-		\
+		KviProxy * pRecord = proxydb_get_helper(c); \
+		if(pRecord == nullptr) return false; \
 		c->returnValue()->__variantSetCallName(pRecord->__callName()); \
-		\
 		return true; \
 	}
 
