@@ -29,7 +29,6 @@
 
 #include "KviDataBuffer.h"
 #include "KviMemory.h"
-#include "KviMemory.h"
 
 // FIXME: this could resize in chunks!...this would be damn faster :)
 
