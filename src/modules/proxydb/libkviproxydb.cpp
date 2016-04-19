@@ -91,13 +91,24 @@ static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
+static bool proxydb_get_helperer(KviKvsModuleFunctionCall * c, QString * szProxy)
+{
+	QString szTmp;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("proxy",KVS_PT_STRING,0,szTmp)
+	KVSM_PARAMETERS_END(c)
+
+	*szProxy = szTmp;
+	return true;
+}
+
 static KviProxy * proxydb_get_helper(KviKvsModuleFunctionCall * c)
 {
 	QString szProxy;
 
-	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("proxy",KVS_PT_STRING,0,szProxy)
-	KVSM_PARAMETERS_END(c)
+	if(!proxydb_get_helperer(c,&szProxy))
+		return nullptr;
 
 	if(szProxy.isEmpty())
 	{
