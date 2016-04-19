@@ -2,7 +2,7 @@
 
 event(OnServerLinkPopupRequest,default)
 {
-	popup.show serverpopup;
+	if($0 != "") popup.show serverpopup $0;
 }
 
 event(OnDccChatPopupRequest,default)
