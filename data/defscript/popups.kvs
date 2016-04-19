@@ -299,6 +299,94 @@ defpopup(urlpopup)
 	}
 }
 
+defpopup(servertextview)
+{
+	popup($tr("&Information","defscript"),317) ($server)
+	{
+		item(/MOTD,30)
+		{
+			motd
+		}
+
+		item(/INFO,317)
+		{
+			info
+		}
+
+		item(/LUSERS,178)
+		{
+			lusers
+		}
+
+		popup(/STATS,205)
+		{
+			item($tr("d (Debug/DNS?)","defscript"))
+			{
+				stats d
+			}
+
+			item($tr("l (Connections)","defscript"))
+			{
+				stats l
+			}
+
+			item($tr("m (Command Usage)","defscript"))
+			{
+				stats m
+			}
+
+			item($tr("o (Operators)","defscript"))
+			{
+				stats o
+			}
+
+			item($tr("t (Connection Stats?)","defscript"))
+			{
+				stats t
+			}
+
+			item($tr("u (Uptime)","defscript"))
+			{
+				stats u
+			}
+
+			item($tr("y (Y-Lines)","defscript"))
+			{
+				stats y
+			}
+
+			item($tr("z (Debug Stats?)","defscript"))
+			{
+				stats z
+			}
+		}
+
+		item(/TIME,93)
+		{
+			time
+		}
+
+		item(/ADMIN,261)
+		{
+			admin
+		}
+
+		item(/VERSION,16)
+		{
+			version
+		}
+
+		item(/HELP,49)
+		{
+			raw help
+		}
+	}
+
+	separator($server)
+
+	label($tr("You're not connected to a server","defscript")) (!$server)
+}
+
 defpopup(consoletextview)
 {
 	item($tr("Dock","defscript"),6) (!$window.isDocked())

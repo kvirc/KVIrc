@@ -1,5 +1,10 @@
 # Default events file
 
+event(OnServerLinkPopupRequest,default)
+{
+	popup.show servertextview;
+}
+
 event(OnDccChatPopupRequest,default)
 {
 	popup.show dccchat $dcc.remoteNick($0);
