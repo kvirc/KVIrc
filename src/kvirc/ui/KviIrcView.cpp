@@ -344,7 +344,7 @@ static inline void delete_text_line(KviIrcViewLine * line,QHash<KviIrcViewLine*,
 	{
 		it = animatedSmiles->erase(it);
 	}
-	for(unsigned int i=0;i<line->uChunkCount;i++)
+	for(size_t i{};i<line->uChunkCount;i++)
 	{
 		if((line->pChunks[i].type == KviControlCodes::Escape) || (line->pChunks[i].type == KviControlCodes::Icon))
 		{
