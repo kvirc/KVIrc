@@ -63,17 +63,17 @@ static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 		return false;
 	}
 
-	KviProxy * pProxy = new KviProxy();
-	pProxy->setHostname(szProxy);
+	KviProxy objProxy;
+	objProxy.setHostname(szProxy);
 
-	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true);
+	KviProxy * pRecord = g_pProxyDataBase->findProxy(&objProxy,true);
 	if(!pRecord)
 	{
 		c->error(__tr2qs_ctx("The specified proxy doesn't exist","serverdb"));
 		return false;
 	}
 
-	switch(pProxy->protocol())
+	switch(pRecord->protocol())
 	{
 		case KviProxy::Socks4:
 			szProtocol = "Socks4";
@@ -106,10 +106,10 @@ static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 			return false; \
 		} \
 		\
-		KviProxy * pProxy = new KviProxy(); \
-		pProxy->setHostname(szProxy); \
+		KviProxy objProxy; \
+		objProxy.setHostname(szProxy); \
 		\
-		KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true); \
+		KviProxy * pRecord = g_pProxyDataBase->findProxy(&objProxy,true); \
 		if(!pRecord) \
 		{ \
 			c->error(__tr2qs_ctx("The specified proxy doesn't exist","serverdb")); \
@@ -283,8 +283,13 @@ static bool proxydb_kvs_cmd_addProxy(KviKvsModuleCommandCall * c)
 	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true);
 	if(pRecord)
 	{
-		if(c->switches()->find('q',"quiet")) return true;
+		if(c->switches()->find('q',"quiet"))
+		{
+			delete pProxy;
+			return true;
+		}
 		c->error(__tr2qs_ctx("The specified proxy already exists","serverdb"));
+		delete pProxy;
 		return false;
 	}
 
@@ -311,6 +316,7 @@ static bool proxydb_kvs_cmd_addProxy(KviKvsModuleCommandCall * c)
 		else if(tmp == "Http") pProxy->setProtocol(KviProxy::Http);
 		else {
 			c->error(__tr2qs_ctx("The specified protocol doesn't exist","serverdb"));
+			delete pProxy;
 			return false;
 		}
 	}
@@ -366,10 +372,10 @@ static bool proxydb_kvs_cmd_setPort(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	KviProxy * pProxy = new KviProxy();
-	pProxy->setHostname(szProxy);
+	KviProxy objProxy;
+	objProxy.setHostname(szProxy);
 
-	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true);
+	KviProxy * pRecord = g_pProxyDataBase->findProxy(&objProxy,true);
 	if(!pRecord)
 	{
 		if(c->switches()->find('q',"quiet")) return true;
@@ -379,8 +385,7 @@ static bool proxydb_kvs_cmd_setPort(KviKvsModuleCommandCall * c)
 
 	uPort = szPort.toInt(&bOk);
 	if(!bOk) uPort = 1080;
-	pProxy->setPort(uPort);
-	qDebug("PROXYDB Port: %d",uPort);
+	pRecord->setPort(uPort);
 
 	return true;
 }
@@ -438,10 +443,10 @@ static bool proxydb_kvs_cmd_setIp(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	KviProxy * pProxy = new KviProxy();
-	pProxy->setHostname(szProxy);
+	KviProxy objProxy;
+	objProxy.setHostname(szProxy);
 
-	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true);
+	KviProxy * pRecord = g_pProxyDataBase->findProxy(&objProxy,true);
 	if(!pRecord)
 	{
 		if(c->switches()->find('q',"quiet")) return true;
@@ -457,7 +462,7 @@ static bool proxydb_kvs_cmd_setIp(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	pProxy->setIp(szIp);
+	pRecord->setIp(szIp);
 
 	return true;
 }
@@ -502,10 +507,10 @@ static bool proxydb_kvs_cmd_setIPv6(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	KviProxy * pProxy = new KviProxy();
-	pProxy->setHostname(szProxy);
+	KviProxy objProxy;
+	objProxy.setHostname(szProxy);
 
-	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true);
+	KviProxy * pRecord = g_pProxyDataBase->findProxy(&objProxy,true);
 	if(!pRecord)
 	{
 		if(c->switches()->find('q',"quiet")) return true;
@@ -513,7 +518,7 @@ static bool proxydb_kvs_cmd_setIPv6(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	pProxy->setIPv6(bIPv6);
+	pRecord->setIPv6(bIPv6);
 
 	return true;
 }
@@ -564,10 +569,10 @@ static bool proxydb_kvs_cmd_setProtocol(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	KviProxy * pProxy = new KviProxy();
-	pProxy->setHostname(szProxy);
+	KviProxy objProxy;
+	objProxy.setHostname(szProxy);
 
-	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true);
+	KviProxy * pRecord = g_pProxyDataBase->findProxy(&objProxy,true);
 	if(!pRecord)
 	{
 		if(c->switches()->find('q',"quiet")) return true;
@@ -575,9 +580,9 @@ static bool proxydb_kvs_cmd_setProtocol(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	if(szProtocol == "Socks4") pProxy->setProtocol(KviProxy::Socks4);
-	else if(szProtocol == "Socks5") pProxy->setProtocol(KviProxy::Socks5);
-	else if(szProtocol == "Http") pProxy->setProtocol(KviProxy::Http);
+	if(szProtocol == "Socks4") pRecord->setProtocol(KviProxy::Socks4);
+	else if(szProtocol == "Socks5") pRecord->setProtocol(KviProxy::Socks5);
+	else if(szProtocol == "Http") pRecord->setProtocol(KviProxy::Http);
 	else {
 		c->error(__tr2qs_ctx("The specified protocol doesn't exist","serverdb"));
 		return false;
@@ -608,10 +613,10 @@ static bool proxydb_kvs_cmd_setProtocol(KviKvsModuleCommandCall * c)
 			return false; \
 		} \
 		\
-		KviProxy * pProxy = new KviProxy(); \
-		pProxy->setHostname(szProxy); \
+		KviProxy objProxy; \
+		objProxy.setHostname(szProxy); \
 		\
-		KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true); \
+		KviProxy * pRecord = g_pProxyDataBase->findProxy(&objProxy,true); \
 		if(!pRecord) \
 		{ \
 			if(c->switches()->find('q',"quiet")) return true; \
@@ -619,8 +624,7 @@ static bool proxydb_kvs_cmd_setProtocol(KviKvsModuleCommandCall * c)
 			return false; \
 		} \
 		\
-		pProxy->__callName(szPropertyName); \
-		qDebug("PROXYDB Property: %s",szPropertyName.toUtf8().data()); \
+		pRecord->__callName(szPropertyName); \
 		\
 		return true; \
 	}
