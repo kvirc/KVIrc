@@ -2,7 +2,7 @@
 
 event(OnServerLinkPopupRequest,default)
 {
-	popup.show servertextview;
+	popup.show serverpopup;
 }
 
 event(OnDccChatPopupRequest,default)

@@ -299,7 +299,7 @@ defpopup(urlpopup)
 	}
 }
 
-defpopup(servertextview)
+defpopup(serverpopup)
 {
 	popup($tr("&Information","defscript"),317) ($server)
 	{
