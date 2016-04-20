@@ -52,7 +52,7 @@ done
 unset SOURCEUP
 for i in ${DIST_PPA}
 do
-echo "dput ${PPANAME} ../${PKG_NAME}_*${i}1_source.changes"
+dput ${PPANAME} ../${PKG_NAME}_*${i}1_source.changes
 sleep 10
 done
 cp -f ${TMPFILE} debian/changelog
