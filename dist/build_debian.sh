@@ -1,9 +1,21 @@
 #/bin/sh
 
 test -z "$DEBFULLNAME" && export DEBFULLNAME="Alexander Pozdnyakov"
-test -z "$DEBEMAIL" && export DEBEMAIL="almipo@mail.ru"
+test -z "$DEBEMAIL" && export DEBEMAIL="kvircbot@gmail.com"
+
+#export DEBEMAIL="kvircbot@gmail.com"
+#export GPGPASS=secret
+#export AESPASS=secret
+
 bin_debuild=$(which debuild 2>/dev/null)
 
+while getopts "p" Option
+do
+    case $Option in
+        p) PPA=1 ;;
+    esac
+done
+shift $((OPTIND - 1))
 
 if [ ! -x "$bin_debuild" ]
 then
@@ -18,19 +30,66 @@ PKG_NAME=kvirc
 SVNGITBZR="~"
 VERSION='4:4.9.2'
 VERSION1='4.9.2'
+TMPFILE=$(mktemp)
+TMPGPG=$(mktemp)
+DIST_PPA="trusty wily xenial"
+PPANAME=kvirc
 
-test -d $BUILDDIR && rm -rf ${BUILDDIR} 
+dchppa_pkg(){
+NEW_VER=$(dpkg-parsechangelog | awk '/^Version: / {print $2}')
+cd $BUILDDIR/${PKG_NAME}-${VERSION1}${SVNGITBZR}${dat}/
+cp debian/changelog ${TMPFILE}
+tmpgpg
+for i in ${DIST_PPA}
+do
+cp -f ${TMPFILE} debian/changelog
+dch -b --force-distribution --distribution "$i" -v "${NEW_VER}ppa1~${i}1" \
+  "Automated backport upload; no source changes."
+[ -z $(echo $SOURCEUP | grep YES) ] && debuild --no-lintian -p"gpg --passphrase-file $TMPGPG --batch --no-use-agent" -S -sa
+[ -z $(echo $SOURCEUP | grep YES) ] || debuild --no-lintian -p"gpg --passphrase-file $TMPGPG --batch --no-use-agent" -S -sd
+SOURCEUP=YES
+done
+unset SOURCEUP
+for i in ${DIST_PPA}
+do
+echo "dput ${PPANAME} ../${PKG_NAME}_*${i}1_source.changes"
+sleep 10
+done
+cp -f ${TMPFILE} debian/changelog
+}
+
+dputcf(){
+cat > ~/.dput.cf << EOF
+[kvirc]
+fqdn = ppa.launchpad.net
+method = ftp
+incoming = ~kvirc/kvirc/ubuntu/
+login = anonymous
+allow_unsigned_uploads = 0
+EOF
+}
+
+tmpgpg(){
+cat > $TMPGPG << EOF
+$GPGPASS
+EOF
+}
+gpgkey(){
+openssl enc -d -aes-256-cbc -in ${DIR}/secret.enc -out ${DIR}/secret.gpg -k ${AESPASS}
+gpg --import ${DIR}/public.gpg
+gpg --allow-secret-key-import --import ${DIR}/secret.gpg
+}
+
+test -d $BUILDDIR && rm -rf ${BUILDDIR}
 mkdir -p $BUILDDIR
-
 cd $GITDIR
-
 dat=$(git describe --dirty)
 branch=$(git branch | grep "\*" | sed 's/\* //g')
 commit=$(git log -1 | grep -i "^commit" | awk '{print $2}')
 datct=$(git log -n 1 --format=%ct)
 
-test -z ${dat} && dat="git-6298-$(git describe --always)" \
-branch="travis_debian" 
+test -z ${dat} && dat="git-9999-$(git describe --always)"
+test -z ${branch} && branch="travis_debian"
 
 tar -cpf  "${BUILDDIR}/${PKG_NAME}_${VERSION1}${SVNGITBZR}${dat}.orig.tar" --exclude ".git" --exclude "dist" . 
 cd ${BUILDDIR}
@@ -45,4 +104,13 @@ dch -a "Branch: $branch"
 dch -a "Commit: $commit"
 dch -a "Date: $datct"
 
-debuild --no-lintian -us -uc
+if [ -z "$PPA" ]
+then
+    debuild --no-lintian -us -uc
+else
+    gpgkey
+    test -f ~/.dput.cf || dputcf
+    dchppa_pkg
+fi
+
+
