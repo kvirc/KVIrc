@@ -36,7 +36,6 @@
 #include "KviFile.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
-#include "KviError.h"
 #include "KviNetUtils.h"
 #include "KviDnsResolver.h"
 #include "KviError.h"
@@ -47,9 +46,7 @@
 #include <QByteArray>
 #include <QTcpSocket>
 #include <QUdpSocket>
-#include <QAbstractSocket>
 #include <QHostAddress>
-#include <QTcpServer>
 
 const char * const sockstate_tbl[] = {
 	"Unconnected",
@@ -300,8 +297,8 @@ KVSO_END_REGISTERCLASS(KvsObject_socket)
 bool KvsObject_socket::init(KviKvsRunTimeContext *c,KviKvsVariantList *)
 {
 	m_pSocket = new QTcpSocket();
-	m_pServer = 0;
-	m_pContext = c ;
+	m_pServer = nullptr;
+	m_pContext = c;
 	makeConnections();
 	bIsSetFromExternal = false;
 	return true;
@@ -317,10 +314,10 @@ KVSO_BEGIN_DESTRUCTOR(KvsObject_socket)
 		m_pSocket->close();
 		delete m_pSocket;
 	}
-	m_pSocket = 0;
-	if (m_pServer)
-	delete m_pServer;
-	m_pServer = 0;
+	m_pSocket = nullptr;
+	if(m_pServer)
+		delete m_pServer;
+	m_pServer = nullptr;
 KVSO_END_DESTRUCTOR(KvsObject_socket)
 //----------------------
 
@@ -411,7 +408,7 @@ KVSO_CLASS_FUNCTION(socket,read)
 		// convert NULLS to char 255
 		char * buffer = (char*) KviMemory::allocate(iLen);
 		m_pSocket->read(buffer,iLen);
-		for(unsigned int i = 0;i < iLen;i++)
+		for(size_t i{};i < iLen;i++)
 		{
 			if(!buffer[i]) buffer[i] = (char)(255);
 		}
@@ -632,8 +629,8 @@ const char * KvsObject_socket::getStateString(QAbstractSocket::SocketState state
 		{
 			// internal state?
 		}
-	    }
-	    return sockstate_tbl[idx];
+	}
+	return sockstate_tbl[idx];
 }
 
 // slots
