@@ -303,6 +303,7 @@ bool KvsObject_socket::init(KviKvsRunTimeContext *c,KviKvsVariantList *)
 	m_pServer = 0;
 	m_pContext = c ;
 	makeConnections();
+	bIsSetFromExternal = false;
 	return true;
 }
 
@@ -311,11 +312,14 @@ KVSO_BEGIN_CONSTRUCTOR(KvsObject_socket,KviKvsObject)
 KVSO_END_CONSTRUCTOR(KvsObject_socket)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_socket)
-	if (m_pSocket)
+	if (m_pSocket && !bIsSetFromExternal)
+	{
+		m_pSocket->close();
 		delete m_pSocket;
+	}
 	m_pSocket = 0;
 	if (m_pServer)
-		delete m_pServer;
+	delete m_pServer;
 	m_pServer = 0;
 KVSO_END_DESTRUCTOR(KvsObject_socket)
 //----------------------
@@ -676,18 +680,18 @@ void KvsObject_socket::slotStateChanged( QAbstractSocket::SocketState socketStat
 
 void KvsObject_socket::slotNewConnection()
 {
-	qDebug ("New connection");
 	QTcpSocket *pSocket =  m_pServer->nextPendingConnection();
 	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("socket");
 	KviKvsVariantList lParams;
-	KviKvsObject * pObject = pClass->allocateInstance(0,"internalsocket",m_pContext,&lParams);
+	KviKvsObject * pObject = pClass->allocateInstance(this,"internalsocket",m_pContext,&lParams);
 	((KvsObject_socket *)pObject)->setInternalSocket(pSocket);
 	kvs_hobject_t hobj=pObject->handle();
 	KviKvsVariantList params(new KviKvsVariant(hobj));
 	bool ret=false;
-	KviKvsVariant *retv=new KviKvsVariant(ret);
-	callFunction(this,"incomingConnectionEvent",retv,&params);
-	if (retv)
+	KviKvsVariant retv(ret);
+	callFunction(this,"incomingConnectionEvent",&retv,&params);
+	ret=retv.asBoolean();
+	if (ret)
 	{
 		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hobj);
 		if (pObject) pObject->dieNow();

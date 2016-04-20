@@ -39,6 +39,7 @@ protected:
 	QAbstractSocket *m_pSocket;
 	QTcpServer *m_pServer;
 	KviKvsRunTimeContext *m_pContext;
+	bool bIsSetFromExternal;
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 	const char * getStateString(QAbstractSocket::SocketState);
@@ -47,6 +48,8 @@ protected:
 	{
 		delete m_pSocket;
 		m_pSocket=pSocket;
+		bIsSetFromExternal = true;
+		makeConnections();
 	}
 
 	bool status(KviKvsObjectFunctionCall *c);
@@ -55,16 +58,13 @@ protected:
 	bool localPort(KviKvsObjectFunctionCall *c);
 	bool localIp(KviKvsObjectFunctionCall *c);
 	bool functionConnect(KviKvsObjectFunctionCall *c);
-
 	bool close(KviKvsObjectFunctionCall *c);
 	bool read(KviKvsObjectFunctionCall *c);
 	bool write(KviKvsObjectFunctionCall *c);
 	bool bytesAvailable(KviKvsObjectFunctionCall *c);
 	bool setProtocol(KviKvsObjectFunctionCall *c);
 	//bool setReadBufferSize(KviKvsObjectFunctionCall *c);
-        bool listen(KviKvsObjectFunctionCall *c);
-
-
+	bool listen(KviKvsObjectFunctionCall *c);
 	bool dataAvailableEvent(KviKvsObjectFunctionCall *c);
 	bool incomingConnectionEvent(KviKvsObjectFunctionCall *c);
 	bool connectedEvent(KviKvsObjectFunctionCall *c);
