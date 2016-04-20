@@ -94,11 +94,11 @@ defpopup(dccchat)
 
 	separator
 
-	extpopup(C&TCP,ctcp,162)
+	extpopup(C&TCP,ctcp,162) ($server)
 
-	extpopup(&DCC,dcc,325)
+	extpopup(&DCC,dcc,325) ($server)
 
-	separator
+	separator($server)
 
 	item($tr("Notify Avatar","defscript"),57)
 	{
@@ -147,7 +147,7 @@ defpopup(querytextview)
 
 	separator
 
-	popup($tr("&Information","defscript"),317)
+	popup($tr("&Information","defscript"),317) ($server)
 	{
 		item($str.printf($tr("/WHOIS ?s","defscript"),$0),88)
 		{
@@ -179,9 +179,9 @@ defpopup(querytextview)
 
 	separator
 
-	extpopup(C&TCP,ctcp,162)
+	extpopup(C&TCP,ctcp,162) ($server)
 
-	extpopup(&DCC,dcc,325)
+	extpopup(&DCC,dcc,325) ($server)
 
 	separator
 
@@ -189,7 +189,7 @@ defpopup(querytextview)
 
 	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple)
 
-	item($tr("Notify Avatar","defscript"),57)
+	item($tr("Notify Avatar","defscript"),57) ($server)
 	{
 		avatar.notify $0
 	}
@@ -204,34 +204,36 @@ defpopup(querytextview)
 
 defpopup(channelpopup)
 {
-	item($tr("&Hop","defscript") $0,289)
+	item($tr("&Hop","defscript") $0,289) ($server)
 	{
 		hop $0;
 	}
 
-	item($tr("&Part","defscript") $0,40) ($channel($0))
+	item($tr("&Part","defscript") $0,40) ($channel($0) && $server)
 	{
 		if($channel($0)) eval "part $escape($0) $option(stringPartMessage)";
 	}
 
-	item($tr("&Join","defscript") $0,39) (!$channel($0))
+	item($tr("&Join","defscript") $0,39) (!$channel($0) && $server)
 	{
 		join $0;
 	}
 
 	separator
 
-	item(/NAMES $0,75)
+	item(/NAMES $0,75) ($server)
 	{
 		names $0;
 	}
 
-	item(/WHO $0,75)
+	item(/WHO $0,75) ($server)
 	{
 		who $0;
 	}
 
 	separator
+
+	label($tr("You're not connected to a server","defscript")) (!$server)
 
 	item($tr("Copy Channel Address","defscript"),18)
 	{
@@ -308,7 +310,7 @@ defpopup(consoletextview)
 
 	separator($server)
 
-	extpopup($tr("Channels","defscript"),channels,31) ($server)
+	extpopup($tr("Default Channels","defscript"),channels,31) ($server)
 
 	separator($server)
 
@@ -852,61 +854,63 @@ defpopup(channeltextview)
 		window.dock
 	}
 
-	separator(!$window.isDocked())
+	separator(!$window.isDocked() $server)
 
-	extpopup($tr("Channels","defscript"),channels,31)
+	extpopup($tr("Channels","defscript"),channels,31) ($server)
 
 	item($tr("&Join Channels...","defscript"),31) ($server)
 	{
 		if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open
 	}
 
-	separator
+	separator($server)
 
-	item($tr("&Hop","defscript") $0,289) ($channel)
+	item($tr("&Hop","defscript") $0,289) ($channel && $server)
 	{
 		hop $0;
 	}
 
-	item($tr("&Part","defscript") $0,40) ($channel)
+	item($tr("&Part","defscript") $0,40) ($channel && $server)
 	{
 		if($channel($0)) eval "part $escape($0) $option(stringPartMessage)";
 	}
 
-	item($tr("&Join","defscript") $0,39) (!$channel)
+	item($tr("&Join","defscript") $0,39) (!$channel && $server)
 	{
 		join $0;
 	}
 
-	separator
+	separator($server)
 
-	extpopup(C&TCP,ctcp,162)
+	extpopup(C&TCP,ctcp,162) ($server)
 
-	separator
+	separator($server)
 
-	item(/NAMES $0,75)
+	item(/NAMES $0,75) ($server)
 	{
 		names $0;
 	}
 
-	item(/WHO $0,75)
+	item(/WHO $0,75) ($server)
 	{
 		who $0;
 	}
 
-	item($tr("Notify Avatar","defscript"),57)
+	item($tr("Notify Avatar","defscript"),57) ($server)
 	{
 		avatar.notify $0
 	}
 
-	separator
+	separator($server)
 
-	extpopup($tr("&Highlight","defscript"),channelhighlight,269)
+	extpopup($tr("&Highlight","defscript"),channelhighlight,269) ($server)
 
-	item($tr("Copy Channel URL to Clipboard","defscript"),18)
+	item($tr("Copy Channel URL to Clipboard","defscript"),18) ($server)
 	{
 		str.toClipboard $chan.getUrl
 	}
+
+	label($tr("You're not connected to a server","defscript")) (!$server)
 
 	item($tr("Clear Buffer","defscript"),120)
 	{
@@ -916,14 +920,19 @@ defpopup(channeltextview)
 
 defpopup(channels)
 {
-	item(#KVIrc,31)
+	item(#freenode,31)
 	{
-		j #KVIrc;
+		j #freenode;
 	}
 
 	item(#kde,31)
 	{
 		j #kde;
+	}
+
+	item(#KVIrc,31)
+	{
+		j #KVIrc;
 	}
 }
 
@@ -1384,7 +1393,7 @@ defpopup(channel)
 		}
 	}
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),%:visible),88)
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),%:visible),88) ($server)
 	{
 		foreach(%i,$str.split(",",$0))
 			whois %i %i
@@ -1392,7 +1401,7 @@ defpopup(channel)
 
 	separator
 
-	popup($tr("&Information","defscript"),317)
+	popup($tr("&Information","defscript"),317) ($server)
 	{
 		item($str.printf($tr("/WHOIS ?s","defscript"),%:visible),88)
 		{
@@ -1411,7 +1420,7 @@ defpopup(channel)
 
 		separator
 
-		item($tr("DNS for","defscript") %:visible,91)
+		item($tr("DNS for","defscript") %:visible,91) ($server)
 		{
 			foreach(%i,$str.split(",",$0))dns %i
 		}
@@ -1530,14 +1539,14 @@ defpopup(channel)
 
 	separator
 
-	item($tr("&Query","defscript") %:visible,47)
+	item($tr("&Query","defscript") %:visible,47) ($server)
 	{
 		query $0
 	}
 
 	separator
 
-	extpopup(C&TCP,ctcp,162)
+	extpopup(C&TCP,ctcp,162) ($server)
 
 	extpopup(&DCC,dcc,325) (!%:multiple)
 
@@ -1549,7 +1558,7 @@ defpopup(channel)
 
 	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple)
 
-	item($tr("Notify Avatar","defscript"),57)
+	item($tr("Notify Avatar","defscript"),57) ($server)
 	{
 		avatar.notify $0
 	}
