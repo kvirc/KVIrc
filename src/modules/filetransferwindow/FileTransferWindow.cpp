@@ -242,7 +242,7 @@ QSize FileTransferItemDelegate::sizeHint(const QStyleOptionViewItem &, const QMo
 
 FileTransferWindow::FileTransferWindow(
 #if 0
-		KviModuleExtensionDescriptor * d
+	KviModuleExtensionDescriptor * d
 #endif
 	)
 : KviWindow(KviWindow::Tool,"file transfer window",0)
@@ -436,7 +436,7 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 				l->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 				l->setContentsMargins(5,5,5,5);
 				pWaction->setDefaultWidget(l);
-                m_pLocalFilePopup->addAction(pWaction);
+				m_pLocalFilePopup->addAction(pWaction);
 
 #ifdef COMPILE_KDE4_SUPPORT
 				QString mimetype = KMimeType::findByPath(szFile)->name();
@@ -460,12 +460,12 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 					idx++;
 				}
 
-                m_pOpenFilePopup->addSeparator();
+		m_pOpenFilePopup->addSeparator();
 
 				pAction = m_pOpenFilePopup->addAction(__tr2qs_ctx("&Other...","filetransferwindow"),this,SLOT(openLocalFileWith()));
 				pAction->setData(-1);
 
-                m_pLocalFilePopup->addAction(__tr2qs_ctx("Open &With","filetransferwindow"))->setMenu(m_pOpenFilePopup);
+		m_pLocalFilePopup->addAction(__tr2qs_ctx("Open &With","filetransferwindow"))->setMenu(m_pOpenFilePopup);
                 m_pLocalFilePopup->addSeparator();
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("Open &Location","filetransferwindow"),this,SLOT(openLocalFileFolder()));
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("Terminal at Location","filetransferwindow"),this,SLOT(openLocalFileTerminal()));
@@ -476,26 +476,25 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 				pAction = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Open","filetransferwindow"),this,SLOT(openLocalFile()));
 				pAction->setData(-1);
-                m_pOpenFilePopup->addSeparator();
+		m_pOpenFilePopup->addSeparator();
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("Open &With","filetransferwindow"),this,SLOT(openLocalFileWith()));
-                m_pLocalFilePopup->addSeparator();
+		m_pLocalFilePopup->addSeparator();
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("Open &Location","filetransferwindow"),this,SLOT(openLocalFileFolder()));
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("MS-DOS Prompt at Location","filetransferwindow"),this,SLOT(openLocalFileTerminal()));
-                m_pLocalFilePopup->addSeparator();
-#endif
-// G&N end
+		m_pLocalFilePopup->addSeparator();
+#endif // G&N end
 
 				m_pLocalFilePopup->addAction(__tr2qs_ctx("&Copy Path to Clipboard","filetransferwindow"),this,SLOT(copyLocalFileToClipboard()));
 
-                pAction = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Delete File","filetransferwindow"),this,SLOT(deleteLocalFile()));
-                pAction->setEnabled(i->transfer()->terminated());
-                pAction = m_pContextPopup->addAction(__tr2qs_ctx("Local &File","filetransferwindow"));
-                pAction->setMenu(m_pLocalFilePopup);
+		pAction = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Delete File","filetransferwindow"),this,SLOT(deleteLocalFile()));
+		pAction->setEnabled(i->transfer()->terminated());
+		pAction = m_pContextPopup->addAction(__tr2qs_ctx("Local &File","filetransferwindow"));
+		pAction->setMenu(m_pLocalFilePopup);
 			}
 
 			i->transfer()->fillContextPopup(m_pContextPopup);
-		
-            m_pContextPopup->addSeparator();
+
+		m_pContextPopup->addSeparator();
 		}
 	}
 
@@ -517,15 +516,15 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 		}
 	}
 
-    pAction = m_pContextPopup->addAction(__tr2qs_ctx("&Clear Terminated","filetransferwindow"),this,SLOT(clearTerminated()));
-    pAction->setEnabled(bHaveTerminated);
+	pAction = m_pContextPopup->addAction(__tr2qs_ctx("&Clear Terminated","filetransferwindow"),this,SLOT(clearTerminated()));
+	pAction->setEnabled(bHaveTerminated);
 
 	bool bAreTransfersActive = false;
 	if(m_pTableWidget->rowCount() >= 1)
 		bAreTransfersActive = true;
 
-    pAction = m_pContextPopup->addAction(__tr2qs_ctx("Clear &All","filetransferwindow"),this,SLOT(clearAll()));
-    pAction->setEnabled(bAreTransfersActive);
+	pAction = m_pContextPopup->addAction(__tr2qs_ctx("Clear &All","filetransferwindow"),this,SLOT(clearAll()));
+	pAction->setEnabled(bAreTransfersActive);
 
 	m_pContextPopup->popup(pnt);
 }
@@ -543,9 +542,9 @@ KviFileTransfer * FileTransferWindow::selectedTransfer()
 void FileTransferWindow::openFilePopupActivated(QAction *pAction)
 {
 #ifdef COMPILE_KDE4_SUPPORT
-    bool bOk=false;
-    int ip = pAction->data().toInt(&bOk);
-    if(!bOk || ip < 0)
+	bool bOk=false;
+	int ip = pAction->data().toInt(&bOk);
+	if(!bOk || ip < 0)
         return;
 
 	KviFileTransfer * t = selectedTransfer();
@@ -590,8 +589,7 @@ void FileTransferWindow::openLocalFileTerminal()
 	// FIXME: this is not a solution ...because if the drive isn't system's drive the command 'cd' naturally doesn't work
 	tmp.prepend("cmd.exe /k cd \"");
 	system(tmp.toLocal8Bit().data());
-#else
-// G&N end
+#else // G&N end
 	#ifdef COMPILE_KDE4_SUPPORT
 		KviFileTransfer * t = selectedTransfer();
 		if(!t)return;
@@ -826,8 +824,6 @@ void FileTransferWindow::die()
 {
 	close();
 }
-
-
 
 //#warning "Load & save properties of this kind of window"
 

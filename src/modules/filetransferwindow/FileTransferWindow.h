@@ -139,7 +139,7 @@ protected slots:
 	void openLocalFileWith();
 	void copyLocalFileToClipboard();
 	void openLocalFileFolder();
-    void openFilePopupActivated(QAction *pAction);
+	void openFilePopupActivated(QAction *pAction);
 	void openLocalFileTerminal();
 	void deleteLocalFile();
 };
