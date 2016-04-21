@@ -1254,9 +1254,11 @@ void PopupEditorWidget::removeCurrentPopup()
 {
 	if(m_pLastEditedItem)
 	{
-		delete m_pLastEditedItem;
+		MenuTreeWidgetItem * it = m_pLastEditedItem;
 		m_pLastEditedItem = nullptr;
-		currentItemChanged(0,0);
+		delete it;
+		if(!m_pLastEditedItem)
+			currentItemChanged(0,0);
 	}
 }
 
