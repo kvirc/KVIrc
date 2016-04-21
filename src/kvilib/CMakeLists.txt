@@ -134,7 +134,6 @@ target_link_libraries(${KVILIB_BINARYNAME} ${LIBS})
 set_property(TARGET ${KVILIB_BINARYNAME} PROPERTY CXX_STANDARD 11)
 set_property(TARGET ${KVILIB_BINARYNAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 
-
 if(Qt5Widgets_FOUND)
 	qt5_use_modules(${KVILIB_BINARYNAME} ${qt5_kvirc_modules})
 endif()
@@ -147,9 +146,5 @@ if(WANT_STRIP)
 endif()
 
 # Installation directives
-if(UNIX)
-	install(TARGETS ${KVILIB_BINARYNAME} LIBRARY DESTINATION "${KVIRC_LIB_PATH}")
-elseif(WIN32)
-	# For DLL platforms the DLL part of a shared library is treated as a RUNTIME target and the corresponding import library is treated as an ARCHIVE target
-	install(TARGETS ${KVILIB_BINARYNAME} RUNTIME DESTINATION "${KVIRC_LIB_PATH}")
-endif()
+# For DLL platforms the DLL part of a shared library is treated as a RUNTIME target and the corresponding import library is treated as an ARCHIVE target
+install(TARGETS ${KVILIB_BINARYNAME} ARCHIVE DESTINATION "${KVIRC_LIB_PATH}" LIBRARY DESTINATION "${KVIRC_LIB_PATH}" RUNTIME DESTINATION "${KVIRC_LIB_PATH}")
