@@ -54,25 +54,7 @@ PyMODINIT_FUNC python_init();
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-	// Total number of C API pointers
-	#define PyKVIrc_API_NUM 10
-
-	#ifdef KVIRC_MODULE
-		// This section is used when compiling kvircmodule.cpp
-		#if 0
-		PyObject * PyKVIrc_echo(PyObject * pSelf, PyObject * pArgs);
-		PyObject * PyKVIrc_say(PyObject * pSelf, PyObject * pArgs);
-		PyObject * PyKVIrc_warning(PyObject * pSelf, PyObject * pArgs);
-		PyObject * PyKVIrc_getLocal(PyObject * pSelf, PyObject * pArgs);
-		PyObject * PyKVIrc_setLocal(PyObject * pSelf, PyObject * pArgs);
-		PyObject * PyKVIrc_getGlobal(PyObject * pSelf, PyObject * pArgs);
-		PyObject * PyKVIrc_setGlobal(PyObject * pSelf, PyObject * pArgs);
-		PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs);
-		PyObject * PyKVIrc_internalWarning(PyObject * pSelf, PyObject * pArgs);
-		PyObject * PyKVIrc_error(PyObject * pSelf, PyObject * pArgs);
-		#endif
-	#else
+	#ifndef KVIRC_MODULE
 		// This section is used in modules that use kvircmodule's API
 		static void ** PyKVIrc_API;
 
@@ -102,7 +84,7 @@ extern "C" {
 		* In case on unsuccess, it sets the exception
 		* \return int
 		*/
-		static int import_kvirc()
+		inline static int import_kvirc()
 		{
 			PyObject * pModule = PyImport_ImportModule("kvirc");
 			if(pModule)

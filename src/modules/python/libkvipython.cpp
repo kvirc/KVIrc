@@ -31,7 +31,7 @@
 	#include "../pythoncore/pythoncoreinterface.h"
 	#include <Python.h>
 
-	static KviModule * g_pPythonCoreModule = 0;
+	static KviModule * g_pPythonCoreModule = nullptr;
 
 	#define KVS_CHECK_PYTHONCORE(_m,_c) \
 		g_pPythonCoreModule = g_pModuleManager->getModule("pythoncore"); \
@@ -56,7 +56,7 @@
 			_c->warning(__tr2qs_ctx("This KVIrc executable has been compiled without Python scripting support","python")); \
 		return true;
 
-	static KviModule * g_pPythonCoreModule = 0;
+	static KviModule * g_pPythonCoreModule = nullptr;
 #endif // COMPILE_PYTHON_SUPPORT
 
 /*
@@ -430,32 +430,23 @@ static bool python_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 
 	if(!ex.lWarnings.isEmpty())
 	{
-		for(QStringList::Iterator it = ex.lWarnings.begin();it != ex.lWarnings.end();++it)
-			c->warning(*it);
+		for(const auto& it : ex.lWarnings)
+			c->warning(it);
 	}
 
-	if(!ex.bExitOk)
+	if(!ex.bExitOk && !c->switches()->find('q',"quiet"))
 	{
-		if(!c->switches()->find('q',"quiet"))
-		{
+		c->warning(__tr2qs_ctx("Python execution error:","python"));
+		c->warning(ex.szError);
 
-			if(c->switches()->find('f',"fail-on-error"))
-			{
-				c->warning(__tr2qs_ctx("Python execution error:","python"));
-				c->warning(ex.szError);
-				return false;
-			} else {
-				c->warning(__tr2qs_ctx("Python execution error:","python"));
-				c->error(ex.szError);
-			}
-		}
+		if(c->switches()->find('f',"fail-on-error"))
+			return false;
 	}
 
 	if(!c->switches()->find('n',"no-return"))
 		c->context()->returnValue()->setString(ex.szRetVal);
 
 #endif //COMPILE_PYTHON_SUPPORT
-
 
 	return true;
 }

@@ -48,10 +48,9 @@ extern QString g_lError;
 static PyObject * PyKVIrc_echo(PyObject * pSelf, PyObject * pArgs)
 {
 	Q_UNUSED(pSelf);
-	const char * pcText=0;
-	int iColorSet=0;
-	const char * pcWinId=0;
-	KviWindow * pWnd=0;
+	const char * pcText = nullptr, *pcWinId = nullptr;
+	KviWindow * pWnd = nullptr;
+	int iColorSet = 0;
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
@@ -65,20 +64,18 @@ static PyObject * PyKVIrc_echo(PyObject * pSelf, PyObject * pArgs)
 	if(pcText)
 	{
 		if(pcWinId)
-		{
 			pWnd = g_pApp->findWindow(pcWinId);
-		}
+
 		if(!pWnd)
 		{
 			if(g_pCurrentKvsContext)
-			{
 				pWnd = g_pCurrentKvsContext->window();
-			} else if(g_pActiveWindow) {
+			else if(g_pActiveWindow)
 				pWnd = g_pActiveWindow;
-			} else {
-				pWnd = (KviWindow*) g_pApp->activeConsole();
-			}
+			else
+				pWnd = (KviWindow *) g_pApp->activeConsole();
 		}
+
 		if(pWnd)
 			pWnd->outputNoFmt(iColorSet,QString::fromUtf8(pcText));
 	}
@@ -89,10 +86,8 @@ static PyObject * PyKVIrc_echo(PyObject * pSelf, PyObject * pArgs)
 static PyObject * PyKVIrc_say(PyObject * pSelf, PyObject * pArgs)
 {
 	Q_UNUSED(pSelf);
-
-	const char * pcText=0;
-	const char * pcWinId=0;
-	KviWindow * pWnd=0;
+	const char * pcText = nullptr, *pcWinId = nullptr;
+	KviWindow * pWnd = nullptr;
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
@@ -106,23 +101,20 @@ static PyObject * PyKVIrc_say(PyObject * pSelf, PyObject * pArgs)
 	if(pcText)
 	{
 		if(pcWinId)
-		{
 			pWnd = g_pApp->findWindow(pcWinId);
-		}
+
 		if(!pWnd)
 		{
 			if(g_pCurrentKvsContext)
-			{
 				pWnd = g_pCurrentKvsContext->window();
-			} else if(g_pActiveWindow) {
+			else if(g_pActiveWindow)
 				pWnd = g_pActiveWindow;
-			} else {
-				pWnd = (KviWindow*) g_pApp->activeConsole();
-			}
+			else
+				pWnd = (KviWindow *) g_pApp->activeConsole();
 		}
 		if(pWnd)
 		{
-			QString szText=QString::fromUtf8(pcText);
+			QString szText = QString::fromUtf8(pcText);
 			KviUserInput::parse(szText,pWnd);
 		}
 	}
@@ -133,7 +125,7 @@ static PyObject * PyKVIrc_say(PyObject * pSelf, PyObject * pArgs)
 static PyObject * PyKVIrc_warning(PyObject * pSelf, PyObject * pArgs)
 {
 	Q_UNUSED(pSelf);
-	const char * pcText=0;
+	const char * pcText = nullptr;
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
@@ -156,16 +148,14 @@ static PyObject * PyKVIrc_warning(PyObject * pSelf, PyObject * pArgs)
 static PyObject * PyKVIrc_getLocal(PyObject * pSelf, PyObject * pArgs)
 {
 	Q_UNUSED(pSelf);
-
+	const char * szVarName = nullptr;
 	QString tmp;
-	const char * szVarName=0;
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
 		qDebug("[pythoncore][ERROR] kvirc module functions must be called from the main KVIrc thread");
 		return 0; // Sorry, we're NOT thread safe
 	}
-
 
 	if(!PyArg_ParseTuple(pArgs,"s",&szVarName))
 		return 0;
@@ -177,7 +167,9 @@ static PyObject * PyKVIrc_getLocal(PyObject * pSelf, PyObject * pArgs)
 		{
 			pVar->asString(tmp);
 			return Py_BuildValue("s",tmp.toUtf8().data());
-		} else return Py_BuildValue("s","");
+		} else {
+			return Py_BuildValue("s","");
+		}
 	}
 	return 0;
 }
@@ -185,10 +177,8 @@ static PyObject * PyKVIrc_getLocal(PyObject * pSelf, PyObject * pArgs)
 static PyObject * PyKVIrc_setLocal(PyObject * pSelf, PyObject * pArgs)
 {
 	Q_UNUSED(pSelf);
-
+	const char * szVarName = nullptr, *szVarValue = nullptr;
 	QString tmp;
-	const char * szVarName=0;
-	const char * szVarValue=0;
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
@@ -216,9 +206,8 @@ static PyObject * PyKVIrc_setLocal(PyObject * pSelf, PyObject * pArgs)
 static PyObject * PyKVIrc_getGlobal(PyObject * pSelf, PyObject * pArgs)
 {
 	Q_UNUSED(pSelf);
-
+	const char * szVarName = nullptr;
 	QString tmp;
-	const char * szVarName=0;
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
@@ -236,7 +225,9 @@ static PyObject * PyKVIrc_getGlobal(PyObject * pSelf, PyObject * pArgs)
 		{
 			pVar->asString(tmp);
 			return Py_BuildValue("s",tmp.toUtf8().data());
-		} else return Py_BuildValue("s","");
+		} else {
+			return Py_BuildValue("s","");
+		}
 	}
 	return 0;
 }
@@ -244,17 +235,14 @@ static PyObject * PyKVIrc_getGlobal(PyObject * pSelf, PyObject * pArgs)
 static PyObject * PyKVIrc_setGlobal(PyObject * pSelf, PyObject * pArgs)
 {
 	Q_UNUSED(pSelf);
-
+	const char * szVarName = nullptr, *szVarValue = nullptr;
 	QString tmp;
-	const char * szVarName=0;
-	const char * szVarValue=0;
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
 		qDebug("[pythoncore][ERROR] kvirc module functions must be called from the main KVIrc thread");
 		return 0; // Sorry, we're NOT thread safe
 	}
-
 
 	if(!PyArg_ParseTuple(pArgs,"ss",&szVarName, &szVarValue))
 		return 0;
@@ -276,9 +264,9 @@ static PyObject * PyKVIrc_setGlobal(PyObject * pSelf, PyObject * pArgs)
 static PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs)
 {
 	Q_UNUSED(pSelf);
-	const char * pcCode=0;
-	char * pcRetVal=0;
-	KviWindow * pWnd=0;
+	const char * pcCode = nullptr;
+	KviWindow * pWnd = nullptr;
+	char * pcRetVal = nullptr;
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
@@ -292,13 +280,12 @@ static PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs)
 	if(pcCode)
 	{
 		if(g_pCurrentKvsContext)
-		{
 			pWnd = g_pCurrentKvsContext->window();
-		} else if(g_pActiveWindow) {
+		else if(g_pActiveWindow)
 			pWnd = g_pActiveWindow;
-		} else {
-			pWnd = (KviWindow*) g_pApp->activeConsole();
-		}
+		else
+			pWnd = (KviWindow *) g_pApp->activeConsole();
+
 		if(pWnd)
 		{
 			KviKvsVariant ret;
@@ -317,7 +304,7 @@ static PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs)
 static PyObject * PyKVIrc_internalWarning(PyObject * pSelf, PyObject * pArgs)
 {
 	Q_UNUSED(pSelf);
-	const char * pcText=0;
+	const char * pcText = nullptr;
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
@@ -329,9 +316,7 @@ static PyObject * PyKVIrc_internalWarning(PyObject * pSelf, PyObject * pArgs)
 		return 0;
 
 	if(pcText && !g_bExecuteQuiet)
-	{
 		g_lWarningList.append(QString(pcText));
-	}
 
 	return Py_BuildValue("i",1);
 }
@@ -339,7 +324,7 @@ static PyObject * PyKVIrc_internalWarning(PyObject * pSelf, PyObject * pArgs)
 static PyObject * PyKVIrc_error(PyObject * pSelf, PyObject * pArgs)
 {
 	Q_UNUSED(pSelf);
-	const char * pcText=0;
+	const char * pcText = nullptr;
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
@@ -351,9 +336,7 @@ static PyObject * PyKVIrc_error(PyObject * pSelf, PyObject * pArgs)
 		return 0;
 
 	if(pcText)
-	{
 		g_lError.append(pcText);
-	}
 
 	return Py_BuildValue("i",1);
 }
@@ -379,32 +362,35 @@ static PyMethodDef KVIrcMethods[] = {
 		"" },
 	{ "error", PyKVIrc_error, METH_VARARGS,
 		"" },
-	{ NULL, NULL, 0, NULL }
+	{ nullptr, nullptr, 0, nullptr }
 };
 
 PyMODINIT_FUNC python_init()
 {
-	static void * PyKVIrc_API[PyKVIrc_API_NUM];
+	static const PyCFunction PyKVIrc_API[] = {
+		PyKVIrc_echo,
+		PyKVIrc_say,
+		PyKVIrc_warning,
+		PyKVIrc_getLocal,
+		PyKVIrc_setLocal,
+		PyKVIrc_getGlobal,
+		PyKVIrc_setGlobal,
+		PyKVIrc_eval,
+		PyKVIrc_internalWarning,
+		PyKVIrc_error,
+	};
+
 	PyObject * pModule;
 	PyObject * pC_API_Object;
 
-	pModule = Py_InitModule("kvirc",KVIrcMethods);
-	if(!pModule) return;
-
-	// Initialize the C API pointer array
-	PyKVIrc_API[0] = (void *)PyKVIrc_echo;
-	PyKVIrc_API[1] = (void *)PyKVIrc_say;
-	PyKVIrc_API[2] = (void *)PyKVIrc_warning;
-	PyKVIrc_API[3] = (void *)PyKVIrc_getLocal;
-	PyKVIrc_API[4] = (void *)PyKVIrc_setLocal;
-	PyKVIrc_API[5] = (void *)PyKVIrc_getGlobal;
-	PyKVIrc_API[6] = (void *)PyKVIrc_setGlobal;
-	PyKVIrc_API[7] = (void *)PyKVIrc_eval;
-	PyKVIrc_API[8] = (void *)PyKVIrc_internalWarning;
-	PyKVIrc_API[9] = (void *)PyKVIrc_error;
+	if(!(pModule = Py_InitModule3("kvirc", KVIrcMethods, nullptr)))
+	{
+		KVI_ASSERT("Python: Unable to initialize kvirc import module");
+		return;
+	}
 
 	// Create a CObject containing the API pointer array's address
-	pC_API_Object = PyCObject_FromVoidPtr((void *)PyKVIrc_API,NULL);
+	pC_API_Object = PyCObject_FromVoidPtr(const_cast<PyCFunction *>(PyKVIrc_API), nullptr);
 
 	if(pC_API_Object)
 		PyModule_AddObject(pModule,"_C_API",pC_API_Object);
