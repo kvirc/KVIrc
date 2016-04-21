@@ -70,7 +70,8 @@ install:
         if (Test-Path "c:/ProgramData/chocolatey/bin/jom.exe") {
             echo "using jom from cache"
         } else {
-            curl https://download.qt.io/official_releases/jom/jom_1_1_0.zip -OutFile "jom_1_1_0.zip"
+            Remove-Item alias:curl
+            curl -L -O https://download.qt.io/official_releases/jom/jom_1_1_0.zip
             7z x jom_1_1_0.zip
             c:\cygwin\bin\mv jom.exe c:/ProgramData/chocolatey/bin/jom.exe
             c:\cygwin\bin\mv ibjom.cmd c:/ProgramData/chocolatey/bin/ibjom.cmd
