@@ -413,29 +413,28 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 			{
 				m_pLocalFilePopup->clear();
 
-				QString tmp = "<b>file:/";
+				QString tmp = "<b>";
+				tmp += "file:/";
 				tmp += szFile;
 				tmp += "</b><br>";
 
 				QFileInfo fi(szFile);
 				if(fi.exists())
 				{
-					tmp += "<nobr>";
 					tmp += __tr2qs_ctx("Size: %1","filetransferwindow").arg(KviQString::makeSizeReadable(fi.size()));
-					tmp += "</nobr>";
 				}
 
 #ifdef COMPILE_KDE4_SUPPORT
-				tmp += "<br><nobr>Mime: ";
+				tmp += "<br>";
+				tmp += "Mime: ";
 				tmp += KMimeType::findByPath(szFile)->name();
-				tmp += "</nobr>";
 #endif //COMPILE_KDE4_SUPPORT
 
 				QWidgetAction * pWaction = new QWidgetAction(m_pLocalFilePopup);
 				QLabel * l = new QLabel(tmp, m_pLocalFilePopup);
 				QPalette p;
 				l->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
-				l->setContentsMargins(10,10,10,10);
+				l->setContentsMargins(5,5,5,5);
 				pWaction->setDefaultWidget(l);
                 m_pLocalFilePopup->addAction(pWaction);
 
@@ -495,6 +494,7 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem *it,const QPoint &p
 			}
 
 			i->transfer()->fillContextPopup(m_pContextPopup);
+		
             m_pContextPopup->addSeparator();
 		}
 	}
