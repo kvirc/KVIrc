@@ -39,6 +39,24 @@
 
 #include <QThread>
 
+// For compatibility with Python 3
+#if PY_MAJOR_VERSION >= 3
+#define KVI_PyMODINIT_RETVAL(module) module
+#else
+#define KVI_PyMODINIT_RETVAL(module) ; (void)(module)
+struct PyModuleDef {
+	char m_base;
+	const char *m_name, *m_doc;
+	int m_size;
+	PyMethodDef *m_methods;
+};
+static const char PyModuleDef_HEAD_INIT = 0;
+static PyObject *PyModule_Create(const struct PyModuleDef *def)
+{
+	return Py_InitModule3(def->m_name, def->m_methods, def->m_doc);
+}
+#endif
+
 extern KviKvsRunTimeContext * g_pCurrentKvsContext;
 extern bool g_bExecuteQuiet;
 extern KviCString g_szLastReturnValue;
@@ -367,7 +385,7 @@ static PyMethodDef KVIrcMethods[] = {
 
 PyMODINIT_FUNC python_init()
 {
-	static const PyCFunction PyKVIrc_API[] = {
+	static PyCFunction PyKVIrc_API[] = {
 		PyKVIrc_echo,
 		PyKVIrc_say,
 		PyKVIrc_warning,
@@ -379,21 +397,30 @@ PyMODINIT_FUNC python_init()
 		PyKVIrc_internalWarning,
 		PyKVIrc_error,
 	};
-
-	PyObject * pModule;
-	PyObject * pC_API_Object;
-
-	if(!(pModule = Py_InitModule3("kvirc", KVIrcMethods, nullptr)))
-	{
+	static struct PyModuleDef def = {
+		PyModuleDef_HEAD_INIT,
+		"kvirc",
+		"KVIrc module",
+		-1,
+		KVIrcMethods
+	};
+	PyObject * pModule = PyModule_Create(&def);
+	if(!pModule) {
 		KVI_ASSERT("Python: Unable to initialize kvirc import module");
-		return;
+	} else {
+		// Create a CObject containing the API pointer array's address
+		PyObject * pC_API_Object = PyCObject_FromVoidPtr(PyKVIrc_API, nullptr);
+		if(pC_API_Object)
+			PyModule_AddObject(pModule,"_C_API",pC_API_Object);
 	}
-
-	// Create a CObject containing the API pointer array's address
-	pC_API_Object = PyCObject_FromVoidPtr(const_cast<PyCFunction *>(PyKVIrc_API), nullptr);
-
-	if(pC_API_Object)
-		PyModule_AddObject(pModule,"_C_API",pC_API_Object);
+	return KVI_PyMODINIT_RETVAL(pModule);
 }
+
+static struct KviPythonModuleInitializer {
+	KviPythonModuleInitializer()
+	{
+		PyImport_AppendInittab("kvirc", python_init);
+	}
+} initializer;
 
 #endif

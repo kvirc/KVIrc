@@ -32,7 +32,6 @@
 #include "KviLocale.h"
 
 #ifdef COMPILE_PYTHON_SUPPORT
-#include "kvircmodule.h"
 #include "pythoncoreinterface.h"
 
 #include <Python.h>
@@ -88,8 +87,6 @@ KviPythonInterpreter::KviPythonInterpreter()
 {
 	KviPythonLock lock{mainThreadState};
 	m_uptrThreadState.reset(Py_NewInterpreter());
-
-	python_init();
 
 	// hook in the kvirc error handling routines
 	QString szPreCode = QString(
