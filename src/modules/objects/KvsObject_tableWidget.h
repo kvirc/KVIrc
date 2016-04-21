@@ -5,14 +5,14 @@
 //   File : KvsObject_tableWidget.h
 //   Creation date : Wed 4 Feb 2009 09:30:05 CEST by Carbone Alessandro
 //
-//   This file is part of the KVIrc IRC client distribution
+//   This file is part of the KVIrc irc client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2
-//   of the License, or (at your option) any later version.
+//   of the License, or (at your opinion) any later version.
 //
 //   This program is distributed in the HOPE that it will be USEFUL,
 //   but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -64,41 +64,49 @@ protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
 	bool setText(KviKvsObjectFunctionCall *c);
+	bool setTextAlignment(KviKvsObjectFunctionCall *c);
 	bool setForeground(KviKvsObjectFunctionCall *c);
 	bool setNumber(KviKvsObjectFunctionCall *c);
 	bool setToolTip(KviKvsObjectFunctionCall *c);
 	bool text(KviKvsObjectFunctionCall *c);
 	bool setIcon(KviKvsObjectFunctionCall *c);
+	bool setFont(KviKvsObjectFunctionCall *c);
 	bool setItemFlags(KviKvsObjectFunctionCall *c);
-
+	bool setCheckState(KviKvsObjectFunctionCall *c);
+	bool sortByColumn(KviKvsObjectFunctionCall *c);
 	bool setColumnCount(KviKvsObjectFunctionCall *c);
+	bool setSpan(KviKvsObjectFunctionCall *c);
+	bool rowSpan(KviKvsObjectFunctionCall *c);
+	bool columnSpan(KviKvsObjectFunctionCall *c);
 	bool columnCount(KviKvsObjectFunctionCall *c);
 	bool setRowCount(KviKvsObjectFunctionCall *c);
 	bool currentRow(KviKvsObjectFunctionCall *c);
 	bool currentColumn(KviKvsObjectFunctionCall *c);
 	bool itemRowColAt(KviKvsObjectFunctionCall *c);
-
 	bool rowCount(KviKvsObjectFunctionCall *c);
-
 	bool insertRow(KviKvsObjectFunctionCall *c);
 	bool insertColumn(KviKvsObjectFunctionCall *c);
 	bool removeRow(KviKvsObjectFunctionCall *c);
 	bool removeColumn(KviKvsObjectFunctionCall *c);
-
-
+	bool setColumnWidth(KviKvsObjectFunctionCall *c);
+	bool columnWidth(KviKvsObjectFunctionCall *c);
+	bool setRowHeight(KviKvsObjectFunctionCall *c);
+	bool rowHeight(KviKvsObjectFunctionCall *c);
+	bool isColumnHidden(KviKvsObjectFunctionCall *c);
+	bool isRowHidden(KviKvsObjectFunctionCall *c);
 	bool setHorizontalHeaderLabels(KviKvsObjectFunctionCall *c);
 	bool setVerticalHeaderLabels(KviKvsObjectFunctionCall *c);
 	bool setCellWidget(KviKvsObjectFunctionCall *c);
-
 	bool hideHorizontalHeader(KviKvsObjectFunctionCall *c);
 	bool showHorizontalHeader(KviKvsObjectFunctionCall *c);
 	bool hideVerticalHeader(KviKvsObjectFunctionCall *c);
 	bool showVerticalHeader(KviKvsObjectFunctionCall *c);
 	bool clear(KviKvsObjectFunctionCall *c);
+	bool scrollToTop(KviKvsObjectFunctionCall *c);
+	bool scrollToBottom(KviKvsObjectFunctionCall *c);
 	bool itemEnteredEvent(KviKvsObjectFunctionCall *c);
 	bool cellActivatedEvent(KviKvsObjectFunctionCall *c);
 	bool cellDoubleClickedEvent(KviKvsObjectFunctionCall *c);
-
 	bool hideColumn(KviKvsObjectFunctionCall *c);
 	bool showColumn(KviKvsObjectFunctionCall *c);
 	bool hideRow(KviKvsObjectFunctionCall *c);
