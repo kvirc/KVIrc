@@ -88,8 +88,13 @@ branch=$(git branch | grep "\*" | sed 's/\* //g')
 commit=$(git log -1 | grep -i "^commit" | awk '{print $2}')
 datct=$(git log -n 1 --format=%ct)
 
-test -z ${dat} && dat="git-9999-$(git describe --always)"
-test -z ${branch} && branch="travis_debian"
+test -z "${dat}" && dat="git-9999-$(git describe --always)"
+test -z "${branch}" && branch="travis_debian"
+
+if [ ! -z "$PPA" ]
+then
+    branch="${TRAVIS_BRANCH}"
+fi
 
 tar -cpf  "${BUILDDIR}/${PKG_NAME}_${VERSION1}${SVNGITBZR}${dat}.orig.tar" --exclude ".git" --exclude "dist" . 
 cd ${BUILDDIR}
