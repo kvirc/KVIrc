@@ -287,30 +287,31 @@ KVSO_CLASS_FUNCTION(layout,setAlignment)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	int index=((QGridLayout *)widget())->indexOf(((QWidget *)(pObject->object())));
-	if(index ==-1)
+	if(index == -1)
 	{
 		c->warning(__tr2qs_ctx("The widget must be a child of this layout","objects"));
 		return true;
 	}
 
-	int align,sum=0;
-	for ( QStringList::Iterator it = alignment.begin(); it != alignment.end(); ++it )
+	int align, sum = 0;
+	for(auto& it : alignment)
 	{
 		align = 0;
-		for(unsigned int j = 0; j < align_num; j++)
+		for(size_t j{}; j < align_num; j++)
 		{
-			if(KviQString::equalCI((*it), align_tbl[j]))
+			if(KviQString::equalCI(it, align_tbl[j]))
 			{
-				align=align_cod[j];
+				align = align_cod[j];
 				break;
 			}
 		}
 		if(align)
 			sum = sum | align;
 		else
-			c->warning(__tr2qs_ctx("Unknown alignment: '%Q'","objects"),&(*it));
-
+			c->warning(__tr2qs_ctx("Unknown alignment: '%Q'","objects"),&it);
 	}
-	if (widget()) ((QGridLayout *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
+
+	if(widget())
+		((QGridLayout *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
 	return true;
 }

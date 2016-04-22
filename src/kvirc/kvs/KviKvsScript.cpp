@@ -48,7 +48,7 @@ KviKvsScript::KviKvsScript(const QString & szName, const QString & szBuffer, Scr
 
 	m_pData->m_pBuffer = m_pData->m_szBuffer.constData(); // never 0
 	m_pData->m_uLock = 0;
-	m_pData->m_pTree = 0;
+	m_pData->m_pTree = nullptr;
 }
 
 KviKvsScript::KviKvsScript(const QString & szName, const QString & szBuffer, KviKvsTreeNodeInstruction * pPreparsedTree, ScriptType eType)
@@ -129,7 +129,7 @@ void KviKvsScript::detach()
 	d->m_szBuffer.resize(d->m_szBuffer.length());
 	d->m_pBuffer = d->m_szBuffer.constData(); // never 0
 	d->m_uLock = 0;
-	d->m_pTree = 0;
+	d->m_pTree = nullptr;
 	m_pData = d;
 }
 
@@ -239,14 +239,14 @@ bool KviKvsScript::parse(KviWindow * pOutput, int iRunFlags)
 			// only a single ref: we're the owner of the tree
 			if(m_pData->m_uLock)
 			{
-				// ops... someone is locked in THIS script object
+				// oops... someone is locked in THIS script object
 				qDebug("WARNING: trying to reparse a locked KviKvsScript!");
 				return false;
 			}
 			if(m_pData->m_pTree)
 				delete m_pData->m_pTree;
 
-			m_pData->m_pTree = 0;
+			m_pData->m_pTree = nullptr;
 		}
 	} // else there is no tree at all, nobody can be locked inside
 

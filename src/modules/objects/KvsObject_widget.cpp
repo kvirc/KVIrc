@@ -482,7 +482,7 @@ const char * const widgettypes_tbl[] = {
 		Translates widget coordinates into the global screen coordinate pos.
 		!fn: integer $globalCursorX()
 		Return the x coordinate of mouse pointer global position.
-	   	!fn: integer $globalCursorY()
+		!fn: integer $globalCursorY()
 		Return the y coordinate of the mo>use pointer global position.
 		!fn: <tip:string> $maybeTipEvent(<x_tip_pos:integer>,<y_tip_pos:integer>)
 		This event handler is called when an eventual tip is going to be show.
@@ -663,7 +663,7 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,addWidgetToWrappedLayout)
 
 	// colors and image
-        KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,setForegroundColor)
+	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,setForegroundColor)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,setBackgroundColor)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,setBackgroundImage)
 	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget,backgroundColor)
@@ -971,8 +971,8 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 			//qDebug ("Propagation %i",ret);
 
 		return ret;
-	     }
-	   }
+		 }
+	}
 	/*
 	if(o->parent())
 	{
@@ -982,7 +982,7 @@ bool KvsObject_widget::eventFilter(QObject *o,QEvent *e)
 		qDebug("Propagation to object");
 	*/
 		return KviKvsObject::eventFilter(o,e);
-	//     }
+	//}
 }
 
 
@@ -1803,12 +1803,15 @@ KVSO_CLASS_FUNCTION(widget,setParent)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,KVS_PF_OPTIONAL,hObject)
 	KVSO_PARAMETERS_END(c)
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!widget())    return true;
+	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+
+	if(!widget())
+		return true;
+
 	if(!ob)
 	{
-                widget()->setParent(0);
-   		return true;
+		widget()->setParent(0);
+		return true;
 	}
 	else
 	if(!ob->object()->isWidgetType())
@@ -1816,7 +1819,7 @@ KVSO_CLASS_FUNCTION(widget,setParent)
 		c->warning(__tr2qs_ctx("Parent must be a widget object","objects"));
 		return true;
 	}
-        widget()->setParent(((QWidget *)(ob->object())));
+	widget()->setParent(((QWidget *)(ob->object())));
 	return true;
 }
 
@@ -1985,7 +1988,7 @@ KVSO_CLASS_FUNCTION(widget,insertIntoStatusBar)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	if (g_pMainWindow->mainStatusBar())
-                g_pMainWindow->mainStatusBar()->insertPermanentWidgetAtTheEnd(widget(),0);
+		g_pMainWindow->mainStatusBar()->insertPermanentWidgetAtTheEnd(widget(),0);
 	return true;
 }
 
@@ -2002,7 +2005,7 @@ KVSO_CLASS_FUNCTION(widget,grab)
 	KviKvsObject *ob;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	        KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
 	KVSO_PARAMETERS_END(c)
 	qDebug("Get widget");
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);

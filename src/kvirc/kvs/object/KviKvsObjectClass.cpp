@@ -156,7 +156,7 @@ KviKvsObject * KviKvsObjectClass::allocateInstance(KviKvsObject * pParent,const 
 
 	if(!pObject->callFunction(pObject,"constructor",QString(),pContext,&ret,&copy))
 	{
-		// ops...constructor failed (script error!)
+		// oops... constructor failed (script error!)
 		pObject->dieNow();
 		return 0;
 	}

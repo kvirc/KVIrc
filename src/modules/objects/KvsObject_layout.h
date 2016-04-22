@@ -45,9 +45,6 @@ protected:
 	bool addColSpacing(KviKvsObjectFunctionCall *c);
 	bool setResizeMode(KviKvsObjectFunctionCall *c);
 	bool setAlignment(KviKvsObjectFunctionCall *c);
-
-
 };
-
 
 #endif //_CLASS_LAYOUT_H_

@@ -44,5 +44,4 @@ protected:
 	bool clear(KviKvsObjectFunctionCall *c);
 };
 
-
 #endif	//!_CLASS_TOOLBAR_H_
