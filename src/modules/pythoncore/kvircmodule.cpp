@@ -72,7 +72,7 @@ static PyObject * PyKVIrc_echo(PyObject * pSelf, PyObject * pArgs)
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
-		qDebug("[pythoncore][ERROR] kvirc module functions must be called from the main KVIrc thread");
+		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
 		return 0; // Sorry, we're NOT thread safe
 	}
 
@@ -109,7 +109,7 @@ static PyObject * PyKVIrc_say(PyObject * pSelf, PyObject * pArgs)
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
-		qDebug("[pythoncore][ERROR] kvirc module functions must be called from the main KVIrc thread");
+		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
 		return 0; // Sorry, we're NOT thread safe
 	}
 
@@ -147,7 +147,7 @@ static PyObject * PyKVIrc_warning(PyObject * pSelf, PyObject * pArgs)
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
-		qDebug("[pythoncore][ERROR] kvirc module functions must be called from the main KVIrc thread");
+		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
 		return 0; // Sorry, we're NOT thread safe
 	}
 
@@ -171,7 +171,7 @@ static PyObject * PyKVIrc_getLocal(PyObject * pSelf, PyObject * pArgs)
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
-		qDebug("[pythoncore][ERROR] kvirc module functions must be called from the main KVIrc thread");
+		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
 		return 0; // Sorry, we're NOT thread safe
 	}
 
@@ -200,7 +200,7 @@ static PyObject * PyKVIrc_setLocal(PyObject * pSelf, PyObject * pArgs)
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
-		qDebug("[pythoncore][ERROR] kvirc module functions must be called from the main KVIrc thread");
+		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
 		return 0; // Sorry, we're NOT thread safe
 	}
 
@@ -229,7 +229,7 @@ static PyObject * PyKVIrc_getGlobal(PyObject * pSelf, PyObject * pArgs)
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
-		qDebug("[pythoncore][ERROR] kvirc module functions must be called from the main KVIrc thread");
+		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
 		return 0; // Sorry, we're NOT thread safe
 	}
 
@@ -258,7 +258,7 @@ static PyObject * PyKVIrc_setGlobal(PyObject * pSelf, PyObject * pArgs)
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
-		qDebug("[pythoncore][ERROR] kvirc module functions must be called from the main KVIrc thread");
+		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
 		return 0; // Sorry, we're NOT thread safe
 	}
 
@@ -288,7 +288,7 @@ static PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs)
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
-		qDebug("[pythoncore][ERROR] kvirc module functions must be called from the main KVIrc thread");
+		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
 		return 0; // Sorry, we're NOT thread safe
 	}
 
@@ -326,7 +326,7 @@ static PyObject * PyKVIrc_internalWarning(PyObject * pSelf, PyObject * pArgs)
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
-		qDebug("[pythoncore][ERROR] kvirc module functions must be called from the main KVIrc thread");
+		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
 		return 0; // Sorry, we're NOT thread safe
 	}
 
@@ -346,7 +346,7 @@ static PyObject * PyKVIrc_error(PyObject * pSelf, PyObject * pArgs)
 
 	if(QThread::currentThread() != g_pApp->thread())
 	{
-		qDebug("[pythoncore][ERROR] kvirc module functions must be called from the main KVIrc thread");
+		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
 		return 0; // Sorry, we're NOT thread safe
 	}
 
@@ -361,7 +361,7 @@ static PyObject * PyKVIrc_error(PyObject * pSelf, PyObject * pArgs)
 
 static PyMethodDef KVIrcMethods[] = {
 	{ "echo", PyKVIrc_echo, METH_VARARGS,
-		"Outputs a text to a KVIrc window" },
+		"Outputs text to a KVIrc window" },
 	{ "say", PyKVIrc_say, METH_VARARGS,
 		"Types text in a window" },
 	{ "warning", PyKVIrc_warning, METH_VARARGS,
@@ -406,7 +406,7 @@ PyMODINIT_FUNC python_init()
 	};
 	PyObject * pModule = PyModule_Create(&def);
 	if(!pModule) {
-		KVI_ASSERT("Python: Unable to initialize kvirc import module");
+		KVI_ASSERT("Python: Unable to initialize KVIrc import module");
 	} else {
 		// Create a CObject containing the API pointer array's address
 		PyObject * pC_API_Object = PyCObject_FromVoidPtr(PyKVIrc_API, nullptr);
