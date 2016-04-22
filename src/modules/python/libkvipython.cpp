@@ -77,23 +77,22 @@
 		since 3.x, so if you have used Perl from KVIrc before you'll
 		find the API is almost the same.. otherwise read on :)
 		[br]
-
 		[big]Using Python from KVS[/big][br]
 		Using Python from KVIrc is really easy - just enclose
 		your Python code snippet inside [cmd]python.begin[/cmd] and [cmd]python.end[/cmd].
 		[example]
-		[cmd]python.begin[/cmd]
-		&lt;python code goes here&gt;
-		[cmd]python.end[/cmd]
+			[cmd]python.begin[/cmd]
+			&lt;python code goes here&gt;
+			[cmd]python.end[/cmd]
 		[/example]
 		For example:[br]
 		[example]
-		[cmd]python.begin[/cmd]
-		f = open('myfile.txt', 'w')
-		f.write('This is a test\n')
-		f.close()
-		[cmd]python.end[/cmd]
-		[/example]
+			[cmd]python.begin[/cmd]
+			f = open('myfile.txt', 'w')
+			f.write('This is a test\n')
+			f.close()
+			[cmd]python.end[/cmd]
+			[/example]
 		A Python code snippet can appear anywhere a KVS code snippet can
 		with the only restriction that it must be enclosed in [cmd]python.begin[/cmd]
 		and [cmd]python.end[/cmd]. This means that you can write Python code
@@ -101,15 +100,14 @@
 		If you have already encountered KVIrc's [cmd]eval[/cmd] command
 		then you probably also know how to execute a Python code snippet from a file :)[br]
 		[br]
-
 		[big]Using KVS from python[/big][br]
 		KVIrc exports several commands to the Python namespace
 		that allow you to invoke KVIrc's functions from inside the Python code snippet.[br]
 		The nicest example is kvirc.echo():
 		[example]
-		[cmd]python.begin[/cmd]
-		kvirc.echo("Hello KVIrc world from python!")
-		[cmd]python.end[/cmd]
+			[cmd]python.begin[/cmd]
+			kvirc.echo("Hello KVIrc world from python!")
+			[cmd]python.end[/cmd]
 		[/example]
 		kvirc.echo() is the counterpart of the [cmd]echo[/cmd].
 		The exact syntax is:[br]
@@ -119,7 +117,6 @@
 		is the equivalent of the -w option. Both &lt;colorset&gt; and &lt;windowid&gt;
 		can be omitted (in this case KVIrc will use a default colorset and the current window).[br]
 		[br]
-
 		[big]Python execution contexts[/big][br]
 		The Python code snippets are executed by a Python interpreter - each
 		interpreter has its own context and thus its own variables,
@@ -133,17 +130,17 @@
 		You can invoke a specific Python context by passing it as parameter to the [cmd]python.begin[/cmd]
 		command:[br]
 		[example]
-		[cmd]python.begin("mycontext")[/cmd]
-		myvariable = "mycontext"
-		kvirc.echo("This Python code is executed from " + myvariable)
-		[cmd]python.end[/cmd]
+			[cmd]python.begin("mycontext")[/cmd]
+			myvariable = "mycontext"
+			kvirc.echo("This Python code is executed from " + myvariable)
+			[cmd]python.end[/cmd]
 		[/example]
 		The nice thing is that at a later time you can invoke this context again
 		and discover that mycontext has preserved its value:[br]
 		[example]
-		[cmd]python.begin("mycontext")[/cmd]
-		kvirc.echo("myvariable is still equal to " + myvariable)
-		[cmd]python.end[/cmd]
+			[cmd]python.begin("mycontext")[/cmd]
+			kvirc.echo("myvariable is still equal to " + myvariable)
+			[cmd]python.end[/cmd]
 		[/example]
 		The first time you invoke a named Python context it is automatically created and
 		persists until KVIrc terminates or the Python context is explicitly destroyed
@@ -172,7 +169,6 @@
 		persistent variables, then just use the nameless temporary context provided
 		by [cmd]python.begin[/cmd]("").[br]
 		[br]
-
 		[big]Passing parameters to the Python script[/big][br]
 		The easiest way to pass parameters to the Python code snippet
 		is to put them as [cmd]python.begin[/cmd] arguments.
@@ -181,13 +177,12 @@
 		Where the &lt;arg0&gt;,&lt;arg1&gt;...&lt;argN&gt; parameters
 		are passed to the Python context as elements of the aArgs array.[br]
 		[example]
-		[cmd]python.begin[/cmd]("","Hello world!","Now I CAN",1,2,3)
-		for l in range(0,5):
-		    kvirc.echo(aArgs[l])
-		[cmd]python.end[/cmd]
+			[cmd]python.begin[/cmd]("","Hello world!","Now I CAN",1,2,3)
+			for l in range(0,5):
+			    kvirc.echo(aArgs[l])
+			[cmd]python.end[/cmd]
 		[/example]
 		[br]
-
 		[big]Accessing the KVIrc scripting context from python[/big][br]
 		KVIrc exposes the following functions that manipulate
 		variables of KVIrc's current KVS execution context:[br]
@@ -202,21 +197,20 @@
 		The local variables referenced belong to the current KVS execution context
 		while the global variables are visible everywhere.[br]
 		[example]
-		%pippo = test
-		%Pluto = 12345
-		[cmd]python.begin[/cmd]
-		mypippo = kvirc.getLocal("pippo")
-		mypippo += " rox"
-		mypluto = kvirc.getGlobal("Pluto")
-		mypluto += " rox"
-		kvirc.setLocal("pippo",mypippo)
-		kvirc.setGlobal("Pluto",mypluto)
-		[cmd]python.end[/cmd]
-		[cmd]echo[/cmd] "\%pippo is" %pippo
-		[cmd]echo[/cmd] "\%Pluto is" %Pluto
+			%pippo = test
+			%Pluto = 12345
+			[cmd]python.begin[/cmd]
+			mypippo = kvirc.getLocal("pippo")
+			mypippo += " rox"
+			mypluto = kvirc.getGlobal("Pluto")
+			mypluto += " rox"
+			kvirc.setLocal("pippo",mypippo)
+			kvirc.setGlobal("Pluto",mypluto)
+			[cmd]python.end[/cmd]
+			[cmd]echo[/cmd] "\%pippo is" %pippo
+			[cmd]echo[/cmd] "\%Pluto is" %Pluto
 		[/example]
 		[br]
-
 		[big]Executing arbitrary KVIrc commands from python[/big][br]
 		You can execute arbitrary KVS commands from Python by means of:[br]
 		&nbsp; &nbsp; [b]kvirc.eval(&lt;code&gt;)[/b][br]
@@ -224,49 +218,47 @@
 		it executes &lt;code&gt; in a child context and returns its evaluation result.[br]
 		The following two code snippets have equivalent visible effects:[br]
 		[example]
-		[cmd]echo[/cmd] ${ return "Yeah!"; }
+			[cmd]echo[/cmd] ${ return "Yeah!"; }
 		[/example]
 		[example]
-		[cmd]python.begin[/cmd]
-		kvirc.echo(kvirc.eval("return \"Yeah!\""));
-		[cmd]python.end[/cmd]
+			[cmd]python.begin[/cmd]
+			kvirc.echo(kvirc.eval("return \"Yeah!\""));
+			[cmd]python.end[/cmd]
 		[/example]
 		You can "eval" compound command sequences and variable ones.[br]
 		Remember that the Python code snippet is evaluated in a child KVS context
 		and thus the local variables are NOT visible!
 		The following code snippets may easily fool you:[br]
 		[example]
-		%x = 10
-		[cmd]python.begin[/cmd]
-		kvirc.eval("echo \"The value is %x\"")
-		[cmd]python.end[/cmd]
+			%x = 10
+			[cmd]python.begin[/cmd]
+			kvirc.eval("echo \"The value is %x\"")
+			[cmd]python.end[/cmd]
 		[/example]
 		This will print "The value is " since %x is not accessible from the eval's context.
 		If you have tried to write something like this then you probably need to rewrite it as:[br]
 		[example]
-		%x = 10
-		[cmd]python.begin[/cmd]
-		x = kvirc.getLocal("x")
-		kvirc.eval("echo \"The value is ".$x."\"")
-		[cmd]python.end[/cmd]
+			%x = 10
+			[cmd]python.begin[/cmd]
+			x = kvirc.getLocal("x")
+			kvirc.eval("echo \"The value is ".$x."\"")
+			[cmd]python.end[/cmd]
 		[/example]
-		[br]
-
-		[big]A shortcut for kvirc.eval("/say...")[/big][br]
-		Since kvirc.eval("/say...") is a common calling pattern, say has been added
-		to the KVIrc Python namespace. You can now call
-		[example]
-		kvirc.say("Hi all!")
+			[br]
+			[big]A shortcut for kvirc.eval("/say...")[/big][br]
+			Since kvirc.eval("/say...") is a common calling pattern, say has been added
+			to the KVIrc Python namespace. You can now call
+			[example]
+			kvirc.say("Hi all!")
 		[/example]
 		and that will mimic the behaviour of
 		[example]
-		/[cmd]say[/cmd] Hi all!
+			/[cmd]say[/cmd] Hi all!
 		[/example]
 		The complete syntax for kvirc.say() is:[br]
 		&nbsp; &nbsp; [b]kvirc.say(&lt;text&gt;[,&lt;windowid&gt;])[/b][br]
 		and the semantics are obvious (see also /[cmd]say[/cmd]).
 		[br]
-
 		[big]Python script return values[/big][br]
 		The [cmd]python.begin[/cmd] command propagates the Python code return
 		value to the KVIrc context (just like a [cmd]setreturn[/cmd]() would do)
@@ -281,22 +273,20 @@
 		%var variable, check its value and call [cmd]setreturn[/cmd]() on it.[/li]
 		[/ul]
 		[br]
-
 		[big]Executing Python scripts from files[/big][br]
 		[example]
-		[cmd]alias[/cmd](pythonexec)
-		{
-			%tmp = "python.begin(\"\",$1,$2,$3,$4,$5)";
-			%tmp .= $file.read($0);
-			%tmp .= "python.end";
-			eval %tmp;
-		}
-		pythonexec "/home/pragma/mypythonscript.pl" "param1" "param2" "param3"
-		[comment]# or even[/comment]
-		[cmd]echo[/cmd] $pythonexec("/home/pragma/computeprimelargerthan.pl","10000")
+			[cmd]alias[/cmd](pythonexec)
+			{
+				%tmp = "python.begin(\"\",$1,$2,$3,$4,$5)";
+				%tmp .= $file.read($0);
+				%tmp .= "python.end";
+				eval %tmp;
+			}
+			pythonexec "/home/pragma/mypythonscript.pl" "param1" "param2" "param3"
+			[comment]# or even[/comment]
+			[cmd]echo[/cmd] $pythonexec("/home/pragma/computeprimelargerthan.pl","10000")
 		[/example]
 		[br]
-
 		[big]Curiosity[/big][br]
 		The Python support in KVIrc is implemented as a master-slave module pair.
 		The python.* module is the master while pythoncore is the slave.
@@ -510,6 +500,7 @@ static bool python_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 	@description:
 		Returns [b]1[/b] if the Python scripting support is available and [b]0[/b] otherwise.
 */
+
 static bool python_kvs_fnc_isAvailable(KviKvsModuleFunctionCall * c)
 {
 #ifdef COMPILE_PYTHON_SUPPORT
