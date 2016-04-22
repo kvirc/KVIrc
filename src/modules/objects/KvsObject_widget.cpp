@@ -88,8 +88,6 @@ QSize KviKvsWidget::sizeHint() const
 	return QWidget::sizeHint();
 }
 
-
-
 const Qt::WidgetAttribute widgetattributes_cod[] = {
 	Qt::WA_OpaquePaintEvent,
 	Qt::WA_NoSystemBackground,
@@ -1256,31 +1254,30 @@ KVSO_CLASS_FUNCTION(widget,setForegroundColor)
 		QColor color;
 		if (c->params()->count()==1)
 		{
-				if(pColArray->isString())
+			if(pColArray->isString())
+			{
+				QString szColor;
+				pColArray->asString(szColor);
+				// maybe a color name?
+				color.setNamedColor(szColor);
+				if (!color.isValid())
 				{
-					QString szColor;
-					pColArray->asString(szColor);
-					// maybe a color name?
-					color.setNamedColor(szColor);
+					// itsn't a color name: let try with an hex triplette
+					color.setNamedColor("#"+szColor);
 					if (!color.isValid())
 					{
-						// itsn't a color name: let try with an hex triplette
-						color.setNamedColor("#"+szColor);
-						if (!color.isValid())
-						{
-							c->warning(__tr2qs_ctx("Not a valid color!","objects"));
-							return true;
-						}
+						c->warning(__tr2qs_ctx("Not a valid color!","objects"));
+						return true;
 					}
 				}
-				else {
-					c->warning(__tr2qs_ctx("Not a valid color!","objects"));
-					return true;
-				}
-				QPalette p = widget()->palette();
-				p.setColor(widget()->foregroundRole(), color);
-				widget()->setPalette(p);
+			} else {
+				c->warning(__tr2qs_ctx("Not a valid color!","objects"));
 				return true;
+			}
+			QPalette p = widget()->palette();
+			p.setColor(widget()->foregroundRole(), color);
+			widget()->setPalette(p);
+			return true;
 		}
 		if(c->params()->count() < 3)
 		{
@@ -1338,31 +1335,30 @@ KVSO_CLASS_FUNCTION(widget,setBackgroundColor)
 		QColor color;
 		if (c->params()->count()==1)
 		{
-				if(pColArray->isString())
+			if(pColArray->isString())
+			{
+				QString szColor;
+				pColArray->asString(szColor);
+				// maybe a color name?
+				color.setNamedColor(szColor);
+				if (!color.isValid())
 				{
-					QString szColor;
-					pColArray->asString(szColor);
-					// maybe a color name?
-					color.setNamedColor(szColor);
+					// itsn't a color name: let try with an hex triplette
+					color.setNamedColor("#"+szColor);
 					if (!color.isValid())
 					{
-						// itsn't a color name: let try with an hex triplette
-						color.setNamedColor("#"+szColor);
-						if (!color.isValid())
-						{
-							c->warning(__tr2qs_ctx("Not a valid color!","objects"));
-							return true;
-						}
+						c->warning(__tr2qs_ctx("Not a valid color!","objects"));
+						return true;
 					}
 				}
-				else {
-					c->warning(__tr2qs_ctx("Not a valid color!","objects"));
-					return true;
-				}
-				QPalette p = widget()->palette();
-				p.setColor(widget()->backgroundRole(), color);
-				widget()->setPalette(p);
+			} else {
+				c->warning(__tr2qs_ctx("Not a valid color!","objects"));
 				return true;
+			}
+			QPalette p = widget()->palette();
+			p.setColor(widget()->backgroundRole(), color);
+			widget()->setPalette(p);
+			return true;
 		}
 		if(c->params()->count() < 3)
 		{
@@ -1709,13 +1705,13 @@ KVSO_CLASS_FUNCTION(widget,setWFlags)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("widget_flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,wflags)
 	KVSO_PARAMETERS_END(c)
-	Qt::WindowFlags flag,sum=0;
-	for ( QStringList::Iterator it = wflags.begin(); it != wflags.end(); ++it )
+	Qt::WindowFlags flag, sum = 0;
+	for(auto& it : wflags)
 	{
-		flag=0;
-		for(unsigned int j = 0; j < widgettypes_num; j++)
+		flag = 0;
+		for(size_t j{}; j < widgettypes_num; j++)
 		{
-			if(KviQString::equalCI((*it), widgettypes_tbl[j]))
+			if(KviQString::equalCI(it, widgettypes_tbl[j]))
 			{
 				flag=widgettypes_cod[j];
 				break;
@@ -1724,7 +1720,7 @@ KVSO_CLASS_FUNCTION(widget,setWFlags)
 		if(flag)
 			sum = sum | flag;
 		else
-			c->warning(__tr2qs_ctx("Unknown widget flag '%Q'","objects"),&(*it));
+			c->warning(__tr2qs_ctx("Unknown widget flag '%Q'","objects"),&it);
 	}
 	widget()->setWindowFlags(sum);
 	return true;

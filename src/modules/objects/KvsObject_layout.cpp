@@ -181,7 +181,6 @@ KVSO_CLASS_FUNCTION(layout,addMultiCellWidget)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	// { addWidget(w, fromRow, fromCol, (toRow < 0) ? -1 : toRow - fromRow + 1, (toCol < 0) ? -1 : toCol - fromCol + 1, _align); }
 	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uStartRow, uStartCol, uEndRow - uStartRow + 1, uEndCol - uStartCol + 1);
 	return true;
 }
@@ -240,7 +239,6 @@ KVSO_CLASS_FUNCTION(layout,addRowSpacing)
 		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
 		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
 	KVSO_PARAMETERS_END(c)
-	//((QGridLayout *)object())->addRowSpacing(uRow,uSpacing);
 	((QGridLayout *)object())->addItem(new QSpacerItem(0, uSpacing), uRow, 0);
 	return true;
 }
