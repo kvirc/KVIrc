@@ -23,7 +23,6 @@
 //=============================================================================
 
 
-
 #include "KviCoreActions.h"
 #include "KviShortcut.h"
 #include "KviMainWindow.h"
@@ -37,7 +36,6 @@
 #include "KviKvsAction.h"
 #include "KviWindowStack.h"
 #include "KviIrcToolBar.h"
-#include "KviLocale.h"
 #include "KviIrcUrl.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionUserInfo.h"
@@ -541,7 +539,7 @@ KviSeparatorAction::KviSeparatorAction(QObject * pParent)
 bool KviSeparatorAction::addToPopupMenu(QMenu * p)
 {
 	if(!setupDone()) setup();
-    p->addSeparator();
+	p->addSeparator();
 	return true;
 }
 
@@ -654,7 +652,7 @@ bool KviConnectAction::addToPopupMenu(QMenu *p)
 {
 	if(!setupDone())setup();
 	KviIrcContext * c = g_pMainWindow->activeContext();
-    QAction * pAction;
+	QAction * pAction;
 	QString t;
 	if(c)
 	{
@@ -680,15 +678,15 @@ bool KviConnectAction::addToPopupMenu(QMenu *p)
 			default:
 				t = m_szConnectString;
 				if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-                pAction = p->addAction(t,this,SLOT(activate()));
-                pAction->setEnabled(false);
+				pAction = p->addAction(t,this,SLOT(activate()));
+				pAction->setEnabled(false);
 			break;
 		}
 	} else {
 		t = m_szConnectString;
 		if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-        pAction = p->addAction(t,this,SLOT(activate()));
-        pAction->setEnabled(false);
+		pAction = p->addAction(t,this,SLOT(activate()));
+		pAction->setEnabled(false);
 	}
 	return true;
 }
@@ -743,9 +741,9 @@ void KviSubmenuAction::setup()
 	KviKvsAction::setup();
 	if(!m_pPopup)
 	{
-        m_pPopup = new QMenu();
+		m_pPopup = new QMenu();
 		connect(m_pPopup,SIGNAL(aboutToShow()),this,SLOT(popupAboutToShow()));
-        connect(m_pPopup,SIGNAL(triggered(QAction *)),this,SLOT(popupActivated(QAction *)));
+		connect(m_pPopup,SIGNAL(triggered(QAction *)),this,SLOT(popupActivated(QAction *)));
 	}
 }
 
@@ -760,10 +758,10 @@ void KviSubmenuAction::popupActivated(QAction *)
 bool KviSubmenuAction::addToPopupMenu(QMenu *p)
 {
 	if(!setupDone()) setup();
-    QAction *pAction = p->addAction(*(smallIcon()),visibleName());
-    pAction->setMenu(m_pPopup);
-    if(!isEnabled())
-        pAction->setEnabled(false);
+	QAction *pAction = p->addAction(*(smallIcon()),visibleName());
+	pAction->setMenu(m_pPopup);
+	if(!isEnabled())
+	pAction->setEnabled(false);
 	return true;
 }
 
@@ -785,7 +783,7 @@ QAction * KviSubmenuAction::addToCustomToolBar(KviCustomToolBar *t)
 
 	registerAction(pAction);
 	if(!isEnabled()) pAction->setEnabled(false);
-	return pAction;
+		return pAction;
 }
 
 
@@ -809,9 +807,9 @@ void KviJoinChannelAction::popupAboutToShow()
 
 	g_pApp->fillRecentChannelsPopup(m_pPopup,c);
 
-    m_pPopup->addSeparator();
+	m_pPopup->addSeparator();
 	m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)),__tr2qs("Other..."));
-    m_pPopup->addSeparator();
+	m_pPopup->addSeparator();
 	m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs("Clear Recent Channels List"));
 }
 
@@ -820,7 +818,7 @@ void KviJoinChannelAction::popupActivated(QAction *pAction)
 	KviConsoleWindow * c = g_pActiveWindow->console();
 	if(!c)return;
 
-    QString szItemText = pAction->text();
+	QString szItemText = pAction->text();
 	if(!szItemText.isEmpty())
 	{
 		QString szText;
@@ -837,7 +835,6 @@ void KviJoinChannelAction::popupActivated(QAction *pAction)
 		KviKvsScript::run(szText,c);
 	}
 }
-
 
 
 KviChangeNickAction::KviChangeNickAction(QObject * pParent)
@@ -864,10 +861,10 @@ void KviChangeNickAction::popupAboutToShow()
 
 	g_pApp->fillRecentNicknamesPopup(m_pPopup,c);
 
-    m_pPopup->addSeparator();
+	m_pPopup->addSeparator();
 	m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NickPopup)),__tr2qs("Other..."));
 
-    m_pPopup->addSeparator();
+	m_pPopup->addSeparator();
 	m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs("Clear Recent Nicks List"));
 }
 
@@ -876,7 +873,7 @@ void KviChangeNickAction::popupActivated(QAction *pAction)
 	KviConsoleWindow * c = g_pActiveWindow->console();
 	if(!c)return;
 
-    QString text = pAction->text();
+	QString text = pAction->text();
 	if(!text.isEmpty())
 	{
 		QString szText;
@@ -912,9 +909,9 @@ KviConnectToServerAction::KviConnectToServerAction(QObject * pParent)
 void KviConnectToServerAction::popupAboutToShow()
 {
 	g_pApp->fillRecentServersPopup(m_pPopup);
-    m_pPopup->addSeparator();
+	m_pPopup->addSeparator();
 	m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)),__tr2qs("Other..."));
-    m_pPopup->addSeparator();
+	m_pPopup->addSeparator();
 	m_pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs("Clear Recent Servers List"));
 }
 
@@ -923,7 +920,7 @@ void KviConnectToServerAction::popupActivated(QAction *pAction)
 	KviConsoleWindow * c = g_pActiveWindow->console();
 	if(!c)return;
 
-    QString szItemText = pAction->text();
+	QString szItemText = pAction->text();
 	if(!szItemText.isEmpty())
 	{
 		if(szItemText == __tr2qs("Other..."))
@@ -1007,7 +1004,7 @@ void KviChangeUserModeAction::popupAboutToShow()
 		}
 
 		pAction = m_pPopup->addAction(*(g_pIconManager->getSmallIcon(isSet ? KviIconManager::ChanMode : KviIconManager::UnsetMode)),
-		                     !modeDesc.isEmpty() ? modeDesc : QString("%1: Unknown").arg(ccc));
+						!modeDesc.isEmpty() ? modeDesc : QString("%1: Unknown").arg(ccc));
 		pAction->setEnabled(canCheck);
 		pAction->setCheckable(true);
 		pAction->setChecked(isSet);
@@ -1123,7 +1120,7 @@ bool KviGoAwayAction::addToPopupMenu(QMenu *p)
 {
 	if(!setupDone())setup();
 	KviIrcContext * c = g_pMainWindow->activeContext();
-    QAction *pAction;
+	QAction *pAction;
 	QString t;
 	if(c)
 	{
@@ -1142,14 +1139,14 @@ bool KviGoAwayAction::addToPopupMenu(QMenu *p)
 		} else {
 			t = m_szAwayString;
 			if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-            pAction = p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),t,this,SLOT(activate()));
-            pAction->setEnabled(false);
+			pAction = p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),t,this,SLOT(activate()));
+			pAction->setEnabled(false);
 		}
 	} else {
 		t = m_szAwayString;
 		if(!m_szKeySequence.isEmpty())t += '\t' + m_szKeySequence;
-        pAction = p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),t,this,SLOT(activate()));
-        pAction->setEnabled(false);
+		pAction = p->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)),t,this,SLOT(activate()));
+		pAction->setEnabled(false);
 	}
 	return true;
 }
