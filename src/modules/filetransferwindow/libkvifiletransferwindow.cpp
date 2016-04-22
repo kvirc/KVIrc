@@ -74,9 +74,40 @@ static bool filetransferwindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	return true;
 }
 
+/*
+	@doc: filetransferwindow.clear
+	@type:
+		command
+	@title:
+		filetransferwindow.clear
+	@short:
+		Clears the list of transfers
+	@syntax:
+		filetransferwindow.clear [-a]
+	@switches:
+		!sw: -a | --all
+		Clears all the transfers, including the running ones!
+	@description:
+		Clears the transfers. Without the -a switch only the terminated
+		transfers are cleared. With -a all the transfers are terminated (including the running ones).
+*/
+
+static bool filetransferwindow_kvs_cmd_clear(KviKvsModuleCommandCall * c)
+{
+
+	if(c->hasSwitch('a',QString::fromLatin1("all")))
+		KviFileTransferManager::instance()->killAllTransfers();
+	else
+		KviFileTransferManager::instance()->killTerminatedTransfers();
+
+	return true;
+}
+
+
 static bool filetransferwindow_module_init(KviModule * m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",filetransferwindow_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"clear",filetransferwindow_kvs_cmd_clear);
 
 	return true;
 }
