@@ -70,7 +70,7 @@ ClassEditorTreeWidget::ClassEditorTreeWidget(QWidget * pParent)
 	setColumnCount (1);
 	setHeaderLabel(__tr2qs_ctx("Class","editor"));
 	setSelectionMode(QAbstractItemView::ExtendedSelection);
-	setSortingEnabled(true);
+	//setSortingEnabled(false);
 	setRootIsDecorated(true);
 	setAnimated(true);
 }
@@ -223,7 +223,7 @@ ClassEditorWidget::ClassEditorWidget(QWidget * pParent)
     m_pContextPopup = new QMenu(this);
 
 	oneTimeSetup();
-
+	m_pTreeWidget->setSortingEnabled(true);
 	currentItemChanged(0,0);
 }
 
