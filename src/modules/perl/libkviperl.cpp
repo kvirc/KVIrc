@@ -77,22 +77,21 @@
 		This feature is present only if a working Perl installation
 		has been found at build time.[br]
 		[br]
-
 		[big]Using Perl from KVS[/big][br]
 		Using Perl from KVIrc is really easy - just enclose
 		your Perl code snippet inside [cmd]perl.begin[/cmd] and [cmd]perl.end[/cmd].
 		[example]
-		[cmd]perl.begin[/cmd]
-		&lt;perl code goes here&gt;
-		[cmd]perl.end[/cmd]
+			[cmd]perl.begin[/cmd]
+			&lt;perl code goes here&gt;
+			[cmd]perl.end[/cmd]
 		[/example]
 		For example:[br]
 		[example]
-		[cmd]perl.begin[/cmd]
-		open(MYFILE,'>>myfile.txt') or die "Can't open myfile.txt!";
-		print MYFILE "foo!\n";
-		close(MYFILE);
-		[cmd]perl.end[/cmd]
+			[cmd]perl.begin[/cmd]
+			open(MYFILE,'>>myfile.txt') or die "Can't open myfile.txt!";
+			print MYFILE "foo!\n";
+			close(MYFILE);
+			[cmd]perl.end[/cmd]
 		[/example]
 		A Perl code snippet can appear anywhere a KVS code snippet can
 		with the only restriction that it must be enclosed in [cmd]perl.begin[/cmd]
@@ -101,15 +100,14 @@
 		If you have already encountered KVIrc's [cmd]eval[/cmd] command
 		then you probably also know how to execute a Perl code snippet from a file :)[br]
 		[br]
-
 		[big]Using KVS from Perl[/big][br]
 		KVIrc exports several commands to the Perl namespace
 		that allow you to invoke KVIrc's functions from inside the Perl code snippet.[br]
 		The nicest example is KVIrc::echo():
 		[example]
-		[cmd]perl.begin[/cmd]
-		KVIrc::echo("Hello KVIrc world from Perl!");
-		[cmd]perl.end[/cmd]
+			[cmd]perl.begin[/cmd]
+			KVIrc::echo("Hello KVIrc world from Perl!");
+			[cmd]perl.end[/cmd]
 		[/example]
 		KVIrc::echo() is the counterpart of the [cmd]echo[/cmd].
 		The exact syntax is:[br]
@@ -119,7 +117,6 @@
 		is the equivalent of the -w option. Both &lt;colorset&gt; and &lt;windowid&gt;
 		can be omitted (in this case KVIrc will use a default colorset and the current window).[br]
 		[br]
-
 		[big]Perl execution contexts[/big][br]
 		The Perl code snippets are executed by a Perl interpreter - each
 		interpreter has its own context and thus its own variables,
@@ -133,17 +130,17 @@
 		You can invoke a specific Perl context by passing it as parameter to the [cmd]perl.begin[/cmd]
 		command:[br]
 		[example]
-		[cmd]perl.begin("mycontext")[/cmd]
-		$myvariable = "mycontext";
-		KVIrc::echo("This Perl code is executed from ".$myvariable);
-		[cmd]perl.end[/cmd]
+			[cmd]perl.begin("mycontext")[/cmd]
+			$myvariable = "mycontext";
+			KVIrc::echo("This Perl code is executed from ".$myvariable);
+			[cmd]perl.end[/cmd]
 		[/example]
 		The nice thing is that at a later time you can invoke this context again
 		and discover that $mycontext has preserved its value:[br]
 		[example]
-		[cmd]perl.begin("mycontext")[/cmd]
-		KVIrc::echo("myvariable is still equal to ".$myvariable);
-		[cmd]perl.end[/cmd]
+			[cmd]perl.begin("mycontext")[/cmd]
+			KVIrc::echo("myvariable is still equal to ".$myvariable);
+			[cmd]perl.end[/cmd]
 		[/example]
 		The first time you invoke a named Perl context it is automatically created and
 		it persists until KVIrc terminates or the Perl context is explicitly destroyed
@@ -172,7 +169,6 @@
 		persistent variables, then just use the nameless temporary context provided
 		by [cmd]perl.begin[/cmd]("").[br]
 		[br]
-
 		[big]Passing parameters to the Perl script[/big][br]
 		The easiest way to pass parameters to the perl code snippet
 		is to put them as [cmd]perl.begin[/cmd] arguments.
@@ -181,13 +177,12 @@
 		Where the &lt;arg0&gt;,&lt;arg1&gt;...&lt;argN&gt; parameters
 		are passed to the Perl context as elements of the $_[] array.[br]
 		[example]
-		[cmd]perl.begin[/cmd]("","Hello world!","Now I CAN",1,2,3)
-		for($i=0;$i<5;$i++)
-			KVIrc::echo($_[i],40);
-		[cmd]perl.end[/cmd]
+			[cmd]perl.begin[/cmd]("","Hello world!","Now I CAN",1,2,3)
+			for($i=0;$i<5;$i++)
+				KVIrc::echo($_[i],40);
+			[cmd]perl.end[/cmd]
 		[/example]
 		[br]
-
 		[big]Accessing the KVIrc scripting context from Perl[/big][br]
 		KVIrc exposes the following functions that manipulate
 		variables of the KVIrc's current KVS execution context:[br]
@@ -202,21 +197,20 @@
 		The local variables referenced belong to the current KVS execution context
 		while the global variables are visible everywhere.[br]
 		[example]
-		%pippo = test
-		%Pluto = 12345
-		[cmd]perl.begin[/cmd]
-		$mypippo = KVIrc::getLocal("pippo");
-		$mypippo =~ s/^pi/ze/g;
-		$mypluto = KVIrc::getGlobal("Pluto");
-		$mypluto =~ s/23/xx/g;
-		KVIrc::setLocal("pippo",$mypluto);
-		KVIrc::setGlobal("Pluto",$mypippo);
-		[cmd]perl.end[/cmd]
-		[cmd]echo[/cmd] "\%pippo is" %pippo
-		[cmd]echo[/cmd] "\%Pluto is" %Pluto
+			%pippo = test
+			%Pluto = 12345
+			[cmd]perl.begin[/cmd]
+			$mypippo = KVIrc::getLocal("pippo");
+			$mypippo =~ s/^pi/ze/g;
+			$mypluto = KVIrc::getGlobal("Pluto");
+			$mypluto =~ s/23/xx/g;
+			KVIrc::setLocal("pippo",$mypluto);
+			KVIrc::setGlobal("Pluto",$mypippo);
+			[cmd]perl.end[/cmd]
+			[cmd]echo[/cmd] "\%pippo is" %pippo
+			[cmd]echo[/cmd] "\%Pluto is" %Pluto
 		[/example]
 		[br]
-
 		[big]Executing arbitrary KVIrc commands from Perl[/big][br]
 		You can execute arbitrary KVS commands from Perl by means of:[br]
 		&nbsp; &nbsp; [b]KVIrc::eval(&lt;code&gt;)[/b][br]
@@ -224,61 +218,59 @@
 		it executes &lt;code&gt; in a child context and returns its evaluation result.[br]
 		The following two code snippets have equivalent visible effects:[br]
 		[example]
-		[cmd]echo[/cmd] ${ return "Yeah!"; }
+			[cmd]echo[/cmd] ${ return "Yeah!"; }
 		[/example]
 		[example]
-		[cmd]perl.begin[/cmd]
-		KVIrc::echo(KVIrc::eval("return \"Yeah!\""));
-		[cmd]perl.end[/cmd]
+			[cmd]perl.begin[/cmd]
+			KVIrc::echo(KVIrc::eval("return \"Yeah!\""));
+			[cmd]perl.end[/cmd]
 		[/example]
-		You can "eval" compound command sequences and variable ones.[br]
+		You can [i]eval[/i] compound command sequences and variable ones.[br]
 		Remember that the Perl code snippet is evaluated in a child KVS context
 		and thus the local variables are NOT visible!
 		The following code snippets may easily fool you:[br]
 		[example]
-		%x = 10
-		[cmd]perl.begin[/cmd]
-		KVIrc::eval("echo \"The value is %x\"");
-		[cmd]perl.end[/cmd]
+			%x = 10
+			[cmd]perl.begin[/cmd]
+			KVIrc::eval("echo \"The value is %x\"");
+			[cmd]perl.end[/cmd]
 		[/example]
-		This will print "The value is " since %x is not accessible from the eval's context.
+		This will print [i]The value is[/i] since %x is not accessible from the eval's context.
 		If you have tried to write something like this then you probably need to rewrite it as:[br]
 		[example]
-		%x = 10
-		[cmd]perl.begin[/cmd]
-		$x = KVIrc::getLocal("x");
-		KVIrc::eval("echo \"The value is ".$x."\"");
-		[cmd]perl.end[/cmd]
+			%x = 10
+			[cmd]perl.begin[/cmd]
+			$x = KVIrc::getLocal("x");
+			KVIrc::eval("echo \"The value is ".$x."\"");
+			[cmd]perl.end[/cmd]
 		[/example]
 		Note also that you must either escape the $ at the beginning of KVIrc identifiers
 		or use single quotes to prevent Perl from interpreting the $ as the beginning of a variable.
 		[example]
-		[comment]# This will not work as expected[/comment]
-		[cmd]perl.begin[/cmd]
-		KVIrc::echo(KVIrc::eval("return $window.caption"));
-		[cmd]perl.end[/cmd]
-		[comment]# But these will do[/comment]
-		[cmd]perl.begin[/cmd]
-		KVIrc::echo(KVIrc::eval("return \$window.caption"));
-		KVIrc::echo(KVIrc::eval('return $window.caption'));
-		[cmd]perl.end[/cmd]
+			[comment]# This will not work as expected[/comment]
+			[cmd]perl.begin[/cmd]
+			KVIrc::echo(KVIrc::eval("return $window.caption"));
+			[cmd]perl.end[/cmd]
+			[comment]# But these will do[/comment]
+			[cmd]perl.begin[/cmd]
+			KVIrc::echo(KVIrc::eval("return \$window.caption"));
+			KVIrc::echo(KVIrc::eval('return $window.caption'));
+			[cmd]perl.end[/cmd]
 		[/example]
-
 		[big]A shortcut for KVIrc::eval("/say...")[/big][br]
 		Since KVIrc::eval("/say...") is a common calling pattern, say has been added
 		to the KVIrc Perl namespace. You can now call
 		[example]
-		KVIrc::say("Hi all!");
+			KVIrc::say("Hi all!");
 		[/example]
 		and that will mimic the behaviour of
 		[example]
-		/[cmd]say[/cmd] Hi all!
+			/[cmd]say[/cmd] Hi all!
 		[/example]
 		The complete syntax for KVIrc::say() is:[br]
 		&nbsp; &nbsp; [b]KVIrc::say(&lt;text&gt;[,&lt;windowid&gt;])[/b][br]
 		and the semantics are obvious (see also /[cmd]say[/cmd]).
 		[br]
-
 		[big]Perl script return values[/big][br]
 		The [cmd]perl.begin[/cmd] command propagates the Perl code return
 		value to the KVIrc context (just like a [cmd]setreturn[/cmd]() would do)
@@ -293,22 +285,20 @@
 		%var variable, check its value and call [cmd]setreturn[/cmd]() on it.[/li]
 		[/ul]
 		[br]
-
 		[big]Executing Perl scripts from files[/big][br]
 		[example]
-		[cmd]alias[/cmd](perlexec)
-		{
-			%tmp = "perl.begin(\"\",$1,$2,$3,$4,$5)";
-			%tmp .= $file.read($0);
-			%tmp .= "perl.end";
-			eval %tmp;
-		}
-		perlexec "/home/pragma/myperlscript.pl" "param1" "param2" "param3"
-		[comment]# or even[/comment]
-		[cmd]echo[/cmd] $perlexec("/home/pragma/computeprimelargerthan.pl","10000")
+			[cmd]alias[/cmd](perlexec)
+			{
+				%tmp = "perl.begin(\"\",$1,$2,$3,$4,$5)";
+				%tmp .= $file.read($0);
+				%tmp .= "perl.end";
+				eval %tmp;
+			}
+			perlexec "/home/pragma/myperlscript.pl" "param1" "param2" "param3"
+			[comment]# or even[/comment]
+			[cmd]echo[/cmd] $perlexec("/home/pragma/computeprimelargerthan.pl","10000")
 		[/example]
 		[br]
-
 		[big]Other tricks[/big][br]
 		An interesting feature of persistent Perl contexts is that you can prepare a
 		context for later fast execution.[br]
@@ -316,25 +306,24 @@
 		then call single functions when fast execution is needed.[br]
 		For example you might parse the following snippet at KVIrc's startup:[br]
 		[example]
-		[cmd]perl.begin[/cmd]("persistent")
-		sub handler_for_event_1
-		{
-			do_complex_perl_stuff_here
-		}
-		sub handler_for_event_2
-		{
-			do_complex_perl_stuff_here
-		}
-		[cmd]perl.end[/cmd]
+			[cmd]perl.begin[/cmd]("persistent")
+			sub handler_for_event_1
+			{
+				do_complex_perl_stuff_here
+			}
+			sub handler_for_event_2
+			{
+				do_complex_perl_stuff_here
+			}
+			[cmd]perl.end[/cmd]
 		[/example]
 		and later simply call:
 		[example]
-		[cmd]perl.begin[/cmd]("persistent",param1,param2)
-		handler_for_event_1($_[0],$_[1])
-		[cmd]perl.end[/cmd]
+			[cmd]perl.begin[/cmd]("persistent",param1,param2)
+			handler_for_event_1($_[0],$_[1])
+			[cmd]perl.end[/cmd]
 		[/example]
 		[br]
-
 		[big]Curiosity[/big][br]
 		The Perl support in KVIrc is implemented as a master-slave module pair.
 		The perl.* module is the master while perlcore is the slave.
