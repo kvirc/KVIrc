@@ -38,8 +38,7 @@ PPANAME=kvirc
 dchppa_pkg(){
 NEW_VER=$(dpkg-parsechangelog | awk '/^Version: / {print $2}')
 cd $BUILDDIR/${PKG_NAME}-${VERSION1}${SVNGITBZR}${dat}/
-cp debian/changelog ${TMPFILE}
-tmpgpg
+cp -f debian/changelog ${TMPFILE}
 for i in ${DIST_PPA}
 do
 cp -f ${TMPFILE} debian/changelog
@@ -64,6 +63,13 @@ cat > ~/.dput.cf << EOF
 fqdn = ppa.launchpad.net
 method = ftp
 incoming = ~kvirc/kvirc/ubuntu/
+login = anonymous
+allow_unsigned_uploads = 0
+
+[kvirc-qt5.5]
+fqdn = ppa.launchpad.net
+method = ftp
+incoming = ~kvirc/kvirc-qt5.5/ubuntu/
 login = anonymous
 allow_unsigned_uploads = 0
 EOF
@@ -114,7 +120,12 @@ then
     debuild --no-lintian -us -uc
 else
     gpgkey
+    tmpgpg
     test -f ~/.dput.cf || dputcf
+    dchppa_pkg
+    rm -f ../*ppa*
+    DIST_PPA="trusty wily"
+    PPANAME=kvirc-qt5.5
     dchppa_pkg
 fi
 
