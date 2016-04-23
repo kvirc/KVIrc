@@ -158,6 +158,7 @@ namespace AddonFunctions
 		}
 
 
+		// clang-format off
 		hd.szHtmlText = QString(
 			"<html bgcolor=\"#ffffff\">" \
 				"<body bgcolor=\"#ffffff\">" \
@@ -183,6 +184,7 @@ namespace AddonFunctions
 					"<br>" \
 				"</body>" \
 			"</html>").arg(szPackageName,szPackageVersion,szPackageDescription,szAuthor,szPackageAuthor,szCreatedAt,szPackageDate,szCreatedWith,szPackageApplication).arg(szWarnings);
+		// clang-format on
 
 		hd.addImageResource("addon_dialog_pack_image",pix);
 		hd.addHtmlResource("addon_dialog_main",hd.szHtmlText);

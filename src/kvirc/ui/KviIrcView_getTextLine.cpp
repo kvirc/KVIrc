@@ -354,6 +354,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 
 	static void * char_to_check_jump_table[256]=
 	{
+		// clang-format off
 		&&found_end_of_buffer  ,0                      ,&&found_mirc_escape    ,&&found_color_escape   ,
 		0                      ,0                      ,0                      ,0                      ,
 		0                      ,0                      ,&&found_end_of_line    ,0                      ,
@@ -418,6 +419,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 		0                      ,0                      ,0                      ,0                      ,
 		0                      ,0                      ,0                      ,0                      ,
 		0                      ,0                      ,0                      ,0                        // 240-255
+		// clang-format on
 	};
 
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting) || KVI_OPTION_BOOL(KviOption_boolDrawEmoticons))

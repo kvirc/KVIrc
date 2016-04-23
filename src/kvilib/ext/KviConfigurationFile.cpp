@@ -451,6 +451,7 @@ bool KviConfigurationFile::save()
 {
 	static unsigned char encode_table[256]=
 	{
+		// clang-format off
 		//	000 001 002 003 004 005 006 007   008 009 010 011 012 013 014 015
 		//	NUL SOH STX ETX EOT ENQ ACK BEL   BS  HT  LF  VT  FF  CR  SO  SI
 			1  ,1  ,1  ,1  ,1  ,1  ,1  ,1    ,1  ,1  ,1  ,1  ,1  ,1  ,1  ,1  ,
@@ -499,6 +500,7 @@ bool KviConfigurationFile::save()
 		//	240 241 242 243 244 245 246 247   248 249 250 251 252 253 254 255
 		//	�  �  �  �  �  �  �  �
 			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0
+				// clang-format on
 	};
 
 

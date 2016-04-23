@@ -134,6 +134,7 @@ OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup,bool bModal)
 			"or \"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit your " \
 			"changes without closing the window.","options");
 
+	// clang-format off
 	QString szFrontText = QString(
 			"<table width=\"100%\" height=\"100%\" valign=\"top\" align=\"center\" cellpadding=\"4\">" \
 				"<tr>" \
@@ -158,6 +159,7 @@ OptionsDialog::OptionsDialog(QWidget * par,const QString &szGroup,bool bModal)
 				"</tr>" \
 			"</table>"
 		).arg(szDialogTitle, szDialog, szInfoTips, szOkCancelButtons);
+	// clang-format on
 
 	QString szCaption = szDialogTitle + " - KVIrc";
 	setWindowTitle(szCaption);

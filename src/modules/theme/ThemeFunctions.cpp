@@ -235,6 +235,7 @@ namespace ThemeFunctions
 
 		QString szShowDetails = __tr2qs_ctx("Show Details","theme");
 
+		// clang-format off
 		hd.szHtmlText = QString(
 			"<html bgcolor=\"#ffffff\">" \
 				"<body bgcolor=\"#ffffff\">" \
@@ -263,6 +264,7 @@ namespace ThemeFunctions
 					"</center></p>" \
 				"</body>" \
 			"</html>").arg(szPackageName,szPackageVersion,szPackageDescription,szAuthor,szPackageAuthor,szCreatedAt,szPackageDate,szCreatedOn,szPackageApplication).arg(szWarnings,szShowDetails);
+		// clang-format on
 
 		hd.addImageResource("theme_dialog_pack_image",pix);
 		hd.addHtmlResource("theme_dialog_details",szDetails);
@@ -335,6 +337,7 @@ namespace ThemeFunctions
 			szScreenshot = "";
 		}
 
+		// clang-format off
 		szBuffer = QString(
 			"<p><center>" \
 				"<h2>%1 %2</h2>" \
@@ -354,6 +357,7 @@ namespace ThemeFunctions
 					"%13: %14<br>" \
 				"</font>" \
 			"</center></p>").arg(szThemeName,szThemeVersion,szScreenshot,szThemeDescription,szAuthor,szThemeAuthor,szCreatedAt,szThemeDate,szCreatedOn).arg(szThemeApplication,szThemeEngineVersion,szThemeThemeEngineVersion,szSubdirectory,szThemeSubdirectory);
+		// clang-format on
 	}
 
 	bool makeKVIrcScreenshot(const QString &szSavePngFilePath,bool bMaximizeFrame)

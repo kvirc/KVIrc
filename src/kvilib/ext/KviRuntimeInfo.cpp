@@ -68,6 +68,7 @@ typedef BOOL (WINAPI *PGETPRODUCTINFO)(DWORD,DWORD,DWORD,DWORD,PDWORD);
 //       the grace period, this parameter is set to
 //       PRODUCT_UNLICENSED (0xABCDABCD).
 
+// clang-format off
 #define PRODUCT_UNDEFINED                           0x00000000
 
 #define PRODUCT_ULTIMATE                            0x00000001
@@ -192,6 +193,7 @@ typedef BOOL (WINAPI *PGETPRODUCTINFO)(DWORD,DWORD,DWORD,DWORD,PDWORD);
 #define PRODUCT_ENTERPRISE_S_N_EVALUATION           0x00000082
 
 #define PRODUCT_UNLICENSED                          0xABCDABCD
+// clang-format on
 
 static QString queryWinInfo(QueryInfo info)
 {

@@ -218,6 +218,7 @@ KviKvsTreeNodeExpressionBinaryOperator * KviKvsParser::parseExpressionBinaryOper
 
 static unsigned char binary_operator_initial_char[256]=
 {
+	// clang-format off
 	//	000 001 002 003 004 005 006 007   008 009 010 011 012 013 014 015
 	//	NUL SOH STX ETX EOT ENQ ACK BEL   BS  HT  LF  VT  FF  CR  SO  SI
 		0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
@@ -266,6 +267,7 @@ static unsigned char binary_operator_initial_char[256]=
 	//	240 241 242 243 244 245 246 247   248 249 250 251 252 253 254 255
 	//	�  �  �  �  �  �  �  �
 		0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0
+			// clang-format on
 };
 
 

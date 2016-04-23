@@ -1178,6 +1178,7 @@ typedef struct _dccParseProcEntry
 
 static dccParseProcEntry dccParseProcTable[KVI_NUM_KNOWN_DCC_TYPES]=
 {
+	// clang-format off
 	{ "CHAT"   , dccModuleParseDccChat   },
 	{ "SCHAT"  , dccModuleParseDccChat   },
 	{ "SEND"   , dccModuleParseDccSend   },
@@ -1206,6 +1207,7 @@ static dccParseProcEntry dccParseProcTable[KVI_NUM_KNOWN_DCC_TYPES]=
 	{ "CANVAS" , dccModuleParseDccCanvas },
 	{ "VOICE"  , dccModuleParseDccVoice  },
 	{ "VIDEO"  , dccModuleParseDccVideo  }
+	// clang-format on
 };
 
 

@@ -315,6 +315,7 @@ static const char * encoding_groups[] =
 
 static KviLocale::EncodingDescription supported_encodings[] =
 {
+// clang-format off
 	// Unicode
 	{ "UTF-8"                , 0 , 0 , 0, "8-bit Unicode" },
 	// West European
@@ -463,6 +464,7 @@ static KviLocale::EncodingDescription supported_encodings[] =
 	{ "UTF-8 [CP-949]"       , 1 , 1 , 7, "Unicode - Korean Codepage" },
 #endif
 	{ 0                      , 0 , 0 , 0 , 0 }
+// clang-format on
 };
 
 KviLocale * KviLocale::m_pSelf = NULL;

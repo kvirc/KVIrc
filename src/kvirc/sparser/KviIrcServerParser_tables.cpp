@@ -29,6 +29,7 @@
 
 KviLiteralMessageParseStruct KviIrcServerParser::m_literalParseProcTable[]=
 {
+	// clang-format off
 	{ "ACCOUNT"      , PTM(parseLiteralAccount)      },
 	{ "AUTHENTICATE" , PTM(parseLiteralAuthenticate) },
 	{ "AWAY"         , PTM(parseLiteralAway)         },
@@ -49,6 +50,7 @@ KviLiteralMessageParseStruct KviIrcServerParser::m_literalParseProcTable[]=
 	{ "TOPIC"        , PTM(parseLiteralTopic)        },
 	{ "WALLOPS"      , PTM(parseLiteralWallops)      },
 	{ 0              , 0                             }
+	// clang-format on
 };
 
 #define REQ(f) parseCtcpRequest##f
@@ -56,6 +58,7 @@ KviLiteralMessageParseStruct KviIrcServerParser::m_literalParseProcTable[]=
 
 KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpParseProcTable[]=
 {
+	// clang-format off
 	{ "ACTION"     , PTM(REQ(Action))     , PTM(REQ(Action))   , 0 },
 	{ "AVATAR"     , PTM(REQ(Avatar))     , PTM(RPL(Avatar))   , 0 },
 	{ "CLIENTINFO" , PTM(REQ(Clientinfo)) , PTM(RPL(Generic))  , 0 },
@@ -71,6 +74,7 @@ KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpParseProcTable[]=
 	{ "VERSION"    , PTM(REQ(Version))    , PTM(RPL(Generic))  , 0 },
 	{ "XDCC"       , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
 	{ 0            , 0                    , 0                  , 0 }
+	// clang-format on
 };
 
 #undef REQ
