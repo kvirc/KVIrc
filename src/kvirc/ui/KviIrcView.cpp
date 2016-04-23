@@ -1610,7 +1610,7 @@ no_selection_paint:
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-#define IRCVIEW_WCHARWIDTH(__c) (((__c).unicode() < 0xff) ? m_iFontCharacterWidth[(__c).unicode()] : m_pFm->width(__c))
+#define IRCVIEW_WCHARWIDTH(c) (((c).unicode() < 0xff) ? m_iFontCharacterWidth[(c).unicode()] : m_pFm->width(c))
 
 void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 {
