@@ -2023,9 +2023,9 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 						{
 							KviCString tmp;
 							if(serverInfo()->supportsWhox())
-								tmp = KviCString::Format,"WHO %s %acdfhlnrsu",encodeText(pOldest->windowName()).data();
+								tmp.append(KviCString::Format,"WHO %s %acdfhlnrsu",encodeText(pOldest->windowName()).data());
 							else
-								tmp = KviCString::Format,"WHO %s",encodeText(pOldest->windowName()).data();
+								tmp.append(KviCString::Format,"WHO %s",encodeText(pOldest->windowName()).data());
 							lagMeter()->lagCheckRegister(tmp.ptr(),70);
 						}
 						pOldest->setSentSyncWhoRequest();
