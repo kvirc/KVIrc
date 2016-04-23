@@ -1775,7 +1775,7 @@ wrap_line:
 				return;
 		} else if(ptr->uLineWraps > 128)
 		{
-			// ooops.. this is looping endlessly: it may happen in certain insane window width / font size configurations...
+			// oops.. this is looping endlessly: it may happen in certain insane window width / font size configurations...
 			return;
 		}
 	}
@@ -2438,7 +2438,8 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 	while(iTop > yPos)
 	{
 		//no lines, go away
-		if(!l)return -1;
+		if(!l)
+			return -1;
 
 		//subtract from iTop the height of the current line (aka go to the end of the previous / start of the current point)
 		iTop -= ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent;
@@ -2456,9 +2457,11 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 		 * iTop is the line start y coordinate. Now we have to go through this line's text and find the exact text under the mouse.
 		 * The line start x posistion is iLeft; we save iTop to firstRowTop (many rows can be part of this lingle line of text)
 		 */
-
 		int iLeft = KVI_IRCVIEW_HORIZONTAL_BORDER;
-		if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))iLeft += KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
+
+		if(KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages))
+			iLeft += KVI_IRCVIEW_PIXMAP_AND_SEPARATOR;
+
 		int firstRowTop = iTop;
 		int i = 0;
 
@@ -2472,12 +2475,9 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 				while(i < l->iBlockCount)
 				{
 					if(l->pBlocks[i].pChunk == 0)
-					{
-						//word wrap found
-						break;
-					} else {
+						break; //word wrap found
+					else
 						i++;
-					}
 				}
 				if(i >= l->iBlockCount) return -1; //we reached the last chunk... there's something wrong, return
 				else iTop += m_iFontLineSpacing; //we found a word wrap, check the next row.
@@ -2502,15 +2502,12 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 				for(;iLeft + l->pBlocks[i].block_width < xPos;)
 				{
 					if(l->pBlocks[i].block_width>0)
-					{
 						iLeft +=l->pBlocks[i].block_width;
-					} else if(i < (l->iBlockCount - 1))
+					else if(i < (l->iBlockCount - 1))
 					{
 						// There is another block, check if it is a wrap (we reached the end of the row)
 						if(l->pBlocks[i+1].pChunk == 0)
-						{
 							break;
-						}
 						// else simply a zero characters block
 					}
 					i++;

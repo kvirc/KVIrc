@@ -205,7 +205,7 @@ KVSO_CLASS_FUNCTION(trayIcon,setContextMenu)
 		c->warning(__tr2qs_ctx("Can't add a non-popupmenu object","objects"));
 		return true;
 	}
-	 m_pTrayIcon->setContextMenu(((QMenu  *)(ob->object())));
+	 m_pTrayIcon->setContextMenu(((QMenu *)(ob->object())));
 	return true;
 }
 KVSO_CLASS_FUNCTION(trayIcon,activatedEvent)

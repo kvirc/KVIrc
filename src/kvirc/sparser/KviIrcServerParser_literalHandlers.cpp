@@ -1002,7 +1002,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 						KviKvsScript::run("snd.play $0",0,new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
 
 					if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
-					query->pasteLastLog();
+						query->pasteLastLog();
 				}
 			}
 		}

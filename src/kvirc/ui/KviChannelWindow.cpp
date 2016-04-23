@@ -85,7 +85,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 : KviWindow(KviWindow::Channel,szName,lpConsole)
 {
 	// Init some member variables
-	m_pInput               = 0;
+	m_pInput               = nullptr;
 	m_iStateFlags          = 0;
 	m_pActionHistory = new KviPointerList<KviChannelAction>;
 	m_pActionHistory->setAutoDelete(true);
@@ -137,7 +137,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	m_pIrcView->setObjectName(szName);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	// And the double view (that may be unused)
-	m_pMessageView = 0;
+	m_pMessageView = nullptr;
 	// The userlist on the right
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
 
@@ -152,7 +152,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	connect(m_pListViewButton,SIGNAL(clicked()),this,SLOT(toggleListView()));
 
 	//list modes (bans, bans exceptions, etc)
-	KviWindowToolPageButton * pButton = 0;
+	KviWindowToolPageButton * pButton = nullptr;
 	char cMode = 0;
 	QString szDescription = "";
 	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
@@ -259,14 +259,10 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 KviChannelWindow::~KviChannelWindow()
 {
 	// Unregister ourself
-	if(type() == KviWindow::DeadChannel)
-	{
-		if(context())
-			context()->unregisterDeadChannel(this);
-	} else {
-		if(connection())
-			connection()->unregisterChannel(this);
-	}
+	if(type() == KviWindow::DeadChannel && context())
+		context()->unregisterDeadChannel(this);
+	else if(connection())
+		connection()->unregisterChannel(this);
 
 	// Then remove all the users and free mem
 	m_pUserListView->enableUpdates(false);
@@ -450,9 +446,8 @@ void KviChannelWindow::showDoubleView(bool bShow)
 			m_pDoubleViewButton->setChecked(true);
 
 		if(m_privateBackground.pixmap())
-		{
 			m_pMessageView->setPrivateBackgroundPixmap(*(m_privateBackground.pixmap()));
-		}
+
 		connect(m_pMessageView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 		m_pMessageView->setMasterView(m_pIrcView);
 		m_pIrcView->splitMessagesTo(m_pMessageView);
@@ -497,7 +492,7 @@ void KviChannelWindow::toggleModeEditor()
 	if(m_pModeEditor)
 	{
 		delete m_pModeEditor;
-		m_pModeEditor = 0;
+		m_pModeEditor = nullptr;
 
 		m_pSplitter->setMinimumHeight(20);
 		if(m_pModeEditorButton->isChecked())
@@ -1232,7 +1227,7 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 							return;
 						if(bUserFeedback)
 						{
-							// ugly,but we must redecode here
+							// ugly, but we must redecode here
 							QString szRedecoded = decodeText(szEncrypted.ptr());
 							m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
 								QString(),QString(),QString(),szRedecoded,KviConsoleWindow::NoNotifications);
@@ -1887,7 +1882,7 @@ void KviChannelWindow::setModeInList(char cMode, const QString & szMask, bool bA
 	}
 
 	KviPointerList<KviMaskEntry> * pList = m_pModeLists.value(cMode);
-	KviMaskEditor * pEditor = 0;
+	KviMaskEditor * pEditor = nullptr;
 	if(m_pListEditors.contains(cMode))
 		pEditor = m_pListEditors.value(cMode);
 
@@ -1897,7 +1892,7 @@ void KviChannelWindow::setModeInList(char cMode, const QString & szMask, bool bA
 
 void KviChannelWindow::internalMask(const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, KviPointerList<KviMaskEntry> * pList, KviMaskEditor ** ppEd, QString & szChangeMask)
 {
-	KviMaskEntry * pEntry = 0;
+	KviMaskEntry * pEntry = nullptr;
 	if(bAdd)
 	{
 		for(pEntry = pList->first(); pEntry; pEntry = pList->next())
@@ -2051,28 +2046,28 @@ void KviChannelWindow::preprocessMessage(QString & szMessage)
 		return; // contains a non standard link that may contain spaces, do not break it.
 
 	QStringList strings = szMessage.split(" ",QString::KeepEmptyParts);
-	for(QStringList::Iterator it = strings.begin(); it != strings.end(); ++it)
+	for(auto& it : strings)
 	{
-		if(it->contains('\r'))
+		if(it.contains('\r'))
 			continue;
 
-		QString szTmp = KviControlCodes::stripControlBytes(*it).trimmed();
+		QString szTmp = KviControlCodes::stripControlBytes(it).trimmed();
 		if(szTmp.length() < 1)
 			continue;
 
 		// FIXME: Do we REALLY need this ?
-		if(findEntry(*it))
+		if(findEntry(it))
 		{
-			*it = QString("\r!n\r%1\r").arg(*it);
+			it = QString("\r!n\r%1\r").arg(it);
 			continue;
 		}
 
 		if(pServerInfo->supportedChannelTypes().contains(szTmp[0]))
 		{
-			if((*it) == szTmp)
-				*it = QString("\r!c\r%1\r").arg(*it);
+			if(it == szTmp)
+				it = QString("\r!c\r%1\r").arg(it);
 			else
-				*it = QString("\r!c%1\r%2\r").arg(szTmp, *it);
+				it = QString("\r!c%1\r%2\r").arg(szTmp, it);
 		}
 	}
 	szMessage = strings.join(" ");
@@ -2087,9 +2082,7 @@ void KviChannelWindow::unhighlight()
 
 KviIrcConnectionServerInfo * KviChannelWindow::serverInfo()
 {
-	if(!connection())
-		return 0;
-	return connection()->serverInfo();
+	return connection() ? connection()->serverInfo() : nullptr;
 }
 
 // FIXME: this currently does not work if the user has changed his date format,
@@ -2121,12 +2114,12 @@ void KviChannelWindow::pasteLastLog()
 	bool bGzip;
 	QString szFileName;
 
-	for(QStringList::Iterator it = logList.begin(); it != logList.end(); ++it)
+	for(const auto& it : logList)
 	{
 		int iLogYear, iLogMonth, iLogDay;
 
-		szFileName = (*it);
-		QString szTmpName = (*it);
+		szFileName = it;
+		QString szTmpName = it;
 		QFileInfo fi(szTmpName);
 		bGzip = false;
 
@@ -2180,7 +2173,7 @@ void KviChannelWindow::pasteLastLog()
 		outputMessage(KVI_OUT_CHANPRIVMSG,szDummy);
 
 		// Scan the log file
-		for(unsigned int u = uStart; u < uCount; u++)
+		for(size_t u = uStart; u < uCount; u++)
 		{
 			QString szLine = QString(list.at(u));
 			szLine = szLine.section(' ',1);
