@@ -70,7 +70,6 @@ ClassEditorTreeWidget::ClassEditorTreeWidget(QWidget * pParent)
 	setColumnCount (1);
 	setHeaderLabel(__tr2qs_ctx("Class","editor"));
 	setSelectionMode(QAbstractItemView::ExtendedSelection);
-	//setSortingEnabled(false);
 	setRootIsDecorated(true);
 	setAnimated(true);
 }
@@ -100,7 +99,7 @@ ClassEditorTreeWidgetItem::ClassEditorTreeWidgetItem(QTreeWidget * pTreeWidget, 
 	m_iPos                = 0;
 	m_bInternal           = false;
 	m_bClassModified      = false;
-	QPixmap * pIcon       = 0;
+	QPixmap * pIcon       = nullptr;
 
 	if(eType == ClassEditorTreeWidgetItem::Namespace)
 		pIcon = g_pIconManager->getSmallIcon(KviIconManager::NameSpace);
@@ -119,7 +118,7 @@ ClassEditorTreeWidgetItem::ClassEditorTreeWidgetItem(ClassEditorTreeWidgetItem *
 	m_bInternal           = false;
 	m_iPos                = 0;
 	m_bClassModified      = false;
-	QPixmap * pIcon       = 0;
+	QPixmap * pIcon       = nullptr;
 
 	if(eType == ClassEditorTreeWidgetItem::Namespace)
 		pIcon = g_pIconManager->getSmallIcon(KviIconManager::NameSpace);
@@ -134,7 +133,7 @@ ClassEditorTreeWidgetItem::ClassEditorTreeWidgetItem(ClassEditorTreeWidgetItem *
 void ClassEditorTreeWidgetItem::setClassNotBuilt(bool bModified)
 {
 	m_bClassModified = bModified;
-	QPixmap * pIcon = 0;
+	QPixmap * pIcon = nullptr;
 
 	if(bModified)
 		pIcon = g_pIconManager->getSmallIcon(KviIconManager::ClassNotBuilt);
@@ -153,7 +152,7 @@ void ClassEditorTreeWidgetItem::setName(const QString & szName)
 void ClassEditorTreeWidgetItem::setType(Type eType)
 {
 	m_eType = eType;
-	QPixmap * pIcon = 0;
+	QPixmap * pIcon = nullptr;
 
 	if(eType == ClassEditorTreeWidgetItem::Namespace)
 		pIcon = g_pIconManager->getSmallIcon(KviIconManager::NameSpace);
@@ -277,7 +276,7 @@ ClassEditorTreeWidgetItem * ClassEditorWidget::findTopLevelItem(const QString & 
 		if(KviQString::equalCI(m_pTreeWidget->topLevelItem(i)->text(0),szName))
 			return (ClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 	}
-	return 0;
+	return nullptr;
 }
 
 ClassEditorTreeWidgetItem * ClassEditorWidget::findItem(const QString & szFullName)
@@ -285,10 +284,10 @@ ClassEditorTreeWidgetItem * ClassEditorWidget::findItem(const QString & szFullNa
 	bool bFound;
 	QStringList lNamespaces = szFullName.split("::");
 	if(lNamespaces.count() == 0)
-		return 0;
+		return nullptr;
 	ClassEditorTreeWidgetItem * pItem = findTopLevelItem(lNamespaces.at(0));
 	if(!pItem)
-		return 0;
+		return nullptr;
 
 	for(int i=1; i < lNamespaces.count(); i++)
 	{
@@ -303,7 +302,7 @@ ClassEditorTreeWidgetItem * ClassEditorWidget::findItem(const QString & szFullNa
 			}
 		}
 		if(!bFound)
-			return 0;
+			return nullptr;
 	}
 	return (ClassEditorTreeWidgetItem *)pItem;
 }
@@ -352,7 +351,7 @@ ClassEditorTreeWidgetItem * ClassEditorWidget::createFullNamespace(const QString
 
 	QStringList lNamespaces = szFullName.split("::");
 	if(lNamespaces.count() == 0)
-		return 0;
+		return nullptr;
 	ClassEditorTreeWidgetItem * pItem = findTopLevelItem(lNamespaces.at(0));
 	if(!pItem)
 		pItem = new ClassEditorTreeWidgetItem(m_pTreeWidget,ClassEditorTreeWidgetItem::Namespace,lNamespaces.at(0));
@@ -391,8 +390,8 @@ void ClassEditorWidget::oneTimeSetup()
 	g_pModuleManager->getModule("objects");
 	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
 
-	KviKvsObjectClass * pClass = 0;
-	ClassEditorTreeWidgetItem * pClassItem = 0;
+	KviKvsObjectClass * pClass = nullptr;
+	ClassEditorTreeWidgetItem * pClassItem = nullptr;
 	while(KviKvsObjectClass * pClass = it.current())
 	{
 		if(pClass->isBuiltin())
@@ -457,7 +456,6 @@ void ClassEditorWidget::createFullClass(KviKvsObjectClass * pClass, ClassEditorT
 			if(pHandler->flags() & KviKvsObjectFunctionHandler::Internal)
 				pFunctionItem->setInternalFunction(true);
 		}
-		//++it;
 	}
 }
 
@@ -567,7 +565,7 @@ ClassEditorTreeWidgetItem * ClassEditorWidget::findFunction(const QString & szFu
 		if(KviQString::equalCI(szFunctionName,((ClassEditorTreeWidgetItem *)pClass->child(i))->name()))
 			return (ClassEditorTreeWidgetItem *) pClass->child(i);
 	}
-	return 0;
+	return nullptr;
 }
 
 void ClassEditorWidget::renameItem()
@@ -617,7 +615,7 @@ void ClassEditorWidget::renameClass(ClassEditorTreeWidgetItem * pClassItem)
 		szNewName = "";
 		continue;
 	}*/
-	ClassEditorTreeWidgetItem * pNewItem = 0;
+	ClassEditorTreeWidgetItem * pNewItem = nullptr;
 	m_pClasses->removeRef(pClassItem);
 	cutItem(pClassItem);
 	if(szNewClassName.contains("::"))
@@ -773,7 +771,7 @@ void ClassEditorWidget::currentItemChanged(QTreeWidgetItem * pTree, QTreeWidgetI
 		return;
 	}
 
-	ClassEditorTreeWidgetItem * pClassItem = 0;
+	ClassEditorTreeWidgetItem * pClassItem = nullptr;
 	if(m_pLastEditedItem->isMethod())
 		pClassItem = (ClassEditorTreeWidgetItem *)m_pLastEditedItem->parent();
 	else
@@ -1179,7 +1177,7 @@ void ClassEditorWidget::exportClasses(bool bSelectedOnly, bool bSingleFiles)
 		return;
 	}
 
-	ClassEditorTreeWidgetItem * pTempItem = 0;
+	ClassEditorTreeWidgetItem * pTempItem = nullptr;
 	KviPointerList<ClassEditorTreeWidgetItem> skiplist;
 	skiplist.setAutoDelete(false);
 	for(ClassEditorTreeWidgetItem * pItem = list.first(); pItem; pItem = list.next())
