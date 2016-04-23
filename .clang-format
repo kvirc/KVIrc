@@ -1,0 +1,17 @@
+---
+BasedOnStyle: WebKit
+Standard: Cpp11
+
+UseTab: ForIndentation
+IndentWidth: 4
+TabWidth: 4
+NamespaceIndentation: All
+IndentCaseLabels: true
+SpaceBeforeParens: Never
+BreakBeforeBraces: Allman
+BreakConstructorInitializersBeforeComma: false
+
+AlignTrailingComments: true
+DerivePointerAlignment: false
+PointerAlignment: Middle
+...
