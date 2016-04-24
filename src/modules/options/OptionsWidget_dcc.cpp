@@ -173,7 +173,12 @@ OptionsWidget_dccSendGeneral::OptionsWidget_dccSendGeneral(QWidget * parent)
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Incoming File","options"));
 	KviBoolSelector * b2 = addBoolSelector(g,__tr2qs_ctx("Automatically accept","options"),KviOption_boolAutoAcceptDccSend);
-	KviBoolSelector * b3 = addBoolSelector(g,__tr2qs_ctx("Open transfer window as minimized when auto-accepted","options"),KviOption_boolCreateMinimizedDccSendWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccSend));
+	KviBoolSelector * b3 = addBoolSelector(g, __tr2qs_ctx("Open auto-accepted transfer window without focus","options"),KviOption_boolCreateMinimizedDccSendWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccSend));
+	mergeTip(b3, __tr2qs_ctx("This option prevents the transfer window " \
+			"from opening and diverting application focus.<br>" \
+			"Enable this if you don't like the transfer window " \
+			"popping up while you're typing something in a channel.","options"));
+
 	KviBoolSelector * b4 = addBoolSelector(g,__tr2qs_ctx("Automatically resume when auto-accepted","options"),KviOption_boolAutoResumeDccSendWhenAutoAccepted,KVI_OPTION_BOOL(KviOption_boolAutoAcceptDccSend));
 
 	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Save Location","options"));
@@ -191,7 +196,11 @@ OptionsWidget_dccSendGeneral::OptionsWidget_dccSendGeneral(QWidget * parent)
 				"to be automatically removed from the transfer window.","options"));
 
 
-	KviBoolSelector * b1 = addBoolSelector(0,3,0,3,__tr2qs_ctx("Always open transfer window as minimized","options"),KviOption_boolCreateMinimizedDccSend);
+	KviBoolSelector * b1 = addBoolSelector(0,3,0,3, __tr2qs_ctx("Open transfer window without focus","options"), KviOption_boolCreateMinimizedDccSend);
+	mergeTip(b1, __tr2qs_ctx("This option prevents the transfer window " \
+			"from opening and diverting application focus.<br>" \
+			"Enable this if you don't like the transfer window " \
+			"popping up while you're typing something in a channel.","options"));
 
 	connect(b1,SIGNAL(toggled(bool)),b3,SLOT(setNotEnabled(bool)));
 	connect(b2,SIGNAL(toggled(bool)),b4,SLOT(setEnabled(bool)));
@@ -318,9 +327,17 @@ OptionsWidget_dccChat::OptionsWidget_dccChat(QWidget * parent)
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Chat Request","options"));
 	addBoolSelector(g,__tr2qs_ctx("Automatically accept","options"),KviOption_boolAutoAcceptDccChat);
 
-	KviBoolSelector * b1 = addBoolSelector(g,__tr2qs_ctx("Open minimized when auto-accepted","options"),KviOption_boolCreateMinimizedDccChatWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat));
+	KviBoolSelector * b1 = addBoolSelector(g, __tr2qs_ctx("Open auto-accepted DCC chat windows without focus","options"),KviOption_boolCreateMinimizedDccChatWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat));
+	mergeTip(b1, __tr2qs_ctx("This option prevents incoming " \
+				"auto-accepted DCC chat windows from diverting application focus.<br>" \
+				"Enable this if you don't like DCC chat windows " \
+				"popping up while you're typing something in a channel.","options"));
 
-	KviBoolSelector * b2 = addBoolSelector(0,1,0,1,__tr2qs_ctx("Always open as minimized","options"),KviOption_boolCreateMinimizedDccChat);
+	KviBoolSelector * b2 = addBoolSelector(0,1,0,1, __tr2qs_ctx("Open DCC chat windows without focus","options"),KviOption_boolCreateMinimizedDccChat);
+	mergeTip(b2, __tr2qs_ctx("This option prevents incoming " \
+				"DCC chat windows from diverting application focus.<br>" \
+				"Enable this if you don't like DCC chat windows " \
+				"popping up while you're typing something in a channel.","options"));
 
 	connect(b2,SIGNAL(toggled(bool)),b1,SLOT(setNotEnabled(bool)));
 
@@ -349,11 +366,21 @@ OptionsWidget_dccVoice::OptionsWidget_dccVoice(QWidget *p):KviOptionsWidget(p)
 {
 	createLayout();
 
-	KviBoolSelector * b1 = addBoolSelector(0,0,0,0,__tr2qs_ctx("Open all minimized","options"),KviOption_boolCreateMinimizedDccVoice);
+	KviBoolSelector * b1 = addBoolSelector(0,0,0,0, __tr2qs_ctx("Open all DCC voice windows without focus","options"),KviOption_boolCreateMinimizedDccVoice);
+	mergeTip(b1, __tr2qs_ctx("This option prevents all incoming " \
+				"DCC voice windows from diverting application focus.<br>" \
+				"Enable this if you don't like DCC voice windows " \
+				"popping up while you're typing something in a channel.","options"));
+
 	KviTalGroupBox * g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("On Voice Request","options"));
 	KviBoolSelector * b = addBoolSelector(g,__tr2qs_ctx("Automatically accept","options"),KviOption_boolAutoAcceptDccVoice);
 
-	b = addBoolSelector(g,__tr2qs_ctx("Open minimized when auto-accepted","options"),KviOption_boolCreateMinimizedDccVoiceWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccVoice));
+	b = addBoolSelector(g, __tr2qs_ctx("Open auto-accepted DCC voice windows without focus","options"),KviOption_boolCreateMinimizedDccVoiceWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccVoice));
+	mergeTip(b, __tr2qs_ctx("This option prevents incoming " \
+				"auto-accepted DCC voice windows from diverting application focus.<br>" \
+				"Enable this if you don't like DCC voice windows " \
+				"popping up while you're typing something in a channel.","options"));
+
 	connect(b1,SIGNAL(toggled(bool)),b,SLOT(setNotEnabled(bool)));
 
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Force half-duplex mode on sound device","options"), KviOption_boolDccVoiceForceHalfDuplex);

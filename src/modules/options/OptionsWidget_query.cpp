@@ -55,13 +55,11 @@ OptionsWidget_query::OptionsWidget_query(QWidget * parent)
 			"be shown in the active window or a common channel.","options"));
 
 
-	b = addBoolSelector(0,1,1,1,__tr2qs_ctx("Open incoming queries as minimized","options"),KviOption_boolCreateIncomingQueriesAsMinimized);
-
-	mergeTip(b,
-		__tr2qs_ctx("This option causes newly created " \
-			"query windows to be immediately minimized.<br>" \
+	b = addBoolSelector(0,1,1,1,__tr2qs_ctx("Open incoming query windows without focus","options"),KviOption_boolCreateIncomingQueriesAsMinimized);
+	mergeTip(b, __tr2qs_ctx("This option prevents incoming " \
+			"query windows from diverting application focus.<br>" \
 			"Enable this if you don't like queries " \
-			"popping up while you're typing something in a channel. :D","options"));
+			"popping up while you're typing something in a channel.","options"));
 
 
 	b = addBoolSelector(0,2,1,2, __tr2qs_ctx("Enable target user tracking","options"),KviOption_boolEnableQueryTracing);

@@ -37,6 +37,7 @@ OptionsWidget_uparser::OptionsWidget_uparser(QWidget * parent)
 	createLayout();
 
 	KviBoolSelector * b;
+	KviBoolSelector * b1;
 
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Disable parser warnings","options"),KviOption_boolAvoidParserWarnings);
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Disable broken event handlers","options"),KviOption_boolDisableBrokenEventHandlers);
@@ -51,14 +52,17 @@ OptionsWidget_uparser::OptionsWidget_uparser(QWidget * parent)
 	addSeparator(0,7,0,7);
 
 	b = addBoolSelector(0,8,0,8,__tr2qs_ctx("Relay errors and warnings to debug window","options"),KviOption_boolScriptErrorsToDebugWindow);
-	mergeTip(b,
-		__tr2qs_ctx("This option will show the script errors and warnings " \
+	mergeTip(b, __tr2qs_ctx("This option will show the script errors and warnings " \
 			"also in the special debug window. This makes tracking of scripts that might " \
 			"be running in several windows far easier. The messages in the debug window " \
 			"also contain a deeper call stack which will help you identifying the " \
-			"scripting problems.","options")
-		);
-	addBoolSelector(0,9,0,9,__tr2qs_ctx("Create minimized debug window","options"),KviOption_boolShowMinimizedDebugWindow);
+			"scripting problems.","options"));
+	
+	b1 = addBoolSelector(0,9,0,9, __tr2qs_ctx("Create debug window without focus","options"),KviOption_boolShowMinimizedDebugWindow);
+	mergeTip(b1, __tr2qs_ctx("This option prevents the debug window " \
+			"from opening and diverting application focus.<br>" \
+			"Enable this if you don't like the debug window " \
+			"popping up while you're typing something in a channel.","options"));
 
 	addRowSpacer(0,10,0,10);
 }
