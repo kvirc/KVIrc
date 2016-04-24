@@ -339,7 +339,7 @@
 //      ERR_???????????  479-480
 #define ERR_NOPRIVILEGES     481 /* ":Permission Denied- You're not an IRC operator" [I,E,U,D] */
 #define ERR_CHANOPRIVSNEEDED 482 /* "%s :You're not channel operator" [I,E,U,D] */
-#define ERR_CANTKILLSERVER   483 /* ":You cant kill a server!" [E,U,D] */
+#define ERR_CANTKILLSERVER   483 /* ":You can't kill a server!" [E,U,D] */
 #define ERR_DESYNC           484 /* ??? [E] */
 #define ERR_ISCHANSERVICE    484 /* ??? [U] */
 #define ERR_CHANTOORECENT    487 /* "<channel> :Channel created too recently" [i] */
