@@ -46,11 +46,11 @@ OptionsWidget_ircGeneral::OptionsWidget_ircGeneral(QWidget * parent)
 {
 	setObjectName("irc_options_widget");
 	createLayout();
-	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Minimize console after successful login","options"),KviOption_boolMinimizeConsoleAfterConnect);
+	//KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Minimize console after successful login","options"),KviOption_boolMinimizeConsoleAfterConnect);
 
-	mergeTip(b,__tr2qs_ctx("This option will cause KVIrc to minimize the console window after successfully logging into a server.","options"));
+	//mergeTip(b,__tr2qs_ctx("This option will cause KVIrc to minimize the console window after successfully logging into a server.","options"));
 
-	b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Show network name in console window list entry","options"),KviOption_boolShowNetworkNameForConsoleWindowListEntry);
+	KviBoolSelector * b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Show network name in console window list entry","options"),KviOption_boolShowNetworkNameForConsoleWindowListEntry);
 	mergeTip(b,__tr2qs_ctx("This option will cause KVIrc to show the network name as the console window list entry instead of the server name. This is nice to keep on unless your servers are not organized in networks or you often connect to two servers of the same network.","options"));
 
 	addRowSpacer(0,2,0,2);

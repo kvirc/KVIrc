@@ -241,7 +241,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolDisableWhoRequestOnJoin 146                    /* channel */
 #define KviOption_boolShowDockExtension 147                          /* internal ? */
 #define KviOption_boolDccAddressByIrcDns 148                         /* irc::general */
-#define KviOption_boolMinimizeConsoleAfterConnect 149                /* irc::connection */
+//#define KviOption_boolMinimizeConsoleAfterConnect 149                /* irc::connection */
 #define KviOption_boolHighlightOnlyNormalMsg 150                     /* irc::output::highlight */
 #define KviOption_boolHighlightOnlyNormalMsgQueryToo 151             /* irc::output::highlight */
 #define KviOption_boolHighlightOnlyNormalMsgHighlightInChanToo 152   /* irc::output::highlight */
