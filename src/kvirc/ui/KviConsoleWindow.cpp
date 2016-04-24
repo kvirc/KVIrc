@@ -791,7 +791,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow *wnd,
 				szNick.prepend(KviNickColors::getSmartColor(sum));
 			} else {
 				/*
-				 * Received a message from an user not in userDataBase: how can this happen?
+				 * Received a message from a user not in userDataBase: how can this happen?
 				 * - services replaying some log
 				 * - user non joined msging a channel -n
 				 * anyway, better fallback than wrong

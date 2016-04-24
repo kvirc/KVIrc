@@ -96,13 +96,13 @@ static bool theme_kvs_cmd_install(KviKvsModuleCommandCall * c)
 		!sw: -b | --builtin
 		<theme> is the name of a builtin theme (a subdirectory of the KVIrc global themes directory)
 		!sw: -u | --user
-		<theme> is the name of an user theme (a subdirectory of the KVIrc local themes directory)
+		<theme> is the name of a user theme (a subdirectory of the KVIrc local themes directory)
 	@description:
 		Attempts to apply the global theme specified by <theme>.
 		If the -b switch is present then <theme> is assumed to be a name of
 		a builtin installed theme (a subdirectory of the KVIrc global themes directory).
 		If the -l switch is present then <theme> is assumed to be a name of
-		an user installed theme (a subdirectory of the KVIrc local themes directory).
+		a user installed theme (a subdirectory of the KVIrc local themes directory).
 		If the -e switch is present then <theme> is assumed to be an absolute
 		directory containing the theme data.
 		If no switch is present then KVIrc tries to determine automatically the
@@ -143,7 +143,7 @@ static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
 	@title:
 		$theme.info
 	@short:
-		Return info about an user defined theme.
+		Return info about a user defined theme.
 	@description:
 		Returns a hash with information about the global theme specified by <theme>.
 */

@@ -1084,7 +1084,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 	@short:
 		Aliases : user definable command sequences
 	@body:
-		An alias is an user defined command.  It can be used to rename the builtin KVIrc commands or functions,
+		An alias is a user defined command.  It can be used to rename the builtin KVIrc commands or functions,
 		to automatize complex tasks or as structured programming mean.
 		Aliases can be created or destroyed by using the scriptcenter (graphic interface)
 		or from the commandline (or script) by using the [cmd]alias[/cmd] command.
@@ -1125,7 +1125,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		This will remove the alias [b]j[/b] defined above.
 		[br]
 		A common task in channel management is the kick & ban action.
-		You first ban an user from the channel and then eventually kick him
+		You first ban a user from the channel and then eventually kick him
 		(obviously assuming that he is actually on the channel).
 		This involves using two commands: ban and then kick.
 		It could be a nice idea to have a single [b]kb[/b] command to perform this action.

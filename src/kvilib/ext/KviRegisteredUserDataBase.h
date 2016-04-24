@@ -70,7 +70,7 @@ public:
 	bool removeGroup(const QString &name);
 	KviRegisteredUser * findUserByName(const QString &name){ return m_pUserDict->find(name); };
 	// mask must be allocated on the heap and the ownership is transferred!
-	// returns non zero if there is already an user with this mask (returns the pointer to it!)
+	// returns non zero if there is already a user with this mask (returns the pointer to it!)
 	KviRegisteredUser * addMask(KviRegisteredUser * u,KviIrcMask * mask);
 	bool removeMaskByPointer(KviIrcMask * mask);
 	bool removeMask(const KviIrcMask &mask);

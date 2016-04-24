@@ -235,7 +235,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			The keys that actually work with KVIrc are:[br]
 			F2 to F12, F1 to F12 with SHIFT key pressed, 0 to 9 with CTRL key pressed.[br]
 			This means that you can set up 33 [i]quick[/i] aliases... that's really more than
-			an user can remember.[br]
+			a user can remember.[br]
 			Note: this event won't be called for keys already bound to actions.
 			If you need more keys, mail me, I'll see what I can do :)[br]
 	*/
@@ -502,7 +502,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			The window that the user has clicked in
 		@description:
-			This event is triggered when an user has double clicked on a nickname in
+			This event is triggered when a user has double clicked on a nickname in
 			the notify list (console window).[br]
 			You should use this event to do some significant action associated with the double click.[br]
 			A good example might be a [cmd]whois[/cmd] query or a [cmd]dcc.chat[/cmd]
@@ -682,7 +682,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			console
 		@description:
-			Triggered when KVIrc detects a netsplit by looking at an user's quit message.
+			Triggered when KVIrc detects a netsplit by looking at a user's quit message.
 			The two parameters passed are the two servers that lost the link and were
 			signaled in that particular quit message.[br]
 			The actual netsplit detector in the KVIrc core uses the following rule
@@ -899,7 +899,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@title:
 			OnHostLinkPopupRequest
 		@short:
-			Triggered when an user right clicks on a hostname link in the text view.
+			Triggered when a user right clicks on a hostname link in the text view.
 		@parameters:
 			$0 = actual name
 			$1 - visible name
@@ -907,7 +907,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			The window that the user has clicked in.
 		@description:
-			This event is triggered when an user has right clicked on a hostname link in the text view.
+			This event is triggered when a user has right clicked on a hostname link in the text view.
 			The double click link action is builtin and it causes KVIrc to perform a DNS query on the hostname.
 			This is a good place to show a popup menu with some operations that can be done on the hostname like
 			[i]telnet[/i], [i]traceroute[/i], some special kind of DNS lookup (maybe an xterm with nslookup or sth).
@@ -935,7 +935,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
 			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
-			This event is triggered when an user has right clicked on an URL link in
+			This event is triggered when a user has right clicked on an URL link in
 			the text view. The double click link action is builtin and it causes KVIrc
 			to open the URL with a browser (typically your OS default browser).[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
@@ -965,7 +965,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
 			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
-			This event is triggered when an user has right clicked on an server name link in
+			This event is triggered when a user has right clicked on an server name link in
 			the text view. The double click link action is builtin and it causes KVIrc
 			to query the MOTD of the server.[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
@@ -997,7 +997,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
 			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
-			This event is triggered when an user has right clicked on an channel link in
+			This event is triggered when a user has right clicked on an channel link in
 			the text view. The double click link action is builtin and it causes KVIrc
 			to join the channel (unless the user is already on).[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
@@ -1027,7 +1027,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
 			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
-			This event is triggered when an user has right clicked on an [i]unknown[/i] nickname link in
+			This event is triggered when a user has right clicked on an [i]unknown[/i] nickname link in
 			the text view.[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
 			that can be performed with the nickname like querying, sending a file by DCC or opening a dcc.chat.
@@ -1060,7 +1060,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
 			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
-			This event is triggered when an user has right clicked on a set of nicknames in
+			This event is triggered when a user has right clicked on a set of nicknames in
 			the query target list.[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
 			that can be performed with the nickname like sending a file by DCC, opening a dcc.chat or
@@ -1086,7 +1086,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			This event is triggered when the user right-clicks in the channel user list
 			or on a nickname link in the channel text view.[br]
-			The first parameter ($0) contains a comma separated list of selected nicknames (if it is an user list click)
+			The first parameter ($0) contains a comma separated list of selected nicknames (if it is a user list click)
 			or a single nickname (if it is a link).[br]
 			In both cases all the nicknames are currently on the channel.[br]
 			You should popup a popup-menu with a set of possible channel-related actions,
@@ -1110,7 +1110,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			The window that the user has clicked in
 		@description:
-			This event is triggered when an user has right clicked on a list of nicknames in
+			This event is triggered when a user has right clicked on a list of nicknames in
 			the notify list (console window).[br]
 			This is a good place to show a [cmd]popup[/cmd] with some actions that can be performed
 			on the nicknames like querying, performing a WHOIS lookup or something similar.[br]
@@ -1736,7 +1736,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			Console
 		@description:
-			Triggered when an user is quitting IRC.[br]
+			Triggered when a user is quitting IRC.[br]
 			The QUIT message has already been processed by the server, so
 			the user is effectively no longer on IRC.
 			On the other side, it might be useful to access the user-related data from
@@ -3716,7 +3716,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user).
 			Command name is set if the visible name differs with the actual link target  (e.g. probably contains mIRC colors). It is equal to the actual target name.
-			This event is triggered when an user has double clicked on a text view and has not hit any link.[br]
+			This event is triggered when a user has double clicked on a text view and has not hit any link.[br]
 			I have no idea what you can do in this event, maybe some sort of channel-central dialog? :)
 	*/
 	EVENT("OnTextViewDoubleClicked",""),
@@ -3739,7 +3739,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
 			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
-			This event is triggered when an user has double clicked on a nickname link.[br]
+			This event is triggered when a user has double clicked on a nickname link.[br]
 			You should use this event to perform some significant action associated with the double click.[br]
 			A good example might be a [cmd]whois[/cmd] or a [cmq]query[/cmd] call.[br]
 			Please note that [b]not all[/b] nickname links will cause this event to be triggered: some nickname
@@ -3789,7 +3789,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Actual name is equal to the command name if command name is not null.
 			Visible name is the link text (as it shown by user)
 			Command name is set if the visible name differs with the actual link target (e.g. probably contains mIRC colors). It is equal to the actual target name.
-			This event is triggered when an user has double clicked on a nickname in
+			This event is triggered when a user has double clicked on a nickname in
 			the query target list.[br]
 			You should use this event to do some significant action associated with the double click.[br]
 			A good example might be a [cmd]WHOIS[/cmd] query or a [cmd]dcc.chat[/cmd]

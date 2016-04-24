@@ -620,13 +620,13 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage *msg)
 					{
 						if(KviUserListEntry * le = ch->findEntry(*s))
 						{
-							l.append(s); // ok...found on a channel...we don't need an userhost to match him
+							l.append(s); // ok...found on a channel...we don't need a userhost to match him
 							KviIrcMask mk(*s,le->globalData()->user(),le->globalData()->host());
 							if(!doMatchUser(*s,mk))return true; // critical problems = have to restart!!!
 							break;
 						}
 					}
-				} // else Only one ref...we need an userhost to be sure (don't remove from the list)
+				} // else Only one ref...we need a userhost to be sure (don't remove from the list)
 			} else {
 				// user wants no userhost for online users...we "hope" that everything will go ok.
 				l.append(s);
@@ -1278,7 +1278,7 @@ bool KviWatchNotifyListManager::handleWatchReply(KviIrcMessage *msg)
 				if(_OUTPUT_VERBOSE)
 					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Notify list: \r!n\r%Q\r is offline (watch)"),&dnk);
 			} else {
-				// This is a RPL_LOGOFF for an user that has not matched the reg-mask
+				// This is a RPL_LOGOFF for a user that has not matched the reg-mask
 				notifyOffLine(dnk,dus,dho,__tr2qs("unmatched watch list entry"));
 			}
 		}

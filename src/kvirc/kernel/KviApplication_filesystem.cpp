@@ -412,7 +412,7 @@ bool KviApplication::mapImageFile(QString &szRetPath,const QString &filename)
 
 bool KviApplication::findImage(QString &szRetPath,const QString &filename)
 {
-	// Find an user file...
+	// Find a user file...
 	if(KviFileUtils::isAbsolutePath(filename))
 	{
 		szRetPath=filename;

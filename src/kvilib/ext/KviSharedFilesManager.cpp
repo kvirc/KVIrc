@@ -67,7 +67,7 @@
 		[big]Security issues[/big]
 		This is a nice but unsecure method of sharing files.[br]
 		The user mask is a good protection but you have to use it properly![br]
-		Setting the user mask to Nick!*@* can be easily exploited (just by making an user disconnect
+		Setting the user mask to Nick!*@* can be easily exploited (just by making a user disconnect
 		in one of the well known ways and then by using his nickname).[br]
 		On the other side, the remote end must know exactly the visible name of the offer to request
 		and no one but you will tell him that name.[br]

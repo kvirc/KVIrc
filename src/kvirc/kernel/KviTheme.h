@@ -68,7 +68,7 @@ public:
 		///
 		Builtin = 0,
 		///
-		/// Theme is an user theme. The subdirectory is inside the kvirc local theme directory.
+		/// Theme is a user theme. The subdirectory is inside the kvirc local theme directory.
 		///
 		User = 1,
 		///

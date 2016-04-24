@@ -41,9 +41,9 @@ Each option starts with a prefix that defines the "type" of that option.
 
 pixmap:		defines an image and thus should contain an image path (see below)
 
-color:		defines an user interface color and is an R,G,B triplet
+color:		defines a user interface color and is an R,G,B triplet
 
-font:		defines an user interface font: you usually need to change only the
+font:		defines a user interface font: you usually need to change only the
 		first two values: font family and size.
 
 msgtype:	defines the icon, text color, background color, log level and
@@ -112,10 +112,10 @@ Review this block, is this applicable in 4.x/5.x?
 
 
 
-What happens when an user installs a theme
+What happens when a user installs a theme
 -----------------------------------------------------------------------------
 
-When an user attempts to install a theme from the options dialog,
+When a user attempts to install a theme from the options dialog,
 KVIrc reads the themedata.kvc file and applies all the visual settings.
 This is an one-time action: the settings are applied only once from the
 themedata.kvc file and then are saved to the user's configuration files.

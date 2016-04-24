@@ -94,7 +94,7 @@
 		On the other hand, if you dislike the users with the nickname Eddie that come from .org
 		and you're implementing an auto-kick system, the correct mask to register is [i]Eddie!*@*.org[/i].
 		[br][br]
-		KVIrc tries to be smart, and always find the most correct match for an user:
+		KVIrc tries to be smart, and always find the most correct match for a user:
 		If you have two masks registered: [b]Pragma!*xor@*.myisp.it[/b] and [b]*!*@*.myisp.it[/b], 
 		KVIrc will match [b]Pragma!~xor@233-dyn.myisp.it[/b] with the first one even if the second 
 		one also matches; the first one however, is a best match.
@@ -106,7 +106,7 @@
 		KVIrc recognizes some of these properties and associates semantic actions to it; other properties
 		are left for scripting extension. Property names are case insensitive.[br]
 		One of the recognized properties is the [i][doc:notify_list]notify[/doc][/i] property.[br][br]
-		When an user is found to have this property set to a special value
+		When a user is found to have this property set to a special value
 		KVIrc will attempt to track the user presence on IRC.
 		Another one is the [doc:avatar]avatar[/doc] property. Its value should be the
 		name of the [i]default[/i] [doc:avatar]avatar image file[/doc] for the specified user.[br]

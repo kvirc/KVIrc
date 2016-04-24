@@ -622,7 +622,7 @@ static bool chan_kvs_fnc_maskcount(KviKvsModuleFunctionCall * c)
 	@title:
 		$chan.ison
 	@short:
-		Checks if an user is on a channel
+		Checks if a user is on a channel
 	@syntax:
 		<boolean> $chan.ison(<nickname:string>[,<window_id:string>])
 	@description:
@@ -650,11 +650,11 @@ static bool chan_kvs_fnc_ison(KviKvsModuleFunctionCall * c)
 	@title:
 		$chan.getflag
 	@short:
-		Returns the channel-user mode flag of an user
+		Returns the channel-user mode flag of a user
 	@syntax:
 		<char> $chan.getflag(<nickname:string>[,<window_id:string>])
 	@description:
-		Returns the channel user mode flag of an user on the channel specified by <window_id>.[br]
+		Returns the channel user mode flag of a user on the channel specified by <window_id>.[br]
 		If <window_id> is not passed, the current window is used.[br]
 		If the specified window is not a channel, a warning is printed and an empty string is returned.[br]
 		If the specified user is not on the channel identified by <window_id>, an empty string is returned.[br]
@@ -710,7 +710,7 @@ static bool __clbkname(KviKvsModuleFunctionCall * c) \
 	@title:
 		$chan.isowner
 	@short:
-		Checks if an user is at least a channel owner
+		Checks if a user is at least a channel owner
 	@syntax:
 		<boolean> $chan.isowner(<nickname:string>[,<window_id:string>])
 	@description:
@@ -729,7 +729,7 @@ IS_KVS_FUNC(chan_kvs_fnc_isowner,isChanOwner)
 	@title:
 		$chan.isadmin
 	@short:
-		Checks if an user is at least channel administrator
+		Checks if a user is at least channel administrator
 	@syntax:
 		<boolean> $chan.isadmin(<nickname:string>[,<window_id:string>])
 	@description:
@@ -748,7 +748,7 @@ IS_KVS_FUNC(chan_kvs_fnc_isadmin,isChanAdmin)
 	@title:
 		$chan.isop
 	@short:
-		Checks if an user is at least an op on a channel
+		Checks if a user is at least an op on a channel
 	@syntax:
 		<boolean> $chan.isop(<nickname:string>[,<window_id:string>])
 	@description:
@@ -767,7 +767,7 @@ IS_KVS_FUNC(chan_kvs_fnc_isop,isOp)
 	@title:
 		$chan.isvoice
 	@short:
-		Checks if an user is at least voiced on a channel
+		Checks if a user is at least voiced on a channel
 	@syntax:
 		<boolean> $chan.isvoice(<nickname:string>[,<window_id:string>])
 	@description:
@@ -786,7 +786,7 @@ IS_KVS_FUNC(chan_kvs_fnc_isvoice,isVoice)
 	@title:
 		$chan.ishalfop
 	@short:
-		Checks if an user is at least halfop on a channel
+		Checks if a user is at least halfop on a channel
 	@syntax:
 		<boolean> $chan.ishalfop(<nickname:string>[,<window_id:string>])
 	@description:
@@ -805,11 +805,11 @@ IS_KVS_FUNC(chan_kvs_fnc_ishalfop,isHalfOp)
 	@title:
 		$chan.isuserop
 	@short:
-		Checks if an user is at least an userop on a channel
+		Checks if a user is at least a userop on a channel
 	@syntax:
 		<boolean> $chan.isuserop(<nickname:string>[,<window_id:string>])
 	@description:
-		Returns [b]1[/b] if <nickname> is at least an user-operator on the channel identified by <window_id>, and [b]0[/b] otherwise.[br]
+		Returns [b]1[/b] if <nickname> is at least a user-operator on the channel identified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not specified the current window is used (assuming that it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
@@ -936,12 +936,12 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismevoice,isMeVoice)
 	@title:
 		$chan.isMeUserOp
 	@short:
-		Checks if the current user is at least an user operator on a channel
+		Checks if the current user is at least a user operator on a channel
 	@syntax:
 		<boolean> $chan.isMeUserOp
 		<boolean> $chan.isMeUserOp(<window_id:String>)
 	@description:
-		Returns [b]1[/b] if the current user is at least an user operator on the channel specified by <window_id>, and [b]0[/b] otherwise.[br]
+		Returns [b]1[/b] if the current user is at least a user operator on the channel specified by <window_id>, and [b]0[/b] otherwise.[br]
 		If <window_id> is not passed, the current window is used (assuming it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		This function is a [i]shortcut[/i] for [fnc]$chan.isuserop[/fnc]([fnc]$me[/fnc]).[br]
@@ -1466,7 +1466,7 @@ static bool chan_kvs_fnc_masklist(KviKvsModuleFunctionCall * c)
 		If no ban mask matches <complete_mask> an empty string is returned.[br]
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty string is returned.[br]
-		This function is useful to determine if a ban set on the channel matches an user.[br]
+		This function is useful to determine if a ban set on the channel matches a user.[br]
 */
 
 static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
@@ -1520,7 +1520,7 @@ static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
 		If no ban exception mask matches <complete_mask> an empty string is returned.[br]
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty string is returned.[br]
-		This function is useful to determine if a ban exception set on the channel matches an user.[br]
+		This function is useful to determine if a ban exception set on the channel matches a user.[br]
 */
 
 static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
@@ -1574,7 +1574,7 @@ static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
 		If no invite mask matches <complete_mask> an empty string is returned.[br]
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty string is returned.[br]
-		This function is useful to determine if a invite set on the channel matches an user.[br]
+		This function is useful to determine if a invite set on the channel matches a user.[br]
 */
 
 static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
@@ -1628,13 +1628,13 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 		will probably be dropped in a future version.[br]
 		Use [fnc]$chan.matchmask[/fnc] instead.[br]
 		Some networks use +q channel mode to set [i]mute bans[/i].[br]
-		When an user mask matches such a ban, he won't be able to send messages to the channel.[br]
+		When a user mask matches such a ban, he won't be able to send messages to the channel.[br]
 		The [i]mute bans[/i] masks will be inserted in the normal channel bans list, with a percent sign % prepended.[br]
 		This function returns the [i]mute ban[/i] mask that matches <complete_mask> on channel identified by [window_id].[br]
 		If no ban mask matches <complete_mask> an empty string is returned.[br]
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty string is returned.[br]
-		This function is useful to determine if a [i]mute ban[/i] set on the channel matches an user.[br]
+		This function is useful to determine if a [i]mute ban[/i] set on the channel matches a user.[br]
 */
 
 static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
@@ -1750,7 +1750,7 @@ static bool chan_kvs_fnc_matchmask(KviKvsModuleFunctionCall * c)
 		users in order to determine the actions they can issue between each other.[br]
 		For example it is granted that an op will have userModeLevel greater than
 		a voiced user or that a simple [i]modeless[/i] user will have
-		an userModeLevel lower than a halfop.[br]
+		a userModeLevel lower than a halfop.[br]
 		IRC allows multiple modes to be applied to a single user on a channel,
 		in that case this function will return the level of the highest mode
 		applied to the user.[br]
@@ -1780,7 +1780,7 @@ static bool chan_kvs_fnc_usermodelevel(KviKvsModuleFunctionCall * c)
 	@title:
 		$chan.userJoinTime
 	@short:
-		Returns the time that an user has joined the channel
+		Returns the time that a user has joined the channel
 	@syntax:
 		<integer> $chan.userJoinTime(<nickname:string>[,<window_id:string>])
 	@description:
@@ -1816,7 +1816,7 @@ static bool chan_kvs_fnc_userjointime(KviKvsModuleFunctionCall * c)
 	@title:
 		$chan.userLastActionTime
 	@short:
-		Returns the time that an user has last performed some kind of action on the channel
+		Returns the time that a user has last performed some kind of action on the channel
 	@syntax:
 		<integer> $chan.userLastActionTime(<nickname:string>[,<window_id:string>])
 	@description:

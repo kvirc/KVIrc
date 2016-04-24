@@ -61,7 +61,7 @@ public:
 	* \brief Defines the user mode in a channel
 	*/
 	enum UserMode {
-		UserOp    =  1,   /**< the user is an userop of the channel */
+		UserOp    =  1,   /**< the user is a userop of the channel */
 		Voice     =  2,   /**< the user is a voice of the channel */
 		HalfOp    =  4,   /**< the user is a halfop of the channel */
 		Op        =  8,   /**< the user is an operator of the channel */

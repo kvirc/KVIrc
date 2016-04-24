@@ -537,9 +537,9 @@ public:
 	bool isVoice(const QString & szNick, bool bAtLeast = false);
 
 	/**
-	* \brief Returns true if the user is an user operator
+	* \brief Returns true if the user is a user operator
 	* \param szNick The nick to moderate
-	* \param bAtLeast Whether the user is at least an user operator
+	* \param bAtLeast Whether the user is at least a user operator
 	* \return bool
 	*/
 	bool isUserOp(const QString & szNick, bool bAtLeast = false);
@@ -595,7 +595,7 @@ public:
 	/**
 	* \brief Verifies the mask for a user action
 	*
-	* This is called when an user "acts" in some visible way on the channel,
+	* This is called when a user "acts" in some visible way on the channel,
 	* so we can keep track of his channel idle time.
 	* This particular function version of userAction will return false if
 	* there was a user or hostname change (unless they were not known at all)
@@ -613,7 +613,7 @@ public:
 	/**
 	* \brief Verifies a user action
 	*
-	* This is called when an user "acts" in some visible way on the channel
+	* This is called when a user "acts" in some visible way on the channel
 	* In this way we can keep track of his channeel idle time. This will
 	* also update the username and hostname if needed.
 	* \param pUser The user by the irc mask
@@ -625,7 +625,7 @@ public:
 	/**
 	* \brief Verifies a user action
 	*
-	* This is called when an user "acts" in some visible way on the channel
+	* This is called when a user "acts" in some visible way on the channel
 	* In this way we can keep track of his channeel idle time. This will
 	* also update the username and hostname if needed.
 	* \param szNick The nickname of the user
@@ -639,7 +639,7 @@ public:
 	/**
 	* \brief Verifies a user action
 	*
-	* This is called when an user "acts" in some visible way on the channel
+	* This is called when a user "acts" in some visible way on the channel
 	* In this way we can keep track of his channeel idle time. This will
 	* also update the username and hostname if needed.
 	* \param szNick The nickname of the user
@@ -657,7 +657,7 @@ public:
 	bool nickChange(const QString & szOldNick, const QString & szNewNick);
 
 	/**
-	* \brief Called when an user joins the channel
+	* \brief Called when a user joins the channel
 	* \param szNick The nickname of the user
 	* \param szUser The username of the user
 	* \param szHost The hostname of the user

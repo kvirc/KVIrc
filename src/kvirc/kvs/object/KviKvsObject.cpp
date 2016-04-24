@@ -144,7 +144,7 @@
 			[/example]
 			You can simulate C structures [i]on the fly[/i] by using objects and fields:[br]
 			[example]
-				# Create an user description on the fly
+				# Create a user description on the fly
 				%myobj = [fnc]$new[/fnc]([class]object[/class],0,userDescription)
 				# Set the fields
 				%myobj-&gt;%nickname = Pragma

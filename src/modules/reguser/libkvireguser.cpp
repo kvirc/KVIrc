@@ -66,12 +66,12 @@ RegisteredUsersDialog * g_pRegisteredUsersDialog = 0;
 	@body:
 		The reguser module is the scripting interface to the [doc:registered_users]registered users database[/doc].[br]
 		It provides the following set of commands:[br]
-		[cmd]reguser.add[/cmd]: adds an user entry to the database[br]
-		[cmd]reguser.addmask[/cmd]: adds an user's mask to the database[br]
-		[cmd]reguser.remove[/cmd]: removes an user entry from the database[br]
+		[cmd]reguser.add[/cmd]: adds a user entry to the database[br]
+		[cmd]reguser.addmask[/cmd]: adds a user's mask to the database[br]
+		[cmd]reguser.remove[/cmd]: removes a user entry from the database[br]
 		[fnc]$reguser.list[/fnc]: lists the entries[br]
 		[cmd]reguser.setproperty[/cmd]: sets a property associated to an entry[br]
-		[cmd]reguser.edit[/cmd]: shows an editor for an user entry
+		[cmd]reguser.edit[/cmd]: shows an editor for a user entry
 		[fnc]$reguser.match[/fnc](): finds an entry by matching masks[br]
 		[fnc]$reguser.exactMatch[/fnc](): finds an entry by comparing masks[br]
 		[fnc]$reguser.property[/fnc](): finds a property associated to an entry[br]
@@ -147,7 +147,7 @@ static bool reguser_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 	@keyterms:
 		registering users
 	@short:
-		Registers an user
+		Registers a user
 	@syntax:
 		reguser.add [-r] [-f] [-q] [-g=group] <name> [mask]
 	@description:
@@ -1162,7 +1162,7 @@ static bool reguser_kvs_fnc_matchProperty(KviKvsModuleFunctionCall * c)
 	@syntax:
 		reguser.wizard [mask]
 	@description:
-		Allows registering an user with an intuitive and easy to use interface.
+		Allows registering a user with an intuitive and easy to use interface.
 		If [mask] is specified, it is used as initial mask in the dialog.
 	@seealso:
 		[module:reguser]Registered users database interface[/module],

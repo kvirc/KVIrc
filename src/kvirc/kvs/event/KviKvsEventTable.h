@@ -112,7 +112,7 @@
 * \def KviEvent_OnConsolePopupRequest Triggered when the console text view is right-clicked
 * \def KviEvent_OnQueryPopupRequest Triggered when the query text view is right-clicked
 * \def KviEvent_OnWindowPopupRequest Triggered when the user middle-clicks in a text view (or right-clicks with the CTRL key pressed)
-* \def KviEvent_OnHostLinkPopupRequest Triggered when an user right clicks on a hostname link in the text view
+* \def KviEvent_OnHostLinkPopupRequest Triggered when a user right clicks on a hostname link in the text view
 * \def KviEvent_OnURLLinkPopupRequest URL link popup customization
 * \def KviEvent_OnServerLinkPopupRequest Server link popup customization
 * \def KviEvent_OnChannelLinkPopupRequest Channel link popup customization

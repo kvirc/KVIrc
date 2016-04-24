@@ -562,7 +562,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	pPropertiesBoxLayout->addWidget(m_pUserEditor,0,1);
 
 	KviTalToolTip::add(m_pUserEditor,__tr2qs_ctx("This is the <b>username</b> that KVIrc will use to login to this server.\n" \
-		"If this field is left empty (most common case), KVIrc will first look if an username is specified " \
+		"If this field is left empty (most common case), KVIrc will first look if a username is specified " \
 		"for the network that this server belongs to, and if that is empty then KVIrc will use the default username " \
 		"specified in the \"Identity\" options tab.","options"));
 

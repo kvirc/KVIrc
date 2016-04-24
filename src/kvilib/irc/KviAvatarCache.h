@@ -105,7 +105,7 @@ public:
 	void remove(const KviIrcMask & mask, const QString & szNetwork);
 
 	/**
-	* \brief Search an user in the cache and returns the id of the avatar
+	* \brief Search a user in the cache and returns the id of the avatar
 	* \param mask The mask of the user
 	* \param szNetwork The network where the user is on
 	* \return const QString &

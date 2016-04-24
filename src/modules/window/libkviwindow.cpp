@@ -1041,7 +1041,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	@title:
 		window.setWindowTitle
 	@short:
-		Sets the caption of an user window
+		Sets the caption of a user window
 	@syntax:
 		window.setWindowTitle [-q] <window_id> <plain_text_caption>
 	@switches:

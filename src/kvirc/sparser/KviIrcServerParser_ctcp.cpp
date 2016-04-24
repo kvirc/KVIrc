@@ -350,7 +350,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		[br]
 		[big]AVATAR (equivalent to ICON or FACE)[/big]
 		[b]Syntax: <0x01>AVATAR<0x01>[/b][br]
-		The AVATAR tag is used to query an user's avatar.[br]
+		The AVATAR tag is used to query a user's avatar.[br]
 		[br]
 		[big]MULTIMEDIA (equivalent to MM or SOUND)[/big]
 		[b]Syntax: <0x01>MULTIMEDIA <filename><0x01>[/b][br]
