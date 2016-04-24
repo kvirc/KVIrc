@@ -760,9 +760,8 @@ void KviInputEditor::ensureCursorVisible()
 	else if(m_iCursorPosition > m_szTextBuffer.length())
 		m_iCursorPosition = m_szTextBuffer.length();
 
-	qreal fCursorXInText = fm->width(m_szTextBuffer.left(m_iCursorPosition));
-
-	qreal fCursorXAbsolute = fCursorXInText - m_p->fXOffset;
+	qreal fCursorXAbsolute = xPositionFromCharIndex(m_iCursorPosition) - KVI_INPUT_MARGIN;
+	qreal fCursorXInText = fCursorXAbsolute + m_p->fXOffset;
 
 	bool bNeedRepaint = false;
 
@@ -2366,9 +2365,7 @@ void KviInputEditor::standardNickCompletion(bool bAddMask,QString & szWord,bool 
 //Funky helpers
 void KviInputEditor::end()
 {
-	m_iCursorPosition = 0;
-	while(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
-		m_iCursorPosition++;
+	m_iCursorPosition = (int)(m_szTextBuffer.length());
 	ensureCursorVisible();
 	repaintWithCursorOn();
 }
