@@ -531,7 +531,7 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 
 	if(KviQString::equalCIN(szCurrent,"http://",7) || KviQString::equalCIN(szCurrent,"https://",8))
 	{
-		// this is an url
+		// this is a url
 		// first check if we have it in the cache
 		KviAvatar * a = g_pIconManager->getAvatar(QString(),szCurrent);
 		if(!a)

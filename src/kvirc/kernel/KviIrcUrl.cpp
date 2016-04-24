@@ -110,7 +110,7 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 	if (rx.indexIn(url) < 0)
 	{
 		result.iError |= InvalidUrl;
-		return; // doesn't match? then it's not even an url...
+		return; // doesn't match? then it's not even a url...
 	}
 
 	if (!rx.cap(1).isEmpty())

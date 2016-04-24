@@ -2590,7 +2590,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 						//word wrap found
 						break;
 					} else {
-						//still ok to run right, but check if we find an url
+						//still ok to run right, but check if we find a url
 						if(i >= l->iBlockCount) break;
 						//we try to save the position of the last "text escape" tag we find
 						if(l->pBlocks[i].pChunk)

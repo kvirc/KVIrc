@@ -245,7 +245,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 
 		if(bIsUrl)
 		{
-			// This is an url, and we don't have a cached copy for now
+			// This is a url, and we don't have a cached copy for now
 			QString szLocalFilePath;
 			QString szLocalFile = szAvatar;
 			g_pIconManager->urlToCachedFileName(szLocalFile);

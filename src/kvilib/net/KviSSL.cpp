@@ -645,7 +645,7 @@ int KviSSLCertificate::fingerprintDigestId()
 	int NID = OBJ_obj2nid(m_pX509->sig_alg->algorithm);
 	if (NID == NID_undef)
 	{
-		// unknow digest function: it means the signature can't be verified: the certificate can't be trusted
+		// unknown digest function: it means the signature can't be verified: the certificate can't be trusted
 		return 0;
 	}
 
