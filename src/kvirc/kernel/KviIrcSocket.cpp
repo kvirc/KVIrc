@@ -213,10 +213,10 @@ void KviIrcSocket::outputProxyMessage(const QString & szMsg)
 {
 	QStringList list = szMsg.isEmpty() ? QStringList() : szMsg.split("\n",QString::SkipEmptyParts);
 
-	for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
+	for(const auto& it : list)
 	{
-		QString szTemporary = (*it).trimmed();
-		m_pConsole->output(KVI_OUT_SOCKETMESSAGE,__tr2qs("[PROXY]: %Q"),&(szTemporary));
+		QString szTemporary = it.trimmed();
+		m_pConsole->output(KVI_OUT_SOCKETMESSAGE,__tr2qs("[PROXY]: %Q"),&szTemporary);
 	}
 }
 
@@ -224,10 +224,10 @@ void KviIrcSocket::outputProxyError(const QString & szMsg)
 {
 	QStringList list = szMsg.isEmpty() ? QStringList() : szMsg.split("\n",QString::SkipEmptyParts);
 
-	for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
+	for(const auto& it : list)
 	{
-		QString szTemporary = (*it).trimmed();
-		m_pConsole->output(KVI_OUT_SOCKETERROR,__tr2qs("[PROXY ERROR]: %Q"),&(szTemporary));
+		QString szTemporary = it.trimmed();
+		m_pConsole->output(KVI_OUT_SOCKETERROR,__tr2qs("[PROXY ERROR]: %Q"),&szTemporary);
 	}
 
 }
@@ -1523,121 +1523,6 @@ void KviIrcSocket::readData(int)
 	if(m_pSendQueueHead)
 		flushSendQueue();
 }
-
-/*
-void KviIrcSocket::processData(char * buffer,int)
-{
-	register char *p=buffer;
-	char *beginOfCurData = buffer;
-	int   bufLen = 0;
-	char *messageBuffer = (char *)KviMemory::allocate(1);
-
-	// Shut up the socket notifier
-	// in case that we enter in a local loop somewhere
-	// while processing data...
-	m_pRsn->setEnabled(false);
-	// shut also the flushing of the message queue
-	// in this way we prevent disconnect detection
-	// during the processing of a message effectively
-	// making it always an asynchronous event.
-	m_bInProcessData = true;
-
-	while(*p)
-	{
-		if((*p == '\r' )||(*p == '\n'))
-		{
-			//found a CR or LF...
-			//prepare a message buffer
-			bufLen = p - beginOfCurData;
-			//check for previous unterminated data
-			if(m_uReadBufferLen > 0){
-				KVI_ASSERT(m_pReadBuffer);
-				messageBuffer = (char *)KviMemory::reallocate(messageBuffer,bufLen + m_uReadBufferLen + 1);
-				KviMemory::move(messageBuffer,m_pReadBuffer,m_uReadBufferLen);
-				KviMemory::move((void *)(messageBuffer + m_uReadBufferLen),beginOfCurData,bufLen);
-				*(messageBuffer + bufLen + m_uReadBufferLen) = '\0';
-				m_uReadBufferLen = 0;
-				KviMemory::free(m_pReadBuffer);
-				m_pReadBuffer = 0;
-			} else {
-				__range_invalid(m_pReadBuffer);
-				messageBuffer = (char *)KviMemory::reallocate(messageBuffer,bufLen + 1);
-				KviMemory::move(messageBuffer,beginOfCurData,bufLen);
-				*(messageBuffer + bufLen) = '\0';
-			}
-			m_uReadPackets++;
-
-			// FIXME: actually it can happen that the socket gets disconnected
-			// in an incomingMessage() call.
-			// The problem might be that some other parts of KVIrc assume
-			// that the IRC context still exists after a failed write to the socket
-			// (some parts don't even check the return value!)
-			// If the problem presents itself again then the solution is:
-			//   disable queue flushing for the "incomingMessage" call
-			//   and just call queue_insertMessage()
-			//   then after the call terminates flush the queue (eventually detecting
-			//   the disconnect and thus destroying the IRC context).
-			// For now we try to rely on the remaining parts to handle correctly
-			// such conditions. Let's see...
-
-			m_pConsole->incomingMessage(messageBuffer);
-
-			if(m_state != Connected)
-			{
-				// Disconnected in KviConsoleWindow::incomingMessage() call.
-				// This may happen for several reasons (local event loop
-				// with the user hitting the disconnect button, a scripting
-				// handler event that disconnects explicitly)
-				//
-				// We handle it by simply returning control to readData() which
-				// will return immediately (and safely) control to Qt
-				KviMemory::free(messageBuffer);
-				m_bInProcessData = false;
-				return;
-			}
-
-			while(*p && ((*p=='\r')||(*p=='\n')) )p++;
-			beginOfCurData = p;
-
-		} else p++;
-	}
-
-	//now *p == '\0'
-	//beginOfCurData points to '\0' if we have
-	//no more stuff to parse, or points to something
-	//different than '\r' or '\n'...
-	if(*beginOfCurData)
-	{
-		//Have remaining data...in the local buffer
-		bufLen = p - beginOfCurData;
-		if(m_uReadBufferLen > 0){
-			//and there was more stuff saved... (really slow connection)
-			KVI_ASSERT(m_pReadBuffer);
-			m_pReadBuffer =(char *)KviMemory::reallocate(m_pReadBuffer,m_uReadBufferLen + bufLen);
-			KviMemory::move((void *)(m_pReadBuffer+m_uReadBufferLen),beginOfCurData,bufLen);
-			m_uReadBufferLen += bufLen;
-		} else {
-			//
-			__range_invalid(m_pReadBuffer);
-			m_uReadBufferLen = bufLen;
-			m_pReadBuffer =(char *)KviMemory::allocate(m_uReadBufferLen);
-			KviMemory::move(m_pReadBuffer,beginOfCurData,m_uReadBufferLen);
-		}
-		//The m_pReadBuffer contains at max 1 irc message...
-		//that can not be longer than 510 bytes (the message is not CRLF terminated)
-		// FIXME: Is this limit *really* valid on all servers ?
-		if(m_uReadBufferLen > 510)qDebug("WARNING : Receiving an invalid irc message from server.");
-	}
-	KviMemory::free(messageBuffer);
-
-	// re-enable the socket notifier...
-	m_pRsn->setEnabled(true);
-	// and the message queue flushing
-	m_bInProcessData = false;
-	// and flush the queue too!
-	if(m_pSendQueueHead)flushSendQueue();
-}
-*/
 
 void KviIrcSocket::abort()
 {

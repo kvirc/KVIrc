@@ -100,10 +100,10 @@ KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarg
 	m_pNetsplitDetectorData = new KviIrcConnectionNetsplitDetectorData();
 	m_pAsyncWhoisData = new KviIrcConnectionAsyncWhoisData();
 	m_pStatistics = new KviIrcConnectionStatistics();
-	m_pNotifyListTimer = 0;
-	m_pNotifyListManager = 0;
-	m_pLocalhostDns = 0;
-	m_pLagMeter = 0;
+	m_pNotifyListTimer = nullptr;
+	m_pNotifyListManager = nullptr;
+	m_pLocalhostDns = nullptr;
+	m_pLagMeter = nullptr;
 	m_eState = Idle;
 	m_pRequestQueue = new KviIrcConnectionRequestQueue();
 	setupSrvCodec();
@@ -120,31 +120,20 @@ KviIrcConnection::~KviIrcConnection()
 	{
 		QObject::disconnect(m_pLocalhostDns,SIGNAL(lookupDone(KviDnsResolver *)),0,0);
 		if(m_pLocalhostDns->isRunning())
-		{
 			m_pLocalhostDns->deleteLater();
-		} else {
+		else
 			delete m_pLocalhostDns;
-		}
 	}
 
 
-	if(m_pNotifyListTimer)
-	{
-		delete m_pNotifyListTimer;
-		m_pNotifyListTimer = 0;
-	}
+	delete m_pNotifyListTimer;
+	m_pNotifyListTimer = nullptr;
 
-	if(m_pNotifyListManager)
-	{
-		delete m_pNotifyListManager; // destroy this before the userDb
-		m_pNotifyListManager = 0;
-	}
+	delete m_pNotifyListManager; // destroy this before the userDb
+	m_pNotifyListManager = nullptr;
 
-	if(m_pLagMeter)
-	{
-		delete m_pLagMeter;
-		m_pLagMeter = 0;
-	}
+	delete m_pLagMeter;
+	m_pLagMeter = nullptr;
 
 	delete m_pLink; // <-- this MAY trigger a linkTerminated() or something like this!
 	delete m_pChannelList;
@@ -212,7 +201,7 @@ void KviIrcConnection::setEncoding(const QString & szEncoding)
 void KviIrcConnection::setupSrvCodec()
 {
 	// grab the codec: first look it up in the server data
-	m_pSrvCodec = 0;
+	m_pSrvCodec = nullptr;
 	if(!m_pTarget->server()->encoding().isEmpty())
 	{
 		m_pSrvCodec = KviLocale::instance()->codecForName(m_pTarget->server()->encoding().toLatin1());
@@ -232,16 +221,15 @@ void KviIrcConnection::setupSrvCodec()
 	}
 
 	if(!m_pSrvCodec)
-	{
 		m_pSrvCodec = KviApplication::defaultSrvCodec();
-	}
+
 	m_pConsole->setTextEncoding(QString(m_pSrvCodec->name()));
 }
 
 void KviIrcConnection::setupTextCodec()
 {
 	// grab the codec: first look it up in the server data
-	m_pTextCodec = 0;
+	m_pTextCodec = nullptr;
 	if(!m_pTarget->server()->textEncoding().isEmpty())
 	{
 		m_pTextCodec = KviLocale::instance()->codecForName(m_pTarget->server()->textEncoding().toLatin1());
@@ -261,9 +249,7 @@ void KviIrcConnection::setupTextCodec()
 	}
 
 	if(!m_pTextCodec)
-	{
 		m_pTextCodec = KviApplication::defaultTextCodec();
-	}
 }
 
 /*
@@ -295,7 +281,6 @@ void KviIrcConnection::serverInfoReceived(const QString & szServerName, const QS
 
 const QString & KviIrcConnection::currentNetworkName()
 {
-	//return m_pTarget->networkName();
 	return m_pServerInfo->networkName();
 }
 
@@ -311,7 +296,7 @@ void KviIrcConnection::start()
 	if(KVI_OPTION_BOOL(KviOption_boolUseIdentService) && KVI_OPTION_BOOL(KviOption_boolUseIdentServiceOnlyOnConnect))
 	{
 		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_START);
-		m_bIdentdAttached=true;
+		m_bIdentdAttached = true;
 	}
 	m_pLink->start();
 }
@@ -329,7 +314,7 @@ void KviIrcConnection::linkEstablished()
 	// FIXME: With STARTTLS this is called TWICE!
 	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
-		for(KviIrcDataStreamMonitor *m =l->first();m;m =l->next())
+		for(KviIrcDataStreamMonitor *m = l->first();m;m = l->next())
 			m->connectionInitiated();
 	}
 
@@ -450,7 +435,6 @@ void KviIrcConnection::handleInitialCapLs()
 	// a full cap renegotiation
 #ifdef COMPILE_SSL_SUPPORT
 	if(
-		//KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable) &&
 		(!link()->socket()->usingSSL()) &&
 		target()->server()->enabledSTARTTLS() &&
 		serverInfo()->supportedCaps().contains("tls",Qt::CaseInsensitive)
@@ -499,17 +483,16 @@ void KviIrcConnection::handleInitialCapAck()
 
 	m_pStateData->setInsideInitialCapReq(false);
 
-	bool bUsed=false;
+	bool bUsed = false;
 
 	//SASL
 	if(
-		//KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable) &&
 		target()->server()->enabledSASL() &&
 		m_pStateData->enabledCaps().contains("sasl",Qt::CaseInsensitive)
 	)
 	{
 		m_pStateData->setInsideAuthenticate(true);
-		bUsed=true;
+		bUsed = true;
 
 		sendFmtData("AUTHENTICATE PLAIN");
 	}
@@ -560,25 +543,19 @@ void KviIrcConnection::linkTerminated()
 	if(m_bIdentdAttached)
 	{
 		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
-		m_bIdentdAttached=false;
+		m_bIdentdAttached = false;
 	}
 	m_eState = Idle;
 
-	if(m_pNotifyListManager)
-	{
-		delete m_pNotifyListManager;
-		m_pNotifyListManager = 0;
-	}
+	delete m_pNotifyListManager;
+	m_pNotifyListManager = nullptr;
 
-	if(m_pLagMeter)
-	{
-		delete m_pLagMeter;
-		m_pLagMeter = 0;
-	}
+	delete m_pLagMeter;
+	m_pLagMeter = nullptr;
 
 	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
-		for(KviIrcDataStreamMonitor *m =l->first();m;m =l->next())
+		for(KviIrcDataStreamMonitor *m = l->first();m;m = l->next())
 			m->connectionTerminated();
 	}
 
@@ -591,7 +568,7 @@ void KviIrcConnection::linkAttemptFailed(int iError)
 	if(m_bIdentdAttached)
 	{
 		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
-		m_bIdentdAttached=false;
+		m_bIdentdAttached = false;
 	}
 	m_eState = Idle;
 	context()->connectionFailed(iError);
@@ -708,7 +685,6 @@ KviQueryWindow * KviIrcConnection::createQuery(const QString & szNick,CreateQuer
 			bShowIt = !KVI_OPTION_BOOL(KviOption_boolCreateIncomingQueriesAsMinimized);
 		break;
 	}
-
 
 	if(q)
 	{
@@ -892,8 +868,7 @@ void KviIrcConnection::delayedStartNotifyList()
 {
 	KVI_ASSERT(!m_pNotifyListTimer);
 
-	if(m_pNotifyListTimer)
-		delete m_pNotifyListTimer;
+	delete m_pNotifyListTimer;
 
 	m_pNotifyListTimer = new QTimer();
 	m_pNotifyListTimer->setInterval(15000);
@@ -917,18 +892,15 @@ void KviIrcConnection::endOfMotdReceived()
 
 void KviIrcConnection::restartNotifyList()
 {
-	if(m_pNotifyListTimer)
-	{
-		delete m_pNotifyListTimer;
-		m_pNotifyListTimer = 0;
-	}
+	delete m_pNotifyListTimer;
+	m_pNotifyListTimer = nullptr;
 
 	// clear it
 	if(m_pNotifyListManager)
 	{
 		m_pNotifyListManager->stop(); // may need to remove watch entries
 		delete m_pNotifyListManager;
-		m_pNotifyListManager = 0;
+		m_pNotifyListManager = nullptr;
 	}
 
 	if(!KVI_OPTION_BOOL(KviOption_boolUseNotifyList))
@@ -941,22 +913,18 @@ void KviIrcConnection::restartNotifyList()
 		m_pNotifyListManager = new KviWatchNotifyListManager(this);
 	} else {
 		if(KVI_OPTION_BOOL(KviOption_boolUseIntelligentNotifyListManager))
-		{
 			m_pNotifyListManager = new KviIsOnNotifyListManager(this);
-		} else {
+		else
 			m_pNotifyListManager = new KviStupidNotifyListManager(this);
-		}
 	}
 	m_pNotifyListManager->start();
 }
 
 void KviIrcConnection::restartLagMeter()
 {
-	if(m_pLagMeter)
-	{
-		delete m_pLagMeter;
-		m_pLagMeter = 0;
-	}
+	delete m_pLagMeter;
+	m_pLagMeter = nullptr;
+
 	if(!KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine))
 		return;
 	m_pLagMeter = new KviLagMeter(this);
@@ -1015,7 +983,8 @@ void KviIrcConnection::changeAwayState(bool bAway)
 {
 	if(bAway)
 		m_pUserInfo->setAway();
-	else m_pUserInfo->setBack();
+	else
+		m_pUserInfo->setBack();
 
 	m_pConsole->updateCaption();
 	g_pMainWindow->childConnectionAwayStateChange(this);
@@ -1110,8 +1079,7 @@ void KviIrcConnection::userInfoReceived(const QString & szUserName, const QStrin
 
 		} else {
 			// look it up too
-			if(m_pLocalhostDns)
-				delete m_pLocalhostDns; // it could be only another local host lookup
+			delete m_pLocalhostDns; // it could be only another local host lookup
 			m_pLocalhostDns = new KviDnsResolver();
 			connect(m_pLocalhostDns,SIGNAL(lookupDone(KviDnsResolver *)),this,SLOT(hostNameLookupTerminated(KviDnsResolver *)));
 
@@ -1124,7 +1092,7 @@ void KviIrcConnection::userInfoReceived(const QString & szUserName, const QStrin
 					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Unable to resolve the local hostname as seen by the IRC server: %Q"),&szTmp);
 				}
 				delete m_pLocalhostDns;
-				m_pLocalhostDns = 0;
+				m_pLocalhostDns = nullptr;
 			} else {
 				if(!_OUTPUT_MUTE)
 					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Looking up the local hostname as seen by the IRC server (%Q)"),&szHostName);
@@ -1157,7 +1125,7 @@ void KviIrcConnection::hostNameLookupTerminated(KviDnsResolver *)
 	}
 
 	delete m_pLocalhostDns;
-	m_pLocalhostDns = 0;
+	m_pLocalhostDns = nullptr;
 }
 
 void KviIrcConnection::useRealName(const QString &szRealName)
@@ -1437,15 +1405,14 @@ void KviIrcConnection::loginToIrcServer()
 
 	// Nick
 	if(pServer->reconnectInfo())
-		szTmpNick=pServer->reconnectInfo()->m_szNick;
+		szTmpNick = pServer->reconnectInfo()->m_szNick;
 
 	// set this one as default (also for pickNextLoginNickName() below)
 	m_pStateData->setLoginNickNameState(KviIrcConnectionStateData::UsedConnectionSpecificNickName);
 
 	QString szChoiceDescription;
 
-	if(!szTmpNick.isEmpty())
-	{
+	if(!szTmpNick.isEmpty()) {
 		szChoiceDescription = __tr2qs("connection specific");
 	} else {
 		szTmpNick = pickNextLoginNickName(true,QString(),szChoiceDescription);
@@ -1464,19 +1431,19 @@ void KviIrcConnection::loginToIrcServer()
 	m_pUserInfo->setNickName(szTmpNick);
 
 	// Real name
-	szTmpName=pServer->realName().trimmed();
+	szTmpName = pServer->realName().trimmed();
 	if(!szTmpName.isEmpty())
 	{
 		if(!_OUTPUT_MUTE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific real name (%Q)"),&(szTmpName));
 	} else {
-		szTmpName=pNet->realName().trimmed();
+		szTmpName = pNet->realName().trimmed();
 		if(!szTmpName.isEmpty())
 		{
 			if(!_OUTPUT_MUTE)
 				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific real name (%Q)"),&(szTmpName));
 		} else {
-			szTmpName=KVI_OPTION_STRING(KviOption_stringRealname);
+			szTmpName = KVI_OPTION_STRING(KviOption_stringRealname);
 		}
 	}
 
@@ -1484,9 +1451,7 @@ void KviIrcConnection::loginToIrcServer()
 
 	// Pass
 	if(pServer->reconnectInfo())
-	{
-		szTmpPass=pServer->reconnectInfo()->m_szPass;
-	}
+		szTmpPass = pServer->reconnectInfo()->m_szPass;
 
 	if(!szTmpPass.isEmpty())
 	{
@@ -1553,28 +1518,23 @@ void KviIrcConnection::loginToIrcServer()
 		}
 	}
 
+	// disconnected :(
 	if(!sendFmtData("NICK %s",szNick.data()))
-	{
-		// disconnected :(
 		return;
-	}
 
-	unsigned int iGenderAvatarTag=0;
+	unsigned int iGenderAvatarTag = 0;
 
 	if(KVI_OPTION_BOOL(KviOption_boolPrependGenderInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).isEmpty())
 	{
 		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",Qt::CaseInsensitive))
-		{
-			iGenderAvatarTag|=1;
-		} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",Qt::CaseInsensitive))
-		{
-			iGenderAvatarTag|=2;
-		}
+			iGenderAvatarTag |= 1;
+		else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",Qt::CaseInsensitive))
+			iGenderAvatarTag |= 2;
 	}
 
 	if(KVI_OPTION_BOOL(KviOption_boolPrependAvatarInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty())
 	{
-		iGenderAvatarTag|=4;
+		iGenderAvatarTag |= 4;
 	}
 
 	if(KVI_OPTION_BOOL(KviOption_boolPrependNickColorInfoToRealname) &&
@@ -1593,7 +1553,7 @@ void KviIrcConnection::loginToIrcServer()
 		szReal.prepend(szTags.toUtf8());
 	}
 
-	if(iGenderAvatarTag!=0)
+	if(iGenderAvatarTag != 0)
 	{
 		QString szTags;
 		szTags.sprintf("%c%d%c",
@@ -1603,35 +1563,31 @@ void KviIrcConnection::loginToIrcServer()
 		szReal.prepend(szTags.toUtf8());
 	}
 
+	// disconnected in the meantime!
 	if(!sendFmtData("USER %s 0 %s :%s",szUser.data(),pServer->hostName().toUtf8().data(),szReal.data()))
-	{
-		// disconnected in the meantime!
 		return;
-	}
 
 	// permanent info in the user database
 	m_pConsole->notifyListView()->join(m_pUserInfo->nickName(),"*","*");
 
 	// set own avatar if we have it
 	KviIrcUserEntry * e = userDataBase()->find(userInfo()->nickName());
-	if(e) // should be there!
-	{
-		if(!e->avatar())
-		{
-			KviAvatar * av = m_pConsole->defaultAvatarFromOptions();
-			if(av)
-			{
-				e->setAvatar(av);
-				m_pConsole->notifyListView()->avatarChanged(userInfo()->nickName());
-			}
-		}
-	} // else buuug
 
-	if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",Qt::CaseInsensitive)){
-			e->setGender(KviIrcUserEntry::Male);
-	} else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",Qt::CaseInsensitive)){
-			e->setGender(KviIrcUserEntry::Female);
-	}
+	// our nick should be there!
+	if(e && !e->avatar())
+	{
+		KviAvatar * av = m_pConsole->defaultAvatarFromOptions();
+		if(av)
+		{
+			e->setAvatar(av);
+			m_pConsole->notifyListView()->avatarChanged(userInfo()->nickName());
+		}
+	} // else buuug, couldn't find our nick
+
+	if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m",Qt::CaseInsensitive))
+		e->setGender(KviIrcUserEntry::Male);
+	else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f",Qt::CaseInsensitive))
+		e->setGender(KviIrcUserEntry::Female);
 
 	// on connect stuff ?
 
@@ -1869,22 +1825,21 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 		KviKvsScript::run(tmp.ptr(),m_pConsole);
 	}
 
-	bool bJoinStdChannels=true;
+	bool bJoinStdChannels = true;
 
 	if(target()->server()->reconnectInfo())
 	{
 		if(!target()->server()->reconnectInfo()->m_lJoinChannels.isEmpty())
 		{
-			bJoinStdChannels=false;
+			bJoinStdChannels = false;
 			joinChannels(target()->server()->reconnectInfo()->m_lJoinChannels);
 		}
 
 		KviQueryWindow * pQuery;
 
-		for(QStringList::Iterator it = target()->server()->reconnectInfo()->m_lOpenQueries.begin();
-			it != target()->server()->reconnectInfo()->m_lOpenQueries.end();it++)
+		for(const auto& it : target()->server()->reconnectInfo()->m_lOpenQueries)
 		{
-			QString szNick = *it;
+			QString szNick = it;
 			pQuery = findQuery(szNick);
 			if(!pQuery)
 			{
@@ -1918,10 +1873,10 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Auto-joining network specific channels"));
 
 			QStringList * l = target()->network()->autoJoinChannelList();
-			for(QStringList::Iterator it = l->begin(); it != l->end(); ++it)
+			for(const auto& it : *l)
 			{
-				szCurPass=(*it).section(':',1);
-				szCurChan = (*it).section(':',0,0);
+				szCurPass= it.section(':',1);
+				szCurChan = it.section(':',0,0);
 				if(szCurChan.isEmpty())
 					continue;
 				if(!m_pServerInfo->isSupportedChannelType(szCurChan[0]))
@@ -1936,10 +1891,10 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Auto-joining server specific channels"));
 
 			QStringList * l = target()->server()->autoJoinChannelList();
-			for(QStringList::Iterator it = l->begin(); it != l->end(); ++it)
+			for(const auto& it : *l)
 			{
-				szCurPass=(*it).section(':',1);
-				szCurChan = (*it).section(':',0,0);
+				szCurPass = it.section(':',1);
+				szCurChan = it.section(':',0,0);
 				if(szCurChan.isEmpty())
 					continue;
 				if(!m_pServerInfo->isSupportedChannelType(szCurChan[0]))
