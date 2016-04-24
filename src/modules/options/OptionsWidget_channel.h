@@ -47,7 +47,6 @@ public:
 	~OptionsWidget_channel();
 };
 
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_channelGeneral KviIconManager::Channel
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channelGeneral __tr2qs_no_lookup("General")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_channelGeneral OptionsWidget_channel

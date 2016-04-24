@@ -52,17 +52,16 @@ OptionsWidget_interfaceFeatures::OptionsWidget_interfaceFeatures(QWidget * paren
 #else
 	addBoolSelector(0,5,0,5,__tr2qs_ctx("Require Ctrl to be held down to copy text","options"),KviOption_boolRequireControlToCopy);
 #endif
-
 	KviTalGroupBox * g = addGroupBox(0,6,0,6,Qt::Horizontal,__tr2qs_ctx("Open Dialog Window for","options"));
 	addBoolSelector(g,__tr2qs_ctx("Preferences","options"),KviOption_boolShowGeneralOptionsDialogAsToplevel);
 	addBoolSelector(g,__tr2qs_ctx("Registered users","options"),KviOption_boolShowRegisteredUsersDialogAsToplevel);
 	addBoolSelector(g,__tr2qs_ctx("Identity","options"),KviOption_boolShowIdentityDialogAsToplevel);
 	addBoolSelector(g,__tr2qs_ctx("Servers","options"),KviOption_boolShowServersConnectDialogAsToplevel);
 	addBoolSelector(g,__tr2qs_ctx("Join channels","options"),KviOption_boolShowChannelsJoinDialogAsToplevel);
+
 	addRowSpacer(0,7,0,7);
 }
 
 OptionsWidget_interfaceFeatures::~OptionsWidget_interfaceFeatures()
 {
 }
-
