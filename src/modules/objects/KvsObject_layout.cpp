@@ -140,6 +140,13 @@ bool KvsObject_layout::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *)
 		pContext->warning(__tr2qs_ctx("The parent of a layout must be a widget!","objects"));
 		return false;
 	}
+
+	if(w->inherits("QToolBar"))
+	{
+		pContext->warning(__tr2qs_ctx("Qt does not support setting layouts on toolbar objects","objects"));
+		return false;
+	}
+
 	// If there already is a layout manager installed on this widget, QWidget won't let you install another.
 	if(w->layout()) delete w->layout();
 	setObject(new QGridLayout(w));
