@@ -74,14 +74,13 @@ OptionsWidget_channelGeneral::OptionsWidget_channelGeneral(QWidget * pParent)
 	mergeTip(b,
 		__tr2qs_ctx("This option will cause KVIrc to automatically " \
 			"join a channel when an INVITE message for that channel is received.<br>" \
-			"<b>Warning:</b> this may help spammers harass you. :)","options"));
+			"<b>Warning:</b> this may help spammers harass you.","options"));
 
-	b = addBoolSelector(0,3,0,3, __tr2qs_ctx("Always open channels as minimized","options"),KviOption_boolCreateMinimizedChannels);
-	mergeTip(b,
-		__tr2qs_ctx("This option causes newly created " \
-			"channel windows to be immediately minimized.<br>" \
+	b = addBoolSelector(0,3,0,3, __tr2qs_ctx("Open channel windows without focus","options"),KviOption_boolCreateMinimizedChannels);
+	mergeTip(b, __tr2qs_ctx("This option prevents newly created " \
+			"channel windows from diverting application focus.<br>" \
 			"Enable this if you don't like channels " \
-			"popping up while you're typing something in a channel. :D","options"));
+			"popping up while you're typing something in a channel.","options"));
 
 	addRowSpacer(0,4,0,4);
 }
