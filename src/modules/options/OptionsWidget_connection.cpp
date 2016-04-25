@@ -173,7 +173,7 @@ OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 #endif //!COMPILE_IPV6_SUPPORT
 
-	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Pick random IP address for Round-robin servers","options"),KviOption_boolPickRandomIpAddressForRoundRobinServers);
+	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Pick random IP address for round-robin servers","options"),KviOption_boolPickRandomIpAddressForRoundRobinServers);
 	mergeTip(b,__tr2qs_ctx("This option will cause the KVIrc networking stack to pick up " \
 		"a random entry when multiple IP address are retrieved for a server " \
 		"DNS lookup. This is harmless and can fix some problems with caching " \
