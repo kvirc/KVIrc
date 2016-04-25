@@ -38,33 +38,45 @@ OptionsWidget_notify::OptionsWidget_notify(QWidget * parent)
 
 	KviBoolSelector * b;
 	KviTalGroupBox * g;
+	KviUIntSelector * u;
 
 	b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Use online notify list","options"),KviOption_boolUseNotifyList);
 
 	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Configuration","options"));
 	connect(b,SIGNAL(toggled(bool)),g,SLOT(setEnabled(bool)));
-	connect(b,SIGNAL(toggled(bool)),addBoolSelector(g,__tr2qs_ctx("Show notifications in active window","options"),KviOption_boolNotifyListChangesToActiveWindow,
-		KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),SLOT(setEnabled(bool)));
-	connect(b,SIGNAL(toggled(bool)),addBoolSelector(g,__tr2qs_ctx("Flash window when users are going online","options"),KviOption_boolFlashWindowOnNotifyOnLine,
-		KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),SLOT(setEnabled(bool)));
-	connect(b,SIGNAL(toggled(bool)),addBoolSelector(g,__tr2qs_ctx("Popup notifier when users are going online","options"),KviOption_boolPopupNotifierOnNotifyOnLine,
-		KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),SLOT(setEnabled(bool)));
+
+	b = addBoolSelector(g,__tr2qs_ctx("Show notifications in active window","options"),KviOption_boolNotifyListChangesToActiveWindow,KVI_OPTION_BOOL(KviOption_boolUseNotifyList));
+	connect(g,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
+
+	b = addBoolSelector(g,__tr2qs_ctx("Flash window when users are going online","options"),KviOption_boolFlashWindowOnNotifyOnLine,KVI_OPTION_BOOL(KviOption_boolUseNotifyList));
+	connect(g,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
+
+	b = addBoolSelector(g,__tr2qs_ctx("Popup notifier when users are going online","options"),KviOption_boolPopupNotifierOnNotifyOnLine,KVI_OPTION_BOOL(KviOption_boolUseNotifyList));
+	connect(g,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
 
 	g = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("Advanced Configuration","options"));
 	connect(b,SIGNAL(toggled(bool)),g,SLOT(setEnabled(bool)));
 
-	connect(b,SIGNAL(toggled(bool)),addBoolSelector(g,__tr2qs_ctx("Check USERHOST for online users","options"),KviOption_boolNotifyListSendUserhostForOnlineUsers,
-		KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),SLOT(setEnabled(bool)));
-	connect(b,SIGNAL(toggled(bool)),addBoolSelector(g,__tr2qs_ctx("Use \"smart\" notify list manager","options"),KviOption_boolUseIntelligentNotifyListManager,
-		KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),SLOT(setEnabled(bool)));
-	connect(b,SIGNAL(toggled(bool)),addBoolSelector(g,__tr2qs_ctx("Use the WATCH method if available","options"),KviOption_boolUseWatchListIfAvailable,
-		KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),SLOT(setEnabled(bool)));
-	connect(b,SIGNAL(toggled(bool)),addUIntSelector(g,__tr2qs_ctx("Check interval (in seconds):","options"),KviOption_uintNotifyListCheckTimeInSecs,5,3600,180,
-		KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),SLOT(setEnabled(bool)));
-	connect(b,SIGNAL(toggled(bool)),addUIntSelector(g,__tr2qs_ctx("ISON delay (in seconds):","options"),KviOption_uintNotifyListIsOnDelayTimeInSecs,5,180,6,
-		KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),SLOT(setEnabled(bool)));
-	connect(b,SIGNAL(toggled(bool)),addUIntSelector(g,__tr2qs_ctx("USERHOST delay (in seconds):","options"),KviOption_uintNotifyListUserhostDelayTimeInSecs,5,180,6,
-		KVI_OPTION_BOOL(KviOption_boolUseNotifyList)),SLOT(setEnabled(bool)));
+	b = addBoolSelector(g,__tr2qs_ctx("Check USERHOST for online users","options"),KviOption_boolNotifyListSendUserhostForOnlineUsers,KVI_OPTION_BOOL(KviOption_boolUseNotifyList));
+	connect(g,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
+
+	b = addBoolSelector(g,__tr2qs_ctx("Use \"smart\" notify list manager","options"),KviOption_boolUseIntelligentNotifyListManager,KVI_OPTION_BOOL(KviOption_boolUseNotifyList));
+	connect(g,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
+
+	b = addBoolSelector(g,__tr2qs_ctx("Use the WATCH method if available","options"),KviOption_boolUseWatchListIfAvailable,KVI_OPTION_BOOL(KviOption_boolUseNotifyList));
+	connect(g,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
+
+	u = addUIntSelector(g,__tr2qs_ctx("Check interval:","options"),KviOption_uintNotifyListCheckTimeInSecs,5,3600,180,KVI_OPTION_BOOL(KviOption_boolUseNotifyList));
+	u->setSuffix(__tr2qs_ctx(" sec","options"));
+	connect(g,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
+
+	u = addUIntSelector(g,__tr2qs_ctx("ISON delay:","options"),KviOption_uintNotifyListIsOnDelayTimeInSecs,5,180,6,KVI_OPTION_BOOL(KviOption_boolUseNotifyList));
+	u->setSuffix(__tr2qs_ctx(" sec","options"));
+	connect(g,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
+
+	u = addUIntSelector(g,__tr2qs_ctx("USERHOST delay:","options"),KviOption_uintNotifyListUserhostDelayTimeInSecs,5,180,6,KVI_OPTION_BOOL(KviOption_boolUseNotifyList));
+	u->setSuffix(__tr2qs_ctx(" sec","options"));
+	connect(g,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	addLabel(0,3,0,3,__tr2qs_ctx("<p><b>Note:</b><br>The notify list is managed using the \"Registered Users\" settings.</p>","options"));
 
