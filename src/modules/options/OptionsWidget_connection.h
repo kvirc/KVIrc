@@ -41,7 +41,6 @@ public:
 	~OptionsWidget_connection();
 };
 
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionAdvanced KviIconManager::Gui
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionAdvanced __tr2qs_no_lookup("Advanced")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_connectionAdvanced OptionsWidget_connection
@@ -55,13 +54,10 @@ public:
 	~OptionsWidget_connectionAdvanced();
 };
 
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSsl KviIconManager::Ssl
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSsl __tr2qs_no_lookup("SSL")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_connectionSsl OptionsWidget_connectionAdvanced
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSsl 30
-
-
 
 class OptionsWidget_connectionSsl : public KviOptionsWidget
 {
@@ -71,13 +67,10 @@ public:
 	~OptionsWidget_connectionSsl();
 };
 
-
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_connectionSocket KviIconManager::Socket
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_connectionSocket __tr2qs_no_lookup("Socket")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_connectionSocket OptionsWidget_connectionAdvanced
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_connectionSocket 20
-
 
 class OptionsWidget_connectionSocket : public KviOptionsWidget
 {
@@ -87,12 +80,10 @@ public:
 	~OptionsWidget_connectionSocket();
 };
 
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identService KviIconManager::Ident
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identService __tr2qs_no_lookup("Ident Service")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_identService OptionsWidget_connectionAdvanced
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identService 10
-
 
 class OptionsWidget_identService : public KviOptionsWidget
 {

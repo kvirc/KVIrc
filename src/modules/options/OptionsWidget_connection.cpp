@@ -38,9 +38,13 @@ OptionsWidget_connection::OptionsWidget_connection(QWidget * parent)
 {
 	setObjectName("connection_options_widget");
 	createLayout();
-	KviTalGroupBox *gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Disconnect","options"));
 
-	KviBoolSelector *b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep channels open","options"),KviOption_boolKeepChannelsOpenOnDisconnect,true);
+	KviBoolSelector * b1;
+	KviBoolSelector * b;
+
+	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Disconnect","options"));
+
+	b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep channels open","options"),KviOption_boolKeepChannelsOpenOnDisconnect,true);
 	mergeTip(b1,__tr2qs_ctx("This option will cause KVIrc to keep channels open after disconnect.","options"));
 
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep queries open","options"),KviOption_boolKeepQueriesOpenOnDisconnect,true);
@@ -60,36 +64,29 @@ OptionsWidget_connection::OptionsWidget_connection(QWidget * parent)
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Reopen queries after reconnect","options"),KviOption_boolReopenQueriesAfterReconnect,true);
 	mergeTip(b1,__tr2qs_ctx("This option will cause KVIrc to reopen query windows after a successful reconnect attempt.","options"));
 
-//	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("On Unexpected Disconnect","options"));
-	KviBoolSelector * b = addBoolSelector(gbox,__tr2qs_ctx("Automatically reconnect","options"),KviOption_boolAutoReconnectOnUnexpectedDisconnect);
+	b = addBoolSelector(gbox,__tr2qs_ctx("Automatically reconnect","options"),KviOption_boolAutoReconnectOnUnexpectedDisconnect);
 	mergeTip(b,__tr2qs_ctx("This option will enable auto-reconnecting after an unexpected disconnect. " \
-		"An unexpected disconnect is the <b>termination</b> of a <b>fully connected IRC session</b> " \
-		"that was <b>not requested by the user</b> by the means of the QUIT message." \
-		"<p><b>Warning:</b> If you use /RAW to send a QUIT message to the server, " \
-		"this option will not behave correctly, since does not detect the outgoing " \
-		"QUIT message and will attempt to reconnect after the server has closed the connection. " \
-		"For this reason, always use the /QUIT command to close your connections. " \
-		"This option may also behave incorrectly with bouncers that support " \
-		"detaching, in this case a solution could be to prepare an alias that sends the " \
-		"bouncer \"detach\" command immediately before the \"quit\" command.<br>" \
-		"<tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p>","options"));
+				"An unexpected disconnect is the <b>termination</b> of a <b>fully connected IRC session</b> " \
+				"that was <b>not requested by the user</b> by the means of the QUIT message." \
+				"<p><b>Warning:</b> If you use /RAW to send a QUIT message to the server, " \
+				"this option will not behave correctly, since does not detect the outgoing " \
+				"QUIT message and will attempt to reconnect after the server has closed the connection. " \
+				"For this reason, always use the /QUIT command to close your connections. " \
+				"This option may also behave incorrectly with bouncers that support " \
+				"detaching, in this case a solution could be to prepare an alias that sends the " \
+				"bouncer \"detach\" command immediately before the \"quit\" command.<br>" \
+				"<tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p>","options"));
 
 	KviUIntSelector * u = addUIntSelector(gbox,__tr2qs_ctx("Maximum attempts (0: unlimited):","options"),
-			KviOption_uintMaxAutoReconnectAttempts,0,100,5,
-			KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
+		KviOption_uintMaxAutoReconnectAttempts,0,100,5,KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
-	u = addUIntSelector(gbox,__tr2qs_ctx("Delay between attempts:","options"),
-			KviOption_uintAutoReconnectDelay,0,86400,5,
-			KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
+	u = addUIntSelector(gbox,__tr2qs_ctx("Delay between attempts:","options"),KviOption_uintAutoReconnectDelay,0,86400,5,
+		KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
-	mergeTip(u,__tr2qs_ctx("Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b>","options"));
 
-	// This is now handled per-server.
-	//b = addBoolSelector(this,__tr2qs_ctx("Use the SASL authentication protocol if available","options"),&(KVI_OPTION_BOOL(KviOption_boolUseSaslIfAvailable)),true);
-	//mergeTip(b,__tr2qs_ctx("When available and enabled of the specific server, KVIrc will try to authenticate the user using the SASL procotol","options"));
-	//addWidgetToLayout(b,0,2,0,2);
+	mergeTip(u,__tr2qs_ctx("Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b>","options"));
 
 	addRowSpacer(0,3,4,3);
 }
@@ -106,31 +103,34 @@ OptionsWidget_connectionSsl::OptionsWidget_connectionSsl(QWidget * parent)
 	createLayout();
 
 #ifdef COMPILE_SSL_SUPPORT
+
+	KviBoolSelector * b;
+	KviFileSelector * f;
+	KviPasswordSelector * p;
+
 	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Certificate","options"));
 
-	KviBoolSelector * b = addBoolSelector(gbox,__tr2qs_ctx("Use SSL certificate (PEM format only)","options"),
+	b = addBoolSelector(gbox,__tr2qs_ctx("Use SSL certificate (PEM format only)","options"),
 		&(KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate)),true);
-	KviFileSelector * f = addFileSelector(gbox,__tr2qs_ctx("Certificate location:","options"),
-		&(KVI_OPTION_STRING(KviOption_stringSSLCertificatePath)),KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate));
+
+	f = addFileSelector(gbox,__tr2qs_ctx("Certificate location:","options"),&(KVI_OPTION_STRING(KviOption_stringSSLCertificatePath)),
+		KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate));
 	connect(b,SIGNAL(toggled(bool)),f,SLOT(setEnabled(bool)));
-	KviPasswordSelector * p = new KviPasswordSelector(gbox,__tr2qs_ctx("Certificate password:","options"),
-		&(KVI_OPTION_STRING(KviOption_stringSSLCertificatePass)),KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate));
+
+	p = new KviPasswordSelector(gbox,__tr2qs_ctx("Certificate password:","options"),&(KVI_OPTION_STRING(KviOption_stringSSLCertificatePass)),
+		KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate));
 	connect(b,SIGNAL(toggled(bool)),p,SLOT(setEnabled(bool)));
 
 	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Private Key","options"));
-	b = addBoolSelector(gbox,__tr2qs_ctx("Use SSL private key","options"),
-		&(KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey)),true);
-	f = addFileSelector(gbox,__tr2qs_ctx("Private key location:","options"),
-		&(KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath)),KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey));
-	connect(b,SIGNAL(toggled(bool)),f,SLOT(setEnabled(bool)));
-	p = addPasswordSelector(gbox,__tr2qs_ctx("Private key password:","options"),
-		&(KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPass)),KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey));
-	connect(b,SIGNAL(toggled(bool)),p,SLOT(setEnabled(bool)));
 
-	// This is now handled per-server.
-	//b = addBoolSelector(this,__tr2qs_ctx("Use the STARTTLS security protocol if available","options"),&(KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable)),true);
-	//mergeTip(b,__tr2qs_ctx("This option will cause KVIrc to try to reconnect to the server using an encrypted connection","options"));
-	//addWidgetToLayout(b,0,2,0,2);
+	b = addBoolSelector(gbox,__tr2qs_ctx("Use SSL private key","options"),&(KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey)),true);
+	f = addFileSelector(gbox,__tr2qs_ctx("Private key location:","options"),&(KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath)),
+		KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey));
+	connect(b,SIGNAL(toggled(bool)),f,SLOT(setEnabled(bool)));
+
+	p = addPasswordSelector(gbox,__tr2qs_ctx("Private key password:","options"),&(KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPass)),
+		KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey));
+	connect(b,SIGNAL(toggled(bool)),p,SLOT(setEnabled(bool)));
 
 	addRowSpacer(0,3,0,3);
 #else
@@ -148,16 +148,20 @@ OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
 {
 	setObjectName("transport_options_widget");
 	createLayout();
-	KviUIntSelector * u;
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Timeout Values","options"));
+	KviUIntSelector * u;
+	KviTalGroupBox * g;
+	KviBoolSelector * b;
+	KviStringSelector * s;
+
+	g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Timeout Values","options"));
 	u = addUIntSelector(g,__tr2qs_ctx("Connect timeout:","options"),KviOption_uintIrcSocketTimeout,5,6000,60);
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
 	u = addUIntSelector(g,__tr2qs_ctx("Outgoing data queue flush timeout:","options"),KviOption_uintSocketQueueFlushTimeout,100,2000,500);
 	u->setSuffix(__tr2qs_ctx(" msec","options"));
-	KviBoolSelector * b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Limit outgoing traffic per connection","options"),KviOption_boolLimitOutgoingTraffic);
+	b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Limit outgoing traffic per connection","options"),KviOption_boolLimitOutgoingTraffic);
 	u = addUIntSelector(0,2,0,2,__tr2qs_ctx("Limit to 1 message every:","options"),
-			KviOption_uintOutgoingTrafficLimitUSeconds,10000,2000000,10000001,KVI_OPTION_BOOL(KviOption_boolLimitOutgoingTraffic));
+		KviOption_uintOutgoingTrafficLimitUSeconds,10000,2000000,10000001,KVI_OPTION_BOOL(KviOption_boolLimitOutgoingTraffic));
 	u->setSuffix(__tr2qs_ctx(" usec","options"));
 	mergeTip(u,__tr2qs_ctx("Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</b>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
@@ -165,7 +169,7 @@ OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
 	g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Network Interfaces","options"));
 
 	b = addBoolSelector(g,__tr2qs_ctx("Bind IPv4 connections to:","options"),KviOption_boolBindIrcIPv4ConnectionsToSpecifiedAddress);
-	KviStringSelector * s = addStringSelector(g,"",KviOption_stringIPv4ConnectionBindAddress,KVI_OPTION_BOOL(KviOption_boolBindIrcIPv4ConnectionsToSpecifiedAddress));
+	s = addStringSelector(g,"",KviOption_stringIPv4ConnectionBindAddress,KVI_OPTION_BOOL(KviOption_boolBindIrcIPv4ConnectionsToSpecifiedAddress));
 	connect(b,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 #ifdef COMPILE_IPV6_SUPPORT
 	b = addBoolSelector(g,__tr2qs_ctx("Bind IPv6 connections to:","options"),KviOption_boolBindIrcIPv6ConnectionsToSpecifiedAddress);
@@ -175,11 +179,11 @@ OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
 
 	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Pick random IP address for round-robin servers","options"),KviOption_boolPickRandomIpAddressForRoundRobinServers);
 	mergeTip(b,__tr2qs_ctx("This option will cause the KVIrc networking stack to pick up " \
-		"a random entry when multiple IP address are retrieved for a server " \
-		"DNS lookup. This is harmless and can fix some problems with caching " \
-		"DNS servers that do not properly rotate the records as the authoritative " \
-		"ones would do. On the other hand, you might want to disable it if " \
-		"you want to rely on the DNS server to provide the best choice.","options"));
+				"a random entry when multiple IP address are retrieved for a server " \
+				"DNS lookup. This is harmless and can fix some problems with caching " \
+				"DNS servers that do not properly rotate the records as the authoritative " \
+				"ones would do. On the other hand, you might want to disable it if " \
+				"you want to rely on the DNS server to provide the best choice.","options"));
 
 	addRowSpacer(0,5,0,5);
 }
@@ -224,23 +228,25 @@ OptionsWidget_identService::OptionsWidget_identService(QWidget * parent)
 			break;
 	}
 
+	KviBoolSelector * b;
+	KviStringSelector * s;
+	KviUIntSelector * u;
+
 	gbox = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("Configuration","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 
-	KviBoolSelector *b = addBoolSelector(gbox,__tr2qs_ctx("Enable Ident service only while connecting to server","options"),KviOption_boolUseIdentServiceOnlyOnConnect);
+	b = addBoolSelector(gbox,__tr2qs_ctx("Enable Ident service only while connecting to server","options"),KviOption_boolUseIdentServiceOnlyOnConnect);
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
 
-	KviStringSelector * s = addStringSelector(gbox,__tr2qs_ctx("Ident username:","options"),
-		KviOption_stringIdentdUser,KVI_OPTION_BOOL(KviOption_boolUseIdentService));
+	s = addStringSelector(gbox,__tr2qs_ctx("Ident username:","options"),KviOption_stringIdentdUser,KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 
-	KviUIntSelector * u = addUIntSelector(gbox,__tr2qs_ctx("Service port:","options"),
-		KviOption_uintIdentdPort,0,65535,113,KVI_OPTION_BOOL(KviOption_boolUseIdentService));
+	u = addUIntSelector(gbox,__tr2qs_ctx("Service port:","options"),KviOption_uintIdentdPort,0,65535,113,KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),gbox,SLOT(setEnabled(bool)));
 
 	gbox = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("IPv6 Settings","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
-	m_pEnableIpv6 = addBoolSelector(gbox,__tr2qs_ctx("Enable service for IPv6","options"),
-		KviOption_boolIdentdEnableIPv6,
+
+	m_pEnableIpv6 = addBoolSelector(gbox,__tr2qs_ctx("Enable service for IPv6","options"),KviOption_boolIdentdEnableIPv6,
 		KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 #ifdef COMPILE_IPV6_SUPPORT
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),m_pEnableIpv6,SLOT(setEnabled(bool)));
@@ -248,24 +254,23 @@ OptionsWidget_identService::OptionsWidget_identService(QWidget * parent)
 #else
 	m_pEnableIpv6->setEnabled(false);
 #endif
-	m_pIpv4InIpv6 = addBoolSelector(gbox,__tr2qs_ctx("IP stack treats IPv4 as part of IPv6 namespace","options"),
-		KviOption_boolIdentdIPv6ContainsIPv4,
+	m_pIpv4InIpv6 = addBoolSelector(gbox,__tr2qs_ctx("IP stack treats IPv4 as part of IPv6 namespace","options"),KviOption_boolIdentdIPv6ContainsIPv4,
 		KVI_OPTION_BOOL(KviOption_boolUseIdentService) && KVI_OPTION_BOOL(KviOption_boolIdentdEnableIPv6));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),gbox,SLOT(setEnabled(bool)));
 
 	addLabel(0,4,0,4,
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			__tr2qs_ctx("<p><b>Warning:</b><br>" \
-			"This is a <b>non RFC 1413 compliant</b> Ident daemon that implements " \
-			"only a limited subset of the Identification Protocol specifications. If it is possible, install a " \
-			"real Ident daemon.</p>","options")
+				"This is a <b>non RFC 1413 compliant</b> Ident daemon that implements " \
+				"only a limited subset of the Identification Protocol specifications. If it is possible, install a " \
+				"real Ident daemon.</p>","options")
 #else
 			__tr2qs_ctx("<p><b>Warning:</b><br>" \
-			"This is a <b>non RFC 1413 compliant</b> Ident daemon that implements " \
-			"only a limited subset of the <b>Identification Protocol</b> specifications.<br>" \
-			"On UNIX, you may also need root privileges to bind to the auth port (113).<br>" \
-			"It is <b>highly recommended</b> that a <b>real</b> system-wide Ident daemon be used instead, "\
-			"or none at all if Ident is not required.</p>","options")
+				"This is a <b>non RFC 1413 compliant</b> Ident daemon that implements " \
+				"only a limited subset of the <b>Identification Protocol</b> specifications.<br>" \
+				"On UNIX, you may also need root privileges to bind to the auth port (113).<br>" \
+				"It is <b>highly recommended</b> that a <b>real</b> system-wide Ident daemon be used instead, "\
+				"or none at all if Ident is not required.</p>","options")
 #endif
 	);
 
