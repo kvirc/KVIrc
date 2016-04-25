@@ -67,15 +67,19 @@ OptionsWidget_dccAdvanced::OptionsWidget_dccAdvanced(QWidget * parent)
 
 	KviBoolSelector * b;
 	KviBoolSelector * b2;
+	KviTalGroupBox * g;
+	KviStringSelector * s;
+	KviUIntSelector * u;
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Network Properties","options"));
+	g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Network Properties","options"));
 
 	b = addBoolSelector(g,__tr2qs_ctx("Use user-defined address or network interface","options"),KviOption_boolDccListenOnSpecifiedInterfaceByDefault);
 	mergeTip(b,__tr2qs_ctx("Enable this option if you are on a multihost machine and want " \
 				"to force one of the available IP addresses to be used for outgoing DCCs.<br>This is especially useful " \
 				"when you use IPv6 and IPv4 addresses.<br>You can force KVIrc to always choose the IPv4 interface.","options"));
 
-	KviStringSelector * s = addStringSelector(g,__tr2qs_ctx("Listen on address/interface:","options"),KviOption_stringDccListenDefaultInterface,KVI_OPTION_BOOL(KviOption_boolDccListenOnSpecifiedInterfaceByDefault));
+	s = addStringSelector(g,__tr2qs_ctx("Listen on address/interface:","options"),KviOption_stringDccListenDefaultInterface,
+		KVI_OPTION_BOOL(KviOption_boolDccListenOnSpecifiedInterfaceByDefault));
 	mergeTip(s,__tr2qs_ctx("This is the IP address or name of the interface to use by default for outgoing DCC transfers.<br>" \
 				"On UNIX systems that support it, you can also specify IPv4 interface names (such as <b>ppp0</b>).<br>" \
 				"If you set it to <b>0.0.0.0</b>, KVIrc will try to use the first available IPv4 interface","options"));
@@ -87,21 +91,27 @@ OptionsWidget_dccAdvanced::OptionsWidget_dccAdvanced(QWidget * parent)
 
 	KviTalHBox * hb = new KviTalHBox(g);
 	hb->setSpacing(4);
-	KviUIntSelector * u = addUIntSelector(hb,__tr2qs_ctx("Lowest port:","options"),KviOption_uintDccMinPort,1,65535,5000,KVI_OPTION_BOOL(KviOption_boolUserDefinedPortRange));
+
+	u = addUIntSelector(hb,__tr2qs_ctx("Lowest port:","options"),KviOption_uintDccMinPort,1,65535,5000,
+		KVI_OPTION_BOOL(KviOption_boolUserDefinedPortRange));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
-	u = addUIntSelector(hb,__tr2qs_ctx("Highest port:","options"),KviOption_uintDccMaxPort,1,65535,30000,KVI_OPTION_BOOL(KviOption_boolUserDefinedPortRange));
+	u = addUIntSelector(hb,__tr2qs_ctx("Highest port:","options"),KviOption_uintDccMaxPort,1,65535,30000,
+		KVI_OPTION_BOOL(KviOption_boolUserDefinedPortRange));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	b = addBoolSelector(g,__tr2qs_ctx("Send a fixed address in requests","options"),KviOption_boolDccSendFakeAddressByDefault);
 	mergeTip(b,__tr2qs_ctx("Enable this option if you want to always send a fake IP address in your DCC requests.<br>" \
-				"This might be useful if you're behind a router with a static address that does network address translation (NAT) and forwards all or a range of ports.","options"));
+				"This might be useful if you're behind a router with a static address that does network address " \
+				"translation (NAT) and forwards all or a range of ports.","options"));
 
-	s = addStringSelector(g,__tr2qs_ctx("Send address/interface:","options"),KviOption_stringDefaultDccFakeAddress,KVI_OPTION_BOOL(KviOption_boolDccSendFakeAddressByDefault));
+	s = addStringSelector(g,__tr2qs_ctx("Send address/interface:","options"),KviOption_stringDefaultDccFakeAddress,
+		KVI_OPTION_BOOL(KviOption_boolDccSendFakeAddressByDefault));
 	connect(b,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 	mergeTip(s,__tr2qs_ctx("This is the fixed address that will be sent with all DCC requests if you enable the option above.","options"));
 
-	b2 = addBoolSelector(g,__tr2qs_ctx("Guess address from IRC server if unroutable","options"),KviOption_boolDccGuessIpFromServerWhenLocalIsUnroutable,!KVI_OPTION_BOOL(KviOption_boolDccSendFakeAddressByDefault));
+	b2 = addBoolSelector(g,__tr2qs_ctx("Guess address from IRC server if unroutable","options"),KviOption_boolDccGuessIpFromServerWhenLocalIsUnroutable,
+		!KVI_OPTION_BOOL(KviOption_boolDccSendFakeAddressByDefault));
 
 	connect(b,SIGNAL(toggled(bool)),b2,SLOT(setNotEnabled(bool)));
 
@@ -110,7 +120,8 @@ OptionsWidget_dccAdvanced::OptionsWidget_dccAdvanced(QWidget * parent)
 				"by the IRC server you're connected to.<br>This method is an exclusive alternative to the \"fixed address\" above.<br>" \
 				"It might guess the correct address automatically if certain conditions are met (e.g. the IRC server doesn't mask hostnames).","options"));
 
-	b = addBoolSelector(g,__tr2qs_ctx("Use \"broken bouncer hack\" to detect address","options"),KviOption_boolDccBrokenBouncerHack,KVI_OPTION_BOOL(KviOption_boolDccGuessIpFromServerWhenLocalIsUnroutable));
+	b = addBoolSelector(g,__tr2qs_ctx("Use \"broken bouncer hack\" to detect address","options"),KviOption_boolDccBrokenBouncerHack,
+		KVI_OPTION_BOOL(KviOption_boolDccGuessIpFromServerWhenLocalIsUnroutable));
 	mergeTip(b,__tr2qs_ctx("When you're behind a dialup router and also tunneling through a psyBNC bouncer, " \
 				"you can use a bug in the bouncer to force KVIrc to bind the DCC connections to the dialup router's address.<br>" \
 				"It's an ugly hack - use it only if nothing else works.","options"));
@@ -164,16 +175,19 @@ OptionsWidget_dccSendGeneral::OptionsWidget_dccSendGeneral(QWidget * parent)
 	KviBoolSelector * b3;
 	KviBoolSelector * b4;
 	KviBoolSelector * b1;
+	KviTalGroupBox * g;
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Incoming File","options"));
+	g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Incoming File","options"));
 	b2 = addBoolSelector(g,__tr2qs_ctx("Automatically accept","options"),KviOption_boolAutoAcceptDccSend);
-	b3 = addBoolSelector(g, __tr2qs_ctx("Open auto-accepted transfer window without focus","options"),KviOption_boolCreateMinimizedDccSendWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccSend));
+	b3 = addBoolSelector(g, __tr2qs_ctx("Open auto-accepted transfer window without focus","options"),KviOption_boolCreateMinimizedDccSendWhenAutoAccepted,
+		!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccSend));
 	mergeTip(b3,__tr2qs_ctx("This option prevents the transfer window " \
 				"from opening and diverting application focus.<br>" \
 				"Enable this if you don't like the transfer window " \
 				"popping up while you're typing something in a channel.","options"));
 
-	b4 = addBoolSelector(g,__tr2qs_ctx("Automatically resume when auto-accepted","options"),KviOption_boolAutoResumeDccSendWhenAutoAccepted,KVI_OPTION_BOOL(KviOption_boolAutoAcceptDccSend));
+	b4 = addBoolSelector(g,__tr2qs_ctx("Automatically resume when auto-accepted","options"),KviOption_boolAutoResumeDccSendWhenAutoAccepted,
+		KVI_OPTION_BOOL(KviOption_boolAutoAcceptDccSend));
 
 	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Save Location","options"));
 
@@ -213,8 +227,10 @@ OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
 	createLayout();
 
 	KviBoolSelector * b;
+	KviTalGroupBox * g;
+	KviUIntSelector * u;
 	
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Bug Compatibility","options"));
+	g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Bug Compatibility","options"));
 
 	b = addBoolSelector(g,__tr2qs_ctx("Send ACK for byte 0","options"),KviOption_boolSendZeroAckInDccRecv);
 	mergeTip(b,__tr2qs_ctx("This option causes KVIrc to send a zero-byte acknowledge to kick-start " \
@@ -242,17 +258,16 @@ OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
 	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Limits","options"));
 
 	KviTalHBox * hb = new KviTalHBox(g);
-	b = addBoolSelector(hb,__tr2qs_ctx("Limit upload bandwidth to:","options"),KviOption_boolLimitDccSendSpeed);
-	KviUIntSelector * u = addUIntSelector(hb,"",KviOption_uintMaxDccSendSpeed,0,0xffffff1,1024,KVI_OPTION_BOOL(KviOption_boolLimitDccSendSpeed));
-	u->setSuffix(" " + __tr2qs_ctx("bytes/sec","options"));
 
+	b = addBoolSelector(hb,__tr2qs_ctx("Limit upload bandwidth to:","options"),KviOption_boolLimitDccSendSpeed);
+	u = addUIntSelector(hb,"",KviOption_uintMaxDccSendSpeed,0,0xffffff1,1024,KVI_OPTION_BOOL(KviOption_boolLimitDccSendSpeed));
+	u->setSuffix(" " + __tr2qs_ctx("bytes/sec","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	hb = new KviTalHBox(g);
 	b = addBoolSelector(hb,__tr2qs_ctx("Limit download bandwidth to:","options"),KviOption_boolLimitDccRecvSpeed);
 	u = addUIntSelector(hb,"",KviOption_uintMaxDccRecvSpeed,0,0xffffff1,1024,KVI_OPTION_BOOL(KviOption_boolLimitDccRecvSpeed));
 	u->setSuffix(" " + __tr2qs_ctx("bytes/sec","options"));
-
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	u = addUIntSelector(g,__tr2qs_ctx("Maximum number of DCC transfers:","options"),KviOption_uintMaxDccSendTransfers,0,1000,10);
@@ -307,11 +322,13 @@ OptionsWidget_dccChat::OptionsWidget_dccChat(QWidget * parent)
 
 	KviBoolSelector * b1;
 	KviBoolSelector * b2;
+	KviTalGroupBox * g;
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Chat Request","options"));
+	g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Chat Request","options"));
 	addBoolSelector(g,__tr2qs_ctx("Automatically accept","options"),KviOption_boolAutoAcceptDccChat);
 
-	b1 = addBoolSelector(g, __tr2qs_ctx("Open auto-accepted DCC chat windows without focus","options"),KviOption_boolCreateMinimizedDccChatWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat));
+	b1 = addBoolSelector(g, __tr2qs_ctx("Open auto-accepted DCC chat windows without focus","options"),KviOption_boolCreateMinimizedDccChatWhenAutoAccepted,
+		!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat));
 	mergeTip(b1,__tr2qs_ctx("This option prevents incoming " \
 				"auto-accepted DCC chat windows from diverting application focus.<br>" \
 				"Enable this if you don't like DCC chat windows " \
@@ -349,6 +366,8 @@ OptionsWidget_dccVoice::OptionsWidget_dccVoice(QWidget *p):KviOptionsWidget(p)
 	
 	KviBoolSelector * b1;
 	KviBoolSelector * b;
+	KviTalGroupBox * g;
+	KviUIntSelector * u;
 
 	b1 = addBoolSelector(0,0,0,0, __tr2qs_ctx("Open all DCC voice windows without focus","options"),KviOption_boolCreateMinimizedDccVoice);
 	mergeTip(b1,__tr2qs_ctx("This option prevents all incoming " \
@@ -356,10 +375,10 @@ OptionsWidget_dccVoice::OptionsWidget_dccVoice(QWidget *p):KviOptionsWidget(p)
 				"Enable this if you don't like DCC voice windows " \
 				"popping up while you're typing something in a channel.","options"));
 
-	KviTalGroupBox * g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("On Voice Request","options"));
+	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("On Voice Request","options"));
 	b = addBoolSelector(g,__tr2qs_ctx("Automatically accept","options"),KviOption_boolAutoAcceptDccVoice);
-
-	b = addBoolSelector(g, __tr2qs_ctx("Open auto-accepted DCC voice windows without focus","options"),KviOption_boolCreateMinimizedDccVoiceWhenAutoAccepted,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccVoice));
+	b = addBoolSelector(g, __tr2qs_ctx("Open auto-accepted DCC voice windows without focus","options"),KviOption_boolCreateMinimizedDccVoiceWhenAutoAccepted,
+		!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccVoice));
 	mergeTip(b,__tr2qs_ctx("This option prevents incoming " \
 				"auto-accepted DCC voice windows from diverting application focus.<br>" \
 				"Enable this if you don't like DCC voice windows " \
@@ -373,7 +392,7 @@ OptionsWidget_dccVoice::OptionsWidget_dccVoice(QWidget *p):KviOptionsWidget(p)
 	addStringSelector(0,4,0,4,__tr2qs_ctx("Sound device:","options"), KviOption_stringDccVoiceSoundDevice)->setMinimumLabelWidth(150);
 	addStringSelector(0,5,0,5,__tr2qs_ctx("Mixer device:","options"), KviOption_stringDccVoiceMixerDevice)->setMinimumLabelWidth(150);
 
-	KviUIntSelector * u = addUIntSelector(0,6,0,6,__tr2qs_ctx("Pre-buffer size:","options"), KviOption_uintDccVoicePreBufferSize, 2048, 65536, 32000);
+	u = addUIntSelector(0,6,0,6,__tr2qs_ctx("Pre-buffer size:","options"), KviOption_uintDccVoicePreBufferSize, 2048, 65536, 32000);
 	u->setSuffix(" bytes");
 
 	addRowSpacer(0,7,0,7);

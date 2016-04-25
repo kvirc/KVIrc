@@ -51,9 +51,12 @@ OptionsWidget_channelGeneral::OptionsWidget_channelGeneral(QWidget * pParent)
 {
 	createLayout();
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Channel Kick","options"));
+	KviTalGroupBox * g;
+	KviBoolSelector * b;
 
-	KviBoolSelector *b = addBoolSelector(g,__tr2qs_ctx("Rejoin channel","options"),KviOption_boolRejoinChannelOnKick);
+	g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("On Channel Kick","options"));
+
+	b = addBoolSelector(g,__tr2qs_ctx("Rejoin channel","options"),KviOption_boolRejoinChannelOnKick);
 	mergeTip(b,__tr2qs_ctx("This option will cause KVIrc to attempt " \
 				"to rejoin a channel after being kicked.","options"));
 
@@ -93,7 +96,11 @@ OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
 {
 	createLayout();
 
-	KviBoolSelector * b = addBoolSelector(0,0,4,0,__tr2qs_ctx("Log joined channels history","options"),KviOption_boolLogChannelHistory);
+	KviBoolSelector * b;
+	KviTalGroupBox * g;
+	KviUIntSelector * u;
+
+	b = addBoolSelector(0,0,4,0,__tr2qs_ctx("Log joined channels history","options"),KviOption_boolLogChannelHistory);
 
 	addLabel(0,1,0,1,__tr2qs_ctx("Default ban mask:","options"));
 
@@ -114,8 +121,8 @@ OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
 
 	m_pBanTypeCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintDefaultBanType));
 
-	KviTalGroupBox * g = addGroupBox(0,2,4,2,Qt::Horizontal,__tr2qs_ctx("On Channel Join","options"));
-	KviUIntSelector *u = addUIntSelector(g,__tr2qs_ctx("Minimum delay between two channel requests:","options"),KviOption_uintOnJoinRequestsDelay,0,10,1);
+	g = addGroupBox(0,2,4,2,Qt::Horizontal,__tr2qs_ctx("On Channel Join","options"));
+	u = addUIntSelector(g,__tr2qs_ctx("Minimum delay between two channel requests:","options"),KviOption_uintOnJoinRequestsDelay,0,10,1);
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
 	mergeTip(u,__tr2qs_ctx("This is an artificial delay for the channel requests made on join.<br>" \
 				"You may increase it if your server complains about flooding when joining " \
@@ -130,7 +137,9 @@ OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
 	addBoolSelector(g,__tr2qs_ctx("Show channel sync time","options"),KviOption_boolShowChannelSyncTime);
 
 	b = addBoolSelector(g,__tr2qs_ctx("Paste last channel log","options"),KviOption_boolPasteLastLogOnChannelJoin);
+
 	KviTalHBox * box = new KviTalHBox(g);
+
 	u = addUIntSelector(box,__tr2qs_ctx("Paste up to:","options"),KviOption_uintLinesToPasteOnChannelJoin,0,50,10,KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin));
 	u->setSuffix(__tr2qs_ctx(" lines","options"));
 	mergeTip(u,__tr2qs_ctx("Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b>","options"));

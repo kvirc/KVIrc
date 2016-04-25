@@ -39,8 +39,9 @@ OptionsWidget_query::OptionsWidget_query(QWidget * parent)
 	createLayout();
 
 	KviBoolSelector * b;
+	KviTalGroupBox * g;
 
-	KviTalGroupBox * g = addGroupBox(0,0,1,0,Qt::Horizontal,__tr2qs_ctx("Open Query for","options"));
+	g = addGroupBox(0,0,1,0,Qt::Horizontal,__tr2qs_ctx("Open Query for","options"));
 	b  = addBoolSelector(g, __tr2qs_ctx("Private messages","options"),KviOption_boolCreateQueryOnPrivmsg);
 	mergeTip(b,__tr2qs_ctx("This option enables query window creation " \
 				"when a private message (PRIVMSG) is received.<br>" \
@@ -89,13 +90,17 @@ OptionsWidget_query::OptionsWidget_query(QWidget * parent)
 	KviTalHBox * box = new KviTalHBox(this);
 	addWidgetToLayout(box,0,8,1,8);
 
-	KviUIntSelector * u = addUIntSelector(box,__tr2qs_ctx("Paste up to:","options"),KviOption_uintLinesToPasteOnQueryJoin,0,50,10,KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin));
+	KviUIntSelector * u;
+
+	u = addUIntSelector(box,__tr2qs_ctx("Paste up to:","options"),KviOption_uintLinesToPasteOnQueryJoin,0,50,10,
+		KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin));
 	u->setSuffix(__tr2qs_ctx(" lines","options"));
 	mergeTip(u,__tr2qs_ctx("Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b>","options"));
 
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
-	u = addUIntSelector(box,__tr2qs_ctx("Interval:","options"),KviOption_uintDaysIntervalToPasteOnQueryJoin,1,10,10,KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin));
+	u = addUIntSelector(box,__tr2qs_ctx("Interval:","options"),KviOption_uintDaysIntervalToPasteOnQueryJoin,1,10,10,
+		KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin));
 	u->setSuffix(__tr2qs_ctx(" days","options"));
 	mergeTip(u,__tr2qs_ctx("Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b>","options"));
 

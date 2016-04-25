@@ -41,10 +41,11 @@ OptionsWidget_interfaceFeatures::OptionsWidget_interfaceFeatures(QWidget * paren
 	setObjectName("interfacefeatures_options_widget");
 	createLayout();
 
+	KviTalGroupBox * g;
+
 	addBoolSelector(0,0,0,0,__tr2qs_ctx("Minimize application on startup","options"),KviOption_boolStartupMinimized);
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Confirm quit with active connections","options"),KviOption_boolConfirmCloseWhenThereAreConnections);
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Remember window properties","options"),KviOption_boolWindowsRememberProperties);
-
 	addBoolSelector(0,3,0,3,__tr2qs_ctx("Enable visual effects","options"),KviOption_boolEnableVisualEffects);
 	addBoolSelector(0,4,0,4,__tr2qs_ctx("Hide channel window tool buttons by default","options"),KviOption_boolHideWindowToolButtons);
 #ifdef COMPILE_ON_MAC
@@ -52,7 +53,7 @@ OptionsWidget_interfaceFeatures::OptionsWidget_interfaceFeatures(QWidget * paren
 #else
 	addBoolSelector(0,5,0,5,__tr2qs_ctx("Require Ctrl to be held down to copy text","options"),KviOption_boolRequireControlToCopy);
 #endif
-	KviTalGroupBox * g = addGroupBox(0,6,0,6,Qt::Horizontal,__tr2qs_ctx("Open Dialog Window for","options"));
+	g = addGroupBox(0,6,0,6,Qt::Horizontal,__tr2qs_ctx("Open Dialog Window for","options"));
 	addBoolSelector(g,__tr2qs_ctx("Preferences","options"),KviOption_boolShowGeneralOptionsDialogAsToplevel);
 	addBoolSelector(g,__tr2qs_ctx("Registered users","options"),KviOption_boolShowRegisteredUsersDialogAsToplevel);
 	addBoolSelector(g,__tr2qs_ctx("Identity","options"),KviOption_boolShowIdentityDialogAsToplevel);
