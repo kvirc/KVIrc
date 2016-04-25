@@ -38,8 +38,6 @@
 #include <QStringList>
 
 // option structures
-
-
 #define DECLARE_OPTION_STRUCT(_cname,_type) \
 	class _cname \
 	{ \
@@ -75,7 +73,6 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KVI_COLOR_OWN			254
 
 // option entry indexes
-
 #define KVI_RECT_OPTIONS_PREFIX "rect"
 #define KVI_RECT_OPTIONS_PREFIX_LEN 4
 
@@ -86,8 +83,6 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_rectRegisteredUsersDialogGeometry 2                /* internal */
 
 #define KVI_NUM_RECT_OPTIONS 3
-
-
 
 #define KVI_BOOL_OPTIONS_PREFIX "bool"
 #define KVI_BOOL_OPTIONS_PREFIX_LEN 4
@@ -437,7 +432,6 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KVI_NUM_STRING_OPTIONS 61
 
 
-
 #define KVI_STRINGLIST_OPTIONS_PREFIX "stringlist"
 #define KVI_STRINGLIST_OPTIONS_PREFIX_LEN 10
 
@@ -452,7 +446,6 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_stringlistSpellCheckerDictionaries 8              /* spellchecker */
 
 #define KVI_NUM_STRINGLIST_OPTIONS 9
-
 
 
 #define KVI_COLOR_OPTIONS_PREFIX "color"
@@ -512,7 +505,6 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KVI_NUM_COLOR_OPTIONS 50
 
 
-
 #define KVI_PIXMAP_OPTIONS_PREFIX "pixmap"
 #define KVI_PIXMAP_OPTIONS_PREFIX_LEN 6
 
@@ -528,8 +520,6 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_pixmapNotifierBackground 9                                   /* interface::look::components::notifier */
 
 #define KVI_NUM_PIXMAP_OPTIONS 10
-
-
 
 
 #define KVI_UINT_OPTIONS_PREFIX "uint"
@@ -626,6 +616,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 
 #define KVI_NUM_UINT_OPTIONS 83
 
+
 namespace KviIdentdOutputMode {
 	enum Mode {
 		Quiet = 0,
@@ -633,7 +624,6 @@ namespace KviIdentdOutputMode {
 		ToActiveWindow = 2
 	};
 }
-
 
 #define KVI_FONT_OPTIONS_PREFIX "font"
 #define KVI_FONT_OPTIONS_PREFIX_LEN 4
@@ -651,8 +641,6 @@ namespace KviIdentdOutputMode {
 #define KVI_NUM_FONT_OPTIONS 9
 
 
-
-
 #define KVI_ICCOLOR_OPTIONS_PREFIX "iccolor"
 #define KVI_ICCOLOR_OPTIONS_PREFIX_LEN 7
 
@@ -660,12 +648,10 @@ namespace KviIdentdOutputMode {
 
 
 // indices declared in kvi_out.h
-
 #define KVI_MSGTYPE_OPTIONS_PREFIX "msgtype"
 #define KVI_MSGTYPE_OPTIONS_PREFIX_LEN 7
 
 #define KVI_NUM_MSGTYPE_OPTIONS 144
-
 
 
 #define KVI_MIRCCOLOR_OPTIONS_PREFIX "mirccolor"
@@ -701,9 +687,7 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 #define KVI_OPTION_STRINGLIST(_idx)  g_stringlistOptionsTable[_idx].option
 #define KVI_OPTION_ICCOLOR(_idx)     g_iccolorOptionsTable[_idx].option
 
-
 // Verbosity constants
-
 #define KVI_VERBOSITY_LEVEL_MUTE 0
 #define KVI_VERBOSITY_LEVEL_QUIET 1
 #define KVI_VERBOSITY_LEVEL_NORMAL 2
@@ -715,20 +699,16 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 #define _OUTPUT_QUIET (KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) <= KVI_VERBOSITY_LEVEL_QUIET)
 #define _OUTPUT_MUTE (KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) <= KVI_VERBOSITY_LEVEL_MUTE)
 
-	#define START_TABLE_BOLD_ROW "<tr><td style=\"background-color: rgb(48,48,48); font-weight: bold; color: rgb(255,255,255); padding-left: 5px; padding-right: 5px;\">"
-	#define END_TABLE_BOLD_ROW "</td></tr>"
+#define START_TABLE_BOLD_ROW "<tr><td style=\"background-color: rgb(48,48,48); font-weight: bold; color: rgb(255,255,255); padding-left: 5px; padding-right: 5px;\">"
+#define END_TABLE_BOLD_ROW "</td></tr>"
+#define START_TABLE_NORMAL_ROW "<tr><td>"
 
-	#define START_TABLE_NORMAL_ROW "<tr><td>"
-
-	#define SET_ANTI_ALIASING(p) (p).setRenderHint(QPainter::TextAntialiasing);
-
+#define SET_ANTI_ALIASING(p) (p).setRenderHint(QPainter::TextAntialiasing);
 
 #define KVI_RECENT_CHANNELS_SEPARATOR ":"
 
 #if defined(_KVI_OPTIONS_CPP_) || defined(_WANT_OPTION_FLAGS_)
-
 	// flag definitions
-
 	// section of the config file (rightmost 8 bits)
 	#define KviOption_sectFlagNone 0
 	#define KviOption_sectFlagFrame 1
@@ -767,8 +747,6 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 
 	#define KviOption_groupMask (255 << 8)
 
-
-
 	// actions to take when an option is set
 	#define KviOption_resetNone 0
 	#define KviOption_resetUpdateNotifier (1 << 16)
@@ -786,7 +764,6 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 
 	//for file paths
 	#define KviOption_encodePath (1 << 25)
-
 #endif
 
 #endif //_KVI_OPTIONS_H_

@@ -529,7 +529,6 @@ KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS]=
 	COLOR_OPTION("IrcViewMarkLine",40,40,40,255,KviOption_sectFlagIrcView)
 };
 
-
 #define IC_COLOR_OPTION(_num,_red,_green,_blue) \
 	KviColorOption( \
 		KVI_ICCOLOR_OPTIONS_PREFIX _num, \
@@ -567,20 +566,6 @@ KviPixmapOption g_pixmapOptionsTable[KVI_NUM_PIXMAP_OPTIONS]=
 	PIXMAP_OPTION("GlobalTransparencyBackground",KviOption_sectFlagGui | KviOption_resetUpdatePseudoTransparency | KviOption_groupTheme),
 	PIXMAP_OPTION("NotifierBackground",KviOption_sectFlagNotifier | KviOption_groupTheme)
 };
-
-//#define INT_OPTION(_name,_value,_flags)
-//	{
-//		KVI_INT_OPTIONS_PREFIX _name,
-//		_value,
-//		_flags
-//	}
-//
-//KviIntOption g_intOptionsTable[KVI_NUM_INT_OPTIONS]=
-//{
-//	INT_OPTION("IrcViewMaxBufferSize",KVI_IRCVIEW_MAX_LINES,KviOption_sectFlagIrcView),
-//	INT_OPTION("IrcViewTollTipTimeoutInMsec",1800,KviOption_sectFlagIrcView),
-//	INT_OPTION("IrcViewToolTipHideTimeoutInMsec",10000,KviOption_sectFlagIrcView)
-//};
 
 #define UINT_OPTION(_name,_value,_flags) \
 	KviUIntOption( \
@@ -731,8 +716,6 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 		KviMessageTypeSettings(_text,_icon,_fore,_back,true,_levl), \
 		KviOption_sectFlagMsgType | KviOption_groupTheme \
 	)
-
-
 
 // FIXME: #warning "FIX THE ICONS HERE!!!"
 
@@ -966,7 +949,8 @@ void KviApplication::saveOptions()
 	if(!cfg.ensureWritable())
 	{
 		QMessageBox::warning(0, __tr2qs("Warning While Writing Configuration - KVIrc"),
-			__tr2qs("I can't write to the main configuration file:\n\t%1\nPlease ensure the directory exists and that you have the proper permissions before continuing, or else any custom configuration will be lost.").arg(buffer)
+			__tr2qs("I can't write to the main configuration file:\n\t%1\nPlease ensure the directory exists and that you have the proper permissions before continuing, " \
+				"or else any custom configuration will be lost.").arg(buffer)
 		);
 	}
 	int i;
@@ -980,28 +964,33 @@ void KviApplication::saveOptions()
 
 	WRITE_OPTIONS(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable)
 	WRITE_OPTIONS(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable)
+
 		for(i=0;i<KVI_NUM_STRING_OPTIONS;i++)
 		{
 			if(g_stringOptionsTable[i].flags & KviOption_encodePath)
 				KviStringConversion::encodePath(g_stringOptionsTable[i].option);
 		}
+
 	WRITE_OPTIONS(KVI_NUM_STRING_OPTIONS,g_stringOptionsTable)
-		for(i=0;i<KVI_NUM_STRING_OPTIONS;i++)
+	for(i=0;i<KVI_NUM_STRING_OPTIONS;i++)
 		{
 			if(g_stringOptionsTable[i].flags & KviOption_encodePath)
 				KviStringConversion::decodePath(g_stringOptionsTable[i].option);
 		}
+
 	WRITE_OPTIONS(KVI_NUM_COLOR_OPTIONS,g_colorOptionsTable)
 
 	WRITE_OPTIONS(KVI_NUM_PIXMAP_OPTIONS,g_pixmapOptionsTable)
 	WRITE_OPTIONS(KVI_NUM_UINT_OPTIONS,g_uintOptionsTable)
 	WRITE_OPTIONS(KVI_NUM_FONT_OPTIONS,g_fontOptionsTable)
 	WRITE_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS,g_msgtypeOptionsTable)
+
 	for(i=0;i<KVI_NUM_STRINGLIST_OPTIONS;i++)
 		{
 			if(g_stringlistOptionsTable[i].flags & KviOption_encodePath)
 				KviStringConversion::encodePath(g_stringlistOptionsTable[i].option);
 		}
+
 	WRITE_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS,g_stringlistOptionsTable)
 	for(i=0;i<KVI_NUM_STRINGLIST_OPTIONS;i++)
 	{
@@ -1013,7 +1002,6 @@ void KviApplication::saveOptions()
 
 	#undef WRITE_OPTIONS
 }
-
 
 #undef WRITE_OPTIONS
 
@@ -1293,7 +1281,6 @@ void KviApplication::listAvailableOptions(KviWindow *wnd)
 //using namespace KviStringConversion;
 bool KviApplication::getOptionString(const QString &optName,QString &buffer)
 {
-
 	#define GET_OPTION_STRING(__numOpt,__table,__prefix,__prefixLen) \
 		if(KviQString::equalCIN(optName,__prefix,__prefixLen)) \
 		{ \
@@ -1309,7 +1296,6 @@ bool KviApplication::getOptionString(const QString &optName,QString &buffer)
 		}
 
 	// WARNING : stringlist prefix must go BEFORE the string prefix (otherwise it will match)
-
 	GET_OPTION_STRING(KVI_NUM_BOOL_OPTIONS,g_boolOptionsTable,KVI_BOOL_OPTIONS_PREFIX,KVI_BOOL_OPTIONS_PREFIX_LEN)
 	GET_OPTION_STRING(KVI_NUM_RECT_OPTIONS,g_rectOptionsTable,KVI_BOOL_OPTIONS_PREFIX,KVI_BOOL_OPTIONS_PREFIX_LEN)
 	GET_OPTION_STRING(KVI_NUM_STRINGLIST_OPTIONS,g_stringlistOptionsTable,KVI_STRINGLIST_OPTIONS_PREFIX,KVI_STRINGLIST_OPTIONS_PREFIX_LEN)
@@ -1385,6 +1371,7 @@ void KviApplication::optionResetUpdate(int flags)
 		emit updateNotifier();
 	}
 }
+
 bool KviApplication::setOptionValue(const QString &optName,const QString &value)
 {
 	if (!setCommonOptionValue(optName,value))
