@@ -48,8 +48,10 @@ OptionsWidget_avatar::OptionsWidget_avatar(QWidget * parent)
 	addBoolSelector(g,__tr2qs_ctx("Do not scale avatar if it is less than required size","options"),KviOption_boolDoNotUpscaleAvatars);
 
 	KviUIntSelector *u = addUIntSelector(g,__tr2qs_ctx("Image width:","options"),KviOption_uintAvatarScaleWidth,0,512,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatars));
+	u->setSuffix(__tr2qs_ctx(" pixels","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 	u = addUIntSelector(g,__tr2qs_ctx("Image height:","options"),KviOption_uintAvatarScaleHeight,0,512,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatars));
+	u->setSuffix(__tr2qs_ctx(" pixels","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	//2nd
@@ -57,8 +59,10 @@ OptionsWidget_avatar::OptionsWidget_avatar(QWidget * parent)
 	b = addBoolSelector(g,__tr2qs_ctx("Scale avatar images on image load","options"),KviOption_boolScaleAvatarsOnLoad);
 
 	u = addUIntSelector(g,__tr2qs_ctx("Image width:","options"),KviOption_uintScaleAvatarsOnLoadWidth,0,1280,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad));
+	u->setSuffix(__tr2qs_ctx(" pixels","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 	u = addUIntSelector(g,__tr2qs_ctx("Image height:","options"),KviOption_uintScaleAvatarsOnLoadHeight,0,1280,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad));
+	u->setSuffix(__tr2qs_ctx(" pixels","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	// 2st Box
