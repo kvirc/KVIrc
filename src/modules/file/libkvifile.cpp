@@ -621,9 +621,9 @@ static bool file_kvs_fnc_allSizes(KviKvsModuleFunctionCall * c)
 	if(!sl.isEmpty())
 	{
 		int iIdx = 0;
-		for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
+		for(auto& it : sl)
 		{
-			szFile = szDir + (*it);
+			szFile = szDir + it;
 			QFileInfo f(szFile);
 			pArray->set(iIdx,new KviKvsVariant((kvs_int_t)f.size()));
 			iIdx++;
@@ -793,9 +793,9 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 	if(!sl.isEmpty())
 	{
 		int iIdx = 0;
-		for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
+		for(auto& it : sl)
 		{
-			pArray->set(iIdx,new KviKvsVariant(*it));
+			pArray->set(iIdx,new KviKvsVariant(it));
 			iIdx++;
 		}
 	}
