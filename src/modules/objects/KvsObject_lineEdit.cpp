@@ -168,8 +168,8 @@ static const int mode_cod[] =  {
 		Called when the lineedit lost focus.
 		!fn: $textChangedEvent(<new text:string>)
 		This event is called when the text changed, In $0 there is the new text.
-		!fn: $setCompleter(<completion_mode:string>,<items:stringlist>)
-		Provides completions based on an stringlist.
+		!fn: $setCompleter(<completion_mode:string>,<completition_list:array>)
+		Provides completions based on an array.
 		Valid completion_mode are:
 		PopupCompletion: Current completions are displayed in a popup below the lineedit.
 		UnfilteredPopupCompletion: All possible completions are displayed in a popup window with the most likely suggestion selected.
@@ -451,20 +451,38 @@ KVSO_CLASS_FUNCTION(lineEdit,setInputMask)
 KVSO_CLASS_FUNCTION(lineEdit,setCompleter)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QStringList szCompletionList;
+	KviKvsArray *a;
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szMode)
-		KVSO_PARAMETER("completion_list",KVS_PT_STRINGLIST,0,szCompletionList)
+		KVSO_PARAMETER("completion_list",KVS_PT_ARRAY,0,a)
 	KVSO_PARAMETERS_END(c)
 	if(m_pCompleter)
 		delete m_pCompleter;
+	QStringList szCompletionList;
+	if(a)
+	{
+		kvs_int_t uIdx = 0;
+		kvs_int_t uSize = a->size();
+		while(uIdx < uSize)
+		{
+			KviKvsVariant * v = a->at(uIdx);
+			if(v)
+			{
+				QString tmp;
+				v->asString(tmp);
+				szCompletionList.append(tmp);
+			}
+			else szCompletionList.append("");
+			uIdx++;
+		}
+	}
 	m_pCompleter=new QCompleter(szCompletionList);
 	QCompleter::CompletionMode mode=QCompleter::PopupCompletion;
 	if(KviQString::equalCI(szMode,"InlineCompletion")) mode=QCompleter::InlineCompletion;
 	else if(KviQString::equalCI(szMode,"UnfilteredPopupCompletion")) mode=QCompleter::UnfilteredPopupCompletion;
 	else if(!KviQString::equalCI(szMode,"PopupCompletion"))
-		c->warning(__tr2qs_ctx("Unknown '%Q' completion mode, switching to default PopupCompletion","objects"),&szMode);
+		c->warning(__tr2qs_ctx("Unkonwn '%Q' completition mode, switching to default popupCompletition","objects"),&szMode);
 	m_pCompleter->setCompletionMode(mode);
 	((QLineEdit *)widget())->setCompleter(m_pCompleter);
 	return true;
