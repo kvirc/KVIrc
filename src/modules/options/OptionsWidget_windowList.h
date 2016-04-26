@@ -30,6 +30,7 @@
 
 #include <QComboBox>
 
+
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowList KviIconManager::ClassicWindowList
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowList __tr2qs_no_lookup("Window List")
 #define KVI_OPTIONS_WIDGET_MINIMAL_USER_EXPERIENCE_LEVEL_OptionsWidget_windowList 2
@@ -59,7 +60,6 @@ public:
 	~OptionsWidget_windowListTree();
 };
 
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeForeground KviIconManager::Canvas
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeForeground __tr2qs_no_lookup("Foreground")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_windowListTreeForeground OptionsWidget_windowListTree
@@ -73,7 +73,6 @@ public:
 	OptionsWidget_windowListTreeForeground(QWidget * parent);
 	~OptionsWidget_windowListTreeForeground();
 };
-
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowListTreeBackground KviIconManager::Canvas
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowListTreeBackground __tr2qs_no_lookup("Background")
