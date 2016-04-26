@@ -30,6 +30,7 @@
 
 #include <QLayout>
 
+
 OptionsWidget_ircViewTheme::OptionsWidget_ircViewTheme(QWidget * pParent)
 : KviOptionsWidget(pParent)
 {
@@ -39,15 +40,13 @@ OptionsWidget_ircViewTheme::~OptionsWidget_ircViewTheme()
 {
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 OptionsWidget_ircViewLook::OptionsWidget_ircViewLook(QWidget * parent)
 : KviOptionsWidget(parent)
 {
-	createLayout();
-
 	setObjectName("ircviewlook_options_widget");
-
+	createLayout();
+	
 	addFontSelector(0,0,1,0,__tr2qs_ctx("Font:","options"),KviOption_fontIrcView);
 	addColorSelector(0,1,1,1,__tr2qs_ctx("Background color:","options"),KviOption_colorIrcViewBackground);
 
@@ -104,9 +103,11 @@ OptionsWidget_ircViewLook::OptionsWidget_ircViewLook(QWidget * parent)
 	layout()->setRowStretch(2,1);
 }
 
+
 OptionsWidget_ircViewLook::~OptionsWidget_ircViewLook()
 {
 }
+
 
 void OptionsWidget_ircViewLook::commit()
 {
@@ -140,14 +141,12 @@ void OptionsWidget_ircViewLook::commit()
 	KviOptionsWidget::commit();
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 OptionsWidget_ircViewFeatures::OptionsWidget_ircViewFeatures(QWidget * parent)
 : KviOptionsWidget(parent)
 {
-	createLayout();
-
 	setObjectName("ircviewfeatures_options_widget");
+	createLayout();
 
 	addBoolSelector(0,7,0,7,__tr2qs_ctx("Enable URL highlighting","options"),KviOption_boolIrcViewUrlHighlighting);
 	addBoolSelector(0,8,0,8,__tr2qs_ctx("Use line wrap margin","options"),KviOption_boolIrcViewWrapMargin);
@@ -175,14 +174,12 @@ OptionsWidget_ircViewFeatures::~OptionsWidget_ircViewFeatures()
 {
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 OptionsWidget_ircViewMarker::OptionsWidget_ircViewMarker(QWidget * parent)
 : KviOptionsWidget(parent)
 {
-	createLayout();
-
 	setObjectName("ircviewmarker_options_widget");
+	createLayout();
 
 	addBoolSelector(0,0,1,0,__tr2qs_ctx("Track last read text line","options"),KviOption_boolTrackLastReadTextViewLine);
 	addColorSelector(0,1,1,1,__tr2qs_ctx("Marker color:","options"),KviOption_colorIrcViewMarkLine);
@@ -206,9 +203,11 @@ OptionsWidget_ircViewMarker::OptionsWidget_ircViewMarker(QWidget * parent)
 	m_pMarkerStyle->setCurrentIndex(uStyle < 5 ? uStyle : 0);
 }
 
+
 OptionsWidget_ircViewMarker::~OptionsWidget_ircViewMarker()
 {
 }
+
 
 void OptionsWidget_ircViewMarker::commit()
 {

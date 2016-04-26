@@ -31,7 +31,6 @@
 
 #include <QComboBox>
 
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircViewTheme KviIconManager::IrcView
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircViewTheme __tr2qs_no_lookup("Output")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_ircViewTheme __tr2qs_no_lookup("theme,colors,output")
@@ -96,6 +95,5 @@ public:
 private:
 	QComboBox * m_pMarkerStyle;
 };
-
 
 #endif //!_OPTW_IRCVIEW_H_
