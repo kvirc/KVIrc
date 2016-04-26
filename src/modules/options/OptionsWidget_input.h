@@ -29,6 +29,7 @@
 
 #include <QComboBox>
 
+
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_inputLook KviIconManager::Input
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_inputLook __tr2qs_no_lookup("Input")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_inputLook __tr2qs_no_lookup("theme,colors,text")

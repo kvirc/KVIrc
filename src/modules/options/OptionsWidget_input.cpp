@@ -159,7 +159,7 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 
 	KviBoolSelector *d = addBoolSelector(0,7,0,7,__tr2qs_ctx("Use a custom cursor width","options"),KviOption_boolEnableCustomCursorWidth);
 	KviUIntSelector *f = addUIntSelector(0,8,0,8,__tr2qs_ctx("Custom cursor width:","options"),KviOption_uintCustomCursorWidth,1,24,8,KVI_OPTION_BOOL(KviOption_boolEnableCustomCursorWidth));
-	f->setSuffix(__tr2qs_ctx(" px","options"));
+	f->setSuffix(__tr2qs_ctx(" pixels","options"));
 	connect(d,SIGNAL(toggled(bool)),f,SLOT(setEnabled(bool)));
 	addRowSpacer(0,9,0,9);
 }
