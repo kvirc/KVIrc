@@ -218,10 +218,12 @@ OptionsWidget_windowListTreeFeatures::OptionsWidget_windowListTreeFeatures(QWidg
 : KviOptionsWidget(parent)
 {
 	setObjectName("treewindowlist_options_widget");
-
 	createLayout();
 
-	addUIntSelector(0,1,0,1,__tr2qs_ctx("Minimum width:","options"),KviOption_uintTreeWindowListMinimumWidth,24,1024,125);
+	KviUIntSelector * u;
+	
+	u = addUIntSelector(0,1,0,1,__tr2qs_ctx("Minimum width:","options"),KviOption_uintTreeWindowListMinimumWidth,24,1024,125);
+	u->setSuffix(__tr2qs_ctx(" pixels","options"));
 	addBoolSelector(0,3,0,3,__tr2qs_ctx("Mouse wheel changes the active window instead of scrolling the scrollbar","options"),KviOption_boolWheelScrollsWindowsList);
 
 	addRowSpacer(0,4,0,4);
@@ -239,8 +241,9 @@ OptionsWidget_windowListClassic::OptionsWidget_windowListClassic(QWidget * paren
 : KviOptionsWidget(parent)
 {
 	setObjectName("classicwindowlist_options_widget");
-
 	createLayout();
+
+	KviUIntSelector * u;
 
 	addFontSelector(0,0,0,0,__tr2qs_ctx("Font:","options"),KviOption_fontWindowList);
 	KviTalGroupBox *g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Text/Alert Colors","options"));
@@ -252,11 +255,13 @@ OptionsWidget_windowListClassic::OptionsWidget_windowListClassic(QWidget * paren
 	addColorSelector(g,__tr2qs_ctx("Alert level 4:","options"),KviOption_colorWindowListHighlight4Text);
 	addColorSelector(g,__tr2qs_ctx("Alert level 5:","options"),KviOption_colorWindowListHighlight5Text);
 	addColorSelector(0,2,0,2,__tr2qs_ctx("Progress bar color:","options"),KviOption_colorWindowListProgressBar);
-	addUIntSelector(0,3,0,3,__tr2qs_ctx("Minimum width of buttons:","options"),KviOption_uintWindowListButtonMinWidth,24,9999,100);
-	//addUIntSelector(0,4,0,4,__tr2qs_ctx("Maximum number of rows:","options"),KviOption_uintWindowListMaximumRows,1,16,2);
+	u = addUIntSelector(0,3,0,3,__tr2qs_ctx("Minimum width of buttons:","options"),KviOption_uintWindowListButtonMinWidth,24,9999,100);
+	u->setSuffix(__tr2qs_ctx(" pixels","options"));
 	addBoolSelector(0,4,0,4,__tr2qs_ctx("Set maximum button width","options"),KviOption_boolClassicWindowListSetMaximumButtonWidth);
-	addUIntSelector(0,5,0,5,__tr2qs_ctx("Maximum width of buttons:","options"),KviOption_uintClassicWindowListMaximumButtonWidth,24,9999,100);
+	u = addUIntSelector(0,5,0,5,__tr2qs_ctx("Maximum width of buttons:","options"),KviOption_uintClassicWindowListMaximumButtonWidth,24,9999,100);
+	u->setSuffix(__tr2qs_ctx(" pixels","options"));
 	addBoolSelector(0,6,0,6,__tr2qs_ctx("Use flat buttons","options"),KviOption_boolUseFlatClassicWindowListButtons);
+	
 	addRowSpacer(0,7,0,7);
 }
 
