@@ -74,7 +74,7 @@ class KVIRC_API KviMainWindow : public KviTalMainWindow //, public KviIrcContext
 	friend class KviUserListViewArea;
 	Q_OBJECT
 public:
-	KviMainWindow();
+	KviMainWindow(QWidget *pParent);
 	~KviMainWindow();
 protected:
 	// subwindows

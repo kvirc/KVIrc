@@ -1605,7 +1605,14 @@ void KviApplication::createFrame()
 {
 	Q_ASSERT(g_pMainWindow == nullptr);
 
-	new KviMainWindow();
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	if(KVI_OPTION_BOOL(KviOption_boolShowTaskBarButton))
+		new KviMainWindow(0);
+	else
+		new KviMainWindow(new QWidget(0, 0));
+#else
+	new KviMainWindow(0);
+#endif
 
 	Q_ASSERT(g_pMainWindow != nullptr);
 
