@@ -34,7 +34,6 @@
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_theme __tr2qs_no_lookup("theme")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_theme "theme"
 
-
 class OptionsWidget_theme : public KviOptionsWidget
 {
 	Q_OBJECT
@@ -43,12 +42,10 @@ public:
 	~OptionsWidget_theme();
 };
 
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeTransparency KviIconManager::Transparent
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeTransparency __tr2qs_no_lookup("Transparency")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeTransparency __tr2qs_no_lookup("theme,background")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeTransparency "theme"
-
 
 class OptionsWidget_themeTransparency : public KviOptionsWidget
 {
@@ -70,12 +67,10 @@ protected slots:
 	void enableGlobalBackgroundPixmapSelector(bool);
 };
 
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_themeToolBarApplets KviIconManager::Applet
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_themeToolBarApplets __tr2qs_no_lookup("Toolbar Applets")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_themeToolBarApplets __tr2qs_no_lookup("theme,toolbar")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_themeToolBarApplets "theme"
-
 
 class OptionsWidget_themeToolBarApplets : public KviOptionsWidget
 {
