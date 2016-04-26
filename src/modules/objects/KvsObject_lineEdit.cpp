@@ -168,7 +168,7 @@ static const int mode_cod[] =  {
 		Called when the lineedit lost focus.
 		!fn: $textChangedEvent(<new text:string>)
 		This event is called when the text changed, In $0 there is the new text.
-		!fn: $setCompleter(<completion_mode:string>,<completition_list:array>)
+		!fn: $setCompleter(<completion_mode:string>,<completion_list:array>)
 		Provides completions based on an array.
 		Valid completion_mode are:
 		PopupCompletion: Current completions are displayed in a popup below the lineedit.
@@ -482,7 +482,7 @@ KVSO_CLASS_FUNCTION(lineEdit,setCompleter)
 	if(KviQString::equalCI(szMode,"InlineCompletion")) mode=QCompleter::InlineCompletion;
 	else if(KviQString::equalCI(szMode,"UnfilteredPopupCompletion")) mode=QCompleter::UnfilteredPopupCompletion;
 	else if(!KviQString::equalCI(szMode,"PopupCompletion"))
-		c->warning(__tr2qs_ctx("Unkonwn '%Q' completition mode, switching to default popupCompletition","objects"),&szMode);
+		c->warning(__tr2qs_ctx("Unknown '%Q' completion mode, switching to default PopupCompletion","objects"),&szMode);
 	m_pCompleter->setCompletionMode(mode);
 	((QLineEdit *)widget())->setCompleter(m_pCompleter);
 	return true;
