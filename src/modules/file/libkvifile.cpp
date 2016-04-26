@@ -621,7 +621,7 @@ static bool file_kvs_fnc_allSizes(KviKvsModuleFunctionCall * c)
 	if(!sl.isEmpty())
 	{
 		int iIdx = 0;
-		for(auto& it : sl)
+		for(const auto& it : sl)
 		{
 			szFile = szDir + it;
 			QFileInfo f(szFile);
@@ -793,7 +793,7 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 	if(!sl.isEmpty())
 	{
 		int iIdx = 0;
-		for(auto& it : sl)
+		for(const auto& it : sl)
 		{
 			pArray->set(iIdx,new KviKvsVariant(it));
 			iIdx++;
