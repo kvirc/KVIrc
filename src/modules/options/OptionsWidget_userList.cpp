@@ -31,6 +31,7 @@
 
 #include <QLayout>
 
+
 OptionsWidget_userList::OptionsWidget_userList(QWidget * parent)
 : KviOptionsWidget(parent,"userlistlook_options_widget")
 {
@@ -39,10 +40,6 @@ OptionsWidget_userList::OptionsWidget_userList(QWidget * parent)
 OptionsWidget_userList::~OptionsWidget_userList()
 {
 }
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 OptionsWidget_userListForeground::OptionsWidget_userListForeground(QWidget * parent)
@@ -69,6 +66,7 @@ OptionsWidget_userListForeground::OptionsWidget_userListForeground(QWidget * par
 	QString szTip = __tr2qs("The color selected, will be blended with the user rank foreground color.<br>" \
 				"You should also consider your theme's style, color and the userlist background selected color for optimum visibility.<br>" \
 				"If no color is selected respective user rank color specified will be used instead.");
+
 	KviColorSelector * as = addColorSelector(ahb,QString(),KviOption_colorUserListViewAwayForeground);
 	connect(ab,SIGNAL(toggled(bool)),as,SLOT(setEnabled(bool)));
 	mergeTip(ab, szTip);
@@ -85,6 +83,7 @@ OptionsWidget_userListForeground::OptionsWidget_userListForeground(QWidget * par
 OptionsWidget_userListForeground::~OptionsWidget_userListForeground()
 {
 }
+
 
 OptionsWidget_userListGrid::OptionsWidget_userListGrid(QWidget * parent)
 : KviOptionsWidget(parent)
@@ -110,12 +109,14 @@ OptionsWidget_userListGrid::OptionsWidget_userListGrid(QWidget * parent)
 	m_pGridTypeCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintUserListViewGridType));
 	m_pGridTypeCombo->setEnabled(KVI_OPTION_BOOL(KviOption_boolUserListViewDrawGrid));
 	connect(b,SIGNAL(toggled(bool)),m_pGridTypeCombo,SLOT(setEnabled(bool)));
+
 	addRowSpacer(0,3,0,3);
 }
 
 OptionsWidget_userListGrid::~OptionsWidget_userListGrid()
 {
 }
+
 
 void OptionsWidget_userListGrid::commit()
 {
@@ -126,7 +127,6 @@ void OptionsWidget_userListGrid::commit()
 
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 OptionsWidget_userListBackground::OptionsWidget_userListBackground(QWidget * parent)
 : KviOptionsWidget(parent,"userlistlook_background_options_widget")
@@ -136,7 +136,6 @@ OptionsWidget_userListBackground::OptionsWidget_userListBackground(QWidget * par
 	KviTalGroupBox * g = addGroupBox(0,0,1,0,Qt::Horizontal,__tr2qs_ctx("Background Colors","options"));
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorUserListViewBackground);
 	addColorSelector(g,__tr2qs_ctx("Selected:","options"),KviOption_colorUserListViewSelectionBackground);
-
 
 	addPixmapSelector(0,1,1,1,__tr2qs_ctx("Background image:","options"),KviOption_pixmapUserListViewBackground);
 
@@ -187,10 +186,6 @@ OptionsWidget_userListBackground::OptionsWidget_userListBackground(QWidget * par
 		default:
 			m_pVerticalAlign->setCurrentIndex(0);
 	}
-
-
-
-	//layout()->setColumnStretch(0,1);
 	layout()->setRowStretch(1,1);
 }
 
@@ -215,6 +210,7 @@ void OptionsWidget_userListBackground::commit()
 			iFlags|=Qt::AlignHCenter;
 			break;
 	}
+
 	switch(m_pVerticalAlign->currentIndex())
 	{
 		case 1:
@@ -227,11 +223,8 @@ void OptionsWidget_userListBackground::commit()
 			iFlags|=Qt::AlignVCenter;
 			break;
 	}
-
 	KVI_OPTION_UINT(KviOption_uintUserListPixmapAlign)=iFlags;
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 OptionsWidget_userListFeatures::OptionsWidget_userListFeatures(QWidget * parent)
@@ -243,11 +236,15 @@ OptionsWidget_userListFeatures::OptionsWidget_userListFeatures(QWidget * parent)
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Show user rank channel icons","options"),KviOption_boolShowUserChannelIcons);
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Show user channel activity indicator","options"),KviOption_boolShowUserChannelState);
 	addBoolSelector(0,3,0,3,__tr2qs_ctx("Show label with userlist stats","options"),KviOption_boolShowUserListStatisticLabel);
-	addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable user tooltips","options"),KviOption_boolShowUserListViewToolTips);
+	addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable user tooltip","options"),KviOption_boolShowUserListViewToolTips);
 	addBoolSelector(0,5,0,5,__tr2qs_ctx("Show avatars in userlist","options"),KviOption_boolShowAvatarsInUserlist);
 	addBoolSelector(0,6,0,6,__tr2qs_ctx("Enable animated avatars","options"),KviOption_boolEnableAnimatedAvatars);
-	addBoolSelector(0,7,0,7,__tr2qs_ctx("Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the normal nicks","options"),KviOption_boolPlaceNickWithNonAlphaCharsAtEnd);
-
+	KviBoolSelector * b = addBoolSelector(0,7,0,7,__tr2qs_ctx("Place nicks starting with non-alpha characters (such as _COOL_BOY_) last","options"),KviOption_boolPlaceNickWithNonAlphaCharsAtEnd);
+	mergeTip(b,__tr2qs_ctx("All nicknames which include characters such as [ ] ^ _ &lt; &gt; | etc. " \
+				"will be sorted last in userlist after all regular nicknames.<br>" \
+				"Select this option if you prefer to see regular nicknames sorted topmost " \
+				"on userlist.<br><br><b>Note:</b> " \
+				"Changes to this option requires KVIrc restart.","options"));
 	addRowSpacer(0,8,0,8);
 }
 
