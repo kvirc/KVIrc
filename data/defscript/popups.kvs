@@ -140,6 +140,13 @@ defpopup(querytextview)
 
 	separator(!$window.isDocked())
 
+	item($tr("Close","defscript"),1)
+	{
+		window.close
+	}
+
+	separator
+
 	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),88) (!%:multiple && $server)
 	{
 		whois $0 $0
