@@ -64,7 +64,12 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 {
 	createLayout();
 
-	m_pUseProxySelector = addBoolSelector(0,0,1,0,__tr2qs_ctx("Use proxy","options"),KviOption_boolUseProxyHost);
+	m_pUseProxySelector = addBoolSelector(0,0,1,0,__tr2qs_ctx("Use proxy for all connections","options"),KviOption_boolUseProxyHost);
+	QString szTip = __tr2qs_ctx("When enabled, the selected proxy will be used as the default for all connections.<br>" \
+				"An alternative option to define a specific per-server proxy, is also located " \
+				"in the advanced server dialog in the connection tab.","options");
+
+	mergeTip(m_pUseProxySelector,szTip);
 
 	m_pTreeWidget = new QTreeWidget(this);
 	addWidgetToLayout(m_pTreeWidget,0,1,0,1);
@@ -91,14 +96,14 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Proxy))));
 	tb->setAutoRaise(true);
 	connect(tb,SIGNAL(clicked()),this,SLOT(newProxy()));
-	mergeTip(tb,__tr2qs_ctx("New Proxy","options"));
+	mergeTip(tb,__tr2qs_ctx("New proxy","options"));
 
 	tb = new QToolButton(vbox);
 	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Remove))));
 	//tb->setEnabled(false);
 	tb->setAutoRaise(true);
 	connect(tb,SIGNAL(clicked()),this,SLOT(removeCurrent()));
-	mergeTip(tb,__tr2qs_ctx("Remove Proxy","options"));
+	mergeTip(tb,__tr2qs_ctx("Remove proxy","options"));
 
 	QFrame * lll = new QFrame(vbox);
 	vbox->setStretchFactor(lll,100);
