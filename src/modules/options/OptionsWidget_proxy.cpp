@@ -82,10 +82,11 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 		this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
-			this,SLOT(customContextMenuRequested(const QPoint &)));
+		this,SLOT(customContextMenuRequested(const QPoint &)));
 
 	QString tiptxt = __tr2qs_ctx("This is the list of available proxy servers.<br>" \
 				"Right-click on the list to add or remove proxies.","options");
+
 	mergeTip(m_pTreeWidget,tiptxt);
 	mergeTip(m_pTreeWidget->viewport(),tiptxt);
 
@@ -100,14 +101,12 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 
 	tb = new QToolButton(vbox);
 	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Remove))));
-	//tb->setEnabled(false);
 	tb->setAutoRaise(true);
 	connect(tb,SIGNAL(clicked()),this,SLOT(removeCurrent()));
 	mergeTip(tb,__tr2qs_ctx("Remove proxy","options"));
 
 	QFrame * lll = new QFrame(vbox);
 	vbox->setStretchFactor(lll,100);
-
 
 	KviTalGroupBox * gbox = addGroupBox(0,2,1,2,Qt::Horizontal,__tr2qs_ctx("Configuration","options"));
 
@@ -134,7 +133,6 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 #ifndef COMPILE_IPV6_SUPPORT
 	m_pIPv6Check->setEnabled(false);
 #endif
-
 	m_pLastEditedItem = 0;
 
 	fillProxyList();
@@ -179,7 +177,7 @@ void OptionsWidget_proxy::fillProxyList()
 	}
 	if(!(g_pProxyDataBase->currentProxy()))
 		currentItemChanged(0,0);
-	
+
 	enableDisableUseProxySelector();
 }
 
@@ -227,7 +225,6 @@ void OptionsWidget_proxy::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem
 		m_pIPv6Check->setChecked(false);
 		m_pIpEditor->setAddressType(KviIpEditor::IPv4);
 #endif
-
 		if(!m_pIpEditor->setAddress(m_pLastEditedItem->m_pProxyData->m_szIp))
 		{
 #ifdef COMPILE_IPV6_SUPPORT
@@ -249,7 +246,6 @@ void OptionsWidget_proxy::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem
 		m_pIpEditor->setAddress("0.0.0.0");
 		m_pIPv6Check->setEnabled(false);
 	}
-	
 	enableDisableUseProxySelector();
 }
 
@@ -290,7 +286,6 @@ void OptionsWidget_proxy::saveLastItem()
 			}
 #endif
 		}
-
 		m_pLastEditedItem->m_pProxyData->m_szPass = m_pPassEdit->text();
 		m_pLastEditedItem->m_pProxyData->m_szUser = m_pUserEdit->text();
 		tmp = m_pPortEdit->text();
@@ -298,7 +293,6 @@ void OptionsWidget_proxy::saveLastItem()
 		kvi_u32_t uPort = tmp.toUInt(&bOk);
 		if(!bOk)uPort = 1080;
 		m_pLastEditedItem->m_pProxyData->m_uPort = uPort;
-//		m_pLastEditedItem->m_pProxyData->m_bSocksV5 = m_pSocks5Check->isChecked();
 		tmp = m_pProtocolBox->currentText();
 		m_pLastEditedItem->m_pProxyData->setNamedProtocol(tmp.ptr());
 	}
@@ -322,7 +316,6 @@ void OptionsWidget_proxy::commit()
 
 			if(it == m_pLastEditedItem)g_pProxyDataBase->setCurrentProxy(prx);
 		}
-		//it = (ProxyOptionsTreeWidgetItem *)it->nextSibling();
 	}
 
 	if(!g_pProxyDataBase->currentProxy())
@@ -335,9 +328,9 @@ void OptionsWidget_proxy::customContextMenuRequested(const QPoint &pos)
 {
 	QTreeWidgetItem *it=(QTreeWidgetItem *)m_pTreeWidget->itemAt(pos);
 	m_pContextPopup->clear();
-    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Proxy)),__tr2qs_ctx("&New Proxy","options"),this,SLOT(newProxy()));
-    m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Re&move Proxy","options"),this,SLOT(removeCurrent()))
-            ->setEnabled(it);
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Proxy)),__tr2qs_ctx("&New Proxy","options"),this,SLOT(newProxy()));
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Re&move Proxy","options"),this,SLOT(removeCurrent()))
+		->setEnabled(it);
 	m_pContextPopup->popup(QCursor::pos());
 }
 
@@ -354,9 +347,6 @@ void OptionsWidget_proxy::removeCurrent()
 {
 	if(m_pLastEditedItem)
 	{
-		//delete m_pLastEditedItem;
-		//m_pLastEditedItem = 0;
-
 		QTreeWidgetItem * tmp = m_pLastEditedItem;
 		m_pLastEditedItem = 0;
 		delete tmp;
@@ -365,7 +355,6 @@ void OptionsWidget_proxy::removeCurrent()
 		if(it)
 		{
 			it->setSelected(true);
-			//m_pTreeWidget->ensureItemVisible(it);
 		} else {
 			currentItemChanged(0,0);
 		}
