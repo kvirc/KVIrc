@@ -30,7 +30,6 @@
 #include <QGridLayout>
 
 
-
 // Tables used in $setAlignment & $alignment
 const char * const align_tbl[] = {
 				"Left",
@@ -41,7 +40,6 @@ const char * const align_tbl[] = {
 				"Top",
 				"Bottom",
 				};
-
 
 
 const int align_cod[] = {
@@ -146,14 +144,13 @@ bool KvsObject_layout::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *)
 		pContext->warning(__tr2qs_ctx("Qt does not support setting layouts on toolbar objects","objects"));
 		return false;
 	}
-
 	// If there already is a layout manager installed on this widget, QWidget won't let you install another.
 	if(w->layout()) delete w->layout();
-	setObject(new QGridLayout(w));
-	((QGridLayout *)object())->setVerticalSpacing(0);
-	((QGridLayout *)object())->setHorizontalSpacing(0);
-	setObjectName(getName());
-	return true;
+		setObject(new QGridLayout(w));
+		((QGridLayout *)object())->setVerticalSpacing(0);
+		((QGridLayout *)object())->setHorizontalSpacing(0);
+		setObjectName(getName());
+		return true;
 }
 
 KVSO_CLASS_FUNCTION(layout,addWidget)
@@ -276,7 +273,6 @@ KVSO_CLASS_FUNCTION(layout,setResizeMode)
 	else c->warning(__tr2qs_ctx("Invalid resize mode defaulting to Auto","objects"));
 	((QGridLayout *)object())->setSizeConstraint(r);
 	return true;
-
 }
 
 KVSO_CLASS_FUNCTION(layout,setAlignment)
@@ -292,6 +288,7 @@ KVSO_CLASS_FUNCTION(layout,setAlignment)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	int index=((QGridLayout *)widget())->indexOf(((QWidget *)(pObject->object())));
+
 	if(index == -1)
 	{
 		c->warning(__tr2qs_ctx("The widget must be a child of this layout","objects"));
@@ -318,5 +315,5 @@ KVSO_CLASS_FUNCTION(layout,setAlignment)
 
 	if(widget())
 		((QGridLayout *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
-	return true;
+		return true;
 }
