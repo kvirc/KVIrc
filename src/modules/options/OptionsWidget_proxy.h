@@ -37,6 +37,7 @@ class KviIpEditor;
 class QMenu;
 class KviProxy;
 class KviProxyDataBase;
+class KviBoolSelector;
 
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
@@ -78,11 +79,13 @@ protected:
 	QComboBox    * m_pProtocolBox;
 	QMenu   * m_pContextPopup;
 	QCheckBox    * m_pIPv6Check;
+	KviBoolSelector * m_pUseProxySelector;
 	ProxyOptionsTreeWidgetItem * m_pLastEditedItem;
 private:
 
 	void fillProxyList();
 	void saveLastItem();
+	void enableDisableUseProxySelector();
 protected slots:
 	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev);
 	void customContextMenuRequested(const QPoint &pnt);

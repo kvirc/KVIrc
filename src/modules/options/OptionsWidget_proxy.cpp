@@ -64,7 +64,7 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 {
 	createLayout();
 
-	addBoolSelector(0,0,1,0,__tr2qs_ctx("Use proxy","options"),KviOption_boolUseProxyHost);
+	m_pUseProxySelector = addBoolSelector(0,0,1,0,__tr2qs_ctx("Use proxy","options"),KviOption_boolUseProxyHost);
 
 	m_pTreeWidget = new QTreeWidget(this);
 	addWidgetToLayout(m_pTreeWidget,0,1,0,1);
@@ -105,9 +105,6 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 
 
 	KviTalGroupBox * gbox = addGroupBox(0,2,1,2,Qt::Horizontal,__tr2qs_ctx("Configuration","options"));
-	//QGridLayout * gl = new QGridLayout(gbox->layout());
-	//gl->setMargin(2);
-	//gl->setSpacing(4);
 
 	m_pProxyLabel = new QLabel(__tr2qs_ctx("Proxy:","options"),gbox);
 	m_pProxyEdit = new QLineEdit(gbox);
@@ -147,6 +144,13 @@ OptionsWidget_proxy::~OptionsWidget_proxy()
 {
 }
 
+void OptionsWidget_proxy::enableDisableUseProxySelector()
+{
+	m_pUseProxySelector->setEnabled(m_pTreeWidget->currentItem());
+	if(m_pTreeWidget->topLevelItemCount() < 1)
+		m_pUseProxySelector->setChecked(false);
+}
+
 void OptionsWidget_proxy::ipV6CheckToggled(bool bEnabled)
 {
 	m_pIpEditor->setAddressType(bEnabled ? KviIpEditor::IPv6 : KviIpEditor::IPv4);
@@ -168,7 +172,10 @@ void OptionsWidget_proxy::fillProxyList()
 			m_pTreeWidget->scrollToItem(prx);
 		}
 	}
-	if(!(g_pProxyDataBase->currentProxy()))currentItemChanged(0,0);
+	if(!(g_pProxyDataBase->currentProxy()))
+		currentItemChanged(0,0);
+	
+	enableDisableUseProxySelector();
 }
 
 void OptionsWidget_proxy::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
@@ -237,6 +244,8 @@ void OptionsWidget_proxy::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem
 		m_pIpEditor->setAddress("0.0.0.0");
 		m_pIPv6Check->setEnabled(false);
 	}
+	
+	enableDisableUseProxySelector();
 }
 
 void OptionsWidget_proxy::saveLastItem()
@@ -294,9 +303,9 @@ void OptionsWidget_proxy::commit()
 {
 	saveLastItem();
 	g_pProxyDataBase->clear();
-	ProxyOptionsTreeWidgetItem * it;// = (ProxyOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItemCount();
 
-	//while(it)
+	ProxyOptionsTreeWidgetItem * it;
+
 	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
 		it=(ProxyOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
@@ -311,10 +320,8 @@ void OptionsWidget_proxy::commit()
 		//it = (ProxyOptionsTreeWidgetItem *)it->nextSibling();
 	}
 
-	if(g_pProxyDataBase->currentProxy() == 0)
-	{
+	if(!g_pProxyDataBase->currentProxy())
 		g_pProxyDataBase->setCurrentProxy(g_pProxyDataBase->proxyList()->first());
-	}
 
 	KviOptionsWidget::commit();
 }
