@@ -796,9 +796,10 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par,KviIrcServer * s)
 	gl->addWidget(l,iRow,0);
 	m_pProxyEditor = new QComboBox(tab);
 	gl->addWidget(m_pProxyEditor,iRow,1);
-	KviTalToolTip::add(m_pProxyEditor,__tr2qs_ctx("This is the <b>proxy</b> that KVIrc will use to connect to this server.\n" \
-		"If this field is set in \"Default\" KVIrc will use global proxy settings, if it is set in \"Direct connection\" " \
-		"KVIrc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.","options"));
+	KviTalToolTip::add(m_pProxyEditor,__tr2qs_ctx("Defines the connection type that KVIrc should use to connect to this server.<br>" \
+				"When it's set to *Default* KVIrc will use the global proxy settings, when it's set to *Direct Connection* " \
+				"KVIrc will connect directly without using a proxy, or select a desired proxy you have previously added<br>" \
+				"You can define or edit new proxy servers in *General Preferences* / *Connection* tab' \"Proxy hosts\" dialog.","options"));
 
 	m_pProxyEditor->addItem(__tr2qs_ctx("Default","options"));
 	m_pProxyEditor->addItem(__tr2qs_ctx("Direct Connection","options"));
