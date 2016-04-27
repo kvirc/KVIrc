@@ -501,7 +501,8 @@ public:
 		NickPopup            = 333,
 		Tools                = 334,
 		FavoriteOff          = 335,
-		IconCount            = 336
+		NewProxy             = 336,
+		IconCount            = 337
 	};
 
 	/**
