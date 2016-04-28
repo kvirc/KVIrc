@@ -791,7 +791,7 @@ void KviMircTextColorSelector::foreSelected(QAction * pAction)
 	int id = pAction->data().toInt(&bOk);
 	if(bOk)
 		m_uFore = id;
-		setButtonPalette();
+	setButtonPalette();
 }
 
 void KviMircTextColorSelector::backSelected(QAction * pAction)
@@ -800,7 +800,7 @@ void KviMircTextColorSelector::backSelected(QAction * pAction)
 	int id = pAction->data().toInt(&bOk);
 	if(bOk)
 		m_uBack = id;
-		setButtonPalette();
+	setButtonPalette();
 }
 
 KviSoundSelector::KviSoundSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled)
