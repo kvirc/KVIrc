@@ -784,7 +784,7 @@ void KviMircTextColorSelector::foreSelected(QAction * pAction)
 	bool bOk=false;
 	int id = pAction->data().toInt(&bOk);
 	if(bOk)
-	m_uFore = id;
+		m_uFore = id;
 	setButtonPalette();
 }
 
@@ -793,7 +793,7 @@ void KviMircTextColorSelector::backSelected(QAction * pAction)
 	bool bOk=false;
 	int id = pAction->data().toInt(&bOk);
 	if(bOk)
-	m_uBack = id;
+		m_uBack = id;
 	setButtonPalette();
 }
 
