@@ -145,7 +145,7 @@ defpopup(querytextview)
 		window.close
 	}
 
-	separator
+	separator($server)
 
 	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),88) (!%:multiple && $server)
 	{
@@ -315,6 +315,13 @@ defpopup(consoletextview)
 	item($tr("Dock","defscript"),6) (!$window.isDocked())
 	{
 		window.dock
+	}
+
+	separator($server)
+
+	item($tr("Close","defscript"),1)
+	{
+		window.close
 	}
 
 	separator($server)
@@ -743,14 +750,14 @@ defpopup(defaulttextview)
 		}
 	}
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),90) (!%:multiple && $server)
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),90) (!%:multiple && $server && $popup.exists(0))
 	{
 		whois $0 $0
 	}
 
 	separator
 
-	popup($tr("&Information","defscript"),317) ($server)
+	popup($tr("&Information","defscript"),317) ($server && $popup.exists(0))
 	{
 		item($str.printf($tr("/WHOIS ?s","defscript"),$0),88)
 		{
@@ -777,26 +784,26 @@ defpopup(defaulttextview)
 
 	separator
 
-	item($tr("&Query","defscript") %:visible,47) ($server)
+	item($tr("&Query","defscript") %:visible,47) ($server && $popup.exists(0))
 	{
 		query $0
 	}
 
 	separator
 
-	extpopup(C&TCP,ctcp,162) ($server)
+	extpopup(C&TCP,ctcp,162) ($server && $popup.exists(0))
 
-	extpopup(&DCC,dcc,325) ($server)
+	extpopup(&DCC,dcc,325) ($server && $popup.exists(0))
 
 	separator
 
-	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple && $server)
+	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple && $server && $popup.exists(0))
 
-	extpopup($tr("&Highlight","defscript"),highlight,269) (!%:multiple && $server)
+	extpopup($tr("&Highlight","defscript"),highlight,269) (!%:multiple && $server && $popup.exists(0))
 
-	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple && $server)
+	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple && $server && $popup.exists(0))
 
-	item($tr("Notify avatar","defscript"),57) ($server)
+	item($tr("Notify avatar","defscript"),57) ($server && $popup.exists(0))
 	{
 		avatar.notify $0
 	}
@@ -984,6 +991,13 @@ defpopup(channeltextview)
 	}
 
 	separator(!$window.isDocked() $server)
+
+	item($tr("Close","defscript"),1)
+	{
+		window.close
+	}
+
+	separator($server)
 
 	extpopup($tr("Default Channels","defscript"),channels,31) ($server)
 
