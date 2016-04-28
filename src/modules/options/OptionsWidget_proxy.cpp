@@ -140,7 +140,7 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 	layout()->setRowStretch(0,1);
 	layout()->setColumnStretch(0,1);
 
-    m_pContextPopup = new QMenu(this);
+	m_pContextPopup = new QMenu(this);
 }
 
 OptionsWidget_proxy::~OptionsWidget_proxy()
@@ -200,9 +200,9 @@ void OptionsWidget_proxy::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem
 	m_pPortEdit->setEnabled(m_pLastEditedItem);
 
 #ifdef COMPILE_IPV6_SUPPORT
-		m_pIPv6Check->setEnabled(m_pLastEditedItem);
+	m_pIPv6Check->setEnabled(m_pLastEditedItem);
 #else
-		m_pIPv6Check->setEnabled(false);
+	m_pIPv6Check->setEnabled(false);
 #endif
 	if(m_pLastEditedItem)
 	{
@@ -254,7 +254,9 @@ void OptionsWidget_proxy::saveLastItem()
 	if(m_pLastEditedItem)
 	{
 		KviCString tmp = m_pProxyEdit->text();
-		if(tmp.isEmpty())tmp = "irc.unknown.net";
+		if(tmp.isEmpty())
+			tmp = "irc.unknown.net";
+
 		m_pLastEditedItem->setText(0,tmp.ptr());
 		m_pLastEditedItem->m_pProxyData->m_szHostname = tmp;
 #ifdef COMPILE_IPV6_SUPPORT
@@ -263,6 +265,7 @@ void OptionsWidget_proxy::saveLastItem()
 		m_pLastEditedItem->m_pProxyData->m_bIsIPv6 = false;
 #endif
 		m_pLastEditedItem->m_pProxyData->m_szIp = "";
+
 		QString tmpAddr = m_pIpEditor->address();
 
 		if(!m_pIpEditor->hasEmptyFields())
@@ -271,14 +274,14 @@ void OptionsWidget_proxy::saveLastItem()
 			if(m_pIPv6Check->isChecked())
 			{
 				if((!KviQString::equalCI(tmpAddr,"0:0:0:0:0:0:0:0")) &&
-						KviNetUtils::isValidStringIPv6(tmpAddr))
+					KviNetUtils::isValidStringIPv6(tmpAddr))
 				{
 					m_pLastEditedItem->m_pProxyData->m_szIp = tmpAddr;
 				}
 			} else {
 #endif
 				if((!KviQString::equalCI(tmpAddr,"0.0.0.0")) &&
-						KviNetUtils::isValidStringIp(tmpAddr))
+					KviNetUtils::isValidStringIp(tmpAddr))
 				{
 					m_pLastEditedItem->m_pProxyData->m_szIp = tmpAddr;
 				}
@@ -292,9 +295,9 @@ void OptionsWidget_proxy::saveLastItem()
 		bool bOk;
 		kvi_u32_t uPort = tmp.toUInt(&bOk);
 		if(!bOk)uPort = 1080;
-		m_pLastEditedItem->m_pProxyData->m_uPort = uPort;
-		tmp = m_pProtocolBox->currentText();
-		m_pLastEditedItem->m_pProxyData->setNamedProtocol(tmp.ptr());
+			m_pLastEditedItem->m_pProxyData->m_uPort = uPort;
+			tmp = m_pProtocolBox->currentText();
+			m_pLastEditedItem->m_pProxyData->setNamedProtocol(tmp.ptr());
 	}
 }
 
