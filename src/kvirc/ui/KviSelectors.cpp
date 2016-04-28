@@ -69,8 +69,6 @@ KviUIntSelector::KviUIntSelector(QWidget * par,const QString & txt,unsigned int 
 : KviTalHBox(par), KviSelectorInterface()
 {
 	m_pLabel = new QLabel(txt,this);
-	//m_pLineEdit = new QLineEdit(this);
-	//m_pLineEdit->setMaximumWidth(150);
 	m_pSpinBox = new QSpinBox(this);
 
 	m_bIsShortInt = bShortInt;
@@ -86,8 +84,6 @@ KviUIntSelector::KviUIntSelector(QWidget * par,const QString & txt,unsigned int 
 	m_pSpinBox->setMinimum(m_uLowBound);
 	m_pSpinBox->setMaximum(m_uHighBound);
 
-	//KviCString tmp(KviCString::Format,"%u",bShortInt ? (unsigned int) *((unsigned short int *)pOption) : *pOption);
-	//m_pLineEdit->setText(tmp.ptr());
 	m_pSpinBox->setValue(bShortInt ? (unsigned int) *((unsigned short int *)pOption) : *pOption);
 
 	setMargin(0);
@@ -109,7 +105,8 @@ void KviUIntSelector::commit()
 	KviCString tmp = m_pSpinBox->cleanText();
 	bool bOk;
 	unsigned int val = tmp.toUInt(&bOk);
-	if(!bOk)val = m_uDefault;
+	if(!bOk)
+		val = m_uDefault;
 	if(m_uHighBound > m_uLowBound)
 	{
 		if(val < m_uLowBound)val = m_uLowBound;
@@ -162,7 +159,8 @@ void KviStringSelector::setEnabled(bool bEnabled)
 	m_pLabel->setEnabled(bEnabled);
 }
 
-void KviStringSelector::setText(const QString& text){
+void KviStringSelector::setText(const QString& text)
+{
 	m_pLineEdit->setText(text);
 }
 
@@ -179,7 +177,7 @@ KviPasswordSelector::KviPasswordSelector(QWidget * par,const QString & txt,QStri
 	m_pLineEdit->setEchoMode(QLineEdit::Password);
 	m_pCheckBox->setCheckState(Qt::Checked);
 	connect(m_pCheckBox,SIGNAL(stateChanged(int)), this, SLOT(checkToggled(int)));
-	//m_pLineEdit->setMinimumWidth(200);
+
 	QString tmp = *pOption;
 	m_pLineEdit->setText(tmp);
 
@@ -218,7 +216,8 @@ void KviPasswordSelector::setEnabled(bool bEnabled)
 	m_pCheckBox->setEnabled(bEnabled);
 }
 
-void KviPasswordSelector::setText(const QString& text){
+void KviPasswordSelector::setText(const QString& text)
+{
 	m_pLineEdit->setText(text);
 }
 
@@ -234,7 +233,6 @@ KviPasswordLineEdit::KviPasswordLineEdit(QWidget * par)
 	m_pLineEdit->setEchoMode(QLineEdit::Password);
 	m_pCheckBox->setCheckState(Qt::Checked);
 	connect(m_pCheckBox,SIGNAL(stateChanged(int)), this, SLOT(checkToggled(int)));
-	//m_pLineEdit->setMinimumWidth(200);
 	setStretchFactor(m_pLineEdit,1);
 }
 
@@ -264,7 +262,8 @@ void KviPasswordLineEdit::setEnabled(bool bEnabled)
 	m_pCheckBox->setEnabled(bEnabled);
 }
 
-void KviPasswordLineEdit::setText(const QString& text){
+void KviPasswordLineEdit::setText(const QString& text)
+{
 	m_pLineEdit->setText(text);
 }
 
@@ -278,7 +277,6 @@ KviPixmapPreview::KviPixmapPreview(QWidget * par)
 
 KviPixmapPreview::~KviPixmapPreview()
 {
-	//delete m_pLabPixmap;
 }
 
 void KviPixmapPreview::setPixmap(KviPixmap * pix)
@@ -287,7 +285,6 @@ void KviPixmapPreview::setPixmap(KviPixmap * pix)
 	{
 		m_pLabPixmap->resize(pix->pixmap()->size());
 		m_pLabPixmap->setPixmap(*pix->pixmap());
-		//setWidget(m_pLabPixmap);
 	}
 }
 
@@ -304,12 +301,10 @@ KviPixmapSelector::KviPixmapSelector(QWidget * par,const QString & txt,KviPixmap
 	connect(m_pCheckBox,SIGNAL(toggled(bool)),this,SLOT(checkBoxToggled(bool)));
 
 	g->addWidget(m_pCheckBox,0,0,1,2);
-//	g->addMultiCellWidget(m_pCheckBox,0,0,0,1);
 
 	m_pPreview = new KviPixmapPreview(this);
 	m_pPreview->setPixmap(&m_localPixmap);
 	g->addWidget(m_pPreview,1,0,1,2);
-//	g->addMultiCellWidget(m_pPreview,1,1,0,1);
 
 	m_pFileNameLabel = new QLabel(this);
 	m_pFileNameLabel->setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
@@ -322,8 +317,8 @@ KviPixmapSelector::KviPixmapSelector(QWidget * par,const QString & txt,KviPixmap
 
 	g->setRowStretch(1,1);
 	g->setColumnStretch(0,1);
-
 	g->setMargin(0);
+
 	setEnabled(bEnabled);
 }
 
@@ -350,17 +345,8 @@ void KviPixmapSelector::commit()
 void KviPixmapSelector::choosePixmap()
 {
 	QString tmp;
-	if(
-		KviFileDialog::askForOpenFileName(
-			tmp,
-			__tr2qs("Select a File - KVIrc"),
-			QString(),
-			QString(),
-			false,
-			true,
-			this
-		)
-	)
+
+	if(KviFileDialog::askForOpenFileName(tmp, __tr2qs("Select a File - KVIrc"), QString(), QString(), false, true, this ))
 		setImagePath(tmp);
 }
 
@@ -387,12 +373,12 @@ void KviPixmapSelector::setImagePath(const QString &path)
 void KviPixmapSelector::setEnabled(bool bEnabled)
 {
 	QWidget::setEnabled(bEnabled);
+
 	m_pCheckBox->setEnabled(bEnabled);
 	m_pPreview->setEnabled(bEnabled && m_pCheckBox->isChecked());
 	m_pFileNameLabel->setEnabled(bEnabled && m_pCheckBox->isChecked());
 	m_pChooseButton->setEnabled(bEnabled && m_pCheckBox->isChecked());
 }
-
 
 // FIXME: #warning "Option for DIR_MUST_EXISTS...(this widget could be turned into a file selector too)"
 KviFileSelector::KviFileSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled,unsigned int uFlags,const QString &szFilter)
@@ -416,7 +402,6 @@ KviFileSelector::KviFileSelector(QWidget * par,const QString & txt,QString * pOp
 	else
 		m_Layout->addWidget(m_pLineEdit,0,1);
 
-	//m_pLineEdit->setMinimumWidth(200);
 	m_pLineEdit->setText(*pOption);
 
 	m_pButton = new QPushButton(__tr2qs("&Browse..."),this);
@@ -469,34 +454,14 @@ void KviFileSelector::select()
 	QString tmp = *m_pOption;
 	if(m_uFlags & ChooseSaveFileName)
 	{
- 		if(
-			KviFileDialog::askForSaveFileName(
-				tmp,
-				__tr2qs("Choose a File - KVIrc"),
-				tmp,
-				m_szFilter,
-				true,
-				!(m_uFlags & DontConfirmOverwrite),
-				true,
-				this
-			)
-		)
+ 		if(KviFileDialog::askForSaveFileName(tmp, __tr2qs("Choose a File - KVIrc"), tmp, m_szFilter, true,
+			!(m_uFlags & DontConfirmOverwrite), true, this ))
 		{
 			m_pLineEdit->setText(tmp);
 			emit selectionChanged(tmp);
 		}
 	} else {
- 		if(
-			KviFileDialog::askForOpenFileName(
-				tmp,
-				__tr2qs("Choose a File - KVIrc"),
-				tmp,
-				m_szFilter,
-				true,
-				true,
-				this
-			)
-		)
+ 		if(KviFileDialog::askForOpenFileName(tmp, __tr2qs("Choose a File - KVIrc"), tmp, m_szFilter, true, true, this ))
 		{
 			m_pLineEdit->setText(tmp);
 			emit selectionChanged(tmp);
@@ -513,17 +478,7 @@ KviDirectorySelector::KviDirectorySelector(QWidget * par,const QString & txt,QSt
 void KviDirectorySelector::select()
 {
 	QString szTmp;
-	if(
-		KviFileDialog::askForDirectoryName(
-				szTmp,
-				__tr2qs("Choose a Directory - KVIrc"),
-				QString(),
-				QString(),
-				false,
-				true,
-				this
-			)
-	)
+	if(KviFileDialog::askForDirectoryName(szTmp,__tr2qs("Choose a Directory - KVIrc"), QString(), QString(), false,	true, this))
 	{
 		m_pLineEdit->setText(szTmp);
 		emit selectionChanged(szTmp);
@@ -539,7 +494,9 @@ KviStringListSelector::KviStringListSelector(QWidget * par,const QString & txt,Q
 	m_pLineEdit = new QLineEdit(this);
 	connect(m_pLineEdit,SIGNAL(textChanged(const QString &)),this,SLOT(textChanged(const QString &)));
 	connect(m_pLineEdit,SIGNAL(returnPressed()),this,SLOT(addClicked()));
+
 	KviTalHBox * hBox = new KviTalHBox(this);
+
 	m_pAddButton = new QPushButton(__tr2qs("A&dd"),hBox);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
 	m_pRemoveButton = new QPushButton(__tr2qs("Re&move"),hBox);
@@ -548,6 +505,7 @@ KviStringListSelector::KviStringListSelector(QWidget * par,const QString & txt,Q
 	m_pListWidget->addItems(*pOption);
 	m_pListWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	connect(m_pListWidget,SIGNAL(itemSelectionChanged()),this,SLOT(itemSelectionChanged()));
+
 	setSpacing(4);
 	setStretchFactor(m_pListWidget,1);
 	setEnabled(bEnabled);
@@ -560,8 +518,10 @@ KviStringListSelector::~KviStringListSelector()
 void KviStringListSelector::itemSelectionChanged()
 {
 	bool bSomeSelected ;
-	if (m_pListWidget->selectedItems().count())  bSomeSelected = true;
-	else bSomeSelected = false;
+	if (m_pListWidget->selectedItems().count())
+		bSomeSelected = true;
+	else 
+		bSomeSelected = false;
 
 	m_pRemoveButton->setEnabled(isEnabled() && bSomeSelected);
 }
@@ -581,8 +541,10 @@ void KviStringListSelector::setEnabled(bool bEnabled)
 	m_pAddButton->setEnabled(bEnabled && (txt.length() > 0));
 
 	bool bSomeSelected;
-	if (m_pListWidget->selectedItems().count())  bSomeSelected = true;
-	else bSomeSelected = false;
+	if (m_pListWidget->selectedItems().count())
+		bSomeSelected = true;
+	else
+		bSomeSelected = false;
 
 	m_pRemoveButton->setEnabled(bEnabled && bSomeSelected);
 	m_pListWidget->setEnabled(bEnabled);
@@ -604,8 +566,8 @@ void KviStringListSelector::addClicked()
 {
 	QString str = m_pLineEdit->text();
 	str = str.trimmed();
-    if(str.length() > 0)m_pListWidget->insertItem(m_pListWidget->count(),str);
-	m_pLineEdit->setText("");
+	if(str.length() > 0)m_pListWidget->insertItem(m_pListWidget->count(),str);
+		m_pLineEdit->setText("");
 }
 
 void KviStringListSelector::removeClicked()
@@ -629,7 +591,6 @@ KviColorSelector::KviColorSelector(QWidget * par,const QString & txt,QColor * pO
 	m_pLabel = new QLabel(txt,this);
 
 	m_pButton = new QPushButton(" ",this);
-	// m_pButton->setMinimumWidth(150);
 	connect(m_pButton,SIGNAL(clicked()),this,SLOT(changeClicked()));
 
 	setSpacing(4);
@@ -662,7 +623,8 @@ void KviColorSelector::forceColor(QColor clr)
 void KviColorSelector::changeClicked()
 {
 	QColor tmp = QColorDialog::getColor(m_memColor,0,__tr2qs("Choose Color"),QColorDialog::ShowAlphaChannel);
-	if(tmp.isValid())setButtonPalette(&tmp);
+	if(tmp.isValid())
+		setButtonPalette(&tmp);
 }
 
 void KviColorSelector::commit()
@@ -684,7 +646,6 @@ KviFontSelector::KviFontSelector(QWidget * par,const QString & txt,QFont * pOpti
 	m_pLabel = new QLabel(txt,this);
 
 	m_pButton = new QPushButton("",this);
-	// m_pButton->setMinimumWidth(150);
 	connect(m_pButton,SIGNAL(clicked()),this,SLOT(changeClicked()));
 
 	setSpacing(4);
@@ -692,7 +653,6 @@ KviFontSelector::KviFontSelector(QWidget * par,const QString & txt,QFont * pOpti
 	setStretchFactor(m_pLabel,1);
 
 	setButtonFont(pOption);
-
 	m_pOption = pOption;
 
 	setEnabled(bEnabled);
@@ -731,7 +691,6 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 	m_pLabel = new QLabel(txt,this);
 
 	m_pButton = new QPushButton(__tr2qs("Sample Text"),this);
-	// m_pButton->setMinimumWidth(150);
 	connect(m_pButton,SIGNAL(clicked()),this,SLOT(buttonClicked()));
 
 	setSpacing(4);
@@ -748,35 +707,37 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 
 	setEnabled(bEnabled);
 
-    m_pContextPopup = new QMenu(this);
+	m_pContextPopup = new QMenu(this);
 
-    QAction *pAction = 0;
-    m_pForePopup = new QMenu(this);
-    connect(m_pForePopup,SIGNAL(triggered(QAction*)),this,SLOT(foreSelected(QAction*)));
-    int iColor;
-    for(iColor=0;iColor<KVI_MIRCCOLOR_MAX_FOREGROUND;iColor++)
-	{
-		QPixmap tmp(120,16);
-        tmp.fill(KVI_OPTION_MIRCCOLOR(iColor));
-        pAction = m_pForePopup->addAction(tmp,QString("x"));
-        pAction->setData(iColor);
-	}
-    pAction = m_pContextPopup->addAction(__tr2qs("Foreground"));
-    pAction->setMenu(m_pForePopup);
+	QAction *pAction = 0;
+	m_pForePopup = new QMenu(this);
+	connect(m_pForePopup,SIGNAL(triggered(QAction*)),this,SLOT(foreSelected(QAction*)));
+	int iColor;
+	for(iColor=0;iColor<KVI_MIRCCOLOR_MAX_FOREGROUND;iColor++)
+		{
+			QPixmap tmp(120,16);
+			tmp.fill(KVI_OPTION_MIRCCOLOR(iColor));
+			pAction = m_pForePopup->addAction(tmp,QString("x"));
+			pAction->setData(iColor);
+		}
 
-    m_pBackPopup = new QMenu(this);
-    connect(m_pBackPopup,SIGNAL(triggered(QAction*)),this,SLOT(backSelected(QAction*)));
-    pAction = m_pBackPopup->addAction(__tr2qs("Transparent"));
-    pAction->setData(KviControlCodes::Transparent);
-    for(iColor=0;iColor<KVI_MIRCCOLOR_MAX_BACKGROUND;iColor++)
-	{
-		QPixmap tmp(120,16);
-        tmp.fill(KVI_OPTION_MIRCCOLOR(iColor));
-        pAction = m_pBackPopup->addAction(tmp,QString("x"));
-        pAction->setData(iColor);
-	}
-    pAction = m_pContextPopup->addAction(__tr2qs("Background"));
-    pAction->setMenu(m_pBackPopup);
+	pAction = m_pContextPopup->addAction(__tr2qs("Foreground"));
+	pAction->setMenu(m_pForePopup);
+
+	m_pBackPopup = new QMenu(this);
+	connect(m_pBackPopup,SIGNAL(triggered(QAction*)),this,SLOT(backSelected(QAction*)));
+	pAction = m_pBackPopup->addAction(__tr2qs("Transparent"));
+	pAction->setData(KviControlCodes::Transparent);
+	for(iColor=0;iColor<KVI_MIRCCOLOR_MAX_BACKGROUND;iColor++)
+		{
+			QPixmap tmp(120,16);
+			tmp.fill(KVI_OPTION_MIRCCOLOR(iColor));
+			pAction = m_pBackPopup->addAction(tmp,QString("x"));
+			pAction->setData(iColor);
+		}
+
+	pAction = m_pContextPopup->addAction(__tr2qs("Background"));
+	pAction->setMenu(m_pBackPopup);
 }
 
 KviMircTextColorSelector::~KviMircTextColorSelector()
@@ -826,28 +787,27 @@ void KviMircTextColorSelector::buttonClicked()
 
 void KviMircTextColorSelector::foreSelected(QAction * pAction)
 {
-    bool bOk=false;
-    int id = pAction->data().toInt(&bOk);
-    if(bOk)
-        m_uFore = id;
-	setButtonPalette();
+	bool bOk=false;
+	int id = pAction->data().toInt(&bOk);
+	if(bOk)
+		m_uFore = id;
+		setButtonPalette();
 }
 
 void KviMircTextColorSelector::backSelected(QAction * pAction)
 {
-    bool bOk=false;
-    int id = pAction->data().toInt(&bOk);
-    if(bOk)
-        m_uBack = id;
-	setButtonPalette();
+	bool bOk=false;
+	int id = pAction->data().toInt(&bOk);
+	if(bOk)
+		m_uBack = id;
+		setButtonPalette();
 }
 
 KviSoundSelector::KviSoundSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled)
 :KviFileSelector(par,txt,pOption,bEnabled)
 {
-	m_pPlayButton =  new QPushButton(__tr2qs("Play"),this);
+	m_pPlayButton = new QPushButton(__tr2qs("Play"),this);
 	connect(m_pPlayButton,SIGNAL(clicked()),this,SLOT(playSound()));
-
 	//parent layout
 	if(m_uFlags & VerticalLayout)
 		m_Layout->addWidget(m_pPlayButton,2,1);
@@ -904,15 +864,16 @@ KviChannelListSelector::KviChannelListSelector(QWidget * par,const QString & txt
 	connect(m_pPassLineEdit,SIGNAL(textChanged(const QString &)),this,SLOT(textChanged(const QString &)));
 	connect(m_pPassLineEdit,SIGNAL(returnPressed()),this,SLOT(addClicked()));
 
-
 	KviTalHBox * hBox = new KviTalHBox(this);
+
 	m_pAddButton = new QPushButton(__tr2qs("A&dd"),hBox);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
 	m_pRemoveButton = new QPushButton(__tr2qs("Re&move"),hBox);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeClicked()));
-	m_pOption = pOption;
 
-	for ( QStringList::Iterator it = pOption->begin(); it != pOption->end(); ++it ) {
+	m_pOption = pOption;
+	for ( QStringList::Iterator it = pOption->begin(); it != pOption->end(); ++it )
+	{
 		new KviChanTreeViewItem(m_pTreeWidget,(*it).section(':',0,0),(*it).section(':',1));
 	}
 
@@ -976,6 +937,7 @@ void KviChannelListSelector::removeClicked()
 	{
 		lst.append((QTreeWidgetItem *)items.at(i));
 	}
+
 	lst.setAutoDelete(true);
 	lst.clear();
 }
