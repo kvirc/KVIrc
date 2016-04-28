@@ -714,12 +714,12 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 	connect(m_pForePopup,SIGNAL(triggered(QAction*)),this,SLOT(foreSelected(QAction*)));
 	int iColor;
 	for(iColor=0;iColor<KVI_MIRCCOLOR_MAX_FOREGROUND;iColor++)
-		{
-			QPixmap tmp(120,16);
-			tmp.fill(KVI_OPTION_MIRCCOLOR(iColor));
-			pAction = m_pForePopup->addAction(tmp,QString("x"));
-			pAction->setData(iColor);
-		}
+	{
+		QPixmap tmp(120,16);
+		tmp.fill(KVI_OPTION_MIRCCOLOR(iColor));
+		pAction = m_pForePopup->addAction(tmp,QString("x"));
+		pAction->setData(iColor);
+	}
 
 	pAction = m_pContextPopup->addAction(__tr2qs("Foreground"));
 	pAction->setMenu(m_pForePopup);
@@ -729,12 +729,12 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 	pAction = m_pBackPopup->addAction(__tr2qs("Transparent"));
 	pAction->setData(KviControlCodes::Transparent);
 	for(iColor=0;iColor<KVI_MIRCCOLOR_MAX_BACKGROUND;iColor++)
-		{
-			QPixmap tmp(120,16);
-			tmp.fill(KVI_OPTION_MIRCCOLOR(iColor));
-			pAction = m_pBackPopup->addAction(tmp,QString("x"));
-			pAction->setData(iColor);
-		}
+	{
+		QPixmap tmp(120,16);
+		tmp.fill(KVI_OPTION_MIRCCOLOR(iColor));
+		pAction = m_pBackPopup->addAction(tmp,QString("x"));
+		pAction->setData(iColor);
+	}
 
 	pAction = m_pContextPopup->addAction(__tr2qs("Background"));
 	pAction->setMenu(m_pBackPopup);
