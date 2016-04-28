@@ -191,11 +191,9 @@ KviPasswordSelector::KviPasswordSelector(QWidget * par,const QString & txt,QStri
 void KviPasswordSelector::checkToggled(int state)
 {
 	if(state == Qt::Checked)
-	{
 		m_pLineEdit->setEchoMode(QLineEdit::Password);
-	} else {
+	else
 		m_pLineEdit->setEchoMode(QLineEdit::Normal);
-	}
 }
 
 KviPasswordSelector::~KviPasswordSelector()
@@ -239,11 +237,9 @@ KviPasswordLineEdit::KviPasswordLineEdit(QWidget * par)
 void KviPasswordLineEdit::checkToggled(int state)
 {
 	if(state == Qt::Checked)
-	{
 		m_pLineEdit->setEchoMode(QLineEdit::Password);
-	} else {
+	else
 		m_pLineEdit->setEchoMode(QLineEdit::Normal);
-	}
 }
 
 KviPasswordLineEdit::~KviPasswordLineEdit()
@@ -335,11 +331,9 @@ void KviPixmapSelector::checkBoxToggled(bool)
 void KviPixmapSelector::commit()
 {
 	if(m_pCheckBox->isChecked())
-	{
 		*m_pOption = m_localPixmap;
-	} else {
+	else
 		*m_pOption = KviPixmap(); // null pixmap
-	}
 }
 
 void KviPixmapSelector::choosePixmap()
@@ -520,7 +514,7 @@ void KviStringListSelector::itemSelectionChanged()
 	bool bSomeSelected ;
 	if (m_pListWidget->selectedItems().count())
 		bSomeSelected = true;
-	else 
+	else
 		bSomeSelected = false;
 
 	m_pRemoveButton->setEnabled(isEnabled() && bSomeSelected);
@@ -872,10 +866,8 @@ KviChannelListSelector::KviChannelListSelector(QWidget * par,const QString & txt
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeClicked()));
 
 	m_pOption = pOption;
-	for ( QStringList::Iterator it = pOption->begin(); it != pOption->end(); ++it )
-	{
-		new KviChanTreeViewItem(m_pTreeWidget,(*it).section(':',0,0),(*it).section(':',1));
-	}
+	for(const auto& it : *pOption)
+		new KviChanTreeViewItem(m_pTreeWidget,it.section(':',0,0),it.section(':',1));
 
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pTreeWidget->setAllColumnsShowFocus(true);
