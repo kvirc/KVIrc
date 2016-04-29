@@ -1262,6 +1262,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 				WRONG_TYPE("unsigned integer")
 			m_pObject->setProperty(szName.toUtf8().data(), QVariant((unsigned int)i));
 		}
+		break;
 		case QVariant::Double:
 		{
 			kvs_real_t i;
