@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviIrcConnectionRequestQueue.h
+//   File : KviIrcConnectionRequestQueue.cpp
 //   Creation date : Tue 09 Feb 2010 10:24:32 by Fabio Bas
 //
 //   This file is part of the KVIrc IRC client distribution
