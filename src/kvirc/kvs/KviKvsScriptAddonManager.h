@@ -39,71 +39,75 @@ class QPixmap;
 class KVIRC_API KviKvsScriptAddon : public KviHeapObject
 {
 	friend class KviKvsScriptAddonManager;
+
 protected:
 	KviKvsScriptAddon();
 	KviKvsScriptAddon(
-			const QString &szName,
-			const QString &szVersion,
-			const QString &szVisibleNameCode,
-			const QString &szDescriptionCode,
-			const QString &szUninstallCallbackCode,
-			const QString &szIconId
-		);
+	    const QString & szName,
+	    const QString & szVersion,
+	    const QString & szVisibleNameCode,
+	    const QString & szDescriptionCode,
+	    const QString & szUninstallCallbackCode,
+	    const QString & szIconId);
+
 public:
-	KviKvsScriptAddon(const KviKvsScriptAddon &a);
+	KviKvsScriptAddon(const KviKvsScriptAddon & a);
+
 public: // KviDict wants that... how to restrict the deletion to KviKvsScriptAddonManager only ?
 	~KviKvsScriptAddon();
+
 protected:
-	QString        m_szName;              // the short name of the addon
-	QString        m_szVersion;           // x.y.z
-	KviKvsScript * m_pVisibleNameScript;  // the visible name, possibly translated
-	KviKvsScript * m_pDescriptionScript;  // the description, possibly translated
-	KviKvsScript * m_pUninstallCallback;  // uninstall callback
-	KviKvsScript * m_pConfigureCallback;  // configure callback
-	KviKvsScript * m_pHelpCallback;       // help callback
-	QString        m_szDescription;       // parsed description
-	QString        m_szVisibleName;       // parsed visible name
-	QString        m_szIconId;            // the id of the associated icon
-	QStringList    m_lInstalledFiles;     // the list of the installed files
+	QString m_szName;                    // the short name of the addon
+	QString m_szVersion;                 // x.y.z
+	KviKvsScript * m_pVisibleNameScript; // the visible name, possibly translated
+	KviKvsScript * m_pDescriptionScript; // the description, possibly translated
+	KviKvsScript * m_pUninstallCallback; // uninstall callback
+	KviKvsScript * m_pConfigureCallback; // configure callback
+	KviKvsScript * m_pHelpCallback;      // help callback
+	QString m_szDescription;             // parsed description
+	QString m_szVisibleName;             // parsed visible name
+	QString m_szIconId;                  // the id of the associated icon
+	QStringList m_lInstalledFiles;       // the list of the installed files
 public:
-	const QStringList &installedFiles() const { return m_lInstalledFiles; };
-	const QString &name() const { return m_szName; };
-	const QString &version() const { return m_szVersion; };
-	const QString &visibleName();
-	const QString &description();
-	const QString &visibleNameCode();
-	const QString &descriptionCode();
-	const QString &uninstallCallbackCode();
-	const QString &configureCallbackCode();
-	const QString &helpCallbackCode();
-	const QString &iconId(){ return m_szIconId; };
+	const QStringList & installedFiles() const { return m_lInstalledFiles; };
+	const QString & name() const { return m_szName; };
+	const QString & version() const { return m_szVersion; };
+	const QString & visibleName();
+	const QString & description();
+	const QString & visibleNameCode();
+	const QString & descriptionCode();
+	const QString & uninstallCallbackCode();
+	const QString & configureCallbackCode();
+	const QString & helpCallbackCode();
+	const QString & iconId() { return m_szIconId; };
 	QPixmap * icon();
 	///
 	/// Register a file to be uninstalled after the uninstall callback.
 	/// The file name *MUST* be relative to the local kvirc directory.
 	///
-	void addInstalledFile(const QString &szFileName);
-	void setConfigureCallback(const QString &szConfigureCallbackCode);
-	void setHelpCallback(const QString &szHelpCallbackCode);
+	void addInstalledFile(const QString & szFileName);
+	void setConfigureCallback(const QString & szConfigureCallbackCode);
+	void setHelpCallback(const QString & szHelpCallbackCode);
 	void executeConfigureCallback(KviWindow * pWnd);
 	void executeHelpCallback(KviWindow * pWnd);
+
 protected:
-	bool load(KviConfigurationFile * cfg,const QString &szName);
+	bool load(KviConfigurationFile * cfg, const QString & szName);
 	void save(KviConfigurationFile * cfg);
 	void executeUninstallCallback(KviWindow * pWnd);
 	// this assumes that the script pointers are clean (i.e. not needing to be freed!)
-	void allocateScripts(const QString &sVisibleNameCode,const QString &szDescriptionCode,const QString &szUninstallCallbackCode);
+	void allocateScripts(const QString & sVisibleNameCode, const QString & szDescriptionCode, const QString & szUninstallCallbackCode);
 };
 
 class KVIRC_API KviKvsScriptAddonRegistrationData
 {
 public:
-	QString szName;                      // the addon name
-	QString szVersion;                   // the addon version in form x.y.z
-	QString szVisibleNameScript;         // the code that evaluates to the visible name, possibly translated
-	QString szDescriptionScript;         // the code that evaluates to the description, possibly translated
-	QString szUninstallCallbackScript;   // the uninstall callback code, will be executed at uninstallation
-	QString szIconId;                    // the icon identifier (scaled to 32x32 atm)
+	QString szName;                    // the addon name
+	QString szVersion;                 // the addon version in form x.y.z
+	QString szVisibleNameScript;       // the code that evaluates to the visible name, possibly translated
+	QString szDescriptionScript;       // the code that evaluates to the description, possibly translated
+	QString szUninstallCallbackScript; // the uninstall callback code, will be executed at uninstallation
+	QString szIconId;                  // the icon identifier (scaled to 32x32 atm)
 };
 
 class KVIRC_API KviKvsScriptAddonManager
@@ -111,25 +115,26 @@ class KVIRC_API KviKvsScriptAddonManager
 public:
 	KviKvsScriptAddonManager();
 	~KviKvsScriptAddonManager();
+
 protected:
-	static KviKvsScriptAddonManager  * m_pInstance;
+	static KviKvsScriptAddonManager * m_pInstance;
 	// this class implements delayed loading
-	QString                            m_szFileName;  // the file name that we will load from
-	bool                               m_bLoaded;     // have we loaded stuff from disk yet ?
-	KviPointerHashTable<QString,KviKvsScriptAddon>         * m_pAddonDict;  // all the registered addons
+	QString m_szFileName;                                           // the file name that we will load from
+	bool m_bLoaded;                                                 // have we loaded stuff from disk yet ?
+	KviPointerHashTable<QString, KviKvsScriptAddon> * m_pAddonDict; // all the registered addons
 public:
-	static KviKvsScriptAddonManager * instance(){ return m_pInstance; };
+	static KviKvsScriptAddonManager * instance() { return m_pInstance; };
 	static void init(); // called by KviKvs::init()
 	static void done(); // called by KviKvs::done()
 
 	bool registerAddon(KviKvsScriptAddonRegistrationData * d);
-	KviKvsScriptAddon * findAddon(const QString &szName);
-	bool unregisterAddon(const QString &szName,KviWindow * pWnd,bool bExecuteUninstallCallback = true,bool bUninstallFiles = true);
-	KviPointerHashTable<QString,KviKvsScriptAddon> * addonDict();
+	KviKvsScriptAddon * findAddon(const QString & szName);
+	bool unregisterAddon(const QString & szName, KviWindow * pWnd, bool bExecuteUninstallCallback = true, bool bUninstallFiles = true);
+	KviPointerHashTable<QString, KviKvsScriptAddon> * addonDict();
 
 	void clear();
-	void load(const QString &szFileName); // called in the KviKvs namespace
-	void save(const QString &szFileName); // called in the KViKvs namespace
+	void load(const QString & szFileName); // called in the KviKvs namespace
+	void save(const QString & szFileName); // called in the KViKvs namespace
 protected:
 	void delayedLoad();
 };

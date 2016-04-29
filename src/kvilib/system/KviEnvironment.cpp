@@ -31,22 +31,22 @@
 namespace KviEnvironment
 {
 
-#if !defined(COMPILE_ON_WINDOWS) && ! defined(COMPILE_ON_MINGW)
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 
 #ifdef HAVE_SETENV
-bool setVariable(const char * name,const char * value)
-{
-	return (setenv(name,value,1) == 0);
+	bool setVariable(const char * name, const char * value)
+	{
+		return (setenv(name, value, 1) == 0);
 #else
-	#ifdef HAVE_PUTENV
-bool setVariable(const char * name,const char * value)
-{
+#ifdef HAVE_PUTENV
+	bool setVariable(const char * name, const char * value)
+	{
 		int iLen1 = kvi_strLen(name);
 		int iLen2 = kvi_strLen(value);
 		char * buf = (char *)KviMemory::allocate(iLen1 + iLen2 + 2);
-		KviMemory::move(buf,name,iLen1);
+		KviMemory::move(buf, name, iLen1);
 		*(buf + iLen1) = '=';
-		KviMemory::move(buf + iLen1 + 1,value,iLen2);
+		KviMemory::move(buf + iLen1 + 1, value, iLen2);
 		*(buf + iLen1 + iLen2 + 1) = '\0';
 		int iRet = putenv(buf);
 		if(iRet != 0)
@@ -55,32 +55,34 @@ bool setVariable(const char * name,const char * value)
 			return false;
 		}
 		return true;
-	#else
-bool setVariable(const char *,const char *)
-{
+#else
+	bool setVariable(const char *, const char *)
+	{
 		// no setenv, no putenv.. what the hell of system is this ?
 		return false;
-	#endif
 #endif
-}
+#endif
+	}
 
 #ifdef HAVE_UNSETENV
-void unsetVariable(const char * name)
-{
-	unsetenv(name);
+	void unsetVariable(const char * name)
+	{
+		unsetenv(name);
 #else
-	#ifdef HAVE_PUTENV
-void unsetVariable(const char * name)
-{
+#ifdef HAVE_PUTENV
+	void unsetVariable(const char * name)
+	{
 		int iLen1 = kvi_strLen(name);
 		char * buf = (char *)KviMemory::allocate(iLen1 + 1);
-		KviMemory::move(buf,name,iLen1);
+		KviMemory::move(buf, name, iLen1);
 		*(buf + iLen1) = '\0';
 		int iRet = putenv(buf);
 		if(iRet != 0)
 		{
 			KviMemory::free(buf);
-		} else {
+		}
+		else
+		{
 			// hmmm
 			if(getVariable(name) == 0)
 			{
@@ -89,15 +91,13 @@ void unsetVariable(const char * name)
 				KviMemory::free(buf);
 			} // else this system sux
 		}
-	#else
-void unsetVariable(const char *)
-{
-		// no setenv, no putenv.. what the hell of system is this ?
-	#endif
+#else
+	void unsetVariable(const char *)
+	{
+// no setenv, no putenv.. what the hell of system is this ?
 #endif
-}
+#endif
+	}
 
 #endif //COMPILE_ON_WINDOWS
-
 }
-

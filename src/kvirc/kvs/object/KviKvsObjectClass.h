@@ -39,11 +39,10 @@ class KviKvsVariantList;
 class KviKvsVariant;
 // Object allocation function
 // parameters are: the class, the parent object (eventually 0), the object name (eventually empty)
-typedef KviKvsObject * (*KviKvsObjectAllocateInstanceProc)(KviKvsObjectClass *,KviKvsObject *,const QString &);
+typedef KviKvsObject * (*KviKvsObjectAllocateInstanceProc)(KviKvsObjectClass *, KviKvsObject *, const QString &);
 
 // An object function callback
 typedef bool (KviKvsObject::*KviKvsObjectFunctionHandlerProc)(KviKvsObjectFunctionCall * pCall);
-
 
 // The descriptor of a kvirc object class
 
@@ -51,45 +50,48 @@ class KVIRC_API KviKvsObjectClass
 {
 	friend class KviKvsObject;
 	friend class KviKvsObjectController;
+
 public:
 	KviKvsObjectClass(
-			KviKvsObjectClass * pParent,            // parent class
-			const QString & szName,                 // class name
-			KviKvsObjectAllocateInstanceProc proc,  // intance allocation proc
-			bool bBuiltin = true                    // this is a builtin or script based class ?
-		);
+	    KviKvsObjectClass * pParent,           // parent class
+	    const QString & szName,                // class name
+	    KviKvsObjectAllocateInstanceProc proc, // intance allocation proc
+	    bool bBuiltin = true                   // this is a builtin or script based class ?
+	    );
 	~KviKvsObjectClass();
+
 protected:
-	KviKvsObjectClass                           * m_pParentClass;      // the parent (base) class
-	QString                                       m_szName;            // the class name
-	bool                                          m_bBuiltin;          // is this a builtin or script based class ?
-	KviPointerHashTable<QString,KviKvsObjectFunctionHandler>          * m_pFunctionHandlers; // all our function handlers
-	KviPointerList<KviKvsObjectClass>               * m_pChildClasses;     //
-	KviKvsObjectAllocateInstanceProc              m_allocProc;
-	bool                                          m_bDirty;            // not yet flushed to disk (only for not builtin classes)
+	KviKvsObjectClass * m_pParentClass;                                              // the parent (base) class
+	QString m_szName;                                                                // the class name
+	bool m_bBuiltin;                                                                 // is this a builtin or script based class ?
+	KviPointerHashTable<QString, KviKvsObjectFunctionHandler> * m_pFunctionHandlers; // all our function handlers
+	KviPointerList<KviKvsObjectClass> * m_pChildClasses;                             //
+	KviKvsObjectAllocateInstanceProc m_allocProc;
+	bool m_bDirty; // not yet flushed to disk (only for not builtin classes)
 protected:
-	void registerChildClass(KviKvsObjectClass *pClass);
-	void unregisterChildClass(KviKvsObjectClass *pClass);
-	KviPointerHashTable<QString,KviKvsObjectFunctionHandler> * functionHandlers(){ return m_pFunctionHandlers; };
+	void registerChildClass(KviKvsObjectClass * pClass);
+	void unregisterChildClass(KviKvsObjectClass * pClass);
+	KviPointerHashTable<QString, KviKvsObjectFunctionHandler> * functionHandlers() { return m_pFunctionHandlers; };
 public:
-	void clearDirtyFlag(){ m_bDirty = false; };
-	bool isDirty(){ return m_bDirty; };
-	bool isBuiltin(){ return m_bBuiltin; };
-        bool isScriptHandler(const QString & szFunctionName)
-        {
-            KviKvsObjectFunctionHandler *pFunctionHandler=m_pFunctionHandlers->find(szFunctionName);
-            if (pFunctionHandler) return pFunctionHandler->isScriptHandler();
-            else return false;
-        };
-        void setReminder(const QString &szReminder,KviKvsObjectFunctionHandler *h);
-        QString reminder(KviKvsObjectFunctionHandler *h);
+	void clearDirtyFlag() { m_bDirty = false; };
+	bool isDirty() { return m_bDirty; };
+	bool isBuiltin() { return m_bBuiltin; };
+	bool isScriptHandler(const QString & szFunctionName)
+	{
+		KviKvsObjectFunctionHandler * pFunctionHandler = m_pFunctionHandlers->find(szFunctionName);
+		if(pFunctionHandler)
+			return pFunctionHandler->isScriptHandler();
+		else
+			return false;
+	};
+	void setReminder(const QString & szReminder, KviKvsObjectFunctionHandler * h);
+	QString reminder(KviKvsObjectFunctionHandler * h);
 
-
-	const QString & name(){ return m_szName; };
-	KviKvsObjectClass * parentClass(){ return m_pParentClass; };
+	const QString & name() { return m_szName; };
+	KviKvsObjectClass * parentClass() { return m_pParentClass; };
 	// pProc CAN'T be zero here!
-	void registerFunctionHandler(const QString & szFunctionName,KviKvsObjectFunctionHandlerProc pProc,unsigned int uFlags = 0);
-        void registerFunctionHandler(const QString & szFunctionName,const QString &szBuffer,const QString &szReminder,unsigned int uFlags = 0);
+	void registerFunctionHandler(const QString & szFunctionName, KviKvsObjectFunctionHandlerProc pProc, unsigned int uFlags = 0);
+	void registerFunctionHandler(const QString & szFunctionName, const QString & szBuffer, const QString & szReminder, unsigned int uFlags = 0);
 
 	// registers an empty handler that returns "nothing"
 	void registerStandardNothingReturnFunctionHandler(const QString & szFunc);
@@ -98,15 +100,13 @@ public:
 	// registers an empty handler that returns $false
 	void registerStandardFalseReturnFunctionHandler(const QString & szFunc);
 
-	KviKvsObjectFunctionHandler * lookupFunctionHandler(const QString & szFunc){ return m_pFunctionHandlers->find(szFunc); };
-	KviKvsObject * allocateInstance(KviKvsObject * pParent,const QString &szName,KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams);
+	KviKvsObjectFunctionHandler * lookupFunctionHandler(const QString & szFunc) { return m_pFunctionHandlers->find(szFunc); };
+	KviKvsObject * allocateInstance(KviKvsObject * pParent, const QString & szName, KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool save(const QString &szFileName);
-	static bool load(const QString &szFileName);
-	void getFunctionCode(QString &szCode,KviKvsObjectFunctionHandler &h);
-	KviPointerHashTable<QString,KviKvsObjectFunctionHandler> * getHandlers(){return m_pFunctionHandlers;};
-
+	bool save(const QString & szFileName);
+	static bool load(const QString & szFileName);
+	void getFunctionCode(QString & szCode, KviKvsObjectFunctionHandler & h);
+	KviPointerHashTable<QString, KviKvsObjectFunctionHandler> * getHandlers() { return m_pFunctionHandlers; };
 };
-
 
 #endif //!_KVI_KVS_OBJECTCLASS_H_

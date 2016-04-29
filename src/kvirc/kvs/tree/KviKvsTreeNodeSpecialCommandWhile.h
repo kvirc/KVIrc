@@ -24,7 +24,6 @@
 //
 //=============================================================================
 
-
 #include "kvi_settings.h"
 #include "KviQString.h"
 #include "KviKvsTreeNodeSpecialCommand.h"
@@ -36,16 +35,16 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeSpecialCommandWhile : public KviKvsTreeNodeSpecialCommand
 {
 public:
-	KviKvsTreeNodeSpecialCommandWhile(const QChar * pLocation,KviKvsTreeNodeExpression * e,KviKvsTreeNodeInstruction * i);
+	KviKvsTreeNodeSpecialCommandWhile(const QChar * pLocation, KviKvsTreeNodeExpression * e, KviKvsTreeNodeInstruction * i);
 	~KviKvsTreeNodeSpecialCommandWhile();
+
 private:
-	KviKvsTreeNodeExpression * m_pExpression; // can't be 0
+	KviKvsTreeNodeExpression * m_pExpression;   // can't be 0
 	KviKvsTreeNodeInstruction * m_pInstruction; // may be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_SPECIALCOMMANDWHILE_H_

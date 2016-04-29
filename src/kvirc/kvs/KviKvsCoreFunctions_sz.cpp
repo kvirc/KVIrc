@@ -88,7 +88,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(scriptContextName)
 	{
 		Q_UNUSED(__pParams);
-		QString szName=KVSCF_pContext->script()->name();
+		QString szName = KVSCF_pContext->script()->name();
 		KVSCF_pRetBuffer->setString(szName);
 		return true;
 	}
@@ -113,7 +113,7 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(selected)
 	{
-		KviKvsScript::evaluate("$userlist.selected", KVSCF_pContext->window(), KVSCF_pParams,KVSCF_pRetBuffer);
+		KviKvsScript::evaluate("$userlist.selected", KVSCF_pContext->window(), KVSCF_pParams, KVSCF_pRetBuffer);
 		return true;
 	}
 
@@ -161,14 +161,15 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(serialize)
 	{
-		KviKvsVariant *pVar = 0;
+		KviKvsVariant * pVar = 0;
 		QString szBuffer;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("data",KVS_PT_VARIANT,0,pVar)
+		KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, pVar)
 		KVSCF_PARAMETERS_END
 
-		if(!pVar) return false;
+		if(!pVar)
+			return false;
 		pVar->serialize(szBuffer);
 		KVSCF_pRetBuffer->setString(szBuffer);
 		return true;
@@ -197,7 +198,7 @@ namespace KviKvsCoreFunctions
 		kvs_uint_t uCntx;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("irc_context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uCntx)
+		KVSCF_PARAMETER("irc_context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uCntx)
 		KVSCF_PARAMETERS_END
 
 		KviConsoleWindow * cns;
@@ -211,10 +212,14 @@ namespace KviKvsCoreFunctions
 					KVSCF_pRetBuffer->setString(cns->connection()->currentServerName());
 				else
 					KVSCF_pRetBuffer->setNothing();
-			} else {
+			}
+			else
+			{
 				KVSCF_pRetBuffer->setNothing();
 			}
-		} else {
+		}
+		else
+		{
 			if(KVSCF_pContext->window()->console())
 			{
 				cns = KVSCF_pContext->window()->console();
@@ -222,8 +227,10 @@ namespace KviKvsCoreFunctions
 					KVSCF_pRetBuffer->setString(cns->connection()->currentServerName());
 				else
 					KVSCF_pRetBuffer->setNothing();
-			} else {
-				KVSCF_pContext->warning(__tr2qs_ctx("This window has no associated IRC context","kvs"));
+			}
+			else
+			{
+				KVSCF_pContext->warning(__tr2qs_ctx("This window has no associated IRC context", "kvs"));
 				KVSCF_pRetBuffer->setNothing();
 			}
 		}
@@ -251,7 +258,7 @@ namespace KviKvsCoreFunctions
 		KviKvsArrayCast a;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("data",KVS_PT_ARRAYCAST,0,a)
+		KVSCF_PARAMETER("data", KVS_PT_ARRAYCAST, 0, a)
 		KVSCF_PARAMETERS_END
 
 		if(a.array())
@@ -259,7 +266,9 @@ namespace KviKvsCoreFunctions
 			KviKvsArray * arry = new KviKvsArray(*(a.array()));
 			arry->sort();
 			KVSCF_pRetBuffer->setArray(arry);
-		} else {
+		}
+		else
+		{
 			KVSCF_pRetBuffer->setArray(new KviKvsArray());
 		}
 		return true;
@@ -298,7 +307,7 @@ namespace KviKvsCoreFunctions
 	{
 		KviKvsVariant * v;
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("data",KVS_PT_VARIANT,0,v)
+		KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
 		KVSCF_PARAMETERS_END
 
 		QString szVal;
@@ -351,38 +360,40 @@ namespace KviKvsCoreFunctions
 		QString szLongSwitch;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("switch_name",KVS_PT_STRING,0,szSwitch)
-			KVSCF_PARAMETER("long_name",KVS_PT_STRING, KVS_PF_OPTIONAL, szLongSwitch)
+		KVSCF_PARAMETER("switch_name", KVS_PT_STRING, 0, szSwitch)
+		KVSCF_PARAMETER("long_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szLongSwitch)
 		KVSCF_PARAMETERS_END
 
 		KviKvsSwitchList * sl = KVSCF_pContext->aliasSwitchList();
 		if(!sl)
 		{
-			KVSCF_pContext->warning(__tr2qs_ctx("The $sw() function can be used only in aliases","kvs"));
+			KVSCF_pContext->warning(__tr2qs_ctx("The $sw() function can be used only in aliases", "kvs"));
 			return true;
 		}
 
 		KviKvsVariant * v;
-
 
 		if(szSwitch.length() > 1)
 		{
 			if(szLongSwitch.isEmpty())
 				v = sl->find(szSwitch);
 			else
-				v = sl->find(szSwitch[0].unicode(),szLongSwitch);
-		}else {
+				v = sl->find(szSwitch[0].unicode(), szLongSwitch);
+		}
+		else
+		{
 			if(szLongSwitch.isEmpty())
 				v = sl->find(szSwitch[0]);
 			else
-				v = sl->find(szSwitch[0].unicode(),szLongSwitch);
+				v = sl->find(szSwitch[0].unicode(), szLongSwitch);
 		}
 
-		if(v)KVSCF_pRetBuffer->copyFrom(*v);
-		else KVSCF_pRetBuffer->setNothing();
+		if(v)
+			KVSCF_pRetBuffer->copyFrom(*v);
+		else
+			KVSCF_pRetBuffer->setNothing();
 		return true;
 	}
-
 
 	/*
 		@doc: target
@@ -420,7 +431,7 @@ namespace KviKvsCoreFunctions
 	{
 		QString winId;
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("winId",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,winId)
+		KVSCF_PARAMETER("winId", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, winId)
 		KVSCF_PARAMETERS_END
 
 		KviWindow * wnd;
@@ -429,22 +440,22 @@ namespace KviKvsCoreFunctions
 			wnd = g_pApp->findWindow(winId.toUtf8().data());
 			if(!wnd)
 			{
-				KVSCF_pContext->warning(__tr2qs_ctx("Window with ID '%s' not found, returning empty string","kvs"),winId.toUtf8().data());
+				KVSCF_pContext->warning(__tr2qs_ctx("Window with ID '%s' not found, returning empty string", "kvs"), winId.toUtf8().data());
 				KVSCF_pRetBuffer->setNothing();
 				return true;
 			}
-		} else {
+		}
+		else
+		{
 			wnd = KVSCF_pContext->window();
 		}
 
 		//qDebug("CALLING $target on window %s",wnd->name());
 		QString szTa = wnd->target();
 
-
 		KVSCF_pRetBuffer->setString(wnd->target());
 		return true;
 	}
-
 
 	/*
 		@doc: this
@@ -643,10 +654,11 @@ namespace KviKvsCoreFunctions
 		QString szCatalogue;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("default_language_string",KVS_PT_STRING,0,szString)
-			KVSCF_PARAMETER("catalogue",KVS_PT_STRING,KVS_PF_OPTIONAL,szCatalogue)
+		KVSCF_PARAMETER("default_language_string", KVS_PT_STRING, 0, szString)
+		KVSCF_PARAMETER("catalogue", KVS_PT_STRING, KVS_PF_OPTIONAL, szCatalogue)
 		KVSCF_PARAMETERS_END
-		if(szString.isEmpty()) return true;
+		if(szString.isEmpty())
+			return true;
 		// body: the real job
 		QString translation;
 
@@ -656,14 +668,16 @@ namespace KviKvsCoreFunctions
 			if(pCat)
 			{
 				translation = pCat->translateToQString(szString.toUtf8().data());
-			} else {
+			}
+			else
+			{
 				// attempt to load it automatically
 				QString szDir;
-				g_pApp->getLocalKvircDirectory(szDir,KviApplication::Locale);
-				if(!KviLocale::instance()->loadCatalogue(szCatalogue,szDir))
+				g_pApp->getLocalKvircDirectory(szDir, KviApplication::Locale);
+				if(!KviLocale::instance()->loadCatalogue(szCatalogue, szDir))
 				{
-					g_pApp->getGlobalKvircDirectory(szDir,KviApplication::Locale);
-					KviLocale::instance()->loadCatalogue(szCatalogue,szDir);
+					g_pApp->getGlobalKvircDirectory(szDir, KviApplication::Locale);
+					KviLocale::instance()->loadCatalogue(szCatalogue, szDir);
 				}
 				// If the code above fails to load the catalogue
 				// then __tr2qs_ctx_no_xgettext will place
@@ -672,9 +686,11 @@ namespace KviKvsCoreFunctions
 				// not fail unless /trunload is explicitly used
 				// This will avoid trashing the user's disk too much
 				// when a catalogue for a given language is not available
-				translation = __tr2qs_ctx_no_xgettext(szString.toUtf8().data(),szCatalogue.toUtf8().data());
+				translation = __tr2qs_ctx_no_xgettext(szString.toUtf8().data(), szCatalogue.toUtf8().data());
 			}
-		} else {
+		}
+		else
+		{
 			translation = __tr2qs_no_xgettext(szString.toUtf8().data());
 		}
 
@@ -751,7 +767,7 @@ namespace KviKvsCoreFunctions
 		KviKvsVariant * v;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("data",KVS_PT_VARIANT,0,v)
+		KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
 		KVSCF_PARAMETERS_END
 
 		QString szType;
@@ -810,8 +826,8 @@ namespace KviKvsCoreFunctions
 		kvs_uint_t uContextId;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("nickname",KVS_PT_STRING,KVS_PF_OPTIONAL,szNick)
-			KVSCF_PARAMETER("context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uContextId)
+		KVSCF_PARAMETER("nickname", KVS_PT_STRING, KVS_PF_OPTIONAL, szNick)
+		KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
 		KVSCF_PARAMETERS_END
 
 		KviConsoleWindow * cons;
@@ -819,11 +835,13 @@ namespace KviKvsCoreFunctions
 		{
 			cons = g_pApp->findConsole(uContextId);
 			if(!cons)
-				KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)","kvs"),uContextId);
-		} else {
+				KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)", "kvs"), uContextId);
+		}
+		else
+		{
 			cons = KVSCF_pContext->window()->console();
 			if(!cons)
-				KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context","kvs"));
+				KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context", "kvs"));
 		}
 
 		if(cons && cons->isConnected())
@@ -863,16 +881,18 @@ namespace KviKvsCoreFunctions
 	{
 		QString sz;
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("char",KVS_PT_NONEMPTYSTRING,0,sz)
+		KVSCF_PARAMETER("char", KVS_PT_NONEMPTYSTRING, 0, sz)
 		KVSCF_PARAMETERS_END
 
 		if(sz.length() > 1)
 		{
 			KviKvsArray * a = new KviKvsArray();
-			for(kvs_int_t i=0;i<sz.length();i++)
-				a->set(i,new KviKvsVariant((kvs_int_t)(sz[(int)i].unicode())));
+			for(kvs_int_t i = 0; i < sz.length(); i++)
+				a->set(i, new KviKvsVariant((kvs_int_t)(sz[(int)i].unicode())));
 			KVSCF_pRetBuffer->setArray(a);
-		} else {
+		}
+		else
+		{
 			KVSCF_pRetBuffer->setInteger((kvs_int_t)(sz[0].unicode()));
 		}
 		return true;
@@ -925,10 +945,10 @@ namespace KviKvsCoreFunctions
 		QString szData;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("data",KVS_PT_NONEMPTYSTRING,0,szData)
+		KVSCF_PARAMETER("data", KVS_PT_NONEMPTYSTRING, 0, szData)
 		KVSCF_PARAMETERS_END
 
-		KviKvsVariant *pVar = KviKvsVariant::unserialize(szData);
+		KviKvsVariant * pVar = KviKvsVariant::unserialize(szData);
 		if(pVar)
 		{
 			KVSCF_pRetBuffer->copyFrom(pVar);
@@ -975,7 +995,7 @@ namespace KviKvsCoreFunctions
 		QString szNick;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
+		KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
 		KVSCF_PARAMETERS_END
 
 		if(KVSCF_pContext->window()->console())
@@ -1049,12 +1069,13 @@ namespace KviKvsCoreFunctions
 		QString szRetValue;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("type",KVS_PT_STRING,KVS_PF_OPTIONAL,szType)
+		KVSCF_PARAMETER("type", KVS_PT_STRING, KVS_PF_OPTIONAL, szType)
 		KVSCF_PARAMETERS_END
 
 		if(szType.isEmpty())
 			KVSCF_pRetBuffer->setString(full_version_helper());
-		else {
+		else
+		{
 
 			if(szType.indexOf('b') != -1)
 				szRetValue = KviBuildInfo::buildDate();
@@ -1068,7 +1089,8 @@ namespace KviKvsCoreFunctions
 				szRetValue = KviBuildInfo::buildSourcesDate();
 			else if(szType.indexOf('v') != -1)
 				szRetValue = KVI_VERSION;
-			else szRetValue = full_version_helper();
+			else
+				szRetValue = full_version_helper();
 
 			KVSCF_pRetBuffer->setString(szRetValue);
 		}
@@ -1105,15 +1127,15 @@ namespace KviKvsCoreFunctions
 			[doc:window_naming_conventions]Window naming conventions[/doc]
 	*/
 
- 	KVSCF(window)
- 	{
+	KVSCF(window)
+	{
 		//#warning "FIXME: the window identifiers could be numbers!"
 		QString szCaption;
 		kvs_int_t iContextId; // kvs_int_t is 64bit while int is 32 (and thus KVSCF_PARAMETER() crashes)
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("caption_text",KVS_PT_STRING,KVS_PF_OPTIONAL,szCaption)
-			KVSCF_PARAMETER("context_id",KVS_PT_INTEGER,KVS_PF_OPTIONAL,iContextId)
+		KVSCF_PARAMETER("caption_text", KVS_PT_STRING, KVS_PF_OPTIONAL, szCaption)
+		KVSCF_PARAMETER("context_id", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iContextId)
 		KVSCF_PARAMETERS_END
 
 		if(KVSCF_pParams->count() < 2)
@@ -1123,8 +1145,10 @@ namespace KviKvsCoreFunctions
 		if(szCaption.isEmpty())
 		{
 			pWnd = KVSCF_pContext->window();
-		} else {
-			pWnd = g_pApp->findWindowByCaption(szCaption,iContextId);
+		}
+		else
+		{
+			pWnd = g_pApp->findWindowByCaption(szCaption, iContextId);
 			if(!pWnd)
 			{
 				//follow the documented behaviour

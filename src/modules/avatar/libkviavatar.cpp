@@ -58,8 +58,8 @@
 static KviPointerList<KviAsyncAvatarSelectionDialog> * g_pAvatarSelectionDialogList = 0;
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 
-KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const QString &szInitialPath,KviIrcConnection * c)
-: QDialog(par)
+KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par, const QString & szInitialPath, KviIrcConnection * c)
+    : QDialog(par)
 {
 	setModal(false);
 	setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint | Qt::WindowStaysOnTopHint);
@@ -71,18 +71,18 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 
 	QGridLayout * g = new QGridLayout(this);
 	QString msg = "<center>";
-	msg += __tr2qs("Please select an avatar image. " \
-		"The full path to a local file or an image on the Web can be used.<br>" \
-		"If you wish to use a local image file, click the \"<b>Browse</b>\" button to select the desired file.<br>" \
-		"The full URL for an image (including <b>http://</b> or <b>https://</b>) can also be entered manually.");
+	msg += __tr2qs("Please select an avatar image. "
+	               "The full path to a local file or an image on the Web can be used.<br>"
+	               "If you wish to use a local image file, click the \"<b>Browse</b>\" button to select the desired file.<br>"
+	               "The full URL for an image (including <b>http://</b> or <b>https://</b>) can also be entered manually.");
 	msg += "</center><br>";
 
-	QLabel * l = new QLabel(msg,this);
+	QLabel * l = new QLabel(msg, this);
 	l->setWordWrap(true);
 	l->setMinimumWidth(250);
 
 	//g->addMultiCellWidget(l,0,0,0,2);
-	g->addWidget(l,0,0);
+	g->addWidget(l, 0, 0);
 
 	KviTalHBox * h1 = new KviTalHBox(this);
 	m_pLineEdit = new QLineEdit(h1);
@@ -90,27 +90,26 @@ KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par,const
 	m_pLineEdit->setMinimumWidth(180);
 
 	//g->addMultiCellWidget(m_pLineEdit,1,1,0,1);
-	QPushButton * b = new QPushButton(__tr2qs("&Browse..."),h1);
-	g->addWidget(h1,1,0);
-	connect(b,SIGNAL(clicked()),this,SLOT(chooseFileClicked()));
+	QPushButton * b = new QPushButton(__tr2qs("&Browse..."), h1);
+	g->addWidget(h1, 1, 0);
+	connect(b, SIGNAL(clicked()), this, SLOT(chooseFileClicked()));
 	//g->addWidget(b,1,2);
-
 
 	KviTalHBox * h = new KviTalHBox(this);
 	h->setSpacing(8);
-	g->addWidget(h,2,0);
-//	g->addMultiCellWidget(h,2,2,1,2);
-	b = new QPushButton(__tr2qs("&OK"),h);
+	g->addWidget(h, 2, 0);
+	//	g->addMultiCellWidget(h,2,2,1,2);
+	b = new QPushButton(__tr2qs("&OK"), h);
 	b->setMinimumWidth(80);
 	b->setDefault(true);
-	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
+	connect(b, SIGNAL(clicked()), this, SLOT(okClicked()));
 
-	b = new QPushButton(__tr2qs("Cancel"),h);
+	b = new QPushButton(__tr2qs("Cancel"), h);
 	b->setMinimumWidth(80);
-	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
+	connect(b, SIGNAL(clicked()), this, SLOT(cancelClicked()));
 
-	g->setRowStretch(0,1);
-	g->setColumnStretch(0,1);
+	g->setRowStretch(0, 1);
+	g->setColumnStretch(0, 1);
 }
 
 KviAsyncAvatarSelectionDialog::~KviAsyncAvatarSelectionDialog()
@@ -122,14 +121,15 @@ void KviAsyncAvatarSelectionDialog::okClicked()
 {
 	m_szAvatarName = m_pLineEdit->text();
 
-	if(!g_pApp->connectionExists(m_pConnection))return; // the connection no longer exists :/
+	if(!g_pApp->connectionExists(m_pConnection))
+		return; // the connection no longer exists :/
 
 	if(!m_szAvatarName.isEmpty())
 	{
 		QString tmp = m_szAvatarName;
 		KviQString::escapeKvs(&tmp, KviQString::EscapeSpace);
-		QString szBuffer=QString("avatar.set %1").arg(tmp);
-		KviKvsScript::run(szBuffer,m_pConnection->console());
+		QString szBuffer = QString("avatar.set %1").arg(tmp);
+		KviKvsScript::run(szBuffer, m_pConnection->console());
 	}
 
 	accept();
@@ -146,16 +146,14 @@ void KviAsyncAvatarSelectionDialog::chooseFileClicked()
 {
 	QString tmp;
 	if(
-		KviFileDialog::askForOpenFileName(
-				tmp,
-				__tr2qs("Select a File - KVIrc"),
-				QString(),
-				QString(),
-				false,
-				true,
-				this
-			)
-		)
+	    KviFileDialog::askForOpenFileName(
+	        tmp,
+	        __tr2qs("Select a File - KVIrc"),
+	        QString(),
+	        QString(),
+	        false,
+	        true,
+	        this))
 	{
 		m_pLineEdit->setText(tmp);
 	}
@@ -204,7 +202,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 {
 	QString szAvatar;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("avatar",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szAvatar)
+	KVSM_PARAMETER("avatar", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szAvatar)
 	KVSM_PARAMETERS_END(c)
 
 	KVSM_REQUIRE_CONNECTION(c)
@@ -213,7 +211,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 
 	if(szAvatar.isEmpty())
 	{
-		KviAsyncAvatarSelectionDialog * d = new KviAsyncAvatarSelectionDialog(g_pMainWindow,QString(),c->window()->connection());
+		KviAsyncAvatarSelectionDialog * d = new KviAsyncAvatarSelectionDialog(g_pMainWindow, QString(), c->window()->connection());
 		d->show();
 		return true;
 	}
@@ -227,21 +225,20 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	KviAvatar * av = g_pIconManager->getAvatar(QString(),szAvatar);
+	KviAvatar * av = g_pIconManager->getAvatar(QString(), szAvatar);
 	if(av)
 	{
 		// Ok...got it...
 		e->setAvatar(av);
 		c->window()->console()->avatarChanged(av,
-			c->window()->connection()->userInfo()->nickName(),
-			c->window()->connection()->userInfo()->userName(),
-			c->window()->connection()->userInfo()->hostName(),
-			QString());
-	} else {
-		bool bIsUrl = (
-				(KviQString::equalCIN(szAvatar,"http://",7) && (szAvatar.length() > 7)) ||
-				(KviQString::equalCIN(szAvatar,"https://",8) && (szAvatar.length() > 8))
-			);
+		    c->window()->connection()->userInfo()->nickName(),
+		    c->window()->connection()->userInfo()->userName(),
+		    c->window()->connection()->userInfo()->hostName(),
+		    QString());
+	}
+	else
+	{
+		bool bIsUrl = ((KviQString::equalCIN(szAvatar, "http://", 7) && (szAvatar.length() > 7)) || (KviQString::equalCIN(szAvatar, "https://", 8) && (szAvatar.length() > 8)));
 
 		if(bIsUrl)
 		{
@@ -249,35 +246,38 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 			QString szLocalFilePath;
 			QString szLocalFile = szAvatar;
 			g_pIconManager->urlToCachedFileName(szLocalFile);
-			g_pApp->getLocalKvircDirectory(szLocalFilePath,KviApplication::Avatars,szLocalFile);
+			g_pApp->getLocalKvircDirectory(szLocalFilePath, KviApplication::Avatars, szLocalFile);
 
 			KviQString::escapeKvs(&szAvatar);
 			KviQString::escapeKvs(&szLocalFilePath);
 			QString szCommand = "http.get -w=nm "; // -i=e?
-				szCommand += szAvatar;
-				szCommand += " ";
-				szCommand += szLocalFilePath;
+			szCommand += szAvatar;
+			szCommand += " ";
+			szCommand += szLocalFilePath;
 
-			if(KviKvsScript::run(szCommand,c->window()->console()))
+			if(KviKvsScript::run(szCommand, c->window()->console()))
 			{
 				g_pApp->setAvatarOnFileReceived(c->window()->console(),
-						szAvatar,
-						c->window()->connection()->userInfo()->nickName(),
-						c->window()->connection()->userInfo()->userName(),
-						c->window()->connection()->userInfo()->hostName());
-			} else {
-				c->warning(__tr2qs("Can't set the current avatar to '%Q': failed to start the http transfer"),&szAvatar);
+				    szAvatar,
+				    c->window()->connection()->userInfo()->nickName(),
+				    c->window()->connection()->userInfo()->userName(),
+				    c->window()->connection()->userInfo()->hostName());
+			}
+			else
+			{
+				c->warning(__tr2qs("Can't set the current avatar to '%Q': failed to start the http transfer"), &szAvatar);
 				return true;
 			}
-		} else {
-			c->warning(__tr2qs("Can't set the current avatar to '%Q': can't load the image"),&szAvatar);
+		}
+		else
+		{
+			c->warning(__tr2qs("Can't set the current avatar to '%Q': can't load the image"), &szAvatar);
 			return true;
 		}
 	}
 
 	return true;
 }
-
 
 /*
 	@doc: avatar.unset
@@ -310,10 +310,10 @@ static bool avatar_kvs_cmd_unset(KviKvsModuleCommandCall * c)
 
 	e->setAvatar(0);
 	c->window()->console()->avatarChanged(0,
-			c->window()->connection()->userInfo()->nickName(),
-			c->window()->connection()->userInfo()->userName(),
-			c->window()->connection()->userInfo()->hostName(),
-			QString());
+	    c->window()->connection()->userInfo()->nickName(),
+	    c->window()->connection()->userInfo()->userName(),
+	    c->window()->connection()->userInfo()->hostName(),
+	    QString());
 
 	return true;
 }
@@ -361,17 +361,17 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 {
 	QString szTarget;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("target",KVS_PT_NONEMPTYSTRING,0,szTarget)
+	KVSM_PARAMETER("target", KVS_PT_NONEMPTYSTRING, 0, szTarget)
 	KVSM_PARAMETERS_END(c)
 
 	KVSM_REQUIRE_CONNECTION(c)
 
 	kvs_int_t iTimeout = (kvs_int_t)KVI_OPTION_UINT(KviOption_uintAvatarOfferTimeoutInSecs);
-	if(KviKvsVariant * pTimeout = c->switches()->find('t',"timeout"))
+	if(KviKvsVariant * pTimeout = c->switches()->find('t', "timeout"))
 	{
 		if(!pTimeout->asInteger(iTimeout))
 		{
-			if(!c->switches()->find('q',"quiet"))
+			if(!c->switches()->find('q', "quiet"))
 				c->warning(__tr2qs("Invalid timeout specified, using default"));
 		}
 	}
@@ -383,7 +383,7 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	QString absPath,avatar;
+	QString absPath, avatar;
 
 	if(e->avatar())
 	{
@@ -391,46 +391,48 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 		QString szTmp = e->avatar()->name();
 
 		if(KVI_OPTION_BOOL(KviOption_boolDCCFileTransferReplaceOutgoingSpacesWithUnderscores))
-			szTmp.replace(" ","_");
+			szTmp.replace(" ", "_");
 
 		// escape the spaces with the right octal code
-		KviIrcServerParser::encodeCtcpParameter(szTmp.toUtf8().data(),avatar);
+		KviIrcServerParser::encodeCtcpParameter(szTmp.toUtf8().data(), avatar);
 	}
 
 	KviSharedFile * o = 0;
 	if((!absPath.isEmpty()) && (!avatar.isEmpty()))
 	{
 		bool bTargetIsChan = (szTarget.contains('#') || szTarget.contains('&') || szTarget.contains('!') || szTarget.contains('+'));
-		if(bTargetIsChan)o = g_pSharedFilesManager->lookupSharedFile(avatar,0);
-		else {
+		if(bTargetIsChan)
+			o = g_pSharedFilesManager->lookupSharedFile(avatar, 0);
+		else
+		{
 			KviIrcMask u(szTarget);
-			o = g_pSharedFilesManager->lookupSharedFile(avatar,&u);
+			o = g_pSharedFilesManager->lookupSharedFile(avatar, &u);
 		}
 		if(!o)
 		{
 			// FIXME: #warning "OPTION FOR PERMANENT OR TIMEDOUT OFFER...TIMEDOUT WOULD ALSO NEED TO EXTEND EXISTING OFFERS LIFETIME"
 			QString szUserMask = bTargetIsChan ? QString("*") : szTarget;
 			szUserMask += "!*@*";
-			o = g_pSharedFilesManager->addSharedFile(avatar,absPath,szUserMask,iTimeout);
+			o = g_pSharedFilesManager->addSharedFile(avatar, absPath, szUserMask, iTimeout);
 			if(!o)
 			{
 				// Don't delete o...it has been already deleted by g_pFileTrader
-				if(!c->switches()->find('q',"quiet"))
-					c->warning(__tr2qs("Can't add a file offer for file %Q (huh? file not readable?)"),&absPath);
+				if(!c->switches()->find('q', "quiet"))
+					c->warning(__tr2qs("Can't add a file offer for file %Q (huh? file not readable?)"), &absPath);
 				return true;
 			}
 
 			if(_OUTPUT_VERBOSE)
 			{
-				if(!c->switches()->find('q',"quiet"))
-					c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Added %d secs file offer for file %Q (%Q) and receiver %Q"),
-						iTimeout,&(o->absFilePath()),&avatar,&(o->userMask()));
+				if(!c->switches()->find('q', "quiet"))
+					c->window()->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Added %d secs file offer for file %Q (%Q) and receiver %Q"),
+					    iTimeout, &(o->absFilePath()), &avatar, &(o->userMask()));
 			}
 		}
 	}
 
-	if(!c->switches()->find('q',"quiet"))
-		c->window()->output(KVI_OUT_AVATAR,__tr2qs("Notifying avatar '%Q' to %Q"),&avatar,&szTarget);
+	if(!c->switches()->find('q', "quiet"))
+		c->window()->output(KVI_OUT_AVATAR, __tr2qs("Notifying avatar '%Q' to %Q"), &avatar, &szTarget);
 
 	QByteArray encodedTarget = c->window()->connection()->encodeText(szTarget);
 
@@ -440,14 +442,18 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 
 		if(o)
 		{
-			c->window()->connection()->sendFmtData("NOTICE %s :%cAVATAR %s %u%c",encodedTarget.data(),0x01,
-					encodedAvatar.data(),o->fileSize(),0x01);
-		} else {
-			c->window()->connection()->sendFmtData("NOTICE %s :%cAVATAR %s%c",encodedTarget.data(),0x01,
-					encodedAvatar.data(),0x01);
+			c->window()->connection()->sendFmtData("NOTICE %s :%cAVATAR %s %u%c", encodedTarget.data(), 0x01,
+			    encodedAvatar.data(), o->fileSize(), 0x01);
 		}
-	} else {
-		c->window()->connection()->sendFmtData("NOTICE %s :%cAVATAR%c",encodedTarget.data(),0x01,0x01);
+		else
+		{
+			c->window()->connection()->sendFmtData("NOTICE %s :%cAVATAR %s%c", encodedTarget.data(), 0x01,
+			    encodedAvatar.data(), 0x01);
+		}
+	}
+	else
+	{
+		c->window()->connection()->sendFmtData("NOTICE %s :%cAVATAR%c", encodedTarget.data(), 0x01, 0x01);
 	}
 
 	return true;
@@ -477,12 +483,13 @@ static bool avatar_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 {
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("nick",KVS_PT_STRING,KVS_PF_OPTIONAL,szNick)
+	KVSM_PARAMETER("nick", KVS_PT_STRING, KVS_PF_OPTIONAL, szNick)
 	KVSM_PARAMETERS_END(c)
 
 	KVSM_REQUIRE_CONNECTION(c)
 
-	if(szNick.isEmpty())szNick = c->window()->connection()->currentNickName();
+	if(szNick.isEmpty())
+		szNick = c->window()->connection()->currentNickName();
 
 	KviIrcUserEntry * e = c->window()->connection()->userDataBase()->find(szNick);
 	if(e)
@@ -521,12 +528,13 @@ static bool avatar_kvs_fnc_path(KviKvsModuleFunctionCall * c)
 {
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("path",KVS_PT_STRING,KVS_PF_OPTIONAL,szNick)
+	KVSM_PARAMETER("path", KVS_PT_STRING, KVS_PF_OPTIONAL, szNick)
 	KVSM_PARAMETERS_END(c)
 
 	KVSM_REQUIRE_CONNECTION(c)
 
-	if(szNick.isEmpty())szNick = c->window()->connection()->currentNickName();
+	if(szNick.isEmpty())
+		szNick = c->window()->connection()->currentNickName();
 
 	KviIrcUserEntry * e = c->window()->connection()->userDataBase()->find(szNick);
 	if(e)
@@ -563,13 +571,13 @@ static bool avatar_kvs_cmd_query(KviKvsModuleCommandCall * c)
 {
 	QString szName;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("target",KVS_PT_NONEMPTYSTRING,0,szName)
+	KVSM_PARAMETER("target", KVS_PT_NONEMPTYSTRING, 0, szName)
 	KVSM_PARAMETERS_END(c)
 
 	KVSM_REQUIRE_CONNECTION(c)
 
 	QByteArray target = c->window()->connection()->encodeText(szName);
-	c->window()->connection()->sendFmtData("PRIVMSG %s :%cAVATAR%c",target.data(),0x01,0x01);
+	c->window()->connection()->sendFmtData("PRIVMSG %s :%cAVATAR%c", target.data(), 0x01, 0x01);
 
 	return true;
 }
@@ -579,13 +587,13 @@ static bool avatar_module_init(KviModule * m)
 	g_pAvatarSelectionDialogList = new KviPointerList<KviAsyncAvatarSelectionDialog>;
 	g_pAvatarSelectionDialogList->setAutoDelete(false);
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"query",avatar_kvs_cmd_query);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"set",avatar_kvs_cmd_set);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"unset",avatar_kvs_cmd_unset);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"notify",avatar_kvs_cmd_notify);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "query", avatar_kvs_cmd_query);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "set", avatar_kvs_cmd_set);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "unset", avatar_kvs_cmd_unset);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "notify", avatar_kvs_cmd_notify);
 
-	KVSM_REGISTER_FUNCTION(m,"name",avatar_kvs_fnc_name);
-	KVSM_REGISTER_FUNCTION(m,"path",avatar_kvs_fnc_path);
+	KVSM_REGISTER_FUNCTION(m, "name", avatar_kvs_fnc_name);
+	KVSM_REGISTER_FUNCTION(m, "path", avatar_kvs_fnc_path);
 
 	return true;
 }
@@ -604,13 +612,12 @@ static bool avatar_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Avatar",
-	"4.0.0",
-	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)",
-	"Avatar manipulation routines",
-	avatar_module_init,
-	avatar_module_can_unload,
-	0,
-	avatar_module_cleanup,
-	0
-)
+    "Avatar",
+    "4.0.0",
+    "Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)",
+    "Avatar manipulation routines",
+    avatar_module_init,
+    avatar_module_can_unload,
+    0,
+    avatar_module_cleanup,
+    0)

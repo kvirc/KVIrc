@@ -57,13 +57,14 @@ class UrlDialogTreeWidget : public QTreeWidget
 {
 	Q_OBJECT
 public:
-	UrlDialogTreeWidget(QWidget*);
+	UrlDialogTreeWidget(QWidget *);
 	~UrlDialogTreeWidget(){};
+
 protected:
-	void mousePressEvent (QMouseEvent *e);
+	void mousePressEvent(QMouseEvent * e);
 	void paintEvent(QPaintEvent * event);
 signals:
-	void rightButtonPressed(QTreeWidgetItem *,QPoint);
+	void rightButtonPressed(QTreeWidgetItem *, QPoint);
 	void contextMenuRequested(QPoint);
 };
 
@@ -71,19 +72,21 @@ class UrlDialog : public KviWindow
 {
 	Q_OBJECT
 public:
-	UrlDialog(KviPointerList<KviUrl> *g_pList);
+	UrlDialog(KviPointerList<KviUrl> * g_pList);
 	~UrlDialog();
+
 private:
-	KviTalMenuBar *m_pMenuBar;
-	QMenu *m_pListPopup;	// dynamic popup menu
-	QString m_szUrl;		// used to pass URLs to sayToWin slot
+	KviTalMenuBar * m_pMenuBar;
+	QMenu * m_pListPopup; // dynamic popup menu
+	QString m_szUrl;      // used to pass URLs to sayToWin slot
 protected:
-	QPixmap *myIconPtr();
+	QPixmap * myIconPtr();
 	void resizeEvent(QResizeEvent *);
+
 public:
-	UrlDialogTreeWidget *m_pUrlList;
+	UrlDialogTreeWidget * m_pUrlList;
 	void addUrl(QString url, QString window, QString count, QString timestamp);
-//	void saveProperties();
+	//	void saveProperties();
 protected slots:
 	void config();
 	void help();
@@ -93,9 +96,9 @@ protected slots:
 	void close_slot();
 	void remove();
 	void findtext();
-	void dblclk_url(QTreeWidgetItem *item, int);
-	void popup(QTreeWidgetItem *item, const QPoint &p);
-	void contextMenu(const QPoint &p);
+	void dblclk_url(QTreeWidgetItem * item, int);
+	void popup(QTreeWidgetItem * item, const QPoint & p);
+	void contextMenu(const QPoint & p);
 	void sayToWin(QAction * act);
 };
 
@@ -103,14 +106,15 @@ class BanFrame : public QFrame
 {
 	Q_OBJECT
 public:
-	BanFrame(QWidget *parent=0, const char *name=0, bool banEnable = false);
+	BanFrame(QWidget * parent = 0, const char * name = 0, bool banEnable = false);
 	~BanFrame();
-	void saveBans(KviConfigurationFile *cfg);
+	void saveBans(KviConfigurationFile * cfg);
+
 private:
-	QCheckBox     *m_pEnable;
-	QListWidget   *m_pBanList;
-	QPushButton   *m_pAddBtn;
-	QPushButton   *m_pRemoveBtn;
+	QCheckBox * m_pEnable;
+	QListWidget * m_pBanList;
+	QPushButton * m_pAddBtn;
+	QPushButton * m_pRemoveBtn;
 protected slots:
 	void enableClicked();
 	void addBan();
@@ -125,9 +129,10 @@ class ConfigDialog : public QDialog
 public:
 	ConfigDialog();
 	~ConfigDialog();
+
 private:
-	QCheckBox *cb[cbnum];
-	BanFrame *m_pBanFrame;
+	QCheckBox * cb[cbnum];
+	BanFrame * m_pBanFrame;
 	void closeEvent(QCloseEvent *);
 protected slots:
 	void acceptbtn();

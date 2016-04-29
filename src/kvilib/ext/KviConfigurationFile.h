@@ -41,31 +41,40 @@
 class KviPixmap;
 class KviMessageTypeSettings;
 
-typedef KviPointerHashTable<QString,QString> KviConfigurationFileGroup;
-typedef KviPointerHashTableIterator<QString,QString> KviConfigurationFileGroupIterator;
-typedef KviPointerHashTableIterator<QString,KviConfigurationFileGroup> KviConfigurationFileIterator;
+typedef KviPointerHashTable<QString, QString> KviConfigurationFileGroup;
+typedef KviPointerHashTableIterator<QString, QString> KviConfigurationFileGroupIterator;
+typedef KviPointerHashTableIterator<QString, KviConfigurationFileGroup> KviConfigurationFileIterator;
 
 class KVILIB_API KviConfigurationFile : public KviHeapObject
 {
 public:
-	enum FileMode { Read = 1, Write = 2, ReadWrite = 3 };
+	enum FileMode
+	{
+		Read = 1,
+		Write = 2,
+		ReadWrite = 3
+	};
+
 public:
-	KviConfigurationFile(const QString &filename,FileMode f/* = ReadWrite*/,bool bLocal8Bit = false);
-	KviConfigurationFile(const char *filename,FileMode f/* = ReadWrite*/,bool bLocal8Bit = false);
+	KviConfigurationFile(const QString & filename, FileMode f /* = ReadWrite*/, bool bLocal8Bit = false);
+	KviConfigurationFile(const char * filename, FileMode f /* = ReadWrite*/, bool bLocal8Bit = false);
 	~KviConfigurationFile();
+
 private:
-	bool                         m_bLocal8Bit;
-	KviPointerHashTable<QString,KviConfigurationFileGroup>      * m_pDict;
-	QString                      m_szFileName;
-	bool                         m_bDirty;
-	QString                      m_szStrBuffer;
-	QString                      m_szGroup;
-	bool                         m_bPreserveEmptyGroups;
-	bool                         m_bReadOnly;
+	bool m_bLocal8Bit;
+	KviPointerHashTable<QString, KviConfigurationFileGroup> * m_pDict;
+	QString m_szFileName;
+	bool m_bDirty;
+	QString m_szStrBuffer;
+	QString m_szGroup;
+	bool m_bPreserveEmptyGroups;
+	bool m_bReadOnly;
+
 private:
 	bool load();
 	bool save();
 	KviConfigurationFileGroup * getCurrentGroup();
+
 public:
 	//
 	// Useful when saving...
@@ -78,73 +87,77 @@ public:
 	// will create the groups if not existing yet (and set the config data
 	// as modified).
 	//
-	void preserveEmptyGroups(bool bPreserve){ m_bPreserveEmptyGroups = bPreserve; };
-	const QString & fileName(){ return m_szFileName; };
-	bool readOnly(){ return m_bReadOnly; };
-	void setReadOnly(bool bReadOnly){ m_bReadOnly = bReadOnly; };
-	bool dirty(){ return m_bDirty; };
+	void preserveEmptyGroups(bool bPreserve) { m_bPreserveEmptyGroups = bPreserve; };
+	const QString & fileName() { return m_szFileName; };
+	bool readOnly() { return m_bReadOnly; };
+	void setReadOnly(bool bReadOnly) { m_bReadOnly = bReadOnly; };
+	bool dirty() { return m_bDirty; };
 	bool ensureWritable();
 	//
 	// This sets the save path for the config file
 	// In this way you can load a system-wide read-only config file
 	// as default configuration, alter its settings and save it to the
 	// user local configuration directory
-	void setSavePath(const QString & savePath){ m_szFileName = savePath; };
-	KviPointerHashTable<QString,KviConfigurationFileGroup> *dict(){ return m_pDict; };
+	void setSavePath(const QString & savePath) { m_szFileName = savePath; };
+	KviPointerHashTable<QString, KviConfigurationFileGroup> * dict() { return m_pDict; };
 
-	void clearDirtyFlag(){ m_bDirty = false; };
+	void clearDirtyFlag() { m_bDirty = false; };
 	void clear();
 	void clearGroup(const QString & szGroup);
 	void clearKey(const QString & szKey);
-	unsigned int groupsCount(){ return m_pDict->count(); };
-	bool sync(){ return save(); };
+	unsigned int groupsCount() { return m_pDict->count(); };
+	bool sync() { return save(); };
 	bool hasKey(const QString & szKey);
 	bool hasGroup(const QString & szGroup);
 	void setGroup(const QString & szGroup);
 	//void getContentsString(KviCString &buffer);
-	const QString & group(){ return m_szGroup; };
-	void writeEntry(const QString & szKey,const QString & szValue);
-	void writeEntry(const QString & szKey,const char * szValue)
-		{ writeEntry(szKey,QString::fromUtf8(szValue)); };
-	QString readEntry(const QString & szKey,const QString & szDefault = QString());
+	const QString & group() { return m_szGroup; };
+	void writeEntry(const QString & szKey, const QString & szValue);
+	void writeEntry(const QString & szKey, const char * szValue)
+	{
+		writeEntry(szKey, QString::fromUtf8(szValue));
+	};
+	QString readEntry(const QString & szKey, const QString & szDefault = QString());
 	// HACK for KviOptions.. (FIXME)
-	QString readKviCStringEntry(const QString &szKey,const KviCString &szDefault)
-		{ return readEntry(szKey,szDefault.ptr()); };
+	QString readKviCStringEntry(const QString & szKey, const KviCString & szDefault)
+	{
+		return readEntry(szKey, szDefault.ptr());
+	};
 	//void writeEntry(const char *szKey,KviCString &szValue);
 	//const char * readEntry(const char *szKey,KviCString &szDefault);
-	void writeEntry(const QString & szKey,const KviPixmap &pixmap);
-	KviPixmap readPixmapEntry(const QString & szKey,const KviPixmap &pixDef);
-	void writeEntry(const QString & szKey,const KviMessageTypeSettings &msg);
-	KviMessageTypeSettings readMsgTypeEntry(const QString & szKey,const KviMessageTypeSettings &msgDef);
-	void writeEntry(const QString & szKey,const QColor &clr);
-	QColor readColorEntry(const QString & szKey,const QColor &clr);
-	void writeEntry(const QString & szKey,QFont &fnt);
-	QFont readFontEntry(const QString & szKey,const QFont &fnt);
-	void writeEntry(const QString & szKey,bool bTrue);
-	bool readBoolEntry(const QString & szKey,bool bTrue);
-	QRect readRectEntry(const QString & szKey,const QRect &rct);
-	void writeEntry(const QString & szKey,const QRect &rct);
-	QStringList readStringListEntry(const QString & szKey,const QStringList &list = QStringList());
-	void writeEntry(const QString & szKey,const QStringList &list);
-	QList<int> readIntListEntry(const QString &,const QList<int> &list);
-	void writeEntry(const QString & szKey,const QList<int> &list);
+	void writeEntry(const QString & szKey, const KviPixmap & pixmap);
+	KviPixmap readPixmapEntry(const QString & szKey, const KviPixmap & pixDef);
+	void writeEntry(const QString & szKey, const KviMessageTypeSettings & msg);
+	KviMessageTypeSettings readMsgTypeEntry(const QString & szKey, const KviMessageTypeSettings & msgDef);
+	void writeEntry(const QString & szKey, const QColor & clr);
+	QColor readColorEntry(const QString & szKey, const QColor & clr);
+	void writeEntry(const QString & szKey, QFont & fnt);
+	QFont readFontEntry(const QString & szKey, const QFont & fnt);
+	void writeEntry(const QString & szKey, bool bTrue);
+	bool readBoolEntry(const QString & szKey, bool bTrue);
+	QRect readRectEntry(const QString & szKey, const QRect & rct);
+	void writeEntry(const QString & szKey, const QRect & rct);
+	QStringList readStringListEntry(const QString & szKey, const QStringList & list = QStringList());
+	void writeEntry(const QString & szKey, const QStringList & list);
+	QList<int> readIntListEntry(const QString &, const QList<int> & list);
+	void writeEntry(const QString & szKey, const QList<int> & list);
 	//void writeEntry(const char *szKey,unsigned long lValue);
 	//unsigned long readULongEntry(const char *szKey,unsigned long lDefault);
 	//void writeEntry(const char *szKey,long lValue);
 	//long readLongEntry(const char *szKey,long lDefault);
-	void writeEntry(const QString & szKey,int iValue);
-	int readIntEntry(const QString & szKey,int iDefault);
-	void writeEntry(const QString & szKey,unsigned short int usValue);
-	unsigned short int readUShortEntry(const QString & szKey,unsigned short int usDefault);
-	void writeEntry(const QString & szKey,unsigned int iValue);
-	unsigned int readUIntEntry(const QString & szKey,unsigned int iDefault);
-	void writeEntry(const QString & szKey,char iValue);
-	char readCharEntry(const QString & szKey,char iDefault);
-	void writeEntry(const QString & szKey,unsigned char iValue);
-	unsigned char readUCharEntry(const QString & szKey,unsigned char iDefault);
+	void writeEntry(const QString & szKey, int iValue);
+	int readIntEntry(const QString & szKey, int iDefault);
+	void writeEntry(const QString & szKey, unsigned short int usValue);
+	unsigned short int readUShortEntry(const QString & szKey, unsigned short int usDefault);
+	void writeEntry(const QString & szKey, unsigned int iValue);
+	unsigned int readUIntEntry(const QString & szKey, unsigned int iDefault);
+	void writeEntry(const QString & szKey, char iValue);
+	char readCharEntry(const QString & szKey, char iDefault);
+	void writeEntry(const QString & szKey, unsigned char iValue);
+	unsigned char readUCharEntry(const QString & szKey, unsigned char iDefault);
 
-	static void getFontProperties(KviCString & buffer,QFont *fnt);
-	static void setFontProperties(KviCString & str,QFont *fnt);
+	static void getFontProperties(KviCString & buffer, QFont * fnt);
+	static void setFontProperties(KviCString & str, QFont * fnt);
 
 #ifdef COMPILE_ON_WINDOWS
 	// On windows we need to override new and delete operators
@@ -152,8 +165,8 @@ public:
 	// This bug is present in all the classes exported by a module that
 	// can be instantiated/destroyed from external modules.
 	// (this is a well known bug described in Q122675 of MSDN)
-	void       * operator new(size_t tSize);
-	void         operator delete(void * p);
+	void * operator new(size_t tSize);
+	void operator delete(void * p);
 #endif
 };
 

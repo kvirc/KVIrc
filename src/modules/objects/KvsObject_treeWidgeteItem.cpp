@@ -54,7 +54,7 @@ const char * const itemflags_tbl[] = {
 	"tristate"
 };
 
-#define itemflags_num	(sizeof(itemflags_tbl) / sizeof(itemflags_tbl[0]))
+#define itemflags_num (sizeof(itemflags_tbl) / sizeof(itemflags_tbl[0]))
 
 /*
 	@doc: listviewitem
@@ -125,53 +125,55 @@ const char * const itemflags_tbl[] = {
 		[/pre]
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_treeWidgetItem,"listviewitem","object")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,setText)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,text)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,setPixmap);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,setItemEditable);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,isItemEditable);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,setEnabled);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,isEnabled);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,setOpen);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,isOpen);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,setCheckable);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,isCheckable);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,setChecked);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,isChecked);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem,setFlags);
+KVSO_BEGIN_REGISTERCLASS(KvsObject_treeWidgetItem, "listviewitem", "object")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, setText)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, text)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, setPixmap);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, setItemEditable);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, isItemEditable);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, setEnabled);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, isEnabled);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, setOpen);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, isOpen);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, setCheckable);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, isCheckable);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, setChecked);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, isChecked);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidgetItem, setFlags);
 
 KVSO_END_REGISTERCLASS(KvsObject_treeWidgetItem)
 
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_treeWidgetItem, KviKvsObject)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_treeWidgetItem,KviKvsObject)
-
-	m_pTreeWidgetItem = 0;
+m_pTreeWidgetItem = 0;
 
 KVSO_END_CONSTRUCTOR(KvsObject_treeWidgetItem)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_treeWidgetItem)
 
-	if(m_pTreeWidgetItem)delete m_pTreeWidgetItem;
+if(m_pTreeWidgetItem)
+	delete m_pTreeWidgetItem;
 
 KVSO_END_CONSTRUCTOR(KvsObject_treeWidgetItem)
 
-bool KvsObject_treeWidgetItem::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *)
+bool KvsObject_treeWidgetItem::init(KviKvsRunTimeContext * pContext, KviKvsVariantList *)
 {
-	if (!parentObject())
+	if(!parentObject())
 	{
-		pContext->error(__tr2qs_ctx("The listviewitem can't be parentless","objects"));
+		pContext->error(__tr2qs_ctx("The listviewitem can't be parentless", "objects"));
 		return false;
 	}
 	if(parentObject()->inheritsClass("listviewitem"))
 	{
-		 m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this,((KvsObject_treeWidgetItem *)parentObject())->m_pTreeWidgetItem);
-	} else {
+		m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this, ((KvsObject_treeWidgetItem *)parentObject())->m_pTreeWidgetItem);
+	}
+	else
+	{
 		if(parentObject()->inheritsClass("listview"))
-			m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this,((QTreeWidget *)parentScriptWidget()));
-		else {
-			pContext->error(__tr2qs_ctx("The parent of the listviewitem must be either another listviewitem or a listview","objects"));
+			m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this, ((QTreeWidget *)parentScriptWidget()));
+		else
+		{
+			pContext->error(__tr2qs_ctx("The parent of the listviewitem must be either another listviewitem or a listview", "objects"));
 			return false;
 		}
 	}
@@ -181,94 +183,98 @@ bool KvsObject_treeWidgetItem::init(KviKvsRunTimeContext * pContext,KviKvsVarian
 
 void KvsObject_treeWidgetItem::childDestroyed()
 {
-	if(m_pTreeWidgetItem == 0)return;
+	if(m_pTreeWidgetItem == 0)
+		return;
 	m_pTreeWidgetItem = 0;
 	die();
 }
 
-KviKvsStandardTreeWidgetItem::KviKvsStandardTreeWidgetItem(KvsObject_treeWidgetItem * ob,QTreeWidget * par)
-:QTreeWidgetItem(par), m_pMasterObject(ob)
+KviKvsStandardTreeWidgetItem::KviKvsStandardTreeWidgetItem(KvsObject_treeWidgetItem * ob, QTreeWidget * par)
+    : QTreeWidgetItem(par), m_pMasterObject(ob)
 {
 }
 
-KviKvsStandardTreeWidgetItem::KviKvsStandardTreeWidgetItem(KvsObject_treeWidgetItem * ob,QTreeWidgetItem * par)
-:QTreeWidgetItem(par), m_pMasterObject(ob)
+KviKvsStandardTreeWidgetItem::KviKvsStandardTreeWidgetItem(KvsObject_treeWidgetItem * ob, QTreeWidgetItem * par)
+    : QTreeWidgetItem(par), m_pMasterObject(ob)
 {
 }
 
 KviKvsStandardTreeWidgetItem::~KviKvsStandardTreeWidgetItem()
 {
-	if(m_pMasterObject)m_pMasterObject->childDestroyed();
+	if(m_pMasterObject)
+		m_pMasterObject->childDestroyed();
 }
 
 kvs_hobject_t KvsObject_treeWidgetItem::itemToHandle(QTreeWidgetItem * it)
 {
-	if(!it)return (kvs_hobject_t)0;
+	if(!it)
+		return (kvs_hobject_t)0;
 	KvsObject_treeWidgetItem * pObject;
 	pObject = ((KviKvsStandardTreeWidgetItem *)it)->masterObject();
-	if(!pObject)return (kvs_hobject_t)0;
+	if(!pObject)
+		return (kvs_hobject_t)0;
 	return pObject->handle();
 }
 
-KVSO_CLASS_FUNCTION(treeWidgetItem,setText)
+KVSO_CLASS_FUNCTION(treeWidgetItem, setText)
 {
 	kvs_uint_t uCol;
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
-		KVSO_PARAMETERS_END(c)
+	KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
+	KVSO_PARAMETERS_END(c)
 	if(m_pTreeWidgetItem)
-		m_pTreeWidgetItem->setText(uCol,szText);
+		m_pTreeWidgetItem->setText(uCol, szText);
 	return true;
 }
 
-
-KVSO_CLASS_FUNCTION(treeWidgetItem,setItemEditable)
+KVSO_CLASS_FUNCTION(treeWidgetItem, setItemEditable)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(m_pTreeWidgetItem)
-	    m_pTreeWidgetItem->setFlags(bEnabled?m_pTreeWidgetItem->flags()|Qt::ItemIsEditable:m_pTreeWidgetItem->flags()&~Qt::ItemIsEditable);
+		m_pTreeWidgetItem->setFlags(bEnabled ? m_pTreeWidgetItem->flags() | Qt::ItemIsEditable : m_pTreeWidgetItem->flags() & ~Qt::ItemIsEditable);
 	return true;
 }
-KVSO_CLASS_FUNCTION(treeWidgetItem,isItemEditable)
+KVSO_CLASS_FUNCTION(treeWidgetItem, isItemEditable)
 {
 	if(!m_pTreeWidgetItem)
 	{
 		c->returnValue()->setBoolean(false);
 		return true;
 	}
-	c->returnValue()->setBoolean(m_pTreeWidgetItem->flags()&Qt::ItemIsEditable);
+	c->returnValue()->setBoolean(m_pTreeWidgetItem->flags() & Qt::ItemIsEditable);
 	return true;
 }
-KVSO_CLASS_FUNCTION(treeWidgetItem,setFlags)
+KVSO_CLASS_FUNCTION(treeWidgetItem, setFlags)
 {
 	QStringList itemflags;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,itemflags)
+	KVSO_PARAMETER("flags", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, itemflags)
 	KVSO_PARAMETERS_END(c)
-	int flag,sum=0;
-	for ( int i=0;i<itemflags.count();i++)
+	int flag, sum = 0;
+	for(int i = 0; i < itemflags.count(); i++)
 	{
 		flag = 0;
 		for(unsigned int j = 0; j < itemflags_num; j++)
 		{
 			if(KviQString::equalCI(itemflags.at(i), itemflags_tbl[j]))
 			{
-				flag=item_flags[j];
+				flag = item_flags[j];
 				break;
 			}
 		}
-		if(flag){
-			if (flag==Qt::ItemIsUserCheckable)
-					m_pTreeWidgetItem->setCheckState(0,Qt::Unchecked);
+		if(flag)
+		{
+			if(flag == Qt::ItemIsUserCheckable)
+				m_pTreeWidgetItem->setCheckState(0, Qt::Unchecked);
 			sum = sum | flag;
 		}
 		else
-			c->warning(__tr2qs_ctx("Unknown item flag '%Q'","objects"),&itemflags.at(i));
+			c->warning(__tr2qs_ctx("Unknown item flag '%Q'", "objects"), &itemflags.at(i));
 	}
 	if(m_pTreeWidgetItem)
 		m_pTreeWidgetItem->setFlags((Qt::ItemFlags)sum);
@@ -276,40 +282,40 @@ KVSO_CLASS_FUNCTION(treeWidgetItem,setFlags)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidgetItem,setEnabled)
+KVSO_CLASS_FUNCTION(treeWidgetItem, setEnabled)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
-		KVSO_PARAMETERS_END(c)
+	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+	KVSO_PARAMETERS_END(c)
 	if(m_pTreeWidgetItem)
-		m_pTreeWidgetItem->setFlags(bEnabled?m_pTreeWidgetItem->flags()|Qt::ItemIsEnabled:m_pTreeWidgetItem->flags()&~Qt::ItemIsEnabled);
+		m_pTreeWidgetItem->setFlags(bEnabled ? m_pTreeWidgetItem->flags() | Qt::ItemIsEnabled : m_pTreeWidgetItem->flags() & ~Qt::ItemIsEnabled);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidgetItem,isEnabled)
+KVSO_CLASS_FUNCTION(treeWidgetItem, isEnabled)
 {
 	if(!m_pTreeWidgetItem)
 	{
 		c->returnValue()->setBoolean(false);
 		return true;
 	}
-	c->returnValue()->setBoolean(m_pTreeWidgetItem->flags()&Qt::ItemIsEnabled);
+	c->returnValue()->setBoolean(m_pTreeWidgetItem->flags() & Qt::ItemIsEnabled);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidgetItem,setOpen)
+KVSO_CLASS_FUNCTION(treeWidgetItem, setOpen)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(m_pTreeWidgetItem)
 		m_pTreeWidgetItem->setExpanded(bEnabled);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidgetItem,isOpen)
+KVSO_CLASS_FUNCTION(treeWidgetItem, isOpen)
 {
 	if(!m_pTreeWidgetItem)
 	{
@@ -320,93 +326,101 @@ KVSO_CLASS_FUNCTION(treeWidgetItem,isOpen)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidgetItem,setChecked)
+KVSO_CLASS_FUNCTION(treeWidgetItem, setChecked)
 {
 	bool bChecked;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bChecked",KVS_PT_BOOL,0,bChecked)
+	KVSO_PARAMETER("bChecked", KVS_PT_BOOL, 0, bChecked)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pTreeWidgetItem)return true;
-	((QTreeWidgetItem *)m_pTreeWidgetItem)->setCheckState(0,bChecked?Qt::Checked:Qt::Unchecked);
+	if(!m_pTreeWidgetItem)
+		return true;
+	((QTreeWidgetItem *)m_pTreeWidgetItem)->setCheckState(0, bChecked ? Qt::Checked : Qt::Unchecked);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidgetItem,isChecked)
+KVSO_CLASS_FUNCTION(treeWidgetItem, isChecked)
 {
 	if(!m_pTreeWidgetItem)
 	{
 		c->returnValue()->setBoolean(false);
 		return true;
 	}
-	c->returnValue()->setBoolean(((QTreeWidgetItem *)m_pTreeWidgetItem)->checkState(0)==Qt::Checked?1:0);
+	c->returnValue()->setBoolean(((QTreeWidgetItem *)m_pTreeWidgetItem)->checkState(0) == Qt::Checked ? 1 : 0);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidgetItem,setCheckable)
+KVSO_CLASS_FUNCTION(treeWidgetItem, setCheckable)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bCheckable",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETER("bCheckable", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pTreeWidgetItem)return true;
-	m_pTreeWidgetItem->setFlags(bEnabled?m_pTreeWidgetItem->flags()|Qt::ItemIsUserCheckable:m_pTreeWidgetItem->flags()&~Qt::ItemIsUserCheckable);
+	if(!m_pTreeWidgetItem)
+		return true;
+	m_pTreeWidgetItem->setFlags(bEnabled ? m_pTreeWidgetItem->flags() | Qt::ItemIsUserCheckable : m_pTreeWidgetItem->flags() & ~Qt::ItemIsUserCheckable);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidgetItem,isCheckable)
+KVSO_CLASS_FUNCTION(treeWidgetItem, isCheckable)
 {
 	if(!m_pTreeWidgetItem)
 	{
 		c->returnValue()->setBoolean(false);
 		return true;
 	}
-	c->returnValue()->setBoolean(m_pTreeWidgetItem->flags()&Qt::ItemIsUserCheckable);
+	c->returnValue()->setBoolean(m_pTreeWidgetItem->flags() & Qt::ItemIsUserCheckable);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidgetItem,text)
+KVSO_CLASS_FUNCTION(treeWidgetItem, text)
 {
 	kvs_uint_t uCol;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
+	KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
 	KVSO_PARAMETERS_END(c)
 	if(m_pTreeWidgetItem)
 		c->returnValue()->setString(m_pTreeWidgetItem->text(uCol));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidgetItem,setPixmap)
+KVSO_CLASS_FUNCTION(treeWidgetItem, setPixmap)
 {
 	kvs_uint_t uCol;
-	KviKvsObject *obPixmap;
+	KviKvsObject * obPixmap;
 	kvs_hobject_t obHpixmap;
 	KviKvsVariant * vPixmap;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
-		KVSO_PARAMETER("pixmap",KVS_PT_VARIANT,0,vPixmap)
+	KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
+	KVSO_PARAMETER("pixmap", KVS_PT_VARIANT, 0, vPixmap)
 	KVSO_PARAMETERS_END(c)
-	QPixmap *pix = 0;
-	if (vPixmap->isEmpty()) {m_pTreeWidgetItem->setIcon(uCol,QIcon());return true;}
+	QPixmap * pix = 0;
+	if(vPixmap->isEmpty())
+	{
+		m_pTreeWidgetItem->setIcon(uCol, QIcon());
+		return true;
+	}
 	if(vPixmap->isHObject())
 	{
 		vPixmap->asHObject(obHpixmap);
-		obPixmap=KviKvsKernel::instance()->objectController()->lookupObject(obHpixmap);
-		if (!obPixmap->inheritsClass("pixmap"))
+		obPixmap = KviKvsKernel::instance()->objectController()->lookupObject(obHpixmap);
+		if(!obPixmap->inheritsClass("pixmap"))
 		{
-			c->warning(__tr2qs_ctx("Pixmap object or image Id required","objects"));
+			c->warning(__tr2qs_ctx("Pixmap object or image Id required", "objects"));
 			return true;
 		}
-		pix=((KvsObject_pixmap *)obPixmap)->getPixmap();
-	} else {
+		pix = ((KvsObject_pixmap *)obPixmap)->getPixmap();
+	}
+	else
+	{
 		QString szPix;
 		vPixmap->asString(szPix);
-		pix=g_pIconManager->getImage(szPix);
+		pix = g_pIconManager->getImage(szPix);
 		if(!pix)
 		{
-			c->warning(__tr2qs_ctx("Error occurred: the suitable file '%Q' is not of the correct format or it is not a valid icon number.","objects"),&szPix);
+			c->warning(__tr2qs_ctx("Error occurred: the suitable file '%Q' is not of the correct format or it is not a valid icon number.", "objects"), &szPix);
 			return true;
 		}
 	}
-	m_pTreeWidgetItem->setIcon(uCol,QIcon(*pix));
+	m_pTreeWidgetItem->setIcon(uCol, QIcon(*pix));
 	return true;
 }

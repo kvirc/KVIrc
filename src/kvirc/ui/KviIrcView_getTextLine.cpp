@@ -43,22 +43,22 @@
 
 #define WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR 1
 
-void kvi_appendWCharToQStringWithLength(QString * qstrptr,const kvi_wchar_t * ptr,kvi_wslen_t len)
+void kvi_appendWCharToQStringWithLength(QString * qstrptr, const kvi_wchar_t * ptr, kvi_wslen_t len)
 {
 	KVI_ASSERT(qstrptr);
 	kvi_wslen_t oldLen = qstrptr->length();
 	qstrptr->resize(oldLen + len);
-	#ifdef WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
-		KviMemory::copy((void *)(qstrptr->unicode() + oldLen),ptr,sizeof(kvi_wchar_t) * len);
-	#else // !WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
-		QChar * c = (QChar *)(qstrptr->unicode() + oldLen);
-		while(*ptr)
-		{
-			c->unicode() = *ptr;
-			ptr++;
-			c++;
-		}
-	#endif // !WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
+#ifdef WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
+	KviMemory::copy((void *)(qstrptr->unicode() + oldLen), ptr, sizeof(kvi_wchar_t) * len);
+#else  // !WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
+	QChar * c = (QChar *)(qstrptr->unicode() + oldLen);
+	while(*ptr)
+	{
+		c->unicode() = *ptr;
+		ptr++;
+		c++;
+	}
+#endif // !WSTRINGCONFIG_SAFE_TO_MEMCPY_QCHAR
 }
 
 static const kvi_wchar_t * skip_to_end_of_url(const kvi_wchar_t * p)
@@ -94,7 +94,7 @@ static const kvi_wchar_t * skip_to_end_of_url(const kvi_wchar_t * p)
 			return p; // no spaces and control characters below 32
 
 		if((*p == '{') || (*p == '}') || (*p == '<') || (*p == '>') || (*p == '"')) // || (*p == '\''))
-			return p; // never valid inside an URL
+			return p;                                                               // never valid inside an URL
 
 		if(*p == '[')
 		{
@@ -136,7 +136,7 @@ static const kvi_wchar_t * skip_to_end_of_url(const kvi_wchar_t * p)
 	return p;
 }
 
-static inline bool url_compare_helper(const kvi_wchar_t * pData1,const kvi_wchar_t * pData2,int iData2Len)
+static inline bool url_compare_helper(const kvi_wchar_t * pData1, const kvi_wchar_t * pData2, int iData2Len)
 {
 	KVI_ASSERT(pData1);
 	KVI_ASSERT(pData2);
@@ -158,27 +158,25 @@ static inline bool url_compare_helper(const kvi_wchar_t * pData1,const kvi_wchar
 	return true; // all equal up to iData2Len
 }
 
-
 const kvi_wchar_t * KviIrcView::getTextLine(
-		int iMsgType,
-		const kvi_wchar_t * data_ptr,
-		KviIrcViewLine *line_ptr,
-		bool bEnableTimeStamp,
-		const QDateTime& datetime_param
-	)
+    int iMsgType,
+    const kvi_wchar_t * data_ptr,
+    KviIrcViewLine * line_ptr,
+    bool bEnableTimeStamp,
+    const QDateTime & datetime_param)
 {
-	const kvi_wchar_t* pUnEscapeAt = 0;
+	const kvi_wchar_t * pUnEscapeAt = 0;
 
 	// Splits the text data in lines (separated by '\n')
 
 	// NOTE: This function may be NOT reentrant
 	//   ... no function in this file is supposed to be thread safe anyway
 
-	int iTextIdx  = 0;       //we're at the beginning in the buffer
+	int iTextIdx = 0; //we're at the beginning in the buffer
 	int iCurChunk = 0;
 	int blockLen;
 
-	const kvi_wchar_t *p = data_ptr;
+	const kvi_wchar_t * p = data_ptr;
 
 	//Alloc the first attribute
 	line_ptr->uChunkCount = 1;
@@ -195,11 +193,12 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 	{
 		QString szTimestamp;
 		QDateTime datetime = datetime_param;
-		if (!datetime.isValid()) datetime = QDateTime::currentDateTime();
+		if(!datetime.isValid())
+			datetime = QDateTime::currentDateTime();
 		datetime = datetime.toTimeSpec(KVI_OPTION_BOOL(KviOption_boolIrcViewTimestampUTC) ? Qt::UTC : Qt::LocalTime);
-		szTimestamp=datetime.toString(KVI_OPTION_STRING(KviOption_stringIrcViewTimestampFormat));
+		szTimestamp = datetime.toString(KVI_OPTION_STRING(KviOption_stringIrcViewTimestampFormat));
 		szTimestamp.append(' ');
-		int iTimeStampLength=szTimestamp.length();
+		int iTimeStampLength = szTimestamp.length();
 
 		if(KVI_OPTION_BOOL(KviOption_boolUseSpecialColorForTimestamp))
 		{
@@ -208,23 +207,25 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 			// of the timestamp and the third one goes back to the defaults
 			line_ptr->pChunks[0].iTextLen = 0;
 
-			line_ptr->uChunkCount=3;
-			line_ptr->pChunks=(KviIrcViewLineChunk *)KviMemory::reallocate((void *)line_ptr->pChunks,3 * sizeof(KviIrcViewLineChunk));
+			line_ptr->uChunkCount = 3;
+			line_ptr->pChunks = (KviIrcViewLineChunk *)KviMemory::reallocate((void *)line_ptr->pChunks, 3 * sizeof(KviIrcViewLineChunk));
 
 			line_ptr->pChunks[1].type = KviControlCodes::Color;
 			line_ptr->pChunks[1].iTextStart = 0;
-			line_ptr->pChunks[1].iTextLen = iTimeStampLength-1;
+			line_ptr->pChunks[1].iTextLen = iTimeStampLength - 1;
 			line_ptr->pChunks[1].colors.back = KVI_OPTION_UINT(KviOption_uintTimeStampBackground);
 			line_ptr->pChunks[1].colors.fore = KVI_OPTION_UINT(KviOption_uintTimeStampForeground);
 
 			line_ptr->pChunks[2].type = KviControlCodes::Color;
-			line_ptr->pChunks[2].iTextStart = iTimeStampLength-1;
+			line_ptr->pChunks[2].iTextStart = iTimeStampLength - 1;
 			line_ptr->pChunks[2].iTextLen = 1;
 			line_ptr->pChunks[2].colors.back = KVI_OPTION_MSGTYPE(iMsgType).back();
 			line_ptr->pChunks[2].colors.fore = KVI_OPTION_MSGTYPE(iMsgType).fore();
-			line_ptr->pChunks[2].customFore=QColor();
-			iCurChunk+=2;
-		} else {
+			line_ptr->pChunks[2].customFore = QColor();
+			iCurChunk += 2;
+		}
+		else
+		{
 			// only one chunk
 			line_ptr->pChunks[0].iTextLen = iTimeStampLength;
 		}
@@ -233,45 +234,47 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 		// alloc the necessary space
 		line_ptr->szText.resize(iTimeStampLength);
 
-		iTextIdx = iTimeStampLength;                     // the rest of the string will begin 11 chars later
+		iTextIdx = iTimeStampLength; // the rest of the string will begin 11 chars later
 
 		// throw away const: we WANT to set the chars :D
 		QChar * data_ptr_aux = (QChar *)line_ptr->szText.unicode();
 		QChar * stamp_ptr_aux = (QChar *)szTimestamp.unicode();
 
 		//copy the timestamp into line_ptr->szText.unicode()
-		for(int i=0;i<iTimeStampLength;i++)
-			*data_ptr_aux++  = *stamp_ptr_aux++;
-	} else {
+		for(int i = 0; i < iTimeStampLength; i++)
+			*data_ptr_aux++ = *stamp_ptr_aux++;
+	}
+	else
+	{
 		// Timestamp not needed... but we don't want null strings floating around
 		line_ptr->szText = "";
 		line_ptr->pChunks[0].iTextLen = 0;
 	}
 
-	//
-	// Ok... a couple of macros that occur really frequently
-	// in the following code...
-	// these could work well as functions too...but the macros are a lot faster :)
-	//
+//
+// Ok... a couple of macros that occur really frequently
+// in the following code...
+// these could work well as functions too...but the macros are a lot faster :)
+//
 
 /*
  * Profane description: this adds a block of text of known length to a already created chunk inside this line.
  */
-#define APPEND_LAST_TEXT_BLOCK(__data_ptr,__data_len) \
-	blockLen = (__data_len); \
-	line_ptr->pChunks[iCurChunk].iTextLen += blockLen; \
-	kvi_appendWCharToQStringWithLength(&(line_ptr->szText),__data_ptr,__data_len); \
-	iTextIdx+=blockLen;
+#define APPEND_LAST_TEXT_BLOCK(__data_ptr, __data_len)                               \
+	blockLen = (__data_len);                                                         \
+	line_ptr->pChunks[iCurChunk].iTextLen += blockLen;                               \
+	kvi_appendWCharToQStringWithLength(&(line_ptr->szText), __data_ptr, __data_len); \
+	iTextIdx += blockLen;
 
 /*
  * Profane description: this adds a block of text of known length to a already created chunk inside this line.
  * text is hidden (e.g. we want to display an emoticon instead of the ":)" text, so we insert it hidden)
  */
 
-#define APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(__data_ptr,__data_len) \
-	blockLen = (__data_len); \
-	kvi_appendWCharToQStringWithLength(&(line_ptr->szText),__data_ptr,__data_len); \
-	iTextIdx+=blockLen;
+#define APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(__data_ptr, __data_len)               \
+	blockLen = (__data_len);                                                         \
+	kvi_appendWCharToQStringWithLength(&(line_ptr->szText), __data_ptr, __data_len); \
+	iTextIdx += blockLen;
 
 /*
  * Profane description: this is dummy
@@ -284,15 +287,15 @@ const kvi_wchar_t * KviIrcView::getTextLine(
  * with similar style properties (mainly with the same color)
  */
 
-#define NEW_LINE_CHUNK(_chunk_type) \
-	line_ptr->uChunkCount++; \
-	line_ptr->pChunks=(KviIrcViewLineChunk *)KviMemory::reallocate((void *)line_ptr->pChunks, \
-			line_ptr->uChunkCount * sizeof(KviIrcViewLineChunk)); \
-	iCurChunk++; \
-	line_ptr->pChunks[iCurChunk].type = _chunk_type; \
-	line_ptr->pChunks[iCurChunk].iTextStart = iTextIdx; \
-	line_ptr->pChunks[iCurChunk].iTextLen = 0; \
-	line_ptr->pChunks[iCurChunk].customFore=iCurChunk ? line_ptr->pChunks[iCurChunk-1].customFore : QColor();
+#define NEW_LINE_CHUNK(_chunk_type)                                                             \
+	line_ptr->uChunkCount++;                                                                    \
+	line_ptr->pChunks = (KviIrcViewLineChunk *)KviMemory::reallocate((void *)line_ptr->pChunks, \
+	    line_ptr->uChunkCount * sizeof(KviIrcViewLineChunk));                                   \
+	iCurChunk++;                                                                                \
+	line_ptr->pChunks[iCurChunk].type = _chunk_type;                                            \
+	line_ptr->pChunks[iCurChunk].iTextStart = iTextIdx;                                         \
+	line_ptr->pChunks[iCurChunk].iTextLen = 0;                                                  \
+	line_ptr->pChunks[iCurChunk].customFore = iCurChunk ? line_ptr->pChunks[iCurChunk - 1].customFore : QColor();
 
 	// EOF Macros
 
@@ -352,8 +355,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 
 	void * loop_begin;
 
-	static void * char_to_check_jump_table[256]=
-	{
+	static void * char_to_check_jump_table[256] = {
 		// clang-format off
 		&&found_end_of_buffer  ,0                      ,&&found_mirc_escape    ,&&found_color_escape   ,
 		0                      ,0                      ,0                      ,0                      ,
@@ -424,27 +426,30 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting) || KVI_OPTION_BOOL(KviOption_boolDrawEmoticons))
 	{
-		loop_begin = &&highlighting_check_loop;               // get the address of the return label
-		// forever loop
-highlighting_check_loop:
+		loop_begin = &&highlighting_check_loop; // get the address of the return label
+	                                            // forever loop
+	highlighting_check_loop:
 		// yet more optimized
 		if(*((unsigned short *)p) < 0xff)
-			if(void * jmp_address = char_to_check_jump_table[*((unsigned short *)p)])goto *jmp_address;
-			// goto *(char_to_check_jump_table[*((unsigned char *)p)]); <--- replace 0 with &nothing_found
-//nothing_found:
+			if(void * jmp_address = char_to_check_jump_table[*((unsigned short *)p)])
+				goto * jmp_address;
+		// goto *(char_to_check_jump_table[*((unsigned char *)p)]); <--- replace 0 with &nothing_found
+		//nothing_found:
 		p++;
 		goto highlighting_check_loop;
 		// never here
-	} else {
-		loop_begin = &&escape_check_loop;                     // get the address of the return label
-		// forever loop
-escape_check_loop:
-		while(*((unsigned short *)p) > 31)p++;
-		goto check_escape_switch;                             // returns to escape_check_loop or returns from the function at all
-		// never here
 	}
-	// never here
-
+	else
+	{
+		loop_begin = &&escape_check_loop; // get the address of the return label
+	                                      // forever loop
+	escape_check_loop:
+		while(*((unsigned short *)p) > 31)
+			p++;
+		goto check_escape_switch; // returns to escape_check_loop or returns from the function at all
+		                          // never here
+	}
+// never here
 
 #else // !COMPILE_USE_DYNAMIC_LABELS
 
@@ -453,24 +458,23 @@ escape_check_loop:
 	// Note: this could be substituted by a compiler generated jump table
 	//       for a switch command... but this is STILL faster
 
-	static char char_to_check_table[256]=
-	{
-		1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1, // 000-015
-		1,1,1,1,1,1,1,1, 1,1,1,1,1,1,1,1, // 016-031
-		0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, // 032-047
-		0,0,0,0,0,0,0,0, 0,0,7,7,0,7,0,0, // 048-063
-		0,0,0,0,0,8,3,0, 2,5,0,0,0,6,0,0, // 064-079  // 070==F 072==H 073==I 077==M
-		0,0,0,9,0,0,0,4, 0,0,0,0,0,0,0,0, // 080-095  // 083==S 087==W
-		0,0,0,0,0,8,3,0, 2,5,0,0,0,6,0,0, // 096-111  // 102==f 104==h 105==i 109==m
-		0,0,0,9,0,0,0,4, 0,0,0,0,0,0,0,0, // 112-127  // 115==s 119==w
-		0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, // 128-133
-		0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, // 134-159
-		0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, // 160-175
-		0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, // 176-191
-		0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, // 192-207
-		0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, // 208-223
-		0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0, // 224-239
-		0,0,0,0,0,0,0,0, 0,0,0,0,0,0,0,0  // 240-255
+	static char char_to_check_table[256] = {
+		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, // 000-015
+		1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, // 016-031
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 032-047
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 7, 0, 7, 0, 0, // 048-063
+		0, 0, 0, 0, 0, 8, 3, 0, 2, 5, 0, 0, 0, 6, 0, 0, // 064-079  // 070==F 072==H 073==I 077==M
+		0, 0, 0, 9, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, // 080-095  // 083==S 087==W
+		0, 0, 0, 0, 0, 8, 3, 0, 2, 5, 0, 0, 0, 6, 0, 0, // 096-111  // 102==f 104==h 105==i 109==m
+		0, 0, 0, 9, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, // 112-127  // 115==s 119==w
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 128-133
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 134-159
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 160-175
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 176-191
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 192-207
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 208-223
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, // 224-239
+		0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0  // 240-255
 	};
 
 check_char_loop:
@@ -480,25 +484,46 @@ check_char_loop:
 		{
 			if(*((unsigned short *)p) < 0xff)
 				if(unsigned int chk = char_to_check_table[*((unsigned short *)p)])
-			{
-				switch(chk)
 				{
-					case 1: goto check_escape_switch;			break; // returns to check_char_loop or returns from the function at all
-					case 2: goto check_http_url;				break; // returns to check_char_loop
-					case 3: goto check_file_or_ftp_url;			break; // returns to check_char_loop
-					case 4: goto check_www_url;					break; // returns to check_char_loop
-					case 5: goto check_irc_url;					break; // returns to check_char_loop
-					case 6: goto check_mailto_or_magnet_url;	break; // returns to check_char_loop
-					case 7: goto check_emoticon_char;			break; // returns to check_char_loop
-					case 8: goto check_e2k_url;					break;
-					case 9: goto check_spotify_url;				break;
+					switch(chk)
+					{
+						case 1:
+							goto check_escape_switch;
+							break; // returns to check_char_loop or returns from the function at all
+						case 2:
+							goto check_http_url;
+							break; // returns to check_char_loop
+						case 3:
+							goto check_file_or_ftp_url;
+							break; // returns to check_char_loop
+						case 4:
+							goto check_www_url;
+							break; // returns to check_char_loop
+						case 5:
+							goto check_irc_url;
+							break; // returns to check_char_loop
+						case 6:
+							goto check_mailto_or_magnet_url;
+							break; // returns to check_char_loop
+						case 7:
+							goto check_emoticon_char;
+							break; // returns to check_char_loop
+						case 8:
+							goto check_e2k_url;
+							break;
+						case 9:
+							goto check_spotify_url;
+							break;
+					}
 				}
-			}
 			p++;
 		}
-	} else {
-		while(((unsigned short)*p) > 31)p++;
-		goto check_escape_switch;                                 // returns to check_char_loop
+	}
+	else
+	{
+		while(((unsigned short)*p) > 31)
+			p++;
+		goto check_escape_switch; // returns to check_char_loop
 	}
 
 #endif // !COMPILE_USE_DYNAMIC_LABELS
@@ -515,9 +540,9 @@ check_escape_switch:
 	{
 		case '\0':
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-found_end_of_buffer:
+		found_end_of_buffer:
 #endif //COMPILE_USE_DYNAMIC_LABELS
-			APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
+			APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr)
 			if(pUnEscapeAt)
 			{
 				// empty unescape block needed
@@ -528,10 +553,10 @@ found_end_of_buffer:
 			break;
 		case '\n':
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-found_end_of_line:
+		found_end_of_line:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 			// Found the end of a line
-			APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr);
+			APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr);
 			if(pUnEscapeAt)
 			{
 				// empty unescape block needed
@@ -546,17 +571,17 @@ found_end_of_line:
 			break;
 		case '\r':
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-found_command_escape:
+		found_command_escape:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 
 			if(p == pUnEscapeAt)
 			{
 				// This is the terminator of an escape
-				APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr);
+				APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr);
 				NEW_LINE_CHUNK(KviControlCodes::UnEscape);
 				pUnEscapeAt = 0;
 				p++;
-				data_ptr=p;
+				data_ptr = p;
 				break;
 			}
 
@@ -585,47 +610,47 @@ found_command_escape:
 						p--;
 						//  \r!    ... \r ...    \r
 						//   ^p         ^next_cr  ^term_cr
-						APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
+						APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr)
 						NEW_LINE_CHUNK(KviControlCodes::Escape)
 
-						p+=2; //point after \r!
+						p += 2; //point after \r!
 
 						blockLen = (next_cr - p);
 						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate(((next_cr - p) + 1) * sizeof(kvi_wchar_t));
-						KviMemory::copy((void *)(line_ptr->pChunks[iCurChunk].szPayload),p,blockLen * sizeof(kvi_wchar_t));
+						KviMemory::copy((void *)(line_ptr->pChunks[iCurChunk].szPayload), p, blockLen * sizeof(kvi_wchar_t));
 
 						line_ptr->pChunks[iCurChunk].szPayload[blockLen] = 0;
 
 						++next_cr; //point after the middle \r
 
-						bool bColorSet=false;
-						if((line_ptr->pChunks[iCurChunk].szPayload[0]=='n') && KVI_OPTION_BOOL(KviOption_boolUseUserListColorsAsNickColors) && (!KVI_OPTION_BOOL(KviOption_boolColorNicks)))
+						bool bColorSet = false;
+						if((line_ptr->pChunks[iCurChunk].szPayload[0] == 'n') && KVI_OPTION_BOOL(KviOption_boolUseUserListColorsAsNickColors) && (!KVI_OPTION_BOOL(KviOption_boolColorNicks)))
 						{
-							if(m_pKviWindow->type()==KviWindow::Channel && m_pKviWindow)
+							if(m_pKviWindow->type() == KviWindow::Channel && m_pKviWindow)
 							{
-								if(line_ptr->pChunks[iCurChunk].szPayload[1]=='c' && ((KviChannelWindow*)m_pKviWindow)->userListView())
+								if(line_ptr->pChunks[iCurChunk].szPayload[1] == 'c' && ((KviChannelWindow *)m_pKviWindow)->userListView())
 								{
-									KviUserListEntry *e = ((KviChannelWindow*)m_pKviWindow)->userListView()->findEntry(QString((QChar*)next_cr,term_cr-next_cr));
+									KviUserListEntry * e = ((KviChannelWindow *)m_pKviWindow)->userListView()->findEntry(QString((QChar *)next_cr, term_cr - next_cr));
 									if(e)
 									{
 										line_ptr->pChunks[iCurChunk].colors.fore = KVI_COLOR_CUSTOM;
 										e->color(line_ptr->pChunks[iCurChunk].customFore);
-										bColorSet=true;
+										bColorSet = true;
 									}
 								}
 							}
-							else if(m_pKviWindow->type()==KviWindow::Query && m_pKviWindow && line_ptr->pChunks[iCurChunk].szPayload[1]=='c')
+							else if(m_pKviWindow->type() == KviWindow::Query && m_pKviWindow && line_ptr->pChunks[iCurChunk].szPayload[1] == 'c')
 							{
-								QString m_szNick = QString((QChar*)next_cr,term_cr-next_cr);
-								if(m_szNick==m_pKviWindow->connection()->currentNickName())
+								QString m_szNick = QString((QChar *)next_cr, term_cr - next_cr);
+								if(m_szNick == m_pKviWindow->connection()->currentNickName())
 								{
 									line_ptr->pChunks[iCurChunk].colors.fore = KVI_COLOR_OWN;
-									bColorSet=true;
+									bColorSet = true;
 								}
 							}
 						}
 						if(!bColorSet)
-							line_ptr->pChunks[iCurChunk].colors.fore=KviControlCodes::NoChange;
+							line_ptr->pChunks[iCurChunk].colors.fore = KviControlCodes::NoChange;
 
 #if 0
 						APPEND_LAST_TEXT_BLOCK(next_cr,term_cr - next_cr)
@@ -638,27 +663,27 @@ found_command_escape:
 						//APPEND_LAST_TEXT_BLOCK(next_cr,term_cr - next_cr)
 						//NEW_LINE_CHUNK(KVI_TEXT_UNESCAPE)
 
-						p=next_cr;
+						p = next_cr;
 #endif
-						data_ptr=p;
+						data_ptr = p;
 					}
 				}
 			}
 			break;
 		case KviControlCodes::Color:
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-found_color_escape:
+		found_color_escape:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 			//Color control code...need a new attribute struct
-			APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
+			APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr)
 			NEW_LINE_CHUNK(*p)
 			p++;
-			p = KviControlCodes::getColorBytesW(p,&(line_ptr->pChunks[iCurChunk].colors.fore),&(line_ptr->pChunks[iCurChunk].colors.back));
-			data_ptr=p;
+			p = KviControlCodes::getColorBytesW(p, &(line_ptr->pChunks[iCurChunk].colors.fore), &(line_ptr->pChunks[iCurChunk].colors.back));
+			data_ptr = p;
 			break;
 		case KviControlCodes::Icon:
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-found_icon_escape:
+		found_icon_escape:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 			p++;
 			if(KVI_OPTION_BOOL(KviOption_boolDrawEmoticons))
@@ -668,35 +693,36 @@ found_icon_escape:
 					// Icon control word... need a new attribute struct
 					const kvi_wchar_t * beginPtr = p - 1;
 					const kvi_wchar_t * icon_name = p;
-					while(*p > 32)p++;
+					while(*p > 32)
+						p++;
 					int datalen = p - icon_name;
 					kvi_wchar_t save = *p;
 					// throw away constness!
 					*((kvi_wchar_t *)p) = 0;
 					// FIXME: this has to be changed! : lookupTextIcon must use wide characters!
 					QString tmpQ;
-					tmpQ.setUtf16(icon_name,datalen);
+					tmpQ.setUtf16(icon_name, datalen);
 					KviTextIcon * icon = g_pTextIconManager->lookupTextIcon(tmpQ);
 					// throw away constness!
 					*((kvi_wchar_t *)p) = save;
 					//if(*p == KVI_TEXT_ICON)p++; // ending delimiter
 					if(icon)
 					{
-						APPEND_LAST_TEXT_BLOCK(data_ptr,beginPtr - data_ptr)
+						APPEND_LAST_TEXT_BLOCK(data_ptr, beginPtr - data_ptr)
 						NEW_LINE_CHUNK(KviControlCodes::Icon)
 						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((datalen + 1) * sizeof(kvi_wchar_t));
-						KviMemory::copy((void *)(line_ptr->pChunks[iCurChunk].szPayload),icon_name,datalen * sizeof(kvi_wchar_t));
+						KviMemory::copy((void *)(line_ptr->pChunks[iCurChunk].szPayload), icon_name, datalen * sizeof(kvi_wchar_t));
 						line_ptr->pChunks[iCurChunk].szPayload[datalen] = 0;
-						line_ptr->pChunks[iCurChunk].szSmileId=line_ptr->pChunks[iCurChunk].szPayload;
+						line_ptr->pChunks[iCurChunk].szSmileId = line_ptr->pChunks[iCurChunk].szPayload;
 
-						APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(icon_name,datalen)
+						APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(icon_name, datalen)
 
 						if(icon->animatedPixmap())
 						{
 							//FIXME: that's ugly
-							disconnect(icon->animatedPixmap(),SIGNAL(frameChanged()),this,SLOT(animatedIconChange()));
-							connect(icon->animatedPixmap(),SIGNAL(frameChanged()),this,SLOT(animatedIconChange()));
-							m_hAnimatedSmiles.insert(line_ptr,icon->animatedPixmap());
+							disconnect(icon->animatedPixmap(), SIGNAL(frameChanged()), this, SLOT(animatedIconChange()));
+							connect(icon->animatedPixmap(), SIGNAL(frameChanged()), this, SLOT(animatedIconChange()));
+							m_hAnimatedSmiles.insert(line_ptr, icon->animatedPixmap());
 						}
 						data_ptr = p;
 						NEW_LINE_CHUNK(KviControlCodes::UnIcon)
@@ -709,11 +735,11 @@ found_icon_escape:
 		case KviControlCodes::Reverse:
 		case KviControlCodes::Reset:
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-found_mirc_escape:
+		found_mirc_escape:
 #endif //COMPILE_USE_DYNAMIC_LABELS
-			APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
+			APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr)
 			NEW_LINE_CHUNK(*p)
-			data_ptr=++p;
+			data_ptr = ++p;
 			break;
 		default:
 			p++;
@@ -726,8 +752,8 @@ found_mirc_escape:
  */
 
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-	goto *loop_begin;
-#else // !COMPILE_USE_DYNAMIC_LABELS
+	goto * loop_begin;
+#else  // !COMPILE_USE_DYNAMIC_LABELS
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
@@ -756,7 +782,7 @@ check_http_url:
 
 			static kvi_wchar_t aHttpUrl[] = { 'h', 't', 't', 'p', ':', '/', '/' };
 
-			if(url_compare_helper(p,aHttpUrl,7))
+			if(url_compare_helper(p, aHttpUrl, 7))
 			{
 				partLen = 7;
 				/*
@@ -767,7 +793,7 @@ check_http_url:
 
 			static kvi_wchar_t aHttpsUrl[] = { 'h', 't', 't', 'p', 's', ':', '/', '/' };
 
-			if(url_compare_helper(p,aHttpsUrl,8))
+			if(url_compare_helper(p, aHttpsUrl, 8))
 			{
 				partLen = 8;
 				goto got_url;
@@ -776,11 +802,10 @@ check_http_url:
 		}
 	}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-	goto *loop_begin;
-#else // !COMPILE_USE_DYNAMIC_LABELS
+	goto * loop_begin;
+#else  // !COMPILE_USE_DYNAMIC_LABELS
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
-
 
 check_file_or_ftp_url:
 	p++;
@@ -792,19 +817,20 @@ check_file_or_ftp_url:
 
 			static kvi_wchar_t aFileUrl[] = { 'f', 'i', 'l', 'e', ':', '/', '/' };
 
-			if(url_compare_helper(p,aFileUrl,7))
+			if(url_compare_helper(p, aFileUrl, 7))
 			{
 				partLen = 7;
 				goto got_url;
 			}
 			p++;
-		} else if((*p == 't') || (*p == 'T'))
+		}
+		else if((*p == 't') || (*p == 'T'))
 		{
 			p--;
 
 			static kvi_wchar_t aFtp1Url[] = { 'f', 't', 'p', ':', '/', '/' };
 
-			if(url_compare_helper(p,aFtp1Url,6))
+			if(url_compare_helper(p, aFtp1Url, 6))
 			{
 				partLen = 6;
 				goto got_url;
@@ -812,7 +838,7 @@ check_file_or_ftp_url:
 
 			static kvi_wchar_t aFtp2Url[] = { 'f', 't', 'p', '.' };
 
-			if(url_compare_helper(p,aFtp2Url,4))
+			if(url_compare_helper(p, aFtp2Url, 4))
 			{
 				partLen = 4;
 				goto got_url;
@@ -821,8 +847,8 @@ check_file_or_ftp_url:
 		}
 	}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-	goto *loop_begin;
-#else // !COMPILE_USE_DYNAMIC_LABELS
+	goto * loop_begin;
+#else  // !COMPILE_USE_DYNAMIC_LABELS
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
@@ -836,7 +862,7 @@ check_e2k_url:
 
 			static kvi_wchar_t aEd2kUrl[] = { 'e', 'd', '2', 'k', ':', '/', '/' };
 
-			if(url_compare_helper(p,aEd2kUrl,7))
+			if(url_compare_helper(p, aEd2kUrl, 7))
 			{
 				partLen = 7;
 				goto got_url;
@@ -845,8 +871,8 @@ check_e2k_url:
 		}
 	}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-	goto *loop_begin;
-#else // !COMPILE_USE_DYNAMIC_LABELS
+	goto * loop_begin;
+#else  // !COMPILE_USE_DYNAMIC_LABELS
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
@@ -860,7 +886,7 @@ check_www_url:
 
 			static kvi_wchar_t aWwwUrl[] = { 'w', 'w', 'w', '.' };
 
-			if(url_compare_helper(p,aWwwUrl,4))
+			if(url_compare_helper(p, aWwwUrl, 4))
 			{
 				partLen = 4;
 				goto got_url;
@@ -869,8 +895,8 @@ check_www_url:
 		}
 	}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-	goto *loop_begin;
-#else // !COMPILE_USE_DYNAMIC_LABELS
+	goto * loop_begin;
+#else  // !COMPILE_USE_DYNAMIC_LABELS
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
@@ -884,7 +910,7 @@ check_irc_url:
 
 			static kvi_wchar_t aIrcUrl[] = { 'i', 'r', 'c', ':', '/', '/' };
 
-			if(url_compare_helper(p,aIrcUrl,6))
+			if(url_compare_helper(p, aIrcUrl, 6))
 			{
 				partLen = 6;
 				goto got_url;
@@ -892,7 +918,7 @@ check_irc_url:
 
 			static kvi_wchar_t aIrc6Url[] = { 'i', 'r', 'c', '6', ':', '/', '/' };
 
-			if(url_compare_helper(p,aIrc6Url,7))
+			if(url_compare_helper(p, aIrc6Url, 7))
 			{
 				partLen = 7;
 				goto got_url;
@@ -900,7 +926,7 @@ check_irc_url:
 
 			static kvi_wchar_t aIrcsUrl[] = { 'i', 'r', 'c', 's', ':', '/', '/' };
 
-			if(url_compare_helper(p,aIrcsUrl,7))
+			if(url_compare_helper(p, aIrcsUrl, 7))
 			{
 				partLen = 7;
 				goto got_url;
@@ -908,7 +934,7 @@ check_irc_url:
 
 			static kvi_wchar_t aIrcs6Url[] = { 'i', 'r', 'c', 's', '6', ':', '/', '/' };
 
-			if(url_compare_helper(p,aIrcs6Url,8))
+			if(url_compare_helper(p, aIrcs6Url, 8))
 			{
 				partLen = 8;
 				goto got_url;
@@ -918,8 +944,8 @@ check_irc_url:
 		}
 	}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-	goto *loop_begin;
-#else // !COMPILE_USE_DYNAMIC_LABELS
+	goto * loop_begin;
+#else  // !COMPILE_USE_DYNAMIC_LABELS
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
@@ -934,14 +960,13 @@ check_mailto_or_magnet_url:
 			static kvi_wchar_t aMailtoUrl[] = { 'm', 'a', 'i', 'l', 't', 'o', ':' };
 			static kvi_wchar_t aMagnetUrl[] = { 'm', 'a', 'g', 'n', 'e', 't', ':' };
 
-			if(url_compare_helper(p,aMailtoUrl,7))
+			if(url_compare_helper(p, aMailtoUrl, 7))
 			{
 				partLen = 7;
 				goto got_url;
 			}
 
-
-			if(url_compare_helper(p,aMagnetUrl,7))
+			if(url_compare_helper(p, aMagnetUrl, 7))
 			{
 				partLen = 7;
 				goto got_url;
@@ -950,8 +975,8 @@ check_mailto_or_magnet_url:
 		}
 	}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-	goto *loop_begin;
-#else // !COMPILE_USE_DYNAMIC_LABELS
+	goto * loop_begin;
+#else  // !COMPILE_USE_DYNAMIC_LABELS
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
@@ -965,7 +990,7 @@ check_spotify_url:
 
 			static kvi_wchar_t aSpotifyUrl[] = { 's', 'p', 'o', 't', 'i', 'f', 'y', ':' };
 
-			if(url_compare_helper(p,aSpotifyUrl,8))
+			if(url_compare_helper(p, aSpotifyUrl, 8))
 			{
 				partLen = 8;
 				goto got_url;
@@ -974,11 +999,10 @@ check_spotify_url:
 		}
 	}
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-	goto *loop_begin;
-#else // !COMPILE_USE_DYNAMIC_LABELS
+	goto * loop_begin;
+#else  // !COMPILE_USE_DYNAMIC_LABELS
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
-
 
 got_url:
 	//URL highlighting block
@@ -993,14 +1017,16 @@ got_url:
 	if(*(p + partLen) < 47)
 	{
 		//invalid: append all the text up to the end of the false URL tag
-		p+=partLen;
-		APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
-	} else {
+		p += partLen;
+		APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr)
+	}
+	else
+	{
 		//valid: append all the text before the start of the URL tag
-		APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
+		APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr)
 		//create a new chunk
 		NEW_LINE_CHUNK(KviControlCodes::Escape)
-// FIXME: #warning "Option for the URL escape...double click and right button!!!"
+		// FIXME: #warning "Option for the URL escape...double click and right button!!!"
 
 		//	int urlLen = KVI_OPTION_STRING(KviOption_stringUrlLinkCommand).len() + 1;
 
@@ -1011,33 +1037,32 @@ got_url:
 		//set the color for this chunk
 		line_ptr->pChunks[iCurChunk].colors.fore = KVI_OPTION_MSGTYPE(KVI_OUT_URL).fore();
 		//now run until the presumed end of the url
-		data_ptr=p;
-		p+=partLen;
+		data_ptr = p;
+		p += partLen;
 
 		p = skip_to_end_of_url(p);
 
 		if(m_pKviWindow)
 		{
 			QString tmp;
-			tmp.setUtf16(data_ptr,p-data_ptr);
-			KVS_TRIGGER_EVENT_1(KviEvent_OnURL,m_pKviWindow,tmp);
+			tmp.setUtf16(data_ptr, p - data_ptr);
+			KVS_TRIGGER_EVENT_1(KviEvent_OnURL, m_pKviWindow, tmp);
 		}
 
 		//add all the text till the end of the URL, then create a new "clean" chunk for the next cycle loop
-		APPEND_LAST_TEXT_BLOCK(data_ptr,p - data_ptr)
+		APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr)
 		NEW_LINE_CHUNK(KviControlCodes::UnEscape)
-
 	}
 	//update the value of the main counter, then restart the loop
-	data_ptr=p;
+	data_ptr = p;
 
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-	goto *loop_begin;
-#else // !COMPILE_USE_DYNAMIC_LABELS
+	goto * loop_begin;
+#else  // !COMPILE_USE_DYNAMIC_LABELS
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
-	//FIXME #warning: Add more emoticons, and more intelligent code to detect when they're not really emoticons
+//FIXME #warning: Add more emoticons, and more intelligent code to detect when they're not really emoticons
 
 check_emoticon_char:
 	// What about this ?
@@ -1046,140 +1071,141 @@ check_emoticon_char:
 	p++;
 	if(KVI_OPTION_BOOL(KviOption_boolDrawEmoticons))
 		switch(iMsgType)
-	{
-		case KVI_OUT_CHANPRIVMSG:
-		case KVI_OUT_ACTION:
-		case KVI_OUT_OWNPRIVMSG:
-		case KVI_OUT_QUERYPRIVMSG:
-		case KVI_OUT_QUERYPRIVMSGCRYPTED:
-		case KVI_OUT_QUERYNOTICE:
-		case KVI_OUT_QUERYNOTICECRYPTED:
-		case KVI_OUT_CHANPRIVMSGCRYPTED:
-		case KVI_OUT_CHANNELNOTICE:
-		case KVI_OUT_CHANNELNOTICECRYPTED:
-		case KVI_OUT_OWNPRIVMSGCRYPTED:
-		case KVI_OUT_HIGHLIGHT:
-		case KVI_OUT_DCCCHATMSG:
-	{
-		// Pragma: 31.05.2002 : I had to kill the 8 prefix
-		// It happens really too often to have an 8 followed by a parenthesis
-		// that is not an emoticon
-
-		// *begin can be one of ':', ';', '='
-		if(*p == '-')p++; // FIXME: we could handle also 'o' as a nose ??? (extreme: also '+' ?)
-		// FIXME: use a "jump-like-check-table" here ? .... it would be surely faster
-		// FIXME: handle also '[',']','\\','p','@','#','<','>','|' ???
-		// alt + 39 is the common key for tear in emoticon not alt+ 176 also fix issue #1614
-		switch(*p)
 		{
-			case ')':
-			case '(':
-			case '/':
-			case 'D':
-			case 'P':
-			case 'S':
-			case 'O':
-			case 'p':
-			case 's':
-			case 'o':
-			case '*':
-			case '|':
-			case 'B':
-			case 39:  //  -> alt 39 : teardrop
+			case KVI_OUT_CHANPRIVMSG:
+			case KVI_OUT_ACTION:
+			case KVI_OUT_OWNPRIVMSG:
+			case KVI_OUT_QUERYPRIVMSG:
+			case KVI_OUT_QUERYPRIVMSGCRYPTED:
+			case KVI_OUT_QUERYNOTICE:
+			case KVI_OUT_QUERYNOTICECRYPTED:
+			case KVI_OUT_CHANPRIVMSGCRYPTED:
+			case KVI_OUT_CHANNELNOTICE:
+			case KVI_OUT_CHANNELNOTICECRYPTED:
+			case KVI_OUT_OWNPRIVMSGCRYPTED:
+			case KVI_OUT_HIGHLIGHT:
+			case KVI_OUT_DCCCHATMSG:
 			{
-				const kvi_wchar_t * item = p;
-				const kvi_wchar_t * item2 = 0;
-				p++;
-				while(*p == *item)p++;
-				int count = (p - item) - 1;
-				if(*item == 39)
+				// Pragma: 31.05.2002 : I had to kill the 8 prefix
+				// It happens really too often to have an 8 followed by a parenthesis
+				// that is not an emoticon
+
+				// *begin can be one of ':', ';', '='
+				if(*p == '-')
+					p++; // FIXME: we could handle also 'o' as a nose ??? (extreme: also '+' ?)
+				// FIXME: use a "jump-like-check-table" here ? .... it would be surely faster
+				// FIXME: handle also '[',']','\\','p','@','#','<','>','|' ???
+				// alt + 39 is the common key for tear in emoticon not alt+ 176 also fix issue #1614
+				switch(*p)
 				{
-					if(*p == ')')
+					case ')':
+					case '(':
+					case '/':
+					case 'D':
+					case 'P':
+					case 'S':
+					case 'O':
+					case 'p':
+					case 's':
+					case 'o':
+					case '*':
+					case '|':
+					case 'B':
+					case 39: //  -> alt 39 : teardrop
 					{
-						item2 = p;
+						const kvi_wchar_t * item = p;
+						const kvi_wchar_t * item2 = 0;
 						p++;
-					}
-				}
-				if(!*p || (*p == ' '))
-				{
-					// OK! this is an emoticon (sequence) !
-					// We lookup simplified versions of the emoticons...
-
-					// FIXME: this should become UNICODE!!!
-					QString lookupstring;
-					kvi_wchar_t ng[3];
-					ng[0] = *begin;
-					ng[1] = *item;
-					if(item2)ng[2] = *item2;
-					lookupstring.setUtf16(ng,item2 ? 3 : 2);
-
-					KviTextIcon * icon  = g_pTextIconManager->lookupTextIcon(lookupstring);
-					// do we have that emoticon-icon association ?
-					if(icon)
-					{
-
-						if(icon->animatedPixmap())
+						while(*p == *item)
+							p++;
+						int count = (p - item) - 1;
+						if(*item == 39)
 						{
-							//FIXME: that's ugly
-							disconnect(icon->animatedPixmap(),SIGNAL(frameChanged()),this,SLOT(animatedIconChange()));
-							connect(icon->animatedPixmap(),SIGNAL(frameChanged()),this,SLOT(animatedIconChange()));
-							m_hAnimatedSmiles.insert(line_ptr,icon->animatedPixmap());
+							if(*p == ')')
+							{
+								item2 = p;
+								p++;
+							}
 						}
-
-						// we got an icon for this emoticon
-						// the tooltip will carry the original emoticon source text
-						APPEND_LAST_TEXT_BLOCK(data_ptr,begin - data_ptr)
-						NEW_LINE_CHUNK(KviControlCodes::Icon)
-
-						int emolen = p - begin;
-						int reallen=item2 ? 3 : 2;
-
-						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((emolen + 1) * sizeof(kvi_wchar_t));
-						KviMemory::copy(line_ptr->pChunks[iCurChunk].szPayload,begin,emolen * sizeof(kvi_wchar_t));
-						line_ptr->pChunks[iCurChunk].szPayload[emolen] = 0;
-
-						line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)KviMemory::allocate((reallen + 1) * sizeof(kvi_wchar_t));
-						KviMemory::copy(line_ptr->pChunks[iCurChunk].szSmileId,ng,reallen * sizeof(kvi_wchar_t));
-						line_ptr->pChunks[iCurChunk].szSmileId[reallen] = 0;
-
-						APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(begin,emolen)
-						data_ptr = p;
-						// let's also handle thingies like :DDDD
-						item++;
-						while(count > 0)
+						if(!*p || (*p == ' '))
 						{
-							NEW_LINE_CHUNK(KviControlCodes::Icon)
-							line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((emolen + 1) * sizeof(kvi_wchar_t));
-							KviMemory::copy(line_ptr->pChunks[iCurChunk].szPayload,begin,emolen * sizeof(kvi_wchar_t));
-							line_ptr->pChunks[iCurChunk].szPayload[emolen] = 0;
+							// OK! this is an emoticon (sequence) !
+							// We lookup simplified versions of the emoticons...
 
-							line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)KviMemory::allocate((reallen + 1) * sizeof(kvi_wchar_t));
-							KviMemory::copy(line_ptr->pChunks[iCurChunk].szSmileId,ng,reallen * sizeof(kvi_wchar_t));
-							line_ptr->pChunks[iCurChunk].szSmileId[reallen] = 0;
+							// FIXME: this should become UNICODE!!!
+							QString lookupstring;
+							kvi_wchar_t ng[3];
+							ng[0] = *begin;
+							ng[1] = *item;
+							if(item2)
+								ng[2] = *item2;
+							lookupstring.setUtf16(ng, item2 ? 3 : 2);
 
-							APPEND_ZERO_LENGTH_BLOCK(data_ptr)
-							count--;
-						}
-						NEW_LINE_CHUNK(KviControlCodes::UnIcon)
-					} // we don't even need to skip back... the text eventually parsed is ok to be in a single block for sure
-				} // we don't even need to skip back... the text eventually parsed is ok to be in a single block for sure
-			} // we don't even need to skip back... the text eventually parsed is ok to be in a single block for sure
+							KviTextIcon * icon = g_pTextIconManager->lookupTextIcon(lookupstring);
+							// do we have that emoticon-icon association ?
+							if(icon)
+							{
+
+								if(icon->animatedPixmap())
+								{
+									//FIXME: that's ugly
+									disconnect(icon->animatedPixmap(), SIGNAL(frameChanged()), this, SLOT(animatedIconChange()));
+									connect(icon->animatedPixmap(), SIGNAL(frameChanged()), this, SLOT(animatedIconChange()));
+									m_hAnimatedSmiles.insert(line_ptr, icon->animatedPixmap());
+								}
+
+								// we got an icon for this emoticon
+								// the tooltip will carry the original emoticon source text
+								APPEND_LAST_TEXT_BLOCK(data_ptr, begin - data_ptr)
+								NEW_LINE_CHUNK(KviControlCodes::Icon)
+
+								int emolen = p - begin;
+								int reallen = item2 ? 3 : 2;
+
+								line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((emolen + 1) * sizeof(kvi_wchar_t));
+								KviMemory::copy(line_ptr->pChunks[iCurChunk].szPayload, begin, emolen * sizeof(kvi_wchar_t));
+								line_ptr->pChunks[iCurChunk].szPayload[emolen] = 0;
+
+								line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)KviMemory::allocate((reallen + 1) * sizeof(kvi_wchar_t));
+								KviMemory::copy(line_ptr->pChunks[iCurChunk].szSmileId, ng, reallen * sizeof(kvi_wchar_t));
+								line_ptr->pChunks[iCurChunk].szSmileId[reallen] = 0;
+
+								APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(begin, emolen)
+								data_ptr = p;
+								// let's also handle thingies like :DDDD
+								item++;
+								while(count > 0)
+								{
+									NEW_LINE_CHUNK(KviControlCodes::Icon)
+									line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)KviMemory::allocate((emolen + 1) * sizeof(kvi_wchar_t));
+									KviMemory::copy(line_ptr->pChunks[iCurChunk].szPayload, begin, emolen * sizeof(kvi_wchar_t));
+									line_ptr->pChunks[iCurChunk].szPayload[emolen] = 0;
+
+									line_ptr->pChunks[iCurChunk].szSmileId = (kvi_wchar_t *)KviMemory::allocate((reallen + 1) * sizeof(kvi_wchar_t));
+									KviMemory::copy(line_ptr->pChunks[iCurChunk].szSmileId, ng, reallen * sizeof(kvi_wchar_t));
+									line_ptr->pChunks[iCurChunk].szSmileId[reallen] = 0;
+
+									APPEND_ZERO_LENGTH_BLOCK(data_ptr)
+									count--;
+								}
+								NEW_LINE_CHUNK(KviControlCodes::UnIcon)
+							} // we don't even need to skip back... the text eventually parsed is ok to be in a single block for sure
+						}     // we don't even need to skip back... the text eventually parsed is ok to be in a single block for sure
+					}         // we don't even need to skip back... the text eventually parsed is ok to be in a single block for sure
+					break;
+				} // switch(*p)
+			}
 			break;
-		} // switch(*p)
-	} break;
-
-	}
-
+		}
 
 #ifdef COMPILE_USE_DYNAMIC_LABELS
-	goto *loop_begin;
-#else // !COMPILE_USE_DYNAMIC_LABELS
+	goto * loop_begin;
+#else  // !COMPILE_USE_DYNAMIC_LABELS
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
 	// never here
 	return p;
-
 }
 
 void KviIrcView::reapplyMessageColors()
@@ -1197,7 +1223,7 @@ void KviIrcView::reapplyMessageColors()
 			unsigned char oldBack = pLine->pChunks[0].colors.back;
 			unsigned char oldFore = pLine->pChunks[0].colors.fore;
 
-			for(unsigned int u=0;u<pLine->uChunkCount;u++)
+			for(unsigned int u = 0; u < pLine->uChunkCount; u++)
 			{
 				if((pLine->pChunks[u].colors.back == oldBack) && (pLine->pChunks[u].colors.fore == oldFore))
 				{
@@ -1211,7 +1237,7 @@ void KviIrcView::reapplyMessageColors()
 	}
 }
 
-void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags,const QDateTime& datetime)
+void KviIrcView::appendText(int iMsgType, const kvi_wchar_t * data_ptr, int iFlags, const QDateTime & datetime)
 {
 	//appends a text string to the buffer list
 	//splits the lines
@@ -1223,11 +1249,12 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags,
 		// Looks like the user wants to keep the control codes in the log file: we just dump everything inside (including newlines...)
 		if(m_pLogFile && KVI_OPTION_MSGTYPE(iMsgType).logEnabled())
 		{
-			add2Log(QString::fromUtf16(data_ptr),iMsgType,true);
-		} else if(m_pMasterView)
+			add2Log(QString::fromUtf16(data_ptr), iMsgType, true);
+		}
+		else if(m_pMasterView)
 		{
 			if(m_pMasterView->m_pLogFile && KVI_OPTION_MSGTYPE(iMsgType).logEnabled())
-				m_pMasterView->add2Log(QString::fromUtf16(data_ptr),iMsgType,true);
+				m_pMasterView->add2Log(QString::fromUtf16(data_ptr), iMsgType, true);
 		}
 	}
 
@@ -1235,16 +1262,16 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags,
 	{
 		// have more data to process
 
-		KviIrcViewLine *line_ptr=new KviIrcViewLine;  //create a line struct
+		KviIrcViewLine * line_ptr = new KviIrcViewLine; //create a line struct
 
 		line_ptr->iMsgType = iMsgType;
 		line_ptr->iMaxLineWidth = -1;
 		line_ptr->iBlockCount = 0;
 		line_ptr->uLineWraps = 0;
 
-		data_ptr = getTextLine(iMsgType,data_ptr,line_ptr,!(iFlags & NoTimestamp),datetime);
+		data_ptr = getTextLine(iMsgType, data_ptr, line_ptr, !(iFlags & NoTimestamp), datetime);
 
-		appendLine(line_ptr,!(iFlags & NoRepaint));
+		appendLine(line_ptr, !(iFlags & NoRepaint));
 
 		if(iFlags & SetLineMark)
 		{
@@ -1259,18 +1286,7 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags,
 		{
 			if(!m_bHaveUnreadedHighlightedMessages && iMsgType == KVI_OUT_HIGHLIGHT)
 				m_bHaveUnreadedHighlightedMessages = true;
-			if(!m_bHaveUnreadedMessages && (
-				iMsgType == KVI_OUT_CHANPRIVMSG ||
-				iMsgType == KVI_OUT_CHANPRIVMSGCRYPTED ||
-				iMsgType == KVI_OUT_CHANNELNOTICE ||
-				iMsgType == KVI_OUT_CHANNELNOTICECRYPTED ||
-				iMsgType == KVI_OUT_ACTION ||
-				iMsgType == KVI_OUT_QUERYPRIVMSG ||
-				iMsgType == KVI_OUT_QUERYPRIVMSGCRYPTED ||
-				iMsgType == KVI_OUT_DCCCHATMSG ||
-				iMsgType == KVI_OUT_DCCCHATMSGCRYPTED ||
-				iMsgType == KVI_OUT_HIGHLIGHT
-			))
+			if(!m_bHaveUnreadedMessages && (iMsgType == KVI_OUT_CHANPRIVMSG || iMsgType == KVI_OUT_CHANPRIVMSGCRYPTED || iMsgType == KVI_OUT_CHANNELNOTICE || iMsgType == KVI_OUT_CHANNELNOTICECRYPTED || iMsgType == KVI_OUT_ACTION || iMsgType == KVI_OUT_QUERYPRIVMSG || iMsgType == KVI_OUT_QUERYPRIVMSGCRYPTED || iMsgType == KVI_OUT_DCCCHATMSG || iMsgType == KVI_OUT_DCCCHATMSGCRYPTED || iMsgType == KVI_OUT_HIGHLIGHT))
 				m_bHaveUnreadedMessages = true;
 		}
 	}

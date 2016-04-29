@@ -63,7 +63,7 @@ class KviUserListView;
 #define KVI_INPUT_DEF_FORE 101
 
 #ifndef ACCEL_KEY
-	#define ACCEL_KEY(k) "\t" + QKeySequence(Qt::ControlModifier | Qt::Key_ ## k ).toString()
+#define ACCEL_KEY(k) "\t" + QKeySequence(Qt::ControlModifier | Qt::Key_##k).toString()
 #endif
 
 class KviInputEditorSpellCheckerBlock
@@ -88,7 +88,7 @@ class KVIRC_API KviInputEditor : public QWidget
 	Q_PROPERTY(int TransparencyCapable READ heightHint)
 	Q_OBJECT
 	friend class KviTextIconWindow; // it uses insetIconCode(const QString &)
-	friend class KviTopicWidget; // it uses home()
+	friend class KviTopicWidget;    // it uses home()
 public:
 	/**
 	* \brief Constructs the input editor object
@@ -103,54 +103,55 @@ public:
 	* \brief Destroys the Input editor object
 	*/
 	~KviInputEditor();
+
 protected:
-	static int                g_iInputFontCharWidth[256];
-	static QFontMetricsF    * g_pLastFontMetrics;
-	static int                g_iInputInstances;
-	static int                g_iCachedHeight;
-	QString                   m_szTextBuffer;        // original buffer
-	int                       m_iCursorPosition;
-	int                       m_iSelectionBegin;
-	int                       m_iSelectionEnd;
-	int                       m_iMaxBufferSize;
-	bool                      m_bSpSlowFlag; // <-- what is this ?
-	int                       m_iCursorWidth;
+	static int g_iInputFontCharWidth[256];
+	static QFontMetricsF * g_pLastFontMetrics;
+	static int g_iInputInstances;
+	static int g_iCachedHeight;
+	QString m_szTextBuffer; // original buffer
+	int m_iCursorPosition;
+	int m_iSelectionBegin;
+	int m_iSelectionEnd;
+	int m_iMaxBufferSize;
+	bool m_bSpSlowFlag; // <-- what is this ?
+	int m_iCursorWidth;
 
 	// members for supporting input methods
-	QString                   m_szIMText;
-	int                       m_iIMStart;
-	int                       m_iIMLength;
-	int                       m_iIMSelectionBegin;
-	int                       m_iIMSelectionLength;
-	bool                      m_bIMComposing;
+	QString m_szIMText;
+	int m_iIMStart;
+	int m_iIMLength;
+	int m_iIMSelectionBegin;
+	int m_iIMSelectionLength;
+	bool m_bIMComposing;
 
-	bool                      m_bCursorOn;
+	bool m_bCursorOn;
 
-	int                       m_iCursorTimer;
-	int                       m_iDragTimer;
+	int m_iCursorTimer;
+	int m_iDragTimer;
 
-	int                       m_iSelectionAnchorChar;
+	int m_iSelectionAnchorChar;
 
 	// History stuff
 	KviPointerList<QString> * m_pHistory;
-	int                       m_iCurHistoryIdx;
+	int m_iCurHistoryIdx;
 
-	KviCString                    m_szSaveTextBuffer;
+	KviCString m_szSaveTextBuffer;
 
 	// Nick completion
-	KviUserListView         * m_pUserListView;
-	QString                   m_szLastCompletedNick;
-	QString                   m_szLastCompletionBuffer;
-	int                       m_iLastCompletionCursorPosition;
-	bool                      m_bLastCompletionFinished;
+	KviUserListView * m_pUserListView;
+	QString m_szLastCompletedNick;
+	QString m_szLastCompletionBuffer;
+	int m_iLastCompletionCursorPosition;
+	bool m_bLastCompletionFinished;
 
-	bool                      m_bUpdatesEnabled;
-	KviCString                    m_szAltKeyCode;
-	KviWindow               * m_pKviWindow;
-	QWidget                 * m_pInputParent;
-	QMenu                   * m_pIconMenu;
-	QMenu                     m_SpellCheckerPopup;
-	bool                      m_bReadOnly;
+	bool m_bUpdatesEnabled;
+	KviCString m_szAltKeyCode;
+	KviWindow * m_pKviWindow;
+	QWidget * m_pInputParent;
+	QMenu * m_pIconMenu;
+	QMenu m_SpellCheckerPopup;
+	bool m_bReadOnly;
 
 	/**
 	* \class EditCommand
@@ -165,9 +166,10 @@ protected:
 		*/
 		enum Type
 		{
-			InsertText,   /**< Text insertion. Has text, position previous to the insert and length of the insert */
-			RemoveText    /**< Text removal, Has text, position previous to the removal and length of the removed data */
+			InsertText, /**< Text insertion. Has text, position previous to the insert and length of the insert */
+			RemoveText  /**< Text removal, Has text, position previous to the removal and length of the removed data */
 		};
+
 	private:
 		/**
 		* \var m_eType
@@ -186,6 +188,7 @@ protected:
 		* \brief The start position
 		*/
 		int m_iStartPosition;
+
 	public:
 		/**
 		* \brief Contructs the command object
@@ -195,7 +198,7 @@ protected:
 		* \return EditCommand
 		*/
 		EditCommand(Type eType, const QString & szText, int iStartPosition)
-		: m_eType(eType), m_szText(szText), m_iStartPosition(iStartPosition)
+		    : m_eType(eType), m_szText(szText), m_iStartPosition(iStartPosition)
 		{
 		}
 
@@ -204,7 +207,7 @@ protected:
 		* \param iStartPosition The position
 		* \return void
 		*/
-		void setStartPosition(int iStartPosition){ m_iStartPosition = iStartPosition; }
+		void setStartPosition(int iStartPosition) { m_iStartPosition = iStartPosition; }
 
 		/**
 		* \brief Returns the start position
@@ -216,7 +219,7 @@ protected:
 		* \brief Sets the text of the command
 		* \param szText The text to set
 		*/
-		void setText(const QString & szText){ m_szText = szText; }
+		void setText(const QString & szText) { m_szText = szText; }
 
 		/**
 		* \brief Returns the text of the command
@@ -229,7 +232,7 @@ protected:
 		* \param eType The type of the command
 		* \return void
 		*/
-		void setType(const Type & eType){ m_eType = eType; }
+		void setType(const Type & eType) { m_eType = eType; }
 
 		/**
 		* \brief Returns the type of the command
@@ -255,7 +258,6 @@ protected:
 	* command is at the end. Null when no redo is available.
 	*/
 	KviPointerList<EditCommand> * m_pRedoStack;
-
 
 	KviInputEditorPrivate * m_p;
 
@@ -302,7 +304,7 @@ public:
 	* \brief Applies the options and update
 	* \return void
 	*/
-	void applyOptions(bool bRefreshCachedMetrics=true);
+	void applyOptions(bool bRefreshCachedMetrics = true);
 
 	/**
 	* \brief Sets the maximum buffer size
@@ -515,7 +517,7 @@ public slots:
 	* \param iId The id of the icon
 	* \return void
 	*/
-    void iconPopupActivated(QAction *pAction);
+	void iconPopupActivated(QAction * pAction);
 
 	/**
 	* \brief Copies the text to the system clipboard
@@ -899,7 +901,7 @@ private slots:
 	/**
 	* Shows the contextual popup menu at the global position pos
 	*/
-	void showContextPopup(const QPoint &pos);
+	void showContextPopup(const QPoint & pos);
 
 	/**
 	* Shows the context popup menu at the current cursor position
@@ -917,8 +919,8 @@ private slots:
 	void spellCheckerPopupCorrectionActionTriggered();
 
 protected:
-	void insertIconCode(const QString &szCode);
-	void completionEscapeUnsafeToken(QString &szToken);
+	void insertIconCode(const QString & szCode);
+	void completionEscapeUnsafeToken(QString & szToken);
 	void installShortcuts();
 	virtual void drawContents(QPainter *);
 	//virtual void resizeEvent(QResizeEvent * e);
@@ -932,16 +934,16 @@ protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual void dragEnterEvent(QDragEnterEvent * e);
 	virtual void dropEvent(QDropEvent * e);
-	virtual void inputMethodEvent(QInputMethodEvent * e) ;
+	virtual void inputMethodEvent(QInputMethodEvent * e);
 	virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const;
 	virtual void paintEvent(QPaintEvent * e);
-	bool checkWordSpelling(const QString &szWord);
-	void splitTextIntoSpellCheckerBlocks(const QString &szText,KviPointerList<KviInputEditorSpellCheckerBlock> &lBuffer);
-	KviInputEditorSpellCheckerBlock * findSpellCheckerBlockAtCursor(KviPointerList<KviInputEditorSpellCheckerBlock> &lBlocks);
+	bool checkWordSpelling(const QString & szWord);
+	void splitTextIntoSpellCheckerBlocks(const QString & szText, KviPointerList<KviInputEditorSpellCheckerBlock> & lBuffer);
+	KviInputEditorSpellCheckerBlock * findSpellCheckerBlockAtCursor(KviPointerList<KviInputEditorSpellCheckerBlock> & lBlocks);
 	void fillSpellCheckerCorrectionsPopup();
-	
+
 	void rebuildTextBlocks();
-	
+
 signals:
 	/**
 	* \brief Called when the user press escape

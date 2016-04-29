@@ -38,7 +38,6 @@ class KviIrcConnection;
 class KviIrcContext;
 class KviConneciton;
 
-
 //
 // This is a single IRC message received from the server.
 // The message is strictly associated to the connection it came from.
@@ -51,13 +50,11 @@ class KviConneciton;
 class KVIRC_API KviIrcMessage
 {
 public:
-
-	KviIrcMessage(const char * message,KviIrcConnection * pConnection);
+	KviIrcMessage(const char * message, KviIrcConnection * pConnection);
 
 	~KviIrcMessage();
 
 public:
-
 	///
 	/// The message flags.
 	///
@@ -75,69 +72,82 @@ public:
 	};
 
 private:
-	const char * m_ptr;                // shallow! never null
-	KviCString m_szPrefix;           // the extracted prefix string
-	KviCString m_szMessageTags;      // the extracted message tags
-	KviCString m_szCommand;          // the extracted command (may be numeric)
-	KviPointerList<KviCString> * m_pParams;            // the list of parameters
+	const char * m_ptr;                          // shallow! never null
+	KviCString m_szPrefix;                       // the extracted prefix string
+	KviCString m_szMessageTags;                  // the extracted message tags
+	KviCString m_szCommand;                      // the extracted command (may be numeric)
+	KviPointerList<KviCString> * m_pParams;      // the list of parameters
 	QHash<QString, QString> m_ParsedMessageTags; // parsed messaged tags
-	KviConsoleWindow * m_pConsole;           // the console we're attacched to
-	KviIrcConnection * m_pConnection;        // the connection we're attacched to
-	int m_iNumericCommand;    // the numeric of the command (0 if non numeric)
-	int m_iFlags;             // yes.. flags :D
-	QDateTime m_time; // from server-time tag, if presented
+	KviConsoleWindow * m_pConsole;               // the console we're attacched to
+	KviIrcConnection * m_pConnection;            // the connection we're attacched to
+	int m_iNumericCommand;                       // the numeric of the command (0 if non numeric)
+	int m_iFlags;                                // yes.. flags :D
+	QDateTime m_time;                            // from server-time tag, if presented
 public:
-	KviConsoleWindow * console(){ return m_pConsole; };
-	KviIrcConnection * connection(){ return m_pConsole->connection(); };
+	KviConsoleWindow * console() { return m_pConsole; };
+	KviIrcConnection * connection() { return m_pConsole->connection(); };
 
-	bool isNumeric(){ return (m_iNumericCommand >= 0); };
-	const char * command(){ return m_szCommand.ptr(); };
-	KviCString * commandPtr(){ return &m_szCommand; };
-	int numeric(){ return m_iNumericCommand; };
+	bool isNumeric() { return (m_iNumericCommand >= 0); };
+	const char * command() { return m_szCommand.ptr(); };
+	KviCString * commandPtr() { return &m_szCommand; };
+	int numeric() { return m_iNumericCommand; };
 
-	KviCString * prefixPtr(){ return &m_szPrefix; };
-	const char * prefix(){ return m_szPrefix.ptr(); };
+	KviCString * prefixPtr() { return &m_szPrefix; };
+	const char * prefix() { return m_szPrefix.ptr(); };
 	const char * safePrefix();
-	bool hasPrefix(){ return m_szPrefix.hasData(); };
+	bool hasPrefix() { return m_szPrefix.hasData(); };
 
-	KviCString * messageTagsPtr(){ return &m_szMessageTags; };
-	const char * messageTags(){ return m_szMessageTags.ptr(); };
-	bool hasMessageTags(){ return m_szMessageTags.hasData(); };
+	KviCString * messageTagsPtr() { return &m_szMessageTags; };
+	const char * messageTags() { return m_szMessageTags.ptr(); };
+	bool hasMessageTags() { return m_szMessageTags.hasData(); };
 
-	QString * messageTagPtr(const QString& szTag);
-	bool hasMessageTag(const QString& szTag){ return m_ParsedMessageTags.contains(szTag); };
-	QHash<QString, QString>& messageTagsMap() { return m_ParsedMessageTags; };
+	QString * messageTagPtr(const QString & szTag);
+	bool hasMessageTag(const QString & szTag) { return m_ParsedMessageTags.contains(szTag); };
+	QHash<QString, QString> & messageTagsMap() { return m_ParsedMessageTags; };
 	KviKvsHash * messageTagsKvsHash();
 
 	QDateTime serverTime() { return m_time; }
 
-	bool isEmpty(){ return (m_szPrefix.isEmpty() && m_szCommand.isEmpty() && m_pParams->isEmpty()); };
+	bool isEmpty() { return (m_szPrefix.isEmpty() && m_szCommand.isEmpty() && m_pParams->isEmpty()); };
 
-	int paramCount(){ return m_pParams->count(); };
+	int paramCount() { return m_pParams->count(); };
 
-	const char * param(unsigned int idx){ return (idx < m_pParams->count()) ? m_pParams->at(idx)->ptr() : 0; };
+	const char * param(unsigned int idx) { return (idx < m_pParams->count()) ? m_pParams->at(idx)->ptr() : 0; };
 
-	const char * safeParam(unsigned int idx){ return (idx < m_pParams->count()) ? m_pParams->at(idx)->ptr() : KviCString::emptyString().ptr(); };
+	const char * safeParam(unsigned int idx) { return (idx < m_pParams->count()) ? m_pParams->at(idx)->ptr() : KviCString::emptyString().ptr(); };
 
-	KviCString * paramString(unsigned int idx){ return m_pParams->at(idx); };
+	KviCString * paramString(unsigned int idx) { return m_pParams->at(idx); };
 
-	const char * trailing(){ KviCString * tr = m_pParams->last(); return tr ? tr->ptr() : 0; };
-	KviCString * trailingString(){ return m_pParams->last(); };
-	KviCString & safeTrailingString(){ KviCString * tr = m_pParams->last(); return tr ? *tr : KviCString::emptyString(); };
-	const char * safeTrailing(){ KviCString * tr = m_pParams->last(); return tr ? tr->ptr() : KviCString::emptyString().ptr(); };
+	const char * trailing()
+	{
+		KviCString * tr = m_pParams->last();
+		return tr ? tr->ptr() : 0;
+	};
+	KviCString * trailingString() { return m_pParams->last(); };
+	KviCString & safeTrailingString()
+	{
+		KviCString * tr = m_pParams->last();
+		return tr ? *tr : KviCString::emptyString();
+	};
+	const char * safeTrailing()
+	{
+		KviCString * tr = m_pParams->last();
+		return tr ? tr->ptr() : KviCString::emptyString().ptr();
+	};
 
-	const char * allParams(){ return m_ptr; };
+	const char * allParams() { return m_ptr; };
 
-	KviCString * firstParam(){ return m_pParams->first(); };
-	KviCString * nextParam(){ return m_pParams->next(); };
+	KviCString * firstParam() { return m_pParams->first(); };
+	KviCString * nextParam() { return m_pParams->next(); };
 
-	void setHaltOutput(){ m_iFlags |= HaltOutput; };
-	bool haltOutput(){ return (m_iFlags & HaltOutput); };
-	void setUnrecognized(){ m_iFlags |= Unrecognized; };
-	bool unrecognized(){ return (m_iFlags & Unrecognized); };
+	void setHaltOutput() { m_iFlags |= HaltOutput; };
+	bool haltOutput() { return (m_iFlags & HaltOutput); };
+	void setUnrecognized() { m_iFlags |= Unrecognized; };
+	bool unrecognized() { return (m_iFlags & Unrecognized); };
 
-	void decodeAndSplitPrefix(QString &szNick,QString &szUser,QString &szHost);
-	void decodeAndSplitMask(char * mask,QString &szNick,QString &szUser,QString &szHost);
+	void decodeAndSplitPrefix(QString & szNick, QString & szUser, QString & szHost);
+	void decodeAndSplitMask(char * mask, QString & szNick, QString & szUser, QString & szHost);
+
 private:
 	void parseMessageTags();
 };

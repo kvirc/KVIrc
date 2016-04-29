@@ -32,12 +32,14 @@ class KviKvsTreeNodeDataList;
 class KVIRC_API KviKvsTreeNodeParameterReturn : public KviKvsTreeNodeInstruction
 {
 public:
-	KviKvsTreeNodeParameterReturn(const QChar * pLocation,KviKvsTreeNodeDataList * pDataList);
+	KviKvsTreeNodeParameterReturn(const QChar * pLocation, KviKvsTreeNodeDataList * pDataList);
 	~KviKvsTreeNodeParameterReturn();
+
 protected:
 	KviKvsTreeNodeDataList * m_pDataList;
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };

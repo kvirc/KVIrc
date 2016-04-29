@@ -29,8 +29,8 @@
 #include "KviLocale.h"
 #include "KviKvsRunTimeContext.h"
 
-KviKvsTreeNodeRebindingSwitch::KviKvsTreeNodeRebindingSwitch(const QChar * pLocation,KviKvsTreeNodeData * pTargetWindow,KviKvsTreeNodeCommand * pChildCommand)
-: KviKvsTreeNodeCommand(pLocation,pChildCommand->commandName())
+KviKvsTreeNodeRebindingSwitch::KviKvsTreeNodeRebindingSwitch(const QChar * pLocation, KviKvsTreeNodeData * pTargetWindow, KviKvsTreeNodeCommand * pChildCommand)
+    : KviKvsTreeNodeCommand(pLocation, pChildCommand->commandName())
 {
 	m_pTargetWindow = pTargetWindow;
 	m_pTargetWindow->setParent(this);
@@ -44,15 +44,14 @@ KviKvsTreeNodeRebindingSwitch::~KviKvsTreeNodeRebindingSwitch()
 	delete m_pChildCommand;
 }
 
-
-void KviKvsTreeNodeRebindingSwitch::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeRebindingSwitch::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Window Rebinding Switch";
 }
 
 void KviKvsTreeNodeRebindingSwitch::dump(const char * prefix)
 {
-	qDebug("%sRebindingSwitch",prefix);
+	qDebug("%sRebindingSwitch", prefix);
 	QString tmp = prefix;
 	tmp += "  ";
 	m_pTargetWindow->dump(tmp.toUtf8().data());
@@ -67,7 +66,8 @@ const QString & KviKvsTreeNodeRebindingSwitch::commandName()
 bool KviKvsTreeNodeRebindingSwitch::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant vWindow;
-	if(!m_pTargetWindow->evaluateReadOnly(c,&vWindow))return false;
+	if(!m_pTargetWindow->evaluateReadOnly(c, &vWindow))
+		return false;
 
 	KviWindow * pNewWindow;
 
@@ -75,7 +75,7 @@ bool KviKvsTreeNodeRebindingSwitch::execute(KviKvsRunTimeContext * c)
 	vWindow.asString(szWinId);
 	if(szWinId.isEmpty())
 	{
-		c->warning(this,__tr2qs_ctx("Empty window identifier specified in the standard rebinding switch: no rebinding performed","kvs"));
+		c->warning(this, __tr2qs_ctx("Empty window identifier specified in the standard rebinding switch: no rebinding performed", "kvs"));
 		pNewWindow = 0;
 	}
 
@@ -84,7 +84,7 @@ bool KviKvsTreeNodeRebindingSwitch::execute(KviKvsRunTimeContext * c)
 	if(pNewWindow)
 		c->setWindow(pNewWindow);
 	else
-		c->warning(this,__tr2qs_ctx("Invalid window specified in the standard rebinding switch: no rebinding performed","kvs"));
+		c->warning(this, __tr2qs_ctx("Invalid window specified in the standard rebinding switch: no rebinding performed", "kvs"));
 	bool bRet = m_pChildCommand->execute(c);
 	c->setWindow(pOldWindow);
 	return bRet;

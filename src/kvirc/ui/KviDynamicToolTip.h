@@ -34,13 +34,16 @@ class KviDynamicToolTip;
 class KVIRC_API KviDynamicToolTipHelper : public KviTalToolTip
 {
 	friend class KviDynamicToolTip;
+
 protected:
-	KviDynamicToolTipHelper(QWidget * parent,KviDynamicToolTip * parToolTip);
+	KviDynamicToolTipHelper(QWidget * parent, KviDynamicToolTip * parToolTip);
 	virtual ~KviDynamicToolTipHelper();
+
 protected:
 	KviDynamicToolTip * m_pParentToolTip;
+
 protected:
-	virtual void maybeTip(const QPoint &pnt);
+	virtual void maybeTip(const QPoint & pnt);
 };
 
 class KVIRC_API KviDynamicToolTip : public QObject
@@ -48,16 +51,19 @@ class KVIRC_API KviDynamicToolTip : public QObject
 	friend class KviDynamicToolTipHelper;
 	Q_OBJECT
 public:
-	KviDynamicToolTip(QWidget * parent,const char * name = 0);
+	KviDynamicToolTip(QWidget * parent, const char * name = 0);
 	virtual ~KviDynamicToolTip();
+
 protected:
 	KviDynamicToolTipHelper * m_pHelper;
+
 public:
-	void tip(const QRect &rct,const QString & text);
+	void tip(const QRect & rct, const QString & text);
+
 protected:
-	void maybeTip(const QPoint &pnt);
+	void maybeTip(const QPoint & pnt);
 signals:
-	void tipRequest(KviDynamicToolTip *tip,const QPoint &pnt);
+	void tipRequest(KviDynamicToolTip * tip, const QPoint & pnt);
 };
 
 #endif //!_KVI_DYNAMICTOOLTIP_H_

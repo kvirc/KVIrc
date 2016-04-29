@@ -23,7 +23,6 @@
 //
 //=============================================================================
 
-
 #include "KviModule.h"
 #include "KviLocale.h"
 #include "KviChannelWindow.h"
@@ -52,10 +51,12 @@ static bool tmphighlight_kvs_cmd_addnick(KviKvsModuleCommandCall * c)
 
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
+	KVSM_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
 	KVSM_PARAMETERS_END(c)
-	if( !c->window()->console() )return c->context()->errorNoIrcContext();
-	if( c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
+	if(!c->window()->console())
+		return c->context()->errorNoIrcContext();
+	if(c->window()->console()->isNotConnected())
+		return c->context()->errorNoIrcContext();
 
 	if(c->window()->type() != KviWindow::Channel)
 	{
@@ -90,10 +91,12 @@ static bool tmphighlight_kvs_cmd_removenick(KviKvsModuleCommandCall * c)
 {
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
+	KVSM_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
 	KVSM_PARAMETERS_END(c)
-	if( !c->window()->console() )return c->context()->errorNoIrcContext();
-	if( c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
+	if(!c->window()->console())
+		return c->context()->errorNoIrcContext();
+	if(c->window()->console()->isNotConnected())
+		return c->context()->errorNoIrcContext();
 
 	if(c->window()->type() != KviWindow::Channel)
 	{
@@ -131,12 +134,14 @@ static bool tmphighlight_kvs_cmd_addchannel(KviKvsModuleCommandCall * c)
 	QString szWnd;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWnd)
+	KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)
 	KVSM_PARAMETERS_END(c)
 	if(c->parameterList()->count() == 0)
 	{
 		pWnd = c->window();
-	} else {
+	}
+	else
+	{
 		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 		if(!pWnd)
 		{
@@ -145,8 +150,10 @@ static bool tmphighlight_kvs_cmd_addchannel(KviKvsModuleCommandCall * c)
 		}
 	}
 
-	if( !pWnd->console() )return c->context()->errorNoIrcContext();
-	if( pWnd->console()->isNotConnected() )return c->context()->errorNoIrcContext();
+	if(!pWnd->console())
+		return c->context()->errorNoIrcContext();
+	if(pWnd->console()->isNotConnected())
+		return c->context()->errorNoIrcContext();
 
 	if(pWnd->type() != KviWindow::Channel)
 	{
@@ -183,12 +190,14 @@ static bool tmphighlight_kvs_cmd_removechannel(KviKvsModuleCommandCall * c)
 	QString szWnd;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWnd)
+	KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)
 	KVSM_PARAMETERS_END(c)
 	if(c->parameterList()->count() == 0)
 	{
 		pWnd = c->window();
-	} else {
+	}
+	else
+	{
 		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 		if(!pWnd)
 		{
@@ -197,8 +206,10 @@ static bool tmphighlight_kvs_cmd_removechannel(KviKvsModuleCommandCall * c)
 		}
 	}
 
-	if( !pWnd->console() )return c->context()->errorNoIrcContext();
-	if( pWnd->console()->isNotConnected() )return c->context()->errorNoIrcContext();
+	if(!pWnd->console())
+		return c->context()->errorNoIrcContext();
+	if(pWnd->console()->isNotConnected())
+		return c->context()->errorNoIrcContext();
 
 	if(pWnd->type() != KviWindow::Channel)
 	{
@@ -233,10 +244,12 @@ static bool tmphighlight_kvs_fnc_isnickhighlighted(KviKvsModuleFunctionCall * c)
 {
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
+	KVSM_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
 	KVSM_PARAMETERS_END(c)
-	if( !c->window()->console() )return c->context()->errorNoIrcContext();
-	if( c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
+	if(!c->window()->console())
+		return c->context()->errorNoIrcContext();
+	if(c->window()->console()->isNotConnected())
+		return c->context()->errorNoIrcContext();
 
 	if(c->window()->type() != KviWindow::Channel)
 	{
@@ -271,12 +284,14 @@ static bool tmphighlight_kvs_fnc_ischannelhighlighted(KviKvsModuleFunctionCall *
 	QString szWnd;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWnd)
+	KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)
 	KVSM_PARAMETERS_END(c)
 	if(c->parameterList()->count() == 0)
 	{
 		pWnd = c->window();
-	} else {
+	}
+	else
+	{
 		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 		if(!pWnd)
 		{
@@ -285,8 +300,10 @@ static bool tmphighlight_kvs_fnc_ischannelhighlighted(KviKvsModuleFunctionCall *
 		}
 	}
 
-	if( !pWnd->console() )return c->context()->errorNoIrcContext();
-	if( pWnd->console()->isNotConnected() )return c->context()->errorNoIrcContext();
+	if(!pWnd->console())
+		return c->context()->errorNoIrcContext();
+	if(pWnd->console()->isNotConnected())
+		return c->context()->errorNoIrcContext();
 
 	if(pWnd->type() != KviWindow::Channel)
 	{
@@ -300,12 +317,12 @@ static bool tmphighlight_kvs_fnc_ischannelhighlighted(KviKvsModuleFunctionCall *
 
 static bool tmphighlight_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"addNick",tmphighlight_kvs_cmd_addnick);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"removeNick",tmphighlight_kvs_cmd_removenick);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"addChannel",tmphighlight_kvs_cmd_addchannel);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"removeChannel",tmphighlight_kvs_cmd_removechannel);
-	KVSM_REGISTER_FUNCTION(m,"isNickHighLighted",tmphighlight_kvs_fnc_isnickhighlighted);
-	KVSM_REGISTER_FUNCTION(m,"isChannelHighLighted",tmphighlight_kvs_fnc_ischannelhighlighted);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "addNick", tmphighlight_kvs_cmd_addnick);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "removeNick", tmphighlight_kvs_cmd_removenick);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "addChannel", tmphighlight_kvs_cmd_addchannel);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "removeChannel", tmphighlight_kvs_cmd_removechannel);
+	KVSM_REGISTER_FUNCTION(m, "isNickHighLighted", tmphighlight_kvs_fnc_isnickhighlighted);
+	KVSM_REGISTER_FUNCTION(m, "isChannelHighLighted", tmphighlight_kvs_fnc_ischannelhighlighted);
 	return true;
 }
 
@@ -320,14 +337,13 @@ static bool tmphighlight_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"TmpHighlight",                               // module name
-	"4.0.0",                                      // module version
-	"(C) 2002 Juanjo Alvarez (juanjux@yahoo.es)" \
-	"(C) 2009 Fabio Bas (ctrlaltca at libero dot it)", // author & (C)
-	"Temporary highlighting of channels and nicknames",
-	tmphighlight_module_init,
-	tmphighlight_module_can_unload,
-	0,
-	tmphighlight_module_cleanup,
-	0
-)
+    "TmpHighlight", // module name
+    "4.0.0",        // module version
+    "(C) 2002 Juanjo Alvarez (juanjux@yahoo.es)"
+    "(C) 2009 Fabio Bas (ctrlaltca at libero dot it)", // author & (C)
+    "Temporary highlighting of channels and nicknames",
+    tmphighlight_module_init,
+    tmphighlight_module_can_unload,
+    0,
+    tmphighlight_module_cleanup,
+    0)

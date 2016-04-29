@@ -27,13 +27,13 @@
 #include "KviTranslationEntry.h"
 
 KviTranslationEntry::KviTranslationEntry(char * pcKey, int iKeyLen, char * pcTr, int iTrLen)
-: m_szKey(pcKey,iKeyLen), m_szEncodedTranslation(pcTr,iTrLen)
+    : m_szKey(pcKey, iKeyLen), m_szEncodedTranslation(pcTr, iTrLen)
 {
 	m_pTranslation = NULL;
 }
 
 KviTranslationEntry::KviTranslationEntry(const char * pcKeyAndTr)
-: m_szKey(pcKeyAndTr), m_szEncodedTranslation(pcKeyAndTr)
+    : m_szKey(pcKeyAndTr), m_szEncodedTranslation(pcKeyAndTr)
 {
 	m_pTranslation = NULL;
 }

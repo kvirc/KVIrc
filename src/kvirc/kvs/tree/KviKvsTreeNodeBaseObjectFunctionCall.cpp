@@ -26,8 +26,8 @@
 #include "KviKvsObject.h"
 #include "KviKvsVariant.h"
 
-KviKvsTreeNodeBaseObjectFunctionCall::KviKvsTreeNodeBaseObjectFunctionCall(const QChar * pLocation,const QString &szBaseClass,const QString &szFncName,KviKvsTreeNodeDataList * pParams)
-: KviKvsTreeNodeObjectFunctionCall(pLocation,szFncName,pParams)
+KviKvsTreeNodeBaseObjectFunctionCall::KviKvsTreeNodeBaseObjectFunctionCall(const QChar * pLocation, const QString & szBaseClass, const QString & szFncName, KviKvsTreeNodeDataList * pParams)
+    : KviKvsTreeNodeObjectFunctionCall(pLocation, szFncName, pParams)
 {
 	m_szBaseClass = szBaseClass;
 }
@@ -36,24 +36,25 @@ KviKvsTreeNodeBaseObjectFunctionCall::~KviKvsTreeNodeBaseObjectFunctionCall()
 {
 }
 
-void KviKvsTreeNodeBaseObjectFunctionCall::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeBaseObjectFunctionCall::contextDescription(QString & szBuffer)
 {
-	szBuffer = QString("Base Object Function Call \"%1::%2\"").arg(m_szBaseClass,m_szFunctionName);
+	szBuffer = QString("Base Object Function Call \"%1::%2\"").arg(m_szBaseClass, m_szFunctionName);
 }
 
 void KviKvsTreeNodeBaseObjectFunctionCall::dump(const char * prefix)
 {
-	qDebug("%s BaseObjectFunctionCall(%s::%s)",prefix,m_szBaseClass.toUtf8().data(),m_szFunctionName.toUtf8().data());
+	qDebug("%s BaseObjectFunctionCall(%s::%s)", prefix, m_szBaseClass.toUtf8().data(), m_szFunctionName.toUtf8().data());
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pParams->dump(tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeBaseObjectFunctionCall::evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeBaseObjectFunctionCall::evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	KviKvsVariantList l;
-	if(!m_pParams->evaluate(c,&l))return false;
+	if(!m_pParams->evaluate(c, &l))
+		return false;
 	pBuffer->setNothing();
 	c->setDefaultReportLocation(this);
-	return o->callFunction(c->thisObject(),m_szFunctionName,m_szBaseClass,c,pBuffer,&l);
+	return o->callFunction(c->thisObject(), m_szFunctionName, m_szBaseClass, c, pBuffer, &l);
 }

@@ -35,12 +35,13 @@ class KVIRC_API KviKvsTreeNodeParameterCount : public KviKvsTreeNodeData
 public:
 	KviKvsTreeNodeParameterCount(const QChar * pLocation);
 	~KviKvsTreeNodeParameterCount();
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 
 	virtual bool canEvaluateToObjectReference();
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
 };
 
 #endif //!_KVI_KVS_TREENODE_PARAMETERCOUNT_H_

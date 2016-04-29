@@ -31,16 +31,15 @@
 #include "kvi_inttypes.h"
 
 #ifdef COMPILE_ZLIB_SUPPORT
-	#include <zlib.h>
+#include <zlib.h>
 #endif
 
 //
 // See KviPackageIOEngine.cpp for the description of the KVIrc package file
 //
 
-
 KviPackageReader::KviPackageReader()
-: KviPackageIOEngine()
+    : KviPackageIOEngine()
 {
 }
 
@@ -48,14 +47,14 @@ KviPackageReader::~KviPackageReader()
 {
 }
 
-bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
+bool KviPackageReader::readHeaderInternal(KviFile * pFile, const QString &)
 {
 	// read the PackageHeader
 
 	// Magic
 	char magic[4];
 
-	if(pFile->read(magic,4) != 4)
+	if(pFile->read(magic, 4) != 4)
 		return readError();
 
 	if((magic[0] != 'K') || (magic[1] != 'V') || (magic[2] != 'P') || (magic[3] != 'F'))
@@ -104,8 +103,9 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
 			case KVI_PACKAGE_INFOFIELD_TYPE_STRING:
 			{
 				QString szValue;
-				if(!pFile->load(szValue))return readError();
-				stringInfoFields()->replace(szKey,new QString(szValue));
+				if(!pFile->load(szValue))
+					return readError();
+				stringInfoFields()->replace(szKey, new QString(szValue));
 			}
 			break;
 			case KVI_PACKAGE_INFOFIELD_TYPE_BINARYBUFFER:
@@ -116,12 +116,12 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
 					delete pbValue;
 					return readError();
 				}
-				binaryInfoFields()->replace(szKey,pbValue);
+				binaryInfoFields()->replace(szKey, pbValue);
 			}
 			break;
 			default:
 				setLastError(__tr2qs("Invalid info field: the package is probably corrupt"));
-			break;
+				break;
 		}
 		uIdx++;
 	}
@@ -129,7 +129,7 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
 	return true;
 }
 
-bool KviPackageReader::readHeader(const QString &szLocalFileName)
+bool KviPackageReader::readHeader(const QString & szLocalFileName)
 {
 	KviFile f(szLocalFileName);
 	if(!f.open(QFile::ReadOnly))
@@ -138,13 +138,12 @@ bool KviPackageReader::readHeader(const QString &szLocalFileName)
 		return false;
 	}
 
-	return readHeaderInternal(&f,szLocalFileName);
+	return readHeaderInternal(&f, szLocalFileName);
 }
 
 #define BUFFER_SIZE 32768
 
-
-bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
+bool KviPackageReader::unpackFile(KviFile * pFile, const QString & szUnpackPath)
 {
 	// Flags
 	kvi_u32_t uFlags;
@@ -165,13 +164,13 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 		return readError();
 
 	QString szFileName = szUnpackPath;
-	KviQString::ensureLastCharIs(szFileName,QChar(KVI_PATH_SEPARATOR_CHAR));
+	KviQString::ensureLastCharIs(szFileName, QChar(KVI_PATH_SEPARATOR_CHAR));
 
 	szFileName += szPath;
 
 	// no attacks please :)
-	szFileName.replace(QString("..\\"),QString(""));
-	szFileName.replace(QString("../"),QString(""));
+	szFileName.replace(QString("..\\"), QString(""));
+	szFileName.replace(QString("../"), QString(""));
 
 	KviFileUtils::adjustFilePath(szFileName);
 
@@ -194,7 +193,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 	}
 
 	QString szProgressText = QString(__tr2qs("Unpacking file %1")).arg(szFileName);
-	if(!updateProgress(pFile->pos(),szProgressText))
+	if(!updateProgress(pFile->pos(), szProgressText))
 		return false; // aborted
 
 	// Size
@@ -202,18 +201,19 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 	if(!pFile->load(uSize))
 		return readError();
 
-	// FilePayload
+// FilePayload
 #ifdef COMPILE_ZLIB_SUPPORT
 	if(uFlags & KVI_PACKAGE_DATAFIELD_FLAG_FILE_DEFLATE)
 	{
-	//	qDebug ("loading compressed data");
+		//	qDebug ("loading compressed data");
 		int iRemainingSize = uSize;
 		unsigned char ibuffer[BUFFER_SIZE];
 		unsigned char obuffer[BUFFER_SIZE];
 
 		int iToRead = iRemainingSize;
-		if(iToRead > BUFFER_SIZE)iToRead = BUFFER_SIZE;
-		int iReaded = pFile->read((char *)ibuffer,iToRead);
+		if(iToRead > BUFFER_SIZE)
+			iToRead = BUFFER_SIZE;
+		int iReaded = pFile->read((char *)ibuffer, iToRead);
 		iRemainingSize -= iReaded;
 
 		z_stream zstr;
@@ -236,7 +236,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 			zstr.next_out = obuffer;
 			zstr.avail_out = BUFFER_SIZE;
 
-			if(inflate(&zstr,Z_NO_FLUSH) != Z_OK)
+			if(inflate(&zstr, Z_NO_FLUSH) != Z_OK)
 			{
 				setLastError(__tr2qs("Compression library error"));
 				return false;
@@ -245,7 +245,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 			if(zstr.avail_out < BUFFER_SIZE)
 			{
 				int iDecompressed = zstr.next_out - obuffer;
-				if(dest.write((char *)obuffer,iDecompressed) != iDecompressed)
+				if(dest.write((char *)obuffer, iDecompressed) != iDecompressed)
 				{
 					inflateEnd(&zstr);
 					return writeError();
@@ -261,14 +261,14 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 					{
 						// hum, there is still some data in the buffer to be readed
 						// and it is not at the beginning...move it to the beginning of ibuffer
-						memmove(ibuffer,zstr.next_in,zstr.avail_in);
+						memmove(ibuffer, zstr.next_in, zstr.avail_in);
 					}
 				}
 
 				if(iDataToRead > iRemainingSize)
 					iDataToRead = iRemainingSize;
 
-				iReaded = pFile->read((char *)(ibuffer + zstr.avail_in),iDataToRead);
+				iReaded = pFile->read((char *)(ibuffer + zstr.avail_in), iDataToRead);
 				if(iReaded < 0)
 				{
 					inflateEnd(&zstr);
@@ -281,9 +281,9 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 				if((zstr.total_in % 2000000) == 0)
 				{
-					QString szTmp = QString(" (%1 of %2 bytes)").arg(zstr.total_in,uSize);
+					QString szTmp = QString(" (%1 of %2 bytes)").arg(zstr.total_in, uSize);
 					QString szPrg = szProgressText + szTmp;
-					if(!updateProgress(pFile->pos(),szPrg))
+					if(!updateProgress(pFile->pos(), szPrg))
 						return false; // aborted
 				}
 			}
@@ -295,22 +295,25 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 
 		int ret;
 
-		do {
-			ret = inflate(&zstr,Z_FINISH);
+		do
+		{
+			ret = inflate(&zstr, Z_FINISH);
 
 			if((ret == Z_OK) || (ret == Z_STREAM_END) || (ret == Z_BUF_ERROR))
 			{
 				if(zstr.avail_out < BUFFER_SIZE)
 				{
 					int iDecompressed = zstr.next_out - obuffer;
-					if(dest.write((char *)obuffer,iDecompressed) != iDecompressed)
+					if(dest.write((char *)obuffer, iDecompressed) != iDecompressed)
 					{
 						inflateEnd(&zstr);
 						return writeError();
 					}
-				} else {
+				}
+				else
+				{
 					//THIS HAPPENS FOR ZERO SIZE FILES
-					qDebug("hum.... internal, rEWq (ret = %d) (avail_out = %d)",ret,zstr.avail_out);
+					qDebug("hum.... internal, rEWq (ret = %d) (avail_out = %d)", ret, zstr.avail_out);
 
 					inflateEnd(&zstr);
 					setLastError(__tr2qs("Compression library internal error"));
@@ -329,20 +332,22 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 			setLastError(__tr2qs("Error in compressed file stream"));
 			return false;
 		}
-
-	} else {
+	}
+	else
+	{
 #endif
-	//	qDebug("Load uncompressed data");
+		//	qDebug("Load uncompressed data");
 		unsigned char buffer[BUFFER_SIZE];
 		int iTotalFileSize = 0;
 		int iRemainingData = uSize;
 		int iToRead = iRemainingData;
-		if(iToRead > BUFFER_SIZE)iToRead = BUFFER_SIZE;
+		if(iToRead > BUFFER_SIZE)
+			iToRead = BUFFER_SIZE;
 		int iReaded = 1;
-	//	qDebug("iReaded %i and iToRead %i and index %i",iReaded,iToRead,pFile->pos());
+		//	qDebug("iReaded %i and iToRead %i and index %i",iReaded,iToRead,pFile->pos());
 		while((iReaded > 0) && (iToRead > 0))
 		{
-			iReaded = pFile->read((char *)buffer,iToRead);
+			iReaded = pFile->read((char *)buffer, iToRead);
 			if(iReaded > 0)
 			{
 				iTotalFileSize += iReaded;
@@ -352,18 +357,19 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 				{
 					QString szTmp = QString(" (%1 of %2 bytes)").arg(iTotalFileSize).arg(uSize);
 					QString szPrg = szProgressText + szTmp;
-					if(!updateProgress(pFile->pos(),szPrg))
+					if(!updateProgress(pFile->pos(), szPrg))
 						return false; // aborted
 				}
-			//	qDebug("write file with size %i and name %s",iReaded,dest.fileName().toUtf8().data());
-				if(dest.write((char *)buffer,iReaded) != iReaded)
+				//	qDebug("write file with size %i and name %s",iReaded,dest.fileName().toUtf8().data());
+				if(dest.write((char *)buffer, iReaded) != iReaded)
 					return writeError();
 			}
 			//qDebug("Remains %i", iRemainingData);
 			iToRead = iRemainingData;
-			if(iToRead > BUFFER_SIZE)iToRead = BUFFER_SIZE;
+			if(iToRead > BUFFER_SIZE)
+				iToRead = BUFFER_SIZE;
 		}
-	//	qDebug("finish to read %i and index %i",iReaded,pFile->pos());
+//	qDebug("finish to read %i and index %i",iReaded,pFile->pos());
 #ifdef COMPILE_ZLIB_SUPPORT
 	}
 #endif
@@ -372,7 +378,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile,const QString &szUnpackPath)
 	return true;
 }
 
-bool KviPackageReader::getStringInfoField(const QString &szName,QString &szBuffer)
+bool KviPackageReader::getStringInfoField(const QString & szName, QString & szBuffer)
 {
 	QString * pVal = stringInfoFields()->find(szName);
 	if(!pVal)
@@ -381,14 +387,14 @@ bool KviPackageReader::getStringInfoField(const QString &szName,QString &szBuffe
 	return true;
 }
 
-bool KviPackageReader::unpack(const QString &szLocalFileName,const QString &szUnpackPath,kvi_u32_t uUnpackFlags)
+bool KviPackageReader::unpack(const QString & szLocalFileName, const QString & szUnpackPath, kvi_u32_t uUnpackFlags)
 {
-	bool bRet = unpackInternal(szLocalFileName,szUnpackPath,uUnpackFlags);
+	bool bRet = unpackInternal(szLocalFileName, szUnpackPath, uUnpackFlags);
 	hideProgressDialog();
 	return bRet;
 }
 
-bool KviPackageReader::unpackInternal(const QString &szLocalFileName,const QString &szUnpackPath,kvi_u32_t uUnpackFlags)
+bool KviPackageReader::unpackInternal(const QString & szLocalFileName, const QString & szUnpackPath, kvi_u32_t uUnpackFlags)
 {
 
 	KviFile f(szLocalFileName);
@@ -402,38 +408,39 @@ bool KviPackageReader::unpackInternal(const QString &szLocalFileName,const QStri
 
 	if(!(uUnpackFlags & NoProgressDialog))
 	{
-		showProgressDialog(__tr2qs("Reading package..."),size);
-		updateProgress(0,__tr2qs("Reading package header"));
+		showProgressDialog(__tr2qs("Reading package..."), size);
+		updateProgress(0, __tr2qs("Reading package header"));
 	}
 
-	if(!readHeaderInternal(&f,szLocalFileName))
+	if(!readHeaderInternal(&f, szLocalFileName))
 		return false;
 
-	if(!updateProgress(f.pos(),__tr2qs("Reading package data")))
+	if(!updateProgress(f.pos(), __tr2qs("Reading package data")))
 		return false; // aborted
 
 	while(!f.atEnd())
 	{
 		// DataFieldType
 		kvi_u32_t uDataFieldType;
-		if(!f.load(uDataFieldType))return readError();
+		if(!f.load(uDataFieldType))
+			return readError();
 		// DataFieldLen
 		kvi_u32_t uDataFieldLen;
-		if(!f.load(uDataFieldLen))return readError();
+		if(!f.load(uDataFieldLen))
+			return readError();
 
 		switch(uDataFieldType)
 		{
 			case KVI_PACKAGE_DATAFIELD_TYPE_FILE:
-				if(!unpackFile(&f,szUnpackPath))
+				if(!unpackFile(&f, szUnpackPath))
 					return false;
-			break;
+				break;
 			default:
 				setLastError(__tr2qs("Invalid data field: the package is probably corrupt"));
 				return false;
-			break;
+				break;
 		}
 	}
 
 	return true;
 }
-

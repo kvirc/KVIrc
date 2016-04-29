@@ -47,33 +47,37 @@
 static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 {
 	QString szIcon;
-	KviTextIcon* pIcon=0;
+	KviTextIcon * pIcon = 0;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("iconName",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szIcon)
+	KVSM_PARAMETER("iconName", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szIcon)
 	KVSM_PARAMETERS_END(c)
 	if(!szIcon.isNull())
 	{
 		pIcon = g_pTextIconManager->lookupTextIcon(szIcon);
 		if(!pIcon)
 		{
-			c->warning("Icon '%s' not found",szIcon.toUtf8().data());
-		} else {
+			c->warning("Icon '%s' not found", szIcon.toUtf8().data());
+		}
+		else
+		{
 			if(pIcon->id() != KviIconManager::None)
 				c->returnValue()->setInteger(pIcon->id());
 			else
 				c->returnValue()->setString(pIcon->filename());
 		}
-	} else {
+	}
+	else
+	{
 		KviKvsHash * pHash = new KviKvsHash();
 
-		KviPointerHashTableIterator<QString,KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
+		KviPointerHashTableIterator<QString, KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
 
 		while(KviTextIcon * i = it.current())
 		{
 			if(i->id() != KviIconManager::None)
-				pHash->set(it.currentKey(),new KviKvsVariant((kvs_int_t)(i->id()) ));
+				pHash->set(it.currentKey(), new KviKvsVariant((kvs_int_t)(i->id())));
 			else
-				pHash->set(it.currentKey(),new KviKvsVariant(i->filename()));
+				pHash->set(it.currentKey(), new KviKvsVariant(i->filename()));
 			++it;
 		}
 		c->returnValue()->setHash(pHash);
@@ -102,24 +106,27 @@ static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 */
 static bool texticons_kvs_cmd_set(KviKvsModuleCommandCall * c)
 {
-	QString szName,szIcon;
+	QString szName, szIcon;
 	KviTextIcon * pIcon = 0;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("iconName",KVS_PT_NONEMPTYSTRING,0,szName)
-		KVSM_PARAMETER("iconIdOrFile",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
+	KVSM_PARAMETER("iconName", KVS_PT_NONEMPTYSTRING, 0, szName)
+	KVSM_PARAMETER("iconIdOrFile", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
 	KVSM_PARAMETERS_END(c)
 	if(szIcon.isNull())
 	{
 		g_pTextIconManager->textIconDict()->remove(szName);
-	} else {
+	}
+	else
+	{
 		pIcon = g_pTextIconManager->lookupTextIcon(szName);
 		if(!pIcon)
 		{
 			KviTextIcon * pTmpIcon = new KviTextIcon(KviIconManager::None);
-			g_pTextIconManager->insert(szName,*pTmpIcon);
+			g_pTextIconManager->insert(szName, *pTmpIcon);
 			delete pTmpIcon;
 			pIcon = g_pTextIconManager->lookupTextIcon(szName);
-			if(!pIcon) return false;
+			if(!pIcon)
+				return false;
 		}
 
 		bool bOk;
@@ -128,16 +135,15 @@ static bool texticons_kvs_cmd_set(KviKvsModuleCommandCall * c)
 			pIcon->setId(uResult);
 		else
 			pIcon->setFilename(szIcon);
-
 	}
 	return true;
 }
 
 static bool texticons_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"set",texticons_kvs_cmd_set);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "set", texticons_kvs_cmd_set);
 
-	KVSM_REGISTER_FUNCTION(m,"get",texticons_kvs_fnc_get);
+	KVSM_REGISTER_FUNCTION(m, "get", texticons_kvs_fnc_get);
 	return true;
 }
 
@@ -147,16 +153,15 @@ static bool texticons_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Texticons",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2006 Alexey Uzhva (wizard at opendoor dot ru)",
-	"Texticons handling functions module",
-	texticons_module_init,
-	0,
-	0,
-	texticons_module_cleanup,
-	0
-)
+    "Texticons", // module name
+    "4.0.0",     // module version
+    "Copyright (C) 2006 Alexey Uzhva (wizard at opendoor dot ru)",
+    "Texticons handling functions module",
+    texticons_module_init,
+    0,
+    0,
+    texticons_module_cleanup,
+    0)
 
 /*
 	@doc: texticons

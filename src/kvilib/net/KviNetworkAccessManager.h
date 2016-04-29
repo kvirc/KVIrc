@@ -36,10 +36,11 @@ class KVILIB_API KviNetworkAccessManager
 private:
 	KviNetworkAccessManager();
 	~KviNetworkAccessManager();
+
 public:
-	static QNetworkAccessManager* getInstance()
+	static QNetworkAccessManager * getInstance()
 	{
-		static QNetworkAccessManager* pInstance = NULL;
+		static QNetworkAccessManager * pInstance = NULL;
 		if(!pInstance)
 			pInstance = new QNetworkAccessManager();
 		return pInstance;

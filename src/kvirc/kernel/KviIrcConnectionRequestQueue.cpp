@@ -50,7 +50,7 @@ void KviIrcConnectionRequestQueue::enqueueChannel(KviChannelWindow * pChan)
 		m_channels.enqueue(pChan);
 		if(!m_timer.isActive())
 		{
-			m_timer.start(KVI_OPTION_UINT(KviOption_uintOnJoinRequestsDelay)*1000);
+			m_timer.start(KVI_OPTION_UINT(KviOption_uintOnJoinRequestsDelay) * 1000);
 		}
 	}
 }
@@ -77,7 +77,9 @@ void KviIrcConnectionRequestQueue::timerSlot()
 	if(m_channels.isEmpty())
 	{
 		m_timer.stop();
-	} else {
+	}
+	else
+	{
 		KviChannelWindow * pChan = m_channels.head();
 		QByteArray encodedChan = pChan->connection()->encodeText(pChan->target()).data();
 		/* The following switch will let the execution flow pass-through if any request type
@@ -87,40 +89,32 @@ void KviIrcConnectionRequestQueue::timerSlot()
 		switch(m_curType)
 		{
 			case BanException:
-				if(pChan->serverInfo()->supportedListModes().contains('e') &&
-					!KVI_OPTION_BOOL(KviOption_boolDisableBanExceptionListRequestOnJoin) &&
-					!(	pChan->serverInfo()->getNeedsOpToListModeseI() &&
-						!pChan->isMeOp()
-					 )
-				)
+				if(pChan->serverInfo()->supportedListModes().contains('e') && !KVI_OPTION_BOOL(KviOption_boolDisableBanExceptionListRequestOnJoin) && !(pChan->serverInfo()->getNeedsOpToListModeseI() && !pChan->isMeOp()))
 				{
-					if(!pChan->connection()->sendFmtData("MODE %s e",encodedChan.data()))
+					if(!pChan->connection()->sendFmtData("MODE %s e", encodedChan.data()))
 						clearAll(); // disconnected
-					else pChan->setSentListRequest('e');
+					else
+						pChan->setSentListRequest('e');
 					m_curType = Invite;
 					break;
 				}
 			case Invite:
-				if(pChan->serverInfo()->supportedListModes().contains('I') &&
-					!KVI_OPTION_BOOL(KviOption_boolDisableInviteListRequestOnJoin) &&
-					!(	pChan->serverInfo()->getNeedsOpToListModeseI() &&
-						!pChan->isMeOp()
-					 )
-				)
+				if(pChan->serverInfo()->supportedListModes().contains('I') && !KVI_OPTION_BOOL(KviOption_boolDisableInviteListRequestOnJoin) && !(pChan->serverInfo()->getNeedsOpToListModeseI() && !pChan->isMeOp()))
 				{
-					if(!pChan->connection()->sendFmtData("MODE %s I",encodedChan.data()))
+					if(!pChan->connection()->sendFmtData("MODE %s I", encodedChan.data()))
 						clearAll(); // disconnected
-					else pChan->setSentListRequest('I');
+					else
+						pChan->setSentListRequest('I');
 					m_curType = QuietBan;
 					break;
 				}
 			case QuietBan:
-				if(pChan->serverInfo()->supportedListModes().contains('q') &&
-					!KVI_OPTION_BOOL(KviOption_boolDisableQuietBanListRequestOnJoin))
+				if(pChan->serverInfo()->supportedListModes().contains('q') && !KVI_OPTION_BOOL(KviOption_boolDisableQuietBanListRequestOnJoin))
 				{
-					if(!pChan->connection()->sendFmtData("MODE %s q",encodedChan.data()))
+					if(!pChan->connection()->sendFmtData("MODE %s q", encodedChan.data()))
 						clearAll(); // disconnected
-					else pChan->setSentListRequest('q');
+					else
+						pChan->setSentListRequest('q');
 					m_curType = Who;
 					break;
 				}
@@ -133,20 +127,24 @@ void KviIrcConnectionRequestQueue::timerSlot()
 					{
 						KviCString tmp;
 						if(pChan->serverInfo()->supportsWhox())
-							tmp.sprintf("WHO %s %acdfhlnrsu",encodedChan.data());
+							tmp.sprintf("WHO %s %acdfhlnrsu", encodedChan.data());
 						else
-							tmp.sprintf("WHO %s",encodedChan.data());
-						pChan->connection()->lagMeter()->lagCheckRegister(tmp.ptr(),60);
+							tmp.sprintf("WHO %s", encodedChan.data());
+						pChan->connection()->lagMeter()->lagCheckRegister(tmp.ptr(), 60);
 					}
 					if(pChan->serverInfo()->supportsWhox())
 					{
-						if(!pChan->connection()->sendFmtData("WHO %s %acdfhlnrsu",encodedChan.data()))
+						if(!pChan->connection()->sendFmtData("WHO %s %acdfhlnrsu", encodedChan.data()))
 							clearAll(); // disconnected
-						else pChan->setSentWhoRequest();
-					} else {
-						if(!pChan->connection()->sendFmtData("WHO %s",encodedChan.data()))
+						else
+							pChan->setSentWhoRequest();
+					}
+					else
+					{
+						if(!pChan->connection()->sendFmtData("WHO %s", encodedChan.data()))
 							clearAll(); // disconnected
-						else pChan->setSentWhoRequest();
+						else
+							pChan->setSentWhoRequest();
 					}
 					m_curType = Ban;
 					break;
@@ -154,10 +152,12 @@ void KviIrcConnectionRequestQueue::timerSlot()
 			case Ban:
 				if(!KVI_OPTION_BOOL(KviOption_boolDisableBanListRequestOnJoin))
 				{
-					if(!pChan->connection()->sendFmtData("MODE %s b",encodedChan.data()))
+					if(!pChan->connection()->sendFmtData("MODE %s b", encodedChan.data()))
 					{
 						clearAll(); // disconnected
-					} else {
+					}
+					else
+					{
 						pChan->setSentListRequest('b');
 						m_channels.dequeue();
 					}
@@ -177,7 +177,7 @@ void KviIrcConnectionRequestQueue::timerSlot()
 				pChan = m_channels.head();
 				encodedChan = pChan->connection()->encodeText(pChan->target());
 			case Mode:
-				if(!pChan->connection()->sendFmtData("MODE %s",encodedChan.data()))
+				if(!pChan->connection()->sendFmtData("MODE %s", encodedChan.data()))
 				{
 					clearAll(); // disconnected
 					break;

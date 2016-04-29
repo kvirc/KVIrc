@@ -37,7 +37,6 @@
 
 class QMenu;
 
-
 //
 // Basic graphical applet
 //
@@ -49,21 +48,23 @@ class KVIRC_API KviToolBarGraphicalApplet : public QWidget
 {
 	Q_OBJECT
 public:
-	KviToolBarGraphicalApplet(QWidget * par,const char * name = 0);
+	KviToolBarGraphicalApplet(QWidget * par, const char * name = 0);
 	~KviToolBarGraphicalApplet();
+
 private:
 	bool m_bResizeMode;
+
 public:
 	virtual QSize sizeHint() const;
-protected:
-	virtual void mouseMoveEvent(QMouseEvent *e);
-	virtual void mousePressEvent(QMouseEvent *e);
-	virtual void mouseReleaseEvent(QMouseEvent *e);
 
-	virtual void paintEvent(QPaintEvent *e);
+protected:
+	virtual void mouseMoveEvent(QMouseEvent * e);
+	virtual void mousePressEvent(QMouseEvent * e);
+	virtual void mouseReleaseEvent(QMouseEvent * e);
+
+	virtual void paintEvent(QPaintEvent * e);
 	virtual void drawContents(QPainter * p);
 };
-
 
 class KviDynamicToolTip;
 
@@ -71,12 +72,13 @@ class KVIRC_API KviIrcContextDisplay : public KviToolBarGraphicalApplet
 {
 	Q_OBJECT
 public:
-	KviIrcContextDisplay(QWidget * par,const char * name = 0);
+	KviIrcContextDisplay(QWidget * par, const char * name = 0);
 	~KviIrcContextDisplay();
+
 protected:
 	virtual void drawContents(QPainter * p);
 protected slots:
-	void tipRequest(KviDynamicToolTip * tip,const QPoint &);
+	void tipRequest(KviDynamicToolTip * tip, const QPoint &);
 };
 
 #endif //_KVI_IRCTOOLBAR_H_

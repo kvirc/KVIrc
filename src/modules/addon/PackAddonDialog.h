@@ -71,20 +71,22 @@ public:
 	* \brief Destroys the wizard object
 	*/
 	~PackAddonDialog();
+
 protected:
-	PackAddonInfoPackageWidget   * m_pPackAddonInfoPackageWidget;
+	PackAddonInfoPackageWidget * m_pPackAddonInfoPackageWidget;
 	PackAddonFileSelectionWidget * m_pPackAddonFileSelectionWidget;
 	PackAddonSaveSelectionWidget * m_pPackAddonSaveSelectionWidget;
-	PackAddonSummaryInfoWidget   * m_pPackAddonSummaryInfoWidget;
-	PackAddonSummaryFilesWidget  * m_pPackAddonSummaryFilesWidget;
-	QString                           m_szAuthor;
-	QString                           m_szName;
-	QString                           m_szVersion;
-	QString                           m_szDescription;
-	QString                           m_szMinVersion;
-	QString                           m_szIcon;
-	QString                           m_szDirPath;
-	QString                           m_szSavePath;
+	PackAddonSummaryInfoWidget * m_pPackAddonSummaryInfoWidget;
+	PackAddonSummaryFilesWidget * m_pPackAddonSummaryFilesWidget;
+	QString m_szAuthor;
+	QString m_szName;
+	QString m_szVersion;
+	QString m_szDescription;
+	QString m_szMinVersion;
+	QString m_szIcon;
+	QString m_szDirPath;
+	QString m_szSavePath;
+
 protected:
 	/**
 	* \brief Runs the packAddon() function and closes the wizard
@@ -134,6 +136,7 @@ public:
 	* \brief Destroys the wizard package info page object
 	*/
 	~PackAddonInfoPackageWidget();
+
 protected:
 	QLineEdit * m_pPackageAuthorEdit;
 	QLineEdit * m_pPackageNameEdit;
@@ -161,11 +164,12 @@ public:
 	* \brief Destroys the wizard package source dir object
 	*/
 	~PackAddonFileSelectionWidget();
+
 protected:
 	KviDirectorySelector * m_pDirPathSelector;
-	KviFileSelector      * m_pPackageImageEdit;
-	QString                m_szDirPath;
-	QString                m_szPackageImage;
+	KviFileSelector * m_pPackageImageEdit;
+	QString m_szDirPath;
+	QString m_szPackageImage;
 };
 
 /**
@@ -187,9 +191,11 @@ public:
 	* \brief Destroys the wizard save page object
 	*/
 	~PackAddonSaveSelectionWidget();
+
 protected:
 	KviFileSelector * m_pSavePathSelector;
 	QString m_szFilePath;
+
 protected:
 	/**
 	* \brief Perform initial tasks before showing the widget
@@ -217,12 +223,14 @@ public:
 	* \brief Destroys the wizard summary info page object
 	*/
 	~PackAddonSummaryInfoWidget();
+
 protected:
 	QLabel * m_pLabelInfo;
 	QLabel * m_pLabelAuthor;
 	QLabel * m_pPackageName;
 	QLabel * m_pPackageVersion;
 	QLabel * m_pPackageDescription;
+
 protected:
 	/**
 	* \brief Perform initial tasks before showing the widget
@@ -231,18 +239,19 @@ protected:
 	virtual void initializePage();
 };
 
-
 class PackAddonSummaryFilesWidget : public QDialog
 {
 	Q_OBJECT
 public:
 	PackAddonSummaryFilesWidget(PackAddonDialog * pParent);
 	~PackAddonSummaryFilesWidget();
+
 protected:
 	QTextEdit * m_pFiles;
-	QString     m_szPath;
+	QString m_szPath;
+
 public:
-	void setPath(QString & szPath){ m_szPath = szPath; };
+	void setPath(QString & szPath) { m_szPath = szPath; };
 protected:
 	virtual void showEvent(QShowEvent *);
 protected slots:

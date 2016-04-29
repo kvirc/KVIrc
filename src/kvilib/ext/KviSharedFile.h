@@ -40,29 +40,31 @@ class KVILIB_API KviSharedFile : public KviHeapObject
 public:
 	KviSharedFile(const QString & szName, const QString & szAbsPath, const QString & szUserMask, time_t expireTime, unsigned int uFileSize);
 	~KviSharedFile();
+
 private:
-	QString      m_szName;
-	QString      m_szAbsFilePath;
-	time_t       m_expireTime;
-	QString      m_szUserMask;
+	QString m_szName;
+	QString m_szAbsFilePath;
+	time_t m_expireTime;
+	QString m_szUserMask;
 	unsigned int m_uFileSize;
 	unsigned int m_uWildCount;
 	unsigned int m_uNonWildCount;
+
 public:
-	const QString & name(){ return m_szName; };
+	const QString & name() { return m_szName; };
 
-	const QString & absFilePath(){ return m_szAbsFilePath; };
+	const QString & absFilePath() { return m_szAbsFilePath; };
 
-	const QString & userMask(){ return m_szUserMask; };
+	const QString & userMask() { return m_szUserMask; };
 
-	time_t expireTime(){ return m_expireTime; };
-	bool expires(){ return (m_expireTime != 0); };
+	time_t expireTime() { return m_expireTime; };
+	bool expires() { return (m_expireTime != 0); };
 
-	unsigned int fileSize(){ return m_uFileSize; };
+	unsigned int fileSize() { return m_uFileSize; };
 
-	unsigned int wildcardCount(){ return m_uWildCount; };
-	unsigned int nonWildcardCount(){ return m_uNonWildCount; };
-	int maskLength(){ return m_szUserMask.length(); };
+	unsigned int wildcardCount() { return m_uWildCount; };
+	unsigned int nonWildcardCount() { return m_uNonWildCount; };
+	int maskLength() { return m_szUserMask.length(); };
 };
 
 typedef KviPointerList<KviSharedFile> KviSharedFileList;

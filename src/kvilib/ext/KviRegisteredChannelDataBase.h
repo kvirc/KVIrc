@@ -37,14 +37,16 @@ class KVILIB_API KviRegisteredChannelDataBase
 public:
 	KviRegisteredChannelDataBase();
 	~KviRegisteredChannelDataBase();
+
 protected:
-	QHash<QString,KviRegisteredChannelList *> * m_pChannelDict;
+	QHash<QString, KviRegisteredChannelList *> * m_pChannelDict;
+
 public:
-	QHash<QString,KviRegisteredChannelList *> * channelDict(){ return m_pChannelDict; }
+	QHash<QString, KviRegisteredChannelList *> * channelDict() { return m_pChannelDict; }
 
 	KviRegisteredChannel * find(const QString & szName, const QString & szNetMask);
 
-	KviRegisteredChannel * findExact(const QString & szName,const QString & szNetMask);
+	KviRegisteredChannel * findExact(const QString & szName, const QString & szNetMask);
 
 	void remove(KviRegisteredChannel * pChan);
 	void add(KviRegisteredChannel * pChan);

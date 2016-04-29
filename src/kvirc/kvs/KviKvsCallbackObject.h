@@ -32,7 +32,6 @@
 #include "KviKvsVariantList.h"
 #include "KviKvsScript.h"
 
-
 //
 // This is a simple callback object useful in stuff like dialog.message(){}
 // You derive a class from KviKvsCallbackObject, pass the callback data (code,window and magic params)
@@ -43,13 +42,15 @@
 class KVIRC_API KviKvsCallbackObject : public KviHeapObject
 {
 public:
-	enum CallbackFlags {
+	enum CallbackFlags
+	{
 		// Execute the callback only if the target window exists
 		// If this flag is not used then if the target window dies
 		// the callback is executed in another window (the associated console, if possible, otherwise the first available console)
 		OnlyIfWindowExists = 1
 	};
-	enum CallbackStatus {
+	enum CallbackStatus
+	{
 		// succesfull execution
 		Success,
 		// error in command
@@ -59,26 +60,27 @@ public:
 		// execution aborted since OnlyIfWindowExists was passed and the target window is dead
 		TargetWindowDead
 	};
+
 public:
 	KviKvsCallbackObject(
-			const QString      &szCallbackSource, // the name of this callback (should identify its source, like "dialog.message"): displayed in error messages
-			KviWindow         * pTargetWindow,    // the window that this callback should be triggered in (can be zero: to execute in the first available console)
-			const QString      &szCallbackCode,   // the callback code (may be empty!)
-			KviKvsVariantList * pMagicParams,     // magic parameters that should be passed to the callback (this class makes a copy of them)
-			unsigned int        uFlags = 0        // a combination of CallbackFlags
-		);
+	    const QString & szCallbackSource, // the name of this callback (should identify its source, like "dialog.message"): displayed in error messages
+	    KviWindow * pTargetWindow,        // the window that this callback should be triggered in (can be zero: to execute in the first available console)
+	    const QString & szCallbackCode,   // the callback code (may be empty!)
+	    KviKvsVariantList * pMagicParams, // magic parameters that should be passed to the callback (this class makes a copy of them)
+	    unsigned int uFlags = 0           // a combination of CallbackFlags
+	    );
 	virtual ~KviKvsCallbackObject();
+
 protected:
-	KviKvsScript      * m_pScript;       // the callback script
-	KviWindow         * m_pTargetWindow;
-	KviWindow         * m_pTargetConsole;
+	KviKvsScript * m_pScript; // the callback script
+	KviWindow * m_pTargetWindow;
+	KviWindow * m_pTargetConsole;
 	KviKvsVariantList * m_pMagicParams;
-	unsigned int        m_uFlags;
+	unsigned int m_uFlags;
+
 protected:
 	// the parameter list is always shallow!
-	CallbackStatus execute(KviKvsVariantList * pParams = 0,KviKvsVariant * pRetVal = 0);
+	CallbackStatus execute(KviKvsVariantList * pParams = 0, KviKvsVariant * pRetVal = 0);
 };
-
-
 
 #endif //!_KVI_KVS_CALLBACKOBJECT_H_

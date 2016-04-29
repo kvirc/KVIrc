@@ -86,13 +86,12 @@
 		You may take a look at the list of available [doc:event_index_all]events[/doc].[br]
 */
 
-
 KviKvsEventManager * KviKvsEventManager::m_pInstance = 0;
 
 KviKvsEventManager::KviKvsEventManager()
 {
 	m_pInstance = this;
-	for(int i=0;i<KVI_KVS_NUM_RAW_EVENTS;i++)
+	for(int i = 0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
 		m_rawEventTable[i] = 0;
 }
 
@@ -108,7 +107,7 @@ void KviKvsEventManager::init()
 		qDebug("WARNING: trying to create KviKvsEventManager twice!");
 		return;
 	}
-	(void) new KviKvsEventManager();
+	(void)new KviKvsEventManager();
 }
 
 void KviKvsEventManager::done()
@@ -121,40 +120,44 @@ void KviKvsEventManager::done()
 	delete KviKvsEventManager::instance();
 }
 
-unsigned int KviKvsEventManager::findAppEventIndexByName(const QString &szName)
+unsigned int KviKvsEventManager::findAppEventIndexByName(const QString & szName)
 {
-	for(unsigned int u = 0;u < KVI_KVS_NUM_APP_EVENTS;u++)
+	for(unsigned int u = 0; u < KVI_KVS_NUM_APP_EVENTS; u++)
 	{
-		if(KviQString::equalCI(szName,m_appEventTable[u].name()))return u;
+		if(KviQString::equalCI(szName, m_appEventTable[u].name()))
+			return u;
 		//Backwards compatibility >_<
-		if((u == 4) && KviQString::equalCI(szName,"OnIrcConnectionEstablished"))
+		if((u == 4) && KviQString::equalCI(szName, "OnIrcConnectionEstablished"))
 			return u;
 	}
 	return KVI_KVS_NUM_APP_EVENTS; // <-- invalid event number
 }
 
-KviKvsEvent * KviKvsEventManager::findAppEventByName(const QString &szName)
+KviKvsEvent * KviKvsEventManager::findAppEventByName(const QString & szName)
 {
-	for(unsigned int u = 0;u < KVI_KVS_NUM_APP_EVENTS;u++)
+	for(unsigned int u = 0; u < KVI_KVS_NUM_APP_EVENTS; u++)
 	{
-		if(KviQString::equalCI(szName,m_appEventTable[u].name()))return &(m_appEventTable[u]);
+		if(KviQString::equalCI(szName, m_appEventTable[u].name()))
+			return &(m_appEventTable[u]);
 		//Backwards compatibility >_<
-		if((u == 4) && KviQString::equalCI(szName,"OnIrcConnectionEstablished"))
+		if((u == 4) && KviQString::equalCI(szName, "OnIrcConnectionEstablished"))
 			return &(m_appEventTable[u]);
 	}
 	return 0;
 }
 
-bool KviKvsEventManager::addAppHandler(unsigned int uEvIdx,KviKvsEventHandler * h)
+bool KviKvsEventManager::addAppHandler(unsigned int uEvIdx, KviKvsEventHandler * h)
 {
-	if(uEvIdx >= KVI_KVS_NUM_APP_EVENTS)return false;
+	if(uEvIdx >= KVI_KVS_NUM_APP_EVENTS)
+		return false;
 	m_appEventTable[uEvIdx].addHandler(h);
 	return true;
 }
 
-bool KviKvsEventManager::addRawHandler(unsigned int uRawIdx,KviKvsEventHandler * h)
+bool KviKvsEventManager::addRawHandler(unsigned int uRawIdx, KviKvsEventHandler * h)
 {
-	if(uRawIdx >= KVI_KVS_NUM_RAW_EVENTS)return false;
+	if(uRawIdx >= KVI_KVS_NUM_RAW_EVENTS)
+		return false;
 	if(!m_rawEventTable[uRawIdx])
 	{
 		m_rawEventTable[uRawIdx] = new KviPointerList<KviKvsEventHandler>();
@@ -164,16 +167,18 @@ bool KviKvsEventManager::addRawHandler(unsigned int uRawIdx,KviKvsEventHandler *
 	return true;
 }
 
-bool KviKvsEventManager::removeScriptAppHandler(unsigned int uEvIdx,const QString &szName)
+bool KviKvsEventManager::removeScriptAppHandler(unsigned int uEvIdx, const QString & szName)
 {
-	if(uEvIdx >= KVI_KVS_NUM_APP_EVENTS)return false;
+	if(uEvIdx >= KVI_KVS_NUM_APP_EVENTS)
+		return false;
 	KviKvsEventHandler * h;
-	if(!(m_appEventTable[uEvIdx].handlers()))return false;
-	for(h = m_appEventTable[uEvIdx].handlers()->first();h;h = m_appEventTable[uEvIdx].handlers()->next())
+	if(!(m_appEventTable[uEvIdx].handlers()))
+		return false;
+	for(h = m_appEventTable[uEvIdx].handlers()->first(); h; h = m_appEventTable[uEvIdx].handlers()->next())
 	{
 		if(h->type() == KviKvsEventHandler::Script)
 		{
-			if(KviQString::equalCI(((KviKvsScriptEventHandler *)h)->name(),szName))
+			if(KviQString::equalCI(((KviKvsScriptEventHandler *)h)->name(), szName))
 			{
 				m_appEventTable[uEvIdx].removeHandler(h);
 				return true;
@@ -183,16 +188,18 @@ bool KviKvsEventManager::removeScriptAppHandler(unsigned int uEvIdx,const QStrin
 	return false;
 }
 
-KviKvsScriptEventHandler * KviKvsEventManager::findScriptRawHandler(unsigned int uEvIdx,const QString &szName)
+KviKvsScriptEventHandler * KviKvsEventManager::findScriptRawHandler(unsigned int uEvIdx, const QString & szName)
 {
-	if(uEvIdx >= KVI_KVS_NUM_RAW_EVENTS)return 0;
-	if(!m_rawEventTable[uEvIdx])return 0;
+	if(uEvIdx >= KVI_KVS_NUM_RAW_EVENTS)
+		return 0;
+	if(!m_rawEventTable[uEvIdx])
+		return 0;
 	KviKvsEventHandler * h;
-	for(h = m_rawEventTable[uEvIdx]->first();h;h = m_rawEventTable[uEvIdx]->next())
+	for(h = m_rawEventTable[uEvIdx]->first(); h; h = m_rawEventTable[uEvIdx]->next())
 	{
 		if(h->type() == KviKvsEventHandler::Script)
 		{
-			if(KviQString::equalCI(((KviKvsScriptEventHandler *)h)->name(),szName))
+			if(KviQString::equalCI(((KviKvsScriptEventHandler *)h)->name(), szName))
 			{
 				return (KviKvsScriptEventHandler *)h;
 			}
@@ -201,16 +208,18 @@ KviKvsScriptEventHandler * KviKvsEventManager::findScriptRawHandler(unsigned int
 	return 0;
 }
 
-KviKvsScriptEventHandler * KviKvsEventManager::findScriptAppHandler(unsigned int uEvIdx,const QString &szName)
+KviKvsScriptEventHandler * KviKvsEventManager::findScriptAppHandler(unsigned int uEvIdx, const QString & szName)
 {
-	if(uEvIdx >= KVI_KVS_NUM_APP_EVENTS)return 0;
+	if(uEvIdx >= KVI_KVS_NUM_APP_EVENTS)
+		return 0;
 	KviKvsEventHandler * h;
-	if(!(m_appEventTable[uEvIdx].handlers()))return 0;
-	for(h = m_appEventTable[uEvIdx].handlers()->first();h;h = m_appEventTable[uEvIdx].handlers()->next())
+	if(!(m_appEventTable[uEvIdx].handlers()))
+		return 0;
+	for(h = m_appEventTable[uEvIdx].handlers()->first(); h; h = m_appEventTable[uEvIdx].handlers()->next())
 	{
 		if(h->type() == KviKvsEventHandler::Script)
 		{
-			if(KviQString::equalCI(((KviKvsScriptEventHandler *)h)->name(),szName))
+			if(KviQString::equalCI(((KviKvsScriptEventHandler *)h)->name(), szName))
 			{
 				return (KviKvsScriptEventHandler *)h;
 			}
@@ -219,21 +228,23 @@ KviKvsScriptEventHandler * KviKvsEventManager::findScriptAppHandler(unsigned int
 	return 0;
 }
 
-bool KviKvsEventManager::enableScriptAppHandler(unsigned int uEvIdx,const QString &szName,bool bEnable)
+bool KviKvsEventManager::enableScriptAppHandler(unsigned int uEvIdx, const QString & szName, bool bEnable)
 {
-	KviKvsScriptEventHandler * h = findScriptAppHandler(uEvIdx,szName);
-	if(!h)return false;
+	KviKvsScriptEventHandler * h = findScriptAppHandler(uEvIdx, szName);
+	if(!h)
+		return false;
 	h->setEnabled(bEnable);
 	return true;
 }
 
-
-bool KviKvsEventManager::removeModuleAppHandler(unsigned int uEvIdx,KviKvsModuleInterface *i)
+bool KviKvsEventManager::removeModuleAppHandler(unsigned int uEvIdx, KviKvsModuleInterface * i)
 {
-	if(uEvIdx >= KVI_KVS_NUM_APP_EVENTS)return false;
+	if(uEvIdx >= KVI_KVS_NUM_APP_EVENTS)
+		return false;
 	KviKvsEventHandler * h;
-	if(!(m_appEventTable[uEvIdx].handlers()))return false;
-	for(h = m_appEventTable[uEvIdx].handlers()->first();h;h = m_appEventTable[uEvIdx].handlers()->next())
+	if(!(m_appEventTable[uEvIdx].handlers()))
+		return false;
+	for(h = m_appEventTable[uEvIdx].handlers()->first(); h; h = m_appEventTable[uEvIdx].handlers()->next())
 	{
 		if(h->type() == KviKvsEventHandler::Module)
 		{
@@ -259,16 +270,17 @@ bool KviKvsEventManager::removeModuleAppHandler(unsigned int uEvIdx,KviKvsModule
 	return false;
 }
 
-void KviKvsEventManager::removeAllModuleAppHandlers(KviKvsModuleInterface *pIface)
+void KviKvsEventManager::removeAllModuleAppHandlers(KviKvsModuleInterface * pIface)
 {
 	KviKvsEventHandler * h;
-	for(unsigned int i =0;i< KVI_KVS_NUM_APP_EVENTS;i++)
+	for(unsigned int i = 0; i < KVI_KVS_NUM_APP_EVENTS; i++)
 	{
-		if(!m_appEventTable[i].handlers())continue;
+		if(!m_appEventTable[i].handlers())
+			continue;
 
 		KviPointerList<KviKvsEventHandler> l;
 		l.setAutoDelete(false);
-		for(h = m_appEventTable[i].handlers()->first();h;h = m_appEventTable[i].handlers()->next())
+		for(h = m_appEventTable[i].handlers()->first(); h; h = m_appEventTable[i].handlers()->next())
 		{
 			if(h->type() == KviKvsEventHandler::Module)
 			{
@@ -288,22 +300,23 @@ void KviKvsEventManager::removeAllModuleAppHandlers(KviKvsModuleInterface *pIfac
 			}
 			*/
 			// END COMPAT
-
 		}
-		for(h = l.first();h;h = l.next())m_appEventTable[i].removeHandler(h);
+		for(h = l.first(); h; h = l.next())
+			m_appEventTable[i].removeHandler(h);
 	}
 }
 
-void KviKvsEventManager::removeAllModuleRawHandlers(KviKvsModuleInterface *pIface)
+void KviKvsEventManager::removeAllModuleRawHandlers(KviKvsModuleInterface * pIface)
 {
 	KviKvsEventHandler * h;
-	for(unsigned int i =0;i< KVI_KVS_NUM_RAW_EVENTS;i++)
+	for(unsigned int i = 0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
 	{
-		if(!m_rawEventTable[i])continue;
+		if(!m_rawEventTable[i])
+			continue;
 
 		KviPointerList<KviKvsEventHandler> l;
 		l.setAutoDelete(false);
-		for(h = m_rawEventTable[i]->first();h;h = m_rawEventTable[i]->next())
+		for(h = m_rawEventTable[i]->first(); h; h = m_rawEventTable[i]->next())
 		{
 			if(h->type() == KviKvsEventHandler::Module)
 			{
@@ -323,9 +336,9 @@ void KviKvsEventManager::removeAllModuleRawHandlers(KviKvsModuleInterface *pIfac
 			}
 			*/
 			// END COMPAT
-
 		}
-		for(h = l.first();h;h = l.next())m_rawEventTable[i]->removeRef(h);
+		for(h = l.first(); h; h = l.next())
+			m_rawEventTable[i]->removeRef(h);
 		if(m_rawEventTable[i]->isEmpty())
 		{
 			delete m_rawEventTable[i];
@@ -334,16 +347,18 @@ void KviKvsEventManager::removeAllModuleRawHandlers(KviKvsModuleInterface *pIfac
 	}
 }
 
-bool KviKvsEventManager::removeScriptRawHandler(unsigned int uEvIdx,const QString &szName)
+bool KviKvsEventManager::removeScriptRawHandler(unsigned int uEvIdx, const QString & szName)
 {
-	if(uEvIdx >= KVI_KVS_NUM_RAW_EVENTS)return false;
-	if(!m_rawEventTable[uEvIdx])return false;
+	if(uEvIdx >= KVI_KVS_NUM_RAW_EVENTS)
+		return false;
+	if(!m_rawEventTable[uEvIdx])
+		return false;
 	KviKvsEventHandler * h;
-	for(h = m_rawEventTable[uEvIdx]->first();h;h = m_rawEventTable[uEvIdx]->next())
+	for(h = m_rawEventTable[uEvIdx]->first(); h; h = m_rawEventTable[uEvIdx]->next())
 	{
 		if(h->type() == KviKvsEventHandler::Script)
 		{
-			if(KviQString::equalCI(((KviKvsScriptEventHandler *)h)->name(),szName))
+			if(KviQString::equalCI(((KviKvsScriptEventHandler *)h)->name(), szName))
 			{
 				m_rawEventTable[uEvIdx]->removeRef(h);
 				if(m_rawEventTable[uEvIdx]->isEmpty())
@@ -358,22 +373,23 @@ bool KviKvsEventManager::removeScriptRawHandler(unsigned int uEvIdx,const QStrin
 	return false;
 }
 
-
-bool KviKvsEventManager::enableScriptRawHandler(unsigned int uEvIdx,const QString &szName,bool bEnable)
+bool KviKvsEventManager::enableScriptRawHandler(unsigned int uEvIdx, const QString & szName, bool bEnable)
 {
-	KviKvsScriptEventHandler * h = findScriptRawHandler(uEvIdx,szName);
-	if(!h)return false;
+	KviKvsScriptEventHandler * h = findScriptRawHandler(uEvIdx, szName);
+	if(!h)
+		return false;
 	h->setEnabled(bEnable);
 	return true;
 }
 
-
-bool KviKvsEventManager::removeModuleRawHandler(unsigned int uRawIdx,KviKvsModuleInterface *i)
+bool KviKvsEventManager::removeModuleRawHandler(unsigned int uRawIdx, KviKvsModuleInterface * i)
 {
-	if(uRawIdx >= KVI_KVS_NUM_RAW_EVENTS)return false;
-	if(!m_rawEventTable[uRawIdx])return false;
+	if(uRawIdx >= KVI_KVS_NUM_RAW_EVENTS)
+		return false;
+	if(!m_rawEventTable[uRawIdx])
+		return false;
 	KviKvsEventHandler * h;
-	for(h = m_rawEventTable[uRawIdx]->first();h;h = m_rawEventTable[uRawIdx]->next())
+	for(h = m_rawEventTable[uRawIdx]->first(); h; h = m_rawEventTable[uRawIdx]->next())
 	{
 		if(h->type() == KviKvsEventHandler::Module)
 		{
@@ -405,7 +421,6 @@ bool KviKvsEventManager::removeModuleRawHandler(unsigned int uRawIdx,KviKvsModul
 		}
 		*/
 		// END COMPAT
-
 	}
 	return false;
 }
@@ -418,7 +433,7 @@ void KviKvsEventManager::removeAllModuleHandlers(KviKvsModuleInterface * pIface)
 
 void KviKvsEventManager::removeAllScriptAppHandlers()
 {
-	for(size_t i=0;i< KVI_KVS_NUM_APP_EVENTS;i++)
+	for(size_t i = 0; i < KVI_KVS_NUM_APP_EVENTS; i++)
 	{
 		m_appEventTable[i].clearScriptHandlers();
 	}
@@ -426,19 +441,20 @@ void KviKvsEventManager::removeAllScriptAppHandlers()
 
 void KviKvsEventManager::removeAllScriptRawHandlers()
 {
-	for(size_t i=0;i< KVI_KVS_NUM_RAW_EVENTS;i++)
+	for(size_t i = 0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
 	{
 		if(m_rawEventTable[i])
 		{
 			KviPointerList<KviKvsEventHandler> dl;
 			dl.setAutoDelete(false);
 			KviKvsEventHandler * e;
-			for(e = m_rawEventTable[i]->first();e;e = m_rawEventTable[i]->next())
+			for(e = m_rawEventTable[i]->first(); e; e = m_rawEventTable[i]->next())
 			{
-				if(e->type() == KviKvsEventHandler::Script)dl.append(e);
+				if(e->type() == KviKvsEventHandler::Script)
+					dl.append(e);
 			}
 
-			for(e = dl.first();e;e = dl.next())
+			for(e = dl.first(); e; e = dl.next())
 			{
 				m_rawEventTable[i]->removeRef(e);
 			}
@@ -454,16 +470,17 @@ void KviKvsEventManager::removeAllScriptRawHandlers()
 
 void KviKvsEventManager::clearRawEvents()
 {
-	for(size_t i=0;i<KVI_KVS_NUM_RAW_EVENTS;i++)
+	for(size_t i = 0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
 	{
-		if(m_rawEventTable[i])delete m_rawEventTable[i];
+		if(m_rawEventTable[i])
+			delete m_rawEventTable[i];
 		m_rawEventTable[i] = 0;
 	}
 }
 
 void KviKvsEventManager::clearAppEvents()
 {
-	for(size_t i=0;i<KVI_KVS_NUM_APP_EVENTS;i++)
+	for(size_t i = 0; i < KVI_KVS_NUM_APP_EVENTS; i++)
 	{
 		m_appEventTable[i].clear();
 	}
@@ -475,12 +492,13 @@ void KviKvsEventManager::clear()
 	clearAppEvents();
 }
 
-bool KviKvsEventManager::triggerHandlers(KviPointerList<KviKvsEventHandler> * pHandlers,KviWindow *pWnd,KviKvsVariantList *pParams)
+bool KviKvsEventManager::triggerHandlers(KviPointerList<KviKvsEventHandler> * pHandlers, KviWindow * pWnd, KviKvsVariantList * pParams)
 {
-	if(!pHandlers)return false;
+	if(!pHandlers)
+		return false;
 
 	bool bGotHalt = false;
-	for(KviKvsEventHandler * h = pHandlers->first();h;h = pHandlers->next())
+	for(KviKvsEventHandler * h = pHandlers->first(); h; h = pHandlers->next())
 	{
 		switch(h->type())
 		{
@@ -491,18 +509,19 @@ bool KviKvsEventManager::triggerHandlers(KviPointerList<KviKvsEventHandler> * pH
 					KviKvsScript * s = ((KviKvsScriptEventHandler *)h)->script();
 					KviKvsScript copy(*s);
 					KviKvsVariant retVal;
-					int iRet = copy.run(pWnd,pParams,&retVal,KviKvsScript::PreserveParams);
+					int iRet = copy.run(pWnd, pParams, &retVal, KviKvsScript::PreserveParams);
 					if(!iRet)
 					{
 						// error! disable the handler if it's broken
 						if(KVI_OPTION_BOOL(KviOption_boolDisableBrokenEventHandlers))
 						{
 							((KviKvsScriptEventHandler *)h)->setEnabled(false);
-							pWnd->output(KVI_OUT_PARSERERROR,__tr2qs_ctx("Event handler %Q is broken: disabling","kvs"),&(s->name()));
-                                                        emit eventHandlerDisabled(s->name());
+							pWnd->output(KVI_OUT_PARSERERROR, __tr2qs_ctx("Event handler %Q is broken: disabling", "kvs"), &(s->name()));
+							emit eventHandlerDisabled(s->name());
 						}
 					}
-					if(!bGotHalt)bGotHalt = (iRet & KviKvsScript::HaltEncountered);
+					if(!bGotHalt)
+						bGotHalt = (iRet & KviKvsScript::HaltEncountered);
 				}
 			}
 			break;
@@ -511,9 +530,10 @@ bool KviKvsEventManager::triggerHandlers(KviPointerList<KviKvsEventHandler> * pH
 				KviModule * m = (KviModule *)((KviKvsModuleEventHandler *)h)->moduleInterface();
 				KviKvsModuleEventHandlerRoutine * proc = ((KviKvsModuleEventHandler *)h)->handlerRoutine();
 				KviKvsVariant retVal;
-				KviKvsRunTimeContext ctx(0,pWnd,pParams,&retVal);
-				KviKvsModuleEventCall call(m,&ctx,pParams);
-				if(!(*proc)(&call))bGotHalt = true;
+				KviKvsRunTimeContext ctx(0, pWnd, pParams, &retVal);
+				KviKvsModuleEventCall call(m, &ctx, pParams);
+				if(!(*proc)(&call))
+					bGotHalt = true;
 			}
 			break;
 		}
@@ -521,19 +541,18 @@ bool KviKvsEventManager::triggerHandlers(KviPointerList<KviKvsEventHandler> * pH
 	return bGotHalt;
 }
 
-
 void KviKvsEventManager::loadRawEvents(const QString & szFileName)
 {
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Read);
 	removeAllScriptRawHandlers();
 
-	for(size_t i=0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
+	for(size_t i = 0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
 	{
 		QString szTmp = QString("RAW%1").arg(i);
 		if(cfg.hasGroup(szTmp))
 		{
 			cfg.setGroup(szTmp);
-			unsigned int uHandlers = cfg.readUIntEntry("NHandlers",0);
+			unsigned int uHandlers = cfg.readUIntEntry("NHandlers", 0);
 			if(uHandlers)
 			{
 				m_rawEventTable[i] = new KviPointerList<KviKvsEventHandler>();
@@ -541,13 +560,13 @@ void KviKvsEventManager::loadRawEvents(const QString & szFileName)
 				for(unsigned int uIdx = 0; uIdx < uHandlers; uIdx++)
 				{
 					szTmp = QString("Name%1").arg(uIdx);
-					QString szName = cfg.readEntry(szTmp,"unnamed");
+					QString szName = cfg.readEntry(szTmp, "unnamed");
 					szTmp = QString("Buffer%1").arg(uIdx);
-					QString szCode = cfg.readEntry(szTmp,"");
+					QString szCode = cfg.readEntry(szTmp, "");
 					szTmp = QString("RawEvent%1::%2").arg(uIdx).arg(szName);
-					KviKvsScriptEventHandler * pScript = new KviKvsScriptEventHandler(szName,szTmp,szCode);
+					KviKvsScriptEventHandler * pScript = new KviKvsScriptEventHandler(szName, szTmp, szCode);
 					szTmp = QString("Enabled%1").arg(uIdx);
-					pScript->setEnabled(cfg.readBoolEntry(szTmp,false));
+					pScript->setEnabled(cfg.readBoolEntry(szTmp, false));
 					m_rawEventTable[i]->append(pScript);
 				}
 			}
@@ -557,10 +576,10 @@ void KviKvsEventManager::loadRawEvents(const QString & szFileName)
 
 void KviKvsEventManager::saveRawEvents(const QString & szFileName)
 {
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Write);
 	cfg.clear();
 
-	for(size_t i=0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
+	for(size_t i = 0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
 	{
 		if(m_rawEventTable[i])
 		{
@@ -573,26 +592,25 @@ void KviKvsEventManager::saveRawEvents(const QString & szFileName)
 				if(pEvent->type() == KviKvsEventHandler::Script)
 				{
 					szTmp = QString("Name%1").arg(iIdx);
-					cfg.writeEntry(szTmp,((KviKvsScriptEventHandler *)pEvent)->name());
+					cfg.writeEntry(szTmp, ((KviKvsScriptEventHandler *)pEvent)->name());
 					szTmp = QString("Buffer%1").arg(iIdx);
-					cfg.writeEntry(szTmp,((KviKvsScriptEventHandler *)pEvent)->code());
+					cfg.writeEntry(szTmp, ((KviKvsScriptEventHandler *)pEvent)->code());
 					szTmp = QString("Enabled%1").arg(iIdx);
-					cfg.writeEntry(szTmp,((KviKvsScriptEventHandler *)pEvent)->isEnabled());
+					cfg.writeEntry(szTmp, ((KviKvsScriptEventHandler *)pEvent)->isEnabled());
 					iIdx++;
 				}
 			}
-			cfg.writeEntry("NHandlers",iIdx);
+			cfg.writeEntry("NHandlers", iIdx);
 		}
 	}
-
 }
 
 void KviKvsEventManager::loadAppEvents(const QString & szFileName)
 {
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Read);
 	removeAllScriptAppHandlers();
 
-	for(size_t i=0; i < KVI_KVS_NUM_APP_EVENTS; i++)
+	for(size_t i = 0; i < KVI_KVS_NUM_APP_EVENTS; i++)
 	{
 		QString szEventName(m_appEventTable[i].name());
 		// Backwards compatibility >_<
@@ -601,19 +619,19 @@ void KviKvsEventManager::loadAppEvents(const QString & szFileName)
 		if(cfg.hasGroup(szEventName))
 		{
 			cfg.setGroup(szEventName);
-			unsigned int uHandlers = cfg.readUIntEntry("NHandlers",0);
+			unsigned int uHandlers = cfg.readUIntEntry("NHandlers", 0);
 			if(uHandlers)
 			{
 				for(unsigned int uIdx = 0; uIdx < uHandlers; uIdx++)
 				{
 					QString szTmp = QString("Name%1").arg(uIdx);
-					QString szName = cfg.readEntry(szTmp,"unnamed");
+					QString szName = cfg.readEntry(szTmp, "unnamed");
 					szTmp = QString("Buffer%1").arg(uIdx);
-					QString szCode = cfg.readEntry(szTmp,"");
+					QString szCode = cfg.readEntry(szTmp, "");
 					szTmp = QString("Enabled%1").arg(uIdx);
-					bool bEnabled = cfg.readBoolEntry(szTmp,false);
-					QString szCntx = QString("%1::%2").arg(m_appEventTable[i].name(),szName);
-					KviKvsScriptEventHandler * pEvent = new KviKvsScriptEventHandler(szName,szCntx,szCode,bEnabled);
+					bool bEnabled = cfg.readBoolEntry(szTmp, false);
+					QString szCntx = QString("%1::%2").arg(m_appEventTable[i].name(), szName);
+					KviKvsScriptEventHandler * pEvent = new KviKvsScriptEventHandler(szName, szCntx, szCode, bEnabled);
 					m_appEventTable[i].addHandler(pEvent);
 				}
 			}
@@ -623,11 +641,11 @@ void KviKvsEventManager::loadAppEvents(const QString & szFileName)
 
 void KviKvsEventManager::saveAppEvents(const QString & szFileName)
 {
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Write);
 	cfg.clear();
 	bool bCompat = false;
 
-	for(size_t i=0; i < KVI_KVS_NUM_APP_EVENTS; i++)
+	for(size_t i = 0; i < KVI_KVS_NUM_APP_EVENTS; i++)
 	{
 		if(m_appEventTable[i].hasHandlers())
 		{
@@ -645,15 +663,15 @@ void KviKvsEventManager::saveAppEvents(const QString & szFileName)
 				if(pEvent->type() == KviKvsEventHandler::Script)
 				{
 					QString szTmp = QString("Name%1").arg(iIdx);
-					cfg.writeEntry(szTmp,((KviKvsScriptEventHandler *)pEvent)->name());
+					cfg.writeEntry(szTmp, ((KviKvsScriptEventHandler *)pEvent)->name());
 					szTmp = QString("Buffer%1").arg(iIdx);
-					cfg.writeEntry(szTmp,((KviKvsScriptEventHandler *)pEvent)->code());
+					cfg.writeEntry(szTmp, ((KviKvsScriptEventHandler *)pEvent)->code());
 					szTmp = QString("Enabled%1").arg(iIdx);
-					cfg.writeEntry(szTmp,((KviKvsScriptEventHandler *)pEvent)->isEnabled());
+					cfg.writeEntry(szTmp, ((KviKvsScriptEventHandler *)pEvent)->isEnabled());
 					iIdx++;
 				}
 			}
-			cfg.writeEntry("NHandlers",iIdx);
+			cfg.writeEntry("NHandlers", iIdx);
 
 			// Backwards compatibility >_<
 			if((i == 4) && !bCompat)

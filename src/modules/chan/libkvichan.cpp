@@ -40,19 +40,28 @@ static KviChannelWindow * chan_kvs_find_channel(KviKvsModuleFunctionCall * c, QS
 {
 	if(szChan.isEmpty())
 	{
-		if(c->window()->type() == KviWindow::Channel)return (KviChannelWindow *)(c->window());
-		if(c->window()->type() == KviWindow::DeadChannel)return (KviChannelWindow *)(c->window());
-		if(!bNoWarnings) c->warning(__tr2qs("The current window is not a channel"));
-	} else {
+		if(c->window()->type() == KviWindow::Channel)
+			return (KviChannelWindow *)(c->window());
+		if(c->window()->type() == KviWindow::DeadChannel)
+			return (KviChannelWindow *)(c->window());
+		if(!bNoWarnings)
+			c->warning(__tr2qs("The current window is not a channel"));
+	}
+	else
+	{
 		KviWindow * w = g_pApp->findWindow(szChan);
 		if(!w)
 		{
-			if(!bNoWarnings) c->warning(__tr2qs("Can't find the window with ID '%Q'"),&szChan);
+			if(!bNoWarnings)
+				c->warning(__tr2qs("Can't find the window with ID '%Q'"), &szChan);
 			return 0;
 		}
-		if(w->type() == KviWindow::Channel)return (KviChannelWindow *)w;
-		if(w->type() == KviWindow::DeadChannel)return (KviChannelWindow *)w;
-		if(!bNoWarnings) c->warning(__tr2qs("The specified window (%Q) is not a channel"),&szChan);
+		if(w->type() == KviWindow::Channel)
+			return (KviChannelWindow *)w;
+		if(w->type() == KviWindow::DeadChannel)
+			return (KviChannelWindow *)w;
+		if(!bNoWarnings)
+			c->warning(__tr2qs("The specified window (%Q) is not a channel"), &szChan);
 	}
 	return 0;
 }
@@ -80,10 +89,11 @@ static bool chan_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) {
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+	{
 		c->returnValue()->setString(ch->windowName());
 	}
 	return true;
@@ -107,24 +117,30 @@ static bool chan_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_getUrl(KviKvsModuleFunctionCall * c)
 {
-	QString szId,url;
+	QString szId, url;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("channel id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("channel id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId,true);
-	if (ch) {
-		KviIrcUrl::join(url,ch->connection()->target()->server());
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId, true);
+	if(ch)
+	{
+		KviIrcUrl::join(url, ch->connection()->target()->server());
 		url.append(ch->windowName());
 		if(ch->hasChannelMode('k'))
 		{
 			url.append("?");
 			url.append(ch->channelModeParam('k'));
 		}
-	} else {
-		if(c->window()->connection()) {
-			KviIrcUrl::join(url,c->window()->connection()->target()->server());
+	}
+	else
+	{
+		if(c->window()->connection())
+		{
+			KviIrcUrl::join(url, c->window()->connection()->target()->server());
 			url.append(szId);
-		} else {
+		}
+		else
+		{
 			c->error("There is no active IRC connection for current context");
 		}
 	}
@@ -152,10 +168,11 @@ static bool chan_kvs_fnc_isdead(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setBoolean((ch->type() == KviWindow::DeadChannel));
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setBoolean((ch->type() == KviWindow::DeadChannel));
 	return true;
 }
 
@@ -186,10 +203,11 @@ static bool chan_kvs_fnc_topic(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setString(ch->topicWidget()->topic());
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setString(ch->topicWidget()->topic());
 	return true;
 }
 
@@ -220,10 +238,11 @@ static bool chan_kvs_fnc_topicsetby(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setString(ch->topicWidget()->topicSetBy());
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setString(ch->topicWidget()->topicSetBy());
 	return true;
 }
 
@@ -254,10 +273,11 @@ static bool chan_kvs_fnc_topicsetat(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setString(ch->topicWidget()->topicSetAt());
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setString(ch->topicWidget()->topicSetAt());
 	return true;
 }
 
@@ -286,10 +306,11 @@ static bool chan_kvs_fnc_usercount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->count());
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setInteger(ch->count());
 	return true;
 }
 
@@ -318,10 +339,11 @@ static bool chan_kvs_fnc_ownercount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->chanOwnerCount());
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setInteger(ch->chanOwnerCount());
 	return true;
 }
 
@@ -350,10 +372,11 @@ static bool chan_kvs_fnc_admincount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->chanAdminCount());
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setInteger(ch->chanAdminCount());
 	return true;
 }
 
@@ -382,10 +405,11 @@ static bool chan_kvs_fnc_opcount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->opCount());
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setInteger(ch->opCount());
 	return true;
 }
 
@@ -414,10 +438,11 @@ static bool chan_kvs_fnc_voicecount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->voiceCount());
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setInteger(ch->voiceCount());
 	return true;
 }
 
@@ -446,10 +471,11 @@ static bool chan_kvs_fnc_halfopcount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->halfOpCount());
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setInteger(ch->halfOpCount());
 	return true;
 }
 
@@ -478,10 +504,11 @@ static bool chan_kvs_fnc_useropcount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->userOpCount());
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setInteger(ch->userOpCount());
 	return true;
 }
 
@@ -510,10 +537,11 @@ static bool chan_kvs_fnc_bancount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->maskCount('b'));
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setInteger(ch->maskCount('b'));
 	return true;
 }
 
@@ -542,10 +570,11 @@ static bool chan_kvs_fnc_banexceptioncount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->maskCount('e'));
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setInteger(ch->maskCount('e'));
 	return true;
 }
 
@@ -573,10 +602,11 @@ static bool chan_kvs_fnc_invitecount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->maskCount('I'));
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setInteger(ch->maskCount('I'));
 	return true;
 }
 
@@ -605,13 +635,14 @@ static bool chan_kvs_fnc_maskcount(KviKvsModuleFunctionCall * c)
 {
 	QString szId, szMode;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("mode",KVS_PT_NONEMPTYSTRING,0,szMode)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("mode", KVS_PT_NONEMPTYSTRING, 0, szMode)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
 
 	char cMode = szMode.at(0).unicode();
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setInteger(ch->maskCount(cMode));
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setInteger(ch->maskCount(cMode));
 	return true;
 }
 
@@ -633,13 +664,14 @@ static bool chan_kvs_fnc_maskcount(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_ison(KviKvsModuleFunctionCall * c)
 {
-	QString szId,szNick;
+	QString szId, szNick;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("nickname",KVS_PT_NONEMPTYSTRING,0,szNick)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("nickname", KVS_PT_NONEMPTYSTRING, 0, szNick)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setBoolean(ch->isOn(szNick));
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setBoolean(ch->isOn(szNick));
 	return true;
 }
 
@@ -670,12 +702,12 @@ static bool chan_kvs_fnc_ison(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_getflag(KviKvsModuleFunctionCall * c)
 {
-	QString szId,szNick;
+	QString szId, szNick;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("nickname",KVS_PT_NONEMPTYSTRING,0,szNick)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("nickname", KVS_PT_NONEMPTYSTRING, 0, szNick)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
 	if(ch)
 	{
 		QChar cFlag = ch->userListView()->getUserFlag(szNick);
@@ -683,25 +715,28 @@ static bool chan_kvs_fnc_getflag(KviKvsModuleFunctionCall * c)
 		{
 			QString szFlag = cFlag;
 			c->returnValue()->setString(szFlag);
-		} else {
+		}
+		else
+		{
 			c->returnValue()->setNothing();
 		}
 	}
 	return true;
 }
 
-#define IS_KVS_FUNC(__clbkname,__chanfunc) \
-static bool __clbkname(KviKvsModuleFunctionCall * c) \
-{ \
-	QString szId,szNick;\
-	KVSM_PARAMETERS_BEGIN(c)\
-		KVSM_PARAMETER("nickname",KVS_PT_NONEMPTYSTRING,0,szNick)\
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)\
-	KVSM_PARAMETERS_END(c)\
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId); \
-	if(ch) c->returnValue()->setBoolean(ch->__chanfunc(szNick,true)); \
-	return true; \
-}
+#define IS_KVS_FUNC(__clbkname, __chanfunc)                               \
+	static bool __clbkname(KviKvsModuleFunctionCall * c)                  \
+	{                                                                     \
+		QString szId, szNick;                                             \
+		KVSM_PARAMETERS_BEGIN(c)                                          \
+		KVSM_PARAMETER("nickname", KVS_PT_NONEMPTYSTRING, 0, szNick)      \
+		KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId) \
+		KVSM_PARAMETERS_END(c)                                            \
+		KviChannelWindow * ch = chan_kvs_find_channel(c, szId);           \
+		if(ch)                                                            \
+			c->returnValue()->setBoolean(ch->__chanfunc(szNick, true));   \
+		return true;                                                      \
+	}
 
 /*
 	@doc: chan.isowner
@@ -720,7 +755,7 @@ static bool __clbkname(KviKvsModuleFunctionCall * c) \
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
 */
 
-IS_KVS_FUNC(chan_kvs_fnc_isowner,isChanOwner)
+IS_KVS_FUNC(chan_kvs_fnc_isowner, isChanOwner)
 
 /*
 	@doc: chan.isadmin
@@ -739,7 +774,7 @@ IS_KVS_FUNC(chan_kvs_fnc_isowner,isChanOwner)
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
 */
 
-IS_KVS_FUNC(chan_kvs_fnc_isadmin,isChanAdmin)
+IS_KVS_FUNC(chan_kvs_fnc_isadmin, isChanAdmin)
 
 /*
 	@doc: chan.isop
@@ -758,7 +793,7 @@ IS_KVS_FUNC(chan_kvs_fnc_isadmin,isChanAdmin)
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
 */
 
-IS_KVS_FUNC(chan_kvs_fnc_isop,isOp)
+IS_KVS_FUNC(chan_kvs_fnc_isop, isOp)
 
 /*
 	@doc: chan.isvoice
@@ -777,7 +812,7 @@ IS_KVS_FUNC(chan_kvs_fnc_isop,isOp)
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
 */
 
-IS_KVS_FUNC(chan_kvs_fnc_isvoice,isVoice)
+IS_KVS_FUNC(chan_kvs_fnc_isvoice, isVoice)
 
 /*
 	@doc: chan.ishalfop
@@ -796,7 +831,7 @@ IS_KVS_FUNC(chan_kvs_fnc_isvoice,isVoice)
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
 */
 
-IS_KVS_FUNC(chan_kvs_fnc_ishalfop,isHalfOp)
+IS_KVS_FUNC(chan_kvs_fnc_ishalfop, isHalfOp)
 
 /*
 	@doc: chan.isuserop
@@ -815,19 +850,20 @@ IS_KVS_FUNC(chan_kvs_fnc_ishalfop,isHalfOp)
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
 */
 
-IS_KVS_FUNC(chan_kvs_fnc_isuserop,isUserOp)
+IS_KVS_FUNC(chan_kvs_fnc_isuserop, isUserOp)
 
-#define IS_ME_KVS_FUNC(__clbkname,__chanfunc) \
-static bool __clbkname(KviKvsModuleFunctionCall * c) \
-{ \
-	QString szId;\
-	KVSM_PARAMETERS_BEGIN(c)\
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)\
-	KVSM_PARAMETERS_END(c)\
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId); \
-	if(ch) c->returnValue()->setBoolean(ch->__chanfunc(true)); \
-	return true; \
-}
+#define IS_ME_KVS_FUNC(__clbkname, __chanfunc)                            \
+	static bool __clbkname(KviKvsModuleFunctionCall * c)                  \
+	{                                                                     \
+		QString szId;                                                     \
+		KVSM_PARAMETERS_BEGIN(c)                                          \
+		KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId) \
+		KVSM_PARAMETERS_END(c)                                            \
+		KviChannelWindow * ch = chan_kvs_find_channel(c, szId);           \
+		if(ch)                                                            \
+			c->returnValue()->setBoolean(ch->__chanfunc(true));           \
+		return true;                                                      \
+	}
 
 /*
 	@doc: chan.ismeowner
@@ -847,7 +883,7 @@ static bool __clbkname(KviKvsModuleFunctionCall * c) \
 		This function is a [i]shortcut[/i] for [fnc]$chan.isowner[/fnc]([fnc]$me[/fnc]).[br]
 */
 
-IS_ME_KVS_FUNC(chan_kvs_fnc_ismeowner,isMeChanOwner)
+IS_ME_KVS_FUNC(chan_kvs_fnc_ismeowner, isMeChanOwner)
 
 /*
 	@doc: chan.ismeadmin
@@ -867,7 +903,7 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismeowner,isMeChanOwner)
 		This function is a [i]shortcut[/i] for [fnc]$chan.isadmin[/fnc]([fnc]$me[/fnc]).[br]
 */
 
-IS_ME_KVS_FUNC(chan_kvs_fnc_ismeadmin,isMeChanAdmin)
+IS_ME_KVS_FUNC(chan_kvs_fnc_ismeadmin, isMeChanAdmin)
 
 /*
 	@doc: chan.ismeop
@@ -887,7 +923,7 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismeadmin,isMeChanAdmin)
 		This function is a [i]shortcut[/i] for [fnc]$chan.isop[/fnc]([fnc]$me[/fnc]).[br]
 */
 
-IS_ME_KVS_FUNC(chan_kvs_fnc_ismeop,isMeOp)
+IS_ME_KVS_FUNC(chan_kvs_fnc_ismeop, isMeOp)
 
 /*
 	@doc: chan.ismehalfop
@@ -907,7 +943,7 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismeop,isMeOp)
 		This function is a [i]shortcut[/i] for [fnc]$chan.ishalfop[/fnc]([fnc]$me[/fnc]).[br]
 */
 
-IS_ME_KVS_FUNC(chan_kvs_fnc_ismehalfop,isMeHalfOp)
+IS_ME_KVS_FUNC(chan_kvs_fnc_ismehalfop, isMeHalfOp)
 
 /*
 	@doc: chan.ismevoice
@@ -927,7 +963,7 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismehalfop,isMeHalfOp)
 		This function is a [i]shortcut[/i] for [fnc]$chan.isvoice[/fnc]([fnc]$me[/fnc]).[br]
 */
 
-IS_ME_KVS_FUNC(chan_kvs_fnc_ismevoice,isMeVoice)
+IS_ME_KVS_FUNC(chan_kvs_fnc_ismevoice, isMeVoice)
 
 /*
 	@doc: chan.ismeuserop
@@ -947,7 +983,7 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismevoice,isMeVoice)
 		This function is a [i]shortcut[/i] for [fnc]$chan.isuserop[/fnc]([fnc]$me[/fnc]).[br]
 */
 
-IS_ME_KVS_FUNC(chan_kvs_fnc_ismeuserop,isMeUserOp)
+IS_ME_KVS_FUNC(chan_kvs_fnc_ismeuserop, isMeUserOp)
 
 /*
 	@doc: chan.mode
@@ -971,9 +1007,9 @@ static bool chan_kvs_fnc_mode(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
 	if(ch)
 	{
 		QString chMode;
@@ -1010,10 +1046,11 @@ static bool chan_kvs_fnc_key(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch) c->returnValue()->setString(ch->hasChannelMode('k') ? ch->channelModeParam('k') : "");
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
+		c->returnValue()->setString(ch->hasChannelMode('k') ? ch->channelModeParam('k') : "");
 	return true;
 }
 
@@ -1044,12 +1081,12 @@ static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
-	if (ch)
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
+	if(ch)
 	{
-		kvs_int_t limit=0;
+		kvs_int_t limit = 0;
 		if(ch->hasChannelMode('l'))
 			limit = ch->channelModeParam('l').toInt();
 		c->returnValue()->setInteger(limit);
@@ -1085,12 +1122,13 @@ static bool chan_kvs_fnc_modeParam(KviKvsModuleFunctionCall * c)
 	QString szId;
 	QString szMode;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("mode",KVS_PT_NONEMPTYSTRING,0,szMode)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)
+	KVSM_PARAMETER("mode", KVS_PT_NONEMPTYSTRING, 0, szMode)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szId);
 	char cMode = szMode.at(0).unicode();
-	if (ch) c->returnValue()->setString(ch->hasChannelMode(cMode) ? ch->channelModeParam(cMode) : "");
+	if(ch)
+		c->returnValue()->setString(ch->hasChannelMode(cMode) ? ch->channelModeParam(cMode) : "");
 	return true;
 }
 
@@ -1152,36 +1190,37 @@ static bool chan_kvs_fnc_modeParam(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_users(KviKvsModuleFunctionCall * c)
 {
-	QString szWinId,szMask,szFlags;
+	QString szWinId, szMask, szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
-		KVSM_PARAMETER("mask",KVS_PT_STRING,KVS_PF_OPTIONAL,szMask)
-		KVSM_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWinId)
+	KVSM_PARAMETER("mask", KVS_PT_STRING, KVS_PF_OPTIONAL, szMask)
+	KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
 	KVSM_PARAMETERS_END(c)
 
 	KviKvsArray * pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
 
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szWinId);
-	if(!ch)return true;
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szWinId);
+	if(!ch)
+		return true;
 
 	KviUserListEntry * e = ch->userListView()->firstItem(); // Thnx Julien :)
 
 	bool bCheckMask = !szMask.isEmpty();
-	bool bOp = szFlags.contains(QChar('o'),Qt::CaseSensitive);
-	bool bVoice = szFlags.contains(QChar('v'),Qt::CaseSensitive);
-	bool bHalfOp = szFlags.contains(QChar('h'),Qt::CaseSensitive);
-	bool bChanAdmins = szFlags.contains(QChar('a'),Qt::CaseSensitive);
-	bool bUserOp = szFlags.contains(QChar('u'),Qt::CaseSensitive);
-	bool bNone = szFlags.contains(QChar('n'),Qt::CaseSensitive);
+	bool bOp = szFlags.contains(QChar('o'), Qt::CaseSensitive);
+	bool bVoice = szFlags.contains(QChar('v'), Qt::CaseSensitive);
+	bool bHalfOp = szFlags.contains(QChar('h'), Qt::CaseSensitive);
+	bool bChanAdmins = szFlags.contains(QChar('a'), Qt::CaseSensitive);
+	bool bUserOp = szFlags.contains(QChar('u'), Qt::CaseSensitive);
+	bool bNone = szFlags.contains(QChar('n'), Qt::CaseSensitive);
 	bool bCheckFlags = bOp || bVoice || bHalfOp || bNone || bChanAdmins || bUserOp;
-	bool bAddMask = szFlags.contains(QChar('m'),Qt::CaseSensitive);
+	bool bAddMask = szFlags.contains(QChar('m'), Qt::CaseSensitive);
 
 	int idx = 0;
 
 	if(bAddMask || bCheckFlags || bCheckMask)
 	{
-		bool bMaskMustMatch = !szFlags.contains(QChar('i'),Qt::CaseSensitive);
+		bool bMaskMustMatch = !szFlags.contains(QChar('i'), Qt::CaseSensitive);
 		KviIrcMask mask(szMask);
 
 		while(e)
@@ -1220,14 +1259,14 @@ static bool chan_kvs_fnc_users(KviKvsModuleFunctionCall * c)
 				}
 				goto next_item;
 			}
-check_mask:
+		check_mask:
 			if(bCheckMask)
 			{
-				if(mask.matchesFixed(e->nick(),e->globalData()->user(),e->globalData()->host()) == bMaskMustMatch)
+				if(mask.matchesFixed(e->nick(), e->globalData()->user(), e->globalData()->host()) == bMaskMustMatch)
 					goto add_item;
 				goto next_item;
 			}
-add_item:
+		add_item:
 			if(bAddMask)
 			{
 				QString x(e->nick());
@@ -1235,23 +1274,26 @@ add_item:
 				x.append(e->globalData()->user());
 				x.append('@');
 				x.append(e->globalData()->host());
-				pArray->set(idx,new KviKvsVariant(x));
-			} else {
-				pArray->set(idx,new KviKvsVariant(e->nick()));
+				pArray->set(idx, new KviKvsVariant(x));
+			}
+			else
+			{
+				pArray->set(idx, new KviKvsVariant(e->nick()));
 			}
 			idx++;
-next_item:
+		next_item:
 			e = e->next();
 		}
-	} else {
+	}
+	else
+	{
 		while(e)
 		{
-			pArray->set(idx,new KviKvsVariant(e->nick()));
+			pArray->set(idx, new KviKvsVariant(e->nick()));
 			idx++;
 			e = e->next();
 		}
 	}
-
 
 	return true;
 }
@@ -1278,26 +1320,28 @@ next_item:
 
 static bool chan_kvs_fnc_banlist(KviKvsModuleFunctionCall * c)
 {
-	QString szWinId,szMask,szFlags;
+	QString szWinId, szMask, szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWinId)
 	KVSM_PARAMETERS_END(c)
 
 	KviKvsArray * pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
 
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szWinId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szWinId);
 
-	if(!ch)return true;
+	if(!ch)
+		return true;
 
 	int idx = 0;
 
 	KviPointerList<KviMaskEntry> * l = ch->modeMasks('b');
-	if(!l) return true;
+	if(!l)
+		return true;
 
-	for(KviMaskEntry * e = l->first();e;e = l->next())
+	for(KviMaskEntry * e = l->first(); e; e = l->next())
 	{
-		pArray->set(idx,new KviKvsVariant(e->szMask));
+		pArray->set(idx, new KviKvsVariant(e->szMask));
 		idx++;
 	}
 
@@ -1326,26 +1370,28 @@ static bool chan_kvs_fnc_banlist(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
 {
-	QString szWinId,szMask,szFlags;
+	QString szWinId, szMask, szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWinId)
 	KVSM_PARAMETERS_END(c)
 
 	KviKvsArray * pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
 
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szWinId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szWinId);
 
-	if(!ch)return true;
+	if(!ch)
+		return true;
 
 	int idx = 0;
 
 	KviPointerList<KviMaskEntry> * l = ch->modeMasks('e');
-	if(!l) return true;
+	if(!l)
+		return true;
 
-	for(KviMaskEntry * e = l->first();e;e = l->next())
+	for(KviMaskEntry * e = l->first(); e; e = l->next())
 	{
-		pArray->set(idx,new KviKvsVariant(e->szMask));
+		pArray->set(idx, new KviKvsVariant(e->szMask));
 		idx++;
 	}
 
@@ -1374,26 +1420,28 @@ static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_invitelist(KviKvsModuleFunctionCall * c)
 {
-	QString szWinId,szMask,szFlags;
+	QString szWinId, szMask, szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWinId)
 	KVSM_PARAMETERS_END(c)
 
 	KviKvsArray * pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
 
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szWinId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szWinId);
 
-	if(!ch)return true;
+	if(!ch)
+		return true;
 
 	int idx = 0;
 
 	KviPointerList<KviMaskEntry> * l = ch->modeMasks('I');
-	if(!l) return true;
+	if(!l)
+		return true;
 
-	for(KviMaskEntry * e = l->first();e;e = l->next())
+	for(KviMaskEntry * e = l->first(); e; e = l->next())
 	{
-		pArray->set(idx,new KviKvsVariant(e->szMask));
+		pArray->set(idx, new KviKvsVariant(e->szMask));
 		idx++;
 	}
 
@@ -1422,10 +1470,10 @@ static bool chan_kvs_fnc_invitelist(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_masklist(KviKvsModuleFunctionCall * c)
 {
-	QString szWinId,szMask,szMode;
+	QString szWinId, szMask, szMode;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("mode",KVS_PT_NONEMPTYSTRING,0,szMode)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
+	KVSM_PARAMETER("mode", KVS_PT_NONEMPTYSTRING, 0, szMode)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWinId)
 	KVSM_PARAMETERS_END(c)
 
 	char cMode = szMode.at(0).unicode();
@@ -1433,18 +1481,20 @@ static bool chan_kvs_fnc_masklist(KviKvsModuleFunctionCall * c)
 	KviKvsArray * pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
 
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szWinId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szWinId);
 
-	if(!ch)return true;
+	if(!ch)
+		return true;
 
 	int idx = 0;
 
 	KviPointerList<KviMaskEntry> * l = ch->modeMasks(cMode);
-	if(!l) return true;
+	if(!l)
+		return true;
 
-	for(KviMaskEntry * e = l->first();e;e = l->next())
+	for(KviMaskEntry * e = l->first(); e; e = l->next())
 	{
-		pArray->set(idx,new KviKvsVariant(e->szMask));
+		pArray->set(idx, new KviKvsVariant(e->szMask));
 		idx++;
 	}
 
@@ -1471,13 +1521,13 @@ static bool chan_kvs_fnc_masklist(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
 {
-	QString szWinId,szMask;
+	QString szWinId, szMask;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,0,szWinId)
-		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szMask)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, 0, szWinId)
+	KVSM_PARAMETER("mask", KVS_PT_STRING, 0, szMask)
 	KVSM_PARAMETERS_END(c)
 
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szWinId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szWinId);
 
 	if(!ch)
 	{
@@ -1492,9 +1542,9 @@ static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	for(KviMaskEntry * e = l->first();e;e = l->next())
+	for(KviMaskEntry * e = l->first(); e; e = l->next())
 	{
-		if(KviQString::matchString(e->szMask,szMask))
+		if(KviQString::matchString(e->szMask, szMask))
 		{
 			c->returnValue()->setString(e->szMask);
 			return true;
@@ -1525,13 +1575,13 @@ static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
 {
-	QString szWinId,szMask;
+	QString szWinId, szMask;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,0,szWinId)
-		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szMask)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, 0, szWinId)
+	KVSM_PARAMETER("mask", KVS_PT_STRING, 0, szMask)
 	KVSM_PARAMETERS_END(c)
 
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szWinId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szWinId);
 
 	if(!ch)
 	{
@@ -1546,9 +1596,9 @@ static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	for(KviMaskEntry * e = l->first();e;e = l->next())
+	for(KviMaskEntry * e = l->first(); e; e = l->next())
 	{
-		if(KviQString::matchString(e->szMask,szMask))
+		if(KviQString::matchString(e->szMask, szMask))
 		{
 			c->returnValue()->setString(e->szMask);
 			return true;
@@ -1579,13 +1629,13 @@ static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 {
-	QString szWinId,szMask;
+	QString szWinId, szMask;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,0,szWinId)
-		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szMask)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, 0, szWinId)
+	KVSM_PARAMETER("mask", KVS_PT_STRING, 0, szMask)
 	KVSM_PARAMETERS_END(c)
 
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szWinId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szWinId);
 
 	if(!ch)
 	{
@@ -1600,9 +1650,9 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	for(KviMaskEntry * e = l->first();e;e = l->next())
+	for(KviMaskEntry * e = l->first(); e; e = l->next())
 	{
-		if(KviQString::matchString(e->szMask,szMask))
+		if(KviQString::matchString(e->szMask, szMask))
 		{
 			c->returnValue()->setString(e->szMask);
 			return true;
@@ -1639,13 +1689,13 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
 {
-	QString szWinId,szMask;
+	QString szWinId, szMask;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,0,szWinId)
-		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szMask)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, 0, szWinId)
+	KVSM_PARAMETER("mask", KVS_PT_STRING, 0, szMask)
 	KVSM_PARAMETERS_END(c)
 
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szWinId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szWinId);
 	szMask.prepend('%');
 
 	if(!ch)
@@ -1661,9 +1711,9 @@ static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	for(KviMaskEntry * e = l->first();e;e = l->next())
+	for(KviMaskEntry * e = l->first(); e; e = l->next())
 	{
-		if(KviQString::matchString(e->szMask,szMask))
+		if(KviQString::matchString(e->szMask, szMask))
 		{
 			c->returnValue()->setString(e->szMask);
 			return true;
@@ -1695,16 +1745,16 @@ static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_matchmask(KviKvsModuleFunctionCall * c)
 {
-	QString szWinId,szMask,szMode;
+	QString szWinId, szMask, szMode;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("mode",KVS_PT_NONEMPTYSTRING,0,szMode)
-		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szMask)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
+	KVSM_PARAMETER("mode", KVS_PT_NONEMPTYSTRING, 0, szMode)
+	KVSM_PARAMETER("mask", KVS_PT_STRING, 0, szMask)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWinId)
 	KVSM_PARAMETERS_END(c)
 
 	char cMode = szMode.at(0).unicode();
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szWinId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szWinId);
 
 	if(!ch)
 	{
@@ -1719,9 +1769,9 @@ static bool chan_kvs_fnc_matchmask(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	for(KviMaskEntry * e = l->first();e;e = l->next())
+	for(KviMaskEntry * e = l->first(); e; e = l->next())
 	{
-		if(KviQString::matchString(e->szMask,szMask))
+		if(KviQString::matchString(e->szMask, szMask))
 		{
 			c->returnValue()->setString(e->szMask);
 			return true;
@@ -1760,15 +1810,16 @@ static bool chan_kvs_fnc_matchmask(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_usermodelevel(KviKvsModuleFunctionCall * c)
 {
-	QString szNick,szWinId;
+	QString szNick, szWinId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("nickname",KVS_PT_STRING,0,szNick)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
+	KVSM_PARAMETER("nickname", KVS_PT_STRING, 0, szNick)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWinId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szWinId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szWinId);
 
-	kvs_int_t mode=0;
-	if(ch) mode=ch->userListView()->getUserModeLevel(szNick);
+	kvs_int_t mode = 0;
+	if(ch)
+		mode = ch->userListView()->getUserModeLevel(szNick);
 	c->returnValue()->setInteger(mode);
 	return true;
 }
@@ -1796,15 +1847,16 @@ static bool chan_kvs_fnc_usermodelevel(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_userjointime(KviKvsModuleFunctionCall * c)
 {
-	QString szNick,szWinId;
+	QString szNick, szWinId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("nickname",KVS_PT_STRING,0,szNick)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
+	KVSM_PARAMETER("nickname", KVS_PT_STRING, 0, szNick)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWinId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szWinId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szWinId);
 
-	kvs_int_t time=0;
-	if(ch) time=ch->userListView()->getUserJoinTime(szNick);
+	kvs_int_t time = 0;
+	if(ch)
+		time = ch->userListView()->getUserJoinTime(szNick);
 	c->returnValue()->setInteger(time);
 	return true;
 }
@@ -1833,15 +1885,16 @@ static bool chan_kvs_fnc_userjointime(KviKvsModuleFunctionCall * c)
 
 static bool chan_kvs_fnc_userlastactiontime(KviKvsModuleFunctionCall * c)
 {
-	QString szNick,szWinId;
+	QString szNick, szWinId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("nickname",KVS_PT_STRING,0,szNick)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWinId)
+	KVSM_PARAMETER("nickname", KVS_PT_STRING, 0, szNick)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWinId)
 	KVSM_PARAMETERS_END(c)
-	KviChannelWindow * ch = chan_kvs_find_channel(c,szWinId);
+	KviChannelWindow * ch = chan_kvs_find_channel(c, szWinId);
 
-	kvs_int_t time=0;
-	if(ch) time=ch->userListView()->getUserLastActionTime(szNick);
+	kvs_int_t time = 0;
+	if(ch)
+		time = ch->userListView()->getUserLastActionTime(szNick);
 	c->returnValue()->setInteger(time);
 	return true;
 }
@@ -1868,8 +1921,8 @@ static bool chan_kvs_fnc_common(KviKvsModuleFunctionCall * c)
 	kvs_uint_t iContextId;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("nickname",KVS_PT_STRING,0,szNick)
-		KVSM_PARAMETER("context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,iContextId) \
+	KVSM_PARAMETER("nickname", KVS_PT_STRING, 0, szNick)
+	KVSM_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, iContextId)
 	KVSM_PARAMETERS_END(c)
 
 	KviConsoleWindow * pConsole = NULL;
@@ -1880,7 +1933,7 @@ static bool chan_kvs_fnc_common(KviKvsModuleFunctionCall * c)
 
 	if(pConsole && pConsole->connection())
 	{
-		pConsole->connection()->getCommonChannels(szNick,szChans,false);
+		pConsole->connection()->getCommonChannels(szNick, szChans, false);
 		c->returnValue()->setString(szChans);
 	}
 
@@ -1889,55 +1942,55 @@ static bool chan_kvs_fnc_common(KviKvsModuleFunctionCall * c)
 
 static bool chan_module_init(KviModule * m)
 {
-	KVSM_REGISTER_FUNCTION(m,"admincount",chan_kvs_fnc_admincount);
-	KVSM_REGISTER_FUNCTION(m,"bancount",chan_kvs_fnc_bancount);
-	KVSM_REGISTER_FUNCTION(m,"banexceptioncount",chan_kvs_fnc_banexceptioncount);
-	KVSM_REGISTER_FUNCTION(m,"banexceptionlist",chan_kvs_fnc_banexceptionlist);
-	KVSM_REGISTER_FUNCTION(m,"banlist",chan_kvs_fnc_banlist);
-	KVSM_REGISTER_FUNCTION(m,"common",chan_kvs_fnc_common);
-	KVSM_REGISTER_FUNCTION(m,"getflag",chan_kvs_fnc_getflag);
-	KVSM_REGISTER_FUNCTION(m,"geturl",chan_kvs_fnc_getUrl);
-	KVSM_REGISTER_FUNCTION(m,"halfopcount",chan_kvs_fnc_halfopcount);
-	KVSM_REGISTER_FUNCTION(m,"invitecount",chan_kvs_fnc_invitecount);
-	KVSM_REGISTER_FUNCTION(m,"invitelist",chan_kvs_fnc_invitelist);
-	KVSM_REGISTER_FUNCTION(m,"isadmin",chan_kvs_fnc_isadmin);
-	KVSM_REGISTER_FUNCTION(m,"isdead",chan_kvs_fnc_isdead);
-	KVSM_REGISTER_FUNCTION(m,"ishalfop",chan_kvs_fnc_ishalfop);
-	KVSM_REGISTER_FUNCTION(m,"ismeadmin",chan_kvs_fnc_ismeadmin);
-	KVSM_REGISTER_FUNCTION(m,"ismehalfop",chan_kvs_fnc_ismehalfop);
-	KVSM_REGISTER_FUNCTION(m,"ismeop",chan_kvs_fnc_ismeop);
-	KVSM_REGISTER_FUNCTION(m,"ismeowner",chan_kvs_fnc_ismeowner);
-	KVSM_REGISTER_FUNCTION(m,"ismeuserop",chan_kvs_fnc_ismeuserop);
-	KVSM_REGISTER_FUNCTION(m,"ismevoice",chan_kvs_fnc_ismevoice);
-	KVSM_REGISTER_FUNCTION(m,"ison",chan_kvs_fnc_ison);
-	KVSM_REGISTER_FUNCTION(m,"isop",chan_kvs_fnc_isop);
-	KVSM_REGISTER_FUNCTION(m,"isowner",chan_kvs_fnc_isowner);
-	KVSM_REGISTER_FUNCTION(m,"isuserop",chan_kvs_fnc_isuserop);
-	KVSM_REGISTER_FUNCTION(m,"isvoice",chan_kvs_fnc_isvoice);
-	KVSM_REGISTER_FUNCTION(m,"key",chan_kvs_fnc_key);
-	KVSM_REGISTER_FUNCTION(m,"limit",chan_kvs_fnc_limit);
-	KVSM_REGISTER_FUNCTION(m,"masklist",chan_kvs_fnc_masklist);
-	KVSM_REGISTER_FUNCTION(m,"maskcount",chan_kvs_fnc_maskcount);
-	KVSM_REGISTER_FUNCTION(m,"matchban",chan_kvs_fnc_matchban);
-	KVSM_REGISTER_FUNCTION(m,"matchqban",chan_kvs_fnc_matchqban);
-	KVSM_REGISTER_FUNCTION(m,"matchbanexception",chan_kvs_fnc_matchbanexception);
-	KVSM_REGISTER_FUNCTION(m,"matchinvite",chan_kvs_fnc_matchinvite);
-	KVSM_REGISTER_FUNCTION(m,"matchmask",chan_kvs_fnc_matchmask);
-	KVSM_REGISTER_FUNCTION(m,"mode",chan_kvs_fnc_mode);
-	KVSM_REGISTER_FUNCTION(m,"modeParam",chan_kvs_fnc_modeParam);
-	KVSM_REGISTER_FUNCTION(m,"name",chan_kvs_fnc_name);
-	KVSM_REGISTER_FUNCTION(m,"opcount",chan_kvs_fnc_opcount);
-	KVSM_REGISTER_FUNCTION(m,"ownercount",chan_kvs_fnc_ownercount);
-	KVSM_REGISTER_FUNCTION(m,"topic",chan_kvs_fnc_topic);
-	KVSM_REGISTER_FUNCTION(m,"topicsetat",chan_kvs_fnc_topicsetat);
-	KVSM_REGISTER_FUNCTION(m,"topicsetby",chan_kvs_fnc_topicsetby);
-	KVSM_REGISTER_FUNCTION(m,"usercount",chan_kvs_fnc_usercount);
-	KVSM_REGISTER_FUNCTION(m,"userjointime",chan_kvs_fnc_userjointime);
-	KVSM_REGISTER_FUNCTION(m,"userlastactiontime",chan_kvs_fnc_userlastactiontime);
-	KVSM_REGISTER_FUNCTION(m,"usermodelevel",chan_kvs_fnc_usermodelevel);
-	KVSM_REGISTER_FUNCTION(m,"useropcount",chan_kvs_fnc_useropcount);
-	KVSM_REGISTER_FUNCTION(m,"users",chan_kvs_fnc_users);
-	KVSM_REGISTER_FUNCTION(m,"voicecount",chan_kvs_fnc_voicecount);
+	KVSM_REGISTER_FUNCTION(m, "admincount", chan_kvs_fnc_admincount);
+	KVSM_REGISTER_FUNCTION(m, "bancount", chan_kvs_fnc_bancount);
+	KVSM_REGISTER_FUNCTION(m, "banexceptioncount", chan_kvs_fnc_banexceptioncount);
+	KVSM_REGISTER_FUNCTION(m, "banexceptionlist", chan_kvs_fnc_banexceptionlist);
+	KVSM_REGISTER_FUNCTION(m, "banlist", chan_kvs_fnc_banlist);
+	KVSM_REGISTER_FUNCTION(m, "common", chan_kvs_fnc_common);
+	KVSM_REGISTER_FUNCTION(m, "getflag", chan_kvs_fnc_getflag);
+	KVSM_REGISTER_FUNCTION(m, "geturl", chan_kvs_fnc_getUrl);
+	KVSM_REGISTER_FUNCTION(m, "halfopcount", chan_kvs_fnc_halfopcount);
+	KVSM_REGISTER_FUNCTION(m, "invitecount", chan_kvs_fnc_invitecount);
+	KVSM_REGISTER_FUNCTION(m, "invitelist", chan_kvs_fnc_invitelist);
+	KVSM_REGISTER_FUNCTION(m, "isadmin", chan_kvs_fnc_isadmin);
+	KVSM_REGISTER_FUNCTION(m, "isdead", chan_kvs_fnc_isdead);
+	KVSM_REGISTER_FUNCTION(m, "ishalfop", chan_kvs_fnc_ishalfop);
+	KVSM_REGISTER_FUNCTION(m, "ismeadmin", chan_kvs_fnc_ismeadmin);
+	KVSM_REGISTER_FUNCTION(m, "ismehalfop", chan_kvs_fnc_ismehalfop);
+	KVSM_REGISTER_FUNCTION(m, "ismeop", chan_kvs_fnc_ismeop);
+	KVSM_REGISTER_FUNCTION(m, "ismeowner", chan_kvs_fnc_ismeowner);
+	KVSM_REGISTER_FUNCTION(m, "ismeuserop", chan_kvs_fnc_ismeuserop);
+	KVSM_REGISTER_FUNCTION(m, "ismevoice", chan_kvs_fnc_ismevoice);
+	KVSM_REGISTER_FUNCTION(m, "ison", chan_kvs_fnc_ison);
+	KVSM_REGISTER_FUNCTION(m, "isop", chan_kvs_fnc_isop);
+	KVSM_REGISTER_FUNCTION(m, "isowner", chan_kvs_fnc_isowner);
+	KVSM_REGISTER_FUNCTION(m, "isuserop", chan_kvs_fnc_isuserop);
+	KVSM_REGISTER_FUNCTION(m, "isvoice", chan_kvs_fnc_isvoice);
+	KVSM_REGISTER_FUNCTION(m, "key", chan_kvs_fnc_key);
+	KVSM_REGISTER_FUNCTION(m, "limit", chan_kvs_fnc_limit);
+	KVSM_REGISTER_FUNCTION(m, "masklist", chan_kvs_fnc_masklist);
+	KVSM_REGISTER_FUNCTION(m, "maskcount", chan_kvs_fnc_maskcount);
+	KVSM_REGISTER_FUNCTION(m, "matchban", chan_kvs_fnc_matchban);
+	KVSM_REGISTER_FUNCTION(m, "matchqban", chan_kvs_fnc_matchqban);
+	KVSM_REGISTER_FUNCTION(m, "matchbanexception", chan_kvs_fnc_matchbanexception);
+	KVSM_REGISTER_FUNCTION(m, "matchinvite", chan_kvs_fnc_matchinvite);
+	KVSM_REGISTER_FUNCTION(m, "matchmask", chan_kvs_fnc_matchmask);
+	KVSM_REGISTER_FUNCTION(m, "mode", chan_kvs_fnc_mode);
+	KVSM_REGISTER_FUNCTION(m, "modeParam", chan_kvs_fnc_modeParam);
+	KVSM_REGISTER_FUNCTION(m, "name", chan_kvs_fnc_name);
+	KVSM_REGISTER_FUNCTION(m, "opcount", chan_kvs_fnc_opcount);
+	KVSM_REGISTER_FUNCTION(m, "ownercount", chan_kvs_fnc_ownercount);
+	KVSM_REGISTER_FUNCTION(m, "topic", chan_kvs_fnc_topic);
+	KVSM_REGISTER_FUNCTION(m, "topicsetat", chan_kvs_fnc_topicsetat);
+	KVSM_REGISTER_FUNCTION(m, "topicsetby", chan_kvs_fnc_topicsetby);
+	KVSM_REGISTER_FUNCTION(m, "usercount", chan_kvs_fnc_usercount);
+	KVSM_REGISTER_FUNCTION(m, "userjointime", chan_kvs_fnc_userjointime);
+	KVSM_REGISTER_FUNCTION(m, "userlastactiontime", chan_kvs_fnc_userlastactiontime);
+	KVSM_REGISTER_FUNCTION(m, "usermodelevel", chan_kvs_fnc_usermodelevel);
+	KVSM_REGISTER_FUNCTION(m, "useropcount", chan_kvs_fnc_useropcount);
+	KVSM_REGISTER_FUNCTION(m, "users", chan_kvs_fnc_users);
+	KVSM_REGISTER_FUNCTION(m, "voicecount", chan_kvs_fnc_voicecount);
 
 	return true;
 }
@@ -1948,14 +2001,13 @@ static bool chan_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Chan",                                                  // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)"\
-	"          (C) 2002 Juanjo Alvarez (juanjux at yahoo dot es)",
-	"Scripting interface for the channel management",
-	chan_module_init,
-	0,
-	0,
-	chan_module_cleanup,
-	0
-)
+    "Chan",  // module name
+    "4.0.0", // module version
+    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)"
+    "          (C) 2002 Juanjo Alvarez (juanjux at yahoo dot es)",
+    "Scripting interface for the channel management",
+    chan_module_init,
+    0,
+    0,
+    chan_module_cleanup,
+    0)

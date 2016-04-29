@@ -43,85 +43,95 @@ the help page for python.begin is in the python module
 perl.begin(context) <perl code> perl.end
 python.begin <python code> python.end
 */
-#define IMPLEMENT_EXTERNAL_INTERPRETER_BEGIN(__name) \
-	KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommand##__name##Begin() \
-	{ \
-		const QChar * pBegin = KVSP_curCharPointer; \
-		\
-		skipSpaces(); \
-		KviKvsTreeNodeDataList * dl; \
-		if(KVSP_curCharUnicode == '(') \
-		{ \
-			dl = parseCommaSeparatedParameterList(); \
-			if(!dl) return 0; \
-		} else { \
-			dl = new KviKvsTreeNodeDataList(pBegin); \
-		} \
-		\
-		if(!KVSP_curCharIsEndOfBuffer) KVSP_skipChar; \
-		\
-		if(!skipSpacesAndNewlines()) \
-		{ \
-			delete dl; \
-			return 0; \
-		} \
-		\
-		/* allow a ';' after [interpreter].begin */ \
-		if(KVSP_curCharIsEndOfCommand && !KVSP_curCharIsEndOfBuffer) \
-		{ \
-			KVSP_skipChar; \
-			if(!skipSpacesAndNewlines()) \
-			{ \
-				delete dl; \
-				return 0; \
-			} \
-		} \
-		\
-		const QChar * pInterpreterBegin = KVSP_curCharPointer; \
-		QString szName; \
-		szName.sprintf("%s",#__name); \
-		szName = szName.toLower(); \
-		\
-		/* now look for [interpreter].end[terminator] */ \
-		QString szInterpreterEnd(szName); \
-		szInterpreterEnd += ".end"; \
-		const QChar * pInterpreterEnd; \
-		for(;;) \
-		{ \
-			while(KVSP_curCharUnicode && (KVSP_curCharUnicode != 'p') && (KVSP_curCharUnicode != 'P')) \
-				KVSP_skipChar; \
-			if(KVSP_curCharIsEndOfBuffer) \
-			{ \
-				delete dl; \
-				QString szErr = "Unexpected end of command buffer while looking for the "; \
-				szErr += szInterpreterEnd; \
-				szErr += " statement"; \
-				\
-				error(KVSP_curCharPointer,__tr2qs_ctx(szErr.toUtf8().data(),"kvs")); \
-				return 0; \
-			} \
-			pInterpreterEnd = KVSP_curCharPointer; \
-			\
-			if(KviQString::equalCIN(szInterpreterEnd,KVSP_curCharPointer,szInterpreterEnd.size())) \
-			{ \
-				KVSP_skipNChars(szInterpreterEnd.size()); \
-				if(KVSP_curCharIsEndOfCommand || (KVSP_curCharUnicode == ' ') || (KVSP_curCharUnicode == '\t')) \
-				{ \
-					/* yeah! */ \
-					QString szInterpreter(pInterpreterBegin,pInterpreterEnd - pInterpreterBegin); \
-					dl->prependItem(new KviKvsTreeNodeConstantData(pInterpreterBegin,new KviKvsVariant(szInterpreter))); \
-					while(!KVSP_curCharIsEndOfCommand) KVSP_skipChar; \
-					if(!KVSP_curCharIsEndOfBuffer) KVSP_skipChar; \
-					break; \
-				} else { \
-					KVSP_backNChars(szInterpreterEnd.size()-1); \
-				} \
-			} else { \
-				KVSP_skipChar; \
-			} \
-		} \
-		\
-		return new KviKvsTreeNodeModuleSimpleCommand(pBegin,szName,"begin",dl); \
+#define IMPLEMENT_EXTERNAL_INTERPRETER_BEGIN(__name)                                                                      \
+	KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommand##__name##Begin()                                            \
+	{                                                                                                                     \
+		const QChar * pBegin = KVSP_curCharPointer;                                                                       \
+                                                                                                                          \
+		skipSpaces();                                                                                                     \
+		KviKvsTreeNodeDataList * dl;                                                                                      \
+		if(KVSP_curCharUnicode == '(')                                                                                    \
+		{                                                                                                                 \
+			dl = parseCommaSeparatedParameterList();                                                                      \
+			if(!dl)                                                                                                       \
+				return 0;                                                                                                 \
+		}                                                                                                                 \
+		else                                                                                                              \
+		{                                                                                                                 \
+			dl = new KviKvsTreeNodeDataList(pBegin);                                                                      \
+		}                                                                                                                 \
+                                                                                                                          \
+		if(!KVSP_curCharIsEndOfBuffer)                                                                                    \
+			KVSP_skipChar;                                                                                                \
+                                                                                                                          \
+		if(!skipSpacesAndNewlines())                                                                                      \
+		{                                                                                                                 \
+			delete dl;                                                                                                    \
+			return 0;                                                                                                     \
+		}                                                                                                                 \
+                                                                                                                          \
+		/* allow a ';' after [interpreter].begin */                                                                       \
+		if(KVSP_curCharIsEndOfCommand && !KVSP_curCharIsEndOfBuffer)                                                      \
+		{                                                                                                                 \
+			KVSP_skipChar;                                                                                                \
+			if(!skipSpacesAndNewlines())                                                                                  \
+			{                                                                                                             \
+				delete dl;                                                                                                \
+				return 0;                                                                                                 \
+			}                                                                                                             \
+		}                                                                                                                 \
+                                                                                                                          \
+		const QChar * pInterpreterBegin = KVSP_curCharPointer;                                                            \
+		QString szName;                                                                                                   \
+		szName.sprintf("%s", #__name);                                                                                    \
+		szName = szName.toLower();                                                                                        \
+                                                                                                                          \
+		/* now look for [interpreter].end[terminator] */                                                                  \
+		QString szInterpreterEnd(szName);                                                                                 \
+		szInterpreterEnd += ".end";                                                                                       \
+		const QChar * pInterpreterEnd;                                                                                    \
+		for(;;)                                                                                                           \
+		{                                                                                                                 \
+			while(KVSP_curCharUnicode && (KVSP_curCharUnicode != 'p') && (KVSP_curCharUnicode != 'P'))                    \
+				KVSP_skipChar;                                                                                            \
+			if(KVSP_curCharIsEndOfBuffer)                                                                                 \
+			{                                                                                                             \
+				delete dl;                                                                                                \
+				QString szErr = "Unexpected end of command buffer while looking for the ";                                \
+				szErr += szInterpreterEnd;                                                                                \
+				szErr += " statement";                                                                                    \
+                                                                                                                          \
+				error(KVSP_curCharPointer, __tr2qs_ctx(szErr.toUtf8().data(), "kvs"));                                    \
+				return 0;                                                                                                 \
+			}                                                                                                             \
+			pInterpreterEnd = KVSP_curCharPointer;                                                                        \
+                                                                                                                          \
+			if(KviQString::equalCIN(szInterpreterEnd, KVSP_curCharPointer, szInterpreterEnd.size()))                      \
+			{                                                                                                             \
+				KVSP_skipNChars(szInterpreterEnd.size());                                                                 \
+				if(KVSP_curCharIsEndOfCommand || (KVSP_curCharUnicode == ' ') || (KVSP_curCharUnicode == '\t'))           \
+				{                                                                                                         \
+					/* yeah! */                                                                                           \
+					QString szInterpreter(pInterpreterBegin, pInterpreterEnd - pInterpreterBegin);                        \
+					dl->prependItem(new KviKvsTreeNodeConstantData(pInterpreterBegin, new KviKvsVariant(szInterpreter))); \
+					while(!KVSP_curCharIsEndOfCommand)                                                                    \
+						KVSP_skipChar;                                                                                    \
+					if(!KVSP_curCharIsEndOfBuffer)                                                                        \
+						KVSP_skipChar;                                                                                    \
+					break;                                                                                                \
+				}                                                                                                         \
+				else                                                                                                      \
+				{                                                                                                         \
+					KVSP_backNChars(szInterpreterEnd.size() - 1);                                                         \
+				}                                                                                                         \
+			}                                                                                                             \
+			else                                                                                                          \
+			{                                                                                                             \
+				KVSP_skipChar;                                                                                            \
+			}                                                                                                             \
+		}                                                                                                                 \
+                                                                                                                          \
+		return new KviKvsTreeNodeModuleSimpleCommand(pBegin, szName, "begin", dl);                                        \
 	}
 
 IMPLEMENT_EXTERNAL_INTERPRETER_BEGIN(Perl)
@@ -149,11 +159,13 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandBreak()
 	skipSpaces();
 	if(!KVSP_curCharIsEndOfCommand)
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("Trailing garbage at the end of the break command: ignored","kvs"));
+		warning(KVSP_curCharPointer, __tr2qs_ctx("Trailing garbage at the end of the break command: ignored", "kvs"));
 	}
 
-	while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
-	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
+	while(!KVSP_curCharIsEndOfCommand)
+		KVSP_skipChar;
+	if(!KVSP_curCharIsEndOfBuffer)
+		KVSP_skipChar;
 	return new KviKvsTreeNodeSpecialCommandBreak(pBegin);
 }
 
@@ -177,11 +189,13 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandContinue()
 	skipSpaces();
 	if(!KVSP_curCharIsEndOfCommand)
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("Trailing garbage at the end of the continue command: ignored","kvs"));
+		warning(KVSP_curCharPointer, __tr2qs_ctx("Trailing garbage at the end of the continue command: ignored", "kvs"));
 	}
 
-	while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
-	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
+	while(!KVSP_curCharIsEndOfCommand)
+		KVSP_skipChar;
+	if(!KVSP_curCharIsEndOfBuffer)
+		KVSP_skipChar;
 	return new KviKvsTreeNodeSpecialCommandContinue(pBegin);
 }
 
@@ -244,20 +258,21 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandUnset()
 	if(!KVSP_curCharIsEndOfCommand)
 	{
 		delete pVarList;
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'unset' command needs a variable list","kvs"));
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a variable was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		warning(KVSP_curCharPointer, __tr2qs_ctx("The 'unset' command needs a variable list", "kvs"));
+		error(KVSP_curCharPointer, __tr2qs_ctx("Found character %q (Unicode %x) where a variable was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 		return 0;
 	}
 
-	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
+	if(!KVSP_curCharIsEndOfBuffer)
+		KVSP_skipChar;
 
 	if(pVarList->count() < 1)
 	{
 		delete pVarList;
-		warning(KVSP_curCharPointer,__tr2qs_ctx("'unset' command used without a variable list","kvs"));
+		warning(KVSP_curCharPointer, __tr2qs_ctx("'unset' command used without a variable list", "kvs"));
 		return 0; // null unset ?
 	}
-	return new KviKvsTreeNodeSpecialCommandUnset(pCmdBegin,pVarList);
+	return new KviKvsTreeNodeSpecialCommandUnset(pCmdBegin, pVarList);
 }
 
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandGlobal()
@@ -291,17 +306,17 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandGlobal()
 		KVSP_skipChar;
 		const QChar * pBegin = KVSP_curCharPointer;
 
+		while((KVSP_curCharIsLetterOrNumber) || (KVSP_curCharUnicode == '_'))
+			KVSP_skipChar;
 
-		while((KVSP_curCharIsLetterOrNumber) || (KVSP_curCharUnicode == '_'))KVSP_skipChar;
-
-		QString szIdentifier(pBegin,KVSP_curCharPointer - pBegin);
+		QString szIdentifier(pBegin, KVSP_curCharPointer - pBegin);
 
 		if(!m_pGlobals)
 		{
-			m_pGlobals = new KviPointerHashTable<QString,QString>(17,false);
+			m_pGlobals = new KviPointerHashTable<QString, QString>(17, false);
 			m_pGlobals->setAutoDelete(true);
 		}
-		m_pGlobals->replace(szIdentifier,new QString());
+		m_pGlobals->replace(szIdentifier, new QString());
 
 		skipSpaces();
 
@@ -314,12 +329,13 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandGlobal()
 
 	if(!KVSP_curCharIsEndOfCommand)
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'global' command needs a list of variables","kvs"));
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a variable was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		warning(KVSP_curCharPointer, __tr2qs_ctx("The 'global' command needs a list of variables", "kvs"));
+		error(KVSP_curCharPointer, __tr2qs_ctx("Found character %q (Unicode %x) where a variable was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 		return 0;
 	}
 
-	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
+	if(!KVSP_curCharIsEndOfBuffer)
+		KVSP_skipChar;
 	return 0;
 }
 
@@ -414,16 +430,17 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 
 	if(KVSP_curCharUnicode != '(')
 	{
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where an open parenthesis was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		error(KVSP_curCharPointer, __tr2qs_ctx("Found character %q (Unicode %x) where an open parenthesis was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 		return 0;
 	}
 
 	const QChar * pBegin = KVSP_curCharPointer;
 
 	KviKvsTreeNodeDataList * l = parseCommaSeparatedParameterList();
-	if(!l)return 0;
+	if(!l)
+		return 0;
 
-	KviKvsTreeNodeSpecialCommandClass * pClass = new KviKvsTreeNodeSpecialCommandClass(pBegin,l);
+	KviKvsTreeNodeSpecialCommandClass * pClass = new KviKvsTreeNodeSpecialCommandClass(pBegin, l);
 
 	if(!skipSpacesAndNewlines())
 	{
@@ -433,7 +450,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 
 	if(KVSP_curCharUnicode != '{')
 	{
-		errorBadChar(KVSP_curCharPointer,'{',"class");
+		errorBadChar(KVSP_curCharPointer, '{', "class");
 		delete pClass;
 		return 0;
 	}
@@ -469,24 +486,25 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 		if(KVSP_curCharIsLetter)
 		{
 			KVSP_skipChar;
-			while(KVSP_curCharIsLetterOrNumber)KVSP_skipChar;
+			while(KVSP_curCharIsLetterOrNumber)
+				KVSP_skipChar;
 		}
 
 		if(KVSP_curCharIsEndOfBuffer)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of buffer in class definition","kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of buffer in class definition", "kvs"));
 			delete pClass;
 			return 0;
 		}
 
 		if(KVSP_curCharPointer == pLabelBegin)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a function name was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+			error(KVSP_curCharPointer, __tr2qs_ctx("Found character %q (Unicode %x) where a function name was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 			delete pClass;
 			return 0;
 		}
 
-		QString szLabel(pLabelBegin,KVSP_curCharPointer - pLabelBegin);
+		QString szLabel(pLabelBegin, KVSP_curCharPointer - pLabelBegin);
 
 		unsigned int uHandlerFlags = 0;
 
@@ -498,25 +516,25 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			{
 				pLabelBegin = KVSP_curCharPointer;
 
-				while(KVSP_curCharIsLetterOrNumber)KVSP_skipChar;
+				while(KVSP_curCharIsLetterOrNumber)
+					KVSP_skipChar;
 
 				if(KVSP_curCharIsEndOfBuffer)
 				{
-					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of buffer in class definition","kvs"));
+					error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of buffer in class definition", "kvs"));
 					delete pClass;
 					return 0;
 				}
 
 				if(KVSP_curCharPointer == pLabelBegin)
 				{
-					error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a function name was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+					error(KVSP_curCharPointer, __tr2qs_ctx("Found character %q (Unicode %x) where a function name was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 					delete pClass;
 					return 0;
 				}
-				szLabel = QString(pLabelBegin,KVSP_curCharPointer - pLabelBegin);
+				szLabel = QString(pLabelBegin, KVSP_curCharPointer - pLabelBegin);
 			}
 		}
-
 
 		if(szLabel.toLower() == "function")
 		{
@@ -525,22 +543,23 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			{
 				pLabelBegin = KVSP_curCharPointer;
 
-				while(KVSP_curCharIsLetterOrNumber)KVSP_skipChar;
+				while(KVSP_curCharIsLetterOrNumber)
+					KVSP_skipChar;
 
 				if(KVSP_curCharIsEndOfBuffer)
 				{
-					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of buffer in class definition","kvs"));
+					error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of buffer in class definition", "kvs"));
 					delete pClass;
 					return 0;
 				}
 
 				if(KVSP_curCharPointer == pLabelBegin)
 				{
-					error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a function name was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+					error(KVSP_curCharPointer, __tr2qs_ctx("Found character %q (Unicode %x) where a function name was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 					delete pClass;
 					return 0;
 				}
-				szLabel = QString(pLabelBegin,KVSP_curCharPointer - pLabelBegin);
+				szLabel = QString(pLabelBegin, KVSP_curCharPointer - pLabelBegin);
 			}
 		}
 
@@ -549,21 +568,21 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			delete pClass;
 			return 0;
 		}
-                QString szReminder;
+		QString szReminder;
 		if(KVSP_curCharUnicode == '(')
 		{
-                        KVSP_skipChar;
-                        const QChar * pReminderBegin = KVSP_curCharPointer;
-                        while((!(KVSP_curCharIsEndOfBuffer)) && (KVSP_curCharUnicode != ')'))
-                        KVSP_skipChar;
+			KVSP_skipChar;
+			const QChar * pReminderBegin = KVSP_curCharPointer;
+			while((!(KVSP_curCharIsEndOfBuffer)) && (KVSP_curCharUnicode != ')'))
+				KVSP_skipChar;
 
 			if(KVSP_curCharIsEndOfBuffer)
 			{
-				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of buffer in function parameter list reminder","kvs"));
+				error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of buffer in function parameter list reminder", "kvs"));
 				delete pClass;
 				return 0;
 			}
-                        szReminder = QString(pReminderBegin,KVSP_curCharPointer - pReminderBegin);
+			szReminder = QString(pReminderBegin, KVSP_curCharPointer - pReminderBegin);
 			KVSP_skipChar;
 
 			if(!skipSpacesAndNewlines())
@@ -575,14 +594,14 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 
 		if(KVSP_curCharIsEndOfBuffer)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of buffer in class definition","kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of buffer in class definition", "kvs"));
 			delete pClass;
 			return 0;
 		}
 
 		if(KVSP_curCharUnicode != '{')
 		{
-			errorBadChar(KVSP_curCharPointer,'{',"class");
+			errorBadChar(KVSP_curCharPointer, '{', "class");
 			delete pClass;
 			return 0;
 		}
@@ -603,11 +622,11 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 		QString szInstruction;
 		if(iLen > 0)
 		{
-			szInstruction = QString(pBegin,KVSP_curCharPointer - pBegin);
+			szInstruction = QString(pBegin, KVSP_curCharPointer - pBegin);
 			KviCommandFormatter::bufferFromBlock(szInstruction);
 		}
 
-		pClass->addFunctionDefinition(new KviKvsTreeNodeSpecialCommandClassFunctionDefinition(pLabelBegin,szLabel,szInstruction,szReminder,uHandlerFlags));
+		pClass->addFunctionDefinition(new KviKvsTreeNodeSpecialCommandClassFunctionDefinition(pLabelBegin, szLabel, szInstruction, szReminder, uHandlerFlags));
 
 		if(!skipSpacesAndNewlines())
 		{
@@ -666,8 +685,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandWhile()
 
 	if(KVSP_curCharUnicode != '(')
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The while command needs an expression enclosed in parenthesis","kvs"));
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where an open parenthesis was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		warning(KVSP_curCharPointer, __tr2qs_ctx("The while command needs an expression enclosed in parenthesis", "kvs"));
+		error(KVSP_curCharPointer, __tr2qs_ctx("Found character %q (Unicode %x) where an open parenthesis was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 		return 0;
 	}
 
@@ -690,8 +709,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandWhile()
 
 	if(KVSP_curCharUnicode == 0)
 	{
-		warning(pBegin,__tr2qs_ctx("The last while command in the buffer has no conditional instructions: it's senseless","kvs"));
-		warning(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script while looking for the instruction block of the while command","kvs"));
+		warning(pBegin, __tr2qs_ctx("The last while command in the buffer has no conditional instructions: it's senseless", "kvs"));
+		warning(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script while looking for the instruction block of the while command", "kvs"));
 	}
 
 	KviKvsTreeNodeInstruction * i = parseInstruction();
@@ -704,7 +723,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandWhile()
 		}
 	} // else, just an empty instruction
 
-	return new KviKvsTreeNodeSpecialCommandWhile(pBegin,e,i);
+	return new KviKvsTreeNodeSpecialCommandWhile(pBegin, e, i);
 }
 
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDo()
@@ -760,18 +779,20 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDo()
 	KviKvsTreeNodeInstruction * i = parseInstruction();
 	if(!i)
 	{
-		if(error())return 0;
+		if(error())
+			return 0;
 	}
 
 	if(!skipSpacesAndNewlines())
 	{
-		if(i)delete i;
+		if(i)
+			delete i;
 		return 0;
 	}
 
-	static const unsigned short while_chars[10] = { 'W','w','H','h','I','i','L','l','E','e' };
+	static const unsigned short while_chars[10] = { 'W', 'w', 'H', 'h', 'I', 'i', 'L', 'l', 'E', 'e' };
 
-	for(int j=0;j<10;j++)
+	for(int j = 0; j < 10; j++)
 	{
 		if(KVSP_curCharUnicode != while_chars[j])
 		{
@@ -779,27 +800,32 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDo()
 			if(KVSP_curCharUnicode != while_chars[j])
 			{
 				if(KVSP_curCharIsEndOfBuffer)
-					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of command after the 'do' command block: expected 'while' keyword","kvs"));
+					error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of command after the 'do' command block: expected 'while' keyword", "kvs"));
 				else
-					error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a 'while' keyword was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
-				if(i)delete i;
+					error(KVSP_curCharPointer, __tr2qs_ctx("Found character %q (Unicode %x) where a 'while' keyword was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
+				if(i)
+					delete i;
 				return 0;
 			}
-		} else j++;
+		}
+		else
+			j++;
 		KVSP_skipChar;
 	}
 
 	if(!skipSpacesAndNewlines())
 	{
-		if(i)delete i;
+		if(i)
+			delete i;
 		return 0;
 	}
 
 	if(KVSP_curCharUnicode != '(')
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'while' block of the 'do' command needs an expression enclosed in parenthesis","kvs"));
-		errorBadChar(KVSP_curCharPointer,'(',"do");
-		if(i)delete i;
+		warning(KVSP_curCharPointer, __tr2qs_ctx("The 'while' block of the 'do' command needs an expression enclosed in parenthesis", "kvs"));
+		errorBadChar(KVSP_curCharPointer, '(', "do");
+		if(i)
+			delete i;
 		return 0;
 	}
 
@@ -809,7 +835,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDo()
 	if(!e)
 	{
 		// must be an error
-		if(i)delete i;
+		if(i)
+			delete i;
 		return 0;
 	}
 
@@ -817,13 +844,15 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDo()
 
 	if(!KVSP_curCharIsEndOfCommand)
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("Garbage string after the expression in 'do' command: ignored","kvs"));
-		while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
+		warning(KVSP_curCharPointer, __tr2qs_ctx("Garbage string after the expression in 'do' command: ignored", "kvs"));
+		while(!KVSP_curCharIsEndOfCommand)
+			KVSP_skipChar;
 	}
 
-	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
+	if(!KVSP_curCharIsEndOfBuffer)
+		KVSP_skipChar;
 
-	return new KviKvsTreeNodeSpecialCommandDo(pBegin,e,i);
+	return new KviKvsTreeNodeSpecialCommandDo(pBegin, e, i);
 }
 
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
@@ -862,15 +891,14 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
 
 	if(KVSP_curCharUnicode != '(')
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'if' command needs an expression enclosed in parenthesis","kvs"));
-		errorBadChar(KVSP_curCharPointer,'(',"if");
+		warning(KVSP_curCharPointer, __tr2qs_ctx("The 'if' command needs an expression enclosed in parenthesis", "kvs"));
+		errorBadChar(KVSP_curCharPointer, '(', "if");
 		return 0;
 	}
 
 	const QChar * pBegin = KVSP_curCharPointer;
 
 	KVSP_skipChar;
-
 
 	KviKvsTreeNodeExpression * e = parseExpression(')');
 	if(!e)
@@ -887,8 +915,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
 
 	if(KVSP_curCharUnicode == 0)
 	{
-		warning(pBegin,__tr2qs_ctx("The last if command in the buffer has no conditional instructions: it's senseless","kvs"));
-		warning(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script while looking for the instruction block of the if command","kvs"));
+		warning(pBegin, __tr2qs_ctx("The last if command in the buffer has no conditional instructions: it's senseless", "kvs"));
+		warning(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script while looking for the instruction block of the if command", "kvs"));
 	}
 
 	KviKvsTreeNodeInstruction * i = parseInstruction();
@@ -903,31 +931,32 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
 
 	if(!skipSpacesAndNewlines())
 	{
-		if(i)delete i;
+		if(i)
+			delete i;
 		return 0;
 	}
 
 	const QChar * pElse = KVSP_curCharPointer;
 
 	if((KVSP_curCharUnicode != 'e') && (KVSP_curCharUnicode != 'E'))
-		return new KviKvsTreeNodeSpecialCommandIf(pBegin,e,i,0);
+		return new KviKvsTreeNodeSpecialCommandIf(pBegin, e, i, 0);
 	KVSP_skipChar;
 	if((KVSP_curCharUnicode != 'l') && (KVSP_curCharUnicode != 'L'))
 	{
 		KVSP_setCurCharPointer(pElse);
-		return new KviKvsTreeNodeSpecialCommandIf(pBegin,e,i,0);
+		return new KviKvsTreeNodeSpecialCommandIf(pBegin, e, i, 0);
 	}
 	KVSP_skipChar;
 	if((KVSP_curCharUnicode != 's') && (KVSP_curCharUnicode != 'S'))
 	{
 		KVSP_setCurCharPointer(pElse);
-		return new KviKvsTreeNodeSpecialCommandIf(pBegin,e,i,0);
+		return new KviKvsTreeNodeSpecialCommandIf(pBegin, e, i, 0);
 	}
 	KVSP_skipChar;
 	if((KVSP_curCharUnicode != 'e') && (KVSP_curCharUnicode != 'E'))
 	{
 		KVSP_setCurCharPointer(pElse);
-		return new KviKvsTreeNodeSpecialCommandIf(pBegin,e,i,0);
+		return new KviKvsTreeNodeSpecialCommandIf(pBegin, e, i, 0);
 	}
 	KVSP_skipChar;
 	if(KVSP_curCharIsLetterOrNumber)
@@ -952,14 +981,15 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
 		}
 
 		KVSP_setCurCharPointer(pElse);
-		return new KviKvsTreeNodeSpecialCommandIf(pBegin,e,i,0);
+		return new KviKvsTreeNodeSpecialCommandIf(pBegin, e, i, 0);
 	}
 
 handle_else_instruction:
 	if(!skipSpacesAndNewlines())
 	{
 		delete e;
-		if(i)delete i;
+		if(i)
+			delete i;
 		return 0;
 	}
 
@@ -969,12 +999,13 @@ handle_else_instruction:
 		if(error())
 		{
 			delete e;
-			if(i)delete i;
+			if(i)
+				delete i;
 			return 0;
 		}
 	} // else, just an empty instruction
 
-	return new KviKvsTreeNodeSpecialCommandIf(pBegin,e,i,i2);
+	return new KviKvsTreeNodeSpecialCommandIf(pBegin, e, i, i2);
 }
 
 bool KviKvsParser::skipToEndOfForControlBlock()
@@ -989,30 +1020,33 @@ bool KviKvsParser::skipToEndOfForControlBlock()
 			case '"':
 				bInString = !bInString;
 				KVSP_skipChar;
-			break;
+				break;
 			case '(':
-				if(!bInString)iParLevel++;
+				if(!bInString)
+					iParLevel++;
 				KVSP_skipChar;
-			break;
+				break;
 			case ')':
 				if(!bInString)
 				{
-					if(iParLevel == 0)return true;
-					else iParLevel--;
+					if(iParLevel == 0)
+						return true;
+					else
+						iParLevel--;
 				}
 				KVSP_skipChar;
-			break;
+				break;
 			case 0:
-				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of buffer while looking for the closing ')' in the 'for' command","kvs"));
+				error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of buffer while looking for the closing ')' in the 'for' command", "kvs"));
 				return false;
-			break;
+				break;
 			//case '\n':
-				// that's ok.. it may have a parenthesis on the next line
-				//KVSP_skipChar;
+			// that's ok.. it may have a parenthesis on the next line
+			//KVSP_skipChar;
 			//break;
 			default:
 				KVSP_skipChar;
-			break;
+				break;
 		}
 	}
 	// not reached
@@ -1054,8 +1088,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 
 	if(KVSP_curCharUnicode != '(')
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'for' command needs an expression enclosed in parenthesis","kvs"));
-		errorBadChar(KVSP_curCharPointer,'(',"for");
+		warning(KVSP_curCharPointer, __tr2qs_ctx("The 'for' command needs an expression enclosed in parenthesis", "kvs"));
+		errorBadChar(KVSP_curCharPointer, '(', "for");
 		return 0;
 	}
 
@@ -1068,7 +1102,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 	KviKvsTreeNodeInstruction * i1 = parseInstruction();
 	if(!i1)
 	{
-		if(error())return 0;
+		if(error())
+			return 0;
 	} // else just empty instruction
 
 	skipSpaces();
@@ -1078,7 +1113,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 	{
 		if(error())
 		{
-			if(i1)delete i1;
+			if(i1)
+				delete i1;
 			return 0;
 		}
 	} // else just empty expression : assume true
@@ -1093,12 +1129,13 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 	{
 		if(error()) // <-- that's always true
 		{
-			if(i1)delete i1;
-			if(e)delete e;
+			if(i1)
+				delete i1;
+			if(e)
+				delete e;
 			return 0;
 		}
 	}
-
 
 	// HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK
 	// KVSP_curCharPointer is const!
@@ -1116,13 +1153,14 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 	KVSP_setCurCharPointer(pHack);
 	// EOF HACK EOF HACK EOF HACK EOF HACK EOF HACK EOF HACK EOF HACK
 
-
 	if(!i2)
 	{
 		if(error())
 		{
-			if(i1)delete i1;
-			if(e)delete e;
+			if(i1)
+				delete i1;
+			if(e)
+				delete e;
 			return 0;
 		}
 	} // else just empty instruction
@@ -1131,10 +1169,13 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 
 	if(KVSP_curCharUnicode != ')')
 	{
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found char %q (Unicode %x) while looking for the terminating ')' in 'for' command","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
-		if(i1)delete i1;
-		if(e)delete e;
-		if(i2)delete i2;
+		error(KVSP_curCharPointer, __tr2qs_ctx("Found char %q (Unicode %x) while looking for the terminating ')' in 'for' command", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
+		if(i1)
+			delete i1;
+		if(e)
+			delete e;
+		if(i2)
+			delete i2;
 		return 0;
 	}
 
@@ -1142,9 +1183,12 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 
 	if(!skipSpacesAndNewlines())
 	{
-		if(i1)delete i1;
-		if(e)delete e;
-		if(i2)delete i2;
+		if(i1)
+			delete i1;
+		if(e)
+			delete e;
+		if(i2)
+			delete i2;
 		return 0;
 	}
 
@@ -1153,23 +1197,29 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 	{
 		if(error())
 		{
-			if(i1)delete i1;
-			if(e)delete e;
-			if(i2)delete i2;
+			if(i1)
+				delete i1;
+			if(e)
+				delete e;
+			if(i2)
+				delete i2;
 			return 0;
 		}
 
 		if((!i1) && (!e) && (!i2))
 		{
-			error(pForBegin,__tr2qs_ctx("Empty infinite 'for' loop: fix the script","kvs"));
-			if(i1)delete i1;
-			if(e)delete e;
-			if(i2)delete i2;
+			error(pForBegin, __tr2qs_ctx("Empty infinite 'for' loop: fix the script", "kvs"));
+			if(i1)
+				delete i1;
+			if(e)
+				delete e;
+			if(i2)
+				delete i2;
 			return 0;
 		}
 	} // else just an empty instruction
 
-	return new KviKvsTreeNodeSpecialCommandFor(pForBegin,i1,e,i2,loop);
+	return new KviKvsTreeNodeSpecialCommandFor(pForBegin, i1, e, i2, loop);
 }
 
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
@@ -1219,8 +1269,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 
 	if(KVSP_curCharUnicode != '(')
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'foreach' command needs an expression enclosed in parenthesis","kvs"));
-		errorBadChar(KVSP_curCharPointer,'(',"foreach");
+		warning(KVSP_curCharPointer, __tr2qs_ctx("The 'foreach' command needs an expression enclosed in parenthesis", "kvs"));
+		errorBadChar(KVSP_curCharPointer, '(', "foreach");
 		return 0;
 	}
 
@@ -1230,24 +1280,24 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 
 	skipSpaces();
 
-
 	if((KVSP_curCharUnicode != '%') && (KVSP_curCharUnicode != '$') && (KVSP_curCharUnicode != '@'))
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'foreach' command expects a writable iteration variable as first parameter","kvs"));
-		error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (Unicode %x) where '%' or '$' was expected: see /help foreach for the command syntax","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		warning(KVSP_curCharPointer, __tr2qs_ctx("The 'foreach' command expects a writable iteration variable as first parameter", "kvs"));
+		error(KVSP_curCharPointer, __tr2qs_ctx("Found character '%q' (Unicode %x) where '%' or '$' was expected: see /help foreach for the command syntax", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 		return 0;
 	}
 
 	KviKvsTreeNodeData * d = parsePercentOrDollar();
-	if(!d)return 0;
+	if(!d)
+		return 0;
 
 	if(d->isFunctionCall() || d->isReadOnly())
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'foreach' command expects a writable iteration variable as first parameter","kvs"));
+		warning(KVSP_curCharPointer, __tr2qs_ctx("The 'foreach' command expects a writable iteration variable as first parameter", "kvs"));
 		if(d->isFunctionCall())
-			error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected function call as 'foreach' iteration variable","kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected function call as 'foreach' iteration variable", "kvs"));
 		else
-			error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected read-only variable as 'foreach' iteration variable","kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected read-only variable as 'foreach' iteration variable", "kvs"));
 		delete d;
 		return 0;
 	}
@@ -1257,17 +1307,18 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 	{
 		if(KVSP_curCharUnicode == ')')
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of 'foreach' parameters: at least one iteration data argument must be given","kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of 'foreach' parameters: at least one iteration data argument must be given", "kvs"));
 			delete d;
 			return 0;
 		}
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'foreach' command expects a comma separated list of iteration data items after the first parameter","kvs"));
-		errorBadChar(KVSP_curCharPointer,',',"foreach");
+		warning(KVSP_curCharPointer, __tr2qs_ctx("The 'foreach' command expects a comma separated list of iteration data items after the first parameter", "kvs"));
+		errorBadChar(KVSP_curCharPointer, ',', "foreach");
 		return 0;
 	}
 
 	KviKvsTreeNodeDataList * l = parseCommaSeparatedParameterList();
-	if(!l)return 0;
+	if(!l)
+		return 0;
 
 	if(!skipSpacesAndNewlines())
 	{
@@ -1281,12 +1332,13 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 	KviKvsTreeNodeInstruction * loop = parseInstruction();
 	if(!loop)
 	{
-		if(error())return 0;
-		warning(pLoopBegin,__tr2qs_ctx("Found empty 'foreach' execution block: maybe you need to fix your script?","kvs"));
+		if(error())
+			return 0;
+		warning(pLoopBegin, __tr2qs_ctx("Found empty 'foreach' execution block: maybe you need to fix your script?", "kvs"));
 		loop = new KviKvsTreeNodeInstructionBlock(pLoopBegin);
 	}
 
-	return new KviKvsTreeNodeSpecialCommandForeach(pForeachBegin,d,l,loop);
+	return new KviKvsTreeNodeSpecialCommandForeach(pForeachBegin, d, l, loop);
 }
 
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
@@ -1425,8 +1477,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 
 	if(KVSP_curCharUnicode != '(')
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'switch' command needs an expression enclosed in parenthesis","kvs"));
-		errorBadChar(KVSP_curCharPointer,'(',"switch");
+		warning(KVSP_curCharPointer, __tr2qs_ctx("The 'switch' command needs an expression enclosed in parenthesis", "kvs"));
+		errorBadChar(KVSP_curCharPointer, '(', "switch");
 		return 0;
 	}
 
@@ -1449,7 +1501,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 
 	if(KVSP_curCharUnicode != '{')
 	{
-		errorBadChar(KVSP_curCharPointer,'{',"switch");
+		errorBadChar(KVSP_curCharPointer, '{', "switch");
 		delete e;
 		return 0;
 	}
@@ -1462,7 +1514,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 		return 0;
 	}
 
-	KviKvsTreeNodeSpecialCommandSwitch * pSwitch = new KviKvsTreeNodeSpecialCommandSwitch(pBegin,e);
+	KviKvsTreeNodeSpecialCommandSwitch * pSwitch = new KviKvsTreeNodeSpecialCommandSwitch(pBegin, e);
 
 	KviKvsTreeNodeSpecialCommandSwitchLabel * pLabel = 0;
 
@@ -1471,23 +1523,24 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 		// look for a 'case','match','default' or 'regexpr' label
 
 		const QChar * pLabelBegin = KVSP_curCharPointer;
-		while(KVSP_curCharIsLetter)KVSP_skipChar;
+		while(KVSP_curCharIsLetter)
+			KVSP_skipChar;
 
 		if(KVSP_curCharIsEndOfBuffer)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of buffer in switch condition block","kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of buffer in switch condition block", "kvs"));
 			delete pSwitch;
 			return 0;
 		}
 
 		if(KVSP_curCharPointer == pLabelBegin)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a 'case','match','regexp','default' or 'break' label was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+			error(KVSP_curCharPointer, __tr2qs_ctx("Found character %q (Unicode %x) where a 'case','match','regexp','default' or 'break' label was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 			delete pSwitch;
 			return 0;
 		}
 
-		QString szLabel(pLabelBegin,KVSP_curCharPointer - pLabelBegin);
+		QString szLabel(pLabelBegin, KVSP_curCharPointer - pLabelBegin);
 		QString szLabelLow = szLabel.toLower();
 
 		bool bNeedParam = true;
@@ -1495,23 +1548,28 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 		if(szLabelLow == "case")
 		{
 			pLabel = new KviKvsTreeNodeSpecialCommandSwitchLabelCase(pLabelBegin);
-		} else if(szLabelLow == "match")
+		}
+		else if(szLabelLow == "match")
 		{
 			pLabel = new KviKvsTreeNodeSpecialCommandSwitchLabelMatch(pLabelBegin);
-		} else if(szLabelLow == "regexp")
+		}
+		else if(szLabelLow == "regexp")
 		{
 			pLabel = new KviKvsTreeNodeSpecialCommandSwitchLabelRegexp(pLabelBegin);
-		} else if(szLabelLow == "default")
+		}
+		else if(szLabelLow == "default")
 		{
 			pLabel = new KviKvsTreeNodeSpecialCommandSwitchLabelDefault(pLabelBegin);
 			bNeedParam = false;
-		} else if(szLabelLow == "break")
+		}
+		else if(szLabelLow == "break")
 		{
 			if(pLabel)
 			{
 				pLabel->setTerminatingBreak(true);
 				skipSpaces();
-				if(KVSP_curCharUnicode == ';')KVSP_skipChar;
+				if(KVSP_curCharUnicode == ';')
+					KVSP_skipChar;
 				if(!skipSpacesAndNewlines())
 				{
 					delete pSwitch;
@@ -1519,13 +1577,17 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 					return 0;
 				}
 				continue;
-			} else {
-				error(pLabelBegin,__tr2qs_ctx("Found 'break' label where a 'case','match','regexp' or 'default' label was expected","kvs"));
+			}
+			else
+			{
+				error(pLabelBegin, __tr2qs_ctx("Found 'break' label where a 'case','match','regexp' or 'default' label was expected", "kvs"));
 				delete pSwitch;
 				return 0;
 			}
-		} else {
-			error(pLabelBegin,__tr2qs_ctx("Found token '%Q' where a 'case','match','regexp','default' or 'break' label was expected","kvs"),&szLabel);
+		}
+		else
+		{
+			error(pLabelBegin, __tr2qs_ctx("Found token '%Q' where a 'case','match','regexp','default' or 'break' label was expected", "kvs"), &szLabel);
 			delete pSwitch;
 			return 0;
 		}
@@ -1535,7 +1597,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 			skipSpaces();
 			if(KVSP_curCharUnicode != '(')
 			{
-				errorBadChar(KVSP_curCharPointer,'(',"switch");
+				errorBadChar(KVSP_curCharPointer, '(', "switch");
 				delete pSwitch;
 				delete pLabel;
 				return 0;
@@ -1554,7 +1616,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 		}
 
 		skipSpaces();
-		if(KVSP_curCharUnicode == ':')KVSP_skipChar;
+		if(KVSP_curCharUnicode == ':')
+			KVSP_skipChar;
 		if(!skipSpacesAndNewlines())
 		{
 			delete pSwitch;
@@ -1588,7 +1651,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 
 	if(pSwitch->isEmpty())
 	{
-		error(pBegin,__tr2qs_ctx("Senseless empty switch command: fix the script","kvs"));
+		error(pBegin, __tr2qs_ctx("Senseless empty switch command: fix the script", "kvs"));
 		delete pSwitch;
 		return 0;
 	}
@@ -1600,7 +1663,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 {
 	if(KVSP_curCharUnicode != '{')
 	{
-		errorBadChar(KVSP_curCharPointer,'{',"defpopup");
+		errorBadChar(KVSP_curCharPointer, '{', "defpopup");
 		return 0;
 	}
 
@@ -1618,76 +1681,78 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 	{
 		// look for 'label', 'prologue', 'epilogue', 'popup', 'item', 'separator', 'separatorid' or 'extpopup' label
 		const QChar * pLabelBegin = KVSP_curCharPointer;
-		while(KVSP_curCharIsLetter)KVSP_skipChar;
+		while(KVSP_curCharIsLetter)
+			KVSP_skipChar;
 
 		if(KVSP_curCharIsEndOfBuffer)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of buffer in defpopup block","kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of buffer in defpopup block", "kvs"));
 			delete pPopup;
 			return 0;
 		}
 
 		if(KVSP_curCharPointer == pLabelBegin)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (Unicode %x) where a 'prologue', 'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+			error(KVSP_curCharPointer, __tr2qs_ctx("Found character %q (Unicode %x) where a 'prologue', 'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 			delete pPopup;
 			return 0;
 		}
 
-		QString szLabel(pLabelBegin,KVSP_curCharPointer - pLabelBegin);
+		QString szLabel(pLabelBegin, KVSP_curCharPointer - pLabelBegin);
 		QString szLabelLow = szLabel.toLower();
 
 		KviPointerList<QString> * pParameters = 0;
 
 		QString szCondition;
 
+#define EXTRACT_POPUP_LABEL_PARAMETERS                      \
+	if(!skipSpacesAndNewlines())                            \
+	{                                                       \
+		delete pPopup;                                      \
+		return 0;                                           \
+	}                                                       \
+	if(KVSP_curCharUnicode != '(')                          \
+	{                                                       \
+		errorBadChar(KVSP_curCharPointer, '(', "defpopup"); \
+		delete pPopup;                                      \
+		return 0;                                           \
+	}                                                       \
+	pParameters = parseCommaSeparatedParameterListNoTree(); \
+	if(!pParameters)                                        \
+		return 0;
 
-#define EXTRACT_POPUP_LABEL_PARAMETERS \
-			if(!skipSpacesAndNewlines()) \
-			{ \
-				delete pPopup; \
-				return 0; \
-			} \
-			if(KVSP_curCharUnicode != '(') \
-			{ \
-				errorBadChar(KVSP_curCharPointer,'(',"defpopup"); \
-				delete pPopup; \
-				return 0; \
-			} \
-			pParameters = parseCommaSeparatedParameterListNoTree(); \
-			if(!pParameters)return 0;
-
-
-#define EXTRACT_POPUP_LABEL_CONDITION \
-			if(!skipSpacesAndNewlines()) \
-			{ \
-				delete pPopup; \
-				return 0; \
-			} \
-			if(KVSP_curCharUnicode == '(') \
-			{ \
-				const QChar * pBegin = KVSP_curCharPointer; \
-				KVSP_skipChar; \
-				KviKvsTreeNodeExpression * pExpression = parseExpression(')'); \
-				if(!pExpression) \
-				{ \
-					if(pParameters)delete pParameters; \
-					delete pPopup; \
-					return 0; \
-				} \
-				int cLen = (KVSP_curCharPointer - pBegin) - 2; \
-				if(cLen > 0) \
-				{ \
-					szCondition.setUnicode(pBegin + 1,cLen); \
-				} \
-				delete pExpression; \
-				if(!skipSpacesAndNewlines()) \
-				{ \
-					if(pParameters)delete pParameters; \
-					delete pPopup; \
-					return 0; \
-				} \
-			}
+#define EXTRACT_POPUP_LABEL_CONDITION                                  \
+	if(!skipSpacesAndNewlines())                                       \
+	{                                                                  \
+		delete pPopup;                                                 \
+		return 0;                                                      \
+	}                                                                  \
+	if(KVSP_curCharUnicode == '(')                                     \
+	{                                                                  \
+		const QChar * pBegin = KVSP_curCharPointer;                    \
+		KVSP_skipChar;                                                 \
+		KviKvsTreeNodeExpression * pExpression = parseExpression(')'); \
+		if(!pExpression)                                               \
+		{                                                              \
+			if(pParameters)                                            \
+				delete pParameters;                                    \
+			delete pPopup;                                             \
+			return 0;                                                  \
+		}                                                              \
+		int cLen = (KVSP_curCharPointer - pBegin) - 2;                 \
+		if(cLen > 0)                                                   \
+		{                                                              \
+			szCondition.setUnicode(pBegin + 1, cLen);                  \
+		}                                                              \
+		delete pExpression;                                            \
+		if(!skipSpacesAndNewlines())                                   \
+		{                                                              \
+			if(pParameters)                                            \
+				delete pParameters;                                    \
+			delete pPopup;                                             \
+			return 0;                                                  \
+		}                                                              \
+	}
 
 		if((szLabelLow == "prologue") || (szLabelLow == "epilogue"))
 		{
@@ -1704,7 +1769,8 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 				EXTRACT_POPUP_LABEL_PARAMETERS
 				if(!skipSpacesAndNewlines())
 				{
-					if(pParameters)delete pParameters;
+					if(pParameters)
+						delete pParameters;
 					delete pPopup;
 					return 0;
 				}
@@ -1715,51 +1781,60 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			{
 				// in fact we don't need it at all, we just need the code buffer...
 				delete pInstruction;
-			} else {
+			}
+			else
+			{
 				// may be an empty instruction
 				if(error())
 				{
 					// error
-					if(pParameters)delete pParameters;
+					if(pParameters)
+						delete pParameters;
 					delete pPopup;
 					return 0;
 				}
 				// empty instruction
 				if(bPrologue)
-					warning(pBegin,__tr2qs_ctx("Found empty prologue block: maybe you need to fix the script?","kvs"));
+					warning(pBegin, __tr2qs_ctx("Found empty prologue block: maybe you need to fix the script?", "kvs"));
 				else
-					warning(pBegin,__tr2qs_ctx("Found empty epilogue block: maybe you need to fix the script?","kvs"));
+					warning(pBegin, __tr2qs_ctx("Found empty epilogue block: maybe you need to fix the script?", "kvs"));
 			}
 			int iLen = KVSP_curCharPointer - pBegin;
 			if(iLen > 0)
 			{
-				QString szInstruction(pBegin,KVSP_curCharPointer - pBegin);
+				QString szInstruction(pBegin, KVSP_curCharPointer - pBegin);
 				KviCommandFormatter::bufferFromBlock(szInstruction);
 				QString * pItemName = pParameters ? pParameters->first() : 0;
 				QString szItemName = pItemName ? *pItemName : QString();
 				if(bPrologue)
-					pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue(pLabelBegin,szInstruction,szItemName));
+					pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue(pLabelBegin, szInstruction, szItemName));
 				else
-					pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue(pLabelBegin,szInstruction,szItemName));
+					pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue(pLabelBegin, szInstruction, szItemName));
 			} // else the instruction was empty anyway: we don't need it in fact
-			if(pParameters)delete pParameters;
-		} else if(szLabelLow == "separator")
+			if(pParameters)
+				delete pParameters;
+		}
+		else if(szLabelLow == "separator")
 		{
 			/////////////////////////////////////////////////////////////////////////////////////////////////
 			EXTRACT_POPUP_LABEL_CONDITION
-			if(KVSP_curCharUnicode == ';')KVSP_skipChar;
+			if(KVSP_curCharUnicode == ';')
+				KVSP_skipChar;
 			QString szItemName = "dummySeparator";
-			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator(pLabelBegin,szCondition,szItemName));
-		} else if(szLabelLow == "separatorid")
+			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator(pLabelBegin, szCondition, szItemName));
+		}
+		else if(szLabelLow == "separatorid")
 		{
 			/////////////////////////////////////////////////////////////////////////////////////////////////
 			EXTRACT_POPUP_LABEL_PARAMETERS
 			EXTRACT_POPUP_LABEL_CONDITION
-			if(KVSP_curCharUnicode == ';')KVSP_skipChar;
+			if(KVSP_curCharUnicode == ';')
+				KVSP_skipChar;
 			QString * pItemName = pParameters ? pParameters->first() : 0;
-			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator(pLabelBegin,szCondition,pItemName ? *pItemName : QString()));
+			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator(pLabelBegin, szCondition, pItemName ? *pItemName : QString()));
 			delete pParameters;
-		} else if(szLabelLow == "label")
+		}
+		else if(szLabelLow == "label")
 		{
 			/////////////////////////////////////////////////////////////////////////////////////////////////
 			EXTRACT_POPUP_LABEL_PARAMETERS
@@ -1768,17 +1843,19 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			QString * pText = pParameters->first();
 			if(!pText)
 			{
-				error(pLabelBegin,__tr2qs_ctx("Unexpected empty <text> field in label parameters. See /help defpopup for the syntax","kvs"));
+				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <text> field in label parameters. See /help defpopup for the syntax", "kvs"));
 				delete pParameters;
 				delete pPopup;
 				return 0;
 			}
 			QString * pIcon = pParameters->next();
-			if(KVSP_curCharUnicode == ';')KVSP_skipChar;
+			if(KVSP_curCharUnicode == ';')
+				KVSP_skipChar;
 			QString * pItemName = pParameters->next();
-			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelLabel(pLabelBegin,szCondition,*pText,pIcon ? *pIcon : QString(),pItemName ? *pItemName : QString()));
+			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelLabel(pLabelBegin, szCondition, *pText, pIcon ? *pIcon : QString(), pItemName ? *pItemName : QString()));
 			delete pParameters;
-		} else if(szLabelLow == "popup")
+		}
+		else if(szLabelLow == "popup")
 		{
 			/////////////////////////////////////////////////////////////////////////////////////////////////
 			EXTRACT_POPUP_LABEL_PARAMETERS
@@ -1787,7 +1864,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			QString * pText = pParameters->first();
 			if(!pText)
 			{
-				error(pLabelBegin,__tr2qs_ctx("Unexpected empty <text> field in extpopup parameters. See /help defpopup for the syntax","kvs"));
+				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <text> field in extpopup parameters. See /help defpopup for the syntax", "kvs"));
 				delete pParameters;
 				delete pPopup;
 				return 0;
@@ -1806,10 +1883,12 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			pSubPopup->setCondition(szCondition);
 			pSubPopup->setText(*pText);
 			pSubPopup->setItemName(pItemName ? *pItemName : QString());
-			if(pIcon)pSubPopup->setIcon(*pIcon);
+			if(pIcon)
+				pSubPopup->setIcon(*pIcon);
 			pPopup->addLabel(pSubPopup);
 			delete pParameters;
-		} else if(szLabelLow == "item")
+		}
+		else if(szLabelLow == "item")
 		{
 			/////////////////////////////////////////////////////////////////////////////////////////////////
 			EXTRACT_POPUP_LABEL_PARAMETERS
@@ -1818,7 +1897,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			QString * pText = pParameters->first();
 			if(!pText)
 			{
-				error(pLabelBegin,__tr2qs_ctx("Unexpected empty <text> field in extpopup parameters. See /help defpopup for the syntax","kvs"));
+				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <text> field in extpopup parameters. See /help defpopup for the syntax", "kvs"));
 				delete pParameters;
 				delete pPopup;
 				return 0;
@@ -1832,7 +1911,9 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			{
 				// in fact we don't need it: we just need the code block
 				delete pInstruction;
-			} else {
+			}
+			else
+			{
 				// empty instruction or error ?
 				if(error())
 				{
@@ -1842,22 +1923,25 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 					return 0;
 				}
 				// empty instruction
-				warning(pBegin,__tr2qs_ctx("Found empty instruction for popup item: maybe you need to fix the script?","kvs"));
+				warning(pBegin, __tr2qs_ctx("Found empty instruction for popup item: maybe you need to fix the script?", "kvs"));
 			}
 			int iLen = KVSP_curCharPointer - pBegin;
 			if(iLen > 0)
 			{
-				QString szInstruction(pBegin,KVSP_curCharPointer - pBegin);
+				QString szInstruction(pBegin, KVSP_curCharPointer - pBegin);
 				KviCommandFormatter::bufferFromBlock(szInstruction);
-				pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelItem(pLabelBegin,szCondition,*pText,pIcon ? *pIcon : QString(),szInstruction,pItemName ? *pItemName : QString()));
-			} else {
+				pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelItem(pLabelBegin, szCondition, *pText, pIcon ? *pIcon : QString(), szInstruction, pItemName ? *pItemName : QString()));
+			}
+			else
+			{
 				// zero length instruction, but still add the item
 				QString szInstruction = "";
 				KviCommandFormatter::bufferFromBlock(szInstruction);
-				pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelItem(pLabelBegin,szCondition,*pText,pIcon ? *pIcon : QString(),szInstruction,pItemName ? *pItemName : QString()));
+				pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelItem(pLabelBegin, szCondition, *pText, pIcon ? *pIcon : QString(), szInstruction, pItemName ? *pItemName : QString()));
 			}
 			delete pParameters;
-		} else if(szLabelLow == "extpopup")
+		}
+		else if(szLabelLow == "extpopup")
 		{
 			/////////////////////////////////////////////////////////////////////////////////////////////////
 			EXTRACT_POPUP_LABEL_PARAMETERS
@@ -1866,7 +1950,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			QString * pText = pParameters->first();
 			if(!pText)
 			{
-				error(pLabelBegin,__tr2qs_ctx("Unexpected empty <text> field in extpopup parameters. See /help defpopup for the syntax","kvs"));
+				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <text> field in extpopup parameters. See /help defpopup for the syntax", "kvs"));
 				delete pParameters;
 				delete pPopup;
 				return 0;
@@ -1874,19 +1958,22 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			QString * pName = pParameters->next();
 			if(!pName)
 			{
-				error(pLabelBegin,__tr2qs_ctx("Unexpected empty <name> field in extpopup parameters. See /help defpopup for the syntax","kvs"));
+				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <name> field in extpopup parameters. See /help defpopup for the syntax", "kvs"));
 				delete pParameters;
 				delete pPopup;
 				return 0;
 			}
 			QString * pIcon = pParameters->next();
 			QString * pItemName = pParameters->next();
-			if(KVSP_curCharUnicode == ';')KVSP_skipChar;
-			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup(pLabelBegin,szCondition,*pText,pIcon ? *pIcon : QString(),*pName,pItemName ? *pItemName : QString()));
+			if(KVSP_curCharUnicode == ';')
+				KVSP_skipChar;
+			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup(pLabelBegin, szCondition, *pText, pIcon ? *pIcon : QString(), *pName, pItemName ? *pItemName : QString()));
 			delete pParameters;
-		} else {
+		}
+		else
+		{
 			/////////////////////////////////////////////////////////////////////////////////////////////////
-			error(pLabelBegin,__tr2qs_ctx("Found token '%Q' where a 'prologue', 'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected","kvs"),&szLabel);
+			error(pLabelBegin, __tr2qs_ctx("Found token '%Q' where a 'prologue', 'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected", "kvs"), &szLabel);
 			delete pPopup;
 			return 0;
 		}
@@ -1998,8 +2085,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 
 	if(KVSP_curCharUnicode != '(')
 	{
-		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'defpopup' command needs an expression enclosed in parenthesis","kvs"));
-		errorBadChar(KVSP_curCharPointer,'(',"defpopup");
+		warning(KVSP_curCharPointer, __tr2qs_ctx("The 'defpopup' command needs an expression enclosed in parenthesis", "kvs"));
+		errorBadChar(KVSP_curCharPointer, '(', "defpopup");
 		return 0;
 	}
 
@@ -2008,7 +2095,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 	KVSP_skipChar;
 
 	KviKvsTreeNodeData * pPopupName = parseSingleParameterInParenthesis();
-	if(!pPopupName)return 0;
+	if(!pPopupName)
+		return 0;
 
 	if(!skipSpacesAndNewlines())
 	{
@@ -2023,7 +2111,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 		return 0;
 	}
 
-	return new KviKvsTreeNodeSpecialCommandDefpopup(pBegin,pPopupName,pMainPopup);
+	return new KviKvsTreeNodeSpecialCommandDefpopup(pBegin, pPopupName, pMainPopup);
 }
 
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandHelp()
@@ -2038,19 +2126,22 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandHelp()
 	skipSpaces();
 
 	const QChar * pBegin = KVSP_curCharPointer;
-	while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
+	while(!KVSP_curCharIsEndOfCommand)
+		KVSP_skipChar;
 
-	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
+	if(!KVSP_curCharIsEndOfBuffer)
+		KVSP_skipChar;
 
-	QString tmp(pBegin,KVSP_curCharPointer - pBegin);
+	QString tmp(pBegin, KVSP_curCharPointer - pBegin);
 	tmp = tmp.trimmed();
 	const QString szHelpName("help");
 
 	KviKvsCoreSimpleCommandExecRoutine * r = KviKvsKernel::instance()->findCoreSimpleCommandExecRoutine(szHelpName);
-	if(!r)return 0; // <--- internal error!
+	if(!r)
+		return 0; // <--- internal error!
 
 	KviKvsTreeNodeDataList * p = new KviKvsTreeNodeDataList(pBegin);
-	p->addItem(new KviKvsTreeNodeConstantData(pBegin,new KviKvsVariant(tmp)));
+	p->addItem(new KviKvsTreeNodeConstantData(pBegin, new KviKvsVariant(tmp)));
 
-	return new KviKvsTreeNodeCoreSimpleCommand(pBegin,szHelpName,p,r);
+	return new KviKvsTreeNodeCoreSimpleCommand(pBegin, szHelpName, p, r);
 }

@@ -28,8 +28,8 @@
 #include <enchant.h>
 #include <enchant-provider.h>
 
-static EnchantBroker* g_pEnchantBroker = NULL;
-static KviPointerList<EnchantDict>* g_pEnchantDicts = NULL;
+static EnchantBroker * g_pEnchantBroker = NULL;
+static KviPointerList<EnchantDict> * g_pEnchantDicts = NULL;
 
 /*
 	@doc: spellchecker.available_dictionaries
@@ -46,22 +46,21 @@ static KviPointerList<EnchantDict>* g_pEnchantDicts = NULL;
 		value is name of provider for that language (e.g. Aspell).
 */
 static void spellchecker_enumerate_dicts(
-		const char* szLang,
-		const char* /*szName*/,
-		const char* szDesc,
-		const char* /*szFile*/,
-		void* pData
-	)
+    const char * szLang,
+    const char * /*szName*/,
+    const char * szDesc,
+    const char * /*szFile*/,
+    void * pData)
 {
-	KviKvsHash* pHash = reinterpret_cast<KviKvsHash*>(pData);
+	KviKvsHash * pHash = reinterpret_cast<KviKvsHash *>(pData);
 	pHash->set(szLang, new KviKvsVariant(szDesc));
 }
 
-static bool spellchecker_kvs_available_dictionaries(KviKvsModuleFunctionCall* c)
+static bool spellchecker_kvs_available_dictionaries(KviKvsModuleFunctionCall * c)
 {
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETERS_END(c)
-	KviKvsHash* pHash = new KviKvsHash;
+	KviKvsHash * pHash = new KviKvsHash;
 	enchant_broker_list_dicts(g_pEnchantBroker, spellchecker_enumerate_dicts, pHash);
 	c->returnValue()->setHash(pHash);
 	return true;
@@ -80,22 +79,21 @@ static bool spellchecker_kvs_available_dictionaries(KviKvsModuleFunctionCall* c)
 	@description:
 		This function returns true if the word is spelled correctly.
 */
-static bool spellchecker_kvs_check(KviKvsModuleFunctionCall* c)
+static bool spellchecker_kvs_check(KviKvsModuleFunctionCall * c)
 {
 	QString szWord;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("word", KVS_PT_STRING, 0, szWord)
+	KVSM_PARAMETER("word", KVS_PT_STRING, 0, szWord)
 	KVSM_PARAMETERS_END(c)
 	QByteArray utf8 = szWord.toUtf8();
 	bool bResult = g_pEnchantDicts->isEmpty();
 	KviPointerListIterator<EnchantDict> it(*g_pEnchantDicts);
-	for (bool b = it.moveFirst(); b; b = it.moveNext())
+	for(bool b = it.moveFirst(); b; b = it.moveNext())
 		bResult |= enchant_dict_check(*it, utf8.data(), utf8.size()) == 0;
 
 	c->returnValue()->setBoolean(bResult);
 	return true;
 }
-
 
 /*
 	@doc: spellchecker.suggestions
@@ -112,14 +110,14 @@ static bool spellchecker_kvs_check(KviKvsModuleFunctionCall* c)
 		If the word seems to be spelled correctly or there are no dictionaries
 		selected then the function returns an empty array.
 */
-static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall* c)
+static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall * c)
 {
 	QString szWord;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("word", KVS_PT_STRING, 0, szWord)
+	KVSM_PARAMETER("word", KVS_PT_STRING, 0, szWord)
 	KVSM_PARAMETERS_END(c)
 
-	QHash<QString,int> hAllSuggestions;
+	QHash<QString, int> hAllSuggestions;
 
 	if(!g_pEnchantDicts->isEmpty())
 	{
@@ -129,12 +127,12 @@ static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall* c)
 		for(bool b = it.moveFirst(); b; b = it.moveNext())
 		{
 			size_t iCount = 0;
-			char ** suggestions = enchant_dict_suggest(*it,utf8.data(),utf8.size(),&iCount);
+			char ** suggestions = enchant_dict_suggest(*it, utf8.data(), utf8.size(), &iCount);
 			if(suggestions)
 			{
-				for(size_t i=0;i<iCount;i++)
-					hAllSuggestions.insert(QString::fromUtf8(suggestions[i]),1);
-				enchant_dict_free_string_list(*it,suggestions);
+				for(size_t i = 0; i < iCount; i++)
+					hAllSuggestions.insert(QString::fromUtf8(suggestions[i]), 1);
+				enchant_dict_free_string_list(*it, suggestions);
 			}
 		}
 	}
@@ -142,7 +140,7 @@ static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall* c)
 	KviKvsArray * pArray = new KviKvsArray();
 
 	QList<QString> lSuggestions = hAllSuggestions.keys();
-	Q_FOREACH(QString szSuggestion,lSuggestions)
+	Q_FOREACH(QString szSuggestion, lSuggestions)
 		pArray->append(new KviKvsVariant(szSuggestion));
 
 	c->returnValue()->setArray(pArray);
@@ -151,15 +149,19 @@ static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall* c)
 
 static void spellchecker_reload_dicts()
 {
-	while (!g_pEnchantDicts->isEmpty())
+	while(!g_pEnchantDicts->isEmpty())
 		enchant_broker_free_dict(g_pEnchantBroker, g_pEnchantDicts->takeFirst());
 
-	const QStringList& wantedDictionaries = KVI_OPTION_STRINGLIST(KviOption_stringlistSpellCheckerDictionaries);
-	foreach(QString szLang, wantedDictionaries) {
-		EnchantDict* pDict = enchant_broker_request_dict(g_pEnchantBroker, szLang.toUtf8().data());
-		if (pDict) {
+	const QStringList & wantedDictionaries = KVI_OPTION_STRINGLIST(KviOption_stringlistSpellCheckerDictionaries);
+	foreach(QString szLang, wantedDictionaries)
+	{
+		EnchantDict * pDict = enchant_broker_request_dict(g_pEnchantBroker, szLang.toUtf8().data());
+		if(pDict)
+		{
 			g_pEnchantDicts->append(pDict);
-		} else {
+		}
+		else
+		{
 			qDebug("Can't load spellchecker dictionary %s: %s", szLang.toUtf8().data(), enchant_broker_get_error(g_pEnchantBroker));
 		}
 	}
@@ -186,7 +188,7 @@ static bool spellchecker_kvs_reload_dictionaries(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-static bool spellchecker_module_init(KviModule* m)
+static bool spellchecker_module_init(KviModule * m)
 {
 	g_pEnchantBroker = enchant_broker_init();
 	g_pEnchantDicts = new KviPointerList<EnchantDict>(/* bAutoDelete = */ false);
@@ -200,9 +202,9 @@ static bool spellchecker_module_init(KviModule* m)
 	return true;
 }
 
-static bool spellchecker_module_cleanup(KviModule*)
+static bool spellchecker_module_cleanup(KviModule *)
 {
-	while (!g_pEnchantDicts->isEmpty())
+	while(!g_pEnchantDicts->isEmpty())
 		enchant_broker_free_dict(g_pEnchantBroker, g_pEnchantDicts->takeFirst());
 
 	delete g_pEnchantDicts;
@@ -213,13 +215,12 @@ static bool spellchecker_module_cleanup(KviModule*)
 }
 
 KVIRC_MODULE(
-	"SpellChecker", // module name
-	"4.0.0", // module version
-	"Copyright (C) 2014 Alexey Sokolov (sokolov at google dot com)", // author & (C)
-	"Spell checker",
-	spellchecker_module_init,
-	0,
-	0,
-	spellchecker_module_cleanup,
-	0
-)
+    "SpellChecker",                                                  // module name
+    "4.0.0",                                                         // module version
+    "Copyright (C) 2014 Alexey Sokolov (sokolov at google dot com)", // author & (C)
+    "Spell checker",
+    spellchecker_module_init,
+    0,
+    0,
+    spellchecker_module_cleanup,
+    0)

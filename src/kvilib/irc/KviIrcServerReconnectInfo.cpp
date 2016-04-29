@@ -35,11 +35,11 @@ KviIrcServerReconnectInfo::~KviIrcServerReconnectInfo()
 
 KviIrcServerReconnectInfo::KviIrcServerReconnectInfo(const KviIrcServerReconnectInfo & info)
 {
-	m_szNick         = info.m_szNick;
-	m_szPass         = info.m_szPass;
-	m_szAwayReason   = info.m_szAwayReason;
+	m_szNick = info.m_szNick;
+	m_szPass = info.m_szPass;
+	m_szAwayReason = info.m_szAwayReason;
 	//m_szJoinChannels = info.m_szJoinChannels;
 	m_lJoinChannels = info.m_lJoinChannels;
-	m_lOpenQueries  = info.m_lOpenQueries;
-	m_bIsAway        = info.m_bIsAway;
+	m_lOpenQueries = info.m_lOpenQueries;
+	m_bIsAway = info.m_bIsAway;
 }

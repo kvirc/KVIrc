@@ -50,7 +50,7 @@ public:
 	* \param pcName the name of the groupbox
 	* \return KviTalGroupBox
 	*/
-	KviTalGroupBox(QWidget * pParent, char * pcName=0);
+	KviTalGroupBox(QWidget * pParent, char * pcName = 0);
 
 	/**
 	* \brief Constructs the groupbox object
@@ -88,9 +88,11 @@ public:
 	* \brief Destroys the groupbox object
 	*/
 	~KviTalGroupBox();
+
 protected:
 	Qt::Orientation mOrientation;
 	QLayout * m_pLayout;
+
 public:
 	/**
 	* \brief Sets the inside margin
@@ -98,7 +100,10 @@ public:
 	* \return void
 	*/
 	void setInsideMargin(int iMargin)
-		{ if(layout()) layout()->setMargin(iMargin); };
+	{
+		if(layout())
+			layout()->setMargin(iMargin);
+	};
 
 	/**
 	* \brief Sets the inside spacing
@@ -106,21 +111,32 @@ public:
 	* \return void
 	*/
 	void setInsideSpacing(int iSpacing)
-		{ if(layout()) layout()->setSpacing(iSpacing); };
+	{
+		if(layout())
+			layout()->setSpacing(iSpacing);
+	};
 
 	/**
 	* \brief Returns the inside margin
 	* \return int
 	*/
 	int insideMargin()
-		{ if(layout()) return layout()->margin(); return 0; };
+	{
+		if(layout())
+			return layout()->margin();
+		return 0;
+	};
 
 	/**
 	* \brief Returns the inside spacing
 	* \return int
 	*/
 	int insideSpacing()
-		{ if(layout()) return layout()->spacing(); return 0; };
+	{
+		if(layout())
+			return layout()->spacing();
+		return 0;
+	};
 
 	/**
 	* \brief Adds a space
@@ -142,6 +158,7 @@ public:
 	* \return void
 	*/
 	void setLayout(QLayout * newLayout);
+
 protected:
 	virtual void childEvent(QChildEvent * e);
 };

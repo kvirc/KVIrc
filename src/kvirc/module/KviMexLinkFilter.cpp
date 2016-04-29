@@ -22,11 +22,10 @@
 //
 //=============================================================================
 
-
 #include "KviMexLinkFilter.h"
 
 KviMexLinkFilter::KviMexLinkFilter(KviModuleExtensionDescriptor * d)
-: QObject(), KviModuleExtension(d)
+    : QObject(), KviModuleExtension(d)
 {
 }
 

@@ -28,7 +28,7 @@
 #include <QChildEvent>
 
 KviTalVBox::KviTalVBox(QWidget * pParent, char * pcName)
-: QWidget(pParent)
+    : QWidget(pParent)
 {
 	setObjectName(pcName);
 
@@ -65,7 +65,7 @@ void KviTalVBox::childEvent(QChildEvent * e)
 
 void KviTalVBox::setStretchFactor(QWidget * pChild, int iStretch)
 {
-	m_pLayout->setStretchFactor(pChild,iStretch);
+	m_pLayout->setStretchFactor(pChild, iStretch);
 }
 
 void KviTalVBox::setSpacing(int iSpacing)
@@ -80,7 +80,7 @@ void KviTalVBox::addStretch(int iStretch)
 
 void KviTalVBox::setMargin(int iMargin)
 {
-	m_pLayout->setContentsMargins(iMargin,iMargin,iMargin,iMargin);
+	m_pLayout->setContentsMargins(iMargin, iMargin, iMargin, iMargin);
 }
 
 void KviTalVBox::setAlignment(Qt::Alignment alignment)
@@ -90,7 +90,5 @@ void KviTalVBox::setAlignment(Qt::Alignment alignment)
 
 void KviTalVBox::setAlignment(QWidget * pChild, Qt::Alignment alignment)
 {
-	m_pLayout->setAlignment(pChild,alignment);
+	m_pLayout->setAlignment(pChild, alignment);
 }
-
-

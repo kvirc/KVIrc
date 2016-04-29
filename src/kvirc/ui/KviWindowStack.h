@@ -68,8 +68,8 @@ public:
 protected:
 	/// Holds the specialized window popup
 	QMenu * m_pWindowPopup;
-public:
 
+public:
 	/**
 	* \brief Add an KviWindow to the area
 	* \param pWnd The KviWindow
@@ -99,7 +99,7 @@ public:
 
 protected slots:
 	void currentWindowChanged(int iIdx);
-    void menuActivated(QAction *pAction);
+	void menuActivated(QAction * pAction);
 	void fillWindowPopup();
 };
 

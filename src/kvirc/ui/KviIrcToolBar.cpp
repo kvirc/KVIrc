@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "KviIrcToolBar.h"
 #include "KviConsoleWindow.h"
 #include "KviMainWindow.h"
@@ -51,13 +50,13 @@
 #include <QMenu>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
+extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-static KviPointerList<KviToolBarGraphicalApplet>    * g_pToolBarGraphicalAppletList = 0;
+static KviPointerList<KviToolBarGraphicalApplet> * g_pToolBarGraphicalAppletList = 0;
 
-KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par,const char * name)
-: QWidget(par)
+KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par, const char * name)
+    : QWidget(par)
 {
 	setObjectName(name);
 	if(!g_pToolBarGraphicalAppletList)
@@ -81,7 +80,7 @@ KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par,const char * 
 		KVI_OPTION_UINT(KviOption_uintIrcContextAppletWidth) = 32;
 
 	resize(KVI_OPTION_UINT(KviOption_uintIrcContextAppletWidth),
-	       KVI_OPTION_UINT(KviOption_uintToolBarIconSize));
+	    KVI_OPTION_UINT(KviOption_uintToolBarIconSize));
 }
 
 KviToolBarGraphicalApplet::~KviToolBarGraphicalApplet()
@@ -103,10 +102,12 @@ void KviToolBarGraphicalApplet::mouseMoveEvent(QMouseEvent * e)
 		if(m_bResizeMode)
 		{
 			int w = e->pos().x();
-			resize(w,height());
+			resize(w, height());
 			updateGeometry();
 		}
-	} else {
+	}
+	else
+	{
 		if(e->pos().x() > width() - 4)
 			setCursor(Qt::SizeHorCursor);
 		else
@@ -129,7 +130,8 @@ void KviToolBarGraphicalApplet::mouseReleaseEvent(QMouseEvent *)
 
 void KviToolBarGraphicalApplet::paintEvent(QPaintEvent *)
 {
-	if(!isVisible())return;
+	if(!isVisible())
+		return;
 
 	QPainter pa(this);
 
@@ -138,22 +140,27 @@ void KviToolBarGraphicalApplet::paintEvent(QPaintEvent *)
 	{
 		pa.save();
 		pa.setCompositionMode(QPainter::CompositionMode_Source);
-		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		QColor col = KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
 		pa.fillRect(rect(), col);
 		pa.restore();
-	} else if(g_pShadedChildGlobalDesktopBackground)
+	}
+	else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = mapTo(g_pMainWindow, rect().topLeft());
-		pa.drawTiledPixmap(rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
-	} else {
+		pa.drawTiledPixmap(rect(), *(g_pShadedChildGlobalDesktopBackground), pnt);
+	}
+	else
+	{
 #endif
 		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapIrcToolBarAppletBackground).pixmap();
 		if(pix)
 		{
-			KviPixmapUtils::drawPixmapWithPainter(&pa,pix,KVI_OPTION_UINT(KviOption_pixmapIrcToolBarAppletBackground),rect(),rect().width(),rect().height());
-		} else {
-			pa.fillRect(rect(),KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletBackground));
+			KviPixmapUtils::drawPixmapWithPainter(&pa, pix, KVI_OPTION_UINT(KviOption_pixmapIrcToolBarAppletBackground), rect(), rect().width(), rect().height());
+		}
+		else
+		{
+			pa.fillRect(rect(), KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletBackground));
 		}
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
@@ -163,11 +170,11 @@ void KviToolBarGraphicalApplet::paintEvent(QPaintEvent *)
 
 	//Need to draw the sunken rect around the view now...
 	pa.setPen(palette().dark().color());
-	pa.drawLine(0,0,width(),0);
-	pa.drawLine(0,0,0,width());
+	pa.drawLine(0, 0, width(), 0);
+	pa.drawLine(0, 0, 0, width());
 	pa.setPen(palette().light().color());
-	pa.drawLine(1,height() - 1,width() - 1,height() - 1);
-	pa.drawLine(width() - 1,1,width() - 1,height());
+	pa.drawLine(1, height() - 1, width() - 1, height() - 1);
+	pa.drawLine(width() - 1, 1, width() - 1, height());
 }
 
 QSize KviToolBarGraphicalApplet::sizeHint() const
@@ -190,19 +197,18 @@ void KviToolBarGraphicalApplet::drawContents(QPainter *)
 //
 //////////////////////////////////////////////////////////////////////////////
 
-KviIrcContextDisplay::KviIrcContextDisplay(QWidget * par,const char * name)
-: KviToolBarGraphicalApplet(par,name)
+KviIrcContextDisplay::KviIrcContextDisplay(QWidget * par, const char * name)
+    : KviToolBarGraphicalApplet(par, name)
 {
 	KviDynamicToolTip * tip = new KviDynamicToolTip(this);
-	connect(tip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
+	connect(tip, SIGNAL(tipRequest(KviDynamicToolTip *, const QPoint &)), this, SLOT(tipRequest(KviDynamicToolTip *, const QPoint &)));
 }
-
 
 KviIrcContextDisplay::~KviIrcContextDisplay()
 {
 }
 
-void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip,const QPoint &)
+void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 {
 	QString txt;
 
@@ -223,9 +229,12 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip,const QPoint &)
 			txt += __tr2qs("No connection");
 			txt += nb;
 			txt += br;
-		} else {
+		}
+		else
+		{
 			KviCString nickAndMode = ic->userInfo()->nickName();
-			if(!(ic->userInfo()->userMode().isEmpty()))nickAndMode.append(KviCString::Format," (+%s)",ic->userInfo()->userMode().toUtf8().data());
+			if(!(ic->userInfo()->userMode().isEmpty()))
+				nickAndMode.append(KviCString::Format, " (+%s)", ic->userInfo()->userMode().toUtf8().data());
 
 			txt += ic->currentServerName();
 			txt += nb;
@@ -253,18 +262,22 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip,const QPoint &)
 				int llls = lll / 1000;
 				int llld = (lll % 1000) / 100;
 				int lllc = (lll % 100) / 10;
-				KviQString::appendFormatted(txt,__tr2qs("Lag: %d.%d%d"),llls,llld,lllc);
-			} else {
+				KviQString::appendFormatted(txt, __tr2qs("Lag: %d.%d%d"), llls, llld, lllc);
+			}
+			else
+			{
 				txt += __tr2qs("Lag: ?.??");
 			}
 		}
-	} else {
+	}
+	else
+	{
 		txt = b;
 		txt += __tr2qs("No IRC context");
 		txt += nb;
 	}
 
-	tip->tip(rect(),txt);
+	tip->tip(rect(), txt);
 }
 
 #define KVI_APPLETIRCCONTEXTINDICATORWIDTH 12
@@ -277,12 +290,14 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 
 	if(c)
 	{
-		QString serv,nick;
-        QString tmp;
+		QString serv, nick;
+		QString tmp;
 		if(!c->connection())
 		{
 			serv = __tr2qs("Not connected");
-		} else {
+		}
+		else
+		{
 			if(c->isConnected())
 			{
 				KviIrcConnection * ic = c->connection();
@@ -298,7 +313,9 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 						nick += __tr2qs("away");
 					}
 					nick += QChar(')');
-				} else {
+				}
+				else
+				{
 					if(ic->userInfo()->isAway())
 					{
 						static QString ugly(" (");
@@ -317,19 +334,23 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 						int llls = lll / 1000;
 						int llld = (lll % 1000) / 100;
 						int lllc = (lll % 100) / 10;
-						KviQString::appendFormatted(nick,__tr2qs("Lag: %d.%d%d"),llls,llld,lllc);
-					} else {
+						KviQString::appendFormatted(nick, __tr2qs("Lag: %d.%d%d"), llls, llld, lllc);
+					}
+					else
+					{
 						nick += __tr2qs("Lag: ?.??");
 					}
 				}
-			} else {
+			}
+			else
+			{
 				serv = __tr2qs("In progress...");
 			}
 		}
 
 		p->setPen(KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletFont));
 
-		p->setClipRect(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 2,2,width() - (KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4),height() - 4);
+		p->setClipRect(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 2, 2, width() - (KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4), height() - 4);
 
 		if(height() < 30)
 		{
@@ -337,32 +358,32 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 			serv += xxx;
 			serv += nick;
 			serv += QChar(']');
-			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,13,serv);
-		} else {
-			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,14,serv);
-			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4,27,nick);
+			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4, 13, serv);
+		}
+		else
+		{
+			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4, 14, serv);
+			p->drawText(KVI_APPLETIRCCONTEXTINDICATORWIDTH + 4, 27, nick);
 		}
 
 		p->setClipping(false);
 
 		QColor base = palette().window().color();
 		QColor cntx = KVI_OPTION_ICCOLOR(c->context()->id() % KVI_NUM_ICCOLOR_OPTIONS);
-		base.setRgb((base.red() + cntx.red()) >> 1,(base.green() + cntx.green()) >> 1,
-			(base.blue() + cntx.blue()) >> 1);
+		base.setRgb((base.red() + cntx.red()) >> 1, (base.green() + cntx.green()) >> 1,
+		    (base.blue() + cntx.blue()) >> 1);
 
-		p->fillRect(2,2, KVI_APPLETIRCCONTEXTINDICATORWIDTH - 2,height() - 4,base);
+		p->fillRect(2, 2, KVI_APPLETIRCCONTEXTINDICATORWIDTH - 2, height() - 4, base);
 	}
 
 	p->setPen(KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletBorder));
-	p->drawLine(1,1,width() - 1,1);
-	p->drawLine(1,1,1,height() - 1);
-	p->drawLine(2,height() - 2,width() - 1,height() - 2);
-	p->drawLine(width() - 2,1,width() - 2,height());
-	p->drawLine(KVI_APPLETIRCCONTEXTINDICATORWIDTH,2,KVI_APPLETIRCCONTEXTINDICATORWIDTH,height() - 2);
-
+	p->drawLine(1, 1, width() - 1, 1);
+	p->drawLine(1, 1, 1, height() - 1);
+	p->drawLine(2, height() - 2, width() - 1, height() - 2);
+	p->drawLine(width() - 2, 1, width() - 2, height());
+	p->drawLine(KVI_APPLETIRCCONTEXTINDICATORWIDTH, 2, KVI_APPLETIRCCONTEXTINDICATORWIDTH, height() - 2);
 }
 
-
 #ifdef Bool
-	#undef Bool
+#undef Bool
 #endif

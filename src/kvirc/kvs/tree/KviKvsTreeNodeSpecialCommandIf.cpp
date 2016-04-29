@@ -28,25 +28,29 @@
 #include "KviKvsRunTimeContext.h"
 #include "KviLocale.h"
 
-KviKvsTreeNodeSpecialCommandIf::KviKvsTreeNodeSpecialCommandIf(const QChar * pLocation,KviKvsTreeNodeExpression * e,KviKvsTreeNodeInstruction * pIf,KviKvsTreeNodeInstruction * pElse)
-: KviKvsTreeNodeSpecialCommand(pLocation,"if")
+KviKvsTreeNodeSpecialCommandIf::KviKvsTreeNodeSpecialCommandIf(const QChar * pLocation, KviKvsTreeNodeExpression * e, KviKvsTreeNodeInstruction * pIf, KviKvsTreeNodeInstruction * pElse)
+    : KviKvsTreeNodeSpecialCommand(pLocation, "if")
 {
 	m_pExpression = e;
 	m_pExpression->setParent(this);
 	m_pIfInstruction = pIf;
-	if(pIf)m_pIfInstruction->setParent(this);
+	if(pIf)
+		m_pIfInstruction->setParent(this);
 	m_pElseInstruction = pElse;
-	if(pElse)m_pElseInstruction->setParent(this);
+	if(pElse)
+		m_pElseInstruction->setParent(this);
 }
 
 KviKvsTreeNodeSpecialCommandIf::~KviKvsTreeNodeSpecialCommandIf()
 {
 	delete m_pExpression;
-	if(m_pIfInstruction)delete m_pIfInstruction;
-	if(m_pElseInstruction)delete m_pElseInstruction;
+	if(m_pIfInstruction)
+		delete m_pIfInstruction;
+	if(m_pElseInstruction)
+		delete m_pElseInstruction;
 }
 
-void KviKvsTreeNodeSpecialCommandIf::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSpecialCommandIf::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Special Command \"if\"";
 }
@@ -58,7 +62,8 @@ void KviKvsTreeNodeSpecialCommandIf::dump(const char *)
 bool KviKvsTreeNodeSpecialCommandIf::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pExpression->evaluateReadOnly(c,&v))return false;
+	if(!m_pExpression->evaluateReadOnly(c, &v))
+		return false;
 
 	if(v.asBoolean())
 	{
@@ -66,7 +71,9 @@ bool KviKvsTreeNodeSpecialCommandIf::execute(KviKvsRunTimeContext * c)
 		{
 			return m_pIfInstruction->execute(c);
 		}
-	} else {
+	}
+	else
+	{
 		if(m_pElseInstruction)
 		{
 			return m_pElseInstruction->execute(c);

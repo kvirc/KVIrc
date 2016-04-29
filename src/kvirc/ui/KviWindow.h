@@ -40,7 +40,6 @@
 #include "KviTalSplitter.h"
 #include "KviIconManager.h"
 
-
 #include <QFrame>
 #include <QWidget>
 #include <QToolButton>
@@ -62,8 +61,8 @@ class QMenu;
 class KviTalHBox;
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	class KviCryptController;
-	class KviCryptSessionInfo;
+class KviCryptController;
+class KviCryptSessionInfo;
 #endif
 
 #define KVI_WINDOW_TYPE_USER 10000
@@ -89,70 +88,74 @@ public:
 	* \enum ActivityValue
 	* \brief Holds the activity meter in value scale
 	*/
-	enum ActivityValue {
-		None     = 0,   /**< None */
-		VeryLow  = 1,   /**< Very low */
-		Low      = 2,   /**< Low */
-		Medium   = 3,   /**< Medium */
-		High     = 4,   /**< High */
-		VeryHigh = 5    /**< Very high */
+	enum ActivityValue
+	{
+		None = 0,    /**< None */
+		VeryLow = 1, /**< Very low */
+		Low = 2,     /**< Low */
+		Medium = 3,  /**< Medium */
+		High = 4,    /**< High */
+		VeryHigh = 5 /**< Very high */
 	};
 
 	/**
 	* \enum ActivityTemperature
 	* \brief Holds the activity meter in temperature scale
 	*/
-	enum ActivityTemperature {
-		Ice       = 0,   /**< Ice */
-		VeryCold  = 1,   /**< Very cold */
-		Cold      = 2,   /**< Cold */
-		Undefined = 3,   /**< Undefined */
-		Hot       = 4,   /**< Hot */
-		VeryHot   = 5,   /**< Very hot */
-		Fire      = 6    /**< Fire */
+	enum ActivityTemperature
+	{
+		Ice = 0,       /**< Ice */
+		VeryCold = 1,  /**< Very cold */
+		Cold = 2,      /**< Cold */
+		Undefined = 3, /**< Undefined */
+		Hot = 4,       /**< Hot */
+		VeryHot = 5,   /**< Very hot */
+		Fire = 6       /**< Fire */
 	};
 
 	/**
 	* \enum AttentionLevel
 	* \brief attention levels usable in hasAttention()
 	*/
-	enum AttentionLevel {
-		VisibleAndActive	= 0,   /**< The window is visible and active (aka: has user focus) */
-		MainWindowIsVisible  	= 1    /**< The kvirc frame is visible but the window is not the active one */
+	enum AttentionLevel
+	{
+		VisibleAndActive = 0,   /**< The window is visible and active (aka: has user focus) */
+		MainWindowIsVisible = 1 /**< The kvirc frame is visible but the window is not the active one */
 	};
 	/**
 	* \enum Type
 	* \brief Holds the types of a window; these are used by the KVIrc core and distributed modules
 	* \note If you add a new type, insert it just before Unknown
 	*/
-	enum Type {
-		Console      =  0,
-		Channel      =  1,
-		Query        =  2,
-		DeadChannel  =  3,
-		DeadQuery    =  4,
-		Editor       =  5,
-		Help         =  6,
-		Terminal     =  7,
-		SocketSpy    =  8,
-		Links        =  9,
-		List         = 10,
-		DccChat      = 11,
-		DccTransfer  = 12,
-		DccCanvas    = 13,
-		DccVoice     = 14,
-		DccVideo     = 15,
-		UserWindow   = 16,
-		Tool         = 17,
-		IOGraph      = 18,
-		DirBrowser   = 19,
+	enum Type
+	{
+		Console = 0,
+		Channel = 1,
+		Query = 2,
+		DeadChannel = 3,
+		DeadQuery = 4,
+		Editor = 5,
+		Help = 6,
+		Terminal = 7,
+		SocketSpy = 8,
+		Links = 9,
+		List = 10,
+		DccChat = 11,
+		DccTransfer = 12,
+		DccCanvas = 13,
+		DccVoice = 14,
+		DccVideo = 15,
+		UserWindow = 16,
+		Tool = 17,
+		IOGraph = 18,
+		DirBrowser = 19,
 		ScriptEditor = 20,
 		ScriptObject = 21,
-		LogView      = 22,
-		Offer        = 23,
-		Debug        = 24,
-		Unknown      = 25,
-		TypeCount    = 26
+		LogView = 22,
+		Offer = 23,
+		Debug = 24,
+		Unknown = 25,
+		TypeCount = 26
 	};
 
 	/**
@@ -169,36 +172,38 @@ public:
 	* \brief Destroys the window object
 	*/
 	virtual ~KviWindow();
-protected: // almost private: don't touch :D
-	QString                   m_szName;     // the current window name (usually also the target)
-	KviConsoleWindow        * m_pConsole;
-	Type                      m_eType;
-	KviWindowListItem       * m_pWindowListItem;
-	QWidget                 * m_pFocusHandler;
-	QString                   m_szPlainTextCaption;
-	KviIrcView              * m_pIrcView;
-	KviInput                * m_pInput;
-	KviTalSplitter          * m_pSplitter;
-	KviTalHBox              * m_pButtonBox;
-	unsigned long int         m_uId;
-	QString                   m_szTextEncoding;
+
+protected:            // almost private: don't touch :D
+	QString m_szName; // the current window name (usually also the target)
+	KviConsoleWindow * m_pConsole;
+	Type m_eType;
+	KviWindowListItem * m_pWindowListItem;
+	QWidget * m_pFocusHandler;
+	QString m_szPlainTextCaption;
+	KviIrcView * m_pIrcView;
+	KviInput * m_pInput;
+	KviTalSplitter * m_pSplitter;
+	KviTalHBox * m_pButtonBox;
+	unsigned long int m_uId;
+	QString m_szTextEncoding;
 #ifdef COMPILE_CRYPT_SUPPORT
 	KviWindowToolPageButton * m_pCryptControllerButton;
-	KviCryptController      * m_pCryptController;
-	KviCryptSessionInfo     * m_pCryptSessionInfo;
+	KviCryptController * m_pCryptController;
+	KviCryptSessionInfo * m_pCryptSessionInfo;
 #endif
-	QToolButton             * m_pTextEncodingButton;
-	QToolButton             * m_pHideToolsButton;
-	QWidget                 * m_pLastFocusedChild;
-	static const char       * m_typeTable[TypeCount];
+	QToolButton * m_pTextEncodingButton;
+	QToolButton * m_pHideToolsButton;
+	QWidget * m_pLastFocusedChild;
+	static const char * m_typeTable[TypeCount];
 	// text encoding and decoding
 	//unsigned int              m_uTextEncoding;
-	QTextCodec              * m_pTextCodec;
+	QTextCodec * m_pTextCodec;
 	//KviToolWindowsContainer * m_pEditorsContainer;
-	bool                      m_bIsDocked;
-	bool                      m_bProcessingInputEvent;
+	bool m_bIsDocked;
+	bool m_bProcessingInputEvent;
+
 public:
-	inline bool isDocked(){ return m_bIsDocked; }
+	inline bool isDocked() { return m_bIsDocked; }
 
 	/**
 	* \brief Returns the global ID of this window
@@ -206,7 +211,7 @@ public:
 	* This is unique in the application
 	* \return QString
 	*/
-	inline QString id(){ return QString("%1").arg(m_uId); };
+	inline QString id() { return QString("%1").arg(m_uId); };
 
 	/**
 	* \brief Returns the global ID of this window
@@ -214,13 +219,13 @@ public:
 	* This is unique in the application
 	* \return QString
 	*/
-	inline unsigned long int numericId(){ return m_uId; };
+	inline unsigned long int numericId() { return m_uId; };
 
 	/**
 	* \brief Returns the name of this window
 	* \return const QString &
 	*/
-	inline const QString & windowName(){ return m_szName; };
+	inline const QString & windowName() { return m_szName; };
 
 	/**
 	* \brief Sets the name of the window
@@ -265,7 +270,7 @@ public:
 	*/
 	virtual const char * typeString();
 
-	inline QTextCodec * textCodec(){ return m_pTextCodec ? m_pTextCodec : defaultTextCodec(); };
+	inline QTextCodec * textCodec() { return m_pTextCodec ? m_pTextCodec : defaultTextCodec(); };
 	void forceTextCodec(QTextCodec * pCodec);
 
 	/**
@@ -282,8 +287,7 @@ public:
 	* May be null for windows that aren't bound to irc contexts
 	* \return KviConsoleWindow *
 	*/
-	inline KviConsoleWindow * console(){ return m_pConsole; };
-
+	inline KviConsoleWindow * console() { return m_pConsole; };
 
 	KviIrcContext * context();
 
@@ -299,7 +303,7 @@ public:
 	* It *shouldn't* be null... but... well... who knows ? :D ...better check it
 	* \return KviTalSplitter *
 	*/
-	inline KviTalSplitter * splitter(){ return m_pSplitter; };
+	inline KviTalSplitter * splitter() { return m_pSplitter; };
 
 	/**
 	* \brief Returns the windowList item
@@ -307,26 +311,29 @@ public:
 	* The window has ALWAYS a WindowList item
 	* \return KviWindowListItem *
 	*/
-	inline KviWindowListItem * windowListItem(){ return m_pWindowListItem; };
+	inline KviWindowListItem * windowListItem() { return m_pWindowListItem; };
 
 	// The window *might* have a button container
-	virtual QFrame * buttonContainer(){ return (QFrame*)m_pButtonBox; };
+	virtual QFrame * buttonContainer() { return (QFrame *)m_pButtonBox; };
 	virtual void toggleButtonContainer();
 
 	// The window *might* have an output proxy: if it has no view() for example
 	virtual KviWindow * outputProxy();
 
 	// The window input widget
-	inline KviInput * input(){ return m_pInput; };
+	inline KviInput * input() { return m_pInput; };
 
 	// The target of this window: empty when it makes no sense :D
-	virtual const QString & target(){ return KviQString::Empty; };
+	virtual const QString & target() { return KviQString::Empty; };
 
 	// The local nickname bound to this window: might be empty when a local nickname makes no sense
-	virtual const QString & localNick(){ return KviQString::Empty; };
+	virtual const QString & localNick() { return KviQString::Empty; };
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	KviCryptSessionInfo * cryptSessionInfo(){ return m_pCryptSessionInfo; };
+	KviCryptSessionInfo * cryptSessionInfo()
+	{
+		return m_pCryptSessionInfo;
+	};
 	void setCryptSessionInfo(KviCryptSessionInfo * pInfo);
 #endif
 
@@ -338,13 +345,13 @@ public:
 
 	void unhighlight();
 
-	virtual inline void getWindowListTipText(QString & szBuffer){ szBuffer = m_szPlainTextCaption; };
+	virtual inline void getWindowListTipText(QString & szBuffer) { szBuffer = m_szPlainTextCaption; };
 
 	// This is meaningful only if view() is non NULL
 	const QString & lastLineOfText();
 	const QString & lastMessageText();
 
-	inline const QString &textEncoding(){ return m_szTextEncoding; };
+	inline const QString & textEncoding() { return m_szTextEncoding; };
 	// returns true if the encoding could be successfully set
 	bool setTextEncoding(const QString & szTextEncoding);
 	// this must return a default text codec suitable for this window
@@ -359,7 +366,6 @@ public:
 	// Raises the window (after a light delay to prevent focus pingpongs)
 	void delayedAutoRaise();
 
-
 	// Retrieves the default log file name: this is pre-build
 	void getDefaultLogFileName(QString & szBuffer);
 
@@ -373,19 +379,19 @@ public:
 	virtual void updateIcon();
 	virtual void ownMessage(const QString &, bool = true){};
 	virtual void ownAction(const QString &){};
-	virtual const QString & plainTextCaption(){ return m_szPlainTextCaption; };
+	virtual const QString & plainTextCaption() { return m_szPlainTextCaption; };
 
-	void internalOutput(KviIrcView * pView, int iMsgType, const kvi_wchar_t * pwText, int iFlags = 0, const QDateTime& datetime = QDateTime());
+	void internalOutput(KviIrcView * pView, int iMsgType, const kvi_wchar_t * pwText, int iFlags = 0, const QDateTime & datetime = QDateTime());
 	// You *might* want to override these too.. but better don't touch them :D
 	virtual void output(int iMsgType, const char * pcFormat, ...);
 	virtual void output(int iMsgType, const kvi_wchar_t * pwFormat, ...);
 	virtual void output(int iMsgType, QString szFmt, ...);
-	void output(int iMsgType, const QDateTime& datetime, const char * pcFormat, ...);
-	void output(int iMsgType, const QDateTime& datetime, const kvi_wchar_t * pwFormat, ...);
-	void output(int iMsgType, const QDateTime& datetime, QString szFmt, ...);
-	virtual void outputNoFmt(int iMsgType, const char * pcText, int iFlags = 0, const QDateTime& datetime = QDateTime());
-	virtual void outputNoFmt(int iMsgType, const kvi_wchar_t * pwText, int iFlags = 0, const QDateTime& datetime = QDateTime()){ internalOutput(m_pIrcView,iMsgType,pwText,iFlags,datetime); };
-	virtual void outputNoFmt(int iMsgType, const QString & szText, int iFlags = 0, const QDateTime& datetime = QDateTime()); // <-- iFlags are KviIrcView::AppendTextFlags
+	void output(int iMsgType, const QDateTime & datetime, const char * pcFormat, ...);
+	void output(int iMsgType, const QDateTime & datetime, const kvi_wchar_t * pwFormat, ...);
+	void output(int iMsgType, const QDateTime & datetime, QString szFmt, ...);
+	virtual void outputNoFmt(int iMsgType, const char * pcText, int iFlags = 0, const QDateTime & datetime = QDateTime());
+	virtual void outputNoFmt(int iMsgType, const kvi_wchar_t * pwText, int iFlags = 0, const QDateTime & datetime = QDateTime()) { internalOutput(m_pIrcView, iMsgType, pwText, iFlags, datetime); };
+	virtual void outputNoFmt(int iMsgType, const QString & szText, int iFlags = 0, const QDateTime & datetime = QDateTime()); // <-- iFlags are KviIrcView::AppendTextFlags
 	// Just helpers.. FIXME: might be redesigned in some other way
 	void updateBackgrounds(QObject * pObj = 0);
 
@@ -410,7 +416,7 @@ public:
 	* @param eLevel the level of checks to be done
 	* \return bool
 	*/
-	bool hasAttention(AttentionLevel eLevel=VisibleAndActive);
+	bool hasAttention(AttentionLevel eLevel = VisibleAndActive);
 
 	// This should die, probably
 	void listWindowTypes();
@@ -418,9 +424,10 @@ public:
 	// call this in the constructor if your caption is fixed:
 	// it will set m_szPlainTextCaption to szCaption and it will
 	// automatically use it without the need of overriding fillCaptionBuffers
-	inline void setFixedCaption(const QString & szCaption){ m_szPlainTextCaption = szCaption; };
+	inline void setFixedCaption(const QString & szCaption) { m_szPlainTextCaption = szCaption; };
 
 	void setWindowTitle(QString & szTitle);
+
 protected:
 	// Loading and saving of properties
 	// Protected: only KviMainWindow can call these
@@ -438,14 +445,14 @@ protected:
 	// this by default calls fillSingleColorCaptionBuffer(plainTextCaption());
 	virtual void fillCaptionBuffers();
 	// protected helper
-	inline void fillSingleColorCaptionBuffers(const QString & szName){ m_szPlainTextCaption = szName; };
+	inline void fillSingleColorCaptionBuffers(const QString & szName) { m_szPlainTextCaption = szName; };
 	// Virtual events that signal dock state change
 	virtual void youAreDocked();
 	virtual void youAreUndocked();
 	// Reimplement to show a special icon in the WindowList items and captions
 	virtual QPixmap * myIconPtr();
 	// Sets the type of this window: be careful with this
-	void setType(Type eType){ m_eType = eType; };
+	void setType(Type eType) { m_eType = eType; };
 
 	bool eventFilter(QObject * pObject, QEvent * pEvent);
 
@@ -489,13 +496,13 @@ signals:
 };
 
 #ifndef _KVI_WINDOW_CPP_
-	// The active window:
-	//   This is almost always non null
-	//   The exception is the startup (when there are no windows at all)
-	//   and the last phase of the destructor.
-	//   You usually shouldn't care of checking this pointer for NULL unless
-	//   you're running very early at startup or very late at shutdown
-	extern KVIRC_API KviWindow * g_pActiveWindow;
+// The active window:
+//   This is almost always non null
+//   The exception is the startup (when there are no windows at all)
+//   and the last phase of the destructor.
+//   You usually shouldn't care of checking this pointer for NULL unless
+//   you're running very early at startup or very late at shutdown
+extern KVIRC_API KviWindow * g_pActiveWindow;
 #endif
 
 inline QByteArray KviWindow::encodeText(const QString & szText)

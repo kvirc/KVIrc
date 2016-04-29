@@ -29,7 +29,6 @@
 
 #include <QDialog>
 
-
 class QShowEvent;
 class QPushButton;
 class KviTalWizardPrivate;
@@ -46,8 +45,10 @@ class KVILIB_API KviTalWizard : public QDialog
 public:
 	KviTalWizard(QWidget * pParent);
 	~KviTalWizard();
+
 protected:
 	KviTalWizardPrivate * m_p;
+
 public:
 	///
 	/// Adds a page to the wizard with the specified title.
@@ -55,14 +56,14 @@ public:
 	/// Adding a page a second time is equivalent to calling
 	/// setPageTitle() and enabling the page.
 	///
-	void addPage(QWidget * pWidget,const QString &szTitle);
+	void addPage(QWidget * pWidget, const QString & szTitle);
 	///
 	/// Adds a page to the wizard with the specified title
 	/// and in the specified position.
 	/// Adding a page a second time is equivalent to calling
 	/// setPageTitle() and enabling the page.
 	///
-	void insertPage(QWidget * pWidget,const QString &szTitle,int iIndex);
+	void insertPage(QWidget * pWidget, const QString & szTitle, int iIndex);
 	///
 	/// Enables or disables a page. A disabled page
 	/// is skipped when the user presses "Next" in the
@@ -72,14 +73,14 @@ public:
 	/// Returns true on success or false if the pWidget
 	/// does not identify a page that has been added to this wizard.
 	///
-	bool setPageEnabled(QWidget * pWidget,bool bEnabled);
+	bool setPageEnabled(QWidget * pWidget, bool bEnabled);
 	///
 	/// Changes a page title.
 	///
 	/// Returns true on success or false if the pWidget
 	/// does not identify a page that has been added to this wizard.
 	///
-	bool setPageTitle(QWidget * pWidget,const QString &szTitle);
+	bool setPageTitle(QWidget * pWidget, const QString & szTitle);
 	///
 	/// Switches the wizard to the specified page.
 	/// Please note that this class handles page switching
@@ -97,27 +98,27 @@ public:
 	/// Enables or disables the help button for the specified page.
 	/// By default the help button is always disabled.
 	///
-	void setHelpEnabled(QWidget * pWidget,bool bEnabled);
+	void setHelpEnabled(QWidget * pWidget, bool bEnabled);
 	///
 	/// Enables or disables the cancel button for the specified page.
 	/// By default the cancel button is always enabled.
 	///
-	void setCancelEnabled(QWidget * pWidget,bool bEnabled);
+	void setCancelEnabled(QWidget * pWidget, bool bEnabled);
 	///
 	/// Enables or disables the finish button for the specified page.
 	/// By default the finish button is always disabled.
 	///
-	void setFinishEnabled(QWidget * pWidget,bool bEnabled);
+	void setFinishEnabled(QWidget * pWidget, bool bEnabled);
 	///
 	/// Enables or disables the next button for the specified page.
 	/// By default the next button is always enabled.
 	///
-	void setNextEnabled(QWidget * pWidget,bool bEnabled);
+	void setNextEnabled(QWidget * pWidget, bool bEnabled);
 	///
 	/// Enables or disables the prev button for the specified page.
 	/// By default the prev button is always enabled.
 	///
-	void setBackEnabled(QWidget * pWidget,bool bEnabled);
+	void setBackEnabled(QWidget * pWidget, bool bEnabled);
 	///
 	/// Returns a pointer to the cancel button displayed in the dialog.
 	///
@@ -144,6 +145,7 @@ signals:
 	///
 	void helpClicked();
 	void pageChanged(QString title);
+
 protected:
 	///
 	/// Displays the first page if no other page is shown yet.
@@ -154,6 +156,7 @@ protected:
 	/// Handles redirects the close button to the "cancel" operation.
 	///
 	virtual void closeEvent(QCloseEvent * e);
+
 protected:
 	void setCurrentPage(KviTalWizardPageData * pData);
 protected slots:
@@ -163,6 +166,5 @@ protected slots:
 	void cancelButtonClicked();
 	void finishButtonClicked();
 };
-
 
 #endif // _KVI_TAL_WIZARD_H_

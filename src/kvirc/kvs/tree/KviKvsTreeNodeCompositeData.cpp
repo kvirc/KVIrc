@@ -27,25 +27,25 @@
 
 #define DEBUGME
 
-KviKvsTreeNodeCompositeData::KviKvsTreeNodeCompositeData(const QChar * pLocation,KviPointerList<KviKvsTreeNodeData> * pSubData)
-: KviKvsTreeNodeData(pLocation)
+KviKvsTreeNodeCompositeData::KviKvsTreeNodeCompositeData(const QChar * pLocation, KviPointerList<KviKvsTreeNodeData> * pSubData)
+    : KviKvsTreeNodeData(pLocation)
 {
 #ifdef DEBUGME
-	if(pSubData->count() < 2) qDebug("KviKvsTreeNodeCompositeData constructor called with less than two child items!");
+	if(pSubData->count() < 2)
+		qDebug("KviKvsTreeNodeCompositeData constructor called with less than two child items!");
 #endif
 	m_pSubData = pSubData;
 	m_pSubData->setAutoDelete(true);
-	for(KviKvsTreeNodeData * d = m_pSubData->first();d;d = m_pSubData->next())
+	for(KviKvsTreeNodeData * d = m_pSubData->first(); d; d = m_pSubData->next())
 		d->setParent(this);
 }
-
 
 KviKvsTreeNodeCompositeData::~KviKvsTreeNodeCompositeData()
 {
 	delete m_pSubData;
 }
 
-bool KviKvsTreeNodeCompositeData::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeCompositeData::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	QString * pS = new QString();
 
@@ -58,24 +58,25 @@ bool KviKvsTreeNodeCompositeData::evaluateReadOnly(KviKvsRunTimeContext * c,KviK
 
 	while(KviKvsTreeNodeData * d = it.current())
 	{
-		if(!d->evaluateReadOnly(c,&res))return false;
+		if(!d->evaluateReadOnly(c, &res))
+			return false;
 		res.appendAsString(*pS);
 		++it;
 	}
 	return true;
 }
 
-void KviKvsTreeNodeCompositeData::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeCompositeData::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Composite Data Evaluation (Implicit String Cast)";
 }
 
 void KviKvsTreeNodeCompositeData::dump(const char * prefix)
 {
-	qDebug("%s CompositeData",prefix);
+	qDebug("%s CompositeData", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	for(KviKvsTreeNodeData * p = m_pSubData->first();p;p = m_pSubData->next())
+	for(KviKvsTreeNodeData * p = m_pSubData->first(); p; p = m_pSubData->next())
 	{
 		p->dump(tmp.toUtf8().data());
 	}

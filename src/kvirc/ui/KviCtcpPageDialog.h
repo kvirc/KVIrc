@@ -39,14 +39,18 @@ class KVIRC_API KviCtcpPageDialog : public QWidget
 public:
 	KviCtcpPageDialog();
 	~KviCtcpPageDialog();
+
 protected:
-	QTabWidget     * m_pTabBar;
-	QPushButton    * m_pCloseButton;
+	QTabWidget * m_pTabBar;
+	QPushButton * m_pCloseButton;
+
 public:
 	void popup();
 	void addPage(const QString & szNick, const QString & szUser, const QString & szHost, const QString & szMsg);
+
 protected:
 	void center();
+
 protected:
 	virtual void showEvent(QShowEvent * e);
 	virtual void closeEvent(QCloseEvent * e);

@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviCustomToolBarManager.h"
 #include "KviCustomToolBarDescriptor.h"
 #include "KviConfigurationFile.h"
@@ -33,7 +31,7 @@ KviCustomToolBarManager * KviCustomToolBarManager::m_pInstance = 0;
 
 KviCustomToolBarManager::KviCustomToolBarManager()
 {
-	m_pDescriptors = new KviPointerHashTable<QString,KviCustomToolBarDescriptor>(17,false);
+	m_pDescriptors = new KviPointerHashTable<QString, KviCustomToolBarDescriptor>(17, false);
 	m_pDescriptors->setAutoDelete(true);
 }
 
@@ -44,10 +42,11 @@ KviCustomToolBarManager::~KviCustomToolBarManager()
 
 KviCustomToolBar * KviCustomToolBarManager::firstExistingToolBar()
 {
-	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviPointerHashTableIterator<QString, KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
-		if(d->toolBar())return d->toolBar();
+		if(d->toolBar())
+			return d->toolBar();
 		++it;
 	}
 	return 0;
@@ -55,7 +54,8 @@ KviCustomToolBar * KviCustomToolBarManager::firstExistingToolBar()
 
 void KviCustomToolBarManager::init()
 {
-	if(!m_pInstance)m_pInstance = new KviCustomToolBarManager();
+	if(!m_pInstance)
+		m_pInstance = new KviCustomToolBarManager();
 }
 
 void KviCustomToolBarManager::done()
@@ -67,7 +67,7 @@ void KviCustomToolBarManager::done()
 	}
 }
 
-QString KviCustomToolBarManager::idForNewToolBar(const QString &szTemplate)
+QString KviCustomToolBarManager::idForNewToolBar(const QString & szTemplate)
 {
 	QString s;
 	QString szTT = szTemplate.toLower();
@@ -86,7 +86,8 @@ QString KviCustomToolBarManager::idForNewToolBar(const QString &szTemplate)
 			tmp.setNum(idx);
 			s += tmp;
 		}
-		if(!m_pDescriptors->find(s))return s;
+		if(!m_pDescriptors->find(s))
+			return s;
 		idx++;
 	}
 	return s;
@@ -94,32 +95,36 @@ QString KviCustomToolBarManager::idForNewToolBar(const QString &szTemplate)
 
 KviCustomToolBarDescriptor * KviCustomToolBarManager::findDescriptorByInternalId(int id)
 {
-	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviPointerHashTableIterator<QString, KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
-		if(d->internalId() == id)return d;
+		if(d->internalId() == id)
+			return d;
 		++it;
 	}
 	return 0;
 }
 
-bool KviCustomToolBarManager::renameDescriptor(const QString &szId,const QString &szNewId,const QString &szNewLabelCode)
+bool KviCustomToolBarManager::renameDescriptor(const QString & szId, const QString & szNewId, const QString & szNewLabelCode)
 {
 	KviCustomToolBarDescriptor * d = m_pDescriptors->find(szId);
-	if(!d)return false;
+	if(!d)
+		return false;
 	d->rename(szNewLabelCode);
-	if(szId == szNewId)return true; // already done
+	if(szId == szNewId)
+		return true; // already done
 	m_pDescriptors->setAutoDelete(false);
 	m_pDescriptors->remove(szId);
-	m_pDescriptors->replace(szNewId,d);
+	m_pDescriptors->replace(szNewId, d);
 	m_pDescriptors->setAutoDelete(true);
 	return true;
 }
 
-bool KviCustomToolBarManager::destroyDescriptor(const QString &szId)
+bool KviCustomToolBarManager::destroyDescriptor(const QString & szId)
 {
 	KviCustomToolBarDescriptor * d = m_pDescriptors->find(szId);
-	if(!d)return false;
+	if(!d)
+		return false;
 	m_pDescriptors->remove(szId); // will delete it too!
 	return true;
 }
@@ -129,33 +134,34 @@ void KviCustomToolBarManager::clear()
 	m_pDescriptors->clear(); // bye!
 }
 
-KviCustomToolBarDescriptor * KviCustomToolBarManager::create(const QString &szId,const QString &szLabelCode)
+KviCustomToolBarDescriptor * KviCustomToolBarManager::create(const QString & szId, const QString & szLabelCode)
 {
 	KviCustomToolBarDescriptor * d = m_pDescriptors->find(szId);
-	if(d)return d;
-	d = new KviCustomToolBarDescriptor(szId,szLabelCode);
-	m_pDescriptors->replace(szId,d);
+	if(d)
+		return d;
+	d = new KviCustomToolBarDescriptor(szId, szLabelCode);
+	m_pDescriptors->replace(szId, d);
 	return d;
 }
 
 void KviCustomToolBarManager::storeVisibilityState()
 {
-	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviPointerHashTableIterator<QString, KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
 		d->m_bVisibleAtStartup = d->toolBar() != 0;
 		++it;
 	}
-
 }
 
 int KviCustomToolBarManager::visibleToolBarCount()
 {
 	int cnt = 0;
-	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviPointerHashTableIterator<QString, KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
-		if(d->toolBar() != 0)cnt++;
+		if(d->toolBar() != 0)
+			cnt++;
 		++it;
 	}
 	return cnt;
@@ -163,7 +169,7 @@ int KviCustomToolBarManager::visibleToolBarCount()
 
 void KviCustomToolBarManager::createToolBarsVisibleAtStartup()
 {
-	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviPointerHashTableIterator<QString, KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
 		if(d->m_bVisibleAtStartup && (!d->toolBar()))
@@ -174,38 +180,41 @@ void KviCustomToolBarManager::createToolBarsVisibleAtStartup()
 
 void KviCustomToolBarManager::updateVisibleToolBars()
 {
-	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviPointerHashTableIterator<QString, KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
-		if(d->toolBar())d->updateToolBar();
+		if(d->toolBar())
+			d->updateToolBar();
 		++it;
 	}
 }
 
-void KviCustomToolBarManager::load(const QString &szFileName)
+void KviCustomToolBarManager::load(const QString & szFileName)
 {
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Read);
 
 	KviConfigurationFileIterator it(*(cfg.dict()));
 	while(it.current())
 	{
 		cfg.setGroup(it.currentKey());
-		KviCustomToolBarDescriptor * d = new KviCustomToolBarDescriptor(it.currentKey(),QString());
-		d->m_bVisibleAtStartup = (cfg.readIntEntry("Visible",0) > 0);
-		if(!d->load(&cfg))delete d;
-		else m_pDescriptors->replace(it.currentKey(),d);
+		KviCustomToolBarDescriptor * d = new KviCustomToolBarDescriptor(it.currentKey(), QString());
+		d->m_bVisibleAtStartup = (cfg.readIntEntry("Visible", 0) > 0);
+		if(!d->load(&cfg))
+			delete d;
+		else
+			m_pDescriptors->replace(it.currentKey(), d);
 		++it;
 	}
 }
 
-void KviCustomToolBarManager::save(const QString &szFileName)
+void KviCustomToolBarManager::save(const QString & szFileName)
 {
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
-	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*m_pDescriptors);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Write);
+	KviPointerHashTableIterator<QString, KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
 		cfg.setGroup(d->id());
-		cfg.writeEntry("Visible",d->m_bVisibleAtStartup ? 1 : 0);
+		cfg.writeEntry("Visible", d->m_bVisibleAtStartup ? 1 : 0);
 		d->save(&cfg);
 		++it;
 	}

@@ -45,18 +45,18 @@
  */
 class XmlFunctions
 {
-  public:
-    // Helper function, get a specific node
-    static QDomNode             getNode(const QDomNode &rootNode, const QString &path);
-    // Helper function, get the attribute text of a node
-    static QString              getNodeAttribute(const QDomNode &node, const QString &attribute);
-    // Helper function, get a specific child node
-    static QDomNode             getNodeChildByKey(const QDomNodeList &childNodes,
-                                                  const QString &keyTagName, const QString &keyValue);
-    // Helper function, get the text value of a node
-    static QString              getNodeValue(const QDomNode &rootNode, const QString &path);
-    // Helper function, get the source XML of a node.
-    static QString              getSource( const QDomNode &node, int indent = 0 );
+public:
+	// Helper function, get a specific node
+	static QDomNode getNode(const QDomNode & rootNode, const QString & path);
+	// Helper function, get the attribute text of a node
+	static QString getNodeAttribute(const QDomNode & node, const QString & attribute);
+	// Helper function, get a specific child node
+	static QDomNode getNodeChildByKey(const QDomNodeList & childNodes,
+	    const QString & keyTagName, const QString & keyValue);
+	// Helper function, get the text value of a node
+	static QString getNodeValue(const QDomNode & rootNode, const QString & path);
+	// Helper function, get the source XML of a node.
+	static QString getSource(const QDomNode & node, int indent = 0);
 };
 
 #endif

@@ -25,8 +25,6 @@
 //
 //=============================================================================
 
-
-
 #include "KvsObject_widget.h"
 #include "object_macros.h"
 
@@ -38,33 +36,32 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool setImage(KviKvsObjectFunctionCall *c);
-	bool setUsesBigPixmap(KviKvsObjectFunctionCall *c);
-	bool usesBigPixmap(KviKvsObjectFunctionCall *c);
-	bool setUsesTextLabel(KviKvsObjectFunctionCall *c);
-	bool usesTextLabel(KviKvsObjectFunctionCall *c);
-	bool setTextLabel(KviKvsObjectFunctionCall *c);
-	bool textLabel(KviKvsObjectFunctionCall *c);
-	bool setPopup(KviKvsObjectFunctionCall *c);
-	bool openPopup(KviKvsObjectFunctionCall *c);
-	bool setOn(KviKvsObjectFunctionCall *c);
-	bool setToggleButton(KviKvsObjectFunctionCall *c);
-	bool toggle(KviKvsObjectFunctionCall *c);
-//	bool setPopupDelay(KviKvsObjectFunctionCall *c);
-//	bool popupDelay(KviKvsObjectFunctionCall *c);
-	bool setTextPosition(KviKvsObjectFunctionCall *c);
-	bool textPosition(KviKvsObjectFunctionCall *c);
+	bool setImage(KviKvsObjectFunctionCall * c);
+	bool setUsesBigPixmap(KviKvsObjectFunctionCall * c);
+	bool usesBigPixmap(KviKvsObjectFunctionCall * c);
+	bool setUsesTextLabel(KviKvsObjectFunctionCall * c);
+	bool usesTextLabel(KviKvsObjectFunctionCall * c);
+	bool setTextLabel(KviKvsObjectFunctionCall * c);
+	bool textLabel(KviKvsObjectFunctionCall * c);
+	bool setPopup(KviKvsObjectFunctionCall * c);
+	bool openPopup(KviKvsObjectFunctionCall * c);
+	bool setOn(KviKvsObjectFunctionCall * c);
+	bool setToggleButton(KviKvsObjectFunctionCall * c);
+	bool toggle(KviKvsObjectFunctionCall * c);
+	//	bool setPopupDelay(KviKvsObjectFunctionCall *c);
+	//	bool popupDelay(KviKvsObjectFunctionCall *c);
+	bool setTextPosition(KviKvsObjectFunctionCall * c);
+	bool textPosition(KviKvsObjectFunctionCall * c);
 
-	bool setAutoRaise(KviKvsObjectFunctionCall *c);
-	bool autoRaise(KviKvsObjectFunctionCall *c);
-	bool clickEvent(KviKvsObjectFunctionCall *c);
+	bool setAutoRaise(KviKvsObjectFunctionCall * c);
+	bool autoRaise(KviKvsObjectFunctionCall * c);
+	bool clickEvent(KviKvsObjectFunctionCall * c);
 signals:
 	void clicked();
 protected slots:
 	void slotClicked();
 };
 
-
-#endif        //!_CLASS_TOOLBUTTON_H_
+#endif //!_CLASS_TOOLBUTTON_H_

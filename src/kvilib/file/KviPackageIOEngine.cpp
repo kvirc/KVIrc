@@ -29,7 +29,6 @@
 #include <QProgressDialog>
 #include <QLabel>
 
-
 //
 // A KVIrc Package File is basically a simple zip file with some additional meta-data.
 // The package file has the following format
@@ -73,7 +72,6 @@
 //   BufferLen         uint32     4               The length of the binary buffer
 //   BufferData        Bytes      Variable        The data for the binary buffer
 
-
 // UniString:
 //   StringLen         uint32     4               The length of the string data in BYTES (null terminator NOT included)
 //   StringData        Bytes      StringLen       An utf8 encoded string (do NOT write the NULL terminator)
@@ -102,22 +100,24 @@
 KviPackageIOEngine::KviPackageIOEngine()
 {
 	m_pProgressDialog = 0;
-	m_pStringInfoFields = new KviPointerHashTable<QString,QString>();
+	m_pStringInfoFields = new KviPointerHashTable<QString, QString>();
 	m_pStringInfoFields->setAutoDelete(true);
-	m_pBinaryInfoFields = new KviPointerHashTable<QString,QByteArray>();
+	m_pBinaryInfoFields = new KviPointerHashTable<QString, QByteArray>();
 	m_pBinaryInfoFields->setAutoDelete(true);
 }
 
 KviPackageIOEngine::~KviPackageIOEngine()
 {
-	if(m_pProgressDialog)delete m_pProgressDialog;
+	if(m_pProgressDialog)
+		delete m_pProgressDialog;
 	delete m_pStringInfoFields;
 	delete m_pBinaryInfoFields;
 }
 
-bool KviPackageIOEngine::updateProgress(int iProgress,const QString &szLabel)
+bool KviPackageIOEngine::updateProgress(int iProgress, const QString & szLabel)
 {
-	if(!m_pProgressDialog)return true;
+	if(!m_pProgressDialog)
+		return true;
 
 	m_pProgressDialog->setValue(iProgress);
 	m_pProgressDialogLabel->setText(szLabel);
@@ -130,20 +130,21 @@ bool KviPackageIOEngine::updateProgress(int iProgress,const QString &szLabel)
 	return true;
 }
 
-void KviPackageIOEngine::showProgressDialog(const QString &szCaption,int iTotalSteps)
+void KviPackageIOEngine::showProgressDialog(const QString & szCaption, int iTotalSteps)
 {
-	m_pProgressDialog = new QProgressDialog(QString(""),__tr2qs("Cancel"),0,iTotalSteps,0);
+	m_pProgressDialog = new QProgressDialog(QString(""), __tr2qs("Cancel"), 0, iTotalSteps, 0);
 	m_pProgressDialog->setModal(true);
 	m_pProgressDialog->setWindowTitle(szCaption);
 
 	m_pProgressDialogLabel = new QLabel(m_pProgressDialog);
-	m_pProgressDialogLabel->setMaximumSize(500,300);
+	m_pProgressDialogLabel->setMaximumSize(500, 300);
 	m_pProgressDialog->setLabel(m_pProgressDialogLabel);
 }
 
 void KviPackageIOEngine::hideProgressDialog()
 {
-	if(!m_pProgressDialog)return;
+	if(!m_pProgressDialog)
+		return;
 	delete m_pProgressDialog;
 	m_pProgressDialog = 0;
 }
@@ -159,5 +160,3 @@ bool KviPackageIOEngine::readError()
 	setLastError(__tr2qs("File read error"));
 	return false;
 }
-
-

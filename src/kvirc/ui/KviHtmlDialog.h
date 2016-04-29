@@ -34,38 +34,40 @@
 #include <QHash>
 #include <QPixmap>
 
-
-
-
 class KviHtmlDialogData
 {
 public:
-	KviHtmlDialogData() {
-		m_pDoc=new QTextDocument();
-	};
-	~KviHtmlDialogData(){delete m_pDoc;};
-
-	void addImageResource(const QString &key,const QPixmap &pix)
+	KviHtmlDialogData()
 	{
-		if (!m_pDoc) m_pDoc=new QTextDocument();
+		m_pDoc = new QTextDocument();
+	};
+	~KviHtmlDialogData() { delete m_pDoc; };
+
+	void addImageResource(const QString & key, const QPixmap & pix)
+	{
+		if(!m_pDoc)
+			m_pDoc = new QTextDocument();
 		QUrl url;
 		url.setPath(key);
-		m_pDoc->addResource(2,url,pix);
+		m_pDoc->addResource(2, url, pix);
 	}
 
-	void addHtmlResource(const QString key,const QString value)
+	void addHtmlResource(const QString key, const QString value)
 	{
-		htmlResource.insert(key,value);
+		htmlResource.insert(key, value);
 	}
 
 	// input
 
 	// mandatory fields
-	enum Flags { ForceMinimumSize = 1 };
-	int iFlags;               // da flags :)
-	int iDefaultButton;       // the button to use when Enter is pressed (1,2 or 3)
-	int iCancelButton;        // the button to use when Esc is pressed (1,2 or 3)
-	QString szHtmlText;       // Shouldn't be empty :D
+	enum Flags
+	{
+		ForceMinimumSize = 1
+	};
+	int iFlags;         // da flags :)
+	int iDefaultButton; // the button to use when Enter is pressed (1,2 or 3)
+	int iCancelButton;  // the button to use when Esc is pressed (1,2 or 3)
+	QString szHtmlText; // Shouldn't be empty :D
 
 	// optional fields
 	QString szCaption;        // KVIrc is used when this is empty
@@ -74,36 +76,37 @@ public:
 	QString szButton1Text;    // OK is used if this is empty
 	QString szButton2Text;    // no button is shown if this is empty
 	QString szButton3Text;    // no button is shown if this is empty
-	QTextDocument *m_pDoc;
-	QHash<QString,QString> htmlResource;
+	QTextDocument * m_pDoc;
+	QHash<QString, QString> htmlResource;
 	int iMinimumWidth;
 	int iMinimumHeight;
 
-	QPixmap pixIcon;          // may be null
+	QPixmap pixIcon; // may be null
 
 	// output
-	int iSelectedButton;      // returns 1,2 or 3
+	int iSelectedButton; // returns 1,2 or 3
 };
 
-class KviTextBrowser: public QTextBrowser
+class KviTextBrowser : public QTextBrowser
 {
 public:
-	KviTextBrowser(QWidget *par,KviHtmlDialogData *ht)
-		: QTextBrowser(par), m_pHt(ht){};
+	KviTextBrowser(QWidget * par, KviHtmlDialogData * ht)
+	    : QTextBrowser(par), m_pHt(ht){};
 	~KviTextBrowser(){};
-	virtual QVariant loadResource ( int type, const QUrl & name )
+	virtual QVariant loadResource(int type, const QUrl & name)
 	{
-		QString p=m_pHt->htmlResource.value(name.path());
-		qDebug("resource %s type %d and page %s",name.path().toUtf8().data(),type,p.toUtf8().data());
-		if (!p.isEmpty()) return QVariant(p);
-		else return QVariant();
-
+		QString p = m_pHt->htmlResource.value(name.path());
+		qDebug("resource %s type %d and page %s", name.path().toUtf8().data(), type, p.toUtf8().data());
+		if(!p.isEmpty())
+			return QVariant(p);
+		else
+			return QVariant();
 
 		//return QTextBrowser::loadResource(type,name);
 	}
-protected:
-	KviHtmlDialogData *m_pHt;
 
+protected:
+	KviHtmlDialogData * m_pHt;
 };
 
 class KVIRC_API KviHtmlDialog : public QDialog
@@ -113,21 +116,22 @@ public:
 	// the dialog does NOT delete this structure and assumes that
 	// it remains alive until the dialog closes (i.e. it may access
 	// the structure in the destructor
-	KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData);
+	KviHtmlDialog(QWidget * pParent, KviHtmlDialogData * pData);
 	~KviHtmlDialog();
+
 protected:
 	KviHtmlDialogData * m_pData;
+
 public:
 	// displays the dialog as modal and returns 1,2 or 3
-	static int display(QWidget * pParent,KviHtmlDialogData * pData);
+	static int display(QWidget * pParent, KviHtmlDialogData * pData);
 protected slots:
 	void button1Pressed();
 	void button2Pressed();
 	void button3Pressed();
+
 protected:
 	virtual void reject();
 };
-
-
 
 #endif //!_KVI_HTMLDIALOG_H_

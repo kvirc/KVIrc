@@ -36,16 +36,15 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool setText(KviKvsObjectFunctionCall *c);
-	bool isChecked(KviKvsObjectFunctionCall *c);
-	bool setChecked(KviKvsObjectFunctionCall *c);
-	bool setImage(KviKvsObjectFunctionCall *c);
-	bool toggleEvent(KviKvsObjectFunctionCall *c);
+	bool setText(KviKvsObjectFunctionCall * c);
+	bool isChecked(KviKvsObjectFunctionCall * c);
+	bool setChecked(KviKvsObjectFunctionCall * c);
+	bool setImage(KviKvsObjectFunctionCall * c);
+	bool toggleEvent(KviKvsObjectFunctionCall * c);
 protected slots:
 	void toggled(bool b);
-
 };
 
-#endif	//!_CLASS_RADIOBUTTON_H_
+#endif //!_CLASS_RADIOBUTTON_H_

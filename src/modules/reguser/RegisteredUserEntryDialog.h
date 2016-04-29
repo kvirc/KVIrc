@@ -42,21 +42,23 @@
 class KviRegisteredUser;
 
 #ifndef _EDITUSER_CPP_
-	extern KviRegisteredUserDataBase * g_pLocalRegisteredUserDataBase;
+extern KviRegisteredUserDataBase * g_pLocalRegisteredUserDataBase;
 #endif
 
 class RegisteredUserPropertiesDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	RegisteredUserPropertiesDialog(QWidget *p,KviPointerHashTable<QString,QString> * dict);
+	RegisteredUserPropertiesDialog(QWidget * p, KviPointerHashTable<QString, QString> * dict);
 	~RegisteredUserPropertiesDialog();
-protected:
-	QTableWidget *m_pTable;
 
-	KviPointerHashTable<QString,QString>     * m_pPropertyDict;
-	QPushButton        * m_pDelButton;
-	QPushButton        * m_pAddButton;
+protected:
+	QTableWidget * m_pTable;
+
+	KviPointerHashTable<QString, QString> * m_pPropertyDict;
+	QPushButton * m_pDelButton;
+	QPushButton * m_pAddButton;
+
 protected:
 	void fillData();
 	virtual void closeEvent(QCloseEvent *);
@@ -66,13 +68,13 @@ protected slots:
 	void delClicked();
 };
 
-
 class RegisteredUserMaskDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	RegisteredUserMaskDialog(QWidget * p,KviIrcMask * m);
+	RegisteredUserMaskDialog(QWidget * p, KviIrcMask * m);
 	~RegisteredUserMaskDialog();
+
 protected:
 	KviIrcMask * m_pMask;
 
@@ -85,47 +87,47 @@ protected slots:
 	void okClicked();
 };
 
-
 class RegisteredUserEntryDialog : public KviTalTabDialog
 {
 	Q_OBJECT
 public:
-	RegisteredUserEntryDialog(QWidget * p,KviRegisteredUser * r,bool bModal = true);
+	RegisteredUserEntryDialog(QWidget * p, KviRegisteredUser * r, bool bModal = true);
 	virtual ~RegisteredUserEntryDialog();
+
 protected:
-	KviRegisteredUser  * m_pUser;
+	KviRegisteredUser * m_pUser;
 
-	QLineEdit          * m_pNameEdit;
-	QLineEdit          * m_pCommentEdit;
+	QLineEdit * m_pNameEdit;
+	QLineEdit * m_pCommentEdit;
 
-	QListWidget        * m_pMaskListBox;
+	QListWidget * m_pMaskListBox;
 
-	QPushButton        * m_pDelMaskButton;
-	QPushButton        * m_pEditMaskButton;
-	QPushButton        * m_pAddMaskButton;
+	QPushButton * m_pDelMaskButton;
+	QPushButton * m_pEditMaskButton;
+	QPushButton * m_pAddMaskButton;
 
-	QCheckBox          * m_pNotifyCheck;
-	QLineEdit          * m_pNotifyNick;
-	QLabel             * m_pNotifyLabel;
+	QCheckBox * m_pNotifyCheck;
+	QLineEdit * m_pNotifyNick;
+	QLabel * m_pNotifyLabel;
 
-	KviPixmap          * m_pAvatar;
-	KviPixmapSelector  * m_pAvatarSelector;
+	KviPixmap * m_pAvatar;
+	KviPixmapSelector * m_pAvatarSelector;
 
-	KviPointerHashTable<QString,QString>     * m_pPropertyDict;
+	KviPointerHashTable<QString, QString> * m_pPropertyDict;
 
-	QCheckBox          * m_pCustomColorCheck;
-	QColor             * m_pCustomColor;
-	KviColorSelector   * m_pCustomColorSelector;
+	QCheckBox * m_pCustomColorCheck;
+	QColor * m_pCustomColor;
+	KviColorSelector * m_pCustomColorSelector;
 
 	//Ignore TAB
-	QCheckBox          * m_pIgnoreEnabled;
-	QCheckBox          * m_pIgnoreQuery;
-	QCheckBox          * m_pIgnoreChannel;
-	QCheckBox          * m_pIgnoreNotice;
-	QCheckBox          * m_pIgnoreCtcp;
-	QCheckBox          * m_pIgnoreInvite;
-	QCheckBox          * m_pIgnoreDcc;
-	QCheckBox          * m_pIgnoreHighlight;
+	QCheckBox * m_pIgnoreEnabled;
+	QCheckBox * m_pIgnoreQuery;
+	QCheckBox * m_pIgnoreChannel;
+	QCheckBox * m_pIgnoreNotice;
+	QCheckBox * m_pIgnoreCtcp;
+	QCheckBox * m_pIgnoreInvite;
+	QCheckBox * m_pIgnoreDcc;
+	QCheckBox * m_pIgnoreHighlight;
 
 	virtual void closeEvent(QCloseEvent *);
 protected slots:

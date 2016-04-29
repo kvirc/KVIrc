@@ -28,7 +28,6 @@
 * \brief The window manager
 */
 
-
 #include "kvi_debug.h"
 #include "kvi_settings.h"
 #include "KviWindowStack.h"
@@ -52,23 +51,23 @@
 #include <QMenu>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	#include <QPixmap>
-	extern QPixmap * g_pShadedParentGlobalDesktopBackground;
+#include <QPixmap>
+extern QPixmap * g_pShadedParentGlobalDesktopBackground;
 #endif
 
-KviWindowStack::KviWindowStack(QWidget * parent,const char *pcName)
-: QStackedWidget(parent)
+KviWindowStack::KviWindowStack(QWidget * parent, const char * pcName)
+    : QStackedWidget(parent)
 {
 	setObjectName(pcName);
 	setFrameShape(NoFrame);
 
-    m_pWindowPopup = new QMenu(this);
-    connect(m_pWindowPopup,SIGNAL(triggered(QAction *)),this,SLOT(menuActivated(QAction *)));
-	connect(m_pWindowPopup,SIGNAL(aboutToShow()),this,SLOT(fillWindowPopup()));
+	m_pWindowPopup = new QMenu(this);
+	connect(m_pWindowPopup, SIGNAL(triggered(QAction *)), this, SLOT(menuActivated(QAction *)));
+	connect(m_pWindowPopup, SIGNAL(aboutToShow()), this, SLOT(fillWindowPopup()));
 
 	setAutoFillBackground(false);
 
-	connect(this,SIGNAL(currentChanged(int)),this,SLOT(currentWindowChanged(int)));
+	connect(this, SIGNAL(currentChanged(int)), this, SLOT(currentWindowChanged(int)));
 }
 
 KviWindowStack::~KviWindowStack()
@@ -94,7 +93,7 @@ void KviWindowStack::showAndActivate(KviWindow * pWnd)
 		pWnd->setFocus();
 }
 
-void KviWindowStack::destroyWindow(KviWindow *pWnd)
+void KviWindowStack::destroyWindow(KviWindow * pWnd)
 {
 	removeWidget(pWnd);
 	delete pWnd;
@@ -125,23 +124,23 @@ void KviWindowStack::fillWindowPopup()
 
 		pWnd = (KviWindow *)w;
 
-		szItem.setNum(((uint)idx)+1);
-		szItem+=". ";
+		szItem.setNum(((uint)idx) + 1);
+		szItem += ". ";
 
 		szCaption = pWnd->windowTitle();
 		if(szCaption.length() > 60)
 		{
 			QString trail = szCaption.right(27);
 			szCaption.truncate(27);
-			szCaption+="...";
-			szCaption+=trail;
+			szCaption += "...";
+			szCaption += trail;
 		}
 
-		szItem+=szCaption;
+		szItem += szCaption;
 
 		const QPixmap * pix = pWnd->myIconPtr();
 
-		if (pix && !(pix->isNull()))
+		if(pix && !(pix->isNull()))
 			pAction = m_pWindowPopup->addAction(*pix, szItem);
 		else
 			pAction = m_pWindowPopup->addAction(szItem);
@@ -153,12 +152,11 @@ void KviWindowStack::fillWindowPopup()
 
 		idx++;
 	}
-
 }
 
-void KviWindowStack::menuActivated(QAction *pAction)
+void KviWindowStack::menuActivated(QAction * pAction)
 {
-	bool bOk=false;
+	bool bOk = false;
 	int id = pAction->data().toInt(&bOk);
 	if(!bOk)
 		return;

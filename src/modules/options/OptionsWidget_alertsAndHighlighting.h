@@ -42,7 +42,6 @@ public:
 	~OptionsWidget_alertsAndHighlighting();
 };
 
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_highlighting KviIconManager::QueryTrace
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_highlighting __tr2qs_no_lookup("Highlight")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_highlighting OptionsWidget_alertsAndHighlighting
@@ -53,6 +52,7 @@ class OptionsWidget_highlighting : public KviOptionsWidget
 public:
 	OptionsWidget_highlighting(QWidget * parent);
 	~OptionsWidget_highlighting();
+
 private:
 	QRadioButton * m_pHighlightAllOccurencesRadioButton;
 	QRadioButton * m_pHighlightWholeWordsOnlyRadioButton;
@@ -60,9 +60,7 @@ private:
 
 protected:
 	virtual void commit();
-
 };
-
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_alerts KviIconManager::Warning
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_alerts __tr2qs_no_lookup("Window List Alert")
@@ -75,6 +73,5 @@ public:
 	OptionsWidget_alerts(QWidget * parent);
 	~OptionsWidget_alerts();
 };
-
 
 #endif //_OPTW_HIGHLIGHTING_H_

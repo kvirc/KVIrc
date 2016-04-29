@@ -28,7 +28,6 @@
 #include "KviOptionsWidget.h"
 #include "KviSelectors.h"
 
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_theme KviIconManager::Gui
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_theme __tr2qs_no_lookup("General")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_theme __tr2qs_no_lookup("theme")
@@ -53,15 +52,16 @@ class OptionsWidget_themeTransparency : public KviOptionsWidget
 public:
 	OptionsWidget_themeTransparency(QWidget * parent);
 	~OptionsWidget_themeTransparency();
+
 protected:
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	KviPixmapSelector * m_pGlobalBackgroundPixmapSelector;
 	KviBoolSelector * m_pUseTransparencyBoolSelector;
-	#ifdef COMPILE_X11_SUPPORT
-		KviBoolSelector * m_pUseCompositingForTransparencyBoolSelector;
-	#elif defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		KviBoolSelector * m_pUseWindowsFakeDesktopTransparencyBoolSelector;
-	#endif
+#ifdef COMPILE_X11_SUPPORT
+	KviBoolSelector * m_pUseCompositingForTransparencyBoolSelector;
+#elif defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	KviBoolSelector * m_pUseWindowsFakeDesktopTransparencyBoolSelector;
+#endif
 #endif
 protected slots:
 	void enableGlobalBackgroundPixmapSelector(bool);

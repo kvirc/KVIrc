@@ -39,6 +39,7 @@ class OptionsWidget_tray : public KviOptionsWidget
 public:
 	OptionsWidget_tray(QWidget * parent);
 	~OptionsWidget_tray();
+
 protected:
 	KviBoolSelector * m_pEnable;
 	KviBoolSelector * m_pEnableFlashing;

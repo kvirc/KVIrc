@@ -38,11 +38,13 @@ class TipFrame : public QFrame
 public:
 	TipFrame(QWidget * par);
 	~TipFrame();
+
 private:
-	QLabel *m_pLabel1;
-	QLabel *m_pLabel2;
+	QLabel * m_pLabel1;
+	QLabel * m_pLabel2;
+
 public:
-	void setText(const QString &text);
+	void setText(const QString & text);
 };
 
 class TipWindow : public QWidget
@@ -51,15 +53,17 @@ class TipWindow : public QWidget
 public:
 	TipWindow();
 	~TipWindow();
+
 protected:
 	TipFrame * m_pTipFrame;
-	QCheckBox   * m_pShowAtStartupCheck;
-	KviConfigurationFile   * m_pConfig;
-	QString        m_szConfigFileName; // no path!
+	QCheckBox * m_pShowAtStartupCheck;
+	KviConfigurationFile * m_pConfig;
+	QString m_szConfigFileName; // no path!
 protected:
-	virtual void showEvent(QShowEvent *e);
+	virtual void showEvent(QShowEvent * e);
+
 public:
-	bool openConfig(QString  filename,bool bEnsureExists = true);
+	bool openConfig(QString filename, bool bEnsureExists = true);
 	void closeConfig();
 public slots:
 	void nextTip();

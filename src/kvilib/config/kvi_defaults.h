@@ -57,9 +57,9 @@
 #include "kvi_settings.h"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#define KVI_HOME_CONFIG_FILE_NAME "kvirc4.ini"
+#define KVI_HOME_CONFIG_FILE_NAME "kvirc4.ini"
 #else
-	#define KVI_HOME_CONFIG_FILE_NAME ".kvirc4.rc"
+#define KVI_HOME_CONFIG_FILE_NAME ".kvirc4.rc"
 #endif
 
 #define KVI_FORCE_LOCALE_FILE_NAME ".kvirc_force_locale"

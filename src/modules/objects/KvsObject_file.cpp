@@ -23,7 +23,6 @@
 //
 //=============================================================================
 
-
 #include "KvsObject_file.h"
 #include "kvi_debug.h"
 #include "KviLocale.h"
@@ -36,8 +35,12 @@
 //#include <QFile>
 #include <QTextStream>
 
-#define CHECK_FILE_IS_OPEN if (!m_pFile->isOpen())\
-	{c->warning(__tr2qs_ctx("File is not open!","objects"));return true;}
+#define CHECK_FILE_IS_OPEN                                       \
+	if(!m_pFile->isOpen())                                       \
+	{                                                            \
+		c->warning(__tr2qs_ctx("File is not open!", "objects")); \
+		return true;                                             \
+	}
 
 // needed for $open()
 
@@ -59,7 +62,7 @@ const QIODevice::OpenMode mod_cod[] = {
 	QIODevice::Truncate
 };
 
-#define mod_num			(sizeof(mod_tbl) / sizeof(mod_tbl[0]))
+#define mod_num (sizeof(mod_tbl) / sizeof(mod_tbl[0]))
 
 /*
 	@doc:	file
@@ -149,119 +152,119 @@ const QIODevice::OpenMode mod_cod[] = {
 		$writeBlock()
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_file,"file","object")
-	KVSO_REGISTER_HANDLER(KvsObject_file,"setName",setName)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"name",name)
+KVSO_BEGIN_REGISTERCLASS(KvsObject_file, "file", "object")
+KVSO_REGISTER_HANDLER(KvsObject_file, "setName", setName)
+KVSO_REGISTER_HANDLER(KvsObject_file, "name", name)
 
-	KVSO_REGISTER_HANDLER(KvsObject_file,"open",open)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"isOpen",isOpen)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"close",close)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"flush",flush)
+KVSO_REGISTER_HANDLER(KvsObject_file, "open", open)
+KVSO_REGISTER_HANDLER(KvsObject_file, "isOpen", isOpen)
+KVSO_REGISTER_HANDLER(KvsObject_file, "close", close)
+KVSO_REGISTER_HANDLER(KvsObject_file, "flush", flush)
 
-	KVSO_REGISTER_HANDLER(KvsObject_file,"size",size)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"resize",resize)
+KVSO_REGISTER_HANDLER(KvsObject_file, "size", size)
+KVSO_REGISTER_HANDLER(KvsObject_file, "resize", resize)
 
-	KVSO_REGISTER_HANDLER(KvsObject_file,"atEnd",atEnd)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"where",where)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"seek",seek)
+KVSO_REGISTER_HANDLER(KvsObject_file, "atEnd", atEnd)
+KVSO_REGISTER_HANDLER(KvsObject_file, "where", where)
+KVSO_REGISTER_HANDLER(KvsObject_file, "seek", seek)
 
-	KVSO_REGISTER_HANDLER(KvsObject_file,"putch",putch)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"getch",getch)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"ungetch",unGetch)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"readByte",readByte)
+KVSO_REGISTER_HANDLER(KvsObject_file, "putch", putch)
+KVSO_REGISTER_HANDLER(KvsObject_file, "getch", getch)
+KVSO_REGISTER_HANDLER(KvsObject_file, "ungetch", unGetch)
+KVSO_REGISTER_HANDLER(KvsObject_file, "readByte", readByte)
 
-	KVSO_REGISTER_HANDLER(KvsObject_file,"readBlock",readBlock)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"writeBlock", writeBlock)
+KVSO_REGISTER_HANDLER(KvsObject_file, "readBlock", readBlock)
+KVSO_REGISTER_HANDLER(KvsObject_file, "writeBlock", writeBlock)
 
-	KVSO_REGISTER_HANDLER(KvsObject_file,"readHexBlock",readHexBlock)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"writeHexBlock",writeHexBlock)
+KVSO_REGISTER_HANDLER(KvsObject_file, "readHexBlock", readHexBlock)
+KVSO_REGISTER_HANDLER(KvsObject_file, "writeHexBlock", writeHexBlock)
 
-	KVSO_REGISTER_HANDLER(KvsObject_file,"readLine",readLine)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"writeLine",writeLine)
+KVSO_REGISTER_HANDLER(KvsObject_file, "readLine", readLine)
+KVSO_REGISTER_HANDLER(KvsObject_file, "writeLine", writeLine)
 
-	KVSO_REGISTER_HANDLER(KvsObject_file,"write",write)
-	KVSO_REGISTER_HANDLER(KvsObject_file,"read",read)
-
+KVSO_REGISTER_HANDLER(KvsObject_file, "write", write)
+KVSO_REGISTER_HANDLER(KvsObject_file, "read", read)
 
 KVSO_END_REGISTERCLASS(KvsObject_file)
 
-
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_file,KvsObject_widget)
-	m_pFile = new KviFile();
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_file, KvsObject_widget)
+m_pFile = new KviFile();
 
 KVSO_END_CONSTRUCTOR(KvsObject_file)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_file)
 
-	if (m_pFile) delete m_pFile;
+if(m_pFile)
+	delete m_pFile;
 
 KVSO_END_CONSTRUCTOR(KvsObject_file)
 
-KVSO_CLASS_FUNCTION(file,setName)
+KVSO_CLASS_FUNCTION(file, setName)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	QString szName;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("file_name",KVS_PT_STRING,0,szName)
+	KVSO_PARAMETER("file_name", KVS_PT_STRING, 0, szName)
 	KVSO_PARAMETERS_END(c)
 	m_pFile->setFileName(szName);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,name)
+KVSO_CLASS_FUNCTION(file, name)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	c->returnValue()->setString(m_pFile->fileName());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,open)
+KVSO_CLASS_FUNCTION(file, open)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	QStringList modes;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("file_mode",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,modes)
+	KVSO_PARAMETER("file_mode", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, modes)
 	KVSO_PARAMETERS_END(c)
 
 	if(m_pFile->fileName().isEmpty())
 	{
-		c->warning(__tr2qs_ctx("Empty filename string","objects"));
+		c->warning(__tr2qs_ctx("Empty filename string", "objects"));
 		return true;
 	}
-	QIODevice::OpenMode mod,sum;
-	if (modes.empty()) sum = QIODevice::ReadWrite|QIODevice::Append; // if no parameters given, default to ReadWrite | Append
+	QIODevice::OpenMode mod, sum;
+	if(modes.empty())
+		sum = QIODevice::ReadWrite | QIODevice::Append; // if no parameters given, default to ReadWrite | Append
 	else
 	{
-		for ( int idx=0;idx<modes.count();idx++)
+		for(int idx = 0; idx < modes.count(); idx++)
 		{
-			int found=false;
+			int found = false;
 			for(unsigned int j = 0; j < mod_num; j++)
 			{
 				if(KviQString::equalCI(modes.at(idx), mod_tbl[j]))
 				{
-					mod=mod_cod[j];
-					found=true;
+					mod = mod_cod[j];
+					found = true;
 					break;
 				}
 			}
 			if(found)
 				sum = sum | mod;
 			else
-				c->warning(__tr2qs_ctx("No such open mode '%Q'","objects"),&modes.at(idx));
+				c->warning(__tr2qs_ctx("No such open mode '%Q'", "objects"), &modes.at(idx));
 		}
 	}
 	c->returnValue()->setBoolean(m_pFile->open(sum));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,isOpen)
+KVSO_CLASS_FUNCTION(file, isOpen)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	c->returnValue()->setBoolean(m_pFile->isOpen());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,close)
+KVSO_CLASS_FUNCTION(file, close)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
@@ -269,7 +272,7 @@ KVSO_CLASS_FUNCTION(file,close)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,flush)
+KVSO_CLASS_FUNCTION(file, flush)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
@@ -277,21 +280,21 @@ KVSO_CLASS_FUNCTION(file,flush)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,size)
+KVSO_CLASS_FUNCTION(file, size)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	c->returnValue()->setInteger((kvs_int_t)(m_pFile->size()));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,atEnd)
+KVSO_CLASS_FUNCTION(file, atEnd)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	c->returnValue()->setInteger((kvs_int_t)(m_pFile->atEnd()));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,where)
+KVSO_CLASS_FUNCTION(file, where)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
@@ -299,81 +302,85 @@ KVSO_CLASS_FUNCTION(file,where)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,seek)
+KVSO_CLASS_FUNCTION(file, seek)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
 	KVSO_PARAMETERS_END(c)
 	CHECK_FILE_IS_OPEN
 	m_pFile->seek(uIndex);
 	return true;
 }
 
-
-KVSO_CLASS_FUNCTION(file,resize)
+KVSO_CLASS_FUNCTION(file, resize)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	kvs_int_t iSize;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("size",KVS_PT_INTEGER,0,iSize)
+	KVSO_PARAMETER("size", KVS_PT_INTEGER, 0, iSize)
 	KVSO_PARAMETERS_END(c)
 	CHECK_FILE_IS_OPEN
 	m_pFile->resize(iSize);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,putch)
+KVSO_CLASS_FUNCTION(file, putch)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	QString szChar;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("char",KVS_PT_STRING,0,szChar)
+	KVSO_PARAMETER("char", KVS_PT_STRING, 0, szChar)
 	KVSO_PARAMETERS_END(c)
-	if (szChar.length()>1)c->warning(__tr2qs_ctx("Argument too long, using only first char","objects"));
-	const char *ch=szChar.toUtf8().data();
-	if (!m_pFile->putChar(ch[0])) c->warning(__tr2qs_ctx("Write error occurred!","objects"));
+	if(szChar.length() > 1)
+		c->warning(__tr2qs_ctx("Argument too long, using only first char", "objects"));
+	const char * ch = szChar.toUtf8().data();
+	if(!m_pFile->putChar(ch[0]))
+		c->warning(__tr2qs_ctx("Write error occurred!", "objects"));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,getch)
+KVSO_CLASS_FUNCTION(file, getch)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	char ch;
-	if (!m_pFile->getChar(&ch)) c->warning(__tr2qs_ctx("Read error occurred!","objects"));	// c->error ?
+	if(!m_pFile->getChar(&ch))
+		c->warning(__tr2qs_ctx("Read error occurred!", "objects")); // c->error ?
 	QString szChar = QChar(ch);
 	c->returnValue()->setString(szChar);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,readByte)
+KVSO_CLASS_FUNCTION(file, readByte)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	char ch;
-	if (!m_pFile->getChar(&ch)) c->warning(__tr2qs_ctx("Read error occurred!","objects"));	// c->error ?
+	if(!m_pFile->getChar(&ch))
+		c->warning(__tr2qs_ctx("Read error occurred!", "objects")); // c->error ?
 	//QString szChar = QChar(ch);
-	c->returnValue()->setInteger((kvs_int_t) ch);
+	c->returnValue()->setInteger((kvs_int_t)ch);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,unGetch)
+KVSO_CLASS_FUNCTION(file, unGetch)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	QString szChar;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("char",KVS_PT_STRING,0,szChar)
+	KVSO_PARAMETER("char", KVS_PT_STRING, 0, szChar)
 	KVSO_PARAMETERS_END(c)
-	if (szChar.length()>1) c->warning(__tr2qs_ctx("Argument too long, using only the first char","objects"));
-	const char *ch=szChar.toUtf8().data();
+	if(szChar.length() > 1)
+		c->warning(__tr2qs_ctx("Argument too long, using only the first char", "objects"));
+	const char * ch = szChar.toUtf8().data();
 	m_pFile->ungetChar(ch[0]);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,readBlock)
+KVSO_CLASS_FUNCTION(file, readBlock)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
@@ -381,22 +388,22 @@ KVSO_CLASS_FUNCTION(file,readBlock)
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,0,uLen)
-		KVSO_PARAMETER("hobject",KVS_PT_HOBJECT,KVS_PF_OPTIONAL,hObject)
+	KVSO_PARAMETER("length", KVS_PT_UNSIGNEDINTEGER, 0, uLen)
+	KVSO_PARAMETER("hobject", KVS_PT_HOBJECT, KVS_PF_OPTIONAL, hObject)
 	KVSO_PARAMETERS_END(c)
-	if (uLen>(kvs_uint_t)m_pFile->size())
-		uLen=m_pFile->size();
-	if (hObject)
+	if(uLen > (kvs_uint_t)m_pFile->size())
+		uLen = m_pFile->size();
+	if(hObject)
 	{
-		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-		if (!pObject)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		if(!pObject)
 		{
-			c->warning(__tr2qs_ctx("Buffer parameter is not an object","objects"));
+			c->warning(__tr2qs_ctx("Buffer parameter is not an object", "objects"));
 			return true;
 		}
-		if (!pObject->inheritsClass("memorybuffer"))
+		if(!pObject->inheritsClass("memorybuffer"))
 		{
-			c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
+			c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object", "objects"));
 			return true;
 		}
 		//m_pFile->flush();
@@ -416,13 +423,13 @@ KVSO_CLASS_FUNCTION(file,readBlock)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,read)
+KVSO_CLASS_FUNCTION(file, read)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	QString szType;
 	KVSO_PARAMETERS_BEGIN(c)
-			KVSO_PARAMETER("type",KVS_PT_STRING,0,szType)
+	KVSO_PARAMETER("type", KVS_PT_STRING, 0, szType)
 	KVSO_PARAMETERS_END(c)
 	if(KviQString::equalCI(szType, "String"))
 	{
@@ -440,21 +447,21 @@ KVSO_CLASS_FUNCTION(file,read)
 	{
 		QString szData;
 		m_pFile->load(szData);
-		KviKvsVariant *pVar = KviKvsVariant::unserialize(szData);
-		if (pVar->isArray())
+		KviKvsVariant * pVar = KviKvsVariant::unserialize(szData);
+		if(pVar->isArray())
 			c->returnValue()->setArray(pVar->array());
 		else
-			c->warning(__tr2qs_ctx("The incoming data is not an array","objects"));
+			c->warning(__tr2qs_ctx("The incoming data is not an array", "objects"));
 	}
 	else if(KviQString::equalCI(szType, "Dict"))
 	{
 		QString szData;
 		m_pFile->load(szData);
-		KviKvsVariant *pVar = KviKvsVariant::unserialize(szData);
-		if (pVar->isHash())
+		KviKvsVariant * pVar = KviKvsVariant::unserialize(szData);
+		if(pVar->isHash())
 			c->returnValue()->setHash(pVar->hash());
 		else
-			c->warning(__tr2qs_ctx("The incoming data is not a dictionary","objects"));
+			c->warning(__tr2qs_ctx("The incoming data is not a dictionary", "objects"));
 	}
 	else if(KviQString::equalCI(szType, "String"))
 	{
@@ -464,26 +471,26 @@ KVSO_CLASS_FUNCTION(file,read)
 	}
 	else
 	{
-		c->warning(__tr2qs_ctx("Unsupported datatype '%Q'","objects"),&szType);
+		c->warning(__tr2qs_ctx("Unsupported datatype '%Q'", "objects"), &szType);
 	}
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,write)
+KVSO_CLASS_FUNCTION(file, write)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	KviKvsVariant * pVariantData;
 	KVSO_PARAMETERS_BEGIN(c)
-			KVSO_PARAMETER("variant_data",KVS_PT_VARIANT,0,pVariantData)
+	KVSO_PARAMETER("variant_data", KVS_PT_VARIANT, 0, pVariantData)
 	KVSO_PARAMETERS_END(c)
-	if (pVariantData->isInteger())
+	if(pVariantData->isInteger())
 	{
 		kvs_int_t num;
 		pVariantData->asInteger(num);
 		m_pFile->save(num);
 	}
-	if (pVariantData->isHash() || pVariantData->isArray() || pVariantData->isString())
+	if(pVariantData->isHash() || pVariantData->isArray() || pVariantData->isString())
 	{
 		QString szTmp;
 		pVariantData->serialize(szTmp);
@@ -492,7 +499,7 @@ KVSO_CLASS_FUNCTION(file,write)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,writeBlock)
+KVSO_CLASS_FUNCTION(file, writeBlock)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	kvs_uint_t uLen;
@@ -500,51 +507,54 @@ KVSO_CLASS_FUNCTION(file,writeBlock)
 	KviKvsVariant * pVariantData;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-			KVSO_PARAMETER("string_or_hobject",KVS_PT_VARIANT,0,pVariantData)
-			KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
+	KVSO_PARAMETER("string_or_hobject", KVS_PT_VARIANT, 0, pVariantData)
+	KVSO_PARAMETER("length", KVS_PT_UNSIGNEDINTEGER, KVS_PF_OPTIONAL, uLen)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pFile->isOpen())c->warning(__tr2qs_ctx("File is not open!","objects"));
+	if(!m_pFile->isOpen())
+		c->warning(__tr2qs_ctx("File is not open!", "objects"));
 	else
 	{
-		if (pVariantData->isHObject())
+		if(pVariantData->isHObject())
 		{
 			pVariantData->asHObject(hObject);
-			pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-			if (!pObject)
+			pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+			if(!pObject)
 			{
-				c->warning(__tr2qs_ctx("Buffer parameter is not an object","objects"));
+				c->warning(__tr2qs_ctx("Buffer parameter is not an object", "objects"));
 				return true;
 			}
-			if (pObject->inheritsClass("memorybuffer"))
+			if(pObject->inheritsClass("memorybuffer"))
 			{
-				if (!uLen)
+				if(!uLen)
 				{
-					if (((KvsObject_memoryBuffer *)pObject)->pBuffer()->size())
-						uLen=((KvsObject_memoryBuffer *)pObject)->pBuffer()->size();
+					if(((KvsObject_memoryBuffer *)pObject)->pBuffer()->size())
+						uLen = ((KvsObject_memoryBuffer *)pObject)->pBuffer()->size();
 					else
 					{
-						c->warning(__tr2qs_ctx("The memoryBuffer object is empty: nothing will be saved","objects"));
+						c->warning(__tr2qs_ctx("The memoryBuffer object is empty: nothing will be saved", "objects"));
 					}
 				}
-				const char *pData=((KvsObject_memoryBuffer *)pObject)->pBuffer()->data();
-				int rlen=m_pFile->write(pData,uLen);
+				const char * pData = ((KvsObject_memoryBuffer *)pObject)->pBuffer()->data();
+				int rlen = m_pFile->write(pData, uLen);
 				c->returnValue()->setInteger(rlen);
 				//m_pFile->flush();
-			} else {
-				c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
+			}
+			else
+			{
+				c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object", "objects"));
 				return true;
 			}
-
 		}
 		else
 		{
-			if (!pVariantData->isString()){
-				c->warning(__tr2qs_ctx("Block parameter must be a string or a memorybuffer object","objects"));
+			if(!pVariantData->isString())
+			{
+				c->warning(__tr2qs_ctx("Block parameter must be a string or a memorybuffer object", "objects"));
 				return true;
 			}
 			QString szBlock;
 			pVariantData->asString(szBlock);
-			const char *block=szBlock.toUtf8().data();
+			const char * block = szBlock.toUtf8().data();
 			int rlen = m_pFile->write(block, uLen);
 			c->returnValue()->setInteger(rlen);
 			//m_pFile->flush();
@@ -553,96 +563,101 @@ KVSO_CLASS_FUNCTION(file,writeBlock)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,readLine)
+KVSO_CLASS_FUNCTION(file, readLine)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	QString buffer;
 	//bool ok=KviFileUtils::readLine(m_pFile,buffer);
-	buffer=m_pFile->readLine();
+	buffer = m_pFile->readLine();
 	c->returnValue()->setString(buffer);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,writeLine)
+KVSO_CLASS_FUNCTION(file, writeLine)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	QString szLine;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text_line",KVS_PT_STRING,0,szLine)
+	KVSO_PARAMETER("text_line", KVS_PT_STRING, 0, szLine)
 	KVSO_PARAMETERS_END(c)
 	QTextStream ts(m_pFile);
 	ts << szLine;
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,readHexBlock)
+KVSO_CLASS_FUNCTION(file, readHexBlock)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	kvs_uint_t uLen;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,0,uLen)
+	KVSO_PARAMETER("length", KVS_PT_UNSIGNEDINTEGER, 0, uLen)
 	KVSO_PARAMETERS_END(c)
-	if (uLen>(kvs_uint_t)m_pFile->size()) uLen=m_pFile->size();
+	if(uLen > (kvs_uint_t)m_pFile->size())
+		uLen = m_pFile->size();
 	char * buff = new char[uLen];
-	char * str = new char [(uLen*2)+1];
+	char * str = new char[(uLen * 2) + 1];
 	m_pFile->flush(); // advice from QFile man page (to avoid trash)
 	int rlen = m_pFile->read(buff, uLen);
-	int index=0;
-	unsigned char byte,msb,lsb=0;
-	for (int i=0;i<rlen;i++)
+	int index = 0;
+	unsigned char byte, msb, lsb = 0;
+	for(int i = 0; i < rlen; i++)
 	{
-		byte=(unsigned char)buff[i];
-		lsb=byte & 0x0f;
-		msb=byte>>4;
-		msb>9?msb+='7':msb+='0';
-		lsb>9?lsb+='7':lsb+='0';
-		str[index++]=msb;
-		str[index++]=lsb;
+		byte = (unsigned char)buff[i];
+		lsb = byte & 0x0f;
+		msb = byte >> 4;
+		msb > 9 ? msb += '7' : msb += '0';
+		lsb > 9 ? lsb += '7' : lsb += '0';
+		str[index++] = msb;
+		str[index++] = lsb;
 	}
-	str[index]='\0';
+	str[index] = '\0';
 	c->returnValue()->setString(str);
 	delete[] str;
 	delete[] buff;
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(file,writeHexBlock)
+KVSO_CLASS_FUNCTION(file, writeHexBlock)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	QString szBlock;
 	kvs_uint_t uLen;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text_block",KVS_PT_STRING,0,szBlock)
-		KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
+	KVSO_PARAMETER("text_block", KVS_PT_STRING, 0, szBlock)
+	KVSO_PARAMETER("length", KVS_PT_UNSIGNEDINTEGER, KVS_PF_OPTIONAL, uLen)
 	KVSO_PARAMETERS_END(c)
-	if (szBlock.length()%2)
+	if(szBlock.length() % 2)
 	{
-		c->warning(__tr2qs_ctx("Length of hex string is not multiple of 2","objects"));
+		c->warning(__tr2qs_ctx("Length of hex string is not multiple of 2", "objects"));
 		return true;
 	}
-	if (uLen>((uint)szBlock.length()/2)|| !uLen) uLen=szBlock.length();
-	else uLen*=2;
-	unsigned char byte,lsb,msb;
-	for(unsigned int i=0;i<uLen;i+=2)
+	if(uLen > ((uint)szBlock.length() / 2) || !uLen)
+		uLen = szBlock.length();
+	else
+		uLen *= 2;
+	unsigned char byte, lsb, msb;
+	for(unsigned int i = 0; i < uLen; i += 2)
 	{
-		msb=szBlock.at(i).toLatin1();
-		lsb=szBlock.at(i+1).toLatin1();
+		msb = szBlock.at(i).toLatin1();
+		lsb = szBlock.at(i + 1).toLatin1();
 
-		if (((msb>='A' && msb<='F')||(msb>='0' && msb<='9')) && ((lsb>='A' && lsb<='F')|| (lsb>='0' && lsb<='9')))
+		if(((msb >= 'A' && msb <= 'F') || (msb >= '0' && msb <= '9')) && ((lsb >= 'A' && lsb <= 'F') || (lsb >= '0' && lsb <= '9')))
 		{
-			msb>='A'?msb-='7':msb-='0';
-			lsb>='A'?lsb-='7':lsb-='0';
-		} else{
-			c->warning(__tr2qs_ctx("The hex string is not correct!","objects"));
+			msb >= 'A' ? msb -= '7' : msb -= '0';
+			lsb >= 'A' ? lsb -= '7' : lsb -= '0';
+		}
+		else
+		{
+			c->warning(__tr2qs_ctx("The hex string is not correct!", "objects"));
 			return true;
 		}
-		byte=(msb*16)+lsb;
+		byte = (msb * 16) + lsb;
 		m_pFile->putChar(byte);
 	}
-	c->returnValue()->setInteger(uLen/2);
+	c->returnValue()->setInteger(uLen / 2);
 	return true;
 }

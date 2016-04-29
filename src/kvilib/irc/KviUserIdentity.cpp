@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "KviUserIdentity.h"
 #include "KviLocale.h"
 #include "kvi_defaults.h"
@@ -30,7 +29,7 @@
 // FIXME: Put here also the default away message, default away nick, default ctcp replies etc ?
 
 KviUserIdentity::KviUserIdentity()
-: KviHeapObject()
+    : KviHeapObject()
 {
 }
 
@@ -49,9 +48,9 @@ bool KviUserIdentity::load(KviConfigurationFile & cfg)
 	// FIXME: At least scramble the pass ?
 	m_szPassword = cfg.readEntry("Password");
 	KviPixmap def;
-	m_pixAvatar = cfg.readPixmapEntry("Avatar",def);
+	m_pixAvatar = cfg.readPixmapEntry("Avatar", def);
 	m_szPartMessage = cfg.readEntry("PartMessage");
-	m_szQuitMessage= cfg.readEntry("QuitMessage");
+	m_szQuitMessage = cfg.readEntry("QuitMessage");
 	m_szAge = cfg.readEntry("Age");
 	m_szGender = cfg.readEntry("Gender");
 	m_szLocation = cfg.readEntry("Location");
@@ -66,24 +65,24 @@ bool KviUserIdentity::load(KviConfigurationFile & cfg)
 bool KviUserIdentity::save(KviConfigurationFile & cfg)
 {
 	cfg.setGroup(m_szId);
-	cfg.writeEntry("NickName",m_szNickName);
-	cfg.writeEntry("AltNickName1",m_szAltNickName1);
-	cfg.writeEntry("AltNickName2",m_szAltNickName2);
-	cfg.writeEntry("AltNickName3",m_szAltNickName3);
-	cfg.writeEntry("UserName",m_szUserName);
+	cfg.writeEntry("NickName", m_szNickName);
+	cfg.writeEntry("AltNickName1", m_szAltNickName1);
+	cfg.writeEntry("AltNickName2", m_szAltNickName2);
+	cfg.writeEntry("AltNickName3", m_szAltNickName3);
+	cfg.writeEntry("UserName", m_szUserName);
 	// FIXME: At least scramble the pass ?
-	cfg.writeEntry("Password",m_szPassword);
-	cfg.writeEntry("Avatar",m_pixAvatar);
-	cfg.writeEntry("PartMessage",m_szPartMessage);
-	cfg.writeEntry("QuitMessage",m_szQuitMessage);
-	cfg.writeEntry("Age",m_szAge);
-	cfg.writeEntry("Gender",m_szGender);
-	cfg.writeEntry("Location",m_szLocation);
-	cfg.writeEntry("Languages",m_szLanguages);
-	cfg.writeEntry("OtherInfo",m_szOtherInfo);
-	cfg.writeEntry("UserMode",m_szUserMode);
-	cfg.writeEntry("OnConnectCommand",m_szOnConnectCommand);
-	cfg.writeEntry("OnLoginCommand",m_szOnLoginCommand);
+	cfg.writeEntry("Password", m_szPassword);
+	cfg.writeEntry("Avatar", m_pixAvatar);
+	cfg.writeEntry("PartMessage", m_szPartMessage);
+	cfg.writeEntry("QuitMessage", m_szQuitMessage);
+	cfg.writeEntry("Age", m_szAge);
+	cfg.writeEntry("Gender", m_szGender);
+	cfg.writeEntry("Location", m_szLocation);
+	cfg.writeEntry("Languages", m_szLanguages);
+	cfg.writeEntry("OtherInfo", m_szOtherInfo);
+	cfg.writeEntry("UserMode", m_szUserMode);
+	cfg.writeEntry("OnConnectCommand", m_szOnConnectCommand);
+	cfg.writeEntry("OnLoginCommand", m_szOnLoginCommand);
 	return true;
 }
 

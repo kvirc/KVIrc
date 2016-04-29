@@ -56,8 +56,10 @@ public:
 	* \brief Destoys the object
 	*/
 	~KviIrcUserDataBase();
+
 private:
-	KviPointerHashTable<QString,KviIrcUserEntry> * m_pDict;
+	KviPointerHashTable<QString, KviIrcUserEntry> * m_pDict;
+
 public:
 	/**
 	* \brief Clears the database
@@ -79,7 +81,7 @@ public:
 	* \param szNick The nickname of the user to find
 	* \return KviIrcUserEntry *
 	*/
-	KviIrcUserEntry * find(const QString & szNick){ return m_pDict->find(szNick); };
+	KviIrcUserEntry * find(const QString & szNick) { return m_pDict->find(szNick); };
 
 	/**
 	* \brief Decrements the user reference count and if it reaches 0 then deletes the user from the database
@@ -93,7 +95,7 @@ public:
 	* \brief Returns the database dictionary
 	* \return KviPointerHashTable<QString,KviIrcUserEntry> *
 	*/
-	KviPointerHashTable<QString,KviIrcUserEntry> * dict(){ return m_pDict; };
+	KviPointerHashTable<QString, KviIrcUserEntry> * dict() { return m_pDict; };
 
 	/**
 	* \brief Returns the registered user, if any, or 0

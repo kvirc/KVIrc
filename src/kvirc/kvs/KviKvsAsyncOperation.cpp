@@ -22,14 +22,12 @@
 //
 //=============================================================================
 
-
-
 #include "KviKvsAsyncOperation.h"
 #include "KviKvsKernel.h"
 #include "KviWindow.h"
 
 KviKvsAsyncOperation::KviKvsAsyncOperation(KviWindow * pWnd)
-: QObject()
+    : QObject()
 {
 	m_pWnd = pWnd;
 	KviKvsKernel::instance()->asyncOperationManager()->registerOperation(this);
@@ -39,7 +37,6 @@ KviKvsAsyncOperation::~KviKvsAsyncOperation()
 {
 	KviKvsKernel::instance()->asyncOperationManager()->unregisterOperation(this);
 }
-
 
 KviKvsAsyncOperationManager::KviKvsAsyncOperationManager()
 {
@@ -63,4 +60,3 @@ void KviKvsAsyncOperationManager::unregisterOperation(KviKvsAsyncOperation * o)
 {
 	m_pOperationList->removeRef(o);
 }
-

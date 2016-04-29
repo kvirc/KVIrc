@@ -40,17 +40,19 @@ class KviIOGraphWidget : public QWidget
 {
 	Q_OBJECT
 public:
-	KviIOGraphWidget(QWidget *parent);
-	~KviIOGraphWidget() {};
+	KviIOGraphWidget(QWidget * parent);
+	~KviIOGraphWidget(){};
+
 protected:
 	QQueue<unsigned int> m_sendRates;
 	QQueue<unsigned int> m_recvRates;
 	unsigned int m_maxRate;
 	kvi_u64_t m_uLastSentBytes;
 	kvi_u64_t m_uLastRecvBytes;
+
 protected:
-	virtual void timerEvent(QTimerEvent *e);
-	virtual void paintEvent (QPaintEvent *e);
+	virtual void timerEvent(QTimerEvent * e);
+	virtual void paintEvent(QPaintEvent * e);
 };
 
 class KviIOGraphWindow : public KviWindow
@@ -59,16 +61,18 @@ class KviIOGraphWindow : public KviWindow
 public:
 	KviIOGraphWindow(const char * name);
 	~KviIOGraphWindow();
+
 private:
 	KviIOGraphWidget * m_pIOGraph;
 	virtual void updatePseudoTransparency();
+
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent *e);
+	virtual void resizeEvent(QResizeEvent * e);
 	virtual void die();
 	virtual void moveEvent(QMoveEvent *);
-	virtual void paintEvent (QPaintEvent *e);
+	virtual void paintEvent(QPaintEvent * e);
 };
 
 #endif

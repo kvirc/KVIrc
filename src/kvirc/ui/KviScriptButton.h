@@ -37,14 +37,16 @@ class KVIRC_API KviScriptUserButton : public QToolButton
 {
 	Q_OBJECT
 public:
-	KviScriptUserButton(QWidget * par,const char * name);
+	KviScriptUserButton(QWidget * par, const char * name);
 	~KviScriptUserButton();
+
 protected:
 	KviKvsScript * m_pScript;
+
 public:
 	void setButtonCode(KviKvsScript * pScript);
-	virtual void setButtonPixmap(const QPixmap & pix){ setIcon(pix); };
-	void setButtonText(const QString &text){ setText(text); };
+	virtual void setButtonPixmap(const QPixmap & pix) { setIcon(pix); };
+	void setButtonText(const QString & text) { setText(text); };
 	virtual KviWindow * window();
 protected slots:
 	void btnClicked();
@@ -54,13 +56,19 @@ class KVIRC_API KviWindowScriptButton : public KviScriptUserButton
 {
 	Q_OBJECT
 public:
-	KviWindowScriptButton(QWidget * p,KviWindow * wnd,const char * name);
+	KviWindowScriptButton(QWidget * p, KviWindow * wnd, const char * name);
 	~KviWindowScriptButton();
+
 protected:
 	KviWindow * m_pWnd;
+
 public:
-	virtual void setButtonPixmap(const QPixmap & pix){ setIcon(QIcon(pix)); setIconSize(QSize(22,22)); };
-	virtual KviWindow * window(){ return m_pWnd; };
+	virtual void setButtonPixmap(const QPixmap & pix)
+	{
+		setIcon(QIcon(pix));
+		setIconSize(QSize(22, 22));
+	};
+	virtual KviWindow * window() { return m_pWnd; };
 };
 
 #endif //_KVI_SCRIPTBUTTON_H_

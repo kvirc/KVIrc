@@ -24,8 +24,8 @@
 
 #include "KviKvsTreeNodeArrayOrHashElement.h"
 
-KviKvsTreeNodeArrayOrHashElement::KviKvsTreeNodeArrayOrHashElement(const QChar * pLocation,KviKvsTreeNodeData * pSource)
-: KviKvsTreeNodeIndirectData(pLocation,pSource)
+KviKvsTreeNodeArrayOrHashElement::KviKvsTreeNodeArrayOrHashElement(const QChar * pLocation, KviKvsTreeNodeData * pSource)
+    : KviKvsTreeNodeIndirectData(pLocation, pSource)
 {
 }
 

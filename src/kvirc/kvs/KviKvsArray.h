@@ -62,10 +62,12 @@ public:
 	* \brief Destroys the array data
 	*/
 	~KviKvsArray();
+
 protected:
 	KviKvsVariant ** m_pData;
-	kvs_uint_t       m_uSize;
-	kvs_uint_t       m_uAllocSize;
+	kvs_uint_t m_uSize;
+	kvs_uint_t m_uAllocSize;
+
 public:
 	/**
 	* \brief Unsets an element from the array
@@ -108,13 +110,13 @@ public:
 	* \brief Returns true if the array is empty
 	* \return bool
 	*/
-	bool isEmpty(){ return m_uSize == 0; };
+	bool isEmpty() { return m_uSize == 0; };
 
 	/**
 	* \brief Returns the size of the array
 	* \return kvs_uint_t
 	*/
-	kvs_uint_t size(){ return m_uSize; };
+	kvs_uint_t size() { return m_uSize; };
 
 	/**
 	* \brief Appends data to the array converting it into a string
@@ -141,12 +143,14 @@ public:
 	* \return void
 	*/
 	void rsort();
+
 protected:
 	/**
 	* \brief Finds the new size of the array
 	* \return void
 	*/
 	void findNewSize();
+
 private:
 	/**
 	* \brief Compares two elements of the array

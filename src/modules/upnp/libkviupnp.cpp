@@ -31,7 +31,7 @@
 
 // Please use our common variable naming conventions and coding style :)
 // Let's be so:)
-UPnP::Manager* g_pManager = 0;
+UPnP::Manager * g_pManager = 0;
 
 /*
 	@doc: upnp.getExternalIpAddress
@@ -55,11 +55,10 @@ static bool upnp_kvs_fnc_getExternalIpAddress(KviKvsModuleFunctionCall * c)
 {
 	if(g_pManager)
 	{
-	  c->returnValue()->setString(g_pManager->getExternalIpAddress());
+		c->returnValue()->setString(g_pManager->getExternalIpAddress());
 	}
 	return true;
 }
-
 
 /*
 	@doc: upnp.isGatewayAvailable
@@ -77,10 +76,10 @@ static bool upnp_kvs_fnc_getExternalIpAddress(KviKvsModuleFunctionCall * c)
 */
 static bool upnp_kvs_fnc_isGatewayAvailable(KviKvsModuleFunctionCall * c)
 {
-        if (g_pManager)
-        {
-          c->returnValue()->setBoolean(g_pManager->isGatewayAvailable());
-        }
+	if(g_pManager)
+	{
+		c->returnValue()->setBoolean(g_pManager->isGatewayAvailable());
+	}
 	return true;
 }
 
@@ -114,13 +113,15 @@ static bool upnp_kvs_cmd_addPortMapping(KviKvsModuleCommandCall * c)
 	KviKvsVariant * pSw;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("port",KVS_PT_INT,0,iPort)
+	KVSM_PARAMETER("port", KVS_PT_INT, 0, iPort)
 	KVSM_PARAMETERS_END(c)
 
-	if( (pSw = c->switches()->find('a',"fake-address")) )
+	if((pSw = c->switches()->find('a', "fake-address")))
 	{
 		pSw->asString(szLocalIp);
-	} else {
+	}
+	else
+	{
 		kvi_getLocalHostAddress(szLocalIp);
 	}
 
@@ -151,7 +152,7 @@ static bool upnp_kvs_cmd_delPortMapping(KviKvsModuleCommandCall * c)
 	kvs_int_t iPort;
 	QString tmp;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("port",KVS_PT_INT,0,iPort)
+	KVSM_PARAMETER("port", KVS_PT_INT, 0, iPort)
 	KVSM_PARAMETERS_END(c)
 
 	g_pManager->deletePortMapping("TCP", "", iPort);
@@ -185,7 +186,7 @@ static bool upnp_kvs_cmd_refresh(KviKvsModuleCommandCall *)
 	return true;
 }
 
-static bool upnp_module_init(KviModule *m)
+static bool upnp_module_init(KviModule * m)
 {
 	if(g_pManager)
 		delete g_pManager;
@@ -193,11 +194,11 @@ static bool upnp_module_init(KviModule *m)
 
 	g_pManager = UPnP::Manager::instance();
 
-	KVSM_REGISTER_FUNCTION(m,"isGatewayAvailable",upnp_kvs_fnc_isGatewayAvailable);
-	KVSM_REGISTER_FUNCTION(m,"getExternalIpAddress",upnp_kvs_fnc_getExternalIpAddress);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"addPortMapping",upnp_kvs_cmd_addPortMapping);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"delPortMapping",upnp_kvs_cmd_delPortMapping);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"refresh",upnp_kvs_cmd_refresh);
+	KVSM_REGISTER_FUNCTION(m, "isGatewayAvailable", upnp_kvs_fnc_isGatewayAvailable);
+	KVSM_REGISTER_FUNCTION(m, "getExternalIpAddress", upnp_kvs_fnc_getExternalIpAddress);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "addPortMapping", upnp_kvs_cmd_addPortMapping);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "delPortMapping", upnp_kvs_cmd_delPortMapping);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "refresh", upnp_kvs_cmd_refresh);
 
 	return true;
 }
@@ -216,13 +217,12 @@ static bool upnp_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"UPnP",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com),",
-	"Universal Plug and Play",
-	upnp_module_init,
-	upnp_module_can_unload,
-	0,
-	upnp_module_cleanup,
-	0
-)
+    "UPnP",  // module name
+    "4.0.0", // module version
+    "Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com),",
+    "Universal Plug and Play",
+    upnp_module_init,
+    upnp_module_can_unload,
+    0,
+    upnp_module_cleanup,
+    0)

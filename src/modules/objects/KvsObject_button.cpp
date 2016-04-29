@@ -69,93 +69,94 @@
 		This property holds whether the label will scale its contents to fill all available space.
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_button,"button","widget")
+KVSO_BEGIN_REGISTERCLASS(KvsObject_button, "button", "widget")
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_button,setText)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_button,text)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_button,clickEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_button,setImage)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_button, setText)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_button, text)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_button, clickEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_button, setImage)
 
 KVSO_END_REGISTERCLASS(KvsObject_button)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_button,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_button, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_button)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_button)
 
 KVSO_END_DESTRUCTOR(KvsObject_button)
 
-bool KvsObject_button::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_button::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QPushButton);
-	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
+	connect(widget(), SIGNAL(clicked()), this, SLOT(slotClicked()));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(button,text)
+KVSO_CLASS_FUNCTION(button, text)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setString(((QPushButton *)widget())->text());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(button,setText)
+KVSO_CLASS_FUNCTION(button, setText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
 	((QPushButton *)widget())->setText(szText);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(button,setImage)
+KVSO_CLASS_FUNCTION(button, setImage)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	KviKvsVariant * pIcon;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("icon_or_hobject",KVS_PT_VARIANT,0,pIcon)
+	KVSO_PARAMETER("icon_or_hobject", KVS_PT_VARIANT, 0, pIcon)
 	KVSO_PARAMETERS_END(c)
 	if(!pIcon)
 	{
-		c->warning(__tr2qs_ctx("Image parameter missing","object"));
+		c->warning(__tr2qs_ctx("Image parameter missing", "object"));
 		return true;
 	}
 	if(pIcon->isHObject())
 	{
 		kvs_hobject_t hObj;
 		pIcon->asHObject(hObj);
-		KviKvsObject *pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObj);
-		if (!pObject)
+		KviKvsObject * pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObj);
+		if(!pObject)
 		{
-			c->warning(__tr2qs_ctx("Pixmap parameter is not an object!","objects"));
+			c->warning(__tr2qs_ctx("Pixmap parameter is not an object!", "objects"));
 			return true;
 		}
 		if(pObject->inheritsClass("pixmap"))
 			((QPushButton *)widget())->setIcon(QIcon(*((KvsObject_pixmap *)pObject)->getPixmap()));
 		else
-			c->warning(__tr2qs_ctx("Object pixmap required!","object"));
+			c->warning(__tr2qs_ctx("Object pixmap required!", "object"));
 		return true;
 	}
 	QString szIcon;
 	pIcon->asString(szIcon);
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
-	if(pix)	((QPushButton *)widget())->setIcon(*pix);
-	else((QPushButton *)widget())->setIcon(QIcon());
+	if(pix)
+		((QPushButton *)widget())->setIcon(*pix);
+	else
+		((QPushButton *)widget())->setIcon(QIcon());
 	return true;
 }
-KVSO_CLASS_FUNCTION(button,clickEvent)
+KVSO_CLASS_FUNCTION(button, clickEvent)
 {
-	emitSignal("clicked",c);
+	emitSignal("clicked", c);
 	return true;
 }
 
 // slots
 void KvsObject_button::slotClicked()
 {
-	KviKvsVariantList *params=0;
-	callFunction(this,"clickEvent",params);
+	KviKvsVariantList * params = 0;
+	callFunction(this, "clickEvent", params);
 }

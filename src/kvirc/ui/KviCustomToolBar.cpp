@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviCustomToolBar.h"
 #include "KviMainWindow.h"
 #include "KviLocale.h"
@@ -46,16 +44,16 @@
 static QAction * g_pDraggedAction = 0;
 
 KviCustomToolBar::KviCustomToolBar(KviCustomToolBarDescriptor * pDesc, const QString & szLabel, Qt::ToolBarArea type, const char * pcName)
-: KviToolBar(szLabel,type,pcName)
+    : KviToolBar(szLabel, type, pcName)
 {
 	m_pDescriptor = pDesc;
 	m_pFilteredChildren = 0;
 	setAcceptDrops(true);
 	// if the user removes all the items from this toolbar, keep a minimum size to permit dropping new item
-	setMinimumSize(16,16);
+	setMinimumSize(16, 16);
 
-	connect(KviActionManager::instance(),SIGNAL(beginCustomizeToolBars()),this,SLOT(beginCustomize()));
-	connect(KviActionManager::instance(),SIGNAL(endCustomizeToolBars()),this,SLOT(endCustomize()));
+	connect(KviActionManager::instance(), SIGNAL(beginCustomizeToolBars()), this, SLOT(beginCustomize()));
+	connect(KviActionManager::instance(), SIGNAL(endCustomizeToolBars()), this, SLOT(endCustomize()));
 
 	pDesc->registerToolBar(this);
 	if(KviActionManager::customizingToolBars())
@@ -84,11 +82,11 @@ void KviCustomToolBar::paintEvent(QPaintEvent * e)
 
 	if(KviActionManager::customizingToolBars() && (KviActionManager::currentToolBar() == this))
 	{
-		QPainter *p = new QPainter(this);
-		QPalette pal=palette();
-		QColor col=pal.highlight().color();
+		QPainter * p = new QPainter(this);
+		QPalette pal = palette();
+		QColor col = pal.highlight().color();
 		col.setAlpha(127);
-		p->fillRect(rect(),QBrush(col));
+		p->fillRect(rect(), QBrush(col));
 		delete p;
 	}
 }
@@ -105,9 +103,9 @@ void KviCustomToolBar::filterChild(QObject * o)
 {
 	bool * pBool = new bool(((QWidget *)o)->isEnabled());
 	if(m_pFilteredChildren)
-		m_pFilteredChildren->insert(o,pBool);
+		m_pFilteredChildren->insert(o, pBool);
 	o->installEventFilter(this);
-	connect(o,SIGNAL(destroyed()),this,SLOT(filteredChildDestroyed()));
+	connect(o, SIGNAL(destroyed()), this, SLOT(filteredChildDestroyed()));
 }
 
 void KviCustomToolBar::unfilterChild(QObject * o)
@@ -118,7 +116,7 @@ void KviCustomToolBar::unfilterChild(QObject * o)
 		if(pBool)
 		{
 			o->removeEventFilter(this);
-			disconnect(o,SIGNAL(destroyed()),this,SLOT(filteredChildDestroyed()));
+			disconnect(o, SIGNAL(destroyed()), this, SLOT(filteredChildDestroyed()));
 		}
 	}
 }
@@ -128,7 +126,7 @@ void KviCustomToolBar::beginCustomize()
 	if(m_pFilteredChildren)
 		delete m_pFilteredChildren;
 
-	m_pFilteredChildren = new KviPointerHashTable<void *,bool>;
+	m_pFilteredChildren = new KviPointerHashTable<void *, bool>;
 	m_pFilteredChildren->setAutoDelete(true);
 	// filter the events for all the children
 	QList<QObject *> list = children();
@@ -162,7 +160,7 @@ void KviCustomToolBar::syncDescriptor()
 	// store the item order in the descriptor
 	// There was boxLayouts
 	m_pDescriptor->actions()->clear();
-	foreach(QAction *pAction, actions())
+	foreach(QAction * pAction, actions())
 	{
 		m_pDescriptor->actions()->append(new QString(pAction->objectName()));
 	}
@@ -208,7 +206,9 @@ void KviCustomToolBar::dragEnterEvent(QDragEnterEvent * e)
 		{
 			// moving a qaction from a toolbar to another
 			e->acceptProposedAction();
-		} else {
+		}
+		else
+		{
 			// moving a kviaction from the toolbar editor to a toolbar
 			KviAction * pAction = KviActionManager::instance()->getAction(e->mimeData()->text());
 			if(pAction)
@@ -220,7 +220,7 @@ void KviCustomToolBar::dragEnterEvent(QDragEnterEvent * e)
 	}
 }
 
-void KviCustomToolBar::dragMoveEvent(QDragMoveEvent *e)
+void KviCustomToolBar::dragMoveEvent(QDragMoveEvent * e)
 {
 	if(!g_pDraggedAction)
 		return;
@@ -231,7 +231,7 @@ void KviCustomToolBar::dragMoveEvent(QDragMoveEvent *e)
 
 	if(actions().contains(g_pDraggedAction))
 		removeAction(g_pDraggedAction);
-	insertAction(pActionToMove,g_pDraggedAction);
+	insertAction(pActionToMove, g_pDraggedAction);
 }
 
 void KviCustomToolBar::dragLeaveEvent(QDragLeaveEvent *)
@@ -257,13 +257,13 @@ void KviCustomToolBar::dropEvent(QDropEvent * e)
 
 QAction * KviCustomToolBar::actionForWidget(QWidget * pWidget)
 {
-	return actionAt(pWidget->x() + 1,pWidget->y() + 1);
+	return actionAt(pWidget->x() + 1, pWidget->y() + 1);
 }
 
-bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
+bool KviCustomToolBar::eventFilter(QObject * o, QEvent * e)
 {
 	if(!KviActionManager::customizingToolBars())
-		return KviToolBar::eventFilter(o,e); // anything here is done when customizing only
+		return KviToolBar::eventFilter(o, e); // anything here is done when customizing only
 
 	if(e->type() == QEvent::MouseButtonPress)
 	{
@@ -274,23 +274,20 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 			if(o->isWidgetType())
 			{
 				if(
-					o->inherits("KviToolBarGraphicalApplet") ||
-					o->inherits("QToolButton")
-					)
+				    o->inherits("KviToolBarGraphicalApplet") || o->inherits("QToolButton"))
 				{
 					QWidget * pMovedWidget = (QWidget *)o;
 					g_pDraggedAction = actionForWidget(pMovedWidget);
 					if(!g_pDraggedAction)
-						return KviToolBar::eventFilter(o,e);
+						return KviToolBar::eventFilter(o, e);
 					// allow resizing of children
 
-					if(o->inherits("KviToolBarGraphicalApplet") &&
-						pMovedWidget->width() > 20) // might be an applet
+					if(o->inherits("KviToolBarGraphicalApplet") && pMovedWidget->width() > 20) // might be an applet
 					{
 						if(pEvent->pos().x() > (pMovedWidget->width() - 4))
 						{
 							g_pDraggedAction = 0;
-							return KviToolBar::eventFilter(o,e); // let the applet handle the event it
+							return KviToolBar::eventFilter(o, e); // let the applet handle the event it
 						}
 					}
 
@@ -306,30 +303,30 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 						if(pixie)
 						{
 							pDrag->setPixmap(*pixie);
-							pDrag->setHotSpot(QPoint(3,3));
+							pDrag->setHotSpot(QPoint(3, 3));
 						}
 					}
 
 					// search for the action after the moved one: we'll need it
 					// to reinsert m_pMovedChild in the right position if necessary
 					QAction * pAfterAction = 0;
-					bool found=false;
+					bool found = false;
 					foreach(QAction * pTmp, actions())
 					{
 						if(found)
 						{
-							pAfterAction=pTmp;
+							pAfterAction = pTmp;
 							break;
 						}
 
-						if(pTmp==g_pDraggedAction)
-							found=true;
+						if(pTmp == g_pDraggedAction)
+							found = true;
 					}
 
 					removeAction(g_pDraggedAction);
 
 					QEvent ev(QEvent::LayoutRequest);
-					QApplication::sendEvent(this,&ev);
+					QApplication::sendEvent(this, &ev);
 					if(pDrag->exec(Qt::MoveAction) != Qt::MoveAction)
 					{
 						// the user has probably failed to remove the action from the toolbar
@@ -337,32 +334,33 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 						KviActionManager::instance()->emitRemoveActionsHintRequest();
 						insertAction(pAfterAction, g_pDraggedAction);
 					}
-					g_pDraggedAction=0;
+					g_pDraggedAction = 0;
 					return true;
 				}
 			}
 		}
 	}
-	return KviToolBar::eventFilter(o,e);
+	return KviToolBar::eventFilter(o, e);
 }
 
 KviCustomToolBarSeparator::KviCustomToolBarSeparator(KviCustomToolBar * pParent, const char * pcName)
-: QWidget(pParent)
+    : QWidget(pParent)
 {
 	setObjectName(pcName);
 	m_pToolBar = pParent;
-	setSizePolicy(QSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum));
+	setSizePolicy(QSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum));
 }
 
 QSize KviCustomToolBarSeparator::sizeHint() const
 {
 	QStyleOption opt;
 	opt.initFrom(this);
-	int iExtent = style()->pixelMetric(QStyle::PM_ToolBarSeparatorExtent,&opt,this);
+	int iExtent = style()->pixelMetric(QStyle::PM_ToolBarSeparatorExtent, &opt, this);
 
 	if(m_pToolBar->orientation() == Qt::Horizontal)
-		return QSize(iExtent,0);
-	else return QSize(0,iExtent);
+		return QSize(iExtent, 0);
+	else
+		return QSize(0, iExtent);
 }
 
 void KviCustomToolBarSeparator::paintEvent(QPaintEvent *)
@@ -372,5 +370,5 @@ void KviCustomToolBarSeparator::paintEvent(QPaintEvent *)
 	opt.initFrom(this);
 	if(m_pToolBar->orientation() == Qt::Horizontal)
 		opt.state |= QStyle::State_Horizontal;
-	style()->drawPrimitive(QStyle::PE_IndicatorToolBarSeparator,&opt,&p,this);
+	style()->drawPrimitive(QStyle::PE_IndicatorToolBarSeparator, &opt, &p, this);
 }

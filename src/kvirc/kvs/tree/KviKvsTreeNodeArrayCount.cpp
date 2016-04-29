@@ -28,9 +28,8 @@
 #include "KviLocale.h"
 #include "KviKvsObject.h"
 
-
 KviKvsTreeNodeArrayCount::KviKvsTreeNodeArrayCount(const QChar * pLocation, KviKvsTreeNodeData * pSource)
-: KviKvsTreeNodeIndirectData(pLocation,pSource)
+    : KviKvsTreeNodeIndirectData(pLocation, pSource)
 {
 }
 
@@ -45,7 +44,7 @@ void KviKvsTreeNodeArrayCount::contextDescription(QString & szBuffer)
 
 void KviKvsTreeNodeArrayCount::dump(const char * prefix)
 {
-	qDebug("%s ArrayCount",prefix);
+	qDebug("%s ArrayCount", prefix);
 }
 
 bool KviKvsTreeNodeArrayCount::evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
@@ -53,10 +52,12 @@ bool KviKvsTreeNodeArrayCount::evaluateReadOnlyInObjectScope(KviKvsObject * o, K
 	KviKvsVariant val;
 	if(o)
 	{
-		if(!m_pSource->evaluateReadOnlyInObjectScope(o,c,&val))
+		if(!m_pSource->evaluateReadOnlyInObjectScope(o, c, &val))
 			return false;
-	} else {
-		if(!m_pSource->evaluateReadOnly(c,&val))
+	}
+	else
+	{
+		if(!m_pSource->evaluateReadOnly(c, &val))
 			return false;
 	}
 
@@ -66,7 +67,7 @@ bool KviKvsTreeNodeArrayCount::evaluateReadOnlyInObjectScope(KviKvsObject * o, K
 		{
 			QString szType;
 			val.getTypeName(szType);
-			c->warning(this,__tr2qs_ctx("The argument of the array count '#' operator didn't evaluate to an array: automatic conversion from type '%Q' supplied","kvs"),&szType);
+			c->warning(this, __tr2qs_ctx("The argument of the array count '#' operator didn't evaluate to an array: automatic conversion from type '%Q' supplied", "kvs"), &szType);
 		}
 		pBuffer->setInteger(0);
 		return true;
@@ -78,5 +79,5 @@ bool KviKvsTreeNodeArrayCount::evaluateReadOnlyInObjectScope(KviKvsObject * o, K
 
 bool KviKvsTreeNodeArrayCount::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
-	return evaluateReadOnlyInObjectScope(0,c,pBuffer);
+	return evaluateReadOnlyInObjectScope(0, c, pBuffer);
 }

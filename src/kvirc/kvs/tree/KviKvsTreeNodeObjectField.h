@@ -34,14 +34,15 @@ class KviKvsObject;
 class KVIRC_API KviKvsTreeNodeObjectField : public KviKvsTreeNodeVariable
 {
 public:
-	KviKvsTreeNodeObjectField(const QChar * pLocation,const QString &szIdentifier);
+	KviKvsTreeNodeObjectField(const QChar * pLocation, const QString & szIdentifier);
 	~KviKvsTreeNodeObjectField();
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool canEvaluateInObjectScope();
-	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pResult);
-	virtual KviKvsRWEvaluationResult * evaluateReadWriteInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c);
+	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pResult);
+	virtual KviKvsRWEvaluationResult * evaluateReadWriteInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c);
 };
 
 #endif //!_KVI_KVS_TREENODE_OBJECTFIELD_H_

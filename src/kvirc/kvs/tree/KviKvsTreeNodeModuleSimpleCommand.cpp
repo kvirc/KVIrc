@@ -31,18 +31,17 @@
 #include "KviKvsModuleInterface.h"
 #include "KviKvsRunTimeContext.h"
 
-KviKvsTreeNodeModuleSimpleCommand::KviKvsTreeNodeModuleSimpleCommand(const QChar * pLocation,const QString &szModuleName,const QString &szCmdName,KviKvsTreeNodeDataList * params)
-: KviKvsTreeNodeSimpleCommand(pLocation,szCmdName,params)
+KviKvsTreeNodeModuleSimpleCommand::KviKvsTreeNodeModuleSimpleCommand(const QChar * pLocation, const QString & szModuleName, const QString & szCmdName, KviKvsTreeNodeDataList * params)
+    : KviKvsTreeNodeSimpleCommand(pLocation, szCmdName, params)
 {
-	 m_szModuleName = szModuleName;
+	m_szModuleName = szModuleName;
 }
-
 
 KviKvsTreeNodeModuleSimpleCommand::~KviKvsTreeNodeModuleSimpleCommand()
 {
 }
 
-void KviKvsTreeNodeModuleSimpleCommand::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeModuleSimpleCommand::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Module Callback Command \"";
 	szBuffer += m_szModuleName;
@@ -53,7 +52,7 @@ void KviKvsTreeNodeModuleSimpleCommand::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeModuleSimpleCommand::dump(const char * prefix)
 {
-	qDebug("%s ModuleSimpleCommand(%s.%s)",prefix,m_szModuleName.toUtf8().data(),m_szCmdName.toUtf8().data());
+	qDebug("%s ModuleSimpleCommand(%s.%s)", prefix, m_szModuleName.toUtf8().data(), m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 }
@@ -64,7 +63,7 @@ bool KviKvsTreeNodeModuleSimpleCommand::execute(KviKvsRunTimeContext * c)
 	if(!m)
 	{
 		QString szErr = g_pModuleManager->lastError();
-		c->error(this,__tr2qs_ctx("Module command call failed: can't load the module '%Q': %Q","kvs"),&m_szModuleName,&szErr);
+		c->error(this, __tr2qs_ctx("Module command call failed: can't load the module '%Q': %Q", "kvs"), &m_szModuleName, &szErr);
 		return false;
 	}
 
@@ -74,9 +73,11 @@ bool KviKvsTreeNodeModuleSimpleCommand::execute(KviKvsRunTimeContext * c)
 		KviKvsModuleCallbackCommandExecRoutine * tmpProc = m->kvsFindCallbackCommand(m_szCmdName);
 		if(tmpProc)
 		{
-			c->error(this,__tr2qs_ctx("Module command call failed, however the module '%Q' exports a callback command named '%Q' - possibly missing brackets in a callback command?","kvs"),&m_szModuleName,&m_szCmdName);
-		} else {
-			c->error(this,__tr2qs_ctx("Module command call failed: the module '%Q' doesn't export a command named '%Q'","kvs"),&m_szModuleName,&m_szCmdName);
+			c->error(this, __tr2qs_ctx("Module command call failed, however the module '%Q' exports a callback command named '%Q' - possibly missing brackets in a callback command?", "kvs"), &m_szModuleName, &m_szCmdName);
+		}
+		else
+		{
+			c->error(this, __tr2qs_ctx("Module command call failed: the module '%Q' doesn't export a command named '%Q'", "kvs"), &m_szModuleName, &m_szCmdName);
 		}
 		return false;
 	}
@@ -84,16 +85,18 @@ bool KviKvsTreeNodeModuleSimpleCommand::execute(KviKvsRunTimeContext * c)
 	KviKvsVariantList l;
 	l.setAutoDelete(true);
 
-	if(!(m_pParams->evaluate(c,&l)))return false;
+	if(!(m_pParams->evaluate(c, &l)))
+		return false;
 	KviKvsSwitchList swl;
 	if(m_pSwitches)
 	{
-		if(!(m_pSwitches->evaluate(c,&swl)))return false;
+		if(!(m_pSwitches->evaluate(c, &swl)))
+			return false;
 	}
 
 	c->setDefaultReportLocation(this);
 
-	KviKvsModuleCommandCall call(m,c,&l,&swl);
+	KviKvsModuleCommandCall call(m, c, &l, &swl);
 
 	return (*proc)(&call);
 }

@@ -40,7 +40,7 @@
 #include "kvi_settings.h"
 
 #if defined(COMPILE_WEBKIT_SUPPORT) || defined(Q_MOC_RUN)
-	#include "WebThemeInterfaceDialog.h"
+#include "WebThemeInterfaceDialog.h"
 #endif
 
 class QLineEdit;
@@ -51,14 +51,15 @@ class KviDynamicToolTip;
 class ThemeListWidgetItem : public KviTalListWidgetItem
 {
 public:
-	ThemeListWidgetItem(KviTalListWidget * pBox,KviThemeInfo * pInfo);
+	ThemeListWidgetItem(KviTalListWidget * pBox, KviThemeInfo * pInfo);
 	virtual ~ThemeListWidgetItem();
+
 public:
 	KviThemeInfo * m_pThemeInfo;
-public:
-	KviThemeInfo * themeInfo(){ return m_pThemeInfo; }
-};
 
+public:
+	KviThemeInfo * themeInfo() { return m_pThemeInfo; }
+};
 
 class ThemeManagementDialog : public QWidget
 {
@@ -66,21 +67,23 @@ class ThemeManagementDialog : public QWidget
 public:
 	ThemeManagementDialog(QWidget * parent);
 	virtual ~ThemeManagementDialog();
+
 protected:
-	static ThemeManagementDialog      * m_pInstance;
+	static ThemeManagementDialog * m_pInstance;
 	KviTalIconAndRichTextItemDelegate * m_pItemDelegate;
-	KviTalListWidget                  * m_pListWidget;
-	QLabel                            * m_pCurrentInstalledThemeLabel;
-	QMenu                             * m_pContextPopup;
-	QToolButton                       * m_pDeleteThemeButton;
-	QToolButton                       * m_pPackThemeButton;
+	KviTalListWidget * m_pListWidget;
+	QLabel * m_pCurrentInstalledThemeLabel;
+	QMenu * m_pContextPopup;
+	QToolButton * m_pDeleteThemeButton;
+	QToolButton * m_pPackThemeButton;
 #if defined(COMPILE_WEBKIT_SUPPORT) || defined(Q_MOC_RUN)
-	WebThemeInterfaceDialog           * m_pWebThemeInterfaceDialog;
+	WebThemeInterfaceDialog * m_pWebThemeInterfaceDialog;
 #endif
 public:
-	static ThemeManagementDialog * instance(){ return m_pInstance; }
+	static ThemeManagementDialog * instance() { return m_pInstance; }
 	static void display(bool bTopLevel);
 	static void cleanup();
+
 protected:
 	void fillThemeBox(bool bBuiltin);
 	virtual void closeEvent(QCloseEvent * e);

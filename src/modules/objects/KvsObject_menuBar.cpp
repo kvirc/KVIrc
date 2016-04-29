@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "KvsObject_menuBar.h"
 #include "KviError.h"
 #include "kvi_debug.h"
@@ -46,31 +45,30 @@
 		Returns an integer that identifies the inserted item.
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_menuBar,"menubar","widget")
-		KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_menuBar,insertItem)
+KVSO_BEGIN_REGISTERCLASS(KvsObject_menuBar, "menubar", "widget")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_menuBar, insertItem)
 KVSO_END_REGISTERCLASS(KvsObject_menuBar)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_menuBar,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_menuBar, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_menuBar)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_menuBar)
 
 KVSO_END_CONSTRUCTOR(KvsObject_menuBar)
 
-bool KvsObject_menuBar::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_menuBar::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QMenuBar)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(menuBar,insertItem)
+KVSO_CLASS_FUNCTION(menuBar, insertItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szItem;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("item",KVS_PT_STRING,0,szItem)
+	KVSO_PARAMETER("item", KVS_PT_STRING, 0, szItem)
 	KVSO_PARAMETERS_END(c)
 	((QMenuBar *)widget())->addAction(szItem);
 	return true;

@@ -25,11 +25,9 @@
 //
 //===============================================================================
 
-
 #include "KviOptionsWidget.h"
 
 #include <QComboBox>
-
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_windowList KviIconManager::ClassicWindowList
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_windowList __tr2qs_no_lookup("Window List")
@@ -84,8 +82,9 @@ class OptionsWidget_windowListTreeBackground : public KviOptionsWidget
 {
 	Q_OBJECT
 private:
-	QComboBox* m_pHorizontalAlign;
-	QComboBox* m_pVerticalAlign;
+	QComboBox * m_pHorizontalAlign;
+	QComboBox * m_pVerticalAlign;
+
 public:
 	OptionsWidget_windowListTreeBackground(QWidget * parent);
 	~OptionsWidget_windowListTreeBackground();

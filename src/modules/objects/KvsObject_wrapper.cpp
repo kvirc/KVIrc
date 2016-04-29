@@ -155,32 +155,31 @@
 		Experiment with it :)
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_wrapper,"wrapper","widget")
+KVSO_BEGIN_REGISTERCLASS(KvsObject_wrapper, "wrapper", "widget")
 
 KVSO_END_REGISTERCLASS(KvsObject_wrapper)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_wrapper,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_wrapper, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_wrapper)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_wrapper)
 
 KVSO_END_CONSTRUCTOR(KvsObject_wrapper)
 
-bool KvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KvsObject_wrapper::init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams)
 {
 	if(!pParams)
 		return false;
 
-	QWidget *pWidget = NULL;
+	QWidget * pWidget = NULL;
 	unsigned int i = 0;
 
 	while(i < pParams->count())
 	{
 		QString szClass;
 		QString szName;
-		QString s=0;
+		QString s = 0;
 
 		pParams->at(i)->asString(s);
 		i++;
@@ -192,11 +191,11 @@ bool KvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *
 
 		if(s.startsWith("*"))
 		{
-			s.remove(0,1);
+			s.remove(0, 1);
 			bRecursive = true;
 			if(s.isEmpty())
 			{
-				pContext->error(__tr2qs_ctx("The search specifier can't be empty","objects"));
+				pContext->error(__tr2qs_ctx("The search specifier can't be empty", "objects"));
 				return false;
 			}
 		}
@@ -205,27 +204,28 @@ bool KvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *
 		if(idx != -1)
 		{
 			szClass = s.left(idx);
-			szName  = s.right(s.length() - idx - 2);
-		} else {
+			szName = s.right(s.length() - idx - 2);
+		}
+		else
+		{
 			szClass = s;
-			szName  = "";
+			szName = "";
 		}
 
 		if(
-				KviQString::equalCI(szClass,"!Window") ||
-				KviQString::equalCI(szClass,"WinId") // compat
-			)
+		    KviQString::equalCI(szClass, "!Window") || KviQString::equalCI(szClass, "WinId") // compat
+		    )
 		{
 			if(pWidget)
-				pContext->warning(__tr2qs_ctx("The window identifier preceded by '!Window' should be the first in the search path","objects"));
+				pContext->warning(__tr2qs_ctx("The window identifier preceded by '!Window' should be the first in the search path", "objects"));
 
 			pWidget = g_pApp->findWindow(szName);
-
-		} else if(KviQString::equalCI(szClass,"!Parent"))
+		}
+		else if(KviQString::equalCI(szClass, "!Parent"))
 		{
 			if(!pWidget)
 			{
-				pContext->warning(__tr2qs_ctx("The '!Parent' specifier can't be used as first in the search path","objects"));
+				pContext->warning(__tr2qs_ctx("The '!Parent' specifier can't be used as first in the search path", "objects"));
 				return false;
 			}
 
@@ -236,7 +236,7 @@ bool KvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *
 				int iLevels = szName.toInt(&ok);
 				if(!ok)
 				{
-					pContext->warning(__tr2qs_ctx("Bad number of levels for the '!Parent' specifier","objects"));
+					pContext->warning(__tr2qs_ctx("Bad number of levels for the '!Parent' specifier", "objects"));
 					return false;
 				}
 			}
@@ -247,62 +247,59 @@ bool KvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *
 
 				if(!pWidget)
 				{
-					pContext->warning(__tr2qs_ctx("The '!Parent' specifier was applied to a widget that has no parent","objects"));
+					pContext->warning(__tr2qs_ctx("The '!Parent' specifier was applied to a widget that has no parent", "objects"));
 					return false;
 				}
 
 				iLevels--;
 			}
-		} else {
+		}
+		else
+		{
 			if(pWidget)
-				pWidget = findWidgetToWrap(szClass,szName,pWidget,bRecursive);
+				pWidget = findWidgetToWrap(szClass, szName, pWidget, bRecursive);
 			else
-				pWidget = findTopLevelWidgetToWrap(szClass,szName,bRecursive);
+				pWidget = findTopLevelWidgetToWrap(szClass, szName, bRecursive);
 		}
 
 		if(!pWidget)
 		{
-			pContext->error(__tr2qs_ctx("Failed to find one of the wrap path widgets ('%Q::%Q')","objects"),&szClass,&szName);
+			pContext->error(__tr2qs_ctx("Failed to find one of the wrap path widgets ('%Q::%Q')", "objects"), &szClass, &szName);
 			return false;
 		}
 	}
 
 	if(!pWidget)
 	{
-		pContext->error(__tr2qs_ctx("Failed to find the widget to wrap","objects"));
+		pContext->error(__tr2qs_ctx("Failed to find the widget to wrap", "objects"));
 		return false;
 	}
 
-	setObject(pWidget,false);
+	setObject(pWidget, false);
 	return true;
 }
 
-QWidget * KvsObject_wrapper::findTopLevelWidgetToWrap(const QString &szClass,const QString &szName,bool bRecursive)
+QWidget * KvsObject_wrapper::findTopLevelWidgetToWrap(const QString & szClass, const QString & szName, bool bRecursive)
 {
 	QWidgetList list = g_pApp->topLevelWidgets();
 	if(list.isEmpty())
 		return NULL;
 
-	Q_FOREACH(QWidget * w,list)
+	Q_FOREACH(QWidget * w, list)
 	{
 		//qDebug("TLW: %s::%s (look for %s::%s)",w->metaObject()->className(),w->objectName().toUtf8().data(),szClass.toUtf8().data(),szName.toUtf8().data());
 		if(
-				(
-					szClass.isEmpty() ||
-					KviQString::equalCI(w->metaObject()->className(),szClass)
-				) && (
-					szName.isEmpty() ||
-					KviQString::equalCI(w->objectName(),szName)
-				)
-			)
+		    (
+		        szClass.isEmpty() || KviQString::equalCI(w->metaObject()->className(), szClass))
+		    && (szName.isEmpty() || KviQString::equalCI(w->objectName(), szName)))
 			return w;
 	}
 
 	if(bRecursive)
 	{
-		Q_FOREACH(QWidget * w,list)
+		Q_FOREACH(QWidget * w, list)
 		{
-			w = findWidgetToWrap(szClass,szName,w,bRecursive);
+			w = findWidgetToWrap(szClass, szName, w, bRecursive);
 			if(w)
 				return w;
 		}
@@ -311,38 +308,33 @@ QWidget * KvsObject_wrapper::findTopLevelWidgetToWrap(const QString &szClass,con
 	return NULL;
 }
 
-QWidget * KvsObject_wrapper::findWidgetToWrap(const QString &szClass, const QString &szName, QWidget *pParent,bool bRecursive)
+QWidget * KvsObject_wrapper::findWidgetToWrap(const QString & szClass, const QString & szName, QWidget * pParent, bool bRecursive)
 {
 	QList<QObject *> list = pParent->children();
 	if(list.isEmpty())
 		return NULL;
 
-	Q_FOREACH(QObject * obj,list)
+	Q_FOREACH(QObject * obj, list)
 	{
 		if(!obj->isWidgetType())
 			continue;
 
-		QWidget *w = (QWidget *)obj;
+		QWidget * w = (QWidget *)obj;
 		if(
-				(
-					szClass.isEmpty() ||
-					KviQString::equalCI(w->metaObject()->className(),szClass)
-				) && (
-					szName.isEmpty() ||
-					KviQString::equalCI(w->objectName(),szName)
-				)
-			)
+		    (
+		        szClass.isEmpty() || KviQString::equalCI(w->metaObject()->className(), szClass))
+		    && (szName.isEmpty() || KviQString::equalCI(w->objectName(), szName)))
 			return w;
 	}
 
 	if(bRecursive)
 	{
-		Q_FOREACH(QObject * obj,list)
+		Q_FOREACH(QObject * obj, list)
 		{
 			if(!obj->isWidgetType())
 				continue;
 
-			QWidget * w = findWidgetToWrap(szClass,szName,(QWidget *)obj,bRecursive);
+			QWidget * w = findWidgetToWrap(szClass, szName, (QWidget *)obj, bRecursive);
 			if(w)
 				return w;
 		}

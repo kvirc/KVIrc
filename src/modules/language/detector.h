@@ -37,9 +37,9 @@ typedef struct _LanguageAndEncodingMatch
 typedef struct _LanguageAndEncodingResult
 {
 	LanguageAndEncodingMatch match[DLE_NUM_BEST_MATCHES]; // the first best matches
-	double dAccuracy; // accuracy score: from 0 to 100
+	double dAccuracy;                                     // accuracy score: from 0 to 100
 } LanguageAndEncodingResult;
 
-void detect_language_and_encoding(const char * data,LanguageAndEncodingResult * retBuffer,int iFlags);
+void detect_language_and_encoding(const char * data, LanguageAndEncodingResult * retBuffer, int iFlags);
 
 #endif //_DETECTOR_H_

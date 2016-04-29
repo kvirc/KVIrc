@@ -34,13 +34,12 @@
 #include <QDir>
 
 #ifdef COMPILE_ZLIB_SUPPORT
-	#include <zlib.h>
+#include <zlib.h>
 #endif
 
 //
 // See KviPackageIOEngine.cpp for the description of the KVIrc package file
 //
-
 
 class KviPackageWriterDataField
 {
@@ -61,9 +60,8 @@ public:
 	int iCurrentProgress;
 };
 
-
 KviPackageWriter::KviPackageWriter()
-: KviPackageIOEngine()
+    : KviPackageIOEngine()
 {
 	m_p = new KviPackageWriterPrivate();
 	m_p->pDataFields = new KviPointerList<KviPackageWriterDataField>();
@@ -76,23 +74,23 @@ KviPackageWriter::~KviPackageWriter()
 	delete m_p;
 }
 
-void KviPackageWriter::addInfoField(const QString &szName,const QString &szValue)
+void KviPackageWriter::addInfoField(const QString & szName, const QString & szValue)
 {
-	stringInfoFields()->replace(szName,new QString(szValue));
+	stringInfoFields()->replace(szName, new QString(szValue));
 }
 
-void KviPackageWriter::addInfoField(const QString &szName,QByteArray * pValue)
+void KviPackageWriter::addInfoField(const QString & szName, QByteArray * pValue)
 {
-	binaryInfoFields()->replace(szName,pValue);
+	binaryInfoFields()->replace(szName, pValue);
 }
 
-bool KviPackageWriter::addFile(const QString &szLocalFileName,const QString &szTargetFileName,kvi_u32_t uAddFileFlags)
+bool KviPackageWriter::addFile(const QString & szLocalFileName, const QString & szTargetFileName, kvi_u32_t uAddFileFlags)
 {
 	QFileInfo fi(szLocalFileName);
-	return addFileInternal(&fi,szLocalFileName,szTargetFileName,uAddFileFlags);
+	return addFileInternal(&fi, szLocalFileName, szTargetFileName, uAddFileFlags);
 }
 
-bool KviPackageWriter::addFileInternal(const QFileInfo * fi,const QString &szLocalFileName,const QString &szTargetFileName,kvi_u32_t uAddFileFlags)
+bool KviPackageWriter::addFileInternal(const QFileInfo * fi, const QString & szLocalFileName, const QString & szTargetFileName, kvi_u32_t uAddFileFlags)
 {
 	if(!(fi->isFile() && fi->isReadable()))
 		return false;
@@ -113,7 +111,7 @@ bool KviPackageWriter::addFileInternal(const QFileInfo * fi,const QString &szLoc
 	return true;
 }
 
-bool KviPackageWriter::addDirectory(const QString &szLocalDirectoryName,const QString &szTargetDirectoryPrefix,kvi_u32_t uAddFileFlags)
+bool KviPackageWriter::addDirectory(const QString & szLocalDirectoryName, const QString & szTargetDirectoryPrefix, kvi_u32_t uAddFileFlags)
 {
 	QDir d(szLocalDirectoryName);
 	QDir::Filters iFlags;
@@ -124,17 +122,17 @@ bool KviPackageWriter::addDirectory(const QString &szLocalDirectoryName,const QS
 
 	int j;
 	QFileInfoList sl = d.entryInfoList(iFlags);
-	for(j=0;j<sl.size();j++)
+	for(j = 0; j < sl.size(); j++)
 	{
 		QString szSFileName = szLocalDirectoryName;
-		KviQString::ensureLastCharIs(szSFileName,QChar(KVI_PATH_SEPARATOR_CHAR));
+		KviQString::ensureLastCharIs(szSFileName, QChar(KVI_PATH_SEPARATOR_CHAR));
 		QFileInfo slowCopy = sl.at(j);
 		szSFileName += slowCopy.fileName();
 
 		QString szDFileName = szTargetDirectoryPrefix;
-		KviQString::ensureLastCharIs(szDFileName,QChar(KVI_PATH_SEPARATOR_CHAR));
+		KviQString::ensureLastCharIs(szDFileName, QChar(KVI_PATH_SEPARATOR_CHAR));
 		szDFileName += slowCopy.fileName();
-		if(!addFileInternal(&slowCopy,szSFileName,szDFileName,uAddFileFlags))
+		if(!addFileInternal(&slowCopy, szSFileName, szDFileName, uAddFileFlags))
 			return false;
 	}
 	iFlags = QDir::Dirs | QDir::Readable;
@@ -142,18 +140,18 @@ bool KviPackageWriter::addDirectory(const QString &szLocalDirectoryName,const QS
 		iFlags |= QDir::NoSymLinks;
 	sl = d.entryInfoList(iFlags);
 
-	for(j=0;j<sl.size();j++)
+	for(j = 0; j < sl.size(); j++)
 	{
 		QString szDir = sl.at(j).fileName();
-		if(!KviQString::equalCS(szDir,"..") && !KviQString::equalCS(szDir,"."))
+		if(!KviQString::equalCS(szDir, "..") && !KviQString::equalCS(szDir, "."))
 		{
 			QString szSDirName = szLocalDirectoryName;
-			KviQString::ensureLastCharIs(szSDirName,QChar(KVI_PATH_SEPARATOR_CHAR));
+			KviQString::ensureLastCharIs(szSDirName, QChar(KVI_PATH_SEPARATOR_CHAR));
 			szSDirName += szDir;
 			QString szDDirName = szTargetDirectoryPrefix;
-			KviQString::ensureLastCharIs(szDDirName,QChar(KVI_PATH_SEPARATOR_CHAR));
+			KviQString::ensureLastCharIs(szDDirName, QChar(KVI_PATH_SEPARATOR_CHAR));
 			szDDirName += szDir;
-			if(!addDirectory(szSDirName,szDDirName,uAddFileFlags))
+			if(!addDirectory(szSDirName, szDDirName, uAddFileFlags))
 				return false;
 		}
 	}
@@ -162,12 +160,11 @@ bool KviPackageWriter::addDirectory(const QString &szLocalDirectoryName,const QS
 
 #define BUFFER_SIZE 32768
 
-bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDataField)
+bool KviPackageWriter::packFile(KviFile * pFile, KviPackageWriterDataField * pDataField)
 {
 	QString szProgressText = QString(__tr2qs("Packaging file %1")).arg(pDataField->m_szFileLocalName);
-	if(!updateProgress(m_p->iCurrentProgress,szProgressText))
+	if(!updateProgress(m_p->iCurrentProgress, szProgressText))
 		return false; // aborted
-
 
 	KviFile source(pDataField->m_szFileLocalName);
 	if(!source.open(QFile::ReadOnly))
@@ -178,37 +175,39 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 
 	kvi_u32_t uSize = source.size();
 
-	// Flags
+// Flags
 #ifdef COMPILE_ZLIB_SUPPORT
-	kvi_u32_t uFlags = pDataField->m_bFileAllowCompression ?
-			(uSize > 64 ? KVI_PACKAGE_DATAFIELD_FLAG_FILE_DEFLATE : 0)
-			: 0;
+	kvi_u32_t uFlags = pDataField->m_bFileAllowCompression ? (uSize > 64 ? KVI_PACKAGE_DATAFIELD_FLAG_FILE_DEFLATE : 0)
+	                                                       : 0;
 #else
 	kvi_u32_t uFlags = 0;
 #endif
 
-	if(!pFile->save(uFlags))return writeError();
+	if(!pFile->save(uFlags))
+		return writeError();
 
 	QByteArray szTargetFileName = pDataField->m_szFileTargetName.toUtf8();
 
 	// Path
-	if(!pFile->save(szTargetFileName))return writeError();
+	if(!pFile->save(szTargetFileName))
+		return writeError();
 
 	kvi_file_offset_t savedSizeOffset = pFile->pos();
 
 	// Size : will update it if compression is requested
-	if(!pFile->save(uSize))return writeError();
+	if(!pFile->save(uSize))
+		return writeError();
 
 	pDataField->m_uWrittenFieldLength = 4 + 4 + 4 + szTargetFileName.length(); // sizeof(flags + uncompressed size + path len + path)
 
-	// FilePayload
+// FilePayload
 #ifdef COMPILE_ZLIB_SUPPORT
 	if(uFlags & KVI_PACKAGE_DATAFIELD_FLAG_FILE_DEFLATE)
 	{
 		unsigned char ibuffer[BUFFER_SIZE];
 		unsigned char obuffer[BUFFER_SIZE];
 
-		kvi_i32_t iReaded = source.read((char *)ibuffer,BUFFER_SIZE);
+		kvi_i32_t iReaded = source.read((char *)ibuffer, BUFFER_SIZE);
 		if(iReaded < 0)
 			return readError();
 
@@ -221,7 +220,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 		zstr.next_out = obuffer;
 		zstr.avail_out = BUFFER_SIZE;
 
-		if(deflateInit(&zstr,9) != Z_OK)
+		if(deflateInit(&zstr, 9) != Z_OK)
 		{
 			setLastError(__tr2qs("Compression library initialization error"));
 			return false;
@@ -232,7 +231,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 			zstr.next_out = obuffer;
 			zstr.avail_out = BUFFER_SIZE;
 
-			if(deflate(&zstr,Z_NO_FLUSH) != Z_OK)
+			if(deflate(&zstr, Z_NO_FLUSH) != Z_OK)
 			{
 				setLastError(__tr2qs("Compression library error"));
 				return false;
@@ -242,7 +241,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 			{
 				int iCompressed = zstr.next_out - obuffer;
 				pDataField->m_uWrittenFieldLength += iCompressed;
-				if(pFile->write((char *)obuffer,iCompressed) != iCompressed)
+				if(pFile->write((char *)obuffer, iCompressed) != iCompressed)
 				{
 					deflateEnd(&zstr);
 					return writeError();
@@ -258,10 +257,10 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 					{
 						// hum, there is still some data in the buffer to be readed
 						// and it is not at the beginning...move it to the beginning of ibuffer
-						memmove(ibuffer,zstr.next_in,zstr.avail_in);
+						memmove(ibuffer, zstr.next_in, zstr.avail_in);
 					}
 				}
-				iReaded = source.read((char *)(ibuffer + zstr.avail_in),iDataToRead);
+				iReaded = source.read((char *)(ibuffer + zstr.avail_in), iDataToRead);
 				if(iReaded < 0)
 				{
 					deflateEnd(&zstr);
@@ -272,9 +271,9 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 
 				if((zstr.total_in % 2000000) == 0)
 				{
-					QString szTmp = QString(" (%1 of %2 bytes)").arg(zstr.total_in,uSize);
+					QString szTmp = QString(" (%1 of %2 bytes)").arg(zstr.total_in, uSize);
 					QString szPrg = szProgressText + szTmp;
-					if(!updateProgress(m_p->iCurrentProgress,szPrg))
+					if(!updateProgress(m_p->iCurrentProgress, szPrg))
 						return false; // aborted
 				}
 			}
@@ -287,7 +286,7 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 		int ret;
 		do
 		{
-			ret = deflate(&zstr,Z_FINISH);
+			ret = deflate(&zstr, Z_FINISH);
 
 			if((ret == Z_OK) || (ret == Z_STREAM_END))
 			{
@@ -295,12 +294,14 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 				{
 					int iCompressed = zstr.next_out - obuffer;
 					pDataField->m_uWrittenFieldLength += iCompressed;
-					if(pFile->write((char *)obuffer,iCompressed) != iCompressed)
+					if(pFile->write((char *)obuffer, iCompressed) != iCompressed)
 					{
 						deflateEnd(&zstr);
 						return writeError();
 					}
-				} else {
+				}
+				else
+				{
 					deflateEnd(&zstr);
 					setLastError(__tr2qs("Compression library internal error"));
 					return false;
@@ -318,7 +319,8 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 		uSize = zstr.total_out;
 
 		deflateEnd(&zstr);
-		if(!pFile->save(uSize))return writeError();
+		if(!pFile->save(uSize))
+			return writeError();
 
 		if(ret != Z_STREAM_END)
 		{
@@ -327,11 +329,13 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 		}
 
 		pFile->seek(here);
-	} else {
+	}
+	else
+	{
 #endif
 		unsigned char buffer[BUFFER_SIZE];
 		int iTotalFileSize = 0;
-		kvi_i32_t iReaded = source.read((char *)buffer,BUFFER_SIZE);
+		kvi_i32_t iReaded = source.read((char *)buffer, BUFFER_SIZE);
 		if(iReaded < 0)
 			return readError();
 		while(iReaded > 0)
@@ -339,15 +343,15 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 			iTotalFileSize += iReaded;
 			if((iTotalFileSize % 1000000) == 0)
 			{
-				QString szTmp = QString(" (%1 of %2 bytes)").arg(iTotalFileSize,uSize);
+				QString szTmp = QString(" (%1 of %2 bytes)").arg(iTotalFileSize, uSize);
 				QString szPrg = szProgressText + szTmp;
-				if(!updateProgress(m_p->iCurrentProgress,szPrg))
+				if(!updateProgress(m_p->iCurrentProgress, szPrg))
 					return false; // aborted
 			}
 			pDataField->m_uWrittenFieldLength += iReaded;
-			if(pFile->write((char *)buffer,iReaded) != iReaded)
+			if(pFile->write((char *)buffer, iReaded) != iReaded)
 				return writeError();
-			iReaded = source.read((char *)buffer,BUFFER_SIZE);
+			iReaded = source.read((char *)buffer, BUFFER_SIZE);
 		}
 #ifdef COMPILE_ZLIB_SUPPORT
 	}
@@ -357,22 +361,22 @@ bool KviPackageWriter::packFile(KviFile * pFile,KviPackageWriterDataField * pDat
 	return true;
 }
 
-bool KviPackageWriter::pack(const QString &szFileName,kvi_u32_t uPackFlags)
+bool KviPackageWriter::pack(const QString & szFileName, kvi_u32_t uPackFlags)
 {
 	m_p->iCurrentProgress = 0;
 	if(!(uPackFlags & NoProgressDialog))
 	{
-		showProgressDialog(__tr2qs("Creating package..."),100);
-		updateProgress(m_p->iCurrentProgress,__tr2qs("Writing package header"));
+		showProgressDialog(__tr2qs("Creating package..."), 100);
+		updateProgress(m_p->iCurrentProgress, __tr2qs("Writing package header"));
 	}
 
-	bool bRet = packInternal(szFileName,uPackFlags);
+	bool bRet = packInternal(szFileName, uPackFlags);
 
 	hideProgressDialog();
 	return bRet;
 }
 
-bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
+bool KviPackageWriter::packInternal(const QString & szFileName, kvi_u32_t)
 {
 
 	KviFile f(szFileName);
@@ -390,7 +394,7 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 	magic[1] = 'V';
 	magic[2] = 'P';
 	magic[3] = 'F';
-	if(f.write(magic,4) != 4)
+	if(f.write(magic, 4) != 4)
 		return writeError();
 
 	// Version
@@ -411,11 +415,11 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 		return writeError();
 
 	m_p->iCurrentProgress = 5;
-	if(!updateProgress(m_p->iCurrentProgress,__tr2qs("Writing informational fields")))
+	if(!updateProgress(m_p->iCurrentProgress, __tr2qs("Writing informational fields")))
 		return false; // aborted
 
 	// InfoFields (string)
-	KviPointerHashTableIterator<QString,QString> it(*stringInfoFields());
+	KviPointerHashTableIterator<QString, QString> it(*stringInfoFields());
 	while(QString * s = it.current())
 	{
 		if(!f.save(it.currentKey()))
@@ -429,7 +433,7 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 	}
 
 	// InfoFields (binary)
-	KviPointerHashTableIterator<QString,QByteArray> it2(*binaryInfoFields());
+	KviPointerHashTableIterator<QString, QByteArray> it2(*binaryInfoFields());
 	while(QByteArray * b = it2.current())
 	{
 		if(!f.save(it2.currentKey()))
@@ -443,32 +447,34 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 	}
 
 	m_p->iCurrentProgress = 10;
-	if(!updateProgress(m_p->iCurrentProgress,__tr2qs("Writing package data")))
+	if(!updateProgress(m_p->iCurrentProgress, __tr2qs("Writing package data")))
 		return false; // aborted
 
 	// write PackageData
 	int iIdx = 0;
-	for(KviPackageWriterDataField * pDataField = m_p->pDataFields->first();pDataField;pDataField = m_p->pDataFields->next())
+	for(KviPackageWriterDataField * pDataField = m_p->pDataFields->first(); pDataField; pDataField = m_p->pDataFields->next())
 	{
 		kvi_u32_t uKviPackageWriterDataFieldType = pDataField->m_uType;
-		if(!f.save(uKviPackageWriterDataFieldType))return writeError();
+		if(!f.save(uKviPackageWriterDataFieldType))
+			return writeError();
 
 		kvi_file_offset_t savedLenOffset = f.pos();
 		// here we will store the length of the field once it's written
-		if(!f.save(uKviPackageWriterDataFieldType))return writeError();
+		if(!f.save(uKviPackageWriterDataFieldType))
+			return writeError();
 
 		m_p->iCurrentProgress = 10 + ((90 * iIdx) / m_p->pDataFields->count());
 
 		switch(pDataField->m_uType)
 		{
 			case KVI_PACKAGE_DATAFIELD_TYPE_FILE:
-				if(!packFile(&f,pDataField))
+				if(!packFile(&f, pDataField))
 					return false;
-			break;
+				break;
 			default:
 				setLastError(__tr2qs("Internal error"));
 				return false;
-			break;
+				break;
 		}
 
 		kvi_file_offset_t savedEndOffset = f.pos();
@@ -482,5 +488,3 @@ bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 
 	return true;
 }
-
-

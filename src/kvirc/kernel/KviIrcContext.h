@@ -67,62 +67,64 @@ protected:
 	KviIrcContext(KviConsoleWindow * pConsole); // only KviConsoleWindow can create this
 public:
 	~KviIrcContext();
-public:
 
+public:
 	/* If you add further states, remember to  update the
 	 * bUnexpectedDisconnect determination in KviIrcContext::connectionTerminated */
 	enum State
 	{
-		Idle,         // connection() == 0
+		Idle,                // connection() == 0
 		PendingReconnection, // connection() == 0
-		Connecting,   // connection() != 0
-		LoggingIn,    // connection() != 0
-		Connected     // connection() != 0
+		Connecting,          // connection() != 0
+		LoggingIn,           // connection() != 0
+		Connected            // connection() != 0
 	};
+
 protected:
-	KviConsoleWindow                 * m_pConsole;             // shallow, never null
-	KviIrcConnection                 * m_pConnection;
+	KviConsoleWindow * m_pConsole; // shallow, never null
+	KviIrcConnection * m_pConnection;
 
-	unsigned int                       m_uId;                  // this irc context id
+	unsigned int m_uId; // this irc context id
 
-	State                              m_eState;               // this context state
+	State m_eState; // this context state
 
 	// permanent links and list window
-	KviExternalServerDataParser      * m_pLinksWindow;
-	KviExternalServerDataParser      * m_pListWindow;
+	KviExternalServerDataParser * m_pLinksWindow;
+	KviExternalServerDataParser * m_pListWindow;
 
-	KviAsynchronousConnectionData    * m_pAsynchronousConnectionData; // owned, may be null
-	KviAsynchronousConnectionData    * m_pSavedAsynchronousConnectionData; // owned, may be null, this is used to reconnect to the last server in this context
+	KviAsynchronousConnectionData * m_pAsynchronousConnectionData;      // owned, may be null
+	KviAsynchronousConnectionData * m_pSavedAsynchronousConnectionData; // owned, may be null, this is used to reconnect to the last server in this context
 
-	unsigned int                       m_uConnectAttemptCount;
-	QTimer                           * m_pReconnectTimer;
+	unsigned int m_uConnectAttemptCount;
+	QTimer * m_pReconnectTimer;
 
 	KviPointerList<KviIrcDataStreamMonitor> * m_pMonitorList; // owned, may be null
 
 	// dead channels and queries
-	KviPointerList<KviChannelWindow>           * m_pDeadChannels;
-	KviPointerList<KviQueryWindow>             * m_pDeadQueries;
+	KviPointerList<KviChannelWindow> * m_pDeadChannels;
+	KviPointerList<KviQueryWindow> * m_pDeadQueries;
 	// other context bound windows
-	KviPointerList<KviWindow>            * m_pContextWindows;
+	KviPointerList<KviWindow> * m_pContextWindows;
 
-	int                                m_iHeartbeatTimerId;
+	int m_iHeartbeatTimerId;
+
 public:
-	inline unsigned int id(){ return m_uId; };
+	inline unsigned int id() { return m_uId; };
 	// never null and always the same!
-	inline KviConsoleWindow * console(){ return m_pConsole; };
+	inline KviConsoleWindow * console() { return m_pConsole; };
 	// may be null and may change!
-	inline KviIrcConnection * connection(){ return m_pConnection; };
+	inline KviIrcConnection * connection() { return m_pConnection; };
 	// state
-	inline State state(){ return m_eState; };
-	inline bool isConnected(){ return m_eState == Connected; };
-	inline bool isLoggingIn(){ return m_eState == LoggingIn; };
+	inline State state() { return m_eState; };
+	inline bool isConnected() { return m_eState == Connected; };
+	inline bool isLoggingIn() { return m_eState == LoggingIn; };
 	// dead channels and queries
 	bool unregisterDeadChannel(KviChannelWindow * c);
 	bool unregisterDeadQuery(KviQueryWindow * q);
 	void registerDeadChannel(KviChannelWindow * c);
 	void registerDeadQuery(KviQueryWindow * q);
-	KviChannelWindow * findDeadChannel(const QString &name);
-	KviQueryWindow * findDeadQuery(const QString &nick);
+	KviChannelWindow * findDeadChannel(const QString & name);
+	KviQueryWindow * findDeadQuery(const QString & nick);
 	KviQueryWindow * firstDeadQuery();
 	KviChannelWindow * firstDeadChannel();
 	// other windows bound to the context
@@ -130,20 +132,20 @@ public:
 	void registerContextWindow(KviWindow * pWnd);
 	bool unregisterContextWindow(KviWindow * pWnd);
 
-	inline KviPointerList<KviIrcDataStreamMonitor> * monitorList(){ return m_pMonitorList; };
+	inline KviPointerList<KviIrcDataStreamMonitor> * monitorList() { return m_pMonitorList; };
 
 	// links window
 	void createLinksWindow();
-	inline void setLinksWindowPointer(KviExternalServerDataParser * l){ m_pLinksWindow = l; };
-	inline KviExternalServerDataParser * linksWindow(){ return m_pLinksWindow; };
+	inline void setLinksWindowPointer(KviExternalServerDataParser * l) { m_pLinksWindow = l; };
+	inline KviExternalServerDataParser * linksWindow() { return m_pLinksWindow; };
 
 	// list window
 	void createListWindow();
-	inline void setListWindowPointer(KviExternalServerDataParser * l){ m_pListWindow = l; };
-	inline KviExternalServerDataParser * listWindow(){ return m_pListWindow; };
+	inline void setListWindowPointer(KviExternalServerDataParser * l) { m_pListWindow = l; };
+	inline KviExternalServerDataParser * listWindow() { return m_pListWindow; };
 
 	void setAsynchronousConnectionData(KviAsynchronousConnectionData * d);
-	inline KviAsynchronousConnectionData * asynchronousConnectionData(){ return m_pAsynchronousConnectionData; };
+	inline KviAsynchronousConnectionData * asynchronousConnectionData() { return m_pAsynchronousConnectionData; };
 	void destroyAsynchronousConnectionData();
 	// used by KviConsoleWindow (for now) and KviUserParser
 	void connectToCurrentServer();
@@ -151,9 +153,9 @@ public:
 	void beginAsynchronousConnect(unsigned int uDelayInMSecs);
 
 	void registerDataStreamMonitor(KviIrcDataStreamMonitor * m);
-	void unregisterDataStreamMonitor(KviIrcDataStreamMonitor *m);
+	void unregisterDataStreamMonitor(KviIrcDataStreamMonitor * m);
 
-	void terminateConnectionRequest(bool bForce,const QString &szQuitMessage = QString(),bool bSimulateUnexpectedDisconnect = false);
+	void terminateConnectionRequest(bool bForce, const QString & szQuitMessage = QString(), bool bSimulateUnexpectedDisconnect = false);
 public slots:
 	void closeAllDeadChannels();
 	void closeAllDeadQueries();
@@ -168,9 +170,10 @@ protected:
 	// called by KviIrcConnection
 	void loginComplete();
 	// our heartbeat timer event
-	virtual void timerEvent(QTimerEvent *e);
+	virtual void timerEvent(QTimerEvent * e);
+
 public:
-	void connectOrDisconnect(){ connectButtonClicked(); };
+	void connectOrDisconnect() { connectButtonClicked(); };
 protected:
 	//
 	// KviIrcConnection interface
@@ -183,6 +186,5 @@ signals:
 protected slots:
 	void asynchronousConnect();
 };
-
 
 #endif //!_KVI_IRCCONTEXT_H_

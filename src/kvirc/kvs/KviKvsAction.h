@@ -45,6 +45,7 @@ class KVIRC_API KviKvsAction : public KviAction
 	Q_OBJECT
 protected:
 	QString m_szScript;
+
 public:
 	/**
 	* \brief Contructs the action object
@@ -61,17 +62,16 @@ public:
 	* \return KviKvsAction
 	*/
 	KviKvsAction(
-			QObject * pParent,
-			const QString & szName,
-			const QString & szScriptCode,
-			const QString & szVisibleName,
-			const QString & szDescription,
-			KviActionCategory * pCategory = NULL,
-			const QString & szBigIconId = QString(),
-			const QString & szSmallIconId = QString(),
-			unsigned int uFlags = 0,
-			const QString & szKeySequence = QString()
-		);
+	    QObject * pParent,
+	    const QString & szName,
+	    const QString & szScriptCode,
+	    const QString & szVisibleName,
+	    const QString & szDescription,
+	    KviActionCategory * pCategory = NULL,
+	    const QString & szBigIconId = QString(),
+	    const QString & szSmallIconId = QString(),
+	    unsigned int uFlags = 0,
+	    const QString & szKeySequence = QString());
 
 	/**
 	* \brief Contructs the action object
@@ -88,22 +88,22 @@ public:
 	* \return KviKvsAction
 	*/
 	KviKvsAction(
-			QObject * pParent,
-			const QString & szName,
-			const QString & szScriptCode,
-			const QString & szVisibleName,
-			const QString & szDescription,
-			KviActionCategory * pCategory = NULL,
-			const QString & szBigIconId = QString(),
-			KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
-			unsigned int uFlags = 0,
-			const QString & szKeySequence = QString()
-		);
+	    QObject * pParent,
+	    const QString & szName,
+	    const QString & szScriptCode,
+	    const QString & szVisibleName,
+	    const QString & szDescription,
+	    KviActionCategory * pCategory = NULL,
+	    const QString & szBigIconId = QString(),
+	    KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
+	    unsigned int uFlags = 0,
+	    const QString & szKeySequence = QString());
 
 	/**
 	* \brief Destroys the action object
 	*/
 	virtual ~KviKvsAction();
+
 public:
 	/**
 	* \brief Returns the code of the script contained in the action

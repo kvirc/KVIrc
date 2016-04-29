@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-
 #include "kvi_settings.h"
 #include "KviCString.h"
 
@@ -36,19 +35,21 @@ class KVILIB_API KviPixmap
 public:
 	KviPixmap();
 	KviPixmap(const char * path);
-	KviPixmap(const KviPixmap &pix);
+	KviPixmap(const KviPixmap & pix);
 	~KviPixmap();
+
 private:
 	QPixmap * m_pPix;
-	QString    m_szPath;
+	QString m_szPath;
+
 public:
-	bool isNull(){ return m_pPix == 0; };
+	bool isNull() { return m_pPix == 0; };
 	bool load(const char * path);
-	bool load(const QString& path);
-	const QString& path() const { return m_szPath; };
+	bool load(const QString & path);
+	const QString & path() const { return m_szPath; };
 	QPixmap * pixmap() const { return m_pPix; };
-	void set(const QPixmap &pix,const QString &szPath);
-	KviPixmap & operator=(const KviPixmap &pix);       // deep copy
+	void set(const QPixmap & pix, const QString & szPath);
+	KviPixmap & operator=(const KviPixmap & pix); // deep copy
 	void setNull();
 };
 

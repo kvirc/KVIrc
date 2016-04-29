@@ -163,7 +163,6 @@
 #define KVIRC_WM_USER_GETFILE 10000
 #define KVIRC_WM_USER_TRANSFER 15000
 
-
 static QTextCodec * mediaplayer_get_codec()
 {
 	QTextCodec * pCodec = 0;
@@ -176,34 +175,29 @@ static QTextCodec * mediaplayer_get_codec()
 
 static HWND find_winamp(KviWinampInterface * i)
 {
-	HWND hWnd = FindWindow("Winamp v1.x",NULL);
+	HWND hWnd = FindWindow("Winamp v1.x", NULL);
 	if(!hWnd)
 	{
 		// try to start the process ?
-		i->setLastError(__tr2qs_ctx("Can't find a running Winamp window","mediaplayer"));
+		i->setLastError(__tr2qs_ctx("Can't find a running Winamp window", "mediaplayer"));
 	}
 	return hWnd;
 }
 
-
 MP_IMPLEMENT_DESCRIPTOR(
-	KviWinampInterface,
-	"winamp",
-	__tr2qs_ctx(
-		"An interface for the Winamp media player.\n" \
-		"You can download it from http://www.winamp.com.\n" \
-		"To use all the features of this interface you must " \
-		"copy the gen_kvirc.dll plugin found in the KVIrc " \
-		"distribution directory to the Winamp plugins folder " \
-		"and restart winamp."
-		,
-		"mediaplayer"
-	)
-)
-
+    KviWinampInterface,
+    "winamp",
+    __tr2qs_ctx(
+        "An interface for the Winamp media player.\n"
+        "You can download it from http://www.winamp.com.\n"
+        "To use all the features of this interface you must "
+        "copy the gen_kvirc.dll plugin found in the KVIrc "
+        "distribution directory to the Winamp plugins folder "
+        "and restart winamp.",
+        "mediaplayer"))
 
 KviWinampInterface::KviWinampInterface()
-: MpInterface()
+    : MpInterface()
 {
 }
 
@@ -211,39 +205,40 @@ KviWinampInterface::~KviWinampInterface()
 {
 }
 
-
 int KviWinampInterface::detect(bool bStart)
 {
-	if(find_winamp(this))return 80;
+	if(find_winamp(this))
+		return 80;
 	// FIXME : check for Programs Folder\Winamp\Winamp.exe ?
 	// FIXME : if bStart try to start winamp.exe ?
 	return 50;
 }
 
-#define MP_WINAMP_SENDMESSAGE(__cmdname,__wmmsg,__lparam,__wparam) \
-	bool KviWinampInterface::__cmdname() \
-	{ \
-		HWND hWinamp = find_winamp(this); \
-		if(hWinamp)SendMessage(hWinamp,__wmmsg,__lparam,__wparam); \
-		return hWinamp != 0; \
+#define MP_WINAMP_SENDMESSAGE(__cmdname, __wmmsg, __lparam, __wparam) \
+	bool KviWinampInterface::__cmdname()                              \
+	{                                                                 \
+		HWND hWinamp = find_winamp(this);                             \
+		if(hWinamp)                                                   \
+			SendMessage(hWinamp, __wmmsg, __lparam, __wparam);        \
+		return hWinamp != 0;                                          \
 	}
 
-#define MP_WINAMP_WM_USER(__cmdname,_ipcmsg) MP_WINAMP_SENDMESSAGE(__cmdname,WM_USER,0,_ipcmsg)
-#define MP_WINAMP_WM_COMMAND(__cmdname,_cmdmsg) MP_WINAMP_SENDMESSAGE(__cmdname,WM_COMMAND,_cmdmsg,0)
+#define MP_WINAMP_WM_USER(__cmdname, _ipcmsg) MP_WINAMP_SENDMESSAGE(__cmdname, WM_USER, 0, _ipcmsg)
+#define MP_WINAMP_WM_COMMAND(__cmdname, _cmdmsg) MP_WINAMP_SENDMESSAGE(__cmdname, WM_COMMAND, _cmdmsg, 0)
 
-MP_WINAMP_WM_USER(play,IPC_STARTPLAY)
-MP_WINAMP_WM_COMMAND(stop,WINAMP_CMD_STOP)
-MP_WINAMP_WM_COMMAND(next,WINAMP_CMD_NEXT)
-MP_WINAMP_WM_COMMAND(prev,WINAMP_CMD_PREV)
-MP_WINAMP_WM_COMMAND(pause,WINAMP_CMD_PAUSE)
-MP_WINAMP_WM_COMMAND(quit,WINAMP_CMD_QUIT)
-
+MP_WINAMP_WM_USER(play, IPC_STARTPLAY)
+MP_WINAMP_WM_COMMAND(stop, WINAMP_CMD_STOP)
+MP_WINAMP_WM_COMMAND(next, WINAMP_CMD_NEXT)
+MP_WINAMP_WM_COMMAND(prev, WINAMP_CMD_PREV)
+MP_WINAMP_WM_COMMAND(pause, WINAMP_CMD_PAUSE)
+MP_WINAMP_WM_COMMAND(quit, WINAMP_CMD_QUIT)
 
 int KviWinampInterface::length()
 {
 	int leninsecs = -1;
 	HWND hWinamp = find_winamp(this);
-	if(hWinamp)leninsecs = SendMessage(hWinamp,WM_USER,1,IPC_GETOUTPUTTIME);
+	if(hWinamp)
+		leninsecs = SendMessage(hWinamp, WM_USER, 1, IPC_GETOUTPUTTIME);
 	return leninsecs * 1000;
 }
 
@@ -251,7 +246,8 @@ int KviWinampInterface::position()
 {
 	int leninmsecs = -1;
 	HWND hWinamp = find_winamp(this);
-	if(hWinamp)leninmsecs = SendMessage(hWinamp,WM_USER,0,IPC_GETOUTPUTTIME);
+	if(hWinamp)
+		leninmsecs = SendMessage(hWinamp, WM_USER, 0, IPC_GETOUTPUTTIME);
 	return leninmsecs;
 }
 
@@ -259,7 +255,8 @@ int KviWinampInterface::bitRate()
 {
 	int ret = -1;
 	HWND hWinamp = find_winamp(this);
-	if(hWinamp)ret = SendMessage(hWinamp,WM_USER,1,IPC_GETINFO);
+	if(hWinamp)
+		ret = SendMessage(hWinamp, WM_USER, 1, IPC_GETINFO);
 	return ret;
 }
 
@@ -267,7 +264,8 @@ int KviWinampInterface::sampleRate()
 {
 	int ret = -1;
 	HWND hWinamp = find_winamp(this);
-	if(hWinamp)ret = SendMessage(hWinamp,WM_USER,0,IPC_GETINFO);
+	if(hWinamp)
+		ret = SendMessage(hWinamp, WM_USER, 0, IPC_GETINFO);
 	return ret;
 }
 
@@ -275,7 +273,8 @@ int KviWinampInterface::channels()
 {
 	int ret = -1;
 	HWND hWinamp = find_winamp(this);
-	if(hWinamp)ret = SendMessage(hWinamp,WM_USER,2,IPC_GETINFO);
+	if(hWinamp)
+		ret = SendMessage(hWinamp, WM_USER, 2, IPC_GETINFO);
 	return ret;
 }
 
@@ -283,21 +282,22 @@ MpInterface::PlayerStatus KviWinampInterface::status()
 {
 	HWND hWinamp = find_winamp(this);
 	int ret = 1000;
-	if(hWinamp)ret = SendMessage(hWinamp,WM_USER,0,IPC_ISPLAYING);
+	if(hWinamp)
+		ret = SendMessage(hWinamp, WM_USER, 0, IPC_ISPLAYING);
 	switch(ret)
 	{
 		case 0:
 			return MpInterface::Stopped;
-		break;
+			break;
 		case 3:
 			return MpInterface::Paused;
-		break;
+			break;
 		case 1:
 			return MpInterface::Playing;
-		break;
+			break;
 		default:
 			return MpInterface::Unknown;
-		break;
+			break;
 	}
 	return MpInterface::Unknown;
 }
@@ -308,29 +308,31 @@ QString KviWinampInterface::mrl()
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
 	{
-		 int ret2 = SendMessage(hWinamp,WM_USER,KVIRC_WM_USER,KVIRC_WM_USER_CHECK);
+		int ret2 = SendMessage(hWinamp, WM_USER, KVIRC_WM_USER, KVIRC_WM_USER_CHECK);
 
 		if(ret2 != KVIRC_WM_USER_CHECK_REPLY)
 		{
-			setLastError(__tr2qs_ctx("The Winamp plugin has not been installed properly. Check /help mediaplayer.nowplaying","mediaplayer"));
+			setLastError(__tr2qs_ctx("The Winamp plugin has not been installed properly. Check /help mediaplayer.nowplaying", "mediaplayer"));
 			return ret;
 		}
 
-		int len = SendMessage(hWinamp,WM_USER,KVIRC_WM_USER,KVIRC_WM_USER_GETFILE);
+		int len = SendMessage(hWinamp, WM_USER, KVIRC_WM_USER, KVIRC_WM_USER_GETFILE);
 
 		if(len < 4096)
 		{
 			char szBuffer[4096];
 
-			for(int i = 0;i < len;i++)
+			for(int i = 0; i < len; i++)
 			{
-				szBuffer[i] = SendMessage(hWinamp,WM_USER,KVIRC_WM_USER,KVIRC_WM_USER_TRANSFER + i);
+				szBuffer[i] = SendMessage(hWinamp, WM_USER, KVIRC_WM_USER, KVIRC_WM_USER_TRANSFER + i);
 			}
 			szBuffer[len] = '\0';
-			QTextCodec *c=mediaplayer_get_codec();
-			if (c) ret = c->toUnicode(szBuffer);
-			else ret=szBuffer;
-			if(!ret.startsWith("http://",Qt::CaseInsensitive))
+			QTextCodec * c = mediaplayer_get_codec();
+			if(c)
+				ret = c->toUnicode(szBuffer);
+			else
+				ret = szBuffer;
+			if(!ret.startsWith("http://", Qt::CaseInsensitive))
 				ret.prepend("file://");
 		}
 	}
@@ -343,56 +345,58 @@ QString KviWinampInterface::nowPlaying()
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
 	{
-		int retpippo = SendMessage(hWinamp,WM_USER,KVIRC_WM_USER,KVIRC_WM_USER_CHECK);
+		int retpippo = SendMessage(hWinamp, WM_USER, KVIRC_WM_USER, KVIRC_WM_USER_CHECK);
 		if(retpippo != KVIRC_WM_USER_CHECK_REPLY)
 		{
-			setLastError(__tr2qs_ctx("The Winamp plugin has not been installed properly. Check /help mediaplayer.nowplaying","mediaplayer") );
+			setLastError(__tr2qs_ctx("The Winamp plugin has not been installed properly. Check /help mediaplayer.nowplaying", "mediaplayer"));
 			return ret;
 		}
 
-		int len = SendMessage(hWinamp,WM_USER,KVIRC_WM_USER,KVIRC_WM_USER_GETTITLE);
+		int len = SendMessage(hWinamp, WM_USER, KVIRC_WM_USER, KVIRC_WM_USER_GETTITLE);
 
 		if(len < 4096)
 		{
 			char szBuffer[4096];
 
-			for(int i = 0;i < len;i++)
+			for(int i = 0; i < len; i++)
 			{
-				szBuffer[i] = SendMessage(hWinamp,WM_USER,KVIRC_WM_USER,KVIRC_WM_USER_TRANSFER + i);
+				szBuffer[i] = SendMessage(hWinamp, WM_USER, KVIRC_WM_USER, KVIRC_WM_USER_TRANSFER + i);
 			}
-			szBuffer[ len ] = '\0';
+			szBuffer[len] = '\0';
 
-			QTextCodec *c=mediaplayer_get_codec();
-			if (c) ret = c->toUnicode(szBuffer);
-			else ret=szBuffer;
+			QTextCodec * c = mediaplayer_get_codec();
+			if(c)
+				ret = c->toUnicode(szBuffer);
+			else
+				ret = szBuffer;
 		}
 	}
 	return ret;
 }
 
-bool KviWinampInterface::playMrl(const QString &mrl)
+bool KviWinampInterface::playMrl(const QString & mrl)
 {
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
 	{
-		QTextCodec *c=mediaplayer_get_codec();
+		QTextCodec * c = mediaplayer_get_codec();
 		KviCString szMrl = c ? c->fromUnicode(mrl) : mrl.toUtf8();
 		COPYDATASTRUCT cds;
 		cds.dwData = IPC_PLAYFILE;
 		cds.lpData = (void *)szMrl.ptr();
 		cds.cbData = szMrl.len() + 1; // include space for null char
-		SendMessage(hWinamp,WM_COPYDATA,(WPARAM)NULL,(LPARAM) &cds);
+		SendMessage(hWinamp, WM_COPYDATA, (WPARAM)NULL, (LPARAM)&cds);
 		return true;
 	}
 	return false;
 }
 
-bool KviWinampInterface::setVol(kvs_int_t &iVol)
+bool KviWinampInterface::setVol(kvs_int_t & iVol)
 {
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
 	{
-		SendMessage(hWinamp,WM_USER,iVol,IPC_SETVOLUME);
+		SendMessage(hWinamp, WM_USER, iVol, IPC_SETVOLUME);
 		return true;
 	}
 	return false;
@@ -403,19 +407,21 @@ int KviWinampInterface::getVol()
 	int ret = -1;
 	HWND hWinamp = find_winamp(this);
 #if defined(COMPILE_ON_MINGW)
-	if(hWinamp)ret = SendMessage(hWinamp,WM_USER,666,IPC_SETVOLUME);
+	if(hWinamp)
+		ret = SendMessage(hWinamp, WM_USER, 666, IPC_SETVOLUME);
 #else
-        if(hWinamp)ret = SendMessage(hWinamp,WM_USER,-666,IPC_SETVOLUME);
+	if(hWinamp)
+		ret = SendMessage(hWinamp, WM_USER, -666, IPC_SETVOLUME);
 #endif
 	return ret;
 }
 
-bool KviWinampInterface::jumpTo(kvs_int_t &iPos)
+bool KviWinampInterface::jumpTo(kvs_int_t & iPos)
 {
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
 	{
-		SendMessage(hWinamp,WM_USER,iPos,IPC_JUMPTOTIME);
+		SendMessage(hWinamp, WM_USER, iPos, IPC_JUMPTOTIME);
 		return true;
 	}
 	return false;
@@ -423,15 +429,15 @@ bool KviWinampInterface::jumpTo(kvs_int_t &iPos)
 bool KviWinampInterface::hide()
 {
 	HWND hWinamp = find_winamp(this);
-	HWND hWinampPE = FindWindow("Winamp PE",NULL); /*Playlist*/
-	HWND hWinampEQ = FindWindow("Winamp EQ",NULL); /*Equalizer*/
-	HWND hWinampMB = FindWindow("Winamp MB",NULL); /*MiniBrowser*/
-	HWND hWinampGen = FindWindow("Winamp Gen",NULL); /*Library*/
-	HWND hWinampVideo = FindWindow("Winamp Video",NULL); /*Video*/
+	HWND hWinampPE = FindWindow("Winamp PE", NULL);       /*Playlist*/
+	HWND hWinampEQ = FindWindow("Winamp EQ", NULL);       /*Equalizer*/
+	HWND hWinampMB = FindWindow("Winamp MB", NULL);       /*MiniBrowser*/
+	HWND hWinampGen = FindWindow("Winamp Gen", NULL);     /*Library*/
+	HWND hWinampVideo = FindWindow("Winamp Video", NULL); /*Video*/
 	if(hWinamp)
 	{
 		ShowWindow(hWinamp, SW_HIDE);
-		if(hWinampPE || hWinampEQ || hWinampMB || hWinampGen || hWinampVideo )
+		if(hWinampPE || hWinampEQ || hWinampMB || hWinampGen || hWinampVideo)
 		{
 			if(hWinampPE)
 				ShowWindow(hWinampPE, SW_HIDE);
@@ -445,7 +451,7 @@ bool KviWinampInterface::hide()
 				ShowWindow(hWinampVideo, SW_HIDE);
 			return true;
 		}
-	return true;
+		return true;
 	}
 	return false;
 }
@@ -472,12 +478,12 @@ bool KviWinampInterface::minimize()
 	return false;
 }
 
-bool KviWinampInterface::setPlayListPos(kvs_int_t &iPos)
+bool KviWinampInterface::setPlayListPos(kvs_int_t & iPos)
 {
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
 	{
-		SendMessage(hWinamp,WM_USER,iPos,IPC_SETPLAYLISTPOS);
+		SendMessage(hWinamp, WM_USER, iPos, IPC_SETPLAYLISTPOS);
 		return true;
 	}
 	return false;
@@ -487,7 +493,8 @@ int KviWinampInterface::getPlayListPos()
 {
 	int ret = -1;
 	HWND hWinamp = find_winamp(this);
-	if(hWinamp)ret = SendMessage(hWinamp,WM_USER,2,IPC_GETLISTPOS);
+	if(hWinamp)
+		ret = SendMessage(hWinamp, WM_USER, 2, IPC_GETLISTPOS);
 	return ret;
 }
 
@@ -495,29 +502,30 @@ int KviWinampInterface::getListLength()
 {
 	int ret = -1;
 	HWND hWinamp = find_winamp(this);
-	if(hWinamp)ret = SendMessage(hWinamp,WM_USER,2,IPC_GETLISTLENGTH);
+	if(hWinamp)
+		ret = SendMessage(hWinamp, WM_USER, 2, IPC_GETLISTLENGTH);
 	return ret;
 }
 
-bool KviWinampInterface::setEqData(kvs_int_t &iPos, kvs_int_t &iVal)
+bool KviWinampInterface::setEqData(kvs_int_t & iPos, kvs_int_t & iVal)
 {
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
 	{
-		SendMessage(hWinamp,WM_USER,iPos,IPC_GETEQDATA);
-		SendMessage(hWinamp,WM_USER,iVal,IPC_SETEQDATA);
+		SendMessage(hWinamp, WM_USER, iPos, IPC_GETEQDATA);
+		SendMessage(hWinamp, WM_USER, iVal, IPC_SETEQDATA);
 		return true;
 	}
 	return false;
 }
 
-int KviWinampInterface::getEqData(kvs_int_t &ival)
+int KviWinampInterface::getEqData(kvs_int_t & ival)
 {
 	HWND hWinamp = find_winamp(this);
 	int ret = -1;
 	if(hWinamp)
 	{
-		ret = SendMessage(hWinamp,WM_USER,ival,IPC_GETEQDATA);
+		ret = SendMessage(hWinamp, WM_USER, ival, IPC_GETEQDATA);
 		return ret;
 	}
 	return ret;
@@ -528,7 +536,7 @@ bool KviWinampInterface::getRepeat()
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
 	{
-		bool bRepeat = SendMessage(hWinamp,WM_USER,0,IPC_GET_REPEAT);
+		bool bRepeat = SendMessage(hWinamp, WM_USER, 0, IPC_GET_REPEAT);
 		return bRepeat;
 	}
 	return false;
@@ -539,29 +547,29 @@ bool KviWinampInterface::getShuffle()
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
 	{
-	bool bShuffle =	SendMessage(hWinamp,WM_USER,0,IPC_GET_SHUFFLE);
+		bool bShuffle = SendMessage(hWinamp, WM_USER, 0, IPC_GET_SHUFFLE);
 		return bShuffle;
 	}
 	return false;
 }
 
-bool KviWinampInterface::setShuffle(bool &bVal)
+bool KviWinampInterface::setShuffle(bool & bVal)
 {
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
 	{
-	bool bRepeat =	SendMessage(hWinamp,WM_USER,bVal,IPC_SET_SHUFFLE);
+		bool bRepeat = SendMessage(hWinamp, WM_USER, bVal, IPC_SET_SHUFFLE);
 		return bRepeat;
 	}
 	return false;
 }
 
-bool KviWinampInterface::setRepeat(bool &bVal)
+bool KviWinampInterface::setRepeat(bool & bVal)
 {
 	HWND hWinamp = find_winamp(this);
 	if(hWinamp)
 	{
-	bool bShuffle =	SendMessage(hWinamp,WM_USER,bVal,IPC_SET_REPEAT);
+		bool bShuffle = SendMessage(hWinamp, WM_USER, bVal, IPC_SET_REPEAT);
 		return bShuffle;
 	}
 	return false;

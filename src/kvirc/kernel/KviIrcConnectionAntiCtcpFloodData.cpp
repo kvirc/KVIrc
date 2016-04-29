@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviIrcConnectionAntiCtcpFloodData.h"
 
 KviIrcConnectionAntiCtcpFloodData::KviIrcConnectionAntiCtcpFloodData()

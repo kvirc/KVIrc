@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-
 #include "KvsObject_widget.h"
 #include "object_macros.h"
 
@@ -36,15 +35,14 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool setProgress(KviKvsObjectFunctionCall *c);
-	bool setTotalSteps(KviKvsObjectFunctionCall *c);
-	bool reset(KviKvsObjectFunctionCall *c);
-	bool setPercentageVisible(KviKvsObjectFunctionCall *c);
-	bool percentageVisible(KviKvsObjectFunctionCall *c);
-	bool setFormat(KviKvsObjectFunctionCall *c);
+	bool setProgress(KviKvsObjectFunctionCall * c);
+	bool setTotalSteps(KviKvsObjectFunctionCall * c);
+	bool reset(KviKvsObjectFunctionCall * c);
+	bool setPercentageVisible(KviKvsObjectFunctionCall * c);
+	bool percentageVisible(KviKvsObjectFunctionCall * c);
+	bool setFormat(KviKvsObjectFunctionCall * c);
 };
 
-
-#endif	//!_CLASS_PROGRESSBAR_H_
+#endif //!_CLASS_PROGRESSBAR_H_

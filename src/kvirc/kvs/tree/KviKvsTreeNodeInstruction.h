@@ -48,12 +48,13 @@ public:
 	* \return KviKvsTreeNodeInstruction
 	*/
 	KviKvsTreeNodeInstruction(const QChar * pLocation)
-	: KviKvsTreeNode(pLocation){};
+	    : KviKvsTreeNode(pLocation){};
 
 	/**
 	* \brief Destroys the treenode instruction object
 	*/
 	~KviKvsTreeNodeInstruction(){};
+
 public:
 	/**
 	* \brief Sets the buffer as Instruction

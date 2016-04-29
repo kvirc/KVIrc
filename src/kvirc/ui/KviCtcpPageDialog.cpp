@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "KviCtcpPageDialog.h"
 #include "KviLocale.h"
 #include "KviApplication.h"
@@ -43,7 +42,7 @@
 extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 
 KviCtcpPageDialog::KviCtcpPageDialog()
-: QWidget(0,Qt::WindowStaysOnTopHint | Qt::Tool | Qt::Dialog | Qt::Window)
+    : QWidget(0, Qt::WindowStaysOnTopHint | Qt::Tool | Qt::Dialog | Qt::Window)
 {
 	setObjectName("kvirc_ctcppage_dialog");
 	setWindowTitle(__tr2qs("CTCP Page - KVIrc"));
@@ -51,16 +50,16 @@ KviCtcpPageDialog::KviCtcpPageDialog()
 	QGridLayout * g = new QGridLayout(this);
 	m_pTabBar = new QTabWidget(this);
 	m_pTabBar->setTabShape(QTabWidget::Triangular);
-	g->addWidget(m_pTabBar,0,0);
+	g->addWidget(m_pTabBar, 0, 0);
 
-	g->setRowStretch(0,1);
+	g->setRowStretch(0, 1);
 
-	m_pCloseButton = new QPushButton(__tr2qs("Close"),this);
-	connect(m_pCloseButton,SIGNAL(clicked()),this,SLOT(die()));
-	g->addWidget(m_pCloseButton,1,0);
+	m_pCloseButton = new QPushButton(__tr2qs("Close"), this);
+	connect(m_pCloseButton, SIGNAL(clicked()), this, SLOT(die()));
+	g->addWidget(m_pCloseButton, 1, 0);
 
-	setMinimumSize(300,200);
-	setMaximumSize(780,580);
+	setMinimumSize(300, 200);
+	setMaximumSize(780, 580);
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::CtcpRequestReplied)));
 }
 
@@ -72,7 +71,7 @@ KviCtcpPageDialog::~KviCtcpPageDialog()
 void KviCtcpPageDialog::center()
 {
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-	move((rect.width() - width())/2,(rect.height() - height())/2);
+	move((rect.width() - width()) / 2, (rect.height() - height()) / 2);
 }
 
 void KviCtcpPageDialog::die()
@@ -80,7 +79,7 @@ void KviCtcpPageDialog::die()
 	delete this;
 }
 
-void KviCtcpPageDialog::addPage(const QString &szNick,const QString &szUser,const QString &szHost,const QString &szMsg)
+void KviCtcpPageDialog::addPage(const QString & szNick, const QString & szUser, const QString & szHost, const QString & szMsg)
 {
 	QLabel * l = new QLabel(this);
 	QString szDate;
@@ -133,7 +132,7 @@ void KviCtcpPageDialog::popup()
 	m_pCloseButton->setFocus();
 }
 
-void KviCtcpPageDialog::showEvent(QShowEvent *e)
+void KviCtcpPageDialog::showEvent(QShowEvent * e)
 {
 	QWidget::showEvent(e);
 	center();

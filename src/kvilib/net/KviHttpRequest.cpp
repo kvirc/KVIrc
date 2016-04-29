@@ -34,7 +34,7 @@
 
 #include <QTcpSocket>
 #ifdef COMPILE_SSL_SUPPORT
-	#include <QSslSocket>
+#include <QSslSocket>
 #endif
 #include <QTimer>
 #include <QDir>
@@ -54,10 +54,8 @@ public:
 	unsigned short uPort;
 };
 
-
-
 KviHttpRequest::KviHttpRequest()
-: QObject()
+    : QObject()
 {
 	m_p = new KviHttpRequestPrivate();
 	m_p->pSocket = NULL;
@@ -152,7 +150,7 @@ void KviHttpRequest::reset()
 	resetInternalStatus();
 }
 
-bool KviHttpRequest::get(const KviUrl &u,ProcessingType p,const QString &szFileName)
+bool KviHttpRequest::get(const KviUrl & u, ProcessingType p, const QString & szFileName)
 {
 	reset();
 	setUrl(u);
@@ -194,12 +192,12 @@ bool KviHttpRequest::start()
 		return false;
 	}
 
-	m_p->bIsSSL = KviQString::equalCI(m_connectionUrl.protocol(),"https");
+	m_p->bIsSSL = KviQString::equalCI(m_connectionUrl.protocol(), "https");
 
-	if(!KviQString::equalCI(m_connectionUrl.protocol(),"http") && !m_p->bIsSSL)
+	if(!KviQString::equalCI(m_connectionUrl.protocol(), "http") && !m_p->bIsSSL)
 	{
 		resetInternalStatus();
-		m_szLastError=__tr2qs("Unsupported protocol %1").arg(m_connectionUrl.protocol());
+		m_szLastError = __tr2qs("Unsupported protocol %1").arg(m_connectionUrl.protocol());
 		return false;
 	}
 
@@ -211,9 +209,9 @@ void KviHttpRequest::closeSocket()
 	if(!m_p->pSocket)
 		return;
 
-	QObject::disconnect(m_p->pSocket,SIGNAL(connected()),this,SLOT(slotSocketConnected()));
-	QObject::disconnect(m_p->pSocket,SIGNAL(disconnected()),this,SLOT(slotSocketDisconnected()));
-	QObject::disconnect(m_p->pSocket,SIGNAL(error(QAbstractSocket::SocketError)),this,SLOT(slotSocketError(QAbstractSocket::SocketError)));
+	QObject::disconnect(m_p->pSocket, SIGNAL(connected()), this, SLOT(slotSocketConnected()));
+	QObject::disconnect(m_p->pSocket, SIGNAL(disconnected()), this, SLOT(slotSocketDisconnected()));
+	QObject::disconnect(m_p->pSocket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(slotSocketError(QAbstractSocket::SocketError)));
 
 	m_p->pSocket->abort();
 	m_p->pSocket->close();
@@ -233,28 +231,28 @@ void KviHttpRequest::slotSocketDisconnected()
 		case WholeFile:
 			// happens always
 			emit binaryData(*m_p->pBuffer);
-		break;
+			break;
 		case Blocks:
 			// an unprocessed block ?.. should never happened.. but well :D
 			if(m_p->pBuffer->size() > 0)
 				emit binaryData(*m_p->pBuffer);
-		break;
+			break;
 		case Lines:
 			if(m_p->pBuffer->size() > 0)
 			{
 				// something left in the buffer and has no trailing LF
-				KviCString tmp((const char *)(m_p->pBuffer->data()),m_p->pBuffer->size());
+				KviCString tmp((const char *)(m_p->pBuffer->data()), m_p->pBuffer->size());
 				emit data(tmp);
 			}
-		break;
+			break;
 		case StoreToFile:
 			// same as above... should never happen.. but well :D
 			if(m_p->pFile && m_p->pBuffer->size() > 0)
-				m_p->pFile->write((const char *)(m_p->pBuffer->data()),m_p->pBuffer->size());
-		break;
+				m_p->pFile->write((const char *)(m_p->pBuffer->data()), m_p->pBuffer->size());
+			break;
 		default:
 			// nothing... just make gcc happy
-		break;
+			break;
 	}
 	resetInternalStatus();
 	m_szLastError = __tr2qs("Success");
@@ -271,10 +269,9 @@ void KviHttpRequest::slotSocketConnected()
 
 	emit connectionEstablished();
 	emit status(
-			__tr2qs("Connected to %1:%2: sending request")
-					.arg(m_p->pSocket->peerAddress().toString())
-					.arg(m_p->pSocket->peerPort())
-		);
+	    __tr2qs("Connected to %1:%2: sending request")
+	        .arg(m_p->pSocket->peerAddress().toString())
+	        .arg(m_p->pSocket->peerPort()));
 
 	KviCString szMethod;
 
@@ -284,32 +281,33 @@ void KviHttpRequest::slotSocketConnected()
 		szMethod = "HEAD";
 	else if(m_szPostData.isEmpty())
 		szMethod = "GET";
-	else {
+	else
+	{
 		szMethod = "POST";
 		bIsPost = true;
 	}
 
 	KviCString szRequest(
-			KviCString::Format,
-			"%s %s HTTP/1.1\r\n" \
-			"Host: %s\r\n" \
-			"Connection: Close\r\n" \
-			"User-Agent: KVIrc-http-slave/1.0.0\r\n" \
-			"Accept: */*\r\n",
-			szMethod.ptr(),
-			m_connectionUrl.path().toUtf8().data(),
-			m_connectionUrl.host().toUtf8().data()
-		);
+	    KviCString::Format,
+	    "%s %s HTTP/1.1\r\n"
+	    "Host: %s\r\n"
+	    "Connection: Close\r\n"
+	    "User-Agent: KVIrc-http-slave/1.0.0\r\n"
+	    "Accept: */*\r\n",
+	    szMethod.ptr(),
+	    m_connectionUrl.path().toUtf8().data(),
+	    m_connectionUrl.host().toUtf8().data());
 
 	if(m_uContentOffset > 0)
-		szRequest.append(KviCString::Format,"Range: bytes=%u-\r\n",m_uContentOffset);
+		szRequest.append(KviCString::Format, "Range: bytes=%u-\r\n", m_uContentOffset);
 
 	if(bIsPost)
 	{
-		szRequest.append(KviCString::Format,"Content-Type: application/x-www-form-urlencoded\r\n" \
-				"Content-Length: %u\r\n" \
-				"Cache-control: no-cache\r\n" \
-				"Pragma: no-cache\r\n",m_szPostData.length());
+		szRequest.append(KviCString::Format, "Content-Type: application/x-www-form-urlencoded\r\n"
+		                                     "Content-Length: %u\r\n"
+		                                     "Cache-control: no-cache\r\n"
+		                                     "Pragma: no-cache\r\n",
+		    m_szPostData.length());
 	}
 
 	szRequest += "\r\n";
@@ -322,7 +320,7 @@ void KviHttpRequest::slotSocketConnected()
 	}
 
 	// FIXME: Handle this better!
-	int written = m_p->pSocket->write(szRequest.ptr(),szRequest.len());
+	int written = m_p->pSocket->write(szRequest.ptr(), szRequest.len());
 	if(written < szRequest.len())
 	{
 		m_szLastError = __tr2qs("Socket write error");
@@ -357,7 +355,7 @@ void KviHttpRequest::slotSocketReadDataReady()
 
 	KviDataBuffer oBuffer(iBytes);
 
-	int iRead = m_p->pSocket->read((char *)(oBuffer.data()),iBytes);
+	int iRead = m_p->pSocket->read((char *)(oBuffer.data()), iBytes);
 	if(iRead < iBytes)
 	{
 		// hum.... what here ?
@@ -417,11 +415,11 @@ bool KviHttpRequest::doConnect()
 #else
 	m_p->pSocket = new QTcpSocket();
 #endif
-	QObject::connect(m_p->pSocket,SIGNAL(connected()),this,SLOT(slotSocketConnected()));
-	QObject::connect(m_p->pSocket,SIGNAL(disconnected()),this,SLOT(slotSocketDisconnected()));
-	QObject::connect(m_p->pSocket,SIGNAL(error(QAbstractSocket::SocketError)),this,SLOT(slotSocketError(QAbstractSocket::SocketError)));
-	QObject::connect(m_p->pSocket,SIGNAL(readyRead()),this,SLOT(slotSocketReadDataReady()));
-	QObject::connect(m_p->pSocket,SIGNAL(hostFound()),this,SLOT(slotSocketHostResolved()));
+	QObject::connect(m_p->pSocket, SIGNAL(connected()), this, SLOT(slotSocketConnected()));
+	QObject::connect(m_p->pSocket, SIGNAL(disconnected()), this, SLOT(slotSocketDisconnected()));
+	QObject::connect(m_p->pSocket, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(slotSocketError(QAbstractSocket::SocketError)));
+	QObject::connect(m_p->pSocket, SIGNAL(readyRead()), this, SLOT(slotSocketReadDataReady()));
+	QObject::connect(m_p->pSocket, SIGNAL(hostFound()), this, SLOT(slotSocketHostResolved()));
 
 	emit resolvingHost(m_connectionUrl.host());
 
@@ -429,14 +427,15 @@ bool KviHttpRequest::doConnect()
 	if(m_p->bIsSSL)
 	{
 		static_cast<QSslSocket *>(m_p->pSocket)->setProtocol(QSsl::AnyProtocol);
-		static_cast<QSslSocket *>(m_p->pSocket)->connectToHostEncrypted(m_connectionUrl.host(),m_p->uPort);
-	} else {
-		m_p->pSocket->connectToHost(m_connectionUrl.host(),m_p->uPort);
+		static_cast<QSslSocket *>(m_p->pSocket)->connectToHostEncrypted(m_connectionUrl.host(), m_p->uPort);
+	}
+	else
+	{
+		m_p->pSocket->connectToHost(m_connectionUrl.host(), m_p->uPort);
 	}
 #else
-	m_p->pSocket->connectToHost(m_connectionUrl.host(),m_p->uPort);
+	m_p->pSocket->connectToHost(m_connectionUrl.host(), m_p->uPort);
 #endif
-
 
 	if(m_p->pConnectTimeoutTimer)
 	{
@@ -446,7 +445,7 @@ bool KviHttpRequest::doConnect()
 
 	m_p->pConnectTimeoutTimer = new QTimer();
 	m_p->pConnectTimeoutTimer->setSingleShot(true);
-	QObject::connect(m_p->pConnectTimeoutTimer,SIGNAL(timeout()),this,SLOT(slotConnectionTimedOut()));
+	QObject::connect(m_p->pConnectTimeoutTimer, SIGNAL(timeout()), this, SLOT(slotConnectionTimedOut()));
 
 	m_p->pConnectTimeoutTimer->start(m_uConnectionTimeout * 1000);
 
@@ -464,19 +463,18 @@ bool KviHttpRequest::doConnect()
 		);
 	*/
 
-
 	return true;
 }
 
 void KviHttpRequest::emitLines(KviDataBuffer * pDataBuffer)
 {
-	int idx = pDataBuffer->find((const unsigned char *)"\n",1);
+	int idx = pDataBuffer->find((const unsigned char *)"\n", 1);
 	while(idx != -1)
 	{
-		KviCString tmp((const char *)(m_p->pBuffer->data()),idx);
+		KviCString tmp((const char *)(m_p->pBuffer->data()), idx);
 		tmp.stripRight('\r');
 		pDataBuffer->remove(idx + 1);
-		idx = pDataBuffer->find((const unsigned char *)"\n",1);
+		idx = pDataBuffer->find((const unsigned char *)"\n", 1);
 		emit data(tmp);
 	}
 }
@@ -511,7 +509,8 @@ void KviHttpRequest::emitLines(KviDataBuffer * pDataBuffer)
 //        header += "\r\n";
 bool KviHttpRequest::openFile()
 {
-	if(m_eProcessingType != StoreToFile)return true;
+	if(m_eProcessingType != StoreToFile)
+		return true;
 
 	bool bAppend = false;
 
@@ -527,9 +526,10 @@ bool KviHttpRequest::openFile()
 			break;
 			case RenameIncoming:
 			{
-				int i=0;
+				int i = 0;
 				QString tmp = m_szFileName;
-				do {
+				do
+				{
 					i++;
 					m_szFileName = tmp + QString(".kvirnm-%1").arg(i);
 				} while(KviFile::exists(m_szFileName));
@@ -537,14 +537,15 @@ bool KviHttpRequest::openFile()
 			break;
 			case RenameExisting:
 			{
-				int i=0;
+				int i = 0;
 				QString tmp;
-				do {
+				do
+				{
 					i++;
 					tmp = m_szFileName + QString(".kvirnm-%1").arg(i);
 				} while(KviFile::exists(tmp));
 				QDir d;
-				if(!d.rename(m_szFileName,tmp))
+				if(!d.rename(m_szFileName, tmp))
 				{
 					// fail :(
 					resetInternalStatus();
@@ -557,7 +558,7 @@ bool KviHttpRequest::openFile()
 			case Overwrite:
 			default:
 				// nothing
-			break;
+				break;
 		}
 	}
 
@@ -574,8 +575,7 @@ bool KviHttpRequest::openFile()
 	return true;
 }
 
-
-bool KviHttpRequest::processHeader(KviCString &szHeader)
+bool KviHttpRequest::processHeader(KviCString & szHeader)
 {
 	int idx = szHeader.findFirstIdx("\r\n");
 	KviCString szResponse;
@@ -583,7 +583,9 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 	{
 		szResponse = szHeader.left(idx);
 		szHeader.cutLeft(idx + 2);
-	} else {
+	}
+	else
+	{
 		szResponse = szHeader;
 		szHeader = "";
 	}
@@ -595,18 +597,21 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 	unsigned int uStatus = 0;
 
 	// check the response value
-	if(kvi_strEqualCSN(szResponse.ptr(),"HTTP",4))
+	if(kvi_strEqualCSN(szResponse.ptr(), "HTTP", 4))
 	{
 		KviCString szR = szResponse;
 		szR.cutToFirst(' ');
 		szR.trim();
 		int idx = szR.findFirstIdx(' ');
 		KviCString szNumber;
-		if(idx != -1)szNumber = szR.left(idx);
-		else szNumber = szR;
+		if(idx != -1)
+			szNumber = szR.left(idx);
+		else
+			szNumber = szR;
 		bool bOk;
 		uStatus = szNumber.toUInt(&bOk);
-		if(bOk)bValid = true;
+		if(bOk)
+			bValid = true;
 	}
 
 	QString szUniResponse = QString::fromUtf8(szResponse.ptr());
@@ -630,17 +635,18 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 	{
 		if(idx > 0)
 		{
-			hlist.append(new KviCString(szHeader.ptr(),idx));
+			hlist.append(new KviCString(szHeader.ptr(), idx));
 			szHeader.cutLeft(idx + 2);
 		}
 		idx = szHeader.findFirstIdx("\r\n");
 	}
-	if(szHeader.hasData())hlist.append(new KviCString(szHeader));
+	if(szHeader.hasData())
+		hlist.append(new KviCString(szHeader));
 
-	KviPointerHashTable<const char *,KviCString> hdr(11,false,true);
+	KviPointerHashTable<const char *, KviCString> hdr(11, false, true);
 	hdr.setAutoDelete(true);
 
-	for(KviCString * s = hlist.first();s;s = hlist.next())
+	for(KviCString * s = hlist.first(); s; s = hlist.next())
 	{
 		idx = s->findFirstIdx(":");
 		if(idx != -1)
@@ -648,7 +654,7 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 			KviCString szName = s->left(idx);
 			s->cutLeft(idx + 1);
 			s->trim();
-			hdr.replace(szName.ptr(),new KviCString(*s));
+			hdr.replace(szName.ptr(), new KviCString(*s));
 			//qDebug("FOUND HEADER (%s)=(%s)",szName.ptr(),s->ptr());
 		}
 	}
@@ -658,7 +664,8 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 	{
 		bool bOk;
 		m_uTotalSize = size->toUInt(&bOk);
-		if(!bOk)m_uTotalSize = 0;
+		if(!bOk)
+			m_uTotalSize = 0;
 	}
 
 	KviCString * contentEncoding = hdr.find("Content-encoding");
@@ -670,7 +677,7 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 	KviCString * transferEncoding = hdr.find("Transfer-Encoding");
 	if(transferEncoding)
 	{
-		if(kvi_strEqualCI(transferEncoding->ptr(),"chunked"))
+		if(kvi_strEqualCI(transferEncoding->ptr(), "chunked"))
 		{
 			// be prepared to handle the chunked transfer encoding as required by HTTP/1.1
 			m_bChunkedTransferEncoding = true;
@@ -724,9 +731,9 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 	//				case 505: // HTTP Version not supported
 
 	if(
-		(uStatus != 200) && // OK
-		(uStatus != 206)    // Partial content
-	)
+	    (uStatus != 200) && // OK
+	    (uStatus != 206)    // Partial content
+	    )
 	{
 		// This is not "OK" and not "Partial content"
 		// Error, redirect or something confusing
@@ -746,9 +753,9 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 						emit terminated(false);
 						return false;
 					}
-					
+
 					m_uRedirectCount++;
-					
+
 					if(m_uRedirectCount > m_uMaximumRedirectCount)
 					{
 						resetInternalStatus();
@@ -756,7 +763,7 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 						emit terminated(false);
 						return false;
 					}
-					
+
 					KviCString * location = hdr.find("Location");
 
 					if(!location)
@@ -766,13 +773,11 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 						emit terminated(false);
 						return false;
 					}
-					
+
 					KviUrl url(location->ptr());
-					
+
 					if(
-							(url.url() == m_connectionUrl.url()) ||
-							(url.url() == m_url.url())
-						)
+					    (url.url() == m_connectionUrl.url()) || (url.url() == m_url.url()))
 					{
 						resetInternalStatus();
 						m_szLastError = __tr2qs("Redirect loop");
@@ -790,14 +795,14 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 					return false; // will exit the call stack
 				}
 				break;
-				break;
+					break;
 				default:
 					// assume error
 					resetInternalStatus();
 					m_szLastError = szResponse.ptr();
 					emit terminated(false);
 					return false;
-				break;
+					break;
 			}
 			// this is an error then
 		} // else the server will terminate (it was a HEAD request)
@@ -810,7 +815,7 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 	if((m_uMaxContentLength > 0) && (m_uTotalSize > ((unsigned int)m_uMaxContentLength)))
 	{
 		resetInternalStatus();
-		m_szLastError=__tr2qs("The amount of received data exceeds the maximum length");
+		m_szLastError = __tr2qs("The amount of received data exceeds the maximum length");
 		emit terminated(false);
 		return false;
 	}
@@ -823,7 +828,7 @@ bool KviHttpRequest::processHeader(KviCString &szHeader)
 
 void KviHttpRequest::processData(KviDataBuffer * data)
 {
-//	unsigned char obuffer[BUFFER_SIZE];
+	//	unsigned char obuffer[BUFFER_SIZE];
 	if(m_bChunkedTransferEncoding && m_bIgnoreRemainingData)
 	{
 		// In chunked transfer encoding mode there may be additional headers
@@ -836,7 +841,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 		// time to process the header
 		m_p->pBuffer->append(*data);
 
-		int idx = m_p->pBuffer->find((const unsigned char *)"\r\n\r\n",4);
+		int idx = m_p->pBuffer->find((const unsigned char *)"\r\n\r\n", 4);
 		if(idx == -1)
 		{
 			// header not complete
@@ -848,7 +853,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 			}
 			return;
 		}
-		KviCString szHeader((const char *)(m_p->pBuffer->data()),idx);
+		KviCString szHeader((const char *)(m_p->pBuffer->data()), idx);
 		m_p->pBuffer->remove(idx + 4);
 
 		if(!processHeader(szHeader))
@@ -858,15 +863,16 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 
 		if(m_eProcessingType == StoreToFile)
 		{
-			if(!openFile())return;
+			if(!openFile())
+				return;
 		}
 
 		m_uReceivedSize = m_p->pBuffer->size();
 
-
 		// here the header is complete and the eventual remaining data is in m_p->pBuffer. data has been already used.
-
-	} else {
+	}
+	else
+	{
 		// header already processed
 		m_uReceivedSize += data->size();
 
@@ -878,25 +884,24 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 		// This is a good optimisation since for large files we can save allocating
 		// space for and moving megabytes of data...
 
-
 		if((!m_bChunkedTransferEncoding) && ((m_eProcessingType == Blocks) || (m_eProcessingType == StoreToFile)))
 		{
 			switch(m_eProcessingType)
 			{
 				case Blocks:
 					emit binaryData(*data);
-				break;
+					break;
 				case StoreToFile:
-					m_p->pFile->write((const char *)(data->data()),data->size());
-				break;
+					m_p->pFile->write((const char *)(data->data()), data->size());
+					break;
 				default:
-				break;
+					break;
 			}
 
 			if(((m_uTotalSize > 0) && (m_uReceivedSize > m_uTotalSize)) || ((m_uMaxContentLength > 0) && (m_uReceivedSize > m_uMaxContentLength)))
 			{
 				resetInternalStatus();
-				m_szLastError=__tr2qs("The amount of received data exceeds expected length");
+				m_szLastError = __tr2qs("The amount of received data exceeds expected length");
 				emit terminated(false);
 			}
 
@@ -923,7 +928,8 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 			{
 				// process the current chunk data
 				unsigned int uProcessSize = m_uRemainingChunkSize;
-				if(uProcessSize > (unsigned int)m_p->pBuffer->size())uProcessSize = m_p->pBuffer->size();
+				if(uProcessSize > (unsigned int)m_p->pBuffer->size())
+					uProcessSize = m_p->pBuffer->size();
 				m_uRemainingChunkSize -= uProcessSize;
 
 				switch(m_eProcessingType)
@@ -933,39 +939,45 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 						{
 							// avoid copying to a new buffer
 							emit binaryData(*m_p->pBuffer);
-						} else {
+						}
+						else
+						{
 							// must copy
-							KviDataBuffer tmp(uProcessSize,m_p->pBuffer->data());
+							KviDataBuffer tmp(uProcessSize, m_p->pBuffer->data());
 							emit binaryData(tmp);
 							m_p->pBuffer->remove(uProcessSize);
 						}
-					break;
+						break;
 					case Lines:
 						if((unsigned int)m_p->pBuffer->size() == uProcessSize)
 						{
 							// avoid copying to a new buffer
 							emitLines(m_p->pBuffer);
-						} else {
+						}
+						else
+						{
 							// must copy
-							KviDataBuffer tmp(uProcessSize,m_p->pBuffer->data());
+							KviDataBuffer tmp(uProcessSize, m_p->pBuffer->data());
 							emitLines(&tmp);
 							m_p->pBuffer->remove(uProcessSize);
 						}
-					break;
+						break;
 					case StoreToFile:
-						m_p->pFile->write((const char *)(m_p->pBuffer->data()),uProcessSize);
+						m_p->pFile->write((const char *)(m_p->pBuffer->data()), uProcessSize);
 						m_p->pBuffer->remove(uProcessSize);
-					break;
+						break;
 					default:
 						// nothing.. just make gcc happy
-					break;
+						break;
 				}
 				// now either the buffer is empty or there is another chunk header: continue looping
-			} else {
+			}
+			else
+			{
 				// We're looking for the beginning of a chunk now.
 				// Note that we might be at the end of a previous chunk that has a CRLF terminator
 				// we need to skip it.
-				int crlf = m_p->pBuffer->find((const unsigned char *)"\r\n",2);
+				int crlf = m_p->pBuffer->find((const unsigned char *)"\r\n", 2);
 				if(crlf != -1)
 				{
 					if(crlf == 0)
@@ -973,14 +985,16 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 						// This is a plain CRLF at the beginning of the buffer BEFORE a chunk header.
 						// It comes from the previous chunk terminator. Skip it.
 						m_p->pBuffer->remove(2);
-					} else {
+					}
+					else
+					{
 						// got a chunk header
-						KviCString szHeader((const char *)(m_p->pBuffer->data()),crlf);
+						KviCString szHeader((const char *)(m_p->pBuffer->data()), crlf);
 						szHeader.cutFromFirst(' ');
 						// now szHeader should contain a hexadecimal chunk length... (why the hell it is hex and not decimal ????)
 						QString szHexHeader = szHeader.ptr();
 						bool bOk;
-						m_uRemainingChunkSize = szHexHeader.toLong(&bOk,16);
+						m_uRemainingChunkSize = szHexHeader.toLong(&bOk, 16);
 						if(!bOk)
 						{
 							resetInternalStatus();
@@ -988,7 +1002,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 							emit terminated(false);
 							return;
 						}
-						m_p->pBuffer->remove(crlf+2);
+						m_p->pBuffer->remove(crlf + 2);
 						if(m_uRemainingChunkSize == 0)
 						{
 							// this is the last chunk of data. It may be followed by optional headers
@@ -999,7 +1013,9 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 						}
 					}
 					// the rest is valid data of a non-zero chunk: continue looping
-				} else {
+				}
+				else
+				{
 					// chunk header not complete
 					if(m_p->pBuffer->size() > 4096)
 					{
@@ -1012,24 +1028,28 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 				}
 			}
 		}
-	} else {
+	}
+	else
+	{
 		// the transfer encoding is not chunked: m_p->pBuffer contains only valid data
 		switch(m_eProcessingType)
 		{
 			case Blocks:
-				if(m_p->pBuffer->size() > 0)emit binaryData(*m_p->pBuffer);
+				if(m_p->pBuffer->size() > 0)
+					emit binaryData(*m_p->pBuffer);
 				m_p->pBuffer->clear();
-			break;
+				break;
 			case Lines:
-				if(m_p->pBuffer->size() > 0)emitLines(m_p->pBuffer);
-			break;
+				if(m_p->pBuffer->size() > 0)
+					emitLines(m_p->pBuffer);
+				break;
 			case StoreToFile:
-				m_p->pFile->write((const char *)(m_p->pBuffer->data()),m_p->pBuffer->size());
+				m_p->pFile->write((const char *)(m_p->pBuffer->data()), m_p->pBuffer->size());
 				m_p->pBuffer->clear();
-			break;
+				break;
 			default:
 				// nothing.. just make gcc happy
-			break;
+				break;
 		}
 	}
 
@@ -1038,12 +1058,11 @@ check_stream_length:
 	if(((m_uTotalSize > 0) && (m_uReceivedSize > m_uTotalSize)) || ((m_uMaxContentLength > 0) && (m_uReceivedSize > m_uMaxContentLength)))
 	{
 		resetInternalStatus();
-		m_szLastError=__tr2qs("The amount of received data exceeds expected length");
+		m_szLastError = __tr2qs("The amount of received data exceeds expected length");
 		emit terminated(false);
 	}
 	return;
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1088,4 +1107,3 @@ void KviHttpRequest::dnsLookupDone(KviDnsResolver *d)
 	}
 }
 #endif
-

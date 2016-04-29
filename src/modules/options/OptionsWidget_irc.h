@@ -52,7 +52,6 @@ public:
 	~OptionsWidget_ircGeneral();
 };
 
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircAdvanced KviIconManager::Gui
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_ircAdvanced __tr2qs_no_lookup("Advanced")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_ircAdvanced OptionsWidget_irc

@@ -22,14 +22,12 @@
 //
 //=============================================================================
 
-
 #include "KviTheme.h"
 #include "KviFileUtils.h"
 #include "KviConfigurationFile.h"
 #include "KviLocale.h"
 #include "KviMiscUtils.h"
 #include "kvi_sourcesdate.h"
-
 
 #include <QImage>
 #include <QDir>
@@ -41,9 +39,8 @@
 
 #define QIMAGE_SCALE_MIN Qt::KeepAspectRatio
 
-
 KviThemeInfo::KviThemeInfo()
-: KviHeapObject()
+    : KviHeapObject()
 {
 }
 
@@ -51,47 +48,51 @@ KviThemeInfo::~KviThemeInfo()
 {
 }
 
-void KviThemeInfo::setDirectoryAndLocation(const QString &szDirectory,Location eLocation)
+void KviThemeInfo::setDirectoryAndLocation(const QString & szDirectory, Location eLocation)
 {
 	switch(eLocation)
 	{
 		case Auto:
-			g_pApp->getLocalKvircDirectory(m_szDirectory,KviApplication::Themes,szDirectory);
+			g_pApp->getLocalKvircDirectory(m_szDirectory, KviApplication::Themes, szDirectory);
 			if(KviFileUtils::directoryExists(m_szDirectory))
 			{
 				m_eLocation = User;
-			} else {
-				g_pApp->getGlobalKvircDirectory(m_szDirectory,KviApplication::Themes,szDirectory);
+			}
+			else
+			{
+				g_pApp->getGlobalKvircDirectory(m_szDirectory, KviApplication::Themes, szDirectory);
 				if(KviFileUtils::directoryExists(m_szDirectory))
 				{
 					m_eLocation = Builtin;
-				} else {
+				}
+				else
+				{
 					m_eLocation = External;
 					m_szDirectory = szDirectory;
-					m_szSubdirectory = KviFileUtils::extractFileName(szDirectory,false);
+					m_szSubdirectory = KviFileUtils::extractFileName(szDirectory, false);
 				}
 			}
-		break;
+			break;
 		case Builtin:
 			m_eLocation = eLocation;
 			m_szSubdirectory = szDirectory;
-			g_pApp->getGlobalKvircDirectory(m_szDirectory,KviApplication::Themes,m_szSubdirectory);
-		break;
+			g_pApp->getGlobalKvircDirectory(m_szDirectory, KviApplication::Themes, m_szSubdirectory);
+			break;
 		case User:
 			m_eLocation = eLocation;
 			m_szSubdirectory = szDirectory;
-			g_pApp->getLocalKvircDirectory(m_szDirectory,KviApplication::Themes,m_szSubdirectory);
-		break;
+			g_pApp->getLocalKvircDirectory(m_szDirectory, KviApplication::Themes, m_szSubdirectory);
+			break;
 		default: // assume external
 		{
 			m_eLocation = External;
 			m_szDirectory = szDirectory;
-			m_szSubdirectory = KviFileUtils::extractFileName(szDirectory,false);
+			m_szSubdirectory = KviFileUtils::extractFileName(szDirectory, false);
 		}
 		break;
 	}
 
-	KviQString::ensureLastCharIs(m_szDirectory,QChar(KVI_PATH_SEPARATOR_CHAR));
+	KviQString::ensureLastCharIs(m_szDirectory, QChar(KVI_PATH_SEPARATOR_CHAR));
 
 	//qDebug(
 	//		"[KviTheme::setDirectoryAndLocation] Directory(%s), Subdirectory(%s), Location(%d)",
@@ -101,9 +102,9 @@ void KviThemeInfo::setDirectoryAndLocation(const QString &szDirectory,Location e
 	//	);
 }
 
-bool KviThemeInfo::load(const QString &szDirectory,Location eLocation)
+bool KviThemeInfo::load(const QString & szDirectory, Location eLocation)
 {
-	setDirectoryAndLocation(szDirectory,eLocation);
+	setDirectoryAndLocation(szDirectory, eLocation);
 
 	QString szThemeInfoFileName = m_szDirectory + KVI_THEMEINFO_FILE_NAME;
 	QString szThemeDataFileName = m_szDirectory + KVI_THEMEDATA_FILE_NAME;
@@ -120,19 +121,19 @@ bool KviThemeInfo::load(const QString &szDirectory,Location eLocation)
 		return false;
 	}
 
-	KviConfigurationFile cfg(szThemeInfoFileName,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szThemeInfoFileName, KviConfigurationFile::Read);
 
 	cfg.setGroup(KVI_THEMEINFO_CONFIG_GROUP);
 
-	m_szThemeEngineVersion = cfg.readEntry("ThemeEngineVersion","1.0.0");
-	if(KviMiscUtils::compareVersions(m_szThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION) < 0)
+	m_szThemeEngineVersion = cfg.readEntry("ThemeEngineVersion", "1.0.0");
+	if(KviMiscUtils::compareVersions(m_szThemeEngineVersion, KVI_CURRENT_THEME_ENGINE_VERSION) < 0)
 	{
-		m_szLastError = QString(__tr2qs("This KVIrc executable is too old for this theme (minimum theme engine version required is %1 while this theme engine has version %2)")).arg(m_szThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION);
+		m_szLastError = QString(__tr2qs("This KVIrc executable is too old for this theme (minimum theme engine version required is %1 while this theme engine has version %2)")).arg(m_szThemeEngineVersion, KVI_CURRENT_THEME_ENGINE_VERSION);
 		return false; // incompatible theme engine (will not work)
 	}
 
 	// mandatory fields
-	m_szName = cfg.readEntry("Name","");
+	m_szName = cfg.readEntry("Name", "");
 
 	if(m_szName.isEmpty())
 	{
@@ -141,18 +142,18 @@ bool KviThemeInfo::load(const QString &szDirectory,Location eLocation)
 	}
 
 	// optional fields
-	m_szVersion = cfg.readEntry("Version","");
+	m_szVersion = cfg.readEntry("Version", "");
 	if(m_szVersion.isEmpty())
 		m_szVersion = "?.?.?";
-	m_szAuthor = cfg.readEntry("Author","");
+	m_szAuthor = cfg.readEntry("Author", "");
 	QString szUnknown = __tr2qs("Unknown");
 	if(m_szAuthor.isEmpty())
 		m_szAuthor = szUnknown;
-	m_szDescription = cfg.readEntry("Description","");
-	m_szDate = cfg.readEntry("Date","");
+	m_szDescription = cfg.readEntry("Description", "");
+	m_szDate = cfg.readEntry("Date", "");
 	if(m_szDate.isEmpty())
 		m_szDate = szUnknown;
-	m_szApplication = cfg.readEntry("Application","");
+	m_szApplication = cfg.readEntry("Application", "");
 	if(m_szApplication.isEmpty())
 		m_szApplication = szUnknown;
 
@@ -166,25 +167,24 @@ bool KviThemeInfo::load(const QString &szDirectory,Location eLocation)
 	return true;
 }
 
-bool KviThemeInfo::save(const QString &szThemeFileName)
+bool KviThemeInfo::save(const QString & szThemeFileName)
 {
-	KviConfigurationFile inf(szThemeFileName,KviConfigurationFile::Write);
+	KviConfigurationFile inf(szThemeFileName, KviConfigurationFile::Write);
 
 	inf.clear();
 
 	inf.setGroup(KVI_THEMEINFO_CONFIG_GROUP);
 
-	inf.writeEntry("Name",m_szName);
-	inf.writeEntry("Version",m_szVersion);
-	inf.writeEntry("Author",m_szAuthor);
-	inf.writeEntry("Description",m_szDescription);
-	inf.writeEntry("Date",m_szDate);
-	inf.writeEntry("ThemeEngineVersion",KVI_CURRENT_THEME_ENGINE_VERSION);
-	inf.writeEntry("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
+	inf.writeEntry("Name", m_szName);
+	inf.writeEntry("Version", m_szVersion);
+	inf.writeEntry("Author", m_szAuthor);
+	inf.writeEntry("Description", m_szDescription);
+	inf.writeEntry("Date", m_szDate);
+	inf.writeEntry("ThemeEngineVersion", KVI_CURRENT_THEME_ENGINE_VERSION);
+	inf.writeEntry("Application", "KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
 
 	return true;
 }
-
 
 QString KviThemeInfo::smallScreenshotPath()
 {
@@ -208,14 +208,15 @@ const QPixmap & KviThemeInfo::smallScreenshot()
 	}
 	// try to scale it from the large one (and save it by the way)
 	pix = mediumScreenshot();
-	if(pix.isNull())return m_pixScreenshotSmall;
+	if(pix.isNull())
+		return m_pixScreenshotSmall;
 
 	if(pix.width() > 300 || pix.height() > 225)
 	{
 		QImage sbri = pix.toImage();
-		pix = QPixmap::fromImage(sbri.scaled(300,225,QIMAGE_SCALE_MIN,Qt::SmoothTransformation));
+		pix = QPixmap::fromImage(sbri.scaled(300, 225, QIMAGE_SCALE_MIN, Qt::SmoothTransformation));
 	}
-	pix.save(szFileName,"PNG");
+	pix.save(szFileName, "PNG");
 
 	m_pixScreenshotSmall = pix;
 	return m_pixScreenshotSmall;
@@ -236,13 +237,14 @@ const QPixmap & KviThemeInfo::mediumScreenshot()
 	}
 	// try to scale it from the large one (and save it by the way)
 	pix = largeScreenshot();
-	if(pix.isNull())return m_pixScreenshotMedium;
+	if(pix.isNull())
+		return m_pixScreenshotMedium;
 	if(pix.width() > 600 || pix.height() > 450)
 	{
 		QImage sbri = pix.toImage();
-		pix.fromImage(sbri.scaled(640,450,QIMAGE_SCALE_MIN,Qt::SmoothTransformation));
+		pix.fromImage(sbri.scaled(640, 450, QIMAGE_SCALE_MIN, Qt::SmoothTransformation));
 	}
-	pix.save(szFileName,"PNG");
+	pix.save(szFileName, "PNG");
 
 	m_pixScreenshotMedium = pix;
 	return m_pixScreenshotMedium;
@@ -256,15 +258,15 @@ const QPixmap & KviThemeInfo::largeScreenshot()
 	QString szFileName = m_szDirectory;
 	szFileName.append(KVI_THEME_LARGE_SCREENSHOT_NAME);
 	QPixmap pix(szFileName);
-	if(pix.isNull())return m_pixScreenshotLarge;
+	if(pix.isNull())
+		return m_pixScreenshotLarge;
 	m_pixScreenshotLarge = pix;
 	return m_pixScreenshotLarge;
 }
 
-
 namespace KviTheme
 {
-	bool saveScreenshots(KviThemeInfo &options,const QString &szOriginalScreenshotPath)
+	bool saveScreenshots(KviThemeInfo & options, const QString & szOriginalScreenshotPath)
 	{
 		QImage pix(szOriginalScreenshotPath);
 		if(pix.isNull())
@@ -283,29 +285,29 @@ namespace KviTheme
 			return false;
 		}
 
-		if(!pix.save(szScreenshotPath+KVI_THEME_LARGE_SCREENSHOT_NAME,"PNG"))
+		if(!pix.save(szScreenshotPath + KVI_THEME_LARGE_SCREENSHOT_NAME, "PNG"))
 		{
 			options.setLastError(__tr2qs("Failed to save the screenshot image"));
 			return false;
 		}
 
 		if(pix.width() > 600 || pix.height() > 450)
-			out = pix.scaled(640,450,QIMAGE_SCALE_MIN,Qt::SmoothTransformation);
+			out = pix.scaled(640, 450, QIMAGE_SCALE_MIN, Qt::SmoothTransformation);
 		else
 			out = pix;
 
-		if(!out.save(szScreenshotPath+KVI_THEME_MEDIUM_SCREENSHOT_NAME,"PNG"))
+		if(!out.save(szScreenshotPath + KVI_THEME_MEDIUM_SCREENSHOT_NAME, "PNG"))
 		{
 			options.setLastError(__tr2qs("Failed to save the screenshot image"));
 			return false;
 		}
 
 		if(pix.width() > 300 || pix.height() > 225)
-			out = pix.scaled(300,225,QIMAGE_SCALE_MIN,Qt::SmoothTransformation);
+			out = pix.scaled(300, 225, QIMAGE_SCALE_MIN, Qt::SmoothTransformation);
 		else
 			out = pix;
 
-		if(!out.save(szScreenshotPath+KVI_THEME_SMALL_SCREENSHOT_NAME,"PNG"))
+		if(!out.save(szScreenshotPath + KVI_THEME_SMALL_SCREENSHOT_NAME, "PNG"))
 		{
 			options.setLastError(__tr2qs("Failed to save the screenshot image"));
 			return false;
@@ -314,26 +316,26 @@ namespace KviTheme
 		return true;
 	}
 
-	void installedThemeDirectories(QStringList &slThemes,KviThemeInfo::Location eLocation)
+	void installedThemeDirectories(QStringList & slThemes, KviThemeInfo::Location eLocation)
 	{
 		QString szThemePath;
 		switch(eLocation)
 		{
 			case KviThemeInfo::Builtin:
-				g_pApp->getGlobalKvircDirectory(szThemePath,KviApplication::Themes);
-			break;
+				g_pApp->getGlobalKvircDirectory(szThemePath, KviApplication::Themes);
+				break;
 			case KviThemeInfo::User:
-				g_pApp->getLocalKvircDirectory(szThemePath,KviApplication::Themes);
-			break;
+				g_pApp->getLocalKvircDirectory(szThemePath, KviApplication::Themes);
+				break;
 			default:
 				return;
-			break;
+				break;
 		}
 
 		QDir d(szThemePath);
 		QStringList sl = d.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 
-		for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
+		for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
 			slThemes.append(*it);
 	}
 };

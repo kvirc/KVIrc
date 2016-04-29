@@ -46,11 +46,13 @@ class KVILIB_API KviIrcMask : public KviHeapObject
 {
 	friend class KviIrcUserList;
 	friend class KviIrcUserChanList;
+
 private:
 	QString m_szNick;
 	QString m_szUser;
 	QString m_szHost;
 	static QString m_szWild;
+
 public:
 	/**
 	* \brief Constructs an empty mask (*!*@*)
@@ -71,7 +73,7 @@ public:
 	* \return KviIrcMask
 	*/
 	KviIrcMask(const KviIrcMask & ircUser)
-	: m_szNick(ircUser.m_szNick), m_szUser(ircUser.m_szUser), m_szHost(ircUser.m_szHost) {};
+	    : m_szNick(ircUser.m_szNick), m_szUser(ircUser.m_szUser), m_szHost(ircUser.m_szHost){};
 
 	/**
 	* \brief Carbon copy
@@ -81,7 +83,7 @@ public:
 	* \return KviIrcMask
 	*/
 	KviIrcMask(const QString & nick, const QString & user, const QString & host)
-	: m_szNick(nick), m_szUser(user), m_szHost(host) {};
+	    : m_szNick(nick), m_szUser(user), m_szHost(host){};
 
 	/**
 	* \enum MaskType
@@ -117,6 +119,7 @@ public:
 		NickCleanUserSmartNet = 25, /**< 25 : nick!*user@*.host.top */
 		CleanUserSmartNet = 26      /**< 26 : *!*user@*.host.top */
 	};
+
 public:
 	/**
 	* \brief Sets the nick for this user.
@@ -125,7 +128,7 @@ public:
 	* \param szNick The nickname of the user
 	* \return void
 	*/
-	void setNick(const QString & szNick){ m_szNick = szNick.isEmpty() ? m_szWild : szNick; };
+	void setNick(const QString & szNick) { m_szNick = szNick.isEmpty() ? m_szWild : szNick; };
 
 	/**
 	* \brief Sets the username for this user.
@@ -134,7 +137,7 @@ public:
 	* \param szUser The username of the user
 	* \return void
 	*/
-	void setUsername(const QString & szUser){ m_szUser = szUser.isEmpty() ? m_szWild : szUser; };
+	void setUsername(const QString & szUser) { m_szUser = szUser.isEmpty() ? m_szWild : szUser; };
 
 	/**
 	* \brief Sets the username for this user.
@@ -144,7 +147,7 @@ public:
 	* \param szUser The username of the user
 	* \return void
 	*/
-	void setUser(const QString & szUser){ m_szUser = szUser.isEmpty() ? m_szWild : szUser; };
+	void setUser(const QString & szUser) { m_szUser = szUser.isEmpty() ? m_szWild : szUser; };
 
 	/**
 	* \brief Sets the host for this user.
@@ -153,7 +156,7 @@ public:
 	* \param szHost The hostname of the user
 	* \return void
 	*/
-	void setHost(const QString & szHost){ m_szHost = szHost.isEmpty() ? m_szWild : szHost; };
+	void setHost(const QString & szHost) { m_szHost = szHost.isEmpty() ? m_szWild : szHost; };
 
 	/**
 	* \brief Returns the nickname of this user.
@@ -308,6 +311,7 @@ public:
 	* \return bool
 	*/
 	bool operator==(const KviIrcMask & user);
+
 private:
 	/**
 	* \brief Returns the number of characters which are parts of the IP

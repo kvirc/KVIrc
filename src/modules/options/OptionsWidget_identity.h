@@ -26,7 +26,6 @@
 //
 //=============================================================================
 
-
 #include "KviOptionsWidget.h"
 #include "kvi_settings.h"
 #include "KviSelectors.h"
@@ -47,14 +46,16 @@ class NickAlternativesDialog : public QDialog
 	friend class KviIdentityGeneralOptionsWidget;
 	Q_OBJECT
 protected:
-	NickAlternativesDialog(QWidget * par,const QString &n1,const QString &n2,const QString &n3);
+	NickAlternativesDialog(QWidget * par, const QString & n1, const QString & n2, const QString & n3);
 	~NickAlternativesDialog();
+
 protected:
 	QLineEdit * m_pNickEdit1;
 	QLineEdit * m_pNickEdit2;
 	QLineEdit * m_pNickEdit3;
+
 protected:
-	void fill(QString &n1,QString &n2,QString &n3);
+	void fill(QString & n1, QString & n2, QString & n3);
 };
 
 class AvatarSelectionDialog : public QDialog
@@ -62,47 +63,47 @@ class AvatarSelectionDialog : public QDialog
 	friend class OptionsWidget_identityAvatar;
 	Q_OBJECT
 public:
-	AvatarSelectionDialog(QWidget * par,const QString &szInitialPath);
+	AvatarSelectionDialog(QWidget * par, const QString & szInitialPath);
 	~AvatarSelectionDialog();
+
 protected:
-	QLineEdit   * m_pLineEdit;
-	QString       m_szAvatarName;
+	QLineEdit * m_pLineEdit;
+	QString m_szAvatarName;
+
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-	const QString &avatarName(){ return m_szAvatarName; };
+	const QString & avatarName() { return m_szAvatarName; };
 protected slots:
 	void okClicked();
 	void cancelClicked();
 	void chooseFileClicked();
 };
 
-
 class AvatarDownloadDialog : public QDialog
 {
 	friend class OptionsWidget_identityAvatar;
 	Q_OBJECT
 public:
-	AvatarDownloadDialog(QWidget * par,const QString &szUrl);
+	AvatarDownloadDialog(QWidget * par, const QString & szUrl);
 	~AvatarDownloadDialog();
+
 protected:
 	KviHttpRequest * m_pRequest;
-	QLabel         * m_pOutput;
-	QString          m_szErrorMessage;
-	QString          m_szLocalFileName;
-	QString          m_szUrl;
+	QLabel * m_pOutput;
+	QString m_szErrorMessage;
+	QString m_szLocalFileName;
+	QString m_szUrl;
+
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-	const QString & localFileName(){ return m_szLocalFileName; };
-	const QString & errorMessage(){ return m_szErrorMessage; };
+	const QString & localFileName() { return m_szLocalFileName; };
+	const QString & errorMessage() { return m_szErrorMessage; };
 protected slots:
 	void startDownload();
 	void cancelClicked();
 	void downloadTerminated(bool bSuccess);
-	void downloadMessage(const QString &szMsg);
+	void downloadMessage(const QString & szMsg);
 };
-
-
-
 
 class IdentityProfileEditor : public QDialog
 {
@@ -111,27 +112,26 @@ class IdentityProfileEditor : public QDialog
 public:
 	IdentityProfileEditor(QWidget * pParent);
 	~IdentityProfileEditor();
+
 protected:
-	QLineEdit   * m_pNameEdit;
-	QLineEdit   * m_pNetworkEdit;
-	QLineEdit   * m_pNickEdit;
-	QLineEdit   * m_pAltNickEdit;
-	QLineEdit   * m_pUserNameEdit;
-	QLineEdit   * m_pRealNameEdit;
+	QLineEdit * m_pNameEdit;
+	QLineEdit * m_pNetworkEdit;
+	QLineEdit * m_pNickEdit;
+	QLineEdit * m_pAltNickEdit;
+	QLineEdit * m_pUserNameEdit;
+	QLineEdit * m_pRealNameEdit;
 	QPushButton * m_pBtnOk;
+
 public:
 	bool editProfile(KviIdentityProfile * pProfile);
 protected slots:
 	void toggleButton();
 };
 
-
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identity KviIconManager::Ident
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identity __tr2qs_no_lookup("Identity")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identity 99998
 #define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_identity true
-
 
 class OptionsWidget_identity : public KviOptionsWidget
 {
@@ -141,13 +141,10 @@ public:
 	~OptionsWidget_identity();
 };
 
-
-
 #define KVI_OPTIONS_WIDGET_ICON_KviIdentityGeneralOptionsWidget KviIconManager::Ident
 #define KVI_OPTIONS_WIDGET_NAME_KviIdentityGeneralOptionsWidget __tr2qs_no_lookup("General")
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityGeneralOptionsWidget 90000
 #define KVI_OPTIONS_WIDGET_PARENT_KviIdentityGeneralOptionsWidget OptionsWidget_identity
-
 
 class KviIdentityGeneralOptionsWidget : public KviOptionsWidget
 {
@@ -155,23 +152,23 @@ class KviIdentityGeneralOptionsWidget : public KviOptionsWidget
 public:
 	KviIdentityGeneralOptionsWidget(QWidget * pParent);
 	~KviIdentityGeneralOptionsWidget();
-protected:
-	QString            m_szAltNicknames[3];
 
-	QComboBox        * m_pAgeCombo;
-	QComboBox        * m_pGenderCombo;
+protected:
+	QString m_szAltNicknames[3];
+
+	QComboBox * m_pAgeCombo;
+	QComboBox * m_pGenderCombo;
 protected slots:
 	void setNickAlternatives();
+
 protected:
 	virtual void commit();
 };
-
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAvatar KviIconManager::Avatar
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAvatar __tr2qs_no_lookup("Avatar")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAvatar 80000
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_identityAvatar OptionsWidget_identity
-
 
 class OptionsWidget_identityAvatar : public KviOptionsWidget
 {
@@ -179,24 +176,24 @@ class OptionsWidget_identityAvatar : public KviOptionsWidget
 public:
 	OptionsWidget_identityAvatar(QWidget * pParent);
 	~OptionsWidget_identityAvatar();
+
 protected:
-	QCheckBox        * m_pUseAvatarCheck;
-	QLineEdit        * m_pAvatarNameEdit;
-	QPushButton      * m_pChooseAvatarButton;
-	KviPixmap        * m_pLocalAvatar;
+	QCheckBox * m_pUseAvatarCheck;
+	QLineEdit * m_pAvatarNameEdit;
+	QPushButton * m_pChooseAvatarButton;
+	KviPixmap * m_pLocalAvatar;
 	KviPixmapPreview * m_pAvatarPreview;
 protected slots:
 	void chooseAvatar();
+
 protected:
 	virtual void commit();
 };
-
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityAdvanced KviIconManager::Gui
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityAdvanced __tr2qs_no_lookup("Advanced")
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_identityAdvanced 70000
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_identityAdvanced OptionsWidget_identity
-
 
 class OptionsWidget_identityAdvanced : public KviOptionsWidget
 {
@@ -204,18 +201,19 @@ class OptionsWidget_identityAdvanced : public KviOptionsWidget
 public:
 	OptionsWidget_identityAdvanced(QWidget * pParent);
 	~OptionsWidget_identityAdvanced();
+
 protected:
-	bool               m_bI;
-	bool               m_bW;
-	bool               m_bS;
-	KviCString             m_sModeStr;
-	KviBoolSelector  * m_pISelector;
-	KviBoolSelector  * m_pWSelector;
-	KviBoolSelector  * m_pSSelector;
+	bool m_bI;
+	bool m_bW;
+	bool m_bS;
+	KviCString m_sModeStr;
+	KviBoolSelector * m_pISelector;
+	KviBoolSelector * m_pWSelector;
+	KviBoolSelector * m_pSSelector;
+
 protected:
 	virtual void commit();
 };
-
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_identityProfile KviIconManager::UserWindow
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_identityProfile __tr2qs_no_lookup("Profiles")
@@ -228,14 +226,16 @@ class OptionsWidget_identityProfile : public KviOptionsWidget
 public:
 	OptionsWidget_identityProfile(QWidget * pParent);
 	~OptionsWidget_identityProfile();
+
 protected:
-	QTreeWidget              * m_pTreeWidget;
-	QCheckBox                * m_pProfilesCheck;
-	QPushButton              * m_pBtnAddProfile;
-	QPushButton              * m_pBtnEditProfile;
-	QPushButton              * m_pBtnDelProfile;
+	QTreeWidget * m_pTreeWidget;
+	QCheckBox * m_pProfilesCheck;
+	QPushButton * m_pBtnAddProfile;
+	QPushButton * m_pBtnEditProfile;
+	QPushButton * m_pBtnDelProfile;
 	IdentityProfileEditor * m_pEditor;
-	int                        m_iCurrentEditedProfile;
+	int m_iCurrentEditedProfile;
+
 public:
 	virtual void commit();
 protected slots:

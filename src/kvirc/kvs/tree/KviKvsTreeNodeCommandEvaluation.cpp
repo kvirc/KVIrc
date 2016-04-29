@@ -27,8 +27,8 @@
 #include "KviKvsRunTimeContext.h"
 #include "KviKvsVariant.h"
 
-KviKvsTreeNodeCommandEvaluation::KviKvsTreeNodeCommandEvaluation(const QChar * pLocation,KviKvsTreeNodeInstruction * pInstruction)
-: KviKvsTreeNodeData(pLocation)
+KviKvsTreeNodeCommandEvaluation::KviKvsTreeNodeCommandEvaluation(const QChar * pLocation, KviKvsTreeNodeInstruction * pInstruction)
+    : KviKvsTreeNodeData(pLocation)
 {
 	m_pInstruction = pInstruction;
 	m_pInstruction->setParent(this);
@@ -39,7 +39,7 @@ KviKvsTreeNodeCommandEvaluation::~KviKvsTreeNodeCommandEvaluation()
 	delete m_pInstruction;
 }
 
-bool KviKvsTreeNodeCommandEvaluation::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeCommandEvaluation::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	KviKvsVariant * pTmp = c->swapReturnValuePointer(pBuffer);
 	bool bRet = m_pInstruction->execute(c);

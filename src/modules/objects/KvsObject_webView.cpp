@@ -47,22 +47,22 @@
 #include <QToolTip>
 
 static int g_iDownloadId = 1;
-KviKvsDownloadHandler::KviKvsDownloadHandler(KvsObject_webView * pParent,QFile *pFile,QNetworkReply *pNetReply,int iId)
-:QObject(pParent)
+KviKvsDownloadHandler::KviKvsDownloadHandler(KvsObject_webView * pParent, QFile * pFile, QNetworkReply * pNetReply, int iId)
+    : QObject(pParent)
 {
 
 	m_Id = iId;
 	m_pParentScript = pParent;
 	m_pReply = pNetReply;
 	m_pFile = pFile;
-	connect(m_pReply,SIGNAL(finished()),this,SLOT(slotReplyFinished()));
-	connect(m_pReply,SIGNAL(readyRead()),this,SLOT(slotReadyRead()));
+	connect(m_pReply, SIGNAL(finished()), this, SLOT(slotReplyFinished()));
+	connect(m_pReply, SIGNAL(readyRead()), this, SLOT(slotReadyRead()));
 }
 
 void KviKvsDownloadHandler::slotReplyFinished()
 {
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)m_Id));
-	m_pParentScript->callFunction(m_pParentScript,"downloadCompletedEvent",&params);
+	m_pParentScript->callFunction(m_pParentScript, "downloadCompletedEvent", &params);
 	m_pFile->close();
 	delete m_pFile;
 	m_pFile = 0;
@@ -96,9 +96,9 @@ void KviKvsDownloadHandler::slotReadyRead()
 	}
 
 	QByteArray bytes = m_pReply->readAll();
-	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)bytes.count()),\
-		new KviKvsVariant((kvs_int_t)m_Id),new KviKvsVariant((kvs_int_t)iSize));
-	m_pParentScript->callFunction(m_pParentScript,"downloadProgressEvent",&params);
+	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)bytes.count()),
+	    new KviKvsVariant((kvs_int_t)m_Id), new KviKvsVariant((kvs_int_t)iSize));
+	m_pParentScript->callFunction(m_pParentScript, "downloadProgressEvent", &params);
 	m_pFile->write(bytes);
 }
 
@@ -116,8 +116,7 @@ const QWebSettings::WebAttribute webattributes_cod[] = {
 	QWebSettings::PluginsEnabled,
 	QWebSettings::JavascriptCanOpenWindows,
 	QWebSettings::JavascriptCanAccessClipboard,
-	QWebSettings::ZoomTextOnly
-	,
+	QWebSettings::ZoomTextOnly,
 	QWebSettings::LocalContentCanAccessFileUrls
 };
 
@@ -125,13 +124,15 @@ const char * const findflag_tbl[] = {
 	"FindBackward",
 	"FindCaseSensitively",
 	"FindWrapsAroundDocument",
-	"HighlightAllOccurrences"};
+	"HighlightAllOccurrences"
+};
 
 const QWebPage::FindFlag findflag_cod[] = {
 	QWebPage::FindBackward,
 	QWebPage::FindCaseSensitively,
 	QWebPage::FindWrapsAroundDocument,
-	QWebPage::HighlightAllOccurrences};
+	QWebPage::HighlightAllOccurrences
+};
 
 const QWebPage::WebAction actions_cod[] = {
 	QWebPage::OpenLink,
@@ -148,7 +149,8 @@ const QWebPage::WebAction actions_cod[] = {
 	QWebPage::Copy,
 	QWebPage::Paste,
 	QWebPage::InspectElement,
-	QWebPage::SelectAll};
+	QWebPage::SelectAll
+};
 
 const char * const actions_tbl[] = {
 	"OpenLink",
@@ -165,7 +167,8 @@ const char * const actions_tbl[] = {
 	"Copy",
 	"Paste",
 	"InspectElement",
-	"SelectAll"};
+	"SelectAll"
+};
 
 #define webattributes_num (sizeof(webattributes_tbl) / sizeof(webattributes_tbl[0]))
 #define findflag_num (sizeof(findflag_tbl) / sizeof(findflag_tbl[0]))
@@ -305,114 +308,113 @@ const char * const actions_tbl[] = {
 		This signal is emitted by the default implementation of [classfnc:webview]downloadCompletedEvent[/classfnc]().
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_webView,"webview","widget")
+KVSO_BEGIN_REGISTERCLASS(KvsObject_webView, "webview", "widget")
 
-	// page related
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,load)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setHtml)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,frames)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,makePreview)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,appendWebViewActionToMenu)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setLinkDelegationPolicy)
+// page related
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, load)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, setHtml)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, frames)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, makePreview)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, appendWebViewActionToMenu)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, setLinkDelegationPolicy)
 
-	// navigationn through the dom's tree
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,firstChild)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,lastChild)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,appendInside)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,appendOutside)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,parentElement)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,nextSibling)
+// navigationn through the dom's tree
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, firstChild)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, lastChild)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, appendInside)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, appendOutside)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, parentElement)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, nextSibling)
 
-	// find dom's elements
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,findAll)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,findFirst)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,findText)
+// find dom's elements
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, findAll)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, findFirst)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, findText)
 
-	// element info
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,elementTagName)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,getDocumentElement)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,elementAttributeNames)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setElementAttribute)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,elementAttribute)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,hitTestContent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,toPlainText)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setPlainText)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,removeFromDocument)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,removeClass)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,addClass)
+// element info
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, elementTagName)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, getDocumentElement)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, elementAttributeNames)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, setElementAttribute)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, elementAttribute)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, hitTestContent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, toPlainText)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, setPlainText)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, removeFromDocument)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, removeClass)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, addClass)
 
-	// css
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setStyleProperty)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,styleProperty)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setWebSetting)
+// css
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, setStyleProperty)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, styleProperty)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, setWebSetting)
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,classes)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, classes)
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,setEventFilter)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, setEventFilter)
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,addToJavaScriptWindowObject)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,evaluateJavaScript)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, addToJavaScriptWindowObject)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, evaluateJavaScript)
 
-	// events
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,jsChangeEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,jsSubmitEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,jsClickEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,jsMouseOverEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,jsMouseOutEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,linkClickedEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadFinishedEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadProgressEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,loadStartedEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,downloadCompletedEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,downloadRequestEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView,downloadProgressEvent)
+// events
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, jsChangeEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, jsSubmitEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, jsClickEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, jsMouseOverEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, jsMouseOutEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, linkClickedEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, loadFinishedEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, loadProgressEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, loadStartedEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, downloadCompletedEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, downloadRequestEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_webView, downloadProgressEvent)
 
 KVSO_END_REGISTERCLASS(KvsObject_webView)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_webView,KviKvsObject)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_webView, KviKvsObject)
 
 KVSO_END_CONSTRUCTOR(KvsObject_webView)
 
-
 KVSO_BEGIN_DESTRUCTOR(KvsObject_webView)
-
 
 m_elementMapper.clear();
 KVSO_END_CONSTRUCTOR(KvsObject_webView)
 
-bool KvsObject_webView::init(KviKvsRunTimeContext *c ,KviKvsVariantList *)
+bool KvsObject_webView::init(KviKvsRunTimeContext * c, KviKvsVariantList *)
 {
 	//SET_OBJECT(KviKvsWebview);
-	setObject(new KviKvsWebView(parentScriptWidget(), getName().toUtf8().data(),this), true);
-	elementMapId=1;
+	setObject(new KviKvsWebView(parentScriptWidget(), getName().toUtf8().data(), this), true);
+	elementMapId = 1;
 	m_pContext = c;
 	m_pNetworkManager = new QNetworkAccessManager(this);
-	QWebPage *pPage = ((QWebView *)widget())->page();
-	connect(((QWebView *)widget()),SIGNAL(loadStarted()),this,SLOT(slotLoadStarted()));
-	connect(((QWebView *)widget()),SIGNAL(loadFinished(bool)),this,SLOT(slotLoadFinished(bool)));
-	connect(((QWebView *)widget()),SIGNAL(loadProgress(int)),this,SLOT(slotLoadProgress(int)));
-	connect(pPage,SIGNAL(linkClicked(const QUrl &)),this,SLOT(slotLinkClicked(const QUrl &)));
-	connect(pPage,SIGNAL(downloadRequested(const QNetworkRequest &)),this,SLOT(slotDownloadRequest(const QNetworkRequest &)));
+	QWebPage * pPage = ((QWebView *)widget())->page();
+	connect(((QWebView *)widget()), SIGNAL(loadStarted()), this, SLOT(slotLoadStarted()));
+	connect(((QWebView *)widget()), SIGNAL(loadFinished(bool)), this, SLOT(slotLoadFinished(bool)));
+	connect(((QWebView *)widget()), SIGNAL(loadProgress(int)), this, SLOT(slotLoadProgress(int)));
+	connect(pPage, SIGNAL(linkClicked(const QUrl &)), this, SLOT(slotLinkClicked(const QUrl &)));
+	connect(pPage, SIGNAL(downloadRequested(const QNetworkRequest &)), this, SLOT(slotDownloadRequest(const QNetworkRequest &)));
 	return true;
 }
-int KvsObject_webView::insertElement(const QWebElement &ele)
+int KvsObject_webView::insertElement(const QWebElement & ele)
 {
-	int eleid=getElementId(ele);
-	if (!eleid)
+	int eleid = getElementId(ele);
+	if(!eleid)
 	{
-		m_elementMapper[elementMapId]=ele;
+		m_elementMapper[elementMapId] = ele;
 		return elementMapId++;
 	}
-	else return eleid;
+	else
+		return eleid;
 }
-int KvsObject_webView::getElementId(const QWebElement &ele)
+int KvsObject_webView::getElementId(const QWebElement & ele)
 {
-	QHashIterator<int,QWebElement> it(m_elementMapper);
-	while (it.hasNext())
+	QHashIterator<int, QWebElement> it(m_elementMapper);
+	while(it.hasNext())
 	{
-	     it.next();
-	     if(it.value()==ele)
-		     return it.key();
+		it.next();
+		if(it.value() == ele)
+			return it.key();
 	}
 	return 0;
 }
@@ -421,80 +423,82 @@ QWebElement KvsObject_webView::getElement(int iIdx)
 {
 	return m_elementMapper.value(iIdx);
 }
-void KvsObject_webView::getFrames(QWebFrame *pCurFrame, QStringList &szFramesNames)
+void KvsObject_webView::getFrames(QWebFrame * pCurFrame, QStringList & szFramesNames)
 {
 	szFramesNames.append(pCurFrame->title());
 	QList<QWebFrame *> lFrames = pCurFrame->childFrames();
-	for(int i=0; i < lFrames.count(); i++)
+	for(int i = 0; i < lFrames.count(); i++)
 	{
-		QWebFrame *pChildFrame = lFrames.at(i);
+		QWebFrame * pChildFrame = lFrames.at(i);
 		if(pChildFrame->childFrames().count())
-			getFrames(pChildFrame,szFramesNames);
+			getFrames(pChildFrame, szFramesNames);
 	}
 }
-QWebFrame * KvsObject_webView::findFrame(QWebFrame *pCurFrame, QString &szFrameName)
+QWebFrame * KvsObject_webView::findFrame(QWebFrame * pCurFrame, QString & szFrameName)
 {
-	if(pCurFrame->title()==szFrameName) return pCurFrame;
+	if(pCurFrame->title() == szFrameName)
+		return pCurFrame;
 	QList<QWebFrame *> lFrames = pCurFrame->childFrames();
-	for(int i=0; i < lFrames.count(); i++)
+	for(int i = 0; i < lFrames.count(); i++)
 	{
-		QWebFrame *pChildFrame = lFrames.at(i);
+		QWebFrame * pChildFrame = lFrames.at(i);
 		if(pChildFrame->childFrames().count())
 		{
-			pCurFrame=findFrame(pChildFrame,szFrameName);
-			if(pCurFrame) return pCurFrame;
+			pCurFrame = findFrame(pChildFrame, szFrameName);
+			if(pCurFrame)
+				return pCurFrame;
 		}
 	}
 	return 0;
 }
 
-KVSO_CLASS_FUNCTION(webView,setLinkDelegationPolicy)
+KVSO_CLASS_FUNCTION(webView, setLinkDelegationPolicy)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szPolicy;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("policy",KVS_PT_STRING,0,szPolicy)
+	KVSO_PARAMETER("policy", KVS_PT_STRING, 0, szPolicy)
 	KVSO_PARAMETERS_END(c)
 	QWebPage::LinkDelegationPolicy policy = QWebPage::DontDelegateLinks;
-	if(KviQString::equalCI(szPolicy,"DontDelegateLinks"))
-		policy=QWebPage::DontDelegateLinks;
-	else if(KviQString::equalCI(szPolicy,"DelegateExternalLinks"))
-		policy=QWebPage::DelegateExternalLinks;
-	else if(KviQString::equalCI(szPolicy,"DelegateAllLinks"))
-		policy=QWebPage::DelegateAllLinks;
+	if(KviQString::equalCI(szPolicy, "DontDelegateLinks"))
+		policy = QWebPage::DontDelegateLinks;
+	else if(KviQString::equalCI(szPolicy, "DelegateExternalLinks"))
+		policy = QWebPage::DelegateExternalLinks;
+	else if(KviQString::equalCI(szPolicy, "DelegateAllLinks"))
+		policy = QWebPage::DelegateAllLinks;
 	else
-		c->warning(__tr2qs_ctx("Unknown delegation policy '%Q'- Switch do default dontDelegateLinks","objects"),&szPolicy);
+		c->warning(__tr2qs_ctx("Unknown delegation policy '%Q'- Switch do default dontDelegateLinks", "objects"), &szPolicy);
 	((QWebView *)widget())->page()->setLinkDelegationPolicy(policy);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,load)
+KVSO_CLASS_FUNCTION(webView, load)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szUrl;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("url",KVS_PT_STRING,0,szUrl)
+	KVSO_PARAMETER("url", KVS_PT_STRING, 0, szUrl)
 	KVSO_PARAMETERS_END(c)
 	((QWebView *)widget())->load(QUrl(szUrl));
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,setHtml)
+KVSO_CLASS_FUNCTION(webView, setHtml)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szHtml, szUrlBase;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("szHtml",KVS_PT_STRING,0,szHtml)
-		KVSO_PARAMETER("urlbase",KVS_PT_STRING,KVS_PF_OPTIONAL,szUrlBase)
+	KVSO_PARAMETER("szHtml", KVS_PT_STRING, 0, szHtml)
+	KVSO_PARAMETER("urlbase", KVS_PT_STRING, KVS_PF_OPTIONAL, szUrlBase)
 	KVSO_PARAMETERS_END(c)
-	((QWebView *)widget())->setHtml(szHtml,QUrl(szUrlBase));
+	((QWebView *)widget())->setHtml(szHtml, QUrl(szUrlBase));
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,makePreview)
+KVSO_CLASS_FUNCTION(webView, makePreview)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QSize size=((QWebView *)widget())->page()->mainFrame()->contentsSize();
-	QImage *pImage=new QImage(212,142, QImage::Format_RGB32);
-	QWebFrame  *pFrame=((QWebView *)widget())->page()->mainFrame();
+	QSize size = ((QWebView *)widget())->page()->mainFrame()->contentsSize();
+	QImage * pImage = new QImage(212, 142, QImage::Format_RGB32);
+	QWebFrame * pFrame = ((QWebView *)widget())->page()->mainFrame();
 	QPainter painter(pImage);
 	painter.setRenderHint(QPainter::Antialiasing, true);
 	painter.setRenderHint(QPainter::TextAntialiasing, true);
@@ -504,114 +508,116 @@ KVSO_CLASS_FUNCTION(webView,makePreview)
 	if((size.height() * dWScale) < 142)
 	{
 		// solution 1 is to fill the missing bacgkround
-		painter.fillRect(0,0,212,142,QColor(255,255,255));
+		painter.fillRect(0, 0, 212, 142, QColor(255, 255, 255));
 		// solution 2 is to stretch the contents, but this doesn't work well because
 		// the frame reports a size that doesn't exactly match the document
 		//dHScale = 142.0 / (double)(size.height());
 	}
-	painter.scale(dWScale,dHScale);
+	painter.scale(dWScale, dHScale);
 	pFrame->documentElement().render(&painter);
 	painter.end();
 	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("pixmap");
 	KviKvsVariantList params;
-	KviKvsObject * pObject = pClass->allocateInstance(0,"internalpixmap",c->context(),&params);
+	KviKvsObject * pObject = pClass->allocateInstance(0, "internalpixmap", c->context(), &params);
 	((KvsObject_pixmap *)pObject)->setInternalImage(pImage);
 	c->returnValue()->setHObject(pObject->handle());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,findAll)
+KVSO_CLASS_FUNCTION(webView, findAll)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szQuery;
-	KviKvsArray *pArray;
+	KviKvsArray * pArray;
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
-		KVSO_PARAMETER("query",KVS_PT_STRING,0,szQuery)
+	KVSO_PARAMETER("element_identifier", KVS_PT_INTEGER, 0, iEleId)
+	KVSO_PARAMETER("query", KVS_PT_STRING, 0, szQuery)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
-	QWebElementCollection elementCollection=element.findAll(szQuery);
-	if(!elementCollection.count()) return true;
+	QWebElementCollection elementCollection = element.findAll(szQuery);
+	if(!elementCollection.count())
+		return true;
 	//qDebug("collection %i",elementCollection.count());
-	int idx=0;
-	pArray=new KviKvsArray();
-	for(int i=0;i<elementCollection.count();i++)
+	int idx = 0;
+	pArray = new KviKvsArray();
+	for(int i = 0; i < elementCollection.count(); i++)
 	{
-		QWebElement element=elementCollection.at(i);
-		int id=insertElement(element);
-		pArray->set(idx,new KviKvsVariant((kvs_int_t)id));
+		QWebElement element = elementCollection.at(i);
+		int id = insertElement(element);
+		pArray->set(idx, new KviKvsVariant((kvs_int_t)id));
 		idx++;
 	}
 	c->returnValue()->setArray(pArray);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,evaluateJavaScript)
+KVSO_CLASS_FUNCTION(webView, evaluateJavaScript)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szScript;
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
-		KVSO_PARAMETER("script_code",KVS_PT_STRING,0,szScript)
+	KVSO_PARAMETER("element_identifier", KVS_PT_INTEGER, 0, iEleId)
+	KVSO_PARAMETER("script_code", KVS_PT_STRING, 0, szScript)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first","objects"));
+		c->warning(__tr2qs_ctx("Document element is null: you must call getDocumentElement first", "objects"));
 		return true;
 	}
-	QVariant vRes=element.evaluateJavaScript(szScript);
-	if(vRes.type()==QVariant::String)
+	QVariant vRes = element.evaluateJavaScript(szScript);
+	if(vRes.type() == QVariant::String)
 	{
-		QString szVal=vRes.toString();
+		QString szVal = vRes.toString();
 		c->returnValue()->setString(szVal);
 	}
-	else c->warning(__tr2qs_ctx("Unsupported datatype","objects"));
+	else
+		c->warning(__tr2qs_ctx("Unsupported datatype", "objects"));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,findFirst)
+KVSO_CLASS_FUNCTION(webView, findFirst)
 {
 	QString szQuery;
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
-		KVSO_PARAMETER("query",KVS_PT_STRING,0,szQuery)
+	KVSO_PARAMETER("element_identifier", KVS_PT_INTEGER, 0, iEleId)
+	KVSO_PARAMETER("query", KVS_PT_STRING, 0, szQuery)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
-	QWebElement tempElement=element.findFirst(szQuery);
-	if (tempElement.isNull())
+	QWebElement tempElement = element.findFirst(szQuery);
+	if(tempElement.isNull())
 	{
 		c->returnValue()->setInteger(-1);
 		return true;
 	}
-	int id=insertElement(tempElement);
-	c->returnValue()->setInteger((kvs_int_t) id);
+	int id = insertElement(tempElement);
+	c->returnValue()->setInteger((kvs_int_t)id);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,removeFromDocument)
+KVSO_CLASS_FUNCTION(webView, removeFromDocument)
 {
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETER("element_identifier", KVS_PT_INTEGER, 0, iEleId)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
 	element.removeFromDocument();
@@ -635,227 +641,225 @@ KVSO_CLASS_FUNCTION(webView,removeFromDocument)
 	return true;
 }
 */
-KVSO_CLASS_FUNCTION(webView,appendInside)
+KVSO_CLASS_FUNCTION(webView, appendInside)
 {
 	kvs_int_t iEleId;
 	QString szCode;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
-		KVSO_PARAMETER("name",KVS_PT_NONEMPTYSTRING,0,szCode)
+	KVSO_PARAMETER("element_identifier", KVS_PT_INTEGER, 0, iEleId)
+	KVSO_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szCode)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
 	element.appendInside(szCode);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,appendOutside)
+KVSO_CLASS_FUNCTION(webView, appendOutside)
 {
 	kvs_int_t iEleId;
 	QString szCode;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
-		KVSO_PARAMETER("name",KVS_PT_NONEMPTYSTRING,0,szCode)
+	KVSO_PARAMETER("element_identifier", KVS_PT_INTEGER, 0, iEleId)
+	KVSO_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szCode)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
 	element.appendOutside(szCode);
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,nextSibling)
+KVSO_CLASS_FUNCTION(webView, nextSibling)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETER("element_identifier", KVS_PT_INTEGER, 0, iEleId)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
-	QWebElement tempElement=element.nextSibling();
-	if (tempElement.isNull())
+	QWebElement tempElement = element.nextSibling();
+	if(tempElement.isNull())
 	{
 		c->returnValue()->setInteger(-1);
 		return true;
 	}
-	int id=insertElement(tempElement);
-	c->returnValue()->setInteger((kvs_int_t) id);
+	int id = insertElement(tempElement);
+	c->returnValue()->setInteger((kvs_int_t)id);
 	return true;
 }
 
-
-KVSO_CLASS_FUNCTION(webView,frames)
+KVSO_CLASS_FUNCTION(webView, frames)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QWebFrame *pFrame=((QWebView *)widget())->page()->mainFrame();
+	QWebFrame * pFrame = ((QWebView *)widget())->page()->mainFrame();
 	QStringList szFramesNames;
-	getFrames(pFrame,szFramesNames);
-	KviKvsArray *pArray=new KviKvsArray();
+	getFrames(pFrame, szFramesNames);
+	KviKvsArray * pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,elementTagName)
+KVSO_CLASS_FUNCTION(webView, elementTagName)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETER("element_identifier", KVS_PT_INTEGER, 0, iEleId)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-	//	qDebug("isnull ad index %i",iEleId);
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		//	qDebug("isnull ad index %i",iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
 	c->returnValue()->setString(element.tagName());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,setElementAttribute)
+KVSO_CLASS_FUNCTION(webView, setElementAttribute)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szName,szValue;
+	QString szName, szValue;
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
-		KVSO_PARAMETER("name",KVS_PT_NONEMPTYSTRING,0,szName)
-		KVSO_PARAMETER("value",KVS_PT_STRING,0,szValue)
+	KVSO_PARAMETER("element_identifier", KVS_PT_INTEGER, 0, iEleId)
+	KVSO_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+	KVSO_PARAMETER("value", KVS_PT_STRING, 0, szValue)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
-	element.setAttribute(szName,szValue);
+	element.setAttribute(szName, szValue);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,removeClass)
+KVSO_CLASS_FUNCTION(webView, removeClass)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szClassName;
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
-		KVSO_PARAMETER("class_name",KVS_PT_NONEMPTYSTRING,0,szClassName)
+	KVSO_PARAMETER("element_identifier", KVS_PT_INTEGER, 0, iEleId)
+	KVSO_PARAMETER("class_name", KVS_PT_NONEMPTYSTRING, 0, szClassName)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
 	element.removeClass(szClassName);
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,addClass)
+KVSO_CLASS_FUNCTION(webView, addClass)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szClassName;
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
-		KVSO_PARAMETER("class_name",KVS_PT_NONEMPTYSTRING,0,szClassName)
+	KVSO_PARAMETER("element_identifier", KVS_PT_INTEGER, 0, iEleId)
+	KVSO_PARAMETER("class_name", KVS_PT_NONEMPTYSTRING, 0, szClassName)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
 	element.addClass(szClassName);
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,setWebSetting)
+KVSO_CLASS_FUNCTION(webView, setWebSetting)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szName;
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("name",KVS_PT_NONEMPTYSTRING,0,szName)
-		KVSO_PARAMETER("value",KVS_PT_BOOLEAN,0,bEnabled)
+	KVSO_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+	KVSO_PARAMETER("value", KVS_PT_BOOLEAN, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
-	bool found=false;
+	bool found = false;
 	unsigned int j = 0;
 	for(; j < webattributes_num; j++)
 	{
-		if(KviQString::equalCI(szName,webattributes_tbl[j]))
+		if(KviQString::equalCI(szName, webattributes_tbl[j]))
 		{
-			found=true;
+			found = true;
 			break;
 		}
 	}
-	if (found)
-		((QWebView *)widget())->settings()->setAttribute(webattributes_cod[j],bEnabled);
+	if(found)
+		((QWebView *)widget())->settings()->setAttribute(webattributes_cod[j], bEnabled);
 	else
-		c->warning(__tr2qs_ctx("Unknown web setting '%Q'","objects"),&szName);
+		c->warning(__tr2qs_ctx("Unknown web setting '%Q'", "objects"), &szName);
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,findText)
+KVSO_CLASS_FUNCTION(webView, findText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szName;
 	QStringList szFindFlag;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("find_text",KVS_PT_NONEMPTYSTRING,0,szName)
-		KVSO_PARAMETER("find_flag",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,szFindFlag)
+	KVSO_PARAMETER("find_text", KVS_PT_NONEMPTYSTRING, 0, szName)
+	KVSO_PARAMETER("find_flag", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, szFindFlag)
 	KVSO_PARAMETERS_END(c)
-	int findflag=0;
-	int sum=0;
-	for ( QStringList::Iterator it = szFindFlag.begin(); it != szFindFlag.end(); ++it )
+	int findflag = 0;
+	int sum = 0;
+	for(QStringList::Iterator it = szFindFlag.begin(); it != szFindFlag.end(); ++it)
 	{
 		findflag = 0;
 		for(unsigned int j = 0; j < findflag_num; j++)
 		{
 			if(KviQString::equalCI((*it), findflag_tbl[j]))
 			{
-				findflag=findflag_cod[j];
+				findflag = findflag_cod[j];
 				break;
 			}
 		}
 		if(findflag)
 			sum = sum | findflag;
 		else
-			c->warning(__tr2qs_ctx("Unknown findflag  '%Q'","objects"),&(*it));
-
+			c->warning(__tr2qs_ctx("Unknown findflag  '%Q'", "objects"), &(*it));
 	}
-	((QWebView *)widget())->findText(szName,(QWebPage::FindFlags)findflag);
+	((QWebView *)widget())->findText(szName, (QWebPage::FindFlags)findflag);
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,elementAttribute)
+KVSO_CLASS_FUNCTION(webView, elementAttribute)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szName;
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
-		KVSO_PARAMETER("name",KVS_PT_NONEMPTYSTRING,0,szName)
+	KVSO_PARAMETER("element_identifier", KVS_PT_INTEGER, 0, iEleId)
+	KVSO_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
 
 	// workaround for this issue: https://bugreports.qt.nokia.com//browse/QTWEBKIT-88
-	if(KviQString::equalCI(element.tagName(),"input"))
+	if(KviQString::equalCI(element.tagName(), "input"))
 	{
-		QVariant value=element.evaluateJavaScript("this."+szName);
+		QVariant value = element.evaluateJavaScript("this." + szName);
 		c->returnValue()->setString(value.toString());
 		return true;
 	}
@@ -863,405 +867,407 @@ KVSO_CLASS_FUNCTION(webView,elementAttribute)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,elementAttributeNames)
+KVSO_CLASS_FUNCTION(webView, elementAttributeNames)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETER("identifier", KVS_PT_INTEGER, 0, iEleId)
 	KVSO_PARAMETERS_END(c)
 	QString szAttributeNames;
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
-	szAttributeNames=element.attributeNames().join(",");
+	szAttributeNames = element.attributeNames().join(",");
 	c->returnValue()->setString(szAttributeNames);
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,classes)
+KVSO_CLASS_FUNCTION(webView, classes)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETER("identifier", KVS_PT_INTEGER, 0, iEleId)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
 	QString szClasses;
-	szClasses=element.classes().join(",");
+	szClasses = element.classes().join(",");
 	c->returnValue()->setString(szClasses);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,toPlainText)
+KVSO_CLASS_FUNCTION(webView, toPlainText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETER("identifier", KVS_PT_INTEGER, 0, iEleId)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
 	c->returnValue()->setString(element.toPlainText());
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,setPlainText)
+KVSO_CLASS_FUNCTION(webView, setPlainText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szText;
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
-		KVSO_PARAMETER("plaintext",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETER("identifier", KVS_PT_INTEGER, 0, iEleId)
+	KVSO_PARAMETER("plaintext", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
 	element.setPlainText(szText);
 	return true;
 }
 
-
-KVSO_CLASS_FUNCTION(webView,firstChild)
+KVSO_CLASS_FUNCTION(webView, firstChild)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETER("identifier", KVS_PT_INTEGER, 0, iEleId)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
 
-	QWebElement tempElement=element.firstChild();
-	if (tempElement.isNull())
+	QWebElement tempElement = element.firstChild();
+	if(tempElement.isNull())
 	{
 		c->returnValue()->setInteger(-1);
 		return true;
 	}
-	int id=insertElement(tempElement);
-	c->returnValue()->setInteger((kvs_int_t) id);
+	int id = insertElement(tempElement);
+	c->returnValue()->setInteger((kvs_int_t)id);
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,lastChild)
+KVSO_CLASS_FUNCTION(webView, lastChild)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETER("identifier", KVS_PT_INTEGER, 0, iEleId)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
 
-	QWebElement tempElement=element.lastChild();
-	if (tempElement.isNull())
+	QWebElement tempElement = element.lastChild();
+	if(tempElement.isNull())
 	{
 		c->returnValue()->setInteger(-1);
 		return true;
 	}
-	int id=insertElement(tempElement);
-	c->returnValue()->setInteger((kvs_int_t) id);
+	int id = insertElement(tempElement);
+	c->returnValue()->setInteger((kvs_int_t)id);
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,parentElement)
+KVSO_CLASS_FUNCTION(webView, parentElement)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
+	KVSO_PARAMETER("identifier", KVS_PT_INTEGER, 0, iEleId)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
 
-	QWebElement tempElement=element.parent();
-	if (tempElement.isNull())
+	QWebElement tempElement = element.parent();
+	if(tempElement.isNull())
 	{
 		c->returnValue()->setInteger(-1);
 		return true;
 	}
-	int id=insertElement(tempElement);
-	c->returnValue()->setInteger((kvs_int_t) id);
+	int id = insertElement(tempElement);
+	c->returnValue()->setInteger((kvs_int_t)id);
 	return true;
 }
 
-
-KVSO_CLASS_FUNCTION(webView,styleProperty)
+KVSO_CLASS_FUNCTION(webView, styleProperty)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szName,szStyleResolveStrategy;
+	QString szName, szStyleResolveStrategy;
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
-		KVSO_PARAMETER("name",KVS_PT_NONEMPTYSTRING,0,szName)
-		KVSO_PARAMETER("style_resolve_strategy",KVS_PT_STRING,KVS_PF_OPTIONAL,szStyleResolveStrategy)
+	KVSO_PARAMETER("identifier", KVS_PT_INTEGER, 0, iEleId)
+	KVSO_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+	KVSO_PARAMETER("style_resolve_strategy", KVS_PT_STRING, KVS_PF_OPTIONAL, szStyleResolveStrategy)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
-	QWebElement::StyleResolveStrategy styleStrategy=QWebElement::CascadedStyle;
+	QWebElement::StyleResolveStrategy styleStrategy = QWebElement::CascadedStyle;
 	if(!szStyleResolveStrategy.isEmpty())
 	{
-		if(KviQString::equalCI(szStyleResolveStrategy, "InlineStyle")) styleStrategy=QWebElement::InlineStyle;
-		else if(KviQString::equalCI(szStyleResolveStrategy, "CascadedStyle")) styleStrategy=QWebElement::CascadedStyle;
-		else if(KviQString::equalCI(szStyleResolveStrategy, "ComputedStyle")) styleStrategy=QWebElement::ComputedStyle;
+		if(KviQString::equalCI(szStyleResolveStrategy, "InlineStyle"))
+			styleStrategy = QWebElement::InlineStyle;
+		else if(KviQString::equalCI(szStyleResolveStrategy, "CascadedStyle"))
+			styleStrategy = QWebElement::CascadedStyle;
+		else if(KviQString::equalCI(szStyleResolveStrategy, "ComputedStyle"))
+			styleStrategy = QWebElement::ComputedStyle;
 		else
 		{
-			c->warning(__tr2qs_ctx("Unknown styleResolveStrategy: '%Q' - Switching to default CascadedStyle strategy","objects"),&szStyleResolveStrategy);
+			c->warning(__tr2qs_ctx("Unknown styleResolveStrategy: '%Q' - Switching to default CascadedStyle strategy", "objects"), &szStyleResolveStrategy);
 		}
 	}
 	c->returnValue()->setString(element.styleProperty(szName, styleStrategy));
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,setStyleProperty)
+KVSO_CLASS_FUNCTION(webView, setStyleProperty)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szProperty,szValue;
+	QString szProperty, szValue;
 	kvs_int_t iEleId;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("identifier",KVS_PT_INTEGER,0,iEleId)
-		KVSO_PARAMETER("property",KVS_PT_STRING,0,szProperty)
-		KVSO_PARAMETER("value",KVS_PT_STRING,0,szValue)
+	KVSO_PARAMETER("identifier", KVS_PT_INTEGER, 0, iEleId)
+	KVSO_PARAMETER("property", KVS_PT_STRING, 0, szProperty)
+	KVSO_PARAMETER("value", KVS_PT_STRING, 0, szValue)
 	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
+	QWebElement element = getElement(iEleId);
+	if(element.isNull())
 	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
+		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist", "objects"), iEleId);
 		return true;
 	}
-	element.setStyleProperty(szProperty,szValue);
+	element.setStyleProperty(szProperty, szValue);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,getDocumentElement)
+KVSO_CLASS_FUNCTION(webView, getDocumentElement)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szFrameName;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("frame_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szFrameName)
+	KVSO_PARAMETER("frame_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szFrameName)
 	KVSO_PARAMETERS_END(c)
-	QWebFrame *pFrame;
-	pFrame=((QWebView *)widget())->page()->mainFrame();
+	QWebFrame * pFrame;
+	pFrame = ((QWebView *)widget())->page()->mainFrame();
 	if(!szFrameName.isEmpty())
 	{
-		pFrame=findFrame(pFrame,szFrameName);
+		pFrame = findFrame(pFrame, szFrameName);
 		if(!pFrame)
 		{
-			c->warning(__tr2qs_ctx("Unknown frame '%Q'","objects"),&szFrameName);
+			c->warning(__tr2qs_ctx("Unknown frame '%Q'", "objects"), &szFrameName);
 			return true;
 		}
 	}
-	int id=insertElement(pFrame->documentElement());
-	c->returnValue()->setInteger((kvs_int_t) id);
+	int id = insertElement(pFrame->documentElement());
+	c->returnValue()->setInteger((kvs_int_t)id);
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,addToJavaScriptWindowObject)
+KVSO_CLASS_FUNCTION(webView, addToJavaScriptWindowObject)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szFrameName, szObjectName;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("object_name",KVS_PT_NONEMPTYSTRING,0,szObjectName)
-		KVSO_PARAMETER("frame_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szFrameName)
+	KVSO_PARAMETER("object_name", KVS_PT_NONEMPTYSTRING, 0, szObjectName)
+	KVSO_PARAMETER("frame_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szFrameName)
 	KVSO_PARAMETERS_END(c)
-	QWebFrame *pFrame;
-	pFrame=((QWebView *)widget())->page()->mainFrame();
+	QWebFrame * pFrame;
+	pFrame = ((QWebView *)widget())->page()->mainFrame();
 	if(!szFrameName.isEmpty())
 	{
-		pFrame=findFrame(pFrame,szFrameName);
+		pFrame = findFrame(pFrame, szFrameName);
 		if(!pFrame)
 		{
-			c->warning(__tr2qs_ctx("Unknown frame '%Q'","objects"),&szFrameName);
+			c->warning(__tr2qs_ctx("Unknown frame '%Q'", "objects"), &szFrameName);
 			return true;
 		}
 	}
-	pFrame->addToJavaScriptWindowObject(szObjectName,this);
+	pFrame->addToJavaScriptWindowObject(szObjectName, this);
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,setEventFilter)
+KVSO_CLASS_FUNCTION(webView, setEventFilter)
 {
 	Q_UNUSED(c);
-	QWebFrame *pFrame;
-	pFrame=((QWebView *)widget())->page()->mainFrame();
-	pFrame->addToJavaScriptWindowObject("kvs",this);
+	QWebFrame * pFrame;
+	pFrame = ((QWebView *)widget())->page()->mainFrame();
+	pFrame->addToJavaScriptWindowObject("kvs", this);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,hitTestContent)
+KVSO_CLASS_FUNCTION(webView, hitTestContent)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iYPos,iXPos;
+	kvs_int_t iYPos, iXPos;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("x_pos",KVS_PT_INT,0,iXPos)
-		KVSO_PARAMETER("y_pos",KVS_PT_INT,0,iYPos)
+	KVSO_PARAMETER("x_pos", KVS_PT_INT, 0, iXPos)
+	KVSO_PARAMETER("y_pos", KVS_PT_INT, 0, iYPos)
 	KVSO_PARAMETERS_END(c)
-	QWebFrame *pFrame;
-	pFrame=((QWebView *)widget())->page()->mainFrame();
-	QWebHitTestResult res=pFrame->hitTestContent(QPoint(iXPos,iYPos));
-	if(res.isNull()) return true;
-	KviKvsHash *pHash=new KviKvsHash();
-	pHash->set("imageurl",new KviKvsVariant(res.imageUrl().toString()));
-	pHash->set("linktitle",new KviKvsVariant(res.linkTitle().toString()));
-	pHash->set("linktext",new KviKvsVariant(res.linkText()));
-	pHash->set("linkelement",new KviKvsVariant((kvs_int_t)insertElement(res.linkElement())));
-	pHash->set("enclosingelement",new KviKvsVariant((kvs_int_t)insertElement(res.enclosingBlockElement())));
-	pHash->set("element",new KviKvsVariant((kvs_int_t)insertElement(res.element())));
+	QWebFrame * pFrame;
+	pFrame = ((QWebView *)widget())->page()->mainFrame();
+	QWebHitTestResult res = pFrame->hitTestContent(QPoint(iXPos, iYPos));
+	if(res.isNull())
+		return true;
+	KviKvsHash * pHash = new KviKvsHash();
+	pHash->set("imageurl", new KviKvsVariant(res.imageUrl().toString()));
+	pHash->set("linktitle", new KviKvsVariant(res.linkTitle().toString()));
+	pHash->set("linktext", new KviKvsVariant(res.linkText()));
+	pHash->set("linkelement", new KviKvsVariant((kvs_int_t)insertElement(res.linkElement())));
+	pHash->set("enclosingelement", new KviKvsVariant((kvs_int_t)insertElement(res.enclosingBlockElement())));
+	pHash->set("element", new KviKvsVariant((kvs_int_t)insertElement(res.element())));
 	c->returnValue()->setHash(pHash);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,appendWebViewActionToMenu)
+KVSO_CLASS_FUNCTION(webView, appendWebViewActionToMenu)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject *ob;
+	KviKvsObject * ob;
 	kvs_hobject_t hObject;
-	QString szActionName,szIcon;
+	QString szActionName, szIcon;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("popup",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("action_name",KVS_PT_NONEMPTYSTRING,0,szActionName)
-		KVSO_PARAMETER("icon",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
+	KVSO_PARAMETER("popup", KVS_PT_HOBJECT, 0, hObject)
+	KVSO_PARAMETER("action_name", KVS_PT_NONEMPTYSTRING, 0, szActionName)
+	KVSO_PARAMETER("icon", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
 	KVSO_PARAMETERS_END(c)
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!ob)
+	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	if(!ob)
 	{
-		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
+		c->warning(__tr2qs_ctx("Widget parameter is not an object", "objects"));
 		return true;
 	}
-	if (!ob->object())
+	if(!ob->object())
 	{
-		c->warning(__tr2qs_ctx("Widget parameter is not a valid object","objects"));
+		c->warning(__tr2qs_ctx("Widget parameter is not a valid object", "objects"));
 		return true;
 	}
 	if(!ob->inheritsClass("popupmenu"))
 	{
-		c->warning(__tr2qs_ctx("Can't add a non-popupmenu object","objects"));
+		c->warning(__tr2qs_ctx("Can't add a non-popupmenu object", "objects"));
 		return true;
 	}
-	QAction *pAction=0;
+	QAction * pAction = 0;
 	for(unsigned int i = 0; i < actions_num; i++)
 	{
 		if(KviQString::equalCI(szActionName, actions_tbl[i]))
 		{
-			pAction=((QWebView *)widget())->pageAction(actions_cod[i]);
+			pAction = ((QWebView *)widget())->pageAction(actions_cod[i]);
 			break;
 		}
 	}
 	if(!pAction)
 	{
-		c->warning(__tr2qs_ctx("Unknown action '%Q':","objects"),&szActionName);
+		c->warning(__tr2qs_ctx("Unknown action '%Q':", "objects"), &szActionName);
 		return true;
 	}
 	if(!szIcon.isEmpty())
 	{
-		QPixmap *pix;
+		QPixmap * pix;
 		pix = g_pIconManager->getImage(szIcon);
-		if (pix) pAction->setIcon(*pix);
-		else c->warning(__tr2qs_ctx("Icon '%Q' doesn't exist","objects"),&szIcon);
+		if(pix)
+			pAction->setIcon(*pix);
+		else
+			c->warning(__tr2qs_ctx("Icon '%Q' doesn't exist", "objects"), &szIcon);
 	}
-	((QMenu  *)(ob->object()))->addAction(pAction);
+	((QMenu *)(ob->object()))->addAction(pAction);
 	return true;
 }
 
-
-KVSO_CLASS_FUNCTION(webView,loadFinishedEvent)
+KVSO_CLASS_FUNCTION(webView, loadFinishedEvent)
 {
-	emitSignal("loadFinished",c,c->params());
+	emitSignal("loadFinished", c, c->params());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,loadProgressEvent)
+KVSO_CLASS_FUNCTION(webView, loadProgressEvent)
 {
-	emitSignal("loadProgress",c,c->params());
+	emitSignal("loadProgress", c, c->params());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,loadStartedEvent)
+KVSO_CLASS_FUNCTION(webView, loadStartedEvent)
 {
-	emitSignal("loadStarted",c);
+	emitSignal("loadStarted", c);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,downloadCompletedEvent)
+KVSO_CLASS_FUNCTION(webView, downloadCompletedEvent)
 {
-	emitSignal("downloadCompleted",c,c->params());
+	emitSignal("downloadCompleted", c, c->params());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,downloadProgressEvent)
+KVSO_CLASS_FUNCTION(webView, downloadProgressEvent)
 {
-	emitSignal("downloadProgress",c,c->params());
+	emitSignal("downloadProgress", c, c->params());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,linkClickedEvent)
+KVSO_CLASS_FUNCTION(webView, linkClickedEvent)
 {
-	emitSignal("linkClicked",c,c->params());
+	emitSignal("linkClicked", c, c->params());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(webView,downloadRequestEvent)
+KVSO_CLASS_FUNCTION(webView, downloadRequestEvent)
 {
-	emitSignal("downloadRequest",c,c->params());
+	emitSignal("downloadRequest", c, c->params());
 	return true;
 }
 
-
-KVSO_CLASS_FUNCTION(webView,jsSubmitEvent)
+KVSO_CLASS_FUNCTION(webView, jsSubmitEvent)
 {
-	emitSignal("jssubmit",c,c->params());
+	emitSignal("jssubmit", c, c->params());
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,jsChangeEvent)
+KVSO_CLASS_FUNCTION(webView, jsChangeEvent)
 {
-	emitSignal("jschange",c,c->params());
+	emitSignal("jschange", c, c->params());
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,jsClickEvent)
+KVSO_CLASS_FUNCTION(webView, jsClickEvent)
 {
-	emitSignal("jsclick",c,c->params());
+	emitSignal("jsclick", c, c->params());
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,jsMouseOverEvent)
+KVSO_CLASS_FUNCTION(webView, jsMouseOverEvent)
 {
-	emitSignal("jsmouseover",c,c->params());
+	emitSignal("jsmouseover", c, c->params());
 	return true;
 }
-KVSO_CLASS_FUNCTION(webView,jsMouseOutEvent)
+KVSO_CLASS_FUNCTION(webView, jsMouseOutEvent)
 {
-	emitSignal("jsmouseout",c,c->params());
+	emitSignal("jsmouseout", c, c->params());
 	return true;
 }
 void KvsObject_webView::slotOnChange(QString szParam)
 {
 	//qDebug("change");
 	KviKvsVariantList params(new KviKvsVariant(szParam));
-	callFunction(this,"jsChangeEvent",&params);
+	callFunction(this, "jsChangeEvent", &params);
 }
 
 void KvsObject_webView::slotOnSubmit(QString szParam)
@@ -1269,25 +1275,24 @@ void KvsObject_webView::slotOnSubmit(QString szParam)
 	// ,QString szParam2,QString szParam3
 	//qDebug("slotonsubmit");
 	KviKvsVariantList params(new KviKvsVariant(szParam));
-	callFunction(this,"jsSubmitEvent",&params);
+	callFunction(this, "jsSubmitEvent", &params);
 }
 
 void KvsObject_webView::slotOnClick(QString szParam)
 {
 	KviKvsVariantList params(new KviKvsVariant(szParam));
-	callFunction(this,"jsClickEvent",&params);
+	callFunction(this, "jsClickEvent", &params);
 }
 void KvsObject_webView::slotOnMouseOver(QString szParam)
 {
-    KviKvsVariantList params(new KviKvsVariant(szParam));
-    callFunction(this,"jsMouseOverEvent",&params);
+	KviKvsVariantList params(new KviKvsVariant(szParam));
+	callFunction(this, "jsMouseOverEvent", &params);
 }
 void KvsObject_webView::slotOnMouseOut(QString szParam)
 {
 	KviKvsVariantList params(new KviKvsVariant(szParam));
-	callFunction(this,"jsMouseOutEvent",&params);
+	callFunction(this, "jsMouseOutEvent", &params);
 }
-
 
 /*KVSO_CLASS_FUNCTION(webView,jsWindowObjectClearedEvent)
 {
@@ -1298,29 +1303,29 @@ void KvsObject_webView::slotOnMouseOut(QString szParam)
 
 void KvsObject_webView::slotLoadFinished(bool bOk)
 {
-	if (bOk)
-		m_currentElement=((QWebView *)widget())->page()->mainFrame()->documentElement();
+	if(bOk)
+		m_currentElement = ((QWebView *)widget())->page()->mainFrame()->documentElement();
 	KviKvsVariantList params(new KviKvsVariant(bOk));
-	callFunction(this,"loadFinishedEvent",&params);
+	callFunction(this, "loadFinishedEvent", &params);
 }
 
 void KvsObject_webView::slotLoadStarted()
 {
-	KviKvsVariantList *lParams=0;
-	callFunction(this,"loadStartedEvent",lParams);
+	KviKvsVariantList * lParams = 0;
+	callFunction(this, "loadStartedEvent", lParams);
 }
 
 void KvsObject_webView::slotLoadProgress(int iProgress)
 {
-	KviKvsVariantList params(new KviKvsVariant((kvs_int_t) iProgress));
-	callFunction(this,"loadProgressEvent" ,&params);
+	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)iProgress));
+	callFunction(this, "loadProgressEvent", &params);
 }
 
-void KvsObject_webView::slotLinkClicked(const QUrl &url)
+void KvsObject_webView::slotLinkClicked(const QUrl & url)
 {
-	QString szUrl=url.toString();
+	QString szUrl = url.toString();
 	KviKvsVariantList params(new KviKvsVariant(szUrl));
-	callFunction(this,"linkClickedEvent" ,&params);
+	callFunction(this, "linkClickedEvent", &params);
 }
 /*void KvsObject_webView::javaScriptWindowObjectCleared(const QUrl &url)
 {
@@ -1329,58 +1334,59 @@ void KvsObject_webView::slotLinkClicked(const QUrl &url)
 	addToJavaScriptWindowObject
 }*/
 
-void KvsObject_webView::slotDownloadRequest(const QNetworkRequest &r)
+void KvsObject_webView::slotDownloadRequest(const QNetworkRequest & r)
 {
-	QNetworkReply *pReply=m_pNetworkManager->get(r);
-	QString szFilePath="";
-	KviKvsVariant *filepathret=new KviKvsVariant(szFilePath);
+	QNetworkReply * pReply = m_pNetworkManager->get(r);
+	QString szFilePath = "";
+	KviKvsVariant * filepathret = new KviKvsVariant(szFilePath);
 	KviKvsVariantList params(new KviKvsVariant(r.url().toString()));
-	callFunction(this,"downloadRequestEvent",filepathret,&params);
+	callFunction(this, "downloadRequestEvent", filepathret, &params);
 	filepathret->asString(szFilePath);
-	if (!szFilePath.isEmpty())
+	if(!szFilePath.isEmpty())
 	{
-		QFile *pFile=new QFile(szFilePath);
+		QFile * pFile = new QFile(szFilePath);
 		if(!pFile->open(QIODevice::WriteOnly))
 		{
-			m_pContext->warning(__tr2qs_ctx("Invalid file path '%Q'","objects"),&szFilePath);
+			m_pContext->warning(__tr2qs_ctx("Invalid file path '%Q'", "objects"), &szFilePath);
 			pReply->abort();
 			pReply->deleteLater();
 			return;
 		}
-		KviKvsDownloadHandler *pHandler = new KviKvsDownloadHandler(this,pFile,pReply,g_iDownloadId);
+		KviKvsDownloadHandler * pHandler = new KviKvsDownloadHandler(this, pFile, pReply, g_iDownloadId);
 		Q_UNUSED(pHandler);
 		g_iDownloadId++;
 	}
 }
 
-KviKvsWebView::KviKvsWebView(QWidget * par,const char * name,KvsObject_webView * parent)
-:QWebView(par)
+KviKvsWebView::KviKvsWebView(QWidget * par, const char * name, KvsObject_webView * parent)
+    : QWebView(par)
 {
-	m_pParentScript=parent;
+	m_pParentScript = parent;
 	setObjectName(name);
 }
 
-
-void KviKvsWebView::mouseMoveEvent( QMouseEvent * ev )
+void KviKvsWebView::mouseMoveEvent(QMouseEvent * ev)
 {
 	KviKvsVariant vRetValue;
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant((kvs_int_t)ev->x()));
 	lParams.append(new KviKvsVariant((kvs_int_t)ev->y()));
-	if (!m_pParentScript->callFunction(m_pParentScript,"mouseMoveEvent",&vRetValue,&lParams)) QWebView::mouseMoveEvent(ev); // ignore results of a broken event handler
+	if(!m_pParentScript->callFunction(m_pParentScript, "mouseMoveEvent", &vRetValue, &lParams))
+		QWebView::mouseMoveEvent(ev); // ignore results of a broken event handler
 	else
 	{
 		if(!vRetValue.asBoolean())
 			QWebView::mouseMoveEvent(ev);
 	}
 }
-void KviKvsWebView::contextMenuEvent( QContextMenuEvent * ev )
+void KviKvsWebView::contextMenuEvent(QContextMenuEvent * ev)
 {
 	KviKvsVariant vRetValue;
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant((kvs_int_t)ev->x()));
 	lParams.append(new KviKvsVariant((kvs_int_t)ev->y()));
-	if (!m_pParentScript->callFunction(m_pParentScript,"customContextMenuRequestedEvent",&vRetValue,&lParams)) QWebView::contextMenuEvent(ev); // ignore results of a broken event handler
+	if(!m_pParentScript->callFunction(m_pParentScript, "customContextMenuRequestedEvent", &vRetValue, &lParams))
+		QWebView::contextMenuEvent(ev); // ignore results of a broken event handler
 	else
 	{
 		if(!vRetValue.asBoolean())
@@ -1390,17 +1396,17 @@ void KviKvsWebView::contextMenuEvent( QContextMenuEvent * ev )
 bool KviKvsWebView::event(QEvent * e)
 {
 
-	if(e->type()==QEvent::ToolTip)
+	if(e->type() == QEvent::ToolTip)
 	{
-		QHelpEvent *helpEvent = static_cast<QHelpEvent *>(e);
-		QString szTooltip="";
-		KviKvsVariant *tipret=new KviKvsVariant(szTooltip);
-		KviKvsVariantList params(new KviKvsVariant((kvs_int_t)helpEvent->x()),new KviKvsVariant((kvs_int_t)helpEvent->y()));
-		m_pParentScript->callFunction(m_pParentScript,"maybeTipEvent",tipret,&params);
+		QHelpEvent * helpEvent = static_cast<QHelpEvent *>(e);
+		QString szTooltip = "";
+		KviKvsVariant * tipret = new KviKvsVariant(szTooltip);
+		KviKvsVariantList params(new KviKvsVariant((kvs_int_t)helpEvent->x()), new KviKvsVariant((kvs_int_t)helpEvent->y()));
+		m_pParentScript->callFunction(m_pParentScript, "maybeTipEvent", tipret, &params);
 		tipret->asString(szTooltip);
-		if (!szTooltip.isEmpty())
+		if(!szTooltip.isEmpty())
 		{
-			QToolTip::showText(helpEvent->globalPos(),szTooltip);
+			QToolTip::showText(helpEvent->globalPos(), szTooltip);
 			return false;
 		}
 	}

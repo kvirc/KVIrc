@@ -32,7 +32,7 @@
 #include <QObject>
 
 #ifdef COMPILE_SSL_SUPPORT
-	#include "KviSSL.h"
+#include "KviSSL.h"
 #endif
 
 // KviThreadDataEvent<int>
@@ -48,26 +48,28 @@
 
 typedef struct _KviDccThreadIncomingData
 {
-	int    iLen;
+	int iLen;
 	char * buffer;
 } KviDccThreadIncomingData;
 
 class DccThread : public KviSensitiveThread
 {
 public:
-	DccThread(QObject * par,kvi_socket_t fd);
+	DccThread(QObject * par, kvi_socket_t fd);
 	~DccThread();
+
 protected:
-	KviMutex              * m_pMutex;     // OWNED! PROTECTS m_pOutBuffers
-	kvi_socket_t            m_fd;
-	QObject               * m_pParent;    // READ ONLY!
+	KviMutex * m_pMutex; // OWNED! PROTECTS m_pOutBuffers
+	kvi_socket_t m_fd;
+	QObject * m_pParent; // READ ONLY!
 #ifdef COMPILE_SSL_SUPPORT
-	KviSSL                * m_pSSL;
+	KviSSL * m_pSSL;
 #endif
 protected:
 	bool handleInvalidSocketRead(int readLen);
+
 public:
-	QObject * parent(){ return m_pParent; };
+	QObject * parent() { return m_pParent; };
 	void postErrorEvent(int err);
 	// Warning!..newer call __tr() here!...use __tr_no_lookup()
 	void postMessageEvent(const char * message);

@@ -24,7 +24,6 @@
 //
 //=============================================================================
 
-
 //===============================================================
 #include "object_macros.h"
 
@@ -41,49 +40,49 @@ class KvsObject_http : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_http)
 protected:
-	QHttp *m_pHttp;
-	QHash<int, QFile*> getDict;
+	QHttp * m_pHttp;
+	QHash<int, QFile *> getDict;
 	bool m_bAbort;
 	bool m_bEnableForceRedirect;
-protected:
-	bool functionSetHost(KviKvsObjectFunctionCall *c);
-	bool functionGet(KviKvsObjectFunctionCall *c);
-	bool functionSetUser(KviKvsObjectFunctionCall *c);
-	bool functionSetProxy(KviKvsObjectFunctionCall *c);
-	bool functionRequestFinishedEvent(KviKvsObjectFunctionCall *c);
-	bool functionRequestStartedEvent(KviKvsObjectFunctionCall *c);
-	bool functionDataReadProgressEvent(KviKvsObjectFunctionCall *c);
-	bool functionDataSendProgressEvent(KviKvsObjectFunctionCall *c);
-	bool functionResponseHeaderReceivedEvent(KviKvsObjectFunctionCall *c);
-	bool functionAbort(KviKvsObjectFunctionCall *c);
-	bool functionDoneEvent(KviKvsObjectFunctionCall *c);
-	bool functionStateChangedEvent(KviKvsObjectFunctionCall *c);
-	bool functionReadAll(KviKvsObjectFunctionCall *c);
-	bool functionReadyReadEvent(KviKvsObjectFunctionCall *c);
-	bool functionErrorString(KviKvsObjectFunctionCall *c);
-	bool functionPost(KviKvsObjectFunctionCall *c);
-	bool functionFollowRedirect(KviKvsObjectFunctionCall *c);
-	bool functionCurrentId(KviKvsObjectFunctionCall *c);
-	void redirect(QString &file,const QHttpResponseHeader &r);
 
-	#ifndef QT_NO_OPENSSL
-	bool functionIgnoreSslErrors(KviKvsObjectFunctionCall *c);
-	bool functionSslErrorsEvent(KviKvsObjectFunctionCall *c);
-	#endif
+protected:
+	bool functionSetHost(KviKvsObjectFunctionCall * c);
+	bool functionGet(KviKvsObjectFunctionCall * c);
+	bool functionSetUser(KviKvsObjectFunctionCall * c);
+	bool functionSetProxy(KviKvsObjectFunctionCall * c);
+	bool functionRequestFinishedEvent(KviKvsObjectFunctionCall * c);
+	bool functionRequestStartedEvent(KviKvsObjectFunctionCall * c);
+	bool functionDataReadProgressEvent(KviKvsObjectFunctionCall * c);
+	bool functionDataSendProgressEvent(KviKvsObjectFunctionCall * c);
+	bool functionResponseHeaderReceivedEvent(KviKvsObjectFunctionCall * c);
+	bool functionAbort(KviKvsObjectFunctionCall * c);
+	bool functionDoneEvent(KviKvsObjectFunctionCall * c);
+	bool functionStateChangedEvent(KviKvsObjectFunctionCall * c);
+	bool functionReadAll(KviKvsObjectFunctionCall * c);
+	bool functionReadyReadEvent(KviKvsObjectFunctionCall * c);
+	bool functionErrorString(KviKvsObjectFunctionCall * c);
+	bool functionPost(KviKvsObjectFunctionCall * c);
+	bool functionFollowRedirect(KviKvsObjectFunctionCall * c);
+	bool functionCurrentId(KviKvsObjectFunctionCall * c);
+	void redirect(QString & file, const QHttpResponseHeader & r);
+
+#ifndef QT_NO_OPENSSL
+	bool functionIgnoreSslErrors(KviKvsObjectFunctionCall * c);
+	bool functionSslErrorsEvent(KviKvsObjectFunctionCall * c);
+#endif
 
 protected slots:
-	void slotRequestFinished ( int id, bool error );
-	void slotDone (bool error );
-	void slotRequestStarted ( int id );
-	void slotDataSendProgress ( int done, int total );
-	void slotDataReadProgress ( int done, int total );
-	#ifndef QT_NO_OPENSSL
+	void slotRequestFinished(int id, bool error);
+	void slotDone(bool error);
+	void slotRequestStarted(int id);
+	void slotDataSendProgress(int done, int total);
+	void slotDataReadProgress(int done, int total);
+#ifndef QT_NO_OPENSSL
 	void slotSslErrors(QList<QSslError>);
-	#endif
-	void slotResponseHeaderReceived(const QHttpResponseHeader &r);
-	void slotReadyRead(const QHttpResponseHeader &r);
-	void slotStateChanged ( int state);
-
+#endif
+	void slotResponseHeaderReceived(const QHttpResponseHeader & r);
+	void slotReadyRead(const QHttpResponseHeader & r);
+	void slotStateChanged(int state);
 };
 
 #endif //_CLASS_HTTP_H_

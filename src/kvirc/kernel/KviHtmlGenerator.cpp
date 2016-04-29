@@ -33,14 +33,14 @@ namespace KviHtmlGenerator
 {
 	QString convertToHtml(const QString & szText, bool bEscape)
 	{
-		QString szResult       = "<qt>";
-		bool bCurBold          = false;
-		bool bCurUnderline     = false;
-		bool bIgnoreIcons      = false;
-		bool bShowIcons        = KVI_OPTION_BOOL(KviOption_boolDrawEmoticons);
+		QString szResult = "<qt>";
+		bool bCurBold = false;
+		bool bCurUnderline = false;
+		bool bIgnoreIcons = false;
+		bool bShowIcons = KVI_OPTION_BOOL(KviOption_boolDrawEmoticons);
 		unsigned char uCurFore = Foreground;
 		unsigned char uCurBack = Background;
-		unsigned int uIdx      = 0;
+		unsigned int uIdx = 0;
 
 		QString szTxt = bEscape ? KviQString::toHtmlEscaped(szText) : szText;
 
@@ -50,30 +50,26 @@ namespace KviHtmlGenerator
 			unsigned int uStart = uIdx;
 
 			while(
-				(c != KviControlCodes::Color) &&
-				(c != KviControlCodes::Bold) &&
-				(c != KviControlCodes::Underline) &&
-				(c != KviControlCodes::Reverse) &&
-				(c != KviControlCodes::Reset) &&
-				(c != KviControlCodes::Icon) &&
-				((c != ':') || bIgnoreIcons) &&
-				((c != ';') || bIgnoreIcons) &&
-				((c != '=') || bIgnoreIcons))
+			    (c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Icon) && ((c != ':') || bIgnoreIcons) && ((c != ';') || bIgnoreIcons) && ((c != '=') || bIgnoreIcons))
 			{
 				bIgnoreIcons = false;
 				if(c == '&')
 				{
 					//look for an html entity
-					QString szEntity = szTxt.mid((int)uIdx,6);
+					QString szEntity = szTxt.mid((int)uIdx, 6);
 					if(szEntity == "&quot;")
 					{
 						uIdx += 5;
-					} else {
+					}
+					else
+					{
 						szEntity.truncate(5);
 						if(szEntity == "&amp;")
 						{
-							 uIdx += 4;
-						} else {
+							uIdx += 4;
+						}
+						else
+						{
 							szEntity.truncate(4);
 							if(szEntity == "&lt;" || szEntity == "&gt;")
 								uIdx += 3;
@@ -108,7 +104,9 @@ namespace KviHtmlGenerator
 					{
 						szResult.append("<span style=\"background-color:");
 						bOpened = true;
-					} else {
+					}
+					else
+					{
 						szResult.append(";background-color:");
 					}
 					szResult.append(KVI_OPTION_MIRCCOLOR(uCurBack).name());
@@ -120,7 +118,9 @@ namespace KviHtmlGenerator
 					{
 						szResult.append("<span style=\"text-decoration:underline");
 						bOpened = true;
-					} else {
+					}
+					else
+					{
 						szResult.append(";text-decoration:underline");
 					}
 				}
@@ -131,7 +131,9 @@ namespace KviHtmlGenerator
 					{
 						szResult.append("<span style=\"font-weight:bold");
 						bOpened = true;
-					} else {
+					}
+					else
+					{
 						szResult.append(";font-weight:bold");
 					}
 				}
@@ -139,7 +141,7 @@ namespace KviHtmlGenerator
 				if(bOpened)
 					szResult.append(";\">");
 
-				szResult.append(szTxt.mid(uStart,iLen));
+				szResult.append(szTxt.mid(uStart, iLen));
 
 				if(bOpened)
 					szResult.append("</span>");
@@ -181,13 +183,15 @@ namespace KviHtmlGenerator
 					++uIdx;
 					unsigned char ucFore;
 					unsigned char ucBack;
-					uIdx = KviControlCodes::getUnicodeColorBytes(szTxt,uIdx,&ucFore,&ucBack);
+					uIdx = KviControlCodes::getUnicodeColorBytes(szTxt, uIdx, &ucFore, &ucBack);
 					if(ucFore != KviControlCodes::NoChange)
 					{
 						uCurFore = ucFore;
 						if(ucBack != KviControlCodes::NoChange)
 							uCurBack = ucBack;
-					} else {
+					}
+					else
+					{
 						// only a CTRL+K
 						uCurBack = Background;
 						uCurFore = Foreground;
@@ -244,16 +248,18 @@ namespace KviHtmlGenerator
 						if(uIdx < (unsigned int)szTxt.length())
 						{
 							//look up for a space
-							if(szTxt[(int)uIdx]== ' ')
+							if(szTxt[(int)uIdx] == ' ')
 								uIsEmoticon++;
-						} else {
+						}
+						else
+						{
 							//got a smile at the end of the szTxt
 							uIsEmoticon++;
 						}
 
 						if(uIsEmoticon > 1)
 						{
-							KviTextIcon * pIcon  = g_pTextIconManager->lookupTextIcon(szLookup);
+							KviTextIcon * pIcon = g_pTextIconManager->lookupTextIcon(szLookup);
 							// do we have that emoticon-icon association ?
 							if(pIcon)
 							{
@@ -265,15 +271,21 @@ namespace KviHtmlGenerator
 									szResult.append(KVI_OPTION_MIRCCOLOR(uCurBack).name());
 								}
 								szResult.append("\" />");
-							} else {
-								bIgnoreIcons = true;
-								uIdx = uIcoStart-1;
 							}
-						} else {
-							bIgnoreIcons = true;
-							uIdx = uIcoStart-1;
+							else
+							{
+								bIgnoreIcons = true;
+								uIdx = uIcoStart - 1;
+							}
 						}
-					} else {
+						else
+						{
+							bIgnoreIcons = true;
+							uIdx = uIcoStart - 1;
+						}
+					}
+					else
+					{
 						bIgnoreIcons = true;
 					}
 
@@ -288,7 +300,7 @@ namespace KviHtmlGenerator
 						while((uIdx < (unsigned int)szTxt.length()) && (szTxt[(int)uIdx].unicode() > 32))
 							uIdx++;
 
-						QString szLookup = szTxt.mid(uIcoStart,uIdx - uIcoStart);
+						QString szLookup = szTxt.mid(uIcoStart, uIdx - uIcoStart);
 
 						KviTextIcon * pIcon = g_pTextIconManager->lookupTextIcon(szLookup);
 						if(pIcon)
@@ -301,7 +313,9 @@ namespace KviHtmlGenerator
 								szResult.append(KVI_OPTION_MIRCCOLOR(uCurBack).name());
 							}
 							szResult.append("\" />");
-						} else {
+						}
+						else
+						{
 							uIdx = uIcoStart;
 						}
 					}

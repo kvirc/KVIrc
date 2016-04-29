@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviApplication.h"
 #include "KviActionDrawer.h"
 #include "KviAction.h"
@@ -42,7 +40,7 @@
 #include <QMouseEvent>
 
 KviActionDrawer::KviActionDrawer(QWidget * pParent)
-: QTabWidget(pParent)
+    : QTabWidget(pParent)
 {
 }
 
@@ -54,14 +52,14 @@ void KviActionDrawer::fill()
 {
 	KviActionManager::loadAllAvailableActions();
 
-	KviPointerHashTable<QString,KviActionDrawerPage> pages;
+	KviPointerHashTable<QString, KviActionDrawerPage> pages;
 	pages.setAutoDelete(false);
 
-	KviPointerHashTable<QString,KviAction> * d = KviActionManager::instance()->actions();
+	KviPointerHashTable<QString, KviAction> * d = KviActionManager::instance()->actions();
 	if(!d)
 		return; // ooops
 
-	KviPointerHashTableIterator<QString,KviAction> it(*d);
+	KviPointerHashTableIterator<QString, KviAction> it(*d);
 	while(KviAction * pAction = it.current())
 	{
 		KviActionCategory * pCat = pAction->category();
@@ -71,9 +69,9 @@ void KviActionDrawer::fill()
 		KviActionDrawerPage * pPage = pages.find(pCat->visibleName());
 		if(!pPage)
 		{
-			pPage = new KviActionDrawerPage(this,pCat->description());
-			pages.replace(pCat->visibleName(),pPage);
-			addTab(pPage,pCat->visibleName());
+			pPage = new KviActionDrawerPage(this, pCat->description());
+			pages.replace(pCat->visibleName(), pPage);
+			addTab(pPage, pCat->visibleName());
 			//p->show();
 		}
 		pPage->add(pAction);
@@ -90,19 +88,19 @@ void KviActionDrawer::fill()
 }
 
 KviActionDrawerPage::KviActionDrawerPage(QWidget * pParent, const QString & szDescription)
-: QWidget(pParent)
+    : QWidget(pParent)
 {
 	QGridLayout * pLayout = new QGridLayout(this);
 
 	QString szDesc = "<b>" + szDescription + "</b>";
-	QLabel * pLabel = new QLabel(szDesc,this);
-	pLayout->addWidget(pLabel,0,0);
+	QLabel * pLabel = new QLabel(szDesc, this);
+	pLayout->addWidget(pLabel, 0, 0);
 
 	m_pListWidget = new KviActionDrawerPageListWidget(this);
 
-	pLayout->addWidget(m_pListWidget,1,0);
+	pLayout->addWidget(m_pListWidget, 1, 0);
 
-	pLayout->setRowStretch(1,1);
+	pLayout->setRowStretch(1, 1);
 }
 
 KviActionDrawerPage::~KviActionDrawerPage()
@@ -111,11 +109,11 @@ KviActionDrawerPage::~KviActionDrawerPage()
 
 void KviActionDrawerPage::add(KviAction * pAction)
 {
-	(void)new KviActionDrawerPageListWidgetItem(m_pListWidget,pAction);
+	(void)new KviActionDrawerPageListWidgetItem(m_pListWidget, pAction);
 }
 
 KviActionDrawerPageListWidget::KviActionDrawerPageListWidget(KviActionDrawerPage * pParent)
-: KviTalListWidget(pParent)
+    : KviTalListWidget(pParent)
 {
 	KviTalIconAndRichTextItemDelegate * pItemDelegate = new KviTalIconAndRichTextItemDelegate(this);
 	setItemDelegate(pItemDelegate);
@@ -136,7 +134,7 @@ void KviActionDrawerPageListWidget::mousePressEvent(QMouseEvent * e)
 		return;
 
 	QDrag * pDrag = new QDrag(this);
-	QMimeData *mimeData = new QMimeData;
+	QMimeData * mimeData = new QMimeData;
 
 	mimeData->setText(pItem->name());
 	pDrag->setMimeData(mimeData);
@@ -148,7 +146,7 @@ void KviActionDrawerPageListWidget::mousePressEvent(QMouseEvent * e)
 		if(pixie)
 		{
 			pDrag->setPixmap(*pixie);
-			pDrag->setHotSpot(QPoint(3,3));
+			pDrag->setHotSpot(QPoint(3, 3));
 		}
 	}
 	pDrag->exec();
@@ -164,7 +162,7 @@ void KviActionDrawerPageListWidget::resizeEvent(QResizeEvent * e)
 }
 
 KviActionDrawerPageListWidgetItem::KviActionDrawerPageListWidgetItem(KviTalListWidget * pList, KviAction * pAction)
-: KviTalListWidgetItem(pList)
+    : KviTalListWidgetItem(pList)
 {
 	m_pListWidget = pList;
 	m_szName = pAction->name();

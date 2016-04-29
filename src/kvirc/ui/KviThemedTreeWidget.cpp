@@ -32,11 +32,11 @@
 #include "KviWindowStack.h"
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
+extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-KviThemedTreeWidget::KviThemedTreeWidget(QWidget * par, KviWindow * pWindow,const char * name)
-: QTreeWidget(par)
+KviThemedTreeWidget::KviThemedTreeWidget(QWidget * par, KviWindow * pWindow, const char * name)
+    : QTreeWidget(par)
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
@@ -57,32 +57,32 @@ void KviThemedTreeWidget::applyOptions()
 #endif
 
 	QString szStyle = QString("QTreeWidget { background: %1; background-clip: content; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
-	.arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
-	.arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() :
-				KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
-	.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
-	.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
-	.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
-	.arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
+	                      .arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
+	                      .arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
+	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
+	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
+	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
+	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
 
 	setStyleSheet(szStyle);
 	update();
 }
 
-void KviThemedTreeWidget::paintEvent(QPaintEvent *e)
+void KviThemedTreeWidget::paintEvent(QPaintEvent * e)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	QPainter *p = new QPainter(this->viewport());
+	QPainter * p = new QPainter(this->viewport());
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
 		p->setCompositionMode(QPainter::CompositionMode_Source);
-		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		QColor col = KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
 		p->fillRect(viewport()->contentsRect(), col);
-	} else if(g_pShadedChildGlobalDesktopBackground)
+	}
+	else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = m_pKviWindow->isDocked() ? viewport()->mapTo(g_pMainWindow, contentsRect().topLeft() + viewport()->contentsRect().topLeft()) : viewport()->mapTo(m_pKviWindow, contentsRect().topLeft() + viewport()->contentsRect().topLeft());
-		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
+		p->drawTiledPixmap(contentsRect(), *(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 	delete p;
 #endif

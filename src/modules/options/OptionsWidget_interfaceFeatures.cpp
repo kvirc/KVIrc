@@ -34,41 +34,40 @@
 
 #include <string.h>
 
-
 OptionsWidget_interfaceFeatures::OptionsWidget_interfaceFeatures(QWidget * parent)
-: KviOptionsWidget(parent)
+    : KviOptionsWidget(parent)
 {
 	setObjectName("interfacefeatures_options_widget");
 	createLayout();
 
 	KviTalGroupBox * g;
 
-	addBoolSelector(0,0,0,0,__tr2qs_ctx("Minimize application on startup","options"),KviOption_boolStartupMinimized);
-	addBoolSelector(0,1,0,1,__tr2qs_ctx("Confirm quit with active connections","options"),KviOption_boolConfirmCloseWhenThereAreConnections);
-	addBoolSelector(0,2,0,2,__tr2qs_ctx("Remember window properties","options"),KviOption_boolWindowsRememberProperties);
-	addBoolSelector(0,3,0,3,__tr2qs_ctx("Enable visual effects","options"),KviOption_boolEnableVisualEffects);
-	addBoolSelector(0,4,0,4,__tr2qs_ctx("Hide channel window tool buttons by default","options"),KviOption_boolHideWindowToolButtons);
+	addBoolSelector(0, 0, 0, 0, __tr2qs_ctx("Minimize application on startup", "options"), KviOption_boolStartupMinimized);
+	addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Confirm quit with active connections", "options"), KviOption_boolConfirmCloseWhenThereAreConnections);
+	addBoolSelector(0, 2, 0, 2, __tr2qs_ctx("Remember window properties", "options"), KviOption_boolWindowsRememberProperties);
+	addBoolSelector(0, 3, 0, 3, __tr2qs_ctx("Enable visual effects", "options"), KviOption_boolEnableVisualEffects);
+	addBoolSelector(0, 4, 0, 4, __tr2qs_ctx("Hide channel window tool buttons by default", "options"), KviOption_boolHideWindowToolButtons);
 #ifdef COMPILE_ON_MAC
-	addBoolSelector(0,5,0,5,__tr2qs_ctx("Require ⌘ to be held down to copy text","options"),KviOption_boolRequireControlToCopy);
+	addBoolSelector(0, 5, 0, 5, __tr2qs_ctx("Require ⌘ to be held down to copy text", "options"), KviOption_boolRequireControlToCopy);
 #else
-	addBoolSelector(0,5,0,5,__tr2qs_ctx("Require Ctrl to be held down to copy text","options"),KviOption_boolRequireControlToCopy);
+	addBoolSelector(0, 5, 0, 5, __tr2qs_ctx("Require Ctrl to be held down to copy text", "options"), KviOption_boolRequireControlToCopy);
 #endif
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	addBoolSelector(0,6,0,6,__tr2qs_ctx("Show taskbar button (change requires restart)","options"),KviOption_boolShowTaskBarButton);
-	g = addGroupBox(0,7,0,7,Qt::Horizontal,__tr2qs_ctx("Open Dialog Window for","options"));
+	addBoolSelector(0, 6, 0, 6, __tr2qs_ctx("Show taskbar button (change requires restart)", "options"), KviOption_boolShowTaskBarButton);
+	g = addGroupBox(0, 7, 0, 7, Qt::Horizontal, __tr2qs_ctx("Open Dialog Window for", "options"));
 #else
-	g = addGroupBox(0,6,0,6,Qt::Horizontal,__tr2qs_ctx("Open Dialog Window for","options"));
+	g = addGroupBox(0, 6, 0, 6, Qt::Horizontal, __tr2qs_ctx("Open Dialog Window for", "options"));
 #endif
-	addBoolSelector(g,__tr2qs_ctx("Preferences","options"),KviOption_boolShowGeneralOptionsDialogAsToplevel);
-	addBoolSelector(g,__tr2qs_ctx("Registered users","options"),KviOption_boolShowRegisteredUsersDialogAsToplevel);
-	addBoolSelector(g,__tr2qs_ctx("Identity","options"),KviOption_boolShowIdentityDialogAsToplevel);
-	addBoolSelector(g,__tr2qs_ctx("Servers","options"),KviOption_boolShowServersConnectDialogAsToplevel);
-	addBoolSelector(g,__tr2qs_ctx("Join channels","options"),KviOption_boolShowChannelsJoinDialogAsToplevel);
+	addBoolSelector(g, __tr2qs_ctx("Preferences", "options"), KviOption_boolShowGeneralOptionsDialogAsToplevel);
+	addBoolSelector(g, __tr2qs_ctx("Registered users", "options"), KviOption_boolShowRegisteredUsersDialogAsToplevel);
+	addBoolSelector(g, __tr2qs_ctx("Identity", "options"), KviOption_boolShowIdentityDialogAsToplevel);
+	addBoolSelector(g, __tr2qs_ctx("Servers", "options"), KviOption_boolShowServersConnectDialogAsToplevel);
+	addBoolSelector(g, __tr2qs_ctx("Join channels", "options"), KviOption_boolShowChannelsJoinDialogAsToplevel);
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	addRowSpacer(0,8,0,8);
+	addRowSpacer(0, 8, 0, 8);
 #else
-	addRowSpacer(0,7,0,7);
+	addRowSpacer(0, 7, 0, 7);
 #endif
 }
 

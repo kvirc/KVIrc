@@ -40,9 +40,8 @@
 static KviPointerList<HttpFileTransfer> * g_pHttpFileTransfers = 0;
 static QPixmap * g_pHttpIcon = 0;
 
-
 HttpFileTransfer::HttpFileTransfer()
-: KviFileTransfer()
+    : KviFileTransfer()
 {
 	init(); // ensure we're initialized
 	g_pHttpFileTransfers->append(this);
@@ -58,17 +57,17 @@ HttpFileTransfer::HttpFileTransfer()
 
 	m_pHttpRequest = new KviHttpRequest();
 
-	connect(m_pHttpRequest,SIGNAL(status(const QString &)),this,SLOT(statusMessage(const QString &)));
-	connect(m_pHttpRequest,SIGNAL(terminated(bool)),this,SLOT(transferTerminated(bool)));
-	connect(m_pHttpRequest,SIGNAL(header(KviPointerHashTable<const char *,KviCString> *)),this,SLOT(headersReceived(KviPointerHashTable<const char *,KviCString> *)));
-	connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(resolvingHost(const QString &)));
-	connect(m_pHttpRequest,SIGNAL(requestSent(const QStringList &)),this,SLOT(requestSent(const QStringList &)));
-	connect(m_pHttpRequest,SIGNAL(contactingHost(const QString &)),this,SLOT(contactingHost(const QString &)));
-	connect(m_pHttpRequest,SIGNAL(receivedResponse(const QString &)),this,SLOT(receivedResponse(const QString &)));
-	connect(m_pHttpRequest,SIGNAL(connectionEstablished()),this,SLOT(connectionEstablished()));
+	connect(m_pHttpRequest, SIGNAL(status(const QString &)), this, SLOT(statusMessage(const QString &)));
+	connect(m_pHttpRequest, SIGNAL(terminated(bool)), this, SLOT(transferTerminated(bool)));
+	connect(m_pHttpRequest, SIGNAL(header(KviPointerHashTable<const char *, KviCString> *)), this, SLOT(headersReceived(KviPointerHashTable<const char *, KviCString> *)));
+	connect(m_pHttpRequest, SIGNAL(resolvingHost(const QString &)), this, SLOT(resolvingHost(const QString &)));
+	connect(m_pHttpRequest, SIGNAL(requestSent(const QStringList &)), this, SLOT(requestSent(const QStringList &)));
+	connect(m_pHttpRequest, SIGNAL(contactingHost(const QString &)), this, SLOT(contactingHost(const QString &)));
+	connect(m_pHttpRequest, SIGNAL(receivedResponse(const QString &)), this, SLOT(receivedResponse(const QString &)));
+	connect(m_pHttpRequest, SIGNAL(connectionEstablished()), this, SLOT(connectionEstablished()));
 
 	m_eGeneralStatus = Initializing;
-	m_szStatusString = __tr2qs_ctx("Initializing","http");
+	m_szStatusString = __tr2qs_ctx("Initializing", "http");
 }
 
 HttpFileTransfer::~HttpFileTransfer()
@@ -100,9 +99,9 @@ void HttpFileTransfer::abort()
 
 void HttpFileTransfer::fillContextPopup(QMenu * m)
 {
-    QAction *pAction = m->addAction(__tr2qs_ctx("Abort","http"),this,SLOT(abort()));
-    if(!active())
-        pAction->setEnabled(false);
+	QAction * pAction = m->addAction(__tr2qs_ctx("Abort", "http"), this, SLOT(abort()));
+	if(!active())
+		pAction->setEnabled(false);
 }
 
 bool HttpFileTransfer::active()
@@ -110,7 +109,7 @@ bool HttpFileTransfer::active()
 	return ((m_eGeneralStatus == Connecting) || (m_eGeneralStatus == Downloading));
 }
 
-void HttpFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
+void HttpFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 {
 	int width = rect.width(), height = rect.height();
 	QString txt;
@@ -124,53 +123,61 @@ void HttpFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 			switch(m_eGeneralStatus)
 			{
 				case Initializing:
-				case Connecting: offset = 0; break;
-				case Downloading: offset = 48; break;
-				case Success: offset = 96; break;
-				case Failure: offset = 144; break;
+				case Connecting:
+					offset = 0;
+					break;
+				case Downloading:
+					offset = 48;
+					break;
+				case Success:
+					offset = 96;
+					break;
+				case Failure:
+					offset = 144;
+					break;
 			}
 			if(g_pHttpIcon)
-				p->drawPixmap(width / 2 - 48 / 2,rect.top() + height / 2 - 64 / 2,*g_pHttpIcon,offset,0,48,64);
+				p->drawPixmap(width / 2 - 48 / 2, rect.top() + height / 2 - 64 / 2, *g_pHttpIcon, offset, 0, 48, 64);
 		}
 		break;
 		case COLUMN_FILEINFO:
 		{
 			QFontMetrics fm(p->font());
 
-			QString szFrom = __tr2qs_ctx("From: ","http");
-			QString szTo   = __tr2qs_ctx("To: ","http");
+			QString szFrom = __tr2qs_ctx("From: ", "http");
+			QString szTo = __tr2qs_ctx("To: ", "http");
 
 			int daW1 = fm.width(szFrom);
 			int daW2 = fm.width(szTo);
-			if(daW1 < daW2)daW1 = daW2;
+			if(daW1 < daW2)
+				daW1 = daW2;
 			int iLineSpacing = fm.lineSpacing();
 
 			p->setPen(Qt::black);
 
 			int iY = rect.top() + 4;
 
-			p->drawText(rect.left() + 4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,m_pHttpRequest->url().url());
+			p->drawText(rect.left() + 4 + daW1, iY, width - (8 + daW1), height - 8, Qt::AlignTop | Qt::AlignLeft, m_pHttpRequest->url().url());
 			iY += iLineSpacing;
 			if(!(m_pHttpRequest->fileName().isEmpty()))
 			{
-				p->drawText(rect.left() + 4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,m_pHttpRequest->fileName());
+				p->drawText(rect.left() + 4 + daW1, iY, width - (8 + daW1), height - 8, Qt::AlignTop | Qt::AlignLeft, m_pHttpRequest->fileName());
 			}
 			iY += iLineSpacing;
 
-
 			p->setPen(Qt::darkGray);
 
-			p->drawText(rect.left() + 4, rect.top() + 4,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szFrom);
-			p->drawText(rect.left() + 4, rect.top() + 4 + iLineSpacing,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szTo);
+			p->drawText(rect.left() + 4, rect.top() + 4, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, szFrom);
+			p->drawText(rect.left() + 4, rect.top() + 4 + iLineSpacing, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, szTo);
 
-			p->setPen(QColor(180,180,200));
+			p->setPen(QColor(180, 180, 200));
 
 			iLineSpacing += 2;
 
-			p->drawRect(rect.left() + 4, rect.top() + height - (iLineSpacing + 4),width - 8,iLineSpacing);
-			p->fillRect(rect.left() + 5, rect.top() + height - (iLineSpacing + 3),width - 10,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
+			p->drawRect(rect.left() + 4, rect.top() + height - (iLineSpacing + 4), width - 8, iLineSpacing);
+			p->fillRect(rect.left() + 5, rect.top() + height - (iLineSpacing + 3), width - 10, iLineSpacing - 2, bIsTerminated ? QColor(210, 210, 210) : QColor(190, 190, 240));
 			p->setPen(Qt::black);
-			p->drawText(rect.left() + 7, rect.top() + height - (iLineSpacing + 4),width - 14,iLineSpacing,Qt::AlignVCenter | Qt::AlignLeft,m_szStatusString);
+			p->drawText(rect.left() + 7, rect.top() + height - (iLineSpacing + 4), width - 14, iLineSpacing, Qt::AlignVCenter | Qt::AlignLeft, m_szStatusString);
 		}
 		break;
 		case COLUMN_PROGRESS:
@@ -181,15 +188,15 @@ void HttpFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 			unsigned int uRecvd = m_pHttpRequest->receivedSize();
 			int iW = width - 8;
 
-			p->setPen(bIsTerminated ? Qt::lightGray : QColor(210,210,240));
-			p->drawRect(rect.left() + 4, rect.top() + 4,iW,12);
+			p->setPen(bIsTerminated ? Qt::lightGray : QColor(210, 210, 240));
+			p->drawRect(rect.left() + 4, rect.top() + 4, iW, 12);
 
 			int iAvgSpeed = -1;
 			int iEta = -1;
 
 			if(m_tTransferStartTime > 0)
 			{
-				int tSpan = kvi_timeSpan(m_tTransferEndTime > 0 ? m_tTransferEndTime : kvi_unixTime(),m_tTransferStartTime);
+				int tSpan = kvi_timeSpan(m_tTransferEndTime > 0 ? m_tTransferEndTime : kvi_unixTime(), m_tTransferStartTime);
 				if(tSpan > 0)
 				{
 					//qDebug("SPAN: %d (%d - %d)",tSpan,m_tTransferEndTime > 0 ? m_tTransferEndTime : kvi_unixTime(),m_tTransferStartTime);
@@ -206,19 +213,20 @@ void HttpFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 			{
 				double dPerc = (double)(((double)uRecvd) * 100.0) / (double)uTotal;
 				iW -= 2;
-				int iL = (int) ((((double)iW) * dPerc) / 100.0);
+				int iL = (int)((((double)iW) * dPerc) / 100.0);
 				//iR = iW - iL;
-				p->fillRect(rect.left() + 5, rect.top() + 5,iL,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
+				p->fillRect(rect.left() + 5, rect.top() + 5, iL, 10, bIsTerminated ? QColor(140, 110, 110) : QColor(200, 100, 100));
 
-				txt = QString(__tr2qs_ctx("%1 of %2 (%3 %)","http")).arg(KviQString::makeSizeReadable(uRecvd),
-					KviQString::makeSizeReadable(uTotal)).arg(dPerc,0,'f',2);
-			} else {
+				txt = QString(__tr2qs_ctx("%1 of %2 (%3 %)", "http")).arg(KviQString::makeSizeReadable(uRecvd), KviQString::makeSizeReadable(uTotal)).arg(dPerc, 0, 'f', 2);
+			}
+			else
+			{
 				txt = KviQString::makeSizeReadable(m_pHttpRequest->receivedSize());
 			}
 
 			p->setPen(Qt::black);
 
-			p->drawText(rect.left() + 4, rect.top() + 19,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,txt);
+			p->drawText(rect.left() + 4, rect.top() + 19, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, txt);
 
 			int iLeftHalf = (iW - 2) / 2;
 			int iRightHalf = iW - (iLeftHalf + 1);
@@ -235,55 +243,64 @@ void HttpFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 				txt += "? B/s";
 			}
 			*/
-			txt = __tr2qs_ctx("Avg:","dcc");
+			txt = __tr2qs_ctx("Avg:", "dcc");
 			txt += " ";
 			if(iAvgSpeed >= 0)
 			{
 				QString tmpspd;
-				KviNetUtils::formatNetworkBandwidthString(tmpspd,iAvgSpeed);
+				KviNetUtils::formatNetworkBandwidthString(tmpspd, iAvgSpeed);
 				txt += tmpspd;
-			} else {
+			}
+			else
+			{
 				txt += "? B/s";
 			}
 
-
-
 			int iDaH = height - (iLineSpacing + 4);
 
-			p->setPen(QColor(180,180,200));
-			p->drawRect(rect.left() + 4, rect.top() + iDaH,iLeftHalf,iLineSpacing);
-			p->fillRect(rect.left() + 5, rect.top() + iDaH + 1,iLeftHalf - 2,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
+			p->setPen(QColor(180, 180, 200));
+			p->drawRect(rect.left() + 4, rect.top() + iDaH, iLeftHalf, iLineSpacing);
+			p->fillRect(rect.left() + 5, rect.top() + iDaH + 1, iLeftHalf - 2, iLineSpacing - 2, bIsTerminated ? QColor(210, 210, 210) : QColor(190, 190, 240));
 			p->setPen(bIsTerminated ? Qt::darkGray : Qt::black);
-			p->drawText(rect.left() + 6, rect.top() + iDaH,iLeftHalf - 4,iLineSpacing,Qt::AlignLeft | Qt::AlignVCenter,txt);
+			p->drawText(rect.left() + 6, rect.top() + iDaH, iLeftHalf - 4, iLineSpacing, Qt::AlignLeft | Qt::AlignVCenter, txt);
 
-			unsigned int uD,uH,uM,uS;
+			unsigned int uD, uH, uM, uS;
 
 			if(bIsTerminated)
 			{
-				KviTimeUtils::secondsToDaysHoursMinsSecs(kvi_timeSpan(m_tTransferEndTime,m_tTransferStartTime),&uD,&uH,&uM,&uS);
+				KviTimeUtils::secondsToDaysHoursMinsSecs(kvi_timeSpan(m_tTransferEndTime, m_tTransferStartTime), &uD, &uH, &uM, &uS);
 				txt = "TOT: ";
-				if(uD > 0)txt += __tr2qs_ctx("%1d %2h %3m %4s","http").arg(uD).arg(uH).arg(uM).arg(uS);
-				else if(uH > 0)txt += __tr2qs_ctx("%1h %2m %3s","http").arg(uH).arg(uM).arg(uS);
-				else txt += __tr2qs_ctx("%1m %2s","http").arg(uM).arg(uS);
-			} else {
+				if(uD > 0)
+					txt += __tr2qs_ctx("%1d %2h %3m %4s", "http").arg(uD).arg(uH).arg(uM).arg(uS);
+				else if(uH > 0)
+					txt += __tr2qs_ctx("%1h %2m %3s", "http").arg(uH).arg(uM).arg(uS);
+				else
+					txt += __tr2qs_ctx("%1m %2s", "http").arg(uM).arg(uS);
+			}
+			else
+			{
 				if(iEta >= 0)
 				{
-					KviTimeUtils::secondsToDaysHoursMinsSecs(iEta,&uD,&uH,&uM,&uS);
+					KviTimeUtils::secondsToDaysHoursMinsSecs(iEta, &uD, &uH, &uM, &uS);
 					txt = "ETA: ";
-					if(uD > 0)txt += __tr2qs_ctx("%1d %2h %3m %4s","http").arg(uD).arg(uH).arg(uM).arg(uS);
-					else if(uH > 0)txt += __tr2qs_ctx("%1h %2m %3s","http").arg(uH).arg(uM).arg(uS);
-					else txt += __tr2qs_ctx("%1m %2s","http").arg(uM).arg(uS);
-				} else {
+					if(uD > 0)
+						txt += __tr2qs_ctx("%1d %2h %3m %4s", "http").arg(uD).arg(uH).arg(uM).arg(uS);
+					else if(uH > 0)
+						txt += __tr2qs_ctx("%1h %2m %3s", "http").arg(uH).arg(uM).arg(uS);
+					else
+						txt += __tr2qs_ctx("%1m %2s", "http").arg(uM).arg(uS);
+				}
+				else
+				{
 					txt = "ETA: Unknown";
 				}
 			}
 
-			p->setPen(QColor(180,180,200));
-			p->drawRect(rect.left() + width - (4 + iRightHalf), rect.top() + iDaH,iRightHalf,iLineSpacing);
-			p->fillRect(rect.left() + width - (3 + iRightHalf), rect.top() + iDaH + 1,iRightHalf - 2,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
+			p->setPen(QColor(180, 180, 200));
+			p->drawRect(rect.left() + width - (4 + iRightHalf), rect.top() + iDaH, iRightHalf, iLineSpacing);
+			p->fillRect(rect.left() + width - (3 + iRightHalf), rect.top() + iDaH + 1, iRightHalf - 2, iLineSpacing - 2, bIsTerminated ? QColor(210, 210, 210) : QColor(190, 190, 240));
 			p->setPen(bIsTerminated ? Qt::darkGray : Qt::black);
-			p->drawText(rect.left() + width - (2 + iRightHalf), rect.top() + iDaH,iRightHalf - 4,iLineSpacing,Qt::AlignLeft | Qt::AlignVCenter,txt);
-
+			p->drawText(rect.left() + width - (2 + iRightHalf), rect.top() + iDaH, iRightHalf - 4, iLineSpacing, Qt::AlignLeft | Qt::AlignVCenter, txt);
 		}
 		break;
 	}
@@ -304,7 +321,7 @@ QString HttpFileTransfer::tipText()
 	{
 		s += "<tr><td bgcolor=\"#404040\"><font color=\"#FFFFFF\">Request Headers</font></td></tr>";
 		s += "<tr><td bgcolor=\"#C0C0C0\">";
-		for(QStringList::ConstIterator it = m_lRequest.begin();it != m_lRequest.end();++it)
+		for(QStringList::ConstIterator it = m_lRequest.begin(); it != m_lRequest.end(); ++it)
 		{
 			s += "&nbsp; &nbsp;";
 			s += *it;
@@ -317,7 +334,7 @@ QString HttpFileTransfer::tipText()
 	{
 		s += "<tr><td bgcolor=\"#404040\"><font color=\"#FFFFFF\">Response Headers</font></td></tr>";
 		s += "<tr><td bgcolor=\"#C0C0C0\">";
-		for(QStringList::ConstIterator it = m_lHeaders.begin();it != m_lHeaders.end();++it)
+		for(QStringList::ConstIterator it = m_lHeaders.begin(); it != m_lHeaders.end(); ++it)
 		{
 			s += "&nbsp; &nbsp;";
 			s += *it;
@@ -333,7 +350,8 @@ QString HttpFileTransfer::tipText()
 
 void HttpFileTransfer::init()
 {
-	if(g_pHttpFileTransfers)return;
+	if(g_pHttpFileTransfers)
+		return;
 	g_pHttpFileTransfers = new KviPointerList<HttpFileTransfer>;
 	g_pHttpFileTransfers->setAutoDelete(false);
 
@@ -346,7 +364,8 @@ void HttpFileTransfer::init()
 
 void HttpFileTransfer::done()
 {
-	if(!g_pHttpFileTransfers)return;
+	if(!g_pHttpFileTransfers)
+		return;
 	while(HttpFileTransfer * t = g_pHttpFileTransfers->first())
 		delete t;
 	delete g_pHttpFileTransfers;
@@ -360,25 +379,27 @@ void HttpFileTransfer::done()
 
 unsigned int HttpFileTransfer::runningTransfers()
 {
-	if(!g_pHttpFileTransfers)return 0;
+	if(!g_pHttpFileTransfers)
+		return 0;
 	return g_pHttpFileTransfers->count();
 }
 
-void HttpFileTransfer::requestSent(const QStringList &requestHeaders)
+void HttpFileTransfer::requestSent(const QStringList & requestHeaders)
 {
-	m_szStatusString = __tr2qs_ctx("Request sent: waiting for reply...","http");
+	m_szStatusString = __tr2qs_ctx("Request sent: waiting for reply...", "http");
 	displayUpdate();
 
 	KviWindow * out = transferWindow();
-	if(!out)return;
+	if(!out)
+		return;
 
 	if(!m_bNoOutput)
-		out->output(KVI_OUT_GENERICSTATUS,__tr2qs_ctx("[HTTP %d]: Request data sent:","http"),id());
+		out->output(KVI_OUT_GENERICSTATUS, __tr2qs_ctx("[HTTP %d]: Request data sent:", "http"), id());
 
-	for(QStringList::ConstIterator it = requestHeaders.begin();it != requestHeaders.end();++it)
+	for(QStringList::ConstIterator it = requestHeaders.begin(); it != requestHeaders.end(); ++it)
 	{
 		if(!m_bNoOutput)
-			out->output(KVI_OUT_GENERICSTATUS,"[HTTP %d]:   %s",id(),(*it).toUtf8().data());
+			out->output(KVI_OUT_GENERICSTATUS, "[HTTP %d]:   %s", id(), (*it).toUtf8().data());
 	}
 
 	m_lRequest = requestHeaders;
@@ -386,37 +407,37 @@ void HttpFileTransfer::requestSent(const QStringList &requestHeaders)
 
 void HttpFileTransfer::connectionEstablished()
 {
-	m_szStatusString = __tr2qs_ctx("Connection established: sending request","http");
+	m_szStatusString = __tr2qs_ctx("Connection established: sending request", "http");
 	displayUpdate();
 }
 
-void HttpFileTransfer::resolvingHost(const QString &hostname)
+void HttpFileTransfer::resolvingHost(const QString & hostname)
 {
-	m_szStatusString = __tr2qs_ctx("Resolving host %1","http").arg(hostname);
+	m_szStatusString = __tr2qs_ctx("Resolving host %1", "http").arg(hostname);
 	displayUpdate();
 }
 
-void HttpFileTransfer::contactingHost(const QString &ipandport)
+void HttpFileTransfer::contactingHost(const QString & ipandport)
 {
-	m_szStatusString = __tr2qs_ctx("Contacting host %1","http").arg(ipandport);
+	m_szStatusString = __tr2qs_ctx("Contacting host %1", "http").arg(ipandport);
 	displayUpdate();
 }
 
-void HttpFileTransfer::receivedResponse(const QString &response)
+void HttpFileTransfer::receivedResponse(const QString & response)
 {
 	m_lHeaders.clear();
 	m_lHeaders.append(response);
-	m_szStatusString = __tr2qs_ctx("Transferring data (%1)","http").arg(response);
+	m_szStatusString = __tr2qs_ctx("Transferring data (%1)", "http").arg(response);
 	m_tTransferStartTime = kvi_unixTime();
 	m_eGeneralStatus = Downloading;
 	displayUpdate();
 }
 
-void HttpFileTransfer::statusMessage(const QString &txt)
+void HttpFileTransfer::statusMessage(const QString & txt)
 {
 	KviWindow * out = transferWindow();
 	if(out && (!m_bNoOutput))
-		out->output(KVI_OUT_GENERICSTATUS,"[HTTP %d]: %Q",id(),&txt);
+		out->output(KVI_OUT_GENERICSTATUS, "[HTTP %d]: %Q", id(), &txt);
 }
 
 void HttpFileTransfer::transferTerminated(bool bSuccess)
@@ -433,66 +454,74 @@ void HttpFileTransfer::transferTerminated(bool bSuccess)
 
 	if(m_szCompletionCallback.isNull())
 	{
-		KVS_TRIGGER_EVENT(KviEvent_OnHTTPGetTerminated,out ? out : (KviWindow *)(g_pApp->activeConsole()),&vParams)
-	} else {
-		KviKvsScript::run(m_szCompletionCallback,out ? out : (KviWindow *)(g_pApp->activeConsole()),&vParams);
+		KVS_TRIGGER_EVENT(KviEvent_OnHTTPGetTerminated, out ? out : (KviWindow *)(g_pApp->activeConsole()), &vParams)
+	}
+	else
+	{
+		KviKvsScript::run(m_szCompletionCallback, out ? out : (KviWindow *)(g_pApp->activeConsole()), &vParams);
 	}
 
 	if(bSuccess)
 	{
-		m_szStatusString = __tr2qs_ctx("Transfer completed","http");
+		m_szStatusString = __tr2qs_ctx("Transfer completed", "http");
 		m_eGeneralStatus = Success;
 		displayUpdate();
-		if(out && (!m_bNoOutput))out->output(KVI_OUT_GENERICSUCCESS,__tr2qs_ctx("[HTTP %d]: Transfer completed","http"),id());
+		if(out && (!m_bNoOutput))
+			out->output(KVI_OUT_GENERICSUCCESS, __tr2qs_ctx("[HTTP %d]: Transfer completed", "http"), id());
 		g_pApp->fileDownloadTerminated(
-				true,
-				m_pHttpRequest->url().url(),
-				m_pHttpRequest->fileName(),
-				QString(),
-				QString(),
-				!m_bNotifyCompletion
-			);
-	} else {
-		m_szStatusString = __tr2qs_ctx("Transfer failed","http");
+		    true,
+		    m_pHttpRequest->url().url(),
+		    m_pHttpRequest->fileName(),
+		    QString(),
+		    QString(),
+		    !m_bNotifyCompletion);
+	}
+	else
+	{
+		m_szStatusString = __tr2qs_ctx("Transfer failed", "http");
 		m_szStatusString += ": ";
 		m_szStatusString += m_pHttpRequest->lastError();
 		m_eGeneralStatus = Failure;
 		displayUpdate();
-		if(out && (!m_bNoOutput))out->output(KVI_OUT_GENERICERROR,__tr2qs_ctx("[HTTP %d]: Transfer failed: %Q","http"),id(),&(m_pHttpRequest->lastError()));
+		if(out && (!m_bNoOutput))
+			out->output(KVI_OUT_GENERICERROR, __tr2qs_ctx("[HTTP %d]: Transfer failed: %Q", "http"), id(), &(m_pHttpRequest->lastError()));
 		g_pApp->fileDownloadTerminated(
-				false,
-				m_pHttpRequest->url().url(),
-				m_pHttpRequest->fileName(),
-				QString(),
-				m_pHttpRequest->lastError(),
-				!m_bNotifyCompletion
-			);
+		    false,
+		    m_pHttpRequest->url().url(),
+		    m_pHttpRequest->fileName(),
+		    QString(),
+		    m_pHttpRequest->lastError(),
+		    !m_bNotifyCompletion);
 	}
 
 	if(m_bAutoClean)
 	{
-		if(m_pAutoCleanTimer)delete m_pAutoCleanTimer;
+		if(m_pAutoCleanTimer)
+			delete m_pAutoCleanTimer;
 		m_pAutoCleanTimer = new QTimer();
-		connect(m_pAutoCleanTimer,SIGNAL(timeout()),this,SLOT(autoClean()));
+		connect(m_pAutoCleanTimer, SIGNAL(timeout()), this, SLOT(autoClean()));
 		m_pAutoCleanTimer->start(100);
-		m_TimerId=m_pAutoCleanTimer->timerId();
+		m_TimerId = m_pAutoCleanTimer->timerId();
 	}
 }
 
-void HttpFileTransfer::headersReceived(KviPointerHashTable<const char *,KviCString> *h)
+void HttpFileTransfer::headersReceived(KviPointerHashTable<const char *, KviCString> * h)
 {
-	if(!h)return;
+	if(!h)
+		return;
 	KviWindow * out = transferWindow();
 
-	if(out && (!m_bNoOutput))out->output(KVI_OUT_GENERICSTATUS,__tr2qs_ctx("[HTTP %d]: response headers:","http"),id());
-	KviPointerHashTableIterator<const char *,KviCString> it(*h);
+	if(out && (!m_bNoOutput))
+		out->output(KVI_OUT_GENERICSTATUS, __tr2qs_ctx("[HTTP %d]: response headers:", "http"), id());
+	KviPointerHashTableIterator<const char *, KviCString> it(*h);
 	while(KviCString * s = it.current())
 	{
 		QString szHeader = it.currentKey();
 		szHeader += ": ";
 		szHeader += s->ptr();
 		m_lHeaders.append(szHeader);
-		if(out && (!m_bNoOutput))out->output(KVI_OUT_GENERICSTATUS,"[HTTP %d]:   %s: %s",id(),it.currentKey(),s->ptr());
+		if(out && (!m_bNoOutput))
+			out->output(KVI_OUT_GENERICSTATUS, "[HTTP %d]:   %s: %s", id(), it.currentKey(), s->ptr());
 		++it;
 	}
 }

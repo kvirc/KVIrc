@@ -76,91 +76,90 @@
 		Returns the widget time according to format.
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_dateTimeEdit,"datetimeedit","widget")
+KVSO_BEGIN_REGISTERCLASS(KvsObject_dateTimeEdit, "datetimeedit", "widget")
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,date)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,setDate)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,setTime)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,time)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit, date)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit, setDate)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit, setTime)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit, time)
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,timeChangedEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,dateTimeChangedEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit,dateChangedEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit, timeChangedEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit, dateTimeChangedEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dateTimeEdit, dateChangedEvent)
 
 KVSO_END_REGISTERCLASS(KvsObject_dateTimeEdit)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_dateTimeEdit,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_dateTimeEdit, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_dateTimeEdit)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_dateTimeEdit)
 
 KVSO_END_DESTRUCTOR(KvsObject_dateTimeEdit)
 
-bool KvsObject_dateTimeEdit::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_dateTimeEdit::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
-	QDateTimeEdit *obj=new QDateTimeEdit(QDate::currentDate(),parentScriptWidget());
+	QDateTimeEdit * obj = new QDateTimeEdit(QDate::currentDate(), parentScriptWidget());
 	obj->setObjectName(getName());
-	connect(obj,SIGNAL(dateChanged(const QDate &)),this,SLOT(slotDateChanged(const QDate &)));
-	connect(obj,SIGNAL(dateTimeChanged(const QDateTime & )),this,SLOT(slotDateTimeChanged(const QDateTime &)));
-	connect(obj,SIGNAL(timeChanged(const QTime &)),this,SLOT(slotTimeChanged(const QTime &)));
+	connect(obj, SIGNAL(dateChanged(const QDate &)), this, SLOT(slotDateChanged(const QDate &)));
+	connect(obj, SIGNAL(dateTimeChanged(const QDateTime &)), this, SLOT(slotDateTimeChanged(const QDateTime &)));
+	connect(obj, SIGNAL(timeChanged(const QTime &)), this, SLOT(slotTimeChanged(const QTime &)));
 
-	setObject(obj,true);
+	setObject(obj, true);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(dateTimeEdit,date)
+KVSO_CLASS_FUNCTION(dateTimeEdit, date)
 {
 
 	CHECK_INTERNAL_POINTER(widget())
 	QString szFormat;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("format",KVS_PT_STRING,0,szFormat)
+	KVSO_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
 	KVSO_PARAMETERS_END(c)
 
 	c->returnValue()->setString(((QDateTimeEdit *)widget())->date().toString(szFormat));
 
 	return true;
 }
-KVSO_CLASS_FUNCTION(dateTimeEdit,setDate)
+KVSO_CLASS_FUNCTION(dateTimeEdit, setDate)
 {
 
 	CHECK_INTERNAL_POINTER(widget())
-	QString szFormat,szDate;
+	QString szFormat, szDate;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("format",KVS_PT_STRING,0,szFormat)
-		KVSO_PARAMETER("date",KVS_PT_STRING,0,szDate)
+	KVSO_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
+	KVSO_PARAMETER("date", KVS_PT_STRING, 0, szDate)
 	KVSO_PARAMETERS_END(c)
 	QDate date;
-	date=date.fromString(szDate,szFormat);
+	date = date.fromString(szDate, szFormat);
 	((QDateTimeEdit *)widget())->setDate(date);
 	return true;
 }
-KVSO_CLASS_FUNCTION(dateTimeEdit,time)
+KVSO_CLASS_FUNCTION(dateTimeEdit, time)
 {
 
 	CHECK_INTERNAL_POINTER(widget())
 	QString szFormat;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("format",KVS_PT_STRING,0,szFormat)
+	KVSO_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
 	KVSO_PARAMETERS_END(c)
 
 	c->returnValue()->setString(((QDateTimeEdit *)widget())->time().toString(szFormat));
 
 	return true;
 }
-KVSO_CLASS_FUNCTION(dateTimeEdit,setTime)
+KVSO_CLASS_FUNCTION(dateTimeEdit, setTime)
 {
 
 	CHECK_INTERNAL_POINTER(widget())
-	QString szFormat,szTime;
+	QString szFormat, szTime;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("format",KVS_PT_STRING,0,szFormat)
-		KVSO_PARAMETER("date",KVS_PT_STRING,0,szTime)
+	KVSO_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
+	KVSO_PARAMETER("date", KVS_PT_STRING, 0, szTime)
 	KVSO_PARAMETERS_END(c)
 	QTime time;
-	time=time.fromString(szTime,szFormat);
+	time = time.fromString(szTime, szFormat);
 	((QDateTimeEdit *)widget())->setTime(time);
 	return true;
 }
@@ -168,41 +167,38 @@ KVSO_CLASS_FUNCTION(dateTimeEdit,setTime)
 // slots
 void KvsObject_dateTimeEdit::slotDateTimeChanged(const QDateTime &)
 {
-	KviKvsVariantList *params=0;
-	callFunction(this,"dateTimeChangedEvent",params);
+	KviKvsVariantList * params = 0;
+	callFunction(this, "dateTimeChangedEvent", params);
 }
 
-
-KVSO_CLASS_FUNCTION(dateTimeEdit,dateTimeChangedEvent)
+KVSO_CLASS_FUNCTION(dateTimeEdit, dateTimeChangedEvent)
 {
-	emitSignal("dateTimeChanged",c);
+	emitSignal("dateTimeChanged", c);
 	return true;
 }
 
-
-
-KVSO_CLASS_FUNCTION(dateTimeEdit,timeChangedEvent)
+KVSO_CLASS_FUNCTION(dateTimeEdit, timeChangedEvent)
 {
-	emitSignal("timeChanged",c);
+	emitSignal("timeChanged", c);
 	return true;
 }
 
 // slots
 void KvsObject_dateTimeEdit::slotTimeChanged(const QTime &)
 {
-	KviKvsVariantList *params=0;
-	callFunction(this,"timeChangedEvent",params);
+	KviKvsVariantList * params = 0;
+	callFunction(this, "timeChangedEvent", params);
 }
 
-KVSO_CLASS_FUNCTION(dateTimeEdit,dateChangedEvent)
+KVSO_CLASS_FUNCTION(dateTimeEdit, dateChangedEvent)
 {
-	emitSignal("dateChanged",c);
+	emitSignal("dateChanged", c);
 	return true;
 }
 
 // slots
 void KvsObject_dateTimeEdit::slotDateChanged(const QDate &)
 {
-	KviKvsVariantList *params=0;
-	callFunction(this,"dateChangedEvent",params);
+	KviKvsVariantList * params = 0;
+	callFunction(this, "dateChangedEvent", params);
 }

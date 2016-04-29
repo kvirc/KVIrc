@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "KviHtmlDialog.h"
 #include "KviLocale.h"
 
@@ -31,8 +30,8 @@
 #include <QLayout>
 #include <QTextBrowser>
 
-KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
-: QDialog(pParent)
+KviHtmlDialog::KviHtmlDialog(QWidget * pParent, KviHtmlDialogData * pData)
+    : QDialog(pParent)
 {
 	m_pData = pData;
 
@@ -57,7 +56,7 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 	{
 		l = new QLabel(this);
 		l->setText(pData->szUpperLabelText);
-		g->addWidget(l,0,0,1,3);
+		g->addWidget(l, 0, 0, 1, 3);
 		iUp = 1;
 	}
 
@@ -65,34 +64,36 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 	{
 		l = new QLabel(this);
 		l->setText(pData->szLowerLabelText);
-		g->addWidget(l,2,0,1,3);
-	iDown = 1;
+		g->addWidget(l, 2, 0, 1, 3);
+		iDown = 1;
 	}
 
-	te = new KviTextBrowser(this,pData);
+	te = new KviTextBrowser(this, pData);
 
 	pData->m_pDoc->setHtml(pData->szHtmlText);
 	te->setDocument(pData->m_pDoc);
 
-//	te->setText(pData->szHtmlText);
+	//	te->setText(pData->szHtmlText);
 	//te->setReadOnly(true);
 
 	if(pData->iFlags & KviHtmlDialogData::ForceMinimumSize)
-		te->setMinimumSize(pData->iMinimumWidth,pData->iMinimumHeight);
+		te->setMinimumSize(pData->iMinimumWidth, pData->iMinimumHeight);
 
 	//te->setReadOnly(true);
-	g->addWidget(te,iUp,0,iDown-iUp+1,3);
+	g->addWidget(te, iUp, 0, iDown - iUp + 1, 3);
 
 	int iButtons = pData->szButton3Text.isEmpty() ? (pData->szButton2Text.isEmpty() ? 1 : 2) : 3;
-	if(pData->iCancelButton > iButtons)pData->iCancelButton = iButtons;
-	if(pData->iDefaultButton > iButtons)pData->iDefaultButton = iButtons;
+	if(pData->iCancelButton > iButtons)
+		pData->iCancelButton = iButtons;
+	if(pData->iDefaultButton > iButtons)
+		pData->iDefaultButton = iButtons;
 
 	pb = new QPushButton(this);
 	pb->setText(pData->szButton1Text.isEmpty() ? __tr2qs("OK") : pData->szButton1Text);
 	pb->setDefault(pData->iDefaultButton == 1);
 	int iCoord = iButtons == 1 ? 1 : 0;
-	g->addWidget(pb,3,iCoord);
-	connect(pb,SIGNAL(clicked()),this,SLOT(button1Pressed()));
+	g->addWidget(pb, 3, iCoord);
+	connect(pb, SIGNAL(clicked()), this, SLOT(button1Pressed()));
 
 	if(!pData->szButton2Text.isEmpty())
 	{
@@ -100,27 +101,26 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 		pb->setText(pData->szButton2Text);
 		pb->setDefault(pData->iDefaultButton == 2);
 		iCoord = iButtons == 2 ? 2 : 1;
-		g->addWidget(pb,3,iCoord);
-		connect(pb,SIGNAL(clicked()),this,SLOT(button2Pressed()));
+		g->addWidget(pb, 3, iCoord);
+		connect(pb, SIGNAL(clicked()), this, SLOT(button2Pressed()));
 
 		if(!pData->szButton3Text.isEmpty())
 		{
 			pb = new QPushButton(this);
 			pb->setText(pData->szButton3Text);
 			pb->setDefault(pData->iDefaultButton == 3);
-			g->addWidget(pb,3,2);
-			connect(pb,SIGNAL(clicked()),this,SLOT(button3Pressed()));
+			g->addWidget(pb, 3, 2);
+			connect(pb, SIGNAL(clicked()), this, SLOT(button3Pressed()));
 		}
 	}
 
-	g->setRowStretch(1,1);
+	g->setRowStretch(1, 1);
 
 	m_pData->iSelectedButton = m_pData->iDefaultButton;
 }
 
 KviHtmlDialog::~KviHtmlDialog()
 {
-
 }
 
 void KviHtmlDialog::button1Pressed()
@@ -147,9 +147,9 @@ void KviHtmlDialog::reject()
 	QDialog::reject();
 }
 
-int KviHtmlDialog::display(QWidget * pParent,KviHtmlDialogData * pData)
+int KviHtmlDialog::display(QWidget * pParent, KviHtmlDialogData * pData)
 {
-	KviHtmlDialog * pDialog = new KviHtmlDialog(pParent,pData);
+	KviHtmlDialog * pDialog = new KviHtmlDialog(pParent, pData);
 	pDialog->exec();
 	delete pDialog;
 	return pData->iSelectedButton;

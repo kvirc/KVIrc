@@ -31,7 +31,7 @@
 #include "KviConfigurationFile.h"
 #include "KviApplication.h"
 
-QRect g_rectToolBarEditorDialogGeometry(0,0,0,0);
+QRect g_rectToolBarEditorDialogGeometry(0, 0, 0, 0);
 
 /*
 	@doc: toolbareditor.open
@@ -49,20 +49,19 @@ QRect g_rectToolBarEditorDialogGeometry(0,0,0,0);
 		otherwise it is opened as part of the current frame window.[br]
 */
 
-
-static bool toolbareditor_kvs_cmd_open(KviKvsModuleCommandCall *c)
+static bool toolbareditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	CustomizeToolBarsDialog::display(c->hasSwitch('t',"toplevel"));
+	CustomizeToolBarsDialog::display(c->hasSwitch('t', "toplevel"));
 	return true;
 }
 
 static bool toolbareditor_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",toolbareditor_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", toolbareditor_kvs_cmd_open);
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);
-	KviConfigurationFile cfg(szBuf,KviConfigurationFile::Read);
-	g_rectToolBarEditorDialogGeometry = cfg.readRectEntry("EditorGeometry",QRect(10,10,390,440));
+	KviConfigurationFile cfg(szBuf, KviConfigurationFile::Read);
+	g_rectToolBarEditorDialogGeometry = cfg.readRectEntry("EditorGeometry", QRect(10, 10, 390, 440));
 
 	return true;
 }
@@ -72,26 +71,25 @@ static bool toolbareditor_module_can_unload(KviModule *)
 	return (!CustomizeToolBarsDialog::instance());
 }
 
-static bool toolbareditor_module_cleanup(KviModule *m)
+static bool toolbareditor_module_cleanup(KviModule * m)
 {
 	CustomizeToolBarsDialog::cleanup();
 
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);
-	KviConfigurationFile cfg(szBuf,KviConfigurationFile::Write);
-	cfg.writeEntry("EditorGeometry",g_rectToolBarEditorDialogGeometry);
+	KviConfigurationFile cfg(szBuf, KviConfigurationFile::Write);
+	cfg.writeEntry("EditorGeometry", g_rectToolBarEditorDialogGeometry);
 
 	return true;
 }
 
 KVIRC_MODULE(
-	"ToolbarEditor",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Editor for the scriptable toolbars",
-	toolbareditor_module_init,
-	toolbareditor_module_can_unload,
-	0,
-	toolbareditor_module_cleanup,
-	"editor"
-)
+    "ToolbarEditor",                                                // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Editor for the scriptable toolbars",
+    toolbareditor_module_init,
+    toolbareditor_module_can_unload,
+    0,
+    toolbareditor_module_cleanup,
+    "editor")

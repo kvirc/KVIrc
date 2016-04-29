@@ -24,7 +24,6 @@
 //
 //=============================================================================
 
-
 // This is a nicely working DNS resolver that uses the QHostInfo interface
 // and thus gets rid of all the ugly OS dependencies we have.
 // It should be sufficient to rename this file and use this class
@@ -58,7 +57,6 @@ class KVILIB_API KviDnsResolver : public QObject
 	Q_OBJECT
 
 public:
-
 	///
 	/// Creates an instance of KviDnsResolver
 	///
@@ -71,7 +69,6 @@ public:
 	virtual ~KviDnsResolver();
 
 public:
-
 	enum QueryType
 	{
 		IPv4,
@@ -88,11 +85,9 @@ public:
 	};
 
 private:
-
 	KviDnsResolverPrivate * m_pPrivateData;
 
 public:
-
 	///
 	/// Returns the resolver state
 	///
@@ -102,7 +97,7 @@ public:
 	/// Starts a lookup for the specified DNS query of the specified type.
 	/// Returns true on success and false on failure.
 	///
-	bool lookup(const QString & szQuery,QueryType eType);
+	bool lookup(const QString & szQuery, QueryType eType);
 
 	// Results (return always non null-data..but valid results only if state() == Success or Failure)
 	KviError::Code error() const; // DEPRECATED use errorString()
@@ -116,12 +111,11 @@ public:
 	bool isRunning() const;
 
 private slots:
-	void slotHostLookupTerminated(const QHostInfo &oHostInfo);
+	void slotHostLookupTerminated(const QHostInfo & oHostInfo);
 
 signals:
 	void lookupDone(KviDnsResolver *);
 
 }; // class KviDnsResolver
-
 
 #endif //!_KviDnsResolver_h_

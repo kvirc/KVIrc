@@ -24,7 +24,6 @@
 
 #include "kvi_settings.h"
 
-
 #ifdef COMPILE_WEBKIT_SUPPORT
 
 #include "WebThemeInterfaceDialog.h"
@@ -35,44 +34,38 @@
 #include "KviIconManager.h"
 #include "KviLocale.h"
 
-
 WebThemeInterfaceDialog::WebThemeInterfaceDialog(QWidget * par)
-: KviWebPackageManagementDialog(par)
+    : KviWebPackageManagementDialog(par)
 {
-	setWindowTitle(__tr2qs_ctx("Download Themes - KVIrc","theme"));
+	setWindowTitle(__tr2qs_ctx("Download Themes - KVIrc", "theme"));
 
 	// local dir for user defined themes
-	g_pApp->getLocalKvircDirectory(m_szLocalThemesPath,KviApplication::Themes);
+	g_pApp->getLocalKvircDirectory(m_szLocalThemesPath, KviApplication::Themes);
 	m_szLocalThemesPath += KVI_PATH_SEPARATOR_CHAR;
 
 	// global dir for builtin themes
-	g_pApp->getGlobalKvircDirectory(m_szGlobalThemesPath,KviApplication::Themes);
+	g_pApp->getGlobalKvircDirectory(m_szGlobalThemesPath, KviApplication::Themes);
 	m_szGlobalThemesPath += KVI_PATH_SEPARATOR_CHAR;
 
 	setPackagePageUrl(
-			QString::fromLatin1("http://www.kvirc.de/app/themes.php?version=" KVI_VERSION "&lang=%1")
-					.arg(QString::fromUtf8(KviLocale::instance()->localeName().ptr()))
-		);
+	    QString::fromLatin1("http://www.kvirc.de/app/themes.php?version=" KVI_VERSION "&lang=%1")
+	        .arg(QString::fromUtf8(KviLocale::instance()->localeName().ptr())));
 }
 WebThemeInterfaceDialog::~WebThemeInterfaceDialog()
 {
 }
 
-bool WebThemeInterfaceDialog::installPackage(const QString &szPath,QString &szError)
+bool WebThemeInterfaceDialog::installPackage(const QString & szPath, QString & szError)
 {
-	return ThemeFunctions::installThemePackage(szPath,szError,this);
+	return ThemeFunctions::installThemePackage(szPath, szError, this);
 }
 
-bool WebThemeInterfaceDialog::packageIsInstalled(const QString &szId,const QString &szVersion)
+bool WebThemeInterfaceDialog::packageIsInstalled(const QString & szId, const QString & szVersion)
 {
 	QString szSubdir = szId + QString("-") + szVersion;
-	szSubdir.replace(QRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"),"_");
+	szSubdir.replace(QRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"), "_");
 
-	return \
-			KviFileUtils::fileExists(m_szGlobalThemesPath+szSubdir) || \
-			KviFileUtils::fileExists(m_szLocalThemesPath+szSubdir);
+	return KviFileUtils::fileExists(m_szGlobalThemesPath + szSubdir) || KviFileUtils::fileExists(m_szLocalThemesPath + szSubdir);
 }
-
-
 
 #endif //COMPILE_WEBKIT_SUPPORT

@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviSASL.h"
 
 #include "KviMemory.h"
@@ -33,30 +31,29 @@ namespace KviSASL
 
 	bool plainMethod(KviCString & szIn, KviCString & szOut, QByteArray & baNick, QByteArray & baPass)
 	{
-		if(szIn=="+")
+		if(szIn == "+")
 		{
 			int answerLen = 2 + (2 * baNick.size()) + baPass.size();
-			char * answer = (char *) KviMemory::allocate(answerLen);
+			char * answer = (char *)KviMemory::allocate(answerLen);
 			char * answer2 = answer;
 
 			memcpy(answer, baNick.data(), baNick.size());
-			answer+=baNick.size();
+			answer += baNick.size();
 			memset(answer, 0, 1);
 			answer++;
 
 			memcpy(answer, baNick.data(), baNick.size());
-			answer+=baNick.size();
+			answer += baNick.size();
 			memset(answer, 0, 1);
 			answer++;
 
 			memcpy(answer, baPass.data(), baPass.size());
 
-			szOut.bufferToBase64(answer2,answerLen);
+			szOut.bufferToBase64(answer2, answerLen);
 			KviMemory::free(answer2);
 
 			return true;
 		}
 		return false;
 	}
-
 }

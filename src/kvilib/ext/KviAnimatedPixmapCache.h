@@ -35,7 +35,7 @@
 
 class KVILIB_API KviAnimatedPixmapCache : public QObject
 {
-        Q_OBJECT
+	Q_OBJECT
 public:
 	/*
 	 * This subclass represents simple structure
@@ -46,22 +46,26 @@ public:
 	 *
 	 * All data will be duplicated in such case.
 	 */
-	class FrameInfo {
+	class FrameInfo
+	{
 	public:
-		QPixmap *pixmap; //frame pixmap
-		uint delay; //next frame delay
+		QPixmap * pixmap; //frame pixmap
+		uint delay;       //next frame delay
 
-		FrameInfo(QPixmap *_pixmap, uint _delay) {
+		FrameInfo(QPixmap * _pixmap, uint _delay)
+		{
 			pixmap = _pixmap;
 			delay = _delay;
 		}
 
-		FrameInfo(const FrameInfo& source) {
+		FrameInfo(const FrameInfo & source)
+		{
 			pixmap = source.pixmap;
 			delay = source.delay;
 		}
 
-		void detach() {
+		void detach()
+		{
 			pixmap = new QPixmap(*pixmap);
 		}
 	};
@@ -73,23 +77,24 @@ public:
 	 * It adds references counter and
 	 * mutex, to provide thread-safety.
 	 */
-	class Data: public QList<FrameInfo> {
+	class Data : public QList<FrameInfo>
+	{
 	public:
-		uint     refs;    //references count
-		QSize    size;    //size of the pixmaps
-		QString  file;    //just to speedup the cache
-		bool     resized;
+		uint refs;    //references count
+		QSize size;   //size of the pixmaps
+		QString file; //just to speedup the cache
+		bool resized;
 
-		Data(QString szFile) :
-			QList<FrameInfo> (), refs(0), file(szFile), resized(false) {
+		Data(QString szFile) : QList<FrameInfo>(), refs(0), file(szFile), resized(false)
+		{
 		}
 
-		Data(Data& other) :
-			QList<FrameInfo> (other), refs(0), file(other.file), resized(false) {
-				for(int i=0;i<count();i++)
-				{
-					this->operator [](i).detach();
-				}
+		Data(Data & other) : QList<FrameInfo>(other), refs(0), file(other.file), resized(false)
+		{
+			for(int i = 0; i < count(); i++)
+			{
+				this->operator[](i).detach();
+			}
 		}
 	};
 
@@ -102,56 +107,53 @@ protected:
 	virtual ~KviAnimatedPixmapCache();
 
 protected:
-
 	mutable QMutex m_cacheMutex;
 	mutable QMutex m_timerMutex;
 
-	QMultiHash<QString,Data*> m_hCache;
-	QMultiMap<long long,KviAnimatedPixmapInterface*> m_timerData;
+	QMultiHash<QString, Data *> m_hCache;
+	QMultiMap<long long, KviAnimatedPixmapInterface *> m_timerData;
 	QTimer m_animationTimer;
 
 	static KviAnimatedPixmapCache * m_pInstance;
 
 protected:
+	Data * internalLoad(const QString & szFile, int iWidth = 0, int iHeight = 0);
+	Data * internalResize(Data * data, const QSize & size);
+	void internalFree(Data * data);
 
-	Data* internalLoad(const QString &szFile,int iWidth=0,int iHeight=0);
-	Data* internalResize(Data* data,const QSize &size);
-	void internalFree(Data* data);
-
-	void internalScheduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver);
-	void internalNotifyDelete(KviAnimatedPixmapInterface* receiver);
+	void internalScheduleFrameChange(uint delay, KviAnimatedPixmapInterface * receiver);
+	void internalNotifyDelete(KviAnimatedPixmapInterface * receiver);
 
 protected slots:
 	virtual void timeoutEvent();
 
 public:
-
 	static void init();
 	static void done();
 
-	static void  scheduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver)
+	static void scheduleFrameChange(uint delay, KviAnimatedPixmapInterface * receiver)
 	{
-		m_pInstance->internalScheduleFrameChange(delay,receiver);
+		m_pInstance->internalScheduleFrameChange(delay, receiver);
 	}
 
-	static Data* load(const QString &szFileName,int iWidth=0,int iHeight=0)
+	static Data * load(const QString & szFileName, int iWidth = 0, int iHeight = 0)
 	{
-		return m_pInstance->internalLoad(szFileName,iWidth,iHeight);
+		return m_pInstance->internalLoad(szFileName, iWidth, iHeight);
 	}
 
-	static Data* resize(Data* data,const QSize &size)
+	static Data * resize(Data * data, const QSize & size)
 	{
-		return m_pInstance->internalResize(data,size);
+		return m_pInstance->internalResize(data, size);
 	}
 
-	static void free(Data* data)
+	static void free(Data * data)
 	{
 		m_pInstance->internalFree(data);
 	}
 
-	static QPixmap* dummyPixmap();
+	static QPixmap * dummyPixmap();
 
-	static void notifyDelete(KviAnimatedPixmapInterface* receiver)
+	static void notifyDelete(KviAnimatedPixmapInterface * receiver)
 	{
 		m_pInstance->internalNotifyDelete(receiver);
 	}

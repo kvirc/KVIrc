@@ -37,16 +37,19 @@ class KVILIB_API KviMediaManager : public KviMutex
 public:
 	KviMediaManager();
 	~KviMediaManager();
+
 protected:
 	KviPointerList<KviMediaType> * m_pMediaTypeList;
+
 private:
 	KviMediaType * findMediaTypeForRegularFile(const char * pcFullPath, const char * pcFileName, bool bCheckMagic);
+
 public:
-	KviPointerList<KviMediaType> * mediaTypeList(){ return m_pMediaTypeList; };
+	KviPointerList<KviMediaType> * mediaTypeList() { return m_pMediaTypeList; };
 	KviMediaType * findMediaTypeByFileMask(const char * pcFilemask);
 	KviMediaType * findMediaTypeByIanaType(const char * pcIanaType);
-	bool removeMediaType(KviMediaType * pType){ return m_pMediaTypeList->removeRef(pType); };
-	void clear(){ m_pMediaTypeList->clear(); };
+	bool removeMediaType(KviMediaType * pType) { return m_pMediaTypeList->removeRef(pType); };
+	void clear() { m_pMediaTypeList->clear(); };
 	void insertMediaType(KviMediaType * pType);
 	KviMediaType * findMediaType(const char * pcFilename, bool bCheckMagic = true);
 	static void copyMediaType(KviMediaType * pDst, KviMediaType * pSrc);
@@ -55,4 +58,4 @@ public:
 	void save(const QString & szFilename);
 };
 
-#endif  // _KVI_MEDIAMANAGER_H_
+#endif // _KVI_MEDIAMANAGER_H_

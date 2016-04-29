@@ -24,9 +24,8 @@
 
 #include "KviKvsTreeNodeFunctionCall.h"
 
-
-KviKvsTreeNodeFunctionCall::KviKvsTreeNodeFunctionCall(const QChar * pLocation,const QString &szFunctionName,KviKvsTreeNodeDataList * pParams)
-: KviKvsTreeNodeData(pLocation)
+KviKvsTreeNodeFunctionCall::KviKvsTreeNodeFunctionCall(const QChar * pLocation, const QString & szFunctionName, KviKvsTreeNodeDataList * pParams)
+    : KviKvsTreeNodeData(pLocation)
 {
 	m_szFunctionName = szFunctionName;
 	m_pParams = pParams;
@@ -38,14 +37,14 @@ KviKvsTreeNodeFunctionCall::~KviKvsTreeNodeFunctionCall()
 	delete m_pParams;
 }
 
-void KviKvsTreeNodeFunctionCall::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeFunctionCall::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Function Call";
 }
 
 void KviKvsTreeNodeFunctionCall::dump(const char * prefix)
 {
-	qDebug("%s FunctionCall",prefix);
+	qDebug("%s FunctionCall", prefix);
 }
 
 bool KviKvsTreeNodeFunctionCall::canEvaluateToObjectReference()

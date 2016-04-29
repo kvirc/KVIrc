@@ -41,16 +41,17 @@
 #include "KviIrcUrl.h"
 
 // KviApplication.cpp
-extern KVIRC_API KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;
+extern KVIRC_API KviPointerHashTable<QString, KviWindow> * g_pGlobalWindowDict;
 
-bool KviIrcUrl::parse(const char * url,KviCString &cmdBuffer,int contextSpec)
+bool KviIrcUrl::parse(const char * url, KviCString & cmdBuffer, int contextSpec)
 {
 	// irc[6]://<server>[:<port>][/<channel>[?<pass>]]
 
 	KviIrcUrlParts urlParts;
 	KviIrcUrl::split(url, urlParts);
 
-	if (urlParts.iError & InvalidUrl)return false;
+	if(urlParts.iError & InvalidUrl)
+		return false;
 
 	cmdBuffer = "server ";
 	switch(contextSpec)
@@ -62,40 +63,45 @@ bool KviIrcUrl::parse(const char * url,KviCString &cmdBuffer,int contextSpec)
 			cmdBuffer.append("-n ");
 			break;
 	}
-	if(urlParts.bIPv6)cmdBuffer.append(" -i ");
-	if(urlParts.bSsl)cmdBuffer.append(" -s ");
+	if(urlParts.bIPv6)
+		cmdBuffer.append(" -i ");
+	if(urlParts.bSsl)
+		cmdBuffer.append(" -s ");
 
 	QString channels, passwords;
 	QStringList splitted;
 
-	if (urlParts.chanList.size())
+	if(urlParts.chanList.size())
 	{
-		for (int i = 0; i < urlParts.chanList.size(); ++i)
+		for(int i = 0; i < urlParts.chanList.size(); ++i)
 		{
 			splitted = urlParts.chanList[i].split("?");
-			if (i)channels.append(",");
-			if (!(splitted[0].startsWith("#") || splitted[0].startsWith("!") || splitted[0].startsWith("&")))channels.append("#");
+			if(i)
+				channels.append(",");
+			if(!(splitted[0].startsWith("#") || splitted[0].startsWith("!") || splitted[0].startsWith("&")))
+				channels.append("#");
 			channels.append(splitted[0]);
 
-			if (splitted.size() > 1)
+			if(splitted.size() > 1)
 			{
-				if (i)passwords.append(",");
+				if(i)
+					passwords.append(",");
 				passwords.append(splitted[1]);
 			}
 		}
 
-		cmdBuffer.append(KviCString::Format," -c=\"join %s %s\" ",channels.data(),passwords.data());
+		cmdBuffer.append(KviCString::Format, " -c=\"join %s %s\" ", channels.data(), passwords.data());
 	}
 
 	cmdBuffer.append(urlParts.szHost);
-	cmdBuffer.append(KviCString::Format," %d",urlParts.iPort);
+	cmdBuffer.append(KviCString::Format, " %d", urlParts.iPort);
 
 	cmdBuffer.append(';');
 
 	return true;
 }
 
-void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
+void KviIrcUrl::split(QString url, KviIrcUrlParts & result)
 {
 	// irc[s][6]://<server>[:<port>][/<channel>[?<pass>]][[,<channel>[?<pass>]]
 
@@ -107,13 +113,13 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 
 	QRegExp rx("^(irc(s)?(6)?://)?\\[?([\\w\\d\\.-]*|[\\d:a-f]*)\\]?(:(\\d*))?(/(.*))?$");
 
-	if (rx.indexIn(url) < 0)
+	if(rx.indexIn(url) < 0)
 	{
 		result.iError |= InvalidUrl;
 		return; // doesn't match? then it's not even a url...
 	}
 
-	if (!rx.cap(1).isEmpty())
+	if(!rx.cap(1).isEmpty())
 	{
 		result.bSsl = rx.cap(2) == "s";
 		result.bIPv6 = rx.cap(3) == "6";
@@ -121,78 +127,89 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 
 	result.bIPv6 = result.bIPv6 || rx.cap(3).contains(":");
 
-	if (rx.cap(6).toUInt() > 65535 || rx.cap(6).toUInt() < 1)
+	if(rx.cap(6).toUInt() > 65535 || rx.cap(6).toUInt() < 1)
 	{
 		result.iError |= InvalidPort;
-		if (result.bSsl)result.iPort = 6697;
-	} else
+		if(result.bSsl)
+			result.iPort = 6697;
+	}
+	else
 		result.iPort = rx.cap(6).toUInt();
 
 	result.szHost = rx.cap(4);
 
-	if (result.szHost.isEmpty())result.iError |= InvalidUrl;
+	if(result.szHost.isEmpty())
+		result.iError |= InvalidUrl;
 
-	result.chanList = rx.cap(8).isEmpty() ? QStringList() : rx.cap(8).split(',',QString::SkipEmptyParts);
+	result.chanList = rx.cap(8).isEmpty() ? QStringList() : rx.cap(8).split(',', QString::SkipEmptyParts);
 }
 
-void KviIrcUrl::join(QString &uri, KviIrcServer* server)
+void KviIrcUrl::join(QString & uri, KviIrcServer * server)
 {
 	if(server)
 	{
-		uri="irc";
+		uri = "irc";
 
-		if(server->useSSL()) uri.append("s");
-		if(server->isIPv6()) uri.append("6");
+		if(server->useSSL())
+			uri.append("s");
+		if(server->isIPv6())
+			uri.append("6");
 
 		uri.append("://");
-		if(server->isIPv6() && server->hostName().contains(':')) uri.append("[");
+		if(server->isIPv6() && server->hostName().contains(':'))
+			uri.append("[");
 		uri.append(server->hostName());
-		if(server->isIPv6() && server->hostName().contains(':')) uri.append("]");
-		if(server->port()!=6667) uri.append(QString(":%1").arg(server->port()));
+		if(server->isIPv6() && server->hostName().contains(':'))
+			uri.append("]");
+		if(server->port() != 6667)
+			uri.append(QString(":%1").arg(server->port()));
 		uri.append("/");
 	}
 }
 
-void KviIrcUrl::makeJoinCmd(const QStringList& chans, QString& szJoinCommand)
+void KviIrcUrl::makeJoinCmd(const QStringList & chans, QString & szJoinCommand)
 {
-	QString szChannels,szProtectedChannels,szPasswords,szCurPass,szCurChan;
-		if(chans.count()!=0)
+	QString szChannels, szProtectedChannels, szPasswords, szCurPass, szCurChan;
+	if(chans.count() != 0)
+	{
+
+		for(QStringList::ConstIterator it = chans.begin(); it != chans.end(); ++it)
 		{
 
-			for ( QStringList::ConstIterator it = chans.begin(); it != chans.end(); ++it ) {
-
-				szCurPass=(*it).section('?',1);
-				if(szCurPass.isEmpty())
-				{
-					if(!szChannels.isEmpty())
-						szChannels.append(",");
-					szCurChan = (*it).section('?',0,0);
-					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
-							szCurChan.prepend('#');
-					szChannels.append(szCurChan);
-				} else {
-					if(!szProtectedChannels.isEmpty())
-						szProtectedChannels.append(",");
-					szCurChan = (*it).section('?',0,0);
-					if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
-							szCurChan.prepend('#');
-					szProtectedChannels.append(szCurChan);
-					if(!szPasswords.isEmpty())
-						szPasswords.append(",");
-					szPasswords.append(szCurPass);
-				}
+			szCurPass = (*it).section('?', 1);
+			if(szCurPass.isEmpty())
+			{
+				if(!szChannels.isEmpty())
+					szChannels.append(",");
+				szCurChan = (*it).section('?', 0, 0);
+				if(!(szCurChan[0] == '#' || szCurChan[0] == '&' || szCurChan[0] == '!'))
+					szCurChan.prepend('#');
+				szChannels.append(szCurChan);
 			}
-			szJoinCommand = "JOIN ";
-			szJoinCommand.append(szProtectedChannels);
-			if(!szProtectedChannels.isEmpty() && !szChannels.isEmpty())
-				szJoinCommand.append(',');
-			szJoinCommand.append(szChannels);
-			szJoinCommand.append(" ");
-			szJoinCommand.append(szPasswords);
+			else
+			{
+				if(!szProtectedChannels.isEmpty())
+					szProtectedChannels.append(",");
+				szCurChan = (*it).section('?', 0, 0);
+				if(!(szCurChan[0] == '#' || szCurChan[0] == '&' || szCurChan[0] == '!'))
+					szCurChan.prepend('#');
+				szProtectedChannels.append(szCurChan);
+				if(!szPasswords.isEmpty())
+					szPasswords.append(",");
+				szPasswords.append(szCurPass);
+			}
 		}
+		szJoinCommand = "JOIN ";
+		szJoinCommand.append(szProtectedChannels);
+		if(!szProtectedChannels.isEmpty() && !szChannels.isEmpty())
+			szJoinCommand.append(',');
+		szJoinCommand.append(szChannels);
+		szJoinCommand.append(" ");
+		szJoinCommand.append(szPasswords);
+	}
 }
 
-int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pConsole)
+int KviIrcUrl::run(const QString & text, int contextSpec, KviConsoleWindow * pConsole)
 {
 	// first, sanity check the url
 	QString cmdBuffer;
@@ -200,7 +217,7 @@ int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pCons
 	KviIrcUrlParts parts;
 	bool bAlreadyConnected = false;
 
-	KviIrcUrl::split(text,parts);
+	KviIrcUrl::split(text, parts);
 	if(parts.iError & KviIrcUrl::InvalidProtocol || parts.iError & KviIrcUrl::InvalidUrl)
 	{
 		// invalid proto
@@ -208,10 +225,10 @@ int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pCons
 	}
 
 	g_pApp->addRecentUrl(text);
-	makeJoinCmd(parts.chanList,szJoinCommand);
+	makeJoinCmd(parts.chanList, szJoinCommand);
 
 	// then, get a context
-	if( (contextSpec & CurrentContext) && !pConsole)
+	if((contextSpec & CurrentContext) && !pConsole)
 		contextSpec = FirstFreeContext;
 
 	if(contextSpec & TryCurrentContext)
@@ -223,12 +240,9 @@ int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pCons
 
 			if(pTmpConsole->connection())
 			{
-				KviIrcServer* server = pTmpConsole->connection()->target()->server();
+				KviIrcServer * server = pTmpConsole->connection()->target()->server();
 				if(
-					( server->hostName() == parts.szHost ) &&
-					( server->port() == parts.iPort ) &&
-					( server->useSSL() == parts.bSsl ) &&
-					( server->isIPv6() == parts.bIPv6) )
+				    (server->hostName() == parts.szHost) && (server->port() == parts.iPort) && (server->useSSL() == parts.bSsl) && (server->isIPv6() == parts.bIPv6))
 				{
 					pConsole = pTmpConsole;
 					bAlreadyConnected = true;
@@ -237,14 +251,16 @@ int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pCons
 
 			if(!pConsole)
 				contextSpec = FirstFreeContext;
-		} else {
+		}
+		else
+		{
 			contextSpec = FirstFreeContext;
 		}
 	}
 
 	if(contextSpec & TryEveryContext)
 	{
-		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
+		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 		KviConsoleWindow * pTmpConsole = 0;
 		pConsole = 0;
 
@@ -252,16 +268,13 @@ int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pCons
 		{
 			if(wnd->type() == KviWindow::Console)
 			{
-				pTmpConsole = (KviConsoleWindow *) wnd;
+				pTmpConsole = (KviConsoleWindow *)wnd;
 
 				if(pTmpConsole->connection())
 				{
-					KviIrcServer* server = pTmpConsole->connection()->target()->server();
+					KviIrcServer * server = pTmpConsole->connection()->target()->server();
 					if(
-						( server->hostName() == parts.szHost ) &&
-						( server->port() == parts.iPort ) &&
-						( server->useSSL() == parts.bSsl ) &&
-						( server->isIPv6() == parts.bIPv6) )
+					    (server->hostName() == parts.szHost) && (server->port() == parts.iPort) && (server->useSSL() == parts.bSsl) && (server->isIPv6() == parts.bIPv6))
 					{
 						pConsole = pTmpConsole;
 						bAlreadyConnected = true;
@@ -284,13 +297,17 @@ int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pCons
 			if(pConsole->connectionInProgress())
 			{
 				pConsole = g_pMainWindow->firstNotConnectedConsole();
-				if(!pConsole) {
+				if(!pConsole)
+				{
 					pConsole = g_pMainWindow->createNewConsole();
 				}
 			}
-		} else {
+		}
+		else
+		{
 			pConsole = g_pMainWindow->firstNotConnectedConsole();
-			if(!pConsole) {
+			if(!pConsole)
+			{
 				pConsole = g_pMainWindow->createNewConsole();
 			}
 		}
@@ -302,9 +319,9 @@ int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pCons
 		// just check if thr user want us to join or part any channel
 		QString tmp;
 		QString toPart;
-		for(KviChannelWindow * c = pConsole->connection()->channelList()->first();c;c = pConsole->connection()->channelList()->next())
+		for(KviChannelWindow * c = pConsole->connection()->channelList()->first(); c; c = pConsole->connection()->channelList()->next())
 		{
-			tmp=c->target();
+			tmp = c->target();
 			if(c->hasChannelMode('k'))
 			{
 				tmp.append("?");
@@ -318,11 +335,11 @@ int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pCons
 		}
 		if(!(contextSpec & DoNotPartChans))
 		{
-			makeJoinCmd(parts.chanList,szJoinCommand);
+			makeJoinCmd(parts.chanList, szJoinCommand);
 			if(!toPart.isEmpty())
 			{
 				toPart.prepend("part ");
-				KviKvsScript::run(toPart,pConsole);
+				KviKvsScript::run(toPart, pConsole);
 			}
 		}
 		if(!szJoinCommand.isEmpty())
@@ -330,11 +347,15 @@ int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pCons
 			pConsole->connection()->sendData(pConsole->connection()->encodeText(szJoinCommand).data());
 		}
 		return parts.iError;
-	} else {
+	}
+	else
+	{
 		// we need to create a new connection on the context of pConsole
 		QString szCommand("server ");
-		if(parts.bSsl) szCommand.append("-s ");
-		if(parts.bIPv6) szCommand.append("-i ");
+		if(parts.bSsl)
+			szCommand.append("-s ");
+		if(parts.bIPv6)
+			szCommand.append("-i ");
 		if(!szJoinCommand.isEmpty())
 		{
 			szCommand.append("-c=\"");
@@ -343,7 +364,7 @@ int KviIrcUrl::run(const QString& text, int contextSpec, KviConsoleWindow* pCons
 		}
 		szCommand.append(QString("%1 %2 ").arg(parts.szHost).arg(parts.iPort));
 
-		KviKvsScript::run(szCommand,(contextSpec & TryCurrentContext) ? g_pMainWindow->createNewConsole() : pConsole);
+		KviKvsScript::run(szCommand, (contextSpec & TryCurrentContext) ? g_pMainWindow->createNewConsole() : pConsole);
 		return parts.iError;
 	}
 }

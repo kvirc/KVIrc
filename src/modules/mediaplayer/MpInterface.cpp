@@ -32,15 +32,15 @@
 
 static QTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8().data());
-	if(!c)c = QTextCodec::codecForLocale();
+	QTextCodec * c = QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8().data());
+	if(!c)
+		c = QTextCodec::codecForLocale();
 	return c;
-
 }
 
 void MpInterface::notImplemented()
 {
-	setLastError(__tr2qs_ctx("Function not implemented","mediaplayer"));
+	setLastError(__tr2qs_ctx("Function not implemented", "mediaplayer"));
 }
 
 int MpInterface::position()
@@ -82,10 +82,11 @@ bool MpInterface::minimize()
 QString MpInterface::getLocalFile()
 {
 	QString ret = mrl();
-	if(ret.isEmpty())return ret;
-	if(ret.startsWith("file://",Qt::CaseInsensitive))
+	if(ret.isEmpty())
+		return ret;
+	if(ret.startsWith("file://", Qt::CaseInsensitive))
 	{
-		ret.remove(0,7);
+		ret.remove(0, 7);
 		return ret;
 	}
 	return QString();
@@ -96,20 +97,23 @@ QString MpInterface::amipEval(const QString &)
 	return QString();
 }
 
-#define SCAN_MP3_FILE \
+#define SCAN_MP3_FILE           \
 	QString f = getLocalFile(); \
-	if(f.isEmpty())return QString(); \
-	mp3info mp3; \
-	if(!scan_mp3_file(f,&mp3))return QString(); \
-	QTextCodec *pCodec; \
-	pCodec=mediaplayer_get_codec();
+	if(f.isEmpty())             \
+		return QString();       \
+	mp3info mp3;                \
+	if(!scan_mp3_file(f, &mp3)) \
+		return QString();       \
+	QTextCodec * pCodec;        \
+	pCodec = mediaplayer_get_codec();
 
-#define SCAN_MP3_FILE_RET_INT \
+#define SCAN_MP3_FILE_RET_INT   \
 	QString f = getLocalFile(); \
-	if(f.isEmpty())return -1; \
-	mp3info mp3; \
-	if(!scan_mp3_file(f,&mp3))return -1;
-
+	if(f.isEmpty())             \
+		return -1;              \
+	mp3info mp3;                \
+	if(!scan_mp3_file(f, &mp3)) \
+		return -1;
 
 QString MpInterface::artist()
 {
@@ -265,12 +269,19 @@ bool MpInterface::setShuffle(bool &)
 QString MpInterface::mediaType()
 {
 	QString ret = mrl();
-	if(ret.endsWith(".mp3",Qt::CaseInsensitive))ret = "MPEG Layer 3";
-	else if(ret.endsWith(".ogg",Qt::CaseInsensitive))ret = "OGG Vorbis";
-	else if(ret.endsWith(".avi",Qt::CaseInsensitive))ret = "Audio Video Interleave";
-	else if(ret.endsWith(".mpeg",Qt::CaseInsensitive))ret = "MPEG Video";
-	else if(ret.endsWith(".mpg",Qt::CaseInsensitive))ret = "MPEG Video";
-	else if(ret.startsWith("http://",Qt::CaseInsensitive))ret = "HTTP Audio Stream";
-	else ret = QString();
+	if(ret.endsWith(".mp3", Qt::CaseInsensitive))
+		ret = "MPEG Layer 3";
+	else if(ret.endsWith(".ogg", Qt::CaseInsensitive))
+		ret = "OGG Vorbis";
+	else if(ret.endsWith(".avi", Qt::CaseInsensitive))
+		ret = "Audio Video Interleave";
+	else if(ret.endsWith(".mpeg", Qt::CaseInsensitive))
+		ret = "MPEG Video";
+	else if(ret.endsWith(".mpg", Qt::CaseInsensitive))
+		ret = "MPEG Video";
+	else if(ret.startsWith("http://", Qt::CaseInsensitive))
+		ret = "HTTP Audio Stream";
+	else
+		ret = QString();
 	return ret;
 }

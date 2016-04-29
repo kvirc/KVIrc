@@ -31,9 +31,6 @@
 
 #include <QSystemTrayIcon>
 
-
-
-
 /*
 	@doc: trayicon
 	@keyterms:
@@ -94,149 +91,154 @@
 		This signal is emitted by the default implementation of [classfnc]$messageClickedEvent[/classfnc].
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_trayIcon,"trayicon","object")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon,show)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon,hide)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon,isVisible)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon,setIcon)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon,setTooltip)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon,showMessage)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon,setContextMenu)
-	// events
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon,activatedEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon,messageClickedEvent)
+KVSO_BEGIN_REGISTERCLASS(KvsObject_trayIcon, "trayicon", "object")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon, show)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon, hide)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon, isVisible)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon, setIcon)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon, setTooltip)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon, showMessage)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon, setContextMenu)
+// events
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon, activatedEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon, messageClickedEvent)
 KVSO_END_REGISTERCLASS(KvsObject_trayIcon)
 
-
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_trayIcon,KviKvsObject)
-	m_pTrayIcon = new QSystemTrayIcon(0);
-	connect(m_pTrayIcon,SIGNAL(activated(QSystemTrayIcon::ActivationReason)),this,SLOT(slotActivated(QSystemTrayIcon::ActivationReason)));
-	connect(m_pTrayIcon,SIGNAL(messageClicked()),this,SLOT(slotMessageClicked()));
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_trayIcon, KviKvsObject)
+m_pTrayIcon = new QSystemTrayIcon(0);
+connect(m_pTrayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(slotActivated(QSystemTrayIcon::ActivationReason)));
+connect(m_pTrayIcon, SIGNAL(messageClicked()), this, SLOT(slotMessageClicked()));
 
 KVSO_END_CONSTRUCTOR(KvsObject_trayIcon)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_trayIcon)
-	delete m_pTrayIcon;
+delete m_pTrayIcon;
 KVSO_END_DESTRUCTOR(KvsObject_trayIcon)
 
-
-KVSO_CLASS_FUNCTION(trayIcon,setIcon)
+KVSO_CLASS_FUNCTION(trayIcon, setIcon)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
 	QString szIcon;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("icon",KVS_PT_STRING,0,szIcon)
+	KVSO_PARAMETER("icon", KVS_PT_STRING, 0, szIcon)
 	KVSO_PARAMETERS_END(c)
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
-	if(pix) m_pTrayIcon->setIcon(*pix);
+	if(pix)
+		m_pTrayIcon->setIcon(*pix);
 	return true;
 }
-KVSO_CLASS_FUNCTION(trayIcon,setTooltip)
+KVSO_CLASS_FUNCTION(trayIcon, setTooltip)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
 	QString szTooltip;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("icon",KVS_PT_STRING,0,szTooltip)
+	KVSO_PARAMETER("icon", KVS_PT_STRING, 0, szTooltip)
 	KVSO_PARAMETERS_END(c)
 	m_pTrayIcon->setToolTip(szTooltip);
 	return true;
 }
-KVSO_CLASS_FUNCTION(trayIcon,show)
+KVSO_CLASS_FUNCTION(trayIcon, show)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
 	m_pTrayIcon->show();
 	return true;
 }
-KVSO_CLASS_FUNCTION(trayIcon,hide)
+KVSO_CLASS_FUNCTION(trayIcon, hide)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
 	m_pTrayIcon->show();
 	return true;
 }
-KVSO_CLASS_FUNCTION(trayIcon,isVisible)
+KVSO_CLASS_FUNCTION(trayIcon, isVisible)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
 	c->returnValue()->setBoolean(m_pTrayIcon->isVisible());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(trayIcon,showMessage)
+KVSO_CLASS_FUNCTION(trayIcon, showMessage)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
-	QString szMessage,szTitle,szMessageIcon;
+	QString szMessage, szTitle, szMessageIcon;
 	kvs_uint_t uTimeout;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("title",KVS_PT_STRING,0,szTitle)
-		KVSO_PARAMETER("message",KVS_PT_STRING,0,szMessage)
-		KVSO_PARAMETER("icon",KVS_PT_STRING,0,szMessageIcon)
-		KVSO_PARAMETER("timeout",KVS_PT_UINT,0,uTimeout)
+	KVSO_PARAMETER("title", KVS_PT_STRING, 0, szTitle)
+	KVSO_PARAMETER("message", KVS_PT_STRING, 0, szMessage)
+	KVSO_PARAMETER("icon", KVS_PT_STRING, 0, szMessageIcon)
+	KVSO_PARAMETER("timeout", KVS_PT_UINT, 0, uTimeout)
 	KVSO_PARAMETERS_END(c)
-	QSystemTrayIcon::MessageIcon message=QSystemTrayIcon::NoIcon;
-	if(KviQString::equalCI(szMessageIcon,"NoIcon")) message= QSystemTrayIcon::NoIcon;
-	else if(KviQString::equalCI(szMessageIcon,"Information"))message= QSystemTrayIcon::Information;
-	else if(KviQString::equalCI(szMessageIcon,"Warning")) message= QSystemTrayIcon::Warning;
-	else if(KviQString::equalCI(szMessageIcon,"Critical")) message= QSystemTrayIcon::Critical;
-	else c->warning(__tr2qs_ctx("Invalid message Icon: switch to default NoIcon '%Q'","objects"),&szMessageIcon);
-	m_pTrayIcon->showMessage(szTitle,szMessage,message,uTimeout);
+	QSystemTrayIcon::MessageIcon message = QSystemTrayIcon::NoIcon;
+	if(KviQString::equalCI(szMessageIcon, "NoIcon"))
+		message = QSystemTrayIcon::NoIcon;
+	else if(KviQString::equalCI(szMessageIcon, "Information"))
+		message = QSystemTrayIcon::Information;
+	else if(KviQString::equalCI(szMessageIcon, "Warning"))
+		message = QSystemTrayIcon::Warning;
+	else if(KviQString::equalCI(szMessageIcon, "Critical"))
+		message = QSystemTrayIcon::Critical;
+	else
+		c->warning(__tr2qs_ctx("Invalid message Icon: switch to default NoIcon '%Q'", "objects"), &szMessageIcon);
+	m_pTrayIcon->showMessage(szTitle, szMessage, message, uTimeout);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(trayIcon,setContextMenu)
+KVSO_CLASS_FUNCTION(trayIcon, setContextMenu)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
-	KviKvsObject *ob;
+	KviKvsObject * ob;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
 	KVSO_PARAMETERS_END(c)
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!ob)
+	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	if(!ob)
 	{
-		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
+		c->warning(__tr2qs_ctx("Widget parameter is not an object", "objects"));
 		return true;
 	}
-	if (!ob->object())
+	if(!ob->object())
 	{
-		c->warning(__tr2qs_ctx("Widget parameter is not a valid object","objects"));
+		c->warning(__tr2qs_ctx("Widget parameter is not a valid object", "objects"));
 		return true;
 	}
 	if(!ob->inheritsClass("popupmenu"))
 	{
-		c->warning(__tr2qs_ctx("Can't add a non-popupmenu object","objects"));
+		c->warning(__tr2qs_ctx("Can't add a non-popupmenu object", "objects"));
 		return true;
 	}
-	 m_pTrayIcon->setContextMenu(((QMenu *)(ob->object())));
+	m_pTrayIcon->setContextMenu(((QMenu *)(ob->object())));
 	return true;
 }
-KVSO_CLASS_FUNCTION(trayIcon,activatedEvent)
+KVSO_CLASS_FUNCTION(trayIcon, activatedEvent)
 {
-	emitSignal("activated",c,c->params());
+	emitSignal("activated", c, c->params());
 	return true;
 }
-KVSO_CLASS_FUNCTION(trayIcon,messageClickedEvent)
+KVSO_CLASS_FUNCTION(trayIcon, messageClickedEvent)
 {
-	emitSignal("messageClicked",c,c->params());
+	emitSignal("messageClicked", c, c->params());
 	return true;
 }
 void KvsObject_trayIcon::slotMessageClicked()
 {
-	KviKvsVariantList *lParams=0;
-	callFunction(this,"messageClickedEvent",0,lParams);
+	KviKvsVariantList * lParams = 0;
+	callFunction(this, "messageClickedEvent", 0, lParams);
 }
 
 void KvsObject_trayIcon::slotActivated(QSystemTrayIcon::ActivationReason reason)
 {
 	QString szReason;
-	if (reason==QSystemTrayIcon::Unknown)
-		szReason="Unknown";
-	else if(reason==QSystemTrayIcon::Context)
-		szReason="Context";
-	else if(reason==QSystemTrayIcon::DoubleClick)
-		szReason="DoubleClick";
-	else if(reason==QSystemTrayIcon::Trigger)
-		szReason="Trigger";
-	else szReason="MiddleClick";
+	if(reason == QSystemTrayIcon::Unknown)
+		szReason = "Unknown";
+	else if(reason == QSystemTrayIcon::Context)
+		szReason = "Context";
+	else if(reason == QSystemTrayIcon::DoubleClick)
+		szReason = "DoubleClick";
+	else if(reason == QSystemTrayIcon::Trigger)
+		szReason = "Trigger";
+	else
+		szReason = "MiddleClick";
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant(szReason));
-	callFunction(this,"activatedEvent",0,&lParams);
+	callFunction(this, "activatedEvent", 0, &lParams);
 }

@@ -70,28 +70,32 @@
 
 static bool toolbar_kvs_cmd_create(KviKvsModuleCommandCall * c)
 {
-	QString szId,szLabel,szIconId;
+	QString szId, szLabel, szIconId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
-		KVSM_PARAMETER("label",KVS_PT_STRING,KVS_PF_OPTIONAL,szLabel)
-		KVSM_PARAMETER("icon_id",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szIconId)
+	KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
+	KVSM_PARAMETER("label", KVS_PT_STRING, KVS_PF_OPTIONAL, szLabel)
+	KVSM_PARAMETER("icon_id", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szIconId)
 	KVSM_PARAMETERS_END(c)
 
-/*	if(!c->getParameterCode(1,szLabel))
+	/*	if(!c->getParameterCode(1,szLabel))
 	{
 		c->error(__tr2qs("Internal error: call a head-shrinker"));
 		return false;
 	}
 */
-	if(szLabel.isEmpty())szLabel = "$tr(Unnamed)";
+	if(szLabel.isEmpty())
+		szLabel = "$tr(Unnamed)";
 
 	KviCustomToolBarDescriptor * d = KviCustomToolBarManager::instance()->find(szId);
 	if(d)
 	{
-		if(!c->switches()->find('p',"preserve"))d->clear();
+		if(!c->switches()->find('p', "preserve"))
+			d->clear();
 		d->rename(szLabel);
-	} else {
-		d = KviCustomToolBarManager::instance()->create(szId,szLabel);
+	}
+	else
+	{
+		d = KviCustomToolBarManager::instance()->create(szId, szLabel);
 	}
 
 	if(!szIconId.isEmpty())
@@ -127,19 +131,20 @@ static bool toolbar_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
+	KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
 	KVSM_PARAMETERS_END(c)
 
 	KviCustomToolBarDescriptor * d = KviCustomToolBarManager::instance()->find(szId);
-	if(d)d->clear();
-	else {
-		if(!c->switches()->find('q',"quiet"))
+	if(d)
+		d->clear();
+	else
+	{
+		if(!c->switches()->find('q', "quiet"))
 			c->warning(__tr2qs("The specified toolbar doesn't exist"));
 	}
 
 	return true;
 }
-
 
 /*
 	@doc: toolbar.destroy
@@ -166,23 +171,21 @@ static bool toolbar_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 		[cmd]toolbar.create[/cmd]
 */
 
-
 static bool toolbar_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
+	KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
 	KVSM_PARAMETERS_END(c)
 
 	if(!KviCustomToolBarManager::instance()->destroyDescriptor(szId))
 	{
-		if(!c->switches()->find('q',"quiet"))
+		if(!c->switches()->find('q', "quiet"))
 			c->warning(__tr2qs("The specified toolbar doesn't exist"));
 	}
 
 	return true;
 }
-
 
 /*
 	@doc: toolbar.show
@@ -214,14 +217,14 @@ static bool toolbar_kvs_cmd_show(KviKvsModuleCommandCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
+	KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
 	KVSM_PARAMETERS_END(c)
 
 	KviCustomToolBarDescriptor * d = KviCustomToolBarManager::instance()->find(szId);
 
 	if(!d)
 	{
-		if(!c->switches()->find('q',"quiet"))
+		if(!c->switches()->find('q', "quiet"))
 			c->warning(__tr2qs("The specified toolbar doesn't exist"));
 		return true;
 	}
@@ -258,24 +261,24 @@ static bool toolbar_kvs_cmd_show(KviKvsModuleCommandCall * c)
 		[cmd]toolbar.destroy[/cmd]
 */
 
-
 static bool toolbar_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
+	KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
 	KVSM_PARAMETERS_END(c)
 
 	KviCustomToolBarDescriptor * d = KviCustomToolBarManager::instance()->find(szId);
 
 	if(!d)
 	{
-		if(!c->switches()->find('q',"quiet"))
+		if(!c->switches()->find('q', "quiet"))
 			c->warning(__tr2qs("The specified toolbar doesn't exist"));
 		return true;
 	}
 
-	if(d->toolBar()) KviCustomToolBarManager::instance()->destroyDescriptor(d->id());
+	if(d->toolBar())
+		KviCustomToolBarManager::instance()->destroyDescriptor(d->id());
 
 	return true;
 }
@@ -297,12 +300,11 @@ static bool toolbar_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 		[cmd]toolbar.create[/cmd]
 */
 
-
 static bool toolbar_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
+	KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
 	KVSM_PARAMETERS_END(c)
 
 	c->returnValue()->setBoolean(KviCustomToolBarManager::instance()->find(szId) ? true : false);
@@ -330,7 +332,7 @@ static bool toolbar_kvs_fnc_isVisible(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
+	KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
 	KVSM_PARAMETERS_END(c)
 	KviCustomToolBarDescriptor * d = KviCustomToolBarManager::instance()->find(szId);
 	c->returnValue()->setBoolean(d ? (d->toolBar() ? true : false) : false);
@@ -357,13 +359,13 @@ static bool toolbar_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 {
 	KviKvsArray * a = new KviKvsArray();
 
-	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*(KviCustomToolBarManager::instance()->descriptors()));
+	KviPointerHashTableIterator<QString, KviCustomToolBarDescriptor> it(*(KviCustomToolBarManager::instance()->descriptors()));
 
 	kvs_uint_t id = 0;
 
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
-		a->set(id,new KviKvsVariant(d->id()));
+		a->set(id, new KviKvsVariant(d->id()));
 		id++;
 		++it;
 	}
@@ -371,8 +373,6 @@ static bool toolbar_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setArray(a);
 	return true;
 }
-
-
 
 /*
 	@doc: toolbar.remove
@@ -410,46 +410,50 @@ static bool toolbar_kvs_cmd_removeitem(KviKvsModuleCommandCall * c)
 	QString szId;
 	KviKvsVariant * pvAction;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
-		KVSM_PARAMETER("action",KVS_PT_VARIANT,0,pvAction)
+	KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
+	KVSM_PARAMETER("action", KVS_PT_VARIANT, 0, pvAction)
 	KVSM_PARAMETERS_END(c)
 
 	KviCustomToolBarDescriptor * d = KviCustomToolBarManager::instance()->find(szId);
 
 	if(!pvAction)
 	{
-		if(!c->switches()->find('q',"quiet"))
+		if(!c->switches()->find('q', "quiet"))
 			c->error(__tr2qs("No action name/index specified")); // syntax error
 		return false;
 	}
 
 	if(!d)
 	{
-		if(!c->switches()->find('q',"quiet"))
+		if(!c->switches()->find('q', "quiet"))
 			c->warning(__tr2qs("The specified toolbar doesn't exist"));
 		return true;
 	}
 
-	if(c->switches()->find('i',"index"))
+	if(c->switches()->find('i', "index"))
 	{
 		kvs_int_t iAction;
 		if(!pvAction->asInteger(iAction))
 		{
-			if(!c->switches()->find('q',"quiet"))
+			if(!c->switches()->find('q', "quiet"))
 				c->warning(__tr2qs("The action parameter didn't evaluate to an index"));
-		} else {
+		}
+		else
+		{
 			if(!d->removeAction(iAction))
 			{
-				if(!c->switches()->find('q',"quiet"))
+				if(!c->switches()->find('q', "quiet"))
 					c->warning(__tr2qs("The toolbar doesn't contain the specified item"));
 			}
 		}
-	} else {
+	}
+	else
+	{
 		QString szAction;
 		pvAction->asString(szAction);
 		if(!d->removeAction(szAction))
 		{
-			if(!c->switches()->find('q',"quiet"))
+			if(!c->switches()->find('q', "quiet"))
 				c->warning(__tr2qs("The toolbar doesn't contain the specified item"));
 		}
 	}
@@ -493,27 +497,27 @@ static bool toolbar_kvs_cmd_additem(KviKvsModuleCommandCall * c)
 	QString szId;
 	QString szAction;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
-		KVSM_PARAMETER("action",KVS_PT_NONEMPTYSTRING,0,szAction)
+	KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
+	KVSM_PARAMETER("action", KVS_PT_NONEMPTYSTRING, 0, szAction)
 	KVSM_PARAMETERS_END(c)
 
 	KviCustomToolBarDescriptor * d = KviCustomToolBarManager::instance()->find(szId);
 
 	if(!d)
 	{
-		if(!c->switches()->find('q',"quiet"))
+		if(!c->switches()->find('q', "quiet"))
 			c->warning(__tr2qs("The specified toolbar doesn't exist"));
 		return true;
 	}
 
 	if(!d->addAction(szAction))
 	{
-		if(!c->switches()->find('q',"quiet"))c->warning(__tr2qs("The action \"%Q\" doesn't exist"),&szAction);
+		if(!c->switches()->find('q', "quiet"))
+			c->warning(__tr2qs("The action \"%Q\" doesn't exist"), &szAction);
 	}
 
 	return true;
 }
-
 
 /*
 	@doc: toolbar.items
@@ -535,7 +539,7 @@ static bool toolbar_kvs_fnc_items(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("id",KVS_PT_NONEMPTYSTRING,0,szId)
+	KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
 	KVSM_PARAMETERS_END(c)
 
 	KviCustomToolBarDescriptor * d = KviCustomToolBarManager::instance()->find(szId);
@@ -548,13 +552,13 @@ static bool toolbar_kvs_fnc_items(KviKvsModuleFunctionCall * c)
 
 	KviKvsArray * a = new KviKvsArray();
 
-	KviPointerHashTableIterator<QString,KviCustomToolBarDescriptor> it(*(KviCustomToolBarManager::instance()->descriptors()));
+	KviPointerHashTableIterator<QString, KviCustomToolBarDescriptor> it(*(KviCustomToolBarManager::instance()->descriptors()));
 
 	kvs_uint_t id = 0;
 
-	for(QString * s = d->actions()->first();s;s = d->actions()->next())
+	for(QString * s = d->actions()->first(); s; s = d->actions()->next())
 	{
-		a->set(id,new KviKvsVariant(*s));
+		a->set(id, new KviKvsVariant(*s));
 		id++;
 		++it;
 	}
@@ -565,18 +569,18 @@ static bool toolbar_kvs_fnc_items(KviKvsModuleFunctionCall * c)
 
 static bool toolbar_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"create",toolbar_kvs_cmd_create)
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"clear",toolbar_kvs_cmd_clear)
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"destroy",toolbar_kvs_cmd_destroy)
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"additem",toolbar_kvs_cmd_additem)
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"remove",toolbar_kvs_cmd_removeitem)
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"show",toolbar_kvs_cmd_show)
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"hide",toolbar_kvs_cmd_hide)
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "create", toolbar_kvs_cmd_create)
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "clear", toolbar_kvs_cmd_clear)
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "destroy", toolbar_kvs_cmd_destroy)
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "additem", toolbar_kvs_cmd_additem)
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "remove", toolbar_kvs_cmd_removeitem)
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "show", toolbar_kvs_cmd_show)
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "hide", toolbar_kvs_cmd_hide)
 
-	KVSM_REGISTER_FUNCTION(m,"exists",toolbar_kvs_fnc_exists)
-	KVSM_REGISTER_FUNCTION(m,"isVisible",toolbar_kvs_fnc_isVisible)
-	KVSM_REGISTER_FUNCTION(m,"list",toolbar_kvs_fnc_list)
-	KVSM_REGISTER_FUNCTION(m,"items",toolbar_kvs_fnc_items)
+	KVSM_REGISTER_FUNCTION(m, "exists", toolbar_kvs_fnc_exists)
+	KVSM_REGISTER_FUNCTION(m, "isVisible", toolbar_kvs_fnc_isVisible)
+	KVSM_REGISTER_FUNCTION(m, "list", toolbar_kvs_fnc_list)
+	KVSM_REGISTER_FUNCTION(m, "items", toolbar_kvs_fnc_items)
 
 	return true;
 }
@@ -587,13 +591,12 @@ static bool toolbar_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Toolbar",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Interface to the scriptable toolbars",
-	toolbar_module_init,
-	0,
-	0,
-	toolbar_module_cleanup,
-	0
-)
+    "Toolbar",                                                      // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Interface to the scriptable toolbars",
+    toolbar_module_init,
+    0,
+    0,
+    toolbar_module_cleanup,
+    0)

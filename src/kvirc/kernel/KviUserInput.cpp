@@ -39,7 +39,8 @@ namespace KviUserInput
 	{
 		const QChar * b = szData.constData();
 		const QChar * c = b;
-		if(!c)return true; // empty
+		if(!c)
+			return true; // empty
 
 		if(!c->unicode())
 			return true; // empty
@@ -49,28 +50,32 @@ namespace KviUserInput
 			c++;
 			if(c->unicode() != '/')
 				c--;
-		} else {
+		}
+		else
+		{
 			if(c->unicode() == '/')
 			{
 				c++;
 				if(c->unicode() != '/')
 				{
 					szData.remove(0, c - b);
-					return parseCommand(szData,pWindow,szContext,bUserFriendlyCommandline);
-				} else {
+					return parseCommand(szData, pWindow, szContext, bUserFriendlyCommandline);
+				}
+				else
+				{
 					// C++ comment, probably
 					c--;
 				}
 			}
 		}
 
-		if(KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnTextInput,pWindow,szData))
+		if(KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnTextInput, pWindow, szData))
 			return true; // halted
 
 		if(c != b)
-			szData.remove(0,c-b);
+			szData.remove(0, c - b);
 
-		parseNonCommand(szData,pWindow);
+		parseNonCommand(szData, pWindow);
 		return true;
 	}
 
@@ -83,13 +88,15 @@ namespace KviUserInput
 			QString szCmd = szData;
 			KviQString::escapeKvs(&szCmd, KviQString::EscapeParenthesis);
 
-			KviKvsScript kvs(szContext.isEmpty() ? szUserFriendlyCommandlineContext : szContext,szCmd);
-			return (kvs.run(pWindow,0,0) != KviKvsScript::Error);
-		} else {
+			KviKvsScript kvs(szContext.isEmpty() ? szUserFriendlyCommandlineContext : szContext, szCmd);
+			return (kvs.run(pWindow, 0, 0) != KviKvsScript::Error);
+		}
+		else
+		{
 			static QString szCommandlineContext(__tr2qs("commandline::kvs"));
 
-			KviKvsScript kvs(szContext.isEmpty() ? szCommandlineContext : szContext,szData);
-			return (kvs.run(pWindow,0,0/*,KviKvsScript::AssumeLocals*/) != KviKvsScript::Error);
+			KviKvsScript kvs(szContext.isEmpty() ? szCommandlineContext : szContext, szData);
+			return (kvs.run(pWindow, 0, 0 /*,KviKvsScript::AssumeLocals*/) != KviKvsScript::Error);
 		}
 	}
 
@@ -123,12 +130,12 @@ namespace KviUserInput
 
 						if(((KviConsoleWindow *)pWindow)->connection()->sendData(data.data()))
 						{
-							pWindow->output(KVI_OUT_RAW,"[RAW]: %Q",&buf);
+							pWindow->output(KVI_OUT_RAW, "[RAW]: %Q", &buf);
 							return;
 						}
 					}
-					pWindow->output(KVI_OUT_PARSERERROR,__tr2qs("You're not connected to a server"));
-				break;
+					pWindow->output(KVI_OUT_PARSERERROR, __tr2qs("You're not connected to a server"));
+					break;
 				case KviWindow::Channel:
 				case KviWindow::Query:
 					if(pWindow->connection())
@@ -136,18 +143,18 @@ namespace KviUserInput
 						if(KVI_OPTION_BOOL(KviOption_boolExitAwayOnInput))
 						{
 							if(pWindow->connection()->userInfo()->isAway())
-								parseCommand("back",pWindow->console());
+								parseCommand("back", pWindow->console());
 						}
 					}
 					pWindow->ownMessage(buf);
-				break;
+					break;
 				case KviWindow::DccChat:
 				case KviWindow::DccVideo:
 					pWindow->ownMessage(buf);
-				break;
+					break;
 				default:
 					// FIXME: Should pass the message somewhere ?.. a KviWindow handler ?
-				break;
+					break;
 			}
 		}
 	}

@@ -53,15 +53,16 @@ enum ac_ErrorCode
 
 static HINSTANCE amip_dll = NULL;
 
-#define MP_AC_DYNPTR(__rettype,__func,__args) \
-	typedef __rettype (CALLBACK* lp_##__func)(__args); \
+#define MP_AC_DYNPTR(__rettype, __func, __args)        \
+	typedef __rettype(CALLBACK * lp_##__func)(__args); \
 	lp_##__func __func
 
-#define MP_AC_FUNC(__func) \
-	__func = (lp_##__func)GetProcAddress(amip_dll,#__func); \
-	if(!__func) { \
-		FreeLibrary(amip_dll); \
-		return false; \
+#define MP_AC_FUNC(__func)                                   \
+	__func = (lp_##__func)GetProcAddress(amip_dll, #__func); \
+	if(!__func)                                              \
+	{                                                        \
+		FreeLibrary(amip_dll);                               \
+		return false;                                        \
 	}
 
 #define COMMA() ,
@@ -72,13 +73,13 @@ MP_AC_DYNPTR(void, ac_getDestHost, char * out);
 MP_AC_DYNPTR(int, ac_getDestPort, void);
 MP_AC_DYNPTR(bool, ac_pingServer, const char * host COMMA() int port COMMA() int timeout);
 MP_AC_DYNPTR(int, ac_exec, const char * cmd);
-MP_AC_DYNPTR(int, ac_eval, const char * cmd COMMA() char *result);
-
+MP_AC_DYNPTR(int, ac_eval, const char * cmd COMMA() char * result);
 
 static bool loadAmipDll()
 {
 	amip_dll = LoadLibrary("ac.dll");
-	if (!amip_dll) return false;
+	if(!amip_dll)
+		return false;
 
 	MP_AC_FUNC(ac_init);
 	MP_AC_FUNC(ac_uninit);
@@ -102,26 +103,23 @@ static QTextCodec * mediaplayer_get_codec()
 }
 
 MP_IMPLEMENT_DESCRIPTOR(
-	MpAmipInterface,
-	"amip",
-	__tr2qs_ctx(
-		"An interface for the AMIP plugin.\n" \
-		"You can download it from http://amip.tools-for.net\n" \
-		"To use this interface you must " \
-		"install AMIP plugin for your player."
-		,
-		"mediaplayer"
-	)
-)
-
-
+    MpAmipInterface,
+    "amip",
+    __tr2qs_ctx(
+        "An interface for the AMIP plugin.\n"
+        "You can download it from http://amip.tools-for.net\n"
+        "To use this interface you must "
+        "install AMIP plugin for your player.",
+        "mediaplayer"))
 
 MpAmipInterface::MpAmipInterface()
-: MpInterface()
+    : MpInterface()
 {
-	if(!amip_dll) {
+	if(!amip_dll)
+	{
 		bool res = loadAmipDll();
-		if(!res) {
+		if(!res)
+		{
 			amip_dll = NULL;
 			return;
 		}
@@ -131,52 +129,56 @@ MpAmipInterface::MpAmipInterface()
 
 MpAmipInterface::~MpAmipInterface()
 {
-	if(!amip_dll) return;
+	if(!amip_dll)
+		return;
 	ac_uninit();
 	FreeLibrary(amip_dll);
 	amip_dll = NULL;
 }
 
-
 int MpAmipInterface::detect(bool bStart)
 {
-	if(!amip_dll) return 0;
+	if(!amip_dll)
+		return 0;
 	char host[AC_BUFFER_SIZE];
 	ac_getDestHost(host);
-	if(ac_pingServer(host, ac_getDestPort(), 5000)) return 99;
+	if(ac_pingServer(host, ac_getDestPort(), 5000))
+		return 99;
 	return 1;
 }
 
-#define MP_AMIP_COMMAND(__cmdname,__acmd) \
-	bool MpAmipInterface::__cmdname() \
-	{ \
+#define MP_AMIP_COMMAND(__cmdname, __acmd)          \
+	bool MpAmipInterface::__cmdname()               \
+	{                                               \
 		return (ac_exec(__acmd) == AC_ERR_NOERROR); \
 	}
 
-MP_AMIP_COMMAND(play,"control play")
-MP_AMIP_COMMAND(stop,"control stop")
-MP_AMIP_COMMAND(next,"control >")
-MP_AMIP_COMMAND(prev,"control <")
-MP_AMIP_COMMAND(pause,"control pause")
-MP_AMIP_COMMAND(quit,"control exit")
+MP_AMIP_COMMAND(play, "control play")
+MP_AMIP_COMMAND(stop, "control stop")
+MP_AMIP_COMMAND(next, "control >")
+MP_AMIP_COMMAND(prev, "control <")
+MP_AMIP_COMMAND(pause, "control pause")
+MP_AMIP_COMMAND(quit, "control exit")
 
 // helper function for evaluating variables returning integers
-int eval_int(const char *var)
+int eval_int(const char * var)
 {
-	if(!amip_dll) return -1;
+	if(!amip_dll)
+		return -1;
 	char buff[AC_BUFFER_SIZE];
 	int res = -1;
-	if (AC_ERR_NOERROR == ac_eval(var, buff))
+	if(AC_ERR_NOERROR == ac_eval(var, buff))
 		res = atoi(buff);
 	return res;
 }
 
-QString eval_str(const char *var)
+QString eval_str(const char * var)
 {
 	QString res;
-	if(!amip_dll) return res;
+	if(!amip_dll)
+		return res;
 	char buff[AC_BUFFER_SIZE];
-	if (AC_ERR_NOERROR == ac_eval(var, buff))
+	if(AC_ERR_NOERROR == ac_eval(var, buff))
 		res.append(buff);
 	return res;
 }
@@ -218,16 +220,16 @@ MpInterface::PlayerStatus MpAmipInterface::status()
 	{
 		case 0:
 			return MpInterface::Stopped;
-		break;
+			break;
 		case 3:
 			return MpInterface::Paused;
-		break;
+			break;
 		case 1:
 			return MpInterface::Playing;
-		break;
+			break;
 		default:
 			return MpInterface::Unknown;
-		break;
+			break;
 	}
 	return MpInterface::Unknown;
 }
@@ -240,7 +242,9 @@ QString MpAmipInterface::mrl()
 	if(pCodec)
 	{
 		szRet = pCodec->toUnicode(szFn.toUtf8());
-	} else {
+	}
+	else
+	{
 		szRet = szFn;
 	}
 
@@ -255,9 +259,12 @@ QString getAmipString(const char * var)
 	QString szRet;
 	QString szString = eval_str(var);
 	QTextCodec * pCodec = mediaplayer_get_codec();
-	if(pCodec) {
+	if(pCodec)
+	{
 		szRet = pCodec->toUnicode(szString.toUtf8());
-	} else {
+	}
+	else
+	{
 		szRet = szString;
 	}
 	return szRet;
@@ -298,9 +305,10 @@ QString MpAmipInterface::genre()
 	return getAmipString("var_7");
 }
 
-bool MpAmipInterface::setVol(kvs_int_t &iVol)
+bool MpAmipInterface::setVol(kvs_int_t & iVol)
 {
-	if(!amip_dll) return false;
+	if(!amip_dll)
+		return false;
 	char volcmd[AC_BUFFER_SIZE];
 	sprintf(volcmd, "control vol %d", iVol);
 	return (ac_exec(volcmd) == AC_ERR_NOERROR);
@@ -311,11 +319,12 @@ int MpAmipInterface::getVol()
 	return eval_int("var_vol");
 }
 
-bool MpAmipInterface::jumpTo(kvs_int_t &iPos)
+bool MpAmipInterface::jumpTo(kvs_int_t & iPos)
 {
-	if(!amip_dll) return false;
+	if(!amip_dll)
+		return false;
 	char jmpcmd[AC_BUFFER_SIZE];
-	sprintf(jmpcmd, "jumptotime %d", iPos/1000);
+	sprintf(jmpcmd, "jumptotime %d", iPos / 1000);
 	return (ac_exec(jmpcmd) == AC_ERR_NOERROR);
 }
 bool MpAmipInterface::hide()
@@ -342,13 +351,15 @@ bool MpAmipInterface::show()
 
 bool MpAmipInterface::minimize()
 {
-	if(!amip_dll) return false;
+	if(!amip_dll)
+		return false;
 	return (ac_exec("control mimimize") == AC_ERR_NOERROR);
 }
 
-bool MpAmipInterface::setPlayListPos(kvs_int_t &iPos)
+bool MpAmipInterface::setPlayListPos(kvs_int_t & iPos)
 {
-	if(!amip_dll) return false;
+	if(!amip_dll)
+		return false;
 	char jmpcmd[AC_BUFFER_SIZE];
 	sprintf(jmpcmd, "setplpos %d", iPos + 1);
 	return (ac_exec(jmpcmd) == AC_ERR_NOERROR);
@@ -374,48 +385,55 @@ bool MpAmipInterface::getShuffle()
 	return eval_str("var_shuffle").startsWith("on");
 }
 
-bool MpAmipInterface::setShuffle(bool &bVal)
+bool MpAmipInterface::setShuffle(bool & bVal)
 {
-	if(!amip_dll) return false;
+	if(!amip_dll)
+		return false;
 	bool res;
-	if (bVal)
+	if(bVal)
 		res = (ac_exec("setshuffle on") == AC_ERR_NOERROR);
 	else
 		res = (ac_exec("setshuffle off") == AC_ERR_NOERROR);
 	return res;
 }
 
-bool MpAmipInterface::setRepeat(bool &bVal)
+bool MpAmipInterface::setRepeat(bool & bVal)
 {
-	if(!amip_dll) return false;
+	if(!amip_dll)
+		return false;
 	bool res;
-	if (bVal)
+	if(bVal)
 		res = (ac_exec("setrepeat on") == AC_ERR_NOERROR);
 	else
 		res = (ac_exec("setrepeat off") == AC_ERR_NOERROR);
 	return res;
 }
 
-bool MpAmipInterface::amipExec(const QString &cmd)
+bool MpAmipInterface::amipExec(const QString & cmd)
 {
-	if(!amip_dll) return false;
-	QTextCodec *c=mediaplayer_get_codec();
+	if(!amip_dll)
+		return false;
+	QTextCodec * c = mediaplayer_get_codec();
 	KviCString szCmd = c ? c->fromUnicode(cmd) : cmd.toUtf8();
 	return (ac_exec(szCmd) == AC_ERR_NOERROR);
 }
 
-QString MpAmipInterface::amipEval(const QString &cmd)
+QString MpAmipInterface::amipEval(const QString & cmd)
 {
 	QString ret;
-	if(!amip_dll) return ret;
-	QTextCodec *c=mediaplayer_get_codec();
+	if(!amip_dll)
+		return ret;
+	QTextCodec * c = mediaplayer_get_codec();
 	KviCString szCmd = c ? c->fromUnicode(cmd) : cmd.toUtf8();
 	char buff[AC_BUFFER_SIZE];
-	if((ac_eval(szCmd, buff) == AC_ERR_NOERROR)) {
+	if((ac_eval(szCmd, buff) == AC_ERR_NOERROR))
+	{
 		QString s = buff;
-		QTextCodec *c=mediaplayer_get_codec();
-		if (c) ret = c->toUnicode(s.toLatin1());
-		else ret=s;
+		QTextCodec * c = mediaplayer_get_codec();
+		if(c)
+			ret = c->toUnicode(s.toLatin1());
+		else
+			ret = s;
 	}
 	return ret;
 }

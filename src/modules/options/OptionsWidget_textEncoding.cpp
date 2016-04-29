@@ -39,44 +39,44 @@
 QString g_szPrevSettedLocale;
 
 OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
-: KviOptionsWidget(parent)
+    : KviOptionsWidget(parent)
 {
 	setObjectName("textencoding_options_widget");
 	createLayout();
 
-	KviTalGroupBox* gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Encoding","options"));
-	QGridLayout* grid = new QGridLayout;
+	KviTalGroupBox * gbox = addGroupBox(0, 0, 0, 0, Qt::Horizontal, __tr2qs_ctx("Encoding", "options"));
+	QGridLayout * grid = new QGridLayout;
 	gbox->setLayout(grid);
 
 	//server encoding
-	grid->addWidget(addLabel(gbox,__tr2qs_ctx("Default server encoding:","options")),0,0);
+	grid->addWidget(addLabel(gbox, __tr2qs_ctx("Default server encoding:", "options")), 0, 0);
 
 	m_pSrvEncodingCombo = new QComboBox(gbox);
-	grid->addWidget(m_pSrvEncodingCombo,0,1);
+	grid->addWidget(m_pSrvEncodingCombo, 0, 1);
 
-	m_pSrvEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding","options"));
+	m_pSrvEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding", "options"));
 
 	//text encoding
-	grid->addWidget(addLabel(gbox,__tr2qs_ctx("Default text encoding:","options")),1,0);
+	grid->addWidget(addLabel(gbox, __tr2qs_ctx("Default text encoding:", "options")), 1, 0);
 
 	m_pTextEncodingCombo = new QComboBox(gbox);
-	grid->addWidget(m_pTextEncodingCombo,1,1);
+	grid->addWidget(m_pTextEncodingCombo, 1, 1);
 
-	m_pTextEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding","options"));
+	m_pTextEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding", "options"));
 
 	//common between text and server encoding
 	int i = 0;
-	int iTextMatch = 0, iSrvMatch=0;
+	int iTextMatch = 0, iSrvMatch = 0;
 	KviLocale::EncodingDescription * d = KviLocale::instance()->encodingDescription(i);
 	while(d->pcName)
 	{
-		if(KviQString::equalCI(d->pcName,KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding)))
+		if(KviQString::equalCI(d->pcName, KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding)))
 			iTextMatch = i + 1;
-		if(KviQString::equalCI(d->pcName,KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding)))
+		if(KviQString::equalCI(d->pcName, KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding)))
 			iSrvMatch = i + 1;
 
-        m_pTextEncodingCombo->insertItem(m_pTextEncodingCombo->count(),d->pcName);
-        m_pSrvEncodingCombo->insertItem(m_pSrvEncodingCombo->count(),d->pcName);
+		m_pTextEncodingCombo->insertItem(m_pTextEncodingCombo->count(), d->pcName);
+		m_pSrvEncodingCombo->insertItem(m_pSrvEncodingCombo->count(), d->pcName);
 		i++;
 		d = KviLocale::instance()->encodingDescription(i);
 	}
@@ -84,23 +84,23 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	m_pTextEncodingCombo->setCurrentIndex(iTextMatch);
 	m_pSrvEncodingCombo->setCurrentIndex(iSrvMatch);
 
-	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Language","options"));
+	gbox = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("Language", "options"));
 	grid = new QGridLayout;
 	gbox->setLayout(grid);
 
-	grid->addWidget(addLabel(gbox,__tr2qs_ctx("Force language:","options")),0,0);
+	grid->addWidget(addLabel(gbox, __tr2qs_ctx("Force language:", "options")), 0, 0);
 
 	m_pForcedLocaleCombo = new QComboBox(gbox);
 
-	grid->addWidget(m_pForcedLocaleCombo,0,1);
+	grid->addWidget(m_pForcedLocaleCombo, 0, 1);
 
-	grid->addWidget(addLabel(gbox,__tr2qs_ctx("<b>Note:</b> You must restart KVIrc to apply any language changes","options")),1,0,1,2);
+	grid->addWidget(addLabel(gbox, __tr2qs_ctx("<b>Note:</b> You must restart KVIrc to apply any language changes", "options")), 1, 0, 1, 2);
 
-	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("Automatic detection","options"));
-	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("en","options"));
+	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("Automatic detection", "options"));
+	m_pForcedLocaleCombo->addItem(__tr2qs_ctx("en", "options"));
 
 	QString szLangFile;
-	g_pApp->getLocalKvircDirectory(szLangFile,KviApplication::None,KVI_FORCE_LOCALE_FILE_NAME);
+	g_pApp->getLocalKvircDirectory(szLangFile, KviApplication::None, KVI_FORCE_LOCALE_FILE_NAME);
 
 	bool bIsDefaultLocale = !KviFileUtils::fileExists(szLangFile);
 	//We Have setted locale, but not restarted kvirc
@@ -110,40 +110,41 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 		m_szLanguage = KviLocale::instance()->localeName();
 
 	QString szLocaleDir;
-	g_pApp->getGlobalKvircDirectory(szLocaleDir,KviApplication::Locale);
+	g_pApp->getGlobalKvircDirectory(szLocaleDir, KviApplication::Locale);
 
-	QStringList list=QDir(szLocaleDir).entryList(QStringList("kvirc_*.mo"),QDir::Files);
+	QStringList list = QDir(szLocaleDir).entryList(QStringList("kvirc_*.mo"), QDir::Files);
 
 	i = 0;
 	int iMatch = 0;
 
 	for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
 	{
-		QString szTmp=*it;
-		szTmp.replace("kvirc_","");
-		szTmp.replace(".mo","");
-        m_pForcedLocaleCombo->insertItem(m_pForcedLocaleCombo->count(),szTmp);
-		if(KviQString::equalCI(szTmp,m_szLanguage))
+		QString szTmp = *it;
+		szTmp.replace("kvirc_", "");
+		szTmp.replace(".mo", "");
+		m_pForcedLocaleCombo->insertItem(m_pForcedLocaleCombo->count(), szTmp);
+		if(KviQString::equalCI(szTmp, m_szLanguage))
 			iMatch = i + 2;
 		i++;
 	}
 	if(bIsDefaultLocale)
 		m_pForcedLocaleCombo->setCurrentIndex(0);
-	else if(KviQString::equalCI(m_szLanguage,"en"))
+	else if(KviQString::equalCI(m_szLanguage, "en"))
 		m_pForcedLocaleCombo->setCurrentIndex(1);
 	else
 		m_pForcedLocaleCombo->setCurrentIndex(iMatch);
 
 #ifdef COMPILE_ENCHANT_SUPPORT
 	{
-		gbox = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("Spell Checker Dictionaries","options"));
+		gbox = addGroupBox(0, 2, 0, 2, Qt::Horizontal, __tr2qs_ctx("Spell Checker Dictionaries", "options"));
 
 		KviKvsVariant availableDictionaries;
 		KviKvsScript::evaluate("$spellchecker.availableDictionaries", NULL, NULL, &availableDictionaries);
-		const KviPointerHashTable<QString, KviKvsVariant>* hashTable = availableDictionaries.hash()->dict();
+		const KviPointerHashTable<QString, KviKvsVariant> * hashTable = availableDictionaries.hash()->dict();
 		KviPointerHashTableIterator<QString, KviKvsVariant> iter(*hashTable);
 		QMap<QString, QString> dictMap;
-		for (bool b = iter.moveFirst(); b; b = iter.moveNext()) {
+		for(bool b = iter.moveFirst(); b; b = iter.moveNext())
+		{
 			QString szDescription;
 			iter.current()->asString(szDescription);
 			dictMap[iter.currentKey()] = szDescription;
@@ -162,22 +163,23 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 		m_pSpellCheckerDictionaries->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 		int row = 0;
-		for (QMap<QString, QString>::iterator it = dictMap.begin(); it != dictMap.end(); ++it, ++row) {
-			QTableWidgetItem* itemLang = new QTableWidgetItem(it.key());
+		for(QMap<QString, QString>::iterator it = dictMap.begin(); it != dictMap.end(); ++it, ++row)
+		{
+			QTableWidgetItem * itemLang = new QTableWidgetItem(it.key());
 			itemLang->setCheckState(KVI_OPTION_STRINGLIST(KviOption_stringlistSpellCheckerDictionaries).contains(it.key()) ? Qt::Checked : Qt::Unchecked);
 			itemLang->setFlags(itemLang->flags() & ~Qt::ItemIsEditable);
-			m_pSpellCheckerDictionaries->setItem(row,0,itemLang);
+			m_pSpellCheckerDictionaries->setItem(row, 0, itemLang);
 
-			QTableWidgetItem* itemDesc = new QTableWidgetItem(it.value());
+			QTableWidgetItem * itemDesc = new QTableWidgetItem(it.value());
 			itemDesc->setFlags(itemDesc->flags() & ~Qt::ItemIsEditable);
-			m_pSpellCheckerDictionaries->setItem(row,1,itemDesc);
+			m_pSpellCheckerDictionaries->setItem(row, 1, itemDesc);
 		}
 
 		m_pSpellCheckerDictionaries->resizeColumnsToContents();
 		m_pSpellCheckerDictionaries->resizeRowsToContents();
 	}
 #else
-	addRowSpacer(0,2,0,2);
+	addRowSpacer(0, 2, 0, 2);
 #endif
 }
 
@@ -192,7 +194,9 @@ void OptionsWidget_textEncoding::commit()
 	{
 		// guess from locale
 		KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding) = "";
-	} else {
+	}
+	else
+	{
 		KVI_OPTION_STRING(KviOption_stringDefaultTextEncoding) = m_pTextEncodingCombo->itemText(idx);
 	}
 
@@ -201,21 +205,26 @@ void OptionsWidget_textEncoding::commit()
 	{
 		// guess from locale
 		KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding) = "";
-	} else {
+	}
+	else
+	{
 		KVI_OPTION_STRING(KviOption_stringDefaultSrvEncoding) = m_pSrvEncodingCombo->itemText(idx);
 	}
 
-	idx=m_pForcedLocaleCombo->currentIndex();
+	idx = m_pForcedLocaleCombo->currentIndex();
 	QString szLangFile;
-	g_pApp->getLocalKvircDirectory(szLangFile,KviApplication::None,KVI_FORCE_LOCALE_FILE_NAME);
-	if(idx==0) {
+	g_pApp->getLocalKvircDirectory(szLangFile, KviApplication::None, KVI_FORCE_LOCALE_FILE_NAME);
+	if(idx == 0)
+	{
 		if(KviFileUtils::fileExists(szLangFile))
 			KviFileUtils::removeFile(szLangFile);
-	} else {
-		g_szPrevSettedLocale=m_pForcedLocaleCombo->itemText(idx);
-		if(!KviFileUtils::writeFile(szLangFile,m_pForcedLocaleCombo->itemText(idx)))
+	}
+	else
+	{
+		g_szPrevSettedLocale = m_pForcedLocaleCombo->itemText(idx);
+		if(!KviFileUtils::writeFile(szLangFile, m_pForcedLocaleCombo->itemText(idx)))
 		{
-			QMessageBox::critical(this,"KVIrc",__tr2qs_ctx("Unable to write language information to","options")+"\n"+szLangFile,__tr2qs_ctx("OK","options"));
+			QMessageBox::critical(this, "KVIrc", __tr2qs_ctx("Unable to write language information to", "options") + "\n" + szLangFile, __tr2qs_ctx("OK", "options"));
 		}
 	}
 /*	if(!KviQString::equalCI(m_pForcedLocaleCombo->text(idx),m_szLanguage))
@@ -223,9 +232,11 @@ void OptionsWidget_textEncoding::commit()
 
 #ifdef COMPILE_ENCHANT_SUPPORT
 	QStringList wantedDictionaries;
-	for (int i = 0; i < m_pSpellCheckerDictionaries->rowCount(); ++i) {
-		if (m_pSpellCheckerDictionaries->item(i,0)->checkState() == Qt::Checked) {
-			wantedDictionaries << m_pSpellCheckerDictionaries->item(i,0)->text();
+	for(int i = 0; i < m_pSpellCheckerDictionaries->rowCount(); ++i)
+	{
+		if(m_pSpellCheckerDictionaries->item(i, 0)->checkState() == Qt::Checked)
+		{
+			wantedDictionaries << m_pSpellCheckerDictionaries->item(i, 0)->text();
 		}
 	}
 	KVI_OPTION_STRINGLIST(KviOption_stringlistSpellCheckerDictionaries) = wantedDictionaries;

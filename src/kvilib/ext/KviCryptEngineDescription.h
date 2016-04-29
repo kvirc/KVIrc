@@ -32,20 +32,21 @@
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
-	class KVILIB_API KviCryptEngineDescription : public KviHeapObject
-	{
-	public:
-		KviCryptEngineDescription(){};
-		virtual ~KviCryptEngineDescription(){};
-	public:
-		QString                       m_szName;           /**< engine name */
-		QString                       m_szDescription;    /**< details */
-		QString                       m_szAuthor;         /**< algorithm author */
-		int                           m_iFlags;           /**< properties */
-		crypt_engine_allocator_func   m_allocFunc;        /**< engine allocator */
-		crypt_engine_deallocator_func m_deallocFunc;      /**< deallocation function (if called from outside the origin module) */
-		void                        * m_providerHandle;   /**< used to identify the provider module */
-	};
+class KVILIB_API KviCryptEngineDescription : public KviHeapObject
+{
+public:
+	KviCryptEngineDescription(){};
+	virtual ~KviCryptEngineDescription(){};
+
+public:
+	QString m_szName;                            /**< engine name */
+	QString m_szDescription;                     /**< details */
+	QString m_szAuthor;                          /**< algorithm author */
+	int m_iFlags;                                /**< properties */
+	crypt_engine_allocator_func m_allocFunc;     /**< engine allocator */
+	crypt_engine_deallocator_func m_deallocFunc; /**< deallocation function (if called from outside the origin module) */
+	void * m_providerHandle;                     /**< used to identify the provider module */
+};
 
 #endif //COMPILE_CRYPT_SUPPORT
 #endif // _KVI_CRYPT_ENGINE_DESC_H_

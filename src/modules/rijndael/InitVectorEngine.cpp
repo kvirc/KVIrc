@@ -40,7 +40,7 @@ namespace InitVectorEngine
 			bDidInit = true;
 		}
 
-		for(int i=0;i<iLen;i++)
+		for(int i = 0; i < iLen; i++)
 			pIn[i] = (unsigned char)(rand() % 256);
 
 		return iLen;

@@ -32,63 +32,65 @@
 
 #include "QTimer"
 
-StatusBarApplet::StatusBarApplet(KviStatusBar *parent, KviStatusBarAppletDescriptor *desc)
-	: KviStatusBarApplet(parent, desc)
+StatusBarApplet::StatusBarApplet(KviStatusBar * parent, KviStatusBarAppletDescriptor * desc)
+    : KviStatusBarApplet(parent, desc)
 {
-	QTimer *timer = new QTimer(this);
+	QTimer * timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(update()));
 	timer->setInterval(250);
 	timer->setSingleShot(false);
 	timer->start(250);
 
-	setText(__tr2qs_ctx("Torrent Client","torrent"));
+	setText(__tr2qs_ctx("Torrent Client", "torrent"));
 }
 
 StatusBarApplet::~StatusBarApplet()
 {
 }
 
-static KviStatusBarApplet *CreateTorrentClientApplet(KviStatusBar *bar, KviStatusBarAppletDescriptor *desc)
+static KviStatusBarApplet * CreateTorrentClientApplet(KviStatusBar * bar, KviStatusBarAppletDescriptor * desc)
 {
 	KviStatusBarApplet * pApplet = new StatusBarApplet(bar, desc);
 	pApplet->setIndex(bar->insertPermanentWidgetAtTheEnd(pApplet));
 	return pApplet;
 }
 
-void StatusBarApplet::selfRegister(KviStatusBar *bar)
+void StatusBarApplet::selfRegister(KviStatusBar * bar)
 {
-	KviStatusBarAppletDescriptor *d = new KviStatusBarAppletDescriptor(
-		__tr2qs_ctx("Torrent Client","torrent"),
-			"torrentapplet",
-			CreateTorrentClientApplet,
-			"torrent", *(g_pIconManager->getSmallIcon(KviIconManager::Away)));
+	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
+	    __tr2qs_ctx("Torrent Client", "torrent"),
+	    "torrentapplet",
+	    CreateTorrentClientApplet,
+	    "torrent", *(g_pIconManager->getSmallIcon(KviIconManager::Away)));
 
 	bar->registerAppletDescriptor(d);
 }
 
 QString formatSize(float sz)
 {
-	if (sz >= 1024.0f*1024.0f*1024.0f)
-		return QString("%1 GiB").arg(sz / (1024.0f*1024.0f*1024.0f), 2, 'f', 2);
-	if (sz >= 1024.0f*1024.0f)
-		return QString("%1 MiB").arg(sz / (1024.0f*1024.0f), 2, 'f', 2);
-	if (sz >= 1024.0f)
+	if(sz >= 1024.0f * 1024.0f * 1024.0f)
+		return QString("%1 GiB").arg(sz / (1024.0f * 1024.0f * 1024.0f), 2, 'f', 2);
+	if(sz >= 1024.0f * 1024.0f)
+		return QString("%1 MiB").arg(sz / (1024.0f * 1024.0f), 2, 'f', 2);
+	if(sz >= 1024.0f)
 		return QString("%1 KiB").arg(sz / 1024.0f, 2, 'f', 2);
 	return QString("%1 B").arg(sz, 2, 'f', 2);
 }
 
 void StatusBarApplet::update()
 {
-	if (TorrentInterface::selected())
+	if(TorrentInterface::selected())
 	{
 		QString msg = QString("up: %1 K/s (%2), dn: %3 K/s (%4)")
-					.arg(TorrentInterface::selected()->speedUp(), 2)
-					.arg(formatSize(TorrentInterface::selected()->trafficUp()))
-					.arg(TorrentInterface::selected()->speedDown(), 2)
-					.arg(formatSize(TorrentInterface::selected()->trafficDown()));
+		                  .arg(TorrentInterface::selected()->speedUp(), 2)
+		                  .arg(formatSize(TorrentInterface::selected()->trafficUp()))
+		                  .arg(TorrentInterface::selected()->speedDown(), 2)
+		                  .arg(formatSize(TorrentInterface::selected()->trafficDown()));
 
 		setText(msg);
-	} else {
+	}
+	else
+	{
 		setText(__tr2qs_ctx("No client selected!", "torrent"));
 	}
 }

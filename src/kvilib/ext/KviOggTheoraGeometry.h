@@ -39,14 +39,14 @@
 */
 typedef struct _KviOggTheoraGeometry
 {
-	int pic_w;     /**< width of original picture geometry, chosen by the user */
-	int pic_h;     /**< height of original picture geometry, chosen by the user */
+	int pic_w; /**< width of original picture geometry, chosen by the user */
+	int pic_h; /**< height of original picture geometry, chosen by the user */
 
-	int frame_w;   /**< width of the picture frame (calculated geometry) */
-	int frame_h;   /**< height of the picture frame (calculated geometry) */
+	int frame_w; /**< width of the picture frame (calculated geometry) */
+	int frame_h; /**< height of the picture frame (calculated geometry) */
 
-	int pic_x;     /**< x offset of the picture inside the frame (calculated geometry) */
-	int pic_y;     /**< y offset of the picture inside the frame (calculated geometry) */
+	int pic_x; /**< x offset of the picture inside the frame (calculated geometry) */
+	int pic_y; /**< y offset of the picture inside the frame (calculated geometry) */
 } KviOggTheoraGeometry;
 
 #endif // COMPILE_DISABLE_OGG_THEORA

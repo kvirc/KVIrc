@@ -53,46 +53,47 @@ class QMenu;
 
 typedef struct _KviDccSendThreadOptions
 {
-	KviCString   szFileName;
-	quint64      uStartPosition;
-	int          iPacketSize;
-	int          iIdleStepLengthInMSec;
-	bool         bFastSend;
-	bool         bNoAcks;
-	bool         bIsTdcc;
+	KviCString szFileName;
+	quint64 uStartPosition;
+	int iPacketSize;
+	int iIdleStepLengthInMSec;
+	bool bFastSend;
+	bool bNoAcks;
+	bool bIsTdcc;
 	unsigned int uMaxBandwidth;
 } KviDccSendThreadOptions;
-
 
 class DccSendThread : public DccThread
 {
 public:
-	DccSendThread(QObject * par,kvi_socket_t fd,KviDccSendThreadOptions * opt);
+	DccSendThread(QObject * par, kvi_socket_t fd, KviDccSendThreadOptions * opt);
 	~DccSendThread();
+
 private:
 	// stats: SHARED!!!
-	uint           m_uAverageSpeed;
-	uint           m_uInstantSpeed;
-	quint64        m_uFilePosition;
-	quint64        m_uAckedBytes;
-	quint64        m_uTotalSentBytes;
+	uint m_uAverageSpeed;
+	uint m_uInstantSpeed;
+	quint64 m_uFilePosition;
+	quint64 m_uAckedBytes;
+	quint64 m_uTotalSentBytes;
 	// internal
-	unsigned long  m_uStartTime;
-	unsigned long  m_uInstantSpeedInterval;
-	quint64        m_uInstantSentBytes;
+	unsigned long m_uStartTime;
+	unsigned long m_uInstantSpeedInterval;
+	quint64 m_uInstantSentBytes;
 	KviDccSendThreadOptions * m_pOpt;
-	KviMSecTimeInterval * m_pTimeInterval;             // used for computing the instant bandwidth but not only
+	KviMSecTimeInterval * m_pTimeInterval; // used for computing the instant bandwidth but not only
 public:
 	void initGetInfo();
-	uint averageSpeed(){ return m_uAverageSpeed; };
-	uint instantSpeed(){ return m_uInstantSpeed; };
-	quint64 filePosition(){ return m_uFilePosition; };
+	uint averageSpeed() { return m_uAverageSpeed; };
+	uint instantSpeed() { return m_uInstantSpeed; };
+	quint64 filePosition() { return m_uFilePosition; };
 	// sent ONLY in this session
-	quint64 sentBytes(){ return m_uTotalSentBytes; };
-	quint64 ackedBytes(){ return m_uAckedBytes; };
-	unsigned int bandwidthLimit(){ return m_pOpt->uMaxBandwidth; };
-	void setBandwidthLimit(unsigned int uMaxBandwidth){ m_pOpt->uMaxBandwidth = uMaxBandwidth; };
+	quint64 sentBytes() { return m_uTotalSentBytes; };
+	quint64 ackedBytes() { return m_uAckedBytes; };
+	unsigned int bandwidthLimit() { return m_pOpt->uMaxBandwidth; };
+	void setBandwidthLimit(unsigned int uMaxBandwidth) { m_pOpt->uMaxBandwidth = uMaxBandwidth; };
 	void doneGetInfo();
+
 protected:
 	void updateStats();
 	virtual void run();
@@ -100,47 +101,50 @@ protected:
 
 typedef struct _KviDccRecvThreadOptions
 {
-	bool         bResume;
-	KviCString   szFileName;
-	quint64      uTotalFileSize;
-	int          iIdleStepLengthInMSec;
-	bool         bSendZeroAck;
-	bool         bSend64BitAck;
-	bool         bNoAcks;
-	bool         bIsTdcc;
+	bool bResume;
+	KviCString szFileName;
+	quint64 uTotalFileSize;
+	int iIdleStepLengthInMSec;
+	bool bSendZeroAck;
+	bool bSend64BitAck;
+	bool bNoAcks;
+	bool bIsTdcc;
 	unsigned int uMaxBandwidth;
 } KviDccRecvThreadOptions;
 
 class DccRecvThread : public DccThread
 {
 public:
-	DccRecvThread(QObject * par,kvi_socket_t fd,KviDccRecvThreadOptions * opt);
+	DccRecvThread(QObject * par, kvi_socket_t fd, KviDccRecvThreadOptions * opt);
 	~DccRecvThread();
+
 protected:
 	KviDccRecvThreadOptions * m_pOpt;
 
 	// stats: SHARED!
-	uint                  m_uAverageSpeed;
-	uint                  m_uInstantSpeed;
-	quint64               m_uFilePosition;
-	quint64               m_uTotalReceivedBytes;
+	uint m_uAverageSpeed;
+	uint m_uInstantSpeed;
+	quint64 m_uFilePosition;
+	quint64 m_uTotalReceivedBytes;
 
 	// internal
-	unsigned long         m_uStartTime;
-	KviMSecTimeInterval * m_pTimeInterval;             // used for computing the instant bandwidth
-	quint64               m_uInstantReceivedBytes;
-	quint64               m_uInstantSpeedInterval;
-	QFile               * m_pFile;
+	unsigned long m_uStartTime;
+	KviMSecTimeInterval * m_pTimeInterval; // used for computing the instant bandwidth
+	quint64 m_uInstantReceivedBytes;
+	quint64 m_uInstantSpeedInterval;
+	QFile * m_pFile;
+
 public:
 	void initGetInfo();
-	uint averageSpeed(){ return m_uAverageSpeed; };
-	uint instantSpeed(){ return m_uInstantSpeed; };
-	quint64 filePosition(){ return m_uFilePosition; };
+	uint averageSpeed() { return m_uAverageSpeed; };
+	uint instantSpeed() { return m_uInstantSpeed; };
+	quint64 filePosition() { return m_uFilePosition; };
 	// received ONLY in this session
-	quint64 receivedBytes(){ return m_uTotalReceivedBytes; };
-	unsigned int bandwidthLimit(){ return m_pOpt->uMaxBandwidth; };
-	void setBandwidthLimit(unsigned int uMaxBandwidth){ m_pOpt->uMaxBandwidth = uMaxBandwidth; };
+	quint64 receivedBytes() { return m_uTotalReceivedBytes; };
+	unsigned int bandwidthLimit() { return m_pOpt->uMaxBandwidth; };
+	void setBandwidthLimit(unsigned int uMaxBandwidth) { m_pOpt->uMaxBandwidth = uMaxBandwidth; };
 	void doneGetInfo();
+
 protected:
 	void postMessageEvent(const char * msg);
 	void updateStats();
@@ -148,82 +152,89 @@ protected:
 	virtual void run();
 };
 
-
 class DccFileTransferBandwidthDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	DccFileTransferBandwidthDialog(QWidget * pParent,DccFileTransfer * t);
+	DccFileTransferBandwidthDialog(QWidget * pParent, DccFileTransfer * t);
 	~DccFileTransferBandwidthDialog();
+
 protected:
 	DccFileTransfer * m_pTransfer;
 	QCheckBox * m_pEnableLimitCheck;
 	QSpinBox * m_pLimitBox;
+
 protected:
-	virtual void closeEvent(QCloseEvent *e);
+	virtual void closeEvent(QCloseEvent * e);
 protected slots:
 	void okClicked();
 	void cancelClicked();
 };
 
-
 class DccFileTransfer : public KviFileTransfer, public DccMarshalOutputContext
 {
-	enum GeneralStatus { Connecting, Transferring, Success, Failure };
+	enum GeneralStatus
+	{
+		Connecting,
+		Transferring,
+		Success,
+		Failure
+	};
 	Q_OBJECT
 public:
 	DccFileTransfer(DccDescriptor * dcc);
 	~DccFileTransfer();
+
 private:
-	DccSendThread          * m_pSlaveSendThread;
-	DccRecvThread          * m_pSlaveRecvThread;
-	DccDescriptor          * m_pDescriptor;
-	DccMarshal             * m_pMarshal;
+	DccSendThread * m_pSlaveSendThread;
+	DccRecvThread * m_pSlaveRecvThread;
+	DccDescriptor * m_pDescriptor;
+	DccMarshal * m_pMarshal;
 
-	KviCString               m_szTarget;
-	KviCString               m_szDccType;
-	QString                  m_szTransferIdString;
+	KviCString m_szTarget;
+	KviCString m_szDccType;
+	QString m_szTransferIdString;
 
-	QString                  m_szStatusString;
-	GeneralStatus            m_eGeneralStatus;
+	QString m_szStatusString;
+	GeneralStatus m_eGeneralStatus;
 
-	QString                  m_szTransferLog; // html
+	QString m_szTransferLog; // html
 
-	kvi_time_t               m_tTransferStartTime;
-	kvi_time_t               m_tTransferEndTime;
+	kvi_time_t m_tTransferStartTime;
+	kvi_time_t m_tTransferEndTime;
 	// cached stats
-	quint64                  m_uTotalFileSize; // total file size to transfer
+	quint64 m_uTotalFileSize; // total file size to transfer
 
-	unsigned int             m_uMaxBandwidth;
+	unsigned int m_uMaxBandwidth;
 	DccFileTransferBandwidthDialog * m_pBandwidthDialog;
 
-	QTimer                 * m_pResumeTimer; // used to signal resume timeout
+	QTimer * m_pResumeTimer; // used to signal resume timeout
 public:
-	bool resumeAccepted(const char * filename,const char * port,const char *szZeroPortTag);
-	bool doResume(const char * filename,const char * port,quint64 filePos);
+	bool resumeAccepted(const char * filename, const char * port, const char * szZeroPortTag);
+	bool doResume(const char * filename, const char * port, quint64 filePos);
 
 	static void init();
 	static void done();
 	static unsigned int runningTransfersCount();
-	static DccFileTransfer * nonFailedTransferWithLocalFileName(const QString &szLocalFileName);
+	static DccFileTransfer * nonFailedTransferWithLocalFileName(const QString & szLocalFileName);
 	static unsigned int transferCount();
-	static bool handleResumeAccepted(const char * filename,const char * port,const char * szZeroPortTag);
-	static bool handleResumeRequest(const char * filename,const char * port,quint64 filePos);
+	static bool handleResumeAccepted(const char * filename, const char * port, const char * szZeroPortTag);
+	static bool handleResumeRequest(const char * filename, const char * port, quint64 filePos);
 
-	virtual bool event(QEvent *e);
+	virtual bool event(QEvent * e);
 
 	virtual KviWindow * dccMarshalOutputWindow();
 	virtual const char * dccMarshalOutputContextString();
 
-	virtual void displayPaint(QPainter * p,int column, QRect rect);
+	virtual void displayPaint(QPainter * p, int column, QRect rect);
 	virtual int displayHeight(int iLineSpacing);
 	virtual void fillContextPopup(QMenu * m);
-	virtual void fillStatusString(QString &szBuffer);
+	virtual void fillStatusString(QString & szBuffer);
 	virtual bool active();
 	virtual QString tipText();
 	virtual QString localFileName();
 
-	bool isFileUpload(){ return m_pDescriptor->isFileUpload(); };
+	bool isFileUpload() { return m_pDescriptor->isFileUpload(); };
 
 	unsigned int averageSpeed();
 	unsigned int instantSpeed();
@@ -232,12 +243,13 @@ public:
 	int bandwidthLimit();
 	void setBandwidthLimit(int iVal);
 	virtual DccThread * getSlaveThread();
+
 protected:
 	void startConnection();
 	void listenOrConnect();
-	void addToTransferLog(const QString &s);
-	void outputAndLog(const QString &s);
-	void outputAndLog(int msgtype,const QString &s);
+	void addToTransferLog(const QString & s);
+	void outputAndLog(const QString & s);
+	void outputAndLog(int msgtype, const QString & s);
 	KviWindow * eventWindow();
 protected slots:
 	void connectionInProgress();

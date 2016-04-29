@@ -35,17 +35,19 @@ class DccWindow : public KviWindow, public DccMarshalOutputContext
 {
 	Q_OBJECT
 public:
-	DccWindow(KviWindow::Type eType,const char * name,DccDescriptor * d);
+	DccWindow(KviWindow::Type eType, const char * name, DccDescriptor * d);
 	~DccWindow();
+
 protected:
-	DccDescriptor       * m_pDescriptor;
-	DccMarshal          * m_pMarshal;
+	DccDescriptor * m_pDescriptor;
+	DccMarshal * m_pMarshal;
+
 public:
-	DccDescriptor       * descriptor() { return m_pDescriptor; };
-	const DccMarshal    * marshal() { return m_pMarshal; };
-	virtual DccThread   * getSlaveThread() { return 0; };
-	virtual KviWindow      * dccMarshalOutputWindow();
-	virtual const char     * dccMarshalOutputContextString();
+	DccDescriptor * descriptor() { return m_pDescriptor; };
+	const DccMarshal * marshal() { return m_pMarshal; };
+	virtual DccThread * getSlaveThread() { return 0; };
+	virtual KviWindow * dccMarshalOutputWindow();
+	virtual const char * dccMarshalOutputContextString();
 };
 
 #endif //_WINDOW_H_

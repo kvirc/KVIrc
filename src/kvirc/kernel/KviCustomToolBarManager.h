@@ -28,9 +28,9 @@
 #include "KviPointerHashTable.h"
 
 #ifdef COMPILE_ON_WINDOWS
-	#include "KviCustomToolBarDescriptor.h"
+#include "KviCustomToolBarDescriptor.h"
 #else
-	class KviCustomToolBarDescriptor;
+class KviCustomToolBarDescriptor;
 #endif
 
 class KviCustomToolBar;
@@ -40,29 +40,31 @@ class KVIRC_API KviCustomToolBarManager
 protected:
 	KviCustomToolBarManager();
 	~KviCustomToolBarManager();
+
 protected:
 	static KviCustomToolBarManager * m_pInstance;
-	KviPointerHashTable<QString,KviCustomToolBarDescriptor> * m_pDescriptors;
+	KviPointerHashTable<QString, KviCustomToolBarDescriptor> * m_pDescriptors;
+
 public:
-	static KviCustomToolBarManager * instance(){ return m_pInstance; };
+	static KviCustomToolBarManager * instance() { return m_pInstance; };
 	static void init();
 	static void done();
 	void clear();
-	int descriptorCount(){ return m_pDescriptors->count(); };
+	int descriptorCount() { return m_pDescriptors->count(); };
 	int visibleToolBarCount();
-	QString idForNewToolBar(const QString &szTemplate);
-	KviPointerHashTable<QString,KviCustomToolBarDescriptor> * descriptors(){ return m_pDescriptors; };
+	QString idForNewToolBar(const QString & szTemplate);
+	KviPointerHashTable<QString, KviCustomToolBarDescriptor> * descriptors() { return m_pDescriptors; };
 	KviCustomToolBar * firstExistingToolBar();
-	KviCustomToolBarDescriptor * create(const QString &szId,const QString &szLabelCode);
-	KviCustomToolBarDescriptor * find(const QString &szId){ return m_pDescriptors->find(szId); };
+	KviCustomToolBarDescriptor * create(const QString & szId, const QString & szLabelCode);
+	KviCustomToolBarDescriptor * find(const QString & szId) { return m_pDescriptors->find(szId); };
 	KviCustomToolBarDescriptor * findDescriptorByInternalId(int id);
 	void updateVisibleToolBars();
 	void createToolBarsVisibleAtStartup();
 	void storeVisibilityState();
-	bool renameDescriptor(const QString &szId,const QString &szNewId,const QString &szNewLabelCode);
-	bool destroyDescriptor(const QString &szId);
-	void load(const QString &szFileName);
-	void save(const QString &szFileName);
+	bool renameDescriptor(const QString & szId, const QString & szNewId, const QString & szNewLabelCode);
+	bool destroyDescriptor(const QString & szId);
+	void load(const QString & szFileName);
+	void save(const QString & szFileName);
 };
 
 #endif //_KVI_CUSTOMTOOLBARMANAGER_H_

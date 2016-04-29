@@ -35,26 +35,28 @@ class KviCryptEngineDescription;
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
-	class KVILIB_API KviCryptEngineManager
-	{
-	public:
-		KviCryptEngineManager();
-		virtual ~KviCryptEngineManager();
-	private:
-		KviPointerHashTable<QString,KviCryptEngineDescription> * m_pEngineDict;
-	public:
-		const KviPointerHashTable<QString,KviCryptEngineDescription> * engineDict(){ return m_pEngineDict; };
-		void registerEngine(KviCryptEngineDescription * pDesc);
-		void unregisterEngine(const QString & szName);
-		void unregisterEngines(void * providerHandle);
-		//
-		// Allocates a crypt engine
-		// Please note that the engine may be deleted from outside
-		// so you'd better connect the "destroyed" signal
-		//
-		KviCryptEngine * allocateEngine(const QString & szName);
-		void deallocateEngine(KviCryptEngine * pEngine);
-	};
+class KVILIB_API KviCryptEngineManager
+{
+public:
+	KviCryptEngineManager();
+	virtual ~KviCryptEngineManager();
+
+private:
+	KviPointerHashTable<QString, KviCryptEngineDescription> * m_pEngineDict;
+
+public:
+	const KviPointerHashTable<QString, KviCryptEngineDescription> * engineDict() { return m_pEngineDict; };
+	void registerEngine(KviCryptEngineDescription * pDesc);
+	void unregisterEngine(const QString & szName);
+	void unregisterEngines(void * providerHandle);
+	//
+	// Allocates a crypt engine
+	// Please note that the engine may be deleted from outside
+	// so you'd better connect the "destroyed" signal
+	//
+	KviCryptEngine * allocateEngine(const QString & szName);
+	void deallocateEngine(KviCryptEngine * pEngine);
+};
 
 #endif // COMPILE_CRYPT_SUPPORT
 #endif // _KVI_CRYPT_ENGINE_MANAGER_H_

@@ -28,8 +28,6 @@
 #include "kvi_debug.h"
 #include "KviLocale.h"
 
-
-
 /*
 	@doc: lamerizer
 	@type:
@@ -43,163 +41,159 @@
 		engine. Do [b]not[/b] use it! :D
 */
 
-
-
 #ifdef COMPILE_CRYPT_SUPPORT
 
-	#include "KviMemory.h"
-	#include "KviPointerList.h"
-	#include "KviCryptEngineDescription.h"
+#include "KviMemory.h"
+#include "KviPointerList.h"
+#include "KviCryptEngineDescription.h"
 
-	static KviPointerList<KviCryptEngine> * g_pEngineList = 0;
+static KviPointerList<KviCryptEngine> * g_pEngineList = 0;
 
-	KviLamerizerEngine::KviLamerizerEngine(bool bLight)
-	: KviCryptEngine()
+KviLamerizerEngine::KviLamerizerEngine(bool bLight)
+    : KviCryptEngine()
+{
+	m_bLight = bLight;
+	g_pEngineList->append(this);
+}
+
+KviLamerizerEngine::~KviLamerizerEngine()
+{
+	g_pEngineList->removeRef(this);
+}
+
+bool KviLamerizerEngine::init(const char *, int, const char *, int)
+{
+	return true;
+}
+
+static char subst_table[256] = {
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 007
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 015
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 023
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 031
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 039 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 047 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 055 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 063 :
+	0, '4', '8', 'C', 'D', '3', 'F', 'G',   // 071 :
+	'H', '|', 'J', 'K', 'L', 'm', 'N', 'O', // 079 :
+	'P', 'q', 'R', '5', '7', 'U', 'V', 'W', // 087 :
+	'x', 'Y', '2', 0, 0, 0, 0, 0,           // 095 :
+	0, '4', 'b', 'c', 'd', '3', 'f', '9',   // 103 :
+	'h', '|', 'j', 'k', '1', 'm', 'n', '0',
+	'p', 'q', 'r', '5', '7', 'u', 'v', 'w', // 119 :
+	'x', 'y', '2', 0, 0, 0, 0, 0,           // 127 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 135 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 143 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 151 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 159 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 167 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 175 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 183 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 191 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 199 :
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, // 215 :
+	0, 0, 0, 0, 0, 0, 0, 0, // 223 :
+	0, 0, 0, 0, 0, 0, 0, 0, // 231 :
+	0, 0, 0, 0, 0, 0, 0, 0, // 239 :
+	0, 0, 0, 0, 0, 0, 0, 0, // 247 :
+	0, 0, 0, 0, 0, 0, 0, 0
+};
+
+static char subst_table_light[256] = {
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 007
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 015
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 023
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 031
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 039 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 047 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 055 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 063 :
+	0, '4', 'B', 'C', 'D', '3', 'F', 'G',   // 071 :
+	'H', '|', 'J', 'K', 'L', 'm', 'N', 'O', // 079 :
+	'P', 'q', 'R', '5', '7', 'U', 'V', 'W', // 087 :
+	'x', 'Y', 'Z', 0, 0, 0, 0, 0,           // 095 :
+	0, '4', 'b', 'c', 'd', '3', 'f', 'G',   // 103 :
+	'h', '|', 'j', 'k', '1', 'm', 'n', '0',
+	'p', 'q', 'r', '5', '7', 'u', 'v', 'w', // 119 :
+	'x', 'y', 'z', 0, 0, 0, 0, 0,           // 127 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 135 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 143 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 151 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 159 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 167 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 175 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 183 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 191 :
+	0, 0, 0, 0, 0, 0, 0, 0,                 // 199 :
+	0, 0, 0, 0, 0, 0, 0, 0,
+	0, 0, 0, 0, 0, 0, 0, 0, // 215 :
+	0, 0, 0, 0, 0, 0, 0, 0, // 223 :
+	0, 0, 0, 0, 0, 0, 0, 0, // 231 :
+	0, 0, 0, 0, 0, 0, 0, 0, // 239 :
+	0, 0, 0, 0, 0, 0, 0, 0, // 247 :
+	0, 0, 0, 0, 0, 0, 0, 0
+};
+
+KviCryptEngine::EncryptResult KviLamerizerEngine::encrypt(const char * plainText, KviCString & outBuffer)
+{
+	outBuffer = plainText;
+	unsigned char * aux = (unsigned char *)outBuffer.ptr();
+	if(m_bLight)
 	{
-		m_bLight = bLight;
-		g_pEngineList->append(this);
-	}
-
-	KviLamerizerEngine::~KviLamerizerEngine()
-	{
-		g_pEngineList->removeRef(this);
-	}
-
-	bool KviLamerizerEngine::init(const char *,int,const char *,int)
-	{
-		return true;
-	}
-
-	static char subst_table[256] =
-	{
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 007
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 015
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 023
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 031
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 039 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 047 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 055 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 063 :
-		0   , '4' , '8' , 'C' , 'D' , '3' , 'F' , 'G' , // 071 :
-		'H' , '|' , 'J' , 'K' , 'L' , 'm' , 'N' , 'O' , // 079 :
-		'P' , 'q' , 'R' , '5' , '7' , 'U' , 'V' , 'W' , // 087 :
-		'x' , 'Y' , '2' , 0   , 0   , 0   , 0   , 0   , // 095 :
-		0   , '4' , 'b' , 'c' , 'd' , '3' , 'f' , '9' , // 103 :
-		'h' , '|' , 'j' , 'k' , '1' , 'm' , 'n' , '0' ,
-		'p' , 'q' , 'r' , '5' , '7' , 'u' , 'v' , 'w' , // 119 :
-		'x' , 'y' , '2' , 0   , 0   , 0   , 0   , 0   , // 127 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 135 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 143 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 151 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 159 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 167 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 175 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 183 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 191 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 199 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   ,
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 215 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 223 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 231 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 239 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 247 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0
-	};
-
-	static char subst_table_light[256] =
-	{
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 007
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 015
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 023
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 031
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 039 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 047 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 055 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 063 :
-		0   , '4' , 'B' , 'C' , 'D' , '3' , 'F' , 'G' , // 071 :
-		'H' , '|' , 'J' , 'K' , 'L' , 'm' , 'N' , 'O' , // 079 :
-		'P' , 'q' , 'R' , '5' , '7' , 'U' , 'V' , 'W' , // 087 :
-		'x' , 'Y' , 'Z' , 0   , 0   , 0   , 0   , 0   , // 095 :
-		0   , '4' , 'b' , 'c' , 'd' , '3' , 'f' , 'G' , // 103 :
-		'h' , '|' , 'j' , 'k' , '1' , 'm' , 'n' , '0' ,
-		'p' , 'q' , 'r' , '5' , '7' , 'u' , 'v' , 'w' , // 119 :
-		'x' , 'y' , 'z' , 0   , 0   , 0   , 0   , 0   , // 127 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 135 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 143 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 151 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 159 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 167 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 175 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 183 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 191 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 199 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   ,
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 215 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 223 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 231 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 239 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0   , // 247 :
-		0   , 0   , 0   , 0   , 0   , 0   , 0   , 0
-	};
-
-
-	KviCryptEngine::EncryptResult KviLamerizerEngine::encrypt(const char * plainText,KviCString &outBuffer)
-	{
-		outBuffer = plainText;
-		unsigned char * aux = (unsigned char *)outBuffer.ptr();
-		if(m_bLight)
+		while(*aux)
 		{
-			while(*aux)
+			if(subst_table_light[*aux])
 			{
-				if(subst_table_light[*aux])
-				{
-					*aux = subst_table_light[*aux];
-				}
-				aux++;
+				*aux = subst_table_light[*aux];
 			}
-		} else {
-			while(*aux)
-			{
-				if(subst_table[*aux])
-				{
-					*aux = subst_table[*aux];
-				}
-				aux++;
-			}
+			aux++;
 		}
-
-		if(!m_bLight)
+	}
+	else
+	{
+		while(*aux)
 		{
-			outBuffer.replaceAll("F","Ph");
-			outBuffer.replaceAll("V","\\/");
+			if(subst_table[*aux])
+			{
+				*aux = subst_table[*aux];
+			}
+			aux++;
 		}
-
-		return KviCryptEngine::Encoded;
 	}
 
-	KviCryptEngine::DecryptResult KviLamerizerEngine::decrypt(const char * inBuffer,KviCString &plainText)
+	if(!m_bLight)
 	{
-		plainText = inBuffer;
-		return KviCryptEngine::DecryptOkWasPlainText;
+		outBuffer.replaceAll("F", "Ph");
+		outBuffer.replaceAll("V", "\\/");
 	}
 
-	static KviCryptEngine * allocLamerizerEngine()
-	{
-		return new KviLamerizerEngine(false);
-	}
+	return KviCryptEngine::Encoded;
+}
 
-	static KviCryptEngine * allocLightLamerizerEngine()
-	{
-		return new KviLamerizerEngine(true);
-	}
+KviCryptEngine::DecryptResult KviLamerizerEngine::decrypt(const char * inBuffer, KviCString & plainText)
+{
+	plainText = inBuffer;
+	return KviCryptEngine::DecryptOkWasPlainText;
+}
 
-	static void deallocLamerizerEngine(KviCryptEngine * e)
-	{
-		delete e;
-	}
+static KviCryptEngine * allocLamerizerEngine()
+{
+	return new KviLamerizerEngine(false);
+}
+
+static KviCryptEngine * allocLightLamerizerEngine()
+{
+	return new KviLamerizerEngine(true);
+}
+
+static void deallocLamerizerEngine(KviCryptEngine * e)
+{
+	delete e;
+}
 
 #endif
-
 
 // =======================================
 // module routines
@@ -221,7 +215,6 @@ static bool lamerizer_module_init(KviModule * m)
 	d->m_deallocFunc = deallocLamerizerEngine;
 	m->registerCryptEngine(d);
 
-
 	d = new KviCryptEngineDescription;
 	d->m_szName = "LamerizerLight";
 	d->m_szAuthor = "Szymon Stefanek and Jan Wagner";
@@ -237,10 +230,11 @@ static bool lamerizer_module_init(KviModule * m)
 #endif
 }
 
-static bool lamerizer_module_cleanup(KviModule *m)
+static bool lamerizer_module_cleanup(KviModule * m)
 {
 #ifdef COMPILE_CRYPT_SUPPORT
-	while(g_pEngineList->first())delete g_pEngineList->first();
+	while(g_pEngineList->first())
+		delete g_pEngineList->first();
 	delete g_pEngineList;
 	g_pEngineList = 0;
 	m->unregisterCryptEngines();
@@ -263,13 +257,12 @@ static bool lamerizer_module_can_unload(KviModule *)
 // plugin definition structure
 // =======================================
 KVIRC_MODULE(
-	"Lamerizer crypt engine",
-	"4.0.0",
-	"Szymon Stefanek <pragma at kvirc dot net> \n Jan Wagner <istari@kvirc.net>",
-	"Exports the lamerizer text transformation engine",
-	lamerizer_module_init,
-	lamerizer_module_can_unload,
-	0,
-	lamerizer_module_cleanup,
-	0
-)
+    "Lamerizer crypt engine",
+    "4.0.0",
+    "Szymon Stefanek <pragma at kvirc dot net> \n Jan Wagner <istari@kvirc.net>",
+    "Exports the lamerizer text transformation engine",
+    lamerizer_module_init,
+    lamerizer_module_can_unload,
+    0,
+    lamerizer_module_cleanup,
+    0)

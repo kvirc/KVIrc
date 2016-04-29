@@ -34,12 +34,14 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeSpecialCommandUnset : public KviKvsTreeNodeSpecialCommand
 {
 public:
-	KviKvsTreeNodeSpecialCommandUnset(const QChar * pLocation,KviPointerList<KviKvsTreeNodeVariable> * pVarList);
+	KviKvsTreeNodeSpecialCommandUnset(const QChar * pLocation, KviPointerList<KviKvsTreeNodeVariable> * pVarList);
 	~KviKvsTreeNodeSpecialCommandUnset();
+
 private:
 	KviPointerList<KviKvsTreeNodeVariable> * m_pVariableList;
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };

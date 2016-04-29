@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviUrl.h"
 #include <QUrl>
 
@@ -42,7 +40,7 @@ KviUrl::KviUrl(const char * szUrl)
 	parse();
 }
 
-KviUrl::KviUrl(const QString &szUrl)
+KviUrl::KviUrl(const QString & szUrl)
 {
 	m_szUrl = szUrl;
 	parse();
@@ -50,7 +48,6 @@ KviUrl::KviUrl(const QString &szUrl)
 
 KviUrl::~KviUrl()
 {
-
 }
 
 void KviUrl::parse()
@@ -65,21 +62,21 @@ void KviUrl::parse()
 		m_szPath.append(QChar('?'));
 		m_szPath.append(url.query(QUrl::FullyEncoded));
 	}
-	if(m_szPath.isEmpty()) m_szPath=QString("/");
+	if(m_szPath.isEmpty())
+		m_szPath = QString("/");
 	m_szUser = url.userName();
 	m_szPass = url.password();
 	m_uPort = url.port(0);
 }
 
-
-KviUrl & KviUrl::operator=(const QString& szUrl)
+KviUrl & KviUrl::operator=(const QString & szUrl)
 {
 	m_szUrl = szUrl;
 	parse();
 	return *this;
 }
 
-KviUrl & KviUrl::operator=(const KviUrl &u)
+KviUrl & KviUrl::operator=(const KviUrl & u)
 {
 	m_szUrl = u.m_szUrl;
 	m_szProtocol = u.m_szProtocol;
@@ -90,5 +87,3 @@ KviUrl & KviUrl::operator=(const KviUrl &u)
 	m_uPort = u.m_uPort;
 	return *this;
 }
-
-

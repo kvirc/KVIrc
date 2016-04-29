@@ -30,24 +30,23 @@
 
 #include <QLayout>
 
-
 OptionsWidget_ignore::OptionsWidget_ignore(QWidget * parent)
-: KviOptionsWidget(parent)
+    : KviOptionsWidget(parent)
 {
 	setObjectName("ignore_options_widget");
 	createLayout();
 
-	KviTalGroupBox *g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Enable Ignore for","options"));
-	m_pIgnorePrivmsg = addBoolSelector(g,__tr2qs_ctx("Private/Channel messages","options"),KviOption_boolEnableIgnoreOnPrivMsg);
-	m_pIgnoreNotice  = addBoolSelector(g,__tr2qs_ctx("Private/Channel notices","options"),KviOption_boolEnableIgnoreOnNotice);
+	KviTalGroupBox * g = addGroupBox(0, 0, 0, 0, Qt::Horizontal, __tr2qs_ctx("Enable Ignore for", "options"));
+	m_pIgnorePrivmsg = addBoolSelector(g, __tr2qs_ctx("Private/Channel messages", "options"), KviOption_boolEnableIgnoreOnPrivMsg);
+	m_pIgnoreNotice = addBoolSelector(g, __tr2qs_ctx("Private/Channel notices", "options"), KviOption_boolEnableIgnoreOnNotice);
 
-	connect(m_pIgnorePrivmsg,SIGNAL(toggled(bool)),this,SLOT(enableVerbose(bool)));
+	connect(m_pIgnorePrivmsg, SIGNAL(toggled(bool)), this, SLOT(enableVerbose(bool)));
 
-	m_pVerboseIgnore = addBoolSelector(0,1,0,1,__tr2qs_ctx("Use verbose ignore (show messages in console)","options"),
-				KviOption_boolVerboseIgnore,
-				KVI_OPTION_BOOL(KviOption_boolEnableIgnoreOnPrivMsg) || KVI_OPTION_BOOL(KviOption_boolEnableIgnoreOnNotice));
+	m_pVerboseIgnore = addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Use verbose ignore (show messages in console)", "options"),
+	    KviOption_boolVerboseIgnore,
+	    KVI_OPTION_BOOL(KviOption_boolEnableIgnoreOnPrivMsg) || KVI_OPTION_BOOL(KviOption_boolEnableIgnoreOnNotice));
 
-	addRowSpacer(0,2,0,2);
+	addRowSpacer(0, 2, 0, 2);
 }
 
 OptionsWidget_ignore::~OptionsWidget_ignore()

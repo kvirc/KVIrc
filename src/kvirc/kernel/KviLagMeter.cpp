@@ -23,8 +23,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviLagMeter.h"
 #include "KviOptions.h"
 #include "KviKvsEventTriggers.h"
@@ -40,7 +38,7 @@
 #include "KviLocale.h"
 
 KviLagMeter::KviLagMeter(KviIrcConnection * c)
-: QObject()
+    : QObject()
 {
 	m_pConnection = c;
 	m_pCheckList = new KviPointerList<KviLagCheck>;
@@ -66,20 +64,22 @@ KviLagMeter::KviLagMeter(KviIrcConnection * c)
 
 KviLagMeter::~KviLagMeter()
 {
-	if(m_pDeletionSignal)*m_pDeletionSignal = true;
+	if(m_pDeletionSignal)
+		*m_pDeletionSignal = true;
 	delete m_pCheckList;
 }
 
 unsigned int KviLagMeter::secondsSinceLastCompleted()
 {
 	struct timeval tv;
-	kvi_gettimeofday(&tv,0);
+	kvi_gettimeofday(&tv, 0);
 	return tv.tv_sec - m_tLastCompleted;
 }
 
 void KviLagMeter::timerEvent(QTimerEvent *)
 {
-	if(m_pConnection->state() != KviIrcConnection::Connected)return; // do nothing atm
+	if(m_pConnection->state() != KviIrcConnection::Connected)
+		return; // do nothing atm
 
 	// If the lag has changed emit our signals
 	if((m_uLag / 10) != (m_uLastEmittedLag / 10))
@@ -87,7 +87,7 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 		m_uLastEmittedLag = m_uLag;
 		g_pMainWindow->childConnectionLagChange(m_pConnection);
 
-		KviCString szLag(KviCString::Format,"%u",m_uLag);
+		KviCString szLag(KviCString::Format, "%u", m_uLag);
 
 		bool bDeletionSignal = false;
 		m_pDeletionSignal = &bDeletionSignal;
@@ -95,35 +95,41 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 		if((!m_bOnAlarm) && (m_uLag > KVI_OPTION_UINT(KviOption_uintLagAlarmTime)))
 		{
 			KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnLagAlarmTimeUp,
-				m_pConnection->console(),m_pConnection->serverInfo()->name(),QString(szLag.ptr()));
-			if(bDeletionSignal)return; // killed, probably by a quit -f -u
+			    m_pConnection->console(), m_pConnection->serverInfo()->name(), QString(szLag.ptr()));
+			if(bDeletionSignal)
+				return; // killed, probably by a quit -f -u
 			m_bOnAlarm = true;
-		} else if(m_bOnAlarm)
+		}
+		else if(m_bOnAlarm)
 		{
 			KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnLagAlarmTimeDown,
-				m_pConnection->console(),m_pConnection->serverInfo()->name(),QString(szLag.ptr()));
-			if(bDeletionSignal)return; // killed, probably by a quit -f -u
+			    m_pConnection->console(), m_pConnection->serverInfo()->name(), QString(szLag.ptr()));
+			if(bDeletionSignal)
+				return; // killed, probably by a quit -f -u
 			m_bOnAlarm = false;
 		}
 
 		KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnLagCheck,
-			m_pConnection->console(),m_pConnection->serverInfo()->name(),QString(szLag.ptr()));
-		if(bDeletionSignal)return; // killed, probably by a quit -f -u
+		    m_pConnection->console(), m_pConnection->serverInfo()->name(), QString(szLag.ptr()));
+		if(bDeletionSignal)
+			return; // killed, probably by a quit -f -u
 
 		m_pDeletionSignal = 0;
 	}
 
 	// get current time
 	struct timeval tv;
-	kvi_gettimeofday(&tv,0);
+	kvi_gettimeofday(&tv, 0);
 	unsigned int uDiff = tv.tv_sec - m_tLastCompleted;
 	unsigned int uHeartbeat = KVI_OPTION_UINT(KviOption_uintLagMeterHeartbeat) / 1000;
-	if(uHeartbeat < 2)uHeartbeat = 2;
+	if(uHeartbeat < 2)
+		uHeartbeat = 2;
 	// we keep the last lag value for an amount of time
 	// depending on its reliability.
 	// Since reliability ranges from 10 to 100 we keep the lags
 	// for (hrtbt * 4) + (reliability / 2) seconds (which means from 25 to 70 seconds by default)
-	if(uDiff <= ((uHeartbeat * 4) + (m_uLastReliability / 2)))return; // nothing to do, the actual value is accurate
+	if(uDiff <= ((uHeartbeat * 4) + (m_uLastReliability / 2)))
+		return; // nothing to do, the actual value is accurate
 
 	// the last completed check has been completed a lot of time ago
 	// do we have some checks on the queue ?
@@ -134,7 +140,8 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 		KviLagCheck * c = m_pCheckList->first();
 		if(c)
 		{
-			if((tv.tv_sec - c->lSecs) <= 10)return;
+			if((tv.tv_sec - c->lSecs) <= 10)
+				return;
 		}
 		// the first check was registered more than 10 secs before
 		if(m_tLastOwnCheck > 0)
@@ -142,9 +149,11 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 			// hm.. we have already sent our own (reliable) check after the last completed
 			// make the lag grow (we're pretty sure it's growing)
 			uDiff = (tv.tv_sec - m_tFirstOwnCheck) * 1000;
-			if(m_uLag < uDiff)m_uLag = uDiff; // the lag grows for sure
+			if(m_uLag < uDiff)
+				m_uLag = uDiff; // the lag grows for sure
 			uDiff = tv.tv_sec - m_tLastOwnCheck;
-			if(uDiff < (uHeartbeat * 4))return; // wait a bit...send own checks only every 20 secs (by default) at this point
+			if(uDiff < (uHeartbeat * 4))
+				return; // wait a bit...send own checks only every 20 secs (by default) at this point
 		}
 	}
 	// or we have no checks in the queue at all
@@ -152,43 +161,46 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 	if(m_tFirstOwnCheck == 0)
 	{
 		if(_OUTPUT_PARANOIC)
-			m_pConnection->console()->output(KVI_OUT_VERBOSE,__tr2qs("Sending out PING based lag probe"));
+			m_pConnection->console()->output(KVI_OUT_VERBOSE, __tr2qs("Sending out PING based lag probe"));
 
 		// this is the first our own lag check since the last succesfull one: use the ping
-		lagCheckRegister("@ping@",70); // the ping may be fooled easily
+		lagCheckRegister("@ping@", 70); // the ping may be fooled easily
 		m_pConnection->sendFmtData("PING %s %s",
-			m_pConnection->encodeText( m_pConnection->userInfo()->nickName() ).data(),
-			m_pConnection->encodeText( m_pConnection->serverInfo()->name() ).data() );
+		    m_pConnection->encodeText(m_pConnection->userInfo()->nickName()).data(),
+		    m_pConnection->encodeText(m_pConnection->serverInfo()->name()).data());
 		m_tFirstOwnCheck = tv.tv_sec;
-	} else {
+	}
+	else
+	{
 		if(_OUTPUT_PARANOIC)
-			m_pConnection->console()->output(KVI_OUT_VERBOSE,__tr2qs("Sending out CTCP based lag probe"));
+			m_pConnection->console()->output(KVI_OUT_VERBOSE, __tr2qs("Sending out CTCP based lag probe"));
 
 		// we have already sent a ping but we got no reply
 		// try with another method... even if this will reset our idle time
-		KviCString tmp(KviCString::Format,"%d%d-yeah-:)",tv.tv_sec,tv.tv_usec);
-		lagCheckRegister(tmp.ptr(),100); // almost impossible to fool
+		KviCString tmp(KviCString::Format, "%d%d-yeah-:)", tv.tv_sec, tv.tv_usec);
+		lagCheckRegister(tmp.ptr(), 100); // almost impossible to fool
 		m_pConnection->sendFmtData("NOTICE %s :%cLAGCHECK %s%c",
-			m_pConnection->encodeText( m_pConnection->userInfo()->nickName() ).data(),
-			0x01,
-			tmp.ptr(),
-			0x01);
+		    m_pConnection->encodeText(m_pConnection->userInfo()->nickName()).data(),
+		    0x01,
+		    tmp.ptr(),
+		    0x01);
 	}
 	m_tLastOwnCheck = tv.tv_sec;
 }
 
-void KviLagMeter::lagCheckRegister(const char * key,unsigned int uReliability)
+void KviLagMeter::lagCheckRegister(const char * key, unsigned int uReliability)
 {
-	if(uReliability < 10)return; // what the heck of a lag check is this ?
+	if(uReliability < 10)
+		return; // what the heck of a lag check is this ?
 	// store the lagcheck structure and just return
 
 	if(_OUTPUT_PARANOIC)
-		m_pConnection->console()->output(KVI_OUT_VERBOSE,__tr2qs("Registered lag check with reliability %u (%s)"),uReliability,key);
+		m_pConnection->console()->output(KVI_OUT_VERBOSE, __tr2qs("Registered lag check with reliability %u (%s)"), uReliability, key);
 
 	KviLagCheck * c = new KviLagCheck;
 	c->szKey = key;
 	struct timeval tv;
-	kvi_gettimeofday(&tv,0);
+	kvi_gettimeofday(&tv, 0);
 	c->lSecs = tv.tv_sec;
 	c->lUSecs = tv.tv_usec;
 	c->uReliability = uReliability <= 100 ? uReliability : 100;
@@ -206,23 +218,28 @@ bool KviLagMeter::lagCheckComplete(const char * key)
 {
 	// find this lag check
 	KviLagCheck * c;
-	for(c = m_pCheckList->first();c;c = m_pCheckList->next())
+	for(c = m_pCheckList->first(); c; c = m_pCheckList->next())
 	{
-		if(kvi_strEqualCS(c->szKey.ptr(),key))break;
+		if(kvi_strEqualCS(c->szKey.ptr(), key))
+			break;
 	}
-	if(!c)return false; // not found
+	if(!c)
+		return false; // not found
 	// kill any earlier lag checks (IRC is a sequential proto)
-	while(m_pCheckList->first() != c)m_pCheckList->removeFirst();
+	while(m_pCheckList->first() != c)
+		m_pCheckList->removeFirst();
 
 	if(_OUTPUT_PARANOIC)
-		m_pConnection->console()->output(KVI_OUT_VERBOSE,__tr2qs("Lag check completed (%s)"),key);
+		m_pConnection->console()->output(KVI_OUT_VERBOSE, __tr2qs("Lag check completed (%s)"), key);
 
 	struct timeval tv;
-	kvi_gettimeofday(&tv,0);
+	kvi_gettimeofday(&tv, 0);
 
 	unsigned int uLag = ((tv.tv_sec - c->lSecs) * 1000);
-	if(tv.tv_usec < c->lUSecs)uLag -= ((c->lUSecs - tv.tv_usec) / 1000);
-	else uLag += ((tv.tv_usec - c->lUSecs) / 1000);
+	if(tv.tv_usec < c->lUSecs)
+		uLag -= ((c->lUSecs - tv.tv_usec) / 1000);
+	else
+		uLag += ((tv.tv_usec - c->lUSecs) / 1000);
 
 	// now check the reliability
 
@@ -232,7 +249,9 @@ bool KviLagMeter::lagCheckComplete(const char * key)
 		// change the real lag only by a certain amount
 		// c->uRel : 100 = uLag : m_uLag
 		m_uLag = ((uLag * c->uReliability) + (m_uLag * m_uLastReliability)) / (c->uReliability + m_uLastReliability);
-	} else {
+	}
+	else
+	{
 		// the actual data is less reliable than the new one
 		m_uLag = uLag;
 	}
@@ -254,10 +273,11 @@ void KviLagMeter::lagCheckAbort(const char * key)
 	KviLagCheck * c;
 
 	if(_OUTPUT_PARANOIC)
-		m_pConnection->console()->output(KVI_OUT_VERBOSE,__tr2qs("Lag check aborted (%s)"),key);
+		m_pConnection->console()->output(KVI_OUT_VERBOSE, __tr2qs("Lag check aborted (%s)"), key);
 
-	for(c = m_pCheckList->first();c;c = m_pCheckList->next())
-		if(kvi_strEqualCS(c->szKey.ptr(),key))l.append(c);
-	for(c = l.first();c;c = l.next())m_pCheckList->removeRef(c);
+	for(c = m_pCheckList->first(); c; c = m_pCheckList->next())
+		if(kvi_strEqualCS(c->szKey.ptr(), key))
+			l.append(c);
+	for(c = l.first(); c; c = l.next())
+		m_pCheckList->removeRef(c);
 }
-

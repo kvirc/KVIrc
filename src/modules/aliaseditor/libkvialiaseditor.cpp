@@ -28,10 +28,8 @@
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
-
 AliasEditorWindow * g_pAliasEditorWindow = 0;
 KviModule * g_pAliasEditorModule = 0;
-
 
 /*
 	@doc: aliaseditor.open
@@ -62,13 +60,13 @@ static bool aliaseditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 
 static bool aliaseditor_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",aliaseditor_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", aliaseditor_kvs_cmd_open);
 	g_pAliasEditorWindow = 0;
 	g_pAliasEditorModule = m;
 	return true;
 }
 
-static bool aliaseditor_module_can_unload(KviModule * )
+static bool aliaseditor_module_can_unload(KviModule *)
 {
 	return (g_pAliasEditorWindow == 0);
 }
@@ -82,13 +80,12 @@ static bool aliaseditor_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"AliasEditor",                                                       // module name
-	"4.0.0",                                                             // module version
-	"Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Editor for the script aliases",
-	aliaseditor_module_init,
-	aliaseditor_module_can_unload,
-	0,
-	aliaseditor_module_cleanup,
-	"editor"
-)
+    "AliasEditor",                                                       // module name
+    "4.0.0",                                                             // module version
+    "Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Editor for the script aliases",
+    aliaseditor_module_init,
+    aliaseditor_module_can_unload,
+    0,
+    aliaseditor_module_cleanup,
+    "editor")

@@ -35,7 +35,7 @@
 // See KviHeapObject.cpp for comments on this class
 
 #ifdef COMPILE_ON_WINDOWS
-	/**
+/**
 	* \class KviHeapObject
 	*
 	* On windows we need to override new and delete operators
@@ -69,62 +69,62 @@
 	* created from inside a module and destroyed anywhere else
 	* and has a virtual destructor.
 	*/
-	class KVILIB_API KviHeapObject
-	{
-	public:
-		/**
+class KVILIB_API KviHeapObject
+{
+public:
+	/**
 		* \brief Overloading of the new operator
 		*
 		* \param size_t size in bytes of the memory that has to be allocated
 		* \return void *
 		*/
-		void * operator new(size_t uSize);
+	void * operator new(size_t uSize);
 
-		/**
+	/**
 		* \brief Overloading of the delete operator
 		*
 		* \param pData pointer to the objet that needs to be freed
 		* \return void
 		*/
-		void operator delete(void * pData);
+	void operator delete(void * pData);
 
-		/**
+	/**
 		* \brief Overloading of the new[] operator
 		*
 		* \param size_t size in bytes of the memory that has to be allocated
 		* \return void *
 		*/
-		void * operator new[](size_t uSize);
+	void * operator new[](size_t uSize);
 
-		/**
+	/**
 		* \brief Overloading of the delete[] operator
 		*
 		* \param pData pointer to the objet that needs to be freed
 		* \return void
 		*/
-		void operator delete[](void * pData);
+	void operator delete[](void * pData);
 
-		/**
+	/**
 		* \brief Overloading of the new operator (debug version)
 		*
 		* \param size_t size in bytes of the memory that has to be allocated
 		* \return void *
 		*/
-		void * operator new(size_t uSize,const char *,int);
+	void * operator new(size_t uSize, const char *, int);
 
-		/**
+	/**
 		* \brief Overloading of the delete operator (debug version)
 		*
 		* \param pData pointer to the objet that needs to be freed
 		* \return void
 		*/
-		void operator delete(void * pData,const char *,int);
-	};
-#else //COMPILE_ON_WINDOWS
-	class KVILIB_API KviHeapObject
-	{
-		// on other platforms this crap is not necessary
-	};
+	void operator delete(void * pData, const char *, int);
+};
+#else  //COMPILE_ON_WINDOWS
+class KVILIB_API KviHeapObject
+{
+	// on other platforms this crap is not necessary
+};
 #endif //COMPILE_ON_WINDOWS
 
 #endif //_KVI_HEAPOBJECT_H_

@@ -37,8 +37,9 @@ class KVIRC_API KviMexLinkFilter : public QObject, public KviModuleExtension
 public:
 	KviMexLinkFilter(KviModuleExtensionDescriptor * d);
 	~KviMexLinkFilter();
+
 public:
-	virtual void processData(char * buffer,int len) = 0;
+	virtual void processData(char * buffer, int len) = 0;
 	virtual bool sendPacket(KviDataBuffer * pData) = 0;
 	virtual bool clearOutputQueue(bool bPrivateMessagesOnly) = 0;
 	virtual unsigned int outputQueueSize() = 0;

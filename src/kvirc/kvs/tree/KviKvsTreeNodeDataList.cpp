@@ -28,7 +28,7 @@
 #include "KviQString.h"
 
 KviKvsTreeNodeDataList::KviKvsTreeNodeDataList(const QChar * pLocation)
-: KviKvsTreeNode(pLocation)
+    : KviKvsTreeNode(pLocation)
 {
 	m_pDataList = new KviPointerList<KviKvsTreeNodeData>();
 	m_pDataList->setAutoDelete(true);
@@ -53,28 +53,28 @@ KviKvsTreeNodeData * KviKvsTreeNodeDataList::releaseFirst()
 
 KviKvsTreeNodeData * KviKvsTreeNodeDataList::item(unsigned int uIdx)
 {
-	if(uIdx >= m_pDataList->count())return 0;
+	if(uIdx >= m_pDataList->count())
+		return 0;
 	return m_pDataList->at(uIdx);
 }
 
-
-void KviKvsTreeNodeDataList::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeDataList::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Data List Evaluation";
 }
 
 void KviKvsTreeNodeDataList::dump(const char * prefix)
 {
-	qDebug("%s DataList",prefix);
+	qDebug("%s DataList", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	for(KviKvsTreeNodeData * t = m_pDataList->first();t;t = m_pDataList->next())
+	for(KviKvsTreeNodeData * t = m_pDataList->first(); t; t = m_pDataList->next())
 	{
 		t->dump(tmp.toUtf8().data());
 	}
 }
 
-bool KviKvsTreeNodeDataList::evaluate(KviKvsRunTimeContext * c,KviKvsVariantList * pBuffer)
+bool KviKvsTreeNodeDataList::evaluate(KviKvsRunTimeContext * c, KviKvsVariantList * pBuffer)
 {
 	pBuffer->clear();
 
@@ -83,7 +83,7 @@ bool KviKvsTreeNodeDataList::evaluate(KviKvsRunTimeContext * c,KviKvsVariantList
 	while(KviKvsTreeNodeData * t = it.current())
 	{
 		KviKvsVariant * v = new KviKvsVariant();
-		if(!t->evaluateReadOnly(c,v))
+		if(!t->evaluateReadOnly(c, v))
 		{
 			delete v;
 			pBuffer->clear();

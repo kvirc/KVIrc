@@ -25,9 +25,8 @@
 #include "KviKvsTreeNodeThisObjectFunctionCall.h"
 #include "KviKvsObject.h"
 
-
-KviKvsTreeNodeThisObjectFunctionCall::KviKvsTreeNodeThisObjectFunctionCall(const QChar * pLocation,const QString &szFncName,KviKvsTreeNodeDataList * pParams)
-: KviKvsTreeNodeObjectFunctionCall(pLocation,szFncName,pParams)
+KviKvsTreeNodeThisObjectFunctionCall::KviKvsTreeNodeThisObjectFunctionCall(const QChar * pLocation, const QString & szFncName, KviKvsTreeNodeDataList * pParams)
+    : KviKvsTreeNodeObjectFunctionCall(pLocation, szFncName, pParams)
 {
 }
 
@@ -35,7 +34,7 @@ KviKvsTreeNodeThisObjectFunctionCall::~KviKvsTreeNodeThisObjectFunctionCall()
 {
 }
 
-void KviKvsTreeNodeThisObjectFunctionCall::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeThisObjectFunctionCall::contextDescription(QString & szBuffer)
 {
 	szBuffer = "\"This\" Object Function Call \"";
 	szBuffer += m_szFunctionName;
@@ -44,17 +43,18 @@ void KviKvsTreeNodeThisObjectFunctionCall::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeThisObjectFunctionCall::dump(const char * prefix)
 {
-	qDebug("%s ThisObjectFunctionCall(%s)",prefix,m_szFunctionName.toUtf8().data());
+	qDebug("%s ThisObjectFunctionCall(%s)", prefix, m_szFunctionName.toUtf8().data());
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pParams->dump(tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeThisObjectFunctionCall::evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeThisObjectFunctionCall::evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	KviKvsVariantList l;
-	if(!m_pParams->evaluate(c,&l))return false;
+	if(!m_pParams->evaluate(c, &l))
+		return false;
 	pBuffer->setNothing();
 	c->setDefaultReportLocation(this);
-	return o->callFunction(c->thisObject(),m_szFunctionName,QString(),c,pBuffer,&l);
+	return o->callFunction(c->thisObject(), m_szFunctionName, QString(), c, pBuffer, &l);
 }

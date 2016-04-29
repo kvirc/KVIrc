@@ -43,79 +43,85 @@ QString g_lError;
 
 static PyThreadState * mainThreadState = nullptr;
 
-struct KviPythonLock {
-	KviPythonLock(PyThreadState * ts) {
+struct KviPythonLock
+{
+	KviPythonLock(PyThreadState * ts)
+	{
 		PyEval_RestoreThread(ts);
 	}
-	~KviPythonLock() {
+	~KviPythonLock()
+	{
 		PyEval_SaveThread();
 	}
 };
 
-struct KviPythonInterpreterDeleter {
+struct KviPythonInterpreterDeleter
+{
 	void operator()(PyThreadState * ts) const
 	{
-		KviPythonLock lock{ts};
+		KviPythonLock lock{ ts };
 		Py_EndInterpreter(ts);
 		PyThreadState_Swap(mainThreadState);
 	}
 };
 
-struct KviPythonInterpreter {
+struct KviPythonInterpreter
+{
 	KviPythonInterpreter();
-	bool execute(QString, QStringList&, QString&, QString&, QStringList&);
+	bool execute(QString, QStringList &, QString &, QString &, QStringList &);
 	std::unique_ptr<PyThreadState, KviPythonInterpreterDeleter> m_uptrThreadState;
 };
 
-struct KviCaseInsensitiveQStringHash {
-	std::size_t operator()(const QString& s) const
+struct KviCaseInsensitiveQStringHash
+{
+	std::size_t operator()(const QString & s) const
 	{
 		return static_cast<std::size_t>(qHash(s.toLower()));
 	}
 };
 
-struct KviCaseInsensitiveQStringEqual {
-	bool operator()(const QString& s, const QString& t) const
+struct KviCaseInsensitiveQStringEqual
+{
+	bool operator()(const QString & s, const QString & t) const
 	{
 		return (s.toLower() == t.toLower());
 	}
 };
 
-static std::unordered_map<QString,KviPythonInterpreter,KviCaseInsensitiveQStringHash,KviCaseInsensitiveQStringEqual> g_Interpreters;
+static std::unordered_map<QString, KviPythonInterpreter, KviCaseInsensitiveQStringHash, KviCaseInsensitiveQStringEqual> g_Interpreters;
 
 KviPythonInterpreter::KviPythonInterpreter()
 {
-	KviPythonLock lock{mainThreadState};
+	KviPythonLock lock{ mainThreadState };
 	m_uptrThreadState.reset(Py_NewInterpreter());
 
 	// hook in the kvirc error handling routines
 	QString szPreCode = QString(
-		"import kvirc\n"
-		"import sys\n"
-		"class kvirc_stderr_grabber:\n\tdef write(self,s):\n\t\tkvirc.error(s)\n"
-		"sys.stderr=kvirc_stderr_grabber()\n"
-	);
+	    "import kvirc\n"
+	    "import sys\n"
+	    "class kvirc_stderr_grabber:\n\tdef write(self,s):\n\t\tkvirc.error(s)\n"
+	    "sys.stderr=kvirc_stderr_grabber()\n");
 
 	PyRun_SimpleString(szPreCode.toUtf8().data());
 }
 
-bool KviPythonInterpreter::execute(QString szCode, QStringList& lArgs,
-	QString& szRetVal, QString& szError, QStringList&)
+bool KviPythonInterpreter::execute(QString szCode, QStringList & lArgs,
+    QString & szRetVal, QString & szError, QStringList &)
 {
 	if(!m_uptrThreadState)
 	{
-		szError = __tr2qs_ctx("Internal error: Python interpreter not initialized","python");
+		szError = __tr2qs_ctx("Internal error: Python interpreter not initialized", "python");
 		return false;
 	}
 
 	g_lError.clear();
 
-	KviPythonLock lock{m_uptrThreadState.get()};
+	KviPythonLock lock{ m_uptrThreadState.get() };
 
 	QString szVarCode = "aArgs = [";
 
 	bool bFirst = true;
-	foreach(QString szArg,lArgs)
+	foreach(QString szArg, lArgs)
 	{
 		if(!bFirst)
 			szVarCode += ",";
@@ -142,7 +148,7 @@ bool KviPythonInterpreter::execute(QString szCode, QStringList& lArgs,
 	return !retVal;
 }
 
-static void pythoncore_destroy_interpreter(const QString& szContextName)
+static void pythoncore_destroy_interpreter(const QString & szContextName)
 {
 	const auto i = g_Interpreters.find(szContextName);
 
@@ -152,7 +158,7 @@ static void pythoncore_destroy_interpreter(const QString& szContextName)
 
 #endif // COMPILE_PYTHON_SUPPORT
 
-template<typename T>
+template <typename T>
 T * castFromModParam(void * p)
 {
 	T * ex = static_cast<T *>(p);
@@ -163,31 +169,33 @@ T * castFromModParam(void * p)
 	return ex;
 }
 
-static bool pythoncore_module_ctrl(KviModule *,const char * cmd,void * param)
+static bool pythoncore_module_ctrl(KviModule *, const char * cmd, void * param)
 {
 #ifdef COMPILE_PYTHON_SUPPORT
-	if(!strcmp(cmd,KVI_PYTHONCORECTRLCOMMAND_EXECUTE))
+	if(!strcmp(cmd, KVI_PYTHONCORECTRLCOMMAND_EXECUTE))
 	{
 		auto * pex = castFromModParam<KviPythonCoreCtrlCommand_execute>(param);
 
 		if(!pex)
 			return false;
 
-		auto& ex = *pex;
+		auto & ex = *pex;
 
 		g_pCurrentKvsContext = ex.pKvsContext;
 		g_bExecuteQuiet = ex.bQuiet;
 		if(ex.szContext.isEmpty())
 		{
 			KviPythonInterpreter m;
-			ex.bExitOk = m.execute(ex.szCode,ex.lArgs,ex.szRetVal,ex.szError,ex.lWarnings);
-		} else {
-			KviPythonInterpreter& m = g_Interpreters[ex.szContext];
-			ex.bExitOk = m.execute(ex.szCode,ex.lArgs,ex.szRetVal,ex.szError,ex.lWarnings);
+			ex.bExitOk = m.execute(ex.szCode, ex.lArgs, ex.szRetVal, ex.szError, ex.lWarnings);
+		}
+		else
+		{
+			KviPythonInterpreter & m = g_Interpreters[ex.szContext];
+			ex.bExitOk = m.execute(ex.szCode, ex.lArgs, ex.szRetVal, ex.szError, ex.lWarnings);
 		}
 		return true;
 	}
-	if(!strcmp(cmd,KVI_PYTHONCORECTRLCOMMAND_DESTROY))
+	if(!strcmp(cmd, KVI_PYTHONCORECTRLCOMMAND_DESTROY))
 	{
 		auto * pde = castFromModParam<KviPythonCoreCtrlCommand_destroy>(param);
 
@@ -236,15 +244,14 @@ static bool pythoncore_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"PythonCore",                                           // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)\n"
-	"Copyright (C) 2009 Fabio Bas (ctrlaltca at libero dot it)\n"
-	"Copyright (C) 2016 Matt Ullman (staticfox at staticfox dot net)",
-	"Python Scripting Engine Core",
-	pythoncore_module_init,
-	pythoncore_module_can_unload,
-	pythoncore_module_ctrl,
-	pythoncore_module_cleanup,
-	"python"
-)
+    "PythonCore", // module name
+    "4.0.0",      // module version
+    "Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)\n"
+    "Copyright (C) 2009 Fabio Bas (ctrlaltca at libero dot it)\n"
+    "Copyright (C) 2016 Matt Ullman (staticfox at staticfox dot net)",
+    "Python Scripting Engine Core",
+    pythoncore_module_init,
+    pythoncore_module_can_unload,
+    pythoncore_module_ctrl,
+    pythoncore_module_cleanup,
+    "python")

@@ -30,150 +30,165 @@
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
-	#include "KviCryptEngine.h"
-	#include "Rijndael.h"
+#include "KviCryptEngine.h"
+#include "Rijndael.h"
 
-	class KviRijndaelEngine : public KviCryptEngine
+class KviRijndaelEngine : public KviCryptEngine
+{
+	Q_OBJECT
+public:
+	KviRijndaelEngine();
+	virtual ~KviRijndaelEngine();
+
+private:
+	enum OperationalMode
 	{
-		Q_OBJECT
-	public:
-		KviRijndaelEngine();
-		virtual ~KviRijndaelEngine();
-	private:
-		enum OperationalMode {
-			OldCBC   =  1,	/** Legacy (pre-4.2) mode: CBC with empty IV **/
-			CBC      =  2,	/** CBC mode **/
-			ECB      =  3	/** ECB mode **/
-		};
-		Rijndael * m_pEncryptCipher;
-		Rijndael * m_pDecryptCipher;
-		OperationalMode m_bEncryptMode;
-		OperationalMode m_bDecryptMode;
-	public:
-		virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
-		virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviCString &outBuffer);
-		virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviCString &plainText);
-	protected:
-		virtual bool binaryToAscii(const char *,int,KviCString &){ return false; };
-		virtual bool asciiToBinary(const char *,int *,char **){ return false; };
-		virtual int getKeyLen(){ return 32; };
-		virtual Rijndael::KeyLength getKeyLenId(){ return Rijndael::Key32Bytes; };
-	private:
-		void setLastErrorFromRijndaelErrorCode(int errCode);
+		OldCBC = 1, /** Legacy (pre-4.2) mode: CBC with empty IV **/
+		CBC = 2,    /** CBC mode **/
+		ECB = 3     /** ECB mode **/
 	};
+	Rijndael * m_pEncryptCipher;
+	Rijndael * m_pDecryptCipher;
+	OperationalMode m_bEncryptMode;
+	OperationalMode m_bDecryptMode;
 
-	class KviRijndaelHexEngine : public KviRijndaelEngine
-	{
-		Q_OBJECT
-	public:
-		KviRijndaelHexEngine() : KviRijndaelEngine() {};
-		virtual ~KviRijndaelHexEngine(){};
-	protected:
-		virtual bool binaryToAscii(const char * inBuffer,int len,KviCString &outBuffer);
-		virtual bool asciiToBinary(const char * inBuffer,int * len,char ** outBuffer);
-	};
+public:
+	virtual bool init(const char * encKey, int encKeyLen, const char * decKey, int decKeyLen);
+	virtual KviCryptEngine::EncryptResult encrypt(const char * plainText, KviCString & outBuffer);
+	virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer, KviCString & plainText);
 
-	class KviRijndael128HexEngine : public KviRijndaelHexEngine
-	{
-		Q_OBJECT
-	public:
-		KviRijndael128HexEngine() : KviRijndaelHexEngine() {};
-		virtual ~KviRijndael128HexEngine(){};
-	protected:
-		virtual int getKenLen(){ return 16; };
-		virtual Rijndael::KeyLength getKeyLenId(){ return Rijndael::Key16Bytes; };
-	};
+protected:
+	virtual bool binaryToAscii(const char *, int, KviCString &) { return false; };
+	virtual bool asciiToBinary(const char *, int *, char **) { return false; };
+	virtual int getKeyLen() { return 32; };
+	virtual Rijndael::KeyLength getKeyLenId() { return Rijndael::Key32Bytes; };
+private:
+	void setLastErrorFromRijndaelErrorCode(int errCode);
+};
 
-	class KviRijndael192HexEngine : public KviRijndaelHexEngine
-	{
-		Q_OBJECT
-	public:
-		KviRijndael192HexEngine() : KviRijndaelHexEngine() {};
-		virtual ~KviRijndael192HexEngine(){};
-	protected:
-		virtual int getKenLen(){ return 24; };
-		virtual Rijndael::KeyLength getKeyLenId(){ return Rijndael::Key24Bytes; };
-	};
+class KviRijndaelHexEngine : public KviRijndaelEngine
+{
+	Q_OBJECT
+public:
+	KviRijndaelHexEngine() : KviRijndaelEngine(){};
+	virtual ~KviRijndaelHexEngine(){};
 
-	class KviRijndael256HexEngine : public KviRijndaelHexEngine
-	{
-		Q_OBJECT
-	public:
-		KviRijndael256HexEngine() : KviRijndaelHexEngine() {};
-		virtual ~KviRijndael256HexEngine(){};
-	protected:
-		virtual int getKenLen(){ return 32; };
-	};
+protected:
+	virtual bool binaryToAscii(const char * inBuffer, int len, KviCString & outBuffer);
+	virtual bool asciiToBinary(const char * inBuffer, int * len, char ** outBuffer);
+};
 
-	class KviRijndaelBase64Engine : public KviRijndaelEngine
-	{
-		Q_OBJECT
-	public:
-		KviRijndaelBase64Engine() : KviRijndaelEngine() {};
-		virtual ~KviRijndaelBase64Engine(){};
-	protected:
-		virtual bool binaryToAscii(const char * inBuffer,int len,KviCString &outBuffer);
-		virtual bool asciiToBinary(const char * inBuffer,int * len,char ** outBuffer);
-	};
+class KviRijndael128HexEngine : public KviRijndaelHexEngine
+{
+	Q_OBJECT
+public:
+	KviRijndael128HexEngine() : KviRijndaelHexEngine(){};
+	virtual ~KviRijndael128HexEngine(){};
 
-	class KviRijndael128Base64Engine : public KviRijndaelBase64Engine
-	{
-		Q_OBJECT
-	public:
-		KviRijndael128Base64Engine() : KviRijndaelBase64Engine() {};
-		virtual ~KviRijndael128Base64Engine(){};
-	protected:
-		virtual int getKenLen(){ return 16; };
-		virtual Rijndael::KeyLength getKeyLenId(){ return Rijndael::Key16Bytes; };
-	};
+protected:
+	virtual int getKenLen() { return 16; };
+	virtual Rijndael::KeyLength getKeyLenId() { return Rijndael::Key16Bytes; };
+};
 
-	class KviRijndael192Base64Engine : public KviRijndaelBase64Engine
-	{
-		Q_OBJECT
-	public:
-		KviRijndael192Base64Engine() : KviRijndaelBase64Engine() {};
-		virtual ~KviRijndael192Base64Engine(){};
-	protected:
-		virtual int getKenLen(){ return 24; };
-		virtual Rijndael::KeyLength getKeyLenId(){ return Rijndael::Key24Bytes; };
-	};
+class KviRijndael192HexEngine : public KviRijndaelHexEngine
+{
+	Q_OBJECT
+public:
+	KviRijndael192HexEngine() : KviRijndaelHexEngine(){};
+	virtual ~KviRijndael192HexEngine(){};
 
-	class KviRijndael256Base64Engine : public KviRijndaelBase64Engine
-	{
-		Q_OBJECT
-	public:
-		KviRijndael256Base64Engine() : KviRijndaelBase64Engine() {};
-		virtual ~KviRijndael256Base64Engine(){};
-	protected:
-		virtual int getKenLen(){ return 32; };
-	};
+protected:
+	virtual int getKenLen() { return 24; };
+	virtual Rijndael::KeyLength getKeyLenId() { return Rijndael::Key24Bytes; };
+};
 
-	// Mircyption stuff
-	#define MCPS2_STARTTAG "\xABm\xAB"
-	#define MCPS2_ENDTAG "\xBBm\xBB"
+class KviRijndael256HexEngine : public KviRijndaelHexEngine
+{
+	Q_OBJECT
+public:
+	KviRijndael256HexEngine() : KviRijndaelHexEngine(){};
+	virtual ~KviRijndael256HexEngine(){};
 
-	class KviMircryptionEngine : public KviCryptEngine
-	{
-		Q_OBJECT
-	public:
-		KviMircryptionEngine();
-		~KviMircryptionEngine();
-	protected:
-		KviCString m_szEncryptKey;
-		bool m_bEncryptCBC;
-		KviCString m_szDecryptKey;
-		bool m_bDecryptCBC;
-	public:
-		virtual bool isCryptographicEngine(){ return false; }; // we need to return false since it doesn't use the Qt::CTRL+P escape
-		virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
-		virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviCString &outBuffer);
-		virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviCString &plainText);
-	protected:
-		bool doDecryptECB(KviCString &encoded,KviCString &plain);
-		bool doDecryptCBC(KviCString &encoded,KviCString &plain);
-		bool doEncryptECB(KviCString &plain,KviCString &encoded);
-		bool doEncryptCBC(KviCString &plain,KviCString &encoded);
-	};
+protected:
+	virtual int getKenLen() { return 32; };
+};
+
+class KviRijndaelBase64Engine : public KviRijndaelEngine
+{
+	Q_OBJECT
+public:
+	KviRijndaelBase64Engine() : KviRijndaelEngine(){};
+	virtual ~KviRijndaelBase64Engine(){};
+
+protected:
+	virtual bool binaryToAscii(const char * inBuffer, int len, KviCString & outBuffer);
+	virtual bool asciiToBinary(const char * inBuffer, int * len, char ** outBuffer);
+};
+
+class KviRijndael128Base64Engine : public KviRijndaelBase64Engine
+{
+	Q_OBJECT
+public:
+	KviRijndael128Base64Engine() : KviRijndaelBase64Engine(){};
+	virtual ~KviRijndael128Base64Engine(){};
+
+protected:
+	virtual int getKenLen() { return 16; };
+	virtual Rijndael::KeyLength getKeyLenId() { return Rijndael::Key16Bytes; };
+};
+
+class KviRijndael192Base64Engine : public KviRijndaelBase64Engine
+{
+	Q_OBJECT
+public:
+	KviRijndael192Base64Engine() : KviRijndaelBase64Engine(){};
+	virtual ~KviRijndael192Base64Engine(){};
+
+protected:
+	virtual int getKenLen() { return 24; };
+	virtual Rijndael::KeyLength getKeyLenId() { return Rijndael::Key24Bytes; };
+};
+
+class KviRijndael256Base64Engine : public KviRijndaelBase64Engine
+{
+	Q_OBJECT
+public:
+	KviRijndael256Base64Engine() : KviRijndaelBase64Engine(){};
+	virtual ~KviRijndael256Base64Engine(){};
+
+protected:
+	virtual int getKenLen() { return 32; };
+};
+
+// Mircyption stuff
+#define MCPS2_STARTTAG "\xABm\xAB"
+#define MCPS2_ENDTAG "\xBBm\xBB"
+
+class KviMircryptionEngine : public KviCryptEngine
+{
+	Q_OBJECT
+public:
+	KviMircryptionEngine();
+	~KviMircryptionEngine();
+
+protected:
+	KviCString m_szEncryptKey;
+	bool m_bEncryptCBC;
+	KviCString m_szDecryptKey;
+	bool m_bDecryptCBC;
+
+public:
+	virtual bool isCryptographicEngine() { return false; }; // we need to return false since it doesn't use the Qt::CTRL+P escape
+	virtual bool init(const char * encKey, int encKeyLen, const char * decKey, int decKeyLen);
+	virtual KviCryptEngine::EncryptResult encrypt(const char * plainText, KviCString & outBuffer);
+	virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer, KviCString & plainText);
+
+protected:
+	bool doDecryptECB(KviCString & encoded, KviCString & plain);
+	bool doDecryptCBC(KviCString & encoded, KviCString & plain);
+	bool doEncryptECB(KviCString & plain, KviCString & encoded);
+	bool doEncryptCBC(KviCString & plain, KviCString & encoded);
+};
 
 #endif // COMPILE_CRYPT_SUPPORT
 

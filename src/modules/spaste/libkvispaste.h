@@ -27,8 +27,9 @@
 
 #include "KviWindow.h"
 
-typedef struct _SPasteThreadData {
-	QString   * strData;
+typedef struct _SPasteThreadData
+{
+	QString * strData;
 	KviWindow * win;
 } SPasteThreadData;
 

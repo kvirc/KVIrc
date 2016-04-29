@@ -25,18 +25,16 @@
 #include <windows.h>
 #include <process.h>
 
-
 //
 // This is a winamp-kvirc interface plugin
 //
 
 // This stuff is compiled only on windows, as a separate dll module
 
-
 typedef struct
 {
 	int version;
-	char *description;
+	char * description;
 	int (*init)();
 	void (*config)();
 	void (*quit)();
@@ -46,16 +44,14 @@ typedef struct
 
 #define GPPHDR_VER 0x10
 
-extern winampGeneralPurposePlugin *gen_plugins[256];
+extern winampGeneralPurposePlugin * gen_plugins[256];
 typedef winampGeneralPurposePlugin * (*winampGeneralPurposePluginGetter)();
 
 int init();
 void quit();
 void config();
 
-
-winampGeneralPurposePlugin plugin =
-{
+winampGeneralPurposePlugin plugin = {
 	GPPHDR_VER,
 	"KVIrc interface plugin 1.0",
 	init,
@@ -83,11 +79,11 @@ BOOL WINAPI _DllMainCRTStartup(HANDLE hInst, ULONG ul_reason_for_call, LPVOID lp
 #define KVIRC_WM_USER_CHECK 13123
 #define KVIRC_WM_USER_CHECK_REPLY 13124
 
-void *lpWndProcOld = 0;
+void * lpWndProcOld = 0;
 
 char szBuffer[4096];
 
-LRESULT CALLBACK WndProc(HWND hwnd,UINT message,WPARAM wParam,LPARAM lParam)
+LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	if(message == WM_USER)
 	{
@@ -99,35 +95,37 @@ LRESULT CALLBACK WndProc(HWND hwnd,UINT message,WPARAM wParam,LPARAM lParam)
 			}
 			if(lParam == KVIRC_WM_USER_GETTITLE)
 			{
-				int idx = (int)SendMessage(hwnd,WM_USER,0,IPC_GETLISTPOS);
+				int idx = (int)SendMessage(hwnd, WM_USER, 0, IPC_GETLISTPOS);
 				if(idx != -1)
 				{
-					char * szTitle = (char *)SendMessage(hwnd,WM_USER,idx,IPC_GETPLAYLISTTITLE);
-					strcpy(szBuffer,szTitle);
+					char * szTitle = (char *)SendMessage(hwnd, WM_USER, idx, IPC_GETPLAYLISTTITLE);
+					strcpy(szBuffer, szTitle);
 					return strlen(szBuffer);
 				}
-			} else if(lParam == KVIRC_WM_USER_GETFILE)
+			}
+			else if(lParam == KVIRC_WM_USER_GETFILE)
 			{
-				int idx = (int)SendMessage(hwnd,WM_USER,0,IPC_GETLISTPOS);
+				int idx = (int)SendMessage(hwnd, WM_USER, 0, IPC_GETLISTPOS);
 				if(idx != -1)
 				{
-					char * szTitle = (char *)SendMessage(hwnd,WM_USER,idx,IPC_GETPLAYLISTFILE);
-					strcpy(szBuffer,szTitle);
+					char * szTitle = (char *)SendMessage(hwnd, WM_USER, idx, IPC_GETPLAYLISTFILE);
+					strcpy(szBuffer, szTitle);
 					return strlen(szBuffer);
 				}
-			} else if((lParam >= KVIRC_WM_USER_TRANSFER) && (lParam < (KVIRC_WM_USER_TRANSFER + 4096)))
+			}
+			else if((lParam >= KVIRC_WM_USER_TRANSFER) && (lParam < (KVIRC_WM_USER_TRANSFER + 4096)))
 			{
-				return (LRESULT) szBuffer[lParam - KVIRC_WM_USER_TRANSFER];
+				return (LRESULT)szBuffer[lParam - KVIRC_WM_USER_TRANSFER];
 			}
 		}
 	}
-	return CallWindowProc((WNDPROC)lpWndProcOld,hwnd,message,wParam,lParam);
+	return CallWindowProc((WNDPROC)lpWndProcOld, hwnd, message, wParam, lParam);
 }
 
 int init()
 {
-	lpWndProcOld = (void *) GetWindowLong(plugin.hwndParent,GWLP_WNDPROC);
-	SetWindowLongPtr(plugin.hwndParent,GWLP_WNDPROC,(intptr_t)WndProc);
+	lpWndProcOld = (void *)GetWindowLong(plugin.hwndParent, GWLP_WNDPROC);
+	SetWindowLongPtr(plugin.hwndParent, GWLP_WNDPROC, (intptr_t)WndProc);
 	return 0;
 }
 
@@ -139,11 +137,7 @@ void config()
 {
 }
 
-
-
-
-
-extern "C" __declspec( dllexport ) winampGeneralPurposePlugin * winampGetGeneralPurposePlugin()
+extern "C" __declspec(dllexport) winampGeneralPurposePlugin * winampGetGeneralPurposePlugin()
 {
 	return &plugin;
 }

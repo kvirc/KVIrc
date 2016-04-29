@@ -37,8 +37,8 @@ NotifierMessage::NotifierMessage(QPixmap * pPixmap, const QString & szText)
 	m_pLabel0 = 0;
 	m_pLabel1 = 0;
 
-	m_szText=szText;
-	m_pPixmap=pPixmap;
+	m_szText = szText;
+	m_pPixmap = pPixmap;
 
 	//QByteArray utf8 = szText.toUtf8();
 	//if(utf8.data())
@@ -74,10 +74,12 @@ void NotifierMessage::updateGui()
 	if(bShowImages)
 	{
 		m_pLabel0 = new QLabel(this);
-		m_pLabel0->setFixedSize(16,16);
+		m_pLabel0->setFixedSize(16, 16);
 		if(m_pPixmap)
 			m_pLabel0->setPixmap(*m_pPixmap);
-	} else {
+	}
+	else
+	{
 		m_pLabel0 = 0;
 	}
 
@@ -92,7 +94,7 @@ void NotifierMessage::updateGui()
 
 	if(bShowImages)
 	{
-		m_pHBox->setStretch(1,99);
+		m_pHBox->setStretch(1, 99);
 		m_pHBox->addWidget(m_pLabel0);
 	}
 	m_pHBox->addWidget(m_pLabel1);

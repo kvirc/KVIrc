@@ -59,7 +59,7 @@ namespace KviMiscUtils
 		if(it1 != sl1.end())
 			return -1; // 1 has at least one field more
 		if(it2 != sl2.end())
-			return 1;  // 2 has at least one field more
+			return 1; // 2 has at least one field more
 		// both are equal also in length
 		return 0;
 	}

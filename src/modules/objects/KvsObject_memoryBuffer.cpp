@@ -59,98 +59,98 @@
 
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_memoryBuffer,"memorybuffer","object")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_memoryBuffer,loadFromFile);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_memoryBuffer,clear);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_memoryBuffer,saveToFile);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_memoryBuffer,size);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_memoryBuffer,readByteAt);
+KVSO_BEGIN_REGISTERCLASS(KvsObject_memoryBuffer, "memorybuffer", "object")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_memoryBuffer, loadFromFile);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_memoryBuffer, clear);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_memoryBuffer, saveToFile);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_memoryBuffer, size);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_memoryBuffer, readByteAt);
 KVSO_END_REGISTERCLASS(KvsObject_memoryBuffer)
 
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_memoryBuffer, KviKvsObject)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_memoryBuffer,KviKvsObject)
-
-	mIdx=0;
-	m_pBuffer = new QByteArray();
+mIdx = 0;
+m_pBuffer = new QByteArray();
 
 KVSO_END_CONSTRUCTOR(KvsObject_memoryBuffer)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_memoryBuffer)
 
-	delete m_pBuffer;
+delete m_pBuffer;
 
 KVSO_END_CONSTRUCTOR(KvsObject_memoryBuffer)
 
-
-KVSO_CLASS_FUNCTION(memoryBuffer,clear)
+KVSO_CLASS_FUNCTION(memoryBuffer, clear)
 {
 	CHECK_INTERNAL_POINTER(m_pBuffer)
 	m_pBuffer->clear();
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(memoryBuffer,loadFromFile)
+KVSO_CLASS_FUNCTION(memoryBuffer, loadFromFile)
 {
 	CHECK_INTERNAL_POINTER(m_pBuffer)
 	QString szFileName;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("filename",KVS_PT_NONEMPTYSTRING,0,szFileName)
+	KVSO_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
 	KVSO_PARAMETERS_END(c)
 	if(KviFileUtils::fileExists(szFileName))
 	{
 
 		KviFile f(szFileName);
-		qDebug("loading file %s",szFileName.toUtf8().data());
-		if (f.open(QIODevice::ReadOnly))
+		qDebug("loading file %s", szFileName.toUtf8().data());
+		if(f.open(QIODevice::ReadOnly))
 		{
 			m_pBuffer->resize(f.size());
-			f.read(m_pBuffer->data(),f.size());
+			f.read(m_pBuffer->data(), f.size());
 			f.close();
 		}
-		else qDebug("Error in loaded file!");
+		else
+			qDebug("Error in loaded file!");
 	}
-	else c->warning(__tr2qs_ctx("The file '%Q' doesn't exist","objects"),&szFileName);
+	else
+		c->warning(__tr2qs_ctx("The file '%Q' doesn't exist", "objects"), &szFileName);
 	return true;
 }
-KVSO_CLASS_FUNCTION(memoryBuffer,size)
+KVSO_CLASS_FUNCTION(memoryBuffer, size)
 {
 	CHECK_INTERNAL_POINTER(m_pBuffer)
 	c->returnValue()->setInteger((kvs_int_t)m_pBuffer->size());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(memoryBuffer,readByteAt)
+KVSO_CLASS_FUNCTION(memoryBuffer, readByteAt)
 {
 	CHECK_INTERNAL_POINTER(m_pBuffer)
 	kvs_int_t iIdx;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_INT,0,iIdx)
+	KVSO_PARAMETER("index", KVS_PT_INT, 0, iIdx)
 	KVSO_PARAMETERS_END(c)
-	if(iIdx>m_pBuffer->size())
+	if(iIdx > m_pBuffer->size())
 	{
-		c->warning(__tr2qs_ctx("Index '%I' out of the buffer size","objects"),&iIdx);
+		c->warning(__tr2qs_ctx("Index '%I' out of the buffer size", "objects"), &iIdx);
 		return true;
 	}
 	unsigned char ch = m_pBuffer->at(iIdx);
-	c->returnValue()->setInteger( ch);
+	c->returnValue()->setInteger(ch);
 	return true;
 }
-KVSO_CLASS_FUNCTION(memoryBuffer,saveToFile)
+KVSO_CLASS_FUNCTION(memoryBuffer, saveToFile)
 {
 	CHECK_INTERNAL_POINTER(m_pBuffer)
 	QString szFileName;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("filename",KVS_PT_NONEMPTYSTRING,0,szFileName)
+	KVSO_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
 	KVSO_PARAMETERS_END(c)
 	KviFile f(szFileName);
-	if (f.open(QIODevice::WriteOnly))
+	if(f.open(QIODevice::WriteOnly))
 	{
-		f.write(m_pBuffer->data(),m_pBuffer->size());
+		f.write(m_pBuffer->data(), m_pBuffer->size());
 		f.close();
 	}
 	else
 	{
-		c->warning(__tr2qs_ctx("Can't open file '%Q' for writing","objects"),&szFileName);
+		c->warning(__tr2qs_ctx("Can't open file '%Q' for writing", "objects"), &szFileName);
 	}
 	return true;
 }

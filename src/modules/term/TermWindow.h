@@ -27,39 +27,42 @@
 #include "kvi_settings.h"
 
 #ifdef COMPILE_KDE4_SUPPORT
-	#include "KviWindow.h"
-	#include "KviCString.h"
+#include "KviWindow.h"
+#include "KviCString.h"
 
-	class TermWidget;
+class TermWidget;
 
-	class TermWindow : public KviWindow
-	{
-		Q_OBJECT
-	public:
-		TermWindow(const char * name);
-		~TermWindow();
-	protected:
-		TermWidget * m_pTermWidget;
-	protected:
-		virtual QPixmap * myIconPtr();
-		virtual void fillCaptionBuffers();
-		virtual void resizeEvent(QResizeEvent *e);
-	public:
-		virtual QSize sizeHint() const;
-	};
+class TermWindow : public KviWindow
+{
+	Q_OBJECT
+public:
+	TermWindow(const char * name);
+	~TermWindow();
+
+protected:
+	TermWidget * m_pTermWidget;
+
+protected:
+	virtual QPixmap * myIconPtr();
+	virtual void fillCaptionBuffers();
+	virtual void resizeEvent(QResizeEvent * e);
+
+public:
+	virtual QSize sizeHint() const;
+};
 #else
-	#include <QObject>
+#include <QObject>
 
-	// Dummy, to make moc happy
-	class TermWindow : public QObject
+// Dummy, to make moc happy
+class TermWindow : public QObject
+{
+	Q_OBJECT
+public:
+	TermWindow()
+	    : QObject()
 	{
-		Q_OBJECT
-	public:
-		TermWindow()
-			: QObject()
-		{
-		}
-	};
+	}
+};
 #endif
 
 #endif //_KVI_HELPWINDOW_H_

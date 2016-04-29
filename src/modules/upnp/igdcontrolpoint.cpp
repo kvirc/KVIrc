@@ -41,132 +41,124 @@
 namespace UPnP
 {
 
-#define WanIpConnectionType		"urn:schemas-upnp-org:service:WANIPConnection:1"
-#define WanPPPConnectionType		"urn:schemas-upnp-org:service:WANPPPConnection:1"
+#define WanIpConnectionType "urn:schemas-upnp-org:service:WANIPConnection:1"
+#define WanPPPConnectionType "urn:schemas-upnp-org:service:WANPPPConnection:1"
 
-// The constructor
-IgdControlPoint::IgdControlPoint(const QString &hostname, int port, const QString &rootUrl)
-: QObject()
-, m_bGatewayAvailable(false)
-, m_iIgdPort(0)
-, m_pRootService(0)
-, m_pWanConnectionService(0)
-{
-	qDebug() << "CREATED UPnP::IgdControlPoint: created control point"
-		<< " url='" << hostname << ":" << port << "/" << rootUrl << "'." << endl;
-
-	qDebug() << "UPnP::IgdControlPoint: querying services..." << endl;
-
-	// Store device url
-	m_szIgdHostname = hostname;
-	m_iIgdPort     = port;
-
-	// Query the device for it's services
-	m_pRootService = new RootService(m_szIgdHostname, m_iIgdPort, rootUrl);
-	connect(m_pRootService, SIGNAL(queryFinished(bool)), this, SLOT(slotDeviceQueried(bool)));
-}
-
-
-
-// The destructor
-IgdControlPoint::~IgdControlPoint()
-{
-	delete m_pRootService;
-	delete m_pWanConnectionService;
-
-	qDebug() << "DESTROYED UPnP::IgdControlPoint [host=" << m_szIgdHostname << ", port=" << m_iIgdPort << "]" << endl;
-}
-
-
-
-// Return the external IP address
-QString IgdControlPoint::getExternalIpAddress() const
-{
-	// Do not expose  wanConnectionService_;
-	if(m_pWanConnectionService != 0)
+	// The constructor
+	IgdControlPoint::IgdControlPoint(const QString & hostname, int port, const QString & rootUrl)
+	    : QObject(), m_bGatewayAvailable(false), m_iIgdPort(0), m_pRootService(0), m_pWanConnectionService(0)
 	{
-		return m_pWanConnectionService->getExternalIpAddress();
-	} else {
-		return QString();
+		qDebug() << "CREATED UPnP::IgdControlPoint: created control point"
+		         << " url='" << hostname << ":" << port << "/" << rootUrl << "'." << endl;
+
+		qDebug() << "UPnP::IgdControlPoint: querying services..." << endl;
+
+		// Store device url
+		m_szIgdHostname = hostname;
+		m_iIgdPort = port;
+
+		// Query the device for it's services
+		m_pRootService = new RootService(m_szIgdHostname, m_iIgdPort, rootUrl);
+		connect(m_pRootService, SIGNAL(queryFinished(bool)), this, SLOT(slotDeviceQueried(bool)));
 	}
-}
 
-
-// Initialize the control point
-void IgdControlPoint::initialize()
-{
-	m_pRootService->queryDevice();
-}
-
-
-
-// Return true if a controlable gateway is available
-bool IgdControlPoint::isGatewayAvailable()
-{
-	return m_bGatewayAvailable;
-}
-
-
-
-// The IGD was queried for it's services
-void IgdControlPoint::slotDeviceQueried(bool error)
-{
-	if(! error)
+	// The destructor
+	IgdControlPoint::~IgdControlPoint()
 	{
-		ServiceParameters params = m_pRootService->getServiceByType(WanIpConnectionType);
+		delete m_pRootService;
+		delete m_pWanConnectionService;
 
-		if(params.controlUrl.isNull())
-			params = m_pRootService->getServiceByType(WanPPPConnectionType);
+		qDebug() << "DESTROYED UPnP::IgdControlPoint [host=" << m_szIgdHostname << ", port=" << m_iIgdPort << "]" << endl;
+	}
 
-		if(! params.controlUrl.isNull())
+	// Return the external IP address
+	QString IgdControlPoint::getExternalIpAddress() const
+	{
+		// Do not expose  wanConnectionService_;
+		if(m_pWanConnectionService != 0)
 		{
-
-			m_bGatewayAvailable = true;
-
-			qDebug() << "UPnP::IgdControlPoint: WAN/IP connection service found, "
-					<< "querying service '" << params.serviceId << "' for external IP address..." << endl;
-
-			// Call the service
-			m_pWanConnectionService = new WanConnectionService(params);
-			connect(m_pWanConnectionService, SIGNAL(queryFinished(bool)), this, SLOT(slotWanQueryFinished(bool)));
-			m_pWanConnectionService->queryExternalIpAddress();
-		} else {
-			qDebug() << "UPnP::IgdControlPoint: no PPP/IP connection service found :(" << endl;
+			return m_pWanConnectionService->getExternalIpAddress();
+		}
+		else
+		{
+			return QString();
 		}
 	}
-}
 
-
-// A WAN connection query was finished
-void IgdControlPoint::slotWanQueryFinished(bool error)
-{
-	if(! error)
+	// Initialize the control point
+	void IgdControlPoint::initialize()
 	{
-		qDebug() << "IgdControlPoint: UPnP gateway device found." << endl;
-	} else {
-		// Just started, the request for the external IP failed. This should succeed, abort portation
-		qDebug() << "Requesting external IP address failed, leaving UPnP gateway device untouched." << endl;
+		m_pRootService->queryDevice();
 	}
-}
 
-// Return the external IP address
-void IgdControlPoint::addPortMapping(const QString &protocol, const QString &remoteHost, int externalPort,const QString &internalClient, int internalPort, const QString &description, bool enabled, int leaseDuration)
-{
-	// Do not expose  wanConnectionService_;
-	if(m_pWanConnectionService != 0)
+	// Return true if a controlable gateway is available
+	bool IgdControlPoint::isGatewayAvailable()
 	{
-		m_pWanConnectionService->addPortMapping(protocol, remoteHost, externalPort, internalClient, internalPort, description, enabled, leaseDuration);
+		return m_bGatewayAvailable;
 	}
-}
 
-// Delete a port mapping
-void IgdControlPoint::deletePortMapping(const QString &protocol, const QString &remoteHost, int externalPort)
-{
-	// Do not expose  wanConnectionService_;
-	if(m_pWanConnectionService != 0)
+	// The IGD was queried for it's services
+	void IgdControlPoint::slotDeviceQueried(bool error)
 	{
-		m_pWanConnectionService->deletePortMapping(protocol, remoteHost, externalPort);
-	}
-}
+		if(!error)
+		{
+			ServiceParameters params = m_pRootService->getServiceByType(WanIpConnectionType);
 
-}  // End of namespace
+			if(params.controlUrl.isNull())
+				params = m_pRootService->getServiceByType(WanPPPConnectionType);
+
+			if(!params.controlUrl.isNull())
+			{
+
+				m_bGatewayAvailable = true;
+
+				qDebug() << "UPnP::IgdControlPoint: WAN/IP connection service found, "
+				         << "querying service '" << params.serviceId << "' for external IP address..." << endl;
+
+				// Call the service
+				m_pWanConnectionService = new WanConnectionService(params);
+				connect(m_pWanConnectionService, SIGNAL(queryFinished(bool)), this, SLOT(slotWanQueryFinished(bool)));
+				m_pWanConnectionService->queryExternalIpAddress();
+			}
+			else
+			{
+				qDebug() << "UPnP::IgdControlPoint: no PPP/IP connection service found :(" << endl;
+			}
+		}
+	}
+
+	// A WAN connection query was finished
+	void IgdControlPoint::slotWanQueryFinished(bool error)
+	{
+		if(!error)
+		{
+			qDebug() << "IgdControlPoint: UPnP gateway device found." << endl;
+		}
+		else
+		{
+			// Just started, the request for the external IP failed. This should succeed, abort portation
+			qDebug() << "Requesting external IP address failed, leaving UPnP gateway device untouched." << endl;
+		}
+	}
+
+	// Return the external IP address
+	void IgdControlPoint::addPortMapping(const QString & protocol, const QString & remoteHost, int externalPort, const QString & internalClient, int internalPort, const QString & description, bool enabled, int leaseDuration)
+	{
+		// Do not expose  wanConnectionService_;
+		if(m_pWanConnectionService != 0)
+		{
+			m_pWanConnectionService->addPortMapping(protocol, remoteHost, externalPort, internalClient, internalPort, description, enabled, leaseDuration);
+		}
+	}
+
+	// Delete a port mapping
+	void IgdControlPoint::deletePortMapping(const QString & protocol, const QString & remoteHost, int externalPort)
+	{
+		// Do not expose  wanConnectionService_;
+		if(m_pWanConnectionService != 0)
+		{
+			m_pWanConnectionService->deletePortMapping(protocol, remoteHost, externalPort);
+		}
+	}
+
+} // End of namespace

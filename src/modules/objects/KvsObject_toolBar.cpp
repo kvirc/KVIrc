@@ -59,51 +59,50 @@
 		Deletes all the toolbars child widgets.
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_toolBar,"toolbar","widget")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_toolBar,addSeparator)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_toolBar,setLabel)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_toolBar,label)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_toolBar,clear)
+KVSO_BEGIN_REGISTERCLASS(KvsObject_toolBar, "toolbar", "widget")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_toolBar, addSeparator)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_toolBar, setLabel)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_toolBar, label)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_toolBar, clear)
 KVSO_END_REGISTERCLASS(KvsObject_toolBar)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_toolBar,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_toolBar, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_toolBar)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_toolBar)
 
 KVSO_END_CONSTRUCTOR(KvsObject_toolBar)
 
-bool KvsObject_toolBar::init(KviKvsRunTimeContext * ,KviKvsVariantList *)
+bool KvsObject_toolBar::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QToolBar)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(toolBar,addSeparator)
+KVSO_CLASS_FUNCTION(toolBar, addSeparator)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	((QToolBar *)widget())->addSeparator();
 	return true;
 }
-KVSO_CLASS_FUNCTION(toolBar,setLabel)
+KVSO_CLASS_FUNCTION(toolBar, setLabel)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szLabel;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
+	KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
 	KVSO_PARAMETERS_END(c)
 	((QToolBar *)widget())->setWindowTitle(szLabel);
 	return true;
 }
-KVSO_CLASS_FUNCTION(toolBar,label)
+KVSO_CLASS_FUNCTION(toolBar, label)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setString(((QToolBar *)widget())->windowTitle());
 	return true;
 }
-KVSO_CLASS_FUNCTION(toolBar,clear)
+KVSO_CLASS_FUNCTION(toolBar, clear)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	((QToolBar *)object())->clear();

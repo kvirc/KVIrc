@@ -31,21 +31,20 @@
 
 #include <QStringList>
 
-
 #define KVI_PYTHONCORECTRLCOMMAND_EXECUTE "execute"
 
 typedef struct _KviPythonCoreCtrlCommand_execute
 {
-	unsigned int           uSize;
+	unsigned int uSize;
 	KviKvsRunTimeContext * pKvsContext;
-	QString                szContext;
-	QString                szCode;
-	bool                   bExitOk;
-	QString                szRetVal;
-	QString                szError;
-	QStringList            lWarnings;
-	QStringList            lArgs;
-	bool                   bQuiet;
+	QString szContext;
+	QString szCode;
+	bool bExitOk;
+	QString szRetVal;
+	QString szError;
+	QStringList lWarnings;
+	QStringList lArgs;
+	bool bQuiet;
 } KviPythonCoreCtrlCommand_execute;
 
 #define KVI_PYTHONCORECTRLCOMMAND_DESTROY "destroy"
@@ -53,7 +52,7 @@ typedef struct _KviPythonCoreCtrlCommand_execute
 typedef struct _KviPythonCoreCtrlCommand_destroy
 {
 	unsigned int uSize;
-	QString      szContext;
+	QString szContext;
 } KviPythonCoreCtrlCommand_destroy;
 
 #endif // !_PYTHONCOREINTERFACE_H_

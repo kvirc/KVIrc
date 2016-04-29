@@ -25,8 +25,8 @@
 #include "KviKvsTreeNodeGlobalVariable.h"
 #include "KviKvsRunTimeContext.h"
 
-KviKvsTreeNodeGlobalVariable::KviKvsTreeNodeGlobalVariable(const QChar * pLocation,const QString &szIdentifier)
-: KviKvsTreeNodeVariable(pLocation,szIdentifier)
+KviKvsTreeNodeGlobalVariable::KviKvsTreeNodeGlobalVariable(const QChar * pLocation, const QString & szIdentifier)
+    : KviKvsTreeNodeVariable(pLocation, szIdentifier)
 {
 }
 
@@ -34,7 +34,7 @@ KviKvsTreeNodeGlobalVariable::~KviKvsTreeNodeGlobalVariable()
 {
 }
 
-void KviKvsTreeNodeGlobalVariable::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeGlobalVariable::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Global Variable \"";
 	szBuffer += m_szIdentifier;
@@ -43,19 +43,20 @@ void KviKvsTreeNodeGlobalVariable::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeGlobalVariable::dump(const char * prefix)
 {
-	qDebug("%s GlobalVariable(%s)",prefix,m_szIdentifier.toUtf8().data());
+	qDebug("%s GlobalVariable(%s)", prefix, m_szIdentifier.toUtf8().data());
 }
 
-
-bool KviKvsTreeNodeGlobalVariable::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeGlobalVariable::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	KviKvsVariant * v = c->globalVariables()->find(m_szIdentifier);
-	if(v)pBuffer->copyFrom(v);
-	else pBuffer->setNothing();
+	if(v)
+		pBuffer->copyFrom(v);
+	else
+		pBuffer->setNothing();
 	return true;
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeGlobalVariable::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
-	return new KviKvsHashElement(0,c->globalVariables()->get(m_szIdentifier),c->globalVariables(),m_szIdentifier);
+	return new KviKvsHashElement(0, c->globalVariables()->get(m_szIdentifier), c->globalVariables(), m_szIdentifier);
 }

@@ -32,8 +32,9 @@
 class KVIRC_API KviKvsTreeNodeArrayOrHashElement : public KviKvsTreeNodeIndirectData
 {
 public:
-	KviKvsTreeNodeArrayOrHashElement(const QChar * pLocation,KviKvsTreeNodeData * pSource);
+	KviKvsTreeNodeArrayOrHashElement(const QChar * pLocation, KviKvsTreeNodeData * pSource);
 	~KviKvsTreeNodeArrayOrHashElement();
+
 public:
 	virtual bool isReadOnly();
 	virtual bool canEvaluateToObjectReference();

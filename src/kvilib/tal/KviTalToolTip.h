@@ -39,29 +39,34 @@ class KviTalToolTipHelper : public QObject
 	friend class KviTalToolTip;
 	Q_OBJECT
 public:
-	KviTalToolTipHelper(KviTalToolTip * pToolTip,QWidget * pWidget);
+	KviTalToolTipHelper(KviTalToolTip * pToolTip, QWidget * pWidget);
 	~KviTalToolTipHelper();
+
 protected:
 	KviTalToolTip * m_pToolTip;
+
 protected:
-	virtual bool eventFilter(QObject * pObject,QEvent * pEvent);
+	virtual bool eventFilter(QObject * pObject, QEvent * pEvent);
 	void toolTipDying();
 };
-
 
 class KVILIB_API KviTalToolTip
 {
 	friend class KviTalToolTipHelper;
+
 public:
 	KviTalToolTip(QWidget * pParent);
 	virtual ~KviTalToolTip();
+
 protected:
 	KviTalToolTipHelper * m_pHelper;
 	QWidget * m_pParent;
+
 public:
-	static void add(QWidget * widget,const QString & text);
+	static void add(QWidget * widget, const QString & text);
 	static void remove(QWidget * widget);
-	virtual void tip(const QRect & rect,const QString & text);
+	virtual void tip(const QRect & rect, const QString & text);
+
 protected:
 	virtual void maybeTip(const QPoint & p);
 	void helperDying();

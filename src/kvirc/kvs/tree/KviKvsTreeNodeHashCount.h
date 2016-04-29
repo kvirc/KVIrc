@@ -35,13 +35,14 @@ class KviKvsObject;
 class KVIRC_API KviKvsTreeNodeHashCount : public KviKvsTreeNodeIndirectData
 {
 public:
-	KviKvsTreeNodeHashCount(const QChar * pLocation,KviKvsTreeNodeData * pSource);
+	KviKvsTreeNodeHashCount(const QChar * pLocation, KviKvsTreeNodeData * pSource);
 	~KviKvsTreeNodeHashCount();
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
-	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
+	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
 };
 
 #endif //!_KVI_KVS_TREENODE_HASHCOUNT_H_

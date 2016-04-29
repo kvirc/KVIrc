@@ -364,7 +364,6 @@
 //
 //
 
-
 //
 // Tree morphology
 //
@@ -374,6 +373,5 @@
 // ScopeOperator
 //     [Data]->[Data]
 //
-
 
 #endif //!_KVI_KVS_TREENODE_H_

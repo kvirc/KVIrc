@@ -25,14 +25,10 @@
 //
 //=============================================================================
 
-
 #include "KvsObject_widget.h"
 #include "object_macros.h"
 #include <QHash>
 #include <QMenu>
-
-
-
 
 class KvsObject_popupMenu : public KvsObject_widget
 {
@@ -42,17 +38,17 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool insertItem(KviKvsObjectFunctionCall *c);
-	bool setTitle(KviKvsObjectFunctionCall *c);
-	bool addMenu(KviKvsObjectFunctionCall *c);
-	bool exec(KviKvsObjectFunctionCall *c);
-	bool removeItem(KviKvsObjectFunctionCall *c);
-	bool removeItemAt(KviKvsObjectFunctionCall *c);
-	bool insertSeparator(KviKvsObjectFunctionCall *c);
-	bool activatedEvent(KviKvsObjectFunctionCall *c);
-	bool highlightedEvent(KviKvsObjectFunctionCall *c);
+	bool insertItem(KviKvsObjectFunctionCall * c);
+	bool setTitle(KviKvsObjectFunctionCall * c);
+	bool addMenu(KviKvsObjectFunctionCall * c);
+	bool exec(KviKvsObjectFunctionCall * c);
+	bool removeItem(KviKvsObjectFunctionCall * c);
+	bool removeItemAt(KviKvsObjectFunctionCall * c);
+	bool insertSeparator(KviKvsObjectFunctionCall * c);
+	bool activatedEvent(KviKvsObjectFunctionCall * c);
+	bool highlightedEvent(KviKvsObjectFunctionCall * c);
 
 protected slots:
 	void slottriggered(QAction *);
@@ -60,4 +56,4 @@ protected slots:
 	void aboutToDie(QObject *);
 };
 
-#endif	// !_CLASS_POPUPMENU_H_
+#endif // !_CLASS_POPUPMENU_H_

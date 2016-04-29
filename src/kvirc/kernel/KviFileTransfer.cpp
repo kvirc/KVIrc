@@ -33,9 +33,8 @@
 
 static KviFileTransferManager * g_pFileTransferManager = 0;
 
-
 KviFileTransferManager::KviFileTransferManager()
-: QObject()
+    : QObject()
 {
 	m_pTransferList = 0;
 	m_pTransferWindow = 0;
@@ -48,7 +47,8 @@ KviFileTransferManager::~KviFileTransferManager()
 
 KviFileTransferManager * KviFileTransferManager::instance()
 {
-	if(!g_pFileTransferManager) {
+	if(!g_pFileTransferManager)
+	{
 		g_pFileTransferManager = new KviFileTransferManager();
 	}
 	return g_pFileTransferManager;
@@ -56,7 +56,8 @@ KviFileTransferManager * KviFileTransferManager::instance()
 
 void KviFileTransferManager::cleanup()
 {
-	if(g_pFileTransferManager) {
+	if(g_pFileTransferManager)
+	{
 		delete g_pFileTransferManager;
 		g_pFileTransferManager = 0;
 	}
@@ -78,14 +79,15 @@ void KviFileTransferManager::killTerminatedTransfers()
 		KviPointerList<KviFileTransfer> l;
 		l.setAutoDelete(false);
 
-		for(KviFileTransfer * f = m_pTransferList->first();f;f = m_pTransferList->next())
+		for(KviFileTransfer * f = m_pTransferList->first(); f; f = m_pTransferList->next())
 		{
-			if(f->terminated()) {
+			if(f->terminated())
+			{
 				l.append(f);
 			}
 		}
 
-		for(KviFileTransfer * d = l.first();d;d = l.next())
+		for(KviFileTransfer * d = l.first(); d; d = l.next())
 			d->die();
 	}
 }
@@ -99,7 +101,7 @@ void KviFileTransferManager::invokeTransferWindow(bool bCreateMinimized, bool bN
 			szScript.append(" -m");
 		if(bNoRaise)
 			szScript.append(" -n");
-		KviKvsScript::run(szScript,g_pActiveWindow);
+		KviKvsScript::run(szScript, g_pActiveWindow);
 	}
 }
 
@@ -134,10 +136,8 @@ void KviFileTransferManager::unregisterTransfer(KviFileTransfer * t)
 	}
 }
 
-
-
 KviFileTransfer::KviFileTransfer()
-: QObject()
+    : QObject()
 {
 	m_pDisplayItem = 0;
 	m_iId = g_pApp->getGloballyUniqueId();
@@ -152,13 +152,14 @@ KviFileTransfer::~KviFileTransfer()
 KviWindow * KviFileTransfer::outputWindow()
 {
 	KviWindow * o = transferWindow();
-	if(o)return o;
+	if(o)
+		return o;
 	return g_pActiveWindow;
 }
 
 void KviFileTransfer::invokeTransferWindow(bool bCreateMinimized, bool bNoRaise)
 {
-	manager()->invokeTransferWindow(bCreateMinimized,bNoRaise);
+	manager()->invokeTransferWindow(bCreateMinimized, bNoRaise);
 }
 
 QString KviFileTransfer::localFileName()
@@ -188,7 +189,8 @@ int KviFileTransfer::displayHeight(int iLineSpacing)
 
 void KviFileTransfer::displayUpdate()
 {
-	if(m_pDisplayItem)m_pDisplayItem->displayUpdate();
+	if(m_pDisplayItem)
+		m_pDisplayItem->displayUpdate();
 }
 
 void KviFileTransfer::die()

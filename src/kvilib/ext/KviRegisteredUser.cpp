@@ -29,11 +29,11 @@
 
 KviRegisteredUser::KviRegisteredUser(const QString & name)
 {
-	m_iIgnoreFlags  =0;
-	m_bIgnoreEnabled=false;
-	m_szName        = name;
+	m_iIgnoreFlags = 0;
+	m_bIgnoreEnabled = false;
+	m_szName = name;
 	m_pPropertyDict = 0;
-	m_pMaskList     = new KviPointerList<KviIrcMask>;
+	m_pMaskList = new KviPointerList<KviIrcMask>;
 	m_pMaskList->setAutoDelete(true);
 }
 
@@ -46,15 +46,17 @@ KviRegisteredUser::~KviRegisteredUser()
 
 bool KviRegisteredUser::isIgnoreEnabledFor(IgnoreFlags flag)
 {
-	if(!m_bIgnoreEnabled) return false;
+	if(!m_bIgnoreEnabled)
+		return false;
 	return m_iIgnoreFlags & flag;
 }
 
-KviIrcMask * KviRegisteredUser::findMask(const KviIrcMask &mask)
+KviIrcMask * KviRegisteredUser::findMask(const KviIrcMask & mask)
 {
-	for(KviIrcMask * m = m_pMaskList->first();m;m = m_pMaskList->next())
+	for(KviIrcMask * m = m_pMaskList->first(); m; m = m_pMaskList->next())
 	{
-		if(*m == mask)return m;
+		if(*m == mask)
+			return m;
 	}
 	return 0;
 }
@@ -64,7 +66,7 @@ bool KviRegisteredUser::addMask(KviIrcMask * mask)
 	if(findMask(*mask))
 	{
 		delete mask;
-        mask = 0;
+		mask = 0;
 		return false;
 	}
 	m_pMaskList->append(mask);
@@ -73,95 +75,116 @@ bool KviRegisteredUser::addMask(KviIrcMask * mask)
 
 bool KviRegisteredUser::removeMask(KviIrcMask * mask)
 {
-	if(!mask)return false;
+	if(!mask)
+		return false;
 	return m_pMaskList->removeRef(mask);
 }
 
-bool KviRegisteredUser::matches(const KviIrcMask &mask)
+bool KviRegisteredUser::matches(const KviIrcMask & mask)
 {
-	for(KviIrcMask * m = m_pMaskList->first();m;m = m_pMaskList->next())
+	for(KviIrcMask * m = m_pMaskList->first(); m; m = m_pMaskList->next())
 	{
-		if(m->matches(mask))return true;
+		if(m->matches(mask))
+			return true;
 	}
 	return false;
 }
 
-bool KviRegisteredUser::matchesFixed(const KviIrcMask &mask)
+bool KviRegisteredUser::matchesFixed(const KviIrcMask & mask)
 {
-	for(KviIrcMask * m = m_pMaskList->first();m;m = m_pMaskList->next())
+	for(KviIrcMask * m = m_pMaskList->first(); m; m = m_pMaskList->next())
 	{
-		if(m->matchesFixed(mask))return true;
+		if(m->matchesFixed(mask))
+			return true;
 	}
 	return false;
 }
 
-bool KviRegisteredUser::matchesFixed(const QString & nick,const QString & user,const QString & host)
+bool KviRegisteredUser::matchesFixed(const QString & nick, const QString & user, const QString & host)
 {
-	for(KviIrcMask * m = m_pMaskList->first();m;m = m_pMaskList->next())
+	for(KviIrcMask * m = m_pMaskList->first(); m; m = m_pMaskList->next())
 	{
-		if(m->matchesFixed(nick,user,host))return true;
+		if(m->matchesFixed(nick, user, host))
+			return true;
 	}
 	return false;
 }
 
-void KviRegisteredUser::setProperty(const QString &name,bool value)
+void KviRegisteredUser::setProperty(const QString & name, bool value)
 {
-	setProperty(name,value ? QString("true") : QString("false"));
+	setProperty(name, value ? QString("true") : QString("false"));
 }
 
-void KviRegisteredUser::setProperty(const QString & name,const QString & value)
+void KviRegisteredUser::setProperty(const QString & name, const QString & value)
 {
 	if(!value.isEmpty())
 	{
 		if(!m_pPropertyDict)
 		{
-			m_pPropertyDict = new KviPointerHashTable<QString,QString>(7,false);
+			m_pPropertyDict = new KviPointerHashTable<QString, QString>(7, false);
 			m_pPropertyDict->setAutoDelete(true);
 		}
 
 		QString * val = new QString(value.trimmed());
 		if(!val->isEmpty())
 		{
-			m_pPropertyDict->replace(name,val);
-		} else {
+			m_pPropertyDict->replace(name, val);
+		}
+		else
+		{
 			delete val;
 			val = 0;
 		}
-	} else {
-		if(m_pPropertyDict)m_pPropertyDict->remove(name);
+	}
+	else
+	{
+		if(m_pPropertyDict)
+			m_pPropertyDict->remove(name);
 	}
 }
 
-bool KviRegisteredUser::getProperty(const QString & name,QString &value)
+bool KviRegisteredUser::getProperty(const QString & name, QString & value)
 {
-	if(!m_pPropertyDict)return false;
-	if(name.isEmpty()) return false;
+	if(!m_pPropertyDict)
+		return false;
+	if(name.isEmpty())
+		return false;
 	QString * pValue = m_pPropertyDict->find(name);
-	if(pValue)value = *pValue;
-	else return false;
+	if(pValue)
+		value = *pValue;
+	else
+		return false;
 	return true;
 }
 
 const QString & KviRegisteredUser::getProperty(const QString & name)
 {
-	if(!m_pPropertyDict)return KviQString::Empty;
-	if(name.isEmpty())return KviQString::Empty;
+	if(!m_pPropertyDict)
+		return KviQString::Empty;
+	if(name.isEmpty())
+		return KviQString::Empty;
 	QString * pValue = m_pPropertyDict->find(name);
-	if(pValue)return *pValue;
+	if(pValue)
+		return *pValue;
 	return KviQString::Empty;
 }
 
-bool KviRegisteredUser::getBoolProperty(const QString & name,bool def)
+bool KviRegisteredUser::getBoolProperty(const QString & name, bool def)
 {
-	if(!m_pPropertyDict)return def;
-	if(name.isEmpty()) return def;
+	if(!m_pPropertyDict)
+		return def;
+	if(name.isEmpty())
+		return def;
 	QString * pValue = m_pPropertyDict->find(name);
 	if(pValue)
 	{
 		// be flexible, allow more "true" values (pragma)
-		if(KviQString::equalCS(*pValue,"1"))return true;
-		if(KviQString::equalCI(*pValue,"true"))return true;
-		if(KviQString::equalCI(*pValue,"yes"))return true;
+		if(KviQString::equalCS(*pValue, "1"))
+			return true;
+		if(KviQString::equalCI(*pValue, "true"))
+			return true;
+		if(KviQString::equalCI(*pValue, "yes"))
+			return true;
 		//if(KviQString::equalCI(*pValue,"yeah"))return true;
 		//if(KviQString::equalCI(*pValue,"sure"))return true;
 		//if(KviQString::equalCI(*pValue,"sureashell"))return true;

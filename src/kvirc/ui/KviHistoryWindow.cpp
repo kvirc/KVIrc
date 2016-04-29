@@ -37,14 +37,14 @@
 #include <ctype.h>
 
 KviHistoryWindow::KviHistoryWindow(QWidget * pParent)
-: QListWidget(pParent)
+    : QListWidget(pParent)
 {
 	m_pParent = pParent;
-	m_pOwner  = 0;
+	m_pOwner = 0;
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-	connect(this,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(itemSelected(QListWidgetItem *)));
+	connect(this, SIGNAL(itemActivated(QListWidgetItem *)), this, SLOT(itemSelected(QListWidgetItem *)));
 
 	m_iTimerId = -1;
 }
@@ -68,16 +68,16 @@ void KviHistoryWindow::fill()
 	}
 
 	if(count() > 0)
-		setCurrentItem(item(count()-1));
+		setCurrentItem(item(count() - 1));
 }
 
 void KviHistoryWindow::popup(KviInput * pOwner)
 {
 	if(m_pOwner)
-		disconnect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
+		disconnect(m_pOwner, SIGNAL(destroyed()), this, SLOT(ownerDead()));
 
 	m_pOwner = pOwner;
-	connect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
+	connect(m_pOwner, SIGNAL(destroyed()), this, SLOT(ownerDead()));
 
 	fill();
 	show();
@@ -86,9 +86,7 @@ void KviHistoryWindow::popup(KviInput * pOwner)
 void KviHistoryWindow::mousePressEvent(QMouseEvent * e)
 {
 	if(
-		(e->pos().x() < 0) || (e->pos().x() > width()) ||
-		(e->pos().y() < 0) || (e->pos().y() > height())
-		)
+	    (e->pos().x() < 0) || (e->pos().x() > width()) || (e->pos().y() < 0) || (e->pos().y() > height()))
 		goto hideme;
 
 	QListWidget::mousePressEvent(e);
@@ -144,12 +142,12 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent * e)
 		case Qt::Key_Return:
 			QListWidget::keyPressEvent(e);
 			return;
-		break;
+			break;
 		case Qt::Key_Escape:
 			doHide();
 			return;
-		break;
-		/*
+			break;
+			/*
 		case Qt::Key_Backspace:
 			if(m_szTypedSeq.hasData())
 			{
@@ -193,8 +191,8 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent * e)
 		findTypedSeq();
 	} else {
 	*/
-		if(m_pOwner)
-			g_pApp->sendEvent(m_pOwner,e);
+	if(m_pOwner)
+		g_pApp->sendEvent(m_pOwner, e);
 	/*
 	}
 	*/
@@ -255,7 +253,7 @@ void KviHistoryWindow::hideEvent(QHideEvent *)
 }
 
 KviHistoryWindowWidget::KviHistoryWindowWidget()
-:QWidget(0)
+    : QWidget(0)
 {
 	setWindowFlags(Qt::Popup);
 	m_pWindow = new KviHistoryWindow(this);
@@ -268,10 +266,9 @@ KviHistoryWindowWidget::~KviHistoryWindowWidget()
 void KviHistoryWindowWidget::popup(KviInput * pOwner)
 {
 	m_pWindow->popup(pOwner);
-	m_pWindow->setFixedSize(width(),height());
+	m_pWindow->setFixedSize(width(), height());
 	//move(QCursor::pos());
 	show();
 }
-
 
 #endif //_KVI_HISTORYWIN_CPP_

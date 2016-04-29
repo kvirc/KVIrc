@@ -43,9 +43,8 @@
 #define FRAME_HEADER_SIZE 4
 #define MIN_FRAME_SIZE 21
 #define NUM_SAMPLES 4
-#define TEXT_FIELD_LEN	30
-#define INT_FIELD_LEN	4
-
+#define TEXT_FIELD_LEN 30
+#define INT_FIELD_LEN 4
 
 #include "kvi_settings.h"
 
@@ -54,16 +53,21 @@
 #include <QString>
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-	#include <unistd.h>
-	#include <sys/stat.h>
-	#include <ctype.h>
-	#include <string.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <ctype.h>
+#include <string.h>
 #endif
 
+enum VBR_REPORT
+{
+	VBR_VARIABLE,
+	VBR_AVERAGE,
+	VBR_MEDIAN
+};
 
-enum VBR_REPORT { VBR_VARIABLE, VBR_AVERAGE, VBR_MEDIAN };
-
-typedef struct {
+typedef struct
+{
 	unsigned int sync;
 	unsigned int version;
 	unsigned int layer;
@@ -79,7 +83,8 @@ typedef struct {
 	unsigned int emphasis;
 } mp3header;
 
-typedef struct {
+typedef struct
+{
 	char title[31];
 	char artist[31];
 	char album[31];
@@ -89,9 +94,10 @@ typedef struct {
 	unsigned char genre[1];
 } id3tag;
 
-typedef struct {
+typedef struct
+{
 	QString filename;
-	FILE *file;
+	FILE * file;
 	unsigned int datasize;
 	int header_isvalid;
 	mp3header header;
@@ -110,25 +116,25 @@ typedef struct {
 // 10 - Dual channel (2 mono channels)
 // 11 - Single channel (Mono)
 
-bool scan_mp3_file(QString& szFileName,mp3info * i);
+bool scan_mp3_file(QString & szFileName, mp3info * i);
 
-void resetmp3infoStruct(mp3info *i);
+void resetmp3infoStruct(mp3info * i);
 
-int header_channels(mp3header *h);
-int header_frequency(mp3header *h);
-const char *header_emphasis(mp3header *h);
-const char *header_mode(mp3header *h);
-int header_layer(mp3header *h);
-int header_bitrate(mp3header *h);
-double header_version(mp3header *h);
-int header_crc(mp3header *h);
-int get_header(FILE *file,mp3header *header);
-int frame_length(mp3header *header);
-int sameConstant(mp3header *h1, mp3header *h2);
-int get_mp3_info(mp3info *mp3);
-int get_id3(mp3info *mp3);
-char *pad(char *string, int length);
-char *unpad(char *string);
-int get_first_header(mp3info *mp3,long startpos);
+int header_channels(mp3header * h);
+int header_frequency(mp3header * h);
+const char * header_emphasis(mp3header * h);
+const char * header_mode(mp3header * h);
+int header_layer(mp3header * h);
+int header_bitrate(mp3header * h);
+double header_version(mp3header * h);
+int header_crc(mp3header * h);
+int get_header(FILE * file, mp3header * header);
+int frame_length(mp3header * header);
+int sameConstant(mp3header * h1, mp3header * h2);
+int get_mp3_info(mp3info * mp3);
+int get_id3(mp3info * mp3);
+char * pad(char * string, int length);
+char * unpad(char * string);
+int get_first_header(mp3info * mp3, long startpos);
 //void tagedit_curs(char *filename, int filenum, int fileoutof, id3tag *tag);
 const char * get_typegenre(int idx);

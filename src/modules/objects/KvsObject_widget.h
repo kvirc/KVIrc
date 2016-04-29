@@ -33,7 +33,7 @@
 #include <QGraphicsEffect>
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-	#include <QtWebKitWidgets/QWebView>
+#include <QtWebKitWidgets/QWebView>
 #endif
 
 class KvsObject_widget : public KviKvsObject
@@ -46,14 +46,14 @@ public:
 	QWidget * widget() { return (QWidget *)object(); };
 
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
 #ifdef COMPILE_WEBKIT_SUPPORT
 	QWebView * m_pWebview;
 #endif
-	virtual bool eventFilter(QObject *o,QEvent *e);
-        KviKvsRunTimeContext *m_pContext;
-	QGraphicsDropShadowEffect *pGraphicsEffect;
+	virtual bool eventFilter(QObject * o, QEvent * e);
+	KviKvsRunTimeContext * m_pContext;
+	QGraphicsDropShadowEffect * pGraphicsEffect;
 	// ok, it is clear that we're messing with the naming conventions for the
 	// object classes :D
 	// let's try to use this one:
@@ -64,70 +64,70 @@ protected:
 
 	// let's also try to keep alphabetic order for the functions here.. so one can find them quickly
 
-	bool addWidgetToWrappedLayout(KviKvsObjectFunctionCall *c);
-	bool backgroundColor(KviKvsObjectFunctionCall *c);
-	bool centerToScreen(KviKvsObjectFunctionCall *c);
-	bool colorPalette(KviKvsObjectFunctionCall *c);
+	bool addWidgetToWrappedLayout(KviKvsObjectFunctionCall * c);
+	bool backgroundColor(KviKvsObjectFunctionCall * c);
+	bool centerToScreen(KviKvsObjectFunctionCall * c);
+	bool colorPalette(KviKvsObjectFunctionCall * c);
 	bool fontAscent(KviKvsObjectFunctionCall * c);
 	bool fontDescent(KviKvsObjectFunctionCall * c);
 	bool fontMetricsHeight(KviKvsObjectFunctionCall * c);
 	bool fontMetricsWidth(KviKvsObjectFunctionCall * c);
 	bool fontMetricsLineSpacing(KviKvsObjectFunctionCall * c);
-	bool foregroundColor(KviKvsObjectFunctionCall *c);
-	bool geometry(KviKvsObjectFunctionCall *c);
-	bool globalCursorX(KviKvsObjectFunctionCall *c);
-	bool globalCursorY(KviKvsObjectFunctionCall *c);
-	bool hasFocus(KviKvsObjectFunctionCall *c);
+	bool foregroundColor(KviKvsObjectFunctionCall * c);
+	bool geometry(KviKvsObjectFunctionCall * c);
+	bool globalCursorX(KviKvsObjectFunctionCall * c);
+	bool globalCursorY(KviKvsObjectFunctionCall * c);
+	bool hasFocus(KviKvsObjectFunctionCall * c);
 	bool height(KviKvsObjectFunctionCall *);
 	bool hide(KviKvsObjectFunctionCall *);
-	bool isEnabled(KviKvsObjectFunctionCall *c);
-	bool isTopLevel(KviKvsObjectFunctionCall *c);
-	bool isVisible(KviKvsObjectFunctionCall *c);
-	bool loadInterface(KviKvsObjectFunctionCall *c);
+	bool isEnabled(KviKvsObjectFunctionCall * c);
+	bool isTopLevel(KviKvsObjectFunctionCall * c);
+	bool isVisible(KviKvsObjectFunctionCall * c);
+	bool loadInterface(KviKvsObjectFunctionCall * c);
 	bool lower(KviKvsObjectFunctionCall *);
-	bool mapFromGlobal(KviKvsObjectFunctionCall *c);
-	bool mapToGlobal(KviKvsObjectFunctionCall *c);
-	bool move(KviKvsObjectFunctionCall *c);
-	bool parentWidget(KviKvsObjectFunctionCall *c);
+	bool mapFromGlobal(KviKvsObjectFunctionCall * c);
+	bool mapToGlobal(KviKvsObjectFunctionCall * c);
+	bool move(KviKvsObjectFunctionCall * c);
+	bool parentWidget(KviKvsObjectFunctionCall * c);
 	bool raise(KviKvsObjectFunctionCall *);
-	bool repaint(KviKvsObjectFunctionCall *c);
-	bool insertIntoStatusBar(KviKvsObjectFunctionCall *c);
-	bool removeFromStatusBar(KviKvsObjectFunctionCall *c);
-	bool setParent(KviKvsObjectFunctionCall *c);
-	bool resize(KviKvsObjectFunctionCall *c);
+	bool repaint(KviKvsObjectFunctionCall * c);
+	bool insertIntoStatusBar(KviKvsObjectFunctionCall * c);
+	bool removeFromStatusBar(KviKvsObjectFunctionCall * c);
+	bool setParent(KviKvsObjectFunctionCall * c);
+	bool resize(KviKvsObjectFunctionCall * c);
 	bool screenResolution(KviKvsObjectFunctionCall * c);
-	bool setAttribute(KviKvsObjectFunctionCall *c);
-	bool setBackgroundColor(KviKvsObjectFunctionCall *c);
-	bool setBackgroundImage(KviKvsObjectFunctionCall *c);
-	bool setEnabled(KviKvsObjectFunctionCall *c);
-	bool setFocus(KviKvsObjectFunctionCall *c);
-	bool setFocusPolicy(KviKvsObjectFunctionCall *c);
-	bool setFont(KviKvsObjectFunctionCall *c);
-	bool setGeometry(KviKvsObjectFunctionCall *c);
-	bool setKeyShortcut(KviKvsObjectFunctionCall *c);
-	bool setMask(KviKvsObjectFunctionCall *c);
-	bool setMaximumHeight(KviKvsObjectFunctionCall *c);
-	bool setMaximumWidth(KviKvsObjectFunctionCall *c);
-	bool setMinimumHeight(KviKvsObjectFunctionCall *c);
-	bool setMinimumWidth(KviKvsObjectFunctionCall *c);
-	bool setMouseTracking(KviKvsObjectFunctionCall *c);
-	bool setForegroundColor(KviKvsObjectFunctionCall *c);
-	bool setStyleSheet(KviKvsObjectFunctionCall *c);
+	bool setAttribute(KviKvsObjectFunctionCall * c);
+	bool setBackgroundColor(KviKvsObjectFunctionCall * c);
+	bool setBackgroundImage(KviKvsObjectFunctionCall * c);
+	bool setEnabled(KviKvsObjectFunctionCall * c);
+	bool setFocus(KviKvsObjectFunctionCall * c);
+	bool setFocusPolicy(KviKvsObjectFunctionCall * c);
+	bool setFont(KviKvsObjectFunctionCall * c);
+	bool setGeometry(KviKvsObjectFunctionCall * c);
+	bool setKeyShortcut(KviKvsObjectFunctionCall * c);
+	bool setMask(KviKvsObjectFunctionCall * c);
+	bool setMaximumHeight(KviKvsObjectFunctionCall * c);
+	bool setMaximumWidth(KviKvsObjectFunctionCall * c);
+	bool setMinimumHeight(KviKvsObjectFunctionCall * c);
+	bool setMinimumWidth(KviKvsObjectFunctionCall * c);
+	bool setMouseTracking(KviKvsObjectFunctionCall * c);
+	bool setForegroundColor(KviKvsObjectFunctionCall * c);
+	bool setStyleSheet(KviKvsObjectFunctionCall * c);
 	bool setToolTip(KviKvsObjectFunctionCall *);
-	bool setWindowIcon(KviKvsObjectFunctionCall *c);
-	bool setWindowTitle(KviKvsObjectFunctionCall *c);
-	bool setWFlags(KviKvsObjectFunctionCall *c);
-	bool show(KviKvsObjectFunctionCall *c);
-	bool sizeHint(KviKvsObjectFunctionCall *c);
-	bool update(KviKvsObjectFunctionCall *c);
+	bool setWindowIcon(KviKvsObjectFunctionCall * c);
+	bool setWindowTitle(KviKvsObjectFunctionCall * c);
+	bool setWFlags(KviKvsObjectFunctionCall * c);
+	bool show(KviKvsObjectFunctionCall * c);
+	bool sizeHint(KviKvsObjectFunctionCall * c);
+	bool update(KviKvsObjectFunctionCall * c);
 	bool width(KviKvsObjectFunctionCall *);
-	bool windowTitle(KviKvsObjectFunctionCall *c);
+	bool windowTitle(KviKvsObjectFunctionCall * c);
 	bool x(KviKvsObjectFunctionCall *);
 	bool y(KviKvsObjectFunctionCall *);
 
 	bool grab(KviKvsObjectFunctionCall *);
 #ifdef COMPILE_WEBKIT_SUPPORT
-	bool setWebView(KviKvsObjectFunctionCall *c);
+	bool setWebView(KviKvsObjectFunctionCall * c);
 #endif
 
 signals:
@@ -139,10 +139,12 @@ class KviKvsWidget : public QWidget
 	Q_OBJECT
 	Q_PROPERTY(QSize sizeHint READ sizeHint)
 public:
-	KviKvsWidget(KvsObject_widget * ob,QWidget * par);
+	KviKvsWidget(KvsObject_widget * ob, QWidget * par);
 	virtual ~KviKvsWidget();
+
 protected:
 	KvsObject_widget * m_pObject;
+
 public:
 	QSize sizeHint() const;
 };

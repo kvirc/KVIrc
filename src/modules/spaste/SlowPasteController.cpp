@@ -38,8 +38,8 @@
 
 extern KviPointerList<SlowPasteController> * g_pControllerList;
 
-SlowPasteController::SlowPasteController(KviWindow * w,int id)
-: m_pClipBuff(NULL),m_pFile(NULL),m_pId(id),m_pWindow(w)
+SlowPasteController::SlowPasteController(KviWindow * w, int id)
+    : m_pClipBuff(NULL), m_pFile(NULL), m_pId(id), m_pWindow(w)
 {
 	g_pControllerList->append(this);
 	//m_pWindow = w;
@@ -63,15 +63,18 @@ SlowPasteController::~SlowPasteController()
 		delete m_pClipBuff;
 }
 
-bool SlowPasteController::pasteFileInit(QString &fileName)
+bool SlowPasteController::pasteFileInit(QString & fileName)
 {
-	if(m_pClipBuff)return false; // can't paste a file while pasting the clipboard
-	if(m_pFile)return false; // can't paste two files at a time
+	if(m_pClipBuff)
+		return false; // can't paste a file while pasting the clipboard
+	if(m_pFile)
+		return false; // can't paste two files at a time
 	m_pFile = new QFile(fileName);
-	if(!m_pFile->open(QIODevice::ReadOnly))return false;
+	if(!m_pFile->open(QIODevice::ReadOnly))
+		return false;
 	//avoid double connection
-	disconnect(m_pTimer,SIGNAL(timeout()),0,0);
-	connect(m_pTimer,SIGNAL(timeout()),this,SLOT(pasteFile()));
+	disconnect(m_pTimer, SIGNAL(timeout()), 0, 0);
+	connect(m_pTimer, SIGNAL(timeout()), this, SLOT(pasteFile()));
 	//avoid timer reset if always active
 	if(!m_pTimer->isActive())
 		m_pTimer->start(KVI_OPTION_UINT(KviOption_uintPasteDelay));
@@ -80,17 +83,20 @@ bool SlowPasteController::pasteFileInit(QString &fileName)
 
 bool SlowPasteController::pasteClipboardInit(void)
 {
-	if(m_pFile)return false; // can't paste clipboard while pasting a file
+	if(m_pFile)
+		return false; // can't paste clipboard while pasting a file
 	QString tmp(g_pApp->clipboard()->text());
 	if(m_pClipBuff)
 	{
-		(*m_pClipBuff) += tmp.isEmpty()?QStringList():tmp.split("\n",QString::KeepEmptyParts);
-	} else {
-		m_pClipBuff = new QStringList(tmp.isEmpty()?QStringList():tmp.split("\n",QString::KeepEmptyParts));
+		(*m_pClipBuff) += tmp.isEmpty() ? QStringList() : tmp.split("\n", QString::KeepEmptyParts);
+	}
+	else
+	{
+		m_pClipBuff = new QStringList(tmp.isEmpty() ? QStringList() : tmp.split("\n", QString::KeepEmptyParts));
 	}
 	//avoid double connection
-	disconnect(m_pTimer,SIGNAL(timeout()),0,0);
-	connect(m_pTimer,SIGNAL(timeout()),this,SLOT(pasteClipboard()));
+	disconnect(m_pTimer, SIGNAL(timeout()), 0, 0);
+	connect(m_pTimer, SIGNAL(timeout()), this, SLOT(pasteClipboard()));
 	//avoid timer reset if always active
 	if(!m_pTimer->isActive())
 		m_pTimer->start(KVI_OPTION_UINT(KviOption_uintPasteDelay));
@@ -101,22 +107,26 @@ void SlowPasteController::pasteFile(void)
 {
 	QString line;
 	char data[1024];
-	if(m_pFile->readLine(data,sizeof(data)) != -1)
+	if(m_pFile->readLine(data, sizeof(data)) != -1)
 	{
 		line = data;
 		if(line.isEmpty())
 			line = QChar(KviControlCodes::Reset);
 
-		line.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
+		line.replace('\t', QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput), ' ')); //expand tabs to spaces
 
 		if(!g_pApp->windowExists(m_pWindow))
 		{
 			m_pFile->close();
 			delete this;
-		} else {
+		}
+		else
+		{
 			m_pWindow->ownMessage(line.toLatin1());
 		}
-	} else { //File finished
+	}
+	else
+	{ //File finished
 		m_pFile->close();
 		delete this;
 	}
@@ -126,10 +136,12 @@ void SlowPasteController::pasteClipboard(void)
 {
 	if(m_pClipBuff->isEmpty() || !g_pApp->windowExists(m_pWindow))
 	{
-	  	delete this;
-	} else {
+		delete this;
+	}
+	else
+	{
 		QString line = m_pClipBuff->takeFirst();
-		line.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
+		line.replace('\t', QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput), ' ')); //expand tabs to spaces
 		m_pWindow->ownMessage(line);
 	}
 }

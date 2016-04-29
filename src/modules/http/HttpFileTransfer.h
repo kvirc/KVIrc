@@ -37,60 +37,69 @@ class QMenu;
 
 class HttpFileTransfer : public KviFileTransfer
 {
-	enum GeneralStatus { Initializing, Connecting, Downloading, Success, Failure };
+	enum GeneralStatus
+	{
+		Initializing,
+		Connecting,
+		Downloading,
+		Success,
+		Failure
+	};
 	Q_OBJECT
 public:
 	HttpFileTransfer();
 	~HttpFileTransfer();
+
 private:
 	int m_TimerId;
 	KviHttpRequest * m_pHttpRequest;
-	GeneralStatus    m_eGeneralStatus;
-	QString          m_szStatusString;
+	GeneralStatus m_eGeneralStatus;
+	QString m_szStatusString;
 
-	QStringList      m_lHeaders;
-	QStringList      m_lRequest;
+	QStringList m_lHeaders;
+	QStringList m_lRequest;
 
-	kvi_time_t       m_tStartTime;
-	kvi_time_t       m_tTransferStartTime;
-	kvi_time_t       m_tTransferEndTime;
+	kvi_time_t m_tStartTime;
+	kvi_time_t m_tTransferStartTime;
+	kvi_time_t m_tTransferEndTime;
 
-	KviKvsVariant    m_vMagicIdentifier;
-	bool             m_bNotifyCompletion;
-	bool             m_bAutoClean;
-	bool             m_bNoOutput;
+	KviKvsVariant m_vMagicIdentifier;
+	bool m_bNotifyCompletion;
+	bool m_bAutoClean;
+	bool m_bNoOutput;
 
-	QTimer         * m_pAutoCleanTimer;
-	QString          m_szCompletionCallback;
+	QTimer * m_pAutoCleanTimer;
+	QString m_szCompletionCallback;
+
 public:
-	KviHttpRequest * request(){ return m_pHttpRequest; };
+	KviHttpRequest * request() { return m_pHttpRequest; };
 	static unsigned int runningTransfers();
 	static void init();
 	static void done();
 
 	virtual bool startDownload();
 
-	void setCompletionCallback(const QString &szCallback){ m_szCompletionCallback = szCallback; };
-	void setMagicIdentifier(const KviKvsVariant &vIdentifier){ m_vMagicIdentifier = vIdentifier; };
-	void setNotifyCompletion(bool bNotify){ m_bNotifyCompletion = bNotify; };
-	void setAutoClean(bool bAutoClean){ m_bAutoClean = bAutoClean; };
-	void setNoOutput(bool bNoOutput){ m_bNoOutput = bNoOutput; };
+	void setCompletionCallback(const QString & szCallback) { m_szCompletionCallback = szCallback; };
+	void setMagicIdentifier(const KviKvsVariant & vIdentifier) { m_vMagicIdentifier = vIdentifier; };
+	void setNotifyCompletion(bool bNotify) { m_bNotifyCompletion = bNotify; };
+	void setAutoClean(bool bAutoClean) { m_bAutoClean = bAutoClean; };
+	void setNoOutput(bool bNoOutput) { m_bNoOutput = bNoOutput; };
 
-	virtual void displayPaint(QPainter * p,int column, QRect rect);
+	virtual void displayPaint(QPainter * p, int column, QRect rect);
 	virtual int displayHeight(int iLineSpacing);
 	virtual void fillContextPopup(QMenu * m);
 	virtual bool active();
 	virtual QString tipText();
 	virtual QString localFileName();
 protected slots:
-	void statusMessage(const QString &txt);
+	void statusMessage(const QString & txt);
 	void transferTerminated(bool bSuccess);
-	void headersReceived(KviPointerHashTable<const char *,KviCString> *h);
-	void requestSent(const QStringList &sl);
+	void headersReceived(KviPointerHashTable<const char *, KviCString> * h);
+	void requestSent(const QStringList & sl);
 
-	void resolvingHost(const QString &hostname);
-	void contactingHost(const QString &ipandport);
-	void receivedResponse(const QString &response);
+	void resolvingHost(const QString & hostname);
+	void contactingHost(const QString & ipandport);
+	void receivedResponse(const QString & response);
 	void connectionEstablished();
 	void abort();
 	void autoClean();

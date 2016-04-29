@@ -49,27 +49,33 @@ class KviKvsArray;
 class KVIRC_API KviKvsNumber
 {
 	friend class KviKvsVariant;
+
 public:
 	/**
 	* \enum Type
 	* \brief Describes the type of number
 	*/
-	enum Type {
-		Real,     /**< The number is an integer */
-		Integer   /**< The number is a double floating point */
+	enum Type
+	{
+		Real,   /**< The number is an integer */
+		Integer /**< The number is a double floating point */
 	};
+
 protected:
 	/**
 	* \union DataType
 	* \brief This union holds an integer or a double floating point number
 	*/
-	union DataType {
-		kvs_int_t     iInt;
-		kvs_real_t    dReal;
+	union DataType
+	{
+		kvs_int_t iInt;
+		kvs_real_t dReal;
 	};
+
 protected:
-	Type     m_type;
+	Type m_type;
 	DataType m_u;
+
 public:
 	/**
 	* \brief Returns the type of the number
@@ -113,34 +119,38 @@ public:
 	* \enum Type
 	* \brief Holds the type of the variant data
 	*/
-	enum Type {
-		Nothing = 0,    /**< Data not initialized      */
-		String  = 1,    /**< QString          (scalar) */
-		Integer = 2,    /**< long int         (scalar) */
-		Real    = 4,    /**< double           (scalar) */
-		Array   = 8,    /**< KviKvsArray               */
-		Hash    = 16,   /**< KviKvsHash                */
-		Boolean = 32,   /**< bool             (scalar) */
-		HObject = 64    /**< object, shallow! (scalar) */
+	enum Type
+	{
+		Nothing = 0,  /**< Data not initialized      */
+		String = 1,   /**< QString          (scalar) */
+		Integer = 2,  /**< long int         (scalar) */
+		Real = 4,     /**< double           (scalar) */
+		Array = 8,    /**< KviKvsArray               */
+		Hash = 16,    /**< KviKvsHash                */
+		Boolean = 32, /**< bool             (scalar) */
+		HObject = 64  /**< object, shallow! (scalar) */
 	};
+
 public:
 	/**
 	* \union DataType
 	* \brief Holds the value of the variant data
 	*/
-	union DataType {
-		kvs_int_t       iInt;
-		kvs_real_t    * pReal;
-		QString       * pString;
-		KviKvsArray   * pArray;
-		KviKvsHash    * pHash;
-		bool            bBoolean;
-		kvs_hobject_t   hObject;
+	union DataType
+	{
+		kvs_int_t iInt;
+		kvs_real_t * pReal;
+		QString * pString;
+		KviKvsArray * pArray;
+		KviKvsHash * pHash;
+		bool bBoolean;
+		kvs_hobject_t hObject;
 	};
+
 public:
 	unsigned int m_uRefs;
-	Type         m_eType;
-	DataType     m_u;
+	Type m_eType;
+	DataType m_u;
 };
 
 /**
@@ -154,11 +164,13 @@ public:
 	* \enum Result
 	* \brief Holds the result of the comparison
 	*/
-	enum Result {
-		FirstGreater  = -1,   /**< the first variant is greater than the second */
-		Equal         =  0,   /**< the two variants are equal */
-		SecondGreater =  1    /**< the second variant is greater than the first */
+	enum Result
+	{
+		FirstGreater = -1, /**< the first variant is greater than the second */
+		Equal = 0,         /**< the two variants are equal */
+		SecondGreater = 1  /**< the second variant is greater than the first */
 	};
+
 public:
 	/**
 	* \brief Compares an integer and a string variant
@@ -341,6 +353,7 @@ public:
 class KVIRC_API KviKvsVariant : public KviHeapObject
 {
 	friend class KviKvsVariantComparison;
+
 public:
 	/**
 	* \brief Constructs the variant data
@@ -373,7 +386,7 @@ public:
 	* instead of (const char *)->(QString) and obviously calls the wrong constructor
 	* \return KviKvsVariant
 	*/
-	KviKvsVariant(const char * pcString, bool bEscape=false);
+	KviKvsVariant(const char * pcString, bool bEscape = false);
 
 	/**
 	* \brief Constructs the variant data
@@ -437,14 +450,16 @@ public:
 	* \brief Destroys the variant data
 	*/
 	~KviKvsVariant();
+
 protected:
 	KviKvsVariantData * m_pData;
+
 public:
 	/**
 	* \brief Returns the type of the variant data
 	* \return KviKvsVariantData::Type
 	*/
-	KviKvsVariantData::Type type(){ return m_pData ? m_pData->m_eType : KviKvsVariantData::Nothing; };
+	KviKvsVariantData::Type type() { return m_pData ? m_pData->m_eType : KviKvsVariantData::Nothing; };
 
 	/**
 	* \brief Sets the variant data as double floating point
@@ -791,7 +806,7 @@ public:
 	* \param variant The variant to copy from
 	* \return void
 	*/
-	void operator = (const KviKvsVariant & variant){ copyFrom(variant); };
+	void operator=(const KviKvsVariant & variant) { copyFrom(variant); };
 private:
 	/**
 	* \brief Unserializes the variant data using the JSON format

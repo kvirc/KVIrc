@@ -37,45 +37,46 @@
 #include <QPixmap>
 #include <QFile>
 
-static KviTextIconAssocEntry default_associations[] =
-{
-	{ ":)"  , KviIconManager::Smile       },
-	{ ":*"  , KviIconManager::Kiss        },
-	{ ":D"  , KviIconManager::BigGrin     },
-	{ ":("  , KviIconManager::Ugly        },
-	{ ":/"  , KviIconManager::Angry       },
-	{ ":O"  , KviIconManager::Surprised2  },
-	{ ":P"  , KviIconManager::Tongue      },
-	{ ":B"  , KviIconManager::Teeth       },
-	{ ";)"  , KviIconManager::Eye         },
-	{ ":')" , KviIconManager::TearSmile   },
-	{ ":'"  , KviIconManager::Cry         },
-	{ ":S"  , KviIconManager::Afraid      },
-	{ ":|"  , KviIconManager::Demoralized },
-	{ ":P'" , KviIconManager::Slurp       },
-	{ 0     , 0                           }
+static KviTextIconAssocEntry default_associations[] = {
+	{ ":)", KviIconManager::Smile },
+	{ ":*", KviIconManager::Kiss },
+	{ ":D", KviIconManager::BigGrin },
+	{ ":(", KviIconManager::Ugly },
+	{ ":/", KviIconManager::Angry },
+	{ ":O", KviIconManager::Surprised2 },
+	{ ":P", KviIconManager::Tongue },
+	{ ":B", KviIconManager::Teeth },
+	{ ";)", KviIconManager::Eye },
+	{ ":')", KviIconManager::TearSmile },
+	{ ":'", KviIconManager::Cry },
+	{ ":S", KviIconManager::Afraid },
+	{ ":|", KviIconManager::Demoralized },
+	{ ":P'", KviIconManager::Slurp },
+	{ 0, 0 }
 };
 
 KVIRC_API KviTextIconManager * g_pTextIconManager = 0;
 
 KviTextIcon::KviTextIcon(KviIconManager::SmallIcon eIcon)
-: m_eIcon(eIcon),m_pAnimatedPixmap(NULL)
+    : m_eIcon(eIcon), m_pAnimatedPixmap(NULL)
 {
 }
 
 KviTextIcon::KviTextIcon(QString szFile)
-: m_eIcon(KviIconManager::None), m_szFileName(szFile)
+    : m_eIcon(KviIconManager::None), m_szFileName(szFile)
 {
 	QString szRetPath;
 
 	if(g_pApp->findImage(szRetPath, szFile))
 	{
-		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath,16,16);
+		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath, 16, 16);
 		if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedSmiles))
 			m_pAnimatedPixmap->start();
 		else
 			m_pAnimatedPixmap->stop();
-	} else {
+	}
+	else
+	{
 		m_pAnimatedPixmap = NULL;
 	}
 }
@@ -116,12 +117,14 @@ void KviTextIcon::setFilename(QString szFileName)
 		delete m_pAnimatedPixmap;
 	if(g_pApp->findImage(szRetPath, szFileName))
 	{
-		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath,16,16);
+		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath, 16, 16);
 		if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedSmiles))
 			m_pAnimatedPixmap->start();
 		else
 			m_pAnimatedPixmap->stop();
-	} else {
+	}
+	else
+	{
 		m_pAnimatedPixmap = NULL;
 	}
 	m_szFileName = szFileName;
@@ -142,9 +145,9 @@ QPixmap * KviTextIcon::pixmap()
 }
 
 KviTextIconManager::KviTextIconManager()
-: QObject()
+    : QObject()
 {
-	m_pTextIconDict = new KviPointerHashTable<QString,KviTextIcon>(47,false);
+	m_pTextIconDict = new KviPointerHashTable<QString, KviTextIcon>(47, false);
 	m_pTextIconDict->setAutoDelete(true);
 }
 
@@ -172,10 +175,10 @@ void KviTextIconManager::insert(const QString & szName, KviTextIcon & icon)
 
 void KviTextIconManager::checkDefaultAssociations()
 {
-	for(int i=0; default_associations[i].name; i++)
+	for(int i = 0; default_associations[i].name; i++)
 	{
 		if(!m_pTextIconDict->find(default_associations[i].name))
-			insert(QString::fromUtf8(default_associations[i].name),default_associations[i].iVal);
+			insert(QString::fromUtf8(default_associations[i].name), default_associations[i].iVal);
 	}
 	emit changed();
 }
@@ -205,26 +208,25 @@ void KviTextIconManager::load()
 	}
 	*/
 
-	if(g_pApp->getReadOnlyConfigPath(szTmp,KVI_CONFIGFILE_TEXTICONS))
-		iUpd = load(szTmp,false);
+	if(g_pApp->getReadOnlyConfigPath(szTmp, KVI_CONFIGFILE_TEXTICONS))
+		iUpd = load(szTmp, false);
 
 	if(iUpd == TEXTICONMANAGER_CURRENT_CONFIG_UPDATE)
 		return;
 
 	// do a merge of the texticons if we have a new config version
-	g_pApp->getGlobalKvircDirectory(szTmp,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
+	g_pApp->getGlobalKvircDirectory(szTmp, KviApplication::Config, KVI_CONFIGFILE_TEXTICONS);
 
 	if(QFile::exists(szTmp))
-		load(szTmp,true);
+		load(szTmp, true);
 }
 
 void KviTextIconManager::applyOptions()
 {
 	for(
-		KviTextIcon * pIcon = m_pTextIconDict->first();
-		pIcon;
-		pIcon = m_pTextIconDict->next()
-		)
+	    KviTextIcon * pIcon = m_pTextIconDict->first();
+	    pIcon;
+	    pIcon = m_pTextIconDict->next())
 	{
 		if(pIcon->animatedPixmap())
 		{
@@ -250,7 +252,7 @@ void KviTextIconManager::save()
 		szPath += KVI_CONFIGFILE_TEXTICONS;
 	} else {
 	*/
-		g_pApp->getLocalKvircDirectory(szPath,KviApplication::Config,KVI_CONFIGFILE_TEXTICONS);
+	g_pApp->getLocalKvircDirectory(szPath, KviApplication::Config, KVI_CONFIGFILE_TEXTICONS);
 	/*
 	}
 	*/
@@ -263,10 +265,10 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 	if(!bMerge)
 		m_pTextIconDict->clear();
 
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Read);
 
 	cfg.setGroup("Manager");
-	int iUpd = cfg.readIntEntry("ConfigUpdate",0);
+	int iUpd = cfg.readIntEntry("ConfigUpdate", 0);
 
 	KviConfigurationFileGroup * pDict = cfg.dict()->find("TextIcons");
 	if(pDict)
@@ -286,16 +288,18 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 
 		for(QString * s = names.first(); s; s = names.next())
 		{
-			int iId = cfg.readIntEntry(*s,-1);
+			int iId = cfg.readIntEntry(*s, -1);
 			QString szTmp;
 			QPixmap * pix = 0;
 			//qDebug("%s %s %i %i",__FILE__,__FUNCTION__,__LINE__,id);
 			if(iId > 0)
 			{
 				pix = g_pIconManager->getSmallIcon(iId);
-			} else {
+			}
+			else
+			{
 				szTmp = cfg.readEntry(*s);
-				pix=g_pIconManager->getPixmap(szTmp);
+				pix = g_pIconManager->getPixmap(szTmp);
 				if(!pix)
 				{
 					iId = KviIconManager::Help;
@@ -311,17 +315,23 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 					{
 						if(iId != -1)
 						{
-							m_pTextIconDict->replace(*s,new KviTextIcon(g_pIconManager->iconName(iId)));
-						} else {
-							m_pTextIconDict->replace(*s,new KviTextIcon(szTmp));
+							m_pTextIconDict->replace(*s, new KviTextIcon(g_pIconManager->iconName(iId)));
+						}
+						else
+						{
+							m_pTextIconDict->replace(*s, new KviTextIcon(szTmp));
 						}
 					}
-				} else {
+				}
+				else
+				{
 					if(iId > 0)
 					{
-						m_pTextIconDict->replace(*s,new KviTextIcon(g_pIconManager->iconName(iId)));
-					} else {
-						m_pTextIconDict->replace(*s,new KviTextIcon(szTmp));
+						m_pTextIconDict->replace(*s, new KviTextIcon(g_pIconManager->iconName(iId)));
+					}
+					else
+					{
+						m_pTextIconDict->replace(*s, new KviTextIcon(szTmp));
 					}
 				}
 			}
@@ -335,20 +345,20 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 
 void KviTextIconManager::save(const QString & szFileName)
 {
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Write);
 
 	cfg.setGroup("Manager");
-	cfg.writeEntry("ConfigUpdate",TEXTICONMANAGER_CURRENT_CONFIG_UPDATE);
+	cfg.writeEntry("ConfigUpdate", TEXTICONMANAGER_CURRENT_CONFIG_UPDATE);
 
 	cfg.setGroup("TextIcons");
 
-	KviPointerHashTableIterator<QString,KviTextIcon> it(*m_pTextIconDict);
+	KviPointerHashTableIterator<QString, KviTextIcon> it(*m_pTextIconDict);
 	while(KviTextIcon * pIcon = it.current())
 	{
 		if(pIcon->id() > 0)
-			cfg.writeEntry(it.currentKey(),pIcon->id());
+			cfg.writeEntry(it.currentKey(), pIcon->id());
 		else
-			cfg.writeEntry(it.currentKey(),pIcon->filename());
+			cfg.writeEntry(it.currentKey(), pIcon->filename());
 		++it;
 	}
 }

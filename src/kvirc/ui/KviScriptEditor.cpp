@@ -29,9 +29,8 @@
 #include "KviScriptEditor.h"
 #include "KviModuleManager.h"
 
-
 KviScriptEditor::KviScriptEditor(QWidget * par)
-: QWidget(par)
+    : QWidget(par)
 {
 }
 
@@ -48,7 +47,7 @@ void KviScriptEditor::setText(const QByteArray &)
 {
 }
 
-void KviScriptEditor::setText(const QString &txt)
+void KviScriptEditor::setText(const QString & txt)
 {
 	setText(QByteArray(txt.toUtf8()));
 }
@@ -86,7 +85,7 @@ int KviScriptEditor::getCursor()
 {
 	return 0;
 }
-void KviScriptEditor::getText(QString &txt)
+void KviScriptEditor::getText(QString & txt)
 {
 	QByteArray tmp;
 	getText(tmp);
@@ -98,7 +97,6 @@ KviScriptEditor * KviScriptEditor::getDummyEditor(QWidget * par)
 	return new KviScriptEditor(par);
 }
 
-
 static KviScriptEditor * (*editorModuleCreateScriptEditor)(QWidget *);
 static void (*editorModuleDestroyScriptEditor)(KviScriptEditor *);
 
@@ -107,12 +105,13 @@ KviScriptEditor * KviScriptEditor::createInstance(QWidget * par)
 	KviModule * m = g_pModuleManager->getModule("editor");
 	// If the module can't be loaded...return a dummy widget
 	// FIXME: #warning "Maybe provide some sort of basic default editable widget ?"
-	if(!m)return KviScriptEditor::getDummyEditor(par); // dummy implementation
+	if(!m)
+		return KviScriptEditor::getDummyEditor(par); // dummy implementation
 
+	editorModuleCreateScriptEditor = (KviScriptEditor * (*)(QWidget *))m->getSymbol("editor_module_createScriptEditor");
 
-	editorModuleCreateScriptEditor = (KviScriptEditor * (*)(QWidget *)) m->getSymbol("editor_module_createScriptEditor");
-
-	if(!editorModuleCreateScriptEditor)return KviScriptEditor::getDummyEditor(par);
+	if(!editorModuleCreateScriptEditor)
+		return KviScriptEditor::getDummyEditor(par);
 
 	return editorModuleCreateScriptEditor(par);
 }
@@ -126,7 +125,7 @@ void KviScriptEditor::destroyInstance(KviScriptEditor * e)
 		return;
 	}
 
-	editorModuleDestroyScriptEditor = (void (*)(KviScriptEditor *)) m->getSymbol("editor_module_destroyScriptEditor");
+	editorModuleDestroyScriptEditor = (void (*)(KviScriptEditor *))m->getSymbol("editor_module_destroyScriptEditor");
 
 	if(!editorModuleDestroyScriptEditor)
 	{

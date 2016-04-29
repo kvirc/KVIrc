@@ -28,12 +28,12 @@
 #include "kvi_settings.h"
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-	#include <QtWebKitWidgets/QWebView>
-	#include <QToolBar>
-	#include <QVBoxLayout>
+#include <QtWebKitWidgets/QWebView>
+#include <QToolBar>
+#include <QVBoxLayout>
 #else
-	#include "KviTalHBox.h"
-	#include <QTextBrowser>
+#include "KviTalHBox.h"
+#include <QTextBrowser>
 #endif
 #include <QProgressBar>
 
@@ -45,25 +45,27 @@ class HelpWidget : public QWidget
 {
 	Q_OBJECT
 public:
-	HelpWidget(QWidget *par, bool bIsStandalone = false);
+	HelpWidget(QWidget * par, bool bIsStandalone = false);
 	~HelpWidget();
+
 private:
 #ifdef COMPILE_WEBKIT_SUPPORT
-	QToolBar     * m_pToolBar;
-	QToolBar     * m_pToolBarHighlight;
-	QLineEdit    * m_pFindText;
-	QVBoxLayout  * m_pLayout;
-	QWebView     * m_pTextBrowser;
+	QToolBar * m_pToolBar;
+	QToolBar * m_pToolBarHighlight;
+	QLineEdit * m_pFindText;
+	QVBoxLayout * m_pLayout;
+	QWebView * m_pTextBrowser;
 #else
-	QToolButton  * m_pBtnIndex;
-	QToolButton  * m_pBtnBackward;
-	QToolButton  * m_pBtnForward;
-	KviTalHBox   * m_pToolBar;
+	QToolButton * m_pBtnIndex;
+	QToolButton * m_pBtnBackward;
+	QToolButton * m_pBtnForward;
+	KviTalHBox * m_pToolBar;
 	QTextBrowser * m_pTextBrowser;
 #endif
-	bool           m_bIsStandalone;
+	bool m_bIsStandalone;
+
 protected:
-	virtual void resizeEvent(QResizeEvent *e);
+	virtual void resizeEvent(QResizeEvent * e);
 protected slots:
 	void showIndex();
 #ifdef COMPILE_WEBKIT_SUPPORT
@@ -79,12 +81,17 @@ protected slots:
 #endif
 public:
 	virtual QSize sizeHint() const;
-	#ifdef COMPILE_WEBKIT_SUPPORT
-	QWebView  * textBrowser() { return m_pTextBrowser; }
-	#else
-	QTextBrowser * textBrowser() { return m_pTextBrowser; }
+#ifdef COMPILE_WEBKIT_SUPPORT
+	QWebView * textBrowser()
+	{
+		return m_pTextBrowser;
+	}
+#else
+	QTextBrowser * textBrowser()
+	{
+		return m_pTextBrowser;
+	}
 #endif
 };
-
 
 #endif //_HELPWIDGET_H_

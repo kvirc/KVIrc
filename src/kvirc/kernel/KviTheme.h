@@ -60,6 +60,7 @@ class KVIRC_API KviThemeInfo : public KviHeapObject
 public:
 	KviThemeInfo();
 	~KviThemeInfo();
+
 public:
 	enum Location
 	{
@@ -80,13 +81,14 @@ public:
 		///
 		Auto = 4
 	};
-protected:
-	QString m_szName;               //< name of the theme
-	QString m_szVersion;            //< version of the theme
 
-	QString m_szDirectory;          //< the absolute directory of the theme
-	QString m_szSubdirectory;       //< the last component of m_szDirectory (this is needed when the theme is installed)
-	Location m_eLocation;           //< the location of the theme
+protected:
+	QString m_szName;    //< name of the theme
+	QString m_szVersion; //< version of the theme
+
+	QString m_szDirectory;    //< the absolute directory of the theme
+	QString m_szSubdirectory; //< the last component of m_szDirectory (this is needed when the theme is installed)
+	Location m_eLocation;     //< the location of the theme
 
 	QString m_szAuthor;             //< author of the theme
 	QString m_szDescription;        //< description of the theme
@@ -94,11 +96,11 @@ protected:
 	QString m_szApplication;        //< theme creation (KVIrc) version
 	QString m_szThemeEngineVersion; //< the theme engine version that saved this theme
 
-	QString m_szLastError;          //< reported when some function fails
+	QString m_szLastError; //< reported when some function fails
 
-	QPixmap m_pixScreenshotLarge;   //< the large screenshot pixmap
-	QPixmap m_pixScreenshotMedium;  //< the medium screenshot pixmap
-	QPixmap m_pixScreenshotSmall;   //< the small screenshot pixmap
+	QPixmap m_pixScreenshotLarge;  //< the large screenshot pixmap
+	QPixmap m_pixScreenshotMedium; //< the medium screenshot pixmap
+	QPixmap m_pixScreenshotSmall;  //< the small screenshot pixmap
 
 public:
 	///
@@ -107,19 +109,19 @@ public:
 	/// If eLocation is User then szThemeDirectory is assumed to be a subdirectory of the kvirc local theme directory.
 	/// If eLocation is External the szThemeDirectory is assumed to be a full path to a theme directory.
 	///
-	bool load(const QString &szDirectory,Location eLocation);
+	bool load(const QString & szDirectory, Location eLocation);
 
 	///
 	/// save the currently defined theme configuration in the specified file
 	///
-	bool save(const QString &szThemeFileName);
+	bool save(const QString & szThemeFileName);
 
-	const QString & lastError(){ return m_szLastError; }
-	void setLastError(const QString &szLastError){ m_szLastError = szLastError; }
-	const QString & name(){ return m_szName; }
-	void setName(const QString &szName){ m_szName = szName; }
-	const QString & version(){ return m_szVersion; }
-	void setVersion(const QString &szVersion){ m_szVersion = szVersion; }
+	const QString & lastError() { return m_szLastError; }
+	void setLastError(const QString & szLastError) { m_szLastError = szLastError; }
+	const QString & name() { return m_szName; }
+	void setName(const QString & szName) { m_szName = szName; }
+	const QString & version() { return m_szVersion; }
+	void setVersion(const QString & szVersion) { m_szVersion = szVersion; }
 
 	const QString & directory() const
 	{
@@ -136,24 +138,23 @@ public:
 		return m_eLocation;
 	}
 
-	void setDirectoryAndLocation(const QString &szDirectory,Location eLocation);
+	void setDirectoryAndLocation(const QString & szDirectory, Location eLocation);
 
 	bool isBuiltin()
 	{
 		return m_eLocation == KviThemeInfo::Builtin;
 	}
 
-	const QString & author(){ return m_szAuthor; }
-	void setAuthor(const QString &szAuthor){ m_szAuthor = szAuthor; }
-	const QString & description(){ return m_szDescription; }
-	void setDescription(const QString &szDescription){ m_szDescription = szDescription; }
-	const QString & date(){ return m_szDate; }
-	void setDate(const QString &szDate){ m_szDate = szDate; }
-	const QString & application(){ return m_szApplication; }
-	void setApplication(const QString &szApplication){ m_szApplication = szApplication; }
-	const QString & themeEngineVersion(){ return m_szThemeEngineVersion; }
-	void setThemeEngineVersion(const QString &szThemeEngineVersion){ m_szThemeEngineVersion = szThemeEngineVersion; }
-
+	const QString & author() { return m_szAuthor; }
+	void setAuthor(const QString & szAuthor) { m_szAuthor = szAuthor; }
+	const QString & description() { return m_szDescription; }
+	void setDescription(const QString & szDescription) { m_szDescription = szDescription; }
+	const QString & date() { return m_szDate; }
+	void setDate(const QString & szDate) { m_szDate = szDate; }
+	const QString & application() { return m_szApplication; }
+	void setApplication(const QString & szApplication) { m_szApplication = szApplication; }
+	const QString & themeEngineVersion() { return m_szThemeEngineVersion; }
+	void setThemeEngineVersion(const QString & szThemeEngineVersion) { m_szThemeEngineVersion = szThemeEngineVersion; }
 
 	///
 	/// Attempt to load the theme screenshot from THEMEDIR/screenshot_*.png
@@ -179,8 +180,6 @@ public:
 	/// has been set, otherwise the returned pixmap will be null.
 	///
 	QString smallScreenshotPath();
-
-
 };
 
 namespace KviTheme
@@ -195,7 +194,7 @@ namespace KviTheme
 	/// On failure this function will also set buffer.lastError() to a meaningful value
 	/// Note that for convenience this function is implemented in KviOptions.cpp
 	///
-	bool KVIRC_API apply(const QString &szThemeDirectory,KviThemeInfo::Location eLocation,KviThemeInfo &buffer);
+	bool KVIRC_API apply(const QString & szThemeDirectory, KviThemeInfo::Location eLocation, KviThemeInfo & buffer);
 
 	///
 	/// Save a theme given the specified options.
@@ -207,19 +206,18 @@ namespace KviTheme
 	/// but this feature is actually unused.
 	/// Note that for convenience this function is implemented in KviOptions.cpp
 	///
-	bool KVIRC_API save(KviThemeInfo &options,bool bSaveIcons);
+	bool KVIRC_API save(KviThemeInfo & options, bool bSaveIcons);
 
 	///
 	/// Save the theme screenshots in the given EXISTING directory and given
 	/// an existing screenshot on disk (usually in the tmp directory).
 	///
-	bool KVIRC_API saveScreenshots(KviThemeInfo &options,const QString &szOriginalScreenshotPath);
+	bool KVIRC_API saveScreenshots(KviThemeInfo & options, const QString & szOriginalScreenshotPath);
 
 	///
 	/// List directory names of installed themes.
 	///
-	void KVIRC_API installedThemeDirectories(QStringList &slThemes,KviThemeInfo::Location eLocation);
+	void KVIRC_API installedThemeDirectories(QStringList & slThemes, KviThemeInfo::Location eLocation);
 }
-
 
 #endif //_KVI_THEME_H_

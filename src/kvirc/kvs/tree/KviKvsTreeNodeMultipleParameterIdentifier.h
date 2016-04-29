@@ -34,16 +34,16 @@ class KviKvsVariant;
 class KVIRC_API KviKvsTreeNodeMultipleParameterIdentifier : public KviKvsTreeNodeData
 {
 public:
-	KviKvsTreeNodeMultipleParameterIdentifier(const QChar * pLocation,int iStart,int iEnd);
+	KviKvsTreeNodeMultipleParameterIdentifier(const QChar * pLocation, int iStart, int iEnd);
 	~KviKvsTreeNodeMultipleParameterIdentifier();
+
 protected:
 	int m_iStart;
 	int m_iEnd; // the index of the last parameter wanted (may be -1: in that case all up to the end)
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_MULTIPLEPARAMETERIDENTIFIER_H_

@@ -34,16 +34,18 @@
 class KVILIB_API KviRegisteredUserMask
 {
 private:
-	KviRegisteredUser * m_pUser;               // pointer, not owned!
-	KviIrcMask        * m_pMask;               // pointer, not owned!
-	int                 m_iMaskNonWildChars;
+	KviRegisteredUser * m_pUser; // pointer, not owned!
+	KviIrcMask * m_pMask;        // pointer, not owned!
+	int m_iMaskNonWildChars;
+
 public:
 	KviRegisteredUserMask(KviRegisteredUser * pUser, KviIrcMask * pMask);
 	~KviRegisteredUserMask(){};
+
 public:
-	int                 nonWildChars(){ return m_iMaskNonWildChars; };
-	KviRegisteredUser * user(){ return m_pUser; };
-	KviIrcMask        * mask(){ return m_pMask; };
+	int nonWildChars() { return m_iMaskNonWildChars; };
+	KviRegisteredUser * user() { return m_pUser; };
+	KviIrcMask * mask() { return m_pMask; };
 };
 
 typedef KviPointerList<KviRegisteredUserMask> KviRegisteredUserMaskList;

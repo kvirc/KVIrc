@@ -22,12 +22,10 @@
 //
 //=============================================================================
 
-
-
 #include "KviKvsTreeNodeSpecialCommand.h"
 
-KviKvsTreeNodeSpecialCommand::KviKvsTreeNodeSpecialCommand(const QChar * pLocation,const QString &szCmdName)
-: KviKvsTreeNodeCommand(pLocation,szCmdName)
+KviKvsTreeNodeSpecialCommand::KviKvsTreeNodeSpecialCommand(const QChar * pLocation, const QString & szCmdName)
+    : KviKvsTreeNodeCommand(pLocation, szCmdName)
 {
 }
 
@@ -35,7 +33,7 @@ KviKvsTreeNodeSpecialCommand::~KviKvsTreeNodeSpecialCommand()
 {
 }
 
-void KviKvsTreeNodeSpecialCommand::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSpecialCommand::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Special Command \"";
 	szBuffer += m_szCmdName;
@@ -44,6 +42,6 @@ void KviKvsTreeNodeSpecialCommand::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeSpecialCommand::dump(const char * prefix)
 {
-	qDebug("%s SpecialCommand(%s)",prefix,m_szCmdName.toUtf8().data());
+	qDebug("%s SpecialCommand(%s)", prefix, m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 }

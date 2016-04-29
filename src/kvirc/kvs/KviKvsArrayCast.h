@@ -31,20 +31,28 @@ class KVIRC_API KviKvsArrayCast
 {
 protected:
 	KviKvsArray * m_pArray;
-	bool          m_bOwned;
+	bool m_bOwned;
+
 public:
 	KviKvsArrayCast()
-		: m_pArray(0) {};
+	    : m_pArray(0){};
 	~KviKvsArrayCast();
+
 public:
 	void clear();
 	KviKvsArray * array()
-		{ return m_pArray; };
+	{
+		return m_pArray;
+	};
 	void release()
-		{ m_bOwned = false; };
-	void set(KviKvsArray * pArry,bool bOwned)
-		{ m_pArray = pArry; m_bOwned = bOwned; };
+	{
+		m_bOwned = false;
+	};
+	void set(KviKvsArray * pArry, bool bOwned)
+	{
+		m_pArray = pArry;
+		m_bOwned = bOwned;
+	};
 };
-
 
 #endif //!_KVI_KVS_ARRAYCAST_H_

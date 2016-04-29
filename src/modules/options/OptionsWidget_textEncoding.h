@@ -41,12 +41,14 @@ class OptionsWidget_textEncoding : public KviOptionsWidget
 public:
 	OptionsWidget_textEncoding(QWidget * parent);
 	~OptionsWidget_textEncoding();
+
 protected:
-	QString     m_szLanguage;
+	QString m_szLanguage;
 	QComboBox * m_pTextEncodingCombo;
 	QComboBox * m_pSrvEncodingCombo;
 	QComboBox * m_pForcedLocaleCombo;
 	QTableWidget * m_pSpellCheckerDictionaries;
+
 public:
 	virtual void commit();
 };

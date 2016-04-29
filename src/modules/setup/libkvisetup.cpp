@@ -37,7 +37,6 @@
 #include <QString>
 #include <QFile>
 
-
 // this will be chosen during the setup process
 QString g_szChoosenIncomingDirectory;
 int g_iThemeToApply = THEME_APPLY_NONE;
@@ -47,9 +46,6 @@ QString szHost;
 QString szUrl;
 QString szMircServers;
 QString szMircIni;
-
-
-
 
 // this is called by KviApplication when no local kvirc directory has been found
 // we have nothing to rely on yet... (settings have not been loaded yet)
@@ -63,7 +59,6 @@ KVIMODULEEXPORTFUNC bool setup_begin()
 	return (retcode == QDialog::Accepted);
 }
 
-
 // this is called just after the first startup
 // all the subsystems are up and running (we even have a nice console
 // to write on if needed).
@@ -75,7 +70,7 @@ KVIMODULEEXPORTFUNC void setup_finish()
 		KVI_OPTION_STRING(KviOption_stringIncomingPath) = g_szChoosenIncomingDirectory;
 		// Reset the quit message and the real name... if they contain the KVIrc version
 		// then probably the user hasn't even edited them.
-		if(KVI_OPTION_STRING(KviOption_stringQuitMessage).indexOf("KVIrc",0,Qt::CaseInsensitive) != -1)
+		if(KVI_OPTION_STRING(KviOption_stringQuitMessage).indexOf("KVIrc", 0, Qt::CaseInsensitive) != -1)
 			KVI_OPTION_STRING(KviOption_stringQuitMessage) = KVI_DEFAULT_QUIT_MESSAGE;
 		// We deserve to change the user's part message in something nice :)
 		KVI_OPTION_STRING(KviOption_stringPartMessage) = KVI_DEFAULT_PART_MESSAGE;
@@ -89,18 +84,18 @@ KVIMODULEEXPORTFUNC void setup_finish()
 		switch(g_iThemeToApply)
 		{
 			case THEME_APPLY_HIRES:
-				KviTheme::apply("Aria-2.0.0",KviThemeInfo::Builtin,out);
-			break;
+				KviTheme::apply("Aria-2.0.0", KviThemeInfo::Builtin, out);
+				break;
 			case THEME_APPLY_LORES:
-				KviTheme::apply("MinimalDark-2.0.0",KviThemeInfo::Builtin,out);
-			break;
-			// default: no theme
+				KviTheme::apply("MinimalDark-2.0.0", KviThemeInfo::Builtin, out);
+				break;
+				// default: no theme
 		}
 
 		if(!szMircServers.isEmpty())
 		{
-			g_pServerDataBase->importFromMircIni(szMircServers,szMircIni,
-				KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers));
+			g_pServerDataBase->importFromMircIni(szMircServers, szMircIni,
+			    KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers));
 			g_pApp->saveIrcServerDataBase();
 		}
 
@@ -109,14 +104,16 @@ KVIMODULEEXPORTFUNC void setup_finish()
 		{
 			KviKvsVariantList * pParams = new KviKvsVariantList();
 			pParams->append(szUrl);
-			KviKvsScript::run("openurl $0",g_pActiveWindow,pParams);
+			KviKvsScript::run("openurl $0", g_pActiveWindow, pParams);
 			delete pParams;
 			KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = true;
-		} else if(!szHost.isEmpty()) {
+		}
+		else if(!szHost.isEmpty())
+		{
 			KviKvsVariantList * pParams = new KviKvsVariantList();
 			pParams->append(szHost);
 			pParams->append((kvs_int_t)uPort);
-			KviKvsScript::run("server $0 $1",g_pActiveWindow,pParams);
+			KviKvsScript::run("server $0 $1", g_pActiveWindow, pParams);
 			delete pParams;
 			KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = true;
 		}
@@ -125,7 +122,7 @@ KVIMODULEEXPORTFUNC void setup_finish()
 
 static bool setup_module_init(KviModule *)
 {
-	bNeedToApplyDefaults=true;
+	bNeedToApplyDefaults = true;
 	return true;
 }
 
@@ -140,13 +137,12 @@ static bool setup_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Setup Wizard",
-	"4.0.0",
-	"Szymon Stefanek <pragma at kvirc dot net>",
-	"First-time-run setup wizard",
-	setup_module_init,
-	setup_module_can_unload,
-	0,
-	setup_module_cleanup,
-	0
-)
+    "Setup Wizard",
+    "4.0.0",
+    "Szymon Stefanek <pragma at kvirc dot net>",
+    "First-time-run setup wizard",
+    setup_module_init,
+    setup_module_can_unload,
+    0,
+    setup_module_cleanup,
+    0)

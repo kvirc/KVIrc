@@ -29,23 +29,23 @@
 #include <QTime>
 #include <QHash>
 
-KviAnimatedPixmap::KviAnimatedPixmap(QString fileName,int iWidth,int iHeight)
-	: QObject(),
-		m_szFileName(fileName),
-		m_uCurrentFrameNumber(0),
-		m_iStarted(0)
+KviAnimatedPixmap::KviAnimatedPixmap(QString fileName, int iWidth, int iHeight)
+    : QObject(),
+      m_szFileName(fileName),
+      m_uCurrentFrameNumber(0),
+      m_iStarted(0)
 {
-	m_pFrameData = KviAnimatedPixmapCache::load(fileName, iWidth,iHeight);
+	m_pFrameData = KviAnimatedPixmapCache::load(fileName, iWidth, iHeight);
 
 	//start(); <-- absolutely NO
 }
 
-KviAnimatedPixmap::KviAnimatedPixmap(const KviAnimatedPixmap &source)
-	: QObject(),
-	m_szFileName(source.m_szFileName),
-	m_pFrameData(source.m_pFrameData),
-	m_uCurrentFrameNumber(source.m_uCurrentFrameNumber),
-	m_iStarted(0)
+KviAnimatedPixmap::KviAnimatedPixmap(const KviAnimatedPixmap & source)
+    : QObject(),
+      m_szFileName(source.m_szFileName),
+      m_pFrameData(source.m_pFrameData),
+      m_uCurrentFrameNumber(source.m_uCurrentFrameNumber),
+      m_iStarted(0)
 {
 	m_pFrameData->refs++;
 
@@ -76,7 +76,7 @@ void KviAnimatedPixmap::start()
 
 	m_uCurrentFrameNumber = 0;
 
-	KviAnimatedPixmapCache::scheduleFrameChange(m_pFrameData->at(m_uCurrentFrameNumber).delay,this);
+	KviAnimatedPixmapCache::scheduleFrameChange(m_pFrameData->at(m_uCurrentFrameNumber).delay, this);
 }
 
 void KviAnimatedPixmap::stop()
@@ -104,14 +104,13 @@ void KviAnimatedPixmap::nextFrame(bool bEmitSignalAndScheduleNext)
 	if(m_iStarted)
 		emit frameChanged();
 
-	KviAnimatedPixmapCache::scheduleFrameChange(m_pFrameData->at(m_uCurrentFrameNumber).delay,this);
+	KviAnimatedPixmapCache::scheduleFrameChange(m_pFrameData->at(m_uCurrentFrameNumber).delay, this);
 }
 
-void KviAnimatedPixmap::resize(QSize newSize,Qt::AspectRatioMode ratioMode)
+void KviAnimatedPixmap::resize(QSize newSize, Qt::AspectRatioMode ratioMode)
 {
 	QSize curSize(size());
-	curSize.scale(newSize,ratioMode);
+	curSize.scale(newSize, ratioMode);
 
-	m_pFrameData = KviAnimatedPixmapCache::resize(m_pFrameData,curSize);
+	m_pFrameData = KviAnimatedPixmapCache::resize(m_pFrameData, curSize);
 }
-

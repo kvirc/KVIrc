@@ -56,12 +56,12 @@
 #include "KviKvsEventTriggers.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "KviCryptEngine.h"
-	#include "KviCryptController.h"
+#include "KviCryptEngine.h"
+#include "KviCryptController.h"
 #endif
 
 #ifdef COMPILE_ZLIB_SUPPORT
-	#include <zlib.h>
+#include <zlib.h>
 #endif
 
 #include <time.h>
@@ -80,18 +80,17 @@
 // FIXME: #warning "+a Anonymous channel mode!"
 // FIXME: #warning "OnChannelFlood event...."
 
-
 KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString & szName)
-: KviWindow(KviWindow::Channel,szName,lpConsole)
+    : KviWindow(KviWindow::Channel, szName, lpConsole)
 {
 	// Init some member variables
-	m_pInput               = nullptr;
-	m_iStateFlags          = 0;
+	m_pInput = nullptr;
+	m_iStateFlags = 0;
 	m_pActionHistory = new KviPointerList<KviChannelAction>;
 	m_pActionHistory->setAutoDelete(true);
 	m_uActionHistoryHotActionCount = 0;
 
-	m_pTmpHighLighted      = new QStringList();
+	m_pTmpHighLighted = new QStringList();
 
 	// Register ourselves
 	connection()->registerChannel(this);
@@ -101,7 +100,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	m_pButtonBox->setSpacing(0);
 	m_pButtonBox->setMargin(0);
 
-	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal,m_pButtonBox);
+	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal, m_pButtonBox);
 	m_pTopSplitter->setChildrenCollapsible(false);
 
 	m_pButtonContainer = new KviTalHBox(m_pButtonBox);
@@ -110,22 +109,22 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	// Topic widget on the left
 	m_pTopicWidget = new KviTopicWidget(m_pTopSplitter, this, "topic_widget");
 
-	connect(m_pTopicWidget,SIGNAL(topicSelected(const QString &)),
-		this,SLOT(topicSelected(const QString &)));
+	connect(m_pTopicWidget, SIGNAL(topicSelected(const QString &)),
+	    this, SLOT(topicSelected(const QString &)));
 	// mode label follows the topic widget
-	m_pModeWidget = new KviModeWidget(m_pTopSplitter,this,"mode_");
-	KviTalToolTip::add(m_pModeWidget,__tr2qs("Channel modes"));
-	connect(m_pModeWidget,SIGNAL(setMode(QString &)),this,SLOT(setMode(QString &)));
+	m_pModeWidget = new KviModeWidget(m_pTopSplitter, this, "mode_");
+	KviTalToolTip::add(m_pModeWidget, __tr2qs("Channel modes"));
+	connect(m_pModeWidget, SIGNAL(setMode(QString &)), this, SLOT(setMode(QString &)));
 
 	createTextEncodingButton(m_pButtonContainer);
 
 	// Central splitter
-	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
 	m_pSplitter->setObjectName(szName);
 	m_pSplitter->setChildrenCollapsible(false);
 
 	// Spitted vertially on the left
-	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
+	m_pVertSplitter = new KviTalSplitter(Qt::Vertical, m_pSplitter);
 	m_pVertSplitter->setChildrenCollapsible(false);
 
 	QSizePolicy oPolicy = m_pVertSplitter->sizePolicy();
@@ -133,23 +132,22 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	m_pVertSplitter->setSizePolicy(oPolicy);
 
 	// With the IRC view over
-	m_pIrcView = new KviIrcView(m_pVertSplitter,this);
+	m_pIrcView = new KviIrcView(m_pVertSplitter, this);
 	m_pIrcView->setObjectName(szName);
-	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
+	connect(m_pIrcView, SIGNAL(rightClicked()), this, SLOT(textViewRightClicked()));
 	// And the double view (that may be unused)
 	m_pMessageView = nullptr;
 	// The userlist on the right
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
 
-
 	// and the related buttons
-	m_pDoubleViewButton = new KviWindowToolPageButton(KviIconManager::HideDoubleView,KviIconManager::ShowDoubleView,__tr2qs("Split view"),buttonContainer(),false);
+	m_pDoubleViewButton = new KviWindowToolPageButton(KviIconManager::HideDoubleView, KviIconManager::ShowDoubleView, __tr2qs("Split view"), buttonContainer(), false);
 	m_pDoubleViewButton->setObjectName("double_view_button");
-	connect(m_pDoubleViewButton,SIGNAL(clicked()),this,SLOT(toggleDoubleView()));
+	connect(m_pDoubleViewButton, SIGNAL(clicked()), this, SLOT(toggleDoubleView()));
 
-	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("User list"),buttonContainer(),true);
+	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView, KviIconManager::ShowListView, __tr2qs("User list"), buttonContainer(), true);
 	m_pListViewButton->setObjectName("list_view_button");
-	connect(m_pListViewButton,SIGNAL(clicked()),this,SLOT(toggleListView()));
+	connect(m_pListViewButton, SIGNAL(clicked()), this, SLOT(toggleListView()));
 
 	//list modes (bans, bans exceptions, etc)
 	KviWindowToolPageButton * pButton = nullptr;
@@ -157,16 +155,16 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	QString szDescription = "";
 	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
 	// bans are hardcoded
-	cMode='b';
+	cMode = 'b';
 
 	if(pServerInfo)
 		szDescription = pServerInfo->getChannelModeDescription(cMode);
 	if(szDescription.isEmpty())
 		szDescription = __tr2qs("Mode \"%1\" masks").arg(cMode);
 
-	pButton = new KviWindowToolPageButton(KviIconManager::UnBan,KviIconManager::Ban,szDescription,buttonContainer(),false);
+	pButton = new KviWindowToolPageButton(KviIconManager::UnBan, KviIconManager::Ban, szDescription, buttonContainer(), false);
 	pButton->setObjectName("ban_editor_button");
-	connect(pButton,SIGNAL(clicked()),this,SLOT(toggleListModeEditor()));
+	connect(pButton, SIGNAL(clicked()), this, SLOT(toggleListModeEditor()));
 	m_pListEditorButtons.insert(cMode, pButton);
 
 	//other list modes (dynamic)
@@ -176,7 +174,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 		szListModes = pServerInfo->supportedListModes();
 		szListModes.remove('b');
 
-		for(int i=0; i < szListModes.size(); ++i)
+		for(int i = 0; i < szListModes.size(); ++i)
 		{
 			char cMode = szListModes.at(i).unicode();
 			QString szDescription = pServerInfo->getChannelModeDescription(cMode);
@@ -185,8 +183,8 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 			KviIconManager::SmallIcon eIconOn, eIconOff;
 			switch(cMode)
 			{
-					// must fix on/off icons here eventually once Ive patience to figure it out.
-					// to Un<somethings> is to undo/turn off :p blimey O'reilly.
+				// must fix on/off icons here eventually once Ive patience to figure it out.
+				// to Un<somethings> is to undo/turn off :p blimey O'reilly.
 				case 'e':
 					eIconOn = KviIconManager::BanUnExcept;
 					eIconOff = KviIconManager::BanExcept;
@@ -211,16 +209,16 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 					break;
 			}
 
-			pButton = new KviWindowToolPageButton(eIconOn,eIconOff,szDescription,buttonContainer(),false);
+			pButton = new KviWindowToolPageButton(eIconOn, eIconOff, szDescription, buttonContainer(), false);
 			pButton->setObjectName("list_mode_editor_button");
-			connect(pButton,SIGNAL(clicked()),this,SLOT(toggleListModeEditor()));
+			connect(pButton, SIGNAL(clicked()), this, SLOT(toggleListModeEditor()));
 			m_pListEditorButtons.insert(cMode, pButton);
 		}
 	}
 
-	m_pModeEditorButton = new KviWindowToolPageButton(KviIconManager::ChanModeHide,KviIconManager::ChanMode,__tr2qs("Mode editor"),buttonContainer(),false);
+	m_pModeEditorButton = new KviWindowToolPageButton(KviIconManager::ChanModeHide, KviIconManager::ChanMode, __tr2qs("Mode editor"), buttonContainer(), false);
 	m_pModeEditorButton->setObjectName("mode_editor_button");
-	connect(m_pModeEditorButton,SIGNAL(clicked()),this,SLOT(toggleModeEditor()));
+	connect(m_pModeEditorButton, SIGNAL(clicked()), this, SLOT(toggleModeEditor()));
 	m_pModeEditor = 0;
 
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -230,19 +228,19 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	m_pHideToolsButton = new QToolButton(m_pButtonBox);
 	m_pHideToolsButton->setObjectName("hide_container_button");
 	m_pHideToolsButton->setAutoRaise(true);
-	m_pHideToolsButton->setIconSize(QSize(22,22));
+	m_pHideToolsButton->setIconSize(QSize(22, 22));
 	m_pHideToolsButton->setFixedWidth(16);
 
 	if(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))
 		m_pHideToolsButton->setIcon(QIcon(*(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))));
 
-	connect(m_pHideToolsButton,SIGNAL(clicked()),this,SLOT(toggleToolButtons()));
+	connect(m_pHideToolsButton, SIGNAL(clicked()), this, SLOT(toggleToolButtons()));
 
-	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,KVI_CHANNEL_AVERAGE_USERS,__tr2qs("User list"),"user_list_view");
+	m_pUserListView = new KviUserListView(m_pSplitter, m_pListViewButton, connection()->userDataBase(), this, KVI_CHANNEL_AVERAGE_USERS, __tr2qs("User list"), "user_list_view");
 	//m_pEditorsContainer->addWidget(m_pUserListView);
 	//m_pEditorsContainer->raiseWidget(m_pUserListView);
 	// And finally the input line on the bottom
-	m_pInput = new KviInput(this,m_pUserListView);
+	m_pInput = new KviInput(this, m_pUserListView);
 
 	// Ensure proper focusing
 	//setFocusHandler(m_pInput,this);
@@ -285,38 +283,39 @@ void KviChannelWindow::toggleToolButtons()
 		return;
 
 	toggleButtonContainer();
-	QPixmap * pPix = buttonContainer()->isVisible() ?
-		g_pIconManager->getBigIcon("kvi_horizontal_left.png") :
-		g_pIconManager->getBigIcon("kvi_horizontal_right.png");
+	QPixmap * pPix = buttonContainer()->isVisible() ? g_pIconManager->getBigIcon("kvi_horizontal_left.png") : g_pIconManager->getBigIcon("kvi_horizontal_right.png");
 	if(pPix)
 		m_pHideToolsButton->setIcon(QIcon(*pPix));
 }
 
 void KviChannelWindow::triggerCreationEvents()
 {
-	KVS_TRIGGER_EVENT_0(KviEvent_OnChannelWindowCreated,this);
+	KVS_TRIGGER_EVENT_0(KviEvent_OnChannelWindowCreated, this);
 }
 
 void KviChannelWindow::textViewRightClicked()
 {
-	KVS_TRIGGER_EVENT_0(KviEvent_OnChannelPopupRequest,this);
+	KVS_TRIGGER_EVENT_0(KviEvent_OnChannelPopupRequest, this);
 }
 
 void KviChannelWindow::getBaseLogFileName(QString & szBuffer)
 {
 	QString szChan(windowName());
-	szChan.replace(".","%2e");
+	szChan.replace(".", "%2e");
 	if(connection())
 	{
 		szBuffer = szChan;
 		szBuffer.append(".");
 		szBuffer.append(connection()->currentNetworkName());
-	} else {
+	}
+	else
+	{
 		szBuffer = szChan;
 		szBuffer.append(".");
 		if(context())
 			szBuffer.append(context()->id());
-		else szBuffer.append("0");
+		else
+			szBuffer.append("0");
 	}
 }
 
@@ -340,9 +339,7 @@ void KviChannelWindow::getConfigGroupName(QString & szBuffer)
 
 	// save per-network channel settings, so that the settings of two channels
 	// with the same name but of different networks gets different config entries.
-	if(connection() && connection()->target() &&
-		connection()->target() &&
-		connection()->target()->network())
+	if(connection() && connection()->target() && connection()->target() && connection()->target()->network())
 	{
 		szBuffer.append("@");
 		// don't use the actual network name, because it could change during the connection
@@ -355,16 +352,16 @@ void KviChannelWindow::saveProperties(KviConfigurationFile * pCfg)
 	KviWindow::saveProperties(pCfg);
 	pCfg->writeEntry("TopSplitter", m_pTopSplitter->sizes());
 	pCfg->writeEntry("Splitter", m_pUserListView->isHidden() ? m_SplitterSizesList : m_pSplitter->sizes());
-//	int iTimeStamp= pCfg->readIntEntry("EntryTimestamp", 0);
-// 	qDebug("window %s, group %s, view %d==%d, ulist %d==%d timestamp %d",
-// 		m_szName.toUtf8().data(), pCfg->group().toUtf8().data(),
-// 		m_pIrcView->width(), sizes.at(0), m_pUserListView->width(), sizes.at(1), iTimeStamp);
-	pCfg->writeEntry("VertSplitter",m_pMessageView ? m_pVertSplitter->sizes() : m_VertSplitterSizesList);
-	pCfg->writeEntry("PrivateBackground",m_privateBackground);
-	pCfg->writeEntry("DoubleView",m_pMessageView ? true : false);
+	//	int iTimeStamp= pCfg->readIntEntry("EntryTimestamp", 0);
+	// 	qDebug("window %s, group %s, view %d==%d, ulist %d==%d timestamp %d",
+	// 		m_szName.toUtf8().data(), pCfg->group().toUtf8().data(),
+	// 		m_pIrcView->width(), sizes.at(0), m_pUserListView->width(), sizes.at(1), iTimeStamp);
+	pCfg->writeEntry("VertSplitter", m_pMessageView ? m_pVertSplitter->sizes() : m_VertSplitterSizesList);
+	pCfg->writeEntry("PrivateBackground", m_privateBackground);
+	pCfg->writeEntry("DoubleView", m_pMessageView ? true : false);
 
-	pCfg->writeEntry("UserListHidden",m_pUserListView->isHidden());
-	pCfg->writeEntry("ToolButtonsHidden",buttonContainer()->isHidden());
+	pCfg->writeEntry("UserListHidden", m_pUserListView->isHidden());
+	pCfg->writeEntry("ToolButtonsHidden", buttonContainer()->isHidden());
 }
 
 void KviChannelWindow::loadProperties(KviConfigurationFile * pCfg)
@@ -373,26 +370,26 @@ void KviChannelWindow::loadProperties(KviConfigurationFile * pCfg)
 	QList<int> def;
 	def.append((iWidth * 82) / 100);
 	def.append((iWidth * 18) / 100);
-	m_pTopSplitter->setSizes(pCfg->readIntListEntry("TopSplitter",def));
+	m_pTopSplitter->setSizes(pCfg->readIntListEntry("TopSplitter", def));
 
 	//this is an hack to simulate qt3's ResizeMode = Stretch
-	for(int iWidget=0; iWidget<m_pTopSplitter->count(); iWidget++)
-		m_pTopSplitter->setStretchFactor(iWidget,1);
+	for(int iWidget = 0; iWidget < m_pTopSplitter->count(); iWidget++)
+		m_pTopSplitter->setStretchFactor(iWidget, 1);
 
 	def.clear();
 	def.append((iWidth * 75) / 100);
 	def.append((iWidth * 25) / 100);
-	m_SplitterSizesList = pCfg->readIntListEntry("Splitter",def);
-	m_pSplitter->setStretchFactor(0,1);
+	m_SplitterSizesList = pCfg->readIntListEntry("Splitter", def);
+	m_pSplitter->setStretchFactor(0, 1);
 
 	def.clear();
 
 	def.append((iWidth * 60) / 100);
 	def.append((iWidth * 40) / 100);
-	m_VertSplitterSizesList = pCfg->readIntListEntry("VertSplitter",def);
-	showDoubleView(pCfg->readBoolEntry("DoubleView",false));
+	m_VertSplitterSizesList = pCfg->readIntListEntry("VertSplitter", def);
+	showDoubleView(pCfg->readBoolEntry("DoubleView", false));
 
-	m_privateBackground = pCfg->readPixmapEntry("PrivateBackground",KviPixmap());
+	m_privateBackground = pCfg->readPixmapEntry("PrivateBackground", KviPixmap());
 	if(m_privateBackground.pixmap())
 	{
 		m_pIrcView->setPrivateBackgroundPixmap(*(m_privateBackground.pixmap()));
@@ -403,7 +400,7 @@ void KviChannelWindow::loadProperties(KviConfigurationFile * pCfg)
 	KviWindow::loadProperties(pCfg);
 	if(m_pUserListView)
 	{
-		bool bHidden = pCfg->readBoolEntry("UserListHidden",0);
+		bool bHidden = pCfg->readBoolEntry("UserListHidden", 0);
 		m_pUserListView->setHidden(bHidden);
 		m_pListViewButton->setChecked(!bHidden);
 		if(!bHidden)
@@ -411,7 +408,7 @@ void KviChannelWindow::loadProperties(KviConfigurationFile * pCfg)
 		resizeEvent(0);
 	}
 
-	if(pCfg->readBoolEntry("ToolButtonsHidden",KVI_OPTION_BOOL(KviOption_boolHideWindowToolButtons)) != buttonContainer()->isHidden())
+	if(pCfg->readBoolEntry("ToolButtonsHidden", KVI_OPTION_BOOL(KviOption_boolHideWindowToolButtons)) != buttonContainer()->isHidden())
 		toggleToolButtons();
 }
 
@@ -423,23 +420,25 @@ void KviChannelWindow::showDoubleView(bool bShow)
 			return;
 
 		m_pIrcView->joinMessagesFrom(m_pMessageView);
-		m_VertSplitterSizesList=m_pVertSplitter->sizes();
+		m_VertSplitterSizesList = m_pVertSplitter->sizes();
 
 		delete m_pMessageView;
 		m_pMessageView = 0;
 
 		if(m_pDoubleViewButton->isChecked())
 			m_pDoubleViewButton->setChecked(false);
-	} else {
+	}
+	else
+	{
 		if(!bShow)
 			return;
 
-		m_pMessageView = new KviIrcView(m_pVertSplitter,this);
+		m_pMessageView = new KviIrcView(m_pVertSplitter, this);
 		m_pVertSplitter->setSizes(m_VertSplitterSizesList);
 
 		//this is an hack to simulate qt3's ResizeMode = Stretch
-		for(int iWidget=0; iWidget<m_pVertSplitter->count(); iWidget++)
-			m_pVertSplitter->setStretchFactor(iWidget,1);
+		for(int iWidget = 0; iWidget < m_pVertSplitter->count(); iWidget++)
+			m_pVertSplitter->setStretchFactor(iWidget, 1);
 
 		//setFocusHandler(m_pInput,m_pMessageView); //socket it!
 		if(!(m_pDoubleViewButton->isChecked()))
@@ -448,7 +447,7 @@ void KviChannelWindow::showDoubleView(bool bShow)
 		if(m_privateBackground.pixmap())
 			m_pMessageView->setPrivateBackgroundPixmap(*(m_privateBackground.pixmap()));
 
-		connect(m_pMessageView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
+		connect(m_pMessageView, SIGNAL(rightClicked()), this, SLOT(textViewRightClicked()));
 		m_pMessageView->setMasterView(m_pIrcView);
 		m_pIrcView->splitMessagesTo(m_pMessageView);
 		m_pMessageView->show();
@@ -462,7 +461,9 @@ void KviChannelWindow::toggleDoubleView()
 		showDoubleView(false);
 		if(m_pDoubleViewButton->isChecked())
 			m_pDoubleViewButton->setChecked(false);
-	} else {
+	}
+	else
+	{
 		showDoubleView(true);
 		if(!(m_pDoubleViewButton->isChecked()))
 			m_pDoubleViewButton->setChecked(true);
@@ -478,7 +479,9 @@ void KviChannelWindow::toggleListView()
 		m_pUserListView->hide();
 		if(m_pListViewButton->isChecked())
 			m_pListViewButton->setChecked(false);
-	} else {
+	}
+	else
+	{
 		m_pUserListView->show();
 		if(!(m_pListViewButton->isChecked()))
 			m_pListViewButton->setChecked(true);
@@ -498,10 +501,12 @@ void KviChannelWindow::toggleModeEditor()
 		if(m_pModeEditorButton->isChecked())
 			m_pModeEditorButton->setChecked(false);
 		resizeEvent(0);
-	} else {
-		m_pModeEditor = new KviModeEditor(m_pSplitter,m_pModeEditorButton,"mode_editor",this);
-		connect(m_pModeEditor,SIGNAL(setMode(QString &)),this,SLOT(setMode(QString &)));
-		connect(m_pModeEditor,SIGNAL(done()),this,SLOT(modeSelectorDone()));
+	}
+	else
+	{
+		m_pModeEditor = new KviModeEditor(m_pSplitter, m_pModeEditorButton, "mode_editor", this);
+		connect(m_pModeEditor, SIGNAL(setMode(QString &)), this, SLOT(setMode(QString &)));
+		connect(m_pModeEditor, SIGNAL(done()), this, SLOT(modeSelectorDone()));
 		m_pModeEditor->show();
 		//setFocusHandlerNoClass(m_pInput,m_pModeEditor,"QLineEdit");
 		if(!m_pModeEditorButton->isChecked())
@@ -523,12 +528,12 @@ void KviChannelWindow::setMode(QString & szMode)
 	QByteArray channelName = connection()->encodeText(m_szName);
 	QByteArray modes = connection()->encodeText(szMode);
 
-	connection()->sendFmtData("MODE %s %s",channelName.data(),modes.data());
+	connection()->sendFmtData("MODE %s %s", channelName.data(), modes.data());
 }
 
 void KviChannelWindow::toggleListModeEditor()
 {
-	KviWindowToolPageButton* pButton = (KviWindowToolPageButton*)sender();
+	KviWindowToolPageButton * pButton = (KviWindowToolPageButton *)sender();
 	if(!pButton)
 		return; //wtf?
 
@@ -555,26 +560,28 @@ void KviChannelWindow::toggleListModeEditor()
 		pEditor->deleteLater();
 
 		pButton->setChecked(false);
-	} else {
+	}
+	else
+	{
 		if(!m_pModeLists.contains(cMode))
 		{
 			KviPointerList<KviMaskEntry> * pModeList = new KviPointerList<KviMaskEntry>;
 			pModeList->setAutoDelete(true);
-			m_pModeLists.insert(cMode,pModeList);
+			m_pModeLists.insert(cMode, pModeList);
 
 			m_szSentModeRequests.append(cMode);
 
 			if(connection())
 			{
 				QByteArray szName = connection()->encodeText(m_szName);
-				connection()->sendFmtData("MODE %s %c",szName.data(),cMode);
+				connection()->sendFmtData("MODE %s %c", szName.data(), cMode);
 			}
 		}
 
 		KviPointerList<KviMaskEntry> * pMaskList = m_pModeLists.value(cMode);
-		KviMaskEditor * pEditor = new KviMaskEditor(m_pSplitter,this,pButton,pMaskList,cMode,"list_mode_editor");
-		connect(pEditor,SIGNAL(removeMasks(KviMaskEditor *,KviPointerList<KviMaskEntry> *)),this,SLOT(removeMasks(KviMaskEditor *,KviPointerList<KviMaskEntry> *)));
-		m_pListEditors.insert(cMode,pEditor);
+		KviMaskEditor * pEditor = new KviMaskEditor(m_pSplitter, this, pButton, pMaskList, cMode, "list_mode_editor");
+		connect(pEditor, SIGNAL(removeMasks(KviMaskEditor *, KviPointerList<KviMaskEntry> *)), this, SLOT(removeMasks(KviMaskEditor *, KviPointerList<KviMaskEntry> *)));
+		m_pListEditors.insert(cMode, pEditor);
 		pEditor->show();
 		pButton->setChecked(true);
 	}
@@ -619,12 +626,12 @@ void KviChannelWindow::removeMasks(KviMaskEditor * pEditor, KviPointerList<KviMa
 		}
 
 		szMasks += pEntry->szMask;
-		iCurCharsPerLine-=pEntry->szMask.size();
+		iCurCharsPerLine -= pEntry->szMask.size();
 
 		iCurModeChangesPerLine--;
 		if(iCurModeChangesPerLine < 0 || iCurCharsPerLine < 0)
 		{
-			connection()->sendFmtData("MODE %s -%s %s",szTarget.data(),szFlags.data(),connection()->encodeText(szMasks).data());
+			connection()->sendFmtData("MODE %s -%s %s", szTarget.data(), szFlags.data(), connection()->encodeText(szMasks).data());
 
 			// move back the iterator by one position
 			// WARNING: this could lead to an infinite loop if a single specified mode
@@ -640,7 +647,7 @@ void KviChannelWindow::removeMasks(KviMaskEditor * pEditor, KviPointerList<KviMa
 	}
 
 	if(iCurModeChangesPerLine != iMaxModeChangesPerLine)
-		connection()->sendFmtData("MODE %s -%s %s",szTarget.data(),szFlags.data(),connection()->encodeText(szMasks).data());
+		connection()->sendFmtData("MODE %s -%s %s", szTarget.data(), szFlags.data(), connection()->encodeText(szMasks).data());
 }
 
 QPixmap * KviChannelWindow::myIconPtr()
@@ -652,15 +659,15 @@ void KviChannelWindow::resizeEvent(QResizeEvent *)
 {
 	int iHeight = m_pInput->heightHint();
 	int iHeight2 = m_pTopicWidget->sizeHint().height();
-	m_pButtonBox->setGeometry(0,0,width(),iHeight2);
-	m_pSplitter->setGeometry(0,iHeight2,width(),height() - (iHeight + iHeight2));
-	m_pInput->setGeometry(0,height() - iHeight, width(),iHeight);
+	m_pButtonBox->setGeometry(0, 0, width(), iHeight2);
+	m_pSplitter->setGeometry(0, iHeight2, width(), height() - (iHeight + iHeight2));
+	m_pInput->setGeometry(0, height() - iHeight, width(), iHeight);
 }
 
 QSize KviChannelWindow::sizeHint() const
 {
 	QSize ret(m_pSplitter->sizeHint().width(),
-		m_pIrcView->sizeHint().height() + m_pInput->heightHint() + m_pButtonBox->sizeHint().height());
+	    m_pIrcView->sizeHint().height() + m_pInput->heightHint() + m_pButtonBox->sizeHint().height());
 	return ret;
 }
 
@@ -670,9 +677,11 @@ void KviChannelWindow::setChannelMode(char cMode, bool bAdd)
 	{
 		if(!(m_szChannelMode.contains(cMode)))
 			m_szChannelMode.append(cMode);
-	} else {
+	}
+	else
+	{
 		if(m_szChannelMode.contains(cMode))
-			m_szChannelMode.replace(cMode,"");
+			m_szChannelMode.replace(cMode, "");
 	}
 	updateModeLabel();
 	updateCaption();
@@ -683,14 +692,14 @@ void KviChannelWindow::setChannelModeWithParam(char cMode, QString & szParam)
 	if(szParam.isEmpty())
 		m_szChannelParameterModes.remove(cMode);
 	else
-		m_szChannelParameterModes.insert(cMode,szParam);
+		m_szChannelParameterModes.insert(cMode, szParam);
 	updateModeLabel();
 	updateCaption();
 }
 
 void KviChannelWindow::addHighlightedUser(const QString & szNick)
 {
-	if(!m_pUserListView->findEntry(szNick) || m_pTmpHighLighted->contains(szNick,Qt::CaseInsensitive))
+	if(!m_pUserListView->findEntry(szNick) || m_pTmpHighLighted->contains(szNick, Qt::CaseInsensitive))
 		return;
 
 	m_pTmpHighLighted->append(szNick);
@@ -706,7 +715,7 @@ void KviChannelWindow::getChannelModeString(QString & szBuffer)
 	szBuffer = m_szChannelMode;
 	//add modes that use a parameter
 	QMap<char, QString>::const_iterator iter = m_szChannelParameterModes.constBegin();
-	while (iter != m_szChannelParameterModes.constEnd())
+	while(iter != m_szChannelParameterModes.constEnd())
 	{
 		szBuffer.append(QChar(iter.key()));
 		++iter;
@@ -718,7 +727,7 @@ void KviChannelWindow::getChannelModeStringWithEmbeddedParams(QString & szBuffer
 	szBuffer = m_szChannelMode;
 	//add modes that use a parameter
 	QMap<char, QString>::const_iterator iter = m_szChannelParameterModes.constBegin();
-	while (iter != m_szChannelParameterModes.constEnd())
+	while(iter != m_szChannelParameterModes.constEnd())
 	{
 		szBuffer.append(QString(" %1:%2").arg(QChar(iter.key())).arg(iter.value()));
 		++iter;
@@ -727,7 +736,7 @@ void KviChannelWindow::getChannelModeStringWithEmbeddedParams(QString & szBuffer
 
 bool KviChannelWindow::setOp(const QString & szNick, bool bOp, bool bIsMe)
 {
-	bool bRet = m_pUserListView->setOp(szNick,bOp);
+	bool bRet = m_pUserListView->setOp(szNick, bOp);
 	if(bIsMe)
 		emit opStatusChanged();
 	return bRet;
@@ -745,7 +754,7 @@ void KviChannelWindow::setDeadChan()
 
 	//clear all mask editors
 	QMap<char, KviMaskEditor *>::const_iterator iter2 = m_pListEditors.constBegin();
-	while (iter2 != m_pListEditors.constEnd())
+	while(iter2 != m_pListEditors.constEnd())
 	{
 		iter2.value()->clear();
 		++iter2;
@@ -753,7 +762,7 @@ void KviChannelWindow::setDeadChan()
 
 	//clear all mask lists (eg bans)
 	QMap<char, KviPointerList<KviMaskEntry> *>::const_iterator iter = m_pModeLists.constBegin();
-	while (iter != m_pModeLists.constEnd())
+	while(iter != m_pModeLists.constEnd())
 	{
 		iter.value()->clear();
 		++iter;
@@ -803,7 +812,7 @@ void KviChannelWindow::setAliveChan()
 
 	//refresh all open mask editors
 	QMap<char, KviMaskEditor *>::const_iterator iter2 = m_pListEditors.constBegin();
-	while (iter2 != m_pListEditors.constEnd())
+	while(iter2 != m_pListEditors.constEnd())
 	{
 		char cMode = iter2.value()->flag();
 		m_szSentModeRequests.append(cMode);
@@ -811,7 +820,7 @@ void KviChannelWindow::setAliveChan()
 		if(connection())
 		{
 			QByteArray szName = connection()->encodeText(m_szName);
-			connection()->sendFmtData("MODE %s %c",szName.data(),cMode);
+			connection()->sendFmtData("MODE %s %c", szName.data(), cMode);
 		}
 		++iter2;
 	}
@@ -829,7 +838,8 @@ void KviChannelWindow::getTalkingUsersStats(QString & szBuffer, QStringList & li
 		szBuffer += "</b>";
 		szBuffer += " ";
 		szBuffer += bPast ? __tr2qs("said something recently") : __tr2qs("is talking");
-	} else if(list.count() == 2)
+	}
+	else if(list.count() == 2)
 	{
 		szBuffer += "<b>";
 		szBuffer += KviQString::toHtmlEscaped(list.first());
@@ -840,7 +850,9 @@ void KviChannelWindow::getTalkingUsersStats(QString & szBuffer, QStringList & li
 		szBuffer += KviQString::toHtmlEscaped(list.first());
 		szBuffer += "</b> ";
 		szBuffer += bPast ? __tr2qs("were talking recently") : __tr2qs("are talking");
-	} else {
+	}
+	else
+	{
 		szBuffer += "<b>";
 		szBuffer += KviQString::toHtmlEscaped(list.first());
 		szBuffer += "</b>, <b>";
@@ -854,7 +866,9 @@ void KviChannelWindow::getTalkingUsersStats(QString & szBuffer, QStringList & li
 			list.erase(list.begin());
 			szBuffer += KviQString::toHtmlEscaped(list.first());
 			szBuffer += "</b>";
-		} else {
+		}
+		else
+		{
 			// (list.count() - 1) is > 1
 			szBuffer += "</b> ";
 			szBuffer += __tr2qs("and another %1 users").arg(list.count() - 1);
@@ -881,10 +895,9 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	static QString szRowStart = "<tr><td>";
 	static QString szRowEnd = "</td></tr>";
 
-	szBuffer = "<html>" \
-		"<body>" \
-		"<table style=\"white-space: pre\">"\
-		START_TABLE_BOLD_ROW;
+	szBuffer = "<html>"
+	           "<body>"
+	           "<table style=\"white-space: pre\">" START_TABLE_BOLD_ROW;
 
 	if(m_iStateFlags & DeadChan)
 	{
@@ -897,7 +910,6 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 
 	KviUserListViewUserStats s;
 	m_pUserListView->userStats(&s);
-
 
 	szBuffer += KviQString::toHtmlEscaped(m_szPlainTextCaption);
 	szBuffer += szEndOfFontBoldRow;
@@ -930,7 +942,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	szBuffer += (s.uActiveOp == 1 ? szOp : szOps);
 
 	szBuffer += p9;
-/*
+	/*
 	FIXME: What is this supposed to mean?
 	szBuffer += "<font size=\"-1\">";
 	szBuffer += p7;
@@ -949,8 +961,6 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 */
 	szBuffer += p10;
 	//szBuffer += "</font>";
-
-
 
 	//////////////////////
 
@@ -1076,19 +1086,21 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 		if((cas.lTalkingUsers.count() < 3) && (cas.lWereTalkingUsers.count() > 0))
 		{
 			szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
-			getTalkingUsersStats(szBuffer,cas.lWereTalkingUsers,true);
+			getTalkingUsersStats(szBuffer, cas.lWereTalkingUsers, true);
 			szBuffer += "</font>";
 			szBuffer += szRowEnd;
 		}
 		szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
-		getTalkingUsersStats(szBuffer,cas.lTalkingUsers,false);
+		getTalkingUsersStats(szBuffer, cas.lTalkingUsers, false);
 		szBuffer += "</font>";
 		szBuffer += szRowEnd;
-	} else {
+	}
+	else
+	{
 		if(cas.lWereTalkingUsers.count() > 0)
 		{
 			szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
-			getTalkingUsersStats(szBuffer,cas.lWereTalkingUsers,true);
+			getTalkingUsersStats(szBuffer, cas.lWereTalkingUsers, true);
 			szBuffer += "</font>";
 			szBuffer += szRowEnd;
 		}
@@ -1116,7 +1128,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	if(cas.dActionsPerMinute >= 0.1)
 	{
 		QString szNum;
-		szNum.sprintf(" [%u%% ",cas.uHotActionPercent);
+		szNum.sprintf(" [%u%% ", cas.uHotActionPercent);
 		szBuffer += szNum;
 		szBuffer += __tr2qs("human");
 		szBuffer += "]";
@@ -1144,12 +1156,13 @@ void KviChannelWindow::fillCaptionBuffers()
 
 	char uFlag = getUserFlag(connection()->currentNickName());
 
-
 	if(uFlag)
 	{
 		m_szNameWithUserFlag = QChar(uFlag);
 		m_szNameWithUserFlag += m_szName;
-	} else {
+	}
+	else
+	{
 		m_szNameWithUserFlag = m_szName;
 	}
 
@@ -1182,8 +1195,8 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 
 	//my full mask as seen by other users
 	QString szMyFullMask = connection()->userInfo()->nickName() + "!" + connection()->userInfo()->userName() + "@" + connection()->userInfo()->hostName();
-	QByteArray myFullMask = connection()->encodeText(szMyFullMask);   //target name
-	QByteArray name = connection()->encodeText(windowName());         //message
+	QByteArray myFullMask = connection()->encodeText(szMyFullMask); //target name
+	QByteArray name = connection()->encodeText(windowName());       //message
 	QByteArray data = encodeText(szBuffer);
 	const char * pData = data.data();
 	/* max length of a PRIVMSG text. Max buffer length for our send is 512 byte, but we have to
@@ -1212,25 +1225,25 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 			{
 				KviCString szEncrypted;
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(iMaxMsgLen);
-				switch(cryptSessionInfo()->m_pEngine->encrypt(pData,szEncrypted))
+				switch(cryptSessionInfo()->m_pEngine->encrypt(pData, szEncrypted))
 				{
 					case KviCryptEngine::Encrypted:
-						if(!connection()->sendFmtData("PRIVMSG %s :%s",name.data(),szEncrypted.ptr()))
+						if(!connection()->sendFmtData("PRIVMSG %s :%s", name.data(), szEncrypted.ptr()))
 							return;
 						if(bUserFeedback)
-							m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
-									QString(),QString(),QString(),szBuffer,KviConsoleWindow::NoNotifications);
-					break;
+							m_pConsole->outputPrivmsg(this, KVI_OUT_OWNPRIVMSGCRYPTED,
+							    QString(), QString(), QString(), szBuffer, KviConsoleWindow::NoNotifications);
+						break;
 					case KviCryptEngine::Encoded:
 					{
-						if(!connection()->sendFmtData("PRIVMSG %s :%s",name.data(),szEncrypted.ptr()))
+						if(!connection()->sendFmtData("PRIVMSG %s :%s", name.data(), szEncrypted.ptr()))
 							return;
 						if(bUserFeedback)
 						{
 							// ugly, but we must redecode here
 							QString szRedecoded = decodeText(szEncrypted.ptr());
-							m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
-								QString(),QString(),QString(),szRedecoded,KviConsoleWindow::NoNotifications);
+							m_pConsole->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG,
+							    QString(), QString(), QString(), szRedecoded, KviConsoleWindow::NoNotifications);
 						}
 					}
 					break;
@@ -1238,17 +1251,19 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 					{
 						QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
 						output(KVI_OUT_SYSTEMERROR,
-							__tr2qs("The encryption engine was unable to encrypt the current message (%Q): %Q, no data sent to the server"),
-							&szBuffer,&szEngineError);
+						    __tr2qs("The encryption engine was unable to encrypt the current message (%Q): %Q, no data sent to the server"),
+						    &szBuffer, &szEngineError);
 					}
 					break;
 				}
-				userAction(connection()->currentNickName(),KVI_USERACTION_PRIVMSG);
+				userAction(connection()->currentNickName(), KVI_USERACTION_PRIVMSG);
 				return;
-			} else {
+			}
+			else
+			{
 				//eat the escape code
 				pData++;
-				szTmpBuffer.remove(0,1);
+				szTmpBuffer.remove(0, 1);
 				//let the normal function do it
 			}
 		}
@@ -1262,11 +1277,11 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 		 * Due to encoding stuff, this is frikin'time eater
 		 */
 		QTextEncoder * pEncoder = makeEncoder(); // our temp encoder
-		QByteArray szTmp;         // used to calculate the length of an encoded message
-		int iPos;                 // contains the index where to truncate szTmpBuffer
-		int iC;                   // cycles counter (debugging/profiling purpose)
-		float fPosDiff;           // optimization internal; aggressivity factor
-		QString szCurSubString;   // truncated parts as reported to the user
+		QByteArray szTmp;                        // used to calculate the length of an encoded message
+		int iPos;                                // contains the index where to truncate szTmpBuffer
+		int iC;                                  // cycles counter (debugging/profiling purpose)
+		float fPosDiff;                          // optimization internal; aggressivity factor
+		QString szCurSubString;                  // truncated parts as reported to the user
 
 		// run until we've something remaining in the message
 		while(szTmpBuffer.length())
@@ -1286,8 +1301,8 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 				//if szTmp.length() == 0 we already have break'ed out from here,
 				// so we can safely use it as a divisor
 				fPosDiff = (float)iMaxMsgLen / szTmp.length();
-				iPos = (int)(iPos*fPosDiff); // cut the string at each cycle
-				//printf("OPTIMIZATION: fPosDiff %f, iPos %d\n", fPosDiff, iPos);
+				iPos = (int)(iPos * fPosDiff); // cut the string at each cycle
+				                               //printf("OPTIMIZATION: fPosDiff %f, iPos %d\n", fPosDiff, iPos);
 			}
 			//printf("Multi message: %d optimization cyles", iC);
 
@@ -1309,25 +1324,28 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 					iPos--;
 					szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
 					break;
-				} else {
+				}
+				else
+				{
 					//there's still free space.. add another char
 					iPos++;
 				}
-
 			}
 			//printf(", finished at %d cycles, truncated at pos %d\n", iC, iPos);
 
 			//prepare the feedback string for the user
-			szCurSubString=szTmpBuffer.left(iPos);
+			szCurSubString = szTmpBuffer.left(iPos);
 
 			//send the string to the server
-			if(connection()->sendFmtData("PRIVMSG %s :%s",name.data(),szTmp.data()))
+			if(connection()->sendFmtData("PRIVMSG %s :%s", name.data(), szTmp.data()))
 			{
 				//feeedback the user
 				if(bUserFeedback)
-					m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szCurSubString,KviConsoleWindow::NoNotifications);
-				userAction(connection()->currentNickName(),KVI_USERACTION_PRIVMSG);
-			} else {
+					m_pConsole->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG, QString(), QString(), QString(), szCurSubString, KviConsoleWindow::NoNotifications);
+				userAction(connection()->currentNickName(), KVI_USERACTION_PRIVMSG);
+			}
+			else
+			{
 				// skipped a part in this multi message.. we don't want to continue
 				return;
 			}
@@ -1336,13 +1354,14 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 			szTmpBuffer.remove(0, iPos);
 			//printf("Sent %d chars, %d remaining in the Qstring\n",iPos, szTmpBuffer.length());
 		}
-
-	} else {
-		if(connection()->sendFmtData("PRIVMSG %s :%s",name.data(),pData))
+	}
+	else
+	{
+		if(connection()->sendFmtData("PRIVMSG %s :%s", name.data(), pData))
 		{
 			if(bUserFeedback)
-				m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szTmpBuffer,KviConsoleWindow::NoNotifications);
-			userAction(connection()->currentNickName(),KVI_USERACTION_PRIVMSG);
+				m_pConsole->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG, QString(), QString(), QString(), szTmpBuffer, KviConsoleWindow::NoNotifications);
+			userAction(connection()->currentNickName(), KVI_USERACTION_PRIVMSG);
 		}
 	}
 }
@@ -1354,8 +1373,8 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 
 	//my full mask as seen by other users
 	QString szMyFullMask = connection()->userInfo()->nickName() + "!" + connection()->userInfo()->userName() + "@" + connection()->userInfo()->hostName();
-	QByteArray myFullMask = connection()->encodeText(szMyFullMask);   //target name
-	QByteArray name = connection()->encodeText(windowName());         //message
+	QByteArray myFullMask = connection()->encodeText(szMyFullMask); //target name
+	QByteArray name = connection()->encodeText(windowName());       //message
 	QByteArray data = encodeText(szBuffer);
 	const char * pData = data.data();
 	/* max length of a PRIVMSG text. Max buffer length for our send is 512 byte, but we have to
@@ -1382,7 +1401,7 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 
 	if(!pData)
 		return;
-	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,szName))
+	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction, this, szTmpBuffer, szName))
 		return;
 
 	if(data.length() > iMaxMsgLen)
@@ -1392,11 +1411,11 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 		 * Due to encoding stuff, this is frikin'time eater
 		 */
 		QTextEncoder * pEncoder = makeEncoder(); // our temp encoder
-		QByteArray szTmp;         // used to calculate the length of an encoded message
-		int iPos;                 // contains the index where to truncate szTmpBuffer
-		int iC;                   // cycles counter (debugging/profiling purpose)
-		float fPosDiff;           // optimization internal; aggressivity factor
-		QString szCurSubString;   // truncated parts as reported to the user
+		QByteArray szTmp;                        // used to calculate the length of an encoded message
+		int iPos;                                // contains the index where to truncate szTmpBuffer
+		int iC;                                  // cycles counter (debugging/profiling purpose)
+		float fPosDiff;                          // optimization internal; aggressivity factor
+		QString szCurSubString;                  // truncated parts as reported to the user
 
 		// run until we've something remaining in the message
 		while(szTmpBuffer.length())
@@ -1416,8 +1435,8 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 				//if szTmp.length() == 0 we already have break'ed out from here,
 				// so we can safely use it as a divisor
 				fPosDiff = (float)iMaxMsgLen / szTmp.length();
-				iPos = (int)(iPos*fPosDiff); // cut the string at each cycle
-				//printf("OPTIMIZATION: fPosDiff %f, iPos %d\n", fPosDiff, iPos);
+				iPos = (int)(iPos * fPosDiff); // cut the string at each cycle
+				                               //printf("OPTIMIZATION: fPosDiff %f, iPos %d\n", fPosDiff, iPos);
 			}
 			//printf("Multi message: %d optimization cyles", iC);
 
@@ -1439,28 +1458,31 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 					iPos--;
 					szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
 					break;
-				} else {
+				}
+				else
+				{
 					//there's still free space.. add another char
 					iPos++;
 				}
-
 			}
 			//printf(", finished at %d cycles, truncated at pos %d\n", iC, iPos);
 
 			//prepare the feedback string for the user
-			szCurSubString=szTmpBuffer.left(iPos);
+			szCurSubString = szTmpBuffer.left(iPos);
 
 			//send the string to the server
-			if(connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",name.data(),0x01,szTmp.data(),0x01))
+			if(connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szTmp.data(), 0x01))
 			{
 				//feeedback the user
 				QString szBuf = "\r!nc\r";
 				szBuf += connection()->currentNickName();
 				szBuf += "\r ";
 				szBuf += szTmp.data();
-				outputMessage(KVI_OUT_ACTION,szBuf);
-				userAction(connection()->currentNickName(),KVI_USERACTION_ACTION);
-			} else {
+				outputMessage(KVI_OUT_ACTION, szBuf);
+				userAction(connection()->currentNickName(), KVI_USERACTION_ACTION);
+			}
+			else
+			{
 				// skipped a part in this multi message.. we don't want to continue
 				return;
 			}
@@ -1469,26 +1491,27 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 			szTmpBuffer.remove(0, iPos);
 			//printf("Sent %d chars, %d remaining in the Qstring\n",iPos, szTmpBuffer.length());
 		}
-
-	} else {
-		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",connection()->encodeText(szName).data(),0x01,pData,0x01))
+	}
+	else
+	{
+		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", connection()->encodeText(szName).data(), 0x01, pData, 0x01))
 			return;
 
 		QString szBuf = "\r!nc\r";
 		szBuf += connection()->currentNickName();
 		szBuf += "\r ";
 		szBuf += szTmpBuffer;
-		outputMessage(KVI_OUT_ACTION,szBuf);
-		userAction(connection()->currentNickName(),KVI_USERACTION_ACTION);
+		outputMessage(KVI_OUT_ACTION, szBuf);
+		userAction(connection()->currentNickName(), KVI_USERACTION_ACTION);
 	}
 }
 
 bool KviChannelWindow::nickChange(const QString & szOldNick, const QString & szNewNick)
 {
-	bool bWasHere = m_pUserListView->nickChange(szOldNick,szNewNick);
+	bool bWasHere = m_pUserListView->nickChange(szOldNick, szNewNick);
 	if(bWasHere)
 	{
-		channelAction(szNewNick,KVI_USERACTION_NICK,kvi_getUserActionTemperature(KVI_USERACTION_NICK));
+		channelAction(szNewNick, KVI_USERACTION_NICK, kvi_getUserActionTemperature(KVI_USERACTION_NICK));
 		// update any nick/mask editor; by now we limit to the q and a mode
 		if(m_pModeLists.contains('q'))
 			setModeInList('q', szOldNick, false, QString(), 0, szNewNick);
@@ -1503,7 +1526,7 @@ bool KviChannelWindow::part(const QString & szNick)
 	bool bWasHere = m_pUserListView->part(szNick);
 	if(bWasHere)
 	{
-		channelAction(szNick,KVI_USERACTION_PART,kvi_getUserActionTemperature(KVI_USERACTION_PART));
+		channelAction(szNick, KVI_USERACTION_PART, kvi_getUserActionTemperature(KVI_USERACTION_PART));
 		// update any nick/mask editor; by now we limit to the q and a mode
 		if(m_pModeLists.contains('q'))
 			setModeInList('q', szNick, false, QString(), 0);
@@ -1525,7 +1548,9 @@ bool KviChannelWindow::activityMeter(unsigned int * puActivityValue, unsigned in
 		// nothing is happening
 		uHotActionPercent = 0;
 		dActionsPerMinute = 0;
-	} else {
+	}
+	else
+	{
 		kvi_time_t tNow = kvi_unixTime();
 
 		KviChannelAction * pAction = m_pActionHistory->last();
@@ -1539,7 +1564,9 @@ bool KviChannelWindow::activityMeter(unsigned int * puActivityValue, unsigned in
 				// we can't exactly estimate
 				if(dSpan < 60.0)
 					dSpan = 60.0;
-			} else {
+			}
+			else
+			{
 				// there are less actions at all or they have been pushed out because of the timespan
 				dSpan = KVI_CHANNEL_ACTION_HISTORY_MAX_TIMESPAN;
 			}
@@ -1552,7 +1579,6 @@ bool KviChannelWindow::activityMeter(unsigned int * puActivityValue, unsigned in
 
 		uHotActionPercent = (m_uActionHistoryHotActionCount * 100) / (m_pActionHistory->count());
 	}
-
 
 	if(dActionsPerMinute < 0.3)
 		*puActivityValue = KviWindow::None;
@@ -1669,7 +1695,9 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 			pStats->bStatsInaccurate = true;
 			if(dSpan < 60.0)
 				dSpan = 60.0;
-		} else {
+		}
+		else
+		{
 			// there are less actions at all or they have been pushed out because of the timespan
 			dSpan = KVI_CHANNEL_ACTION_HISTORY_MAX_TIMESPAN;
 		}
@@ -1681,10 +1709,10 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 		pStats->dActionsPerMinute = (double)pStats->uActionCount; // ???
 
 	kvi_time_t tTwoMinsAgo = tNow;
-	tTwoMinsAgo-= 120;
+	tTwoMinsAgo -= 120;
 	tNow -= 60;
 
-	KviPointerHashTable<QString,int> userDict;
+	KviPointerHashTable<QString, int> userDict;
 	userDict.setAutoDelete(false);
 
 	int iFake;
@@ -1701,9 +1729,7 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 
 		pStats->iAverageActionTemperature += pAction->iTemperature;
 
-		if((pAction->uActionType == KVI_USERACTION_PRIVMSG) ||
-			(pAction->uActionType == KVI_USERACTION_NOTICE) ||
-			(pAction->uActionType == KVI_USERACTION_ACTION))
+		if((pAction->uActionType == KVI_USERACTION_PRIVMSG) || (pAction->uActionType == KVI_USERACTION_NOTICE) || (pAction->uActionType == KVI_USERACTION_ACTION))
 		{
 			if(!userDict.find(pAction->szNick))
 			{
@@ -1714,7 +1740,7 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 					else
 						pStats->lWereTalkingUsers.append(pAction->szNick);
 
-					userDict.insert(pAction->szNick,&iFake);
+					userDict.insert(pAction->szNick, &iFake);
 				}
 			}
 		}
@@ -1728,22 +1754,22 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 void KviChannelWindow::userAction(const QString & szNick, const QString & szUser, const QString & szHost, unsigned int uActionType)
 {
 	int iTemperature = kvi_getUserActionTemperature(uActionType);
-	channelAction(szNick,uActionType,iTemperature);
-	m_pUserListView->userAction(szNick,szUser,szHost,iTemperature);
+	channelAction(szNick, uActionType, iTemperature);
+	m_pUserListView->userAction(szNick, szUser, szHost, iTemperature);
 }
 
 void KviChannelWindow::userAction(const QString & szNick, unsigned int uActionType)
 {
 	int iTemperature = kvi_getUserActionTemperature(uActionType);
-	channelAction(szNick,uActionType,iTemperature);
-	m_pUserListView->userAction(szNick,iTemperature);
+	channelAction(szNick, uActionType, iTemperature);
+	m_pUserListView->userAction(szNick, iTemperature);
 }
 
 void KviChannelWindow::userAction(KviIrcMask * user, unsigned int uActionType)
 {
 	int iTemperature = kvi_getUserActionTemperature(uActionType);
-	channelAction(user->nick(),uActionType,iTemperature);
-	m_pUserListView->userAction(user,iTemperature);
+	channelAction(user->nick(), uActionType, iTemperature);
+	m_pUserListView->userAction(user, iTemperature);
 }
 
 void KviChannelWindow::topicSelected(const QString & szTopic)
@@ -1755,9 +1781,9 @@ void KviChannelWindow::topicSelected(const QString & szTopic)
 	QByteArray name = connection()->encodeText(m_szName);
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	if (encoded.length() <= 0)
+	if(encoded.length() <= 0)
 	{
-		connection()->sendFmtData("TOPIC %s :",name.data());
+		connection()->sendFmtData("TOPIC %s :", name.data());
 		return;
 	}
 
@@ -1765,34 +1791,34 @@ void KviChannelWindow::topicSelected(const QString & szTopic)
 
 	QString szTmpTopic(szTopic);
 
-	if (!pcData)
+	if(!pcData)
 		return;
 
-	if (cryptSessionInfo())
+	if(cryptSessionInfo())
 	{
-		if (cryptSessionInfo()->m_bDoEncrypt)
+		if(cryptSessionInfo()->m_bDoEncrypt)
 		{
-			if (*pcData != KviControlCodes::CryptEscape)
+			if(*pcData != KviControlCodes::CryptEscape)
 			{
 				KviCString szEncrypted;
-				switch (cryptSessionInfo()->m_pEngine->encrypt(pcData,szEncrypted))
+				switch(cryptSessionInfo()->m_pEngine->encrypt(pcData, szEncrypted))
 				{
 					case KviCryptEngine::Encrypted:
 					case KviCryptEngine::Encoded:
-						connection()->sendFmtData("TOPIC %s :%s",name.data(),szEncrypted.ptr());
+						connection()->sendFmtData("TOPIC %s :%s", name.data(), szEncrypted.ptr());
 						return;
-					break;
+						break;
 					default:
 						QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
 						output(KVI_OUT_SYSTEMERROR,
-							__tr2qs("The encryption engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
-							&szTopic,&szEngineError);
-					break;
+						    __tr2qs("The encryption engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
+						    &szTopic, &szEngineError);
+						break;
 				}
 			}
 			else
 			{
-				szTmpTopic.remove(0,1);
+				szTmpTopic.remove(0, 1);
 				// re-encode for removed CryptEscape
 				encoded = encodeText(szTmpTopic);
 			}
@@ -1800,7 +1826,7 @@ void KviChannelWindow::topicSelected(const QString & szTopic)
 	}
 #endif
 
-	connection()->sendFmtData("TOPIC %s :%s",name.data(),encoded.length() ? encoded.data() : "");
+	connection()->sendFmtData("TOPIC %s :%s", name.data(), encoded.length() ? encoded.data() : "");
 }
 
 void KviChannelWindow::closeEvent(QCloseEvent * pEvent)
@@ -1810,7 +1836,9 @@ void KviChannelWindow::closeEvent(QCloseEvent * pEvent)
 		if(context())
 			context()->unregisterDeadChannel(this);
 		KviWindow::closeEvent(pEvent);
-	} else {
+	}
+	else
+	{
 		pEvent->ignore();
 		// FIXME: #warning "THIS PART SHOULD BECOME A COMMAND /PART $option()..so the identifiers are parsed"
 		if(connection())
@@ -1819,15 +1847,17 @@ void KviChannelWindow::closeEvent(QCloseEvent * pEvent)
 			KviQString::escapeKvs(&szTmp, KviQString::PermitVariables | KviQString::PermitFunctions);
 			KviKvsVariant vRet;
 
-			if(KviKvsScript::evaluate(szTmp,this,0,&vRet))
+			if(KviKvsScript::evaluate(szTmp, this, 0, &vRet))
 				vRet.asString(szTmp);
 
 			QByteArray dat = encodeText(szTmp);
 			partMessageSent();
 			QByteArray name = connection()->encodeText(m_szName);
-			connection()->sendFmtData("PART %s :%s",name.data(),dat.data() ? dat.data() : "");
+			connection()->sendFmtData("PART %s :%s", name.data(), dat.data() ? dat.data() : "");
 			// be sure to not reference ourselves here.. we could be disconnected!
-		} else {
+		}
+		else
+		{
 			partMessageSent(); // huh ?
 		}
 	}
@@ -1839,23 +1869,23 @@ void KviChannelWindow::partMessageSent(bool bCloseOnPart, bool bShowMessage)
 	if(!bCloseOnPart)
 		m_iStateFlags |= NoCloseOnPart;
 	if(bShowMessage)
-		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sent part request, waiting for reply..."));
+		outputNoFmt(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Sent part request, waiting for reply..."));
 }
 
-#define IS_FNC(__name,__ulvname) \
-bool KviChannelWindow::__name(bool bAtLeast) \
-{ \
-	if(!connection()) \
-		return false; \
-	return m_pUserListView->__ulvname(connection()->currentNickName(),bAtLeast); \
-}
+#define IS_FNC(__name, __ulvname)                                                     \
+	bool KviChannelWindow::__name(bool bAtLeast)                                      \
+	{                                                                                 \
+		if(!connection())                                                             \
+			return false;                                                             \
+		return m_pUserListView->__ulvname(connection()->currentNickName(), bAtLeast); \
+	}
 
-IS_FNC(isMeChanOwner,isChanOwner)
-IS_FNC(isMeChanAdmin,isChanAdmin)
-IS_FNC(isMeOp,isOp)
-IS_FNC(isMeVoice,isVoice)
-IS_FNC(isMeHalfOp,isHalfOp)
-IS_FNC(isMeUserOp,isUserOp)
+IS_FNC(isMeChanOwner, isChanOwner)
+IS_FNC(isMeChanAdmin, isChanAdmin)
+IS_FNC(isMeOp, isOp)
+IS_FNC(isMeVoice, isVoice)
+IS_FNC(isMeHalfOp, isHalfOp)
+IS_FNC(isMeUserOp, isUserOp)
 
 int KviChannelWindow::myFlags()
 {
@@ -1878,7 +1908,7 @@ void KviChannelWindow::setModeInList(char cMode, const QString & szMask, bool bA
 		// lazily insert it
 		KviPointerList<KviMaskEntry> * pModeList = new KviPointerList<KviMaskEntry>;
 		pModeList->setAutoDelete(true);
-		m_pModeLists.insert(cMode,pModeList);
+		m_pModeLists.insert(cMode, pModeList);
 	}
 
 	KviPointerList<KviMaskEntry> * pList = m_pModeLists.value(cMode);
@@ -1886,8 +1916,8 @@ void KviChannelWindow::setModeInList(char cMode, const QString & szMask, bool bA
 	if(m_pListEditors.contains(cMode))
 		pEditor = m_pListEditors.value(cMode);
 
-	internalMask(szMask,bAdd,szSetBy,uSetAt,pList,&pEditor,szChangeMask);
-	m_pUserListView->setMaskEntries(cMode,(int)pList->count());
+	internalMask(szMask, bAdd, szSetBy, uSetAt, pList, &pEditor, szChangeMask);
+	m_pUserListView->setMaskEntries(cMode, (int)pList->count());
 }
 
 void KviChannelWindow::internalMask(const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, KviPointerList<KviMaskEntry> * pList, KviMaskEditor ** ppEd, QString & szChangeMask)
@@ -1897,7 +1927,7 @@ void KviChannelWindow::internalMask(const QString & szMask, bool bAdd, const QSt
 	{
 		for(pEntry = pList->first(); pEntry; pEntry = pList->next())
 		{
-			if(KviQString::equalCI(pEntry->szMask,szMask))
+			if(KviQString::equalCI(pEntry->szMask, szMask))
 				return; //already there
 		}
 		pEntry = new KviMaskEntry;
@@ -1907,10 +1937,12 @@ void KviChannelWindow::internalMask(const QString & szMask, bool bAdd, const QSt
 		pList->append(pEntry);
 		if(*ppEd)
 			(*ppEd)->addMask(pEntry);
-	} else {
+	}
+	else
+	{
 		for(pEntry = pList->first(); pEntry; pEntry = pList->next())
 		{
-			if(KviQString::equalCI(pEntry->szMask,szMask))
+			if(KviQString::equalCI(pEntry->szMask, szMask))
 				break;
 		}
 
@@ -1924,7 +1956,9 @@ void KviChannelWindow::internalMask(const QString & szMask, bool bAdd, const QSt
 			{
 				//delete mask
 				pList->removeRef(pEntry);
-			} else {
+			}
+			else
+			{
 				//update mask
 				pEntry->szMask = szChangeMask;
 				if(*ppEd)
@@ -1936,18 +1970,17 @@ void KviChannelWindow::internalMask(const QString & szMask, bool bAdd, const QSt
 
 void KviChannelWindow::updateModeLabel()
 {
-	QString szTip = \
-	"<html>" \
-		"<body>" \
-			"<table width=\"100%\">";
-	szTip +=	START_TABLE_BOLD_ROW;
-	szTip +=	"<b><center>";
+	QString szTip = "<html>"
+	                "<body>"
+	                "<table width=\"100%\">";
+	szTip += START_TABLE_BOLD_ROW;
+	szTip += "<b><center>";
 	szTip += __tr2qs("Channel Modes");
-	szTip +=	"</b></center>";
-	szTip +=	END_TABLE_BOLD_ROW;
-	szTip +=	"</table>" \
-		"</body>" \
-	"</html>";
+	szTip += "</b></center>";
+	szTip += END_TABLE_BOLD_ROW;
+	szTip += "</table>"
+	         "</body>"
+	         "</html>";
 	KviCString szMod = m_szChannelMode;
 	const char * pcAux = szMod.ptr();
 	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
@@ -1955,25 +1988,25 @@ void KviChannelWindow::updateModeLabel()
 	while(*pcAux)
 	{
 		if(pServerInfo)
-			KviQString::appendFormatted(szTip," %c: %Q<br>",*pcAux,&(m_pConsole->connection()->serverInfo()->getChannelModeDescription(*pcAux)));
+			KviQString::appendFormatted(szTip, " %c: %Q<br>", *pcAux, &(m_pConsole->connection()->serverInfo()->getChannelModeDescription(*pcAux)));
 		++pcAux;
 	}
 
 	QMap<char, QString>::const_iterator iter = m_szChannelParameterModes.constBegin();
-	while (iter != m_szChannelParameterModes.constEnd())
+	while(iter != m_szChannelParameterModes.constEnd())
 	{
 		QString szDescription = KviQString::toHtmlEscaped(m_pConsole->connection()->serverInfo()->getChannelModeDescription(iter.key()));
 		QString szValue = KviQString::toHtmlEscaped(iter.value());
-		KviQString::appendFormatted(szTip,"<br>%c: %Q: <b>%Q</b>", iter.key(), &szDescription, &szValue);
+		KviQString::appendFormatted(szTip, "<br>%c: %Q: <b>%Q</b>", iter.key(), &szDescription, &szValue);
 		++iter;
 	}
 
 	m_pModeWidget->refreshModes();
 	KviTalToolTip::remove(m_pModeWidget);
-	KviTalToolTip::add(m_pModeWidget,szTip);
+	KviTalToolTip::add(m_pModeWidget, szTip);
 }
 
-void KviChannelWindow::outputMessage(int iMsgType, const QString & szMsg, const QDateTime& datetime)
+void KviChannelWindow::outputMessage(int iMsgType, const QString & szMsg, const QDateTime & datetime)
 {
 	QString szBuf(szMsg);
 	preprocessMessage(szBuf);
@@ -1983,9 +2016,9 @@ void KviChannelWindow::outputMessage(int iMsgType, const QString & szMsg, const 
 		return;
 
 	if(m_pMessageView && m_pIrcView->messageShouldGoToMessageView(iMsgType))
-		internalOutput(m_pMessageView,iMsgType,(const kvi_wchar_t *)pC,0,datetime);
+		internalOutput(m_pMessageView, iMsgType, (const kvi_wchar_t *)pC, 0, datetime);
 	else
-		internalOutput(m_pIrcView,iMsgType,(const kvi_wchar_t *)pC,0,datetime);
+		internalOutput(m_pIrcView, iMsgType, (const kvi_wchar_t *)pC, 0, datetime);
 }
 
 void KviChannelWindow::checkChannelSync()
@@ -2015,21 +2048,20 @@ void KviChannelWindow::checkChannelSync()
 	if(iSyncTime < 0)
 		iSyncTime += 86400000;
 
-	bool bStop = KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnChannelSync,this,iSyncTime);
+	bool bStop = KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnChannelSync, this, iSyncTime);
 
 	if(!bStop && KVI_OPTION_BOOL(KviOption_boolShowChannelSyncTime))
 	{
-		output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Channel synchronized in %d.%d seconds"),iSyncTime / 1000,iSyncTime % 1000);
+		output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Channel synchronized in %d.%d seconds"), iSyncTime / 1000, iSyncTime % 1000);
 	}
 }
 
 bool KviChannelWindow::eventFilter(QObject * pObject, QEvent * pEvent)
 {
-	if(pEvent->type() == QEvent::FocusOut && pObject == m_pTopicWidget && \
-		m_pTopicWidget->isVisible())
+	if(pEvent->type() == QEvent::FocusOut && pObject == m_pTopicWidget && m_pTopicWidget->isVisible())
 		m_pTopicWidget->deactivate();
 
-	return KviWindow::eventFilter(pObject,pEvent);
+	return KviWindow::eventFilter(pObject, pEvent);
 }
 
 void KviChannelWindow::preprocessMessage(QString & szMessage)
@@ -2045,8 +2077,8 @@ void KviChannelWindow::preprocessMessage(QString & szMessage)
 	if(szMessage.contains(szNonStandardLinkPrefix))
 		return; // contains a non standard link that may contain spaces, do not break it.
 
-	QStringList strings = szMessage.split(" ",QString::KeepEmptyParts);
-	for(auto& it : strings)
+	QStringList strings = szMessage.split(" ", QString::KeepEmptyParts);
+	for(auto & it : strings)
 	{
 		if(it.contains('\r'))
 			continue;
@@ -2103,10 +2135,10 @@ void KviChannelWindow::pasteLastLog()
 
 	// Get the logs
 	QString szLogPath;
-	g_pApp->getLocalKvircDirectory(szLogPath,KviApplication::Log);
+	g_pApp->getLocalKvircDirectory(szLogPath, KviApplication::Log);
 	QDir logDir(szLogPath);
 	QStringList filter = QStringList(szLogFilter);
-	QStringList logList = logDir.entryList(filter,QDir::Files,QDir::Name | QDir::Reversed);
+	QStringList logList = logDir.entryList(filter, QDir::Files, QDir::Name | QDir::Reversed);
 
 	// Scan log files
 	// Format: channel_#channelName.networkName_year.month.day.log
@@ -2114,7 +2146,7 @@ void KviChannelWindow::pasteLastLog()
 	bool bGzip;
 	QString szFileName;
 
-	for(const auto& it : logList)
+	for(const auto & it : logList)
 	{
 		int iLogYear, iLogMonth, iLogDay;
 
@@ -2135,14 +2167,14 @@ void KviChannelWindow::pasteLastLog()
 		}
 
 		// Ok, we have the right channel/network log. Get date
-		QString szLogDate = szTmpName.section('.',-4,-1).section('_',1,1);
-		iLogYear = szLogDate.section('.',0,0).toInt();
-		iLogMonth = szLogDate.section('.',1,1).toInt();
-		iLogDay = szLogDate.section('.',2,2).toInt();
+		QString szLogDate = szTmpName.section('.', -4, -1).section('_', 1, 1);
+		iLogYear = szLogDate.section('.', 0, 0).toInt();
+		iLogMonth = szLogDate.section('.', 1, 1).toInt();
+		iLogDay = szLogDate.section('.', 2, 2).toInt();
 
 		// Check log validity
 		int iInterval = -(int)KVI_OPTION_UINT(KviOption_uintDaysIntervalToPasteOnChannelJoin);
-		QDate logDate(iLogYear,iLogMonth,iLogDay);
+		QDate logDate(iLogYear, iLogMonth, iLogDay);
 		QDate checkDate = date.addDays(iInterval);
 
 		if(logDate < checkDate)
@@ -2156,7 +2188,7 @@ void KviChannelWindow::pasteLastLog()
 	szFileName.prepend(szLogPath);
 
 	// Load the log
-	QByteArray log = loadLogFile(szFileName,bGzip);
+	QByteArray log = loadLogFile(szFileName, bGzip);
 	if(log.size() > 0)
 	{
 		QList<QByteArray> list = log.split('\n');
@@ -2164,29 +2196,29 @@ void KviChannelWindow::pasteLastLog()
 		unsigned int uLines = KVI_OPTION_UINT(KviOption_uintLinesToPasteOnChannelJoin);
 		unsigned int uStart = uCount - uLines - 1;
 
-/*
+		/*
 		// Check if the log is smaller than the lines to print
 		if(uStart < 0)
 			uStart = 0;
 */
 		QString szDummy = __tr2qs("Starting last log");
-		outputMessage(KVI_OUT_CHANPRIVMSG,szDummy);
+		outputMessage(KVI_OUT_CHANPRIVMSG, szDummy);
 
 		// Scan the log file
 		for(size_t u = uStart; u < uCount; u++)
 		{
 			QString szLine = QString(list.at(u));
-			szLine = szLine.section(' ',1);
+			szLine = szLine.section(' ', 1);
 #ifdef COMPILE_ON_WINDOWS
 			// Remove the \r char at the szEnd of line
 			szLine.chop(1);
 #endif
 			// Print the line in the channel buffer
-			outputMessage(KVI_OUT_CHANPRIVMSG,szLine);
+			outputMessage(KVI_OUT_CHANPRIVMSG, szLine);
 		}
 
 		szDummy = __tr2qs("End of log");
-		outputMessage(KVI_OUT_CHANPRIVMSG,szDummy);
+		outputMessage(KVI_OUT_CHANPRIVMSG, szDummy);
 	}
 }
 
@@ -2197,26 +2229,29 @@ QByteArray KviChannelWindow::loadLogFile(const QString & szFileName, bool bGzip)
 #ifdef COMPILE_ZLIB_SUPPORT
 	if(bGzip)
 	{
-		gzFile logFile = gzopen(szFileName.toLocal8Bit().data(),"rb");
+		gzFile logFile = gzopen(szFileName.toLocal8Bit().data(), "rb");
 		if(logFile)
 		{
 			char cBuff[1025];
 			int iLen;
 
-			iLen = gzread(logFile,cBuff,1024);
+			iLen = gzread(logFile, cBuff, 1024);
 			while(iLen > 0)
 			{
 				cBuff[iLen] = 0;
 				data.append(cBuff);
-				iLen = gzread(logFile,cBuff,1024);
+				iLen = gzread(logFile, cBuff, 1024);
 			}
 
 			gzclose(logFile);
-		} else {
-			qDebug("Can't open compressed file %s",szFileName.toUtf8().data());
 		}
-
-	} else {
+		else
+		{
+			qDebug("Can't open compressed file %s", szFileName.toUtf8().data());
+		}
+	}
+	else
+	{
 #endif
 		QFile logFile(szFileName);
 		if(!logFile.open(QIODevice::ReadOnly))

@@ -37,34 +37,34 @@
 class QString;
 
 #define kvi_unixTime() time(0)
-#define kvi_timeSpan(_time_now,_time_before) ((_time_now) - (_time_before))
-#define kvi_secondsSince(_that_time_t) kvi_timeSpan(kvi_unixTime(),_that_time_t)
+#define kvi_timeSpan(_time_now, _time_before) ((_time_now) - (_time_before))
+#define kvi_secondsSince(_that_time_t) kvi_timeSpan(kvi_unixTime(), _that_time_t)
 
 #define kvi_time_t time_t
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#include <winsock2.h> // struct timeval
+#include <winsock2.h> // struct timeval
 
-	/**
+/**
 	* \brief Gets the time of the day
 	* \param tmv The time value
 	* \param tmz The timezone
 	* \return void
 	*/
-	extern KVILIB_API void kvi_gettimeofday(struct timeval * tmv, struct timezone * tmz);
+extern KVILIB_API void kvi_gettimeofday(struct timeval * tmv, struct timezone * tmz);
 #else
-	#include <sys/time.h> // gettimeofday(), struct timeval
+#include <sys/time.h> // gettimeofday(), struct timeval
 
-	/**
+/**
 	* \brief Gets the time of the day
 	* \param tmv The time value
 	* \param tmz The timezone
 	* \return void
 	*/
-	inline void kvi_gettimeofday(struct timeval * tmv, struct timezone * tmz)
-	{
-		gettimeofday(tmv,tmz);
-	}
+inline void kvi_gettimeofday(struct timeval * tmv, struct timezone * tmz)
+{
+	gettimeofday(tmv, tmz);
+}
 #endif
 
 /**
@@ -76,9 +76,11 @@ class KVILIB_API KviMSecTimeInterval
 {
 public:
 	KviMSecTimeInterval();
+
 protected:
 	unsigned long m_uReferenceSecs;
 	unsigned long m_uReferenceUSecs;
+
 public:
 	/**
 	* \brief Returns the number of milliseconds.
@@ -95,7 +97,7 @@ public:
 	* on windows)
 	* \return unsigned long
 	*/
-	unsigned long secondsCounter(){ return m_uReferenceSecs; };
+	unsigned long secondsCounter() { return m_uReferenceSecs; };
 };
 
 /**
@@ -120,14 +122,14 @@ namespace KviTimeUtils
 	* \return void
 	*/
 	KVILIB_API void secondsToDaysHoursMinsSecs(unsigned int uSecs,
-		unsigned int * uD, unsigned int * uH, unsigned int * uM, unsigned int * uS);
+	    unsigned int * uD, unsigned int * uH, unsigned int * uM, unsigned int * uS);
 
 	/** \enum FormatTimeSpanFlags */
 	enum FormatTimeSpanFlags
 	{
-		NoLeadingEmptyIntervals = 1,    /**< Causes the leading empty intervals to be omitted */
-		NoLeadingZeroes = 2,            /**< No leading zeroes are printed in hours and seconds */
-		FillWithHypens = 4              /**< Uses only -- %d -- %h -- etc.. discards all other flags */
+		NoLeadingEmptyIntervals = 1, /**< Causes the leading empty intervals to be omitted */
+		NoLeadingZeroes = 2,         /**< No leading zeroes are printed in hours and seconds */
+		FillWithHypens = 4           /**< Uses only -- %d -- %h -- etc.. discards all other flags */
 	};
 
 	/**
@@ -136,7 +138,7 @@ namespace KviTimeUtils
 	* \param iFlags The flags to format the time string
 	* \return QString
 	*/
-	KVILIB_API QString formatTimeInterval(unsigned int uSeconds,int iFlags = 0);
+	KVILIB_API QString formatTimeInterval(unsigned int uSeconds, int iFlags = 0);
 }
 
 #endif //_KVI_TIME_H_

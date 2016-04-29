@@ -171,5 +171,4 @@
 //#define KVI_NUM_MSGTYPE_OPTIONS 144
 // UPDATE THE TOTAL COUNT IN KviOptions.h !!!!
 
-
 #endif //_KVI_OPTIONS_H_

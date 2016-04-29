@@ -38,48 +38,48 @@
 #include <QTextDocument>
 #include <QMenu>
 
-class  KviRegisteredUsersListView : public QTreeWidget
+class KviRegisteredUsersListView : public QTreeWidget
 {
 	Q_OBJECT
 public:
-	 KviRegisteredUsersListView(QWidget*);
+	KviRegisteredUsersListView(QWidget *);
 	~KviRegisteredUsersListView(){};
+
 protected:
-	void mousePressEvent (QMouseEvent *e);
+	void mousePressEvent(QMouseEvent * e);
 signals:
-	void rightButtonPressed(QTreeWidgetItem *,QPoint);
+	void rightButtonPressed(QTreeWidgetItem *, QPoint);
 };
 
 class RegisteredUsersDialogItemDelegate : public QStyledItemDelegate
 {
 public:
-	RegisteredUsersDialogItemDelegate(KviRegisteredUsersListView * pWidget=0)
-		: QStyledItemDelegate(pWidget) {};
+	RegisteredUsersDialogItemDelegate(KviRegisteredUsersListView * pWidget = 0)
+	    : QStyledItemDelegate(pWidget){};
 	~RegisteredUsersDialogItemDelegate(){};
-	QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
-	void paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
-
+	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
+	void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
 };
 
 class RegisteredUsersDialogItemBase : public QTreeWidgetItem
 {
 public:
-	enum Types { User,Group };
+	enum Types
+	{
+		User,
+		Group
+	};
+
 protected:
-	RegisteredUsersDialogItemBase(Types type,KviRegisteredUsersListView * par)
-	:QTreeWidgetItem(par),m_iType(type)
-	{
-	};
-	RegisteredUsersDialogItemBase(Types type,QTreeWidgetItem * par)
-	:QTreeWidgetItem(par),m_iType(type)
-	{
-	};
-	~RegisteredUsersDialogItemBase()
-	{
-	};
+	RegisteredUsersDialogItemBase(Types type, KviRegisteredUsersListView * par)
+	    : QTreeWidgetItem(par), m_iType(type){};
+	RegisteredUsersDialogItemBase(Types type, QTreeWidgetItem * par)
+	    : QTreeWidgetItem(par), m_iType(type){};
+	~RegisteredUsersDialogItemBase(){};
 
 private:
 	RegisteredUsersDialogItemBase::Types m_iType;
+
 public:
 	RegisteredUsersDialogItemBase::Types type() { return m_iType; };
 };
@@ -88,11 +88,12 @@ class RegisteredUsersGroupItem : public RegisteredUsersDialogItemBase
 {
 protected:
 	KviRegisteredUserGroup * m_pGroup;
+
 public:
-	RegisteredUsersGroupItem(KviRegisteredUsersListView * par,KviRegisteredUserGroup * g)
-	:RegisteredUsersDialogItemBase(Group,par), m_pGroup(g)
+	RegisteredUsersGroupItem(KviRegisteredUsersListView * par, KviRegisteredUserGroup * g)
+	    : RegisteredUsersDialogItemBase(Group, par), m_pGroup(g)
 	{
-		setText(0,m_pGroup->name());
+		setText(0, m_pGroup->name());
 	}
 	~RegisteredUsersGroupItem()
 	{
@@ -103,16 +104,19 @@ public:
 class RegisteredUsersDialogItem : public RegisteredUsersDialogItemBase
 {
 	friend class RegisteredUsersDialogItemDelegate;
+
 protected:
 	KviRegisteredUser * m_pUser;
-	QTextDocument       m_pText;
+	QTextDocument m_pText;
+
 public:
-	RegisteredUsersDialogItem(QTreeWidgetItem * par,KviRegisteredUser * u);
+	RegisteredUsersDialogItem(QTreeWidgetItem * par, KviRegisteredUser * u);
 	~RegisteredUsersDialogItem();
+
 public:
-	KviRegisteredUser * user(){ return m_pUser; };
-	void setUser(KviRegisteredUser * u){ m_pUser = u; };
-	virtual QString key(int,bool) const;
+	KviRegisteredUser * user() { return m_pUser; };
+	void setUser(KviRegisteredUser * u) { m_pUser = u; };
+	virtual QString key(int, bool) const;
 };
 
 class RegisteredUsersDialog : public QWidget
@@ -121,8 +125,9 @@ class RegisteredUsersDialog : public QWidget
 public:
 	RegisteredUsersDialog(QWidget * par = 0);
 	~RegisteredUsersDialog();
+
 public:
-	KviRegisteredUsersListView   * m_pListView;
+	KviRegisteredUsersListView * m_pListView;
 	QPushButton * m_pAddButton;
 	QPushButton * m_pWizardAddButton;
 	QPushButton * m_pRemoveButton;
@@ -131,10 +136,11 @@ public:
 	QPushButton * m_pExportButton;
 	QPushButton * m_pAddGroupButton;
 	QPushButton * m_pSelectAllButton;
+
 protected:
 	void fillList();
 	void editItem(RegisteredUsersDialogItem * i);
-	void editGroup(KviRegisteredUserGroup* group);
+	void editGroup(KviRegisteredUserGroup * group);
 	virtual void closeEvent(QCloseEvent *);
 protected slots:
 	void cancelClicked();
@@ -148,10 +154,10 @@ protected slots:
 	void addWizardClicked();
 	void addGroupClicked();
 	void selectAllClicked();
-	void itemPressed(QTreeWidgetItem *it,int c);
-	void itemDoubleClicked(QTreeWidgetItem *it, int);
-	void rightButtonPressed ( QTreeWidgetItem *, QPoint);
-    void moveToGroupMenuClicked(QAction *pAction);
+	void itemPressed(QTreeWidgetItem * it, int c);
+	void itemDoubleClicked(QTreeWidgetItem * it, int);
+	void rightButtonPressed(QTreeWidgetItem *, QPoint);
+	void moveToGroupMenuClicked(QAction * pAction);
 };
 
 #endif

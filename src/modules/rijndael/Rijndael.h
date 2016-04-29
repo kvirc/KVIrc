@@ -84,15 +84,15 @@
 
 #if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
 
-#define _MAX_KEY_COLUMNS (256/32)
-#define _MAX_ROUNDS      14
+#define _MAX_KEY_COLUMNS (256 / 32)
+#define _MAX_ROUNDS 14
 //#define BITSPERBLOCK        128 /* Default number of bits in a cipher block */
-#define MAX_IV_SIZE      16
+#define MAX_IV_SIZE 16
 #define STRICT_ALIGN 0
 
 // We assume that unsigned int is 32 bits long....
-typedef unsigned char  UINT8;
-typedef unsigned int   UINT32;
+typedef unsigned char UINT8;
+typedef unsigned int UINT32;
 typedef unsigned short UINT16;
 
 #define RIJNDAEL_SUCCESS 0
@@ -107,42 +107,63 @@ typedef unsigned short UINT16;
 class Rijndael
 {
 public:
-	enum Direction { Encrypt, Decrypt };
-	enum Mode { ECB, CBC, CFB1 };
-	enum KeyLength { Key16Bytes, Key24Bytes, Key32Bytes };
+	enum Direction
+	{
+		Encrypt,
+		Decrypt
+	};
+	enum Mode
+	{
+		ECB,
+		CBC,
+		CFB1
+	};
+	enum KeyLength
+	{
+		Key16Bytes,
+		Key24Bytes,
+		Key32Bytes
+	};
 
 	Rijndael();
 	~Rijndael();
-protected:
-	enum State { Valid, Invalid };
 
-	State     m_state;
-	Mode      m_mode;
+protected:
+	enum State
+	{
+		Valid,
+		Invalid
+	};
+
+	State m_state;
+	Mode m_mode;
 	Direction m_direction;
-	UINT8     m_initVector[MAX_IV_SIZE];
-	UINT32    m_uRounds;
-	UINT8     m_expandedKey[_MAX_ROUNDS+1][4][4];
+	UINT8 m_initVector[MAX_IV_SIZE];
+	UINT32 m_uRounds;
+	UINT8 m_expandedKey[_MAX_ROUNDS + 1][4][4];
+
 public:
 	// Initializes the crypt session
 	// Returns RIJNDAEL_SUCCESS or an error code
-	int init(Mode mode,Direction dir,const UINT8 *key,KeyLength keyLen,UINT8 * initVector = 0);
+	int init(Mode mode, Direction dir, const UINT8 * key, KeyLength keyLen, UINT8 * initVector = 0);
 	// Input len is in BITS!
 	// Encrypts inputLen / 128 blocks of input and puts it in outBuffer
 	// outBuffer must be at least inputLen / 8 bytes long.
 	// Returns the encrypted buffer length in BITS or an error code < 0 in case of error
-	int blockEncrypt(const UINT8 *input, int inputLen, UINT8 *outBuffer, UINT8 * initVector = 0);
+	int blockEncrypt(const UINT8 * input, int inputLen, UINT8 * outBuffer, UINT8 * initVector = 0);
 	// Input len is in BYTES!
 	// outBuffer must be at least inputLen + 16 bytes long
 	// Returns the encrypted buffer length in BYTES or an error code < 0 in case of error
-	int padEncrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer, UINT8 * initVector = 0);
+	int padEncrypt(const UINT8 * input, int inputOctets, UINT8 * outBuffer, UINT8 * initVector = 0);
 	// Input len is in BITS!
 	// outBuffer must be at least inputLen / 8 bytes long
 	// Returns the decrypted buffer length in BITS and an error code < 0 in case of error
-	int blockDecrypt(const UINT8 *input, int inputLen, UINT8 *outBuffer, UINT8 * initVector = 0);
+	int blockDecrypt(const UINT8 * input, int inputLen, UINT8 * outBuffer, UINT8 * initVector = 0);
 	// Input len is in BYTES!
 	// outBuffer must be at least inputLen bytes long
 	// Returns the decrypted buffer length in BYTES and an error code < 0 in case of error
-	int padDecrypt(const UINT8 *input, int inputOctets, UINT8 *outBuffer, UINT8 * initVector = 0);
+	int padDecrypt(const UINT8 * input, int inputOctets, UINT8 * outBuffer, UINT8 * initVector = 0);
+
 protected:
 	void keySched(UINT8 key[_MAX_KEY_COLUMNS][4]);
 	void keyEncToDec();

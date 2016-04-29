@@ -33,26 +33,32 @@ public:
 	// uSize MUST be greater than 0
 	// if data is non-zero, it MUST point to a buffer at least uSize bytes long
 	// and the data is COPIED from that buffer!
-	KviDataBuffer(int uSize,const unsigned char * data = 0);
+	KviDataBuffer(int uSize, const unsigned char * data = 0);
 	KviDataBuffer();
 	~KviDataBuffer();
+
 private:
 	int m_uSize;
 	unsigned char * m_pData;
+
 public:
 	int size() const { return m_uSize; };
 	unsigned char * data() const { return m_pData; };
 	// uSize MUST be smaller or equal to size()
 	// consumes data!
 	void remove(int uSize);
-	void clear(){ if(m_uSize > 0)remove(m_uSize); };
+	void clear()
+	{
+		if(m_uSize > 0)
+			remove(m_uSize);
+	};
 	// uSize MUST be greater than 0
 	void resize(int uSize);
-	void addSize(int uSize){ resize(m_uSize + uSize); };
-	void append(const unsigned char * data,int uSize);
-	void append(const KviDataBuffer &b){ append(b.data(),b.size()); };
+	void addSize(int uSize) { resize(m_uSize + uSize); };
+	void append(const unsigned char * data, int uSize);
+	void append(const KviDataBuffer & b) { append(b.data(), b.size()); };
 	int find(unsigned char c);
-	int find(const unsigned char * block,int uSize);
+	int find(const unsigned char * block, int uSize);
 };
 
 #endif //_KVI_DATABUFFER_H_

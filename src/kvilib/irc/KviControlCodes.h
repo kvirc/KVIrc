@@ -46,8 +46,6 @@
 #define KVI_MIRCCOLOR_MAX_FOREGROUND 15
 #define KVI_MIRCCOLOR_MAX_BACKGROUND 15
 
-
-
 // ASCII Stuff: the following defines are meant to be escape sequences
 //              that can go through an IRC connection
 
@@ -91,7 +89,6 @@
 // 030 RS  Record separator           ( CRYPT Escape: only beginning of the message )
 // 031 US  Unit separator             ( Underline text )
 
-
 //
 // mIrc control codes
 //
@@ -115,7 +112,6 @@
 //30 (0001 1110) RS (Record separator)
 //29 (0001 1101) GS (Group separator)
 
-
 /**
 * \namespace KviControlCodes
 * \brief Holds all text control code KVIrc uses
@@ -126,43 +122,45 @@ namespace KviControlCodes
 	* \enum Color
 	* \brief Contains mIRC color codes
 	*/
-	enum Color {
-		White       =   0,   /**< White */
-		Black       =   1,   /**< Black */
-		DarkBlue    =   2,   /**< Dark blue */
-		DarkGreen   =   3,   /**< Dark green */
-		Red         =   4,   /**< Red */
-		DarkRed     =   5,   /**< Dark red */
-		DarkViolet  =   6,   /**< Dark violet */
-		Orange      =   7,   /**< Orange */
-		Yellow      =   8,   /**< Yellow */
-		LightGreen  =   9,   /**< Light green */
-		BlueMarine  =  10,   /**< Blue marine */
-		LightBlue   =  11,   /**< Light blue */
-		Blue        =  12,   /**< Blue */
-		LightViolet =  13,   /**< Light violet */
-		DarkGray    =  14,   /**< Dark gray */
-		LightGray   =  15,   /**< Light gray */
-		Transparent = 100,   /**< Transparent, non standard color code for KviIrcView */
-		NoChange    = 101    /**< No change, non standard color code for KviIrcView */
+	enum Color
+	{
+		White = 0,         /**< White */
+		Black = 1,         /**< Black */
+		DarkBlue = 2,      /**< Dark blue */
+		DarkGreen = 3,     /**< Dark green */
+		Red = 4,           /**< Red */
+		DarkRed = 5,       /**< Dark red */
+		DarkViolet = 6,    /**< Dark violet */
+		Orange = 7,        /**< Orange */
+		Yellow = 8,        /**< Yellow */
+		LightGreen = 9,    /**< Light green */
+		BlueMarine = 10,   /**< Blue marine */
+		LightBlue = 11,    /**< Light blue */
+		Blue = 12,         /**< Blue */
+		LightViolet = 13,  /**< Light violet */
+		DarkGray = 14,     /**< Dark gray */
+		LightGray = 15,    /**< Light gray */
+		Transparent = 100, /**< Transparent, non standard color code for KviIrcView */
+		NoChange = 101     /**< No change, non standard color code for KviIrcView */
 	};
 
 	/**
 	* \enum Control
 	* \brief Contains mIRC control codes
 	*/
-	enum Control {
-		CTCP            = 0x01,  /**< CTCP, IRC control code */
-		Bold            = 0x02,  /**< Bold */
-		Color           = 0x03,  /**< Color */
-		Escape          = 0x04,  /**< Escape, totally artificial and internal to KviIrcView */
-		UnEscape        = 0x05,  /**< Unescape, totally artificial and internal to KviIrcView */
-		UnIcon          = 0x06,  /**< Unicon, totally artificial and internal to KviIrcView */
-		Reset           = 0x0f,  /**< Reset */
-		Reverse         = 0x16,  /**< Reverse */
-		Icon            = 0x1d,  /**< Icon, KVIrc control code */
-		CryptEscape     = 0x1e,  /**< Crypt escape, KVIrc control code */
-		Underline       = 0x1f   /**< Underline */
+	enum Control
+	{
+		CTCP = 0x01,        /**< CTCP, IRC control code */
+		Bold = 0x02,        /**< Bold */
+		Color = 0x03,       /**< Color */
+		Escape = 0x04,      /**< Escape, totally artificial and internal to KviIrcView */
+		UnEscape = 0x05,    /**< Unescape, totally artificial and internal to KviIrcView */
+		UnIcon = 0x06,      /**< Unicon, totally artificial and internal to KviIrcView */
+		Reset = 0x0f,       /**< Reset */
+		Reverse = 0x16,     /**< Reverse */
+		Icon = 0x1d,        /**< Icon, KVIrc control code */
+		CryptEscape = 0x1e, /**< Crypt escape, KVIrc control code */
+		Underline = 0x1f    /**< Underline */
 	};
 
 	/**
@@ -171,7 +169,6 @@ namespace KviControlCodes
 	* \return QString
 	*/
 	KVILIB_API QString stripControlBytes(const QString & szData);
-
 
 	KVILIB_API const kvi_wchar_t * getColorBytesW(const kvi_wchar_t * pwData, unsigned char * pcByte1, unsigned char * pcByte2);
 

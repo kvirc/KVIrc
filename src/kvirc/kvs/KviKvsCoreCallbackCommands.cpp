@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviKvsCoreCallbackCommands.h"
 
 #include "KviKvsKernel.h"
@@ -139,22 +137,24 @@ namespace KviKvsCoreCallbackCommands
 		QString szQuery;
 		KviKvsVariant * pMagicPtr;
 		KVSCCC_PARAMETERS_BEGIN
-			KVSCCC_PARAMETER("dnsquery",KVS_PT_NONEMPTYSTRING,0,szQuery)
-			KVSCCC_PARAMETER("magic",KVS_PT_VARIANT,KVS_PF_OPTIONAL,pMagicPtr)
+		KVSCCC_PARAMETER("dnsquery", KVS_PT_NONEMPTYSTRING, 0, szQuery)
+		KVSCCC_PARAMETER("magic", KVS_PT_VARIANT, KVS_PF_OPTIONAL, pMagicPtr)
 		KVSCCC_PARAMETERS_END
 
 		KviDnsResolver::QueryType queryType = KviDnsResolver::IPv4;
-		if(KVSCCC_pSwitches->find('i',"ipv6"))queryType = KviDnsResolver::IPv6;
-		if(KVSCCC_pSwitches->find('a',"any"))queryType = KviDnsResolver::Any;
+		if(KVSCCC_pSwitches->find('i', "ipv6"))
+			queryType = KviDnsResolver::IPv6;
+		if(KVSCCC_pSwitches->find('a', "any"))
+			queryType = KviDnsResolver::Any;
 
 		KviKvsVariant * pMagic = pMagicPtr ? new KviKvsVariant(*pMagicPtr) : new KviKvsVariant();
 
 		new KviKvsAsyncDnsOperation(
-						KVSCCC_pContext->window(),
-						szQuery,
-						queryType,
-						new KviKvsScript(*KVSCCC_pCallback),
-						pMagic);
+		    KVSCCC_pContext->window(),
+		    szQuery,
+		    queryType,
+		    new KviKvsScript(*KVSCCC_pCallback),
+		    pMagic);
 
 		return true;
 	}
@@ -237,14 +237,13 @@ namespace KviKvsCoreCallbackCommands
 			[doc:kvs_aliasesandfunctions]Aliases and functions[/doc]
 	*/
 
-
 	KVSCCC(alias)
 	{
 		KviKvsVariant * vName = KVSCCC_pParams->first();
 
 		if(!vName || vName->isEmpty())
 		{
-			KVSCCC_pContext->error(__tr2qs_ctx("Missing alias name","kvs"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Missing alias name", "kvs"));
 			return false;
 		}
 
@@ -255,22 +254,22 @@ namespace KviKvsCoreCallbackCommands
 		QRegExp re("[\\w:]+");
 		if(!re.exactMatch(szName))
 		{
-			KVSCCC_pContext->error(__tr2qs_ctx("Alias names can contain only letters, digits, underscores and '::' namespace separators","kvs"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Alias names can contain only letters, digits, underscores and '::' namespace separators", "kvs"));
 			return false;
 		}
 
 		// make sure that we have only doubled "::" and not ":" or ":::..."
 		QString tmp = szName;
-		tmp.replace("::","@"); // @ is not allowed by the rule above
+		tmp.replace("::", "@"); // @ is not allowed by the rule above
 		if(tmp.indexOf(":") != -1)
 		{
-			KVSCCC_pContext->error(__tr2qs_ctx("Stray ':' character in alias name: did you mean ...<namespace>::<name>?","kvs"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Stray ':' character in alias name: did you mean ...<namespace>::<name>?", "kvs"));
 			return false;
 		}
 
 		if((tmp.indexOf("@@") != -1) || tmp.startsWith("@"))
 		{
-			KVSCCC_pContext->error(__tr2qs_ctx("Found an empty namespace in alias name","kvs"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Found an empty namespace in alias name", "kvs"));
 			return false;
 		}
 
@@ -280,27 +279,31 @@ namespace KviKvsCoreCallbackCommands
 			{
 				if(!KviKvsAliasManager::instance()->removeNamespace(szName))
 				{
-					if(!KVSCCC_pSwitches->find('q',"quiet"))
-						KVSCCC_pContext->warning(__tr2qs_ctx("The namespace '%Q' does not exist","kvs"),&szName);
-				}
-			} else {
-				if(!KviKvsAliasManager::instance()->remove(szName))
-				{
-					if(!KVSCCC_pSwitches->find('q',"quiet"))
-						KVSCCC_pContext->warning(__tr2qs_ctx("The alias '%Q' does not exist","kvs"),&szName);
+					if(!KVSCCC_pSwitches->find('q', "quiet"))
+						KVSCCC_pContext->warning(__tr2qs_ctx("The namespace '%Q' does not exist", "kvs"), &szName);
 				}
 			}
-		} else {
+			else
+			{
+				if(!KviKvsAliasManager::instance()->remove(szName))
+				{
+					if(!KVSCCC_pSwitches->find('q', "quiet"))
+						KVSCCC_pContext->warning(__tr2qs_ctx("The alias '%Q' does not exist", "kvs"), &szName);
+				}
+			}
+		}
+		else
+		{
 
 			if(tmp.endsWith("@"))
 			{
-				KVSCCC_pContext->error(__tr2qs_ctx("Found an empty alias name within a namespace","kvs"));
+				KVSCCC_pContext->error(__tr2qs_ctx("Found an empty alias name within a namespace", "kvs"));
 				return false;
 			}
 
 			KviKvsScript * pScript = new KviKvsScript(*KVSCCC_pCallback);
 			pScript->setName(szName);
-			KviKvsAliasManager::instance()->add(szName,pScript);
+			KviKvsAliasManager::instance()->add(szName, pScript);
 		}
 		return true;
 	}
@@ -366,8 +369,8 @@ namespace KviKvsCoreCallbackCommands
 		QString szNick;
 		KviKvsVariant * pMagic;
 		KVSCCC_PARAMETERS_BEGIN
-			KVSCCC_PARAMETER("nickname",KVS_PT_NONEMPTYSTRING,0,szNick)
-			KVSCCC_PARAMETER("magic",KVS_PT_VARIANT,KVS_PF_OPTIONAL,pMagic)
+		KVSCCC_PARAMETER("nickname", KVS_PT_NONEMPTYSTRING, 0, szNick)
+		KVSCCC_PARAMETER("magic", KVS_PT_VARIANT, KVS_PF_OPTIONAL, pMagic)
 		KVSCCC_PARAMETERS_END
 
 		KVSCCC_REQUIRE_CONNECTION
@@ -382,8 +385,10 @@ namespace KviKvsCoreCallbackCommands
 
 		KVSCCC_pConnection->asyncWhoisData()->add(info);
 
-		if(KVSCCC_pSwitches->find('i',"idle-time"))KVSCCC_pConnection->sendFmtData("WHOIS %s %s",szN.data(),szN.data());
-		else KVSCCC_pConnection->sendFmtData("WHOIS %s",szN.data());
+		if(KVSCCC_pSwitches->find('i', "idle-time"))
+			KVSCCC_pConnection->sendFmtData("WHOIS %s %s", szN.data(), szN.data());
+		else
+			KVSCCC_pConnection->sendFmtData("WHOIS %s", szN.data());
 
 		return true;
 	}
@@ -443,39 +448,41 @@ namespace KviKvsCoreCallbackCommands
 	KVSCCC(button)
 	{
 		KviKvsVariant * pUnused;
-		QString szName,szIcon,szLabel;
+		QString szName, szIcon, szLabel;
 		KVSCCC_PARAMETERS_BEGIN
-			KVSCCC_PARAMETER("type_unused",KVS_PT_VARIANT,0,pUnused)
-			KVSCCC_PARAMETER("name",KVS_PT_NONEMPTYSTRING,0,szName)
-			KVSCCC_PARAMETER("icon",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szIcon)
-			KVSCCC_PARAMETER("label",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szLabel)
+		KVSCCC_PARAMETER("type_unused", KVS_PT_VARIANT, 0, pUnused)
+		KVSCCC_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSCCC_PARAMETER("icon", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szIcon)
+		KVSCCC_PARAMETER("label", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szLabel)
 		KVSCCC_PARAMETERS_END
 
 		KviScriptUserButton * pButton = 0;
 
 		if(!KVSCCC_pWindow->buttonContainer())
 		{
-			if(!KVSCCC_pSwitches->find('q',"quiet"))
-				KVSCCC_pContext->warning(__tr2qs_ctx("The specified window has no button containers","kvs"));
+			if(!KVSCCC_pSwitches->find('q', "quiet"))
+				KVSCCC_pContext->warning(__tr2qs_ctx("The specified window has no button containers", "kvs"));
 			return true;
 		}
 
 		//pButton = (KviScriptUserButton *)(KVSCCC_pWindow->buttonContainer())->child(szName.toUtf8().data(),"KviWindowScriptButton");
-		pButton = (KviScriptUserButton *)(KVSCCC_pWindow->buttonContainer())->findChild<KviWindowScriptButton*>(szName);
+		pButton = (KviScriptUserButton *)(KVSCCC_pWindow->buttonContainer())->findChild<KviWindowScriptButton *>(szName);
 
 		if(KVSCCC_pCallback->code().isEmpty())
 		{
-			if(pButton)delete pButton;
-			else {
-				if(!KVSCCC_pSwitches->find('q',"quiet"))
-					KVSCCC_pContext->warning(__tr2qs_ctx("Window button '%Q' not found","kvs"),&szName);
+			if(pButton)
+				delete pButton;
+			else
+			{
+				if(!KVSCCC_pSwitches->find('q', "quiet"))
+					KVSCCC_pContext->warning(__tr2qs_ctx("Window button '%Q' not found", "kvs"), &szName);
 			}
 			return true;
 		}
 
 		if(!pButton)
 		{
-			pButton = new KviWindowScriptButton(KVSCCC_pWindow->buttonContainer(),KVSCCC_pWindow,szName.toUtf8().data());
+			pButton = new KviWindowScriptButton(KVSCCC_pWindow->buttonContainer(), KVSCCC_pWindow, szName.toUtf8().data());
 			pButton->show();
 		}
 
@@ -483,7 +490,7 @@ namespace KviKvsCoreCallbackCommands
 		if(!szLabel.isEmpty())
 		{
 			pButton->setButtonText(szLabel);
-			KviTalToolTip::add(pButton,szLabel);
+			KviTalToolTip::add(pButton, szLabel);
 		}
 
 		pButton->setButtonCode(new KviKvsScript(*KVSCCC_pCallback));
@@ -494,13 +501,15 @@ namespace KviKvsCoreCallbackCommands
 			if(pix)
 			{
 				pButton->setButtonPixmap(*pix);
-			} else {
-				if(!KVSCCC_pSwitches->find('q',"quiet"))
-					KVSCCC_pContext->warning(__tr2qs_ctx("Can't find the icon '%Q'","kvs"),&szIcon);
+			}
+			else
+			{
+				if(!KVSCCC_pSwitches->find('q', "quiet"))
+					KVSCCC_pContext->warning(__tr2qs_ctx("Can't find the icon '%Q'", "kvs"), &szIcon);
 			}
 		}
 
-		pButton->setEnabled(!(KVSCCC_pSwitches->find('d',"disabled")));
+		pButton->setEnabled(!(KVSCCC_pSwitches->find('d', "disabled")));
 
 		return true;
 	}
@@ -538,10 +547,10 @@ namespace KviKvsCoreCallbackCommands
 
 	KVSCCC(event)
 	{
-		QString szEventName,szHandlerName;
+		QString szEventName, szHandlerName;
 		KVSCCC_PARAMETERS_BEGIN
-			KVSCCC_PARAMETER("event_name",KVS_PT_NONEMPTYSTRING,0,szEventName)
-			KVSCCC_PARAMETER("handler_name",KVS_PT_NONEMPTYSTRING,0,szHandlerName)
+		KVSCCC_PARAMETER("event_name", KVS_PT_NONEMPTYSTRING, 0, szEventName)
+		KVSCCC_PARAMETER("handler_name", KVS_PT_NONEMPTYSTRING, 0, szHandlerName)
 		KVSCCC_PARAMETERS_END
 
 		bool bOk;
@@ -552,16 +561,18 @@ namespace KviKvsCoreCallbackCommands
 		{
 			if(!KviKvsEventManager::instance()->isValidRawEvent(iNumber))
 			{
-				if(!KVSCCC_pSwitches->find('q',"quiet"))
-					KVSCCC_pContext->warning(__tr2qs_ctx("No such event (%Q)","kvs"),&szEventName);
+				if(!KVSCCC_pSwitches->find('q', "quiet"))
+					KVSCCC_pContext->warning(__tr2qs_ctx("No such event (%Q)", "kvs"), &szEventName);
 				return true;
 			}
-		} else {
+		}
+		else
+		{
 			iNumber = KviKvsEventManager::instance()->findAppEventIndexByName(szEventName);
 			if(!KviKvsEventManager::instance()->isValidAppEvent(iNumber))
 			{
-				if(!KVSCCC_pSwitches->find('q',"quiet"))
-					KVSCCC_pContext->warning(__tr2qs_ctx("No such event (%Q)","kvs"),&szEventName);
+				if(!KVSCCC_pSwitches->find('q', "quiet"))
+					KVSCCC_pContext->warning(__tr2qs_ctx("No such event (%Q)", "kvs"), &szEventName);
 				return true;
 			}
 		}
@@ -570,32 +581,38 @@ namespace KviKvsCoreCallbackCommands
 		{
 			if(bIsRaw)
 			{
-				if(!KviKvsEventManager::instance()->removeScriptRawHandler(iNumber,szHandlerName))
+				if(!KviKvsEventManager::instance()->removeScriptRawHandler(iNumber, szHandlerName))
 				{
-					if(!KVSCCC_pSwitches->find('q',"quiet"))
-						KVSCCC_pContext->warning(__tr2qs_ctx("No handler '%Q' for RAW numeric event '%d'","kvs"),&szHandlerName,iNumber);
-				}
-			} else {
-				if(!KviKvsEventManager::instance()->removeScriptAppHandler(iNumber,szHandlerName))
-				{
-					if(!KVSCCC_pSwitches->find('q',"quiet"))
-						KVSCCC_pContext->warning(__tr2qs_ctx("No handler '%Q' for event '%Q'","kvs"),&szHandlerName,&szEventName);
+					if(!KVSCCC_pSwitches->find('q', "quiet"))
+						KVSCCC_pContext->warning(__tr2qs_ctx("No handler '%Q' for RAW numeric event '%d'", "kvs"), &szHandlerName, iNumber);
 				}
 			}
-		} else {
+			else
+			{
+				if(!KviKvsEventManager::instance()->removeScriptAppHandler(iNumber, szHandlerName))
+				{
+					if(!KVSCCC_pSwitches->find('q', "quiet"))
+						KVSCCC_pContext->warning(__tr2qs_ctx("No handler '%Q' for event '%Q'", "kvs"), &szHandlerName, &szEventName);
+				}
+			}
+		}
+		else
+		{
 			if(bIsRaw)
 			{
 				// remove the old handler
-				KviKvsEventManager::instance()->removeScriptRawHandler(iNumber,szHandlerName);
+				KviKvsEventManager::instance()->removeScriptRawHandler(iNumber, szHandlerName);
 				QString szContext = QString("RawEvent%1::%2").arg(iNumber).arg(szHandlerName);
-				KviKvsScriptEventHandler * pHandler = new KviKvsScriptEventHandler(szHandlerName,szContext,KVSCCC_pCallback->code());
-				KviKvsEventManager::instance()->addRawHandler(iNumber,pHandler);
-			} else {
+				KviKvsScriptEventHandler * pHandler = new KviKvsScriptEventHandler(szHandlerName, szContext, KVSCCC_pCallback->code());
+				KviKvsEventManager::instance()->addRawHandler(iNumber, pHandler);
+			}
+			else
+			{
 				// remove the old handler
-				KviKvsEventManager::instance()->removeScriptAppHandler(iNumber,szHandlerName);
-				QString szContext = QString("%1::%2").arg(szEventName,szHandlerName);
-				KviKvsScriptEventHandler * pHandler = new KviKvsScriptEventHandler(szHandlerName,szContext,KVSCCC_pCallback->code());
-				KviKvsEventManager::instance()->addAppHandler(iNumber,pHandler);
+				KviKvsEventManager::instance()->removeScriptAppHandler(iNumber, szHandlerName);
+				QString szContext = QString("%1::%2").arg(szEventName, szHandlerName);
+				KviKvsScriptEventHandler * pHandler = new KviKvsScriptEventHandler(szHandlerName, szContext, KVSCCC_pCallback->code());
+				KviKvsEventManager::instance()->addAppHandler(iNumber, pHandler);
 			}
 		}
 
@@ -930,42 +947,49 @@ namespace KviKvsCoreCallbackCommands
 		QString szCommandline;
 		KviKvsVariant * pMagic;
 		KVSCCC_PARAMETERS_BEGIN
-			KVSCCC_PARAMETER("commandline",KVS_PT_NONEMPTYSTRING,0,szCommandline)
-			KVSCCC_PARAMETER("magic",KVS_PT_VARIANT,KVS_PF_OPTIONAL,pMagic)
+		KVSCCC_PARAMETER("commandline", KVS_PT_NONEMPTYSTRING, 0, szCommandline)
+		KVSCCC_PARAMETER("magic", KVS_PT_VARIANT, KVS_PF_OPTIONAL, pMagic)
 		KVSCCC_PARAMETERS_END
 
 		int f = 0;
 
-		if(KVSCCC_pSwitches->find('t',"trigger-termination") != 0)f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERTERMINATED;
-		if(KVSCCC_pSwitches->find('n',"no-stdout") == 0)f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDOUT;
-		if(KVSCCC_pSwitches->find('e',"trigger-stderr") != 0)f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDERR;
-		if(KVSCCC_pSwitches->find('x',"trigger-startup") != 0)f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTARTED;
-		if(KVSCCC_pSwitches->find('b',"output-block") != 0)f |= KVI_KVS_PROCESSDESCRIPTOR_OUTPUTBYBLOCKS;
-		if(KVSCCC_pSwitches->find('w',"bind-to-window") != 0)f |= KVI_KVS_PROCESSDESCRIPTOR_KILLIFNOWINDOW;
-		if(KVSCCC_pSwitches->find('d',"direct") != 0)f |= KVI_KVS_PROCESSDESCRIPTOR_NOSHELL;
+		if(KVSCCC_pSwitches->find('t', "trigger-termination") != 0)
+			f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERTERMINATED;
+		if(KVSCCC_pSwitches->find('n', "no-stdout") == 0)
+			f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDOUT;
+		if(KVSCCC_pSwitches->find('e', "trigger-stderr") != 0)
+			f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDERR;
+		if(KVSCCC_pSwitches->find('x', "trigger-startup") != 0)
+			f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTARTED;
+		if(KVSCCC_pSwitches->find('b', "output-block") != 0)
+			f |= KVI_KVS_PROCESSDESCRIPTOR_OUTPUTBYBLOCKS;
+		if(KVSCCC_pSwitches->find('w', "bind-to-window") != 0)
+			f |= KVI_KVS_PROCESSDESCRIPTOR_KILLIFNOWINDOW;
+		if(KVSCCC_pSwitches->find('d', "direct") != 0)
+			f |= KVI_KVS_PROCESSDESCRIPTOR_NOSHELL;
 
 		QString szShell;
-		KVSCCC_pSwitches->getAsStringIfExisting('s',"shell",szShell);
+		KVSCCC_pSwitches->getAsStringIfExisting('s', "shell", szShell);
 
 		kvs_int_t iPingTime = 0;
 		kvs_int_t iMaxRunTime = 0;
 
-		KviKvsVariant * pPing = KVSCCC_pSwitches->find('p',"trigger-ping");
+		KviKvsVariant * pPing = KVSCCC_pSwitches->find('p', "trigger-ping");
 		if(pPing)
 		{
 			if(!(pPing->asInteger(iPingTime) && iPingTime > 0))
 			{
-				KVSCCC_pContext->warning(__tr2qs_ctx("The specified ping time is invalid: assuming zero (no ping)","kvs"));
+				KVSCCC_pContext->warning(__tr2qs_ctx("The specified ping time is invalid: assuming zero (no ping)", "kvs"));
 				iPingTime = 0;
 			}
 		}
 
-		KviKvsVariant * pKill = KVSCCC_pSwitches->find('k',"kill-after");
+		KviKvsVariant * pKill = KVSCCC_pSwitches->find('k', "kill-after");
 		if(pKill)
 		{
 			if(!(pKill->asInteger(iMaxRunTime) && iMaxRunTime > 0))
 			{
-				KVSCCC_pContext->warning(__tr2qs_ctx("The specified maximum run time is invalid: assuming zero (infinite)","kvs"));
+				KVSCCC_pContext->warning(__tr2qs_ctx("The specified maximum run time is invalid: assuming zero (infinite)", "kvs"));
 				iMaxRunTime = 0;
 			}
 		}
@@ -975,7 +999,7 @@ namespace KviKvsCoreCallbackCommands
 		d->szCommandline = szCommandline;
 		d->szShell = szShell;
 		d->pWnd = KVSCCC_pContext->window();
-		d->pMagic =pMagic ? new KviKvsVariant(*pMagic) : 0;
+		d->pMagic = pMagic ? new KviKvsVariant(*pMagic) : 0;
 		d->iFlags = f;
 		d->pCallback = new KviKvsScript(*KVSCCC_pCallback);
 		d->iMaxRunTime = iMaxRunTime;
@@ -984,7 +1008,8 @@ namespace KviKvsCoreCallbackCommands
 		KviKvsProcessAsyncOperation * op = new KviKvsProcessAsyncOperation(d);
 		if(!op->start())
 		{
-			if(KVSCCC_pSwitches->find('q',"quiet") == 0)KVSCCC_pContext->warning(__tr2qs_ctx("Failed to start the process","kvs"));
+			if(KVSCCC_pSwitches->find('q', "quiet") == 0)
+				KVSCCC_pContext->warning(__tr2qs_ctx("Failed to start the process", "kvs"));
 			delete op;
 		}
 
@@ -1024,22 +1049,21 @@ namespace KviKvsCoreCallbackCommands
 		kvs_hobject_t hObject;
 		QString szFunctionName;
 		KVSCCC_PARAMETERS_BEGIN
-			KVSCCC_PARAMETER("object_handle",KVS_PT_HOBJECT,0,hObject)
-			KVSCCC_PARAMETER("function_name",KVS_PT_NONEMPTYSTRING,0,szFunctionName)
+		KVSCCC_PARAMETER("object_handle", KVS_PT_HOBJECT, 0, hObject)
+		KVSCCC_PARAMETER("function_name", KVS_PT_NONEMPTYSTRING, 0, szFunctionName)
 		KVSCCC_PARAMETERS_END
 
 		KviKvsObject * o = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 		if(!o)
 		{
-			KVSCCC_pContext->error(__tr2qs_ctx("The specified object does not exist","kvs"));
+			KVSCCC_pContext->error(__tr2qs_ctx("The specified object does not exist", "kvs"));
 			return false;
 		}
 
-		o->registerPrivateImplementation(szFunctionName,KVSCCC_pCallback->code());
+		o->registerPrivateImplementation(szFunctionName, KVSCCC_pCallback->code());
 
 		return true;
 	}
-
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1151,7 +1175,7 @@ namespace KviKvsCoreCallbackCommands
 
 		if(!vName || vName->isEmpty())
 		{
-			KVSCCC_pContext->error(__tr2qs_ctx("Missing timer name","kvs"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Missing timer name", "kvs"));
 			return false;
 		}
 
@@ -1160,22 +1184,25 @@ namespace KviKvsCoreCallbackCommands
 
 		if(!vDelay)
 		{
-			KVSCCC_pContext->error(__tr2qs_ctx("Missing timeout delay","kvs"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Missing timeout delay", "kvs"));
 			return false;
 		}
 
 		kvs_int_t iDelay;
 		if(!vDelay->asInteger(iDelay))
 		{
-			KVSCCC_pContext->error(__tr2qs_ctx("The timeout delay didn't evaluate to an integer","kvs"));
+			KVSCCC_pContext->error(__tr2qs_ctx("The timeout delay didn't evaluate to an integer", "kvs"));
 			return false;
 		}
 
 		KviKvsTimer::Lifetime lt;
 
-		if(KVSCCC_pSwitches->find('s',"single-shot"))lt = KviKvsTimer::SingleShot;
-		else if(KVSCCC_pSwitches->find('p',"persistent"))lt = KviKvsTimer::Persistent;
-		else lt = KviKvsTimer::WindowLifetime;
+		if(KVSCCC_pSwitches->find('s', "single-shot"))
+			lt = KviKvsTimer::SingleShot;
+		else if(KVSCCC_pSwitches->find('p', "persistent"))
+			lt = KviKvsTimer::Persistent;
+		else
+			lt = KviKvsTimer::WindowLifetime;
 
 		// prepare the callback parameters
 		KviKvsVariantList * l = new KviKvsVariantList();
@@ -1188,36 +1215,35 @@ namespace KviKvsCoreCallbackCommands
 			v = KVSCCC_pParams->next();
 		}
 
-		if(!KviKvsTimerManager::instance()->addTimer(szName,lt,KVSCCC_pContext->window(),iDelay,new KviKvsScript(*KVSCCC_pCallback),l))
+		if(!KviKvsTimerManager::instance()->addTimer(szName, lt, KVSCCC_pContext->window(), iDelay, new KviKvsScript(*KVSCCC_pCallback), l))
 		{
-			KVSCCC_pContext->error(__tr2qs_ctx("Unable to add the timer: insufficient system resources","kvs"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Unable to add the timer: insufficient system resources", "kvs"));
 			return false;
 		}
 
 		return true;
 	}
 
-
 	void init()
 	{
 		KviKvsKernel * pKern = KviKvsKernel::instance();
 
-#define _REGCMD(__cmdName,__routine) \
-		{ \
-			KviKvsCoreCallbackCommandExecRoutine * r = new KviKvsCoreCallbackCommandExecRoutine; \
-			r->proc = KVI_PTR2MEMBER(KviKvsCoreCallbackCommands::__routine); \
-			pKern->registerCoreCallbackCommandExecRoutine(QString(__cmdName),r); \
-		}
+#define _REGCMD(__cmdName, __routine)                                                        \
+	{                                                                                        \
+		KviKvsCoreCallbackCommandExecRoutine * r = new KviKvsCoreCallbackCommandExecRoutine; \
+		r->proc = KVI_PTR2MEMBER(KviKvsCoreCallbackCommands::__routine);                     \
+		pKern->registerCoreCallbackCommandExecRoutine(QString(__cmdName), r);                \
+	}
 
-		_REGCMD("ahost",ahost);
-		_REGCMD("awhois",awhois);
-		_REGCMD("alias",alias);
-		_REGCMD("button",button);
-		_REGCMD("event",event);
-		_REGCMD("exec",exec);
-		_REGCMD("privateimpl",privateimpl);
-		_REGCMD("function",alias);
-		_REGCMD("timer",timer);
+		_REGCMD("ahost", ahost);
+		_REGCMD("awhois", awhois);
+		_REGCMD("alias", alias);
+		_REGCMD("button", button);
+		_REGCMD("event", event);
+		_REGCMD("exec", exec);
+		_REGCMD("privateimpl", privateimpl);
+		_REGCMD("function", alias);
+		_REGCMD("timer", timer);
 
 #undef _REGCMD
 	}

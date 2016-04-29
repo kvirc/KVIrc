@@ -60,10 +60,12 @@ public:
 	* \brief Destroys the history window object
 	*/
 	~KviHistoryWindow();
+
 private:
 	KviInput * m_pOwner;
-	int        m_iTimerId;
-	QWidget  * m_pParent;
+	int m_iTimerId;
+	QWidget * m_pParent;
+
 public:
 	/**
 	* \brief Shows the popup
@@ -79,6 +81,7 @@ public:
 	* \return void
 	*/
 	void doHide();
+
 private:
 	/**
 	* \brief Shows the widget
@@ -121,6 +124,7 @@ class KVIRC_API KviHistoryWindowWidget : public QWidget
 	Q_OBJECT
 public:
 	KviHistoryWindow * m_pWindow;
+
 public:
 	/**
 	* \brief Constructs the history window widget object
@@ -132,6 +136,7 @@ public:
 	* \brief Destroys the history window widget object
 	*/
 	~KviHistoryWindowWidget();
+
 public:
 	/**
 	* \brief Shows the popup

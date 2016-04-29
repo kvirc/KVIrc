@@ -25,8 +25,8 @@
 #include "KviKvsTreeNodeVoidFunctionCall.h"
 #include "KviKvsRunTimeContext.h"
 
-KviKvsTreeNodeVoidFunctionCall::KviKvsTreeNodeVoidFunctionCall(const QChar * pLocation,KviKvsTreeNodeFunctionCall * r)
-: KviKvsTreeNodeInstruction(pLocation)
+KviKvsTreeNodeVoidFunctionCall::KviKvsTreeNodeVoidFunctionCall(const QChar * pLocation, KviKvsTreeNodeFunctionCall * r)
+    : KviKvsTreeNodeInstruction(pLocation)
 {
 	m_pFunctionCall = r;
 }
@@ -36,14 +36,14 @@ KviKvsTreeNodeVoidFunctionCall::~KviKvsTreeNodeVoidFunctionCall()
 	delete m_pFunctionCall;
 }
 
-void KviKvsTreeNodeVoidFunctionCall::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeVoidFunctionCall::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Void Function Call";
 }
 
 void KviKvsTreeNodeVoidFunctionCall::dump(const char * prefix)
 {
-	qDebug("%s VoidFunctionCall",prefix);
+	qDebug("%s VoidFunctionCall", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pFunctionCall->dump(tmp.toUtf8().data());
@@ -52,5 +52,5 @@ void KviKvsTreeNodeVoidFunctionCall::dump(const char * prefix)
 bool KviKvsTreeNodeVoidFunctionCall::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	return m_pFunctionCall->evaluateReadOnly(c,&v);
+	return m_pFunctionCall->evaluateReadOnly(c, &v);
 }

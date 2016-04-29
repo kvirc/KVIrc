@@ -33,18 +33,18 @@ class QPushButton;
 class QLabel;
 class KviScriptEditor;
 
-
 class CodeTesterWidget : public QWidget
 {
 	Q_OBJECT
 public:
 	CodeTesterWidget(QWidget * par);
 	~CodeTesterWidget();
+
 private:
 	KviScriptEditor * m_pEditor;
-	QLineEdit       * m_pParams;
-	QPushButton     * m_pExecuteButton;
-	QLabel          * m_pModeLabel;
+	QLineEdit * m_pParams;
+	QPushButton * m_pExecuteButton;
+	QLabel * m_pModeLabel;
 private slots:
 	void execute();
 };
@@ -55,13 +55,15 @@ class CodeTesterWindow : public KviWindow
 public:
 	CodeTesterWindow();
 	~CodeTesterWindow();
+
 protected:
 	CodeTesterWidget * m_pTester;
+
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getConfigGroupName(QString &szName);
+	virtual void resizeEvent(QResizeEvent * e);
+	virtual void getConfigGroupName(QString & szName);
 	virtual void saveProperties(KviConfigurationFile *);
 	virtual void loadProperties(KviConfigurationFile *);
 };

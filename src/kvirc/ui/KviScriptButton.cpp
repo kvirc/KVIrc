@@ -31,20 +31,20 @@
 #include "KviKvsVariantList.h"
 #include "KviKvsScript.h"
 
-
-KviScriptUserButton::KviScriptUserButton(QWidget * par,const char * name)
-: QToolButton(par)
+KviScriptUserButton::KviScriptUserButton(QWidget * par, const char * name)
+    : QToolButton(par)
 {
 	m_pScript = 0;
 	setObjectName(name);
-//	setAutoRaise(true);
-	connect(this,SIGNAL(clicked()),this,SLOT(btnClicked()));
+	//	setAutoRaise(true);
+	connect(this, SIGNAL(clicked()), this, SLOT(btnClicked()));
 	setAutoRaise(true);
 }
 
 KviScriptUserButton::~KviScriptUserButton()
 {
-	if(m_pScript)delete m_pScript;
+	if(m_pScript)
+		delete m_pScript;
 }
 
 KviWindow * KviScriptUserButton::window()
@@ -54,26 +54,26 @@ KviWindow * KviScriptUserButton::window()
 
 void KviScriptUserButton::setButtonCode(KviKvsScript * pScript)
 {
-	if(m_pScript)delete m_pScript;
+	if(m_pScript)
+		delete m_pScript;
 	m_pScript = pScript;
 }
-
 
 void KviScriptUserButton::btnClicked()
 {
 	KviWindow * pWnd = window();
-	if(!pWnd)return; // ops...
-	QPoint pos = mapToGlobal(QPoint(0,height()));
+	if(!pWnd)
+		return; // ops...
+	QPoint pos = mapToGlobal(QPoint(0, height()));
 
 	KviKvsVariantList vList;
 	vList.append((kvs_int_t)pos.x());
 	vList.append((kvs_int_t)pos.y());
-	m_pScript->run(pWnd,&vList,0,KviKvsScript::PreserveParams);
+	m_pScript->run(pWnd, &vList, 0, KviKvsScript::PreserveParams);
 }
 
-
-KviWindowScriptButton::KviWindowScriptButton(QWidget * p,KviWindow * wnd,const char * name)
-: KviScriptUserButton(p,name)
+KviWindowScriptButton::KviWindowScriptButton(QWidget * p, KviWindow * wnd, const char * name)
+    : KviScriptUserButton(p, name)
 {
 	m_pWnd = wnd;
 }

@@ -36,28 +36,26 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool setTracking(KviKvsObjectFunctionCall *c);
-	bool setValue(KviKvsObjectFunctionCall *c);
-	bool setMinValue(KviKvsObjectFunctionCall *c);
-	bool setMaxValue(KviKvsObjectFunctionCall *c);
-	bool setLineStep(KviKvsObjectFunctionCall *c);
-	bool setPageStep(KviKvsObjectFunctionCall *c);
-	bool setTickInterval(KviKvsObjectFunctionCall *c);
-	bool value(KviKvsObjectFunctionCall *c);
-	bool minValue(KviKvsObjectFunctionCall *c);
-	bool maxValue(KviKvsObjectFunctionCall *c);
-	bool lineStep(KviKvsObjectFunctionCall *c);
-	bool pageStep(KviKvsObjectFunctionCall *c);
-	bool setTickmarks(KviKvsObjectFunctionCall *c);
-	bool setOrientation(KviKvsObjectFunctionCall *c);
-	bool valueChangedEvent(KviKvsObjectFunctionCall *c);
+	bool setTracking(KviKvsObjectFunctionCall * c);
+	bool setValue(KviKvsObjectFunctionCall * c);
+	bool setMinValue(KviKvsObjectFunctionCall * c);
+	bool setMaxValue(KviKvsObjectFunctionCall * c);
+	bool setLineStep(KviKvsObjectFunctionCall * c);
+	bool setPageStep(KviKvsObjectFunctionCall * c);
+	bool setTickInterval(KviKvsObjectFunctionCall * c);
+	bool value(KviKvsObjectFunctionCall * c);
+	bool minValue(KviKvsObjectFunctionCall * c);
+	bool maxValue(KviKvsObjectFunctionCall * c);
+	bool lineStep(KviKvsObjectFunctionCall * c);
+	bool pageStep(KviKvsObjectFunctionCall * c);
+	bool setTickmarks(KviKvsObjectFunctionCall * c);
+	bool setOrientation(KviKvsObjectFunctionCall * c);
+	bool valueChangedEvent(KviKvsObjectFunctionCall * c);
 
 protected slots:
 	void valueChanged(int);
 };
 
-
-
-#endif	// !_CLASS_SLIDER_H_
+#endif // !_CLASS_SLIDER_H_

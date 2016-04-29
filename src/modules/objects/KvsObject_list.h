@@ -30,35 +30,34 @@
 #include "KviKvsVariant.h"
 #include "object_macros.h"
 
-
 class KvsObject_list : public KviKvsObject
 {
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_list)
 protected:
 	KviPointerList<KviKvsVariant> * m_pDataList;
+
 protected:
 	KviPointerList<KviKvsVariant> * dataList() const { return m_pDataList; };
 public:
-	bool count(KviKvsObjectFunctionCall *c);
-	bool isEmpty(KviKvsObjectFunctionCall *c);
-	bool clear(KviKvsObjectFunctionCall *c);
-	bool append(KviKvsObjectFunctionCall *c);
-	bool prepend(KviKvsObjectFunctionCall *c);
-	bool insert(KviKvsObjectFunctionCall *c);
-	bool at(KviKvsObjectFunctionCall *c);
-	bool remove(KviKvsObjectFunctionCall *c);
-	bool removeFirst(KviKvsObjectFunctionCall *c);
-	bool removeLast(KviKvsObjectFunctionCall *c);
-	bool removeCurrent(KviKvsObjectFunctionCall *c);
-	bool moveFirst(KviKvsObjectFunctionCall *c);
-	bool moveNext(KviKvsObjectFunctionCall *c);
-	bool movePrev(KviKvsObjectFunctionCall *c);
-	bool moveLast(KviKvsObjectFunctionCall *c);
-	bool eof(KviKvsObjectFunctionCall *c);
-	bool current(KviKvsObjectFunctionCall *c);
-	bool sort(KviKvsObjectFunctionCall *c);
+	bool count(KviKvsObjectFunctionCall * c);
+	bool isEmpty(KviKvsObjectFunctionCall * c);
+	bool clear(KviKvsObjectFunctionCall * c);
+	bool append(KviKvsObjectFunctionCall * c);
+	bool prepend(KviKvsObjectFunctionCall * c);
+	bool insert(KviKvsObjectFunctionCall * c);
+	bool at(KviKvsObjectFunctionCall * c);
+	bool remove(KviKvsObjectFunctionCall * c);
+	bool removeFirst(KviKvsObjectFunctionCall * c);
+	bool removeLast(KviKvsObjectFunctionCall * c);
+	bool removeCurrent(KviKvsObjectFunctionCall * c);
+	bool moveFirst(KviKvsObjectFunctionCall * c);
+	bool moveNext(KviKvsObjectFunctionCall * c);
+	bool movePrev(KviKvsObjectFunctionCall * c);
+	bool moveLast(KviKvsObjectFunctionCall * c);
+	bool eof(KviKvsObjectFunctionCall * c);
+	bool current(KviKvsObjectFunctionCall * c);
+	bool sort(KviKvsObjectFunctionCall * c);
 };
-
 
 #endif //_CLASS_LIST_H_

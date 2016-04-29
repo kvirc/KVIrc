@@ -45,19 +45,18 @@
 
 //#include <qmime.h>
 
-
 namespace ThemeFunctions
 {
 
-	static bool notAValidThemePackage(QString &szError)
+	static bool notAValidThemePackage(QString & szError)
 	{
-		szError = __tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc theme package","theme");
+		szError = __tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc theme package", "theme");
 		return false;
 	}
 
-	bool installThemePackage(const QString &szThemePackageFileName,QString &szError,QWidget * pDialogParent)
+	bool installThemePackage(const QString & szThemePackageFileName, QString & szError, QWidget * pDialogParent)
 	{
-		KviPointerHashTable<QString,QString> * pInfoFields;
+		KviPointerHashTable<QString, QString> * pInfoFields;
 		QString * pValue;
 		bool bInstall;
 		QPixmap pix;
@@ -73,7 +72,7 @@ namespace ThemeFunctions
 		{
 			qDebug("The selected file doesn't seem to be a valid KVIrc package");
 			QString szErr = r.lastError();
-			szError = QString(__tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc package: %1","theme")).arg(szErr);
+			szError = QString(__tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc package: %1", "theme")).arg(szErr);
 			return false;
 		}
 
@@ -83,7 +82,7 @@ namespace ThemeFunctions
 		if(!pValue)
 			return notAValidThemePackage(szError);
 
-		if(!KviQString::equalCI(*pValue,"ThemePack"))
+		if(!KviQString::equalCI(*pValue, "ThemePack"))
 			return notAValidThemePackage(szError);
 
 		pValue = pInfoFields->find("ThemePackVersion");
@@ -92,10 +91,11 @@ namespace ThemeFunctions
 			return notAValidThemePackage(szError);
 
 		// make sure the default fields exist
-		for(int i=0;i<6;i++)
+		for(int i = 0; i < 6; i++)
 		{
 			pValue = pInfoFields->find(check_fields[i]);
-			if(!pValue)return notAValidThemePackage(szError);
+			if(!pValue)
+				return notAValidThemePackage(szError);
 		}
 
 		pValue = pInfoFields->find("ThemeCount");
@@ -115,7 +115,7 @@ namespace ThemeFunctions
 		// load its picture
 		pByteArray = r.binaryInfoFields()->find("Image");
 		if(pByteArray)
-			pix.loadFromData(*pByteArray,0,0);
+			pix.loadFromData(*pByteArray, 0, 0);
 
 		if(pix.isNull())
 		{
@@ -131,16 +131,16 @@ namespace ThemeFunctions
 		QString szPackageThemeEngineVersion;
 		QString szPackageApplication;
 
-		QString szAuthor = __tr2qs_ctx("Author","theme");
-		QString szCreatedAt = __tr2qs_ctx("Created at","theme");
-		QString szCreatedOn = __tr2qs_ctx("Created with","theme");
+		QString szAuthor = __tr2qs_ctx("Author", "theme");
+		QString szCreatedAt = __tr2qs_ctx("Created at", "theme");
+		QString szCreatedOn = __tr2qs_ctx("Created with", "theme");
 
-		r.getStringInfoField("Name",szPackageName);
-		r.getStringInfoField("Version",szPackageVersion);
-		r.getStringInfoField("Author",szPackageAuthor);
-		r.getStringInfoField("Description",szPackageDescription);
-		r.getStringInfoField("Application",szPackageApplication);
-		r.getStringInfoField("Date",szPackageDate);
+		r.getStringInfoField("Name", szPackageName);
+		r.getStringInfoField("Version", szPackageVersion);
+		r.getStringInfoField("Author", szPackageAuthor);
+		r.getStringInfoField("Description", szPackageDescription);
+		r.getStringInfoField("Application", szPackageApplication);
+		r.getStringInfoField("Date", szPackageDate);
 
 		QString szWarnings;
 		QString szDetails = "<html><body bgcolor=\"#ffffff\">";
@@ -163,47 +163,46 @@ namespace ThemeFunctions
 			QString szThemeApplication;
 
 			szTmp = QString("Theme%1Name").arg(iIdx);
-			r.getStringInfoField(szTmp,szThemeName);
+			r.getStringInfoField(szTmp, szThemeName);
 			szTmp = QString("Theme%1Version").arg(iIdx);
-			r.getStringInfoField(szTmp,szThemeVersion);
+			r.getStringInfoField(szTmp, szThemeVersion);
 			szTmp = QString("Theme%1Application").arg(iIdx);
-			r.getStringInfoField(szTmp,szThemeApplication);
+			r.getStringInfoField(szTmp, szThemeApplication);
 			szTmp = QString("Theme%1Description").arg(iIdx);
-			r.getStringInfoField(szTmp,szThemeDescription);
+			r.getStringInfoField(szTmp, szThemeDescription);
 			szTmp = QString("Theme%1Date").arg(iIdx);
-			r.getStringInfoField(szTmp,szThemeDate);
+			r.getStringInfoField(szTmp, szThemeDate);
 			szTmp = QString("Theme%1Subdirectory").arg(iIdx);
-			r.getStringInfoField(szTmp,szThemeSubdirectory);
+			r.getStringInfoField(szTmp, szThemeSubdirectory);
 			szTmp = QString("Theme%1Author").arg(iIdx);
-			r.getStringInfoField(szTmp,szThemeAuthor);
+			r.getStringInfoField(szTmp, szThemeAuthor);
 			szTmp = QString("Theme%1ThemeEngineVersion").arg(iIdx);
-			r.getStringInfoField(szTmp,szThemeEngineVersion);
+			r.getStringInfoField(szTmp, szThemeEngineVersion);
 			szTmp = QString("Theme%1Screenshot").arg(iIdx);
 			QPixmap pixScreenshot;
 			pByteArray = r.binaryInfoFields()->find(szTmp);
 			if(pByteArray)
-				pixScreenshot.loadFromData(*pByteArray,0,0);
+				pixScreenshot.loadFromData(*pByteArray, 0, 0);
 
 			if(szThemeName.isEmpty() || szThemeVersion.isEmpty() || szThemeSubdirectory.isEmpty() || szThemeEngineVersion.isEmpty())
 				bValid = false;
-			if(KviMiscUtils::compareVersions(szThemeEngineVersion,KVI_CURRENT_THEME_ENGINE_VERSION) < 0)
+			if(KviMiscUtils::compareVersions(szThemeEngineVersion, KVI_CURRENT_THEME_ENGINE_VERSION) < 0)
 				bValid = false;
 
 			QString szDetailsBuffer;
 
 			getThemeHtmlDescription(
-				szDetailsBuffer,
-				szThemeName,
-				szThemeVersion,
-				szThemeDescription,
-				szThemeSubdirectory,
-				szThemeApplication,
-				szThemeAuthor,
-				szThemeDate,
-				szThemeEngineVersion,
-				pixScreenshot,
-				iIdx,&hd
-			);
+			    szDetailsBuffer,
+			    szThemeName,
+			    szThemeVersion,
+			    szThemeDescription,
+			    szThemeSubdirectory,
+			    szThemeApplication,
+			    szThemeAuthor,
+			    szThemeDate,
+			    szThemeEngineVersion,
+			    pixScreenshot,
+			    iIdx, &hd);
 
 			if(iIdx > 0)
 				szDetails += "<hr>";
@@ -213,7 +212,7 @@ namespace ThemeFunctions
 			if(!bValid)
 			{
 				szDetails += "<p><center><font color=\"#ff0000\"><b>";
-				szDetails += __tr2qs_ctx("Warning: this theme might be incompatible with this version of KVIrc","theme");
+				szDetails += __tr2qs_ctx("Warning: this theme might be incompatible with this version of KVIrc", "theme");
 				szDetails += "</b></font></center></p>";
 				iValidThemeCount--;
 			}
@@ -222,18 +221,18 @@ namespace ThemeFunctions
 		}
 
 		szDetails += "<br><p><center><a href=\"theme_dialog_main\">";
-		szDetails +=  __tr2qs_ctx("Go Back to Package Data","theme");
+		szDetails += __tr2qs_ctx("Go Back to Package Data", "theme");
 		szDetails += "</a></center></p>";
 		szDetails += "</body></html>";
 
 		if(iValidThemeCount < iThemeCount)
 		{
 			szWarnings += "<p><center><font color=\"#ff0000\"><b>";
-			szWarnings += __tr2qs_ctx("Warning: the theme contained in this package might be either corrupted or incompatible with this version of KVIrc","theme");
+			szWarnings += __tr2qs_ctx("Warning: the theme contained in this package might be either corrupted or incompatible with this version of KVIrc", "theme");
 			szWarnings += "</b></font></center></p>";
 		}
 
-		QString szShowDetails = __tr2qs_ctx("Show Details","theme");
+		QString szShowDetails = __tr2qs_ctx("Show Details", "theme");
 
 		// clang-format off
 		hd.szHtmlText = QString(
@@ -266,18 +265,18 @@ namespace ThemeFunctions
 			"</html>").arg(szPackageName,szPackageVersion,szPackageDescription,szAuthor,szPackageAuthor,szCreatedAt,szPackageDate,szCreatedOn,szPackageApplication).arg(szWarnings,szShowDetails);
 		// clang-format on
 
-		hd.addImageResource("theme_dialog_pack_image",pix);
-		hd.addHtmlResource("theme_dialog_details",szDetails);
-		hd.addHtmlResource("theme_dialog_main",hd.szHtmlText);
+		hd.addImageResource("theme_dialog_pack_image", pix);
+		hd.addHtmlResource("theme_dialog_details", szDetails);
+		hd.addHtmlResource("theme_dialog_main", hd.szHtmlText);
 
 		QString beginCenter = "<center>";
 		QString endCenter = "</center>";
 
-		hd.szCaption = __tr2qs_ctx("Install Theme Pack - KVIrc","theme");
-		hd.szUpperLabelText = beginCenter + __tr2qs_ctx("You're about to install the following theme package","theme") + endCenter;
-		hd.szLowerLabelText = beginCenter + __tr2qs_ctx("Do you want to proceed with the installation?","theme") + endCenter;
-		hd.szButton1Text = __tr2qs_ctx("Do Not Install","theme");
-		hd.szButton2Text = __tr2qs_ctx("Yes, Proceed","theme");
+		hd.szCaption = __tr2qs_ctx("Install Theme Pack - KVIrc", "theme");
+		hd.szUpperLabelText = beginCenter + __tr2qs_ctx("You're about to install the following theme package", "theme") + endCenter;
+		hd.szLowerLabelText = beginCenter + __tr2qs_ctx("Do you want to proceed with the installation?", "theme") + endCenter;
+		hd.szButton1Text = __tr2qs_ctx("Do Not Install", "theme");
+		hd.szButton2Text = __tr2qs_ctx("Yes, Proceed", "theme");
 		hd.iDefaultButton = 2;
 		hd.iCancelButton = 1;
 		hd.pixIcon = *(g_pIconManager->getSmallIcon(KviIconManager::Theme));
@@ -285,15 +284,15 @@ namespace ThemeFunctions
 		hd.iMinimumHeight = 420;
 		hd.iFlags = KviHtmlDialogData::ForceMinimumSize;
 
-		bInstall = KviHtmlDialog::display(pDialogParent,&hd) == 2;
+		bInstall = KviHtmlDialog::display(pDialogParent, &hd) == 2;
 		if(bInstall)
 		{
 			QString szUnpackPath;
-			g_pApp->getLocalKvircDirectory(szUnpackPath,KviApplication::Themes);
-			if(!r.unpack(szThemePackageFileName,szUnpackPath))
+			g_pApp->getLocalKvircDirectory(szUnpackPath, KviApplication::Themes);
+			if(!r.unpack(szThemePackageFileName, szUnpackPath))
 			{
 				QString szErr2 = r.lastError();
-				szError = QString(__tr2qs_ctx("Failed to unpack the selected file: %1","theme")).arg(szErr2);
+				szError = QString(__tr2qs_ctx("Failed to unpack the selected file: %1", "theme")).arg(szErr2);
 				return false;
 			}
 		}
@@ -301,27 +300,25 @@ namespace ThemeFunctions
 		return true;
 	}
 
-
 	void getThemeHtmlDescription(
-		QString &szBuffer,
-		const QString &szThemeName,
-		const QString &szThemeVersion,
-		const QString &szThemeDescription,
-		const QString &szThemeSubdirectory,
-		const QString &szThemeApplication,
-		const QString &szThemeAuthor,
-		const QString &szThemeDate,
-		const QString &szThemeThemeEngineVersion,
-		const QPixmap &pixScreenshot,
-		int iUniqueIndexInDocument,
-		KviHtmlDialogData *hd
-	)
+	    QString & szBuffer,
+	    const QString & szThemeName,
+	    const QString & szThemeVersion,
+	    const QString & szThemeDescription,
+	    const QString & szThemeSubdirectory,
+	    const QString & szThemeApplication,
+	    const QString & szThemeAuthor,
+	    const QString & szThemeDate,
+	    const QString & szThemeThemeEngineVersion,
+	    const QPixmap & pixScreenshot,
+	    int iUniqueIndexInDocument,
+	    KviHtmlDialogData * hd)
 	{
-		QString szAuthor = __tr2qs_ctx("Author","theme");
-		QString szCreatedAt = __tr2qs_ctx("Created at","theme");
-		QString szCreatedOn = __tr2qs_ctx("Created with","theme");
-		QString szThemeEngineVersion = __tr2qs_ctx("Theme engine version","theme");
-		QString szSubdirectory = __tr2qs_ctx("Subdirectory","theme");
+		QString szAuthor = __tr2qs_ctx("Author", "theme");
+		QString szCreatedAt = __tr2qs_ctx("Created at", "theme");
+		QString szCreatedOn = __tr2qs_ctx("Created with", "theme");
+		QString szThemeEngineVersion = __tr2qs_ctx("Theme engine version", "theme");
+		QString szSubdirectory = __tr2qs_ctx("Subdirectory", "theme");
 
 		QString szScreenshot;
 		if(!pixScreenshot.isNull())
@@ -330,10 +327,13 @@ namespace ThemeFunctions
 			QString szTmp;
 			szTmp = QString("theme_shot%1").arg(iUniqueIndexInDocument);
 			//FIXME in tooltip
-			if (hd)
-				hd->addImageResource(szTmp,pixScreenshot);
-			else szScreenshot = "";
-		} else {
+			if(hd)
+				hd->addImageResource(szTmp, pixScreenshot);
+			else
+				szScreenshot = "";
+		}
+		else
+		{
 			szScreenshot = "";
 		}
 
@@ -360,7 +360,7 @@ namespace ThemeFunctions
 		// clang-format on
 	}
 
-	bool makeKVIrcScreenshot(const QString &szSavePngFilePath,bool bMaximizeFrame)
+	bool makeKVIrcScreenshot(const QString & szSavePngFilePath, bool bMaximizeFrame)
 	{
 		if(bMaximizeFrame)
 		{
@@ -376,8 +376,9 @@ namespace ThemeFunctions
 
 		if(pix.isNull())
 			bResult = false;
-		else {
-			if(!pix.save(szSavePngFilePath,"PNG"))
+		else
+		{
+			if(!pix.save(szSavePngFilePath, "PNG"))
 				bResult = false;
 		}
 
@@ -386,27 +387,25 @@ namespace ThemeFunctions
 		return bResult;
 	}
 
-
 	bool packageThemes(
-			const QString &szPackagePath,
-			const QString &szPackageName,
-			const QString &szPackageVersion,
-			const QString &szPackageDescription,
-			const QString &szPackageAuthor,
-			const QString &szPackageImagePath,
-			KviPointerList<KviThemeInfo> &lThemeInfoList,
-			QString &szError
-		)
+	    const QString & szPackagePath,
+	    const QString & szPackageName,
+	    const QString & szPackageVersion,
+	    const QString & szPackageDescription,
+	    const QString & szPackageAuthor,
+	    const QString & szPackageImagePath,
+	    KviPointerList<KviThemeInfo> & lThemeInfoList,
+	    QString & szError)
 	{
 		if(szPackagePath.isEmpty())
 		{
-			szError = __tr2qs_ctx("Invalid empty package path","theme");
+			szError = __tr2qs_ctx("Invalid empty package path", "theme");
 			return false;
 		}
 
 		if(szPackageName.isEmpty())
 		{
-			szError = __tr2qs_ctx("Invalid empty package name","theme");
+			szError = __tr2qs_ctx("Invalid empty package name", "theme");
 			return false;
 		}
 
@@ -417,93 +416,93 @@ namespace ThemeFunctions
 			QImage pix(szPackageImagePath);
 			if(pix.isNull())
 			{
-				szError = __tr2qs_ctx("Failed to load the selected image: please fix it","theme");
+				szError = __tr2qs_ctx("Failed to load the selected image: please fix it", "theme");
 				return false;
 			}
 
 			if((pix.width() > 300) || (pix.height() > 225))
-				out = out.fromImage(pix.scaled(300,225,Qt::KeepAspectRatio));
+				out = out.fromImage(pix.scaled(300, 225, Qt::KeepAspectRatio));
 			else
-				out=out.fromImage(pix);
+				out = out.fromImage(pix);
 		}
 
 		KviPackageWriter f;
 
-		f.addInfoField("PackageType","ThemePack");
-		f.addInfoField("ThemePackVersion",KVI_CURRENT_THEME_ENGINE_VERSION);
-		f.addInfoField("Name",szPackageName);
-		f.addInfoField("Version",szPackageVersion.isEmpty() ? "1.0.0" : szPackageVersion);
-		f.addInfoField("Author",szPackageAuthor);
-		f.addInfoField("Description",szPackageDescription);
+		f.addInfoField("PackageType", "ThemePack");
+		f.addInfoField("ThemePackVersion", KVI_CURRENT_THEME_ENGINE_VERSION);
+		f.addInfoField("Name", szPackageName);
+		f.addInfoField("Version", szPackageVersion.isEmpty() ? "1.0.0" : szPackageVersion);
+		f.addInfoField("Author", szPackageAuthor);
+		f.addInfoField("Description", szPackageDescription);
 		// this is the equivalent to an empty date.toString() call, but it's needed
 		// to ensure qt4 will use the default() locale and not the system() one
-		f.addInfoField("Date",QDateTime::currentDateTime().toString(Qt::ISODate));
-		f.addInfoField("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
+		f.addInfoField("Date", QDateTime::currentDateTime().toString(Qt::ISODate));
+		f.addInfoField("Application", "KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
 
 		if(!out.isNull())
 		{
 			QByteArray * pba = new QByteArray();
-			QBuffer buffer(pba,0);
+			QBuffer buffer(pba, 0);
 			buffer.open(QIODevice::WriteOnly);
-			out.save(&buffer,"PNG");
+			out.save(&buffer, "PNG");
 			buffer.close();
-			f.addInfoField("Image",pba); // cool :) [no disk access needed]
+			f.addInfoField("Image", pba); // cool :) [no disk access needed]
 		}
 
 		QString szTmp;
 
 		szTmp.setNum(lThemeInfoList.count());
-		f.addInfoField("ThemeCount",szTmp);
+		f.addInfoField("ThemeCount", szTmp);
 
 		int iIdx = 0;
-		for(KviThemeInfo * pInfo = lThemeInfoList.first();pInfo;pInfo = lThemeInfoList.next())
+		for(KviThemeInfo * pInfo = lThemeInfoList.first(); pInfo; pInfo = lThemeInfoList.next())
 		{
 			if(pInfo->name().isEmpty())
 			{
-				szError = __tr2qs_ctx("Invalid theme name","theme");
+				szError = __tr2qs_ctx("Invalid theme name", "theme");
 				return false;
 			}
 			if(pInfo->version().isEmpty())
 			{
-				szError = __tr2qs_ctx("Invalid theme version","theme");
+				szError = __tr2qs_ctx("Invalid theme version", "theme");
 				return false;
 			}
 
 			QString szSubdir = pInfo->name() + QString("-") + pInfo->version();
-			szSubdir.replace(QRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"),"_");
+			szSubdir.replace(QRegExp("[^a-zA-Z0-9_\\-.][^a-zA-Z0-9_\\-.]*"), "_");
 
 			szTmp = QString("Theme%1Name").arg(iIdx);
-			f.addInfoField(szTmp,pInfo->name());
+			f.addInfoField(szTmp, pInfo->name());
 			szTmp = QString("Theme%1Version").arg(iIdx);
-			f.addInfoField(szTmp,pInfo->version());
+			f.addInfoField(szTmp, pInfo->version());
 			szTmp = QString("Theme%1Description").arg(iIdx);
-			f.addInfoField(szTmp,pInfo->description());
+			f.addInfoField(szTmp, pInfo->description());
 			szTmp = QString("Theme%1Date").arg(iIdx);
-			f.addInfoField(szTmp,pInfo->date());
+			f.addInfoField(szTmp, pInfo->date());
 			szTmp = QString("Theme%1Subdirectory").arg(iIdx);
-			f.addInfoField(szTmp,szSubdir);
+			f.addInfoField(szTmp, szSubdir);
 			szTmp = QString("Theme%1Author").arg(iIdx);
-			f.addInfoField(szTmp,pInfo->author());
+			f.addInfoField(szTmp, pInfo->author());
 			szTmp = QString("Theme%1Application").arg(iIdx);
-			f.addInfoField(szTmp,pInfo->application());
+			f.addInfoField(szTmp, pInfo->application());
 			szTmp = QString("Theme%1ThemeEngineVersion").arg(iIdx);
-			f.addInfoField(szTmp,pInfo->themeEngineVersion());
+			f.addInfoField(szTmp, pInfo->themeEngineVersion());
 			QPixmap pixScreenshot = pInfo->smallScreenshot();
 			if(!pixScreenshot.isNull())
 			{
 				szTmp = QString("Theme%1Screenshot").arg(iIdx);
 				QByteArray * pba = new QByteArray();
 
-				QBuffer bufferz(pba,0);
+				QBuffer bufferz(pba, 0);
 				bufferz.open(QIODevice::WriteOnly);
-				pixScreenshot.save(&bufferz,"PNG");
+				pixScreenshot.save(&bufferz, "PNG");
 				bufferz.close();
-				f.addInfoField(szTmp,pba);
+				f.addInfoField(szTmp, pba);
 			}
 
-			if(!f.addDirectory(pInfo->directory(),szSubdir))
+			if(!f.addDirectory(pInfo->directory(), szSubdir))
 			{
-				szError = __tr2qs_ctx("Packaging failed","theme");
+				szError = __tr2qs_ctx("Packaging failed", "theme");
 				szError += ": ";
 				szError += f.lastError();
 				return false;
@@ -514,7 +513,7 @@ namespace ThemeFunctions
 
 		if(!f.pack(szPackagePath))
 		{
-			szError = __tr2qs_ctx("Packaging failed","theme");
+			szError = __tr2qs_ctx("Packaging failed", "theme");
 			szError += ": ";
 			szError += f.lastError();
 			return false;

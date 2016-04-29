@@ -36,8 +36,7 @@
 
 KviKvsDnsManager * KviKvsDnsManager::m_pInstance = 0;
 
-
-KviKvsDnsObject::KviKvsDnsObject(KviDnsResolver * pDns,KviWindow * pWnd,const QString &szQuery,bool bRebindOnWindowClose,KviKvsScript * pCallback,KviKvsVariantList * pParameterList)
+KviKvsDnsObject::KviKvsDnsObject(KviDnsResolver * pDns, KviWindow * pWnd, const QString & szQuery, bool bRebindOnWindowClose, KviKvsScript * pCallback, KviKvsVariantList * pParameterList)
 {
 	m_pDns = pDns;
 	m_pWindow = pWnd;
@@ -49,28 +48,32 @@ KviKvsDnsObject::KviKvsDnsObject(KviDnsResolver * pDns,KviWindow * pWnd,const QS
 
 KviKvsDnsObject::~KviKvsDnsObject()
 {
-	QObject::disconnect(m_pDns,0,0,0);
+	QObject::disconnect(m_pDns, 0, 0, 0);
 	if(m_pDns->isRunning())
 	{
 		//g_pApp->collectGarbage(m_pDns);
 		m_pDns->deleteLater();
-	} else {
+	}
+	else
+	{
 		delete m_pDns;
 	}
-	if(m_pCallback)delete m_pCallback;
-	if(m_pParameterList)delete m_pParameterList;
+	if(m_pCallback)
+		delete m_pCallback;
+	if(m_pParameterList)
+		delete m_pParameterList;
 }
 
-
 KviKvsDnsManager::KviKvsDnsManager()
-: QObject()
+    : QObject()
 {
 	m_pDnsObjects = 0;
 }
 
 KviKvsDnsManager::~KviKvsDnsManager()
 {
-	if(m_pDnsObjects)delete m_pDnsObjects;
+	if(m_pDnsObjects)
+		delete m_pDnsObjects;
 }
 
 void KviKvsDnsManager::init()
@@ -98,11 +101,11 @@ void KviKvsDnsManager::addDns(KviKvsDnsObject * pObject)
 {
 	if(!m_pDnsObjects)
 	{
-		m_pDnsObjects = new KviPointerHashTable<void *,KviKvsDnsObject>;
+		m_pDnsObjects = new KviPointerHashTable<void *, KviKvsDnsObject>;
 		m_pDnsObjects->setAutoDelete(true);
 	}
-	m_pDnsObjects->replace(pObject->dns(),pObject);
-	connect(pObject->dns(),SIGNAL(lookupDone(KviDnsResolver *)),this,SLOT(dnsLookupTerminated(KviDnsResolver *)));
+	m_pDnsObjects->replace(pObject->dns(), pObject);
+	connect(pObject->dns(), SIGNAL(lookupDone(KviDnsResolver *)), this, SLOT(dnsLookupTerminated(KviDnsResolver *)));
 }
 
 void KviKvsDnsManager::dnsLookupTerminated(KviDnsResolver * pDns)
@@ -119,7 +122,9 @@ void KviKvsDnsManager::dnsLookupTerminated(KviDnsResolver * pDns)
 		if(o->rebindOnWindowClose())
 		{
 			o->setWindow(g_pActiveWindow);
-		} else {
+		}
+		else
+		{
 			// just kill it
 			m_pDnsObjects->remove(pDns);
 			return;
@@ -135,37 +140,42 @@ void KviKvsDnsManager::dnsLookupTerminated(KviDnsResolver * pDns)
 		if(o->dns()->state() == KviDnsResolver::Failure)
 		{
 			// $4... is the magic data
-			o->parameterList()->prepend(new KviKvsVariant()); // $3
+			o->parameterList()->prepend(new KviKvsVariant());                        // $3
 			o->parameterList()->prepend(new KviKvsVariant(o->dns()->errorString())); // $2
-			o->parameterList()->prepend(new KviKvsVariant((kvs_int_t)0)); // $1
-		} else {
+			o->parameterList()->prepend(new KviKvsVariant((kvs_int_t)0));            // $1
+		}
+		else
+		{
 			QString szHostName = o->dns()->hostName();
 			QString * fi = o->dns()->ipAddressList()->first();
 
 			// $4... is the magic data
 			o->parameterList()->prepend(new KviKvsVariant(szHostName.isEmpty() ? QString("?.?") : szHostName)); // $3
-			o->parameterList()->prepend(new KviKvsVariant(fi ? *fi : QString("?.?.?.?"))); // $2
-			o->parameterList()->prepend(new KviKvsVariant((kvs_int_t)1)); // $1
+			o->parameterList()->prepend(new KviKvsVariant(fi ? *fi : QString("?.?.?.?")));                      // $2
+			o->parameterList()->prepend(new KviKvsVariant((kvs_int_t)1));                                       // $1
 		}
 		o->parameterList()->prepend(new KviKvsVariant(o->query())); // $0
 
-		copy.run(o->window(),o->parameterList(),0,KviKvsScript::PreserveParams);
-
-	} else {
+		copy.run(o->window(), o->parameterList(), 0, KviKvsScript::PreserveParams);
+	}
+	else
+	{
 		QString szQuery = o->dns()->query();
-		o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("DNS Lookup result for query \"%Q\"","kvs"),&szQuery);
+		o->window()->output(KVI_OUT_HOSTLOOKUP, __tr2qs_ctx("DNS Lookup result for query \"%Q\"", "kvs"), &szQuery);
 
 		if(o->dns()->state() == KviDnsResolver::Failure)
 		{
 			QString szErr = o->dns()->errorString();
-			o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("Error: %Q","kvs"),&szErr);
-		} else {
+			o->window()->output(KVI_OUT_HOSTLOOKUP, __tr2qs_ctx("Error: %Q", "kvs"), &szErr);
+		}
+		else
+		{
 			QString szHostName = o->dns()->hostName();
-			o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("Hostname: %Q","kvs"),&szHostName);
+			o->window()->output(KVI_OUT_HOSTLOOKUP, __tr2qs_ctx("Hostname: %Q", "kvs"), &szHostName);
 			int idx = 1;
-			for(QString * a = o->dns()->ipAddressList()->first();a;a = o->dns()->ipAddressList()->next())
+			for(QString * a = o->dns()->ipAddressList()->first(); a; a = o->dns()->ipAddressList()->next())
 			{
-				o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("IP address %d: %Q","kvs"),idx,a);
+				o->window()->output(KVI_OUT_HOSTLOOKUP, __tr2qs_ctx("IP address %d: %Q", "kvs"), idx, a);
 				idx++;
 			}
 		}

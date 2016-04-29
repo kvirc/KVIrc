@@ -22,24 +22,24 @@
 //
 //=============================================================================
 
-
 #define _KVI_DEBUG_CHECK_RANGE_
 
 #include "kvi_debug.h"
 #include "KviMessageTypeSettings.h"
 
-KviMessageTypeSettings::KviMessageTypeSettings(const char * type,int pixId,unsigned char fore,unsigned char back,bool bLog,int iLevel)
+KviMessageTypeSettings::KviMessageTypeSettings(const char * type, int pixId, unsigned char fore, unsigned char back, bool bLog, int iLevel)
 {
 	m_szType = type;
 	m_iPixId = pixId;
 	m_cForeColor = fore;
 	m_cBackColor = back;
 	m_bLogEnabled = bLog;
-	if((iLevel < KVI_MSGTYPE_MINLEVEL) || (iLevel > KVI_MSGTYPE_MAXLEVEL))iLevel = 1;
+	if((iLevel < KVI_MSGTYPE_MINLEVEL) || (iLevel > KVI_MSGTYPE_MAXLEVEL))
+		iLevel = 1;
 	m_iLevel = iLevel;
 }
 
-KviMessageTypeSettings::KviMessageTypeSettings(const KviMessageTypeSettings &msg)
+KviMessageTypeSettings::KviMessageTypeSettings(const KviMessageTypeSettings & msg)
 {
 	m_szType = msg.m_szType;
 	m_iPixId = msg.m_iPixId;
@@ -53,9 +53,7 @@ KviMessageTypeSettings::~KviMessageTypeSettings()
 {
 }
 
-
-
-KviMessageTypeSettings & KviMessageTypeSettings::operator=(const KviMessageTypeSettings &msg)
+KviMessageTypeSettings & KviMessageTypeSettings::operator=(const KviMessageTypeSettings & msg)
 {
 	//if(m_szType.ptr() == msg.m_szType.ptr())return (*this); // self assignment (!!!)
 	m_szType = msg.m_szType;

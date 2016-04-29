@@ -27,8 +27,8 @@
 #include <QEvent>
 #include <QHelpEvent>
 
-KviTalToolTipHelper::KviTalToolTipHelper(KviTalToolTip * pToolTip,QWidget * pWidget)
-: QObject(pWidget)
+KviTalToolTipHelper::KviTalToolTipHelper(KviTalToolTip * pToolTip, QWidget * pWidget)
+    : QObject(pWidget)
 {
 	m_pToolTip = pToolTip;
 	pWidget->installEventFilter(this);
@@ -48,21 +48,20 @@ void KviTalToolTipHelper::toolTipDying()
 	m_pToolTip = 0;
 }
 
-bool KviTalToolTipHelper::eventFilter(QObject *,QEvent * pEvent)
+bool KviTalToolTipHelper::eventFilter(QObject *, QEvent * pEvent)
 {
 	if((pEvent->type() == QEvent::ToolTip) && m_pToolTip)
 	{
-//		qDebug("TOOL TIP EVENT WITH POSITION %d,%d",((QHelpEvent *)pEvent)->pos().x(),((QHelpEvent *)pEvent)->pos().y());
+		//		qDebug("TOOL TIP EVENT WITH POSITION %d,%d",((QHelpEvent *)pEvent)->pos().x(),((QHelpEvent *)pEvent)->pos().y());
 		m_pToolTip->maybeTip(((QHelpEvent *)pEvent)->pos());
 		return true;
 	}
 	return false;
 }
 
-
 KviTalToolTip::KviTalToolTip(QWidget * pParent)
 {
-	m_pHelper = new KviTalToolTipHelper(this,pParent);
+	m_pHelper = new KviTalToolTipHelper(this, pParent);
 	m_pParent = pParent;
 }
 
@@ -80,24 +79,24 @@ void KviTalToolTip::helperDying()
 	m_pHelper = 0;
 }
 
-void KviTalToolTip::add(QWidget * widget,const QString & text)
+void KviTalToolTip::add(QWidget * widget, const QString & text)
 {
 	widget->setToolTip(text);
 }
 
-void KviTalToolTip::remove(QWidget *widget)
+void KviTalToolTip::remove(QWidget * widget)
 {
 
 	widget->setToolTip("");
 }
 
-void KviTalToolTip::tip(const QRect & rect,const QString & text)
+void KviTalToolTip::tip(const QRect & rect, const QString & text)
 {
-//	qDebug("TOOL TIP AT %d,%d",rect.topLeft().x(),rect.topLeft().y());
-	QPoint pnt=m_pParent->mapToGlobal(rect.topLeft());
-	pnt.setX(pnt.x()+16);
-	pnt.setY(pnt.y()+16);
-	QToolTip::showText(m_pParent->mapToGlobal(rect.topLeft()),text, m_pParent, rect);
+	//	qDebug("TOOL TIP AT %d,%d",rect.topLeft().x(),rect.topLeft().y());
+	QPoint pnt = m_pParent->mapToGlobal(rect.topLeft());
+	pnt.setX(pnt.x() + 16);
+	pnt.setY(pnt.y() + 16);
+	QToolTip::showText(m_pParent->mapToGlobal(rect.topLeft()), text, m_pParent, rect);
 }
 
 void KviTalToolTip::maybeTip(const QPoint &)

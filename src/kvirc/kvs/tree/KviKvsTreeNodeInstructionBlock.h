@@ -32,24 +32,23 @@
 
 class KviKvsRunTimeContext;
 
-
 class KVIRC_API KviKvsTreeNodeInstructionBlock : public KviKvsTreeNodeInstruction
 {
 public:
 	KviKvsTreeNodeInstructionBlock(const QChar * pLocation);
 	~KviKvsTreeNodeInstructionBlock();
+
 protected:
 	KviPointerList<KviKvsTreeNodeInstruction> * m_pInstructionList;
+
 public:
-	unsigned int instructionCount(){ return m_pInstructionList->count(); };
+	unsigned int instructionCount() { return m_pInstructionList->count(); };
 	void addInstruction(KviKvsTreeNodeInstruction * i);
 	KviKvsTreeNodeInstruction * releaseFirst();
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 
 	virtual bool execute(KviKvsRunTimeContext * c);
-
 };
-
 
 #endif //!_KVI_KVS_TREENODE_INSTRUCTIONBLOCK_H_

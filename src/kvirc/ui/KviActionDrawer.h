@@ -60,6 +60,7 @@ public:
 	* \brief Destroys an action drawer object
 	*/
 	~KviActionDrawer();
+
 public:
 	/**
 	* \brief Fills in the drawer page
@@ -84,13 +85,16 @@ protected:
 	* \return KviActionDrawerPage
 	*/
 	KviActionDrawerPage(QWidget * pParent, const QString & szDescription);
+
 public:
 	/**
 	* \brief Destroys an action drawer page object
 	*/
 	~KviActionDrawerPage();
+
 protected:
 	KviActionDrawerPageListWidget * m_pListWidget;
+
 protected:
 	/**
 	* \brief Adds an action
@@ -115,11 +119,13 @@ protected:
 	* \return KviActionDrawerPageListWidget
 	*/
 	KviActionDrawerPageListWidget(KviActionDrawerPage * pParent);
+
 public:
 	/**
 	* \brief Destroys an action drawer page list object
 	*/
 	~KviActionDrawerPageListWidget();
+
 protected:
 	virtual void resizeEvent(QResizeEvent * e);
 	virtual void mousePressEvent(QMouseEvent * e);
@@ -144,16 +150,17 @@ public:
 	* \brief Destroys an action drawer page list item object
 	*/
 	~KviActionDrawerPageListWidgetItem();
+
 protected:
-	QString            m_szName;
-	QPixmap          * m_pIcon;
+	QString m_szName;
+	QPixmap * m_pIcon;
 	KviTalListWidget * m_pListWidget;
-	QString            m_szKey;
+	QString m_szKey;
 
 public:
-	QPixmap * icon(){ return m_pIcon; };
-	const QString & name(){ return m_szName; };
-/*
+	QPixmap * icon() { return m_pIcon; };
+	const QString & name() { return m_szName; };
+	/*
 protected:
 	virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
 	virtual void setup();

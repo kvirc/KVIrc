@@ -24,8 +24,8 @@
 
 #include "KviDynamicToolTip.h"
 
-KviDynamicToolTipHelper::KviDynamicToolTipHelper(QWidget * parent,KviDynamicToolTip * parToolTip)
-: KviTalToolTip(parent)
+KviDynamicToolTipHelper::KviDynamicToolTipHelper(QWidget * parent, KviDynamicToolTip * parToolTip)
+    : KviTalToolTip(parent)
 {
 	m_pParentToolTip = parToolTip;
 }
@@ -39,11 +39,11 @@ void KviDynamicToolTipHelper::maybeTip(const QPoint & pnt)
 	m_pParentToolTip->maybeTip(pnt);
 }
 
-KviDynamicToolTip::KviDynamicToolTip(QWidget * parent,const char * name)
-: QObject(parent)
+KviDynamicToolTip::KviDynamicToolTip(QWidget * parent, const char * name)
+    : QObject(parent)
 {
 	setObjectName(name);
-	m_pHelper = new KviDynamicToolTipHelper(parent,this);
+	m_pHelper = new KviDynamicToolTipHelper(parent, this);
 }
 
 KviDynamicToolTip::~KviDynamicToolTip()
@@ -51,12 +51,12 @@ KviDynamicToolTip::~KviDynamicToolTip()
 	delete m_pHelper;
 }
 
-void KviDynamicToolTip::maybeTip(const QPoint &pnt)
+void KviDynamicToolTip::maybeTip(const QPoint & pnt)
 {
-	emit tipRequest(this,pnt);
+	emit tipRequest(this, pnt);
 }
 
-void KviDynamicToolTip::tip(const QRect &rct,const QString & text)
+void KviDynamicToolTip::tip(const QRect & rct, const QString & text)
 {
-	m_pHelper->tip(rct,text);
+	m_pHelper->tip(rct, text);
 }

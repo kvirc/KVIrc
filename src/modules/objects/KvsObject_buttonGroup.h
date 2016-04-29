@@ -1,5 +1,5 @@
-#ifndef	_CLASS_BUTTONGROUP_H_
-#define	_CLASS_BUTTONGROUP_H_
+#ifndef _CLASS_BUTTONGROUP_H_
+#define _CLASS_BUTTONGROUP_H_
 //=============================================================================
 //
 //   File : KvsObject_buttonGroup.cpp
@@ -25,8 +25,6 @@
 //
 //=============================================================================
 
-
-
 #include <QButtonGroup>
 #include "object_macros.h"
 
@@ -35,11 +33,10 @@ class KvsObject_buttonGroup : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_buttonGroup)
 protected:
-	QButtonGroup *m_pButtonGroup;
+	QButtonGroup * m_pButtonGroup;
 	int m_iId;
-	KviPointerHashTable<int, KviKvsObject > btnDict;
-	bool addButton(KviKvsObjectFunctionCall *c);
-	bool checkedButton(KviKvsObjectFunctionCall *c);
-
+	KviPointerHashTable<int, KviKvsObject> btnDict;
+	bool addButton(KviKvsObjectFunctionCall * c);
+	bool checkedButton(KviKvsObjectFunctionCall * c);
 };
-#endif	//!_CLASS_GROUPBOX_H_
+#endif //!_CLASS_GROUPBOX_H_

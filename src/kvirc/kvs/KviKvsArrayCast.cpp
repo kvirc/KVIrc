@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviKvsArrayCast.h"
 
 KviKvsArrayCast::~KviKvsArrayCast()

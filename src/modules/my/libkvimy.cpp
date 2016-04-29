@@ -33,23 +33,26 @@
 #include "KviIrcServer.h"
 
 #include "Idle.h"
-Idle* g_pIdle;
+Idle * g_pIdle;
 
-#define GET_KVS_CONSOLE \
-	kvs_uint_t  uiWnd; \
-	KviConsoleWindow *wnd =0; \
-	KVSM_PARAMETERS_BEGIN(c) \
-		KVSM_PARAMETER("context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uiWnd) \
-	KVSM_PARAMETERS_END(c) \
-	if(!c->parameterList()->count()) \
-	{ \
-		if(c->window()->console()) wnd = c->window()->console(); \
-			else c->warning(__tr2qs("This window has no associated IRC context")); \
-	} \
-	else \
-	{ \
-		wnd = g_pApp->findConsole(uiWnd); \
-		if(!wnd)c->warning(__tr2qs("No such IRC context (%d)"),uiWnd); \
+#define GET_KVS_CONSOLE                                                       \
+	kvs_uint_t uiWnd;                                                         \
+	KviConsoleWindow * wnd = 0;                                               \
+	KVSM_PARAMETERS_BEGIN(c)                                                  \
+	KVSM_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uiWnd)         \
+	KVSM_PARAMETERS_END(c)                                                    \
+	if(!c->parameterList()->count())                                          \
+	{                                                                         \
+		if(c->window()->console())                                            \
+			wnd = c->window()->console();                                     \
+		else                                                                  \
+			c->warning(__tr2qs("This window has no associated IRC context")); \
+	}                                                                         \
+	else                                                                      \
+	{                                                                         \
+		wnd = g_pApp->findConsole(uiWnd);                                     \
+		if(!wnd)                                                              \
+			c->warning(__tr2qs("No such IRC context (%d)"), uiWnd);           \
 	}
 
 /*
@@ -119,7 +122,8 @@ static bool my_kvs_cmd_startIdleTimer(KviKvsModuleCommandCall *)
 
 static bool my_kvs_cmd_stopIdleTimer(KviKvsModuleCommandCall *)
 {
-	if(!g_pIdle) return true;
+	if(!g_pIdle)
+		return true;
 	g_pIdle->stop();
 	//delete g_pIdle;
 	return true;
@@ -145,7 +149,9 @@ static bool my_kvs_fnc_globalIdle(KviKvsModuleFunctionCall * c)
 	if(g_pIdle)
 	{
 		c->returnValue()->setInteger(g_pIdle->secondsIdle());
-	} else {
+	}
+	else
+	{
 		c->error(__tr2qs("Global idle timer must be started before using $my.globalIdle function"));
 	}
 	return true;
@@ -389,19 +395,19 @@ static bool my_kvs_fnc_network(KviKvsModuleFunctionCall * c)
 static bool my_module_init(KviModule * m)
 {
 	g_pIdle = 0;
-	KVSM_REGISTER_FUNCTION(m,"nick",my_kvs_fnc_nick);
-	KVSM_REGISTER_FUNCTION(m,"user",my_kvs_fnc_user);
-	KVSM_REGISTER_FUNCTION(m,"host",my_kvs_fnc_host);
-	KVSM_REGISTER_FUNCTION(m,"ip",my_kvs_fnc_ip);
-	KVSM_REGISTER_FUNCTION(m,"server",my_kvs_fnc_server);
-	KVSM_REGISTER_FUNCTION(m,"network",my_kvs_fnc_network);
-	KVSM_REGISTER_FUNCTION(m,"umode",my_kvs_fnc_umode);
-	KVSM_REGISTER_FUNCTION(m,"serverIsSSL",my_kvs_fnc_serverIsSSL);
-	KVSM_REGISTER_FUNCTION(m,"serverIsIPV6",my_kvs_fnc_serverIsIPV6);
-	KVSM_REGISTER_FUNCTION(m,"globalIdle",my_kvs_fnc_globalIdle);
+	KVSM_REGISTER_FUNCTION(m, "nick", my_kvs_fnc_nick);
+	KVSM_REGISTER_FUNCTION(m, "user", my_kvs_fnc_user);
+	KVSM_REGISTER_FUNCTION(m, "host", my_kvs_fnc_host);
+	KVSM_REGISTER_FUNCTION(m, "ip", my_kvs_fnc_ip);
+	KVSM_REGISTER_FUNCTION(m, "server", my_kvs_fnc_server);
+	KVSM_REGISTER_FUNCTION(m, "network", my_kvs_fnc_network);
+	KVSM_REGISTER_FUNCTION(m, "umode", my_kvs_fnc_umode);
+	KVSM_REGISTER_FUNCTION(m, "serverIsSSL", my_kvs_fnc_serverIsSSL);
+	KVSM_REGISTER_FUNCTION(m, "serverIsIPV6", my_kvs_fnc_serverIsIPV6);
+	KVSM_REGISTER_FUNCTION(m, "globalIdle", my_kvs_fnc_globalIdle);
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"stopIdleTimer",my_kvs_cmd_stopIdleTimer);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"startIdleTimer",my_kvs_cmd_startIdleTimer);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "stopIdleTimer", my_kvs_cmd_stopIdleTimer);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "startIdleTimer", my_kvs_cmd_startIdleTimer);
 	return true;
 }
 
@@ -419,15 +425,14 @@ static bool my_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"My",                                              // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)" \
-	"	(C) 2005 Tonino Imbesi (grifisx at barmes dot net)" \
-	"	(C) 2005 Alessandro Carbone (elfonol at gmail dot com)", // author & (C)
-	"Scripting irc-context related functions",
-	my_module_init,
-	my_module_can_unload,
-	0,
-	my_module_cleanup,
-	0
-)
+    "My",    // module name
+    "4.0.0", // module version
+    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)"
+    "	(C) 2005 Tonino Imbesi (grifisx at barmes dot net)"
+    "	(C) 2005 Alessandro Carbone (elfonol at gmail dot com)", // author & (C)
+    "Scripting irc-context related functions",
+    my_module_init,
+    my_module_can_unload,
+    0,
+    my_module_cleanup,
+    0)

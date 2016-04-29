@@ -30,27 +30,27 @@
 #include "KviModuleExtension.h"
 #include "KviKvsModuleInterface.h"
 
-template<typename Key,typename T> class KviPointerHashTable;
+template <typename Key, typename T>
+class KviPointerHashTable;
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	class KviCryptEngine;
-	class KviCryptEngineDescription;
-	class KviCryptEngineManager;
+class KviCryptEngine;
+class KviCryptEngineDescription;
+class KviCryptEngineManager;
 #endif
 
-
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#if defined(COMPILE_ON_MINGW)
-		#define KVIMODULEEXPORT extern "C" __declspec(dllexport) __attribute__((visibility("default")))
-	#else
-		#define KVIMODULEEXPORT extern "C" __declspec(dllexport)
-	#endif
-	#define KVIMODULEEXPORTDATA KVIMODULEEXPORT
-	#define KVIMODULEEXPORTFUNC KVIMODULEEXPORT
+#if defined(COMPILE_ON_MINGW)
+#define KVIMODULEEXPORT extern "C" __declspec(dllexport) __attribute__((visibility("default")))
 #else
-	#define KVIMODULEEXPORT extern "C" __attribute__((visibility("default")))
-	#define KVIMODULEEXPORTDATA  __attribute__((visibility("default")))
-	#define KVIMODULEEXPORTFUNC KVIMODULEEXPORT
+#define KVIMODULEEXPORT extern "C" __declspec(dllexport)
+#endif
+#define KVIMODULEEXPORTDATA KVIMODULEEXPORT
+#define KVIMODULEEXPORTFUNC KVIMODULEEXPORT
+#else
+#define KVIMODULEEXPORT extern "C" __attribute__((visibility("default")))
+#define KVIMODULEEXPORTDATA __attribute__((visibility("default")))
+#define KVIMODULEEXPORTFUNC KVIMODULEEXPORT
 #endif
 
 class KviModule;
@@ -58,14 +58,13 @@ class KviCString;
 class QLibrary;
 
 typedef bool (*KviModuleSystemRoutine)(KviModule *);
-typedef bool (*KviModuleCtrlRoutine)(KviModule *,const char *,void *);
-
+typedef bool (*KviModuleCtrlRoutine)(KviModule *, const char *, void *);
 
 typedef struct _KviModuleInfo
 {
-	const char * szKVIrcVersion;	// must match KVI_VERSION if module version checking is in force
-	const char * szModuleName;	// module name
-	const char * szModuleContext;	// name of the translation catalogue (if any)
+	const char * szKVIrcVersion;  // must match KVI_VERSION if module version checking is in force
+	const char * szModuleName;    // module name
+	const char * szModuleContext; // name of the translation catalogue (if any)
 	const char * szVersion;
 	const char * szCopyright;
 	const char * szDescription;
@@ -93,7 +92,7 @@ typedef struct _KviModuleInfo
 	* KVIrc uses it to comunicate with bundled modules
 	* in most user-build modules this will be 0
 	*/
-	KviModuleCtrlRoutine   ctrl_routine;
+	KviModuleCtrlRoutine ctrl_routine;
 	/*
 	* This routine is called when the module is being unloaded
 	* Note that the module can be unloaded even if can_unload returns false:
@@ -114,48 +113,51 @@ typedef struct _KviModuleInfo
 
 #define KVIRC_MODULE_STRUCTURE_SYMBOL "KVIrc_module_info"
 
-#define KVIRC_MODULE(_szModuleName,_szVersion,_szCopyright,_szDescription,_init_routine,_can_unload,_ctrl_routine,_cleanup_routine,_szModuleContext) \
-	\
-	KVIMODULEEXPORTDATA KviModuleInfo KVIrc_module_info= \
-	{ \
-		KVI_VERSION, \
-		_szModuleName, \
-		_szModuleContext, \
-		_szVersion, \
-		_szCopyright, \
-		_szDescription, \
-		_init_routine, \
-		_can_unload, \
-		_ctrl_routine, \
-		_cleanup_routine \
+#define KVIRC_MODULE(_szModuleName, _szVersion, _szCopyright, _szDescription, _init_routine, _can_unload, _ctrl_routine, _cleanup_routine, _szModuleContext) \
+                                                                                                                                                             \
+	KVIMODULEEXPORTDATA KviModuleInfo KVIrc_module_info = {                                                                                                  \
+		KVI_VERSION,                                                                                                                                         \
+		_szModuleName,                                                                                                                                       \
+		_szModuleContext,                                                                                                                                    \
+		_szVersion,                                                                                                                                          \
+		_szCopyright,                                                                                                                                        \
+		_szDescription,                                                                                                                                      \
+		_init_routine,                                                                                                                                       \
+		_can_unload,                                                                                                                                         \
+		_ctrl_routine,                                                                                                                                       \
+		_cleanup_routine                                                                                                                                     \
 	};
 
 class KVIRC_API KviModule : public KviKvsModuleInterface
 {
-	friend class KviPointerHashTable<const char *,KviModule>;
+	friend class KviPointerHashTable<const char *, KviModule>;
 	friend class KviModuleManager;
 	friend class KviUserParser;
+
 protected:
-	KviModule(QLibrary* handle,KviModuleInfo * info,const QString &name,const QString &filename);
+	KviModule(QLibrary * handle, KviModuleInfo * info, const QString & name, const QString & filename);
+
 public:
 	~KviModule(); // must be public for KviPointerList
 private:
-	QString                                    m_szName;
-	QString                                    m_szFileName;
-	KviModuleInfo                            * m_pModuleInfo;
-	QLibrary                                 * m_pLibrary;
-	unsigned int                               m_uLock;
-	long int                                   m_lastAccessTime;
+	QString m_szName;
+	QString m_szFileName;
+	KviModuleInfo * m_pModuleInfo;
+	QLibrary * m_pLibrary;
+	unsigned int m_uLock;
+	long int m_lastAccessTime;
+
 protected:
 	void updateAccessTime();
 	unsigned int secondsSinceLastAccess();
+
 public:
 	// name of this module: always low case, single word
-	const QString & name(){ return m_szName; };
+	const QString & name() { return m_szName; };
 	// filename of this module (with NO path): formatted as "libkvi%s.so",name()
-	const QString & filename(){ return m_szFileName; };
-	QLibrary*   handle(){ return m_pLibrary; };
-	KviModuleInfo * moduleInfo(){ return m_pModuleInfo; };
+	const QString & filename() { return m_szFileName; };
+	QLibrary * handle() { return m_pLibrary; };
+	KviModuleInfo * moduleInfo() { return m_pModuleInfo; };
 
 	//
 	// This is a locking method a bit stronger than the can_unload routine
@@ -173,14 +175,18 @@ public:
 	// <module>.unload -f is in fact undocumented so people will substantially
 	// not use it (unless they are developers and they are reading this comment).
 	//
-	void            lock(){ m_uLock++; };
-	void            unlock(){ if(m_uLock > 0)m_uLock--; };
-	bool            isLocked(){ return (m_uLock > 0); };
+	void lock() { m_uLock++; };
+	void unlock()
+	{
+		if(m_uLock > 0)
+			m_uLock--;
+	};
+	bool isLocked() { return (m_uLock > 0); };
 
-	void          * getSymbol(const char * symname);
-	bool            ctrl(const char * operation,void * param);
+	void * getSymbol(const char * symname);
+	bool ctrl(const char * operation, void * param);
 
-	void getDefaultConfigFileName(QString &szBuffer);
+	void getDefaultConfigFileName(QString & szBuffer);
 
 	static void unregisterMetaObject(const char * metaObjName);
 
@@ -190,9 +196,9 @@ public:
 	void unregisterCryptEngines();
 #endif
 
-	KviModuleExtensionDescriptor * registerExtension(const KviCString &szType,const KviCString &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r);
-	KviModuleExtensionDescriptor * registerExtension(const KviCString &szType,const KviCString &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r,const QPixmap &icon);
-	KviModuleExtensionDescriptor * findExtensionDescriptor(const KviCString &szType,const KviCString &szName);
+	KviModuleExtensionDescriptor * registerExtension(const KviCString & szType, const KviCString & szName, const QString & szVisibleName, KviModuleExtensionAllocRoutine r);
+	KviModuleExtensionDescriptor * registerExtension(const KviCString & szType, const KviCString & szName, const QString & szVisibleName, KviModuleExtensionAllocRoutine r, const QPixmap & icon);
+	KviModuleExtensionDescriptor * findExtensionDescriptor(const KviCString & szType, const KviCString & szName);
 	void unregisterAllExtensions();
 };
 

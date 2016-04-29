@@ -24,8 +24,7 @@
 
 #include "KviUserAction.h"
 
-static int useraction_table[KVI_NUM_USERACTION_TYPES] =
-{
+static int useraction_table[KVI_NUM_USERACTION_TYPES] = {
 	25,  // ACTION (typically human)
 	25,  // PRIVMSG
 	25,  // NOTICE

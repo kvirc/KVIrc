@@ -33,22 +33,23 @@
 class KVIRC_API KviKvsEvent
 {
 protected:
-	QString                          m_szName;
-	QString                          m_szParameterDescription;
+	QString m_szName;
+	QString m_szParameterDescription;
 	KviPointerList<KviKvsEventHandler> * m_pHandlers;
+
 public:
 	// the event name and the parameter description are NOT translated
-	KviKvsEvent(const char * szEventName,const char * szParameterDescription)
-		: m_szName(szEventName), m_szParameterDescription(szParameterDescription), m_pHandlers(0) {};
+	KviKvsEvent(const char * szEventName, const char * szParameterDescription)
+	    : m_szName(szEventName), m_szParameterDescription(szParameterDescription), m_pHandlers(0){};
 	~KviKvsEvent();
 	void clear();
 	void clearScriptHandlers();
-	bool hasHandlers(){ return m_pHandlers != 0; };
-	KviPointerList<KviKvsEventHandler> * handlers(){ return m_pHandlers; };
+	bool hasHandlers() { return m_pHandlers != 0; };
+	KviPointerList<KviKvsEventHandler> * handlers() { return m_pHandlers; };
 	void addHandler(KviKvsEventHandler * h);
 	void removeHandler(KviKvsEventHandler * h);
-	const QString & name(){ return m_szName; };
-	const QString & parameterDescription(){ return m_szParameterDescription; };
+	const QString & name() { return m_szName; };
+	const QString & parameterDescription() { return m_szParameterDescription; };
 };
 
 #endif //!_KVI_KVS_EVENT_H_

@@ -28,8 +28,8 @@
 #include "KviDataBuffer.h"
 
 #ifndef COMPILE_DISABLE_OGG_THEORA
-	#include "KviOggTheoraDecoder.h"
-	#include "KviOggTheoraEncoder.h"
+#include "KviOggTheoraDecoder.h"
+#include "KviOggTheoraEncoder.h"
 #endif
 
 class DccVoiceCodec
@@ -37,12 +37,14 @@ class DccVoiceCodec
 public:
 	DccVoiceCodec();
 	virtual ~DccVoiceCodec();
+
 protected:
 	KviCString m_szName;
+
 public:
 	const char * name();
-	virtual void encode(KviDataBuffer * signal,KviDataBuffer * stream);
-	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
+	virtual void encode(KviDataBuffer * signal, KviDataBuffer * stream);
+	virtual void decode(KviDataBuffer * stream, KviDataBuffer * signal);
 	virtual int encodedFrameSize();
 	virtual int decodedFrameSize();
 };
@@ -52,9 +54,10 @@ class DccVoiceNullCodec : public DccVoiceCodec
 public:
 	DccVoiceNullCodec();
 	virtual ~DccVoiceNullCodec();
+
 public:
-	virtual void encode(KviDataBuffer * signal,KviDataBuffer * stream);
-	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
+	virtual void encode(KviDataBuffer * signal, KviDataBuffer * stream);
+	virtual void decode(KviDataBuffer * stream, KviDataBuffer * signal);
 	virtual int encodedFrameSize();
 	virtual int decodedFrameSize();
 };
@@ -64,13 +67,15 @@ class DccVideoCodec
 public:
 	DccVideoCodec();
 	virtual ~DccVideoCodec();
+
 protected:
 	KviCString m_szName;
+
 public:
 	const char * name();
 	virtual void encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream);
 	virtual void encodeText(KviDataBuffer * textSignal, KviDataBuffer * stream);
-	virtual void decode(KviDataBuffer * stream,KviDataBuffer * videoSignal,KviDataBuffer * textSignal);
+	virtual void decode(KviDataBuffer * stream, KviDataBuffer * videoSignal, KviDataBuffer * textSignal);
 	virtual int encodedFrameSize();
 	virtual int decodedFrameSize();
 };
@@ -80,10 +85,11 @@ class DccVideoSJpegCodec : public DccVideoCodec
 public:
 	DccVideoSJpegCodec();
 	virtual ~DccVideoSJpegCodec();
+
 public:
 	virtual void encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream);
 	virtual void encodeText(KviDataBuffer * textSignal, KviDataBuffer * stream);
-	virtual void decode(KviDataBuffer * stream,KviDataBuffer * videoSignal,KviDataBuffer * textSignal);
+	virtual void decode(KviDataBuffer * stream, KviDataBuffer * videoSignal, KviDataBuffer * textSignal);
 	virtual int encodedFrameSize();
 	virtual int decodedFrameSize();
 };
@@ -94,12 +100,14 @@ class DccVideoTheoraCodec : public DccVideoCodec
 public:
 	DccVideoTheoraCodec();
 	virtual ~DccVideoTheoraCodec();
+
 public:
 	virtual void encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream);
 	virtual void encodeText(KviDataBuffer * textSignal, KviDataBuffer * stream);
-	virtual void decode(KviDataBuffer * stream,KviDataBuffer * videoSignal,KviDataBuffer * textSignal);
+	virtual void decode(KviDataBuffer * stream, KviDataBuffer * videoSignal, KviDataBuffer * textSignal);
 	virtual int encodedFrameSize();
 	virtual int decodedFrameSize();
+
 private:
 	KviOggTheoraEncoder * m_pEncoder;
 	KviOggTheoraDecoder * m_pDecoder;

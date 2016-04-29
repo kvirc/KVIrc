@@ -31,32 +31,30 @@
 #include <errno.h>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#include <winsock2.h>
+#include <winsock2.h>
 
-	#ifdef COMPILE_IPV6_SUPPORT
-		#ifdef WIN2K
-			#include <ws2ip6.h>
-		#else
-			#include <ws2tcpip.h>
-			//#include <tpipv6.h>
-		#endif
-	#endif
+#ifdef COMPILE_IPV6_SUPPORT
+#ifdef WIN2K
+#include <ws2ip6.h>
 #else
-	#include <sys/types.h>
-	#include <sys/socket.h>
-	#include <netdb.h>
+#include <ws2tcpip.h>
+//#include <tpipv6.h>
+#endif
+#endif
+#else
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
 #endif
 
 // this is for FreeBSD
 #ifndef EAI_ADDRFAMILY
-	#define EAI_ADDRFAMILY EAI_FAMILY
+#define EAI_ADDRFAMILY EAI_FAMILY
 #endif
 
 #ifndef EAI_NODATA
-	#define EAI_NODATA 0
+#define EAI_NODATA 0
 #endif
-
-
 
 KviDnsResolverResult::KviDnsResolverResult()
 {
@@ -65,7 +63,6 @@ KviDnsResolverResult::KviDnsResolverResult()
 	m_pHostnameList->setAutoDelete(true);
 	m_pIpAddressList = new KviPointerList<QString>;
 	m_pIpAddressList->setAutoDelete(true);
-
 }
 
 KviDnsResolverResult::~KviDnsResolverResult()
@@ -74,21 +71,18 @@ KviDnsResolverResult::~KviDnsResolverResult()
 	delete m_pIpAddressList;
 }
 
-void KviDnsResolverResult::appendHostname(const QString &host)
+void KviDnsResolverResult::appendHostname(const QString & host)
 {
 	m_pHostnameList->append(new QString(host));
 }
 
-
-void KviDnsResolverResult::appendAddress(const QString &addr)
+void KviDnsResolverResult::appendAddress(const QString & addr)
 {
 	m_pIpAddressList->append(new QString(addr));
 }
 
-
-
 KviDnsResolverThread::KviDnsResolverThread(KviDnsResolver * pDns)
-	: QThread()
+    : QThread()
 {
 	m_pParentDns = pDns;
 }
@@ -103,29 +97,50 @@ KviError::Code KviDnsResolverThread::translateDnsError(int iErr)
 
 	switch(iErr)
 	{
-		case EAI_FAMILY:     return KviError::UnsupportedAddressFamily; break;
-#if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)) && defined(EAI_ADDRFAMILY) && (EAI_ADDRFAMILY != EAI_FAMILY)
-		case EAI_ADDRFAMILY: return KviError::UnsupportedAddressFamily; break;
+		case EAI_FAMILY:
+			return KviError::UnsupportedAddressFamily;
+			break;
+#if(!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)) && defined(EAI_ADDRFAMILY) && (EAI_ADDRFAMILY != EAI_FAMILY)
+		case EAI_ADDRFAMILY:
+			return KviError::UnsupportedAddressFamily;
+			break;
 #endif
 // NOT FreeBSD ARE WE?
 #if defined(EAI_NODATA) && (EAI_NODATA != EAI_NONAME)
-// YARR
-		case EAI_NODATA:     return KviError::ValidNameButNoIpAddress; break;
+		// YARR
+		case EAI_NODATA:
+			return KviError::ValidNameButNoIpAddress;
+			break;
 #endif
-		case EAI_FAIL:       return KviError::UnrecoverableNameserverError; break;
-		case EAI_AGAIN:      return KviError::DNSTemporaneousFault; break;
+		case EAI_FAIL:
+			return KviError::UnrecoverableNameserverError;
+			break;
+		case EAI_AGAIN:
+			return KviError::DNSTemporaneousFault;
+			break;
 		// this should never happen
-		case EAI_BADFLAGS:   return KviError::DNSInternalErrorBadFlags; break;
-		case EAI_MEMORY:     return KviError::DNSInternalErrorOutOfMemory; break;
+		case EAI_BADFLAGS:
+			return KviError::DNSInternalErrorBadFlags;
+			break;
+		case EAI_MEMORY:
+			return KviError::DNSInternalErrorOutOfMemory;
+			break;
 		// got this when experimenting with protocols
-		case EAI_SERVICE:    return KviError::DNSInternalErrorServiceNotSupported; break;
+		case EAI_SERVICE:
+			return KviError::DNSInternalErrorServiceNotSupported;
+			break;
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-		case EAI_NONAME:     return KviError::DNSNoName; break;
+		case EAI_NONAME:
+			return KviError::DNSNoName;
+			break;
 #endif
 		// got this when experimenting with protocols
-		case EAI_SOCKTYPE:   return KviError::DNSInternalErrorUnsupportedSocketType; break;
+		case EAI_SOCKTYPE:
+			return KviError::DNSInternalErrorUnsupportedSocketType;
+			break;
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-		case EAI_SYSTEM:     return KviError::DNSQueryFailed;
+		case EAI_SYSTEM:
+			return KviError::DNSQueryFailed;
 #endif
 	}
 
@@ -138,7 +153,7 @@ void KviDnsResolverThread::postDnsError(KviDnsResolverResult * pDns, KviError::C
 	pDns->setError(error);
 
 	KviDnsResolverThreadEvent * pEvent = new KviDnsResolverThreadEvent(pDns);
-	QApplication::postEvent(m_pParentDns,pEvent);
+	QApplication::postEvent(m_pParentDns, pEvent);
 }
 
 void KviDnsResolverThread::run()
@@ -149,7 +164,7 @@ void KviDnsResolverThread::run()
 
 	if(m_szQuery.isEmpty())
 	{
-		postDnsError(dns,KviError::NoHostToResolve);
+		postDnsError(dns, KviError::NoHostToResolve);
 		return;
 	}
 
@@ -158,32 +173,33 @@ void KviDnsResolverThread::run()
 	{
 		if(m_queryType == KviDnsResolver::IPv6)
 		{
-			postDnsError(dns,KviError::NoIPv6Support);
+			postDnsError(dns, KviError::NoIPv6Support);
 			return;
 		}
 		m_queryType = KviDnsResolver::IPv4;
 	}
 #endif
 
-#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)) && !defined(COMPILE_IPV6_SUPPORT)
+#if(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)) && !defined(COMPILE_IPV6_SUPPORT)
 
 	if(m_queryType == KviDnsResolver::IPv6)
 	{
-		postDnsError(dns,KviError::NoIPv6Support);
+		postDnsError(dns, KviError::NoIPv6Support);
 		return;
 	}
 
 	// gethostbyaddr and gethostbyname are thread-safe on Windoze
 	struct in_addr inAddr;
-	struct hostent *pHostEntry = 0;
-
+	struct hostent * pHostEntry = 0;
 
 	// DIE DIE!....I hope that this stuff will disappear sooner or later :)
 
-	if(KviNetUtils::stringIpToBinaryIp(m_szQuery,&inAddr))
+	if(KviNetUtils::stringIpToBinaryIp(m_szQuery, &inAddr))
 	{
-		pHostEntry = gethostbyaddr((const char *)&inAddr,sizeof(inAddr),AF_INET);
-	} else {
+		pHostEntry = gethostbyaddr((const char *)&inAddr, sizeof(inAddr), AF_INET);
+	}
+	else
+	{
 		pHostEntry = gethostbyname(m_szQuery.toUtf8().data());
 	}
 
@@ -191,40 +207,52 @@ void KviDnsResolverThread::run()
 	{
 		switch(h_errno)
 		{
-			case HOST_NOT_FOUND: dns->setError(KviError::HostNotFound); break;
-			case NO_ADDRESS:     dns->setError(KviError::ValidNameButNoIpAddress); break;
-			case NO_RECOVERY:    dns->setError(KviError::UnrecoverableNameserverError); break;
-			case TRY_AGAIN:      dns->setError(KviError::DNSTemporaneousFault); break;
-			default:             dns->setError(KviError::DNSQueryFailed); break;
+			case HOST_NOT_FOUND:
+				dns->setError(KviError::HostNotFound);
+				break;
+			case NO_ADDRESS:
+				dns->setError(KviError::ValidNameButNoIpAddress);
+				break;
+			case NO_RECOVERY:
+				dns->setError(KviError::UnrecoverableNameserverError);
+				break;
+			case TRY_AGAIN:
+				dns->setError(KviError::DNSTemporaneousFault);
+				break;
+			default:
+				dns->setError(KviError::DNSQueryFailed);
+				break;
 		}
-	} else {
+	}
+	else
+	{
 		dns->appendHostname(pHostEntry->h_name);
 		QString szIp;
-		KviNetUtils::binaryIpToStringIp(* ((struct in_addr*)(pHostEntry->h_addr)),szIp);
+		KviNetUtils::binaryIpToStringIp(*((struct in_addr *)(pHostEntry->h_addr)), szIp);
 		dns->appendAddress(szIp);
 
 		int idx = 1;
 		while(pHostEntry->h_addr_list[idx])
 		{
 			QString tmp;
-			KviNetUtils::binaryIpToStringIp(* ((struct in_addr*)(pHostEntry->h_addr_list[idx])),tmp);
-			if(!tmp.isEmpty())dns->appendAddress(tmp);
+			KviNetUtils::binaryIpToStringIp(*((struct in_addr *)(pHostEntry->h_addr_list[idx])), tmp);
+			if(!tmp.isEmpty())
+				dns->appendAddress(tmp);
 			++idx;
 		}
 		if(pHostEntry->h_aliases[0])
 		{
 			dns->appendHostname(QString::fromUtf8(pHostEntry->h_aliases[0]));
-			if(pHostEntry->h_aliases[1])dns->appendHostname(QString::fromUtf8(pHostEntry->h_aliases[1]));
+			if(pHostEntry->h_aliases[1])
+				dns->appendHostname(QString::fromUtf8(pHostEntry->h_aliases[1]));
 		}
 	}
-
 
 #else
 
 	int retVal;
 
-
-//#ifdef HAVE_GETNAMEINFO
+	//#ifdef HAVE_GETNAMEINFO
 	struct sockaddr_in ipv4Addr;
 
 #ifdef COMPILE_IPV6_SUPPORT
@@ -232,10 +260,11 @@ void KviDnsResolverThread::run()
 	bool bIsIPv6Ip = false;
 #endif
 
-	bool bIsIPv4Ip = KviNetUtils::stringIpToBinaryIp(m_szQuery,(struct in_addr *)&(ipv4Addr.sin_addr));
+	bool bIsIPv4Ip = KviNetUtils::stringIpToBinaryIp(m_szQuery, (struct in_addr *)&(ipv4Addr.sin_addr));
 
 #ifdef COMPILE_IPV6_SUPPORT
-	if(!bIsIPv4Ip)bIsIPv6Ip = KviNetUtils::stringIpToBinaryIp_V6(m_szQuery,(struct in6_addr *)&(ipv6Addr.sin6_addr));
+	if(!bIsIPv4Ip)
+		bIsIPv6Ip = KviNetUtils::stringIpToBinaryIp_V6(m_szQuery, (struct in6_addr *)&(ipv6Addr.sin6_addr));
 #endif
 
 //#ifdef HAVE_GETNAMEINFO
@@ -257,61 +286,69 @@ void KviDnsResolverThread::run()
 			ipv4Addr.sin_family = AF_INET;
 			ipv4Addr.sin_port = 0;
 			// NI_NAMEREQD as last param ?
-			retVal = getnameinfo((struct sockaddr *)&ipv4Addr,sizeof(ipv4Addr),retname,1025,0,0,NI_NAMEREQD);
+			retVal = getnameinfo((struct sockaddr *)&ipv4Addr, sizeof(ipv4Addr), retname, 1025, 0, 0, NI_NAMEREQD);
 #ifdef COMPILE_IPV6_SUPPORT
-		} else {
+		}
+		else
+		{
 			ipv6Addr.sin6_family = AF_INET6;
 			ipv6Addr.sin6_port = 0;
-			retVal = getnameinfo((struct sockaddr *)&ipv6Addr,sizeof(ipv6Addr),retname,1025,0,0,NI_NAMEREQD);
+			retVal = getnameinfo((struct sockaddr *)&ipv6Addr, sizeof(ipv6Addr), retname, 1025, 0, 0, NI_NAMEREQD);
 		}
 #endif
 
-		if(retVal != 0)dns->setError(translateDnsError(retVal));
-		else {
+		if(retVal != 0)
+			dns->setError(translateDnsError(retVal));
+		else
+		{
 			dns->appendHostname(retname);
 			dns->appendAddress(m_szQuery);
 		}
+	}
+	else
+	{
+		//#endif //HAVE_GETNAMEINFO
 
-	} else {
-//#endif //HAVE_GETNAMEINFO
-
-
-//#ifdef COMPILE_IPV6_SUPPORT
-//		struct in6_addr in6Addr;
-//#endif
+		//#ifdef COMPILE_IPV6_SUPPORT
+		//		struct in6_addr in6Addr;
+		//#endif
 		struct addrinfo * pRet = 0;
 		struct addrinfo * pNext;
 		struct addrinfo hints;
-		hints.ai_flags     = 0; //AI_CANONNAME; <-- for IPV6 it makes cannoname to point to the IP address!
+		hints.ai_flags = 0; //AI_CANONNAME; <-- for IPV6 it makes cannoname to point to the IP address!
 #ifdef COMPILE_IPV6_SUPPORT
-		hints.ai_family    = (m_queryType == KviDnsResolver::IPv6) ? PF_INET6 : ((m_queryType == KviDnsResolver::IPv4) ? PF_INET : PF_UNSPEC);
+		hints.ai_family = (m_queryType == KviDnsResolver::IPv6) ? PF_INET6 : ((m_queryType == KviDnsResolver::IPv4) ? PF_INET : PF_UNSPEC);
 #else
-		hints.ai_family    = PF_INET;
+		hints.ai_family = PF_INET;
 #endif
-		hints.ai_socktype  = SOCK_STREAM;
-		hints.ai_protocol  = 0;
-		hints.ai_addrlen   = 0;
+		hints.ai_socktype = SOCK_STREAM;
+		hints.ai_protocol = 0;
+		hints.ai_addrlen = 0;
 		hints.ai_canonname = 0;
-		hints.ai_addr      = 0;
-		hints.ai_next      = 0;
+		hints.ai_addr = 0;
+		hints.ai_next = 0;
 
-		retVal = getaddrinfo(m_szQuery.toUtf8().data(),0,&hints,&pRet);
+		retVal = getaddrinfo(m_szQuery.toUtf8().data(), 0, &hints, &pRet);
 
 		if(retVal != 0)
 		{
 			dns->setError(translateDnsError(retVal));
-		} else if(!pRet)
+		}
+		else if(!pRet)
 		{
 			dns->setError(KviError::DNSQueryFailed);
-		} else {
+		}
+		else
+		{
 			dns->appendHostname(pRet->ai_canonname ? QString::fromUtf8(pRet->ai_canonname) : m_szQuery);
 			QString szIp;
 #ifdef COMPILE_IPV6_SUPPORT
 			if(pRet->ai_family == PF_INET6)
-				KviNetUtils::binaryIpToStringIp_V6(((sockaddr_in6 *)(pRet->ai_addr))->sin6_addr,szIp);
-			else {
+				KviNetUtils::binaryIpToStringIp_V6(((sockaddr_in6 *)(pRet->ai_addr))->sin6_addr, szIp);
+			else
+			{
 #endif
-				KviNetUtils::binaryIpToStringIp(((sockaddr_in *)(pRet->ai_addr))->sin_addr,szIp);
+				KviNetUtils::binaryIpToStringIp(((sockaddr_in *)(pRet->ai_addr))->sin_addr, szIp);
 #ifdef COMPILE_IPV6_SUPPORT
 			}
 #endif
@@ -323,10 +360,11 @@ void KviDnsResolverThread::run()
 				QString tmp;
 #ifdef COMPILE_IPV6_SUPPORT
 				if(pNext->ai_family == PF_INET6)
-					KviNetUtils::binaryIpToStringIp_V6(((sockaddr_in6 *)(pNext->ai_addr))->sin6_addr,tmp);
-				else {
+					KviNetUtils::binaryIpToStringIp_V6(((sockaddr_in6 *)(pNext->ai_addr))->sin6_addr, tmp);
+				else
+				{
 #endif
-					KviNetUtils::binaryIpToStringIp(((sockaddr_in *)(pNext->ai_addr))->sin_addr,tmp);
+					KviNetUtils::binaryIpToStringIp(((sockaddr_in *)(pNext->ai_addr))->sin_addr, tmp);
 #ifdef COMPILE_IPV6_SUPPORT
 				}
 #endif
@@ -340,24 +378,22 @@ void KviDnsResolverThread::run()
 				}
 
 				pNext = pNext->ai_next;
-
 			}
 		}
 		if(pRet)
 			freeaddrinfo(pRet);
-//#ifdef HAVE_GETNAMEINFO
+		//#ifdef HAVE_GETNAMEINFO
 	}
 //#endif //HAVE_GETNAMEINFO
 
 #endif // !COMPILE_ON_WINDOWS
 
 	KviDnsResolverThreadEvent * pEvent = new KviDnsResolverThreadEvent(dns);
-	QApplication::postEvent(m_pParentDns,pEvent);
+	QApplication::postEvent(m_pParentDns, pEvent);
 }
 
-
 KviDnsResolver::KviDnsResolver()
-: QObject()
+    : QObject()
 {
 	m_pSlaveThread = new KviDnsResolverThread(this);
 	m_pDnsResult = new KviDnsResolverResult();
@@ -391,7 +427,7 @@ bool KviDnsResolver::lookup(const QString & szQuery, QueryType type)
 {
 	if(m_state == Busy)
 		return false;
-	m_pSlaveThread->setQuery(szQuery.trimmed(),type);
+	m_pSlaveThread->setQuery(szQuery.trimmed(), type);
 	m_pSlaveThread->start();
 	m_state = Busy;
 	//m_state = bStarted ? Busy : Failure;
@@ -409,7 +445,6 @@ QString KviDnsResolver::errorString()
 {
 	return KviError::getDescription(error());
 }
-
 
 KviDnsResolverResult * KviDnsResolver::result()
 {
@@ -441,14 +476,16 @@ int KviDnsResolver::ipAddressCount()
 const QString & KviDnsResolver::firstHostname()
 {
 	QString * pStr = result()->hostnameList()->first();
-	if(pStr)return *pStr;
+	if(pStr)
+		return *pStr;
 	return KviQString::Empty;
 }
 
 const QString & KviDnsResolver::firstIpAddress()
 {
 	QString * pStr = result()->ipAddressList()->first();
-	if(pStr)return *pStr;
+	if(pStr)
+		return *pStr;
 	return KviQString::Empty;
 }
 
@@ -457,14 +494,15 @@ const QString & KviDnsResolver::query()
 	return result()->query();
 }
 
-bool KviDnsResolver::event(QEvent *e)
+bool KviDnsResolver::event(QEvent * e)
 {
 	if(e->type() == QEvent::User)
 	{
 		KviDnsResolverThreadEvent * pEvent = dynamic_cast<KviDnsResolverThreadEvent *>(e);
 		if(pEvent)
 		{
-			if(m_pDnsResult)delete m_pDnsResult;
+			if(m_pDnsResult)
+				delete m_pDnsResult;
 			m_pDnsResult = pEvent->releaseResult();
 			m_state = (m_pDnsResult->error() == KviError::Success) ? Success : Failure;
 			emit lookupDone(this);

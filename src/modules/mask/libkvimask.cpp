@@ -49,14 +49,14 @@
 
 static bool mask_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 {
-	QString wildmask,fixedmask;
+	QString wildmask, fixedmask;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("wildcard mask",KVS_PT_STRING,0,wildmask)
-		KVSM_PARAMETER("fixed mask",KVS_PT_STRING,0,fixedmask)
+	KVSM_PARAMETER("wildcard mask", KVS_PT_STRING, 0, wildmask)
+	KVSM_PARAMETER("fixed mask", KVS_PT_STRING, 0, fixedmask)
 	KVSM_PARAMETERS_END(c)
 	KviIrcMask mk1(wildmask);
 	KviIrcMask mk2(fixedmask);
-	c->returnValue()->setBoolean(mk1.matchesFixed(mk2.nick(),mk2.user(),mk2.host()));
+	c->returnValue()->setBoolean(mk1.matchesFixed(mk2.nick(), mk2.user(), mk2.host()));
 	return true;
 }
 
@@ -78,7 +78,7 @@ static bool mask_kvs_fnc_nick(KviKvsModuleFunctionCall * c)
 {
 	QString mask;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("mask",KVS_PT_STRING,0,mask)
+	KVSM_PARAMETER("mask", KVS_PT_STRING, 0, mask)
 	KVSM_PARAMETERS_END(c)
 	KviIrcMask mk(mask);
 	c->returnValue()->setString(mk.nick());
@@ -103,13 +103,12 @@ static bool mask_kvs_fnc_user(KviKvsModuleFunctionCall * c)
 {
 	QString mask;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("mask",KVS_PT_STRING,0,mask)
+	KVSM_PARAMETER("mask", KVS_PT_STRING, 0, mask)
 	KVSM_PARAMETERS_END(c)
 	KviIrcMask mk(mask);
 	c->returnValue()->setString(mk.user());
 	return true;
 }
-
 
 /*
 	@doc: mask.host
@@ -129,13 +128,12 @@ static bool mask_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 {
 	QString mask;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("mask",KVS_PT_STRING,0,mask)
+	KVSM_PARAMETER("mask", KVS_PT_STRING, 0, mask)
 	KVSM_PARAMETERS_END(c)
 	KviIrcMask mk(mask);
 	c->returnValue()->setString(mk.host());
 	return true;
 }
-
 
 /*
 	@doc: mask.hasnumerichost
@@ -151,32 +149,28 @@ static bool mask_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 		Returns [b]1[/b] if the hostname part of the mask is numeric (e.g. unresolved IPv4 or IPv6 address).
 */
 
-
 static bool mask_kvs_fnc_hasnumerichost(KviKvsModuleFunctionCall * c)
 {
 	QString mask;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("mask",KVS_PT_STRING,0,mask)
+	KVSM_PARAMETER("mask", KVS_PT_STRING, 0, mask)
 	KVSM_PARAMETERS_END(c)
 	KviIrcMask mk(mask);
 	c->returnValue()->setBoolean(mk.hasNumericHost());
 	return true;
 }
 
-
 /*********************************************************************/
 //              Module stuff
 /********************************************************************/
 
-
-
 static bool mask_module_init(KviModule * m)
 {
-	KVSM_REGISTER_FUNCTION(m,"match",mask_kvs_fnc_match);
-	KVSM_REGISTER_FUNCTION(m,"nick",mask_kvs_fnc_nick);
-	KVSM_REGISTER_FUNCTION(m,"user",mask_kvs_fnc_user);
-	KVSM_REGISTER_FUNCTION(m,"host",mask_kvs_fnc_host);
-	KVSM_REGISTER_FUNCTION(m,"hasnumerichost",mask_kvs_fnc_hasnumerichost);
+	KVSM_REGISTER_FUNCTION(m, "match", mask_kvs_fnc_match);
+	KVSM_REGISTER_FUNCTION(m, "nick", mask_kvs_fnc_nick);
+	KVSM_REGISTER_FUNCTION(m, "user", mask_kvs_fnc_user);
+	KVSM_REGISTER_FUNCTION(m, "host", mask_kvs_fnc_host);
+	KVSM_REGISTER_FUNCTION(m, "hasnumerichost", mask_kvs_fnc_hasnumerichost);
 
 	return true;
 }
@@ -187,13 +181,12 @@ static bool mask_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"File",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)",
-	"Mask manipulation functions",
-	mask_module_init,
-	0,
-	0,
-	mask_module_cleanup,
-	0
-)
+    "File",  // module name
+    "4.0.0", // module version
+    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)",
+    "Mask manipulation functions",
+    mask_module_init,
+    0,
+    0,
+    mask_module_cleanup,
+    0)

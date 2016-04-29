@@ -37,29 +37,31 @@ class KVILIB_API KviNickServRuleSet : public KviHeapObject
 {
 public:
 	KviNickServRuleSet();
-	KviNickServRuleSet(const KviNickServRuleSet &s);
+	KviNickServRuleSet(const KviNickServRuleSet & s);
 	~KviNickServRuleSet();
+
 protected:
 	KviPointerList<KviNickServRule> * m_pRules; // FIXME: Replace with KviPointerHashTable<QString,KviPointerList>
 	bool m_bEnabled;
+
 public:
 	// avoid crashes under windows
 	static KviNickServRuleSet * createInstance();
 	void clear();
-	bool isEnabled(){ return m_bEnabled; };
-	void setEnabled(bool bEnabled){ m_bEnabled = bEnabled; };
-	bool isEmpty(){ return m_pRules ? m_pRules->isEmpty() : true; };
+	bool isEnabled() { return m_bEnabled; };
+	void setEnabled(bool bEnabled) { m_bEnabled = bEnabled; };
+	bool isEmpty() { return m_pRules ? m_pRules->isEmpty() : true; };
 	void addRule(KviNickServRule * r);
-	KviNickServRule * matchRule(const QString &szNick,const KviIrcMask *nickServ,const QString &szMsg,const QString &szServer = QString::null);
-	void copyFrom(const KviNickServRuleSet &src);
-	void load(const QString &szConfigFile);
-	void save(const QString &szConfigFile);
-	void save(KviConfigurationFile * cfg,const QString &prefix);
-	KviPointerList<KviNickServRule> * rules(){ return m_pRules; };
-	static KviNickServRuleSet * load(KviConfigurationFile * cfg,const QString &prefix);
-protected:
-	bool loadPrivate(KviConfigurationFile * cfg,const QString &prefix,unsigned int nEntries);
-};
+	KviNickServRule * matchRule(const QString & szNick, const KviIrcMask * nickServ, const QString & szMsg, const QString & szServer = QString::null);
+	void copyFrom(const KviNickServRuleSet & src);
+	void load(const QString & szConfigFile);
+	void save(const QString & szConfigFile);
+	void save(KviConfigurationFile * cfg, const QString & prefix);
+	KviPointerList<KviNickServRule> * rules() { return m_pRules; };
+	static KviNickServRuleSet * load(KviConfigurationFile * cfg, const QString & prefix);
 
+protected:
+	bool loadPrivate(KviConfigurationFile * cfg, const QString & prefix, unsigned int nEntries);
+};
 
 #endif // _KVI_NICKSERV_RULE_SET_H_

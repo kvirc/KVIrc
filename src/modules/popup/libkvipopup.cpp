@@ -26,106 +26,110 @@
 #include "KviLocale.h"
 #include "KviKvsPopupManager.h"
 
-#define GET_KVS_POPUP(LOCKING_CHECK) \
-	int iIdx = szPopupName.indexOf(QChar('.')); \
-	if(iIdx == 0) \
-	{ \
-		if(!c->hasSwitch('q',"quiet")) \
-			c->warning(__tr2qs_ctx("Empty popup name supplied","kvs")); \
-		return true; \
-	} \
-	if(iIdx > 0) \
-	{ \
-		if(iIdx == szPopupName.size()) \
-		{ \
-			if(!c->hasSwitch('q',"quiet")) \
-				c->warning(__tr2qs_ctx("Empty subpopup name supplied","kvs")); \
-			return true; \
-		} \
-		szSubPopupName = szPopupName.mid(iIdx+1); \
-		szPopupName.truncate(iIdx); \
-	} \
-	KviKvsPopupMenu * pPopup = KviKvsPopupManager::instance()->lookup(szPopupName); \
-	if(!pPopup) \
-	{ \
-		if(!c->hasSwitch('q',"quiet")) \
-			c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist","kvs"),&szPopupName); \
-		return true; \
-	} \
-	if(pPopup->LOCKING_CHECK()) \
-	{ \
-		if(!c->hasSwitch('q',"quiet")) \
-			c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)","kvs")); \
-		return true; \
-	} \
-	while(!szSubPopupName.isEmpty()) \
-	{ \
-		iIdx = szSubPopupName.indexOf(QChar('.')); \
-		QString szTargetPopupName; \
-		if(iIdx >= 0) \
-		{ \
-			szTargetPopupName = szSubPopupName.mid(0,iIdx); \
-			szSubPopupName = szSubPopupName.mid(iIdx+1); \
-		} else { \
-			szTargetPopupName = szSubPopupName; \
-			szSubPopupName = QString(); \
-		} \
-		pPopup = pPopup->findChildPopupByName(szTargetPopupName); \
-		if(!pPopup) \
-		{ \
-			if(!c->hasSwitch('q',"quiet")) \
-				c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist","kvs"),&szTargetPopupName); \
-			return true; \
-		} \
-		if(pPopup->LOCKING_CHECK()) \
-		{ \
-			if(!c->hasSwitch('q',"quiet")) \
-				c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)","kvs")); \
-			return true; \
-		} \
+#define GET_KVS_POPUP(LOCKING_CHECK)                                                                                        \
+	int iIdx = szPopupName.indexOf(QChar('.'));                                                                             \
+	if(iIdx == 0)                                                                                                           \
+	{                                                                                                                       \
+		if(!c->hasSwitch('q', "quiet"))                                                                                     \
+			c->warning(__tr2qs_ctx("Empty popup name supplied", "kvs"));                                                    \
+		return true;                                                                                                        \
+	}                                                                                                                       \
+	if(iIdx > 0)                                                                                                            \
+	{                                                                                                                       \
+		if(iIdx == szPopupName.size())                                                                                      \
+		{                                                                                                                   \
+			if(!c->hasSwitch('q', "quiet"))                                                                                 \
+				c->warning(__tr2qs_ctx("Empty subpopup name supplied", "kvs"));                                             \
+			return true;                                                                                                    \
+		}                                                                                                                   \
+		szSubPopupName = szPopupName.mid(iIdx + 1);                                                                         \
+		szPopupName.truncate(iIdx);                                                                                         \
+	}                                                                                                                       \
+	KviKvsPopupMenu * pPopup = KviKvsPopupManager::instance()->lookup(szPopupName);                                         \
+	if(!pPopup)                                                                                                             \
+	{                                                                                                                       \
+		if(!c->hasSwitch('q', "quiet"))                                                                                     \
+			c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist", "kvs"), &szPopupName);                                     \
+		return true;                                                                                                        \
+	}                                                                                                                       \
+	if(pPopup->LOCKING_CHECK())                                                                                             \
+	{                                                                                                                       \
+		if(!c->hasSwitch('q', "quiet"))                                                                                     \
+			c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)", "kvs"));     \
+		return true;                                                                                                        \
+	}                                                                                                                       \
+	while(!szSubPopupName.isEmpty())                                                                                        \
+	{                                                                                                                       \
+		iIdx = szSubPopupName.indexOf(QChar('.'));                                                                          \
+		QString szTargetPopupName;                                                                                          \
+		if(iIdx >= 0)                                                                                                       \
+		{                                                                                                                   \
+			szTargetPopupName = szSubPopupName.mid(0, iIdx);                                                                \
+			szSubPopupName = szSubPopupName.mid(iIdx + 1);                                                                  \
+		}                                                                                                                   \
+		else                                                                                                                \
+		{                                                                                                                   \
+			szTargetPopupName = szSubPopupName;                                                                             \
+			szSubPopupName = QString();                                                                                     \
+		}                                                                                                                   \
+		pPopup = pPopup->findChildPopupByName(szTargetPopupName);                                                           \
+		if(!pPopup)                                                                                                         \
+		{                                                                                                                   \
+			if(!c->hasSwitch('q', "quiet"))                                                                                 \
+				c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist", "kvs"), &szTargetPopupName);                           \
+			return true;                                                                                                    \
+		}                                                                                                                   \
+		if(pPopup->LOCKING_CHECK())                                                                                         \
+		{                                                                                                                   \
+			if(!c->hasSwitch('q', "quiet"))                                                                                 \
+				c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)", "kvs")); \
+			return true;                                                                                                    \
+		}                                                                                                                   \
 	}
 
-#define GET_KVS_POPUP_FNC \
-	int iIdx = szPopupName.indexOf(QChar('.')); \
-	if(iIdx == 0) \
-	{ \
-		c->warning(__tr2qs_ctx("Empty popup name supplied","kvs")); \
-		return true; \
-	} \
-	if(iIdx > 0) \
-	{ \
-		if(iIdx == szPopupName.size()) \
-		{ \
-			c->warning(__tr2qs_ctx("Empty subpopup name supplied","kvs")); \
-			return true; \
-		} \
-		szSubPopupName = szPopupName.mid(iIdx+1); \
-		szPopupName.truncate(iIdx); \
-	} \
-	KviKvsPopupMenu * pPopup = KviKvsPopupManager::instance()->lookup(szPopupName); \
-	if(!pPopup) \
-	{ \
-		c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist","kvs"),&szPopupName); \
-		return true; \
-	} \
-	while(!szSubPopupName.isEmpty()) \
-	{ \
-		iIdx = szSubPopupName.indexOf(QChar('.')); \
-		QString szTargetPopupName; \
-		if(iIdx >= 0) \
-		{ \
-			szTargetPopupName = szSubPopupName.mid(0,iIdx); \
-			szSubPopupName = szSubPopupName.mid(iIdx+1); \
-		} else { \
-			szTargetPopupName = szSubPopupName; \
-			szSubPopupName = QString(); \
-		} \
-		pPopup = pPopup->findChildPopupByName(szSubPopupName); \
-		if(!pPopup) \
-		{ \
-			c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist","kvs"),&szTargetPopupName); \
-			return true; \
-		} \
+#define GET_KVS_POPUP_FNC                                                                     \
+	int iIdx = szPopupName.indexOf(QChar('.'));                                               \
+	if(iIdx == 0)                                                                             \
+	{                                                                                         \
+		c->warning(__tr2qs_ctx("Empty popup name supplied", "kvs"));                          \
+		return true;                                                                          \
+	}                                                                                         \
+	if(iIdx > 0)                                                                              \
+	{                                                                                         \
+		if(iIdx == szPopupName.size())                                                        \
+		{                                                                                     \
+			c->warning(__tr2qs_ctx("Empty subpopup name supplied", "kvs"));                   \
+			return true;                                                                      \
+		}                                                                                     \
+		szSubPopupName = szPopupName.mid(iIdx + 1);                                           \
+		szPopupName.truncate(iIdx);                                                           \
+	}                                                                                         \
+	KviKvsPopupMenu * pPopup = KviKvsPopupManager::instance()->lookup(szPopupName);           \
+	if(!pPopup)                                                                               \
+	{                                                                                         \
+		c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist", "kvs"), &szPopupName);           \
+		return true;                                                                          \
+	}                                                                                         \
+	while(!szSubPopupName.isEmpty())                                                          \
+	{                                                                                         \
+		iIdx = szSubPopupName.indexOf(QChar('.'));                                            \
+		QString szTargetPopupName;                                                            \
+		if(iIdx >= 0)                                                                         \
+		{                                                                                     \
+			szTargetPopupName = szSubPopupName.mid(0, iIdx);                                  \
+			szSubPopupName = szSubPopupName.mid(iIdx + 1);                                    \
+		}                                                                                     \
+		else                                                                                  \
+		{                                                                                     \
+			szTargetPopupName = szSubPopupName;                                               \
+			szSubPopupName = QString();                                                       \
+		}                                                                                     \
+		pPopup = pPopup->findChildPopupByName(szSubPopupName);                                \
+		if(!pPopup)                                                                           \
+		{                                                                                     \
+			c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist", "kvs"), &szTargetPopupName); \
+			return true;                                                                      \
+		}                                                                                     \
 	}
 
 /*
@@ -164,17 +168,17 @@ static bool popup_kvs_cmd_addItem(KviKvsModuleCallbackCommandCall * c)
 {
 	QString szPopupName, szSubPopupName, szItemId, szText, szIcon, szCondition;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
-		KVSM_PARAMETER("text",KVS_PT_NONEMPTYSTRING,0,szText)
-		KVSM_PARAMETER("icon",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
-		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
-		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
+	KVSM_PARAMETER("popupname", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
+	KVSM_PARAMETER("text", KVS_PT_NONEMPTYSTRING, 0, szText)
+	KVSM_PARAMETER("icon", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
+	KVSM_PARAMETER("item_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szItemId)
+	KVSM_PARAMETER("condition", KVS_PT_STRING, KVS_PF_OPTIONAL, szCondition)
 	KVSM_PARAMETERS_END(c)
 
 	GET_KVS_POPUP(isHardLocked)
 
-	if(c->callback()->code().trimmed().isEmpty() && !c->hasSwitch('q',"quiet"))
-		c->warning(__tr2qs_ctx("Found empty instruction for popup item: maybe you need to fix the script?","kvs"));
+	if(c->callback()->code().trimmed().isEmpty() && !c->hasSwitch('q', "quiet"))
+		c->warning(__tr2qs_ctx("Found empty instruction for popup item: maybe you need to fix the script?", "kvs"));
 
 	pPopup->addItem(szItemId, c->callback()->code(), szText, szIcon, szCondition);
 
@@ -214,16 +218,16 @@ static bool popup_kvs_cmd_addItem(KviKvsModuleCallbackCommandCall * c)
 
 static bool popup_kvs_cmd_addPrologue(KviKvsModuleCallbackCommandCall * c)
 {
-	QString szPopupName, szSubPopupName,szItemId;
+	QString szPopupName, szSubPopupName, szItemId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
-		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
+	KVSM_PARAMETER("popupname", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
+	KVSM_PARAMETER("item_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szItemId)
 	KVSM_PARAMETERS_END(c)
 
 	GET_KVS_POPUP(isSoftLocked)
 
-	if(c->callback()->code().trimmed().isEmpty() && !c->hasSwitch('q',"quiet"))
-		c->warning(__tr2qs_ctx("Found empty prologue block: maybe you need to fix the script?","kvs"));
+	if(c->callback()->code().trimmed().isEmpty() && !c->hasSwitch('q', "quiet"))
+		c->warning(__tr2qs_ctx("Found empty prologue block: maybe you need to fix the script?", "kvs"));
 
 	pPopup->addPrologue(szItemId, c->callback()->code());
 
@@ -263,16 +267,16 @@ static bool popup_kvs_cmd_addPrologue(KviKvsModuleCallbackCommandCall * c)
 
 static bool popup_kvs_cmd_addEpilogue(KviKvsModuleCallbackCommandCall * c)
 {
-	QString szPopupName, szSubPopupName,szItemId;
+	QString szPopupName, szSubPopupName, szItemId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
-		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
+	KVSM_PARAMETER("popupname", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
+	KVSM_PARAMETER("item_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szItemId)
 	KVSM_PARAMETERS_END(c)
 
 	GET_KVS_POPUP(isSoftLocked)
 
-	if(c->callback()->code().trimmed().isEmpty() && !c->hasSwitch('q',"quiet"))
-		c->warning(__tr2qs_ctx("Found empty epilogue block: maybe you need to fix the script?","kvs"));
+	if(c->callback()->code().trimmed().isEmpty() && !c->hasSwitch('q', "quiet"))
+		c->warning(__tr2qs_ctx("Found empty epilogue block: maybe you need to fix the script?", "kvs"));
 
 	pPopup->addEpilogue(szItemId, c->callback()->code());
 
@@ -312,12 +316,12 @@ static bool popup_kvs_cmd_addExtPopup(KviKvsModuleCommandCall * c)
 {
 	QString szPopupName, szSubPopupName, szItemId, szExtPopupName, szText, szIcon, szCondition;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
-		KVSM_PARAMETER("external_popup",KVS_PT_NONEMPTYSTRING,0,szExtPopupName)
-		KVSM_PARAMETER("text",KVS_PT_NONEMPTYSTRING,0,szText)
-		KVSM_PARAMETER("icon",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
-		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
-		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
+	KVSM_PARAMETER("popupname", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
+	KVSM_PARAMETER("external_popup", KVS_PT_NONEMPTYSTRING, 0, szExtPopupName)
+	KVSM_PARAMETER("text", KVS_PT_NONEMPTYSTRING, 0, szText)
+	KVSM_PARAMETER("icon", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
+	KVSM_PARAMETER("item_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szItemId)
+	KVSM_PARAMETER("condition", KVS_PT_STRING, KVS_PF_OPTIONAL, szCondition)
 	KVSM_PARAMETERS_END(c)
 
 	GET_KVS_POPUP(isHardLocked)
@@ -360,11 +364,11 @@ static bool popup_kvs_cmd_addLabel(KviKvsModuleCommandCall * c)
 {
 	QString szPopupName, szSubPopupName, szItemId, szText, szIcon, szCondition;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
-		KVSM_PARAMETER("text",KVS_PT_NONEMPTYSTRING,0,szText)
-		KVSM_PARAMETER("icon",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
-		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
-		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
+	KVSM_PARAMETER("popupname", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
+	KVSM_PARAMETER("text", KVS_PT_NONEMPTYSTRING, 0, szText)
+	KVSM_PARAMETER("icon", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
+	KVSM_PARAMETER("item_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szItemId)
+	KVSM_PARAMETER("condition", KVS_PT_STRING, KVS_PF_OPTIONAL, szCondition)
 	KVSM_PARAMETERS_END(c)
 
 	GET_KVS_POPUP(isHardLocked)
@@ -407,11 +411,11 @@ static bool popup_kvs_cmd_addSubPopup(KviKvsModuleCommandCall * c)
 {
 	QString szPopupName, szSubPopupName, szItemId, szText, szIcon, szCondition;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
-		KVSM_PARAMETER("text",KVS_PT_NONEMPTYSTRING,0,szText)
-		KVSM_PARAMETER("icon",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
-		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
-		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
+	KVSM_PARAMETER("popupname", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
+	KVSM_PARAMETER("text", KVS_PT_NONEMPTYSTRING, 0, szText)
+	KVSM_PARAMETER("icon", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
+	KVSM_PARAMETER("item_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szItemId)
+	KVSM_PARAMETER("condition", KVS_PT_STRING, KVS_PF_OPTIONAL, szCondition)
 	KVSM_PARAMETERS_END(c)
 
 	GET_KVS_POPUP(isHardLocked)
@@ -451,9 +455,9 @@ static bool popup_kvs_cmd_addSeparator(KviKvsModuleCommandCall * c)
 {
 	QString szPopupName, szSubPopupName, szItemId, szCondition;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
-		KVSM_PARAMETER("item_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szItemId)
-		KVSM_PARAMETER("condition",KVS_PT_STRING,KVS_PF_OPTIONAL,szCondition)
+	KVSM_PARAMETER("popupname", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
+	KVSM_PARAMETER("item_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szItemId)
+	KVSM_PARAMETER("condition", KVS_PT_STRING, KVS_PF_OPTIONAL, szCondition)
 	KVSM_PARAMETERS_END(c)
 
 	GET_KVS_POPUP(isHardLocked)
@@ -489,7 +493,7 @@ static bool popup_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 {
 	QString szPopupName, szSubPopupName;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+	KVSM_PARAMETER("popupname", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
 	KVSM_PARAMETERS_END(c)
 
 	GET_KVS_POPUP(isSoftLocked)
@@ -524,18 +528,18 @@ static bool popup_kvs_cmd_create(KviKvsModuleCommandCall * c)
 {
 	QString szPopupName, szSubPopupName;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+	KVSM_PARAMETER("popupname", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
 	KVSM_PARAMETERS_END(c)
 
 	if(KviKvsPopupManager::instance()->lookup(szPopupName))
 	{
-		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs_ctx("The popup \"%Q\" already exists","kvs"),&szPopupName);
+		if(!c->hasSwitch('q', "quiet"))
+			c->warning(__tr2qs_ctx("The popup \"%Q\" already exists", "kvs"), &szPopupName);
 		return true;
 	}
 
 	KviKvsPopupMenu * pMenu = new KviKvsPopupMenu(szPopupName);
-	KviKvsPopupManager::instance()->add(szPopupName,pMenu);
+	KviKvsPopupManager::instance()->add(szPopupName, pMenu);
 
 	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
 	return true;
@@ -564,20 +568,20 @@ static bool popup_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 {
 	QString szPopupName, szSubPopupName;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+	KVSM_PARAMETER("popupname", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
 	KVSM_PARAMETERS_END(c)
 
 	KviKvsPopupMenu * pPopup = KviKvsPopupManager::instance()->lookup(szPopupName);
 	if(!pPopup)
 	{
-		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist","kvs"),&szPopupName);
+		if(!c->hasSwitch('q', "quiet"))
+			c->warning(__tr2qs_ctx("Popup \"%Q\" doesn't exist", "kvs"), &szPopupName);
 		return true;
 	}
 	if(pPopup->isSoftLocked())
 	{
-		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)","kvs"));
+		if(!c->hasSwitch('q', "quiet"))
+			c->warning(__tr2qs_ctx("Popup menu self-modification is not allowed (the popup is probably open)", "kvs"));
 		return true;
 	}
 
@@ -613,21 +617,20 @@ static bool popup_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 		[cmd]defpopup[/cmd], [cmd]popup.show[/cmd]
 */
 
-
 static bool popup_kvs_cmd_delItem(KviKvsModuleCommandCall * c)
 {
-	QString szPopupName, szSubPopupName,szItemId;
+	QString szPopupName, szSubPopupName, szItemId;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
-		KVSM_PARAMETER("item_id",KVS_PT_NONEMPTYSTRING,0,szItemId)
+	KVSM_PARAMETER("popupname", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
+	KVSM_PARAMETER("item_id", KVS_PT_NONEMPTYSTRING, 0, szItemId)
 	KVSM_PARAMETERS_END(c)
 
 	GET_KVS_POPUP(isHardLocked)
 
-	if(!pPopup->removeItemByName(szItemId,c->hasSwitch('d',"deep")))
+	if(!pPopup->removeItemByName(szItemId, c->hasSwitch('d', "deep")))
 	{
-		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs_ctx("The menu item with ID \"%Q\" doesn't exist in popup \"%Q\"","kvs"),&szItemId,&szPopupName);
+		if(!c->hasSwitch('q', "quiet"))
+			c->warning(__tr2qs_ctx("The menu item with ID \"%Q\" doesn't exist in popup \"%Q\"", "kvs"), &szItemId, &szPopupName);
 	}
 
 	KviKvsPopupManager::instance()->emitRefresh(szPopupName);
@@ -654,23 +657,23 @@ static bool popup_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 {
 	QString szPopupName, szSubPopupName;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+	KVSM_PARAMETER("popupname", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
 	KVSM_PARAMETERS_END(c)
 
 	int iIdx = szPopupName.indexOf(QChar('.'));
 	if(iIdx == 0)
 	{
-		c->warning(__tr2qs_ctx("Empty subpopup name supplied","kvs"));
+		c->warning(__tr2qs_ctx("Empty subpopup name supplied", "kvs"));
 		return true;
 	}
 	if(iIdx > 0)
 	{
 		if(iIdx == szPopupName.size())
 		{
-			c->warning(__tr2qs_ctx("Empty subpopup name supplied","kvs"));
+			c->warning(__tr2qs_ctx("Empty subpopup name supplied", "kvs"));
 			return true;
 		}
-		szSubPopupName = szPopupName.mid(iIdx+1);
+		szSubPopupName = szPopupName.mid(iIdx + 1);
 		szPopupName.truncate(iIdx);
 	}
 	KviKvsPopupMenu * pPopup = KviKvsPopupManager::instance()->lookup(szPopupName);
@@ -713,7 +716,7 @@ static bool popup_kvs_fnc_isEmpty(KviKvsModuleFunctionCall * c)
 {
 	QString szPopupName, szSubPopupName;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popupname",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+	KVSM_PARAMETER("popupname", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
 	KVSM_PARAMETERS_END(c)
 
 	GET_KVS_POPUP_FNC
@@ -770,7 +773,9 @@ static bool popup_kvs_fnc_currentItemId(KviKvsModuleFunctionCall * c)
 	if(pPopupId)
 	{
 		c->returnValue()->setString(pPopupId);
-	} else {
+	}
+	else
+	{
 		c->returnValue()->setNothing();
 	}
 	return true;
@@ -806,13 +811,14 @@ static bool popup_kvs_cmd_show(KviKvsModuleCommandCall * c)
 {
 	QString szPopupName, szSubPopupName;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("popup_name",KVS_PT_NONEMPTYSTRING,0,szPopupName)
+	KVSM_PARAMETER("popup_name", KVS_PT_NONEMPTYSTRING, 0, szPopupName)
 	KVSM_PARAMETERS_END(c)
 
 	// copy parameters
 	KviKvsVariantList * pPopupParams = new KviKvsVariantList();
 	c->params()->first();
-	while(KviKvsVariant * v = c->params()->next())pPopupParams->append(new KviKvsVariant(*v));
+	while(KviKvsVariant * v = c->params()->next())
+		pPopupParams->append(new KviKvsVariant(*v));
 
 	KviKvsPopupMenu * pMenu = KviKvsPopupManager::instance()->lookup(szPopupName);
 
@@ -820,7 +826,7 @@ static bool popup_kvs_cmd_show(KviKvsModuleCommandCall * c)
 	{
 		delete pPopupParams;
 		pPopupParams = 0;
-		c->error(__tr2qs_ctx("Popup %Q is not defined","kvs"),&szPopupName);
+		c->error(__tr2qs_ctx("Popup %Q is not defined", "kvs"), &szPopupName);
 		return false;
 	}
 
@@ -828,13 +834,13 @@ static bool popup_kvs_cmd_show(KviKvsModuleCommandCall * c)
 	{
 		delete pPopupParams;
 		pPopupParams = 0;
-		c->error(__tr2qs_ctx("A popup menu can't be popped up twice","kvs"));
+		c->error(__tr2qs_ctx("A popup menu can't be popped up twice", "kvs"));
 		return false;
 	}
 
 	QPoint pnt = QCursor::pos();
 
-	KviKvsVariant * pCoords = c->getSwitch('p',"point");
+	KviKvsVariant * pCoords = c->getSwitch('p', "point");
 	if(pCoords)
 	{
 		QString szCoords;
@@ -842,44 +848,49 @@ static bool popup_kvs_cmd_show(KviKvsModuleCommandCall * c)
 
 		int idx = szCoords.indexOf(',');
 		bool bCoordsOk = true;
-		if(idx == -1)bCoordsOk = false;
-		else {
+		if(idx == -1)
+			bCoordsOk = false;
+		else
+		{
 			QString szX = szCoords.left(idx);
-			szCoords.remove(0,idx + 1);
-			bool bOk1,bOk2;
+			szCoords.remove(0, idx + 1);
+			bool bOk1, bOk2;
 			int iX = szX.toInt(&bOk1);
 			int iY = szCoords.toInt(&bOk2);
-			if(bOk1 && bOk2)pnt = QPoint(iX,iY);
-			else bCoordsOk = false;
+			if(bOk1 && bOk2)
+				pnt = QPoint(iX, iY);
+			else
+				bCoordsOk = false;
 		}
 
-		if(!bCoordsOk)c->warning(__tr2qs_ctx("Invalid syntax for screen coordinates, using cursor position","kvs"));
+		if(!bCoordsOk)
+			c->warning(__tr2qs_ctx("Invalid syntax for screen coordinates, using cursor position", "kvs"));
 	}
 
-	pMenu->doPopup(pnt,c->window(),pPopupParams);
+	pMenu->doPopup(pnt, c->window(), pPopupParams);
 	return true;
 }
 
-static bool popup_module_init(KviModule *m)
+static bool popup_module_init(KviModule * m)
 {
-	KVSM_REGISTER_CALLBACK_COMMAND(m,"addItem",popup_kvs_cmd_addItem);
-	KVSM_REGISTER_CALLBACK_COMMAND(m,"addPrologue",popup_kvs_cmd_addPrologue);
-	KVSM_REGISTER_CALLBACK_COMMAND(m,"addEpilogue",popup_kvs_cmd_addEpilogue);
+	KVSM_REGISTER_CALLBACK_COMMAND(m, "addItem", popup_kvs_cmd_addItem);
+	KVSM_REGISTER_CALLBACK_COMMAND(m, "addPrologue", popup_kvs_cmd_addPrologue);
+	KVSM_REGISTER_CALLBACK_COMMAND(m, "addEpilogue", popup_kvs_cmd_addEpilogue);
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"addExtPopup",popup_kvs_cmd_addExtPopup);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"addLabel",popup_kvs_cmd_addLabel);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"addSubPopup",popup_kvs_cmd_addSubPopup);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"addSeparator",popup_kvs_cmd_addSeparator);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "addExtPopup", popup_kvs_cmd_addExtPopup);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "addLabel", popup_kvs_cmd_addLabel);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "addSubPopup", popup_kvs_cmd_addSubPopup);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "addSeparator", popup_kvs_cmd_addSeparator);
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"clear",popup_kvs_cmd_clear);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"create",popup_kvs_cmd_create);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"delItem",popup_kvs_cmd_delItem);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"destroy",popup_kvs_cmd_destroy);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"show",popup_kvs_cmd_show);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "clear", popup_kvs_cmd_clear);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "create", popup_kvs_cmd_create);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "delItem", popup_kvs_cmd_delItem);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "destroy", popup_kvs_cmd_destroy);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "show", popup_kvs_cmd_show);
 
-	KVSM_REGISTER_FUNCTION(m,"exists",popup_kvs_fnc_exists);
-	KVSM_REGISTER_FUNCTION(m,"isEmpty",popup_kvs_fnc_isEmpty);
-	KVSM_REGISTER_FUNCTION(m,"currentItemId",popup_kvs_fnc_currentItemId);
+	KVSM_REGISTER_FUNCTION(m, "exists", popup_kvs_fnc_exists);
+	KVSM_REGISTER_FUNCTION(m, "isEmpty", popup_kvs_fnc_isEmpty);
+	KVSM_REGISTER_FUNCTION(m, "currentItemId", popup_kvs_fnc_currentItemId);
 
 	return true;
 }
@@ -895,13 +906,12 @@ static bool popup_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Userlist",                                               // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2010 Fabio Bas (ctrlaltca at gmail dot com)", // author & (C)
-	"KVIrc popup management functions",
-	popup_module_init,
-	popup_module_can_unload,
-	0,
-	popup_module_cleanup,
-	0
-)
+    "Userlist",                                                  // module name
+    "4.0.0",                                                     // module version
+    "Copyright (C) 2010 Fabio Bas (ctrlaltca at gmail dot com)", // author & (C)
+    "KVIrc popup management functions",
+    popup_module_init,
+    popup_module_can_unload,
+    0,
+    popup_module_cleanup,
+    0)

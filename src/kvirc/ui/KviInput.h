@@ -67,18 +67,20 @@ public:
 	* \brief Destroys the input object
 	*/
 	~KviInput();
+
 public:
-	KviWindow       * m_pWindow;
-	KviInputEditor  * m_pInputEditor;
+	KviWindow * m_pWindow;
+	KviInputEditor * m_pInputEditor;
 	KviScriptEditor * m_pMultiLineEditor;
-	KviTalHBox      * m_pButtonContainer;
-	QToolButton     * m_pMultiEditorButton;
-	QToolButton     * m_pHistoryButton;
-	QToolButton     * m_pIconButton;
-	QToolButton     * m_pCommandlineModeButton;
-	QToolButton     * m_pHideToolsButton;
-	QGridLayout     * m_pLayout;
-	QLabel          * m_pHelpLabel;
+	KviTalHBox * m_pButtonContainer;
+	QToolButton * m_pMultiEditorButton;
+	QToolButton * m_pHistoryButton;
+	QToolButton * m_pIconButton;
+	QToolButton * m_pCommandlineModeButton;
+	QToolButton * m_pHideToolsButton;
+	QGridLayout * m_pLayout;
+	QLabel * m_pHelpLabel;
+
 public:
 	/**
 	* \brief Sets the focus to the input line
@@ -163,13 +165,13 @@ public:
 	* \brief Return the instance of the input editor
 	* \return KviInputEditor *
 	*/
-	inline KviInputEditor * editor(){ return m_pInputEditor; };
+	inline KviInputEditor * editor() { return m_pInputEditor; };
 
 	/**
 	* \brief Return the instance of the input history
 	* \return KviInputHistory *
 	*/
-	inline KviInputHistory * history(){ return KviInputHistory::instance(); };
+	inline KviInputHistory * history() { return KviInputHistory::instance(); };
 protected:
 	void installShortcuts();
 	virtual void focusInEvent(QFocusEvent * e);

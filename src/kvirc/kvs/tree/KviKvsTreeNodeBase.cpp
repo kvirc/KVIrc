@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "KviKvsTreeNodeBase.h"
 
 KviKvsTreeNode::KviKvsTreeNode(const QChar * pLocation)

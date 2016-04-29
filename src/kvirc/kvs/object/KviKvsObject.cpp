@@ -47,7 +47,7 @@
 
 #include <time.h>
 
-	/*
+/*
 		@doc: objects
 		@title:
 			Object scripting
@@ -518,9 +518,6 @@
 			by all the modern kernels and used in inter-process communication).[br]
 	*/
 
-
-
-
 ///////////////////////////////////////////////////////////////////////////////////////
 
 /*
@@ -632,50 +629,50 @@
 // we don't use void * just because incrementing a void pointer doesn't look that good
 static char * g_hNextObjectHandle = (char *)0;
 
-
-KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass,KviKvsObject * pParent,const QString &szName)
-: QObject(pParent)
+KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass, KviKvsObject * pParent, const QString & szName)
+    : QObject(pParent)
 {
 	setObjectName(szName);
 
-	if(g_hNextObjectHandle == 0)g_hNextObjectHandle++; // make sure it's never 0
+	if(g_hNextObjectHandle == 0)
+		g_hNextObjectHandle++; // make sure it's never 0
 	m_hObject = (kvs_hobject_t)g_hNextObjectHandle;
 	g_hNextObjectHandle++;
 
-	m_pObject            = 0;
-	m_bObjectOwner       = true; // true by default
+	m_pObject = 0;
+	m_bObjectOwner = true; // true by default
 
-	m_szName             = szName;
+	m_szName = szName;
 
-	m_pClass             = pClass;
+	m_pClass = pClass;
 
-	m_pChildList         = new KviPointerList<KviKvsObject>;
+	m_pChildList = new KviPointerList<KviKvsObject>;
 	m_pChildList->setAutoDelete(false);
 
-	m_pDataContainer     = new KviKvsHash();
+	m_pDataContainer = new KviKvsHash();
 
-	m_pFunctionHandlers  = 0; // no local function handlers yet!
+	m_pFunctionHandlers = 0; // no local function handlers yet!
 
 	m_bInDelayedDeath = false;
 	m_bDestructorCalled = false;
 	m_bAboutToDie = false;
 
-	m_pSignalDict        = 0; // no signals connected to remote slots
-	m_pConnectionList    = 0; // no local slots connected to remote signals
+	m_pSignalDict = 0;     // no signals connected to remote slots
+	m_pConnectionList = 0; // no local slots connected to remote signals
 
 	if(pParent)
 		pParent->registerChild(this);
 
 	KviKvsKernel::instance()->objectController()->registerObject(this);
 
-//	qDebug("Hello world!");
-//	[root@localhost cvs3]# kvirc
-//	Hello world!
-//	[root@localhost cvs3]# date
-//	Tue Sep  5 21:53:54 CEST 2000
-//	[root@localhost cvs3]#
+	//	qDebug("Hello world!");
+	//	[root@localhost cvs3]# kvirc
+	//	Hello world!
+	//	[root@localhost cvs3]# date
+	//	Tue Sep  5 21:53:54 CEST 2000
+	//	[root@localhost cvs3]#
 
-//  Ported to KVS on 29.04.2005
+	//  Ported to KVS on 29.04.2005
 }
 
 KviKvsObject::~KviKvsObject()
@@ -695,18 +692,22 @@ KviKvsObject::~KviKvsObject()
 			// cleared in its kvs destructor which isn't that nice.
 
 			// Complain to the developers so they fix the code.
-			KVI_ASSERT_MSG(m_bAboutToDie,"You should never delete a KviKvsObject directly, call dieNow() instead");
+			KVI_ASSERT_MSG(m_bAboutToDie, "You should never delete a KviKvsObject directly, call dieNow() instead");
 
 			// If we pass the assert in some kind of build go ahead nicely
 			m_bAboutToDie = true; // don't attempt to die twice
-		} else {
+		}
+		else
+		{
 			// This might be an "early" delete after a delayedDie() call.
 			// It shouldn't happen very often but if it happens we can't do much about it... don't complain.
 		}
 
 		// Well... need to call the destructor.
 		callDestructor();
-	} else {
+	}
+	else
+	{
 		// Destructor already called.
 		m_bAboutToDie = true; // don't attempt to die twice
 	}
@@ -724,13 +725,13 @@ KviKvsObject::~KviKvsObject()
 	{
 		if(!m_pSignalDict)
 			break;
-		KviPointerHashTableEntry<QString,KviKvsObjectConnectionList> * pSignalList = m_pSignalDict->firstEntry();
+		KviPointerHashTableEntry<QString, KviKvsObjectConnectionList> * pSignalList = m_pSignalDict->firstEntry();
 		if(!pSignalList)
 			break;
 		KviKvsObjectConnection * pConnection = pSignalList->data()->first();
 		if(!pConnection)
 			break;
-		disconnectSignal(pSignalList->key(),pConnection);
+		disconnectSignal(pSignalList->key(), pConnection);
 	}
 
 	// Disconnect all the slots
@@ -744,7 +745,7 @@ KviKvsObject::~KviKvsObject()
 		// We need a copy of szSignal this since pConnection is deleted inside disconnectSignal()
 		// and pConnection->szSignal dies too (but is referenced after the connection delete)
 		QString szSignalCopy = pConnection->szSignal;
-		pConnection->pSourceObject->disconnectSignal(szSignalCopy,pConnection);
+		pConnection->pSourceObject->disconnectSignal(szSignalCopy, pConnection);
 	}
 
 	// Detach from the kvs kernel
@@ -758,7 +759,7 @@ KviKvsObject::~KviKvsObject()
 	if(m_pObject)
 	{
 		// detach
-		disconnect(m_pObject,SIGNAL(destroyed()),this,SLOT(objectDestroyed()));
+		disconnect(m_pObject, SIGNAL(destroyed()), this, SLOT(objectDestroyed()));
 		// delete if we own it
 		if(m_bObjectOwner)
 			delete m_pObject;
@@ -775,16 +776,16 @@ KviKvsObject::~KviKvsObject()
 
 void KviKvsObject::callDestructor()
 {
-	KVI_ASSERT(m_bAboutToDie); // this should be called by die(), dieNow() or ~KviKvsObject only, which set m_bAboutToDie to true.
+	KVI_ASSERT(m_bAboutToDie);        // this should be called by die(), dieNow() or ~KviKvsObject only, which set m_bAboutToDie to true.
 	KVI_ASSERT(!m_bDestructorCalled); // calling code must take care of this
 
 	m_bDestructorCalled = true;
 
 	// Note that children are still alive: the user can clean them up manually
-	callFunction(this,"destructor");
+	callFunction(this, "destructor");
 }
 
-bool KviKvsObject::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KviKvsObject::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	return true;
 }
@@ -802,25 +803,26 @@ QWidget * KviKvsObject::parentScriptWidget()
 	return 0;
 }
 
-void KviKvsObject::unregisterChild(KviKvsObject *pChild)
+void KviKvsObject::unregisterChild(KviKvsObject * pChild)
 {
 	m_pChildList->removeRef(pChild);
 }
 
-void KviKvsObject::registerChild(KviKvsObject *pChild)
+void KviKvsObject::registerChild(KviKvsObject * pChild)
 {
 	m_pChildList->append(pChild);
 }
 
 // SIGNAL/SLOT stuff
 
-bool KviKvsObject::connectSignal(const QString &sigName,KviKvsObject * pTarget,const QString &slotName)
+bool KviKvsObject::connectSignal(const QString & sigName, KviKvsObject * pTarget, const QString & slotName)
 {
-	if(!pTarget->lookupFunctionHandler(slotName))return false; // no such slot
+	if(!pTarget->lookupFunctionHandler(slotName))
+		return false; // no such slot
 
 	if(!m_pSignalDict)
 	{
-		m_pSignalDict = new KviPointerHashTable<QString,KviKvsObjectConnectionList>(7,false);
+		m_pSignalDict = new KviPointerHashTable<QString, KviKvsObjectConnectionList>(7, false);
 		m_pSignalDict->setAutoDelete(true);
 	}
 
@@ -829,22 +831,22 @@ bool KviKvsObject::connectSignal(const QString &sigName,KviKvsObject * pTarget,c
 	{
 		l = new KviKvsObjectConnectionList;
 		l->setAutoDelete(true);
-		m_pSignalDict->insert(sigName,l);
+		m_pSignalDict->insert(sigName, l);
 	}
 
 	KviKvsObjectConnection * con = new KviKvsObjectConnection;
 
 	con->pSourceObject = this;
 	con->pTargetObject = pTarget;
-	con->szSignal      = sigName;
-	con->szSlot        = slotName;
+	con->szSignal = sigName;
+	con->szSlot = slotName;
 
 	l->append(con);
 	pTarget->registerConnection(con);
 	return true;
 }
 
-void KviKvsObject::registerConnection(KviKvsObjectConnection *pConnection)
+void KviKvsObject::registerConnection(KviKvsObjectConnection * pConnection)
 {
 	if(!m_pConnectionList)
 	{
@@ -854,12 +856,14 @@ void KviKvsObject::registerConnection(KviKvsObjectConnection *pConnection)
 	m_pConnectionList->append(pConnection);
 }
 
-bool KviKvsObject::disconnectSignal(const QString &sigName,KviKvsObject * pTarget,const QString &slotName)
+bool KviKvsObject::disconnectSignal(const QString & sigName, KviKvsObject * pTarget, const QString & slotName)
 {
-	if(!m_pSignalDict)return false; //no such signal to disconnect
+	if(!m_pSignalDict)
+		return false; //no such signal to disconnect
 
 	KviKvsObjectConnectionList * l = m_pSignalDict->find(sigName);
-	if(!l)return false;
+	if(!l)
+		return false;
 
 	KviKvsObjectConnectionListIterator it(*l);
 
@@ -867,11 +871,12 @@ bool KviKvsObject::disconnectSignal(const QString &sigName,KviKvsObject * pTarge
 	{
 		if(sl->pTargetObject == pTarget)
 		{
-			if(KviQString::equalCI(sl->szSlot,slotName))
+			if(KviQString::equalCI(sl->szSlot, slotName))
 			{
 				pTarget->unregisterConnection(sl);
 				l->removeRef(sl);
-				if(l->isEmpty())m_pSignalDict->remove(sigName);
+				if(l->isEmpty())
+					m_pSignalDict->remove(sigName);
 				if(m_pSignalDict->isEmpty())
 				{
 					delete m_pSignalDict;
@@ -885,16 +890,19 @@ bool KviKvsObject::disconnectSignal(const QString &sigName,KviKvsObject * pTarge
 	return false;
 }
 
-bool KviKvsObject::disconnectSignal(const QString &sigName,KviKvsObjectConnection * pConnection)
+bool KviKvsObject::disconnectSignal(const QString & sigName, KviKvsObjectConnection * pConnection)
 {
-	if(!m_pSignalDict)return false;
+	if(!m_pSignalDict)
+		return false;
 	KviKvsObjectConnectionList * l = m_pSignalDict->find(sigName);
 	//KVI_ASSERT(l);
-	if(!l)return false;
+	if(!l)
+		return false;
 	pConnection->pTargetObject->unregisterConnection(pConnection);
 	//KVI_ASSERT(l->findRef(pConnection) > -1);
 	l->removeRef(pConnection);
-	if(l->isEmpty())m_pSignalDict->remove(sigName);
+	if(l->isEmpty())
+		m_pSignalDict->remove(sigName);
 	if(m_pSignalDict->isEmpty())
 	{
 		delete m_pSignalDict;
@@ -905,9 +913,11 @@ bool KviKvsObject::disconnectSignal(const QString &sigName,KviKvsObjectConnectio
 
 bool KviKvsObject::unregisterConnection(KviKvsObjectConnection * pConnection)
 {
-	if(!m_pConnectionList)return false;
+	if(!m_pConnectionList)
+		return false;
 	bool bOk = m_pConnectionList->removeRef(pConnection); // no auto delete !
-	if(!bOk)return false;
+	if(!bOk)
+		return false;
 	if(m_pConnectionList->isEmpty())
 	{
 		delete m_pConnectionList;
@@ -916,12 +926,14 @@ bool KviKvsObject::unregisterConnection(KviKvsObjectConnection * pConnection)
 	return true;
 }
 
-int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * pOuterCall,KviKvsVariantList * pParams)
+int KviKvsObject::emitSignal(const QString & sigName, KviKvsObjectFunctionCall * pOuterCall, KviKvsVariantList * pParams)
 {
-	if(!m_pSignalDict)return 0;
+	if(!m_pSignalDict)
+		return 0;
 
 	KviKvsObjectConnectionList * l = m_pSignalDict->find(sigName);
-	if(!l)return 0; // no slots registered
+	if(!l)
+		return 0; // no slots registered
 
 	KviKvsVariant retVal;
 
@@ -945,18 +957,18 @@ int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * p
 		pTarget->setSignalSender(m_hObject);
 		pTarget->setSignalName(sigName);
 
-		if(!pTarget->callFunction(this,s->szSlot,QString(),pOuterCall->context(),&retVal,pParams))
+		if(!pTarget->callFunction(this, s->szSlot, QString(), pOuterCall->context(), &retVal, pParams))
 		{
 			if(KviKvsKernel::instance()->objectController()->lookupObject(hTarget) && it.current())
 			{
 				pOuterCall->warning(
-					__tr2qs_ctx("Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from object '%Q::%Q': disconnecting","kvs"),
-					&(s->szSlot),
-					&(s->pTargetObject->getClass()->name()),
-					&(s->pTargetObject->getName()),
-					&(sigName),
-					&(getClass()->name()),
-					&m_szName);
+				    __tr2qs_ctx("Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from object '%Q::%Q': disconnecting", "kvs"),
+				    &(s->szSlot),
+				    &(s->pTargetObject->getClass()->name()),
+				    &(s->pTargetObject->getName()),
+				    &(sigName),
+				    &(getClass()->name()),
+				    &m_szName);
 
 				if(!pDis)
 				{
@@ -964,14 +976,16 @@ int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * p
 					pDis->setAutoDelete(false);
 				}
 				pDis->append(s);
-			} else {
-			 	// else destroyed in the call! (already disconnected)
+			}
+			else
+			{
+				// else destroyed in the call! (already disconnected)
 
 				pOuterCall->warning(
-					__tr2qs_ctx("Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'","kvs"),
-					&(sigName),
-					&(getClass()->name()),
-					&m_szName);
+				    __tr2qs_ctx("Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'", "kvs"),
+				    &(sigName),
+				    &(getClass()->name()),
+				    &m_szName);
 			}
 		}
 
@@ -986,8 +1000,8 @@ int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * p
 	if(pDis)
 	{
 		// we have some signals to disconnect (because they're broken)
-		for(KviKvsObjectConnection * con = pDis->first();con;con = pDis->next())
-			disconnectSignal(sigName,con);
+		for(KviKvsObjectConnection * con = pDis->first(); con; con = pDis->next())
+			disconnectSignal(sigName, con);
 		delete pDis;
 	}
 
@@ -1033,17 +1047,17 @@ bool KviKvsObject::function_signalName(KviKvsObjectFunctionCall * c)
 
 bool KviKvsObject::function_destructor(KviKvsObjectFunctionCall * c)
 {
-	emitSignal("destroyed",c);
+	emitSignal("destroyed", c);
 	return true;
 }
 
 bool KviKvsObject::function_children(KviKvsObjectFunctionCall * c)
 {
 	KviKvsArray * a = new KviKvsArray();
-	int id=0;
-	for(KviKvsObject * o = m_pChildList->first();o;o = m_pChildList->next())
+	int id = 0;
+	for(KviKvsObject * o = m_pChildList->first(); o; o = m_pChildList->next())
 	{
-		a->set(id,new KviKvsVariant(o->handle()));
+		a->set(id, new KviKvsVariant(o->handle()));
 		id++;
 	}
 	c->returnValue()->setArray(a);
@@ -1052,13 +1066,13 @@ bool KviKvsObject::function_children(KviKvsObjectFunctionCall * c)
 
 bool KviKvsObject::function_findChild(KviKvsObjectFunctionCall * c)
 {
-	QString szClass,szName;
+	QString szClass, szName;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("className",KVS_PT_STRING,KVS_PF_OPTIONAL,szClass)
-		KVSO_PARAMETER("objectName",KVS_PT_STRING,KVS_PF_OPTIONAL,szName)
+	KVSO_PARAMETER("className", KVS_PT_STRING, KVS_PF_OPTIONAL, szClass)
+	KVSO_PARAMETER("objectName", KVS_PT_STRING, KVS_PF_OPTIONAL, szName)
 	KVSO_PARAMETERS_END(c)
 
-	KviKvsObject * o = findChild(szClass,szName);
+	KviKvsObject * o = findChild(szClass, szName);
 	c->returnValue()->setHObject(o ? o->handle() : (kvs_hobject_t)0);
 
 	return true;
@@ -1069,11 +1083,11 @@ bool KviKvsObject::function_emit(KviKvsObjectFunctionCall * c)
 	QString szSignal;
 	KviKvsVariantList vList;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("signal",KVS_PT_NONEMPTYSTRING,0,szSignal)
-		KVSO_PARAMETER("params",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,vList)
+	KVSO_PARAMETER("signal", KVS_PT_NONEMPTYSTRING, 0, szSignal)
+	KVSO_PARAMETER("params", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, vList)
 	KVSO_PARAMETERS_END(c)
 
-	emitSignal(szSignal,c,&vList);
+	emitSignal(szSignal, c, &vList);
 	return true;
 }
 
@@ -1081,7 +1095,7 @@ bool KviKvsObject::function_startTimer(KviKvsObjectFunctionCall * c)
 {
 	kvs_uint_t timeout;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("timeout",KVS_PT_UINT,0,timeout)
+	KVSO_PARAMETER("timeout", KVS_PT_UINT, 0, timeout)
 	KVSO_PARAMETERS_END(c)
 
 	c->returnValue()->setInteger((kvs_int_t)(startTimer(timeout)));
@@ -1092,7 +1106,7 @@ bool KviKvsObject::function_killTimer(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t id;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("timerId",KVS_PT_INT,0,id)
+	KVSO_PARAMETER("timerId", KVS_PT_INT, 0, id)
 	KVSO_PARAMETERS_END(c)
 	killTimer(id);
 	return true;
@@ -1102,7 +1116,7 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 {
 	bool bArray = false;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bArray",KVS_PT_BOOL,KVS_PF_OPTIONAL,bArray)
+	KVSO_PARAMETER("bArray", KVS_PT_BOOL, KVS_PF_OPTIONAL, bArray)
 	KVSO_PARAMETERS_END(c)
 
 	c->returnValue()->setNothing();
@@ -1112,57 +1126,59 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 	KviWindow * w = c->context()->window();
 
 	if(!bArray)
-		w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Listing Qt properties for object named '%Q' of KVS class %Q","kvs"),&m_szName,&(m_pClass->name()));
+		w->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs_ctx("Listing Qt properties for object named '%Q' of KVS class %Q", "kvs"), &m_szName, &(m_pClass->name()));
 	kvs_int_t cnt = 0;
 	if(m_pObject)
 	{
-		const QMetaObject *o = m_pObject->metaObject();
+		const QMetaObject * o = m_pObject->metaObject();
 		if(!bArray)
-			w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Properties for Qt class %s","kvs"),o->className());
-			kvs_int_t idx = 0;
-			QMetaProperty prop = o->property(idx);
-			const QMetaProperty *p = &prop;
-			while(p)
+			w->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs_ctx("Properties for Qt class %s", "kvs"), o->className());
+		kvs_int_t idx = 0;
+		QMetaProperty prop = o->property(idx);
+		const QMetaProperty * p = &prop;
+		while(p)
+		{
+			QString szOut;
+			QString szName = p->name();
+			QString szType = p->typeName();
+			if(bArray)
+				szOut = QString("%1, %2").arg(szName, szType);
+			else
 			{
-				QString szOut;
-				QString szName = p->name();
-				QString szType = p->typeName();
-				if(bArray)
-					szOut = QString("%1, %2").arg(szName,szType);
-				else {
-					szOut = QString(__tr2qs_ctx("Property: %1%2%3, type %4","kvs")).arg(QChar(KviControlCodes::Bold)).arg(szName).arg(QChar(KviControlCodes::Bold)).arg(szType);
-					szOut.prepend(" ");
-				}
-
-				if(p->isEnumType())
-				{
-					szOut += ", enum(";
-					szOut += ")";
-				}
-
-
-				// FIXME: QT4 Need to read better the docs and check the changes: there seem to be too many
-				//        for me to fix now. Actually I need to get the whole executable working...
-				if(p->isWritable())szOut += ", writable";
-				if(bArray)
-					a->set(cnt,new KviKvsVariant(szOut));
-				else
-					w->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,szOut);
-				idx++;
-				if (idx<o->propertyCount()){
-					prop = o->property(idx);
-					p = &prop;
-				}
-				else p=0;
-				cnt++;
+				szOut = QString(__tr2qs_ctx("Property: %1%2%3, type %4", "kvs")).arg(QChar(KviControlCodes::Bold)).arg(szName).arg(QChar(KviControlCodes::Bold)).arg(szType);
+				szOut.prepend(" ");
 			}
 
+			if(p->isEnumType())
+			{
+				szOut += ", enum(";
+				szOut += ")";
+			}
+
+			// FIXME: QT4 Need to read better the docs and check the changes: there seem to be too many
+			//        for me to fix now. Actually I need to get the whole executable working...
+			if(p->isWritable())
+				szOut += ", writable";
+			if(bArray)
+				a->set(cnt, new KviKvsVariant(szOut));
+			else
+				w->outputNoFmt(KVI_OUT_SYSTEMMESSAGE, szOut);
+			idx++;
+			if(idx < o->propertyCount())
+			{
+				prop = o->property(idx);
+				p = &prop;
+			}
+			else
+				p = 0;
+			cnt++;
+		}
 	}
 
 	if(bArray)
 		c->returnValue()->setArray(a);
 	else
-		w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("%d properties listed","kvs"),cnt);
+		w->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs_ctx("%d properties listed", "kvs"), cnt);
 	return true;
 }
 
@@ -1171,8 +1187,8 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 	QString szName;
 	KviKvsVariant * v;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("propertyName",KVS_PT_NONEMPTYSTRING,0,szName)
-		KVSO_PARAMETER("propertyValue",KVS_PT_VARIANT,0,v)
+	KVSO_PARAMETER("propertyName", KVS_PT_NONEMPTYSTRING, 0, szName)
+	KVSO_PARAMETER("propertyValue", KVS_PT_VARIANT, 0, v)
 	KVSO_PARAMETERS_END(c)
 
 	c->returnValue()->setNothing();
@@ -1180,14 +1196,14 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 	if(!m_pObject)
 	{
 		// there are no Qt properties at all
-		c->warning(__tr2qs_ctx("The object named '%Q' of class '%Q' has no Qt properties","kvs"),&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("The object named '%Q' of class '%Q' has no Qt properties", "kvs"), &m_szName, &(m_pClass->name()));
 		return true;
 	}
 
 	int idx = m_pObject->metaObject()->indexOfProperty(szName.toUtf8().data());
 	if(idx < 0)
 	{
-		c->warning(__tr2qs_ctx("No Qt property named '%Q' for object named '%Q' of class '%Q'","kvs"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("No Qt property named '%Q' for object named '%Q' of class '%Q'", "kvs"), &szName, &m_szName, &(m_pClass->name()));
 		return true;
 	}
 
@@ -1195,14 +1211,14 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 	const QMetaProperty * p = &prop;
 	if(!p)
 	{
-		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed but it doesn't really exist","kvs"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed but it doesn't really exist", "kvs"), &szName, &m_szName, &(m_pClass->name()));
 		return true;
 	}
 
 	QVariant vv = m_pObject->property(szName.toUtf8().data());
 	if(!vv.isValid())
 	{
-		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed and defined but the returned variant is not valid","kvs"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed and defined but the returned variant is not valid", "kvs"), &szName, &m_szName, &(m_pClass->name()));
 		return true;
 	}
 
@@ -1213,18 +1229,18 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		int val = p->enumerator().keyToValue(szKey.toUtf8().data());
 		if(val < 0)
 		{
-			c->warning(__tr2qs_ctx("Value '%Q' for property '%Q' of object named '%Q' of class '%Q' is not valid","kvs"),&szKey,&szName,&m_szName,&(m_pClass->name()));
+			c->warning(__tr2qs_ctx("Value '%Q' for property '%Q' of object named '%Q' of class '%Q' is not valid", "kvs"), &szKey, &szName, &m_szName, &(m_pClass->name()));
 			return true;
 		}
 		QVariant var(val);
-		m_pObject->setProperty(szName.toUtf8().data(),var);
+		m_pObject->setProperty(szName.toUtf8().data(), var);
 		return true;
 	}
 
-#define WRONG_TYPE(__therighttype) \
-	{ \
- 		c->warning(__tr2qs_ctx("The property is of type %s but the supplied argument can't be converted to that type (expecting '%s')","kvs"),p->type(),__therighttype); \
-		return true; \
+#define WRONG_TYPE(__therighttype)                                                                                                                                          \
+	{                                                                                                                                                                       \
+		c->warning(__tr2qs_ctx("The property is of type %s but the supplied argument can't be converted to that type (expecting '%s')", "kvs"), p->type(), __therighttype); \
+		return true;                                                                                                                                                        \
 	}
 
 	switch(vv.type())
@@ -1232,163 +1248,194 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		case QVariant::Int:
 		{
 			kvs_int_t i;
-			if(!v->asInteger(i))WRONG_TYPE("integer")
-			m_pObject->setProperty(szName.toUtf8().data(),QVariant((int)i));
+			if(!v->asInteger(i))
+				WRONG_TYPE("integer")
+			m_pObject->setProperty(szName.toUtf8().data(), QVariant((int)i));
 		}
 		break;
 		case QVariant::UInt:
 		{
 			kvs_int_t i;
-			if(!v->asInteger(i))WRONG_TYPE("unsigned integer")
-			if(i < 0)WRONG_TYPE("unsigned integer")
-			m_pObject->setProperty(szName.toUtf8().data(),QVariant((unsigned int)i));
+			if(!v->asInteger(i))
+				WRONG_TYPE("unsigned integer")
+			if(i < 0)
+				WRONG_TYPE("unsigned integer")
+			m_pObject->setProperty(szName.toUtf8().data(), QVariant((unsigned int)i));
 		}
 		case QVariant::Double:
 		{
 			kvs_real_t i;
-			if(!v->asReal(i))WRONG_TYPE("real")
-			m_pObject->setProperty(szName.toUtf8().data(),QVariant((double)i));
+			if(!v->asReal(i))
+				WRONG_TYPE("real")
+			m_pObject->setProperty(szName.toUtf8().data(), QVariant((double)i));
 		}
 		break;
 		case QVariant::Bool:
-			m_pObject->setProperty(szName.toUtf8().data(),QVariant(v->asBoolean()));
-		break;
+			m_pObject->setProperty(szName.toUtf8().data(), QVariant(v->asBoolean()));
+			break;
 		case QVariant::String:
 		{
 			QString s;
 			v->asString(s);
-			m_pObject->setProperty(szName.toUtf8().data(),QVariant(s));
+			m_pObject->setProperty(szName.toUtf8().data(), QVariant(s));
 		}
 		break;
 		case QVariant::ByteArray:
 		{
 			QString s;
 			v->asString(s);
-			m_pObject->setProperty(szName.toUtf8().data(),QVariant(s.toUtf8()));
+			m_pObject->setProperty(szName.toUtf8().data(), QVariant(s.toUtf8()));
 		}
 		break;
 		case QVariant::Point:
 		{
-			if(!v->isArray())WRONG_TYPE("array(integer,integer)")
+			if(!v->isArray())
+				WRONG_TYPE("array(integer,integer)")
 			KviKvsArray * a = v->array();
 			KviKvsVariant * x = a->at(0);
 			KviKvsVariant * y = a->at(1);
-			if(!x || !y)WRONG_TYPE("array(integer,integer)")
-			kvs_int_t iX,iY;
-			if(!x->asInteger(iX) || !y->asInteger(iY))WRONG_TYPE("array(integer,integer)")
-			m_pObject->setProperty(szName.toUtf8().data(),QVariant(QPoint(iX,iY)));
+			if(!x || !y)
+				WRONG_TYPE("array(integer,integer)")
+			kvs_int_t iX, iY;
+			if(!x->asInteger(iX) || !y->asInteger(iY))
+				WRONG_TYPE("array(integer,integer)")
+			m_pObject->setProperty(szName.toUtf8().data(), QVariant(QPoint(iX, iY)));
 		}
 		break;
 		case QVariant::Size:
 		{
-			if(!v->isArray())WRONG_TYPE("array(integer,integer)")
+			if(!v->isArray())
+				WRONG_TYPE("array(integer,integer)")
 			KviKvsArray * a = v->array();
 			KviKvsVariant * w = a->at(0);
 			KviKvsVariant * h = a->at(1);
-			if(!w || !h)WRONG_TYPE("array(integer,integer)")
-			kvs_int_t iW,iH;
-			if(!w->asInteger(iW) || !h->asInteger(iH))WRONG_TYPE("array(integer,integer)")
-			m_pObject->setProperty(szName.toUtf8().data(),QVariant(QSize(iW,iH)));
+			if(!w || !h)
+				WRONG_TYPE("array(integer,integer)")
+			kvs_int_t iW, iH;
+			if(!w->asInteger(iW) || !h->asInteger(iH))
+				WRONG_TYPE("array(integer,integer)")
+			m_pObject->setProperty(szName.toUtf8().data(), QVariant(QSize(iW, iH)));
 		}
 		break;
 		case QVariant::Rect:
 		{
-			if(!v->isArray())WRONG_TYPE("array(integer,integer,integer,integer)")
+			if(!v->isArray())
+				WRONG_TYPE("array(integer,integer,integer,integer)")
 			KviKvsArray * a = v->array();
 			KviKvsVariant * x = a->at(0);
 			KviKvsVariant * y = a->at(1);
 			KviKvsVariant * w = a->at(2);
 			KviKvsVariant * h = a->at(3);
-			if(!x || !y || !w || !h)WRONG_TYPE("array(integer,integer,integer,integer)")
-			kvs_int_t iX,iY,iW,iH;
-			if(!x->asInteger(iX) || !y->asInteger(iY) || !w->asInteger(iW) || !h->asInteger(iH))WRONG_TYPE("array(integer,integer,integer,integer)")
-			m_pObject->setProperty(szName.toUtf8().data(),QVariant(QRect(iX,iY,iW,iH)));
+			if(!x || !y || !w || !h)
+				WRONG_TYPE("array(integer,integer,integer,integer)")
+			kvs_int_t iX, iY, iW, iH;
+			if(!x->asInteger(iX) || !y->asInteger(iY) || !w->asInteger(iW) || !h->asInteger(iH))
+				WRONG_TYPE("array(integer,integer,integer,integer)")
+			m_pObject->setProperty(szName.toUtf8().data(), QVariant(QRect(iX, iY, iW, iH)));
 		}
 		break;
 
 		case QVariant::Color:
 		{
-			if(!v->isArray())WRONG_TYPE("array(integer,integer,integer)")
+			if(!v->isArray())
+				WRONG_TYPE("array(integer,integer,integer)")
 			KviKvsArray * a = v->array();
 			KviKvsVariant * r = a->at(0);
 			KviKvsVariant * g = a->at(1);
 			KviKvsVariant * b = a->at(3);
-			if(!r || !g || !b)WRONG_TYPE("array(integer,integer,integer)")
-			kvs_int_t iR,iG,iB;
-			if(!r->asInteger(iR) || !g->asInteger(iG) || !b->asInteger(iB))WRONG_TYPE("array(integer,integer,integer)")
-			m_pObject->setProperty(szName.toUtf8().data(),QVariant(QColor(iR,iG,iB)));
+			if(!r || !g || !b)
+				WRONG_TYPE("array(integer,integer,integer)")
+			kvs_int_t iR, iG, iB;
+			if(!r->asInteger(iR) || !g->asInteger(iG) || !b->asInteger(iB))
+				WRONG_TYPE("array(integer,integer,integer)")
+			m_pObject->setProperty(szName.toUtf8().data(), QVariant(QColor(iR, iG, iB)));
 		}
 		break;
 		case QVariant::Font:
 		{
-			if(!v->isArray())WRONG_TYPE("array(string,integer,string)")
+			if(!v->isArray())
+				WRONG_TYPE("array(string,integer,string)")
 			KviKvsArray * a = v->array();
 			KviKvsVariant * ff = a->at(0);
 			KviKvsVariant * ps = a->at(1);
 			KviKvsVariant * fl = a->at(3);
-			if(!ff || !ps)WRONG_TYPE("array(string,integer,string)")
+			if(!ff || !ps)
+				WRONG_TYPE("array(string,integer,string)")
 			kvs_int_t iPs;
-			if(!ps->asInteger(iPs))WRONG_TYPE("array(string,integer,string)")
-			QString szFf,szFl;
+			if(!ps->asInteger(iPs))
+				WRONG_TYPE("array(string,integer,string)")
+			QString szFf, szFl;
 			ff->asString(szFf);
-			if(fl)fl->asString(szFl);
+			if(fl)
+				fl->asString(szFl);
 			QFont fnt;
 			fnt.setFamily(szFf);
 			fnt.setPointSize(iPs);
-			if(szFl.indexOf('b',Qt::CaseInsensitive) != -1)fnt.setBold(true);
-			if(szFl.indexOf('i',Qt::CaseInsensitive) != -1)fnt.setItalic(true);
-			if(szFl.indexOf('u',Qt::CaseInsensitive) != -1)fnt.setUnderline(true);
-			if(szFl.indexOf('o',Qt::CaseInsensitive) != -1)fnt.setOverline(true);
-			if(szFl.indexOf('f',Qt::CaseInsensitive) != -1)fnt.setFixedPitch(true);
-			if(szFl.indexOf('s',Qt::CaseInsensitive) != -1)fnt.setStrikeOut(true);
-			m_pObject->setProperty(szName.toUtf8().data(),QVariant(fnt));
+			if(szFl.indexOf('b', Qt::CaseInsensitive) != -1)
+				fnt.setBold(true);
+			if(szFl.indexOf('i', Qt::CaseInsensitive) != -1)
+				fnt.setItalic(true);
+			if(szFl.indexOf('u', Qt::CaseInsensitive) != -1)
+				fnt.setUnderline(true);
+			if(szFl.indexOf('o', Qt::CaseInsensitive) != -1)
+				fnt.setOverline(true);
+			if(szFl.indexOf('f', Qt::CaseInsensitive) != -1)
+				fnt.setFixedPitch(true);
+			if(szFl.indexOf('s', Qt::CaseInsensitive) != -1)
+				fnt.setStrikeOut(true);
+			m_pObject->setProperty(szName.toUtf8().data(), QVariant(fnt));
 		}
 		break;
-                case QVariant::Pixmap|QVariant::Icon:
-			{
+		case QVariant::Pixmap | QVariant::Icon:
+		{
 			if(v->isHObject())
 			{
 				if(v->hobject() == (kvs_hobject_t)0)
 				{
 					// null pixmap
 					if(vv.type() == QVariant::Pixmap)
-						m_pObject->setProperty(szName.toUtf8().data(),QVariant(QPixmap()));
+						m_pObject->setProperty(szName.toUtf8().data(), QVariant(QPixmap()));
 					else
-						m_pObject->setProperty(szName.toUtf8().data(),QVariant(QIcon()));
-				} else {
+						m_pObject->setProperty(szName.toUtf8().data(), QVariant(QIcon()));
+				}
+				else
+				{
 					KviKvsObject * pix = KviKvsKernel::instance()->objectController()->lookupObject(v->hobject());
 					if(!pix->inherits("KviScriptPixmapObject"))
-						c->warning(__tr2qs_ctx("A pixmap object, an image_id or an image file path is required for this property","kvs"));
-					else {
+						c->warning(__tr2qs_ctx("A pixmap object, an image_id or an image file path is required for this property", "kvs"));
+					else
+					{
 						QVariant pixv = pix->property("pixmap");
 						if(vv.type() == QVariant::Pixmap)
-							m_pObject->setProperty(szName.toUtf8().data(),QVariant(pixv.value<QPixmap>()));
+							m_pObject->setProperty(szName.toUtf8().data(), QVariant(pixv.value<QPixmap>()));
 						else
-							m_pObject->setProperty(szName.toUtf8().data(),QVariant(QIcon(pixv.value<QPixmap>())));
+							m_pObject->setProperty(szName.toUtf8().data(), QVariant(QIcon(pixv.value<QPixmap>())));
 					}
 				}
-			} else {
+			}
+			else
+			{
 				QString szStr;
 				v->asString(szStr);
 				QPixmap * pPix = g_pIconManager->getImage(szStr);
 				if(pPix)
 				{
 					if(vv.type() == QVariant::Pixmap)
-						m_pObject->setProperty(szName.toUtf8().data(),QVariant(*pPix));
+						m_pObject->setProperty(szName.toUtf8().data(), QVariant(*pPix));
 					else
-						m_pObject->setProperty(szName.toUtf8().data(),QVariant(QIcon(*pPix)));
+						m_pObject->setProperty(szName.toUtf8().data(), QVariant(QIcon(*pPix)));
 				}
 				else
-					c->warning(__tr2qs_ctx("Can't find the requested image","kvs"));
+					c->warning(__tr2qs_ctx("Can't find the requested image", "kvs"));
 			}
 		}
 
 		break;
 
 		default:
-			c->warning(__tr2qs_ctx("Property '%Q' for object named '%Q' of class '%Q' has an unsupported data type","kvs"),&szName,&m_szName,&(m_pClass->name()));
+			c->warning(__tr2qs_ctx("Property '%Q' for object named '%Q' of class '%Q' has an unsupported data type", "kvs"), &szName, &m_szName, &(m_pClass->name()));
 			c->returnValue()->setNothing();
-		break;
+			break;
 	}
 	return true;
 }
@@ -1398,8 +1445,8 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	QString szName;
 	bool bNoerror;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("propertyName",KVS_PT_NONEMPTYSTRING,0,szName)
-		KVSO_PARAMETER("bNowarning",KVS_PT_BOOL,KVS_PF_OPTIONAL,bNoerror)
+	KVSO_PARAMETER("propertyName", KVS_PT_NONEMPTYSTRING, 0, szName)
+	KVSO_PARAMETER("bNowarning", KVS_PT_BOOL, KVS_PF_OPTIONAL, bNoerror)
 	KVSO_PARAMETERS_END(c)
 
 	if(!m_pObject)
@@ -1407,7 +1454,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		// there are no Qt properties at all
 		c->returnValue()->setNothing();
 		if(!bNoerror)
-			c->warning(__tr2qs_ctx("The object named '%Q' of class '%Q' has no Qt properties","kvs"),&m_szName,&(m_pClass->name()));
+			c->warning(__tr2qs_ctx("The object named '%Q' of class '%Q' has no Qt properties", "kvs"), &m_szName, &(m_pClass->name()));
 		return true;
 	}
 
@@ -1416,7 +1463,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	{
 		c->returnValue()->setNothing();
 		if(!bNoerror)
-			c->warning(__tr2qs_ctx("No Qt property named '%Q' for object named '%Q' of class '%Q'","kvs"),&szName,&m_szName,&(m_pClass->name()));
+			c->warning(__tr2qs_ctx("No Qt property named '%Q' for object named '%Q' of class '%Q'", "kvs"), &szName, &m_szName, &(m_pClass->name()));
 		return true;
 	}
 	QMetaProperty prop = m_pObject->metaObject()->property(idx);
@@ -1424,7 +1471,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	if(!p)
 	{
 		c->returnValue()->setNothing();
-		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed but it doesn't really exist","kvs"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed but it doesn't really exist", "kvs"), &szName, &m_szName, &(m_pClass->name()));
 		return true;
 	}
 
@@ -1432,13 +1479,13 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	if(!v.isValid())
 	{
 		c->returnValue()->setNothing();
-		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed and defined but the returned variant is not valid","kvs"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed and defined but the returned variant is not valid", "kvs"), &szName, &m_szName, &(m_pClass->name()));
 		return true;
 	}
 
 	if(p->isEnumType())
 	{
-		qDebug("Enum type prop %d %s",v.toInt(),p->enumerator().valueToKey(v.toInt()));
+		qDebug("Enum type prop %d %s", v.toInt(), p->enumerator().valueToKey(v.toInt()));
 		c->returnValue()->setString(p->enumerator().valueToKey(v.toInt()));
 		return true;
 	}
@@ -1447,28 +1494,28 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	{
 		case QVariant::Int:
 			c->returnValue()->setInteger((kvs_int_t)v.toInt());
-		break;
+			break;
 		case QVariant::Double:
 			c->returnValue()->setReal((kvs_int_t)v.toDouble());
-		break;
+			break;
 		case QVariant::UInt:
 			c->returnValue()->setInteger((kvs_int_t)v.toUInt());
-		break;
+			break;
 		case QVariant::Bool:
 			c->returnValue()->setBoolean(v.toBool());
-		break;
+			break;
 		case QVariant::String:
 			c->returnValue()->setString(v.toString());
-		break;
+			break;
 		case QVariant::ByteArray:
 			c->returnValue()->setString(QString::fromUtf8(v.toByteArray().data()));
-		break;
+			break;
 		case QVariant::Point:
 		{
 			QPoint p = v.toPoint();
 			KviKvsArray * a = new KviKvsArray();
-			a->set(0,new KviKvsVariant((kvs_int_t)p.x()));
-			a->set(1,new KviKvsVariant((kvs_int_t)p.y()));
+			a->set(0, new KviKvsVariant((kvs_int_t)p.x()));
+			a->set(1, new KviKvsVariant((kvs_int_t)p.y()));
 			c->returnValue()->setArray(a);
 		}
 		break;
@@ -1476,8 +1523,8 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		{
 			QSize p = v.toSize();
 			KviKvsArray * a = new KviKvsArray();
-			a->set(0,new KviKvsVariant((kvs_int_t)p.width()));
-			a->set(1,new KviKvsVariant((kvs_int_t)p.height()));
+			a->set(0, new KviKvsVariant((kvs_int_t)p.width()));
+			a->set(1, new KviKvsVariant((kvs_int_t)p.height()));
 			c->returnValue()->setArray(a);
 		}
 		break;
@@ -1485,10 +1532,10 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		{
 			QRect p = v.toRect();
 			KviKvsArray * a = new KviKvsArray();
-			a->set(0,new KviKvsVariant((kvs_int_t)p.x()));
-			a->set(1,new KviKvsVariant((kvs_int_t)p.y()));
-			a->set(2,new KviKvsVariant((kvs_int_t)p.width()));
-			a->set(3,new KviKvsVariant((kvs_int_t)p.height()));
+			a->set(0, new KviKvsVariant((kvs_int_t)p.x()));
+			a->set(1, new KviKvsVariant((kvs_int_t)p.y()));
+			a->set(2, new KviKvsVariant((kvs_int_t)p.width()));
+			a->set(3, new KviKvsVariant((kvs_int_t)p.height()));
 			c->returnValue()->setArray(a);
 		}
 		break;
@@ -1496,9 +1543,9 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		{
 			QColor clr = v.value<QColor>();
 			KviKvsArray * a = new KviKvsArray();
-			a->set(0,new KviKvsVariant((kvs_int_t)clr.red()));
-			a->set(1,new KviKvsVariant((kvs_int_t)clr.green()));
-			a->set(2,new KviKvsVariant((kvs_int_t)clr.blue()));
+			a->set(0, new KviKvsVariant((kvs_int_t)clr.red()));
+			a->set(1, new KviKvsVariant((kvs_int_t)clr.green()));
+			a->set(2, new KviKvsVariant((kvs_int_t)clr.blue()));
 			c->returnValue()->setArray(a);
 		}
 		break;
@@ -1506,53 +1553,62 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		{
 			QFont f = v.value<QFont>();
 			KviKvsArray * a = new KviKvsArray();
-			a->set(0,new KviKvsVariant(f.family()));
-			a->set(1,new KviKvsVariant((kvs_int_t)f.pointSize()));
+			a->set(0, new KviKvsVariant(f.family()));
+			a->set(1, new KviKvsVariant((kvs_int_t)f.pointSize()));
 			QString szFlags;
-			if(f.bold())szFlags += "b";
-			if(f.underline())szFlags += "u";
-			if(f.overline())szFlags += "o";
-			if(f.strikeOut())szFlags += "s";
-			if(f.fixedPitch())szFlags += "f";
-			if(f.italic())szFlags += "i";
-			a->set(2,new KviKvsVariant(szFlags));
+			if(f.bold())
+				szFlags += "b";
+			if(f.underline())
+				szFlags += "u";
+			if(f.overline())
+				szFlags += "o";
+			if(f.strikeOut())
+				szFlags += "s";
+			if(f.fixedPitch())
+				szFlags += "f";
+			if(f.italic())
+				szFlags += "i";
+			a->set(2, new KviKvsVariant(szFlags));
 			c->returnValue()->setString(szFlags);
 		}
 		break;
 		default:
-			if (bNoerror) c->returnValue()->setString("Unsupported_data_type");
+			if(bNoerror)
+				c->returnValue()->setString("Unsupported_data_type");
 			else
 			{
-				c->warning(__tr2qs_ctx("Property '%Q' for object named '%Q' of class '%Q' has an unsupported data type","kvs"),&szName,&m_szName,&(m_pClass->name()));
+				c->warning(__tr2qs_ctx("Property '%Q' for object named '%Q' of class '%Q' has an unsupported data type", "kvs"), &szName, &m_szName, &(m_pClass->name()));
 				c->returnValue()->setNothing();
 			}
-		break;
+			break;
 	}
 	return true;
 }
 
-void KviKvsObject::killAllChildrenWithClass(KviKvsObjectClass *cl)
+void KviKvsObject::killAllChildrenWithClass(KviKvsObjectClass * cl)
 {
-	KviPointerList< QPointer<KviKvsObject> > lDying;
+	KviPointerList<QPointer<KviKvsObject>> lDying;
 	lDying.setAutoDelete(true);
 
 	KviKvsObject * pObject;
 
 	QPointer<KviKvsObject> guard(this);
 
-	for(pObject = m_pChildList->first();pObject;pObject = m_pChildList->next())
+	for(pObject = m_pChildList->first(); pObject; pObject = m_pChildList->next())
 	{
 		if(pObject->getClass() == cl)
 		{
 			lDying.append(new QPointer<KviKvsObject>(pObject));
-		} else {
+		}
+		else
+		{
 			pObject->killAllChildrenWithClass(cl);
 			if(guard.isNull())
 				break; // argh.. circular delete
 		}
 	}
 
-	for(QPointer<KviKvsObject> * pObject = lDying.first();pObject;pObject = lDying.next())
+	for(QPointer<KviKvsObject> * pObject = lDying.first(); pObject; pObject = lDying.next())
 	{
 		if(pObject->isNull())
 			continue; // already dead ?
@@ -1560,39 +1616,47 @@ void KviKvsObject::killAllChildrenWithClass(KviKvsObjectClass *cl)
 	}
 }
 
-bool KviKvsObject::inheritsClass(const QString &szClass)
+bool KviKvsObject::inheritsClass(const QString & szClass)
 {
 	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClass);
-	if (pClass) return inheritsClass(pClass);
-	else return false;
+	if(pClass)
+		return inheritsClass(pClass);
+	else
+		return false;
 }
 bool KviKvsObject::inheritsClass(KviKvsObjectClass * pClass)
 {
-	if(pClass == m_pClass)return true;
+	if(pClass == m_pClass)
+		return true;
 	KviKvsObjectClass * cl = m_pClass->m_pParentClass;
 	while(cl)
 	{
-		if(cl == pClass)return true;
-		else cl = cl->m_pParentClass;
+		if(cl == pClass)
+			return true;
+		else
+			cl = cl->m_pParentClass;
 	}
 	return false;
 }
 
 KviKvsObjectClass * KviKvsObject::getClass(const QString & classOverride)
 {
-	if(classOverride.isEmpty())return m_pClass;
+	if(classOverride.isEmpty())
+		return m_pClass;
 	KviKvsObjectClass * cl = m_pClass; // class override can be also THIS class
 	// if object->$function() is a local override, class::object->$function()
 	// is the class member function (not the local override)
 	while(cl)
 	{
-		if(KviQString::equalCI(cl->name(),classOverride))break;
-		else cl = cl->m_pParentClass;
+		if(KviQString::equalCI(cl->name(), classOverride))
+			break;
+		else
+			cl = cl->m_pParentClass;
 	}
 	return cl;
 }
 
-KviKvsObjectFunctionHandler * KviKvsObject::lookupFunctionHandler(const QString & funcName,const QString & classOverride)
+KviKvsObjectFunctionHandler * KviKvsObject::lookupFunctionHandler(const QString & funcName, const QString & classOverride)
 {
 	KviKvsObjectFunctionHandler * h = 0;
 
@@ -1606,12 +1670,12 @@ KviKvsObjectFunctionHandler * KviKvsObject::lookupFunctionHandler(const QString 
 	{
 		// not a local override function... lookup in the class
 		KviKvsObjectClass * cl = getClass(classOverride);
-		if(cl)return cl->lookupFunctionHandler(funcName);
+		if(cl)
+			return cl->lookupFunctionHandler(funcName);
 	}
 
 	return h;
 }
-
 
 bool KviKvsObject::die()
 {
@@ -1623,7 +1687,7 @@ bool KviKvsObject::die()
 
 	m_bInDelayedDeath = true;
 
-	QTimer::singleShot(0,this,SLOT(delayedDie()));
+	QTimer::singleShot(0, this, SLOT(delayedDie()));
 	return true;
 }
 
@@ -1644,7 +1708,7 @@ bool KviKvsObject::dieNow()
 void KviKvsObject::delayedDie()
 {
 	KVI_ASSERT(m_bInDelayedDeath); // must be true: never call it directly
-	KVI_ASSERT(!m_bAboutToDie); // if this is true something is wrong...
+	KVI_ASSERT(!m_bAboutToDie);    // if this is true something is wrong...
 
 	m_bAboutToDie = true;
 
@@ -1653,13 +1717,13 @@ void KviKvsObject::delayedDie()
 	delete this; // byez!
 }
 
-void KviKvsObject::setObject(QObject * o,bool bIsOwned)
+void KviKvsObject::setObject(QObject * o, bool bIsOwned)
 {
 	//__range_invalid(m_pObject);
 	m_bObjectOwner = bIsOwned;
 	m_pObject = o;
 	o->installEventFilter(this);
-	connect(m_pObject,SIGNAL(destroyed()),this,SLOT(objectDestroyed()));
+	connect(m_pObject, SIGNAL(destroyed()), this, SLOT(objectDestroyed()));
 }
 
 void KviKvsObject::objectDestroyed()
@@ -1668,51 +1732,53 @@ void KviKvsObject::objectDestroyed()
 	die();
 }
 
-bool KviKvsObject::eventFilter(QObject *,QEvent *)
+bool KviKvsObject::eventFilter(QObject *, QEvent *)
 {
 	return false; // do not stop
 }
 
-void KviKvsObject::timerEvent(QTimerEvent *e)
+void KviKvsObject::timerEvent(QTimerEvent * e)
 {
 	KviKvsVariant * v = new KviKvsVariant();
 	v->setInteger(e->timerId());
 	KviKvsVariantList parms(v);
 
-	callFunction(this,"timerEvent",&parms);
+	callFunction(this, "timerEvent", &parms);
 }
 
-bool KviKvsObject::callFunction(KviKvsObject * pCaller,const QString &fncName,KviKvsVariant * pRetVal,KviKvsVariantList * pParams)
+bool KviKvsObject::callFunction(KviKvsObject * pCaller, const QString & fncName, KviKvsVariant * pRetVal, KviKvsVariantList * pParams)
 {
 	KviKvsVariant rv;
-	if(!pRetVal)pRetVal = &rv;
-	KviKvsRunTimeContext ctx(0,g_pApp->activeConsole(),KviKvsKernel::instance()->emptyParameterList(),pRetVal,0);
-	if(!pParams)pParams = KviKvsKernel::instance()->emptyParameterList();
-	return callFunction(pCaller,fncName,QString(),&ctx,pRetVal,pParams);
+	if(!pRetVal)
+		pRetVal = &rv;
+	KviKvsRunTimeContext ctx(0, g_pApp->activeConsole(), KviKvsKernel::instance()->emptyParameterList(), pRetVal, 0);
+	if(!pParams)
+		pParams = KviKvsKernel::instance()->emptyParameterList();
+	return callFunction(pCaller, fncName, QString(), &ctx, pRetVal, pParams);
 }
 
-bool KviKvsObject::callFunction(KviKvsObject * pCaller,const QString &fncName,KviKvsVariantList * pParams)
+bool KviKvsObject::callFunction(KviKvsObject * pCaller, const QString & fncName, KviKvsVariantList * pParams)
 {
 	KviKvsVariant fakeRetVal;
-	return callFunction(pCaller,fncName,&fakeRetVal,pParams);
+	return callFunction(pCaller, fncName, &fakeRetVal, pParams);
 }
 
 bool KviKvsObject::callFunction(
-	KviKvsObject * pCaller,
-	const QString & fncName,
-	const QString & classOverride,
-	KviKvsRunTimeContext * pContext,
-	KviKvsVariant * pRetVal,
-	KviKvsVariantList * pParams)
+    KviKvsObject * pCaller,
+    const QString & fncName,
+    const QString & classOverride,
+    KviKvsRunTimeContext * pContext,
+    KviKvsVariant * pRetVal,
+    KviKvsVariantList * pParams)
 {
-	KviKvsObjectFunctionHandler * h = lookupFunctionHandler(fncName,classOverride);
+	KviKvsObjectFunctionHandler * h = lookupFunctionHandler(fncName, classOverride);
 
 	if(!h)
 	{
 		if(classOverride.isEmpty())
-			pContext->error(__tr2qs_ctx("Can't find object function $%Q for object named '%Q' of class '%Q'","kvs"),&fncName,&m_szName,&(getClass()->name()));
+			pContext->error(__tr2qs_ctx("Can't find object function $%Q for object named '%Q' of class '%Q'", "kvs"), &fncName, &m_szName, &(getClass()->name()));
 		else
-			pContext->error(__tr2qs_ctx("Can't find object function $%Q::%Q for object named '%Q' of class '%Q'","kvs"),&classOverride,&fncName,&m_szName,&(getClass()->name()));
+			pContext->error(__tr2qs_ctx("Can't find object function $%Q::%Q for object named '%Q' of class '%Q'", "kvs"), &classOverride, &fncName, &m_szName, &(getClass()->name()));
 		return false;
 	}
 
@@ -1720,14 +1786,14 @@ bool KviKvsObject::callFunction(
 	{
 		if(pCaller != this)
 		{
-			pContext->error(__tr2qs_ctx("Can't call internal object function $%Q (for object named '%Q' of class '%Q') from this context","kvs"),&fncName,&m_szName,&(getClass()->name()));
+			pContext->error(__tr2qs_ctx("Can't call internal object function $%Q (for object named '%Q' of class '%Q') from this context", "kvs"), &fncName, &m_szName, &(getClass()->name()));
 			return false;
 		}
 	}
 
-	KviKvsObjectFunctionCall fc(pContext,pParams,pRetVal);
+	KviKvsObjectFunctionCall fc(pContext, pParams, pRetVal);
 
-	return h->call(this,&fc);
+	return h->call(this, &fc);
 
 	// Not only gcc spits out compiler errors:
 	// 25.09.2001, at this point in file
@@ -1738,7 +1804,7 @@ bool KviKvsObject::callFunction(
 	//    Help menu, or open the Technical Support help file for more information
 }
 
-void KviKvsObject::registerPrivateImplementation(const QString &szFunctionName,const QString &szCode)
+void KviKvsObject::registerPrivateImplementation(const QString & szFunctionName, const QString & szCode)
 {
 	if(szCode.isEmpty())
 	{
@@ -1751,10 +1817,12 @@ void KviKvsObject::registerPrivateImplementation(const QString &szFunctionName,c
 				m_pFunctionHandlers = 0;
 			}
 		}
-	} else {
+	}
+	else
+	{
 		if(!m_pFunctionHandlers)
 		{
-			m_pFunctionHandlers = new KviPointerHashTable<QString,KviKvsObjectFunctionHandler>(7,false);
+			m_pFunctionHandlers = new KviPointerHashTable<QString, KviKvsObjectFunctionHandler>(7, false);
 			m_pFunctionHandlers->setAutoDelete(true);
 		}
 
@@ -1762,30 +1830,37 @@ void KviKvsObject::registerPrivateImplementation(const QString &szFunctionName,c
 		szContext += "[privateimpl]::";
 		szContext += szFunctionName;
 
-		m_pFunctionHandlers->replace(szFunctionName,new KviKvsObjectScriptFunctionHandler(szContext,szCode,QString("")));
+		m_pFunctionHandlers->replace(szFunctionName, new KviKvsObjectScriptFunctionHandler(szContext, szCode, QString("")));
 	}
 }
 
-KviKvsObject * KviKvsObject::findChild(const QString &szClass,const QString &szName)
+KviKvsObject * KviKvsObject::findChild(const QString & szClass, const QString & szName)
 {
-	for(KviKvsObject * o = m_pChildList->first();o;o= m_pChildList->next())
+	for(KviKvsObject * o = m_pChildList->first(); o; o = m_pChildList->next())
 	{
 		if(szClass.isEmpty())
 		{
 			// any class matches
-			if(szName.isEmpty())return o; // any name matches
+			if(szName.isEmpty())
+				return o; // any name matches
 			// name must match
-			if(KviQString::equalCI(szName,o->objectName()))return o;
-		} else {
-			if(KviQString::equalCI(szClass,o->getClass()->name()))
+			if(KviQString::equalCI(szName, o->objectName()))
+				return o;
+		}
+		else
+		{
+			if(KviQString::equalCI(szClass, o->getClass()->name()))
 			{
-				if(szName.isEmpty())return o; // any name matches
+				if(szName.isEmpty())
+					return o; // any name matches
 				// name must match
-				if(KviQString::equalCI(szName,o->objectName()))return o;
+				if(KviQString::equalCI(szName, o->objectName()))
+					return o;
 			}
 		}
-		KviKvsObject * c = o->findChild(szClass,szName);
-		if(c)return c;
+		KviKvsObject * c = o->findChild(szClass, szName);
+		if(c)
+			return c;
 	}
 	return 0;
 }

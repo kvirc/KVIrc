@@ -57,21 +57,21 @@
 */
 
 #ifdef COMPILE_KDE_SUPPORT
-	#define KVI_FILTER_CONFIG "*.kvc|KVIrc Config (*.kvc)"
-	#define KVI_FILTER_SCRIPT "*.kvs|KVIrc Script (*.kvs)"
-	#define KVI_FILTER_THEME "*.kvt|KVIrc Theme (*.kvt)"
-	#define KVI_FILTER_ADDON "*.kva|KVIrc Addon (*.kva)"
-	#define KVI_FILTER_INI "*.ini|INI File (*.ini)"
-	#define KVI_FILTER_IMAGE "*.png *.jpg *.jpeg *.bmp *.gif *.xpm|Image File (*.png *.jpg *.jpeg *.bmp *.gif *.xpm)"
-	//#define KVI_FILTER_UI "*.ui|User Interface File (*.ui)"
+#define KVI_FILTER_CONFIG "*.kvc|KVIrc Config (*.kvc)"
+#define KVI_FILTER_SCRIPT "*.kvs|KVIrc Script (*.kvs)"
+#define KVI_FILTER_THEME "*.kvt|KVIrc Theme (*.kvt)"
+#define KVI_FILTER_ADDON "*.kva|KVIrc Addon (*.kva)"
+#define KVI_FILTER_INI "*.ini|INI File (*.ini)"
+#define KVI_FILTER_IMAGE "*.png *.jpg *.jpeg *.bmp *.gif *.xpm|Image File (*.png *.jpg *.jpeg *.bmp *.gif *.xpm)"
+//#define KVI_FILTER_UI "*.ui|User Interface File (*.ui)"
 #else
-	#define KVI_FILTER_CONFIG "KVIrc Config (*.kvc)"
-	#define KVI_FILTER_SCRIPT "KVIrc Script (*.kvs)"
-	#define KVI_FILTER_THEME "KVIrc Theme (*.kvt)"
-	#define KVI_FILTER_ADDON "KVIrc Addon (*.kva)"
-	#define KVI_FILTER_INI "INI File (*.ini)"
-	#define KVI_FILTER_IMAGE "Image File (*.png *.jpg *.jpeg *.bmp *.gif *.xpm)"
-	//#define KVI_FILTER_UI "User Interface File (*.ui)"
+#define KVI_FILTER_CONFIG "KVIrc Config (*.kvc)"
+#define KVI_FILTER_SCRIPT "KVIrc Script (*.kvs)"
+#define KVI_FILTER_THEME "KVIrc Theme (*.kvt)"
+#define KVI_FILTER_ADDON "KVIrc Addon (*.kva)"
+#define KVI_FILTER_INI "INI File (*.ini)"
+#define KVI_FILTER_IMAGE "Image File (*.png *.jpg *.jpeg *.bmp *.gif *.xpm)"
+//#define KVI_FILTER_UI "User Interface File (*.ui)"
 #endif //COMPILE_KDE_SUPPORT
 
 #endif //_KVI_FILEEXTENSIONS_H_

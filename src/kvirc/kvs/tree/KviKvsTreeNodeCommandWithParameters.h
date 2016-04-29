@@ -35,13 +35,14 @@ class KVIRC_API KviKvsTreeNodeCommandWithParameters : public KviKvsTreeNodeComma
 	// never instantiated
 public:
 	// params can't be 0!
-	KviKvsTreeNodeCommandWithParameters(const QChar * pLocation,const QString &szCmdName,KviKvsTreeNodeDataList * params);
+	KviKvsTreeNodeCommandWithParameters(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params);
 	~KviKvsTreeNodeCommandWithParameters();
+
 protected:
 	KviKvsTreeNodeDataList * m_pParams; // never 0
 public:
-	KviKvsTreeNodeDataList * params(){ return m_pParams; };
-	virtual void contextDescription(QString &szBuffer);
+	KviKvsTreeNodeDataList * params() { return m_pParams; };
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	void dumpParameterList(const char * prefix);
 };

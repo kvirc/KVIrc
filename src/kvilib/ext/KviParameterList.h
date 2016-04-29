@@ -37,37 +37,36 @@ class KVILIB_API KviParameterList : public KviPointerList<KviCString>, public Kv
 {
 public:
 	KviParameterList();
-	KviParameterList(KviCString *p1);
-	KviParameterList(KviCString *p1,KviCString *p2);
-	KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3);
-	KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3,KviCString *p4);
-	KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3,KviCString *p4,KviCString *p5);
-	KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3,KviCString *p4,KviCString *p5,KviCString *p6);
-	KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3,KviCString *p4,KviCString *p5,KviCString *p6,KviCString *p7);
+	KviParameterList(KviCString * p1);
+	KviParameterList(KviCString * p1, KviCString * p2);
+	KviParameterList(KviCString * p1, KviCString * p2, KviCString * p3);
+	KviParameterList(KviCString * p1, KviCString * p2, KviCString * p3, KviCString * p4);
+	KviParameterList(KviCString * p1, KviCString * p2, KviCString * p3, KviCString * p4, KviCString * p5);
+	KviParameterList(KviCString * p1, KviCString * p2, KviCString * p3, KviCString * p4, KviCString * p5, KviCString * p6);
+	KviParameterList(KviCString * p1, KviCString * p2, KviCString * p3, KviCString * p4, KviCString * p5, KviCString * p6, KviCString * p7);
 	KviParameterList(const char * paramBuffer);
 	virtual ~KviParameterList();
+
 private:
 	KviCString m_szEmpty;
+
 public:
-	void         init(){ (void)first(); };
+	void init() { (void)first(); };
 	// These functions have to be called when the
 	// current() points to the FIRST item that has
 	// to be interpreted as Bool,Int,UInt,Rect etc...
 	// At the call exit the current() points
 	// to the first item that was NOT used by the call
-	bool         getBool();
-	int          getInt(bool * bOk = 0);
+	bool getBool();
+	int getInt(bool * bOk = 0);
 	unsigned int getUInt(bool * bOk = 0);
-	QRect        getRect(bool * bOk = 0);
-	QPoint       getPoint(bool * bOk = 0);
-	QSize        getSize(bool * bOk = 0);
-	KviCString *     safeFirst();
-	KviCString *     safeNext();
-	const char * safeFirstParam(){ return safeFirst()->ptr(); };
-	const char * safeNextParam(){ return safeNext()->ptr(); };
-
+	QRect getRect(bool * bOk = 0);
+	QPoint getPoint(bool * bOk = 0);
+	QSize getSize(bool * bOk = 0);
+	KviCString * safeFirst();
+	KviCString * safeNext();
+	const char * safeFirstParam() { return safeFirst()->ptr(); };
+	const char * safeNextParam() { return safeNext()->ptr(); };
 };
-
-
 
 #endif //_KVI_PARAMETERLIST_H_

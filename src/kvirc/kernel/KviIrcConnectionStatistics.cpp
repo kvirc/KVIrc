@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviIrcConnectionStatistics.h"
 
 KviIrcConnectionStatistics::KviIrcConnectionStatistics()
@@ -35,4 +33,3 @@ KviIrcConnectionStatistics::KviIrcConnectionStatistics()
 KviIrcConnectionStatistics::~KviIrcConnectionStatistics()
 {
 }
-

@@ -198,53 +198,55 @@ public:
 	* \brief Destroys the KviKvsVariantList object
 	*/
 	~KviKvsVariantList();
+
 protected:
 	KviPointerList<KviKvsVariant> * m_pList;
+
 public:
 	/**
 	* \brief Returns the first element of the list
 	* \return KviKvsVariant *
 	*/
-	KviKvsVariant * first(){ return m_pList->first(); };
+	KviKvsVariant * first() { return m_pList->first(); };
 
 	/**
 	* \brief Returns the next element of the list
 	* \return KviKvsVariant *
 	*/
-	KviKvsVariant * next(){ return m_pList->next(); };
+	KviKvsVariant * next() { return m_pList->next(); };
 
 	/**
 	* \brief Returns the element of the list at the given index
 	* \param iIdx The index of the list we want to extract
 	* \return KviKvsVariant *
 	*/
-	KviKvsVariant * at(int iIdx){ return m_pList->at(iIdx); };
+	KviKvsVariant * at(int iIdx) { return m_pList->at(iIdx); };
 
 	/**
 	* \brief Returns the size of the list
 	* \return unsigned int
 	*/
-	unsigned int count(){ return m_pList->count(); };
+	unsigned int count() { return m_pList->count(); };
 
 	/**
 	* \brief Clears the list
 	* \return void
 	*/
-	void clear(){ m_pList->clear(); };
+	void clear() { m_pList->clear(); };
 
 	/**
 	* \brief Appends an element to the list
 	* \param pItem The element to append
 	* \return void
 	*/
-	void append(KviKvsVariant * pItem){ m_pList->append(pItem); };
+	void append(KviKvsVariant * pItem) { m_pList->append(pItem); };
 
 	/**
 	* \brief Prepends an element to the list
 	* \param pItem The element to prepend
 	* \return void
 	*/
-	void prepend(KviKvsVariant * pItem){ m_pList->prepend(pItem); };
+	void prepend(KviKvsVariant * pItem) { m_pList->prepend(pItem); };
 
 	/**
 	* \brief Appends an element to the list
@@ -252,49 +254,49 @@ public:
 	* \param bEscape Whether the string has to be escaped for KVS
 	* \return void
 	*/
-	void append(const QString & szParam, bool bEscape = false){ m_pList->append(new KviKvsVariant(szParam,bEscape)); };
+	void append(const QString & szParam, bool bEscape = false) { m_pList->append(new KviKvsVariant(szParam, bEscape)); };
 
 	/**
 	* \brief Appends an element to the list
 	* \param iInt The integer element to append
 	* \return void
 	*/
-	void append(kvs_int_t iInt){ m_pList->append(new KviKvsVariant(iInt)); };
+	void append(kvs_int_t iInt) { m_pList->append(new KviKvsVariant(iInt)); };
 
 	/**
 	* \brief Appends an element to the list
 	* \param dReal The real element to append
 	* \return void
 	*/
-	void append(kvs_real_t dReal){ m_pList->append(new KviKvsVariant(dReal)); };
+	void append(kvs_real_t dReal) { m_pList->append(new KviKvsVariant(dReal)); };
 
 	/**
 	* \brief Appends an element to the list
 	* \param bBoolean The boolean element to append
 	* \return void
 	*/
-	void append(bool bBoolean){ m_pList->append(new KviKvsVariant(bBoolean)); };
+	void append(bool bBoolean) { m_pList->append(new KviKvsVariant(bBoolean)); };
 
 	/**
 	* \brief Appends an element to the list
 	* \param hObject The hObject element to append
 	* \return void
 	*/
-	void append(kvs_hobject_t hObject){ m_pList->append(new KviKvsVariant(hObject)); };
+	void append(kvs_hobject_t hObject) { m_pList->append(new KviKvsVariant(hObject)); };
 
 	/**
 	* \brief Appends an element to the list
 	* \param pArray The array element to append
 	* \return void
 	*/
-	void append(KviKvsArray * pArray){ m_pList->append(new KviKvsVariant(pArray)); };
+	void append(KviKvsArray * pArray) { m_pList->append(new KviKvsVariant(pArray)); };
 
 	/**
 	* \brief Appends an element to the list
 	* \param pHash The hash element to append
 	* \return void
 	*/
-	void append(KviKvsHash * pHash){ m_pList->append(new KviKvsVariant(pHash)); };
+	void append(KviKvsHash * pHash) { m_pList->append(new KviKvsVariant(pHash)); };
 
 	/**
 	* \brief Sets the auto delete flag on the list

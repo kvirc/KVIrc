@@ -28,48 +28,49 @@
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
-	#include "MpInterface.h"
+#include "MpInterface.h"
 
-	class KviWinampInterface : public MpInterface
-	{
-	public:
-		KviWinampInterface();
-		~KviWinampInterface();
-	public:
-		virtual int detect(bool bStart);
-		virtual bool prev();
-		virtual bool next();
-		virtual bool play();
-		virtual bool stop();
-		virtual bool pause();
-		virtual bool quit();
-		virtual QString nowPlaying();
-		virtual QString mrl();
-		virtual int position();
-		virtual int length();
-		virtual bool playMrl(const QString &mrl);
-		virtual bool setVol(kvs_int_t &iVol);
-		virtual int getVol();
-		virtual bool jumpTo(kvs_int_t &iPos);
-		virtual int sampleRate();
-		virtual int bitRate();
-		virtual int channels();
-		virtual bool hide();
-		virtual bool show();
-		virtual bool minimize();
-		virtual int getPlayListPos();
-		virtual bool setPlayListPos(kvs_int_t &iPos);
-		virtual int getListLength();
-		virtual int getEqData(kvs_int_t &ival);
-		virtual bool setEqData(kvs_int_t &iPos, kvs_int_t &iVal);
-		virtual bool getRepeat();
-		virtual bool getShuffle();
-		virtual bool setRepeat(bool &bVal);
-		virtual bool setShuffle(bool &bVal);
-		virtual MpInterface::PlayerStatus status();
-	};
+class KviWinampInterface : public MpInterface
+{
+public:
+	KviWinampInterface();
+	~KviWinampInterface();
 
-	MP_DECLARE_DESCRIPTOR(KviWinampInterface)
+public:
+	virtual int detect(bool bStart);
+	virtual bool prev();
+	virtual bool next();
+	virtual bool play();
+	virtual bool stop();
+	virtual bool pause();
+	virtual bool quit();
+	virtual QString nowPlaying();
+	virtual QString mrl();
+	virtual int position();
+	virtual int length();
+	virtual bool playMrl(const QString & mrl);
+	virtual bool setVol(kvs_int_t & iVol);
+	virtual int getVol();
+	virtual bool jumpTo(kvs_int_t & iPos);
+	virtual int sampleRate();
+	virtual int bitRate();
+	virtual int channels();
+	virtual bool hide();
+	virtual bool show();
+	virtual bool minimize();
+	virtual int getPlayListPos();
+	virtual bool setPlayListPos(kvs_int_t & iPos);
+	virtual int getListLength();
+	virtual int getEqData(kvs_int_t & ival);
+	virtual bool setEqData(kvs_int_t & iPos, kvs_int_t & iVal);
+	virtual bool getRepeat();
+	virtual bool getShuffle();
+	virtual bool setRepeat(bool & bVal);
+	virtual bool setShuffle(bool & bVal);
+	virtual MpInterface::PlayerStatus status();
+};
+
+MP_DECLARE_DESCRIPTOR(KviWinampInterface)
 
 #endif //COMPILE_ON_WINDOWS
 

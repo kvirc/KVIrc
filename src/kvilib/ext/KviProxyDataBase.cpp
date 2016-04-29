@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "KviProxyDataBase.h"
 #include "KviConfigurationFile.h"
 #include "KviProxy.h"
@@ -39,11 +38,11 @@ KviProxyDataBase::~KviProxyDataBase()
 	delete m_pProxyList;
 }
 
-void KviProxyDataBase::updateProxyIp(const char * proxy,const char * ip)
+void KviProxyDataBase::updateProxyIp(const char * proxy, const char * ip)
 {
-	for(KviProxy * prx = m_pProxyList->first();prx;prx = m_pProxyList->next())
+	for(KviProxy * prx = m_pProxyList->first(); prx; prx = m_pProxyList->next())
 	{
-		if(QString::compare(proxy,prx->m_szHostname,Qt::CaseInsensitive))
+		if(QString::compare(proxy, prx->m_szHostname, Qt::CaseInsensitive))
 		{
 			prx->m_szIp = ip;
 			return;
@@ -53,16 +52,17 @@ void KviProxyDataBase::updateProxyIp(const char * proxy,const char * ip)
 
 KviProxy * KviProxyDataBase::findProxy(const KviProxy * pProxy, bool bName)
 {
-	for(KviProxy *p=m_pProxyList->first();p;p=m_pProxyList->next())
+	for(KviProxy * p = m_pProxyList->first(); p; p = m_pProxyList->next())
 	{
 		if(bName)
 		{
-			if(QString::compare(p->m_szHostname,pProxy->m_szHostname,Qt::CaseInsensitive)) return p;
-		} else {
-			if(QString::compare(p->m_szHostname,pProxy->m_szHostname,Qt::CaseInsensitive) &&
-				(p->m_uPort == pProxy->m_uPort) &&
-				(p->protocol() == pProxy->protocol()) &&
-				(p->isIPv6() == pProxy->isIPv6())) return p;
+			if(QString::compare(p->m_szHostname, pProxy->m_szHostname, Qt::CaseInsensitive))
+				return p;
+		}
+		else
+		{
+			if(QString::compare(p->m_szHostname, pProxy->m_szHostname, Qt::CaseInsensitive) && (p->m_uPort == pProxy->m_uPort) && (p->protocol() == pProxy->protocol()) && (p->isIPv6() == pProxy->isIPv6()))
+				return p;
 		}
 	}
 	return 0;
@@ -76,79 +76,87 @@ void KviProxyDataBase::clear()
 	m_pCurrentProxy = 0;
 }
 
-void KviProxyDataBase::load(const QString &filename)
+void KviProxyDataBase::load(const QString & filename)
 {
 	clear();
-	KviConfigurationFile cfg(filename,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(filename, KviConfigurationFile::Read);
 
-	unsigned int nEntries = cfg.readUIntEntry("Entries",0);
+	unsigned int nEntries = cfg.readUIntEntry("Entries", 0);
 
-	for(unsigned int i=0;i<nEntries;i++)
+	for(unsigned int i = 0; i < nEntries; i++)
 	{
 		KviProxy * p = new KviProxy();
-		KviCString tmp(KviCString::Format,"%u_Hostname",i);
-		p->m_szHostname = cfg.readEntry(tmp.ptr(),"proxy.example.net");
-		tmp.sprintf("%u_Port",i);
-		p->m_uPort      = cfg.readUIntEntry(tmp.ptr(),7000);
-		tmp.sprintf("%u_Ip",i);
-		p->m_szIp      = cfg.readEntry(tmp.ptr(),"");
-		tmp.sprintf("%u_User",i);
-		p->m_szUser    = cfg.readEntry(tmp.ptr(),"");
-		tmp.sprintf("%u_Pass",i);
-		p->m_szPass    = cfg.readEntry(tmp.ptr(),"");
+		KviCString tmp(KviCString::Format, "%u_Hostname", i);
+		p->m_szHostname = cfg.readEntry(tmp.ptr(), "proxy.example.net");
+		tmp.sprintf("%u_Port", i);
+		p->m_uPort = cfg.readUIntEntry(tmp.ptr(), 7000);
+		tmp.sprintf("%u_Ip", i);
+		p->m_szIp = cfg.readEntry(tmp.ptr(), "");
+		tmp.sprintf("%u_User", i);
+		p->m_szUser = cfg.readEntry(tmp.ptr(), "");
+		tmp.sprintf("%u_Pass", i);
+		p->m_szPass = cfg.readEntry(tmp.ptr(), "");
 
-		tmp.sprintf("%u_Protocol",i);
-		KviCString type    = cfg.readEntry(tmp.ptr(),"SOCKSv4");
+		tmp.sprintf("%u_Protocol", i);
+		KviCString type = cfg.readEntry(tmp.ptr(), "SOCKSv4");
 		p->setNamedProtocol(type.ptr());
 
-		tmp.sprintf("%u_IsIPv6",i);
-		p->m_bIsIPv6   = cfg.readBoolEntry(tmp.ptr(),false);
-		tmp.sprintf("%u_Current",i);
-		if(cfg.readBoolEntry(tmp.ptr(),false))m_pCurrentProxy = p;
+		tmp.sprintf("%u_IsIPv6", i);
+		p->m_bIsIPv6 = cfg.readBoolEntry(tmp.ptr(), false);
+		tmp.sprintf("%u_Current", i);
+		if(cfg.readBoolEntry(tmp.ptr(), false))
+			m_pCurrentProxy = p;
 		m_pProxyList->append(p);
 	}
 
-	if(!m_pCurrentProxy)m_pCurrentProxy = m_pProxyList->first();
+	if(!m_pCurrentProxy)
+		m_pCurrentProxy = m_pProxyList->first();
 }
 
-void KviProxyDataBase::save(const QString &filename)
+void KviProxyDataBase::save(const QString & filename)
 {
-	KviConfigurationFile cfg(filename,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(filename, KviConfigurationFile::Write);
 
 	cfg.clear();
 
-	cfg.writeEntry("Entries",m_pProxyList->count());
+	cfg.writeEntry("Entries", m_pProxyList->count());
 
+	int i = 0;
 
-	int i=0;
-
-	for(KviProxy * p=m_pProxyList->first();p;p=m_pProxyList->next())
+	for(KviProxy * p = m_pProxyList->first(); p; p = m_pProxyList->next())
 	{
-		KviCString tmp(KviCString::Format,"%u_Hostname",i);
-		cfg.writeEntry(tmp.ptr(),p->m_szHostname);
-		tmp.sprintf("%u_Port",i);
-		cfg.writeEntry(tmp.ptr(),p->m_uPort);
-		tmp.sprintf("%u_Ip",i);
-		cfg.writeEntry(tmp.ptr(),p->m_szIp);
-		tmp.sprintf("%u_User",i);
-		cfg.writeEntry(tmp.ptr(),p->m_szUser);
-		tmp.sprintf("%u_Pass",i);
-		cfg.writeEntry(tmp.ptr(),p->m_szPass);
+		KviCString tmp(KviCString::Format, "%u_Hostname", i);
+		cfg.writeEntry(tmp.ptr(), p->m_szHostname);
+		tmp.sprintf("%u_Port", i);
+		cfg.writeEntry(tmp.ptr(), p->m_uPort);
+		tmp.sprintf("%u_Ip", i);
+		cfg.writeEntry(tmp.ptr(), p->m_szIp);
+		tmp.sprintf("%u_User", i);
+		cfg.writeEntry(tmp.ptr(), p->m_szUser);
+		tmp.sprintf("%u_Pass", i);
+		cfg.writeEntry(tmp.ptr(), p->m_szPass);
 
-		tmp.sprintf("%u_Protocol",i);
+		tmp.sprintf("%u_Protocol", i);
 		KviCString type;
 		switch(p->m_protocol)
 		{
-			case KviProxy::Socks5: type = "SOCKSv5"; break;
-			case KviProxy::Http:   type = "HTTP";   break;
-			default:               type = "SOCKSv4"; break;
+			case KviProxy::Socks5:
+				type = "SOCKSv5";
+				break;
+			case KviProxy::Http:
+				type = "HTTP";
+				break;
+			default:
+				type = "SOCKSv4";
+				break;
 		}
-		cfg.writeEntry(tmp.ptr(),type.ptr());
+		cfg.writeEntry(tmp.ptr(), type.ptr());
 
-		tmp.sprintf("%u_IsIPv6",i);
-		cfg.writeEntry(tmp.ptr(),p->m_bIsIPv6);
-		tmp.sprintf("%u_Current",i);
-		if(m_pCurrentProxy == p)cfg.writeEntry(tmp.ptr(),true);
+		tmp.sprintf("%u_IsIPv6", i);
+		cfg.writeEntry(tmp.ptr(), p->m_bIsIPv6);
+		tmp.sprintf("%u_Current", i);
+		if(m_pCurrentProxy == p)
+			cfg.writeEntry(tmp.ptr(), true);
 		i++;
 	}
 }

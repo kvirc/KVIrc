@@ -35,15 +35,17 @@ class KVIRC_API KviModeWidget : public KviThemedLineEdit
 	Q_OBJECT
 
 public:
-	KviModeWidget(QWidget * par,KviChannelWindow* chan,const char * name=0);
+	KviModeWidget(QWidget * par, KviChannelWindow * chan, const char * name = 0);
 	~KviModeWidget();
 	void reset();
 	void refreshModes();
+
 private:
-	KviChannelWindow            *  m_pChannel;
+	KviChannelWindow * m_pChannel;
+
 protected:
 	void mouseDoubleClickEvent(QMouseEvent * e);
-	void keyReleaseEvent (QKeyEvent * e);
+	void keyReleaseEvent(QKeyEvent * e);
 	bool modeNeedsParameterOnlyWhenSet(char cMode);
 public slots:
 	void editorReturnPressed();

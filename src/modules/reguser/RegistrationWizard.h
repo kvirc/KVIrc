@@ -43,7 +43,7 @@ class RegistrationWizard : public KviTalWizard
 {
 	Q_OBJECT
 public:
-	RegistrationWizard(const QString &startMask,KviRegisteredUserDataBase * db = 0,QWidget * par = 0,bool bModal = false);
+	RegistrationWizard(const QString & startMask, KviRegisteredUserDataBase * db = 0, QWidget * par = 0, bool bModal = false);
 	~RegistrationWizard();
 
 	KviRegisteredUserDataBase * m_pDb;
@@ -52,39 +52,40 @@ public:
 
 	bool m_bModal;
 
-	QWidget* m_pPage1;
-	QLabel* m_pLabel1;
-	QLabel* m_pEntryNameLabel;
-	QLineEdit* m_pEditRealName;
-	QWidget* m_pPage2;
-	QLabel* m_pLabel2;
-	QLineEdit* m_pNicknameEdit1;
-	QLineEdit* m_pNicknameEdit2;
-	QLineEdit* m_pHostEdit1;
-	QLineEdit* m_pHostEdit2;
-	QLineEdit* m_pUsernameEdit1;
-	QLineEdit* m_pUsernameEdit2;
-	QWidget* m_pPage3;
-	QLabel* m_pLabel3;
+	QWidget * m_pPage1;
+	QLabel * m_pLabel1;
+	QLabel * m_pEntryNameLabel;
+	QLineEdit * m_pEditRealName;
+	QWidget * m_pPage2;
+	QLabel * m_pLabel2;
+	QLineEdit * m_pNicknameEdit1;
+	QLineEdit * m_pNicknameEdit2;
+	QLineEdit * m_pHostEdit1;
+	QLineEdit * m_pHostEdit2;
+	QLineEdit * m_pUsernameEdit1;
+	QLineEdit * m_pUsernameEdit2;
+	QWidget * m_pPage3;
+	QLabel * m_pLabel3;
 	KviPixmapSelector * m_pAvatarSelector;
-	QWidget* m_pPage4;
-	QCheckBox* m_pNotifyCheck;
-	QLabel* m_pNotifyNickLabel1;
-	QLabel* m_pNotifyNickLabel2;
-	QLabel* m_pLabel4;
-	QLineEdit* m_pNotifyNickEdit1;
-	QLineEdit* m_pNotifyNickEdit2;
-	QWidget* m_pPage5;
-	QLabel* m_pTextLabel5;
+	QWidget * m_pPage4;
+	QCheckBox * m_pNotifyCheck;
+	QLabel * m_pNotifyNickLabel1;
+	QLabel * m_pNotifyNickLabel2;
+	QLabel * m_pLabel4;
+	QLineEdit * m_pNotifyNickEdit1;
+	QLineEdit * m_pNotifyNickEdit2;
+	QWidget * m_pPage5;
+	QLabel * m_pTextLabel5;
 
 	KviPixmap * m_pAvatar;
+
 protected:
-	virtual void showEvent(QShowEvent *e);
+	virtual void showEvent(QShowEvent * e);
 	virtual void accept();
 	virtual void reject();
 protected slots:
-	void realNameChanged(const QString &str);
-	void maskChanged(const QString &str);
+	void realNameChanged(const QString & str);
+	void maskChanged(const QString & str);
 	void notifyNickChanged(const QString &);
 	void notifyCheckToggled(bool);
 };

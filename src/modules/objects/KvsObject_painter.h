@@ -33,7 +33,6 @@
 #include "KviCString.h"
 #include <QPainterPath>
 
-
 class KvsObject_painter : public KviKvsObject
 {
 	Q_OBJECT
@@ -43,88 +42,87 @@ protected:
 	QPrinter * m_pPrinter;
 	bool bDonotdeleteinternalqpainter;
 	QPainter * m_pPainter;
-	QLinearGradient *m_pGradient;
-	QPainterPath *m_pPainterPath;
+	QLinearGradient * m_pGradient;
+	QPainterPath * m_pPainterPath;
+
 public:
-        void setInternalPainter(QPainter *p);
-	bool setFont(KviKvsObjectFunctionCall *c);
-	bool setFontSize(KviKvsObjectFunctionCall *c);
+	void setInternalPainter(QPainter * p);
+	bool setFont(KviKvsObjectFunctionCall * c);
+	bool setFontSize(KviKvsObjectFunctionCall * c);
 
-	bool fontAscent(KviKvsObjectFunctionCall *c);
-	bool fontDescent(KviKvsObjectFunctionCall *c);
-	bool fontMetricsWidth(KviKvsObjectFunctionCall *c);
-	bool fontMetricsHeight(KviKvsObjectFunctionCall *c);
-	bool setBrush(KviKvsObjectFunctionCall *c);
-	bool setPen(KviKvsObjectFunctionCall *c);
-	bool pen(KviKvsObjectFunctionCall *c);
-	bool setBackGroundMode(KviKvsObjectFunctionCall *c);
+	bool fontAscent(KviKvsObjectFunctionCall * c);
+	bool fontDescent(KviKvsObjectFunctionCall * c);
+	bool fontMetricsWidth(KviKvsObjectFunctionCall * c);
+	bool fontMetricsHeight(KviKvsObjectFunctionCall * c);
+	bool setBrush(KviKvsObjectFunctionCall * c);
+	bool setPen(KviKvsObjectFunctionCall * c);
+	bool pen(KviKvsObjectFunctionCall * c);
+	bool setBackGroundMode(KviKvsObjectFunctionCall * c);
 
-	bool drawRect(KviKvsObjectFunctionCall *c);
-	bool drawWinFocusRect(KviKvsObjectFunctionCall *c);
-	bool drawLine(KviKvsObjectFunctionCall *c);
-	bool drawRoundRect(KviKvsObjectFunctionCall *c);
-	bool drawPoint(KviKvsObjectFunctionCall *c);
-	bool drawArc(KviKvsObjectFunctionCall *c);
-	bool drawChord(KviKvsObjectFunctionCall *c);
-	bool drawPie(KviKvsObjectFunctionCall *c);
-	bool drawEllipse(KviKvsObjectFunctionCall *c);
+	bool drawRect(KviKvsObjectFunctionCall * c);
+	bool drawWinFocusRect(KviKvsObjectFunctionCall * c);
+	bool drawLine(KviKvsObjectFunctionCall * c);
+	bool drawRoundRect(KviKvsObjectFunctionCall * c);
+	bool drawPoint(KviKvsObjectFunctionCall * c);
+	bool drawArc(KviKvsObjectFunctionCall * c);
+	bool drawChord(KviKvsObjectFunctionCall * c);
+	bool drawPie(KviKvsObjectFunctionCall * c);
+	bool drawEllipse(KviKvsObjectFunctionCall * c);
 
-	bool drawText(KviKvsObjectFunctionCall *c);
-	bool drawPixmap(KviKvsObjectFunctionCall *c);
+	bool drawText(KviKvsObjectFunctionCall * c);
+	bool drawPixmap(KviKvsObjectFunctionCall * c);
 
+	bool begin(KviKvsObjectFunctionCall * c);
+	bool end(KviKvsObjectFunctionCall * c);
+	bool save(KviKvsObjectFunctionCall * c);
+	bool restore(KviKvsObjectFunctionCall * c);
 
-	bool begin(KviKvsObjectFunctionCall *c);
-	bool end(KviKvsObjectFunctionCall *c);
-	bool save(KviKvsObjectFunctionCall *c);
-	bool restore(KviKvsObjectFunctionCall *c);
+	bool scale(KviKvsObjectFunctionCall * c);
+	bool shear(KviKvsObjectFunctionCall * c);
+	bool rotate(KviKvsObjectFunctionCall * c);
+	bool reset(KviKvsObjectFunctionCall * c);
+	bool translate(KviKvsObjectFunctionCall * c);
+	bool setPenStyle(KviKvsObjectFunctionCall * c);
+	bool setBrushStyle(KviKvsObjectFunctionCall * c);
+	bool setCompositionMode(KviKvsObjectFunctionCall * c);
 
+	// QT4
+	bool setOpacity(KviKvsObjectFunctionCall * c);
+	bool setSmoothPixmapTransform(KviKvsObjectFunctionCall * c);
+	bool setTextAntialiasing(KviKvsObjectFunctionCall * c);
+	bool setAntialiasing(KviKvsObjectFunctionCall * c);
+	bool setGradientStart(KviKvsObjectFunctionCall * c);
+	bool setGradientStop(KviKvsObjectFunctionCall * c);
+	bool setGradientColor(KviKvsObjectFunctionCall * c);
+	bool setGradientAsBrush(KviKvsObjectFunctionCall * c);
+	bool clearGradient(KviKvsObjectFunctionCall * c);
 
-	bool scale(KviKvsObjectFunctionCall *c);
-	bool shear(KviKvsObjectFunctionCall *c);
-	bool rotate(KviKvsObjectFunctionCall *c);
-	bool reset(KviKvsObjectFunctionCall *c);
-	bool translate(KviKvsObjectFunctionCall *c);
-	bool setPenStyle(KviKvsObjectFunctionCall *c);
-	bool setBrushStyle(KviKvsObjectFunctionCall *c);
-	bool setCompositionMode(KviKvsObjectFunctionCall *c);
+	bool drawIcon(KviKvsObjectFunctionCall * c);
+	bool drawHtmlText(KviKvsObjectFunctionCall * c);
+	bool htmlTextSize(KviKvsObjectFunctionCall * c);
+	bool fillRect(KviKvsObjectFunctionCall * c);
+	bool setPenWidth(KviKvsObjectFunctionCall * c);
+	bool colorNames(KviKvsObjectFunctionCall * c);
+	bool pathMoveTo(KviKvsObjectFunctionCall * c);
+	bool pathLineTo(KviKvsObjectFunctionCall * c);
+	bool drawPath(KviKvsObjectFunctionCall * c);
+	bool setPenJoinStyle(KviKvsObjectFunctionCall * c);
+	bool setPenCapStyle(KviKvsObjectFunctionCall * c);
+	bool pathAddText(KviKvsObjectFunctionCall * c);
+	bool resetPath(KviKvsObjectFunctionCall * c);
 
-// QT4
-	bool setOpacity(KviKvsObjectFunctionCall *c);
-	bool setSmoothPixmapTransform(KviKvsObjectFunctionCall *c);
-	bool setTextAntialiasing(KviKvsObjectFunctionCall *c);
-	bool setAntialiasing(KviKvsObjectFunctionCall *c);
-	bool setGradientStart(KviKvsObjectFunctionCall *c);
-	bool setGradientStop(KviKvsObjectFunctionCall *c);
-	bool setGradientColor(KviKvsObjectFunctionCall *c);
-	bool setGradientAsBrush(KviKvsObjectFunctionCall *c);
-	bool clearGradient(KviKvsObjectFunctionCall *c);
-
-	bool drawIcon(KviKvsObjectFunctionCall *c);
-	bool drawHtmlText(KviKvsObjectFunctionCall *c);
-	bool htmlTextSize(KviKvsObjectFunctionCall *c);
-	bool fillRect(KviKvsObjectFunctionCall *c);
-	bool setPenWidth(KviKvsObjectFunctionCall *c);
-	bool colorNames(KviKvsObjectFunctionCall *c);
-	bool pathMoveTo(KviKvsObjectFunctionCall *c);
-	bool pathLineTo(KviKvsObjectFunctionCall *c);
-	bool drawPath(KviKvsObjectFunctionCall *c);
-	bool setPenJoinStyle(KviKvsObjectFunctionCall *c);
-	bool setPenCapStyle(KviKvsObjectFunctionCall *c);
-	bool pathAddText(KviKvsObjectFunctionCall *c);
-	bool resetPath(KviKvsObjectFunctionCall *c);
-
-	bool beginPdf(KviKvsObjectFunctionCall *c);
-	bool drawPixmapWithColorEffect(KviKvsObjectFunctionCall *c);
-	bool drawPixmapMirrored(KviKvsObjectFunctionCall *c);
-	bool painterDeviceWidth(KviKvsObjectFunctionCall *c);
-	bool painterDeviceHeight(KviKvsObjectFunctionCall *c);
-
+	bool beginPdf(KviKvsObjectFunctionCall * c);
+	bool drawPixmapWithColorEffect(KviKvsObjectFunctionCall * c);
+	bool drawPixmapMirrored(KviKvsObjectFunctionCall * c);
+	bool painterDeviceWidth(KviKvsObjectFunctionCall * c);
+	bool painterDeviceHeight(KviKvsObjectFunctionCall * c);
 
 protected:
-	void attachDevice(KviKvsObject * o,QPaintDevice * p);
+	void attachDevice(KviKvsObject * o, QPaintDevice * p);
 protected slots:
 	void detachDevice();
+
 private:
 	KviKvsObject * m_pDeviceObject;
 };
-#endif	// !_CLASS_PAINTER_H_
+#endif // !_CLASS_PAINTER_H_

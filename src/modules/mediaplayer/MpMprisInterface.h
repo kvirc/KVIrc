@@ -28,115 +28,117 @@
 
 #include "kvi_settings.h"
 
-#if (defined(COMPILE_DBUS_SUPPORT) && !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC) && !defined(COMPILE_ON_MINGW))
-	#include <QtDBus/QtDBus>
+#if(defined(COMPILE_DBUS_SUPPORT) && !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC) && !defined(COMPILE_ON_MINGW))
+#include <QtDBus/QtDBus>
 
-	class MpMprisInterface : public MpInterface
-	{
-	public:
-		MpMprisInterface();
-		virtual ~MpMprisInterface();
-	public:
-		QString m_szServiceName;
-		virtual int detect(bool bStart);
-		virtual bool prev();
-		virtual bool next();
-		virtual bool play();
-		virtual bool stop();
-		virtual bool pause();
-		virtual bool quit();
-		virtual MpInterface::PlayerStatus status();
-		virtual QString nowPlaying();
-		virtual QString mrl();
-		virtual QString title();
-		virtual QString artist();
-		virtual QString genre();
-		virtual QString comment();
-		virtual QString year();
-		virtual QString album();
-		virtual int bitRate();
-		virtual int sampleRate();
-		virtual bool setVol(kvs_int_t &iVol);
-		virtual int getVol();
-		virtual int position();
-		virtual int length();
-		virtual bool jumpTo(kvs_int_t &iPos);
-	};
+class MpMprisInterface : public MpInterface
+{
+public:
+	MpMprisInterface();
+	virtual ~MpMprisInterface();
 
-	class MpAudaciousInterface : public MpMprisInterface
-	{
-	public:
-		MpAudaciousInterface();
-	public:
-		virtual bool quit();
-		virtual MpInterface::PlayerStatus status();
-		virtual QString mrl();
-		virtual int length();
+public:
+	QString m_szServiceName;
+	virtual int detect(bool bStart);
+	virtual bool prev();
+	virtual bool next();
+	virtual bool play();
+	virtual bool stop();
+	virtual bool pause();
+	virtual bool quit();
+	virtual MpInterface::PlayerStatus status();
+	virtual QString nowPlaying();
+	virtual QString mrl();
+	virtual QString title();
+	virtual QString artist();
+	virtual QString genre();
+	virtual QString comment();
+	virtual QString year();
+	virtual QString album();
+	virtual int bitRate();
+	virtual int sampleRate();
+	virtual bool setVol(kvs_int_t & iVol);
+	virtual int getVol();
+	virtual int position();
+	virtual int length();
+	virtual bool jumpTo(kvs_int_t & iPos);
+};
 
-		virtual int getPlayListPos();
-		virtual QString year();
-		virtual QString mediaType();
-	};
+class MpAudaciousInterface : public MpMprisInterface
+{
+public:
+	MpAudaciousInterface();
 
-	class MpBmpxInterface : public MpMprisInterface
-	{
-	public:
-		MpBmpxInterface();
-		virtual MpInterface::PlayerStatus status();
-	};
+public:
+	virtual bool quit();
+	virtual MpInterface::PlayerStatus status();
+	virtual QString mrl();
+	virtual int length();
 
-	class MpAmarok2Interface : public MpMprisInterface
-	{
-	public:
-		MpAmarok2Interface();
-	};
+	virtual int getPlayListPos();
+	virtual QString year();
+	virtual QString mediaType();
+};
 
-	class MpQmmpInterface : public MpMprisInterface
-	{
-	public:
-		MpQmmpInterface();
-	};
+class MpBmpxInterface : public MpMprisInterface
+{
+public:
+	MpBmpxInterface();
+	virtual MpInterface::PlayerStatus status();
+};
 
-	class MpXmms2Interface : public MpMprisInterface
-	{
-	public:
-		MpXmms2Interface();
-	};
+class MpAmarok2Interface : public MpMprisInterface
+{
+public:
+	MpAmarok2Interface();
+};
 
-	class MpSongbirdInterface : public MpMprisInterface
-	{
-	public:
-		MpSongbirdInterface();
-		virtual MpInterface::PlayerStatus status();
-	};
+class MpQmmpInterface : public MpMprisInterface
+{
+public:
+	MpQmmpInterface();
+};
 
-	class MpTotemInterface : public MpMprisInterface
-	{
-	public:
-		MpTotemInterface();
-	};
+class MpXmms2Interface : public MpMprisInterface
+{
+public:
+	MpXmms2Interface();
+};
 
-	class MpVlcInterface : public MpMprisInterface
-	{
-	public:
-		MpVlcInterface();
-	};
+class MpSongbirdInterface : public MpMprisInterface
+{
+public:
+	MpSongbirdInterface();
+	virtual MpInterface::PlayerStatus status();
+};
 
-	class MpClementineInterface : public MpMprisInterface
-	{
-	public:
-		MpClementineInterface();
-	};
+class MpTotemInterface : public MpMprisInterface
+{
+public:
+	MpTotemInterface();
+};
 
-	MP_DECLARE_DESCRIPTOR(MpAudaciousInterface)
-	MP_DECLARE_DESCRIPTOR(MpBmpxInterface)
-	MP_DECLARE_DESCRIPTOR(MpAmarok2Interface)
-	MP_DECLARE_DESCRIPTOR(MpQmmpInterface)
-	MP_DECLARE_DESCRIPTOR(MpXmms2Interface)
-	MP_DECLARE_DESCRIPTOR(MpSongbirdInterface)
-	MP_DECLARE_DESCRIPTOR(MpTotemInterface)
-	MP_DECLARE_DESCRIPTOR(MpVlcInterface)
-	MP_DECLARE_DESCRIPTOR(MpClementineInterface)
+class MpVlcInterface : public MpMprisInterface
+{
+public:
+	MpVlcInterface();
+};
+
+class MpClementineInterface : public MpMprisInterface
+{
+public:
+	MpClementineInterface();
+};
+
+MP_DECLARE_DESCRIPTOR(MpAudaciousInterface)
+MP_DECLARE_DESCRIPTOR(MpBmpxInterface)
+MP_DECLARE_DESCRIPTOR(MpAmarok2Interface)
+MP_DECLARE_DESCRIPTOR(MpQmmpInterface)
+MP_DECLARE_DESCRIPTOR(MpXmms2Interface)
+MP_DECLARE_DESCRIPTOR(MpSongbirdInterface)
+MP_DECLARE_DESCRIPTOR(MpTotemInterface)
+MP_DECLARE_DESCRIPTOR(MpVlcInterface)
+MP_DECLARE_DESCRIPTOR(MpClementineInterface)
 #endif //COMPILE_ON_WINDOWS
 
 #endif //_MP_AUDACIOUSINTERFACE_H_

@@ -27,57 +27,60 @@
 #include "kvi_settings.h"
 
 #ifdef COMPILE_KDE4_SUPPORT
-	#include <QFrame>
-	#include <QLabel>
-	#include <QPushButton>
-	#include "KviTalHBox.h"
+#include <QFrame>
+#include <QLabel>
+#include <QPushButton>
+#include "KviTalHBox.h"
 
-	#include "kparts/part.h"
+#include "kparts/part.h"
 
-	class KviMainWindow;
+class KviMainWindow;
 
-	class TermWidget : public QFrame
-	{
-		Q_OBJECT
-		Q_PROPERTY( int KviProperty_ChildFocusOwner READ dummy )
-	public:
-		TermWidget(QWidget * par,bool bIsStandalone = false);
-		~TermWidget();
-	private:
-		KviTalHBox   * m_pHBox;
-		QLabel       * m_pTitleLabel;
-		QPushButton  * m_pCloseButton;
-		KParts::Part * m_pKonsolePart;
-		bool           m_bIsStandalone;
-		QWidget      * m_pKonsoleWidget;
-	protected:
-		virtual void resizeEvent(QResizeEvent *e);
-	protected slots:
-		void closeClicked();
-		void changeTitle(int i,const QString& str);
-		void notifySize(int,int);
-		void changeColumns(int);
-	public:
-		QWidget * konsoleWidget(){ return m_pKonsoleWidget ? m_pKonsoleWidget : this; };
-		virtual QSize sizeHint() const;
-		int dummy() const { return 0; };
-	protected slots:
-		void konsoleDestroyed();
-		void autoClose();
-	};
+class TermWidget : public QFrame
+{
+	Q_OBJECT
+	Q_PROPERTY(int KviProperty_ChildFocusOwner READ dummy)
+public:
+	TermWidget(QWidget * par, bool bIsStandalone = false);
+	~TermWidget();
+
+private:
+	KviTalHBox * m_pHBox;
+	QLabel * m_pTitleLabel;
+	QPushButton * m_pCloseButton;
+	KParts::Part * m_pKonsolePart;
+	bool m_bIsStandalone;
+	QWidget * m_pKonsoleWidget;
+
+protected:
+	virtual void resizeEvent(QResizeEvent * e);
+protected slots:
+	void closeClicked();
+	void changeTitle(int i, const QString & str);
+	void notifySize(int, int);
+	void changeColumns(int);
+
+public:
+	QWidget * konsoleWidget() { return m_pKonsoleWidget ? m_pKonsoleWidget : this; };
+	virtual QSize sizeHint() const;
+	int dummy() const { return 0; };
+protected slots:
+	void konsoleDestroyed();
+	void autoClose();
+};
 #else
-	// Dummy, to make moc happy
-	#include <QObject>
-	
-	class TermWidget : public QObject
+// Dummy, to make moc happy
+#include <QObject>
+
+class TermWidget : public QObject
+{
+	Q_OBJECT
+public:
+	TermWidget()
+	    : QObject()
 	{
-		Q_OBJECT
-	public:
-		TermWidget()
-			: QObject()
-		{
-		}
-	};
+	}
+};
 #endif
 
 #endif //_HELPWIDGET_H_

@@ -39,6 +39,7 @@ class OptionsWidget_ignore : public KviOptionsWidget
 public:
 	OptionsWidget_ignore(QWidget * parent);
 	~OptionsWidget_ignore();
+
 public:
 	KviBoolSelector * m_pIgnorePrivmsg;
 	KviBoolSelector * m_pIgnoreNotice;

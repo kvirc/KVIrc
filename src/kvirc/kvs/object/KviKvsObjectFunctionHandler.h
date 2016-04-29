@@ -31,32 +31,38 @@ class KviKvsObjectClass;
 class KviKvsObjectFunctionCall;
 class KviKvsObject;
 
-
 class KVIRC_API KviKvsObjectFunctionHandler
 {
 	friend class KviKvsObject;
 	friend class KviKvsObjectClass;
+
 public:
-	enum Flags { Internal = 1 };
+	enum Flags
+	{
+		Internal = 1
+	};
+
 protected:
 	unsigned int m_uFlags;
 	bool m_bClone;
+
 protected:
 	KviKvsObjectFunctionHandler(unsigned int uFlags = 0);
+
 public:
 	virtual ~KviKvsObjectFunctionHandler();
+
 public:
-	void setClone(bool bCl){m_bClone=bCl;};
+	void setClone(bool bCl) { m_bClone = bCl; };
 	bool isClone();
-	unsigned int flags(){ return m_uFlags; };
+	unsigned int flags() { return m_uFlags; };
 protected:
 	virtual bool isScriptHandler();
 	virtual QString scriptHandlerCode();
 	virtual QString reminder();
-        virtual void setReminder(const QString &szReminder);
-        virtual KviKvsObjectFunctionHandler * clone() = 0;
-	virtual bool call(KviKvsObject * pObject,KviKvsObjectFunctionCall * pCall) = 0;
+	virtual void setReminder(const QString & szReminder);
+	virtual KviKvsObjectFunctionHandler * clone() = 0;
+	virtual bool call(KviKvsObject * pObject, KviKvsObjectFunctionCall * pCall) = 0;
 };
-
 
 #endif //!_KVI_KVS_OBJECT_FUNCTIONHANDLER_H_

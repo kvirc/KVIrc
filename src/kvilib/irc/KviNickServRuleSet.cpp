@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "KviNickServRuleSet.h"
 #include "KviConfigurationFile.h"
 #include "KviIrcMask.h"
@@ -59,26 +58,25 @@
 		then eventually use it at your own risk.[br]
 */
 
-
 // FIXME: The doc above is a bit outdated, fix it
 
 KviNickServRuleSet::KviNickServRuleSet()
-: KviHeapObject()
+    : KviHeapObject()
 {
 	m_bEnabled = false;
 	m_pRules = 0;
 }
 
-KviNickServRuleSet::KviNickServRuleSet(const KviNickServRuleSet &s)
+KviNickServRuleSet::KviNickServRuleSet(const KviNickServRuleSet & s)
 {
 	m_pRules = 0;
 	copyFrom(s);
 }
 
-
 KviNickServRuleSet::~KviNickServRuleSet()
 {
-	if(m_pRules)delete m_pRules;
+	if(m_pRules)
+		delete m_pRules;
 }
 
 void KviNickServRuleSet::save(KviConfigurationFile * pCfg, const QString & szPrefix)
@@ -91,15 +89,15 @@ void KviNickServRuleSet::save(KviConfigurationFile * pCfg, const QString & szPre
 	if(m_bEnabled)
 	{
 		szTmp = QString("%1NSEnabled").arg(szPrefix);
-		pCfg->writeEntry(szTmp,m_bEnabled);
+		pCfg->writeEntry(szTmp, m_bEnabled);
 	}
 	szTmp = QString("%1NSRules").arg(szPrefix);
-	pCfg->writeEntry(szTmp,m_pRules->count());
+	pCfg->writeEntry(szTmp, m_pRules->count());
 	int i = 0;
 	for(KviNickServRule * pRule = m_pRules->first(); pRule; pRule = m_pRules->next())
 	{
 		szTmp = QString("%1NSRule%2_").arg(szPrefix).arg(i);
-		pRule->save(pCfg,szTmp);
+		pRule->save(pCfg, szTmp);
 		i++;
 	}
 }
@@ -108,11 +106,11 @@ KviNickServRuleSet * KviNickServRuleSet::load(KviConfigurationFile * pCfg, const
 {
 	QString szTmp;
 	szTmp = QString("%1NSRules").arg(szPrefix);
-	unsigned int uCount = pCfg->readUIntEntry(szTmp,0);
+	unsigned int uCount = pCfg->readUIntEntry(szTmp, 0);
 	if(uCount == 0)
 		return 0;
 	KviNickServRuleSet * pSet = new KviNickServRuleSet();
-	if(pSet->loadPrivate(pCfg,szPrefix,uCount))
+	if(pSet->loadPrivate(pCfg, szPrefix, uCount))
 		return pSet;
 	delete pSet;
 	return 0;
@@ -121,27 +119,28 @@ KviNickServRuleSet * KviNickServRuleSet::load(KviConfigurationFile * pCfg, const
 void KviNickServRuleSet::load(const QString & szConfigFile)
 {
 	clear();
-	KviConfigurationFile cfg(szConfigFile,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szConfigFile, KviConfigurationFile::Read);
 
 	QString szTmp = "NSRules";
-	unsigned int uCount = cfg.readUIntEntry(szTmp,0);
+	unsigned int uCount = cfg.readUIntEntry(szTmp, 0);
 	if(uCount == 0)
 		return;
-	loadPrivate(&cfg,QString(""),uCount);
+	loadPrivate(&cfg, QString(""), uCount);
 }
 
 void KviNickServRuleSet::save(const QString & szConfigFile)
 {
-	KviConfigurationFile cfg(szConfigFile,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(szConfigFile, KviConfigurationFile::Write);
 	cfg.clear();
-	save(&cfg,QString(""));
+	save(&cfg, QString(""));
 }
 
 bool KviNickServRuleSet::loadPrivate(KviConfigurationFile * pCfg, const QString & szPrefix, unsigned int uEntries)
 {
 	if(m_pRules)
 		m_pRules->clear();
-	else {
+	else
+	{
 		m_pRules = new KviPointerList<KviNickServRule>;
 		m_pRules->setAutoDelete(true);
 	}
@@ -150,14 +149,15 @@ bool KviNickServRuleSet::loadPrivate(KviConfigurationFile * pCfg, const QString 
 	{
 		QString szTmp;
 		szTmp = QString("%1NSEnabled").arg(szPrefix);
-		m_bEnabled = pCfg->readBoolEntry(szTmp,false);
-		for(unsigned int u=0; u < uEntries; u++)
+		m_bEnabled = pCfg->readBoolEntry(szTmp, false);
+		for(unsigned int u = 0; u < uEntries; u++)
 		{
 			szTmp = QString("%1NSRule%2_").arg(szPrefix).arg(u);
 			KviNickServRule * pRule = new KviNickServRule();
-			if(!pRule->load(pCfg,szTmp))
+			if(!pRule->load(pCfg, szTmp))
 				delete pRule;
-			else m_pRules->append(pRule);
+			else
+				m_pRules->append(pRule);
 		}
 	}
 
@@ -196,40 +196,43 @@ KviNickServRuleSet * KviNickServRuleSet::createInstance()
 	return new KviNickServRuleSet();
 }
 
-
 KviNickServRule * KviNickServRuleSet::matchRule(const QString & szNick, const KviIrcMask * pNickServ, const QString & szMsg, const QString & szServer)
 {
-	if(!m_pRules) return 0;
+	if(!m_pRules)
+		return 0;
 
-	for(KviNickServRule *r = m_pRules->first();r;r = m_pRules->next())
+	for(KviNickServRule * r = m_pRules->first(); r; r = m_pRules->next())
 	{
-		if(!KviQString::matchString(r->registeredNick(),szNick,false,true))
+		if(!KviQString::matchString(r->registeredNick(), szNick, false, true))
 			continue;
 
 		if(!szServer.isEmpty())
 		{
-			QRegExp res(r->serverMask(),Qt::CaseInsensitive,QRegExp::Wildcard);
+			QRegExp res(r->serverMask(), Qt::CaseInsensitive, QRegExp::Wildcard);
 			if(!res.exactMatch(szServer))
 				continue;
 		}
 		if(!pNickServ->matchedBy(KviIrcMask(r->nickServMask())))
 			continue;
-		QRegExp re(r->messageRegexp(),Qt::CaseInsensitive,QRegExp::Wildcard);
-		if(re.exactMatch(szMsg)) return r;
+		QRegExp re(r->messageRegexp(), Qt::CaseInsensitive, QRegExp::Wildcard);
+		if(re.exactMatch(szMsg))
+			return r;
 	}
 	return 0;
 }
 
-void KviNickServRuleSet::copyFrom(const KviNickServRuleSet &src)
+void KviNickServRuleSet::copyFrom(const KviNickServRuleSet & src)
 {
 	if(src.m_pRules)
 	{
-		if(m_pRules)m_pRules->clear();
-		else {
+		if(m_pRules)
+			m_pRules->clear();
+		else
+		{
 			m_pRules = new KviPointerList<KviNickServRule>;
 			m_pRules->setAutoDelete(true);
 		}
-		for(KviNickServRule * r = src.m_pRules->first();r;r = src.m_pRules->next())
+		for(KviNickServRule * r = src.m_pRules->first(); r; r = src.m_pRules->next())
 		{
 			KviNickServRule * c = new KviNickServRule();
 			c->copyFrom(*r);
@@ -240,10 +243,14 @@ void KviNickServRuleSet::copyFrom(const KviNickServRuleSet &src)
 			m_bEnabled = false;
 			delete m_pRules;
 			m_pRules = 0;
-		} else {
+		}
+		else
+		{
 			m_bEnabled = src.m_bEnabled;
 		}
-	} else {
+	}
+	else
+	{
 		m_bEnabled = false;
 		if(m_pRules)
 		{
@@ -252,4 +259,3 @@ void KviNickServRuleSet::copyFrom(const KviNickServRuleSet &src)
 		}
 	}
 }
-

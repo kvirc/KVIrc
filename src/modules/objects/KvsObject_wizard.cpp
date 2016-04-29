@@ -91,227 +91,224 @@
 
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_wizard,"wizard","widget")
+KVSO_BEGIN_REGISTERCLASS(KvsObject_wizard, "wizard", "widget")
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard,addPage)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard,insertPage)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard,setTitle)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard, addPage)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard, insertPage)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard, setTitle)
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard,setBackEnabled);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard,setNextEnabled);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard,setFinishEnabled);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard,setHelpEnabled);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard, setBackEnabled);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard, setNextEnabled);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard, setFinishEnabled);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard, setHelpEnabled);
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard,setBackBtnText);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard,setNextBtnText);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard,setFinishBtnText);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard,setHelpBtnText);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard,nextClickedEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard,backClickedEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard, setBackBtnText);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard, setNextBtnText);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard, setFinishBtnText);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard, setHelpBtnText);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard, nextClickedEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_wizard, backClickedEvent);
 
-
-	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KvsObject_wizard,"acceptEvent")
-	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KvsObject_wizard,"rejectEvent")
+KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KvsObject_wizard, "acceptEvent")
+KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KvsObject_wizard, "rejectEvent")
 
 KVSO_END_REGISTERCLASS(KvsObject_wizard)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_wizard,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_wizard, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_wizard)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_wizard)
 
 KVSO_END_CONSTRUCTOR(KvsObject_wizard)
 
-bool KvsObject_wizard::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_wizard::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
-	setObject(new KviKvsMdmWizard(parentScriptWidget(), getName().toUtf8().data(),this), true);
+	setObject(new KviKvsMdmWizard(parentScriptWidget(), getName().toUtf8().data(), this), true);
 
 	return true;
 }
-KVSO_CLASS_FUNCTION(wizard,addPage)
+KVSO_CLASS_FUNCTION(wizard, addPage)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject *ob;
+	KviKvsObject * ob;
 	QString szLabel;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("page_widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
+	KVSO_PARAMETER("page_widget", KVS_PT_HOBJECT, 0, hObject)
+	KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
 	KVSO_PARAMETERS_END(c)
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs_ctx("Can't add a non-widget object","objects"));
+		c->warning(__tr2qs_ctx("Can't add a non-widget object", "objects"));
 		return true;
 	}
-	((KviTalWizard *)widget())->addPage(((QWidget *)(ob->object())),szLabel);
+	((KviTalWizard *)widget())->addPage(((QWidget *)(ob->object())), szLabel);
 	return true;
 }
-KVSO_CLASS_FUNCTION(wizard,insertPage)
+KVSO_CLASS_FUNCTION(wizard, insertPage)
 {
 	CHECK_INTERNAL_POINTER(widget())
 
-	KviKvsObject *ob;
+	KviKvsObject * ob;
 	QString szLabel;
 	kvs_uint_t uIndex;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("page_widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+	KVSO_PARAMETER("page_widget", KVS_PT_HOBJECT, 0, hObject)
+	KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
+	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
 	KVSO_PARAMETERS_END(c)
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs_ctx("Can't add a non-widget object","objects"));
+		c->warning(__tr2qs_ctx("Can't add a non-widget object", "objects"));
 		return true;
 	}
-	((KviTalWizard *)widget())->insertPage(((QWidget *)(ob->object())),szLabel,uIndex);
+	((KviTalWizard *)widget())->insertPage(((QWidget *)(ob->object())), szLabel, uIndex);
 	return true;
 }
 
-
-KVSO_CLASS_FUNCTION(wizard,setTitle)
+KVSO_CLASS_FUNCTION(wizard, setTitle)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject *ob;
+	KviKvsObject * ob;
 	QString szTitle;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("page_widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("title",KVS_PT_STRING,0,szTitle)
+	KVSO_PARAMETER("page_widget", KVS_PT_HOBJECT, 0, hObject)
+	KVSO_PARAMETER("title", KVS_PT_STRING, 0, szTitle)
 	KVSO_PARAMETERS_END(c)
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs_ctx("Widget object required","objects"));
+		c->warning(__tr2qs_ctx("Widget object required", "objects"));
 		return true;
 	}
-	((KviTalWizard *)widget())->setPageTitle(((QWidget *)(ob->object())),szTitle);
+	((KviTalWizard *)widget())->setPageTitle(((QWidget *)(ob->object())), szTitle);
 	return true;
 }
-KVSO_CLASS_FUNCTION(wizard,setBackEnabled)
+KVSO_CLASS_FUNCTION(wizard, setBackEnabled)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
-	KviKvsObject *ob;
+	KviKvsObject * ob;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("page_widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETER("page_widget", KVS_PT_HOBJECT, 0, hObject)
+	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs_ctx("Widget object required","objects"));
+		c->warning(__tr2qs_ctx("Widget object required", "objects"));
 		return true;
 	}
-	((KviTalWizard *)widget())->setBackEnabled(((QWidget *)(ob->object())),bEnabled);
+	((KviTalWizard *)widget())->setBackEnabled(((QWidget *)(ob->object())), bEnabled);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(wizard,setNextEnabled)
-{
-	CHECK_INTERNAL_POINTER(widget())
-
-	bool bEnabled;
-	KviKvsObject *ob;
-	kvs_hobject_t hObject;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("page_widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
-	KVSO_PARAMETERS_END(c)
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!ob->object()->isWidgetType())
-	{
-		c->warning(__tr2qs_ctx("Widget object required","objects"));
-		return true;
-	}
-	((KviTalWizard *)widget())->setNextEnabled(((QWidget *)(ob->object())),bEnabled);
-	return true;
-}
-KVSO_CLASS_FUNCTION(wizard,setFinishEnabled)
+KVSO_CLASS_FUNCTION(wizard, setNextEnabled)
 {
 	CHECK_INTERNAL_POINTER(widget())
 
 	bool bEnabled;
-	KviKvsObject *ob;
+	KviKvsObject * ob;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("page_widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETER("page_widget", KVS_PT_HOBJECT, 0, hObject)
+	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs_ctx("Widget object required","objects"));
+		c->warning(__tr2qs_ctx("Widget object required", "objects"));
 		return true;
 	}
-	((KviTalWizard *)widget())->setFinishEnabled(((QWidget *)(ob->object())),bEnabled);
+	((KviTalWizard *)widget())->setNextEnabled(((QWidget *)(ob->object())), bEnabled);
 	return true;
 }
-KVSO_CLASS_FUNCTION(wizard,setHelpEnabled)
+KVSO_CLASS_FUNCTION(wizard, setFinishEnabled)
 {
 	CHECK_INTERNAL_POINTER(widget())
 
 	bool bEnabled;
-	KviKvsObject *ob;
+	KviKvsObject * ob;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("page_widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETER("page_widget", KVS_PT_HOBJECT, 0, hObject)
+	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs_ctx("Widget object required","objects"));
+		c->warning(__tr2qs_ctx("Widget object required", "objects"));
 		return true;
 	}
-	((KviTalWizard *)widget())->setHelpEnabled(((QWidget *)(ob->object())),bEnabled);
+	((KviTalWizard *)widget())->setFinishEnabled(((QWidget *)(ob->object())), bEnabled);
 	return true;
 }
-KVSO_CLASS_FUNCTION(wizard,setBackBtnText)
+KVSO_CLASS_FUNCTION(wizard, setHelpEnabled)
+{
+	CHECK_INTERNAL_POINTER(widget())
+
+	bool bEnabled;
+	KviKvsObject * ob;
+	kvs_hobject_t hObject;
+	KVSO_PARAMETERS_BEGIN(c)
+	KVSO_PARAMETER("page_widget", KVS_PT_HOBJECT, 0, hObject)
+	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+	KVSO_PARAMETERS_END(c)
+	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	if(!ob->object()->isWidgetType())
+	{
+		c->warning(__tr2qs_ctx("Widget object required", "objects"));
+		return true;
+	}
+	((KviTalWizard *)widget())->setHelpEnabled(((QWidget *)(ob->object())), bEnabled);
+	return true;
+}
+KVSO_CLASS_FUNCTION(wizard, setBackBtnText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
 	((KviTalWizard *)widget())->KviTalWizard::backButton()->setText(szText);
 	return true;
 }
-KVSO_CLASS_FUNCTION(wizard,setNextBtnText)
+KVSO_CLASS_FUNCTION(wizard, setNextBtnText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
 	((KviTalWizard *)widget())->KviTalWizard::nextButton()->setText(szText);
 	return true;
 }
-KVSO_CLASS_FUNCTION(wizard,setHelpBtnText)
+KVSO_CLASS_FUNCTION(wizard, setHelpBtnText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
 	((KviTalWizard *)widget())->KviTalWizard::helpButton()->setText(szText);
 	return true;
 }
-KVSO_CLASS_FUNCTION(wizard,setFinishBtnText)
+KVSO_CLASS_FUNCTION(wizard, setFinishBtnText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
 	((KviTalWizard *)widget())->KviTalWizard::finishButton()->setText(szText);
 	return true;
@@ -319,54 +316,54 @@ KVSO_CLASS_FUNCTION(wizard,setFinishBtnText)
 bool KvsObject_wizard::accept()
 {
 	KviKvsVariantList * pParams = 0;
-	callFunction(this,"acceptEvent",0,pParams);
+	callFunction(this, "acceptEvent", 0, pParams);
 	return true;
 }
 bool KvsObject_wizard::reject()
 {
 	KviKvsVariantList * pParams = 0;
-	callFunction(this,"rejectEvent",0,pParams);
+	callFunction(this, "rejectEvent", 0, pParams);
 	return true;
 }
-KVSO_CLASS_FUNCTION(wizard,nextClickedEvent)
+KVSO_CLASS_FUNCTION(wizard, nextClickedEvent)
 {
-	emitSignal("nextClicked",c);
+	emitSignal("nextClicked", c);
 	return true;
 }
 
 void KvsObject_wizard::nextClicked()
 {
-	KviKvsVariantList *params=0;
-	callFunction(this,"nextClickedEvent",params);
+	KviKvsVariantList * params = 0;
+	callFunction(this, "nextClickedEvent", params);
 }
-KVSO_CLASS_FUNCTION(wizard,backClickedEvent)
+KVSO_CLASS_FUNCTION(wizard, backClickedEvent)
 {
-	emitSignal("backClicked",c);
+	emitSignal("backClicked", c);
 	return true;
 }
 
 void KvsObject_wizard::backClicked()
 {
-	KviKvsVariantList *params=0;
-	callFunction(this,"backClickedEvent",params);
+	KviKvsVariantList * params = 0;
+	callFunction(this, "backClickedEvent", params);
 }
-KviKvsMdmWizard::KviKvsMdmWizard(QWidget * par,const char * name,KvsObject_wizard * parent)
-:KviTalWizard(par)
+KviKvsMdmWizard::KviKvsMdmWizard(QWidget * par, const char * name, KvsObject_wizard * parent)
+    : KviTalWizard(par)
 {
-	m_pParentScript=parent;
+	m_pParentScript = parent;
 	setObjectName(name);
-	connect (this->backButton(),SIGNAL(clicked()),this,SLOT(slotBackClicked()));
-	connect (this->nextButton(),SIGNAL(clicked()),this,SLOT(slotNextClicked()));
+	connect(this->backButton(), SIGNAL(clicked()), this, SLOT(slotBackClicked()));
+	connect(this->nextButton(), SIGNAL(clicked()), this, SLOT(slotNextClicked()));
 }
 void KviKvsMdmWizard::accept()
 {
-	if(m_pParentScript->accept())KviTalWizard::accept();
-
+	if(m_pParentScript->accept())
+		KviTalWizard::accept();
 }
 void KviKvsMdmWizard::reject()
 {
-	if(m_pParentScript->reject())KviTalWizard::reject();
-
+	if(m_pParentScript->reject())
+		KviTalWizard::reject();
 }
 void KviKvsMdmWizard::slotNextClicked()
 {

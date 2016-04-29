@@ -35,8 +35,8 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-		bool insertItem(KviKvsObjectFunctionCall *c);
+	bool insertItem(KviKvsObjectFunctionCall * c);
 };
-#endif	// !_CLASS_MENUBAR_H_
+#endif // !_CLASS_MENUBAR_H_

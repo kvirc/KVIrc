@@ -28,9 +28,9 @@
 
 namespace UglyBase64
 {
-	static unsigned char fake_base64[]="./0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	static unsigned char fake_base64[] = "./0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-	void byteswap_buffer(unsigned char * p,int len)
+	void byteswap_buffer(unsigned char * p, int len)
 	{
 		while(len > 0)
 		{
@@ -48,14 +48,16 @@ namespace UglyBase64
 	unsigned int fake_base64dec(unsigned char c)
 	{
 		static char base64unmap[255];
-		static bool didinit=false;
+		static bool didinit = false;
 
 		if(!didinit)
 		{
 			// initialize base64unmap
-			for (int i=0;i<255;++i)base64unmap[i]=0;
-			for (int i=0;i<64;++i)base64unmap[fake_base64[i]]=i;
-			didinit=true;
+			for(int i = 0; i < 255; ++i)
+				base64unmap[i] = 0;
+			for(int i = 0; i < 64; ++i)
+				base64unmap[fake_base64[i]] = i;
+			didinit = true;
 		}
 
 		return base64unmap[c];
@@ -80,23 +82,33 @@ namespace UglyBase64
 			outb += 4;
 			quint32 * dd2 = (quint32 *)outb;
 			outb += 4;
-			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
-			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
-			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
-			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
-			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
+			*p++ = fake_base64[*dd2 & 0x3f];
+			*dd2 >>= 6;
+			*p++ = fake_base64[*dd2 & 0x3f];
+			*dd2 >>= 6;
+			*p++ = fake_base64[*dd2 & 0x3f];
+			*dd2 >>= 6;
+			*p++ = fake_base64[*dd2 & 0x3f];
+			*dd2 >>= 6;
+			*p++ = fake_base64[*dd2 & 0x3f];
+			*dd2 >>= 6;
 			*p++ = fake_base64[*dd2 & 0x3f];
 
-			*p++ = fake_base64[*dd1 & 0x3f]; *dd1 >>= 6;
-			*p++ = fake_base64[*dd1 & 0x3f]; *dd1 >>= 6;
-			*p++ = fake_base64[*dd1 & 0x3f]; *dd1 >>= 6;
-			*p++ = fake_base64[*dd1 & 0x3f]; *dd1 >>= 6;
-			*p++ = fake_base64[*dd1 & 0x3f]; *dd1 >>= 6;
+			*p++ = fake_base64[*dd1 & 0x3f];
+			*dd1 >>= 6;
+			*p++ = fake_base64[*dd1 & 0x3f];
+			*dd1 >>= 6;
+			*p++ = fake_base64[*dd1 & 0x3f];
+			*dd1 >>= 6;
+			*p++ = fake_base64[*dd1 & 0x3f];
+			*dd1 >>= 6;
+			*p++ = fake_base64[*dd1 & 0x3f];
+			*dd1 >>= 6;
 			*p++ = fake_base64[*dd1 & 0x3f];
 		}
 	}
 
-	void decode(KviCString & szText, unsigned char ** buf, int *len)
+	void decode(KviCString & szText, unsigned char ** buf, int * len)
 	{
 		// make sure its length is multiple of 12 (eventually pad with zeroes)
 		if(szText.len() % 12)
@@ -105,7 +117,8 @@ namespace UglyBase64
 			szText.setLen(szText.len() + (12 - (szText.len() % 12)));
 			char * padB = szText.ptr() + oldL;
 			char * padE = szText.ptr() + szText.len();
-			while(padB < padE)*padB++ = 0;
+			while(padB < padE)
+				*padB++ = 0;
 		}
 
 		*len = (int)(szText.len() * 2) / 3;
@@ -122,12 +135,14 @@ namespace UglyBase64
 			quint32 * dw2 = (quint32 *)bufp;
 			bufp += 4;
 			*dw2 = 0;
-			for(i=0;i < 6;i++)*dw2 |= (fake_base64dec(*p++)) << (i * 6);
+			for(i = 0; i < 6; i++)
+				*dw2 |= (fake_base64dec(*p++)) << (i * 6);
 			*dw1 = 0;
-			for(i=0;i < 6;i++)*dw1 |= (fake_base64dec(*p++)) << (i * 6);
+			for(i = 0; i < 6; i++)
+				*dw1 |= (fake_base64dec(*p++)) << (i * 6);
 		}
 
 		// FIXME: this is probably needed only on LittleEndian machines!
-		byteswap_buffer(*buf,*len);
+		byteswap_buffer(*buf, *len);
 	}
 };

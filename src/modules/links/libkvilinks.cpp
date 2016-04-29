@@ -33,7 +33,6 @@
 
 KviPointerList<LinksWindow> * g_pLinksWindowList = 0;
 
-
 /*
 	@doc: links.open
 	@type:
@@ -63,13 +62,16 @@ static bool links_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 
 	// FIND ME
-	if(!c->window()->context())return c->context()->errorNoIrcContext();
+	if(!c->window()->context())
+		return c->context()->errorNoIrcContext();
 
 	if(!(c->window()->context()->linksWindow()))
 	{
-		LinksWindow *w = new LinksWindow(c->window()->console());
+		LinksWindow * w = new LinksWindow(c->window()->console());
 		g_pMainWindow->addWindow(w);
-	} else {
+	}
+	else
+	{
 		c->warning(__tr2qs("Links window already open for this IRC context"));
 	}
 
@@ -81,8 +83,7 @@ static bool links_module_init(KviModule * m)
 	g_pLinksWindowList = new KviPointerList<LinksWindow>;
 	g_pLinksWindowList->setAutoDelete(false);
 
-
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",links_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", links_kvs_cmd_open);
 
 	return true;
 }
@@ -102,13 +103,12 @@ static bool links_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Links",                                                // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Links window extension",
-	links_module_init,
-	links_module_can_unload,
-	0,
-	links_module_cleanup,
-	0
-)
+    "Links",                                                             // module name
+    "4.0.0",                                                             // module version
+    "Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Links window extension",
+    links_module_init,
+    links_module_can_unload,
+    0,
+    links_module_cleanup,
+    0)

@@ -32,7 +32,6 @@
 #include <QToolButton>
 #include <QCheckBox>
 
-
 class QLineEdit;
 class QComboBox;
 class QSimpleRichText;
@@ -41,7 +40,6 @@ class QSplitter;
 class ActionEditorTreeWidgetItem;
 class KviScriptEditor;
 class ActionEditor;
-
 
 class ActionData
 {
@@ -57,29 +55,28 @@ public:
 	unsigned int m_uFlags;
 	ActionEditorTreeWidgetItem * m_pItem; // ummigarba tanto...
 public:
-	ActionData(const QString &szName,
-		const QString &szScriptCode,
-		const QString &szVisibleName,
-		const QString &szDescription,
-		const QString &szCategory,
-		const QString &szBigIcon,
-		const QString &szSmallIcon,
-		unsigned int uFlags,
-		const QString &szKeySequence,
-		ActionEditorTreeWidgetItem * pItem)
-	: m_szName(szName), m_szScriptCode(szScriptCode), m_szVisibleName(szVisibleName),
-		m_szDescription(szDescription), m_szCategory(szCategory), m_szBigIcon(szBigIcon),
-		m_szSmallIcon(szSmallIcon), m_szKeySequence(szKeySequence), m_uFlags(uFlags),
-		m_pItem(pItem)
-	{};
+	ActionData(const QString & szName,
+	    const QString & szScriptCode,
+	    const QString & szVisibleName,
+	    const QString & szDescription,
+	    const QString & szCategory,
+	    const QString & szBigIcon,
+	    const QString & szSmallIcon,
+	    unsigned int uFlags,
+	    const QString & szKeySequence,
+	    ActionEditorTreeWidgetItem * pItem)
+	    : m_szName(szName), m_szScriptCode(szScriptCode), m_szVisibleName(szVisibleName),
+	      m_szDescription(szDescription), m_szCategory(szCategory), m_szBigIcon(szBigIcon),
+	      m_szSmallIcon(szSmallIcon), m_szKeySequence(szKeySequence), m_uFlags(uFlags),
+	      m_pItem(pItem){};
 };
-
 
 class ActionEditorTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	ActionEditorTreeWidgetItem(QTreeWidget * v,ActionData * a);
+	ActionEditorTreeWidgetItem(QTreeWidget * v, ActionData * a);
 	~ActionEditorTreeWidgetItem();
+
 protected:
 	ActionData * m_pActionData;
 	//QSimpleRichText * m_pText;
@@ -87,15 +84,15 @@ protected:
 	QPixmap * m_pIcon;
 	QTreeWidget * m_pTreeWidget;
 	QString m_szKey;
+
 public:
-	ActionData * actionData(){ return m_pActionData; };
+	ActionData * actionData() { return m_pActionData; };
 	//void setupForActionData();
 public:
 	//virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
 	//virtual void setup();
-	virtual QString key(int,bool) const;
+	virtual QString key(int, bool) const;
 };
-
 
 class ActionEditorTreeView : public QTreeWidget
 {
@@ -103,17 +100,18 @@ class ActionEditorTreeView : public QTreeWidget
 public:
 	ActionEditorTreeView(QWidget * pParent);
 	~ActionEditorTreeView();
+
 protected:
 	virtual void resizeEvent(QResizeEvent * e);
 };
-
 
 class SingleActionEditor : public QWidget
 {
 	Q_OBJECT
 public:
-	SingleActionEditor(QWidget * par,ActionEditor * ed);
+	SingleActionEditor(QWidget * par, ActionEditor * ed);
 	~SingleActionEditor();
+
 protected:
 	ActionEditor * m_pActionEditor;
 	ActionData * m_pActionData;
@@ -138,21 +136,21 @@ protected:
 	QCheckBox * m_pConsoleOnlyIfUsersSelectedCheck;
 	QCheckBox * m_pChannelOnlyIfUsersSelectedCheck;
 	QCheckBox * m_pQueryOnlyIfUsersSelectedCheck;
+
 public:
-	ActionData * actionData(){ return m_pActionData; };
+	ActionData * actionData() { return m_pActionData; };
 	void setActionData(ActionData * d);
 	void commit();
 protected slots:
 	void chooseSmallIcon();
 	void chooseBigIcon();
-	void displaySmallIcon(const QString &szIconId);
-	void displayBigIcon(const QString &szIconId);
+	void displaySmallIcon(const QString & szIconId);
+	void displayBigIcon(const QString & szIconId);
 	void needsContextCheckToggled(bool);
 	void needsConnectionCheckToggled(bool);
 	void specificWindowsCheckToggled(bool);
 	void channelQueryOrConsoleWindowCheckToggled(bool);
 };
-
 
 class ActionEditor : public QWidget
 {
@@ -161,6 +159,7 @@ class ActionEditor : public QWidget
 public:
 	ActionEditor(QWidget * par);
 	~ActionEditor();
+
 protected:
 	ActionEditorTreeView * m_pTreeWidget;
 	SingleActionEditor * m_pSingleActionEditor;
@@ -168,19 +167,20 @@ protected:
 	QPushButton * m_pNewActionButton;
 	QPushButton * m_pDeleteActionsButton;
 	QPushButton * m_pExportActionsButton;
+
 public:
 	void commit();
-	bool actionExists(const QString &szName);
+	bool actionExists(const QString & szName);
+
 protected:
 	int selectedCount();
-	QString nameForAutomaticAction(const QString &szTemplate);
+	QString nameForAutomaticAction(const QString & szTemplate);
 protected slots:
-	void currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *prev);
+	void currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem * prev);
 	void newAction();
 	void deleteActions();
 	void exportActions();
 };
-
 
 class ActionEditorWindow : public KviWindow
 {
@@ -188,11 +188,13 @@ class ActionEditorWindow : public KviWindow
 public:
 	ActionEditorWindow();
 	~ActionEditorWindow();
+
 protected:
 	ActionEditor * m_pEditor;
+
 protected:
 	virtual QPixmap * myIconPtr();
-	virtual void getConfigGroupName(QString &szName);
+	virtual void getConfigGroupName(QString & szName);
 	virtual void saveProperties(KviConfigurationFile *);
 	virtual void loadProperties(KviConfigurationFile *);
 protected slots:

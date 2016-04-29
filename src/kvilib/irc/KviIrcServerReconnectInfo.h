@@ -64,15 +64,16 @@ public:
 	* \brief Destroys the server reconnect info object
 	*/
 	~KviIrcServerReconnectInfo();
+
 public:
-	QString     m_szNick;
-	QString     m_szPass;
-	QString     m_szAwayReason;
+	QString m_szNick;
+	QString m_szPass;
+	QString m_szAwayReason;
 	QStringList m_lOpenQueries;
-	bool        m_bIsAway;
-	
+	bool m_bIsAway;
+
 	// The list of channels to join (first = channel name, second = password)
-	QList< QPair< QString,QString > > m_lJoinChannels;
+	QList<QPair<QString, QString>> m_lJoinChannels;
 };
 
 #endif //_KVI_IRCSERVER_INFO_H_

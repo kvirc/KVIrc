@@ -37,8 +37,6 @@
 
 class KviFile;
 
-
-
 /**
 * \class KviPackageReader
 * \brief This class is used to read KVIrc package files.
@@ -58,11 +56,13 @@ public:
 	* \brief Destroys the object
 	*/
 	virtual ~KviPackageReader();
+
 public:
 	/**
 	* \enum UnpackFlags
 	*/
-	enum UnpackFlags {
+	enum UnpackFlags
+	{
 		NoProgressDialog = 1 /**< If you want to avoid the progress dialog */
 	};
 

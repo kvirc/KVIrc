@@ -26,7 +26,6 @@
 //
 //=============================================================================
 
-
 #include "KviOptionsWidget.h"
 
 #include <QComboBox>
@@ -58,9 +57,11 @@ class OptionsWidget_ircViewLook : public KviOptionsWidget
 private:
 	QComboBox * m_pHorizontalAlign;
 	QComboBox * m_pVerticalAlign;
+
 public:
 	OptionsWidget_ircViewLook(QWidget * parent);
 	~OptionsWidget_ircViewLook();
+
 public:
 	virtual void commit();
 };
@@ -92,6 +93,7 @@ public:
 	OptionsWidget_ircViewMarker(QWidget * pParent);
 	~OptionsWidget_ircViewMarker();
 	virtual void commit();
+
 private:
 	QComboBox * m_pMarkerStyle;
 };

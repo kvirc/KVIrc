@@ -35,7 +35,7 @@
 #include "KviPointerHashTable.h"
 
 #ifdef Unsorted
-	#undef Unsorted
+#undef Unsorted
 #endif
 
 #include "QProcess"
@@ -50,21 +50,20 @@
 #define KVI_KVS_PROCESSDESCRIPTOR_NOSHELL 32
 #define KVI_KVS_PROCESSDESCRIPTOR_KILLIFNOWINDOW 64
 
-
 class KviWindow;
 class KviKvsScript;
 class KviKvsVariant;
 
 typedef struct _KviKvsProcessDescriptorData
 {
-	QString         szShell;
-	QString         szCommandline;
-	KviKvsScript  * pCallback;
+	QString szShell;
+	QString szCommandline;
+	KviKvsScript * pCallback;
 	KviKvsVariant * pMagic;
-	KviWindow     * pWnd;
-	int             iFlags;
-	int             iMaxRunTime;  // 0 for no timeout
-	int             iPingTimeout; // 0 for no ping timeout
+	KviWindow * pWnd;
+	int iFlags;
+	int iMaxRunTime;  // 0 for no timeout
+	int iPingTimeout; // 0 for no ping timeout
 } KviKvsProcessDescriptorData;
 
 class KviKvsProcessManager;
@@ -76,17 +75,27 @@ class KVIRC_API KviKvsProcessAsyncOperation : public KviKvsAsyncOperation
 public:
 	KviKvsProcessAsyncOperation(KviKvsProcessDescriptorData * d);
 	~KviKvsProcessAsyncOperation();
+
 protected:
-	enum CallbackEvent { EventStarted,EventTerminated,EventStdout,EventStderr,EventPing };
+	enum CallbackEvent
+	{
+		EventStarted,
+		EventTerminated,
+		EventStdout,
+		EventStderr,
+		EventPing
+	};
+
 private:
-	QProcess                  * m_pProcess;
-	KviKvsExtendedRunTimeData   * m_pExtendedRunTimeData;
-	QString                       m_szStdoutBuffer;
-	QString                       m_szStderrBuffer;
+	QProcess * m_pProcess;
+	KviKvsExtendedRunTimeData * m_pExtendedRunTimeData;
+	QString m_szStdoutBuffer;
+	QString m_szStderrBuffer;
 	KviKvsProcessDescriptorData * m_pData;
-	QTimer                      * m_pPingTimer;
-	QTimer                      * m_pRunTimeTimer;
-	bool                          m_bDeletePending;
+	QTimer * m_pPingTimer;
+	QTimer * m_pRunTimeTimer;
+	bool m_bDeletePending;
+
 public:
 	bool start();
 private slots:
@@ -97,10 +106,10 @@ private slots:
 	void processExited(int exitCode);
 	void processStarted();
 	void selfDelete();
+
 private:
-	bool trigger(CallbackEvent e,const QString &szData);
+	bool trigger(CallbackEvent e, const QString & szData);
 	void triggerSelfDelete();
 };
-
 
 #endif //!_KVI_KVS_PROCESSMANAGER_H_

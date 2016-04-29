@@ -37,26 +37,27 @@
 #include <QContextMenuEvent>
 
 class KvsObject_webView;
-class KviKvsWebView :  public QWebView
+class KviKvsWebView : public QWebView
 {
 	Q_OBJECT
 public:
-	KviKvsWebView(QWidget * par,const char * name,KvsObject_webView *);
+	KviKvsWebView(QWidget * par, const char * name, KvsObject_webView *);
 	//void accept();
 	//void reject();
 	virtual ~KviKvsWebView();
+
 protected:
-	KvsObject_webView *m_pParentScript;
+	KvsObject_webView * m_pParentScript;
+
 protected:
-	virtual void	mouseMoveEvent( QMouseEvent * ev );
-	virtual void	contextMenuEvent(QContextMenuEvent *);
-	virtual bool	event(QEvent * e);
-/*protected slots:
+	virtual void mouseMoveEvent(QMouseEvent * ev);
+	virtual void contextMenuEvent(QContextMenuEvent *);
+	virtual bool event(QEvent * e);
+	/*protected slots:
 	void slotNextClicked();
 	void slotBackClicked();
 	*/
 };
-
 
 class KvsObject_webView : public KviKvsObject
 {
@@ -64,24 +65,24 @@ class KvsObject_webView : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_webView)
 protected:
-	KviKvsRunTimeContext          * m_pContext;
+	KviKvsRunTimeContext * m_pContext;
 	int elementMapId;
-	int insertElement(const QWebElement &ele);
+	int insertElement(const QWebElement & ele);
 	QWebElement getElement(int iIdx);
 	int getElementId(const QWebElement &);
-	QHash<int,QWebElement> m_elementMapper;
-	KviPointerList <KviKvsObject>  * lWebelement;
-	QHash<QString,QWebElement *>    m_dictCache;
+	QHash<int, QWebElement> m_elementMapper;
+	KviPointerList<KviKvsObject> * lWebelement;
+	QHash<QString, QWebElement *> m_dictCache;
 	KviPointerList<QNetworkReply> * m_pReplyList;
-	QNetworkAccessManager         * m_pNetworkManager;
-	QWebElementCollection           m_webElementCollection;
-	QWebElement                     m_currentElement;
-public:
+	QNetworkAccessManager * m_pNetworkManager;
+	QWebElementCollection m_webElementCollection;
+	QWebElement m_currentElement;
 
-	QWidget * widget(){ return (QWidget *)object(); }
+public:
+	QWidget * widget() { return (QWidget *)object(); }
 protected:
-	void getFrames(QWebFrame *pCurFrame, QStringList &szFramesNames);
-	QWebFrame * findFrame(QWebFrame *pCurFrame, QString &szFrameName);
+	void getFrames(QWebFrame * pCurFrame, QStringList & szFramesNames);
+	QWebFrame * findFrame(QWebFrame * pCurFrame, QString & szFrameName);
 	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 	bool removeFromDocument(KviKvsObjectFunctionCall * c);
 	bool makePreview(KviKvsObjectFunctionCall * c);
@@ -90,7 +91,6 @@ protected:
 	bool addClass(KviKvsObjectFunctionCall * c);
 
 	bool classes(KviKvsObjectFunctionCall * c);
-
 
 	bool firstChild(KviKvsObjectFunctionCall * c);
 	bool lastChild(KviKvsObjectFunctionCall * c);
@@ -147,10 +147,10 @@ protected slots:
 	void slotDownloadRequest(const QNetworkRequest &);
 	void slotLinkClicked(const QUrl &);
 
-	void slotOnChange(QString );
-	void slotOnSubmit(QString );
-	void slotOnClick(QString );
-    void slotOnMouseOver(QString);
+	void slotOnChange(QString);
+	void slotOnSubmit(QString);
+	void slotOnClick(QString);
+	void slotOnMouseOver(QString);
 	void slotOnMouseOut(QString);
 };
 
@@ -161,15 +161,15 @@ public:
 	KviKvsDownloadHandler(KvsObject_webView * pParent, QFile * pFile, QNetworkReply * pNetReply, int iId);
 
 	virtual ~KviKvsDownloadHandler();
+
 protected:
 	KvsObject_webView * m_pParentScript;
-	QFile             * m_pFile;
-	QNetworkReply     * m_pReply;
-	int                 m_Id;
+	QFile * m_pFile;
+	QNetworkReply * m_pReply;
+	int m_Id;
 protected slots:
 	void slotReadyRead();
 	void slotReplyFinished();
-
 };
 
 #endif // COMPILE_WEBKIT_SUPPORT

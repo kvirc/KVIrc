@@ -30,22 +30,21 @@
 #include "KviKvsVariant.h"
 #include "KviKvsParameterProcessor.h"
 
-
-#define KVSCF(_name) bool _name(KviKvsRunTimeContext * __pContext,KviKvsVariantList * __pParams,KviKvsVariant * __pRetBuffer)
+#define KVSCF(_name) bool _name(KviKvsRunTimeContext * __pContext, KviKvsVariantList * __pParams, KviKvsVariant * __pRetBuffer)
 
 #define KVSCF_pContext __pContext
 #define KVSCF_pParams __pParams
 #define KVSCF_pRetBuffer __pRetBuffer
 
-#define KVSCF_PARAMETER(a,b,c,d) KVS_PARAMETER(a,b,c,d)
+#define KVSCF_PARAMETER(a, b, c, d) KVS_PARAMETER(a, b, c, d)
 
 #define KVSCF_PARAMETERS_BEGIN \
 	KVS_PARAMETERS_BEGIN(parameter_format_list)
 
-#define KVSCF_PARAMETERS_END \
-	KVS_PARAMETERS_END \
-	if(!KviKvsParameterProcessor::process(KVSCF_pParams,KVSCF_pContext,parameter_format_list))return false;
-
+#define KVSCF_PARAMETERS_END                                                                     \
+	KVS_PARAMETERS_END                                                                           \
+	if(!KviKvsParameterProcessor::process(KVSCF_pParams, KVSCF_pContext, parameter_format_list)) \
+		return false;
 
 namespace KviKvsCoreFunctions
 {

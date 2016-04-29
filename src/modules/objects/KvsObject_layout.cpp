@@ -29,29 +29,27 @@
 
 #include <QGridLayout>
 
-
 // Tables used in $setAlignment & $alignment
 const char * const align_tbl[] = {
-				"Left",
-				"Right",
-				"HCenter",
-				"VCenter",
-				"Center",
-				"Top",
-				"Bottom",
-				};
-
+	"Left",
+	"Right",
+	"HCenter",
+	"VCenter",
+	"Center",
+	"Top",
+	"Bottom",
+};
 
 const int align_cod[] = {
-			Qt::AlignLeft,
-			Qt::AlignRight,
-			Qt::AlignHCenter,
-			Qt::AlignVCenter,
-			Qt::AlignCenter,
-			Qt::AlignTop,
-			Qt::AlignBottom,
-	};
-#define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
+	Qt::AlignLeft,
+	Qt::AlignRight,
+	Qt::AlignHCenter,
+	Qt::AlignVCenter,
+	Qt::AlignCenter,
+	Qt::AlignTop,
+	Qt::AlignBottom,
+};
+#define align_num (sizeof(align_tbl) / sizeof(align_tbl[0]))
 
 /*
 	@doc: layout
@@ -107,196 +105,200 @@ const int align_cod[] = {
 		[/pre]
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_layout,"layout","object")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout,addWidget)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout,addMultiCellWidget)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout,setRowStretch)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout,setColumnStretch)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout,addRowSpacing)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout,addColSpacing)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout,setMargin)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout,setSpacing)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout,setResizeMode)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout,setAlignment )
+KVSO_BEGIN_REGISTERCLASS(KvsObject_layout, "layout", "object")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout, addWidget)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout, addMultiCellWidget)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout, setRowStretch)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout, setColumnStretch)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout, addRowSpacing)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout, addColSpacing)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout, setMargin)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout, setSpacing)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout, setResizeMode)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_layout, setAlignment)
 KVSO_END_REGISTERCLASS(KvsObject_layout)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_layout,KviKvsObject)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_layout, KviKvsObject)
 
 KVSO_END_CONSTRUCTOR(KvsObject_layout)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_layout)
 
 KVSO_END_CONSTRUCTOR(KvsObject_layout)
 
-bool KvsObject_layout::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *)
+bool KvsObject_layout::init(KviKvsRunTimeContext * pContext, KviKvsVariantList *)
 {
 	QWidget * w = parentScriptWidget();
 
 	if(!w)
 	{
-		pContext->warning(__tr2qs_ctx("The parent of a layout must be a widget!","objects"));
+		pContext->warning(__tr2qs_ctx("The parent of a layout must be a widget!", "objects"));
 		return false;
 	}
 
 	if(w->inherits("QToolBar"))
 	{
-		pContext->warning(__tr2qs_ctx("Qt does not support setting layouts on toolbar objects","objects"));
+		pContext->warning(__tr2qs_ctx("Qt does not support setting layouts on toolbar objects", "objects"));
 		return false;
 	}
 	// If there already is a layout manager installed on this widget, QWidget won't let you install another.
-	if(w->layout()) delete w->layout();
-		setObject(new QGridLayout(w));
-		((QGridLayout *)object())->setVerticalSpacing(0);
-		((QGridLayout *)object())->setHorizontalSpacing(0);
-		setObjectName(getName());
-		return true;
+	if(w->layout())
+		delete w->layout();
+	setObject(new QGridLayout(w));
+	((QGridLayout *)object())->setVerticalSpacing(0);
+	((QGridLayout *)object())->setHorizontalSpacing(0);
+	setObjectName(getName());
+	return true;
 }
 
-KVSO_CLASS_FUNCTION(layout,addWidget)
+KVSO_CLASS_FUNCTION(layout, addWidget)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
-	kvs_uint_t uCol,uRow;
+	kvs_uint_t uCol, uRow;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
-		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,uCol)
+	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+	KVSO_PARAMETER("row", KVS_PT_UNSIGNEDINTEGER, 0, uRow)
+	KVSO_PARAMETER("col", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
 	KVSO_PARAMETERS_END(c)
-	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uRow,uCol);
+	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())), uRow, uCol);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(layout,addMultiCellWidget)
+KVSO_CLASS_FUNCTION(layout, addMultiCellWidget)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
-	kvs_uint_t uStartCol,uStartRow,uEndCol,uEndRow;
+	kvs_uint_t uStartCol, uStartRow, uEndCol, uEndRow;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("start_row",KVS_PT_UNSIGNEDINTEGER,0,uStartRow)
-		KVSO_PARAMETER("end_row",KVS_PT_UNSIGNEDINTEGER,0,uEndRow)
-		KVSO_PARAMETER("start_column",KVS_PT_UNSIGNEDINTEGER,0,uStartCol)
-		KVSO_PARAMETER("end_column",KVS_PT_UNSIGNEDINTEGER,0,uEndCol)
+	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+	KVSO_PARAMETER("start_row", KVS_PT_UNSIGNEDINTEGER, 0, uStartRow)
+	KVSO_PARAMETER("end_row", KVS_PT_UNSIGNEDINTEGER, 0, uEndRow)
+	KVSO_PARAMETER("start_column", KVS_PT_UNSIGNEDINTEGER, 0, uStartCol)
+	KVSO_PARAMETER("end_column", KVS_PT_UNSIGNEDINTEGER, 0, uEndCol)
 	KVSO_PARAMETERS_END(c)
-	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uStartRow, uStartCol, uEndRow - uStartRow + 1, uEndCol - uStartCol + 1);
+	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())), uStartRow, uStartCol, uEndRow - uStartRow + 1, uEndCol - uStartCol + 1);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(layout,setRowStretch)
+KVSO_CLASS_FUNCTION(layout, setRowStretch)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t uRow,uStretch;
+	kvs_uint_t uRow, uStretch;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
-		KVSO_PARAMETER("stretch",KVS_PT_UNSIGNEDINTEGER,0,uStretch)
+	KVSO_PARAMETER("row", KVS_PT_UNSIGNEDINTEGER, 0, uRow)
+	KVSO_PARAMETER("stretch", KVS_PT_UNSIGNEDINTEGER, 0, uStretch)
 	KVSO_PARAMETERS_END(c)
-	((QGridLayout *)object())->setRowStretch(uRow,uStretch);
+	((QGridLayout *)object())->setRowStretch(uRow, uStretch);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(layout,setColumnStretch)
+KVSO_CLASS_FUNCTION(layout, setColumnStretch)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t uCol,uStretch;
+	kvs_uint_t uCol, uStretch;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
-		KVSO_PARAMETER("stretch",KVS_PT_UNSIGNEDINTEGER,0,uStretch)
+	KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
+	KVSO_PARAMETER("stretch", KVS_PT_UNSIGNEDINTEGER, 0, uStretch)
 	KVSO_PARAMETERS_END(c)
-	((QGridLayout *)object())->setColumnStretch(uCol,uStretch);
+	((QGridLayout *)object())->setColumnStretch(uCol, uStretch);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(layout,setMargin)
+KVSO_CLASS_FUNCTION(layout, setMargin)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uMargin;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("margin",KVS_PT_UNSIGNEDINTEGER,0,uMargin)
+	KVSO_PARAMETER("margin", KVS_PT_UNSIGNEDINTEGER, 0, uMargin)
 	KVSO_PARAMETERS_END(c)
 	((QGridLayout *)object())->setMargin(uMargin);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(layout,setSpacing)
+KVSO_CLASS_FUNCTION(layout, setSpacing)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uSpacing;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
+	KVSO_PARAMETER("spacing", KVS_PT_UNSIGNEDINTEGER, 0, uSpacing)
 	KVSO_PARAMETERS_END(c)
 	((QGridLayout *)object())->setSpacing(uSpacing);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(layout,addRowSpacing)
+KVSO_CLASS_FUNCTION(layout, addRowSpacing)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t uSpacing,uRow;
+	kvs_uint_t uSpacing, uRow;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
-		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
+	KVSO_PARAMETER("row", KVS_PT_UNSIGNEDINTEGER, 0, uRow)
+	KVSO_PARAMETER("spacing", KVS_PT_UNSIGNEDINTEGER, 0, uSpacing)
 	KVSO_PARAMETERS_END(c)
 	((QGridLayout *)object())->addItem(new QSpacerItem(0, uSpacing), uRow, 0);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(layout,addColSpacing)
+KVSO_CLASS_FUNCTION(layout, addColSpacing)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t uSpacing,uCol;
+	kvs_uint_t uSpacing, uCol;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
-		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
+	KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
+	KVSO_PARAMETER("spacing", KVS_PT_UNSIGNEDINTEGER, 0, uSpacing)
 	KVSO_PARAMETERS_END(c)
-	((QGridLayout *)object())->addItem(new QSpacerItem(uSpacing,0), 0, uCol);
+	((QGridLayout *)object())->addItem(new QSpacerItem(uSpacing, 0), 0, uCol);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(layout,setResizeMode)
+KVSO_CLASS_FUNCTION(layout, setResizeMode)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("resize_mode",KVS_PT_STRING,0,szMode)
+	KVSO_PARAMETER("resize_mode", KVS_PT_STRING, 0, szMode)
 	KVSO_PARAMETERS_END(c)
 	QLayout::SizeConstraint r = QLayout::SetDefaultConstraint;
-	if(KviQString::equalCI(szMode,"FreeResize")) r = QLayout::SetNoConstraint;
-	else if(KviQString::equalCI(szMode,"Minimum")) r = QLayout::SetMinimumSize;
-	else if(KviQString::equalCI(szMode,"Fixed"))r = QLayout::SetFixedSize;
-	else c->warning(__tr2qs_ctx("Invalid resize mode defaulting to Auto","objects"));
+	if(KviQString::equalCI(szMode, "FreeResize"))
+		r = QLayout::SetNoConstraint;
+	else if(KviQString::equalCI(szMode, "Minimum"))
+		r = QLayout::SetMinimumSize;
+	else if(KviQString::equalCI(szMode, "Fixed"))
+		r = QLayout::SetFixedSize;
+	else
+		c->warning(__tr2qs_ctx("Invalid resize mode defaulting to Auto", "objects"));
 	((QGridLayout *)object())->setSizeConstraint(r);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(layout,setAlignment)
+KVSO_CLASS_FUNCTION(layout, setAlignment)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QStringList alignment;
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("alignment",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,alignment)
+	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+	KVSO_PARAMETER("alignment", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, alignment)
 	KVSO_PARAMETERS_END(c)
-	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	int index=((QGridLayout *)widget())->indexOf(((QWidget *)(pObject->object())));
+	int index = ((QGridLayout *)widget())->indexOf(((QWidget *)(pObject->object())));
 
 	if(index == -1)
 	{
-		c->warning(__tr2qs_ctx("The widget must be a child of this layout","objects"));
+		c->warning(__tr2qs_ctx("The widget must be a child of this layout", "objects"));
 		return true;
 	}
 
 	int align, sum = 0;
-	for(auto& it : alignment)
+	for(auto & it : alignment)
 	{
 		align = 0;
 		for(size_t j{}; j < align_num; j++)
@@ -310,10 +312,10 @@ KVSO_CLASS_FUNCTION(layout,setAlignment)
 		if(align)
 			sum = sum | align;
 		else
-			c->warning(__tr2qs_ctx("Unknown alignment: '%Q'","objects"),&it);
+			c->warning(__tr2qs_ctx("Unknown alignment: '%Q'", "objects"), &it);
 	}
 
 	if(widget())
-		((QGridLayout *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
-		return true;
+		((QGridLayout *)widget())->setAlignment(((QWidget *)(pObject->object())), (Qt::Alignment)sum);
+	return true;
 }

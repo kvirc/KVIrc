@@ -40,23 +40,24 @@
 // about instantiating it directly
 //
 
-
 class KVIRC_API KviScriptEditor : public QWidget
 {
 	Q_OBJECT
 protected:
 	KviScriptEditor(QWidget * par);
 	~KviScriptEditor();
+
 protected:
 	QLineEdit * m_pFindLineedit;
+
 public:
 	virtual void setText(const char * txt);
-	virtual void setText(const QByteArray &txt);
-	virtual void setText(const QString &txt);
-	virtual void getText(QByteArray &txt);
-	virtual void getText(QString &txt);
-	virtual void setInfoText(const QString &text);
-	virtual void setFindText(const QString &text);
+	virtual void setText(const QByteArray & txt);
+	virtual void setText(const QString & txt);
+	virtual void getText(QByteArray & txt);
+	virtual void getText(QString & txt);
+	virtual void setInfoText(const QString & text);
+	virtual void setFindText(const QString & text);
 	virtual void setCursorPosition(int);
 	virtual void setReadOnly(bool bReadonly);
 	virtual int getCursor();
@@ -68,6 +69,5 @@ public:
 	static KviScriptEditor * createInstance(QWidget * par);
 	static void destroyInstance(KviScriptEditor * e);
 };
-
 
 #endif //!_KVI_SCRIPTEDITOR_H_

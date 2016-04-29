@@ -43,7 +43,7 @@ class QSlider;
 class DccMarshal;
 
 #ifndef _DCC_VOICE_CPP_
-	extern bool kvi_dcc_voice_is_valid_codec(const char * codecName);
+extern bool kvi_dcc_voice_is_valid_codec(const char * codecName);
 #endif
 
 #define KVI_DCC_VOICE_THREAD_ACTION_START_RECORDING 0
@@ -53,42 +53,45 @@ class DccMarshal;
 
 typedef struct _KviDccVoiceThreadOptions
 {
-	bool               bForceHalfDuplex;
-	int                iPreBufferSize;
-	int                iSampleRate;
-	KviCString             szSoundDevice;
+	bool bForceHalfDuplex;
+	int iPreBufferSize;
+	int iSampleRate;
+	KviCString szSoundDevice;
 	DccVoiceCodec * pCodec;
 } KviDccVoiceThreadOptions;
 
 class DccVoiceThread : public DccThread
 {
 	friend class DccVoiceWindow;
+
 public:
-	DccVoiceThread(KviWindow * wnd,kvi_socket_t fd,KviDccVoiceThreadOptions * opt);
+	DccVoiceThread(KviWindow * wnd, kvi_socket_t fd, KviDccVoiceThreadOptions * opt);
 	~DccVoiceThread();
+
 protected:
-//	bool                       m_bUseGsm;
+	//	bool                       m_bUseGsm;
 	KviDccVoiceThreadOptions * m_pOpt;
-	int                        m_soundFd;
-	int                        m_soundFdMode;
-	KviDataBuffer              m_outFrameBuffer;
-	KviDataBuffer              m_inFrameBuffer;
-	KviDataBuffer              m_inSignalBuffer;
-	KviDataBuffer              m_outSignalBuffer;
-	bool                       m_bPlaying;
-	bool                       m_bRecording;
-	bool                       m_bRecordingRequestPending;
-	bool                       m_bSoundcardChecked;
-	int                        m_iLastSignalBufferSize;
-	long                       m_iLastSignalBufferTime;
-//	unsigned  int              m_uSleepTime;
-	KviMutex                 * m_pInfoMutex;
+	int m_soundFd;
+	int m_soundFdMode;
+	KviDataBuffer m_outFrameBuffer;
+	KviDataBuffer m_inFrameBuffer;
+	KviDataBuffer m_inSignalBuffer;
+	KviDataBuffer m_outSignalBuffer;
+	bool m_bPlaying;
+	bool m_bRecording;
+	bool m_bRecordingRequestPending;
+	bool m_bSoundcardChecked;
+	int m_iLastSignalBufferSize;
+	long m_iLastSignalBufferTime;
+	//	unsigned  int              m_uSleepTime;
+	KviMutex * m_pInfoMutex;
 	// stuff protected by the mutex:
-	int                        m_iInputBufferSize;
-	int                        m_iOutputBufferSize;
+	int m_iInputBufferSize;
+	int m_iOutputBufferSize;
+
 protected:
 	bool checkSoundcard();
-	bool openSoundcardWithDuplexOption(int openMode,int failMode);
+	bool openSoundcardWithDuplexOption(int openMode, int failMode);
 	bool openSoundcard(int mode);
 	bool openSoundcardForWriting();
 	bool openSoundcardForReading();
@@ -102,33 +105,34 @@ protected:
 	virtual void run();
 };
 
-
 class DccVoiceWindow : public DccWindow
 {
 	Q_OBJECT
 public:
-	DccVoiceWindow(DccDescriptor * dcc,const char * name);
+	DccVoiceWindow(DccDescriptor * dcc, const char * name);
 	~DccVoiceWindow();
+
 protected:
-	KviTalHBox                  * m_pHBox;
-	QSlider                * m_pVolumeSlider;
-	QLabel                 * m_pInputLabel;
-	QLabel                 * m_pOutputLabel;
-	QLabel                 * m_pRecordingLabel;
-	QLabel                 * m_pPlayingLabel;
-	QToolButton            * m_pTalkButton;
-	QTimer                 * m_pUpdateTimer;
-	QString                  m_szTarget;
-	DccVoiceThread      * m_pSlaveThread;
+	KviTalHBox * m_pHBox;
+	QSlider * m_pVolumeSlider;
+	QLabel * m_pInputLabel;
+	QLabel * m_pOutputLabel;
+	QLabel * m_pRecordingLabel;
+	QLabel * m_pPlayingLabel;
+	QToolButton * m_pTalkButton;
+	QTimer * m_pUpdateTimer;
+	QString m_szTarget;
+	DccVoiceThread * m_pSlaveThread;
+
 protected:
 	virtual void focusInEvent(QFocusEvent *);
 	virtual const QString & target();
 	virtual void fillCaptionBuffers();
 	virtual QPixmap * myIconPtr();
-	virtual void resizeEvent(QResizeEvent *e);
+	virtual void resizeEvent(QResizeEvent * e);
 	virtual QSize sizeHint() const;
-	virtual bool event(QEvent *e);
-	virtual void getBaseLogFileName(QString &buffer);
+	virtual bool event(QEvent * e);
+	virtual void getBaseLogFileName(QString & buffer);
 	void startTalking();
 	void stopTalking();
 	void startConnection();
@@ -140,7 +144,7 @@ protected slots:
 	void startOrStopTalking(bool bStart);
 	void setMixerVolume(int);
 	void connectionInProgress();
-//	void stopTalking();
+	//	void stopTalking();
 };
 
 #if 0
@@ -436,7 +440,6 @@ void KviVoiceConference::conferenceThread()
 
 // read raw audio data at sample rate X, sample size Y
 // multiplex data always at this sample rate and sample size
-
 
 #endif
 

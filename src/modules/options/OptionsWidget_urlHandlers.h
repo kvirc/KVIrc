@@ -42,6 +42,7 @@ public:
 	~OptionsWidget_urlHandlers();
 
 	virtual void commit();
+
 protected:
 	QRadioButton * m_pClickRadio;
 	QRadioButton * m_pDoubleClickRadio;

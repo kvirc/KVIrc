@@ -49,7 +49,6 @@ public:
 	~OptionsWidget_message();
 };
 
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_privmsg KviIconManager::Raw
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_privmsg __tr2qs_no_lookup("Message Style")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_privmsg OptionsWidget_message
@@ -63,6 +62,7 @@ class OptionsWidget_privmsg : public KviOptionsWidget
 public:
 	OptionsWidget_privmsg(QWidget * parent);
 	~OptionsWidget_privmsg();
+
 public:
 	KviBoolSelector * m_pUseSmartColorSelector;
 	KviBoolSelector * m_pSpecialSmartColorSelector;
@@ -84,6 +84,7 @@ class OptionsWidget_timestamp : public KviOptionsWidget
 public:
 	OptionsWidget_timestamp(QWidget * parent);
 	~OptionsWidget_timestamp();
+
 public:
 	KviBoolSelector * m_pUseTimestampSelector;
 	KviBoolSelector * m_pSpecialTimestampColorSelector;
@@ -103,16 +104,16 @@ class MessageListWidget : public KviTalListWidget
 {
 	Q_OBJECT
 public:
-	MessageListWidget(QWidget * par): KviTalListWidget(par) {};
-	~MessageListWidget() {};
+	MessageListWidget(QWidget * par) : KviTalListWidget(par){};
+	~MessageListWidget(){};
 };
 
-class  MessageListWidgetItemDelegate : public QItemDelegate
+class MessageListWidgetItemDelegate : public QItemDelegate
 {
 	Q_OBJECT
 public:
-	MessageListWidgetItemDelegate(QAbstractItemView * pWidget=0)
-		: QItemDelegate(pWidget) {};
+	MessageListWidgetItemDelegate(QAbstractItemView * pWidget = 0)
+	    : QItemDelegate(pWidget){};
 	~MessageListWidgetItemDelegate(){};
 	void paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const;
 };
@@ -120,34 +121,37 @@ public:
 class MessageListWidgetItem : public KviTalListWidgetItem
 {
 public:
-	MessageListWidgetItem(MessageListWidget* l,int optId);
+	MessageListWidgetItem(MessageListWidget * l, int optId);
 	~MessageListWidgetItem();
-private:
-	int          m_iOptId;
-	KviMessageTypeSettings * m_pMsgType;
-public:
-	inline int optionId(){ return m_iOptId; };
-	inline KviMessageTypeSettings * msgType(){ return m_pMsgType; };
-};
 
+private:
+	int m_iOptId;
+	KviMessageTypeSettings * m_pMsgType;
+
+public:
+	inline int optionId() { return m_iOptId; };
+	inline KviMessageTypeSettings * msgType() { return m_pMsgType; };
+};
 
 class MessageColorListWidgetItem : public KviTalListWidgetText
 {
 public:
 	MessageColorListWidgetItem(KviTalListWidget * b, int idx);
 	~MessageColorListWidgetItem();
+
 public:
 	int m_iClrIdx;
+
 public:
 	inline int clrIdx() { return m_iClrIdx; };
 };
 
-class  MessageColorListWidgetItemDelegate : public QItemDelegate
+class MessageColorListWidgetItemDelegate : public QItemDelegate
 {
 	Q_OBJECT
 public:
-	MessageColorListWidgetItemDelegate(QAbstractItemView * pWidget=0)
-		: QItemDelegate(pWidget) {};
+	MessageColorListWidgetItemDelegate(QAbstractItemView * pWidget = 0)
+	    : QItemDelegate(pWidget){};
 	~MessageColorListWidgetItemDelegate(){};
 	void paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const;
 };
@@ -156,23 +160,26 @@ class OptionsWidget_messageColors : public KviOptionsWidget
 {
 	Q_OBJECT
 	friend class KviTalListWidget;
+
 public:
 	OptionsWidget_messageColors(QWidget * parent);
 	~OptionsWidget_messageColors();
+
 public:
-	MessageListWidget         * m_pListView;
+	MessageListWidget * m_pListView;
 	MessageListWidgetItemDelegate * m_pListViewItemDelegate;
-	KviTalListWidget           * m_pForeListWidget;
+	KviTalListWidget * m_pForeListWidget;
 	MessageColorListWidgetItemDelegate * m_pForeListWidgetDelegate;
-	KviTalListWidget           * m_pBackListWidget;
+	KviTalListWidget * m_pBackListWidget;
 	MessageColorListWidgetItemDelegate * m_pBackListWidgetDelegate;
-	KviTalListWidget           * m_pLevelListWidget;
+	KviTalListWidget * m_pLevelListWidget;
 	MessageColorListWidgetItem * m_pForeItems[16];
 	MessageColorListWidgetItem * m_pBackItems[17];
-	MessageListWidgetItem     * m_pLastItem;
-	QCheckBox                  * m_pEnableLogging;
-	QToolButton                * m_pIconButton;
-	QMenu            * m_pIconPopup;
+	MessageListWidgetItem * m_pLastItem;
+	QCheckBox * m_pEnableLogging;
+	QToolButton * m_pIconButton;
+	QMenu * m_pIconPopup;
+
 public:
 	void saveLastItem();
 protected slots:
@@ -198,11 +205,11 @@ class OptionsWidget_standardColors : public KviOptionsWidget
 public:
 	OptionsWidget_standardColors(QWidget * par);
 	~OptionsWidget_standardColors();
+
 private:
 	KviColorSelector * m_pColorSelector[16];
 private slots:
 	void resetToDefaults();
 };
-
 
 #endif //!_OPTW_MESSAGES_H_

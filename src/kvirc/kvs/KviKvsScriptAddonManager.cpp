@@ -34,30 +34,26 @@
 
 KviKvsScriptAddonManager * KviKvsScriptAddonManager::m_pInstance = 0;
 
-
-
-
 KviKvsScriptAddon::KviKvsScriptAddon(
-			const QString &szName,
-			const QString &szVersion,
-			const QString &szVisibleNameCode,
-			const QString &szDescriptionCode,
-			const QString &szUninstallCallbackCode,
-			const QString &szIconId
-) : KviHeapObject(), m_szName(szName), m_szVersion(szVersion), m_szIconId(szIconId)
+    const QString & szName,
+    const QString & szVersion,
+    const QString & szVisibleNameCode,
+    const QString & szDescriptionCode,
+    const QString & szUninstallCallbackCode,
+    const QString & szIconId) : KviHeapObject(), m_szName(szName), m_szVersion(szVersion), m_szIconId(szIconId)
 {
-	allocateScripts(szVisibleNameCode,szDescriptionCode,szUninstallCallbackCode);
+	allocateScripts(szVisibleNameCode, szDescriptionCode, szUninstallCallbackCode);
 	m_pConfigureCallback = 0;
 	m_pHelpCallback = 0;
 }
 
-KviKvsScriptAddon::KviKvsScriptAddon(const KviKvsScriptAddon &a)
-: KviHeapObject()
+KviKvsScriptAddon::KviKvsScriptAddon(const KviKvsScriptAddon & a)
+    : KviHeapObject()
 {
 	m_szName = a.m_szName;
 	m_szVersion = a.m_szVersion;
 	m_szIconId = a.m_szIconId;
-	allocateScripts(a.m_pVisibleNameScript->code(),a.m_pDescriptionScript->code(),a.m_pUninstallCallback ? a.m_pUninstallCallback->code() : QString());
+	allocateScripts(a.m_pVisibleNameScript->code(), a.m_pDescriptionScript->code(), a.m_pUninstallCallback ? a.m_pUninstallCallback->code() : QString());
 	m_pConfigureCallback = 0;
 	setConfigureCallback(a.m_pConfigureCallback ? a.m_pConfigureCallback->code() : QString());
 	m_pHelpCallback = 0;
@@ -65,7 +61,7 @@ KviKvsScriptAddon::KviKvsScriptAddon(const KviKvsScriptAddon &a)
 }
 
 KviKvsScriptAddon::KviKvsScriptAddon()
-: KviHeapObject()
+    : KviHeapObject()
 {
 	m_pVisibleNameScript = 0;
 	m_pDescriptionScript = 0;
@@ -76,11 +72,16 @@ KviKvsScriptAddon::KviKvsScriptAddon()
 
 KviKvsScriptAddon::~KviKvsScriptAddon()
 {
-	if(m_pVisibleNameScript)delete m_pVisibleNameScript;
-	if(m_pDescriptionScript)delete m_pDescriptionScript;
-	if(m_pUninstallCallback)delete m_pUninstallCallback;
-	if(m_pConfigureCallback)delete m_pConfigureCallback;
-	if(m_pHelpCallback)delete m_pHelpCallback;
+	if(m_pVisibleNameScript)
+		delete m_pVisibleNameScript;
+	if(m_pDescriptionScript)
+		delete m_pDescriptionScript;
+	if(m_pUninstallCallback)
+		delete m_pUninstallCallback;
+	if(m_pConfigureCallback)
+		delete m_pConfigureCallback;
+	if(m_pHelpCallback)
+		delete m_pHelpCallback;
 }
 
 QPixmap * KviKvsScriptAddon::icon()
@@ -91,15 +92,19 @@ QPixmap * KviKvsScriptAddon::icon()
 
 const QString & KviKvsScriptAddon::visibleName()
 {
-	if(!m_pVisibleNameScript)return m_szVisibleName;
-	if(!m_pVisibleNameScript->run(g_pActiveWindow,0,m_szVisibleName))m_szVisibleName = m_pVisibleNameScript->code();
+	if(!m_pVisibleNameScript)
+		return m_szVisibleName;
+	if(!m_pVisibleNameScript->run(g_pActiveWindow, 0, m_szVisibleName))
+		m_szVisibleName = m_pVisibleNameScript->code();
 	return m_szVisibleName;
 }
 
 const QString & KviKvsScriptAddon::description()
 {
-	if(!m_pDescriptionScript)return m_szDescription;
-	if(!m_pDescriptionScript->run(g_pActiveWindow,0,m_szDescription))m_szDescription = m_pDescriptionScript->code();
+	if(!m_pDescriptionScript)
+		return m_szDescription;
+	if(!m_pDescriptionScript->run(g_pActiveWindow, 0, m_szDescription))
+		m_szDescription = m_pDescriptionScript->code();
 	return m_szDescription;
 }
 
@@ -120,29 +125,33 @@ const QString & KviKvsScriptAddon::uninstallCallbackCode()
 
 const QString & KviKvsScriptAddon::configureCallbackCode()
 {
-	if(m_pConfigureCallback)return m_pConfigureCallback->code();
+	if(m_pConfigureCallback)
+		return m_pConfigureCallback->code();
 	return KviQString::Empty;
 }
 
 const QString & KviKvsScriptAddon::helpCallbackCode()
 {
-	if(m_pHelpCallback)return m_pHelpCallback->code();
+	if(m_pHelpCallback)
+		return m_pHelpCallback->code();
 	return KviQString::Empty;
 }
 
-bool KviKvsScriptAddon::load(KviConfigurationFile * cfg,const QString &szName)
+bool KviKvsScriptAddon::load(KviConfigurationFile * cfg, const QString & szName)
 {
 	m_szName = szName;
 	cfg->setGroup(m_szName);
 	m_szVersion = cfg->readEntry("Version");
 	m_szIconId = cfg->readEntry("IconId");
-	if(m_szVersion.isEmpty())return false;
-	QString tmp1,tmp2,tmp3;
+	if(m_szVersion.isEmpty())
+		return false;
+	QString tmp1, tmp2, tmp3;
 	tmp1 = cfg->readEntry("VisibleNameCode");
 	tmp2 = cfg->readEntry("DescriptionCode");
 	tmp3 = cfg->readEntry("UninstallCallback");
-	if(tmp1.isEmpty())return false;
-	allocateScripts(tmp1,tmp2,tmp3);
+	if(tmp1.isEmpty())
+		return false;
+	allocateScripts(tmp1, tmp2, tmp3);
 	tmp1 = cfg->readEntry("ConfigureCallback");
 	if(!tmp1.isEmpty())
 		setConfigureCallback(tmp1);
@@ -153,16 +162,17 @@ bool KviKvsScriptAddon::load(KviConfigurationFile * cfg,const QString &szName)
 	return true;
 }
 
-void KviKvsScriptAddon::addInstalledFile(const QString &szFileName)
+void KviKvsScriptAddon::addInstalledFile(const QString & szFileName)
 {
 	if(m_lInstalledFiles.contains(szFileName))
 		return;
 	m_lInstalledFiles.append(szFileName);
 }
 
-void KviKvsScriptAddon::setConfigureCallback(const QString &szConfigureCallbackCode)
+void KviKvsScriptAddon::setConfigureCallback(const QString & szConfigureCallbackCode)
 {
-	if(m_pConfigureCallback)delete m_pConfigureCallback;
+	if(m_pConfigureCallback)
+		delete m_pConfigureCallback;
 	if(szConfigureCallbackCode.isEmpty())
 	{
 		m_pConfigureCallback = 0;
@@ -176,12 +186,13 @@ void KviKvsScriptAddon::setConfigureCallback(const QString &szConfigureCallbackC
 
 	szTmp = szKvsName;
 	szTmp += "::configure";
-	m_pConfigureCallback = new KviKvsScript(szTmp,szConfigureCallbackCode,KviKvsScript::InstructionList);
+	m_pConfigureCallback = new KviKvsScript(szTmp, szConfigureCallbackCode, KviKvsScript::InstructionList);
 }
 
-void KviKvsScriptAddon::setHelpCallback(const QString &szHelpCallbackCode)
+void KviKvsScriptAddon::setHelpCallback(const QString & szHelpCallbackCode)
 {
-	if(m_pHelpCallback)delete m_pHelpCallback;
+	if(m_pHelpCallback)
+		delete m_pHelpCallback;
 	if(szHelpCallbackCode.isEmpty())
 	{
 		m_pHelpCallback = 0;
@@ -195,10 +206,10 @@ void KviKvsScriptAddon::setHelpCallback(const QString &szHelpCallbackCode)
 
 	szTmp = szKvsName;
 	szTmp += "::help";
-	m_pHelpCallback = new KviKvsScript(szTmp,szHelpCallbackCode,KviKvsScript::InstructionList);
+	m_pHelpCallback = new KviKvsScript(szTmp, szHelpCallbackCode, KviKvsScript::InstructionList);
 }
 
-void KviKvsScriptAddon::allocateScripts(const QString &szVisibleNameCode,const QString &szDescriptionCode,const QString &szUninstallCallbackCode)
+void KviKvsScriptAddon::allocateScripts(const QString & szVisibleNameCode, const QString & szDescriptionCode, const QString & szUninstallCallbackCode)
 {
 	QString szKvsName = "addon::";
 	szKvsName += m_szName;
@@ -207,52 +218,54 @@ void KviKvsScriptAddon::allocateScripts(const QString &szVisibleNameCode,const Q
 
 	szTmp = szKvsName;
 	szTmp += "::name";
-	m_pVisibleNameScript = new KviKvsScript(szTmp,szVisibleNameCode,KviKvsScript::Parameter);
+	m_pVisibleNameScript = new KviKvsScript(szTmp, szVisibleNameCode, KviKvsScript::Parameter);
 	szTmp = szKvsName;
 	szTmp += "::description";
-	m_pDescriptionScript = new KviKvsScript(szTmp,szDescriptionCode,KviKvsScript::Parameter);
+	m_pDescriptionScript = new KviKvsScript(szTmp, szDescriptionCode, KviKvsScript::Parameter);
 	szTmp = szKvsName;
 	szTmp += "::uninstall";
-	m_pUninstallCallback = new KviKvsScript(szTmp,szUninstallCallbackCode,KviKvsScript::InstructionList);
+	m_pUninstallCallback = new KviKvsScript(szTmp, szUninstallCallbackCode, KviKvsScript::InstructionList);
 }
 
 void KviKvsScriptAddon::save(KviConfigurationFile * cfg)
 {
 	cfg->setGroup(m_szName);
-	cfg->writeEntry("Version",m_szVersion);
-	cfg->writeEntry("VisibleNameCode",visibleNameCode());
-	cfg->writeEntry("DescriptionCode",descriptionCode());
-	cfg->writeEntry("UninstallCallback",uninstallCallbackCode());
-	cfg->writeEntry("ConfigureCallback",configureCallbackCode());
-	cfg->writeEntry("HelpCallback",helpCallbackCode());
-	cfg->writeEntry("IconId",m_szIconId);
-	cfg->writeEntry("InstalledFiles",m_lInstalledFiles);
+	cfg->writeEntry("Version", m_szVersion);
+	cfg->writeEntry("VisibleNameCode", visibleNameCode());
+	cfg->writeEntry("DescriptionCode", descriptionCode());
+	cfg->writeEntry("UninstallCallback", uninstallCallbackCode());
+	cfg->writeEntry("ConfigureCallback", configureCallbackCode());
+	cfg->writeEntry("HelpCallback", helpCallbackCode());
+	cfg->writeEntry("IconId", m_szIconId);
+	cfg->writeEntry("InstalledFiles", m_lInstalledFiles);
 }
 
 void KviKvsScriptAddon::executeUninstallCallback(KviWindow * pWnd)
 {
-	if(!m_pUninstallCallback)return;
+	if(!m_pUninstallCallback)
+		return;
 	m_pUninstallCallback->run(pWnd);
 }
 
 void KviKvsScriptAddon::executeConfigureCallback(KviWindow * pWnd)
 {
-	if(!m_pConfigureCallback)return;
+	if(!m_pConfigureCallback)
+		return;
 	m_pConfigureCallback->run(pWnd);
 }
 
 void KviKvsScriptAddon::executeHelpCallback(KviWindow * pWnd)
 {
-	if(!m_pHelpCallback)return;
+	if(!m_pHelpCallback)
+		return;
 	m_pHelpCallback->run(pWnd);
 }
-
 
 KviKvsScriptAddonManager::KviKvsScriptAddonManager()
 {
 	m_pInstance = this;
 	m_bLoaded = false;
-	m_pAddonDict = new KviPointerHashTable<QString,KviKvsScriptAddon>(17,false);
+	m_pAddonDict = new KviPointerHashTable<QString, KviKvsScriptAddon>(17, false);
 	m_pAddonDict->setAutoDelete(true);
 }
 
@@ -281,7 +294,7 @@ void KviKvsScriptAddonManager::done()
 	delete KviKvsScriptAddonManager::instance();
 }
 
-void KviKvsScriptAddonManager::load(const QString &szFileName)
+void KviKvsScriptAddonManager::load(const QString & szFileName)
 {
 	// in fact we implement delayed loading
 	// so this function only stores the filename
@@ -293,17 +306,18 @@ void KviKvsScriptAddonManager::load(const QString &szFileName)
 	m_bLoaded = false;
 }
 
-void KviKvsScriptAddonManager::save(const QString &szFileName)
+void KviKvsScriptAddonManager::save(const QString & szFileName)
 {
-	if(!m_bLoaded)return; // nothing to store anyway
+	if(!m_bLoaded)
+		return; // nothing to store anyway
 	// we're stored here from now on...
 	m_szFileName = szFileName;
 
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Write);
 
 	cfg.clear();
 
-	KviPointerHashTableIterator<QString,KviKvsScriptAddon> it(*m_pAddonDict);
+	KviPointerHashTableIterator<QString, KviKvsScriptAddon> it(*m_pAddonDict);
 
 	while(KviKvsScriptAddon * a = it.current())
 	{
@@ -315,59 +329,64 @@ void KviKvsScriptAddonManager::save(const QString &szFileName)
 
 void KviKvsScriptAddonManager::delayedLoad()
 {
-	if(m_bLoaded)return; // already loaded
+	if(m_bLoaded)
+		return; // already loaded
 	m_bLoaded = true;
 	// ::load() might be never called if we don't have
 	// a scriptaddons.kvc file on disk, KviApplication checks that.
 	// So finally m_szFileName may be empty here
-	if(m_szFileName.isEmpty())return;
+	if(m_szFileName.isEmpty())
+		return;
 
-	KviConfigurationFile cfg(m_szFileName,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(m_szFileName, KviConfigurationFile::Read);
 
-	KviPointerHashTable<QString,KviConfigurationFileGroup> * d = cfg.dict();
-	if(!d)return;
+	KviPointerHashTable<QString, KviConfigurationFileGroup> * d = cfg.dict();
+	if(!d)
+		return;
 
-	KviPointerHashTableIterator<QString,KviConfigurationFileGroup> it(*d);
+	KviPointerHashTableIterator<QString, KviConfigurationFileGroup> it(*d);
 	while(it.current())
 	{
 		QString szName = it.currentKey();
 		KviKvsScriptAddon * a = new KviKvsScriptAddon();
-		if(a->load(&cfg,szName))
-			m_pAddonDict->replace(szName,a);
+		if(a->load(&cfg, szName))
+			m_pAddonDict->replace(szName, a);
 		else
 			delete a;
 		++it;
 	}
 }
 
-KviPointerHashTable<QString,KviKvsScriptAddon> * KviKvsScriptAddonManager::addonDict()
+KviPointerHashTable<QString, KviKvsScriptAddon> * KviKvsScriptAddonManager::addonDict()
 {
-	if(!m_bLoaded)delayedLoad();
+	if(!m_bLoaded)
+		delayedLoad();
 	return m_pAddonDict;
 }
 
 bool KviKvsScriptAddonManager::registerAddon(KviKvsScriptAddonRegistrationData * d)
 {
-	if(findAddon(d->szName))return false;
+	if(findAddon(d->szName))
+		return false;
 	KviKvsScriptAddon * a = new KviKvsScriptAddon(
-			d->szName,
-			d->szVersion,
-			d->szVisibleNameScript,
-			d->szDescriptionScript,
-			d->szUninstallCallbackScript,
-			d->szIconId);
-	m_pAddonDict->replace(d->szName,a);
+	    d->szName,
+	    d->szVersion,
+	    d->szVisibleNameScript,
+	    d->szDescriptionScript,
+	    d->szUninstallCallbackScript,
+	    d->szIconId);
+	m_pAddonDict->replace(d->szName, a);
 	return true;
 }
 
-KviKvsScriptAddon * KviKvsScriptAddonManager::findAddon(const QString &szName)
+KviKvsScriptAddon * KviKvsScriptAddonManager::findAddon(const QString & szName)
 {
 	if(!m_bLoaded)
 		delayedLoad();
 	return m_pAddonDict->find(szName);
 }
 
-bool KviKvsScriptAddonManager::unregisterAddon(const QString &szName,KviWindow * pWnd,bool bExecuteUninstallCallback,bool bUninstallFiles)
+bool KviKvsScriptAddonManager::unregisterAddon(const QString & szName, KviWindow * pWnd, bool bExecuteUninstallCallback, bool bUninstallFiles)
 {
 	KviKvsScriptAddon * a = findAddon(szName);
 	if(!a)
@@ -386,10 +405,10 @@ bool KviKvsScriptAddonManager::unregisterAddon(const QString &szName,KviWindow *
 	{
 		// uninstall files
 		QStringList lFiles = a->installedFiles();
-		foreach(QString szFileName,lFiles)
+		foreach(QString szFileName, lFiles)
 		{
 			QString szPath;
-			g_pApp->getLocalKvircDirectory(szPath,KviApplication::None,szFileName);
+			g_pApp->getLocalKvircDirectory(szPath, KviApplication::None, szFileName);
 
 			//qDebug("Uninstalling %s",szPath.toUtf8().data());
 
@@ -408,6 +427,7 @@ bool KviKvsScriptAddonManager::unregisterAddon(const QString &szName,KviWindow *
 
 void KviKvsScriptAddonManager::clear()
 {
-	if(!m_bLoaded)delayedLoad();
+	if(!m_bLoaded)
+		delayedLoad();
 	m_pAddonDict->clear();
 }

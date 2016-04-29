@@ -57,6 +57,7 @@ protected:
 	QString m_szName;
 	QString m_szVisibleName;
 	QString m_szDescription;
+
 public:
 	/**
 	* \brief Constructs an action category object
@@ -71,24 +72,25 @@ public:
 	* \brief Destroys an action category object
 	*/
 	~KviActionCategory();
+
 public:
 	/**
 	* \brief Returns the name of the category
 	* \return const QString &
 	*/
-	const QString & name(){ return m_szName; };
+	const QString & name() { return m_szName; };
 
 	/**
 	* \brief Returns the visible name of the category
 	* \return const QString &
 	*/
-	const QString & visibleName(){ return m_szVisibleName; };
+	const QString & visibleName() { return m_szVisibleName; };
 
 	/**
 	* \brief Returns the description of the category
 	* \return const QString &
 	*/
-	const QString & description(){ return m_szDescription; };
+	const QString & description() { return m_szDescription; };
 };
 
 /**
@@ -104,25 +106,27 @@ public:
 	* \enum InternalFlags
 	* \brief Holds the internal flags of an action
 	*/
-	enum InternalFlags {
-		Enabled   = 1,   /**< the action is enabled */
-		SetupDone = 2    /**< the setup of the action is done */
+	enum InternalFlags
+	{
+		Enabled = 1,  /**< the action is enabled */
+		SetupDone = 2 /**< the setup of the action is done */
 	};
 
 	/**
 	* \enum Flags
 	* \brief Holds the flags of an action
 	*/
-	enum Flags {
-		NeedsContext              = 1,    /**< the action needs a context */
-		NeedsConnection           = 2,    /**< the action needs a connection; implies NeedsContext */
-		WindowConsole             = 4,    /**< the action is bound to a console window */
-		WindowChannel             = 8,    /**< the action is bound to a channel window */
-		WindowQuery               = 16,   /**< the action is bound to a query window */
-		WindowDccChat             = 32,   /**< the action is bound to a DCC Chat window */
-		InternalWindowMask        = WindowConsole | WindowChannel | WindowQuery | WindowDccChat,                    /**< the action is bound to a window */
-		EnableAtLogin             = 64,   /**< the action is enabled at login; implies NeedsConnection */
-		WindowOnlyIfUsersSelected = 128   /**< the action is bound to a window only if it's selected by the user; implies at least one of WindowConsole | WindowChannel | WindowQuery */
+	enum Flags
+	{
+		NeedsContext = 1,                                                                 /**< the action needs a context */
+		NeedsConnection = 2,                                                              /**< the action needs a connection; implies NeedsContext */
+		WindowConsole = 4,                                                                /**< the action is bound to a console window */
+		WindowChannel = 8,                                                                /**< the action is bound to a channel window */
+		WindowQuery = 16,                                                                 /**< the action is bound to a query window */
+		WindowDccChat = 32,                                                               /**< the action is bound to a DCC Chat window */
+		InternalWindowMask = WindowConsole | WindowChannel | WindowQuery | WindowDccChat, /**< the action is bound to a window */
+		EnableAtLogin = 64,                                                               /**< the action is enabled at login; implies NeedsConnection */
+		WindowOnlyIfUsersSelected = 128                                                   /**< the action is bound to a window only if it's selected by the user; implies at least one of WindowConsole | WindowChannel | WindowQuery */
 	};
 
 	/**
@@ -144,16 +148,15 @@ public:
 	* \return KviAction
 	*/
 	KviAction(
-			QObject * pParent,
-			const QString & szName,
-			const QString & szVisibleName,
-			const QString & szDescription,
-			KviActionCategory * pCategory = NULL,
-			const QString & szBigIconId = QString(),
-			const QString & szSmallIconId = QString(),
-			unsigned int uFlags = 0,
-			const QString & szKeySequence = QString()
-		);
+	    QObject * pParent,
+	    const QString & szName,
+	    const QString & szVisibleName,
+	    const QString & szDescription,
+	    KviActionCategory * pCategory = NULL,
+	    const QString & szBigIconId = QString(),
+	    const QString & szSmallIconId = QString(),
+	    unsigned int uFlags = 0,
+	    const QString & szKeySequence = QString());
 
 	/**
 	* \brief Constructs the action object
@@ -174,34 +177,35 @@ public:
 	* \return KviAction
 	*/
 	KviAction(
-			QObject * pParent,
-			const QString & szName,
-			const QString & szVisibleName,
-			const QString & szDescription,
-			KviActionCategory * pCategory = NULL,
-			const QString & szBigIconId = QString(),
-			KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
-			unsigned int uFlags = 0,
-			const QString & szKeySequence = QString()
-		);
+	    QObject * pParent,
+	    const QString & szName,
+	    const QString & szVisibleName,
+	    const QString & szDescription,
+	    KviActionCategory * pCategory = NULL,
+	    const QString & szBigIconId = QString(),
+	    KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
+	    unsigned int uFlags = 0,
+	    const QString & szKeySequence = QString());
 
 	/**
 	* \brief Destroys the action object
 	*/
 	virtual ~KviAction();
+
 protected:
-	QString                   m_szName;
-	QString                   m_szVisibleName;
-	QString                   m_szDescription;
-	KviActionCategory       * m_pCategory;
-	QString                   m_szBigIconId;
-	QString                   m_szSmallIconId; // this is alternative to m_eSmallIcon
+	QString m_szName;
+	QString m_szVisibleName;
+	QString m_szDescription;
+	KviActionCategory * m_pCategory;
+	QString m_szBigIconId;
+	QString m_szSmallIconId; // this is alternative to m_eSmallIcon
 	KviIconManager::SmallIcon m_eSmallIcon;
 	KviPointerList<QAction> * m_pActionList;
-	unsigned short int        m_uInternalFlags;
-	unsigned int              m_uFlags;
-	QString                   m_szKeySequence;
-	QPointer<QShortcut>       m_pAccel;
+	unsigned short int m_uInternalFlags;
+	unsigned int m_uFlags;
+	QString m_szKeySequence;
+	QPointer<QShortcut> m_pAccel;
+
 public:
 	/**
 	* \brief Validates the flags of the action
@@ -262,7 +266,7 @@ public:
 	* \brief Returns the flag associated to the action
 	* \return unsigned int
 	*/
-	unsigned int flags(){ return m_uFlags; };
+	unsigned int flags() { return m_uFlags; };
 
 	/**
 	* \brief Returns true if the action is user-defined
@@ -308,7 +312,7 @@ public:
 	* \brief Destroys itself. Maybe the best function in the whole APIs :)
 	* \return void
 	*/
-	void suicide(){ delete this; };
+	void suicide() { delete this; };
 protected:
 	/**
 	* \brief Returns true if the setup is finished
@@ -327,7 +331,7 @@ protected:
 	* \brief Returns the list of actions associated to the action
 	* \return KviPointerList<QAction> *
 	*/
-	KviPointerList<QAction> * actionList(){ return m_pActionList; };
+	KviPointerList<QAction> * actionList() { return m_pActionList; };
 
 	/**
 	* \brief Registers the action shortcut in the application

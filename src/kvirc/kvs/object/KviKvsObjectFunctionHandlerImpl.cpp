@@ -26,14 +26,12 @@
 #include "KviKvsObjectFunctionCall.h"
 #include "KviKvsScript.h"
 
-
-
 KviKvsObjectFunctionHandler * KviKvsObjectStandardTrueReturnFunctionHandler::clone()
 {
 	return new KviKvsObjectStandardTrueReturnFunctionHandler();
 }
 
-bool KviKvsObjectStandardTrueReturnFunctionHandler::call(KviKvsObject *,KviKvsObjectFunctionCall * pCall)
+bool KviKvsObjectStandardTrueReturnFunctionHandler::call(KviKvsObject *, KviKvsObjectFunctionCall * pCall)
 {
 	pCall->returnValue()->setBoolean(true);
 	return true;
@@ -46,7 +44,7 @@ KviKvsObjectFunctionHandler * KviKvsObjectStandardFalseReturnFunctionHandler::cl
 	return new KviKvsObjectStandardFalseReturnFunctionHandler();
 }
 
-bool KviKvsObjectStandardFalseReturnFunctionHandler::call(KviKvsObject *,KviKvsObjectFunctionCall * pCall)
+bool KviKvsObjectStandardFalseReturnFunctionHandler::call(KviKvsObject *, KviKvsObjectFunctionCall * pCall)
 {
 	pCall->returnValue()->setBoolean(false);
 	return true;
@@ -59,7 +57,7 @@ KviKvsObjectFunctionHandler * KviKvsObjectStandardNothingReturnFunctionHandler::
 	return new KviKvsObjectStandardNothingReturnFunctionHandler();
 }
 
-bool KviKvsObjectStandardNothingReturnFunctionHandler::call(KviKvsObject *,KviKvsObjectFunctionCall * pCall)
+bool KviKvsObjectStandardNothingReturnFunctionHandler::call(KviKvsObject *, KviKvsObjectFunctionCall * pCall)
 {
 	pCall->returnValue()->setNothing();
 	return true;
@@ -67,14 +65,14 @@ bool KviKvsObjectStandardNothingReturnFunctionHandler::call(KviKvsObject *,KviKv
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-KviKvsObjectCoreCallFunctionHandler::KviKvsObjectCoreCallFunctionHandler(KviKvsObjectFunctionHandlerProc pProc,unsigned int uFlags)
-: KviKvsObjectFunctionHandler(uFlags)
+KviKvsObjectCoreCallFunctionHandler::KviKvsObjectCoreCallFunctionHandler(KviKvsObjectFunctionHandlerProc pProc, unsigned int uFlags)
+    : KviKvsObjectFunctionHandler(uFlags)
 {
 	m_pProc = pProc;
 }
 
-KviKvsObjectCoreCallFunctionHandler::KviKvsObjectCoreCallFunctionHandler(const KviKvsObjectCoreCallFunctionHandler &h)
-: KviKvsObjectFunctionHandler(h.m_uFlags)
+KviKvsObjectCoreCallFunctionHandler::KviKvsObjectCoreCallFunctionHandler(const KviKvsObjectCoreCallFunctionHandler & h)
+    : KviKvsObjectFunctionHandler(h.m_uFlags)
 {
 	m_pProc = h.m_pProc;
 }
@@ -88,29 +86,29 @@ KviKvsObjectFunctionHandler * KviKvsObjectCoreCallFunctionHandler::clone()
 	return new KviKvsObjectCoreCallFunctionHandler(*this);
 }
 
-bool KviKvsObjectCoreCallFunctionHandler::call(KviKvsObject * pObject,KviKvsObjectFunctionCall * pCall)
+bool KviKvsObjectCoreCallFunctionHandler::call(KviKvsObject * pObject, KviKvsObjectFunctionCall * pCall)
 {
 	// Actually m_pProc can't be 0: if it's zero then it's a BUG and should be traced down: we just crash
 	//if(m_pProc)
 	return (pObject->*m_pProc)(pCall);
 	//else {
-		// empty handler
-		//pCall->returnValue()->setNothing();
-		//return true;
+	// empty handler
+	//pCall->returnValue()->setNothing();
+	//return true;
 	//}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-KviKvsObjectScriptFunctionHandler::KviKvsObjectScriptFunctionHandler(const QString &szScriptContext,const QString &szCode,const QString &szReminder,unsigned int uFlags)
-: KviKvsObjectFunctionHandler(uFlags)
+KviKvsObjectScriptFunctionHandler::KviKvsObjectScriptFunctionHandler(const QString & szScriptContext, const QString & szCode, const QString & szReminder, unsigned int uFlags)
+    : KviKvsObjectFunctionHandler(uFlags)
 {
-	m_pHandler = new KviKvsScript(szScriptContext,szCode,KviKvsScript::InstructionList);
-        m_szReminder = szReminder;
+	m_pHandler = new KviKvsScript(szScriptContext, szCode, KviKvsScript::InstructionList);
+	m_szReminder = szReminder;
 }
 
-KviKvsObjectScriptFunctionHandler::KviKvsObjectScriptFunctionHandler(const KviKvsObjectScriptFunctionHandler &h)
-: KviKvsObjectFunctionHandler(h.m_uFlags)
+KviKvsObjectScriptFunctionHandler::KviKvsObjectScriptFunctionHandler(const KviKvsObjectScriptFunctionHandler & h)
+    : KviKvsObjectFunctionHandler(h.m_uFlags)
 {
 	// ref
 	m_pHandler = new KviKvsScript(*(h.m_pHandler));
@@ -132,7 +130,7 @@ QString KviKvsObjectScriptFunctionHandler::scriptHandlerCode()
 }
 QString KviKvsObjectScriptFunctionHandler::reminder()
 {
-        return m_szReminder;
+	return m_szReminder;
 }
 
 KviKvsObjectFunctionHandler * KviKvsObjectScriptFunctionHandler::clone()
@@ -140,8 +138,8 @@ KviKvsObjectFunctionHandler * KviKvsObjectScriptFunctionHandler::clone()
 	return new KviKvsObjectScriptFunctionHandler(*this);
 }
 
-bool KviKvsObjectScriptFunctionHandler::call(KviKvsObject * pObject,KviKvsObjectFunctionCall * pCall)
+bool KviKvsObjectScriptFunctionHandler::call(KviKvsObject * pObject, KviKvsObjectFunctionCall * pCall)
 {
 	KviKvsExtendedRunTimeData rd(pObject);
-	return m_pHandler->run(pCall->window(),pCall->params(),pCall->returnValue(),KviKvsScript::PreserveParams,&rd);
+	return m_pHandler->run(pCall->window(), pCall->params(), pCall->returnValue(), KviKvsScript::PreserveParams, &rd);
 }

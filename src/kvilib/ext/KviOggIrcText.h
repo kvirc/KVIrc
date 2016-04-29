@@ -43,12 +43,12 @@ namespace KviOggIrcText
 	* \param len Length in octects to copy
 	* \return void
 	*/
-	static void _tp_readbuffer(oggpack_buffer *opb, char *buf, const long len)
+	static void _tp_readbuffer(oggpack_buffer * opb, char * buf, const long len)
 	{
 		long i;
 
-		for (i = 0; i < len; i++)
-			*buf++=oggpack_read(opb,8);
+		for(i = 0; i < len; i++)
+			*buf++ = oggpack_read(opb, 8);
 	}
 
 	/**
@@ -58,11 +58,11 @@ namespace KviOggIrcText
 	* \param len Length in octects to copy
 	* \return void
 	*/
-	static void _tp_writebuffer(oggpack_buffer *opb, const char *buf, const long len)
+	static void _tp_writebuffer(oggpack_buffer * opb, const char * buf, const long len)
 	{
 		long i;
 
-		for (i = 0; i < len; i++)
+		for(i = 0; i < len; i++)
 			oggpack_write(opb, *buf++, 8);
 	}
 
@@ -89,23 +89,23 @@ namespace KviOggIrcText
 	* \param op the ogg packet that will contain the header
 	* \return int
 	*/
-	static int irct_encode_headerout(ogg_packet *op)
+	static int irct_encode_headerout(ogg_packet * op)
 	{
 		oggpack_buffer ob;
 		oggpack_writeinit(&ob);
-		oggpack_write(&ob, 0, 8);		//header init
+		oggpack_write(&ob, 0, 8); //header init
 		_tp_writebuffer(&ob, "irct", 32);
-		oggpack_write(&ob, 0, 8);		//version 0
-		oggpack_write(&ob, 1, 8);		//subversion 1
-		int bytes=oggpack_bytes(&ob);
-		op->packet= (unsigned char*) KviMemory::allocate(bytes);
+		oggpack_write(&ob, 0, 8); //version 0
+		oggpack_write(&ob, 1, 8); //subversion 1
+		int bytes = oggpack_bytes(&ob);
+		op->packet = (unsigned char *)KviMemory::allocate(bytes);
 		memcpy(op->packet, oggpack_get_buffer(&ob), bytes);
-		op->bytes=bytes;
+		op->bytes = bytes;
 		oggpack_writeclear(&ob);
-		op->b_o_s=1;				//begins a logical bitstream
-		op->e_o_s=0;
-		op->packetno=0;
-		op->granulepos=0;
+		op->b_o_s = 1; //begins a logical bitstream
+		op->e_o_s = 0;
+		op->packetno = 0;
+		op->granulepos = 0;
 
 		return 0;
 	}
@@ -118,24 +118,25 @@ namespace KviOggIrcText
 	* \param op the ogg packet that will contain the text
 	* \return int
 	*/
-	static int irct_encode_packetout(const char* textPkt, int textSize, int last_p, ogg_packet *op)
+	static int irct_encode_packetout(const char * textPkt, int textSize, int last_p, ogg_packet * op)
 	{
-		if(!textSize)return(0);
+		if(!textSize)
+			return (0);
 
 		oggpack_buffer ob;
 		oggpack_writeinit(&ob);
 
 		_tp_writebuffer(&ob, textPkt, textSize); //pre-encoded text
-		int bytes=oggpack_bytes(&ob);
-		op->packet= (unsigned char *)KviMemory::allocate(bytes);
+		int bytes = oggpack_bytes(&ob);
+		op->packet = (unsigned char *)KviMemory::allocate(bytes);
 		memcpy(op->packet, oggpack_get_buffer(&ob), bytes);
-		op->bytes=bytes;
+		op->bytes = bytes;
 		oggpack_writeclear(&ob);
-		op->b_o_s=0;
-		op->e_o_s=last_p;
+		op->b_o_s = 0;
+		op->e_o_s = last_p;
 
-		op->packetno=last_p;
-		op->granulepos=0;
+		op->packetno = last_p;
+		op->granulepos = 0;
 
 		return 0;
 	}
@@ -145,18 +146,20 @@ namespace KviOggIrcText
 	* \param op the ogg packet that contains the header
 	* \return int
 	*/
-	static int irct_decode_headerin(ogg_packet *op)
+	static int irct_decode_headerin(ogg_packet * op)
 	{
 		oggpack_buffer ob;
 		oggpack_readinit(&ob, op->packet, op->bytes);
 		quint8 ret, version, subversion;
-		ret = oggpack_read(&ob,8);
-		if(ret!=0) return 1;
-		char * buf = (char*) KviMemory::allocate(4);
+		ret = oggpack_read(&ob, 8);
+		if(ret != 0)
+			return 1;
+		char * buf = (char *)KviMemory::allocate(4);
 		_tp_readbuffer(&ob, buf, 4);
-		if(strncmp(buf, "irct", 4)!=0) return 1;
-		version = oggpack_read(&ob,8);
-		subversion = oggpack_read(&ob,8);
+		if(strncmp(buf, "irct", 4) != 0)
+			return 1;
+		version = oggpack_read(&ob, 8);
+		subversion = oggpack_read(&ob, 8);
 		return 0;
 	}
 
@@ -167,12 +170,12 @@ namespace KviOggIrcText
 	* \param op the ogg packet that contains the text
 	* \return int
 	*/
-	static int irct_decode_packetin(char** textPkt, int *textSize, ogg_packet *op)
+	static int irct_decode_packetin(char ** textPkt, int * textSize, ogg_packet * op)
 	{
 		oggpack_buffer ob;
 		oggpack_readinit(&ob, op->packet, op->bytes);
 		*textSize = op->bytes;
-		*textPkt=(char*)KviMemory::allocate(*textSize);
+		*textPkt = (char *)KviMemory::allocate(*textSize);
 		_tp_readbuffer(&ob, *textPkt, *textSize);
 		return 0;
 	}

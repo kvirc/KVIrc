@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviKvsAliasManager.h"
 #include "KviConfigurationFile.h"
 
@@ -32,7 +30,7 @@ KviKvsAliasManager * KviKvsAliasManager::m_pAliasManager = 0;
 KviKvsAliasManager::KviKvsAliasManager()
 {
 	m_pAliasManager = this;
-	m_pAliasDict = new KviPointerHashTable<QString,KviKvsScript>(51,false);
+	m_pAliasDict = new KviPointerHashTable<QString, KviKvsScript>(51, false);
 	m_pAliasDict->setAutoDelete(true);
 }
 
@@ -64,11 +62,11 @@ void KviKvsAliasManager::done()
 
 bool KviKvsAliasManager::removeNamespace(const QString & szName)
 {
-	KviPointerHashTableIterator<QString,KviKvsScript> it(*m_pAliasDict);
+	KviPointerHashTableIterator<QString, KviKvsScript> it(*m_pAliasDict);
 	QList<QString> lKill;
 	while(it.current())
 	{
-		if(it.current()->name().startsWith(szName,Qt::CaseInsensitive))
+		if(it.current()->name().startsWith(szName, Qt::CaseInsensitive))
 			lKill.append(it.current()->name());
 		it.moveNext();
 	}
@@ -76,14 +74,13 @@ bool KviKvsAliasManager::removeNamespace(const QString & szName)
 	if(lKill.isEmpty())
 		return false;
 
-	Q_FOREACH(QString szKill,lKill)
+	Q_FOREACH(QString szKill, lKill)
 		remove(szKill);
 
 	return true;
 }
 
-
-void KviKvsAliasManager::add(const QString &szName,KviKvsScript * pAlias)
+void KviKvsAliasManager::add(const QString & szName, KviKvsScript * pAlias)
 {
 	// This piece of code, when inlined by gcc (i.e, placed in a header),
 	// shows an interesting problem.
@@ -115,16 +112,16 @@ void KviKvsAliasManager::add(const QString &szName,KviKvsScript * pAlias)
 	// So finally, we can't inline this.
 
 	// The bad news is that this problem may pop up also in other pieces of code...
-	m_pAliasDict->replace(szName,pAlias);
+	m_pAliasDict->replace(szName, pAlias);
 	emit aliasRefresh(szName);
 }
 
-void KviKvsAliasManager::completeCommand(const QString &word,KviPointerList<QString> * matches)
+void KviKvsAliasManager::completeCommand(const QString & word, KviPointerList<QString> * matches)
 {
-	KviPointerHashTableIterator<QString,KviKvsScript> it(*m_pAliasDict);
+	KviPointerHashTableIterator<QString, KviKvsScript> it(*m_pAliasDict);
 	while(it.current())
 	{
-		if(KviQString::equalCIN(word,it.current()->name(),word.length()))
+		if(KviQString::equalCIN(word, it.current()->name(), word.length()))
 			matches->append(new QString(it.current()->name()));
 		++it;
 	}
@@ -134,15 +131,15 @@ void KviKvsAliasManager::completeCommand(const QString &word,KviPointerList<QStr
 
 void KviKvsAliasManager::save(const QString & filename)
 {
-	KviConfigurationFile cfg(filename,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(filename, KviConfigurationFile::Write);
 	cfg.clear();
 
-	KviPointerHashTableIterator<QString,KviKvsScript> it(*m_pAliasDict);
+	KviPointerHashTableIterator<QString, KviKvsScript> it(*m_pAliasDict);
 
 	while(it.current())
 	{
 		cfg.setGroup(it.current()->name());
-		cfg.writeEntry("_Buffer",it.current()->code());
+		cfg.writeEntry("_Buffer", it.current()->code());
 		++it;
 	}
 }
@@ -150,7 +147,7 @@ void KviKvsAliasManager::save(const QString & filename)
 void KviKvsAliasManager::load(const QString & filename)
 {
 	m_pAliasDict->clear();
-	KviConfigurationFile cfg(filename,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(filename, KviConfigurationFile::Read);
 
 	KviConfigurationFileIterator it(*(cfg.dict()));
 
@@ -163,14 +160,14 @@ void KviKvsAliasManager::load(const QString & filename)
 		++it;
 	}
 
-	for(QString * s = l.first();s;s = l.next())
+	for(QString * s = l.first(); s; s = l.next())
 	{
 		cfg.setGroup(*s);
-		QString szCode = cfg.readEntry("_Buffer","");
+		QString szCode = cfg.readEntry("_Buffer", "");
 		if(!szCode.isEmpty())
 		{
-			KviKvsScript * m = new KviKvsScript(*s,szCode);
-			m_pAliasDict->insert(*s,m);
+			KviKvsScript * m = new KviKvsScript(*s, szCode);
+			m_pAliasDict->insert(*s, m);
 		}
 		++it;
 	}

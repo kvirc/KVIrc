@@ -28,23 +28,21 @@
 #define STRINGIFY(x) STRINGIFY_(x)
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-# define KVI_CAST_FUNC __FUNCTION__
+#define KVI_CAST_FUNC __FUNCTION__
 #else
-# define KVI_CAST_FUNC __func__
+#define KVI_CAST_FUNC __func__
 #endif
 
-#define KVI_DYNAMIC(expr, expr2)             \
-	KviCast::dynamic                      \
-	<expr>                                \
-	(expr2,                               \
-	__FILE__ ":" STRINGIFY(__LINE__),     \
-	KVI_CAST_FUNC,                        \
-	#expr)                                \
+#define KVI_DYNAMIC(expr, expr2)          \
+	KviCast::dynamic<expr>(expr2,         \
+	    __FILE__ ":" STRINGIFY(__LINE__), \
+	    KVI_CAST_FUNC,                    \
+	    #expr)
 
 namespace KviCast
 {
-	template<typename T, typename P>
-	T dynamic(P p, const char *file, const char *func, const char *expr)
+	template <typename T, typename P>
+	T dynamic(P p, const char * file, const char * func, const char * expr)
 	{
 		T newPointer = dynamic_cast<T>(p);
 
@@ -53,7 +51,7 @@ namespace KviCast
 		if(newPointer == nullptr)
 		{
 			qDebug("KviCast::dynamic: Conversion from %s to %s failed: %s in %s (%s).",
-				typeid(P).name(), typeid(T).name(), func, file, expr);
+			    typeid(P).name(), typeid(T).name(), func, file, expr);
 		}
 
 		return newPointer;

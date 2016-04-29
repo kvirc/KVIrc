@@ -31,8 +31,9 @@
 class KVIRC_API KviKvsTreeNodeIndirectData : public KviKvsTreeNodeData
 {
 public:
-	KviKvsTreeNodeIndirectData(const QChar * pLocation,KviKvsTreeNodeData * pSource);
+	KviKvsTreeNodeIndirectData(const QChar * pLocation, KviKvsTreeNodeData * pSource);
 	~KviKvsTreeNodeIndirectData();
+
 protected:
 	KviKvsTreeNodeData * m_pSource; // can't be null!
 public:

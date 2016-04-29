@@ -34,13 +34,15 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeRebindingSwitch : public KviKvsTreeNodeCommand
 {
 public:
-	KviKvsTreeNodeRebindingSwitch(const QChar * pLocation,KviKvsTreeNodeData * pTargetWindow,KviKvsTreeNodeCommand * pChildCommand);
+	KviKvsTreeNodeRebindingSwitch(const QChar * pLocation, KviKvsTreeNodeData * pTargetWindow, KviKvsTreeNodeCommand * pChildCommand);
 	~KviKvsTreeNodeRebindingSwitch();
+
 protected:
 	KviKvsTreeNodeData * m_pTargetWindow;
 	KviKvsTreeNodeCommand * m_pChildCommand;
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	const QString & commandName();
 	virtual bool execute(KviKvsRunTimeContext * c);

@@ -27,8 +27,8 @@
 #include "KviKvsObject.h"
 #include "KviKvsHash.h"
 
-KviKvsTreeNodeObjectField::KviKvsTreeNodeObjectField(const QChar * pLocation,const QString &szIdentifier)
-: KviKvsTreeNodeVariable(pLocation,szIdentifier)
+KviKvsTreeNodeObjectField::KviKvsTreeNodeObjectField(const QChar * pLocation, const QString & szIdentifier)
+    : KviKvsTreeNodeVariable(pLocation, szIdentifier)
 {
 }
 
@@ -36,7 +36,7 @@ KviKvsTreeNodeObjectField::~KviKvsTreeNodeObjectField()
 {
 }
 
-void KviKvsTreeNodeObjectField::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeObjectField::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Object Field \"";
 	szBuffer += m_szIdentifier;
@@ -45,7 +45,7 @@ void KviKvsTreeNodeObjectField::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeObjectField::dump(const char * prefix)
 {
-	qDebug("%s ObjectField(%s)",prefix,m_szIdentifier.toUtf8().data());
+	qDebug("%s ObjectField(%s)", prefix, m_szIdentifier.toUtf8().data());
 }
 
 bool KviKvsTreeNodeObjectField::canEvaluateInObjectScope()
@@ -53,15 +53,17 @@ bool KviKvsTreeNodeObjectField::canEvaluateInObjectScope()
 	return true;
 }
 
-bool KviKvsTreeNodeObjectField::evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext *,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeObjectField::evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext *, KviKvsVariant * pBuffer)
 {
 	KviKvsVariant * v = o->dataContainer()->find(m_szIdentifier);
-	if(v)pBuffer->copyFrom(v);
-	else pBuffer->setNothing();
+	if(v)
+		pBuffer->copyFrom(v);
+	else
+		pBuffer->setNothing();
 	return true;
 }
 
-KviKvsRWEvaluationResult * KviKvsTreeNodeObjectField::evaluateReadWriteInObjectScope(KviKvsObject * o,KviKvsRunTimeContext *)
+KviKvsRWEvaluationResult * KviKvsTreeNodeObjectField::evaluateReadWriteInObjectScope(KviKvsObject * o, KviKvsRunTimeContext *)
 {
-	return new KviKvsHashElement(0,o->dataContainer()->get(m_szIdentifier),o->dataContainer(),m_szIdentifier);
+	return new KviKvsHashElement(0, o->dataContainer()->get(m_szIdentifier), o->dataContainer(), m_szIdentifier);
 }

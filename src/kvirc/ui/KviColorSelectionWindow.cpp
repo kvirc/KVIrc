@@ -32,12 +32,12 @@
 #include <QMouseEvent>
 
 KviColorWindow::KviColorWindow()
-:QWidget(0)
+    : QWidget(0)
 {
 	setObjectName("toplevel_color_window");
 	setWindowFlags(Qt::Popup);
 	setFocusPolicy(Qt::NoFocus);
-	setFixedSize(144,36);
+	setFixedSize(144, 36);
 	m_pOwner = 0;
 	QFont fnt = QFont();
 	fnt.setStyleHint(QFont::TypeWriter);
@@ -61,15 +61,15 @@ void KviColorWindow::popup(QWidget * pOwner)
 
 void KviColorWindow::paintEvent(QPaintEvent *)
 {
-	static int clrIdx[16] = { 1,0,0,0,0,0,0,0,1,1,1,1,0,0,0,1 };
+	static int clrIdx[16] = { 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1 };
 	QPainter p(this);
 
-	for(int i=0; i<16; i++)
+	for(int i = 0; i < 16; i++)
 	{
-		p.fillRect((i % 8) * 18,(i / 8) * 18,18,18,KVI_OPTION_MIRCCOLOR(i));
+		p.fillRect((i % 8) * 18, (i / 8) * 18, 18, 18, KVI_OPTION_MIRCCOLOR(i));
 		p.setPen(KVI_OPTION_MIRCCOLOR(clrIdx[i]));
-		KviCString szI(KviCString::Format,"%d",i);
-		p.drawText((i % 8) * 18,(i / 8) * 18,18,18,Qt::AlignVCenter | Qt::AlignHCenter,szI.ptr());
+		KviCString szI(KviCString::Format, "%d", i);
+		p.drawText((i % 8) * 18, (i / 8) * 18, 18, 18, Qt::AlignVCenter | Qt::AlignHCenter, szI.ptr());
 	}
 }
 
@@ -82,34 +82,32 @@ void KviColorWindow::keyPressEvent(QKeyEvent * e)
 	}
 	hide();
 	if(m_pOwner)
-		g_pApp->sendEvent(m_pOwner,e);
+		g_pApp->sendEvent(m_pOwner, e);
 }
 
 void KviColorWindow::mousePressEvent(QMouseEvent * e)
 {
 	QString szStr;
 	if(!(
-		(e->pos().x() < 0) || (e->pos().x() > width()) ||
-		(e->pos().y() < 0) || (e->pos().y() > height())
-		))
+	       (e->pos().x() < 0) || (e->pos().x() > width()) || (e->pos().y() < 0) || (e->pos().y() > height())))
 	{
 		int iKey = e->x() / 18;
-		if (e->x() < 36 && e->y() > 18)
+		if(e->x() < 36 && e->y() > 18)
 			iKey += 8;
-		if (e->x() > 36 && e->y() > 18)
+		if(e->x() > 36 && e->y() > 18)
 			iKey -= 2;
 
 		// FIXME: is this right? maybe it should be szStr.setNum(iAscii);
 		szStr.setNum(iKey);
 
-		if (e->x() > 36 && e->y() > 18)
+		if(e->x() > 36 && e->y() > 18)
 		{
 			if(m_pOwner)
-				g_pApp->sendEvent(m_pOwner,new QKeyEvent(QEvent::KeyPress,Qt::Key_1,Qt::NoModifier,"1"));
+				g_pApp->sendEvent(m_pOwner, new QKeyEvent(QEvent::KeyPress, Qt::Key_1, Qt::NoModifier, "1"));
 		}
 
 		if(m_pOwner)
-			g_pApp->sendEvent(m_pOwner,new QKeyEvent(QEvent::KeyPress,iKey,(Qt::KeyboardModifiers)Qt::NoModifier,szStr));
+			g_pApp->sendEvent(m_pOwner, new QKeyEvent(QEvent::KeyPress, iKey, (Qt::KeyboardModifiers)Qt::NoModifier, szStr));
 	}
 
 	if(m_iTimerId != -1)

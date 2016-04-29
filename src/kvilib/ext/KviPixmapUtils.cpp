@@ -26,40 +26,46 @@
 
 namespace KviPixmapUtils
 {
-	void drawPixmapWithPainter(QPainter* p,QPixmap * pix,int flags,const QRect& paintRect,int iWidgetWidth,int iWidgetHeight,int dx,int dy)
+	void drawPixmapWithPainter(QPainter * p, QPixmap * pix, int flags, const QRect & paintRect, int iWidgetWidth, int iWidgetHeight, int dx, int dy)
 	{
-		if(!pix)return;
+		if(!pix)
+			return;
 		if(!flags)
 		{
-			p->drawTiledPixmap(paintRect.left(),paintRect.top(),paintRect.width(),paintRect.height(),*pix,dx,dy);
+			p->drawTiledPixmap(paintRect.left(), paintRect.top(), paintRect.width(), paintRect.height(), *pix, dx, dy);
 			return;
 		}
 
-		int iPixWidth=pix->width();
-		int iPixHeight=pix->height();
-		int x=0;
-		int y=0;
+		int iPixWidth = pix->width();
+		int iPixHeight = pix->height();
+		int x = 0;
+		int y = 0;
 
-		if( !(flags & Qt::AlignHorizontal_Mask ))
-			x=-1;
-		else if ( flags & Qt::AlignRight )
-			x=iWidgetWidth - iPixWidth;
-		else if( flags & Qt::AlignHCenter )
-			x=(iWidgetWidth - iPixWidth)/2;
+		if(!(flags & Qt::AlignHorizontal_Mask))
+			x = -1;
+		else if(flags & Qt::AlignRight)
+			x = iWidgetWidth - iPixWidth;
+		else if(flags & Qt::AlignHCenter)
+			x = (iWidgetWidth - iPixWidth) / 2;
 
-		if( !(flags & Qt::AlignVertical_Mask ))
-			y=-1;
-		else if ( flags & Qt::AlignBottom )
-			y=iWidgetHeight - iPixHeight;
-		else if( flags & Qt::AlignVCenter )
-			y=(iWidgetHeight - iPixHeight)/2;
+		if(!(flags & Qt::AlignVertical_Mask))
+			y = -1;
+		else if(flags & Qt::AlignBottom)
+			y = iWidgetHeight - iPixHeight;
+		else if(flags & Qt::AlignVCenter)
+			y = (iWidgetHeight - iPixHeight) / 2;
 
-		if(x==-1) {
-			p->drawTiledPixmap(paintRect.left(),y,paintRect.width(),iPixHeight,*pix,dx,dy);
-		} else if(y==-1) {
-			p->drawTiledPixmap(x,paintRect.top(),iPixWidth,paintRect.height(),*pix,dx,dy);
-		} else {
-			p->drawPixmap(x,y,*pix);
+		if(x == -1)
+		{
+			p->drawTiledPixmap(paintRect.left(), y, paintRect.width(), iPixHeight, *pix, dx, dy);
+		}
+		else if(y == -1)
+		{
+			p->drawTiledPixmap(x, paintRect.top(), iPixWidth, paintRect.height(), *pix, dx, dy);
+		}
+		else
+		{
+			p->drawPixmap(x, y, *pix);
 		}
 	}
 }

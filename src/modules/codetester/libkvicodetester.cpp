@@ -29,9 +29,7 @@
 #include "KviMainWindow.h"
 #include "KviPointerList.h"
 
-
 KviPointerList<CodeTesterWindow> * g_pCodeTesterWindowList = 0;
-
 
 /*
 	@doc: codetester.open
@@ -57,7 +55,7 @@ static bool codetester_kvs_cmd_open(KviKvsModuleCommandCall *)
 
 static bool codetester_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",codetester_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", codetester_kvs_cmd_open);
 
 	g_pCodeTesterWindowList = new KviPointerList<CodeTesterWindow>();
 	g_pCodeTesterWindowList->setAutoDelete(false);
@@ -79,13 +77,12 @@ static bool codetester_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"CodeTester",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Code tester window",
-	codetester_module_init,
-	codetester_module_can_unload,
-	0,
-	codetester_module_cleanup,
-	"editor"
-)
+    "CodeTester",                                                   // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Code tester window",
+    codetester_module_init,
+    codetester_module_can_unload,
+    0,
+    codetester_module_cleanup,
+    "editor")

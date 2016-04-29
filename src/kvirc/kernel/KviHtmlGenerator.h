@@ -43,7 +43,8 @@ namespace KviHtmlGenerator
 	* \enum DefaultColor
 	* \brief Defines back and foreground colors
 	*/
-	enum DefaultColor {
+	enum DefaultColor
+	{
 		Background = 100,
 		Foreground = 101
 	};

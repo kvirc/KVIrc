@@ -38,27 +38,30 @@ class QPushButton;
 class QPushButton;
 class KviActionDrawer;
 
-
 class CustomizeToolBarsDialog : public QWidget
 {
 	Q_OBJECT
 protected:
 	CustomizeToolBarsDialog(QWidget * p);
+
 public:
 	~CustomizeToolBarsDialog();
+
 protected:
 	KviActionDrawer * m_pDrawer;
 	static CustomizeToolBarsDialog * m_pInstance;
 	QPushButton * m_pDeleteToolBarButton;
 	QPushButton * m_pRenameToolBarButton;
 	QPushButton * m_pExportToolBarButton;
+
 public:
-	static CustomizeToolBarsDialog * instance(){ return m_pInstance; };
+	static CustomizeToolBarsDialog * instance() { return m_pInstance; };
 	static void display(bool bTopLevel);
 	static void cleanup();
+
 protected:
 	virtual void showEvent(QShowEvent * e);
-	virtual void closeEvent(QCloseEvent *e);
+	virtual void closeEvent(QCloseEvent * e);
 protected slots:
 	void closeClicked();
 	void newToolBar();
@@ -69,13 +72,13 @@ protected slots:
 	virtual void reject();
 };
 
-
 class CustomToolBarPropertiesDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	CustomToolBarPropertiesDialog(QWidget * p,const QString &szText,const QString &szId = QString(),const QString &szLabel = QString(),const QString &szIconId = QString());
+	CustomToolBarPropertiesDialog(QWidget * p, const QString & szText, const QString & szId = QString(), const QString & szLabel = QString(), const QString & szIconId = QString());
 	~CustomToolBarPropertiesDialog();
+
 protected:
 	QString m_szId;
 	QString m_szOriginalId;
@@ -87,19 +90,20 @@ protected:
 	QLineEdit * m_pIconEdit;
 	QPushButton * m_pIconButton;
 	QPushButton * m_pAdvancedButton;
+
 public:
-	const QString &id(){ return m_szId; };
-	const QString &label(){ return m_szLabel; };
-	const QString &iconId(){ return m_szIconId; };
+	const QString & id() { return m_szId; };
+	const QString & label() { return m_szLabel; };
+	const QString & iconId() { return m_szIconId; };
 protected slots:
 	void okClicked();
 	void advancedClicked();
 	void iconButtonClicked();
-	void labelTextChanged(const QString &s);
-protected:
-	void iconSelected(const QString &szIconId);
-};
+	void labelTextChanged(const QString & s);
 
+protected:
+	void iconSelected(const QString & szIconId);
+};
 
 class TrashcanLabel : public QLabel
 {
@@ -107,10 +111,12 @@ class TrashcanLabel : public QLabel
 public:
 	TrashcanLabel(QWidget * p);
 	virtual ~TrashcanLabel();
+
 protected:
 	unsigned int m_uFlashCount;
 	QTimer * m_pFlashTimer;
-	QColor   m_clrOriginal;
+	QColor m_clrOriginal;
+
 protected:
 	virtual void dragEnterEvent(QDragEnterEvent * e);
 	virtual void dropEvent(QDropEvent * e);

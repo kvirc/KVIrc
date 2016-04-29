@@ -46,47 +46,47 @@ typedef struct _KviMaskEntry
 	unsigned int uSetAt;
 } KviMaskEntry;
 
-class KviMaskItem: public QTreeWidgetItem
+class KviMaskItem : public QTreeWidgetItem
 {
 public:
-	KviMaskItem(QTreeWidget* parent,KviMaskEntry* entry);
+	KviMaskItem(QTreeWidget * parent, KviMaskEntry * entry);
 	~KviMaskItem();
 
-	KviMaskEntry* mask() { return &m_Mask; };
+	KviMaskEntry * mask() { return &m_Mask; };
 protected:
 	KviMaskEntry m_Mask;
-	bool operator<(const QTreeWidgetItem &other)const
+	bool operator<(const QTreeWidgetItem & other) const
 	{
 		// This is the sorting function for KviMaskItem
 		switch(treeWidget()->sortColumn())
 		{
 			case 0:
-				return m_Mask.szMask < ((KviMaskItem *) &other)->mask()->szMask;
+				return m_Mask.szMask < ((KviMaskItem *)&other)->mask()->szMask;
 				break;
 			case 1:
-				return m_Mask.szSetBy < ((KviMaskItem*) &other)->mask()->szSetBy;
+				return m_Mask.szSetBy < ((KviMaskItem *)&other)->mask()->szSetBy;
 				break;
 			case 2:
-				return m_Mask.uSetAt < ((KviMaskItem*) &other)->mask()->uSetAt;
+				return m_Mask.uSetAt < ((KviMaskItem *)&other)->mask()->uSetAt;
 				break;
 		}
 		return 0; //make compiler happy
 	}
-
 };
 
 class KviMaskInputDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEditor,KviChannelWindow * pChannel);
+	KviMaskInputDialog(const QString & szMask, KviMaskEditor * pEditor, KviChannelWindow * pChannel);
 	~KviMaskInputDialog();
+
 protected:
-	QLineEdit     * m_pEdit;
-	QPushButton   * m_pOkButton;
-	QPushButton   * m_pChancelButton;
-	QString 	m_szOldMask;
-	KviChannelWindow    * m_pChannel;
+	QLineEdit * m_pEdit;
+	QPushButton * m_pOkButton;
+	QPushButton * m_pChancelButton;
+	QString m_szOldMask;
+	KviChannelWindow * m_pChannel;
 	KviMaskEditor * m_pEditor;
 protected slots:
 	virtual void accept();
@@ -96,30 +96,32 @@ class KVIRC_API KviMaskEditor : public KviWindowToolWidget
 {
 	Q_OBJECT
 public:
-	KviMaskEditor(QWidget * par,KviChannelWindow * pChannel, KviWindowToolPageButton* button,KviPointerList<KviMaskEntry> * maskList,
-		char cMode,const char * name);
+	KviMaskEditor(QWidget * par, KviChannelWindow * pChannel, KviWindowToolPageButton * button, KviPointerList<KviMaskEntry> * maskList,
+	    char cMode, const char * name);
 	~KviMaskEditor();
+
 protected:
-	KviChannelWindow          * m_pChannel;
-	QTreeWidget               * m_pMaskBox;
-	QPushButton               * m_pRemoveMask;
-	QPushButton               * m_pAddButton;
-	QLineEdit                 * m_pSearch;
-	char                        m_cFlag;
-	KviIconManager::SmallIcon   m_eIcon;
+	KviChannelWindow * m_pChannel;
+	QTreeWidget * m_pMaskBox;
+	QPushButton * m_pRemoveMask;
+	QPushButton * m_pAddButton;
+	QLineEdit * m_pSearch;
+	char m_cFlag;
+	KviIconManager::SmallIcon m_eIcon;
+
 public:
-	char flag(){ return m_cFlag; };
-	void addMask(KviMaskEntry *e);
-	void removeMask(KviMaskEntry *e);
+	char flag() { return m_cFlag; };
+	void addMask(KviMaskEntry * e);
+	void removeMask(KviMaskEntry * e);
 	void clear();
 protected slots:
 	void removeClicked();
 	void addClicked();
-        void itemDoubleClicked( QTreeWidgetItem *,int);
-	void searchTextChanged ( const QString & );
+	void itemDoubleClicked(QTreeWidgetItem *, int);
+	void searchTextChanged(const QString &);
 	void updateOpStatus();
 signals:
-	void removeMasks(KviMaskEditor *,KviPointerList<KviMaskEntry> *);
+	void removeMasks(KviMaskEditor *, KviPointerList<KviMaskEntry> *);
 };
 
 #endif //_KVI_MASKEDITOR_H_

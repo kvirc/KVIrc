@@ -35,39 +35,43 @@
 class KVILIB_API KviRegisteredUser : public KviHeapObject
 {
 	friend class KviRegisteredUserDataBase;
+
 public:
-	enum IgnoreFlags {
-		Channel=1,
-		Query=2,
-		Notice=4,
-		Ctcp=8,
-		Invite=16,
-		Dcc=32,
-		Highlight=64
+	enum IgnoreFlags
+	{
+		Channel = 1,
+		Query = 2,
+		Notice = 4,
+		Ctcp = 8,
+		Invite = 16,
+		Dcc = 32,
+		Highlight = 64
 	};
 
 	KviRegisteredUser(const QString & szName);
 	~KviRegisteredUser();
+
 private:
-	int                                    m_iIgnoreFlags;
-	bool                                   m_bIgnoreEnabled;
-	QString                                m_szName;
-	QString                                m_szGroup;
-	KviPointerHashTable<QString,QString> * m_pPropertyDict;   // owned properties
-	KviPointerList<KviIrcMask>           * m_pMaskList;       // owned masks
+	int m_iIgnoreFlags;
+	bool m_bIgnoreEnabled;
+	QString m_szName;
+	QString m_szGroup;
+	KviPointerHashTable<QString, QString> * m_pPropertyDict; // owned properties
+	KviPointerList<KviIrcMask> * m_pMaskList;                // owned masks
 protected:
 	// mask ownership is transferred! (always!) returns false if the mask was already there
 	bool addMask(KviIrcMask * pMask);
 	bool removeMask(KviIrcMask * pMask);
 	KviIrcMask * findMask(const KviIrcMask & mask);
+
 public:
-	int  ignoreFlags(){ return m_iIgnoreFlags; };
-	void setIgnoreFlags(int iFlags){ m_iIgnoreFlags = iFlags; };
-	bool ignoreEnabled(){ return m_bIgnoreEnabled; };
-	void setIgnoreEnabled(bool bEnabled){ m_bIgnoreEnabled = bEnabled; };
+	int ignoreFlags() { return m_iIgnoreFlags; };
+	void setIgnoreFlags(int iFlags) { m_iIgnoreFlags = iFlags; };
+	bool ignoreEnabled() { return m_bIgnoreEnabled; };
+	void setIgnoreEnabled(bool bEnabled) { m_bIgnoreEnabled = bEnabled; };
 	bool isIgnoreEnabledFor(IgnoreFlags flag);
 
-	const QString & name(){ return m_szName; };
+	const QString & name() { return m_szName; };
 	bool matches(const KviIrcMask & mask);
 	bool matchesFixed(const KviIrcMask & mask);
 	bool matchesFixed(const QString & szNick, const QString & szUser, const QString & szHost);
@@ -76,15 +80,15 @@ public:
 	void setProperty(const QString & szName, bool szValue);
 
 	void setGroup(const QString & szName) { m_szGroup = szName; };
-	const QString & group(){ return m_szGroup; };
+	const QString & group() { return m_szGroup; };
 
-	const QString & getProperty(const QString & szName);       // returns 0 if the property is not there
-	bool getProperty(const QString & szName, QString & szValue); // returns false if the property is not there
-	bool getBoolProperty(const QString & szName, bool bDef = false);           // returns true if the property is there and is true
+	const QString & getProperty(const QString & szName);             // returns 0 if the property is not there
+	bool getProperty(const QString & szName, QString & szValue);     // returns false if the property is not there
+	bool getBoolProperty(const QString & szName, bool bDef = false); // returns true if the property is there and is true
 	// the propertyDict may be 0!
-	KviPointerHashTable<QString,QString> * propertyDict(){ return m_pPropertyDict; };
+	KviPointerHashTable<QString, QString> * propertyDict() { return m_pPropertyDict; };
 	// this is never zero (but may contain no masks)
-	KviPointerList<KviIrcMask> * maskList(){ return m_pMaskList; };
+	KviPointerList<KviIrcMask> * maskList() { return m_pMaskList; };
 };
 
 #endif //!_KviRegisteredUser_h_

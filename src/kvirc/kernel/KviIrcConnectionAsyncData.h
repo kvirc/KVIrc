@@ -44,7 +44,8 @@ public:
 
 	~KviIrcConnectionAsyncData()
 	{
-		if(m_pInfoList)delete m_pInfoList;
+		if(m_pInfoList)
+			delete m_pInfoList;
 	}
 
 protected:
@@ -60,19 +61,22 @@ public:
 		m_pInfoList->append(i);
 	}
 
-	T * lookup(const QString &nick)
+	T * lookup(const QString & nick)
 	{
-		if(!m_pInfoList)return 0;
-		for(T * i = m_pInfoList->first();i;i = m_pInfoList->next())
+		if(!m_pInfoList)
+			return 0;
+		for(T * i = m_pInfoList->first(); i; i = m_pInfoList->next())
 		{
-			if(KviQString::equalCI(nick,i->szNick))return i;
+			if(KviQString::equalCI(nick, i->szNick))
+				return i;
 		}
 		return 0;
 	}
 
 	void remove(T * i)
 	{
-		if(!m_pInfoList)return;
+		if(!m_pInfoList)
+			return;
 		m_pInfoList->removeRef(i);
 		if(m_pInfoList->isEmpty())
 		{

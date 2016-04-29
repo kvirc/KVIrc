@@ -46,7 +46,6 @@
 //						Mi sono arrivati sms pubblicitari!!! Ti interessa ? ISCRIVITI CLICCANDO DIRETTAMENTE SU QUESTO SITO:
 //						http://www.smscash.it/index.php3?pagid=reg&p_form=P&p_pres=0&cpre=95620&p_desc=1 (Messaggio Automatico) IR©Simpson
 
-
 // Yes...it is really annoying when I join a channel and
 // i am flooded with all that messages.
 // On large-newbie-high-traffic channels I get lagged
@@ -103,17 +102,17 @@
 		[/example]
 */
 
-bool kvi_mayBeSpam(KviCString * msg,KviCString &spamWord)
+bool kvi_mayBeSpam(KviCString * msg, KviCString & spamWord)
 {
 	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistSpamWords).begin();
-			it != KVI_OPTION_STRINGLIST(KviOption_stringlistSpamWords).end() ; ++it)
+	    it != KVI_OPTION_STRINGLIST(KviOption_stringlistSpamWords).end(); ++it)
 	{
 		// FIXME : This is SLOOOOOOOOW (QString -> ascii translation!!)
 
 		const char * aux = (*it).toLatin1();
 		if(aux)
 		{
-			if(msg->findFirstIdx(aux,false) != -1)
+			if(msg->findFirstIdx(aux, false) != -1)
 			{
 				spamWord = aux;
 				return true;

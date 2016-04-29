@@ -41,7 +41,6 @@
 class QProgressDialog;
 class QLabel;
 
-
 #define KVI_PACKAGE_INFOFIELD_TYPE_STRING 1
 #define KVI_PACKAGE_INFOFIELD_TYPE_BINARYBUFFER 2
 #define KVI_PACKAGE_DATAFIELD_TYPE_FILE 1
@@ -66,39 +65,37 @@ public:
 	virtual ~KviPackageIOEngine();
 
 private:
-
-	QString                                   m_szLastError;
-	KviPointerHashTable<QString,QString>    * m_pStringInfoFields;
-	KviPointerHashTable<QString,QByteArray> * m_pBinaryInfoFields;
-	QProgressDialog                         * m_pProgressDialog;
-	QLabel                                  * m_pProgressDialogLabel;
+	QString m_szLastError;
+	KviPointerHashTable<QString, QString> * m_pStringInfoFields;
+	KviPointerHashTable<QString, QByteArray> * m_pBinaryInfoFields;
+	QProgressDialog * m_pProgressDialog;
+	QLabel * m_pProgressDialogLabel;
 
 public:
 	/**
 	* \brief Returns the last error
 	* \return const QString &
 	*/
-	const QString & lastError(){ return m_szLastError; };
+	const QString & lastError() { return m_szLastError; };
 
 	/**
 	* \brief Returns the string info fields
 	* \return KviPointerHashTable<QString,QString> *
 	*/
-	KviPointerHashTable<QString,QString> * stringInfoFields(){ return m_pStringInfoFields; };
+	KviPointerHashTable<QString, QString> * stringInfoFields() { return m_pStringInfoFields; };
 
 	/**
 	* \brief Returns the binary info fields
 	* \return KviPointerHashTable<QString,QByteArray> *
 	*/
-	KviPointerHashTable<QString,QByteArray> * binaryInfoFields(){ return m_pBinaryInfoFields; };
+	KviPointerHashTable<QString, QByteArray> * binaryInfoFields() { return m_pBinaryInfoFields; };
 protected:
-
 	/**
 	* \brief Sets the last error
 	* \param szLastError The string error
 	* \return void
 	*/
-	void setLastError(const QString & szLastError){ m_szLastError = szLastError; };
+	void setLastError(const QString & szLastError) { m_szLastError = szLastError; };
 
 	/**
 	* \brief Shows the progress dialog
@@ -138,6 +135,5 @@ protected:
 	*/
 	bool readError();
 };
-
 
 #endif //_KviPackageIOEngine_h_

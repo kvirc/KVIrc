@@ -44,7 +44,7 @@
 namespace UPnP
 {
 
-/**
+	/**
  * The manager class is the public interface used by other networking classes.
  * It's implemented as singleton to provide easy access by other classes.
  * Devices are automatically detected at start-up, and maintained by this class.
@@ -53,64 +53,61 @@ namespace UPnP
  * @author Diederik van der Boor
  * @ingroup NetworkUPnP
  */
-class Manager : public QObject
-{
-	Q_OBJECT
+	class Manager : public QObject
+	{
+		Q_OBJECT
 
-public:  // public methods
+	public: // public methods
+		// The destructor
+		virtual ~Manager();
 
-	// The destructor
-	virtual             ~Manager();
+		// Return the external IP address
+		QString getExternalIpAddress() const;
 
-	// Return the external IP address
-	QString              getExternalIpAddress() const;
+		// Return the instance of the manager class
+		static Manager * instance();
 
-	// Return the instance of the manager class
-	static Manager *     instance();
+		// Return true if a controlable gateway is available
+		bool isGatewayAvailable();
 
-	// Return true if a controlable gateway is available
-	bool                 isGatewayAvailable();
+		// Add a port mapping
+		void addPortMapping(const QString & protocol, const QString & remoteHost, int externalPort, const QString & internalClient, int internalPort, const QString & description, bool enabled = true, int leaseDuration = 0);
+		// Delete a port mapping
+		void deletePortMapping(const QString & protocol, const QString & remoteHost, int externalPort);
 
-	// Add a port mapping
-	void                 addPortMapping(const QString &protocol, const QString &remoteHost, int externalPort, const QString &internalClient, int internalPort, const QString &description, bool enabled = true, int leaseDuration = 0);
-	// Delete a port mapping
-	void                 deletePortMapping(const QString &protocol, const QString &remoteHost, int externalPort);
+	private slots:
+		// The broadcast failed
+		void slotBroadcastTimeout();
+		// A device was discovered by the SSDP broadcast
+		void slotDeviceFound(const QString & hostname, int port, const QString & rootUrl);
 
-private slots:
-	// The broadcast failed
-	void                 slotBroadcastTimeout();
-	// A device was discovered by the SSDP broadcast
-	void                 slotDeviceFound(const QString &hostname, int port, const QString &rootUrl);
+	private: // private methods
+		     // The constructor  (it's a singleton)
+		Manager();
+		// Disable the copy constructor
+		Manager(const Manager &);
+		// Disable the assign operator
+		Manager & operator=(const Manager &);
+		// Initialize the manager, detect all devices
+		void initialize();
 
+	private:
+		// The active control point we're working with
+		IgdControlPoint * m_pActiveIgdControlPoint;
+		// True if the broadcast failed (false during the discovery process)
+		bool m_bBroadcastFailed;
+		// True if the broadcast found a device (false during the discovery process)
+		bool m_bBroadcastFoundIt;
+		// The instance of the singleton class
+		static Manager * m_pInstance;
+		// A list of all detected gateway devices
+		KviPointerList<IgdControlPoint> m_lIgdControlPoints;
+		// The SSDP connection to find all UPnP devices
+		SsdpConnection * m_pSsdpConnection;
+		// The timer to detect a broadcast timeout
+		QTimer * m_pSsdpTimer;
+	};
 
-private:  // private methods
-	// The constructor  (it's a singleton)
-				Manager();
-	// Disable the copy constructor
-				Manager(const Manager &);
-	// Disable the assign operator
-	Manager&             operator=(const Manager&);
-	// Initialize the manager, detect all devices
-	void                 initialize();
-
-private:
-	// The active control point we're working with
-	IgdControlPoint     *m_pActiveIgdControlPoint;
-	// True if the broadcast failed (false during the discovery process)
-	bool                 m_bBroadcastFailed;
-	// True if the broadcast found a device (false during the discovery process)
-	bool                 m_bBroadcastFoundIt;
-	// The instance of the singleton class
-	static Manager      *m_pInstance;
-	// A list of all detected gateway devices
-	KviPointerList<IgdControlPoint> m_lIgdControlPoints;
-	// The SSDP connection to find all UPnP devices
-	SsdpConnection      *m_pSsdpConnection;
-	// The timer to detect a broadcast timeout
-	QTimer              *m_pSsdpTimer;
-};
-
-
-}  // End of namespace
+} // End of namespace
 
 #endif

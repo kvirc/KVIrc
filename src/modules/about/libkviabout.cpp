@@ -55,20 +55,20 @@ AboutDialog * g_pAboutDialog = 0;
 		[/example]
 */
 
-
 static bool about_kvs_command_kvirc(KviKvsModuleCommandCall *)
 {
- 	if(!g_pAboutDialog)
+	if(!g_pAboutDialog)
 	{
 		g_pAboutDialog = new AboutDialog();
 		g_pAboutDialog->show();
-	} else {
+	}
+	else
+	{
 		g_pAboutDialog->raise();
 		g_pAboutDialog->show();
 	}
 	return true;
 }
-
 
 // =======================================
 // init routine
@@ -76,13 +76,14 @@ static bool about_kvs_command_kvirc(KviKvsModuleCommandCall *)
 
 static bool about_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"kvirc",about_kvs_command_kvirc)
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "kvirc", about_kvs_command_kvirc)
 	return true;
 }
 
 static bool about_module_cleanup(KviModule *)
 {
-	if(g_pAboutDialog)delete g_pAboutDialog;
+	if(g_pAboutDialog)
+		delete g_pAboutDialog;
 	g_pAboutDialog = 0;
 	return true;
 }
@@ -97,15 +98,14 @@ static bool about_module_can_unload(KviModule *)
 // =======================================
 
 KVIRC_MODULE(
-	"KVIrc about dialog",
-	"4.0.0",
-	"Till Bush <buti@geocities.com>\n" \
-	"Szymon Stefanek <pragma at kvirc dot net>" \
-	"Elvio Basello <hellvis69 at netsons dot org>",
-	"Exports the /about.kvirc command\n",
-	about_module_init,
-	about_module_can_unload,
-	0,
-	about_module_cleanup,
-	"about"
-)
+    "KVIrc about dialog",
+    "4.0.0",
+    "Till Bush <buti@geocities.com>\n"
+    "Szymon Stefanek <pragma at kvirc dot net>"
+    "Elvio Basello <hellvis69 at netsons dot org>",
+    "Exports the /about.kvirc command\n",
+    about_module_init,
+    about_module_can_unload,
+    0,
+    about_module_cleanup,
+    "about")

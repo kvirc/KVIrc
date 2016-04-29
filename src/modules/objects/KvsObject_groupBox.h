@@ -25,8 +25,6 @@
 //
 //=============================================================================
 
-
-
 #include <KviTalGroupBox.h>
 #include "KvsObject_widget.h"
 #include "object_macros.h"
@@ -38,25 +36,23 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-
-	bool setTitle(KviKvsObjectFunctionCall *c);
-	bool title(KviKvsObjectFunctionCall *c);
-	bool setFlat(KviKvsObjectFunctionCall *c);
-	bool isFlat(KviKvsObjectFunctionCall *c);
-	bool setCheckable(KviKvsObjectFunctionCall *c);
-	bool isCheckable(KviKvsObjectFunctionCall *c);
-	bool setInsideMargin(KviKvsObjectFunctionCall *c);
-	bool insideMargin(KviKvsObjectFunctionCall *c);
-	bool setInsideSpacing(KviKvsObjectFunctionCall *c);
-	bool insideSpacing(KviKvsObjectFunctionCall *c);
-	bool addSpace(KviKvsObjectFunctionCall *c);
-	bool alignment(KviKvsObjectFunctionCall *c);
-	bool setAlignment(KviKvsObjectFunctionCall *c);
-	bool setOrientation(KviKvsObjectFunctionCall *c);
-	bool isChecked(KviKvsObjectFunctionCall *c);
-	bool setChecked(KviKvsObjectFunctionCall *c);
-
+	bool setTitle(KviKvsObjectFunctionCall * c);
+	bool title(KviKvsObjectFunctionCall * c);
+	bool setFlat(KviKvsObjectFunctionCall * c);
+	bool isFlat(KviKvsObjectFunctionCall * c);
+	bool setCheckable(KviKvsObjectFunctionCall * c);
+	bool isCheckable(KviKvsObjectFunctionCall * c);
+	bool setInsideMargin(KviKvsObjectFunctionCall * c);
+	bool insideMargin(KviKvsObjectFunctionCall * c);
+	bool setInsideSpacing(KviKvsObjectFunctionCall * c);
+	bool insideSpacing(KviKvsObjectFunctionCall * c);
+	bool addSpace(KviKvsObjectFunctionCall * c);
+	bool alignment(KviKvsObjectFunctionCall * c);
+	bool setAlignment(KviKvsObjectFunctionCall * c);
+	bool setOrientation(KviKvsObjectFunctionCall * c);
+	bool isChecked(KviKvsObjectFunctionCall * c);
+	bool setChecked(KviKvsObjectFunctionCall * c);
 };
 #endif //!_CLASS_GROUPBOX_H_

@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-
 #include "KviWindow.h"
 #include "KviCString.h"
 
@@ -37,24 +36,25 @@ class SlowPasteController : public QObject
 {
 	Q_OBJECT
 public:
-	SlowPasteController(KviWindow * w,int id);
+	SlowPasteController(KviWindow * w, int id);
 	~SlowPasteController();
 
 	//bool pasteFileInit(KviCString * fileName);
-	bool pasteFileInit(QString &fileName);
+	bool pasteFileInit(QString & fileName);
 	bool pasteClipboardInit(void);
-	int getId(void){return m_pId;};
-	KviWindow * window(void){return m_pWindow;};
+	int getId(void) { return m_pId; };
+	KviWindow * window(void) { return m_pWindow; };
 	//void stop(void);
 protected slots:
 	void pasteFile(void);
 	void pasteClipboard(void);
+
 private:
-	QStringList           *m_pClipBuff;
-	QFile                 *m_pFile;
-	int                    m_pId;
-	KviWindow             *m_pWindow;
-	QTimer                *m_pTimer;
+	QStringList * m_pClipBuff;
+	QFile * m_pFile;
+	int m_pId;
+	KviWindow * m_pWindow;
+	QTimer * m_pTimer;
 };
 
 #endif //SPASTE_CONTROLLER_H

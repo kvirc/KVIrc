@@ -32,7 +32,6 @@
 
 KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList = 0;
 
-
 /*
 	@doc: socketspy.open
 	@type:
@@ -51,8 +50,9 @@ KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList = 0;
 
 static bool socketspy_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	if(!c->window()->console())return c->context()->errorNoIrcContext();
-	SocketSpyWindow *w = new SocketSpyWindow(c->window()->console());
+	if(!c->window()->console())
+		return c->context()->errorNoIrcContext();
+	SocketSpyWindow * w = new SocketSpyWindow(c->window()->console());
 	g_pMainWindow->addWindow(w);
 	return true;
 }
@@ -62,7 +62,7 @@ static bool socketspy_module_init(KviModule * m)
 	g_pSocketSpyWindowList = new KviPointerList<SocketSpyWindow>;
 	g_pSocketSpyWindowList->setAutoDelete(false);
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",socketspy_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", socketspy_kvs_cmd_open);
 	return true;
 }
 
@@ -81,13 +81,12 @@ static bool socketspy_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"SocketSpy",                                             // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"SocketSpy IRC socket traffic monitor",
-	socketspy_module_init,
-	socketspy_module_can_unload,
-	0,
-	socketspy_module_cleanup,
-	0
-)
+    "SocketSpy",                                                    // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "SocketSpy IRC socket traffic monitor",
+    socketspy_module_init,
+    socketspy_module_can_unload,
+    0,
+    socketspy_module_cleanup,
+    0)

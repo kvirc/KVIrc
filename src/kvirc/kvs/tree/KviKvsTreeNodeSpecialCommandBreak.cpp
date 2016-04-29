@@ -27,7 +27,7 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeSpecialCommandBreak::KviKvsTreeNodeSpecialCommandBreak(const QChar * pLocation)
-: KviKvsTreeNodeSpecialCommand(pLocation,"break")
+    : KviKvsTreeNodeSpecialCommand(pLocation, "break")
 {
 }
 
@@ -35,14 +35,14 @@ KviKvsTreeNodeSpecialCommandBreak::~KviKvsTreeNodeSpecialCommandBreak()
 {
 }
 
-void KviKvsTreeNodeSpecialCommandBreak::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSpecialCommandBreak::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Special Command \"break\"";
 }
 
 void KviKvsTreeNodeSpecialCommandBreak::dump(const char * prefix)
 {
-	qDebug("%s SpecialCommandBreak",prefix);
+	qDebug("%s SpecialCommandBreak", prefix);
 }
 
 bool KviKvsTreeNodeSpecialCommandBreak::execute(KviKvsRunTimeContext * c)

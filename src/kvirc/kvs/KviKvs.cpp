@@ -59,12 +59,12 @@ namespace KviKvs
 		KviKvsKernel::done();
 	}
 
-	void loadPopups(const QString &szFileName)
+	void loadPopups(const QString & szFileName)
 	{
 		KviKvsPopupManager::instance()->load(szFileName);
 	}
 
-	void savePopups(const QString &szFileName)
+	void savePopups(const QString & szFileName)
 	{
 		KviKvsPopupManager::instance()->save(szFileName);
 	}
@@ -74,12 +74,12 @@ namespace KviKvs
 		KviKvsPopupManager::instance()->clear();
 	}
 
-	void loadAliases(const QString &szFileName)
+	void loadAliases(const QString & szFileName)
 	{
 		KviKvsAliasManager::instance()->load(szFileName);
 	}
 
-	void saveAliases(const QString &szFileName)
+	void saveAliases(const QString & szFileName)
 	{
 		KviKvsAliasManager::instance()->save(szFileName);
 	}
@@ -89,12 +89,12 @@ namespace KviKvs
 		KviKvsAliasManager::instance()->clear();
 	}
 
-	void loadAppEvents(const QString &szFileName)
+	void loadAppEvents(const QString & szFileName)
 	{
 		KviKvsEventManager::instance()->loadAppEvents(szFileName);
 	}
 
-	void saveAppEvents(const QString &szFileName)
+	void saveAppEvents(const QString & szFileName)
 	{
 		KviKvsEventManager::instance()->saveAppEvents(szFileName);
 	}
@@ -104,12 +104,12 @@ namespace KviKvs
 		KviKvsEventManager::instance()->removeAllScriptAppHandlers();
 	}
 
-	void loadRawEvents(const QString &szFileName)
+	void loadRawEvents(const QString & szFileName)
 	{
 		KviKvsEventManager::instance()->loadRawEvents(szFileName);
 	}
 
-	void saveRawEvents(const QString &szFileName)
+	void saveRawEvents(const QString & szFileName)
 	{
 		KviKvsEventManager::instance()->saveRawEvents(szFileName);
 	}
@@ -119,12 +119,12 @@ namespace KviKvs
 		KviKvsEventManager::instance()->removeAllScriptRawHandlers();
 	}
 
-	void loadScriptAddons(const QString &szFileName)
+	void loadScriptAddons(const QString & szFileName)
 	{
 		KviKvsScriptAddonManager::instance()->load(szFileName);
 	}
 
-	void saveScriptAddons(const QString &szFileName)
+	void saveScriptAddons(const QString & szFileName)
 	{
 		KviKvsScriptAddonManager::instance()->save(szFileName);
 	}

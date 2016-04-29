@@ -29,7 +29,7 @@
 #include "KviPointerHashTable.h"
 #include <QLibrary>
 
-typedef int (*plugin_function)(int argc, char* argv[], char ** buffer);
+typedef int (*plugin_function)(int argc, char * argv[], char ** buffer);
 typedef int (*plugin_unload)();
 typedef int (*plugin_canunload)();
 typedef int (*plugin_load)();
@@ -39,44 +39,51 @@ class Plugin
 {
 protected:
 	// You have to create plugin instance by calling Plugin::load()
-	Plugin(QLibrary * pLibrary,const QString& name);
+	Plugin(QLibrary * pLibrary, const QString & name);
+
 public:
 	~Plugin();
+
 private:
 	// shared
 	// internal
-	QLibrary *m_pLibrary;
-	QString   m_szName;
+	QLibrary * m_pLibrary;
+	QString m_szName;
+
 public:
-	static Plugin* load(const QString& szFileName);
+	static Plugin * load(const QString & szFileName);
 	bool pfree(char * pBuffer);
 	bool unload();
 	bool canunload();
-	int call(const QString& szFunctionName, int argc, char * argv[], char ** pBuffer);
+	int call(const QString & szFunctionName, int argc, char * argv[], char ** pBuffer);
 	QString name() const;
-	void setName(const QString& szName);
+	void setName(const QString & szName);
+
 protected:
 };
 
 class PluginManager
 {
-	public:
-		PluginManager();
-		~PluginManager();
-	private:
-		// shared
-		bool m_bCanUnload;
-		// internal
-		KviPointerHashTable<QString,Plugin> * m_pPluginDict;
-	public:
-		bool pluginCall(KviKvsModuleFunctionCall *c);
-		bool checkUnload();
-		void unloadAll();
-	protected:
-		bool findPlugin(QString& szName);
-		bool isPluginLoaded(const QString& szFileNameOrPathToLoad);
-		bool loadPlugin(const QString& szPluginPath);
-		Plugin * getPlugin(const QString& szPluginPath);
+public:
+	PluginManager();
+	~PluginManager();
+
+private:
+	// shared
+	bool m_bCanUnload;
+	// internal
+	KviPointerHashTable<QString, Plugin> * m_pPluginDict;
+
+public:
+	bool pluginCall(KviKvsModuleFunctionCall * c);
+	bool checkUnload();
+	void unloadAll();
+
+protected:
+	bool findPlugin(QString & szName);
+	bool isPluginLoaded(const QString & szFileNameOrPathToLoad);
+	bool loadPlugin(const QString & szPluginPath);
+	Plugin * getPlugin(const QString & szPluginPath);
 };
 
 #endif //_PLUGIN_H_

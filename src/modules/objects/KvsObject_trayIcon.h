@@ -24,8 +24,6 @@
 //
 //=============================================================================
 
-
-
 #include "object_macros.h"
 #include <QSystemTrayIcon>
 #include <QMenu>
@@ -36,17 +34,18 @@ class KvsObject_trayIcon : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_trayIcon)
 protected:
-	QSystemTrayIcon *m_pTrayIcon;
+	QSystemTrayIcon * m_pTrayIcon;
+
 protected:
-	bool setIcon(KviKvsObjectFunctionCall *c);
-	bool show(KviKvsObjectFunctionCall *c);
-	bool hide(KviKvsObjectFunctionCall *c);
-	bool isVisible(KviKvsObjectFunctionCall *c);
-	bool setTooltip(KviKvsObjectFunctionCall *c);
-	bool showMessage(KviKvsObjectFunctionCall *c);
-	bool setContextMenu(KviKvsObjectFunctionCall *c);
-	bool activatedEvent(KviKvsObjectFunctionCall *c);
-	bool messageClickedEvent(KviKvsObjectFunctionCall *c);
+	bool setIcon(KviKvsObjectFunctionCall * c);
+	bool show(KviKvsObjectFunctionCall * c);
+	bool hide(KviKvsObjectFunctionCall * c);
+	bool isVisible(KviKvsObjectFunctionCall * c);
+	bool setTooltip(KviKvsObjectFunctionCall * c);
+	bool showMessage(KviKvsObjectFunctionCall * c);
+	bool setContextMenu(KviKvsObjectFunctionCall * c);
+	bool activatedEvent(KviKvsObjectFunctionCall * c);
+	bool messageClickedEvent(KviKvsObjectFunctionCall * c);
 
 protected slots:
 	void slotActivated(QSystemTrayIcon::ActivationReason);

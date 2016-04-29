@@ -58,22 +58,24 @@ public:
 	* \brief Destroys the default script manager
 	*/
 	~KviDefaultScriptManager();
+
 private:
 	static KviDefaultScriptManager * m_pSelf;
-	static unsigned int              m_uCount;
-	bool                             m_bNoNeedToRestore;
-	bool							 m_bConfigFileMissing;
-	KviDefaultScriptDialog         * m_pDialog;
-	QString                          m_szVersion;
-	QString                          m_szDate;
-	QString                          m_szAction;
-	QString                          m_szAddon;
-	QString                          m_szAlias;
-	QString                          m_szClass;
-	QString                          m_szEvent;
-	QString                          m_szPopup;
-	QString                          m_szRaw;
-	QString                          m_szToolbar;
+	static unsigned int m_uCount;
+	bool m_bNoNeedToRestore;
+	bool m_bConfigFileMissing;
+	KviDefaultScriptDialog * m_pDialog;
+	QString m_szVersion;
+	QString m_szDate;
+	QString m_szAction;
+	QString m_szAddon;
+	QString m_szAlias;
+	QString m_szClass;
+	QString m_szEvent;
+	QString m_szPopup;
+	QString m_szRaw;
+	QString m_szToolbar;
+
 public:
 	/**
 	* \brief Initializes the class instance
@@ -91,13 +93,13 @@ public:
 	* \brief Returns the instance of the class
 	* \return KviDefaultScriptManager *
 	*/
-	static inline KviDefaultScriptManager * instance(){ return m_pSelf; }
+	static inline KviDefaultScriptManager * instance() { return m_pSelf; }
 
 	/**
 	* \brief Returns the number of instances of the class
 	* \return unsigned int
 	*/
-	unsigned int count(){ return m_uCount; };
+	unsigned int count() { return m_uCount; };
 
 	/**
 	* \brief Checks if the local defscript is up to date
@@ -141,6 +143,7 @@ public:
 	* \return void
 	*/
 	void save(const QString & szConfigFile);
+
 private:
 	/**
 	* \brief Restores the default script
@@ -186,6 +189,7 @@ class KVIRC_API KviDefaultScriptDialog : public QDialog
 {
 	Q_OBJECT
 	friend class KviDefaultScriptManager;
+
 public:
 	/**
 	* \brief Constructs the default script dialog
@@ -197,6 +201,7 @@ public:
 	* \brief Destroys the default script dialog
 	*/
 	~KviDefaultScriptDialog();
+
 protected:
 	QGroupBox * m_pAdvanced;
 	QCheckBox * m_pAll;

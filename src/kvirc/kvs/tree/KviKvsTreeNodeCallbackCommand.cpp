@@ -26,14 +26,11 @@
 #include "KviKvsTreeNodeDataList.h"
 #include "KviKvsScript.h"
 
-
-
-KviKvsTreeNodeCallbackCommand::KviKvsTreeNodeCallbackCommand(const QChar * pLocation,const QString &szCmdName,KviKvsTreeNodeDataList * params,KviKvsScript * pCallback)
-: KviKvsTreeNodeCommandWithParameters(pLocation,szCmdName,params)
+KviKvsTreeNodeCallbackCommand::KviKvsTreeNodeCallbackCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params, KviKvsScript * pCallback)
+    : KviKvsTreeNodeCommandWithParameters(pLocation, szCmdName, params)
 {
 	m_pCallback = pCallback;
 }
-
 
 KviKvsTreeNodeCallbackCommand::~KviKvsTreeNodeCallbackCommand()
 {
@@ -47,7 +44,7 @@ void KviKvsTreeNodeCallbackCommand::contextDescription(QString & szBuffer)
 
 void KviKvsTreeNodeCallbackCommand::dump(const char * prefix)
 {
-	qDebug("%s CallbackCommand(%s)",prefix,m_szCmdName.toUtf8().data());
+	qDebug("%s CallbackCommand(%s)", prefix, m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 	dumpCallback(prefix);

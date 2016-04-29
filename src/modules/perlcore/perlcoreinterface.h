@@ -31,21 +31,20 @@
 
 #include <QStringList>
 
-
 #define KVI_PERLCORECTRLCOMMAND_EXECUTE "execute"
 
 typedef struct _KviPerlCoreCtrlCommand_execute
 {
-	unsigned int           uSize;
+	unsigned int uSize;
 	KviKvsRunTimeContext * pKvsContext;
-	QString                szContext;
-	QString                szCode;
-	bool                   bExitOk;
-	QString                szRetVal;
-	QString                szError;
-	QStringList            lWarnings;
-	QStringList            lArgs;
-	bool                   bQuiet;
+	QString szContext;
+	QString szCode;
+	bool bExitOk;
+	QString szRetVal;
+	QString szError;
+	QStringList lWarnings;
+	QStringList lArgs;
+	bool bQuiet;
 } KviPerlCoreCtrlCommand_execute;
 
 #define KVI_PERLCORECTRLCOMMAND_DESTROY "destroy"
@@ -53,7 +52,7 @@ typedef struct _KviPerlCoreCtrlCommand_execute
 typedef struct _KviPerlCoreCtrlCommand_destroy
 {
 	unsigned int uSize;
-	QString      szContext;
+	QString szContext;
 } KviPerlCoreCtrlCommand_destroy;
 
 #endif // !_PERLCOREINTERFACE_H_

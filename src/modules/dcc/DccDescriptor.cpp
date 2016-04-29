@@ -32,9 +32,9 @@
 #include "KviApplication.h"
 
 static unsigned int g_uNextDescriptorId = 1; // we use 0 as an invalid descriptor id
-static KviPointerHashTable<int,DccDescriptor> * g_pDescriptorDict = 0;
+static KviPointerHashTable<int, DccDescriptor> * g_pDescriptorDict = 0;
 
-KviPointerHashTable<int,DccDescriptor> * DccDescriptor::descriptorDict()
+KviPointerHashTable<int, DccDescriptor> * DccDescriptor::descriptorDict()
 {
 	return g_pDescriptorDict;
 }
@@ -46,7 +46,7 @@ DccDescriptor::DccDescriptor(const DccDescriptor & src)
 
 DccDescriptor::DccDescriptor(KviConsoleWindow * pConsole)
 {
-	m_pConsole   = pConsole;
+	m_pConsole = pConsole;
 	m_pDccWindow = 0;
 	m_pDccTransfer = 0;
 
@@ -57,38 +57,37 @@ DccDescriptor::DccDescriptor(KviConsoleWindow * pConsole)
 
 	if(!g_pDescriptorDict)
 	{
-		g_pDescriptorDict = new KviPointerHashTable<int,DccDescriptor>;
+		g_pDescriptorDict = new KviPointerHashTable<int, DccDescriptor>;
 		g_pDescriptorDict->setAutoDelete(false);
 	}
-	g_pDescriptorDict->replace((long)m_uId,this);
+	g_pDescriptorDict->replace((long)m_uId, this);
 
-	szNick       = __tr_ctx("unknown","dcc");
-	szUser       = szNick;
-	szHost       = szNick;
+	szNick = __tr_ctx("unknown", "dcc");
+	szUser = szNick;
+	szHost = szNick;
 
-	szLocalNick  = szNick;
-	szLocalUser  = szNick;
-	szLocalHost  = szNick;
+	szLocalNick = szNick;
+	szLocalUser = szNick;
+	szLocalHost = szNick;
 
-	szIp         = szNick;
-	szPort       = szNick;
+	szIp = szNick;
+	szPort = szNick;
 
-
-	bSendRequest      = true;
-	bDoTimeout        = true;
-	bIsTdcc           = false;
+	bSendRequest = true;
+	bDoTimeout = true;
+	bIsTdcc = false;
 	bOverrideMinimize = false;
-	bShowMinimized    = false;
-	bAutoAccept       = false;
+	bShowMinimized = false;
+	bAutoAccept = false;
 #ifdef COMPILE_SSL_SUPPORT
-	bIsSSL            = false;
+	bIsSSL = false;
 #endif
-	bRecvFile         = false;
-	bResume           = false;
-	bNoAcks           = false;
+	bRecvFile = false;
+	bResume = false;
+	bNoAcks = false;
 	bIsIncomingAvatar = false;
 
-	iSampleRate       = 0;
+	iSampleRate = 0;
 
 	m_bCreationEventTriggered = false;
 }
@@ -103,7 +102,7 @@ DccDescriptor::~DccDescriptor()
 
 		if(pEventWindow && g_pApp->windowExists(pEventWindow))
 		{
-			KVS_TRIGGER_EVENT_1(KviEvent_OnDCCSessionDestroyed,pEventWindow,m_szId);
+			KVS_TRIGGER_EVENT_1(KviEvent_OnDCCSessionDestroyed, pEventWindow, m_szId);
 		}
 	}
 
@@ -116,7 +115,6 @@ DccDescriptor::~DccDescriptor()
 			g_pDescriptorDict = 0;
 		}
 	}
-
 }
 
 void DccDescriptor::triggerCreationEvent()
@@ -134,17 +132,18 @@ void DccDescriptor::triggerCreationEvent()
 
 	if(pEventWindow && g_pApp->windowExists(pEventWindow))
 	{
-		KVS_TRIGGER_EVENT_1(KviEvent_OnDCCSessionCreated,pEventWindow,m_szId);
+		KVS_TRIGGER_EVENT_1(KviEvent_OnDCCSessionCreated, pEventWindow, m_szId);
 	}
 }
 
 DccDescriptor * DccDescriptor::find(unsigned int uId)
 {
-	if(!g_pDescriptorDict)return 0;
+	if(!g_pDescriptorDict)
+		return 0;
 	return g_pDescriptorDict->find((long)uId);
 }
 
-void DccDescriptor::copyFrom(const DccDescriptor &src)
+void DccDescriptor::copyFrom(const DccDescriptor & src)
 {
 	m_uId = g_uNextDescriptorId;
 	g_uNextDescriptorId++;
@@ -152,77 +151,85 @@ void DccDescriptor::copyFrom(const DccDescriptor &src)
 
 	if(!g_pDescriptorDict)
 	{
-		g_pDescriptorDict = new KviPointerHashTable<int,DccDescriptor>;
+		g_pDescriptorDict = new KviPointerHashTable<int, DccDescriptor>;
 		g_pDescriptorDict->setAutoDelete(false);
 	}
-	g_pDescriptorDict->replace((long)m_uId,this);
-	m_bCreationEventTriggered=false;
+	g_pDescriptorDict->replace((long)m_uId, this);
+	m_bCreationEventTriggered = false;
 
-	m_pDccWindow          = src.m_pDccWindow;
-	m_pDccTransfer        = src.m_pDccTransfer;
-	szType                = src.szType;
-	szNick                = src.szNick;
-	szUser                = src.szUser;
-	szHost                = src.szHost;
-	szLocalNick           = src.szLocalNick;
-	szLocalUser           = src.szLocalUser;
-	szLocalHost           = src.szLocalHost;
-	szIp                  = src.szIp;
-	szPort                = src.szPort;
-	m_pConsole            = src.console();
-	m_szZeroPortRequestTag= src.zeroPortRequestTag();
-	bActive               = src.bActive;
-	szListenIp            = src.szListenIp;
-	szListenPort          = src.szListenPort;
-	szFakeIp              = src.szFakeIp;
-	szFakePort            = src.szFakePort;
-	bSendRequest          = src.bSendRequest;
-	bDoTimeout            = src.bDoTimeout;
-	szFileName            = src.szFileName;
-	szFileSize            = src.szFileSize;
-	bResume               = src.bResume;
-	bRecvFile             = src.bRecvFile;
-	bNoAcks               = src.bNoAcks;
-	bIsTdcc               = src.bIsTdcc;
-	bOverrideMinimize     = src.bOverrideMinimize;
-	bShowMinimized        = src.bShowMinimized;
-	bAutoAccept           = src.bAutoAccept;
-	bIsIncomingAvatar     = src.bIsIncomingAvatar;
-	szLocalFileName       = src.szLocalFileName;
-	szLocalFileSize       = src.szLocalFileSize;
+	m_pDccWindow = src.m_pDccWindow;
+	m_pDccTransfer = src.m_pDccTransfer;
+	szType = src.szType;
+	szNick = src.szNick;
+	szUser = src.szUser;
+	szHost = src.szHost;
+	szLocalNick = src.szLocalNick;
+	szLocalUser = src.szLocalUser;
+	szLocalHost = src.szLocalHost;
+	szIp = src.szIp;
+	szPort = src.szPort;
+	m_pConsole = src.console();
+	m_szZeroPortRequestTag = src.zeroPortRequestTag();
+	bActive = src.bActive;
+	szListenIp = src.szListenIp;
+	szListenPort = src.szListenPort;
+	szFakeIp = src.szFakeIp;
+	szFakePort = src.szFakePort;
+	bSendRequest = src.bSendRequest;
+	bDoTimeout = src.bDoTimeout;
+	szFileName = src.szFileName;
+	szFileSize = src.szFileSize;
+	bResume = src.bResume;
+	bRecvFile = src.bRecvFile;
+	bNoAcks = src.bNoAcks;
+	bIsTdcc = src.bIsTdcc;
+	bOverrideMinimize = src.bOverrideMinimize;
+	bShowMinimized = src.bShowMinimized;
+	bAutoAccept = src.bAutoAccept;
+	bIsIncomingAvatar = src.bIsIncomingAvatar;
+	szLocalFileName = src.szLocalFileName;
+	szLocalFileSize = src.szLocalFileSize;
 #ifdef COMPILE_SSL_SUPPORT
-	bIsSSL                = src.bIsSSL;
+	bIsSSL = src.bIsSSL;
 #endif
 	// dcc voice only
-	szCodec               = src.szCodec;
-	iSampleRate           = src.iSampleRate;
+	szCodec = src.szCodec;
+	iSampleRate = src.iSampleRate;
 }
 
 bool DccDescriptor::isFileUpload()
 {
-	if(szType.toUpper()=="SEND")return true;
-	if(szType.toUpper()=="TSEND")return true;
+	if(szType.toUpper() == "SEND")
+		return true;
+	if(szType.toUpper() == "TSEND")
+		return true;
 #ifdef COMPILE_SSL_SUPPORT
-	if(szType.toUpper()=="SSEND")return true;
+	if(szType.toUpper() == "SSEND")
+		return true;
 #endif
 	return false;
 }
 
 bool DccDescriptor::isFileDownload()
 {
-	if(szType.toUpper()=="RECV")return true;
-	if(szType.toUpper()=="TRECV")return true;
+	if(szType.toUpper() == "RECV")
+		return true;
+	if(szType.toUpper() == "TRECV")
+		return true;
 #ifdef COMPILE_SSL_SUPPORT
-	if(szType.toUpper()=="SRECV")return true;
+	if(szType.toUpper() == "SRECV")
+		return true;
 #endif
 	return false;
 }
 
 bool DccDescriptor::isDccChat()
 {
-	if(szType.toUpper()=="CHAT")return true;
+	if(szType.toUpper() == "CHAT")
+		return true;
 #ifdef COMPILE_SSL_SUPPORT
-	if(szType.toUpper()=="SCHAT")return true;
+	if(szType.toUpper() == "SCHAT")
+		return true;
 #endif
 	return false;
 }

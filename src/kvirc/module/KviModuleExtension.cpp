@@ -30,10 +30,9 @@
 #include "KviApplication.h"
 
 // created and destroyed in KviApplication.cpp
-KVIRC_API KviModuleExtensionManager    * g_pModuleExtensionManager    = 0;
+KVIRC_API KviModuleExtensionManager * g_pModuleExtensionManager = 0;
 
-
-KviModuleExtensionDescriptor::KviModuleExtensionDescriptor(KviModule * m,const KviCString &szType,const KviCString &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r,const QPixmap &pix)
+KviModuleExtensionDescriptor::KviModuleExtensionDescriptor(KviModule * m, const KviCString & szType, const KviCString & szName, const QString & szVisibleName, KviModuleExtensionAllocRoutine r, const QPixmap & pix)
 {
 	m_iId = KviApplication::getGloballyUniqueId();
 
@@ -44,25 +43,32 @@ KviModuleExtensionDescriptor::KviModuleExtensionDescriptor(KviModule * m,const K
 	m_allocRoutine = r;
 	m_pObjectList = new KviPointerList<KviModuleExtension>;
 	m_pObjectList->setAutoDelete(false);
-	if(pix.isNull())m_pIcon = 0;
-	else m_pIcon = new QPixmap(pix);
+	if(pix.isNull())
+		m_pIcon = 0;
+	else
+		m_pIcon = new QPixmap(pix);
 }
 
 KviModuleExtensionDescriptor::~KviModuleExtensionDescriptor()
 {
-	while(KviModuleExtension * e = m_pObjectList->first())e->die();
+	while(KviModuleExtension * e = m_pObjectList->first())
+		e->die();
 	delete m_pObjectList;
-	if(m_pIcon)delete m_pIcon;
+	if(m_pIcon)
+		delete m_pIcon;
 }
 
-void KviModuleExtensionDescriptor::setIcon(const QPixmap &pix)
+void KviModuleExtensionDescriptor::setIcon(const QPixmap & pix)
 {
-	if(m_pIcon)delete m_pIcon;
-	if(pix.isNull())m_pIcon = 0;
-	else m_pIcon = new QPixmap(pix);
+	if(m_pIcon)
+		delete m_pIcon;
+	if(pix.isNull())
+		m_pIcon = 0;
+	else
+		m_pIcon = new QPixmap(pix);
 }
 
-KviModuleExtension * KviModuleExtensionDescriptor::allocate(KviWindow * pWnd,KviPointerHashTable<QString,QVariant> * pParams,void * pSpecial)
+KviModuleExtension * KviModuleExtensionDescriptor::allocate(KviWindow * pWnd, KviPointerHashTable<QString, QVariant> * pParams, void * pSpecial)
 {
 	KviModuleExtensionAllocStruct s;
 	s.pDescriptor = this;
@@ -71,7 +77,6 @@ KviModuleExtension * KviModuleExtensionDescriptor::allocate(KviWindow * pWnd,Kvi
 	s.pSpecial = pSpecial;
 	return m_allocRoutine(&s);
 }
-
 
 void KviModuleExtensionDescriptor::registerObject(KviModuleExtension * e)
 {
@@ -83,10 +88,9 @@ void KviModuleExtensionDescriptor::unregisterObject(KviModuleExtension * e)
 	m_pObjectList->removeRef(e);
 }
 
-
 KviModuleExtensionManager::KviModuleExtensionManager()
 {
-	m_pExtensionDict = new KviPointerHashTable<const char *,KviModuleExtensionDescriptorList>(17,false);
+	m_pExtensionDict = new KviPointerHashTable<const char *, KviModuleExtensionDescriptorList>(17, false);
 	m_pExtensionDict->setAutoDelete(true);
 }
 
@@ -95,21 +99,21 @@ KviModuleExtensionManager::~KviModuleExtensionManager()
 	delete m_pExtensionDict;
 }
 
-KviModuleExtensionDescriptorList * KviModuleExtensionManager::getExtensionList(const KviCString &szType)
+KviModuleExtensionDescriptorList * KviModuleExtensionManager::getExtensionList(const KviCString & szType)
 {
 	g_pModuleManager->loadModulesByCaps(szType.ptr());
 	return m_pExtensionDict->find(szType.ptr());
 }
 
-KviModuleExtensionDescriptor * KviModuleExtensionManager::registerExtension(KviModule * m,const KviCString &szType,const KviCString &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r,const QPixmap &icon)
+KviModuleExtensionDescriptor * KviModuleExtensionManager::registerExtension(KviModule * m, const KviCString & szType, const KviCString & szName, const QString & szVisibleName, KviModuleExtensionAllocRoutine r, const QPixmap & icon)
 {
-	KviModuleExtensionDescriptor * d = new KviModuleExtensionDescriptor(m,szType,szName,szVisibleName,r,icon);
+	KviModuleExtensionDescriptor * d = new KviModuleExtensionDescriptor(m, szType, szName, szVisibleName, r, icon);
 	KviModuleExtensionDescriptorList * l = m_pExtensionDict->find(szType.ptr());
 	if(!l)
 	{
 		l = new KviModuleExtensionDescriptorList();
 		l->setAutoDelete(false);
-		m_pExtensionDict->insert(szType.ptr(),l);
+		m_pExtensionDict->insert(szType.ptr(), l);
 	}
 	l->append(d);
 	return d;
@@ -117,7 +121,7 @@ KviModuleExtensionDescriptor * KviModuleExtensionManager::registerExtension(KviM
 
 void KviModuleExtensionManager::unregisterExtensionsByModule(KviModule * m)
 {
-	KviPointerHashTableIterator<const char *,KviModuleExtensionDescriptorList> it(*m_pExtensionDict);
+	KviPointerHashTableIterator<const char *, KviModuleExtensionDescriptorList> it(*m_pExtensionDict);
 	KviPointerList<KviCString> dying;
 	dying.setAutoDelete(true);
 	while(KviModuleExtensionDescriptorList * l = it.current())
@@ -125,26 +129,28 @@ void KviModuleExtensionManager::unregisterExtensionsByModule(KviModule * m)
 		KviPointerList<KviModuleExtensionDescriptor> dying2;
 		dying2.setAutoDelete(true);
 
-		for(KviModuleExtensionDescriptor * d = l->first();d;d = l->next())
+		for(KviModuleExtensionDescriptor * d = l->first(); d; d = l->next())
 		{
-			if(d->module() == m)dying2.append(d);
+			if(d->module() == m)
+				dying2.append(d);
 		}
 
-		for(KviModuleExtensionDescriptor * de = dying2.first();de;de = dying2.next())
+		for(KviModuleExtensionDescriptor * de = dying2.first(); de; de = dying2.next())
 		{
 			l->removeRef(de);
 		}
 
-		if(l->isEmpty())dying.append(new KviCString(it.currentKey()));
+		if(l->isEmpty())
+			dying.append(new KviCString(it.currentKey()));
 		++it;
 	}
-	for(KviCString * li = dying.first();li;li = dying.next())
+	for(KviCString * li = dying.first(); li; li = dying.next())
 	{
 		m_pExtensionDict->remove(li->ptr());
 	}
 }
 
-KviModuleExtensionDescriptorList * KviModuleExtensionManager::allocateExtensionGetDescriptorList(const KviCString &szType,const QString &preloadModule)
+KviModuleExtensionDescriptorList * KviModuleExtensionManager::allocateExtensionGetDescriptorList(const KviCString & szType, const QString & preloadModule)
 {
 	if(!preloadModule.isEmpty())
 	{
@@ -163,38 +169,43 @@ KviModuleExtensionDescriptorList * KviModuleExtensionManager::allocateExtensionG
 	return l;
 }
 
-KviModuleExtensionDescriptor * KviModuleExtensionManager::findExtensionDescriptor(const KviCString &szType,const KviCString &szName)
+KviModuleExtensionDescriptor * KviModuleExtensionManager::findExtensionDescriptor(const KviCString & szType, const KviCString & szName)
 {
 	KviModuleExtensionDescriptorList * l = m_pExtensionDict->find(szType.ptr());
-	if(!l)return 0;
+	if(!l)
+		return 0;
 
-	for(KviModuleExtensionDescriptor * d = l->first();d;d = l->next())
+	for(KviModuleExtensionDescriptor * d = l->first(); d; d = l->next())
 	{
-		if(d->name().equalsCI(szName))return d;
+		if(d->name().equalsCI(szName))
+			return d;
 	}
 
 	return 0;
 }
 
-KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviCString &szType,const KviCString &szName,KviWindow * pWnd,KviPointerHashTable<QString,QVariant> * pParams,void * pSpecial,const QString &preloadModule)
+KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviCString & szType, const KviCString & szName, KviWindow * pWnd, KviPointerHashTable<QString, QVariant> * pParams, void * pSpecial, const QString & preloadModule)
 {
-	KviModuleExtensionDescriptorList * l = allocateExtensionGetDescriptorList(szType,preloadModule);
-	if(!l)return 0;
+	KviModuleExtensionDescriptorList * l = allocateExtensionGetDescriptorList(szType, preloadModule);
+	if(!l)
+		return 0;
 
 	KviModuleExtensionDescriptor * d;
 
-	for(d = l->first();d;d = l->next())
+	for(d = l->first(); d; d = l->next())
 	{
-		if(d->name().equalsCI(szName))return d->allocate(pWnd,pParams,pSpecial);
+		if(d->name().equalsCI(szName))
+			return d->allocate(pWnd, pParams, pSpecial);
 	}
 
 	// uhm... not there ?
 	g_pModuleManager->loadModulesByCaps(szType.ptr());
 	// try again after loading the modules
 	// l = m_pExtensionDict->find(szType.ptr()); <--- this shouldn't change!
-	for(d = l->first();d;d = l->next())
+	for(d = l->first(); d; d = l->next())
 	{
-		if(d->name().equalsCI(szName))return d->allocate(pWnd,pParams,pSpecial);
+		if(d->name().equalsCI(szName))
+			return d->allocate(pWnd, pParams, pSpecial);
 	}
 
 	// no way : no such extension
@@ -202,34 +213,35 @@ KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviCStri
 	return 0;
 }
 
-
-KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviCString &szType,int id,KviWindow * pWnd,KviPointerHashTable<QString,QVariant> * pParams,void * pSpecial,const QString &preloadModule)
+KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviCString & szType, int id, KviWindow * pWnd, KviPointerHashTable<QString, QVariant> * pParams, void * pSpecial, const QString & preloadModule)
 {
-	KviModuleExtensionDescriptorList * l = allocateExtensionGetDescriptorList(szType,preloadModule);
-	if(!l)return 0;
+	KviModuleExtensionDescriptorList * l = allocateExtensionGetDescriptorList(szType, preloadModule);
+	if(!l)
+		return 0;
 
 	KviModuleExtensionDescriptor * d;
-	for(d = l->first();d;d = l->next())
+	for(d = l->first(); d; d = l->next())
 	{
-		if(d->id() == id)return d->allocate(pWnd,pParams,pSpecial);
+		if(d->id() == id)
+			return d->allocate(pWnd, pParams, pSpecial);
 	}
 
 	// uhm... not there ?
 	g_pModuleManager->loadModulesByCaps(szType.ptr());
 	// try again after loading the modules
 	// l = m_pExtensionDict->find(szType.ptr()); <--- this shouldn't change!
-	for(d = l->first();d;d = l->next())
+	for(d = l->first(); d; d = l->next())
 	{
-		if(d->id() == id)return d->allocate(pWnd,pParams,pSpecial);
+		if(d->id() == id)
+			return d->allocate(pWnd, pParams, pSpecial);
 	}
 	// no way : no such extension
 
 	return 0;
 }
-
 
 KviModuleExtension::KviModuleExtension(KviModuleExtensionDescriptor * d)
-: KviHeapObject()
+    : KviHeapObject()
 {
 	m_pDescriptor = d;
 	m_pDescriptor->registerObject(this);

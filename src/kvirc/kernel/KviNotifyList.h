@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-
 #include "kvi_settings.h"
 #include "KviQString.h"
 #include "KviPointerList.h"
@@ -49,19 +48,22 @@ class KVIRC_API KviNotifyListManager : public QObject
 protected:
 	KviNotifyListManager(KviIrcConnection * pConnection);
 	~KviNotifyListManager();
+
 protected:
-	KviConsoleWindow       * m_pConsole;
+	KviConsoleWindow * m_pConsole;
 	KviIrcConnection * m_pConnection;
+
 protected:
 	virtual void start();
 	virtual void stop();
 	virtual bool handleUserhost(KviIrcMessage * msg);
 	virtual bool handleIsOn(KviIrcMessage * msg);
-	virtual bool handleWatchReply(KviIrcMessage *msg);
-	void notifyOnLine(const QString &nick,const QString &user = QString(),const QString &host = QString(),const QString &szReason = QString(),bool bJoin=true);
-	void notifyOffLine(const QString &nick,const QString &user = QString(),const QString &host = QString(),const QString &szReason = QString());
+	virtual bool handleWatchReply(KviIrcMessage * msg);
+	void notifyOnLine(const QString & nick, const QString & user = QString(), const QString & host = QString(), const QString & szReason = QString(), bool bJoin = true);
+	void notifyOffLine(const QString & nick, const QString & user = QString(), const QString & host = QString(), const QString & szReason = QString());
+
 public:
-	KviConsoleWindow * console(){ return m_pConsole;  };
+	KviConsoleWindow * console() { return m_pConsole; };
 };
 
 class KVIRC_API KviIsOnNotifyListManager : public KviNotifyListManager
@@ -73,25 +75,28 @@ class KVIRC_API KviIsOnNotifyListManager : public KviNotifyListManager
 protected:
 	KviIsOnNotifyListManager(KviIrcConnection * pConnection);
 	~KviIsOnNotifyListManager();
+
 private:
-	KviPointerHashTable<QString,QString>      * m_pRegUserDict;            // dict notifystring->reguser name
-	KviPointerList<QString> * m_pNotifyList;                  // list of notifystring (total)
-	KviPointerList<QString> * m_pIsOnList;                    // list of notifystring (one session)
-	QString               m_szIsOnString;                 // m_pIsOnList in form of a string
-	KviPointerList<QString> * m_pOnlineList;                  //
+	KviPointerHashTable<QString, QString> * m_pRegUserDict; // dict notifystring->reguser name
+	KviPointerList<QString> * m_pNotifyList;                // list of notifystring (total)
+	KviPointerList<QString> * m_pIsOnList;                  // list of notifystring (one session)
+	QString m_szIsOnString;                                 // m_pIsOnList in form of a string
+	KviPointerList<QString> * m_pOnlineList;                //
 	KviPointerList<QString> * m_pUserhostList;
-	QString               m_szUserhostString;
-	bool                  m_bExpectingIsOn;
-	bool                  m_bExpectingUserhost;
-	QTimer              * m_pDelayedIsOnTimer;
-	QTimer              * m_pDelayedNotifyTimer;
-	QTimer              * m_pDelayedUserhostTimer;
-	bool                  m_bRunning;
+	QString m_szUserhostString;
+	bool m_bExpectingIsOn;
+	bool m_bExpectingUserhost;
+	QTimer * m_pDelayedIsOnTimer;
+	QTimer * m_pDelayedNotifyTimer;
+	QTimer * m_pDelayedUserhostTimer;
+	bool m_bRunning;
+
 protected:
 	virtual void start();
 	virtual void stop();
-	virtual bool handleUserhost(KviIrcMessage *msg);
-	virtual bool handleIsOn(KviIrcMessage *msg);
+	virtual bool handleUserhost(KviIrcMessage * msg);
+	virtual bool handleIsOn(KviIrcMessage * msg);
+
 private:
 	void delayedNotifySession();
 	void delayedIsOnSession();
@@ -107,10 +112,8 @@ private slots:
 	void buildNotifyList();
 	void sendIsOn();
 	void sendUserhost();
-	bool doMatchUser(const QString &notifyString,const KviIrcMask & mask);
-
+	bool doMatchUser(const QString & notifyString, const KviIrcMask & mask);
 };
-
 
 class KVIRC_API KviStupidNotifyListManager : public KviNotifyListManager
 {
@@ -121,17 +124,21 @@ class KVIRC_API KviStupidNotifyListManager : public KviNotifyListManager
 protected:
 	KviStupidNotifyListManager(KviIrcConnection * pConnection);
 	~KviStupidNotifyListManager();
+
 protected:
 	KviPointerList<QString> * m_pNickList;
 	QString m_szLastIsOnMsg;
 	int m_iNextNickToCheck;
 	int m_iRestartTimer;
+
 protected:
 	virtual void start();
 	virtual void stop();
-	virtual bool handleIsOn(KviIrcMessage *msg);
+	virtual bool handleIsOn(KviIrcMessage * msg);
+
 protected:
-	virtual void timerEvent(QTimerEvent *e);
+	virtual void timerEvent(QTimerEvent * e);
+
 private:
 	void buildNickList();
 	void sendIsOn();
@@ -146,15 +153,15 @@ class KVIRC_API KviWatchNotifyListManager : public KviNotifyListManager
 public:
 	KviWatchNotifyListManager(KviIrcConnection * pConnection);
 	~KviWatchNotifyListManager();
+
 protected:
-	KviPointerHashTable<QString,QString> * m_pRegUserDict;            // dict notifystring->reguser name
+	KviPointerHashTable<QString, QString> * m_pRegUserDict; // dict notifystring->reguser name
 protected:
 	void buildRegUserDict();
 	virtual void start();
 	virtual void stop();
-	virtual bool handleWatchReply(KviIrcMessage *msg);
-	bool doMatchUser(KviIrcMessage *msg,const QString &notifyString,const KviIrcMask & mask);
-
+	virtual bool handleWatchReply(KviIrcMessage * msg);
+	bool doMatchUser(KviIrcMessage * msg, const QString & notifyString, const KviIrcMask & mask);
 };
 
 #endif //_KVI_NOTIFYLIST_H_

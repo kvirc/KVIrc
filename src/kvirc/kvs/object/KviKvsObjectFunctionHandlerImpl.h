@@ -24,7 +24,6 @@
 //
 //=============================================================================
 
-
 #include "kvi_settings.h"
 #include "KviKvsObject.h"
 #include "KviKvsObjectClass.h"
@@ -35,85 +34,101 @@ class KviKvsObjectClass;
 class KviKvsScript;
 class KviKvsObjectFunctionCall;
 
-
 class KVIRC_API KviKvsObjectCoreCallFunctionHandler : public KviKvsObjectFunctionHandler
 {
 	friend class KviKvsObject;
 	friend class KviKvsObjectClass;
+
 protected:
-	KviKvsObjectCoreCallFunctionHandler(KviKvsObjectFunctionHandlerProc pProc,unsigned int uFlags = 0);
-	KviKvsObjectCoreCallFunctionHandler(const KviKvsObjectCoreCallFunctionHandler &h);
+	KviKvsObjectCoreCallFunctionHandler(KviKvsObjectFunctionHandlerProc pProc, unsigned int uFlags = 0);
+	KviKvsObjectCoreCallFunctionHandler(const KviKvsObjectCoreCallFunctionHandler & h);
+
 public:
 	virtual ~KviKvsObjectCoreCallFunctionHandler();
+
 protected:
 	KviKvsObjectFunctionHandlerProc m_pProc;
+
 protected:
 	virtual KviKvsObjectFunctionHandler * clone();
-	virtual bool call(KviKvsObject * pObject,KviKvsObjectFunctionCall * pCall);
+	virtual bool call(KviKvsObject * pObject, KviKvsObjectFunctionCall * pCall);
 };
 
 class KVIRC_API KviKvsObjectScriptFunctionHandler : public KviKvsObjectFunctionHandler
 {
 	friend class KviKvsObject;
 	friend class KviKvsObjectClass;
+
 protected:
-        KviKvsObjectScriptFunctionHandler(const QString &szScriptContext,const QString &szCode,const QString &szReminder,unsigned int uFlags = 0);
-	KviKvsObjectScriptFunctionHandler(const KviKvsObjectScriptFunctionHandler &h);
+	KviKvsObjectScriptFunctionHandler(const QString & szScriptContext, const QString & szCode, const QString & szReminder, unsigned int uFlags = 0);
+	KviKvsObjectScriptFunctionHandler(const KviKvsObjectScriptFunctionHandler & h);
+
 public:
 	virtual ~KviKvsObjectScriptFunctionHandler();
+
 protected:
 	KviKvsScript * m_pHandler;
-        QString m_szReminder;
+	QString m_szReminder;
+
 protected:
 	virtual bool isScriptHandler();
 	virtual QString scriptHandlerCode();
-        virtual QString reminder();
-        virtual void setReminder(const QString &szReminder){m_szReminder=szReminder;};
+	virtual QString reminder();
+	virtual void setReminder(const QString & szReminder) { m_szReminder = szReminder; };
 
-        virtual KviKvsObjectFunctionHandler * clone();
-	virtual bool call(KviKvsObject * pObject,KviKvsObjectFunctionCall * pCall);
+	virtual KviKvsObjectFunctionHandler * clone();
+	virtual bool call(KviKvsObject * pObject, KviKvsObjectFunctionCall * pCall);
 };
 
 class KVIRC_API KviKvsObjectStandardTrueReturnFunctionHandler : public KviKvsObjectFunctionHandler
 {
 	friend class KviKvsObject;
 	friend class KviKvsObjectClass;
+
 protected:
 	KviKvsObjectStandardTrueReturnFunctionHandler()
-	: KviKvsObjectFunctionHandler() {};
+	    : KviKvsObjectFunctionHandler(){};
+
 public:
 	virtual ~KviKvsObjectStandardTrueReturnFunctionHandler(){};
+
 protected:
 	virtual KviKvsObjectFunctionHandler * clone();
-	virtual bool call(KviKvsObject * pObject,KviKvsObjectFunctionCall * pCall);
+	virtual bool call(KviKvsObject * pObject, KviKvsObjectFunctionCall * pCall);
 };
 
 class KVIRC_API KviKvsObjectStandardFalseReturnFunctionHandler : public KviKvsObjectFunctionHandler
 {
 	friend class KviKvsObject;
 	friend class KviKvsObjectClass;
+
 protected:
 	KviKvsObjectStandardFalseReturnFunctionHandler()
-	: KviKvsObjectFunctionHandler() {};
+	    : KviKvsObjectFunctionHandler(){};
+
 public:
 	virtual ~KviKvsObjectStandardFalseReturnFunctionHandler(){};
+
 protected:
 	virtual KviKvsObjectFunctionHandler * clone();
-	virtual bool call(KviKvsObject * pObject,KviKvsObjectFunctionCall * pCall);
+	virtual bool call(KviKvsObject * pObject, KviKvsObjectFunctionCall * pCall);
 };
 
 class KVIRC_API KviKvsObjectStandardNothingReturnFunctionHandler : public KviKvsObjectFunctionHandler
 {
 	friend class KviKvsObject;
 	friend class KviKvsObjectClass;
+
 protected:
 	KviKvsObjectStandardNothingReturnFunctionHandler()
-	: KviKvsObjectFunctionHandler() {};
+	    : KviKvsObjectFunctionHandler(){};
+
 public:
 	virtual ~KviKvsObjectStandardNothingReturnFunctionHandler(){};
+
 protected:
 	virtual KviKvsObjectFunctionHandler * clone();
-	virtual bool call(KviKvsObject * pObject,KviKvsObjectFunctionCall * pCall);
+	virtual bool call(KviKvsObject * pObject, KviKvsObjectFunctionCall * pCall);
 };
 
 #endif //!_KVI_KVS_OBJECT_FUNCTIONHANDLERIMPL_H_

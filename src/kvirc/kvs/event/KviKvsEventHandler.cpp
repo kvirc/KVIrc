@@ -25,7 +25,7 @@
 #include "KviKvsEventHandler.h"
 
 KviKvsEventHandler::KviKvsEventHandler(Type t)
-: KviHeapObject(), m_type(t)
+    : KviHeapObject(), m_type(t)
 {
 }
 
@@ -33,12 +33,10 @@ KviKvsEventHandler::~KviKvsEventHandler()
 {
 }
 
-
-
-KviKvsScriptEventHandler::KviKvsScriptEventHandler(const QString &szHandlerName,const QString &szContextName,const QString &szCode,bool bEnabled)
-: KviKvsEventHandler(KviKvsEventHandler::Script), m_szName(szHandlerName), m_bEnabled(bEnabled)
+KviKvsScriptEventHandler::KviKvsScriptEventHandler(const QString & szHandlerName, const QString & szContextName, const QString & szCode, bool bEnabled)
+    : KviKvsEventHandler(KviKvsEventHandler::Script), m_szName(szHandlerName), m_bEnabled(bEnabled)
 {
-	m_pScript = new KviKvsScript(szContextName,szCode);
+	m_pScript = new KviKvsScript(szContextName, szCode);
 }
 
 KviKvsScriptEventHandler::~KviKvsScriptEventHandler()
@@ -46,14 +44,13 @@ KviKvsScriptEventHandler::~KviKvsScriptEventHandler()
 	delete m_pScript;
 }
 
-KviKvsScriptEventHandler * KviKvsScriptEventHandler::createInstance(const QString &szHandlerName,const QString &szContextName,const QString &szCode,bool bEnabled)
+KviKvsScriptEventHandler * KviKvsScriptEventHandler::createInstance(const QString & szHandlerName, const QString & szContextName, const QString & szCode, bool bEnabled)
 {
-	return new KviKvsScriptEventHandler(szHandlerName,szContextName,szCode,bEnabled);
+	return new KviKvsScriptEventHandler(szHandlerName, szContextName, szCode, bEnabled);
 }
 
-
-KviKvsModuleEventHandler::KviKvsModuleEventHandler(KviKvsModuleInterface * m,KviKvsModuleEventHandlerRoutine proc)
-: KviKvsEventHandler(KviKvsEventHandler::Module), m_pModule(m)
+KviKvsModuleEventHandler::KviKvsModuleEventHandler(KviKvsModuleInterface * m, KviKvsModuleEventHandlerRoutine proc)
+    : KviKvsEventHandler(KviKvsEventHandler::Module), m_pModule(m)
 {
 	m_pProc = new KviKvsModuleEventHandlerRoutine(proc);
 }
@@ -62,7 +59,6 @@ KviKvsModuleEventHandler::~KviKvsModuleEventHandler()
 {
 	delete m_pProc;
 }
-
 
 /*
 KviKvsOldModuleEventHandler::KviKvsOldModuleEventHandler(KviModuleEventParseProc p,KviModule * m)

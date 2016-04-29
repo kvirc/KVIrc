@@ -29,7 +29,6 @@
 #include "KviKvsParserMacros.h"
 #include "KviLocale.h"
 
-
 KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 {
 	KVSP_ASSERT(KVSP_curCharUnicode == '$');
@@ -41,9 +40,11 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 
 	if(!KVSP_curCharIsFunctionStart)
 	{
-		if(KVSP_curCharUnicode == 0)warning(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script after '$' function call prefix","kvs"));
-		else warning(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character %q (Unicode %x) after '$' function call prefix","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
-		error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error after '$' function call prefix. If you want to use a plain '$' in the code you need to escape it","kvs"));
+		if(KVSP_curCharUnicode == 0)
+			warning(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script after '$' function call prefix", "kvs"));
+		else
+			warning(KVSP_curCharPointer, __tr2qs_ctx("Unexpected character %q (Unicode %x) after '$' function call prefix", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
+		error(KVSP_curCharPointer, __tr2qs_ctx("Syntax error after '$' function call prefix. If you want to use a plain '$' in the code you need to escape it", "kvs"));
 		return 0;
 	}
 
@@ -52,7 +53,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		// expression eval
 		if(bInObjScope)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Invalid expression evaluation in object scope","kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Invalid expression evaluation in object scope", "kvs"));
 			return 0;
 		}
 
@@ -67,20 +68,21 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		// command block eval <--- senseless ???
 		if(bInObjScope)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Invalid command evaluation in object scope","kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Invalid command evaluation in object scope", "kvs"));
 			return 0;
 		}
 
 		KviKvsTreeNodeInstruction * i = parseInstructionBlock();
 		if(!i)
 		{
-			if(error())return 0;
+			if(error())
+				return 0;
 			// trigger an error anyway: this is abused syntax :D
-			error(KVSP_curCharPointer,__tr2qs_ctx("Empty instruction block for command evaluation","kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Empty instruction block for command evaluation", "kvs"));
 			return 0;
 		}
 
-		return new KviKvsTreeNodeCommandEvaluation(pDollarBegin,i);
+		return new KviKvsTreeNodeCommandEvaluation(pDollarBegin, i);
 	}
 
 	if(KVSP_curCharUnicode == '#')
@@ -88,7 +90,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		// parameter count
 		if(bInObjScope)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Parameter identifiers are forbidden in object scope (after the '->' operator)","kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Parameter identifiers are forbidden in object scope (after the '->' operator)", "kvs"));
 			return 0;
 		}
 
@@ -104,7 +106,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 
 		if(bInObjScope)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Parameter identifiers are forbidden in object scope (after the '->' operator)","kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Parameter identifiers are forbidden in object scope (after the '->' operator)", "kvs"));
 			return 0;
 		}
 
@@ -113,15 +115,16 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		while(KVSP_curCharIsNumber)
 			KVSP_skipChar;
 
-		QString szNum1(pBegin,KVSP_curCharPointer - pBegin);
+		QString szNum1(pBegin, KVSP_curCharPointer - pBegin);
 		bool bOk;
 		int iNum1 = szNum1.toInt(&bOk);
-		if(!bOk)qDebug("Oops! A non-number made by numbers?");
+		if(!bOk)
+			qDebug("Oops! A non-number made by numbers?");
 
 		if(KVSP_curCharUnicode != '-')
 		{
 			// end
-			return new KviKvsTreeNodeSingleParameterIdentifier(pDollarBegin,iNum1);
+			return new KviKvsTreeNodeSingleParameterIdentifier(pDollarBegin, iNum1);
 		}
 
 		// dash... make sure it's not $N->$something
@@ -131,27 +134,30 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 			// object scope operator in fact...
 			// go back to the - and return a single parameter identifier
 			KVSP_backChar;
-			return new KviKvsTreeNodeSingleParameterIdentifier(pDollarBegin,iNum1);
+			return new KviKvsTreeNodeSingleParameterIdentifier(pDollarBegin, iNum1);
 		}
 
 		if(!KVSP_curCharIsNumber)
 		{
 			// from iNum1 to the end
-			return new KviKvsTreeNodeMultipleParameterIdentifier(pDollarBegin,iNum1,-1);
+			return new KviKvsTreeNodeMultipleParameterIdentifier(pDollarBegin, iNum1, -1);
 		}
 
 		pBegin = KVSP_curCharPointer;
 		while(KVSP_curCharIsNumber)
 			KVSP_skipChar;
 
-		QString szNum2(pBegin,KVSP_curCharPointer - pBegin);
+		QString szNum2(pBegin, KVSP_curCharPointer - pBegin);
 		int iNum2 = szNum2.toInt(&bOk);
-		if(!bOk)qDebug("Oops! A non-number made by numbers (2)?");
+		if(!bOk)
+			qDebug("Oops! A non-number made by numbers (2)?");
 
-		if(iNum1 < iNum2)return new KviKvsTreeNodeMultipleParameterIdentifier(pDollarBegin,iNum1,iNum2);
-		else {
-			warning(pBegin,__tr2qs_ctx("Ending index of a multiple parameter identifier is lower or equal to the starting index. This will evaluate to a single parameter identifier.","kvs"));
-			return new KviKvsTreeNodeSingleParameterIdentifier(pDollarBegin,iNum1);
+		if(iNum1 < iNum2)
+			return new KviKvsTreeNodeMultipleParameterIdentifier(pDollarBegin, iNum1, iNum2);
+		else
+		{
+			warning(pBegin, __tr2qs_ctx("Ending index of a multiple parameter identifier is lower or equal to the starting index. This will evaluate to a single parameter identifier.", "kvs"));
+			return new KviKvsTreeNodeSingleParameterIdentifier(pDollarBegin, iNum1);
 		}
 	}
 
@@ -165,13 +171,16 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 	{
 		if(bInObjScope)
 		{
-			error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error: invalid $$ ($this) function call in object scope","kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Syntax error: invalid $$ ($this) function call in object scope", "kvs"));
 			return 0;
 		}
 		// handle $$
 		KVSP_skipChar;
-	} else {
-		while((KVSP_curCharIsLetterOrNumber) || (KVSP_curCharUnicode == '_'))KVSP_skipChar;
+	}
+	else
+	{
+		while((KVSP_curCharIsLetterOrNumber) || (KVSP_curCharUnicode == '_'))
+			KVSP_skipChar;
 		if(!bInObjScope)
 		{
 			while(KVSP_curCharUnicode == ':')
@@ -190,23 +199,26 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 
 					if(!KVSP_curCharIsLetter)
 					{
-						warning(KVSP_curCharPointer - 1,__tr2qs_ctx("Stray '::' sequence or invalid following alias name","kvs"));
-						error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error: malformed alias function call identifier","kvs"));
+						warning(KVSP_curCharPointer - 1, __tr2qs_ctx("Stray '::' sequence or invalid following alias name", "kvs"));
+						error(KVSP_curCharPointer, __tr2qs_ctx("Syntax error: malformed alias function call identifier", "kvs"));
 						return 0;
 					}
 
 					KVSP_skipChar;
-					while(KVSP_curCharIsLetterOrNumber || (KVSP_curCharUnicode == '_'))KVSP_skipChar;
-				} else {
-					warning(KVSP_curCharPointer - 1,__tr2qs_ctx("Stray ':' character: did you mean '...<namespace>::<alias_name>' ?","kvs"));
-					error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error: malformed (alias?) function call identifier","kvs"));
+					while(KVSP_curCharIsLetterOrNumber || (KVSP_curCharUnicode == '_'))
+						KVSP_skipChar;
+				}
+				else
+				{
+					warning(KVSP_curCharPointer - 1, __tr2qs_ctx("Stray ':' character: did you mean '...<namespace>::<alias_name>' ?", "kvs"));
+					error(KVSP_curCharPointer, __tr2qs_ctx("Syntax error: malformed (alias?) function call identifier", "kvs"));
 					return 0;
 				}
 			}
 		}
 	}
 
-	QString szIdentifier1(pBegin,KVSP_curCharPointer - pBegin);
+	QString szIdentifier1(pBegin, KVSP_curCharPointer - pBegin);
 
 	const QChar * pId2 = 0;
 	int iId2Len = 0;
@@ -226,11 +238,15 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 						KVSP_skipChar;
 					iId2Len = KVSP_curCharPointer - pId2;
 					bModuleFunctionCall = true;
-				} else {
+				}
+				else
+				{
 					KVSP_backChar;
 				}
 			}
-		} else {
+		}
+		else
+		{
 			// object scope, check for "class name" namespace
 			// the class name namespace has the format "<namespace>::<namespace>::..::<classname>
 			// so the last :: is the delimiter of the function name
@@ -250,13 +266,17 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 						while((KVSP_curCharIsLetterOrNumber) || (KVSP_curCharUnicode == '_'))
 							KVSP_skipChar;
 						iId2Len = KVSP_curCharPointer - pId2;
-					} else {
+					}
+					else
+					{
 						KVSP_setCurCharPointer(pOriginalEndOfId1);
 						pId2 = 0;
 						iId2Len = 0;
 						break;
 					}
-				} else {
+				}
+				else
+				{
 					KVSP_setCurCharPointer(pOriginalEndOfId1);
 					pId2 = 0;
 					iId2Len = 0;
@@ -266,7 +286,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 			if(pId2)
 			{
 				// yes, that's fine: reset it
-				szIdentifier1.setUnicode(pBegin,pEndOfId1 - pBegin);
+				szIdentifier1.setUnicode(pBegin, pEndOfId1 - pBegin);
 			}
 		}
 	}
@@ -279,7 +299,9 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		//KVSP_setCurCharPointer(pBegin);
 		// will get an empty data list
 		l = new KviKvsTreeNodeDataList(pDollarBegin);
-	} else {
+	}
+	else
+	{
 		// check for the special syntax ()
 		KVSP_skipChar;
 		if(KVSP_curCharUnicode == ')')
@@ -287,22 +309,28 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 			// $call(), assume no parameters passed
 			l = new KviKvsTreeNodeDataList(pDollarBegin);
 			KVSP_skipChar;
-		} else {
+		}
+		else
+		{
 			KVSP_backChar;
 			l = parseCommaSeparatedParameterList();
-			if(!l)return 0; // error
+			if(!l)
+				return 0; // error
 		}
 	}
 
 	if(bHasNamespaceNotInObjScopeSoMustBeAlias)
 	{
 		// namespace::alias function call
-		return new KviKvsTreeNodeAliasFunctionCall(pDollarBegin,szIdentifier1,l);
-	} else if(bModuleFunctionCall)
+		return new KviKvsTreeNodeAliasFunctionCall(pDollarBegin, szIdentifier1, l);
+	}
+	else if(bModuleFunctionCall)
 	{
 		// module function call
-		return new KviKvsTreeNodeModuleFunctionCall(pDollarBegin,szIdentifier1,QString(pId2,iId2Len),l);
-	} else {
+		return new KviKvsTreeNodeModuleFunctionCall(pDollarBegin, szIdentifier1, QString(pId2, iId2Len), l);
+	}
+	else
+	{
 
 		if(bInObjScope)
 		{
@@ -310,21 +338,27 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 			if(pId2)
 			{
 				// base class object function call
-				return new KviKvsTreeNodeBaseObjectFunctionCall(pDollarBegin,szIdentifier1,QString(pId2,iId2Len),l);
-			} else {
-				// plain object function call
-				return new KviKvsTreeNodeThisObjectFunctionCall(pDollarBegin,szIdentifier1,l);
+				return new KviKvsTreeNodeBaseObjectFunctionCall(pDollarBegin, szIdentifier1, QString(pId2, iId2Len), l);
 			}
-		} else {
+			else
+			{
+				// plain object function call
+				return new KviKvsTreeNodeThisObjectFunctionCall(pDollarBegin, szIdentifier1, l);
+			}
+		}
+		else
+		{
 			// core or alias function call
 			KviKvsCoreFunctionExecRoutine * r = KviKvsKernel::instance()->findCoreFunctionExecRoutine(szIdentifier1);
 			if(r)
 			{
 				// core function call
-				return new KviKvsTreeNodeCoreFunctionCall(pDollarBegin,szIdentifier1,r,l);
-			} else {
+				return new KviKvsTreeNodeCoreFunctionCall(pDollarBegin, szIdentifier1, r, l);
+			}
+			else
+			{
 				// root namespace alias function call
-				return new KviKvsTreeNodeAliasFunctionCall(pDollarBegin,szIdentifier1,l);
+				return new KviKvsTreeNodeAliasFunctionCall(pDollarBegin, szIdentifier1, l);
 			}
 		}
 	}

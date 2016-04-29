@@ -26,7 +26,6 @@
 
 #include "object_macros.h"
 
-
 class QFtp;
 class QUrlInfo;
 
@@ -39,30 +38,30 @@ class KvsObject_ftp : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_ftp)
 protected:
-	QFtp *m_pFtp;
-protected:
-	bool functionConnect(KviKvsObjectFunctionCall *c);
-	bool get(KviKvsObjectFunctionCall *c);
-	bool put(KviKvsObjectFunctionCall *c);
-	bool login(KviKvsObjectFunctionCall *c);
-	bool cd(KviKvsObjectFunctionCall *c);
-	bool list(KviKvsObjectFunctionCall *c);
-	bool dataTransferProgressEvent(KviKvsObjectFunctionCall *c);
-	bool listInfoEvent(KviKvsObjectFunctionCall *c);
-	bool commandFinishedEvent(KviKvsObjectFunctionCall *c);
-	bool stateChangedEvent(KviKvsObjectFunctionCall *c);
-	bool abort(KviKvsObjectFunctionCall *c);
-	bool close(KviKvsObjectFunctionCall *c);
-protected slots:
-	void slotCommandFinished ( int id, bool error );
-	void slotCommandStarted ( int id );
-	void slotDataTransferProgress ( qint64 done, qint64 total );
-	void slotDone ( bool error );
-	void slotListInfo ( const QUrlInfo & i );
-	void slotRawCommandReply ( int replyCode, const QString & detail );
-	void slotReadyRead ();
-	void slotStateChanged ( int state);
-};
+	QFtp * m_pFtp;
 
+protected:
+	bool functionConnect(KviKvsObjectFunctionCall * c);
+	bool get(KviKvsObjectFunctionCall * c);
+	bool put(KviKvsObjectFunctionCall * c);
+	bool login(KviKvsObjectFunctionCall * c);
+	bool cd(KviKvsObjectFunctionCall * c);
+	bool list(KviKvsObjectFunctionCall * c);
+	bool dataTransferProgressEvent(KviKvsObjectFunctionCall * c);
+	bool listInfoEvent(KviKvsObjectFunctionCall * c);
+	bool commandFinishedEvent(KviKvsObjectFunctionCall * c);
+	bool stateChangedEvent(KviKvsObjectFunctionCall * c);
+	bool abort(KviKvsObjectFunctionCall * c);
+	bool close(KviKvsObjectFunctionCall * c);
+protected slots:
+	void slotCommandFinished(int id, bool error);
+	void slotCommandStarted(int id);
+	void slotDataTransferProgress(qint64 done, qint64 total);
+	void slotDone(bool error);
+	void slotListInfo(const QUrlInfo & i);
+	void slotRawCommandReply(int replyCode, const QString & detail);
+	void slotReadyRead();
+	void slotStateChanged(int state);
+};
 
 #endif //_CLASS_FTP_H_

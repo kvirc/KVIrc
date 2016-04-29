@@ -41,21 +41,21 @@ class KVIRC_API KviKvsTreeNodeSwitchList : public KviKvsTreeNode
 public:
 	KviKvsTreeNodeSwitchList(const QChar * pLocation);
 	~KviKvsTreeNodeSwitchList();
+
 public:
-	KviPointerHashTable<int,KviKvsTreeNodeData> * m_pShortSwitchDict;
-	KviPointerHashTable<QString,KviKvsTreeNodeData> *m_pLongSwitchDict;
+	KviPointerHashTable<int, KviKvsTreeNodeData> * m_pShortSwitchDict;
+	KviPointerHashTable<QString, KviKvsTreeNodeData> * m_pLongSwitchDict;
+
 public:
-	void addShort(int iShortKey,KviKvsTreeNodeData * p);
-	void addLong(const QString &szLongKey,KviKvsTreeNodeData * p);
-	bool isEmpty(){ return (m_pShortSwitchDict == 0) && (m_pLongSwitchDict == 0); };
+	void addShort(int iShortKey, KviKvsTreeNodeData * p);
+	void addLong(const QString & szLongKey, KviKvsTreeNodeData * p);
+	bool isEmpty() { return (m_pShortSwitchDict == 0) && (m_pLongSwitchDict == 0); };
 	virtual void dump(const char * prefix);
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 
 	KviKvsTreeNodeData * getStandardRebindingSwitch();
 
-	bool evaluate(KviKvsRunTimeContext * c,KviKvsSwitchList * pSwList);
+	bool evaluate(KviKvsRunTimeContext * c, KviKvsSwitchList * pSwList);
 };
-
-
 
 #endif //!_KVI_KVS_TREENODE_SWITCHLIST_H_

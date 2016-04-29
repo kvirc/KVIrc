@@ -35,7 +35,6 @@
 // keep the unaccessed avatars for 30 days
 #define MAX_UNACCESSED_TIME (3600 * 24 * 30)
 
-
 KviAvatarCache * KviAvatarCache::m_pAvatarCacheInstance = 0;
 
 void KviAvatarCache::init()
@@ -61,10 +60,9 @@ void KviAvatarCache::done()
 	m_pAvatarCacheInstance = 0;
 }
 
-
 KviAvatarCache::KviAvatarCache()
 {
-	m_pAvatarDict = new KviPointerHashTable<QString,KviAvatarCacheEntry>(CACHE_DICT_SIZE,false);
+	m_pAvatarDict = new KviPointerHashTable<QString, KviAvatarCacheEntry>(CACHE_DICT_SIZE, false);
 	m_pAvatarDict->setAutoDelete(true);
 }
 
@@ -73,12 +71,11 @@ KviAvatarCache::~KviAvatarCache()
 	delete m_pAvatarDict;
 }
 
-
-void KviAvatarCache::replace(const QString &szIdString,const KviIrcMask &mask,const QString &szNetwork)
+void KviAvatarCache::replace(const QString & szIdString, const KviIrcMask & mask, const QString & szNetwork)
 {
 	QString szKey;
 
-	mask.mask(szKey,KviIrcMask::NickCleanUserSmartNet);
+	mask.mask(szKey, KviIrcMask::NickCleanUserSmartNet);
 	szKey.append(QChar('+'));
 	szKey.append(szNetwork);
 
@@ -86,7 +83,7 @@ void KviAvatarCache::replace(const QString &szIdString,const KviIrcMask &mask,co
 	e->szIdString = szIdString;
 	e->tLastAccess = kvi_unixTime();
 
-	m_pAvatarDict->replace(szKey,e);
+	m_pAvatarDict->replace(szKey, e);
 
 	if(m_pAvatarDict->count() > MAX_AVATARS_IN_CACHE)
 	{
@@ -94,38 +91,37 @@ void KviAvatarCache::replace(const QString &szIdString,const KviIrcMask &mask,co
 	}
 }
 
-void KviAvatarCache::remove(const KviIrcMask &mask,const QString &szNetwork)
+void KviAvatarCache::remove(const KviIrcMask & mask, const QString & szNetwork)
 {
 	QString szKey;
 
-	mask.mask(szKey,KviIrcMask::NickCleanUserSmartNet);
+	mask.mask(szKey, KviIrcMask::NickCleanUserSmartNet);
 	szKey.append(QChar('+'));
 	szKey.append(szNetwork);
 
 	m_pAvatarDict->remove(szKey);
 }
 
-
-
-const QString & KviAvatarCache::lookup(const KviIrcMask &mask,const QString &szNetwork)
+const QString & KviAvatarCache::lookup(const KviIrcMask & mask, const QString & szNetwork)
 {
 	QString szKey;
 
-	mask.mask(szKey,KviIrcMask::NickCleanUserSmartNet);
+	mask.mask(szKey, KviIrcMask::NickCleanUserSmartNet);
 	szKey.append(QChar('+'));
 	szKey.append(szNetwork);
 
 	KviAvatarCacheEntry * e = m_pAvatarDict->find(szKey);
-	if(!e)return KviQString::Empty;
+	if(!e)
+		return KviQString::Empty;
 	e->tLastAccess = kvi_unixTime();
 	return e->szIdString;
 }
 
-void KviAvatarCache::load(const QString &szFileName)
+void KviAvatarCache::load(const QString & szFileName)
 {
 	m_pAvatarDict->clear();
 
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Read);
 
 	kvi_time_t tNow = kvi_unixTime();
 
@@ -137,39 +133,40 @@ void KviAvatarCache::load(const QString &szFileName)
 	{
 		cfg.setGroup(it.currentKey());
 
-		kvi_time_t tLastAccess = cfg.readUIntEntry("LastAccess",0);
+		kvi_time_t tLastAccess = cfg.readUIntEntry("LastAccess", 0);
 		if((tNow - tLastAccess) < MAX_UNACCESSED_TIME)
 		{
-			QString szIdString = cfg.readEntry("Avatar","");
+			QString szIdString = cfg.readEntry("Avatar", "");
 
 			if(!szIdString.isEmpty())
 			{
 				KviAvatarCacheEntry * e = new KviAvatarCacheEntry;
 				e->tLastAccess = tLastAccess;
 				e->szIdString = szIdString;
-				m_pAvatarDict->replace(it.currentKey(),e);
+				m_pAvatarDict->replace(it.currentKey(), e);
 				cnt++;
-				if(cnt >= MAX_AVATARS_IN_CACHE)return; // done
+				if(cnt >= MAX_AVATARS_IN_CACHE)
+					return; // done
 			}
 		}
 		++it;
 	}
 }
 
-void KviAvatarCache::save(const QString &szFileName)
+void KviAvatarCache::save(const QString & szFileName)
 {
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
-//	cfg.clear(); // not needed with KviConfigurationFile::Write
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Write);
+	//	cfg.clear(); // not needed with KviConfigurationFile::Write
 
-	KviPointerHashTableIterator<QString,KviAvatarCacheEntry> it(*m_pAvatarDict);
+	KviPointerHashTableIterator<QString, KviAvatarCacheEntry> it(*m_pAvatarDict);
 
 	while(KviAvatarCacheEntry * e = it.current())
 	{
 		if(e->tLastAccess)
 		{
 			cfg.setGroup(it.currentKey());
-			cfg.writeEntry("Avatar",e->szIdString);
-			cfg.writeEntry("LastAccess",((unsigned int)(e->tLastAccess)));
+			cfg.writeEntry("Avatar", e->szIdString);
+			cfg.writeEntry("LastAccess", ((unsigned int)(e->tLastAccess)));
 		}
 		++it;
 	}
@@ -178,7 +175,7 @@ void KviAvatarCache::save(const QString &szFileName)
 void KviAvatarCache::cleanup()
 {
 	// first do a quick run deleting the avatars really too old
-	KviPointerHashTableIterator<QString,KviAvatarCacheEntry> it(*m_pAvatarDict);
+	KviPointerHashTableIterator<QString, KviAvatarCacheEntry> it(*m_pAvatarDict);
 
 	kvi_time_t tNow = kvi_unixTime();
 
@@ -196,9 +193,11 @@ void KviAvatarCache::cleanup()
 		++it;
 	}
 
-	for(QString *s = l.first();s;s = l.next())m_pAvatarDict->remove(*s);
+	for(QString * s = l.first(); s; s = l.next())
+		m_pAvatarDict->remove(*s);
 
-	if(m_pAvatarDict->count() < CACHE_GUARD_LEVEL)return;
+	if(m_pAvatarDict->count() < CACHE_GUARD_LEVEL)
+		return;
 
 	// not done.. need to kill the last accessed :/
 
@@ -218,7 +217,8 @@ void KviAvatarCache::cleanup()
 		{
 			// if the current is newer than the inserted one
 			// then stop searching and insert it just before
-			if(current->tLastAccess > e->tLastAccess)break;
+			if(current->tLastAccess > e->tLastAccess)
+				break;
 			// otherwise the current is older and the inserted
 			// one goes after
 			current = ll.next();
@@ -229,17 +229,20 @@ void KviAvatarCache::cleanup()
 		xx->szIdString = it.currentKey();
 		xx->tLastAccess = e->tLastAccess;
 
-		if(current)ll.insert(idx,xx);
-		else ll.append(xx);
+		if(current)
+			ll.insert(idx, xx);
+		else
+			ll.append(xx);
 		++it;
 	}
 
 	// the oldest keys are at the beginning
 	int uRemove = ll.count() - CACHE_GUARD_LEVEL;
-	if(uRemove < 1)return; // huh ?
+	if(uRemove < 1)
+		return; // huh ?
 
 	// remember that szAvatar contains the key!
-	for(e = ll.first();e && (uRemove > 0);e = ll.next())
+	for(e = ll.first(); e && (uRemove > 0); e = ll.next())
 	{
 		m_pAvatarDict->remove(e->szIdString);
 		uRemove--;

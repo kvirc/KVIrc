@@ -36,7 +36,7 @@
 #include <QMenu>
 
 KviActionCategory::KviActionCategory(const QString & szName, const QString & szVisibleName, const QString & szDescription)
-: m_szName(szName), m_szVisibleName(szVisibleName), m_szDescription(szDescription)
+    : m_szName(szName), m_szVisibleName(szVisibleName), m_szDescription(szDescription)
 {
 }
 
@@ -44,37 +44,36 @@ KviActionCategory::~KviActionCategory()
 {
 }
 
-
 KviAction::KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory, const QString & szBigIconId, const QString & szSmallIconId, unsigned int uFlags, const QString & szKeySequence)
-: QObject(pParent),
-	m_szName(szName),
-	m_szVisibleName(szVisibleName),
-	m_szDescription(szDescription),
-	m_pCategory(pCategory),
-	m_szBigIconId(szBigIconId),
-	m_szSmallIconId(szSmallIconId),
-	m_eSmallIcon(KviIconManager::None),
-	m_pActionList(NULL),
-	m_uInternalFlags(KviAction::Enabled),
-	m_uFlags(uFlags),
-	m_szKeySequence(szKeySequence),
-	m_pAccel(NULL)
+    : QObject(pParent),
+      m_szName(szName),
+      m_szVisibleName(szVisibleName),
+      m_szDescription(szDescription),
+      m_pCategory(pCategory),
+      m_szBigIconId(szBigIconId),
+      m_szSmallIconId(szSmallIconId),
+      m_eSmallIcon(KviIconManager::None),
+      m_pActionList(NULL),
+      m_uInternalFlags(KviAction::Enabled),
+      m_uFlags(uFlags),
+      m_szKeySequence(szKeySequence),
+      m_pAccel(NULL)
 {
 }
 
 KviAction::KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory, const QString & szBigIconId, KviIconManager::SmallIcon eSmallIcon, unsigned int uFlags, const QString & szKeySequence)
-: QObject(pParent),
-	m_szName(szName),
-	m_szVisibleName(szVisibleName),
-	m_szDescription(szDescription),
-	m_pCategory(pCategory),
-	m_szBigIconId(szBigIconId),
-	m_eSmallIcon(eSmallIcon),
-	m_pActionList(NULL),
-	m_uInternalFlags(KviAction::Enabled),
-	m_uFlags(uFlags),
-	m_szKeySequence(szKeySequence),
-	m_pAccel(NULL)
+    : QObject(pParent),
+      m_szName(szName),
+      m_szVisibleName(szVisibleName),
+      m_szDescription(szDescription),
+      m_pCategory(pCategory),
+      m_szBigIconId(szBigIconId),
+      m_eSmallIcon(eSmallIcon),
+      m_pActionList(NULL),
+      m_uInternalFlags(KviAction::Enabled),
+      m_uFlags(uFlags),
+      m_szKeySequence(szKeySequence),
+      m_pAccel(NULL)
 {
 }
 
@@ -83,7 +82,7 @@ KviAction::~KviAction()
 	if(m_pActionList)
 	{
 		for(QAction * pAction = m_pActionList->first(); pAction; pAction = m_pActionList->next())
-			disconnect(pAction,SIGNAL(destroyed()),this,SLOT(actionDestroyed()));
+			disconnect(pAction, SIGNAL(destroyed()), this, SLOT(actionDestroyed()));
 		m_pActionList->setAutoDelete(true);
 		delete m_pActionList;
 	}
@@ -116,11 +115,13 @@ void KviAction::registerAccelerator()
 	{
 		g_pMainWindow->freeAccelleratorKeySequence(m_szKeySequence);
 
-		m_pAccel = new QShortcut(m_szKeySequence,g_pMainWindow,0,0,Qt::ApplicationShortcut);
-		connect(m_pAccel,SIGNAL(activated()),this,SLOT(activate()));
+		m_pAccel = new QShortcut(m_szKeySequence, g_pMainWindow, 0, 0, Qt::ApplicationShortcut);
+		connect(m_pAccel, SIGNAL(activated()), this, SLOT(activate()));
 		//no way to have Ctrl+Alt+Key events fired as no-ambiguous, probably qt bug
-		connect(m_pAccel,SIGNAL(activatedAmbiguously()),this,SLOT(activate()));
-	} else {
+		connect(m_pAccel, SIGNAL(activatedAmbiguously()), this, SLOT(activate()));
+	}
+	else
+	{
 		m_pAccel = NULL;
 	}
 }
@@ -151,7 +152,9 @@ void KviAction::setEnabled(bool bEnabled)
 				if(!pAction->isEnabled())
 					pAction->setEnabled(true);
 			}
-		} else {
+		}
+		else
+		{
 			for(QAction * pAction = m_pActionList->first(); pAction; pAction = m_pActionList->next())
 			{
 				if(pAction->isEnabled())
@@ -197,39 +200,44 @@ QPixmap * KviAction::bigIcon()
 
 void KviAction::setup()
 {
-	connect(g_pApp,SIGNAL(reloadImages()),this,SLOT(reloadImages()));
+	connect(g_pApp, SIGNAL(reloadImages()), this, SLOT(reloadImages()));
 	if(m_uFlags & InternalWindowMask)
 	{
-		connect(g_pMainWindow,SIGNAL(activeWindowChanged()),this,SLOT(activeWindowChanged()));
+		connect(g_pMainWindow, SIGNAL(activeWindowChanged()), this, SLOT(activeWindowChanged()));
 		if((m_uFlags & WindowOnlyIfUsersSelected) && (m_uFlags & (WindowChannel | WindowConsole | WindowQuery)))
-			connect(g_pMainWindow,SIGNAL(activeWindowSelectionStateChanged(bool)),this,SLOT(activeWindowSelectionStateChanged(bool)));
+			connect(g_pMainWindow, SIGNAL(activeWindowSelectionStateChanged(bool)), this, SLOT(activeWindowSelectionStateChanged(bool)));
 		activeWindowChanged();
-	} else {
+	}
+	else
+	{
 		if(m_uFlags & NeedsConnection)
 		{
-			connect(g_pMainWindow,SIGNAL(activeContextChanged()),this,SLOT(activeContextChanged()));
-			connect(g_pMainWindow,SIGNAL(activeContextStateChanged()),this,SLOT(activeContextStateChanged()));
+			connect(g_pMainWindow, SIGNAL(activeContextChanged()), this, SLOT(activeContextChanged()));
+			connect(g_pMainWindow, SIGNAL(activeContextStateChanged()), this, SLOT(activeContextStateChanged()));
 			KviIrcContext * pContext = g_pMainWindow->activeContext();
 			if(!pContext)
 				setEnabled(false);
-			else {
+			else
+			{
 				switch(pContext->state())
 				{
 					case KviIrcContext::LoggingIn:
 						setEnabled(m_uFlags & EnableAtLogin);
-					break;
+						break;
 					case KviIrcContext::Connected:
 						setEnabled(true);
-					break;
+						break;
 					default:
 						setEnabled(false);
-					break;
+						break;
 				}
 			}
-		} else {
+		}
+		else
+		{
 			if(m_uFlags & NeedsContext)
 			{
-				connect(g_pMainWindow,SIGNAL(activeContextChanged()),this,SLOT(activeContextChanged()));
+				connect(g_pMainWindow, SIGNAL(activeContextChanged()), this, SLOT(activeContextChanged()));
 				if(!g_pMainWindow->activeContext())
 					setEnabled(false);
 				else
@@ -240,7 +248,6 @@ void KviAction::setup()
 
 	m_uInternalFlags |= KviAction::SetupDone;
 }
-
 
 void KviAction::reloadImages()
 {
@@ -288,15 +295,15 @@ void KviAction::activeWindowChanged()
 						setEnabled(false);
 					return;
 				}
-			break;
+				break;
 			case KviIrcContext::Connected:
 				// this is ok
-			break;
+				break;
 			default:
 				if(isEnabled())
 					setEnabled(false);
 				return;
-			break;
+				break;
 		}
 	}
 
@@ -317,11 +324,15 @@ void KviAction::activeWindowChanged()
 					bool bEnabled = ((KviConsoleWindow *)g_pActiveWindow)->selectedCount() > 0;
 					if(bEnabled != isEnabled())
 						setEnabled(bEnabled);
-				} else {
+				}
+				else
+				{
 					if(!isEnabled())
 						setEnabled(true);
 				}
-			} else {
+			}
+			else
+			{
 				if(isEnabled())
 					setEnabled(false);
 			}
@@ -334,11 +345,15 @@ void KviAction::activeWindowChanged()
 					bool bEnabled = ((KviChannelWindow *)g_pActiveWindow)->selectedCount() > 0;
 					if(bEnabled != isEnabled())
 						setEnabled(bEnabled);
-				} else {
+				}
+				else
+				{
 					if(!isEnabled())
 						setEnabled(true);
 				}
-			} else {
+			}
+			else
+			{
 				if(isEnabled())
 					setEnabled(false);
 			}
@@ -351,11 +366,15 @@ void KviAction::activeWindowChanged()
 					bool bEnabled = ((KviQueryWindow *)g_pActiveWindow)->selectedCount() > 0;
 					if(bEnabled != isEnabled())
 						setEnabled(bEnabled);
-				} else {
+				}
+				else
+				{
 					if(!isEnabled())
 						setEnabled(true);
 				}
-			} else {
+			}
+			else
+			{
 				if(isEnabled())
 					setEnabled(false);
 			}
@@ -365,7 +384,9 @@ void KviAction::activeWindowChanged()
 			{
 				if(!isEnabled())
 					setEnabled(true);
-			} else {
+			}
+			else
+			{
 				if(isEnabled())
 					setEnabled(false);
 			}
@@ -375,7 +396,9 @@ void KviAction::activeWindowChanged()
 			{
 				if(isEnabled())
 					setEnabled(false);
-			} else {
+			}
+			else
+			{
 				if(!isEnabled())
 					setEnabled(true);
 			}
@@ -394,7 +417,9 @@ void KviAction::activeWindowSelectionStateChanged(bool bSelectedNow)
 			{
 				if(bSelectedNow != isEnabled())
 					setEnabled(bSelectedNow);
-			} else {
+			}
+			else
+			{
 				if(isEnabled())
 					setEnabled(false);
 			}
@@ -404,7 +429,9 @@ void KviAction::activeWindowSelectionStateChanged(bool bSelectedNow)
 			{
 				if(bSelectedNow != isEnabled())
 					setEnabled(bSelectedNow);
-			} else {
+			}
+			else
+			{
 				if(isEnabled())
 					setEnabled(false);
 			}
@@ -414,7 +441,9 @@ void KviAction::activeWindowSelectionStateChanged(bool bSelectedNow)
 			{
 				if(bSelectedNow != isEnabled())
 					setEnabled(bSelectedNow);
-			} else {
+			}
+			else
+			{
 				if(isEnabled())
 					setEnabled(false);
 			}
@@ -424,7 +453,9 @@ void KviAction::activeWindowSelectionStateChanged(bool bSelectedNow)
 			{
 				if(!isEnabled())
 					setEnabled(true);
-			} else {
+			}
+			else
+			{
 				if(isEnabled())
 					setEnabled(false);
 			}
@@ -444,10 +475,11 @@ void KviAction::activeContextChanged()
 	{
 		if(m_uFlags & NeedsConnection)
 			activeContextStateChanged();
-		else
-			if(!isEnabled())
-				setEnabled(true);
-	} else {
+		else if(!isEnabled())
+			setEnabled(true);
+	}
+	else
+	{
 		if(isEnabled())
 			setEnabled(false);
 	}
@@ -464,27 +496,31 @@ void KviAction::activeContextStateChanged()
 			case KviIrcContext::Connecting:
 				if(isEnabled())
 					setEnabled(false);
-			break;
+				break;
 			case KviIrcContext::LoggingIn:
 				if(m_uFlags & EnableAtLogin)
 				{
 					if(!isEnabled())
 						setEnabled(true);
-				} else {
+				}
+				else
+				{
 					if(isEnabled())
 						setEnabled(false);
 				}
-			break;
+				break;
 			case KviIrcContext::Connected:
 				if(!isEnabled())
 					setEnabled(true);
-			break;
+				break;
 			default:
 				if(isEnabled())
 					setEnabled(false);
-			break;
+				break;
 		}
-	} else {
+	}
+	else
+	{
 		if(isEnabled())
 			setEnabled(false);
 	}
@@ -500,14 +536,14 @@ bool KviAction::addToPopupMenu(QMenu * pMenu)
 	if(!m_szKeySequence.isEmpty())
 		szTmp += '\t' + m_szKeySequence;
 
-	QAction *pAction;
+	QAction * pAction;
 	if(pPix)
-        pAction = pMenu->addAction(*pPix,szTmp,this,SLOT(activate()));
+		pAction = pMenu->addAction(*pPix, szTmp, this, SLOT(activate()));
 	else
-        pAction = pMenu->addAction(szTmp,this,SLOT(activate()));
+		pAction = pMenu->addAction(szTmp, this, SLOT(activate()));
 
-    // avoid Qt to put this action in the application menu based on its title
-    pAction->setMenuRole(QAction::NoRole);
+	// avoid Qt to put this action in the application menu based on its title
+	pAction->setMenuRole(QAction::NoRole);
 
 	if(!isEnabled())
 		pAction->setEnabled(false);
@@ -525,7 +561,7 @@ void KviAction::actionDestroyed()
 
 void KviAction::registerAction(QAction * pAction)
 {
-	connect(pAction,SIGNAL(destroyed()),this,SLOT(actionDestroyed()));
+	connect(pAction, SIGNAL(destroyed()), this, SLOT(actionDestroyed()));
 	if(!m_pActionList)
 	{
 		m_pActionList = new KviPointerList<QAction>;
@@ -546,7 +582,7 @@ QAction * KviAction::addToCustomToolBar(KviCustomToolBar * pParentToolBar)
 	pAction->setObjectName(m_szName);
 	pParentToolBar->addAction(pAction);
 
-	connect(pAction,SIGNAL(triggered()),this,SLOT(activate()));
+	connect(pAction, SIGNAL(triggered()), this, SLOT(activate()));
 
 	pAction->setVisible(true);
 	if(!isEnabled())

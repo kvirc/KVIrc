@@ -24,7 +24,6 @@
 
 #include "KviKvsEvent.h"
 
-
 KviKvsEvent::~KviKvsEvent()
 {
 	clear();
@@ -32,7 +31,8 @@ KviKvsEvent::~KviKvsEvent()
 
 void KviKvsEvent::clear()
 {
-	if(m_pHandlers)delete m_pHandlers;
+	if(m_pHandlers)
+		delete m_pHandlers;
 	m_pHandlers = 0;
 }
 
@@ -58,15 +58,17 @@ void KviKvsEvent::addHandler(KviKvsEventHandler * h)
 
 void KviKvsEvent::clearScriptHandlers()
 {
-	if(!m_pHandlers)return;
+	if(!m_pHandlers)
+		return;
 	KviPointerList<KviKvsEventHandler> dl;
 	dl.setAutoDelete(false);
 	KviKvsEventHandler * e;
-	for(e = m_pHandlers->first();e;e = m_pHandlers->next())
+	for(e = m_pHandlers->first(); e; e = m_pHandlers->next())
 	{
-		if(e->type() == KviKvsEventHandler::Script)dl.append(e);
+		if(e->type() == KviKvsEventHandler::Script)
+			dl.append(e);
 	}
-	for(e = dl.first();e;e = dl.next())
+	for(e = dl.first(); e; e = dl.next())
 	{
 		m_pHandlers->removeRef(e);
 	}

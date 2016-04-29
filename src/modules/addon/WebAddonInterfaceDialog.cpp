@@ -24,7 +24,6 @@
 
 #include "kvi_settings.h"
 
-
 #ifdef COMPILE_WEBKIT_SUPPORT
 
 #include "WebAddonInterfaceDialog.h"
@@ -38,25 +37,24 @@
 #include "KviMiscUtils.h"
 
 WebAddonInterfaceDialog::WebAddonInterfaceDialog(QWidget * par)
-: KviWebPackageManagementDialog(par)
+    : KviWebPackageManagementDialog(par)
 {
-	setWindowTitle(__tr2qs_ctx("Download Addons - KVIrc","theme"));
+	setWindowTitle(__tr2qs_ctx("Download Addons - KVIrc", "theme"));
 
 	setPackagePageUrl(
-			QString::fromLatin1("http://www.kvirc.de/app/addons.php?version=" KVI_VERSION "&lang=%1")
-					.arg(QString::fromUtf8(KviLocale::instance()->localeName().ptr()))
-		);
+	    QString::fromLatin1("http://www.kvirc.de/app/addons.php?version=" KVI_VERSION "&lang=%1")
+	        .arg(QString::fromUtf8(KviLocale::instance()->localeName().ptr())));
 }
 WebAddonInterfaceDialog::~WebAddonInterfaceDialog()
 {
 }
 
-bool WebAddonInterfaceDialog::installPackage(const QString &szPath,QString &szError)
+bool WebAddonInterfaceDialog::installPackage(const QString & szPath, QString & szError)
 {
-	return AddonFunctions::installAddonPackage(szPath,szError,this);
+	return AddonFunctions::installAddonPackage(szPath, szError, this);
 }
 
-bool WebAddonInterfaceDialog::packageIsInstalled(const QString &szId,const QString &szVersion)
+bool WebAddonInterfaceDialog::packageIsInstalled(const QString & szId, const QString & szVersion)
 {
 	KviKvsScriptAddon * pAddon = KviKvsScriptAddonManager::instance()->findAddon(szId);
 	if(!pAddon)
@@ -66,9 +64,7 @@ bool WebAddonInterfaceDialog::packageIsInstalled(const QString &szId,const QStri
 		return true; // hum.... shouldn't happen ?
 
 	// FIXME: If the version of the installed addon is lower then allow upgrading!
-	return KviMiscUtils::compareVersions(pAddon->version(),szVersion) < 0;
+	return KviMiscUtils::compareVersions(pAddon->version(), szVersion) < 0;
 }
-
-
 
 #endif //COMPILE_WEBKIT_SUPPORT

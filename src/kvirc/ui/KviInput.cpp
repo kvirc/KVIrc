@@ -23,7 +23,6 @@
 //
 //=============================================================================
 
-
 #define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
 
@@ -64,16 +63,16 @@
 #include <stdlib.h>
 
 //This comes from KviApplication.cpp
-extern KviColorWindow          * g_pColorWindow;
-extern KviTextIconWindow       * g_pTextIconWindow;
-extern KviHistoryWindowWidget  * g_pHistoryWindow;
-extern QMenu         * g_pInputPopup;
+extern KviColorWindow * g_pColorWindow;
+extern KviTextIconWindow * g_pTextIconWindow;
+extern KviHistoryWindowWidget * g_pHistoryWindow;
+extern QMenu * g_pInputPopup;
 
 KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
-: QWidget(pPar)
+    : QWidget(pPar)
 {
 	setObjectName("input_widget");
-	m_pLayout=new QGridLayout(this);
+	m_pLayout = new QGridLayout(this);
 
 	m_pLayout->setMargin(0);
 	m_pLayout->setSpacing(0);
@@ -84,81 +83,82 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pHideToolsButton = new QToolButton(this);
 	m_pHideToolsButton->setObjectName("hide_container_button");
 
-	m_pHideToolsButton->setIconSize(QSize(22,22));
+	m_pHideToolsButton->setIconSize(QSize(22, 22));
 	m_pHideToolsButton->setFixedWidth(16);
 
 	if(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))
 		m_pHideToolsButton->setIcon(QIcon(*(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))));
 
-	connect(m_pHideToolsButton,SIGNAL(clicked()),this,SLOT(toggleToolButtons()));
+	connect(m_pHideToolsButton, SIGNAL(clicked()), this, SLOT(toggleToolButtons()));
 
 	m_pButtonContainer = new KviTalHBox(this);
 	m_pButtonContainer->setSpacing(0);
 	m_pButtonContainer->setMargin(0);
 
-	m_pButtonContainer->setSizePolicy(QSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum));
+	m_pButtonContainer->setSizePolicy(QSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum));
 	//if(m_pButtonContainer->layout())
 	// m_pButtonContainer->layout()->setSizeConstraint(QLayout::SetMinimumSize);
 
 	m_pHistoryButton = new QToolButton(m_pButtonContainer);
 	m_pHistoryButton->setObjectName("historybutton");
 
-	m_pHistoryButton->setIconSize(QSize(22,22));
+	m_pHistoryButton->setIconSize(QSize(22, 22));
 	//m_pHistoryButton->setUpdatesEnabled(true); ???
 	QIcon is1;
-	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))//G&N mar 2005
+	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory)) //G&N mar 2005
 	{
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::History)));
 		m_pHistoryButton->setIcon(is1);
-		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show history<br>&lt;Ctrl+PageUp&gt;"));
-		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
-	} else {
+		KviTalToolTip::add(m_pHistoryButton, __tr2qs("Show history<br>&lt;Ctrl+PageUp&gt;"));
+		connect(m_pHistoryButton, SIGNAL(clicked()), this, SLOT(historyButtonClicked()));
+	}
+	else
+	{
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::HistoryOff)));
 		m_pHistoryButton->setIcon(is1);
-		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input history disabled"));
+		KviTalToolTip::add(m_pHistoryButton, __tr2qs("Input history disabled"));
 	}
 
 	m_pIconButton = new QToolButton(m_pButtonContainer);
 	m_pIconButton->setObjectName("iconbutton");
 
-	m_pIconButton->setIconSize(QSize(22,22));
+	m_pIconButton->setIconSize(QSize(22, 22));
 	QIcon is3;
 	is3.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)));
 	m_pIconButton->setIcon(is3);
-	KviTalToolTip::add(m_pIconButton,__tr2qs("Show icons popup<br>&lt;Ctrl+I&gt;<br>See also /help texticons"));
-	connect(m_pIconButton,SIGNAL(clicked()),this,SLOT(iconButtonClicked()));
+	KviTalToolTip::add(m_pIconButton, __tr2qs("Show icons popup<br>&lt;Ctrl+I&gt;<br>See also /help texticons"));
+	connect(m_pIconButton, SIGNAL(clicked()), this, SLOT(iconButtonClicked()));
 
 	m_pCommandlineModeButton = new QToolButton(m_pButtonContainer);
 	m_pCommandlineModeButton->setObjectName("commandlinemodebutton");
 
-	m_pCommandlineModeButton->setIconSize(QSize(22,22));
+	m_pCommandlineModeButton->setIconSize(QSize(22, 22));
 	m_pCommandlineModeButton->setCheckable(true);
 	QIcon is0;
-	is0.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::SaySmile)),QIcon::Normal,QIcon::On);
-	is0.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::SayKvs)),QIcon::Normal,QIcon::Off);
+	is0.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::SaySmile)), QIcon::Normal, QIcon::On);
+	is0.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::SayKvs)), QIcon::Normal, QIcon::Off);
 	m_pCommandlineModeButton->setIcon(is0);
-	KviTalToolTip::add(m_pCommandlineModeButton,__tr2qs("User friendly commandline mode<br>See also /help commandline"));
+	KviTalToolTip::add(m_pCommandlineModeButton, __tr2qs("User friendly commandline mode<br>See also /help commandline"));
 	if(KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault))
 		m_pCommandlineModeButton->setChecked(true);
-
 
 	m_pMultiEditorButton = new QToolButton(m_pButtonContainer);
 	m_pMultiEditorButton->setObjectName("multieditorbutton");
 
 	m_pMultiEditorButton->setCheckable(true);
-	m_pMultiEditorButton->setIconSize(QSize(22,22));
+	m_pMultiEditorButton->setIconSize(QSize(22, 22));
 	QIcon is2;
-	is2.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::IrcView)),QIcon::Normal,QIcon::On);
-	is2.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)),QIcon::Normal,QIcon::Off);
+	is2.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::IrcView)), QIcon::Normal, QIcon::On);
+	is2.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)), QIcon::Normal, QIcon::Off);
 	m_pMultiEditorButton->setIcon(is2);
 	QString szTip = __tr2qs("Multi-line editor<br>&lt;Alt+Return&gt;");
-	KviTalToolTip::add(m_pMultiEditorButton,szTip);
+	KviTalToolTip::add(m_pMultiEditorButton, szTip);
 
-	connect(m_pMultiEditorButton,SIGNAL(toggled(bool)),this,SLOT(multiLineEditorButtonToggled(bool)));
+	connect(m_pMultiEditorButton, SIGNAL(toggled(bool)), this, SLOT(multiLineEditorButtonToggled(bool)));
 
-	m_pInputEditor = new KviInputEditor(this,pPar,pView);
-	connect(m_pInputEditor,SIGNAL(enterPressed()),this,SLOT(inputEditorEnterPressed()));
-	m_pInputEditor->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Ignored));
+	m_pInputEditor = new KviInputEditor(this, pPar, pView);
+	connect(m_pInputEditor, SIGNAL(enterPressed()), this, SLOT(inputEditorEnterPressed()));
+	m_pInputEditor->setSizePolicy(QSizePolicy(QSizePolicy::Expanding, QSizePolicy::Ignored));
 
 	m_pMultiEditorButton->setAutoRaise(true);
 	m_pCommandlineModeButton->setAutoRaise(true);
@@ -166,9 +166,9 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pHistoryButton->setAutoRaise(true);
 	m_pHideToolsButton->setAutoRaise(true);
 
-	m_pLayout->addWidget(m_pHideToolsButton,0,2,2,1);
-	m_pLayout->addWidget(m_pButtonContainer,0,1,2,1);
-	m_pLayout->addWidget(m_pInputEditor,0,0,2,1);
+	m_pLayout->addWidget(m_pHideToolsButton, 0, 2, 2, 1);
+	m_pLayout->addWidget(m_pButtonContainer, 0, 1, 2, 1);
+	m_pLayout->addWidget(m_pInputEditor, 0, 0, 2, 1);
 
 	installShortcuts();
 }
@@ -188,12 +188,10 @@ void KviInput::setButtonsHidden(bool bHidden)
 {
 	if(!m_pHideToolsButton || !m_pButtonContainer)
 		return;
-	if(bHidden==m_pButtonContainer->isHidden())
+	if(bHidden == m_pButtonContainer->isHidden())
 		return;
 	m_pButtonContainer->setHidden(bHidden);
-	QPixmap * pix= bHidden ?
-		g_pIconManager->getBigIcon("kvi_horizontal_right.png") :
-		g_pIconManager->getBigIcon("kvi_horizontal_left.png");
+	QPixmap * pix = bHidden ? g_pIconManager->getBigIcon("kvi_horizontal_right.png") : g_pIconManager->getBigIcon("kvi_horizontal_left.png");
 	if(pix)
 		m_pHideToolsButton->setIcon(QIcon(*pix));
 }
@@ -206,15 +204,15 @@ void KviInput::toggleToolButtons()
 void KviInput::inputEditorEnterPressed()
 {
 	QString szText = m_pInputEditor->text();
-	KviUserInput::parse(szText,m_pWindow,QString(),m_pCommandlineModeButton->isChecked());
+	KviUserInput::parse(szText, m_pWindow, QString(), m_pCommandlineModeButton->isChecked());
 	m_pInputEditor->setText("");
 	m_pInputEditor->clearUndoStack();
 }
 
 void KviInput::installShortcuts()
 {
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_MULTILINE,this,SLOT(toggleMultiLine()),0,Qt::WidgetWithChildrenShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_MULTILINE_2,this,SLOT(toggleMultiLine()),0,Qt::WidgetWithChildrenShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_MULTILINE, this, SLOT(toggleMultiLine()), 0, Qt::WidgetWithChildrenShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_MULTILINE_2, this, SLOT(toggleMultiLine()), 0, Qt::WidgetWithChildrenShortcut);
 }
 
 void KviInput::keyPressEvent(QKeyEvent * e)
@@ -230,7 +228,8 @@ void KviInput::keyPressEvent(QKeyEvent * e)
 				{
 					QString szText;
 					m_pMultiLineEditor->getText(szText);
-					if(szText.isEmpty())return;
+					if(szText.isEmpty())
+						return;
 					if(KVI_OPTION_BOOL(KviOption_boolWarnAboutPastingMultipleLines))
 					{
 						if(szText.length() > 256)
@@ -241,30 +240,34 @@ void KviInput::keyPressEvent(QKeyEvent * e)
 								if(nLines > 15)
 								{
 									QMessageBox pMsgBox;
-									pMsgBox.setText(__tr2qs("You're about to send a message with %1 lines of text.<br><br>" \
-										"This warning is here to prevent you from accidentally " \
-										"pasting and sending a really large, potentially unedited message from your clipboard.<br><br>" \
-										"Some IRC servers may also consider %1 lines of text a flood, " \
-										"in which case you will be disconnected from said server.<br><br>" \
-										"Do you still want the message to be sent?").arg(nLines));
+									pMsgBox.setText(__tr2qs("You're about to send a message with %1 lines of text.<br><br>"
+									                        "This warning is here to prevent you from accidentally "
+									                        "pasting and sending a really large, potentially unedited message from your clipboard.<br><br>"
+									                        "Some IRC servers may also consider %1 lines of text a flood, "
+									                        "in which case you will be disconnected from said server.<br><br>"
+									                        "Do you still want the message to be sent?")
+									                    .arg(nLines));
 									pMsgBox.setWindowTitle(__tr2qs("Confirm Sending a Large Message - KVIrc"));
 									pMsgBox.setIcon(QMessageBox::Question);
-									QAbstractButton *pAlwaysButton = pMsgBox.addButton(__tr2qs("Always"), QMessageBox::YesRole);
+									QAbstractButton * pAlwaysButton = pMsgBox.addButton(__tr2qs("Always"), QMessageBox::YesRole);
 									/* QAbstractButton *pYesButton = */ pMsgBox.addButton(__tr2qs("Yes"), QMessageBox::YesRole);
-									QAbstractButton *pNoButton = pMsgBox.addButton(__tr2qs("No"), QMessageBox::NoRole);
+									QAbstractButton * pNoButton = pMsgBox.addButton(__tr2qs("No"), QMessageBox::NoRole);
 									pMsgBox.setDefaultButton(qobject_cast<QPushButton *>(pNoButton));
 									pMsgBox.exec();
-									if (pMsgBox.clickedButton() == pAlwaysButton) {
+									if(pMsgBox.clickedButton() == pAlwaysButton)
+									{
 										KVI_OPTION_BOOL(KviOption_boolWarnAboutPastingMultipleLines) = false;
-									} else if (pMsgBox.clickedButton() == pNoButton || pMsgBox.clickedButton() == 0) {
+									}
+									else if(pMsgBox.clickedButton() == pNoButton || pMsgBox.clickedButton() == 0)
+									{
 										return;
 									}
 								}
 							}
 						}
 					}
-					szText.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
-					KviUserInput::parse(szText,m_pWindow,QString(),m_pCommandlineModeButton->isChecked());
+					szText.replace('\t', QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput), ' ')); //expand tabs to spaces
+					KviUserInput::parse(szText, m_pWindow, QString(), m_pCommandlineModeButton->isChecked());
 					m_pMultiLineEditor->setText("");
 				}
 			}
@@ -286,7 +289,8 @@ void KviInput::multiLineEditorButtonToggled(bool bOn)
 {
 	if(m_pMultiLineEditor)
 	{
-		if(bOn) return;
+		if(bOn)
+			return;
 		QString szTmp;
 		m_pMultiLineEditor->getText(szTmp);
 		m_pLayout->removeWidget(m_pMultiLineEditor);
@@ -299,18 +303,21 @@ void KviInput::multiLineEditorButtonToggled(bool bOn)
 		m_pHelpLabel = 0;
 
 		szTmp.replace(QRegExp("[\a\f\n\r\v]"), QString(" "));
-		szTmp.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
+		szTmp.replace('\t', QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput), ' ')); //expand tabs to spaces
 		m_pInputEditor->setText(szTmp);
 		m_pInputEditor->show();
 		m_pWindow->childrenTreeChanged(0);
 		m_pInputEditor->setFocus();
 		m_pMultiEditorButton->setChecked(false);
-	} else {
-		if(!bOn) return;
+	}
+	else
+	{
+		if(!bOn)
+			return;
 		m_pInputEditor->hide();
 
 		m_pHelpLabel = new QLabel();
-		m_pHelpLabel->setContentsMargins(15,5,0,0);
+		m_pHelpLabel->setContentsMargins(15, 5, 0, 0);
 
 		QString tmpHelpLabel = __tr2qs("<Ctrl+Return>; submits, <Alt+Return>; hides this editor");
 #ifdef COMPILE_ON_MAC
@@ -318,11 +325,11 @@ void KviInput::multiLineEditorButtonToggled(bool bOn)
 		tmpHelpLabel.replace(QString("<Alt+Return>;"), QString("⌥↩"));
 #endif
 		m_pHelpLabel->setText(tmpHelpLabel);
-		m_pLayout->addWidget(m_pHelpLabel,0,0,1,1);
+		m_pLayout->addWidget(m_pHelpLabel, 0, 0, 1, 1);
 
 		m_pMultiLineEditor = KviScriptEditor::createInstance(this);
 		m_pMultiLineEditor->setText(m_pInputEditor->text());
-		m_pLayout->addWidget(m_pMultiLineEditor,1,0,1,1);
+		m_pLayout->addWidget(m_pMultiLineEditor, 1, 0, 1, 1);
 
 		m_pWindow->childrenTreeChanged(m_pMultiLineEditor);
 		m_pMultiLineEditor->setFocus();
@@ -334,9 +341,9 @@ void KviInput::iconButtonClicked()
 {
 	if(!g_pTextIconWindow)
 		g_pTextIconWindow = new KviTextIconWindow();
-	QPoint pnt = m_pIconButton->mapToGlobal(QPoint(m_pIconButton->width(),0));
- 	g_pTextIconWindow->move(pnt.x()-g_pTextIconWindow->width(),pnt.y() - g_pTextIconWindow->height());
-	g_pTextIconWindow->popup(this,true);
+	QPoint pnt = m_pIconButton->mapToGlobal(QPoint(m_pIconButton->width(), 0));
+	g_pTextIconWindow->move(pnt.x() - g_pTextIconWindow->width(), pnt.y() - g_pTextIconWindow->height());
+	g_pTextIconWindow->popup(this, true);
 }
 
 void KviInput::historyButtonClicked()
@@ -344,9 +351,9 @@ void KviInput::historyButtonClicked()
 	if(!g_pHistoryWindow)
 		g_pHistoryWindow = new KviHistoryWindowWidget();
 
-	QPoint pnt = mapToGlobal(QPoint(0,0));
+	QPoint pnt = mapToGlobal(QPoint(0, 0));
 
-	g_pHistoryWindow->setGeometry(pnt.x(),pnt.y() - KVI_HISTORY_WIN_HEIGHT,width(),KVI_HISTORY_WIN_HEIGHT);
+	g_pHistoryWindow->setGeometry(pnt.x(), pnt.y() - KVI_HISTORY_WIN_HEIGHT, width(), KVI_HISTORY_WIN_HEIGHT);
 	g_pHistoryWindow->popup(this);
 }
 
@@ -398,13 +405,15 @@ void KviInput::applyOptions()
 		QIcon is1;
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::History)));
 		m_pHistoryButton->setIcon(is1);
-		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Show history<br>&lt;Ctrl+PageUp&gt;"));
-		connect(m_pHistoryButton,SIGNAL(clicked()),this,SLOT(historyButtonClicked()));
-	} else {
+		KviTalToolTip::add(m_pHistoryButton, __tr2qs("Show history<br>&lt;Ctrl+PageUp&gt;"));
+		connect(m_pHistoryButton, SIGNAL(clicked()), this, SLOT(historyButtonClicked()));
+	}
+	else
+	{
 		QIcon is1;
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::HistoryOff)));
 		m_pHistoryButton->setIcon(is1);
-		KviTalToolTip::add(m_pHistoryButton,__tr2qs("Input history disabled"));
+		KviTalToolTip::add(m_pHistoryButton, __tr2qs("Input history disabled"));
 		m_pHistoryButton->disconnect(SIGNAL(clicked()));
 	}
 

@@ -34,20 +34,20 @@
 // KviApplication.cpp
 extern KVIRC_API KviMediaManager * g_pMediaManager;
 
-static void copyMediaType(KviMediaType * dst,const KviMediaType * src)
+static void copyMediaType(KviMediaType * dst, const KviMediaType * src)
 {
-	dst->szFileMask              = src->szFileMask;
-	dst->szIanaType              = src->szIanaType;
-	dst->szDescription           = src->szDescription;
-	dst->szMagicBytes            = src->szMagicBytes;
-	dst->szSavePath              = src->szSavePath;
-	dst->szCommandline           = src->szCommandline;
+	dst->szFileMask = src->szFileMask;
+	dst->szIanaType = src->szIanaType;
+	dst->szDescription = src->szDescription;
+	dst->szMagicBytes = src->szMagicBytes;
+	dst->szSavePath = src->szSavePath;
+	dst->szCommandline = src->szCommandline;
 	dst->szRemoteExecCommandline = src->szRemoteExecCommandline;
-	dst->szIcon                  = src->szIcon;
+	dst->szIcon = src->szIcon;
 }
 
-MediaTypeTreeWidgetItem::MediaTypeTreeWidgetItem(QTreeWidget * w,KviMediaType * t)
-: QTreeWidgetItem(w)
+MediaTypeTreeWidgetItem::MediaTypeTreeWidgetItem(QTreeWidget * w, KviMediaType * t)
+    : QTreeWidgetItem(w)
 {
 	copyData(t);
 }
@@ -58,14 +58,14 @@ MediaTypeTreeWidgetItem::~MediaTypeTreeWidgetItem()
 
 void MediaTypeTreeWidgetItem::copyData(KviMediaType * t)
 {
-	copyMediaType(&m_data,t);
-	setText(0,m_data.szFileMask.ptr());
-	setText(1,m_data.szIanaType.ptr());
-	setText(2,m_data.szDescription.ptr());
+	copyMediaType(&m_data, t);
+	setText(0, m_data.szFileMask.ptr());
+	setText(1, m_data.szIanaType.ptr());
+	setText(2, m_data.szDescription.ptr());
 }
 
 OptionsWidget_mediaTypes::OptionsWidget_mediaTypes(QWidget * parent)
-: KviOptionsWidget(parent)
+    : KviOptionsWidget(parent)
 {
 	setObjectName("mediatypes_options_widget");
 
@@ -74,75 +74,77 @@ OptionsWidget_mediaTypes::OptionsWidget_mediaTypes(QWidget * parent)
 	m_pTreeWidget = new QTreeWidget(this);
 	m_pTreeWidget->setColumnCount(3);
 	QStringList columnLabels;
-	columnLabels.append(__tr2qs_ctx("Pattern","options"));
-	columnLabels.append(__tr2qs_ctx("MIME Type","options"));
-	columnLabels.append(__tr2qs_ctx("Description","options"));
+	columnLabels.append(__tr2qs_ctx("Pattern", "options"));
+	columnLabels.append(__tr2qs_ctx("MIME Type", "options"));
+	columnLabels.append(__tr2qs_ctx("Description", "options"));
 	m_pTreeWidget->setHeaderLabels(columnLabels);
 	m_pTreeWidget->setAllColumnsShowFocus(true);
 	m_pTreeWidget->setRootIsDecorated(false);
-	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
+	connect(m_pTreeWidget, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)));
 
-	layout()->addWidget(m_pTreeWidget,0,0,1,3);
+	layout()->addWidget(m_pTreeWidget, 0, 0, 1, 3);
 
-	QLabel * l = new QLabel(__tr2qs_ctx("Description:","options"),this);
-	layout()->addWidget(l,1,0);
+	QLabel * l = new QLabel(__tr2qs_ctx("Description:", "options"), this);
+	layout()->addWidget(l, 1, 0);
 	m_pDescription = new QLineEdit(this);
-	layout()->addWidget(m_pDescription,1,1,1,2);
+	layout()->addWidget(m_pDescription, 1, 1, 1, 2);
 
-	l = new QLabel(__tr2qs_ctx("MIME type:","options"),this);
-	layout()->addWidget(l,2,0);
+	l = new QLabel(__tr2qs_ctx("MIME type:", "options"), this);
+	layout()->addWidget(l, 2, 0);
 	m_pIanaType = new QLineEdit(this);
-	layout()->addWidget(m_pIanaType,2,1,1,2);
+	layout()->addWidget(m_pIanaType, 2, 1, 1, 2);
 
-	l = new QLabel(__tr2qs_ctx("File pattern:","options"),this);
-	layout()->addWidget(l,3,0);
+	l = new QLabel(__tr2qs_ctx("File pattern:", "options"), this);
+	layout()->addWidget(l, 3, 0);
 	m_pFileMask = new QLineEdit(this);
-	layout()->addWidget(m_pFileMask,3,1,1,2);
+	layout()->addWidget(m_pFileMask, 3, 1, 1, 2);
 
-	l = new QLabel(__tr2qs_ctx("Magic bytes:","options"),this);
-	layout()->addWidget(l,4,0);
+	l = new QLabel(__tr2qs_ctx("Magic bytes:", "options"), this);
+	layout()->addWidget(l, 4, 0);
 	m_pMagicBytes = new QLineEdit(this);
-	layout()->addWidget(m_pMagicBytes,4,1,1,2);
+	layout()->addWidget(m_pMagicBytes, 4, 1, 1, 2);
 
-	l = new QLabel(__tr2qs_ctx("Save path:","options"),this);
-	layout()->addWidget(l,5,0);
+	l = new QLabel(__tr2qs_ctx("Save path:", "options"), this);
+	layout()->addWidget(l, 5, 0);
 	m_pSavePath = new QLineEdit(this);
-	layout()->addWidget(m_pSavePath,5,1,1,2);
+	layout()->addWidget(m_pSavePath, 5, 1, 1, 2);
 
-	l = new QLabel(__tr2qs_ctx("Local open command:","options"),this);
-	layout()->addWidget(l,6,0);
+	l = new QLabel(__tr2qs_ctx("Local open command:", "options"), this);
+	layout()->addWidget(l, 6, 0);
 	m_pCommandline = new QLineEdit(this);
-	layout()->addWidget(m_pCommandline,6,1,1,2);
-	mergeTip(m_pCommandline,__tr2qs_ctx("This field contains the command to execute to open a local file.<br>" \
-		"<tt>$0</tt> is used in place of the filename","options"));
+	layout()->addWidget(m_pCommandline, 6, 1, 1, 2);
+	mergeTip(m_pCommandline, __tr2qs_ctx("This field contains the command to execute to open a local file.<br>"
+	                                     "<tt>$0</tt> is used in place of the filename",
+	                             "options"));
 
-	l = new QLabel(__tr2qs_ctx("Remote open command:","options"),this);
-	layout()->addWidget(l,7,0);
+	l = new QLabel(__tr2qs_ctx("Remote open command:", "options"), this);
+	layout()->addWidget(l, 7, 0);
 	m_pRemoteExecCommandline = new QLineEdit(this);
-	layout()->addWidget(m_pRemoteExecCommandline,7,1,1,2);
-	mergeTip(m_pRemoteExecCommandline,__tr2qs_ctx("This field contains the command to execute when automatically opening a received file.<br>" \
-		"<tt>$0</tt> is used in place of the filename","options"));
+	layout()->addWidget(m_pRemoteExecCommandline, 7, 1, 1, 2);
+	mergeTip(m_pRemoteExecCommandline, __tr2qs_ctx("This field contains the command to execute when automatically opening a received file.<br>"
+	                                               "<tt>$0</tt> is used in place of the filename",
+	                                       "options"));
 
-	l = new QLabel(__tr2qs_ctx("Icon:","options"),this);
-	layout()->addWidget(l,8,0);
+	l = new QLabel(__tr2qs_ctx("Icon:", "options"), this);
+	layout()->addWidget(l, 8, 0);
 	m_pIcon = new QLineEdit(this);
-	layout()->addWidget(m_pIcon,8,1,1,2);
+	layout()->addWidget(m_pIcon, 8, 1, 1, 2);
 
 	QFrame * f = new QFrame(this);
 	f->setFrameStyle(QFrame::Sunken | QFrame::HLine);
-	layout()->addWidget(f,9,0,1,3);
+	layout()->addWidget(f, 9, 0, 1, 3);
 
-	QPushButton * b = new QPushButton(__tr2qs_ctx("&New","options"),this);
-	connect(b,SIGNAL(clicked()),this,SLOT(newMediaType()));
-	layout()->addWidget(b,10,1);
+	QPushButton * b = new QPushButton(__tr2qs_ctx("&New", "options"), this);
+	connect(b, SIGNAL(clicked()), this, SLOT(newMediaType()));
+	layout()->addWidget(b, 10, 1);
 
-	m_pDelete = new QPushButton(__tr2qs_ctx("Re&move","options"),this);
-	connect(m_pDelete,SIGNAL(clicked()),this,SLOT(delMediaType()));
-	layout()->addWidget(m_pDelete,10,2);
+	m_pDelete = new QPushButton(__tr2qs_ctx("Re&move", "options"), this);
+	connect(m_pDelete, SIGNAL(clicked()), this, SLOT(delMediaType()));
+	layout()->addWidget(m_pDelete, 10, 2);
 
-	layout()->setColumnStretch(1,1);
-	layout()->setColumnStretch(2,1);
-	layout()->setRowStretch(0,1);
+	layout()->setColumnStretch(1, 1);
+	layout()->setColumnStretch(2, 1);
+	layout()->setRowStretch(0, 1);
 
 	m_pLastItem = 0;
 
@@ -159,8 +161,8 @@ void OptionsWidget_mediaTypes::fillTreeWidget()
 	g_pMediaManager->lock();
 	KviPointerList<KviMediaType> * l = g_pMediaManager->mediaTypeList();
 
-	for(KviMediaType * t = l->first();t;t = l->next())
-		new MediaTypeTreeWidgetItem(m_pTreeWidget,t);
+	for(KviMediaType * t = l->first(); t; t = l->next())
+		new MediaTypeTreeWidgetItem(m_pTreeWidget, t);
 
 	g_pMediaManager->unlock();
 	enableOrDisable();
@@ -171,16 +173,17 @@ void OptionsWidget_mediaTypes::saveLastItem()
 	if(m_pLastItem)
 	{
 		KviMediaType t;
-		t.szDescription           = m_pDescription->text();
-		t.szIanaType              = m_pIanaType->text();
-		t.szFileMask              = m_pFileMask->text();
-		t.szSavePath              = m_pSavePath->text();
-		t.szCommandline           = m_pCommandline->text();
-		t.szMagicBytes            = m_pMagicBytes->text();
+		t.szDescription = m_pDescription->text();
+		t.szIanaType = m_pIanaType->text();
+		t.szFileMask = m_pFileMask->text();
+		t.szSavePath = m_pSavePath->text();
+		t.szCommandline = m_pCommandline->text();
+		t.szMagicBytes = m_pMagicBytes->text();
 		t.szRemoteExecCommandline = m_pRemoteExecCommandline->text();
-		t.szIcon                  = m_pIcon->text();
+		t.szIcon = m_pIcon->text();
 
-		if(t.szDescription.isEmpty())t.szDescription = __tr2qs_ctx("[Unknown Media Type]","options");
+		if(t.szDescription.isEmpty())
+			t.szDescription = __tr2qs_ctx("[Unknown Media Type]", "options");
 
 		m_pLastItem->copyData(&t);
 	}
@@ -211,13 +214,14 @@ void OptionsWidget_mediaTypes::setLineEdits()
 	m_pIcon->setText(m_pLastItem ? m_pLastItem->mydata()->szIcon.ptr() : "");
 }
 
-void OptionsWidget_mediaTypes::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
+void OptionsWidget_mediaTypes::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 {
 	saveLastItem();
 	m_pLastItem = (MediaTypeTreeWidgetItem *)it;
 	if(it)
 	{
-		if(!it->isSelected())it->setSelected(true);
+		if(!it->isSelected())
+			it->setSelected(true);
 	}
 	setLineEdits();
 	enableOrDisable();
@@ -226,8 +230,8 @@ void OptionsWidget_mediaTypes::currentItemChanged(QTreeWidgetItem *it,QTreeWidge
 void OptionsWidget_mediaTypes::newMediaType()
 {
 	KviMediaType empty;
-	empty.szDescription = __tr2qs_ctx("New media type","options");
-	MediaTypeTreeWidgetItem * it = new MediaTypeTreeWidgetItem(m_pTreeWidget,&empty);
+	empty.szDescription = __tr2qs_ctx("New media type", "options");
+	MediaTypeTreeWidgetItem * it = new MediaTypeTreeWidgetItem(m_pTreeWidget, &empty);
 	m_pTreeWidget->setCurrentItem(it);
 	it->setSelected(true);
 }
@@ -245,17 +249,17 @@ void OptionsWidget_mediaTypes::delMediaType()
 void OptionsWidget_mediaTypes::commit()
 {
 	saveLastItem();
-	MediaTypeTreeWidgetItem * it;// = (MediaTypeTreeWidgetItem *)m_pTreeWidget->firstChild();
+	MediaTypeTreeWidgetItem * it; // = (MediaTypeTreeWidgetItem *)m_pTreeWidget->firstChild();
 	g_pMediaManager->lock();
 	g_pMediaManager->clear();
 	//while(it)
-	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+	for(int i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
 	{
-		it=(MediaTypeTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+		it = (MediaTypeTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		KviMediaType * t = new KviMediaType;
-		copyMediaType(t,it->mydata());
+		copyMediaType(t, it->mydata());
 		g_pMediaManager->insertMediaType(t);
-	//	it = (MediaTypeTreeWidgetItem *)it->nextSibling();
+		//	it = (MediaTypeTreeWidgetItem *)it->nextSibling();
 	}
 	g_pMediaManager->unlock();
 }

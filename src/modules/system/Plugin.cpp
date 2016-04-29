@@ -104,7 +104,7 @@
 		[/example]
 */
 
-Plugin::Plugin(QLibrary * pLibrary, const QString& name)
+Plugin::Plugin(QLibrary * pLibrary, const QString & name)
 {
 	m_pLibrary = pLibrary;
 	m_szName = name;
@@ -112,25 +112,26 @@ Plugin::Plugin(QLibrary * pLibrary, const QString& name)
 
 Plugin::~Plugin()
 {
-	if(m_pLibrary->isLoaded()) m_pLibrary->unload();
+	if(m_pLibrary->isLoaded())
+		m_pLibrary->unload();
 	delete m_pLibrary;
 }
 
-Plugin* Plugin::load(const QString& szFileName)
+Plugin * Plugin::load(const QString & szFileName)
 {
-	QLibrary* pLibrary = new QLibrary(szFileName);
-	if (!pLibrary->load())
+	QLibrary * pLibrary = new QLibrary(szFileName);
+	if(!pLibrary->load())
 	{
 		delete pLibrary;
 		return 0;
 	}
 
-	Plugin* pPlugin = new Plugin(pLibrary,KviFileUtils::extractFileName(szFileName));
+	Plugin * pPlugin = new Plugin(pLibrary, KviFileUtils::extractFileName(szFileName));
 
 	plugin_load function_load;
 
 	function_load = (plugin_unload)pLibrary->resolve("_load");
-	if (function_load)
+	if(function_load)
 	{
 		//TODO: THREAD
 		function_load();
@@ -143,10 +144,11 @@ bool Plugin::pfree(char * pBuffer)
 	plugin_free function_free;
 
 	function_free = (plugin_free)m_pLibrary->resolve("_free");
-	if (function_free)
+	if(function_free)
 	{
 		//TODO: THREAD
-		if(pBuffer) function_free(pBuffer);
+		if(pBuffer)
+			function_free(pBuffer);
 		return true;
 	}
 	return false;
@@ -157,7 +159,7 @@ bool Plugin::unload()
 	plugin_unload function_unload;
 
 	function_unload = (plugin_unload)m_pLibrary->resolve("_unload");
-	if (function_unload)
+	if(function_unload)
 	{
 		//TODO: THREAD
 		function_unload();
@@ -172,7 +174,7 @@ bool Plugin::canunload()
 	plugin_canunload function_canunload;
 
 	function_canunload = (plugin_canunload)m_pLibrary->resolve("_canunload");
-	if (function_canunload)
+	if(function_canunload)
 	{
 		//TODO: THREAD
 		return function_canunload();
@@ -180,19 +182,22 @@ bool Plugin::canunload()
 	return true;
 }
 
-int Plugin::call(const QString& pszFunctionName, int argc, char * argv[], char ** pBuffer)
+int Plugin::call(const QString & pszFunctionName, int argc, char * argv[], char ** pBuffer)
 {
 	int r;
 	plugin_function function_call;
 	function_call = (plugin_function)m_pLibrary->resolve(pszFunctionName.toUtf8().data());
-	if (!function_call)
+	if(!function_call)
 	{
 		return -1;
-	} else {
-		//TODO: THREAD
-		r = function_call(argc,argv,pBuffer);
 	}
-	if (r < 0) r = 0; // negative numbers are for error handling.
+	else
+	{
+		//TODO: THREAD
+		r = function_call(argc, argv, pBuffer);
+	}
+	if(r < 0)
+		r = 0; // negative numbers are for error handling.
 	return r;
 }
 
@@ -201,14 +206,14 @@ QString Plugin::name() const
 	return m_szName;
 }
 
-void Plugin::setName(const QString& Name)
+void Plugin::setName(const QString & Name)
 {
 	m_szName = Name;
 }
 
 PluginManager::PluginManager()
 {
-	m_pPluginDict = new KviPointerHashTable<QString,Plugin>(5,false);
+	m_pPluginDict = new KviPointerHashTable<QString, Plugin>(5, false);
 	m_pPluginDict->setAutoDelete(false);
 
 	m_bCanUnload = true;
@@ -216,18 +221,18 @@ PluginManager::PluginManager()
 
 PluginManager::~PluginManager()
 {
-	delete 	m_pPluginDict;
+	delete m_pPluginDict;
 }
 
-bool PluginManager::pluginCall(KviKvsModuleFunctionCall *c)
+bool PluginManager::pluginCall(KviKvsModuleFunctionCall * c)
 {
 	//   /echo $system.call("traffic.dll",about)
 	QString szPluginPath; //contains full path and plugin name like "c:/plugin.dll"
 	QString szFunctionName;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("plugin_path",KVS_PT_NONEMPTYSTRING,0,szPluginPath)
-		KVSM_PARAMETER("function",KVS_PT_NONEMPTYSTRING,0,szFunctionName)
+	KVSM_PARAMETER("plugin_path", KVS_PT_NONEMPTYSTRING, 0, szPluginPath)
+	KVSM_PARAMETER("function", KVS_PT_NONEMPTYSTRING, 0, szFunctionName)
 	KVSM_PARAMETERS_END(c)
 
 	//Check if there is such a plugin
@@ -255,40 +260,41 @@ bool PluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 		iArgc = c->parameterCount() - 2;
 	}
 
-	if (iArgc > 0)
+	if(iArgc > 0)
 	{
 		int i = 2;
 		QString tmp;
 		int iSize = 0;
 
 		//Calculate buffer size
-		while (i < (iArgc + 2) )
+		while(i < (iArgc + 2))
 		{
 			c->params()->at(i)->asString(tmp);
-			iSize += tmp.length()+1; //+1 for the \0 characters
+			iSize += tmp.length() + 1; //+1 for the \0 characters
 			i++;
 		}
 
 		//Allocate buffer
-		ppArgv = (char**)malloc(iArgc*sizeof(char*));
-		pArgvBuffer = (char*)malloc(iSize);
+		ppArgv = (char **)malloc(iArgc * sizeof(char *));
+		pArgvBuffer = (char *)malloc(iSize);
 
 		i = 2;
 		char * x = 0;
 		x = pArgvBuffer;
-		while (i < (iArgc + 2) )
+		while(i < (iArgc + 2))
 		{
-			ppArgv[i-2] = x;
+			ppArgv[i - 2] = x;
 			c->params()->at(i)->asString(tmp);
-			strcpy(x,tmp.toLocal8Bit());
+			strcpy(x, tmp.toLocal8Bit());
 			x += tmp.length();
 
 			*x = 0;
 			x++;
 			i++;
 		}
-
-	} else {
+	}
+	else
+	{
 		//Avoid using unfilled variables
 		ppArgv = 0;
 		pArgvBuffer = 0;
@@ -300,25 +306,26 @@ bool PluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 	Plugin * plugin;
 
 	plugin = getPlugin(szPluginPath);
-	int r = plugin->call(szFunctionName,iArgc,ppArgv,&returnBuffer);
+	int r = plugin->call(szFunctionName, iArgc, ppArgv, &returnBuffer);
 
 	if(r == -1)
 	{
 		c->error(__tr2qs("This plugin doesn't export the desired function."));
 		return true;
 	}
-	if (r > 0)
+	if(r > 0)
 	{
 		c->returnValue()->setString(QString::fromLocal8Bit(returnBuffer));
 	}
 
-
 	//Clean up
-	if(pArgvBuffer) free(pArgvBuffer);
-	if(ppArgv) free(ppArgv);
+	if(pArgvBuffer)
+		free(pArgvBuffer);
+	if(ppArgv)
+		free(ppArgv);
 	if(returnBuffer)
 	{
-		if (!plugin->pfree(returnBuffer))
+		if(!plugin->pfree(returnBuffer))
 		{
 			c->warning(__tr2qs("The plugin has no function to free memory. This can result in memory leaks!"));
 		}
@@ -333,7 +340,7 @@ bool PluginManager::checkUnload()
 	Always called when system module should be unloaded
 	Checking here if all small "modules" can be unloaded
 	*/
-	KviPointerHashTableIterator<QString,Plugin> it(*m_pPluginDict);
+	KviPointerHashTableIterator<QString, Plugin> it(*m_pPluginDict);
 
 	m_bCanUnload = true;
 
@@ -343,7 +350,9 @@ bool PluginManager::checkUnload()
 		{
 			it.current()->unload();
 			m_pPluginDict->remove(it.currentKey());
-		} else {
+		}
+		else
+		{
 			m_bCanUnload = false;
 		}
 		it.moveNext();
@@ -354,7 +363,7 @@ bool PluginManager::checkUnload()
 
 void PluginManager::unloadAll()
 {
-	KviPointerHashTableIterator<QString,Plugin> it(*m_pPluginDict);
+	KviPointerHashTableIterator<QString, Plugin> it(*m_pPluginDict);
 
 	while(it.current())
 	{
@@ -364,22 +373,24 @@ void PluginManager::unloadAll()
 	}
 }
 
-bool PluginManager::findPlugin(QString& szPath)
+bool PluginManager::findPlugin(QString & szPath)
 {
 	QString szFileName(KviFileUtils::extractFileName(szPath));
-//	szFileName.detach();
+	//	szFileName.detach();
 	if(KviFileUtils::isAbsolutePath(szPath) && KviFileUtils::fileExists(szPath))
 	{
 		// Ok,
 		return true;
-	} else {
+	}
+	else
+	{
 		//Plugin not found in direct way. Looking in kvirc local dir
-		g_pApp->getGlobalKvircDirectory(szPath,KviApplication::EasyPlugins,szFileName);
+		g_pApp->getGlobalKvircDirectory(szPath, KviApplication::EasyPlugins, szFileName);
 
 		if(!KviFileUtils::fileExists(szPath))
 		{
 			//Plugin not found in kvirc local dir. Looking in kvirc global dir
-			g_pApp->getLocalKvircDirectory(szPath,KviApplication::EasyPlugins,szFileName);
+			g_pApp->getLocalKvircDirectory(szPath, KviApplication::EasyPlugins, szFileName);
 
 			if(!KviFileUtils::fileExists(szPath))
 			{
@@ -390,32 +401,34 @@ bool PluginManager::findPlugin(QString& szPath)
 	return true;
 }
 
-bool PluginManager::isPluginLoaded(const QString& pSingleName)
+bool PluginManager::isPluginLoaded(const QString & pSingleName)
 {
 	Plugin * p = m_pPluginDict->find(pSingleName);
-	if (!p)
+	if(!p)
 		return false;
 	else
 		return true;
 }
 
-bool PluginManager::loadPlugin(const QString& szPluginPath)
+bool PluginManager::loadPlugin(const QString & szPluginPath)
 {
 	if(isPluginLoaded(szPluginPath))
 	{
-		return getPlugin(szPluginPath)!=0;
-	} else {
+		return getPlugin(szPluginPath) != 0;
+	}
+	else
+	{
 		Plugin * plugin = Plugin::load(szPluginPath);
 		if(plugin)
 		{
-			m_pPluginDict->insert(szPluginPath,plugin);
+			m_pPluginDict->insert(szPluginPath, plugin);
 			return true;
 		}
 	}
 	return false;
 }
 
-Plugin * PluginManager::getPlugin(const QString& szPluginPath)
+Plugin * PluginManager::getPlugin(const QString & szPluginPath)
 {
 	Plugin * p = m_pPluginDict->find(szPluginPath);
 	return p;

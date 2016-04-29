@@ -38,29 +38,39 @@ class KVIRC_API KviKvsAliasManager : public QObject
 protected: // it only can be created and destroyed by KviKvsAliasManager::init()/done()
 	KviKvsAliasManager();
 	~KviKvsAliasManager();
+
 protected:
-	KviPointerHashTable<QString,KviKvsScript>        * m_pAliasDict;
-	static KviKvsAliasManager  * m_pAliasManager;
+	KviPointerHashTable<QString, KviKvsScript> * m_pAliasDict;
+	static KviKvsAliasManager * m_pAliasManager;
+
 public:
 	static KviKvsAliasManager * instance()
-		{ return m_pAliasManager; };
+	{
+		return m_pAliasManager;
+	};
 	static void init(); // called by KviKvs::init()
 	static void done(); // called by KviKvs::done()
 
-	KviPointerHashTable<QString,KviKvsScript> * aliasDict(){ return m_pAliasDict; };
+	KviPointerHashTable<QString, KviKvsScript> * aliasDict() { return m_pAliasDict; };
 	const KviKvsScript * lookup(const QString & szName)
-		{ return m_pAliasDict->find(szName); };
-	void add(const QString &szName,KviKvsScript * pAlias);
+	{
+		return m_pAliasDict->find(szName);
+	};
+	void add(const QString & szName, KviKvsScript * pAlias);
 	bool remove(const QString & szName)
-		{ return m_pAliasDict->remove(szName); };
+	{
+		return m_pAliasDict->remove(szName);
+	};
 	bool removeNamespace(const QString & szName);
 	void clear()
-		{ m_pAliasDict->clear(); };
+	{
+		m_pAliasDict->clear();
+	};
 
 	void save(const QString & filename);
 	void load(const QString & filename);
 
-	void completeCommand(const QString &word,KviPointerList<QString> * matches);
+	void completeCommand(const QString & word, KviPointerList<QString> * matches);
 signals:
 	void aliasRefresh(const QString &);
 };

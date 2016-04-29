@@ -34,15 +34,16 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeModuleSimpleCommand : public KviKvsTreeNodeSimpleCommand
 {
 public:
-	KviKvsTreeNodeModuleSimpleCommand(const QChar * pLocation,const QString &szModuleName,const QString &szCmdName,KviKvsTreeNodeDataList * params);
+	KviKvsTreeNodeModuleSimpleCommand(const QChar * pLocation, const QString & szModuleName, const QString & szCmdName, KviKvsTreeNodeDataList * params);
 	~KviKvsTreeNodeModuleSimpleCommand();
+
 protected:
 	QString m_szModuleName;
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_MODULESIMPLECOMMAND_H_

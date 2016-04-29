@@ -60,60 +60,67 @@ class NotifierWindow : public QWidget
 public:
 	NotifierWindow();
 	~NotifierWindow();
+
 protected:
 	QTimer * m_pShowHideTimer;
 	QTimer * m_pBlinkTimer;
 	QTimer * m_pAutoHideTimer;
-	State   m_eState;
-	bool    m_bBlinkOn;
-	double  m_dOpacity;
+	State m_eState;
+	bool m_bBlinkOn;
+	double m_dOpacity;
 
-	bool    m_bCloseDown;
-	bool    m_bPrevDown;
-	bool    m_bNextDown;
-	bool    m_bWriteDown;
-	bool    m_bCrashShowWorkAround;
+	bool m_bCloseDown;
+	bool m_bPrevDown;
+	bool m_bNextDown;
+	bool m_bWriteDown;
+	bool m_bCrashShowWorkAround;
 
-	QRect	m_wndRect;
+	QRect m_wndRect;
 
 	NotifierMessage * m_pCurrentMessage;
 	KviThemedLineEdit * m_pLineEdit;
 
-	bool	m_bDragging;
-	bool	m_bLeftButtonIsPressed;
-	bool	m_bDiagonalResizing;
-	bool	m_bResizing;
+	bool m_bDragging;
+	bool m_bLeftButtonIsPressed;
+	bool m_bDiagonalResizing;
+	bool m_bResizing;
 
-	int	m_whereResizing;
+	int m_whereResizing;
 
-	QPoint      m_pntDrag;
-	QPoint      m_pntPos;
-	QPoint      m_pntClick;
-	int         m_iBlinkCount;
-	QMenu     * m_pContextPopup;
-	QMenu     * m_pDisablePopup;
+	QPoint m_pntDrag;
+	QPoint m_pntPos;
+	QPoint m_pntClick;
+	int m_iBlinkCount;
+	QMenu * m_pContextPopup;
+	QMenu * m_pDisablePopup;
 	KviWindow * m_pWindowToRaise;
-	kvi_time_t  m_tAutoHideAt;
-	kvi_time_t  m_tStartedAt;
-	QTime	    m_qtStartedAt;
-	bool	    m_bDisableHideOnMainWindowGotAttention;
+	kvi_time_t m_tAutoHideAt;
+	kvi_time_t m_tStartedAt;
+	QTime m_qtStartedAt;
+	bool m_bDisableHideOnMainWindowGotAttention;
 
 	QCursor m_cursor;
 
-	QTabWidget 			* m_pWndTabs;
-	QProgressBar			* m_pProgressBar;
-	NotifierWindowBorder 	* m_pWndBorder;
+	QTabWidget * m_pWndTabs;
+	QProgressBar * m_pProgressBar;
+	NotifierWindowBorder * m_pWndBorder;
+
 public:
 	void doShow(bool bDoAnimate);
 	void doHide(bool bDoAnimate);
 	int textWidth();
-	void addMessage(KviWindow * pWnd,const QString &szImageId,const QString &szText,unsigned int uMessageTime);
-	void setDisableHideOnMainWindowGotAttention(bool b){ m_bDisableHideOnMainWindowGotAttention = b; };
+	void addMessage(KviWindow * pWnd, const QString & szImageId, const QString & szText, unsigned int uMessageTime);
+	void setDisableHideOnMainWindowGotAttention(bool b) { m_bDisableHideOnMainWindowGotAttention = b; };
 	void showLineEdit(bool bShow);
-	inline int countTabs() const { if(m_pWndTabs)return m_pWndTabs->count(); return 0; };
+	inline int countTabs() const
+	{
+		if(m_pWndTabs)
+			return m_pWndTabs->count();
+		return 0;
+	};
 	inline State state() const { return m_eState; };
 protected:
-	virtual void showEvent(QShowEvent *e);
+	virtual void showEvent(QShowEvent * e);
 	virtual void hideEvent(QHideEvent * e);
 	virtual void paintEvent(QPaintEvent * e);
 	virtual void mousePressEvent(QMouseEvent * e);
@@ -121,8 +128,8 @@ protected:
 	virtual void mouseMoveEvent(QMouseEvent * e);
 	virtual void leaveEvent(QEvent * e);
 	virtual void enterEvent(QEvent * e);
-	virtual bool eventFilter(QObject * pEdit,QEvent * e);
-	virtual void keyPressEvent ( QKeyEvent * e );
+	virtual bool eventFilter(QObject * pEdit, QEvent * e);
+	virtual void keyPressEvent(QKeyEvent * e);
 public slots:
 	void hideNow();
 	void toggleLineEdit();
@@ -141,10 +148,11 @@ protected slots:
 	void disableUntilKVIrcRestarted();
 	void disablePermanently();
 	void progressUpdate();
+
 private:
-	void contextPopup(const QPoint &pos);
+	void contextPopup(const QPoint & pos);
 	void startBlinking();
-// 	void computeRect();
+	// 	void computeRect();
 	void stopShowHideTimer();
 	void stopBlinkTimer();
 	void stopAutoHideTimer();

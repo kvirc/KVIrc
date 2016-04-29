@@ -28,43 +28,43 @@
 #include <QGroupBox>
 
 KviTalGroupBox::KviTalGroupBox(QWidget * pParent, char * pcName)
-: QGroupBox(pParent)
+    : QGroupBox(pParent)
 {
 	setObjectName(pcName);
 	m_pLayout = new QHBoxLayout(this);
 	m_pLayout->setMargin(4);
-	m_pLayout->setContentsMargins(8,8,8,8);
+	m_pLayout->setContentsMargins(8, 8, 8, 8);
 	m_pLayout->setSpacing(6);
 	QGroupBox::setLayout(m_pLayout);
 }
 
 KviTalGroupBox::KviTalGroupBox(QWidget * pParent)
-: QGroupBox(pParent)
+    : QGroupBox(pParent)
 {
 	m_pLayout = 0;
 }
 
 KviTalGroupBox::KviTalGroupBox(const QString & szTitle, QWidget * pParent)
-: QGroupBox(szTitle,pParent)
+    : QGroupBox(szTitle, pParent)
 {
 	m_pLayout = 0;
 }
 
 KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation, QWidget * pParent)
-: QGroupBox(pParent)
+    : QGroupBox(pParent)
 {
 	if(orientation == Qt::Vertical)
 		m_pLayout = new QHBoxLayout(this);
 	else
 		m_pLayout = new QVBoxLayout(this);
 	m_pLayout->setMargin(4);
-	m_pLayout->setContentsMargins(8,8,8,8);
+	m_pLayout->setContentsMargins(8, 8, 8, 8);
 	m_pLayout->setSpacing(6);
 	QGroupBox::setLayout(m_pLayout);
 }
 
 KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation, const QString & szTitle, QWidget * pParent)
-: QGroupBox(szTitle,pParent)
+    : QGroupBox(szTitle, pParent)
 {
 	mOrientation = orientation;
 	if(orientation == Qt::Vertical)
@@ -72,7 +72,7 @@ KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation, const QString & szTi
 	else
 		m_pLayout = new QVBoxLayout(this);
 	m_pLayout->setMargin(4);
-	m_pLayout->setContentsMargins(8,8,8,8);
+	m_pLayout->setContentsMargins(8, 8, 8, 8);
 	m_pLayout->setSpacing(6);
 	QGroupBox::setLayout(m_pLayout);
 }
@@ -107,12 +107,12 @@ void KviTalGroupBox::childEvent(QChildEvent * e)
 
 void KviTalGroupBox::addSpace(int iSpace)
 {
-	if(m_pLayout && m_pLayout==layout())
+	if(m_pLayout && m_pLayout == layout())
 	{
 		if(mOrientation == Qt::Vertical)
-			((QHBoxLayout*)m_pLayout)->addSpacing(iSpace);
+			((QHBoxLayout *)m_pLayout)->addSpacing(iSpace);
 		else
-			((QVBoxLayout*)m_pLayout)->addSpacing(iSpace);
+			((QVBoxLayout *)m_pLayout)->addSpacing(iSpace);
 	}
 }
 
@@ -143,5 +143,3 @@ void KviTalGroupBox::setLayout(QLayout * layout)
 
 	QGroupBox::setLayout(layout);
 }
-
-

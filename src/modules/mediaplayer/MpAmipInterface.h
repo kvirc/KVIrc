@@ -28,53 +28,54 @@
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
-	#include "MpInterface.h"
+#include "MpInterface.h"
 
-	class MpAmipInterface : public MpInterface
-	{
-	public:
-		MpAmipInterface();
-		~MpAmipInterface();
-	public:
-		virtual int detect(bool bStart);
-		virtual bool prev();
-		virtual bool next();
-		virtual bool play();
-		virtual bool stop();
-		virtual bool pause();
-		virtual bool quit();
-		virtual QString nowPlaying();
-		virtual QString artist();
-		virtual QString title();
-		virtual QString genre();
-		virtual QString comment();
-		virtual QString album();
-		virtual QString year();
-		virtual QString mrl();
-		virtual int position();
-		virtual int length();
-		virtual bool setVol(kvs_int_t &iVol);
-		virtual int getVol();
-		virtual bool jumpTo(kvs_int_t &iPos);
-		virtual int sampleRate();
-		virtual int bitRate();
-		virtual int channels();
-		virtual bool hide();
-		virtual bool show();
-		virtual bool minimize();
-		virtual int getPlayListPos();
-		virtual bool setPlayListPos(kvs_int_t &iPos);
-		virtual int getListLength();
-		virtual bool getRepeat();
-		virtual bool getShuffle();
-		virtual bool setRepeat(bool &bVal);
-		virtual bool setShuffle(bool &bVal);
-		virtual bool amipExec(const QString &cmd);
-		virtual QString amipEval(const QString &cmd);
-		virtual MpInterface::PlayerStatus status();
-	};
+class MpAmipInterface : public MpInterface
+{
+public:
+	MpAmipInterface();
+	~MpAmipInterface();
 
-	MP_DECLARE_DESCRIPTOR(MpAmipInterface)
+public:
+	virtual int detect(bool bStart);
+	virtual bool prev();
+	virtual bool next();
+	virtual bool play();
+	virtual bool stop();
+	virtual bool pause();
+	virtual bool quit();
+	virtual QString nowPlaying();
+	virtual QString artist();
+	virtual QString title();
+	virtual QString genre();
+	virtual QString comment();
+	virtual QString album();
+	virtual QString year();
+	virtual QString mrl();
+	virtual int position();
+	virtual int length();
+	virtual bool setVol(kvs_int_t & iVol);
+	virtual int getVol();
+	virtual bool jumpTo(kvs_int_t & iPos);
+	virtual int sampleRate();
+	virtual int bitRate();
+	virtual int channels();
+	virtual bool hide();
+	virtual bool show();
+	virtual bool minimize();
+	virtual int getPlayListPos();
+	virtual bool setPlayListPos(kvs_int_t & iPos);
+	virtual int getListLength();
+	virtual bool getRepeat();
+	virtual bool getShuffle();
+	virtual bool setRepeat(bool & bVal);
+	virtual bool setShuffle(bool & bVal);
+	virtual bool amipExec(const QString & cmd);
+	virtual QString amipEval(const QString & cmd);
+	virtual MpInterface::PlayerStatus status();
+};
+
+MP_DECLARE_DESCRIPTOR(MpAmipInterface)
 
 #endif //COMPILE_ON_WINDOWS
 

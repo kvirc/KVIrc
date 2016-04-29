@@ -41,19 +41,20 @@ public:
 	bool m_bIsFolder;
 	QString m_szImageId;
 	QString m_szTipText;
+
 public:
-	KviImageDialogItem(KviTalListWidget * b,const QPixmap &thumb,const QString &szFile,const QString &image_id,const QString &szTipText = QString(),bool bIsFolder = false)
-	: KviTalListWidgetPixmap(b,thumb,szFile), m_bIsFolder(bIsFolder), m_szImageId(image_id), m_szTipText(szTipText) {};
+	KviImageDialogItem(KviTalListWidget * b, const QPixmap & thumb, const QString & szFile, const QString & image_id, const QString & szTipText = QString(), bool bIsFolder = false)
+	    : KviTalListWidgetPixmap(b, thumb, szFile), m_bIsFolder(bIsFolder), m_szImageId(image_id), m_szTipText(szTipText){};
 	~KviImageDialogItem(){};
+
 public:
-	bool isFolder(){ return m_bIsFolder; };
-	const QString & imageId(){ return m_szImageId; };
-	const QString & tipText(){ return m_szTipText; };
+	bool isFolder() { return m_bIsFolder; };
+	const QString & imageId() { return m_szImageId; };
+	const QString & tipText() { return m_szTipText; };
 	virtual int height(const KviTalListWidget *) const;
 	virtual int width(const KviTalListWidget *) const;
 	virtual void paint(QPainter * p);
 };
-
 
 #define KID_TYPE_BUILTIN_IMAGES_SMALL 1
 #define KID_TYPE_FULL_PATH 2
@@ -65,44 +66,46 @@ class KVIRC_API KviImageDialog : public QDialog
 	Q_OBJECT
 public:
 	KviImageDialog(QWidget * par,
-		const QString &szCaption = QString(),
-		int types = KID_TYPE_ALL,
-		int initialType = 0,
-		const QString &szInitialDir = QString(),
-		int maxPreviewFileSize = 256000, bool modal=false);
+	    const QString & szCaption = QString(),
+	    int types = KID_TYPE_ALL,
+	    int initialType = 0,
+	    const QString & szInitialDir = QString(),
+	    int maxPreviewFileSize = 256000, bool modal = false);
 	virtual ~KviImageDialog();
+
 protected:
-	QComboBox       * m_pTypeComboBox;
+	QComboBox * m_pTypeComboBox;
 	QList<int> * m_pTypeList;
-	KviTalListWidget        * m_pListBox;
-	QTimer          * m_pTimer;
-	int               m_iJobType;
+	KviTalListWidget * m_pListBox;
+	QTimer * m_pTimer;
+	int m_iJobType;
 
-	int               m_iMaxPreviewFileSize;
+	int m_iMaxPreviewFileSize;
 
-	QString           m_szJobPath;
-	QStringList       m_lJobFileList;
+	QString m_szJobPath;
+	QStringList m_lJobFileList;
 
-	int             m_iJobIndexHelper;
+	int m_iJobIndexHelper;
 
-	QString           m_szSelectedImage;
+	QString m_szSelectedImage;
 
-	QString           m_szInitialPath;
+	QString m_szInitialPath;
 
 	KviDynamicToolTip * m_pTip;
+
 public:
-	const QString & selectedImage(){ return m_szSelectedImage; };
+	const QString & selectedImage() { return m_szSelectedImage; };
 protected:
-	void startJob(int type,const QString &szInitialPath = QString());
+	void startJob(int type, const QString & szInitialPath = QString());
 	void jobTerminated();
-	virtual void closeEvent(QCloseEvent *e);
+	virtual void closeEvent(QCloseEvent * e);
 protected slots:
 	void okClicked();
 	void cancelClicked();
 	void heartbeat();
 	void jobTypeSelected(int index);
 	void itemDoubleClicked(QListWidgetItem * it);
-	void tipRequest(KviDynamicToolTip *,const QPoint &pnt);
+	void tipRequest(KviDynamicToolTip *, const QPoint & pnt);
 };
 
 #endif //_KVI_IMAGEDIALOG_H_

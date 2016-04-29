@@ -1,5 +1,5 @@
-#ifndef	_CLASS_TBROWSER_H_
-#define	_CLASS_TBROWSER_H_
+#ifndef _CLASS_TBROWSER_H_
+#define _CLASS_TBROWSER_H_
 //=============================================================================
 //
 //   File : KvsObject_textBrowser.h
@@ -38,16 +38,16 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool setSource(KviKvsObjectFunctionCall *c);
-	bool forward(KviKvsObjectFunctionCall *c);
-	bool backward(KviKvsObjectFunctionCall *c);
-	bool home(KviKvsObjectFunctionCall *c);
-	bool reload(KviKvsObjectFunctionCall *c);
-	bool linkClickedEvent(KviKvsObjectFunctionCall *c);
+	bool setSource(KviKvsObjectFunctionCall * c);
+	bool forward(KviKvsObjectFunctionCall * c);
+	bool backward(KviKvsObjectFunctionCall * c);
+	bool home(KviKvsObjectFunctionCall * c);
+	bool reload(KviKvsObjectFunctionCall * c);
+	bool linkClickedEvent(KviKvsObjectFunctionCall * c);
 protected slots:
 	void anchorClicked(const QUrl &);
 };
 
-#endif	//!_CLASS_TBROWSER_H_
+#endif //!_CLASS_TBROWSER_H_

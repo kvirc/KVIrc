@@ -49,16 +49,17 @@ class KviIrcNetwork;
 class KviIrcNetworkData;
 class KviMexServerImport;
 
-
 class IrcServerOptionsTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	IrcServerOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,const KviIrcNetwork *n);
-	IrcServerOptionsTreeWidgetItem(QTreeWidgetItem *parent,const QPixmap &pm,const KviIrcServer *s);
+	IrcServerOptionsTreeWidgetItem(QTreeWidget * parent, const QPixmap & pm, const KviIrcNetwork * n);
+	IrcServerOptionsTreeWidgetItem(QTreeWidgetItem * parent, const QPixmap & pm, const KviIrcServer * s);
 	~IrcServerOptionsTreeWidgetItem();
+
 public:
 	KviIrcServer * m_pServerData;
 	KviIrcNetwork * m_pNetworkData;
+
 public:
 	KviIrcServer * serverData() const
 	{
@@ -69,41 +70,43 @@ public:
 	{
 		return m_pNetworkData;
 	}
+
 public:
 	void updateVisibleStrings();
 };
-
 
 class IrcNetworkDetailsWidget : public QDialog
 {
 	Q_OBJECT
 public:
-	IrcNetworkDetailsWidget(QWidget * par,KviIrcNetwork * d);
+	IrcNetworkDetailsWidget(QWidget * par, KviIrcNetwork * d);
 	~IrcNetworkDetailsWidget();
+
 protected:
-	KviScriptEditor       * m_pOnConnectEditor;
-	KviScriptEditor       * m_pOnLoginEditor;
+	KviScriptEditor * m_pOnConnectEditor;
+	KviScriptEditor * m_pOnLoginEditor;
 
-	QLineEdit             * m_pUserEditor;
-	KviPasswordLineEdit   * m_pPassEditor;
-	QLineEdit             * m_pNickEditor;
-	QLineEdit             * m_pAlternativeNickEditor;
-	QLineEdit             * m_pRealEditor;
-	QLineEdit             * m_pDescEditor;
+	QLineEdit * m_pUserEditor;
+	KviPasswordLineEdit * m_pPassEditor;
+	QLineEdit * m_pNickEditor;
+	QLineEdit * m_pAlternativeNickEditor;
+	QLineEdit * m_pRealEditor;
+	QLineEdit * m_pDescEditor;
 
-	QComboBox             * m_pEncodingEditor;
-	QComboBox             * m_pTextEncodingEditor;
+	QComboBox * m_pEncodingEditor;
+	QComboBox * m_pTextEncodingEditor;
 
-	QCheckBox             * m_pAutoConnectCheck;
+	QCheckBox * m_pAutoConnectCheck;
 
-	QTreeWidget           * m_pNickServTreeWidget;
-	QCheckBox             * m_pNickServCheck;
-	QPushButton           * m_pAddRuleButton;
-	QPushButton           * m_pDelRuleButton;
-	QPushButton           * m_pEditRuleButton;
+	QTreeWidget * m_pNickServTreeWidget;
+	QCheckBox * m_pNickServCheck;
+	QPushButton * m_pAddRuleButton;
+	QPushButton * m_pDelRuleButton;
+	QPushButton * m_pEditRuleButton;
 
-	QStringList             m_lstChannels;
+	QStringList m_lstChannels;
 	KviChannelListSelector * m_pChannelListSelector;
+
 public:
 	void fillData(KviIrcNetwork * d);
 protected slots:
@@ -117,52 +120,53 @@ class IrcServerDetailsWidget : public QDialog
 {
 	Q_OBJECT
 public:
-	IrcServerDetailsWidget(QWidget * par,KviIrcServer * s);
+	IrcServerDetailsWidget(QWidget * par, KviIrcServer * s);
 	~IrcServerDetailsWidget();
+
 protected:
-	QString                 m_szHostname;
-	QLabel                * m_pHeaderLabel;
-	KviScriptEditor       * m_pOnConnectEditor;
-	KviScriptEditor       * m_pOnLoginEditor;
-	QLineEdit             * m_pUserEditor;
-	KviPasswordLineEdit   * m_pPassEditor;
-	KviPasswordLineEdit   * m_pSaslPassEditor;
-	QLineEdit             * m_pNickEditor;
-	QLineEdit             * m_pAlternativeNickEditor;
-	QLineEdit             * m_pSaslNickEditor;
-	QLineEdit             * m_pRealEditor;
-	QLineEdit             * m_pDescEditor;
-	QLineEdit             * m_pIdEditor;
-	QComboBox             * m_pLinkFilterEditor;
-	QComboBox             * m_pEncodingEditor;
-	QComboBox             * m_pTextEncodingEditor;
-	KviIpEditor           * m_pIpEditor;
-	QCheckBox             * m_pCacheIpCheck;
-	QCheckBox             * m_pUseSSLCheck;
-	QCheckBox             * m_pEnableCAPCheck;
-	QCheckBox             * m_pEnableSTARTTLSCheck;
-	QCheckBox             * m_pEnableSASLCheck;
-	QCheckBox             * m_pUseDefaultInitUMode;
-	QCheckBox             * m_pIMode;
-	QCheckBox             * m_pWMode;
-	QCheckBox             * m_pSMode;
-	QCheckBox             * m_pUseAutoConnect;
-	QCheckBox             * m_pUseIPV6Check;
-	QLineEdit             * m_pPortEditor;
-	QStringList             m_lstChannels;
+	QString m_szHostname;
+	QLabel * m_pHeaderLabel;
+	KviScriptEditor * m_pOnConnectEditor;
+	KviScriptEditor * m_pOnLoginEditor;
+	QLineEdit * m_pUserEditor;
+	KviPasswordLineEdit * m_pPassEditor;
+	KviPasswordLineEdit * m_pSaslPassEditor;
+	QLineEdit * m_pNickEditor;
+	QLineEdit * m_pAlternativeNickEditor;
+	QLineEdit * m_pSaslNickEditor;
+	QLineEdit * m_pRealEditor;
+	QLineEdit * m_pDescEditor;
+	QLineEdit * m_pIdEditor;
+	QComboBox * m_pLinkFilterEditor;
+	QComboBox * m_pEncodingEditor;
+	QComboBox * m_pTextEncodingEditor;
+	KviIpEditor * m_pIpEditor;
+	QCheckBox * m_pCacheIpCheck;
+	QCheckBox * m_pUseSSLCheck;
+	QCheckBox * m_pEnableCAPCheck;
+	QCheckBox * m_pEnableSTARTTLSCheck;
+	QCheckBox * m_pEnableSASLCheck;
+	QCheckBox * m_pUseDefaultInitUMode;
+	QCheckBox * m_pIMode;
+	QCheckBox * m_pWMode;
+	QCheckBox * m_pSMode;
+	QCheckBox * m_pUseAutoConnect;
+	QCheckBox * m_pUseIPV6Check;
+	QLineEdit * m_pPortEditor;
+	QStringList m_lstChannels;
 	KviChannelListSelector * m_pChannelListSelector;
 
-	QComboBox             * m_pProxyEditor;
+	QComboBox * m_pProxyEditor;
 protected slots:
 	void useDefaultInitUModeToggled(bool);
 	void portEditorTextChanged(const QString &);
 	void useIPV6CheckToggled(bool);
 	void useSSLCheckToggled(bool);
+
 public:
 	void setHeaderLabelText();
-	void fillData(KviIrcServer *s);
+	void fillData(KviIrcServer * s);
 };
-
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_servers KviIconManager::ServerConfiguration
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_servers __tr2qs_no_lookup("Servers and Configuration")
@@ -176,48 +180,50 @@ class OptionsWidget_servers : public KviOptionsWidget
 public:
 	OptionsWidget_servers(QWidget * parent);
 	~OptionsWidget_servers();
-protected:
-	QTreeWidget                  * m_pTreeWidget;
-	QLabel                       * m_pSrvNetLabel;
-	QLineEdit                    * m_pSrvNetEdit;
-	QLabel                       * m_pFilterLabel;
-	QLineEdit                    * m_pFilterEdit;
-	QPushButton                  * m_pDetailsButton;
-	QMenu                        * m_pRecentPopup;
-	QMenu                        * m_pContextPopup;
-	QMenu                        * m_pImportPopup;
-	KviIrcServer                 * m_pClipboard;
-	QPushButton                  * m_pConnectCurrent;
-	QPushButton                  * m_pConnectNew;
-	IrcServerOptionsTreeWidgetItem * m_pLastEditedItem;
-	IrcServerDetailsWidget       * m_pServerDetailsDialog;
-	IrcNetworkDetailsWidget      * m_pNetworkDetailsDialog;
-	KviMexServerImport           * m_pImportFilter;
-	KviBoolSelector              * m_pShowThisDialogAtStartupSelector;
-	KviBoolSelector              * m_pShowFavoritesOnly;
 
-	QToolButton                  * m_pNewServerButton;
-	QToolButton                  * m_pNewNetworkButton;
-	QToolButton                  * m_pRemoveButton;
-	QToolButton                  * m_pFavoriteServer;
-	QToolButton                  * m_pCopyServerButton;
-	QToolButton                  * m_pPasteServerButton;
-	QToolButton                  * m_pImportButton;
-	QToolButton                  * m_pFavoriteServerButton;
-	bool                           m_bShowingFavoritesOnly;
-	QToolButton                  * m_pShowFavoritesOnlyButton;
+protected:
+	QTreeWidget * m_pTreeWidget;
+	QLabel * m_pSrvNetLabel;
+	QLineEdit * m_pSrvNetEdit;
+	QLabel * m_pFilterLabel;
+	QLineEdit * m_pFilterEdit;
+	QPushButton * m_pDetailsButton;
+	QMenu * m_pRecentPopup;
+	QMenu * m_pContextPopup;
+	QMenu * m_pImportPopup;
+	KviIrcServer * m_pClipboard;
+	QPushButton * m_pConnectCurrent;
+	QPushButton * m_pConnectNew;
+	IrcServerOptionsTreeWidgetItem * m_pLastEditedItem;
+	IrcServerDetailsWidget * m_pServerDetailsDialog;
+	IrcNetworkDetailsWidget * m_pNetworkDetailsDialog;
+	KviMexServerImport * m_pImportFilter;
+	KviBoolSelector * m_pShowThisDialogAtStartupSelector;
+	KviBoolSelector * m_pShowFavoritesOnly;
+
+	QToolButton * m_pNewServerButton;
+	QToolButton * m_pNewNetworkButton;
+	QToolButton * m_pRemoveButton;
+	QToolButton * m_pFavoriteServer;
+	QToolButton * m_pCopyServerButton;
+	QToolButton * m_pPasteServerButton;
+	QToolButton * m_pImportButton;
+	QToolButton * m_pFavoriteServerButton;
+	bool m_bShowingFavoritesOnly;
+	QToolButton * m_pShowFavoritesOnlyButton;
+
 private:
 	void fillServerList();
 	void saveLastItem();
-	IrcServerOptionsTreeWidgetItem * findNetItem(const QString &netname);
-	void selectBestServerByUrl(const QString &szUrl);
+	IrcServerOptionsTreeWidgetItem * findNetItem(const QString & netname);
+	void selectBestServerByUrl(const QString & szUrl);
 protected slots:
 	void slotShowThisDialogAtStartupSelectorDestroyed();
 	void importerDead();
-	void importServer(const KviIrcServer & s,const QString &network);
+	void importServer(const KviIrcServer & s, const QString & network);
 	void importPopupAboutToShow();
-	void currentItemChanged(QTreeWidgetItem *cur,QTreeWidgetItem *prev);
-	void customContextMenuRequested(const QPoint &pnt);
+	void currentItemChanged(QTreeWidgetItem * cur, QTreeWidgetItem * prev);
+	void customContextMenuRequested(const QPoint & pnt);
 	void newNetwork();
 	void removeCurrent();
 	void newServer();
@@ -226,14 +232,15 @@ protected slots:
 	void copyServer();
 	void pasteServer();
 	void clearList();
-	void itemDoubleClicked(QTreeWidgetItem*, int );
+	void itemDoubleClicked(QTreeWidgetItem *, int);
 	void detailsClicked();
 	void connectCurrentClicked();
 	void recentServersPopupAboutToShow();
-	void recentServersPopupClicked(QAction *pAction);
-	void importPopupActivated(QAction *pAction);
-	void serverNetworkEditTextEdited(const QString &szNewText);
-	void filterTextEdited(const QString &szNewText);
+	void recentServersPopupClicked(QAction * pAction);
+	void importPopupActivated(QAction * pAction);
+	void serverNetworkEditTextEdited(const QString & szNewText);
+	void filterTextEdited(const QString & szNewText);
+
 public:
 	virtual void commit();
 };

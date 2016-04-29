@@ -30,27 +30,29 @@
 #include "KviKvsTreeNodeData.h"
 #include "KviKvsTreeNodeDataList.h"
 
-bool KviKvsModuleCallbackCommandCall::getParameterCode(unsigned int uParamIdx,QString &szParamBuffer)
+bool KviKvsModuleCallbackCommandCall::getParameterCode(unsigned int uParamIdx, QString & szParamBuffer)
 {
-	if(!m_pParameterDataList)return false;
+	if(!m_pParameterDataList)
+		return false;
 	KviKvsTreeNodeData * d = m_pParameterDataList->item(uParamIdx);
-	if(!d)return false;
+	if(!d)
+		return false;
 	const QChar * pBegin = d->location();
 	const QChar * pEnd = d->endingLocation();
-	if(!(pBegin && pEnd))return false;
-	szParamBuffer.setUnicode(pBegin,pEnd - pBegin);
+	if(!(pBegin && pEnd))
+		return false;
+	szParamBuffer.setUnicode(pBegin, pEnd - pBegin);
 	szParamBuffer = szParamBuffer.trimmed();
 	return true;
 }
 
-
 KviKvsModuleInterface::KviKvsModuleInterface()
 {
-	m_pModuleSimpleCommandExecRoutineDict = new KviPointerHashTable<QString,KviKvsModuleSimpleCommandExecRoutine>(17,false);
+	m_pModuleSimpleCommandExecRoutineDict = new KviPointerHashTable<QString, KviKvsModuleSimpleCommandExecRoutine>(17, false);
 	m_pModuleSimpleCommandExecRoutineDict->setAutoDelete(true);
-	m_pModuleFunctionExecRoutineDict = new KviPointerHashTable<QString,KviKvsModuleFunctionExecRoutine>(17,false);
+	m_pModuleFunctionExecRoutineDict = new KviPointerHashTable<QString, KviKvsModuleFunctionExecRoutine>(17, false);
 	m_pModuleFunctionExecRoutineDict->setAutoDelete(true);
-	m_pModuleCallbackCommandExecRoutineDict = new KviPointerHashTable<QString,KviKvsModuleCallbackCommandExecRoutine>(17,false);
+	m_pModuleCallbackCommandExecRoutineDict = new KviPointerHashTable<QString, KviKvsModuleCallbackCommandExecRoutine>(17, false);
 	m_pModuleCallbackCommandExecRoutineDict->setAutoDelete(true);
 }
 
@@ -62,50 +64,48 @@ KviKvsModuleInterface::~KviKvsModuleInterface()
 	delete m_pModuleCallbackCommandExecRoutineDict;
 }
 
-#define COMPLETE_WORD_BY_DICT(__word,__list,__type,__dict) \
-	{ \
-		KviPointerHashTableIterator<QString,__type> it(*__dict); \
-		int l = __word.length(); \
-		while(it.current()) \
-		{ \
-			if(KviQString::equalCIN(__word,it.currentKey(),l)) \
-				__list->append(new QString(it.currentKey())); \
-			++it; \
-		} \
+#define COMPLETE_WORD_BY_DICT(__word, __list, __type, __dict)     \
+	{                                                             \
+		KviPointerHashTableIterator<QString, __type> it(*__dict); \
+		int l = __word.length();                                  \
+		while(it.current())                                       \
+		{                                                         \
+			if(KviQString::equalCIN(__word, it.currentKey(), l))  \
+				__list->append(new QString(it.currentKey()));     \
+			++it;                                                 \
+		}                                                         \
 	}
 
-void KviKvsModuleInterface::completeCommand(const QString &szCommandBegin,KviPointerList<QString> * pMatches)
+void KviKvsModuleInterface::completeCommand(const QString & szCommandBegin, KviPointerList<QString> * pMatches)
 {
-	COMPLETE_WORD_BY_DICT(szCommandBegin,pMatches,KviKvsModuleSimpleCommandExecRoutine,m_pModuleSimpleCommandExecRoutineDict)
-	COMPLETE_WORD_BY_DICT(szCommandBegin,pMatches,KviKvsModuleCallbackCommandExecRoutine,m_pModuleCallbackCommandExecRoutineDict)
+	COMPLETE_WORD_BY_DICT(szCommandBegin, pMatches, KviKvsModuleSimpleCommandExecRoutine, m_pModuleSimpleCommandExecRoutineDict)
+	COMPLETE_WORD_BY_DICT(szCommandBegin, pMatches, KviKvsModuleCallbackCommandExecRoutine, m_pModuleCallbackCommandExecRoutineDict)
 }
 
-void KviKvsModuleInterface::completeFunction(const QString &szFunctionBegin,KviPointerList<QString> * pMatches)
+void KviKvsModuleInterface::completeFunction(const QString & szFunctionBegin, KviPointerList<QString> * pMatches)
 {
-	COMPLETE_WORD_BY_DICT(szFunctionBegin,pMatches,KviKvsModuleFunctionExecRoutine,m_pModuleFunctionExecRoutineDict)
+	COMPLETE_WORD_BY_DICT(szFunctionBegin, pMatches, KviKvsModuleFunctionExecRoutine, m_pModuleFunctionExecRoutineDict)
 }
 
-
-void KviKvsModuleInterface::kvsRegisterSimpleCommand(const QString &szCommand,KviKvsModuleSimpleCommandExecRoutine r)
+void KviKvsModuleInterface::kvsRegisterSimpleCommand(const QString & szCommand, KviKvsModuleSimpleCommandExecRoutine r)
 {
-	m_pModuleSimpleCommandExecRoutineDict->replace(szCommand,new KviKvsModuleSimpleCommandExecRoutine(r));
+	m_pModuleSimpleCommandExecRoutineDict->replace(szCommand, new KviKvsModuleSimpleCommandExecRoutine(r));
 }
 
-void KviKvsModuleInterface::kvsRegisterCallbackCommand(const QString &szCommand,KviKvsModuleCallbackCommandExecRoutine r)
+void KviKvsModuleInterface::kvsRegisterCallbackCommand(const QString & szCommand, KviKvsModuleCallbackCommandExecRoutine r)
 {
-	m_pModuleCallbackCommandExecRoutineDict->replace(szCommand,new KviKvsModuleCallbackCommandExecRoutine(r));
+	m_pModuleCallbackCommandExecRoutineDict->replace(szCommand, new KviKvsModuleCallbackCommandExecRoutine(r));
 }
 
-void KviKvsModuleInterface::kvsRegisterFunction(const QString &szFunction,KviKvsModuleFunctionExecRoutine r)
+void KviKvsModuleInterface::kvsRegisterFunction(const QString & szFunction, KviKvsModuleFunctionExecRoutine r)
 {
-	m_pModuleFunctionExecRoutineDict->replace(szFunction,new KviKvsModuleFunctionExecRoutine(r));
+	m_pModuleFunctionExecRoutineDict->replace(szFunction, new KviKvsModuleFunctionExecRoutine(r));
 }
 
-
-bool KviKvsModuleInterface::kvsRegisterAppEventHandler(unsigned int iEventIdx,KviKvsModuleEventHandlerRoutine r)
+bool KviKvsModuleInterface::kvsRegisterAppEventHandler(unsigned int iEventIdx, KviKvsModuleEventHandlerRoutine r)
 {
-	KviKvsModuleEventHandler * h = new KviKvsModuleEventHandler(this,r);
-	if(!KviKvsEventManager::instance()->addAppHandler(iEventIdx,h))
+	KviKvsModuleEventHandler * h = new KviKvsModuleEventHandler(this, r);
+	if(!KviKvsEventManager::instance()->addAppHandler(iEventIdx, h))
 	{
 		delete h;
 		return false;
@@ -113,10 +113,10 @@ bool KviKvsModuleInterface::kvsRegisterAppEventHandler(unsigned int iEventIdx,Kv
 	return true;
 }
 
-bool KviKvsModuleInterface::kvsRegisterRawEventHandler(unsigned int iRawIdx,KviKvsModuleEventHandlerRoutine r)
+bool KviKvsModuleInterface::kvsRegisterRawEventHandler(unsigned int iRawIdx, KviKvsModuleEventHandlerRoutine r)
 {
-	KviKvsModuleEventHandler * h = new KviKvsModuleEventHandler(this,r);
-	if(!KviKvsEventManager::instance()->addRawHandler(iRawIdx,h))
+	KviKvsModuleEventHandler * h = new KviKvsModuleEventHandler(this, r);
+	if(!KviKvsEventManager::instance()->addRawHandler(iRawIdx, h))
 	{
 		delete h;
 		return false;
@@ -126,12 +126,12 @@ bool KviKvsModuleInterface::kvsRegisterRawEventHandler(unsigned int iRawIdx,KviK
 
 void KviKvsModuleInterface::kvsUnregisterAppEventHandler(unsigned int uEventIdx)
 {
-	KviKvsEventManager::instance()->removeModuleAppHandler(uEventIdx,this);
+	KviKvsEventManager::instance()->removeModuleAppHandler(uEventIdx, this);
 }
 
 void KviKvsModuleInterface::kvsUnregisterRawEventHandler(unsigned int uRawIdx)
 {
-	KviKvsEventManager::instance()->removeModuleRawHandler(uRawIdx,this);
+	KviKvsEventManager::instance()->removeModuleRawHandler(uRawIdx, this);
 }
 
 void KviKvsModuleInterface::kvsUnregisterAllAppEventHandlers()
@@ -155,13 +155,13 @@ static bool default_module_kvs_cmd_load(KviKvsModuleCommandCall *)
 	return true;
 }
 
-static bool default_module_kvs_cmd_unload(KviKvsModuleCommandCall *c)
+static bool default_module_kvs_cmd_unload(KviKvsModuleCommandCall * c)
 {
 	if(c->module()->isLocked())
 	{
-		if(!c->switches()->find('f',"force"))
+		if(!c->switches()->find('f', "force"))
 		{
-			c->warning(__tr2qs_ctx("Can't unload the module: it has locked itself in memory","kvs"));
+			c->warning(__tr2qs_ctx("Can't unload the module: it has locked itself in memory", "kvs"));
 			return true;
 		}
 	}
@@ -171,23 +171,23 @@ static bool default_module_kvs_cmd_unload(KviKvsModuleCommandCall *c)
 
 void KviKvsModuleInterface::registerDefaultCommands()
 {
-	kvsRegisterSimpleCommand("load",default_module_kvs_cmd_load);
-	kvsRegisterSimpleCommand("unload",default_module_kvs_cmd_unload);
+	kvsRegisterSimpleCommand("load", default_module_kvs_cmd_load);
+	kvsRegisterSimpleCommand("unload", default_module_kvs_cmd_unload);
 }
-void KviKvsModuleInterface::getAllFunctionsCommandsModule(QStringList *list,QString &szModuleName)
+void KviKvsModuleInterface::getAllFunctionsCommandsModule(QStringList * list, QString & szModuleName)
 {
-	KviPointerHashTableIterator<QString,KviKvsModuleFunctionExecRoutine>  it(*m_pModuleFunctionExecRoutineDict);
+	KviPointerHashTableIterator<QString, KviKvsModuleFunctionExecRoutine> it(*m_pModuleFunctionExecRoutineDict);
 	while(it.current())
 	{
-		QString szF("$"+szModuleName+".");
+		QString szF("$" + szModuleName + ".");
 		szF.append(it.currentKey());
 		list->append(szF);
 		++it;
 	}
-	KviPointerHashTableIterator<QString,KviKvsModuleSimpleCommandExecRoutine>  it2(*m_pModuleSimpleCommandExecRoutineDict);
+	KviPointerHashTableIterator<QString, KviKvsModuleSimpleCommandExecRoutine> it2(*m_pModuleSimpleCommandExecRoutineDict);
 	while(it2.current())
 	{
-		QString szF(szModuleName+".");
+		QString szF(szModuleName + ".");
 		szF.append(it2.currentKey());
 		list->append(szF);
 		++it2;

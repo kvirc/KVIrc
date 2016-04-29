@@ -36,7 +36,7 @@
 #include <stdlib.h>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#include <windows.h>
+#include <windows.h>
 #endif
 
 namespace KviEnvironment
@@ -54,14 +54,14 @@ namespace KviEnvironment
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
-	inline void setVariable(const char * szName,const char * szValue)
+	inline void setVariable(const char * szName, const char * szValue)
 	{
-		SetEnvironmentVariable(szName,szValue);
+		SetEnvironmentVariable(szName, szValue);
 	}
 
 	inline void unsetVariable(const char * name)
 	{
-		SetEnvironmentVariable(name,NULL);
+		SetEnvironmentVariable(name, NULL);
 	}
 #else
 	/**
@@ -79,7 +79,6 @@ namespace KviEnvironment
 	*/
 	KVILIB_API void unsetVariable(const char * name);
 #endif
-
 }
 
 #endif //_KVI_ENV_H_

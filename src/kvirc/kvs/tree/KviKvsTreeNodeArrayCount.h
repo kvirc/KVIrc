@@ -57,6 +57,7 @@ public:
 	* \brief Destroys the treenode array count object
 	*/
 	~KviKvsTreeNodeArrayCount();
+
 public:
 	/**
 	* \brief Sets the buffer as Array Count Operator

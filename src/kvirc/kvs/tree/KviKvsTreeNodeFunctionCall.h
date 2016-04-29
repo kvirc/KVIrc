@@ -31,17 +31,17 @@
 class KVIRC_API KviKvsTreeNodeFunctionCall : public KviKvsTreeNodeData
 {
 public:
-	KviKvsTreeNodeFunctionCall(const QChar * pLocation,const QString &szFunctionName,KviKvsTreeNodeDataList * pParams);
+	KviKvsTreeNodeFunctionCall(const QChar * pLocation, const QString & szFunctionName, KviKvsTreeNodeDataList * pParams);
 	~KviKvsTreeNodeFunctionCall();
+
 protected:
 	QString m_szFunctionName;
 	KviKvsTreeNodeDataList * m_pParams; // never 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool canEvaluateToObjectReference(); // yes
-	virtual bool isFunctionCall(); // yes
+	virtual bool isFunctionCall();               // yes
 };
-
 
 #endif //!_KVI_KVS_TREENODE_FUNCTIONCALL_H_

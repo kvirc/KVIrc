@@ -44,12 +44,12 @@ extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 class ProxyOptionsTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	ProxyOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,KviProxy * prx);
+	ProxyOptionsTreeWidgetItem(QTreeWidget * parent, const QPixmap & pm, KviProxy * prx);
 	~ProxyOptionsTreeWidgetItem();
+
 public:
 	KviProxy * m_pProxyData;
 };
-
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_proxy KviIconManager::Proxy
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_proxy __tr2qs_no_lookup("Proxy Hosts")
@@ -63,35 +63,37 @@ class OptionsWidget_proxy : public KviOptionsWidget
 public:
 	OptionsWidget_proxy(QWidget * parent);
 	~OptionsWidget_proxy();
+
 protected:
-	QTreeWidget    * m_pTreeWidget;
-	QLabel       * m_pProxyLabel;
-	QLineEdit    * m_pProxyEdit;
-	QLabel       * m_pIpLabel;
-	KviIpEditor  * m_pIpEditor;
-	QLabel       * m_pUserLabel;
-	QLineEdit    * m_pUserEdit;
-	QLabel       * m_pPassLabel;
-	QLineEdit    * m_pPassEdit;
-	QLabel       * m_pPortLabel;
-	QLineEdit    * m_pPortEdit;
-	QLabel       * m_pProtocolLabel;
-	QComboBox    * m_pProtocolBox;
-	QMenu   * m_pContextPopup;
-	QCheckBox    * m_pIPv6Check;
+	QTreeWidget * m_pTreeWidget;
+	QLabel * m_pProxyLabel;
+	QLineEdit * m_pProxyEdit;
+	QLabel * m_pIpLabel;
+	KviIpEditor * m_pIpEditor;
+	QLabel * m_pUserLabel;
+	QLineEdit * m_pUserEdit;
+	QLabel * m_pPassLabel;
+	QLineEdit * m_pPassEdit;
+	QLabel * m_pPortLabel;
+	QLineEdit * m_pPortEdit;
+	QLabel * m_pProtocolLabel;
+	QComboBox * m_pProtocolBox;
+	QMenu * m_pContextPopup;
+	QCheckBox * m_pIPv6Check;
 	KviBoolSelector * m_pUseProxySelector;
 	ProxyOptionsTreeWidgetItem * m_pLastEditedItem;
-private:
 
+private:
 	void fillProxyList();
 	void saveLastItem();
 	void enableDisableUseProxySelector();
 protected slots:
-	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev);
-	void customContextMenuRequested(const QPoint &pnt);
+	void currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem * prev);
+	void customContextMenuRequested(const QPoint & pnt);
 	void newProxy();
 	void removeCurrent();
 	void ipV6CheckToggled(bool bEnabled);
+
 public:
 	virtual void commit();
 };

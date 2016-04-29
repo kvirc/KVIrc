@@ -25,8 +25,8 @@
 #include "KviKvsTreeNodeSimpleCommand.h"
 #include "KviKvsTreeNodeDataList.h"
 
-KviKvsTreeNodeSimpleCommand::KviKvsTreeNodeSimpleCommand(const QChar * pLocation,const QString &szCmdName,KviKvsTreeNodeDataList * params)
-: KviKvsTreeNodeCommandWithParameters(pLocation,szCmdName,params)
+KviKvsTreeNodeSimpleCommand::KviKvsTreeNodeSimpleCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params)
+    : KviKvsTreeNodeCommandWithParameters(pLocation, szCmdName, params)
 {
 }
 
@@ -34,17 +34,16 @@ KviKvsTreeNodeSimpleCommand::~KviKvsTreeNodeSimpleCommand()
 {
 }
 
-void KviKvsTreeNodeSimpleCommand::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSimpleCommand::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Simple Command \"";
 	szBuffer += m_szCmdName;
 	szBuffer += "\"";
 }
 
-
 void KviKvsTreeNodeSimpleCommand::dump(const char * prefix)
 {
-	qDebug("%s SimpleCommand(%s)",prefix,m_szCmdName.toUtf8().data());
+	qDebug("%s SimpleCommand(%s)", prefix, m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 }

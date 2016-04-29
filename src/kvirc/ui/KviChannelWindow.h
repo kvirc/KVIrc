@@ -55,12 +55,11 @@ class KviMaskEditor;
 class KviModeEditor;
 
 #ifdef COMPILE_ON_WINDOWS
-	// windows compiler wants this instead of the forward decl
-	#include "KviMaskEditor.h"
+// windows compiler wants this instead of the forward decl
+#include "KviMaskEditor.h"
 #else
-	typedef struct _KviMaskEntry KviMaskEntry; // KviMaskEditor.h
+typedef struct _KviMaskEntry KviMaskEntry; // KviMaskEditor.h
 #endif
-
 
 /**
 * \def KVI_CHANNEL_AVERAGE_USERS The average channel users of a channel
@@ -71,7 +70,7 @@ class KviModeEditor;
 #define KVI_CHANNEL_ACTION_HISTORY_MAX_TIMESPAN 600
 
 #ifndef KVI_CHANNEL_AVERAGE_USERS
-	#define KVI_CHANNEL_AVERAGE_USERS 101
+#define KVI_CHANNEL_AVERAGE_USERS 101
 #endif
 
 /**
@@ -81,10 +80,10 @@ class KviModeEditor;
 */
 typedef struct _KviChannelAction
 {
-	QString      szNick;       // action source nick
-	unsigned int uActionType;  // type of the action
-	kvi_time_t   tTime;        // time of the action
-	int          iTemperature; // temperature of the action
+	QString szNick;           // action source nick
+	unsigned int uActionType; // type of the action
+	kvi_time_t tTime;         // time of the action
+	int iTemperature;         // temperature of the action
 } KviChannelAction;
 
 /**
@@ -94,17 +93,17 @@ typedef struct _KviChannelAction
 */
 typedef struct _KviChannelActivityStats
 {
-	unsigned int        uActionCount;              // number of actions in the history
-	bool                bStatsInaccurate;          // the stats are inaccurate because we have just joined the chan
-	unsigned int        uLastActionTimeSpan;       // the timespan between the last action and now
-	unsigned int        uFirstActionTimeSpan;      // the time span between the first and the last action
-	double              dActionsPerMinute;         // average number of actions per minute in the lastActionTimeSpan
-	unsigned int        uActionsInTheLastMinute;   // number of actions in the last minute
-	int                 iAverageActionTemperature; // the average chan temperature
-	unsigned int        uHotActionCount;
-	unsigned int        uHotActionPercent;
-	QStringList         lTalkingUsers;             // users that seem to be talking NOW
-	QStringList         lWereTalkingUsers;
+	unsigned int uActionCount;            // number of actions in the history
+	bool bStatsInaccurate;                // the stats are inaccurate because we have just joined the chan
+	unsigned int uLastActionTimeSpan;     // the timespan between the last action and now
+	unsigned int uFirstActionTimeSpan;    // the time span between the first and the last action
+	double dActionsPerMinute;             // average number of actions per minute in the lastActionTimeSpan
+	unsigned int uActionsInTheLastMinute; // number of actions in the last minute
+	int iAverageActionTemperature;        // the average chan temperature
+	unsigned int uHotActionCount;
+	unsigned int uHotActionPercent;
+	QStringList lTalkingUsers; // users that seem to be talking NOW
+	QStringList lWereTalkingUsers;
 } KviChannelActivityStats;
 
 /**
@@ -119,28 +118,30 @@ public:
 	* \enum StateFlag
 	* \brief Holds the state flags of the channel
 	*/
-	enum StateFlag {
-		HaveAllNames       =        1,   /**< Flag for "have all names" */
-		HaveWhoList        = (1 << 2),   /**< Flag for "have WHO list" */
-		DeadChan           = (1 << 3),   /**< Flag for "dead channel" */
-		SentWhoRequest     = (1 << 4),   /**< Flag to set WHO request */
-		SentPart           = (1 << 5),   /**< Flag to set PART request */
-		Synchronized       = (1 << 6),   /**< Flag to set SYNC request */
-		NoCloseOnPart      = (1 << 7),   /**< Flag to set no close on part */
-		SentSyncWhoRequest = (1 << 8)    /**< Flag for SYNC request */
+	enum StateFlag
+	{
+		HaveAllNames = 1,             /**< Flag for "have all names" */
+		HaveWhoList = (1 << 2),       /**< Flag for "have WHO list" */
+		DeadChan = (1 << 3),          /**< Flag for "dead channel" */
+		SentWhoRequest = (1 << 4),    /**< Flag to set WHO request */
+		SentPart = (1 << 5),          /**< Flag to set PART request */
+		Synchronized = (1 << 6),      /**< Flag to set SYNC request */
+		NoCloseOnPart = (1 << 7),     /**< Flag to set no close on part */
+		SentSyncWhoRequest = (1 << 8) /**< Flag for SYNC request */
 	};
 
 	/**
 	* \enum ActivityLimit
 	* \brief Holds the limits of the activity in a channel
 	*/
-	enum ActivityLimit {
-		Ice       =  5,   /**< The limit to be "ice" */
-		VeryCold  = 10,   /**< The limit to be "very cold" */
-		Cold      = 20,   /**< The limit to be "cold" */
-		Undefined = 30,   /**< The limit to be "undefined" */
-		Hot       = 50,   /**< The limit to be "hot" */
-		VeryHot   = 70    /**< The limit to be "very hot" */
+	enum ActivityLimit
+	{
+		Ice = 5,        /**< The limit to be "ice" */
+		VeryCold = 10,  /**< The limit to be "very cold" */
+		Cold = 20,      /**< The limit to be "cold" */
+		Undefined = 30, /**< The limit to be "undefined" */
+		Hot = 50,       /**< The limit to be "hot" */
+		VeryHot = 70    /**< The limit to be "very hot" */
 	};
 
 	/**
@@ -155,46 +156,48 @@ public:
 	* \brief Destroys the channel object
 	*/
 	~KviChannelWindow();
+
 protected:
-	KviTalSplitter                           * m_pTopSplitter;
-	KviTalSplitter                           * m_pVertSplitter;
-	QToolButton                              * m_pDoubleViewButton;
-	KviWindowToolPageButton                  * m_pListViewButton;
-	KviWindowToolPageButton                  * m_pModeEditorButton;
-	QMap<char, KviWindowToolPageButton *>      m_pListEditorButtons;
-	QMap<char, KviMaskEditor *>                m_pListEditors;
-	KviModeEditor                            * m_pModeEditor;
-	KviIrcView                               * m_pMessageView;
-	KviTopicWidget                           * m_pTopicWidget;
-	KviUserListView                          * m_pUserListView;
-	KviModeWidget                            * m_pModeWidget;
-	int                                        m_iStateFlags;
-	QString                                    m_szSentModeRequests;
-	QString                                    m_szChannelMode;
-	QMap<char, QString>                        m_szChannelParameterModes;
+	KviTalSplitter * m_pTopSplitter;
+	KviTalSplitter * m_pVertSplitter;
+	QToolButton * m_pDoubleViewButton;
+	KviWindowToolPageButton * m_pListViewButton;
+	KviWindowToolPageButton * m_pModeEditorButton;
+	QMap<char, KviWindowToolPageButton *> m_pListEditorButtons;
+	QMap<char, KviMaskEditor *> m_pListEditors;
+	KviModeEditor * m_pModeEditor;
+	KviIrcView * m_pMessageView;
+	KviTopicWidget * m_pTopicWidget;
+	KviUserListView * m_pUserListView;
+	KviModeWidget * m_pModeWidget;
+	int m_iStateFlags;
+	QString m_szSentModeRequests;
+	QString m_szChannelMode;
+	QMap<char, QString> m_szChannelParameterModes;
 	QMap<char, KviPointerList<KviMaskEntry> *> m_pModeLists;
-	KviPixmap                                  m_privateBackground;
-	QDateTime                                  m_joinTime;
-	QString                                    m_szNameWithUserFlag;
-	QStringList                              * m_pTmpHighLighted;
-	unsigned int                               m_uActionHistoryHotActionCount;
-	KviPointerList<KviChannelAction>         * m_pActionHistory;
-	kvi_time_t                                 m_tLastReceivedWhoReply;
-	QList<int>                                 m_VertSplitterSizesList;
-	QList<int>                                 m_SplitterSizesList;
-	KviTalHBox                               * m_pButtonContainer;
+	KviPixmap m_privateBackground;
+	QDateTime m_joinTime;
+	QString m_szNameWithUserFlag;
+	QStringList * m_pTmpHighLighted;
+	unsigned int m_uActionHistoryHotActionCount;
+	KviPointerList<KviChannelAction> * m_pActionHistory;
+	kvi_time_t m_tLastReceivedWhoReply;
+	QList<int> m_VertSplitterSizesList;
+	QList<int> m_SplitterSizesList;
+	KviTalHBox * m_pButtonContainer;
+
 public:
 	/**
 	* \brief Returns the user listview object
 	* \return KviUserListView *
 	*/
-	KviUserListView * userListView(){ return m_pUserListView; };
+	KviUserListView * userListView() { return m_pUserListView; };
 
 	/**
 	* \brief Returns the topic widget object
 	* \return KviTopicWidget *
 	*/
-	KviTopicWidget * topicWidget(){ return m_pTopicWidget; };
+	KviTopicWidget * topicWidget() { return m_pTopicWidget; };
 
 	/**
 	* \brief Returns the irc view object
@@ -206,37 +209,42 @@ public:
 	* \brief Returns the button container object
 	* \return QFrame *
 	*/
-	QFrame * buttonContainer() { return (QFrame*)m_pButtonContainer; };
+	QFrame * buttonContainer() { return (QFrame *)m_pButtonContainer; };
 
 	/**
 	* \brief Returns a list of masks for a specific mode
 	* \return KviPointerList<KviMaskEntry> *
 	*/
-	inline KviPointerList<KviMaskEntry> * modeMasks(char cMode){ if(m_pModeLists.contains(cMode)) return m_pModeLists.value(cMode); return 0; };
+	inline KviPointerList<KviMaskEntry> * modeMasks(char cMode)
+	{
+		if(m_pModeLists.contains(cMode))
+			return m_pModeLists.value(cMode);
+		return 0;
+	};
 
 	/**
 	* \brief Returns the first selected nickname in the userlist
 	* \return QString *
 	*/
-	QString * firstSelectedNickname(){ return m_pUserListView->firstSelectedNickname(); };
+	QString * firstSelectedNickname() { return m_pUserListView->firstSelectedNickname(); };
 
 	/**
 	* \brief Returns the next selected nickname in the userlist
 	* \return QString *
 	*/
-	QString * nextSelectedNickname(){ return m_pUserListView->nextSelectedNickname(); };
+	QString * nextSelectedNickname() { return m_pUserListView->nextSelectedNickname(); };
 
 	/**
 	* \brief Returns the name of the channel
 	* \return const QString &
 	*/
-	virtual const QString & target(){ return windowName(); };
+	virtual const QString & target() { return windowName(); };
 
 	/**
 	* \brief Returns the name of the channel with user flags
 	* \return const QString &
 	*/
-	const QString & nameWithUserFlag(){ return m_szNameWithUserFlag; };
+	const QString & nameWithUserFlag() { return m_szNameWithUserFlag; };
 
 	/**
 	* \brief Gets the channel activity stats and put them in the buffer
@@ -249,55 +257,60 @@ public:
 	* \brief Returns the number of selected users
 	* \return int
 	*/
-	int selectedCount(){ return m_pUserListView->selectedCount(); };
+	int selectedCount() { return m_pUserListView->selectedCount(); };
 
 	/**
 	* \brief Returns the number of users with chanowner status
 	* \return int
 	*/
-	int chanOwnerCount(){ return m_pUserListView->chanOwnerCount(); };
+	int chanOwnerCount() { return m_pUserListView->chanOwnerCount(); };
 
 	/**
 	* \brief Returns the number of users with chanadmin status
 	* \return int
 	*/
-	int chanAdminCount(){ return m_pUserListView->chanAdminCount(); };
+	int chanAdminCount() { return m_pUserListView->chanAdminCount(); };
 
 	/**
 	* \brief Returns the number of users with op status
 	* \return int
 	*/
-	int opCount(){ return m_pUserListView->opCount(); };
+	int opCount() { return m_pUserListView->opCount(); };
 
 	/**
 	* \brief Returns the number of users with halfop status
 	* \return int
 	*/
-	int halfOpCount(){ return m_pUserListView->halfOpCount(); };
+	int halfOpCount() { return m_pUserListView->halfOpCount(); };
 
 	/**
 	* \brief Returns the number of users with voice status
 	* \return int
 	*/
-	int voiceCount(){ return m_pUserListView->voiceCount(); };
+	int voiceCount() { return m_pUserListView->voiceCount(); };
 
 	/**
 	* \brief Returns the number of users with userop status
 	* \return int
 	*/
-	int userOpCount(){ return m_pUserListView->userOpCount(); };
+	int userOpCount() { return m_pUserListView->userOpCount(); };
 
 	/**
 	* \brief Returns the number of users
 	* \return unsigned int
 	*/
-	unsigned int count(){ return m_pUserListView->count(); };
+	unsigned int count() { return m_pUserListView->count(); };
 
 	/**
 	* \brief Returns the number of masks is a channel mode list
 	* \return unsigned int
 	*/
-	unsigned int maskCount(char cMode){ if(m_pModeLists.contains(cMode)) return m_pModeLists.value(cMode)->count(); return 0; };
+	unsigned int maskCount(char cMode)
+	{
+		if(m_pModeLists.contains(cMode))
+			return m_pModeLists.value(cMode)->count();
+		return 0;
+	};
 
 	/**
 	* \brief Called when someone sets a channel mode that is stored in a list; these modes require a parameter that is tipically a mask
@@ -322,116 +335,128 @@ public:
 	* \brief Returns the time of the last received WHO reply
 	* \return kvi_time_t
 	*/
-	kvi_time_t lastReceivedWhoReply(){ return m_tLastReceivedWhoReply; };
+	kvi_time_t lastReceivedWhoReply() { return m_tLastReceivedWhoReply; };
 
 	/**
 	* \brief Sets the time of the last received WHO reply
 	* \param tTime The source time
 	* \return void
 	*/
-	void setLastReceivedWhoReply(kvi_time_t tTime){ m_tLastReceivedWhoReply = tTime; };
+	void setLastReceivedWhoReply(kvi_time_t tTime) { m_tLastReceivedWhoReply = tTime; };
 
 	/**
 	* \brief Returns true if we have sent the sync WHO request
 	* \return bool
 	*/
-	bool sentSyncWhoRequest(){ return (m_iStateFlags & SentSyncWhoRequest); };
+	bool sentSyncWhoRequest() { return (m_iStateFlags & SentSyncWhoRequest); };
 
 	/**
 	* \brief Sets the sync WHO request flag
 	* \return void
 	*/
-	void setSentSyncWhoRequest(){ m_iStateFlags |= SentSyncWhoRequest; };
+	void setSentSyncWhoRequest() { m_iStateFlags |= SentSyncWhoRequest; };
 
 	/**
 	* \brief Clears the sync WHO request flag
 	* \return void
 	*/
-	void clearSentSyncWhoRequest(){ m_iStateFlags ^= SentSyncWhoRequest; };
+	void clearSentSyncWhoRequest() { m_iStateFlags ^= SentSyncWhoRequest; };
 
 	/**
 	* \brief Returns true if we have sent the WHO request
 	* \return bool
 	*/
-	bool sentWhoRequest(){ return (m_iStateFlags & SentWhoRequest); };
+	bool sentWhoRequest() { return (m_iStateFlags & SentWhoRequest); };
 
 	/**
 	* \brief Sets the WHO request flag
 	* \return void
 	*/
-	void setSentWhoRequest(){ m_iStateFlags |= SentWhoRequest; };
+	void setSentWhoRequest() { m_iStateFlags |= SentWhoRequest; };
 
 	/**
 	* \brief Returns true if we have sent a list request for a specific channel mode
 	* \return bool
 	*/
-	bool sentListRequest(char cMode){ return m_szSentModeRequests.contains(cMode); };
+	bool sentListRequest(char cMode) { return m_szSentModeRequests.contains(cMode); };
 
 	/**
 	* \brief Sets the "sent request" flag for a specific channel mode
 	* \return void
 	*/
-	void setSentListRequest(char cMode){ m_szSentModeRequests.append(cMode); };
+	void setSentListRequest(char cMode) { m_szSentModeRequests.append(cMode); };
 
 	/**
 	* \brief Clears the "sent request" flag for a specific chanel mode
 	* \return void
 	*/
-	void setListRequestDone(char cMode){ m_szSentModeRequests.remove(cMode); checkChannelSync(); };
+	void setListRequestDone(char cMode)
+	{
+		m_szSentModeRequests.remove(cMode);
+		checkChannelSync();
+	};
 
 	/**
 	* \brief Returns true if the channel has all names
 	* \return bool
 	*/
-	bool hasAllNames(){ return (m_iStateFlags & HaveAllNames); };
+	bool hasAllNames() { return (m_iStateFlags & HaveAllNames); };
 
 	/**
 	* \brief Sets the existence of all names
 	* \return void
 	*/
-	void setHasAllNames(){ m_iStateFlags |= HaveAllNames; checkChannelSync(); };
+	void setHasAllNames()
+	{
+		m_iStateFlags |= HaveAllNames;
+		checkChannelSync();
+	};
 
 	/**
 	* \brief Returns true if the channel has an invite list
 	* \return bool
 	*/
-	bool hasInviteList(){ return m_pModeLists.contains('I'); };
+	bool hasInviteList() { return m_pModeLists.contains('I'); };
 
 	/**
 	* \brief Returns true if the channel has a WHO list
 	* \return bool
 	*/
-	bool hasWhoList(){ return (m_iStateFlags & HaveWhoList); };
+	bool hasWhoList() { return (m_iStateFlags & HaveWhoList); };
 
 	/**
 	* \brief Sets the existence of the WHO list
 	* \return void
 	*/
-	void setHasWhoList(){ m_iStateFlags |= HaveWhoList; checkChannelSync(); };
+	void setHasWhoList()
+	{
+		m_iStateFlags |= HaveWhoList;
+		checkChannelSync();
+	};
 
 	/**
 	* \brief Returns true if the channel has a ban list
 	* \return bool
 	*/
-	bool hasBanList(){ return m_pModeLists.contains('b'); };
+	bool hasBanList() { return m_pModeLists.contains('b'); };
 
 	/**
 	* \brief Returns true if the channel has a ban exception list
 	* \return bool
 	*/
-	bool hasBanExceptionList(){ return m_pModeLists.contains('e'); };
+	bool hasBanExceptionList() { return m_pModeLists.contains('e'); };
 
 	/**
 	* \brief Returns true if the channel has a quiet ban list
 	* \return bool
 	*/
-	bool hasQuietBanList(){ return m_pModeLists.contains('q'); };
+	bool hasQuietBanList() { return m_pModeLists.contains('q'); };
 
 	/**
 	* \brief Returns true if the channel has to be closed on part
 	* \return bool
 	*/
-	bool closeOnPart(){ return !(m_iStateFlags & NoCloseOnPart); };
+	bool closeOnPart() { return !(m_iStateFlags & NoCloseOnPart); };
 
 	/**
 	* \brief Called when we want to part a channel
@@ -459,7 +484,7 @@ public:
 	* \brief Returns true if the channel is dead
 	* \return bool
 	*/
-	bool isDeadChan(){ return (m_iStateFlags & DeadChan); };
+	bool isDeadChan() { return (m_iStateFlags & DeadChan); };
 
 	/**
 	* \brief Sets the channel as alive
@@ -473,14 +498,14 @@ public:
 	* \param szBuffer The buffer :)
 	* \return void
 	*/
-	void prependUserFlag(const QString & szNick, QString & szBuffer){ m_pUserListView->prependUserFlag(szNick,szBuffer); };
+	void prependUserFlag(const QString & szNick, QString & szBuffer) { m_pUserListView->prependUserFlag(szNick, szBuffer); };
 
 	/**
 	* \brief Returns the flag of a user
 	* \param szNick The nick of the user
 	* \return char
 	*/
-	char getUserFlag(const QString & szNick){ return m_pUserListView->getUserFlag(szNick); };
+	char getUserFlag(const QString & szNick) { return m_pUserListView->getUserFlag(szNick); };
 
 	/**
 	* \brief Returns the size of the channel
@@ -493,7 +518,7 @@ public:
 	* \param bEnable Whether to enable the updates
 	* \return void
 	*/
-	void enableUserListUpdates(bool bEnable){ m_pUserListView->enableUpdates(bEnable); };
+	void enableUserListUpdates(bool bEnable) { m_pUserListView->enableUpdates(bEnable); };
 
 	/**
 	* \brief Called when a user joins the channel
@@ -503,14 +528,14 @@ public:
 	* \param iFlags The flags of the user
 	* \return KviUserListEntry *
 	*/
-	KviUserListEntry * join(const QString & szNick, const QString & szUser = QString(), const QString & szHost = QString(), int iFlags = 0){ return m_pUserListView->join(szNick,szUser,szHost,iFlags); };
+	KviUserListEntry * join(const QString & szNick, const QString & szUser = QString(), const QString & szHost = QString(), int iFlags = 0) { return m_pUserListView->join(szNick, szUser, szHost, iFlags); };
 
 	/**
 	* \brief Returns true if the avatar of a user is changed
 	* \param szNick The nickname of the user
 	* \return bool
 	*/
-	bool avatarChanged(const QString & szNick){ return m_pUserListView->avatarChanged(szNick); };
+	bool avatarChanged(const QString & szNick) { return m_pUserListView->avatarChanged(szNick); };
 
 	/**
 	* \brief Sets the chan owner mode
@@ -518,7 +543,7 @@ public:
 	* \param bChanOwner Whether to set or unset the mode on the user
 	* \return bool
 	*/
-	bool setChanOwner(const QString & szNick, bool bChanOwner){ return m_pUserListView->setChanOwner(szNick,bChanOwner); };
+	bool setChanOwner(const QString & szNick, bool bChanOwner) { return m_pUserListView->setChanOwner(szNick, bChanOwner); };
 
 	/**
 	* \brief Sets the chan admin mode
@@ -526,7 +551,7 @@ public:
 	* \param bChanAdmin Whether to set or unset the mode on the user
 	* \return bool
 	*/
-	bool setChanAdmin(const QString & szNick, bool bChanAdmin){ return m_pUserListView->setChanAdmin(szNick,bChanAdmin); };
+	bool setChanAdmin(const QString & szNick, bool bChanAdmin) { return m_pUserListView->setChanAdmin(szNick, bChanAdmin); };
 
 	/**
 	* \brief Sets the operator mode
@@ -543,7 +568,7 @@ public:
 	* \param bHalfOp Whether to set or unset the mode on the user
 	* \return bool
 	*/
-	bool setHalfOp(const QString & szNick, bool bHalfOp, bool){ return m_pUserListView->setHalfOp(szNick,bHalfOp); };
+	bool setHalfOp(const QString & szNick, bool bHalfOp, bool) { return m_pUserListView->setHalfOp(szNick, bHalfOp); };
 
 	/**
 	* \brief Sets the voice mode
@@ -551,7 +576,7 @@ public:
 	* \param bVoice Whether to set or unset the mode on the user
 	* \return bool
 	*/
-	bool setVoice(const QString & szNick, bool bVoice, bool){ return m_pUserListView->setVoice(szNick,bVoice); };
+	bool setVoice(const QString & szNick, bool bVoice, bool) { return m_pUserListView->setVoice(szNick, bVoice); };
 
 	/**
 	* \brief Sets the user operator mode
@@ -559,7 +584,7 @@ public:
 	* \param bUserOp Whether to set or unset the mode on the user
 	* \return bool
 	*/
-	bool setUserOp(const QString & szNick, bool bUserOp, bool){ return m_pUserListView->setUserOp(szNick,bUserOp); };
+	bool setUserOp(const QString & szNick, bool bUserOp, bool) { return m_pUserListView->setUserOp(szNick, bUserOp); };
 
 	/**
 	* \brief Returns true if the user is a chan owner
@@ -567,7 +592,7 @@ public:
 	* \param bAtLeast Whether the user is at least a chan owner
 	* \return bool
 	*/
-	bool isChanOwner(const QString & szNick, bool bAtLeast = false){ return m_pUserListView->isChanOwner(szNick,bAtLeast); };
+	bool isChanOwner(const QString & szNick, bool bAtLeast = false) { return m_pUserListView->isChanOwner(szNick, bAtLeast); };
 
 	/**
 	* \brief Returns true if the user is a chan admin
@@ -575,7 +600,7 @@ public:
 	* \param bAtLeast Whether the user is at least a chan admin
 	* \return bool
 	*/
-	bool isChanAdmin(const QString & szNick, bool bAtLeast = false){ return m_pUserListView->isChanAdmin(szNick,bAtLeast); };
+	bool isChanAdmin(const QString & szNick, bool bAtLeast = false) { return m_pUserListView->isChanAdmin(szNick, bAtLeast); };
 
 	/**
 	* \brief Returns true if the user is an operator
@@ -583,7 +608,7 @@ public:
 	* \param bAtLeast Whether the user is at least an operator
 	* \return bool
 	*/
-	bool isOp(const QString & szNick, bool bAtLeast = false){ return m_pUserListView->isOp(szNick,bAtLeast); };
+	bool isOp(const QString & szNick, bool bAtLeast = false) { return m_pUserListView->isOp(szNick, bAtLeast); };
 
 	/**
 	* \brief Returns true if the user is a half operator
@@ -591,7 +616,7 @@ public:
 	* \param bAtLeast Whether the user is at least a half operator
 	* \return bool
 	*/
-	bool isHalfOp(const QString & szNick, bool bAtLeast = false){ return m_pUserListView->isHalfOp(szNick,bAtLeast); };
+	bool isHalfOp(const QString & szNick, bool bAtLeast = false) { return m_pUserListView->isHalfOp(szNick, bAtLeast); };
 
 	/**
 	* \brief Returns true if the user is a voice
@@ -599,7 +624,7 @@ public:
 	* \param bAtLeast Whether the user is at least a voice
 	* \return bool
 	*/
-	bool isVoice(const QString & szNick, bool bAtLeast = false){ return m_pUserListView->isVoice(szNick,bAtLeast); };
+	bool isVoice(const QString & szNick, bool bAtLeast = false) { return m_pUserListView->isVoice(szNick, bAtLeast); };
 
 	/**
 	* \brief Returns true if the user is a user operator
@@ -607,7 +632,7 @@ public:
 	* \param bAtLeast Whether the user is at least a user operator
 	* \return bool
 	*/
-	bool isUserOp(const QString & szNick, bool bAtLeast = false){ return m_pUserListView->isUserOp(szNick,bAtLeast); };
+	bool isUserOp(const QString & szNick, bool bAtLeast = false) { return m_pUserListView->isUserOp(szNick, bAtLeast); };
 
 	/**
 	* \brief Returns true if we are an ircop
@@ -713,14 +738,14 @@ public:
 	* \param szNick The nickname of the user
 	* \return bool
 	*/
-	bool isOn(const QString & szNick){ return (m_pUserListView->findEntry(szNick) != 0); };
+	bool isOn(const QString & szNick) { return (m_pUserListView->findEntry(szNick) != 0); };
 
 	/**
 	* \brief Searches for a user in the userlist
 	* \param szNick The nickname of the user to find
 	* \return KviUserListEntry *
 	*/
-	KviUserListEntry * findEntry(const QString & szNick){ return m_pUserListView->findEntry(szNick); };
+	KviUserListEntry * findEntry(const QString & szNick) { return m_pUserListView->findEntry(szNick); };
 
 	/**
 	* \brief Returns our flags
@@ -740,7 +765,7 @@ public:
 	* \param szMsg The message :)
 	* \return void
 	*/
-	virtual void outputMessage(int iMsgType, const QString & szMsg, const QDateTime& datetime = QDateTime());
+	virtual void outputMessage(int iMsgType, const QString & szMsg, const QDateTime & datetime = QDateTime());
 
 	/**
 	* \brief Called when we send a message
@@ -769,7 +794,7 @@ public:
 	* \brief Returns only the plain (parameter-less) channel modes (eg: mi)
 	* \return QString
 	*/
-	QString plainChannelMode(){ return m_szChannelMode; };
+	QString plainChannelMode() { return m_szChannelMode; };
 
 	/**
 	* \brief Fills szBuffer with all set channel modes, but without any parameters (eg: lkmi)
@@ -798,7 +823,7 @@ public:
 	* \param cMode The mode
 	* \return bool
 	*/
-	bool hasChannelMode(char cMode){ return m_szChannelParameterModes.contains(cMode); };
+	bool hasChannelMode(char cMode) { return m_szChannelParameterModes.contains(cMode); };
 
 	/**
 	* \brief Returns the value (parameter) for a channel mode (eg. the password for mode k)
@@ -826,7 +851,7 @@ public:
 	* \param szNick The nickname of the user
 	* \return bool
 	*/
-	bool isHighlightedUser(const QString & szNick){ return m_pTmpHighLighted->contains(szNick,Qt::CaseInsensitive); };
+	bool isHighlightedUser(const QString & szNick) { return m_pTmpHighLighted->contains(szNick, Qt::CaseInsensitive); };
 
 	/**
 	* \brief Called when the channel losts the focus by the user
@@ -878,6 +903,7 @@ public:
 	* \return void
 	*/
 	void checkChannelSync();
+
 protected:
 	/**
 	* \brief Filters the events

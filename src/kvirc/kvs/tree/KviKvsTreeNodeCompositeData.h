@@ -31,16 +31,17 @@
 class KVIRC_API KviKvsTreeNodeCompositeData : public KviKvsTreeNodeData
 {
 public:
-	KviKvsTreeNodeCompositeData(const QChar * pLocation,KviPointerList<KviKvsTreeNodeData> * pSubData);
+	KviKvsTreeNodeCompositeData(const QChar * pLocation, KviPointerList<KviKvsTreeNodeData> * pSubData);
 	~KviKvsTreeNodeCompositeData();
+
 protected:
 	KviPointerList<KviKvsTreeNodeData> * m_pSubData;
+
 public:
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
-	virtual void contextDescription(QString &szBuffer);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
+	virtual void contextDescription(QString & szBuffer);
 
 	virtual void dump(const char * prefix);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_COMPOSITEDATA_H_

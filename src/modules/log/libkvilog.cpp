@@ -88,23 +88,25 @@ static bool log_kvs_cmd_start(KviKvsModuleCommandCall * c)
 {
 	QString szFile;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("filename",KVS_PT_STRING,KVS_PF_OPTIONAL,szFile)
+	KVSM_PARAMETER("filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szFile)
 	KVSM_PARAMETERS_END(c)
 
 	KviWindow * pWnd = c->window();
-	if(c->hasSwitch('w',"window"))
+	if(c->hasSwitch('w', "window"))
 	{
 		QString szWindow;
-		if(c->switches()->getAsStringIfExisting('w',"window",szWindow))
+		if(c->switches()->getAsStringIfExisting('w', "window", szWindow))
 		{
 			pWnd = g_pApp->findWindow(szWindow);
 			if(!pWnd)
 			{
-				c->warning(__tr2qs_ctx("Window '%1' not found","log").arg(szWindow));
+				c->warning(__tr2qs_ctx("Window '%1' not found", "log").arg(szWindow));
 				return true;
 			}
-		} else {
-			c->warning(__tr2qs_ctx("Missing window ID after the 'w' switch","log"));
+		}
+		else
+		{
+			c->warning(__tr2qs_ctx("Missing window ID after the 'w' switch", "log"));
 			return true;
 		}
 	}
@@ -114,10 +116,12 @@ static bool log_kvs_cmd_start(KviKvsModuleCommandCall * c)
 		if(szFile.isEmpty())
 			pWnd->getDefaultLogFileName(szFile);
 
-		if(!pWnd->view()->startLogging(szFile,c->hasSwitch('p',"log-buffer")))
-			c->warning(__tr2qs_ctx("Can't log to file '%1'","log").arg(szFile));
-	} else {
-		c->warning(__tr2qs_ctx("This window has no logging capabilities","log"));
+		if(!pWnd->view()->startLogging(szFile, c->hasSwitch('p', "log-buffer")))
+			c->warning(__tr2qs_ctx("Can't log to file '%1'", "log").arg(szFile));
+	}
+	else
+	{
+		c->warning(__tr2qs_ctx("This window has no logging capabilities", "log"));
 		return true;
 	}
 	return true;
@@ -146,19 +150,21 @@ static bool log_kvs_cmd_start(KviKvsModuleCommandCall * c)
 static bool log_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 {
 	KviWindow * pWnd = c->window();
-	if(c->hasSwitch('w',"window"))
+	if(c->hasSwitch('w', "window"))
 	{
 		QString szWindow;
-		if(c->switches()->getAsStringIfExisting('w',"window",szWindow))
+		if(c->switches()->getAsStringIfExisting('w', "window", szWindow))
 		{
 			pWnd = g_pApp->findWindow(szWindow);
 			if(!pWnd)
 			{
-				c->warning(__tr2qs_ctx("Window '%1' not found","log").arg(szWindow));
+				c->warning(__tr2qs_ctx("Window '%1' not found", "log").arg(szWindow));
 				return true;
 			}
-		} else {
-			c->warning(__tr2qs_ctx("Missing window ID after the 'w' switch","log"));
+		}
+		else
+		{
+			c->warning(__tr2qs_ctx("Missing window ID after the 'w' switch", "log"));
 			return true;
 		}
 	}
@@ -196,19 +202,21 @@ static bool log_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 static bool log_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 {
 	KviWindow * pWnd = c->window();
-	if(c->hasSwitch('w',"window"))
+	if(c->hasSwitch('w', "window"))
 	{
 		QString szWindow;
-		if(c->switches()->getAsStringIfExisting('w',"window",szWindow))
+		if(c->switches()->getAsStringIfExisting('w', "window", szWindow))
 		{
 			pWnd = g_pApp->findWindow(szWindow);
 			if(!pWnd)
 			{
-				c->warning(__tr2qs_ctx("Window '%1' not found","log").arg(szWindow));
+				c->warning(__tr2qs_ctx("Window '%1' not found", "log").arg(szWindow));
 				return true;
 			}
-		} else {
-			c->warning(__tr2qs_ctx("Missing window ID after the 'w' switch","log"));
+		}
+		else
+		{
+			c->warning(__tr2qs_ctx("Missing window ID after the 'w' switch", "log"));
 			return true;
 		}
 	}
@@ -252,7 +260,7 @@ static bool log_kvs_fnc_file(KviKvsModuleFunctionCall * c)
 	QString szWindow, szBuffer;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWindow)
+	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWindow)
 	KVSM_PARAMETERS_END(c)
 
 	KviWindow * pWnd = c->window();
@@ -262,7 +270,7 @@ static bool log_kvs_fnc_file(KviKvsModuleFunctionCall * c)
 		pWnd = g_pApp->findWindow(szWindow);
 		if(!pWnd)
 		{
-			c->warning(__tr2qs_ctx("Window with ID '%1' not found, returning empty string","log").arg(szWindow));
+			c->warning(__tr2qs_ctx("Window with ID '%1' not found, returning empty string", "log").arg(szWindow));
 			return true;
 		}
 	}
@@ -300,8 +308,8 @@ static bool log_kvs_fnc_export(KviKvsModuleFunctionCall * c)
 	QString szFile, szType;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("filename",KVS_PT_NONEMPTYSTRING,0,szFile)
-		KVSM_PARAMETER("type",KVS_PT_STRING,KVS_PF_OPTIONAL,szType)
+	KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFile)
+	KVSM_PARAMETER("type", KVS_PT_STRING, KVS_PF_OPTIONAL, szType)
 	KVSM_PARAMETERS_END(c)
 
 	if(szType.isEmpty())
@@ -310,7 +318,7 @@ static bool log_kvs_fnc_export(KviKvsModuleFunctionCall * c)
 	KviModule * m = g_pModuleManager->getModule("logview");
 	if(!m)
 	{
-		c->error(__tr2qs_ctx("Failed to load logview module, aborting","log"));
+		c->error(__tr2qs_ctx("Failed to load logview module, aborting", "log"));
 		return false;
 	}
 
@@ -318,9 +326,9 @@ static bool log_kvs_fnc_export(KviKvsModuleFunctionCall * c)
 	log.szName = szFile;
 	log.szType = szType;
 
-	if(!m->ctrl("logview::export",(void *)&log))
+	if(!m->ctrl("logview::export", (void *)&log))
 	{
-		c->error(__tr2qs_ctx("Failed to export the log '%1'","log").arg(szFile));
+		c->error(__tr2qs_ctx("Failed to export the log '%1'", "log").arg(szFile));
 		return false;
 	}
 
@@ -331,12 +339,12 @@ static bool log_kvs_fnc_export(KviKvsModuleFunctionCall * c)
 
 static bool log_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"start",log_kvs_cmd_start);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"stop",log_kvs_cmd_stop);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"flush",log_kvs_cmd_flush);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "start", log_kvs_cmd_start);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "stop", log_kvs_cmd_stop);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "flush", log_kvs_cmd_flush);
 
-	KVSM_REGISTER_FUNCTION(m,"file",log_kvs_fnc_file);
-	KVSM_REGISTER_FUNCTION(m,"export",log_kvs_fnc_export);
+	KVSM_REGISTER_FUNCTION(m, "file", log_kvs_fnc_file);
+	KVSM_REGISTER_FUNCTION(m, "export", log_kvs_fnc_export);
 	return true;
 }
 
@@ -346,14 +354,13 @@ static bool log_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Log",                                                  // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)\n" \
-	"	2011 Elvio Basello (hellvis69 at gmail dot com)", // author & (C)
-	"User interface to the logging system for KVIrc",
-	log_module_init,
-	0,
-	0,
-	log_module_cleanup,
-	0
-)
+    "Log",   // module name
+    "4.0.0", // module version
+    "Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)\n"
+    "	2011 Elvio Basello (hellvis69 at gmail dot com)", // author & (C)
+    "User interface to the logging system for KVIrc",
+    log_module_init,
+    0,
+    0,
+    log_module_cleanup,
+    0)

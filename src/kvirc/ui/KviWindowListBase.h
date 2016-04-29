@@ -50,19 +50,21 @@ class KVIRC_API KviWindowListItem
 public:
 	KviWindowListItem(KviWindow * wnd);
 	virtual ~KviWindowListItem();
+
 protected:
 	KviWindow * m_pWindow;
-	int         m_iHighlightLevel;
-	int         m_iProgress;
+	int m_iHighlightLevel;
+	int m_iProgress;
+
 public:
-	KviWindow * kviWindow(){ return m_pWindow; };
+	KviWindow * kviWindow() { return m_pWindow; };
 	virtual void captionChanged(){};
 	virtual void highlight(int){};
 	virtual void setProgress(int){};
-	virtual bool active(){ return false; };
+	virtual bool active() { return false; };
 	virtual void unhighlight(){};
-	int progress(){ return m_iProgress; };
-	int highlightLevel(){ return m_iHighlightLevel; };
+	int progress() { return m_iProgress; };
+	int highlightLevel() { return m_iHighlightLevel; };
 };
 
 //
@@ -78,26 +80,28 @@ class KVIRC_API KviWindowListBase : public QDockWidget
 public:
 	KviWindowListBase();
 	virtual ~KviWindowListBase();
+
 protected:
 	KviMainWindow * m_pFrm;
-	QTimer   * m_pActivityMeterTimer;
-	QWidget  * m_pTitleWidget;
+	QTimer * m_pActivityMeterTimer;
+	QWidget * m_pTitleWidget;
 	Qt::DockWidgetArea currentArea;
+
 public:
-	virtual KviWindowListItem * addItem(KviWindow *){ return 0; };
-	virtual bool removeItem(KviWindowListItem *){ return false; };
+	virtual KviWindowListItem * addItem(KviWindow *) { return 0; };
+	virtual bool removeItem(KviWindowListItem *) { return false; };
 	virtual void setActiveItem(KviWindowListItem *){};
-	virtual KviWindowListItem * firstItem(){ return 0; };
+	virtual KviWindowListItem * firstItem() { return 0; };
 	virtual KviWindowListItem * lastItem(void) { return 0; }
-	virtual KviWindowListItem * nextItem(){ return 0; };
+	virtual KviWindowListItem * nextItem() { return 0; };
 	virtual KviWindowListItem * prevItem(void) { return 0; }
 	virtual KviWindowListItem * item(int number);
-	virtual bool setIterationPointer(KviWindowListItem *){ return false; };
-	virtual void switchWindow(bool bNext,bool bInContextOnly,bool bHighlightedOnly=false);
+	virtual bool setIterationPointer(KviWindowListItem *) { return false; };
+	virtual void switchWindow(bool bNext, bool bInContextOnly, bool bHighlightedOnly = false);
 	virtual void updatePseudoTransparency(){};
 	virtual void applyOptions();
-	virtual void wheelEvent(QWheelEvent *e);
-	static void getTextForConsole(QString &szText,KviConsoleWindow * pConsole);
+	virtual void wheelEvent(QWheelEvent * e);
+	static void getTextForConsole(QString & szText, KviConsoleWindow * pConsole);
 	Qt::DockWidgetArea currentDockArea() { return currentArea; };
 protected slots:
 	virtual void updateActivityMeter();
@@ -117,28 +121,31 @@ class KVIRC_API KviWindowListButton : public QPushButton, KviWindowListItem
 	friend class KviClassicWindowList;
 	Q_OBJECT
 public:
-	KviWindowListButton(QWidget * par,KviWindow * wnd,const char * name);
+	KviWindowListButton(QWidget * par, KviWindow * wnd, const char * name);
 	~KviWindowListButton();
+
 protected:
-	bool                m_bActive;
+	bool m_bActive;
 	KviDynamicToolTip * m_pTip;
+
 protected:
-	virtual void mousePressEvent(QMouseEvent *e);
-	virtual void contextMenuEvent(QContextMenuEvent *e);
-	virtual void drawButtonLabel(QPainter *p);
+	virtual void mousePressEvent(QMouseEvent * e);
+	virtual void contextMenuEvent(QContextMenuEvent * e);
+	virtual void drawButtonLabel(QPainter * p);
 	virtual void paintEvent(QPaintEvent * e);
+
 public:
-	virtual bool active(){ return m_bActive; };
+	virtual bool active() { return m_bActive; };
 	virtual void highlight(int iLevel = 1);
 	virtual void unhighlight();
 	virtual void setProgress(int progress);
 	virtual void captionChanged();
+
 protected:
 	void setActive(bool bActive);
 protected slots:
-	void tipRequest(KviDynamicToolTip *tip,const QPoint &pnt);
+	void tipRequest(KviDynamicToolTip * tip, const QPoint & pnt);
 };
-
 
 class KVIRC_API KviClassicWindowList : public KviWindowListBase
 {
@@ -146,15 +153,19 @@ class KVIRC_API KviClassicWindowList : public KviWindowListBase
 public:
 	KviClassicWindowList();
 	~KviClassicWindowList();
+
 protected:
 	KviPointerList<KviWindowListButton> * m_pButtonList;
-	int                       m_iButtonHeight;
-	QWidget                 * m_pBase;
+	int m_iButtonHeight;
+	QWidget * m_pBase;
+
 protected:
 	void calcButtonHeight();
 	void insertButton(KviWindowListButton * b);
+
 public:
-	virtual void resizeEvent(QResizeEvent *e);
+	virtual void resizeEvent(QResizeEvent * e);
+
 public:
 	virtual KviWindowListItem * addItem(KviWindow *);
 	virtual bool removeItem(KviWindowListItem *);
@@ -176,9 +187,11 @@ class KVIRC_API KviWindowListTitleWidget : public QWidget
 	Q_OBJECT
 public:
 	KviWindowListTitleWidget(KviWindowListBase * parent) { m_pParent = parent; };
-	~KviWindowListTitleWidget() {};
+	~KviWindowListTitleWidget(){};
+
 private:
-	KviWindowListBase* m_pParent;
+	KviWindowListBase * m_pParent;
+
 public:
 	QSize sizeHint() const;
 	void paintEvent(QPaintEvent *);

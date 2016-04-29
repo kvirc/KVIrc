@@ -55,8 +55,10 @@ public:
 	* \brief Destroys the instance of KviDebugContext and frees all the relevant resources
 	*/
 	~KviDebugContext();
+
 private:
 	KviCString m_szContext;
+
 public:
 	/**
 	* \brief
@@ -65,8 +67,9 @@ public:
 	* \return void
 	*/
 	static void trace(const char * pcFmt, ...);
+
 private:
-	const KviDebugContext & operator = (const KviDebugContext &){ return *this; };
+	const KviDebugContext & operator=(const KviDebugContext &) { return *this; };
 };
 
 #endif // _KVIDEBUGCONTEXT_H_

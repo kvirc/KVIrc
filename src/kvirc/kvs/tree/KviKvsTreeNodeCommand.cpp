@@ -25,8 +25,8 @@
 #include "KviKvsTreeNodeCommand.h"
 #include "KviKvsTreeNodeSwitchList.h"
 
-KviKvsTreeNodeCommand::KviKvsTreeNodeCommand(const QChar * pLocation,const QString &szCmdName)
-: KviKvsTreeNodeInstruction(pLocation)
+KviKvsTreeNodeCommand::KviKvsTreeNodeCommand(const QChar * pLocation, const QString & szCmdName)
+    : KviKvsTreeNodeInstruction(pLocation)
 {
 	m_szCmdName = szCmdName;
 	m_pSwitches = 0;
@@ -34,25 +34,27 @@ KviKvsTreeNodeCommand::KviKvsTreeNodeCommand(const QChar * pLocation,const QStri
 
 KviKvsTreeNodeCommand::~KviKvsTreeNodeCommand()
 {
-	if(m_pSwitches)delete m_pSwitches;
+	if(m_pSwitches)
+		delete m_pSwitches;
 }
 
 //#warning "All the dump() functions could be killed (or moved to print on the kvirc windows)"
 
-void KviKvsTreeNodeCommand::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeCommand::contextDescription(QString & szBuffer)
 {
 	szBuffer = QString("Command \"%1\"").arg(m_szCmdName);
 }
 
 void KviKvsTreeNodeCommand::dump(const char * prefix)
 {
-	qDebug("%s Command(%s)",prefix,m_szCmdName.toUtf8().data());
+	qDebug("%s Command(%s)", prefix, m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 }
 
 void KviKvsTreeNodeCommand::dumpSwitchList(const char * prefix)
 {
-	if(!m_pSwitches)return;
+	if(!m_pSwitches)
+		return;
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pSwitches->dump(tmp.toUtf8().data());

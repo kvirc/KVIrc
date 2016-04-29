@@ -36,20 +36,21 @@ class KviAsyncAvatarSelectionDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	KviAsyncAvatarSelectionDialog(QWidget * par,const QString &szInitialPath,KviIrcConnection * c);
+	KviAsyncAvatarSelectionDialog(QWidget * par, const QString & szInitialPath, KviIrcConnection * c);
 	~KviAsyncAvatarSelectionDialog();
+
 protected:
-	QLineEdit        * m_pLineEdit;
-	QString            m_szAvatarName;
+	QLineEdit * m_pLineEdit;
+	QString m_szAvatarName;
 	KviIrcConnection * m_pConnection;
+
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-	const QString &avatarName(){ return m_szAvatarName; };
+	const QString & avatarName() { return m_szAvatarName; };
 protected slots:
 	void okClicked();
 	void cancelClicked();
 	void chooseFileClicked();
 };
-
 
 #endif //!_LIBKVIAVATAR_H_

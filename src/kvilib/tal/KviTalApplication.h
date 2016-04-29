@@ -43,14 +43,14 @@
 
 #if defined(COMPILE_KDE4_SUPPORT)
 
-	#include <KApplication>
-	class KVILIB_API KviTalApplication : public KApplication
+#include <KApplication>
+class KVILIB_API KviTalApplication : public KApplication
 
 #else //!defined(COMPILE_KDE4_SUPPORT)
 
-	// Either no KDE or KDE5 (which uses QApplication)
-	#include <QApplication>
-	class KVILIB_API KviTalApplication : public QApplication
+// Either no KDE or KDE5 (which uses QApplication)
+#include <QApplication>
+class KVILIB_API KviTalApplication : public QApplication
 
 #endif //!defined(COMPILE_KDE4_SUPPORT)
 {

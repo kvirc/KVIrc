@@ -25,8 +25,8 @@
 #include "KviKvsTreeNodeCoreFunctionCall.h"
 #include "KviKvsRunTimeContext.h"
 
-KviKvsTreeNodeCoreFunctionCall::KviKvsTreeNodeCoreFunctionCall(const QChar * pLocation,const QString &szFncName,KviKvsCoreFunctionExecRoutine * r,KviKvsTreeNodeDataList * pParams)
-: KviKvsTreeNodeFunctionCall(pLocation,szFncName,pParams)
+KviKvsTreeNodeCoreFunctionCall::KviKvsTreeNodeCoreFunctionCall(const QChar * pLocation, const QString & szFncName, KviKvsCoreFunctionExecRoutine * r, KviKvsTreeNodeDataList * pParams)
+    : KviKvsTreeNodeFunctionCall(pLocation, szFncName, pParams)
 {
 	m_pExecRoutine = r;
 }
@@ -35,26 +35,26 @@ KviKvsTreeNodeCoreFunctionCall::~KviKvsTreeNodeCoreFunctionCall()
 {
 }
 
-void KviKvsTreeNodeCoreFunctionCall::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeCoreFunctionCall::contextDescription(QString & szBuffer)
 {
 	szBuffer = QString("Core Function Call \"%1\"").arg(m_szFunctionName);
 }
 
-
 void KviKvsTreeNodeCoreFunctionCall::dump(const char * prefix)
 {
-	qDebug("%s CoreFunctionCall(%s)",prefix,m_szFunctionName.toUtf8().data());
+	qDebug("%s CoreFunctionCall(%s)", prefix, m_szFunctionName.toUtf8().data());
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pParams->dump(tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeCoreFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeCoreFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	KviKvsVariantList l;
-	if(!m_pParams->evaluate(c,&l))return false;
+	if(!m_pParams->evaluate(c, &l))
+		return false;
 
 	pBuffer->setNothing();
 	c->setDefaultReportLocation(this);
-	return m_pExecRoutine->proc(c,&l,pBuffer);
+	return m_pExecRoutine->proc(c, &l, pBuffer);
 }

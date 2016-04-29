@@ -36,14 +36,12 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-	bool setMargin(KviKvsObjectFunctionCall *c);
-	bool setSpacing(KviKvsObjectFunctionCall *c);
-	bool setStretchFactor(KviKvsObjectFunctionCall *c);
-	bool addStretch(KviKvsObjectFunctionCall *c);
-	bool setAlignment(KviKvsObjectFunctionCall *c);
-
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool setMargin(KviKvsObjectFunctionCall * c);
+	bool setSpacing(KviKvsObjectFunctionCall * c);
+	bool setStretchFactor(KviKvsObjectFunctionCall * c);
+	bool addStretch(KviKvsObjectFunctionCall * c);
+	bool setAlignment(KviKvsObjectFunctionCall * c);
 };
-
 
 #endif //_CLASS_HBOX_H_

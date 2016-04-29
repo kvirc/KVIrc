@@ -34,7 +34,7 @@
 #include "kvi_settings.h"
 
 #ifdef None
-	#undef None
+#undef None
 #endif // otherwise gcc freaks out somewhere inside the include chain of KFileDialog
 
 /**
@@ -44,15 +44,15 @@
 
 #if defined(COMPILE_KDE4_SUPPORT)
 
-	#include <KFileDialog>
-	class KVILIB_API KviTalFileDialog : public KFileDialog
+#include <KFileDialog>
+class KVILIB_API KviTalFileDialog : public KFileDialog
 
 #else //!defined(COMPILE_KDE4_SUPPORT)
 
-	// no KDE or KDE5 (which has no KFileDialog)
+// no KDE or KDE5 (which has no KFileDialog)
 
-	#include <QFileDialog>
-	class KVILIB_API KviTalFileDialog : public QFileDialog
+#include <QFileDialog>
+class KVILIB_API KviTalFileDialog : public QFileDialog
 
 #endif //!defined(COMPILE_KDE4_SUPPORT)
 {
@@ -73,17 +73,19 @@ public:
 	* \brief Destroys the filedialog object
 	*/
 	~KviTalFileDialog();
+
 public:
 	/**
 	* \enum FileMode
 	* \brief Indicate what the user may select in the file dialog
 	*/
-	enum FileMode {
-		AnyFile,         /**< The name of a file, whether it exists or not */
-		ExistingFile,    /**< The name of a single existing file */
-		ExistingFiles,   /**< The names of zero or more existing files */
-		Directory,       /**< The name of a directory. Both files and directories are displayed */
-		DirectoryOnly    /**< The name of a directory. The file dialog will only display directories */
+	enum FileMode
+	{
+		AnyFile,       /**< The name of a file, whether it exists or not */
+		ExistingFile,  /**< The name of a single existing file */
+		ExistingFiles, /**< The names of zero or more existing files */
+		Directory,     /**< The name of a directory. Both files and directories are displayed */
+		DirectoryOnly  /**< The name of a directory. The file dialog will only display directories */
 	};
 
 	/**
@@ -111,10 +113,10 @@ public:
 	{
 #if defined(COMPILE_KDE4_SUPPORT)
 		// QFileDialog allows making new directories...kfiledialog not :/
-		return KFileDialog::getExistingDirectory(KUrl(szDir),pParent,szCaption);
-		//return getExistingDirectory(dir,parent,caption);
-#else //!defined(COMPILE_KDE4_SUPPORT)
-		return getExistingDirectory(pParent,szCaption,szDir);
+		return KFileDialog::getExistingDirectory(KUrl(szDir), pParent, szCaption);
+//return getExistingDirectory(dir,parent,caption);
+#else  //!defined(COMPILE_KDE4_SUPPORT)
+		return getExistingDirectory(pParent, szCaption, szDir);
 #endif //!defined(COMPILE_KDE4_SUPPORT)
 	};
 };

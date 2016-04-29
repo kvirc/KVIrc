@@ -32,12 +32,12 @@ class KviKvsTreeNodeDataList;
 class KVIRC_API KviKvsTreeNodeSimpleCommand : public KviKvsTreeNodeCommandWithParameters
 {
 public:
-	KviKvsTreeNodeSimpleCommand(const QChar * pLocation,const QString &szCmdName,KviKvsTreeNodeDataList * params);
+	KviKvsTreeNodeSimpleCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params);
 	~KviKvsTreeNodeSimpleCommand();
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_SIMPLECOMMAND_H_

@@ -35,9 +35,9 @@ class StatusBarApplet : public KviStatusBarApplet
 {
 	Q_OBJECT
 public:
-	StatusBarApplet(KviStatusBar *parent, KviStatusBarAppletDescriptor *desc);
+	StatusBarApplet(KviStatusBar * parent, KviStatusBarAppletDescriptor * desc);
 	virtual ~StatusBarApplet();
-	static void selfRegister(KviStatusBar *bar);
+	static void selfRegister(KviStatusBar * bar);
 private slots:
 	void update();
 };

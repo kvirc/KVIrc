@@ -29,17 +29,16 @@
 #include "KviKvsTreeNodeDataList.h"
 #include "KviKvsTreeNodeFunctionCall.h"
 
-
 class KVIRC_API KviKvsTreeNodeObjectFunctionCall : public KviKvsTreeNodeFunctionCall
 {
 public:
-	KviKvsTreeNodeObjectFunctionCall(const QChar * pLocation,const QString &szFncName,KviKvsTreeNodeDataList * pParams);
+	KviKvsTreeNodeObjectFunctionCall(const QChar * pLocation, const QString & szFncName, KviKvsTreeNodeDataList * pParams);
 	~KviKvsTreeNodeObjectFunctionCall();
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool canEvaluateInObjectScope();
 };
-
 
 #endif //!_KVI_KVS_TREENODE_OBJECTFUNCTIONCALL_H_

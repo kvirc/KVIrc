@@ -36,12 +36,13 @@ class OptionsWidget_away : public KviOptionsWidget
 public:
 	OptionsWidget_away(QWidget * parent);
 	~OptionsWidget_away();
+
 protected:
-	KviBoolSelector     * m_pEnableAwayMessage;
-	KviStringSelector   * m_pAwayMessage;
-	KviBoolSelector     * m_pEnableAwayNick;
-	KviStringSelector   * m_pCustomAwayNick;
-	KviBoolSelector     * m_pEnableCustomAwayNick;
+	KviBoolSelector * m_pEnableAwayMessage;
+	KviStringSelector * m_pAwayMessage;
+	KviBoolSelector * m_pEnableAwayNick;
+	KviStringSelector * m_pCustomAwayNick;
+	KviBoolSelector * m_pEnableCustomAwayNick;
 public slots:
 	void enableCustomAwayText(bool);
 	void enableAwayMessage(bool);

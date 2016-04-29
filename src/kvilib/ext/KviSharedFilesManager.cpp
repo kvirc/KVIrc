@@ -77,24 +77,25 @@
 */
 
 KviSharedFilesManager::KviSharedFilesManager()
-: QObject()
+    : QObject()
 {
-	m_pSharedListDict = new KviPointerHashTable<QString,KviSharedFileList>();
+	m_pSharedListDict = new KviPointerHashTable<QString, KviSharedFileList>();
 	m_pSharedListDict->setAutoDelete(true);
 	m_pCleanupTimer = new QTimer();
-	connect(m_pCleanupTimer,SIGNAL(timeout()),this,SLOT(cleanup()));
+	connect(m_pCleanupTimer, SIGNAL(timeout()), this, SLOT(cleanup()));
 }
 
 KviSharedFilesManager::~KviSharedFilesManager()
 {
-	if(m_pCleanupTimer->isActive())m_pCleanupTimer->stop();
+	if(m_pCleanupTimer->isActive())
+		m_pCleanupTimer->stop();
 	delete m_pCleanupTimer;
 	delete m_pSharedListDict;
 }
 
 void KviSharedFilesManager::cleanup()
 {
-	KviPointerHashTableIterator<QString,KviSharedFileList> it(*m_pSharedListDict);
+	KviPointerHashTableIterator<QString, KviSharedFileList> it(*m_pSharedListDict);
 	time_t curTime = time(0);
 
 	bool bOtherStuffToCleanup = false;
@@ -107,7 +108,7 @@ void KviSharedFilesManager::cleanup()
 	{
 		KviPointerList<KviSharedFile> tmp;
 		tmp.setAutoDelete(false);
-		for(KviSharedFile * o = l->first();o;o = l->next())
+		for(KviSharedFile * o = l->first(); o; o = l->next())
 		{
 			if(o->expireTime() > 0)
 			{
@@ -115,12 +116,14 @@ void KviSharedFilesManager::cleanup()
 				{
 					tmp.append(o);
 					//bChanged = true;
-				} else {
+				}
+				else
+				{
 					bOtherStuffToCleanup = true;
 				}
 			}
 		}
-		for(KviSharedFile * fo = tmp.first();fo;fo = tmp.next())
+		for(KviSharedFile * fo = tmp.first(); fo; fo = tmp.next())
 		{
 			l->removeRef(fo);
 			emit sharedFileRemoved(fo);
@@ -131,10 +134,11 @@ void KviSharedFilesManager::cleanup()
 		++it;
 	}
 
-	for(QString * pDyingKey = lDying.first();pDyingKey;pDyingKey = lDying.next())
+	for(QString * pDyingKey = lDying.first(); pDyingKey; pDyingKey = lDying.next())
 		m_pSharedListDict->remove(*pDyingKey);
 
-	if(!bOtherStuffToCleanup)m_pCleanupTimer->stop();
+	if(!bOtherStuffToCleanup)
+		m_pCleanupTimer->stop();
 	//if(bChanged)emit sharedFilesChanged();
 }
 
@@ -147,7 +151,7 @@ void KviSharedFilesManager::clear()
 void KviSharedFilesManager::doInsert(KviSharedFileList * l, KviSharedFile * o)
 {
 	int index = 0;
-	for(KviSharedFile * fo =l->first();fo;fo = l->next())
+	for(KviSharedFile * fo = l->first(); fo; fo = l->next())
 	{
 		if(o->wildcardCount() > 0)
 		{
@@ -159,9 +163,11 @@ void KviSharedFilesManager::doInsert(KviSharedFileList * l, KviSharedFile * o)
 				if(fo->nonWildcardCount() < o->nonWildcardCount())
 				{
 					// ok...the new one has more non-wildcards, insert
-					l->insert(index,o);
+					l->insert(index, o);
 					return;
-				} else {
+				}
+				else
+				{
 					if(o->nonWildcardCount() == fo->nonWildcardCount())
 					{
 						// the same number of non-wildcards
@@ -169,18 +175,20 @@ void KviSharedFilesManager::doInsert(KviSharedFileList * l, KviSharedFile * o)
 						if(o->wildcardCount() < fo->wildcardCount())
 						{
 							// the new one has less wildcards... goes first
-							l->insert(index,o);
+							l->insert(index, o);
 							return;
 						} // else the same number of wildcards and non-wildcards...skip
-					} // else the existing one has more non-wildcards...skip
+					}     // else the existing one has more non-wildcards...skip
 				}
 			} // else the current has no wildcards...skip
-		} else {
+		}
+		else
+		{
 			// the new mask has no wildcards....
 			if(fo->wildcardCount() > 0)
 			{
 				// current one has wildcards...insert
-				l->insert(index,o);
+				l->insert(index, o);
 				return;
 			}
 			// the current one has no wildcards...
@@ -188,7 +196,7 @@ void KviSharedFilesManager::doInsert(KviSharedFileList * l, KviSharedFile * o)
 			if(fo->maskLength() < o->maskLength())
 			{
 				// the current one is shorter than the new one...insert
-				l->insert(index,o);
+				l->insert(index, o);
 				return;
 			} // else current one is longer...skip
 		}
@@ -205,20 +213,21 @@ void KviSharedFilesManager::addSharedFile(KviSharedFile * f)
 	{
 		l = new KviSharedFileList;
 		l->setAutoDelete(true);
-		m_pSharedListDict->replace(f->name(),l);
+		m_pSharedListDict->replace(f->name(), l);
 	}
 
-	doInsert(l,f);
+	doInsert(l, f);
 
 	if(((int)f->expireTime()) > 0)
 	{
-		if(!m_pCleanupTimer->isActive())m_pCleanupTimer->start(60000);
+		if(!m_pCleanupTimer->isActive())
+			m_pCleanupTimer->start(60000);
 	}
 
 	emit sharedFileAdded(f);
 }
 
-KviSharedFile * KviSharedFilesManager::addSharedFile(const QString &szName,const QString &szAbsPath,const QString &szMask,int timeoutInSecs)
+KviSharedFile * KviSharedFilesManager::addSharedFile(const QString & szName, const QString & szAbsPath, const QString & szMask, int timeoutInSecs)
 {
 	QFileInfo inf(szAbsPath);
 	if(inf.exists() && inf.isFile() && inf.isReadable() && (inf.size() > 0))
@@ -229,66 +238,77 @@ KviSharedFile * KviSharedFilesManager::addSharedFile(const QString &szName,const
 		{
 			l = new KviSharedFileList;
 			l->setAutoDelete(true);
-			m_pSharedListDict->replace(szName,l);
+			m_pSharedListDict->replace(szName, l);
 		}
 
 		// Now insert
-		KviSharedFile * o = new KviSharedFile(szName,szAbsPath,szMask,timeoutInSecs > 0 ? (((int)(time(0))) + timeoutInSecs) : 0,inf.size());
+		KviSharedFile * o = new KviSharedFile(szName, szAbsPath, szMask, timeoutInSecs > 0 ? (((int)(time(0))) + timeoutInSecs) : 0, inf.size());
 
-		doInsert(l,o);
+		doInsert(l, o);
 
 		if(((int)o->expireTime()) > 0)
 		{
-			if(!m_pCleanupTimer->isActive())m_pCleanupTimer->start(60000);
+			if(!m_pCleanupTimer->isActive())
+				m_pCleanupTimer->start(60000);
 		}
 
 		emit sharedFileAdded(o);
 
 		return o;
-	} else {
-		qDebug("File %s unreadable: can't add offer",szAbsPath.toUtf8().data());
+	}
+	else
+	{
+		qDebug("File %s unreadable: can't add offer", szAbsPath.toUtf8().data());
 		return 0;
 	}
 }
 
-KviSharedFile * KviSharedFilesManager::lookupSharedFile(const QString &szName,KviIrcMask * mask,unsigned int uFileSize)
+KviSharedFile * KviSharedFilesManager::lookupSharedFile(const QString & szName, KviIrcMask * mask, unsigned int uFileSize)
 {
 	KviSharedFileList * l = m_pSharedListDict->find(szName);
-	if(!l)return 0;
+	if(!l)
+		return 0;
 
-	for(KviSharedFile * o = l->first();o;o = l->next())
+	for(KviSharedFile * o = l->first(); o; o = l->next())
 	{
 		bool bMatch;
 		if(mask)
 		{
 			KviIrcMask umask(o->userMask());
 			bMatch = mask->matchedBy(umask);
-		} else bMatch = KviQString::equalCS(o->userMask(),"*!*@*");
+		}
+		else
+			bMatch = KviQString::equalCS(o->userMask(), "*!*@*");
 		if(bMatch)
 		{
 			if(uFileSize > 0)
 			{
-				if(uFileSize == o->fileSize())return o;
-			} else return o;
+				if(uFileSize == o->fileSize())
+					return o;
+			}
+			else
+				return o;
 		}
 	}
 
 	return 0;
 }
-bool KviSharedFilesManager::removeSharedFile(const QString &szName,const QString &szMask,unsigned int uFileSize)
+bool KviSharedFilesManager::removeSharedFile(const QString & szName, const QString & szMask, unsigned int uFileSize)
 {
 	KviSharedFileList * l = m_pSharedListDict->find(szName);
-	if(!l)return false;
-	for(KviSharedFile * o = l->first();o;o = l->next())
+	if(!l)
+		return false;
+	for(KviSharedFile * o = l->first(); o; o = l->next())
 	{
-		if(KviQString::equalCI(szMask,o->userMask()))
+		if(KviQString::equalCI(szMask, o->userMask()))
 		{
 			bool bMatch = uFileSize > 0 ? uFileSize == o->fileSize() : true;
 			if(bMatch)
 			{
 				QString save = szName; // <-- szName MAY Be a pointer to o->name()
 				l->removeRef(o);
-				if(l->count() == 0)m_pSharedListDict->remove(save);
+				if(l->count() == 0)
+					m_pSharedListDict->remove(save);
 				emit sharedFileRemoved(o);
 				return true;
 			}
@@ -297,17 +317,19 @@ bool KviSharedFilesManager::removeSharedFile(const QString &szName,const QString
 	return false;
 }
 
-bool KviSharedFilesManager::removeSharedFile(const QString &szName,KviSharedFile * off)
+bool KviSharedFilesManager::removeSharedFile(const QString & szName, KviSharedFile * off)
 {
 	KviSharedFileList * l = m_pSharedListDict->find(szName);
-	if(!l)return false;
-	for(KviSharedFile * o = l->first();o;o = l->next())
+	if(!l)
+		return false;
+	for(KviSharedFile * o = l->first(); o; o = l->next())
 	{
 		if(off == o)
 		{
 			QString save = szName; // <-- szName MAY Be a pointer to o->name()
 			l->removeRef(o);
-			if(l->count() == 0)m_pSharedListDict->remove(save);
+			if(l->count() == 0)
+				m_pSharedListDict->remove(save);
 			emit sharedFileRemoved(off);
 			return true;
 		}
@@ -315,33 +337,32 @@ bool KviSharedFilesManager::removeSharedFile(const QString &szName,KviSharedFile
 	return false;
 }
 
-
 void KviSharedFilesManager::load(const QString & szFilename)
 {
-	KviConfigurationFile cfg(szFilename,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szFilename, KviConfigurationFile::Read);
 	cfg.setGroup("PermanentFileOffers");
-	int iNum = cfg.readIntEntry("NEntries",0);
-	for(int i=0; i < iNum; i++)
+	int iNum = cfg.readIntEntry("NEntries", 0);
+	for(int i = 0; i < iNum; i++)
 	{
 		QString szTmp;
 		szTmp = QString("%1FName").arg(i);
-		QString szName = cfg.readEntry(szTmp,"");
+		QString szName = cfg.readEntry(szTmp, "");
 		szTmp = QString("%1FilePath").arg(i);
-		QString szPath = cfg.readEntry(szTmp,"");
+		QString szPath = cfg.readEntry(szTmp, "");
 		szTmp = QString("%1UserMask").arg(i);
-		QString szMask = cfg.readEntry(szTmp,"");
+		QString szMask = cfg.readEntry(szTmp, "");
 		if(!szMask.isEmpty() && !szPath.isEmpty() && !szName.isEmpty())
-			addSharedFile(szName,szPath,szMask,0);
+			addSharedFile(szName, szPath, szMask, 0);
 	}
 }
 
 void KviSharedFilesManager::save(const QString & szFilename)
 {
-	KviConfigurationFile cfg(szFilename,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(szFilename, KviConfigurationFile::Write);
 	cfg.clear();
 	cfg.setGroup("PermanentFileOffers");
 
-	KviPointerHashTableIterator<QString,KviSharedFileList> it(*m_pSharedListDict);
+	KviPointerHashTableIterator<QString, KviSharedFileList> it(*m_pSharedListDict);
 	int i = 0;
 	while(KviSharedFileList * pList = it.current())
 	{
@@ -351,15 +372,15 @@ void KviSharedFilesManager::save(const QString & szFilename)
 			{
 				QString szTmp;
 				szTmp = QString("%1FName").arg(i);
-				cfg.writeEntry(szTmp,it.currentKey());
+				cfg.writeEntry(szTmp, it.currentKey());
 				szTmp = QString("%1FilePath").arg(i);
-				cfg.writeEntry(szTmp,pFile->absFilePath());
+				cfg.writeEntry(szTmp, pFile->absFilePath());
 				szTmp = QString("%1UserMask").arg(i);
-				cfg.writeEntry(szTmp,pFile->userMask());
+				cfg.writeEntry(szTmp, pFile->userMask());
 				++i;
 			}
 		}
 		++it;
 	}
-	cfg.writeEntry("NEntries",i);
+	cfg.writeEntry("NEntries", i);
 }

@@ -40,7 +40,6 @@
 class KviNickServRuleSet;
 class KviIrcServer;
 
-
 /**
 * \class KviIrcNetwork
 * \brief Network handling class
@@ -48,6 +47,7 @@ class KviIrcServer;
 class KVILIB_API KviIrcNetwork : public KviHeapObject
 {
 	friend class KviIrcServerDataBase;
+
 public:
 	/**
 	* \brief Construct the network object
@@ -67,24 +67,26 @@ public:
 	* \brief Destroys the network object
 	*/
 	~KviIrcNetwork();
+
 protected:
-	QString              m_szName;
-	QString              m_szDescription;
-	QString              m_szEncoding;                /**< if empty, use system default */
-	QString              m_szTextEncoding;            /**< if empty, use system default */
-	QString              m_szNickName;                /**< preferred nick name */
-	QString              m_szAlternativeNickName;     /**< alternative nick name */
-	QString              m_szUserName;                /**< preferred user name */
-	QString              m_szRealName;                /**< preferred real name */
-	QString              m_szPass;                    /**< special password */
-	QString              m_szOnConnectCommand;        /**< the command to run on connect */
-	QString              m_szOnLoginCommand;          /**< the command to run after login */
-	QStringList        * m_pChannelList;              /**< Channels to auto join */
-	KviNickServRuleSet * m_pNickServRuleSet;          /**< set of nick serv rules */
-	bool                 m_bAutoConnect;              /**< autoconnect */
-	QString              m_szUserIdentityId;          /**< The user identity to use for this server: if empty then use the global primary identity moved from KviIrcServerDataBaseRecord */
+	QString m_szName;
+	QString m_szDescription;
+	QString m_szEncoding;                    /**< if empty, use system default */
+	QString m_szTextEncoding;                /**< if empty, use system default */
+	QString m_szNickName;                    /**< preferred nick name */
+	QString m_szAlternativeNickName;         /**< alternative nick name */
+	QString m_szUserName;                    /**< preferred user name */
+	QString m_szRealName;                    /**< preferred real name */
+	QString m_szPass;                        /**< special password */
+	QString m_szOnConnectCommand;            /**< the command to run on connect */
+	QString m_szOnLoginCommand;              /**< the command to run after login */
+	QStringList * m_pChannelList;            /**< Channels to auto join */
+	KviNickServRuleSet * m_pNickServRuleSet; /**< set of nick serv rules */
+	bool m_bAutoConnect;                     /**< autoconnect */
+	QString m_szUserIdentityId;              /**< The user identity to use for this server: if empty then use the global primary identity moved from KviIrcServerDataBaseRecord */
 	KviPointerList<KviIrcServer> * m_pServerList;
-	KviIrcServer                 * m_pCurrentServer;
+	KviIrcServer * m_pCurrentServer;
+
 public:
 	/**
 	* \brief Returns the name of the network
@@ -173,19 +175,19 @@ public:
 	* \brief Returns the list of channels with autojoin flag
 	* \return QStringList *
 	*/
-	inline QStringList * autoJoinChannelList(){ return m_pChannelList; };
+	inline QStringList * autoJoinChannelList() { return m_pChannelList; };
 
 	/**
 	* \brief Returns the list of channels with autojoin flag as a string
 	* \return const QString &
 	*/
-	inline const QString autoJoinChannelListAsString(){ return m_pChannelList ? m_pChannelList->join(",") : ""; };
+	inline const QString autoJoinChannelListAsString() { return m_pChannelList ? m_pChannelList->join(",") : ""; };
 
 	/**
 	* \brief Returns a set of rules for the NickServ
 	* \return KviNickServRuleSet *
 	*/
-	inline KviNickServRuleSet * nickServRuleSet(){ return m_pNickServRuleSet; };
+	inline KviNickServRuleSet * nickServRuleSet() { return m_pNickServRuleSet; };
 
 	/**
 	* \brief Sets the rules for NickServ
@@ -206,7 +208,7 @@ public:
 	* \param szName The name of the network
 	* \return void
 	*/
-	inline void setName(const QString & szName){ m_szName = szName; };
+	inline void setName(const QString & szName) { m_szName = szName; };
 
 	/**
 	* \brief Sets the encondig of the network
@@ -216,7 +218,7 @@ public:
 	* \param szEncoding The encoding of the network
 	* \return void
 	*/
-	inline void setEncoding(const QString & szEncoding){ m_szEncoding = szEncoding; };
+	inline void setEncoding(const QString & szEncoding) { m_szEncoding = szEncoding; };
 
 	/**
 	* \brief Sets the text encondig of the network
@@ -225,63 +227,63 @@ public:
 	* \param szEncoding The text encoding of the network
 	* \return void
 	*/
-	inline void setTextEncoding(const QString & szEncoding){ m_szTextEncoding = szEncoding; };
+	inline void setTextEncoding(const QString & szEncoding) { m_szTextEncoding = szEncoding; };
 
 	/**
 	* \brief Sets the description of the network
 	* \param szDescription The description of the network
 	* \return void
 	*/
-	inline void setDescription(const QString & szDescription){ m_szDescription = szDescription; };
+	inline void setDescription(const QString & szDescription) { m_szDescription = szDescription; };
 
 	/**
 	* \brief Sets the list of commands to run on network connection
 	* \param szCmd The commands list to run
 	* \return void
 	*/
-	inline void setOnConnectCommand(const QString & szCmd){ m_szOnConnectCommand = szCmd; };
+	inline void setOnConnectCommand(const QString & szCmd) { m_szOnConnectCommand = szCmd; };
 
 	/**
 	* \brief Sets the list of commands to run on network login
 	* \param szCmd The commands list to run
 	* \return void
 	*/
-	inline void setOnLoginCommand(const QString & szCmd){ m_szOnLoginCommand = szCmd; };
+	inline void setOnLoginCommand(const QString & szCmd) { m_szOnLoginCommand = szCmd; };
 
 	/**
 	* \brief Sets the nickname of the user associated to the network
 	* \param szNick The nickname
 	* \return void
 	*/
-	inline void setNickName(const QString & szNick){ m_szNickName = szNick; };
+	inline void setNickName(const QString & szNick) { m_szNickName = szNick; };
 
 	/**
 	* \brief Sets the alternative nickname of the user associated to the network
 	* \param szNick The nickname
 	* \return void
 	*/
-	inline void setAlternativeNickName(const QString & szNick){ m_szAlternativeNickName = szNick; };
+	inline void setAlternativeNickName(const QString & szNick) { m_szAlternativeNickName = szNick; };
 
 	/**
 	* \brief Sets the realname of the user associated to the network
 	* \param szReal The realname
 	* \return void
 	*/
-	inline void setRealName(const QString & szReal){ m_szRealName = szReal; };
+	inline void setRealName(const QString & szReal) { m_szRealName = szReal; };
 
 	/**
 	* \brief Sets the username of the user associated to the network
 	* \param szUser The username
 	* \return void
 	*/
-	inline void setUserName(const QString & szUser){ m_szUserName = szUser; };
+	inline void setUserName(const QString & szUser) { m_szUserName = szUser; };
 
 	/**
 	* \brief Sets the password of the user associated to the network
 	* \param szPass The password
 	* \return void
 	*/
-	inline void setPassword(const QString & szPass){ m_szPass = szPass; };
+	inline void setPassword(const QString & szPass) { m_szPass = szPass; };
 
 	/**
 	* \brief Sets the list of channels to mark for autojoin
@@ -302,20 +304,20 @@ public:
 	* \param bAutoConnect The state of the autoconnect flag
 	* \return void
 	*/
-	inline void setAutoConnect(bool bAutoConnect){ m_bAutoConnect = bAutoConnect; };
+	inline void setAutoConnect(bool bAutoConnect) { m_bAutoConnect = bAutoConnect; };
 
 	/**
 	* \brief Sets the user identity id of the user associated to the network
 	* \param szUserIdentityId The user identity
 	* \return void
 	*/
-	inline void setUserIdentityId(const QString & szUserIdentityId){ m_szUserIdentityId = szUserIdentityId; };
+	inline void setUserIdentityId(const QString & szUserIdentityId) { m_szUserIdentityId = szUserIdentityId; };
 
 	/**
 	* \brief Returns a list of servers associated to the network
 	* \return KviPointerList<KviIrcServer> *
 	*/
-	inline KviPointerList<KviIrcServer> * serverList(){ return m_pServerList; };
+	inline KviPointerList<KviIrcServer> * serverList() { return m_pServerList; };
 
 	/**
 	* \brief Returns the current server

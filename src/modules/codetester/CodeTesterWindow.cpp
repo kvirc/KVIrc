@@ -41,27 +41,25 @@
 #include <QLabel>
 #include <QMenu>
 
-
 extern KviPointerList<CodeTesterWindow> * g_pCodeTesterWindowList;
 
-
 CodeTesterWidget::CodeTesterWidget(QWidget * par)
-: QWidget(par)
+    : QWidget(par)
 {
 	setObjectName("code_tester");
 	QGridLayout * g = new QGridLayout(this);
 	m_pEditor = KviScriptEditor::createInstance(this);
-	g->addWidget(m_pEditor,0,0,1,4);
+	g->addWidget(m_pEditor, 0, 0, 1, 4);
 	//g->addMultiCellWidget(m_pEditor,0,0,0,3);
-	m_pExecuteButton = new QPushButton(__tr2qs_ctx("&Execute","editor"),this);
-	g->addWidget(m_pExecuteButton,1,3);
-	connect(m_pExecuteButton,SIGNAL(clicked()),this,SLOT(execute()));
+	m_pExecuteButton = new QPushButton(__tr2qs_ctx("&Execute", "editor"), this);
+	g->addWidget(m_pExecuteButton, 1, 3);
+	connect(m_pExecuteButton, SIGNAL(clicked()), this, SLOT(execute()));
 
-	m_pModeLabel = new QLabel(__tr2qs_ctx("Params:","editor"),this);
-	g->addWidget(m_pModeLabel,1,1);
+	m_pModeLabel = new QLabel(__tr2qs_ctx("Params:", "editor"), this);
+	g->addWidget(m_pModeLabel, 1, 1);
 	m_pParams = new QLineEdit(this);
-	m_pParams->setToolTip(__tr2qs_ctx("Here you can specify a semicolon-separated list of parameters that will be available in the code as $0, $1, $2, ..","editor"));
-	g->addWidget(m_pParams,1,2);
+	m_pParams->setToolTip(__tr2qs_ctx("Here you can specify a semicolon-separated list of parameters that will be available in the code as $0, $1, $2, ..", "editor"));
+	g->addWidget(m_pParams, 1, 2);
 }
 
 CodeTesterWidget::~CodeTesterWidget()
@@ -82,7 +80,7 @@ void CodeTesterWidget::execute()
 }
 
 CodeTesterWindow::CodeTesterWindow()
-: KviWindow(KviWindow::ScriptEditor,"codetester",0)
+    : KviWindow(KviWindow::ScriptEditor, "codetester", 0)
 {
 	g_pCodeTesterWindowList->append(this);
 
@@ -101,22 +99,22 @@ QPixmap * CodeTesterWindow::myIconPtr()
 
 void CodeTesterWindow::resizeEvent(QResizeEvent *)
 {
-	m_pTester->setGeometry(0,0,width(),height());
+	m_pTester->setGeometry(0, 0, width(), height());
 }
 
 void CodeTesterWindow::fillCaptionBuffers()
 {
-	m_szPlainTextCaption = __tr2qs_ctx("Script Tester","editor");
+	m_szPlainTextCaption = __tr2qs_ctx("Script Tester", "editor");
 }
 
-void CodeTesterWindow::getConfigGroupName(QString &szName)
+void CodeTesterWindow::getConfigGroupName(QString & szName)
 {
 	szName = "codetester";
 }
 
 void CodeTesterWindow::saveProperties(KviConfigurationFile *) //cfg
 {
-/*
+	/*
 #ifdef COMPILE_SCRIPTTOOLBAR
 	cfg->writeEntry("Sizes",m_pEditor->sizes());
 	cfg->writeEntry("LastRaw",m_pEditor->lastEditedRaw().ptr());
@@ -127,7 +125,7 @@ void CodeTesterWindow::saveProperties(KviConfigurationFile *) //cfg
 
 void CodeTesterWindow::loadProperties(KviConfigurationFile *) //cfg
 {
-/*
+	/*
 #ifdef COMPILE_SCRIPTTOOLBAR
 	QValueList<int> def;
 	def.append(20);

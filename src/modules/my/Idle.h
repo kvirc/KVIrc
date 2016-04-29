@@ -20,7 +20,6 @@
  *
  */
 
-
 #include "kvi_settings.h"
 
 #include <QObject>
@@ -51,7 +50,7 @@ private slots:
 
 private:
 	class Private;
-	Private *d;
+	Private * d;
 };
 
 class IdlePlatform
@@ -65,7 +64,7 @@ public:
 
 private:
 	class Private;
-	Private *d;
+	Private * d;
 };
 
 class Idle::Private

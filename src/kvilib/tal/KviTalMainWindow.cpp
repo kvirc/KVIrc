@@ -22,29 +22,26 @@
 //
 //=============================================================================
 
-
 #include "KviTalMainWindow.h"
 
 #ifdef COMPILE_KDE_SUPPORT
 
-	KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
-	: KMainWindow(pParent)
-	{
-		//setWindowTitle(pcName);
-		setObjectName(pcName);
-	}
+KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
+    : KMainWindow(pParent)
+{
+	//setWindowTitle(pcName);
+	setObjectName(pcName);
+}
 
 #else //!COMPILE_KDE_SUPPORT
-	KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
-	: QMainWindow(pParent)
-	{
-		setObjectName(pcName);
-	}
+KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
+    : QMainWindow(pParent)
+{
+	setObjectName(pcName);
+}
 
 #endif //!COMPILE_KDE_SUPPORT
 
 KviTalMainWindow::~KviTalMainWindow()
 {
 }
-
-

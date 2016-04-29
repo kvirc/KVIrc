@@ -36,56 +36,55 @@
 #include <QStringList>
 #include <QString>
 
-
 namespace KviStringConversion
 {
-	extern KVILIB_API void init(const QString& szGlobalDir,const QString& szLocalDir);
+	extern KVILIB_API void init(const QString & szGlobalDir, const QString & szLocalDir);
 
-	extern KVILIB_API void encodePath(QString& buffer);
-	extern KVILIB_API void decodePath(QString& buffer);
+	extern KVILIB_API void encodePath(QString & buffer);
+	extern KVILIB_API void decodePath(QString & buffer);
 
-	extern KVILIB_API void encodePath(QStringList& buffer);
-	extern KVILIB_API void decodePath(QStringList& buffer);
+	extern KVILIB_API void encodePath(QStringList & buffer);
+	extern KVILIB_API void decodePath(QStringList & buffer);
 
 	// bool <->
-	extern KVILIB_API void toString(const bool bValue,QString &buffer);
-	extern KVILIB_API bool fromString(const QString &szValue,bool &buffer);
+	extern KVILIB_API void toString(const bool bValue, QString & buffer);
+	extern KVILIB_API bool fromString(const QString & szValue, bool & buffer);
 
 	// int <-> QString
-	extern KVILIB_API void toString(const int iValue,QString &buffer);
-	extern KVILIB_API bool fromString(const QString &szValue,int &buffer);
+	extern KVILIB_API void toString(const int iValue, QString & buffer);
+	extern KVILIB_API bool fromString(const QString & szValue, int & buffer);
 
 	// uint <-> QString
-	extern KVILIB_API void toString(const unsigned int uValue,QString &buffer);
-	extern KVILIB_API bool fromString(const QString &szValue,unsigned int &buffer);
+	extern KVILIB_API void toString(const unsigned int uValue, QString & buffer);
+	extern KVILIB_API bool fromString(const QString & szValue, unsigned int & buffer);
 
 	// QRect <-> QString
-	extern KVILIB_API void toString(const QRect &rValue,QString &buffer);
-	extern KVILIB_API bool fromString(const QString &szValue,QRect &buffer);
+	extern KVILIB_API void toString(const QRect & rValue, QString & buffer);
+	extern KVILIB_API bool fromString(const QString & szValue, QRect & buffer);
 
 	// QString <-> QString (Null conversion)
-	extern KVILIB_API void toString(const QString &szValue,QString &buffer);
-	extern KVILIB_API bool fromString(const QString &szValue,QString &buffer);
+	extern KVILIB_API void toString(const QString & szValue, QString & buffer);
+	extern KVILIB_API bool fromString(const QString & szValue, QString & buffer);
 
 	// KviPixmap <-> QString
-	extern KVILIB_API void toString(const KviPixmap &pValue,QString &buffer);
-	extern KVILIB_API bool fromString(const QString &szValue,KviPixmap &buffer);
+	extern KVILIB_API void toString(const KviPixmap & pValue, QString & buffer);
+	extern KVILIB_API bool fromString(const QString & szValue, KviPixmap & buffer);
 
 	// QFont <-> QString
-	extern KVILIB_API void toString(const QFont &fValue,QString &buffer);
-	extern KVILIB_API bool fromString(const QString &szValue,QFont &buffer);
+	extern KVILIB_API void toString(const QFont & fValue, QString & buffer);
+	extern KVILIB_API bool fromString(const QString & szValue, QFont & buffer);
 
 	// KviMessageTypeSettings <-> QString
-	extern KVILIB_API void toString(const KviMessageTypeSettings &mValue,QString &buffer);
-	extern KVILIB_API bool fromString(const QString &szValue,KviMessageTypeSettings &buffer);
+	extern KVILIB_API void toString(const KviMessageTypeSettings & mValue, QString & buffer);
+	extern KVILIB_API bool fromString(const QString & szValue, KviMessageTypeSettings & buffer);
 
 	// QColor <-> QString
-	extern KVILIB_API void toString(const QColor &cValue,QString &buffer);
-	extern KVILIB_API bool fromString(const QString &szValue,QColor &buffer);
+	extern KVILIB_API void toString(const QColor & cValue, QString & buffer);
+	extern KVILIB_API bool fromString(const QString & szValue, QColor & buffer);
 
 	// QStringList <-> QString
-	extern KVILIB_API void toString(const QStringList &sValue,QString &buffer);
-	extern KVILIB_API bool fromString(const QString &szValue,QStringList &buffer);
+	extern KVILIB_API void toString(const QStringList & sValue, QString & buffer);
+	extern KVILIB_API bool fromString(const QString & szValue, QStringList & buffer);
 }
 
 #endif //!_KVI_STRINGCONVERSION_H_

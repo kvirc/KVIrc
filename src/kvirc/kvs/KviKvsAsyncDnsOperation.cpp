@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviKvsAsyncDnsOperation.h"
 #include "KviDnsResolver.h"
 #include "KviKvsScript.h"
@@ -36,25 +34,27 @@
 
 #include <QTimer>
 
-
-KviKvsAsyncDnsOperation::KviKvsAsyncDnsOperation(KviWindow * pWnd,QString &szQuery,KviDnsResolver::QueryType eType,KviKvsScript * pCallback,KviKvsVariant * pMagic)
-: KviKvsAsyncOperation(pWnd)
+KviKvsAsyncDnsOperation::KviKvsAsyncDnsOperation(KviWindow * pWnd, QString & szQuery, KviDnsResolver::QueryType eType, KviKvsScript * pCallback, KviKvsVariant * pMagic)
+    : KviKvsAsyncOperation(pWnd)
 {
 	m_pDns = new KviDnsResolver();
 	m_szQuery = szQuery;
 	m_eType = eType;
 	m_pCallback = pCallback;
 	m_pMagic = pMagic;
-	connect(m_pDns,SIGNAL(lookupDone(KviDnsResolver *)),this,SLOT(lookupTerminated(KviDnsResolver *)));
-	if(!m_pDns->lookup(szQuery,eType))
-		QTimer::singleShot(10,this,SLOT(dnsStartFailed()));
+	connect(m_pDns, SIGNAL(lookupDone(KviDnsResolver *)), this, SLOT(lookupTerminated(KviDnsResolver *)));
+	if(!m_pDns->lookup(szQuery, eType))
+		QTimer::singleShot(10, this, SLOT(dnsStartFailed()));
 }
 
 KviKvsAsyncDnsOperation::~KviKvsAsyncDnsOperation()
 {
-	if(m_pDns)delete m_pDns;
-	if(m_pMagic)delete m_pMagic;
-	if(m_pCallback)delete m_pCallback;
+	if(m_pDns)
+		delete m_pDns;
+	if(m_pMagic)
+		delete m_pMagic;
+	if(m_pCallback)
+		delete m_pCallback;
 }
 
 void KviKvsAsyncDnsOperation::dnsStartFailed()
@@ -65,7 +65,8 @@ void KviKvsAsyncDnsOperation::dnsStartFailed()
 void KviKvsAsyncDnsOperation::lookupTerminated(KviDnsResolver *)
 {
 	KviWindow * pWnd = window();
-	if(!g_pApp->windowExists(pWnd))pWnd = g_pActiveWindow;
+	if(!g_pApp->windowExists(pWnd))
+		pWnd = g_pActiveWindow;
 
 	if(m_pCallback)
 	{
@@ -78,7 +79,9 @@ void KviKvsAsyncDnsOperation::lookupTerminated(KviDnsResolver *)
 			params.append(new KviKvsVariant(m_pDns->errorString()));
 			params.append(new KviKvsVariant());
 			params.append(new KviKvsVariant(*m_pMagic));
-		} else {
+		}
+		else
+		{
 			QString szHostName = m_pDns->hostName();
 			QString * fi = m_pDns->ipAddressList()->first();
 
@@ -89,7 +92,7 @@ void KviKvsAsyncDnsOperation::lookupTerminated(KviDnsResolver *)
 			params.append(new KviKvsVariant(*m_pMagic));
 		}
 
-		m_pCallback->run(pWnd,&params,0,KviKvsScript::PreserveParams);
+		m_pCallback->run(pWnd, &params, 0, KviKvsScript::PreserveParams);
 
 		delete this;
 		return;
@@ -97,19 +100,21 @@ void KviKvsAsyncDnsOperation::lookupTerminated(KviDnsResolver *)
 
 	// we have no callback : output the results
 	QString szQuery = m_pDns->query();
-	pWnd->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("DNS Lookup result for query \"%Q\"","kvs"),&szQuery);
+	pWnd->output(KVI_OUT_HOSTLOOKUP, __tr2qs_ctx("DNS Lookup result for query \"%Q\"", "kvs"), &szQuery);
 
 	if(m_pDns->state() == KviDnsResolver::Failure)
 	{
 		QString strDescription(m_pDns->errorString());
-		pWnd->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("Error: %Q","kvs"),&strDescription);
-	} else {
+		pWnd->output(KVI_OUT_HOSTLOOKUP, __tr2qs_ctx("Error: %Q", "kvs"), &strDescription);
+	}
+	else
+	{
 		QString szHostName = m_pDns->hostName();
-		pWnd->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("Hostname: %Q","kvs"),&szHostName);
+		pWnd->output(KVI_OUT_HOSTLOOKUP, __tr2qs_ctx("Hostname: %Q", "kvs"), &szHostName);
 		int idx = 1;
-		for(QString * a = m_pDns->ipAddressList()->first();a;a = m_pDns->ipAddressList()->next())
+		for(QString * a = m_pDns->ipAddressList()->first(); a; a = m_pDns->ipAddressList()->next())
 		{
-			pWnd->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("IP address %d: %Q","kvs"),idx,a);
+			pWnd->output(KVI_OUT_HOSTLOOKUP, __tr2qs_ctx("IP address %d: %Q", "kvs"), idx, a);
 			idx++;
 		}
 	}

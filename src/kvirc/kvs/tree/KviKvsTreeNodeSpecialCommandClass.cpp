@@ -29,28 +29,28 @@
 #include "KviKvsObjectController.h"
 #include "KviKvsObjectClass.h"
 
-KviKvsTreeNodeSpecialCommandClassFunctionDefinition::KviKvsTreeNodeSpecialCommandClassFunctionDefinition(const QChar * pLocation,const QString &szName,const QString &szBuffer,const QString &szReminder,unsigned int uHandlerFlags)
-: KviKvsTreeNode(pLocation)
+KviKvsTreeNodeSpecialCommandClassFunctionDefinition::KviKvsTreeNodeSpecialCommandClassFunctionDefinition(const QChar * pLocation, const QString & szName, const QString & szBuffer, const QString & szReminder, unsigned int uHandlerFlags)
+    : KviKvsTreeNode(pLocation)
 {
 	m_uHandlerFlags = uHandlerFlags;
 	m_szName = szName;
-        m_szReminder = szReminder;
+	m_szReminder = szReminder;
 	m_szBuffer = szBuffer;
 }
 
 void KviKvsTreeNodeSpecialCommandClassFunctionDefinition::dump(const char * prefix)
 {
-	qDebug("%s SpecialCommandClassFunctionDefinition(%s)",prefix,m_szName.toUtf8().data());
-	qDebug("%s    (command buffer with %d characters)",prefix,m_szBuffer.length());
+	qDebug("%s SpecialCommandClassFunctionDefinition(%s)", prefix, m_szName.toUtf8().data());
+	qDebug("%s    (command buffer with %d characters)", prefix, m_szBuffer.length());
 }
 
-void KviKvsTreeNodeSpecialCommandClassFunctionDefinition::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSpecialCommandClassFunctionDefinition::contextDescription(QString & szBuffer)
 {
 	szBuffer = QString("Object Member Function Definition '%1'").arg(m_szName);
 }
 
-KviKvsTreeNodeSpecialCommandClass::KviKvsTreeNodeSpecialCommandClass(const QChar * pLocation,KviKvsTreeNodeDataList * pParams)
-: KviKvsTreeNodeSpecialCommand(pLocation,"class")
+KviKvsTreeNodeSpecialCommandClass::KviKvsTreeNodeSpecialCommandClass(const QChar * pLocation, KviKvsTreeNodeDataList * pParams)
+    : KviKvsTreeNodeSpecialCommand(pLocation, "class")
 {
 	m_pParams = pParams;
 	m_pParams->setParent(this);
@@ -70,68 +70,68 @@ void KviKvsTreeNodeSpecialCommandClass::addFunctionDefinition(KviKvsTreeNodeSpec
 	m_pFunctions->append(pDef);
 }
 
-
-void KviKvsTreeNodeSpecialCommandClass::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSpecialCommandClass::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Special Command 'class'";
 }
 
 void KviKvsTreeNodeSpecialCommandClass::dump(const char * prefix)
 {
-	qDebug("%s SpecialCommandClass",prefix);
+	qDebug("%s SpecialCommandClass", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pParams->dump(tmp.toUtf8().data());
-	for(KviKvsTreeNodeSpecialCommandClassFunctionDefinition * d = m_pFunctions->first();d;d = m_pFunctions->next())
+	for(KviKvsTreeNodeSpecialCommandClassFunctionDefinition * d = m_pFunctions->first(); d; d = m_pFunctions->next())
 		d->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariantList l;
-	if(!m_pParams->evaluate(c,&l))return false;
+	if(!m_pParams->evaluate(c, &l))
+		return false;
 
 	KviKvsVariant * pClassName = l.first();
 	if(!pClassName)
 	{
-		c->error(this,__tr2qs_ctx("Missing class name","kvs"));
+		c->error(this, __tr2qs_ctx("Missing class name", "kvs"));
 		return false;
 	}
 
-
-        KviKvsVariant * pBaseClassName = l.next();
+	KviKvsVariant * pBaseClassName = l.next();
 
 	QString szClassName;
 	QString szBaseClassName;
 	pClassName->asString(szClassName);
-        QRegExp re("[\\w:]+");
-        if(!re.exactMatch(szClassName))
-        {
-                 c->error(this,__tr2qs_ctx("Class names can contain only letters, digits, underscores and '::' namespace separators","kvs"));
-                 return false;
-        }
+	QRegExp re("[\\w:]+");
+	if(!re.exactMatch(szClassName))
+	{
+		c->error(this, __tr2qs_ctx("Class names can contain only letters, digits, underscores and '::' namespace separators", "kvs"));
+		return false;
+	}
 	if(pBaseClassName)
 		pBaseClassName->asString(szBaseClassName);
 
 	if(szClassName.isEmpty())
 	{
-		c->error(this,__tr2qs_ctx("Missing class name","kvs"));
+		c->error(this, __tr2qs_ctx("Missing class name", "kvs"));
 		return false;
 	}
 
-	if(szBaseClassName.isEmpty())szBaseClassName = "object";
+	if(szBaseClassName.isEmpty())
+		szBaseClassName = "object";
 
 	// avoid infinite recursion in loading the base class
-	if(KviQString::equalCI(szBaseClassName,szClassName))
+	if(KviQString::equalCI(szBaseClassName, szClassName))
 	{
-		c->error(__tr2qs_ctx("A class can't be a subclass of itself","kvs"));
+		c->error(__tr2qs_ctx("A class can't be a subclass of itself", "kvs"));
 		return false;
 	}
 
 	KviKvsObjectClass * pBaseClass = KviKvsKernel::instance()->objectController()->lookupClass(szBaseClassName);
 	if(!pBaseClass)
 	{
-		c->error(this,__tr2qs_ctx("Couln't find base class named '%Q'","kvs"),&szBaseClassName);
+		c->error(this, __tr2qs_ctx("Couln't find base class named '%Q'", "kvs"), &szBaseClassName);
 		return false;
 	}
 
@@ -139,26 +139,25 @@ bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 	KviKvsObjectClass * pClass = pBaseClass;
 	while(pClass)
 	{
-		if(KviQString::equalCI(pClass->name(),szClassName))
+		if(KviQString::equalCI(pClass->name(), szClassName))
 		{
-			c->error(this,__tr2qs_ctx("Detected a loop in the inheritance tree of the base class '%Q': redefine that class first","kvs"),&szBaseClassName);
+			c->error(this, __tr2qs_ctx("Detected a loop in the inheritance tree of the base class '%Q': redefine that class first", "kvs"), &szBaseClassName);
 			return false;
 		}
 		pClass = pClass->parentClass();
 	}
 
-	KviKvsObjectClass * pActualClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName,true);
+	KviKvsObjectClass * pActualClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName, true);
 	if(pActualClass)
 	{
-		c->error(this,__tr2qs_ctx("Can't override the builtin class '%Q'","kvs"),&szClassName);
+		c->error(this, __tr2qs_ctx("Can't override the builtin class '%Q'", "kvs"), &szClassName);
 		return false;
 	}
-	pActualClass = new KviKvsObjectClass(pBaseClass,szClassName,0,false);
+	pActualClass = new KviKvsObjectClass(pBaseClass, szClassName, 0, false);
 
-	for(KviKvsTreeNodeSpecialCommandClassFunctionDefinition * d = m_pFunctions->first();d;d = m_pFunctions->next())
+	for(KviKvsTreeNodeSpecialCommandClassFunctionDefinition * d = m_pFunctions->first(); d; d = m_pFunctions->next())
 	{
-                pActualClass->registerFunctionHandler(d->name(),d->buffer(),d->reminder(),d->handlerFlags());
+		pActualClass->registerFunctionHandler(d->name(), d->buffer(), d->reminder(), d->handlerFlags());
 	}
 	return true;
 }
-

@@ -52,7 +52,7 @@ int KviKvsVariantComparison::compareIntString(const KviKvsVariant * pV1, const K
 	// compare as strings instead
 	QString szString;
 	pV1->asString(szString);
-	return -1 * szString.compare(*(pV2->m_pData->m_u.pString),Qt::CaseInsensitive);
+	return -1 * szString.compare(*(pV2->m_pData->m_u.pString), Qt::CaseInsensitive);
 }
 
 int KviKvsVariantComparison::compareIntReal(const KviKvsVariant * pV1, const KviKvsVariant * pV2)
@@ -121,7 +121,7 @@ int KviKvsVariantComparison::compareRealString(const KviKvsVariant * pV1, const 
 	// compare as strings instead
 	QString szString;
 	pV1->asString(szString);
-	return -1 * szString.compare(*(pV2->m_pData->m_u.pString),Qt::CaseInsensitive);
+	return -1 * szString.compare(*(pV2->m_pData->m_u.pString), Qt::CaseInsensitive);
 }
 
 int KviKvsVariantComparison::compareRealBool(const KviKvsVariant * pV1, const KviKvsVariant * pV2)
@@ -237,7 +237,6 @@ int KviKvsVariantComparison::compareHObjectArray(const KviKvsVariant * pV1, cons
 	return pV1->m_pData->m_u.hObject == ((kvs_hobject_t)0) ? KviKvsVariantComparison::FirstGreater : KviKvsVariantComparison::Equal;
 }
 
-
 KviKvsVariant::KviKvsVariant()
 {
 	m_pData = 0;
@@ -337,50 +336,57 @@ KviKvsVariant::KviKvsVariant(const KviKvsVariant & variant)
 		m_pData->m_uRefs++;
 }
 
-#define DELETE_VARIANT_CONTENTS \
-	switch(m_pData->m_eType) \
-	{ \
-		case KviKvsVariantData::Array: \
-			delete m_pData->m_u.pArray; \
-		break; \
-		case KviKvsVariantData::Hash: \
-			delete m_pData->m_u.pHash; \
-		break; \
-		case KviKvsVariantData::String: \
+#define DELETE_VARIANT_CONTENTS          \
+	switch(m_pData->m_eType)             \
+	{                                    \
+		case KviKvsVariantData::Array:   \
+			delete m_pData->m_u.pArray;  \
+			break;                       \
+		case KviKvsVariantData::Hash:    \
+			delete m_pData->m_u.pHash;   \
+			break;                       \
+		case KviKvsVariantData::String:  \
 			delete m_pData->m_u.pString; \
-		break; \
-		case KviKvsVariantData::Real: \
-			delete m_pData->m_u.pReal; \
-		break; \
-		default: /* make gcc happy */ break; \
+			break;                       \
+		case KviKvsVariantData::Real:    \
+			delete m_pData->m_u.pReal;   \
+			break;                       \
+		default: /* make gcc happy */    \
+			break;                       \
 	}
 
-#define DETACH_CONTENTS \
-	if(m_pData) \
-	{ \
-		if(m_pData->m_uRefs <= 1) \
-		{ \
+#define DETACH_CONTENTS             \
+	if(m_pData)                     \
+	{                               \
+		if(m_pData->m_uRefs <= 1)   \
+		{                           \
 			DELETE_VARIANT_CONTENTS \
-			delete m_pData; \
-		} else { \
-			m_pData->m_uRefs--; \
-		} \
+			delete m_pData;         \
+		}                           \
+		else                        \
+		{                           \
+			m_pData->m_uRefs--;     \
+		}                           \
 	}
 
-#define RENEW_VARIANT_DATA \
-	if(m_pData) \
-	{ \
-		if(m_pData->m_uRefs > 1) \
-		{ \
-			m_pData->m_uRefs--; \
+#define RENEW_VARIANT_DATA                   \
+	if(m_pData)                              \
+	{                                        \
+		if(m_pData->m_uRefs > 1)             \
+		{                                    \
+			m_pData->m_uRefs--;              \
 			m_pData = new KviKvsVariantData; \
-			m_pData->m_uRefs = 1; \
-		} else { \
-			DELETE_VARIANT_CONTENTS \
-		} \
-	} else { \
-		m_pData = new KviKvsVariantData; \
-		m_pData->m_uRefs = 1; \
+			m_pData->m_uRefs = 1;            \
+		}                                    \
+		else                                 \
+		{                                    \
+			DELETE_VARIANT_CONTENTS          \
+		}                                    \
+	}                                        \
+	else                                     \
+	{                                        \
+		m_pData = new KviKvsVariantData;     \
+		m_pData->m_uRefs = 1;                \
 	}
 
 KviKvsVariant::~KviKvsVariant()
@@ -460,7 +466,9 @@ void KviKvsVariant::setNothing()
 		{
 			DELETE_VARIANT_CONTENTS
 			delete m_pData;
-		} else {
+		}
+		else
+		{
 			// just detach
 			m_pData->m_uRefs--;
 		}
@@ -476,17 +484,18 @@ bool KviKvsVariant::isEmpty() const
 	{
 		case KviKvsVariantData::String:
 			return m_pData->m_u.pString->isEmpty();
-		break;
+			break;
 		case KviKvsVariantData::Array:
 			return m_pData->m_u.pArray->isEmpty();
-		break;
+			break;
 		case KviKvsVariantData::Hash:
 			return m_pData->m_u.pHash->isEmpty();
-		break;
+			break;
 		case KviKvsVariantData::HObject:
 			return m_pData->m_u.hObject == 0;
-		break;
-		default: /* make gcc happy */ break;
+			break;
+		default: /* make gcc happy */
+			break;
 	}
 	return false;
 }
@@ -499,7 +508,7 @@ bool KviKvsVariant::asBoolean() const
 	{
 		case KviKvsVariantData::Boolean:
 			return m_pData->m_u.bBoolean;
-		break;
+			break;
 		case KviKvsVariantData::String:
 		{
 			if(m_pData->m_u.pString->isEmpty())
@@ -507,7 +516,7 @@ bool KviKvsVariant::asBoolean() const
 
 			// check integer or real values
 			bool bOk;
-			kvs_int_t iVal = (kvs_int_t)KviQString::toI64(*(m_pData->m_u.pString),&bOk);
+			kvs_int_t iVal = (kvs_int_t)KviQString::toI64(*(m_pData->m_u.pString), &bOk);
 			if(bOk)
 				return iVal;
 			kvs_real_t dVal = m_pData->m_u.pString->toDouble(&bOk);
@@ -519,22 +528,23 @@ bool KviKvsVariant::asBoolean() const
 		break;
 		case KviKvsVariantData::Integer:
 			return m_pData->m_u.iInt;
-		break;
+			break;
 		case KviKvsVariantData::Real:
 			return *(m_pData->m_u.pReal) != 0.0;
-		break;
+			break;
 		case KviKvsVariantData::Array:
 			return !(m_pData->m_u.pArray->isEmpty());
-		break;
+			break;
 		case KviKvsVariantData::Hash:
 			return !(m_pData->m_u.pHash->isEmpty());
-		break;
+			break;
 		case KviKvsVariantData::HObject:
 			return m_pData->m_u.hObject;
-		break;
-		default: /* make gcc happy */ break;
+			break;
+		default: /* make gcc happy */
+			break;
 	}
-	qDebug("WARNING: invalid variant type %d in KviKvsVariant::asBoolean()",m_pData->m_eType);
+	qDebug("WARNING: invalid variant type %d in KviKvsVariant::asBoolean()", m_pData->m_eType);
 	return false;
 }
 
@@ -551,7 +561,7 @@ bool KviKvsVariant::asHObject(kvs_hobject_t & hObject) const
 		case KviKvsVariantData::HObject:
 			hObject = m_pData->m_u.hObject;
 			return true;
-		break;
+			break;
 		case KviKvsVariantData::Integer:
 			if(m_pData->m_u.iInt == 0)
 			{
@@ -559,7 +569,7 @@ bool KviKvsVariant::asHObject(kvs_hobject_t & hObject) const
 				return true;
 			}
 			return false;
-		break;
+			break;
 		case KviKvsVariantData::String:
 			if(*(m_pData->m_u.pString) == "0")
 			{
@@ -567,14 +577,15 @@ bool KviKvsVariant::asHObject(kvs_hobject_t & hObject) const
 				return true;
 			}
 			return false;
-		break;
+			break;
 		case KviKvsVariantData::Boolean:
 			if(!(m_pData->m_u.bBoolean))
 			{
 				hObject = 0;
 				return true;
 			}
-		default: /* make gcc happy */ break;
+		default: /* make gcc happy */
+			break;
 	}
 	return false;
 }
@@ -654,35 +665,35 @@ void KviKvsVariant::castToArray(KviKvsArrayCast * pCast) const
 {
 	if(!m_pData)
 	{
-		pCast->set(new KviKvsArray(),true);
+		pCast->set(new KviKvsArray(), true);
 		return;
 	}
 
 	switch(m_pData->m_eType)
 	{
 		case KviKvsVariantData::Array:
-			pCast->set(m_pData->m_u.pArray,false);
-		break;
+			pCast->set(m_pData->m_u.pArray, false);
+			break;
 		case KviKvsVariantData::Hash:
 		{
-			KviPointerHashTableIterator<QString,KviKvsVariant> it(*(m_pData->m_u.pHash->dict()));
+			KviPointerHashTableIterator<QString, KviKvsVariant> it(*(m_pData->m_u.pHash->dict()));
 			KviKvsArray * pArray = new KviKvsArray();
 			kvs_int_t idx = 0;
 			while(KviKvsVariant * pVariant = it.current())
 			{
-				pArray->set(idx,new KviKvsVariant(*pVariant));
+				pArray->set(idx, new KviKvsVariant(*pVariant));
 				++it;
 				idx++;
 			}
-			pCast->set(pArray,true);
+			pCast->set(pArray, true);
 		}
 		break;
 		default:
 		{
 			// other scalars
 			KviKvsArray * pArray = new KviKvsArray();
-			pArray->set(0,new KviKvsVariant(*this));
-			pCast->set(pArray,true);
+			pArray->set(0, new KviKvsVariant(*this));
+			pCast->set(pArray, true);
 		}
 		break;
 	}
@@ -700,15 +711,15 @@ void KviKvsVariant::convertToArray()
 	{
 		case KviKvsVariantData::Array:
 			return;
-		break;
+			break;
 		case KviKvsVariantData::Hash:
 		{
-			KviPointerHashTableIterator<QString,KviKvsVariant> it(*(m_pData->m_u.pHash->dict()));
+			KviPointerHashTableIterator<QString, KviKvsVariant> it(*(m_pData->m_u.pHash->dict()));
 			KviKvsArray * pArray = new KviKvsArray();
 			kvs_int_t idx = 0;
 			while(KviKvsVariant * pVariant = it.current())
 			{
-				pArray->set(idx,new KviKvsVariant(*pVariant));
+				pArray->set(idx, new KviKvsVariant(*pVariant));
 				++it;
 				idx++;
 			}
@@ -719,7 +730,7 @@ void KviKvsVariant::convertToArray()
 		{
 			// other scalars
 			KviKvsArray * pArray = new KviKvsArray();
-			pArray->set(0,new KviKvsVariant(*this));
+			pArray->set(0, new KviKvsVariant(*this));
 			setArray(pArray);
 		}
 		break;
@@ -735,29 +746,29 @@ bool KviKvsVariant::asInteger(kvs_int_t & iVal) const
 		case KviKvsVariantData::Integer:
 			iVal = m_pData->m_u.iInt;
 			return true;
-		break;
+			break;
 		case KviKvsVariantData::String:
 		{
 			bool bOk;
-			iVal = (kvs_int_t)KviQString::toI64(*(m_pData->m_u.pString),&bOk);
+			iVal = (kvs_int_t)KviQString::toI64(*(m_pData->m_u.pString), &bOk);
 			return bOk;
 		}
 		break;
 		case KviKvsVariantData::Real:
 			// FIXME: this truncates the value!
-			iVal = (kvs_int_t)*(m_pData->m_u.pReal);
+			iVal = (kvs_int_t) * (m_pData->m_u.pReal);
 			return true;
-		break;
+			break;
 		case KviKvsVariantData::Boolean:
 			iVal = m_pData->m_u.bBoolean ? 1 : 0;
 			return true;
-		break;
+			break;
 		//case KviKvsVariantData::HObject: <-- light casts from objects to integer are not valid
 		//	iVal = m_pData->m_u.hObject ? 1 : 0;
 		//	return true;
 		//break;
 		default: /* make gcc happy */
-		break;
+			break;
 	}
 	return false;
 }
@@ -773,17 +784,17 @@ void KviKvsVariant::castToInteger(kvs_int_t & iVal) const
 	{
 		case KviKvsVariantData::Integer:
 			iVal = m_pData->m_u.iInt;
-		break;
+			break;
 		case KviKvsVariantData::Boolean:
 			iVal = m_pData->m_u.bBoolean ? 1 : 0;
-		break;
+			break;
 		case KviKvsVariantData::HObject:
 			iVal = m_pData->m_u.hObject ? 1 : 0;
-		break;
+			break;
 		case KviKvsVariantData::String:
 		{
 			bool bOk;
-			iVal = (kvs_int_t)KviQString::toI64(*(m_pData->m_u.pString),&bOk);
+			iVal = (kvs_int_t)KviQString::toI64(*(m_pData->m_u.pString), &bOk);
 			if(bOk)
 				return;
 			iVal = m_pData->m_u.pString->length();
@@ -791,17 +802,17 @@ void KviKvsVariant::castToInteger(kvs_int_t & iVal) const
 		break;
 		case KviKvsVariantData::Real:
 			// FIXME: this truncates the value!
-			iVal = (kvs_int_t)*(m_pData->m_u.pReal);
-		break;
+			iVal = (kvs_int_t) * (m_pData->m_u.pReal);
+			break;
 		case KviKvsVariantData::Array:
 			iVal = m_pData->m_u.pArray->size();
-		break;
+			break;
 		case KviKvsVariantData::Hash:
 			iVal = m_pData->m_u.pHash->size();
-		break;
+			break;
 		default: /* make gcc happy */
 			iVal = 0;
-		break;
+			break;
 	}
 }
 
@@ -814,7 +825,7 @@ bool KviKvsVariant::asReal(kvs_real_t & dVal) const
 		case KviKvsVariantData::Integer:
 			dVal = m_pData->m_u.iInt;
 			return true;
-		break;
+			break;
 		case KviKvsVariantData::String:
 		{
 			bool bOk;
@@ -825,12 +836,13 @@ bool KviKvsVariant::asReal(kvs_real_t & dVal) const
 		case KviKvsVariantData::Real:
 			dVal = *(m_pData->m_u.pReal);
 			return true;
-		break;
+			break;
 		case KviKvsVariantData::Boolean:
 			dVal = m_pData->m_u.bBoolean ? 1.0 : 0.0;
 			return true;
-		break;
-		default: /* by default we make gcc happy */ break;
+			break;
+		default: /* by default we make gcc happy */
+			break;
 	}
 	return false;
 }
@@ -846,28 +858,32 @@ void KviKvsVariant::asString(QString & szBuffer) const
 	{
 		case KviKvsVariantData::String:
 			szBuffer = *(m_pData->m_u.pString);
-		break;
+			break;
 		case KviKvsVariantData::Array:
-			szBuffer = QString(); m_pData->m_u.pArray->appendAsString(szBuffer);
-		break;
+			szBuffer = QString();
+			m_pData->m_u.pArray->appendAsString(szBuffer);
+			break;
 		case KviKvsVariantData::Hash:
-			szBuffer = QString(); m_pData->m_u.pHash->appendAsString(szBuffer);
-		break;
+			szBuffer = QString();
+			m_pData->m_u.pHash->appendAsString(szBuffer);
+			break;
 		case KviKvsVariantData::Integer:
 			szBuffer.setNum(m_pData->m_u.iInt);
-		break;
+			break;
 		case KviKvsVariantData::Real:
 			szBuffer.setNum(*(m_pData->m_u.pReal));
-		break;
+			break;
 		case KviKvsVariantData::Boolean:
-			szBuffer.setNum(m_pData->m_u.bBoolean ? 1 : 0); break;
+			szBuffer.setNum(m_pData->m_u.bBoolean ? 1 : 0);
+			break;
 		case KviKvsVariantData::HObject:
 			if(m_pData->m_u.hObject)
-				szBuffer = QString("object[%1]").arg((uintptr_t)m_pData->m_u.hObject,0,16);
+				szBuffer = QString("object[%1]").arg((uintptr_t)m_pData->m_u.hObject, 0, 16);
 			else
 				szBuffer = "null-object";
-		break;
-		default: /* make gcc happy */ break;
+			break;
+		default: /* make gcc happy */
+			break;
 	}
 }
 
@@ -879,26 +895,27 @@ void KviKvsVariant::appendAsString(QString & szBuffer) const
 	{
 		case KviKvsVariantData::String:
 			szBuffer.append(*(m_pData->m_u.pString));
-		break;
+			break;
 		case KviKvsVariantData::Array:
 			m_pData->m_u.pArray->appendAsString(szBuffer);
-		break;
+			break;
 		case KviKvsVariantData::Hash:
 			m_pData->m_u.pHash->appendAsString(szBuffer);
-		break;
+			break;
 		case KviKvsVariantData::Integer:
-			KviQString::appendNumber(szBuffer,m_pData->m_u.iInt);
-		break;
+			KviQString::appendNumber(szBuffer, m_pData->m_u.iInt);
+			break;
 		case KviKvsVariantData::Real:
-			KviQString::appendNumber(szBuffer,*(m_pData->m_u.pReal));
-		break;
+			KviQString::appendNumber(szBuffer, *(m_pData->m_u.pReal));
+			break;
 		case KviKvsVariantData::Boolean:
-			KviQString::appendNumber(szBuffer,m_pData->m_u.bBoolean ? 1 : 0);
-		break;
+			KviQString::appendNumber(szBuffer, m_pData->m_u.bBoolean ? 1 : 0);
+			break;
 		case KviKvsVariantData::HObject:
 			szBuffer.append(m_pData->m_u.hObject ? "object" : "null-object");
-		break;
-		default: /* make gcc happy */ break;
+			break;
+		default: /* make gcc happy */
+			break;
 	}
 }
 
@@ -906,33 +923,34 @@ void KviKvsVariant::dump(const char * pcPrefix) const
 {
 	if(!m_pData)
 	{
-		qDebug("%s Nothing [this=0x%" PRIxPTR "]",pcPrefix,(uintptr_t)this);
+		qDebug("%s Nothing [this=0x%" PRIxPTR "]", pcPrefix, (uintptr_t) this);
 		return;
 	}
 	switch(m_pData->m_eType)
 	{
 		case KviKvsVariantData::String:
-			qDebug("%s String(%s) [this=0x%" PRIxPTR "]",pcPrefix,m_pData->m_u.pString->toUtf8().data(),(uintptr_t)this);
-		break;
+			qDebug("%s String(%s) [this=0x%" PRIxPTR "]", pcPrefix, m_pData->m_u.pString->toUtf8().data(), (uintptr_t) this);
+			break;
 		case KviKvsVariantData::Array:
-			qDebug("%s Array(ptr=0x%" PRIxPTR ") [this=0x%" PRIxPTR "]",pcPrefix,(uintptr_t)m_pData->m_u.pArray,(uintptr_t)this);
-		break;
+			qDebug("%s Array(ptr=0x%" PRIxPTR ") [this=0x%" PRIxPTR "]", pcPrefix, (uintptr_t)m_pData->m_u.pArray, (uintptr_t) this);
+			break;
 		case KviKvsVariantData::Hash:
-			qDebug("%s Hash(ptr=0x%" PRIxPTR ",dict=0x%" PRIxPTR ") [this=0x%" PRIxPTR "]",pcPrefix,(uintptr_t)m_pData->m_u.pHash,(uintptr_t)m_pData->m_u.pHash->dict(),(uintptr_t)this);
-		break;
+			qDebug("%s Hash(ptr=0x%" PRIxPTR ",dict=0x%" PRIxPTR ") [this=0x%" PRIxPTR "]", pcPrefix, (uintptr_t)m_pData->m_u.pHash, (uintptr_t)m_pData->m_u.pHash->dict(), (uintptr_t) this);
+			break;
 		case KviKvsVariantData::Integer:
-			qDebug("%s Integer(%d) [this=0x%" PRIxPTR "]",pcPrefix,(int) m_pData->m_u.iInt,(uintptr_t)this);
-		break;
+			qDebug("%s Integer(%d) [this=0x%" PRIxPTR "]", pcPrefix, (int)m_pData->m_u.iInt, (uintptr_t) this);
+			break;
 		case KviKvsVariantData::Real:
-			qDebug("%s Real(%f) [this=0x%" PRIxPTR "]",pcPrefix,*(m_pData->m_u.pReal),(uintptr_t)this);
-		break;
+			qDebug("%s Real(%f) [this=0x%" PRIxPTR "]", pcPrefix, *(m_pData->m_u.pReal), (uintptr_t) this);
+			break;
 		case KviKvsVariantData::Boolean:
-			qDebug("%s Boolean(%s) [this=0x%" PRIxPTR "]",pcPrefix,m_pData->m_u.bBoolean ? "true" : "false",(uintptr_t)this);
-		break;
+			qDebug("%s Boolean(%s) [this=0x%" PRIxPTR "]", pcPrefix, m_pData->m_u.bBoolean ? "true" : "false", (uintptr_t) this);
+			break;
 		case KviKvsVariantData::HObject:
-			qDebug("%s HObject(%" PRIxPTR ") [this=0x%" PRIxPTR "]",pcPrefix,(uintptr_t)m_pData->m_u.hObject,(uintptr_t)this);
-		break;
-		default: /* make gcc happy */ break;
+			qDebug("%s HObject(%" PRIxPTR ") [this=0x%" PRIxPTR "]", pcPrefix, (uintptr_t)m_pData->m_u.hObject, (uintptr_t) this);
+			break;
+		default: /* make gcc happy */
+			break;
 	}
 }
 
@@ -977,28 +995,28 @@ void KviKvsVariant::getTypeName(QString & szBuffer) const
 	{
 		case KviKvsVariantData::String:
 			szBuffer = "string";
-		break;
+			break;
 		case KviKvsVariantData::Hash:
 			szBuffer = "hash";
-		break;
+			break;
 		case KviKvsVariantData::Array:
 			szBuffer = "array";
-		break;
+			break;
 		case KviKvsVariantData::Real:
 			szBuffer = "real";
-		break;
+			break;
 		case KviKvsVariantData::Integer:
 			szBuffer = "integer";
-		break;
+			break;
 		case KviKvsVariantData::Boolean:
 			szBuffer = "boolean";
-		break;
+			break;
 		case KviKvsVariantData::HObject:
 			szBuffer = "hobject";
-		break;
+			break;
 		default:
 			szBuffer = "internal_error";
-		break;
+			break;
 	}
 }
 
@@ -1010,13 +1028,13 @@ bool KviKvsVariant::isEqualToNothing() const
 	{
 		case KviKvsVariantData::HObject:
 			return (m_pData->m_u.hObject == (kvs_hobject_t)0);
-		break;
+			break;
 		case KviKvsVariantData::Integer:
 			return (m_pData->m_u.iInt == 0);
-		break;
+			break;
 		case KviKvsVariantData::Real:
 			return (*(m_pData->m_u.pReal) == 0.0);
-		break;
+			break;
 		case KviKvsVariantData::String:
 		{
 			if(m_pData->m_u.pString->isEmpty())
@@ -1029,15 +1047,15 @@ bool KviKvsVariant::isEqualToNothing() const
 		break;
 		case KviKvsVariantData::Boolean:
 			return !m_pData->m_u.bBoolean;
-		break;
+			break;
 		case KviKvsVariantData::Hash:
 			return m_pData->m_u.pHash->isEmpty();
-		break;
+			break;
 		case KviKvsVariantData::Array:
 			return m_pData->m_u.pArray->isEmpty();
-		break;
+			break;
 		default:
-		break;
+			break;
 	}
 
 	return false;
@@ -1067,93 +1085,93 @@ int KviKvsVariant::compare(const KviKvsVariant * pOther, bool bPreferNumeric) co
 					if(m_pData->m_u.hObject == ((kvs_hobject_t)0))
 						return CMP_OTHERGREATER;
 					return CMP_THISGREATER;
-				break;
+					break;
 				case KviKvsVariantData::Integer:
-					return -1 * KviKvsVariantComparison::compareIntHObject(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareIntHObject(pOther, this);
+					break;
 				case KviKvsVariantData::Real:
-					return -1 * KviKvsVariantComparison::compareRealHObject(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareRealHObject(pOther, this);
+					break;
 				case KviKvsVariantData::String:
-					return -1 * KviKvsVariantComparison::compareStringHObject(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareStringHObject(pOther, this);
+					break;
 				case KviKvsVariantData::Boolean:
-					return -1 * KviKvsVariantComparison::compareBoolHObject(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareBoolHObject(pOther, this);
+					break;
 				case KviKvsVariantData::Hash:
-					return KviKvsVariantComparison::compareHObjectHash(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareHObjectHash(this, pOther);
+					break;
 				case KviKvsVariantData::Array:
-					return KviKvsVariantComparison::compareHObjectArray(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareHObjectArray(this, pOther);
+					break;
 				default: // just make gcc happy
-				break;
+					break;
 			}
-		break;
+			break;
 		case KviKvsVariantData::Integer:
 			switch(pOther->m_pData->m_eType)
 			{
 				case KviKvsVariantData::HObject:
-					return KviKvsVariantComparison::compareIntHObject(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareIntHObject(this, pOther);
+					break;
 				case KviKvsVariantData::Integer:
 					if(m_pData->m_u.iInt == pOther->m_pData->m_u.iInt)
 						return CMP_EQUAL;
 					if(m_pData->m_u.iInt > pOther->m_pData->m_u.iInt)
 						return CMP_THISGREATER;
 					return CMP_OTHERGREATER;
-				break;
+					break;
 				case KviKvsVariantData::Real:
-					return KviKvsVariantComparison::compareIntReal(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareIntReal(this, pOther);
+					break;
 				case KviKvsVariantData::String:
-					return KviKvsVariantComparison::compareIntString(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareIntString(this, pOther);
+					break;
 				case KviKvsVariantData::Boolean:
-					return KviKvsVariantComparison::compareIntBool(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareIntBool(this, pOther);
+					break;
 				case KviKvsVariantData::Hash:
-					return KviKvsVariantComparison::compareIntHash(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareIntHash(this, pOther);
+					break;
 				case KviKvsVariantData::Array:
-					return KviKvsVariantComparison::compareIntArray(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareIntArray(this, pOther);
+					break;
 				default: // just make gcc happy
-				break;
+					break;
 			}
-		break;
+			break;
 		case KviKvsVariantData::Real:
 			switch(pOther->m_pData->m_eType)
 			{
 				case KviKvsVariantData::HObject:
-					return KviKvsVariantComparison::compareRealHObject(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareRealHObject(this, pOther);
+					break;
 				case KviKvsVariantData::Integer:
-					return -1 * KviKvsVariantComparison::compareIntReal(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareIntReal(pOther, this);
+					break;
 				case KviKvsVariantData::Real:
 					if(*(m_pData->m_u.pReal) == *(pOther->m_pData->m_u.pReal))
 						return CMP_EQUAL;
 					if(*(m_pData->m_u.pReal) > *(pOther->m_pData->m_u.pReal))
 						return CMP_THISGREATER;
 					return CMP_OTHERGREATER;
-				break;
+					break;
 				case KviKvsVariantData::String:
-					return KviKvsVariantComparison::compareRealString(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareRealString(this, pOther);
+					break;
 				case KviKvsVariantData::Boolean:
-					return KviKvsVariantComparison::compareRealBool(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareRealBool(this, pOther);
+					break;
 				case KviKvsVariantData::Hash:
-					return KviKvsVariantComparison::compareRealHash(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareRealHash(this, pOther);
+					break;
 				case KviKvsVariantData::Array:
-					return KviKvsVariantComparison::compareRealArray(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareRealArray(this, pOther);
+					break;
 				default: // just make gcc happy
-				break;
+					break;
 			}
-		break;
+			break;
 		case KviKvsVariantData::String:
 			switch(pOther->m_pData->m_eType)
 			{
@@ -1175,121 +1193,121 @@ int KviKvsVariant::compare(const KviKvsVariant * pOther, bool bPreferNumeric) co
 							}
 						}
 					}
-					return -1 * m_pData->m_u.pString->compare(*(pOther->m_pData->m_u.pString),Qt::CaseInsensitive);
+					return -1 * m_pData->m_u.pString->compare(*(pOther->m_pData->m_u.pString), Qt::CaseInsensitive);
 				case KviKvsVariantData::Real:
-					return -1 * KviKvsVariantComparison::compareRealString(pOther,this);
+					return -1 * KviKvsVariantComparison::compareRealString(pOther, this);
 				case KviKvsVariantData::Integer:
-					return -1 * KviKvsVariantComparison::compareIntString(pOther,this);
+					return -1 * KviKvsVariantComparison::compareIntString(pOther, this);
 				case KviKvsVariantData::Boolean:
-					return -1 * KviKvsVariantComparison::compareBoolString(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareBoolString(pOther, this);
+					break;
 				case KviKvsVariantData::Hash:
-					return KviKvsVariantComparison::compareStringHash(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareStringHash(this, pOther);
+					break;
 				case KviKvsVariantData::Array:
-					return KviKvsVariantComparison::compareStringArray(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareStringArray(this, pOther);
+					break;
 				case KviKvsVariantData::HObject:
-					return KviKvsVariantComparison::compareStringHObject(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareStringHObject(this, pOther);
+					break;
 				default:
-				break;
+					break;
 			}
-		break;
+			break;
 		case KviKvsVariantData::Hash:
 			switch(pOther->m_pData->m_eType)
 			{
 				case KviKvsVariantData::String:
-					return -1 * KviKvsVariantComparison::compareStringHash(pOther,this);
+					return -1 * KviKvsVariantComparison::compareStringHash(pOther, this);
 				case KviKvsVariantData::Real:
-					return -1 * KviKvsVariantComparison::compareRealHash(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareRealHash(pOther, this);
+					break;
 				case KviKvsVariantData::Integer:
-					return -1 * KviKvsVariantComparison::compareIntHash(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareIntHash(pOther, this);
+					break;
 				case KviKvsVariantData::Boolean:
-					return -1 * KviKvsVariantComparison::compareBoolHash(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareBoolHash(pOther, this);
+					break;
 				case KviKvsVariantData::Hash:
 					if(m_pData->m_u.pHash->size() > pOther->m_pData->m_u.pHash->size())
 						return CMP_THISGREATER;
 					if(m_pData->m_u.pHash->size() == pOther->m_pData->m_u.pHash->size())
 						return CMP_EQUAL;
 					return CMP_OTHERGREATER;
-				break;
+					break;
 				case KviKvsVariantData::Array:
-					return -1 * KviKvsVariantComparison::compareArrayHash(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareArrayHash(pOther, this);
+					break;
 				case KviKvsVariantData::HObject:
-					return -1 * KviKvsVariantComparison::compareHObjectHash(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareHObjectHash(pOther, this);
+					break;
 				default:
-				break;
+					break;
 			}
-		break;
+			break;
 		case KviKvsVariantData::Array:
 			switch(pOther->m_pData->m_eType)
 			{
 				case KviKvsVariantData::String:
-					return -1 * KviKvsVariantComparison::compareStringArray(pOther,this);
+					return -1 * KviKvsVariantComparison::compareStringArray(pOther, this);
 				case KviKvsVariantData::Real:
-					return -1 * KviKvsVariantComparison::compareRealArray(pOther,this);
+					return -1 * KviKvsVariantComparison::compareRealArray(pOther, this);
 				case KviKvsVariantData::Integer:
-					return -1 * KviKvsVariantComparison::compareIntArray(pOther,this);
+					return -1 * KviKvsVariantComparison::compareIntArray(pOther, this);
 				case KviKvsVariantData::Boolean:
-					return -1 * KviKvsVariantComparison::compareBoolArray(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareBoolArray(pOther, this);
+					break;
 				case KviKvsVariantData::Hash:
-					return KviKvsVariantComparison::compareArrayHash(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareArrayHash(this, pOther);
+					break;
 				case KviKvsVariantData::Array:
 					if(m_pData->m_u.pArray->size() > pOther->m_pData->m_u.pArray->size())
 						return CMP_THISGREATER;
 					if(m_pData->m_u.pArray->size() == pOther->m_pData->m_u.pArray->size())
 						return CMP_EQUAL;
 					return CMP_OTHERGREATER;
-				break;
+					break;
 				case KviKvsVariantData::HObject:
-					return -1 * KviKvsVariantComparison::compareHObjectArray(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareHObjectArray(pOther, this);
+					break;
 				default:
-				break;
+					break;
 			}
-		break;
+			break;
 		case KviKvsVariantData::Boolean:
 			switch(pOther->m_pData->m_eType)
 			{
 				case KviKvsVariantData::String:
-					return KviKvsVariantComparison::compareBoolString(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareBoolString(this, pOther);
+					break;
 				case KviKvsVariantData::Real:
-					return -1 * KviKvsVariantComparison::compareRealBool(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareRealBool(pOther, this);
+					break;
 				case KviKvsVariantData::Integer:
-					return -1 * KviKvsVariantComparison::compareIntBool(pOther,this);
-				break;
+					return -1 * KviKvsVariantComparison::compareIntBool(pOther, this);
+					break;
 				case KviKvsVariantData::Boolean:
 					if(m_pData->m_u.bBoolean == pOther->m_pData->m_u.bBoolean)
 						return CMP_EQUAL;
 					if(m_pData->m_u.bBoolean)
 						return CMP_THISGREATER;
 					return CMP_OTHERGREATER;
-				break;
+					break;
 				case KviKvsVariantData::Hash:
-					return KviKvsVariantComparison::compareBoolHash(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareBoolHash(this, pOther);
+					break;
 				case KviKvsVariantData::Array:
-					return KviKvsVariantComparison::compareBoolArray(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareBoolArray(this, pOther);
+					break;
 				case KviKvsVariantData::HObject:
-					return KviKvsVariantComparison::compareBoolHObject(this,pOther);
-				break;
+					return KviKvsVariantComparison::compareBoolHObject(this, pOther);
+					break;
 				default:
-				break;
+					break;
 			}
-		break;
+			break;
 		default: // should never happen anyway
-		break;
+			break;
 	}
 
 	return CMP_THISGREATER; // should never happen
@@ -1297,14 +1315,14 @@ int KviKvsVariant::compare(const KviKvsVariant * pOther, bool bPreferNumeric) co
 
 void KviKvsVariant::serializeString(QString & szBuffer)
 {
-	szBuffer.replace('\\',"\\\\");
-	szBuffer.replace('\n',"\\n");
-	szBuffer.replace('\r',"\\r");
-	szBuffer.replace('\b',"\\b");
-	szBuffer.replace('\t',"\\t");
-	szBuffer.replace('\f',"\\f");
-	szBuffer.replace('/',"\\/");
-	szBuffer.replace('"',"\\\"");
+	szBuffer.replace('\\', "\\\\");
+	szBuffer.replace('\n', "\\n");
+	szBuffer.replace('\r', "\\r");
+	szBuffer.replace('\b', "\\b");
+	szBuffer.replace('\t', "\\t");
+	szBuffer.replace('\f', "\\f");
+	szBuffer.replace('/', "\\/");
+	szBuffer.replace('"', "\\\"");
 	szBuffer.prepend('"');
 	szBuffer.append('"');
 }
@@ -1321,31 +1339,31 @@ void KviKvsVariant::serialize(QString & szResult)
 	{
 		case KviKvsVariantData::HObject:
 			//can't serialize objects yet
-		break;
+			break;
 		case KviKvsVariantData::Integer:
 			szResult.setNum(m_pData->m_u.iInt);
-		break;
+			break;
 		case KviKvsVariantData::Real:
 			szResult.setNum(*(m_pData->m_u.pReal));
-		break;
+			break;
 		case KviKvsVariantData::String:
 			szResult = *(m_pData->m_u.pString);
 			serializeString(szResult);
-		break;
+			break;
 		case KviKvsVariantData::Boolean:
 			szResult = m_pData->m_u.bBoolean ? "true" : "false";
-		break;
+			break;
 		case KviKvsVariantData::Hash:
 			m_pData->m_u.pHash->serialize(szResult);
-		break;
+			break;
 		case KviKvsVariantData::Array:
 			m_pData->m_u.pArray->serialize(szResult);
-		break;
+			break;
 		case KviKvsVariantData::Nothing:
 			szResult = "null";
-		break;
+			break;
 		default: // just make gcc happy
-		break;
+			break;
 	}
 }
 
@@ -1379,28 +1397,28 @@ KviKvsVariant * KviKvsVariant::unserialize(const QChar ** ppAux)
 	{
 		case 't':
 			//true
-			pResult = unserializeBool(ppAux,true);
-		break;
+			pResult = unserializeBool(ppAux, true);
+			break;
 		case 'f':
 			//false
-			pResult = unserializeBool(ppAux,false);
-		break;
+			pResult = unserializeBool(ppAux, false);
+			break;
 		case 'n':
 			//null
 			pResult = unserializeNull(ppAux);
-		break;
+			break;
 		case '[':
 			//array
 			pResult = unserializeArray(ppAux);
-		break;
+			break;
 		case '{':
 			//hash
 			pResult = unserializeHash(ppAux);
-		break;
+			break;
 		case '"':
 			//string
 			pResult = unserializeString(ppAux);
-		break;
+			break;
 		case '0':
 		case '1':
 		case '2':
@@ -1414,7 +1432,7 @@ KviKvsVariant * KviKvsVariant::unserialize(const QChar ** ppAux)
 		case '-':
 			//real or integer
 			pResult = unserializeNumber(ppAux);
-		break;
+			break;
 		default:
 			//incorrect value
 			return NULL;
@@ -1432,13 +1450,15 @@ KviKvsVariant * KviKvsVariant::unserializeBool(const QChar ** ppAux, bool bBool)
 
 	if(bBool)
 	{
-		if(KviQString::equalCIN(QString("true"),*ppAux,4))
+		if(KviQString::equalCIN(QString("true"), *ppAux, 4))
 		{
 			(*ppAux) += 4;
 			bOk = true;
 		}
-	} else {
-		if(KviQString::equalCIN(QString("false"),*ppAux,5))
+	}
+	else
+	{
+		if(KviQString::equalCIN(QString("false"), *ppAux, 5))
 		{
 			(*ppAux) += 5;
 			bOk = true;
@@ -1452,7 +1472,7 @@ KviKvsVariant * KviKvsVariant::unserializeBool(const QChar ** ppAux, bool bBool)
 
 KviKvsVariant * KviKvsVariant::unserializeNull(const QChar ** ppAux)
 {
-	if(KviQString::equalCIN(QString("null"),*ppAux,4))
+	if(KviQString::equalCIN(QString("null"), *ppAux, 4))
 	{
 		(*ppAux) += 4;
 		return new KviKvsVariant();
@@ -1480,9 +1500,9 @@ KviKvsVariant * KviKvsVariant::unserializeNumber(const QChar ** ppAux)
 	}
 
 	if((*ppAux)->unicode() == '.')
-		return unserializeReal(ppAux,szData);
+		return unserializeReal(ppAux, szData);
 
-	return unserializeInteger(ppAux,szData);
+	return unserializeInteger(ppAux, szData);
 }
 
 KviKvsVariant * KviKvsVariant::unserializeReal(const QChar ** ppAux, QString & szData)
@@ -1503,7 +1523,9 @@ KviKvsVariant * KviKvsVariant::unserializeReal(const QChar ** ppAux, QString & s
 		{
 			szExponent.append('-');
 			(*ppAux)++;
-		} else {
+		}
+		else
+		{
 			if((*ppAux)->unicode() == '+')
 			{
 				szExponent.append('+');
@@ -1521,7 +1543,7 @@ KviKvsVariant * KviKvsVariant::unserializeReal(const QChar ** ppAux, QString & s
 	float fValue = szData.toFloat();
 	if(!szExponent.isNull())
 	{
-		fValue *= pow(10.0,szExponent.toInt());
+		fValue *= pow(10.0, szExponent.toInt());
 	}
 	return new KviKvsVariant(fValue);
 }
@@ -1537,7 +1559,9 @@ KviKvsVariant * KviKvsVariant::unserializeInteger(const QChar ** ppAux, QString 
 		{
 			szExponent.append('-');
 			(*ppAux)++;
-		} else {
+		}
+		else
+		{
 			if((*ppAux)->unicode() == '+')
 			{
 				szExponent.append('+');
@@ -1555,7 +1579,7 @@ KviKvsVariant * KviKvsVariant::unserializeInteger(const QChar ** ppAux, QString 
 	kvs_int_t iValue = szData.toInt();
 	if(!szExponent.isNull())
 	{
-		iValue *= (kvs_int_t) pow(10.0,szExponent.toInt());
+		iValue *= (kvs_int_t)pow(10.0, szExponent.toInt());
 	}
 	return new KviKvsVariant(iValue);
 }
@@ -1563,7 +1587,7 @@ KviKvsVariant * KviKvsVariant::unserializeInteger(const QChar ** ppAux, QString 
 KviKvsVariant * KviKvsVariant::unserializeString(const QChar ** ppAux)
 {
 	QString szBuffer;
-	unserializeString(ppAux,szBuffer);
+	unserializeString(ppAux, szBuffer);
 	return new KviKvsVariant(szBuffer);
 }
 
@@ -1581,7 +1605,7 @@ void KviKvsVariant::unserializeString(const QChar ** ppAux, QString & szData)
 				//EOF
 				(*ppAux)++;
 				return;
-			break;
+				break;
 			case '\\':
 				//Special
 				(*ppAux)++;
@@ -1589,55 +1613,56 @@ void KviKvsVariant::unserializeString(const QChar ** ppAux, QString & szData)
 				{
 					case 't':
 						szData.append('\t');
-					break;
+						break;
 					case '\"':
 						szData.append('\"');
-					break;
+						break;
 					case '/':
 						szData.append('/');
-					break;
+						break;
 					case 'b':
 						szData.append('\b');
-					break;
+						break;
 					case 'f':
 						szData.append('\f');
-					break;
+						break;
 					case 'n':
 						szData.append('\n');
-					break;
+						break;
 					case 'r':
 						szData.append('\r');
-					break;
+						break;
 					case 'u':
 						//4 hexadecmical digits pending...
 						szHex = "";
 						(*ppAux)++;
-						for(int i=0; i<4 && (*ppAux)->unicode(); i++)
+						for(int i = 0; i < 4 && (*ppAux)->unicode(); i++)
 						{
-							if((*ppAux)->isDigit() ||
-								((*ppAux)->unicode() >='A' && (*ppAux)->unicode() <='F')|| //ABCDEF
-								((*ppAux)->unicode() >='a' && (*ppAux)->unicode() <='f')) //abcdef
+							if((*ppAux)->isDigit() || ((*ppAux)->unicode() >= 'A' && (*ppAux)->unicode() <= 'F') || //ABCDEF
+							    ((*ppAux)->unicode() >= 'a' && (*ppAux)->unicode() <= 'f'))                         //abcdef
 							{
 								szHex.append(**ppAux);
 								(*ppAux)++;
-							} else {
+							}
+							else
+							{
 								break;
 							}
 						}
 						(*ppAux)--;
-						szData.append(QChar(szHex.toUInt(0,16)));
-					break;
+						szData.append(QChar(szHex.toUInt(0, 16)));
+						break;
 					default:
 						//Fallback; incorrect escape
 						(*ppAux)--;
 						szData.append('\\');
 				}
 				(*ppAux)++;
-			break;
+				break;
 			default:
 				szData.append(**ppAux);
 				(*ppAux)++;
-			break;
+				break;
 		}
 	}
 }
@@ -1649,7 +1674,7 @@ KviKvsVariant * KviKvsVariant::unserializeHash(const QChar ** ppAux)
 	KviKvsVariant * pElement = 0;
 	//skip leading '{'
 	(*ppAux)++;
-	int i=0;
+	int i = 0;
 	while(1)
 	{
 		//skip leading space
@@ -1662,7 +1687,7 @@ KviKvsVariant * KviKvsVariant::unserializeHash(const QChar ** ppAux)
 			delete pHash;
 			return 0;
 		}
-		unserializeString(ppAux,szKey);
+		unserializeString(ppAux, szKey);
 		if(szKey.isEmpty())
 		{
 			//Strange element name
@@ -1686,7 +1711,7 @@ KviKvsVariant * KviKvsVariant::unserializeHash(const QChar ** ppAux)
 		pElement = unserialize(ppAux);
 		if(pElement)
 		{
-			pHash->set(szKey,pElement);
+			pHash->set(szKey, pElement);
 			i++;
 			while((*ppAux)->isSpace())
 				(*ppAux)++;
@@ -1695,18 +1720,20 @@ KviKvsVariant * KviKvsVariant::unserializeHash(const QChar ** ppAux)
 				case ',':
 					//goto next
 					(*ppAux)++;
-				break;
+					break;
 				case '}':
 					//EOF array
 					(*ppAux)++;
 					return new KviKvsVariant(pHash);
-				break;
+					break;
 				default:
 					delete pHash;
 					return 0;
-				break;
+					break;
 			}
-		} else {
+		}
+		else
+		{
 			//error
 			delete pHash;
 			return 0;
@@ -1720,13 +1747,13 @@ KviKvsVariant * KviKvsVariant::unserializeArray(const QChar ** ppAux)
 	KviKvsArray * pArray = new KviKvsArray();
 	KviKvsVariant * pElement = 0;
 	(*ppAux)++;
-	int i=0;
+	int i = 0;
 	while(1)
 	{
 		pElement = unserialize(ppAux);
 		if(pElement)
 		{
-			pArray->set(i,pElement);
+			pArray->set(i, pElement);
 			i++;
 			while((*ppAux)->isSpace())
 				(*ppAux)++;
@@ -1735,18 +1762,20 @@ KviKvsVariant * KviKvsVariant::unserializeArray(const QChar ** ppAux)
 				case ',':
 					//goto next
 					(*ppAux)++;
-				break;
+					break;
 				case ']':
 					//EOF array
 					(*ppAux)++;
 					return new KviKvsVariant(pArray);
-				break;
+					break;
 				default:
 					delete pArray;
 					return 0;
-				break;
+					break;
 			}
-		} else {
+		}
+		else
+		{
 			//error
 			delete pArray;
 			return 0;

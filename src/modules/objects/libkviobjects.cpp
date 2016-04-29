@@ -77,7 +77,6 @@
 #include "KvsObject_sql.h"
 #include "KvsObject_dateTimeEdit.h"
 
-
 #include "KviIconManager.h"
 #include "KviWindow.h"
 #include "kvi_out.h"
@@ -94,16 +93,15 @@
 #include <QDir>
 #include <QImage>
 
-
-static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spacing, bool bWidgetsOnly, KviKvsArray *n, int &idx);
+static void dumpChildObjects(KviWindow * pWnd, QObject * parent, const char * spacing, bool bWidgetsOnly, KviKvsArray * n, int & idx);
 
 static bool objects_module_cleanup(KviModule *)
 {
-	// Don't attempt to change the order of these calls.
-	// Derived classes must be unregistered before the base ones.
-	#if defined(COMPILE_WEBKIT_SUPPORT)
+// Don't attempt to change the order of these calls.
+// Derived classes must be unregistered before the base ones.
+#if defined(COMPILE_WEBKIT_SUPPORT)
 	KvsObject_webView::unregisterSelf();
-	#endif
+#endif
 	KvsObject_memoryBuffer::unregisterSelf();
 	KvsObject_process::unregisterSelf();
 	KvsObject_trayIcon::unregisterSelf();
@@ -182,22 +180,24 @@ static bool objects_kvs_cmd_killClass(KviKvsModuleCommandCall * c)
 			[doc:objects]Objects documentation[/doc]
 	*/
 
-
 	QString szClass;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("class",KVS_PT_NONEMPTYSTRING,0,szClass)
+	KVSM_PARAMETER("class", KVS_PT_NONEMPTYSTRING, 0, szClass)
 	KVSM_PARAMETERS_END(c)
-	KviKvsObjectClass * pClass=KviKvsKernel::instance()->objectController()->lookupClass(szClass);
+	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClass);
 	if(pClass)
 	{
 		if(pClass->isBuiltin())
 		{
 			KviKvsKernel::instance()->objectController()->killAllObjectsWithClass(pClass);
-		} else {
+		}
+		else
+		{
 			KviKvsKernel::instance()->objectController()->deleteClass(pClass); //Yahoo!!
 		}
 	}
-	else if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("Class '%Q' is not defined","objects"),&szClass);
+	else if(!c->hasSwitch('q', "quiet"))
+		c->warning(__tr2qs_ctx("Class '%Q' is not defined", "objects"), &szClass);
 	return true;
 }
 
@@ -227,7 +227,8 @@ static bool objects_kvs_cmd_clearObjects(KviKvsModuleCommandCall * c)
 	*/
 
 	KviKvsKernel::instance()->objectController()->clearInstances();
-	if(!c->switches()->find('i',"ii")) KviKvsKernel::instance()->objectController()->clearUserClasses();
+	if(!c->switches()->find('i', "ii"))
+		KviKvsKernel::instance()->objectController()->clearUserClasses();
 	return true;
 }
 
@@ -256,32 +257,31 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 			[cmd]class[/cmd], [cmd]object.disconnect[/cmd], [doc:objects]objects documentation[/doc]
 	*/
 
-
-	KviKvsObject *obSrc;
-	KviKvsObject *obTrg;
-	QString szSignal,szSlot;
-	kvs_hobject_t hSrc,hTrg;
+	KviKvsObject * obSrc;
+	KviKvsObject * obTrg;
+	QString szSignal, szSlot;
+	kvs_hobject_t hSrc, hTrg;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("object source",KVS_PT_HOBJECT,0,hSrc)
-		KVSM_PARAMETER("signal name",KVS_PT_NONEMPTYSTRING,0,szSignal)
-		KVSO_PARAMETER("object target",KVS_PT_HOBJECT,0,hTrg)
-		KVSM_PARAMETER("slot",KVS_PT_NONEMPTYSTRING,0,szSlot)
+	KVSO_PARAMETER("object source", KVS_PT_HOBJECT, 0, hSrc)
+	KVSM_PARAMETER("signal name", KVS_PT_NONEMPTYSTRING, 0, szSignal)
+	KVSO_PARAMETER("object target", KVS_PT_HOBJECT, 0, hTrg)
+	KVSM_PARAMETER("slot", KVS_PT_NONEMPTYSTRING, 0, szSlot)
 	KVSM_PARAMETERS_END(c)
-	obTrg=KviKvsKernel::instance()->objectController()->lookupObject(hTrg);
-	obSrc=KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
+	obTrg = KviKvsKernel::instance()->objectController()->lookupObject(hTrg);
+	obSrc = KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
 	if(!obTrg)
 	{
-		c->warning(__tr2qs_ctx("non-existent target object for objects.connect","objects"));
+		c->warning(__tr2qs_ctx("non-existent target object for objects.connect", "objects"));
 		return true;
 	}
 	if(!obSrc)
 	{
-		c->warning(__tr2qs_ctx("non-existent source object for objects.connect","objects"));
+		c->warning(__tr2qs_ctx("non-existent source object for objects.connect", "objects"));
 		return true;
 	}
-	if(!obSrc->connectSignal(szSignal,obTrg,szSlot))
+	if(!obSrc->connectSignal(szSignal, obTrg, szSlot))
 	{
-		c->warning(__tr2qs_ctx("non-existent target slot '%Q' for objects.connect","objects"),&szSlot);
+		c->warning(__tr2qs_ctx("non-existent target slot '%Q' for objects.connect", "objects"), &szSlot);
 		return true;
 	}
 	return true;
@@ -305,12 +305,11 @@ static bool objects_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 			[doc:objects]objects documentation[/doc]
 	*/
 
-
 	kvs_hobject_t hObj;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("object",KVS_PT_HOBJECT,0,hObj)
+	KVSO_PARAMETER("object", KVS_PT_HOBJECT, 0, hObj)
 	KVSM_PARAMETERS_END(c)
-	KviKvsObject *ob=KviKvsKernel::instance()->objectController()->lookupObject(hObj);
+	KviKvsObject * ob = KviKvsKernel::instance()->objectController()->lookupObject(hObj);
 	c->returnValue()->setBoolean(ob ? true : false);
 	return true;
 }
@@ -355,8 +354,8 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 	QString szClassName;
 	QString szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("class name",KVS_PT_NONEMPTYSTRING,0,szClassName)
-		KVSO_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
+	KVSO_PARAMETER("class name", KVS_PT_NONEMPTYSTRING, 0, szClassName)
+	KVSO_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
 	KVSM_PARAMETERS_END(c)
 
 	KviKvsArray * pArry = new KviKvsArray();
@@ -366,12 +365,12 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 	if(!pClass)
 	{
 		if(!szFlags.contains(QChar('q')))
-			c->warning(__tr2qs_ctx("The class '%Q' doesn't exist","objects"),&szClassName);
+			c->warning(__tr2qs_ctx("The class '%Q' doesn't exist", "objects"), &szClassName);
 		return true;
 	}
-	KviPointerHashTable<void *,KviKvsObject> * od = KviKvsKernel::instance()->objectController()->objectDict();
+	KviPointerHashTable<void *, KviKvsObject> * od = KviKvsKernel::instance()->objectController()->objectDict();
 
-	KviPointerHashTableIterator<void *,KviKvsObject> it(*od);
+	KviPointerHashTableIterator<void *, KviKvsObject> it(*od);
 	kvs_uint_t uIdx = 0;
 	if(szFlags.contains(QChar('s')))
 	{
@@ -379,17 +378,19 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 		{
 			if(ob->getExactClass() == pClass)
 			{
-				pArry->set(uIdx,new KviKvsVariant(ob->handle()));
+				pArry->set(uIdx, new KviKvsVariant(ob->handle()));
 				uIdx++;
 			}
 			++it;
 		}
-	} else {
+	}
+	else
+	{
 		while(KviKvsObject * ob = it.current())
 		{
 			if(ob->inheritsClass(pClass))
 			{
-				pArry->set(uIdx,new KviKvsVariant(ob->handle()));
+				pArry->set(uIdx, new KviKvsVariant(ob->handle()));
 				uIdx++;
 			}
 			++it;
@@ -418,26 +419,23 @@ static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 
 	kvs_hobject_t hObj;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("object",KVS_PT_HOBJECT,0,hObj)
+	KVSO_PARAMETER("object", KVS_PT_HOBJECT, 0, hObj)
 	KVSM_PARAMETERS_END(c)
-	KviKvsObject *ob=KviKvsKernel::instance()->objectController()->lookupObject(hObj);
-	if (!ob)
+	KviKvsObject * ob = KviKvsKernel::instance()->objectController()->lookupObject(hObj);
+	if(!ob)
 	{
-		c->warning(__tr2qs_ctx("Object doesn't exist","objects"));
+		c->warning(__tr2qs_ctx("Object doesn't exist", "objects"));
 		return true;
 	}
-	KviPointerHashTableIterator<QString,KviKvsVariant> it(* ob->dataContainer()->dict());
-	KviKvsHash* pHash = new KviKvsHash();
+	KviPointerHashTableIterator<QString, KviKvsVariant> it(*ob->dataContainer()->dict());
+	KviKvsHash * pHash = new KviKvsHash();
 	c->returnValue()->setHash(pHash);
 	while(KviKvsVariant * t = it.current())
 	{
-		pHash->set(it.currentKey(),new KviKvsVariant(*t));
+		pHash->set(it.currentKey(), new KviKvsVariant(*t));
 		++it;
 	}
 	return true;
-
-
-
 }
 
 static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
@@ -460,24 +458,24 @@ static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 
 	QString szClassName;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("class name",KVS_PT_NONEMPTYSTRING,0,szClassName)
+	KVSO_PARAMETER("class name", KVS_PT_NONEMPTYSTRING, 0, szClassName)
 	KVSM_PARAMETERS_END(c)
 	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
 	if(!pClass)
 	{
-		c->warning(__tr2qs_ctx("The class '%Q' doesn't exist","objects"),&szClassName);
+		c->warning(__tr2qs_ctx("The class '%Q' doesn't exist", "objects"), &szClassName);
 		return true;
 	}
 
-	KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
-	KviKvsHash* pHash = new KviKvsHash();
+	KviPointerHashTableIterator<QString, KviKvsObjectFunctionHandler> it(*pClass->getHandlers());
+	KviKvsHash * pHash = new KviKvsHash();
 	c->returnValue()->setHash(pHash);
 	while(it.current())
 	{
 		QString szCode;
-		KviKvsObjectFunctionHandler *handler=pClass->lookupFunctionHandler(it.currentKey());
-		pClass->getFunctionCode(szCode,*handler);
-		pHash->set(it.currentKey(),new KviKvsVariant(szCode));
+		KviKvsObjectFunctionHandler * handler = pClass->lookupFunctionHandler(it.currentKey());
+		pClass->getFunctionCode(szCode, *handler);
+		pHash->set(it.currentKey(), new KviKvsVariant(szCode));
 		++it;
 	}
 
@@ -505,39 +503,40 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 	KviKvsArray * pArry = new KviKvsArray();
 	c->returnValue()->setArray(pArry);
 
-	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
-	KviPointerHashTable<QString,bool> *classdict=new KviPointerHashTable<QString,bool>;
+	KviPointerHashTableIterator<QString, KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
+	KviPointerHashTable<QString, bool> * classdict = new KviPointerHashTable<QString, bool>;
 	classdict->setAutoDelete(false);
-	bool bFake=true;
-	while(KviKvsObjectClass * pClass=it.current())
+	bool bFake = true;
+	while(KviKvsObjectClass * pClass = it.current())
 	{
-		if (!pClass->isBuiltin())classdict->insert(it.currentKey(),&bFake);
+		if(!pClass->isBuiltin())
+			classdict->insert(it.currentKey(), &bFake);
 		++it;
 	}
 	QString szPath;
-	g_pApp->getLocalKvircDirectory(szPath,KviApplication::Classes);
+	g_pApp->getLocalKvircDirectory(szPath, KviApplication::Classes);
 	QDir d(szPath);
 	QStringList sl;
 	sl = d.entryList(QDir::Files);
-	for(QStringList::Iterator it2 = sl.begin();it2 != sl.end();++it2)
+	for(QStringList::Iterator it2 = sl.begin(); it2 != sl.end(); ++it2)
 	{
-		QString szName=*it2;
-		szName.replace("--","::");
-		if (szName!=".." && szName!=".") classdict->insert(szName.left(szName.length()-4),&bFake);
+		QString szName = *it2;
+		szName.replace("--", "::");
+		if(szName != ".." && szName != ".")
+			classdict->insert(szName.left(szName.length() - 4), &bFake);
 	}
-	KviKvsArray* pArray = new KviKvsArray();
+	KviKvsArray * pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
-	int idx=0;
-	KviPointerHashTableIterator<QString,bool>  strIt(*classdict);
+	int idx = 0;
+	KviPointerHashTableIterator<QString, bool> strIt(*classdict);
 	while(strIt.current())
 	{
-		pArray->set(idx,new KviKvsVariant(strIt.currentKey()));
+		pArray->set(idx, new KviKvsVariant(strIt.currentKey()));
 		idx++;
 		++strIt;
 	}
 	delete classdict;
 	return true;
-
 }
 
 static bool objects_kvs_fnc_name(KviKvsModuleFunctionCall * c)
@@ -561,13 +560,13 @@ static bool objects_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 	KviKvsObject * obSrcClass;
 	kvs_hobject_t hClass;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("object class",KVS_PT_HOBJECT,0,hClass)
+	KVSO_PARAMETER("object class", KVS_PT_HOBJECT, 0, hClass)
 	KVSM_PARAMETERS_END(c)
 
 	obSrcClass = KviKvsKernel::instance()->objectController()->lookupObject(hClass);
 	if(!obSrcClass)
 	{
-		c->warning(__tr2qs_ctx("non-existent class object for objects.name","objects"));
+		c->warning(__tr2qs_ctx("non-existent class object for objects.name", "objects"));
 		return true;
 	}
 
@@ -596,29 +595,29 @@ static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 			[cmd]class[/cmd], [cmd]objects.connect[/cmd], [doc:objects]objects documentation[/doc]
 	*/
 
-	KviKvsObject *obSrc;
-	KviKvsObject *obTrg;
-	QString szSignal,szSlot;
-	kvs_hobject_t hSrc,hTrg;
+	KviKvsObject * obSrc;
+	KviKvsObject * obTrg;
+	QString szSignal, szSlot;
+	kvs_hobject_t hSrc, hTrg;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("object source",KVS_PT_HOBJECT,0,hSrc)
-		KVSM_PARAMETER("signal name",KVS_PT_NONEMPTYSTRING,0,szSignal)
-		KVSO_PARAMETER("object target",KVS_PT_HOBJECT,0,hTrg)
-		KVSM_PARAMETER("slot",KVS_PT_NONEMPTYSTRING,0,szSlot)
+	KVSO_PARAMETER("object source", KVS_PT_HOBJECT, 0, hSrc)
+	KVSM_PARAMETER("signal name", KVS_PT_NONEMPTYSTRING, 0, szSignal)
+	KVSO_PARAMETER("object target", KVS_PT_HOBJECT, 0, hTrg)
+	KVSM_PARAMETER("slot", KVS_PT_NONEMPTYSTRING, 0, szSlot)
 	KVSM_PARAMETERS_END(c)
-	obTrg=KviKvsKernel::instance()->objectController()->lookupObject(hTrg);
-	obSrc=KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
+	obTrg = KviKvsKernel::instance()->objectController()->lookupObject(hTrg);
+	obSrc = KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
 	if(!obTrg)
 	{
-		c->warning(__tr2qs_ctx("non-existent target object for objects.disconnect","objects"));
+		c->warning(__tr2qs_ctx("non-existent target object for objects.disconnect", "objects"));
 		return true;
 	}
 	if(!obSrc)
 	{
-		c->warning(__tr2qs_ctx("non-existent source object for objects.disconnect","objects"));
+		c->warning(__tr2qs_ctx("non-existent source object for objects.disconnect", "objects"));
 		return true;
 	}
-	obSrc->disconnectSignal(szSignal,obTrg,szSlot);
+	obSrc->disconnectSignal(szSignal, obTrg, szSlot);
 	return true;
 }
 
@@ -651,45 +650,44 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 			[/example]
 	*/
 
-
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(cmd)
-		KVSO_PARAMETER("print on current window",KVS_PT_BOOL,0,bFlag)
+	KVSO_PARAMETER("print on current window", KVS_PT_BOOL, 0, bFlag)
 	KVSO_PARAMETERS_END(cmd)
-	if (bFlag)
+	if(bFlag)
 		cmd->window()->output(80, "Objects dump:");
 	QWidgetList list = g_pApp->topLevelWidgets();
 
 	KviCString spacing = ">";
-	QString  szTemp;
+	QString szTemp;
 	KviKvsArray * n = new KviKvsArray();
-	int idx=0;
-	for(int i=0;i<list.count();i++)
+	int idx = 0;
+	for(int i = 0; i < list.count(); i++)
 	{
-		if( list.at(i)->isWidgetType())
+		if(list.at(i)->isWidgetType())
 		{
-			if (bFlag)
+			if(bFlag)
 			{
 				cmd->window()->output(80, "Ptr %u: top level object: %c%s%c, class %s, %s, rect = %d, %d, %d, %d",
-				list.at(i),
-				KviControlCodes::Bold, list.at(i)->objectName().toUtf8().data(), KviControlCodes::Bold,
-				list.at(i)->metaObject()->className(),
-				list.at(i)->isVisible() ? "visible" : "hidden",
-				list.at(i)->x(), list.at(i)->y(), list.at(i)->width(), list.at(i)->height());
+				    list.at(i),
+				    KviControlCodes::Bold, list.at(i)->objectName().toUtf8().data(), KviControlCodes::Bold,
+				    list.at(i)->metaObject()->className(),
+				    list.at(i)->isVisible() ? "visible" : "hidden",
+				    list.at(i)->x(), list.at(i)->y(), list.at(i)->width(), list.at(i)->height());
 			}
-			QString  szClass=list.at(i)->metaObject()->className();
-			QString szObj=list.at(i)->objectName();
+			QString szClass = list.at(i)->metaObject()->className();
+			QString szObj = list.at(i)->objectName();
 			QString szTemp;
 			szTemp = szClass + "::" + szObj;
 			KviKvsVariant v;
 			v.setString(szTemp);
-			n->set(idx,new KviKvsVariant(v));
+			n->set(idx, new KviKvsVariant(v));
 			/*qDebug("string %s",szTemp.toUtf8().data());
 			qDebug("class %s",szClass.toUtf8().data());
                         qDebug("Obj %s",szObj.toUtf8().data());*/
 			idx++;
 
-			dumpChildObjects(cmd->window(), list.at(i), spacing.ptr(), bFlag,n,idx);
+			dumpChildObjects(cmd->window(), list.at(i), spacing.ptr(), bFlag, n, idx);
 		}
 	}
 
@@ -697,36 +695,35 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 	return true;
 }
 
-static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spacing, bool bFlag, KviKvsArray *n, int &idx)
+static void dumpChildObjects(KviWindow * pWnd, QObject * parent, const char * spacing, bool bFlag, KviKvsArray * n, int & idx)
 {
 	const QObjectList list = parent->children();
-	if( !list.count() ) return;
+	if(!list.count())
+		return;
 	QString sp(spacing);
 	sp.append(">");
-	for(int i=0;i<list.count();i++)
+	for(int i = 0; i < list.count(); i++)
 	{
-		if( list.at(i)->isWidgetType() )
+		if(list.at(i)->isWidgetType())
 		{
-			if (bFlag)
+			if(bFlag)
 			{
 				pWnd->output(80, "%sPtr %u: object: %c%s%c, class %s",
-					spacing, list.at(i), KviControlCodes::Bold,
-					list.at(i)->objectName().toUtf8().data(), KviControlCodes::Bold, list.at(i)->metaObject()->className()
-				);
+				    spacing, list.at(i), KviControlCodes::Bold,
+				    list.at(i)->objectName().toUtf8().data(), KviControlCodes::Bold, list.at(i)->metaObject()->className());
 			}
-			QString szClass=list.at(i)->metaObject()->className();
-			QString szObj=list.at(i)->objectName();
+			QString szClass = list.at(i)->metaObject()->className();
+			QString szObj = list.at(i)->objectName();
 			QString szTemp;
-			szTemp=spacing+szClass+"::"+szObj;
+			szTemp = spacing + szClass + "::" + szObj;
 			KviKvsVariant v;
 			v.setString(szTemp);
-			n->set(idx,new KviKvsVariant(v));
-                        //qDebug("string %s",szTemp.toUtf8().data());
+			n->set(idx, new KviKvsVariant(v));
+			//qDebug("string %s",szTemp.toUtf8().data());
 			idx++;
-			dumpChildObjects(pWnd, list.at(i), sp.toUtf8().data(), bFlag, n, idx );
+			dumpChildObjects(pWnd, list.at(i), sp.toUtf8().data(), bFlag, n, idx);
 		}
 	}
-
 }
 
 static bool objects_module_can_unload(KviModule *)
@@ -739,19 +736,19 @@ static bool objects_module_can_unload(KviModule *)
 static bool objects_module_init(KviModule * m)
 {
 	// functions
-	KVSM_REGISTER_FUNCTION(m,"classAllHandlers",objects_kvs_fnc_classAllHandlers);
-	KVSM_REGISTER_FUNCTION(m,"classes",objects_kvs_fnc_classes);
-	KVSM_REGISTER_FUNCTION(m,"dump",objects_kvs_fnc_listObjects);
-	KVSM_REGISTER_FUNCTION(m,"exists",objects_kvs_fnc_exists);
-	KVSM_REGISTER_FUNCTION(m,"instances",objects_kvs_fnc_instances);
-	KVSM_REGISTER_FUNCTION(m,"name",objects_kvs_fnc_name);
-	KVSM_REGISTER_FUNCTION(m,"variables",objects_kvs_fnc_variables);
+	KVSM_REGISTER_FUNCTION(m, "classAllHandlers", objects_kvs_fnc_classAllHandlers);
+	KVSM_REGISTER_FUNCTION(m, "classes", objects_kvs_fnc_classes);
+	KVSM_REGISTER_FUNCTION(m, "dump", objects_kvs_fnc_listObjects);
+	KVSM_REGISTER_FUNCTION(m, "exists", objects_kvs_fnc_exists);
+	KVSM_REGISTER_FUNCTION(m, "instances", objects_kvs_fnc_instances);
+	KVSM_REGISTER_FUNCTION(m, "name", objects_kvs_fnc_name);
+	KVSM_REGISTER_FUNCTION(m, "variables", objects_kvs_fnc_variables);
 
 	// commands
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"clearObjects",objects_kvs_cmd_clearObjects);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"connect",objects_kvs_cmd_connect);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"disconnect",objects_kvs_cmd_disconnect);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"killClass",objects_kvs_cmd_killClass);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "clearObjects", objects_kvs_cmd_clearObjects);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "connect", objects_kvs_cmd_connect);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "disconnect", objects_kvs_cmd_disconnect);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "killClass", objects_kvs_cmd_killClass);
 
 	// Don't attempt to change the order of these calls.
 	// Derived classes must be registered after the base ones.
@@ -811,17 +808,16 @@ static bool objects_module_init(KviModule * m)
 }
 
 KVIRC_MODULE(
-	"Objects",
-	"4.0.0",
-	"Copyright (C) 2000-2006:\n" \
-		"  Szymon Stefanek (pragma at kvirc dot net)\n" \
-		"  Krzysztof Godlewski (kristoff at poczta dot wprost dot pl)\n" \
-		"  Tonino Imbesi (grifisx at barmes dot org)\n" \
-		"  Alessandro Carbone (elfonol at gmail dot com)",
-	"Object classes for KVIrc scripting language\n",
-	objects_module_init,
-	objects_module_can_unload,
-	0,
-	objects_module_cleanup,
-	"objects"
-)
+    "Objects",
+    "4.0.0",
+    "Copyright (C) 2000-2006:\n"
+    "  Szymon Stefanek (pragma at kvirc dot net)\n"
+    "  Krzysztof Godlewski (kristoff at poczta dot wprost dot pl)\n"
+    "  Tonino Imbesi (grifisx at barmes dot org)\n"
+    "  Alessandro Carbone (elfonol at gmail dot com)",
+    "Object classes for KVIrc scripting language\n",
+    objects_module_init,
+    objects_module_can_unload,
+    0,
+    objects_module_cleanup,
+    "objects")

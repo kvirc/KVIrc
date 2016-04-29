@@ -98,14 +98,14 @@ void NotifierWindowBorder::loadImages()
 	setPics();
 	setCloseIcon(WDG_ICON_OUT);
 
-	if ( m_pixCaptionDX->height()==m_pixCaptionSX->height() && m_pixCaptionDX->height()==m_pixCaptionBKG->height())		// just to be sure that the height is fitting
+	if(m_pixCaptionDX->height() == m_pixCaptionSX->height() && m_pixCaptionDX->height() == m_pixCaptionBKG->height()) // just to be sure that the height is fitting
 		m_captionRect.setHeight(m_pixCaptionDX->height());
-
 }
 
 void NotifierWindowBorder::setPics(bool b)
 {
-	if (b) {
+	if(b)
+	{
 		m_pixSX = &m_pixSX_HL;
 		m_pixDX = &m_pixDX_HL;
 		m_pixDWN = &m_pixDWN_HL;
@@ -117,7 +117,9 @@ void NotifierWindowBorder::setPics(bool b)
 		m_pixIconClose_out = &m_pixIconClose_out_HL;
 		m_pixIconClose_over = &m_pixIconClose_over_HL;
 		m_pixIconClose_clicked = &m_pixIconClose_clicked_HL;
-	} else {
+	}
+	else
+	{
 		m_pixSX = &m_pixSX_N;
 		m_pixDX = &m_pixDX_N;
 		m_pixDWN = &m_pixDWN_N;
@@ -148,31 +150,37 @@ void NotifierWindowBorder::recalculatePositions()
 {
 	m_rct.setHeight(m_iRctHeight);
 	m_rct.setWidth(m_iRctWidth);
-	m_rct.setTopLeft(QPoint(0,0));
+	m_rct.setTopLeft(QPoint(0, 0));
 
-	m_closeIconRect.setX(m_rct.width()-m_pixCaptionDX->width()-m_pixIconClose->width());
+	m_closeIconRect.setX(m_rct.width() - m_pixCaptionDX->width() - m_pixIconClose->width());
 	m_closeIconRect.setY(2);
 	m_closeIconRect.setWidth(m_pixIconClose->width());
 	m_closeIconRect.setHeight(m_pixIconClose->height());
 
-	m_captionRect.setTopLeft( m_rct.topLeft() );
-	m_captionRect.setSize( QSize(m_rct.width(),m_pixCaptionDX->height()) );
+	m_captionRect.setTopLeft(m_rct.topLeft());
+	m_captionRect.setSize(QSize(m_rct.width(), m_pixCaptionDX->height()));
 
-	m_bodyRect.setTopLeft( QPoint(m_pixCaptionDX->width(),m_captionRect.height()) );
-	m_bodyRect.setSize( QSize(m_captionRect.width()-(2*m_pixCaptionDX->width()),m_rct.height()-m_captionRect.height()-m_pixDWN->height()) );
+	m_bodyRect.setTopLeft(QPoint(m_pixCaptionDX->width(), m_captionRect.height()));
+	m_bodyRect.setSize(QSize(m_captionRect.width() - (2 * m_pixCaptionDX->width()), m_rct.height() - m_captionRect.height() - m_pixDWN->height()));
 
-	m_titleRect.setTopLeft( QPoint(m_pixCaptionSX->width(),0) );
-	m_titleRect.setSize( QSize(m_rct.width()-m_pixCaptionSX->width()-m_pixCaptionDX->width()-m_pixIconClose->width(),m_captionRect.height()));
-
+	m_titleRect.setTopLeft(QPoint(m_pixCaptionSX->width(), 0));
+	m_titleRect.setSize(QSize(m_rct.width() - m_pixCaptionSX->width() - m_pixCaptionDX->width() - m_pixIconClose->width(), m_captionRect.height()));
 }
 
 void NotifierWindowBorder::setCloseIcon(int state)
 {
 	m_eIconState = state;
-	switch (m_eIconState) {
-			case WDG_ICON_OUT: m_pixIconClose = m_pixIconClose_out; break;
-			case WDG_ICON_OVER: m_pixIconClose = m_pixIconClose_over; break;
-			case WDG_ICON_CLICKED: m_pixIconClose = m_pixIconClose_clicked; break;
+	switch(m_eIconState)
+	{
+		case WDG_ICON_OUT:
+			m_pixIconClose = m_pixIconClose_out;
+			break;
+		case WDG_ICON_OVER:
+			m_pixIconClose = m_pixIconClose_over;
+			break;
+		case WDG_ICON_CLICKED:
+			m_pixIconClose = m_pixIconClose_clicked;
+			break;
 	};
 }
 

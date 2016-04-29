@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "libkvidialog.h"
 
 #include "KviLocale.h"
@@ -51,17 +50,17 @@
 static KviPointerList<QWidget> * g_pDialogModuleDialogList;
 
 KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
-	const QString &szCaption,
-	const QString &szText,
-	const QString &szIcon,
-	const QString &szButton0,
-	const QString &szButton1,
-	const QString &szButton2,
-	const QString &szCode,
-	KviKvsVariantList * pMagicParams,
-	KviWindow * pWindow,bool modal)
-: QMessageBox(0),
-	KviKvsCallbackObject("dialog.message",pWindow,szCode,pMagicParams,0)
+    const QString & szCaption,
+    const QString & szText,
+    const QString & szIcon,
+    const QString & szButton0,
+    const QString & szButton1,
+    const QString & szButton2,
+    const QString & szCode,
+    KviKvsVariantList * pMagicParams,
+    KviWindow * pWindow, bool modal)
+    : QMessageBox(0),
+      KviKvsCallbackObject("dialog.message", pWindow, szCode, pMagicParams, 0)
 {
 	setObjectName("dialog_message");
 	setWindowTitle(szCaption);
@@ -69,12 +68,25 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 	setIcon(QMessageBox::NoIcon);
 	setModal(modal);
 	QMessageBox::StandardButtons buttons;
-	bool btn=false;
-	if (!szButton0.isEmpty()) {btn=true;buttons=QMessageBox::Yes;}
-	if (!szButton1.isEmpty()) {btn=true;buttons|=QMessageBox::No;}
-	if (!szButton2.isEmpty()) {btn=true;buttons|=QMessageBox::Cancel; }
+	bool btn = false;
+	if(!szButton0.isEmpty())
+	{
+		btn = true;
+		buttons = QMessageBox::Yes;
+	}
+	if(!szButton1.isEmpty())
+	{
+		btn = true;
+		buttons |= QMessageBox::No;
+	}
+	if(!szButton2.isEmpty())
+	{
+		btn = true;
+		buttons |= QMessageBox::Cancel;
+	}
 
-	if (!btn) buttons=QMessageBox::Ok;
+	if(!btn)
+		buttons = QMessageBox::Ok;
 	setStandardButtons(buttons);
 	setDefaultButton(QMessageBox::Yes);
 	if(szButton2.isEmpty())
@@ -86,15 +98,23 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
 
-	if(pix)setIconPixmap(*pix);
-	else {
-		if(KviQString::equalCI(szIcon,"information"))setIcon(QMessageBox::Information);
-		else if(KviQString::equalCI(szIcon,"warning"))setIcon(QMessageBox::Warning);
-		else if(KviQString::equalCI(szIcon,"critical"))setIcon(QMessageBox::Critical);
+	if(pix)
+		setIconPixmap(*pix);
+	else
+	{
+		if(KviQString::equalCI(szIcon, "information"))
+			setIcon(QMessageBox::Information);
+		else if(KviQString::equalCI(szIcon, "warning"))
+			setIcon(QMessageBox::Warning);
+		else if(KviQString::equalCI(szIcon, "critical"))
+			setIcon(QMessageBox::Critical);
 	}
-	if(!szButton0.isEmpty())setButtonText(QMessageBox::Yes,szButton0);
-	if(!szButton1.isEmpty())setButtonText(QMessageBox::No,szButton1);
-	if(!szButton2.isEmpty())setButtonText(QMessageBox::Cancel,szButton2);
+	if(!szButton0.isEmpty())
+		setButtonText(QMessageBox::Yes, szButton0);
+	if(!szButton1.isEmpty())
+		setButtonText(QMessageBox::No, szButton1);
+	if(!szButton2.isEmpty())
+		setButtonText(QMessageBox::Cancel, szButton2);
 }
 
 KviKvsCallbackMessageBox::~KviKvsCallbackMessageBox()
@@ -110,8 +130,12 @@ void KviKvsCallbackMessageBox::done(int code)
 
 	switch(code)
 	{
-		case QMessageBox::No: iVal = 1; break;
-		case QMessageBox::Cancel: iVal = 2; break;
+		case QMessageBox::No:
+			iVal = 1;
+			break;
+		case QMessageBox::Cancel:
+			iVal = 2;
+			break;
 		case 0:
 			// user closed the dialog, fake an "escape button" press
 			if(standardButtons() & QMessageBox::Cancel)
@@ -127,7 +151,6 @@ void KviKvsCallbackMessageBox::done(int code)
 	execute(&params);
 	deleteLater();
 }
-
 
 /*
 	@doc: dialog.message
@@ -183,45 +206,46 @@ void KviKvsCallbackMessageBox::done(int code)
 
 static bool dialog_kvs_cmd_message(KviKvsModuleCallbackCommandCall * c)
 {
-	QString szCaption,szMessage,szIcon,szButton0,szButton1,szButton2;
+	QString szCaption, szMessage, szIcon, szButton0, szButton1, szButton2;
 	KviKvsVariantList params;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("caption",KVS_PT_STRING,0,szCaption)
-		KVSM_PARAMETER("message",KVS_PT_STRING,0,szMessage)
-		KVSM_PARAMETER("icon",KVS_PT_STRING,0,szIcon)
-		KVSM_PARAMETER("button0",KVS_PT_STRING,KVS_PF_OPTIONAL,szButton0)
-		KVSM_PARAMETER("button1",KVS_PT_STRING,KVS_PF_OPTIONAL,szButton1)
-		KVSM_PARAMETER("button2",KVS_PT_STRING,KVS_PF_OPTIONAL,szButton2)
-		KVSM_PARAMETER("magic",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,params)
+	KVSM_PARAMETER("caption", KVS_PT_STRING, 0, szCaption)
+	KVSM_PARAMETER("message", KVS_PT_STRING, 0, szMessage)
+	KVSM_PARAMETER("icon", KVS_PT_STRING, 0, szIcon)
+	KVSM_PARAMETER("button0", KVS_PT_STRING, KVS_PF_OPTIONAL, szButton0)
+	KVSM_PARAMETER("button1", KVS_PT_STRING, KVS_PF_OPTIONAL, szButton1)
+	KVSM_PARAMETER("button2", KVS_PT_STRING, KVS_PF_OPTIONAL, szButton2)
+	KVSM_PARAMETER("magic", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, params)
 	KVSM_PARAMETERS_END(c)
 	bool modal;
-	if(c->hasSwitch('b',"modal")) modal=true;
-	else modal=false;
+	if(c->hasSwitch('b', "modal"))
+		modal = true;
+	else
+		modal = false;
 	QString szCmd = c->callback()->code();
 
 	KviKvsCallbackMessageBox * box = new KviKvsCallbackMessageBox(
-			szCaption,szMessage,szIcon,szButton0,szButton1,szButton2,szCmd,&params,c->window(),modal);
+	    szCaption, szMessage, szIcon, szButton0, szButton1, szButton2, szCmd, &params, c->window(), modal);
 	box->show();
 
 	return true;
 }
 
-
 KviKvsCallbackTextInput::KviKvsCallbackTextInput(
-		const QString &szCaption,
-		const QString &szLabel,
-		const QString &szDefaultText,
-		const QString &szIcon,
-		bool bMultiLine,
-		bool bPassword,
-		const QString &szButton0,
-		const QString &szButton1,
-		const QString &szButton2,
-		const QString &szCode,
-		KviKvsVariantList * pMagicParams,
-		KviWindow * pWindow,bool modal)
-	: QDialog(), KviKvsCallbackObject("dialog.textinput",pWindow,szCode,pMagicParams,0)
+    const QString & szCaption,
+    const QString & szLabel,
+    const QString & szDefaultText,
+    const QString & szIcon,
+    bool bMultiLine,
+    bool bPassword,
+    const QString & szButton0,
+    const QString & szButton1,
+    const QString & szButton2,
+    const QString & szCode,
+    KviKvsVariantList * pMagicParams,
+    KviWindow * pWindow, bool modal)
+    : QDialog(), KviKvsCallbackObject("dialog.textinput", pWindow, szCode, pMagicParams, 0)
 {
 	setObjectName("dialog_textinput");
 	g_pDialogModuleDialogList->append(this);
@@ -238,15 +262,17 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 		QLabel * il = new QLabel(this);
 		il->setPixmap(*pix);
 		il->setAlignment(Qt::AlignCenter);
-		g->addWidget(il,0,0);
-		QLabel * tl = new QLabel(szLabel,this);
-		g->addWidget(tl,0,1);
-	} else {
-		QLabel * tl = new QLabel(szLabel,this);
-		g->addWidget(tl,0,0,1,2);
+		g->addWidget(il, 0, 0);
+		QLabel * tl = new QLabel(szLabel, this);
+		g->addWidget(tl, 0, 1);
+	}
+	else
+	{
+		QLabel * tl = new QLabel(szLabel, this);
+		g->addWidget(tl, 0, 0, 1, 2);
 	}
 
-	g->setColumnStretch(1,1);
+	g->setColumnStretch(1, 1);
 
 	m_bMultiLine = bMultiLine;
 	m_bPassword = bPassword;
@@ -256,18 +282,20 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 		m_pEdit = new QTextEdit(this);
 		((QTextEdit *)m_pEdit)->setPlainText(szDefaultText);
 		((QTextEdit *)m_pEdit)->selectAll();
-	} else {
+	}
+	else
+	{
 		m_pEdit = new QLineEdit(this);
-		if (m_bPassword)
+		if(m_bPassword)
 			((QLineEdit *)m_pEdit)->setEchoMode(QLineEdit::Password);
 		((QLineEdit *)m_pEdit)->setText(szDefaultText);
 		((QLineEdit *)m_pEdit)->selectAll();
 	}
 
-	g->addWidget(m_pEdit,1,1,1,1);
+	g->addWidget(m_pEdit, 1, 1, 1, 1);
 
 	KviTalHBox * box = new KviTalHBox(this);
-	g->addWidget(box,2,1,1,2);
+	g->addWidget(box, 2, 1, 1, 2);
 
 	m_iEscapeButton = -1;
 	m_iDefaultButton = 0;
@@ -276,57 +304,63 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 	{
 		QString szB = szButton0;
 		bool bDef = false;
-		if(KviQString::equalCIN(szB,"default=",8))
+		if(KviQString::equalCIN(szB, "default=", 8))
 		{
 			bDef = true;
-			szB.remove(0,8);
+			szB.remove(0, 8);
 			m_iDefaultButton = 0;
-		} else if(KviQString::equalCIN(szB,"escape=",7))
+		}
+		else if(KviQString::equalCIN(szB, "escape=", 7))
 		{
-			szB.remove(0,7);
+			szB.remove(0, 7);
 			m_iEscapeButton = 0;
 		}
-		QPushButton * pb1 = new QPushButton(szB,box);
-		if(bDef)pb1->setDefault(true);
-		connect(pb1,SIGNAL(clicked()),this,SLOT(b0Clicked()));
+		QPushButton * pb1 = new QPushButton(szB, box);
+		if(bDef)
+			pb1->setDefault(true);
+		connect(pb1, SIGNAL(clicked()), this, SLOT(b0Clicked()));
 	}
 
 	if(!szButton1.isEmpty())
 	{
 		QString szB = szButton1;
 		bool bDef = false;
-		if(KviQString::equalCIN(szB,"default=",8))
+		if(KviQString::equalCIN(szB, "default=", 8))
 		{
 			bDef = true;
-			szB.remove(0,8);
+			szB.remove(0, 8);
 			m_iDefaultButton = 1;
-		} else if(KviQString::equalCIN(szB,"escape=",7))
+		}
+		else if(KviQString::equalCIN(szB, "escape=", 7))
 		{
-			szB.remove(0,7);
+			szB.remove(0, 7);
 			m_iEscapeButton = 1;
 		}
-		QPushButton * pb2 = new QPushButton(szB,box);
-		if(bDef)pb2->setDefault(true);
-		connect(pb2,SIGNAL(clicked()),this,SLOT(b1Clicked()));
+		QPushButton * pb2 = new QPushButton(szB, box);
+		if(bDef)
+			pb2->setDefault(true);
+		connect(pb2, SIGNAL(clicked()), this, SLOT(b1Clicked()));
 	}
 
 	if(!szButton2.isEmpty())
 	{
 		QString szB = szButton2;
 		bool bDef = false;
-		if(KviQString::equalCIN(szB,"default=",8))
+		if(KviQString::equalCIN(szB, "default=", 8))
 		{
 			bDef = true;
-			szB.remove(0,8);
+			szB.remove(0, 8);
 			m_iDefaultButton = 2;
-		} else if(KviQString::equalCIN(szB,"escape=",7))
+		}
+		else if(KviQString::equalCIN(szB, "escape=", 7))
 		{
-			szB.remove(0,7);
+			szB.remove(0, 7);
 			m_iEscapeButton = 2;
 		}
-		QPushButton * pb3 = new QPushButton(szB,box);
-		if(bDef)pb3->setDefault(true);
-		connect(pb3,SIGNAL(clicked()),this,SLOT(b2Clicked()));
+		QPushButton * pb3 = new QPushButton(szB, box);
+		if(bDef)
+			pb3->setDefault(true);
+		connect(pb3, SIGNAL(clicked()), this, SLOT(b2Clicked()));
 	}
 
 	if(m_iEscapeButton < 0)
@@ -348,23 +382,23 @@ KviKvsCallbackTextInput::~KviKvsCallbackTextInput()
 
 void KviKvsCallbackTextInput::b0Clicked()
 {
-	done(0+10);
+	done(0 + 10);
 }
 
 void KviKvsCallbackTextInput::b1Clicked()
 {
-	done(1+10);
+	done(1 + 10);
 }
 
 void KviKvsCallbackTextInput::b2Clicked()
 {
-	done(2+10);
+	done(2 + 10);
 }
 
-void KviKvsCallbackTextInput::closeEvent(QCloseEvent *e)
+void KviKvsCallbackTextInput::closeEvent(QCloseEvent * e)
 {
 	e->ignore();
-	done(m_iEscapeButton+10);
+	done(m_iEscapeButton + 10);
 }
 
 void KviKvsCallbackTextInput::done(int code)
@@ -372,15 +406,17 @@ void KviKvsCallbackTextInput::done(int code)
 	if(code >= 10)
 	{
 		code -= 10;
-	} else {
+	}
+	else
+	{
 		switch(code)
 		{
 			case QDialog::Accepted:
 				code = m_iDefaultButton;
-			break;
+				break;
 			default:
 				code = m_iEscapeButton;
-			break;
+				break;
 		}
 	}
 
@@ -389,7 +425,9 @@ void KviKvsCallbackTextInput::done(int code)
 	if(m_bMultiLine)
 	{
 		txt = ((QTextEdit *)m_pEdit)->toPlainText();
-	} else {
+	}
+	else
+	{
 		txt = ((QLineEdit *)m_pEdit)->text();
 	}
 
@@ -404,14 +442,13 @@ void KviKvsCallbackTextInput::done(int code)
 	deleteLater();
 }
 
-void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
+void KviKvsCallbackTextInput::showEvent(QShowEvent * e)
 {
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-	move((rect.width() - width())/2,(rect.height() - height())/2);
+	move((rect.width() - width()) / 2, (rect.height() - height()) / 2);
 
 	QDialog::showEvent(e);
 }
-
 
 /*
 	@doc: dialog.textinput
@@ -485,49 +522,49 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 
 static bool dialog_kvs_cmd_textinput(KviKvsModuleCallbackCommandCall * c)
 {
-	QString szCaption,szInfoText,szIcon,szDefaultText,szButton0,szButton1,szButton2;
+	QString szCaption, szInfoText, szIcon, szDefaultText, szButton0, szButton1, szButton2;
 	KviKvsVariantList params;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("caption",KVS_PT_STRING,0,szCaption)
-		KVSM_PARAMETER("info_text",KVS_PT_STRING,0,szInfoText)
-		KVSM_PARAMETER("button0",KVS_PT_STRING,KVS_PF_OPTIONAL,szButton0)
-		KVSM_PARAMETER("button1",KVS_PT_STRING,KVS_PF_OPTIONAL,szButton1)
-		KVSM_PARAMETER("button2",KVS_PT_STRING,KVS_PF_OPTIONAL,szButton2)
-		KVSM_PARAMETER("magic",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,params)
+	KVSM_PARAMETER("caption", KVS_PT_STRING, 0, szCaption)
+	KVSM_PARAMETER("info_text", KVS_PT_STRING, 0, szInfoText)
+	KVSM_PARAMETER("button0", KVS_PT_STRING, KVS_PF_OPTIONAL, szButton0)
+	KVSM_PARAMETER("button1", KVS_PT_STRING, KVS_PF_OPTIONAL, szButton1)
+	KVSM_PARAMETER("button2", KVS_PT_STRING, KVS_PF_OPTIONAL, szButton2)
+	KVSM_PARAMETER("magic", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, params)
 	KVSM_PARAMETERS_END(c)
 
 	QString szCmd = c->callback()->code();
 
-	c->switches()->getAsStringIfExisting('i',"icon",szIcon);
-	c->switches()->getAsStringIfExisting('d',"default",szDefaultText);
+	c->switches()->getAsStringIfExisting('i', "icon", szIcon);
+	c->switches()->getAsStringIfExisting('d', "default", szDefaultText);
 	bool modal;
-	if(c->hasSwitch('b',"modal")) modal=true;
-	else modal=false;
+	if(c->hasSwitch('b', "modal"))
+		modal = true;
+	else
+		modal = false;
 	KviKvsCallbackTextInput * box = new KviKvsCallbackTextInput(
-			szCaption,szInfoText,szDefaultText,szIcon,c->switches()->find('m',"multiline"),c->switches()->find('p',"password"),
-			szButton0,szButton1,szButton2,szCmd,&params,c->window(),modal);
+	    szCaption, szInfoText, szDefaultText, szIcon, c->switches()->find('m', "multiline"), c->switches()->find('p', "password"),
+	    szButton0, szButton1, szButton2, szCmd, &params, c->window(), modal);
 	box->show();
 
 	return true;
 }
 
-
-
 KviKvsCallbackFileDialog::KviKvsCallbackFileDialog(
-		const QString &szCaption,
-		const QString &szInitialSelection,
-		const QString &szFilter,
-		const QString &szCode,
-		KviKvsVariantList * pMagicParams,
-		KviWindow * pWindow,bool modal)
-	: KviFileDialog(
-		szInitialSelection,
-		szFilter,
-		NULL, // parent
-		0,
-		modal
-	), KviKvsCallbackObject("dialog.file",pWindow,szCode,pMagicParams,0)
+    const QString & szCaption,
+    const QString & szInitialSelection,
+    const QString & szFilter,
+    const QString & szCode,
+    KviKvsVariantList * pMagicParams,
+    KviWindow * pWindow, bool modal)
+    : KviFileDialog(
+          szInitialSelection,
+          szFilter,
+          NULL, // parent
+          0,
+          modal),
+      KviKvsCallbackObject("dialog.file", pWindow, szCode, pMagicParams, 0)
 {
 	g_pDialogModuleDialogList->append(this);
 	setWindowTitle(szCaption);
@@ -555,16 +592,20 @@ void KviKvsCallbackFileDialog::done(int code)
 			KviKvsArray * a = new KviKvsArray();
 			QStringList sl = selectedFiles();
 			int idx = 0;
-			for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
+			for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
 			{
-				a->set(idx,new KviKvsVariant(*it));
+				a->set(idx, new KviKvsVariant(*it));
 				idx++;
 			}
 			params.append(new KviKvsVariant(a));
-		} else {
+		}
+		else
+		{
 			params.append(new KviKvsVariant(selectedFiles().at(0)));
 		}
-	} else {
+	}
+	else
+	{
 		params.append(new KviKvsVariant(QString("")));
 	}
 
@@ -620,33 +661,32 @@ void KviKvsCallbackFileDialog::done(int code)
 
 //#warning "Examples for these dialogs!"
 
-
 static bool dialog_kvs_cmd_file(KviKvsModuleCallbackCommandCall * c)
 {
-	QString szMode,szCaption,szInitialSelection,szFilter;
+	QString szMode, szCaption, szInitialSelection, szFilter;
 	KviKvsVariantList params;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("mode",KVS_PT_STRING,0,szMode)
-		KVSM_PARAMETER("caption",KVS_PT_STRING,0,szCaption)
-		KVSM_PARAMETER("initial_selection",KVS_PT_STRING,KVS_PF_OPTIONAL,szInitialSelection)
-		KVSM_PARAMETER("filter",KVS_PT_STRING,KVS_PF_OPTIONAL,szFilter)
-		KVSM_PARAMETER("magic",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,params)
+	KVSM_PARAMETER("mode", KVS_PT_STRING, 0, szMode)
+	KVSM_PARAMETER("caption", KVS_PT_STRING, 0, szCaption)
+	KVSM_PARAMETER("initial_selection", KVS_PT_STRING, KVS_PF_OPTIONAL, szInitialSelection)
+	KVSM_PARAMETER("filter", KVS_PT_STRING, KVS_PF_OPTIONAL, szFilter)
+	KVSM_PARAMETER("magic", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, params)
 	KVSM_PARAMETERS_END(c)
 
-	bool modal = c->hasSwitch('b',"modal");
+	bool modal = c->hasSwitch('b', "modal");
 
 	QString szCmd = c->callback()->code();
 
-	KviKvsCallbackFileDialog * box = new KviKvsCallbackFileDialog(szCaption,szInitialSelection,szFilter,szCmd,&params,c->window(),modal);
+	KviKvsCallbackFileDialog * box = new KviKvsCallbackFileDialog(szCaption, szInitialSelection, szFilter, szCmd, &params, c->window(), modal);
 
 	KviFileDialog::FileMode md = KviFileDialog::ExistingFile;
 
-	if(KviQString::equalCI(szMode,"open"))
+	if(KviQString::equalCI(szMode, "open"))
 		md = KviFileDialog::ExistingFiles;
-	else if(KviQString::equalCI(szMode,"save"))
+	else if(KviQString::equalCI(szMode, "save"))
 		md = KviFileDialog::AnyFile;
-	else if(KviQString::equalCI(szMode,"dir"))
+	else if(KviQString::equalCI(szMode, "dir"))
 		md = KviFileDialog::DirectoryOnly;
 
 	box->setFileMode(md);
@@ -656,16 +696,15 @@ static bool dialog_kvs_cmd_file(KviKvsModuleCallbackCommandCall * c)
 	return true;
 }
 
-
 KviKvsCallbackImageDialog::KviKvsCallbackImageDialog(
-		const QString &szCaption,
-		const QString &szInitialSelection,
-		int iType,
-		int iMaxSize,
-		const QString &szCode,
-		KviKvsVariantList * pMagicParams,
-		KviWindow * pWindow,bool modal)
-	: KviImageDialog(0,szCaption,iType,0,szInitialSelection,iMaxSize,modal), KviKvsCallbackObject("dialog.image",pWindow,szCode,pMagicParams,0)
+    const QString & szCaption,
+    const QString & szInitialSelection,
+    int iType,
+    int iMaxSize,
+    const QString & szCode,
+    KviKvsVariantList * pMagicParams,
+    KviWindow * pWindow, bool modal)
+    : KviImageDialog(0, szCaption, iType, 0, szInitialSelection, iMaxSize, modal), KviKvsCallbackObject("dialog.image", pWindow, szCode, pMagicParams, 0)
 {
 	g_pDialogModuleDialogList->append(this);
 	setObjectName("dialog_image");
@@ -684,7 +723,9 @@ void KviKvsCallbackImageDialog::done(int code)
 	if(code == QDialog::Accepted)
 	{
 		params.append(new KviKvsVariant(selectedImage()));
-	} else {
+	}
+	else
+	{
 		params.append(new KviKvsVariant(QString("")));
 	}
 
@@ -693,7 +734,6 @@ void KviKvsCallbackImageDialog::done(int code)
 	execute(&params);
 	deleteLater();
 }
-
 
 /*
 	@doc: dialog.image
@@ -740,34 +780,39 @@ void KviKvsCallbackImageDialog::done(int code)
 
 //#warning "Examples for these dialogs!"
 
-
 static bool dialog_kvs_cmd_image(KviKvsModuleCallbackCommandCall * c)
 {
-	QString szType,szCaption,szInitialSelection;
+	QString szType, szCaption, szInitialSelection;
 	kvs_uint_t iMaxSize;
 	KviKvsVariantList params;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("mode",KVS_PT_STRING,0,szType)
-		KVSM_PARAMETER("caption",KVS_PT_STRING,0,szCaption)
-		KVSM_PARAMETER("initial_directory",KVS_PT_STRING,0,szInitialSelection)
-		KVSM_PARAMETER("maxsize",KVS_PT_UINT,KVS_PF_OPTIONAL,iMaxSize)
-		KVSM_PARAMETER("magic",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,params)
+	KVSM_PARAMETER("mode", KVS_PT_STRING, 0, szType)
+	KVSM_PARAMETER("caption", KVS_PT_STRING, 0, szCaption)
+	KVSM_PARAMETER("initial_directory", KVS_PT_STRING, 0, szInitialSelection)
+	KVSM_PARAMETER("maxsize", KVS_PT_UINT, KVS_PF_OPTIONAL, iMaxSize)
+	KVSM_PARAMETER("magic", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, params)
 	KVSM_PARAMETERS_END(c)
 	bool modal;
-	if(c->hasSwitch('b',"modal")) modal=true;
-	else modal=false;
+	if(c->hasSwitch('b', "modal"))
+		modal = true;
+	else
+		modal = false;
 	QString szCmd = c->callback()->code();
 
 	int iType = 0;
 
-	if(szType.contains('s'))iType |= KID_TYPE_BUILTIN_IMAGES_SMALL;
-	if(szType.contains('f'))iType |= KID_TYPE_FULL_PATH;
-	if(szType.isEmpty())iType = KID_TYPE_ALL;
+	if(szType.contains('s'))
+		iType |= KID_TYPE_BUILTIN_IMAGES_SMALL;
+	if(szType.contains('f'))
+		iType |= KID_TYPE_FULL_PATH;
+	if(szType.isEmpty())
+		iType = KID_TYPE_ALL;
 
-	if(iMaxSize < 1)iMaxSize = 256000;
+	if(iMaxSize < 1)
+		iMaxSize = 256000;
 
-	KviKvsCallbackImageDialog * box = new KviKvsCallbackImageDialog(szCaption,szInitialSelection,iType,iMaxSize,szCmd,&params,c->window(),modal);
+	KviKvsCallbackImageDialog * box = new KviKvsCallbackImageDialog(szCaption, szInitialSelection, iType, iMaxSize, szCmd, &params, c->window(), modal);
 
 	box->show();
 
@@ -797,13 +842,14 @@ static bool dialog_kvs_fnc_yesno(KviKvsModuleFunctionCall * c)
 	QString szCaption;
 	QString szText;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("caption",KVS_PT_STRING,0,szCaption)
-		KVSM_PARAMETER("text",KVS_PT_STRING,0,szText)
+	KVSM_PARAMETER("caption", KVS_PT_STRING, 0, szCaption)
+	KVSM_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSM_PARAMETERS_END(c)
 
 	c->enterBlockingSection();
-	bool yes=KviMessageBox::yesNo(szCaption,szText); // this will happily crash on quit ?
-	if(!c->leaveBlockingSection())return true; // just die
+	bool yes = KviMessageBox::yesNo(szCaption, szText); // this will happily crash on quit ?
+	if(!c->leaveBlockingSection())
+		return true; // just die
 	c->returnValue()->setBoolean(yes);
 	return true;
 }
@@ -890,16 +936,16 @@ static bool dialog_module_fnc_textline(KviModule *m,KviCommand *c,KviParameterLi
 		That's REAL programming.
 */
 
-static bool dialog_module_init(KviModule *m)
+static bool dialog_module_init(KviModule * m)
 {
 	g_pDialogModuleDialogList = new KviPointerList<QWidget>;
 	g_pDialogModuleDialogList->setAutoDelete(false);
 
-	KVSM_REGISTER_CALLBACK_COMMAND(m,"message",dialog_kvs_cmd_message);
-	KVSM_REGISTER_CALLBACK_COMMAND(m,"textinput",dialog_kvs_cmd_textinput);
-	KVSM_REGISTER_CALLBACK_COMMAND(m,"file",dialog_kvs_cmd_file);
-	KVSM_REGISTER_CALLBACK_COMMAND(m,"image",dialog_kvs_cmd_image);
-	KVSM_REGISTER_FUNCTION(m,"yesno",dialog_kvs_fnc_yesno);
+	KVSM_REGISTER_CALLBACK_COMMAND(m, "message", dialog_kvs_cmd_message);
+	KVSM_REGISTER_CALLBACK_COMMAND(m, "textinput", dialog_kvs_cmd_textinput);
+	KVSM_REGISTER_CALLBACK_COMMAND(m, "file", dialog_kvs_cmd_file);
+	KVSM_REGISTER_CALLBACK_COMMAND(m, "image", dialog_kvs_cmd_image);
+	KVSM_REGISTER_FUNCTION(m, "yesno", dialog_kvs_fnc_yesno);
 
 	return true;
 }
@@ -907,7 +953,8 @@ static bool dialog_module_init(KviModule *m)
 static bool dialog_module_cleanup(KviModule *)
 {
 	// Here we get a tragedy if g_iLocalEventLoops > 0!
-	while(g_pDialogModuleDialogList->first())delete g_pDialogModuleDialogList->first();
+	while(g_pDialogModuleDialogList->first())
+		delete g_pDialogModuleDialogList->first();
 	delete g_pDialogModuleDialogList;
 	g_pDialogModuleDialogList = 0;
 	return true;
@@ -918,15 +965,13 @@ static bool dialog_module_can_unload(KviModule *)
 	return g_pDialogModuleDialogList->isEmpty();
 }
 
-
 KVIRC_MODULE(
-	"KVIrc script dialogs",
-	"4.0.0",
-	"Szymon Stefanek <pragma at kvirc dot net>",
-	"Adds the /dialog.* commands functionality\n",
-	dialog_module_init,
-	dialog_module_can_unload,
-	0,
-	dialog_module_cleanup,
-	0
-)
+    "KVIrc script dialogs",
+    "4.0.0",
+    "Szymon Stefanek <pragma at kvirc dot net>",
+    "Adds the /dialog.* commands functionality\n",
+    dialog_module_init,
+    dialog_module_can_unload,
+    0,
+    dialog_module_cleanup,
+    0)

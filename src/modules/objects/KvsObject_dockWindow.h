@@ -34,9 +34,9 @@ class KvsObject_dockWindow : public KvsObject_widget
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_dockWindow)
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool addWidget(KviKvsObjectFunctionCall *c);
+	bool addWidget(KviKvsObjectFunctionCall * c);
 	bool setAllowedDockAreas(KviKvsObjectFunctionCall * c);
 	bool dock(KviKvsObjectFunctionCall * c);
 };

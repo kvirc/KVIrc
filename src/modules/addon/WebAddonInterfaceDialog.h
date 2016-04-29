@@ -28,7 +28,6 @@
 
 #ifdef COMPILE_WEBKIT_SUPPORT
 
-
 #include "KviWebPackageManagementDialog.h"
 
 ///
@@ -42,7 +41,6 @@ class WebAddonInterfaceDialog : public KviWebPackageManagementDialog
 	Q_OBJECT
 
 public:
-
 	///
 	/// Creates an instance of WebAddonInterfaceDialog
 	///
@@ -55,11 +53,10 @@ public:
 	virtual ~WebAddonInterfaceDialog();
 
 protected:
-	virtual bool packageIsInstalled(const QString &szId,const QString &szVersion);
-	virtual bool installPackage(const QString &szPath,QString &szError);
+	virtual bool packageIsInstalled(const QString & szId, const QString & szVersion);
+	virtual bool installPackage(const QString & szPath, QString & szError);
 
 }; // class WebAddonInterfaceDialog
-
 
 #endif //COMPILE_WEBKIT_SUPPORT
 

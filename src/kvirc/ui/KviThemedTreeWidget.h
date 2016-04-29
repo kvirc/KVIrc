@@ -38,10 +38,13 @@ class KVIRC_API KviThemedTreeWidget : public QTreeWidget
 public:
 	KviThemedTreeWidget(QWidget * par, KviWindow * pWindow, const char * name);
 	~KviThemedTreeWidget();
+
 protected:
 	KviWindow * m_pKviWindow;
+
 protected:
-	virtual void paintEvent ( QPaintEvent * event );
+	virtual void paintEvent(QPaintEvent * event);
+
 public:
 	int dummyRead() const { return 0; };
 	void applyOptions();

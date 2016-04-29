@@ -37,7 +37,6 @@
 //  -mouser 1/08/05
 //---------------------------------------------------------------------------
 
-
 //
 //    BLOWFISH ENCRYPTION ALGORITHM
 //
@@ -77,42 +76,51 @@
 
 #if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
 
-
 //Block Structure
 struct SBlock
 {
 	//Constructors
-	SBlock(unsigned int l=0, unsigned int r=0) : m_uil(l), m_uir(r) {}
+	SBlock(unsigned int l = 0, unsigned int r = 0) : m_uil(l), m_uir(r) {}
 	//Copy Constructor
-	SBlock(const SBlock& roBlock) : m_uil(roBlock.m_uil), m_uir(roBlock.m_uir) {}
-	SBlock& operator^=(SBlock& b) { m_uil ^= b.m_uil; m_uir ^= b.m_uir; return *this; }
+	SBlock(const SBlock & roBlock) : m_uil(roBlock.m_uil), m_uir(roBlock.m_uir) {}
+	SBlock & operator^=(SBlock & b)
+	{
+		m_uil ^= b.m_uil;
+		m_uir ^= b.m_uir;
+		return *this;
+	}
 	unsigned int m_uil, m_uir;
 };
 
 class BlowFish
 {
 public:
-	enum { ECB=0, CBC=1, CFB=2 };
+	enum
+	{
+		ECB = 0,
+		CBC = 1,
+		CFB = 2
+	};
 
 	//Constructor - Initialize the P and S boxes for a given Key
-	BlowFish(unsigned char* ucKey, unsigned int n, const SBlock& roChain = SBlock(0UL,0UL));
+	BlowFish(unsigned char * ucKey, unsigned int n, const SBlock & roChain = SBlock(0UL, 0UL));
 
 	//Resetting the chaining block
 	void ResetChain() { m_oChain = m_oChain0; }
 
 	// Encrypt/Decrypt Buffer in Place
-	void Encrypt(unsigned char* buf, unsigned int n, int iMode=ECB);
-	void Decrypt(unsigned char* buf, unsigned int n, int iMode=ECB);
+	void Encrypt(unsigned char * buf, unsigned int n, int iMode = ECB);
+	void Decrypt(unsigned char * buf, unsigned int n, int iMode = ECB);
 
 	// Encrypt/Decrypt from Input Buffer to Output Buffer
-	void Encrypt(const unsigned char* in, unsigned char* out, unsigned int n, int iMode=ECB);
-	void Decrypt(const unsigned char* in, unsigned char* out, unsigned int n, int iMode=ECB);
+	void Encrypt(const unsigned char * in, unsigned char * out, unsigned int n, int iMode = ECB);
+	void Decrypt(const unsigned char * in, unsigned char * out, unsigned int n, int iMode = ECB);
 
-//Private Functions
+	//Private Functions
 private:
 	unsigned int F(unsigned int ui);
-	void Encrypt(SBlock&);
-	void Decrypt(SBlock&);
+	void Encrypt(SBlock &);
+	void Decrypt(SBlock &);
 
 private:
 	//The Initialization Vector, by default {0, 0}
@@ -133,7 +141,7 @@ inline unsigned char Byte(unsigned int ui)
 //Function F
 inline unsigned int BlowFish::F(unsigned int ui)
 {
-	return ((m_auiS[0][Byte(ui>>24)] + m_auiS[1][Byte(ui>>16)]) ^ m_auiS[2][Byte(ui>>8)]) + m_auiS[3][Byte(ui)];
+	return ((m_auiS[0][Byte(ui >> 24)] + m_auiS[1][Byte(ui >> 16)]) ^ m_auiS[2][Byte(ui >> 8)]) + m_auiS[3][Byte(ui)];
 }
 
 #endif //COMPILE_CRYPT_SUPPORT

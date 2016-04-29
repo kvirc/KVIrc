@@ -30,7 +30,6 @@
 
 ActionEditorWindow * g_pActionEditorWindow = 0;
 
-
 /*
 	@doc: actioneditor.open
 	@type:
@@ -59,7 +58,7 @@ static bool actioneditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 
 static bool actioneditor_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",actioneditor_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", actioneditor_kvs_cmd_open);
 	g_pActionEditorWindow = 0;
 	return true;
 }
@@ -78,13 +77,12 @@ static bool actioneditor_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"ActionEditor",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Editor for the script actions",
-	actioneditor_module_init,
-	actioneditor_module_can_unload,
-	0,
-	actioneditor_module_cleanup,
-	"editor"
-)
+    "ActionEditor",                                                 // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Editor for the script actions",
+    actioneditor_module_init,
+    actioneditor_module_can_unload,
+    0,
+    actioneditor_module_cleanup,
+    "editor")

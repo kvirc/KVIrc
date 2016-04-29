@@ -33,23 +33,23 @@
 #include <QMouseEvent>
 #include <QMenu>
 
-static QMenu * g_pToolBarContextPopup     = 0;
-static QMenu * g_pToolBarWindowsPopup     = 0;
-static QMenu * g_pToolBarIconSizesPopup   = 0;
+static QMenu * g_pToolBarContextPopup = 0;
+static QMenu * g_pToolBarWindowsPopup = 0;
+static QMenu * g_pToolBarIconSizesPopup = 0;
 static QMenu * g_pToolBarButtonStylePopup = 0;
-static uint              uToolBarInstances          = 0;
+static uint uToolBarInstances = 0;
 
 KviToolBar::KviToolBar(const QString & szLabel, Qt::ToolBarArea type, const char * pcName)
-: QToolBar(szLabel,g_pMainWindow)
+    : QToolBar(szLabel, g_pMainWindow)
 {
 	uToolBarInstances++;
 
 	unsigned int uIconSize = KVI_OPTION_UINT(KviOption_uintToolBarIconSize);
-	setIconSize(QSize(uIconSize,uIconSize));
-	setToolButtonStyle((Qt::ToolButtonStyle) KVI_OPTION_UINT(KviOption_uintToolBarButtonStyle));
+	setIconSize(QSize(uIconSize, uIconSize));
+	setToolButtonStyle((Qt::ToolButtonStyle)KVI_OPTION_UINT(KviOption_uintToolBarButtonStyle));
 
 	setObjectName(pcName);
-	g_pMainWindow->addToolBar(type,this);
+	g_pMainWindow->addToolBar(type, this);
 }
 
 KviToolBar::~KviToolBar()
@@ -69,27 +69,25 @@ KviToolBar::~KviToolBar()
 			delete g_pToolBarContextPopup;
 
 		g_pToolBarButtonStylePopup = 0;
-		g_pToolBarIconSizesPopup   = 0;
-		g_pToolBarWindowsPopup     = 0;
-		g_pToolBarContextPopup     = 0;
+		g_pToolBarIconSizesPopup = 0;
+		g_pToolBarWindowsPopup = 0;
+		g_pToolBarContextPopup = 0;
 	}
 }
 
 #define VALID_ICONSIZES_NUM 2
-static KviToolBar::IconSizes valid_iconsizes[VALID_ICONSIZES_NUM] =
-{
-	{ 16, "Small (16x16)"  },
-	{ 32, "Large (32x32)"  },
+static KviToolBar::IconSizes valid_iconsizes[VALID_ICONSIZES_NUM] = {
+	{ 16, "Small (16x16)" },
+	{ 32, "Large (32x32)" },
 };
 
 #define VALID_BUTTONSTYLES_NUM 5
-static KviToolBar::ButtonStyles valid_buttonstyles[VALID_BUTTONSTYLES_NUM] =
-{
-	{ Qt::ToolButtonIconOnly       , "Icon Only"  },
-	{ Qt::ToolButtonTextOnly       , "Text Only" },
-	{ Qt::ToolButtonTextBesideIcon , "Text Beside Icon"  },
-	{ Qt::ToolButtonTextUnderIcon  , "Text Under Icon"   },
-	{ Qt::ToolButtonFollowStyle    , "Use System Style" }
+static KviToolBar::ButtonStyles valid_buttonstyles[VALID_BUTTONSTYLES_NUM] = {
+	{ Qt::ToolButtonIconOnly, "Icon Only" },
+	{ Qt::ToolButtonTextOnly, "Text Only" },
+	{ Qt::ToolButtonTextBesideIcon, "Text Beside Icon" },
+	{ Qt::ToolButtonTextUnderIcon, "Text Under Icon" },
+	{ Qt::ToolButtonFollowStyle, "Use System Style" }
 };
 
 void KviToolBar::mousePressEvent(QMouseEvent * e)
@@ -102,17 +100,17 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 
 	if(!g_pToolBarContextPopup)
 	{
-        g_pToolBarContextPopup = new QMenu();
-        g_pToolBarIconSizesPopup = new QMenu();
-        g_pToolBarWindowsPopup = new QMenu();
-        g_pToolBarButtonStylePopup = new QMenu();
+		g_pToolBarContextPopup = new QMenu();
+		g_pToolBarIconSizesPopup = new QMenu();
+		g_pToolBarWindowsPopup = new QMenu();
+		g_pToolBarButtonStylePopup = new QMenu();
 
-        QAction *pAction = g_pToolBarContextPopup->addAction(__tr2qs("Toolbars"));
-        pAction->setMenu(g_pToolBarWindowsPopup);
-        pAction = g_pToolBarContextPopup->addAction(__tr2qs("Icon Size"));
-        pAction->setMenu(g_pToolBarIconSizesPopup);
-        pAction = g_pToolBarContextPopup->addAction(__tr2qs("Button Style"));
-        pAction->setMenu(g_pToolBarButtonStylePopup);
+		QAction * pAction = g_pToolBarContextPopup->addAction(__tr2qs("Toolbars"));
+		pAction->setMenu(g_pToolBarWindowsPopup);
+		pAction = g_pToolBarContextPopup->addAction(__tr2qs("Icon Size"));
+		pAction->setMenu(g_pToolBarIconSizesPopup);
+		pAction = g_pToolBarContextPopup->addAction(__tr2qs("Button Style"));
+		pAction->setMenu(g_pToolBarButtonStylePopup);
 
 		// fill toolbars menu
 		g_pMainWindow->fillToolBarsPopup(g_pToolBarWindowsPopup);
@@ -133,7 +131,7 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 				pTmp->setChecked(true);
 		}
 
-		connect(pIconSizeGroup,SIGNAL(triggered(QAction*)),g_pMainWindow,SLOT(iconSizePopupSelected(QAction*)));
+		connect(pIconSizeGroup, SIGNAL(triggered(QAction *)), g_pMainWindow, SLOT(iconSizePopupSelected(QAction *)));
 
 		// fill button style menu
 		QActionGroup * pButtonStyleGroup = new QActionGroup(g_pToolBarButtonStylePopup);
@@ -151,9 +149,7 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 				pTmp->setChecked(true);
 		}
 
-		connect(pButtonStyleGroup,SIGNAL(triggered(QAction*)),g_pMainWindow,SLOT(buttonStylePopupSelected(QAction*)));
-
-
+		connect(pButtonStyleGroup, SIGNAL(triggered(QAction *)), g_pMainWindow, SLOT(buttonStylePopupSelected(QAction *)));
 	}
 
 	g_pToolBarContextPopup->popup(QCursor::pos());

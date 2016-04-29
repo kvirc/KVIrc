@@ -49,16 +49,17 @@ public:
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_userListBackground OptionsWidget_userList
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListBackground 30
 
-
 class OptionsWidget_userListBackground : public KviOptionsWidget
 {
 	Q_OBJECT
 public:
 	OptionsWidget_userListBackground(QWidget * parent);
 	~OptionsWidget_userListBackground();
+
 protected:
-	QComboBox* m_pHorizontalAlign;
-	QComboBox* m_pVerticalAlign;
+	QComboBox * m_pHorizontalAlign;
+	QComboBox * m_pVerticalAlign;
+
 public:
 	virtual void commit();
 };
@@ -69,7 +70,6 @@ public:
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_userListForeground "theme"
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_userListForeground OptionsWidget_userList
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListForeground 20
-
 
 class OptionsWidget_userListForeground : public KviOptionsWidget
 {
@@ -86,15 +86,16 @@ public:
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_userListGrid OptionsWidget_userList
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_userListGrid 30
 
-
 class OptionsWidget_userListGrid : public KviOptionsWidget
 {
 	Q_OBJECT
 public:
 	OptionsWidget_userListGrid(QWidget * parent);
 	~OptionsWidget_userListGrid();
+
 protected:
 	QComboBox * m_pGridTypeCombo;
+
 public:
 	virtual void commit();
 };

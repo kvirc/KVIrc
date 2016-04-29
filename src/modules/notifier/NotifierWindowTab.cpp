@@ -44,22 +44,24 @@
 #include <QWidget>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	#include <QPixmap>
-	extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
+#include <QPixmap>
+extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
 extern NotifierWindow * g_pNotifierWindow;
 
 NotifierWindowTab::NotifierWindowTab(KviWindow * pWnd, QTabWidget * pParent)
-: QScrollArea(pParent)
+    : QScrollArea(pParent)
 {
 	m_pWnd = pWnd;
 	if(m_pWnd)
 	{
 		m_szLabel = m_pWnd->windowName();
-		connect(pWnd,SIGNAL(windowNameChanged()),this,SLOT(labelChanged()));
-		connect(pWnd,SIGNAL(destroyed()),this,SLOT(closeMe()));
-	} else {
+		connect(pWnd, SIGNAL(windowNameChanged()), this, SLOT(labelChanged()));
+		connect(pWnd, SIGNAL(destroyed()), this, SLOT(closeMe()));
+	}
+	else
+	{
 		m_szLabel = "----";
 	}
 
@@ -74,7 +76,7 @@ NotifierWindowTab::NotifierWindowTab(KviWindow * pWnd, QTabWidget * pParent)
 	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 
 	if(verticalScrollBar())
-		connect(verticalScrollBar(),SIGNAL(rangeChanged(int, int)),this, SLOT(scrollRangeChanged(int, int)));
+		connect(verticalScrollBar(), SIGNAL(rangeChanged(int, int)), this, SLOT(scrollRangeChanged(int, int)));
 
 	QPalette pal = palette();
 	pal.setColor(backgroundRole(), Qt::transparent);
@@ -105,7 +107,7 @@ void NotifierWindowTab::appendMessage(NotifierMessage * pMessage)
 	while(m_pVBox->count() > MAX_MESSAGES_IN_WINDOW)
 	{
 		QLayoutItem * pTmp = m_pVBox->takeAt(0);
-		NotifierMessage * pTmp2 = (NotifierMessage*)pTmp->widget();
+		NotifierMessage * pTmp2 = (NotifierMessage *)pTmp->widget();
 		if(pTmp2)
 			pTmp2->deleteLater();
 	}
@@ -113,10 +115,10 @@ void NotifierWindowTab::appendMessage(NotifierMessage * pMessage)
 
 void NotifierWindowTab::updateGui()
 {
-	for(int i=0; i<m_pVBox->count(); ++i)
+	for(int i = 0; i < m_pVBox->count(); ++i)
 	{
 		QLayoutItem * pTmp = m_pVBox->itemAt(i);
-		NotifierMessage * pTmp2 = (NotifierMessage*)pTmp->widget();
+		NotifierMessage * pTmp2 = (NotifierMessage *)pTmp->widget();
 		if(pTmp2)
 			pTmp2->updateGui();
 	}
@@ -180,7 +182,7 @@ void NotifierWindowTab::resizeEvent(QResizeEvent *)
 	{
 		int iWidth = viewport()->width();
 		NotifierMessage * pMessage;
-		for(int i=0; i < m_pVBox->count(); i++)
+		for(int i = 0; i < m_pVBox->count(); i++)
 		{
 			pMessage = (NotifierMessage *)m_pVBox->itemAt(i)->widget();
 			if(pMessage)
@@ -193,34 +195,38 @@ void NotifierWindowTab::paintEvent(QPaintEvent * e)
 {
 	QPainter * pPainter = new QPainter(viewport());
 
-	//make sure you clean your widget with a transparent
-	//  color before doing any rendering
-	//  note the usage of a composition mode Source
-	//  it's important!
+//make sure you clean your widget with a transparent
+//  color before doing any rendering
+//  note the usage of a composition mode Source
+//  it's important!
 
-	#ifdef COMPILE_PSEUDO_TRANSPARENCY
-		if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
-		{
-			pPainter->save();
-			pPainter->setCompositionMode(QPainter::CompositionMode_Source);
-			QColor col = KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
-			col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-			pPainter->fillRect(e->rect(), col);
-			pPainter->restore();
-		} else if(g_pShadedChildGlobalDesktopBackground) // This doesn't work as the text doesn't actually use the right foreground color
-		{
-			QPoint pnt = mapToGlobal(e->rect().topLeft());
-			pPainter->drawTiledPixmap(e->rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
-		} else {
-	#endif
-			QPixmap * pPix = KVI_OPTION_PIXMAP(KviOption_pixmapNotifierBackground).pixmap();
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
+	{
+		pPainter->save();
+		pPainter->setCompositionMode(QPainter::CompositionMode_Source);
+		QColor col = KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
+		pPainter->fillRect(e->rect(), col);
+		pPainter->restore();
+	}
+	else if(g_pShadedChildGlobalDesktopBackground) // This doesn't work as the text doesn't actually use the right foreground color
+	{
+		QPoint pnt = mapToGlobal(e->rect().topLeft());
+		pPainter->drawTiledPixmap(e->rect(), *(g_pShadedChildGlobalDesktopBackground), pnt);
+	}
+	else
+	{
+#endif
+		QPixmap * pPix = KVI_OPTION_PIXMAP(KviOption_pixmapNotifierBackground).pixmap();
 
-			if(pPix)
-				KviPixmapUtils::drawPixmapWithPainter(pPainter,pPix,KVI_OPTION_UINT(KviOption_uintNotifierPixmapAlign),e->rect(),e->rect().width(),e->rect().height());
-			else pPainter->fillRect(e->rect(),KVI_OPTION_COLOR(KviOption_colorNotifierBackground));
-	#ifdef COMPILE_PSEUDO_TRANSPARENCY
-		}
-	#endif
+		if(pPix)
+			KviPixmapUtils::drawPixmapWithPainter(pPainter, pPix, KVI_OPTION_UINT(KviOption_uintNotifierPixmapAlign), e->rect(), e->rect().width(), e->rect().height());
+		else
+			pPainter->fillRect(e->rect(), KVI_OPTION_COLOR(KviOption_colorNotifierBackground));
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	}
+#endif
 
 	delete pPainter;
 	e->ignore();

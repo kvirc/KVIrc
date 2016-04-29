@@ -36,47 +36,49 @@ class KviKvsPopupMenu;
 
 typedef struct _KviScriptMenuBarItem
 {
-	KviCString				szPopupName;
-	KviKvsPopupMenu				* pPopup;
-	KviCString				szText;
+	KviCString szPopupName;
+	KviKvsPopupMenu * pPopup;
+	KviCString szText;
 } KviScriptMenuBarItem;
-
 
 class KVIRC_API KviMenuBar : public KviTalMenuBar
 {
 	Q_OBJECT
 public:
-	KviMenuBar(KviMainWindow * par,const char * name);
+	KviMenuBar(KviMainWindow * par, const char * name);
 	~KviMenuBar();
+
 protected:
-	QMenu					* m_pToolbarsPopup;
-	QMenu					* m_pRecentServersPopup;
-	KviMainWindow				* m_pFrm;
-	QMenu					* m_pModulesToolsPopup;
-	QMenu					* m_pActionsToolsPopup;
-	KviPointerList<KviScriptMenuBarItem>	* m_pScriptItemList;
+	QMenu * m_pToolbarsPopup;
+	QMenu * m_pRecentServersPopup;
+	KviMainWindow * m_pFrm;
+	QMenu * m_pModulesToolsPopup;
+	QMenu * m_pActionsToolsPopup;
+	KviPointerList<KviScriptMenuBarItem> * m_pScriptItemList;
 	// Dynamic actions
-	QAction					* m_pMenuBarAction;
-	QAction					* m_pStatusBarAction;
-	QAction					* m_pDisconnectAction;
-	QAction					* m_pModulesToolsAction;
-	QAction					* m_pActionsToolsAction;
+	QAction * m_pMenuBarAction;
+	QAction * m_pStatusBarAction;
+	QAction * m_pDisconnectAction;
+	QAction * m_pModulesToolsAction;
+	QAction * m_pActionsToolsAction;
+
 protected:
-	KviScriptMenuBarItem * findMenu(const QString &text);
+	KviScriptMenuBarItem * findMenu(const QString & text);
 	KviScriptMenuBarItem * findMenu(KviKvsPopupMenu * p);
-	void addDefaultItem(const QString &text,QMenu * pop);
+	void addDefaultItem(const QString & text, QMenu * pop);
+
 public:
 	int getDefaultItemRealIndex(int iDefaultIndex);
-	void addMenu(const QString &text,KviKvsPopupMenu * p,int index);
-	bool removeMenu(const QString &text);
+	void addMenu(const QString & text, KviKvsPopupMenu * p, int index);
+	bool removeMenu(const QString & text);
 protected slots:
 	void menuDestroyed();
 
-	void setupMainPopup(QMenu *pop=0);
-	void setupSettingsPopup(QMenu *pop=0);
-	void setupHelpPopup(QMenu *pop=0);
-	void setupScriptingPopup(QMenu *pop=0);
-	void setupToolsPopup(QMenu *pop=0);
+	void setupMainPopup(QMenu * pop = 0);
+	void setupSettingsPopup(QMenu * pop = 0);
+	void setupHelpPopup(QMenu * pop = 0);
+	void setupScriptingPopup(QMenu * pop = 0);
+	void setupToolsPopup(QMenu * pop = 0);
 
 	void updateMainPopup();
 	void updateSettingsPopup();
@@ -86,9 +88,9 @@ protected slots:
 	void updateActionsToolsPopup();
 	void updateToolsPopup();
 
-	void newConnectionToServer(QAction *pAction);
-	void modulesToolsTriggered(QAction *pAction);
-	void actionTriggered(QAction *pAction);
+	void newConnectionToServer(QAction * pAction);
+	void modulesToolsTriggered(QAction * pAction);
+	void actionTriggered(QAction * pAction);
 	void actionTriggered(bool);
 };
 

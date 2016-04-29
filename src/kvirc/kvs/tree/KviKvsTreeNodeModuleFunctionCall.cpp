@@ -30,9 +30,8 @@
 #include "KviKvsModuleInterface.h"
 #include "KviKvsRunTimeContext.h"
 
-
-KviKvsTreeNodeModuleFunctionCall::KviKvsTreeNodeModuleFunctionCall(const QChar * pLocation,const QString &szModuleName,const QString &szFncName,KviKvsTreeNodeDataList * pParams)
-: KviKvsTreeNodeFunctionCall(pLocation,szFncName,pParams)
+KviKvsTreeNodeModuleFunctionCall::KviKvsTreeNodeModuleFunctionCall(const QChar * pLocation, const QString & szModuleName, const QString & szFncName, KviKvsTreeNodeDataList * pParams)
+    : KviKvsTreeNodeFunctionCall(pLocation, szFncName, pParams)
 {
 	m_szModuleName = szModuleName;
 }
@@ -41,7 +40,7 @@ KviKvsTreeNodeModuleFunctionCall::~KviKvsTreeNodeModuleFunctionCall()
 {
 }
 
-void KviKvsTreeNodeModuleFunctionCall::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeModuleFunctionCall::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Module Function Call \"";
 	szBuffer += m_szModuleName;
@@ -52,35 +51,36 @@ void KviKvsTreeNodeModuleFunctionCall::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeModuleFunctionCall::dump(const char * prefix)
 {
-	qDebug("%s ModuleFunctionCall(%s.%s)",prefix,m_szModuleName.toUtf8().data(),m_szFunctionName.toUtf8().data());
+	qDebug("%s ModuleFunctionCall(%s.%s)", prefix, m_szModuleName.toUtf8().data(), m_szFunctionName.toUtf8().data());
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pParams->dump(tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeModuleFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeModuleFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	KviModule * m = g_pModuleManager->getModule(m_szModuleName);
 	if(!m)
 	{
 		QString szErr = g_pModuleManager->lastError();
-		c->error(this,__tr2qs_ctx("Module function call failed: can't load the module '%Q': %Q","kvs"),&m_szModuleName,&szErr);
+		c->error(this, __tr2qs_ctx("Module function call failed: can't load the module '%Q': %Q", "kvs"), &m_szModuleName, &szErr);
 		return false;
 	}
 
 	KviKvsModuleFunctionExecRoutine * proc = m->kvsFindFunction(m_szFunctionName);
 	if(!proc)
 	{
-		c->error(this,__tr2qs_ctx("Module function call failed: the module '%Q' doesn't export a function named '%Q'","kvs"),&m_szModuleName,&m_szFunctionName);
+		c->error(this, __tr2qs_ctx("Module function call failed: the module '%Q' doesn't export a function named '%Q'", "kvs"), &m_szModuleName, &m_szFunctionName);
 		return false;
 	}
 
 	KviKvsVariantList l;
-	if(!m_pParams->evaluate(c,&l))return false;
+	if(!m_pParams->evaluate(c, &l))
+		return false;
 
 	pBuffer->setNothing();
 	c->setDefaultReportLocation(this);
-	KviKvsModuleFunctionCall call(m,c,&l,pBuffer);
+	KviKvsModuleFunctionCall call(m, c, &l, pBuffer);
 
 	return (*proc)(&call);
 }

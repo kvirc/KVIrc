@@ -24,12 +24,11 @@
 //
 //=============================================================================
 
-
 #include "KvsObject_widget.h"
 #include <QListWidget>
 #include "object_macros.h"
 
-class KvsObject_listWidget: public KvsObject_widget
+class KvsObject_listWidget : public KvsObject_widget
 {
 	Q_OBJECT
 public:
@@ -37,45 +36,42 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-
-	bool insertItem(KviKvsObjectFunctionCall *c);
-	bool changeItem(KviKvsObjectFunctionCall *c);
-	bool removeItem(KviKvsObjectFunctionCall *c);
-	bool count(KviKvsObjectFunctionCall *c);
-	bool currentText(KviKvsObjectFunctionCall *c);
-	bool currentItem(KviKvsObjectFunctionCall *c);
-	bool textAt(KviKvsObjectFunctionCall *c);
-	bool setCurrentItem(KviKvsObjectFunctionCall *c);
-	bool clear(KviKvsObjectFunctionCall *c);
-	bool setSelectionMode(KviKvsObjectFunctionCall *c);
-	bool selectionMode(KviKvsObjectFunctionCall *c);
-	bool insertWidgetItem(KviKvsObjectFunctionCall *c);
-	bool isSelected(KviKvsObjectFunctionCall *c);
-	bool setSelected(KviKvsObjectFunctionCall *c);
-	bool setFlags(KviKvsObjectFunctionCall *c);
-	bool selectedItems(KviKvsObjectFunctionCall *c);
-	bool setForeground(KviKvsObjectFunctionCall *c);
-	bool setIcon(KviKvsObjectFunctionCall *c);
-	bool setChecked(KviKvsObjectFunctionCall *c);
-	bool setFont(KviKvsObjectFunctionCall *c);
-	bool isChecked(KviKvsObjectFunctionCall *c);
-	bool itemAt(KviKvsObjectFunctionCall *c);
-	bool itemRect(KviKvsObjectFunctionCall *c);
+	bool insertItem(KviKvsObjectFunctionCall * c);
+	bool changeItem(KviKvsObjectFunctionCall * c);
+	bool removeItem(KviKvsObjectFunctionCall * c);
+	bool count(KviKvsObjectFunctionCall * c);
+	bool currentText(KviKvsObjectFunctionCall * c);
+	bool currentItem(KviKvsObjectFunctionCall * c);
+	bool textAt(KviKvsObjectFunctionCall * c);
+	bool setCurrentItem(KviKvsObjectFunctionCall * c);
+	bool clear(KviKvsObjectFunctionCall * c);
+	bool setSelectionMode(KviKvsObjectFunctionCall * c);
+	bool selectionMode(KviKvsObjectFunctionCall * c);
+	bool insertWidgetItem(KviKvsObjectFunctionCall * c);
+	bool isSelected(KviKvsObjectFunctionCall * c);
+	bool setSelected(KviKvsObjectFunctionCall * c);
+	bool setFlags(KviKvsObjectFunctionCall * c);
+	bool selectedItems(KviKvsObjectFunctionCall * c);
+	bool setForeground(KviKvsObjectFunctionCall * c);
+	bool setIcon(KviKvsObjectFunctionCall * c);
+	bool setChecked(KviKvsObjectFunctionCall * c);
+	bool setFont(KviKvsObjectFunctionCall * c);
+	bool isChecked(KviKvsObjectFunctionCall * c);
+	bool itemAt(KviKvsObjectFunctionCall * c);
+	bool itemRect(KviKvsObjectFunctionCall * c);
 
 	// events
-	bool currentItemChangedEvent(KviKvsObjectFunctionCall *c);
-	bool itemChangedEvent(KviKvsObjectFunctionCall *c);
-	bool itemEnteredEvent(KviKvsObjectFunctionCall *c);
+	bool currentItemChangedEvent(KviKvsObjectFunctionCall * c);
+	bool itemChangedEvent(KviKvsObjectFunctionCall * c);
+	bool itemEnteredEvent(KviKvsObjectFunctionCall * c);
 
 protected slots:
 	void selectionChanged();
-	void currentItemChanged(QListWidgetItem *,QListWidgetItem *);
-	void slotItemEntered(QListWidgetItem *item);
-	void slotItemChanged(QListWidgetItem *item);
-
+	void currentItemChanged(QListWidgetItem *, QListWidgetItem *);
+	void slotItemEntered(QListWidgetItem * item);
+	void slotItemChanged(QListWidgetItem * item);
 };
 
-
-#endif	// !_CLASS_COMBOBOX_H_
+#endif // !_CLASS_COMBOBOX_H_

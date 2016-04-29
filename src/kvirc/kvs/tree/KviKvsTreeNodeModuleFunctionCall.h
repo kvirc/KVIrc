@@ -35,14 +35,16 @@ class KviKvsVariant;
 class KVIRC_API KviKvsTreeNodeModuleFunctionCall : public KviKvsTreeNodeFunctionCall
 {
 public:
-	KviKvsTreeNodeModuleFunctionCall(const QChar * pLocation,const QString &szModuleName,const QString &szFncName,KviKvsTreeNodeDataList * pParams);
+	KviKvsTreeNodeModuleFunctionCall(const QChar * pLocation, const QString & szModuleName, const QString & szFncName, KviKvsTreeNodeDataList * pParams);
 	~KviKvsTreeNodeModuleFunctionCall();
+
 protected:
 	QString m_szModuleName;
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
 };
 
 #endif //!_KVI_KVS_TREENODE_MODULEFUNCTIONCALL_H_

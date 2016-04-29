@@ -35,7 +35,6 @@
 #include <QStackedWidget>
 #include <QPalette>
 
-
 class KviTalWizardPageData
 {
 public:
@@ -47,37 +46,40 @@ public:
 		EnableCancel = 8,
 		EnableFinish = 16
 	};
+
 public:
 	QWidget * pWidget;
-	QString   szTitle;
-	bool      bEnabled;
-	int       iEnableFlags;
-	int       iVisibleIndex;
+	QString szTitle;
+	bool bEnabled;
+	int iEnableFlags;
+	int iVisibleIndex;
 };
 
 class KviTalWizardPrivate
 {
 public:
 	KviPointerList<KviTalWizardPageData> * pPageList;
-	int                                iEnabledPageCount;
-	KviTalWizardPageData             * pCurrentPage;
-	QGridLayout                      * pLayout;
-	QLabel                           * pTitleLabel;
-	QLabel                           * pStepsLabel;
-	QPushButton                      * pBackButton;
-	QPushButton                      * pCancelButton;
-	QPushButton                      * pHelpButton;
-	QPushButton                      * pNextButton;
-	QWidget                          * pNextSpacer;
-	QPushButton                      * pFinishButton;
-	QWidget                          * pFinishSpacer;
-	QStackedWidget                   * pWidgetStack;
+	int iEnabledPageCount;
+	KviTalWizardPageData * pCurrentPage;
+	QGridLayout * pLayout;
+	QLabel * pTitleLabel;
+	QLabel * pStepsLabel;
+	QPushButton * pBackButton;
+	QPushButton * pCancelButton;
+	QPushButton * pHelpButton;
+	QPushButton * pNextButton;
+	QWidget * pNextSpacer;
+	QPushButton * pFinishButton;
+	QWidget * pFinishSpacer;
+	QStackedWidget * pWidgetStack;
+
 public:
 	KviTalWizardPageData * findPage(QWidget * pWidget)
 	{
-		for(KviTalWizardPageData * pData = pPageList->first();pData;pData = pPageList->next())
+		for(KviTalWizardPageData * pData = pPageList->first(); pData; pData = pPageList->next())
 		{
-			if(pData->pWidget == pWidget) return pData;
+			if(pData->pWidget == pWidget)
+				return pData;
 		}
 		return NULL;
 	}
@@ -85,9 +87,10 @@ public:
 	KviTalWizardPageData * findFirstEnabledPage()
 	{
 		KviTalWizardPageData * pData;
-		for(pData = pPageList->first();pData;pData = pPageList->next())
+		for(pData = pPageList->first(); pData; pData = pPageList->next())
 		{
-			if(pData->bEnabled) return pData;
+			if(pData->bEnabled)
+				return pData;
 		}
 		return NULL;
 	}
@@ -95,33 +98,40 @@ public:
 	KviTalWizardPageData * findLastEnabledPage()
 	{
 		KviTalWizardPageData * pData;
-		for(pData = pPageList->last();pData;pData = pPageList->prev())
+		for(pData = pPageList->last(); pData; pData = pPageList->prev())
 		{
-			if(pData->bEnabled) return pData;
+			if(pData->bEnabled)
+				return pData;
 		}
 		return NULL;
 	}
 
 	KviTalWizardPageData * findNextEnabledPage(QWidget * pReference)
 	{
-		if(!pReference) return findFirstEnabledPage();
+		if(!pReference)
+			return findFirstEnabledPage();
 		KviTalWizardPageData * pData = findPage(pReference);
-		if(!pData) return NULL;
-		for(pData = pPageList->next();pData;pData = pPageList->next())
+		if(!pData)
+			return NULL;
+		for(pData = pPageList->next(); pData; pData = pPageList->next())
 		{
-			if(pData->bEnabled) return pData;
+			if(pData->bEnabled)
+				return pData;
 		}
 		return NULL;
 	}
 
 	KviTalWizardPageData * findPrevEnabledPage(QWidget * pReference)
 	{
-		if(!pReference) return findLastEnabledPage();
+		if(!pReference)
+			return findLastEnabledPage();
 		KviTalWizardPageData * pData = findPage(pReference);
-		if(!pData) return NULL;
-		for(pData = pPageList->prev();pData;pData = pPageList->prev())
+		if(!pData)
+			return NULL;
+		for(pData = pPageList->prev(); pData; pData = pPageList->prev())
 		{
-			if(pData->bEnabled) return pData;
+			if(pData->bEnabled)
+				return pData;
 		}
 		return NULL;
 	}
@@ -129,7 +139,7 @@ public:
 	int reindexPages()
 	{
 		int iEnabledCount = 0;
-		for(KviTalWizardPageData * pData = pPageList->first();pData;pData = pPageList->next())
+		for(KviTalWizardPageData * pData = pPageList->first(); pData; pData = pPageList->next())
 		{
 			if(pData->bEnabled)
 			{
@@ -141,9 +151,8 @@ public:
 	}
 };
 
-
 KviTalWizard::KviTalWizard(QWidget * pParent)
-: QDialog(pParent)
+    : QDialog(pParent)
 {
 	m_p = new KviTalWizardPrivate;
 	m_p->pPageList = new KviPointerList<KviTalWizardPageData>;
@@ -153,97 +162,91 @@ KviTalWizard::KviTalWizard(QWidget * pParent)
 	m_p->pLayout = new QGridLayout(this);
 
 	m_p->pTitleLabel = new QLabel(this);
-	m_p->pLayout->addWidget(m_p->pTitleLabel,0,0,1,3);
+	m_p->pLayout->addWidget(m_p->pTitleLabel, 0, 0, 1, 3);
 
 	m_p->pStepsLabel = new QLabel(this);
 	m_p->pStepsLabel->setMinimumWidth(80);
 	m_p->pStepsLabel->setAlignment(Qt::AlignRight);
-	m_p->pLayout->addWidget(m_p->pStepsLabel,0,4,1,3);
+	m_p->pLayout->addWidget(m_p->pStepsLabel, 0, 4, 1, 3);
 
 	QFrame * f1 = new QFrame(this);
 	f1->setFrameStyle(QFrame::Sunken | QFrame::HLine);
-	m_p->pLayout->addWidget(f1,1,0,1,7);
+	m_p->pLayout->addWidget(f1, 1, 0, 1, 7);
 
 	m_p->pWidgetStack = new QStackedWidget(this);
-	m_p->pLayout->addWidget(m_p->pWidgetStack,2,0,1,7);
+	m_p->pLayout->addWidget(m_p->pWidgetStack, 2, 0, 1, 7);
 
 	QFrame * f2 = new QFrame(this);
 	f2->setFrameStyle(QFrame::Sunken | QFrame::HLine);
-	m_p->pLayout->addWidget(f2,3,0,1,7);
+	m_p->pLayout->addWidget(f2, 3, 0, 1, 7);
 
 	KviTalHBox * pButtonBox = new KviTalHBox(this);
-	m_p->pLayout->addWidget(pButtonBox,4,0,1,7);
+	m_p->pLayout->addWidget(pButtonBox, 4, 0, 1, 7);
 
 	pButtonBox->setMargin(0);
 	pButtonBox->setSpacing(0);
 
-
-	m_p->pCancelButton = new QPushButton(__tr("Cancel"),pButtonBox);
+	m_p->pCancelButton = new QPushButton(__tr("Cancel"), pButtonBox);
 	m_p->pCancelButton->setMinimumWidth(80);
 	QObject::connect(
-			m_p->pCancelButton,
-			SIGNAL(clicked()),
-			this,
-			SLOT(cancelButtonClicked())
-		);
+	    m_p->pCancelButton,
+	    SIGNAL(clicked()),
+	    this,
+	    SLOT(cancelButtonClicked()));
 
 	QWidget * pSpacer = new QWidget(pButtonBox);
 	pSpacer->setFixedWidth(4);
 
-	m_p->pHelpButton = new QPushButton(__tr("Help"),pButtonBox);
+	m_p->pHelpButton = new QPushButton(__tr("Help"), pButtonBox);
 	m_p->pHelpButton->setMinimumWidth(80);
 	QObject::connect(
-			m_p->pHelpButton,
-			SIGNAL(clicked()),
-			this,
-			SLOT(helpButtonClicked())
-		);
+	    m_p->pHelpButton,
+	    SIGNAL(clicked()),
+	    this,
+	    SLOT(helpButtonClicked()));
 
 	QWidget * pLargeSpacer = new QWidget(pButtonBox);
 	pLargeSpacer->setMinimumWidth(50);
-	pButtonBox->setStretchFactor(pLargeSpacer,100);
+	pButtonBox->setStretchFactor(pLargeSpacer, 100);
 
 	QString szText = "< ";
 	szText += __tr("Back");
-	m_p->pBackButton = new QPushButton(szText,pButtonBox);
+	m_p->pBackButton = new QPushButton(szText, pButtonBox);
 	m_p->pBackButton->setMinimumWidth(80);
 	QObject::connect(
-			m_p->pBackButton,
-			SIGNAL(clicked()),
-			this,
-			SLOT(backButtonClicked())
-		);
+	    m_p->pBackButton,
+	    SIGNAL(clicked()),
+	    this,
+	    SLOT(backButtonClicked()));
 
 	m_p->pNextSpacer = new QWidget(pButtonBox);
 	m_p->pNextSpacer->setFixedWidth(4);
 
 	szText = __tr("Next");
 	szText += " >";
-	m_p->pNextButton = new QPushButton(szText,pButtonBox);
+	m_p->pNextButton = new QPushButton(szText, pButtonBox);
 	m_p->pNextButton->setMinimumWidth(80);
 	QObject::connect(
-			m_p->pNextButton,
-			SIGNAL(clicked()),
-			this,
-			SLOT(nextButtonClicked())
-		);
+	    m_p->pNextButton,
+	    SIGNAL(clicked()),
+	    this,
+	    SLOT(nextButtonClicked()));
 
 	m_p->pFinishSpacer = new QWidget(pButtonBox);
 	m_p->pFinishSpacer->setFixedWidth(4);
 
-	m_p->pFinishButton = new QPushButton(__tr("Finish"),pButtonBox);
+	m_p->pFinishButton = new QPushButton(__tr("Finish"), pButtonBox);
 	m_p->pFinishButton->setMinimumWidth(80);
 	QObject::connect(
-			m_p->pFinishButton,
-			SIGNAL(clicked()),
-			this,
-			SLOT(finishButtonClicked())
-		);
+	    m_p->pFinishButton,
+	    SIGNAL(clicked()),
+	    this,
+	    SLOT(finishButtonClicked()));
 
 	m_p->pLayout->setMargin(8);
 	m_p->pLayout->setSpacing(4);
-	m_p->pLayout->setRowStretch(2,1);
-	m_p->pLayout->setColumnStretch(0,1);
+	m_p->pLayout->setRowStretch(2, 1);
+	m_p->pLayout->setColumnStretch(0, 1);
 }
 
 KviTalWizard::~KviTalWizard()
@@ -252,39 +255,37 @@ KviTalWizard::~KviTalWizard()
 	delete m_p;
 }
 
-void KviTalWizard::insertPage(QWidget * pWidget,const QString &szTitle,int iIndex)
+void KviTalWizard::insertPage(QWidget * pWidget, const QString & szTitle, int iIndex)
 {
 	KviTalWizardPageData * pPageData = m_p->findPage(pWidget);
 	if(!pPageData)
 	{
 		pPageData = new KviTalWizardPageData;
 		pPageData->pWidget = pWidget;
-		pPageData->iEnableFlags = \
-			KviTalWizardPageData::EnableNext | \
-			KviTalWizardPageData::EnableCancel | \
-			KviTalWizardPageData::EnableBack;
+		pPageData->iEnableFlags = KviTalWizardPageData::EnableNext | KviTalWizardPageData::EnableCancel | KviTalWizardPageData::EnableBack;
 		if(iIndex < 0)
 		{
 			m_p->pPageList->append(pPageData);
 			m_p->iEnabledPageCount++;
 			pPageData->iVisibleIndex = m_p->iEnabledPageCount;
-		} else {
-			m_p->pPageList->insert(iIndex,pPageData);
+		}
+		else
+		{
+			m_p->pPageList->insert(iIndex, pPageData);
 			m_p->iEnabledPageCount = m_p->reindexPages();
 		}
 		m_p->pWidgetStack->addWidget(pWidget);
 	}
 	pPageData->szTitle = szTitle;
 	pPageData->bEnabled = true;
-
 }
 
-void KviTalWizard::addPage(QWidget * pWidget,const QString &szTitle)
+void KviTalWizard::addPage(QWidget * pWidget, const QString & szTitle)
 {
-	insertPage(pWidget,szTitle,-1);
+	insertPage(pWidget, szTitle, -1);
 }
 
-bool KviTalWizard::setPageEnabled(QWidget * pWidget,bool bEnabled)
+bool KviTalWizard::setPageEnabled(QWidget * pWidget, bool bEnabled)
 {
 	KviTalWizardPageData * pData = m_p->findPage(pWidget);
 	if(!pData)
@@ -295,7 +296,7 @@ bool KviTalWizard::setPageEnabled(QWidget * pWidget,bool bEnabled)
 	return true;
 }
 
-bool KviTalWizard::setPageTitle(QWidget * pWidget,const QString &szTitle)
+bool KviTalWizard::setPageTitle(QWidget * pWidget, const QString & szTitle)
 {
 	KviTalWizardPageData * pData = m_p->findPage(pWidget);
 	if(!pData)
@@ -340,7 +341,7 @@ void KviTalWizard::setCurrentPage(KviTalWizardPageData * pData)
 	{
 		bHavePrevPage = m_p->findPrevEnabledPage(pData->pWidget);
 		bHaveNextPage = m_p->findNextEnabledPage(pData->pWidget);
-	
+
 		bNextEnabled = (pData->iEnableFlags & KviTalWizardPageData::EnableNext) && bHaveNextPage;
 		bBackEnabled = (pData->iEnableFlags & KviTalWizardPageData::EnableBack) && bHavePrevPage;
 
@@ -355,13 +356,12 @@ void KviTalWizard::setCurrentPage(KviTalWizardPageData * pData)
 		szTitle += pData->szTitle;
 		szTitle += "</b>";
 		QPalette pal = m_p->pStepsLabel->palette();
-		QColor clrWin = pal.color(QPalette::Normal,QPalette::Window);
-		QColor clrTxt = pal.color(QPalette::Normal,QPalette::WindowText);
+		QColor clrWin = pal.color(QPalette::Normal, QPalette::Window);
+		QColor clrTxt = pal.color(QPalette::Normal, QPalette::WindowText);
 		QColor clrMid = qRgb(
-				(clrWin.red() + clrTxt.red()) / 2,
-				(clrWin.green() + clrTxt.green()) / 2,
-				(clrWin.blue() + clrTxt.blue()) / 2
-			);
+		    (clrWin.red() + clrTxt.red()) / 2,
+		    (clrWin.green() + clrTxt.green()) / 2,
+		    (clrWin.blue() + clrTxt.blue()) / 2);
 
 		szSteps = "<nobr><font color=\"";
 		szSteps += clrMid.name();
@@ -379,7 +379,9 @@ void KviTalWizard::setCurrentPage(KviTalWizardPageData * pData)
 		m_p->pNextButton->show();
 		m_p->pNextSpacer->show();
 		m_p->pNextButton->setDefault(true);
-	} else {
+	}
+	else
+	{
 		m_p->pNextButton->hide();
 		m_p->pNextSpacer->hide();
 		m_p->pNextButton->setDefault(false);
@@ -405,7 +407,9 @@ void KviTalWizard::setCurrentPage(KviTalWizardPageData * pData)
 		m_p->pFinishButton->show();
 		m_p->pFinishSpacer->show();
 		m_p->pFinishButton->setDefault(true);
-	} else {
+	}
+	else
+	{
 		m_p->pFinishButton->hide();
 		m_p->pFinishSpacer->hide();
 		m_p->pFinishButton->setDefault(false);
@@ -460,7 +464,7 @@ void KviTalWizard::finishButtonClicked()
 	accept();
 }
 
-void KviTalWizard::setHelpEnabled(QWidget * pWidget,bool bEnabled)
+void KviTalWizard::setHelpEnabled(QWidget * pWidget, bool bEnabled)
 {
 	KviTalWizardPageData * pData = m_p->findPage(pWidget);
 	if(!pData)
@@ -473,7 +477,7 @@ void KviTalWizard::setHelpEnabled(QWidget * pWidget,bool bEnabled)
 		setCurrentPage(pData);
 }
 
-void KviTalWizard::setCancelEnabled(QWidget * pWidget,bool bEnabled)
+void KviTalWizard::setCancelEnabled(QWidget * pWidget, bool bEnabled)
 {
 	KviTalWizardPageData * pData = m_p->findPage(pWidget);
 	if(!pData)
@@ -486,7 +490,7 @@ void KviTalWizard::setCancelEnabled(QWidget * pWidget,bool bEnabled)
 		setCurrentPage(pData);
 }
 
-void KviTalWizard::setFinishEnabled(QWidget * pWidget,bool bEnabled)
+void KviTalWizard::setFinishEnabled(QWidget * pWidget, bool bEnabled)
 {
 	KviTalWizardPageData * pData = m_p->findPage(pWidget);
 	if(!pData)
@@ -499,7 +503,7 @@ void KviTalWizard::setFinishEnabled(QWidget * pWidget,bool bEnabled)
 		setCurrentPage(pData);
 }
 
-void KviTalWizard::setNextEnabled(QWidget * pWidget,bool bEnabled)
+void KviTalWizard::setNextEnabled(QWidget * pWidget, bool bEnabled)
 {
 	KviTalWizardPageData * pData = m_p->findPage(pWidget);
 	if(!pData)
@@ -512,7 +516,7 @@ void KviTalWizard::setNextEnabled(QWidget * pWidget,bool bEnabled)
 		setCurrentPage(pData);
 }
 
-void KviTalWizard::setBackEnabled(QWidget * pWidget,bool bEnabled)
+void KviTalWizard::setBackEnabled(QWidget * pWidget, bool bEnabled)
 {
 	KviTalWizardPageData * pData = m_p->findPage(pWidget);
 	if(!pData)

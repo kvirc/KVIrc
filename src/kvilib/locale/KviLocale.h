@@ -46,11 +46,11 @@ class QTextCodec;
 * \def KVI_NUM_ENCODING_GROUPS The number of charset groups
 */
 #ifndef QT_NO_BIG_CODECS
-	#define KVI_NUM_ENCODINGS 112
-	#define KVI_NUM_ENCODING_GROUPS 8
+#define KVI_NUM_ENCODINGS 112
+#define KVI_NUM_ENCODING_GROUPS 8
 #else
-	#define KVI_NUM_ENCODINGS 85
-	#define KVI_NUM_ENCODING_GROUPS 5
+#define KVI_NUM_ENCODINGS 85
+#define KVI_NUM_ENCODING_GROUPS 5
 #endif
 
 /**
@@ -67,12 +67,13 @@ public:
 	*/
 	typedef struct _EncodingDescription
 	{
-		const char * pcName;          /**< name of the encoding */
-		char         bSmart;          /**< is it a smart codec? */
-		char         bSendUtf8;       /**< does it send utf8 or the local charset? */
-		uint         uGroup;          /**< group */
-		const char * pcDescription;   /**< description of the encoding */
+		const char * pcName;        /**< name of the encoding */
+		char bSmart;                /**< is it a smart codec? */
+		char bSendUtf8;             /**< does it send utf8 or the local charset? */
+		uint uGroup;                /**< group */
+		const char * pcDescription; /**< description of the encoding */
 	} EncodingDescription;
+
 protected:
 	/**
 	* \brief Constructs the KviLocale object
@@ -88,13 +89,17 @@ protected:
 	* \return KviLocale
 	*/
 	~KviLocale();
+
 public:
 	static KviCString g_szLang;
+
 protected:
 	QApplication * m_pApp;
+
 private:
-	static KviLocale    * m_pSelf;
-	static unsigned int   m_uCount;
+	static KviLocale * m_pSelf;
+	static unsigned int m_uCount;
+
 public:
 	/**
 	* \brief Initializes the class instance
@@ -116,13 +121,13 @@ public:
 	* \brief Returns the instance of the class
 	* \return KviLocale *
 	*/
-	static inline KviLocale * instance(){ return m_pSelf; }
+	static inline KviLocale * instance() { return m_pSelf; }
 
 	/**
 	* \brief Returns the number of instances of the class
 	* \return unsigned int
 	*/
-	unsigned int count(){ return m_uCount; }
+	unsigned int count() { return m_uCount; }
 
 	/**
 	* \brief Returns the description of the encoding used
@@ -146,7 +151,7 @@ public:
 	* \brief Returns the language code of the localization
 	* \return const KviCString &
 	*/
-	const KviCString & localeName(){ return g_szLang; }
+	const KviCString & localeName() { return g_szLang; }
 
 	/**
 	* \brief Returns the codec associated to the given translation
@@ -209,9 +214,8 @@ public:
 	const QString & translateToQString(const char * pcText, const char * pcContext);
 };
 
-
 #ifndef _KVI_LOCALE_CPP_
-	extern KVILIB_API KviMessageCatalogue * g_pMainCatalogue;
+extern KVILIB_API KviMessageCatalogue * g_pMainCatalogue;
 #endif // !_KVI_LOCALE_CPP_
 
 #define __tr(__text__) g_pMainCatalogue->translate(__text__)
@@ -221,10 +225,10 @@ public:
 #define __tr2qs_no_lookup(__text__) __text__
 #define __tr2qs_no_xgettext(__text__) g_pMainCatalogue->translateToQString(__text__)
 
-#define __tr_ctx(__text__,__context__) KviLocale::instance()->translate(__text__,__context__)
-#define __tr_no_lookup_ctx(__text__,__context__) __text__
-#define __tr_no_xgettext_ctx(__text__,__context__) KviLocale::instance()->translate(__text__,__context__)
-#define __tr2qs_ctx(__text__,__context__) KviLocale::instance()->translateToQString(__text__,__context__)
-#define __tr2qs_ctx_no_xgettext(__text__,__context__) KviLocale::instance()->translateToQString(__text__,__context__)
+#define __tr_ctx(__text__, __context__) KviLocale::instance()->translate(__text__, __context__)
+#define __tr_no_lookup_ctx(__text__, __context__) __text__
+#define __tr_no_xgettext_ctx(__text__, __context__) KviLocale::instance()->translate(__text__, __context__)
+#define __tr2qs_ctx(__text__, __context__) KviLocale::instance()->translateToQString(__text__, __context__)
+#define __tr2qs_ctx_no_xgettext(__text__, __context__) KviLocale::instance()->translateToQString(__text__, __context__)
 
 #endif //_KVI_LOCALE_H_

@@ -61,10 +61,11 @@ public:
 	* \brief Destroys the text icon window objet
 	*/
 	~KviTextIconWindow();
+
 private:
-	QWidget            * m_pOwner;
-	QTableWidget       * m_pTable;
-	bool                 m_bAltMode; // in alt mode the inserted string will contains also the CTRL+I escape code
+	QWidget * m_pOwner;
+	QTableWidget * m_pTable;
+	bool m_bAltMode; // in alt mode the inserted string will contains also the CTRL+I escape code
 public:
 	/**
 	* \brief Shows the popup
@@ -73,14 +74,16 @@ public:
 	* \return void
 	*/
 	void popup(QWidget * pOwner, bool bAltMode);
+
 private:
 	/**
 	* \brief Hides the widget and set the focus to the owner
 	* \return void
 	*/
 	void doHide();
+
 private:
-	virtual bool eventFilter(QObject * o,QEvent *e);
+	virtual bool eventFilter(QObject * o, QEvent * e);
 	void autoSelectBestMatchBasedOnOwnerText();
 
 public slots:

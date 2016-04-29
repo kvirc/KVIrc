@@ -57,8 +57,10 @@ public:
 	* \brief Destroys an horizontal box object
 	*/
 	~KviTalHBox();
+
 private:
 	QHBoxLayout * m_pLayout;
+
 public:
 	/**
 	* \brief Sets the stretch factor for an object

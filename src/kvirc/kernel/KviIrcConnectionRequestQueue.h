@@ -44,7 +44,7 @@ class KviChannelWindow;
 * This class is designed to delay channel requests like MODE and WHO to avoid
 * excess floods on some servers
 */
-class KVIRC_API KviIrcConnectionRequestQueue: public QObject
+class KVIRC_API KviIrcConnectionRequestQueue : public QObject
 {
 	Q_OBJECT
 public:
@@ -58,6 +58,7 @@ public:
 	* \brief Destroys the request queue objects
 	*/
 	virtual ~KviIrcConnectionRequestQueue();
+
 protected:
 	/**
 	* \enum RequestTypes
@@ -65,7 +66,8 @@ protected:
 	* \warning MODE %s b MUST BE THE LAST AUTOMATIC CHANNEL QUERY so we get
 	* RPL_ENDOFBANLIST as the last reply and we know that the channel is in sync
 	*/
-	enum RequestTypes {
+	enum RequestTypes
+	{
 		Mode = 0,         /**< Channel modes request */
 		BanException = 1, /**< Ban exceptions request */
 		Invite = 2,       /**< Invites request */
@@ -75,8 +77,9 @@ protected:
 	};
 
 	QQueue<KviChannelWindow *> m_channels;
-	QTimer               m_timer;
-	RequestTypes         m_curType;
+	QTimer m_timer;
+	RequestTypes m_curType;
+
 public:
 	/**
 	* \brief Enqueues the channel in the queue stack

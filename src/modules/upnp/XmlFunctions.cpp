@@ -35,92 +35,84 @@
 
 #include <QStringList>
 
-
 // Helper function, get a specific node
-QDomNode XmlFunctions::getNode( const QDomNode &rootNode, const QString &path )
+QDomNode XmlFunctions::getNode(const QDomNode & rootNode, const QString & path)
 {
 
-  QStringList pathItems = path.split( "/", QString::SkipEmptyParts );
-  QDomNode    childNode = rootNode.namedItem( pathItems[0] );  // can be a null node
+	QStringList pathItems = path.split("/", QString::SkipEmptyParts);
+	QDomNode childNode = rootNode.namedItem(pathItems[0]); // can be a null node
 
-  int i = 1;
-  while( i < pathItems.count() )
-  {
-    if( childNode.isNull() )
-    {
-      break;
-    }
+	int i = 1;
+	while(i < pathItems.count())
+	{
+		if(childNode.isNull())
+		{
+			break;
+		}
 
-    childNode = childNode.namedItem( pathItems[ i ] );
-    i++;  // not using for loop so i is always correct for kdDebug() below.
-  }
+		childNode = childNode.namedItem(pathItems[i]);
+		i++; // not using for loop so i is always correct for kdDebug() below.
+	}
 
-  if( childNode.isNull() ) {
-      qDebug() << "XmlFunctions::getNode() - Notice: node '" << pathItems[ i - 1 ] << "'"
-                << " does not exist (root=" << rootNode.nodeName() << " path=" << path << ")." << endl;
-  }
+	if(childNode.isNull())
+	{
+		qDebug() << "XmlFunctions::getNode() - Notice: node '" << pathItems[i - 1] << "'"
+		         << " does not exist (root=" << rootNode.nodeName() << " path=" << path << ")." << endl;
+	}
 
-  return childNode;
+	return childNode;
 }
-
-
 
 // Helper function, get the attribute text of a node
-QString XmlFunctions::getNodeAttribute( const QDomNode &node, const QString &attribute )
+QString XmlFunctions::getNodeAttribute(const QDomNode & node, const QString & attribute)
 {
 
-  // Writing this is not funny
-  return node.attributes().namedItem( attribute ).toAttr().value();
-// node.toElement().attribute( attribute );  does not work for const nodes.
+	// Writing this is not funny
+	return node.attributes().namedItem(attribute).toAttr().value();
+	// node.toElement().attribute( attribute );  does not work for const nodes.
 }
-
-
 
 // Helper function, get a specific child node
-QDomNode XmlFunctions::getNodeChildByKey( const QDomNodeList &childNodes, const QString &keyTagName, const QString &keyValue )
+QDomNode XmlFunctions::getNodeChildByKey(const QDomNodeList & childNodes, const QString & keyTagName, const QString & keyValue)
 {
 
-  for( int i = 0; i < childNodes.count(); i++ )
-  {
-//    kdDebug() << "node " << childNodes.item(i).nodeName() << "/" << keyTagName
-//              << "="     << childNodes.item(i).namedItem(keyTagName).toElement().text() << " == " << keyValue << "?" << endl;
+	for(int i = 0; i < childNodes.count(); i++)
+	{
+		//    kdDebug() << "node " << childNodes.item(i).nodeName() << "/" << keyTagName
+		//              << "="     << childNodes.item(i).namedItem(keyTagName).toElement().text() << " == " << keyValue << "?" << endl;
 
-      // If the node has an childname with a certain value... e.g. <childNodes> <item><name>value</name></item> .. </childNodes>
-    if( childNodes.item( i ).namedItem( keyTagName ).toElement().text() == keyValue)
-    {
-        // Return the node
-      return childNodes.item( i );
-    }
-  }
+		// If the node has an childname with a certain value... e.g. <childNodes> <item><name>value</name></item> .. </childNodes>
+		if(childNodes.item(i).namedItem(keyTagName).toElement().text() == keyValue)
+		{
+			// Return the node
+			return childNodes.item(i);
+		}
+	}
 
-  // Return a null node (is there a better way?)
-  return childNodes.item( childNodes.count() );
+	// Return a null node (is there a better way?)
+	return childNodes.item(childNodes.count());
 }
-
-
 
 // Helper function, get the text value of a node
-QString XmlFunctions::getNodeValue( const QDomNode &rootNode, const QString &path )
+QString XmlFunctions::getNodeValue(const QDomNode & rootNode, const QString & path)
 {
 
-  // Added code to avoid more assertion errors, and trace the cause.
-  if( rootNode.isNull() )
-  {
-    qWarning() << "XmlFunctions::getNodeValue: attempted to request '" << path << "' on null root node." << endl;
-    return QString();
-  }
+	// Added code to avoid more assertion errors, and trace the cause.
+	if(rootNode.isNull())
+	{
+		qWarning() << "XmlFunctions::getNodeValue: attempted to request '" << path << "' on null root node." << endl;
+		return QString();
+	}
 
-
-  // Because writing node.namedItem("childItem").namedItem("child2").toElement().text() is not funny.
-  return getNode( rootNode, path ).toElement().text();
+	// Because writing node.namedItem("childItem").namedItem("child2").toElement().text() is not funny.
+	return getNode(rootNode, path).toElement().text();
 }
 
-
 // Helper function, get the source XML of a node.
-QString XmlFunctions::getSource( const QDomNode &node, int indent )
+QString XmlFunctions::getSource(const QDomNode & node, int indent)
 {
-  QString source;
-  QTextStream textStream( &source, QIODevice::WriteOnly );
-  node.save( textStream, indent );
-  return source;
+	QString source;
+	QTextStream textStream(&source, QIODevice::WriteOnly);
+	node.save(textStream, indent);
+	return source;
 }

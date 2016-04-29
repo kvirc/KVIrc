@@ -31,9 +31,9 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
-static KviKvsObject * objectClassCreateInstance(KviKvsObjectClass *pClass,KviKvsObject *pParent,const QString &szName)
+static KviKvsObject * objectClassCreateInstance(KviKvsObjectClass * pClass, KviKvsObject * pParent, const QString & szName)
 {
-	return new KviKvsObject(pClass,pParent,szName);
+	return new KviKvsObject(pClass, pParent, szName);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -42,9 +42,9 @@ KviKvsObjectController::KviKvsObjectController()
 {
 	m_pTopLevelObjectList = new KviPointerList<KviKvsObject>;
 	m_pTopLevelObjectList->setAutoDelete(false);
-	m_pObjectDict = new KviPointerHashTable<void *,KviKvsObject>(101);
+	m_pObjectDict = new KviPointerHashTable<void *, KviKvsObject>(101);
 	m_pObjectDict->setAutoDelete(false);
-	m_pClassDict = new KviPointerHashTable<QString,KviKvsObjectClass>(31,false);
+	m_pClassDict = new KviPointerHashTable<QString, KviKvsObjectClass>(31, false);
 	m_pClassDict->setAutoDelete(false);
 }
 
@@ -54,38 +54,38 @@ KviKvsObjectController::~KviKvsObjectController()
 	while(m_pTopLevelObjectList->first())
 		m_pTopLevelObjectList->first()->dieNow();
 	delete m_pTopLevelObjectList; // empty list
-	delete m_pObjectDict; // empty dict
+	delete m_pObjectDict;         // empty dict
 	m_pObjectDict = 0;
 	delete m_pObjectClass; // delete the class tree
-	delete m_pClassDict;  // empty dict
+	delete m_pClassDict;   // empty dict
 }
 
 void KviKvsObjectController::init()
 {
 	// allocate the "object" builtin class
 	// this is the only one that is always in core memory
-	m_pObjectClass = new KviKvsObjectClass(0,"object",objectClassCreateInstance,true);
+	m_pObjectClass = new KviKvsObjectClass(0, "object", objectClassCreateInstance, true);
 
-	m_pObjectClass->registerFunctionHandler("name",KVI_PTR2MEMBER(KviKvsObject::function_name));
-	m_pObjectClass->registerFunctionHandler("startTimer",KVI_PTR2MEMBER(KviKvsObject::function_startTimer));
-	m_pObjectClass->registerFunctionHandler("killTimer",KVI_PTR2MEMBER(KviKvsObject::function_killTimer));
-	m_pObjectClass->registerFunctionHandler("className",KVI_PTR2MEMBER(KviKvsObject::function_className));
-	m_pObjectClass->registerFunctionHandler("findChild",KVI_PTR2MEMBER(KviKvsObject::function_findChild));
-	m_pObjectClass->registerFunctionHandler("childCount",KVI_PTR2MEMBER(KviKvsObject::function_childCount));
-	m_pObjectClass->registerFunctionHandler("emit",KVI_PTR2MEMBER(KviKvsObject::function_emit));
-	m_pObjectClass->registerFunctionHandler("children",KVI_PTR2MEMBER(KviKvsObject::function_children));
-	m_pObjectClass->registerFunctionHandler("signalSender",KVI_PTR2MEMBER(KviKvsObject::function_signalSender));
-	m_pObjectClass->registerFunctionHandler("signalName",KVI_PTR2MEMBER(KviKvsObject::function_signalName));
-	m_pObjectClass->registerFunctionHandler("destructor",KVI_PTR2MEMBER(KviKvsObject::function_destructor));
-	m_pObjectClass->registerFunctionHandler("parent",KVI_PTR2MEMBER(KviKvsObject::function_parent));
-	m_pObjectClass->registerFunctionHandler("property",KVI_PTR2MEMBER(KviKvsObject::function_property));
-	m_pObjectClass->registerFunctionHandler("setProperty",KVI_PTR2MEMBER(KviKvsObject::function_setProperty));
-	m_pObjectClass->registerFunctionHandler("listProperties",KVI_PTR2MEMBER(KviKvsObject::function_listProperties));
+	m_pObjectClass->registerFunctionHandler("name", KVI_PTR2MEMBER(KviKvsObject::function_name));
+	m_pObjectClass->registerFunctionHandler("startTimer", KVI_PTR2MEMBER(KviKvsObject::function_startTimer));
+	m_pObjectClass->registerFunctionHandler("killTimer", KVI_PTR2MEMBER(KviKvsObject::function_killTimer));
+	m_pObjectClass->registerFunctionHandler("className", KVI_PTR2MEMBER(KviKvsObject::function_className));
+	m_pObjectClass->registerFunctionHandler("findChild", KVI_PTR2MEMBER(KviKvsObject::function_findChild));
+	m_pObjectClass->registerFunctionHandler("childCount", KVI_PTR2MEMBER(KviKvsObject::function_childCount));
+	m_pObjectClass->registerFunctionHandler("emit", KVI_PTR2MEMBER(KviKvsObject::function_emit));
+	m_pObjectClass->registerFunctionHandler("children", KVI_PTR2MEMBER(KviKvsObject::function_children));
+	m_pObjectClass->registerFunctionHandler("signalSender", KVI_PTR2MEMBER(KviKvsObject::function_signalSender));
+	m_pObjectClass->registerFunctionHandler("signalName", KVI_PTR2MEMBER(KviKvsObject::function_signalName));
+	m_pObjectClass->registerFunctionHandler("destructor", KVI_PTR2MEMBER(KviKvsObject::function_destructor));
+	m_pObjectClass->registerFunctionHandler("parent", KVI_PTR2MEMBER(KviKvsObject::function_parent));
+	m_pObjectClass->registerFunctionHandler("property", KVI_PTR2MEMBER(KviKvsObject::function_property));
+	m_pObjectClass->registerFunctionHandler("setProperty", KVI_PTR2MEMBER(KviKvsObject::function_setProperty));
+	m_pObjectClass->registerFunctionHandler("listProperties", KVI_PTR2MEMBER(KviKvsObject::function_listProperties));
 
 	m_pObjectClass->registerStandardNothingReturnFunctionHandler("constructor");
 	m_pObjectClass->registerStandardNothingReturnFunctionHandler("timerEvent");
 
-	m_pClassDict->insert("object",m_pObjectClass);
+	m_pClassDict->insert("object", m_pObjectClass);
 }
 
 void KviKvsObjectController::killAllObjectsWithClass(KviKvsObjectClass * pClass)
@@ -93,22 +93,24 @@ void KviKvsObjectController::killAllObjectsWithClass(KviKvsObjectClass * pClass)
 	if(!m_pObjectDict)
 		return; // no more objects at all...
 
-	KviPointerList< QPointer<KviKvsObject> > lDying;
+	KviPointerList<QPointer<KviKvsObject>> lDying;
 	lDying.setAutoDelete(true);
 
 	KviKvsObject * pObject;
 
-	for(pObject = m_pTopLevelObjectList->first();pObject;pObject = m_pTopLevelObjectList->next())
+	for(pObject = m_pTopLevelObjectList->first(); pObject; pObject = m_pTopLevelObjectList->next())
 	{
 		if(pObject->getClass() == pClass)
 		{
 			lDying.append(new QPointer<KviKvsObject>(pObject));
-		} else {
+		}
+		else
+		{
 			pObject->killAllChildrenWithClass(pClass);
 		}
 	}
 
-	for(QPointer<KviKvsObject> * pObject = lDying.first();pObject;pObject = lDying.next())
+	for(QPointer<KviKvsObject> * pObject = lDying.first(); pObject; pObject = lDying.next())
 	{
 		if(pObject->isNull())
 			continue; // already dead ?
@@ -119,7 +121,7 @@ void KviKvsObjectController::killAllObjectsWithClass(KviKvsObjectClass * pClass)
 void KviKvsObjectController::clearUserClasses()
 {
 	flushUserClasses();
-	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*m_pClassDict);
+	KviPointerHashTableIterator<QString, KviKvsObjectClass> it(*m_pClassDict);
 	KviPointerList<KviKvsObjectClass> lDying;
 	lDying.setAutoDelete(false);
 	while(it.current())
@@ -129,7 +131,7 @@ void KviKvsObjectController::clearUserClasses()
 		++it;
 	}
 
-	for(KviKvsObjectClass * pDyingClass = lDying.first();pDyingClass;pDyingClass = lDying.next())
+	for(KviKvsObjectClass * pDyingClass = lDying.first(); pDyingClass; pDyingClass = lDying.next())
 	{
 		if(!m_pClassDict->findRef(pDyingClass))
 			continue; // already deleted (by parent <-> child relations)
@@ -143,44 +145,47 @@ void KviKvsObjectController::clearInstances()
 		m_pTopLevelObjectList->first()->dieNow();
 
 	delete m_pTopLevelObjectList; // empty list
-	delete m_pObjectDict; // empty dict
+	delete m_pObjectDict;         // empty dict
 
 	m_pTopLevelObjectList = new KviPointerList<KviKvsObject>;
 	m_pTopLevelObjectList->setAutoDelete(false);
 
-	m_pObjectDict = new KviPointerHashTable<void *,KviKvsObject>(101);
+	m_pObjectDict = new KviPointerHashTable<void *, KviKvsObject>(101);
 	m_pObjectDict->setAutoDelete(false);
 }
 
-void KviKvsObjectController::registerClass(KviKvsObjectClass *pClass)
+void KviKvsObjectController::registerClass(KviKvsObjectClass * pClass)
 {
-	m_pClassDict->insert(pClass->name(),pClass);
+	m_pClassDict->insert(pClass->name(), pClass);
 }
 
-void KviKvsObjectController::unregisterClass(KviKvsObjectClass *pClass)
+void KviKvsObjectController::unregisterClass(KviKvsObjectClass * pClass)
 {
 	if(!pClass->isBuiltin())
 	{
-		if(pClass->isDirty())flushUserClasses();
+		if(pClass->isDirty())
+			flushUserClasses();
 	}
 	m_pClassDict->remove(pClass->name());
 }
 
-void KviKvsObjectController::registerObject(KviKvsObject *pObject)
+void KviKvsObjectController::registerObject(KviKvsObject * pObject)
 {
-	m_pObjectDict->insert(pObject->handle(),pObject);
-	if(pObject->parent() == 0)m_pTopLevelObjectList->append(pObject);
+	m_pObjectDict->insert(pObject->handle(), pObject);
+	if(pObject->parent() == 0)
+		m_pTopLevelObjectList->append(pObject);
 }
 
-void KviKvsObjectController::unregisterObject(KviKvsObject *pObject)
+void KviKvsObjectController::unregisterObject(KviKvsObject * pObject)
 {
 	m_pObjectDict->remove(pObject->handle());
-	if(pObject->parent() == 0)m_pTopLevelObjectList->removeRef(pObject);
+	if(pObject->parent() == 0)
+		m_pTopLevelObjectList->removeRef(pObject);
 }
 
 void KviKvsObjectController::flushUserClasses()
 {
-	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*m_pClassDict);
+	KviPointerHashTableIterator<QString, KviKvsObjectClass> it(*m_pClassDict);
 	while(KviKvsObjectClass * c = it.current())
 	{
 		if(!c->isBuiltin())
@@ -190,19 +195,19 @@ void KviKvsObjectController::flushUserClasses()
 				QString szPath;
 				QString szFileName = c->name().toLower();
 				szFileName += ".kvs";
-				szFileName.replace("::","--");
-				g_pApp->getLocalKvircDirectory(szPath,KviApplication::Classes,szFileName);
+				szFileName.replace("::", "--");
+				g_pApp->getLocalKvircDirectory(szPath, KviApplication::Classes, szFileName);
 				if(c->save(szPath))
 					c->clearDirtyFlag();
 				else
-					qDebug("Oops! Failed to save the object class %s",c->name().toLatin1().data());
+					qDebug("Oops! Failed to save the object class %s", c->name().toLatin1().data());
 			}
 		}
 		++it;
 	}
 }
 
-KviKvsObjectClass * KviKvsObjectController::lookupClass(const QString &szClass,bool bBuiltinOnly)
+KviKvsObjectClass * KviKvsObjectController::lookupClass(const QString & szClass, bool bBuiltinOnly)
 {
 	KviKvsObjectClass * pC = m_pClassDict->find(szClass);
 	if(!pC)
@@ -213,32 +218,40 @@ KviKvsObjectClass * KviKvsObjectController::lookupClass(const QString &szClass,b
 		{
 			qDebug("Oops! something wrong with the libkviobjects module!");
 			return 0;
-		} else pC = m_pClassDict->find(szClass);
+		}
+		else
+			pC = m_pClassDict->find(szClass);
 		if(!pC)
 		{
-			if(bBuiltinOnly)return 0;
+			if(bBuiltinOnly)
+				return 0;
 			// maybe we need to load it from permanent storage...
 			QString szPath;
 			QString szFileName = szClass.toLower();
 			szFileName += ".kvs";
-			szFileName.replace("::","--");
-			g_pApp->getLocalKvircDirectory(szPath,KviApplication::Classes,szFileName);
+			szFileName.replace("::", "--");
+			g_pApp->getLocalKvircDirectory(szPath, KviApplication::Classes, szFileName);
 			if(!KviFileUtils::fileExists(szPath))
-				g_pApp->getGlobalKvircDirectory(szPath,KviApplication::Classes,szFileName);
-			if(!KviFileUtils::fileExists(szPath))return 0;
-			if(!KviKvsObjectClass::load(szPath))return 0;
+				g_pApp->getGlobalKvircDirectory(szPath, KviApplication::Classes, szFileName);
+			if(!KviFileUtils::fileExists(szPath))
+				return 0;
+			if(!KviKvsObjectClass::load(szPath))
+				return 0;
 			pC = m_pClassDict->find(szClass);
-			if(pC)pC->clearDirtyFlag(); // just loaded from disk: no need to sync it
+			if(pC)
+				pC->clearDirtyFlag(); // just loaded from disk: no need to sync it
 		}
-	} else {
+	}
+	else
+	{
 		if(bBuiltinOnly)
 		{
-			if(!pC->isBuiltin())return 0;
+			if(!pC->isBuiltin())
+				return 0;
 		}
 	}
 	return pC;
 };
-
 
 void KviKvsObjectController::deleteClass(KviKvsObjectClass * pClass)
 {
@@ -249,8 +262,8 @@ void KviKvsObjectController::deleteClass(KviKvsObjectClass * pClass)
 	QString szPath;
 	QString szFileName = pClass->name().toLower();
 	szFileName += ".kvs";
-	szFileName.replace("::","--");
-	g_pApp->getLocalKvircDirectory(szPath,KviApplication::Classes,szFileName);
+	szFileName.replace("::", "--");
+	g_pApp->getLocalKvircDirectory(szPath, KviApplication::Classes, szFileName);
 	KviFileUtils::removeFile(szPath);
 
 	delete pClass;

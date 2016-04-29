@@ -58,24 +58,25 @@ SharedFilesWindow * g_pSharedFilesWindow = 0;
 static bool sharedfileswindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	QString dummy;
-	bool bCreateMinimized = c->hasSwitch('m',"minimized");
-	bool bNoRaise = c->hasSwitch('n',"noraise");
+	bool bCreateMinimized = c->hasSwitch('m', "minimized");
+	bool bNoRaise = c->hasSwitch('n', "noraise");
 
 	if(!g_pSharedFilesWindow)
 	{
 		g_pSharedFilesWindow = new SharedFilesWindow();
-		g_pMainWindow->addWindow(g_pSharedFilesWindow,!bCreateMinimized);
+		g_pMainWindow->addWindow(g_pSharedFilesWindow, !bCreateMinimized);
 		//if(bCreateMinimized)g_pSharedFilesWindow->minimize();
 		return true;
 	}
 
-	if(!bNoRaise)g_pSharedFilesWindow->delayedAutoRaise();
+	if(!bNoRaise)
+		g_pSharedFilesWindow->delayedAutoRaise();
 	return true;
 }
 
 static bool sharedfileswindow_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",sharedfileswindow_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", sharedfileswindow_kvs_cmd_open);
 	return true;
 }
 
@@ -93,13 +94,12 @@ static bool sharedfileswindow_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"SharedFilesWindow",
-	"4.0.0",
-	"Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)",
-	"Shared files window extension",
-	sharedfileswindow_module_init,
-	sharedfileswindow_module_can_unload,
-	0,
-	sharedfileswindow_module_cleanup,
-	"sharedfileswindow"
-)
+    "SharedFilesWindow",
+    "4.0.0",
+    "Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)",
+    "Shared files window extension",
+    sharedfileswindow_module_init,
+    sharedfileswindow_module_can_unload,
+    0,
+    sharedfileswindow_module_cleanup,
+    "sharedfileswindow")

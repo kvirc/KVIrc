@@ -26,20 +26,22 @@
 
 #include "KviTalHBox.h"
 
-DccWindow::DccWindow(KviWindow::Type eType,const char * name,DccDescriptor * d)
-: KviWindow(eType,name, d->console())
+DccWindow::DccWindow(KviWindow::Type eType, const char * name, DccDescriptor * d)
+    : KviWindow(eType, name, d->console())
 {
 	m_pDescriptor = d;
 	m_pDescriptor->setWindow(this);
-	m_pMarshal    = 0;
+	m_pMarshal = 0;
 	m_pButtonBox = new KviTalHBox(this);
 	createTextEncodingButton(m_pButtonBox);
 }
 
 DccWindow::~DccWindow()
 {
-	if(m_pMarshal)delete m_pMarshal;
-	if(m_pDescriptor)delete m_pDescriptor;
+	if(m_pMarshal)
+		delete m_pMarshal;
+	if(m_pDescriptor)
+		delete m_pDescriptor;
 }
 
 KviWindow * DccWindow::dccMarshalOutputWindow()

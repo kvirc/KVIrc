@@ -59,6 +59,7 @@ public:
 	* \brief Destroys the treenode array element object
 	*/
 	~KviKvsTreeNodeArrayElement();
+
 protected:
 	KviKvsTreeNodeExpression * m_pIndex; // can't be null
 public:
@@ -107,6 +108,7 @@ public:
 	* \return KviKvsRWEvaluationResult *
 	*/
 	virtual KviKvsRWEvaluationResult * evaluateReadWriteInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c);
+
 protected:
 	/**
 	* \brief Evaluates the index of the array

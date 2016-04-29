@@ -36,6 +36,7 @@ class OptionsWidget_antispam : public KviOptionsWidget
 public:
 	OptionsWidget_antispam(QWidget * parent);
 	~OptionsWidget_antispam();
+
 protected:
 	KviBoolSelector * m_b1;
 	KviBoolSelector * m_b2;
@@ -44,6 +45,5 @@ protected:
 protected slots:
 	void reenableStuff(bool);
 };
-
 
 #endif //_OPTW_ANTISPAM_H_

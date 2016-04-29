@@ -43,62 +43,62 @@
 #include <QToolTip>
 #include <QTimer>
 
-extern HelpIndex        * g_pDocIndex;
+extern HelpIndex * g_pDocIndex;
 extern KviPointerList<HelpWindow> * g_pHelpWindowList;
 extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
 
 //bool g_bIndexingDone = false;
 HelpWindow::HelpWindow(const char * name)
-: KviWindow(KviWindow::Help,name)
+    : KviWindow(KviWindow::Help, name)
 {
 	g_pHelpWindowList->append(this);
-	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
 	m_pSplitter->setObjectName("main_splitter");
 	m_pSplitter->setChildrenCollapsible(false);
 
 	m_pHelpWidget = new HelpWidget(m_pSplitter);
 
-	m_pToolBar=new KviTalVBox(m_pSplitter);
+	m_pToolBar = new KviTalVBox(m_pSplitter);
 	m_pTabWidget = new QTabWidget(m_pToolBar);
 
 	m_pBottomLayout = new KviTalHBox(m_pToolBar);
 	m_pProgressBar = new QProgressBar(m_pBottomLayout);
 	m_pCancelButton = new QPushButton(m_pBottomLayout);
-	m_pCancelButton->setText(__tr2qs_ctx("Cancel","logview"));
-	connect(m_pCancelButton,SIGNAL(clicked()),g_pDocIndex,SLOT(setLastWinClosed()));
+	m_pCancelButton->setText(__tr2qs_ctx("Cancel", "logview"));
+	connect(m_pCancelButton, SIGNAL(clicked()), g_pDocIndex, SLOT(setLastWinClosed()));
 	m_pBottomLayout->setVisible(false);
 
-	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
-	m_pTabWidget->addTab(m_pIndexTab,__tr2qs("Help Index"));
+	m_pIndexTab = new KviTalVBox(m_pTabWidget);
+	m_pTabWidget->addTab(m_pIndexTab, __tr2qs("Help Index"));
 
-	KviTalHBox* pSearchBox = new KviTalHBox(m_pIndexTab);
+	KviTalHBox * pSearchBox = new KviTalHBox(m_pIndexTab);
 	m_pIndexSearch = new QLineEdit(pSearchBox);
-	connect( m_pIndexSearch, SIGNAL( textChanged(const QString&) ),
-	     this, SLOT( searchInIndex(const QString&) ) );
-	connect( m_pIndexSearch, SIGNAL( returnPressed() ),
-	     this, SLOT( showIndexTopic() ) );
+	connect(m_pIndexSearch, SIGNAL(textChanged(const QString &)),
+	    this, SLOT(searchInIndex(const QString &)));
+	connect(m_pIndexSearch, SIGNAL(returnPressed()),
+	    this, SLOT(showIndexTopic()));
 
 	m_pBtnRefreshIndex = new QPushButton(pSearchBox);
 	m_pBtnRefreshIndex->setIcon(*g_pIconManager->getBigIcon(KVI_REFRESH_IMAGE_NAME));
-	connect(m_pBtnRefreshIndex,SIGNAL(clicked()),this,SLOT(refreshIndex()));
-	m_pBtnRefreshIndex->setToolTip(__tr2qs("Refresh index") );
+	connect(m_pBtnRefreshIndex, SIGNAL(clicked()), this, SLOT(refreshIndex()));
+	m_pBtnRefreshIndex->setToolTip(__tr2qs("Refresh index"));
 
 	m_pIndexListWidget = new KviTalListWidget(m_pIndexTab);
-	connect(m_pIndexListWidget,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(indexSelected (QListWidgetItem * )));
+	connect(m_pIndexListWidget, SIGNAL(itemActivated(QListWidgetItem *)), this, SLOT(indexSelected(QListWidgetItem *)));
 
-	m_pSearchTab  = new KviTalVBox(m_pTabWidget);
-	m_pTabWidget->addTab(m_pSearchTab,__tr2qs("Search"));
+	m_pSearchTab = new KviTalVBox(m_pTabWidget);
+	m_pTabWidget->addTab(m_pSearchTab, __tr2qs("Search"));
 
 	m_pTermsEdit = new QLineEdit(m_pSearchTab);
 
-	connect( m_pTermsEdit, SIGNAL( returnPressed() ),
-	     this, SLOT( startSearch() ) );
+	connect(m_pTermsEdit, SIGNAL(returnPressed()),
+	    this, SLOT(startSearch()));
 
 	m_pResultBox = new KviTalListWidget(m_pSearchTab);
-	connect(m_pResultBox,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(searchSelected (QListWidgetItem *)));
+	connect(m_pResultBox, SIGNAL(itemActivated(QListWidgetItem *)), this, SLOT(searchSelected(QListWidgetItem *)));
 
 	QList<int> li;
-	li.append(width()-80);
+	li.append(width() - 80);
 	li.append(80);
 	m_pSplitter->setSizes(li);
 
@@ -106,7 +106,7 @@ HelpWindow::HelpWindow(const char * name)
 	connect(g_pDocIndex, SIGNAL(indexingProgress(int)), this, SLOT(indexingProgress(int)));
 	connect(g_pDocIndex, SIGNAL(indexingEnd()), this, SLOT(indexingEnd()));
 
-	QTimer::singleShot(0,this,SLOT(initialSetup()));
+	QTimer::singleShot(0, this, SLOT(initialSetup()));
 }
 
 HelpWindow::~HelpWindow()
@@ -118,36 +118,38 @@ void HelpWindow::initialSetup()
 {
 	m_pIndexSearch->setFocus();
 
-/*	if(!g_bIndexingDone)
+	/*	if(!g_bIndexingDone)
 	{
 		g_bIndexingDone=true;*/
-		QString szDoclist,szDict;
+	QString szDoclist, szDict;
 
-		g_pApp->getLocalKvircDirectory(szDoclist,KviApplication::Help,"help.doclist." KVI_SOURCES_DATE);
-		g_pApp->getLocalKvircDirectory(szDict,KviApplication::Help,"help.dict." KVI_SOURCES_DATE);
+	g_pApp->getLocalKvircDirectory(szDoclist, KviApplication::Help, "help.doclist." KVI_SOURCES_DATE);
+	g_pApp->getLocalKvircDirectory(szDict, KviApplication::Help, "help.dict." KVI_SOURCES_DATE);
 
-		if ( QFileInfo( szDoclist ).exists() && QFileInfo( szDict ).exists() ) {
-			g_pDocIndex->readDict();
-			m_pIndexListWidget->clear();
-			QStringList docList=g_pDocIndex->titlesList();
-			m_pIndexListWidget->addItems(docList);
-			m_pIndexListWidget->sortItems();
-			m_pBtnRefreshIndex->setEnabled(true);
-		} else {
-			g_pDocIndex->makeIndex();
-
-		    }
+	if(QFileInfo(szDoclist).exists() && QFileInfo(szDict).exists())
+	{
+		g_pDocIndex->readDict();
+		m_pIndexListWidget->clear();
+		QStringList docList = g_pDocIndex->titlesList();
+		m_pIndexListWidget->addItems(docList);
+		m_pIndexListWidget->sortItems();
+		m_pBtnRefreshIndex->setEnabled(true);
+	}
+	else
+	{
+		g_pDocIndex->makeIndex();
+	}
 	//}
 }
 
-void HelpWindow::indexingStart( int iNum )
+void HelpWindow::indexingStart(int iNum)
 {
 	m_pBtnRefreshIndex->setEnabled(false);
 	m_pBottomLayout->setVisible(true);
 	m_pProgressBar->setRange(0, iNum);
 	m_pProgressBar->setValue(0);
 }
-void HelpWindow::indexingProgress( int iNum )
+void HelpWindow::indexingProgress(int iNum)
 {
 	m_pProgressBar->setValue(iNum);
 }
@@ -158,25 +160,25 @@ void HelpWindow::indexingEnd()
 	m_pBottomLayout->setVisible(false);
 	g_pDocIndex->writeDict();
 	m_pIndexListWidget->clear();
-	QStringList docList=g_pDocIndex->titlesList();
+	QStringList docList = g_pDocIndex->titlesList();
 	m_pIndexListWidget->addItems(docList);
 	m_pIndexListWidget->sortItems();
 	m_pBtnRefreshIndex->setEnabled(true);
 }
 
-void HelpWindow::saveProperties(KviConfigurationFile *cfg)
+void HelpWindow::saveProperties(KviConfigurationFile * cfg)
 {
 	KviWindow::saveProperties(cfg);
-	cfg->writeEntry("Splitter",m_pSplitter->sizes());
+	cfg->writeEntry("Splitter", m_pSplitter->sizes());
 }
 
-void HelpWindow::loadProperties(KviConfigurationFile *cfg)
+void HelpWindow::loadProperties(KviConfigurationFile * cfg)
 {
 	QList<int> def;
 	int w = width();
 	def.append((w * 82) / 100);
 	def.append((w * 18) / 100);
-	m_pSplitter->setSizes(cfg->readIntListEntry("Splitter",def));
+	m_pSplitter->setSizes(cfg->readIntListEntry("Splitter", def));
 	KviWindow::loadProperties(cfg);
 }
 
@@ -188,78 +190,90 @@ void HelpWindow::refreshIndex()
 void HelpWindow::startSearch()
 {
 	QString str = m_pTermsEdit->text();
-	str = str.replace( "\'", "\"" );
-	str = str.replace( "`", "\"" );
+	str = str.replace("\'", "\"");
+	str = str.replace("`", "\"");
 	QString buf = str;
-	str = str.replace( "-", " " );
-	str = str.replace( QRegExp( "\\s[\\S]?\\s" ), " " );
-	m_terms = str.split(" ",QString::SkipEmptyParts);
+	str = str.replace("-", " ");
+	str = str.replace(QRegExp("\\s[\\S]?\\s"), " ");
+	m_terms = str.split(" ", QString::SkipEmptyParts);
 	QStringList termSeq;
 	QStringList seqWords;
 	QStringList::iterator it = m_terms.begin();
-	for ( ; it != m_terms.end(); ++it ) {
+	for(; it != m_terms.end(); ++it)
+	{
 		(*it) = (*it).simplified();
 		(*it) = (*it).toLower();
-		(*it) = (*it).replace( "\"", "" );
+		(*it) = (*it).replace("\"", "");
 	}
-	if ( str.contains( '\"' ) ) {
-		if ( (str.count( '\"' ))%2 == 0 ) {
+	if(str.contains('\"'))
+	{
+		if((str.count('\"')) % 2 == 0)
+		{
 			int beg = 0;
 			int end = 0;
 			QString s;
-			beg = str.indexOf( '\"', beg );
-			while ( beg != -1 ) {
+			beg = str.indexOf('\"', beg);
+			while(beg != -1)
+			{
 				beg++;
-				end = str.indexOf( '\"', beg );
-				s = str.mid( beg, end - beg );
+				end = str.indexOf('\"', beg);
+				s = str.mid(beg, end - beg);
 				s = s.toLower();
 				s = s.simplified();
-				if ( s.contains( '*' ) ) {
-				QMessageBox::warning( this, tr( "Full Text Search - KVIrc" ),
-					tr( "Using a wildcard within phrases is not allowed." ) );
-				return;
+				if(s.contains('*'))
+				{
+					QMessageBox::warning(this, tr("Full Text Search - KVIrc"),
+					    tr("Using a wildcard within phrases is not allowed."));
+					return;
 				}
-				seqWords += s.split( ' ', QString::SkipEmptyParts );
+				seqWords += s.split(' ', QString::SkipEmptyParts);
 				termSeq << s;
-				beg = str.indexOf( '\"', end + 1);
+				beg = str.indexOf('\"', end + 1);
 			}
-		} else {
-			QMessageBox::warning( this, tr( "Full Text Search - KVIrc" ),
-				tr( "The closing quotation mark is missing." ) );
+		}
+		else
+		{
+			QMessageBox::warning(this, tr("Full Text Search - KVIrc"),
+			    tr("The closing quotation mark is missing."));
 			return;
 		}
 	}
-	setCursor( Qt::WaitCursor );
+	setCursor(Qt::WaitCursor);
 	m_foundDocs.clear();
-	m_foundDocs = g_pDocIndex->query( m_terms, termSeq, seqWords );
+	m_foundDocs = g_pDocIndex->query(m_terms, termSeq, seqWords);
 
 	m_pResultBox->clear();
-	for ( it = m_foundDocs.begin(); it != m_foundDocs.end(); ++it )
-		m_pResultBox->addItem( g_pDocIndex->getDocumentTitle( *it ) );
+	for(it = m_foundDocs.begin(); it != m_foundDocs.end(); ++it)
+		m_pResultBox->addItem(g_pDocIndex->getDocumentTitle(*it));
 
 	m_terms.clear();
 	bool isPhrase = false;
 	QString s = "";
-	for ( int i = 0; i < (int)buf.length(); ++i ) {
-		if ( buf[i] == '\"' ) {
+	for(int i = 0; i < (int)buf.length(); ++i)
+	{
+		if(buf[i] == '\"')
+		{
 			isPhrase = !isPhrase;
 			s = s.simplified();
-			if ( !s.isEmpty() )
+			if(!s.isEmpty())
 				m_terms << s;
 			s = "";
-		} else if ( buf[i] == ' ' && !isPhrase ) {
+		}
+		else if(buf[i] == ' ' && !isPhrase)
+		{
 			s = s.simplified();
-			if ( !s.isEmpty() )
+			if(!s.isEmpty())
 				m_terms << s;
 			s = "";
-		} else
-		s += buf[i];
+		}
+		else
+			s += buf[i];
 	}
-	if ( !s.isEmpty() ) m_terms << s;
+	if(!s.isEmpty())
+		m_terms << s;
 
-	setCursor( Qt::ArrowCursor );
+	setCursor(Qt::ArrowCursor);
 }
-
 
 #ifdef COMPILE_WEBKIT_SUPPORT
 QWebView * HelpWindow::textBrowser()
@@ -272,52 +286,55 @@ QTextBrowser * HelpWindow::textBrowser()
 
 void HelpWindow::showIndexTopic()
 {
-	if (m_pIndexSearch->text().isEmpty()|| !m_pIndexListWidget->selectedItems().count()) return;
-	int i=g_pDocIndex->titlesList().indexOf(m_pIndexListWidget->selectedItems().at(0)->text());
-	#ifdef COMPILE_WEBKIT_SUPPORT
-	textBrowser()->load(QUrl(g_pDocIndex->documentList()[ i ]));
-	#else
-	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
-	#endif
+	if(m_pIndexSearch->text().isEmpty() || !m_pIndexListWidget->selectedItems().count())
+		return;
+	int i = g_pDocIndex->titlesList().indexOf(m_pIndexListWidget->selectedItems().at(0)->text());
+#ifdef COMPILE_WEBKIT_SUPPORT
+	textBrowser()->load(QUrl(g_pDocIndex->documentList()[i]));
+#else
+	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[i]));
+#endif
 }
 
-void HelpWindow::searchInIndex( const QString &s )
+void HelpWindow::searchInIndex(const QString & s)
 {
-	QListWidgetItem *item ;
+	QListWidgetItem * item;
 	QString sl = s.toLower();
-	for(int i=0;i<m_pIndexListWidget->count();i++)
+	for(int i = 0; i < m_pIndexListWidget->count(); i++)
 	{
-		item=m_pIndexListWidget->item(i);
+		item = m_pIndexListWidget->item(i);
 		QString t = item->text();
-		if ( t.length() >= sl.length() &&
-		item->text().left(s.length()).toLower() == sl ) {
-			m_pIndexListWidget->setCurrentItem( item );
-			m_pIndexListWidget->scrollToItem(item,QAbstractItemView::PositionAtTop);
+		if(t.length() >= sl.length() && item->text().left(s.length()).toLower() == sl)
+		{
+			m_pIndexListWidget->setCurrentItem(item);
+			m_pIndexListWidget->scrollToItem(item, QAbstractItemView::PositionAtTop);
 			break;
 		}
 	}
 }
 
-void HelpWindow::indexSelected ( QListWidgetItem *item )
+void HelpWindow::indexSelected(QListWidgetItem * item)
 {
-	if (!item) return;
-	int i=g_pDocIndex->titlesList().indexOf(item->text());
-	#ifdef COMPILE_WEBKIT_SUPPORT
-	textBrowser()->load(QUrl(g_pDocIndex->documentList()[ i ]));
-	#else
-	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
-	#endif
+	if(!item)
+		return;
+	int i = g_pDocIndex->titlesList().indexOf(item->text());
+#ifdef COMPILE_WEBKIT_SUPPORT
+	textBrowser()->load(QUrl(g_pDocIndex->documentList()[i]));
+#else
+	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[i]));
+#endif
 }
 
-void HelpWindow::searchSelected ( QListWidgetItem *item )
+void HelpWindow::searchSelected(QListWidgetItem * item)
 {
-	if (!item) return;
-	int i=g_pDocIndex->titlesList().indexOf(item->text());
-	#ifdef COMPILE_WEBKIT_SUPPORT
-	textBrowser()->load(QUrl(g_pDocIndex->documentList()[ i ]));
-	#else
-	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
-	#endif
+	if(!item)
+		return;
+	int i = g_pDocIndex->titlesList().indexOf(item->text());
+#ifdef COMPILE_WEBKIT_SUPPORT
+	textBrowser()->load(QUrl(g_pDocIndex->documentList()[i]));
+#else
+	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[i]));
+#endif
 }
 
 QPixmap * HelpWindow::myIconPtr()
@@ -327,7 +344,7 @@ QPixmap * HelpWindow::myIconPtr()
 
 void HelpWindow::resizeEvent(QResizeEvent *)
 {
-	m_pSplitter->setGeometry(0,0,width(),height());
+	m_pSplitter->setGeometry(0, 0, width(), height());
 }
 
 void HelpWindow::fillCaptionBuffers()

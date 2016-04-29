@@ -37,18 +37,20 @@ class KVILIB_API KviTalTabDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	KviTalTabDialog(QWidget * pParent = 0,const char * name = 0,bool bModal = false);
+	KviTalTabDialog(QWidget * pParent = 0, const char * name = 0, bool bModal = false);
 	~KviTalTabDialog();
+
 protected:
 	void setOkButton(const QString &);
 	void setCancelButton(const QString &);
-	void addTab(QWidget *,const QString &);
+	void addTab(QWidget *, const QString &);
 protected slots:
 	void okPressed();
 	void cancelPressed();
+
 private:
 	QGridLayout * m_pLayout;
-	QTabWidget  * m_pTabWidget;
+	QTabWidget * m_pTabWidget;
 signals:
 	void applyButtonPressed();
 	void cancelButtonPressed();

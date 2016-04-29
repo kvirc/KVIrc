@@ -23,7 +23,6 @@
 //
 //=============================================================================
 
-
 #include "KvsObject_textBrowser.h"
 #include "KviError.h"
 #include "kvi_debug.h"
@@ -66,41 +65,40 @@
 		This signal is emitted by the default implementation of the [classfnc]$linkClickedEvent[/classfnc]() function.
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_textBrowser,"textBrowser","multilineedit")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_textBrowser,setSource)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_textBrowser,forward)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_textBrowser,backward)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_textBrowser,home)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_textBrowser,reload)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_textBrowser,linkClickedEvent)
+KVSO_BEGIN_REGISTERCLASS(KvsObject_textBrowser, "textBrowser", "multilineedit")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_textBrowser, setSource)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_textBrowser, forward)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_textBrowser, backward)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_textBrowser, home)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_textBrowser, reload)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_textBrowser, linkClickedEvent)
 KVSO_END_REGISTERCLASS(KvsObject_textBrowser)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_textBrowser,KvsObject_textedit)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_textBrowser, KvsObject_textedit)
 
 KVSO_END_CONSTRUCTOR(KvsObject_textBrowser)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_textBrowser)
 
 KVSO_END_CONSTRUCTOR(KvsObject_textBrowser)
 
-bool KvsObject_textBrowser::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_textBrowser::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QTextBrowser);
-	connect(obj,SIGNAL(anchorClicked(const QUrl &)),this,SLOT(anchorClicked(const QUrl &)));
+	connect(obj, SIGNAL(anchorClicked(const QUrl &)), this, SLOT(anchorClicked(const QUrl &)));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(textBrowser,setSource)
+KVSO_CLASS_FUNCTION(textBrowser, setSource)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szFile;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("file_name",KVS_PT_STRING,0,szFile)
+	KVSO_PARAMETER("file_name", KVS_PT_STRING, 0, szFile)
 	KVSO_PARAMETERS_END(c)
 	if(!QFile::exists(szFile))
 	{
-		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
+		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.", "objects"), &szFile);
 		return true;
 	}
 	QUrl url;
@@ -109,42 +107,42 @@ KVSO_CLASS_FUNCTION(textBrowser,setSource)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(textBrowser,forward)
+KVSO_CLASS_FUNCTION(textBrowser, forward)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	((QTextBrowser *)widget())->forward();
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(textBrowser,backward)
+KVSO_CLASS_FUNCTION(textBrowser, backward)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	((QTextBrowser *)widget())->backward();
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(textBrowser,home)
+KVSO_CLASS_FUNCTION(textBrowser, home)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	((QTextBrowser *)widget())->home();
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(textBrowser,reload)
+KVSO_CLASS_FUNCTION(textBrowser, reload)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	((QTextBrowser *)widget())->reload();
 	return true;
 }
 
-void KvsObject_textBrowser::anchorClicked(const QUrl &url)
+void KvsObject_textBrowser::anchorClicked(const QUrl & url)
 {
 	KviKvsVariantList parms(new KviKvsVariant(url.path()));
-	callFunction(this,"linkClickedEvent",0,&parms);
+	callFunction(this, "linkClickedEvent", 0, &parms);
 }
 
-KVSO_CLASS_FUNCTION(textBrowser,linkClickedEvent)
+KVSO_CLASS_FUNCTION(textBrowser, linkClickedEvent)
 {
-	emitSignal("linkClicked",c,c->params());
+	emitSignal("linkClicked", c, c->params());
 	return true;
 }

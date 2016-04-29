@@ -60,7 +60,7 @@ QT_BEGIN_NAMESPACE
 #endif
 
 static QByteArray qNtlmPhase1();
-static QByteArray qNtlmPhase3(QHttpAuthenticatorPrivate *ctx, const QByteArray& phase2data);
+static QByteArray qNtlmPhase3(QHttpAuthenticatorPrivate * ctx, const QByteArray & phase2data);
 
 /*!
   \class QHttpAuthenticator
@@ -128,7 +128,6 @@ static QByteArray qNtlmPhase3(QHttpAuthenticatorPrivate *ctx, const QByteArray& 
   \sa QSslSocket
 */
 
-
 /*!
   Constructs an empty authentication object
 */
@@ -142,71 +141,70 @@ QHttpAuthenticator::QHttpAuthenticator()
 */
 QHttpAuthenticator::~QHttpAuthenticator()
 {
-    if (d && !d->ref.deref())
-        delete d;
+	if(d && !d->ref.deref())
+		delete d;
 }
 
 /*!
     Constructs a copy of \a other.
 */
-QHttpAuthenticator::QHttpAuthenticator(const QHttpAuthenticator &other)
+QHttpAuthenticator::QHttpAuthenticator(const QHttpAuthenticator & other)
     : d(other.d)
 {
-    if (d)
-        d->ref.ref();
+	if(d)
+		d->ref.ref();
 }
 
 /*!
     Assigns the contents of \a other to this authenticator.
 */
-QHttpAuthenticator &QHttpAuthenticator::operator=(const QHttpAuthenticator &other)
+QHttpAuthenticator & QHttpAuthenticator::operator=(const QHttpAuthenticator & other)
 {
-    if (d == other.d)
-        return *this;
+	if(d == other.d)
+		return *this;
 
-    if (d && !d->ref.deref())
-        delete d;
+	if(d && !d->ref.deref())
+		delete d;
 
-    d = other.d;
-    if (d)
-        d->ref.ref();
-    return *this;
+	d = other.d;
+	if(d)
+		d->ref.ref();
+	return *this;
 }
 
 /*!
     Returns true if this authenticator is identical to \a other; otherwise
     returns false.
 */
-bool QHttpAuthenticator::operator==(const QHttpAuthenticator &other) const
+bool QHttpAuthenticator::operator==(const QHttpAuthenticator & other) const
 {
-    if (d == other.d)
-        return true;
-    return d->user == other.d->user
-        && d->password == other.d->password
-        && d->realm == other.d->realm
-        && d->method == other.d->method
-        && d->options == other.d->options;
+	if(d == other.d)
+		return true;
+	return d->user == other.d->user
+	    && d->password == other.d->password
+	    && d->realm == other.d->realm
+	    && d->method == other.d->method
+	    && d->options == other.d->options;
 }
 
-QHttpAuthenticator &QHttpAuthenticator::operator=(const QAuthenticator& auth)
+QHttpAuthenticator & QHttpAuthenticator::operator=(const QAuthenticator & auth)
 {
-    detach();
-    d->user = auth.user();
-    d->password = auth.password();
-    d->options = auth.options();
-    return *this;
+	detach();
+	d->user = auth.user();
+	d->password = auth.password();
+	d->options = auth.options();
+	return *this;
 }
 
 QAuthenticator QHttpAuthenticator::toQAuthenticator()
 {
-    QAuthenticator rv;
-    rv.setUser(d->user);
-    rv.setPassword(d->password);
-    foreach (const QString& option, d->options.keys())
-        rv.setOption(option, d->options.value(option));
-    return rv;
+	QAuthenticator rv;
+	rv.setUser(d->user);
+	rv.setPassword(d->password);
+	foreach(const QString & option, d->options.keys())
+		rv.setOption(option, d->options.value(option));
+	return rv;
 }
-
 
 /*!
     \fn bool QHttpAuthenticator::operator!=(const QHttpAuthenticator &other) const
@@ -220,7 +218,7 @@ QAuthenticator QHttpAuthenticator::toQAuthenticator()
 */
 QString QHttpAuthenticator::user() const
 {
-    return d ? d->user : QString();
+	return d ? d->user : QString();
 }
 
 /*!
@@ -228,31 +226,35 @@ QString QHttpAuthenticator::user() const
 
   \sa QNetworkAccessManager::authenticationRequired()
 */
-void QHttpAuthenticator::setUser(const QString &user)
+void QHttpAuthenticator::setUser(const QString & user)
 {
-    detach();
-    int separatorPosn = 0;
+	detach();
+	int separatorPosn = 0;
 
-    switch(d->method) {
-    case QHttpAuthenticatorPrivate::Ntlm:
-        if((separatorPosn = user.indexOf(QLatin1String("\\"))) != -1) {
-            //domain name is present
-            d->realm.clear();
-            d->userDomain = user.left(separatorPosn);
-            d->extractedUser = user.mid(separatorPosn + 1);
-            d->user = user;
-        } else {
-            d->extractedUser = user;
-            d->user = user;
-	    d->realm.clear();
-            d->userDomain.clear();
-        }
-        break;
-    default:
-        d->user = user;
-        d->userDomain.clear();
-        break;
-    }
+	switch(d->method)
+	{
+		case QHttpAuthenticatorPrivate::Ntlm:
+			if((separatorPosn = user.indexOf(QLatin1String("\\"))) != -1)
+			{
+				//domain name is present
+				d->realm.clear();
+				d->userDomain = user.left(separatorPosn);
+				d->extractedUser = user.mid(separatorPosn + 1);
+				d->user = user;
+			}
+			else
+			{
+				d->extractedUser = user;
+				d->user = user;
+				d->realm.clear();
+				d->userDomain.clear();
+			}
+			break;
+		default:
+			d->user = user;
+			d->userDomain.clear();
+			break;
+	}
 }
 
 /*!
@@ -260,7 +262,7 @@ void QHttpAuthenticator::setUser(const QString &user)
 */
 QString QHttpAuthenticator::password() const
 {
-    return d ? d->password : QString();
+	return d ? d->password : QString();
 }
 
 /*!
@@ -268,10 +270,10 @@ QString QHttpAuthenticator::password() const
 
   \sa QNetworkAccessManager::authenticationRequired()
 */
-void QHttpAuthenticator::setPassword(const QString &password)
+void QHttpAuthenticator::setPassword(const QString & password)
 {
-    detach();
-    d->password = password;
+	detach();
+	d->password = password;
 }
 
 /*!
@@ -279,14 +281,15 @@ void QHttpAuthenticator::setPassword(const QString &password)
 */
 void QHttpAuthenticator::detach()
 {
-    if (!d) {
-        d = new QHttpAuthenticatorPrivate;
-        d->ref.store(1);
-        return;
-    }
+	if(!d)
+	{
+		d = new QHttpAuthenticatorPrivate;
+		d->ref.store(1);
+		return;
+	}
 
-    qAtomicDetach(d);
-    d->phase = QHttpAuthenticatorPrivate::Start;
+	qAtomicDetach(d);
+	d->phase = QHttpAuthenticatorPrivate::Start;
 }
 
 /*!
@@ -294,7 +297,7 @@ void QHttpAuthenticator::detach()
 */
 QString QHttpAuthenticator::realm() const
 {
-    return d ? d->realm : QString();
+	return d ? d->realm : QString();
 }
 
 /*!
@@ -305,9 +308,9 @@ QString QHttpAuthenticator::realm() const
 
     \sa options(), QHttpAuthenticator#Options
 */
-QVariant QHttpAuthenticator::option(const QString &opt) const
+QVariant QHttpAuthenticator::option(const QString & opt) const
 {
-    return d ? d->options.value(opt) : QVariant();
+	return d ? d->options.value(opt) : QVariant();
 }
 
 /*!
@@ -320,7 +323,7 @@ QVariant QHttpAuthenticator::option(const QString &opt) const
 */
 QVariantHash QHttpAuthenticator::options() const
 {
-    return d ? d->options : QVariantHash();
+	return d ? d->options : QVariantHash();
 }
 
 /*!
@@ -331,54 +334,50 @@ QVariantHash QHttpAuthenticator::options() const
 
     \sa options(), option(), QHttpAuthenticator#Options
 */
-void QHttpAuthenticator::setOption(const QString &opt, const QVariant &value)
+void QHttpAuthenticator::setOption(const QString & opt, const QVariant & value)
 {
-    detach();
-    d->options.insert(opt, value);
+	detach();
+	d->options.insert(opt, value);
 }
-
 
 /*!
     Returns true if the authenticator is null.
 */
 bool QHttpAuthenticator::isNull() const
 {
-    return !d;
+	return !d;
 }
 
 QHttpAuthenticatorPrivate::QHttpAuthenticatorPrivate()
-    : ref(0)
-    , method(None)
-    , hasFailed(false)
-    , phase(Start)
-    , nonceCount(0)
+    : ref(0), method(None), hasFailed(false), phase(Start), nonceCount(0)
 {
-    cnonce = QCryptographicHash::hash(QByteArray::number(qrand(), 16) + QByteArray::number(qrand(), 16),
-                                      QCryptographicHash::Md5).toHex();
-    nonceCount = 0;
+	cnonce = QCryptographicHash::hash(QByteArray::number(qrand(), 16) + QByteArray::number(qrand(), 16),
+	             QCryptographicHash::Md5)
+	             .toHex();
+	nonceCount = 0;
 }
 
 #ifndef QT_NO_HTTP
-void QHttpAuthenticatorPrivate::parseHttpResponse(const QHttpResponseHeader &header, bool isProxy)
+void QHttpAuthenticatorPrivate::parseHttpResponse(const QHttpResponseHeader & header, bool isProxy)
 {
-    const QList<QPair<QString, QString> > values = header.values();
-    QList<QPair<QByteArray, QByteArray> > rawValues;
+	const QList<QPair<QString, QString>> values = header.values();
+	QList<QPair<QByteArray, QByteArray>> rawValues;
 
-    QList<QPair<QString, QString> >::const_iterator it, end;
-    for (it = values.constBegin(), end = values.constEnd(); it != end; ++it)
-        rawValues.append(qMakePair(it->first.toLatin1(), it->second.toUtf8()));
+	QList<QPair<QString, QString>>::const_iterator it, end;
+	for(it = values.constBegin(), end = values.constEnd(); it != end; ++it)
+		rawValues.append(qMakePair(it->first.toLatin1(), it->second.toUtf8()));
 
-    // continue in byte array form
-    parseHttpResponse(rawValues, isProxy);
+	// continue in byte array form
+	parseHttpResponse(rawValues, isProxy);
 }
 #endif
 
-void QHttpAuthenticatorPrivate::parseHttpResponse(const QList<QPair<QByteArray, QByteArray> > &values, bool isProxy)
+void QHttpAuthenticatorPrivate::parseHttpResponse(const QList<QPair<QByteArray, QByteArray>> & values, bool isProxy)
 {
-    const char *search = isProxy ? "proxy-authenticate" : "www-authenticate";
+	const char * search = isProxy ? "proxy-authenticate" : "www-authenticate";
 
-    method = None;
-    /*
+	method = None;
+	/*
       Fun from the HTTP 1.1 specs, that we currently ignore:
 
       User agents are advised to take special care in parsing the WWW-
@@ -388,170 +387,192 @@ void QHttpAuthenticatorPrivate::parseHttpResponse(const QList<QPair<QByteArray, 
       authentication parameters.
     */
 
-    QByteArray headerVal;
-    for (int i = 0; i < values.size(); ++i) {
-        const QPair<QByteArray, QByteArray> &current = values.at(i);
-        if (current.first.toLower() != search)
-            continue;
-        QByteArray str = current.second.toLower();
-        if (method < Basic && str.startsWith("basic")) {
-            method = Basic;
-            headerVal = current.second.mid(6);
-        } else if (method < Ntlm && str.startsWith("ntlm")) {
-            method = Ntlm;
-            headerVal = current.second.mid(5);
-        } else if (method < DigestMd5 && str.startsWith("digest")) {
-            method = DigestMd5;
-            headerVal = current.second.mid(7);
-        }
-    }
+	QByteArray headerVal;
+	for(int i = 0; i < values.size(); ++i)
+	{
+		const QPair<QByteArray, QByteArray> & current = values.at(i);
+		if(current.first.toLower() != search)
+			continue;
+		QByteArray str = current.second.toLower();
+		if(method < Basic && str.startsWith("basic"))
+		{
+			method = Basic;
+			headerVal = current.second.mid(6);
+		}
+		else if(method < Ntlm && str.startsWith("ntlm"))
+		{
+			method = Ntlm;
+			headerVal = current.second.mid(5);
+		}
+		else if(method < DigestMd5 && str.startsWith("digest"))
+		{
+			method = DigestMd5;
+			headerVal = current.second.mid(7);
+		}
+	}
 
-    challenge = headerVal.trimmed();
-    QHash<QByteArray, QByteArray> options = parseDigestAuthenticationChallenge(challenge);
+	challenge = headerVal.trimmed();
+	QHash<QByteArray, QByteArray> options = parseDigestAuthenticationChallenge(challenge);
 
-    switch(method) {
-    case Basic:
-        this->options[QLatin1String("realm")] = realm = QString::fromLatin1(options.value("realm"));
-        if (user.isEmpty() && password.isEmpty())
-            phase = Done;
-        break;
-    case Ntlm:
-        // #### extract from header
-        break;
-    case DigestMd5: {
-        this->options[QLatin1String("realm")] = realm = QString::fromLatin1(options.value("realm"));
-        if (options.value("stale").toLower() == "true")
-            phase = Start;
-        if (user.isEmpty() && password.isEmpty())
-            phase = Done;
-        break;
-    }
-    default:
-        realm.clear();
-        challenge = QByteArray();
-        phase = Invalid;
-    }
+	switch(method)
+	{
+		case Basic:
+			this->options[QLatin1String("realm")] = realm = QString::fromLatin1(options.value("realm"));
+			if(user.isEmpty() && password.isEmpty())
+				phase = Done;
+			break;
+		case Ntlm:
+			// #### extract from header
+			break;
+		case DigestMd5:
+		{
+			this->options[QLatin1String("realm")] = realm = QString::fromLatin1(options.value("realm"));
+			if(options.value("stale").toLower() == "true")
+				phase = Start;
+			if(user.isEmpty() && password.isEmpty())
+				phase = Done;
+			break;
+		}
+		default:
+			realm.clear();
+			challenge = QByteArray();
+			phase = Invalid;
+	}
 }
 
-QByteArray QHttpAuthenticatorPrivate::calculateResponse(const QByteArray &requestMethod, const QByteArray &path)
+QByteArray QHttpAuthenticatorPrivate::calculateResponse(const QByteArray & requestMethod, const QByteArray & path)
 {
-    QByteArray response;
-    const char *methodString = 0;
-    switch(method) {
-    case QHttpAuthenticatorPrivate::None:
-        methodString = "";
-        phase = Done;
-        break;
-    case QHttpAuthenticatorPrivate::Plain:
-        response = '\0' + user.toUtf8() + '\0' + password.toUtf8();
-        phase = Done;
-        break;
-    case QHttpAuthenticatorPrivate::Basic:
-        methodString = "Basic ";
-        response = user.toLatin1() + ':' + password.toLatin1();
-        response = response.toBase64();
-        phase = Done;
-        break;
-    case QHttpAuthenticatorPrivate::Login:
-        if (challenge.contains("VXNlciBOYW1lAA==")) {
-            response = user.toUtf8().toBase64();
-            phase = Phase2;
-        } else if (challenge.contains("UGFzc3dvcmQA")) {
-            response = password.toUtf8().toBase64();
-            phase = Done;
-        }
-        break;
-    case QHttpAuthenticatorPrivate::CramMd5:
-        break;
-    case QHttpAuthenticatorPrivate::DigestMd5:
-        methodString = "Digest ";
-        response = digestMd5Response(challenge, requestMethod, path);
-        phase = Done;
-        break;
-    case QHttpAuthenticatorPrivate::Ntlm:
-        methodString = "NTLM ";
-        if (challenge.isEmpty()) {
-            response = qNtlmPhase1().toBase64();
-            if (user.isEmpty())
-                phase = Done;
-            else
-                phase = Phase2;
-        } else {
-            response = qNtlmPhase3(this, QByteArray::fromBase64(challenge)).toBase64();
-            phase = Done;
-        }
+	QByteArray response;
+	const char * methodString = 0;
+	switch(method)
+	{
+		case QHttpAuthenticatorPrivate::None:
+			methodString = "";
+			phase = Done;
+			break;
+		case QHttpAuthenticatorPrivate::Plain:
+			response = '\0' + user.toUtf8() + '\0' + password.toUtf8();
+			phase = Done;
+			break;
+		case QHttpAuthenticatorPrivate::Basic:
+			methodString = "Basic ";
+			response = user.toLatin1() + ':' + password.toLatin1();
+			response = response.toBase64();
+			phase = Done;
+			break;
+		case QHttpAuthenticatorPrivate::Login:
+			if(challenge.contains("VXNlciBOYW1lAA=="))
+			{
+				response = user.toUtf8().toBase64();
+				phase = Phase2;
+			}
+			else if(challenge.contains("UGFzc3dvcmQA"))
+			{
+				response = password.toUtf8().toBase64();
+				phase = Done;
+			}
+			break;
+		case QHttpAuthenticatorPrivate::CramMd5:
+			break;
+		case QHttpAuthenticatorPrivate::DigestMd5:
+			methodString = "Digest ";
+			response = digestMd5Response(challenge, requestMethod, path);
+			phase = Done;
+			break;
+		case QHttpAuthenticatorPrivate::Ntlm:
+			methodString = "NTLM ";
+			if(challenge.isEmpty())
+			{
+				response = qNtlmPhase1().toBase64();
+				if(user.isEmpty())
+					phase = Done;
+				else
+					phase = Phase2;
+			}
+			else
+			{
+				response = qNtlmPhase3(this, QByteArray::fromBase64(challenge)).toBase64();
+				phase = Done;
+			}
 
-        break;
-    }
-    return QByteArray(methodString) + response;
+			break;
+	}
+	return QByteArray(methodString) + response;
 }
-
 
 // ---------------------------- Digest Md5 code ----------------------------------------
 
-QHash<QByteArray, QByteArray> QHttpAuthenticatorPrivate::parseDigestAuthenticationChallenge(const QByteArray &challenge)
+QHash<QByteArray, QByteArray> QHttpAuthenticatorPrivate::parseDigestAuthenticationChallenge(const QByteArray & challenge)
 {
-    QHash<QByteArray, QByteArray> options;
-    // parse the challenge
-    const char *d = challenge.constData();
-    const char *end = d + challenge.length();
-    while (d < end) {
-        while (d < end && (*d == ' ' || *d == '\n' || *d == '\r'))
-            ++d;
-        const char *start = d;
-        while (d < end && *d != '=')
-            ++d;
-        QByteArray key = QByteArray(start, d - start);
-        ++d;
-        if (d >= end)
-            break;
-        bool quote = (*d == '"');
-        if (quote)
-            ++d;
-        if (d >= end)
-            break;
-        start = d;
-        QByteArray value;
-        while (d < end) {
-            bool backslash = false;
-            if (*d == '\\' && d < end - 1) {
-                ++d;
-                backslash = true;
-            }
-            if (!backslash) {
-                if (quote) {
-                    if (*d == '"')
-                        break;
-                } else {
-                    if (*d == ',')
-                        break;
-                }
-            }
-            value += *d;
-            ++d;
-        }
-        while (d < end && *d != ',')
-            ++d;
-        ++d;
-        options[key] = value;
-    }
+	QHash<QByteArray, QByteArray> options;
+	// parse the challenge
+	const char * d = challenge.constData();
+	const char * end = d + challenge.length();
+	while(d < end)
+	{
+		while(d < end && (*d == ' ' || *d == '\n' || *d == '\r'))
+			++d;
+		const char * start = d;
+		while(d < end && *d != '=')
+			++d;
+		QByteArray key = QByteArray(start, d - start);
+		++d;
+		if(d >= end)
+			break;
+		bool quote = (*d == '"');
+		if(quote)
+			++d;
+		if(d >= end)
+			break;
+		start = d;
+		QByteArray value;
+		while(d < end)
+		{
+			bool backslash = false;
+			if(*d == '\\' && d < end - 1)
+			{
+				++d;
+				backslash = true;
+			}
+			if(!backslash)
+			{
+				if(quote)
+				{
+					if(*d == '"')
+						break;
+				}
+				else
+				{
+					if(*d == ',')
+						break;
+				}
+			}
+			value += *d;
+			++d;
+		}
+		while(d < end && *d != ',')
+			++d;
+		++d;
+		options[key] = value;
+	}
 
-    QByteArray qop = options.value("qop");
-    if (!qop.isEmpty()) {
-        QList<QByteArray> qopoptions = qop.split(',');
-        if (!qopoptions.contains("auth"))
-            return QHash<QByteArray, QByteArray>();
-        // #### can't do auth-int currently
-//         if (qop.contains("auth-int"))
-//             qop = "auth-int";
-//         else if (qop.contains("auth"))
-//             qop = "auth";
-//         else
-//             qop = QByteArray();
-        options["qop"] = "auth";
-    }
+	QByteArray qop = options.value("qop");
+	if(!qop.isEmpty())
+	{
+		QList<QByteArray> qopoptions = qop.split(',');
+		if(!qopoptions.contains("auth"))
+			return QHash<QByteArray, QByteArray>();
+		// #### can't do auth-int currently
+		//         if (qop.contains("auth-int"))
+		//             qop = "auth-int";
+		//         else if (qop.contains("auth"))
+		//             qop = "auth";
+		//         else
+		//             qop = QByteArray();
+		options["qop"] = "auth";
+	}
 
-    return options;
+	return options;
 }
 
 /*
@@ -562,116 +583,116 @@ QHash<QByteArray, QByteArray> QHttpAuthenticatorPrivate::parseDigestAuthenticati
   Currently we don't support the full SASL authentication mechanism (which includes cyphers)
 */
 
-
 /* calculate request-digest/response-digest as per HTTP Digest spec */
 static QByteArray digestMd5ResponseHelper(
-    const QByteArray &alg,
-    const QByteArray &userName,
-    const QByteArray &realm,
-    const QByteArray &password,
-    const QByteArray &nonce,       /* nonce from server */
-    const QByteArray &nonceCount,  /* 8 hex digits */
-    const QByteArray &cNonce,      /* client nonce */
-    const QByteArray &qop,         /* qop-value: "", "auth", "auth-int" */
-    const QByteArray &method,      /* method from the request */
-    const QByteArray &digestUri,   /* requested URL */
-    const QByteArray &hEntity       /* H(entity body) if qop="auth-int" */
+    const QByteArray & alg,
+    const QByteArray & userName,
+    const QByteArray & realm,
+    const QByteArray & password,
+    const QByteArray & nonce,      /* nonce from server */
+    const QByteArray & nonceCount, /* 8 hex digits */
+    const QByteArray & cNonce,     /* client nonce */
+    const QByteArray & qop,        /* qop-value: "", "auth", "auth-int" */
+    const QByteArray & method,     /* method from the request */
+    const QByteArray & digestUri,  /* requested URL */
+    const QByteArray & hEntity     /* H(entity body) if qop="auth-int" */
     )
 {
-    QCryptographicHash hash(QCryptographicHash::Md5);
-    hash.addData(userName);
-    hash.addData(":", 1);
-    hash.addData(realm);
-    hash.addData(":", 1);
-    hash.addData(password);
-    QByteArray ha1 = hash.result();
-    if (alg.toLower() == "md5-sess") {
-        hash.reset();
-        // RFC 2617 contains an error, it was:
-        // hash.addData(ha1);
-        // but according to the errata page at http://www.rfc-editor.org/errata_list.php, ID 1649, it
-        // must be the following line:
-        hash.addData(ha1.toHex());
-        hash.addData(":", 1);
-        hash.addData(nonce);
-        hash.addData(":", 1);
-        hash.addData(cNonce);
-        ha1 = hash.result();
-    };
-    ha1 = ha1.toHex();
+	QCryptographicHash hash(QCryptographicHash::Md5);
+	hash.addData(userName);
+	hash.addData(":", 1);
+	hash.addData(realm);
+	hash.addData(":", 1);
+	hash.addData(password);
+	QByteArray ha1 = hash.result();
+	if(alg.toLower() == "md5-sess")
+	{
+		hash.reset();
+		// RFC 2617 contains an error, it was:
+		// hash.addData(ha1);
+		// but according to the errata page at http://www.rfc-editor.org/errata_list.php, ID 1649, it
+		// must be the following line:
+		hash.addData(ha1.toHex());
+		hash.addData(":", 1);
+		hash.addData(nonce);
+		hash.addData(":", 1);
+		hash.addData(cNonce);
+		ha1 = hash.result();
+	};
+	ha1 = ha1.toHex();
 
-    // calculate H(A2)
-    hash.reset();
-    hash.addData(method);
-    hash.addData(":", 1);
-    hash.addData(digestUri);
-    if (qop.toLower() == "auth-int") {
-        hash.addData(":", 1);
-        hash.addData(hEntity);
-    }
-    QByteArray ha2hex = hash.result().toHex();
+	// calculate H(A2)
+	hash.reset();
+	hash.addData(method);
+	hash.addData(":", 1);
+	hash.addData(digestUri);
+	if(qop.toLower() == "auth-int")
+	{
+		hash.addData(":", 1);
+		hash.addData(hEntity);
+	}
+	QByteArray ha2hex = hash.result().toHex();
 
-    // calculate response
-    hash.reset();
-    hash.addData(ha1);
-    hash.addData(":", 1);
-    hash.addData(nonce);
-    hash.addData(":", 1);
-    if (!qop.isNull()) {
-        hash.addData(nonceCount);
-        hash.addData(":", 1);
-        hash.addData(cNonce);
-        hash.addData(":", 1);
-        hash.addData(qop);
-        hash.addData(":", 1);
-    }
-    hash.addData(ha2hex);
-    return hash.result().toHex();
+	// calculate response
+	hash.reset();
+	hash.addData(ha1);
+	hash.addData(":", 1);
+	hash.addData(nonce);
+	hash.addData(":", 1);
+	if(!qop.isNull())
+	{
+		hash.addData(nonceCount);
+		hash.addData(":", 1);
+		hash.addData(cNonce);
+		hash.addData(":", 1);
+		hash.addData(qop);
+		hash.addData(":", 1);
+	}
+	hash.addData(ha2hex);
+	return hash.result().toHex();
 }
 
-QByteArray QHttpAuthenticatorPrivate::digestMd5Response(const QByteArray &challenge, const QByteArray &method, const QByteArray &path)
+QByteArray QHttpAuthenticatorPrivate::digestMd5Response(const QByteArray & challenge, const QByteArray & method, const QByteArray & path)
 {
-    QHash<QByteArray,QByteArray> options = parseDigestAuthenticationChallenge(challenge);
+	QHash<QByteArray, QByteArray> options = parseDigestAuthenticationChallenge(challenge);
 
-    ++nonceCount;
-    QByteArray nonceCountString = QByteArray::number(nonceCount, 16);
-    while (nonceCountString.length() < 8)
-        nonceCountString.prepend('0');
+	++nonceCount;
+	QByteArray nonceCountString = QByteArray::number(nonceCount, 16);
+	while(nonceCountString.length() < 8)
+		nonceCountString.prepend('0');
 
-    QByteArray nonce = options.value("nonce");
-    QByteArray opaque = options.value("opaque");
-    QByteArray qop = options.value("qop");
+	QByteArray nonce = options.value("nonce");
+	QByteArray opaque = options.value("opaque");
+	QByteArray qop = options.value("qop");
 
-//    qDebug() << "calculating digest: method=" << method << "path=" << path;
-    QByteArray response = digestMd5ResponseHelper(options.value("algorithm"), user.toLatin1(),
-                                              realm.toLatin1(), password.toLatin1(),
-                                              nonce, nonceCountString,
-                                              cnonce, qop, method,
-                                              path, QByteArray());
+	//    qDebug() << "calculating digest: method=" << method << "path=" << path;
+	QByteArray response = digestMd5ResponseHelper(options.value("algorithm"), user.toLatin1(),
+	    realm.toLatin1(), password.toLatin1(),
+	    nonce, nonceCountString,
+	    cnonce, qop, method,
+	    path, QByteArray());
 
+	QByteArray credentials;
+	credentials += "username=\"" + user.toLatin1() + "\", ";
+	credentials += "realm=\"" + realm.toLatin1() + "\", ";
+	credentials += "nonce=\"" + nonce + "\", ";
+	credentials += "uri=\"" + path + "\", ";
+	if(!opaque.isEmpty())
+		credentials += "opaque=\"" + opaque + "\", ";
+	credentials += "response=\"" + response + '\"';
+	if(!options.value("algorithm").isEmpty())
+		credentials += ", algorithm=" + options.value("algorithm");
+	if(!options.value("qop").isEmpty())
+	{
+		credentials += ", qop=" + qop + ", ";
+		credentials += "nc=" + nonceCountString + ", ";
+		credentials += "cnonce=\"" + cnonce + '\"';
+	}
 
-    QByteArray credentials;
-    credentials += "username=\"" + user.toLatin1() + "\", ";
-    credentials += "realm=\"" + realm.toLatin1() + "\", ";
-    credentials += "nonce=\"" + nonce + "\", ";
-    credentials += "uri=\"" + path + "\", ";
-    if (!opaque.isEmpty())
-        credentials += "opaque=\"" + opaque + "\", ";
-    credentials += "response=\"" + response + '\"';
-    if (!options.value("algorithm").isEmpty())
-        credentials += ", algorithm=" + options.value("algorithm");
-    if (!options.value("qop").isEmpty()) {
-        credentials += ", qop=" + qop + ", ";
-        credentials += "nc=" + nonceCountString + ", ";
-        credentials += "cnonce=\"" + cnonce + '\"';
-    }
-
-    return credentials;
+	return credentials;
 }
 
 // ---------------------------- Digest Md5 code ----------------------------------------
-
-
 
 /*
  * NTLM message flags.
@@ -813,10 +834,9 @@ QByteArray QHttpAuthenticatorPrivate::digestMd5Response(const QByteArray &challe
 
 //#define NTLMV1_CLIENT
 
-
 //************************Global variables***************************
 
-const int blockSize = 64; //As per RFC2104 Block-size is 512 bits
+const int blockSize = 64;  //As per RFC2104 Block-size is 512 bits
 const int nDigestLen = 16; //Trunctaion Length of the Hmac-Md5 digest
 const quint8 respversion = 1;
 const quint8 hirespversion = 1;
@@ -838,269 +858,276 @@ const quint8 hirespversion = 1;
     - add v2 handling
 */
 
-class QNtlmBuffer {
+class QNtlmBuffer
+{
 public:
-    QNtlmBuffer() : len(0), maxLen(0), offset(0) {}
-    quint16 len;
-    quint16 maxLen;
-    quint32 offset;
-    enum { Size = 8 };
+	QNtlmBuffer() : len(0), maxLen(0), offset(0) {}
+	quint16 len;
+	quint16 maxLen;
+	quint32 offset;
+	enum
+	{
+		Size = 8
+	};
 };
 
 class QNtlmPhase1BlockBase
 {
 public:
-    char magic[8];
-    quint32 type;
-    quint32 flags;
-    QNtlmBuffer domain;
-    QNtlmBuffer workstation;
-    enum { Size = 32 };
+	char magic[8];
+	quint32 type;
+	quint32 flags;
+	QNtlmBuffer domain;
+	QNtlmBuffer workstation;
+	enum
+	{
+		Size = 32
+	};
 };
 
 // ################# check paddings
 class QNtlmPhase2BlockBase
 {
 public:
-    char magic[8];
-    quint32 type;
-    QNtlmBuffer targetName;
-    quint32 flags;
-    unsigned char challenge[8];
-    quint32 context[2];
-    QNtlmBuffer targetInfo;
-    enum { Size = 48 };
+	char magic[8];
+	quint32 type;
+	QNtlmBuffer targetName;
+	quint32 flags;
+	unsigned char challenge[8];
+	quint32 context[2];
+	QNtlmBuffer targetInfo;
+	enum
+	{
+		Size = 48
+	};
 };
 
-class QNtlmPhase3BlockBase {
+class QNtlmPhase3BlockBase
+{
 public:
-    char magic[8];
-    quint32 type;
-    QNtlmBuffer lmResponse;
-    QNtlmBuffer ntlmResponse;
-    QNtlmBuffer domain;
-    QNtlmBuffer user;
-    QNtlmBuffer workstation;
-    QNtlmBuffer sessionKey;
-    quint32 flags;
-    enum { Size = 64 };
+	char magic[8];
+	quint32 type;
+	QNtlmBuffer lmResponse;
+	QNtlmBuffer ntlmResponse;
+	QNtlmBuffer domain;
+	QNtlmBuffer user;
+	QNtlmBuffer workstation;
+	QNtlmBuffer sessionKey;
+	quint32 flags;
+	enum
+	{
+		Size = 64
+	};
 };
 
-static void qStreamNtlmBuffer(QDataStream& ds, const QByteArray& s)
+static void qStreamNtlmBuffer(QDataStream & ds, const QByteArray & s)
 {
-    ds.writeRawData(s.constData(), s.size());
+	ds.writeRawData(s.constData(), s.size());
 }
 
-
-static void qStreamNtlmString(QDataStream& ds, const QString& s, bool unicode)
+static void qStreamNtlmString(QDataStream & ds, const QString & s, bool unicode)
 {
-    if (!unicode) {
-        qStreamNtlmBuffer(ds, s.toLatin1());
-        return;
-    }
-    const ushort *d = s.utf16();
-    for (int i = 0; i < s.length(); ++i)
-        ds << d[i];
+	if(!unicode)
+	{
+		qStreamNtlmBuffer(ds, s.toLatin1());
+		return;
+	}
+	const ushort * d = s.utf16();
+	for(int i = 0; i < s.length(); ++i)
+		ds << d[i];
 }
 
-
-
-static int qEncodeNtlmBuffer(QNtlmBuffer& buf, int offset, const QByteArray& s)
+static int qEncodeNtlmBuffer(QNtlmBuffer & buf, int offset, const QByteArray & s)
 {
-    buf.len = s.size();
-    buf.maxLen = buf.len;
-    buf.offset = (offset + 1) & ~1;
-    return buf.offset + buf.len;
+	buf.len = s.size();
+	buf.maxLen = buf.len;
+	buf.offset = (offset + 1) & ~1;
+	return buf.offset + buf.len;
 }
 
-
-static int qEncodeNtlmString(QNtlmBuffer& buf, int offset, const QString& s, bool unicode)
+static int qEncodeNtlmString(QNtlmBuffer & buf, int offset, const QString & s, bool unicode)
 {
-    if (!unicode)
-        return qEncodeNtlmBuffer(buf, offset, s.toLatin1());
-    buf.len = 2 * s.length();
-    buf.maxLen = buf.len;
-    buf.offset = (offset + 1) & ~1;
-    return buf.offset + buf.len;
+	if(!unicode)
+		return qEncodeNtlmBuffer(buf, offset, s.toLatin1());
+	buf.len = 2 * s.length();
+	buf.maxLen = buf.len;
+	buf.offset = (offset + 1) & ~1;
+	return buf.offset + buf.len;
 }
 
-
-static QDataStream& operator<<(QDataStream& s, const QNtlmBuffer& b)
+static QDataStream & operator<<(QDataStream & s, const QNtlmBuffer & b)
 {
-    s << b.len << b.maxLen << b.offset;
-    return s;
+	s << b.len << b.maxLen << b.offset;
+	return s;
 }
 
-static QDataStream& operator>>(QDataStream& s, QNtlmBuffer& b)
+static QDataStream & operator>>(QDataStream & s, QNtlmBuffer & b)
 {
-    s >> b.len >> b.maxLen >> b.offset;
-    return s;
+	s >> b.len >> b.maxLen >> b.offset;
+	return s;
 }
-
 
 class QNtlmPhase1Block : public QNtlmPhase1BlockBase
-{  // request
+{ // request
 public:
-    QNtlmPhase1Block() {
-        qstrncpy(magic, "NTLMSSP", 8);
-        type = 1;
-        flags = NTLMSSP_NEGOTIATE_UNICODE | NTLMSSP_NEGOTIATE_NTLM | NTLMSSP_REQUEST_TARGET;
-    }
+	QNtlmPhase1Block()
+	{
+		qstrncpy(magic, "NTLMSSP", 8);
+		type = 1;
+		flags = NTLMSSP_NEGOTIATE_UNICODE | NTLMSSP_NEGOTIATE_NTLM | NTLMSSP_REQUEST_TARGET;
+	}
 
-    // extracted
-    QString domainStr, workstationStr;
+	// extracted
+	QString domainStr, workstationStr;
 };
-
 
 class QNtlmPhase2Block : public QNtlmPhase2BlockBase
-{  // challenge
+{ // challenge
 public:
-    QNtlmPhase2Block() {
-        magic[0] = 0;
-        type = 0xffffffff;
-    }
+	QNtlmPhase2Block()
+	{
+		magic[0] = 0;
+		type = 0xffffffff;
+	}
 
-    // extracted
-    QString targetNameStr, targetInfoStr;
-    QByteArray targetInfoBuff;
+	// extracted
+	QString targetNameStr, targetInfoStr;
+	QByteArray targetInfoBuff;
 };
 
-
-
-class QNtlmPhase3Block : public QNtlmPhase3BlockBase {  // response
+class QNtlmPhase3Block : public QNtlmPhase3BlockBase
+{ // response
 public:
-    QNtlmPhase3Block() {
-        qstrncpy(magic, "NTLMSSP", 8);
-        type = 3;
-        flags = NTLMSSP_NEGOTIATE_UNICODE | NTLMSSP_NEGOTIATE_NTLM | NTLMSSP_NEGOTIATE_TARGET_INFO;
-    }
+	QNtlmPhase3Block()
+	{
+		qstrncpy(magic, "NTLMSSP", 8);
+		type = 3;
+		flags = NTLMSSP_NEGOTIATE_UNICODE | NTLMSSP_NEGOTIATE_NTLM | NTLMSSP_NEGOTIATE_TARGET_INFO;
+	}
 
-    // extracted
-    QByteArray lmResponseBuf, ntlmResponseBuf;
-    QString domainStr, userStr, workstationStr, sessionKeyStr;
-    QByteArray v2Hash;
+	// extracted
+	QByteArray lmResponseBuf, ntlmResponseBuf;
+	QString domainStr, userStr, workstationStr, sessionKeyStr;
+	QByteArray v2Hash;
 };
 
+static QDataStream & operator<<(QDataStream & s, const QNtlmPhase1Block & b)
+{
+	bool unicode = (b.flags & NTLMSSP_NEGOTIATE_UNICODE);
 
-static QDataStream& operator<<(QDataStream& s, const QNtlmPhase1Block& b) {
-    bool unicode = (b.flags & NTLMSSP_NEGOTIATE_UNICODE);
-
-    s.writeRawData(b.magic, sizeof(b.magic));
-    s << b.type;
-    s << b.flags;
-    s << b.domain;
-    s << b.workstation;
-    if (!b.domainStr.isEmpty())
-        qStreamNtlmString(s, b.domainStr, unicode);
-    if (!b.workstationStr.isEmpty())
-        qStreamNtlmString(s, b.workstationStr, unicode);
-    return s;
+	s.writeRawData(b.magic, sizeof(b.magic));
+	s << b.type;
+	s << b.flags;
+	s << b.domain;
+	s << b.workstation;
+	if(!b.domainStr.isEmpty())
+		qStreamNtlmString(s, b.domainStr, unicode);
+	if(!b.workstationStr.isEmpty())
+		qStreamNtlmString(s, b.workstationStr, unicode);
+	return s;
 }
 
+static QDataStream & operator<<(QDataStream & s, const QNtlmPhase3Block & b)
+{
+	bool unicode = (b.flags & NTLMSSP_NEGOTIATE_UNICODE);
+	s.writeRawData(b.magic, sizeof(b.magic));
+	s << b.type;
+	s << b.lmResponse;
+	s << b.ntlmResponse;
+	s << b.domain;
+	s << b.user;
+	s << b.workstation;
+	s << b.sessionKey;
+	s << b.flags;
 
-static QDataStream& operator<<(QDataStream& s, const QNtlmPhase3Block& b) {
-    bool unicode = (b.flags & NTLMSSP_NEGOTIATE_UNICODE);
-    s.writeRawData(b.magic, sizeof(b.magic));
-    s << b.type;
-    s << b.lmResponse;
-    s << b.ntlmResponse;
-    s << b.domain;
-    s << b.user;
-    s << b.workstation;
-    s << b.sessionKey;
-    s << b.flags;
+	if(!b.domainStr.isEmpty())
+		qStreamNtlmString(s, b.domainStr, unicode);
 
-    if (!b.domainStr.isEmpty())
-        qStreamNtlmString(s, b.domainStr, unicode);
+	qStreamNtlmString(s, b.userStr, unicode);
 
-    qStreamNtlmString(s, b.userStr, unicode);
+	if(!b.workstationStr.isEmpty())
+		qStreamNtlmString(s, b.workstationStr, unicode);
 
-    if (!b.workstationStr.isEmpty())
-        qStreamNtlmString(s, b.workstationStr, unicode);
+	// Send auth info
+	qStreamNtlmBuffer(s, b.lmResponseBuf);
+	qStreamNtlmBuffer(s, b.ntlmResponseBuf);
 
-    // Send auth info
-    qStreamNtlmBuffer(s, b.lmResponseBuf);
-    qStreamNtlmBuffer(s, b.ntlmResponseBuf);
-
-
-    return s;
+	return s;
 }
-
 
 static QByteArray qNtlmPhase1()
 {
-    QByteArray rc;
-    QDataStream ds(&rc, QIODevice::WriteOnly);
-    ds.setByteOrder(QDataStream::LittleEndian);
-    QNtlmPhase1Block pb;
-    ds << pb;
-    return rc;
+	QByteArray rc;
+	QDataStream ds(&rc, QIODevice::WriteOnly);
+	ds.setByteOrder(QDataStream::LittleEndian);
+	QNtlmPhase1Block pb;
+	ds << pb;
+	return rc;
 }
 
-
-static QByteArray qStringAsUcs2Le(const QString& src)
+static QByteArray qStringAsUcs2Le(const QString & src)
 {
-    QByteArray rc(2*src.length(), 0);
-    const unsigned short *s = src.utf16();
-    unsigned short *d = (unsigned short*)rc.data();
-    for (int i = 0; i < src.length(); ++i) {
-        d[i] = qToLittleEndian(s[i]);
-    }
-    return rc;
+	QByteArray rc(2 * src.length(), 0);
+	const unsigned short * s = src.utf16();
+	unsigned short * d = (unsigned short *)rc.data();
+	for(int i = 0; i < src.length(); ++i)
+	{
+		d[i] = qToLittleEndian(s[i]);
+	}
+	return rc;
 }
 
-
-static QString qStringFromUcs2Le(const QByteArray& src)
+static QString qStringFromUcs2Le(const QByteArray & src)
 {
-    Q_ASSERT(src.size() % 2 == 0);
-    unsigned short *d = (unsigned short*)src.data();
-    for (int i = 0; i < src.length() / 2; ++i) {
-        d[i] = qFromLittleEndian(d[i]);
-    }
-    return QString((const QChar *)src.data(), src.size()/2);
+	Q_ASSERT(src.size() % 2 == 0);
+	unsigned short * d = (unsigned short *)src.data();
+	for(int i = 0; i < src.length() / 2; ++i)
+	{
+		d[i] = qFromLittleEndian(d[i]);
+	}
+	return QString((const QChar *)src.data(), src.size() / 2);
 }
 
 #ifdef NTLMV1_CLIENT
-static QByteArray qEncodeNtlmResponse(const QHttpAuthenticatorPrivate *ctx, const QNtlmPhase2Block& ch)
+static QByteArray qEncodeNtlmResponse(const QHttpAuthenticatorPrivate * ctx, const QNtlmPhase2Block & ch)
 {
-    QCryptographicHash md4(QCryptographicHash::Md4);
-    QByteArray asUcs2Le = qStringAsUcs2Le(ctx->password);
-    md4.addData(asUcs2Le.data(), asUcs2Le.size());
+	QCryptographicHash md4(QCryptographicHash::Md4);
+	QByteArray asUcs2Le = qStringAsUcs2Le(ctx->password);
+	md4.addData(asUcs2Le.data(), asUcs2Le.size());
 
-    unsigned char md4hash[22];
-    memset(md4hash, 0, sizeof(md4hash));
-    QByteArray hash = md4.result();
-    Q_ASSERT(hash.size() == 16);
-    memcpy(md4hash, hash.constData(), 16);
+	unsigned char md4hash[22];
+	memset(md4hash, 0, sizeof(md4hash));
+	QByteArray hash = md4.result();
+	Q_ASSERT(hash.size() == 16);
+	memcpy(md4hash, hash.constData(), 16);
 
-    QByteArray rc(24, 0);
-    deshash((unsigned char *)rc.data(), md4hash, (unsigned char *)ch.challenge);
-    deshash((unsigned char *)rc.data() + 8, md4hash + 7, (unsigned char *)ch.challenge);
-    deshash((unsigned char *)rc.data() + 16, md4hash + 14, (unsigned char *)ch.challenge);
+	QByteArray rc(24, 0);
+	deshash((unsigned char *)rc.data(), md4hash, (unsigned char *)ch.challenge);
+	deshash((unsigned char *)rc.data() + 8, md4hash + 7, (unsigned char *)ch.challenge);
+	deshash((unsigned char *)rc.data() + 16, md4hash + 14, (unsigned char *)ch.challenge);
 
-    hash.fill(0);
-    return rc;
+	hash.fill(0);
+	return rc;
 }
 
-
-static QByteArray qEncodeLmResponse(const QHttpAuthenticatorPrivate *ctx, const QNtlmPhase2Block& ch)
+static QByteArray qEncodeLmResponse(const QHttpAuthenticatorPrivate * ctx, const QNtlmPhase2Block & ch)
 {
-    QByteArray hash(21, 0);
-    QByteArray key(14, 0);
-    qstrncpy(key.data(), ctx->password.toUpper().toLatin1(), 14);
-    const char *block = "KGS!@#$%";
+	QByteArray hash(21, 0);
+	QByteArray key(14, 0);
+	qstrncpy(key.data(), ctx->password.toUpper().toLatin1(), 14);
+	const char * block = "KGS!@#$%";
 
-    deshash((unsigned char *)hash.data(), (unsigned char *)key.data(), (unsigned char *)block);
-    deshash((unsigned char *)hash.data() + 8, (unsigned char *)key.data() + 7, (unsigned char *)block);
-    key.fill(0);
+	deshash((unsigned char *)hash.data(), (unsigned char *)key.data(), (unsigned char *)block);
+	deshash((unsigned char *)hash.data() + 8, (unsigned char *)key.data() + 7, (unsigned char *)block);
+	key.fill(0);
 
-    QByteArray rc(24, 0);
-    deshash((unsigned char *)rc.data(), (unsigned char *)hash.data(), ch.challenge);
-    deshash((unsigned char *)rc.data() + 8, (unsigned char *)hash.data() + 7, ch.challenge);
-    deshash((unsigned char *)rc.data() + 16, (unsigned char *)hash.data() + 14, ch.challenge);
+	QByteArray rc(24, 0);
+	deshash((unsigned char *)rc.data(), (unsigned char *)hash.data(), ch.challenge);
+	deshash((unsigned char *)rc.data() + 8, (unsigned char *)hash.data() + 7, ch.challenge);
+	deshash((unsigned char *)rc.data() + 16, (unsigned char *)hash.data() + 14, ch.challenge);
 
-    hash.fill(0);
-    return rc;
+	hash.fill(0);
+	return rc;
 }
 #endif
 
@@ -1126,320 +1153,330 @@ static QByteArray qEncodeLmResponse(const QHttpAuthenticatorPrivate *ctx, const 
 *        ---------------------------------------
 *
 *********************************************************************/
-QByteArray qEncodeHmacMd5(QByteArray &key, const QByteArray &message)
+QByteArray qEncodeHmacMd5(QByteArray & key, const QByteArray & message)
 {
-    Q_ASSERT_X(!(message.isEmpty()),"qEncodeHmacMd5", "Empty message check");
-    Q_ASSERT_X(!(key.isEmpty()),"qEncodeHmacMd5", "Empty key check");
+	Q_ASSERT_X(!(message.isEmpty()), "qEncodeHmacMd5", "Empty message check");
+	Q_ASSERT_X(!(key.isEmpty()), "qEncodeHmacMd5", "Empty key check");
 
-    QCryptographicHash hash(QCryptographicHash::Md5);
-    QByteArray hMsg;
+	QCryptographicHash hash(QCryptographicHash::Md5);
+	QByteArray hMsg;
 
-    QByteArray iKeyPad(blockSize, 0x36);
-    QByteArray oKeyPad(blockSize, 0x5c);
+	QByteArray iKeyPad(blockSize, 0x36);
+	QByteArray oKeyPad(blockSize, 0x5c);
 
-    hash.reset();
-    // Adjust the key length to blockSize
+	hash.reset();
+	// Adjust the key length to blockSize
 
-    if(blockSize < key.length()) {
-        hash.addData(key);
-        key = hash.result(); //MD5 will always return 16 bytes length output
-    }
+	if(blockSize < key.length())
+	{
+		hash.addData(key);
+		key = hash.result(); //MD5 will always return 16 bytes length output
+	}
 
-    //Key will be <= 16 or 20 bytes as hash function (MD5 or SHA hash algorithms)
-    //key size can be max of Block size only
-    key = key.leftJustified(blockSize,0,true);
+	//Key will be <= 16 or 20 bytes as hash function (MD5 or SHA hash algorithms)
+	//key size can be max of Block size only
+	key = key.leftJustified(blockSize, 0, true);
 
-    //iKeyPad, oKeyPad and key are all of same size "blockSize"
+	//iKeyPad, oKeyPad and key are all of same size "blockSize"
 
-    //xor of iKeyPad with Key and store the result into iKeyPad
-    for(int i = 0; i<key.size();i++) {
-        iKeyPad[i] = key[i]^iKeyPad[i];
-    }
+	//xor of iKeyPad with Key and store the result into iKeyPad
+	for(int i = 0; i < key.size(); i++)
+	{
+		iKeyPad[i] = key[i] ^ iKeyPad[i];
+	}
 
-    //xor of oKeyPad with Key and store the result into oKeyPad
-    for(int i = 0; i<key.size();i++) {
-        oKeyPad[i] = key[i]^oKeyPad[i];
-    }
+	//xor of oKeyPad with Key and store the result into oKeyPad
+	for(int i = 0; i < key.size(); i++)
+	{
+		oKeyPad[i] = key[i] ^ oKeyPad[i];
+	}
 
-    iKeyPad.append(message); // (K0 xor ipad) || text
+	iKeyPad.append(message); // (K0 xor ipad) || text
 
-    hash.reset();
-    hash.addData(iKeyPad);
-    hMsg = hash.result();
-                    //Digest gen after pass-1: H((K0 xor ipad)||text)
+	hash.reset();
+	hash.addData(iKeyPad);
+	hMsg = hash.result();
+	//Digest gen after pass-1: H((K0 xor ipad)||text)
 
-    QByteArray hmacDigest;
-    oKeyPad.append(hMsg);
-    hash.reset();
-    hash.addData(oKeyPad);
-    hmacDigest = hash.result();
-                    // H((K0 xor opad )|| H((K0 xor ipad) || text))
+	QByteArray hmacDigest;
+	oKeyPad.append(hMsg);
+	hash.reset();
+	hash.addData(oKeyPad);
+	hmacDigest = hash.result();
+	// H((K0 xor opad )|| H((K0 xor ipad) || text))
 
-    /*hmacDigest should not be less than half the length of the HMAC output
+	/*hmacDigest should not be less than half the length of the HMAC output
       (to match the birthday attack bound) and not less than 80 bits
       (a suitable lower bound on the number of bits that need to be
       predicted by an attacker).
       Refer RFC 2104 for more details on truncation part */
 
-    /*MD5 hash always returns 16 byte digest only and HMAC-MD5 spec
+	/*MD5 hash always returns 16 byte digest only and HMAC-MD5 spec
       (RFC 2104) also says digest length should be 16 bytes*/
-    return hmacDigest;
+	return hmacDigest;
 }
 
-static QByteArray qCreatev2Hash(const QHttpAuthenticatorPrivate *ctx,
-                                QNtlmPhase3Block *phase3)
+static QByteArray qCreatev2Hash(const QHttpAuthenticatorPrivate * ctx,
+    QNtlmPhase3Block * phase3)
 {
-    Q_ASSERT(phase3 != 0);
-    // since v2 Hash is need for both NTLMv2 and LMv2 it is calculated
-    // only once and stored and reused
-    if(phase3->v2Hash.size() == 0) {
-        QCryptographicHash md4(QCryptographicHash::Md4);
-        QByteArray passUnicode = qStringAsUcs2Le(ctx->password);
-        md4.addData(passUnicode.data(), passUnicode.size());
+	Q_ASSERT(phase3 != 0);
+	// since v2 Hash is need for both NTLMv2 and LMv2 it is calculated
+	// only once and stored and reused
+	if(phase3->v2Hash.size() == 0)
+	{
+		QCryptographicHash md4(QCryptographicHash::Md4);
+		QByteArray passUnicode = qStringAsUcs2Le(ctx->password);
+		md4.addData(passUnicode.data(), passUnicode.size());
 
-        QByteArray hashKey = md4.result();
-        Q_ASSERT(hashKey.size() == 16);
-        // Assuming the user and domain is always unicode in challenge
-        QByteArray message =
-                qStringAsUcs2Le(ctx->extractedUser.toUpper()) +
-                qStringAsUcs2Le(phase3->domainStr);
+		QByteArray hashKey = md4.result();
+		Q_ASSERT(hashKey.size() == 16);
+		// Assuming the user and domain is always unicode in challenge
+		QByteArray message = qStringAsUcs2Le(ctx->extractedUser.toUpper()) + qStringAsUcs2Le(phase3->domainStr);
 
-        phase3->v2Hash = qEncodeHmacMd5(hashKey, message);
-    }
-    return phase3->v2Hash;
+		phase3->v2Hash = qEncodeHmacMd5(hashKey, message);
+	}
+	return phase3->v2Hash;
 }
 
-static QByteArray clientChallenge(const QHttpAuthenticatorPrivate *ctx)
+static QByteArray clientChallenge(const QHttpAuthenticatorPrivate * ctx)
 {
-    Q_ASSERT(ctx->cnonce.size() >= 8);
-    QByteArray clientCh = ctx->cnonce.right(8);
-    return clientCh;
+	Q_ASSERT(ctx->cnonce.size() >= 8);
+	QByteArray clientCh = ctx->cnonce.right(8);
+	return clientCh;
 }
 
 // caller has to ensure a valid targetInfoBuff
-static QByteArray qExtractServerTime(const QByteArray& targetInfoBuff)
+static QByteArray qExtractServerTime(const QByteArray & targetInfoBuff)
 {
-    QByteArray timeArray;
-    QDataStream ds(targetInfoBuff);
-    ds.setByteOrder(QDataStream::LittleEndian);
+	QByteArray timeArray;
+	QDataStream ds(targetInfoBuff);
+	ds.setByteOrder(QDataStream::LittleEndian);
 
-    quint16 avId;
-    quint16 avLen;
+	quint16 avId;
+	quint16 avLen;
 
-    ds >> avId;
-    ds >> avLen;
-    while(avId != 0) {
-        if(avId == AVTIMESTAMP) {
-            timeArray.resize(avLen);
-            //avLen size of QByteArray is allocated
-            ds.readRawData(timeArray.data(), avLen);
-            break;
-        }
-        ds.skipRawData(avLen);
-        ds >> avId;
-        ds >> avLen;
-    }
-    return timeArray;
+	ds >> avId;
+	ds >> avLen;
+	while(avId != 0)
+	{
+		if(avId == AVTIMESTAMP)
+		{
+			timeArray.resize(avLen);
+			//avLen size of QByteArray is allocated
+			ds.readRawData(timeArray.data(), avLen);
+			break;
+		}
+		ds.skipRawData(avLen);
+		ds >> avId;
+		ds >> avLen;
+	}
+	return timeArray;
 }
 
-static QByteArray qEncodeNtlmv2Response(const QHttpAuthenticatorPrivate *ctx,
-                                        const QNtlmPhase2Block& ch,
-                                        QNtlmPhase3Block *phase3)
+static QByteArray qEncodeNtlmv2Response(const QHttpAuthenticatorPrivate * ctx,
+    const QNtlmPhase2Block & ch,
+    QNtlmPhase3Block * phase3)
 {
-    Q_ASSERT(phase3 != 0);
-    // return value stored in phase3
-    qCreatev2Hash(ctx, phase3);
+	Q_ASSERT(phase3 != 0);
+	// return value stored in phase3
+	qCreatev2Hash(ctx, phase3);
 
-    QByteArray temp;
-    QDataStream ds(&temp, QIODevice::WriteOnly);
-    ds.setByteOrder(QDataStream::LittleEndian);
+	QByteArray temp;
+	QDataStream ds(&temp, QIODevice::WriteOnly);
+	ds.setByteOrder(QDataStream::LittleEndian);
 
-    ds << respversion;
-    ds << hirespversion;
+	ds << respversion;
+	ds << hirespversion;
 
-    //Reserved
-    QByteArray reserved1(6, 0);
-    ds.writeRawData(reserved1.constData(), reserved1.size());
+	//Reserved
+	QByteArray reserved1(6, 0);
+	ds.writeRawData(reserved1.constData(), reserved1.size());
 
-    quint64 time = 0;
-    QByteArray timeArray;
+	quint64 time = 0;
+	QByteArray timeArray;
 
-    if(ch.targetInfo.len)
-    {
-        timeArray = qExtractServerTime(ch.targetInfoBuff);
-    }
+	if(ch.targetInfo.len)
+	{
+		timeArray = qExtractServerTime(ch.targetInfoBuff);
+	}
 
-    //if server sends time, use it instead of current time
-    if(timeArray.size()) {
-        ds.writeRawData(timeArray.constData(), timeArray.size());
-    } else {
-        QDateTime currentTime(QDate::currentDate(),
-                              QTime::currentTime(), Qt::UTC);
+	//if server sends time, use it instead of current time
+	if(timeArray.size())
+	{
+		ds.writeRawData(timeArray.constData(), timeArray.size());
+	}
+	else
+	{
+		QDateTime currentTime(QDate::currentDate(),
+		    QTime::currentTime(), Qt::UTC);
 
-        // number of seconds between 1601 and epoc(1970)
-        // 369 years, 89 leap years
-        // ((369 * 365) + 89) * 24 * 3600 = 11644473600
+		// number of seconds between 1601 and epoc(1970)
+		// 369 years, 89 leap years
+		// ((369 * 365) + 89) * 24 * 3600 = 11644473600
 
-        time = Q_UINT64_C(currentTime.toTime_t() + 11644473600);
+		time = Q_UINT64_C(currentTime.toTime_t() + 11644473600);
 
-        // represented as 100 nano seconds
-        time = Q_UINT64_C(time * 10000000);
-        ds << time;
-    }
+		// represented as 100 nano seconds
+		time = Q_UINT64_C(time * 10000000);
+		ds << time;
+	}
 
-    //8 byte client challenge
-    QByteArray clientCh = clientChallenge(ctx);
-    ds.writeRawData(clientCh.constData(), clientCh.size());
+	//8 byte client challenge
+	QByteArray clientCh = clientChallenge(ctx);
+	ds.writeRawData(clientCh.constData(), clientCh.size());
 
-    //Reserved
-    QByteArray reserved2(4, 0);
-    ds.writeRawData(reserved2.constData(), reserved2.size());
+	//Reserved
+	QByteArray reserved2(4, 0);
+	ds.writeRawData(reserved2.constData(), reserved2.size());
 
-    if (ch.targetInfo.len > 0) {
-        ds.writeRawData(ch.targetInfoBuff.constData(),
-                        ch.targetInfoBuff.size());
-    }
+	if(ch.targetInfo.len > 0)
+	{
+		ds.writeRawData(ch.targetInfoBuff.constData(),
+		    ch.targetInfoBuff.size());
+	}
 
-    //Reserved
-    QByteArray reserved3(4, 0);
-    ds.writeRawData(reserved3.constData(), reserved3.size());
+	//Reserved
+	QByteArray reserved3(4, 0);
+	ds.writeRawData(reserved3.constData(), reserved3.size());
 
-    QByteArray message((const char*)ch.challenge, sizeof(ch.challenge));
-    message.append(temp);
+	QByteArray message((const char *)ch.challenge, sizeof(ch.challenge));
+	message.append(temp);
 
-    QByteArray ntChallengeResp = qEncodeHmacMd5(phase3->v2Hash, message);
-    ntChallengeResp.append(temp);
+	QByteArray ntChallengeResp = qEncodeHmacMd5(phase3->v2Hash, message);
+	ntChallengeResp.append(temp);
 
-    return ntChallengeResp;
+	return ntChallengeResp;
 }
 
-static QByteArray qEncodeLmv2Response(const QHttpAuthenticatorPrivate *ctx,
-                                      const QNtlmPhase2Block& ch,
-                                      QNtlmPhase3Block *phase3)
+static QByteArray qEncodeLmv2Response(const QHttpAuthenticatorPrivate * ctx,
+    const QNtlmPhase2Block & ch,
+    QNtlmPhase3Block * phase3)
 {
-    Q_ASSERT(phase3 != 0);
-    // return value stored in phase3
-    qCreatev2Hash(ctx, phase3);
+	Q_ASSERT(phase3 != 0);
+	// return value stored in phase3
+	qCreatev2Hash(ctx, phase3);
 
-    QByteArray message((const char*)ch.challenge, sizeof(ch.challenge));
-    QByteArray clientCh = clientChallenge(ctx);
+	QByteArray message((const char *)ch.challenge, sizeof(ch.challenge));
+	QByteArray clientCh = clientChallenge(ctx);
 
-    message.append(clientCh);
+	message.append(clientCh);
 
-    QByteArray lmChallengeResp = qEncodeHmacMd5(phase3->v2Hash, message);
-    lmChallengeResp.append(clientCh);
+	QByteArray lmChallengeResp = qEncodeHmacMd5(phase3->v2Hash, message);
+	lmChallengeResp.append(clientCh);
 
-    return lmChallengeResp;
+	return lmChallengeResp;
 }
 
-static bool qNtlmDecodePhase2(const QByteArray& data, QNtlmPhase2Block& ch)
+static bool qNtlmDecodePhase2(const QByteArray & data, QNtlmPhase2Block & ch)
 {
-    Q_ASSERT(QNtlmPhase2BlockBase::Size == sizeof(QNtlmPhase2BlockBase));
-    if (data.size() < QNtlmPhase2BlockBase::Size)
-        return false;
+	Q_ASSERT(QNtlmPhase2BlockBase::Size == sizeof(QNtlmPhase2BlockBase));
+	if(data.size() < QNtlmPhase2BlockBase::Size)
+		return false;
 
+	QDataStream ds(data);
+	ds.setByteOrder(QDataStream::LittleEndian);
+	if(ds.readRawData(ch.magic, 8) < 8)
+		return false;
+	if(strncmp(ch.magic, "NTLMSSP", 8) != 0)
+		return false;
 
-    QDataStream ds(data);
-    ds.setByteOrder(QDataStream::LittleEndian);
-    if (ds.readRawData(ch.magic, 8) < 8)
-        return false;
-    if (strncmp(ch.magic, "NTLMSSP", 8) != 0)
-        return false;
+	ds >> ch.type;
+	if(ch.type != 2)
+		return false;
 
-    ds >> ch.type;
-    if (ch.type != 2)
-        return false;
+	ds >> ch.targetName;
+	ds >> ch.flags;
+	if(ds.readRawData((char *)ch.challenge, 8) < 8)
+		return false;
+	ds >> ch.context[0] >> ch.context[1];
+	ds >> ch.targetInfo;
 
-    ds >> ch.targetName;
-    ds >> ch.flags;
-    if (ds.readRawData((char *)ch.challenge, 8) < 8)
-        return false;
-    ds >> ch.context[0] >> ch.context[1];
-    ds >> ch.targetInfo;
+	if(ch.targetName.len > 0)
+	{
+		if(ch.targetName.len + ch.targetName.offset >= (unsigned)data.size())
+			return false;
 
-    if (ch.targetName.len > 0) {
-        if (ch.targetName.len + ch.targetName.offset >= (unsigned)data.size())
-            return false;
+		ch.targetNameStr = qStringFromUcs2Le(data.mid(ch.targetName.offset, ch.targetName.len));
+	}
 
-        ch.targetNameStr = qStringFromUcs2Le(data.mid(ch.targetName.offset, ch.targetName.len));
-    }
+	if(ch.targetInfo.len > 0)
+	{
+		if(ch.targetInfo.len + ch.targetInfo.offset > (unsigned)data.size())
+			return false;
 
-    if (ch.targetInfo.len > 0) {
-        if (ch.targetInfo.len + ch.targetInfo.offset > (unsigned)data.size())
-            return false;
+		ch.targetInfoBuff = data.mid(ch.targetInfo.offset, ch.targetInfo.len);
+	}
 
-        ch.targetInfoBuff = data.mid(ch.targetInfo.offset, ch.targetInfo.len);
-    }
-
-    return true;
+	return true;
 }
 
-
-static QByteArray qNtlmPhase3(QHttpAuthenticatorPrivate *ctx, const QByteArray& phase2data)
+static QByteArray qNtlmPhase3(QHttpAuthenticatorPrivate * ctx, const QByteArray & phase2data)
 {
-    QNtlmPhase2Block ch;
-    if (!qNtlmDecodePhase2(phase2data, ch))
-        return QByteArray();
+	QNtlmPhase2Block ch;
+	if(!qNtlmDecodePhase2(phase2data, ch))
+		return QByteArray();
 
-    QByteArray rc;
-    QDataStream ds(&rc, QIODevice::WriteOnly);
-    ds.setByteOrder(QDataStream::LittleEndian);
-    QNtlmPhase3Block pb;
+	QByteArray rc;
+	QDataStream ds(&rc, QIODevice::WriteOnly);
+	ds.setByteOrder(QDataStream::LittleEndian);
+	QNtlmPhase3Block pb;
 
-    bool unicode = ch.flags & NTLMSSP_NEGOTIATE_UNICODE;
+	bool unicode = ch.flags & NTLMSSP_NEGOTIATE_UNICODE;
 
-    pb.flags = NTLMSSP_NEGOTIATE_NTLM;
-    if (unicode)
-        pb.flags |= NTLMSSP_NEGOTIATE_UNICODE;
-    else
-        pb.flags |= NTLMSSP_NEGOTIATE_OEM;
+	pb.flags = NTLMSSP_NEGOTIATE_NTLM;
+	if(unicode)
+		pb.flags |= NTLMSSP_NEGOTIATE_UNICODE;
+	else
+		pb.flags |= NTLMSSP_NEGOTIATE_OEM;
 
+	int offset = QNtlmPhase3BlockBase::Size;
+	Q_ASSERT(QNtlmPhase3BlockBase::Size == sizeof(QNtlmPhase3BlockBase));
 
-    int offset = QNtlmPhase3BlockBase::Size;
-    Q_ASSERT(QNtlmPhase3BlockBase::Size == sizeof(QNtlmPhase3BlockBase));
+	// for kerberos style user@domain logins, NTLM domain string should be left empty
+	if(ctx->userDomain.isEmpty() && !ctx->extractedUser.contains(QLatin1Char('@')))
+	{
+		offset = qEncodeNtlmString(pb.domain, offset, ch.targetNameStr, unicode);
+		pb.domainStr = ch.targetNameStr;
+	}
+	else
+	{
+		offset = qEncodeNtlmString(pb.domain, offset, ctx->userDomain, unicode);
+		pb.domainStr = ctx->userDomain;
+	}
 
-    // for kerberos style user@domain logins, NTLM domain string should be left empty
-    if (ctx->userDomain.isEmpty() && !ctx->extractedUser.contains(QLatin1Char('@'))) {
-        offset = qEncodeNtlmString(pb.domain, offset, ch.targetNameStr, unicode);
-        pb.domainStr = ch.targetNameStr;
-    } else {
-        offset = qEncodeNtlmString(pb.domain, offset, ctx->userDomain, unicode);
-        pb.domainStr = ctx->userDomain;
-    }
+	offset = qEncodeNtlmString(pb.user, offset, ctx->extractedUser, unicode);
+	pb.userStr = ctx->extractedUser;
 
-    offset = qEncodeNtlmString(pb.user, offset, ctx->extractedUser, unicode);
-    pb.userStr = ctx->extractedUser;
+	offset = qEncodeNtlmString(pb.workstation, offset, ctx->workstation, unicode);
+	pb.workstationStr = ctx->workstation;
 
-    offset = qEncodeNtlmString(pb.workstation, offset, ctx->workstation, unicode);
-    pb.workstationStr = ctx->workstation;
-
-    // Get LM response
+// Get LM response
 #ifdef NTLMV1_CLIENT
-    pb.lmResponseBuf = qEncodeLmResponse(ctx, ch);
+	pb.lmResponseBuf = qEncodeLmResponse(ctx, ch);
 #else
-    if (ch.targetInfo.len > 0) {
-        pb.lmResponseBuf = QByteArray();
-    } else {
-        pb.lmResponseBuf = qEncodeLmv2Response(ctx, ch, &pb);
-    }
+	if(ch.targetInfo.len > 0)
+	{
+		pb.lmResponseBuf = QByteArray();
+	}
+	else
+	{
+		pb.lmResponseBuf = qEncodeLmv2Response(ctx, ch, &pb);
+	}
 #endif
-    offset = qEncodeNtlmBuffer(pb.lmResponse, offset, pb.lmResponseBuf);
+	offset = qEncodeNtlmBuffer(pb.lmResponse, offset, pb.lmResponseBuf);
 
-    // Get NTLM response
+// Get NTLM response
 #ifdef NTLMV1_CLIENT
-    pb.ntlmResponseBuf = qEncodeNtlmResponse(ctx, ch);
+	pb.ntlmResponseBuf = qEncodeNtlmResponse(ctx, ch);
 #else
-    pb.ntlmResponseBuf = qEncodeNtlmv2Response(ctx, ch, &pb);
+	pb.ntlmResponseBuf = qEncodeNtlmv2Response(ctx, ch, &pb);
 #endif
-    offset = qEncodeNtlmBuffer(pb.ntlmResponse, offset, pb.ntlmResponseBuf);
+	offset = qEncodeNtlmBuffer(pb.ntlmResponse, offset, pb.ntlmResponseBuf);
 
+	// Encode and send
+	ds << pb;
 
-    // Encode and send
-    ds << pb;
-
-    return rc;
+	return rc;
 }
-
-
 
 QT_END_NAMESPACE

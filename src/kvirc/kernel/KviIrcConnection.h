@@ -71,7 +71,6 @@ class KviUserIdentity;
 class KviIdentityProfileSet;
 class KviCString;
 
-
 /**
 * \class KviIrcConnection
 * \brief An abstraction of a connection to an IRC server
@@ -120,12 +119,13 @@ protected:
 	* \param pIdentity User information to use in this connection
 	* \return KviIrcConnection
 	*/
-	KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarget * pTarget,KviUserIdentity * pIdentity);
+	KviIrcConnection(KviIrcContext * pContext, KviIrcConnectionTarget * pTarget, KviUserIdentity * pIdentity);
 
 	/**
 	* \brief Destroys a KviIrcConnection object. KviConsoleWindow uses this.
 	*/
 	~KviIrcConnection();
+
 public:
 	/**
 	* \enum State
@@ -137,49 +137,50 @@ public:
 		Connecting, /**< A connection attempt is in progress */
 		Connected   /**< We're connected to an IRC server */
 	};
+
 private:
-	KviConsoleWindow                           * m_pConsole;              // shallow, never null
-	KviIrcContext                        * m_pContext;              // shallow, never null
+	KviConsoleWindow * m_pConsole; // shallow, never null
+	KviIrcContext * m_pContext;    // shallow, never null
 
-	State                                  m_eState;
-	bool                                   m_bIdentdAttached;
+	State m_eState;
+	bool m_bIdentdAttached;
 
-	KviIrcConnectionTarget               * m_pTarget;               // owned, never null
+	KviIrcConnectionTarget * m_pTarget; // owned, never null
 
-	KviIrcLink                           * m_pLink;                 // owned, never null
+	KviIrcLink * m_pLink; // owned, never null
 
 	// The initial information about the user we'll send out to the server
 	// Note that the ACTUAL user information are in m_pUserInfo instead
-	KviUserIdentity                      * m_pUserIdentity;         // owned, never null
+	KviUserIdentity * m_pUserIdentity; // owned, never null
 
 	// The ACTUAL user information
-	KviIrcConnectionUserInfo             * m_pUserInfo;             // owned, never null
+	KviIrcConnectionUserInfo * m_pUserInfo; // owned, never null
 	// The ACTUAL server information
-	KviIrcConnectionServerInfo           * m_pServerInfo;           // owned, never null
+	KviIrcConnectionServerInfo * m_pServerInfo; // owned, never null
 
-	KviIrcConnectionStateData            * m_pStateData;            // owned, never null
+	KviIrcConnectionStateData * m_pStateData; // owned, never null
 
-	KviPointerList<KviChannelWindow>           * m_pChannelList;          // owned, never null, elements shallow
-	KviPointerList<KviQueryWindow>             * m_pQueryList;            // owned, never null, elements shallow
+	KviPointerList<KviChannelWindow> * m_pChannelList; // owned, never null, elements shallow
+	KviPointerList<KviQueryWindow> * m_pQueryList;     // owned, never null, elements shallow
 
-	KviIrcUserDataBase                   * m_pUserDataBase;         // owned, never null
+	KviIrcUserDataBase * m_pUserDataBase; // owned, never null
 
-	KviNotifyListManager                 * m_pNotifyListManager;    // owned, see restartNotifyList()
-	QTimer                               * m_pNotifyListTimer;      // delayed startup timer for the notify lists
+	KviNotifyListManager * m_pNotifyListManager; // owned, see restartNotifyList()
+	QTimer * m_pNotifyListTimer;                 // delayed startup timer for the notify lists
 
-	KviLagMeter                          * m_pLagMeter;             // owned, may be null (when not running)
+	KviLagMeter * m_pLagMeter; // owned, may be null (when not running)
 
-	KviIrcConnectionAntiCtcpFloodData    * m_pAntiCtcpFloodData;    // owned, never null
+	KviIrcConnectionAntiCtcpFloodData * m_pAntiCtcpFloodData;       // owned, never null
 	KviIrcConnectionNetsplitDetectorData * m_pNetsplitDetectorData; // owned, never null
-	KviIrcConnectionAsyncWhoisData       * m_pAsyncWhoisData;       // owned, never null
+	KviIrcConnectionAsyncWhoisData * m_pAsyncWhoisData;             // owned, never null
 
-	KviIrcConnectionStatistics           * m_pStatistics;           // owned, never null
+	KviIrcConnectionStatistics * m_pStatistics; // owned, never null
 
-	KviDnsResolver                               * m_pLocalhostDns;         // FIXME: this should go to an aux structure
+	KviDnsResolver * m_pLocalhostDns; // FIXME: this should go to an aux structure
 
-	QTextCodec                           * m_pSrvCodec;             // connection codec: never null
-	QTextCodec                           * m_pTextCodec;            // connection codec: never null
-	KviIrcConnectionRequestQueue                      * m_pRequestQueue;         // owned, never null
+	QTextCodec * m_pSrvCodec;                       // connection codec: never null
+	QTextCodec * m_pTextCodec;                      // connection codec: never null
+	KviIrcConnectionRequestQueue * m_pRequestQueue; // owned, never null
 public:
 	/**
 	* \brief Returns a pointer to the owning console
@@ -187,7 +188,7 @@ public:
 	* The pointer is never NULL
 	* \return KviConsoleWindow *
 	*/
-	inline KviConsoleWindow * console(){ return m_pConsole; };
+	inline KviConsoleWindow * console() { return m_pConsole; };
 
 	/**
 	* \brief Returns a pointer to the owning KviIrcContext.
@@ -195,7 +196,7 @@ public:
 	* The returned value is never NULL
 	* \return KviIrcContext *
 	*/
-	inline KviIrcContext * context(){ return m_pContext; };
+	inline KviIrcContext * context() { return m_pContext; };
 
 	/**
 	* \brief Returns the target of this connection.
@@ -205,7 +206,7 @@ public:
 	* The returned pointer is never NULL.
 	* \return KviIrcConnectionTarget *
 	*/
-	inline KviIrcConnectionTarget * target(){ return m_pTarget; };
+	inline KviIrcConnectionTarget * target() { return m_pTarget; };
 
 	/**
 	* \brief Returns the underlying KviIrcLink object
@@ -213,13 +214,13 @@ public:
 	* The returned pointer is never NULL.
 	* \return KviIrcLink *
 	*/
-	inline KviIrcLink * link(){ return m_pLink; };
+	inline KviIrcLink * link() { return m_pLink; };
 
 	/**
 	* \brief Returns the current state of the connection
 	* \return State
 	*/
-	inline State state(){ return m_eState; };
+	inline State state() { return m_eState; };
 
 	/**
 	* \brief Returns a pointer to the big connection user database.
@@ -228,7 +229,7 @@ public:
 	* The returned pointer is never NULL.
 	* \return KviIrcUserDataBase *
 	*/
-	inline KviIrcUserDataBase * userDataBase(){ return m_pUserDataBase; };
+	inline KviIrcUserDataBase * userDataBase() { return m_pUserDataBase; };
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionUserInfo object
@@ -241,7 +242,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionUserInfo *
 	*/
-	inline KviIrcConnectionUserInfo * userInfo(){ return m_pUserInfo; };
+	inline KviIrcConnectionUserInfo * userInfo() { return m_pUserInfo; };
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionServerInfo object
@@ -255,7 +256,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionServerInfo *
 	*/
-	inline KviIrcConnectionServerInfo * serverInfo(){ return m_pServerInfo; };
+	inline KviIrcConnectionServerInfo * serverInfo() { return m_pServerInfo; };
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionStateData object
@@ -269,7 +270,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionStateData *
 	*/
-	inline KviIrcConnectionStateData * stateData(){ return m_pStateData; };
+	inline KviIrcConnectionStateData * stateData() { return m_pStateData; };
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionAntiCtcpFloodData object
@@ -282,7 +283,9 @@ public:
 	* \return KviIrcConnectionAntiCtcpFloodData *
 	*/
 	inline KviIrcConnectionAntiCtcpFloodData * antiCtcpFloodData()
-		{ return m_pAntiCtcpFloodData; };
+	{
+		return m_pAntiCtcpFloodData;
+	};
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionNetsplitDetectorData object
@@ -295,7 +298,9 @@ public:
 	* \return KviIrcConnectionNetsplitDetectorData *
 	*/
 	inline KviIrcConnectionNetsplitDetectorData * netsplitDetectorData()
-		{ return m_pNetsplitDetectorData; };
+	{
+		return m_pNetsplitDetectorData;
+	};
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionAsyncWhoisData object
@@ -308,7 +313,9 @@ public:
 	* \return KviIrcConnectionAsyncWhoisData *
 	*/
 	inline KviIrcConnectionAsyncWhoisData * asyncWhoisData()
-		{ return m_pAsyncWhoisData; };
+	{
+		return m_pAsyncWhoisData;
+	};
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionStatistics object
@@ -320,7 +327,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionStatistics *
 	*/
-	inline KviIrcConnectionStatistics * statistics(){ return m_pStatistics; };
+	inline KviIrcConnectionStatistics * statistics() { return m_pStatistics; };
 
 	/**
 	* \brief Returns a pointer to the current KviNotifyListManager.
@@ -330,7 +337,9 @@ public:
 	* \return KviNotifyListManager *
 	*/
 	inline KviNotifyListManager * notifyListManager()
-		{ return m_pNotifyListManager; };
+	{
+		return m_pNotifyListManager;
+	};
 
 	/**
 	* \brief Returns a pointer to the current KviLagMeter.
@@ -339,13 +348,13 @@ public:
 	* current connection.
 	* \return KviLagMeter *
 	*/
-	inline KviLagMeter * lagMeter(){ return m_pLagMeter; };
+	inline KviLagMeter * lagMeter() { return m_pLagMeter; };
 
 	/**
 	* \brief Returns a pointer to the current KviIrcConnectionRequestQueue.
 	* \return KviIrcConnectionRequestQueue *
 	*/
-	inline KviIrcConnectionRequestQueue * requestQueue(){ return m_pRequestQueue; };
+	inline KviIrcConnectionRequestQueue * requestQueue() { return m_pRequestQueue; };
 
 	/**
 	* \brief Returns the list of the channels bound to the current connection.
@@ -353,7 +362,7 @@ public:
 	* The pointer itself is never null (though the list may be empty).
 	* \return KviPointerList<KviChannelWindow> *
 	*/
-	inline KviPointerList<KviChannelWindow> * channelList(){ return m_pChannelList; };
+	inline KviPointerList<KviChannelWindow> * channelList() { return m_pChannelList; };
 
 	/**
 	* \brief Helper that provides a shortcut for really common access to serverInfo()->networkName()
@@ -430,14 +439,14 @@ public:
 	///
 	/// FIXME: Could be made protected.
 	///
-	void registerChannel(KviChannelWindow *c);
+	void registerChannel(KviChannelWindow * c);
 
 	///
 	/// This is called by KviChannelWindow just before destruction. You shouldn't need to call it.
 	///
 	/// FIXME: Could be made protected.
 	///
-	void unregisterChannel(KviChannelWindow *c);
+	void unregisterChannel(KviChannelWindow * c);
 
 	/**
 	* \brief Marks all the currently existing channels as DEAD
@@ -484,7 +493,7 @@ public:
 	* The returned pointer is never NULL (the list may be empty though).
 	* \return KviPointerList<KviQueryWindow> *
 	*/
-	inline KviPointerList<KviQueryWindow> * queryList(){ return m_pQueryList; };
+	inline KviPointerList<KviQueryWindow> * queryList() { return m_pQueryList; };
 
 	///
 	/// Visibility mode for createQuery()
@@ -514,21 +523,21 @@ public:
 	* \param eShowMode Specifies the show mode for the window
 	* \return KviQueryWindow *
 	*/
-	KviQueryWindow * createQuery(const QString & szNick,CreateQueryVisibilityMode eVisibilityMode = CreateQueryVisibilityFollowSettings);
+	KviQueryWindow * createQuery(const QString & szNick, CreateQueryVisibilityMode eVisibilityMode = CreateQueryVisibilityFollowSettings);
 
 	///
 	/// This is called by KviQueryWindow upon creation, you shouldn't need to use it.
 	///
 	/// FIXME: Could be made protected.
 	///
-	void registerQuery(KviQueryWindow *q);
+	void registerQuery(KviQueryWindow * q);
 
 	///
 	/// This is called by KviQueryWindow just before destruction, you shouldn't need to use it.
 	///
 	/// FIXME: Could be made protected.
 	///
-	void unregisterQuery(KviQueryWindow *q);
+	void unregisterQuery(KviQueryWindow * q);
 
 	/**
 	* \brief Marks all the currently open queries as DEAD
@@ -657,7 +666,7 @@ public:
 	* windows. The returned pointer may be null if things really went wrong.
 	* \return QTextCodec *
 	*/
-	inline QTextCodec * textCodec(){ return m_pTextCodec; };
+	inline QTextCodec * textCodec() { return m_pTextCodec; };
 
 	/**
 	* \brief Returns a pointer to the current global codec for inbound data.
@@ -666,7 +675,7 @@ public:
 	* windows. The returned pointer may be null if things really went wrong.
 	* \return QTextCodec *
 	*/
-	inline QTextCodec * serverCodec(){ return m_pSrvCodec; };
+	inline QTextCodec * serverCodec() { return m_pSrvCodec; };
 
 	/**
 	* \brief Sets the global encoding for this connection.
@@ -701,6 +710,7 @@ public:
 	* \return QByteArray
 	*/
 	QByteArray encodeText(const QString & szText);
+
 protected:
 	//
 	// Notify list management
@@ -747,7 +757,7 @@ protected:
 	* evaluating it via KVS engine (so identifiers are substituted).
 	* Call this function instead of m_pUserInfo->setRealName().
 	*/
-	void useRealName(const QString &szRealName);
+	void useRealName(const QString & szRealName);
 
 	/**
 	* \brief Logins to the irc server
@@ -760,17 +770,17 @@ protected:
 	* The first element of the pair is the channel name, the second element of the pair is the eventual password.
 	* May send multiple JOIN messages.
 	*/
-	void joinChannels(const QList< QPair< QString,QString > > &lChannelsAndPasses);
+	void joinChannels(const QList<QPair<QString, QString>> & lChannelsAndPasses);
 
 	/**
 	* Gather the list of currently joined channels with the relative passwords.
 	*/
-	void gatherChannelAndPasswordPairs(QList< QPair< QString,QString > > &lChannelsAndPasses);
+	void gatherChannelAndPasswordPairs(QList<QPair<QString, QString>> & lChannelsAndPasses);
 
 	/**
 	* Gather the list of currently open query names.
 	*/
-	void gatherQueryNames(QStringList &lQueryNames);
+	void gatherQueryNames(QStringList & lQueryNames);
 
 	/**
 	* Picks the next login nickname to be tried. If bForceDefaultIfPrimaryNicknamesEmpty is true then the algorithm
@@ -782,7 +792,7 @@ protected:
 	* used for the random alternatives as the first left 7 characters. Upon return szChoiceDescriptionBuffer will contain
 	* the textual description of the choice made (network specific, alternative, server specific, global etc...).
 	*/
-	QString pickNextLoginNickName(bool bForceDefaultIfPrimaryNicknamesEmpty,const QString & szBaseNickForRandomChoices,QString &szChoiceDescriptionBuffer);
+	QString pickNextLoginNickName(bool bForceDefaultIfPrimaryNicknamesEmpty, const QString & szBaseNickForRandomChoices, QString & szChoiceDescriptionBuffer);
 
 	//
 	// KviIrcServerParser interface
@@ -927,6 +937,7 @@ protected:
 	* \return void
 	*/
 	void linkTerminated();
+
 private:
 	/**
 	* \brief Setups the codec for the text
@@ -1002,7 +1013,6 @@ signals:
 	*/
 	void chanListChanged();
 };
-
 
 // TODO: KviIdentity
 

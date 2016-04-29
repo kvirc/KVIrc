@@ -39,137 +39,115 @@
 #include <QDebug>
 #include <QTimer>
 
-
 namespace UPnP
 {
 
-// Set the static variable
-Manager* Manager::m_pInstance(0);
+	// Set the static variable
+	Manager * Manager::m_pInstance(0);
 
-
-// The constructor
-Manager::Manager()
-: m_pActiveIgdControlPoint(0)
-, m_bBroadcastFailed(false)
-, m_bBroadcastFoundIt(false)
-, m_pSsdpConnection(0)
-, m_pSsdpTimer(0)
-{
-
-}
-
-
-
-// The destructor
-Manager::~Manager()
-{
-	delete m_pSsdpTimer;
-	delete m_pSsdpConnection;
-	m_pInstance = 0;  // Unregister the instance
-}
-
-
-
-// Initialize the manager, detect all devices
-void Manager::initialize()
-{
-	qDebug() << "UPnP::Manager: initiating a broadcast to detect UPnP devices..." << endl;
-
-
-	// Create the SSDP object to detect devices
-	m_pSsdpConnection = new SsdpConnection();
-	connect(m_pSsdpConnection, SIGNAL( deviceFound(const QString&,int,const QString&) ),
-		this, SLOT( slotDeviceFound(const QString&,int,const QString&) ) );
-
-	// Create a timer
-	m_pSsdpTimer = new QTimer(this);
-	connect(m_pSsdpTimer, SIGNAL(timeout()), this, SLOT(slotBroadcastTimeout()));
-
-	// Start a UPnP broadcast
-	m_bBroadcastFailed = false;
-	m_bBroadcastFoundIt = false;
-	m_pSsdpConnection->queryDevices();
-	m_pSsdpTimer->setSingleShot(true);
-	m_pSsdpTimer->start(2000);
-}
-
-
-
-// Return the instance of the manager class
-Manager * Manager::instance()
-{
-	// Create when it's required
-	if(m_pInstance == 0)
+	// The constructor
+	Manager::Manager()
+	    : m_pActiveIgdControlPoint(0), m_bBroadcastFailed(false), m_bBroadcastFoundIt(false), m_pSsdpConnection(0), m_pSsdpTimer(0)
 	{
-		m_pInstance = new Manager();
-		m_pInstance->initialize();
 	}
 
-	return m_pInstance;
-}
+	// The destructor
+	Manager::~Manager()
+	{
+		delete m_pSsdpTimer;
+		delete m_pSsdpConnection;
+		m_pInstance = 0; // Unregister the instance
+	}
 
+	// Initialize the manager, detect all devices
+	void Manager::initialize()
+	{
+		qDebug() << "UPnP::Manager: initiating a broadcast to detect UPnP devices..." << endl;
 
+		// Create the SSDP object to detect devices
+		m_pSsdpConnection = new SsdpConnection();
+		connect(m_pSsdpConnection, SIGNAL(deviceFound(const QString &, int, const QString &)),
+		    this, SLOT(slotDeviceFound(const QString &, int, const QString &)));
 
-// Return the external IP address
-QString Manager::getExternalIpAddress() const
-{
-	// Do not expose activeIgd_;
-	return (m_pActiveIgdControlPoint != 0 ? m_pActiveIgdControlPoint->getExternalIpAddress() : QString());
-}
+		// Create a timer
+		m_pSsdpTimer = new QTimer(this);
+		connect(m_pSsdpTimer, SIGNAL(timeout()), this, SLOT(slotBroadcastTimeout()));
 
+		// Start a UPnP broadcast
+		m_bBroadcastFailed = false;
+		m_bBroadcastFoundIt = false;
+		m_pSsdpConnection->queryDevices();
+		m_pSsdpTimer->setSingleShot(true);
+		m_pSsdpTimer->start(2000);
+	}
 
+	// Return the instance of the manager class
+	Manager * Manager::instance()
+	{
+		// Create when it's required
+		if(m_pInstance == 0)
+		{
+			m_pInstance = new Manager();
+			m_pInstance->initialize();
+		}
 
-// Return true if a controlable gateway is available
-bool Manager::isGatewayAvailable()
-{
-	return (m_pActiveIgdControlPoint != 0 && m_pActiveIgdControlPoint->isGatewayAvailable());
-}
+		return m_pInstance;
+	}
+
+	// Return the external IP address
+	QString Manager::getExternalIpAddress() const
+	{
+		// Do not expose activeIgd_;
+		return (m_pActiveIgdControlPoint != 0 ? m_pActiveIgdControlPoint->getExternalIpAddress() : QString());
+	}
+
+	// Return true if a controlable gateway is available
+	bool Manager::isGatewayAvailable()
+	{
+		return (m_pActiveIgdControlPoint != 0 && m_pActiveIgdControlPoint->isGatewayAvailable());
+	}
 
 	// Add a port mapping
-void Manager::addPortMapping(const QString &protocol, const QString &remoteHost, int externalPort, const QString &internalClient, int internalPort, const QString &description, bool enabled, int leaseDuration)
-{
-	if(m_pActiveIgdControlPoint != 0)
-		m_pActiveIgdControlPoint->addPortMapping(protocol, remoteHost, externalPort, internalClient, internalPort, description, enabled, leaseDuration);
-}
-
-// Delete a port mapping
-void Manager::deletePortMapping(const QString &protocol, const QString &remoteHost, int externalPort)
-{
-	if(m_pActiveIgdControlPoint != 0)
-		m_pActiveIgdControlPoint->deletePortMapping(protocol, remoteHost, externalPort);
-}
-
-// The broadcast failed
-void Manager::slotBroadcastTimeout()
-{
-	if(!m_bBroadcastFoundIt)
+	void Manager::addPortMapping(const QString & protocol, const QString & remoteHost, int externalPort, const QString & internalClient, int internalPort, const QString & description, bool enabled, int leaseDuration)
 	{
-		qDebug() << "UPnP::Manager: timeout, no broadcast response received!" << endl;
-
-		m_bBroadcastFailed = true;
+		if(m_pActiveIgdControlPoint != 0)
+			m_pActiveIgdControlPoint->addPortMapping(protocol, remoteHost, externalPort, internalClient, internalPort, description, enabled, leaseDuration);
 	}
-}
 
-
-
-// A device was discovered by the SSDP broadcast
-void Manager::slotDeviceFound(const QString &hostname, int port, const QString &rootUrl)
-{
-	qDebug() << "UPnP::Manager: device found, initializing IgdControlPoint to query it." << endl;
-
-	// this blocks the action of our timeout timer
-	m_bBroadcastFoundIt = true;
-
-	IgdControlPoint *controlPoint = new IgdControlPoint(hostname, port, rootUrl);
-	m_lIgdControlPoints.append(controlPoint);
-
-	if(m_pActiveIgdControlPoint == 0)
+	// Delete a port mapping
+	void Manager::deletePortMapping(const QString & protocol, const QString & remoteHost, int externalPort)
 	{
-		m_pActiveIgdControlPoint = controlPoint;
-		m_pActiveIgdControlPoint->initialize();
+		if(m_pActiveIgdControlPoint != 0)
+			m_pActiveIgdControlPoint->deletePortMapping(protocol, remoteHost, externalPort);
 	}
-}
 
+	// The broadcast failed
+	void Manager::slotBroadcastTimeout()
+	{
+		if(!m_bBroadcastFoundIt)
+		{
+			qDebug() << "UPnP::Manager: timeout, no broadcast response received!" << endl;
 
+			m_bBroadcastFailed = true;
+		}
+	}
 
-}  // end of namespace
+	// A device was discovered by the SSDP broadcast
+	void Manager::slotDeviceFound(const QString & hostname, int port, const QString & rootUrl)
+	{
+		qDebug() << "UPnP::Manager: device found, initializing IgdControlPoint to query it." << endl;
+
+		// this blocks the action of our timeout timer
+		m_bBroadcastFoundIt = true;
+
+		IgdControlPoint * controlPoint = new IgdControlPoint(hostname, port, rootUrl);
+		m_lIgdControlPoints.append(controlPoint);
+
+		if(m_pActiveIgdControlPoint == 0)
+		{
+			m_pActiveIgdControlPoint = controlPoint;
+			m_pActiveIgdControlPoint->initialize();
+		}
+	}
+
+} // end of namespace

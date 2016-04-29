@@ -46,6 +46,7 @@ class KVIRC_API KviTopicListBoxItemDelegate : public KviTalIconAndRichTextItemDe
 public:
 	KviTopicListBoxItemDelegate(QAbstractItemView * pWidget = 0);
 	~KviTopicListBoxItemDelegate();
+
 public:
 	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
 	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
@@ -56,6 +57,7 @@ class KVIRC_API KviTopicListBoxItem : public KviTalListWidgetText
 public:
 	KviTopicListBoxItem(KviTalListWidget * pListBox = 0, const QString & text = QString());
 	~KviTopicListBoxItem();
+
 public:
 	virtual int width(const KviTalListWidget * pList) const;
 };
@@ -66,34 +68,40 @@ class KVIRC_API KviTopicWidget : public QWidget
 	Q_PROPERTY(int TransparencyCapable READ dummyRead)
 	friend class KviChannelWindow;
 	friend class KviTalListWidget;
+
 public:
-	KviTopicWidget(QWidget * pParent, KviChannelWindow* pChannel, const char * name);
+	KviTopicWidget(QWidget * pParent, KviChannelWindow * pChannel, const char * name);
 	~KviTopicWidget();
+
 private:
-	QString                 m_szTopic;
-	QString                 m_szSetBy;
-	QString                 m_szSetAt;
-	QPushButton           * m_pAccept;
-	QPushButton           * m_pDiscard;
-	QPushButton           * m_pHistory;
-	QMenu       * m_pContextPopup;
+	QString m_szTopic;
+	QString m_szSetBy;
+	QString m_szSetAt;
+	QPushButton * m_pAccept;
+	QPushButton * m_pDiscard;
+	QPushButton * m_pHistory;
+	QMenu * m_pContextPopup;
 	QAbstractItemDelegate * m_pItemDelegate;
-	KviThemedLabel        * m_pLabel;
-	KviInputEditor        * m_pInput;
-	KviTalListWidget      * m_pCompletionBox;
-	KviChannelWindow            * m_pKviChannelWindow;
+	KviThemedLabel * m_pLabel;
+	KviInputEditor * m_pInput;
+	KviTalListWidget * m_pCompletionBox;
+	KviChannelWindow * m_pKviChannelWindow;
+
 protected:
 	int m_iCursorPosition;
+
 private:
 	QChar getSubstituteChar(unsigned short uControlCode);
+
 protected:
 	void updateToolTip();
 	void deactivate();
 	void iconButtonClicked();
-	virtual bool eventFilter(QObject * o,QEvent * e);
+	virtual bool eventFilter(QObject * o, QEvent * e);
 	virtual void mousePressEvent(QMouseEvent * e);
 	virtual void keyPressEvent(QKeyEvent * e);
 	virtual void resizeEvent(QResizeEvent * e);
+
 public:
 	void insertChar(QChar c);
 	void insertText(const QString & szText);
@@ -104,9 +112,9 @@ public:
 	void setTopicSetBy(const QString & szSetBy);
 	void setTopicSetAt(const QString & szSetAt);
 
-	const QString & topic(){ return m_szTopic; };
-	const QString & topicSetBy(){ return m_szSetBy; };
-	const QString & topicSetAt(){ return m_szSetAt; };
+	const QString & topic() { return m_szTopic; };
+	const QString & topicSetBy() { return m_szSetBy; };
+	const QString & topicSetAt() { return m_szSetAt; };
 	virtual QSize sizeHint() const;
 	void applyOptions();
 

@@ -63,12 +63,15 @@ public:
 	* \brief Destroys the identity profile set object
 	*/
 	~KviIdentityProfileSet();
+
 private:
 	static KviIdentityProfileSet * m_pSelf;
-	static unsigned int            m_uCount;
+	static unsigned int m_uCount;
+
 protected:
 	KviPointerList<KviIdentityProfile> * m_pProfiles;
-	bool                                 m_bEnabled;
+	bool m_bEnabled;
+
 public:
 	/**
 	* \brief Initializes the class instance
@@ -86,19 +89,19 @@ public:
 	* \brief Returns the instance of the class
 	* \return KviIdentityProfileSet *
 	*/
-	static inline KviIdentityProfileSet * instance(){ return m_pSelf; };
+	static inline KviIdentityProfileSet * instance() { return m_pSelf; };
 
 	/**
 	* \brief Returns the number of instances of the class
 	* \return unsigned int
 	*/
-	unsigned int count(){ return m_uCount; };
+	unsigned int count() { return m_uCount; };
 
 	/**
 	* \brief Returns the profiles set
 	* \return KviPointerList<KviIdentityProfile> *
 	*/
-	KviPointerList<KviIdentityProfile> * profiles(){ return m_pProfiles; };
+	KviPointerList<KviIdentityProfile> * profiles() { return m_pProfiles; };
 
 	/**
 	* \brief Searches for a profile name. Returns true if the profile exists
@@ -124,20 +127,20 @@ public:
 	* \brief Returns true if the profile set is empty
 	* \return bool
 	*/
-	bool isEmpty(){ return m_pProfiles ? m_pProfiles->isEmpty() : true; };
+	bool isEmpty() { return m_pProfiles ? m_pProfiles->isEmpty() : true; };
 
 	/**
 	* \brief Returns true if the profile set is enabled
 	* \return bool
 	*/
-	bool isEnabled(){ return m_bEnabled; };
+	bool isEnabled() { return m_bEnabled; };
 
 	/**
 	* \brief Enables the profile set
 	* \param bEnabled Whether to enable the profile set
 	* \return void
 	*/
-	void setEnabled(bool bEnabled){ m_bEnabled = bEnabled; };
+	void setEnabled(bool bEnabled) { m_bEnabled = bEnabled; };
 
 	/**
 	* \brief Carbon copy
@@ -174,6 +177,7 @@ public:
 	* \return void
 	*/
 	void save(KviConfigurationFile * pCfg, const QString & szPrefix);
+
 protected:
 	/**
 	* \brief Loads the configuration of the profiles from file

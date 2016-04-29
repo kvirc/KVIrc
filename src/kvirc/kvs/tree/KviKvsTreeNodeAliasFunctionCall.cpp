@@ -28,7 +28,7 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeAliasFunctionCall::KviKvsTreeNodeAliasFunctionCall(const QChar * pLocation, const QString & szAliasName, KviKvsTreeNodeDataList * pParams)
-: KviKvsTreeNodeFunctionCall(pLocation,szAliasName,pParams)
+    : KviKvsTreeNodeFunctionCall(pLocation, szAliasName, pParams)
 {
 }
 
@@ -43,7 +43,7 @@ void KviKvsTreeNodeAliasFunctionCall::contextDescription(QString & szBuffer)
 
 void KviKvsTreeNodeAliasFunctionCall::dump(const char * prefix)
 {
-	qDebug("%s AliasFunctionCall(%s)",prefix,m_szFunctionName.toUtf8().data());
+	qDebug("%s AliasFunctionCall(%s)", prefix, m_szFunctionName.toUtf8().data());
 	QString szTmp = prefix;
 	szTmp.append("  ");
 	m_pParams->dump(szTmp.toUtf8().data());
@@ -52,7 +52,7 @@ void KviKvsTreeNodeAliasFunctionCall::dump(const char * prefix)
 bool KviKvsTreeNodeAliasFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	KviKvsVariantList l;
-	if(!m_pParams->evaluate(c,&l))
+	if(!m_pParams->evaluate(c, &l))
 		return false;
 
 	pBuffer->setNothing();
@@ -60,15 +60,15 @@ bool KviKvsTreeNodeAliasFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c,
 	const KviKvsScript * s = KviKvsAliasManager::instance()->lookup(m_szFunctionName);
 	if(!s)
 	{
-		c->error(this,__tr2qs_ctx("Call to undefined function '%Q'","kvs"),&m_szFunctionName);
+		c->error(this, __tr2qs_ctx("Call to undefined function '%Q'", "kvs"), &m_szFunctionName);
 		return false;
 	}
 
 	KviKvsScript copy(*s); // quick reference
 
-	if(!copy.run(c->window(),&l,pBuffer,KviKvsScript::PreserveParams))
+	if(!copy.run(c->window(), &l, pBuffer, KviKvsScript::PreserveParams))
 	{
-		c->error(this,__tr2qs_ctx("Error in inner alias function call '%Q', called from this context","kvs"),&m_szFunctionName);
+		c->error(this, __tr2qs_ctx("Error in inner alias function call '%Q', called from this context", "kvs"), &m_szFunctionName);
 		return false;
 	}
 	return true;

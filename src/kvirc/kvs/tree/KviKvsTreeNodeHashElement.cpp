@@ -28,45 +28,44 @@
 #include "KviKvsHash.h"
 #include "KviKvsObject.h"
 
-KviKvsTreeNodeHashElement::KviKvsTreeNodeHashElement(const QChar * pLocation,KviKvsTreeNodeData * pSource,KviKvsTreeNodeData * pKey)
-: KviKvsTreeNodeArrayOrHashElement(pLocation,pSource)
+KviKvsTreeNodeHashElement::KviKvsTreeNodeHashElement(const QChar * pLocation, KviKvsTreeNodeData * pSource, KviKvsTreeNodeData * pKey)
+    : KviKvsTreeNodeArrayOrHashElement(pLocation, pSource)
 {
 	m_pKey = pKey;
 	m_pKey->setParent(this);
 }
-
 
 KviKvsTreeNodeHashElement::~KviKvsTreeNodeHashElement()
 {
 	delete m_pKey;
 }
 
-void KviKvsTreeNodeHashElement::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeHashElement::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Hash Element Evaluation";
 }
 
 void KviKvsTreeNodeHashElement::dump(const char * prefix)
 {
-	qDebug("%s HashElement",prefix);
+	qDebug("%s HashElement", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pSource->dump(tmp.toUtf8().data());
 	m_pKey->dump(tmp.toUtf8().data());
 }
 
-
-bool KviKvsTreeNodeHashElement::evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeHashElement::evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	KviKvsVariant key;
-	if(!m_pKey->evaluateReadOnly(c,&key))return false;
+	if(!m_pKey->evaluateReadOnly(c, &key))
+		return false;
 
 	QString szKey;
 	key.asString(szKey);
 
 	if(szKey.isEmpty())
 	{
-		c->warning(this,__tr2qs_ctx("Hash key evaluated to empty string: fix the script","kvs"));
+		c->warning(this, __tr2qs_ctx("Hash key evaluated to empty string: fix the script", "kvs"));
 		pBuffer->setNothing();
 		return true;
 	}
@@ -74,9 +73,13 @@ bool KviKvsTreeNodeHashElement::evaluateReadOnlyInObjectScope(KviKvsObject *o,Kv
 	KviKvsVariant val;
 	if(o)
 	{
-		if(!m_pSource->evaluateReadOnlyInObjectScope(o,c,&val))return false;
-	} else {
-		if(!m_pSource->evaluateReadOnly(c,&val))return false;
+		if(!m_pSource->evaluateReadOnlyInObjectScope(o, c, &val))
+			return false;
+	}
+	else
+	{
+		if(!m_pSource->evaluateReadOnly(c, &val))
+			return false;
 	}
 
 	if(!val.isHash())
@@ -85,7 +88,7 @@ bool KviKvsTreeNodeHashElement::evaluateReadOnlyInObjectScope(KviKvsObject *o,Kv
 		{
 			QString szType;
 			val.getTypeName(szType);
-			c->warning(this,__tr2qs_ctx("The argument of the {} subscript didn't evaluate to a hash: automatic conversion from type '%Q' supplied","kvs"),&szType);
+			c->warning(this, __tr2qs_ctx("The argument of the {} subscript didn't evaluate to a hash: automatic conversion from type '%Q' supplied", "kvs"), &szType);
 		}
 		pBuffer->setNothing();
 		return true;
@@ -102,47 +105,50 @@ bool KviKvsTreeNodeHashElement::evaluateReadOnlyInObjectScope(KviKvsObject *o,Kv
 	return true;
 }
 
-KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWriteInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c)
+KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWriteInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c)
 {
 	KviKvsVariant key;
-	if(!m_pKey->evaluateReadOnly(c,&key))return 0;
+	if(!m_pKey->evaluateReadOnly(c, &key))
+		return 0;
 
 	QString szKey;
 	key.asString(szKey);
 
 	if(szKey.isEmpty())
 	{
-		c->warning(this,__tr2qs_ctx("Hash key evaluated to empty string: fix the script","kvs"));
+		c->warning(this, __tr2qs_ctx("Hash key evaluated to empty string: fix the script", "kvs"));
 	}
 
 	KviKvsRWEvaluationResult * result;
-	if(o)result = m_pSource->evaluateReadWriteInObjectScope(o,c);
-	else result = m_pSource->evaluateReadWrite(c);
-	if(!result)return 0;
+	if(o)
+		result = m_pSource->evaluateReadWriteInObjectScope(o, c);
+	else
+		result = m_pSource->evaluateReadWrite(c);
+	if(!result)
+		return 0;
 
 	if(!result->result()->isHash())
 	{
 		// convert to hash in some way
-//#warning "Supply a *real* conversion from other types to array ?"
+		//#warning "Supply a *real* conversion from other types to array ?"
 		if(!result->result()->isNothing())
 		{
 			QString szType;
 			result->result()->getTypeName(szType);
-			c->warning(this,__tr2qs_ctx("The argument of the {} subscript didn't evaluate to a hash: automatic conversion from %Q supplied","kvs"),&szType);
+			c->warning(this, __tr2qs_ctx("The argument of the {} subscript didn't evaluate to a hash: automatic conversion from %Q supplied", "kvs"), &szType);
 		}
 		result->result()->setHash(new KviKvsHash());
 	}
 
-	return new KviKvsHashElement(result,result->result()->hash()->get(szKey),result->result()->hash(),szKey);
+	return new KviKvsHashElement(result, result->result()->hash()->get(szKey), result->result()->hash(), szKey);
 }
 
-
-bool KviKvsTreeNodeHashElement::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeHashElement::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
-	return evaluateReadOnlyInObjectScope(0,c,pBuffer);
+	return evaluateReadOnlyInObjectScope(0, c, pBuffer);
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
-	return evaluateReadWriteInObjectScope(0,c);
+	return evaluateReadWriteInObjectScope(0, c);
 }

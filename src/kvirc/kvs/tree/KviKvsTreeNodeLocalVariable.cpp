@@ -25,8 +25,8 @@
 #include "KviKvsTreeNodeLocalVariable.h"
 #include "KviKvsRunTimeContext.h"
 
-KviKvsTreeNodeLocalVariable::KviKvsTreeNodeLocalVariable(const QChar * pLocation,const QString &szIdentifier)
-: KviKvsTreeNodeVariable(pLocation,szIdentifier)
+KviKvsTreeNodeLocalVariable::KviKvsTreeNodeLocalVariable(const QChar * pLocation, const QString & szIdentifier)
+    : KviKvsTreeNodeVariable(pLocation, szIdentifier)
 {
 }
 
@@ -34,7 +34,7 @@ KviKvsTreeNodeLocalVariable::~KviKvsTreeNodeLocalVariable()
 {
 }
 
-void KviKvsTreeNodeLocalVariable::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeLocalVariable::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Local Variable \"";
 	szBuffer += m_szIdentifier;
@@ -43,10 +43,10 @@ void KviKvsTreeNodeLocalVariable::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeLocalVariable::dump(const char * prefix)
 {
-	qDebug("%s LocalVariable(%s)",prefix,m_szIdentifier.toUtf8().data());
+	qDebug("%s LocalVariable(%s)", prefix, m_szIdentifier.toUtf8().data());
 }
 
-bool KviKvsTreeNodeLocalVariable::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeLocalVariable::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	KviKvsVariant * v = c->localVariables()->find(m_szIdentifier);
 
@@ -61,9 +61,8 @@ bool KviKvsTreeNodeLocalVariable::evaluateReadOnly(KviKvsRunTimeContext * c,KviK
 KviKvsRWEvaluationResult * KviKvsTreeNodeLocalVariable::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
 	return new KviKvsHashElement(
-			0,
-			c->localVariables()->get(m_szIdentifier),
-			c->localVariables(),
-			m_szIdentifier
-		);
+	    0,
+	    c->localVariables()->get(m_szIdentifier),
+	    c->localVariables(),
+	    m_szIdentifier);
 }

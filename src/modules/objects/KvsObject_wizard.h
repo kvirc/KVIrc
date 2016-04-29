@@ -40,41 +40,40 @@ public:
 	void nextClicked();
 	void backClicked();
 
-
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool addPage(KviKvsObjectFunctionCall *c);
-	bool insertPage(KviKvsObjectFunctionCall *c);
-	bool removePage(KviKvsObjectFunctionCall *c);
-	bool setTitle(KviKvsObjectFunctionCall *c);
-	bool setBackEnabled(KviKvsObjectFunctionCall *c);
-	bool setNextEnabled(KviKvsObjectFunctionCall *c);
-	bool setFinishEnabled(KviKvsObjectFunctionCall *c);
-	bool setHelpEnabled(KviKvsObjectFunctionCall *c);
+	bool addPage(KviKvsObjectFunctionCall * c);
+	bool insertPage(KviKvsObjectFunctionCall * c);
+	bool removePage(KviKvsObjectFunctionCall * c);
+	bool setTitle(KviKvsObjectFunctionCall * c);
+	bool setBackEnabled(KviKvsObjectFunctionCall * c);
+	bool setNextEnabled(KviKvsObjectFunctionCall * c);
+	bool setFinishEnabled(KviKvsObjectFunctionCall * c);
+	bool setHelpEnabled(KviKvsObjectFunctionCall * c);
 
-	bool setBackBtnText(KviKvsObjectFunctionCall *c);
-	bool setNextBtnText(KviKvsObjectFunctionCall *c);
-	bool setFinishBtnText(KviKvsObjectFunctionCall *c);
-	bool setHelpBtnText(KviKvsObjectFunctionCall *c);
+	bool setBackBtnText(KviKvsObjectFunctionCall * c);
+	bool setNextBtnText(KviKvsObjectFunctionCall * c);
+	bool setFinishBtnText(KviKvsObjectFunctionCall * c);
+	bool setHelpBtnText(KviKvsObjectFunctionCall * c);
 
-	bool nextClickedEvent(KviKvsObjectFunctionCall *c);
-	bool backClickedEvent(KviKvsObjectFunctionCall *c);
-
+	bool nextClickedEvent(KviKvsObjectFunctionCall * c);
+	bool backClickedEvent(KviKvsObjectFunctionCall * c);
 };
 
-class KviKvsMdmWizard :  public KviTalWizard
+class KviKvsMdmWizard : public KviTalWizard
 {
 	Q_OBJECT
 public:
-	KviKvsMdmWizard(QWidget * par,const char * name,KvsObject_wizard *);
+	KviKvsMdmWizard(QWidget * par, const char * name, KvsObject_wizard *);
 	void accept();
 	void reject();
 	virtual ~KviKvsMdmWizard();
+
 protected:
-	KvsObject_wizard *m_pParentScript;
+	KvsObject_wizard * m_pParentScript;
 protected slots:
 	void slotNextClicked();
 	void slotBackClicked();
 };
-#endif	//!_CLASS_WIZARD_H_
+#endif //!_CLASS_WIZARD_H_

@@ -35,29 +35,29 @@
 #include <QTextCodec>
 
 #ifdef COMPILE_ZLIB_SUPPORT
-	#include <zlib.h>
+#include <zlib.h>
 #endif
 
 LogListViewItem::LogListViewItem(QTreeWidgetItem * pPar, LogFile::Type eType, LogFile * pLog)
-: QTreeWidgetItem(pPar), m_eType(eType), m_pFileData(pLog)
+    : QTreeWidgetItem(pPar), m_eType(eType), m_pFileData(pLog)
 {
-	setText(0,m_pFileData ? m_pFileData->name() : QString());
+	setText(0, m_pFileData ? m_pFileData->name() : QString());
 }
 
 LogListViewItem::LogListViewItem(QTreeWidget * pPar, LogFile::Type eType, LogFile * pLog)
-: QTreeWidgetItem(pPar), m_eType(eType), m_pFileData(pLog)
+    : QTreeWidgetItem(pPar), m_eType(eType), m_pFileData(pLog)
 {
-	setText(0,m_pFileData ? m_pFileData->name() : QString());
+	setText(0, m_pFileData ? m_pFileData->name() : QString());
 }
 
 LogListViewItemFolder::LogListViewItemFolder(QTreeWidgetItem * pPar, const QString & szLabel)
-: LogListViewItem(pPar,LogFile::Other,0)
+    : LogListViewItem(pPar, LogFile::Other, 0)
 {
-	setText(0,szLabel);
+	setText(0, szLabel);
 }
 
 LogListViewItemType::LogListViewItemType(QTreeWidget * pPar, LogFile::Type eType)
-: LogListViewItem(pPar,eType,0)
+    : LogListViewItem(pPar, eType, 0)
 {
 	QIcon icon;
 	QString szText;
@@ -66,31 +66,31 @@ LogListViewItemType::LogListViewItemType(QTreeWidget * pPar, LogFile::Type eType
 	{
 		case LogFile::Channel:
 			icon = QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Channel));
-			szText = __tr2qs_ctx("Channel","log");
-		break;
+			szText = __tr2qs_ctx("Channel", "log");
+			break;
 		case LogFile::Query:
 			icon = QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Query));
-			szText = __tr2qs_ctx("Query","log");
-		break;
+			szText = __tr2qs_ctx("Query", "log");
+			break;
 		case LogFile::DccChat:
 			icon = QIcon(*g_pIconManager->getSmallIcon(KviIconManager::DccMsg));
-			szText = __tr2qs_ctx("DCC Chat","log");
-		break;
+			szText = __tr2qs_ctx("DCC Chat", "log");
+			break;
 		case LogFile::Console:
 			icon = QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Console));
-			szText = __tr2qs_ctx("Console","log");
-		break;
+			szText = __tr2qs_ctx("Console", "log");
+			break;
 		default:
 			icon = QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Log));
-			szText = __tr2qs_ctx("Other","log");
+			szText = __tr2qs_ctx("Other", "log");
 	}
 
-	setIcon(0,icon);
-	setText(0,szText);
+	setIcon(0, icon);
+	setText(0, szText);
 }
 
 LogListViewLog::LogListViewLog(QTreeWidgetItem * pPar, LogFile::Type eType, LogFile * pLog)
-: LogListViewItem(pPar,eType,pLog)
+    : LogListViewItem(pPar, eType, pLog)
 {
-	setText(0,m_pFileData->date().toString("yyyy-MM-dd"));
+	setText(0, m_pFileData->date().toString("yyyy-MM-dd"));
 }

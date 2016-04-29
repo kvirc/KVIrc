@@ -44,20 +44,19 @@
 #include <QFile>
 #include <QDateTime>
 
-
 #include <stdlib.h>
 
 namespace AddonFunctions
 {
-	bool notAValidAddonPackage(QString &szError)
+	bool notAValidAddonPackage(QString & szError)
 	{
-		szError = __tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc addon package","addon");
+		szError = __tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc addon package", "addon");
 		return false;
 	}
 
-	bool installAddonPackage(const QString &szAddonPackageFileName,QString &szError,QWidget * pDialogParent)
+	bool installAddonPackage(const QString & szAddonPackageFileName, QString & szError, QWidget * pDialogParent)
 	{
-		KviPointerHashTable<QString,QString> * pInfoFields;
+		KviPointerHashTable<QString, QString> * pInfoFields;
 		QString * pValue;
 		QString szErr;
 		QPixmap pix;
@@ -72,7 +71,7 @@ namespace AddonFunctions
 		if(!r.readHeader(szAddonPackageFileName))
 		{
 			szErr = r.lastError();
-			szError = QString(__tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc package: %1","addon")).arg(szErr);
+			szError = QString(__tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc package: %1", "addon")).arg(szErr);
 			return false;
 		}
 
@@ -83,7 +82,7 @@ namespace AddonFunctions
 		if(!pValue)
 			return notAValidAddonPackage(szError);
 
-		if(!KviQString::equalCI(*pValue,"AddonPack"))
+		if(!KviQString::equalCI(*pValue, "AddonPack"))
 			return notAValidAddonPackage(szError);
 
 		pValue = pInfoFields->find("AddonPackVersion");
@@ -92,7 +91,7 @@ namespace AddonFunctions
 			return notAValidAddonPackage(szError);
 
 		// make sure the default fields exist
-		for(int i=0;i<6;i++)
+		for(int i = 0; i < 6; i++)
 		{
 			pValue = pInfoFields->find(check_fields[i]);
 			if(!pValue)
@@ -103,7 +102,7 @@ namespace AddonFunctions
 		// load its picture
 		pByteArray = r.binaryInfoFields()->find("Image");
 		if(pByteArray)
-			pix.loadFromData(*pByteArray,0,0);
+			pix.loadFromData(*pByteArray, 0, 0);
 
 		if(pix.isNull())
 		{
@@ -120,18 +119,18 @@ namespace AddonFunctions
 		QString szPackageApplication;
 		QString szMinKVIrcVersion;
 
-		QString szAuthor = __tr2qs_ctx("Author","addon");
-		QString szCreatedAt = __tr2qs_ctx("Created at","addon");
-		QString szCreatedWith = __tr2qs_ctx("Created with","addon");
+		QString szAuthor = __tr2qs_ctx("Author", "addon");
+		QString szCreatedAt = __tr2qs_ctx("Created at", "addon");
+		QString szCreatedWith = __tr2qs_ctx("Created with", "addon");
 
-		r.getStringInfoField("Name",szPackageName);
-		r.getStringInfoField("Version",szPackageVersion);
-		r.getStringInfoField("Author",szPackageAuthor);
-		r.getStringInfoField("Description",szPackageDescription);
-		r.getStringInfoField("Application",szPackageApplication);
-		r.getStringInfoField("Date",szPackageDate);
-		r.getStringInfoField("AddonPackVersion",szAddonPackVersion);
-		r.getStringInfoField("MinimumKVIrcVersion",szMinKVIrcVersion);
+		r.getStringInfoField("Name", szPackageName);
+		r.getStringInfoField("Version", szPackageVersion);
+		r.getStringInfoField("Author", szPackageAuthor);
+		r.getStringInfoField("Description", szPackageDescription);
+		r.getStringInfoField("Application", szPackageApplication);
+		r.getStringInfoField("Date", szPackageDate);
+		r.getStringInfoField("AddonPackVersion", szAddonPackVersion);
+		r.getStringInfoField("MinimumKVIrcVersion", szMinKVIrcVersion);
 
 		QString szWarnings;
 		QString szTmp;
@@ -141,22 +140,21 @@ namespace AddonFunctions
 		if(szPackageName.isEmpty() || szPackageVersion.isEmpty() || szAddonPackVersion.isEmpty())
 			bValid = false;
 
-		if(KviMiscUtils::compareVersions(szAddonPackVersion,KVI_CURRENT_ADDONS_ENGINE_VERSION) < 0)
+		if(KviMiscUtils::compareVersions(szAddonPackVersion, KVI_CURRENT_ADDONS_ENGINE_VERSION) < 0)
 			bValid = false;
 
 		if(!szMinKVIrcVersion.isEmpty())
 		{
-			if(KviMiscUtils::compareVersions(szMinKVIrcVersion,KVI_VERSION) < 0)
+			if(KviMiscUtils::compareVersions(szMinKVIrcVersion, KVI_VERSION) < 0)
 				bValid = false;
 		}
 
 		if(!bValid)
 		{
 			szWarnings += "<p><center><font color=\"#ff0000\"><b>";
-			szWarnings += __tr2qs_ctx("Warning: The addon might be incompatible with this version of KVIrc","addon");
+			szWarnings += __tr2qs_ctx("Warning: The addon might be incompatible with this version of KVIrc", "addon");
 			szWarnings += "</b></font></center></p>";
 		}
-
 
 		// clang-format off
 		hd.szHtmlText = QString(
@@ -186,17 +184,17 @@ namespace AddonFunctions
 			"</html>").arg(szPackageName,szPackageVersion,szPackageDescription,szAuthor,szPackageAuthor,szCreatedAt,szPackageDate,szCreatedWith,szPackageApplication).arg(szWarnings);
 		// clang-format on
 
-		hd.addImageResource("addon_dialog_pack_image",pix);
-		hd.addHtmlResource("addon_dialog_main",hd.szHtmlText);
+		hd.addImageResource("addon_dialog_pack_image", pix);
+		hd.addHtmlResource("addon_dialog_main", hd.szHtmlText);
 
 		QString beginCenter = "<center>";
 		QString endCenter = "</center>";
 
-		hd.szCaption = __tr2qs_ctx("Install Addon Pack - KVIrc","addon");
-		hd.szUpperLabelText = beginCenter + __tr2qs_ctx("You're about to install the following addon package","addon") + endCenter;
-		hd.szLowerLabelText = beginCenter + __tr2qs_ctx("Do you want to proceed with the installation?","addon") + endCenter;
-		hd.szButton1Text = __tr2qs_ctx("Do Not Install","addon");
-		hd.szButton2Text = __tr2qs_ctx("Yes, Proceed","addon");
+		hd.szCaption = __tr2qs_ctx("Install Addon Pack - KVIrc", "addon");
+		hd.szUpperLabelText = beginCenter + __tr2qs_ctx("You're about to install the following addon package", "addon") + endCenter;
+		hd.szLowerLabelText = beginCenter + __tr2qs_ctx("Do you want to proceed with the installation?", "addon") + endCenter;
+		hd.szButton1Text = __tr2qs_ctx("Do Not Install", "addon");
+		hd.szButton2Text = __tr2qs_ctx("Yes, Proceed", "addon");
 		hd.iDefaultButton = 2;
 		hd.iCancelButton = 1;
 		hd.pixIcon = *(g_pIconManager->getSmallIcon(KviIconManager::Addons));
@@ -204,7 +202,7 @@ namespace AddonFunctions
 		hd.iMinimumHeight = 420;
 		hd.iFlags = KviHtmlDialogData::ForceMinimumSize;
 
-		bInstall = KviHtmlDialog::display(pDialogParent,&hd) == 2;
+		bInstall = KviHtmlDialog::display(pDialogParent, &hd) == 2;
 
 		if(!bInstall)
 			return true;
@@ -213,8 +211,8 @@ namespace AddonFunctions
 		QString szTmpPath, szUnpackPath;
 		QString szRandomDir = createRandomDir();
 
-		g_pApp->getLocalKvircDirectory(szTmpPath,KviApplication::Tmp);
-		KviQString::ensureLastCharIs(szTmpPath,QChar(KVI_PATH_SEPARATOR_CHAR));
+		g_pApp->getLocalKvircDirectory(szTmpPath, KviApplication::Tmp);
+		KviQString::ensureLastCharIs(szTmpPath, QChar(KVI_PATH_SEPARATOR_CHAR));
 		szUnpackPath = szTmpPath + szRandomDir;
 		QDir szTmpDir(szUnpackPath);
 
@@ -227,10 +225,10 @@ namespace AddonFunctions
 		}
 
 		// Unpack addon package into the random tmp dir
-		if(!r.unpack(szAddonPackageFileName,szUnpackPath))
+		if(!r.unpack(szAddonPackageFileName, szUnpackPath))
 		{
 			szErr = r.lastError();
-			szError = QString(__tr2qs_ctx("Failed to unpack the selected file: %1","addon")).arg(szErr);
+			szError = QString(__tr2qs_ctx("Failed to unpack the selected file: %1", "addon")).arg(szErr);
 			return false;
 		}
 
@@ -243,7 +241,7 @@ namespace AddonFunctions
 		}
 
 		if(!KviFileUtils::deleteDir(szUnpackPath))
-			QMessageBox::warning(NULL,__tr2qs_ctx("Warning While Unpacking Addon - KVIrc","addon"),__tr2qs_ctx("Failed to delete the directory '%1'","addon").arg(szUnpackPath));
+			QMessageBox::warning(NULL, __tr2qs_ctx("Warning While Unpacking Addon - KVIrc", "addon"), __tr2qs_ctx("Failed to delete the directory '%1'", "addon").arg(szUnpackPath));
 
 		return true;
 	}
@@ -252,17 +250,17 @@ namespace AddonFunctions
 	{
 		QString szDirName;
 		char chars[] = {
-			'A','B','C','D','E','F','G','H',
-			'I','J','K','L','M','N','O','P',
-			'Q','R','S','T','U','V','W','X',
-			'Y','Z','a','b','c','d','e','f',
-			'g','h','i','j','k','l','m','n',
-			'o','p','q','r','s','t','u','v',
-			'w','x','y','z','-','_','.'
+			'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+			'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+			'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+			'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
+			'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+			'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+			'w', 'x', 'y', 'z', '-', '_', '.'
 		};
 
 		// Generate dir name
-		for(int i=0;i<10;i++)
+		for(int i = 0; i < 10; i++)
 		{
 			int n = rand() % sizeof(chars);
 			szDirName.append(chars[n]);
@@ -271,7 +269,7 @@ namespace AddonFunctions
 		return szDirName;
 	}
 
-	bool checkDirTree(const QString &szDirPath,QString * pszError)
+	bool checkDirTree(const QString & szDirPath, QString * pszError)
 	{
 		if(pszError)
 			*pszError = "";
@@ -279,23 +277,23 @@ namespace AddonFunctions
 		QDir addon(szDirPath);
 		if(!addon.exists())
 		{
-			*pszError = __tr2qs_ctx("The selected directory doesn't exist.","addon");
+			*pszError = __tr2qs_ctx("The selected directory doesn't exist.", "addon");
 			return false;
 		}
 
 		QFileInfo init(szDirPath + "/install.kvs");
 		if(!init.exists())
 		{
-			*pszError = __tr2qs_ctx("The initialization script (install.kvs) doesn't exist.","addon");
+			*pszError = __tr2qs_ctx("The initialization script (install.kvs) doesn't exist.", "addon");
 			return false;
 		}
 
 		return true;
 	}
 
-	bool pack(AddonInfo &info,QString &szError)
+	bool pack(AddonInfo & info, QString & szError)
 	{
-		if(!checkDirTree(info.szDirPath,&szError))
+		if(!checkDirTree(info.szDirPath, &szError))
 			return false;
 
 		if(info.szMinVersion.isEmpty())
@@ -305,32 +303,32 @@ namespace AddonFunctions
 		szTmp = QDateTime::currentDateTime().toString(Qt::ISODate);
 
 		KviPackageWriter pw;
-		pw.addInfoField("PackageType","AddonPack");
-		pw.addInfoField("AddonPackVersion",KVI_CURRENT_ADDONS_ENGINE_VERSION);
-		pw.addInfoField("Name",info.szName);
-		pw.addInfoField("Version",info.szVersion);
-		pw.addInfoField("Author",info.szAuthor);
-		pw.addInfoField("Description",info.szDescription);
-		pw.addInfoField("Date",szTmp);
-		pw.addInfoField("MinimumKVIrcVersion",info.szMinVersion);
-		pw.addInfoField("Application","KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
+		pw.addInfoField("PackageType", "AddonPack");
+		pw.addInfoField("AddonPackVersion", KVI_CURRENT_ADDONS_ENGINE_VERSION);
+		pw.addInfoField("Name", info.szName);
+		pw.addInfoField("Version", info.szVersion);
+		pw.addInfoField("Author", info.szAuthor);
+		pw.addInfoField("Description", info.szDescription);
+		pw.addInfoField("Date", szTmp);
+		pw.addInfoField("MinimumKVIrcVersion", info.szMinVersion);
+		pw.addInfoField("Application", "KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
 
 		if(!info.szImage.isEmpty())
 		{
 			QPixmap pix(info.szImage);
 			if(pix.isNull())
 			{
-				szError = __tr2qs_ctx("Failed to load the image at %1","addon").arg(info.szImage);
+				szError = __tr2qs_ctx("Failed to load the image at %1", "addon").arg(info.szImage);
 				return false;
 			}
 
 			QByteArray * pba = new QByteArray();
-			QBuffer bufferz(pba,0);
+			QBuffer bufferz(pba, 0);
 
 			bufferz.open(QIODevice::WriteOnly);
-			pix.save(&bufferz,"PNG");
+			pix.save(&bufferz, "PNG");
 			bufferz.close();
-			pw.addInfoField("Image",pba);
+			pw.addInfoField("Image", pba);
 		}
 
 		QDir dir(info.szDirPath);
@@ -338,17 +336,17 @@ namespace AddonFunctions
 
 		if(ls.isEmpty())
 		{
-			szError = __tr2qs_ctx("The package file list is empty","addon");
+			szError = __tr2qs_ctx("The package file list is empty", "addon");
 			return false;
 		}
 
-		for(QFileInfoList::Iterator it = ls.begin();it != ls.end();++it)
+		for(QFileInfoList::Iterator it = ls.begin(); it != ls.end(); ++it)
 		{
-			const QFileInfo &inf = *it;
+			const QFileInfo & inf = *it;
 
 			if(inf.isDir())
 			{
-				if(!pw.addDirectory(inf.absoluteFilePath(),QString("%1/").arg(inf.fileName())))
+				if(!pw.addDirectory(inf.absoluteFilePath(), QString("%1/").arg(inf.fileName())))
 				{
 					szError = pw.lastError();
 					return false;
@@ -358,18 +356,17 @@ namespace AddonFunctions
 			}
 
 			// must be a file
-			if(!pw.addFile(inf.absoluteFilePath(),inf.fileName()))
+			if(!pw.addFile(inf.absoluteFilePath(), inf.fileName()))
 			{
 				szError = pw.lastError();
 				return false;
 			}
 		}
 
-
 		// Create the addon package
 		if(info.szSavePath.isEmpty())
 		{
-			szError = __tr2qs_ctx("Save path is empty","addon");
+			szError = __tr2qs_ctx("Save path is empty", "addon");
 			return false;
 		}
 
@@ -381,5 +378,4 @@ namespace AddonFunctions
 
 		return true;
 	}
-
 }

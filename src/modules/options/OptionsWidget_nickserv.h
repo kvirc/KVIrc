@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-
 #include "kvi_settings.h"
 #include "KviOptionsWidget.h"
 
@@ -48,17 +47,20 @@ class NickServRuleEditor : public QDialog
 {
 	Q_OBJECT
 public:
-	NickServRuleEditor(QWidget * par,bool bUseServerMaskField = false);
+	NickServRuleEditor(QWidget * par, bool bUseServerMaskField = false);
 	~NickServRuleEditor();
+
 protected:
-	QLineEdit   * m_pRegisteredNickEdit;
-	QLineEdit   * m_pNickServMaskEdit;
-	QLineEdit   * m_pMessageRegexpEdit;
-	QLineEdit   * m_pIdentifyCommandEdit;
-	QLineEdit   * m_pServerMaskEdit;
+	QLineEdit * m_pRegisteredNickEdit;
+	QLineEdit * m_pNickServMaskEdit;
+	QLineEdit * m_pMessageRegexpEdit;
+	QLineEdit * m_pIdentifyCommandEdit;
+	QLineEdit * m_pServerMaskEdit;
 	QPushButton * m_pOkButton;
+
 public:
 	bool editRule(KviNickServRule * r);
+
 protected:
 	bool validate();
 protected slots:
@@ -71,17 +73,19 @@ class OptionsWidget_nickServ : public KviOptionsWidget
 public:
 	OptionsWidget_nickServ(QWidget * parent);
 	~OptionsWidget_nickServ();
+
 protected:
 	QTreeWidget * m_pNickServTreeWidget;
-	QCheckBox        * m_pNickServCheck;
-	QPushButton      * m_pAddRuleButton;
-	QPushButton      * m_pDelRuleButton;
-	QPushButton      * m_pEditRuleButton;
+	QCheckBox * m_pNickServCheck;
+	QPushButton * m_pAddRuleButton;
+	QPushButton * m_pDelRuleButton;
+	QPushButton * m_pEditRuleButton;
 protected slots:
 	void enableDisableNickServControls();
 	void addNickServRule();
 	void delNickServRule();
 	void editNickServRule();
+
 public:
 	virtual void commit();
 };

@@ -55,14 +55,13 @@ class KviRegisteredUser;
 class KviWindowToolPageButton;
 
 #ifdef COMPILE_ON_WINDOWS
-	// windoze wants it to compile QList<KviChannelWindow> and QList<KviQueryWindow>
-	#include "KviChannelWindow.h"
-	#include "KviQueryWindow.h"
+// windoze wants it to compile QList<KviChannelWindow> and QList<KviQueryWindow>
+#include "KviChannelWindow.h"
+#include "KviQueryWindow.h"
 #else
-	class KviChannelWindow;
-	class KviQueryWindow;
+class KviChannelWindow;
+class KviQueryWindow;
 #endif
-
 
 //=================================================================================================
 //
@@ -72,7 +71,6 @@ class KviWindowToolPageButton;
 
 #define KVI_CONSOLE_FLAG_FIRSTINAPP 1
 #define KVI_CONSOLE_FLAG_FIRSTINFRAME 2
-
 
 class KVIRC_API KviConsoleWindow : public KviWindow
 {
@@ -84,27 +82,30 @@ class KVIRC_API KviConsoleWindow : public KviWindow
 	Q_OBJECT
 protected:
 	KviConsoleWindow(int iFlags);
+
 public:
 	~KviConsoleWindow();
+
 protected:
-	int                       m_iFlags; // FIXME: make this a KviWindow property ?
+	int m_iFlags; // FIXME: make this a KviWindow property ?
 	// UI
-	KviUserListView         * m_pNotifyListView;
+	KviUserListView * m_pNotifyListView;
 	KviWindowToolPageButton * m_pNotifyViewButton;
-	KviThemedComboBox       * m_pAddressEdit;
-	QString                   m_szStatusString; // nick (flags) on server | not connected
-	QString                   m_szOwnSmartColor;
-	QStringList             * m_pTmpHighLightedChannels;
-	KviIrcContext           * m_pContext;
-	QList<int>                m_SplitterSizesList;
+	KviThemedComboBox * m_pAddressEdit;
+	QString m_szStatusString; // nick (flags) on server | not connected
+	QString m_szOwnSmartColor;
+	QStringList * m_pTmpHighLightedChannels;
+	KviIrcContext * m_pContext;
+	QList<int> m_SplitterSizesList;
+
 protected:
 	// UI
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent *e);
-	virtual void closeEvent(QCloseEvent *e);
-	virtual void getBaseLogFileName(QString &buffer);
-	virtual void getWindowListTipText(QString &buffer);
+	virtual void resizeEvent(QResizeEvent * e);
+	virtual void closeEvent(QCloseEvent * e);
+	virtual void getBaseLogFileName(QString & buffer);
+	virtual void getWindowListTipText(QString & buffer);
 	virtual QSize sizeHint() const;
 	virtual void applyOptions();
 	virtual void triggerCreationEvents();
@@ -118,25 +119,25 @@ protected:
 
 	void destroyConnection();
 	// internal helper for applyHighlighting
-	int triggerOnHighlight(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg,const QString &trigger);
+	int triggerOnHighlight(KviWindow * wnd, int type, const QString & nick, const QString & user, const QString & host, const QString & szMsg, const QString & trigger);
 
-	void showNotifyList(bool bShow, bool bIgnoreSizeChange=false);
-	static int getSmartColorHashForNick(QString *szNick);
+	void showNotifyList(bool bShow, bool bIgnoreSizeChange = false);
+	static int getSmartColorHashForNick(QString * szNick);
+
 public:
-	KviIrcContext * context(){ return m_pContext; };
+	KviIrcContext * context() { return m_pContext; };
 
 	// UI
-	inline KviUserListView * notifyListView(){ return m_pNotifyListView; };
+	inline KviUserListView * notifyListView() { return m_pNotifyListView; };
 	inline int selectedCount();
-
 
 	//
 	// State
 	//
-	inline KviIrcContext::State state(){ return context()->state(); };
+	inline KviIrcContext::State state() { return context()->state(); };
 
 	// these should disappear!
-	inline bool isConnected(){ return context()->isConnected(); };
+	inline bool isConnected() { return context()->isConnected(); };
 	inline bool isIPv6Connection();
 	inline bool isNotConnected();
 	bool connectionInProgress();
@@ -148,28 +149,29 @@ public:
 	//
 	// IRC Context wide helpers (connection related)
 	//
-	void getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &buffer);
-	enum OutputPrivmsgFlags {
+	void getUserTipText(const QString & nick, KviIrcUserEntry * e, QString & buffer);
+	enum OutputPrivmsgFlags
+	{
 		NoWindowFlashing = 1, // has meaning only if NoHighlighting is NOT given, otherwise it is implied
-		NoNotifier = 2, // has meaning only if NoHighlighitng is NOT given, otherwise it is implied
+		NoNotifier = 2,       // has meaning only if NoHighlighitng is NOT given, otherwise it is implied
 		NoHighlighting = 4,
 		NoNotifications = 7 // this is 1|2|4 implies NoWindowFlashing and NoNotifier
 	};
-	void outputPrivmsg(KviWindow *wnd,int type,const QString &nick,
-		const QString &user,const QString &host,const QString &msg,int iFlags = 0,const QString &prefix = QString(),const QString &suffix = QString(),const QDateTime& datetime = QDateTime());
+	void outputPrivmsg(KviWindow * wnd, int type, const QString & nick,
+	    const QString & user, const QString & host, const QString & msg, int iFlags = 0, const QString & prefix = QString(), const QString & suffix = QString(), const QDateTime & datetime = QDateTime());
 	// this applies highlighting to the specified message
 	// and triggers the OnHighlight event.
 	// it returns KVI_OUT_HIGHLIGHT if highlighting was applied
 	// and -1 if OnHighlight called halt
 	// otherwise it returns <type>
-	int applyHighlighting(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg);
+	int applyHighlighting(KviWindow * wnd, int type, const QString & nick, const QString & user, const QString & host, const QString & szMsg);
 	// Avatar helpers (conneciton related)
 	void resetAvatarForMatchingUsers(KviRegisteredUser * u);
 	// this should be protected at least
-	void avatarChangedUpdateWindows(const QString &nick,const QString &textLine);
-	void avatarChanged(KviAvatar * avatar,const QString &nick,const QString &user,const QString &host,const QString &textLine);
-	KviAvatar * setAvatar(const QString &nick,const QString &user,const QString &host,const QString &szLocalPath,const QString &szName);
-	void checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const QString &user,const QString &host);
+	void avatarChangedUpdateWindows(const QString & nick, const QString & textLine);
+	void avatarChanged(KviAvatar * avatar, const QString & nick, const QString & user, const QString & host, const QString & textLine);
+	KviAvatar * setAvatar(const QString & nick, const QString & user, const QString & host, const QString & szLocalPath, const QString & szName);
+	void checkDefaultAvatar(KviIrcUserEntry * e, const QString & nick, const QString & user, const QString & host);
 	void setAvatarFromOptions();
 
 	// This returns the default avatar for the current KVIrc user
@@ -179,15 +181,15 @@ public:
 	// when no longer needed.
 	KviAvatar * defaultAvatarFromOptions();
 
-	void terminateConnectionRequest(bool bForce = false,const char * quitMsg = 0);
+	void terminateConnectionRequest(bool bForce = false, const char * quitMsg = 0);
 
 	// Status string (usermode + nick) (connection related too)
-	inline const QString & statusString(){ return m_szStatusString; };
+	inline const QString & statusString() { return m_szStatusString; };
 
 	KviWindow * activeWindow();
 	// User db, connection related
-	void completeChannel(const QString &word,KviPointerList<QString> * matches);
-	void completeServer(const QString &word,KviPointerList<QString> * matches);
+	void completeChannel(const QString & word, KviPointerList<QString> * matches);
+	void completeServer(const QString & word, KviPointerList<QString> * matches);
 	void connectionAttached();
 	void connectionDetached();
 
@@ -210,14 +212,14 @@ public:
 	* \param szChan The channel name
 	* \return bool
 	*/
-	bool isHighlightedChannel(const QString & szChan) { return m_pTmpHighLightedChannels->contains(szChan,Qt::CaseInsensitive); };
+	bool isHighlightedChannel(const QString & szChan) { return m_pTmpHighLightedChannels->contains(szChan, Qt::CaseInsensitive); };
 
 public slots:
 	void updateUri();
 	void executeInternalCommand(int index);
 	void recentUrlsChanged();
 protected slots:
-	void ircUriChanged(const QString & );
+	void ircUriChanged(const QString &);
 	void toggleNotifyView();
 	void textViewRightClicked();
 };

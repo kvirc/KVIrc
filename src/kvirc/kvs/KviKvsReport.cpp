@@ -31,8 +31,8 @@
 #include "KviDebugWindow.h"
 #include "KviOptions.h"
 
-KviKvsReport::KviKvsReport(Type t,const QString &szContext,const QString &szMessage,const QString &szLocation,KviWindow * pWindow)
-: m_eType(t), m_szContext(szContext), m_szMessage(szMessage), m_szLocation(szLocation), m_pWindow(pWindow)
+KviKvsReport::KviKvsReport(Type t, const QString & szContext, const QString & szMessage, const QString & szLocation, KviWindow * pWindow)
+    : m_eType(t), m_szContext(szContext), m_szMessage(szMessage), m_szLocation(szLocation), m_pWindow(pWindow)
 {
 	m_pCallStack = 0;
 	m_pCodeListing = 0;
@@ -40,11 +40,13 @@ KviKvsReport::KviKvsReport(Type t,const QString &szContext,const QString &szMess
 
 KviKvsReport::~KviKvsReport()
 {
-	if(m_pCallStack)delete m_pCallStack;
-	if(m_pCodeListing)delete m_pCodeListing;
+	if(m_pCallStack)
+		delete m_pCallStack;
+	if(m_pCodeListing)
+		delete m_pCodeListing;
 }
 
-void KviKvsReport::findLineAndCol(const QChar * pBegin,const QChar * pPoint,int &iLine,int &iCol)
+void KviKvsReport::findLineAndCol(const QChar * pBegin, const QChar * pPoint, int & iLine, int & iCol)
 {
 	iLine = 1;
 
@@ -59,7 +61,9 @@ void KviKvsReport::findLineAndCol(const QChar * pBegin,const QChar * pPoint,int 
 			pBegin++;
 			pLineBegin = pBegin;
 			iLine++;
-		} else {
+		}
+		else
+		{
 			pBegin++;
 		}
 		us = pBegin->unicode();
@@ -68,9 +72,7 @@ void KviKvsReport::findLineAndCol(const QChar * pBegin,const QChar * pPoint,int 
 	iCol = (pBegin - pLineBegin) + 1;
 }
 
-
-
-void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoint,int &iLine,int &iCol,KviPointerList<QString> * pListing)
+void KviKvsReport::findLineColAndListing(const QChar * pBegin, const QChar * pPoint, int & iLine, int & iCol, KviPointerList<QString> * pListing)
 {
 	iLine = 1;
 
@@ -88,7 +90,9 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 			pBegin++;
 			pLineBegin = pBegin;
 			iLine++;
-		} else {
+		}
+		else
+		{
 			pBegin++;
 		}
 		us = pBegin->unicode();
@@ -107,8 +111,8 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 		}
 
 		QString * pListingStr = new QString(QString("%1 ").arg(iLine - 1));
-		*pListingStr += QString(pPrevLine,pLineBegin - pPrevLine);
-		pListingStr->replace("\n","");
+		*pListingStr += QString(pPrevLine, pLineBegin - pPrevLine);
+		pListingStr->replace("\n", "");
 		pListing->append(pListingStr);
 	}
 
@@ -121,12 +125,13 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 		pBegin++;
 		us = pBegin->unicode();
 	}
-	if(us)pBegin++;
+	if(us)
+		pBegin++;
 
 	{
 		QString * pListingStr = new QString(QString("%1%2 ").arg(QChar(KviControlCodes::Bold)).arg(iLine));
-		*pListingStr += QString(pLineBegin,pBegin - pLineBegin);
-		pListingStr->replace("\n","");
+		*pListingStr += QString(pLineBegin, pBegin - pLineBegin);
+		pListingStr->replace("\n", "");
 		pListing->append(pListingStr);
 	}
 
@@ -141,12 +146,13 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 			pBegin++;
 			us = pBegin->unicode();
 		}
-		if(us)pBegin++;
+		if(us)
+			pBegin++;
 
 		{
 			QString * pListingStr = new QString(QString("%1 ").arg(iLine + 1));
-			*pListingStr += QString(pLineBegin,pBegin - pLineBegin);
-			pListingStr->replace("\n","");
+			*pListingStr += QString(pLineBegin, pBegin - pLineBegin);
+			pListingStr->replace("\n", "");
 			pListing->append(pListingStr);
 		}
 
@@ -162,7 +168,7 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin,const QChar * pPoi
 ////////////////////////////////////////////////////////////////////////////////
 // ERROR REPORTING
 
-void KviKvsReport::report(KviKvsReport * r,KviWindow * pOutput)
+void KviKvsReport::report(KviKvsReport * r, KviWindow * pOutput)
 {
 	if(!pOutput)
 		return; // ?
@@ -172,70 +178,72 @@ void KviKvsReport::report(KviKvsReport * r,KviWindow * pOutput)
 		if(KVI_OPTION_BOOL(KviOption_boolScriptErrorsToDebugWindow))
 		{
 			// rethrow to the debug window
-			report(r,KviDebugWindow::getInstance());
+			report(r, KviDebugWindow::getInstance());
 		} // else window lost: unrecoverable
 		return;
 	}
 
 	// make sure that the output window still exists!
 
-	int out=0;
+	int out = 0;
 
 	switch(r->type())
 	{
 		case KviKvsReport::ParserWarning:
 			out = KVI_OUT_PARSERWARNING;
-			pOutput->output(out,__tr2qs_ctx("[KVS]%c Warning: %Q","kvs"),KviControlCodes::Bold,&(r->message()));
-		break;
+			pOutput->output(out, __tr2qs_ctx("[KVS]%c Warning: %Q", "kvs"), KviControlCodes::Bold, &(r->message()));
+			break;
 		case KviKvsReport::ParserError:
 			out = KVI_OUT_PARSERERROR;
-			pOutput->output(out,__tr2qs_ctx("[KVS]%c Compilation error: %Q","kvs"),KviControlCodes::Bold,&(r->message()));
-		break;
+			pOutput->output(out, __tr2qs_ctx("[KVS]%c Compilation error: %Q", "kvs"), KviControlCodes::Bold, &(r->message()));
+			break;
 		case KviKvsReport::RunTimeWarning:
 			out = KVI_OUT_PARSERWARNING;
-			pOutput->output(out,__tr2qs_ctx("[KVS]%c Warning: %Q","kvs"),KviControlCodes::Bold,&(r->message()));
-		break;
+			pOutput->output(out, __tr2qs_ctx("[KVS]%c Warning: %Q", "kvs"), KviControlCodes::Bold, &(r->message()));
+			break;
 		case KviKvsReport::RunTimeError:
 			out = KVI_OUT_PARSERERROR;
-			pOutput->output(out,__tr2qs_ctx("[KVS]%c Runtime error: %Q","kvs"),KviControlCodes::Bold,&(r->message()));
-		break;
+			pOutput->output(out, __tr2qs_ctx("[KVS]%c Runtime error: %Q", "kvs"), KviControlCodes::Bold, &(r->message()));
+			break;
 	}
 
 	if(r->location().isEmpty())
-		pOutput->output(out,__tr2qs_ctx("[KVS]   In script context \"%Q\"","kvs"),&(r->context()));
+		pOutput->output(out, __tr2qs_ctx("[KVS]   In script context \"%Q\"", "kvs"), &(r->context()));
 	else
-		pOutput->output(out,__tr2qs_ctx("[KVS]   In script context \"%Q\", %Q","kvs"),&(r->context()),&(r->location()));
+		pOutput->output(out, __tr2qs_ctx("[KVS]   In script context \"%Q\", %Q", "kvs"), &(r->context()), &(r->location()));
 
 	if(pOutput == KviDebugWindow::instance())
 	{
 		KviPointerList<QString> * l;
-		if( (l = r->codeListing()) )
+		if((l = r->codeListing()))
 		{
-			pOutput->outputNoFmt(out,__tr2qs_ctx("[KVS] Code listing:","kvs"));
-			for(QString * s = l->first();s;s = l->next())
-				pOutput->output(out,"[KVS]   %Q",s);
+			pOutput->outputNoFmt(out, __tr2qs_ctx("[KVS] Code listing:", "kvs"));
+			for(QString * s = l->first(); s; s = l->next())
+				pOutput->output(out, "[KVS]   %Q", s);
 		}
 
-		pOutput->output(out,__tr2qs_ctx("[KVS] Window:","kvs"));
-			if(g_pApp->windowExists(r->window()))
-				pOutput->output(out,"[KVS]   %Q [id: %u]",&(r->window()->windowName()),r->window()->numericId());
-			else
-				pOutput->output(out,__tr2qs_ctx("[KVS]   Destroyed window with pointer %x","kvs"),r->window());
+		pOutput->output(out, __tr2qs_ctx("[KVS] Window:", "kvs"));
+		if(g_pApp->windowExists(r->window()))
+			pOutput->output(out, "[KVS]   %Q [id: %u]", &(r->window()->windowName()), r->window()->numericId());
+		else
+			pOutput->output(out, __tr2qs_ctx("[KVS]   Destroyed window with pointer %x", "kvs"), r->window());
 
-		if( (l = r->callStack()) )
+		if((l = r->callStack()))
 		{
-			pOutput->outputNoFmt(out,__tr2qs_ctx("[KVS] Call stack:","kvs"));
-			for(QString * s = l->first();s;s = l->next())
-				pOutput->output(out,"[KVS]   %Q",s);
+			pOutput->outputNoFmt(out, __tr2qs_ctx("[KVS] Call stack:", "kvs"));
+			for(QString * s = l->first(); s; s = l->next())
+				pOutput->output(out, "[KVS]   %Q", s);
 		}
 
-		pOutput->outputNoFmt(out,"[KVS]");
-	} else {
+		pOutput->outputNoFmt(out, "[KVS]");
+	}
+	else
+	{
 		if(KVI_OPTION_BOOL(KviOption_boolScriptErrorsToDebugWindow))
 		{
 			// rethrow to the debug window
 			if(pOutput != KviDebugWindow::getInstance())
-				report(r,KviDebugWindow::getInstance());
+				report(r, KviDebugWindow::getInstance());
 		}
 	}
 }

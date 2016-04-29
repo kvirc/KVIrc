@@ -37,7 +37,7 @@ KviKvsTreeNode * KviKvsParser::parseComment()
 	{
 		case '#': // bash style
 			skipToNextLine();
-		break;
+			break;
 		case '/':
 			KVSP_skipChar;
 			switch(KVSP_curCharUnicode)
@@ -45,7 +45,7 @@ KviKvsTreeNode * KviKvsParser::parseComment()
 				case '/':
 					// c++ style
 					skipToNextLine();
-				break;
+					break;
 				case '*':
 				{
 					const QChar * pBegin = KVSP_curCharPointer;
@@ -56,10 +56,10 @@ KviKvsTreeNode * KviKvsParser::parseComment()
 						switch(KVSP_curCharUnicode)
 						{
 							case 0:
-								warning(pBegin,__tr2qs_ctx("Unterminated c-style multi-line comment","kvs"));
-								error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in multi-line comment","kvs"));
+								warning(pBegin, __tr2qs_ctx("Unterminated c-style multi-line comment", "kvs"));
+								error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in multi-line comment", "kvs"));
 								return 0;
-							break;
+								break;
 							case '*':
 								while(KVSP_curCharUnicode == '*')
 									KVSP_skipChar;
@@ -68,22 +68,22 @@ KviKvsTreeNode * KviKvsParser::parseComment()
 									KVSP_skipChar;
 									return 0;
 								}
-							break;
+								break;
 						}
 						KVSP_skipChar;
 					}
 				}
 				break;
 				default:
-					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (Unicode %x) after a slash (is it a typo or a malformed comment begin?)","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+					error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected character '%q' (Unicode %x) after a slash (is it a typo or a malformed comment begin?)", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 					return 0;
-				break;
+					break;
 			}
-		break;
+			break;
 		default:
 			// shouldn't be here :/
 			KVSP_ASSERT(false);
-		break;
+			break;
 	}
 	return 0;
 }

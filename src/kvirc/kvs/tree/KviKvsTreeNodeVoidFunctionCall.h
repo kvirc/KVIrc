@@ -34,12 +34,13 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeVoidFunctionCall : public KviKvsTreeNodeInstruction
 {
 public:
-	KviKvsTreeNodeVoidFunctionCall(const QChar * pLocation,KviKvsTreeNodeFunctionCall * r);
+	KviKvsTreeNodeVoidFunctionCall(const QChar * pLocation, KviKvsTreeNodeFunctionCall * r);
 	~KviKvsTreeNodeVoidFunctionCall();
+
 protected:
 	KviKvsTreeNodeFunctionCall * m_pFunctionCall; // may be scope operator or direct function call
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };

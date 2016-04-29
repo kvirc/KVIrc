@@ -36,18 +36,17 @@ class KviKvsVariant;
 
 namespace KviSSLMaster
 {
-	extern KVIRC_API void printSSLCipherInfo(KviWindow * wnd,const char * description,KviSSLCipherInfo * c);
-	extern KVIRC_API void printSSLCertificate(KviWindow * wnd,const char * description,KviSSLCertificate * c);
+	extern KVIRC_API void printSSLCipherInfo(KviWindow * wnd, const char * description, KviSSLCipherInfo * c);
+	extern KVIRC_API void printSSLCertificate(KviWindow * wnd, const char * description, KviSSLCertificate * c);
 
-	extern KVIRC_API void printSSLConnectionInfo(KviWindow * wnd,KviSSL * s);
+	extern KVIRC_API void printSSLConnectionInfo(KviWindow * wnd, KviSSL * s);
 
-	extern KVIRC_API KviSSL * allocSSL(KviWindow * wnd,kvi_socket_t sock,KviSSL::Method m,const char * contextString = 0);
+	extern KVIRC_API KviSSL * allocSSL(KviWindow * wnd, kvi_socket_t sock, KviSSL::Method m, const char * contextString = 0);
 	extern KVIRC_API void freeSSL(KviSSL * s);
 
 	extern KVIRC_API bool getSSLCertInfo(KviSSLCertificate * pCert, QString szQuery, QString szOptionalParam, KviKvsVariant * pRetBuffer);
 }
 
 #endif
-
 
 #endif //_KVI_SSLMASTER_H_

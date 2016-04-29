@@ -46,13 +46,15 @@ class KVIRC_API KviModeEditor : public KviWindowToolWidget
 {
 	Q_OBJECT
 public:
-	KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char * name,KviChannelWindow * pChan);
+	KviModeEditor(QWidget * par, KviWindowToolPageButton * button, const char * name, KviChannelWindow * pChan);
 	~KviModeEditor();
+
 protected: // fields
-	KviChannelWindow                * m_pChannel;
-	QPushButton               * m_pButton;
-	QMap<char, QCheckBox *>     m_pCheckBoxes;
-	QMap<char, QLineEdit *>     m_pLineEdits;
+	KviChannelWindow * m_pChannel;
+	QPushButton * m_pButton;
+	QMap<char, QCheckBox *> m_pCheckBoxes;
+	QMap<char, QLineEdit *> m_pLineEdits;
+
 protected:
 	const QString * getModeDescription(char cMode);
 	bool modeNeedsParameterOnlyWhenSet(char cMode);

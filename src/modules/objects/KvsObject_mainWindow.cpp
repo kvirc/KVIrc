@@ -50,50 +50,49 @@
 		Sets the central widget for the main window to <wid>.
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_mainWindow,"mainwindow","widget")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_mainWindow,setCentralWidget)
+KVSO_BEGIN_REGISTERCLASS(KvsObject_mainWindow, "mainwindow", "widget")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_mainWindow, setCentralWidget)
 
 KVSO_END_REGISTERCLASS(KvsObject_mainWindow)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_mainWindow,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_mainWindow, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_mainWindow)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_mainWindow)
 
 KVSO_END_CONSTRUCTOR(KvsObject_mainWindow)
 
-bool KvsObject_mainWindow::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_mainWindow::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	setObject(new KviTalMainWindow(parentScriptWidget(), getName().toUtf8().data()), true);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(mainWindow,setCentralWidget)
+KVSO_CLASS_FUNCTION(mainWindow, setCentralWidget)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
 	KVSO_PARAMETERS_END(c)
-	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!pObject)
+	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	if(!pObject)
 	{
-		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
+		c->warning(__tr2qs_ctx("Widget parameter is not an object", "objects"));
 		return true;
 	}
-	if (!pObject->object())
+	if(!pObject->object())
 	{
-		c->warning(__tr2qs_ctx("Widget parameter is not a valid object","objects"));
+		c->warning(__tr2qs_ctx("Widget parameter is not a valid object", "objects"));
 		return true;
 	}
 	if(!pObject->inheritsClass("widget"))
 	{
-		c->warning(__tr2qs_ctx("Widget object required","objects"));
+		c->warning(__tr2qs_ctx("Widget object required", "objects"));
 		return true;
 	}
-	((KviTalMainWindow *)widget())->setCentralWidget(((QWidget  *)(pObject->object())));
+	((KviTalMainWindow *)widget())->setCentralWidget(((QWidget *)(pObject->object())));
 	return true;
 }

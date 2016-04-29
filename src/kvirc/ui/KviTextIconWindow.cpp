@@ -41,15 +41,15 @@
 #include <QScrollBar>
 
 KviTextIconWindow::KviTextIconWindow()
-: QWidget(0, Qt::Popup)
+    : QWidget(0, Qt::Popup)
 {
-	m_pOwner   = 0;
+	m_pOwner = 0;
 	m_bAltMode = false;
 
-	setFixedSize(KVI_TEXTICON_WIN_WIDTH,KVI_TEXTICON_WIN_HEIGHT);
+	setFixedSize(KVI_TEXTICON_WIN_WIDTH, KVI_TEXTICON_WIN_HEIGHT);
 
 	m_pTable = new QTableWidget(this);
-	m_pTable->setFixedSize(KVI_TEXTICON_WIN_WIDTH,KVI_TEXTICON_WIN_HEIGHT);
+	m_pTable->setFixedSize(KVI_TEXTICON_WIN_WIDTH, KVI_TEXTICON_WIN_HEIGHT);
 	m_pTable->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pTable->horizontalHeader()->hide();
 	m_pTable->verticalHeader()->hide();
@@ -61,8 +61,8 @@ KviTextIconWindow::KviTextIconWindow()
 
 	m_pTable->installEventFilter(this);
 
-	connect(g_pTextIconManager,SIGNAL(changed()),this,SLOT(fill()));
-	connect(m_pTable,SIGNAL(cellClicked( int, int )),this,SLOT(cellSelected(int, int)));
+	connect(g_pTextIconManager, SIGNAL(changed()), this, SLOT(fill()));
+	connect(m_pTable, SIGNAL(cellClicked(int, int)), this, SLOT(cellSelected(int, int)));
 }
 
 KviTextIconWindow::~KviTextIconWindow()
@@ -77,15 +77,15 @@ void KviTextIconWindow::fill()
 	m_pTable->setRowCount(0);
 
 	m_pTable->setColumnCount(KVI_TEXTICON_COLUMNS);
-	int iColWidth=((width()-24)/KVI_TEXTICON_COLUMNS);
-	for(int i=0; i<KVI_TEXTICON_COLUMNS;i++)
-		m_pTable->setColumnWidth(i,iColWidth);
+	int iColWidth = ((width() - 24) / KVI_TEXTICON_COLUMNS);
+	for(int i = 0; i < KVI_TEXTICON_COLUMNS; i++)
+		m_pTable->setColumnWidth(i, iColWidth);
 
-	KviPointerHashTable<QString,KviTextIcon> * pDict = g_pTextIconManager->textIconDict();
-	KviPointerHashTableIterator<QString,KviTextIcon> it(*pDict);
+	KviPointerHashTable<QString, KviTextIcon> * pDict = g_pTextIconManager->textIconDict();
+	KviPointerHashTableIterator<QString, KviTextIcon> it(*pDict);
 
 	int iCol = KVI_TEXTICON_COLUMNS;
-	QLabel* newItem;
+	QLabel * newItem;
 	while(KviTextIcon * pIcon = it.current())
 	{
 		QPixmap * pPix = pIcon->pixmap();
@@ -97,16 +97,16 @@ void KviTextIconWindow::fill()
 			newItem->setAlignment(Qt::AlignCenter);
 			if(iCol == KVI_TEXTICON_COLUMNS)
 			{
-				iCol=0;
+				iCol = 0;
 				m_pTable->insertRow(m_pTable->rowCount());
 			}
-			m_pTable->setCellWidget(m_pTable->rowCount()-1,iCol,newItem);
+			m_pTable->setCellWidget(m_pTable->rowCount() - 1, iCol, newItem);
 			iCol++;
 		}
 		++it;
 	}
 
-	m_pTable->sortItems(0,Qt::AscendingOrder);
+	m_pTable->sortItems(0, Qt::AscendingOrder);
 	m_pTable->setCurrentItem(0);
 }
 
@@ -115,17 +115,17 @@ void KviTextIconWindow::popup(QWidget * pOwner, bool bAltMode)
 	m_bAltMode = bAltMode;
 
 	if(m_pOwner)
-		disconnect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
+		disconnect(m_pOwner, SIGNAL(destroyed()), this, SLOT(ownerDead()));
 
 	m_pOwner = pOwner;
-	connect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
+	connect(m_pOwner, SIGNAL(destroyed()), this, SLOT(ownerDead()));
 
 	show();
 
 	autoSelectBestMatchBasedOnOwnerText();
 }
 
-bool KviTextIconWindow::eventFilter(QObject * o,QEvent *e)
+bool KviTextIconWindow::eventFilter(QObject * o, QEvent * e)
 {
 	if(o != m_pTable)
 		return false;
@@ -146,19 +146,19 @@ bool KviTextIconWindow::eventFilter(QObject * o,QEvent *e)
 			case Qt::Key_Up:
 			case Qt::Key_Down:
 				return false; // let it handle arrow navigation
-			break;
+				break;
 			case Qt::Key_Space:
 			case Qt::Key_Return:
 				cellSelected(m_pTable->currentRow(), m_pTable->currentColumn());
 				return false;
-			break;
+				break;
 			case Qt::Key_Tab:
 				//avoid the text edit field to move to the icon cells using tab
 				return false;
-			break;
+				break;
 			case Qt::Key_Escape:
 				doHide();
-			break;
+				break;
 			default:
 				// redirect to owner
 				if(m_pOwner->inherits("KviInputEditor"))
@@ -170,7 +170,7 @@ bool KviTextIconWindow::eventFilter(QObject * o,QEvent *e)
 					autoSelectBestMatchBasedOnOwnerText();
 					return true;
 				}
-			break;
+				break;
 		}
 	}
 
@@ -187,7 +187,7 @@ void KviTextIconWindow::autoSelectBestMatchBasedOnOwnerText()
 	if(idx < 0)
 		return;
 
-	QString szIco = szText.mid(idx+1);
+	QString szIco = szText.mid(idx + 1);
 
 	if(szIco.isEmpty())
 		return;
@@ -199,11 +199,11 @@ void KviTextIconWindow::autoSelectBestMatchBasedOnOwnerText()
 	int iBestC = -1;
 	int iBestLen = 999999;
 
-	for(int r=0;r<iRows;r++)
+	for(int r = 0; r < iRows; r++)
 	{
-		for(int c=0;c<iCols;c++)
+		for(int c = 0; c < iCols; c++)
 		{
-			QWidget * it = m_pTable->cellWidget(r,c);
+			QWidget * it = m_pTable->cellWidget(r, c);
 			if(!it)
 				continue;
 			QString txt = it->toolTip();
@@ -221,7 +221,7 @@ void KviTextIconWindow::autoSelectBestMatchBasedOnOwnerText()
 	}
 
 	if(iBestR > -1)
-		m_pTable->setCurrentCell(iBestR,iBestC);
+		m_pTable->setCurrentCell(iBestR, iBestC);
 }
 
 void KviTextIconWindow::ownerDead()
@@ -256,7 +256,7 @@ void KviTextIconWindow::cellSelected(int row, int column)
 	{
 		szItem.append(' ');
 		QString szTmp = ((QLineEdit *)m_pOwner)->text();
-		szTmp.insert(((QLineEdit *)m_pOwner)->cursorPosition(),szItem);
+		szTmp.insert(((QLineEdit *)m_pOwner)->cursorPosition(), szItem);
 		((QLineEdit *)m_pOwner)->setText(szTmp);
 		((QLineEdit *)m_pOwner)->setCursorPosition(((QLineEdit *)m_pOwner)->cursorPosition() + szItem.length());
 	}

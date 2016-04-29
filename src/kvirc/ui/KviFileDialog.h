@@ -31,7 +31,7 @@
 */
 
 #ifdef Unsorted
-	#undef Unsorted
+#undef Unsorted
 #endif
 
 #include "kvi_settings.h"
@@ -63,6 +63,7 @@ public:
 	* \brief Destroys the file dialog object
 	*/
 	~KviFileDialog();
+
 public:
 	/**
 	* \param szBuffer The buffer where to store the data

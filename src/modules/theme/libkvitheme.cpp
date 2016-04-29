@@ -45,8 +45,7 @@
 #include <QFileInfo>
 #include <QMessageBox>
 
-QRect g_rectManagementDialogGeometry(0,0,0,0);
-
+QRect g_rectManagementDialogGeometry(0, 0, 0, 0);
 
 /*
 	@doc: theme.install
@@ -67,13 +66,13 @@ static bool theme_kvs_cmd_install(KviKvsModuleCommandCall * c)
 	QString szThemePackFile;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("package_path",KVS_PT_STRING,0,szThemePackFile)
+	KVSM_PARAMETER("package_path", KVS_PT_STRING, 0, szThemePackFile)
 	KVSM_PARAMETERS_END(c)
 
 	QString szError;
-	if(!ThemeFunctions::installThemePackage(szThemePackFile,szError))
+	if(!ThemeFunctions::installThemePackage(szThemePackFile, szError))
 	{
-		c->error(__tr2qs_ctx("Error installing theme package: %Q","theme"),&szError);
+		c->error(__tr2qs_ctx("Error installing theme package: %Q", "theme"), &szError);
 		return false;
 	}
 
@@ -113,23 +112,23 @@ static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
 	QString szTheme;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("theme",KVS_PT_STRING,0,szTheme)
+	KVSM_PARAMETER("theme", KVS_PT_STRING, 0, szTheme)
 	KVSM_PARAMETERS_END(c)
 
 	KviThemeInfo out;
 	KviThemeInfo::Location eLocation = KviThemeInfo::Auto;
 
-	if(c->switches()->find('b',"builtin"))
+	if(c->switches()->find('b', "builtin"))
 		eLocation = KviThemeInfo::Builtin;
-	else if(c->switches()->find('e',"external"))
+	else if(c->switches()->find('e', "external"))
 		eLocation = KviThemeInfo::External;
-	else if(c->switches()->find('u',"user"))
+	else if(c->switches()->find('u', "user"))
 		eLocation = KviThemeInfo::User;
 
-	if(!KviTheme::apply(szTheme,eLocation,out))
+	if(!KviTheme::apply(szTheme, eLocation, out))
 	{
 		QString szErr = out.lastError();
-		c->error(__tr2qs_ctx("Failed to apply theme: %Q","theme"),&szErr);
+		c->error(__tr2qs_ctx("Failed to apply theme: %Q", "theme"), &szErr);
 		return false;
 	}
 
@@ -152,23 +151,23 @@ static bool theme_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 	QString szTheme;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("theme",KVS_PT_STRING,0,szTheme)
+	KVSM_PARAMETER("theme", KVS_PT_STRING, 0, szTheme)
 	KVSM_PARAMETERS_END(c)
 
-	KviKvsHash *pHash = new KviKvsHash();
+	KviKvsHash * pHash = new KviKvsHash();
 	c->returnValue()->setHash(pHash);
 
 	KviThemeInfo theme;
-	if(!theme.load(szTheme,KviThemeInfo::Auto))
+	if(!theme.load(szTheme, KviThemeInfo::Auto))
 	{
-		c->warning(__tr2qs_ctx("The theme package '%Q' doesn't exist","theme"),&szTheme);
+		c->warning(__tr2qs_ctx("The theme package '%Q' doesn't exist", "theme"), &szTheme);
 		return true;
 	}
 
-	pHash->set("name",new KviKvsVariant(theme.name()));
-	pHash->set("version",new KviKvsVariant(theme.version()));
-	pHash->set("author",new KviKvsVariant(theme.author()));
-	pHash->set("description",new KviKvsVariant(theme.description()));
+	pHash->set("name", new KviKvsVariant(theme.name()));
+	pHash->set("version", new KviKvsVariant(theme.version()));
+	pHash->set("author", new KviKvsVariant(theme.author()));
+	pHash->set("description", new KviKvsVariant(theme.description()));
 	return true;
 }
 
@@ -193,7 +192,7 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 	QString szFileName;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("file_name_path",KVS_PT_STRING,KVS_PF_OPTIONAL,szFileName)
+	KVSM_PARAMETER("file_name_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
 	KVSM_PARAMETERS_END(c)
 
 	KviFileUtils::adjustFilePath(szFileName);
@@ -202,15 +201,14 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 	c->enterBlockingSection();
 
 	bool bResult = KviFileDialog::askForSaveFileName(
-			szTmp,
-			__tr2qs_ctx("Enter a Filename - KVIrc","theme"), //dialog header title
-			szFileName,
-			"*.png",
-			false,
-			false,
-			true,
-			g_pMainWindow
-		);
+	    szTmp,
+	    __tr2qs_ctx("Enter a Filename - KVIrc", "theme"), //dialog header title
+	    szFileName,
+	    "*.png",
+	    false,
+	    false,
+	    true,
+	    g_pMainWindow);
 
 	if(!c->leaveBlockingSection())
 		return false; // need to stop immediately
@@ -224,13 +222,13 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 		return true; // done
 
 	KviFileUtils::adjustFilePath(szFileName);
-	if(QFileInfo(szFileName).suffix()!="png")
-		szFileName+=".png";
+	if(QFileInfo(szFileName).suffix() != "png")
+		szFileName += ".png";
 
 	QString szError;
 	if(!ThemeFunctions::makeKVIrcScreenshot(szFileName))
 	{
-		c->error(__tr2qs_ctx("Error capturing and saving screenshot!","theme"));
+		c->error(__tr2qs_ctx("Error capturing and saving screenshot!", "theme"));
 		return false;
 	}
 
@@ -253,9 +251,9 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 		otherwise it is opened as part of the current frame window.[br]
 */
 
-static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall *c)
+static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 {
-	ThemeManagementDialog::display(c->hasSwitch('t',"toplevel"));
+	ThemeManagementDialog::display(c->hasSwitch('t', "toplevel"));
 	return true;
 }
 
@@ -284,31 +282,31 @@ static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall *c)
 */
 static bool theme_kvs_cmd_pack(KviKvsModuleCommandCall * c)
 {
-	QString szPath,szName,szVersion,szDescription,szAuthor,szImage;
+	QString szPath, szName, szVersion, szDescription, szAuthor, szImage;
 
 	KviKvsArrayCast aCast;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("package_path",KVS_PT_NONEMPTYSTRING,0,szPath)
-		KVSM_PARAMETER("package_name",KVS_PT_NONEMPTYSTRING,0,szName)
-		KVSM_PARAMETER("package_version",KVS_PT_NONEMPTYSTRING,0,szVersion)
-		KVSM_PARAMETER("package_description",KVS_PT_STRING,0,szDescription)
-		KVSM_PARAMETER("package_author",KVS_PT_NONEMPTYSTRING,0,szAuthor)
-		KVSM_PARAMETER("package_image",KVS_PT_STRING,0,szImage)
-		KVSM_PARAMETER("theme",KVS_PT_ARRAYCAST,0,aCast)
+	KVSM_PARAMETER("package_path", KVS_PT_NONEMPTYSTRING, 0, szPath)
+	KVSM_PARAMETER("package_name", KVS_PT_NONEMPTYSTRING, 0, szName)
+	KVSM_PARAMETER("package_version", KVS_PT_NONEMPTYSTRING, 0, szVersion)
+	KVSM_PARAMETER("package_description", KVS_PT_STRING, 0, szDescription)
+	KVSM_PARAMETER("package_author", KVS_PT_NONEMPTYSTRING, 0, szAuthor)
+	KVSM_PARAMETER("package_image", KVS_PT_STRING, 0, szImage)
+	KVSM_PARAMETER("theme", KVS_PT_ARRAYCAST, 0, aCast)
 	KVSM_PARAMETERS_END(c)
 
 	KviKvsArray * pArray = aCast.array();
 	if((!pArray) || (pArray->size() < 1))
 	{
-		c->error(__tr2qs_ctx("No themes specified","theme"));
+		c->error(__tr2qs_ctx("No themes specified", "theme"));
 		return false;
 	}
 
 	kvs_uint_t s = pArray->size();
 	QStringList lThemeList;
 
-	for(kvs_uint_t i=0;i<s;i++)
+	for(kvs_uint_t i = 0; i < s; i++)
 	{
 		KviKvsVariant * v = pArray->at(i);
 		if(!v)
@@ -323,14 +321,13 @@ static bool theme_kvs_cmd_pack(KviKvsModuleCommandCall * c)
 	KviPointerList<KviThemeInfo> lThemeInfoList;
 	lThemeInfoList.setAutoDelete(true);
 
-
-	Q_FOREACH(QString szTheme,lThemeList)
+	Q_FOREACH(QString szTheme, lThemeList)
 	{
 		KviThemeInfo * pInfo = new KviThemeInfo();
-		if(!pInfo->load(szTheme,KviThemeInfo::External))
+		if(!pInfo->load(szTheme, KviThemeInfo::External))
 		{
 			QString szErr = pInfo->lastError();
-			c->error(__tr2qs_ctx("Failed to load theme from directory %Q: %Q","theme"),&szTheme,&szErr);
+			c->error(__tr2qs_ctx("Failed to load theme from directory %Q: %Q", "theme"), &szTheme, &szErr);
 			delete pInfo;
 			return false;
 		}
@@ -340,56 +337,54 @@ static bool theme_kvs_cmd_pack(KviKvsModuleCommandCall * c)
 
 	if(lThemeInfoList.isEmpty())
 	{
-		c->error(__tr2qs_ctx("No themes specified: refusing to create an empty theme package","theme"));
+		c->error(__tr2qs_ctx("No themes specified: refusing to create an empty theme package", "theme"));
 		return false;
 	}
 
 	QString szError;
 
 	if(
-			ThemeFunctions::packageThemes(
-					szPath,
-					szName,
-					szVersion,
-					szDescription,
-					szAuthor,
-					szImage,
-					lThemeInfoList,
-					szError
-				)
-		)
+	    ThemeFunctions::packageThemes(
+	        szPath,
+	        szName,
+	        szVersion,
+	        szDescription,
+	        szAuthor,
+	        szImage,
+	        lThemeInfoList,
+	        szError))
 		return true;
 
 	c->error(szError);
 	return false;
 }
 
-static bool theme_module_init(KviModule *m)
+static bool theme_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"dialog",theme_kvs_cmd_dialog);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"install",theme_kvs_cmd_install);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"apply",theme_kvs_cmd_apply);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"screenshot",theme_kvs_cmd_screenshot);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"pack",theme_kvs_cmd_pack);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "dialog", theme_kvs_cmd_dialog);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "install", theme_kvs_cmd_install);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "apply", theme_kvs_cmd_apply);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "screenshot", theme_kvs_cmd_screenshot);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "pack", theme_kvs_cmd_pack);
 
-	KVSM_REGISTER_FUNCTION(m,"info",theme_kvs_fnc_info);
+	KVSM_REGISTER_FUNCTION(m, "info", theme_kvs_fnc_info);
 
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);
-	KviConfigurationFile cfg(szBuf,KviConfigurationFile::Read);
-	g_rectManagementDialogGeometry = cfg.readRectEntry("EditorGeometry",QRect(10,10,390,440));
+	KviConfigurationFile cfg(szBuf, KviConfigurationFile::Read);
+	g_rectManagementDialogGeometry = cfg.readRectEntry("EditorGeometry", QRect(10, 10, 390, 440));
 
 	return true;
 }
 
-static bool theme_module_cleanup(KviModule *m)
+static bool theme_module_cleanup(KviModule * m)
 {
 	ThemeManagementDialog::cleanup();
 
 	QString szBuf;
 	m->getDefaultConfigFileName(szBuf);
-	KviConfigurationFile cfg(szBuf,KviConfigurationFile::Write);
-	cfg.writeEntry("EditorGeometry",g_rectManagementDialogGeometry);
+	KviConfigurationFile cfg(szBuf, KviConfigurationFile::Write);
+	cfg.writeEntry("EditorGeometry", g_rectManagementDialogGeometry);
 
 	return true;
 }
@@ -399,15 +394,13 @@ static bool theme_module_can_unload(KviModule *)
 	return (!ThemeManagementDialog::instance());
 }
 
-
 KVIRC_MODULE(
-	"Theme",                                                      // module name
-	"4.0.0",                                                        // module version
-	"Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Theme management functions",
-	theme_module_init,
-	theme_module_can_unload,
-	0,
-	theme_module_cleanup,
-	"theme"
-)
+    "Theme",                                                        // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Theme management functions",
+    theme_module_init,
+    theme_module_can_unload,
+    0,
+    theme_module_cleanup,
+    "theme")

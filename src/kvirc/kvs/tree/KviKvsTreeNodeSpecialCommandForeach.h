@@ -24,7 +24,6 @@
 //
 //=============================================================================
 
-
 #include "kvi_settings.h"
 #include "KviQString.h"
 #include "KviKvsTreeNodeSpecialCommand.h"
@@ -37,17 +36,17 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeSpecialCommandForeach : public KviKvsTreeNodeSpecialCommand
 {
 public:
-	KviKvsTreeNodeSpecialCommandForeach(const QChar * pLocation,KviKvsTreeNodeData * pVar,KviKvsTreeNodeDataList * pArgs,KviKvsTreeNodeInstruction * pLoop);
+	KviKvsTreeNodeSpecialCommandForeach(const QChar * pLocation, KviKvsTreeNodeData * pVar, KviKvsTreeNodeDataList * pArgs, KviKvsTreeNodeInstruction * pLoop);
 	~KviKvsTreeNodeSpecialCommandForeach();
+
 private:
-	KviKvsTreeNodeData        * m_pIterationVariable;  // can't be zero!
-	KviKvsTreeNodeDataList    * m_pIterationData;      // can't be zero!
-	KviKvsTreeNodeInstruction * m_pLoop;               // can't be zero!
+	KviKvsTreeNodeData * m_pIterationVariable; // can't be zero!
+	KviKvsTreeNodeDataList * m_pIterationData; // can't be zero!
+	KviKvsTreeNodeInstruction * m_pLoop;       // can't be zero!
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_SPECIALCOMMANDFOREACH_H_

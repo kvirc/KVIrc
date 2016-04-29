@@ -27,24 +27,23 @@
 #include "kvi_settings.h"
 #include "KviKvsTreeNodeData.h"
 
-
 class KviKvsRunTimeContext;
 class KviKvsVariant;
 
 class KVIRC_API KviKvsTreeNodeSingleParameterIdentifier : public KviKvsTreeNodeData
 {
 public:
-	KviKvsTreeNodeSingleParameterIdentifier(const QChar * pLocation,int iStart);
+	KviKvsTreeNodeSingleParameterIdentifier(const QChar * pLocation, int iStart);
 	~KviKvsTreeNodeSingleParameterIdentifier();
+
 protected:
 	int m_iStart; // the index of the parameter wanted (always >= 0)
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 
 	virtual bool canEvaluateToObjectReference();
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_SINGLEPARAMETERIDENTIFIER_H_

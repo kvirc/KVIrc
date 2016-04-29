@@ -30,16 +30,17 @@
 class KVIRC_API KviKvsTreeNodeStringCast : public KviKvsTreeNodeData
 {
 public:
-	KviKvsTreeNodeStringCast(const QChar * pLocation,KviKvsTreeNodeData * pChildData);
+	KviKvsTreeNodeStringCast(const QChar * pLocation, KviKvsTreeNodeData * pChildData);
 	~KviKvsTreeNodeStringCast();
+
 protected:
 	KviKvsTreeNodeData * m_pChildData;
+
 public:
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
-	virtual void contextDescription(QString &szBuffer);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
+	virtual void contextDescription(QString & szBuffer);
 
 	virtual void dump(const char * prefix);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_STRINGCAST_H_

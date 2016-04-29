@@ -32,43 +32,43 @@
 
 #include <QLayout>
 
-
 OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
-: KviOptionsWidget(parent)
+    : KviOptionsWidget(parent)
 {
 	setObjectName("tray_options_widget");
 
 	createLayout();
 
-	m_pEnable = addBoolSelector(0,0,0,0, __tr2qs_ctx("Enable tray icon","options"), KviOption_boolShowDockExtension);
+	m_pEnable = addBoolSelector(0, 0, 0, 0, __tr2qs_ctx("Enable tray icon", "options"), KviOption_boolShowDockExtension);
 #ifndef COMPILE_ON_MAC
-	m_pMinimizeInTray = addBoolSelector(0,1,0,1,__tr2qs_ctx("Minimize in tray","options"),KviOption_boolMinimizeInTray);
+	m_pMinimizeInTray = addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Minimize in tray", "options"), KviOption_boolMinimizeInTray);
 #ifdef COMPILE_KDE_SUPPORT
-	QString szTip = __tr2qs_ctx("Take into account that if you're using KDE, this won't work if " \
-		"you've set \"Keep window thumbnails\" as \"Always\" at \"Desktop Effects\" " \
-		"advanced settings.","options");
-	mergeTip(m_pMinimizeInTray,szTip);
+	QString szTip = __tr2qs_ctx("Take into account that if you're using KDE, this won't work if "
+	                            "you've set \"Keep window thumbnails\" as \"Always\" at \"Desktop Effects\" "
+	                            "advanced settings.",
+	    "options");
+	mergeTip(m_pMinimizeInTray, szTip);
 #endif
 #endif
-	m_pCloseInTray = addBoolSelector(0,2,0,2,__tr2qs_ctx("Close in tray","options"),KviOption_boolCloseInTray);
+	m_pCloseInTray = addBoolSelector(0, 2, 0, 2, __tr2qs_ctx("Close in tray", "options"), KviOption_boolCloseInTray);
 
-	m_pEnableFlashing = addBoolSelector(0,3,0,3,__tr2qs_ctx("Enable tray icon flashing","options"),KviOption_boolEnableTrayIconFlashing);
-	m_pLevelBasedNotify = addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable level-based message notification (not a message-type based)","options"),KviOption_boolUseLevelBasedTrayNotification);
+	m_pEnableFlashing = addBoolSelector(0, 3, 0, 3, __tr2qs_ctx("Enable tray icon flashing", "options"), KviOption_boolEnableTrayIconFlashing);
+	m_pLevelBasedNotify = addBoolSelector(0, 4, 0, 4, __tr2qs_ctx("Enable level-based message notification (not a message-type based)", "options"), KviOption_boolUseLevelBasedTrayNotification);
 
-	m_pLevelsGroup = addGroupBox(0,5,0,5,Qt::Horizontal,__tr2qs_ctx("Select Message Levels to Notify","options"));
+	m_pLevelsGroup = addGroupBox(0, 5, 0, 5, Qt::Horizontal, __tr2qs_ctx("Select Message Levels to Notify", "options"));
 
-	addUIntSelector(m_pLevelsGroup,__tr2qs_ctx("Minimum level for low-priority messages:","options"),
-				KviOption_uintMinTrayLowLevelMessage,
-				1,5,1,true);
+	addUIntSelector(m_pLevelsGroup, __tr2qs_ctx("Minimum level for low-priority messages:", "options"),
+	    KviOption_uintMinTrayLowLevelMessage,
+	    1, 5, 1, true);
 
-	addUIntSelector(m_pLevelsGroup,__tr2qs_ctx("Minimum level for high-priority message:","options"),
-				KviOption_uintMinTrayHighLevelMessage,
-				1,5,4,true);
+	addUIntSelector(m_pLevelsGroup, __tr2qs_ctx("Minimum level for high-priority message:", "options"),
+	    KviOption_uintMinTrayHighLevelMessage,
+	    1, 5, 4, true);
 
-	addRowSpacer(0,6,0,6);
+	addRowSpacer(0, 6, 0, 6);
 
-	connect(m_pEnable,SIGNAL(toggled(bool)),this,SLOT(setEnabled(bool)));
-	connect(m_pLevelBasedNotify,SIGNAL(toggled(bool)),this,SLOT(setEnabled(bool)));
+	connect(m_pEnable, SIGNAL(toggled(bool)), this, SLOT(setEnabled(bool)));
+	connect(m_pLevelBasedNotify, SIGNAL(toggled(bool)), this, SLOT(setEnabled(bool)));
 	setEnabled(true);
 }
 
@@ -89,7 +89,9 @@ void OptionsWidget_tray::setEnabled(bool)
 			m_pLevelsGroup->setEnabled(false);
 
 		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
-	} else {
+	}
+	else
+	{
 		m_pCloseInTray->setEnabled(false);
 		m_pEnableFlashing->setEnabled(false);
 		m_pLevelBasedNotify->setEnabled(false);

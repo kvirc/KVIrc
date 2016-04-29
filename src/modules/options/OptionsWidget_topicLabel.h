@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-
 #include "KviOptionsWidget.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_topicLabel KviIconManager::Topic

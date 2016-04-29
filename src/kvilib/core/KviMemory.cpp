@@ -28,16 +28,14 @@
 // KviMemory, kvi_free and kvi_realloc are macros (see KviMemory.h)
 //=============================================================================
 
-
 #define _KVI_MALLOC_CPP_
 #include "KviMemory.h"
 
 #include <stdio.h>
 
 #ifdef COMPILE_MEMORY_PROFILE
-	#include "KviPointerList.h"
+#include "KviPointerList.h"
 #endif //COMPILE_MEMORY_PROFILE
-
 
 namespace KviMemory
 {
@@ -49,31 +47,34 @@ namespace KviMemory
 	// Used to find memory leaks etc...
 	//
 
-	typedef struct _KviMallocEntry {
+	typedef struct _KviMallocEntry
+	{
 		struct _KviMallocEntry * prev;
-		void                   * pointer;
-		int                      size;
-		void                   * return_addr1;
-		void                   * return_addr2;
+		void * pointer;
+		int size;
+		void * return_addr1;
+		void * return_addr2;
 		struct _KviMallocEntry * next;
 	} KviMallocEntry;
 
-	int              g_iMaxRequestSize           = 0;
-	void           * g_pMaxRequestReturnAddress1 = 0;
-	void           * g_pMaxRequestReturnAddress2 = 0;
-	unsigned int     g_iMallocCalls              = 0;
-	unsigned int     g_iReallocCalls             = 0;
-	unsigned int     g_iFreeCalls                = 0;
-	unsigned int     g_iTotalMemAllocated        = 0;
-	unsigned int     g_uAllocationPeak           = 0;
-	KviMallocEntry * g_pEntries                  = 0;
+	int g_iMaxRequestSize = 0;
+	void * g_pMaxRequestReturnAddress1 = 0;
+	void * g_pMaxRequestReturnAddress2 = 0;
+	unsigned int g_iMallocCalls = 0;
+	unsigned int g_iReallocCalls = 0;
+	unsigned int g_iFreeCalls = 0;
+	unsigned int g_iTotalMemAllocated = 0;
+	unsigned int g_uAllocationPeak = 0;
+	KviMallocEntry * g_pEntries = 0;
 
 	void * allocate(int size)
 	{
-		g_iMallocCalls ++;
+		g_iMallocCalls++;
 		g_iTotalMemAllocated += size;
-		if(g_iTotalMemAllocated > g_uAllocationPeak)g_uAllocationPeak = g_iTotalMemAllocated;
-		if(g_iMaxRequestSize < size){
+		if(g_iTotalMemAllocated > g_uAllocationPeak)
+			g_uAllocationPeak = g_iTotalMemAllocated;
+		if(g_iMaxRequestSize < size)
+		{
 			g_iMaxRequestSize = size;
 			g_pMaxRequestReturnAddress1 = __builtin_return_address(1);
 			g_pMaxRequestReturnAddress2 = __builtin_return_address(2);
@@ -85,27 +86,33 @@ namespace KviMemory
 		e->return_addr2 = __builtin_return_address(2);
 		e->next = g_pEntries;
 		e->prev = 0;
-		if(g_pEntries)g_pEntries->prev = e;
+		if(g_pEntries)
+			g_pEntries->prev = e;
 		g_pEntries = e;
 		return e->pointer;
 	}
 
-	void * reallocate(void * ptr,int size)
+	void * reallocate(void * ptr, int size)
 	{
-		g_iReallocCalls ++;
-		if(ptr == 0)return allocate(size);
-		if(g_iMaxRequestSize < size){
+		g_iReallocCalls++;
+		if(ptr == 0)
+			return allocate(size);
+		if(g_iMaxRequestSize < size)
+		{
 			g_iMaxRequestSize = size;
 			g_pMaxRequestReturnAddress1 = __builtin_return_address(1);
 			g_pMaxRequestReturnAddress2 = __builtin_return_address(2);
 		}
-		KviMallocEntry *e = g_pEntries;
-		while(e){
-			if(e->pointer == ptr){
+		KviMallocEntry * e = g_pEntries;
+		while(e)
+		{
+			if(e->pointer == ptr)
+			{
 				g_iTotalMemAllocated -= e->size;
 				g_iTotalMemAllocated += size;
-				if(g_iTotalMemAllocated > g_uAllocationPeak)g_uAllocationPeak = g_iTotalMemAllocated;
-				e->pointer = realloc(ptr,size);
+				if(g_iTotalMemAllocated > g_uAllocationPeak)
+					g_uAllocationPeak = g_iTotalMemAllocated;
+				e->pointer = realloc(ptr, size);
 				e->size = size;
 				e->return_addr1 = __builtin_return_address(1);
 				e->return_addr2 = __builtin_return_address(2);
@@ -113,28 +120,38 @@ namespace KviMemory
 			}
 			e = e->next;
 		}
-		fprintf(stderr,"Attempt to realloc a non-existent pointer (%p) (called from %p (%p))\n",ptr,__builtin_return_address(1),__builtin_return_address(2));
-		return realloc(ptr,size);
+		fprintf(stderr, "Attempt to realloc a non-existent pointer (%p) (called from %p (%p))\n", ptr, __builtin_return_address(1), __builtin_return_address(2));
+		return realloc(ptr, size);
 	}
 
 	void free(void * ptr)
 	{
 		g_iFreeCalls++;
-		if(ptr == 0){
-			fprintf(stderr,"Attempt to free a null pointer (called from %p (%p))\n",__builtin_return_address(1),__builtin_return_address(2));
+		if(ptr == 0)
+		{
+			fprintf(stderr, "Attempt to free a null pointer (called from %p (%p))\n", __builtin_return_address(1), __builtin_return_address(2));
 			exit(-1);
 		}
-		KviMallocEntry * e= g_pEntries;
-		while(e){
-			if(e->pointer == ptr){
+		KviMallocEntry * e = g_pEntries;
+		while(e)
+		{
+			if(e->pointer == ptr)
+			{
 				g_iTotalMemAllocated -= e->size;
-				if(e->prev){
-					if(e == g_pEntries)fprintf(stderr,"Mem profiling internal error!\n");
+				if(e->prev)
+				{
+					if(e == g_pEntries)
+						fprintf(stderr, "Mem profiling internal error!\n");
 					e->prev->next = e->next;
-					if(e->next)e->next->prev = e->prev;
-				} else {
-					if(e != g_pEntries)fprintf(stderr,"Mem profiling internal error!\n");
-					if(e->next)e->next->prev = 0;
+					if(e->next)
+						e->next->prev = e->prev;
+				}
+				else
+				{
+					if(e != g_pEntries)
+						fprintf(stderr, "Mem profiling internal error!\n");
+					if(e->next)
+						e->next->prev = 0;
 					g_pEntries = e->next;
 				}
 				free(e);
@@ -142,7 +159,7 @@ namespace KviMemory
 			}
 			e = e->next;
 		}
-		fprintf(stderr,"Attempt to free a non-existent pointer (%p) (called from %p (%p))\n",ptr,__builtin_return_address(1),__builtin_return_address(2));
+		fprintf(stderr, "Attempt to free a non-existent pointer (%p) (called from %p (%p))\n", ptr, __builtin_return_address(1), __builtin_return_address(2));
 	}
 
 	void kvi_memory_profile() __attribute__((destructor));
@@ -150,56 +167,59 @@ namespace KviMemory
 	{
 		unsigned int countUnfreed = 0;
 		KviMallocEntry * e = g_pEntries;
-		while(e){
+		while(e)
+		{
 			countUnfreed++;
 			e = e->next;
 		}
-		fprintf(stderr,"|====|====|====|====|====|====|====|====\n");
-		fprintf(stderr,"| Memory profile for KVIrc\n");
-		fprintf(stderr,"| Unfreed chunks : %d\n",countUnfreed);
-		fprintf(stderr,"| Total unfreed memory : %u bytes\n",g_iTotalMemAllocated);
-		fprintf(stderr,"|====|====|====|====|====|====|====|====\n");
-		fprintf(stderr,"| Possible unfreed chunks dump:\n");
+		fprintf(stderr, "|====|====|====|====|====|====|====|====\n");
+		fprintf(stderr, "| Memory profile for KVIrc\n");
+		fprintf(stderr, "| Unfreed chunks : %d\n", countUnfreed);
+		fprintf(stderr, "| Total unfreed memory : %u bytes\n", g_iTotalMemAllocated);
+		fprintf(stderr, "|====|====|====|====|====|====|====|====\n");
+		fprintf(stderr, "| Possible unfreed chunks dump:\n");
 		e = g_pEntries;
-		while(e){
-			fprintf(stderr,"|====|====|\n");
-			fprintf(stderr,"| Currently unfreed chunk: %p\n",e->pointer);
-			fprintf(stderr,"| Size: %d\n",e->size);
-			fprintf(stderr,"| Caller address 1: %p\n",e->return_addr1);
-			fprintf(stderr,"| Caller address 2: %p\n",e->return_addr2);
-			if(e->size > 10)fprintf(stderr,"| Data: %.10s\n",(char*)e->pointer);
-			else if(e->size > 5)fprintf(stderr,"| Data: %.5s\n",(char*)e->pointer);
-			KviMallocEntry *toFree = e;
+		while(e)
+		{
+			fprintf(stderr, "|====|====|\n");
+			fprintf(stderr, "| Currently unfreed chunk: %p\n", e->pointer);
+			fprintf(stderr, "| Size: %d\n", e->size);
+			fprintf(stderr, "| Caller address 1: %p\n", e->return_addr1);
+			fprintf(stderr, "| Caller address 2: %p\n", e->return_addr2);
+			if(e->size > 10)
+				fprintf(stderr, "| Data: %.10s\n", (char *)e->pointer);
+			else if(e->size > 5)
+				fprintf(stderr, "| Data: %.5s\n", (char *)e->pointer);
+			KviMallocEntry * toFree = e;
 			e = e->next;
 			free(toFree);
 		}
-		fprintf(stderr,"|====|====|====|====|====|====|====|====\n");
-		fprintf(stderr,"| Allocation peak : %u bytes\n",g_uAllocationPeak);
-		fprintf(stderr,"|====|====|====|====|====|====|====|====\n");
-		fprintf(stderr,"| Max request size : %d bytes\n",g_iMaxRequestSize);
-		fprintf(stderr,"| Called from %p (%p)\n",g_pMaxRequestReturnAddress1,g_pMaxRequestReturnAddress2);
-		fprintf(stderr,"|====|====|====|====|====|====|====|====\n");
-		fprintf(stderr,"| Malloc calls: %u\n",g_iMallocCalls);
-		fprintf(stderr,"| Realloc calls: %u\n",g_iReallocCalls);
-		fprintf(stderr,"| Free calls: %u\n",g_iFreeCalls);
-		fprintf(stderr,"|====|====|====|====|====|====|====|====\n");
+		fprintf(stderr, "|====|====|====|====|====|====|====|====\n");
+		fprintf(stderr, "| Allocation peak : %u bytes\n", g_uAllocationPeak);
+		fprintf(stderr, "|====|====|====|====|====|====|====|====\n");
+		fprintf(stderr, "| Max request size : %d bytes\n", g_iMaxRequestSize);
+		fprintf(stderr, "| Called from %p (%p)\n", g_pMaxRequestReturnAddress1, g_pMaxRequestReturnAddress2);
+		fprintf(stderr, "|====|====|====|====|====|====|====|====\n");
+		fprintf(stderr, "| Malloc calls: %u\n", g_iMallocCalls);
+		fprintf(stderr, "| Realloc calls: %u\n", g_iReallocCalls);
+		fprintf(stderr, "| Free calls: %u\n", g_iFreeCalls);
+		fprintf(stderr, "|====|====|====|====|====|====|====|====\n");
 	}
 
 #else //!COMPILE_MEMORY_PROFILE
 
-	#ifdef COMPILE_MEMORY_CHECKS
+#ifdef COMPILE_MEMORY_CHECKS
 
 	void outOfMemory()
 	{
 		//What a cool message :)
-		fprintf(stderr,"Virtual memory exhausted in malloc call... bye!\n");
+		fprintf(stderr, "Virtual memory exhausted in malloc call... bye!\n");
 		exit(-1);
 	}
 
-	#endif //COMPILE_MEMORY_CHECKS
+#endif //COMPILE_MEMORY_CHECKS
 
 #endif //!COMPILE_MEMORY_PROFILE
-
 
 #if 0
 
@@ -214,7 +234,7 @@ namespace KviMemory
 	// using virtual address manipulationtricks. 64bit architectures can move bytes in larger
 	// chunks and there are MXX and SSE optimisations available.
 
-	#ifdef COMPILE_ix86_ASM
+#ifdef COMPILE_ix86_ASM
 
 	// WE WANT repnz; movsq\n"!!!
 
@@ -361,7 +381,7 @@ namespace KviMemory
 		return dst_ptr; //asm("   movl 8(%ebp),%eax"); <-- gcc will put that (AFTER THE OPTIMISATION PASS!)
 	}
 
-	#endif //COMPILE_ix86_ASM
+#endif //COMPILE_ix86_ASM
 
 	// The next 4 functions could be optimized with the & and shift technique
 	// used in the assembly implementations but the compilers usually
@@ -586,7 +606,5 @@ namespace KviMemory
 		return iEcx;
 	}
 
-
 #endif //0
-
 }

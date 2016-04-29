@@ -26,7 +26,7 @@
 #include "KviKvsRunTimeContext.h"
 
 KviKvsTreeNodeSwitchList::KviKvsTreeNodeSwitchList(const QChar * pLocation)
-: KviKvsTreeNode(pLocation)
+    : KviKvsTreeNode(pLocation)
 {
 	m_pShortSwitchDict = 0;
 	m_pLongSwitchDict = 0;
@@ -34,18 +34,20 @@ KviKvsTreeNodeSwitchList::KviKvsTreeNodeSwitchList(const QChar * pLocation)
 
 KviKvsTreeNodeSwitchList::~KviKvsTreeNodeSwitchList()
 {
-	if(m_pShortSwitchDict)delete m_pShortSwitchDict;
-	if(m_pLongSwitchDict)delete m_pLongSwitchDict;
+	if(m_pShortSwitchDict)
+		delete m_pShortSwitchDict;
+	if(m_pLongSwitchDict)
+		delete m_pLongSwitchDict;
 }
 
-void KviKvsTreeNodeSwitchList::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSwitchList::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Switch List Evaluation";
 }
 
 void KviKvsTreeNodeSwitchList::dump(const char * prefix)
 {
-	qDebug("%s SwitchList",prefix);
+	qDebug("%s SwitchList", prefix);
 #if 0
 	if(m_pShortSwitchDict)
 	{
@@ -77,61 +79,61 @@ void KviKvsTreeNodeSwitchList::dump(const char * prefix)
 #endif
 }
 
-void KviKvsTreeNodeSwitchList::addShort(int iShortKey,KviKvsTreeNodeData * p)
+void KviKvsTreeNodeSwitchList::addShort(int iShortKey, KviKvsTreeNodeData * p)
 {
 	if(!m_pShortSwitchDict)
 	{
-		m_pShortSwitchDict = new KviPointerHashTable<int,KviKvsTreeNodeData>(11);
+		m_pShortSwitchDict = new KviPointerHashTable<int, KviKvsTreeNodeData>(11);
 		m_pShortSwitchDict->setAutoDelete(true);
 	}
 
-	m_pShortSwitchDict->replace(iShortKey,p);
+	m_pShortSwitchDict->replace(iShortKey, p);
 	p->setParent(this);
 }
 
-void KviKvsTreeNodeSwitchList::addLong(const QString &szLongKey,KviKvsTreeNodeData * p)
+void KviKvsTreeNodeSwitchList::addLong(const QString & szLongKey, KviKvsTreeNodeData * p)
 {
 	if(!m_pLongSwitchDict)
 	{
-		m_pLongSwitchDict = new KviPointerHashTable<QString,KviKvsTreeNodeData>(11);
+		m_pLongSwitchDict = new KviPointerHashTable<QString, KviKvsTreeNodeData>(11);
 		m_pLongSwitchDict->setAutoDelete(true);
 	}
 
-	m_pLongSwitchDict->replace(szLongKey,p);
+	m_pLongSwitchDict->replace(szLongKey, p);
 	p->setParent(this);
 }
 
-bool KviKvsTreeNodeSwitchList::evaluate(KviKvsRunTimeContext * c,KviKvsSwitchList * pSwList)
+bool KviKvsTreeNodeSwitchList::evaluate(KviKvsRunTimeContext * c, KviKvsSwitchList * pSwList)
 {
 	pSwList->clear();
 
 	if(m_pShortSwitchDict)
 	{
-		KviPointerHashTableIterator<int,KviKvsTreeNodeData> it(*m_pShortSwitchDict);
+		KviPointerHashTableIterator<int, KviKvsTreeNodeData> it(*m_pShortSwitchDict);
 		while(KviKvsTreeNodeData * d = it.current())
 		{
 			KviKvsVariant * v = new KviKvsVariant();
-			if(!d->evaluateReadOnly(c,v))
+			if(!d->evaluateReadOnly(c, v))
 			{
 				delete v;
 				return false;
 			}
-			pSwList->addShort(it.currentKey(),v);
+			pSwList->addShort(it.currentKey(), v);
 			++it;
 		}
 	}
 	if(m_pLongSwitchDict)
 	{
-		KviPointerHashTableIterator<QString,KviKvsTreeNodeData> it(*m_pLongSwitchDict);
+		KviPointerHashTableIterator<QString, KviKvsTreeNodeData> it(*m_pLongSwitchDict);
 		while(KviKvsTreeNodeData * d = it.current())
 		{
 			KviKvsVariant * v = new KviKvsVariant();
-			if(!d->evaluateReadOnly(c,v))
+			if(!d->evaluateReadOnly(c, v))
 			{
 				delete v;
 				return false;
 			}
-			pSwList->addLong(it.currentKey(),v);
+			pSwList->addLong(it.currentKey(), v);
 			++it;
 		}
 	}

@@ -33,10 +33,12 @@
 #include <QSqlError>
 #include <QSqlRecord>
 
-#define CHECK_QUERY_IS_INIT if (!m_pCurrentSQlQuery)\
-			{\
-			c->error("No connection has been initialized!");\
-			return false;}
+#define CHECK_QUERY_IS_INIT                              \
+	if(!m_pCurrentSQlQuery)                              \
+	{                                                    \
+		c->error("No connection has been initialized!"); \
+		return false;                                    \
+	}
 
 /*
 	@doc: sql
@@ -107,63 +109,63 @@
 		Sets the current query to inactive.
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_sql,"sql","object")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,queryLastInsertId)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,commit)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,beginTransaction)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,setConnection)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,connectionNames)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,tablesList)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,closeConnection)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,queryFinish)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,queryResultsSize)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,queryExec)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,queryPrepare)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,queryBindValue)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,queryPrevious)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,queryNext)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,queryLast)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,queryFirst)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,queryRecord)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,lastError)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql,features)
+KVSO_BEGIN_REGISTERCLASS(KvsObject_sql, "sql", "object")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, queryLastInsertId)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, commit)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, beginTransaction)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, setConnection)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, connectionNames)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, tablesList)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, closeConnection)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, queryFinish)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, queryResultsSize)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, queryExec)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, queryPrepare)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, queryBindValue)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, queryPrevious)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, queryNext)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, queryLast)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, queryFirst)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, queryRecord)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, lastError)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_sql, features)
 KVSO_END_REGISTERCLASS(KvsObject_sql)
 
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_sql, KviKvsObject)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_sql,KviKvsObject)
-
-	m_pCurrentSQlQuery=0;
+m_pCurrentSQlQuery = 0;
 KVSO_END_CONSTRUCTOR(KvsObject_sql)
 
-
 KVSO_BEGIN_DESTRUCTOR(KvsObject_sql)
-	if(m_pCurrentSQlQuery) delete m_pCurrentSQlQuery;
-	m_pCurrentSQlQuery=0;
+if(m_pCurrentSQlQuery)
+	delete m_pCurrentSQlQuery;
+m_pCurrentSQlQuery = 0;
 KVSO_END_DESTRUCTOR(KvsObject_sql)
 
-KVSO_CLASS_FUNCTION(sql,setConnection)
+KVSO_CLASS_FUNCTION(sql, setConnection)
 {
-	QString szConnectionName,szDbName,szDbDriver,szUserName,szHostName,szPassword;
+	QString szConnectionName, szDbName, szDbDriver, szUserName, szHostName, szPassword;
 	KVSO_PARAMETERS_BEGIN(c)
-			KVSO_PARAMETER("database_name",KVS_PT_STRING,0,szDbName)
-			KVSO_PARAMETER("connection_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szConnectionName)
-			KVSO_PARAMETER("user_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szUserName)
-			KVSO_PARAMETER("host_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szHostName)
-			KVSO_PARAMETER("password",KVS_PT_STRING,KVS_PF_OPTIONAL,szPassword)
-			KVSO_PARAMETER("database_type",KVS_PT_STRING,KVS_PF_OPTIONAL,szDbDriver)
+	KVSO_PARAMETER("database_name", KVS_PT_STRING, 0, szDbName)
+	KVSO_PARAMETER("connection_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szConnectionName)
+	KVSO_PARAMETER("user_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szUserName)
+	KVSO_PARAMETER("host_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szHostName)
+	KVSO_PARAMETER("password", KVS_PT_STRING, KVS_PF_OPTIONAL, szPassword)
+	KVSO_PARAMETER("database_type", KVS_PT_STRING, KVS_PF_OPTIONAL, szDbDriver)
 	KVSO_PARAMETERS_END(c)
 	if(!szDbDriver.isEmpty())
 	{
 		QStringList drivers = QSqlDatabase::drivers();
-		if (!drivers.contains(szDbDriver))
+		if(!drivers.contains(szDbDriver))
 		{
-			c->error(__tr2qs_ctx("Missing Qt plugin for database %Q","objects"),&szDbDriver);
+			c->error(__tr2qs_ctx("Missing Qt plugin for database %Q", "objects"), &szDbDriver);
 			return false;
 		}
 	}
-	else szDbDriver="QSQLITE";
+	else
+		szDbDriver = "QSQLITE";
 	QSqlDatabase db;
-	db=QSqlDatabase::addDatabase(szDbDriver,szConnectionName);
+	db = QSqlDatabase::addDatabase(szDbDriver, szConnectionName);
 	mSzConnectionName = szConnectionName;
 	db.setDatabaseName(szDbName);
 	db.setHostName(szHostName);
@@ -172,308 +174,342 @@ KVSO_CLASS_FUNCTION(sql,setConnection)
 	bool bOk = db.open();
 	if(bOk)
 	{
-	    if(m_pCurrentSQlQuery) delete m_pCurrentSQlQuery;
-	    m_pCurrentSQlQuery = new QSqlQuery(db);
+		if(m_pCurrentSQlQuery)
+			delete m_pCurrentSQlQuery;
+		m_pCurrentSQlQuery = new QSqlQuery(db);
 	}
-	else m_pCurrentSQlQuery = 0;
+	else
+		m_pCurrentSQlQuery = 0;
 	c->returnValue()->setBoolean(bOk);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(sql,connectionNames)
+KVSO_CLASS_FUNCTION(sql, connectionNames)
 {
 	QString szFlag;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("stringreturnflag",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlag)
+	KVSO_PARAMETER("stringreturnflag", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlag)
 	KVSO_PARAMETERS_END(c)
-	QStringList szConnectionsList=QSqlDatabase::connectionNames();
-	if(szFlag.indexOf('s',0,Qt::CaseInsensitive) != -1)
+	QStringList szConnectionsList = QSqlDatabase::connectionNames();
+	if(szFlag.indexOf('s', 0, Qt::CaseInsensitive) != -1)
 	{
-		QString szConnections=szConnectionsList.join(",");
+		QString szConnections = szConnectionsList.join(",");
 		c->returnValue()->setString(szConnections);
-	} else {
-		KviKvsArray *pArray=new KviKvsArray();
-		for(int i=0;i<szConnectionsList.count();i++)
+	}
+	else
+	{
+		KviKvsArray * pArray = new KviKvsArray();
+		for(int i = 0; i < szConnectionsList.count(); i++)
 		{
-			pArray->set(i,new KviKvsVariant(szConnectionsList.at(i)));
+			pArray->set(i, new KviKvsVariant(szConnectionsList.at(i)));
 		}
 		c->returnValue()->setArray(pArray);
 	}
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(sql,queryLastInsertId)
+KVSO_CLASS_FUNCTION(sql, queryLastInsertId)
 {
 	CHECK_QUERY_IS_INIT
-	QVariant value=m_pCurrentSQlQuery->lastInsertId();
-	if (value.type()==QVariant::LongLong)
-		c->returnValue()->setInteger((kvs_int_t) value.toLongLong());
-	qDebug("type %i",value.type());
+	QVariant value = m_pCurrentSQlQuery->lastInsertId();
+	if(value.type() == QVariant::LongLong)
+		c->returnValue()->setInteger((kvs_int_t)value.toLongLong());
+	qDebug("type %i", value.type());
 	return true;
 }
-KVSO_CLASS_FUNCTION(sql,features)
+KVSO_CLASS_FUNCTION(sql, features)
 {
 	QString szConnectionName;
 	KVSO_PARAMETERS_BEGIN(c)
-			KVSO_PARAMETER("connectionName",KVS_PT_STRING,0,szConnectionName)
+	KVSO_PARAMETER("connectionName", KVS_PT_STRING, 0, szConnectionName)
 	KVSO_PARAMETERS_END(c)
 
 	QStringList connections = QSqlDatabase::connectionNames();
-	if (!connections.contains(szConnectionName))
+	if(!connections.contains(szConnectionName))
 	{
-		c->warning(__tr2qs_ctx("Connection %Q doesn't exist","objects"),&szConnectionName);
+		c->warning(__tr2qs_ctx("Connection %Q doesn't exist", "objects"), &szConnectionName);
 		return true;
 	}
-	QSqlDatabase db=QSqlDatabase::database(szConnectionName);
-	QSqlDriver *sqlDriver=db.driver();
+	QSqlDatabase db = QSqlDatabase::database(szConnectionName);
+	QSqlDriver * sqlDriver = db.driver();
 	QStringList features;
-	if (sqlDriver->hasFeature(QSqlDriver::Transactions)) features.append("transactions");
-	if (sqlDriver->hasFeature(QSqlDriver::QuerySize)) features.append("querysize");
-	if (sqlDriver->hasFeature(QSqlDriver::BLOB)) features.append("blob");
-	if (sqlDriver->hasFeature(QSqlDriver::PreparedQueries)) features.append("preparedqueries");
-	if (sqlDriver->hasFeature(QSqlDriver::NamedPlaceholders)) features.append("namedplaceholders");
-	if (sqlDriver->hasFeature(QSqlDriver::PositionalPlaceholders)) features.append("positionaplaceholders");
-	if (sqlDriver->hasFeature(QSqlDriver::LastInsertId)) features.append("lastinsertid");
-	if (sqlDriver->hasFeature(QSqlDriver::BatchOperations)) features.append("batchoperations");
-	if (sqlDriver->hasFeature(QSqlDriver::SimpleLocking)) features.append("simplelocking");
-	if (sqlDriver->hasFeature(QSqlDriver::LowPrecisionNumbers)) features.append("lowprecisionnumbers");
-	if (sqlDriver->hasFeature(QSqlDriver::EventNotifications)) features.append("eventnotifications");
-	if (sqlDriver->hasFeature(QSqlDriver::FinishQuery)) features.append("finishquery");
-	if (sqlDriver->hasFeature(QSqlDriver::MultipleResultSets)) features.append("multipleresults");
+	if(sqlDriver->hasFeature(QSqlDriver::Transactions))
+		features.append("transactions");
+	if(sqlDriver->hasFeature(QSqlDriver::QuerySize))
+		features.append("querysize");
+	if(sqlDriver->hasFeature(QSqlDriver::BLOB))
+		features.append("blob");
+	if(sqlDriver->hasFeature(QSqlDriver::PreparedQueries))
+		features.append("preparedqueries");
+	if(sqlDriver->hasFeature(QSqlDriver::NamedPlaceholders))
+		features.append("namedplaceholders");
+	if(sqlDriver->hasFeature(QSqlDriver::PositionalPlaceholders))
+		features.append("positionaplaceholders");
+	if(sqlDriver->hasFeature(QSqlDriver::LastInsertId))
+		features.append("lastinsertid");
+	if(sqlDriver->hasFeature(QSqlDriver::BatchOperations))
+		features.append("batchoperations");
+	if(sqlDriver->hasFeature(QSqlDriver::SimpleLocking))
+		features.append("simplelocking");
+	if(sqlDriver->hasFeature(QSqlDriver::LowPrecisionNumbers))
+		features.append("lowprecisionnumbers");
+	if(sqlDriver->hasFeature(QSqlDriver::EventNotifications))
+		features.append("eventnotifications");
+	if(sqlDriver->hasFeature(QSqlDriver::FinishQuery))
+		features.append("finishquery");
+	if(sqlDriver->hasFeature(QSqlDriver::MultipleResultSets))
+		features.append("multipleresults");
 	c->returnValue()->setString(features.join(","));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(sql,beginTransaction)
+KVSO_CLASS_FUNCTION(sql, beginTransaction)
 {
 	QSqlDatabase db = QSqlDatabase::database(mSzConnectionName);
 	if(!db.isValid())
 	{
-	    c->error("No connection has been initialized!");
-	    return false;
+		c->error("No connection has been initialized!");
+		return false;
 	}
 	db.transaction();
 	return true;
 }
-KVSO_CLASS_FUNCTION(sql,commit)
+KVSO_CLASS_FUNCTION(sql, commit)
 {
 	QSqlDatabase db = QSqlDatabase::database(mSzConnectionName);
 	if(!db.isValid())
 	{
-	    c->error("No connection has been initialized!");
-	    return false;
+		c->error("No connection has been initialized!");
+		return false;
 	}
-    	db.commit();
+	db.commit();
 	return true;
 }
-KVSO_CLASS_FUNCTION(sql,closeConnection)
+KVSO_CLASS_FUNCTION(sql, closeConnection)
 {
 	QString szConnectionName;
 	KVSO_PARAMETERS_BEGIN(c)
-		    KVSO_PARAMETER("connection_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szConnectionName)
+	KVSO_PARAMETER("connection_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szConnectionName)
 	KVSO_PARAMETERS_END(c)
 
 	if(!szConnectionName.isEmpty())
 	{
-	    QStringList connections = QSqlDatabase::connectionNames();
-	    if (!connections.contains(szConnectionName))
-	    {
-		c->warning(__tr2qs_ctx("Connection %Q doesn't exist","objects"),&szConnectionName);
+		QStringList connections = QSqlDatabase::connectionNames();
+		if(!connections.contains(szConnectionName))
+		{
+			c->warning(__tr2qs_ctx("Connection %Q doesn't exist", "objects"), &szConnectionName);
+			return true;
+		}
+		if(m_pCurrentSQlQuery)
+		{
+			delete m_pCurrentSQlQuery;
+			m_pCurrentSQlQuery = 0;
+		}
+		QSqlDatabase::removeDatabase(szConnectionName);
 		return true;
-	    }
-	    if(m_pCurrentSQlQuery)
-	    {
-		delete m_pCurrentSQlQuery;
-		m_pCurrentSQlQuery = 0;
-	    }
-	    QSqlDatabase::removeDatabase(szConnectionName);
-	    return true;
 	}
 	if(m_pCurrentSQlQuery)
 	{
-	    delete m_pCurrentSQlQuery;
-	    m_pCurrentSQlQuery = 0;
+		delete m_pCurrentSQlQuery;
+		m_pCurrentSQlQuery = 0;
 	}
 	QSqlDatabase::removeDatabase(mSzConnectionName);
 	return true;
 }
-KVSO_CLASS_FUNCTION(sql,tablesList)
+KVSO_CLASS_FUNCTION(sql, tablesList)
 {
-    	QSqlDatabase db = QSqlDatabase::database(mSzConnectionName);
+	QSqlDatabase db = QSqlDatabase::database(mSzConnectionName);
 	if(!db.isValid())
 	{
-	    c->error("No connection has been initialized!");
-	    return false;
+		c->error("No connection has been initialized!");
+		return false;
 	}
-	QStringList tables=db.tables();
-	KviKvsArray *pArray=new KviKvsArray();
-	for(int i=0;i<tables.count();i++)
+	QStringList tables = db.tables();
+	KviKvsArray * pArray = new KviKvsArray();
+	for(int i = 0; i < tables.count(); i++)
 	{
-		pArray->set(i,new KviKvsVariant(tables.at(i)));
+		pArray->set(i, new KviKvsVariant(tables.at(i)));
 	}
 	c->returnValue()->setArray(pArray);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(sql,queryFinish)
+KVSO_CLASS_FUNCTION(sql, queryFinish)
 {
 	CHECK_QUERY_IS_INIT
 	m_pCurrentSQlQuery->finish();
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(sql,queryPrepare)
+KVSO_CLASS_FUNCTION(sql, queryPrepare)
 {
 	CHECK_QUERY_IS_INIT
 	QString szQuery;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("query",KVS_PT_STRING,0,szQuery)
+	KVSO_PARAMETER("query", KVS_PT_STRING, 0, szQuery)
 	KVSO_PARAMETERS_END(c)
 	c->returnValue()->setBoolean(m_pCurrentSQlQuery->prepare(szQuery));
 	return true;
 }
-KVSO_CLASS_FUNCTION(sql,queryBindValue)
+KVSO_CLASS_FUNCTION(sql, queryBindValue)
 {
 	CHECK_QUERY_IS_INIT
 	QString szFieldName;
-	KviKvsVariant *v;
+	KviKvsVariant * v;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bindName",KVS_PT_STRING,0,szFieldName)
-		KVSO_PARAMETER("value",KVS_PT_VARIANT,0,v)
+	KVSO_PARAMETER("bindName", KVS_PT_STRING, 0, szFieldName)
+	KVSO_PARAMETER("value", KVS_PT_VARIANT, 0, v)
 	KVSO_PARAMETERS_END(c)
 	QString szType;
 	v->getTypeName(szType);
-	if (v->isString()|| v->isNothing())
+	if(v->isString() || v->isNothing())
 	{
 		QString szText;
 		v->asString(szText);
-		m_pCurrentSQlQuery->bindValue(szFieldName,QVariant(szText));
+		m_pCurrentSQlQuery->bindValue(szFieldName, QVariant(szText));
 	}
-	else if (v->isReal())
+	else if(v->isReal())
 	{
 		kvs_real_t i;
 		v->asReal(i);
-		m_pCurrentSQlQuery->bindValue(szFieldName,QVariant((double)i));
+		m_pCurrentSQlQuery->bindValue(szFieldName, QVariant((double)i));
 	}
-	else if (v->isInteger())
+	else if(v->isInteger())
 	{
 		kvs_int_t i;
 		v->asInteger(i);
-		m_pCurrentSQlQuery->bindValue(szFieldName,QVariant((int)i));
+		m_pCurrentSQlQuery->bindValue(szFieldName, QVariant((int)i));
 	}
-	else if (v->isBoolean())
+	else if(v->isBoolean())
 	{
-		bool b=v->asBoolean();
-		m_pCurrentSQlQuery->bindValue(szFieldName,QVariant(b));
+		bool b = v->asBoolean();
+		m_pCurrentSQlQuery->bindValue(szFieldName, QVariant(b));
 	}
-	else if (v->isHObject())
+	else if(v->isHObject())
 	{
 		kvs_hobject_t hOb;
 		v->asHObject(hOb);
-		KviKvsObject *pObject;
-		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hOb);
-		if (pObject->inheritsClass("memorybuffer"))
-			m_pCurrentSQlQuery->bindValue(szFieldName,QVariant(*((KvsObject_memoryBuffer *)pObject)->pBuffer()));
-		else c->warning(__tr2qs_ctx("Only memorybuffer class object is supported","objects"));
+		KviKvsObject * pObject;
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hOb);
+		if(pObject->inheritsClass("memorybuffer"))
+			m_pCurrentSQlQuery->bindValue(szFieldName, QVariant(*((KvsObject_memoryBuffer *)pObject)->pBuffer()));
+		else
+			c->warning(__tr2qs_ctx("Only memorybuffer class object is supported", "objects"));
 	}
 	else
 	{
 		QString szTypeName;
 		v->getTypeName(szTypeName);
-		c->warning(__tr2qs_ctx("Type value %Q not supported","objects"),&szTypeName);
+		c->warning(__tr2qs_ctx("Type value %Q not supported", "objects"), &szTypeName);
 	}
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(sql,queryExec)
+KVSO_CLASS_FUNCTION(sql, queryExec)
 {
 	CHECK_QUERY_IS_INIT
 	QString szQuery;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("query",KVS_PT_STRING,KVS_PF_OPTIONAL,szQuery)
+	KVSO_PARAMETER("query", KVS_PT_STRING, KVS_PF_OPTIONAL, szQuery)
 	KVSO_PARAMETERS_END(c)
 	bool bOk;
-	if (szQuery.isEmpty()) bOk=m_pCurrentSQlQuery->exec();
-	else bOk=m_pCurrentSQlQuery->exec(szQuery.toLatin1());
+	if(szQuery.isEmpty())
+		bOk = m_pCurrentSQlQuery->exec();
+	else
+		bOk = m_pCurrentSQlQuery->exec(szQuery.toLatin1());
 	c->returnValue()->setBoolean(bOk);
 	return true;
 }
-KVSO_CLASS_FUNCTION(sql,queryNext)
+KVSO_CLASS_FUNCTION(sql, queryNext)
 {
 	CHECK_QUERY_IS_INIT
-	if (m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect()) c->returnValue()->setBoolean(m_pCurrentSQlQuery->next());
-	else c->returnValue()->setNothing();
+	if(m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect())
+		c->returnValue()->setBoolean(m_pCurrentSQlQuery->next());
+	else
+		c->returnValue()->setNothing();
 	return true;
 }
-KVSO_CLASS_FUNCTION(sql,queryPrevious)
+KVSO_CLASS_FUNCTION(sql, queryPrevious)
 {
 	CHECK_QUERY_IS_INIT
-	if (m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect()) c->returnValue()->setBoolean(m_pCurrentSQlQuery->previous());
-	else c->returnValue()->setNothing();
+	if(m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect())
+		c->returnValue()->setBoolean(m_pCurrentSQlQuery->previous());
+	else
+		c->returnValue()->setNothing();
 	return true;
 }
-KVSO_CLASS_FUNCTION(sql,queryResultsSize)
+KVSO_CLASS_FUNCTION(sql, queryResultsSize)
 {
 	CHECK_QUERY_IS_INIT
 	c->returnValue()->setInteger(m_pCurrentSQlQuery->size());
 	return true;
 }
-KVSO_CLASS_FUNCTION(sql,queryFirst)
+KVSO_CLASS_FUNCTION(sql, queryFirst)
 {
 	CHECK_QUERY_IS_INIT
-	if (m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect()) c->returnValue()->setBoolean(m_pCurrentSQlQuery->first());
+	if(m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect())
+		c->returnValue()->setBoolean(m_pCurrentSQlQuery->first());
 	return true;
 }
-KVSO_CLASS_FUNCTION(sql,queryLast)
+KVSO_CLASS_FUNCTION(sql, queryLast)
 {
 	CHECK_QUERY_IS_INIT
-	if (m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect()) c->returnValue()->setBoolean(m_pCurrentSQlQuery->last());
+	if(m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect())
+		c->returnValue()->setBoolean(m_pCurrentSQlQuery->last());
 	return true;
 }
-KVSO_CLASS_FUNCTION(sql,queryRecord)
+KVSO_CLASS_FUNCTION(sql, queryRecord)
 {
 	CHECK_QUERY_IS_INIT
-	KviKvsHash *pHash=new KviKvsHash();
-	QSqlRecord record=m_pCurrentSQlQuery->record();
-	for(int i=0;i<record.count();i++)
+	KviKvsHash * pHash = new KviKvsHash();
+	QSqlRecord record = m_pCurrentSQlQuery->record();
+	for(int i = 0; i < record.count(); i++)
 	{
-		KviKvsVariant *pValue=0;
-		QVariant value=record.value(i);
-		if (value.type()==QVariant::LongLong) pValue=new KviKvsVariant((kvs_int_t) value.toLongLong());
-		else if (value.type()==QVariant::String) pValue=new KviKvsVariant(value.toString());
-		else if (value.type()==QVariant::ByteArray)
+		KviKvsVariant * pValue = 0;
+		QVariant value = record.value(i);
+		if(value.type() == QVariant::LongLong)
+			pValue = new KviKvsVariant((kvs_int_t)value.toLongLong());
+		else if(value.type() == QVariant::String)
+			pValue = new KviKvsVariant(value.toString());
+		else if(value.type() == QVariant::ByteArray)
 		{
 			KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("memoryBuffer");
 			KviKvsVariantList params(new KviKvsVariant(QString()));
-			KviKvsObject * pObject = pClass->allocateInstance(0,"",c->context(),&params);
-			*((KvsObject_memoryBuffer *)pObject)->pBuffer()=value.toByteArray();
-			pValue=new KviKvsVariant(pObject->handle());
+			KviKvsObject * pObject = pClass->allocateInstance(0, "", c->context(), &params);
+			*((KvsObject_memoryBuffer *)pObject)->pBuffer() = value.toByteArray();
+			pValue = new KviKvsVariant(pObject->handle());
 		}
-		else pValue=new KviKvsVariant(QString());
-		pHash->set(record.fieldName(i),pValue);
-		KviKvsVariant *value2=pHash->get(record.fieldName(i));
+		else
+			pValue = new KviKvsVariant(QString());
+		pHash->set(record.fieldName(i), pValue);
+		KviKvsVariant * value2 = pHash->get(record.fieldName(i));
 		value2->type();
 	}
 	c->returnValue()->setHash(pHash);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(sql,lastError)
+KVSO_CLASS_FUNCTION(sql, lastError)
 {
 	CHECK_QUERY_IS_INIT
 	bool bMoreErrorDetails;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("more",KVS_PT_BOOLEAN,KVS_PF_OPTIONAL,bMoreErrorDetails)
+	KVSO_PARAMETER("more", KVS_PT_BOOLEAN, KVS_PF_OPTIONAL, bMoreErrorDetails)
 	KVSO_PARAMETERS_END(c)
 	QString szError;
-	QSqlError error=m_pCurrentSQlQuery->lastError();
-	if (bMoreErrorDetails) szError=error.text();
+	QSqlError error = m_pCurrentSQlQuery->lastError();
+	if(bMoreErrorDetails)
+		szError = error.text();
 	else
 	{
-		if (error.type()==QSqlError::StatementError) szError="SyntaxError";
-		else if (error.type()==QSqlError::ConnectionError) szError="ConnectionError";
-		else if (error.type()==QSqlError::TransactionError) szError="TransactionError";
-		else szError="UnkonwnError";
+		if(error.type() == QSqlError::StatementError)
+			szError = "SyntaxError";
+		else if(error.type() == QSqlError::ConnectionError)
+			szError = "ConnectionError";
+		else if(error.type() == QSqlError::TransactionError)
+			szError = "TransactionError";
+		else
+			szError = "UnkonwnError";
 	}
 	c->returnValue()->setString(szError);
 	return true;

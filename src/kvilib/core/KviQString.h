@@ -52,11 +52,11 @@ namespace KviQString
 	*/
 	enum EscapeKVSFlags
 	{
-		EscapeSpace       =  1,   /**< escapes spaces */
-		PermitVariables   =  2,   /**< escapes '%' character to permit variables */
-		PermitFunctions   =  4,   /**< escapes '$' character to permit functions */
-		PermitMultiLine   =  8,   /**< escapes '\r' and '\n' characters */
-		EscapeParenthesis = 16    /**< escapes parenthesis */
+		EscapeSpace = 1,       /**< escapes spaces */
+		PermitVariables = 2,   /**< escapes '%' character to permit variables */
+		PermitFunctions = 4,   /**< escapes '$' character to permit functions */
+		PermitMultiLine = 8,   /**< escapes '\r' and '\n' characters */
+		EscapeParenthesis = 16 /**< escapes parenthesis */
 	};
 
 	/**

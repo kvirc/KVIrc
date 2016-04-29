@@ -35,24 +35,24 @@ class KviProxy;
 class KVIRC_API KviIrcConnectionTarget : public KviHeapObject
 {
 	friend class KviIrcConnectionTargetResolver;
+
 public:
 	// pServer is a shallow pointer: this class makes a copy of it internally, must NOT be null
 	// pProxy may be null if a proxy is not desired. this class makes a copy of it internally
 	KviIrcConnectionTarget(
-			const KviIrcNetwork * pNetwork,
-			const KviIrcServer * pServer,
-			const KviProxy * pProxy = 0,
-			const QString &szBindAddress = QString()
-		);
+	    const KviIrcNetwork * pNetwork,
+	    const KviIrcServer * pServer,
+	    const KviProxy * pProxy = 0,
+	    const QString & szBindAddress = QString());
 	~KviIrcConnectionTarget();
+
 private:
-	KviIrcNetwork      * m_pNetwork;        // owned, never null, it's a COPY of the entry in the db
-	KviIrcServer       * m_pServer;         // owned, never null, it's a COPY of the entry in the db
-	KviProxy        * m_pProxy;          // owned, may be null, it's a COPY of the entry in the db
-	QString           m_szBindAddress;   // forced bind address
+	KviIrcNetwork * m_pNetwork; // owned, never null, it's a COPY of the entry in the db
+	KviIrcServer * m_pServer;   // owned, never null, it's a COPY of the entry in the db
+	KviProxy * m_pProxy;        // owned, may be null, it's a COPY of the entry in the db
+	QString m_szBindAddress;    // forced bind address
 
 public:
-
 	KviIrcServer * server()
 	{
 		return m_pServer;
@@ -81,7 +81,7 @@ public:
 protected:
 	// this is for KviIrcConnectionTargetResolver only
 	void clearProxy();
-	void setBindAddress(const QString &szBindAddress)
+	void setBindAddress(const QString & szBindAddress)
 	{
 		m_szBindAddress = szBindAddress;
 	}

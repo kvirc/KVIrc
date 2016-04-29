@@ -94,45 +94,39 @@
 */
 
 KviAvatar::KviAvatar(
-		const QString &szLocalPath,
-		const QString &szName,
-		const QSize& scaleOnLoad
-	)
+    const QString & szLocalPath,
+    const QString & szName,
+    const QSize & scaleOnLoad)
 {
-	m_bRemote = KviQString::equalCIN("http://",szName,7) || KviQString::equalCIN("https://",szName,8);
+	m_bRemote = KviQString::equalCIN("http://", szName, 7) || KviQString::equalCIN("https://", szName, 8);
 
 	m_szLocalPath = szLocalPath;
 	m_szName = szName;
 
 	m_pPixmap = new KviAnimatedPixmap(szLocalPath);
 
-	if(scaleOnLoad.isValid() && (
-				scaleOnLoad.height() < size().height() ||
-				scaleOnLoad.width() < size().width()
-				)
-			)
+	if(scaleOnLoad.isValid() && (scaleOnLoad.height() < size().height() || scaleOnLoad.width() < size().width()))
 	{
-		m_pPixmap->resize(scaleOnLoad,Qt::KeepAspectRatio);
+		m_pPixmap->resize(scaleOnLoad, Qt::KeepAspectRatio);
 	}
 
-	m_scaledPixmapsCache.insert(m_pPixmap->size(),m_pPixmap);
+	m_scaledPixmapsCache.insert(m_pPixmap->size(), m_pPixmap);
 }
 
 KviAvatar::~KviAvatar()
 {
-	foreach(KviAnimatedPixmap* pix,m_scaledPixmapsCache)
+	foreach(KviAnimatedPixmap * pix, m_scaledPixmapsCache)
 		delete pix;
 }
 
-KviAnimatedPixmap * KviAvatar::forSize(const QSize& size)
+KviAnimatedPixmap * KviAvatar::forSize(const QSize & size)
 {
 	if(m_scaledPixmapsCache.contains(size))
 		return m_scaledPixmapsCache[size];
 
-	KviAnimatedPixmap* scaledPixmap = new KviAnimatedPixmap(*m_pPixmap);
-	scaledPixmap->resize(size,Qt::KeepAspectRatio);
+	KviAnimatedPixmap * scaledPixmap = new KviAnimatedPixmap(*m_pPixmap);
+	scaledPixmap->resize(size, Qt::KeepAspectRatio);
 
-	m_scaledPixmapsCache.insert(size,scaledPixmap);
+	m_scaledPixmapsCache.insert(size, scaledPixmap);
 	return scaledPixmap;
 }
-

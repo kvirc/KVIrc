@@ -28,22 +28,24 @@
 #include "KviKvsRunTimeContext.h"
 #include "KviLocale.h"
 
-KviKvsTreeNodeSpecialCommandWhile::KviKvsTreeNodeSpecialCommandWhile(const QChar * pLocation,KviKvsTreeNodeExpression * e,KviKvsTreeNodeInstruction * i)
-: KviKvsTreeNodeSpecialCommand(pLocation,"while")
+KviKvsTreeNodeSpecialCommandWhile::KviKvsTreeNodeSpecialCommandWhile(const QChar * pLocation, KviKvsTreeNodeExpression * e, KviKvsTreeNodeInstruction * i)
+    : KviKvsTreeNodeSpecialCommand(pLocation, "while")
 {
 	m_pExpression = e;
 	m_pExpression->setParent(this);
 	m_pInstruction = i;
-	if(i)m_pInstruction->setParent(this);
+	if(i)
+		m_pInstruction->setParent(this);
 }
 
 KviKvsTreeNodeSpecialCommandWhile::~KviKvsTreeNodeSpecialCommandWhile()
 {
 	delete m_pExpression;
-	if(m_pInstruction)delete m_pInstruction;
+	if(m_pInstruction)
+		delete m_pInstruction;
 }
 
-void KviKvsTreeNodeSpecialCommandWhile::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSpecialCommandWhile::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Special Command \"while\"";
 }
@@ -57,15 +59,18 @@ bool KviKvsTreeNodeSpecialCommandWhile::execute(KviKvsRunTimeContext * c)
 	for(;;)
 	{
 		KviKvsVariant v;
-		if(!m_pExpression->evaluateReadOnly(c,&v))return false;
+		if(!m_pExpression->evaluateReadOnly(c, &v))
+			return false;
 
-		if(!v.asBoolean())break;
+		if(!v.asBoolean())
+			break;
 
 		if(m_pInstruction)
 		{
 			if(!m_pInstruction->execute(c))
 			{
-				if(c->error())return false;
+				if(c->error())
+					return false;
 
 				if(c->breakPending())
 				{

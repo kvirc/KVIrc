@@ -32,6 +32,6 @@ class KviCString;
 namespace UglyBase64
 {
 	extern void encode(const unsigned char * out, const int len, KviCString & szText);
-	extern void decode(KviCString & szText, unsigned char ** buf, int *len);
+	extern void decode(KviCString & szText, unsigned char ** buf, int * len);
 };
 #endif //!_UGLYBASE64_H_

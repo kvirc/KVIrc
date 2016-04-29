@@ -39,6 +39,7 @@ class KVIRC_API KviWindowToolWidget : public QWidget
 public:
 	KviWindowToolWidget(QWidget * pParent, KviWindowToolPageButton * pButton);
 	~KviWindowToolWidget();
+
 protected:
 	KviWindowToolPageButton * m_pButton;
 };

@@ -32,47 +32,44 @@
 #include "KviCommandFormatter.h"
 
 KviKvsUserAction::KviKvsUserAction(QObject * pParent,
-	const QString &szName,
-	const QString &szScriptCode,
-	const QString &szVisibleNameCode,
-	const QString &szDescriptionCode,
-	const QString &szCategory,
-	const QString &szBigIconId,
-	const QString &szSmallIconId,
-	unsigned int uFlags,
-	const QString &szKeySequence
-)
-: KviKvsAction(
-	pParent,
-	szName,
-	szScriptCode,
-	szVisibleNameCode,
-	szDescriptionCode,
-	NULL,
-	szBigIconId,
-	szSmallIconId,
-	uFlags,
-	szKeySequence
-)
+    const QString & szName,
+    const QString & szScriptCode,
+    const QString & szVisibleNameCode,
+    const QString & szDescriptionCode,
+    const QString & szCategory,
+    const QString & szBigIconId,
+    const QString & szSmallIconId,
+    unsigned int uFlags,
+    const QString & szKeySequence)
+    : KviKvsAction(
+          pParent,
+          szName,
+          szScriptCode,
+          szVisibleNameCode,
+          szDescriptionCode,
+          NULL,
+          szBigIconId,
+          szSmallIconId,
+          uFlags,
+          szKeySequence)
 {
 	QString szKvsName = "action::";
 	szKvsName += szName;
 
 	QString szTmp = szKvsName;
 	szTmp += "::description";
-	m_pDescriptionScript = new KviKvsScript(szTmp,szDescriptionCode,KviKvsScript::Parameter);
+	m_pDescriptionScript = new KviKvsScript(szTmp, szDescriptionCode, KviKvsScript::Parameter);
 
 	szTmp = szKvsName;
 	szTmp += "::label";
-	m_pVisibleNameScript = new KviKvsScript(szTmp,szVisibleNameCode,KviKvsScript::Parameter);
+	m_pVisibleNameScript = new KviKvsScript(szTmp, szVisibleNameCode, KviKvsScript::Parameter);
 
 	m_szCategory = szCategory;
 	m_pCategory = KviActionManager::instance()->category(szCategory);
 }
 
-
 KviKvsUserAction::KviKvsUserAction(QObject * pParent)
-	: KviKvsAction(pParent,QString(),QString(),QString(),QString(),NULL,QString(),QString())
+    : KviKvsAction(pParent, QString(), QString(), QString(), QString(), NULL, QString(), QString())
 {
 	// needs loading!
 	m_pDescriptionScript = 0;
@@ -88,60 +85,56 @@ KviKvsUserAction::~KviKvsUserAction()
 }
 
 KviKvsUserAction * KviKvsUserAction::createInstance(
-		QObject * pParent,
-		const QString & szName,
-		const QString & szScriptCode,
-		const QString & szVisibleNameCode,
-		const QString & szDescriptionCode,
-		const QString & szCategory,
-		const QString & szBigIconId,
-		const QString & szSmallIconId,
-		unsigned int uFlags,
-		const QString & szKeySequence
-	)
+    QObject * pParent,
+    const QString & szName,
+    const QString & szScriptCode,
+    const QString & szVisibleNameCode,
+    const QString & szDescriptionCode,
+    const QString & szCategory,
+    const QString & szBigIconId,
+    const QString & szSmallIconId,
+    unsigned int uFlags,
+    const QString & szKeySequence)
 {
 	return new KviKvsUserAction(
-			pParent,
-			szName,
-			szScriptCode,
-			szVisibleNameCode,
-			szDescriptionCode,
-			szCategory,
-			szBigIconId,
-			szSmallIconId,
-			uFlags,
-			szKeySequence
-		);
+	    pParent,
+	    szName,
+	    szScriptCode,
+	    szVisibleNameCode,
+	    szDescriptionCode,
+	    szCategory,
+	    szBigIconId,
+	    szSmallIconId,
+	    uFlags,
+	    szKeySequence);
 }
 
 void KviKvsUserAction::exportToKvs(QString & szBuffer)
 {
 	exportToKvs(
-		szBuffer,
-		m_szName,
-		scriptCode(),
-		visibleNameCode(),
-		descriptionCode(),
-		m_szCategory,
-		m_szBigIconId,
-		m_szSmallIconId,
-		m_uFlags,
-		m_szKeySequence
-	);
+	    szBuffer,
+	    m_szName,
+	    scriptCode(),
+	    visibleNameCode(),
+	    descriptionCode(),
+	    m_szCategory,
+	    m_szBigIconId,
+	    m_szSmallIconId,
+	    m_uFlags,
+	    m_szKeySequence);
 }
 
 void KviKvsUserAction::exportToKvs(
-	QString & szBuffer,
-	const QString & szName,
-	const QString & szScriptCode,
-	const QString & szVisibleName,
-	const QString & szDescription,
-	const QString & szCategory,
-	const QString & szBigIconId,
-	const QString & szSmallIconId,
-	unsigned int uFlags,
-	const QString & szKeySequence
-)
+    QString & szBuffer,
+    const QString & szName,
+    const QString & szScriptCode,
+    const QString & szVisibleName,
+    const QString & szDescription,
+    const QString & szCategory,
+    const QString & szBigIconId,
+    const QString & szSmallIconId,
+    unsigned int uFlags,
+    const QString & szKeySequence)
 {
 	szBuffer += "action.create";
 	if(uFlags & NeedsContext)
@@ -196,14 +189,18 @@ void KviKvsUserAction::exportToKvs(
 	{
 		szBuffer += szVisibleName;
 		szBuffer += ",";
-	} else {
+	}
+	else
+	{
 		szTmp = szVisibleName.trimmed();
 		if(szTmp.startsWith(QChar('\"')) && szTmp.endsWith(QChar('\"')))
 		{
 			szBuffer += szTmp;
 			szBuffer += ",";
-		} else {
-			szTmp.replace("\"","\\\"");
+		}
+		else
+		{
+			szTmp.replace("\"", "\\\"");
 			szBuffer += "\"";
 			szBuffer += szTmp;
 			szBuffer += "\",";
@@ -214,14 +211,18 @@ void KviKvsUserAction::exportToKvs(
 	{
 		szBuffer += szDescription;
 		szBuffer += ",";
-	} else {
+	}
+	else
+	{
 		szTmp = szDescription.trimmed();
 		if(szTmp.startsWith(QChar('\"')) && szTmp.endsWith(QChar('\"')))
 		{
 			szBuffer += szTmp;
 			szBuffer += ",";
-		} else {
-			szTmp.replace("\"","\\\"");
+		}
+		else
+		{
+			szTmp.replace("\"", "\\\"");
 			szBuffer += "\"";
 			szBuffer += szTmp;
 			szBuffer += "\",";
@@ -232,14 +233,18 @@ void KviKvsUserAction::exportToKvs(
 	{
 		szBuffer += szBigIconId;
 		szBuffer += ",";
-	} else {
+	}
+	else
+	{
 		szTmp = szBigIconId.trimmed();
 		if(szTmp.startsWith(QChar('\"')) && szTmp.endsWith(QChar('\"')))
 		{
 			szBuffer += szTmp;
 			szBuffer += ",";
-		} else {
-			szTmp.replace("\"","\\\"");
+		}
+		else
+		{
+			szTmp.replace("\"", "\\\"");
 			szBuffer += "\"";
 			szBuffer += szTmp;
 			szBuffer += "\",";
@@ -250,14 +255,18 @@ void KviKvsUserAction::exportToKvs(
 	{
 		szBuffer += szSmallIconId;
 		szBuffer += ")\n";
-	} else {
+	}
+	else
+	{
 		szTmp = szSmallIconId.trimmed();
 		if(szTmp.startsWith(QChar('\"')) && szTmp.endsWith(QChar('\"')))
 		{
 			szBuffer += szTmp;
 			szBuffer += ")\n";
-		} else {
-			szTmp.replace("\"","\\\"");
+		}
+		else
+		{
+			szTmp.replace("\"", "\\\"");
 			szBuffer += "\"";
 			szBuffer += szTmp;
 			szBuffer += "\")\n";
@@ -270,14 +279,13 @@ void KviKvsUserAction::exportToKvs(
 	szBuffer += "\n";
 }
 
-
 // FIXME: Cache this stuff ??
 
 const QString & KviKvsUserAction::visibleName()
 {
 	if(!m_pVisibleNameScript)
 		return m_szVisibleName;
-	if(!m_pVisibleNameScript->run(g_pActiveWindow,0,m_szVisibleName))
+	if(!m_pVisibleNameScript->run(g_pActiveWindow, 0, m_szVisibleName))
 		m_szVisibleName = m_pVisibleNameScript->code();
 	return m_szVisibleName;
 }
@@ -286,7 +294,7 @@ const QString & KviKvsUserAction::description()
 {
 	if(!m_pDescriptionScript)
 		return m_szDescription;
-	if(!m_pDescriptionScript->run(g_pActiveWindow,0,m_szDescription))
+	if(!m_pDescriptionScript->run(g_pActiveWindow, 0, m_szDescription))
 		m_szDescription = m_pDescriptionScript->code();
 	return m_szDescription;
 }
@@ -313,35 +321,40 @@ bool KviKvsUserAction::isKviUserActionNeverOverrideThis()
 bool KviKvsUserAction::load(KviConfigurationFile * cfg)
 {
 	m_szName = cfg->group();
-	if(m_szName.isEmpty())return false;
+	if(m_szName.isEmpty())
+		return false;
 	m_szVisibleName = cfg->readEntry("VisibleName");
-	if(m_szVisibleName.isEmpty())return false;
+	if(m_szVisibleName.isEmpty())
+		return false;
 	QString szKvsName = "action::";
 	szKvsName += m_szName;
 	QString szTmp = szKvsName;
 	szTmp += "::label";
 
-	if(m_pVisibleNameScript)delete m_pVisibleNameScript;
-	m_pVisibleNameScript = new KviKvsScript(szTmp,m_szVisibleName,KviKvsScript::Parameter);
+	if(m_pVisibleNameScript)
+		delete m_pVisibleNameScript;
+	m_pVisibleNameScript = new KviKvsScript(szTmp, m_szVisibleName, KviKvsScript::Parameter);
 
-	if(m_szVisibleName.isEmpty())return false;
+	if(m_szVisibleName.isEmpty())
+		return false;
 	m_szDescription = cfg->readEntry("Description");
 	szTmp = szKvsName;
 	szTmp += "::description";
 
-	if(m_pDescriptionScript)delete m_pDescriptionScript;
-	m_pDescriptionScript = new KviKvsScript(szTmp,m_szDescription,KviKvsScript::Parameter);
-
+	if(m_pDescriptionScript)
+		delete m_pDescriptionScript;
+	m_pDescriptionScript = new KviKvsScript(szTmp, m_szDescription, KviKvsScript::Parameter);
 
 	m_szBigIconId = cfg->readEntry("BigIcon");
 	m_szSmallIconId = cfg->readEntry("SmallIcon");
 	m_szKeySequence = cfg->readEntry("KeySequence");
 	m_szCategory = cfg->readEntry("Category");
 	m_pCategory = KviActionManager::instance()->category(m_szCategory);
-	m_uFlags = cfg->readUIntEntry("Flags",0);
+	m_uFlags = cfg->readUIntEntry("Flags", 0);
 
 	QString szCode = cfg->readEntry("Code");
-	if(szCode.isEmpty())return false;
+	if(szCode.isEmpty())
+		return false;
 
 	m_szScript = QString(szCode);
 
@@ -351,15 +364,22 @@ bool KviKvsUserAction::load(KviConfigurationFile * cfg)
 void KviKvsUserAction::save(KviConfigurationFile * cfg)
 {
 	cfg->setGroup(m_szName);
-	if(m_pVisibleNameScript)cfg->writeEntry("VisibleName",m_pVisibleNameScript->code());
+	if(m_pVisibleNameScript)
+		cfg->writeEntry("VisibleName", m_pVisibleNameScript->code());
 	if(m_pDescriptionScript)
 	{
-		if(!m_pDescriptionScript->code().isEmpty())cfg->writeEntry("Description",m_pDescriptionScript->code());
+		if(!m_pDescriptionScript->code().isEmpty())
+			cfg->writeEntry("Description", m_pDescriptionScript->code());
 	}
-	if(!m_szBigIconId.isEmpty())cfg->writeEntry("BigIcon",m_szBigIconId);
-	if(!m_szSmallIconId.isEmpty())cfg->writeEntry("SmallIcon",m_szSmallIconId);
-	if(!m_szCategory.isEmpty())cfg->writeEntry("Category",m_szCategory);
-	if(!m_szKeySequence.isEmpty())cfg->writeEntry("KeySequence",m_szKeySequence);
-	if(m_uFlags != 0)cfg->writeEntry("Flags",m_uFlags);
-	cfg->writeEntry("Code",m_szScript);
+	if(!m_szBigIconId.isEmpty())
+		cfg->writeEntry("BigIcon", m_szBigIconId);
+	if(!m_szSmallIconId.isEmpty())
+		cfg->writeEntry("SmallIcon", m_szSmallIconId);
+	if(!m_szCategory.isEmpty())
+		cfg->writeEntry("Category", m_szCategory);
+	if(!m_szKeySequence.isEmpty())
+		cfg->writeEntry("KeySequence", m_szKeySequence);
+	if(m_uFlags != 0)
+		cfg->writeEntry("Flags", m_uFlags);
+	cfg->writeEntry("Code", m_szScript);
 }

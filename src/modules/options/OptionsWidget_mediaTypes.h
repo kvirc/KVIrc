@@ -31,17 +31,18 @@
 #include <QLineEdit>
 #include <QPushButton>
 
-
 class MediaTypeTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	MediaTypeTreeWidgetItem(QTreeWidget * w,KviMediaType * t);
+	MediaTypeTreeWidgetItem(QTreeWidget * w, KviMediaType * t);
 	~MediaTypeTreeWidgetItem();
+
 private:
 	KviMediaType m_data;
+
 public:
 	void copyData(KviMediaType * t);
-	const KviMediaType * mydata(){ return &m_data; };
+	const KviMediaType * mydata() { return &m_data; };
 };
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_mediaTypes KviIconManager::File
@@ -57,27 +58,30 @@ class OptionsWidget_mediaTypes : public KviOptionsWidget
 public:
 	OptionsWidget_mediaTypes(QWidget * parent);
 	~OptionsWidget_mediaTypes();
+
 private:
-	QTreeWidget  * m_pTreeWidget;
-	QLineEdit   * m_pDescription;
-	QLineEdit   * m_pIanaType;
-	QLineEdit   * m_pFileMask;
-	QLineEdit   * m_pSavePath;
-	QLineEdit   * m_pCommandline;
-	QLineEdit   * m_pMagicBytes;
-	QLineEdit   * m_pRemoteExecCommandline;
-	QLineEdit   * m_pIcon;
+	QTreeWidget * m_pTreeWidget;
+	QLineEdit * m_pDescription;
+	QLineEdit * m_pIanaType;
+	QLineEdit * m_pFileMask;
+	QLineEdit * m_pSavePath;
+	QLineEdit * m_pCommandline;
+	QLineEdit * m_pMagicBytes;
+	QLineEdit * m_pRemoteExecCommandline;
+	QLineEdit * m_pIcon;
 	QPushButton * m_pDelete;
 	MediaTypeTreeWidgetItem * m_pLastItem;
+
 private:
 	void fillTreeWidget();
 	void saveLastItem();
 	void enableOrDisable();
 	void setLineEdits();
 private slots:
-	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev);
+	void currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem * prev);
 	void newMediaType();
 	void delMediaType();
+
 public:
 	virtual void commit();
 };

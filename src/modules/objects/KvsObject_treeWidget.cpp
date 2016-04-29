@@ -154,198 +154,204 @@
 		This signal is emitted by the default implementation of [classfnc]$rightButtonClickedEvent[/classfnc]().
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_treeWidget,"listview","widget")
+KVSO_BEGIN_REGISTERCLASS(KvsObject_treeWidget, "listview", "widget")
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,setHeaderLabels)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,addColumn)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, setHeaderLabels)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, addColumn)
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,setColumnText)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,setColumnCount)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, setColumnText)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, setColumnCount)
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,setSorting)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,setSortingEnabled)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,setRootIsDecorated)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,setAllColumnsShowFocus)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,clear)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,selectedItems)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,currentItem)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,setSelectionMode)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,listViewHeaderIsVisible)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,itemAt)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, setSorting)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, setSortingEnabled)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, setRootIsDecorated)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, setAllColumnsShowFocus)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, clear)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, selectedItems)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, currentItem)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, setSelectionMode)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, listViewHeaderIsVisible)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, itemAt)
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,hideListViewHeader)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,showListViewHeader)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,firstChild)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,topLevelItem)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,topLevelItemCount)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, hideListViewHeader)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, showListViewHeader)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, firstChild)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, topLevelItem)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, topLevelItemCount)
 
-
-
-
-	//events
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,selectionChangedEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,currentChangedEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,itemActivatedEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,onItemEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,itemClickedEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,itemExpandedEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,itemCollapsedEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,itemChangedEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget,setAcceptDrops);
-	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KvsObject_treeWidget,"fileDroppedEvent")
+//events
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, selectionChangedEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, currentChangedEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, itemActivatedEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, onItemEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, itemClickedEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, itemExpandedEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, itemCollapsedEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, itemChangedEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_treeWidget, setAcceptDrops);
+KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KvsObject_treeWidget, "fileDroppedEvent")
 
 KVSO_END_REGISTERCLASS(KvsObject_treeWidget)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_treeWidget,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_treeWidget, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_treeWidget)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_treeWidget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_treeWidget)
 
-bool KvsObject_treeWidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_treeWidget::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
-	setObject(new KviKvsTreeWidget(parentScriptWidget(),getName().toUtf8().data(),this),true);
+	setObject(new KviKvsTreeWidget(parentScriptWidget(), getName().toUtf8().data(), this), true);
 	// hack for compatibility with "old" addColumn method;
-	((QTreeWidget*) widget())->setColumnCount(0);
+	((QTreeWidget *)widget())->setColumnCount(0);
 
-	connect(widget(),SIGNAL(itemClicked(QTreeWidgetItem *,int)),this,SLOT(slotClicked(QTreeWidgetItem *,int)));
-	connect(widget(),SIGNAL(itemSelectionChanged()),this,SLOT(slotSelectionChanged()));
-	connect(widget(),SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(slotCurrentChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
-	connect(widget(),SIGNAL(itemActivated(QTreeWidgetItem *,int)),this,SLOT(slotItemActivated(QTreeWidgetItem *,int)));
-	connect(widget(),SIGNAL(itemEntered(QTreeWidgetItem *,int)),this,SLOT(slotOnItemEntered(QTreeWidgetItem *,int)));
-	connect(widget(),SIGNAL(itemExpanded(QTreeWidgetItem *)),this,SLOT(slotItemExpanded(QTreeWidgetItem *)));
-	connect(widget(),SIGNAL(itemCollapsed(QTreeWidgetItem *)),this,SLOT(slotItemCollapsed(QTreeWidgetItem *)));
-	connect(widget(),SIGNAL(itemChanged(QTreeWidgetItem *,int)),this,SLOT(slotItemChanged(QTreeWidgetItem *,int)));
+	connect(widget(), SIGNAL(itemClicked(QTreeWidgetItem *, int)), this, SLOT(slotClicked(QTreeWidgetItem *, int)));
+	connect(widget(), SIGNAL(itemSelectionChanged()), this, SLOT(slotSelectionChanged()));
+	connect(widget(), SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(slotCurrentChanged(QTreeWidgetItem *, QTreeWidgetItem *)));
+	connect(widget(), SIGNAL(itemActivated(QTreeWidgetItem *, int)), this, SLOT(slotItemActivated(QTreeWidgetItem *, int)));
+	connect(widget(), SIGNAL(itemEntered(QTreeWidgetItem *, int)), this, SLOT(slotOnItemEntered(QTreeWidgetItem *, int)));
+	connect(widget(), SIGNAL(itemExpanded(QTreeWidgetItem *)), this, SLOT(slotItemExpanded(QTreeWidgetItem *)));
+	connect(widget(), SIGNAL(itemCollapsed(QTreeWidgetItem *)), this, SLOT(slotItemCollapsed(QTreeWidgetItem *)));
+	connect(widget(), SIGNAL(itemChanged(QTreeWidgetItem *, int)), this, SLOT(slotItemChanged(QTreeWidgetItem *, int)));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,setHeaderLabels)
+KVSO_CLASS_FUNCTION(treeWidget, setHeaderLabels)
 {
 	QStringList columns;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("labels",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,columns)
+	KVSO_PARAMETER("labels", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, columns)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
+	if(widget())
 		((QTreeWidget *)object())->setHeaderLabels(columns);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,setColumnText)
+KVSO_CLASS_FUNCTION(treeWidget, setColumnText)
 {
-	if (!widget()) return true;
+	if(!widget())
+		return true;
 	QString szLabel;
 	kvs_int_t iCol;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("column",KVS_PT_INT,0,iCol)
-		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
+	KVSO_PARAMETER("column", KVS_PT_INT, 0, iCol)
+	KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
 	KVSO_PARAMETERS_END(c)
-	QTreeWidgetItem *header=((QTreeWidget *)widget())->headerItem();
-	header->setText(iCol,szLabel);
+	QTreeWidgetItem * header = ((QTreeWidget *)widget())->headerItem();
+	header->setText(iCol, szLabel);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,topLevelItem)
+KVSO_CLASS_FUNCTION(treeWidget, topLevelItem)
 {
-	if (!widget()) return true;
+	if(!widget())
+		return true;
 	kvs_int_t iIdx;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_INT,0,iIdx)
+	KVSO_PARAMETER("index", KVS_PT_INT, 0, iIdx)
 	KVSO_PARAMETERS_END(c)
-	QTreeWidgetItem *pItem=((QTreeWidget *)widget())->topLevelItem(iIdx);
-	if (!pItem) c->returnValue()->setHObject((kvs_hobject_t)0);
-	else  c->returnValue()->setHObject(KvsObject_treeWidgetItem::itemToHandle(pItem));
+	QTreeWidgetItem * pItem = ((QTreeWidget *)widget())->topLevelItem(iIdx);
+	if(!pItem)
+		c->returnValue()->setHObject((kvs_hobject_t)0);
+	else
+		c->returnValue()->setHObject(KvsObject_treeWidgetItem::itemToHandle(pItem));
 	return true;
 }
-KVSO_CLASS_FUNCTION(treeWidget,itemAt)
+KVSO_CLASS_FUNCTION(treeWidget, itemAt)
 {
-	if (!widget()) return true;
-	kvs_int_t iXpos,iYpos;
+	if(!widget())
+		return true;
+	kvs_int_t iXpos, iYpos;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("x_pos",KVS_PT_INT,0,iXpos)
-		KVSO_PARAMETER("y_pos",KVS_PT_INT,0,iYpos)
+	KVSO_PARAMETER("x_pos", KVS_PT_INT, 0, iXpos)
+	KVSO_PARAMETER("y_pos", KVS_PT_INT, 0, iYpos)
 	KVSO_PARAMETERS_END(c)
-	QPoint pPoint=((QTreeWidget *)widget())->viewport()->mapFromGlobal(QPoint(iXpos,iYpos));
-	QTreeWidgetItem *pItem=((QTreeWidget *)widget())->itemAt(pPoint);
-	if (!pItem) c->returnValue()->setHObject((kvs_hobject_t)0);
-	else  c->returnValue()->setHObject(KvsObject_treeWidgetItem::itemToHandle(pItem));
+	QPoint pPoint = ((QTreeWidget *)widget())->viewport()->mapFromGlobal(QPoint(iXpos, iYpos));
+	QTreeWidgetItem * pItem = ((QTreeWidget *)widget())->itemAt(pPoint);
+	if(!pItem)
+		c->returnValue()->setHObject((kvs_hobject_t)0);
+	else
+		c->returnValue()->setHObject(KvsObject_treeWidgetItem::itemToHandle(pItem));
 	return true;
 }
-KVSO_CLASS_FUNCTION(treeWidget,topLevelItemCount)
+KVSO_CLASS_FUNCTION(treeWidget, topLevelItemCount)
 {
-	if (!widget()) return true;
+	if(!widget())
+		return true;
 	c->returnValue()->setInteger(((QTreeWidget *)widget())->topLevelItemCount());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,addColumn)
+KVSO_CLASS_FUNCTION(treeWidget, addColumn)
 {
-	if (!widget()) return true;
+	if(!widget())
+		return true;
 	QString szLabel;
 	kvs_int_t iW;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
-		KVSO_PARAMETER("width",KVS_PT_INT,KVS_PF_OPTIONAL,iW)
+	KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
+	KVSO_PARAMETER("width", KVS_PT_INT, KVS_PF_OPTIONAL, iW)
 	KVSO_PARAMETERS_END(c)
-	int col=((QTreeWidget *)widget())->columnCount();
-	QTreeWidgetItem *header=((QTreeWidget *)widget())->headerItem();
-	header->setText(col,szLabel);
-	if(iW) ((QTreeWidget *)widget())->setColumnWidth(col,iW);
+	int col = ((QTreeWidget *)widget())->columnCount();
+	QTreeWidgetItem * header = ((QTreeWidget *)widget())->headerItem();
+	header->setText(col, szLabel);
+	if(iW)
+		((QTreeWidget *)widget())->setColumnWidth(col, iW);
 	col++;
 	((QTreeWidget *)widget())->setColumnCount(col);
 	//col++;
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,setAcceptDrops)
+KVSO_CLASS_FUNCTION(treeWidget, setAcceptDrops)
 {
 	bool bEnable;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnable",KVS_PT_BOOLEAN,0,bEnable)
+	KVSO_PARAMETER("bEnable", KVS_PT_BOOLEAN, 0, bEnable)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
+	if(widget())
 		((QTreeWidget *)object())->setAcceptDrops(bEnable);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,clear)
+KVSO_CLASS_FUNCTION(treeWidget, clear)
 {
 	Q_UNUSED(c);
-	if (widget())
+	if(widget())
 		((QTreeWidget *)object())->clear();
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,selectedItems)
+KVSO_CLASS_FUNCTION(treeWidget, selectedItems)
 {
 	if(widget())
 	{
-		QList<QTreeWidgetItem *> list=((QTreeWidget *)widget())->selectedItems();
+		QList<QTreeWidgetItem *> list = ((QTreeWidget *)widget())->selectedItems();
 		KviKvsArray * pArray = new KviKvsArray();
 		c->returnValue()->setArray(pArray);
-		for (int i=0;i<list.count();i++)
-			pArray->set(i,new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle((QTreeWidgetItem*)list.at(i))));
+		for(int i = 0; i < list.count(); i++)
+			pArray->set(i, new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle((QTreeWidgetItem *)list.at(i))));
 	}
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,firstChild)
+KVSO_CLASS_FUNCTION(treeWidget, firstChild)
 {
 	if(widget())
-		c->returnValue()->setHObject(KvsObject_treeWidgetItem::itemToHandle((QTreeWidgetItem*)((QTreeWidget *)widget())->topLevelItem(0)));
+		c->returnValue()->setHObject(KvsObject_treeWidgetItem::itemToHandle((QTreeWidgetItem *)((QTreeWidget *)widget())->topLevelItem(0)));
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,currentItem)
+KVSO_CLASS_FUNCTION(treeWidget, currentItem)
 {
 	if(widget())
-		c->returnValue()->setHObject(KvsObject_treeWidgetItem::itemToHandle((QTreeWidgetItem*)((QTreeWidget *)widget())->currentItem()));
+		c->returnValue()->setHObject(KvsObject_treeWidgetItem::itemToHandle((QTreeWidgetItem *)((QTreeWidget *)widget())->currentItem()));
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
@@ -363,220 +369,232 @@ KVSO_CLASS_FUNCTION(treeWidget,setColumnText)
     return true;
 }
 */
-KVSO_CLASS_FUNCTION(treeWidget,setColumnCount)
+KVSO_CLASS_FUNCTION(treeWidget, setColumnCount)
 {
 	kvs_uint_t uCol;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
+	KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
 	KVSO_PARAMETERS_END(c)
-	if (widget())((QTreeWidget *)widget())->setColumnCount(uCol);
+	if(widget())
+		((QTreeWidget *)widget())->setColumnCount(uCol);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,setSelectionMode)
+KVSO_CLASS_FUNCTION(treeWidget, setSelectionMode)
 {
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("mode",KVS_PT_NONEMPTYSTRING,0,szMode)
-		KVSO_PARAMETERS_END(c)
-	if(!widget())return true;
-	if(KviQString::equalCI(szMode,"NoSelection"))
+	KVSO_PARAMETER("mode", KVS_PT_NONEMPTYSTRING, 0, szMode)
+	KVSO_PARAMETERS_END(c)
+	if(!widget())
+		return true;
+	if(KviQString::equalCI(szMode, "NoSelection"))
 		((QTreeWidget *)widget())->setSelectionMode(QAbstractItemView::NoSelection);
-	else if(KviQString::equalCI(szMode,"Multi"))
+	else if(KviQString::equalCI(szMode, "Multi"))
 		((QTreeWidget *)widget())->setSelectionMode(QTreeWidget::MultiSelection);
-	else if(KviQString::equalCI(szMode,"Extended"))
+	else if(KviQString::equalCI(szMode, "Extended"))
 		((QTreeWidget *)widget())->setSelectionMode(QTreeWidget::ExtendedSelection);
-	else if(KviQString::equalCI(szMode,"Single"))
+	else if(KviQString::equalCI(szMode, "Single"))
 		((QTreeWidget *)widget())->setSelectionMode(QTreeWidget::SingleSelection);
-	else c->warning(__tr2qs_ctx("Invalid selection mode '%Q'","objects"),&szMode);
+	else
+		c->warning(__tr2qs_ctx("Invalid selection mode '%Q'", "objects"), &szMode);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,setSorting)
+KVSO_CLASS_FUNCTION(treeWidget, setSorting)
 {
 	kvs_int_t iCol;
 	QString szOrder;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("column",KVS_PT_INT,0,iCol)
-		KVSO_PARAMETER("sort_order",KVS_PT_STRING,0,szOrder)
+	KVSO_PARAMETER("column", KVS_PT_INT, 0, iCol)
+	KVSO_PARAMETER("sort_order", KVS_PT_STRING, 0, szOrder)
 	KVSO_PARAMETERS_END(c)
-	if (!widget())return true;
-	if (KviQString::equalCI(szOrder,"ascending")) ((QTreeWidget *)widget())->sortItems(iCol,Qt::AscendingOrder);
-	else if (KviQString::equalCI(szOrder,"descending")) ((QTreeWidget *)widget())->sortItems(iCol,Qt::DescendingOrder);
-	else c->warning(__tr2qs_ctx("Unknown '%Q' sort order: switching to ascending order","objects"),&szOrder);
+	if(!widget())
+		return true;
+	if(KviQString::equalCI(szOrder, "ascending"))
+		((QTreeWidget *)widget())->sortItems(iCol, Qt::AscendingOrder);
+	else if(KviQString::equalCI(szOrder, "descending"))
+		((QTreeWidget *)widget())->sortItems(iCol, Qt::DescendingOrder);
+	else
+		c->warning(__tr2qs_ctx("Unknown '%Q' sort order: switching to ascending order", "objects"), &szOrder);
 	return true;
 }
-KVSO_CLASS_FUNCTION(treeWidget,setSortingEnabled)
+KVSO_CLASS_FUNCTION(treeWidget, setSortingEnabled)
 {
 	bool bEnables;
 	KVSO_PARAMETERS_BEGIN(c)
-			KVSO_PARAMETER("bEnables",KVS_PT_BOOLEAN,0,bEnables)
+	KVSO_PARAMETER("bEnables", KVS_PT_BOOLEAN, 0, bEnables)
 	KVSO_PARAMETERS_END(c)
-	if (!widget())return true;
+	if(!widget())
+		return true;
 	((QTreeWidget *)widget())->setSortingEnabled(bEnables);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,setRootIsDecorated)
+KVSO_CLASS_FUNCTION(treeWidget, setRootIsDecorated)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) 	((QTreeWidget *)widget())->setRootIsDecorated(bEnabled);
+	if(widget())
+		((QTreeWidget *)widget())->setRootIsDecorated(bEnabled);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,setAllColumnsShowFocus)
+KVSO_CLASS_FUNCTION(treeWidget, setAllColumnsShowFocus)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bAllColumnsShowFocus",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETER("bAllColumnsShowFocus", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if (widget())((QTreeWidget *)widget())->setAllColumnsShowFocus(bEnabled);
+	if(widget())
+		((QTreeWidget *)widget())->setAllColumnsShowFocus(bEnabled);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,hideListViewHeader)
+KVSO_CLASS_FUNCTION(treeWidget, hideListViewHeader)
 {
 	Q_UNUSED(c);
 	((QTreeWidget *)widget())->header()->hide();
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,showListViewHeader)
+KVSO_CLASS_FUNCTION(treeWidget, showListViewHeader)
 {
 	Q_UNUSED(c);
 	((QTreeWidget *)widget())->header()->show();
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,listViewHeaderIsVisible)
+KVSO_CLASS_FUNCTION(treeWidget, listViewHeaderIsVisible)
 {
 	c->returnValue()->setBoolean(((QTreeWidget *)widget())->header()->isVisible());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,itemClickedEvent)
+KVSO_CLASS_FUNCTION(treeWidget, itemClickedEvent)
 {
-	emitSignal("itemClicked",c,c->params());
+	emitSignal("itemClicked", c, c->params());
 	return true;
 }
 
-void KvsObject_treeWidget::slotClicked(QTreeWidgetItem * i,int col)
+void KvsObject_treeWidget::slotClicked(QTreeWidgetItem * i, int col)
 {
-	KviKvsVariant *column=new KviKvsVariant((kvs_int_t)col);
+	KviKvsVariant * column = new KviKvsVariant((kvs_int_t)col);
 
-	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)),column);
-	callFunction(this,"itemClickedEvent",0,&params);
+	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)), column);
+	callFunction(this, "itemClickedEvent", 0, &params);
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,selectionChangedEvent)
+KVSO_CLASS_FUNCTION(treeWidget, selectionChangedEvent)
 {
-	emitSignal("selectionChanged",c,c->params());
+	emitSignal("selectionChanged", c, c->params());
 	return true;
 }
 
 void KvsObject_treeWidget::slotSelectionChanged()
 {
-	if (((QTreeWidget *)widget())->selectionMode()==QTreeWidget::SingleSelection)
+	if(((QTreeWidget *)widget())->selectionMode() == QTreeWidget::SingleSelection)
 	{
-		QTreeWidgetItem *it=(QTreeWidgetItem *) ((QTreeWidget *)widget())->currentItem();
+		QTreeWidgetItem * it = (QTreeWidgetItem *)((QTreeWidget *)widget())->currentItem();
 		KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(it)));
-		callFunction(this,"selectionChangedEvent",0,&params);
-	} else {
+		callFunction(this, "selectionChangedEvent", 0, &params);
+	}
+	else
+	{
 		KviKvsVariantList params(new KviKvsVariant((kvs_hobject_t)0));
-		callFunction(this,"selectionChangedEvent",0,&params);
+		callFunction(this, "selectionChangedEvent", 0, &params);
 	}
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,currentChangedEvent)
+KVSO_CLASS_FUNCTION(treeWidget, currentChangedEvent)
 {
-	emitSignal("currentChanged",c,c->params());
+	emitSignal("currentChanged", c, c->params());
 	return true;
 }
 
-void KvsObject_treeWidget::slotCurrentChanged(QTreeWidgetItem * i,QTreeWidgetItem *prev)
+void KvsObject_treeWidget::slotCurrentChanged(QTreeWidgetItem * i, QTreeWidgetItem * prev)
 {
-	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)),new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(prev)));
-	callFunction(this,"currentChangedEvent",0,&params);
+	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)), new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(prev)));
+	callFunction(this, "currentChangedEvent", 0, &params);
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,itemActivatedEvent)
+KVSO_CLASS_FUNCTION(treeWidget, itemActivatedEvent)
 {
-        emitSignal("itemActivated",c,c->params());
+	emitSignal("itemActivated", c, c->params());
 	return true;
 }
 
-void KvsObject_treeWidget::slotItemActivated(QTreeWidgetItem * i,int col)
+void KvsObject_treeWidget::slotItemActivated(QTreeWidgetItem * i, int col)
 {
-	KviKvsVariant *column=new KviKvsVariant((kvs_int_t)col);
-	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)),column);
-	callFunction(this,"itemActivatedEvent",0,&params);
+	KviKvsVariant * column = new KviKvsVariant((kvs_int_t)col);
+	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)), column);
+	callFunction(this, "itemActivatedEvent", 0, &params);
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,onItemEvent)
+KVSO_CLASS_FUNCTION(treeWidget, onItemEvent)
 {
-	emitSignal("onItem",c,c->params());
+	emitSignal("onItem", c, c->params());
 	return true;
 }
 
-void KvsObject_treeWidget::slotOnItemEntered(QTreeWidgetItem * i,int col)
+void KvsObject_treeWidget::slotOnItemEntered(QTreeWidgetItem * i, int col)
 {
-	KviKvsVariant *column=new KviKvsVariant((kvs_int_t)col);
+	KviKvsVariant * column = new KviKvsVariant((kvs_int_t)col);
 
-	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)),column);
-	callFunction(this,"onItemEvent",0,&params);
+	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)), column);
+	callFunction(this, "onItemEvent", 0, &params);
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,itemExpandedEvent)
+KVSO_CLASS_FUNCTION(treeWidget, itemExpandedEvent)
 {
-	emitSignal("itemExpanded",c,c->params());
+	emitSignal("itemExpanded", c, c->params());
 	return true;
 }
 
 void KvsObject_treeWidget::slotItemExpanded(QTreeWidgetItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)));
-	callFunction(this,"itemExpandedEvent",0,&params);
+	callFunction(this, "itemExpandedEvent", 0, &params);
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,itemCollapsedEvent)
+KVSO_CLASS_FUNCTION(treeWidget, itemCollapsedEvent)
 {
-	emitSignal("itemCollapsed",c,c->params());
+	emitSignal("itemCollapsed", c, c->params());
 	return true;
 }
 
 void KvsObject_treeWidget::slotItemCollapsed(QTreeWidgetItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)));
-	callFunction(this,"itemCollapsedEvent",0,&params);
+	callFunction(this, "itemCollapsedEvent", 0, &params);
 }
 
-KVSO_CLASS_FUNCTION(treeWidget,itemChangedEvent)
+KVSO_CLASS_FUNCTION(treeWidget, itemChangedEvent)
 {
-	emitSignal("itemChanged",c,c->params());
+	emitSignal("itemChanged", c, c->params());
 	return true;
 }
 
-void KvsObject_treeWidget::slotItemChanged(QTreeWidgetItem *item,int col)
+void KvsObject_treeWidget::slotItemChanged(QTreeWidgetItem * item, int col)
 {
-	KviKvsVariant *column=new KviKvsVariant((kvs_int_t)col);
-	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(item)),column);
-	callFunction(this,"itemChangedEvent",0,&params);
+	KviKvsVariant * column = new KviKvsVariant((kvs_int_t)col);
+	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(item)), column);
+	callFunction(this, "itemChangedEvent", 0, &params);
 }
 
-void KvsObject_treeWidget::fileDropped(QString &szFile,QTreeWidgetItem *item)
+void KvsObject_treeWidget::fileDropped(QString & szFile, QTreeWidgetItem * item)
 {
-	KviKvsVariant *file=new KviKvsVariant(szFile);
-	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(item)),file);
-	callFunction(this,"fileDroppedEvent",0,&params);
+	KviKvsVariant * file = new KviKvsVariant(szFile);
+	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(item)), file);
+	callFunction(this, "fileDroppedEvent", 0, &params);
 }
 
-KviKvsTreeWidget::KviKvsTreeWidget(QWidget * par,const char *,KvsObject_treeWidget *parent)
-:QTreeWidget(par)
+KviKvsTreeWidget::KviKvsTreeWidget(QWidget * par, const char *, KvsObject_treeWidget * parent)
+    : QTreeWidget(par)
 {
-	m_pParentScript=parent;
+	m_pParentScript = parent;
 	setAcceptDrops(true);
 	setDragEnabled(true);
 	setDropIndicatorShown(true);
@@ -588,9 +606,9 @@ KviKvsTreeWidget::~KviKvsTreeWidget()
 {
 }
 
-void KviKvsTreeWidget::dragEnterEvent( QDragEnterEvent * e )
+void KviKvsTreeWidget::dragEnterEvent(QDragEnterEvent * e)
 {
-        if(!e->mimeData()->hasUrls())
+	if(!e->mimeData()->hasUrls())
 	{
 		e->ignore();
 		return;
@@ -598,9 +616,9 @@ void KviKvsTreeWidget::dragEnterEvent( QDragEnterEvent * e )
 	e->acceptProposedAction();
 }
 
-void KviKvsTreeWidget::dragMoveEvent( QDragMoveEvent * )
+void KviKvsTreeWidget::dragMoveEvent(QDragMoveEvent *)
 {
-        // ?#!
+	// ?#!
 }
 
 void KviKvsTreeWidget::dropEvent(QDropEvent * e)
@@ -614,13 +632,13 @@ void KviKvsTreeWidget::dropEvent(QDropEvent * e)
 		if(!list.isEmpty())
 		{
 			QList<QUrl>::Iterator it = list.begin();
-			for( ; it != list.end(); ++it )
+			for(; it != list.end(); ++it)
 			{
 				QUrl url = *it;
 				QString path = url.toLocalFile();
-				qDebug("path %s",path.toUtf8().data());
-                                QTreeWidgetItem *i = itemAt( e->pos() );
-                                m_pParentScript->fileDropped(path,i);
+				qDebug("path %s", path.toUtf8().data());
+				QTreeWidgetItem * i = itemAt(e->pos());
+				m_pParentScript->fileDropped(path, i);
 			}
 		}
 	}

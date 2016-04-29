@@ -28,80 +28,81 @@
 #include "kvi_settings.h"
 #include "KviTalIconAndRichTextItemDelegate.h"
 
-
 #include <QListWidget>
 
 class KviTalListWidgetItem;
-
 
 class KVILIB_API KviTalListWidget : public QListWidget
 {
 	Q_OBJECT
 public:
-	KviTalListWidget(QWidget * pParent,QString name,Qt::WindowType f = Qt::Widget);
+	KviTalListWidget(QWidget * pParent, QString name, Qt::WindowType f = Qt::Widget);
 	KviTalListWidget(QWidget * pParent)
-		: QListWidget (pParent){};
-	virtual ~KviTalListWidget()	{};
+	    : QListWidget(pParent){};
+	virtual ~KviTalListWidget(){};
 
 protected:
 	virtual bool event(QEvent * e);
-	virtual bool eventFilter(QObject *o,QEvent * e);
+	virtual bool eventFilter(QObject * o, QEvent * e);
 signals:
-	void tipRequest(QListWidgetItem *,const QPoint &);
-
+	void tipRequest(QListWidgetItem *, const QPoint &);
 };
 
 class KVILIB_API KviTalListWidgetItem : public QListWidgetItem
 {
 public:
 	KviTalListWidgetItem()
-	: QListWidgetItem() {};
+	    : QListWidgetItem(){};
 	KviTalListWidgetItem(KviTalListWidget * pParent)
-	: QListWidgetItem(pParent){};
-	KviTalListWidgetItem(KviTalListWidget * pParent, QString& label)
-	: QListWidgetItem(label, pParent){};
-	KviTalListWidget* listWidget() { return (KviTalListWidget*) QListWidgetItem::listWidget(); };
-	virtual ~KviTalListWidgetItem() {};
-
+	    : QListWidgetItem(pParent){};
+	KviTalListWidgetItem(KviTalListWidget * pParent, QString & label)
+	    : QListWidgetItem(label, pParent){};
+	KviTalListWidget * listWidget() { return (KviTalListWidget *)QListWidgetItem::listWidget(); };
+	virtual ~KviTalListWidgetItem(){};
 };
 
 class KVILIB_API KviTalListWidgetText : public KviTalListWidgetItem
 {
 public:
-	KviTalListWidgetText(KviTalListWidget* listbox, const QString & text=QString());
-	KviTalListWidgetText(const QString & text=QString());
+	KviTalListWidgetText(KviTalListWidget * listbox, const QString & text = QString());
+	KviTalListWidgetText(const QString & text = QString());
 	~KviTalListWidgetText();
 
 	int height(const KviTalListWidget *) const;
-	int width(const KviTalListWidget *)  const;
+	int width(const KviTalListWidget *) const;
 
 	int rtti() const;
-	enum { RTTI = 1 };
+	enum
+	{
+		RTTI = 1
+	};
 
 protected:
-	virtual void  paint(QPainter *);
+	virtual void paint(QPainter *);
 
 private:
 	Q_DISABLE_COPY(KviTalListWidgetText)
 };
 
-
 class KVILIB_API KviTalListWidgetPixmap : public KviTalListWidgetItem
 {
 public:
-	KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap &);
+	KviTalListWidgetPixmap(KviTalListWidget * listbox, const QPixmap &);
 	KviTalListWidgetPixmap(const QPixmap &);
-	KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap &, const QString&);
-	KviTalListWidgetPixmap(const QPixmap &, const QString&);
+	KviTalListWidgetPixmap(KviTalListWidget * listbox, const QPixmap &, const QString &);
+	KviTalListWidgetPixmap(const QPixmap &, const QString &);
 	~KviTalListWidgetPixmap();
 
-	const QPixmap *pixmap() const { return &pm; }
+	const QPixmap * pixmap() const { return &pm; }
 
 	int height(const KviTalListWidget *) const;
-	int width(const KviTalListWidget *)  const;
+	int width(const KviTalListWidget *) const;
 
 	int rtti() const;
-	enum { RTTI = 2 };
+	enum
+	{
+		RTTI = 2
+	};
 
 protected:
 	virtual void paint(QPainter *);

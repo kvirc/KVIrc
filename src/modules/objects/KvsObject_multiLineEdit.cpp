@@ -172,89 +172,82 @@
 		[/example]
 */
 
+KVSO_BEGIN_REGISTERCLASS(KvsObject_textedit, "multilineedit", "widget")
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_textedit,"multilineedit","widget")
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "textLine", functionTextLine)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setWordWrap", functionSetWordWrap)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "wordWrap", functionWordWrap)
 
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"textLine", functionTextLine)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setWordWrap", functionSetWordWrap)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"wordWrap", functionWordWrap)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "atEnd", functionAtEnd)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "numLines", functionNumLines)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "atBeginning", functionAtBeginning)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "cursorPosition", functionCursorPosition)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "text", functionText)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "insert", functionInsert)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "maxLines", functionMaxLines)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setMaxLines", functionSetMaxLines)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "append", functionAppend)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "copy", functionCopy)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "cut", functionCut)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "paste", functionPaste)
 
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"atEnd", functionAtEnd)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"numLines", functionNumLines)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"atBeginning", functionAtBeginning)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"cursorPosition", functionCursorPosition)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"text", functionText)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"insert", functionInsert)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"maxLines", functionMaxLines)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setMaxLines", functionSetMaxLines)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"append", functionAppend)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"copy", functionCopy)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"cut", functionCut)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"paste", functionPaste)
+//->Set Style
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setFamily", functionsetFamily)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setItalic", functionsetItalic)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setBold", functionsetBold)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setUnderline", functionsetUnderline)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "italic", functionitalic)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "bold", functionbold)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "underline", functionunderline)
 
-	//->Set Style
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setFamily", functionsetFamily)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setItalic", functionsetItalic)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setBold", functionsetBold)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setUnderline", functionsetUnderline)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"italic", functionitalic)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"bold", functionbold)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"underline", functionunderline)
+//->Zoom In, Out, To
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "zoomIn", functionzoomIn)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "zoomOut", functionzoomOut)
 
-	//->Zoom In, Out, To
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"zoomIn", functionzoomIn)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"zoomOut", functionzoomOut)
+//->Undo & Redo
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "undo", functionundo)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "redo", functionredo)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "clear", functionclear)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setUndoRedoEnabled", functionsetUndoRedoEnabled)
 
-	//->Undo & Redo
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"undo", functionundo)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"redo", functionredo)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"clear", functionclear)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setUndoRedoEnabled", functionsetUndoRedoEnabled)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "isUndoRedoEnabled", functionisUndoRedoEnabled)
 
+//->Text color & others
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setText", functionsetText)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setColor", functionsetColor)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setModified", functionsetModified)
 
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"isUndoRedoEnabled", functionisUndoRedoEnabled)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setPointSize", functionsetPointSize)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setReadOnly", functionSetReadOnly)
 
-	//->Text color & others
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setText", functionsetText)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setColor", functionsetColor)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setModified", functionsetModified)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setTextFormat", functionsetTextFormat)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "textFormat", functiontextFormat)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "loadFile", functionloadFile);
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setAlignment", functionsetAlignment)
 
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setPointSize", functionsetPointSize)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setReadOnly",functionSetReadOnly)
-
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setTextFormat", functionsetTextFormat)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"textFormat", functiontextFormat)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"loadFile", functionloadFile);
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"setAlignment", functionsetAlignment)
-
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"lines", functionlines)
-	KVSO_REGISTER_HANDLER(KvsObject_textedit,"selectAll", functionselectAll)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "lines", functionlines)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "selectAll", functionselectAll)
 KVSO_END_REGISTERCLASS(KvsObject_textedit)
 
-
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_textedit,KvsObject_widget)
-
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_textedit, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_textedit)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_textedit)
 
 KVSO_END_CONSTRUCTOR(KvsObject_textedit)
 
-bool KvsObject_textedit::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_textedit::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QTextEdit);
 	return true;
 }
 
-
-
 bool KvsObject_textedit::functionSetReadOnly(KviKvsObjectFunctionCall * c)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
 		((QTextEdit *)widget())->setReadOnly(bEnabled);
@@ -265,12 +258,12 @@ bool KvsObject_textedit::functionTextLine(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iBlock;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("line",KVS_PT_INT,0,iBlock)
+	KVSO_PARAMETER("line", KVS_PT_INT, 0, iBlock)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())
 		return true;
 	if(iBlock > ((QTextEdit *)widget())->document()->blockCount() || iBlock < 0)
-		c->warning(__tr2qs_ctx("No such line '%d'","objects"),&iBlock);
+		c->warning(__tr2qs_ctx("No such line '%d'", "objects"), &iBlock);
 	else
 		c->returnValue()->setString(((QTextEdit *)widget())->document()->findBlockByNumber(iBlock).text());
 
@@ -284,63 +277,71 @@ bool KvsObject_textedit::functionNumLines(KviKvsObjectFunctionCall * c)
 }
 bool KvsObject_textedit::functionCursorPosition(KviKvsObjectFunctionCall * c)
 {
-	if(!widget()) return true;
-	int iRow=((QTextEdit *)widget())->textCursor().blockNumber();
-	int iCol=((QTextEdit *)widget())->textCursor().columnNumber();
+	if(!widget())
+		return true;
+	int iRow = ((QTextEdit *)widget())->textCursor().blockNumber();
+	int iCol = ((QTextEdit *)widget())->textCursor().columnNumber();
 
 	KviKvsArray * a = new KviKvsArray();
-	a->set(0,new KviKvsVariant((kvs_int_t)iRow));
-	a->set(1,new KviKvsVariant((kvs_int_t)iCol));
+	a->set(0, new KviKvsVariant((kvs_int_t)iRow));
+	a->set(1, new KviKvsVariant((kvs_int_t)iCol));
 	c->returnValue()->setArray(a);
 	return true;
 }
 
 bool KvsObject_textedit::functionAtBeginning(KviKvsObjectFunctionCall * c)
 {
-	if(!widget()) return true;
+	if(!widget())
+		return true;
 	c->returnValue()->setBoolean(((QTextEdit *)widget())->textCursor().atStart());
 	return true;
 }
 
 bool KvsObject_textedit::functionAtEnd(KviKvsObjectFunctionCall * c)
 {
-	if(!widget()) return true;
+	if(!widget())
+		return true;
 	c->returnValue()->setBoolean(((QTextEdit *)widget())->textCursor().atEnd());
 	return true;
 }
 
 bool KvsObject_textedit::functionSetWordWrap(KviKvsObjectFunctionCall * c)
 {
-	if(!widget())return true;
+	if(!widget())
+		return true;
 	QString szWrap;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("word_wrap",KVS_PT_STRING,0,szWrap)
+	KVSO_PARAMETER("word_wrap", KVS_PT_STRING, 0, szWrap)
 	KVSO_PARAMETERS_END(c)
 
-	if(KviQString::equalCI(szWrap,"NoWrap"))
+	if(KviQString::equalCI(szWrap, "NoWrap"))
 		((QTextEdit *)widget())->setLineWrapMode(QTextEdit::NoWrap);
-	else if(KviQString::equalCI(szWrap,"WidgetWidth"))
+	else if(KviQString::equalCI(szWrap, "WidgetWidth"))
 		((QTextEdit *)widget())->setLineWrapMode(QTextEdit::WidgetWidth);
-	else if(KviQString::equalCI(szWrap,"FixedPixelWidth"))
+	else if(KviQString::equalCI(szWrap, "FixedPixelWidth"))
 		((QTextEdit *)widget())->setLineWrapMode(QTextEdit::FixedPixelWidth);
-	else if(KviQString::equalCI(szWrap,"FixedColumnWidth"))
+	else if(KviQString::equalCI(szWrap, "FixedColumnWidth"))
 		((QTextEdit *)widget())->setLineWrapMode(QTextEdit::FixedColumnWidth);
-        else
-		c->warning(__tr2qs_ctx("Unknown word wrap '%Q'","objects"),&szWrap);
+	else
+		c->warning(__tr2qs_ctx("Unknown word wrap '%Q'", "objects"), &szWrap);
 	return true;
 }
 
-
-bool KvsObject_textedit::functionWordWrap(KviKvsObjectFunctionCall *c)
+bool KvsObject_textedit::functionWordWrap(KviKvsObjectFunctionCall * c)
 {
 
-	if(!widget()) return true;
-	QTextEdit::LineWrapMode mode=((QTextEdit *)widget())->lineWrapMode();
+	if(!widget())
+		return true;
+	QTextEdit::LineWrapMode mode = ((QTextEdit *)widget())->lineWrapMode();
 	QString szWrapMode;
-	if (mode==QTextEdit::NoWrap) szWrapMode="NoWrap";
-	else if (mode==QTextEdit::WidgetWidth) szWrapMode="WidgetWidth";
-	else if (mode==QTextEdit::FixedPixelWidth) szWrapMode="FixedPixelWidth";
-	else szWrapMode="FixedColumnWidth";
+	if(mode == QTextEdit::NoWrap)
+		szWrapMode = "NoWrap";
+	else if(mode == QTextEdit::WidgetWidth)
+		szWrapMode = "WidgetWidth";
+	else if(mode == QTextEdit::FixedPixelWidth)
+		szWrapMode = "FixedPixelWidth";
+	else
+		szWrapMode = "FixedColumnWidth";
 	c->returnValue()->setString(szWrapMode);
 
 	return true;
@@ -357,7 +358,7 @@ bool KvsObject_textedit::functionSetMaxLines(KviKvsObjectFunctionCall * c)
 {
 	kvs_uint_t imaxLines;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("max_lines",KVS_PT_UNSIGNEDINTEGER,0,imaxLines)
+	KVSO_PARAMETER("max_lines", KVS_PT_UNSIGNEDINTEGER, 0, imaxLines)
 	KVSO_PARAMETERS_END(c)
 	if(widget())
 		((QTextEdit *)widget())->document()->setMaximumBlockCount(imaxLines);
@@ -375,11 +376,11 @@ bool KvsObject_textedit::functionInsert(KviKvsObjectFunctionCall * c)
 {
 	QString szInsert;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szInsert)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szInsert)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
+	if(widget())
 	{
-		QTextCursor cursor=((QTextEdit *)widget())->textCursor();
+		QTextCursor cursor = ((QTextEdit *)widget())->textCursor();
 		cursor.insertText(szInsert);
 		((QTextEdit *)widget())->setTextCursor(cursor);
 	}
@@ -390,9 +391,9 @@ bool KvsObject_textedit::functionAppend(KviKvsObjectFunctionCall * c)
 {
 	QString szAppend;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szAppend)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szAppend)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
+	if(widget())
 		((QTextEdit *)widget())->append(szAppend);
 	return true;
 }
@@ -423,10 +424,10 @@ bool KvsObject_textedit::functionsetBold(KviKvsObjectFunctionCall * c)
 {
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bBold",KVS_PT_BOOL,0,bFlag)
+	KVSO_PARAMETER("bBold", KVS_PT_BOOL, 0, bFlag)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
-		((QTextEdit *)widget())->setFontWeight(bFlag?QFont::Bold:QFont::Normal);
+	if(widget())
+		((QTextEdit *)widget())->setFontWeight(bFlag ? QFont::Bold : QFont::Normal);
 	return true;
 }
 
@@ -434,9 +435,9 @@ bool KvsObject_textedit::functionsetUnderline(KviKvsObjectFunctionCall * c)
 {
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bUnderline",KVS_PT_BOOL,0,bFlag)
+	KVSO_PARAMETER("bUnderline", KVS_PT_BOOL, 0, bFlag)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
+	if(widget())
 		((QTextEdit *)widget())->setFontUnderline(bFlag);
 	return true;
 }
@@ -445,9 +446,9 @@ bool KvsObject_textedit::functionsetItalic(KviKvsObjectFunctionCall * c)
 {
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bItalic",KVS_PT_BOOL,0,bFlag)
+	KVSO_PARAMETER("bItalic", KVS_PT_BOOL, 0, bFlag)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
+	if(widget())
 		((QTextEdit *)widget())->setFontItalic(bFlag);
 	return true;
 }
@@ -456,7 +457,7 @@ bool KvsObject_textedit::functionsetItalic(KviKvsObjectFunctionCall * c)
 bool KvsObject_textedit::functionbold(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
-		c->returnValue()->setBoolean(((QTextEdit *)widget())->fontWeight() >= QFont::Bold );
+		c->returnValue()->setBoolean(((QTextEdit *)widget())->fontWeight() >= QFont::Bold);
 	return true;
 }
 
@@ -479,10 +480,11 @@ bool KvsObject_textedit::functionzoomIn(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iZoom;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("zoom_value",KVS_PT_INT,KVS_PF_OPTIONAL,iZoom)
+	KVSO_PARAMETER("zoom_value", KVS_PT_INT, KVS_PF_OPTIONAL, iZoom)
 	KVSO_PARAMETERS_END(c)
-	if (!widget()) return true;
-	if (!iZoom)
+	if(!widget())
+		return true;
+	if(!iZoom)
 		((QTextEdit *)object())->zoomIn();
 	else
 		((QTextEdit *)object())->zoomIn(iZoom);
@@ -493,17 +495,16 @@ bool KvsObject_textedit::functionzoomOut(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iZoom;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("zoom_value",KVS_PT_INT,KVS_PF_OPTIONAL,iZoom)
+	KVSO_PARAMETER("zoom_value", KVS_PT_INT, KVS_PF_OPTIONAL, iZoom)
 	KVSO_PARAMETERS_END(c)
-	if (!widget()) return true;
-	if (!iZoom)
+	if(!widget())
+		return true;
+	if(!iZoom)
 		((QTextEdit *)object())->zoomOut();
 	else
 		((QTextEdit *)object())->zoomOut(iZoom);
 	return true;
 }
-
-
 
 //-> Undo & Redo functions
 bool KvsObject_textedit::functionundo(KviKvsObjectFunctionCall *)
@@ -527,15 +528,13 @@ bool KvsObject_textedit::functionclear(KviKvsObjectFunctionCall *)
 	return true;
 }
 
-
-
 bool KvsObject_textedit::functionsetUndoRedoEnabled(KviKvsObjectFunctionCall * c)
 {
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bUndoredo",KVS_PT_BOOL,0,bFlag)
+	KVSO_PARAMETER("bUndoredo", KVS_PT_BOOL, 0, bFlag)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
+	if(widget())
 		((QTextEdit *)widget())->setUndoRedoEnabled(bFlag);
 	return true;
 }
@@ -547,15 +546,14 @@ bool KvsObject_textedit::functionisUndoRedoEnabled(KviKvsObjectFunctionCall * c)
 	return true;
 }
 
-
 //-->Text & Color & Family
 bool KvsObject_textedit::functionsetText(KviKvsObjectFunctionCall * c)
 {
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
+	if(widget())
 		((QTextEdit *)widget())->setText(szText);
 	return true;
 }
@@ -564,9 +562,9 @@ bool KvsObject_textedit::functionsetPlainText(KviKvsObjectFunctionCall * c)
 {
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
+	if(widget())
 		((QTextEdit *)widget())->setPlainText(szText);
 	return true;
 }
@@ -575,9 +573,9 @@ bool KvsObject_textedit::functionsetHtmlText(KviKvsObjectFunctionCall * c)
 {
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
+	if(widget())
 		((QTextEdit *)widget())->setHtml(szText);
 	return true;
 }
@@ -585,17 +583,17 @@ bool KvsObject_textedit::functionsetHtmlText(KviKvsObjectFunctionCall * c)
 bool KvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 {
 	KviKvsVariant * pColArray;
-	kvs_int_t iColR,iColG,iColB;
+	kvs_int_t iColR, iColG, iColB;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("red_or_array",KVS_PT_VARIANT,0,pColArray)
-		KVSO_PARAMETER("green",KVS_PT_INT,KVS_PF_OPTIONAL,iColG)
-		KVSO_PARAMETER("blue",KVS_PT_INT,KVS_PF_OPTIONAL,iColB)
+	KVSO_PARAMETER("red_or_array", KVS_PT_VARIANT, 0, pColArray)
+	KVSO_PARAMETER("green", KVS_PT_INT, KVS_PF_OPTIONAL, iColG)
+	KVSO_PARAMETER("blue", KVS_PT_INT, KVS_PF_OPTIONAL, iColB)
 	KVSO_PARAMETERS_END(c)
 	if(pColArray->isArray())
 	{
 		if(pColArray->array()->size() < 3)
 		{
-			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements","objects"));
+			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements", "objects"));
 			return false;
 		}
 		KviKvsVariant * pColR = pColArray->array()->at(0);
@@ -604,52 +602,55 @@ bool KvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 
 		if(!(pColR && pColG && pColB))
 		{
-			c->error(__tr2qs_ctx("One of the colors array parameters is empty","objects"));
+			c->error(__tr2qs_ctx("One of the colors array parameters is empty", "objects"));
 			return false;
 		}
 		if(!(pColR->asInteger(iColR) && pColG->asInteger(iColG) && pColB->asInteger(iColB)))
 		{
-			c->error(__tr2qs_ctx("One of the colors array parameters didn't evaluate to an integer","objects"));
+			c->error(__tr2qs_ctx("One of the colors array parameters didn't evaluate to an integer", "objects"));
 			return false;
 		}
-
-	} else {
-		if (c->params()->count()==1)
+	}
+	else
+	{
+		if(c->params()->count() == 1)
 		{
-			bool bOk,bOk1,bOk2;
+			bool bOk, bOk1, bOk2;
 			QString value;
 			pColArray->asString(value);
-			if (value.length()!=6)
+			if(value.length() != 6)
 			{
-				c->warning(__tr2qs_ctx("A string of 6 hex digits is required","objects"));
+				c->warning(__tr2qs_ctx("A string of 6 hex digits is required", "objects"));
 				return true;
 			}
-			QString buffer(value.mid(0,2));
-			iColR=buffer.toInt(&bOk,16);
-			buffer=value.mid(2,2);
-			iColG=buffer.toInt(&bOk1,16);
-			buffer=value.mid(4,2);
-			iColB=buffer.toInt(&bOk2,16);
-			if (!bOk || !bOk1 || !bOk2)
+			QString buffer(value.mid(0, 2));
+			iColR = buffer.toInt(&bOk, 16);
+			buffer = value.mid(2, 2);
+			iColG = buffer.toInt(&bOk1, 16);
+			buffer = value.mid(4, 2);
+			iColB = buffer.toInt(&bOk2, 16);
+			if(!bOk || !bOk1 || !bOk2)
 			{
-				c->warning(__tr2qs_ctx("Not an hex digit","objects"));
+				c->warning(__tr2qs_ctx("Not an hex digit", "objects"));
 				return true;
 			}
-			if (widget()) ((QTextEdit *)widget())->setTextColor(QColor(iColR,iColG,iColB));
+			if(widget())
+				((QTextEdit *)widget())->setTextColor(QColor(iColR, iColG, iColB));
 			return true;
 		}
 		if(c->params()->count() < 3)
 		{
-			c->error(__tr2qs_ctx("$setColor requires either an array as first parameter or three integers","objects"));
+			c->error(__tr2qs_ctx("$setColor requires either an array as first parameter or three integers", "objects"));
 			return false;
 		}
 		if(!pColArray->asInteger(iColR))
 		{
-			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));
+			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer", "objects"));
 			return false;
 		}
 	}
-	if (widget()) ((QTextEdit *)widget())->setTextColor(QColor(iColR,iColG,iColB));
+	if(widget())
+		((QTextEdit *)widget())->setTextColor(QColor(iColR, iColG, iColB));
 	return true;
 }
 
@@ -657,22 +658,20 @@ bool KvsObject_textedit::functionsetPointSize(KviKvsObjectFunctionCall * c)
 {
 	kvs_real_t dPointSize;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("point_size",KVS_PT_REAL,0,dPointSize)
+	KVSO_PARAMETER("point_size", KVS_PT_REAL, 0, dPointSize)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
+	if(widget())
 		((QTextEdit *)widget())->setFontPointSize(dPointSize);
 	return true;
 }
-
-
 
 bool KvsObject_textedit::functionsetFamily(KviKvsObjectFunctionCall * c)
 {
 	QString szFamily;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("family",KVS_PT_STRING,0,szFamily)
+	KVSO_PARAMETER("family", KVS_PT_STRING, 0, szFamily)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
+	if(widget())
 		((QTextEdit *)widget())->setFontFamily(szFamily);
 	return true;
 }
@@ -681,9 +680,9 @@ bool KvsObject_textedit::functionsetModified(KviKvsObjectFunctionCall * c)
 {
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bModified",KVS_PT_BOOL,0,bFlag)
+	KVSO_PARAMETER("bModified", KVS_PT_BOOL, 0, bFlag)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
+	if(widget())
 		((QTextEdit *)widget())->document()->setModified(bFlag);
 	return true;
 }
@@ -695,10 +694,10 @@ bool KvsObject_textedit::functionModified(KviKvsObjectFunctionCall * c)
 	return true;
 }
 
-
-bool KvsObject_textedit::functiontextFormat(KviKvsObjectFunctionCall *c)
+bool KvsObject_textedit::functiontextFormat(KviKvsObjectFunctionCall * c)
 {
-	if(!widget())return true;
+	if(!widget())
+		return true;
 	if(((QTextEdit *)widget())->acceptRichText())
 		c->returnValue()->setString(QString("RichText"));
 	else
@@ -710,44 +709,42 @@ bool KvsObject_textedit::functionsetTextFormat(KviKvsObjectFunctionCall * c)
 {
 	QString szFormat;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("textformat",KVS_PT_STRING,0,szFormat)
+	KVSO_PARAMETER("textformat", KVS_PT_STRING, 0, szFormat)
 	KVSO_PARAMETERS_END(c)
-	if(!widget()) return true;
-	if(KviQString::equalCI(szFormat,"PlainText"))
+	if(!widget())
+		return true;
+	if(KviQString::equalCI(szFormat, "PlainText"))
 		((QTextEdit *)widget())->setAcceptRichText(false);
-	else if(KviQString::equalCI(szFormat,"RichText"))
+	else if(KviQString::equalCI(szFormat, "RichText"))
 		((QTextEdit *)widget())->setAcceptRichText(true);
-        else
-		c->warning(__tr2qs_ctx("Unknown text format '%Q'","objects"),&szFormat);
+	else
+		c->warning(__tr2qs_ctx("Unknown text format '%Q'", "objects"), &szFormat);
 	return true;
 }
-
-
-
 
 bool KvsObject_textedit::functionloadFile(KviKvsObjectFunctionCall * c)
 {
 	QString szFile;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("file_name",KVS_PT_STRING,0,szFile)
+	KVSO_PARAMETER("file_name", KVS_PT_STRING, 0, szFile)
 	KVSO_PARAMETERS_END(c)
-	if ( !QFile::exists(szFile))
+	if(!QFile::exists(szFile))
 	{
-		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
+		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.", "objects"), &szFile);
 		return true;
 	}
 
-	QFile file( szFile );
-	if ( !file.open( QIODevice::ReadOnly ) )
+	QFile file(szFile);
+	if(!file.open(QIODevice::ReadOnly))
 	{
-		c->warning(__tr2qs_ctx("I can't read the file '%Q'.","objects"),&szFile);
+		c->warning(__tr2qs_ctx("I can't read the file '%Q'.", "objects"), &szFile);
 		return true;
 	}
 
-	QTextStream ts( &file );
+	QTextStream ts(&file);
 	QString txt = ts.readAll();
 	//settext tries to understand if the text is html or plain
-	((QTextEdit *)widget())->setText( txt );
+	((QTextEdit *)widget())->setText(txt);
 
 	file.close();
 	return true;
@@ -757,24 +754,22 @@ bool KvsObject_textedit::functionsetAlignment(KviKvsObjectFunctionCall * c)
 {
 	QString szAlignment;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("alignment",KVS_PT_STRING,0,szAlignment)
+	KVSO_PARAMETER("alignment", KVS_PT_STRING, 0, szAlignment)
 	KVSO_PARAMETERS_END(c)
-	if(!widget()) return true;
-	if(KviQString::equalCI(szAlignment,"Left"))
+	if(!widget())
+		return true;
+	if(KviQString::equalCI(szAlignment, "Left"))
 		((QTextEdit *)widget())->setAlignment(Qt::AlignLeft);
-	else if(KviQString::equalCI(szAlignment,"Right"))
+	else if(KviQString::equalCI(szAlignment, "Right"))
 		((QTextEdit *)widget())->setAlignment(Qt::AlignRight);
-	else if(KviQString::equalCI(szAlignment,"Center"))
+	else if(KviQString::equalCI(szAlignment, "Center"))
 		((QTextEdit *)widget())->setAlignment(Qt::AlignCenter);
-	else if(KviQString::equalCI(szAlignment,"Justify"))
+	else if(KviQString::equalCI(szAlignment, "Justify"))
 		((QTextEdit *)widget())->setAlignment(Qt::AlignJustify);
-        else
-		c->warning(__tr2qs_ctx("Unknown alignment '%Q'","objects"),&szAlignment);
+	else
+		c->warning(__tr2qs_ctx("Unknown alignment '%Q'", "objects"), &szAlignment);
 	return true;
 }
-
-
-
 
 bool KvsObject_textedit::functionlines(KviKvsObjectFunctionCall * c)
 {
@@ -783,12 +778,9 @@ bool KvsObject_textedit::functionlines(KviKvsObjectFunctionCall * c)
 	return true;
 }
 
-
-
-
 bool KvsObject_textedit::functionselectAll(KviKvsObjectFunctionCall *)
 {
-	if (widget())
+	if(widget())
 		((QTextEdit *)widget())->selectAll();
 	return true;
 }

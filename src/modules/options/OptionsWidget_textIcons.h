@@ -41,16 +41,20 @@ class TextIconTableItem;
 class TextIconTableItem : public QTableWidgetItem
 {
 	friend class OptionsWidget_textIcons;
+
 public:
-	TextIconTableItem(QTableWidget * t,KviTextIcon * icon);
+	TextIconTableItem(QTableWidget * t, KviTextIcon * icon);
 	~TextIconTableItem();
+
 protected:
 	KviTextIcon * m_pIcon;
-public:
-	KviTextIcon * icon() {
-	    return m_pIcon; };
-	void setId(int id);
 
+public:
+	KviTextIcon * icon()
+	{
+		return m_pIcon;
+	};
+	void setId(int id);
 };
 
 class OptionsWidget_textIcons : public KviOptionsWidget
@@ -59,22 +63,25 @@ class OptionsWidget_textIcons : public KviOptionsWidget
 public:
 	OptionsWidget_textIcons(QWidget * parent);
 	~OptionsWidget_textIcons();
+
 protected:
 	QTableWidget * m_pTable;
 	int m_iLastEditedRow;
-	TextIconTableItem *m_pCurrentItem;
-	QPushButton  * m_pAdd;
-	QPushButton  * m_pDel;
-	QPushButton  * m_pRestore;
+	TextIconTableItem * m_pCurrentItem;
+	QPushButton * m_pAdd;
+	QPushButton * m_pDel;
+	QPushButton * m_pRestore;
 	QToolButton * m_pCurrentIconButton;
-	QMenu *m_pPopup;
+	QMenu * m_pPopup;
+
 private:
 	void fillTable();
+
 public:
 	virtual void commit();
 protected slots:
 	void itemSelectionChanged();
-	void currentItemChanged(QTableWidgetItem *cur, QTableWidgetItem *prev);
+	void currentItemChanged(QTableWidgetItem * cur, QTableWidgetItem * prev);
 	void addClicked();
 	void delClicked();
 	void restoreClicked();

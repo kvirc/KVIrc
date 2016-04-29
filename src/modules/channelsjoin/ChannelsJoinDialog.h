@@ -52,17 +52,16 @@ class ChannelsJoinDialogTreeWidget : public QTreeWidget
 	Q_OBJECT
 public:
 	ChannelsJoinDialogTreeWidget(QWidget * par)
-	:QTreeWidget(par), m_pJoinPopup(0)
-	{
-	};
+	    : QTreeWidget(par), m_pJoinPopup(0){};
 
 	~ChannelsJoinDialogTreeWidget()
 	{
 		if(m_pJoinPopup)
 			delete m_pJoinPopup;
 	};
+
 protected:
-	QMenu                   * m_pJoinPopup;
+	QMenu * m_pJoinPopup;
 	/**
 	* \brief Called when the user clicks on the list
 	* \param e mouse event descriptor
@@ -80,6 +79,7 @@ class ChannelsJoinDialog : public QDialog
 {
 	Q_OBJECT
 	friend class ChannelsJoinDialogTreeWidget;
+
 public:
 	/**
 	* \brief Constructs the channels join window
@@ -94,17 +94,23 @@ public:
 	~ChannelsJoinDialog();
 
 protected:
-	enum ItemTypes { HeaderItem, RecentChannelItem, RegisteredChannelItem };
-	QLineEdit                         * m_pChannelEdit;
-	ChannelsJoinDialogTreeWidget      * m_pTreeWidget;
-	KviTalGroupBox                    * m_pGroupBox;
-	QLineEdit                         * m_pPass;
-	QCheckBox                         * m_pShowAtStartupCheck;
-	QCheckBox                         * m_pCloseAfterJoinCheck;
-	QPushButton                       * m_pJoinButton;
-	QPushButton                       * m_pRegButton;
-	QPushButton                       * m_pClearButton;
-	KviConsoleWindow                  * m_pConsole;
+	enum ItemTypes
+	{
+		HeaderItem,
+		RecentChannelItem,
+		RegisteredChannelItem
+	};
+	QLineEdit * m_pChannelEdit;
+	ChannelsJoinDialogTreeWidget * m_pTreeWidget;
+	KviTalGroupBox * m_pGroupBox;
+	QLineEdit * m_pPass;
+	QCheckBox * m_pShowAtStartupCheck;
+	QCheckBox * m_pCloseAfterJoinCheck;
+	QPushButton * m_pJoinButton;
+	QPushButton * m_pRegButton;
+	QPushButton * m_pClearButton;
+	KviConsoleWindow * m_pConsole;
+
 public:
 	virtual void closeEvent(QCloseEvent * e);
 

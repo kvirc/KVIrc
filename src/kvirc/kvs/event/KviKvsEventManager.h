@@ -36,69 +36,75 @@ class KviKvsVariantList;
 
 #define KVI_KVS_NUM_RAW_EVENTS 1000
 
-class KVIRC_API KviKvsEventManager: public QObject
+class KVIRC_API KviKvsEventManager : public QObject
 {
-        Q_OBJECT
+	Q_OBJECT
 	friend class KviModule; // compatibility only!
-protected: // it only can be created and destroyed by KviKvsAliasManager::init()/done()
+protected:                  // it only can be created and destroyed by KviKvsAliasManager::init()/done()
 	KviKvsEventManager();
 	~KviKvsEventManager();
+
 protected:
 	static KviKvsEventManager * m_pInstance;
 
-	static KviKvsEvent               m_appEventTable[KVI_KVS_NUM_APP_EVENTS];
+	static KviKvsEvent m_appEventTable[KVI_KVS_NUM_APP_EVENTS];
 	KviPointerList<KviKvsEventHandler> * m_rawEventTable[KVI_KVS_NUM_RAW_EVENTS];
+
 public:
-	static KviKvsEventManager * instance(){ return m_pInstance; };
+	static KviKvsEventManager * instance() { return m_pInstance; };
 	static void init(); // called by KviKvs::init()
 	static void done(); // called by KviKvs::done()
 
-	KviKvsEvent * appEvent(unsigned int uEvIdx){ return &(m_appEventTable[uEvIdx]); };
+	KviKvsEvent * appEvent(unsigned int uEvIdx) { return &(m_appEventTable[uEvIdx]); };
 
-	bool hasAppHandlers(unsigned int uEvIdx){ return m_appEventTable[uEvIdx].hasHandlers(); };
-	KviPointerList<KviKvsEventHandler> * appHandlers(unsigned int uEvIdx){ return m_appEventTable[uEvIdx].handlers(); };
+	bool hasAppHandlers(unsigned int uEvIdx) { return m_appEventTable[uEvIdx].hasHandlers(); };
+	KviPointerList<KviKvsEventHandler> * appHandlers(unsigned int uEvIdx) { return m_appEventTable[uEvIdx].handlers(); };
 
-	bool hasRawHandlers(unsigned int uEvIdx){ return m_rawEventTable[uEvIdx]; };
-	KviPointerList<KviKvsEventHandler> * rawHandlers(unsigned int uEvIdx){ return m_rawEventTable[uEvIdx]; };
+	bool hasRawHandlers(unsigned int uEvIdx) { return m_rawEventTable[uEvIdx]; };
+	KviPointerList<KviKvsEventHandler> * rawHandlers(unsigned int uEvIdx) { return m_rawEventTable[uEvIdx]; };
 
-	KviKvsEvent * findAppEventByName(const QString &szName);
-	unsigned int findAppEventIndexByName(const QString &szName);
-	bool isValidAppEvent(unsigned int uEvIdx){ return (uEvIdx < KVI_KVS_NUM_APP_EVENTS); };
+	KviKvsEvent * findAppEventByName(const QString & szName);
+	unsigned int findAppEventIndexByName(const QString & szName);
+	bool isValidAppEvent(unsigned int uEvIdx) { return (uEvIdx < KVI_KVS_NUM_APP_EVENTS); };
 
-	bool isValidRawEvent(unsigned int uEvIdx){ return (uEvIdx < KVI_KVS_NUM_RAW_EVENTS); };
+	bool isValidRawEvent(unsigned int uEvIdx) { return (uEvIdx < KVI_KVS_NUM_RAW_EVENTS); };
 
-	bool addAppHandler(unsigned int uEvIdx,KviKvsEventHandler * h);
-	bool addRawHandler(unsigned int uRawIdx,KviKvsEventHandler * h);
+	bool addAppHandler(unsigned int uEvIdx, KviKvsEventHandler * h);
+	bool addRawHandler(unsigned int uRawIdx, KviKvsEventHandler * h);
 
-	bool removeScriptAppHandler(unsigned int uEvIdx,const QString &szName);
-	bool removeScriptRawHandler(unsigned int uEvIdx,const QString &szName);
+	bool removeScriptAppHandler(unsigned int uEvIdx, const QString & szName);
+	bool removeScriptRawHandler(unsigned int uEvIdx, const QString & szName);
 
-	bool enableScriptAppHandler(unsigned int uEvIdx,const QString &szName,bool bEnable);
-	bool enableScriptRawHandler(unsigned int uEvIdx,const QString &szName,bool bEnable);
+	bool enableScriptAppHandler(unsigned int uEvIdx, const QString & szName, bool bEnable);
+	bool enableScriptRawHandler(unsigned int uEvIdx, const QString & szName, bool bEnable);
 
-	bool removeModuleAppHandler(unsigned int uEvIdx,KviKvsModuleInterface *i);
-	bool removeModuleRawHandler(unsigned int uRawIdx,KviKvsModuleInterface *i);
+	bool removeModuleAppHandler(unsigned int uEvIdx, KviKvsModuleInterface * i);
+	bool removeModuleRawHandler(unsigned int uRawIdx, KviKvsModuleInterface * i);
 
-	void removeAllModuleAppHandlers(KviKvsModuleInterface *i);
-	void removeAllModuleRawHandlers(KviKvsModuleInterface *i);
+	void removeAllModuleAppHandlers(KviKvsModuleInterface * i);
+	void removeAllModuleRawHandlers(KviKvsModuleInterface * i);
 
 	void removeAllModuleHandlers(KviKvsModuleInterface * i);
 
-	KviKvsScriptEventHandler * findScriptRawHandler(unsigned int uEvIdx,const QString &szName);
-	KviKvsScriptEventHandler * findScriptAppHandler(unsigned int uEvIdx,const QString &szName);
+	KviKvsScriptEventHandler * findScriptRawHandler(unsigned int uEvIdx, const QString & szName);
+	KviKvsScriptEventHandler * findScriptAppHandler(unsigned int uEvIdx, const QString & szName);
 
 	// returns true if further processing should be stopped
 	// none of these functions takes params ownership, so be sure to delete them !
-	bool triggerHandlers(KviPointerList<KviKvsEventHandler> * pHandlers,KviWindow *pWnd,KviKvsVariantList *pParams);
-	bool trigger(unsigned int uEvIdx,KviWindow * pWnd,KviKvsVariantList * pParams)
-		{ return triggerHandlers(m_appEventTable[uEvIdx].handlers(),pWnd,pParams); };
-	bool triggerRaw(unsigned int uEvIdx,KviWindow *pWnd,KviKvsVariantList * pParams)
-		{ return triggerHandlers(m_rawEventTable[uEvIdx],pWnd,pParams); };
+	bool triggerHandlers(KviPointerList<KviKvsEventHandler> * pHandlers, KviWindow * pWnd, KviKvsVariantList * pParams);
+	bool trigger(unsigned int uEvIdx, KviWindow * pWnd, KviKvsVariantList * pParams)
+	{
+		return triggerHandlers(m_appEventTable[uEvIdx].handlers(), pWnd, pParams);
+	};
+	bool triggerRaw(unsigned int uEvIdx, KviWindow * pWnd, KviKvsVariantList * pParams)
+	{
+		return triggerHandlers(m_rawEventTable[uEvIdx], pWnd, pParams);
+	};
 
 	// this is the only that takes parameter ownership and deletes them
-	bool triggerDeleteParams(unsigned int uEvIdx,KviWindow * pWnd,KviKvsVariantList * pParams)
+	bool triggerDeleteParams(unsigned int uEvIdx, KviWindow * pWnd, KviKvsVariantList * pParams)
 	{
-		bool bRet = triggerHandlers(m_appEventTable[uEvIdx].handlers(),pWnd,pParams);
+		bool bRet = triggerHandlers(m_appEventTable[uEvIdx].handlers(), pWnd, pParams);
 		delete pParams;
 		return bRet;
 	};
@@ -110,14 +116,12 @@ public:
 	void clearRawEvents();
 	void clear();
 
-	void loadAppEvents(const QString &szFileName);
-	void saveAppEvents(const QString &szFileName);
-	void loadRawEvents(const QString &szFileName);
-	void saveRawEvents(const QString &szFileName);
+	void loadAppEvents(const QString & szFileName);
+	void saveAppEvents(const QString & szFileName);
+	void loadRawEvents(const QString & szFileName);
+	void saveRawEvents(const QString & szFileName);
 signals:
-        void eventHandlerDisabled(const QString &);
+	void eventHandlerDisabled(const QString &);
 };
-
-
 
 #endif //!_KVI_KVS_EVENTMANAGER_H_

@@ -43,7 +43,7 @@
 */
 typedef struct _KviAvatarCacheEntry
 {
-	QString    szIdString; /**< The id of the avatar */
+	QString szIdString;     /**< The id of the avatar */
 	kvi_time_t tLastAccess; /**< The time the avatar was last accessed */
 } KviAvatarCacheEntry;
 
@@ -64,10 +64,13 @@ protected:
 	* \brief Destroys the avatar cache object
 	*/
 	~KviAvatarCache();
+
 public:
-	KviPointerHashTable<QString,KviAvatarCacheEntry> * m_pAvatarDict;
+	KviPointerHashTable<QString, KviAvatarCacheEntry> * m_pAvatarDict;
+
 protected:
 	static KviAvatarCache * m_pAvatarCacheInstance;
+
 public:
 	/**
 	* \brief Initializes the avatar cache
@@ -85,7 +88,7 @@ public:
 	* \brief Returns the instance of the avatar cache
 	* \return KviAvatarCache *
 	*/
-	static KviAvatarCache * instance(){ return m_pAvatarCacheInstance; };
+	static KviAvatarCache * instance() { return m_pAvatarCacheInstance; };
 
 	/**
 	* \brief Replaces a cached avatar

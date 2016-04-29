@@ -37,8 +37,9 @@ class KVIRC_API KviKvsAsyncDnsOperation : public KviKvsAsyncOperation
 {
 	Q_OBJECT
 public:
-	KviKvsAsyncDnsOperation(KviWindow * pWnd,QString &szQuery,KviDnsResolver::QueryType eType,KviKvsScript * pCallback = 0,KviKvsVariant * pMagic = 0);
+	KviKvsAsyncDnsOperation(KviWindow * pWnd, QString & szQuery, KviDnsResolver::QueryType eType, KviKvsScript * pCallback = 0, KviKvsVariant * pMagic = 0);
 	virtual ~KviKvsAsyncDnsOperation();
+
 protected:
 	KviDnsResolver * m_pDns;
 	KviDnsResolver::QueryType m_eType;

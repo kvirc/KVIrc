@@ -32,42 +32,46 @@ class KviCustomToolBar;
 class KviConfigurationFile;
 class KviKvsScript;
 
-
 class KVIRC_API KviCustomToolBarDescriptor
 {
 	friend class KviCustomToolBar;
 	friend class KviCustomToolBarManager;
+
 protected:
 	KviCustomToolBarDescriptor(const QString & szId, const QString & szLabelCode);
+
 public:
 	~KviCustomToolBarDescriptor();
+
 protected:
-	QString               m_szId;
-	QString               m_szIconId;
-	QString               m_szParsedLabel;
+	QString m_szId;
+	QString m_szIconId;
+	QString m_szParsedLabel;
 	KviPointerList<QString> * m_pActions;
-	KviCustomToolBar    * m_pToolBar;
-	int                   m_iInternalId;
-	bool                  m_bVisibleAtStartup;
-	KviKvsScript        * m_pLabelScript;
+	KviCustomToolBar * m_pToolBar;
+	int m_iInternalId;
+	bool m_bVisibleAtStartup;
+	KviKvsScript * m_pLabelScript;
+
 public:
-	const QString & iconId(){ return m_szIconId; };
+	const QString & iconId() { return m_szIconId; };
 	const QString & label();
 	const QString & labelCode();
-	const QString & id(){ return m_szId; };
-	int internalId(){ return m_iInternalId; }; // useful only for KviMainWindow
-	KviCustomToolBar * toolBar(){ return m_pToolBar; };
+	const QString & id() { return m_szId; };
+	int internalId() { return m_iInternalId; }; // useful only for KviMainWindow
+	KviCustomToolBar * toolBar() { return m_pToolBar; };
 	KviCustomToolBar * createToolBar();
-	void setIconId(const QString &szIconId){ m_szIconId = szIconId; };
-	bool addAction(const QString &szAction);
-	bool removeAction(const QString &szAction);
+	void setIconId(const QString & szIconId) { m_szIconId = szIconId; };
+	bool addAction(const QString & szAction);
+	bool removeAction(const QString & szAction);
 	bool removeAction(unsigned int iAction);
 	void clear();
-	void rename(const QString &szNewName);
-	KviPointerList<QString> * actions(){ return m_pActions; };
+	void rename(const QString & szNewName);
+	KviPointerList<QString> * actions() { return m_pActions; };
 	void updateToolBar();
+
 protected:
-	void createLabelScript(const QString &szNewLabelCode);
+	void createLabelScript(const QString & szNewLabelCode);
 	void fillToolBar();
 	bool load(KviConfigurationFile * cfg);
 	void save(KviConfigurationFile * cfg);

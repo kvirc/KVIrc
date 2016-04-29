@@ -44,12 +44,15 @@ class KviIrcViewToolTip : public KviTalToolTip
 public:
 	KviIrcViewToolTip(KviIrcView * pView);
 	virtual ~KviIrcViewToolTip();
+
 protected:
 	KviIrcView * m_pView;
+
 protected:
-	virtual void maybeTip(const QPoint &pnt);
+	virtual void maybeTip(const QPoint & pnt);
+
 public:
-	void doTip(const QRect &rct,const QString &str){ tip(rct,str); };
+	void doTip(const QRect & rct, const QString & str) { tip(rct, str); };
 };
 
 //=========================================================================================================
@@ -58,22 +61,26 @@ public:
 
 class KviIrcViewToolWidget;
 
-
 class KviIrcMessageCheckListItem : public QTreeWidgetItem
 {
 public:
-	KviIrcMessageCheckListItem(QTreeWidget * par,KviIrcViewToolWidget * w,int id);
+	KviIrcMessageCheckListItem(QTreeWidget * par, KviIrcViewToolWidget * w, int id);
 	~KviIrcMessageCheckListItem();
+
 private:
-	QCheckBox *m_pCbox;
+	QCheckBox * m_pCbox;
 	int m_iId;
 	KviIrcViewToolWidget * m_pToolWidget;
+
 public:
 	//void setToolWidget(KviIrcViewToolWidget * w){ m_pToolWidget = w; };
-	void setOn(bool b){setCheckState(0,b?Qt::Checked:Qt::Unchecked);};
-	bool isOn(){
-		if (checkState(0)==Qt::Checked) return true;
-		else return false;
+	void setOn(bool b) { setCheckState(0, b ? Qt::Checked : Qt::Unchecked); };
+	bool isOn()
+	{
+		if(checkState(0) == Qt::Checked)
+			return true;
+		else
+			return false;
 	}
 };
 
@@ -90,27 +97,33 @@ class KviIrcViewToolWidget : public QWidget
 protected:
 	KviIrcViewToolWidget(KviIrcView * par);
 	~KviIrcViewToolWidget();
-protected:
-	KviIrcView  * m_pIrcView;
-	QLineEdit   * m_pStringToFind;
-	QPoint        m_pressPoint;
 
-	QCheckBox   * m_pCaseSensitive;
-	QComboBox   * m_pSearchMode;
-	QMenu       * m_pOptionsWidget;
+protected:
+	KviIrcView * m_pIrcView;
+	QLineEdit * m_pStringToFind;
+	QPoint m_pressPoint;
+
+	QCheckBox * m_pCaseSensitive;
+	QComboBox * m_pSearchMode;
+	QMenu * m_pOptionsWidget;
 	QPushButton * m_pOptionsButton;
 
-// 	QLabel      * m_pFindResult;
+	// 	QLabel      * m_pFindResult;
 
 	QTreeWidget * m_pFilterView;
 
 	KviIrcMessageCheckListItem ** m_pFilterItems;
 
 public:
-	enum SearchMode { PlainText, Wildcards, RegExp };
+	enum SearchMode
+	{
+		PlainText,
+		Wildcards,
+		RegExp
+	};
 	void setFindResult(const QString & text);
 	void focusStringToFind();
-	inline bool messageEnabled(int msg_type){ return m_pFilterItems[msg_type]->isOn();};
+	inline bool messageEnabled(int msg_type) { return m_pFilterItems[msg_type]->isOn(); };
 	void forceRepaint();
 protected slots:
 	void findPrev();

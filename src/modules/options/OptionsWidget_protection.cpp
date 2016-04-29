@@ -31,7 +31,7 @@
 #include <QLayout>
 
 OptionsWidget_protection::OptionsWidget_protection(QWidget * parent)
-: KviOptionsWidget(parent)
+    : KviOptionsWidget(parent)
 {
 	setObjectName("protection_options_widget");
 

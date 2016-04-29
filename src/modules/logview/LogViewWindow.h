@@ -53,6 +53,7 @@ class LogViewListView : public QTreeWidget
 public:
 	LogViewListView(QWidget *);
 	~LogViewListView(){};
+
 protected:
 	void mousePressEvent(QMouseEvent * pEvent);
 signals:
@@ -65,43 +66,45 @@ class LogViewWindow : public KviWindow
 public:
 	LogViewWindow();
 	~LogViewWindow();
+
 protected:
 	KviPointerList<LogFile> m_logList;
 
-	LogViewListView       * m_pListView;
+	LogViewListView * m_pListView;
 
 	// Type filter
-	QCheckBox             * m_pShowChannelsCheck;
-	QCheckBox             * m_pShowQueryesCheck;
-	QCheckBox             * m_pShowConsolesCheck;
-	QCheckBox             * m_pShowOtherCheck;
-	QCheckBox             * m_pShowDccChatCheck;
+	QCheckBox * m_pShowChannelsCheck;
+	QCheckBox * m_pShowQueryesCheck;
+	QCheckBox * m_pShowConsolesCheck;
+	QCheckBox * m_pShowOtherCheck;
+	QCheckBox * m_pShowDccChatCheck;
 
 	// Content filter
-	QLineEdit             * m_pFileNameMask;
-	QLineEdit             * m_pContentsMask;
+	QLineEdit * m_pFileNameMask;
+	QLineEdit * m_pContentsMask;
 
 	// Date/time mask
-	QCheckBox             * m_pEnableFromFilter;
-	QCheckBox             * m_pEnableToFilter;
-	QDateEdit             * m_pFromDateEdit;
-	QDateEdit             * m_pToDateEdit;
+	QCheckBox * m_pEnableFromFilter;
+	QCheckBox * m_pEnableToFilter;
+	QDateEdit * m_pFromDateEdit;
+	QDateEdit * m_pToDateEdit;
 
-	QStringList           * m_pFileNames;
-	QTabWidget            * m_pTabWidget;
-	KviTalVBox            * m_pIndexTab;
-	KviTalVBox            * m_pLeftLayout;
-	QWidget               * m_pSearchTab;
-	QPushButton           * m_pFilterButton;
-	QPushButton           * m_pCancelButton;
-	KviTalHBox            * m_pBottomLayout;
-	QProgressBar          * m_pProgressBar;
-	LogListViewItem       * m_pLastCategory;
+	QStringList * m_pFileNames;
+	QTabWidget * m_pTabWidget;
+	KviTalVBox * m_pIndexTab;
+	KviTalVBox * m_pLeftLayout;
+	QWidget * m_pSearchTab;
+	QPushButton * m_pFilterButton;
+	QPushButton * m_pCancelButton;
+	KviTalHBox * m_pBottomLayout;
+	QProgressBar * m_pProgressBar;
+	LogListViewItem * m_pLastCategory;
 	LogListViewItemFolder * m_pLastGroupItem;
-	QString                 m_szLastGroup;
-	bool                    m_bAborted;
-	QTimer                * m_pTimer;
-	QMenu       * m_pExportLogPopup;
+	QString m_szLastGroup;
+	bool m_bAborted;
+	QTimer * m_pTimer;
+	QMenu * m_pExportLogPopup;
+
 public:
 	/**
 	* \brief Exports the log and creates the file in the selected format
@@ -111,6 +114,7 @@ public:
 	* \return void
 	*/
 	void createLog(LogFile * pLog, int iId, QString * pszFile = 0);
+
 protected:
 	void exportLog(int iId);
 	void recurseDirectory(const QString & szDir);

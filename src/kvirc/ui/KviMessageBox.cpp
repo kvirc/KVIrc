@@ -29,57 +29,58 @@
 
 // FIXME: #warning "This should go into TAL as layer ...then maybe a wrapper in KviApplication!"
 #ifdef COMPILE_KDE_SUPPORT
-	#include <kmessagebox.h>
+#include <kmessagebox.h>
 #else
-	#include <QMessageBox>
+#include <QMessageBox>
 #endif //!COMPILE_WITH_KDE
 
 // FIXME: #warning "This could go into KviApplication"
 
 namespace KviMessageBox
 {
-	void warning(QString fmt,...)
+	void warning(QString fmt, ...)
 	{
 		kvi_va_list list;
-		kvi_va_start(list,fmt);
+		kvi_va_start(list, fmt);
 		QString s;
-		KviQString::vsprintf(s,fmt,list);
+		KviQString::vsprintf(s, fmt, list);
 		kvi_va_end(list);
 #ifdef COMPILE_KDE_SUPPORT
-		KMessageBox::error(0,s,"KVIrc");
+		KMessageBox::error(0, s, "KVIrc");
 #else
-		QMessageBox::warning(0,"KVIrc",s);
+		QMessageBox::warning(0, "KVIrc", s);
 #endif
 	}
 
-	void information(QString fmt,...)
+	void information(QString fmt, ...)
 	{
 		kvi_va_list list;
-		kvi_va_start(list,fmt);
+		kvi_va_start(list, fmt);
 		QString s;
-		KviQString::vsprintf(s,fmt,list);
+		KviQString::vsprintf(s, fmt, list);
 		kvi_va_end(list);
 #ifdef COMPILE_KDE_SUPPORT
-		KMessageBox::information(0,s,"KVIrc");
+		KMessageBox::information(0, s, "KVIrc");
 #else
-		QMessageBox::information(0,"KVIrc",s);
+		QMessageBox::information(0, "KVIrc", s);
 #endif
 	}
 
-	bool yesNo(const QString &caption,QString fmt,...)
+	bool yesNo(const QString & caption, QString fmt, ...)
 	{
 		kvi_va_list list;
-		kvi_va_start(list,fmt);
+		kvi_va_start(list, fmt);
 		QString s;
-		KviQString::vsprintf(s,fmt,list);
+		KviQString::vsprintf(s, fmt, list);
 		kvi_va_end(list);
 		bool bRet;
 #ifdef COMPILE_KDE_SUPPORT
-		bRet = (KMessageBox::questionYesNo(0,s,caption) == KMessageBox::Yes);
+		bRet = (KMessageBox::questionYesNo(0, s, caption) == KMessageBox::Yes);
 #else
-		bRet = (QMessageBox::information(0,caption,s,
-				QMessageBox::Yes | QMessageBox::Default,
-				QMessageBox::No | QMessageBox::Escape) == QMessageBox::Yes);
+		bRet = (QMessageBox::information(0, caption, s,
+		            QMessageBox::Yes | QMessageBox::Default,
+		            QMessageBox::No | QMessageBox::Escape)
+		    == QMessageBox::Yes);
 #endif
 		return bRet;
 	}

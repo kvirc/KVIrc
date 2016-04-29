@@ -40,12 +40,11 @@ private:
 	Qt::WindowStates m_oStoredWindowStates;
 
 public:
-
 	///
 	/// Creates an instance of KviTrayIcon
 	///
 	KviTrayIcon()
-		: m_oStoredWindowStates(0)
+	    : m_oStoredWindowStates(0)
 	{
 	}
 
@@ -56,7 +55,6 @@ public:
 	virtual ~KviTrayIcon()
 	{
 	}
-
 
 public:
 	void setPrevWindowState(Qt::WindowStates state)
@@ -79,7 +77,5 @@ public:
 	}
 
 }; // class KviTrayIcon
-
-
 
 #endif //!_KviTrayIcon_h_

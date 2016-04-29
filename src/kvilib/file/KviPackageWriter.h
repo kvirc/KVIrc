@@ -43,7 +43,6 @@ class KviFile;
 class KviPackageWriterPrivate;
 class KviPackageWriterDataField;
 
-
 /**
 * \class KviPackageWriter
 * \brief This class is used to create KVIrc package files.
@@ -54,7 +53,6 @@ class KviPackageWriterDataField;
 class KVILIB_API KviPackageWriter : public KviPackageIOEngine
 {
 public:
-
 	/**
 	* \brief Creates the package writer object
 	* \return KviPackageWriter
@@ -67,14 +65,12 @@ public:
 	virtual ~KviPackageWriter();
 
 private:
-
 	/**
 	* Hidden private data
 	*/
 	KviPackageWriterPrivate * m_p;
 
 public:
-
 	/**
 	* \enum AddFileFlags
 	*/
@@ -178,7 +174,5 @@ private:
 	bool addFileInternal(const QFileInfo * fi, const QString & szLocalFileName, const QString & szTargetFileName, kvi_u32_t uAddFileFlags = 0);
 
 }; // class KviPackageWriter
-
-
 
 #endif //_KviPackageWriter_h_

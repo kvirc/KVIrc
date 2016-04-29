@@ -25,14 +25,11 @@
 //
 //=============================================================================
 
-
 #include <QTimer>
 #include "KvsObject_widget.h"
 
-
 #include "object_macros.h"
 #include "QProcess"
-
 
 class KvsObject_process : public KviKvsObject
 {
@@ -41,29 +38,29 @@ public:
 	KVSO_DECLARE_OBJECT(KvsObject_process)
 protected:
 	QProcess * m_pProcess;
+
 private:
-        QStringList m_szArgs;
+	QStringList m_szArgs;
+
 public:
+	bool addArgument(KviKvsObjectFunctionCall * c);
+	bool startProcess(KviKvsObjectFunctionCall * c);
+	bool readStdout(KviKvsObjectFunctionCall * c);
+	bool readStderr(KviKvsObjectFunctionCall * c);
+	bool writeToStdin(KviKvsObjectFunctionCall * c);
+	bool closekill(KviKvsObjectFunctionCall * c);
+	bool closeStdin(KviKvsObjectFunctionCall * c);
+	bool kill(KviKvsObjectFunctionCall * c);
+	bool tryTerminate(KviKvsObjectFunctionCall * c);
+	bool normalExit(KviKvsObjectFunctionCall * c);
+	bool isRunning(KviKvsObjectFunctionCall * c);
 
-	bool addArgument(KviKvsObjectFunctionCall *c);
-	bool startProcess(KviKvsObjectFunctionCall *c);
-	bool readStdout(KviKvsObjectFunctionCall *c);
-	bool readStderr(KviKvsObjectFunctionCall *c);
-	bool writeToStdin(KviKvsObjectFunctionCall *c);
-	bool closekill(KviKvsObjectFunctionCall *c);
-	bool closeStdin(KviKvsObjectFunctionCall *c);
-	bool kill(KviKvsObjectFunctionCall *c);
-	bool tryTerminate(KviKvsObjectFunctionCall *c);
-	bool normalExit(KviKvsObjectFunctionCall *c);
-	bool isRunning(KviKvsObjectFunctionCall *c);
-
-	bool readyReadStdoutEvent(KviKvsObjectFunctionCall *c);
-	bool readyReadStderrEvent(KviKvsObjectFunctionCall *c);
+	bool readyReadStdoutEvent(KviKvsObjectFunctionCall * c);
+	bool readyReadStderrEvent(KviKvsObjectFunctionCall * c);
 
 protected slots:
 	void slotReadStdout();
 	void slotReadStderr();
 };
 
-
-#endif	// !_CLASS_PROCESS_H_
+#endif // !_CLASS_PROCESS_H_

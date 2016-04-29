@@ -28,9 +28,7 @@
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
-
 RawEditorWindow * g_pRawEditorWindow = 0;
-
 
 /*
 	@doc: raweditor.open
@@ -59,7 +57,7 @@ static bool raweditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 
 static bool raweditor_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",raweditor_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", raweditor_kvs_cmd_open);
 	g_pRawEditorWindow = 0;
 	return true;
 }
@@ -78,13 +76,12 @@ static bool raweditor_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"RawEditor",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Editor for the script RAW events",
-	raweditor_module_init,
-	raweditor_module_can_unload,
-	0,
-	raweditor_module_cleanup,
-	"editor"
-)
+    "RawEditor",                                                    // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Editor for the script RAW events",
+    raweditor_module_init,
+    raweditor_module_can_unload,
+    0,
+    raweditor_module_cleanup,
+    "editor")

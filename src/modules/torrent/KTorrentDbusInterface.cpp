@@ -28,89 +28,87 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 
-	#include "KviApplication.h"
-	#include "KviLocale.h"
+#include "KviApplication.h"
+#include "KviLocale.h"
 
-	#include <QTimer>
+#include <QTimer>
 
-	TORR_IMPLEMENT_DESCRIPTOR(
-		KTorrentDbusInterface,
-		"ktorrentdbus",
-		__tr2qs_ctx(
-			"An interface for KDE's excellent KTorrent client.\n" \
-			"Download it from http://www.ktorrent.org\n",
-			"torrent"
-		)
-	)
+TORR_IMPLEMENT_DESCRIPTOR(
+    KTorrentDbusInterface,
+    "ktorrentdbus",
+    __tr2qs_ctx(
+        "An interface for KDE's excellent KTorrent client.\n"
+        "Download it from http://www.ktorrent.org\n",
+        "torrent"))
 
-	KTorrentDbusInterface::KTorrentDbusInterface()
-	{
-// 		printf("KTorrentDbusInterface\n");
+KTorrentDbusInterface::KTorrentDbusInterface()
+{
+	// 		printf("KTorrentDbusInterface\n");
 
-// 		QTimer *timer = new QTimer(this);
-// 		connect(timer, SIGNAL(timeout()), this, SLOT(slotTimer()));
-// 		timer->start(250, false);
+	// 		QTimer *timer = new QTimer(this);
+	// 		connect(timer, SIGNAL(timeout()), this, SLOT(slotTimer()));
+	// 		timer->start(250, false);
 
-		// make sure we have a list of files,
-		// otherwise functions dealing would
-		// fail if called the first time
-// 		slotTimer();
+	// make sure we have a list of files,
+	// otherwise functions dealing would
+	// fail if called the first time
+	// 		slotTimer();
+}
 
-	}
+KTorrentDbusInterface::~KTorrentDbusInterface()
+{
+	// 		printf("~KTorrentDbusInterface\n");
+}
 
-	KTorrentDbusInterface::~KTorrentDbusInterface()
-	{
-// 		printf("~KTorrentDbusInterface\n");
-	}
+bool KTorrentDbusInterface::findRunningApp()
+{
+	QDBusReply<QStringList> reply = QDBusConnection::sessionBus().interface()->registeredServiceNames();
+	if(!reply.isValid()) /* something fishy with dbus, it won't work */
+		return false;
 
-	bool KTorrentDbusInterface::findRunningApp()
-	{
-		QDBusReply<QStringList> reply = QDBusConnection::sessionBus().interface()->registeredServiceNames();
-		if (!reply.isValid())		/* something fishy with dbus, it won't work */
-			return false;
+	foreach(QString name, reply.value())
+		if(name == "org.ktorrent.ktorrent") /* ktorrent is running */
+			return true;
 
-		foreach (QString name, reply.value())
-			if (name == "org.ktorrent.ktorrent")	/* ktorrent is running */
-				return true;
+	return false; /* dbus works, ktorrent may be closed */
+}
 
-		return false;	/* dbus works, ktorrent may be closed */
-	}
+int KTorrentDbusInterface::detect()
+{
+	QDBusReply<QStringList> reply = QDBusConnection::sessionBus().interface()->registeredServiceNames();
+	if(!reply.isValid()) /* something fishy with dbus, it won't work */
+		return 0;
 
-	int KTorrentDbusInterface::detect()
-	{
-		QDBusReply<QStringList> reply = QDBusConnection::sessionBus().interface()->registeredServiceNames();
-		if (!reply.isValid())		/* something fishy with dbus, it won't work */
-			return 0;
+	foreach(QString name, reply.value())
+		if(name == "org.ktorrent.ktorrent") /* ktorrent is running */
+			return 100;
 
-		foreach (QString name, reply.value())
-			if (name == "org.ktorrent.ktorrent")	/* ktorrent is running */
-				return 100;
+	return 1; /* dbus works, ktorrent may be closed */
+}
 
-		return 1;	/* dbus works, ktorrent may be closed */
-	}
-
-#define KTDBUS_SIMPLE_CALL(__action) \
-	QDBusInterface dbus_iface("org.ktorrent.ktorrent", "/core", \
-				"org.ktorrent.KTorrent", QDBusConnection::sessionBus()); \
-	QDBusMessage reply = dbus_iface.call(QDBus::Block, __action); \
-	if (reply.type() == QDBusMessage::ErrorMessage) { \
-		QDBusError err = reply; \
+#define KTDBUS_SIMPLE_CALL(__action)                                                  \
+	QDBusInterface dbus_iface("org.ktorrent.ktorrent", "/core",                       \
+	    "org.ktorrent.KTorrent", QDBusConnection::sessionBus());                      \
+	QDBusMessage reply = dbus_iface.call(QDBus::Block, __action);                     \
+	if(reply.type() == QDBusMessage::ErrorMessage)                                    \
+	{                                                                                 \
+		QDBusError err = reply;                                                       \
 		qDebug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
-		return false; \
-	} \
+		return false;                                                                 \
+	}                                                                                 \
 	return true;
 
-	bool KTorrentDbusInterface::startAll()
-	{
-		KTDBUS_SIMPLE_CALL("startAll");
-		return true;
-	}
+bool KTorrentDbusInterface::startAll()
+{
+	KTDBUS_SIMPLE_CALL("startAll");
+	return true;
+}
 
-	bool KTorrentDbusInterface::stopAll()
-	{
-		KTDBUS_SIMPLE_CALL("stopAll");
-		return true;
-	}
+bool KTorrentDbusInterface::stopAll()
+{
+	KTDBUS_SIMPLE_CALL("stopAll");
+	return true;
+}
 
 /*
 	void KTorrentDbusInterface::slotTimer()
@@ -168,64 +166,64 @@
 		return true;
 	}
 */
-	bool KTorrentDbusInterface::start(int )
-	{
-/*
+bool KTorrentDbusInterface::start(int)
+{
+	/*
 		CHECK_RANGE_BOOL(i, m_ti.size())
 
 		qDebug("starting %s [%d]", (const char*)m_ti[i].name, m_ti[i].num);
 		if (!voidRetIntDCOPCall("KTorrent", "start(int)", m_ti[i].num))
 			ERROR_RET_BOOL
 */
-		return true;
-	}
+	return true;
+}
 
-	bool KTorrentDbusInterface::stop(int )
-	{
-/*
+bool KTorrentDbusInterface::stop(int)
+{
+	/*
 		CHECK_RANGE_BOOL(i, m_ti.size())
 
 		qDebug("stopping %s [%d]", (const char*)m_ti[i].name, m_ti[i].num);
 		if (!voidRetIntBoolDCOPCall("KTorrent", "stop(int, bool)", m_ti[i].num, true))
 			ERROR_RET_BOOL
 */
-		return true;
-	}
+	return true;
+}
 
-	bool KTorrentDbusInterface::announce(int )
-	{
-/*
+bool KTorrentDbusInterface::announce(int)
+{
+	/*
 		CHECK_RANGE_BOOL(i, m_ti.size())
 
 		qDebug("announcing %s [%d]", (const char*)m_ti[i].name, m_ti[i].num);
 		if (!voidRetIntDCOPCall("KTorrent", "announce(int)", m_ti[i].num))
 			ERROR_RET_BOOL
 */
-		return true;
-	}
+	return true;
+}
 
-	QString KTorrentDbusInterface::state(int )
-	{
-/*
+QString KTorrentDbusInterface::state(int)
+{
+	/*
 		CHECK_RANGE_STRING(i, m_ti.size())
 
 		return m_ti[i].state;
 */
 	return QString();
-	}
+}
 
-	QString KTorrentDbusInterface::name(int )
-	{
+QString KTorrentDbusInterface::name(int)
+{
 	/*
 		CHECK_RANGE_STRING(i, m_ti.size())
 
 		return m_ti[i].name;
 	*/
 	return QString();
-	}
+}
 
-	int KTorrentDbusInterface::fileCount(int )
-	{
+int KTorrentDbusInterface::fileCount(int)
+{
 	/*
 		CHECK_RANGE_INT(i, m_ti.size())
 
@@ -236,10 +234,10 @@
 		return ret;
 	*/
 	return 0;
-	}
+}
 
-	QString KTorrentDbusInterface::fileName(int, int )
-	{
+QString KTorrentDbusInterface::fileName(int, int)
+{
 	/*
 		CHECK_RANGE_STRING(i, m_ti.size())
 
@@ -252,10 +250,10 @@
 		return ret[file];
 	*/
 	return QString();
-	}
+}
 
-	QString KTorrentDbusInterface::filePriority(int, int )
-	{
+QString KTorrentDbusInterface::filePriority(int, int)
+{
 	/*
 		CHECK_RANGE_STRING(i, m_ti.size())
 
@@ -276,10 +274,10 @@
 		ERROR_RET_STRING
 	*/
 	return QString();
-	}
+}
 
-	bool KTorrentDbusInterface::setFilePriority(int, int, const QString &)
-	{
+bool KTorrentDbusInterface::setFilePriority(int, int, const QString &)
+{
 	/*
 		CHECK_RANGE_BOOL(i, m_ti.size())
 
@@ -298,17 +296,17 @@
 		if (!voidRetIntIntIntDCOPCall("KTorrent", "setFilePriority(int,int,int)", m_ti[i].num, file, prion))
 			ERROR_RET_BOOL
 */
-		return true;
-	}
+	return true;
+}
 
-	int KTorrentDbusInterface::count()
-	{
-		return 0;
-// 		return m_ti.size();
-	}
+int KTorrentDbusInterface::count()
+{
+	return 0;
+	// 		return m_ti.size();
+}
 
-	float KTorrentDbusInterface::speedUp()
-	{
+float KTorrentDbusInterface::speedUp()
+{
 	/*
 		KviQCStringList ret;
 		if (!qcstringListRetVoidDCOPCall("KTorrent", "getInfo()", ret))
@@ -326,10 +324,10 @@
 		return f;
 	*/
 	return 0.0;
-	}
+}
 
-	float KTorrentDbusInterface::speedDown()
-	{
+float KTorrentDbusInterface::speedDown()
+{
 	/*
 		KviQCStringList ret;
 		if (!qcstringListRetVoidDCOPCall("KTorrent", "getInfo()", ret))
@@ -347,10 +345,10 @@
 		return f;
 	*/
 	return 0.0;
-	}
+}
 
-	float KTorrentDbusInterface::trafficUp()
-	{
+float KTorrentDbusInterface::trafficUp()
+{
 	/*
 		KviQCStringList ret;
 		if (!qcstringListRetVoidDCOPCall("KTorrent", "getInfo()", ret))
@@ -367,10 +365,10 @@
 		return f;
 	*/
 	return 0.0;
-	}
+}
 
-	float KTorrentDbusInterface::trafficDown()
-	{
+float KTorrentDbusInterface::trafficDown()
+{
 	/*
 		KviQCStringList ret;
 		if (!qcstringListRetVoidDCOPCall("KTorrent", "getInfo()", ret))
@@ -387,7 +385,7 @@
 		return f;
 	*/
 	return 0.0;
-	}
+}
 /*
 	bool KTorrentDbusInterface::makeTorrentInfo(TorrentInfo &ti, const KviQCStringList &ret)
 	{
@@ -452,8 +450,8 @@
 		return true;
 	}
 */
-	int KTorrentDbusInterface::maxUploadSpeed()
-	{
+int KTorrentDbusInterface::maxUploadSpeed()
+{
 	/*
 		int ret;
 		if (!intRetVoidDCOPCall("KTorrent", "maxUploadRate()", ret))
@@ -464,10 +462,10 @@
 		return ret;
 	*/
 	return -1;
-	}
+}
 
-	int KTorrentDbusInterface::maxDownloadSpeed()
-	{
+int KTorrentDbusInterface::maxDownloadSpeed()
+{
 	/*
 		int ret;
 		if (!intRetVoidDCOPCall("KTorrent", "maxDownloadRate()", ret))
@@ -478,25 +476,24 @@
 		return ret;
 	*/
 	return -1;
-	}
+}
 
-	bool KTorrentDbusInterface::setMaxUploadSpeed(int )
-	{
+bool KTorrentDbusInterface::setMaxUploadSpeed(int)
+{
 	/*
 		if (!voidRetIntDCOPCall("KTorrent", "setMaxUploadSpeed(int)", kbytes_per_sec))
 			ERROR_RET_BOOL
 	*/
-		return true;
-	}
+	return true;
+}
 
-	bool KTorrentDbusInterface::setMaxDownloadSpeed(int )
-	{
+bool KTorrentDbusInterface::setMaxDownloadSpeed(int)
+{
 	/*
 		if (!voidRetIntDCOPCall("KTorrent", "setMaxDownloadSpeed(int)", kbytes_per_sec))
 			ERROR_RET_BOOL
 	*/
-		return true;
-	}
-
+	return true;
+}
 
 #endif //	COMPILE_KDE_SUPPORT

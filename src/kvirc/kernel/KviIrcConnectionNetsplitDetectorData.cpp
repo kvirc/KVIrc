@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviIrcConnectionNetsplitDetectorData.h"
 
 KviIrcConnectionNetsplitDetectorData::KviIrcConnectionNetsplitDetectorData()

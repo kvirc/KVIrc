@@ -31,9 +31,8 @@
 
 #include <math.h>
 
-
 KviKvsTreeNodeOperation::KviKvsTreeNodeOperation(const QChar * pLocation)
-: KviKvsTreeNodeInstruction(pLocation)
+    : KviKvsTreeNodeInstruction(pLocation)
 {
 	//m_pTargetData = 0; no need to set it
 }
@@ -49,22 +48,21 @@ void KviKvsTreeNodeOperation::setTargetVariableReference(KviKvsTreeNodeData * r)
 	m_pTargetData->setParent(this);
 }
 
-void KviKvsTreeNodeOperation::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperation::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operation";
 }
 
 void KviKvsTreeNodeOperation::dump(const char * prefix)
 {
-	qDebug("%s Operation",prefix);
+	qDebug("%s Operation", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
 }
 
-
-KviKvsTreeNodeOperationAssignment::KviKvsTreeNodeOperationAssignment(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationAssignment::KviKvsTreeNodeOperationAssignment(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -75,15 +73,14 @@ KviKvsTreeNodeOperationAssignment::~KviKvsTreeNodeOperationAssignment()
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationAssignment::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationAssignment::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Assignment";
 }
 
-
 void KviKvsTreeNodeOperationAssignment::dump(const char * prefix)
 {
-	qDebug("%s OperationAssignment",prefix);
+	qDebug("%s OperationAssignment", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -93,19 +90,20 @@ void KviKvsTreeNodeOperationAssignment::dump(const char * prefix)
 bool KviKvsTreeNodeOperationAssignment::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	target->result()->takeFrom(v);
 	delete target;
 	return true;
 }
 
-
 KviKvsTreeNodeOperationDecrement::KviKvsTreeNodeOperationDecrement(const QChar * pLocation)
-: KviKvsTreeNodeOperation(pLocation)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 }
 
@@ -113,15 +111,14 @@ KviKvsTreeNodeOperationDecrement::~KviKvsTreeNodeOperationDecrement()
 {
 }
 
-void KviKvsTreeNodeOperationDecrement::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationDecrement::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"--\"";
 }
 
-
 void KviKvsTreeNodeOperationDecrement::dump(const char * prefix)
 {
-	qDebug("%s OperationDecrement",prefix);
+	qDebug("%s OperationDecrement", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -130,14 +127,15 @@ void KviKvsTreeNodeOperationDecrement::dump(const char * prefix)
 bool KviKvsTreeNodeOperationDecrement::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsRWEvaluationResult * v = m_pTargetData->evaluateReadWrite(c);
-	if(!v)return false;
+	if(!v)
+		return false;
 
 	kvs_int_t iVal;
 	if(v->result()->asInteger(iVal))
 	{
 		v->result()->setInteger(iVal - 1);
 		delete v;
-        v = 0;
+		v = 0;
 		return true;
 	}
 
@@ -146,18 +144,17 @@ bool KviKvsTreeNodeOperationDecrement::execute(KviKvsRunTimeContext * c)
 	{
 		v->result()->setReal(dVal - 1.0);
 		delete v;
-        v = 0;
+		v = 0;
 		return true;
 	}
 
-	c->error(this,__tr2qs_ctx("The target variable didn't evaluate to an integer or real value","kvs"));
+	c->error(this, __tr2qs_ctx("The target variable didn't evaluate to an integer or real value", "kvs"));
 	delete v;
 	return false;
 }
 
-
 KviKvsTreeNodeOperationIncrement::KviKvsTreeNodeOperationIncrement(const QChar * pLocation)
-: KviKvsTreeNodeOperation(pLocation)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 }
 
@@ -165,15 +162,14 @@ KviKvsTreeNodeOperationIncrement::~KviKvsTreeNodeOperationIncrement()
 {
 }
 
-void KviKvsTreeNodeOperationIncrement::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationIncrement::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"++\"";
 }
 
-
 void KviKvsTreeNodeOperationIncrement::dump(const char * prefix)
 {
-	qDebug("%s OperationIncrement",prefix);
+	qDebug("%s OperationIncrement", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -182,14 +178,15 @@ void KviKvsTreeNodeOperationIncrement::dump(const char * prefix)
 bool KviKvsTreeNodeOperationIncrement::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsRWEvaluationResult * v = m_pTargetData->evaluateReadWrite(c);
-	if(!v)return false;
+	if(!v)
+		return false;
 
 	kvs_int_t iVal;
 	if(v->result()->asInteger(iVal))
 	{
 		v->result()->setInteger(iVal + 1);
 		delete v;
-        v = 0;
+		v = 0;
 		return true;
 	}
 
@@ -198,19 +195,16 @@ bool KviKvsTreeNodeOperationIncrement::execute(KviKvsRunTimeContext * c)
 	{
 		v->result()->setReal(dVal + 1.0);
 		delete v;
-        v = 0;
+		v = 0;
 		return true;
 	}
-	c->error(this,__tr2qs_ctx("The target variable didn't evaluate to an integer or real value","kvs"));
+	c->error(this, __tr2qs_ctx("The target variable didn't evaluate to an integer or real value", "kvs"));
 	delete v;
 	return false;
 }
 
-
-
-
-KviKvsTreeNodeOperationSelfAnd::KviKvsTreeNodeOperationSelfAnd(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationSelfAnd::KviKvsTreeNodeOperationSelfAnd(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -221,15 +215,14 @@ KviKvsTreeNodeOperationSelfAnd::~KviKvsTreeNodeOperationSelfAnd()
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationSelfAnd::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationSelfAnd::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"&=\"";
 }
 
-
 void KviKvsTreeNodeOperationSelfAnd::dump(const char * prefix)
 {
-	qDebug("%s OperationSelfAnd",prefix);
+	qDebug("%s OperationSelfAnd", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -239,26 +232,28 @@ void KviKvsTreeNodeOperationSelfAnd::dump(const char * prefix)
 bool KviKvsTreeNodeOperationSelfAnd::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 
 	kvs_int_t iRVal;
 
 	if(!v.asInteger(iRVal))
 	{
-		c->error(this,__tr2qs_ctx("The right side of operator '&=' didn't evaluate to an integer","kvs"));
+		c->error(this, __tr2qs_ctx("The right side of operator '&=' didn't evaluate to an integer", "kvs"));
 		return false;
 	}
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	kvs_int_t iLVal;
 
 	if(!target->result()->asInteger(iLVal))
 	{
-		c->error(this,__tr2qs_ctx("The left side of operator '&=' didn't evaluate to an integer","kvs"));
+		c->error(this, __tr2qs_ctx("The left side of operator '&=' didn't evaluate to an integer", "kvs"));
 		delete target;
-        target = 0;
+		target = 0;
 		return false;
 	}
 
@@ -267,10 +262,8 @@ bool KviKvsTreeNodeOperationSelfAnd::execute(KviKvsRunTimeContext * c)
 	return true;
 }
 
-
-
-KviKvsTreeNodeOperationSelfDivision::KviKvsTreeNodeOperationSelfDivision(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationSelfDivision::KviKvsTreeNodeOperationSelfDivision(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -281,15 +274,14 @@ KviKvsTreeNodeOperationSelfDivision::~KviKvsTreeNodeOperationSelfDivision()
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationSelfDivision::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationSelfDivision::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"/=\"";
 }
 
-
 void KviKvsTreeNodeOperationSelfDivision::dump(const char * prefix)
 {
-	qDebug("%s OperationSelfDivision",prefix);
+	qDebug("%s OperationSelfDivision", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -299,26 +291,28 @@ void KviKvsTreeNodeOperationSelfDivision::dump(const char * prefix)
 bool KviKvsTreeNodeOperationSelfDivision::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 
 	KviKvsNumber rnum;
 
 	if(!v.asNumber(rnum))
 	{
-		c->error(this,__tr2qs_ctx("The right side of operator '/=' didn't evaluate to a number","kvs"));
+		c->error(this, __tr2qs_ctx("The right side of operator '/=' didn't evaluate to a number", "kvs"));
 		return false;
 	}
 
 	KviKvsNumber lnum;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	if(!target->result()->asNumber(lnum))
 	{
-		c->error(this,__tr2qs_ctx("The left side of operator '/=' didn't evaluate to a number","kvs"));
+		c->error(this, __tr2qs_ctx("The left side of operator '/=' didn't evaluate to a number", "kvs"));
 		delete target;
-        target = 0;
+		target = 0;
 		return false;
 	}
 
@@ -326,21 +320,23 @@ bool KviKvsTreeNodeOperationSelfDivision::execute(KviKvsRunTimeContext * c)
 	{
 		if(rnum.integer() == 0)
 		{
-			c->error(this,__tr2qs_ctx("Division by zero","kvs"));
+			c->error(this, __tr2qs_ctx("Division by zero", "kvs"));
 			delete target;
-            target = 0;
+			target = 0;
 			return false;
 		}
 		if(lnum.isInteger())
 			target->result()->setInteger(lnum.integer() / rnum.integer());
 		else
 			target->result()->setReal(lnum.real() / (kvs_real_t)(rnum.integer()));
-	} else {
+	}
+	else
+	{
 		if(rnum.real() == 0.0)
 		{
-			c->error(this,__tr2qs_ctx("Division by zero","kvs"));
+			c->error(this, __tr2qs_ctx("Division by zero", "kvs"));
 			delete target;
-            target = 0;
+			target = 0;
 			return false;
 		}
 		if(lnum.isInteger())
@@ -353,8 +349,8 @@ bool KviKvsTreeNodeOperationSelfDivision::execute(KviKvsRunTimeContext * c)
 	return true;
 }
 
-KviKvsTreeNodeOperationSelfModulus::KviKvsTreeNodeOperationSelfModulus(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationSelfModulus::KviKvsTreeNodeOperationSelfModulus(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -365,15 +361,14 @@ KviKvsTreeNodeOperationSelfModulus::~KviKvsTreeNodeOperationSelfModulus()
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationSelfModulus::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationSelfModulus::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"Self Modulo\"";
 }
 
-
 void KviKvsTreeNodeOperationSelfModulus::dump(const char * prefix)
 {
-	qDebug("%s OperationSelfModulus",prefix);
+	qDebug("%s OperationSelfModulus", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -383,25 +378,27 @@ void KviKvsTreeNodeOperationSelfModulus::dump(const char * prefix)
 bool KviKvsTreeNodeOperationSelfModulus::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 	KviKvsNumber rnum;
 
 	if(!v.asNumber(rnum))
 	{
-		c->error(this,__tr2qs_ctx("The right side of operator '%=' didn't evaluate to a number","kvs"));
+		c->error(this, __tr2qs_ctx("The right side of operator '%=' didn't evaluate to a number", "kvs"));
 		return false;
 	}
 
 	KviKvsNumber lnum;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	if(!target->result()->asNumber(lnum))
 	{
-		c->error(this,__tr2qs_ctx("The left side of operator '%=' didn't evaluate to a number","kvs"));
+		c->error(this, __tr2qs_ctx("The left side of operator '%=' didn't evaluate to a number", "kvs"));
 		delete target;
-			target = 0;
+		target = 0;
 		return false;
 	}
 
@@ -409,7 +406,7 @@ bool KviKvsTreeNodeOperationSelfModulus::execute(KviKvsRunTimeContext * c)
 	{
 		if(rnum.integer() == 0)
 		{
-			c->error(this,__tr2qs_ctx("Division by zero","kvs"));
+			c->error(this, __tr2qs_ctx("Division by zero", "kvs"));
 			delete target;
 			target = 0;
 			return false;
@@ -417,26 +414,27 @@ bool KviKvsTreeNodeOperationSelfModulus::execute(KviKvsRunTimeContext * c)
 		if(lnum.isInteger())
 			target->result()->setInteger(lnum.integer() % rnum.integer());
 		else
-			target->result()->setReal(fmod(lnum.real(),(kvs_real_t)(rnum.integer())));
-	} else {
+			target->result()->setReal(fmod(lnum.real(), (kvs_real_t)(rnum.integer())));
+	}
+	else
+	{
 		if(rnum.real() == 0.0)
 		{
-			c->error(this,__tr2qs_ctx("Division by zero","kvs"));
+			c->error(this, __tr2qs_ctx("Division by zero", "kvs"));
 			delete target;
 			target = 0;
 			return false;
 		}
 		if(lnum.isInteger())
-			target->result()->setReal(fmod(((kvs_real_t)(lnum.integer())),rnum.real()));
+			target->result()->setReal(fmod(((kvs_real_t)(lnum.integer())), rnum.real()));
 		else
-			target->result()->setReal(fmod(lnum.real(),rnum.real()));
+			target->result()->setReal(fmod(lnum.real(), rnum.real()));
 	}
 	return true;
 }
 
-
-KviKvsTreeNodeOperationSelfMultiplication::KviKvsTreeNodeOperationSelfMultiplication(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationSelfMultiplication::KviKvsTreeNodeOperationSelfMultiplication(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -447,15 +445,14 @@ KviKvsTreeNodeOperationSelfMultiplication::~KviKvsTreeNodeOperationSelfMultiplic
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationSelfMultiplication::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationSelfMultiplication::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"*=\"";
 }
 
-
 void KviKvsTreeNodeOperationSelfMultiplication::dump(const char * prefix)
 {
-	qDebug("%s OperationSelfMultiplication",prefix);
+	qDebug("%s OperationSelfMultiplication", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -465,23 +462,25 @@ void KviKvsTreeNodeOperationSelfMultiplication::dump(const char * prefix)
 bool KviKvsTreeNodeOperationSelfMultiplication::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 	KviKvsNumber rnum;
 
 	if(!v.asNumber(rnum))
 	{
-		c->error(this,__tr2qs_ctx("The right side of operator '*=' didn't evaluate to a number","kvs"));
+		c->error(this, __tr2qs_ctx("The right side of operator '*=' didn't evaluate to a number", "kvs"));
 		return false;
 	}
 
 	KviKvsNumber lnum;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	if(!target->result()->asNumber(lnum))
 	{
-		c->error(this,__tr2qs_ctx("The left side of operator '*=' didn't evaluate to a number","kvs"));
+		c->error(this, __tr2qs_ctx("The left side of operator '*=' didn't evaluate to a number", "kvs"));
 		delete target;
 		return false;
 	}
@@ -492,7 +491,9 @@ bool KviKvsTreeNodeOperationSelfMultiplication::execute(KviKvsRunTimeContext * c
 			target->result()->setInteger(lnum.integer() * rnum.integer());
 		else
 			target->result()->setReal(lnum.real() * (kvs_real_t)(rnum.integer()));
-	} else {
+	}
+	else
+	{
 		if(lnum.isInteger())
 			target->result()->setReal(((kvs_real_t)(lnum.integer())) * rnum.real());
 		else
@@ -501,9 +502,8 @@ bool KviKvsTreeNodeOperationSelfMultiplication::execute(KviKvsRunTimeContext * c
 	return true;
 }
 
-
-KviKvsTreeNodeOperationSelfOr::KviKvsTreeNodeOperationSelfOr(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationSelfOr::KviKvsTreeNodeOperationSelfOr(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -514,15 +514,14 @@ KviKvsTreeNodeOperationSelfOr::~KviKvsTreeNodeOperationSelfOr()
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationSelfOr::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationSelfOr::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"|=\"";
 }
 
-
 void KviKvsTreeNodeOperationSelfOr::dump(const char * prefix)
 {
-	qDebug("%s OperationSelfOr",prefix);
+	qDebug("%s OperationSelfOr", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -532,23 +531,25 @@ void KviKvsTreeNodeOperationSelfOr::dump(const char * prefix)
 bool KviKvsTreeNodeOperationSelfOr::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 
 	kvs_int_t iRVal;
 	if(!v.asInteger(iRVal))
 	{
-		c->error(this,__tr2qs_ctx("The right side of operator '|=' didn't evaluate to an integer","kvs"));
+		c->error(this, __tr2qs_ctx("The right side of operator '|=' didn't evaluate to an integer", "kvs"));
 		return false;
 	}
 
 	kvs_int_t iLVal;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	if(!target->result()->asInteger(iLVal))
 	{
-		c->error(this,__tr2qs_ctx("The left side of operator '|=' didn't evaluate to an integer","kvs"));
+		c->error(this, __tr2qs_ctx("The left side of operator '|=' didn't evaluate to an integer", "kvs"));
 		delete target;
 		target = 0;
 		return false;
@@ -559,9 +560,8 @@ bool KviKvsTreeNodeOperationSelfOr::execute(KviKvsRunTimeContext * c)
 	return true;
 }
 
-
-KviKvsTreeNodeOperationSelfShl::KviKvsTreeNodeOperationSelfShl(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationSelfShl::KviKvsTreeNodeOperationSelfShl(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -572,15 +572,14 @@ KviKvsTreeNodeOperationSelfShl::~KviKvsTreeNodeOperationSelfShl()
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationSelfShl::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationSelfShl::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"<<=\"";
 }
 
-
 void KviKvsTreeNodeOperationSelfShl::dump(const char * prefix)
 {
-	qDebug("%s OperationSelfShl",prefix);
+	qDebug("%s OperationSelfShl", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -590,24 +589,26 @@ void KviKvsTreeNodeOperationSelfShl::dump(const char * prefix)
 bool KviKvsTreeNodeOperationSelfShl::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 
 	kvs_int_t iRVal;
 
 	if(!v.asInteger(iRVal))
 	{
-		c->error(this,__tr2qs_ctx("The right side of operator '<<=' didn't evaluate to an integer","kvs"));
+		c->error(this, __tr2qs_ctx("The right side of operator '<<=' didn't evaluate to an integer", "kvs"));
 		return false;
 	}
 
 	kvs_int_t iLVal;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	if(!target->result()->asInteger(iLVal))
 	{
-		c->error(this,__tr2qs_ctx("The left side of operator '<<=' didn't evaluate to an integer","kvs"));
+		c->error(this, __tr2qs_ctx("The left side of operator '<<=' didn't evaluate to an integer", "kvs"));
 		delete target;
 		target = 0;
 		return false;
@@ -618,9 +619,8 @@ bool KviKvsTreeNodeOperationSelfShl::execute(KviKvsRunTimeContext * c)
 	return true;
 }
 
-
-KviKvsTreeNodeOperationSelfShr::KviKvsTreeNodeOperationSelfShr(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationSelfShr::KviKvsTreeNodeOperationSelfShr(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -631,15 +631,14 @@ KviKvsTreeNodeOperationSelfShr::~KviKvsTreeNodeOperationSelfShr()
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationSelfShr::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationSelfShr::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \">>=\"";
 }
 
-
 void KviKvsTreeNodeOperationSelfShr::dump(const char * prefix)
 {
-	qDebug("%s OperationSelfShr",prefix);
+	qDebug("%s OperationSelfShr", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -649,24 +648,26 @@ void KviKvsTreeNodeOperationSelfShr::dump(const char * prefix)
 bool KviKvsTreeNodeOperationSelfShr::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 
 	kvs_int_t iRVal;
 
 	if(!v.asInteger(iRVal))
 	{
-		c->error(this,__tr2qs_ctx("The right side of operator '>>=' didn't evaluate to an integer","kvs"));
+		c->error(this, __tr2qs_ctx("The right side of operator '>>=' didn't evaluate to an integer", "kvs"));
 		return false;
 	}
 
 	kvs_int_t iLVal;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	if(!target->result()->asInteger(iLVal))
 	{
-		c->error(this,__tr2qs_ctx("The left side of operator '>>=' didn't evaluate to an integer","kvs"));
+		c->error(this, __tr2qs_ctx("The left side of operator '>>=' didn't evaluate to an integer", "kvs"));
 		delete target;
 		target = 0;
 		return false;
@@ -677,10 +678,8 @@ bool KviKvsTreeNodeOperationSelfShr::execute(KviKvsRunTimeContext * c)
 	return true;
 }
 
-
-
-KviKvsTreeNodeOperationSelfSubtraction::KviKvsTreeNodeOperationSelfSubtraction(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationSelfSubtraction::KviKvsTreeNodeOperationSelfSubtraction(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -691,15 +690,14 @@ KviKvsTreeNodeOperationSelfSubtraction::~KviKvsTreeNodeOperationSelfSubtraction(
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationSelfSubtraction::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationSelfSubtraction::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"-=\"";
 }
 
-
 void KviKvsTreeNodeOperationSelfSubtraction::dump(const char * prefix)
 {
-	qDebug("%s OperationSelfSubtraction",prefix);
+	qDebug("%s OperationSelfSubtraction", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -709,23 +707,25 @@ void KviKvsTreeNodeOperationSelfSubtraction::dump(const char * prefix)
 bool KviKvsTreeNodeOperationSelfSubtraction::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 	KviKvsNumber rnum;
 
 	if(!v.asNumber(rnum))
 	{
-		c->error(this,__tr2qs_ctx("The right side of operator '-=' didn't evaluate to a number","kvs"));
+		c->error(this, __tr2qs_ctx("The right side of operator '-=' didn't evaluate to a number", "kvs"));
 		return false;
 	}
 
 	KviKvsNumber lnum;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	if(!target->result()->asNumber(lnum))
 	{
-		c->error(this,__tr2qs_ctx("The left side of operator '-=' didn't evaluate to a number","kvs"));
+		c->error(this, __tr2qs_ctx("The left side of operator '-=' didn't evaluate to a number", "kvs"));
 		delete target;
 		target = 0;
 		return false;
@@ -737,7 +737,9 @@ bool KviKvsTreeNodeOperationSelfSubtraction::execute(KviKvsRunTimeContext * c)
 			target->result()->setInteger(lnum.integer() - rnum.integer());
 		else
 			target->result()->setReal(lnum.real() - (kvs_real_t)(rnum.integer()));
-	} else {
+	}
+	else
+	{
 		if(lnum.isInteger())
 			target->result()->setReal(((kvs_real_t)(lnum.integer())) - rnum.real());
 		else
@@ -748,9 +750,8 @@ bool KviKvsTreeNodeOperationSelfSubtraction::execute(KviKvsRunTimeContext * c)
 	return true;
 }
 
-
-KviKvsTreeNodeOperationSelfSum::KviKvsTreeNodeOperationSelfSum(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationSelfSum::KviKvsTreeNodeOperationSelfSum(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -761,15 +762,14 @@ KviKvsTreeNodeOperationSelfSum::~KviKvsTreeNodeOperationSelfSum()
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationSelfSum::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationSelfSum::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"+=\"";
 }
 
-
 void KviKvsTreeNodeOperationSelfSum::dump(const char * prefix)
 {
-	qDebug("%s OperationSelfSum",prefix);
+	qDebug("%s OperationSelfSum", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -779,25 +779,26 @@ void KviKvsTreeNodeOperationSelfSum::dump(const char * prefix)
 bool KviKvsTreeNodeOperationSelfSum::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
 		return false;
 
 	KviKvsNumber rnum;
 
 	if(!v.asNumber(rnum))
 	{
-		c->error(this,__tr2qs_ctx("The right side of operator '+=' didn't evaluate to a number","kvs"));
+		c->error(this, __tr2qs_ctx("The right side of operator '+=' didn't evaluate to a number", "kvs"));
 		return false;
 	}
 
 	KviKvsNumber lnum;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	if(!target->result()->asNumber(lnum))
 	{
-		c->error(this,__tr2qs_ctx("The left side of operator '+=' didn't evaluate to a number","kvs"));
+		c->error(this, __tr2qs_ctx("The left side of operator '+=' didn't evaluate to a number", "kvs"));
 		delete target;
 		target = 0;
 		return false;
@@ -809,7 +810,9 @@ bool KviKvsTreeNodeOperationSelfSum::execute(KviKvsRunTimeContext * c)
 			target->result()->setInteger(lnum.integer() + rnum.integer());
 		else
 			target->result()->setReal(lnum.real() + (kvs_real_t)(rnum.integer()));
-	} else {
+	}
+	else
+	{
 		if(lnum.isInteger())
 			target->result()->setReal(((kvs_real_t)(lnum.integer())) + rnum.real());
 		else
@@ -820,9 +823,8 @@ bool KviKvsTreeNodeOperationSelfSum::execute(KviKvsRunTimeContext * c)
 	return true;
 }
 
-
-KviKvsTreeNodeOperationSelfXor::KviKvsTreeNodeOperationSelfXor(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationSelfXor::KviKvsTreeNodeOperationSelfXor(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -833,15 +835,14 @@ KviKvsTreeNodeOperationSelfXor::~KviKvsTreeNodeOperationSelfXor()
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationSelfXor::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationSelfXor::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"^=\"";
 }
 
-
 void KviKvsTreeNodeOperationSelfXor::dump(const char * prefix)
 {
-	qDebug("%s OperationSelfXor",prefix);
+	qDebug("%s OperationSelfXor", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -851,24 +852,26 @@ void KviKvsTreeNodeOperationSelfXor::dump(const char * prefix)
 bool KviKvsTreeNodeOperationSelfXor::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 
 	kvs_int_t iRVal;
 
 	if(!v.asInteger(iRVal))
 	{
-		c->error(this,__tr2qs_ctx("The right side of operator '^=' didn't evaluate to an integer","kvs"));
+		c->error(this, __tr2qs_ctx("The right side of operator '^=' didn't evaluate to an integer", "kvs"));
 		return false;
 	}
 
 	kvs_int_t iLVal;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	if(!target->result()->asInteger(iLVal))
 	{
-		c->error(this,__tr2qs_ctx("The left side of operator '^=' didn't evaluate to an integer","kvs"));
+		c->error(this, __tr2qs_ctx("The left side of operator '^=' didn't evaluate to an integer", "kvs"));
 		delete target;
 		target = 0;
 		return false;
@@ -879,9 +882,8 @@ bool KviKvsTreeNodeOperationSelfXor::execute(KviKvsRunTimeContext * c)
 	return true;
 }
 
-
-KviKvsTreeNodeOperationStringAppend::KviKvsTreeNodeOperationStringAppend(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationStringAppend::KviKvsTreeNodeOperationStringAppend(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -892,15 +894,14 @@ KviKvsTreeNodeOperationStringAppend::~KviKvsTreeNodeOperationStringAppend()
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationStringAppend::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationStringAppend::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"<<\"";
 }
 
-
 void KviKvsTreeNodeOperationStringAppend::dump(const char * prefix)
 {
-	qDebug("%s OperationStringAppend",prefix);
+	qDebug("%s OperationStringAppend", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -910,9 +911,11 @@ void KviKvsTreeNodeOperationStringAppend::dump(const char * prefix)
 bool KviKvsTreeNodeOperationStringAppend::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	QString sz1;
 	target->result()->asString(sz1);
@@ -922,8 +925,8 @@ bool KviKvsTreeNodeOperationStringAppend::execute(KviKvsRunTimeContext * c)
 	return true;
 }
 
-KviKvsTreeNodeOperationArrayAppend::KviKvsTreeNodeOperationArrayAppend(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationArrayAppend::KviKvsTreeNodeOperationArrayAppend(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -934,15 +937,14 @@ KviKvsTreeNodeOperationArrayAppend::~KviKvsTreeNodeOperationArrayAppend()
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationArrayAppend::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationArrayAppend::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"<+\"";
 }
 
-
 void KviKvsTreeNodeOperationArrayAppend::dump(const char * prefix)
 {
-	qDebug("%s OperationArrayAppend",prefix);
+	qDebug("%s OperationArrayAppend", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -952,9 +954,11 @@ void KviKvsTreeNodeOperationArrayAppend::dump(const char * prefix)
 bool KviKvsTreeNodeOperationArrayAppend::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	target->result()->convertToArray();
 	KviKvsArray * a = target->result()->array();
@@ -963,7 +967,7 @@ bool KviKvsTreeNodeOperationArrayAppend::execute(KviKvsRunTimeContext * c)
 	{
 		case KviKvsVariantData::Nothing:
 			// do nothing
-		break;
+			break;
 		case KviKvsVariantData::Array:
 		{
 			KviKvsArray * s = v.array();
@@ -973,7 +977,7 @@ bool KviKvsTreeNodeOperationArrayAppend::execute(KviKvsRunTimeContext * c)
 			{
 				KviKvsVariant * pInternal = s->at(uIdx);
 				if(pInternal)
-					a->set(a->size(),new KviKvsVariant(*pInternal));
+					a->set(a->size(), new KviKvsVariant(*pInternal));
 				// else
 				//	leave an empty entry
 				uIdx++;
@@ -985,23 +989,22 @@ bool KviKvsTreeNodeOperationArrayAppend::execute(KviKvsRunTimeContext * c)
 			KviKvsHashIterator it(*(v.hash()->dict()));
 			while(KviKvsVariant * pInternal = it.current())
 			{
-				a->set(a->size(),new KviKvsVariant(*pInternal));
+				a->set(a->size(), new KviKvsVariant(*pInternal));
 				++it;
 			}
 		}
 		break;
 		default:
-			a->set(a->size(),new KviKvsVariant(v));
-		break;
+			a->set(a->size(), new KviKvsVariant(v));
+			break;
 	}
 	delete target;
 
 	return true;
 }
 
-
-KviKvsTreeNodeOperationStringAppendWithComma::KviKvsTreeNodeOperationStringAppendWithComma(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationStringAppendWithComma::KviKvsTreeNodeOperationStringAppendWithComma(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -1012,15 +1015,14 @@ KviKvsTreeNodeOperationStringAppendWithComma::~KviKvsTreeNodeOperationStringAppe
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationStringAppendWithComma::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationStringAppendWithComma::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"<,\"";
 }
 
-
 void KviKvsTreeNodeOperationStringAppendWithComma::dump(const char * prefix)
 {
-	qDebug("%s OperationStringAppendWithComma",prefix);
+	qDebug("%s OperationStringAppendWithComma", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -1030,16 +1032,20 @@ void KviKvsTreeNodeOperationStringAppendWithComma::dump(const char * prefix)
 bool KviKvsTreeNodeOperationStringAppendWithComma::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	QString sz1;
 	target->result()->asString(sz1);
 	if(sz1.isEmpty())
 	{
 		v.asString(sz1);
-	} else {
+	}
+	else
+	{
 		QString sz2;
 		v.asString(sz2);
 		sz1 += QChar(',');
@@ -1050,9 +1056,8 @@ bool KviKvsTreeNodeOperationStringAppendWithComma::execute(KviKvsRunTimeContext 
 	return true;
 }
 
-
-KviKvsTreeNodeOperationStringAppendWithSpace::KviKvsTreeNodeOperationStringAppendWithSpace(const QChar * pLocation,KviKvsTreeNodeData * pRightSide)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationStringAppendWithSpace::KviKvsTreeNodeOperationStringAppendWithSpace(const QChar * pLocation, KviKvsTreeNodeData * pRightSide)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pRightSide = pRightSide;
 	m_pRightSide->setParent(this);
@@ -1063,15 +1068,14 @@ KviKvsTreeNodeOperationStringAppendWithSpace::~KviKvsTreeNodeOperationStringAppe
 	delete m_pRightSide;
 }
 
-void KviKvsTreeNodeOperationStringAppendWithSpace::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationStringAppendWithSpace::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Operator \"<+\"";
 }
 
-
 void KviKvsTreeNodeOperationStringAppendWithSpace::dump(const char * prefix)
 {
-	qDebug("%s OperationStringAppendWithSpace",prefix);
+	qDebug("%s OperationStringAppendWithSpace", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pTargetData->dump(tmp.toUtf8().data());
@@ -1081,16 +1085,20 @@ void KviKvsTreeNodeOperationStringAppendWithSpace::dump(const char * prefix)
 bool KviKvsTreeNodeOperationStringAppendWithSpace::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
-	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
+	if(!m_pRightSide->evaluateReadOnly(c, &v))
+		return false;
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
 	QString sz1;
 	target->result()->asString(sz1);
 	if(sz1.isEmpty())
 	{
 		v.asString(sz1);
-	} else {
+	}
+	else
+	{
 		QString sz2;
 		v.asString(sz2);
 		sz1 += QChar(' ');
@@ -1101,9 +1109,8 @@ bool KviKvsTreeNodeOperationStringAppendWithSpace::execute(KviKvsRunTimeContext 
 	return true;
 }
 
-
-KviKvsTreeNodeOperationStringTransliteration::KviKvsTreeNodeOperationStringTransliteration(const QChar * pLocation,KviKvsTreeNodeData * pLeft,KviKvsTreeNodeData * pRight,KviKvsTreeNodeData * pFlags)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationStringTransliteration::KviKvsTreeNodeOperationStringTransliteration(const QChar * pLocation, KviKvsTreeNodeData * pLeft, KviKvsTreeNodeData * pRight, KviKvsTreeNodeData * pFlags)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pLeft = pLeft;
 	m_pLeft->setParent(this);
@@ -1120,16 +1127,14 @@ KviKvsTreeNodeOperationStringTransliteration::~KviKvsTreeNodeOperationStringTran
 	delete m_pFlags;
 }
 
-
-void KviKvsTreeNodeOperationStringTransliteration::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationStringTransliteration::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Binding Operator tr///";
 }
 
-
 void KviKvsTreeNodeOperationStringTransliteration::dump(const char * prefix)
 {
-	qDebug("%s OperationStringTransliteration",prefix);
+	qDebug("%s OperationStringTransliteration", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pLeft->dump(tmp.toUtf8().data());
@@ -1140,17 +1145,20 @@ void KviKvsTreeNodeOperationStringTransliteration::dump(const char * prefix)
 bool KviKvsTreeNodeOperationStringTransliteration::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant vl;
-	if(!m_pLeft->evaluateReadOnly(c,&vl))return false;
+	if(!m_pLeft->evaluateReadOnly(c, &vl))
+		return false;
 	KviKvsVariant vr;
-	if(!m_pRight->evaluateReadOnly(c,&vr))return false;
+	if(!m_pRight->evaluateReadOnly(c, &vr))
+		return false;
 
 	// for now we don't use the flags at all here...
 	//KviKvsVariant vf;
 	//if(!m_pFlags->evaluateReadOnly(c,&vf))return false;
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
-	QString szL,szR,szF;
+	QString szL, szR, szF;
 
 	vl.asString(szL);
 	vr.asString(szR);
@@ -1158,15 +1166,14 @@ bool KviKvsTreeNodeOperationStringTransliteration::execute(KviKvsRunTimeContext 
 
 	QString sz1;
 	target->result()->asString(sz1);
-	KviQString::transliterate(sz1,szL,szR);
+	KviQString::transliterate(sz1, szL, szR);
 	target->result()->setString(sz1);
 	delete target;
 	return true;
 }
 
-
-KviKvsTreeNodeOperationStringSubstitution::KviKvsTreeNodeOperationStringSubstitution(const QChar * pLocation,KviKvsTreeNodeData * pLeft,KviKvsTreeNodeData * pRight,KviKvsTreeNodeData * pFlags)
-: KviKvsTreeNodeOperation(pLocation)
+KviKvsTreeNodeOperationStringSubstitution::KviKvsTreeNodeOperationStringSubstitution(const QChar * pLocation, KviKvsTreeNodeData * pLeft, KviKvsTreeNodeData * pRight, KviKvsTreeNodeData * pFlags)
+    : KviKvsTreeNodeOperation(pLocation)
 {
 	m_pLeft = pLeft;
 	m_pLeft->setParent(this);
@@ -1183,16 +1190,14 @@ KviKvsTreeNodeOperationStringSubstitution::~KviKvsTreeNodeOperationStringSubstit
 	delete m_pFlags;
 }
 
-
-void KviKvsTreeNodeOperationStringSubstitution::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeOperationStringSubstitution::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Binding Operator s///";
 }
 
-
 void KviKvsTreeNodeOperationStringSubstitution::dump(const char * prefix)
 {
-	qDebug("%s OperationStringSubstitution",prefix);
+	qDebug("%s OperationStringSubstitution", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pLeft->dump(tmp.toUtf8().data());
@@ -1203,15 +1208,19 @@ void KviKvsTreeNodeOperationStringSubstitution::dump(const char * prefix)
 bool KviKvsTreeNodeOperationStringSubstitution::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant vl;
-	if(!m_pLeft->evaluateReadOnly(c,&vl))return false;
+	if(!m_pLeft->evaluateReadOnly(c, &vl))
+		return false;
 	KviKvsVariant vr;
-	if(!m_pRight->evaluateReadOnly(c,&vr))return false;
+	if(!m_pRight->evaluateReadOnly(c, &vr))
+		return false;
 	KviKvsVariant vf;
-	if(!m_pFlags->evaluateReadOnly(c,&vf))return false;
+	if(!m_pFlags->evaluateReadOnly(c, &vf))
+		return false;
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
-	if(!target)return false;
+	if(!target)
+		return false;
 
-	QString szL,szR,szF;
+	QString szL, szR, szF;
 
 	vl.asString(szL);
 	vr.asString(szR);
@@ -1220,32 +1229,32 @@ bool KviKvsTreeNodeOperationStringSubstitution::execute(KviKvsRunTimeContext * c
 	QString str;
 	target->result()->asString(str);
 
-	bool bGlobal = szF.indexOf('g',Qt::CaseInsensitive) != -1;
+	bool bGlobal = szF.indexOf('g', Qt::CaseInsensitive) != -1;
 
 	//QRegExp re(szL,szF.indexOf('i',Qt::CaseInsensitive) == -1,szF.indexOf('w',Qt::CaseInsensitive) != -1);
-	QRegExp re(szL,szF.indexOf('i',Qt::CaseInsensitive) == -1?Qt::CaseSensitive:Qt::CaseInsensitive,szF.indexOf('w',Qt::CaseInsensitive) != -1?QRegExp::Wildcard:QRegExp::RegExp);
+	QRegExp re(szL, szF.indexOf('i', Qt::CaseInsensitive) == -1 ? Qt::CaseSensitive : Qt::CaseInsensitive, szF.indexOf('w', Qt::CaseInsensitive) != -1 ? QRegExp::Wildcard : QRegExp::RegExp);
 
-	re.setMinimal(szF.indexOf('m',Qt::CaseInsensitive) != -1); // greedy or minimal ?
+	re.setMinimal(szF.indexOf('m', Qt::CaseInsensitive) != -1); // greedy or minimal ?
 
 	int idx = 0;
 
 	while((!str.isEmpty()) && (idx != -1))
 	{
-		idx = re.indexIn(str,idx);
+		idx = re.indexIn(str, idx);
 		if(idx != -1)
 		{
 			int len = re.matchedLength();
 			if(len == 0)
 			{
-				c->warning(this,__tr2qs_ctx("The regular expression matched a zero-length substring: this is not valid in the s/// operator, skipping","kvs"));
+				c->warning(this, __tr2qs_ctx("The regular expression matched a zero-length substring: this is not valid in the s/// operator, skipping", "kvs"));
 				goto end_of_this_stuff;
 			}
-			str.remove(idx,len);
+			str.remove(idx, len);
 
 			QString szReplaced;
 			const QChar * p2 = szR.constData();
 			const QChar * begin = p2;
-			if(p2)  //see bug #228, second example
+			if(p2) //see bug #228, second example
 			{
 				while(p2->unicode())
 				{
@@ -1254,18 +1263,24 @@ bool KviKvsTreeNodeOperationStringSubstitution::execute(KviKvsRunTimeContext * c
 						p2++;
 						if(p2->unicode() >= '0' && p2->unicode() <= '9')
 						{
-							szReplaced.append(QString(begin,(p2 - begin) - 1));
+							szReplaced.append(QString(begin, (p2 - begin) - 1));
 							szReplaced.append(re.cap(p2->unicode() - '0'));
 							p2++;
 							begin = p2;
-						} else if(p2->unicode())p2++;
-					} else p2++;
+						}
+						else if(p2->unicode())
+							p2++;
+					}
+					else
+						p2++;
 				}
-				if(begin != p2)szReplaced.append(QString(begin,p2 - begin));
-				str.insert(idx,szReplaced);
+				if(begin != p2)
+					szReplaced.append(QString(begin, p2 - begin));
+				str.insert(idx, szReplaced);
 				idx += szReplaced.length();
 			}
-			if(!bGlobal)goto end_of_this_stuff;
+			if(!bGlobal)
+				goto end_of_this_stuff;
 		}
 	}
 end_of_this_stuff:

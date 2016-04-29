@@ -35,9 +35,8 @@
 
 #include <QByteArray>
 
-
 KviKvsTreeNodeAliasSimpleCommand::KviKvsTreeNodeAliasSimpleCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params)
-: KviKvsTreeNodeSimpleCommand(pLocation,szCmdName,params)
+    : KviKvsTreeNodeSimpleCommand(pLocation, szCmdName, params)
 {
 }
 
@@ -52,7 +51,7 @@ void KviKvsTreeNodeAliasSimpleCommand::contextDescription(QString & szBuffer)
 
 void KviKvsTreeNodeAliasSimpleCommand::dump(const char * prefix)
 {
-	qDebug("%s AliasSimpleCommand(%s)",prefix,m_szCmdName.toUtf8().data());
+	qDebug("%s AliasSimpleCommand(%s)", prefix, m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 }
@@ -60,13 +59,13 @@ void KviKvsTreeNodeAliasSimpleCommand::dump(const char * prefix)
 bool KviKvsTreeNodeAliasSimpleCommand::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariantList l;
-	if(!m_pParams->evaluate(c,&l))
+	if(!m_pParams->evaluate(c, &l))
 		return false;
 
 	KviKvsSwitchList swl;
 	if(m_pSwitches)
 	{
-		if(!(m_pSwitches->evaluate(c,&swl)))
+		if(!(m_pSwitches->evaluate(c, &swl)))
 			return false;
 	}
 
@@ -96,14 +95,16 @@ bool KviKvsTreeNodeAliasSimpleCommand::execute(KviKvsRunTimeContext * c)
 			if(!c->window()->connection()->sendData(szData.data()))
 				goto no_way_to_send_as_raw;
 
-			c->window()->output(KVI_OUT_RAW,__tr2qs_ctx("[RAW]: %Q","kvs"),&szAll);
+			c->window()->output(KVI_OUT_RAW, __tr2qs_ctx("[RAW]: %Q", "kvs"), &szAll);
 			return true;
-no_way_to_send_as_raw:
-			c->warning(this,__tr2qs_ctx("Failed to send an unknown command as /RAW","kvs"));
-			c->error(this,__tr2qs_ctx("Call to undefined command '%Q'","kvs"),&m_szCmdName);
+		no_way_to_send_as_raw:
+			c->warning(this, __tr2qs_ctx("Failed to send an unknown command as /RAW", "kvs"));
+			c->error(this, __tr2qs_ctx("Call to undefined command '%Q'", "kvs"), &m_szCmdName);
 			return false;
-		} else {
-			c->error(this,__tr2qs_ctx("Call to undefined command '%Q'","kvs"),&m_szCmdName);
+		}
+		else
+		{
+			c->error(this, __tr2qs_ctx("Call to undefined command '%Q'", "kvs"), &m_szCmdName);
 			return false;
 		}
 	}
@@ -113,9 +114,9 @@ no_way_to_send_as_raw:
 	//        it would avoid the constructor call each time
 	KviKvsExtendedRunTimeData extData(&swl);
 
-	if(!copy.run(c->window(),&l,0,KviKvsScript::PreserveParams,&extData))
+	if(!copy.run(c->window(), &l, 0, KviKvsScript::PreserveParams, &extData))
 	{
-		c->error(this,__tr2qs_ctx("Error in inner alias command call '%Q', called from this context","kvs"),&m_szCmdName);
+		c->error(this, __tr2qs_ctx("Error in inner alias command call '%Q', called from this context", "kvs"), &m_szCmdName);
 		return false;
 	}
 	return true;

@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviIrcConnectionStateData.h"
 
 KviIrcConnectionStateData::KviIrcConnectionStateData()
@@ -46,10 +44,10 @@ KviIrcConnectionStateData::~KviIrcConnectionStateData()
 {
 }
 
-void KviIrcConnectionStateData::changeEnabledCapList(const QString &szCapList)
+void KviIrcConnectionStateData::changeEnabledCapList(const QString & szCapList)
 {
-	QStringList lTmp = szCapList.split(' ',QString::SkipEmptyParts);
-	foreach(QString szCap,lTmp)
+	QStringList lTmp = szCapList.split(' ', QString::SkipEmptyParts);
+	foreach(QString szCap, lTmp)
 	{
 		// cap modifiers are:
 		//  '-' : disable a capability (should not be present in a LS message...)
@@ -65,14 +63,14 @@ void KviIrcConnectionStateData::changeEnabledCapList(const QString &szCapList)
 		{
 			case '-':
 				bRemove = true;
-				// fall through
+			// fall through
 			case '~':
 			case '=':
-				szCap.remove(0,1);
-			break;
+				szCap.remove(0, 1);
+				break;
 			default:
 				// ok
-			break;
+				break;
 		}
 
 		szCap = szCap.toLower();
@@ -83,10 +81,11 @@ void KviIrcConnectionStateData::changeEnabledCapList(const QString &szCapList)
 		if(bRemove)
 		{
 			m_lEnabledCaps.removeAll(szCap);
-		} else {
+		}
+		else
+		{
 			if(!m_lEnabledCaps.contains(szCap))
 				m_lEnabledCaps.append(szCap);
 		}
 	}
 }
-

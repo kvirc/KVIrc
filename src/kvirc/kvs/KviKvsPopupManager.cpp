@@ -31,7 +31,7 @@ KviKvsPopupManager * KviKvsPopupManager::m_pInstance = 0;
 KviKvsPopupManager::KviKvsPopupManager()
 {
 	m_pInstance = this;
-	m_pPopupDict = new KviPointerHashTable<QString,KviKvsPopupMenu>(17,false);
+	m_pPopupDict = new KviPointerHashTable<QString, KviKvsPopupMenu>(17, false);
 	m_pPopupDict->setAutoDelete(true);
 }
 
@@ -60,32 +60,32 @@ void KviKvsPopupManager::done()
 	delete KviKvsPopupManager::instance();
 }
 
-KviKvsPopupMenu * KviKvsPopupManager::get(const QString &szPopupName)
+KviKvsPopupMenu * KviKvsPopupManager::get(const QString & szPopupName)
 {
 	KviKvsPopupMenu * m = lookup(szPopupName);
 	if(!m)
 	{
 		m = new KviKvsPopupMenu(szPopupName);
-		add(szPopupName,m);
+		add(szPopupName, m);
 	}
 	return m;
 }
 
-void KviKvsPopupManager::add(const QString &szPopupName,KviKvsPopupMenu * pPopup)
+void KviKvsPopupManager::add(const QString & szPopupName, KviKvsPopupMenu * pPopup)
 {
-	m_pPopupDict->replace(szPopupName,pPopup);
+	m_pPopupDict->replace(szPopupName, pPopup);
 	emit popupRefresh(szPopupName);
 };
 
-void KviKvsPopupManager::emitRefresh(const QString &szPopupName)
+void KviKvsPopupManager::emitRefresh(const QString & szPopupName)
 {
 	emit popupRefresh(szPopupName);
 }
 
-void KviKvsPopupManager::load(const QString &szFileName)
+void KviKvsPopupManager::load(const QString & szFileName)
 {
 	m_pPopupDict->clear();
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Read);
 
 	KviConfigurationFileIterator it(*(cfg.dict()));
 
@@ -98,26 +98,26 @@ void KviKvsPopupManager::load(const QString &szFileName)
 		++it;
 	}
 
-	for(QString * s = l.first();s;s = l.next())
+	for(QString * s = l.first(); s; s = l.next())
 	{
 		cfg.setGroup(*s);
 		KviKvsPopupMenu * m = new KviKvsPopupMenu(*s);
-		m->load("",&cfg);
-		m_pPopupDict->insert(*s,m);
+		m->load("", &cfg);
+		m_pPopupDict->insert(*s, m);
 		//++it;
 	}
 }
 
-void KviKvsPopupManager::save(const QString &szFileName)
+void KviKvsPopupManager::save(const QString & szFileName)
 {
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Write);
 	cfg.clear();
 
-	KviPointerHashTableIterator<QString,KviKvsPopupMenu> it(*m_pPopupDict);
+	KviPointerHashTableIterator<QString, KviKvsPopupMenu> it(*m_pPopupDict);
 	while(it.current())
 	{
 		cfg.setGroup(it.current()->popupName());
-		it.current()->save("",&cfg);
+		it.current()->save("", &cfg);
 		++it;
 	}
 }

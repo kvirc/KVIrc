@@ -46,7 +46,7 @@ static MpInterface * auto_detect_player(KviWindow * pOut = 0)
 	MpInterface * pBest = 0;
 	MpInterfaceDescriptor * d;
 	MpInterfaceDescriptor * pDBest = 0;
-	for(d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
+	for(d = g_pDescriptorList->first(); d; d = g_pDescriptorList->next())
 	{
 		MpInterface * i = d->instance();
 		if(i)
@@ -62,17 +62,17 @@ static MpInterface * auto_detect_player(KviWindow * pOut = 0)
 			{
 				QString szOut;
 				QString szNam = d->name();
-				szOut = QString(__tr2qs_ctx("Trying media player interface \"%1\": score %2","mediaplayer")).arg(szNam).arg(iScore);
-				pOut->output(KVI_OUT_MULTIMEDIA,szOut);
+				szOut = QString(__tr2qs_ctx("Trying media player interface \"%1\": score %2", "mediaplayer")).arg(szNam).arg(iScore);
+				pOut->output(KVI_OUT_MULTIMEDIA, szOut);
 			}
 		}
 	}
 	if(iBest < 90)
 	{
 		if(pOut)
-			pOut->outputNoFmt(KVI_OUT_MULTIMEDIA,__tr2qs_ctx("Not sure about the results, trying a second, more aggressive detection pass","mediaplayer"));
+			pOut->outputNoFmt(KVI_OUT_MULTIMEDIA, __tr2qs_ctx("Not sure about the results, trying a second, more aggressive detection pass", "mediaplayer"));
 		// no sure player found... try again with a destructive test
-		for(d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
+		for(d = g_pDescriptorList->first(); d; d = g_pDescriptorList->next())
 		{
 			MpInterface * i = d->instance();
 			if(i)
@@ -88,8 +88,8 @@ static MpInterface * auto_detect_player(KviWindow * pOut = 0)
 				{
 					QString szOut;
 					QString szNam = d->name();
-					szOut = QString(__tr2qs_ctx("Trying media player interface \"%1\": score %2","mediaplayer")).arg(szNam).arg(iScore);
-					pOut->output(KVI_OUT_MULTIMEDIA,szOut);
+					szOut = QString(__tr2qs_ctx("Trying media player interface \"%1\": score %2", "mediaplayer")).arg(szNam).arg(iScore);
+					pOut->output(KVI_OUT_MULTIMEDIA, szOut);
 				}
 			}
 		}
@@ -98,74 +98,73 @@ static MpInterface * auto_detect_player(KviWindow * pOut = 0)
 	{
 		KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) = pDBest->name();
 		if(pOut)
-			pOut->output(KVI_OUT_MULTIMEDIA,__tr2qs_ctx("Choosing media player interface \"%Q\"","mediaplayer"),&(KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer)));
-	} else {
+			pOut->output(KVI_OUT_MULTIMEDIA, __tr2qs_ctx("Choosing media player interface \"%Q\"", "mediaplayer"), &(KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer)));
+	}
+	else
+	{
 		if(pOut)
-			pOut->outputNoFmt(KVI_OUT_MULTIMEDIA,__tr2qs_ctx("Seems that there is no usable media player on this machine","mediaplayer"));
+			pOut->outputNoFmt(KVI_OUT_MULTIMEDIA, __tr2qs_ctx("Seems that there is no usable media player on this machine", "mediaplayer"));
 	}
 	return pBest;
 }
 
-
-
-	#define MP_KVS_FAIL_ON_NO_INTERFACE \
-		if(!g_pMPInterface) \
-		{ \
-			c->warning(__tr2qs_ctx("No mediaplayer interface selected. Try /mediaplayer.detect","mediaplayer")); \
-			return true; \
-		} \
-
-	#define MP_KVS_COMMAND(__name) static bool mediaplayer_kvs_cmd_ ## __name (KviKvsModuleCommandCall * c)
-	#define MP_KVS_FUNCTION(__name) static bool mediaplayer_kvs_fnc_ ## __name (KviKvsModuleFunctionCall * c)
-
-	#define MP_KVS_SIMPLE_COMMAND(__name,__ifacecommand) \
-		MP_KVS_COMMAND(__name) \
-			{ \
-				KVSM_PARAMETERS_BEGIN(c) \
-				KVSM_PARAMETERS_END(c) \
-				\
-				MP_KVS_FAIL_ON_NO_INTERFACE \
-				\
-				if(!g_pMPInterface->__ifacecommand()) \
-				{ \
-					if(!c->hasSwitch('q',"quiet")) \
-					{ \
-						c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function","mediaplayer")); \
-						QString tmp = __tr2qs_ctx("Last interface error: ","mediaplayer"); \
-						tmp += g_pMPInterface->lastError(); \
-						c->warning(tmp); \
-					} \
-				}\
-				return true; \
-			}
-
-	#define MP_KVS_SIMPLE_STRING_FUNCTION(__name,__ifacecommand) \
-	MP_KVS_FUNCTION(__name) \
-	{ \
-		MP_KVS_FAIL_ON_NO_INTERFACE \
-		QString szRet = g_pMPInterface->__ifacecommand(); \
-		c->returnValue()->setString(szRet); \
-		return true; \
+#define MP_KVS_FAIL_ON_NO_INTERFACE                                                                           \
+	if(!g_pMPInterface)                                                                                       \
+	{                                                                                                         \
+		c->warning(__tr2qs_ctx("No mediaplayer interface selected. Try /mediaplayer.detect", "mediaplayer")); \
+		return true;                                                                                          \
 	}
 
-	#define MP_KVS_SIMPLE_INT_FUNCTION(__name,__ifacecommand) \
-	MP_KVS_FUNCTION(__name) \
-	{ \
-		MP_KVS_FAIL_ON_NO_INTERFACE \
-		int iRet = g_pMPInterface->__ifacecommand(); \
-		c->returnValue()->setInteger(iRet); \
-		return true; \
-	}
-	// FINDME!
-	#define MP_KVS_SIMPLE_BOOL_FUNCTION(__name,__ifacecommand) \
-	MP_KVS_FUNCTION(__name) \
-	{ \
-		MP_KVS_FAIL_ON_NO_INTERFACE \
-		bool bRet = g_pMPInterface->__ifacecommand(); \
-		c->returnValue()->setBoolean(bRet); \
-		return true; \
+#define MP_KVS_COMMAND(__name) static bool mediaplayer_kvs_cmd_##__name(KviKvsModuleCommandCall * c)
+#define MP_KVS_FUNCTION(__name) static bool mediaplayer_kvs_fnc_##__name(KviKvsModuleFunctionCall * c)
+
+#define MP_KVS_SIMPLE_COMMAND(__name, __ifacecommand)                                                                                   \
+	MP_KVS_COMMAND(__name)                                                                                                              \
+	{                                                                                                                                   \
+		KVSM_PARAMETERS_BEGIN(c)                                                                                                        \
+		KVSM_PARAMETERS_END(c)                                                                                                          \
+                                                                                                                                        \
+		MP_KVS_FAIL_ON_NO_INTERFACE                                                                                                     \
+                                                                                                                                        \
+		if(!g_pMPInterface->__ifacecommand())                                                                                           \
+		{                                                                                                                               \
+			if(!c->hasSwitch('q', "quiet"))                                                                                             \
+			{                                                                                                                           \
+				c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function", "mediaplayer")); \
+				QString tmp = __tr2qs_ctx("Last interface error: ", "mediaplayer");                                                     \
+				tmp += g_pMPInterface->lastError();                                                                                     \
+				c->warning(tmp);                                                                                                        \
+			}                                                                                                                           \
+		}                                                                                                                               \
+		return true;                                                                                                                    \
 	}
 
+#define MP_KVS_SIMPLE_STRING_FUNCTION(__name, __ifacecommand) \
+	MP_KVS_FUNCTION(__name)                                   \
+	{                                                         \
+		MP_KVS_FAIL_ON_NO_INTERFACE                           \
+		QString szRet = g_pMPInterface->__ifacecommand();     \
+		c->returnValue()->setString(szRet);                   \
+		return true;                                          \
+	}
+
+#define MP_KVS_SIMPLE_INT_FUNCTION(__name, __ifacecommand) \
+	MP_KVS_FUNCTION(__name)                                \
+	{                                                      \
+		MP_KVS_FAIL_ON_NO_INTERFACE                        \
+		int iRet = g_pMPInterface->__ifacecommand();       \
+		c->returnValue()->setInteger(iRet);                \
+		return true;                                       \
+	}
+// FINDME!
+#define MP_KVS_SIMPLE_BOOL_FUNCTION(__name, __ifacecommand) \
+	MP_KVS_FUNCTION(__name)                                 \
+	{                                                       \
+		MP_KVS_FAIL_ON_NO_INTERFACE                         \
+		bool bRet = g_pMPInterface->__ifacecommand();       \
+		c->returnValue()->setBoolean(bRet);                 \
+		return true;                                        \
+	}
 
 /*
 	@doc: mediaplayer.play
@@ -191,7 +190,7 @@ static MpInterface * auto_detect_player(KviWindow * pOut = 0)
 		[fnc]$mediaplayer.status[/fnc]
 */
 
-MP_KVS_SIMPLE_COMMAND(play,play)
+MP_KVS_SIMPLE_COMMAND(play, play)
 
 /*
 	@doc: mediaplayer.hide
@@ -214,7 +213,7 @@ MP_KVS_SIMPLE_COMMAND(play,play)
 		[cmd]mediaplayer.minimize[/cmd]
 */
 
-MP_KVS_SIMPLE_COMMAND(hide,hide)
+MP_KVS_SIMPLE_COMMAND(hide, hide)
 
 /*
 	@doc: mediaplayer.show
@@ -239,7 +238,7 @@ MP_KVS_SIMPLE_COMMAND(hide,hide)
 		[cmd]mediaplayer.minimize[/cmd]
 */
 
-MP_KVS_SIMPLE_COMMAND(show,show)
+MP_KVS_SIMPLE_COMMAND(show, show)
 
 /*
 	@doc: mediaplayer.minimize
@@ -262,7 +261,7 @@ MP_KVS_SIMPLE_COMMAND(show,show)
 		[cmd]mediaplayer.show[/cmd]
 */
 
-MP_KVS_SIMPLE_COMMAND(minimize,minimize)
+MP_KVS_SIMPLE_COMMAND(minimize, minimize)
 
 /*
 	@doc: mediaplayer.stop
@@ -288,7 +287,7 @@ MP_KVS_SIMPLE_COMMAND(minimize,minimize)
 		[fnc]$mediaplayer.status[/fnc]
 */
 
-MP_KVS_SIMPLE_COMMAND(stop,stop)
+MP_KVS_SIMPLE_COMMAND(stop, stop)
 
 /*
 	@doc: mediaplayer.next
@@ -314,7 +313,7 @@ MP_KVS_SIMPLE_COMMAND(stop,stop)
 		[fnc]$mediaplayer.status[/fnc]
 */
 
-MP_KVS_SIMPLE_COMMAND(next,next)
+MP_KVS_SIMPLE_COMMAND(next, next)
 
 /*
 	@doc: mediaplayer.prev
@@ -340,7 +339,7 @@ MP_KVS_SIMPLE_COMMAND(next,next)
 		[fnc]$mediaplayer.status[/fnc]
 */
 
-MP_KVS_SIMPLE_COMMAND(prev,prev)
+MP_KVS_SIMPLE_COMMAND(prev, prev)
 
 /*
 	@doc: mediaplayer.quit
@@ -366,7 +365,7 @@ MP_KVS_SIMPLE_COMMAND(prev,prev)
 		[fnc]$mediaplayer.status[/fnc]
 */
 
-MP_KVS_SIMPLE_COMMAND(quit,quit)
+MP_KVS_SIMPLE_COMMAND(quit, quit)
 
 /*
 	@doc: mediaplayer.pause
@@ -392,7 +391,7 @@ MP_KVS_SIMPLE_COMMAND(quit,quit)
 		[fnc]$mediaplayer.status[/fnc]
 */
 
-MP_KVS_SIMPLE_COMMAND(pause,pause)
+MP_KVS_SIMPLE_COMMAND(pause, pause)
 
 /*
 	@doc: mediaplayer.detect
@@ -427,7 +426,7 @@ MP_KVS_SIMPLE_COMMAND(pause,pause)
 
 MP_KVS_COMMAND(detect)
 {
-	g_pMPInterface = auto_detect_player(c->hasSwitch('q',"quiet") ? 0 : c->window());
+	g_pMPInterface = auto_detect_player(c->hasSwitch('q', "quiet") ? 0 : c->window());
 	return true;
 }
 
@@ -457,10 +456,10 @@ MP_KVS_COMMAND(setPlayer)
 	QString szPlayer;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("player",KVS_PT_STRING,0,szPlayer)
+	KVSM_PARAMETER("player", KVS_PT_STRING, 0, szPlayer)
 	KVSM_PARAMETERS_END(c)
 
-	for(MpInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
+	for(MpInterfaceDescriptor * d = g_pDescriptorList->first(); d; d = g_pDescriptorList->next())
 	{
 		if(d->name() == szPlayer)
 		{
@@ -520,12 +519,12 @@ MP_KVS_FUNCTION(player)
 
 MP_KVS_FUNCTION(playerList)
 {
-	KviKvsArray* pArray = new KviKvsArray();
-	int id=0;
+	KviKvsArray * pArray = new KviKvsArray();
+	int id = 0;
 
-	for(MpInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
+	for(MpInterfaceDescriptor * d = g_pDescriptorList->first(); d; d = g_pDescriptorList->next())
 	{
-		pArray->set(id++,new KviKvsVariant(d->name()));
+		pArray->set(id++, new KviKvsVariant(d->name()));
 	}
 	c->returnValue()->setArray(pArray);
 	return true;
@@ -564,16 +563,16 @@ MP_KVS_COMMAND(playMrl)
 	QString szMrl;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("player",KVS_PT_STRING,0,szMrl)
+	KVSM_PARAMETER("player", KVS_PT_STRING, 0, szMrl)
 	KVSM_PARAMETERS_END(c)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	if(!g_pMPInterface->playMrl(szMrl))
 	{
-		if(!c->hasSwitch('q',"quiet"))
+		if(!c->hasSwitch('q', "quiet"))
 		{
-			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function","mediaplayer"));
-			QString tmp = __tr2qs_ctx("Last interface error: ","mediaplayer");
+			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function", "mediaplayer"));
+			QString tmp = __tr2qs_ctx("Last interface error: ", "mediaplayer");
 			tmp += g_pMPInterface->lastError();
 			c->warning(tmp);
 		}
@@ -587,16 +586,16 @@ MP_KVS_COMMAND(amipExec)
 	QString szMrl;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("player",KVS_PT_STRING,0,szMrl)
+	KVSM_PARAMETER("player", KVS_PT_STRING, 0, szMrl)
 	KVSM_PARAMETERS_END(c)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	if(!g_pMPInterface->amipExec(szMrl))
 	{
-		if(!c->hasSwitch('q',"quiet"))
+		if(!c->hasSwitch('q', "quiet"))
 		{
-			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function","mediaplayer"));
-			QString tmp = __tr2qs_ctx("Last interface error: ","mediaplayer");
+			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function", "mediaplayer"));
+			QString tmp = __tr2qs_ctx("Last interface error: ", "mediaplayer");
 			tmp += g_pMPInterface->lastError();
 			c->warning(tmp);
 		}
@@ -628,16 +627,16 @@ MP_KVS_COMMAND(jumpTo)
 	kvs_int_t iPos;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("position",KVS_PT_INT,0,iPos)
+	KVSM_PARAMETER("position", KVS_PT_INT, 0, iPos)
 	KVSM_PARAMETERS_END(c)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	if(!g_pMPInterface->jumpTo(iPos))
 	{
-		if(!c->hasSwitch('q',"quiet"))
+		if(!c->hasSwitch('q', "quiet"))
 		{
-			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function","mediaplayer"));
-			QString tmp = __tr2qs_ctx("Last interface error: ","mediaplayer");
+			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function", "mediaplayer"));
+			QString tmp = __tr2qs_ctx("Last interface error: ", "mediaplayer");
 			tmp += g_pMPInterface->lastError();
 			c->warning(tmp);
 		}
@@ -667,16 +666,16 @@ MP_KVS_COMMAND(setVol)
 	kvs_int_t iVol;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("volume",KVS_PT_INT,0,iVol)
+	KVSM_PARAMETER("volume", KVS_PT_INT, 0, iVol)
 	KVSM_PARAMETERS_END(c)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	if(!g_pMPInterface->setVol(iVol))
 	{
-		if(!c->hasSwitch('q',"quiet"))
+		if(!c->hasSwitch('q', "quiet"))
 		{
-			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function","mediaplayer"));
-			QString tmp = __tr2qs_ctx("Last interface error: ","mediaplayer");
+			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function", "mediaplayer"));
+			QString tmp = __tr2qs_ctx("Last interface error: ", "mediaplayer");
 			tmp += g_pMPInterface->lastError();
 			c->warning(tmp);
 		}
@@ -703,7 +702,7 @@ MP_KVS_COMMAND(setVol)
 		[cmd]mediaplayer.setVol[/cmd]
 */
 
-MP_KVS_SIMPLE_INT_FUNCTION(getVol,getVol)
+MP_KVS_SIMPLE_INT_FUNCTION(getVol, getVol)
 
 /*
 	@doc: mediaplayer.mute
@@ -729,7 +728,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(getVol,getVol)
 		[fnc]$mediaplayer.status[/fnc]
 */
 
-MP_KVS_SIMPLE_COMMAND(mute,mute)
+MP_KVS_SIMPLE_COMMAND(mute, mute)
 
 /*
 	@doc: mediaplayer.mrl
@@ -763,7 +762,7 @@ MP_KVS_SIMPLE_COMMAND(mute,mute)
 		[fnc]$mediaplayer.localFile[/fnc]
 */
 
-MP_KVS_SIMPLE_STRING_FUNCTION(mrl,mrl)
+MP_KVS_SIMPLE_STRING_FUNCTION(mrl, mrl)
 
 /*
 	@doc: mediaplayer.nowPlaying
@@ -799,7 +798,7 @@ MP_KVS_SIMPLE_STRING_FUNCTION(mrl,mrl)
 		[fnc]$mediaplayer.position[/fnc]
 */
 
-MP_KVS_SIMPLE_STRING_FUNCTION(nowPlaying,nowPlaying)
+MP_KVS_SIMPLE_STRING_FUNCTION(nowPlaying, nowPlaying)
 
 /*
 	@doc: mediaplayer.title
@@ -828,7 +827,7 @@ MP_KVS_SIMPLE_STRING_FUNCTION(nowPlaying,nowPlaying)
 		[fnc]$mediaplayer.mediaType[/fnc]
 */
 
-MP_KVS_SIMPLE_STRING_FUNCTION(title,title)
+MP_KVS_SIMPLE_STRING_FUNCTION(title, title)
 
 /*
 	@doc: mediaplayer.artist
@@ -860,7 +859,7 @@ MP_KVS_SIMPLE_STRING_FUNCTION(title,title)
 		[fnc]$mediaplayer.position[/fnc]
 */
 
-MP_KVS_SIMPLE_STRING_FUNCTION(artist,artist)
+MP_KVS_SIMPLE_STRING_FUNCTION(artist, artist)
 
 /*
 	@doc: mediaplayer.genre
@@ -890,7 +889,7 @@ MP_KVS_SIMPLE_STRING_FUNCTION(artist,artist)
 		[fnc]$mediaplayer.length[/fnc], [fnc]$mediaplayer.position[/fnc]
 */
 
-MP_KVS_SIMPLE_STRING_FUNCTION(genre,genre)
+MP_KVS_SIMPLE_STRING_FUNCTION(genre, genre)
 
 /*
 	@doc: mediaplayer.year
@@ -920,7 +919,7 @@ MP_KVS_SIMPLE_STRING_FUNCTION(genre,genre)
 		[fnc]$mediaplayer.length[/fnc], [fnc]$mediaplayer.position[/fnc]
 */
 
-MP_KVS_SIMPLE_STRING_FUNCTION(year,year)
+MP_KVS_SIMPLE_STRING_FUNCTION(year, year)
 
 /*
 	@doc: mediaplayer.comment
@@ -950,7 +949,7 @@ MP_KVS_SIMPLE_STRING_FUNCTION(year,year)
 		[fnc]$mediaplayer.length[/fnc], [fnc]$mediaplayer.position[/fnc]
 */
 
-MP_KVS_SIMPLE_STRING_FUNCTION(comment,comment)
+MP_KVS_SIMPLE_STRING_FUNCTION(comment, comment)
 
 /*
 	@doc: mediaplayer.album
@@ -983,7 +982,7 @@ MP_KVS_SIMPLE_STRING_FUNCTION(comment,comment)
 		[fnc]$mediaplayer.position[/fnc]
 */
 
-MP_KVS_SIMPLE_STRING_FUNCTION(album,album)
+MP_KVS_SIMPLE_STRING_FUNCTION(album, album)
 
 /*
 	@doc: mediaplayer.mediaType
@@ -1010,7 +1009,7 @@ MP_KVS_SIMPLE_STRING_FUNCTION(album,album)
 		[fnc]$mediaplayer.year[/fnc], [fnc]$mediaplayer.comment[/fnc]
 */
 
-MP_KVS_SIMPLE_STRING_FUNCTION(mediaType,mediaType)
+MP_KVS_SIMPLE_STRING_FUNCTION(mediaType, mediaType)
 
 /*
 	@doc: mediaplayer.bitRate
@@ -1040,7 +1039,7 @@ MP_KVS_SIMPLE_STRING_FUNCTION(mediaType,mediaType)
 		[fnc]$mediaplayer.position[/fnc]
 */
 
-MP_KVS_SIMPLE_INT_FUNCTION(bitRate,bitRate)
+MP_KVS_SIMPLE_INT_FUNCTION(bitRate, bitRate)
 
 /*
 	@doc: mediaplayer.sampleRate
@@ -1069,7 +1068,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(bitRate,bitRate)
 		[fnc]$mediaplayer.position[/fnc], [fnc]$mediaplayer.channels[/fnc]
 */
 
-MP_KVS_SIMPLE_INT_FUNCTION(sampleRate,sampleRate)
+MP_KVS_SIMPLE_INT_FUNCTION(sampleRate, sampleRate)
 
 /*
 	@doc: mediaplayer.length
@@ -1098,7 +1097,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(sampleRate,sampleRate)
 		[fnc]$mediaplayer.position[/fnc]
 */
 
-MP_KVS_SIMPLE_INT_FUNCTION(length,length)
+MP_KVS_SIMPLE_INT_FUNCTION(length, length)
 
 /*
 	@doc: mediaplayer.position
@@ -1127,7 +1126,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(length,length)
 		[fnc]$mediaplayer.bitRate[/fnc], [fnc]$mediaplayer.channels[/fnc]
 */
 
-MP_KVS_SIMPLE_INT_FUNCTION(position,position)
+MP_KVS_SIMPLE_INT_FUNCTION(position, position)
 
 /*
 	@doc: mediaplayer.channels
@@ -1150,7 +1149,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(position,position)
 		[module:mediaplayer]media player module documentation[/module]
 */
 
-MP_KVS_SIMPLE_INT_FUNCTION(channels,channels)
+MP_KVS_SIMPLE_INT_FUNCTION(channels, channels)
 
 /*
 	@doc: mediaplayer.setPlayListPos
@@ -1176,16 +1175,16 @@ MP_KVS_COMMAND(setPlayListPos)
 	kvs_int_t iPos;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("position",KVS_PT_INT,0,iPos)
+	KVSM_PARAMETER("position", KVS_PT_INT, 0, iPos)
 	KVSM_PARAMETERS_END(c)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	if(!g_pMPInterface->setPlayListPos(iPos))
 	{
-		if(!c->hasSwitch('q',"quiet"))
+		if(!c->hasSwitch('q', "quiet"))
 		{
-			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function","mediaplayer"));
-			QString tmp = __tr2qs_ctx("Last interface error: ","mediaplayer");
+			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function", "mediaplayer"));
+			QString tmp = __tr2qs_ctx("Last interface error: ", "mediaplayer");
 			tmp += g_pMPInterface->lastError();
 			c->warning(tmp);
 		}
@@ -1212,7 +1211,7 @@ MP_KVS_COMMAND(setPlayListPos)
 		[cmd]mediaplayer.getPlayListPos[/cmd]
 */
 
-MP_KVS_SIMPLE_INT_FUNCTION(getPlayListPos,getPlayListPos)
+MP_KVS_SIMPLE_INT_FUNCTION(getPlayListPos, getPlayListPos)
 
 /*
 	@doc: mediaplayer.getListLength
@@ -1232,7 +1231,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(getPlayListPos,getPlayListPos)
 		[module:mediaplayer]media player module documentation[/module],
 */
 
-MP_KVS_SIMPLE_INT_FUNCTION(getListLength,getListLength)
+MP_KVS_SIMPLE_INT_FUNCTION(getListLength, getListLength)
 
 /*
 	@doc: mediaplayer.getRepeat
@@ -1254,7 +1253,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(getListLength,getListLength)
 		[fnc]$mediaplayer.getShuffle[/fnc]
 */
 
-MP_KVS_SIMPLE_INT_FUNCTION(getRepeat,getRepeat)
+MP_KVS_SIMPLE_INT_FUNCTION(getRepeat, getRepeat)
 
 /*
 	@doc: mediaplayer.getShuffle
@@ -1276,7 +1275,7 @@ MP_KVS_SIMPLE_INT_FUNCTION(getRepeat,getRepeat)
 		[fnc]$mediaplayer.getRepeat[/fnc]
 */
 
-MP_KVS_SIMPLE_BOOL_FUNCTION(getShuffle,getShuffle)
+MP_KVS_SIMPLE_BOOL_FUNCTION(getShuffle, getShuffle)
 
 /*
 	@doc: mediaplayer.getEqData
@@ -1306,20 +1305,20 @@ MP_KVS_FUNCTION(getEqData)
 	QString szOptions;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("item",KVS_PT_INT,0,iValue)
-		KVSM_PARAMETER("options",KVS_PT_STRING,KVS_PF_OPTIONAL,szOptions)
+	KVSM_PARAMETER("item", KVS_PT_INT, 0, iValue)
+	KVSM_PARAMETER("options", KVS_PT_STRING, KVS_PF_OPTIONAL, szOptions)
 	KVSM_PARAMETERS_END(c)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 
-	bool bQuiet = szOptions.indexOf('q',Qt::CaseInsensitive) != -1;
+	bool bQuiet = szOptions.indexOf('q', Qt::CaseInsensitive) != -1;
 
 	int ret = g_pMPInterface->getEqData(iValue);
 
 	if(!ret && !bQuiet)
 	{
-		c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function","mediaplayer"));
-		QString tmp = __tr2qs_ctx("Last interface error: ","mediaplayer");
+		c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function", "mediaplayer"));
+		QString tmp = __tr2qs_ctx("Last interface error: ", "mediaplayer");
 		tmp += g_pMPInterface->lastError();
 		c->warning(tmp);
 	}
@@ -1353,17 +1352,17 @@ MP_KVS_COMMAND(setEqData)
 	kvs_int_t iValue;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("item",KVS_PT_INT,0,iPos)
-		KVSM_PARAMETER("value",KVS_PT_INT,0,iValue)
+	KVSM_PARAMETER("item", KVS_PT_INT, 0, iPos)
+	KVSM_PARAMETER("value", KVS_PT_INT, 0, iValue)
 	KVSM_PARAMETERS_END(c)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
-	if(!g_pMPInterface->setEqData(iPos,iValue))
+	if(!g_pMPInterface->setEqData(iPos, iValue))
 	{
-		if(!c->hasSwitch('q',"quiet"))
+		if(!c->hasSwitch('q', "quiet"))
 		{
-			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function","mediaplayer"));
-			QString tmp = __tr2qs_ctx("Last interface error: ","mediaplayer");
+			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function", "mediaplayer"));
+			QString tmp = __tr2qs_ctx("Last interface error: ", "mediaplayer");
 			tmp += g_pMPInterface->lastError();
 			c->warning(tmp);
 		}
@@ -1402,8 +1401,9 @@ MP_KVS_FUNCTION(localFile)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	QString szRet = g_pMPInterface->mrl();
-	if(szRet.isEmpty())return true;
-	if(szRet.startsWith("file://",Qt::CaseInsensitive))
+	if(szRet.isEmpty())
+		return true;
+	if(szRet.startsWith("file://", Qt::CaseInsensitive))
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		c->returnValue()->setString(szRet.mid(7));
@@ -1420,12 +1420,13 @@ MP_KVS_FUNCTION(amipEval)
 	QString szMrl;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("player",KVS_PT_STRING,0,szMrl)
+	KVSM_PARAMETER("player", KVS_PT_STRING, 0, szMrl)
 	KVSM_PARAMETERS_END(c)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	QString szRet = g_pMPInterface->amipEval(szMrl);
-	if(szRet.isEmpty())return true;
+	if(szRet.isEmpty())
+		return true;
 
 	c->returnValue()->setString(szRet);
 
@@ -1455,8 +1456,8 @@ MP_KVS_FUNCTION(amipEval)
 MP_KVS_FUNCTION(status)
 {
 
-// 	KVSM_PARAMETERS_BEGIN(c)
-// 	KVSM_PARAMETERS_END(c)
+	// 	KVSM_PARAMETERS_BEGIN(c)
+	// 	KVSM_PARAMETERS_END(c)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	MpInterface::PlayerStatus eStat = g_pMPInterface->status();
@@ -1464,16 +1465,16 @@ MP_KVS_FUNCTION(status)
 	{
 		case MpInterface::Stopped:
 			c->returnValue()->setString("stopped");
-		break;
+			break;
 		case MpInterface::Playing:
 			c->returnValue()->setString("playing");
-		break;
+			break;
 		case MpInterface::Paused:
 			c->returnValue()->setString("paused");
-		break;
+			break;
 		default:
 			c->returnValue()->setString("unknown");
-		break;
+			break;
 	}
 	return true;
 }
@@ -1546,16 +1547,16 @@ MP_KVS_COMMAND(setRepeat)
 	bool bVal;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("repeat",KVS_PT_BOOL,0,bVal)
+	KVSM_PARAMETER("repeat", KVS_PT_BOOL, 0, bVal)
 	KVSM_PARAMETERS_END(c)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	if(!g_pMPInterface->setRepeat(bVal))
 	{
-		if(!c->hasSwitch('q',"quiet"))
+		if(!c->hasSwitch('q', "quiet"))
 		{
-			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function","mediaplayer"));
-			QString tmp = __tr2qs_ctx("Last interface error: ","mediaplayer");
+			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function", "mediaplayer"));
+			QString tmp = __tr2qs_ctx("Last interface error: ", "mediaplayer");
 			tmp += g_pMPInterface->lastError();
 			c->warning(tmp);
 		}
@@ -1588,16 +1589,16 @@ MP_KVS_COMMAND(setShuffle)
 	bool bVal;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("shuffle",KVS_PT_BOOL,0,bVal)
+	KVSM_PARAMETER("shuffle", KVS_PT_BOOL, 0, bVal)
 	KVSM_PARAMETERS_END(c)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	if(!g_pMPInterface->setShuffle(bVal))
 	{
-		if(!c->hasSwitch('q',"quiet"))
+		if(!c->hasSwitch('q', "quiet"))
 		{
-			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function","mediaplayer"));
-			QString tmp = __tr2qs_ctx("Last interface error: ","mediaplayer");
+			c->warning(__tr2qs_ctx("The selected media player interface failed to execute the requested function", "mediaplayer"));
+			QString tmp = __tr2qs_ctx("Last interface error: ", "mediaplayer");
 			tmp += g_pMPInterface->lastError();
 			c->warning(tmp);
 		}
@@ -1605,12 +1606,12 @@ MP_KVS_COMMAND(setShuffle)
 	return true;
 }
 
-static bool mediaplayer_module_init( KviModule * m )
+static bool mediaplayer_module_init(KviModule * m)
 {
 	g_pDescriptorList = new KviPointerList<MpInterfaceDescriptor>;
 	g_pDescriptorList->setAutoDelete(true);
 
-#if (defined(COMPILE_DBUS_SUPPORT) && !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC) && !defined(COMPILE_ON_MINGW))
+#if(defined(COMPILE_DBUS_SUPPORT) && !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC) && !defined(COMPILE_ON_MINGW))
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpAudaciousInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAudaciousClassicInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmmsInterface));
@@ -1633,8 +1634,10 @@ static bool mediaplayer_module_init( KviModule * m )
 	if(KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) == "auto")
 	{
 		g_pMPInterface = auto_detect_player();
-	} else {
-		for(MpInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
+	}
+	else
+	{
+		for(MpInterfaceDescriptor * d = g_pDescriptorList->first(); d; d = g_pDescriptorList->next())
 		{
 			if(d->name() == KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer))
 			{
@@ -1643,59 +1646,58 @@ static bool mediaplayer_module_init( KviModule * m )
 		}
 	}
 
-	// check for "auto" interface too!
+// check for "auto" interface too!
 
+#define MP_KVS_REGCMD(__name, __stringname) KVSM_REGISTER_SIMPLE_COMMAND(m, __stringname, mediaplayer_kvs_cmd_##__name)
+#define MP_KVS_REGFNC(__name, __stringname) KVSM_REGISTER_FUNCTION(m, __stringname, mediaplayer_kvs_fnc_##__name)
 
-	#define MP_KVS_REGCMD(__name,__stringname) KVSM_REGISTER_SIMPLE_COMMAND(m,__stringname,mediaplayer_kvs_cmd_ ## __name)
-	#define MP_KVS_REGFNC(__name,__stringname) KVSM_REGISTER_FUNCTION(m,__stringname,mediaplayer_kvs_fnc_ ## __name)
+	MP_KVS_REGCMD(play, "play");
+	MP_KVS_REGCMD(stop, "stop");
+	MP_KVS_REGCMD(next, "next");
+	MP_KVS_REGCMD(prev, "prev");
+	MP_KVS_REGCMD(quit, "quit");
+	MP_KVS_REGCMD(pause, "pause");
+	MP_KVS_REGCMD(detect, "detect");
+	MP_KVS_REGCMD(playMrl, "playMrl");
+	MP_KVS_REGCMD(amipExec, "amipExec");
+	MP_KVS_REGCMD(hide, "hide");
+	MP_KVS_REGCMD(show, "show");
+	MP_KVS_REGCMD(minimize, "minimize");
+	MP_KVS_REGCMD(jumpTo, "jumpTo");
+	MP_KVS_REGCMD(setPlayer, "setPlayer");
+	MP_KVS_REGCMD(setVol, "setVol");
+	MP_KVS_REGCMD(mute, "mute");
+	MP_KVS_REGCMD(setRepeat, "setRepeat");
+	MP_KVS_REGCMD(setShuffle, "setShuffle");
+	MP_KVS_REGCMD(setPlayListPos, "setPlayListPos");
+	MP_KVS_REGCMD(setEqData, "setEqData");
 
-	MP_KVS_REGCMD(play,"play");
-	MP_KVS_REGCMD(stop,"stop");
-	MP_KVS_REGCMD(next,"next");
-	MP_KVS_REGCMD(prev,"prev");
-	MP_KVS_REGCMD(quit,"quit");
-	MP_KVS_REGCMD(pause,"pause");
-	MP_KVS_REGCMD(detect,"detect");
-	MP_KVS_REGCMD(playMrl,"playMrl");
-	MP_KVS_REGCMD(amipExec,"amipExec");
-	MP_KVS_REGCMD(hide,"hide");
-	MP_KVS_REGCMD(show,"show");
-	MP_KVS_REGCMD(minimize,"minimize");
-	MP_KVS_REGCMD(jumpTo,"jumpTo");
-	MP_KVS_REGCMD(setPlayer,"setPlayer");
-	MP_KVS_REGCMD(setVol,"setVol");
-	MP_KVS_REGCMD(mute,"mute");
-	MP_KVS_REGCMD(setRepeat,"setRepeat");
-	MP_KVS_REGCMD(setShuffle,"setShuffle");
-	MP_KVS_REGCMD(setPlayListPos,"setPlayListPos");
-	MP_KVS_REGCMD(setEqData,"setEqData");
-
-	MP_KVS_REGFNC(nowPlaying,"nowPlaying");
-	MP_KVS_REGFNC(mrl,"mrl");
-	MP_KVS_REGFNC(title,"title");
-	MP_KVS_REGFNC(artist,"artist");
-	MP_KVS_REGFNC(genre,"genre");
-	MP_KVS_REGFNC(year,"year");
-	MP_KVS_REGFNC(comment,"comment");
-	MP_KVS_REGFNC(album,"album");
-	MP_KVS_REGFNC(mediaType,"mediaType");
-	MP_KVS_REGFNC(bitRate,"bitRate");
-	MP_KVS_REGFNC(sampleRate,"sampleRate");
-	MP_KVS_REGFNC(length,"length");
-	MP_KVS_REGFNC(position,"position");
-	MP_KVS_REGFNC(status,"status");
-	MP_KVS_REGFNC(player,"player");
-	MP_KVS_REGFNC(playerList,"playerList");
-	MP_KVS_REGFNC(localFile,"localFile");
-	MP_KVS_REGFNC(amipEval,"amipEval");
-	MP_KVS_REGFNC(channels,"channels");
-	MP_KVS_REGFNC(getListLength,"getListLength");
-	MP_KVS_REGFNC(getPlayListPos,"getPlayListPos");
-	MP_KVS_REGFNC(getEqData,"getEqData");
-	MP_KVS_REGFNC(getRepeat,"getRepeat");
-	MP_KVS_REGFNC(getShuffle,"getShuffle");
-	MP_KVS_REGFNC(getVol,"getVol");
-/*
+	MP_KVS_REGFNC(nowPlaying, "nowPlaying");
+	MP_KVS_REGFNC(mrl, "mrl");
+	MP_KVS_REGFNC(title, "title");
+	MP_KVS_REGFNC(artist, "artist");
+	MP_KVS_REGFNC(genre, "genre");
+	MP_KVS_REGFNC(year, "year");
+	MP_KVS_REGFNC(comment, "comment");
+	MP_KVS_REGFNC(album, "album");
+	MP_KVS_REGFNC(mediaType, "mediaType");
+	MP_KVS_REGFNC(bitRate, "bitRate");
+	MP_KVS_REGFNC(sampleRate, "sampleRate");
+	MP_KVS_REGFNC(length, "length");
+	MP_KVS_REGFNC(position, "position");
+	MP_KVS_REGFNC(status, "status");
+	MP_KVS_REGFNC(player, "player");
+	MP_KVS_REGFNC(playerList, "playerList");
+	MP_KVS_REGFNC(localFile, "localFile");
+	MP_KVS_REGFNC(amipEval, "amipEval");
+	MP_KVS_REGFNC(channels, "channels");
+	MP_KVS_REGFNC(getListLength, "getListLength");
+	MP_KVS_REGFNC(getPlayListPos, "getPlayListPos");
+	MP_KVS_REGFNC(getEqData, "getEqData");
+	MP_KVS_REGFNC(getRepeat, "getRepeat");
+	MP_KVS_REGFNC(getShuffle, "getShuffle");
+	MP_KVS_REGFNC(getVol, "getVol");
+	/*
 	// Crissi
 	m->registerFunction( "getmp3tag_date", mediaplayer_fnc_getmp3tag_date );
 	m->registerFunction( "getmp3tag_version", mediaplayer_fnc_getmp3tag_version );
@@ -1709,30 +1711,30 @@ static bool mediaplayer_module_init( KviModule * m )
 	return true;
 }
 
-static bool mediaplayer_module_cleanup( KviModule * )
+static bool mediaplayer_module_cleanup(KviModule *)
 {
 	delete g_pDescriptorList;
 	return true;
 }
 
-static bool mediaplayer_module_can_unload( KviModule * )
+static bool mediaplayer_module_can_unload(KviModule *)
 {
 	return true;
 }
 
-static bool mediaplayer_module_ctrl(KviModule *,const char * operation,void * param)
+static bool mediaplayer_module_ctrl(KviModule *, const char * operation, void * param)
 {
-	if(kvi_strEqualCI(operation,"getAvailableMediaPlayers"))
+	if(kvi_strEqualCI(operation, "getAvailableMediaPlayers"))
 	{
 		// we expect param to be a pointer to QStringList
 		QStringList * l = (QStringList *)param;
-		for(MpInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
+		for(MpInterfaceDescriptor * d = g_pDescriptorList->first(); d; d = g_pDescriptorList->next())
 		{
 			l->append(d->name());
 		}
 		return true;
 	}
-	if(kvi_strEqualCI(operation,"detectMediaPlayer"))
+	if(kvi_strEqualCI(operation, "detectMediaPlayer"))
 	{
 		auto_detect_player(0);
 		return true;
@@ -1741,18 +1743,17 @@ static bool mediaplayer_module_ctrl(KviModule *,const char * operation,void * pa
 }
 
 KVIRC_MODULE(
-	"mediaplayer",
-	"4.0.0",
-	"Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)," \
-		"Christoph Thielecke (crissi99 at gmx dot de)," \
-		"Tonino Imbesi (grifisx at barmes dot org)," \
-		"Alessandro Carbone (elfonol at gmail dot com)," \
-		"Alexey Uzhva (wizard at opendoor dot ru)," \
-		"Serge Baranov (sbaranov at gmail dot com)",
-	"Interface to various media players",
-	mediaplayer_module_init,
-	mediaplayer_module_can_unload,
-	mediaplayer_module_ctrl,
-	mediaplayer_module_cleanup,
-	"mediaplayer"
-)
+    "mediaplayer",
+    "4.0.0",
+    "Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net),"
+    "Christoph Thielecke (crissi99 at gmx dot de),"
+    "Tonino Imbesi (grifisx at barmes dot org),"
+    "Alessandro Carbone (elfonol at gmail dot com),"
+    "Alexey Uzhva (wizard at opendoor dot ru),"
+    "Serge Baranov (sbaranov at gmail dot com)",
+    "Interface to various media players",
+    mediaplayer_module_init,
+    mediaplayer_module_can_unload,
+    mediaplayer_module_ctrl,
+    mediaplayer_module_cleanup,
+    "mediaplayer")

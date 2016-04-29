@@ -26,7 +26,6 @@
 
 #include "KviOptionsWidget.h"
 
-
 class QComboBox;
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_ircOutput KviIconManager::Raw
@@ -41,9 +40,11 @@ class OptionsWidget_ircOutput : public KviOptionsWidget
 public:
 	OptionsWidget_ircOutput(QWidget * parent);
 	~OptionsWidget_ircOutput();
+
 protected:
 	QComboBox * m_pVerbosityCombo;
 	QComboBox * m_pDatetimeCombo;
+
 protected:
 	virtual void commit();
 };

@@ -23,7 +23,6 @@
 //
 //=============================================================================
 
-
 #include "KvsObject_popupMenu.h"
 
 #include "KviError.h"
@@ -34,8 +33,6 @@
 #include <QCursor>
 #include <QMenu>
 #include <QAction>
-
-
 
 /*
 	@doc: popupmenu
@@ -165,28 +162,28 @@
 		[/example]
 */
 
-static QHash<int,QAction*> actionsDict;
-static int iIdentifier=0;
+static QHash<int, QAction *> actionsDict;
+static int iIdentifier = 0;
 
-
-static int addActionToDict(QAction *pAction)
+static int addActionToDict(QAction * pAction)
 {
-	actionsDict.insert(iIdentifier,pAction);
+	actionsDict.insert(iIdentifier, pAction);
 	iIdentifier++;
-	return (iIdentifier-1);
+	return (iIdentifier - 1);
 }
-static void removeMenuAllActions(QMenu *pMenu)
+static void removeMenuAllActions(QMenu * pMenu)
 {
-	QList<QAction*> pActionsList=pMenu->actions();
-	QList<QAction*> pActionsListDictValues=actionsDict.values();
-	for(int i=0;i<pActionsList.count();i++)
+	QList<QAction *> pActionsList = pMenu->actions();
+	QList<QAction *> pActionsListDictValues = actionsDict.values();
+	for(int i = 0; i < pActionsList.count(); i++)
 	{
-		int iIdx=pActionsListDictValues.indexOf(pActionsList.at(i));
-		if (iIdx>=0) actionsDict.remove(actionsDict.key(pActionsList.at(i)));
+		int iIdx = pActionsListDictValues.indexOf(pActionsList.at(i));
+		if(iIdx >= 0)
+			actionsDict.remove(actionsDict.key(pActionsList.at(i)));
 	}
 }
 
-static QAction* getAction(int idx)
+static QAction * getAction(int idx)
 {
 	return actionsDict.value(idx);
 }
@@ -195,76 +192,77 @@ static void removeAction(int idx)
 	actionsDict.remove(idx);
 }
 
+KVSO_BEGIN_REGISTERCLASS(KvsObject_popupMenu, "popupmenu", "widget")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu, insertItem)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu, setTitle)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu, exec)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu, insertSeparator)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu, removeItem)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu, addMenu)
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_popupMenu,"popupmenu","widget")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,insertItem)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,setTitle)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,exec)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,insertSeparator)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,removeItem)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,addMenu)
-
-	// events
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,highlightedEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu,activatedEvent)
+// events
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu, highlightedEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_popupMenu, activatedEvent)
 
 KVSO_END_REGISTERCLASS(KvsObject_popupMenu)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_popupMenu,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_popupMenu, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_popupMenu)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_popupMenu)
 
 KVSO_END_DESTRUCTOR(KvsObject_popupMenu)
 
-bool KvsObject_popupMenu::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_popupMenu::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QMenu)
-	connect(widget(),SIGNAL(triggered(QAction *)),this,SLOT(slottriggered(QAction *)));
-	connect(widget(),SIGNAL(destroyed(QObject *)),this,SLOT(aboutToDie(QObject *)));
-	connect(widget(),SIGNAL(hovered(QAction *)),this,SLOT(slothovered(QAction *)));
+	connect(widget(), SIGNAL(triggered(QAction *)), this, SLOT(slottriggered(QAction *)));
+	connect(widget(), SIGNAL(destroyed(QObject *)), this, SLOT(aboutToDie(QObject *)));
+	connect(widget(), SIGNAL(hovered(QAction *)), this, SLOT(slothovered(QAction *)));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(popupMenu,insertItem)
+KVSO_CLASS_FUNCTION(popupMenu, insertItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szItem,szIcon;
+	QString szItem, szIcon;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szItem)
-		KVSO_PARAMETER("icon_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szItem)
+	KVSO_PARAMETER("icon_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
 	KVSO_PARAMETERS_END(c)
 
-	QPixmap *pix = 0;
+	QPixmap * pix = 0;
 	QAction * pAction = 0;
 	if(!szIcon.isEmpty())
 	{
 		pix = g_pIconManager->getImage(szIcon);
-		if (pix) pAction=((QMenu *)widget())->addAction(*pix,szItem);
-		else c->warning(__tr2qs_ctx("Icon '%Q' doesn't exist","objects"),&szIcon);
+		if(pix)
+			pAction = ((QMenu *)widget())->addAction(*pix, szItem);
+		else
+			c->warning(__tr2qs_ctx("Icon '%Q' doesn't exist", "objects"), &szIcon);
 	}
 	else
-		pAction=((QMenu *)widget())->addAction(szItem);
-	int identifier=addActionToDict(pAction);
+		pAction = ((QMenu *)widget())->addAction(szItem);
+	int identifier = addActionToDict(pAction);
 	c->returnValue()->setInteger((kvs_int_t)identifier);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(popupMenu,setTitle)
+KVSO_CLASS_FUNCTION(popupMenu, setTitle)
 {
 	QString szTitle;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("title",KVS_PT_STRING,0,szTitle)
+	KVSO_PARAMETER("title", KVS_PT_STRING, 0, szTitle)
 	KVSO_PARAMETERS_END(c)
-	if(!widget())return true;
+	if(!widget())
+		return true;
 	((QMenu *)widget())->setTitle(szTitle);
 
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(popupMenu,exec)
+KVSO_CLASS_FUNCTION(popupMenu, exec)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	if(!c->params()->count())
@@ -273,73 +271,73 @@ KVSO_CLASS_FUNCTION(popupMenu,exec)
 		return true;
 	}
 
-	KviKvsObject *pObject;
-	kvs_uint_t iX,iY;
-	QString szLabel,szIcon;
+	KviKvsObject * pObject;
+	kvs_uint_t iX, iY;
+	QString szLabel, szIcon;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("x",KVS_PT_UNSIGNEDINTEGER,0,iX)
-		KVSO_PARAMETER("y",KVS_PT_UNSIGNEDINTEGER,0,iY)
+	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+	KVSO_PARAMETER("x", KVS_PT_UNSIGNEDINTEGER, 0, iX)
+	KVSO_PARAMETER("y", KVS_PT_UNSIGNEDINTEGER, 0, iY)
 	KVSO_PARAMETERS_END(c)
-	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	((QMenu *)widget())->exec(((QWidget *)(pObject->object()))->mapToGlobal(QPoint(iX,iY)) );
+	((QMenu *)widget())->exec(((QWidget *)(pObject->object()))->mapToGlobal(QPoint(iX, iY)));
 
 	return true;
 }
 
-
-
-KVSO_CLASS_FUNCTION(popupMenu,addMenu)
+KVSO_CLASS_FUNCTION(popupMenu, addMenu)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject *pObject;
+	KviKvsObject * pObject;
 	kvs_uint_t iIdx;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("popupmenu",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,iIdx)
+	KVSO_PARAMETER("popupmenu", KVS_PT_HOBJECT, 0, hObject)
+	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, KVS_PF_OPTIONAL, iIdx)
 	KVSO_PARAMETERS_END(c)
 
-	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!pObject)
+	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	if(!pObject)
 	{
-		c->warning(__tr2qs_ctx("Popup menu parameter is not an object","objects"));
+		c->warning(__tr2qs_ctx("Popup menu parameter is not an object", "objects"));
 		return true;
 	}
-	if (!pObject->object())
+	if(!pObject->object())
 	{
-		c->warning(__tr2qs_ctx("Popup menu parameter is not a valid object","objects"));
+		c->warning(__tr2qs_ctx("Popup menu parameter is not a valid object", "objects"));
 		return true;
 	}
 	if(!pObject->inheritsClass("popupmenu"))
 	{
-		c->warning(__tr2qs_ctx("Popupmenu object required","objects"));
+		c->warning(__tr2qs_ctx("Popupmenu object required", "objects"));
 		return true;
 	}
-	QAction *pAction;
+	QAction * pAction;
 	if(iIdx)
 	{
-		QAction *pActionBefore=actionsDict[iIdx];
-		pAction=((QMenu *)widget())->insertMenu(pActionBefore,(QMenu*)pObject->object());
-	} else {
-		pAction=((QMenu *)widget())->addMenu((QMenu*)pObject->object());
+		QAction * pActionBefore = actionsDict[iIdx];
+		pAction = ((QMenu *)widget())->insertMenu(pActionBefore, (QMenu *)pObject->object());
 	}
-	int identifier=addActionToDict(pAction);
+	else
+	{
+		pAction = ((QMenu *)widget())->addMenu((QMenu *)pObject->object());
+	}
+	int identifier = addActionToDict(pAction);
 	c->returnValue()->setInteger((kvs_int_t)identifier);
 	identifier++;
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(popupMenu,removeItem)
+KVSO_CLASS_FUNCTION(popupMenu, removeItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iIdx;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("item_id",KVS_PT_INTEGER,0,iIdx)
+	KVSO_PARAMETER("item_id", KVS_PT_INTEGER, 0, iIdx)
 	KVSO_PARAMETERS_END(c)
-	QAction * pAction=getAction(iIdx);
+	QAction * pAction = getAction(iIdx);
 	if(pAction)
 	{
 		((QMenu *)widget())->removeAction(pAction);
@@ -348,29 +346,29 @@ KVSO_CLASS_FUNCTION(popupMenu,removeItem)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(popupMenu,insertSeparator)
+KVSO_CLASS_FUNCTION(popupMenu, insertSeparator)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
+	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, iIndex)
 	KVSO_PARAMETERS_END(c)
-	QAction * pAction=getAction(iIndex);
+	QAction * pAction = getAction(iIndex);
 	if(pAction)
-        ((QMenu *)widget())->insertSeparator(pAction);
+		((QMenu *)widget())->insertSeparator(pAction);
 	return true;
 }
 
-void KvsObject_popupMenu::slothovered(QAction *a)
+void KvsObject_popupMenu::slothovered(QAction * a)
 {
 	QHashIterator<int, QAction *> i(actionsDict);
-	bool bFound=false;
-	while (i.hasNext())
+	bool bFound = false;
+	while(i.hasNext())
 	{
 		i.next();
-		if (i.value()== a)
+		if(i.value() == a)
 		{
-			bFound=true;
+			bFound = true;
 			break;
 		}
 	}
@@ -379,30 +377,30 @@ void KvsObject_popupMenu::slothovered(QAction *a)
 	if(bFound)
 	{
 		KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i.key()));
-		callFunction(this,"highlightedEvent",&params);
+		callFunction(this, "highlightedEvent", &params);
 	}
 }
-void KvsObject_popupMenu::aboutToDie(QObject *pObject)
+void KvsObject_popupMenu::aboutToDie(QObject * pObject)
 {
 	qDebug("Removing popup from kvs dict");
 	removeMenuAllActions((QMenu *)pObject);
 }
-KVSO_CLASS_FUNCTION(popupMenu,highlightedEvent)
+KVSO_CLASS_FUNCTION(popupMenu, highlightedEvent)
 {
-	emitSignal("highlighted",c,c->params());
+	emitSignal("highlighted", c, c->params());
 	return true;
 }
 
-void KvsObject_popupMenu::slottriggered(QAction *a)
+void KvsObject_popupMenu::slottriggered(QAction * a)
 {
 	QHashIterator<int, QAction *> i(actionsDict);
-	bool bFound=false;
-	while (i.hasNext())
+	bool bFound = false;
+	while(i.hasNext())
 	{
 		i.next();
-		if (i.value()== a)
+		if(i.value() == a)
 		{
-			bFound=true;
+			bFound = true;
 			break;
 		}
 	}
@@ -411,12 +409,12 @@ void KvsObject_popupMenu::slottriggered(QAction *a)
 	if(bFound)
 	{
 		KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i.key()));
-		callFunction(this,"activatedEvent",&params);
+		callFunction(this, "activatedEvent", &params);
 	}
 }
 
-KVSO_CLASS_FUNCTION(popupMenu,activatedEvent)
+KVSO_CLASS_FUNCTION(popupMenu, activatedEvent)
 {
-	emitSignal("activated",c,c->params());
+	emitSignal("activated", c, c->params());
 	return true;
 }

@@ -62,77 +62,77 @@
 		This signal is emitted by the default implementation of [classfnc]$toggleEvent[/classfnc]().[br]
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_radioButton,"radiobutton","widget")
+KVSO_BEGIN_REGISTERCLASS(KvsObject_radioButton, "radiobutton", "widget")
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_radioButton,setText)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_radioButton,setChecked)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_radioButton,isChecked)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_radioButton,setImage)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_radioButton,toggleEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_radioButton, setText)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_radioButton, setChecked)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_radioButton, isChecked)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_radioButton, setImage)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_radioButton, toggleEvent)
 
 KVSO_END_REGISTERCLASS(KvsObject_radioButton)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_radioButton,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_radioButton, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_radioButton)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_radioButton)
 
 KVSO_END_CONSTRUCTOR(KvsObject_radioButton)
 
-bool KvsObject_radioButton::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_radioButton::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QRadioButton)
-	connect(widget(),SIGNAL(toggled(bool)),this,SLOT(toggled(bool)));
+	connect(widget(), SIGNAL(toggled(bool)), this, SLOT(toggled(bool)));
 	return true;
 }
-KVSO_CLASS_FUNCTION(radioButton,setText)
+KVSO_CLASS_FUNCTION(radioButton, setText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
 	((QRadioButton *)widget())->setText(szText);
 	return true;
 }
-KVSO_CLASS_FUNCTION(radioButton,isChecked)
+KVSO_CLASS_FUNCTION(radioButton, isChecked)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(((QRadioButton *)widget())->isChecked());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(radioButton,setChecked)
+KVSO_CLASS_FUNCTION(radioButton, setChecked)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	bool bChecked;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bChecked",KVS_PT_BOOL,0,bChecked)
+	KVSO_PARAMETER("bChecked", KVS_PT_BOOL, 0, bChecked)
 	KVSO_PARAMETERS_END(c)
 	((QRadioButton *)widget())->setChecked(bChecked);
 	return true;
 }
-KVSO_CLASS_FUNCTION(radioButton,setImage)
+KVSO_CLASS_FUNCTION(radioButton, setImage)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString icon;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("icon_id",KVS_PT_STRING,0,icon)
+	KVSO_PARAMETER("icon_id", KVS_PT_STRING, 0, icon)
 	KVSO_PARAMETERS_END(c)
 	QPixmap * pix = g_pIconManager->getImage(icon);
-	if(pix)((QRadioButton *)widget())->setIcon(*pix);
+	if(pix)
+		((QRadioButton *)widget())->setIcon(*pix);
 	return true;
 }
-KVSO_CLASS_FUNCTION(radioButton,toggleEvent)
+KVSO_CLASS_FUNCTION(radioButton, toggleEvent)
 {
-	emitSignal("toggled",c,c->params());
+	emitSignal("toggled", c, c->params());
 	return true;
 }
 
 void KvsObject_radioButton::toggled(bool b)
 {
 	KviKvsVariantList params(new KviKvsVariant(b));
-	callFunction(this,"toggleEvent",&params);
+	callFunction(this, "toggleEvent", &params);
 }

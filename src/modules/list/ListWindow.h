@@ -46,8 +46,8 @@ class ChannelTreeWidgetItemDelegate : public QItemDelegate
 public:
 	ChannelTreeWidgetItemDelegate(QTreeWidget * pWidget = 0);
 	~ChannelTreeWidgetItemDelegate();
-	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
-	QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
+	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
+	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
 };
 
 class ChannelTreeWidgetItemData
@@ -55,9 +55,11 @@ class ChannelTreeWidgetItemData
 	friend class ChannelTreeWidgetItem;
 	friend class ListWindow;
 	friend class ChannelTreeWidgetItemDelegate;
+
 public:
 	ChannelTreeWidgetItemData(const QString & szChan, const QString & szUsers, const QString & szTopic);
 	~ChannelTreeWidgetItemData();
+
 protected:
 	QString m_szChan;
 	QString m_szUsers;
@@ -68,25 +70,28 @@ protected:
 class ChannelTreeWidgetItem : public QTreeWidgetItem
 {
 	friend class ListWindow;
+
 public:
 	ChannelTreeWidgetItem(ChannelTreeWidgetItemData * pData);
 	~ChannelTreeWidgetItem();
+
 private:
 	ChannelTreeWidgetItemData * m_pData;
+
 public:
 	bool operator<(const QTreeWidgetItem & other) const;
 	inline ChannelTreeWidgetItemData * itemData() { return m_pData; };
 };
 
-class ChannelTreeWidget: public KviThemedTreeWidget
+class ChannelTreeWidget : public KviThemedTreeWidget
 {
 	friend class ChannelTreeWidgetItem;
 	friend class ChannelTreeWidgetItemData;
 	Q_OBJECT
 public:
-	ChannelTreeWidget(QWidget * par, KviWindow * pWindow, const char * name) : KviThemedTreeWidget(par, pWindow, name) {};
-	~ChannelTreeWidget() {};
-	ChannelTreeWidgetItem* itemFromIndex(const QModelIndex & index) const { return (ChannelTreeWidgetItem*) KviThemedTreeWidget::itemFromIndex(index); };
+	ChannelTreeWidget(QWidget * par, KviWindow * pWindow, const char * name) : KviThemedTreeWidget(par, pWindow, name){};
+	~ChannelTreeWidget(){};
+	ChannelTreeWidgetItem * itemFromIndex(const QModelIndex & index) const { return (ChannelTreeWidgetItem *)KviThemedTreeWidget::itemFromIndex(index); };
 };
 
 class ListWindow : public KviWindow, public KviExternalServerDataParser
@@ -95,23 +100,26 @@ class ListWindow : public KviWindow, public KviExternalServerDataParser
 public:
 	ListWindow(KviConsoleWindow * lpConsole);
 	~ListWindow();
+
 protected:
-	QSplitter                                    * m_pVertSplitter;
-	QSplitter                                    * m_pTopSplitter;
-	ChannelTreeWidget                            * m_pTreeWidget;
-	KviThemedLineEdit                            * m_pParamsEdit;
-	QToolButton                                  * m_pRequestButton;
-	QToolButton                                  * m_pStopListDownloadButton;
-	QToolButton                                  * m_pOpenButton;
-	QToolButton                                  * m_pSaveButton;
-	KviThemedLabel                               * m_pInfoLabel;
-	QTimer                                       * m_pFlushTimer;
+	QSplitter * m_pVertSplitter;
+	QSplitter * m_pTopSplitter;
+	ChannelTreeWidget * m_pTreeWidget;
+	KviThemedLineEdit * m_pParamsEdit;
+	QToolButton * m_pRequestButton;
+	QToolButton * m_pStopListDownloadButton;
+	QToolButton * m_pOpenButton;
+	QToolButton * m_pSaveButton;
+	KviThemedLabel * m_pInfoLabel;
+	QTimer * m_pFlushTimer;
 	KviPointerList<ChannelTreeWidgetItemData> * m_pItemList;
+
 public: // Methods
 	virtual void control(int iMsg);
 	virtual void processData(KviIrcMessage * pMsg);
 	virtual void die();
 	virtual QSize sizeHint() const;
+
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
@@ -127,6 +135,7 @@ protected slots:
 	void exportList();
 	void importList();
 	void liveSearch(const QString & szText);
+
 private:
 	void reset();
 	void endOfList();

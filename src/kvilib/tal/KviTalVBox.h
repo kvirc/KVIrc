@@ -57,8 +57,10 @@ public:
 	* \brief Destroys a vertical box object
 	*/
 	~KviTalVBox();
+
 private:
 	QVBoxLayout * m_pLayout;
+
 public:
 	/**
 	* \brief Sets the stretch factor for an object
@@ -103,6 +105,7 @@ public:
 	* \return void
 	*/
 	void addStretch(int iStretch);
+
 protected:
 	virtual void childEvent(QChildEvent * e);
 };

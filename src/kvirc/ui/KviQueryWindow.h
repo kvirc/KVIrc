@@ -54,7 +54,8 @@ public:
 	* \enum Flag
 	* \brief Holds the flags of a query
 	*/
-	enum Flag {
+	enum Flag
+	{
 		Dead = 1
 	};
 
@@ -70,19 +71,21 @@ public:
 	* \brief Destroys the query object
 	*/
 	~KviQueryWindow();
+
 protected:
-	KviUserListView                     * m_pUserListView;
-	KviWindowToolPageButton             * m_pListViewButton;
-	int                                   m_iFlags;
-	KviThemedLabel                      * m_pLabel;
-	QFrame                              * m_pButtonGrid;
-	QList<int>                            m_SplitterSizesList;
+	KviUserListView * m_pUserListView;
+	KviWindowToolPageButton * m_pListViewButton;
+	int m_iFlags;
+	KviThemedLabel * m_pLabel;
+	QFrame * m_pButtonGrid;
+	QList<int> m_SplitterSizesList;
+
 public:
 	/**
 	* \brief Returns the userlist of the query (the remote peer)
 	* \return KviUserListView *
 	*/
-	KviUserListView * userListView(){ return m_pUserListView; };
+	KviUserListView * userListView() { return m_pUserListView; };
 
 	/**
 	* \brief Sets the status of the query as dead
@@ -100,7 +103,7 @@ public:
 	* \brief Returns true if the query is dead
 	* \return bool
 	*/
-	bool isDeadQuery(){ return m_iFlags & Dead; };
+	bool isDeadQuery() { return m_iFlags & Dead; };
 
 	/**
 	* \brief Returns the size of the query object
@@ -112,7 +115,7 @@ public:
 	* \brief Returns the name of the query target
 	* \return const QString &
 	*/
-	virtual const QString & target(){ return windowName(); };
+	virtual const QString & target() { return windowName(); };
 
 	/**
 	* \brief Sets the target of the query
@@ -127,7 +130,7 @@ public:
 	* \brief Returns the button container
 	* \return QFrame *
 	*/
-	QFrame * buttonContainer(){ return (QFrame*)m_pButtonGrid; };
+	QFrame * buttonContainer() { return (QFrame *)m_pButtonGrid; };
 
 	/**
 	* \brief Applies the options
@@ -188,14 +191,14 @@ public:
 	* \brief Returns the number of selected users in the userlist
 	* \return int
 	*/
-	int selectedCount(){ return m_pUserListView->selectedCount(); };
+	int selectedCount() { return m_pUserListView->selectedCount(); };
 
 	/**
 	* \brief Called when the target changes the avatar
 	* \param szNick The nickname of the user
 	* \return bool
 	*/
-	bool avatarChanged(const QString & szNick){ return m_pUserListView->avatarChanged(szNick); };
+	bool avatarChanged(const QString & szNick) { return m_pUserListView->avatarChanged(szNick); };
 
 	/**
 	* \brief Notify us if we have common channels with the target
@@ -214,7 +217,7 @@ public:
 	* \param bIgnoreSizeChange Whether to ignore the size change
 	* \return void
 	*/
-	void showListView(bool bShow, bool bIgnoreSizeChange=false);
+	void showListView(bool bShow, bool bIgnoreSizeChange = false);
 
 	/**
 	* \brief Merges a query into the one we're using
@@ -248,6 +251,7 @@ public:
 	* \return QByteArray
 	*/
 	QByteArray loadLogFile(const QString & szFileName, bool bGzip);
+
 protected:
 	/**
 	* \brief Called to notify us that the target of the query is changed
@@ -331,7 +335,7 @@ protected slots:
 	* \param szFile The file dropped in the query
 	* \return void
 	*/
-        void slotDndEvents(const QString & szFile);
+	void slotDndEvents(const QString & szFile);
 };
 
 #endif //_KVI_CHANNEL_H_

@@ -22,9 +22,6 @@
 //
 //=============================================================================
 
-
-
-
 #include "kvi_debug.h"
 #include "KviPixmap.h"
 #include "KviQString.h"
@@ -40,9 +37,9 @@ KviPixmap::KviPixmap(const char * path)
 	load(path);
 }
 
-KviPixmap::KviPixmap(const KviPixmap &pix)
+KviPixmap::KviPixmap(const KviPixmap & pix)
 {
-	m_pPix   = 0;
+	m_pPix = 0;
 	m_szPath = pix.path();
 
 	if(!m_szPath.isEmpty())
@@ -68,10 +65,11 @@ bool KviPixmap::load(const char * path)
 	if(m_pPix)
 	{
 		delete m_pPix;
-		m_pPix   = 0;
+		m_pPix = 0;
 	}
 	m_szPath = path;
-	if(m_szPath.isEmpty())return false;
+	if(m_szPath.isEmpty())
+		return false;
 
 	m_pPix = new QPixmap(m_szPath);
 
@@ -85,15 +83,16 @@ bool KviPixmap::load(const char * path)
 	return true;
 }
 
-bool KviPixmap::load(const QString& path)
+bool KviPixmap::load(const QString & path)
 {
 	if(m_pPix)
 	{
 		delete m_pPix;
-		m_pPix   = 0;
+		m_pPix = 0;
 	}
 	m_szPath = path;
-	if(m_szPath.isEmpty())return false;
+	if(m_szPath.isEmpty())
+		return false;
 
 	m_pPix = new QPixmap(m_szPath);
 
@@ -107,7 +106,7 @@ bool KviPixmap::load(const QString& path)
 	return true;
 }
 
-void KviPixmap::set(const QPixmap &pix,const QString &szPath)
+void KviPixmap::set(const QPixmap & pix, const QString & szPath)
 {
 	if(pix.isNull())
 	{
@@ -121,7 +120,6 @@ void KviPixmap::set(const QPixmap &pix,const QString &szPath)
 	m_szPath = szPath;
 }
 
-
 void KviPixmap::setNull()
 {
 	if(m_pPix)
@@ -132,15 +130,17 @@ void KviPixmap::setNull()
 	m_szPath = "";
 }
 
-KviPixmap & KviPixmap::operator=(const KviPixmap &pix)
+KviPixmap & KviPixmap::operator=(const KviPixmap & pix)
 {
-	if(m_pPix == pix.m_pPix)return (*this); // self assignment (!!!)
-	if(KviQString::equalCI(m_szPath,pix.path()))return (*this); // same pix
+	if(m_pPix == pix.m_pPix)
+		return (*this); // self assignment (!!!)
+	if(KviQString::equalCI(m_szPath, pix.path()))
+		return (*this); // same pix
 
 	if(m_pPix)
 	{
 		delete m_pPix;
-		m_pPix   = 0;
+		m_pPix = 0;
 	}
 	m_szPath = pix.path();
 

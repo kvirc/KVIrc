@@ -30,8 +30,8 @@
 #include "KviKvsRunTimeContext.h"
 #include "KviLocale.h"
 
-KviKvsTreeNodeSpecialCommandForeach::KviKvsTreeNodeSpecialCommandForeach(const QChar * pLocation,KviKvsTreeNodeData * pVar,KviKvsTreeNodeDataList * pArgs,KviKvsTreeNodeInstruction * pLoop)
-: KviKvsTreeNodeSpecialCommand(pLocation,"foreach")
+KviKvsTreeNodeSpecialCommandForeach::KviKvsTreeNodeSpecialCommandForeach(const QChar * pLocation, KviKvsTreeNodeData * pVar, KviKvsTreeNodeDataList * pArgs, KviKvsTreeNodeInstruction * pLoop)
+    : KviKvsTreeNodeSpecialCommand(pLocation, "foreach")
 {
 	m_pIterationVariable = pVar;
 	m_pIterationVariable->setParent(this);
@@ -48,14 +48,14 @@ KviKvsTreeNodeSpecialCommandForeach::~KviKvsTreeNodeSpecialCommandForeach()
 	delete m_pLoop;
 }
 
-void KviKvsTreeNodeSpecialCommandForeach::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSpecialCommandForeach::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Special Command \"foreach\"";
 }
 
 void KviKvsTreeNodeSpecialCommandForeach::dump(const char * prefix)
 {
-	qDebug("%s SpecialCommandForeach",prefix);
+	qDebug("%s SpecialCommandForeach", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pIterationVariable->dump(tmp.toUtf8().data());
@@ -67,19 +67,19 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariantList l;
 	l.setAutoDelete(true);
-	if(!m_pIterationData->evaluate(c,&l))
+	if(!m_pIterationData->evaluate(c, &l))
 		return false;
 
 	KviKvsSwitchList swl;
 	if(m_pSwitches)
 	{
-		if(!(m_pSwitches->evaluate(c,&swl)))
+		if(!(m_pSwitches->evaluate(c, &swl)))
 			return false;
 	}
 
-	bool bIncludeEmptyScalars = swl.find('a',"all") != 0;
+	bool bIncludeEmptyScalars = swl.find('a', "all") != 0;
 
-	for(KviKvsVariant * pArg = l.first();pArg;pArg = l.next())
+	for(KviKvsVariant * pArg = l.first(); pArg; pArg = l.next())
 	{
 		switch(pArg->type())
 		{
@@ -101,21 +101,26 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 						if(bIncludeEmptyScalars || (!pOne->isEmpty()))
 						{
 							v->result()->copyFrom(*pOne);
-						} else {
+						}
+						else
+						{
 							delete v; // we're done with it for this iteration
 							idx++;
 							continue;
 						}
-					} else {
+					}
+					else
+					{
 						if(bIncludeEmptyScalars)
 						{
 							v->result()->setNothing();
-						} else {
+						}
+						else
+						{
 							delete v; // we're done with it for this iteration
 							idx++;
 							continue;
 						}
-
 					}
 					delete v; // we're done with it for this iteration
 
@@ -160,7 +165,9 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 					if(bIncludeEmptyScalars || (!pOne->isEmpty()))
 					{
 						v->result()->copyFrom(*pOne);
-					} else {
+					}
+					else
+					{
 						delete v; // we're done with it for this iteration
 						++it;
 						continue;
@@ -226,7 +233,7 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 						return false; // propagate the false return value
 					}
 				}
-			break;
+				break;
 		}
 	}
 

@@ -29,8 +29,6 @@
 
 #include "object_macros.h"
 
-
-
 class KvsObject_memoryBuffer : public KviKvsObject
 {
 public:
@@ -38,20 +36,21 @@ public:
 protected:
 	QByteArray * m_pBuffer;
 	int mIdx;
+
 public:
 	QByteArray dataBuffer()
 	{
 		return *m_pBuffer;
 	};
-	QByteArray *pBuffer()
+	QByteArray * pBuffer()
 	{
 		return m_pBuffer;
 	};
-	bool loadFromFile(KviKvsObjectFunctionCall *c);
-	bool clear(KviKvsObjectFunctionCall *c);
-	bool size(KviKvsObjectFunctionCall *c);
-	bool readByteAt(KviKvsObjectFunctionCall *c);
-	bool saveToFile(KviKvsObjectFunctionCall *c);
+	bool loadFromFile(KviKvsObjectFunctionCall * c);
+	bool clear(KviKvsObjectFunctionCall * c);
+	bool size(KviKvsObjectFunctionCall * c);
+	bool readByteAt(KviKvsObjectFunctionCall * c);
+	bool saveToFile(KviKvsObjectFunctionCall * c);
 };
 
-#endif	// !_CLASS_MEMORYBUFFER_H_
+#endif // !_CLASS_MEMORYBUFFER_H_

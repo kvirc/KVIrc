@@ -24,8 +24,8 @@
 
 #include "KviKvsTreeNodeVariable.h"
 
-KviKvsTreeNodeVariable::KviKvsTreeNodeVariable(const QChar * pLocation,const QString &szIdentifier)
-: KviKvsTreeNodeData(pLocation)
+KviKvsTreeNodeVariable::KviKvsTreeNodeVariable(const QChar * pLocation, const QString & szIdentifier)
+    : KviKvsTreeNodeData(pLocation)
 {
 	m_szIdentifier = szIdentifier;
 }

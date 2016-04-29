@@ -42,8 +42,8 @@ public:
 	*/
 	typedef struct _IconSizes
 	{
-		uint         uSize;           /**< icon size */
-		const char * pcName;          /**< menu entry label */
+		uint uSize;          /**< icon size */
+		const char * pcName; /**< menu entry label */
 	} IconSizes;
 
 	/**
@@ -53,9 +53,10 @@ public:
 	*/
 	typedef struct _ButtonStyles
 	{
-		uint         uStyle;          /**< button style */
-		const char * pcName;          /**< menu entry label */
+		uint uStyle;         /**< button style */
+		const char * pcName; /**< menu entry label */
 	} ButtonStyles;
+
 protected:
 	virtual void mousePressEvent(QMouseEvent * e);
 };

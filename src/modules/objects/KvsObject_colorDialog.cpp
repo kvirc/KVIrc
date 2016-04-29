@@ -23,12 +23,10 @@
 //
 //=============================================================================
 
-
 #include "KviError.h"
 #include "kvi_debug.h"
 #include "KviLocale.h"
 #include "KvsObject_colorDialog.h"
-
 
 #include <QColorDialog>
 
@@ -44,7 +42,7 @@ const int option_cod[] = {
 	QColorDialog::DontUseNativeDialog
 };
 
-#define option_num	(sizeof(option_tbl) / sizeof(option_tbl[0]))
+#define option_num (sizeof(option_tbl) / sizeof(option_tbl[0]))
 
 /*
 	@doc:	colordialog
@@ -77,55 +75,55 @@ const int option_cod[] = {
 
 //---------------------------------------------------------------------------------
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_colorDialog,"colorDialog","dialog")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_colorDialog,setCurrentColor)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_colorDialog,setOptions)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_colorDialog,colorSelectedEvent)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_colorDialog,currentColorChangedEvent)
+KVSO_BEGIN_REGISTERCLASS(KvsObject_colorDialog, "colorDialog", "dialog")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_colorDialog, setCurrentColor)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_colorDialog, setOptions)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_colorDialog, colorSelectedEvent)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_colorDialog, currentColorChangedEvent)
 KVSO_END_REGISTERCLASS(KvsObject_colorDialog)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_colorDialog,KvsObject_dialog)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_colorDialog, KvsObject_dialog)
 
 KVSO_END_CONSTRUCTOR(KvsObject_colorDialog)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_colorDialog)
 
 KVSO_END_CONSTRUCTOR(KvsObject_colorDialog)
 
-bool KvsObject_colorDialog::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_colorDialog::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
-	QColorDialog  * d = new QColorDialog(parentScriptWidget());
+	QColorDialog * d = new QColorDialog(parentScriptWidget());
 	d->setObjectName(getName().toUtf8().data());
 	setObject(d, true);
-	connect(d,SIGNAL(colorSelected(const QColor &)),this,SLOT(slotColorSelected(const QColor &)));
-	connect(d,SIGNAL(currentColorChanged(const QColor &)),this,SLOT(slotCurrentColorChanged(const QColor &)));
+	connect(d, SIGNAL(colorSelected(const QColor &)), this, SLOT(slotColorSelected(const QColor &)));
+	connect(d, SIGNAL(currentColorChanged(const QColor &)), this, SLOT(slotCurrentColorChanged(const QColor &)));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(colorDialog,setCurrentColor)
+KVSO_CLASS_FUNCTION(colorDialog, setCurrentColor)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iCol1,iCol2,iCol3,iOpacity;
-	QString szColorMode,szColor;
-	KviKvsVariant *var1,*var2,*var3;
+	kvs_int_t iCol1, iCol2, iCol3, iOpacity;
+	QString szColorMode, szColor;
+	KviKvsVariant *var1, *var2, *var3;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("Color_1_Or_Colorname",KVS_PT_VARIANT,0,var1)
-		KVSO_PARAMETER("Color_2",KVS_PT_VARIANT,KVS_PF_OPTIONAL,var2)
-		KVSO_PARAMETER("Colo3_3",KVS_PT_VARIANT,KVS_PF_OPTIONAL,var3)
-		KVSO_PARAMETER("opacity",KVS_PT_INT,KVS_PF_OPTIONAL,iOpacity)
-		KVSO_PARAMETER("color_mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szColorMode)
+	KVSO_PARAMETER("Color_1_Or_Colorname", KVS_PT_VARIANT, 0, var1)
+	KVSO_PARAMETER("Color_2", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var2)
+	KVSO_PARAMETER("Colo3_3", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var3)
+	KVSO_PARAMETER("opacity", KVS_PT_INT, KVS_PF_OPTIONAL, iOpacity)
+	KVSO_PARAMETER("color_mode", KVS_PT_STRING, KVS_PF_OPTIONAL, szColorMode)
 	KVSO_PARAMETERS_END(c)
 	QColor col;
-	if (!var1->asInteger(iCol1))
+	if(!var1->asInteger(iCol1))
 	{
 		var1->asString(szColor);
-		if (c->paramCount()<2) iOpacity=255;
+		if(c->paramCount() < 2)
+			iOpacity = 255;
 		else
 		{
-			if (!var2->asInteger(iOpacity))
+			if(!var2->asInteger(iOpacity))
 			{
-				c->warning(__tr2qs_ctx("The opacity parameter didn't evaluate to integer","objects"));
+				c->warning(__tr2qs_ctx("The opacity parameter didn't evaluate to integer", "objects"));
 				return true;
 			}
 		}
@@ -134,26 +132,26 @@ KVSO_CLASS_FUNCTION(colorDialog,setCurrentColor)
 	}
 	else
 	{
-		if(c->paramCount()<3)
+		if(c->paramCount() < 3)
 		{
-			c->error(__tr2qs_ctx("Color name or triplet RGB/HSV value required","objects"));
+			c->error(__tr2qs_ctx("Color name or triplet RGB/HSV value required", "objects"));
 			return true;
 		}
-		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
+		if(!var2->asInteger(iCol2) || !var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs_ctx("One of the triplet parameters didn't evaluate to an integer","objects"));\
-				return true;
+			c->error(__tr2qs_ctx("One of the triplet parameters didn't evaluate to an integer", "objects"));
+			return true;
 		}
-		if (c->paramCount()<4)
-			iOpacity=255;
+		if(c->paramCount() < 4)
+			iOpacity = 255;
 		else
 		{
-			if (c->paramCount()>4)
+			if(c->paramCount() > 4)
 			{
 				if(KviQString::equalCI(szColorMode, "HSV"))
-					col.setHsv(iCol1,iCol2,iCol3,iOpacity);
+					col.setHsv(iCol1, iCol2, iCol3, iOpacity);
 				else
-					col.setRgb(iCol1,iCol2,iCol3,iOpacity);
+					col.setRgb(iCol1, iCol2, iCol3, iOpacity);
 			}
 		}
 		col.setAlpha(iOpacity);
@@ -162,70 +160,67 @@ KVSO_CLASS_FUNCTION(colorDialog,setCurrentColor)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(colorDialog,setOptions)
+KVSO_CLASS_FUNCTION(colorDialog, setOptions)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QStringList szOptions;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("szOptions",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,szOptions)
+	KVSO_PARAMETER("szOptions", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, szOptions)
 	KVSO_PARAMETERS_END(c)
-	if (!widget()) return true;
-	int colorDialogOption,sum = 0;
-	for ( QStringList::Iterator it = szOptions.begin(); it != szOptions.end(); ++it )
+	if(!widget())
+		return true;
+	int colorDialogOption, sum = 0;
+	for(QStringList::Iterator it = szOptions.begin(); it != szOptions.end(); ++it)
 	{
 		colorDialogOption = 0;
 		for(unsigned int j = 0; j < option_num; j++)
 		{
 			if(KviQString::equalCI((*it), option_tbl[j]))
 			{
-				colorDialogOption=option_cod[j];
+				colorDialogOption = option_cod[j];
 				break;
 			}
 		}
 		if(colorDialogOption)
 			sum = sum | colorDialogOption;
 		else
-			c->warning(__tr2qs_ctx("Unknown szOptions '%Q'","objects"),&(*it));
-
+			c->warning(__tr2qs_ctx("Unknown szOptions '%Q'", "objects"), &(*it));
 	}
 	((QColorDialog *)widget())->setOptions(QColorDialog::ColorDialogOptions(sum));
 	return true;
 }
 
-
-
-KVSO_CLASS_FUNCTION(colorDialog,currentColorChangedEvent)
+KVSO_CLASS_FUNCTION(colorDialog, currentColorChangedEvent)
 {
-	emitSignal("currentColorChanged",c,c->params());
+	emitSignal("currentColorChanged", c, c->params());
 	return true;
 }
 
-
-KVSO_CLASS_FUNCTION(colorDialog,colorSelectedEvent)
+KVSO_CLASS_FUNCTION(colorDialog, colorSelectedEvent)
 {
-	emitSignal("colorSelected",c,c->params());
+	emitSignal("colorSelected", c, c->params());
 	return true;
 }
 
 //slots
-void KvsObject_colorDialog::slotCurrentColorChanged(const QColor &col)
+void KvsObject_colorDialog::slotCurrentColorChanged(const QColor & col)
 {
-	KviKvsHash *pHash = new KviKvsHash();
-	KviKvsVariant *pColName = new KviKvsVariant(col.name());
-	KviKvsVariant *pColAlpha = new KviKvsVariant((kvs_int_t)col.alpha());
-	pHash->set("color",pColName);
-	pHash->set("opacity",pColAlpha);
+	KviKvsHash * pHash = new KviKvsHash();
+	KviKvsVariant * pColName = new KviKvsVariant(col.name());
+	KviKvsVariant * pColAlpha = new KviKvsVariant((kvs_int_t)col.alpha());
+	pHash->set("color", pColName);
+	pHash->set("opacity", pColAlpha);
 	KviKvsVariantList params(new KviKvsVariant(pHash));
-	callFunction(this,"currentColorChangedEvent",&params);
+	callFunction(this, "currentColorChangedEvent", &params);
 }
 
-void KvsObject_colorDialog::slotColorSelected(const QColor &col)
+void KvsObject_colorDialog::slotColorSelected(const QColor & col)
 {
-	KviKvsHash *pHash = new KviKvsHash();
-	KviKvsVariant *pColName = new KviKvsVariant(col.name());
-	KviKvsVariant *pColAlpha = new KviKvsVariant((kvs_int_t)col.alpha());
-	pHash->set("color",pColName);
-	pHash->set("alpha",pColAlpha);
+	KviKvsHash * pHash = new KviKvsHash();
+	KviKvsVariant * pColName = new KviKvsVariant(col.name());
+	KviKvsVariant * pColAlpha = new KviKvsVariant((kvs_int_t)col.alpha());
+	pHash->set("color", pColName);
+	pHash->set("alpha", pColAlpha);
 	KviKvsVariantList params(new KviKvsVariant(pHash));
-	callFunction(this,"colorSelectedEvent",&params);
+	callFunction(this, "colorSelectedEvent", &params);
 }

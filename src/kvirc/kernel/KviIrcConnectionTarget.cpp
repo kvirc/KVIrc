@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviIrcConnectionTarget.h"
 #include "KviIrcServer.h"
 #include "KviIrcNetwork.h"
@@ -31,11 +29,10 @@
 #include "KviProxyDataBase.h"
 
 KviIrcConnectionTarget::KviIrcConnectionTarget(
-		const KviIrcNetwork * pNetwork,
-		const KviIrcServer * pServer,
-		const KviProxy * pProxy,
-		const QString &szBindAddress
-	)
+    const KviIrcNetwork * pNetwork,
+    const KviIrcServer * pServer,
+    const KviProxy * pProxy,
+    const QString & szBindAddress)
 {
 	m_pNetwork = new KviIrcNetwork(*pNetwork);
 	m_pServer = new KviIrcServer(*pServer);
@@ -53,7 +50,8 @@ KviIrcConnectionTarget::~KviIrcConnectionTarget()
 
 void KviIrcConnectionTarget::clearProxy()
 {
-	if(!m_pProxy)return;
+	if(!m_pProxy)
+		return;
 	delete m_pProxy;
 	m_pProxy = 0;
 }

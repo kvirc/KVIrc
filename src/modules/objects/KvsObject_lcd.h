@@ -25,10 +25,7 @@
 //
 //=============================================================================
 
-
-
 #include "KvsObject_widget.h"
-
 
 class KvsObject_lcd : public KvsObject_widget
 {
@@ -37,16 +34,16 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool displayStr(KviKvsObjectFunctionCall *c);
-	bool setMode(KviKvsObjectFunctionCall *c);
-	bool setSegmentStyle(KviKvsObjectFunctionCall *c);
-	bool setNumDigits(KviKvsObjectFunctionCall *c);
-	bool setSmallDecimalPoint(KviKvsObjectFunctionCall *c);
-	bool checkOverflow(KviKvsObjectFunctionCall *c);
-	bool displayInt(KviKvsObjectFunctionCall *c);
-	bool displayDouble(KviKvsObjectFunctionCall *c);
+	bool displayStr(KviKvsObjectFunctionCall * c);
+	bool setMode(KviKvsObjectFunctionCall * c);
+	bool setSegmentStyle(KviKvsObjectFunctionCall * c);
+	bool setNumDigits(KviKvsObjectFunctionCall * c);
+	bool setSmallDecimalPoint(KviKvsObjectFunctionCall * c);
+	bool checkOverflow(KviKvsObjectFunctionCall * c);
+	bool displayInt(KviKvsObjectFunctionCall * c);
+	bool displayDouble(KviKvsObjectFunctionCall * c);
 };
 
-#endif        // !_CLASS_LCD_H_
+#endif // !_CLASS_LCD_H_

@@ -28,41 +28,53 @@
 #include "KviKvsRunTimeContext.h"
 #include "KviLocale.h"
 
-KviKvsTreeNodeSpecialCommandFor::KviKvsTreeNodeSpecialCommandFor(const QChar * pLocation,KviKvsTreeNodeInstruction * pInit,KviKvsTreeNodeExpression * pCond,KviKvsTreeNodeInstruction * pUpd,KviKvsTreeNodeInstruction * pLoop)
-: KviKvsTreeNodeSpecialCommand(pLocation,"for")
+KviKvsTreeNodeSpecialCommandFor::KviKvsTreeNodeSpecialCommandFor(const QChar * pLocation, KviKvsTreeNodeInstruction * pInit, KviKvsTreeNodeExpression * pCond, KviKvsTreeNodeInstruction * pUpd, KviKvsTreeNodeInstruction * pLoop)
+    : KviKvsTreeNodeSpecialCommand(pLocation, "for")
 {
 	m_pInitialization = pInit;
-	if(m_pInitialization)m_pInitialization->setParent(this);
+	if(m_pInitialization)
+		m_pInitialization->setParent(this);
 	m_pCondition = pCond;
-	if(m_pCondition)m_pCondition->setParent(this);
+	if(m_pCondition)
+		m_pCondition->setParent(this);
 	m_pUpdate = pUpd;
-	if(m_pUpdate)m_pUpdate->setParent(this);
+	if(m_pUpdate)
+		m_pUpdate->setParent(this);
 	m_pLoop = pLoop;
-	if(m_pLoop)m_pLoop->setParent(this);
+	if(m_pLoop)
+		m_pLoop->setParent(this);
 }
 
 KviKvsTreeNodeSpecialCommandFor::~KviKvsTreeNodeSpecialCommandFor()
 {
-	if(m_pInitialization)delete m_pInitialization;
-	if(m_pCondition)delete m_pCondition;
-	if(m_pUpdate)delete m_pUpdate;
-	if(m_pLoop)delete m_pLoop;
+	if(m_pInitialization)
+		delete m_pInitialization;
+	if(m_pCondition)
+		delete m_pCondition;
+	if(m_pUpdate)
+		delete m_pUpdate;
+	if(m_pLoop)
+		delete m_pLoop;
 }
 
-void KviKvsTreeNodeSpecialCommandFor::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSpecialCommandFor::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Special Command \"for\"";
 }
 
 void KviKvsTreeNodeSpecialCommandFor::dump(const char * prefix)
 {
-	qDebug("%s SpecialCommandFor",prefix);
+	qDebug("%s SpecialCommandFor", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	if(m_pInitialization)m_pInitialization->dump(tmp.toUtf8().data());
-	if(m_pCondition)m_pCondition->dump(tmp.toUtf8().data());
-	if(m_pUpdate)m_pUpdate->dump(tmp.toUtf8().data());
-	if(m_pLoop)m_pLoop->dump(tmp.toUtf8().data());
+	if(m_pInitialization)
+		m_pInitialization->dump(tmp.toUtf8().data());
+	if(m_pCondition)
+		m_pCondition->dump(tmp.toUtf8().data());
+	if(m_pUpdate)
+		m_pUpdate->dump(tmp.toUtf8().data());
+	if(m_pLoop)
+		m_pLoop->dump(tmp.toUtf8().data());
 }
 
 bool KviKvsTreeNodeSpecialCommandFor::execute(KviKvsRunTimeContext * c)
@@ -72,7 +84,8 @@ bool KviKvsTreeNodeSpecialCommandFor::execute(KviKvsRunTimeContext * c)
 		if(!m_pInitialization->execute(c))
 		{
 			// break allowed also here
-			if(c->error())return false;
+			if(c->error())
+				return false;
 
 			if(c->breakPending())
 			{
@@ -89,15 +102,18 @@ bool KviKvsTreeNodeSpecialCommandFor::execute(KviKvsRunTimeContext * c)
 		if(m_pCondition)
 		{
 			KviKvsVariant v;
-			if(!m_pCondition->evaluateReadOnly(c,&v))return false;
-			if(!v.asBoolean())return true;
+			if(!m_pCondition->evaluateReadOnly(c, &v))
+				return false;
+			if(!v.asBoolean())
+				return true;
 		}
 
 		if(m_pLoop)
 		{
 			if(!m_pLoop->execute(c))
 			{
-				if(c->error())return false;
+				if(c->error())
+					return false;
 
 				if(c->breakPending())
 				{
@@ -117,7 +133,8 @@ bool KviKvsTreeNodeSpecialCommandFor::execute(KviKvsRunTimeContext * c)
 			if(!m_pUpdate->execute(c))
 			{
 				// break allowed also here
-				if(c->error())return false;
+				if(c->error())
+					return false;
 
 				if(c->breakPending())
 				{

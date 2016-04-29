@@ -44,18 +44,17 @@ public:
 	QString szIdle;
 	QString szSignon;
 	QString szChannels;
-	QString szAway;	// The szSpecial member is renamed szAway as its sole purpose is to tell whether the user is away or not
+	QString szAway; // The szSpecial member is renamed szAway as its sole purpose is to tell whether the user is away or not
 	QString szAuth;
 	QString szAdditional;
 	KviKvsScript * pCallback;
 	KviKvsVariant * pMagic;
 	KviWindow * pWindow;
+
 public:
 	KviAsyncWhoisInfo();
 	~KviAsyncWhoisInfo();
 };
-
-
 
 // KviIrcConnectionAsyncWhoisData is now recreated using a template
 // I'm using inheritance as i haven't been able to use a typedef

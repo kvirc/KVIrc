@@ -35,20 +35,21 @@ class KVIRC_API KviKvsTreeNodeCommand : public KviKvsTreeNodeInstruction
 {
 	// never instantiated
 	friend class KviKvsParser;
+
 public:
-	KviKvsTreeNodeCommand(const QChar * pLocation,const QString &szCmdName);
+	KviKvsTreeNodeCommand(const QChar * pLocation, const QString & szCmdName);
 	~KviKvsTreeNodeCommand();
+
 protected:
-	QString                           m_szCmdName; // command visible name
-	KviKvsTreeNodeSwitchList        * m_pSwitches; // MAY BE 0!
+	QString m_szCmdName;                    // command visible name
+	KviKvsTreeNodeSwitchList * m_pSwitches; // MAY BE 0!
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	void dumpSwitchList(const char * prefix);
-	const QString & commandName(){ return m_szCmdName; };
+	const QString & commandName() { return m_szCmdName; };
 protected:
 	void setSwitchList(KviKvsTreeNodeSwitchList * sw);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_COMMAND_H_

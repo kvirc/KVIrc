@@ -31,9 +31,8 @@
 #include <QObjectCleanupHandler>
 #include <QIcon>
 
-
 KviWindowToolWidget::KviWindowToolWidget(QWidget * pParent, KviWindowToolPageButton * pButton)
-:QWidget(pParent)
+    : QWidget(pParent)
 {
 	m_pButton = pButton;
 	if(m_pButton)
@@ -45,15 +44,15 @@ KviWindowToolWidget::~KviWindowToolWidget()
 }
 
 KviWindowToolPageButton::KviWindowToolPageButton(KviIconManager::SmallIcon eIconOff, KviIconManager::SmallIcon eIconOn, const QString & szText, QWidget * pParent, bool bOn)
-:QToolButton(pParent)
+    : QToolButton(pParent)
 {
 	setAutoRaise(true);
 	setToolTip(szText);
 	setObjectName("kvi_window_tool_button");
 	QIcon icon;
-	icon.addPixmap(*(g_pIconManager->getSmallIcon(eIconOff)),QIcon::Normal,QIcon::Off);
-	icon.addPixmap(*(g_pIconManager->getSmallIcon(eIconOn)),QIcon::Active,QIcon::On);
-	icon.addPixmap(*(g_pIconManager->getSmallIcon(eIconOn)),QIcon::Active);
+	icon.addPixmap(*(g_pIconManager->getSmallIcon(eIconOff)), QIcon::Normal, QIcon::Off);
+	icon.addPixmap(*(g_pIconManager->getSmallIcon(eIconOn)), QIcon::Active, QIcon::On);
+	icon.addPixmap(*(g_pIconManager->getSmallIcon(eIconOn)), QIcon::Active);
 	setIcon(icon);
 	setCheckable(true);
 	setChecked(bOn);

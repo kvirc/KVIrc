@@ -28,9 +28,6 @@
 #include "KvsObject_widget.h"
 #include "qlistview.h"
 
-
-
-
 #include "object_macros.h"
 
 class KvsObject_wrapper : public KvsObject_widget
@@ -40,12 +37,9 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-	QWidget * findTopLevelWidgetToWrap(const QString &szClass, const QString &szName,bool bRecursive);
-	QWidget * findWidgetToWrap(const QString &szClass, const QString &szName, QWidget *pParent,bool bRecursive);
-
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	QWidget * findTopLevelWidgetToWrap(const QString & szClass, const QString & szName, bool bRecursive);
+	QWidget * findWidgetToWrap(const QString & szClass, const QString & szName, QWidget * pParent, bool bRecursive);
 };
 
-
-
-#endif	//!_CLASS_WRAPPER_H_
+#endif //!_CLASS_WRAPPER_H_

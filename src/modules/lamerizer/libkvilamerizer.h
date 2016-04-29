@@ -29,21 +29,23 @@
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
-	#include "KviCryptEngine.h"
+#include "KviCryptEngine.h"
 
-	class KviLamerizerEngine : public KviCryptEngine
-	{
-		Q_OBJECT
-	public:
-		KviLamerizerEngine(bool bLight);
-		~KviLamerizerEngine();
-	protected:
-		bool m_bLight;
-	public:
-		virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
-		virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviCString &outBuffer);
-		virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer,KviCString &plainText);
-	};
+class KviLamerizerEngine : public KviCryptEngine
+{
+	Q_OBJECT
+public:
+	KviLamerizerEngine(bool bLight);
+	~KviLamerizerEngine();
+
+protected:
+	bool m_bLight;
+
+public:
+	virtual bool init(const char * encKey, int encKeyLen, const char * decKey, int decKeyLen);
+	virtual KviCryptEngine::EncryptResult encrypt(const char * plainText, KviCString & outBuffer);
+	virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer, KviCString & plainText);
+};
 
 #endif // COMPILE_CRYPT_SUPPORT
 

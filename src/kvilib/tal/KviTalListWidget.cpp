@@ -30,19 +30,19 @@
 #include <QHelpEvent>
 #include <QApplication>
 
-KviTalListWidget::KviTalListWidget(QWidget * pParent,QString name,Qt::WindowType f)
-: QListWidget(pParent)
+KviTalListWidget::KviTalListWidget(QWidget * pParent, QString name, Qt::WindowType f)
+    : QListWidget(pParent)
 {
 	setObjectName(name);
 	setWindowFlags(f);
-	
+
 	//setUniformItemSizes(true);
 	//setResizeMode(QListWidget::Adjust);
 	//setWordWrap(true);
 	viewport()->installEventFilter(this);
 }
 
-bool KviTalListWidget::eventFilter(QObject *o,QEvent * e)
+bool KviTalListWidget::eventFilter(QObject * o, QEvent * e)
 {
 	if(e->type() == QEvent::Resize)
 	{
@@ -61,32 +61,32 @@ bool KviTalListWidget::eventFilter(QObject *o,QEvent * e)
 			//model()->endResetModel();
 		}
 	}
-	return QListWidget::eventFilter(o,e);
+	return QListWidget::eventFilter(o, e);
 }
 
 bool KviTalListWidget::event(QEvent * e)
 {
-	if (e->type() == QEvent::ToolTip)
+	if(e->type() == QEvent::ToolTip)
 	{
-	    QHelpEvent *helpEvent = static_cast<QHelpEvent *>(e);
-		const QPoint &p=helpEvent->pos();
-		QListWidgetItem *item=itemAt(p);
-		if (item)
+		QHelpEvent * helpEvent = static_cast<QHelpEvent *>(e);
+		const QPoint & p = helpEvent->pos();
+		QListWidgetItem * item = itemAt(p);
+		if(item)
 		{
-			emit tipRequest(item,p);
+			emit tipRequest(item, p);
 		}
 	}
 	return QListWidget::event(e);
 }
 
-KviTalListWidgetText::KviTalListWidgetText(KviTalListWidget *listbox, const QString &text)
-:KviTalListWidgetItem(listbox)
+KviTalListWidgetText::KviTalListWidgetText(KviTalListWidget * listbox, const QString & text)
+    : KviTalListWidgetItem(listbox)
 {
 	setText(text);
 }
 
-KviTalListWidgetText::KviTalListWidgetText(const QString &text)
-:KviTalListWidgetItem()
+KviTalListWidgetText::KviTalListWidgetText(const QString & text)
+    : KviTalListWidgetItem()
 {
 	setText(text);
 }
@@ -101,7 +101,7 @@ KviTalListWidgetText::~KviTalListWidgetText()
 {
 }
 
-void KviTalListWidgetText::paint(QPainter *painter)
+void KviTalListWidgetText::paint(QPainter * painter)
 {
 	int itemHeight = height(listWidget());
 	QFontMetrics fm = painter->fontMetrics();
@@ -109,13 +109,13 @@ void KviTalListWidgetText::paint(QPainter *painter)
 	painter->drawText(3, yPos, text());
 }
 
-int KviTalListWidgetText::height(const KviTalListWidget* lb) const
+int KviTalListWidgetText::height(const KviTalListWidget * lb) const
 {
 	int h = lb ? lb->fontMetrics().lineSpacing() + 2 : 0;
 	return qMax(h, QApplication::globalStrut().height());
 }
 
-int KviTalListWidgetText::width(const KviTalListWidget* lb) const
+int KviTalListWidgetText::width(const KviTalListWidget * lb) const
 {
 	int w = lb ? lb->fontMetrics().width(text()) + 6 : 0;
 	return qMax(w, QApplication::globalStrut().width());
@@ -126,14 +126,14 @@ int KviTalListWidgetText::rtti() const
 	return RTTI;
 }
 
-KviTalListWidgetPixmap::KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap &pixmap)
-: KviTalListWidgetItem(listbox)
+KviTalListWidgetPixmap::KviTalListWidgetPixmap(KviTalListWidget * listbox, const QPixmap & pixmap)
+    : KviTalListWidgetItem(listbox)
 {
 	pm = pixmap;
 }
 
-KviTalListWidgetPixmap::KviTalListWidgetPixmap(const QPixmap &pixmap)
-: KviTalListWidgetItem()
+KviTalListWidgetPixmap::KviTalListWidgetPixmap(const QPixmap & pixmap)
+    : KviTalListWidgetItem()
 {
 	pm = pixmap;
 }
@@ -148,16 +148,16 @@ KviTalListWidgetPixmap::~KviTalListWidgetPixmap()
 {
 }
 
-KviTalListWidgetPixmap::KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap &pix, const QString& text)
-: KviTalListWidgetItem(listbox)
+KviTalListWidgetPixmap::KviTalListWidgetPixmap(KviTalListWidget * listbox, const QPixmap & pix, const QString & text)
+    : KviTalListWidgetItem(listbox)
 {
 	pm = pix;
 	setText(text);
 	setIcon(QIcon(pix));
 }
 
-KviTalListWidgetPixmap::KviTalListWidgetPixmap(const QPixmap & pix, const QString& text)
-: KviTalListWidgetItem()
+KviTalListWidgetPixmap::KviTalListWidgetPixmap(const QPixmap & pix, const QString & text)
+    : KviTalListWidgetItem()
 {
 	pm = pix;
 	setText(text);
@@ -170,45 +170,45 @@ KviTalListWidgetPixmap::KviTalListWidgetPixmap(const QPixmap & pix, const QStrin
 // 	setText(text);
 // }
 
-void KviTalListWidgetPixmap::paint(QPainter *painter)
+void KviTalListWidgetPixmap::paint(QPainter * painter)
 {
 	int itemHeight = height(listWidget());
 	int yPos;
 
-	const QPixmap *pm = pixmap();
-	if (pm && ! pm->isNull()) {
-	yPos = (itemHeight - pm->height()) / 2;
-	painter->drawPixmap(3, yPos, *pm);
+	const QPixmap * pm = pixmap();
+	if(pm && !pm->isNull())
+	{
+		yPos = (itemHeight - pm->height()) / 2;
+		painter->drawPixmap(3, yPos, *pm);
 	}
 
-	if (!text().isEmpty()) {
-	QFontMetrics fm = painter->fontMetrics();
-	yPos = ((itemHeight - fm.height()) / 2) + fm.ascent();
-	painter->drawText(pm->width() + 5, yPos, text());
+	if(!text().isEmpty())
+	{
+		QFontMetrics fm = painter->fontMetrics();
+		yPos = ((itemHeight - fm.height()) / 2) + fm.ascent();
+		painter->drawText(pm->width() + 5, yPos, text());
 	}
 }
 
-int KviTalListWidgetPixmap::height(const KviTalListWidget* lb) const
+int KviTalListWidgetPixmap::height(const KviTalListWidget * lb) const
 {
 	int h;
-	if (text().isEmpty())
-	h = pm.height();
+	if(text().isEmpty())
+		h = pm.height();
 	else
-	h = qMax(pm.height(), lb->fontMetrics().lineSpacing() + 2);
+		h = qMax(pm.height(), lb->fontMetrics().lineSpacing() + 2);
 	return qMax(h, QApplication::globalStrut().height());
 }
 
-int KviTalListWidgetPixmap::width(const KviTalListWidget* lb) const
+int KviTalListWidgetPixmap::width(const KviTalListWidget * lb) const
 {
-	if (text().isEmpty())
-	return qMax(pm.width() + 6, QApplication::globalStrut().width());
+	if(text().isEmpty())
+		return qMax(pm.width() + 6, QApplication::globalStrut().width());
 	return qMax(pm.width() + lb->fontMetrics().width(text()) + 6,
-		QApplication::globalStrut().width());
+	    QApplication::globalStrut().width());
 }
 
 int KviTalListWidgetPixmap::rtti() const
 {
 	return RTTI;
 }
-
-

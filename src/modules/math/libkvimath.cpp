@@ -31,32 +31,32 @@
 // Workaround for lost isnan and isinf definitions after
 // inclusion of iostream.h on some MacOS X systems
 #ifdef COMPILE_ON_MAC
-	#ifndef isnan
-		extern "C" int isnan (double);
-	#endif
-	#ifndef isinf
-		extern "C" int isinf (double);
-	#endif
+#ifndef isnan
+extern "C" int isnan(double);
+#endif
+#ifndef isinf
+extern "C" int isinf(double);
+#endif
 #endif
 
 /* Solaris doesn't have isinf? */
-#if defined (__SVR4) && defined (__sun)
-	#ifndef isinf
-		#include <ieeefp.h>
-		#define isinf(x) (!finite((x)) && (x)==(x))
-	#endif
+#if defined(__SVR4) && defined(__sun)
+#ifndef isinf
+#include <ieeefp.h>
+#define isinf(x) (!finite((x)) && (x) == (x))
+#endif
 #endif
 
-#define MATH_KVS_1PARAM_FUNCTION(__fncname,__paramname,__mathcallname) \
-static bool __fncname(KviKvsModuleFunctionCall * c) \
-{ \
-	kvs_real_t dReal; \
-	KVSM_PARAMETERS_BEGIN(c) \
-		KVSM_PARAMETER(__paramname,KVS_PT_REAL,0,dReal) \
-	KVSM_PARAMETERS_END(c) \
-	c->returnValue()->setReal(__mathcallname(dReal)); \
-	return true; \
-}
+#define MATH_KVS_1PARAM_FUNCTION(__fncname, __paramname, __mathcallname) \
+	static bool __fncname(KviKvsModuleFunctionCall * c)                  \
+	{                                                                    \
+		kvs_real_t dReal;                                                \
+		KVSM_PARAMETERS_BEGIN(c)                                         \
+		KVSM_PARAMETER(__paramname, KVS_PT_REAL, 0, dReal)               \
+		KVSM_PARAMETERS_END(c)                                           \
+		c->returnValue()->setReal(__mathcallname(dReal));                \
+		return true;                                                     \
+	}
 
 /*
 	@doc: math.sin
@@ -72,7 +72,7 @@ static bool __fncname(KviKvsModuleFunctionCall * c) \
 		Returns the sinus of the specified angle in radiants.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sin,"angle",sin)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sin, "angle", sin)
 
 /*
 	@doc: math.cos
@@ -88,7 +88,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sin,"angle",sin)
 		Returns the cosinus of the specified angle in radiants.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cos,"angle",cos)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cos, "angle", cos)
 
 /*
 	@doc: math.tan
@@ -104,7 +104,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cos,"angle",cos)
 		Returns the tangent of the specified angle in radiants.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_tan,"angle",tan)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_tan, "angle", tan)
 
 /*
 	@doc: math.asin
@@ -120,7 +120,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_tan,"angle",tan)
 		Returns the angle in radiants that has the specified sinus value.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_asin,"sinus",asin)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_asin, "sinus", asin)
 
 /*
 	@doc: math.acos
@@ -136,7 +136,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_asin,"sinus",asin)
 		Returns the angle in radiants that has the specified cosinus value.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_acos,"cosinus",acos)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_acos, "cosinus", acos)
 
 /*
 	@doc: math.atan
@@ -152,7 +152,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_acos,"cosinus",acos)
 		Returns the angle in radiants that has the specified tangent value.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_atan,"tangent",atan)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_atan, "tangent", atan)
 
 /*
 	@doc: math.sqrt
@@ -168,7 +168,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_atan,"tangent",atan)
 		Returns the square root of the specified number.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sqrt,"number",sqrt)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sqrt, "number", sqrt)
 
 /*
 	@doc: math.cbrt
@@ -184,7 +184,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_sqrt,"number",sqrt)
 		Returns the cube root of the specified number.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cbrt,"number",cbrt)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cbrt, "number", cbrt)
 
 /*
 	@doc: math.abs
@@ -200,7 +200,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_cbrt,"number",cbrt)
 		Returns the absolute value of the specified number.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_abs,"number",fabs)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_abs, "number", fabs)
 
 /*
 	@doc: math.floor
@@ -216,7 +216,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_abs,"number",fabs)
 		Rounds down the number to the nearest integer.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_floor,"number",floor)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_floor, "number", floor)
 
 /*
 	@doc: math.ceil
@@ -232,7 +232,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_floor,"number",floor)
 		Rounds up the number to the nearest integer.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_ceil,"number",ceil)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_ceil, "number", ceil)
 
 /*
 	@doc: math.exp
@@ -248,7 +248,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_ceil,"number",ceil)
 		Returns the exponential of the specified number.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_exp,"number",exp)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_exp, "number", exp)
 
 /*
 	@doc: math.log
@@ -264,7 +264,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_exp,"number",exp)
 		Returns the natural (base e) logarithm of the specified number.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_log,"number",log)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_log, "number", log)
 
 /*
 	@doc: math.log10
@@ -280,7 +280,7 @@ MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_log,"number",log)
 		Returns the base 10 logarithm of the specified number.
 */
 
-MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_log10,"number",log10)
+MATH_KVS_1PARAM_FUNCTION(math_kvs_fnc_log10, "number", log10)
 
 /*
 	@doc: math.isnan
@@ -302,7 +302,7 @@ static bool math_kvs_fnc_isnan(KviKvsModuleFunctionCall * c)
 {
 	kvs_real_t dReal;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("value",KVS_PT_REAL,0,dReal)
+	KVSM_PARAMETER("value", KVS_PT_REAL, 0, dReal)
 	KVSM_PARAMETERS_END(c)
 	c->returnValue()->setBoolean(std::isnan(dReal));
 	return true;
@@ -326,7 +326,7 @@ static bool math_kvs_fnc_isinf(KviKvsModuleFunctionCall * c)
 {
 	kvs_real_t dReal;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("value",KVS_PT_REAL,0,dReal)
+	KVSM_PARAMETER("value", KVS_PT_REAL, 0, dReal)
 	KVSM_PARAMETERS_END(c)
 	c->returnValue()->setBoolean(std::isinf(dReal));
 	return true;
@@ -348,12 +348,12 @@ static bool math_kvs_fnc_isinf(KviKvsModuleFunctionCall * c)
 
 static bool math_kvs_fnc_pow(KviKvsModuleFunctionCall * c)
 {
-	kvs_real_t dA,dB;
+	kvs_real_t dA, dB;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("a",KVS_PT_REAL,0,dA)
-		KVSM_PARAMETER("b",KVS_PT_REAL,0,dB)
+	KVSM_PARAMETER("a", KVS_PT_REAL, 0, dA)
+	KVSM_PARAMETER("b", KVS_PT_REAL, 0, dB)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setReal(pow(dA,dB));
+	c->returnValue()->setReal(pow(dA, dB));
 	return true;
 }
 
@@ -415,25 +415,25 @@ static bool math_kvs_fnc_e(KviKvsModuleFunctionCall * c)
 
 static bool math_module_init(KviModule * m)
 {
-	KVSM_REGISTER_FUNCTION(m,"sin",math_kvs_fnc_sin);
-	KVSM_REGISTER_FUNCTION(m,"cos",math_kvs_fnc_cos);
-	KVSM_REGISTER_FUNCTION(m,"tan",math_kvs_fnc_tan);
-	KVSM_REGISTER_FUNCTION(m,"asin",math_kvs_fnc_asin);
-	KVSM_REGISTER_FUNCTION(m,"acos",math_kvs_fnc_acos);
-	KVSM_REGISTER_FUNCTION(m,"atan",math_kvs_fnc_atan);
-	KVSM_REGISTER_FUNCTION(m,"sqrt",math_kvs_fnc_sqrt);
-	KVSM_REGISTER_FUNCTION(m,"cbrt",math_kvs_fnc_cbrt);
-	KVSM_REGISTER_FUNCTION(m,"abs",math_kvs_fnc_abs);
-	KVSM_REGISTER_FUNCTION(m,"floor",math_kvs_fnc_floor);
-	KVSM_REGISTER_FUNCTION(m,"ceil",math_kvs_fnc_ceil);
-	KVSM_REGISTER_FUNCTION(m,"pow",math_kvs_fnc_pow);
-	KVSM_REGISTER_FUNCTION(m,"exp",math_kvs_fnc_exp);
-	KVSM_REGISTER_FUNCTION(m,"log",math_kvs_fnc_log);
-	KVSM_REGISTER_FUNCTION(m,"log10",math_kvs_fnc_log10);
-	KVSM_REGISTER_FUNCTION(m,"pi",math_kvs_fnc_pi);
-	KVSM_REGISTER_FUNCTION(m,"e",math_kvs_fnc_e);
-	KVSM_REGISTER_FUNCTION(m,"isnan",math_kvs_fnc_isnan);
-	KVSM_REGISTER_FUNCTION(m,"isinf",math_kvs_fnc_isinf);
+	KVSM_REGISTER_FUNCTION(m, "sin", math_kvs_fnc_sin);
+	KVSM_REGISTER_FUNCTION(m, "cos", math_kvs_fnc_cos);
+	KVSM_REGISTER_FUNCTION(m, "tan", math_kvs_fnc_tan);
+	KVSM_REGISTER_FUNCTION(m, "asin", math_kvs_fnc_asin);
+	KVSM_REGISTER_FUNCTION(m, "acos", math_kvs_fnc_acos);
+	KVSM_REGISTER_FUNCTION(m, "atan", math_kvs_fnc_atan);
+	KVSM_REGISTER_FUNCTION(m, "sqrt", math_kvs_fnc_sqrt);
+	KVSM_REGISTER_FUNCTION(m, "cbrt", math_kvs_fnc_cbrt);
+	KVSM_REGISTER_FUNCTION(m, "abs", math_kvs_fnc_abs);
+	KVSM_REGISTER_FUNCTION(m, "floor", math_kvs_fnc_floor);
+	KVSM_REGISTER_FUNCTION(m, "ceil", math_kvs_fnc_ceil);
+	KVSM_REGISTER_FUNCTION(m, "pow", math_kvs_fnc_pow);
+	KVSM_REGISTER_FUNCTION(m, "exp", math_kvs_fnc_exp);
+	KVSM_REGISTER_FUNCTION(m, "log", math_kvs_fnc_log);
+	KVSM_REGISTER_FUNCTION(m, "log10", math_kvs_fnc_log10);
+	KVSM_REGISTER_FUNCTION(m, "pi", math_kvs_fnc_pi);
+	KVSM_REGISTER_FUNCTION(m, "e", math_kvs_fnc_e);
+	KVSM_REGISTER_FUNCTION(m, "isnan", math_kvs_fnc_isnan);
+	KVSM_REGISTER_FUNCTION(m, "isinf", math_kvs_fnc_isinf);
 	return true;
 }
 
@@ -443,15 +443,14 @@ static bool math_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Math",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net),"\
-	"Tonino Imbesi (grifisx at barmes dot org)," \
-	"Alessandro Carbone (elfonol at gmail dot com)",
-	"Mathematical function module",
-	math_module_init,
-	0,
-	0,
-	math_module_cleanup,
-	0
-)
+    "Math",  // module name
+    "4.0.0", // module version
+    "Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net),"
+    "Tonino Imbesi (grifisx at barmes dot org),"
+    "Alessandro Carbone (elfonol at gmail dot com)",
+    "Mathematical function module",
+    math_module_init,
+    0,
+    0,
+    math_module_cleanup,
+    0)

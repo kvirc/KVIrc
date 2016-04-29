@@ -36,7 +36,7 @@ namespace KviCommandFormatter
 	extern KVILIB_API bool hasLeadingChars(QStringList & list, const QChar & c);
 
 	extern KVILIB_API void trimLeading(KviCString ** pszArray);
-	extern KVILIB_API void trimLeading(QStringList &list);
+	extern KVILIB_API void trimLeading(QStringList & list);
 
 	extern KVILIB_API void addLeading(KviCString ** pszArray, char c);
 	extern KVILIB_API void addLeading(QStringList & list, const QChar & c);

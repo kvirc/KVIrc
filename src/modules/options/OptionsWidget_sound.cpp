@@ -37,13 +37,10 @@
 #include <QLabel>
 #include <QPushButton>
 
-
 // FIXME: This module doesn't ???? properly when auto-detection is performed!
 
-
-
 OptionsWidget_sound::OptionsWidget_sound(QWidget * pParent)
-: KviOptionsWidget(pParent)
+    : KviOptionsWidget(pParent)
 {
 }
 
@@ -51,54 +48,54 @@ OptionsWidget_sound::~OptionsWidget_sound()
 {
 }
 
-
 OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
-: KviOptionsWidget(parent)
+    : KviOptionsWidget(parent)
 {
 	m_bFirstShow = true;
 
 	setObjectName("sound_system_options_widget");
 	createLayout();
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Sound System","options"),true);
+	KviTalGroupBox * g = addGroupBox(0, 0, 0, 0, Qt::Horizontal, __tr2qs_ctx("Sound System", "options"), true);
 
-	KviTalToolTip::add(g,__tr2qs_ctx("This allows you to select the sound system to be used with KVIrc.","options"));
+	KviTalToolTip::add(g, __tr2qs_ctx("This allows you to select the sound system to be used with KVIrc.", "options"));
 
 	KviTalHBox * h = new KviTalHBox(g);
 
 	m_pSoundSystemBox = new QComboBox(h);
 
-	m_pSoundAutoDetectButton = new QPushButton(__tr2qs_ctx("Auto-detect","options"),h);
-	connect(m_pSoundAutoDetectButton,SIGNAL(clicked()),this,SLOT(soundAutoDetect()));
+	m_pSoundAutoDetectButton = new QPushButton(__tr2qs_ctx("Auto-detect", "options"), h);
+	connect(m_pSoundAutoDetectButton, SIGNAL(clicked()), this, SLOT(soundAutoDetect()));
 
-	m_pSoundTestButton = new QPushButton(__tr2qs_ctx("Test","options"),h);
-	connect(m_pSoundTestButton,SIGNAL(clicked()),this,SLOT(soundTest()));
+	m_pSoundTestButton = new QPushButton(__tr2qs_ctx("Test", "options"), h);
+	connect(m_pSoundTestButton, SIGNAL(clicked()), this, SLOT(soundTest()));
 
-	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Media Player","options"),true);
+	g = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("Media Player", "options"), true);
 
-	KviTalToolTip::add(g,__tr2qs_ctx("This allows you to select the preferred media player to be used with " \
-		"the mediaplayer.* module commands and functions.","options"));
+	KviTalToolTip::add(g, __tr2qs_ctx("This allows you to select the preferred media player to be used with "
+	                                  "the mediaplayer.* module commands and functions.",
+	                          "options"));
 
 	h = new KviTalHBox(g);
 
 	m_pMediaPlayerBox = new QComboBox(h);
 
-	m_pMediaAutoDetectButton = new QPushButton(__tr2qs_ctx("Auto-detect","options"),h);
-	connect(m_pMediaAutoDetectButton,SIGNAL(clicked()),this,SLOT(mediaAutoDetect()));
+	m_pMediaAutoDetectButton = new QPushButton(__tr2qs_ctx("Auto-detect", "options"), h);
+	connect(m_pMediaAutoDetectButton, SIGNAL(clicked()), this, SLOT(mediaAutoDetect()));
 
-	m_pMediaTestButton = new QPushButton(__tr2qs_ctx("Test","options"),h);
-	connect(m_pMediaTestButton,SIGNAL(clicked()),this,SLOT(mediaTest()));
+	m_pMediaTestButton = new QPushButton(__tr2qs_ctx("Test", "options"), h);
+	connect(m_pMediaTestButton, SIGNAL(clicked()), this, SLOT(mediaTest()));
 
 	m_pMediaTestButton->setEnabled(false);
 
-	g = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("ID3 Tags Encoding","options"),true);
+	g = addGroupBox(0, 2, 0, 2, Qt::Horizontal, __tr2qs_ctx("ID3 Tags Encoding", "options"), true);
 
-	KviTalToolTip::add(g,__tr2qs_ctx("This allows you to select encoding of mp3 tags.","options"));
+	KviTalToolTip::add(g, __tr2qs_ctx("This allows you to select encoding of mp3 tags.", "options"));
 
 	h = new KviTalHBox(g);
 
 	m_pTagsEncodingCombo = new QComboBox(h);
-	m_pTagsEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding","options"));
+	m_pTagsEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding", "options"));
 
 	int i = 0;
 	int iMatch = 0;
@@ -106,44 +103,43 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 	KviLocale::EncodingDescription * d = KviLocale::instance()->encodingDescription(i);
 	while(d->pcName)
 	{
-		if(KviQString::equalCI(d->pcName,KVI_OPTION_STRING(KviOption_stringMp3TagsEncoding)))
+		if(KviQString::equalCI(d->pcName, KVI_OPTION_STRING(KviOption_stringMp3TagsEncoding)))
 			iMatch = i + 1;
-        m_pTagsEncodingCombo->insertItem(m_pTagsEncodingCombo->count(),d->pcName);
+		m_pTagsEncodingCombo->insertItem(m_pTagsEncodingCombo->count(), d->pcName);
 		i++;
 		d = KviLocale::instance()->encodingDescription(i);
 	}
 	m_pTagsEncodingCombo->setCurrentIndex(iMatch);
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Winamp messages encoding","options"),true);
+	g = addGroupBox(0, 3, 0, 3, Qt::Horizontal, __tr2qs_ctx("Winamp messages encoding", "options"), true);
 
-	KviTalToolTip::add(g,__tr2qs_ctx("This allows you to select encoding of winamp messages.","options"));
+	KviTalToolTip::add(g, __tr2qs_ctx("This allows you to select encoding of winamp messages.", "options"));
 
 	h = new KviTalHBox(g);
 
 	m_pWinampEncodingCombo = new QComboBox(h);
 
-	m_pWinampEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding","options"));
+	m_pWinampEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding", "options"));
 	i = 0;
 	iMatch = 0;
 
 	d = KviLocale::instance()->encodingDescription(i);
 	while(d->pcName)
 	{
-		if(KviQString::equalCI(d->pcName,KVI_OPTION_STRING(KviOption_stringWinampTextEncoding)))
+		if(KviQString::equalCI(d->pcName, KVI_OPTION_STRING(KviOption_stringWinampTextEncoding)))
 			iMatch = i + 1;
-		m_pWinampEncodingCombo->insertItem(m_pWinampEncodingCombo->count(),d->pcName);
+		m_pWinampEncodingCombo->insertItem(m_pWinampEncodingCombo->count(), d->pcName);
 		i++;
 		d = KviLocale::instance()->encodingDescription(i);
 	}
 	m_pWinampEncodingCombo->setCurrentIndex(iMatch);
 
-	addRowSpacer(0,4,0,4);
+	addRowSpacer(0, 4, 0, 4);
 #else
-	addRowSpacer(0,3,0,3);
+	addRowSpacer(0, 3, 0, 3);
 #endif
 }
-
 
 OptionsWidget_soundGeneral::~OptionsWidget_soundGeneral()
 {
@@ -178,13 +174,13 @@ void OptionsWidget_soundGeneral::soundTest()
 
 	QString szFileName;
 
-	if(!g_pApp->findAudioFile(szFileName,QString::fromUtf8("jingle.wav")))
+	if(!g_pApp->findAudioFile(szFileName, QString::fromUtf8("jingle.wav")))
 	{
 		qDebug("Can't find the jingle.wav file: was it shipped with your KVIrc installation?");
 		return;
 	}
 
-	m->ctrl("play",&szFileName);
+	m->ctrl("play", &szFileName);
 
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = szSavedSoundSystem;
 }
@@ -201,7 +197,7 @@ void OptionsWidget_soundGeneral::soundAutoDetect()
 
 	g_pApp->setOverrideCursor(Qt::WaitCursor);
 
-	m->ctrl("detectSoundSystem",0);
+	m->ctrl("detectSoundSystem", 0);
 	soundFillBox();
 
 	g_pApp->restoreOverrideCursor();
@@ -215,7 +211,7 @@ void OptionsWidget_soundGeneral::mediaAutoDetect()
 
 	g_pApp->setOverrideCursor(Qt::WaitCursor);
 
-	m->ctrl("detectMediaPlayer",0);
+	m->ctrl("detectMediaPlayer", 0);
 	mediaFillBox();
 
 	g_pApp->restoreOverrideCursor();
@@ -232,21 +228,21 @@ void OptionsWidget_soundGeneral::soundFillBox()
 	if(!m)
 		goto disable;
 
-	if(!m->ctrl("getAvailableSoundSystems",&l))
+	if(!m->ctrl("getAvailableSoundSystems", &l))
 		goto disable;
 
 	m_pSoundSystemBox->clear();
-	for ( it = l.begin(); it != l.end(); ++it )
+	for(it = l.begin(); it != l.end(); ++it)
 	{
 		m_pSoundSystemBox->addItem(*it);
 	}
 
 	cnt = m_pSoundSystemBox->count();
 
-	for(i=0;i<cnt;i++)
+	for(i = 0; i < cnt; i++)
 	{
 		QString t = m_pSoundSystemBox->itemText(i);
-		if(KviQString::equalCI(t,KVI_OPTION_STRING(KviOption_stringSoundSystem)))
+		if(KviQString::equalCI(t, KVI_OPTION_STRING(KviOption_stringSoundSystem)))
 		{
 			m_pSoundSystemBox->setCurrentIndex(i);
 			break;
@@ -269,19 +265,21 @@ void OptionsWidget_soundGeneral::mediaFillBox()
 	int i;
 	KviModule * m = g_pModuleManager->getModule("mediaplayer");
 
-	if(!m)goto disable;
-	if(!m->ctrl("getAvailableMediaPlayers",&l))goto disable;
+	if(!m)
+		goto disable;
+	if(!m->ctrl("getAvailableMediaPlayers", &l))
+		goto disable;
 	m_pMediaPlayerBox->clear();
-	for ( it = l.begin(); it != l.end(); ++it )
+	for(it = l.begin(); it != l.end(); ++it)
 	{
 		m_pMediaPlayerBox->addItem(*it);
 	}
 	cnt = m_pMediaPlayerBox->count();
 
-	for(i=0;i<cnt;i++)
+	for(i = 0; i < cnt; i++)
 	{
 		QString t = m_pMediaPlayerBox->itemText(i);
-		if(KviQString::equalCI(t,KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer)))
+		if(KviQString::equalCI(t, KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer)))
 		{
 			m_pMediaPlayerBox->setCurrentIndex(i);
 			break;
@@ -311,10 +309,11 @@ void OptionsWidget_soundGeneral::commit()
 	{
 		// guess from locale
 		KVI_OPTION_STRING(KviOption_stringMp3TagsEncoding) = "";
-	} else {
+	}
+	else
+	{
 		KVI_OPTION_STRING(KviOption_stringMp3TagsEncoding) = m_pTagsEncodingCombo->itemText(idx);
 	}
-
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	idx = m_pWinampEncodingCombo->currentIndex();
@@ -322,31 +321,32 @@ void OptionsWidget_soundGeneral::commit()
 	{
 		// guess from locale
 		KVI_OPTION_STRING(KviOption_stringWinampTextEncoding) = "";
-	} else {
+	}
+	else
+	{
 		KVI_OPTION_STRING(KviOption_stringWinampTextEncoding) = m_pWinampEncodingCombo->itemText(idx);
 	}
 #endif
 }
 
 OptionsWidget_sounds::OptionsWidget_sounds(QWidget * parent)
-: KviOptionsWidget(parent)
+    : KviOptionsWidget(parent)
 {
 	setObjectName("sound_options_widget");
 	createLayout();
-	addLabel(0,0,0,0,__tr2qs_ctx("New query opened:","options"));
-	addSoundSelector(1,0,1,0,"",KviOption_stringOnNewQueryOpenedSound);
+	addLabel(0, 0, 0, 0, __tr2qs_ctx("New query opened:", "options"));
+	addSoundSelector(1, 0, 1, 0, "", KviOption_stringOnNewQueryOpenedSound);
 
-	addLabel(0,1,0,1,__tr2qs_ctx("New message in inactive query:","options"));
-	addSoundSelector(1,1,1,1,"",KviOption_stringOnQueryMessageSound);
+	addLabel(0, 1, 0, 1, __tr2qs_ctx("New message in inactive query:", "options"));
+	addSoundSelector(1, 1, 1, 1, "", KviOption_stringOnQueryMessageSound);
 
-	addLabel(0,2,0,2,__tr2qs_ctx("Highlighted message in inactive window:","options"));
-	addSoundSelector(1,2,1,2,"",KviOption_stringOnHighlightedMessageSound);
+	addLabel(0, 2, 0, 2, __tr2qs_ctx("Highlighted message in inactive window:", "options"));
+	addSoundSelector(1, 2, 1, 2, "", KviOption_stringOnHighlightedMessageSound);
 
-	addLabel(0,3,0,3,__tr2qs_ctx("When I am kicked:","options"));
-	addSoundSelector(1,3,1,3,"",KviOption_stringOnMeKickedSound);
+	addLabel(0, 3, 0, 3, __tr2qs_ctx("When I am kicked:", "options"));
+	addSoundSelector(1, 3, 1, 3, "", KviOption_stringOnMeKickedSound);
 
-	addRowSpacer(0,4,1,4);
-
+	addRowSpacer(0, 4, 1, 4);
 }
 
 OptionsWidget_sounds::~OptionsWidget_sounds()

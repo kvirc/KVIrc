@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "TorrentInterface.h"
 #include "KTorrentDbusInterface.h"
 #include "StatusBarApplet.h"
@@ -35,18 +34,18 @@
 
 static KviPointerList<TorrentInterfaceDescriptor> * g_pDescriptorList = 0;
 
-static TorrentInterface *auto_detect_torrent_client(KviWindow * pOut = 0)
+static TorrentInterface * auto_detect_torrent_client(KviWindow * pOut = 0)
 {
 	int iBest = 0;
 	TorrentInterface * pBest = 0;
 	TorrentInterfaceDescriptor * d;
 	TorrentInterfaceDescriptor * pDBest = 0;
 
-	for (d=g_pDescriptorList->first(); d!=0; d=g_pDescriptorList->next())
+	for(d = g_pDescriptorList->first(); d != 0; d = g_pDescriptorList->next())
 	{
 		// instance gets deleted by descriptor later
-		TorrentInterface *i = d->instance();
-		if (i)
+		TorrentInterface * i = d->instance();
+		if(i)
 		{
 			int iScore = i->detect();
 			if(iScore > iBest)
@@ -59,14 +58,14 @@ static TorrentInterface *auto_detect_torrent_client(KviWindow * pOut = 0)
 			if(pOut)
 			{
 				pOut->output(KVI_OUT_TORRENT,
-						   __tr2qs_ctx("Trying torrent client interface \"%Q\": score %d", "torrent"),
-						   &d->name(),
-						   iScore);
+				    __tr2qs_ctx("Trying torrent client interface \"%Q\": score %d", "torrent"),
+				    &d->name(),
+				    iScore);
 			}
 		}
 	}
 
-/*	if(iBest < 90)
+	/*	if(iBest < 90)
 	{
 		if(pOut)
 			pOut->outputNoFmt(KVI_OUT_MULTIMEDIA,__tr2qs_ctx("Not sure about the results, trying a second, more aggressive detection pass","torrent"));
@@ -99,174 +98,174 @@ static TorrentInterface *auto_detect_torrent_client(KviWindow * pOut = 0)
 		KVI_OPTION_STRING(KviOption_stringPreferredTorrentClient) = pDBest->name();
 		if(pOut)
 			pOut->output(KVI_OUT_TORRENT,
-					__tr2qs_ctx("Choosing torrent client interface \"%Q\"", "torrent"),
-					&pDBest->name());
-
-	} else
+			    __tr2qs_ctx("Choosing torrent client interface \"%Q\"", "torrent"),
+			    &pDBest->name());
+	}
+	else
 	{
 		if(pOut)
 			pOut->outputNoFmt(KVI_OUT_TORRENT,
-					__tr2qs_ctx("Seems that there is no usable torrent client on this machine", "torrent"));
+			    __tr2qs_ctx("Seems that there is no usable torrent client on this machine", "torrent"));
 	}
 
 	return pBest;
 }
 
-#define TC_KVS_FAIL_ON_NO_INTERFACE \
-	if (!TorrentInterface::selected()) \
-	{ \
+#define TC_KVS_FAIL_ON_NO_INTERFACE                                                                      \
+	if(!TorrentInterface::selected())                                                                    \
+	{                                                                                                    \
 		c->warning(__tr2qs_ctx("No torrent client interface selected. Try /torrent.detect", "torrent")); \
-		return true; \
+		return true;                                                                                     \
 	}
 
-#define TC_KVS_COMMAND(__name) static bool torrent_kvs_cmd_ ## __name (KviKvsModuleCommandCall * c)
-#define TC_KVS_FUNCTION(__name) static bool torrent_kvs_fnc_ ## __name (KviKvsModuleFunctionCall * c)
+#define TC_KVS_COMMAND(__name) static bool torrent_kvs_cmd_##__name(KviKvsModuleCommandCall * c)
+#define TC_KVS_FUNCTION(__name) static bool torrent_kvs_fnc_##__name(KviKvsModuleFunctionCall * c)
 
-#define TC_KVS_COMMAND_ERROR	\
-			if (!c->hasSwitch('q',"quiet")) \
-			{ \
-				c->warning(__tr2qs_ctx("The selected torrent client interface failed to execute the requested function", "torrent")); \
-				QString tmp = __tr2qs_ctx("Last interface error: ", "torrent"); \
-				tmp += TorrentInterface::selected()->lastError(); \
-				c->warning(tmp); \
-			} \
-
-#define TC_KVS_SIMPLE_COMMAND(__name, __ifacecommand) \
-	TC_KVS_COMMAND(__name) \
-	{ \
-		KVSM_PARAMETERS_BEGIN(c) \
-		KVSM_PARAMETERS_END(c) \
-		\
-		TC_KVS_FAIL_ON_NO_INTERFACE \
-		\
-		if (!TorrentInterface::selected()->__ifacecommand()) \
-		{ \
-			TC_KVS_COMMAND_ERROR \
-		} \
-		return true; \
+#define TC_KVS_COMMAND_ERROR                                                                                                  \
+	if(!c->hasSwitch('q', "quiet"))                                                                                           \
+	{                                                                                                                         \
+		c->warning(__tr2qs_ctx("The selected torrent client interface failed to execute the requested function", "torrent")); \
+		QString tmp = __tr2qs_ctx("Last interface error: ", "torrent");                                                       \
+		tmp += TorrentInterface::selected()->lastError();                                                                     \
+		c->warning(tmp);                                                                                                      \
 	}
 
-#define TC_KVS_INT_COMMAND(__name, __ifacecommand, __argname) \
-	TC_KVS_COMMAND(__name) \
-	{ \
-		kvs_int_t arg; \
-		KVSM_PARAMETERS_BEGIN(c) \
-			KVSM_PARAMETER(__argname, KVS_PT_INT, 0, arg) \
-		KVSM_PARAMETERS_END(c) \
-		\
-		TC_KVS_FAIL_ON_NO_INTERFACE \
-		\
-		if (!TorrentInterface::selected()->__ifacecommand(arg)) \
-		{ \
-			TC_KVS_COMMAND_ERROR \
-		} \
-		return true; \
+#define TC_KVS_SIMPLE_COMMAND(__name, __ifacecommand)       \
+	TC_KVS_COMMAND(__name)                                  \
+	{                                                       \
+		KVSM_PARAMETERS_BEGIN(c)                            \
+		KVSM_PARAMETERS_END(c)                              \
+                                                            \
+		TC_KVS_FAIL_ON_NO_INTERFACE                         \
+                                                            \
+		if(!TorrentInterface::selected()->__ifacecommand()) \
+		{                                                   \
+			TC_KVS_COMMAND_ERROR                            \
+		}                                                   \
+		return true;                                        \
+	}
+
+#define TC_KVS_INT_COMMAND(__name, __ifacecommand, __argname)  \
+	TC_KVS_COMMAND(__name)                                     \
+	{                                                          \
+		kvs_int_t arg;                                         \
+		KVSM_PARAMETERS_BEGIN(c)                               \
+		KVSM_PARAMETER(__argname, KVS_PT_INT, 0, arg)          \
+		KVSM_PARAMETERS_END(c)                                 \
+                                                               \
+		TC_KVS_FAIL_ON_NO_INTERFACE                            \
+                                                               \
+		if(!TorrentInterface::selected()->__ifacecommand(arg)) \
+		{                                                      \
+			TC_KVS_COMMAND_ERROR                               \
+		}                                                      \
+		return true;                                           \
 	}
 
 #define TC_KVS_INT_INT_STRING_COMMAND(__name, __ifacecommand, __argname1, __argname2, __argname3) \
-	TC_KVS_COMMAND(__name) \
-	{ \
-		kvs_int_t arg1; \
-		kvs_int_t arg2; \
-		QString arg3; \
-		KVSM_PARAMETERS_BEGIN(c) \
-			KVSM_PARAMETER(__argname1, KVS_PT_INT, 0, arg1) \
-			KVSM_PARAMETER(__argname2, KVS_PT_INT, 0, arg2) \
-			KVSM_PARAMETER(__argname3, KVS_PT_STRING, 0, arg3) \
-		KVSM_PARAMETERS_END(c) \
-		\
-		TC_KVS_FAIL_ON_NO_INTERFACE \
-		\
-		if (!TorrentInterface::selected()->__ifacecommand(arg1, arg2, arg3)) \
-		{ \
-			TC_KVS_COMMAND_ERROR \
-		} \
-		return true; \
+	TC_KVS_COMMAND(__name)                                                                        \
+	{                                                                                             \
+		kvs_int_t arg1;                                                                           \
+		kvs_int_t arg2;                                                                           \
+		QString arg3;                                                                             \
+		KVSM_PARAMETERS_BEGIN(c)                                                                  \
+		KVSM_PARAMETER(__argname1, KVS_PT_INT, 0, arg1)                                           \
+		KVSM_PARAMETER(__argname2, KVS_PT_INT, 0, arg2)                                           \
+		KVSM_PARAMETER(__argname3, KVS_PT_STRING, 0, arg3)                                        \
+		KVSM_PARAMETERS_END(c)                                                                    \
+                                                                                                  \
+		TC_KVS_FAIL_ON_NO_INTERFACE                                                               \
+                                                                                                  \
+		if(!TorrentInterface::selected()->__ifacecommand(arg1, arg2, arg3))                       \
+		{                                                                                         \
+			TC_KVS_COMMAND_ERROR                                                                  \
+		}                                                                                         \
+		return true;                                                                              \
 	}
 
 // TODO: error handling for functions
 
-#define TC_KVS_STRINGRET_FUNCTION(__name, __ifacecommand) \
-	TC_KVS_FUNCTION(__name) \
-	{ \
-		TC_KVS_FAIL_ON_NO_INTERFACE \
+#define TC_KVS_STRINGRET_FUNCTION(__name, __ifacecommand)               \
+	TC_KVS_FUNCTION(__name)                                             \
+	{                                                                   \
+		TC_KVS_FAIL_ON_NO_INTERFACE                                     \
 		QString szRet = TorrentInterface::selected()->__ifacecommand(); \
-		c->returnValue()->setString(szRet); \
-		return true; \
+		c->returnValue()->setString(szRet);                             \
+		return true;                                                    \
 	}
 
-#define TC_KVS_INTRET_FUNCTION(__name, __ifacecommand) \
-	TC_KVS_FUNCTION(__name) \
-	{ \
-		TC_KVS_FAIL_ON_NO_INTERFACE \
+#define TC_KVS_INTRET_FUNCTION(__name, __ifacecommand)                  \
+	TC_KVS_FUNCTION(__name)                                             \
+	{                                                                   \
+		TC_KVS_FAIL_ON_NO_INTERFACE                                     \
 		kvs_int_t ret = TorrentInterface::selected()->__ifacecommand(); \
-		c->returnValue()->setInteger(ret); \
-		return true; \
+		c->returnValue()->setInteger(ret);                              \
+		return true;                                                    \
 	}
 
-#define TC_KVS_FLOATRET_FUNCTION(__name, __ifacecommand) \
-	TC_KVS_FUNCTION(__name) \
-	{ \
-		TC_KVS_FAIL_ON_NO_INTERFACE \
+#define TC_KVS_FLOATRET_FUNCTION(__name, __ifacecommand)                 \
+	TC_KVS_FUNCTION(__name)                                              \
+	{                                                                    \
+		TC_KVS_FAIL_ON_NO_INTERFACE                                      \
 		kvs_real_t ret = TorrentInterface::selected()->__ifacecommand(); \
-		c->returnValue()->setReal(ret); \
-		return true; \
+		c->returnValue()->setReal(ret);                                  \
+		return true;                                                     \
 	}
 
-#define TC_KVS_INTRET_INT_FUNCTION(__name, __ifacecommand, __argname) \
-	TC_KVS_FUNCTION(__name) \
-	{ \
-		kvs_int_t arg; \
-		KVSM_PARAMETERS_BEGIN(c) \
-			KVSM_PARAMETER(__argname, KVS_PT_INT, 0, arg) \
-		KVSM_PARAMETERS_END(c) \
-		TC_KVS_FAIL_ON_NO_INTERFACE \
+#define TC_KVS_INTRET_INT_FUNCTION(__name, __ifacecommand, __argname)      \
+	TC_KVS_FUNCTION(__name)                                                \
+	{                                                                      \
+		kvs_int_t arg;                                                     \
+		KVSM_PARAMETERS_BEGIN(c)                                           \
+		KVSM_PARAMETER(__argname, KVS_PT_INT, 0, arg)                      \
+		KVSM_PARAMETERS_END(c)                                             \
+		TC_KVS_FAIL_ON_NO_INTERFACE                                        \
 		kvs_int_t ret = TorrentInterface::selected()->__ifacecommand(arg); \
-		c->returnValue()->setInteger(ret); \
-		return true; \
+		c->returnValue()->setInteger(ret);                                 \
+		return true;                                                       \
 	}
 
-#define TC_KVS_STRINGRET_INT_FUNCTION(__name, __ifacecommand, __argname) \
-	TC_KVS_FUNCTION(__name) \
-	{ \
-		kvs_int_t arg; \
-		KVSM_PARAMETERS_BEGIN(c) \
-			KVSM_PARAMETER(__argname, KVS_PT_INT, 0, arg) \
-		KVSM_PARAMETERS_END(c) \
-		TC_KVS_FAIL_ON_NO_INTERFACE \
+#define TC_KVS_STRINGRET_INT_FUNCTION(__name, __ifacecommand, __argname)   \
+	TC_KVS_FUNCTION(__name)                                                \
+	{                                                                      \
+		kvs_int_t arg;                                                     \
+		KVSM_PARAMETERS_BEGIN(c)                                           \
+		KVSM_PARAMETER(__argname, KVS_PT_INT, 0, arg)                      \
+		KVSM_PARAMETERS_END(c)                                             \
+		TC_KVS_FAIL_ON_NO_INTERFACE                                        \
 		QString szRet = TorrentInterface::selected()->__ifacecommand(arg); \
-		c->returnValue()->setString(szRet); \
-		return true; \
+		c->returnValue()->setString(szRet);                                \
+		return true;                                                       \
 	}
 
 #define TC_KVS_STRINGRET_INT_INT_FUNCTION(__name, __ifacecommand, __argname1, __argname2) \
-	TC_KVS_FUNCTION(__name) \
-	{ \
-		kvs_int_t arg1; \
-		kvs_int_t arg2; \
-		KVSM_PARAMETERS_BEGIN(c) \
-			KVSM_PARAMETER(__argname1, KVS_PT_INT, 0, arg1) \
-			KVSM_PARAMETER(__argname2, KVS_PT_INT, 0, arg2) \
-		KVSM_PARAMETERS_END(c) \
-		TC_KVS_FAIL_ON_NO_INTERFACE \
-		QString szRet = TorrentInterface::selected()->__ifacecommand(arg1, arg2); \
-		c->returnValue()->setString(szRet); \
-		return true; \
+	TC_KVS_FUNCTION(__name)                                                               \
+	{                                                                                     \
+		kvs_int_t arg1;                                                                   \
+		kvs_int_t arg2;                                                                   \
+		KVSM_PARAMETERS_BEGIN(c)                                                          \
+		KVSM_PARAMETER(__argname1, KVS_PT_INT, 0, arg1)                                   \
+		KVSM_PARAMETER(__argname2, KVS_PT_INT, 0, arg2)                                   \
+		KVSM_PARAMETERS_END(c)                                                            \
+		TC_KVS_FAIL_ON_NO_INTERFACE                                                       \
+		QString szRet = TorrentInterface::selected()->__ifacecommand(arg1, arg2);         \
+		c->returnValue()->setString(szRet);                                               \
+		return true;                                                                      \
 	}
 
 #define TC_KVS_INTRET_INT_INT_FUNCTION(__name, __ifacecommand, __argname1, __argname2) \
-	TC_KVS_FUNCTION(__name) \
-	{ \
-		kvs_int_t arg1; \
-		kvs_int_t arg2; \
-		KVSM_PARAMETERS_BEGIN(c) \
-			KVSM_PARAMETER(__argname1, KVS_PT_INT, 0, arg1) \
-			KVSM_PARAMETER(__argname2, KVS_PT_INT, 0, arg2) \
-		KVSM_PARAMETERS_END(c) \
-		TC_KVS_FAIL_ON_NO_INTERFACE \
-		kvs_int_t ret = TorrentInterface::selected()->__ifacecommand(arg1, arg2); \
-		c->returnValue()->setInteger(ret); \
-		return true; \
+	TC_KVS_FUNCTION(__name)                                                            \
+	{                                                                                  \
+		kvs_int_t arg1;                                                                \
+		kvs_int_t arg2;                                                                \
+		KVSM_PARAMETERS_BEGIN(c)                                                       \
+		KVSM_PARAMETER(__argname1, KVS_PT_INT, 0, arg1)                                \
+		KVSM_PARAMETER(__argname2, KVS_PT_INT, 0, arg2)                                \
+		KVSM_PARAMETERS_END(c)                                                         \
+		TC_KVS_FAIL_ON_NO_INTERFACE                                                    \
+		kvs_int_t ret = TorrentInterface::selected()->__ifacecommand(arg1, arg2);      \
+		c->returnValue()->setInteger(ret);                                             \
+		return true;                                                                   \
 	}
 
 /*
@@ -297,7 +296,7 @@ static TorrentInterface *auto_detect_torrent_client(KviWindow * pOut = 0)
 
 TC_KVS_COMMAND(detect)
 {
-	TorrentInterface::select(auto_detect_torrent_client(c->hasSwitch('q',"quiet") ? 0 : c->window()));
+	TorrentInterface::select(auto_detect_torrent_client(c->hasSwitch('q', "quiet") ? 0 : c->window()));
 	return true;
 }
 
@@ -319,7 +318,6 @@ TC_KVS_COMMAND(detect)
 		[module:torrent]torrent module documentation[/module]
 */
 TC_KVS_INTRET_FUNCTION(maxUploadSpeed, maxUploadSpeed)
-
 
 /*
 	@doc: torrent.maxDownloadSpeed
@@ -699,32 +697,31 @@ TC_KVS_COMMAND(setClient)
 	QString client;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("client", KVS_PT_STRING, 0, client)
+	KVSM_PARAMETER("client", KVS_PT_STRING, 0, client)
 	KVSM_PARAMETERS_END(c)
 
-	for (TorrentInterfaceDescriptor *d = g_pDescriptorList->first(); d; d=g_pDescriptorList->next())
+	for(TorrentInterfaceDescriptor * d = g_pDescriptorList->first(); d; d = g_pDescriptorList->next())
 	{
-		if (d->name() == client)
+		if(d->name() == client)
 		{
 			TorrentInterface::select(d->instance());
 			KVI_OPTION_STRING(KviOption_stringPreferredTorrentClient) = client;
 
-			if (!c->hasSwitch('q',"quiet"))
+			if(!c->hasSwitch('q', "quiet"))
 				c->window()->output(KVI_OUT_TORRENT,
-							__tr2qs_ctx("Using client interface \"%Q\".", "torrent"),
-							&client);
+				    __tr2qs_ctx("Using client interface \"%Q\".", "torrent"),
+				    &client);
 			return true;
 		}
 	}
 
-	if (!c->hasSwitch('q',"quiet"))
+	if(!c->hasSwitch('q', "quiet"))
 		c->window()->output(KVI_OUT_TORRENT,
-					__tr2qs_ctx("Invalid client interface \"%Q\"!", "torrent"),
-					&client);
+		    __tr2qs_ctx("Invalid client interface \"%Q\"!", "torrent"),
+		    &client);
 
 	return false;
 }
-
 
 /*
 	@doc: torrent.client
@@ -771,10 +768,10 @@ TC_KVS_FUNCTION(client)
 */
 TC_KVS_FUNCTION(clientList)
 {
-	KviKvsArray *pArray = new KviKvsArray();
-	int id=0;
+	KviKvsArray * pArray = new KviKvsArray();
+	int id = 0;
 
-	for (TorrentInterfaceDescriptor *d=g_pDescriptorList->first(); d; d=g_pDescriptorList->next())
+	for(TorrentInterfaceDescriptor * d = g_pDescriptorList->first(); d; d = g_pDescriptorList->next())
 		pArray->set(id++, new KviKvsVariant(d->name()));
 
 	c->returnValue()->setArray(pArray);
@@ -839,10 +836,10 @@ TC_KVS_STRINGRET_INT_FUNCTION(state, state, "torrent_number")
 		[fnc]$torrent.filePriority[/fnc]: Returns the priority of a file in a torrent[br]
 */
 
-static bool torrent_module_init(KviModule *m)
+static bool torrent_module_init(KviModule * m)
 {
-	#define TC_KVS_REGCMD(__name,__stringname) KVSM_REGISTER_SIMPLE_COMMAND(m, __stringname, torrent_kvs_cmd_ ## __name)
-	#define TC_KVS_REGFNC(__name,__stringname) KVSM_REGISTER_FUNCTION(m, __stringname, torrent_kvs_fnc_ ## __name)
+#define TC_KVS_REGCMD(__name, __stringname) KVSM_REGISTER_SIMPLE_COMMAND(m, __stringname, torrent_kvs_cmd_##__name)
+#define TC_KVS_REGFNC(__name, __stringname) KVSM_REGISTER_FUNCTION(m, __stringname, torrent_kvs_fnc_##__name)
 
 	TC_KVS_REGCMD(detect, "detect");
 	TC_KVS_REGCMD(setClient, "setClient");
@@ -878,19 +875,18 @@ static bool torrent_module_init(KviModule *m)
 
 	TorrentInterface::select(0);
 
-	if (g_pMainWindow->mainStatusBar())
+	if(g_pMainWindow->mainStatusBar())
 		StatusBarApplet::selfRegister(g_pMainWindow->mainStatusBar());
-
 
 	if(KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) == "auto")
 	{
 		TorrentInterface::select(auto_detect_torrent_client());
-
-	} else
+	}
+	else
 	{
-		for (TorrentInterfaceDescriptor *d=g_pDescriptorList->first(); d; d=g_pDescriptorList->next())
+		for(TorrentInterfaceDescriptor * d = g_pDescriptorList->first(); d; d = g_pDescriptorList->next())
 		{
-			if (d->name() == KVI_OPTION_STRING(KviOption_stringPreferredTorrentClient))
+			if(d->name() == KVI_OPTION_STRING(KviOption_stringPreferredTorrentClient))
 				TorrentInterface::select(d->instance());
 		}
 	}
@@ -898,20 +894,20 @@ static bool torrent_module_init(KviModule *m)
 	return true;
 }
 
-static bool torrent_module_cleanup(KviModule * )
+static bool torrent_module_cleanup(KviModule *)
 {
 	delete g_pDescriptorList;
 	return true;
 }
 
-static bool torrent_module_can_unload(KviModule * )
+static bool torrent_module_can_unload(KviModule *)
 {
 	return true;
 }
 
-static bool torrent_module_ctrl(KviModule *,const char *,void *) // KviModule * m,const char * operation,void * param)
+static bool torrent_module_ctrl(KviModule *, const char *, void *) // KviModule * m,const char * operation,void * param)
 {
-/*	if(kvi_strEqualCI(operation,"getAvailableMediaPlayers"))
+	/*	if(kvi_strEqualCI(operation,"getAvailableMediaPlayers"))
 	{
 		// we expect param to be a pointer to QStringList
 		QStringList * l = (QStringList *)param;
@@ -931,14 +927,13 @@ static bool torrent_module_ctrl(KviModule *,const char *,void *) // KviModule * 
 }
 
 KVIRC_MODULE(
-	"Torrent",
-	"4.0.0",
-	"Copyright (C) 2007 Alexander Stillich (torque at pltn dot org)" \
-	"              2008 Fabio Bas (ctrlaltca at gmail dot com)",
-	"Interface to various torrent clients",
-	torrent_module_init,
-	torrent_module_can_unload,
-	torrent_module_ctrl,
-	torrent_module_cleanup,
-	"torrent"
-)
+    "Torrent",
+    "4.0.0",
+    "Copyright (C) 2007 Alexander Stillich (torque at pltn dot org)"
+    "              2008 Fabio Bas (ctrlaltca at gmail dot com)",
+    "Interface to various torrent clients",
+    torrent_module_init,
+    torrent_module_can_unload,
+    torrent_module_ctrl,
+    torrent_module_cleanup,
+    "torrent")

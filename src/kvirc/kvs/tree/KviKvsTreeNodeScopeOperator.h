@@ -32,27 +32,28 @@ class KviKvsObject;
 class KVIRC_API KviKvsTreeNodeScopeOperator : public KviKvsTreeNodeData
 {
 public:
-	KviKvsTreeNodeScopeOperator(const QChar * pLocation,KviKvsTreeNodeData * pObject,KviKvsTreeNodeData * pData);
+	KviKvsTreeNodeScopeOperator(const QChar * pLocation, KviKvsTreeNodeData * pObject, KviKvsTreeNodeData * pData);
 	~KviKvsTreeNodeScopeOperator();
+
 public:
-	KviKvsTreeNodeData          * m_pObjectReference; // can't be null
-	KviKvsTreeNodeData          * m_pRightSide; // can't be null
+	KviKvsTreeNodeData * m_pObjectReference; // can't be null
+	KviKvsTreeNodeData * m_pRightSide;       // can't be null
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
-	virtual bool isReadOnly(); // gets the m_pRightSide read only state
+	virtual bool isReadOnly();                   // gets the m_pRightSide read only state
 	virtual bool canEvaluateToObjectReference(); // gets the m_pRightSide result
-	virtual bool isFunctionCall(); // gets the m_pRightSide result
-	virtual bool canEvaluateInObjectScope(); // gets the m_pObjectReference result
+	virtual bool isFunctionCall();               // gets the m_pRightSide result
+	virtual bool canEvaluateInObjectScope();     // gets the m_pObjectReference result
 	//virtual bool canReleaseResult(); // gets the m_pRightSide result
 
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
 	virtual KviKvsRWEvaluationResult * evaluateReadWrite(KviKvsRunTimeContext * c);
-	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
-	virtual KviKvsRWEvaluationResult * evaluateReadWriteInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c);
-protected:
-	KviKvsObject * objectFromVariant(KviKvsRunTimeContext * c,KviKvsVariant * v);
-};
+	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
+	virtual KviKvsRWEvaluationResult * evaluateReadWriteInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c);
 
+protected:
+	KviKvsObject * objectFromVariant(KviKvsRunTimeContext * c, KviKvsVariant * v);
+};
 
 #endif //!_KVI_KVS_TREENODE_SCOPEOPERATOR_H_

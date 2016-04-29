@@ -37,98 +37,101 @@ public:
 	DccDescriptor(const DccDescriptor & src);
 
 	~DccDescriptor();
+
 protected:
-	KviConsoleWindow         * m_pConsole;
+	KviConsoleWindow * m_pConsole;
 
 	// mIrc zero port reverse send/chat extension
-	KviCString               m_szZeroPortRequestTag;
+	KviCString m_szZeroPortRequestTag;
 
-	unsigned int         m_uId; // this dcc session ID
-	QString              m_szId;
+	unsigned int m_uId; // this dcc session ID
+	QString m_szId;
 
-	DccWindow       * m_pDccWindow;   // 0 if it has no window
+	DccWindow * m_pDccWindow;         // 0 if it has no window
 	DccFileTransfer * m_pDccTransfer; // 0 if it is not a transfer
 
-	bool                 m_bCreationEventTriggered;
+	bool m_bCreationEventTriggered;
+
 public:
 	// A console that this DCC is bound to (might be replaced while we wait for user acknowledge in dialogs)
 	KviConsoleWindow * console() const { return m_pConsole; };
-	void setConsole(KviConsoleWindow * c){ m_pConsole = c; };
+	void setConsole(KviConsoleWindow * c) { m_pConsole = c; };
 
 	DccWindow * window() const { return m_pDccWindow; };
-	void setWindow(DccWindow * w){ m_pDccWindow = w; };
+	void setWindow(DccWindow * w) { m_pDccWindow = w; };
 
 	DccFileTransfer * transfer() const { return m_pDccTransfer; };
-	void setTransfer(DccFileTransfer * t){ m_pDccTransfer = t; };
+	void setTransfer(DccFileTransfer * t) { m_pDccTransfer = t; };
 
 	// mIrc zero port reverse send/chat extension
 	bool isZeroPortRequest() const { return m_szZeroPortRequestTag.hasData(); };
 	const char * zeroPortRequestTag() const { return m_szZeroPortRequestTag.ptr(); };
-	void setZeroPortRequestTag(const KviCString &szTag){ m_szZeroPortRequestTag = szTag; };
+	void setZeroPortRequestTag(const KviCString & szTag) { m_szZeroPortRequestTag = szTag; };
 
 	unsigned int id() const { return m_uId; };
 	const QString & idString() const { return m_szId; };
 	static DccDescriptor * find(unsigned int uId);
-	static KviPointerHashTable<int,DccDescriptor> * descriptorDict();
+	static KviPointerHashTable<int, DccDescriptor> * descriptorDict();
 
 	void triggerCreationEvent(); // this MUST be called by the creator of the descriptor!
 private:
-	void copyFrom(const DccDescriptor &src);
+	void copyFrom(const DccDescriptor & src);
+
 public:
 	// Generic parameters
-	QString         szType;            // DCC protocol : CHAT, SCHAT, SEND, TSSEND....
+	QString szType; // DCC protocol : CHAT, SCHAT, SEND, TSSEND....
 
-	bool            bActive;           // active or passive connection ?
+	bool bActive; // active or passive connection ?
 
-	QString         szNick;            // remote user nickname
-	QString         szUser;            // remote user name (unknown for passive dcc)
-	QString         szHost;            // remote user host (unknown for passive dcc)
+	QString szNick; // remote user nickname
+	QString szUser; // remote user name (unknown for passive dcc)
+	QString szHost; // remote user host (unknown for passive dcc)
 
-	QString         szLocalNick;       // local user nickname (always from irc)
-	QString         szLocalUser;       // local user username (always from irc)
-	QString         szLocalHost;       // local user hostname (always from irc)
+	QString szLocalNick; // local user nickname (always from irc)
+	QString szLocalUser; // local user username (always from irc)
+	QString szLocalHost; // local user hostname (always from irc)
 
-	QString         szIp;              // remote user ip (active dcc only)
-	QString         szPort;            // remote user port (active dcc only)
+	QString szIp;   // remote user ip (active dcc only)
+	QString szPort; // remote user port (active dcc only)
 
-	QString         szListenIp;        // passive only : ip to listen on
-	QString         szListenPort;      // passive only : port to listen on
+	QString szListenIp;   // passive only : ip to listen on
+	QString szListenPort; // passive only : port to listen on
 
-	bool            bSendRequest;      // passive only : true if we have to send the CTCP request
+	bool bSendRequest; // passive only : true if we have to send the CTCP request
 
-	QString         szFakeIp;          // passive only : fake ip to send in the CTCP
-	QString         szFakePort;        // passive only : fake port to send in the CTCP
+	QString szFakeIp;   // passive only : fake ip to send in the CTCP
+	QString szFakePort; // passive only : fake port to send in the CTCP
 
-	bool            bDoTimeout;        // the marshall has to setup a timeout ?
+	bool bDoTimeout; // the marshall has to setup a timeout ?
 
-	bool            bIsTdcc;           // is this a TDCC ?
+	bool bIsTdcc; // is this a TDCC ?
 
-	bool            bOverrideMinimize; // Override the default minimize option ?
-	bool            bShowMinimized;    // Show minimized ? (valid if bOverrideMinimize is true)
+	bool bOverrideMinimize; // Override the default minimize option ?
+	bool bShowMinimized;    // Show minimized ? (valid if bOverrideMinimize is true)
 
-	bool            bAutoAccept;       // Auto accepted dcc send/chat ?
+	bool bAutoAccept; // Auto accepted dcc send/chat ?
 #ifdef COMPILE_SSL_SUPPORT
-	bool            bIsSSL;            // do we have to use SSL ?
+	bool bIsSSL; // do we have to use SSL ?
 #endif
 	// Specific parameters
 
 	// DCC SEND/RECV
 
-	QString         szFileName;        // RECVFILE: incoming file name, SENDFILE: filename sent to the remote end
-	QString         szFileSize;        // RECVFILE: incoming file size, SENDFILE: remote resume size
+	QString szFileName; // RECVFILE: incoming file name, SENDFILE: filename sent to the remote end
+	QString szFileSize; // RECVFILE: incoming file size, SENDFILE: remote resume size
 
-	QString         szLocalFileName;   // RECVFILE: save file name selected, SENDFILE: file to send
-	QString         szLocalFileSize;   // RECVFILE: local file size (to resume), SENDFILE: file to send size
+	QString szLocalFileName; // RECVFILE: save file name selected, SENDFILE: file to send
+	QString szLocalFileSize; // RECVFILE: local file size (to resume), SENDFILE: file to send size
 
-	bool            bRecvFile;         // do we have to RECEIVE the file or SEND it ?
-	bool            bResume;           // do we want to resume ?
-	bool            bNoAcks;           // blind dcc send ? (do not receive nor send acknowledges)
+	bool bRecvFile; // do we have to RECEIVE the file or SEND it ?
+	bool bResume;   // do we want to resume ?
+	bool bNoAcks;   // blind dcc send ? (do not receive nor send acknowledges)
 
-	bool            bIsIncomingAvatar; // It is an Incoming Avatar DCC SEND ?
+	bool bIsIncomingAvatar; // It is an Incoming Avatar DCC SEND ?
 
 	// DCC VOICE
-	KviCString          szCodec;           // codec name
-	int             iSampleRate;       // Sample rate
+	KviCString szCodec; // codec name
+	int iSampleRate;    // Sample rate
 public:
 	QString protocol() const { return szType; };
 	bool isActive() const { return bActive; };
@@ -149,9 +152,12 @@ public:
 	bool isFileUpload();
 	bool isFileDownload();
 	bool isDccChat();
-	bool isFileTransfer(){ return (isFileUpload() || isFileDownload()); };
+	bool isFileTransfer() { return (isFileUpload() || isFileDownload()); };
 #ifdef COMPILE_SSL_SUPPORT
-	bool isSSL() const { return bIsSSL; };
+	bool isSSL() const
+	{
+		return bIsSSL;
+	};
 #endif
 };
 

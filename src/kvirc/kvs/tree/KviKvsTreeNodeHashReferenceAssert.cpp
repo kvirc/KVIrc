@@ -28,8 +28,8 @@
 #include "KviKvsVariant.h"
 #include "KviLocale.h"
 
-KviKvsTreeNodeHashReferenceAssert::KviKvsTreeNodeHashReferenceAssert(const QChar * pLocation,KviKvsTreeNodeData * pSource)
-: KviKvsTreeNodeIndirectData(pLocation,pSource)
+KviKvsTreeNodeHashReferenceAssert::KviKvsTreeNodeHashReferenceAssert(const QChar * pLocation, KviKvsTreeNodeData * pSource)
+    : KviKvsTreeNodeIndirectData(pLocation, pSource)
 {
 }
 
@@ -42,23 +42,27 @@ bool KviKvsTreeNodeHashReferenceAssert::isReadOnly()
 	return m_pSource->isReadOnly();
 }
 
-void KviKvsTreeNodeHashReferenceAssert::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeHashReferenceAssert::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Hash Reference Assert";
 }
 
 void KviKvsTreeNodeHashReferenceAssert::dump(const char * prefix)
 {
-	qDebug("%s HashReferenceAssert",prefix);
+	qDebug("%s HashReferenceAssert", prefix);
 }
 
-bool KviKvsTreeNodeHashReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeHashReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	if(o)
 	{
-		if(!m_pSource->evaluateReadOnlyInObjectScope(o,c,pBuffer))return false;
-	} else {
-		if(!m_pSource->evaluateReadOnly(c,pBuffer))return false;
+		if(!m_pSource->evaluateReadOnlyInObjectScope(o, c, pBuffer))
+			return false;
+	}
+	else
+	{
+		if(!m_pSource->evaluateReadOnly(c, pBuffer))
+			return false;
 	}
 
 	if(!pBuffer->isHash())
@@ -67,29 +71,32 @@ bool KviKvsTreeNodeHashReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObje
 		{
 			QString szType;
 			pBuffer->getTypeName(szType);
-			c->error(this,__tr2qs_ctx("Hash reference assert failed: the variable evaluated to type '%Q'","kvs"),&szType);
+			c->error(this, __tr2qs_ctx("Hash reference assert failed: the variable evaluated to type '%Q'", "kvs"), &szType);
 			return false;
 		}
 	}
 	return true;
 }
 
-KviKvsRWEvaluationResult * KviKvsTreeNodeHashReferenceAssert::evaluateReadWriteInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c)
+KviKvsRWEvaluationResult * KviKvsTreeNodeHashReferenceAssert::evaluateReadWriteInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c)
 {
 	KviKvsRWEvaluationResult * r;
-	if(o)r = m_pSource->evaluateReadWriteInObjectScope(o,c);
-	else r = m_pSource->evaluateReadWrite(c);
-	if(!r)return 0;
+	if(o)
+		r = m_pSource->evaluateReadWriteInObjectScope(o, c);
+	else
+		r = m_pSource->evaluateReadWrite(c);
+	if(!r)
+		return 0;
 
 	return r;
 }
 
-bool KviKvsTreeNodeHashReferenceAssert::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeHashReferenceAssert::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
-	return evaluateReadOnlyInObjectScope(0,c,pBuffer);
+	return evaluateReadOnlyInObjectScope(0, c, pBuffer);
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeHashReferenceAssert::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
-	return evaluateReadWriteInObjectScope(0,c);
+	return evaluateReadWriteInObjectScope(0, c);
 }

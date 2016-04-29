@@ -27,8 +27,8 @@
 #include "KviKvsRunTimeContext.h"
 #include "KviLocale.h"
 
-KviKvsTreeNodeExpressionReturn::KviKvsTreeNodeExpressionReturn(const QChar * pLocation,KviKvsTreeNodeExpression * pExpression)
-: KviKvsTreeNodeInstruction(pLocation)
+KviKvsTreeNodeExpressionReturn::KviKvsTreeNodeExpressionReturn(const QChar * pLocation, KviKvsTreeNodeExpression * pExpression)
+    : KviKvsTreeNodeInstruction(pLocation)
 {
 	m_pExpression = pExpression;
 	m_pExpression->setParent(this);
@@ -39,14 +39,14 @@ KviKvsTreeNodeExpressionReturn::~KviKvsTreeNodeExpressionReturn()
 	delete m_pExpression;
 }
 
-void KviKvsTreeNodeExpressionReturn::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeExpressionReturn::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Expression Return Evaluation";
 }
 
 void KviKvsTreeNodeExpressionReturn::dump(const char * prefix)
 {
-	qDebug("%s ExpressionReturn",prefix);
+	qDebug("%s ExpressionReturn", prefix);
 	QString tmp = prefix;
 	tmp += "  ";
 	m_pExpression->dump(tmp.toUtf8().data());
@@ -54,5 +54,5 @@ void KviKvsTreeNodeExpressionReturn::dump(const char * prefix)
 
 bool KviKvsTreeNodeExpressionReturn::execute(KviKvsRunTimeContext * c)
 {
-	return m_pExpression->evaluateReadOnly(c,c->returnValue());
+	return m_pExpression->evaluateReadOnly(c, c->returnValue());
 }

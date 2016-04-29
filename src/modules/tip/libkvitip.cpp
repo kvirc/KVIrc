@@ -40,23 +40,23 @@
 TipWindow * g_pTipWindow = 0;
 
 TipFrame::TipFrame(QWidget * par)
-: QFrame(par)
+    : QFrame(par)
 {
 	QString buffer;
 	m_pLabel1 = new QLabel(this);
 	m_pLabel2 = new QLabel(this);
-	g_pApp->findImage(buffer,"kvi_tip.png");
+	g_pApp->findImage(buffer, "kvi_tip.png");
 	m_pLabel1->setPixmap(buffer);
 	setStyleSheet("QFrame { background: black; }");
 	m_pLabel1->setStyleSheet("QLabel { background: black; }");
 	m_pLabel2->setStyleSheet("QLabel { background: black; color: white; }");
 	m_pLabel2->setWordWrap(true);
-	m_pLabel2->setSizePolicy(QSizePolicy::Minimum,QSizePolicy::Minimum);
+	m_pLabel2->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
 	setFrameStyle(QFrame::Sunken | QFrame::WinPanel);
-	QGridLayout *layout = new QGridLayout(this);
-	layout->addWidget(m_pLabel1,0,0,1,1);
-	layout->addWidget(m_pLabel2,0,1,1,1);
-	layout->setColumnStretch(1,1);
+	QGridLayout * layout = new QGridLayout(this);
+	layout->addWidget(m_pLabel1, 0, 0, 1, 1);
+	layout->addWidget(m_pLabel2, 0, 1, 1, 1);
+	layout->setColumnStretch(1, 1);
 	setLayout(layout);
 }
 
@@ -65,7 +65,7 @@ TipFrame::~TipFrame()
 	g_pTipWindow = 0;
 }
 
-void TipFrame::setText(const QString &text)
+void TipFrame::setText(const QString & text)
 {
 	QString szText = text;
 	m_pLabel2->setText(szText);
@@ -78,63 +78,65 @@ TipWindow::TipWindow()
 	m_pConfig = 0;
 
 	m_pTipFrame = new TipFrame(this);
-	QPushButton * pb = new QPushButton("<<",this);
-	connect(pb,SIGNAL(clicked()),this,SLOT(prevTip()));
+	QPushButton * pb = new QPushButton("<<", this);
+	connect(pb, SIGNAL(clicked()), this, SLOT(prevTip()));
 
-	QPushButton * pb2 = new QPushButton(">>",this);
-	connect(pb2,SIGNAL(clicked()),this,SLOT(nextTip()));
+	QPushButton * pb2 = new QPushButton(">>", this);
+	connect(pb2, SIGNAL(clicked()), this, SLOT(nextTip()));
 
-	QPushButton * pb3 = new QPushButton(__tr2qs("Close"),this);
-	connect(pb3,SIGNAL(clicked()),this,SLOT(close()));
+	QPushButton * pb3 = new QPushButton(__tr2qs("Close"), this);
+	connect(pb3, SIGNAL(clicked()), this, SLOT(close()));
 	pb3->setDefault(true);
 
-	m_pShowAtStartupCheck = new QCheckBox(__tr2qs("Show at startup"),this);
+	m_pShowAtStartupCheck = new QCheckBox(__tr2qs("Show at startup"), this);
 	m_pShowAtStartupCheck->setChecked(KVI_OPTION_BOOL(KviOption_boolShowTipAtStartup));
 
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)));
 
 	setWindowTitle(__tr2qs("Did You Know...")); //leave title as is
 
-	QGridLayout *layout = new QGridLayout(this);
-	layout->addWidget(m_pTipFrame,0,0,1,5);
-	layout->addWidget(m_pShowAtStartupCheck,1,0,1,1);
-	layout->addWidget(pb,1,2,1,1);
-	layout->addWidget(pb2,1,3,1,1);
-	layout->addWidget(pb3,1,4,1,1);
+	QGridLayout * layout = new QGridLayout(this);
+	layout->addWidget(m_pTipFrame, 0, 0, 1, 5);
+	layout->addWidget(m_pShowAtStartupCheck, 1, 0, 1, 1);
+	layout->addWidget(pb, 1, 2, 1, 1);
+	layout->addWidget(pb2, 1, 3, 1, 1);
+	layout->addWidget(pb3, 1, 4, 1, 1);
 	setLayout(layout);
 
 	pb3->setFocus();
-
 }
 
 TipWindow::~TipWindow()
 {
 	KVI_OPTION_BOOL(KviOption_boolShowTipAtStartup) = m_pShowAtStartupCheck->isChecked();
-	if(m_pConfig)closeConfig();
+	if(m_pConfig)
+		closeConfig();
 }
 
 void TipWindow::showEvent(QShowEvent *)
 {
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-	move((rect.width() - width())/2,(rect.height() - height())/2);
+	move((rect.width() - width()) / 2, (rect.height() - height()) / 2);
 }
 
-bool TipWindow::openConfig(QString filename,bool bEnsureExists)
+bool TipWindow::openConfig(QString filename, bool bEnsureExists)
 {
-	if(m_pConfig)closeConfig();
+	if(m_pConfig)
+		closeConfig();
 
 	m_szConfigFileName = filename;
-//	m_szConfigFileName.cutToLast('/');
+	//	m_szConfigFileName.cutToLast('/');
 
 	QString buffer;
-	g_pApp->getReadOnlyConfigPath(buffer,m_szConfigFileName.toUtf8().data(),KviApplication::ConfigPlugins,true);
-	qDebug("Check path %s and file %s",buffer.toUtf8().data(),m_szConfigFileName.toUtf8().data());
+	g_pApp->getReadOnlyConfigPath(buffer, m_szConfigFileName.toUtf8().data(), KviApplication::ConfigPlugins, true);
+	qDebug("Check path %s and file %s", buffer.toUtf8().data(), m_szConfigFileName.toUtf8().data());
 	if(bEnsureExists)
 	{
-		if(!KviFileUtils::fileExists(buffer))return false;
+		if(!KviFileUtils::fileExists(buffer))
+			return false;
 	}
 
-	m_pConfig = new KviConfigurationFile(buffer,KviConfigurationFile::Read);
+	m_pConfig = new KviConfigurationFile(buffer, KviConfigurationFile::Read);
 
 	return true;
 }
@@ -142,7 +144,7 @@ bool TipWindow::openConfig(QString filename,bool bEnsureExists)
 void TipWindow::closeConfig()
 {
 	QString buffer;
-	g_pApp->getLocalKvircDirectory(buffer,KviApplication::ConfigPlugins,m_szConfigFileName);
+	g_pApp->getLocalKvircDirectory(buffer, KviApplication::ConfigPlugins, m_szConfigFileName);
 	m_pConfig->setSavePath(buffer);
 	delete m_pConfig;
 	m_pConfig = 0;
@@ -154,32 +156,33 @@ void TipWindow::nextTip()
 	{
 		KviCString szLocale = KviLocale::instance()->localeName();
 		KviCString szFile;
-		szFile.sprintf("libkvitip_%s.kvc",szLocale.ptr());
-		if(!openConfig(szFile.ptr(),true))
+		szFile.sprintf("libkvitip_%s.kvc", szLocale.ptr());
+		if(!openConfig(szFile.ptr(), true))
 		{
 			szLocale.cutFromFirst('.');
 			szLocale.cutFromFirst('_');
 			szLocale.cutFromFirst('@');
-			szFile.sprintf("libkvitip_%s.kvc",szLocale.ptr());
-			if(!openConfig(szFile.ptr(),true))
+			szFile.sprintf("libkvitip_%s.kvc", szLocale.ptr());
+			if(!openConfig(szFile.ptr(), true))
 			{
-				openConfig("libkvitip.kvc",false);
+				openConfig("libkvitip.kvc", false);
 			}
 		}
 	}
 
-	unsigned int uNumTips = m_pConfig->readUIntEntry("uNumTips",0);
-	unsigned int uCurTip = m_pConfig->readUIntEntry("uCurTip",0);
+	unsigned int uNumTips = m_pConfig->readUIntEntry("uNumTips", 0);
+	unsigned int uCurTip = m_pConfig->readUIntEntry("uCurTip", 0);
 
 	uCurTip++;
-	if(uCurTip >= uNumTips)uCurTip = 0;
+	if(uCurTip >= uNumTips)
+		uCurTip = 0;
 
-	KviCString tmp(KviCString::Format,"%u",uCurTip);
-	QString szTip = m_pConfig->readEntry(tmp.ptr(),__tr2qs("<b>Can't find any tip... :(</b>"));
+	KviCString tmp(KviCString::Format, "%u", uCurTip);
+	QString szTip = m_pConfig->readEntry(tmp.ptr(), __tr2qs("<b>Can't find any tip... :(</b>"));
 
 	//qDebug("REDECODED=%s",szTip.toUtf8().data());
 
-	m_pConfig->writeEntry("uCurTip",uCurTip);
+	m_pConfig->writeEntry("uCurTip", uCurTip);
 
 	m_pTipFrame->setText(szTip);
 }
@@ -190,33 +193,34 @@ void TipWindow::prevTip()
 	{
 		KviCString szLocale = KviLocale::instance()->localeName();
 		KviCString szFile;
-		szFile.sprintf("libkvitip_%s.kvc",szLocale.ptr());
-		if(!openConfig(szFile.ptr(),true))
+		szFile.sprintf("libkvitip_%s.kvc", szLocale.ptr());
+		if(!openConfig(szFile.ptr(), true))
 		{
 			szLocale.cutFromFirst('.');
 			szLocale.cutFromFirst('_');
 			szLocale.cutFromFirst('@');
-			szFile.sprintf("libkvitip_%s.kvc",szLocale.ptr());
-			if(!openConfig(szFile.ptr(),true))
+			szFile.sprintf("libkvitip_%s.kvc", szLocale.ptr());
+			if(!openConfig(szFile.ptr(), true))
 			{
-				openConfig("libkvitip.kvc",false);
+				openConfig("libkvitip.kvc", false);
 			}
 		}
 	}
 
-	unsigned int uNumTips = m_pConfig->readUIntEntry("uNumTips",0);
-	unsigned int uCurTip = m_pConfig->readUIntEntry("uCurTip",0);
+	unsigned int uNumTips = m_pConfig->readUIntEntry("uNumTips", 0);
+	unsigned int uCurTip = m_pConfig->readUIntEntry("uCurTip", 0);
 
+	if(uCurTip == 0)
+		uCurTip = uNumTips - 1;
+	else
+		uCurTip--;
 
-	if(uCurTip == 0)uCurTip = uNumTips-1;
-	else uCurTip--;
-
-	KviCString tmp(KviCString::Format,"%u",uCurTip);
-	QString szTip = m_pConfig->readEntry(tmp.ptr(),__tr2qs("<b>Can't find any tip... :(</b>"));
+	KviCString tmp(KviCString::Format, "%u", uCurTip);
+	QString szTip = m_pConfig->readEntry(tmp.ptr(), __tr2qs("<b>Can't find any tip... :(</b>"));
 
 	//qDebug("REDECODED=%s",szTip.toUtf8().data());
 
-	m_pConfig->writeEntry("uCurTip",uCurTip);
+	m_pConfig->writeEntry("uCurTip", uCurTip);
 
 	m_pTipFrame->setText(szTip);
 }
@@ -246,26 +250,28 @@ static bool tip_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	QString szTipfilename;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("filename",KVS_PT_STRING,KVS_PF_OPTIONAL,szTipfilename)
+	KVSM_PARAMETER("filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szTipfilename)
 	KVSM_PARAMETERS_END(c)
 
-	if(!g_pTipWindow)g_pTipWindow = new TipWindow();
-	if (!szTipfilename.isEmpty())
+	if(!g_pTipWindow)
+		g_pTipWindow = new TipWindow();
+	if(!szTipfilename.isEmpty())
 		g_pTipWindow->openConfig(szTipfilename);
 	g_pTipWindow->nextTip();
 	g_pTipWindow->show();
 	return true;
 }
 
-static bool tip_module_init(KviModule *m)
+static bool tip_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",tip_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", tip_kvs_cmd_open);
 	return true;
 }
 
 static bool tip_module_cleanup(KviModule *)
 {
-	if(g_pTipWindow)g_pTipWindow->close();
+	if(g_pTipWindow)
+		g_pTipWindow->close();
 	return true;
 }
 
@@ -275,13 +281,12 @@ static bool tip_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Tip",                                              // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"\"Did you know...\" tip",
-	tip_module_init,
-	tip_module_can_unload,
-	0,
-	tip_module_cleanup,
-	0
-)
+    "Tip",                                                          // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "\"Did you know...\" tip",
+    tip_module_init,
+    tip_module_can_unload,
+    0,
+    tip_module_cleanup,
+    0)

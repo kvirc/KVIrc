@@ -24,7 +24,6 @@
 //
 //=============================================================================
 
-
 #include "kvi_settings.h"
 #include "KviQString.h"
 #include "KviKvsTreeNodeSpecialCommand.h"
@@ -36,8 +35,9 @@ class KVIRC_API KviKvsTreeNodeSpecialCommandContinue : public KviKvsTreeNodeSpec
 public:
 	KviKvsTreeNodeSpecialCommandContinue(const QChar * pLocation);
 	~KviKvsTreeNodeSpecialCommandContinue();
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };

@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #define _KVI_ERROR_CPP_
 
 #include "KviLocale.h"
@@ -31,13 +30,13 @@
 #include "KviQString.h"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#include <winsock2.h> // for the WSAE* error codes
+#include <winsock2.h> // for the WSAE* error codes
 #endif
 
 #include <errno.h>
 
 #ifdef HAVE_STRERROR
-	#include <string.h> // for strerror()
+#include <string.h> // for strerror()
 #endif
 
 // FIXME: This stuff should basically die and be eventually replaced with some
@@ -45,77 +44,76 @@
 //
 // WARNING: getDescription() is not even thread safe... it will die in the near future
 
-const char * g_errorTable[KviError::ErrorCount]=
-{
-	__tr_no_lookup("Success"),                                                  // 000: success
-	__tr_no_lookup("Unknown error"),                                            // 001: unkonwnError
-	__tr_no_lookup("Internal error"),                                           // 002: internalError
-	__tr_no_lookup("Unknown command"),                                          // 003: unknownCommand
-	__tr_no_lookup("Missing closing brace"),                                    // 004: missingClosingBrace
-	__tr_no_lookup("Unexpected end of command in string"),                      // 005: unexpectedEndInString
-	__tr_no_lookup("Unexpected end of command in dictionary key"),              // 006: unexpectedEndInDictionaryKey
-	__tr_no_lookup("Switch dash without switch letter"),                        // 007: switchDashWithoutSwitchLetter
-	__tr_no_lookup("Unknown function"),                                         // 008: unknownFunction
-	__tr_no_lookup("Unexpected end of command in parenthesis"),                 // 009: unexpectedEndInParenthesis
-	__tr_no_lookup("Unexpected end of command in function parameters"),         // 010: unexpectedEndInFunctionParams
-	__tr_no_lookup("Missing variable name"),                                    // 011: missingVariableName
-	__tr_no_lookup("Variable or identifier expected"),                          // 012: variableOrIdentifierExpected
-	__tr_no_lookup("Left operand is not a number"),                             // 013: leftOperandIsNotANumber
-	__tr_no_lookup("Multiple operations not supported for numeric operators"),  // 014: multipleOpsNotSupportedForOperator
-	__tr_no_lookup("Division by zero"),                                         // 015: divisionByZero
-	__tr_no_lookup("Modulo by zero"),                                           // 016: moduloByZero
-	__tr_no_lookup("Right operand is not a number"),                            // 017: rightOperandIsNotANumber
-	__tr_no_lookup("Unterminated expression (missing ')' ?)"),                  // 018: unterminatedExpression
-	__tr_no_lookup("Unterminated subexpression (Parenthesis mismatch)"),        // 019: unterminatedSubexpression
-	__tr_no_lookup("Unexpected character"),                                     // 020: unexpectedCharacter
-	__tr_no_lookup("Unknown operator"),                                         // 021: unknownOperator
-	__tr_no_lookup("No host to resolve"),                                       // 022
-	__tr_no_lookup("(DNS internal) Unsupported address family"),                // 023
-	__tr_no_lookup("Valid name but the host has no IP address"),                // 024
-	__tr_no_lookup("Unrecoverable nameserver error (crashed?)"),                // 025
-	__tr_no_lookup("DNS temporary fault (try again)"),                          // 026
-	__tr_no_lookup("(DNS internal) Bad flags"),                                 // 027
-	__tr_no_lookup("(DNS internal) Out of memory"),                             // 028
-	__tr_no_lookup("(DNS internal) Service not supported"),                     // 029
-	__tr_no_lookup("Unknown node (host not found)"),                            // 030
-	__tr_no_lookup("(DNS internal) Unsupported socket type"),                   // 031
-	__tr_no_lookup("DNS query failed"),                                         // 032
-	__tr_no_lookup("This KVIrc executable has no IPv6 support"),                // 033
-	__tr_no_lookup("Host not found"),                                           // 034
-	__tr_no_lookup("(DNS internal) IPC failure (slave data corrupted)"),        // 035
-	__tr_no_lookup("Another connection is in progress"),                        // 036
-	__tr_no_lookup("Invalid IP address"),                                       // 037
-	__tr_no_lookup("Socket creation failed"),                                   // 038
-	__tr_no_lookup("Failed to put the socket in non blocking mode"),            // 039
-	__tr_no_lookup("Bad file descriptor"),                                      // 040
-	__tr_no_lookup("Out of address space"),                                     // 041
-	__tr_no_lookup("Connection refused"),                                       // 042
-	__tr_no_lookup("Kernel networking panic"),                                  // 043
-	__tr_no_lookup("Connection timed out"),                                     // 044
-	__tr_no_lookup("Network is unreachable"),                                   // 045
-	__tr_no_lookup("Broken pipe"),                                              // 046
-	__tr_no_lookup("Invalid proxy address"),                                    // 047
-	__tr_no_lookup("Remote end has closed the connection"),                     // 048
-	__tr_no_lookup("Invalid IRC context ID"),                                   // 049
-	__tr_no_lookup("Error loading module"),                                     // 050
-	__tr_no_lookup("No such module command"),                                   // 051
-	__tr_no_lookup("No such module function"),                                  // 052
-	__tr_no_lookup("Left operand is not a dictionary reference"),               // 053
-	__tr_no_lookup("Right operand is not a dictionary reference"),              // 054
-	__tr_no_lookup("Missing object class name"),                                // 055
-	__tr_no_lookup("No such object class"),                                     // 056
-	__tr_no_lookup("No such object"),                                           // 057
-	__tr_no_lookup("No such object function"),                                  // 058
-	__tr_no_lookup("Invalid left operand"),                                     // 059
-	__tr_no_lookup("Not enough parameters"),                                    // 060
-	__tr_no_lookup("Integer parameter expected"),                               // 061
-	__tr_no_lookup("Invalid parameter"),                                        // 062
-	__tr_no_lookup("No such file"),                                             // 063
-	__tr_no_lookup("Open parenthesis expected"),                                // 064
-	__tr_no_lookup("Open brace expected"),                                      // 065
-	__tr_no_lookup("Can't kill a builtin class"),                               // 066
-	__tr_no_lookup("The SOCKSv4 protocol lacks IPv6 support"),                  // 067
-	__tr_no_lookup("Unrecognized proxy reply"),                                 // 068
+const char * g_errorTable[KviError::ErrorCount] = {
+	__tr_no_lookup("Success"),                                                 // 000: success
+	__tr_no_lookup("Unknown error"),                                           // 001: unkonwnError
+	__tr_no_lookup("Internal error"),                                          // 002: internalError
+	__tr_no_lookup("Unknown command"),                                         // 003: unknownCommand
+	__tr_no_lookup("Missing closing brace"),                                   // 004: missingClosingBrace
+	__tr_no_lookup("Unexpected end of command in string"),                     // 005: unexpectedEndInString
+	__tr_no_lookup("Unexpected end of command in dictionary key"),             // 006: unexpectedEndInDictionaryKey
+	__tr_no_lookup("Switch dash without switch letter"),                       // 007: switchDashWithoutSwitchLetter
+	__tr_no_lookup("Unknown function"),                                        // 008: unknownFunction
+	__tr_no_lookup("Unexpected end of command in parenthesis"),                // 009: unexpectedEndInParenthesis
+	__tr_no_lookup("Unexpected end of command in function parameters"),        // 010: unexpectedEndInFunctionParams
+	__tr_no_lookup("Missing variable name"),                                   // 011: missingVariableName
+	__tr_no_lookup("Variable or identifier expected"),                         // 012: variableOrIdentifierExpected
+	__tr_no_lookup("Left operand is not a number"),                            // 013: leftOperandIsNotANumber
+	__tr_no_lookup("Multiple operations not supported for numeric operators"), // 014: multipleOpsNotSupportedForOperator
+	__tr_no_lookup("Division by zero"),                                        // 015: divisionByZero
+	__tr_no_lookup("Modulo by zero"),                                          // 016: moduloByZero
+	__tr_no_lookup("Right operand is not a number"),                           // 017: rightOperandIsNotANumber
+	__tr_no_lookup("Unterminated expression (missing ')' ?)"),                 // 018: unterminatedExpression
+	__tr_no_lookup("Unterminated subexpression (Parenthesis mismatch)"),       // 019: unterminatedSubexpression
+	__tr_no_lookup("Unexpected character"),                                    // 020: unexpectedCharacter
+	__tr_no_lookup("Unknown operator"),                                        // 021: unknownOperator
+	__tr_no_lookup("No host to resolve"),                                      // 022
+	__tr_no_lookup("(DNS internal) Unsupported address family"),               // 023
+	__tr_no_lookup("Valid name but the host has no IP address"),               // 024
+	__tr_no_lookup("Unrecoverable nameserver error (crashed?)"),               // 025
+	__tr_no_lookup("DNS temporary fault (try again)"),                         // 026
+	__tr_no_lookup("(DNS internal) Bad flags"),                                // 027
+	__tr_no_lookup("(DNS internal) Out of memory"),                            // 028
+	__tr_no_lookup("(DNS internal) Service not supported"),                    // 029
+	__tr_no_lookup("Unknown node (host not found)"),                           // 030
+	__tr_no_lookup("(DNS internal) Unsupported socket type"),                  // 031
+	__tr_no_lookup("DNS query failed"),                                        // 032
+	__tr_no_lookup("This KVIrc executable has no IPv6 support"),               // 033
+	__tr_no_lookup("Host not found"),                                          // 034
+	__tr_no_lookup("(DNS internal) IPC failure (slave data corrupted)"),       // 035
+	__tr_no_lookup("Another connection is in progress"),                       // 036
+	__tr_no_lookup("Invalid IP address"),                                      // 037
+	__tr_no_lookup("Socket creation failed"),                                  // 038
+	__tr_no_lookup("Failed to put the socket in non blocking mode"),           // 039
+	__tr_no_lookup("Bad file descriptor"),                                     // 040
+	__tr_no_lookup("Out of address space"),                                    // 041
+	__tr_no_lookup("Connection refused"),                                      // 042
+	__tr_no_lookup("Kernel networking panic"),                                 // 043
+	__tr_no_lookup("Connection timed out"),                                    // 044
+	__tr_no_lookup("Network is unreachable"),                                  // 045
+	__tr_no_lookup("Broken pipe"),                                             // 046
+	__tr_no_lookup("Invalid proxy address"),                                   // 047
+	__tr_no_lookup("Remote end has closed the connection"),                    // 048
+	__tr_no_lookup("Invalid IRC context ID"),                                  // 049
+	__tr_no_lookup("Error loading module"),                                    // 050
+	__tr_no_lookup("No such module command"),                                  // 051
+	__tr_no_lookup("No such module function"),                                 // 052
+	__tr_no_lookup("Left operand is not a dictionary reference"),              // 053
+	__tr_no_lookup("Right operand is not a dictionary reference"),             // 054
+	__tr_no_lookup("Missing object class name"),                               // 055
+	__tr_no_lookup("No such object class"),                                    // 056
+	__tr_no_lookup("No such object"),                                          // 057
+	__tr_no_lookup("No such object function"),                                 // 058
+	__tr_no_lookup("Invalid left operand"),                                    // 059
+	__tr_no_lookup("Not enough parameters"),                                   // 060
+	__tr_no_lookup("Integer parameter expected"),                              // 061
+	__tr_no_lookup("Invalid parameter"),                                       // 062
+	__tr_no_lookup("No such file"),                                            // 063
+	__tr_no_lookup("Open parenthesis expected"),                               // 064
+	__tr_no_lookup("Open brace expected"),                                     // 065
+	__tr_no_lookup("Can't kill a builtin class"),                              // 066
+	__tr_no_lookup("The SOCKSv4 protocol lacks IPv6 support"),                 // 067
+	__tr_no_lookup("Unrecognized proxy reply"),                                // 068
 	__tr_no_lookup("Proxy response: auth failed: access denied"),
 	__tr_no_lookup("Proxy response: no acceptable auth method: request rejected"),
 	__tr_no_lookup("Proxy response: request failed"),
@@ -192,43 +190,97 @@ namespace KviError
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		switch(iErrNo)
 		{
-			case EBADF:            return KviError::BadFileDescriptor;          break;
+			case EBADF:
+				return KviError::BadFileDescriptor;
+				break;
 			case WSAEINVAL:
 			case WSAEFAULT:
-			case EFAULT:           return KviError::OutOfAddressSpace;          break;
-			case WSAECONNREFUSED:  return KviError::ConnectionRefused;          break;
-			case WSAENOTSOCK:      return KviError::KernelNetworkingPanic;      break;
-			case WSAETIMEDOUT:     return KviError::ConnectionTimedOut;         break;
-			case WSAENETUNREACH:   return KviError::NetworkUnreachable;         break;
-			case EPIPE:            return KviError::BrokenPipe;                 break;
-			case WSAENOTCONN:      return KviError::SocketNotConnected;         break;
-			case WSAEACCES:        return KviError::AccessDenied;               break;
-			case WSAEADDRINUSE:    return KviError::AddressAlreadyInUse;        break;
-			case WSAEADDRNOTAVAIL: return KviError::CantAssignRequestedAddress; break;
-			case WSAEAFNOSUPPORT:  return KviError::UnsupportedAddressFamily;   break;
-			case WSAECONNRESET:    return KviError::ConnectionResetByPeer;      break;
-			case WSAEHOSTUNREACH:  return KviError::HostUnreachable;            break;
+			case EFAULT:
+				return KviError::OutOfAddressSpace;
+				break;
+			case WSAECONNREFUSED:
+				return KviError::ConnectionRefused;
+				break;
+			case WSAENOTSOCK:
+				return KviError::KernelNetworkingPanic;
+				break;
+			case WSAETIMEDOUT:
+				return KviError::ConnectionTimedOut;
+				break;
+			case WSAENETUNREACH:
+				return KviError::NetworkUnreachable;
+				break;
+			case EPIPE:
+				return KviError::BrokenPipe;
+				break;
+			case WSAENOTCONN:
+				return KviError::SocketNotConnected;
+				break;
+			case WSAEACCES:
+				return KviError::AccessDenied;
+				break;
+			case WSAEADDRINUSE:
+				return KviError::AddressAlreadyInUse;
+				break;
+			case WSAEADDRNOTAVAIL:
+				return KviError::CantAssignRequestedAddress;
+				break;
+			case WSAEAFNOSUPPORT:
+				return KviError::UnsupportedAddressFamily;
+				break;
+			case WSAECONNRESET:
+				return KviError::ConnectionResetByPeer;
+				break;
+			case WSAEHOSTUNREACH:
+				return KviError::HostUnreachable;
+				break;
 
 			//case ENOBUFS:          return KviError::InsufficientResources;      break;
 			// Unhandled error...pass errno to the strerror function
-			default:              return KviError::UnknownError;                break;
+			default:
+				return KviError::UnknownError;
+				break;
 		}
 #else
 		switch(iErrNo)
 		{
-			case EBADF:        return KviError::BadFileDescriptor;     break;
-			case EFAULT:       return KviError::OutOfAddressSpace;     break;
-			case ECONNREFUSED: return KviError::ConnectionRefused;     break;
-			case ENOTSOCK:     return KviError::KernelNetworkingPanic; break;
-			case ETIMEDOUT:    return KviError::ConnectionTimedOut;    break;
-			case ENETUNREACH:  return KviError::NetworkUnreachable;    break;
-			case EPIPE:        return KviError::BrokenPipe;            break;
-			case ENOTCONN:     return KviError::SocketNotConnected;    break;
-			case ENOBUFS:      return KviError::InsufficientResources; break;
-			case ECONNRESET:   return KviError::ConnectionResetByPeer; break;
-			case EHOSTUNREACH: return KviError::HostUnreachable;       break;
+			case EBADF:
+				return KviError::BadFileDescriptor;
+				break;
+			case EFAULT:
+				return KviError::OutOfAddressSpace;
+				break;
+			case ECONNREFUSED:
+				return KviError::ConnectionRefused;
+				break;
+			case ENOTSOCK:
+				return KviError::KernelNetworkingPanic;
+				break;
+			case ETIMEDOUT:
+				return KviError::ConnectionTimedOut;
+				break;
+			case ENETUNREACH:
+				return KviError::NetworkUnreachable;
+				break;
+			case EPIPE:
+				return KviError::BrokenPipe;
+				break;
+			case ENOTCONN:
+				return KviError::SocketNotConnected;
+				break;
+			case ENOBUFS:
+				return KviError::InsufficientResources;
+				break;
+			case ECONNRESET:
+				return KviError::ConnectionResetByPeer;
+				break;
+			case EHOSTUNREACH:
+				return KviError::HostUnreachable;
+				break;
 			// Unhandled error...pass errno to the strerror function
-			default:           return KviError::UnknownError;          break;
+			default:
+				return KviError::UnknownError;
+				break;
 		}
 #endif
 	}

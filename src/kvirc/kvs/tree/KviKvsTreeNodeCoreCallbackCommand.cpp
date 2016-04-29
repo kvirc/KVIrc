@@ -28,9 +28,8 @@
 #include "KviKvsScript.h"
 #include "KviKvsRunTimeContext.h"
 
-
-KviKvsTreeNodeCoreCallbackCommand::KviKvsTreeNodeCoreCallbackCommand(const QChar * pLocation,const QString &szCmdName,KviKvsTreeNodeDataList * params,KviKvsCoreCallbackCommandExecRoutine * r,KviKvsScript * pCallback)
-: KviKvsTreeNodeCallbackCommand(pLocation,szCmdName,params,pCallback)
+KviKvsTreeNodeCoreCallbackCommand::KviKvsTreeNodeCoreCallbackCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params, KviKvsCoreCallbackCommandExecRoutine * r, KviKvsScript * pCallback)
+    : KviKvsTreeNodeCallbackCommand(pLocation, szCmdName, params, pCallback)
 {
 	m_pExecRoutine = r;
 }
@@ -39,14 +38,14 @@ KviKvsTreeNodeCoreCallbackCommand::~KviKvsTreeNodeCoreCallbackCommand()
 {
 }
 
-void KviKvsTreeNodeCoreCallbackCommand::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeCoreCallbackCommand::contextDescription(QString & szBuffer)
 {
 	szBuffer = QString("Core Callback Command \"%1\"").arg(m_szCmdName);
 }
 
 void KviKvsTreeNodeCoreCallbackCommand::dump(const char * prefix)
 {
-	qDebug("%s CoreCallbackCommand(%s)",prefix,m_szCmdName.toUtf8().data());
+	qDebug("%s CoreCallbackCommand(%s)", prefix, m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 	dumpCallback(prefix);
@@ -56,15 +55,17 @@ bool KviKvsTreeNodeCoreCallbackCommand::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariantList l;
 	l.setAutoDelete(true);
-	if(!(m_pParams->evaluate(c,&l)))return false;
+	if(!(m_pParams->evaluate(c, &l)))
+		return false;
 
 	KviKvsSwitchList swl;
 	if(m_pSwitches)
 	{
-		if(!(m_pSwitches->evaluate(c,&swl)))return false;
+		if(!(m_pSwitches->evaluate(c, &swl)))
+			return false;
 	}
 
 	c->setDefaultReportLocation(this);
 
-	return m_pExecRoutine->proc(c,&l,&swl,m_pCallback);
+	return m_pExecRoutine->proc(c, &l, &swl, m_pCallback);
 }

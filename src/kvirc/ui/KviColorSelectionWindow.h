@@ -52,9 +52,11 @@ public:
 	* \brief Destroys the mirc color window object
 	*/
 	~KviColorWindow();
+
 private:
 	QWidget * m_pOwner;
-	int       m_iTimerId;
+	int m_iTimerId;
+
 public:
 	/**
 	* \brief Popups the color window
@@ -62,6 +64,7 @@ public:
 	* \return void
 	*/
 	void popup(QWidget * pOwner);
+
 private:
 	virtual void show();
 	virtual void paintEvent(QPaintEvent * e);

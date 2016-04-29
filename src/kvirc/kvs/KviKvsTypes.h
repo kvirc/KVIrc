@@ -34,5 +34,4 @@ typedef kvi_i64_t kvs_int_t;
 typedef kvi_u64_t kvs_uint_t;
 typedef double kvs_real_t;
 
-
 #endif //!_KVI_KVS_TYPES_H_

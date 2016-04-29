@@ -70,22 +70,22 @@
 #include <qdrawutil.h> // qDrawShadePanel
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#include <windows.h>
+#include <windows.h>
 #endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
 // from KviApplication.cpp
 extern QMenu * g_pInputPopup;
-extern KviTextIconWindow       * g_pTextIconWindow;
-extern KviColorWindow          * g_pColorWindow;
+extern KviTextIconWindow * g_pTextIconWindow;
+extern KviColorWindow * g_pColorWindow;
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	extern QPixmap       * g_pShadedChildGlobalDesktopBackground;
+extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
 //static members initialization
-int            KviInputEditor::g_iInputInstances = 0;
+int KviInputEditor::g_iInputInstances = 0;
 QFontMetricsF * KviInputEditor::g_pLastFontMetrics = 0;
-int            KviInputEditor::g_iCachedHeight = 0;
+int KviInputEditor::g_iCachedHeight = 0;
 
 #define KVI_INPUT_MAX_UNDO_SIZE 256
 
@@ -100,6 +100,7 @@ public:
 		IsSpellingMistake = 8,
 		IsSelected = 16
 	};
+
 public:
 	QString szText;
 	qreal fWidth;
@@ -107,14 +108,15 @@ public:
 	unsigned int uFlags;
 	unsigned char uForeground;
 	unsigned char uBackground;
+
 public:
-	KviInputEditorTextBlock(const QChar * p,int len)
-		: szText(p,len)
+	KviInputEditorTextBlock(const QChar * p, int len)
+	    : szText(p, len)
 	{
 	}
 
-	KviInputEditorTextBlock(const QString &text)
-		: szText(text)
+	KviInputEditorTextBlock(const QString & text)
+	    : szText(text)
 	{
 	}
 };
@@ -130,7 +132,7 @@ public:
 };
 
 KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView * pView)
-	: QWidget(pPar)
+    : QWidget(pPar)
 {
 	m_p = new KviInputEditorPrivate();
 	m_p->bTextBlocksDirty = true;
@@ -140,48 +142,48 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	g_iInputInstances++;
 	setObjectName("input_widget");
 
-	m_pIconMenu            = 0;
-	m_pInputParent         = pPar;
-	m_iMaxBufferSize       = KVI_INPUT_MAX_BUFFER_SIZE;
-	m_iCursorPosition      = 0;                             //Index of the char AFTER the cursor
-	m_iSelectionBegin      = -1;                            //Index of the first char in the selection
-	m_iSelectionEnd        = -1;                            //Index of the last char in the selection
-	m_bIMComposing         = false;                         //Whether the input method is active (composing).
+	m_pIconMenu = 0;
+	m_pInputParent = pPar;
+	m_iMaxBufferSize = KVI_INPUT_MAX_BUFFER_SIZE;
+	m_iCursorPosition = 0;  //Index of the char AFTER the cursor
+	m_iSelectionBegin = -1; //Index of the first char in the selection
+	m_iSelectionEnd = -1;   //Index of the last char in the selection
+	m_bIMComposing = false; //Whether the input method is active (composing).
 	// for input method support
-	m_iIMStart             = 0;                             //Index of the start of the preedit string.
-	m_iIMLength            = 0;                             //Length of the preedit string.
-	m_iIMSelectionBegin    = 0;                             //Index of the start of the selection in preedit string.
-	m_iIMSelectionLength   = 0;                             //Length of the selection in preedit string.
+	m_iIMStart = 0;           //Index of the start of the preedit string.
+	m_iIMLength = 0;          //Length of the preedit string.
+	m_iIMSelectionBegin = 0;  //Index of the start of the selection in preedit string.
+	m_iIMSelectionLength = 0; //Length of the selection in preedit string.
 	m_p->bTextBlocksDirty = true;
 
-	m_bCursorOn            = false;                         //Cursor state
-	m_iCursorTimer         = 0;                             //Timer that inverts the cursor state
-	m_iDragTimer           = 0;                             //Timer for drag selection updates
-	m_iSelectionAnchorChar = -1;                            //Character clicked at the beginning of the selection process
-	m_iCurHistoryIdx       = -1;                            //No data in the history
-	m_bUpdatesEnabled      = true;
-	m_pKviWindow           = pWnd;
-	m_pUserListView        = pView;
-	m_pHistory             = new KviPointerList<QString>;
+	m_bCursorOn = false;         //Cursor state
+	m_iCursorTimer = 0;          //Timer that inverts the cursor state
+	m_iDragTimer = 0;            //Timer for drag selection updates
+	m_iSelectionAnchorChar = -1; //Character clicked at the beginning of the selection process
+	m_iCurHistoryIdx = -1;       //No data in the history
+	m_bUpdatesEnabled = true;
+	m_pKviWindow = pWnd;
+	m_pUserListView = pView;
+	m_pHistory = new KviPointerList<QString>;
 	m_pHistory->setAutoDelete(true);
-	m_bReadOnly            = false;
+	m_bReadOnly = false;
 
 	m_pUndoStack = NULL;
 	m_pRedoStack = NULL;
 
-	setAttribute(Qt::WA_InputMethodEnabled,true);
+	setAttribute(Qt::WA_InputMethodEnabled, true);
 
 	setAutoFillBackground(false);
 
 	setFocusPolicy(Qt::StrongFocus);
 	setAcceptDrops(true);
 
-    m_pIconMenu = new QMenu();
-    connect(m_pIconMenu,SIGNAL(triggered(QAction*)),this,SLOT(iconPopupActivated(QAction *)));
+	m_pIconMenu = new QMenu();
+	connect(m_pIconMenu, SIGNAL(triggered(QAction *)), this, SLOT(iconPopupActivated(QAction *)));
 
 	setCursor(Qt::IBeamCursor);
 
-	setContentsMargins(KVI_INPUT_MARGIN,KVI_INPUT_MARGIN,KVI_INPUT_MARGIN,KVI_INPUT_MARGIN);
+	setContentsMargins(KVI_INPUT_MARGIN, KVI_INPUT_MARGIN, KVI_INPUT_MARGIN, KVI_INPUT_MARGIN);
 	setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
 
 	//set the font and font metrics; only the first inputeditor refresh the cached font metrics
@@ -193,7 +195,7 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 KviInputEditor::~KviInputEditor()
 {
 	--g_iInputInstances;
-	if(g_iInputInstances==0 && g_pLastFontMetrics)
+	if(g_iInputInstances == 0 && g_pLastFontMetrics)
 	{
 		//last instance, delete shared resources
 		delete g_pLastFontMetrics;
@@ -227,10 +229,12 @@ void KviInputEditor::applyOptions(bool bRefreshCachedMetrics)
 	setFont(newFont);
 
 	//set cursor custom width
-	if (KVI_OPTION_BOOL(KviOption_boolEnableCustomCursorWidth))
+	if(KVI_OPTION_BOOL(KviOption_boolEnableCustomCursorWidth))
 	{
 		m_iCursorWidth = KVI_OPTION_UINT(KviOption_uintCustomCursorWidth);
-	} else {
+	}
+	else
+	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		SystemParametersInfo(SPI_GETCARETWIDTH, 0, &m_iCursorWidth, 0);
 #else //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
@@ -269,18 +273,20 @@ void KviInputEditor::dropEvent(QDropEvent * e)
 	if(list.isEmpty())
 		return;
 
-	for(QList<QUrl>::Iterator it = list.begin();it != list.end();++it)
+	for(QList<QUrl>::Iterator it = list.begin(); it != list.end(); ++it)
 	{
 		QUrl url = *it;
 		QString szPath = url.toLocalFile();
-		if(szPath.endsWith(KVI_FILEEXTENSION_SCRIPT,Qt::CaseInsensitive))
+		if(szPath.endsWith(KVI_FILEEXTENSION_SCRIPT, Qt::CaseInsensitive))
 		{
 			//script, parse it
 			KviQString::escapeKvs(&szPath, KviQString::EscapeSpace);
 			szPath.prepend("PARSE ");
 			if(m_pKviWindow)
-				KviKvsScript::run(szPath,m_pKviWindow);
-		} else {
+				KviKvsScript::run(szPath, m_pKviWindow);
+		}
+		else
+		{
 			//other file, paste link
 			szPath.append(" ");
 			insertText(szPath);
@@ -299,7 +305,7 @@ QFontMetricsF * KviInputEditor::getLastFontMetrics(const QFont & font)
 
 	//height calculation
 
-	int h = qMax(g_pLastFontMetrics->height(), 14.0) + 2*(KVI_INPUT_MARGIN + KVI_INPUT_XTRAPADDING);
+	int h = qMax(g_pLastFontMetrics->height(), 14.0) + 2 * (KVI_INPUT_MARGIN + KVI_INPUT_XTRAPADDING);
 	int w = 100;
 	QStyleOptionFrameV2 option;
 	option.initFrom(this);
@@ -310,8 +316,7 @@ QFontMetricsF * KviInputEditor::getLastFontMetrics(const QFont & font)
 	option.state |= QStyle::State_Sunken;
 	option.features = QStyleOptionFrameV2::None;
 
-	QSize dummySize = style()->sizeFromContents(QStyle::CT_LineEdit, &option, QSize(w, h).
-			expandedTo(QApplication::globalStrut()), this);
+	QSize dummySize = style()->sizeFromContents(QStyle::CT_LineEdit, &option, QSize(w, h).expandedTo(QApplication::globalStrut()), this);
 
 	g_iCachedHeight = dummySize.height();
 	return g_pLastFontMetrics;
@@ -322,7 +327,7 @@ int KviInputEditor::heightHint() const
 	return g_iCachedHeight;
 }
 
-bool KviInputEditor::checkWordSpelling(const QString &szWord)
+bool KviInputEditor::checkWordSpelling(const QString & szWord)
 {
 #ifdef COMPILE_ENCHANT_SUPPORT
 	if(szWord.isEmpty())
@@ -348,18 +353,19 @@ bool KviInputEditor::checkWordSpelling(const QString &szWord)
 #endif
 }
 
-#define  ADD_SPELLCHECKER_BLOCK(_lBuffer,_szText,_iStart,_bSpellCheckable,_bCorrect) \
-	do { \
+#define ADD_SPELLCHECKER_BLOCK(_lBuffer, _szText, _iStart, _bSpellCheckable, _bCorrect)   \
+	do                                                                                    \
+	{                                                                                     \
 		KviInputEditorSpellCheckerBlock * pBlock = new KviInputEditorSpellCheckerBlock(); \
-		pBlock->szText = _szText; \
-		pBlock->iStart = _iStart; \
-		pBlock->iLength = pBlock->szText.length(); \
-		pBlock->bSpellCheckable = _bSpellCheckable; \
-		pBlock->bCorrect = _bCorrect; \
-		_lBuffer.append(pBlock); \
+		pBlock->szText = _szText;                                                         \
+		pBlock->iStart = _iStart;                                                         \
+		pBlock->iLength = pBlock->szText.length();                                        \
+		pBlock->bSpellCheckable = _bSpellCheckable;                                       \
+		pBlock->bCorrect = _bCorrect;                                                     \
+		_lBuffer.append(pBlock);                                                          \
 	} while(0)
 
-void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPointerList<KviInputEditorSpellCheckerBlock> &lBuffer)
+void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, KviPointerList<KviInputEditorSpellCheckerBlock> & lBuffer)
 {
 #ifdef COMPILE_ENCHANT_SUPPORT
 	if(szText.isEmpty())
@@ -378,7 +384,7 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPo
 	}
 
 	if(p > pBufferBegin)
-		ADD_SPELLCHECKER_BLOCK(lBuffer,QString(pBufferBegin,p-pBufferBegin),0,false,false);
+		ADD_SPELLCHECKER_BLOCK(lBuffer, QString(pBufferBegin, p - pBufferBegin), 0, false, false);
 
 	// check if the buffer starts with a command
 	if((p < e) && (p->unicode() == '/'))
@@ -407,7 +413,7 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPo
 
 		if(p > pCommandWordBegin)
 		{
-			QString szCommand = QString(pCommandWordBegin,p - pCommandWordBegin).toLower();
+			QString szCommand = QString(pCommandWordBegin, p - pCommandWordBegin).toLower();
 
 			// common commands that may be spellcheckable
 			static QString szMe("me");
@@ -417,21 +423,15 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPo
 			static QString szQuit("quit");
 
 			if(
-					(szCommand != szMe) &&
-					(szCommand != szMsg) &&
-					(szCommand != szSay) &&
-					(szCommand != szPart) &&
-					(szCommand != szQuit)
-				)
+			    (szCommand != szMe) && (szCommand != szMsg) && (szCommand != szSay) && (szCommand != szPart) && (szCommand != szQuit))
 			{
 				// the command parameters usually have no spellcheckable text
-				ADD_SPELLCHECKER_BLOCK(lBuffer,QString(pCommandBlockBegin,e-pCommandBlockBegin),0,false,false);
+				ADD_SPELLCHECKER_BLOCK(lBuffer, QString(pCommandBlockBegin, e - pCommandBlockBegin), 0, false, false);
 				return;
 			}
-
 		}
 
-		ADD_SPELLCHECKER_BLOCK(lBuffer,QString(pCommandBlockBegin,p-pCommandBlockBegin),pCommandBlockBegin - pBufferBegin,false,false);
+		ADD_SPELLCHECKER_BLOCK(lBuffer, QString(pCommandBlockBegin, p - pCommandBlockBegin), pCommandBlockBegin - pBufferBegin, false, false);
 	}
 
 	const QChar * pNonWordBegin = NULL;
@@ -451,47 +451,53 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPo
 					// a word starts here
 					if(pNonWordBegin)
 					{
-						ADD_SPELLCHECKER_BLOCK(lBuffer,QString(pNonWordBegin,p - pNonWordBegin),pNonWordBegin - pBufferBegin,false,false);
+						ADD_SPELLCHECKER_BLOCK(lBuffer, QString(pNonWordBegin, p - pNonWordBegin), pNonWordBegin - pBufferBegin, false, false);
 						pNonWordBegin = NULL;
 					}
 					pWordBegin = p;
-				} else {
+				}
+				else
+				{
 					// we're already in a word, go on
 				}
-			break;
+				break;
 			case QChar::Number_DecimalDigit:
 			case QChar::Number_Letter:
 			case QChar::Number_Other:
 				if(!pWordBegin && !pNonWordBegin)
 					pNonWordBegin = p; // start a non-word
-				// else just go ahead keeping current state
-			break;
+				                       // else just go ahead keeping current state
+				break;
 			default:
 				if(!pNonWordBegin)
 				{
 					if(p->unicode() == '\'')
 					{
 						// special case for the ' character which can be part of a word in many languages
-						if(!pWordBegin) // word not started
+						if(!pWordBegin)        // word not started
 							pNonWordBegin = p; // then start a nonwod
-						// else keep current state
-					} else {
+						                       // else keep current state
+					}
+					else
+					{
 						if(pWordBegin)
 						{
 							// a word to spellcheck
-							if((p-1)->unicode() == '\'') // exclude the trailing ' from the word
-								p--; // go back one char, so it will become a non-word
+							if((p - 1)->unicode() == '\'') // exclude the trailing ' from the word
+								p--;                       // go back one char, so it will become a non-word
 
-							QString szWord(pWordBegin,p - pWordBegin);
-							ADD_SPELLCHECKER_BLOCK(lBuffer,szWord,pWordBegin - pBufferBegin,true,checkWordSpelling(szWord));
+							QString szWord(pWordBegin, p - pWordBegin);
+							ADD_SPELLCHECKER_BLOCK(lBuffer, szWord, pWordBegin - pBufferBegin, true, checkWordSpelling(szWord));
 							pWordBegin = NULL;
 						}
 						pNonWordBegin = p;
 					}
-				} else {
+				}
+				else
+				{
 					// already in a non-word
 				}
-			break;
+				break;
 		}
 
 		p++;
@@ -500,16 +506,16 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString &szText,KviPo
 	if(pWordBegin)
 	{
 		// last word to spellcheck
-		QString szWord(pWordBegin,p - pWordBegin);
-		ADD_SPELLCHECKER_BLOCK(lBuffer,szWord,pWordBegin - pBufferBegin,true,checkWordSpelling(szWord));
-	} else if(pNonWordBegin)
+		QString szWord(pWordBegin, p - pWordBegin);
+		ADD_SPELLCHECKER_BLOCK(lBuffer, szWord, pWordBegin - pBufferBegin, true, checkWordSpelling(szWord));
+	}
+	else if(pNonWordBegin)
 	{
 		// last non-word
-		ADD_SPELLCHECKER_BLOCK(lBuffer,QString(pNonWordBegin,p - pNonWordBegin),pNonWordBegin - pBufferBegin,false,false);
+		ADD_SPELLCHECKER_BLOCK(lBuffer, QString(pNonWordBegin, p - pNonWordBegin), pNonWordBegin - pBufferBegin, false, false);
 	}
 #endif
 }
-
 
 void KviInputEditor::rebuildTextBlocks()
 {
@@ -520,29 +526,19 @@ void KviInputEditor::rebuildTextBlocks()
 	lSpellCheckerBlocks.setAutoDelete(true);
 
 #ifdef COMPILE_ENCHANT_SUPPORT
-	splitTextIntoSpellCheckerBlocks(m_szTextBuffer,lSpellCheckerBlocks);
+	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lSpellCheckerBlocks);
 #else
-	ADD_SPELLCHECKER_BLOCK(lSpellCheckerBlocks,m_szTextBuffer,0,false,true);
+	ADD_SPELLCHECKER_BLOCK(lSpellCheckerBlocks, m_szTextBuffer, 0, false, true);
 #endif
 
 	m_p->bTextBlocksDirty = false;
 
 	if(lSpellCheckerBlocks.isEmpty()) // should never happen, but well...
-		return; // nothing to do
+		return;                       // nothing to do
 
 #define NOT_CONTROL_CHAR() \
-		( \
-			(c > 32) || \
-			( \
-				(c != KviControlCodes::Color) && \
-				(c != KviControlCodes::Bold) && \
-				(c != KviControlCodes::Underline) && \
-				(c != KviControlCodes::Reset) && \
-				(c != KviControlCodes::Reverse) && \
-				(c != KviControlCodes::CryptEscape) && \
-				(c != KviControlCodes::Icon) \
-			) \
-		)
+	(                      \
+	    (c > 32) || ((c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::CryptEscape) && (c != KviControlCodes::Icon)))
 
 	// FIXME: get rid of getLastFontMetrics() ?
 	QFontMetricsF * fm = getLastFontMetrics(font());
@@ -553,7 +549,7 @@ void KviInputEditor::rebuildTextBlocks()
 
 	KviInputEditorTextBlock * pBlock;
 
-	for(KviInputEditorSpellCheckerBlock * spb = lSpellCheckerBlocks.first();spb;spb = lSpellCheckerBlocks.next())
+	for(KviInputEditorSpellCheckerBlock * spb = lSpellCheckerBlocks.first(); spb; spb = lSpellCheckerBlocks.next())
 	{
 		if(spb->bSpellCheckable && !spb->bCorrect)
 			uFlags |= KviInputEditorTextBlock::IsSpellingMistake;
@@ -580,7 +576,7 @@ void KviInputEditor::rebuildTextBlocks()
 					p++;
 				}
 
-				pBlock = new KviInputEditorTextBlock(b,p-b);
+				pBlock = new KviInputEditorTextBlock(b, p - b);
 				pBlock->uForeground = uCurFore;
 				pBlock->uBackground = uCurBack;
 				pBlock->uFlags = uFlags;
@@ -599,18 +595,18 @@ void KviInputEditor::rebuildTextBlocks()
 						uFlags &= ~KviInputEditorTextBlock::IsBold;
 					else
 						uFlags |= KviInputEditorTextBlock::IsBold;
-				break;
+					break;
 				case KviControlCodes::Underline:
 					if(uFlags & KviInputEditorTextBlock::IsUnderline)
 						uFlags &= ~KviInputEditorTextBlock::IsUnderline;
 					else
 						uFlags |= KviInputEditorTextBlock::IsUnderline;
-				break;
+					break;
 				case KviControlCodes::Reset:
 					uCurFore = KVI_INPUT_DEF_FORE;
 					uCurBack = KVI_INPUT_DEF_BACK;
 					uFlags = 0;
-				break;
+					break;
 				case KviControlCodes::Reverse:
 				{
 					char cAuxClr = uCurFore;
@@ -621,7 +617,7 @@ void KviInputEditor::rebuildTextBlocks()
 				case KviControlCodes::CryptEscape:
 				case KviControlCodes::Icon:
 					// makes a single block
-				break;
+					break;
 				case KviControlCodes::Color:
 				{
 					p++;
@@ -629,13 +625,15 @@ void KviInputEditor::rebuildTextBlocks()
 					{
 						unsigned char uFore;
 						unsigned char uBack;
-						/* int iNextChar = */ KviControlCodes::getUnicodeColorBytes(spb->szText,p - spb->szText.unicode(),&uFore,&uBack);
+						/* int iNextChar = */ KviControlCodes::getUnicodeColorBytes(spb->szText, p - spb->szText.unicode(), &uFore, &uBack);
 						if(uFore != KviControlCodes::NoChange)
 						{
 							uCurFore = uFore;
 							if(uBack != KviControlCodes::NoChange)
 								uCurBack = uBack;
-						} else {
+						}
+						else
+						{
 							// ONLY a CTRL+K
 							uCurBack = KVI_INPUT_DEF_BACK;
 							uCurFore = KVI_INPUT_DEF_FORE;
@@ -646,7 +644,7 @@ void KviInputEditor::rebuildTextBlocks()
 				break;
 				default:
 					Q_ASSERT(false);
-				break;
+					break;
 			}
 
 			QChar cSubstitute = getSubstituteChar(c);
@@ -664,22 +662,20 @@ void KviInputEditor::rebuildTextBlocks()
 
 	// apply selection marks too
 	if(
-			(m_iSelectionEnd <= m_iSelectionBegin) ||
-			(m_iSelectionEnd == -1) ||
-			(m_iSelectionBegin == -1) ||
-			(m_iSelectionBegin > m_szTextBuffer.length())
-		)
+	    (m_iSelectionEnd <= m_iSelectionBegin) || (m_iSelectionEnd == -1) || (m_iSelectionBegin == -1) || (m_iSelectionBegin > m_szTextBuffer.length()))
 	{
 		m_iSelectionEnd = -1;
 		m_iSelectionBegin = -1;
-	} else {
+	}
+	else
+	{
 
 		int iCurStart = 0;
 		int cnt = m_p->lTextBlocks.count();
 
-		for(int idx = 0;idx < cnt;idx++)
+		for(int idx = 0; idx < cnt; idx++)
 		{
-			pBlock  = m_p->lTextBlocks.at(idx);
+			pBlock = m_p->lTextBlocks.at(idx);
 
 			if(m_iSelectionEnd <= iCurStart)
 				break; // finished
@@ -699,11 +695,14 @@ void KviInputEditor::rebuildTextBlocks()
 				{
 					// selection begins before this block
 					pBlock->uFlags |= KviInputEditorTextBlock::IsSelected;
-				} else if(m_iSelectionBegin == iCurStart)
+				}
+				else if(m_iSelectionBegin == iCurStart)
 				{
 					// selection begins exactly at this block
 					pBlock->uFlags |= KviInputEditorTextBlock::IsSelected;
-				} else {
+				}
+				else
+				{
 					// selection begins in the middle of the block
 					int iLeft = m_iSelectionBegin - iCurStart;
 					KviInputEditorTextBlock * pBlock2 = new KviInputEditorTextBlock(pBlock->szText.left(iLeft));
@@ -712,8 +711,8 @@ void KviInputEditor::rebuildTextBlocks()
 					pBlock2->uFlags = pBlock->uFlags;
 					pBlock2->fWidth = fm->width(pBlock2->szText);
 					pBlock2->iLength = iLeft;
-					m_p->lTextBlocks.insert(idx,pBlock2);
-					pBlock->szText.remove(0,iLeft);
+					m_p->lTextBlocks.insert(idx, pBlock2);
+					pBlock->szText.remove(0, iLeft);
 					pBlock->fWidth = fm->width(pBlock->szText);
 					pBlock->iLength -= iLeft;
 					pBlock->uFlags |= KviInputEditorTextBlock::IsSelected;
@@ -725,7 +724,9 @@ void KviInputEditor::rebuildTextBlocks()
 				if(m_iSelectionEnd >= iCurEnd)
 				{
 					// selection ends after or at the end of this block
-				}  else {
+				}
+				else
+				{
 					// selection ends in the middle of the block
 					int iLeft = m_iSelectionEnd - iCurStart;
 
@@ -734,9 +735,9 @@ void KviInputEditor::rebuildTextBlocks()
 					pBlock2->uBackground = pBlock->uBackground;
 					pBlock2->uFlags = pBlock->uFlags;
 					pBlock2->fWidth = fm->width(pBlock2->szText);
-					pBlock2->iLength =iLeft;
-					m_p->lTextBlocks.insert(idx,pBlock2);
-					pBlock->szText.remove(0,iLeft);
+					pBlock2->iLength = iLeft;
+					m_p->lTextBlocks.insert(idx, pBlock2);
+					pBlock->szText.remove(0, iLeft);
 					pBlock->fWidth = fm->width(pBlock->szText);
 					pBlock->iLength = pBlock->szText.length();
 					pBlock->uFlags &= ~KviInputEditorTextBlock::IsSelected;
@@ -747,9 +748,7 @@ void KviInputEditor::rebuildTextBlocks()
 			iCurStart = iCurEnd;
 		}
 	}
-
 }
-
 
 void KviInputEditor::ensureCursorVisible()
 {
@@ -771,7 +770,8 @@ void KviInputEditor::ensureCursorVisible()
 	{
 		m_p->fXOffset = fCursorXInText;
 		bNeedRepaint = true;
-	} else if(fCursorXAbsolute > fAvailableWidth)
+	}
+	else if(fCursorXAbsolute > fAvailableWidth)
 	{
 		m_p->fXOffset = fCursorXInText - fAvailableWidth;
 		if(m_p->fXOffset < 0.0)
@@ -782,7 +782,6 @@ void KviInputEditor::ensureCursorVisible()
 	if(bNeedRepaint)
 		update();
 }
-
 
 void KviInputEditor::paintEvent(QPaintEvent *)
 {
@@ -795,36 +794,38 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 	{
 		p.save();
 		p.setCompositionMode(QPainter::CompositionMode_Source);
-		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		QColor col = KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
 		p.fillRect(cr, col);
 		p.restore();
-	} else if(g_pShadedChildGlobalDesktopBackground)
+	}
+	else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = m_pKviWindow->isDocked() ? mapTo(g_pMainWindow, cr.topLeft()) : mapTo(m_pKviWindow, cr.topLeft());
-		p.drawTiledPixmap(cr,*(g_pShadedChildGlobalDesktopBackground), pnt);
-	} else {
+		p.drawTiledPixmap(cr, *(g_pShadedChildGlobalDesktopBackground), pnt);
+	}
+	else
+	{
 #endif
-		p.fillRect(cr,KVI_OPTION_COLOR(KviOption_colorInputBackground));
+		p.fillRect(cr, KVI_OPTION_COLOR(KviOption_colorInputBackground));
 
 		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapInputBackground).pixmap();
 		if(pix)
-			KviPixmapUtils::drawPixmapWithPainter(&p,pix,KVI_OPTION_UINT(KviOption_uintInputPixmapAlign),cr,cr.width(),cr.height());
+			KviPixmapUtils::drawPixmapWithPainter(&p, pix, KVI_OPTION_UINT(KviOption_uintInputPixmapAlign), cr, cr.width(), cr.height());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
 
 	// In Qt5 QStyle::drawPrimitive seems to always overwrite the background, no matter what.
-	qDrawShadePanel(&p,0,0,width(),height(),palette(),true,1,NULL);
+	qDrawShadePanel(&p, 0, 0, width(), height(), palette(), true, 1, NULL);
 
-	QRect r(1,1,width()-1,height()-1);
+	QRect r(1, 1, width() - 1, height() - 1);
 
 	p.setClipRect(r);
 
 	//p.translate(r.topLeft());
 	drawContents(&p);
 }
-
 
 void KviInputEditor::drawContents(QPainter * p)
 {
@@ -840,8 +841,8 @@ void KviInputEditor::drawContents(QPainter * p)
 
 	qreal fWidth = width();
 
-	int iTop          = KVI_INPUT_MARGIN + KVI_INPUT_XTRAPADDING;
-	int iBottom       = rect.height() - KVI_INPUT_MARGIN - KVI_INPUT_XTRAPADDING;
+	int iTop = KVI_INPUT_MARGIN + KVI_INPUT_XTRAPADDING;
+	int iBottom = rect.height() - KVI_INPUT_MARGIN - KVI_INPUT_XTRAPADDING;
 
 	int iTextBaseline = iBottom - fm->descent();
 
@@ -857,7 +858,7 @@ void KviInputEditor::drawContents(QPainter * p)
 
 		qreal iXIMSelectionLeft = xPositionFromCharIndex(iIMSelectionStart);
 		qreal iXIMSelectionRight = xPositionFromCharIndex(iIMSelectionStart + m_iIMSelectionLength);
-		p->fillRect(QRectF(iXIMSelectionLeft,iTop,iXIMSelectionRight - iXIMSelectionLeft, iBottom),KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
+		p->fillRect(QRectF(iXIMSelectionLeft, iTop, iXIMSelectionRight - iXIMSelectionLeft, iBottom), KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
 
 		// highlight the IM selection
 		int iIMStart = m_iIMStart;
@@ -869,7 +870,7 @@ void KviInputEditor::drawContents(QPainter * p)
 		p->drawLine(xIMLeft, iBottom, xIMRight, iBottom);
 	}
 
-	foreach(pBlock,m_p->lTextBlocks)
+	foreach(pBlock, m_p->lTextBlocks)
 	{
 		qreal fNextX = fCurX + pBlock->fWidth;
 		if((fNextX > 0) && (pBlock->fWidth > 0))
@@ -879,15 +880,17 @@ void KviInputEditor::drawContents(QPainter * p)
 			bool bIsSelected = pBlock->uFlags & KviInputEditorTextBlock::IsSelected;
 
 			if(bIsSelected)
-				p->fillRect(QRectF(fCurX,iTop-2,pBlock->fWidth,iBottom - iTop + 4),KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
+				p->fillRect(QRectF(fCurX, iTop - 2, pBlock->fWidth, iBottom - iTop + 4), KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
 
 			if(pBlock->uFlags & KviInputEditorTextBlock::IsControlBlock)
 			{
 				p->setPen(KVI_OPTION_COLOR(KviOption_colorInputControl));
 				// the block width is 4 pixels more than the actual character
-				p->drawText(QPointF(fCurX + 2,iTextBaseline),pBlock->szText);
-				p->drawRect(QRectF(fCurX,iTop,pBlock->fWidth,iBottom - iTop));
-			} else {
+				p->drawText(QPointF(fCurX + 2, iTextBaseline), pBlock->szText);
+				p->drawRect(QRectF(fCurX, iTop, pBlock->fWidth, iBottom - iTop));
+			}
+			else
+			{
 				if(pBlock->uForeground == KVI_INPUT_DEF_FORE)
 					p->setPen(bIsSelected ? KVI_OPTION_COLOR(KviOption_colorInputSelectionForeground) : KVI_OPTION_COLOR(KviOption_colorInputForeground));
 				else if(pBlock->uForeground > 16)
@@ -898,17 +901,17 @@ void KviInputEditor::drawContents(QPainter * p)
 				if(pBlock->uBackground != KVI_INPUT_DEF_BACK)
 				{
 					if(pBlock->uBackground > 16)
-						p->fillRect(QRectF(fCurX,iTop,pBlock->fWidth,iBottom - iTop),KVI_OPTION_COLOR(KviOption_colorInputForeground));
+						p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iBottom - iTop), KVI_OPTION_COLOR(KviOption_colorInputForeground));
 					else
-						p->fillRect(QRectF(fCurX,iTop,pBlock->fWidth,iBottom - iTop),KVI_OPTION_MIRCCOLOR(pBlock->uBackground));
+						p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iBottom - iTop), KVI_OPTION_MIRCCOLOR(pBlock->uBackground));
 				}
 
-				p->drawText(QPointF(fCurX,iTextBaseline),pBlock->szText);
+				p->drawText(QPointF(fCurX, iTextBaseline), pBlock->szText);
 
 				if(pBlock->uFlags & KviInputEditorTextBlock::IsBold)
-					p->drawText(QPointF(fCurX+1,iTextBaseline),pBlock->szText);
+					p->drawText(QPointF(fCurX + 1, iTextBaseline), pBlock->szText);
 				if(pBlock->uFlags & KviInputEditorTextBlock::IsUnderline)
-					p->drawLine(QPointF(fCurX,iTextBaseline + fm->descent()),QPointF(fCurX+pBlock->fWidth,iTextBaseline + fm->descent()));
+					p->drawLine(QPointF(fCurX, iTextBaseline + fm->descent()), QPointF(fCurX + pBlock->fWidth, iTextBaseline + fm->descent()));
 
 				if(pBlock->uFlags & KviInputEditorTextBlock::IsSpellingMistake)
 				{
@@ -916,8 +919,8 @@ void KviInputEditor::drawContents(QPainter * p)
 
 					// red overlay
 					int iY = iTextBaseline + fm->descent() - 1;
-					p->fillRect(QRectF(fCurX,iTop,pBlock->fWidth,iY - iTop),QColor(255,0,0,30)); // alpha = 30
-					p->drawLine(QPointF(fCurX,iY),QPointF(fCurX+pBlock->fWidth,iY));
+					p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iY - iTop), QColor(255, 0, 0, 30)); // alpha = 30
+					p->drawLine(QPointF(fCurX, iY), QPointF(fCurX + pBlock->fWidth, iY));
 				}
 			}
 		}
@@ -932,12 +935,10 @@ void KviInputEditor::drawContents(QPainter * p)
 	{
 		p->setClipping(false);
 		p->setPen(KVI_OPTION_COLOR(KviOption_colorInputCursor));
-		p->fillRect(QRectF(fCursorX,iTop,m_iCursorWidth,iBottom - iTop),KVI_OPTION_COLOR(KviOption_colorInputCursor));
+		p->fillRect(QRectF(fCursorX, iTop, m_iCursorWidth, iBottom - iTop), KVI_OPTION_COLOR(KviOption_colorInputCursor));
 		p->setClipping(true);
 	}
-
 }
-
 
 QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
 {
@@ -980,7 +981,7 @@ void KviInputEditor::mouseDoubleClickEvent(QMouseEvent * e)
 		return;
 
 	int iCursor = charIndexFromXPosition(e->pos().x());
-	int iLen = m_szTextBuffer.length()-1;
+	int iLen = m_szTextBuffer.length() - 1;
 	if(iCursor > iLen)
 		iCursor = iLen;
 
@@ -991,7 +992,7 @@ void KviInputEditor::mouseDoubleClickEvent(QMouseEvent * e)
 	m_iSelectionBegin = iCursor;
 	while(m_iSelectionBegin > 0)
 	{
-		if(!m_szTextBuffer.at(m_iSelectionBegin-1).isLetterOrNumber())
+		if(!m_szTextBuffer.at(m_iSelectionBegin - 1).isLetterOrNumber())
 			break;
 		m_iSelectionBegin--;
 	}
@@ -1011,7 +1012,7 @@ void KviInputEditor::mouseDoubleClickEvent(QMouseEvent * e)
 	killDragTimer();
 }
 
-void KviInputEditor::showContextPopup(const QPoint &pos)
+void KviInputEditor::showContextPopup(const QPoint & pos)
 {
 	int iType = m_pKviWindow->type();
 
@@ -1035,10 +1036,10 @@ void KviInputEditor::showContextPopup(const QPoint &pos)
 				szClip.append("...");
 			}
 
-			szClip.replace(QChar('&'),"&amp;");
-			szClip.replace(QChar('<'),"&lt;");
-			szClip.replace(QChar('>'),"&gt;");
-			szClip.replace(QChar('\n'),"<br>");
+			szClip.replace(QChar('&'), "&amp;");
+			szClip.replace(QChar('<'), "&lt;");
+			szClip.replace(QChar('>'), "&gt;");
+			szClip.replace(QChar('\n'), "<br>");
 
 			QString szLabel = "<center><b>";
 			szLabel += __tr2qs("Clipboard");
@@ -1054,7 +1055,7 @@ void KviInputEditor::showContextPopup(const QPoint &pos)
 			szLabel += (iOcc == 1) ? __tr2qs("line break") : __tr2qs("line breaks");
 			szLabel += "</b></center>";
 
-			QLabel * pLabel = new QLabel(szLabel,g_pInputPopup);
+			QLabel * pLabel = new QLabel(szLabel, g_pInputPopup);
 			pLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 			pLabel->setMargin(5);
 
@@ -1067,52 +1068,51 @@ void KviInputEditor::showContextPopup(const QPoint &pos)
 		}
 	}
 
-	QAction * pAction = g_pInputPopup->addAction(__tr2qs("&Undo") + ACCEL_KEY(Z),this,SLOT(undo()));
+	QAction * pAction = g_pInputPopup->addAction(__tr2qs("&Undo") + ACCEL_KEY(Z), this, SLOT(undo()));
 	pAction->setEnabled(isUndoAvailable());
-	pAction = g_pInputPopup->addAction(__tr2qs("&Redo") + ACCEL_KEY(Y),this,SLOT(redo()));
+	pAction = g_pInputPopup->addAction(__tr2qs("&Redo") + ACCEL_KEY(Y), this, SLOT(redo()));
 	pAction->setEnabled(isRedoAvailable());
 
 	g_pInputPopup->addSeparator();
 
-	pAction = g_pInputPopup->addAction(__tr2qs("Cu&t") + ACCEL_KEY(X),this,SLOT(cut()));
+	pAction = g_pInputPopup->addAction(__tr2qs("Cu&t") + ACCEL_KEY(X), this, SLOT(cut()));
 	pAction->setEnabled(hasSelection());
-	pAction = g_pInputPopup->addAction(__tr2qs("&Copy") + ACCEL_KEY(C),this,SLOT(copyToClipboard()));
+	pAction = g_pInputPopup->addAction(__tr2qs("&Copy") + ACCEL_KEY(C), this, SLOT(copyToClipboard()));
 	pAction->setEnabled(hasSelection());
-	pAction = g_pInputPopup->addAction(__tr2qs("&Paste") + ACCEL_KEY(V),this,SLOT(pasteClipboardWithConfirmation()));
+	pAction = g_pInputPopup->addAction(__tr2qs("&Paste") + ACCEL_KEY(V), this, SLOT(pasteClipboardWithConfirmation()));
 	pAction->setEnabled(!szClip.isEmpty() && !m_bReadOnly);
-	pAction = g_pInputPopup->addAction(__tr2qs("Paste Slowly"),this,SLOT(pasteSlow()));
-	if ((iType == KviWindow::Channel) || (iType == KviWindow::Query) || (iType == KviWindow::DccChat))
-	    pAction->setEnabled(!szClip.isEmpty() && !m_bReadOnly);
+	pAction = g_pInputPopup->addAction(__tr2qs("Paste Slowly"), this, SLOT(pasteSlow()));
+	if((iType == KviWindow::Channel) || (iType == KviWindow::Query) || (iType == KviWindow::DccChat))
+		pAction->setEnabled(!szClip.isEmpty() && !m_bReadOnly);
 	else
-	    pAction->setEnabled(false);
-	pAction = g_pInputPopup->addAction(__tr2qs("Paste &File") + ACCEL_KEY(L),this,SLOT(pasteFile()));
+		pAction->setEnabled(false);
+	pAction = g_pInputPopup->addAction(__tr2qs("Paste &File") + ACCEL_KEY(L), this, SLOT(pasteFile()));
 	if((iType != KviWindow::Channel) && (iType != KviWindow::Query) && (iType != KviWindow::DccChat))
-	    pAction->setEnabled(false);
+		pAction->setEnabled(false);
 	else
-	    pAction->setEnabled(!m_bReadOnly);
+		pAction->setEnabled(!m_bReadOnly);
 
 	if(m_bSpSlowFlag)
-	    pAction = g_pInputPopup->addAction(__tr2qs("Stop Paste"),this,SLOT(stopPasteSlow())); /*G&N 2005*/
+		pAction = g_pInputPopup->addAction(__tr2qs("Stop Paste"), this, SLOT(stopPasteSlow())); /*G&N 2005*/
 
 	g_pInputPopup->addSeparator();
 
-	pAction = g_pInputPopup->addAction(__tr2qs("Clear"),this,SLOT(clear()));
+	pAction = g_pInputPopup->addAction(__tr2qs("Clear"), this, SLOT(clear()));
 	pAction->setEnabled(!m_szTextBuffer.isEmpty() && !m_bReadOnly);
 	g_pInputPopup->addSeparator();
-	pAction = g_pInputPopup->addAction(__tr2qs("Select All"),this,SLOT(selectAll()));
+	pAction = g_pInputPopup->addAction(__tr2qs("Select All"), this, SLOT(selectAll()));
 	pAction->setEnabled((!m_szTextBuffer.isEmpty()));
 
 	g_pInputPopup->addSeparator();
 
-	pAction = g_pInputPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)),__tr2qs("Insert Icon"),this,SLOT(popupTextIconWindow()));
+	pAction = g_pInputPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)), __tr2qs("Insert Icon"), this, SLOT(popupTextIconWindow()));
 	pAction->setEnabled(!m_bReadOnly);
-
 
 #ifdef COMPILE_ENCHANT_SUPPORT
 	// check if the cursor is in a spell-checkable block
 
 	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
-	splitTextIntoSpellCheckerBlocks(m_szTextBuffer,lBuffer);
+	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lBuffer);
 
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = findSpellCheckerBlockAtCursor(lBuffer);
 
@@ -1124,44 +1124,45 @@ void KviInputEditor::showContextPopup(const QPoint &pos)
 		m_SpellCheckerPopup.setTitle(__tr2qs("Correct Spelling of '%1'").arg(pCurrentBlock->szText));
 		m_SpellCheckerPopup.setEnabled(!m_bReadOnly);
 		g_pInputPopup->addMenu(&m_SpellCheckerPopup);
-	} else {
+	}
+	else
+	{
 		pAction = g_pInputPopup->addAction(
-				__tr2qs("Correct Spelling")
-			);
+		    __tr2qs("Correct Spelling"));
 		pAction->setEnabled(false);
 	}
 #endif
 
-#if (QT_VERSION >= 0x050000)
+#if(QT_VERSION >= 0x050000)
 /*
  * With Qt5 the use of input method composing works, but we are unable to query the list of
  * available ims and change the active one. By now Qt5's QInputMethod lacks several methods,
  * check it again on newer qt versions!
  */
 #else
-	QInputContext *qic = g_pApp->inputContext();
-	if (qic) {
+	QInputContext * qic = g_pApp->inputContext();
+	if(qic)
+	{
 		QList<QAction *> imActions = qic->actions();
-		for (int i = 0; i < imActions.size(); ++i)
+		for(int i = 0; i < imActions.size(); ++i)
 			g_pInputPopup->addAction(imActions.at(i));
 	}
 #endif
 	g_pInputPopup->popup(pos);
-
 }
 
 void KviInputEditor::showContextPopupHere()
 {
 	qreal fXPos = xPositionFromCharIndex(m_iCursorPosition);
 	int iBottom = heightHint() - KVI_INPUT_MARGIN - KVI_INPUT_XTRAPADDING; // not exact but easy
-	showContextPopup(mapToGlobal(QPoint(fXPos,iBottom)));
+	showContextPopup(mapToGlobal(QPoint(fXPos, iBottom)));
 }
 
-KviInputEditorSpellCheckerBlock * KviInputEditor::findSpellCheckerBlockAtCursor(KviPointerList<KviInputEditorSpellCheckerBlock> &lBlocks)
+KviInputEditorSpellCheckerBlock * KviInputEditor::findSpellCheckerBlockAtCursor(KviPointerList<KviInputEditorSpellCheckerBlock> & lBlocks)
 {
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = NULL;
 
-	for(KviInputEditorSpellCheckerBlock * pBlock = lBlocks.first();pBlock;pBlock = lBlocks.next())
+	for(KviInputEditorSpellCheckerBlock * pBlock = lBlocks.first(); pBlock; pBlock = lBlocks.next())
 	{
 		if(m_iCursorPosition <= (pBlock->iStart + pBlock->iLength))
 		{
@@ -1185,12 +1186,11 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 	pWidgetAction->setDefaultWidget(pLabel);
 	m_SpellCheckerPopup.addAction(pWidgetAction);
 
-
 #ifdef COMPILE_ENCHANT_SUPPORT
 	// check if the cursor is in a spellcheckable block
 
 	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
-	splitTextIntoSpellCheckerBlocks(m_szTextBuffer,lBuffer);
+	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lBuffer);
 
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = findSpellCheckerBlockAtCursor(lBuffer);
 
@@ -1202,7 +1202,9 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 		pLabel->setText(__tr2qs("Spelling Checker"));
 
 		m_SpellCheckerPopup.addAction(__tr2qs("No Suggestions Available"))->setEnabled(false);
-	} else {
+	}
+	else
+	{
 
 		pLabel->setText(__tr2qs("Spelling Suggestions for '%1'").arg(pCurrentBlock->szText));
 		m_SpellCheckerPopup.addAction(pWidgetAction);
@@ -1218,7 +1220,7 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 
 		int s = pArray->size();
 
-		for(int i=0;i<s;i++)
+		for(int i = 0; i < s; i++)
 		{
 			KviKvsVariant * v = pArray->at(i);
 			if(!v)
@@ -1230,7 +1232,7 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 			if(szWord.isEmpty())
 				continue;
 
-			m_SpellCheckerPopup.addAction(szWord,this,SLOT(spellCheckerPopupCorrectionActionTriggered()));
+			m_SpellCheckerPopup.addAction(szWord, this, SLOT(spellCheckerPopupCorrectionActionTriggered()));
 		}
 	}
 
@@ -1253,7 +1255,7 @@ void KviInputEditor::showSpellCheckerCorrectionsPopup()
 
 	QSize sh = m_SpellCheckerPopup.sizeHint();
 
-	m_SpellCheckerPopup.popup(mapToGlobal(QPoint(fXPos,-sh.height())));
+	m_SpellCheckerPopup.popup(mapToGlobal(QPoint(fXPos, -sh.height())));
 }
 
 void KviInputEditor::spellCheckerPopupCorrectionActionTriggered()
@@ -1271,7 +1273,7 @@ void KviInputEditor::spellCheckerPopupCorrectionActionTriggered()
 		return;
 
 	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
-	splitTextIntoSpellCheckerBlocks(m_szTextBuffer,lBuffer);
+	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lBuffer);
 
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = findSpellCheckerBlockAtCursor(lBuffer);
 
@@ -1308,7 +1310,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 	pasteSelectionWithConfirmation();
 }
 
-void KviInputEditor::iconPopupActivated(QAction *pAction)
+void KviInputEditor::iconPopupActivated(QAction * pAction)
 {
 	if(m_bReadOnly)
 		return;
@@ -1336,9 +1338,9 @@ void KviInputEditor::copyToClipboard()
 	if(!pClip)
 		return;
 
-	QString szTxt = m_szTextBuffer.mid(m_iSelectionBegin,m_iSelectionEnd-m_iSelectionBegin);
+	QString szTxt = m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd - m_iSelectionBegin);
 
-	pClip->setText(szTxt,QClipboard::Clipboard);
+	pClip->setText(szTxt, QClipboard::Clipboard);
 
 	repaintWithCursorOn();
 }
@@ -1352,12 +1354,12 @@ void KviInputEditor::copyToSelection(bool bDonNotCopyToClipboard)
 	if(!pClip)
 		return;
 
-	QString szTxt = m_szTextBuffer.mid(m_iSelectionBegin,m_iSelectionEnd-m_iSelectionBegin);
+	QString szTxt = m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd - m_iSelectionBegin);
 
 	if(pClip->supportsSelection())
-		pClip->setText(szTxt,QClipboard::Selection);
+		pClip->setText(szTxt, QClipboard::Selection);
 	else if(!bDonNotCopyToClipboard)
-		pClip->setText(szTxt,QClipboard::Clipboard);
+		pClip->setText(szTxt, QClipboard::Clipboard);
 
 	repaintWithCursorOn();
 }
@@ -1373,7 +1375,9 @@ void KviInputEditor::moveCursorTo(int iIdx, bool bRepaint)
 	{
 		while(m_iCursorPosition < iIdx)
 			m_iCursorPosition++;
-	} else {
+	}
+	else
+	{
 		m_iCursorPosition = iIdx;
 	}
 
@@ -1387,11 +1391,11 @@ void KviInputEditor::removeSelected()
 	if(!hasSelection())
 		return;
 
-	addUndo(new EditCommand(EditCommand::RemoveText,m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd-m_iSelectionBegin),m_iSelectionBegin));
+	addUndo(new EditCommand(EditCommand::RemoveText, m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd - m_iSelectionBegin), m_iSelectionBegin));
 
-	m_szTextBuffer.remove(m_iSelectionBegin,m_iSelectionEnd-m_iSelectionBegin);
+	m_szTextBuffer.remove(m_iSelectionBegin, m_iSelectionEnd - m_iSelectionBegin);
 	m_p->bTextBlocksDirty = true;
-	moveCursorTo(m_iSelectionBegin,false);
+	moveCursorTo(m_iSelectionBegin, false);
 	clearSelection();
 	repaintWithCursorOn();
 }
@@ -1406,13 +1410,13 @@ void KviInputEditor::cut()
 	if(!pClip)
 		return;
 
-	pClip->setText(m_szTextBuffer.mid(m_iSelectionBegin,m_iSelectionEnd-m_iSelectionBegin),QClipboard::Clipboard);
+	pClip->setText(m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd - m_iSelectionBegin), QClipboard::Clipboard);
 
-	addUndo(new EditCommand(EditCommand::RemoveText,m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd-m_iSelectionBegin),m_iSelectionBegin));
+	addUndo(new EditCommand(EditCommand::RemoveText, m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd - m_iSelectionBegin), m_iSelectionBegin));
 
-	m_szTextBuffer.remove(m_iSelectionBegin,m_iSelectionEnd-m_iSelectionBegin);
+	m_szTextBuffer.remove(m_iSelectionBegin, m_iSelectionEnd - m_iSelectionBegin);
 	m_p->bTextBlocksDirty = true;
-	moveCursorTo(m_iSelectionBegin,false);
+	moveCursorTo(m_iSelectionBegin, false);
 	clearSelection();
 	repaintWithCursorOn();
 }
@@ -1420,9 +1424,10 @@ void KviInputEditor::cut()
 void KviInputEditor::insertText(const QString & szTxt)
 {
 	QString szText = szTxt; // crop away constness
-	if(szText.isEmpty())return;
+	if(szText.isEmpty())
+		return;
 
-	szText.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
+	szText.replace('\t', QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput), ' ')); //expand tabs to spaces
 
 	m_bUpdatesEnabled = false;
 	removeSelected();
@@ -1430,13 +1435,15 @@ void KviInputEditor::insertText(const QString & szTxt)
 
 	if(szText.indexOf('\n') == -1)
 	{
-		addUndo(new EditCommand(EditCommand::InsertText,szText,m_iCursorPosition));
+		addUndo(new EditCommand(EditCommand::InsertText, szText, m_iCursorPosition));
 
-		m_szTextBuffer.insert(m_iCursorPosition,szText);
+		m_szTextBuffer.insert(m_iCursorPosition, szText);
 		m_szTextBuffer.truncate(m_iMaxBufferSize);
 		m_p->bTextBlocksDirty = true;
 		moveCursorTo(m_iCursorPosition + szText.length());
-	} else {
+	}
+	else
+	{
 		//Multiline paste...do not execute commands here
 		QString szBlock;
 		while(!szText.isEmpty())
@@ -1446,19 +1453,23 @@ void KviInputEditor::insertText(const QString & szTxt)
 			{
 				szBlock = szText.left(iIdx);
 				//else szBlock = QChar(KviControlCodes::Reset);
-				szText.remove(0,iIdx+1);
-			} else {
+				szText.remove(0, iIdx + 1);
+			}
+			else
+			{
 				szBlock = szText;
-				szText  = "";
+				szText = "";
 			}
 
-			m_szTextBuffer.insert(m_iCursorPosition,szBlock);
+			m_szTextBuffer.insert(m_iCursorPosition, szBlock);
 			m_szTextBuffer.truncate(m_iMaxBufferSize);
 			m_p->bTextBlocksDirty = true;
 
 			int iPos = 0;
-			while((iPos < ((int)(m_szTextBuffer.length()))) && (m_szTextBuffer[iPos] < 33)) iPos++;
-			if((iPos < ((int)(m_szTextBuffer.length()))) && (m_szTextBuffer[iPos] == QChar('/')))m_szTextBuffer.insert(iPos,"\\");
+			while((iPos < ((int)(m_szTextBuffer.length()))) && (m_szTextBuffer[iPos] < 33))
+				iPos++;
+			if((iPos < ((int)(m_szTextBuffer.length()))) && (m_szTextBuffer[iPos] == QChar('/')))
+				m_szTextBuffer.insert(iPos, "\\");
 
 			returnPressed(iIdx != -1);
 		}
@@ -1467,9 +1478,9 @@ void KviInputEditor::insertText(const QString & szTxt)
 
 int KviInputEditor::replaceSegment(int iStart, int iLength, const QString & szText)
 {
-	addUndo(new EditCommand(EditCommand::InsertText,m_szTextBuffer.mid(iStart,iLength),iStart));
+	addUndo(new EditCommand(EditCommand::InsertText, m_szTextBuffer.mid(iStart, iLength), iStart));
 	m_szTextBuffer.remove(iStart, iLength);
-	addUndo(new EditCommand(EditCommand::InsertText,szText,iStart));
+	addUndo(new EditCommand(EditCommand::InsertText, szText, iStart));
 	m_szTextBuffer.insert(iStart, szText);
 	m_szTextBuffer.truncate(m_iMaxBufferSize);
 	m_p->bTextBlocksDirty = true;
@@ -1477,24 +1488,28 @@ int KviInputEditor::replaceSegment(int iStart, int iLength, const QString & szTe
 
 	int iInsertedLength = szText.length();
 	int iMaxInsertedLength = m_iMaxBufferSize - iStart;
-	if(iInsertedLength > iMaxInsertedLength) return iMaxInsertedLength;
+	if(iInsertedLength > iMaxInsertedLength)
+		return iMaxInsertedLength;
 	return iInsertedLength;
 }
 
 void KviInputEditor::pasteClipboardWithConfirmation()
 {
 	QClipboard * pClip = QApplication::clipboard();
-	if(!pClip) return;
+	if(!pClip)
+		return;
 	QString szText = pClip->text(QClipboard::Clipboard);
 
-	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnInputBarPaste,m_pKviWindow,m_pKviWindow->id(),szText))
+	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnInputBarPaste, m_pKviWindow, m_pKviWindow->id(), szText))
 		return;
 
 	if(szText.contains(QChar('\n')))
 	{
 		if(m_pInputParent->inherits("KviInput"))
-			((KviInput*)(m_pInputParent))->multiLinePaste(szText);
-	} else {
+			((KviInput *)(m_pInputParent))->multiLinePaste(szText);
+	}
+	else
+	{
 		insertText(szText);
 	}
 }
@@ -1502,36 +1517,39 @@ void KviInputEditor::pasteClipboardWithConfirmation()
 void KviInputEditor::pasteSelectionWithConfirmation()
 {
 	QClipboard * pClip = QApplication::clipboard();
-	if(!pClip) return;
+	if(!pClip)
+		return;
 	QString szText = pClip->text(pClip->supportsSelection() ? QClipboard::Selection : QClipboard::Clipboard);
 
-	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnInputBarPaste,m_pKviWindow,m_pKviWindow->id(),szText))
+	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnInputBarPaste, m_pKviWindow, m_pKviWindow->id(), szText))
 		return;
 
 	if(szText.contains(QChar('\n')))
 	{
 		if(m_pInputParent->inherits("KviInput"))
-			((KviInput*)(m_pInputParent))->multiLinePaste(szText);
-	} else {
+			((KviInput *)(m_pInputParent))->multiLinePaste(szText);
+	}
+	else
+	{
 		insertText(szText);
 	}
 }
 
 void KviInputEditor::pasteSlow()
 {
-	KviKvsScript::run("spaste.clipboard",g_pActiveWindow);
+	KviKvsScript::run("spaste.clipboard", g_pActiveWindow);
 	m_bSpSlowFlag = true;
 }
 
 void KviInputEditor::stopPasteSlow()
 {
-	KviKvsScript::run("spaste.stop",g_pActiveWindow);
+	KviKvsScript::run("spaste.stop", g_pActiveWindow);
 	m_bSpSlowFlag = false;
 }
 
 void KviInputEditor::pasteFile()
 {
-	QString szTmp = QFileDialog::getOpenFileName(this,"Select a File - KVIrc","",""); //this is window title
+	QString szTmp = QFileDialog::getOpenFileName(this, "Select a File - KVIrc", "", ""); //this is window title
 	if(!szTmp.isEmpty())
 	{
 		KviQString::escapeKvs(&szTmp, KviQString::EscapeSpace);
@@ -1546,7 +1564,7 @@ void KviInputEditor::selectAll()
 	if(m_szTextBuffer.length() > 0)
 	{
 		m_iSelectionBegin = 0;
-		m_iSelectionEnd = m_szTextBuffer.length()-1;
+		m_iSelectionEnd = m_szTextBuffer.length() - 1;
 		m_p->bTextBlocksDirty = true;
 	}
 	end();
@@ -1554,7 +1572,7 @@ void KviInputEditor::selectAll()
 
 void KviInputEditor::clear()
 {
-	addUndo(new EditCommand(EditCommand::RemoveText,m_szTextBuffer,0));
+	addUndo(new EditCommand(EditCommand::RemoveText, m_szTextBuffer, 0));
 	m_szTextBuffer = "";
 	m_p->bTextBlocksDirty = true;
 	clearSelection();
@@ -1563,8 +1581,8 @@ void KviInputEditor::clear()
 
 void KviInputEditor::setText(const QString szText)
 {
-	addUndo(new EditCommand(EditCommand::RemoveText,m_szTextBuffer,0));
-	addUndo(new EditCommand(EditCommand::RemoveText,szText,0));
+	addUndo(new EditCommand(EditCommand::RemoveText, m_szTextBuffer, 0));
+	addUndo(new EditCommand(EditCommand::RemoveText, szText, 0));
 	m_szTextBuffer = szText;
 	m_szTextBuffer.truncate(m_iMaxBufferSize);
 	m_p->bTextBlocksDirty = true;
@@ -1576,11 +1594,12 @@ void KviInputEditor::mouseReleaseEvent(QMouseEvent *)
 {
 	if(m_iDragTimer)
 	{
-		m_iSelectionAnchorChar =-1;
+		m_iSelectionAnchorChar = -1;
 		//releaseMouse();
 		killDragTimer();
 	}
-	if(hasSelection()) copyToSelection();
+	if(hasSelection())
+		copyToSelection();
 }
 
 void KviInputEditor::killDragTimer()
@@ -1601,9 +1620,13 @@ void KviInputEditor::timerEvent(QTimerEvent * e)
 			killTimer(m_iCursorTimer);
 			m_iCursorTimer = 0;
 			m_bCursorOn = false;
-		} else m_bCursorOn = ! m_bCursorOn;
+		}
+		else
+			m_bCursorOn = !m_bCursorOn;
 		update();
-	} else {
+	}
+	else
+	{
 		//Drag timer
 		handleDragSelection();
 	}
@@ -1623,14 +1646,17 @@ void KviInputEditor::handleDragSelection()
 
 	if(m_iCursorPosition == m_iSelectionAnchorChar)
 		clearSelection();
-	else {
+	else
+	{
 		if(m_iCursorPosition > m_iSelectionAnchorChar)
 		{
 			m_iSelectionBegin = m_iSelectionAnchorChar;
-			m_iSelectionEnd   = m_iCursorPosition;
-		} else {
+			m_iSelectionEnd = m_iCursorPosition;
+		}
+		else
+		{
 			m_iSelectionBegin = m_iCursorPosition;
-			m_iSelectionEnd   = m_iSelectionAnchorChar;
+			m_iSelectionEnd = m_iSelectionAnchorChar;
 		}
 	}
 
@@ -1641,12 +1667,12 @@ void KviInputEditor::handleDragSelection()
 
 void KviInputEditor::returnPressed(bool)
 {
-	if (!m_szTextBuffer.isEmpty() /* && (!m_pHistory->current() || m_szTextBuffer.compare(*(m_pHistory->current())))*/)
+	if(!m_szTextBuffer.isEmpty() /* && (!m_pHistory->current() || m_szTextBuffer.compare(*(m_pHistory->current())))*/)
 	{
 		if(m_pInputParent->inherits("KviInput"))
 			KviInputHistory::instance()->add(new QString(m_szTextBuffer));
 
-		m_pHistory->insert(0,new QString(m_szTextBuffer));
+		m_pHistory->insert(0, new QString(m_szTextBuffer));
 	}
 
 	//ensure the color window is hidden (bug #835)
@@ -1678,7 +1704,7 @@ void KviInputEditor::clearUndoStack()
 	}
 }
 
-void KviInputEditor::focusInEvent(QFocusEvent *e)
+void KviInputEditor::focusInEvent(QFocusEvent * e)
 {
 	if(!m_iCursorTimer)
 	{
@@ -1689,7 +1715,7 @@ void KviInputEditor::focusInEvent(QFocusEvent *e)
 	e->accept();
 }
 
-void KviInputEditor::focusOutEvent(QFocusEvent *e)
+void KviInputEditor::focusOutEvent(QFocusEvent * e)
 {
 	if(m_iCursorTimer)
 		killTimer(m_iCursorTimer);
@@ -1717,16 +1743,21 @@ void KviInputEditor::internalCursorRight(bool bShift)
 				m_iSelectionEnd = m_iCursorPosition + 1;
 			else if(m_iSelectionBegin >= m_iCursorPosition)
 				m_iSelectionBegin = m_iCursorPosition + 1;
-			else {
+			else
+			{
 				m_iSelectionBegin = m_iCursorPosition;
 				m_iSelectionEnd = m_iCursorPosition + 1;
 			}
-		} else {
+		}
+		else
+		{
 			m_iSelectionBegin = m_iCursorPosition;
 			m_iSelectionEnd = m_iCursorPosition + 1;
 		}
 		m_iCursorPosition++;
-	} else {
+	}
+	else
+	{
 		m_iCursorPosition++;
 		clearSelection();
 	}
@@ -1752,49 +1783,52 @@ void KviInputEditor::internalCursorLeft(bool bShift)
 				m_iSelectionBegin = m_iCursorPosition - 1;
 			else if(m_iSelectionEnd <= m_iCursorPosition)
 				m_iSelectionEnd = m_iCursorPosition - 1;
-			else {
+			else
+			{
 				m_iSelectionEnd = m_iCursorPosition;
 				m_iSelectionBegin = m_iCursorPosition - 1;
 			}
-		} else {
+		}
+		else
+		{
 			m_iSelectionEnd = m_iCursorPosition;
 			m_iSelectionBegin = m_iCursorPosition - 1;
 		}
 		m_iCursorPosition--;
-	} else {
+	}
+	else
+	{
 		m_iCursorPosition--;
 		clearSelection();
 	}
 
 	m_p->bTextBlocksDirty = true;
 	ensureCursorVisible();
-
 }
 
-#if (QT_VERSION >= 0x050000)
+#if(QT_VERSION >= 0x050000)
 QVariant KviInputEditor::inputMethodQuery(Qt::InputMethodQuery query) const
 {
 	switch(query)
 	{
 		case Qt::ImEnabled:
 			return QVariant(true);
-		break;
+			break;
 		case Qt::ImHints:
 			return QVariant(0);
-		break;
+			break;
 		default:
 			// fall down
-		break;
+			break;
 	}
 
 	return QWidget::inputMethodQuery(query);
 }
 #endif
 
-
 void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 {
-	if (m_bReadOnly)
+	if(m_bReadOnly)
 	{
 		e->ignore();
 		return;
@@ -1817,20 +1851,24 @@ void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 	m_iIMSelectionLength = e->replacementLength();
 	moveCursorTo(m_iIMSelectionBegin);
 
-	if (e->commitString().isEmpty())
+	if(e->commitString().isEmpty())
 	{
 		if(e->preeditString().isEmpty())
 		{
 			m_bIMComposing = false;
 			m_iIMStart = 0;
 			m_iIMLength = 0;
-		} else {
+		}
+		else
+		{
 			// replace the preedit area with the IM result text
 			m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->preeditString());
 			// move cursor to after the IM result text
 			moveCursorTo(m_iIMStart + m_iIMLength);
 		}
-	} else {
+	}
+	else
+	{
 		// replace the preedit area with the IM result text
 		m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->commitString());
 		// move cursor to after the IM result text
@@ -1849,60 +1887,60 @@ void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 
 void KviInputEditor::installShortcuts()
 {
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_HISTORY,this,SLOT(openHistory()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_HISTORY_PREV,this,SLOT(historyPrev()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_HISTORY_NEXT,this,SLOT(historyNext()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_CHAR,this,SLOT(previousChar()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_CHAR,this,SLOT(nextChar()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_CHAR_SELECT,this,SLOT(previousCharSelection()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_CHAR_SELECT,this,SLOT(nextCharSelection()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_WORD,this,SLOT(previousWord()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_WORD,this,SLOT(nextWord()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_WORD_SELECT,this,SLOT(previousWordSelection()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_WORD_SELECT,this,SLOT(nextWordSelection()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_BOLD,this,SLOT(insertBold()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_RESET,this,SLOT(insertReset()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_UNDERLINE,this,SLOT(insertUnderline()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_REVERSE,this,SLOT(insertReverse()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_PLAINTEXT,this,SLOT(insertPlainText()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_ICON,this,SLOT(insertIcon()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_COLOR,this,SLOT(insertColor()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_COPY,this,SLOT(copyInternal()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_CUT,this,SLOT(cutInternal()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_PASTE,this,SLOT(pasteInternal()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_UNDO,this,SLOT(undoInternal()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_REDO,this,SLOT(redoInternal()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_SELECT_ALL,this,SLOT(selectAllInternal()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE_PREV_WORD,this,SLOT(deletePreviousWord()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE_NEXT_WORD,this,SLOT(deleteNextWord()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_LINE,this,SLOT(previousLine()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_LINE,this,SLOT(nextLine()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_PAGE,this,SLOT(previousPage()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_PAGE,this,SLOT(nextPage()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_SEARCH,this,SLOT(search()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE,this,SLOT(scrollToLastReadLine()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_PLAIN,this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_PLAIN_2,this,SLOT(sendPlain()),0,Qt::WidgetShortcut);
-// 	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_KVS,this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
-// 	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_KVS_2,this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_HOME,this,SLOT(homeInternal()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_END,this,SLOT(endInternal()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_HOME_SELECT,this,SLOT(homeInternalSelection()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_END_SELECT,this,SLOT(endInternalSelection()),0,Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_HISTORY, this, SLOT(openHistory()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_HISTORY_PREV, this, SLOT(historyPrev()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_HISTORY_NEXT, this, SLOT(historyNext()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_CHAR, this, SLOT(previousChar()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_CHAR, this, SLOT(nextChar()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_CHAR_SELECT, this, SLOT(previousCharSelection()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_CHAR_SELECT, this, SLOT(nextCharSelection()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_WORD, this, SLOT(previousWord()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_WORD, this, SLOT(nextWord()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_WORD_SELECT, this, SLOT(previousWordSelection()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_WORD_SELECT, this, SLOT(nextWordSelection()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_BOLD, this, SLOT(insertBold()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_RESET, this, SLOT(insertReset()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_UNDERLINE, this, SLOT(insertUnderline()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_REVERSE, this, SLOT(insertReverse()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_PLAINTEXT, this, SLOT(insertPlainText()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_ICON, this, SLOT(insertIcon()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_COLOR, this, SLOT(insertColor()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_COPY, this, SLOT(copyInternal()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_CUT, this, SLOT(cutInternal()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_PASTE, this, SLOT(pasteInternal()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_UNDO, this, SLOT(undoInternal()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_REDO, this, SLOT(redoInternal()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_SELECT_ALL, this, SLOT(selectAllInternal()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE_PREV_WORD, this, SLOT(deletePreviousWord()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE_NEXT_WORD, this, SLOT(deleteNextWord()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_LINE, this, SLOT(previousLine()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_LINE, this, SLOT(nextLine()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_PAGE, this, SLOT(previousPage()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_PAGE, this, SLOT(nextPage()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_SEARCH, this, SLOT(search()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE, this, SLOT(scrollToLastReadLine()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_PLAIN, this, SLOT(sendPlain()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_PLAIN_2, this, SLOT(sendPlain()), 0, Qt::WidgetShortcut);
+	// 	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_KVS,this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
+	// 	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_KVS_2,this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_HOME, this, SLOT(homeInternal()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_END, this, SLOT(endInternal()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_HOME_SELECT, this, SLOT(homeInternalSelection()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_END_SELECT, this, SLOT(endInternalSelection()), 0, Qt::WidgetShortcut);
 	//KviShortcut::create(KVI_SHORTCUTS_INPUT_RETURN,this,SLOT(returnHit()),0,Qt::WidgetShortcut);
 	//KviShortcut::create(KVI_SHORTCUTS_INPUT_RETURN_2,this,SLOT(returnHit()),0,Qt::WidgetShortcut);
 	//KviShortcut::create(KVI_SHORTCUTS_INPUT_BACKSPACE,this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
 	//KviShortcut::create(KVI_SHORTCUTS_INPUT_BACKSPACE_2,this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
 	//KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE,this,SLOT(deleteHit()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_ESCAPE,this,SLOT(escapeHit()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_COMMANDLINE,this,SLOT(toggleCommandMode()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_DUMMY,this,SLOT(dummy()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_IN,this,SLOT(zoomIn()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_OUT,this,SLOT(zoomOut()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_CORRECT_SPELLING,this,SLOT(showSpellCheckerCorrectionsPopup()),0,Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_ESCAPE, this, SLOT(escapeHit()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_COMMANDLINE, this, SLOT(toggleCommandMode()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_DUMMY, this, SLOT(dummy()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_IN, this, SLOT(zoomIn()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_OUT, this, SLOT(zoomOut()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_CORRECT_SPELLING, this, SLOT(showSpellCheckerCorrectionsPopup()), 0, Qt::WidgetShortcut);
 	// this is currently ambigous, since we're using it for scripting, too
-	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_DEFAULT,this,SLOT(zoomDefault()),SLOT(zoomDefault()),Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_MENU,this,SLOT(showContextPopupHere()),0,Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_DEFAULT, this, SLOT(zoomDefault()), SLOT(zoomDefault()), Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_MENU, this, SLOT(showContextPopupHere()), 0, Qt::WidgetShortcut);
 }
 
 void KviInputEditor::zoomIn()
@@ -1953,18 +1991,18 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 			if(!m_bReadOnly)
 				backspaceHit();
 			return;
-		break;
+			break;
 		case Qt::Key_Delete:
 			if(!m_bReadOnly)
 				deleteHit();
 			return;
-		break;
+			break;
 		case Qt::Key_Return:
 		case Qt::Key_Enter:
 			if(!m_bReadOnly)
 				returnHit();
 			return;
-		break;
+			break;
 	}
 
 	if(e->modifiers() & Qt::ControlModifier)
@@ -1979,7 +2017,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 			default:
 				if(!m_bReadOnly)
 					insertText(e->text());
-			break;
+				break;
 		}
 		return;
 	}
@@ -1991,10 +2029,14 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 		{
 			m_szAltKeyCode = "";
 			return;
-		} else if((e->text().unicode()->toLatin1() >= '0') && (e->text().unicode()->toLatin1() <= '9')) {
+		}
+		else if((e->text().unicode()->toLatin1() >= '0') && (e->text().unicode()->toLatin1() <= '9'))
+		{
 			m_szAltKeyCode += e->text().unicode()->toLatin1();
 			return;
-		} else if((e->key() >= Qt::Key_0) && (e->key() <= Qt::Key_9)) {
+		}
+		else if((e->key() >= Qt::Key_0) && (e->key() <= Qt::Key_9))
+		{
 			m_szAltKeyCode += e->key();
 			return;
 		}
@@ -2038,7 +2080,6 @@ QString KviInputEditor::textBeforeCursor()
 	return m_szTextBuffer.left(m_iCursorPosition);
 }
 
-
 void KviInputEditor::getWordBeforeCursor(QString & szBuffer, bool * bIsFirstWordInLine)
 {
 	if(m_szTextBuffer.isEmpty() || m_iCursorPosition <= 0)
@@ -2053,15 +2094,20 @@ void KviInputEditor::getWordBeforeCursor(QString & szBuffer, bool * bIsFirstWord
 	int iIdx2 = szBuffer.lastIndexOf(','); // This is for comma separated lists...
 	int iIdx3 = szBuffer.lastIndexOf('(');
 	int iIdx4 = szBuffer.lastIndexOf('"');
-	if(iIdx2 > iIdx) iIdx = iIdx2;
-	if(iIdx3 > iIdx) iIdx = iIdx3;
-	if(iIdx4 > iIdx) iIdx = iIdx4;
+	if(iIdx2 > iIdx)
+		iIdx = iIdx2;
+	if(iIdx3 > iIdx)
+		iIdx = iIdx3;
+	if(iIdx4 > iIdx)
+		iIdx = iIdx4;
 	*bIsFirstWordInLine = false;
-	if(iIdx > -1) szBuffer.remove(0,iIdx+1);
-	else *bIsFirstWordInLine = true;
+	if(iIdx > -1)
+		szBuffer.remove(0, iIdx + 1);
+	else
+		*bIsFirstWordInLine = true;
 }
 
-void KviInputEditor::completionEscapeUnsafeToken(QString &szToken)
+void KviInputEditor::completionEscapeUnsafeToken(QString & szToken)
 {
 	if(!((KviInput *)(m_pInputParent))->isUserFriendly())
 		KviQString::escapeKvs(&szToken, KviQString::EscapeSpace);
@@ -2079,7 +2125,7 @@ void KviInputEditor::completion(bool bShift)
 
 	bool bInCommand = m_szTextBuffer.trimmed().indexOf('/') == 0;
 
-	getWordBeforeCursor(szWord,&bFirstWordInLine);
+	getWordBeforeCursor(szWord, &bFirstWordInLine);
 
 	if(szWord.isEmpty())
 	{
@@ -2087,14 +2133,16 @@ void KviInputEditor::completion(bool bShift)
 			return; // nothing to complete
 
 		// this is standard nick completion continued
-		standardNickCompletion(bShift,szWord,bFirstWordInLine,bInCommand);
+		standardNickCompletion(bShift, szWord, bFirstWordInLine, bInCommand);
 		repaintWithCursorOn();
 		return;
 	}
 
 	int iOffset;
-	if(KviQString::equalCI(m_szTextBuffer.left(5),"/help") || KviQString::equalCI(m_szTextBuffer.left(5),"/help.open")) iOffset=1;
-	else iOffset=0;
+	if(KviQString::equalCI(m_szTextBuffer.left(5), "/help") || KviQString::equalCI(m_szTextBuffer.left(5), "/help.open"))
+		iOffset = 1;
+	else
+		iOffset = 0;
 
 	KviPointerList<QString> tmp;
 	tmp.setAutoDelete(true);
@@ -2106,63 +2154,72 @@ void KviInputEditor::completion(bool bShift)
 
 	unsigned short uc = szWord[0].unicode();
 
-
 	if(uc == '/' || iOffset)
 	{
-		if(szWord[1-iOffset].unicode()=='$')
+		if(szWord[1 - iOffset].unicode() == '$')
 		{
 			// function/identifer completion
-			szWord.remove(0,2-iOffset);
-			if(szWord.isEmpty()) return;
-			KviKvsKernel::instance()->completeFunction(szWord,&tmp);
+			szWord.remove(0, 2 - iOffset);
+			if(szWord.isEmpty())
+				return;
+			KviKvsKernel::instance()->completeFunction(szWord, &tmp);
 			// function names don't need to be escaped
 			bIsFunction = true;
 		}
 		else if(bFirstWordInLine || iOffset)
 		{
 			// command completion
-			szWord.remove(0,1-iOffset);
-			if(szWord.isEmpty())return;
-			KviKvsKernel::instance()->completeCommand(szWord,&tmp);
+			szWord.remove(0, 1 - iOffset);
+			if(szWord.isEmpty())
+				return;
+			KviKvsKernel::instance()->completeCommand(szWord, &tmp);
 			// commands don't need to be escaped
 			bIsCommand = true;
-		} else {
+		}
+		else
+		{
 			// directory completion attempt
-			g_pApp->completeDirectory(szWord,&tmp);
+			g_pApp->completeDirectory(szWord, &tmp);
 			bIsDir = true;
 		}
-	} else if(uc == '$')
+	}
+	else if(uc == '$')
 	{
 		// function/identifer completion
-		szWord.remove(0,1);
-		if(szWord.isEmpty()) return;
-		KviKvsKernel::instance()->completeFunction(szWord,&tmp);
+		szWord.remove(0, 1);
+		if(szWord.isEmpty())
+			return;
+		KviKvsKernel::instance()->completeFunction(szWord, &tmp);
 		bIsFunction = true;
-	} else if(uc == '#' || uc == '&' || uc == '!')
+	}
+	else if(uc == '#' || uc == '&' || uc == '!')
 	{
 		if(m_pKviWindow)
 		{
-			if( (szWord.length()==1) && (m_pKviWindow->windowName()[0].unicode()==uc))
+			if((szWord.length() == 1) && (m_pKviWindow->windowName()[0].unicode() == uc))
 			{
-				szMatch=m_pKviWindow->windowName();
+				szMatch = m_pKviWindow->windowName();
 				completionEscapeUnsafeToken(szMatch);
 				szMatch.append(" ");
-				replaceWordBeforeCursor(szWord,szMatch,false);
+				replaceWordBeforeCursor(szWord, szMatch, false);
 				repaintWithCursorOn();
 				return;
 			}
 			if(m_pKviWindow->console())
-				m_pKviWindow->console()->completeChannel(szWord,&tmp);
+				m_pKviWindow->console()->completeChannel(szWord, &tmp);
 		}
 
-	//FIXME: Complete also on irc:// starting strings, not only irc.?
-	} else if(KviQString::equalCIN(szWord,"irc.",4))
+		//FIXME: Complete also on irc:// starting strings, not only irc.?
+	}
+	else if(KviQString::equalCIN(szWord, "irc.", 4))
 	{
 		// irc server name
 		if(m_pKviWindow)
 			if(m_pKviWindow->console())
-				m_pKviWindow->console()->completeServer(szWord,&tmp);
-	} else {
+				m_pKviWindow->console()->completeServer(szWord, &tmp);
+	}
+	else
+	{
 		// empty word will end up here
 		if(m_pUserListView)
 		{
@@ -2171,20 +2228,25 @@ void KviInputEditor::completion(bool bShift)
 				if(m_szLastCompletedNick.isEmpty())
 				{
 					//first round of zsh completion
-					m_pUserListView->completeNickBashLike(szWord,&tmp,bShift);
+					m_pUserListView->completeNickBashLike(szWord, &tmp, bShift);
 					bIsNick = true;
-					m_szLastCompletedNick=szWord;
-				} else {
-					standardNickCompletion(bShift,szWord,bFirstWordInLine,bInCommand);
+					m_szLastCompletedNick = szWord;
+				}
+				else
+				{
+					standardNickCompletion(bShift, szWord, bFirstWordInLine, bInCommand);
 					repaintWithCursorOn();
 					return;
 				}
-			} else if(KVI_OPTION_BOOL(KviOption_boolBashLikeNickCompletion))
+			}
+			else if(KVI_OPTION_BOOL(KviOption_boolBashLikeNickCompletion))
 			{
-				m_pUserListView->completeNickBashLike(szWord,&tmp,bShift);
+				m_pUserListView->completeNickBashLike(szWord, &tmp, bShift);
 				bIsNick = true;
-			} else {
-				standardNickCompletion(bShift,szWord,bFirstWordInLine,bInCommand);
+			}
+			else
+			{
+				standardNickCompletion(bShift, szWord, bFirstWordInLine, bInCommand);
 				repaintWithCursorOn();
 				return;
 			}
@@ -2197,9 +2259,12 @@ void KviInputEditor::completion(bool bShift)
 		if(tmp.count() == 1)
 		{
 			szMatch = *(tmp.first());
-			if (szMatch.left(1)=='$')szMatch.remove(0,1);
-			if(bIsCommand && szMatch.right(1)!='.')szMatch.append(' ');
-			else if(bIsFunction && szMatch.right(1)!='.')szMatch.append('(');
+			if(szMatch.left(1) == '$')
+				szMatch.remove(0, 1);
+			if(bIsCommand && szMatch.right(1) != '.')
+				szMatch.append(' ');
+			else if(bIsFunction && szMatch.right(1) != '.')
+				szMatch.append('(');
 			else if(bIsNick)
 			{
 				if(!KVI_OPTION_STRING(KviOption_stringNickCompletionPostfix).isEmpty())
@@ -2214,41 +2279,50 @@ void KviInputEditor::completion(bool bShift)
 				// escape crazy things like Nick\nquit
 				completionEscapeUnsafeToken(szMatch);
 			}
-		} else {
+		}
+		else
+		{
 			QString szAll;
 			QString * szTmp = tmp.first();
 			szMatch = *szTmp;
 			int iWLen = szWord.length();
-			if (szMatch.left(1)=='$')szMatch.remove(0,1);
+			if(szMatch.left(1) == '$')
+				szMatch.remove(0, 1);
 			for(; szTmp; szTmp = tmp.next())
 			{
 				if(szTmp->length() < szMatch.length())
-					szMatch.remove(szTmp->length(),szMatch.length() - szTmp->length());
+					szMatch.remove(szTmp->length(), szMatch.length() - szTmp->length());
 				// All the matches here have length >= word.len()!!!
 				const QChar * b1 = (*szTmp).constData() + iWLen;
 				const QChar * b2 = szMatch.constData() + iWLen;
 				const QChar * c1 = b1;
 				const QChar * c2 = b2;
-				if(bIsDir)while(c1->unicode() && (c1->unicode() == c2->unicode()))c1++,c2++;
-				else while(c1->unicode() && (c1->toLower().unicode() == c2->toLower().unicode()))c1++,c2++;
+				if(bIsDir)
+					while(c1->unicode() && (c1->unicode() == c2->unicode()))
+						c1++, c2++;
+				else
+					while(c1->unicode() && (c1->toLower().unicode() == c2->toLower().unicode()))
+						c1++, c2++;
 				int iLen = iWLen + (c1 - b1);
-				if(iLen < ((int)(szMatch.length())))szMatch.remove(iLen,szMatch.length() - iLen);
-				if(!szAll.isEmpty())szAll.append(", ");
+				if(iLen < ((int)(szMatch.length())))
+					szMatch.remove(iLen, szMatch.length() - iLen);
+				if(!szAll.isEmpty())
+					szAll.append(", ");
 				szAll.append(*szTmp);
 			}
 			if(m_pKviWindow)
-				m_pKviWindow->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("%d matches: %Q"),tmp.count(),&szAll);
+				m_pKviWindow->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("%d matches: %Q"), tmp.count(), &szAll);
 		}
-	} else
-		if(m_pKviWindow)
-			m_pKviWindow->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("No matches"));
+	}
+	else if(m_pKviWindow)
+		m_pKviWindow->outputNoFmt(KVI_OUT_SYSTEMMESSAGE, __tr2qs("No matches"));
 
 	if(!szMatch.isEmpty())
 	{
 		//if(!bIsDir && !bIsNick)match = match.toLower(); <-- why? It is nice to have
 		//						 $module.someFunctionName instad
 		//						 of unreadable $module.somefunctionfame
-		replaceWordBeforeCursor(szWord,szMatch,false);
+		replaceWordBeforeCursor(szWord, szMatch, false);
 	}
 
 	repaintWithCursorOn();
@@ -2258,8 +2332,8 @@ void KviInputEditor::replaceWordBeforeCursor(const QString & szWord, const QStri
 {
 	clearSelection();
 	m_iCursorPosition -= szWord.length();
-	m_szTextBuffer.remove(m_iCursorPosition,szWord.length());
-	m_szTextBuffer.insert(m_iCursorPosition,szReplacement);
+	m_szTextBuffer.remove(m_iCursorPosition, szWord.length());
+	m_szTextBuffer.insert(m_iCursorPosition, szReplacement);
 	m_szTextBuffer.truncate(m_iMaxBufferSize);
 	m_p->bTextBlocksDirty = true;
 	moveCursorTo(m_iCursorPosition + szReplacement.length());
@@ -2281,10 +2355,10 @@ void KviInputEditor::standardNickCompletionInsertCompletedText(const QString & s
 		// escape crazy things like Nick\nquit
 		completionEscapeUnsafeToken(szBuffer);
 	}
-	replaceWordBeforeCursor(szReplacedWord,szBuffer,false);
+	replaceWordBeforeCursor(szReplacedWord, szBuffer, false);
 }
 
-void KviInputEditor::standardNickCompletion(bool bAddMask,QString & szWord,bool bFirstWordInLine,bool bInCommand)
+void KviInputEditor::standardNickCompletion(bool bAddMask, QString & szWord, bool bFirstWordInLine, bool bInCommand)
 {
 	// FIXME: this could be really simplified...
 	if(!m_pUserListView)
@@ -2299,13 +2373,13 @@ void KviInputEditor::standardNickCompletion(bool bAddMask,QString & szWord,bool 
 		if(szWord.isEmpty())
 			return;
 
-		if(m_pUserListView->completeNickStandard(szWord,m_szLastCompletedNick,szBuffer,bAddMask))
+		if(m_pUserListView->completeNickStandard(szWord, m_szLastCompletedNick, szBuffer, bAddMask))
 		{
 			// completed: save the buffer
-			m_szLastCompletionBuffer          = m_szTextBuffer;
-			m_iLastCompletionCursorPosition   = m_iCursorPosition;
-			m_szLastCompletedNick             = szBuffer;
-			standardNickCompletionInsertCompletedText(szWord,szBuffer,bFirstWordInLine,bInCommand);
+			m_szLastCompletionBuffer = m_szTextBuffer;
+			m_iLastCompletionCursorPosition = m_iCursorPosition;
+			m_szLastCompletedNick = szBuffer;
+			standardNickCompletionInsertCompletedText(szWord, szBuffer, bFirstWordInLine, bInCommand);
 			m_bLastCompletionFinished = 0;
 			// REPAINT CALLED FROM OUTSIDE!
 		} // else no match at all
@@ -2317,25 +2391,27 @@ void KviInputEditor::standardNickCompletion(bool bAddMask,QString & szWord,bool 
 	{
 		// Old session
 		// swap the buffers
-		m_szTextBuffer                        = m_szLastCompletionBuffer;
-		m_iCursorPosition                     = m_iLastCompletionCursorPosition;
+		m_szTextBuffer = m_szLastCompletionBuffer;
+		m_iCursorPosition = m_iLastCompletionCursorPosition;
 		m_p->bTextBlocksDirty = true;
 		// re-extract
 		//word = m_szTextBuffer.left(m_iCursorPosition);
 
-		getWordBeforeCursor(szWord,&bFirstWordInLine);
+		getWordBeforeCursor(szWord, &bFirstWordInLine);
 		if(szWord.isEmpty())
 			return;
 
-		if(m_pUserListView->completeNickStandard(szWord,m_szLastCompletedNick,szBuffer,bAddMask))
+		if(m_pUserListView->completeNickStandard(szWord, m_szLastCompletedNick, szBuffer, bAddMask))
 		{
 			// completed
-			m_szLastCompletedNick             = szBuffer;
-			standardNickCompletionInsertCompletedText(szWord,szBuffer,bFirstWordInLine,bInCommand);
-			m_bLastCompletionFinished=0;
+			m_szLastCompletedNick = szBuffer;
+			standardNickCompletionInsertCompletedText(szWord, szBuffer, bFirstWordInLine, bInCommand);
+			m_bLastCompletionFinished = 0;
 			// REPAINT CALLED FROM OUTSIDE!
-		} else {
-			m_bLastCompletionFinished=1;
+		}
+		else
+		{
+			m_bLastCompletionFinished = 1;
 			m_szLastCompletedNick = "";
 		}
 
@@ -2346,18 +2422,21 @@ void KviInputEditor::standardNickCompletion(bool bAddMask,QString & szWord,bool 
 	// re-extract
 	//word = m_szTextBuffer.left(m_iCursorPosition);
 	//getWordBeforeCursor(word,&bFirstWordInLine);
-	if(szWord.isEmpty())return;
-	if(m_pUserListView->completeNickStandard(szWord,"",szBuffer,bAddMask))
+	if(szWord.isEmpty())
+		return;
+	if(m_pUserListView->completeNickStandard(szWord, "", szBuffer, bAddMask))
 	{
 		// completed
-		m_szLastCompletionBuffer          = m_szTextBuffer;
-		m_iLastCompletionCursorPosition   = m_iCursorPosition;
-		m_szLastCompletedNick             = szBuffer;
-		standardNickCompletionInsertCompletedText(szWord,szBuffer,bFirstWordInLine,bInCommand);
-		m_bLastCompletionFinished=0;
+		m_szLastCompletionBuffer = m_szTextBuffer;
+		m_iLastCompletionCursorPosition = m_iCursorPosition;
+		m_szLastCompletedNick = szBuffer;
+		standardNickCompletionInsertCompletedText(szWord, szBuffer, bFirstWordInLine, bInCommand);
+		m_bLastCompletionFinished = 0;
 		// REPAINT CALLED FROM OUTSIDE!
-	} else {
-		m_bLastCompletionFinished=1;
+	}
+	else
+	{
+		m_bLastCompletionFinished = 1;
 		m_szLastCompletedNick = "";
 	}
 }
@@ -2393,10 +2472,10 @@ void KviInputEditor::insertChar(QChar c)
 		}
 	}
 	clearSelection();
-	m_szTextBuffer.insert(m_iCursorPosition,c);
+	m_szTextBuffer.insert(m_iCursorPosition, c);
 	m_p->bTextBlocksDirty = true;
 
-	addUndo(new EditCommand(EditCommand::InsertText,c,m_iCursorPosition));
+	addUndo(new EditCommand(EditCommand::InsertText, c, m_iCursorPosition));
 
 	m_iCursorPosition++;
 	ensureCursorVisible();
@@ -2431,7 +2510,7 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 
 	KviInputEditorTextBlock * pBlock = nullptr;
 
-	foreach(pBlock,m_p->lTextBlocks)
+	foreach(pBlock, m_p->lTextBlocks)
 	{
 		qreal fNextX = fCurX + pBlock->fWidth;
 		if(fNextX >= fXPos)
@@ -2453,7 +2532,7 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 
 	QFontMetricsF * fm = getLastFontMetrics(font());
 
-	QString szPart = fm->elidedText(pBlock->szText,Qt::ElideRight,fWidth + m_p->fFontElisionWidth);
+	QString szPart = fm->elidedText(pBlock->szText, Qt::ElideRight, fWidth + m_p->fFontElisionWidth);
 
 	if(szPart.endsWith(m_p->szFontElision))
 		szPart.truncate(szPart.length() - 1); // kill the elision
@@ -2476,7 +2555,6 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 
 			qreal fNextWidth = fm->width(szPart);
 
-
 			if(fNextWidth >= fWidth)
 			{
 				// gotcha.
@@ -2490,7 +2568,9 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 
 			fPrevWidth = fNextWidth;
 		}
-	} else {
+	}
+	else
+	{
 		// move down removing characters
 		for(;;)
 		{
@@ -2533,7 +2613,7 @@ qreal KviInputEditor::xPositionFromCharIndex(int iChIdx)
 
 	QFontMetricsF * fm = getLastFontMetrics(font());
 
-	foreach(KviInputEditorTextBlock * pBlock,m_p->lTextBlocks)
+	foreach(KviInputEditorTextBlock * pBlock, m_p->lTextBlocks)
 	{
 		int iNextChar = iCurChar + pBlock->iLength;
 		if(iNextChar > iChIdx)
@@ -2573,22 +2653,21 @@ void KviInputEditor::undo()
 	switch(pCommand->type())
 	{
 		case EditCommand::InsertText:
-			m_szTextBuffer.remove(pCommand->startPosition(),pCommand->text().length());
+			m_szTextBuffer.remove(pCommand->startPosition(), pCommand->text().length());
 			m_p->bTextBlocksDirty = true;
 			moveCursorTo(pCommand->startPosition());
-		break;
+			break;
 		case EditCommand::RemoveText:
-			m_szTextBuffer.insert(pCommand->startPosition(),pCommand->text());
+			m_szTextBuffer.insert(pCommand->startPosition(), pCommand->text());
 			m_p->bTextBlocksDirty = true;
-			moveCursorTo(pCommand->startPosition()+pCommand->text().length());
-		break;
+			moveCursorTo(pCommand->startPosition() + pCommand->text().length());
+			break;
 		default:
-			Q_ASSERT_X(false,"KviInputEditor::undo","Unexpected EditCommand type");
+			Q_ASSERT_X(false, "KviInputEditor::undo", "Unexpected EditCommand type");
 			delete pCommand; // argh
 			return;
-		break;
+			break;
 	}
-
 
 	if(!m_pRedoStack)
 	{
@@ -2625,20 +2704,20 @@ void KviInputEditor::redo()
 	switch(pCommand->type())
 	{
 		case EditCommand::InsertText:
-			m_szTextBuffer.insert(pCommand->startPosition(),pCommand->text());
+			m_szTextBuffer.insert(pCommand->startPosition(), pCommand->text());
 			m_p->bTextBlocksDirty = true;
-			moveCursorTo(pCommand->startPosition()+pCommand->text().length());
-		break;
+			moveCursorTo(pCommand->startPosition() + pCommand->text().length());
+			break;
 		case EditCommand::RemoveText:
-			m_szTextBuffer.remove(pCommand->startPosition(),pCommand->text().length());
+			m_szTextBuffer.remove(pCommand->startPosition(), pCommand->text().length());
 			m_p->bTextBlocksDirty = true;
 			moveCursorTo(pCommand->startPosition());
-		break;
+			break;
 		default:
-			Q_ASSERT_X(false,"KviInputEditor::redo","Unexpected EditCommand type");
+			Q_ASSERT_X(false, "KviInputEditor::redo", "Unexpected EditCommand type");
 			delete pCommand; // argh
 			return;
-		break;
+			break;
 	}
 
 	if(!m_pUndoStack)
@@ -2670,14 +2749,14 @@ void KviInputEditor::openHistory()
 	if(!KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))
 		return;
 	if(m_pInputParent->inherits("KviInput"))
-		((KviInput*)(m_pInputParent))->historyButtonClicked();
+		((KviInput *)(m_pInputParent))->historyButtonClicked();
 }
 
 void KviInputEditor::toggleMultiLineEditor()
 {
 	if(m_pInputParent->inherits("KviInput"))
 	{
-		((KviInput*)(m_pInputParent))->multiLinePaste(m_szTextBuffer);
+		((KviInput *)(m_pInputParent))->multiLinePaste(m_szTextBuffer);
 		clear();
 		return;
 	}
@@ -2848,18 +2927,17 @@ void KviInputEditor::popupTextIconWindow()
 
 	qreal fXPos = xPositionFromCharIndex(m_iCursorPosition);
 	if(fXPos > 24)
-		fXPos-=24;
+		fXPos -= 24;
 	if(!g_pTextIconWindow)
 		g_pTextIconWindow = new KviTextIconWindow();
 
-	if(fXPos+g_pTextIconWindow->width() > width())
-		fXPos = width()-(g_pTextIconWindow->width()+2);
-	g_pTextIconWindow->move(mapToGlobal(QPoint(fXPos,-KVI_TEXTICON_WIN_HEIGHT)));
-	g_pTextIconWindow->popup(this,false);
+	if(fXPos + g_pTextIconWindow->width() > width())
+		fXPos = width() - (g_pTextIconWindow->width() + 2);
+	g_pTextIconWindow->move(mapToGlobal(QPoint(fXPos, -KVI_TEXTICON_WIN_HEIGHT)));
+	g_pTextIconWindow->popup(this, false);
 }
 
-
-void KviInputEditor::insertIconCode(const QString &szCode)
+void KviInputEditor::insertIconCode(const QString & szCode)
 {
 	if(m_iCursorPosition == 0)
 	{
@@ -2869,8 +2947,8 @@ void KviInputEditor::insertIconCode(const QString &szCode)
 		return;
 	}
 
-	int idx = m_szTextBuffer.lastIndexOf(KviControlCodes::Icon,m_iCursorPosition-1);
-	int idx2 = m_szTextBuffer.lastIndexOf(QChar(' '),m_iCursorPosition-1);
+	int idx = m_szTextBuffer.lastIndexOf(KviControlCodes::Icon, m_iCursorPosition - 1);
+	int idx2 = m_szTextBuffer.lastIndexOf(QChar(' '), m_iCursorPosition - 1);
 	if((idx == -1) || (idx2 > idx))
 	{
 		insertChar(KviControlCodes::Icon);
@@ -2879,7 +2957,7 @@ void KviInputEditor::insertIconCode(const QString &szCode)
 		return;
 	}
 
-	QString szPart = m_szTextBuffer.mid(idx+1,m_iCursorPosition - idx+1);
+	QString szPart = m_szTextBuffer.mid(idx + 1, m_iCursorPosition - idx + 1);
 
 	if(!szCode.startsWith(szPart))
 	{
@@ -2901,10 +2979,13 @@ void KviInputEditor::insertColor()
 		return;
 	insertChar(KviControlCodes::Color);
 	int xPos = xPositionFromCharIndex(m_iCursorPosition);
-	if(xPos > 24)xPos-=24;
-	if(!g_pColorWindow)g_pColorWindow = new KviColorWindow();
-	if(xPos+g_pColorWindow->width() > width())xPos = width()-(g_pColorWindow->width()+2);
-	g_pColorWindow->move(mapToGlobal(QPoint(xPos,-35)));
+	if(xPos > 24)
+		xPos -= 24;
+	if(!g_pColorWindow)
+		g_pColorWindow = new KviColorWindow();
+	if(xPos + g_pColorWindow->width() > width())
+		xPos = width() - (g_pColorWindow->width() + 2);
+	g_pColorWindow->move(mapToGlobal(QPoint(xPos, -35)));
 	g_pColorWindow->popup(this);
 }
 
@@ -2915,12 +2996,14 @@ void KviInputEditor::copyInternal()
 
 void KviInputEditor::cutInternal()
 {
-	if(!m_bReadOnly) cut();
+	if(!m_bReadOnly)
+		cut();
 }
 
 void KviInputEditor::pasteInternal()
 {
-	if(!m_bReadOnly) pasteClipboardWithConfirmation();
+	if(!m_bReadOnly)
+		pasteClipboardWithConfirmation();
 }
 
 void KviInputEditor::undoInternal()
@@ -2952,7 +3035,9 @@ void KviInputEditor::deletePreviousWord()
 	if(hasSelection())
 	{
 		removeSelected();
-	} else {
+	}
+	else
+	{
 		if(m_iCursorPosition <= 0)
 			return;
 
@@ -2961,7 +3046,7 @@ void KviInputEditor::deletePreviousWord()
 		{
 			if(!m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
 				break;
-			m_szTextBuffer.remove(m_iCursorPosition-1,1);
+			m_szTextBuffer.remove(m_iCursorPosition - 1, 1);
 			m_p->bTextBlocksDirty = true;
 			m_iCursorPosition--;
 		}
@@ -2970,7 +3055,7 @@ void KviInputEditor::deletePreviousWord()
 		{
 			if(m_szTextBuffer.at(m_iCursorPosition - 1).isSpace())
 				break;
-			m_szTextBuffer.remove(m_iCursorPosition-1,1);
+			m_szTextBuffer.remove(m_iCursorPosition - 1, 1);
 			m_p->bTextBlocksDirty = true;
 			m_iCursorPosition--;
 		}
@@ -2986,7 +3071,9 @@ void KviInputEditor::deleteNextWord()
 	if(hasSelection())
 	{
 		removeSelected();
-	} else {
+	}
+	else
+	{
 		if(m_iCursorPosition >= m_szTextBuffer.length())
 			return;
 
@@ -2995,7 +3082,7 @@ void KviInputEditor::deleteNextWord()
 		{
 			if(!m_szTextBuffer.at(m_iCursorPosition).isSpace())
 				break;
-			m_szTextBuffer.remove(m_iCursorPosition,1);
+			m_szTextBuffer.remove(m_iCursorPosition, 1);
 			m_p->bTextBlocksDirty = true;
 		}
 		// skip nonwhitespace
@@ -3003,7 +3090,7 @@ void KviInputEditor::deleteNextWord()
 		{
 			if(m_szTextBuffer.at(m_iCursorPosition).isSpace())
 				break;
-			m_szTextBuffer.remove(m_iCursorPosition,1);
+			m_szTextBuffer.remove(m_iCursorPosition, 1);
 			m_p->bTextBlocksDirty = true;
 		}
 	}
@@ -3065,11 +3152,11 @@ void KviInputEditor::sendPlain()
 	m_iCursorPosition = 0;
 	ensureCursorVisible();
 	repaintWithCursorOn();
-	KviUserInput::parseNonCommand(szBuffer,m_pKviWindow);
+	KviUserInput::parseNonCommand(szBuffer, m_pKviWindow);
 	if(!szBuffer.isEmpty())
 	{
 		KviInputHistory::instance()->add(new QString(szBuffer));
-		m_pHistory->insert(0,new QString(szBuffer));
+		m_pHistory->insert(0, new QString(szBuffer));
 	}
 
 	KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
@@ -3100,12 +3187,12 @@ void KviInputEditor::sendKvs()
 
 	if(szTmp.startsWith(QChar('/')))
 		szTmp.remove(0, 1);
-	KviUserInput::parseCommand(szTmp,m_pKviWindow,QString(),false);
+	KviUserInput::parseCommand(szTmp, m_pKviWindow, QString(), false);
 
-	if (!szBuffer.isEmpty())
+	if(!szBuffer.isEmpty())
 	{
 		KviInputHistory::instance()->add(new QString(szBuffer));
-		m_pHistory->insert(0,new QString(szBuffer));
+		m_pHistory->insert(0, new QString(szBuffer));
 	}
 
 	KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
@@ -3145,7 +3232,9 @@ void KviInputEditor::homeInternalSelection()
 	{
 		// There is no selection
 		m_iSelectionEnd = m_iCursorPosition;
-	} else {
+	}
+	else
+	{
 		// There is selection
 		if(m_iCursorPosition == m_iSelectionEnd)
 			m_iSelectionEnd = m_iSelectionBegin;
@@ -3170,7 +3259,9 @@ void KviInputEditor::endInternalSelection()
 	{
 		// There is no selection
 		m_iSelectionBegin = m_iCursorPosition;
-	} else {
+	}
+	else
+	{
 		// There is selection
 		m_iSelectionBegin = m_iSelectionEnd;
 	}
@@ -3194,12 +3285,15 @@ void KviInputEditor::historyPrev()
 		m_szTextBuffer = *(m_pHistory->at(0));
 		m_p->bTextBlocksDirty = true;
 		m_iCurHistoryIdx = 0;
-	} else if(m_iCurHistoryIdx >= (int)(m_pHistory->count()-1))
+	}
+	else if(m_iCurHistoryIdx >= (int)(m_pHistory->count() - 1))
 	{
 		m_szTextBuffer = m_szSaveTextBuffer;
 		m_p->bTextBlocksDirty = true;
 		m_iCurHistoryIdx = -1;
-	} else {
+	}
+	else
+	{
 		m_iCurHistoryIdx++;
 		m_szTextBuffer = *(m_pHistory->at(m_iCurHistoryIdx));
 		m_p->bTextBlocksDirty = true;
@@ -3222,13 +3316,16 @@ void KviInputEditor::historyNext()
 	if(m_iCurHistoryIdx < 0)
 	{
 		m_szSaveTextBuffer = m_szTextBuffer;
-		m_szTextBuffer = *(m_pHistory->at(m_pHistory->count()-1));
-		m_iCurHistoryIdx =m_pHistory->count()-1;
-	} else if(m_iCurHistoryIdx == 0)
+		m_szTextBuffer = *(m_pHistory->at(m_pHistory->count() - 1));
+		m_iCurHistoryIdx = m_pHistory->count() - 1;
+	}
+	else if(m_iCurHistoryIdx == 0)
 	{
 		m_szTextBuffer = m_szSaveTextBuffer;
 		m_iCurHistoryIdx = -1;
-	} else {
+	}
+	else
+	{
 		m_iCurHistoryIdx--;
 		m_szTextBuffer = *(m_pHistory->at(m_iCurHistoryIdx));
 	}
@@ -3253,15 +3350,16 @@ void KviInputEditor::backspaceHit()
 	if(hasSelection() && (m_iSelectionEnd >= m_iCursorPosition) && (m_iSelectionBegin <= m_iCursorPosition))
 	{
 		//remove the selection
-		addUndo(new EditCommand(EditCommand::RemoveText,m_szTextBuffer.mid(m_iSelectionBegin,m_iSelectionEnd-m_iSelectionBegin),m_iSelectionBegin));
-		m_szTextBuffer.remove(m_iSelectionBegin,m_iSelectionEnd-m_iSelectionBegin);
+		addUndo(new EditCommand(EditCommand::RemoveText, m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd - m_iSelectionBegin), m_iSelectionBegin));
+		m_szTextBuffer.remove(m_iSelectionBegin, m_iSelectionEnd - m_iSelectionBegin);
 		m_p->bTextBlocksDirty = true;
 		m_iCursorPosition = m_iSelectionBegin;
-	} else if(m_iCursorPosition > 0)
+	}
+	else if(m_iCursorPosition > 0)
 	{
 		m_iCursorPosition--;
-		addUndo(new EditCommand(EditCommand::RemoveText,m_szTextBuffer.mid(m_iCursorPosition,1),m_iCursorPosition));
-		m_szTextBuffer.remove(m_iCursorPosition,1);
+		addUndo(new EditCommand(EditCommand::RemoveText, m_szTextBuffer.mid(m_iCursorPosition, 1), m_iCursorPosition));
+		m_szTextBuffer.remove(m_iCursorPosition, 1);
 		m_p->bTextBlocksDirty = true;
 	}
 
@@ -3283,7 +3381,7 @@ void KviInputEditor::deleteHit()
 
 	if(m_iCursorPosition < (int)m_szTextBuffer.length())
 	{
-		m_szTextBuffer.remove(m_iCursorPosition,1);
+		m_szTextBuffer.remove(m_iCursorPosition, 1);
 		m_p->bTextBlocksDirty = true;
 		clearSelection();
 		ensureCursorVisible();

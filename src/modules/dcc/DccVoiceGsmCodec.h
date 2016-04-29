@@ -26,30 +26,31 @@
 
 #include "kvi_settings.h"
 
-
 #ifdef COMPILE_USE_GSM
 
-	#include "DccVoiceCodec.h"
+#include "DccVoiceCodec.h"
 
-	#ifndef _GSMCODEC_CPP_
-		extern bool kvi_gsm_codec_init();
-		extern void kvi_gsm_codec_done();
-	#endif //_GSMCODEC_CPP_
+#ifndef _GSMCODEC_CPP_
+extern bool kvi_gsm_codec_init();
+extern void kvi_gsm_codec_done();
+#endif //_GSMCODEC_CPP_
 
-	class DccVoiceGsmCodec : public DccVoiceCodec
-	{
-	public:
-		DccVoiceGsmCodec();
-		virtual ~DccVoiceGsmCodec();
-	private:
-		void * m_pEncodeState;
-		void * m_pDecodeState;
-	public:
-		virtual void encode(KviDataBuffer * signal,KviDataBuffer * stream);
-		virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
-		virtual int encodedFrameSize();
-		virtual int decodedFrameSize();
-	};
+class DccVoiceGsmCodec : public DccVoiceCodec
+{
+public:
+	DccVoiceGsmCodec();
+	virtual ~DccVoiceGsmCodec();
+
+private:
+	void * m_pEncodeState;
+	void * m_pDecodeState;
+
+public:
+	virtual void encode(KviDataBuffer * signal, KviDataBuffer * stream);
+	virtual void decode(KviDataBuffer * stream, KviDataBuffer * signal);
+	virtual int encodedFrameSize();
+	virtual int decodedFrameSize();
+};
 
 #endif //COMPILE_USE_GSM
 

@@ -25,8 +25,6 @@
 //
 //=============================================================================
 
-
-
 #include "KvsObject_widget.h"
 #include "object_macros.h"
 
@@ -38,27 +36,27 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool setTracking(KviKvsObjectFunctionCall *c);
+	bool setTracking(KviKvsObjectFunctionCall * c);
 
-	bool setValue(KviKvsObjectFunctionCall *c);
-	bool setMinValue(KviKvsObjectFunctionCall *c);
-	bool setMaxValue(KviKvsObjectFunctionCall *c);
-	bool setLineStep(KviKvsObjectFunctionCall *c);
-	bool setPrefix(KviKvsObjectFunctionCall *c);
-	bool setSuffix(KviKvsObjectFunctionCall *c);
-	bool value(KviKvsObjectFunctionCall *c);
-	bool minValue(KviKvsObjectFunctionCall *c);
-	bool maxValue(KviKvsObjectFunctionCall *c);
-	bool lineStep(KviKvsObjectFunctionCall *c);
-	bool setSpecialValueText(KviKvsObjectFunctionCall *c);
-	bool specialValueText(KviKvsObjectFunctionCall *c);
+	bool setValue(KviKvsObjectFunctionCall * c);
+	bool setMinValue(KviKvsObjectFunctionCall * c);
+	bool setMaxValue(KviKvsObjectFunctionCall * c);
+	bool setLineStep(KviKvsObjectFunctionCall * c);
+	bool setPrefix(KviKvsObjectFunctionCall * c);
+	bool setSuffix(KviKvsObjectFunctionCall * c);
+	bool value(KviKvsObjectFunctionCall * c);
+	bool minValue(KviKvsObjectFunctionCall * c);
+	bool maxValue(KviKvsObjectFunctionCall * c);
+	bool lineStep(KviKvsObjectFunctionCall * c);
+	bool setSpecialValueText(KviKvsObjectFunctionCall * c);
+	bool specialValueText(KviKvsObjectFunctionCall * c);
 
-	bool valueChangedEvent(KviKvsObjectFunctionCall *c);
+	bool valueChangedEvent(KviKvsObjectFunctionCall * c);
 
 protected slots:
 	void valueChanged(int);
 };
 
-#endif	//!_CLASS_SPINBOX_H_
+#endif //!_CLASS_SPINBOX_H_

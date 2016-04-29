@@ -24,7 +24,6 @@
 //
 //=============================================================================
 
-
 #include "kvi_settings.h"
 #include "KviQString.h"
 #include "KviKvsTreeNodeInstruction.h"
@@ -37,23 +36,25 @@ class KVIRC_API KviKvsTreeNodeOperation : public KviKvsTreeNodeInstruction
 public:
 	KviKvsTreeNodeOperation(const QChar * pLocation);
 	~KviKvsTreeNodeOperation();
+
 protected:
 	KviKvsTreeNodeData * m_pTargetData; // can't be null
 public:
 	void setTargetVariableReference(KviKvsTreeNodeData * r);
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 };
 
 class KviKvsTreeNodeOperationAssignment : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationAssignment(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationAssignment(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationAssignment();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -63,8 +64,9 @@ class KviKvsTreeNodeOperationDecrement : public KviKvsTreeNodeOperation
 public:
 	KviKvsTreeNodeOperationDecrement(const QChar * pLocation);
 	~KviKvsTreeNodeOperationDecrement();
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -74,8 +76,9 @@ class KviKvsTreeNodeOperationIncrement : public KviKvsTreeNodeOperation
 public:
 	KviKvsTreeNodeOperationIncrement(const QChar * pLocation);
 	~KviKvsTreeNodeOperationIncrement();
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -83,12 +86,13 @@ public:
 class KviKvsTreeNodeOperationSelfAnd : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationSelfAnd(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationSelfAnd(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationSelfAnd();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -96,12 +100,13 @@ public:
 class KviKvsTreeNodeOperationSelfDivision : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationSelfDivision(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationSelfDivision(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationSelfDivision();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -109,12 +114,13 @@ public:
 class KviKvsTreeNodeOperationSelfModulus : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationSelfModulus(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationSelfModulus(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationSelfModulus();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -122,12 +128,13 @@ public:
 class KviKvsTreeNodeOperationSelfMultiplication : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationSelfMultiplication(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationSelfMultiplication(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationSelfMultiplication();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -135,12 +142,13 @@ public:
 class KviKvsTreeNodeOperationSelfOr : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationSelfOr(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationSelfOr(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationSelfOr();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -148,12 +156,13 @@ public:
 class KviKvsTreeNodeOperationSelfShl : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationSelfShl(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationSelfShl(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationSelfShl();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -161,12 +170,13 @@ public:
 class KviKvsTreeNodeOperationSelfShr : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationSelfShr(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationSelfShr(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationSelfShr();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -174,12 +184,13 @@ public:
 class KviKvsTreeNodeOperationSelfSubtraction : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationSelfSubtraction(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationSelfSubtraction(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationSelfSubtraction();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -187,12 +198,13 @@ public:
 class KviKvsTreeNodeOperationSelfSum : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationSelfSum(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationSelfSum(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationSelfSum();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -200,12 +212,13 @@ public:
 class KviKvsTreeNodeOperationSelfXor : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationSelfXor(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationSelfXor(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationSelfXor();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -213,12 +226,13 @@ public:
 class KviKvsTreeNodeOperationStringAppend : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationStringAppend(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationStringAppend(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationStringAppend();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -226,12 +240,13 @@ public:
 class KviKvsTreeNodeOperationArrayAppend : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationArrayAppend(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationArrayAppend(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationArrayAppend();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -239,12 +254,13 @@ public:
 class KviKvsTreeNodeOperationStringAppendWithComma : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationStringAppendWithComma(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationStringAppendWithComma(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationStringAppendWithComma();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -252,12 +268,13 @@ public:
 class KviKvsTreeNodeOperationStringAppendWithSpace : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationStringAppendWithSpace(const QChar * pLocation,KviKvsTreeNodeData * pRightSide);
+	KviKvsTreeNodeOperationStringAppendWithSpace(const QChar * pLocation, KviKvsTreeNodeData * pRightSide);
 	~KviKvsTreeNodeOperationStringAppendWithSpace();
+
 protected:
 	KviKvsTreeNodeData * m_pRightSide; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -265,14 +282,15 @@ public:
 class KviKvsTreeNodeOperationStringTransliteration : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationStringTransliteration(const QChar * pLocation,KviKvsTreeNodeData * pLeft,KviKvsTreeNodeData * pRight,KviKvsTreeNodeData * pFlags);
+	KviKvsTreeNodeOperationStringTransliteration(const QChar * pLocation, KviKvsTreeNodeData * pLeft, KviKvsTreeNodeData * pRight, KviKvsTreeNodeData * pFlags);
 	~KviKvsTreeNodeOperationStringTransliteration();
+
 protected:
-	KviKvsTreeNodeData * m_pLeft; // can't be 0
+	KviKvsTreeNodeData * m_pLeft;  // can't be 0
 	KviKvsTreeNodeData * m_pRight; // can't be 0
 	KviKvsTreeNodeData * m_pFlags; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
@@ -280,17 +298,17 @@ public:
 class KviKvsTreeNodeOperationStringSubstitution : public KviKvsTreeNodeOperation
 {
 public:
-	KviKvsTreeNodeOperationStringSubstitution(const QChar * pLocation,KviKvsTreeNodeData * pLeft,KviKvsTreeNodeData * pRight,KviKvsTreeNodeData * pFlags);
+	KviKvsTreeNodeOperationStringSubstitution(const QChar * pLocation, KviKvsTreeNodeData * pLeft, KviKvsTreeNodeData * pRight, KviKvsTreeNodeData * pFlags);
 	~KviKvsTreeNodeOperationStringSubstitution();
+
 protected:
-	KviKvsTreeNodeData * m_pLeft; // can't be 0
+	KviKvsTreeNodeData * m_pLeft;  // can't be 0
 	KviKvsTreeNodeData * m_pRight; // can't be 0
 	KviKvsTreeNodeData * m_pFlags; // can't be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_OPERATION_H_

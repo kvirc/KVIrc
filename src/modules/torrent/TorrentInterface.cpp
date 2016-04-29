@@ -28,4 +28,4 @@
 
 #include "KviLocale.h"
 
-TorrentInterface *TorrentInterface::m_selected = 0;
+TorrentInterface * TorrentInterface::m_selected = 0;

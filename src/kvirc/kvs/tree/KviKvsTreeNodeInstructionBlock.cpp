@@ -26,7 +26,7 @@
 #include "KviKvsRunTimeContext.h"
 
 KviKvsTreeNodeInstructionBlock::KviKvsTreeNodeInstructionBlock(const QChar * pLocation)
-: KviKvsTreeNodeInstruction(pLocation)
+    : KviKvsTreeNodeInstruction(pLocation)
 {
 	m_pInstructionList = new KviPointerList<KviKvsTreeNodeInstruction>;
 	m_pInstructionList->setAutoDelete(true);
@@ -37,17 +37,17 @@ KviKvsTreeNodeInstructionBlock::~KviKvsTreeNodeInstructionBlock()
 	delete m_pInstructionList;
 }
 
-void KviKvsTreeNodeInstructionBlock::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeInstructionBlock::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Instruction Block";
 }
 
 void KviKvsTreeNodeInstructionBlock::dump(const char * prefix)
 {
-	qDebug("%s InstructionBlock",prefix);
+	qDebug("%s InstructionBlock", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	for(KviKvsTreeNodeInstruction * i = m_pInstructionList->first();i;i = m_pInstructionList->next())
+	for(KviKvsTreeNodeInstruction * i = m_pInstructionList->first(); i; i = m_pInstructionList->next())
 	{
 		i->dump(tmp.toUtf8().data());
 	}
@@ -78,7 +78,8 @@ bool KviKvsTreeNodeInstructionBlock::execute(KviKvsRunTimeContext * c)
 	KviPointerListIterator<KviKvsTreeNodeInstruction> it(*m_pInstructionList);
 	while(KviKvsTreeNodeInstruction * i = it.current())
 	{
-		if(!i->execute(c))return false;
+		if(!i->execute(c))
+			return false;
 		++it;
 	}
 	return true;

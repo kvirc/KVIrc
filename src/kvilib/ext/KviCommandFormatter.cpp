@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "KviCommandFormatter.h"
 #include "KviQString.h"
 
@@ -40,7 +39,9 @@ namespace KviCommandFormatter
 			{
 				// found at least one such leading char
 				bGotIt = true;
-			} else {
+			}
+			else
+			{
 				// we pretend this line to be empty
 				KviCString szTmp = *(*pszArray);
 				szTmp.trim();
@@ -64,7 +65,9 @@ namespace KviCommandFormatter
 			{
 				// found at least one such leading char
 				bGotIt = true;
-			} else {
+			}
+			else
+			{
 				// we pretend this line to be empty
 				QString szTmp = *it;
 				szTmp = szTmp.trimmed();
@@ -91,7 +94,7 @@ namespace KviCommandFormatter
 	{
 		for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
 		{
-			(*it).remove(0,1);
+			(*it).remove(0, 1);
 		}
 	}
 
@@ -117,24 +120,26 @@ namespace KviCommandFormatter
 	{
 		// we can format correctly up to 65536 lines (that's really enough)
 		int iRealLen;
-		KviCString ** pszArray = szBuffer.splitToArray('\n',65536,&iRealLen);
+		KviCString ** pszArray = szBuffer.splitToArray('\n', 65536, &iRealLen);
 		if(pszArray)
 		{
-			while(hasLeadingChars(pszArray,'\t') || hasLeadingChars(pszArray,' '))trimLeading(pszArray);
-			szBuffer.joinFromArray(pszArray,"\n",true);
+			while(hasLeadingChars(pszArray, '\t') || hasLeadingChars(pszArray, ' '))
+				trimLeading(pszArray);
+			szBuffer.joinFromArray(pszArray, "\n", true);
 			KviCString::freeArray(pszArray);
 		}
 	}
 
 	void unindent(QString & szBuffer)
 	{
-		QStringList list = szBuffer.split("\n",QString::KeepEmptyParts);
+		QStringList list = szBuffer.split("\n", QString::KeepEmptyParts);
 
-		while(hasLeadingChars(list,QChar('\t')) || hasLeadingChars(list,QChar(' ')))trimLeading(list);
+		while(hasLeadingChars(list, QChar('\t')) || hasLeadingChars(list, QChar(' ')))
+			trimLeading(list);
 		//szBuffer = list.join("\n"); join implementation sux :D
 		// we WANT the last newline
 		szBuffer = "";
-		for(QStringList::Iterator it = list.begin();it != list.end();++it)
+		for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
 		{
 			szBuffer.append(*it);
 			szBuffer.append(QChar('\n'));
@@ -166,10 +171,10 @@ namespace KviCommandFormatter
 
 		if((szBuffer.at(0) == QChar('{')) && szBuffer.endsWith(QChar('}')))
 		{
-			szBuffer.remove(0,1);
-			szBuffer.remove(szBuffer.length() - 1,1);
+			szBuffer.remove(0, 1);
+			szBuffer.remove(szBuffer.length() - 1, 1);
 			while((szBuffer.length() > 0) && ((szBuffer.at(0) == QChar('\n')) || (szBuffer.at(0) == QChar('\r'))))
-				szBuffer.remove(0,1);
+				szBuffer.remove(0, 1);
 		}
 
 		unindent(szBuffer);
@@ -180,20 +185,20 @@ namespace KviCommandFormatter
 	{
 		// we can format correctly up to 65536 lines (that's really enough)
 		int iRealLen;
-		KviCString ** pszArray = szBuffer.splitToArray('\n',65536,&iRealLen);
+		KviCString ** pszArray = szBuffer.splitToArray('\n', 65536, &iRealLen);
 		if(pszArray)
 		{
-			addLeading(pszArray,'\t');
-			szBuffer.joinFromArray(pszArray,"\n",true);
+			addLeading(pszArray, '\t');
+			szBuffer.joinFromArray(pszArray, "\n", true);
 			KviCString::freeArray(pszArray);
 		}
 	}
 
 	void indent(QString & szBuffer)
 	{
-		QStringList list = szBuffer.split("\n",QString::KeepEmptyParts);
+		QStringList list = szBuffer.split("\n", QString::KeepEmptyParts);
 
-		addLeading(list,QChar('\t'));
+		addLeading(list, QChar('\t'));
 		//szBuffer = list.join("\n"); join implementation sux :D
 		// we WANT the last newline
 		szBuffer = "";
@@ -218,7 +223,7 @@ namespace KviCommandFormatter
 		indent(szBuffer);
 		szBuffer.prepend("{\n");
 		KviQString::stripRightWhiteSpace(szBuffer);
-		KviQString::ensureLastCharIs(szBuffer,'\n');
+		KviQString::ensureLastCharIs(szBuffer, '\n');
 		szBuffer.append("}\n");
 	}
 }

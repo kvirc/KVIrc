@@ -31,22 +31,25 @@
 #include "KviError.h"
 #include "KviPointerList.h"
 
-
 class KviDnsResolverThread;
 
 class KVILIB_API KviDnsResolverResult : public KviHeapObject
 {
 	friend class KviDnsResolver;
 	friend class KviDnsResolverThread;
+
 protected:
 	KviDnsResolverResult();
+
 public:
 	~KviDnsResolverResult();
+
 protected:
 	KviError::Code m_eError;
 	KviPointerList<QString> * m_pHostnameList;
 	KviPointerList<QString> * m_pIpAddressList;
 	QString m_szQuery;
+
 public:
 	KviError::Code error()
 	{
@@ -65,7 +68,7 @@ public:
 		return m_pIpAddressList;
 	}
 
-	const QString &query()
+	const QString & query()
 	{
 		return m_szQuery;
 	}
@@ -85,9 +88,7 @@ protected:
 	void appendAddress(const QString & szAddr);
 };
 
-
 #include <QObject>
-
 
 class KVILIB_API KviDnsResolver : public QObject, public KviHeapObject
 {
@@ -96,14 +97,28 @@ class KVILIB_API KviDnsResolver : public QObject, public KviHeapObject
 public:
 	KviDnsResolver();
 	virtual ~KviDnsResolver();
+
 public:
-	enum QueryType { IPv4, IPv6, Any };
-	enum State     { Idle, Busy, Failure, Success };
+	enum QueryType
+	{
+		IPv4,
+		IPv6,
+		Any
+	};
+	enum State
+	{
+		Idle,
+		Busy,
+		Failure,
+		Success
+	};
+
 protected:
 	void * m_pAuxData;
 	KviDnsResolverThread * m_pSlaveThread;
 	KviDnsResolverResult * m_pDnsResult;
 	State m_state;
+
 public:
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
@@ -114,7 +129,7 @@ public:
 	bool lookup(const QString & szQuery, QueryType type);
 
 	// Current object state
-	State state(){ return m_state; };
+	State state() { return m_state; };
 
 	// Results (return always non null-data..but valid results only if state() == Success or Failure)
 	KviError::Code error();
@@ -133,17 +148,22 @@ public:
 	bool isRunning() const;
 
 	// Auxiliary data store
-	void setAuxData(void * pAuxData){ m_pAuxData = pAuxData; };
-	void * releaseAuxData(){ void * pData = m_pAuxData; m_pAuxData = 0; return pData; };
+	void setAuxData(void * pAuxData) { m_pAuxData = pAuxData; };
+	void * releaseAuxData()
+	{
+		void * pData = m_pAuxData;
+		m_pAuxData = 0;
+		return pData;
+	};
+
 protected:
-	virtual bool event(QEvent *e);
+	virtual bool event(QEvent * e);
+
 private:
 	KviDnsResolverResult * result();
 signals:
 	void lookupDone(KviDnsResolver *);
 };
-
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 // INTERNAL CLASSES
@@ -158,9 +178,10 @@ class KviDnsResolverThreadEvent : public QEvent
 {
 private:
 	KviDnsResolverResult * m_pResult;
+
 public:
 	KviDnsResolverThreadEvent(KviDnsResolverResult * pResult)
-		: QEvent(QEvent::User), m_pResult(pResult)
+	    : QEvent(QEvent::User), m_pResult(pResult)
 	{
 		KVI_ASSERT(pResult);
 	}
@@ -170,6 +191,7 @@ public:
 		if(m_pResult)
 			delete m_pResult;
 	}
+
 public:
 	KviDnsResolverResult * releaseResult()
 	{
@@ -182,20 +204,27 @@ public:
 class KviDnsResolverThread : public QThread
 {
 	friend class KviDnsResolver;
+
 protected:
 	KviDnsResolverThread(KviDnsResolver * pDns);
 	virtual ~KviDnsResolverThread();
+
 protected:
-	QString                      m_szQuery;
-	KviDnsResolver::QueryType    m_queryType;
-	KviDnsResolver             * m_pParentDns;
+	QString m_szQuery;
+	KviDnsResolver::QueryType m_queryType;
+	KviDnsResolver * m_pParentDns;
+
 public:
-	void setQuery(const QString & szQuery, KviDnsResolver::QueryType type){ m_szQuery = szQuery; m_queryType = type; };
+	void setQuery(const QString & szQuery, KviDnsResolver::QueryType type)
+	{
+		m_szQuery = szQuery;
+		m_queryType = type;
+	};
+
 protected:
 	virtual void run();
 	KviError::Code translateDnsError(int iErr);
 	void postDnsError(KviDnsResolverResult * pDns, KviError::Code error);
 };
-
 
 #endif //_KVI_DNS_H_

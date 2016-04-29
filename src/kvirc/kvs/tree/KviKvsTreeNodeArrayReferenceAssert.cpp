@@ -30,7 +30,7 @@
 #include "KviKvsObject.h"
 
 KviKvsTreeNodeArrayReferenceAssert::KviKvsTreeNodeArrayReferenceAssert(const QChar * pLocation, KviKvsTreeNodeData * pSource)
-: KviKvsTreeNodeIndirectData(pLocation,pSource)
+    : KviKvsTreeNodeIndirectData(pLocation, pSource)
 {
 }
 
@@ -50,16 +50,20 @@ void KviKvsTreeNodeArrayReferenceAssert::contextDescription(QString & szBuffer)
 
 void KviKvsTreeNodeArrayReferenceAssert::dump(const char * prefix)
 {
-	qDebug("%s ArrayReferenceAssert",prefix);
+	qDebug("%s ArrayReferenceAssert", prefix);
 }
 
 bool KviKvsTreeNodeArrayReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	if(o)
 	{
-		if(!m_pSource->evaluateReadOnlyInObjectScope(o,c,pBuffer))return false;
-	} else {
-		if(!m_pSource->evaluateReadOnly(c,pBuffer))return false;
+		if(!m_pSource->evaluateReadOnlyInObjectScope(o, c, pBuffer))
+			return false;
+	}
+	else
+	{
+		if(!m_pSource->evaluateReadOnly(c, pBuffer))
+			return false;
 	}
 
 	if(!pBuffer->isArray())
@@ -68,7 +72,7 @@ bool KviKvsTreeNodeArrayReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObj
 		{
 			QString szType;
 			pBuffer->getTypeName(szType);
-			c->error(this,__tr2qs_ctx("Array reference assert failed: the variable evaluated to type '%Q'","kvs"),&szType);
+			c->error(this, __tr2qs_ctx("Array reference assert failed: the variable evaluated to type '%Q'", "kvs"), &szType);
 			return false;
 		}
 	}
@@ -79,8 +83,9 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeArrayReferenceAssert::evaluateReadWrite
 {
 	KviKvsRWEvaluationResult * r;
 	if(o)
-		r = m_pSource->evaluateReadWriteInObjectScope(o,c);
-	else r = m_pSource->evaluateReadWrite(c);
+		r = m_pSource->evaluateReadWriteInObjectScope(o, c);
+	else
+		r = m_pSource->evaluateReadWrite(c);
 
 	if(!r)
 		return 0;
@@ -90,10 +95,10 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeArrayReferenceAssert::evaluateReadWrite
 
 bool KviKvsTreeNodeArrayReferenceAssert::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
-	return evaluateReadOnlyInObjectScope(0,c,pBuffer);
+	return evaluateReadOnlyInObjectScope(0, c, pBuffer);
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeArrayReferenceAssert::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
-	return evaluateReadWriteInObjectScope(0,c);
+	return evaluateReadWriteInObjectScope(0, c);
 }

@@ -31,7 +31,6 @@
 
 #include <QDialog>
 
-
 /*
 	@doc: dialog
 	@title:
@@ -54,35 +53,35 @@
 	@functions:
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_dialog,"dialog","widget")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dialog,setModal)
+KVSO_BEGIN_REGISTERCLASS(KvsObject_dialog, "dialog", "widget")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_dialog, setModal)
 KVSO_END_REGISTERCLASS(KvsObject_dialog)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_dialog,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_dialog, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_dialog)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_dialog)
 
 KVSO_END_CONSTRUCTOR(KvsObject_dialog)
 
-bool KvsObject_dialog::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_dialog::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	QWidget * w = g_pApp->activeModalWidget();
-	if(!w)w = g_pMainWindow;
+	if(!w)
+		w = g_pMainWindow;
 	QDialog * d = new QDialog(parentScriptWidget() ? parentScriptWidget() : w);
 	d->setObjectName(getName());
 	//d->setModal(true);
 	setObject(d);
 	return true;
 }
-KVSO_CLASS_FUNCTION(dialog,setModal)
+KVSO_CLASS_FUNCTION(dialog, setModal)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
 	((QDialog *)widget())->setModal(bEnabled);
 	return true;

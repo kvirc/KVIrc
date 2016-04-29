@@ -33,14 +33,16 @@ class KVIRC_API KviIrcConnectionNetsplitDetectorData
 public:
 	KviIrcConnectionNetsplitDetectorData();
 	~KviIrcConnectionNetsplitDetectorData();
+
 protected:
-	QString        m_szLastNetsplitOnQuitReason;
-	kvi_time_t     m_tLastNetsplitOnQuit;
+	QString m_szLastNetsplitOnQuitReason;
+	kvi_time_t m_tLastNetsplitOnQuit;
+
 public:
-	const QString & lastNetsplitOnQuitReason(){ return m_szLastNetsplitOnQuitReason; };
-	void setLastNetsplitOnQuitReason(const QString &szReason){ m_szLastNetsplitOnQuitReason = szReason; };
-	kvi_time_t lastNetsplitOnQuitTime(){ return m_tLastNetsplitOnQuit; };
-	void setLastNetsplitOnQuitTime(kvi_time_t t){ m_tLastNetsplitOnQuit = t; };
+	const QString & lastNetsplitOnQuitReason() { return m_szLastNetsplitOnQuitReason; };
+	void setLastNetsplitOnQuitReason(const QString & szReason) { m_szLastNetsplitOnQuitReason = szReason; };
+	kvi_time_t lastNetsplitOnQuitTime() { return m_tLastNetsplitOnQuit; };
+	void setLastNetsplitOnQuitTime(kvi_time_t t) { m_tLastNetsplitOnQuit = t; };
 };
 
 #endif //!_KVI_IRCCONNECTIONNETSPLITDETECTORDATA_H_

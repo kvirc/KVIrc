@@ -34,25 +34,28 @@
 class KVILIB_API KviRegisteredChannel : public KviHeapObject
 {
 	friend class KviRegisteredChannelDataBase;
+
 public:
 	KviRegisteredChannel(const QString & szName, const QString & szNetMask);
 	~KviRegisteredChannel();
+
 protected:
-	QString                  m_szName;
-	QString                  m_szNetMask;
-	QHash<QString,QString> * m_pPropertyDict;
+	QString m_szName;
+	QString m_szNetMask;
+	QHash<QString, QString> * m_pPropertyDict;
+
 public:
-	QHash<QString,QString> * propertyDict(){ return m_pPropertyDict; }
+	QHash<QString, QString> * propertyDict() { return m_pPropertyDict; }
 
-	const QString & name(){ return m_szName; }
+	const QString & name() { return m_szName; }
 
-	const QString & netMask(){ return m_szNetMask; }
+	const QString & netMask() { return m_szNetMask; }
 
-	QString property(const QString & szName){ return m_pPropertyDict->value(szName); }
+	QString property(const QString & szName) { return m_pPropertyDict->value(szName); }
 
-	void setProperty(const QString & szName,const QString & szValue){ m_pPropertyDict->insert(szName,szValue); }
+	void setProperty(const QString & szName, const QString & szValue) { m_pPropertyDict->insert(szName, szValue); }
 
-	void removeProperty(const QString & szName){ m_pPropertyDict->remove(szName); }
+	void removeProperty(const QString & szName) { m_pPropertyDict->remove(szName); }
 };
 
 typedef KVILIB_API_TYPEDEF KviPointerList<KviRegisteredChannel> KviRegisteredChannelList;

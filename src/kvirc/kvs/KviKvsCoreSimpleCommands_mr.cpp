@@ -50,7 +50,7 @@
 #include <QTimer>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#include <shellapi.h>
+#include <shellapi.h>
 #endif
 
 namespace KviKvsCoreSimpleCommands
@@ -104,7 +104,7 @@ namespace KviKvsCoreSimpleCommands
 
 		QString szText;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szText)
+		KVSCSC_PARAMETER("text", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szText)
 		KVSCSC_PARAMETERS_END
 
 		switch(KVSCSC_pWindow->type())
@@ -115,10 +115,10 @@ namespace KviKvsCoreSimpleCommands
 			case KviWindow::DccChat:
 			case KviWindow::DccVideo:
 				KVSCSC_pWindow->ownAction(szText);
-			break;
+				break;
 			default:
-				KVSCSC_pContext->warning(__tr2qs_ctx("/me can be used only in channels, queries and DCC chat windows","kvs"));
-			break;
+				KVSCSC_pContext->warning(__tr2qs_ctx("/me can be used only in channels, queries and DCC chat windows", "kvs"));
+				break;
 		}
 
 		return true;
@@ -153,7 +153,7 @@ namespace KviKvsCoreSimpleCommands
 
 		QString szText;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("text",KVS_PT_STRING,KVS_PF_APPENDREMAINING,szText)
+		KVSCSC_PARAMETER("text", KVS_PT_STRING, KVS_PF_APPENDREMAINING, szText)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
@@ -162,7 +162,7 @@ namespace KviKvsCoreSimpleCommands
 
 		if(!szTxt.isEmpty())
 		{
-			if(!KVSCSC_pConnection->sendFmtData("MODE %s",szTxt.data()))
+			if(!KVSCSC_pConnection->sendFmtData("MODE %s", szTxt.data()))
 				return KVSCSC_pContext->warningNoIrcConnection();
 		}
 
@@ -242,15 +242,16 @@ namespace KviKvsCoreSimpleCommands
 
 		QString szNick;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("nickname",KVS_PT_NONEMPTYSTRING,0,szNick)
+		KVSCSC_PARAMETER("nickname", KVS_PT_NONEMPTYSTRING, 0, szNick)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
 
 		QByteArray szData = KVSCSC_pConnection->encodeText(szNick);
-		if(!szData.data())szData = "";
+		if(!szData.data())
+			szData = "";
 
-		if(!KVSCSC_pConnection->sendFmtData("NICK %s",szData.data()))
+		if(!KVSCSC_pConnection->sendFmtData("NICK %s", szData.data()))
 			return KVSCSC_pContext->warningNoIrcConnection();
 
 		return true;
@@ -287,27 +288,30 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(notice)
 	{
-		QString szTarget,szText;
+		QString szTarget, szText;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("target",KVS_PT_NONEMPTYSTRING,0,szTarget)
-			KVSCSC_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szText)
+		KVSCSC_PARAMETER("target", KVS_PT_NONEMPTYSTRING, 0, szTarget)
+		KVSCSC_PARAMETER("text", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szText)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
 
 		KviWindow * w = KVSCSC_pConnection->findChannel(szTarget);
-		if(!w)w = KVSCSC_pConnection->findQuery(szTarget);
+		if(!w)
+			w = KVSCSC_pConnection->findQuery(szTarget);
 
 		QByteArray szT = KVSCSC_pConnection->encodeText(szTarget);
 		QByteArray szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
-		if(!szT.data())szT = ""; // encoding problems ?
-		if(!szD.data())szD = ""; // encoding problems ?
+		if(!szT.data())
+			szT = ""; // encoding problems ?
+		if(!szD.data())
+			szD = ""; // encoding problems ?
 
-		if(!(KVSCSC_pConnection->sendFmtData("NOTICE %s :%s",szT.data(),szD.data())))
+		if(!(KVSCSC_pConnection->sendFmtData("NOTICE %s :%s", szT.data(), szD.data())))
 			return KVSCSC_pContext->warningNoIrcConnection();
 
-		if(!KVSCSC_pSwitches->find('q',"quiet"))
-			KVSCSC_pWindow->output(KVI_OUT_OWNPRIVMSG,"[NOTICE >>> %Q]: %Q",&szTarget,&szText);
+		if(!KVSCSC_pSwitches->find('q', "quiet"))
+			KVSCSC_pWindow->output(KVI_OUT_OWNPRIVMSG, "[NOTICE >>> %Q]: %Q", &szTarget, &szText);
 
 		return true;
 	}
@@ -341,7 +345,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(op)
 	{
-		return multipleModeCommand(__pContext,__pParams,__pSwitches,'+','o');
+		return multipleModeCommand(__pContext, __pParams, __pSwitches, '+', 'o');
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -387,42 +391,49 @@ namespace KviKvsCoreSimpleCommands
 
 		QString szUrl;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("url",KVS_PT_NONEMPTYSTRING,KVS_PF_APPENDREMAINING,szUrl)
+		KVSCSC_PARAMETER("url", KVS_PT_NONEMPTYSTRING, KVS_PF_APPENDREMAINING, szUrl)
 		KVSCSC_PARAMETERS_END
 
 		QString szCommand;
-		if(KviQString::equalCIN(szUrl,"www.",4))
+		if(KviQString::equalCIN(szUrl, "www.", 4))
 		{
 			szCommand = KVI_OPTION_STRING(KviOption_stringUrlHttpCommand);
 			szUrl.prepend("http://");
-		} else if(KviQString::equalCIN(szUrl,"http:",5))
+		}
+		else if(KviQString::equalCIN(szUrl, "http:", 5))
 		{
 			szCommand = KVI_OPTION_STRING(KviOption_stringUrlHttpCommand);
-		} else if(KviQString::equalCIN(szUrl,"https:",6))
+		}
+		else if(KviQString::equalCIN(szUrl, "https:", 6))
 		{
 			szCommand = KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand);
-		} else if(KviQString::equalCIN(szUrl,"ftp",3))
+		}
+		else if(KviQString::equalCIN(szUrl, "ftp", 3))
 		{
 			szCommand = KVI_OPTION_STRING(KviOption_stringUrlFtpCommand);
-			if(KviQString::equalCIN(szUrl,"ftp.",4))szUrl.prepend("ftp://");
-		} else if(KviQString::equalCIN(szUrl,"file",4))
+			if(KviQString::equalCIN(szUrl, "ftp.", 4))
+				szUrl.prepend("ftp://");
+		}
+		else if(KviQString::equalCIN(szUrl, "file", 4))
 		{
 			szCommand = KVI_OPTION_STRING(KviOption_stringUrlFileCommand);
-		} else if(KviQString::equalCIN(szUrl,"irc",3))
+		}
+		else if(KviQString::equalCIN(szUrl, "irc", 3))
 		{
-			if(KviIrcUrl::run(szUrl,KviIrcUrl::TryEveryContext | KviIrcUrl::DoNotPartChans,KVSCSC_pContext->console()) & KviIrcUrl::InvalidProtocol)
+			if(KviIrcUrl::run(szUrl, KviIrcUrl::TryEveryContext | KviIrcUrl::DoNotPartChans, KVSCSC_pContext->console()) & KviIrcUrl::InvalidProtocol)
 			{
-				KVSCSC_pContext->warning(__tr2qs_ctx("Invalid IRC URL (%Q)","kvs"),&szUrl);
+				KVSCSC_pContext->warning(__tr2qs_ctx("Invalid IRC URL (%Q)", "kvs"), &szUrl);
 			}
 			return true;
-		} else if(KviQString::equalCIN(szUrl,"mailto",6))
+		}
+		else if(KviQString::equalCIN(szUrl, "mailto", 6))
 		{
 			szCommand = KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand);
 		}
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		if(KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers))
 		{
-			intptr_t iRet = (intptr_t)::ShellExecute(NULL, "open", szUrl.toLocal8Bit().data(),NULL, NULL, SW_SHOWNORMAL);
+			intptr_t iRet = (intptr_t)::ShellExecute(NULL, "open", szUrl.toLocal8Bit().data(), NULL, NULL, SW_SHOWNORMAL);
 			if(iRet <= 32)
 			{
 				// FIXME: Write a better error message
@@ -458,11 +469,14 @@ namespace KviKvsCoreSimpleCommands
 					                 DLLs required to run this application was corrupt.
 					  21             Application requires Microsoft Windows 32-bit extensions.
 				*/
-				KVSCSC_pContext->warning(__tr2qs_ctx("The system handler for the URL failed to execute: system error is %1","kvs").arg(iRet));
+				KVSCSC_pContext->warning(__tr2qs_ctx("The system handler for the URL failed to execute: system error is %1", "kvs").arg(iRet));
 			}
-		} else {
+		}
+		else
+		{
 #endif
-			if(szCommand.isEmpty())szCommand = KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand);
+			if(szCommand.isEmpty())
+				szCommand = KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand);
 
 			if(!szCommand.isEmpty())
 			{
@@ -470,12 +484,13 @@ namespace KviKvsCoreSimpleCommands
 				vList.append(new KviKvsVariant(szUrl));
 
 				QString szName = "openurl::handler";
-				KviKvsScript script(szName,szCommand);
+				KviKvsScript script(szName, szCommand);
 
-				if(!script.run(KVSCSC_pWindow,&vList,0,KviKvsScript::PreserveParams))
-					KVSCSC_pContext->warning(__tr2qs_ctx("The commandline for this URL type seems to be broken (%Q)","kvs"),&szUrl);
-
-			} else KVSCSC_pContext->warning(__tr2qs_ctx("No commandline specified for this type of URL (%Q)","kvs"),&szUrl);
+				if(!script.run(KVSCSC_pWindow, &vList, 0, KviKvsScript::PreserveParams))
+					KVSCSC_pContext->warning(__tr2qs_ctx("The commandline for this URL type seems to be broken (%Q)", "kvs"), &szUrl);
+			}
+			else
+				KVSCSC_pContext->warning(__tr2qs_ctx("No commandline specified for this type of URL (%Q)", "kvs"), &szUrl);
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		}
 #endif
@@ -484,7 +499,6 @@ namespace KviKvsCoreSimpleCommands
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 	/*
 		@doc: oper
@@ -568,16 +582,19 @@ namespace KviKvsCoreSimpleCommands
 		QString szName;
 		QString szValue;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("optName",KVS_PT_STRING,KVS_PF_OPTIONAL,szName)
-			KVSCSC_PARAMETER("optValue",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szValue)
+		KVSCSC_PARAMETER("optName", KVS_PT_STRING, KVS_PF_OPTIONAL, szName)
+		KVSCSC_PARAMETER("optValue", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szValue)
 		KVSCSC_PARAMETERS_END
 
 		if(szName.isEmpty())
 		{
 			// list available options
 			g_pApp->listAvailableOptions(KVSCSC_pWindow);
-		} else {
-			if(!g_pApp->setOptionValue(szName,szValue))KVSCSC_pContext->warning(__tr2qs_ctx("Option setting error: unknown option or invalid value for option type","kvs"));
+		}
+		else
+		{
+			if(!g_pApp->setOptionValue(szName, szValue))
+				KVSCSC_pContext->warning(__tr2qs_ctx("Option setting error: unknown option or invalid value for option type", "kvs"));
 		}
 
 		return true;
@@ -660,8 +677,8 @@ namespace KviKvsCoreSimpleCommands
 		QString szFileName;
 		KviKvsVariantList vList;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("filename",KVS_PT_NONEMPTYSTRING,0,szFileName)
-			KVSCSC_PARAMETER("params",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,vList)
+		KVSCSC_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSCSC_PARAMETER("params", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, vList)
 		KVSCSC_PARAMETERS_END
 
 		KviFileUtils::adjustFilePath(szFileName);
@@ -672,23 +689,27 @@ namespace KviKvsCoreSimpleCommands
 			KVSCSC_pContext->enterBlockingSection();
 
 			bool bResult = KviFileDialog::askForOpenFileName(
-					szTmp,
-					__tr2qs_ctx("Choose a file to parse","kvs"),
-					szFileName.toUtf8().data(),
-					"*.kvs",
-					false,
-					true,
-					g_pMainWindow
-				);
+			    szTmp,
+			    __tr2qs_ctx("Choose a file to parse", "kvs"),
+			    szFileName.toUtf8().data(),
+			    "*.kvs",
+			    false,
+			    true,
+			    g_pMainWindow);
 
-			if(!KVSCSC_pContext->leaveBlockingSection())return false; // need to stop immediately
-			if(!bResult)return true;
+			if(!KVSCSC_pContext->leaveBlockingSection())
+				return false; // need to stop immediately
+			if(!bResult)
+				return true;
 
 			szFileName = szTmp;
 
-			if(szFileName.isEmpty())return true; // done
+			if(szFileName.isEmpty())
+				return true; // done
 			KviFileUtils::adjustFilePath(szFileName);
-		} else {
+		}
+		else
+		{
 			QFileInfo inf(szFileName);
 			if(inf.isRelative())
 			{
@@ -696,7 +717,7 @@ namespace KviKvsCoreSimpleCommands
 				{
 					QFileInfo inf2(*pszPath);
 					QString szCheckFileName = inf2.path();
-					KviQString::ensureLastCharIs(szCheckFileName,KVI_PATH_SEPARATOR_CHAR);
+					KviQString::ensureLastCharIs(szCheckFileName, KVI_PATH_SEPARATOR_CHAR);
 					szCheckFileName += szFileName;
 					if(KviFileUtils::fileExists(szCheckFileName))
 						szFileName = szCheckFileName;
@@ -708,30 +729,33 @@ namespace KviKvsCoreSimpleCommands
 		szFileName = infz.absoluteFilePath();
 
 		QString szBuffer;
-		if(!KviFileUtils::loadFile(szFileName,szBuffer,true)) // <-- scripts SHOULD be shipped in utf8 format
+		if(!KviFileUtils::loadFile(szFileName, szBuffer, true)) // <-- scripts SHOULD be shipped in utf8 format
 		{
-			if(KVSCSC_pSwitches->find('e',"fail-on-load"))
+			if(KVSCSC_pSwitches->find('e', "fail-on-load"))
 			{
-				KVSCSC_pContext->error(__tr2qs_ctx("Failed to load the file '%Q' for parsing","kvs"),&szFileName);
+				KVSCSC_pContext->error(__tr2qs_ctx("Failed to load the file '%Q' for parsing", "kvs"), &szFileName);
 				return false;
-			} else {
-				if(!KVSCSC_pSwitches->find('q',"quiet"))
-					KVSCSC_pContext->warning(__tr2qs_ctx("Failed to load the file '%Q' for parsing","kvs"),&szFileName);
+			}
+			else
+			{
+				if(!KVSCSC_pSwitches->find('q', "quiet"))
+					KVSCSC_pContext->warning(__tr2qs_ctx("Failed to load the file '%Q' for parsing", "kvs"), &szFileName);
 				return true;
 			}
 		}
 
-		KviKvsScript s(szFileName,szBuffer);
+		KviKvsScript s(szFileName, szBuffer);
 
-		KviKvsVariant * pRetVal = KVSCSC_pSwitches->find('r',"propagate-return") ? KVSCSC_pContext->returnValue() : 0;
+		KviKvsVariant * pRetVal = KVSCSC_pSwitches->find('r', "propagate-return") ? KVSCSC_pContext->returnValue() : 0;
 		KviKvsVariant vFileName(szFileName);
 		vList.prepend(&vFileName);
 
 		KviKvsExtendedRunTimeData rtd(&szFileName);
 
-		if(!s.run(KVSCSC_pContext->window(),&vList,pRetVal,KviKvsScript::PreserveParams,&rtd))
+		if(!s.run(KVSCSC_pContext->window(), &vList, pRetVal, KviKvsScript::PreserveParams, &rtd))
 		{
-			if(KVSCSC_pSwitches->find('f',"fail-on-error"))return false;
+			if(KVSCSC_pSwitches->find('f', "fail-on-error"))
+				return false;
 		}
 		return true;
 	}
@@ -775,10 +799,10 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(part)
 	{
-		QString szChans,szMsg;
+		QString szChans, szMsg;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("chans",KVS_PT_STRING,KVS_PF_OPTIONAL,szChans)
-			KVSCSC_PARAMETER("part_message",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szMsg)
+		KVSCSC_PARAMETER("chans", KVS_PT_STRING, KVS_PF_OPTIONAL, szChans)
+		KVSCSC_PARAMETER("part_message", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szMsg)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
@@ -787,17 +811,20 @@ namespace KviKvsCoreSimpleCommands
 		{
 			if(KVSCSC_pWindow->type() == KviWindow::Channel)
 				szChans = KVSCSC_pWindow->target();
-			else {
-				if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs_ctx("Missing channel list","kvs"));
+			else
+			{
+				if(!KVSCSC_pSwitches->find('q', "quiet"))
+					KVSCSC_pContext->warning(__tr2qs_ctx("Missing channel list", "kvs"));
 				return true;
 			}
 		}
 
 		QByteArray szEncodedChans = KVSCSC_pConnection->encodeText(szChans);
 
-		QStringList sl = szChans.split(",",QString::SkipEmptyParts);
+		QStringList sl = szChans.split(",", QString::SkipEmptyParts);
 
-		if(szMsg.isEmpty())szMsg = KVI_OPTION_STRING(KviOption_stringPartMessage);
+		if(szMsg.isEmpty())
+			szMsg = KVI_OPTION_STRING(KviOption_stringPartMessage);
 
 		QByteArray szText;
 		if(sl.count() == 1)
@@ -808,22 +835,26 @@ namespace KviKvsCoreSimpleCommands
 				szText = ch->encodeText(szMsg);
 			else
 				szText = KVSCSC_pConnection->encodeText(szMsg);
-		} else {
+		}
+		else
+		{
 			// multiple chans, use connection encoding
 			szText = KVSCSC_pConnection->encodeText(szMsg);
 		}
-		if(!(KVSCSC_pConnection->sendFmtData("PART %s :%s",szEncodedChans.data(),szText.data())))
+		if(!(KVSCSC_pConnection->sendFmtData("PART %s :%s", szEncodedChans.data(), szText.data())))
 			return KVSCSC_pContext->warningNoIrcConnection();
 
-
-		for(QStringList::Iterator it=sl.begin();it != sl.end();it++)
+		for(QStringList::Iterator it = sl.begin(); it != sl.end(); it++)
 		{
 			KviChannelWindow * ch = KVSCSC_pConnection->findChannel(*it);
 			if(ch)
 			{
-				ch->partMessageSent(!KVSCSC_pSwitches->find('k',"keep"),!KVSCSC_pSwitches->find('s',"silent"));
-			} else {
-				if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs_ctx("You don't appear to be on channel %s","kvs"),(*it).toUtf8().data());
+				ch->partMessageSent(!KVSCSC_pSwitches->find('k', "keep"), !KVSCSC_pSwitches->find('s', "silent"));
+			}
+			else
+			{
+				if(!KVSCSC_pSwitches->find('q', "quiet"))
+					KVSCSC_pContext->warning(__tr2qs_ctx("You don't appear to be on channel %s", "kvs"), (*it).toUtf8().data());
 			}
 		}
 
@@ -872,18 +903,18 @@ namespace KviKvsCoreSimpleCommands
 		KviModule * m = g_pModuleManager->getModule("snd");
 		if(!m)
 		{
-			KVSCSC_pContext->error(__tr2qs_ctx("Module command call failed: can't load the module 'snd'","kvs"));
+			KVSCSC_pContext->error(__tr2qs_ctx("Module command call failed: can't load the module 'snd'", "kvs"));
 			return false;
 		}
 
 		KviKvsModuleSimpleCommandExecRoutine * proc = m->kvsFindSimpleCommand("play");
 		if(!proc)
 		{
-			KVSCSC_pContext->error(__tr2qs_ctx("Module command call failed: the module 'snd' doesn't export a command named 'play'","kvs"));
+			KVSCSC_pContext->error(__tr2qs_ctx("Module command call failed: the module 'snd' doesn't export a command named 'play'", "kvs"));
 			return false;
 		}
 
-		KviKvsModuleCommandCall call(m,KVSCSC_pContext,KVSCSC_pParams,KVSCSC_pSwitches);
+		KviKvsModuleCommandCall call(m, KVSCSC_pContext, KVSCSC_pParams, KVSCSC_pSwitches);
 
 		return (*proc)(&call);
 	}
@@ -913,14 +944,14 @@ namespace KviKvsCoreSimpleCommands
 	{
 		KviKvsVariantList lParameters;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("params",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,lParameters)
+		KVSCSC_PARAMETER("params", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, lParameters)
 		KVSCSC_PARAMETERS_END
 
 		//c->warning(__tr2qs("/popup is deprecated: use /popup.show instead")); <-- do it sometime in the future
 
 		// We just alias the popup.show function
-		QString szSwitches="";
-		KviKvsVariant * pCoords = KVSCSC_pSwitches->find('p',"point");
+		QString szSwitches = "";
+		KviKvsVariant * pCoords = KVSCSC_pSwitches->find('p', "point");
 		if(pCoords)
 		{
 			QString szCoords;
@@ -929,11 +960,11 @@ namespace KviKvsCoreSimpleCommands
 		}
 
 		QString szParams;
-		for(unsigned int i=0;i<lParameters.count();i++)
+		for(unsigned int i = 0; i < lParameters.count(); i++)
 			szParams.append(QString::fromLatin1(" $%1 ").arg(i));
 
-		KviKvsScript s("popup","popup.show " + szSwitches + szParams);
-		s.run(KVSCSC_pContext->window(),&lParameters,0,KviKvsScript::PreserveParams);
+		KviKvsScript s("popup", "popup.show " + szSwitches + szParams);
+		s.run(KVSCSC_pContext->window(), &lParameters, 0, KviKvsScript::PreserveParams);
 		return true;
 	}
 
@@ -970,30 +1001,34 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(privmsg)
 	{
-		QString szTarget,szText;
+		QString szTarget, szText;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("target",KVS_PT_NONEMPTYSTRING,0,szTarget)
-			KVSCSC_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szText)
+		KVSCSC_PARAMETER("target", KVS_PT_NONEMPTYSTRING, 0, szTarget)
+		KVSCSC_PARAMETER("text", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szText)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
 
 		KviWindow * w = KVSCSC_pConnection->findChannel(szTarget);
-		if(!w)w = KVSCSC_pConnection->findQuery(szTarget);
+		if(!w)
+			w = KVSCSC_pConnection->findQuery(szTarget);
 
 		if(w)
-			w->ownMessage(szText, !KVSCSC_pSwitches->find('q',"quiet"));
-		else {
+			w->ownMessage(szText, !KVSCSC_pSwitches->find('q', "quiet"));
+		else
+		{
 			QByteArray szT = KVSCSC_pConnection->encodeText(szTarget);
 			QByteArray szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
-			if(!szT.data())szT = ""; // encoding problems ?
-			if(!szD.data())szD = ""; // encoding problems ?
+			if(!szT.data())
+				szT = ""; // encoding problems ?
+			if(!szD.data())
+				szD = ""; // encoding problems ?
 
-			if(!(KVSCSC_pConnection->sendFmtData("PRIVMSG %s :%s",szT.data(),szD.data())))
+			if(!(KVSCSC_pConnection->sendFmtData("PRIVMSG %s :%s", szT.data(), szD.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();
 
-			if(!KVSCSC_pSwitches->find('q',"quiet"))
-				KVSCSC_pWindow->output(KVI_OUT_OWNPRIVMSG,"[PRIVMSG >>> %Q]: %Q",&szTarget,&szText);
+			if(!KVSCSC_pSwitches->find('q', "quiet"))
+				KVSCSC_pWindow->output(KVI_OUT_OWNPRIVMSG, "[PRIVMSG >>> %Q]: %Q", &szTarget, &szText);
 		}
 
 		return true;
@@ -1044,33 +1079,35 @@ namespace KviKvsCoreSimpleCommands
 	{
 		Q_UNUSED(__pSwitches);
 
-		QString szTargets,szText;
+		QString szTargets, szText;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("targets",KVS_PT_NONEMPTYSTRING,0,szTargets)
-			KVSCSC_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szText)
+		KVSCSC_PARAMETER("targets", KVS_PT_NONEMPTYSTRING, 0, szTargets)
+		KVSCSC_PARAMETER("text", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szText)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
 
 		KviQueryWindow * query;
 
-		QStringList sl = szTargets.split(",",QString::SkipEmptyParts);
-		for(QStringList::Iterator it = sl.begin();it != sl.end();it++)
+		QStringList sl = szTargets.split(",", QString::SkipEmptyParts);
+		for(QStringList::Iterator it = sl.begin(); it != sl.end(); it++)
 		{
 			QString szNick = *it;
-			if(szNick.isEmpty())KVSCSC_pContext->warning(__tr2qs_ctx("Empty target specified","kvs"));
-			else {
+			if(szNick.isEmpty())
+				KVSCSC_pContext->warning(__tr2qs_ctx("Empty target specified", "kvs"));
+			else
+			{
 				query = KVSCSC_pWindow->connection()->findQuery(szNick);
-				if(query) {
-					if(!KVSCSC_pSwitches->find('m',"minimized"))
+				if(query)
+				{
+					if(!KVSCSC_pSwitches->find('m', "minimized"))
 						g_pMainWindow->setActiveWindow(query);
-				} else {
+				}
+				else
+				{
 					query = KVSCSC_pWindow->connection()->createQuery(
-							szNick,
-							KVSCSC_pSwitches->find('i',"incoming") ?
-								KviIrcConnection::CreateQueryVisibilityFollowSettings :
-								(KVSCSC_pSwitches->find('m',"minimized") ? KviIrcConnection::CreateQueryVisibilityMinimized : KviIrcConnection::CreateQueryVisibilityVisible)
-						);
+					    szNick,
+					    KVSCSC_pSwitches->find('i', "incoming") ? KviIrcConnection::CreateQueryVisibilityFollowSettings : (KVSCSC_pSwitches->find('m', "minimized") ? KviIrcConnection::CreateQueryVisibilityMinimized : KviIrcConnection::CreateQueryVisibilityVisible));
 					QString user;
 					QString host;
 					KviIrcUserDataBase * db = KVSCSC_pWindow->connection()->userDataBase();
@@ -1083,9 +1120,10 @@ namespace KviKvsCoreSimpleCommands
 							host = e->host();
 						}
 					}
-					query->setTarget(szNick,user,host);
+					query->setTarget(szNick, user, host);
 				}
-				if(!szText.isEmpty())query->ownMessage(szText);
+				if(!szText.isEmpty())
+					query->ownMessage(szText);
 			}
 		}
 
@@ -1137,15 +1175,17 @@ namespace KviKvsCoreSimpleCommands
 	{
 		QString szReason;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("reason",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szReason)
+		KVSCSC_PARAMETER("reason", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szReason)
 		KVSCSC_PARAMETERS_END
 
-		if(KVSCSC_pSwitches->find('q',"quit"))
+		if(KVSCSC_pSwitches->find('q', "quit"))
 		{
-			QTimer::singleShot(0,g_pApp,SLOT(quit()));
-		} else {
+			QTimer::singleShot(0, g_pApp, SLOT(quit()));
+		}
+		else
+		{
 			KVSCSC_REQUIRE_CONNECTION
-			KVSCSC_pWindow->context()->terminateConnectionRequest(KVSCSC_pSwitches->find('f',"force"),szReason,KVSCSC_pSwitches->find('u',"unexpected"));
+			KVSCSC_pWindow->context()->terminateConnectionRequest(KVSCSC_pSwitches->find('f', "force"), szReason, KVSCSC_pSwitches->find('u', "unexpected"));
 		}
 		return true;
 	}
@@ -1233,19 +1273,20 @@ namespace KviKvsCoreSimpleCommands
 	{
 		QString szRawCommand;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("raw_command",KVS_PT_STRING,KVS_PF_APPENDREMAINING,szRawCommand)
+		KVSCSC_PARAMETER("raw_command", KVS_PT_STRING, KVS_PF_APPENDREMAINING, szRawCommand)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
 
 		QByteArray szData = KVSCSC_pConnection->encodeText(szRawCommand);
-		if(!szData.data())szData = "";
+		if(!szData.data())
+			szData = "";
 
 		if(!KVSCSC_pConnection->sendData(szData.data()))
 			return KVSCSC_pContext->warningNoIrcConnection();
 
-		if(!KVSCSC_pSwitches->find('q',"quiet"))
-			KVSCSC_pWindow->output(KVI_OUT_RAW,__tr2qs_ctx("[RAW]: %Q","kvs"),&szRawCommand);
+		if(!KVSCSC_pSwitches->find('q', "quiet"))
+			KVSCSC_pWindow->output(KVI_OUT_RAW, __tr2qs_ctx("[RAW]: %Q", "kvs"), &szRawCommand);
 
 		return true;
 	}
@@ -1290,14 +1331,16 @@ namespace KviKvsCoreSimpleCommands
 	{
 		QString szWinId;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("window_id",KVS_PT_NONEMPTYSTRING,0,szWinId)
+		KVSCSC_PARAMETER("window_id", KVS_PT_NONEMPTYSTRING, 0, szWinId)
 		KVSCSC_PARAMETERS_END
 
 		KviWindow * pAux = g_pApp->findWindow(szWinId.toUtf8().data());
-		if(pAux)KVSCSC_pContext->setWindow(pAux);
-		else {
-			if(!KVSCSC_pSwitches->find('q',"quiet"))
-				KVSCSC_pContext->warning(__tr2qs_ctx("Window with ID %Q not found: no rebinding performed","kvs"),&szWinId);
+		if(pAux)
+			KVSCSC_pContext->setWindow(pAux);
+		else
+		{
+			if(!KVSCSC_pSwitches->find('q', "quiet"))
+				KVSCSC_pContext->warning(__tr2qs_ctx("Window with ID %Q not found: no rebinding performed", "kvs"), &szWinId);
 		}
 		return true;
 	}
@@ -1385,12 +1428,12 @@ namespace KviKvsCoreSimpleCommands
 		QString szCommand;
 		QStringList l;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("command",KVS_PT_STRING,0,szCommand)
-			KVSCSC_PARAMETER("parameters",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,l)
+		KVSCSC_PARAMETER("command", KVS_PT_STRING, 0, szCommand)
+		KVSCSC_PARAMETER("parameters", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, l)
 		KVSCSC_PARAMETERS_END
 
 		QProcess proc;
-		proc.startDetached(szCommand,l);
+		proc.startDetached(szCommand, l);
 		// FIXME: KVSCSC_pContext->warning(__tr2qs_ctx("Failed to execute command '%Q'","kvs"),&szCommand);
 		return true;
 	}

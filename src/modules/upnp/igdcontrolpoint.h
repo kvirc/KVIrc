@@ -39,11 +39,11 @@
 namespace UPnP
 {
 
-class SsdpConnection;
-class RootService;
-class WanConnectionService;
+	class SsdpConnection;
+	class RootService;
+	class WanConnectionService;
 
-/**
+	/**
  * A control point is a UPnP term for "client".
  * It's the host that controls the UPnP device.
  * This control point specifically handles Internet Gateway Devices (routers in UPnP terminology).
@@ -53,49 +53,46 @@ class WanConnectionService;
  * @author Diederik van der Boor
  * @ingroup NetworkUPnP
  */
-class IgdControlPoint : public QObject
-{
-	Q_OBJECT
+	class IgdControlPoint : public QObject
+	{
+		Q_OBJECT
 
-public:  // public methods
+	public: // public methods
+		// The constructor
+		IgdControlPoint(const QString & hostname, int port, const QString & rootUrl);
+		// The destructor
+		virtual ~IgdControlPoint();
 
-	// The constructor
-	IgdControlPoint(const QString &hostname, int port, const QString &rootUrl);
-	// The destructor
-	virtual             ~IgdControlPoint();
+		// Return the external IP address
+		QString getExternalIpAddress() const;
+		// Initialize the control point
+		void initialize();
+		// Return true if a controlable gateway is available
+		bool isGatewayAvailable();
 
-	// Return the external IP address
-	QString              getExternalIpAddress() const;
-	// Initialize the control point
-	void                 initialize();
-	// Return true if a controlable gateway is available
-	bool                 isGatewayAvailable();
+		// Add a port mapping
+		void addPortMapping(const QString & protocol, const QString & remoteHost, int externalPort, const QString & internalClient, int internalPort, const QString & description, bool enabled = true, int leaseDuration = 0);
+		// Delete a port mapping
+		void deletePortMapping(const QString & protocol, const QString & remoteHost, int externalPort);
 
-	// Add a port mapping
-	void                 addPortMapping(const QString &protocol, const QString &remoteHost, int externalPort, const QString &internalClient, int internalPort, const QString &description, bool enabled = true, int leaseDuration = 0);
-	// Delete a port mapping
-	void                 deletePortMapping(const QString &protocol, const QString &remoteHost, int externalPort);
+	private slots:
+		// The IGD was queried for it's services
+		void slotDeviceQueried(bool error);
+		// A WAN connection query was finished
+		void slotWanQueryFinished(bool error);
 
-private slots:
-	// The IGD was queried for it's services
-	void                 slotDeviceQueried(bool error);
-	// A WAN connection query was finished
-	void                 slotWanQueryFinished(bool error);
-
-private:  // private attibutes
-	// Is a gateway available?
-	bool                 m_bGatewayAvailable;
-	// The host of the gateway
-	QString              m_szIgdHostname;
-	// The port of the gateway
-	int                  m_iIgdPort;
-	// The root service
-	RootService         *m_pRootService;
-	// The wan connection service
-	WanConnectionService *m_pWanConnectionService;
-};
-
-
+	private: // private attibutes
+		// Is a gateway available?
+		bool m_bGatewayAvailable;
+		// The host of the gateway
+		QString m_szIgdHostname;
+		// The port of the gateway
+		int m_iIgdPort;
+		// The root service
+		RootService * m_pRootService;
+		// The wan connection service
+		WanConnectionService * m_pWanConnectionService;
+	};
 }
 
 #endif

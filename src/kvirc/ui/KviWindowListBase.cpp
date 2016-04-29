@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 //#define KVI_WINDOWLISTBUTTON_MIN_WIDTH 100
 #define KVI_WINDOWLISTBUTTON_CONTEXTINDICATORHEIGHT 4
 #define KVI_WINDOWLISTBUTTON_CONTEXTINDICATORSPACING 1
@@ -65,15 +64,15 @@ extern QPixmap * g_pActivityMeterPixmap;
 //
 
 KviWindowListBase::KviWindowListBase()
-: QDockWidget(__tr2qs("Window List"),g_pMainWindow), m_pTitleWidget(0)
+    : QDockWidget(__tr2qs("Window List"), g_pMainWindow), m_pTitleWidget(0)
 {
 	// FIXME: this timer should be started only if KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter)
 	setObjectName("windowlist");
 	setFeatures(QDockWidget::DockWidgetMovable);
 
 	m_pActivityMeterTimer = new QTimer();
-	connect(m_pActivityMeterTimer,SIGNAL(timeout()),this,SLOT(updateActivityMeter()));
-	connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)),this, SLOT(updateDockLocation(Qt::DockWidgetArea)));
+	connect(m_pActivityMeterTimer, SIGNAL(timeout()), this, SLOT(updateActivityMeter()));
+	connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)), this, SLOT(updateDockLocation(Qt::DockWidgetArea)));
 	m_pActivityMeterTimer->start(5000);
 
 	m_pTitleWidget = new KviWindowListTitleWidget(this);
@@ -92,10 +91,9 @@ KviWindowListBase::~KviWindowListBase()
 
 void KviWindowListBase::updateActivityMeter()
 {
-
 }
 
-void KviWindowListBase::getTextForConsole(QString &szText,KviConsoleWindow * pConsole)
+void KviWindowListBase::getTextForConsole(QString & szText, KviConsoleWindow * pConsole)
 {
 	if(pConsole->isConnected())
 	{
@@ -107,19 +105,23 @@ void KviWindowListBase::getTextForConsole(QString &szText,KviConsoleWindow * pCo
 			szText = pConsole->connection()->currentNetworkName();
 			if(szText.isEmpty())
 				szText = pConsole->connection()->currentServerName();
-		} else {
+		}
+		else
+		{
 			szText = pConsole->connection()->currentServerName();
 		}
-	} else {
+	}
+	else
+	{
 		szText = pConsole->statusString();
 	}
 }
 
-
-KviWindowListItem *  KviWindowListBase::item(int number)
+KviWindowListItem * KviWindowListBase::item(int number)
 {
 	KviWindowListItem * it = firstItem();
-	if(!setIterationPointer(it))return 0;
+	if(!setIterationPointer(it))
+		return 0;
 
 	while(it && (number > 0))
 	{
@@ -129,21 +131,25 @@ KviWindowListItem *  KviWindowListBase::item(int number)
 	return it;
 }
 
-void KviWindowListBase::switchWindow(bool bNext,bool bInContextOnly,bool bHighlightedOnly)
+void KviWindowListBase::switchWindow(bool bNext, bool bInContextOnly, bool bHighlightedOnly)
 {
-	if(!g_pActiveWindow)return;
+	if(!g_pActiveWindow)
+		return;
 
 	KviConsoleWindow * cons = g_pActiveWindow->console();
 	KviWindowListItem * cur = g_pActiveWindow->windowListItem();
 	KviWindowListItem * it = cur;
 
-	if(!setIterationPointer(cur))return;
+	if(!setIterationPointer(cur))
+		return;
 
 	while(it)
 	{
 		it = bNext ? nextItem() : prevItem();
-		if(!it)it = bNext ? firstItem() : lastItem();
-		if(it == cur)return; // did a complete loop.... no window to switch to
+		if(!it)
+			it = bNext ? firstItem() : lastItem();
+		if(it == cur)
+			return; // did a complete loop.... no window to switch to
 		if(it)
 		{
 			if(bHighlightedOnly && it->highlightLevel() < 3)
@@ -156,9 +162,9 @@ void KviWindowListBase::switchWindow(bool bNext,bool bInContextOnly,bool bHighli
 	}
 }
 
-void KviWindowListBase::wheelEvent(QWheelEvent *e)
+void KviWindowListBase::wheelEvent(QWheelEvent * e)
 {
-	if ( e->delta() > 0 )
+	if(e->delta() > 0)
 		switchWindow(false, false);
 	else
 		switchWindow(true, false);
@@ -170,7 +176,7 @@ void KviWindowListBase::updateDockLocation(Qt::DockWidgetArea newArea)
 	if(currentArea == Qt::TopDockWidgetArea || currentArea == Qt::BottomDockWidgetArea)
 		setFeatures(features() | QDockWidget::DockWidgetVerticalTitleBar);
 	else
-		setFeatures(features() & ~ QDockWidget::DockWidgetVerticalTitleBar);
+		setFeatures(features() & ~QDockWidget::DockWidgetVerticalTitleBar);
 }
 
 void KviWindowListBase::applyOptions()
@@ -184,19 +190,22 @@ void KviWindowListBase::applyOptions()
 void KviWindowListTitleWidget::paintEvent(QPaintEvent *)
 {
 	// if there is no handle there is nothing to paint.
-	if(!KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHandle))return;
+	if(!KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHandle))
+		return;
 
 	QPainter p(this);
 	QStyleOption opt(0);
 	opt.rect = contentsRect();
 	opt.palette = palette();
-	if (m_pParent->features() & QDockWidget::DockWidgetVerticalTitleBar)
+	if(m_pParent->features() & QDockWidget::DockWidgetVerticalTitleBar)
 	{
 		opt.state = QStyle::State_Horizontal | QStyle::State_Enabled;
-		opt.rect.adjust(2,0,2,0);
-	}else {
+		opt.rect.adjust(2, 0, 2, 0);
+	}
+	else
+	{
 		opt.state = QStyle::State_Enabled;
-		opt.rect.adjust(0,2,0,2);
+		opt.rect.adjust(0, 2, 0, 2);
 	}
 	m_pParent->style()->drawControl(QStyle::CE_Splitter, &opt, &p, m_pParent);
 }
@@ -204,21 +213,24 @@ void KviWindowListTitleWidget::paintEvent(QPaintEvent *)
 QSize KviWindowListTitleWidget::sizeHint() const
 {
 	// if there is no handle there is nothing to paint.
-	if(!KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHandle))return QSize(0,0);
+	if(!KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHandle))
+		return QSize(0, 0);
 
 	int h, w;
 	if(m_pParent->features() & QDockWidget::DockWidgetVerticalTitleBar)
 	{
-		h=m_pParent->height();
-		w=6;
-	} else {
-		w=m_pParent->width();
-		h=6;
+		h = m_pParent->height();
+		w = 6;
+	}
+	else
+	{
+		w = m_pParent->width();
+		h = 6;
 	}
 	QStyleOption opt(0);
 	opt.init(m_pParent);
 	opt.state = QStyle::State_None;
-//
+	//
 	return m_pParent->style()->sizeFromContents(QStyle::CT_Splitter, &opt, QSize(w, h), m_pParent).expandedTo(QApplication::globalStrut());
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -237,23 +249,19 @@ KviWindowListItem::~KviWindowListItem()
 	m_pWindow->m_pWindowListItem = 0;
 }
 
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // KviWindowListButton
 //
 
-
-
-KviWindowListButton::KviWindowListButton(QWidget * par,KviWindow * wnd,const char * name)
-: QPushButton(par), KviWindowListItem(wnd)
+KviWindowListButton::KviWindowListButton(QWidget * par, KviWindow * wnd, const char * name)
+    : QPushButton(par), KviWindowListItem(wnd)
 {
 	setObjectName(name);
-	m_bActive         = false;
-	m_pTip            = new KviDynamicToolTip(this);
-	connect(m_pTip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
+	m_bActive = false;
+	m_pTip = new KviDynamicToolTip(this);
+	connect(m_pTip, SIGNAL(tipRequest(KviDynamicToolTip *, const QPoint &)), this, SLOT(tipRequest(KviDynamicToolTip *, const QPoint &)));
 	setCheckable(true); //setToggleButton (true);
-	//setFlat(KVI_OPTION_BOOL(KviOption_boolUseFlatClassicWindowListButtons)); // we paint it ourselves anyway
+	                    //setFlat(KVI_OPTION_BOOL(KviOption_boolUseFlatClassicWindowListButtons)); // we paint it ourselves anyway
 }
 
 KviWindowListButton::~KviWindowListButton()
@@ -261,31 +269,33 @@ KviWindowListButton::~KviWindowListButton()
 	delete m_pTip; //not necessary ?
 }
 
-void KviWindowListButton::tipRequest(KviDynamicToolTip *,const QPoint &)
+void KviWindowListButton::tipRequest(KviDynamicToolTip *, const QPoint &)
 {
 	if(KVI_OPTION_BOOL(KviOption_boolShowWindowListToolTips))
 	{
 		QString szText;
 		m_pWindow->getWindowListTipText(szText);
-		m_pTip->tip(rect(),szText);
+		m_pTip->tip(rect(), szText);
 	}
 }
 
-void KviWindowListButton::mousePressEvent(QMouseEvent *e)
+void KviWindowListButton::mousePressEvent(QMouseEvent * e)
 {
 	if(e->button() & Qt::LeftButton)
 	{
 		if(e->modifiers() & Qt::ShiftModifier)
 		{
 			m_pWindow->delayedClose();
-		} else {
+		}
+		else
+		{
 			if(g_pActiveWindow != m_pWindow)
 				g_pMainWindow->setActiveWindow(m_pWindow);
 		}
 	}
 }
 
-void KviWindowListButton::contextMenuEvent(QContextMenuEvent *e)
+void KviWindowListButton::contextMenuEvent(QContextMenuEvent * e)
 {
 	m_pWindow->contextPopup();
 	e->accept();
@@ -295,15 +305,17 @@ void KviWindowListButton::setActive(bool bActive)
 {
 	if(bActive)
 	{
-		m_bActive         = true;
+		m_bActive = true;
 		m_iHighlightLevel = 0;
-	} else {
+	}
+	else
+	{
 		if(m_bActive)
 		{
 			// was active... unset the highlighting if it was silently turned on while being active...
 			m_iHighlightLevel = 0;
 		}
-		m_bActive      = false;
+		m_bActive = false;
 	}
 	setChecked(bActive);
 	update();
@@ -324,7 +336,7 @@ void KviWindowListButton::paintEvent(QPaintEvent *)
 
 	//style()->drawPrimitive(QStyle::PE_PanelButtonCommand,&opt,&p,this);
 
-	style()->drawControl(QStyle::CE_PushButtonBevel,&opt,&p,this);
+	style()->drawControl(QStyle::CE_PushButtonBevel, &opt, &p, this);
 
 	drawButtonLabel(&p);
 }
@@ -342,26 +354,25 @@ void KviWindowListButton::drawButtonLabel(QPainter * pPainter)
 		{
 			QColor cntx = KVI_OPTION_ICCOLOR(m_pWindow->console()->context()->id() % KVI_NUM_ICCOLOR_OPTIONS);
 			base.setRgb(
-					(base.red() + cntx.red()) >> 1,
-					(base.green() + cntx.green()) >> 1,
-					(base.blue() + cntx.blue()) >> 1
-				);
+			    (base.red() + cntx.red()) >> 1,
+			    (base.green() + cntx.green()) >> 1,
+			    (base.blue() + cntx.blue()) >> 1);
 
 			pPainter->fillRect(
-					KVI_WINDOWLISTBUTTON_LEFT_MARGIN,
-					iHeight - KVI_WINDOWLISTBUTTON_BOTTOM_MARGIN,
-					iWidth - (KVI_WINDOWLISTBUTTON_LEFT_MARGIN + KVI_WINDOWLISTBUTTON_RIGHT_MARGIN),
-					KVI_WINDOWLISTBUTTON_CONTEXTINDICATORHEIGHT,
-					base
-				);
-		} else {
+			    KVI_WINDOWLISTBUTTON_LEFT_MARGIN,
+			    iHeight - KVI_WINDOWLISTBUTTON_BOTTOM_MARGIN,
+			    iWidth - (KVI_WINDOWLISTBUTTON_LEFT_MARGIN + KVI_WINDOWLISTBUTTON_RIGHT_MARGIN),
+			    KVI_WINDOWLISTBUTTON_CONTEXTINDICATORHEIGHT,
+			    base);
+		}
+		else
+		{
 			pPainter->fillRect(
-					KVI_WINDOWLISTBUTTON_LEFT_MARGIN,
-					iHeight - KVI_WINDOWLISTBUTTON_BOTTOM_MARGIN,
-					iWidth - (KVI_WINDOWLISTBUTTON_LEFT_MARGIN + KVI_WINDOWLISTBUTTON_RIGHT_MARGIN),
-					KVI_WINDOWLISTBUTTON_CONTEXTINDICATORHEIGHT,
-					palette().brush(QPalette::Background)
-				);
+			    KVI_WINDOWLISTBUTTON_LEFT_MARGIN,
+			    iHeight - KVI_WINDOWLISTBUTTON_BOTTOM_MARGIN,
+			    iWidth - (KVI_WINDOWLISTBUTTON_LEFT_MARGIN + KVI_WINDOWLISTBUTTON_RIGHT_MARGIN),
+			    KVI_WINDOWLISTBUTTON_CONTEXTINDICATORHEIGHT,
+			    palette().brush(QPalette::Background));
 		}
 		iHeight -= KVI_WINDOWLISTBUTTON_CONTEXTINDICATORSPACING;
 	}
@@ -370,7 +381,7 @@ void KviWindowListButton::drawButtonLabel(QPainter * pPainter)
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
 	{
-		pPainter->drawPixmap(KVI_WINDOWLISTBUTTON_LEFT_MARGIN,KVI_WINDOWLISTBUTTON_TOP_MARGIN,*(m_pWindow->myIconPtr()));
+		pPainter->drawPixmap(KVI_WINDOWLISTBUTTON_LEFT_MARGIN, KVI_WINDOWLISTBUTTON_TOP_MARGIN, *(m_pWindow->myIconPtr()));
 		daX += 18;
 	}
 
@@ -378,19 +389,18 @@ void KviWindowListButton::drawButtonLabel(QPainter * pPainter)
 	{
 		unsigned int uActivityValue;
 		unsigned int uActivityTemperature;
-		if(m_pWindow->activityMeter(&uActivityValue,&uActivityTemperature))
+		if(m_pWindow->activityMeter(&uActivityValue, &uActivityTemperature))
 		{
-			pPainter->drawPixmap(daX,KVI_WINDOWLISTBUTTON_TOP_MARGIN,*g_pActivityMeterPixmap,uActivityValue * 5,uActivityTemperature * 16,5,16);
+			pPainter->drawPixmap(daX, KVI_WINDOWLISTBUTTON_TOP_MARGIN, *g_pActivityMeterPixmap, uActivityValue * 5, uActivityTemperature * 16, 5, 16);
 			daX += 7;
 		}
 	}
 
 	QRect cRect(
-			daX,
-			KVI_WINDOWLISTBUTTON_TOP_MARGIN,
-			iWidth - (KVI_WINDOWLISTBUTTON_RIGHT_MARGIN + daX),
-			iHeight - (KVI_WINDOWLISTBUTTON_TOP_MARGIN + KVI_WINDOWLISTBUTTON_BOTTOM_MARGIN)
-		);
+	    daX,
+	    KVI_WINDOWLISTBUTTON_TOP_MARGIN,
+	    iWidth - (KVI_WINDOWLISTBUTTON_RIGHT_MARGIN + daX),
+	    iHeight - (KVI_WINDOWLISTBUTTON_TOP_MARGIN + KVI_WINDOWLISTBUTTON_BOTTOM_MARGIN));
 
 	if(m_iProgress >= 0)
 	{
@@ -398,7 +408,7 @@ void KviWindowListButton::drawButtonLabel(QPainter * pPainter)
 		int wdth = (m_iProgress * cRect.width()) / 100;
 		pPainter->setPen(KVI_OPTION_COLOR(KviOption_colorWindowListProgressBar));
 		pPainter->drawRect(cRect);
-		pPainter->fillRect(daX,KVI_WINDOWLISTBUTTON_TOP_MARGIN,wdth,cRect.height(),KVI_OPTION_COLOR(KviOption_colorWindowListProgressBar));
+		pPainter->fillRect(daX, KVI_WINDOWLISTBUTTON_TOP_MARGIN, wdth, cRect.height(), KVI_OPTION_COLOR(KviOption_colorWindowListProgressBar));
 	}
 
 	QRect bRect;
@@ -409,17 +419,31 @@ void KviWindowListButton::drawButtonLabel(QPainter * pPainter)
 	if(m_bActive)
 	{
 		pPainter->setPen(KVI_OPTION_COLOR(KviOption_colorWindowListNormalText));
-	} else {
+	}
+	else
+	{
 		int iLevel;
 
 		switch(m_iHighlightLevel)
 		{
-			case 0: iLevel = bMinimized ? KviOption_colorWindowListMinimizedText : KviOption_colorWindowListNormalText; break;
-			case 1: iLevel = KviOption_colorWindowListHighlight1Text; break;
-			case 2: iLevel = KviOption_colorWindowListHighlight2Text; break;
-			case 3: iLevel = KviOption_colorWindowListHighlight3Text; break;
-			case 4: iLevel = KviOption_colorWindowListHighlight4Text; break;
-			default: iLevel = KviOption_colorWindowListHighlight5Text; break;
+			case 0:
+				iLevel = bMinimized ? KviOption_colorWindowListMinimizedText : KviOption_colorWindowListNormalText;
+				break;
+			case 1:
+				iLevel = KviOption_colorWindowListHighlight1Text;
+				break;
+			case 2:
+				iLevel = KviOption_colorWindowListHighlight2Text;
+				break;
+			case 3:
+				iLevel = KviOption_colorWindowListHighlight3Text;
+				break;
+			case 4:
+				iLevel = KviOption_colorWindowListHighlight4Text;
+				break;
+			default:
+				iLevel = KviOption_colorWindowListHighlight5Text;
+				break;
 		}
 		pPainter->setPen(KVI_OPTION_COLOR(iLevel));
 	}
@@ -433,7 +457,7 @@ void KviWindowListButton::drawButtonLabel(QPainter * pPainter)
 			QFont f = QFont(KVI_OPTION_FONT(KviOption_fontWindowList));
 			f.setBold(true);
 			pPainter->setFont(f);
-			KviWindowListBase::getTextForConsole(szText,(KviConsoleWindow *)m_pWindow);
+			KviWindowListBase::getTextForConsole(szText, (KviConsoleWindow *)m_pWindow);
 		}
 		break;
 		case KviWindow::Channel:
@@ -442,36 +466,36 @@ void KviWindowListButton::drawButtonLabel(QPainter * pPainter)
 				szText = ((KviChannelWindow *)m_pWindow)->nameWithUserFlag();
 			else
 				szText = ((KviChannelWindow *)m_pWindow)->target();
-		break;
+			break;
 		case KviWindow::Query:
 		case KviWindow::DeadQuery:
 			szText = m_pWindow->windowName();
-		break;
+			break;
 		default:
 			szText = m_pWindow->plainTextCaption();
-		break;
+			break;
 	}
 
 	if(bMinimized)
 		szText.prepend('(').append(')');
 
 	pPainter->setClipRect(cRect);
-	pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,&bRect);
+	pPainter->drawText(cRect, Qt::AlignLeft | Qt::AlignTop, szText, &bRect);
 
 	if(bRect.width() > cRect.width())
 	{
-		pPainter->setClipRect(cRect.right(),cRect.y(),10,cRect.height());
+		pPainter->setClipRect(cRect.right(), cRect.y(), 10, cRect.height());
 		QColor base = pPainter->pen().color();
-		QColor bg   = palette().color(QPalette::Background);
-		base.setRgb((base.red() + bg.red()) / 2,(base.green() + bg.green()) / 2,(base.blue() + bg.blue()) / 2);
+		QColor bg = palette().color(QPalette::Background);
+		base.setRgb((base.red() + bg.red()) / 2, (base.green() + bg.green()) / 2, (base.blue() + bg.blue()) / 2);
 		pPainter->setPen(base);
 		cRect.setWidth(cRect.width() + 10);
-		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText);
-		pPainter->setClipRect(cRect.right(),cRect.y(),5,cRect.height());
-		base.setRgb((base.red() + bg.red()) / 2,(base.green() + bg.green()) / 2,(base.blue() + bg.blue()) / 2);
+		pPainter->drawText(cRect, Qt::AlignLeft | Qt::AlignTop, szText);
+		pPainter->setClipRect(cRect.right(), cRect.y(), 5, cRect.height());
+		base.setRgb((base.red() + bg.red()) / 2, (base.green() + bg.green()) / 2, (base.blue() + bg.blue()) / 2);
 		pPainter->setPen(base);
 		cRect.setWidth(cRect.width() + 10);
-		pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText);
+		pPainter->drawText(cRect, Qt::AlignLeft | Qt::AlignTop, szText);
 	}
 }
 
@@ -511,14 +535,12 @@ void KviWindowListButton::highlight(int iLevel)
 		return;
 }
 
-
 //
 // KviClasicWindowList
 //
 
-
 KviClassicWindowList::KviClassicWindowList()
-: KviWindowListBase()
+    : KviWindowListBase()
 {
 	m_pButtonList = new KviPointerList<KviWindowListButton>;
 	m_pButtonList->setAutoDelete(true);
@@ -533,7 +555,7 @@ KviClassicWindowList::KviClassicWindowList()
 	m_pBase->setMinimumHeight(m_iButtonHeight);
 
 	applyOptions();
-	QTimer::singleShot( 0, this, SLOT(doLayout()));
+	QTimer::singleShot(0, this, SLOT(doLayout()));
 }
 
 KviClassicWindowList::~KviClassicWindowList()
@@ -551,7 +573,7 @@ void KviClassicWindowList::updateActivityMeter()
 {
 	if(KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter))
 	{
-		for(KviWindowListButton * btn = m_pButtonList->first();btn;btn = m_pButtonList->next())
+		for(KviWindowListButton * btn = m_pButtonList->first(); btn; btn = m_pButtonList->next())
 			btn->update();
 	}
 }
@@ -571,21 +593,19 @@ void KviClassicWindowList::insertButton(KviWindowListButton * b)
 {
 	int idx = 0;
 	// first sort by irc context
-	for(KviWindowListButton * btn = m_pButtonList->first();btn;btn = m_pButtonList->next())
+	for(KviWindowListButton * btn = m_pButtonList->first(); btn; btn = m_pButtonList->next())
 	{
 		if(btn->kviWindow()->console() == b->kviWindow()->console())
 		{
 			// same irc context (or none)
 			// sort by type now
-			for(;btn;btn = m_pButtonList->next())
+			for(; btn; btn = m_pButtonList->next())
 			{
 				if(
-						(btn->kviWindow()->type() > b->kviWindow()->type()) ||
-						(btn->kviWindow()->console() != b->kviWindow()->console())
-					)
+				    (btn->kviWindow()->type() > b->kviWindow()->type()) || (btn->kviWindow()->console() != b->kviWindow()->console()))
 				{
 					// greater type or another irc context
-					m_pButtonList->insert(idx,b);
+					m_pButtonList->insert(idx, b);
 					return;
 				}
 
@@ -594,12 +614,10 @@ void KviClassicWindowList::insertButton(KviWindowListButton * b)
 					// same type!
 					// sort by name
 					if(
-							KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName) &&
-							(btn->kviWindow()->windowName().compare(b->kviWindow()->windowName(),Qt::CaseInsensitive) > 0)
-						)
+					    KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName) && (btn->kviWindow()->windowName().compare(b->kviWindow()->windowName(), Qt::CaseInsensitive) > 0))
 					{
 						// got a "higher one"
-						m_pButtonList->insert(idx,b);
+						m_pButtonList->insert(idx, b);
 						return;
 					}
 				}
@@ -614,24 +632,25 @@ void KviClassicWindowList::insertButton(KviWindowListButton * b)
 		{
 			// this must be a new console...insert before the contextless windows
 			KVI_ASSERT(b->kviWindow()->console() == b->kviWindow());
-			m_pButtonList->insert(idx,b);
+			m_pButtonList->insert(idx, b);
 			return;
-		} else idx++; // wrong irc contet...go on searching
+		}
+		else
+			idx++; // wrong irc contet...go on searching
 	}
 
 	m_pButtonList->append(b);
 }
 
-
 KviWindowListItem * KviClassicWindowList::addItem(KviWindow * wnd)
 {
-	KviWindowListButton * b = new KviWindowListButton(m_pBase,wnd,"");
+	KviWindowListButton * b = new KviWindowListButton(m_pBase, wnd, "");
 	insertButton(b);
 	b->show();
 	doLayout();
 	if(g_pMainWindow->trayIcon())
 		g_pMainWindow->trayIcon()->refresh();
-/*	if(b->width() < m_pBase->width()) m_pBase->setMinimumWidth(b->width());
+	/*	if(b->width() < m_pBase->width()) m_pBase->setMinimumWidth(b->width());
 	if(b->height() < m_pBase->height()) m_pBase->setMinimumWidth(b->height());*/
 	return b;
 }
@@ -652,7 +671,7 @@ void KviClassicWindowList::setActiveItem(KviWindowListItem * it)
 {
 	if(it)
 	{
-		for(KviWindowListButton * b = m_pButtonList->first();b;b = m_pButtonList->next())
+		for(KviWindowListButton * b = m_pButtonList->first(); b; b = m_pButtonList->next())
 		{
 			b->setActive(((KviWindowListButton *)it) == b);
 		}
@@ -670,14 +689,16 @@ void KviClassicWindowList::doLayout()
 	{
 		// handle a windows bug: sometimes this ugly thing happens
 		// this shouldn't hurt on other platforms
-		if(isVisible())m_pBase->show();
+		if(isVisible())
+			m_pBase->show();
 	}
 
 	int baseWidth = m_pBase->width();
 	int btnsInRow = baseWidth / KVI_OPTION_UINT(KviOption_uintWindowListButtonMinWidth);
 	int totCount = m_pButtonList->count();
 	//int btnsInRow = totCount * totCount * btnWidth * btnWidth / (wdth * wdth);
-	if(btnsInRow < 1)btnsInRow = 1;
+	if(btnsInRow < 1)
+		btnsInRow = 1;
 
 	int rows = 0;
 	while(totCount > 0)
@@ -694,7 +715,9 @@ void KviClassicWindowList::doLayout()
 			f &= ~QDockWidget::DockWidgetVerticalTitleBar;
 			setFeatures(f);
 		}
-	} else {
+	}
+	else
+	{
 		QDockWidget::DockWidgetFeatures f = features();
 		if(!(f & QDockWidget::DockWidgetVerticalTitleBar))
 		{
@@ -703,39 +726,42 @@ void KviClassicWindowList::doLayout()
 		}
 	}
 
-	if ((width() > height()) &&
-		(rows > m_pBase->height() / m_iButtonHeight ))
+	if((width() > height()) && (rows > m_pBase->height() / m_iButtonHeight))
 	{
 		rows = m_pBase->height() / m_iButtonHeight;
 	}
-	if(rows==0) rows=1;
+	if(rows == 0)
+		rows = 1;
 	totCount = m_pButtonList->count();
 	btnsInRow = totCount / rows;
-	if(totCount % rows)btnsInRow++;
+	if(totCount % rows)
+		btnsInRow++;
 
-	int theWidth      = 0;
-	int theX          = 0;
-	int theY          = -m_iButtonHeight;
-	int btnIdx        = 0;
-	int btnInRow      = 1;
-	for(KviWindowListButton * b = m_pButtonList->first();b;b = m_pButtonList->next())
+	int theWidth = 0;
+	int theX = 0;
+	int theY = -m_iButtonHeight;
+	int btnIdx = 0;
+	int btnInRow = 1;
+	for(KviWindowListButton * b = m_pButtonList->first(); b; b = m_pButtonList->next())
 	{
 		if((btnIdx % btnsInRow) == 0)
 		{
-			int inRow = ((totCount < btnsInRow ) ? totCount : btnsInRow);
+			int inRow = ((totCount < btnsInRow) ? totCount : btnsInRow);
 			theWidth = baseWidth / (inRow ? inRow : 1);
-			theX     = 0;
-			theY    += m_iButtonHeight;
+			theX = 0;
+			theY += m_iButtonHeight;
 			btnInRow = 1;
-		} else {
-			if((btnInRow == btnsInRow) || (totCount == 1))theWidth = baseWidth - theX;
+		}
+		else
+		{
+			if((btnInRow == btnsInRow) || (totCount == 1))
+				theWidth = baseWidth - theX;
 		}
 
-		if( KVI_OPTION_BOOL(KviOption_boolClassicWindowListSetMaximumButtonWidth) && ((unsigned int)theWidth > KVI_OPTION_UINT(KviOption_uintClassicWindowListMaximumButtonWidth)) && (width() > height())
-			)
-				theWidth = KVI_OPTION_UINT(KviOption_uintClassicWindowListMaximumButtonWidth);
+		if(KVI_OPTION_BOOL(KviOption_boolClassicWindowListSetMaximumButtonWidth) && ((unsigned int)theWidth > KVI_OPTION_UINT(KviOption_uintClassicWindowListMaximumButtonWidth)) && (width() > height()))
+			theWidth = KVI_OPTION_UINT(KviOption_uintClassicWindowListMaximumButtonWidth);
 
-		b->setGeometry(theX,theY,theWidth,m_iButtonHeight);
+		b->setGeometry(theX, theY, theWidth, m_iButtonHeight);
 
 		if(btnInRow != btnsInRow)
 		{
@@ -756,7 +782,7 @@ void KviClassicWindowList::applyOptions()
 	doLayout(); // this will trigger a repaint anyway
 }
 
-void KviClassicWindowList::resizeEvent(QResizeEvent *e)
+void KviClassicWindowList::resizeEvent(QResizeEvent * e)
 {
 	KviWindowListBase::resizeEvent(e);
 	doLayout();

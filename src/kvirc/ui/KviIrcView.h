@@ -30,7 +30,7 @@
 
 #include <QToolButton>
 #include <QWidget>
-#include <QPixmap>      // needed
+#include <QPixmap> // needed
 #include <QMultiHash>
 #include <QDateTime>
 
@@ -54,8 +54,6 @@ typedef struct _KviIrcViewWrappedBlockSelectionInfoTag KviIrcViewWrappedBlockSel
 
 #define KVI_IRCVIEW_INVALID_LINE_MARK_INDEX 0xffffffff
 
-
-
 class KVIRC_API KviIrcView : public QWidget
 {
 	Q_OBJECT
@@ -65,120 +63,129 @@ class KVIRC_API KviIrcView : public QWidget
 public:
 	friend class KviIrcViewToolTip;
 	friend class KviIrcViewToolWidget;
+
 public:
-	KviIrcView(QWidget *parent, KviWindow *pWnd);
+	KviIrcView(QWidget * parent, KviWindow * pWnd);
 	~KviIrcView();
+
 public:
 	int dummyRead() const { return 0; };
-	bool getPaintOnScreen() const { return testAttribute(Qt::WA_PaintOnScreen);};
-	void setPaintOnScreen(bool bFlag){setAttribute(Qt::WA_PaintOnScreen,bFlag);} ;
+	bool getPaintOnScreen() const { return testAttribute(Qt::WA_PaintOnScreen); };
+	void setPaintOnScreen(bool bFlag) { setAttribute(Qt::WA_PaintOnScreen, bFlag); };
 private:
-//	QDate                       m_lastLogDay;
-	int                         m_iFlushTimer;
-	KviIrcViewLine            * m_pFirstLine;
-	KviIrcViewLine            * m_pCurLine;    // Bottom line in the view
-	KviIrcViewLine            * m_pLastLine;
-	KviIrcViewLine            * m_pCursorLine;
-	unsigned int                m_uLineMarkLineIndex;
-	QRect                       m_lineMarkArea;
+	//	QDate                       m_lastLogDay;
+	int m_iFlushTimer;
+	KviIrcViewLine * m_pFirstLine;
+	KviIrcViewLine * m_pCurLine; // Bottom line in the view
+	KviIrcViewLine * m_pLastLine;
+	KviIrcViewLine * m_pCursorLine;
+	unsigned int m_uLineMarkLineIndex;
+	QRect m_lineMarkArea;
 
 	// Highliting of links
-	KviIrcViewWrappedBlock    * m_pLastLinkUnderMouse;
-	int                         m_iLastLinkRectTop;
-	int                         m_iLastLinkRectHeight;
+	KviIrcViewWrappedBlock * m_pLastLinkUnderMouse;
+	int m_iLastLinkRectTop;
+	int m_iLastLinkRectHeight;
 
-	int                         m_iNumLines;
-	int                         m_iMaxLines;
+	int m_iNumLines;
+	int m_iMaxLines;
 
-	unsigned int                m_uNextLineIndex;
+	unsigned int m_uNextLineIndex;
 
-	QPixmap                   * m_pPrivateBackgroundPixmap;
-	QScrollBar                * m_pScrollBar;
-	QToolButton               * m_pToolsButton;
-	QMenu           * m_pToolsPopup;
+	QPixmap * m_pPrivateBackgroundPixmap;
+	QScrollBar * m_pScrollBar;
+	QToolButton * m_pToolsButton;
+	QMenu * m_pToolsPopup;
 
-	KviIrcViewToolWidget      * m_pToolWidget;
+	KviIrcViewToolWidget * m_pToolWidget;
 
-	int                         m_iLastScrollBarValue;
+	int m_iLastScrollBarValue;
 
 	// Font related stuff (needs precalculation!)
-	int                         m_iFontLineSpacing;
-	int                         m_iFontLineWidth;
-	int                         m_iFontDescent;
-	int                         m_iFontCharacterWidth[256];    //1024 bytes fixed
+	int m_iFontLineSpacing;
+	int m_iFontLineWidth;
+	int m_iFontDescent;
+	int m_iFontCharacterWidth[256]; //1024 bytes fixed
 
-	int                         m_iWrapMargin;
-	int                         m_iMinimumPaintWidth;
-	int                         m_iRelativePixmapY;
-	int                         m_iIconWidth;
-	int                         m_iIconSideSpacing;
+	int m_iWrapMargin;
+	int m_iMinimumPaintWidth;
+	int m_iRelativePixmapY;
+	int m_iIconWidth;
+	int m_iIconSideSpacing;
 
-	QPoint                      m_mousePressPos;
-	QPoint                      m_mouseCurrentPos;
+	QPoint m_mousePressPos;
+	QPoint m_mouseCurrentPos;
 
 	// Selection
-	KviIrcViewLine            * m_pSelectionInitLine;
-	KviIrcViewLine            * m_pSelectionEndLine;
-	int                         m_iSelectionInitCharIndex;
-	int                         m_iSelectionEndCharIndex;
-	int                         m_iSelectTimer;
+	KviIrcViewLine * m_pSelectionInitLine;
+	KviIrcViewLine * m_pSelectionEndLine;
+	int m_iSelectionInitCharIndex;
+	int m_iSelectionEndCharIndex;
+	int m_iSelectTimer;
 
-	bool                        m_bMouseIsDown;
-	bool                        m_bShiftPressed;
-	bool                        m_bCtrlPressed;
+	bool m_bMouseIsDown;
+	bool m_bShiftPressed;
+	bool m_bCtrlPressed;
 
-	bool                        m_bSkipScrollBarRepaint;
-	int                         m_iMouseTimer;
-	KviWindow                 * m_pKviWindow;
+	bool m_bSkipScrollBarRepaint;
+	int m_iMouseTimer;
+	KviWindow * m_pKviWindow;
 	KviIrcViewWrappedBlockSelectionInfo * m_pWrappedBlockSelectionInfo;
-	QFile                     * m_pLogFile;
-	KviMainWindow                  * m_pFrm;
-	bool                        m_bAcceptDrops;
-	int                         m_iUnprocessedPaintEventRequests;
-	bool                        m_bPostedPaintEventPending;
+	QFile * m_pLogFile;
+	KviMainWindow * m_pFrm;
+	bool m_bAcceptDrops;
+	int m_iUnprocessedPaintEventRequests;
+	bool m_bPostedPaintEventPending;
 	KviPointerList<KviIrcViewLine> * m_pMessagesStoppedWhileSelecting;
-	KviIrcView                * m_pMasterView;
-	QFontMetrics              * m_pFm;               // assume this valid only inside a paint event (may be 0 in other circumstances)
+	KviIrcView * m_pMasterView;
+	QFontMetrics * m_pFm; // assume this valid only inside a paint event (may be 0 in other circumstances)
 
-	QMouseEvent               * m_pLastEvent;
+	QMouseEvent * m_pLastEvent;
 
-	KviIrcViewToolTip         * m_pToolTip;
-	bool                        m_bHaveUnreadedHighlightedMessages;
-	bool                        m_bHaveUnreadedMessages;
+	KviIrcViewToolTip * m_pToolTip;
+	bool m_bHaveUnreadedHighlightedMessages;
+	bool m_bHaveUnreadedMessages;
 
-	QMultiHash<KviIrcViewLine*,KviAnimatedPixmap*>  m_hAnimatedSmiles;
+	QMultiHash<KviIrcViewLine *, KviAnimatedPixmap *> m_hAnimatedSmiles;
+
 public:
 	void clearUnreaded();
 	void applyOptions();
 	void enableDnd(bool bEnable);
 	bool haveUnreadedMessages() { return m_bHaveUnreadedMessages; };
 	bool haveUnreadedHighlightedMessages() { return m_bHaveUnreadedHighlightedMessages; };
-	enum AppendTextFlags { NoRepaint = 1, NoTimestamp = 2, SetLineMark = 4, TriggersNotification = 8 };
-	void appendText(int msg_type,const kvi_wchar_t *data_ptr,int iFlags = 0,const QDateTime& datetime = QDateTime());
-	void clearLineMark(bool bRepaint=false);
-	bool hasLineMark(){ return m_uLineMarkLineIndex != KVI_IRCVIEW_INVALID_LINE_MARK_INDEX; };
-	void removeHeadLine(bool bRepaint=false);
-	void emptyBuffer(bool bRepaint=true);
-	void getTextBuffer(QString &buffer);
-	void setMaxBufferSize(int maxBufSize,bool bRepaint=true);
-	int  maxBufferSize(){ return m_iMaxLines; }; //Never used ?
-	bool saveBuffer(const char *filename);
-	void findNext(const QString& szText,bool bCaseS = false,bool bRegExp = false,bool bExtended = false);
-	void findPrev(const QString& szText,bool bCaseS = false,bool bRegExp = false,bool bExtended = false);
-	KviWindow * parentKviWindow(){ return m_pKviWindow; };
+	enum AppendTextFlags
+	{
+		NoRepaint = 1,
+		NoTimestamp = 2,
+		SetLineMark = 4,
+		TriggersNotification = 8
+	};
+	void appendText(int msg_type, const kvi_wchar_t * data_ptr, int iFlags = 0, const QDateTime & datetime = QDateTime());
+	void clearLineMark(bool bRepaint = false);
+	bool hasLineMark() { return m_uLineMarkLineIndex != KVI_IRCVIEW_INVALID_LINE_MARK_INDEX; };
+	void removeHeadLine(bool bRepaint = false);
+	void emptyBuffer(bool bRepaint = true);
+	void getTextBuffer(QString & buffer);
+	void setMaxBufferSize(int maxBufSize, bool bRepaint = true);
+	int maxBufferSize() { return m_iMaxLines; }; //Never used ?
+	bool saveBuffer(const char * filename);
+	void findNext(const QString & szText, bool bCaseS = false, bool bRegExp = false, bool bExtended = false);
+	void findPrev(const QString & szText, bool bCaseS = false, bool bRegExp = false, bool bExtended = false);
+	KviWindow * parentKviWindow() { return m_pKviWindow; };
 	KviConsoleWindow * console();
 	// A null pixmap passed here unsets the private backgrdound.
-	void setPrivateBackgroundPixmap(const QPixmap &pixmap,bool bRepaint=true);
-	bool hasPrivateBackgroundPixmap(){ return (m_pPrivateBackgroundPixmap != 0); };
+	void setPrivateBackgroundPixmap(const QPixmap & pixmap, bool bRepaint = true);
+	bool hasPrivateBackgroundPixmap() { return (m_pPrivateBackgroundPixmap != 0); };
 
 	//==============================================================================================
 	// Logging
 	// Stops previous logging session too...
-	bool startLogging(const QString& fname = QString(),bool bPrependCurBuffer = false);
+	bool startLogging(const QString & fname = QString(), bool bPrependCurBuffer = false);
 	void stopLogging();
-	bool isLogging(){ return (m_pLogFile != 0); };
-	void getLogFileName(QString &buffer);
-	void add2Log(const QString &szBuffer,int iMsgType = 0,bool bPrependDate = false);
+	bool isLogging() { return (m_pLogFile != 0); };
+	void getLogFileName(QString & buffer);
+	void add2Log(const QString & szBuffer, int iMsgType = 0, bool bPrependDate = false);
 
 	//==============================================================================================
 	// Channel view splitting
@@ -197,8 +204,9 @@ public:
 	virtual QSize sizeHint() const;
 	const QString & lastLineOfText();
 	const QString & lastMessageText();
-	virtual void setFont(const QFont &f);
+	virtual void setFont(const QFont & f);
 	void scrollToMarker();
+
 protected:
 	virtual void paintEvent(QPaintEvent *);
 	virtual void resizeEvent(QResizeEvent *);
@@ -214,25 +222,26 @@ protected:
 	virtual void keyPressEvent(QKeyEvent * e);
 	void maybeTip(const QPoint & pnt);
 	virtual void leaveEvent(QEvent *);
+
 private:
 	void triggerMouseRelatedKvsEvents(QMouseEvent * e);
 	void setCursorLine(KviIrcViewLine * l);
 	void ensureLineVisible(KviIrcViewLine * pLineToShow);
 	KviIrcViewLine * getVisibleLineAt(int yPos);
 	int getVisibleCharIndexAt(KviIrcViewLine * line, int xPos, int yPos);
-	void getLinkEscapeCommand(QString &buffer,const QString &escape_cmd,const QString &escape_label);
-	void appendLine(KviIrcViewLine *ptr,bool bRepaint);
+	void getLinkEscapeCommand(QString & buffer, const QString & escape_cmd, const QString & escape_label);
+	void appendLine(KviIrcViewLine * ptr, bool bRepaint);
 	void postUpdateEvent();
 	void fastScroll(int lines = 1);
-	const kvi_wchar_t * getTextLine(int msg_type,const kvi_wchar_t * data_ptr,KviIrcViewLine *line_ptr,bool bEnableTimeStamp = true,const QDateTime& datetime = QDateTime());
-	void calculateLineWraps(KviIrcViewLine *ptr,int maxWidth);
-	void recalcFontVariables(const QFontMetrics &fm,const QFontInfo &fi);
-	bool checkSelectionBlock(KviIrcViewLine * line,int bufIndex);
-	KviIrcViewWrappedBlock * getLinkUnderMouse(int xPos,int yPos,QRect * pRect = 0,QString * linkCmd = 0,QString * linkText = 0);
-	void doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkText);
+	const kvi_wchar_t * getTextLine(int msg_type, const kvi_wchar_t * data_ptr, KviIrcViewLine * line_ptr, bool bEnableTimeStamp = true, const QDateTime & datetime = QDateTime());
+	void calculateLineWraps(KviIrcViewLine * ptr, int maxWidth);
+	void recalcFontVariables(const QFontMetrics & fm, const QFontInfo & fi);
+	bool checkSelectionBlock(KviIrcViewLine * line, int bufIndex);
+	KviIrcViewWrappedBlock * getLinkUnderMouse(int xPos, int yPos, QRect * pRect = 0, QString * linkCmd = 0, QString * linkText = 0);
+	void doLinkToolTip(const QRect & rct, QString & linkCmd, QString & linkText);
 	void doMarkerToolTip();
 	bool checkMarkerArea(const QPoint & mousePos);
-	void addControlCharacter(KviIrcViewLineChunk *pC, QString & szSelectionText);
+	void addControlCharacter(KviIrcViewLineChunk * pC, QString & szSelectionText);
 	void reapplyMessageColors();
 public slots:
 	void flushLog();

@@ -58,7 +58,7 @@ class KviDataBuffer;
 typedef struct _KviIrcSocketMsgEntry
 {
 	KviDataBuffer * pData;
-	struct _KviIrcSocketMsgEntry   * next_ptr;
+	struct _KviIrcSocketMsgEntry * next_ptr;
 } KviIrcSocketMsgEntry;
 
 /**
@@ -83,85 +83,94 @@ public:
 	* \brief Destroys the IRC socket object
 	*/
 	~KviIrcSocket();
+
 public:
 	/**
 	* \enum SocketState
 	*/
-	enum SocketState {
-		Idle, /**< Socket idling */
-		Connecting, /**< Socket connecting */
-		ProxyLogin, /**< Socket loggin in to a proxy */
-		ProxyHttpError, /**< Socket error on http proxy */
-		Connected, /**< Socket connected */
-		ProxyFinalV4, /**< Socket received the final proxy v4 reply */
-		ProxyFinalV5, /**< Socket received the final proxy v5 reply */
-		ProxyFinalHttp, /**< Socket received the final proxy http reply */
+	enum SocketState
+	{
+		Idle,                    /**< Socket idling */
+		Connecting,              /**< Socket connecting */
+		ProxyLogin,              /**< Socket loggin in to a proxy */
+		ProxyHttpError,          /**< Socket error on http proxy */
+		Connected,               /**< Socket connected */
+		ProxyFinalV4,            /**< Socket received the final proxy v4 reply */
+		ProxyFinalV5,            /**< Socket received the final proxy v5 reply */
+		ProxyFinalHttp,          /**< Socket received the final proxy http reply */
 		ProxySelectAuthMethodV5, /**< Socket received v5 method select reply */
-		ProxyUserPassV5, /**< Socket received user/pass reply */
-		SSLHandshake /**< Socket is doing the SSL handshake */
+		ProxyUserPassV5,         /**< Socket received user/pass reply */
+		SSLHandshake             /**< Socket is doing the SSL handshake */
 	};
+
 protected:
-	unsigned int           m_uId;
-	KviIrcLink           * m_pLink;
-	KviConsoleWindow     * m_pConsole;
-	kvi_socket_t           m_sock;
-	SocketState            m_state;
-	QSocketNotifier      * m_pWsn;
-	QSocketNotifier      * m_pRsn;
-	KviIrcServer         * m_pIrcServer;
-	KviProxy             * m_pProxy;
-	QTimer               * m_pTimeoutTimer;
-	unsigned int           m_uReadBytes;
-	unsigned int           m_uSentBytes;
-	KviError::Code         m_eLastError;
-	unsigned int           m_uSentPackets;
+	unsigned int m_uId;
+	KviIrcLink * m_pLink;
+	KviConsoleWindow * m_pConsole;
+	kvi_socket_t m_sock;
+	SocketState m_state;
+	QSocketNotifier * m_pWsn;
+	QSocketNotifier * m_pRsn;
+	KviIrcServer * m_pIrcServer;
+	KviProxy * m_pProxy;
+	QTimer * m_pTimeoutTimer;
+	unsigned int m_uReadBytes;
+	unsigned int m_uSentBytes;
+	KviError::Code m_eLastError;
+	unsigned int m_uSentPackets;
 	KviIrcSocketMsgEntry * m_pSendQueueHead;
 	KviIrcSocketMsgEntry * m_pSendQueueTail;
-	QTimer               * m_pFlushTimer;
-	struct timeval         m_tAntiFloodLastMessageTime;
-	bool                   m_bInProcessData;
+	QTimer * m_pFlushTimer;
+	struct timeval m_tAntiFloodLastMessageTime;
+	bool m_bInProcessData;
 #ifdef COMPILE_SSL_SUPPORT
-	KviSSL               * m_pSSL;
+	KviSSL * m_pSSL;
 #endif
 public:
 	/**
 	* \brief Returns the console
 	* \return KviConsoleWindow *
 	*/
-	KviConsoleWindow * console(){ return m_pConsole; };
+	KviConsoleWindow * console() { return m_pConsole; };
 
 	/**
 	* \brief Returns the link
 	* \return KviIrcLink *
 	*/
-	KviIrcLink * link(){ return m_pLink; };
+	KviIrcLink * link() { return m_pLink; };
 
 	/**
 	* \brief Returns the state of the socket
 	* \return SocketState
 	*/
-	SocketState state(){ return m_state; };
+	SocketState state() { return m_state; };
 
 	/**
 	* \brief Returns the last error
 	* \return int
 	*/
-	int lastError(){ return m_eLastError; };
+	int lastError() { return m_eLastError; };
 
 	/**
 	* \brief Returns the id of the socket
 	* \return unsigned int
 	*/
-	unsigned int id(){ return m_uId; };
+	unsigned int id() { return m_uId; };
 
-	/**
+/**
 	* \brief Returns true if the socket is a Secure Socket Layer (SSL)
 	* \return bool
 	*/
 #ifdef COMPILE_SSL_SUPPORT
-	bool usingSSL(){ return m_pSSL; };
+	bool usingSSL()
+	{
+		return m_pSSL;
+	};
 #else
-	bool usingSSL(){ return false; };
+	bool usingSSL()
+	{
+		return false;
+	};
 #endif
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -169,32 +178,32 @@ public:
 	* \brief Returns the current SSL object for this socket
 	* \return bool
 	*/
-	KviSSL * getSSL(){ return m_pSSL; };
+	KviSSL * getSSL() { return m_pSSL; };
 #endif
 	/**
 	* \brief Returns the number of bytes read
 	* \return unsigned int
 	*/
-	unsigned int readBytes(){ return m_uReadBytes; };
+	unsigned int readBytes() { return m_uReadBytes; };
 
 	/**
 	* \brief Returns the number of bytes sent
 	* \return unsigned int
 	*/
-	unsigned int sentBytes(){ return m_uSentBytes; };
+	unsigned int sentBytes() { return m_uSentBytes; };
 
 	/**
 	* \brief Returns the number of packets sent
 	* \return unsigned int
 	*/
-	unsigned int sentPackets(){ return m_uSentPackets; };
+	unsigned int sentPackets() { return m_uSentPackets; };
 	//unsigned int readPackets(){ return m_uReadPackets; };
 
 	/**
 	* \brief Returns true if the socket is connected
 	* \return bool
 	*/
-	bool isConnected(){ return m_state == Connected; };
+	bool isConnected() { return m_state == Connected; };
 
 	/**
 	* \brief Starts the connection
@@ -250,7 +259,6 @@ public:
 	unsigned int outputQueueSize();
 
 protected:
-
 #ifdef COMPILE_SSL_SUPPORT
 	/**
 	* \brief Raises an SSL error
@@ -436,6 +444,7 @@ protected:
 	* \return void
 	*/
 	virtual void setState(SocketState state);
+
 private:
 	/**
 	* \brief Outputs a SSL message

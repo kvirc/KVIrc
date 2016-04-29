@@ -45,7 +45,7 @@ public:
 };
 
 KviDnsResolver::KviDnsResolver(QObject * pParent)
-	: QObject(pParent)
+    : QObject(pParent)
 {
 	m_pPrivateData = new KviDnsResolverPrivate;
 	m_pPrivateData->eState = Idle;
@@ -65,7 +65,7 @@ KviDnsResolver::State KviDnsResolver::state() const
 	return m_pPrivateData->eState;
 }
 
-bool KviDnsResolver::lookup(const QString & szQuery,QueryType eType)
+bool KviDnsResolver::lookup(const QString & szQuery, QueryType eType)
 {
 	if(m_pPrivateData->eState == Busy)
 	{
@@ -78,7 +78,7 @@ bool KviDnsResolver::lookup(const QString & szQuery,QueryType eType)
 	m_pPrivateData->eQueryType = eType;
 	m_pPrivateData->eState = Busy;
 	m_pPrivateData->szQuery = szQuery;
-	m_pPrivateData->iHostLookupId = QHostInfo::lookupHost(szQuery,this,SLOT(slotHostLookupTerminated(const QHostInfo &)));
+	m_pPrivateData->iHostLookupId = QHostInfo::lookupHost(szQuery, this, SLOT(slotHostLookupTerminated(const QHostInfo &)));
 
 	if(m_pPrivateData->iHostLookupId < 0)
 	{
@@ -92,7 +92,7 @@ bool KviDnsResolver::lookup(const QString & szQuery,QueryType eType)
 	return true;
 }
 
-void KviDnsResolver::slotHostLookupTerminated(const QHostInfo &oHostInfo)
+void KviDnsResolver::slotHostLookupTerminated(const QHostInfo & oHostInfo)
 {
 	if(oHostInfo.error() != QHostInfo::NoError)
 	{
@@ -102,10 +102,10 @@ void KviDnsResolver::slotHostLookupTerminated(const QHostInfo &oHostInfo)
 		{
 			case QHostInfo::HostNotFound:
 				m_pPrivateData->eError = KviError::HostNotFound;
-			break;
+				break;
 			default:
 				m_pPrivateData->eError = KviError::DNSQueryFailed;
-			break;
+				break;
 		}
 
 		m_pPrivateData->szError = oHostInfo.errorString();
@@ -125,29 +125,29 @@ void KviDnsResolver::slotHostLookupTerminated(const QHostInfo &oHostInfo)
 	m_pPrivateData->szError = QString();
 	m_pPrivateData->eState = Success;
 
-	foreach(QHostAddress oAddress,lAddresses)
+	foreach(QHostAddress oAddress, lAddresses)
 	{
 		switch(m_pPrivateData->eQueryType)
 		{
 			case IPv4:
 				if(oAddress.protocol() == QAbstractSocket::IPv4Protocol)
 					m_pPrivateData->pAddressList->append(new QString(oAddress.toString()));
-			break;
+				break;
 			case IPv6:
 				if(oAddress.protocol() == QAbstractSocket::IPv6Protocol)
 					m_pPrivateData->pAddressList->append(new QString(oAddress.toString()));
-			break;
+				break;
 			case Any:
 				m_pPrivateData->pAddressList->append(new QString(oAddress.toString()));
-			break;
+				break;
 			default:
-				KVI_ASSERT_MSG(false,"Invalid DNS query type!");
+				KVI_ASSERT_MSG(false, "Invalid DNS query type!");
 				m_pPrivateData->eState = Failure;
 				m_pPrivateData->eError = KviError::InternalError;
 				m_pPrivateData->szError = __tr2qs("Internal error: unhandled DNS query type");
 				emit lookupDone(this);
 				return;
-			break;
+				break;
 		}
 	}
 
@@ -159,7 +159,6 @@ void KviDnsResolver::slotHostLookupTerminated(const QHostInfo &oHostInfo)
 	}
 
 	emit lookupDone(this);
-
 }
 
 KviError::Code KviDnsResolver::error() const
@@ -184,7 +183,7 @@ const QString & KviDnsResolver::firstIpAddress()
 		return m_pPrivateData->szDummy;
 	return *pIpAddress;
 }
-	const QString & firstIpAddress();
+const QString & firstIpAddress();
 
 int KviDnsResolver::ipAddressCount() const
 {
@@ -205,4 +204,3 @@ bool KviDnsResolver::isRunning() const
 {
 	return m_pPrivateData->eState == Busy;
 }
-

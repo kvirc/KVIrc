@@ -39,28 +39,29 @@ class KviKvsDnsObject
 {
 public:
 	KviKvsDnsObject(KviDnsResolver * pDns,
-				KviWindow * pWnd,
-				const QString &szQuery,
-				bool bRebindOnWindowClose = true,
-				KviKvsScript * pCallback = 0,
-				KviKvsVariantList * pParameterList = 0);
+	    KviWindow * pWnd,
+	    const QString & szQuery,
+	    bool bRebindOnWindowClose = true,
+	    KviKvsScript * pCallback = 0,
+	    KviKvsVariantList * pParameterList = 0);
 	~KviKvsDnsObject();
+
 protected:
-	KviDnsResolver                    * m_pDns;
-	KviWindow                 * m_pWindow;
-	QString                     m_szQuery;
-	KviKvsScript              * m_pCallback;        // callback to be executed when the dns terminates
-	KviKvsVariantList         * m_pParameterList;   // parameter list (magic)
-	bool                        m_bRebindOnWindowClose; // should we trigger the callback even if m_pWindow no longer exists ?
+	KviDnsResolver * m_pDns;
+	KviWindow * m_pWindow;
+	QString m_szQuery;
+	KviKvsScript * m_pCallback;           // callback to be executed when the dns terminates
+	KviKvsVariantList * m_pParameterList; // parameter list (magic)
+	bool m_bRebindOnWindowClose;          // should we trigger the callback even if m_pWindow no longer exists ?
 public:
-	KviDnsResolver * dns(){ return m_pDns; };
-	KviWindow * window(){ return m_pWindow; };
-	KviKvsScript * callback(){ return m_pCallback; };
-	KviKvsVariantList * parameterList(){ return m_pParameterList; };
+	KviDnsResolver * dns() { return m_pDns; };
+	KviWindow * window() { return m_pWindow; };
+	KviKvsScript * callback() { return m_pCallback; };
+	KviKvsVariantList * parameterList() { return m_pParameterList; };
 	const QString & query() const { return m_szQuery; };
 	bool rebindOnWindowClose() const { return m_bRebindOnWindowClose; };
-	void setWindow(KviWindow * pWnd){ m_pWindow = pWnd; };
-	void setParameterList(KviKvsVariantList * pList){ m_pParameterList = pList; };
+	void setWindow(KviWindow * pWnd) { m_pWindow = pWnd; };
+	void setParameterList(KviKvsVariantList * pList) { m_pParameterList = pList; };
 };
 
 class KviKvsDnsManager : public QObject
@@ -69,17 +70,20 @@ class KviKvsDnsManager : public QObject
 public:
 	KviKvsDnsManager();
 	~KviKvsDnsManager();
+
 protected:
-	static KviKvsDnsManager   * m_pInstance;
-	KviPointerHashTable<void *,KviKvsDnsObject> * m_pDnsObjects;
+	static KviKvsDnsManager * m_pInstance;
+	KviPointerHashTable<void *, KviKvsDnsObject> * m_pDnsObjects;
+
 public:
-	static KviKvsDnsManager * instance(){ return m_pInstance; };
+	static KviKvsDnsManager * instance() { return m_pInstance; };
 	static void init();
 	static void done();
 
 	void addDns(KviKvsDnsObject * pObject);
 protected slots:
 	void dnsLookupTerminated(KviDnsResolver * pDns);
+
 private:
 	void abortAll();
 };

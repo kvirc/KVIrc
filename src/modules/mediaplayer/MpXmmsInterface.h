@@ -34,52 +34,55 @@
 #include <QLibrary>
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-	class KviXmmsInterface : public MpInterface
-	{
-	public:
-		KviXmmsInterface();
-		virtual ~KviXmmsInterface();
-	protected:
-		QLibrary* m_pPlayerLibrary;
-		QString m_szPlayerLibraryName;
-		const char ** m_pLibraryPaths;
-	public:
-		virtual int detect(bool bStart);
-		virtual bool prev();
-		virtual bool next();
-		virtual bool play();
-		virtual bool stop();
-		virtual bool pause();
-		virtual bool quit();
-		virtual bool jumpTo(kvs_int_t &iPos);
-		virtual bool setVol(kvs_int_t &iVol);
-		virtual int getVol();
-		virtual MpInterface::PlayerStatus status();
-		virtual QString nowPlaying();
-		virtual bool playMrl(const QString &mrl);
-		virtual QString mrl();
-		virtual int getPlayListPos();
-		virtual int position();
-		virtual int length();
-		virtual bool getRepeat();
-		virtual bool getShuffle();
-		virtual bool setRepeat(bool &bVal);
-		virtual bool setShuffle(bool &bVal);
-	protected:
-		bool loadPlayerLibrary();
-		void * lookupSymbol(const char * szSymbolName);
-	};
+class KviXmmsInterface : public MpInterface
+{
+public:
+	KviXmmsInterface();
+	virtual ~KviXmmsInterface();
 
-	MP_DECLARE_DESCRIPTOR(KviXmmsInterface)
+protected:
+	QLibrary * m_pPlayerLibrary;
+	QString m_szPlayerLibraryName;
+	const char ** m_pLibraryPaths;
 
-	class KviAudaciousClassicInterface : public KviXmmsInterface
-	{
-	public:
-		KviAudaciousClassicInterface();
-		virtual ~KviAudaciousClassicInterface();
-	};
+public:
+	virtual int detect(bool bStart);
+	virtual bool prev();
+	virtual bool next();
+	virtual bool play();
+	virtual bool stop();
+	virtual bool pause();
+	virtual bool quit();
+	virtual bool jumpTo(kvs_int_t & iPos);
+	virtual bool setVol(kvs_int_t & iVol);
+	virtual int getVol();
+	virtual MpInterface::PlayerStatus status();
+	virtual QString nowPlaying();
+	virtual bool playMrl(const QString & mrl);
+	virtual QString mrl();
+	virtual int getPlayListPos();
+	virtual int position();
+	virtual int length();
+	virtual bool getRepeat();
+	virtual bool getShuffle();
+	virtual bool setRepeat(bool & bVal);
+	virtual bool setShuffle(bool & bVal);
 
-	MP_DECLARE_DESCRIPTOR(KviAudaciousClassicInterface)
+protected:
+	bool loadPlayerLibrary();
+	void * lookupSymbol(const char * szSymbolName);
+};
+
+MP_DECLARE_DESCRIPTOR(KviXmmsInterface)
+
+class KviAudaciousClassicInterface : public KviXmmsInterface
+{
+public:
+	KviAudaciousClassicInterface();
+	virtual ~KviAudaciousClassicInterface();
+};
+
+MP_DECLARE_DESCRIPTOR(KviAudaciousClassicInterface)
 
 #endif //COMPILE_ON_WINDOWS
 

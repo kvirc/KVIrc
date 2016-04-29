@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-
 #include "KvsObject_widget.h"
 #include "object_macros.h"
 
@@ -36,10 +35,9 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool setCentralWidget(KviKvsObjectFunctionCall *c);
+	bool setCentralWidget(KviKvsObjectFunctionCall * c);
 };
 
-
-#endif	//!_CLASS_MAINWINDOW_H_
+#endif //!_CLASS_MAINWINDOW_H_

@@ -1,5 +1,5 @@
-#ifndef	_CLASS_COMBOBOX_H_
-#define	_CLASS_COMBOBOX_H_
+#ifndef _CLASS_COMBOBOX_H_
+#define _CLASS_COMBOBOX_H_
 
 //=============================================================================
 //
@@ -26,7 +26,6 @@
 //
 //=============================================================================
 
-
 #include <qcombobox.h>
 #include "KvsObject_widget.h"
 #include "object_macros.h"
@@ -39,36 +38,36 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool insertItem(KviKvsObjectFunctionCall *c);
-	bool changeItem(KviKvsObjectFunctionCall *c);
-	bool removeItem(KviKvsObjectFunctionCall *c);
-	bool clear(KviKvsObjectFunctionCall *c);
-//#warning "$insertPixItem"
-//#warning "$changePixItem"
+	bool insertItem(KviKvsObjectFunctionCall * c);
+	bool changeItem(KviKvsObjectFunctionCall * c);
+	bool removeItem(KviKvsObjectFunctionCall * c);
+	bool clear(KviKvsObjectFunctionCall * c);
+	//#warning "$insertPixItem"
+	//#warning "$changePixItem"
 
-	bool count(KviKvsObjectFunctionCall *c);
-	bool setMaxCount(KviKvsObjectFunctionCall *c);
-	bool maxCount(KviKvsObjectFunctionCall *c);
-	bool current(KviKvsObjectFunctionCall *c);
-	bool currentItem(KviKvsObjectFunctionCall *c);
-	bool setEditable(KviKvsObjectFunctionCall *c);
-	bool editable(KviKvsObjectFunctionCall *c);
-	bool setEditText(KviKvsObjectFunctionCall *c);
-	bool textAt(KviKvsObjectFunctionCall *c);
-	bool textLineEdit(KviKvsObjectFunctionCall *c);
-	bool setTextLineEdit(KviKvsObjectFunctionCall *c);
+	bool count(KviKvsObjectFunctionCall * c);
+	bool setMaxCount(KviKvsObjectFunctionCall * c);
+	bool maxCount(KviKvsObjectFunctionCall * c);
+	bool current(KviKvsObjectFunctionCall * c);
+	bool currentItem(KviKvsObjectFunctionCall * c);
+	bool setEditable(KviKvsObjectFunctionCall * c);
+	bool editable(KviKvsObjectFunctionCall * c);
+	bool setEditText(KviKvsObjectFunctionCall * c);
+	bool textAt(KviKvsObjectFunctionCall * c);
+	bool textLineEdit(KviKvsObjectFunctionCall * c);
+	bool setTextLineEdit(KviKvsObjectFunctionCall * c);
 
-	bool setInsertionPolicy(KviKvsObjectFunctionCall *c);
+	bool setInsertionPolicy(KviKvsObjectFunctionCall * c);
 
-	bool setCurrentItem(KviKvsObjectFunctionCall *c);
-	bool popup(KviKvsObjectFunctionCall *c);
-	bool textChangedEvent(KviKvsObjectFunctionCall *c);
-	bool activatedEvent(KviKvsObjectFunctionCall *c);
+	bool setCurrentItem(KviKvsObjectFunctionCall * c);
+	bool popup(KviKvsObjectFunctionCall * c);
+	bool textChangedEvent(KviKvsObjectFunctionCall * c);
+	bool activatedEvent(KviKvsObjectFunctionCall * c);
 protected slots:
 	void editTextChanged(const QString &);
 	void slotActivated(int);
 };
 
-#endif	// !_CLASS_COMBOBOX_H_
+#endif // !_CLASS_COMBOBOX_H_

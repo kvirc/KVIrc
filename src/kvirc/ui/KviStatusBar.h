@@ -66,10 +66,12 @@ class KviDynamicToolTip;
 class KVIRC_API KviStatusBarMessage : public KviHeapObject
 {
 	friend class KviStatusBar;
+
 protected:
-	QString      m_szText;
+	QString m_szText;
 	unsigned int m_uTimeout;
 	unsigned int m_uPriority;
+
 public:
 	/**
 	* \brief Constructs the statusbar message object
@@ -79,30 +81,31 @@ public:
 	* \return KviStatusBarMessage
 	*/
 	KviStatusBarMessage(const QString & szText, unsigned int uTimeout = 8000, unsigned int uPriority = 0)
-	: KviHeapObject(), m_szText(szText), m_uTimeout(uTimeout), m_uPriority(uPriority){};
+	    : KviHeapObject(), m_szText(szText), m_uTimeout(uTimeout), m_uPriority(uPriority){};
 
 	/**
 	* \brief Destroys the statusbar message object
 	*/
 	~KviStatusBarMessage(){};
+
 public:
 	/**
 	* \brief Returns the text of the message
 	* \return const QString &
 	*/
-	const QString & text(){ return m_szText; };
+	const QString & text() { return m_szText; };
 
 	/**
 	* \brief Returns the timeout of the message
 	* \return unsigned int
 	*/
-	unsigned int timeout(){ return m_uTimeout; };
+	unsigned int timeout() { return m_uTimeout; };
 
 	/**
 	* \brief Returns the priority of the message
 	* \return unsigned int
 	*/
-	unsigned int priority(){ return m_uPriority; };
+	unsigned int priority() { return m_uPriority; };
 };
 
 /**
@@ -126,26 +129,28 @@ public:
 	* \brief Destroys the statusbar object
 	*/
 	~KviStatusBar();
+
 protected:
-	KviTalHBox                                     * m_pBox;
-	KviMainWindow                                       * m_pFrame;
-	KviPointerList<KviStatusBarMessage>            * m_pMessageQueue;
-	QTimer                                         * m_pMessageTimer;
-	QLabel                                         * m_pMessageLabel;
-	KviPointerList<KviStatusBarApplet>             * m_pAppletList;
-	KviPointerHashTable<QString,KviStatusBarAppletDescriptor>      * m_pAppletDescriptors;
-    QMenu                                * m_pContextPopup;
-    QMenu                                * m_pAppletsPopup;
-	KviStatusBarApplet                             * m_pClickedApplet;
-	int                                              m_iLastMinimumHeight;
-	bool                                             m_bStopLayoutOnAddRemove;
-	KviDynamicToolTip                              * m_pToolTip;
+	KviTalHBox * m_pBox;
+	KviMainWindow * m_pFrame;
+	KviPointerList<KviStatusBarMessage> * m_pMessageQueue;
+	QTimer * m_pMessageTimer;
+	QLabel * m_pMessageLabel;
+	KviPointerList<KviStatusBarApplet> * m_pAppletList;
+	KviPointerHashTable<QString, KviStatusBarAppletDescriptor> * m_pAppletDescriptors;
+	QMenu * m_pContextPopup;
+	QMenu * m_pAppletsPopup;
+	KviStatusBarApplet * m_pClickedApplet;
+	int m_iLastMinimumHeight;
+	bool m_bStopLayoutOnAddRemove;
+	KviDynamicToolTip * m_pToolTip;
+
 public:
 	/**
 	* \brief Returns the frame pointer
 	* \return KviMainWindow *
 	*/
-	KviMainWindow * frame(){ return m_pFrame; };
+	KviMainWindow * frame() { return m_pFrame; };
 
 	/**
 	* \brief Returns true if the applet exists, false otherwise
@@ -166,7 +171,7 @@ public:
 	*/
 	KviStatusBarApplet * appletAt(const QPoint & pnt, bool bBestMatch = false);
 
-    //QMenu * contextPopup();
+	//QMenu * contextPopup();
 
 	/**
 	* \brief Queue a statusbar message in the stack
@@ -291,7 +296,7 @@ protected slots:
 	* \param iId The id of the applet
 	* \return void
 	*/
-    void appletsPopupActivated(QAction *pAction);
+	void appletsPopupActivated(QAction * pAction);
 
 	/**
 	* \brief Called when the user removes an applet from the statusbar
@@ -306,13 +311,14 @@ protected slots:
 	* \return void
 	*/
 	void setPermanentMessage();
+
 protected:
 	virtual void mousePressEvent(QMouseEvent * e);
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual bool event(QEvent * e);
-	void dropEvent(QDropEvent *de);
-	void dragMoveEvent(QDragMoveEvent *de);
-	void dragEnterEvent(QDragEnterEvent *event);
+	void dropEvent(QDropEvent * de);
+	void dragMoveEvent(QDragMoveEvent * de);
+	void dragEnterEvent(QDragEnterEvent * event);
 };
 
 #endif // _KVI_STATUSBAR_H_

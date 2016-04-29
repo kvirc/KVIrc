@@ -31,20 +31,20 @@
 class KVIRC_API KviKvsTreeNodeConstantData : public KviKvsTreeNodeData
 {
 public:
-	KviKvsTreeNodeConstantData(const QChar * pLocation,KviKvsVariant * v);
+	KviKvsTreeNodeConstantData(const QChar * pLocation, KviKvsVariant * v);
 	~KviKvsTreeNodeConstantData();
+
 protected:
 	KviKvsVariant * m_pValue; // literal value of the parameter
 public:
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant *pBuffer);
-	virtual void contextDescription(QString &szBuffer);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
+	virtual void contextDescription(QString & szBuffer);
 
 	virtual void dump(const char * prefix);
 
 	virtual bool convertStringConstantToNumeric();
 
-	KviKvsVariant * value(){ return m_pValue; };
+	KviKvsVariant * value() { return m_pValue; };
 };
-
 
 #endif //!_KVI_KVS_TREENODE_CONSTANTDATA_H_

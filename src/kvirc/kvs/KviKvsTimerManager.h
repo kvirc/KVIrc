@@ -24,7 +24,6 @@
 //
 //=============================================================================
 
-
 #include "kvi_settings.h"
 #include "KviQString.h"
 
@@ -56,35 +55,43 @@ class KviWindow;
 class KVIRC_API KviKvsTimer
 {
 	friend class KviKvsTimerManager;
+
 public:
-	enum Lifetime { SingleShot, WindowLifetime, Persistent };
+	enum Lifetime
+	{
+		SingleShot,
+		WindowLifetime,
+		Persistent
+	};
+
 protected:
-	KviKvsTimer(const QString &szName,Lifetime l,KviWindow * pWnd,int iDelay,int iId,KviKvsScript * pCallback,KviKvsVariantList * pParams);
+	KviKvsTimer(const QString & szName, Lifetime l, KviWindow * pWnd, int iDelay, int iId, KviKvsScript * pCallback, KviKvsVariantList * pParams);
+
 public:
 	~KviKvsTimer();
-protected:
-	Lifetime                    m_eLifetime;        // the type of this timer
-	KviWindow                 * m_pWnd;             // the window that this timer is (currently) bound to
-	QString                     m_szName;           // this timer name
-	KviKvsScript              * m_pCallback;        // callback to be executed at timer shots
-	int                         m_iDelay;           // the timer delay in msecs
-	int                         m_iId;              // the system id of this timer
-	KviKvsExtendedRunTimeData * m_pRunTimeData;     // ext run time data for this timer object
-	KviKvsVariantList         * m_pParameterList;   // parameter list
-public:
-	KviWindow * window(){ return m_pWnd; };
-	const QString & name(){ return m_szName; };
-	const KviKvsScript * callback(){ return m_pCallback; };
-	Lifetime lifetime(){ return m_eLifetime; };
-	int delay(){ return m_iDelay; };
-	int id(){ return m_iId; };
-	//KviKvsHash * variables(){ return m_pVariables; };
-	KviKvsExtendedRunTimeData * runTimeData(){ return m_pRunTimeData; };
-	KviKvsVariantList * parameterList(){ return m_pParameterList; };
-protected:
-	void setWindow(KviWindow * pWnd){ m_pWnd = pWnd; };
-};
 
+protected:
+	Lifetime m_eLifetime;                       // the type of this timer
+	KviWindow * m_pWnd;                         // the window that this timer is (currently) bound to
+	QString m_szName;                           // this timer name
+	KviKvsScript * m_pCallback;                 // callback to be executed at timer shots
+	int m_iDelay;                               // the timer delay in msecs
+	int m_iId;                                  // the system id of this timer
+	KviKvsExtendedRunTimeData * m_pRunTimeData; // ext run time data for this timer object
+	KviKvsVariantList * m_pParameterList;       // parameter list
+public:
+	KviWindow * window() { return m_pWnd; };
+	const QString & name() { return m_szName; };
+	const KviKvsScript * callback() { return m_pCallback; };
+	Lifetime lifetime() { return m_eLifetime; };
+	int delay() { return m_iDelay; };
+	int id() { return m_iId; };
+	//KviKvsHash * variables(){ return m_pVariables; };
+	KviKvsExtendedRunTimeData * runTimeData() { return m_pRunTimeData; };
+	KviKvsVariantList * parameterList() { return m_pParameterList; };
+protected:
+	void setWindow(KviWindow * pWnd) { m_pWnd = pWnd; };
+};
 
 class KVIRC_API KviKvsTimerManager : public QObject
 {
@@ -92,33 +99,36 @@ class KVIRC_API KviKvsTimerManager : public QObject
 protected: // it only can be created and destroyed by KviKvsTimerManager::init()/done()
 	KviKvsTimerManager();
 	~KviKvsTimerManager();
+
 private:
-	KviPointerHashTable<int,KviKvsTimer>     * m_pTimerDictById;      // stored by id
-	KviPointerHashTable<QString,KviKvsTimer>        * m_pTimerDictByName;    // stored by name
-	static KviKvsTimerManager   * m_pInstance;             // the one and only timer manager instance
-	KviPointerList<KviKvsTimer>     * m_pKilledTimerList;      // list of timers for that killing has been scheduled
-	int                           m_iAssassinTimer;        // assassin timer id
-	int                           m_iCurrentTimer;         // the timer currently executed
+	KviPointerHashTable<int, KviKvsTimer> * m_pTimerDictById;       // stored by id
+	KviPointerHashTable<QString, KviKvsTimer> * m_pTimerDictByName; // stored by name
+	static KviKvsTimerManager * m_pInstance;                        // the one and only timer manager instance
+	KviPointerList<KviKvsTimer> * m_pKilledTimerList;               // list of timers for that killing has been scheduled
+	int m_iAssassinTimer;                                           // assassin timer id
+	int m_iCurrentTimer;                                            // the timer currently executed
 public:
-	static KviKvsTimerManager * instance(){ return m_pInstance; };
+	static KviKvsTimerManager * instance() { return m_pInstance; };
 	static void init();
 	static void done();
 	// the pCallback and pParams are owned by the timer: they WILL be deleted
-	bool addTimer(const QString &szName,KviKvsTimer::Lifetime l,KviWindow * pWnd,int iDelay,KviKvsScript * pCallback,KviKvsVariantList * pParams);
-	bool deleteTimer(const QString &szName);
+	bool addTimer(const QString & szName, KviKvsTimer::Lifetime l, KviWindow * pWnd, int iDelay, KviKvsScript * pCallback, KviKvsVariantList * pParams);
+	bool deleteTimer(const QString & szName);
 	bool deleteTimer(int iId);
 	// the timer manager does not trigger timers concurrently
 	// this means that if this is called from a timer handler
 	// the current timer will be unique
 	bool deleteCurrentTimer();
 	void deleteAllTimers();
-	bool timerExists(const QString &szName){ return m_pTimerDictByName->find(szName); };
-	KviPointerHashTable<QString,KviKvsTimer> * timerDict()
-		{ return m_pTimerDictByName; };
+	bool timerExists(const QString & szName) { return m_pTimerDictByName->find(szName); };
+	KviPointerHashTable<QString, KviKvsTimer> * timerDict()
+	{
+		return m_pTimerDictByName;
+	};
+
 protected:
 	void scheduleKill(KviKvsTimer * t);
-	virtual void timerEvent(QTimerEvent *e);
+	virtual void timerEvent(QTimerEvent * e);
 };
-
 
 #endif //!_KVI_KVS_TIMERMANAGER_H_

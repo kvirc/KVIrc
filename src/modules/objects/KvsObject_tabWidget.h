@@ -36,33 +36,33 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 	QList<kvs_hobject_t> tabsList;
 
-	bool addTab(KviKvsObjectFunctionCall *c);
-	bool indexOf(KviKvsObjectFunctionCall *c);
-	bool insertTab(KviKvsObjectFunctionCall *c);
-	bool setTabToolTip(KviKvsObjectFunctionCall *c);
-	bool removeTabToolTip(KviKvsObjectFunctionCall *c);
-	bool setTabLabel(KviKvsObjectFunctionCall *c);
-	bool setCurrentPage(KviKvsObjectFunctionCall *c);
-	bool currentPageIndex(KviKvsObjectFunctionCall *c);
-	bool tabLabel(KviKvsObjectFunctionCall *c);
-	bool currentTabLabel(KviKvsObjectFunctionCall *c);
-	bool count(KviKvsObjectFunctionCall *c);
-	bool changeTab(KviKvsObjectFunctionCall *c);
-	bool removePage(KviKvsObjectFunctionCall *c);
-	bool setTabPosition(KviKvsObjectFunctionCall *c);
-	bool setTabsClosable(KviKvsObjectFunctionCall *c);
-	bool widgetAt(KviKvsObjectFunctionCall *c);
+	bool addTab(KviKvsObjectFunctionCall * c);
+	bool indexOf(KviKvsObjectFunctionCall * c);
+	bool insertTab(KviKvsObjectFunctionCall * c);
+	bool setTabToolTip(KviKvsObjectFunctionCall * c);
+	bool removeTabToolTip(KviKvsObjectFunctionCall * c);
+	bool setTabLabel(KviKvsObjectFunctionCall * c);
+	bool setCurrentPage(KviKvsObjectFunctionCall * c);
+	bool currentPageIndex(KviKvsObjectFunctionCall * c);
+	bool tabLabel(KviKvsObjectFunctionCall * c);
+	bool currentTabLabel(KviKvsObjectFunctionCall * c);
+	bool count(KviKvsObjectFunctionCall * c);
+	bool changeTab(KviKvsObjectFunctionCall * c);
+	bool removePage(KviKvsObjectFunctionCall * c);
+	bool setTabPosition(KviKvsObjectFunctionCall * c);
+	bool setTabsClosable(KviKvsObjectFunctionCall * c);
+	bool widgetAt(KviKvsObjectFunctionCall * c);
 
 	// events
-	bool currentChangedEvent(KviKvsObjectFunctionCall *c);
-	bool tabCloseRequestEvent(KviKvsObjectFunctionCall *c);
+	bool currentChangedEvent(KviKvsObjectFunctionCall * c);
+	bool tabCloseRequestEvent(KviKvsObjectFunctionCall * c);
 
 protected slots:
 	void slotCurrentChanged(int);
 	void slotTabCloseRequest(int);
 };
 
-#endif	//!_CLASS_TABWIDGET_H_
+#endif //!_CLASS_TABWIDGET_H_

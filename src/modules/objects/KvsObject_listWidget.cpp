@@ -53,7 +53,7 @@ const char * const itemflags_tbl[] = {
 	"tristate"
 };
 
-#define itemflags_num	(sizeof(itemflags_tbl) / sizeof(itemflags_tbl[0]))
+#define itemflags_num (sizeof(itemflags_tbl) / sizeof(itemflags_tbl[0]))
 
 /*
 	@doc:listbox
@@ -155,241 +155,266 @@ const char * const itemflags_tbl[] = {
 		This signal is emitted by the default implementation of [classfnc]$selectionChangedEvent[/classfnc]().[br]
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_listWidget,"listbox","widget")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,insertItem)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,insertWidgetItem)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,changeItem)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,removeItem)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,clear)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,count)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,currentText)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,currentItem)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,textAt);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,itemAt);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,itemRect);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,setCurrentItem);
+KVSO_BEGIN_REGISTERCLASS(KvsObject_listWidget, "listbox", "widget")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, insertItem)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, insertWidgetItem)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, changeItem)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, removeItem)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, clear)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, count)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, currentText)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, currentItem)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, textAt);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, itemAt);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, itemRect);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, setCurrentItem);
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,selectedItems);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,setSelected);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,isSelected);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,setFont);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,setIcon);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, selectedItems);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, setSelected);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, isSelected);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, setFont);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, setIcon);
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,setFlags)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,setChecked);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,isChecked);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, setFlags)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, setChecked);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, isChecked);
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,setSelectionMode);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,selectionMode);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, setSelectionMode);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, selectionMode);
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,setForeground);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, setForeground);
 
-	// events
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,currentItemChangedEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,itemChangedEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget,itemEnteredEvent);
-	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KvsObject_listWidget,"selectionChangedEvent")
-
+// events
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, currentItemChangedEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, itemChangedEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_listWidget, itemEnteredEvent);
+KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KvsObject_listWidget, "selectionChangedEvent")
 
 KVSO_END_REGISTERCLASS(KvsObject_listWidget)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_listWidget,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_listWidget, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_listWidget)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_listWidget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_listWidget)
 
-bool KvsObject_listWidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_listWidget::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QListWidget)
 	obj->setSelectionMode(QAbstractItemView::SingleSelection);
-	connect(obj,SIGNAL(itemSelectionChanged()),this,SLOT(selectionChanged()));
-	connect(obj,SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),this,SLOT(currentItemChanged(QListWidgetItem *,QListWidgetItem *)));
-	connect(obj,SIGNAL(itemEntered(QListWidgetItem *)),this,SLOT(slotItemEntered(QListWidgetItem *)));
-	connect(obj,SIGNAL(itemChanged(QListWidgetItem *)),this,SLOT(slotItemChanged(QListWidgetItem *)));
+	connect(obj, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
+	connect(obj, SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)), this, SLOT(currentItemChanged(QListWidgetItem *, QListWidgetItem *)));
+	connect(obj, SIGNAL(itemEntered(QListWidgetItem *)), this, SLOT(slotItemEntered(QListWidgetItem *)));
+	connect(obj, SIGNAL(itemChanged(QListWidgetItem *)), this, SLOT(slotItemChanged(QListWidgetItem *)));
 
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(listWidget,insertItem)
+KVSO_CLASS_FUNCTION(listWidget, insertItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iRow;
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
-		KVSO_PARAMETER("index",KVS_PT_INT,KVS_PF_OPTIONAL,iRow)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
+	KVSO_PARAMETER("index", KVS_PT_INT, KVS_PF_OPTIONAL, iRow)
 	KVSO_PARAMETERS_END(c)
-    if (c->parameterCount()==2) ((QListWidget *)widget())->insertItem(iRow, szText);
-	else ((QListWidget *)widget())->addItem(szText);
+	if(c->parameterCount() == 2)
+		((QListWidget *)widget())->insertItem(iRow, szText);
+	else
+		((QListWidget *)widget())->addItem(szText);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(listWidget,setFlags)
+KVSO_CLASS_FUNCTION(listWidget, setFlags)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QStringList itemflags;
 	kvs_uint_t iIdx;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIdx)
-		KVSO_PARAMETER("flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,itemflags)
+	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, iIdx)
+	KVSO_PARAMETER("flags", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, itemflags)
 	KVSO_PARAMETERS_END(c)
-	int flag,sum=0;
-	QListWidgetItem *pItem=((QListWidget *)widget())->item(iIdx);
-	if(!pItem) return true;
-	for ( int i=0;i<itemflags.count();i++)
+	int flag, sum = 0;
+	QListWidgetItem * pItem = ((QListWidget *)widget())->item(iIdx);
+	if(!pItem)
+		return true;
+	for(int i = 0; i < itemflags.count(); i++)
 	{
 		flag = 0;
 		for(unsigned int j = 0; j < itemflags_num; j++)
 		{
 			if(KviQString::equalCI(itemflags.at(i), itemflags_tbl[j]))
 			{
-				flag=item_flags[j];
+				flag = item_flags[j];
 				break;
 			}
 		}
-		if(flag){
-			if (flag==Qt::ItemIsUserCheckable)
-					pItem->setCheckState(Qt::Unchecked);
+		if(flag)
+		{
+			if(flag == Qt::ItemIsUserCheckable)
+				pItem->setCheckState(Qt::Unchecked);
 			sum = sum | flag;
 		}
 		else
-			c->warning(__tr2qs_ctx("Unknown item flag '%Q'","objects"),&itemflags.at(i));
+			c->warning(__tr2qs_ctx("Unknown item flag '%Q'", "objects"), &itemflags.at(i));
 	}
 	pItem->setFlags((Qt::ItemFlags)sum);
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,setChecked)
+KVSO_CLASS_FUNCTION(listWidget, setChecked)
 {
 	bool bChecked;
 	kvs_uint_t iIdx;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIdx)
-		KVSO_PARAMETER("bChecked",KVS_PT_BOOL,0,bChecked)
+	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, iIdx)
+	KVSO_PARAMETER("bChecked", KVS_PT_BOOL, 0, bChecked)
 	KVSO_PARAMETERS_END(c)
-	QListWidgetItem *pItem=((QListWidget *)widget())->item(iIdx);
-	if(!pItem) return true;
-	pItem->setCheckState(bChecked?Qt::Checked:Qt::Unchecked);
+	QListWidgetItem * pItem = ((QListWidget *)widget())->item(iIdx);
+	if(!pItem)
+		return true;
+	pItem->setCheckState(bChecked ? Qt::Checked : Qt::Unchecked);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(listWidget,isChecked)
+KVSO_CLASS_FUNCTION(listWidget, isChecked)
 {
 	kvs_uint_t iIdx;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIdx)
+	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, iIdx)
 	KVSO_PARAMETERS_END(c)
-	QListWidgetItem *pItem=((QListWidget *)widget())->item(iIdx);
-	if(!pItem) return true;
-	c->returnValue()->setBoolean(pItem->checkState()==Qt::Checked?1:0);
+	QListWidgetItem * pItem = ((QListWidget *)widget())->item(iIdx);
+	if(!pItem)
+		return true;
+	c->returnValue()->setBoolean(pItem->checkState() == Qt::Checked ? 1 : 0);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(listWidget,setFont)
+KVSO_CLASS_FUNCTION(listWidget, setFont)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szFamily;
 	QStringList szListStyle;
-	kvs_int_t iSize,iIdx;
+	kvs_int_t iSize, iIdx;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_INTEGER,0,iIdx)
-		KVSO_PARAMETER("size",KVS_PT_INTEGER,0,iSize)
-		KVSO_PARAMETER("family",KVS_PT_STRING,0,szFamily)
-		KVSO_PARAMETER("style",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,szListStyle)
+	KVSO_PARAMETER("index", KVS_PT_INTEGER, 0, iIdx)
+	KVSO_PARAMETER("size", KVS_PT_INTEGER, 0, iSize)
+	KVSO_PARAMETER("family", KVS_PT_STRING, 0, szFamily)
+	KVSO_PARAMETER("style", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, szListStyle)
 	KVSO_PARAMETERS_END(c)
-	QListWidgetItem *pItem=((QListWidget *)widget())->item(iIdx);
-	if(!pItem) return true;
-	QFont font=widget()->font();
-	if(!szFamily.isEmpty()) font.setFamily(szFamily);
-	if(iSize) font.setPointSize(iSize);
+	QListWidgetItem * pItem = ((QListWidget *)widget())->item(iIdx);
+	if(!pItem)
+		return true;
+	QFont font = widget()->font();
+	if(!szFamily.isEmpty())
+		font.setFamily(szFamily);
+	if(iSize)
+		font.setPointSize(iSize);
 	QString szStyle;
-	for(int i=0;i<szListStyle.length();i++)
+	for(int i = 0; i < szListStyle.length(); i++)
 	{
-		szStyle=szListStyle.at(i);
-		if(KviQString::equalCI(szStyle,"italic")) font.setItalic(true);
-		else if(KviQString::equalCI(szStyle,"bold")) font.setBold(true);
-		else if(KviQString::equalCI(szStyle,"underline"))font.setUnderline(true);
-		else if(KviQString::equalCI(szStyle,"overline")) font.setOverline(true);
-		else if(KviQString::equalCI(szStyle,"strikeout"))font.setStrikeOut(true);
-		else if(KviQString::equalCI(szStyle,"fixedpitch")) font.setFixedPitch(true);
-		else c->warning(__tr2qs_ctx("Unknown style '%Q'","objects"),&szStyle);
+		szStyle = szListStyle.at(i);
+		if(KviQString::equalCI(szStyle, "italic"))
+			font.setItalic(true);
+		else if(KviQString::equalCI(szStyle, "bold"))
+			font.setBold(true);
+		else if(KviQString::equalCI(szStyle, "underline"))
+			font.setUnderline(true);
+		else if(KviQString::equalCI(szStyle, "overline"))
+			font.setOverline(true);
+		else if(KviQString::equalCI(szStyle, "strikeout"))
+			font.setStrikeOut(true);
+		else if(KviQString::equalCI(szStyle, "fixedpitch"))
+			font.setFixedPitch(true);
+		else
+			c->warning(__tr2qs_ctx("Unknown style '%Q'", "objects"), &szStyle);
 	}
 	pItem->setFont(font);
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,setIcon)
+KVSO_CLASS_FUNCTION(listWidget, setIcon)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uIdx;
-	KviKvsObject *obPixmap;
+	KviKvsObject * obPixmap;
 	kvs_hobject_t obHpixmap;
 	KviKvsVariant * vPixmap;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uIdx)
-		KVSO_PARAMETER("pixmap",KVS_PT_VARIANT,0,vPixmap)
+	KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uIdx)
+	KVSO_PARAMETER("pixmap", KVS_PT_VARIANT, 0, vPixmap)
 	KVSO_PARAMETERS_END(c)
-	QListWidgetItem *pItem=((QListWidget *)widget())->item(uIdx);
-	if(!pItem) return true;
+	QListWidgetItem * pItem = ((QListWidget *)widget())->item(uIdx);
+	if(!pItem)
+		return true;
 
-	QPixmap *pix = 0;
-	if (vPixmap->isEmpty()) {pItem->setIcon(QIcon());return true;}
+	QPixmap * pix = 0;
+	if(vPixmap->isEmpty())
+	{
+		pItem->setIcon(QIcon());
+		return true;
+	}
 	if(vPixmap->isHObject())
 	{
 		vPixmap->asHObject(obHpixmap);
-		obPixmap=KviKvsKernel::instance()->objectController()->lookupObject(obHpixmap);
-		if (!obPixmap->inheritsClass("pixmap"))
+		obPixmap = KviKvsKernel::instance()->objectController()->lookupObject(obHpixmap);
+		if(!obPixmap->inheritsClass("pixmap"))
 		{
-			c->warning(__tr2qs_ctx("Pixmap object or image ID required","objects"));
+			c->warning(__tr2qs_ctx("Pixmap object or image ID required", "objects"));
 			return true;
 		}
-		pix=((KvsObject_pixmap *)obPixmap)->getPixmap();
-	} else {
+		pix = ((KvsObject_pixmap *)obPixmap)->getPixmap();
+	}
+	else
+	{
 		QString szPix;
 		vPixmap->asString(szPix);
-		pix=g_pIconManager->getImage(szPix);
+		pix = g_pIconManager->getImage(szPix);
 		if(!pix)
 		{
-			c->warning(__tr2qs_ctx("Error occurred: the suitable file '%Q' is not of the correct format or it is not a valid icon number.","objects"),&szPix);
+			c->warning(__tr2qs_ctx("Error occurred: the suitable file '%Q' is not of the correct format or it is not a valid icon number.", "objects"), &szPix);
 			return true;
 		}
 	}
-	if(pix){
+	if(pix)
+	{
 		pItem->setIcon(*pix);
 	}
-	else{
+	else
+	{
 		pItem->setIcon(QIcon());
 	}
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,setForeground)
+KVSO_CLASS_FUNCTION(listWidget, setForeground)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iCol1,iCol2,iCol3,iOpacity,iIdx;
-	QString szColorMode,szColor;
-	KviKvsVariant *var1,*var2,*var3;
+	kvs_int_t iCol1, iCol2, iCol3, iOpacity, iIdx;
+	QString szColorMode, szColor;
+	KviKvsVariant *var1, *var2, *var3;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_INTEGER,0,iIdx)
-		KVSO_PARAMETER("Color_1_Or_Colorname",KVS_PT_VARIANT,0,var1)
-		KVSO_PARAMETER("Color_2",KVS_PT_VARIANT,KVS_PF_OPTIONAL,var2)
-		KVSO_PARAMETER("Colo3_3",KVS_PT_VARIANT,KVS_PF_OPTIONAL,var3)
-		KVSO_PARAMETER("color_mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szColorMode)
-		KVSO_PARAMETER("opacity",KVS_PT_INT,KVS_PF_OPTIONAL,iOpacity)
+	KVSO_PARAMETER("index", KVS_PT_INTEGER, 0, iIdx)
+	KVSO_PARAMETER("Color_1_Or_Colorname", KVS_PT_VARIANT, 0, var1)
+	KVSO_PARAMETER("Color_2", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var2)
+	KVSO_PARAMETER("Colo3_3", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var3)
+	KVSO_PARAMETER("color_mode", KVS_PT_STRING, KVS_PF_OPTIONAL, szColorMode)
+	KVSO_PARAMETER("opacity", KVS_PT_INT, KVS_PF_OPTIONAL, iOpacity)
 	KVSO_PARAMETERS_END(c)
-	QListWidgetItem *pItem=((QListWidget *)widget())->item(iIdx);
-	if(!pItem) return true;
+	QListWidgetItem * pItem = ((QListWidget *)widget())->item(iIdx);
+	if(!pItem)
+		return true;
 	QColor col;
-	if (!var1->asInteger(iCol1))
+	if(!var1->asInteger(iCol1))
 	{
 		var1->asString(szColor);
-		if (c->paramCount()<3) iOpacity=255;
+		if(c->paramCount() < 3)
+			iOpacity = 255;
 		else
 		{
-			if (!var2->asInteger(iOpacity))
+			if(!var2->asInteger(iOpacity))
 			{
-				c->warning(__tr2qs_ctx("The opacity parameter didn't evaluate to integer","objects"));
+				c->warning(__tr2qs_ctx("The opacity parameter didn't evaluate to integer", "objects"));
 				return true;
 			}
 		}
@@ -398,278 +423,299 @@ KVSO_CLASS_FUNCTION(listWidget,setForeground)
 	}
 	else
 	{
-		if(c->paramCount()<4)
+		if(c->paramCount() < 4)
 		{
-			c->error(__tr2qs_ctx("Color name or triplet RGB/HSV value required","objects"));
+			c->error(__tr2qs_ctx("Color name or triplet RGB/HSV value required", "objects"));
 			return true;
 		}
-		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
+		if(!var2->asInteger(iCol2) || !var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs_ctx("One of the triplet parameters didn't evaluate to an integer","objects"));\
+			c->error(__tr2qs_ctx("One of the triplet parameters didn't evaluate to an integer", "objects"));
 			return true;
 		}
-		if (c->paramCount()<5) iOpacity=255;
+		if(c->paramCount() < 5)
+			iOpacity = 255;
 		if(KviQString::equalCI(szColorMode, "HSV"))
-		col.setHsv(iCol1,iCol2,iCol3,iOpacity);
+			col.setHsv(iCol1, iCol2, iCol3, iOpacity);
 		else
-		col.setRgb(iCol1,iCol2,iCol3,iOpacity);
+			col.setRgb(iCol1, iCol2, iCol3, iOpacity);
 	}
-	QBrush brush=pItem->foreground();
+	QBrush brush = pItem->foreground();
 	brush.setColor(col);
 	pItem->setForeground(brush);
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,clear)
+KVSO_CLASS_FUNCTION(listWidget, clear)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	((QListWidget *)widget())->clear();
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(listWidget,changeItem)
+KVSO_CLASS_FUNCTION(listWidget, changeItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t iIndex,cnt;
+	kvs_uint_t iIndex, cnt;
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
+	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, iIndex)
 	KVSO_PARAMETERS_END(c)
-	if (szText.isEmpty()) c->warning(__tr2qs_ctx("No string parameter given - using empty string","objects"));
+	if(szText.isEmpty())
+		c->warning(__tr2qs_ctx("No string parameter given - using empty string", "objects"));
 	if(iIndex >= (cnt = ((QListWidget *)widget())->count()))
 	{
 		c->warning(__tr2qs_ctx("Item index [%d] is too big - defaulting to "
-			"$count() - 1 [%d]","objects"), iIndex, cnt);
+		                       "$count() - 1 [%d]",
+		               "objects"),
+		    iIndex, cnt);
 		iIndex = cnt - 1;
 	}
 	((QListWidget *)widget())->item(iIndex)->setText(szText);
 	return true;
 }
 
-
-KVSO_CLASS_FUNCTION(listWidget,removeItem)
+KVSO_CLASS_FUNCTION(listWidget, removeItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t iIndex,cnt;
+	kvs_uint_t iIndex, cnt;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
+	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, iIndex)
 	KVSO_PARAMETERS_END(c)
 	if(iIndex >= (cnt = ((QListWidget *)widget())->count()))
 	{
-		c->warning(__tr2qs_ctx("Item index [%d] is too big - defaulting to " \
-			"$count() - 1 [%d]","objects"), iIndex, cnt);
+		c->warning(__tr2qs_ctx("Item index [%d] is too big - defaulting to "
+		                       "$count() - 1 [%d]",
+		               "objects"),
+		    iIndex, cnt);
 		iIndex = cnt - 1;
 	}
-	delete ((QListWidget *)widget())->takeItem(iIndex);
+	delete((QListWidget *)widget())->takeItem(iIndex);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(listWidget,count)
+KVSO_CLASS_FUNCTION(listWidget, count)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((QListWidget *)widget())->count());
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,currentText)
+KVSO_CLASS_FUNCTION(listWidget, currentText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString text;
-	QListWidgetItem *item=((QListWidget *)widget())->currentItem();
-	if (item) text=item->text();
-	else text="";
+	QListWidgetItem * item = ((QListWidget *)widget())->currentItem();
+	if(item)
+		text = item->text();
+	else
+		text = "";
 	c->returnValue()->setString(text);
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,currentItem)
+KVSO_CLASS_FUNCTION(listWidget, currentItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((QListWidget *)widget())->currentRow());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(listWidget,textAt)
+KVSO_CLASS_FUNCTION(listWidget, textAt)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
+	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, iIndex)
 	KVSO_PARAMETERS_END(c)
 	c->returnValue()->setString(((QListWidget *)widget())->item(iIndex)->text());
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,setCurrentItem)
+KVSO_CLASS_FUNCTION(listWidget, setCurrentItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
+	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, iIndex)
 	KVSO_PARAMETERS_END(c)
 	((QListWidget *)widget())->setCurrentRow(iIndex);
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,setSelectionMode)
+KVSO_CLASS_FUNCTION(listWidget, setSelectionMode)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("selection_mode",KVS_PT_STRING,0,szMode)
+	KVSO_PARAMETER("selection_mode", KVS_PT_STRING, 0, szMode)
 	KVSO_PARAMETERS_END(c)
 	QAbstractItemView::SelectionMode iMode = QAbstractItemView::SingleSelection;
-	if(KviQString::equalCI(szMode,"single")) iMode = QAbstractItemView::SingleSelection;
-	else if(KviQString::equalCI(szMode,"multi")) iMode = QAbstractItemView::MultiSelection;
-	else if(KviQString::equalCI(szMode,"extended")) iMode = QAbstractItemView::ExtendedSelection;
-	else if(KviQString::equalCI(szMode,"none")) iMode = QAbstractItemView::NoSelection;
-	else  c->warning(__tr2qs_ctx("Invalid selection mode '%Q' assuming single","objects"),&szMode);
+	if(KviQString::equalCI(szMode, "single"))
+		iMode = QAbstractItemView::SingleSelection;
+	else if(KviQString::equalCI(szMode, "multi"))
+		iMode = QAbstractItemView::MultiSelection;
+	else if(KviQString::equalCI(szMode, "extended"))
+		iMode = QAbstractItemView::ExtendedSelection;
+	else if(KviQString::equalCI(szMode, "none"))
+		iMode = QAbstractItemView::NoSelection;
+	else
+		c->warning(__tr2qs_ctx("Invalid selection mode '%Q' assuming single", "objects"), &szMode);
 	((QListWidget *)widget())->setSelectionMode(iMode);
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,selectionMode)
+KVSO_CLASS_FUNCTION(listWidget, selectionMode)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	switch(((QListWidget *)widget())->selectionMode())
 	{
-		case QAbstractItemView::SingleSelection: c->returnValue()->setString("single"); break;
-		case QAbstractItemView::MultiSelection: c->returnValue()->setString("multi"); break;
-		case QAbstractItemView::ExtendedSelection: c->returnValue()->setString("extended"); break;
-		case QAbstractItemView::NoSelection: c->returnValue()->setString("none"); break;
-		default: c->returnValue()->setString("single"); break;
+		case QAbstractItemView::SingleSelection:
+			c->returnValue()->setString("single");
+			break;
+		case QAbstractItemView::MultiSelection:
+			c->returnValue()->setString("multi");
+			break;
+		case QAbstractItemView::ExtendedSelection:
+			c->returnValue()->setString("extended");
+			break;
+		case QAbstractItemView::NoSelection:
+			c->returnValue()->setString("none");
+			break;
+		default:
+			c->returnValue()->setString("single");
+			break;
 	}
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(listWidget,insertWidgetItem)
+KVSO_CLASS_FUNCTION(listWidget, insertWidgetItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject *pObject;
+	KviKvsObject * pObject;
 	kvs_int_t iIndex;
 	kvs_hobject_t hWid;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hWid)
-		KVSO_PARAMETER("index",KVS_PT_INT,0,iIndex)
+	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hWid)
+	KVSO_PARAMETER("index", KVS_PT_INT, 0, iIndex)
 	KVSO_PARAMETERS_END(c)
-	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hWid);
-	if(pObject==this)
+	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hWid);
+	if(pObject == this)
 	{
-		c->warning(__tr2qs_ctx("Can't insert the listwidget itself!","objects"));
+		c->warning(__tr2qs_ctx("Can't insert the listwidget itself!", "objects"));
 		return true;
 	}
 	if(!pObject->object()->isWidgetType())
 	{
-		c->warning(__tr2qs_ctx("Can't insert a non-widget object","objects"));
+		c->warning(__tr2qs_ctx("Can't insert a non-widget object", "objects"));
 		return true;
 	}
-	QWidget *wi=((QWidget *)(pObject->object()));
-	QListWidgetItem *item=((QListWidget *)widget())->item(iIndex);
-	((QListWidget *)widget())->setItemWidget(item,wi);
+	QWidget * wi = ((QWidget *)(pObject->object()));
+	QListWidgetItem * item = ((QListWidget *)widget())->item(iIndex);
+	((QListWidget *)widget())->setItemWidget(item, wi);
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,selectedItems)
+KVSO_CLASS_FUNCTION(listWidget, selectedItems)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QList<QListWidgetItem *> list=((QListWidget *)widget())->selectedItems();
+	QList<QListWidgetItem *> list = ((QListWidget *)widget())->selectedItems();
 	KviKvsArray * pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
-	for (int i=0;i<list.count();i++)
+	for(int i = 0; i < list.count(); i++)
 	{
-		kvs_int_t index=((QListWidget *)widget())->row(list.at(i));
-		pArray->set(i,new KviKvsVariant(index));
+		kvs_int_t index = ((QListWidget *)widget())->row(list.at(i));
+		pArray->set(i, new KviKvsVariant(index));
 	}
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(listWidget,setSelected)
+KVSO_CLASS_FUNCTION(listWidget, setSelected)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	bool bSel;
 	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOLEAN,0,bSel)
+	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
+	KVSO_PARAMETER("bEnabled", KVS_PT_BOOLEAN, 0, bSel)
 	KVSO_PARAMETERS_END(c)
 	((QListWidget *)widget())->item(uIndex)->setSelected(bSel);
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,isSelected)
+KVSO_CLASS_FUNCTION(listWidget, isSelected)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
 	KVSO_PARAMETERS_END(c)
 	c->returnValue()->setBoolean(((QListWidget *)widget())->item(uIndex)->isSelected());
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,itemAt)
+KVSO_CLASS_FUNCTION(listWidget, itemAt)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t uX,uY;
+	kvs_uint_t uX, uY;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("uX",KVS_PT_UNSIGNEDINTEGER,0,uX)
-		KVSO_PARAMETER("uY",KVS_PT_UNSIGNEDINTEGER,0,uY)
+	KVSO_PARAMETER("uX", KVS_PT_UNSIGNEDINTEGER, 0, uX)
+	KVSO_PARAMETER("uY", KVS_PT_UNSIGNEDINTEGER, 0, uY)
 	KVSO_PARAMETERS_END(c)
-	c->returnValue()->setInteger(((QListWidget *)widget())->row(((QListWidget *)widget())->itemAt(QPoint(uX,uY))));
+	c->returnValue()->setInteger(((QListWidget *)widget())->row(((QListWidget *)widget())->itemAt(QPoint(uX, uY))));
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,itemRect)
+KVSO_CLASS_FUNCTION(listWidget, itemRect)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("iIndex",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
+	KVSO_PARAMETER("iIndex", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
 	KVSO_PARAMETERS_END(c)
-	QRect rect=((QListWidget *)widget())->visualItemRect(((QListWidget *)widget())->item(uIndex));
+	QRect rect = ((QListWidget *)widget())->visualItemRect(((QListWidget *)widget())->item(uIndex));
 	KviKvsArray * a = new KviKvsArray();
-	a->set(0,new KviKvsVariant((kvs_int_t)rect.left()));
-	a->set(1,new KviKvsVariant((kvs_int_t)rect.top()));
-	a->set(2,new KviKvsVariant((kvs_int_t)rect.width()));
-	a->set(3,new KviKvsVariant((kvs_int_t)rect.height()));
+	a->set(0, new KviKvsVariant((kvs_int_t)rect.left()));
+	a->set(1, new KviKvsVariant((kvs_int_t)rect.top()));
+	a->set(2, new KviKvsVariant((kvs_int_t)rect.width()));
+	a->set(3, new KviKvsVariant((kvs_int_t)rect.height()));
 	c->returnValue()->setArray(a);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(listWidget,currentItemChangedEvent)
+KVSO_CLASS_FUNCTION(listWidget, currentItemChangedEvent)
 {
-	emitSignal("currentItemChanged",c,c->params());
+	emitSignal("currentItemChanged", c, c->params());
 	return true;
 }
-KVSO_CLASS_FUNCTION(listWidget,itemChangedEvent)
+KVSO_CLASS_FUNCTION(listWidget, itemChangedEvent)
 {
-	emitSignal("itemChanged",c,c->params());
+	emitSignal("itemChanged", c, c->params());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(listWidget,itemEnteredEvent)
+KVSO_CLASS_FUNCTION(listWidget, itemEnteredEvent)
 {
-	emitSignal("itemEntered",c,c->params());
+	emitSignal("itemEntered", c, c->params());
 
 	return true;
 }
 
 //slots
-void KvsObject_listWidget::currentItemChanged(QListWidgetItem *currentItem,QListWidgetItem *)
+void KvsObject_listWidget::currentItemChanged(QListWidgetItem * currentItem, QListWidgetItem *)
 {
-	if (!currentItem) callFunction(this,"currentItemChangedEvent",0,0);
+	if(!currentItem)
+		callFunction(this, "currentItemChangedEvent", 0, 0);
 	else
 	{
 		KviKvsVariantList params(new KviKvsVariant(currentItem->text()));
-		callFunction(this,"currentItemChangedEvent",0,&params);
+		callFunction(this, "currentItemChangedEvent", 0, &params);
 	}
-
 }
 void KvsObject_listWidget::selectionChanged()
 {
-	callFunction(this,"selectionChangedEvent",0,0);
+	callFunction(this, "selectionChangedEvent", 0, 0);
 }
 
-
-void KvsObject_listWidget::slotItemEntered(QListWidgetItem *item)
+void KvsObject_listWidget::slotItemEntered(QListWidgetItem * item)
 {
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)((QListWidget *)widget())->row(item)));
-	callFunction(this,"itemEnteredEvent",0,&params);
+	callFunction(this, "itemEnteredEvent", 0, &params);
 }
 
-void KvsObject_listWidget::slotItemChanged(QListWidgetItem *item)
+void KvsObject_listWidget::slotItemChanged(QListWidgetItem * item)
 {
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)((QListWidget *)widget())->row(item)));
-	callFunction(this,"itemChangedEvent",0,&params);
+	callFunction(this, "itemChangedEvent", 0, &params);
 }

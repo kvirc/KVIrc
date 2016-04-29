@@ -45,21 +45,21 @@
 #include <QMenu>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
+extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
 extern QPixmap * g_pActivityMeterPixmap;
 
 // KviTreeWindowListItem
 
-KviTreeWindowListItem::KviTreeWindowListItem(QTreeWidget * par,KviWindow * wnd)
-: QTreeWidgetItem(par), KviWindowListItem(wnd)
+KviTreeWindowListItem::KviTreeWindowListItem(QTreeWidget * par, KviWindow * wnd)
+    : QTreeWidgetItem(par), KviWindowListItem(wnd)
 {
 	applyOptions();
 }
 
-KviTreeWindowListItem::KviTreeWindowListItem(KviTreeWindowListItem * par,KviWindow * wnd)
-: QTreeWidgetItem(par), KviWindowListItem(wnd)
+KviTreeWindowListItem::KviTreeWindowListItem(KviTreeWindowListItem * par, KviWindow * wnd)
+    : QTreeWidgetItem(par), KviWindowListItem(wnd)
 {
 	applyOptions();
 }
@@ -82,20 +82,20 @@ void KviTreeWindowListItem::captionChanged()
 	{
 		case KviWindow::Console:
 		{
-			KviWindowListBase::getTextForConsole(szText,(KviConsoleWindow *)m_pWindow);
+			KviWindowListBase::getTextForConsole(szText, (KviConsoleWindow *)m_pWindow);
 		}
 		break;
 		case KviWindow::Channel:
 		case KviWindow::DeadChannel:
 			szText = ((KviChannelWindow *)m_pWindow)->nameWithUserFlag();
-		break;
+			break;
 		case KviWindow::Query:
 		case KviWindow::DeadQuery:
 			szText = m_pWindow->windowName();
-		break;
+			break;
 		default:
 			szText = m_pWindow->plainTextCaption();
-		break;
+			break;
 	}
 
 	if(m_pWindow->isMinimized())
@@ -109,17 +109,21 @@ void KviTreeWindowListItem::captionChanged()
 
 void KviTreeWindowListItem::unhighlight()
 {
-	if(m_iHighlightLevel < 1)return;
+	if(m_iHighlightLevel < 1)
+		return;
 	m_iHighlightLevel = 0;
 	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
 
-	if(g_pMainWindow->trayIcon())g_pMainWindow->trayIcon()->refresh();
+	if(g_pMainWindow->trayIcon())
+		g_pMainWindow->trayIcon()->refresh();
 }
 
 void KviTreeWindowListItem::highlight(int iLevel)
 {
-	if(iLevel <= m_iHighlightLevel)return;
-	if(treeWidget()->currentItem() == this && g_pMainWindow->isActiveWindow())return;
+	if(iLevel <= m_iHighlightLevel)
+		return;
+	if(treeWidget()->currentItem() == this && g_pMainWindow->isActiveWindow())
+		return;
 	m_iHighlightLevel = iLevel;
 	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
 
@@ -129,7 +133,8 @@ void KviTreeWindowListItem::highlight(int iLevel)
 
 void KviTreeWindowListItem::setProgress(int progress)
 {
-	if(progress == m_iProgress)return;
+	if(progress == m_iProgress)
+		return;
 	m_iProgress = progress;
 	setData(0, KVI_TTBID_PROGRESS, m_iProgress);
 }
@@ -140,7 +145,7 @@ void KviTreeWindowListItem::setActive(bool bActive)
 	{
 		unhighlight();
 		treeWidget()->setCurrentItem(this);
-// 		treeWidget()->scrollToItem(this);
+		// 		treeWidget()->scrollToItem(this);
 	}
 }
 
@@ -159,21 +164,27 @@ QString KviTreeWindowListItem::key() const
 
 	if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName))
 	{
-		if(iType==KviWindow::Console)
+		if(iType == KviWindow::Console)
 		{
 			QString szText;
-			KviWindowListBase::getTextForConsole(szText,(KviConsoleWindow *)m_pWindow);
+			KviWindowListBase::getTextForConsole(szText, (KviConsoleWindow *)m_pWindow);
 
-			ret.sprintf("%2d%s",iType,szText.toLower().toUtf8().data());
-		} else {
-			ret.sprintf("%2d%s",iType,m_pWindow->windowName().toLower().toUtf8().data());
+			ret.sprintf("%2d%s", iType, szText.toLower().toUtf8().data());
 		}
-	} else {
-		if(iType==KviWindow::Console)
+		else
 		{
-			ret.sprintf("%2d%4u",iType,((KviConsoleWindow*)m_pWindow)->context() ? ((KviConsoleWindow*)m_pWindow)->context()->id() : 9999);
-		} else {
-			ret.sprintf("%2d%4d",iType,parent() ? parent()->indexOfChild((QTreeWidgetItem *)this) : 9999);
+			ret.sprintf("%2d%s", iType, m_pWindow->windowName().toLower().toUtf8().data());
+		}
+	}
+	else
+	{
+		if(iType == KviWindow::Console)
+		{
+			ret.sprintf("%2d%4u", iType, ((KviConsoleWindow *)m_pWindow)->context() ? ((KviConsoleWindow *)m_pWindow)->context()->id() : 9999);
+		}
+		else
+		{
+			ret.sprintf("%2d%4d", iType, parent() ? parent()->indexOfChild((QTreeWidgetItem *)this) : 9999);
 		}
 	}
 	return ret;
@@ -182,7 +193,7 @@ QString KviTreeWindowListItem::key() const
 // KviTreeWindowListTreeWidget
 
 KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
-: QTreeWidget(par)
+    : QTreeWidget(par)
 {
 	setObjectName("tree_windowlist");
 	bReverseSort = false;
@@ -208,7 +219,7 @@ void KviTreeWindowListTreeWidget::mouseMoveEvent(QMouseEvent *)
 	//   Hovewer item A remains current
 }
 
-void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent *e)
+void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent * e)
 {
 	// Mitigate bug #488:
 	//   When there is a scroll bar the wheel scrolls up and down
@@ -217,10 +228,12 @@ void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent *e)
 	if(KVI_OPTION_BOOL(KviOption_boolWheelScrollsWindowsList))
 	{
 		if(e->delta() < 0)
-			((KviTreeWindowList*)parent())->switchWindow(true, false);
+			((KviTreeWindowList *)parent())->switchWindow(true, false);
 		else if(e->delta() > 0)
-			((KviTreeWindowList*)parent())->switchWindow(false, false);
-	} else {
+			((KviTreeWindowList *)parent())->switchWindow(false, false);
+	}
+	else
+	{
 		QScrollBar * pBar = verticalScrollBar();
 
 		if(!pBar)
@@ -229,28 +242,27 @@ void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent *e)
 			return;
 
 		if(
-			((e->delta() < 0) && (pBar->value() < pBar->maximum())) ||
-			((e->delta() > 0) && (pBar->value() > pBar->minimum()))
-		)
-			QApplication::sendEvent(pBar,e);
+		    ((e->delta() < 0) && (pBar->value() < pBar->maximum())) || ((e->delta() > 0) && (pBar->value() > pBar->minimum())))
+			QApplication::sendEvent(pBar, e);
 	}
 }
 
-
-void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
+void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent * e)
 {
 	KviTreeWindowListItem * it = (KviTreeWindowListItem *)itemAt(e->pos());
 	if(it)
 	{
 		//clicked over an item
-		KviWindow* wnd = it->kviWindow();
+		KviWindow * wnd = it->kviWindow();
 		if(e->button() & Qt::LeftButton)
 		{
 			if(e->modifiers() & Qt::ShiftModifier)
 			{
 				//shitf+left click: close window
 				wnd->delayedClose();
-			} else {
+			}
+			else
+			{
 				//left click activate/deactivate window
 				if(g_pActiveWindow != wnd)
 					g_pMainWindow->setActiveWindow(wnd);
@@ -262,21 +274,26 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 				if(!style()->subElementRect(QStyle::SE_TreeViewDisclosureItem, &option, this).contains(e->pos()))
 					QTreeWidget::mousePressEvent(e);
 			}
-		} else if(e->button() & Qt::RightButton) {
+		}
+		else if(e->button() & Qt::RightButton)
+		{
 			//right click: open popup
 			wnd->contextPopup();
-		} else if(e->button() & Qt::MidButton) {
+		}
+		else if(e->button() & Qt::MidButton)
+		{
 			//mid click: close window
 			wnd->delayedClose();
- 		}
-
-	} else {
+		}
+	}
+	else
+	{
 		//clicked on empty space
 		if(e->button() & Qt::RightButton)
 		{
-			QMenu* pPopup=new QMenu();
-			pPopup->addAction(__tr2qs("Sort"),this,SLOT(sort()));
-			pPopup->addAction(__tr2qs("Reverse Sort"),this,SLOT(reverseSort()));
+			QMenu * pPopup = new QMenu();
+			pPopup->addAction(__tr2qs("Sort"), this, SLOT(sort()));
+			pPopup->addAction(__tr2qs("Reverse Sort"), this, SLOT(reverseSort()));
 			pPopup->popup(QCursor::pos());
 		}
 	}
@@ -297,18 +314,18 @@ void KviTreeWindowListTreeWidget::mouseDoubleClickEvent(QMouseEvent * e)
 void KviTreeWindowListTreeWidget::sort()
 {
 	bReverseSort = false;
-	sortItems(0,Qt::AscendingOrder);
+	sortItems(0, Qt::AscendingOrder);
 }
 
 void KviTreeWindowListTreeWidget::reverseSort()
 {
 	bReverseSort = true;
-	sortItems(0,Qt::DescendingOrder);
+	sortItems(0, Qt::DescendingOrder);
 }
 
 void KviTreeWindowListTreeWidget::paintEvent(QPaintEvent * event)
 {
-	QPainter *p = new QPainter(viewport());
+	QPainter * p = new QPainter(viewport());
 	QStyleOptionViewItem option = viewOptions();
 	QRect rect = event->rect();
 
@@ -317,22 +334,27 @@ void KviTreeWindowListTreeWidget::paintEvent(QPaintEvent * event)
 	{
 		p->save();
 		p->setCompositionMode(QPainter::CompositionMode_Source);
-		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		QColor col = KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
 		p->fillRect(rect, col);
 		p->restore();
-	} else if(g_pShadedChildGlobalDesktopBackground)
+	}
+	else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = mapTo(g_pMainWindow, rect.topLeft());
-		p->drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
-	} else {
+		p->drawTiledPixmap(rect, *(g_pShadedChildGlobalDesktopBackground), pnt);
+	}
+	else
+	{
 #endif
 		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeWindowListBackground).pixmap();
 		if(pix)
 		{
-			KviPixmapUtils::drawPixmapWithPainter(p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),rect,viewport()->width(),viewport()->height());
-		} else {
-			p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground));
+			KviPixmapUtils::drawPixmapWithPainter(p, pix, KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign), rect, viewport()->width(), viewport()->height());
+		}
+		else
+		{
+			p->fillRect(rect, KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground));
 		}
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
@@ -347,10 +369,10 @@ void KviTreeWindowListTreeWidget::paintEvent(QPaintEvent * event)
 // KviTreeWindowList
 
 KviTreeWindowList::KviTreeWindowList()
-: KviWindowListBase()
+    : KviWindowListBase()
 {
 	m_pTreeWidget = new KviTreeWindowListTreeWidget(this);
-	m_pTreeWidget->setColumnWidth(0,135);
+	m_pTreeWidget->setColumnWidth(0, 135);
 	m_pTreeWidget->header()->hide();
 	setWidget(m_pTreeWidget);
 
@@ -367,8 +389,8 @@ KviTreeWindowList::KviTreeWindowList()
 	setMinimumWidth(iMin);
 
 	//tooltips
-	m_pToolTip = new KviDynamicToolTip(m_pTreeWidget->viewport(),"tree_windowlist_tooltip");
-	connect(m_pToolTip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
+	m_pToolTip = new KviDynamicToolTip(m_pTreeWidget->viewport(), "tree_windowlist_tooltip");
+	connect(m_pToolTip, SIGNAL(tipRequest(KviDynamicToolTip *, const QPoint &)), this, SLOT(tipRequest(KviDynamicToolTip *, const QPoint &)));
 
 	applyOptions();
 }
@@ -391,7 +413,7 @@ void KviTreeWindowList::moveEvent(QMoveEvent *)
 #endif
 }
 
-void KviTreeWindowList::tipRequest(KviDynamicToolTip *,const QPoint &pnt)
+void KviTreeWindowList::tipRequest(KviDynamicToolTip *, const QPoint & pnt)
 {
 	if(KVI_OPTION_BOOL(KviOption_boolShowWindowListToolTips))
 	{
@@ -400,7 +422,7 @@ void KviTreeWindowList::tipRequest(KviDynamicToolTip *,const QPoint &pnt)
 		{
 			QString szText;
 			((KviTreeWindowListItem *)it)->m_pWindow->getWindowListTipText(szText);
-			m_pToolTip->tip(QRect(pnt, QSize(16,16)),szText);
+			m_pToolTip->tip(QRect(pnt, QSize(16, 16)), szText);
 		}
 	}
 }
@@ -413,29 +435,31 @@ KviWindowListItem * KviTreeWindowList::addItem(KviWindow * wnd)
 		if(wnd->type() != KviWindow::Console)
 		{
 			((KviTreeWindowListItem *)(wnd->console()->m_pWindowListItem))->setExpanded(true);
-			return new KviTreeWindowListItem(((KviTreeWindowListItem *)(wnd->console()->m_pWindowListItem)),wnd);
+			return new KviTreeWindowListItem(((KviTreeWindowListItem *)(wnd->console()->m_pWindowListItem)), wnd);
 		}
 	}
 
 	// console, or a window that has no irc context
-	return new KviTreeWindowListItem(m_pTreeWidget,wnd);
+	return new KviTreeWindowListItem(m_pTreeWidget, wnd);
 }
 
 bool KviTreeWindowList::removeItem(KviWindowListItem * it)
 {
 	if(it)
 	{
-		KviTreeWindowListItem *item=(KviTreeWindowListItem *)it;
+		KviTreeWindowListItem * item = (KviTreeWindowListItem *)it;
 		if(m_pTreeWidget)
 		{
 			int index = m_pTreeWidget->indexOfTopLevelItem(item);
-			if(index>=0)
+			if(index >= 0)
 			{
-				delete (KviTreeWindowListItem *)m_pTreeWidget->takeTopLevelItem(index);
-			} else {
+				delete(KviTreeWindowListItem *)m_pTreeWidget->takeTopLevelItem(index);
+			}
+			else
+			{
 				index = item->parent()->indexOfChild(item);
-				if(index>=0)
-					delete (KviTreeWindowListItem *)item->parent()->takeChild(index);
+				if(index >= 0)
+					delete(KviTreeWindowListItem *)item->parent()->takeChild(index);
 			}
 		}
 	}
@@ -448,11 +472,13 @@ void KviTreeWindowList::setActiveItem(KviWindowListItem * it)
 	{
 		if(((KviTreeWindowListItem *)it)->parent())
 		{
-			if(!((KviTreeWindowListItem *)it)->parent()->isExpanded())((KviTreeWindowListItem *)it)->parent()->setExpanded(true);
+			if(!((KviTreeWindowListItem *)it)->parent()->isExpanded())
+				((KviTreeWindowListItem *)it)->parent()->setExpanded(true);
 		}
 
 		((KviTreeWindowListItem *)it)->setActive(true);
-		if(g_pMainWindow->trayIcon())g_pMainWindow->trayIcon()->refresh();
+		if(g_pMainWindow->trayIcon())
+			g_pMainWindow->trayIcon()->refresh();
 	}
 }
 
@@ -472,14 +498,16 @@ KviWindowListItem * KviTreeWindowList::firstItem()
 
 KviWindowListItem * KviTreeWindowList::nextItem()
 {
-	if(!m_pCurrentItem)return 0;
-	return m_pCurrentItem = (KviTreeWindowListItem *) m_pTreeWidget->itemBelow(m_pCurrentItem);
+	if(!m_pCurrentItem)
+		return 0;
+	return m_pCurrentItem = (KviTreeWindowListItem *)m_pTreeWidget->itemBelow(m_pCurrentItem);
 }
 
 KviWindowListItem * KviTreeWindowList::prevItem()
 {
-	if(!m_pCurrentItem)return 0;
-	return m_pCurrentItem = (KviTreeWindowListItem *) m_pTreeWidget->itemAbove(m_pCurrentItem);
+	if(!m_pCurrentItem)
+		return 0;
+	return m_pCurrentItem = (KviTreeWindowListItem *)m_pTreeWidget->itemAbove(m_pCurrentItem);
 }
 
 KviWindowListItem * KviTreeWindowList::lastItem()
@@ -489,12 +517,17 @@ KviWindowListItem * KviTreeWindowList::lastItem()
 	if(tops > 0)
 	{
 		int ctops = m_pTreeWidget->topLevelItem(tops - 1)->childCount();
-		if(ctops) {
-			return m_pCurrentItem = (KviTreeWindowListItem *) m_pTreeWidget->topLevelItem(tops - 1)->child(ctops -1);
-		} else {
-			return m_pCurrentItem = (KviTreeWindowListItem *) m_pTreeWidget->topLevelItem(tops - 1);
+		if(ctops)
+		{
+			return m_pCurrentItem = (KviTreeWindowListItem *)m_pTreeWidget->topLevelItem(tops - 1)->child(ctops - 1);
 		}
-	} else {
+		else
+		{
+			return m_pCurrentItem = (KviTreeWindowListItem *)m_pTreeWidget->topLevelItem(tops - 1);
+		}
+	}
+	else
+	{
 		return 0;
 	}
 }
@@ -502,8 +535,10 @@ KviWindowListItem * KviTreeWindowList::lastItem()
 bool KviTreeWindowList::setIterationPointer(KviWindowListItem * it)
 {
 	m_pCurrentItem = (KviTreeWindowListItem *)it;
-	if(!m_pCurrentItem)return true;
-	if(m_pTreeWidget == m_pCurrentItem->treeWidget())return true;
+	if(!m_pCurrentItem)
+		return true;
+	if(m_pTreeWidget == m_pCurrentItem->treeWidget())
+		return true;
 	m_pCurrentItem = 0;
 	return false;
 }
@@ -512,13 +547,13 @@ bool KviTreeWindowList::setIterationPointer(KviWindowListItem * it)
 
 void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {
-	QString szText=index.data(Qt::DisplayRole).toString();
-	int iProgress=index.data(KVI_TTBID_PROGRESS).toInt();
+	QString szText = index.data(Qt::DisplayRole).toString();
+	int iProgress = index.data(KVI_TTBID_PROGRESS).toInt();
 
 	//FIXME not exactly model/view coding style.. but we need to access data on the associated window
-	KviTreeWindowListTreeWidget* treeWidget = (KviTreeWindowListTreeWidget*)parent();
-	KviTreeWindowListItem * item = (KviTreeWindowListItem*)treeWidget->itemFromIndex(index);
-	KviWindow* pWindow = item->kviWindow();
+	KviTreeWindowListTreeWidget * treeWidget = (KviTreeWindowListTreeWidget *)parent();
+	KviTreeWindowListItem * item = (KviTreeWindowListItem *)treeWidget->itemFromIndex(index);
+	KviWindow * pWindow = item->kviWindow();
 
 	QStyleOptionViewItemV4 opt4(option);
 	opt4.state = opt4.state | QStyle::State_Selected;
@@ -531,13 +566,17 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 		{
 			// The QWindowsXP style does not honor our colors. It uses the system ones instead.
 			// We can't accept it.
-			p->fillRect(opt4.rect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
-		} else {
-			opt4.palette.setColor(QPalette::Highlight,KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
+			p->fillRect(opt4.rect, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
+		}
+		else
+		{
+			opt4.palette.setColor(QPalette::Highlight, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 			treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
 		}
 #ifndef COMPILE_ON_MAC
-	} else {
+	}
+	else
+	{
 		if(KVI_OPTION_BOOL(KviOption_boolEnableVisualEffects) && option.state & QStyle::State_MouseOver)
 		{
 			// paint mouse over effect
@@ -548,8 +587,10 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			{
 				// The QWindowsXP style does not honor our colors. It uses the system ones instead.
 				// We can't accept it.
-				p->fillRect(opt4.rect,col);
-			} else {
+				p->fillRect(opt4.rect, col);
+			}
+			else
+			{
 				opt4.palette.setColor(QPalette::Highlight, col);
 				treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, p, treeWidget);
 			}
@@ -560,7 +601,7 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	int im = option.rect.left() + 2;
 	int yPixmap = (option.rect.top() + (option.rect.height() / 2 - 8));
 
-	QRect cRect(im + 3,option.rect.top(),option.rect.width(),option.rect.height());
+	QRect cRect(im + 3, option.rect.top(), option.rect.width(), option.rect.height());
 
 	switch(pWindow->type())
 	{
@@ -570,20 +611,24 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			{
 				QColor base = option.palette.window().color();
 				QColor cntx = KVI_OPTION_ICCOLOR(pWindow->console()->context()->id() % KVI_NUM_ICCOLOR_OPTIONS);
-				base.setRgb((base.red() + cntx.red()) >> 1,(base.green() + cntx.green()) >> 1,
-					(base.blue() + cntx.blue()) >> 1);
-				p->fillRect(im + 2,yPixmap,14,15,base);
+				base.setRgb((base.red() + cntx.red()) >> 1, (base.green() + cntx.green()) >> 1,
+				    (base.blue() + cntx.blue()) >> 1);
+				p->fillRect(im + 2, yPixmap, 14, 15, base);
 				if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
 				{
-					p->drawPixmap(im + 20,yPixmap,*(pWindow->myIconPtr()));
+					p->drawPixmap(im + 20, yPixmap, *(pWindow->myIconPtr()));
 					cRect.setLeft(cRect.left() + 37);
-				} else {
+				}
+				else
+				{
 					cRect.setLeft(cRect.left() + 20);
 				}
-			} else {
+			}
+			else
+			{
 				if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
 				{
-					p->drawPixmap(im,yPixmap,*(pWindow->myIconPtr()));
+					p->drawPixmap(im, yPixmap, *(pWindow->myIconPtr()));
 					cRect.setLeft(cRect.left() + 17);
 				}
 			}
@@ -600,14 +645,14 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 		default:
 			if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
 			{
-				p->drawPixmap(im,yPixmap,*(pWindow->myIconPtr()));
+				p->drawPixmap(im, yPixmap, *(pWindow->myIconPtr()));
 				cRect.setLeft(cRect.left() + 17);
 			}
 			//channels, other windows: normal font
 			QFont f = p->font();
 			f.setBold(false);
 			p->setFont(f);
-		break;
+			break;
 	}
 
 	// paint the channel activity meter
@@ -615,9 +660,9 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	{
 		unsigned int uActivityValue;
 		unsigned int uActivityTemperature;
-		if(pWindow->activityMeter(&uActivityValue,&uActivityTemperature))
+		if(pWindow->activityMeter(&uActivityValue, &uActivityTemperature))
 		{
-			p->drawPixmap(cRect.left(),yPixmap,*g_pActivityMeterPixmap,uActivityValue * 5,uActivityTemperature * 16,5,16);
+			p->drawPixmap(cRect.left(), yPixmap, *g_pActivityMeterPixmap, uActivityValue * 5, uActivityTemperature * 16, 5, 16);
 			cRect.setLeft(cRect.left() + 7);
 		}
 	}
@@ -626,45 +671,56 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	if(iProgress >= 0)
 	{
 		int wdth = (iProgress * cRect.width()) / 100;
-		p->fillRect(cRect.x(),cRect.y(),wdth,cRect.height(),KVI_OPTION_COLOR(KviOption_colorTreeWindowListProgress));
+		p->fillRect(cRect.x(), cRect.y(), wdth, cRect.height(), KVI_OPTION_COLOR(KviOption_colorTreeWindowListProgress));
 	}
 
 	//choose window name font color (highlighting)
 	if(treeWidget->currentItem() == item)
 	{
 		p->setPen(KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground));
-	} else {
-		int iHighlightLevel=index.data(KVI_TTBID_HIGHLIGHT).toInt();
+	}
+	else
+	{
+		int iHighlightLevel = index.data(KVI_TTBID_HIGHLIGHT).toInt();
 		int iLevel;
 
 		switch(iHighlightLevel)
 		{
-			case 0: iLevel = KviOption_colorTreeWindowListForeground; break;
-			case 1: iLevel = KviOption_colorTreeWindowListHighlight1Foreground; break;
-			case 2: iLevel = KviOption_colorTreeWindowListHighlight2Foreground; break;
-			case 3: iLevel = KviOption_colorTreeWindowListHighlight3Foreground; break;
-			case 4: iLevel = KviOption_colorTreeWindowListHighlight4Foreground; break;
-			default: iLevel = KviOption_colorTreeWindowListHighlight5Foreground; break;
+			case 0:
+				iLevel = KviOption_colorTreeWindowListForeground;
+				break;
+			case 1:
+				iLevel = KviOption_colorTreeWindowListHighlight1Foreground;
+				break;
+			case 2:
+				iLevel = KviOption_colorTreeWindowListHighlight2Foreground;
+				break;
+			case 3:
+				iLevel = KviOption_colorTreeWindowListHighlight3Foreground;
+				break;
+			case 4:
+				iLevel = KviOption_colorTreeWindowListHighlight4Foreground;
+				break;
+			default:
+				iLevel = KviOption_colorTreeWindowListHighlight5Foreground;
+				break;
 		}
 
 		p->setPen(KVI_OPTION_COLOR(iLevel));
 	}
 
 	//draw window name
-	p->drawText(cRect,Qt::AlignLeft | Qt::AlignVCenter,szText);
+	p->drawText(cRect, Qt::AlignLeft | Qt::AlignVCenter, szText);
 }
 
-QSize KviTreeWindowListItemDelegate::sizeHint( const QStyleOptionViewItem &, const QModelIndex &) const
+QSize KviTreeWindowListItemDelegate::sizeHint(const QStyleOptionViewItem &, const QModelIndex &) const
 {
-	KviTreeWindowListTreeWidget* treeWidget = (KviTreeWindowListTreeWidget*)parent();
-	int iHeight=treeWidget->fontMetrics().lineSpacing();
+	KviTreeWindowListTreeWidget * treeWidget = (KviTreeWindowListTreeWidget *)parent();
+	int iHeight = treeWidget->fontMetrics().lineSpacing();
 
 	iHeight += iHeight / 3;
-	if((KVI_OPTION_BOOL(KviOption_boolUseWindowListIrcContextIndicator) ||
-		KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons) ||
-		KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter)) &&
-		iHeight < 20
-	) iHeight = 20;
+	if((KVI_OPTION_BOOL(KviOption_boolUseWindowListIrcContextIndicator) || KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons) || KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter)) && iHeight < 20)
+		iHeight = 20;
 
 	return QSize(treeWidget->viewport()->size().width(), iHeight);
 }

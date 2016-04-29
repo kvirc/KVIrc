@@ -20,85 +20,88 @@
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW) && !defined(COMPILE_ON_MAC)
 
-#include"Idle.h"
+#include "Idle.h"
 
 #ifndef COMPILE_XSS_SUPPORT
-	IdlePlatform::IdlePlatform() {}
-	IdlePlatform::~IdlePlatform() {}
-	bool IdlePlatform::init() const { return false; }
-	int IdlePlatform::secondsIdle() const { return 0; }
+IdlePlatform::IdlePlatform() {}
+IdlePlatform::~IdlePlatform() {}
+bool IdlePlatform::init() const { return false; }
+int IdlePlatform::secondsIdle() const { return 0; }
 #else
-	// COMPILE_XSS_SUPPORT implies COMPILE_QX11INFO_SUPPORT
-	#include <QApplication>
-	#include <QDesktopWidget>
-	#include <QX11Info>
-	#include <X11/Xlib.h>
-	#include <X11/Xutil.h>
-	#include <X11/extensions/scrnsaver.h>
+// COMPILE_XSS_SUPPORT implies COMPILE_QX11INFO_SUPPORT
+#include <QApplication>
+#include <QDesktopWidget>
+#include <QX11Info>
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#include <X11/extensions/scrnsaver.h>
 
-	static XErrorHandler old_handler = 0;
-	extern "C" int xerrhandler(Display* dpy, XErrorEvent* err)
+static XErrorHandler old_handler = 0;
+extern "C" int xerrhandler(Display * dpy, XErrorEvent * err)
+{
+	if(err->error_code == BadDrawable)
+		return 0;
+
+	return (*old_handler)(dpy, err);
+}
+
+class IdlePlatform::Private
+{
+public:
+	XScreenSaverInfo * ss_info;
+
+	Private()
 	{
-		if(err->error_code == BadDrawable)
-			return 0;
+		// make coverity happy
+		ss_info = 0;
+	}
+};
 
-		return (*old_handler)(dpy, err);
+IdlePlatform::IdlePlatform()
+{
+	d = new Private;
+}
+
+IdlePlatform::~IdlePlatform()
+{
+	if(d->ss_info)
+		XFree(d->ss_info);
+	if(old_handler)
+	{
+		XSetErrorHandler(old_handler);
+		old_handler = 0;
+	}
+	delete d;
+}
+
+bool IdlePlatform::init() const
+{
+	if(d->ss_info)
+		return true;
+
+	old_handler = XSetErrorHandler(xerrhandler);
+
+	int event_base, error_base;
+
+	if(XScreenSaverQueryExtension(QX11Info::display(), &event_base, &error_base))
+	{
+		d->ss_info = XScreenSaverAllocInfo();
+		return true;
 	}
 
-	class IdlePlatform::Private
-	{
-	public:
-		XScreenSaverInfo *ss_info;
+	return false;
+}
 
-		Private() {
-			// make coverity happy
-			ss_info = 0;
-		}
-	};
+int IdlePlatform::secondsIdle() const
+{
+	if(!d->ss_info)
+		return 0;
 
-	IdlePlatform::IdlePlatform()
-	{
-		d = new Private;
-	}
+	if(!XScreenSaverQueryInfo(QX11Info::display(), QX11Info::appRootWindow(), d->ss_info))
+		return 0;
 
-	IdlePlatform::~IdlePlatform()
-	{
-		if(d->ss_info)
-			XFree(d->ss_info);
-		if(old_handler) {
-			XSetErrorHandler(old_handler);
-			old_handler = 0;
-		}
-		delete d;
-	}
-
-	bool IdlePlatform::init() const
-	{
-		if(d->ss_info)
-			return true;
-
-		old_handler = XSetErrorHandler(xerrhandler);
-
-		int event_base, error_base;
-
-		if(XScreenSaverQueryExtension(QX11Info::display(), &event_base, &error_base)) {
-			d->ss_info = XScreenSaverAllocInfo();
-			return true;
-		}
-
-		return false;
-	}
-
-	int IdlePlatform::secondsIdle() const
-	{
-		if(!d->ss_info)
-			return 0;
-
-		if(!XScreenSaverQueryInfo(QX11Info::display(), QX11Info::appRootWindow(), d->ss_info))
-			return 0;
-
-		return d->ss_info->idle / 1000;
-	}
+	return d->ss_info->idle / 1000;
+}
 
 #endif
 #endif

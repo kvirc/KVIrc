@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviIrcConnectionAsyncWhoisData.h"
 #include "KviKvsScript.h"
 
@@ -35,6 +33,8 @@ KviAsyncWhoisInfo::KviAsyncWhoisInfo()
 
 KviAsyncWhoisInfo::~KviAsyncWhoisInfo()
 {
-	if(pCallback)delete pCallback;
-	if(pMagic)delete pMagic;
+	if(pCallback)
+		delete pCallback;
+	if(pMagic)
+		delete pMagic;
 }

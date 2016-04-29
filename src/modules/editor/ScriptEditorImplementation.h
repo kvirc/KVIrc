@@ -51,23 +51,26 @@ class ScriptEditorWidget : public QTextEdit
 public:
 	ScriptEditorWidget(QWidget * pParent);
 	virtual ~ScriptEditorWidget();
+
 public:
 	QString m_szFind;
+
 protected:
 	ScriptEditorSyntaxHighlighter * m_pSyntaxHighlighter;
-	QCompleter  * m_pCompleter;
+	QCompleter * m_pCompleter;
 	QStringList * m_pListModulesNames;
 	QStringList * m_pListCompletition;
-	QTimer      * m_pStartTimer;
-	QWidget     * m_pParent;
-	int iIndex,iModulesCount;
-	QString       m_szHelp;
+	QTimer * m_pStartTimer;
+	QWidget * m_pParent;
+	int iIndex, iModulesCount;
+	QString m_szHelp;
+
 public:
-	ScriptEditorSyntaxHighlighter * syntaxHighlighter(){return m_pSyntaxHighlighter;};
+	ScriptEditorSyntaxHighlighter * syntaxHighlighter() { return m_pSyntaxHighlighter; };
 	void disableSyntaxHighlighter();
 	void enableSyntaxHighlighter();
 
-	void createCompleter(QStringList &list);
+	void createCompleter(QStringList & list);
 
 	void loadCompleterFromFile();
 	QCompleter * completer() const { return m_pCompleter; };
@@ -85,10 +88,11 @@ protected slots:
 	void asyncCompleterCreation();
 signals:
 	void keyPressed();
+
 protected:
 	void contextMenuEvent(QContextMenuEvent * e);
 	virtual void keyPressEvent(QKeyEvent * e);
-// 	void mouseReleaseEvent(QMouseEvent * e);
+	// 	void mouseReleaseEvent(QMouseEvent * e);
 };
 
 class ScriptEditorWidgetColorOptions : public QDialog
@@ -97,14 +101,15 @@ class ScriptEditorWidgetColorOptions : public QDialog
 public:
 	ScriptEditorWidgetColorOptions(QWidget * pParent);
 	~ScriptEditorWidgetColorOptions();
+
 private:
 	KviPointerList<KviSelectorInterface> * m_pSelectorInterfaceList;
+
 protected:
-	KviColorSelector * addColorSelector(QWidget * pParent,const QString & txt,QColor * pOption,bool bEnabled);
+	KviColorSelector * addColorSelector(QWidget * pParent, const QString & txt, QColor * pOption, bool bEnabled);
 
 protected slots:
 	void okClicked();
-
 };
 
 class ScriptEditorSyntaxHighlighter : public QSyntaxHighlighter
@@ -112,12 +117,15 @@ class ScriptEditorSyntaxHighlighter : public QSyntaxHighlighter
 public:
 	ScriptEditorSyntaxHighlighter(ScriptEditorWidget * pWidget);
 	virtual ~ScriptEditorSyntaxHighlighter();
+
 public:
 	QTextEdit * m_pTextEdit;
+
 public:
-	QTextEdit * textEdit(){ return m_pTextEdit; }
+	QTextEdit * textEdit() { return m_pTextEdit; }
 	void highlightBlock(const QString & szText);
 	void updateSyntaxtTextFormat();
+
 private:
 	struct KviScriptHighlightingRule
 	{
@@ -145,13 +153,16 @@ class ScriptEditorImplementation : public KviScriptEditor
 public:
 	ScriptEditorImplementation(QWidget * par);
 	virtual ~ScriptEditorImplementation();
+
 public:
 	QLineEdit * m_pFindLineEdit;
+
 protected:
 	ScriptEditorWidgetColorOptions * m_pOptionsDialog;
 	ScriptEditorWidget * m_pEditor;
-	QLabel                * m_pRowColLabel;
-	int                     m_lastCursorPos;
+	QLabel * m_pRowColLabel;
+	int m_lastCursorPos;
+
 public:
 	virtual void setText(const char * txt);
 	virtual void setText(const QString & szText);
@@ -163,15 +174,14 @@ public:
 	virtual void setReadOnly(bool bReadOnly);
 	void setUnHighlightedText(const QString & szText);
 
-
 	virtual void setFocus();
 	virtual bool isModified();
 	virtual void setModified(bool);
 
-	int getCursor(){return m_pEditor->textCursor().position();};
+	int getCursor() { return m_pEditor->textCursor().position(); };
 	void setCursorPosition(int iPos);
-	int cursor(){ return m_lastCursorPos; };
-	QLineEdit * findLineEdit(){ return m_pFindLineEdit; };
+	int cursor() { return m_lastCursorPos; };
+	QLineEdit * findLineEdit() { return m_pFindLineEdit; };
 protected:
 	virtual void focusInEvent(QFocusEvent * e);
 	void loadOptions();
@@ -193,19 +203,21 @@ signals:
 	void nextFind(const QString & szText);
 };
 
-class ScriptEditorReplaceDialog: public QDialog
+class ScriptEditorReplaceDialog : public QDialog
 {
 	Q_OBJECT
 public:
 	ScriptEditorReplaceDialog(QWidget * parent = 0, const QString & szName = QString());
 	~ScriptEditorReplaceDialog();
+
 public:
 	QLineEdit * m_pFindLineEdit;
 	QLineEdit * m_pReplaceLineEdit;
+
 protected:
 	QPushButton * m_pReplaceButton;
-	QCheckBox   * m_pCheckReplaceAll;
-	QWidget     * m_pParent;
+	QCheckBox * m_pCheckReplaceAll;
+	QWidget * m_pParent;
 protected slots:
 	void textChanged(const QString &);
 	void slotReplace();

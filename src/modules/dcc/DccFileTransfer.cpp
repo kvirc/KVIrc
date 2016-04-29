@@ -54,8 +54,8 @@
 #include "KviKvsScript.h"
 
 #ifdef COMPILE_ON_WINDOWS
-	// Ugly Windoze compiler...
-	#include "DccDialog.h"
+// Ugly Windoze compiler...
+#include "DccDialog.h"
 #endif
 
 #include <QFile>
@@ -83,33 +83,34 @@ extern DccBroker * g_pDccBroker;
 
 extern KVIRC_API KviMediaManager * g_pMediaManager; // KviApplication.cpp
 
-
 static KviPointerList<DccFileTransfer> * g_pDccFileTransfers = 0;
 static QPixmap * g_pDccFileTransferIcon = 0;
 
 //#warning "The events that have a KviCString data pointer should become real classes, that take care of deleting the data pointer!"
 //#warning "Otherwise, when left undispatched we will be leaking memory (event class destroyed but not the data ptr)"
 
-DccRecvThread::DccRecvThread(QObject * par,kvi_socket_t fd,KviDccRecvThreadOptions * opt)
-: DccThread(par,fd)
+DccRecvThread::DccRecvThread(QObject * par, kvi_socket_t fd, KviDccRecvThreadOptions * opt)
+    : DccThread(par, fd)
 {
-	m_pOpt                  = opt;
-	m_uAverageSpeed         = 0;
-	m_uInstantSpeed         = 0;
-	m_uFilePosition         = 0;
+	m_pOpt = opt;
+	m_uAverageSpeed = 0;
+	m_uInstantSpeed = 0;
+	m_uFilePosition = 0;
 
-	m_uTotalReceivedBytes   = 0;
+	m_uTotalReceivedBytes = 0;
 	m_uInstantReceivedBytes = 0;
-	m_pFile                 = 0;
-	m_pTimeInterval         = new KviMSecTimeInterval();
-	m_uStartTime            = 0;
+	m_pFile = 0;
+	m_pTimeInterval = new KviMSecTimeInterval();
+	m_uStartTime = 0;
 	m_uInstantSpeedInterval = 0;
 }
 
 DccRecvThread::~DccRecvThread()
 {
-	if(m_pOpt)delete m_pOpt;
-	if(m_pFile)delete m_pFile;
+	if(m_pOpt)
+		delete m_pOpt;
+	if(m_pFile)
+		delete m_pFile;
 	delete m_pTimeInterval;
 }
 
@@ -118,22 +119,22 @@ bool DccRecvThread::sendAck(qint64 filePos, bool bUse64BitAck)
 	quint32 ack32 = htonl(filePos & 0xffffffff);
 	quint64 ack64 = qToBigEndian(filePos);
 
-	char * ack = (char*) &ack32;
+	char * ack = (char *)&ack32;
 	int ackSize = 4;
 
 	if(bUse64BitAck)
 	{
 		ackSize = 8;
-		ack = (char*) &ack64;
+		ack = (char *)&ack64;
 	}
 
-	int iRet=0;
+	int iRet = 0;
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pSSL)
-		iRet = m_pSSL->write(ack,ackSize);
+		iRet = m_pSSL->write(ack, ackSize);
 	else
 #endif //COMPILE_SSL_SUPPORT
-		iRet = kvi_socket_send(m_fd,(void *)(ack),ackSize);
+		iRet = kvi_socket_send(m_fd, (void *)(ack), ackSize);
 
 	if(iRet == ackSize)
 		return true; // everything sent
@@ -155,7 +156,7 @@ bool DccRecvThread::sendAck(qint64 filePos, bool bUse64BitAck)
 
 	if(iRet < 0)
 	{
-		// Reported error. If it's EAGAIN or EINTR then no data has been sent.
+// Reported error. If it's EAGAIN or EINTR then no data has been sent.
 #ifdef COMPILE_SSL_SUPPORT
 		if(m_pSSL)
 		{
@@ -163,7 +164,7 @@ bool DccRecvThread::sendAck(qint64 filePos, bool bUse64BitAck)
 			switch(m_pSSL->getProtocolError(iRet))
 			{
 				case KviSSL::ZeroReturn:
-					//return false; check eagain
+				//return false; check eagain
 				case KviSSL::Success:
 				case KviSSL::WantRead:
 				case KviSSL::WantWrite:
@@ -183,7 +184,7 @@ bool DccRecvThread::sendAck(qint64 filePos, bool bUse64BitAck)
 		int err = kvi_socket_error();
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
-#else //!(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
+#else  //!(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
 		if((err != EAGAIN) && (err != EINTR))
 #endif //!(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
 		{
@@ -205,10 +206,10 @@ bool DccRecvThread::sendAck(qint64 filePos, bool bUse64BitAck)
 
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pSSL)
-		iRet = m_pSSL->write(ack + iRet,iMissingPart);
+		iRet = m_pSSL->write(ack + iRet, iMissingPart);
 	else
 #endif //COMPILE_SSL_SUPPORT
-		iRet = kvi_socket_send(m_fd,(void *)(ack + iRet),iMissingPart);
+		iRet = kvi_socket_send(m_fd, (void *)(ack + iRet), iMissingPart);
 
 	if(iRet != iMissingPart)
 	{
@@ -226,7 +227,8 @@ void DccRecvThread::updateStats()
 
 	m_pMutex->lock();
 	unsigned long uElapsedTime = uCurTime - m_uStartTime;
-	if(uElapsedTime < 1)uElapsedTime = 1;
+	if(uElapsedTime < 1)
+		uElapsedTime = 1;
 
 	m_uFilePosition = m_pFile->pos();
 	m_uAverageSpeed = m_uTotalReceivedBytes / uElapsedTime;
@@ -239,7 +241,9 @@ void DccRecvThread::updateStats()
 		m_uInstantSpeed = (m_uInstantReceivedBytes * 1000) / m_uInstantSpeedInterval;
 		m_uInstantReceivedBytes = 0;
 		m_uInstantSpeedInterval = uMSecsOfTheNextInterval;
-	} else {
+	}
+	else
+	{
 		if(uElapsedTime <= INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS)
 			m_uInstantSpeed = m_uAverageSpeed;
 	}
@@ -250,7 +254,7 @@ void DccRecvThread::postMessageEvent(const char * m)
 {
 	KviThreadDataEvent<KviCString> * e = new KviThreadDataEvent<KviCString>(KVI_DCC_THREAD_EVENT_MESSAGE);
 	e->setData(new KviCString(m));
-	postEvent(parent(),e);
+	postEvent(parent(), e);
 }
 
 // FIXME: This stuff should be somewhat related to the 1448 bytes TCP basic packet size
@@ -258,7 +262,6 @@ void DccRecvThread::postMessageEvent(const char * m)
 //#define KVI_DCC_RECV_75PERCENTOF_BLOCK_SIZE 6150
 #define KVI_DCC_RECV_BLOCK_SIZE 16384
 #define KVI_DCC_RECV_75PERCENTOF_BLOCK_SIZE 12280
-
 
 void DccRecvThread::run()
 {
@@ -297,7 +300,9 @@ void DccRecvThread::run()
 			postErrorEvent(KviError::CantOpenFileForAppending);
 			goto exit_dcc;
 		} // else pFile is already at end
-	} else {
+	}
+	else
+	{
 		if(!m_pFile->open(QIODevice::WriteOnly))
 		{
 			postErrorEvent(KviError::CantOpenFileForWriting);
@@ -307,7 +312,7 @@ void DccRecvThread::run()
 
 	if(m_pOpt->bSendZeroAck && (!m_pOpt->bNoAcks))
 	{
-		if(!sendAck(m_pFile->pos(),bSend64BitAck))
+		if(!sendAck(m_pFile->pos(), bSend64BitAck))
 			goto exit_dcc;
 	}
 
@@ -320,7 +325,9 @@ void DccRecvThread::run()
 			{
 				delete e;
 				goto exit_dcc;
-			} else {
+			}
+			else
+			{
 				// Other events are senseless to us
 				delete e;
 			}
@@ -329,7 +336,7 @@ void DccRecvThread::run()
 		bool bCanRead;
 		bool bDummy;
 
-		if(kvi_select(m_fd,&bCanRead,&bDummy,15000))
+		if(kvi_select(m_fd, &bCanRead, &bDummy, 15000))
 		{
 			// reset sleep time
 
@@ -344,7 +351,8 @@ void DccRecvThread::run()
 				unsigned int uMaxPossible = (m_pOpt->uMaxBandwidth < MAX_DCC_BANDWIDTH_LIMIT) ? m_pOpt->uMaxBandwidth * INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS : MAX_DCC_BANDWIDTH_LIMIT * INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS;
 				m_pMutex->unlock();
 				unsigned int uToRead = uMaxPossible > m_uInstantReceivedBytes ? uMaxPossible - m_uInstantReceivedBytes : 0;
-				if(uToRead > KVI_DCC_RECV_BLOCK_SIZE)uToRead = KVI_DCC_RECV_BLOCK_SIZE;
+				if(uToRead > KVI_DCC_RECV_BLOCK_SIZE)
+					uToRead = KVI_DCC_RECV_BLOCK_SIZE;
 
 				if(uToRead > 0)
 				{
@@ -352,10 +360,12 @@ void DccRecvThread::run()
 #ifdef COMPILE_SSL_SUPPORT
 					if(m_pSSL)
 					{
-						readLen = m_pSSL->read(buffer,uToRead);
-					} else {
+						readLen = m_pSSL->read(buffer, uToRead);
+					}
+					else
+					{
 #endif
-						readLen = kvi_socket_recv(m_fd,buffer,uToRead);
+						readLen = kvi_socket_recv(m_fd, buffer, uToRead);
 #ifdef COMPILE_SSL_SUPPORT
 					}
 #endif
@@ -365,19 +375,20 @@ void DccRecvThread::run()
 						// Readed something useful...write back
 						if(((uint)(readLen + m_pFile->pos())) > m_pOpt->uTotalFileSize)
 						{
-							postMessageEvent(__tr_no_lookup_ctx("WARNING: the peer is sending garbage data past the end of the file","dcc"));
-							postMessageEvent(__tr_no_lookup_ctx("WARNING: ignoring data past the declared end of file and closing the connection","dcc"));
+							postMessageEvent(__tr_no_lookup_ctx("WARNING: the peer is sending garbage data past the end of the file", "dcc"));
+							postMessageEvent(__tr_no_lookup_ctx("WARNING: ignoring data past the declared end of file and closing the connection", "dcc"));
 
 							readLen = m_pOpt->uTotalFileSize - m_pFile->pos();
 							if(readLen > 0)
 							{
-								if(m_pFile->write(buffer,readLen) != readLen)
+								if(m_pFile->write(buffer, readLen) != readLen)
 									postErrorEvent(KviError::FileIOError);
 							}
 							break;
-
-						} else {
-							if(m_pFile->write(buffer,readLen) != readLen)
+						}
+						else
+						{
+							if(m_pFile->write(buffer, readLen) != readLen)
 							{
 								postErrorEvent(KviError::FileIOError);
 								break;
@@ -400,14 +411,16 @@ void DccRecvThread::run()
 								{
 									// Received the whole file...die
 									KviThreadEvent * e = new KviThreadEvent(KVI_DCC_THREAD_EVENT_SUCCESS);
-									postEvent(parent(),e);
+									postEvent(parent(), e);
 									break;
 								}
 							}
-						} else {
+						}
+						else
+						{
 							// Must send the ack... the peer must close the connection
 
-							if(!sendAck(m_pFile->pos(),bSend64BitAck))
+							if(!sendAck(m_pFile->pos(), bSend64BitAck))
 								break;
 						}
 
@@ -420,15 +433,18 @@ void DccRecvThread::run()
 							if(iShortReadQuantifier > 500)
 								iShortReadQuantifier = 500;
 							msleep(iShortReadQuantifier);
-						} else {
+						}
+						else
+						{
 							// don't allow it to go too low
 							if(iShortReadQuantifier < -500)
 								iShortReadQuantifier = -500;
 						}
-
-					} else {
+					}
+					else
+					{
 						updateStats();
-						// Read problem...
+// Read problem...
 
 #ifdef COMPILE_SSL_SUPPORT
 						if(m_pSSL)
@@ -469,7 +485,7 @@ void DccRecvThread::run()
 									// Raise unknown SSL ERROR
 									postErrorEvent(KviError::SSLError);
 									goto exit_dcc;
-								break;
+									break;
 							}
 						}
 #endif
@@ -481,19 +497,21 @@ void DccRecvThread::run()
 							{
 								// success if we got the whole file or if we don't know the file size (we trust the peer)
 								KviThreadEvent * e = new KviThreadEvent(KVI_DCC_THREAD_EVENT_SUCCESS);
-								postEvent(parent(),e);
+								postEvent(parent(), e);
 								break;
 							}
 						}
 #ifdef COMPILE_SSL_SUPPORT
-						if (!m_pSSL && !handleInvalidSocketRead(readLen))
+						if(!m_pSSL && !handleInvalidSocketRead(readLen))
 							break;
 #else
-						if (!handleInvalidSocketRead(readLen))
+						if(!handleInvalidSocketRead(readLen))
 							break;
 #endif
 					}
-				} else {
+				}
+				else
+				{
 					updateStats();
 
 					// reached the bandwidth limit: slow down a bit
@@ -502,12 +520,15 @@ void DccRecvThread::run()
 					else if(m_uInstantSpeedInterval < (INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS - 20))
 						msleep(20);
 				}
-			} else {
+			}
+			else
+			{
 				// Can't read stuff (can just write)
 				updateStats();
 
 				// sleep up to 300 msecs (if data arrives...we want low exit latency here)
-				if(iFailedSelects < 100)iFailedSelects++;
+				if(iFailedSelects < 100)
+					iFailedSelects++;
 				updateStats();
 				if(iFailedSelects > 3)
 					msleep(3 * iFailedSelects);
@@ -519,16 +540,18 @@ void DccRecvThread::run()
 					{
 						iProbableTerminationTime = (int)kvi_unixTime();
 						m_pFile->flush();
-						postMessageEvent(__tr_no_lookup_ctx("Data transfer terminated, waiting 30 seconds for the peer to close the connection...","dcc"));
+						postMessageEvent(__tr_no_lookup_ctx("Data transfer terminated, waiting 30 seconds for the peer to close the connection...", "dcc"));
 						// FIXME: Close the file ?
-					} else {
+					}
+					else
+					{
 						int iDiff = (((int)kvi_unixTime()) - iProbableTerminationTime);
 						if(iDiff > 30)
 						{
 							// success if we got the whole file or if we don't know the file size (we trust the peer)
-							postMessageEvent(__tr_no_lookup_ctx("Data transfer was terminated 30 seconds ago, closing the connection","dcc"));
+							postMessageEvent(__tr_no_lookup_ctx("Data transfer was terminated 30 seconds ago, closing the connection", "dcc"));
 							KviThreadEvent * e = new KviThreadEvent(KVI_DCC_THREAD_EVENT_SUCCESS);
-							postEvent(parent(),e);
+							postEvent(parent(), e);
 							break;
 						}
 					}
@@ -537,9 +560,12 @@ void DccRecvThread::run()
 			// include the artificial delay if needed
 			if(m_pOpt->iIdleStepLengthInMSec > 0)
 				msleep(m_pOpt->iIdleStepLengthInMSec);
-		} else {
+		}
+		else
+		{
 			// sleep up to 200 msecs (if data arrives...we want low exit latency here)
-			if(iFailedSelects < 100)iFailedSelects++;
+			if(iFailedSelects < 100)
+				iFailedSelects++;
 			updateStats();
 			if(iFailedSelects > 3)
 				msleep(2 * iFailedSelects);
@@ -576,23 +602,24 @@ void DccRecvThread::doneGetInfo()
 	m_pMutex->unlock();
 }
 
-DccSendThread::DccSendThread(QObject * par,kvi_socket_t fd,KviDccSendThreadOptions * opt)
-: DccThread(par,fd)
+DccSendThread::DccSendThread(QObject * par, kvi_socket_t fd, KviDccSendThreadOptions * opt)
+    : DccThread(par, fd)
 {
 	m_pOpt = opt;
 	// stats
-	m_uAverageSpeed  = 0;
-	m_uInstantSpeed  = 0;
-	m_uFilePosition  = 0;
+	m_uAverageSpeed = 0;
+	m_uInstantSpeed = 0;
+	m_uFilePosition = 0;
 	m_uTotalSentBytes = 0;
-	m_pTimeInterval  = new KviMSecTimeInterval();
-	m_uStartTime     = 0;
+	m_pTimeInterval = new KviMSecTimeInterval();
+	m_uStartTime = 0;
 	m_uInstantSpeedInterval = 0;
 }
 
 DccSendThread::~DccSendThread()
 {
-	if(m_pOpt)delete m_pOpt;
+	if(m_pOpt)
+		delete m_pOpt;
 	delete m_pTimeInterval;
 }
 
@@ -602,13 +629,16 @@ void DccSendThread::updateStats()
 
 	m_pMutex->lock();
 	unsigned long uElapsedTime = m_pTimeInterval->secondsCounter() - m_uStartTime;
-	if(uElapsedTime < 1)uElapsedTime = 1;
+	if(uElapsedTime < 1)
+		uElapsedTime = 1;
 
 	if(m_pOpt->bNoAcks)
 	{
 		// There are no acks : the avg bandwidth is based on the sent bytes
 		m_uAverageSpeed = m_uTotalSentBytes / uElapsedTime;
-	} else {
+	}
+	else
+	{
 		// acknowledges : we compute the avg bandwidth based on the acks we receive
 		m_uAverageSpeed = (m_uAckedBytes - m_pOpt->uStartPosition) / uElapsedTime;
 	}
@@ -633,14 +663,17 @@ void DccSendThread::updateStats()
 		m_uInstantSpeed = (m_uInstantSentBytes * 1000) / m_uInstantSpeedInterval;
 		m_uInstantSpeedInterval = uMSecsOfNextPeriodUsed;
 		m_uInstantSentBytes = 0;
-	} else {
+	}
+	else
+	{
 		if(uElapsedTime <= INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS)
 			m_uInstantSpeed = m_uAverageSpeed;
 	}
 	m_pMutex->unlock();
 }
 
-union _ack_buffer {
+union _ack_buffer
+{
 	char cAckBuffer[4];
 	quint32 i32AckBuffer;
 };
@@ -652,17 +685,18 @@ void DccSendThread::run()
 	m_uStartTime = m_pTimeInterval->secondsCounter();
 	m_pMutex->unlock();
 
-	m_uTotalSentBytes         = 0;
-	m_uInstantSentBytes       = 0;
-	int iFailedSelects        = 0;
+	m_uTotalSentBytes = 0;
+	m_uInstantSentBytes = 0;
+	int iFailedSelects = 0;
 	_ack_buffer ackbuffer;
-	int iBytesInAckBuffer     = 0;
-	quint32 uLastAck          = 0;
-	quint64 uTotLastAck       = 0;
-	bool bAckHack             = false;
-	quint64 iAckHackRounds    = 0;
+	int iBytesInAckBuffer = 0;
+	quint32 uLastAck = 0;
+	quint64 uTotLastAck = 0;
+	bool bAckHack = false;
+	quint64 iAckHackRounds = 0;
 
-	if(m_pOpt->iPacketSize < 32)m_pOpt->iPacketSize = 32;
+	if(m_pOpt->iPacketSize < 32)
+		m_pOpt->iPacketSize = 32;
 	char * buffer = (char *)KviMemory::allocate(m_pOpt->iPacketSize * sizeof(char));
 
 	QFile * pFile = new QFile(QString::fromUtf8(m_pOpt->szFileName.ptr()));
@@ -682,7 +716,7 @@ void DccSendThread::run()
 	if(pFile->size() >= 0xffffffff)
 	{
 		//dcc acks support only files up to 4GiB
-		bAckHack=true;
+		bAckHack = true;
 	}
 
 	if(m_pOpt->uStartPosition > 0)
@@ -706,7 +740,9 @@ void DccSendThread::run()
 			{
 				delete e;
 				goto exit_dcc;
-			} else {
+			}
+			else
+			{
 				// Other events are senseless to us
 				delete e;
 			}
@@ -715,7 +751,7 @@ void DccSendThread::run()
 		bool bCanRead;
 		bool bCanWrite;
 
-		if(kvi_select(m_fd,&bCanRead,&bCanWrite,15000))
+		if(kvi_select(m_fd, &bCanRead, &bCanWrite, 15000))
 		{
 			// reset the sleep time
 			iFailedSelects = 0;
@@ -729,10 +765,12 @@ void DccSendThread::run()
 #ifdef COMPILE_SSL_SUPPORT
 					if(m_pSSL)
 					{
-						readLen = m_pSSL->read((ackbuffer.cAckBuffer + iBytesInAckBuffer),iAckBytesToRead);
-					} else {
+						readLen = m_pSSL->read((ackbuffer.cAckBuffer + iBytesInAckBuffer), iAckBytesToRead);
+					}
+					else
+					{
 #endif
-						readLen = kvi_socket_recv(m_fd,(ackbuffer.cAckBuffer + iBytesInAckBuffer),iAckBytesToRead);
+						readLen = kvi_socket_recv(m_fd, (ackbuffer.cAckBuffer + iBytesInAckBuffer), iAckBytesToRead);
 #ifdef COMPILE_SSL_SUPPORT
 					}
 #endif
@@ -755,7 +793,9 @@ void DccSendThread::run()
 								{
 									//we reached the 4gb ack limit
 									iAckHackRounds++;
-								} else {
+								}
+								else
+								{
 									// the peer is drunk or is trying to fool us
 									postErrorEvent(KviError::AcknowledgeError);
 									break;
@@ -765,13 +805,17 @@ void DccSendThread::run()
 							if(bAckHack)
 							{
 								uTotLastAck = (iAckHackRounds << 32) + iNewAck;
-							} else {
+							}
+							else
+							{
 
 								uTotLastAck = iNewAck;
 							}
 							iBytesInAckBuffer = 0;
 						}
-					} else {
+					}
+					else
+					{
 #ifdef COMPILE_SSL_SUPPORT
 						if(m_pSSL)
 						{
@@ -783,12 +827,12 @@ void DccSendThread::run()
 									//if (!handleInvalidSocketRead(readLen)
 									// break;
 									readLen = 0;
-								break;
+									break;
 								case KviSSL::Success:
 								case KviSSL::WantRead:
 								case KviSSL::WantWrite:
 									// hmmm...
-								break;
+									break;
 								case KviSSL::SyscallError:
 								{
 									int iE = m_pSSL->getLastError(true);
@@ -811,18 +855,16 @@ void DccSendThread::run()
 									// Raise unknown SSL ERROR
 									postErrorEvent(KviError::SSLError);
 									goto exit_dcc;
-								break;
+									break;
 							}
 						}
 
-						if (!m_pSSL && !handleInvalidSocketRead(readLen))
+						if(!m_pSSL && !handleInvalidSocketRead(readLen))
 							break;
 #else
-						if (!handleInvalidSocketRead(readLen))
+						if(!handleInvalidSocketRead(readLen))
 							break;
 #endif
-
-
 					}
 
 					// update stats
@@ -833,10 +875,12 @@ void DccSendThread::run()
 					if(uLastAck >= (quint64)pFile->size())
 					{
 						KviThreadEvent * e = new KviThreadEvent(KVI_DCC_THREAD_EVENT_SUCCESS);
-						postEvent(parent(),e);
+						postEvent(parent(), e);
 						break;
 					}
-				} else {
+				}
+				else
+				{
 					// No acknowledges
 					if(m_pOpt->bIsTdcc)
 					{
@@ -848,10 +892,12 @@ void DccSendThread::run()
 #ifdef COMPILE_SSL_SUPPORT
 							if(m_pSSL)
 							{
-								readLen = m_pSSL->read((char*)&iAck,4);
-							} else {
+								readLen = m_pSSL->read((char *)&iAck, 4);
+							}
+							else
+							{
 #endif
-								readLen = kvi_socket_recv(m_fd,(char*)&iAck,4);
+								readLen = kvi_socket_recv(m_fd, (char *)&iAck, 4);
 #ifdef COMPILE_SSL_SUPPORT
 							}
 #endif
@@ -860,9 +906,11 @@ void DccSendThread::run()
 								// done...success
 								updateStats();
 								KviThreadEvent * e = new KviThreadEvent(KVI_DCC_THREAD_EVENT_SUCCESS);
-								postEvent(parent(),e);
+								postEvent(parent(), e);
 								break;
-							} else {
+							}
+							else
+							{
 								if(readLen < 0)
 								{
 #ifdef COMPILE_SSL_SUPPORT
@@ -874,12 +922,12 @@ void DccSendThread::run()
 
 											case KviSSL::ZeroReturn:
 												readLen = 0;
-											break;
+												break;
 											case KviSSL::Success:
 											case KviSSL::WantRead:
 											case KviSSL::WantWrite:
 												// hmmm...
-											break;
+												break;
 											case KviSSL::SyscallError:
 											{
 												int iE = m_pSSL->getLastError(true);
@@ -902,21 +950,22 @@ void DccSendThread::run()
 												// Raise unknown SSL ERROR
 												postErrorEvent(KviError::SSLError);
 												goto exit_dcc;
-											break;
+												break;
 										}
 									}
 
-									if (!m_pSSL && !handleInvalidSocketRead(readLen))
+									if(!m_pSSL && !handleInvalidSocketRead(readLen))
 										break;
 #else
-									if (!handleInvalidSocketRead(readLen))
+									if(!handleInvalidSocketRead(readLen))
 										break;
 #endif
-
-								} else {
+								}
+								else
+								{
 									KviThreadDataEvent<KviCString> * e = new KviThreadDataEvent<KviCString>(KVI_DCC_THREAD_EVENT_MESSAGE);
-									e->setData(new KviCString(__tr2qs_ctx("WARNING: received data in a DCC TSEND, there should be no acknowledges","dcc")));
-									postEvent(parent(),e);
+									e->setData(new KviCString(__tr2qs_ctx("WARNING: received data in a DCC TSEND, there should be no acknowledges", "dcc")));
+									postEvent(parent(), e);
 								}
 							}
 						}
@@ -935,33 +984,39 @@ void DccSendThread::run()
 						m_pMutex->lock(); // FIXME: how to remove this lock ?
 						uint uMaxPossible = m_pOpt->uMaxBandwidth < MAX_DCC_BANDWIDTH_LIMIT ? m_pOpt->uMaxBandwidth * INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS : MAX_DCC_BANDWIDTH_LIMIT * INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS;
 						m_pMutex->unlock();
-						if(uMaxPossible < m_uInstantSentBytes)toRead = 0; // already sent too much!
-						else {
+						if(uMaxPossible < m_uInstantSentBytes)
+							toRead = 0; // already sent too much!
+						else
+						{
 							uMaxPossible -= m_uInstantSentBytes;
-							if(toRead > uMaxPossible)toRead = uMaxPossible;
+							if(toRead > uMaxPossible)
+								toRead = uMaxPossible;
 						}
 						// limit to packet size
-						if(toRead > m_pOpt->iPacketSize)toRead = m_pOpt->iPacketSize;
+						if(toRead > m_pOpt->iPacketSize)
+							toRead = m_pOpt->iPacketSize;
 
 						int written = 0;
 						if(toRead > 0)
 						{
 							// read data
-							int readed = pFile->read(buffer,toRead);
+							int readed = pFile->read(buffer, toRead);
 							if(readed < toRead)
 							{
 								postErrorEvent(KviError::FileIOError);
 								break;
 							}
-							// send it out
+// send it out
 
 #ifdef COMPILE_SSL_SUPPORT
 							if(m_pSSL)
 							{
-								written = m_pSSL->write(buffer,toRead);
-							} else {
+								written = m_pSSL->write(buffer, toRead);
+							}
+							else
+							{
 #endif
-								written = kvi_socket_send(m_fd,buffer,toRead);
+								written = kvi_socket_send(m_fd, buffer, toRead);
 #ifdef COMPILE_SSL_SUPPORT
 							}
 #endif
@@ -981,47 +1036,50 @@ void DccSendThread::run()
 											case KviSSL::WantRead:
 												// Async continue...
 												goto handle_system_error;
-											break;
+												break;
 											case KviSSL::SyscallError:
 												if(written == 0)
 												{
 													raiseSSLError();
 													postErrorEvent(KviError::RemoteEndClosedConnection);
 													goto exit_dcc;
-												} else {
+												}
+												else
+												{
 													int iSSLErr = m_pSSL->getLastError(true);
 													if(iSSLErr != 0)
 													{
 														raiseSSLError();
 														postErrorEvent(KviError::SSLError);
 														goto exit_dcc;
-													} else {
+													}
+													else
+													{
 														goto handle_system_error;
 													}
 												}
-											break;
+												break;
 											case KviSSL::SSLError:
 												raiseSSLError();
 												postErrorEvent(KviError::SSLError);
 												goto exit_dcc;
-											break;
+												break;
 											default:
 												postErrorEvent(KviError::SSLError);
 												goto exit_dcc;
-											break;
+												break;
 										}
 									}
 
-									if (!m_pSSL && !handleInvalidSocketRead(written))
+									if(!m_pSSL && !handleInvalidSocketRead(written))
 										break;
 
 #else
-									if (!handleInvalidSocketRead(written))
+									if(!handleInvalidSocketRead(written))
 										break;
 #endif
 
-
-handle_system_error:
+								handle_system_error:
 									int err = kvi_socket_error();
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 									if((err != EAGAIN) && (err != EINTR) && (err != WSAEWOULDBLOCK))
@@ -1032,19 +1090,23 @@ handle_system_error:
 										postErrorEvent(KviError::translateSystemError(err));
 										goto exit_dcc;
 									}
-
-								} else {
+								}
+								else
+								{
 									// seek back to the right position
 									pFile->seek(pFile->pos() - (toRead - written));
 								}
 							}
-						} else {
+						}
+						else
+						{
 							// just nothing to send out in this interval
 							// sleep a while
 							if(m_uInstantSpeedInterval < (INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS - 100))
 							{
 								msleep(100);
-							} else if(m_uInstantSpeedInterval < (INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS - 20))
+							}
+							else if(m_uInstantSpeedInterval < (INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS - 20))
 							{
 								msleep(20);
 							}
@@ -1055,30 +1117,39 @@ handle_system_error:
 						m_uFilePosition = pFile->pos();
 						updateStats();
 					}
-				} else {
+				}
+				else
+				{
 					if(m_pOpt->bNoAcks && !m_pOpt->bIsTdcc)
 					{
 						// at end of the file in a blind dcc send...
 						// not in a tdcc: we can close the file...
 						updateStats();
 						KviThreadEvent * e = new KviThreadEvent(KVI_DCC_THREAD_EVENT_SUCCESS);
-						postEvent(parent(),e);
+						postEvent(parent(), e);
 						break;
-					} else {
+					}
+					else
+					{
 						// upload finished but we're waiting for the last ack
 						// sleep a bit: don't lag the kernie too much while waiting
 						msleep(100);
 					}
 				}
 			}
-		} else {
+		}
+		else
+		{
 			// after 2 failed selects start to sleep
 			if(iFailedSelects > 3)
 			{
 				// sleep up to 200 msecs
-				if(iFailedSelects < 100)iFailedSelects++;
+				if(iFailedSelects < 100)
+					iFailedSelects++;
 				msleep(3 * iFailedSelects);
-			} else {
+			}
+			else
+			{
 				iFailedSelects++;
 			}
 		}
@@ -1117,9 +1188,8 @@ void DccSendThread::doneGetInfo()
 	m_pMutex->unlock();
 }
 
-
 DccFileTransfer::DccFileTransfer(DccDescriptor * dcc)
-: KviFileTransfer()
+    : KviFileTransfer()
 {
 	init(); // ensure we're initialized
 	g_pDccFileTransfers->append(this);
@@ -1127,25 +1197,27 @@ DccFileTransfer::DccFileTransfer(DccDescriptor * dcc)
 	m_pResumeTimer = 0;
 	m_pBandwidthDialog = 0;
 
-	m_szTransferIdString = QString(__tr2qs_ctx("TRANSFER %1","dcc")).arg(id());
+	m_szTransferIdString = QString(__tr2qs_ctx("TRANSFER %1", "dcc")).arg(id());
 
 	m_pDescriptor = dcc;
 	m_pDescriptor->setTransfer(this);
 
 	m_pMarshal = new DccMarshal(this);
 
-	connect(m_pMarshal,SIGNAL(error(KviError::Code)),this,SLOT(handleMarshalError(KviError::Code)));
-	connect(m_pMarshal,SIGNAL(connected()),this,SLOT(connected()));
-	connect(m_pMarshal,SIGNAL(inProgress()),this,SLOT(connectionInProgress()));
+	connect(m_pMarshal, SIGNAL(error(KviError::Code)), this, SLOT(handleMarshalError(KviError::Code)));
+	connect(m_pMarshal, SIGNAL(connected()), this, SLOT(connected()));
+	connect(m_pMarshal, SIGNAL(inProgress()), this, SLOT(connectionInProgress()));
 #ifdef COMPILE_SSL_SUPPORT
-	connect(m_pMarshal,SIGNAL(startingSSLHandshake()),this,SLOT(startingSSLHandshake()));
-	connect(m_pMarshal,SIGNAL(sslError(const char *)),this,SLOT(sslError(const char *)));
+	connect(m_pMarshal, SIGNAL(startingSSLHandshake()), this, SLOT(startingSSLHandshake()));
+	connect(m_pMarshal, SIGNAL(sslError(const char *)), this, SLOT(sslError(const char *)));
 #endif
 
 	m_szDccType = dcc->bRecvFile ? "RECV" : "SEND";
-	if(dcc->bIsTdcc) m_szDccType.prepend("T");
+	if(dcc->bIsTdcc)
+		m_szDccType.prepend("T");
 #ifdef COMPILE_SSL_SUPPORT
-	if(dcc->bIsSSL) m_szDccType.prepend("S");
+	if(dcc->bIsSSL)
+		m_szDccType.prepend("S");
 #endif
 	m_pSlaveRecvThread = 0;
 	m_pSlaveSendThread = 0;
@@ -1153,17 +1225,18 @@ DccFileTransfer::DccFileTransfer(DccDescriptor * dcc)
 	m_tTransferStartTime = 0;
 	m_tTransferEndTime = 0;
 
-	m_szStatusString = __tr2qs_ctx("Setting up the connection","dcc");
+	m_szStatusString = __tr2qs_ctx("Setting up the connection", "dcc");
 	m_eGeneralStatus = Connecting;
 
 	bool bOk;
-	m_uTotalFileSize = dcc->bRecvFile ? dcc->szFileSize.toULongLong(&bOk) :  dcc->szLocalFileSize.toULongLong(&bOk);
-	if(!bOk)m_uTotalFileSize = 0;
+	m_uTotalFileSize = dcc->bRecvFile ? dcc->szFileSize.toULongLong(&bOk) : dcc->szLocalFileSize.toULongLong(&bOk);
+	if(!bOk)
+		m_uTotalFileSize = 0;
 
 	if(m_pDescriptor->bRecvFile)
-		m_uMaxBandwidth       = KVI_OPTION_BOOL(KviOption_boolLimitDccRecvSpeed) ? KVI_OPTION_UINT(KviOption_uintMaxDccRecvSpeed) : MAX_DCC_BANDWIDTH_LIMIT;
+		m_uMaxBandwidth = KVI_OPTION_BOOL(KviOption_boolLimitDccRecvSpeed) ? KVI_OPTION_UINT(KviOption_uintMaxDccRecvSpeed) : MAX_DCC_BANDWIDTH_LIMIT;
 	else
-		m_uMaxBandwidth       = KVI_OPTION_BOOL(KviOption_boolLimitDccSendSpeed) ? KVI_OPTION_UINT(KviOption_uintMaxDccSendSpeed) : MAX_DCC_BANDWIDTH_LIMIT;
+		m_uMaxBandwidth = KVI_OPTION_BOOL(KviOption_boolLimitDccSendSpeed) ? KVI_OPTION_UINT(KviOption_uintMaxDccSendSpeed) : MAX_DCC_BANDWIDTH_LIMIT;
 
 	startConnection();
 }
@@ -1172,8 +1245,10 @@ DccFileTransfer::~DccFileTransfer()
 {
 	g_pDccFileTransfers->removeRef(this);
 
-	if(m_pResumeTimer)delete m_pResumeTimer;
-	if(m_pBandwidthDialog)delete m_pBandwidthDialog;
+	if(m_pResumeTimer)
+		delete m_pResumeTimer;
+	if(m_pBandwidthDialog)
+		delete m_pBandwidthDialog;
 
 	if(m_pSlaveRecvThread)
 	{
@@ -1202,8 +1277,9 @@ void DccFileTransfer::bandwidthDialogDestroyed()
 
 KviWindow * DccFileTransfer::eventWindow()
 {
-	KviWindow *w = transferWindow();
-	if(w)return w;
+	KviWindow * w = transferWindow();
+	if(w)
+		return w;
 	return m_pDescriptor->console();
 }
 
@@ -1212,37 +1288,40 @@ void DccFileTransfer::startConnection()
 	if(!(m_pDescriptor->bActive))
 	{
 		// PASSIVE CONNECTION
-		m_szStatusString = __tr2qs_ctx("Attempting a passive DCC %1 connection","dcc").arg(m_szDccType.ptr());
-		outputAndLog(m_szStatusString);
-	} else {
-		// ACTIVE CONNECTION
-		m_szStatusString = __tr2qs_ctx("Attempting an active DCC %1 connection","dcc").arg(m_szDccType.ptr());
+		m_szStatusString = __tr2qs_ctx("Attempting a passive DCC %1 connection", "dcc").arg(m_szDccType.ptr());
 		outputAndLog(m_szStatusString);
 	}
-
+	else
+	{
+		// ACTIVE CONNECTION
+		m_szStatusString = __tr2qs_ctx("Attempting an active DCC %1 connection", "dcc").arg(m_szDccType.ptr());
+		outputAndLog(m_szStatusString);
+	}
 
 	if(m_pDescriptor->bResume && m_pDescriptor->bRecvFile)
 	{
 		QString fName;
-		KviIrcServerParser::encodeCtcpParameter(m_pDescriptor->szFileName.toUtf8().data(),fName);
+		KviIrcServerParser::encodeCtcpParameter(m_pDescriptor->szFileName.toUtf8().data(), fName);
 		if(m_pDescriptor->isZeroPortRequest())
 		{
-		m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC RESUME %s %s %s %s%c",
-			m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-			0x01,
-			m_pDescriptor->console()->connection()->encodeText(fName).data(),
-			m_pDescriptor->szPort.toUtf8().data(),
-			m_pDescriptor->szLocalFileSize.toUtf8().data(),
-			m_pDescriptor->zeroPortRequestTag(),0x01);
-		} else {
-			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC RESUME %s %s %s%c",
-				m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-				0x01,
-				m_pDescriptor->console()->connection()->encodeText(fName).data(),
-				m_pDescriptor->szPort.toUtf8().data(),
-				m_pDescriptor->szLocalFileSize.toUtf8().data(),0x01);
+			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC RESUME %s %s %s %s%c",
+			    m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+			    0x01,
+			    m_pDescriptor->console()->connection()->encodeText(fName).data(),
+			    m_pDescriptor->szPort.toUtf8().data(),
+			    m_pDescriptor->szLocalFileSize.toUtf8().data(),
+			    m_pDescriptor->zeroPortRequestTag(), 0x01);
 		}
-		m_szStatusString = __tr2qs_ctx("Sent DCC RESUME request to %1, waiting for ACCEPT","dcc").arg(m_pDescriptor->szNick);
+		else
+		{
+			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC RESUME %s %s %s%c",
+			    m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+			    0x01,
+			    m_pDescriptor->console()->connection()->encodeText(fName).data(),
+			    m_pDescriptor->szPort.toUtf8().data(),
+			    m_pDescriptor->szLocalFileSize.toUtf8().data(), 0x01);
+		}
+		m_szStatusString = __tr2qs_ctx("Sent DCC RESUME request to %1, waiting for ACCEPT", "dcc").arg(m_pDescriptor->szNick);
 		outputAndLog(m_szStatusString);
 
 		// setup the resume timer: we don't want to wait forever
@@ -1250,13 +1329,16 @@ void DccFileTransfer::startConnection()
 		if(KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) < 5)
 			KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) = 5;
 
-		if(m_pResumeTimer)delete m_pResumeTimer;
+		if(m_pResumeTimer)
+			delete m_pResumeTimer;
 		m_pResumeTimer = new QTimer(this);
-		connect(m_pResumeTimer,SIGNAL(timeout()),this,SLOT(resumeTimedOut()));
+		connect(m_pResumeTimer, SIGNAL(timeout()), this, SLOT(resumeTimedOut()));
 		m_pResumeTimer->setInterval(KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) * 1000);
 		m_pResumeTimer->setSingleShot(true);
 		m_pResumeTimer->start();
-	} else {
+	}
+	else
+	{
 		listenOrConnect();
 	}
 
@@ -1268,17 +1350,19 @@ void DccFileTransfer::listenOrConnect()
 	if(!(m_pDescriptor->bActive))
 	{
 #ifdef COMPILE_SSL_SUPPORT
-		KviError::Code eError = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout,m_pDescriptor->bIsSSL);
+		KviError::Code eError = m_pMarshal->dccListen(m_pDescriptor->szListenIp, m_pDescriptor->szListenPort, m_pDescriptor->bDoTimeout, m_pDescriptor->bIsSSL);
 #else
-		KviError::Code eError = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout);
+		KviError::Code eError = m_pMarshal->dccListen(m_pDescriptor->szListenIp, m_pDescriptor->szListenPort, m_pDescriptor->bDoTimeout);
 #endif
 		if(eError != KviError::Success)
 			handleMarshalError(eError);
-	} else {
+	}
+	else
+	{
 #ifdef COMPILE_SSL_SUPPORT
-		KviError::Code eError = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout,m_pDescriptor->bIsSSL);
+		KviError::Code eError = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data(), m_pDescriptor->bDoTimeout, m_pDescriptor->bIsSSL);
 #else
-		KviError::Code eError = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
+		KviError::Code eError = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data(), m_pDescriptor->bDoTimeout);
 #endif
 		if(eError != KviError::Success)
 			handleMarshalError(eError);
@@ -1314,47 +1398,54 @@ QString DccFileTransfer::localFileName()
 
 void DccFileTransfer::abort()
 {
-	if(m_pSlaveRecvThread)m_pSlaveRecvThread->terminate();
-	if(m_pSlaveSendThread)m_pSlaveSendThread->terminate();
-	if(m_pMarshal)m_pMarshal->abort();
+	if(m_pSlaveRecvThread)
+		m_pSlaveRecvThread->terminate();
+	if(m_pSlaveSendThread)
+		m_pSlaveSendThread->terminate();
+	if(m_pMarshal)
+		m_pMarshal->abort();
 
 	if(m_pDescriptor->bRecvFile)
-			g_pApp->fileDownloadTerminated(false,m_pDescriptor->szFileName.toUtf8().data(),m_pDescriptor->szLocalFileName.toUtf8().data(),m_pDescriptor->szNick.toUtf8().data(),__tr_ctx("Aborted","dcc"));
+		g_pApp->fileDownloadTerminated(false, m_pDescriptor->szFileName.toUtf8().data(), m_pDescriptor->szLocalFileName.toUtf8().data(), m_pDescriptor->szNick.toUtf8().data(), __tr_ctx("Aborted", "dcc"));
 
 	QString tmp;
 
-	if(m_pSlaveRecvThread)tmp.setNum(m_pSlaveRecvThread->receivedBytes());
-	else if(m_pSlaveSendThread)tmp.setNum(m_pSlaveSendThread->sentBytes());
-	else tmp = '0';
+	if(m_pSlaveRecvThread)
+		tmp.setNum(m_pSlaveRecvThread->receivedBytes());
+	else if(m_pSlaveSendThread)
+		tmp.setNum(m_pSlaveSendThread->sentBytes());
+	else
+		tmp = '0';
 
 	m_eGeneralStatus = Failure;
 	m_tTransferEndTime = kvi_unixTime();
-	m_szStatusString = __tr2qs_ctx("Transfer failed: ","dcc");
-	m_szStatusString += __tr2qs_ctx("Aborted","dcc");
+	m_szStatusString = __tr2qs_ctx("Transfer failed: ", "dcc");
+	m_szStatusString += __tr2qs_ctx("Aborted", "dcc");
 
-	KVS_TRIGGER_EVENT_3(KviEvent_OnDCCFileTransferFailed,eventWindow(),QString("Aborted by user"),tmp,m_pDescriptor->idString());
+	KVS_TRIGGER_EVENT_3(KviEvent_OnDCCFileTransferFailed, eventWindow(), QString("Aborted by user"), tmp, m_pDescriptor->idString());
 
-	outputAndLog(KVI_OUT_DCCERROR,m_szStatusString);
+	outputAndLog(KVI_OUT_DCCERROR, m_szStatusString);
 	displayUpdate();
 }
 
 void DccFileTransfer::fillContextPopup(QMenu * m)
 {
-	m->addAction(__tr2qs_ctx("Configure Bandwidth...","dcc"),this,SLOT(configureBandwidth()));
-    m->addSeparator();
-	m->addAction(__tr2qs_ctx("Resend DCC","dcc"),this,SLOT(retryDCC()));
-	m->addAction(__tr2qs_ctx("Resend TDCC","dcc"),this,SLOT(retryTDCC()));
-	m->addAction(__tr2qs_ctx("Resend RevDCC","dcc"),this,SLOT(retryRevDCC()));
-    QAction *pAction = m->addAction(__tr2qs_ctx("Abort","dcc"),this,SLOT(abort()));
-    if(!active())
-        pAction->setEnabled(false);
+	m->addAction(__tr2qs_ctx("Configure Bandwidth...", "dcc"), this, SLOT(configureBandwidth()));
+	m->addSeparator();
+	m->addAction(__tr2qs_ctx("Resend DCC", "dcc"), this, SLOT(retryDCC()));
+	m->addAction(__tr2qs_ctx("Resend TDCC", "dcc"), this, SLOT(retryTDCC()));
+	m->addAction(__tr2qs_ctx("Resend RevDCC", "dcc"), this, SLOT(retryRevDCC()));
+	QAction * pAction = m->addAction(__tr2qs_ctx("Abort", "dcc"), this, SLOT(abort()));
+	if(!active())
+		pAction->setEnabled(false);
 }
 
 void DccFileTransfer::configureBandwidth()
 {
-	if(m_pBandwidthDialog)return;
-	m_pBandwidthDialog = new DccFileTransferBandwidthDialog(g_pMainWindow,this);
-	connect(m_pBandwidthDialog,SIGNAL(destroyed()),this,SLOT(bandwidthDialogDestroyed()));
+	if(m_pBandwidthDialog)
+		return;
+	m_pBandwidthDialog = new DccFileTransferBandwidthDialog(g_pMainWindow, this);
+	connect(m_pBandwidthDialog, SIGNAL(destroyed()), this, SLOT(bandwidthDialogDestroyed()));
 	m_pBandwidthDialog->setModal(true);
 	m_pBandwidthDialog->show();
 }
@@ -1369,7 +1460,7 @@ void DccFileTransfer::retryDCC()
 	KviQString::escapeKvs(&szFileName, KviQString::EscapeSpace);
 
 	QString szCommand = "dcc.send -r=$console($dcc.irccontext(" + szId + ")) " + szRemoteNick + " " + szFileName;
-	KviKvsScript::run(szCommand,g_pActiveWindow);
+	KviKvsScript::run(szCommand, g_pActiveWindow);
 }
 
 void DccFileTransfer::retryTDCC()
@@ -1382,7 +1473,7 @@ void DccFileTransfer::retryTDCC()
 	KviQString::escapeKvs(&szFileName, KviQString::EscapeSpace);
 
 	QString szCommand = "dcc.send -r=$console($dcc.irccontext(" + szId + ")) -t " + szRemoteNick + " " + szFileName;
-	KviKvsScript::run(szCommand,g_pActiveWindow);
+	KviKvsScript::run(szCommand, g_pActiveWindow);
 }
 
 void DccFileTransfer::retryRevDCC()
@@ -1395,10 +1486,10 @@ void DccFileTransfer::retryRevDCC()
 	KviQString::escapeKvs(&szFileName, KviQString::EscapeSpace);
 
 	QString szCommand = "dcc.rsend -z -r=$console($dcc.irccontext(" + szId + ")) " + szRemoteNick + " " + szFileName;
-	KviKvsScript::run(szCommand,g_pActiveWindow);
+	KviKvsScript::run(szCommand, g_pActiveWindow);
 }
 
-void DccFileTransfer::fillStatusString(QString &szBuffer)
+void DccFileTransfer::fillStatusString(QString & szBuffer)
 {
 	switch(m_eGeneralStatus)
 	{
@@ -1435,15 +1526,19 @@ int DccFileTransfer::bandwidthLimit()
 			m_pSlaveRecvThread->initGetInfo();
 			iLimit = (int)m_pSlaveRecvThread->bandwidthLimit();
 			m_pSlaveRecvThread->doneGetInfo();
-			if(iLimit < 0)iLimit = MAX_DCC_BANDWIDTH_LIMIT;
+			if(iLimit < 0)
+				iLimit = MAX_DCC_BANDWIDTH_LIMIT;
 		}
-	} else {
+	}
+	else
+	{
 		if(m_pSlaveSendThread)
 		{
 			m_pSlaveSendThread->initGetInfo();
 			iLimit = (int)m_pSlaveSendThread->bandwidthLimit();
 			m_pSlaveSendThread->doneGetInfo();
-			if(iLimit < 0)iLimit = MAX_DCC_BANDWIDTH_LIMIT;
+			if(iLimit < 0)
+				iLimit = MAX_DCC_BANDWIDTH_LIMIT;
 		}
 	}
 	return iLimit;
@@ -1451,8 +1546,10 @@ int DccFileTransfer::bandwidthLimit()
 
 void DccFileTransfer::setBandwidthLimit(int iVal)
 {
-	if(iVal < 0)iVal = MAX_DCC_BANDWIDTH_LIMIT;
-	if(iVal > MAX_DCC_BANDWIDTH_LIMIT)iVal = MAX_DCC_BANDWIDTH_LIMIT;
+	if(iVal < 0)
+		iVal = MAX_DCC_BANDWIDTH_LIMIT;
+	if(iVal > MAX_DCC_BANDWIDTH_LIMIT)
+		iVal = MAX_DCC_BANDWIDTH_LIMIT;
 	m_uMaxBandwidth = iVal;
 	if(m_pDescriptor->bRecvFile)
 	{
@@ -1462,7 +1559,9 @@ void DccFileTransfer::setBandwidthLimit(int iVal)
 			m_pSlaveRecvThread->setBandwidthLimit(iVal);
 			m_pSlaveRecvThread->doneGetInfo();
 		}
-	} else {
+	}
+	else
+	{
 		if(m_pSlaveSendThread)
 		{
 			m_pSlaveSendThread->initGetInfo();
@@ -1483,7 +1582,9 @@ unsigned int DccFileTransfer::averageSpeed()
 			uAvgBandwidth = m_pSlaveRecvThread->averageSpeed();
 			m_pSlaveRecvThread->doneGetInfo();
 		}
-	} else {
+	}
+	else
+	{
 		if(m_pSlaveSendThread)
 		{
 			m_pSlaveSendThread->initGetInfo();
@@ -1505,7 +1606,9 @@ unsigned int DccFileTransfer::instantSpeed()
 			uInstBandwidth = m_pSlaveRecvThread->instantSpeed();
 			m_pSlaveRecvThread->doneGetInfo();
 		}
-	} else {
+	}
+	else
+	{
 		if(m_pSlaveSendThread)
 		{
 			m_pSlaveSendThread->initGetInfo();
@@ -1527,7 +1630,9 @@ unsigned int DccFileTransfer::transferredBytes()
 			uTransferred = m_pSlaveRecvThread->filePosition();
 			m_pSlaveRecvThread->doneGetInfo();
 		}
-	} else {
+	}
+	else
+	{
 		if(m_pSlaveSendThread)
 		{
 			m_pSlaveSendThread->initGetInfo();
@@ -1538,7 +1643,7 @@ unsigned int DccFileTransfer::transferredBytes()
 	return uTransferred;
 }
 
-void DccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
+void DccFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 {
 	int width = rect.width(), height = rect.height();
 	QString txt;
@@ -1548,19 +1653,29 @@ void DccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 	{
 		case COLUMN_TRANSFERTYPE:
 		{
-			if(!g_pDccFileTransferIcon)break;
+			if(!g_pDccFileTransferIcon)
+				break;
 			int xoffset = 0;
 			int yoffset = 0;
-			if(m_pDescriptor->bRecvFile)yoffset = 64;
+			if(m_pDescriptor->bRecvFile)
+				yoffset = 64;
 			switch(m_eGeneralStatus)
 			{
-				case Connecting: xoffset = 0; break;
-				case Transferring: xoffset = 48; break;
-				case Success: xoffset = 96; break;
-				case Failure: xoffset = 144; break;
+				case Connecting:
+					xoffset = 0;
+					break;
+				case Transferring:
+					xoffset = 48;
+					break;
+				case Success:
+					xoffset = 96;
+					break;
+				case Failure:
+					xoffset = 144;
+					break;
 			}
 			// 48 is width, 64 is height
-			p->drawPixmap(width / 2 - 48 / 2,rect.top() + height / 2 - 64 / 2,*g_pDccFileTransferIcon,xoffset,yoffset,48,64);
+			p->drawPixmap(width / 2 - 48 / 2, rect.top() + height / 2 - 64 / 2, *g_pDccFileTransferIcon, xoffset, yoffset, 48, 64);
 		}
 		break;
 		case COLUMN_FILEINFO:
@@ -1568,47 +1683,45 @@ void DccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 
 			QFontMetrics fm(p->font());
 
-			QString szFrom = __tr2qs_ctx("From: ","dcc");
-			QString szTo   = __tr2qs_ctx("To: ","dcc");
+			QString szFrom = __tr2qs_ctx("From: ", "dcc");
+			QString szTo = __tr2qs_ctx("To: ", "dcc");
 
 			int daW1 = fm.width(szFrom);
 			int daW2 = fm.width(szTo);
-			if(daW1 < daW2)daW1 = daW2;
+			if(daW1 < daW2)
+				daW1 = daW2;
 			int iLineSpacing = fm.lineSpacing();
 
 			int iY = rect.top() + 4;
 
 			p->setPen(Qt::black);
 
-			KviCString szRemote(KviCString::Format,"dcc://%s@%s:%s/%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),
-					m_pDescriptor->szFileName.toUtf8().data());
+			KviCString szRemote(KviCString::Format, "dcc://%s@%s:%s/%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data(),
+			    m_pDescriptor->szFileName.toUtf8().data());
 
-			p->drawText(rect.left() + 4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,
-					m_pDescriptor->bRecvFile ? szRemote.ptr() : m_pDescriptor->szLocalFileName.toUtf8().data());
+			p->drawText(rect.left() + 4 + daW1, iY, width - (8 + daW1), height - 8, Qt::AlignTop | Qt::AlignLeft,
+			    m_pDescriptor->bRecvFile ? szRemote.ptr() : m_pDescriptor->szLocalFileName.toUtf8().data());
 			iY += iLineSpacing;
 
-			p->drawText(rect.left() + 4 + daW1,iY,width - (8 + daW1),height - 8,Qt::AlignTop | Qt::AlignLeft,
-					m_pDescriptor->bRecvFile ? m_pDescriptor->szLocalFileName.toUtf8().data() : szRemote.ptr());
+			p->drawText(rect.left() + 4 + daW1, iY, width - (8 + daW1), height - 8, Qt::AlignTop | Qt::AlignLeft,
+			    m_pDescriptor->bRecvFile ? m_pDescriptor->szLocalFileName.toUtf8().data() : szRemote.ptr());
 			iY += iLineSpacing;
-
 
 			p->setPen(Qt::darkGray);
 
-			p->drawText(rect.left() + 4, rect.top() + 4,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szFrom);
-			p->drawText(rect.left() + 4, rect.top() + 4 + iLineSpacing,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szTo);
+			p->drawText(rect.left() + 4, rect.top() + 4, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, szFrom);
+			p->drawText(rect.left() + 4, rect.top() + 4 + iLineSpacing, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, szTo);
 
-
-			p->setPen(QColor(180,180,200));
+			p->setPen(QColor(180, 180, 200));
 
 			iLineSpacing += 2;
 
-			p->drawRect(rect.left() + 4, rect.top() + height - (iLineSpacing + 4),width - 8,iLineSpacing);
-			p->fillRect(rect.left() + 5, rect.top() + height - (iLineSpacing + 3),width - 10,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
+			p->drawRect(rect.left() + 4, rect.top() + height - (iLineSpacing + 4), width - 8, iLineSpacing);
+			p->fillRect(rect.left() + 5, rect.top() + height - (iLineSpacing + 3), width - 10, iLineSpacing - 2, bIsTerminated ? QColor(210, 210, 210) : QColor(190, 190, 240));
 
 			p->setPen(Qt::black);
 
-			p->drawText(rect.left() + 7, rect.top() + height - (iLineSpacing + 4),width - 14,iLineSpacing,Qt::AlignVCenter | Qt::AlignLeft,m_szStatusString);
-
+			p->drawText(rect.left() + 7, rect.top() + height - (iLineSpacing + 4), width - 14, iLineSpacing, Qt::AlignVCenter | Qt::AlignLeft, m_szStatusString);
 		}
 		break;
 		case COLUMN_PROGRESS:
@@ -1633,7 +1746,9 @@ void DccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 					uTransferred = m_pSlaveRecvThread->filePosition();
 					m_pSlaveRecvThread->doneGetInfo();
 				}
-			} else {
+			}
+			else
+			{
 				if(m_pSlaveSendThread)
 				{
 					m_pSlaveSendThread->initGetInfo();
@@ -1645,8 +1760,8 @@ void DccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 				}
 			}
 
-			p->setPen(bIsTerminated ? Qt::lightGray : QColor(210,210,240));
-			p->drawRect(rect.left() + 4, rect.top() + 4,iW,12);
+			p->setPen(bIsTerminated ? Qt::lightGray : QColor(210, 210, 240));
+			p->drawRect(rect.left() + 4, rect.top() + 4, iW, 12);
 
 			iW -= 2;
 
@@ -1663,30 +1778,34 @@ void DccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 					// we are sending a file and are getting acks
 
 					double dPerc1 = (double)(((double)uTransferred) * 100.0) / (double)m_uTotalFileSize;
-					int iL1 = (int) ((((double)iW) * dPerc1) / 100.0);
+					int iL1 = (int)((((double)iW) * dPerc1) / 100.0);
 					double dPerc2 = (double)(((double)uAckedBytes) * 100.0) / (double)m_uTotalFileSize;
-					int iL2 = (int) ((((double)iW) * dPerc2) / 100.0);
+					int iL2 = (int)((((double)iW) * dPerc2) / 100.0);
 					int iW2 = iL1 - iL2;
-					if(iW2 > 0)p->fillRect(rect.left() + 5 + iL2,rect.top() + 5,iW2,10,bIsTerminated ? QColor(150,130,110) : QColor(220,170,100));
-					p->fillRect(rect.left() + 5,rect.top() + 5,iL2,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
+					if(iW2 > 0)
+						p->fillRect(rect.left() + 5 + iL2, rect.top() + 5, iW2, 10, bIsTerminated ? QColor(150, 130, 110) : QColor(220, 170, 100));
+					p->fillRect(rect.left() + 5, rect.top() + 5, iL2, 10, bIsTerminated ? QColor(140, 110, 110) : QColor(200, 100, 100));
 
-					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)","dcc")).arg(KviQString::makeSizeReadable(uAckedBytes)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc2,0,'f',2);
-				} else {
+					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)", "dcc")).arg(KviQString::makeSizeReadable(uAckedBytes)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc2, 0, 'f', 2);
+				}
+				else
+				{
 					// we are receiving a file or not sending acks
 					double dPerc = (double)(((double)uTransferred) * 100.0) / (double)m_uTotalFileSize;
-					int iL = (int) ((((double)iW) * dPerc) / 100.0);
-					p->fillRect(rect.left() + 5,rect.top() + 5,iL,10,bIsTerminated ? QColor(140,110,110) : QColor(200,100,100));
+					int iL = (int)((((double)iW) * dPerc) / 100.0);
+					p->fillRect(rect.left() + 5, rect.top() + 5, iL, 10, bIsTerminated ? QColor(140, 110, 110) : QColor(200, 100, 100));
 
-					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)","dcc")).arg(KviQString::makeSizeReadable(uTransferred)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc,0,'f',2);
+					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)", "dcc")).arg(KviQString::makeSizeReadable(uTransferred)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc, 0, 'f', 2);
 				}
-
-			} else {
-				txt = QString(__tr2qs_ctx("%1","dcc")).arg(KviQString::makeSizeReadable(uTransferred));
+			}
+			else
+			{
+				txt = QString(__tr2qs_ctx("%1", "dcc")).arg(KviQString::makeSizeReadable(uTransferred));
 			}
 
 			p->setPen(Qt::black);
 
-			p->drawText(rect.left() + 4,rect.top() + 19,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,txt);
+			p->drawText(rect.left() + 4, rect.top() + 19, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, txt);
 
 			int iLeftHalf = (iW - 2) / 2;
 			int iRightHalf = iW - (iLeftHalf + 1);
@@ -1694,21 +1813,23 @@ void DccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 
 			if(!bIsTerminated)
 			{
-				txt = __tr2qs_ctx("Spd:","dcc");
+				txt = __tr2qs_ctx("Spd:", "dcc");
 				txt += " ";
 
 				QString tmpisp;
-				KviNetUtils::formatNetworkBandwidthString(tmpisp,uInstantSpeed);
+				KviNetUtils::formatNetworkBandwidthString(tmpisp, uInstantSpeed);
 				txt += tmpisp;
 				txt += " [";
-			} else {
+			}
+			else
+			{
 				txt = "";
 			}
 
-			txt += __tr2qs_ctx("Avg:","dcc");
+			txt += __tr2qs_ctx("Avg:", "dcc");
 			txt += " ";
 			QString tmpspd;
-			KviNetUtils::formatNetworkBandwidthString(tmpspd,uAvgBandwidth);
+			KviNetUtils::formatNetworkBandwidthString(tmpspd, uAvgBandwidth);
 			txt += tmpspd;
 
 			if(!bIsTerminated)
@@ -1718,43 +1839,47 @@ void DccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 
 			int iDaH = height - (iLineSpacing + 4);
 
-			p->setPen(QColor(180,180,200));
-			p->drawRect(rect.left() + 4,rect.top() + iDaH,iLeftHalf,iLineSpacing);
-			p->fillRect(rect.left() + 5,rect.top() + iDaH + 1,iLeftHalf - 2,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
+			p->setPen(QColor(180, 180, 200));
+			p->drawRect(rect.left() + 4, rect.top() + iDaH, iLeftHalf, iLineSpacing);
+			p->fillRect(rect.left() + 5, rect.top() + iDaH + 1, iLeftHalf - 2, iLineSpacing - 2, bIsTerminated ? QColor(210, 210, 210) : QColor(190, 190, 240));
 			p->setPen(bIsTerminated ? Qt::darkGray : Qt::black);
-			p->drawText(rect.left() + 6,rect.top() + iDaH,iLeftHalf - 4,iLineSpacing,Qt::AlignLeft | Qt::AlignVCenter,txt);
+			p->drawText(rect.left() + 6, rect.top() + iDaH, iLeftHalf - 4, iLineSpacing, Qt::AlignLeft | Qt::AlignVCenter, txt);
 
 			if(bIsTerminated)
 			{
 				if((m_tTransferStartTime != 0) && (m_tTransferEndTime != 0))
 				{
-					QString tot = KviTimeUtils::formatTimeInterval(kvi_timeSpan(m_tTransferEndTime,m_tTransferStartTime),KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
+					QString tot = KviTimeUtils::formatTimeInterval(kvi_timeSpan(m_tTransferEndTime, m_tTransferStartTime), KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
 					txt = "TOT: ";
 					txt += tot;
-				} else {
+				}
+				else
+				{
 					txt = "";
 				}
-			} else {
+			}
+			else
+			{
 				if(iEta >= 0)
 				{
-					QString eta = KviTimeUtils::formatTimeInterval(iEta,KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
+					QString eta = KviTimeUtils::formatTimeInterval(iEta, KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
 					txt = "ETA: ";
 					txt += eta;
-				} else {
+				}
+				else
+				{
 					txt = "ETA: ?";
 				}
 			}
 
-			p->setPen(QColor(180,180,200));
-			p->drawRect(rect.left() + width - (4 + iRightHalf),rect.top() + iDaH,iRightHalf,iLineSpacing);
-			p->fillRect(rect.left() + width - (3 + iRightHalf),rect.top() + iDaH + 1,iRightHalf - 2,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
+			p->setPen(QColor(180, 180, 200));
+			p->drawRect(rect.left() + width - (4 + iRightHalf), rect.top() + iDaH, iRightHalf, iLineSpacing);
+			p->fillRect(rect.left() + width - (3 + iRightHalf), rect.top() + iDaH + 1, iRightHalf - 2, iLineSpacing - 2, bIsTerminated ? QColor(210, 210, 210) : QColor(190, 190, 240));
 			p->setPen(bIsTerminated ? Qt::darkGray : Qt::black);
-			p->drawText(rect.left() + width - (2 + iRightHalf),rect.top() + iDaH,iRightHalf - 4,iLineSpacing,Qt::AlignLeft | Qt::AlignVCenter,txt);
-
+			p->drawText(rect.left() + width - (2 + iRightHalf), rect.top() + iDaH, iRightHalf - 4, iLineSpacing, Qt::AlignLeft | Qt::AlignVCenter, txt);
 		}
 		break;
 	}
-
 }
 
 int DccFileTransfer::displayHeight(int iLineSpacing)
@@ -1770,7 +1895,7 @@ QString DccFileTransfer::tipText()
 	s = QString("<table><tr><td bgcolor=\"#000000\"><font color=\"#FFFFFF\"><b>DCC %1 (ID %2)</b></font></td></tr>").arg(m_szDccType.ptr()).arg(id());
 
 	s += "<tr><td bgcolor=\"#404040\"><font color=\"#FFFFFF\">";
-	s += __tr2qs_ctx("Transfer Log","dcc");
+	s += __tr2qs_ctx("Transfer Log", "dcc");
 	s += "</font></td></tr>";
 	s += "<tr><td bgcolor=\"#C0C0C0\">";
 	s += m_szTransferLog;
@@ -1782,36 +1907,43 @@ QString DccFileTransfer::tipText()
 
 void DccFileTransfer::init()
 {
-	if(g_pDccFileTransfers)return;
+	if(g_pDccFileTransfers)
+		return;
 	g_pDccFileTransfers = new KviPointerList<DccFileTransfer>;
 	g_pDccFileTransfers->setAutoDelete(false);
 
 	QPixmap * pix = g_pIconManager->getImage("kvi_dccfiletransfericons.png", false);
-	if(pix)g_pDccFileTransferIcon = new QPixmap(*pix);
-	else g_pDccFileTransferIcon = 0;
+	if(pix)
+		g_pDccFileTransferIcon = new QPixmap(*pix);
+	else
+		g_pDccFileTransferIcon = 0;
 }
 
 void DccFileTransfer::done()
 {
-	if(!g_pDccFileTransfers)return;
+	if(!g_pDccFileTransfers)
+		return;
 	while(DccFileTransfer * t = g_pDccFileTransfers->first())
 		delete t;
 	delete g_pDccFileTransfers;
 	g_pDccFileTransfers = 0;
-	if(g_pDccFileTransferIcon)delete g_pDccFileTransferIcon;
+	if(g_pDccFileTransferIcon)
+		delete g_pDccFileTransferIcon;
 	g_pDccFileTransferIcon = 0;
 }
 
 unsigned int DccFileTransfer::transferCount()
 {
-	if(!g_pDccFileTransfers)return 0;
+	if(!g_pDccFileTransfers)
+		return 0;
 	return g_pDccFileTransfers->count();
 }
 
-DccFileTransfer * DccFileTransfer::nonFailedTransferWithLocalFileName(const QString &szLocalFileName)
+DccFileTransfer * DccFileTransfer::nonFailedTransferWithLocalFileName(const QString & szLocalFileName)
 {
-	if(!g_pDccFileTransfers)return 0;
-	for(DccFileTransfer * t = g_pDccFileTransfers->first();t;t = g_pDccFileTransfers->next())
+	if(!g_pDccFileTransfers)
+		return 0;
+	for(DccFileTransfer * t = g_pDccFileTransfers->first(); t; t = g_pDccFileTransfers->next())
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		// on windows the file names are case insensitive
@@ -1829,62 +1961,67 @@ DccFileTransfer * DccFileTransfer::nonFailedTransferWithLocalFileName(const QStr
 
 unsigned int DccFileTransfer::runningTransfersCount()
 {
-	if(!g_pDccFileTransfers)return 0;
+	if(!g_pDccFileTransfers)
+		return 0;
 	unsigned int cnt = 0;
-	for(DccFileTransfer * t = g_pDccFileTransfers->first();t;t = g_pDccFileTransfers->next())
+	for(DccFileTransfer * t = g_pDccFileTransfers->first(); t; t = g_pDccFileTransfers->next())
 	{
-		if(t->active())cnt++;
+		if(t->active())
+			cnt++;
 	}
 	return cnt;
 }
 
-bool DccFileTransfer::handleResumeAccepted(const char * filename,const char * port,const char * szZeroPortTag)
-{
-	if(!g_pDccFileTransfers)return false;
-
-	for(DccFileTransfer * t = g_pDccFileTransfers->first();t;t = g_pDccFileTransfers->next())
-	{
-		if(t->resumeAccepted(filename,port,szZeroPortTag))return true;
-	}
-
-	return false;
-}
-
-bool DccFileTransfer::handleResumeRequest(const char * filename,const char * port,quint64 filePos)
+bool DccFileTransfer::handleResumeAccepted(const char * filename, const char * port, const char * szZeroPortTag)
 {
 	if(!g_pDccFileTransfers)
 		return false;
 
-	for(DccFileTransfer * t = g_pDccFileTransfers->first();t;t = g_pDccFileTransfers->next())
+	for(DccFileTransfer * t = g_pDccFileTransfers->first(); t; t = g_pDccFileTransfers->next())
 	{
-		if(t->doResume(filename,port,filePos))
+		if(t->resumeAccepted(filename, port, szZeroPortTag))
 			return true;
 	}
 
 	return false;
 }
 
-void DccFileTransfer::outputAndLog(const QString &s)
+bool DccFileTransfer::handleResumeRequest(const char * filename, const char * port, quint64 filePos)
+{
+	if(!g_pDccFileTransfers)
+		return false;
+
+	for(DccFileTransfer * t = g_pDccFileTransfers->first(); t; t = g_pDccFileTransfers->next())
+	{
+		if(t->doResume(filename, port, filePos))
+			return true;
+	}
+
+	return false;
+}
+
+void DccFileTransfer::outputAndLog(const QString & s)
 {
 	KviWindow * out = transferWindow();
 	addToTransferLog(s);
-	if(out)out->output(KVI_OUT_DCCMSG,"[%Q]: %Q",&m_szTransferIdString,&s);
+	if(out)
+		out->output(KVI_OUT_DCCMSG, "[%Q]: %Q", &m_szTransferIdString, &s);
 }
 
-void DccFileTransfer::outputAndLog(int msgtype,const QString &s)
+void DccFileTransfer::outputAndLog(int msgtype, const QString & s)
 {
 	KviWindow * out = transferWindow();
 	addToTransferLog(s);
-	if(out)out->output(msgtype,"[%Q]: %Q",&m_szTransferIdString,&s);
+	if(out)
+		out->output(msgtype, "[%Q]: %Q", &m_szTransferIdString, &s);
 }
 
-
-void DccFileTransfer::addToTransferLog(const QString &s)
+void DccFileTransfer::addToTransferLog(const QString & s)
 {
 	QDateTime dt = QDateTime::currentDateTime();
 	QString ts;
-	ts.sprintf("[%4d.%2d.%2d %2d:%2d:%2d] ",dt.date().year(),dt.date().month(),dt.date().day(),dt.time().hour(),dt.time().minute(),dt.time().second());
-	m_szTransferLog += ts+s;
+	ts.sprintf("[%4d.%2d.%2d %2d:%2d:%2d] ", dt.date().year(), dt.date().month(), dt.date().day(), dt.time().hour(), dt.time().minute(), dt.time().second());
+	m_szTransferLog += ts + s;
 	m_szTransferLog += "<br>";
 }
 
@@ -1893,22 +2030,22 @@ void DccFileTransfer::connectionInProgress()
 	if(m_pDescriptor->bActive)
 	{
 		// ACTIVE CONNECTION
-//		if((kvi_strEqualCS(m_szDccType.ptr(), "RECV")) || (kvi_strEqualCS(m_szDccType.ptr(),"TRECV")))
-//		{
-//			// FIXME: that's not true!... we're NOT connected here
-//			if(TRIGGER_EVENT_5PARAM_RETVALUE(KviEvent_OnDCCGetConnected,this,m_pDescriptor->szPort.ptr(),m_pDescriptor->szFileName.ptr(),m_pDescriptor->szNick.ptr(),m_pDescriptor->szUser.ptr(),m_pDescriptor->szHost.ptr()));
-//		} else {
-//			if(TRIGGER_EVENT_5PARAM_RETVALUE(KviEvent_OnDCCSendConnected,this,m_pDescriptor->szPort.ptr(),m_pDescriptor->szFileName.ptr(),m_pDescriptor->szNick.ptr(),m_pDescriptor->szUser.ptr(),m_pDescriptor->szHost.ptr()));
-//		}
-//
-		m_szStatusString = __tr2qs_ctx("Contacting host %1 on port %2","dcc").arg(m_pDescriptor->szIp, m_pDescriptor->szPort);
+		//		if((kvi_strEqualCS(m_szDccType.ptr(), "RECV")) || (kvi_strEqualCS(m_szDccType.ptr(),"TRECV")))
+		//		{
+		//			// FIXME: that's not true!... we're NOT connected here
+		//			if(TRIGGER_EVENT_5PARAM_RETVALUE(KviEvent_OnDCCGetConnected,this,m_pDescriptor->szPort.ptr(),m_pDescriptor->szFileName.ptr(),m_pDescriptor->szNick.ptr(),m_pDescriptor->szUser.ptr(),m_pDescriptor->szHost.ptr()));
+		//		} else {
+		//			if(TRIGGER_EVENT_5PARAM_RETVALUE(KviEvent_OnDCCSendConnected,this,m_pDescriptor->szPort.ptr(),m_pDescriptor->szFileName.ptr(),m_pDescriptor->szNick.ptr(),m_pDescriptor->szUser.ptr(),m_pDescriptor->szHost.ptr()));
+		//		}
+		//
+		m_szStatusString = __tr2qs_ctx("Contacting host %1 on port %2", "dcc").arg(m_pDescriptor->szIp, m_pDescriptor->szPort);
 		outputAndLog(m_szStatusString);
 		displayUpdate();
 		return;
 	}
 
 	// PASSIVE CONNECTION
-	m_szStatusString = __tr2qs_ctx("Listening on interface %1 port %2","dcc").arg(m_pMarshal->localIp(), m_pMarshal->localPort());
+	m_szStatusString = __tr2qs_ctx("Listening on interface %1 port %2", "dcc").arg(m_pMarshal->localIp(), m_pMarshal->localPort());
 	outputAndLog(m_szStatusString);
 
 	if(m_pDescriptor->bSendRequest)
@@ -1917,7 +2054,9 @@ void DccFileTransfer::connectionInProgress()
 		if(!m_pDescriptor->szFakeIp.isEmpty())
 		{
 			ip = m_pDescriptor->szFakeIp;
-		} else {
+		}
+		else
+		{
 			ip = m_pDescriptor->szListenIp;
 
 			if(KVI_OPTION_BOOL(KviOption_boolDccGuessIpFromServerWhenLocalIsUnroutable))
@@ -1931,67 +2070,78 @@ void DccFileTransfer::connectionInProgress()
 						if(!tmp.isEmpty())
 						{
 							ip = tmp;
-							outputAndLog(__tr2qs_ctx("The local IP address is private, determining from IRC server: %1","dcc").arg(ip));
-						} else {
-							outputAndLog(__tr2qs_ctx("The local IP address is private, but unable to determine it from the IRC server","dcc"));
+							outputAndLog(__tr2qs_ctx("The local IP address is private, determining from IRC server: %1", "dcc").arg(ip));
 						}
-					} else {
-						outputAndLog(__tr2qs_ctx("The local IP address is private, but have no IRC server to determine it from","dcc"));
+						else
+						{
+							outputAndLog(__tr2qs_ctx("The local IP address is private, but unable to determine it from the IRC server", "dcc"));
+						}
+					}
+					else
+					{
+						outputAndLog(__tr2qs_ctx("The local IP address is private, but have no IRC server to determine it from", "dcc"));
 					}
 				}
 			}
 		}
 
-		KviCString port   = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort : m_pMarshal->localPort();
+		KviCString port = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort : m_pMarshal->localPort();
 		//#warning "OPTION FOR SENDING 127.0.0.1 and so on (not an unsigned nuumber)"
 		struct in_addr a;
-		if(KviNetUtils::stringIpToBinaryIp(ip,&a))ip.setNum(htonl(a.s_addr));
+		if(KviNetUtils::stringIpToBinaryIp(ip, &a))
+			ip.setNum(htonl(a.s_addr));
 
 		QString tmp = m_pDescriptor->szFileName;
 		// just to be sure
-		KviQString::cutToLast(tmp,'/');
-		KviQString::cutToLast(tmp,'\\');
+		KviQString::cutToLast(tmp, '/');
+		KviQString::cutToLast(tmp, '\\');
 
 		QString fName;
 
 		// BUG-TO-BUG mIrc compatibility
 		if(KVI_OPTION_BOOL(KviOption_boolDCCFileTransferReplaceOutgoingSpacesWithUnderscores))
-			tmp.replace(" ","_");
+			tmp.replace(" ", "_");
 
-		KviIrcServerParser::encodeCtcpParameter(tmp.toUtf8().data(),fName);
+		KviIrcServerParser::encodeCtcpParameter(tmp.toUtf8().data(), fName);
 		// Zero port requests want DCC SEND as back-request
 		KviCString szReq;
 
 		if(m_pDescriptor->isZeroPortRequest())
 		{
 			szReq = "SEND";
-			if(m_pDescriptor->bIsTdcc) szReq.prepend("T");
+			if(m_pDescriptor->bIsTdcc)
+				szReq.prepend("T");
 #ifdef COMPILE_SSL_SUPPORT
-			if(m_pDescriptor->bIsSSL) szReq.prepend("S");
+			if(m_pDescriptor->bIsSSL)
+				szReq.prepend("S");
 #endif
 			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %s %s %s %s%c",
-					m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-					0x01,
-					m_pDescriptor->console()->connection()->encodeText(szReq.ptr()).data(),
-					m_pDescriptor->console()->connection()->encodeText(fName).data(),
-					ip.toUtf8().data(),port.ptr(),
-					m_pDescriptor->szFileSize.toUtf8().data(),m_pDescriptor->zeroPortRequestTag(),0x01);
-		} else {
+			    m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+			    0x01,
+			    m_pDescriptor->console()->connection()->encodeText(szReq.ptr()).data(),
+			    m_pDescriptor->console()->connection()->encodeText(fName).data(),
+			    ip.toUtf8().data(), port.ptr(),
+			    m_pDescriptor->szFileSize.toUtf8().data(), m_pDescriptor->zeroPortRequestTag(), 0x01);
+		}
+		else
+		{
 			szReq = m_szDccType;
 			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %s %s %Q%c",
-					m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-					0x01,
-					m_pDescriptor->console()->connection()->encodeText(szReq.ptr()).data(),
-					m_pDescriptor->console()->connection()->encodeText(fName).data(),
-					ip.toUtf8().data(),port.ptr(),
-					&(m_pDescriptor->szLocalFileSize),0x01);
+			    m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+			    0x01,
+			    m_pDescriptor->console()->connection()->encodeText(szReq.ptr()).data(),
+			    m_pDescriptor->console()->connection()->encodeText(fName).data(),
+			    ip.toUtf8().data(), port.ptr(),
+			    &(m_pDescriptor->szLocalFileSize), 0x01);
 		}
-		outputAndLog(__tr2qs_ctx("Sent DCC %1 request to %2, waiting for remote client to connect...","dcc").arg(szReq.ptr(), m_pDescriptor->szNick));
-	} else {
-		outputAndLog(__tr2qs_ctx("DCC %1 request not sent, awaiting manual connection","dcc").arg(m_szDccType.ptr()));
+		outputAndLog(__tr2qs_ctx("Sent DCC %1 request to %2, waiting for remote client to connect...", "dcc").arg(szReq.ptr(), m_pDescriptor->szNick));
+	}
+	else
+	{
+		outputAndLog(__tr2qs_ctx("DCC %1 request not sent, awaiting manual connection", "dcc").arg(m_szDccType.ptr()));
 	}
 
-	KVS_TRIGGER_EVENT_1(KviEvent_OnDCCFileTransferConnectionInProgress,eventWindow(),m_pDescriptor->idString());
+	KVS_TRIGGER_EVENT_1(KviEvent_OnDCCFileTransferConnectionInProgress, eventWindow(), m_pDescriptor->idString());
 
 	displayUpdate();
 }
@@ -1999,19 +2149,19 @@ void DccFileTransfer::connectionInProgress()
 void DccFileTransfer::startingSSLHandshake()
 {
 #ifdef COMPILE_SSL_SUPPORT
-	outputAndLog(KVI_OUT_SSL,__tr2qs_ctx("Low-level transport connection established","dcc"));
-	outputAndLog(KVI_OUT_SSL,__tr2qs_ctx("Starting Secure Socket Layer handshake","dcc"));
+	outputAndLog(KVI_OUT_SSL, __tr2qs_ctx("Low-level transport connection established", "dcc"));
+	outputAndLog(KVI_OUT_SSL, __tr2qs_ctx("Starting Secure Socket Layer handshake", "dcc"));
 #endif
 }
 
 void DccFileTransfer::sslError(const char * msg)
 {
 #ifdef COMPILE_SSL_SUPPORT
-	outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("[SSL ERROR]: %1","dcc").arg(msg));
+	outputAndLog(KVI_OUT_DCCERROR, __tr2qs_ctx("[SSL ERROR]: %1", "dcc").arg(msg));
 #endif
 }
 
-bool DccFileTransfer::event(QEvent *e)
+bool DccFileTransfer::event(QEvent * e)
 {
 	if(e->type() == KVI_THREAD_EVENT)
 	{
@@ -2023,20 +2173,20 @@ bool DccFileTransfer::event(QEvent *e)
 				QString szErrorString = KviError::getDescription(*pError);
 				delete pError;
 				if(m_pDescriptor->bRecvFile)
-					g_pApp->fileDownloadTerminated(false,m_pDescriptor->szFileName.toUtf8().data(),m_pDescriptor->szLocalFileName.toUtf8().data(),m_pDescriptor->szNick.toUtf8().data(),szErrorString.toUtf8().data());
+					g_pApp->fileDownloadTerminated(false, m_pDescriptor->szFileName.toUtf8().data(), m_pDescriptor->szLocalFileName.toUtf8().data(), m_pDescriptor->szNick.toUtf8().data(), szErrorString.toUtf8().data());
 
-				m_szStatusString = __tr2qs_ctx("Transfer failed: ","dcc");
+				m_szStatusString = __tr2qs_ctx("Transfer failed: ", "dcc");
 				m_szStatusString += szErrorString;
 				m_eGeneralStatus = Failure;
 				m_tTransferEndTime = kvi_unixTime();
 
 				KVS_TRIGGER_EVENT_3(KviEvent_OnDCCFileTransferFailed,
-						eventWindow(),
-						szErrorString,
-						(kvs_int_t)(m_pSlaveRecvThread ? m_pSlaveRecvThread->receivedBytes() : m_pSlaveSendThread->sentBytes()),
-						m_pDescriptor->idString());
+				    eventWindow(),
+				    szErrorString,
+				    (kvs_int_t)(m_pSlaveRecvThread ? m_pSlaveRecvThread->receivedBytes() : m_pSlaveSendThread->sentBytes()),
+				    m_pDescriptor->idString());
 
-				outputAndLog(KVI_OUT_DCCERROR,m_szStatusString);
+				outputAndLog(KVI_OUT_DCCERROR, m_szStatusString);
 				displayUpdate();
 				return true;
 			}
@@ -2047,13 +2197,15 @@ bool DccFileTransfer::event(QEvent *e)
 				// File Upload/Download terminated, or something like this
 				if(KVI_OPTION_BOOL(KviOption_boolNotifyDccSendSuccessInConsole))
 				{
-					KviConsoleWindow *c;
-					if(!g_pApp->windowExists(m_pDescriptor->console())) c=g_pApp->activeConsole();
-					else c=m_pDescriptor->console();
-					c->output(KVI_OUT_DCCMSG,__tr2qs_ctx("DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r","dcc"),
-						m_pDescriptor->bIsTdcc ? (m_pDescriptor->bRecvFile ? "TRECV" : "TSEND") : (m_pDescriptor->bRecvFile ? "RECV" : "SEND"),
-						&(m_pDescriptor->szNick),&(m_pDescriptor->szIp),&(m_pDescriptor->szPort),
-						&(m_pDescriptor->szLocalFileName));
+					KviConsoleWindow * c;
+					if(!g_pApp->windowExists(m_pDescriptor->console()))
+						c = g_pApp->activeConsole();
+					else
+						c = m_pDescriptor->console();
+					c->output(KVI_OUT_DCCMSG, __tr2qs_ctx("DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r", "dcc"),
+					    m_pDescriptor->bIsTdcc ? (m_pDescriptor->bRecvFile ? "TRECV" : "TSEND") : (m_pDescriptor->bRecvFile ? "RECV" : "SEND"),
+					    &(m_pDescriptor->szNick), &(m_pDescriptor->szIp), &(m_pDescriptor->szPort),
+					    &(m_pDescriptor->szLocalFileName));
 				}
 				/*
 				// Also add an optional message to the notifier, unless it is an AVATAR download!
@@ -2063,39 +2215,42 @@ bool DccFileTransfer::event(QEvent *e)
 					g_pApp->notifierMessage(0,KVI_SMALLICON_DCCMSG,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 				}
 				*/
-				if(m_pDescriptor->bRecvFile)g_pApp->fileDownloadTerminated(true,m_pDescriptor->szFileName.toUtf8().data(),m_pDescriptor->szLocalFileName.toUtf8().data(),m_pDescriptor->szNick.toUtf8().data());
-				m_szStatusString = __tr2qs_ctx("Transfer completed","dcc");
+				if(m_pDescriptor->bRecvFile)
+					g_pApp->fileDownloadTerminated(true, m_pDescriptor->szFileName.toUtf8().data(), m_pDescriptor->szLocalFileName.toUtf8().data(), m_pDescriptor->szNick.toUtf8().data());
+				m_szStatusString = __tr2qs_ctx("Transfer completed", "dcc");
 				outputAndLog(m_szStatusString);
 				m_eGeneralStatus = Success;
 				m_tTransferEndTime = kvi_unixTime();
-				if (m_pResumeTimer) delete m_pResumeTimer;
+				if(m_pResumeTimer)
+					delete m_pResumeTimer;
 
 				KVS_TRIGGER_EVENT_2(KviEvent_OnDCCFileTransferSuccess,
-					eventWindow(),
-					(kvs_int_t)(m_pSlaveRecvThread ? m_pSlaveRecvThread->receivedBytes() : m_pSlaveSendThread->sentBytes()),
-					m_pDescriptor->idString());
+				    eventWindow(),
+				    (kvs_int_t)(m_pSlaveRecvThread ? m_pSlaveRecvThread->receivedBytes() : m_pSlaveSendThread->sentBytes()),
+				    m_pDescriptor->idString());
 
 				displayUpdate();
 
-				if(KVI_OPTION_BOOL(KviOption_boolAutoCloseDccSendOnSuccess))die();
+				if(KVI_OPTION_BOOL(KviOption_boolAutoCloseDccSendOnSuccess))
+					die();
 				return true;
 			}
 			break;
 			case KVI_DCC_THREAD_EVENT_MESSAGE:
 			{
 				KviCString * str = ((KviThreadDataEvent<KviCString> *)e)->getData();
-				outputAndLog(QString(__tr_no_xgettext_ctx(str->ptr(),"dcc")));
+				outputAndLog(QString(__tr_no_xgettext_ctx(str->ptr(), "dcc")));
 				delete str;
 				return true;
 			}
 			break;
 			default:
-				qDebug("Invalid event type %d received",((KviThreadEvent *)e)->id());
-			break;
+				qDebug("Invalid event type %d received", ((KviThreadEvent *)e)->id());
+				break;
 		}
 	}
-//#warning "Remove this!"
-//	if(e->type() == QEvent::Close)qDebug("Close event received");
+	//#warning "Remove this!"
+	//	if(e->type() == QEvent::Close)qDebug("Close event received");
 	return KviFileTransfer::event(e);
 }
 
@@ -2103,23 +2258,23 @@ void DccFileTransfer::handleMarshalError(KviError::Code eError)
 {
 	QString szErr = KviError::getDescription(eError);
 	m_eGeneralStatus = Failure;
-	m_szStatusString = __tr2qs_ctx("Transfer failed: ","dcc");
+	m_szStatusString = __tr2qs_ctx("Transfer failed: ", "dcc");
 	m_szStatusString += szErr;
 	outputAndLog(m_szStatusString);
-	KVS_TRIGGER_EVENT_3(KviEvent_OnDCCFileTransferFailed,eventWindow(),szErr,(kvs_int_t)0,m_pDescriptor->idString());
+	KVS_TRIGGER_EVENT_3(KviEvent_OnDCCFileTransferFailed, eventWindow(), szErr, (kvs_int_t)0, m_pDescriptor->idString());
 	displayUpdate();
 }
 
 void DccFileTransfer::connected()
 {
-	outputAndLog(__tr2qs_ctx("Connected to %1:%2","dcc").arg(m_pMarshal->remoteIp(), m_pMarshal->remotePort()));
-	outputAndLog(__tr2qs_ctx("Local end is %1:%2","dcc").arg(m_pMarshal->localIp(), m_pMarshal->localPort()));
+	outputAndLog(__tr2qs_ctx("Connected to %1:%2", "dcc").arg(m_pMarshal->remoteIp(), m_pMarshal->remotePort()));
+	outputAndLog(__tr2qs_ctx("Local end is %1:%2", "dcc").arg(m_pMarshal->localIp(), m_pMarshal->localPort()));
 
 	m_tTransferStartTime = kvi_unixTime();
 
 	if(!(m_pDescriptor->bActive))
 	{
-		m_pDescriptor->szIp   = m_pMarshal->remoteIp();
+		m_pDescriptor->szIp = m_pMarshal->remoteIp();
 		m_pDescriptor->szPort = m_pMarshal->remotePort();
 		m_pDescriptor->szHost = m_pMarshal->remoteIp();
 	}
@@ -2127,18 +2282,19 @@ void DccFileTransfer::connected()
 	if(m_pDescriptor->bRecvFile)
 	{
 		KviDccRecvThreadOptions * o = new KviDccRecvThreadOptions;
-		o->szFileName      = m_pDescriptor->szLocalFileName.toUtf8().data();
+		o->szFileName = m_pDescriptor->szLocalFileName.toUtf8().data();
 		bool bOk;
-		o->uTotalFileSize  = m_pDescriptor->szFileSize.toULongLong(&bOk);
-		if(!bOk)o->uTotalFileSize = 0;
-		o->bResume         = m_pDescriptor->bResume;
+		o->uTotalFileSize = m_pDescriptor->szFileSize.toULongLong(&bOk);
+		if(!bOk)
+			o->uTotalFileSize = 0;
+		o->bResume = m_pDescriptor->bResume;
 		o->iIdleStepLengthInMSec = KVI_OPTION_BOOL(KviOption_boolDccSendForceIdleStep) ? KVI_OPTION_UINT(KviOption_uintDccSendIdleStepInMSec) : 0;
-		o->bIsTdcc         = m_pDescriptor->bIsTdcc;
-		o->bSendZeroAck    = KVI_OPTION_BOOL(KviOption_boolSendZeroAckInDccRecv);
-		o->bSend64BitAck   = KVI_OPTION_BOOL(KviOption_boolSend64BitAckInDccRecv);
-		o->bNoAcks         = m_pDescriptor->bNoAcks;
-		o->uMaxBandwidth   = m_uMaxBandwidth;
-		m_pSlaveRecvThread = new DccRecvThread(this,m_pMarshal->releaseSocket(),o);
+		o->bIsTdcc = m_pDescriptor->bIsTdcc;
+		o->bSendZeroAck = KVI_OPTION_BOOL(KviOption_boolSendZeroAckInDccRecv);
+		o->bSend64BitAck = KVI_OPTION_BOOL(KviOption_boolSend64BitAckInDccRecv);
+		o->bNoAcks = m_pDescriptor->bNoAcks;
+		o->uMaxBandwidth = m_uMaxBandwidth;
+		m_pSlaveRecvThread = new DccRecvThread(this, m_pMarshal->releaseSocket(), o);
 
 #ifdef COMPILE_SSL_SUPPORT
 		KviSSL * s = m_pMarshal->releaseSSL();
@@ -2148,20 +2304,24 @@ void DccFileTransfer::connected()
 		}
 #endif
 		m_pSlaveRecvThread->start();
-	} else {
+	}
+	else
+	{
 		KviDccSendThreadOptions * o = new KviDccSendThreadOptions;
-		o->szFileName      = m_pDescriptor->szLocalFileName.toUtf8().data();
-		o->bFastSend       = KVI_OPTION_BOOL(KviOption_boolUseFastDccSend);
+		o->szFileName = m_pDescriptor->szLocalFileName.toUtf8().data();
+		o->bFastSend = KVI_OPTION_BOOL(KviOption_boolUseFastDccSend);
 		o->iIdleStepLengthInMSec = KVI_OPTION_BOOL(KviOption_boolDccSendForceIdleStep) ? KVI_OPTION_UINT(KviOption_uintDccSendIdleStepInMSec) : 0;
 		bool bOk;
-		o->bIsTdcc         = m_pDescriptor->bIsTdcc;
-		o->uStartPosition  = m_pDescriptor->szFileSize.toULongLong(&bOk);
-		if(!bOk) o->uStartPosition = 0;
-		o->iPacketSize     = KVI_OPTION_UINT(KviOption_uintDccSendPacketSize);
-		if(o->iPacketSize < 32)o->iPacketSize = 32;
-		o->uMaxBandwidth   = m_uMaxBandwidth;
-		o->bNoAcks         = m_pDescriptor->bNoAcks;
-		m_pSlaveSendThread = new DccSendThread(this,m_pMarshal->releaseSocket(),o);
+		o->bIsTdcc = m_pDescriptor->bIsTdcc;
+		o->uStartPosition = m_pDescriptor->szFileSize.toULongLong(&bOk);
+		if(!bOk)
+			o->uStartPosition = 0;
+		o->iPacketSize = KVI_OPTION_UINT(KviOption_uintDccSendPacketSize);
+		if(o->iPacketSize < 32)
+			o->iPacketSize = 32;
+		o->uMaxBandwidth = m_uMaxBandwidth;
+		o->bNoAcks = m_pDescriptor->bNoAcks;
+		m_pSlaveSendThread = new DccSendThread(this, m_pMarshal->releaseSocket(), o);
 #ifdef COMPILE_SSL_SUPPORT
 		KviSSL * s = m_pMarshal->releaseSSL();
 		if(s)
@@ -2173,33 +2333,32 @@ void DccFileTransfer::connected()
 	}
 
 	m_eGeneralStatus = Transferring;
-	m_szStatusString = __tr2qs_ctx("Transferring data","dcc");
+	m_szStatusString = __tr2qs_ctx("Transferring data", "dcc");
 
-	KVS_TRIGGER_EVENT_1(KviEvent_OnDCCFileTransferBegin,eventWindow(),m_pDescriptor->idString());
+	KVS_TRIGGER_EVENT_1(KviEvent_OnDCCFileTransferBegin, eventWindow(), m_pDescriptor->idString());
 
 	outputAndLog(m_szStatusString);
 	displayUpdate();
 }
 
-bool DccFileTransfer::resumeAccepted(const char *filename,const char *port,const char *szZeroPortTag)
+bool DccFileTransfer::resumeAccepted(const char * filename, const char * port, const char * szZeroPortTag)
 {
-	if(!(kvi_strEqualCI(filename,m_pDescriptor->szFileName.toUtf8().data()) || KVI_OPTION_BOOL(KviOption_boolAcceptBrokenFileNameDccResumeRequests)))
+	if(!(kvi_strEqualCI(filename, m_pDescriptor->szFileName.toUtf8().data()) || KVI_OPTION_BOOL(KviOption_boolAcceptBrokenFileNameDccResumeRequests)))
 		return false;
 
-	if(!(kvi_strEqualCI(port,m_pDescriptor->szPort.toUtf8().data()) &&
-			(!m_pSlaveRecvThread) && m_pDescriptor->bResume && m_pDescriptor->bRecvFile && m_pResumeTimer))
+	if(!(kvi_strEqualCI(port, m_pDescriptor->szPort.toUtf8().data()) && (!m_pSlaveRecvThread) && m_pDescriptor->bResume && m_pDescriptor->bRecvFile && m_pResumeTimer))
 		return false;
 
-	if(kvi_strEqualCI(port,"0"))
+	if(kvi_strEqualCI(port, "0"))
 	{
-		if(!kvi_strEqualCI(szZeroPortTag,m_pDescriptor->zeroPortRequestTag()))
+		if(!kvi_strEqualCI(szZeroPortTag, m_pDescriptor->zeroPortRequestTag()))
 			return false;
 	}
 
 	delete m_pResumeTimer;
 	m_pResumeTimer = 0;
 
-	outputAndLog(__tr2qs_ctx("RESUME accepted, transfer will begin at position %1","dcc").arg(m_pDescriptor->szLocalFileSize));
+	outputAndLog(__tr2qs_ctx("RESUME accepted, transfer will begin at position %1", "dcc").arg(m_pDescriptor->szLocalFileSize));
 
 	listenOrConnect();
 
@@ -2218,7 +2377,7 @@ bool DccFileTransfer::resumeAccepted(const char *filename,const char *port,const
 	return true;
 }
 
-bool DccFileTransfer::doResume(const char * filename,const char * port,quint64 filePos)
+bool DccFileTransfer::doResume(const char * filename, const char * port, quint64 filePos)
 {
 	if(m_pSlaveRecvThread)
 		return false; // we're already receiving stuff...
@@ -2228,8 +2387,8 @@ bool DccFileTransfer::doResume(const char * filename,const char * port,quint64 f
 	if(m_pDescriptor->bRecvFile)
 		return false; // we're receiving... can't resume anything
 
-	bool bFileNameMatches = KviQString::equalCI(filename,m_pDescriptor->szFileName);
-	bool bPortMatches = KviQString::equalCI(port,m_pMarshal->dccPort());
+	bool bFileNameMatches = KviQString::equalCI(filename, m_pDescriptor->szFileName);
+	bool bPortMatches = KviQString::equalCI(port, m_pMarshal->dccPort());
 
 	if(!bPortMatches)
 	{
@@ -2243,7 +2402,7 @@ bool DccFileTransfer::doResume(const char * filename,const char * port,quint64 f
 		// hmm.. try to accept a mismatched port request
 
 		if(_OUTPUT_VERBOSE)
-			outputAndLog(KVI_OUT_DCCMSG,__tr2qs_ctx("Processing RESUME request with mismatched port (%1)","dcc").arg(port));
+			outputAndLog(KVI_OUT_DCCMSG, __tr2qs_ctx("Processing RESUME request with mismatched port (%1)", "dcc").arg(port));
 	}
 
 	// port matches
@@ -2260,16 +2419,15 @@ bool DccFileTransfer::doResume(const char * filename,const char * port,quint64 f
 		{
 			if(_OUTPUT_VERBOSE)
 				outputAndLog(
-						KVI_OUT_DCCMSG,
-						__tr2qs_ctx("Invalid RESUME request: invalid file name (got '%1' but should be '%2')","dcc")
-								.arg(filename)
-								.arg(m_pDescriptor->szFileName)
-					);
+				    KVI_OUT_DCCMSG,
+				    __tr2qs_ctx("Invalid RESUME request: invalid file name (got '%1' but should be '%2')", "dcc")
+				        .arg(filename)
+				        .arg(m_pDescriptor->szFileName));
 			return false; // bad file name
 		}
 
 		if(_OUTPUT_VERBOSE)
-			outputAndLog(KVI_OUT_DCCMSG,__tr2qs_ctx("Processing RESUME request with broken filename (%1)","dcc").arg(filename));
+			outputAndLog(KVI_OUT_DCCMSG, __tr2qs_ctx("Processing RESUME request with broken filename (%1)", "dcc").arg(filename));
 	}
 
 	bool bOk;
@@ -2278,31 +2436,30 @@ bool DccFileTransfer::doResume(const char * filename,const char * port,quint64 f
 	if(!bOk)
 	{
 		// ops...internal error
-		outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("Internal error in RESUME request","dcc"));
+		outputAndLog(KVI_OUT_DCCERROR, __tr2qs_ctx("Internal error in RESUME request", "dcc"));
 		return false;
 	}
 
 	if(iLocalFileSize <= filePos)
 	{
-		outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("Invalid RESUME request: position %1 is larger than file size","dcc").arg(filePos));
+		outputAndLog(KVI_OUT_DCCERROR, __tr2qs_ctx("Invalid RESUME request: position %1 is larger than file size", "dcc").arg(filePos));
 		return false;
 	}
 
-	outputAndLog(KVI_OUT_DCCERROR,__tr2qs_ctx("Accepting RESUME request, transfer will begin at position %1","dcc").arg(filePos));
+	outputAndLog(KVI_OUT_DCCERROR, __tr2qs_ctx("Accepting RESUME request, transfer will begin at position %1", "dcc").arg(filePos));
 
 	m_pDescriptor->szFileSize.setNum(filePos);
 
 	KviCString szBuffy;
-	KviIrcServerParser::encodeCtcpParameter(filename,szBuffy);
+	KviIrcServerParser::encodeCtcpParameter(filename, szBuffy);
 
 	m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC ACCEPT %s %s %s%c",
-			m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-			0x01,
-			m_pDescriptor->console()->connection()->encodeText(szBuffy.ptr()).data(),
-			port,
-			m_pDescriptor->console()->connection()->encodeText(QString::number(filePos)).data(),
-			0x01
-		);
+	    m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+	    0x01,
+	    m_pDescriptor->console()->connection()->encodeText(szBuffy.ptr()).data(),
+	    port,
+	    m_pDescriptor->console()->connection()->encodeText(QString::number(filePos)).data(),
+	    0x01);
 
 	return true;
 }
@@ -2312,56 +2469,57 @@ DccThread * DccFileTransfer::getSlaveThread()
 	if(m_pDescriptor->bRecvFile)
 	{
 		return m_pSlaveRecvThread;
-	} else {
+	}
+	else
+	{
 		return m_pSlaveSendThread;
 	}
 }
 
-
-DccFileTransferBandwidthDialog::DccFileTransferBandwidthDialog(QWidget * pParent,DccFileTransfer * t)
-: QDialog(pParent)
+DccFileTransferBandwidthDialog::DccFileTransferBandwidthDialog(QWidget * pParent, DccFileTransfer * t)
+    : QDialog(pParent)
 {
 	QGridLayout * g = new QGridLayout(this);
 
 	m_pTransfer = t;
 	int iVal = m_pTransfer->bandwidthLimit();
 
-	QString szText = __tr2qs_ctx("Configure Bandwidth for DCC Transfer %1","dcc").arg(t->id());
+	QString szText = __tr2qs_ctx("Configure Bandwidth for DCC Transfer %1", "dcc").arg(t->id());
 	setWindowTitle(szText);
 
-	szText = t->isFileUpload() ? __tr2qs_ctx("Limit upload bandwidth to:","dcc") : __tr2qs_ctx("Limit download bandwidth to:","dcc");
+	szText = t->isFileUpload() ? __tr2qs_ctx("Limit upload bandwidth to:", "dcc") : __tr2qs_ctx("Limit download bandwidth to:", "dcc");
 
-	m_pEnableLimitCheck = new QCheckBox(szText,this);
-	g->addWidget(m_pEnableLimitCheck,0,0);
+	m_pEnableLimitCheck = new QCheckBox(szText, this);
+	g->addWidget(m_pEnableLimitCheck, 0, 0);
 
 	m_pEnableLimitCheck->setChecked((iVal >= 0) && (iVal < MAX_DCC_BANDWIDTH_LIMIT));
 
 	m_pLimitBox = new QSpinBox(this);
 	m_pLimitBox->setMinimum(0);
-	m_pLimitBox->setMaximum(MAX_DCC_BANDWIDTH_LIMIT-1);
+	m_pLimitBox->setMaximum(MAX_DCC_BANDWIDTH_LIMIT - 1);
 	m_pLimitBox->setSingleStep(1);
 
 	m_pLimitBox->setEnabled((iVal >= 0) && (iVal < MAX_DCC_BANDWIDTH_LIMIT));
-	connect(m_pEnableLimitCheck,SIGNAL(toggled(bool)),m_pLimitBox,SLOT(setEnabled(bool)));
-	g->addWidget(m_pLimitBox,0,1,1,2);
+	connect(m_pEnableLimitCheck, SIGNAL(toggled(bool)), m_pLimitBox, SLOT(setEnabled(bool)));
+	g->addWidget(m_pLimitBox, 0, 1, 1, 2);
 
 	szText = " ";
-	szText += __tr2qs_ctx("bytes/sec","dcc");
+	szText += __tr2qs_ctx("bytes/sec", "dcc");
 	m_pLimitBox->setSuffix(szText);
 	m_pLimitBox->setValue(iVal < MAX_DCC_BANDWIDTH_LIMIT ? iVal : 0);
 
-	QPushButton * pb = new QPushButton(__tr2qs_ctx("OK","dcc"),this);
-	connect(pb,SIGNAL(clicked()),this,SLOT(okClicked()));
+	QPushButton * pb = new QPushButton(__tr2qs_ctx("OK", "dcc"), this);
+	connect(pb, SIGNAL(clicked()), this, SLOT(okClicked()));
 	pb->setMinimumWidth(80);
-	g->addWidget(pb,2,2);
+	g->addWidget(pb, 2, 2);
 
-	pb = new QPushButton(__tr2qs_ctx("Cancel","dcc"),this);
-	connect(pb,SIGNAL(clicked()),this,SLOT(cancelClicked()));
+	pb = new QPushButton(__tr2qs_ctx("Cancel", "dcc"), this);
+	connect(pb, SIGNAL(clicked()), this, SLOT(cancelClicked()));
 	pb->setMinimumWidth(80);
-	g->addWidget(pb,2,1);
+	g->addWidget(pb, 2, 1);
 
-	g->setColumnStretch(0,1);
-	g->setRowStretch(1,1);
+	g->setColumnStretch(0, 1);
+	g->setRowStretch(1, 1);
 }
 
 DccFileTransferBandwidthDialog::~DccFileTransferBandwidthDialog()
@@ -2374,8 +2532,10 @@ void DccFileTransferBandwidthDialog::okClicked()
 	if(m_pEnableLimitCheck->isChecked())
 	{
 		iVal = m_pLimitBox->value();
-		if(iVal < 0)iVal = MAX_DCC_BANDWIDTH_LIMIT;
-		if(iVal > MAX_DCC_BANDWIDTH_LIMIT)iVal = MAX_DCC_BANDWIDTH_LIMIT;
+		if(iVal < 0)
+			iVal = MAX_DCC_BANDWIDTH_LIMIT;
+		if(iVal > MAX_DCC_BANDWIDTH_LIMIT)
+			iVal = MAX_DCC_BANDWIDTH_LIMIT;
 	}
 	m_pTransfer->setBandwidthLimit(iVal);
 	delete this;

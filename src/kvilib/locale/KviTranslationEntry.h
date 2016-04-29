@@ -49,10 +49,12 @@
 class KVILIB_API KviTranslationEntry : public KviHeapObject
 {
 	friend class KviMessageCatalogue;
+
 private:
-	KviCString   m_szKey;
-	KviCString   m_szEncodedTranslation;
-	QString    * m_pTranslation;
+	KviCString m_szKey;
+	KviCString m_szEncodedTranslation;
+	QString * m_pTranslation;
+
 public:
 	/**
 	* \brief Creates an instance of KviTranslationEntry

@@ -30,9 +30,8 @@
 
 extern KviPointerList<UserWindow> * g_pUserWindowList;
 
-
-UserWindow::UserWindow(const char * pcName, QString &szIcon, KviConsoleWindow * pConsole, int iCreationFlags)
-: KviWindow(KviWindow::UserWindow,pcName,pConsole)
+UserWindow::UserWindow(const char * pcName, QString & szIcon, KviConsoleWindow * pConsole, int iCreationFlags)
+    : KviWindow(KviWindow::UserWindow, pcName, pConsole)
 {
 	g_pUserWindowList->append(this);
 
@@ -41,10 +40,10 @@ UserWindow::UserWindow(const char * pcName, QString &szIcon, KviConsoleWindow * 
 	m_szPlainTextCaption = pcName;
 	fillSingleColorCaptionBuffers(m_szPlainTextCaption);
 
-	m_pIrcView = new KviIrcView(this,this);
+	m_pIrcView = new KviIrcView(this, this);
 
 	if(iCreationFlags & HasInput)
-		m_pInput = new KviInput(this,0);
+		m_pInput = new KviInput(this, 0);
 	else
 		m_pInput = 0;
 
@@ -61,9 +60,11 @@ UserWindow::~UserWindow()
 
 QPixmap * UserWindow::myIconPtr()
 {
-	QPixmap *pPix=g_pIconManager->getImage(m_szIcon);
-	if (!pPix) return g_pIconManager->getSmallIcon(0);
-	else return pPix;
+	QPixmap * pPix = g_pIconManager->getImage(m_szIcon);
+	if(!pPix)
+		return g_pIconManager->getSmallIcon(0);
+	else
+		return pPix;
 }
 
 void UserWindow::resizeEvent(QResizeEvent *)
@@ -71,10 +72,12 @@ void UserWindow::resizeEvent(QResizeEvent *)
 	if(m_pInput)
 	{
 		int hght = m_pInput->heightHint();
-		m_pIrcView->setGeometry(0,0,width(),height() - hght);
-		m_pInput->setGeometry(0,height() - hght,width(),hght);
-	} else {
-		m_pIrcView->setGeometry(0,0,width(),height());
+		m_pIrcView->setGeometry(0, 0, width(), height() - hght);
+		m_pInput->setGeometry(0, height() - hght, width(), hght);
+	}
+	else
+	{
+		m_pIrcView->setGeometry(0, 0, width(), height());
 	}
 }
 

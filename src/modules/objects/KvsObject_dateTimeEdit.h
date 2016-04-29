@@ -24,8 +24,6 @@
 //
 //=============================================================================
 
-
-
 #include "KvsObject_widget.h"
 #include "object_macros.h"
 
@@ -41,16 +39,16 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool date(KviKvsObjectFunctionCall *c);
-	bool setDate(KviKvsObjectFunctionCall *c);
-	bool time(KviKvsObjectFunctionCall *c);
-	bool setTime(KviKvsObjectFunctionCall *c);
+	bool date(KviKvsObjectFunctionCall * c);
+	bool setDate(KviKvsObjectFunctionCall * c);
+	bool time(KviKvsObjectFunctionCall * c);
+	bool setTime(KviKvsObjectFunctionCall * c);
 
-	bool timeChangedEvent(KviKvsObjectFunctionCall *c);
-	bool dateTimeChangedEvent(KviKvsObjectFunctionCall *c);
-	bool dateChangedEvent(KviKvsObjectFunctionCall *c);
+	bool timeChangedEvent(KviKvsObjectFunctionCall * c);
+	bool dateTimeChangedEvent(KviKvsObjectFunctionCall * c);
+	bool dateChangedEvent(KviKvsObjectFunctionCall * c);
 
 protected slots:
 	void slotDateTimeChanged(const QDateTime &);
@@ -58,4 +56,4 @@ protected slots:
 	void slotTimeChanged(const QTime &);
 };
 
-#endif	// !_CLASS_datetimeedit_H_
+#endif // !_CLASS_datetimeedit_H_

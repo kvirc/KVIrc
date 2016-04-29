@@ -28,33 +28,32 @@
 #include "KviWindow.h"
 #include "object_macros.h"
 
-
-
 class KviKvsScriptWindowWindow : public KviWindow
 {
 	Q_OBJECT
 public:
-	KviKvsScriptWindowWindow(const QString &szName);
+	KviKvsScriptWindowWindow(const QString & szName);
 	~KviKvsScriptWindowWindow();
+
 protected:
 	KvsObject_widget * m_pCentralWidgetObject;
 	QWidget * m_pCentralWidget;
 	QPixmap * m_pIcon;
+
 public:
 	virtual QPixmap * myIconPtr();
-	void setIcon(QPixmap *pPixmap){m_pIcon = pPixmap;};
-	void setCentralWidget(KvsObject_widget *o,QWidget * w);
-	void setWindowTitleString(const QString &s)
+	void setIcon(QPixmap * pPixmap) { m_pIcon = pPixmap; };
+	void setCentralWidget(KvsObject_widget * o, QWidget * w);
+	void setWindowTitleString(const QString & s)
 	{
 		setFixedCaption(s);
 		fillCaptionBuffers();
 	};
-	virtual void resizeEvent(QResizeEvent *e);
+	virtual void resizeEvent(QResizeEvent * e);
 protected slots:
 	void centralWidgetObjectDestroyed();
 	void centralWidgetDestroyed();
 };
-
 
 class KvsObject_window : public KvsObject_widget
 {
@@ -64,13 +63,11 @@ public:
 	QWidget * widget() { return (QWidget *)object(); };
 
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool setWindowTitle(KviKvsObjectFunctionCall *c);
-	bool setIcon(KviKvsObjectFunctionCall *c);
-	bool setCentralWidget(KviKvsObjectFunctionCall *c);
-
+	bool setWindowTitle(KviKvsObjectFunctionCall * c);
+	bool setIcon(KviKvsObjectFunctionCall * c);
+	bool setCentralWidget(KviKvsObjectFunctionCall * c);
 };
 
-
-#endif	// !_CLASS_WINDOW_H_
+#endif // !_CLASS_WINDOW_H_

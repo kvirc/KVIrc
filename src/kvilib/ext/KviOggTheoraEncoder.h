@@ -49,7 +49,6 @@ class KviDataBuffer;
 */
 #define YUV444_BPP 3
 
-
 /**
 * \class KviOggTheoraEncoder
 * \brief An ogg/theora+irct encoder class; accepts argb32 images and binary text, outputs an ogg stream
@@ -68,38 +67,39 @@ public:
 	* \param iParD aspect ratio: denominator
 	* \return KviOggTheoraEncoder
 	*/
-	KviOggTheoraEncoder(KviDataBuffer * stream, int iWidth=320, int iHeight=240, int iFpsN=5, int iFpsD=1, int iParN=4, int iParD=3);
+	KviOggTheoraEncoder(KviDataBuffer * stream, int iWidth = 320, int iHeight = 240, int iFpsN = 5, int iFpsD = 1, int iParN = 4, int iParD = 3);
 
 	/**
 	* \brief Destroys the KviOggTheoraEncoder object
 	*/
 	virtual ~KviOggTheoraEncoder();
+
 private:
-	KviOggTheoraGeometry   geometry;      /**< Stream geometry definition */
-	KviDataBuffer        * m_pStream;     /**< Stream pointer */
-	quint8               * videoYuv;      /**< Yuv encoded surface pointer */
+	KviOggTheoraGeometry geometry; /**< Stream geometry definition */
+	KviDataBuffer * m_pStream;     /**< Stream pointer */
+	quint8 * videoYuv;             /**< Yuv encoded surface pointer */
 
-	ogg_int64_t            text_sofar;    /**< Number of transmitted text frames */
+	ogg_int64_t text_sofar; /**< Number of transmitted text frames */
 
-	int                    frame_state;   /**< Internal flag used in video frame processing */
-	unsigned char        * yuvframe[3];   /**< Internal struct used in video frame processing */
+	int frame_state;             /**< Internal flag used in video frame processing */
+	unsigned char * yuvframe[3]; /**< Internal struct used in video frame processing */
 
-	size_t                 y4m_dst_buf_sz;        /**< The size of each converted frame buffer */
-	size_t                 y4m_dst_buf_read_sz;   /**< The amount to read directly into the converted frame buffer */
-	size_t                 y4m_aux_buf_sz;        /**< The size of the auxiliary buffer */
-	size_t                 y4m_aux_buf_read_sz;   /**< The amount to read into the auxiliary buffer */
+	size_t y4m_dst_buf_sz;      /**< The size of each converted frame buffer */
+	size_t y4m_dst_buf_read_sz; /**< The amount to read directly into the converted frame buffer */
+	size_t y4m_aux_buf_sz;      /**< The size of the auxiliary buffer */
+	size_t y4m_aux_buf_read_sz; /**< The amount to read into the auxiliary buffer */
 
-	ogg_stream_state       zo;   /**< Take physical pages, weld into a logical stream of irct packets */
-	ogg_stream_state       to;   /**< Take physical pages, weld into a logical stream of theora packets */
-	ogg_page               og;   /**< One Ogg bitstream page. Vorbis packets are inside */
-	ogg_packet             op;   /**< One raw packet of encoded data */
+	ogg_stream_state zo; /**< Take physical pages, weld into a logical stream of irct packets */
+	ogg_stream_state to; /**< Take physical pages, weld into a logical stream of theora packets */
+	ogg_page og;         /**< One Ogg bitstream page. Vorbis packets are inside */
+	ogg_packet op;       /**< One raw packet of encoded data */
 
-	th_enc_ctx           * td;   /**< Theora stream encoding struct */
-	th_info                ti;   /**< Theora stream info struct */
-	th_comment             tc;   /**< Theora stream comments struct */
+	th_enc_ctx * td; /**< Theora stream encoding struct */
+	th_info ti;      /**< Theora stream info struct */
+	th_comment tc;   /**< Theora stream comments struct */
 
-	int                    textflag;    /**< Internal flag used in text frame processing */
-	int                    videoflag;   /**< Internal flag used in video frame processing */
+	int textflag;  /**< Internal flag used in text frame processing */
+	int videoflag; /**< Internal flag used in video frame processing */
 public:
 	/**
 	* \brief Appends a video frame to the stream
@@ -115,19 +115,20 @@ public:
 	* \param textSize size of the text buffer
 	* \return void
 	*/
-	void addTextFrame(unsigned char* textPkt, int textSize);
+	void addTextFrame(unsigned char * textPkt, int textSize);
+
 private:
 	/**
 	* \brief Internal function that processes a video frame to create an ogg page
 	* \return int
 	*/
-	int fetch_and_process_video(quint8 * videoYuv,ogg_page *videopage,ogg_stream_state *to,th_enc_ctx *td,int videoflag);
+	int fetch_and_process_video(quint8 * videoYuv, ogg_page * videopage, ogg_stream_state * to, th_enc_ctx * td, int videoflag);
 
 	/**
 	* \brief Internal function that processes a video frame to create an ogg packet
 	* \return int
 	*/
-	int fetch_and_process_video_packet(quint8 * videoYuv,th_enc_ctx *td,ogg_packet *op);
+	int fetch_and_process_video_packet(quint8 * videoYuv, th_enc_ctx * td, ogg_packet * op);
 
 	/**
 	* \brief Internal function used to calculate our granule shift

@@ -66,7 +66,6 @@ public:
 	* \return KviTalMainWindow
 	*/
 	~KviTalMainWindow();
-
 };
 
 #endif // _KVI_TAL_MAINWINDOW_H_

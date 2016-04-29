@@ -57,6 +57,7 @@ public:
 	* \brief Destroys the treenode alias simple command call object
 	*/
 	~KviKvsTreeNodeAliasSimpleCommand();
+
 public:
 	/**
 	* \brief Sets the buffer as Alias Simple Command

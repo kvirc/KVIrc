@@ -62,12 +62,14 @@ public:
 	* \brief Destroys the tab object
 	*/
 	~NotifierWindowTab();
+
 private:
-	QString       m_szLabel;
-	KviWindow   * m_pWnd;
-	QTabWidget  * m_pParent;
+	QString m_szLabel;
+	KviWindow * m_pWnd;
+	QTabWidget * m_pParent;
 	QVBoxLayout * m_pVBox;
-	QWidget     * m_pVWidget;
+	QWidget * m_pVWidget;
+
 public:
 	/**
 	* \brief Appends the given message to the window

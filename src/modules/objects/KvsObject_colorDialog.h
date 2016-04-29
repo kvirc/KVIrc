@@ -1,5 +1,5 @@
-#ifndef	_CLASS_COLORDIALOG_H_
-#define	_CLASS_COLORDIALOG_H_
+#ifndef _CLASS_COLORDIALOG_H_
+#define _CLASS_COLORDIALOG_H_
 
 //=============================================================================
 //
@@ -26,8 +26,6 @@
 //
 //=============================================================================
 
-
-
 #include "KvsObject_dialog.h"
 #include "object_macros.h"
 
@@ -39,14 +37,13 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); }
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-	bool setCurrentColor(KviKvsObjectFunctionCall *c);
-	bool currentColorChangedEvent(KviKvsObjectFunctionCall *c);
-	bool colorSelectedEvent(KviKvsObjectFunctionCall *c);
-	bool setOptions(KviKvsObjectFunctionCall *c);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool setCurrentColor(KviKvsObjectFunctionCall * c);
+	bool currentColorChangedEvent(KviKvsObjectFunctionCall * c);
+	bool colorSelectedEvent(KviKvsObjectFunctionCall * c);
+	bool setOptions(KviKvsObjectFunctionCall * c);
 protected slots:
-	void slotCurrentColorChanged(const QColor &col);
-	void slotColorSelected(const QColor &col);
-
+	void slotCurrentColorChanged(const QColor & col);
+	void slotColorSelected(const QColor & col);
 };
-#endif	// !_CLASS_COLORDIALOG_H_
+#endif // !_CLASS_COLORDIALOG_H_

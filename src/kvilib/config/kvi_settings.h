@@ -51,95 +51,94 @@
 // note: MINGW is a cmake-set variable
 #ifdef MINGW
 
-	/**
+/**
 	 * \def COMPILE_ON_MINGW This flag will enable specific code for windows/mingw (cross)compilation
 	 */
-	#define COMPILE_ON_MINGW
+#define COMPILE_ON_MINGW
 
-	#ifdef __KVILIB__
-		#define KVILIB_API __declspec(dllexport) __attribute__((visibility("default")))
-		#define KVILIB_API_TYPEDEF __declspec(dllexport)
-	#else
-		#define KVILIB_API __declspec(dllimport) __attribute__((visibility("default")))
-		#define KVILIB_API_TYPEDEF __declspec(dllimport)
-	#endif
+#ifdef __KVILIB__
+#define KVILIB_API __declspec(dllexport) __attribute__((visibility("default")))
+#define KVILIB_API_TYPEDEF __declspec(dllexport)
+#else
+#define KVILIB_API __declspec(dllimport) __attribute__((visibility("default")))
+#define KVILIB_API_TYPEDEF __declspec(dllimport)
+#endif
 
-	#ifdef __KVIRC__
-		#define KVIRC_API __declspec(dllexport) __attribute__((visibility("default")))
-		#define KVIRC_API_TYPEDEF __declspec(dllexport)
-	#else
-		#define KVIRC_API __declspec(dllimport) __attribute__((visibility("default")))
-		#define KVIRC_API_TYPEDEF __declspec(dllimport)
-	#endif
+#ifdef __KVIRC__
+#define KVIRC_API __declspec(dllexport) __attribute__((visibility("default")))
+#define KVIRC_API_TYPEDEF __declspec(dllexport)
+#else
+#define KVIRC_API __declspec(dllimport) __attribute__((visibility("default")))
+#define KVIRC_API_TYPEDEF __declspec(dllimport)
+#endif
 
 // note: unofficial cmake ports defines OS2
 #elif defined(OS2)
 
-	// os2 ports still uses mingw/gcc
-	#define COMPILE_ON_MINGW
+// os2 ports still uses mingw/gcc
+#define COMPILE_ON_MINGW
 
-	// visibility attribute is not supported by gcc/os2
-	#ifdef __KVILIB__
-		#define KVILIB_API __declspec(dllexport)
-		#define KVILIB_API_TYPEDEF __declspec(dllexport)
-	#else
-		#define KVILIB_API __declspec(dllimport)
-		#define KVILIB_API_TYPEDEF __declspec(dllimport)
-	#endif
+// visibility attribute is not supported by gcc/os2
+#ifdef __KVILIB__
+#define KVILIB_API __declspec(dllexport)
+#define KVILIB_API_TYPEDEF __declspec(dllexport)
+#else
+#define KVILIB_API __declspec(dllimport)
+#define KVILIB_API_TYPEDEF __declspec(dllimport)
+#endif
 
-	#ifdef __KVIRC__
-		#define KVIRC_API __declspec(dllexport)
-		#define KVIRC_API_TYPEDEF __declspec(dllexport)
-	#else
-		#define KVIRC_API __declspec(dllimport)
-		#define KVIRC_API_TYPEDEF __declspec(dllimport)
-	#endif
+#ifdef __KVIRC__
+#define KVIRC_API __declspec(dllexport)
+#define KVIRC_API_TYPEDEF __declspec(dllexport)
+#else
+#define KVIRC_API __declspec(dllimport)
+#define KVIRC_API_TYPEDEF __declspec(dllimport)
+#endif
 
 // note: cmake defines "WIN32" but we're not using it since it includes cygwin, too
 // we use qt's Q_OS_WIN32 instead (and its variants)
-#elif (defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_))
+#elif(defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_))
 
-	/**
+/**
 	 * \def COMPILE_ON_WINDOWS This flag will enable specific code for windows/visual studio compilation
 	 */
-	#define COMPILE_ON_WINDOWS
+#define COMPILE_ON_WINDOWS
 
-	#ifdef __KVILIB__
-		#define KVILIB_API __declspec(dllexport)
-		#define KVILIB_API_TYPEDEF __declspec(dllexport)
-	#else
-		#define KVILIB_API __declspec(dllimport)
-		#define KVILIB_API_TYPEDEF __declspec(dllimport)
-	#endif
+#ifdef __KVILIB__
+#define KVILIB_API __declspec(dllexport)
+#define KVILIB_API_TYPEDEF __declspec(dllexport)
+#else
+#define KVILIB_API __declspec(dllimport)
+#define KVILIB_API_TYPEDEF __declspec(dllimport)
+#endif
 
-	#ifdef __KVIRC__
-		#define KVIRC_API __declspec(dllexport)
-		#define KVIRC_API_TYPEDEF __declspec(dllexport)
-	#else
-		#define KVIRC_API __declspec(dllimport)
-		#define KVIRC_API_TYPEDEF __declspec(dllimport)
-	#endif
+#ifdef __KVIRC__
+#define KVIRC_API __declspec(dllexport)
+#define KVIRC_API_TYPEDEF __declspec(dllexport)
+#else
+#define KVIRC_API __declspec(dllimport)
+#define KVIRC_API_TYPEDEF __declspec(dllimport)
+#endif
 
 #else
-	// we failback on unix/linux variants
-	#define KVILIB_API __attribute__((visibility("default")))
-	#define KVILIB_API_TYPEDEF
+// we failback on unix/linux variants
+#define KVILIB_API __attribute__((visibility("default")))
+#define KVILIB_API_TYPEDEF
 
-	#define KVIRC_API __attribute__((visibility("default")))
-	#define KVIRC_API_TYPEDEF
+#define KVIRC_API __attribute__((visibility("default")))
+#define KVIRC_API_TYPEDEF
 
-	// note: cmake defines "APPLE" but we're not using it since it includes legacy mac os version (pre-X)
-	// we use qt's Q_OS_MACX instead
-	#ifdef Q_OS_MACX
-		/**
+// note: cmake defines "APPLE" but we're not using it since it includes legacy mac os version (pre-X)
+// we use qt's Q_OS_MACX instead
+#ifdef Q_OS_MACX
+/**
 		* \def COMPILE_ON_MAC This flag will enable specific code for mac compilation
 		*/
 
-		#define COMPILE_ON_MAC
-	#endif
-
+#define COMPILE_ON_MAC
 #endif
 
+#endif
 
 /**
 * \def KVI_VERSION Defines the current KVIrc version
@@ -154,45 +153,45 @@
 #define KVI_VERSION KVIRC_VERSION_RELEASE
 
 #ifndef KVIRC_VERSION_BRANCH
-	#define KVI_VERSION_BRANCH "VS_BRANCH"
+#define KVI_VERSION_BRANCH "VS_BRANCH"
 #else
-	#define KVI_VERSION_BRANCH KVIRC_VERSION_BRANCH
+#define KVI_VERSION_BRANCH KVIRC_VERSION_BRANCH
 #endif
 
 #define KVI_RELEASE_NAME KVIRC_VERSION_CODENAME
 
 // We want _GNU_SOURCE features
 #ifndef _GNU_SOURCE
-	#define _GNU_SOURCE
+#define _GNU_SOURCE
 #endif
 
 #if defined(__GNUC__)
-	// gcc
-	#if __GNUC__ >= 3
-		#define KVI_PTR2MEMBER(__x) &__x
-	#else
-		#define KVI_PTR2MEMBER(__x) &(__x)
-	#endif
-#elif defined(COMPILE_ON_WINDOWS)
-	// Visual C++
-	#define KVI_PTR2MEMBER(__x) &__x
-#elif defined(__SUNPRO_CC)
-	// Sun Forte
-	#define KVI_PTR2MEMBER(__x) (__x)
+// gcc
+#if __GNUC__ >= 3
+#define KVI_PTR2MEMBER(__x) &__x
 #else
-	// default
-	#define KVI_PTR2MEMBER(__x) &(__x)
+#define KVI_PTR2MEMBER(__x) &(__x)
+#endif
+#elif defined(COMPILE_ON_WINDOWS)
+// Visual C++
+#define KVI_PTR2MEMBER(__x) &__x
+#elif defined(__SUNPRO_CC)
+// Sun Forte
+#define KVI_PTR2MEMBER(__x) (__x)
+#else
+// default
+#define KVI_PTR2MEMBER(__x) &(__x)
 #endif
 
 #define KVI_DEPRECATED
 
 // Trust Qt about the current target processor endianness
 #if Q_BYTE_ORDER == Q_BIG_ENDIAN
-	#define BIG_ENDIAN_MACHINE_BYTE_ORDER
+#define BIG_ENDIAN_MACHINE_BYTE_ORDER
 #else
-	#ifdef BIG_ENDIAN_MACHINE_BYTE_ORDER
-		#undef BIG_ENDIAN_MACHINE_BYTE_ORDER
-	#endif
+#ifdef BIG_ENDIAN_MACHINE_BYTE_ORDER
+#undef BIG_ENDIAN_MACHINE_BYTE_ORDER
+#endif
 #endif
 
 #endif //_KVI_SETTINGS_H_

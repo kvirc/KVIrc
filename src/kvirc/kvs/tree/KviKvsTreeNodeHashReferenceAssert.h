@@ -36,18 +36,18 @@ class KviKvsObject;
 class KVIRC_API KviKvsTreeNodeHashReferenceAssert : public KviKvsTreeNodeIndirectData
 {
 public:
-	KviKvsTreeNodeHashReferenceAssert(const QChar * pLocation,KviKvsTreeNodeData * pSource);
+	KviKvsTreeNodeHashReferenceAssert(const QChar * pLocation, KviKvsTreeNodeData * pSource);
 	~KviKvsTreeNodeHashReferenceAssert();
-protected:
 
+protected:
 public:
 	virtual bool isReadOnly();
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
 	virtual KviKvsRWEvaluationResult * evaluateReadWrite(KviKvsRunTimeContext * c);
-	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
-	virtual KviKvsRWEvaluationResult * evaluateReadWriteInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c);
+	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
+	virtual KviKvsRWEvaluationResult * evaluateReadWriteInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c);
 };
 
 #endif //!_KVI_KVS_TREENODE_HASHREFERENCEASSERT_H_

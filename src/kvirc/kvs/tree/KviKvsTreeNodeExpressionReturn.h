@@ -32,12 +32,14 @@ class KviKvsTreeNodeExpression;
 class KVIRC_API KviKvsTreeNodeExpressionReturn : public KviKvsTreeNodeInstruction
 {
 public:
-	KviKvsTreeNodeExpressionReturn(const QChar * pLocation,KviKvsTreeNodeExpression * pExpression);
+	KviKvsTreeNodeExpressionReturn(const QChar * pLocation, KviKvsTreeNodeExpression * pExpression);
 	~KviKvsTreeNodeExpressionReturn();
+
 protected:
 	KviKvsTreeNodeExpression * m_pExpression;
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };

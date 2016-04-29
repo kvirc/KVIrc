@@ -22,14 +22,12 @@
 //
 //=============================================================================
 
-
-
 #include "KviKvsObjectFunctionHandler.h"
 
 KviKvsObjectFunctionHandler::KviKvsObjectFunctionHandler(unsigned int uFlags)
-: m_uFlags(uFlags)
+    : m_uFlags(uFlags)
 {
-	m_bClone=false;
+	m_bClone = false;
 }
 
 KviKvsObjectFunctionHandler::~KviKvsObjectFunctionHandler()
@@ -47,7 +45,7 @@ QString KviKvsObjectFunctionHandler::scriptHandlerCode()
 }
 QString KviKvsObjectFunctionHandler::reminder()
 {
-        return QString();
+	return QString();
 }
 void KviKvsObjectFunctionHandler::setReminder(const QString &)
 {

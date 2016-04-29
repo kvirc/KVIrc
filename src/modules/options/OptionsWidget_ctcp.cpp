@@ -28,53 +28,50 @@
 #include "KviLocale.h"
 #include "KviOptions.h"
 
-
 OptionsWidget_ctcp::OptionsWidget_ctcp(QWidget * parent)
-: KviOptionsWidget(parent)
+    : KviOptionsWidget(parent)
 {
 	setObjectName("ctcp_options_widget");
 
 	createLayout();
 
-	addLabel(0,0,0,0,__tr2qs_ctx("<p>The <b>Client-to-client protocol</b> (CTCP) " \
-		"is used to transmit special control messages over an IRC connection. " \
-		"These messages can request information from clients or negotiate file transfers." \
-		"</p>","options"));
+	addLabel(0, 0, 0, 0, __tr2qs_ctx("<p>The <b>Client-to-client protocol</b> (CTCP) "
+	                                 "is used to transmit special control messages over an IRC connection. "
+	                                 "These messages can request information from clients or negotiate file transfers."
+	                                 "</p>",
+	                         "options"));
 
-
-	KviTalGroupBox *gs = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("CTCP Replies","options"));
-	KviStringSelector * s = addStringSelector(gs, __tr2qs_ctx("Append to VERSION reply:","options"),KviOption_stringCtcpVersionPostfix);
+	KviTalGroupBox * gs = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("CTCP Replies", "options"));
+	KviStringSelector * s = addStringSelector(gs, __tr2qs_ctx("Append to VERSION reply:", "options"), KviOption_stringCtcpVersionPostfix);
 	s->setMinimumLabelWidth(200);
 
 	mergeTip(s,
-		__tr2qs_ctx("This text will be appended to the CTCP VERSION reply.<br>For example, you can place a script name here.","options"));
+	    __tr2qs_ctx("This text will be appended to the CTCP VERSION reply.<br>For example, you can place a script name here.", "options"));
 
-	s = addStringSelector(gs, __tr2qs_ctx("Append to SOURCE reply:","options"),KviOption_stringCtcpSourcePostfix);
+	s = addStringSelector(gs, __tr2qs_ctx("Append to SOURCE reply:", "options"), KviOption_stringCtcpSourcePostfix);
 	s->setMinimumLabelWidth(200);
 
 	mergeTip(s,
-		__tr2qs_ctx("This text will be appended to the CTCP SOURCE reply.<br>For example, you can place the source URL for a script here.","options"));
+	    __tr2qs_ctx("This text will be appended to the CTCP SOURCE reply.<br>For example, you can place the source URL for a script here.", "options"));
 
-//	s = addStringSelector(gs, __tr2qs_ctx("USERINFO reply:","options"),KviOption_stringCtcpUserinfoReply);
+	//	s = addStringSelector(gs, __tr2qs_ctx("USERINFO reply:","options"),KviOption_stringCtcpUserinfoReply);
 
-//	mergeTip(s,
-//		__tr2qs_ctx("This is the CTCP USERINFO reply.<br>It can contain some information about yourself.","options"));
+	//	mergeTip(s,
+	//		__tr2qs_ctx("This is the CTCP USERINFO reply.<br>It can contain some information about yourself.","options"));
 
-	s = addStringSelector(gs, __tr2qs_ctx("PAGE reply:","options"),KviOption_stringCtcpPageReply);
+	s = addStringSelector(gs, __tr2qs_ctx("PAGE reply:", "options"), KviOption_stringCtcpPageReply);
 	s->setMinimumLabelWidth(200);
 
 	mergeTip(s,
-		__tr2qs_ctx("This is the CTCP PAGE reply.<br>It should contain some sort of acknowledgment for CTCP PAGE messages.","options"));
+	    __tr2qs_ctx("This is the CTCP PAGE reply.<br>It should contain some sort of acknowledgment for CTCP PAGE messages.", "options"));
 
-	addBoolSelector(gs,__tr2qs_ctx("Show the CTCP replies in the active window","options"),KviOption_boolCtcpRepliesToActiveWindow);
+	addBoolSelector(gs, __tr2qs_ctx("Show the CTCP replies in the active window", "options"), KviOption_boolCtcpRepliesToActiveWindow);
 
-	addBoolSelector(gs,__tr2qs_ctx("Show dialog for CTCP page requests","options"),KviOption_boolShowDialogOnCtcpPage);
-	addBoolSelector(gs,__tr2qs_ctx("Show dialog for channel CTCP page requests","options"),KviOption_boolShowDialogOnChannelCtcpPage);
+	addBoolSelector(gs, __tr2qs_ctx("Show dialog for CTCP page requests", "options"), KviOption_boolShowDialogOnCtcpPage);
+	addBoolSelector(gs, __tr2qs_ctx("Show dialog for channel CTCP page requests", "options"), KviOption_boolShowDialogOnChannelCtcpPage);
 
-	addRowSpacer(0,3,0,3);
-
+	addRowSpacer(0, 3, 0, 3);
 }
-
 
 OptionsWidget_ctcp::~OptionsWidget_ctcp()
 {

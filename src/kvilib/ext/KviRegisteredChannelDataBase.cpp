@@ -27,7 +27,7 @@
 
 KviRegisteredChannelDataBase::KviRegisteredChannelDataBase()
 {
-	m_pChannelDict = new QHash<QString,KviRegisteredChannelList *>();
+	m_pChannelDict = new QHash<QString, KviRegisteredChannelList *>();
 }
 
 KviRegisteredChannelDataBase::~KviRegisteredChannelDataBase()
@@ -36,9 +36,9 @@ KviRegisteredChannelDataBase::~KviRegisteredChannelDataBase()
 	delete m_pChannelDict;
 }
 
-void KviRegisteredChannelDataBase::load(const QString &filename)
+void KviRegisteredChannelDataBase::load(const QString & filename)
 {
-	KviConfigurationFile cfg(filename,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(filename, KviConfigurationFile::Read);
 
 	qDeleteAll(*m_pChannelDict);
 	m_pChannelDict->clear();
@@ -48,71 +48,71 @@ void KviRegisteredChannelDataBase::load(const QString &filename)
 	while(KviConfigurationFileGroup * d = it.current())
 	{
 		QString szMask = it.currentKey();
-		QString szChan = KviQString::leftToLast(szMask,QChar('@'),false);
-		KviQString::cutToLast(szMask,QChar('@'),true);
-		KviRegisteredChannel * c = new KviRegisteredChannel(szChan,szMask);
+		QString szChan = KviQString::leftToLast(szMask, QChar('@'), false);
+		KviQString::cutToLast(szMask, QChar('@'), true);
+		KviRegisteredChannel * c = new KviRegisteredChannel(szChan, szMask);
 		add(c);
 		KviConfigurationFileGroupIterator sit(*d);
 		while(QString * s = sit.current())
 		{
-			c->setProperty(sit.currentKey(),*s);
+			c->setProperty(sit.currentKey(), *s);
 			++sit;
 		}
 		++it;
 	}
 }
 
-void KviRegisteredChannelDataBase::save(const QString &filename)
+void KviRegisteredChannelDataBase::save(const QString & filename)
 {
-	KviConfigurationFile cfg(filename,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(filename, KviConfigurationFile::Write);
 	cfg.clear();
 	cfg.preserveEmptyGroups(true);
 
-	for(QHash<QString,KviRegisteredChannelList *>::Iterator it = m_pChannelDict->begin();it != m_pChannelDict->end();++it)
+	for(QHash<QString, KviRegisteredChannelList *>::Iterator it = m_pChannelDict->begin(); it != m_pChannelDict->end(); ++it)
 	{
 		KviRegisteredChannelList * l = it.value();
 		KVI_ASSERT(l);
 
-		for(KviRegisteredChannel * c = l->first();c;c = l->next())
+		for(KviRegisteredChannel * c = l->first(); c; c = l->next())
 		{
-			QString szGroup = QString::fromUtf8("%1@%2").arg(c->name(),c->netMask());
+			QString szGroup = QString::fromUtf8("%1@%2").arg(c->name(), c->netMask());
 			cfg.setGroup(szGroup);
 
-			QHash<QString,QString> * pPropertyDict = c->propertyDict();
+			QHash<QString, QString> * pPropertyDict = c->propertyDict();
 			KVI_ASSERT(pPropertyDict);
 
-			for(QHash<QString,QString>::Iterator it2 = pPropertyDict->begin();it2 != pPropertyDict->end();++it2)
-				cfg.writeEntry(it2.key(),it2.value());
+			for(QHash<QString, QString>::Iterator it2 = pPropertyDict->begin(); it2 != pPropertyDict->end(); ++it2)
+				cfg.writeEntry(it2.key(), it2.value());
 		}
 	}
 }
 
-KviRegisteredChannel * KviRegisteredChannelDataBase::find(const QString &name,const QString &net)
+KviRegisteredChannel * KviRegisteredChannelDataBase::find(const QString & name, const QString & net)
 {
 	KviRegisteredChannelList * l = m_pChannelDict->value(name);
 
 	if(!l)
 		return 0;
 
-	for(KviRegisteredChannel * c = l->first();c;c = l->next())
+	for(KviRegisteredChannel * c = l->first(); c; c = l->next())
 	{
-		if(KviQString::matchWildExpressions(c->netMask(),net))
+		if(KviQString::matchWildExpressions(c->netMask(), net))
 			return c;
 	}
 
 	return 0;
 }
 
-KviRegisteredChannel * KviRegisteredChannelDataBase::findExact(const QString &name,const QString &netmask)
+KviRegisteredChannel * KviRegisteredChannelDataBase::findExact(const QString & name, const QString & netmask)
 {
 	KviRegisteredChannelList * l = m_pChannelDict->value(name);
 
 	if(!l)
 		return 0;
 
-	for(KviRegisteredChannel * c = l->first();c;c = l->next())
+	for(KviRegisteredChannel * c = l->first(); c; c = l->next())
 	{
-		if(KviQString::equalCI(c->netMask(),netmask))
+		if(KviQString::equalCI(c->netMask(), netmask))
 			return c;
 	}
 
@@ -123,8 +123,9 @@ void KviRegisteredChannelDataBase::remove(KviRegisteredChannel * c)
 {
 	KVI_TRACE_FUNCTION;
 	KviRegisteredChannelList * l = m_pChannelDict->value(c->name());
-	if(!l)return;
-	for(KviRegisteredChannel * ch = l->first();ch;ch = l->next())
+	if(!l)
+		return;
+	for(KviRegisteredChannel * ch = l->first(); ch; ch = l->next())
 	{
 		if(ch == c)
 		{
@@ -132,7 +133,9 @@ void KviRegisteredChannelDataBase::remove(KviRegisteredChannel * c)
 			{
 				m_pChannelDict->remove(c->name());
 				delete l; // will kill the channel too
-			} else {
+			}
+			else
+			{
 				l->removeRef(c);
 			}
 			return;
@@ -140,21 +143,20 @@ void KviRegisteredChannelDataBase::remove(KviRegisteredChannel * c)
 	}
 }
 
-
 void KviRegisteredChannelDataBase::add(KviRegisteredChannel * c)
 {
-	KviRegisteredChannel * old = findExact(c->name(),c->netMask());
+	KviRegisteredChannel * old = findExact(c->name(), c->netMask());
 
 	if(old)
 	{
 		// merge properties
-		QHash<QString,QString> * pPropertyDict = old->propertyDict();
+		QHash<QString, QString> * pPropertyDict = old->propertyDict();
 		KVI_ASSERT(pPropertyDict);
 
-		for(QHash<QString,QString>::Iterator it = pPropertyDict->begin();it != pPropertyDict->end();++it)
+		for(QHash<QString, QString>::Iterator it = pPropertyDict->begin(); it != pPropertyDict->end(); ++it)
 		{
 			if(!c->property(it.key()).isEmpty())
-				c->setProperty(it.key(),it.value());
+				c->setProperty(it.key(), it.value());
 		}
 
 		remove(old);
@@ -165,19 +167,19 @@ void KviRegisteredChannelDataBase::add(KviRegisteredChannel * c)
 	{
 		l = new KviRegisteredChannelList();
 		l->setAutoDelete(true);
-		m_pChannelDict->insert(c->name(),l);
+		m_pChannelDict->insert(c->name(), l);
 	}
 
 	// insert where there are less wildcards
 	int o = c->netMask().count(QChar('*'));
 
 	int idx = 0;
-	for(KviRegisteredChannel * rc = l->first();rc;rc = l->next())
+	for(KviRegisteredChannel * rc = l->first(); rc; rc = l->next())
 	{
 		if(rc->netMask().count(QChar('*')) > o)
 		{
 			// the existing has more wildcards, insert here!
-			l->insert(idx,c);
+			l->insert(idx, c);
 			return;
 		}
 		idx++;

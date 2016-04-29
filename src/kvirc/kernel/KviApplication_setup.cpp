@@ -35,15 +35,15 @@
 #include "KviConfigurationFile.h"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#include <shlwapi.h>
+#include <shlwapi.h>
 #else
-	#include <stdlib.h> // for getenv()
-	#include <unistd.h> // for symlink() <-- unused?
+#include <stdlib.h> // for getenv()
+#include <unistd.h> // for symlink() <-- unused?
 
-	#ifdef COMPILE_KDE_SUPPORT
-		#include <kconfig.h>
-		#include <KConfigGroup>
-	#endif
+#ifdef COMPILE_KDE_SUPPORT
+#include <kconfig.h>
+#include <KConfigGroup>
+#endif
 #endif
 
 #include <QTextCodec>
@@ -65,12 +65,12 @@ bool KviApplication::checkGlobalKvircDirectory(const QString szDir)
 {
 	//First check if the help subdir exists
 	QString szHelpDir = szDir;
-	szHelpDir += KVI_PATH_SEPARATOR"help";
+	szHelpDir += KVI_PATH_SEPARATOR "help";
 	if(!KviFileUtils::directoryExists(szHelpDir))
 		return false;
 	//Then check if the pics subdir exists
 	QString szPicsDir = szDir;
-	szPicsDir += KVI_PATH_SEPARATOR"pics";
+	szPicsDir += KVI_PATH_SEPARATOR "pics";
 	if(!KviFileUtils::directoryExists(szPicsDir))
 		return false;
 	//Now make sure that it is the dir that we're looking for.
@@ -80,7 +80,7 @@ bool KviApplication::checkGlobalKvircDirectory(const QString szDir)
 	return KviFileUtils::isReadable(szPicsDir);
 }
 
-bool KviApplication::checkLocalKvircDirectory(const QString &szSpecificPath)
+bool KviApplication::checkLocalKvircDirectory(const QString & szSpecificPath)
 {
 	QString szSavedLocalKvircDir = m_szLocalKvircDir;
 	m_szLocalKvircDir = szSpecificPath;
@@ -98,7 +98,7 @@ bool KviApplication::checkLocalKvircDirectory()
 		return false;
 
 	QString szBuff;
-	getLocalKvircDirectory(szBuff,Config);
+	getLocalKvircDirectory(szBuff, Config);
 	if(!KviFileUtils::directoryExists(szBuff))
 		return false;
 
@@ -114,21 +114,23 @@ bool KviApplication::checkFileAssociations()
 	char * pcBuffer;
 	DWORD len = QUERY_BUFFER;
 	DWORD err;
-	pcBuffer = (char*)malloc(len*sizeof(char));
+	pcBuffer = (char *)malloc(len * sizeof(char));
 	HKEY hKey;
 
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,".kvs",0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, ".kvs", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
-	if((err=RegQueryValueEx(hKey,0,0,0,(LPBYTE)pcBuffer,&len)) != ERROR_SUCCESS)
+	if((err = RegQueryValueEx(hKey, 0, 0, 0, (LPBYTE)pcBuffer, &len)) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
-	} else {
-		if(!kvi_strEqualCIN("KVIrcScript",pcBuffer,11))
+	}
+	else
+	{
+		if(!kvi_strEqualCIN("KVIrcScript", pcBuffer, 11))
 		{
 			free(pcBuffer);
 			return false;
@@ -136,18 +138,20 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript",0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
-	if((err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)pcBuffer,&len)) != ERROR_SUCCESS)
+	if((err = RegQueryValueEx(hKey, 0, 0, 0, (LPBYTE)pcBuffer, &len)) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
-	} else {
-		if(!kvi_strEqualCI(__tr2qs("KVIrc KVS Script").toLocal8Bit().data(),pcBuffer))
+	}
+	else
+	{
+		if(!kvi_strEqualCI(__tr2qs("KVIrc KVS Script").toLocal8Bit().data(), pcBuffer))
 		{
 			free(pcBuffer);
 			return false;
@@ -155,20 +159,22 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\DefaultIcon",0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript\\DefaultIcon", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
-	if(RegQueryValueEx(hKey,0,0,0,(LPBYTE)pcBuffer,&len) != ERROR_SUCCESS)
+	if(RegQueryValueEx(hKey, 0, 0, 0, (LPBYTE)pcBuffer, &len) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
-	} else {
-		QString szIcon = applicationFilePath()+",1";
-		szIcon.replace('/',"\\");
-		if(!kvi_strEqualCI(szIcon.toLocal8Bit().data(),pcBuffer))
+	}
+	else
+	{
+		QString szIcon = applicationFilePath() + ",1";
+		szIcon.replace('/', "\\");
+		if(!kvi_strEqualCI(szIcon.toLocal8Bit().data(), pcBuffer))
 		{
 			free(pcBuffer);
 			return false;
@@ -176,18 +182,20 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse",0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript\\Shell\\Parse", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
-	if(RegQueryValueEx( hKey,0,0,0,(LPBYTE)pcBuffer,&len) != ERROR_SUCCESS)
+	if(RegQueryValueEx(hKey, 0, 0, 0, (LPBYTE)pcBuffer, &len) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
-	} else {
-		if(!kvi_strEqualCI(__tr2qs("Run KVS Script").toLocal8Bit().data(),pcBuffer))
+	}
+	else
+	{
+		if(!kvi_strEqualCI(__tr2qs("Run KVS Script").toLocal8Bit().data(), pcBuffer))
 		{
 			free(pcBuffer);
 			return false;
@@ -195,20 +203,22 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse\\command",0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript\\Shell\\Parse\\command", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
-	if(RegQueryValueEx( hKey,0,0,0,(LPBYTE)pcBuffer,&len) != ERROR_SUCCESS)
+	if(RegQueryValueEx(hKey, 0, 0, 0, (LPBYTE)pcBuffer, &len) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
-	} else {
-		QString szCmd = applicationFilePath()+" \"%1\"";
-		szCmd.replace('/',"\\");
-		if(!kvi_strEqualCI(szCmd.toLocal8Bit().data(),pcBuffer))
+	}
+	else
+	{
+		QString szCmd = applicationFilePath() + " \"%1\"";
+		szCmd.replace('/', "\\");
+		if(!kvi_strEqualCI(szCmd.toLocal8Bit().data(), pcBuffer))
 		{
 			free(pcBuffer);
 			return false;
@@ -216,18 +226,20 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	//Config
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,".kvc",0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, ".kvc", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
-	if( (err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)pcBuffer,&len)) != ERROR_SUCCESS)
+	if((err = RegQueryValueEx(hKey, 0, 0, 0, (LPBYTE)pcBuffer, &len)) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
-	} else {
-		if(!kvi_strEqualCIN("KVIrcConfig",pcBuffer,11))
+	}
+	else
+	{
+		if(!kvi_strEqualCIN("KVIrcConfig", pcBuffer, 11))
 		{
 			free(pcBuffer);
 			return false;
@@ -235,25 +247,27 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcConfig",0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcConfig", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
 	//Addon
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,".kva",0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, ".kva", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
-	if((err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)pcBuffer,&len)) != ERROR_SUCCESS)
+	if((err = RegQueryValueEx(hKey, 0, 0, 0, (LPBYTE)pcBuffer, &len)) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
-	} else {
-		if(!kvi_strEqualCIN("KVIrcAddon",pcBuffer,11))
+	}
+	else
+	{
+		if(!kvi_strEqualCIN("KVIrcAddon", pcBuffer, 11))
 		{
 			free(pcBuffer);
 			return false;
@@ -261,25 +275,27 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon",0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcAddon", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
 	//Theme
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,".kvt",0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, ".kvt", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
-	if((err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)pcBuffer,&len)) != ERROR_SUCCESS)
+	if((err = RegQueryValueEx(hKey, 0, 0, 0, (LPBYTE)pcBuffer, &len)) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
-	} else {
-		if(!kvi_strEqualCIN("KVIrcTheme",pcBuffer,11))
+	}
+	else
+	{
+		if(!kvi_strEqualCIN("KVIrcTheme", pcBuffer, 11))
 		{
 			free(pcBuffer);
 			return false;
@@ -287,7 +303,7 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme",0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcTheme", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -296,9 +312,7 @@ bool KviApplication::checkFileAssociations()
 	free(pcBuffer);
 #endif
 	return true;
-
 }
-
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 bool KviApplication::checkUriAssociations(const char * pcProto)
@@ -307,25 +321,27 @@ bool KviApplication::checkUriAssociations(const char * pcProto)
 	char * pcBuffer;
 	DWORD len = QUERY_BUFFER;
 	DWORD err;
-	pcBuffer = (char*)malloc(len*sizeof(char));
+	pcBuffer = (char *)malloc(len * sizeof(char));
 	HKEY hKey;
 
 	KviCString szStoredKey = pcProto;
 	KviCString szKey = szStoredKey;
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,szKey,0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, szKey, 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
-	if((err=RegQueryValueEx(hKey,0,0,0,(LPBYTE)pcBuffer,&len)) != ERROR_SUCCESS)
+	if((err = RegQueryValueEx(hKey, 0, 0, 0, (LPBYTE)pcBuffer, &len)) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
-	} else {
-		if(!kvi_strEqualCI(__tr2qs("URL:IRC Protocol").toLocal8Bit().data(),pcBuffer))
+	}
+	else
+	{
+		if(!kvi_strEqualCI(__tr2qs("URL:IRC Protocol").toLocal8Bit().data(), pcBuffer))
 		{
 			free(pcBuffer);
 			return false;
@@ -333,7 +349,7 @@ bool KviApplication::checkUriAssociations(const char * pcProto)
 	}
 
 	len = QUERY_BUFFER;
-	if((err=RegQueryValueEx(hKey,"URL Protocol",0,0,(LPBYTE)pcBuffer,&len)) != ERROR_SUCCESS)
+	if((err = RegQueryValueEx(hKey, "URL Protocol", 0, 0, (LPBYTE)pcBuffer, &len)) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -341,20 +357,22 @@ bool KviApplication::checkUriAssociations(const char * pcProto)
 
 	szKey = szStoredKey + "\\DefaultIcon";
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,szKey,0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, szKey, 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
-	if(RegQueryValueEx(hKey,0,0,0,(LPBYTE)pcBuffer,&len) != ERROR_SUCCESS)
+	if(RegQueryValueEx(hKey, 0, 0, 0, (LPBYTE)pcBuffer, &len) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
-	} else {
+	}
+	else
+	{
 		QString szIcon = applicationFilePath() + ",0";
-		szIcon.replace('/',"\\");
-		if(!kvi_strEqualCI(szIcon.toLocal8Bit().data(),pcBuffer))
+		szIcon.replace('/', "\\");
+		if(!kvi_strEqualCI(szIcon.toLocal8Bit().data(), pcBuffer))
 		{
 			free(pcBuffer);
 			return false;
@@ -363,18 +381,20 @@ bool KviApplication::checkUriAssociations(const char * pcProto)
 
 	len = QUERY_BUFFER;
 	szKey = szStoredKey + "\\Shell\\open";
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,szKey,0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, szKey, 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
-	if(RegQueryValueEx(hKey,0,0,0,(LPBYTE)pcBuffer,&len) != ERROR_SUCCESS)
+	if(RegQueryValueEx(hKey, 0, 0, 0, (LPBYTE)pcBuffer, &len) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
-	} else {
-		if(!kvi_strEqualCI(__tr2qs("Open with KVIrc").toLocal8Bit().data(),pcBuffer))
+	}
+	else
+	{
+		if(!kvi_strEqualCI(__tr2qs("Open with KVIrc").toLocal8Bit().data(), pcBuffer))
 		{
 			free(pcBuffer);
 			return false;
@@ -383,20 +403,22 @@ bool KviApplication::checkUriAssociations(const char * pcProto)
 
 	len = QUERY_BUFFER;
 	szKey = szStoredKey + "\\Shell\\open\\command";
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,szKey,0,KEY_READ,&hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, szKey, 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
-	if(RegQueryValueEx(hKey,0,0,0,(LPBYTE)pcBuffer,&len) != ERROR_SUCCESS)
+	if(RegQueryValueEx(hKey, 0, 0, 0, (LPBYTE)pcBuffer, &len) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
-	} else {
+	}
+	else
+	{
 		QString szCmd = applicationFilePath() + " \"%1\"";
-		szCmd.replace('/',"\\");
-		if(!kvi_strEqualCI(szCmd.toLocal8Bit().data(),pcBuffer))
+		szCmd.replace('/', "\\");
+		if(!kvi_strEqualCI(szCmd.toLocal8Bit().data(), pcBuffer))
 		{
 			free(pcBuffer);
 			return false;
@@ -411,7 +433,6 @@ bool KviApplication::checkUriAssociations(const char *)
 	return true;
 }
 
-
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 void KviApplication::setupUriAssociations(const char * pcProto)
 {
@@ -423,28 +444,28 @@ void KviApplication::setupUriAssociations(const char * pcProto)
 
 	QByteArray tmp;
 	QString szAppPath = applicationFilePath();
-	szAppPath.replace('/',"\\");
+	szAppPath.replace('/', "\\");
 
-	SHDeleteKey(HKEY_CLASSES_ROOT,szKey);
+	SHDeleteKey(HKEY_CLASSES_ROOT, szKey);
 
-	err = RegCreateKeyEx(HKEY_CLASSES_ROOT,szKey,0,0,0,KEY_WRITE,0,&hKey,0);
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)"URL:IRC Protocol",16);
-	RegSetValueEx(hKey,"URL Protocol",0,REG_SZ,(LPBYTE)"",0);
+	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, szKey, 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE) "URL:IRC Protocol", 16);
+	RegSetValueEx(hKey, "URL Protocol", 0, REG_SZ, (LPBYTE) "", 0);
 
 	szKey = szStoredKey + "\\DefaultIcon";
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,szKey,0,0,0,KEY_WRITE,0,&hKey,0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, szKey, 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + ",0").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
 	szKey = szStoredKey + "\\Shell\\open";
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,szKey,0,0,0,KEY_WRITE,0,&hKey,0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, szKey, 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("Open with KVIrc").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
 	szKey = szStoredKey + "\\Shell\\open\\command";
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,szKey,0,0,0,KEY_WRITE,0,&hKey,0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, szKey, 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + " --external \"%1\"").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 #else
 void KviApplication::setupUriAssociations(const char *)
 {
@@ -459,98 +480,98 @@ void KviApplication::setupFileAssociations()
 
 	QByteArray tmp;
 	QString szAppPath = applicationFilePath();
-	szAppPath.replace('/',"\\");
+	szAppPath.replace('/', "\\");
 
-	SHDeleteKey(HKEY_CLASSES_ROOT,".kvs");
+	SHDeleteKey(HKEY_CLASSES_ROOT, ".kvs");
 
-	err = RegCreateKeyEx(HKEY_CLASSES_ROOT,".kvs",0,0,0,KEY_WRITE,0,&hKey,0);
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)"KVIrcScript",11);
+	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, ".kvs", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE) "KVIrcScript", 11);
 
-	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcScript");
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript",0,0,0,KEY_WRITE,0,&hKey,0);
+	SHDeleteKey(HKEY_CLASSES_ROOT, "KVIrcScript");
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("KVIrc KVS Script").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\DefaultIcon",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript\\DefaultIcon", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + ",1").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript\\Shell\\Parse", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("Run KVS Script").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse\\command",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript\\Shell\\Parse\\command", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + " \"%1\"").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
 	//Configs
-	SHDeleteKey(HKEY_CLASSES_ROOT,".kvc");
+	SHDeleteKey(HKEY_CLASSES_ROOT, ".kvc");
 
-	err = RegCreateKeyEx(HKEY_CLASSES_ROOT,".kvc",0,0,0,KEY_WRITE,0,&hKey,0);
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)"KVIrcConfig",11);
+	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, ".kvc", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE) "KVIrcConfig", 11);
 
-	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcConfig");
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcConfig",0,0,0,KEY_WRITE,0,&hKey,0);
+	SHDeleteKey(HKEY_CLASSES_ROOT, "KVIrcConfig");
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcConfig", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("KVIrc Configuration File").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcConfig\\DefaultIcon",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcConfig\\DefaultIcon", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + ",2").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
 	// Themes
-	SHDeleteKey(HKEY_CLASSES_ROOT,".kvt");
+	SHDeleteKey(HKEY_CLASSES_ROOT, ".kvt");
 
-	err = RegCreateKeyEx(HKEY_CLASSES_ROOT,".kvt",0,0,0,KEY_WRITE,0,&hKey,0);
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)"KVIrcTheme",11);
+	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, ".kvt", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE) "KVIrcTheme", 11);
 
-	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcTheme");
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme",0,0,0,KEY_WRITE,0,&hKey,0);
+	SHDeleteKey(HKEY_CLASSES_ROOT, "KVIrcTheme");
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcTheme", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("KVIrc Theme Package").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme\\DefaultIcon",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcTheme\\DefaultIcon", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + ",3").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme\\Shell\\Install",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcTheme\\Shell\\Install", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("Install Theme Package").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme\\Shell\\Install\\command",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcTheme\\Shell\\Install\\command", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + " \"%1\"").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
 	//Addons
-	SHDeleteKey(HKEY_CLASSES_ROOT,".kva");
+	SHDeleteKey(HKEY_CLASSES_ROOT, ".kva");
 
-	err = RegCreateKeyEx(HKEY_CLASSES_ROOT,".kva",0,0,0,KEY_WRITE,0,&hKey,0);
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)"KVIrcAddon",11);
+	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, ".kva", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE) "KVIrcAddon", 11);
 
-	SHDeleteKey(HKEY_CLASSES_ROOT,"KVIrcAddon");
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon",0,0,0,KEY_WRITE,0,&hKey,0);
+	SHDeleteKey(HKEY_CLASSES_ROOT, "KVIrcAddon");
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcAddon", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("KVIrc Addon Package").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon\\DefaultIcon",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcAddon\\DefaultIcon", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + ",4").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon\\Shell\\Install",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcAddon\\Shell\\Install", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("Install Package").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon\\Shell\\Install\\command",0,0,0,KEY_WRITE,0,&hKey,0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcAddon\\Shell\\Install\\command", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + " \"%1\"").toLocal8Bit();
-	RegSetValueEx(hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
+	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
 #endif
 }
 
 void KviApplication::findGlobalKvircDirectory()
 {
-	// Look for the installation directory
-	// with the image and help files inside
+// Look for the installation directory
+// with the image and help files inside
 #ifdef GLOBAL_KVIRC_DIR
 	m_szGlobalKvircDir = GLOBAL_KVIRC_DIR;
 	KviFileUtils::adjustFilePath(m_szGlobalKvircDir);
@@ -565,61 +586,61 @@ void KviApplication::findGlobalKvircDirectory()
 	if(checkGlobalKvircDirectory(m_szGlobalKvircDir))
 		return;
 
-	KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"\
-		"I have tried %Q, but it seemed to fail\n" \
-		"Trying to run anyway...\n",&m_szGlobalKvircDir);
+	KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"
+	                       "I have tried %Q, but it seemed to fail\n"
+	                       "Trying to run anyway...\n",
+	    &m_szGlobalKvircDir);
 #else
 
-	// Check for MacOS X Bundle compilation
-	#ifdef COMPILE_ON_MAC
-		m_szGlobalKvircDir = applicationDirPath();
-		m_szGlobalKvircDir += "/../Resources/";
-	#else
-		m_szGlobalKvircDir = KVIRC_RESOURCES_DIR;
-	#endif //COMPILE_ON_MAC
+// Check for MacOS X Bundle compilation
+#ifdef COMPILE_ON_MAC
+	m_szGlobalKvircDir = applicationDirPath();
+	m_szGlobalKvircDir += "/../Resources/";
+#else
+	m_szGlobalKvircDir = KVIRC_RESOURCES_DIR;
+#endif //COMPILE_ON_MAC
 
 	if(checkGlobalKvircDirectory(m_szGlobalKvircDir))
 		return;
 
 	m_szGlobalKvircDir = "";
 
-	// DO NOT TRANSLATE THIS
-	// THE TRANSLATION DIRECTORY WAS NOT FOUND YET
-	// AND THE LOCALE IS NOT INITIALIZED AT ALL
+// DO NOT TRANSLATE THIS
+// THE TRANSLATION DIRECTORY WAS NOT FOUND YET
+// AND THE LOCALE IS NOT INITIALIZED AT ALL
 
-	#ifdef COMPILE_KDE_SUPPORT
-		KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"\
-			"The usual path for this directory is $KDEDIR/share/apps/kvirc.\n"\
-			"Are you sure that 'make install' worked correctly?\n"\
-			"Please make sure that you have the read permission to that directory\n"\
-			"and you have set KDEDIR correctly. You may also try to rerun 'make install'.\n"\
-			"A detailed explanation of the KVIrc directory system is in the INSTALL document\n"\
-			"shipped with the KVIrc source distribution.\n"\
-			"Trying to run anyway...");
-	#elif defined(COMPILE_ON_MAC)
-		KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"\
-			"The usual path for this directory is ./Contents/Resources/kvirc within your application bundle.\n"\
-			"Something went wrong during the bundle creation.\n"\
-			"Please read the documentation and make sure to set proper paths for --prefix, -bindir, -libdir and --datadir during the configure run.\n"\
-			"Trying to run anyway...\n");
-	#else //!defined(COMPILE_KDE_SUPPORT) && !defined(COMPILE_ON_MAC)
-		KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"\
-			"The usual path for this directory is /usr/local/share/kvirc.\n"\
-			"Are you sure that 'make install' worked correctly?\n"\
-			"Please make sure that you have the read permission to that directory.\n"\
-			"You may also need to rerun 'make install'.\n"\
-			"A detailed explanation of the KVIrc directory system is in the INSTALL document\n"\
-			"shipped with the KVIrc source distribution.\n"\
-			"Trying to run anyway...\n");
-	#endif //!COMPILE_ON_MAC
+#ifdef COMPILE_KDE_SUPPORT
+	KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"
+	                       "The usual path for this directory is $KDEDIR/share/apps/kvirc.\n"
+	                       "Are you sure that 'make install' worked correctly?\n"
+	                       "Please make sure that you have the read permission to that directory\n"
+	                       "and you have set KDEDIR correctly. You may also try to rerun 'make install'.\n"
+	                       "A detailed explanation of the KVIrc directory system is in the INSTALL document\n"
+	                       "shipped with the KVIrc source distribution.\n"
+	                       "Trying to run anyway...");
+#elif defined(COMPILE_ON_MAC)
+	KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"
+	                       "The usual path for this directory is ./Contents/Resources/kvirc within your application bundle.\n"
+	                       "Something went wrong during the bundle creation.\n"
+	                       "Please read the documentation and make sure to set proper paths for --prefix, -bindir, -libdir and --datadir during the configure run.\n"
+	                       "Trying to run anyway...\n");
+#else  //!defined(COMPILE_KDE_SUPPORT) && !defined(COMPILE_ON_MAC)
+	KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"
+	                       "The usual path for this directory is /usr/local/share/kvirc.\n"
+	                       "Are you sure that 'make install' worked correctly?\n"
+	                       "Please make sure that you have the read permission to that directory.\n"
+	                       "You may also need to rerun 'make install'.\n"
+	                       "A detailed explanation of the KVIrc directory system is in the INSTALL document\n"
+	                       "shipped with the KVIrc source distribution.\n"
+	                       "Trying to run anyway...\n");
+#endif //!COMPILE_ON_MAC
 #endif
 }
 
-
 bool KviApplication::findLocalKvircDirectory()
 {
-	// Here we check if we already did the setup
-	// and we have the kvirc local directory saved somewhere
+// Here we check if we already did the setup
+// and we have the kvirc local directory saved somewhere
 #ifdef COMPILE_KDE_SUPPORT
 	if(m_szConfigFile.isEmpty())
 	{
@@ -658,22 +679,26 @@ bool KviApplication::findLocalKvircDirectory()
 			szF = QDir::homePath();
 			szF += KVI_PATH_SEPARATOR;
 			szF += m_szConfigFile;
-		} else {
+		}
+		else
+		{
 			szF = szConfig;
 		}
-	} else {
+	}
+	else
+	{
 		szF = QDir::homePath();
 		szF += KVI_PATH_SEPARATOR;
 		szF += KVI_HOME_CONFIG_FILE_NAME;
 	}
 
 	//If the file exists, read the first non empty line.
-	KviConfigurationFile cfgx(szF,KviConfigurationFile::Read);
+	KviConfigurationFile cfgx(szF, KviConfigurationFile::Read);
 
 	cfgx.setGroup("Main");
-	m_szLocalKvircDir = cfgx.readEntry("LocalKvircDirectory","");
+	m_szLocalKvircDir = cfgx.readEntry("LocalKvircDirectory", "");
 
-	unsigned int uSourcesDate = cfgx.readUIntEntry("SourcesDate",0);
+	unsigned int uSourcesDate = cfgx.readUIntEntry("SourcesDate", 0);
 	if(uSourcesDate < KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP)
 		return false; // we force a setup anyway
 
@@ -695,20 +720,25 @@ void KviApplication::loadDirectories()
 	// Now look for the local (writable) one
 	m_bFirstTimeRun = !findLocalKvircDirectory();
 
-	KviLocale::init(this,szLocalePath, m_szLocalKvircDir);
-
+	KviLocale::init(this, szLocalePath, m_szLocalKvircDir);
 
 	if(m_bFirstTimeRun)
 		setupBegin();
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	if(m_bPortable) return;
+	if(m_bPortable)
+		return;
 #endif
-	if(!checkFileAssociations()) setupFileAssociations();
-	if(!checkUriAssociations("irc"))   setupUriAssociations("irc");
-	if(!checkUriAssociations("ircs"))  setupUriAssociations("ircs");
-	if(!checkUriAssociations("irc6"))  setupUriAssociations("irc6");
-	if(!checkUriAssociations("ircs6")) setupUriAssociations("ircs6");
+	if(!checkFileAssociations())
+		setupFileAssociations();
+	if(!checkUriAssociations("irc"))
+		setupUriAssociations("irc");
+	if(!checkUriAssociations("ircs"))
+		setupUriAssociations("ircs");
+	if(!checkUriAssociations("irc6"))
+		setupUriAssociations("irc6");
+	if(!checkUriAssociations("ircs6"))
+		setupUriAssociations("ircs6");
 }
 
 void KviApplication::setupBegin()
@@ -719,7 +749,7 @@ void KviApplication::setupBegin()
 #ifdef KVIRC_MODULES_DIR
 	szSetupLib = KVIRC_MODULES_DIR;
 #else
-	getGlobalKvircDirectory(szSetupLib,KviApplication::Modules);
+	getGlobalKvircDirectory(szSetupLib, KviApplication::Modules);
 #endif
 
 	KviQString::ensureLastCharIs(szSetupLib, KVI_PATH_SEPARATOR_CHAR);
@@ -734,28 +764,29 @@ void KviApplication::setupBegin()
 	g_pSetupLibrary = new QLibrary(szSetupLib);
 	if(!g_pSetupLibrary->load())
 	{
-		KviMessageBox::warning(__tr2qs("Oops! It looks like I can't load modules on this system.\n" \
-			"I have been looking for the %s library but I haven't been able to load it\n" \
-			"due to the following error: \"%s\"\nAborting."),szSetupLib.toUtf8().data(),g_pSetupLibrary->errorString().toUtf8().data());
+		KviMessageBox::warning(__tr2qs("Oops! It looks like I can't load modules on this system.\n"
+		                               "I have been looking for the %s library but I haven't been able to load it\n"
+		                               "due to the following error: \"%s\"\nAborting."),
+		    szSetupLib.toUtf8().data(), g_pSetupLibrary->errorString().toUtf8().data());
 #if defined(COMPILE_ON_WINDOWS)
 		ExitProcess(-1);
 #elif defined(COMPILE_ON_MINGW)
-                ExitProcess(1);
+		ExitProcess(1);
 #else
 		::exit(-1);
 #endif
 	}
 
-	bool (*sfunc)() = (bool(*)())g_pSetupLibrary->resolve("setup_begin");
+	bool (*sfunc)() = (bool (*)())g_pSetupLibrary->resolve("setup_begin");
 	if(!sfunc)
 	{
-		KviMessageBox::warning(__tr2qs("Oops! It looks like you have a broken distribution.\n" \
-			"The setup module does not export the \"setup_begin\" function.\n" \
-			"Aborting!"));
+		KviMessageBox::warning(__tr2qs("Oops! It looks like you have a broken distribution.\n"
+		                               "The setup module does not export the \"setup_begin\" function.\n"
+		                               "Aborting!"));
 #if defined(COMPILE_ON_WINDOWS)
 		ExitProcess(-1);
 #elif defined(COMPILE_ON_MINGW)
-                ExitProcess(1);
+		ExitProcess(1);
 #else
 		::exit(-1);
 #endif
@@ -768,7 +799,7 @@ void KviApplication::setupBegin()
 #if defined(COMPILE_ON_WINDOWS)
 		ExitProcess(-1);
 #elif defined(COMPILE_ON_MINGW)
-        ExitProcess(1);
+		ExitProcess(1);
 #else
 		::exit(-1);
 #endif
@@ -776,7 +807,7 @@ void KviApplication::setupBegin()
 
 	// Now save it
 	//Let it be done by setup function
-//	saveKvircDirectory();
+	//	saveKvircDirectory();
 }
 
 void KviApplication::setupFinish()
@@ -787,12 +818,12 @@ void KviApplication::setupFinish()
 		return;
 	}
 
-	void (*sfunc)() = (void(*)())g_pSetupLibrary->resolve("setup_finish");
+	void (*sfunc)() = (void (*)())g_pSetupLibrary->resolve("setup_finish");
 	if(!sfunc)
 	{
-		KviMessageBox::warning(__tr2qs("Oops! It looks like you have a broken distribution.\n" \
-			"The setup module does not export the \"setup_finish\" function.\n" \
-			"Trying to continue anyway..."));
+		KviMessageBox::warning(__tr2qs("Oops! It looks like you have a broken distribution.\n"
+		                               "The setup module does not export the \"setup_finish\" function.\n"
+		                               "Trying to continue anyway..."));
 	}
 
 	sfunc();
@@ -804,20 +835,20 @@ void KviApplication::setupFinish()
 
 void KviApplication::saveKvircDirectory()
 {
-	// Here we save the local directory path
+// Here we save the local directory path
 #ifdef COMPILE_KDE_SUPPORT
 	// In KDE we use the application config file
 	if(m_szConfigFile.isEmpty())
 	{
 		// not if user supplied a config file
 		KConfig * pCfg = new KConfig("kvirc");
-		KConfigGroup * pCfgMainGroup = new KConfigGroup(pCfg,"Main");
+		KConfigGroup * pCfgMainGroup = new KConfigGroup(pCfg, "Main");
 		if(pCfg)
 		{
 			if(pCfg->accessMode() == KConfig::ReadWrite)
 			{
-				pCfgMainGroup->writeEntry("LocalKvircDirectory",m_szLocalKvircDir);
-				pCfgMainGroup->writeEntry("SourcesDate",KVI_SOURCES_DATE_NUMERIC);
+				pCfgMainGroup->writeEntry("LocalKvircDirectory", m_szLocalKvircDir);
+				pCfgMainGroup->writeEntry("SourcesDate", KVI_SOURCES_DATE_NUMERIC);
 				pCfg->sync();
 				delete pCfgMainGroup;
 				pCfgMainGroup = 0;
@@ -836,18 +867,22 @@ void KviApplication::saveKvircDirectory()
 		{
 			szF += KVI_PATH_SEPARATOR;
 			szF += szConfig;
-		} else {
+		}
+		else
+		{
 			szF = szConfig;
 		}
-	} else {
+	}
+	else
+	{
 		szF += KVI_PATH_SEPARATOR;
 		szF += KVI_HOME_CONFIG_FILE_NAME;
 	}
 	//FIXME: LOCALE BROKEN!!!
 
-	KviConfigurationFile cfgx(szF,KviConfigurationFile::Write);
+	KviConfigurationFile cfgx(szF, KviConfigurationFile::Write);
 
 	cfgx.setGroup("Main");
-	cfgx.writeEntry("LocalKvircDirectory",m_szLocalKvircDir);
-	cfgx.writeEntry("SourcesDate",KVI_SOURCES_DATE_NUMERIC);
+	cfgx.writeEntry("LocalKvircDirectory", m_szLocalKvircDir);
+	cfgx.writeEntry("SourcesDate", KVI_SOURCES_DATE_NUMERIC);
 }

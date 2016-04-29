@@ -162,56 +162,53 @@
 		This signal is emitted by the default implementation of [classfnc]$readyReadStderrEvent[/classfnc]().
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_process,"process","object")
+KVSO_BEGIN_REGISTERCLASS(KvsObject_process, "process", "object")
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,addArgument);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,startProcess);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,readStdout);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,readStderr);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,writeToStdin);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,closekill);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,kill);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,tryTerminate);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,closeStdin);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,isRunning);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,normalExit);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process, addArgument);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process, startProcess);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process, readStdout);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process, readStderr);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process, writeToStdin);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process, closekill);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process, kill);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process, tryTerminate);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process, closeStdin);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process, isRunning);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process, normalExit);
 
-	// Events
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,readyReadStdoutEvent);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process,readyReadStderrEvent);
+// Events
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process, readyReadStdoutEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_process, readyReadStderrEvent);
 
-  KVSO_END_REGISTERCLASS(KvsObject_process)
+KVSO_END_REGISTERCLASS(KvsObject_process)
 
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_process, KviKvsObject)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_process,KviKvsObject)
-
-	m_pProcess = new QProcess();
-	connect(m_pProcess,SIGNAL(readyReadStandardOutput()),this,SLOT(slotReadStdout()));
-	connect(m_pProcess,SIGNAL(readyReadStandardError()),this,SLOT(slotReadStderr()));
+m_pProcess = new QProcess();
+connect(m_pProcess, SIGNAL(readyReadStandardOutput()), this, SLOT(slotReadStdout()));
+connect(m_pProcess, SIGNAL(readyReadStandardError()), this, SLOT(slotReadStderr()));
 
 KVSO_END_CONSTRUCTOR(KvsObject_process)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_process)
 
-	delete m_pProcess;
+delete m_pProcess;
 
 KVSO_END_CONSTRUCTOR(KvsObject_process)
 
-
-
-KVSO_CLASS_FUNCTION(process,addArgument)
+KVSO_CLASS_FUNCTION(process, addArgument)
 {
 
 	QString szArgument;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("argument",KVS_PT_NONEMPTYSTRING,0,szArgument)
+	KVSO_PARAMETER("argument", KVS_PT_NONEMPTYSTRING, 0, szArgument)
 	KVSO_PARAMETERS_END(c)
 	m_szArgs.append(szArgument);
 	return true;
 }
 
 //->Start the process.
-KVSO_CLASS_FUNCTION(process,startProcess)
+KVSO_CLASS_FUNCTION(process, startProcess)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
 	QString szcmd;
@@ -219,14 +216,14 @@ KVSO_CLASS_FUNCTION(process,startProcess)
 	szcmd = m_szArgs.takeFirst();
 	m_pProcess->start(szcmd, m_szArgs);
 
-	if(m_pProcess->state()==QProcess::NotRunning)
+	if(m_pProcess->state() == QProcess::NotRunning)
 	{
-		c->warning( __tr2qs_ctx("Process could not be started.","objects"));
+		c->warning(__tr2qs_ctx("Process could not be started.", "objects"));
 	}
 	return true;
 }
 //-->Read the standard output.
-KVSO_CLASS_FUNCTION(process,readStderr)
+KVSO_CLASS_FUNCTION(process, readStderr)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
 	QString ng_Process = m_pProcess->readAllStandardError();
@@ -235,87 +232,88 @@ KVSO_CLASS_FUNCTION(process,readStderr)
 }
 
 //-->Read the standard error.
-KVSO_CLASS_FUNCTION(process,readStdout)
+KVSO_CLASS_FUNCTION(process, readStdout)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	QString ng_Process =m_pProcess->readAllStandardOutput();
+	QString ng_Process = m_pProcess->readAllStandardOutput();
 	c->returnValue()->setString(ng_Process);
 	return true;
 }
 //-->Signals and slot to manage reading output and error from the process.
-KVSO_CLASS_FUNCTION(process,readyReadStdoutEvent)
+KVSO_CLASS_FUNCTION(process, readyReadStdoutEvent)
 {
-	emitSignal("readyReadStdout",c);
+	emitSignal("readyReadStdout", c);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(process,readyReadStderrEvent)
+KVSO_CLASS_FUNCTION(process, readyReadStderrEvent)
 {
-	emitSignal("readyReadStderr",c);
+	emitSignal("readyReadStderr", c);
 	return true;
 }
-KVSO_CLASS_FUNCTION(process,writeToStdin)
+KVSO_CLASS_FUNCTION(process, writeToStdin)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
 	QString szCommand;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("command",KVS_PT_STRING,0,szCommand)
+	KVSO_PARAMETER("command", KVS_PT_STRING, 0, szCommand)
 	KVSO_PARAMETERS_END(c)
-	if (m_pProcess) m_pProcess->write(szCommand.toUtf8().data());
+	if(m_pProcess)
+		m_pProcess->write(szCommand.toUtf8().data());
 	return true;
 }
 //-->The 3 Closing process functions
-KVSO_CLASS_FUNCTION(process,closekill)
+KVSO_CLASS_FUNCTION(process, closekill)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
 	//I try to  to terminate the process the nice way....
 	m_pProcess->terminate();
 	//If the process is still running after 5 seconds, I'll terminate the process in the hard way.
-	QTimer::singleShot( 5000, m_pProcess, SLOT( kill() ) );
+	QTimer::singleShot(5000, m_pProcess, SLOT(kill()));
 	return true;
 }
-KVSO_CLASS_FUNCTION(process,kill)
+KVSO_CLASS_FUNCTION(process, kill)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
 	m_pProcess->kill();
 	return true;
 }
-KVSO_CLASS_FUNCTION(process,tryTerminate)
+KVSO_CLASS_FUNCTION(process, tryTerminate)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
 	m_pProcess->terminate();
 	return true;
 }
 //-->Close the standard input.
-KVSO_CLASS_FUNCTION(process,closeStdin)
+KVSO_CLASS_FUNCTION(process, closeStdin)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
 	m_pProcess->closeReadChannel(QProcess::StandardOutput);
 	return true;
 }
 //->Returns if the process still runnig
-KVSO_CLASS_FUNCTION(process,isRunning)
+KVSO_CLASS_FUNCTION(process, isRunning)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	c->returnValue()->setBoolean(m_pProcess->state()==QProcess::Running);
+	c->returnValue()->setBoolean(m_pProcess->state() == QProcess::Running);
 	return true;
 }
 //->Returns if the process exited.
-KVSO_CLASS_FUNCTION(process,normalExit)
+KVSO_CLASS_FUNCTION(process, normalExit)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	c->returnValue()->setBoolean(m_pProcess->state()==QProcess::NotRunning && m_pProcess->exitStatus()==QProcess::NormalExit);
+	c->returnValue()->setBoolean(m_pProcess->state() == QProcess::NotRunning && m_pProcess->exitStatus() == QProcess::NormalExit);
 	return true;
 }
 
 void KvsObject_process::slotReadStdout()
 {
-	KviKvsVariantList *params=0;
-	callFunction(this,"readyReadStdoutEvent",params);
+	KviKvsVariantList * params = 0;
+	callFunction(this, "readyReadStdoutEvent", params);
 }
 
 void KvsObject_process::slotReadStderr()
 {
-	KviKvsVariantList *params=0;
-	callFunction(this,"readyReadStderrEvent",params);
+	KviKvsVariantList * params = 0;
+	callFunction(this, "readyReadStderrEvent", params);
 }

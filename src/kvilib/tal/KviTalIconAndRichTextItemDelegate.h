@@ -45,7 +45,6 @@
 
 #define LVI_MINIMUM_CELL_WIDTH (LVI_MINIMUM_TEXT_WIDTH + LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER)
 
-
 /**
 * \class KviTalIconAndRichTextItemDelegate
 * \brief Toolkit Abstraction Layer: itemdelegate class
@@ -64,17 +63,19 @@ public:
 	* \brief Destroys the icon and rich text item delegate object
 	*/
 	~KviTalIconAndRichTextItemDelegate();
+
 protected:
 	QAbstractItemView * m_pParent;
-	QPixmap             m_oDefaultPix;
-	QSize               m_oMinimumSize;
-	QSize               m_oIconSize;
+	QPixmap m_oDefaultPix;
+	QSize m_oMinimumSize;
+	QSize m_oIconSize;
+
 public:
 	/**
 	* \brief Set the absolute minimum size of the items. Should be set in the view constructor as
 	* QListWidget caches the size hints and works really hard to keep them unchanged.
 	*/
-	void setMinimumSize(const QSize &s)
+	void setMinimumSize(const QSize & s)
 	{
 		m_oMinimumSize = s;
 	}
@@ -82,7 +83,7 @@ public:
 	/**
 	* \brief Set the size of the icons. Should be set in the view constructor.
 	*/
-	void setIconSize(const QSize &s)
+	void setIconSize(const QSize & s)
 	{
 		m_oIconSize = s;
 	}
@@ -109,8 +110,8 @@ public:
 	* \param pPix The icon pixmap
 	* \return void
 	*/
-	void setDefaultIcon(QPixmap * pPix){ m_oDefaultPix = *pPix; };
-	void setDefaultIcon(const QPixmap &oPix){ m_oDefaultPix = oPix; };
+	void setDefaultIcon(QPixmap * pPix) { m_oDefaultPix = *pPix; };
+	void setDefaultIcon(const QPixmap & oPix) { m_oDefaultPix = oPix; };
 };
 
 #endif // _KVI_TAL_LISTWIDGET_H_

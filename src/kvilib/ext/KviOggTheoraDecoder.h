@@ -44,7 +44,6 @@
 
 class KviDataBuffer;
 
-
 /**
 * \class KviOggTheoraDecoder
 * \brief An ogg/theora+irct decoder class; accepts a proper ogg stream, outputs argb32 images and binary text
@@ -58,7 +57,7 @@ public:
 	* \param textSignal the output text stream object
 	* \return KviOggTheoraDecoder
 	*/
-	KviOggTheoraDecoder(KviDataBuffer * videoSignal,KviDataBuffer * textSignal);
+	KviOggTheoraDecoder(KviDataBuffer * videoSignal, KviDataBuffer * textSignal);
 
 	/**
 	* \brief Destroys the KviTheoraEncoder object
@@ -71,52 +70,53 @@ public:
 	* \return void
 	*/
 	void addData(KviDataBuffer * stream);
+
 private:
-	KviDataBuffer     * m_pVideoSignal;   /**< Output video stream pointer */
-	KviDataBuffer     * m_pTextSignal;    /**< Output text stream pointer */
-	KviOggTheoraGeometry   geometry;         /**< Stream geometry definition */
-	unsigned char     * RGBbuffer;        /**< RGB decoded surface pointer */
+	KviDataBuffer * m_pVideoSignal; /**< Output video stream pointer */
+	KviDataBuffer * m_pTextSignal;  /**< Output text stream pointer */
+	KviOggTheoraGeometry geometry;  /**< Stream geometry definition */
+	unsigned char * RGBbuffer;      /**< RGB decoded surface pointer */
 
 	// Ogg and codec state for demux/decode
-	ogg_sync_state      oy;
-	ogg_packet          op;   /**< One raw packet of encoded data */
-	ogg_page            og;   /**< One Ogg bitstream page. Vorbis packets are inside */
-	ogg_stream_state    to;   /**< Take physical pages, weld into a logical stream of theora packets */
-	ogg_stream_state    zo;   /**< Take physical pages, weld into a logical stream of irct packets */
+	ogg_sync_state oy;
+	ogg_packet op;       /**< One raw packet of encoded data */
+	ogg_page og;         /**< One Ogg bitstream page. Vorbis packets are inside */
+	ogg_stream_state to; /**< Take physical pages, weld into a logical stream of theora packets */
+	ogg_stream_state zo; /**< Take physical pages, weld into a logical stream of irct packets */
 
-	th_info             ti;       /**< Theora stream info struct */
-	th_comment          tc;       /**< Theora stream comments struct */
-	th_dec_ctx        * td;       /**< Theora stream decoding struct */
-	th_setup_info     * ts;       /**< Theora stream setup info struct */
-	th_pixel_fmt        px_fmt;   /**< Theora stream pixel format definition */
+	th_info ti;          /**< Theora stream info struct */
+	th_comment tc;       /**< Theora stream comments struct */
+	th_dec_ctx * td;     /**< Theora stream decoding struct */
+	th_setup_info * ts;  /**< Theora stream setup info struct */
+	th_pixel_fmt px_fmt; /**< Theora stream pixel format definition */
 
-	int                 theora_p;     /**< True if the ogg stream contains a theora stream */
-	int                 irct_p;       /**< True if the ogg stream contains an irct stream */
-	int                 stateflag;    /**< Internal flag used in stream processing */
+	int theora_p;  /**< True if the ogg stream contains a theora stream */
+	int irct_p;    /**< True if the ogg stream contains an irct stream */
+	int stateflag; /**< Internal flag used in stream processing */
 
-	int                 lu_Y[256];    /**< Surface used in yuv->rgb processing (Y) */
-	int                 lu_R[256];    /**< Surface used in yuv->rgb processing (R) */
-	int                 lu_GU[256];   /**< Surface used in yuv->rgb processing (GU) */
-	int                 lu_GV[256];   /**< Surface used in yuv->rgb processing (GV) */
-	int                 lu_B[256];    /**< Surface used in yuv->rgb processing (B) */
+	int lu_Y[256];  /**< Surface used in yuv->rgb processing (Y) */
+	int lu_R[256];  /**< Surface used in yuv->rgb processing (R) */
+	int lu_GU[256]; /**< Surface used in yuv->rgb processing (GU) */
+	int lu_GV[256]; /**< Surface used in yuv->rgb processing (GV) */
+	int lu_B[256];  /**< Surface used in yuv->rgb processing (B) */
 
 	// Single frame video buffering
-	int                 videobuf_ready;        /**< Single frame video buffering : ready state */
-	ogg_int64_t         videobuf_granulepos;   /**< Single frame video buffering : granule position */
-	double              videobuf_time;         /**< Single frame video buffering : duration */
+	int videobuf_ready;              /**< Single frame video buffering : ready state */
+	ogg_int64_t videobuf_granulepos; /**< Single frame video buffering : granule position */
+	double videobuf_time;            /**< Single frame video buffering : duration */
 
-	int                 pp_level_max;   /**< Theora postprocessing: max level */
-	int                 pp_level;       /**< Theora postprocessing: current level */
-	int                 pp_inc;         /**< Theora postprocessing: increment */
+	int pp_level_max; /**< Theora postprocessing: max level */
+	int pp_level;     /**< Theora postprocessing: current level */
+	int pp_inc;       /**< Theora postprocessing: increment */
 
-	bool                thda;    /**< Theora decode alloc state */
-	bool                thtic;   /**< Theora setup clear state */
+	bool thda;  /**< Theora decode alloc state */
+	bool thtic; /**< Theora setup clear state */
 private:
 	/**
 	* \brief Internal function that queues an ogg page to the codec decoders
 	* \return int
 	*/
-	int queue_page(ogg_page *page);
+	int queue_page(ogg_page * page);
 	/**
 	* \brief Internal function that takes a theora yuv buffer, transforms it and appends to the video stream
 	* \return int

@@ -59,8 +59,8 @@ public:
 	* \return KviKvsTreeNodeArrayElement
 	*/
 	~KviKvsTreeNodeArrayReferenceAssert();
-protected:
 
+protected:
 public:
 	/**
 	* \brief Returns true if the array reference is read-only

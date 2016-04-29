@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviIrcConnectionUserInfo.h"
 
 KviIrcConnectionUserInfo::KviIrcConnectionUserInfo()
@@ -31,23 +29,25 @@ KviIrcConnectionUserInfo::KviIrcConnectionUserInfo()
 	m_bAway = false;
 }
 
-bool KviIrcConnectionUserInfo::hasUserMode(const QChar &m)
+bool KviIrcConnectionUserInfo::hasUserMode(const QChar & m)
 {
 	return m_szUserMode.contains(m);
 }
 
-bool KviIrcConnectionUserInfo::addUserMode(const QChar &m)
+bool KviIrcConnectionUserInfo::addUserMode(const QChar & m)
 {
-	if(hasUserMode(m))return false;
+	if(hasUserMode(m))
+		return false;
 	m_szUserMode.append(m);
 	return true;
 }
 
-bool KviIrcConnectionUserInfo::removeUserMode(const QChar &m)
+bool KviIrcConnectionUserInfo::removeUserMode(const QChar & m)
 {
-	int idx = m_szUserMode.indexOf(m,0);
-	if(idx == -1)return false;
-	m_szUserMode.replace(m,QString(""));
+	int idx = m_szUserMode.indexOf(m, 0);
+	if(idx == -1)
+		return false;
+	m_szUserMode.replace(m, QString(""));
 	return true;
 }
 

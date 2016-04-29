@@ -64,237 +64,239 @@ class QHttpHeaderPrivate;
 class QHttpHeader
 {
 public:
-    QHttpHeader();
-    QHttpHeader(const QHttpHeader &header);
-    QHttpHeader(const QString &str);
-    virtual ~QHttpHeader();
+	QHttpHeader();
+	QHttpHeader(const QHttpHeader & header);
+	QHttpHeader(const QString & str);
+	virtual ~QHttpHeader();
 
-    QHttpHeader &operator=(const QHttpHeader &h);
+	QHttpHeader & operator=(const QHttpHeader & h);
 
-    void setValue(const QString &key, const QString &value);
-    void setValues(const QList<QPair<QString, QString> > &values);
-    void addValue(const QString &key, const QString &value);
-    QList<QPair<QString, QString> > values() const;
-    bool hasKey(const QString &key) const;
-    QStringList keys() const;
-    QString value(const QString &key) const;
-    QStringList allValues(const QString &key) const;
-    void removeValue(const QString &key);
-    void removeAllValues(const QString &key);
+	void setValue(const QString & key, const QString & value);
+	void setValues(const QList<QPair<QString, QString>> & values);
+	void addValue(const QString & key, const QString & value);
+	QList<QPair<QString, QString>> values() const;
+	bool hasKey(const QString & key) const;
+	QStringList keys() const;
+	QString value(const QString & key) const;
+	QStringList allValues(const QString & key) const;
+	void removeValue(const QString & key);
+	void removeAllValues(const QString & key);
 
-    // ### Qt 5: change to qint64
-    bool hasContentLength() const;
-    uint contentLength() const;
-    void setContentLength(int len);
+	// ### Qt 5: change to qint64
+	bool hasContentLength() const;
+	uint contentLength() const;
+	void setContentLength(int len);
 
-    bool hasContentType() const;
-    QString contentType() const;
-    void setContentType(const QString &type);
+	bool hasContentType() const;
+	QString contentType() const;
+	void setContentType(const QString & type);
 
-    virtual QString toString() const;
-    bool isValid() const;
+	virtual QString toString() const;
+	bool isValid() const;
 
-    virtual int majorVersion() const = 0;
-    virtual int minorVersion() const = 0;
+	virtual int majorVersion() const = 0;
+	virtual int minorVersion() const = 0;
 
 protected:
-    virtual bool parseLine(const QString &line, int number);
-    bool parse(const QString &str);
-    void setValid(bool);
+	virtual bool parseLine(const QString & line, int number);
+	bool parse(const QString & str);
+	void setValid(bool);
 
-    QHttpHeader(QHttpHeaderPrivate &dd, const QString &str = QString());
-    QHttpHeader(QHttpHeaderPrivate &dd, const QHttpHeader &header);
-    QScopedPointer<QHttpHeaderPrivate> d_ptr;
+	QHttpHeader(QHttpHeaderPrivate & dd, const QString & str = QString());
+	QHttpHeader(QHttpHeaderPrivate & dd, const QHttpHeader & header);
+	QScopedPointer<QHttpHeaderPrivate> d_ptr;
 
 private:
-    Q_DECLARE_PRIVATE(QHttpHeader)
+	Q_DECLARE_PRIVATE(QHttpHeader)
 };
 
 class QHttpResponseHeaderPrivate;
 class QHttpResponseHeader : public QHttpHeader
 {
 public:
-    QHttpResponseHeader();
-    QHttpResponseHeader(const QHttpResponseHeader &header);
-    QHttpResponseHeader(const QString &str);
-    QHttpResponseHeader(int code, const QString &text = QString(), int majorVer = 1, int minorVer = 1);
-    QHttpResponseHeader &operator=(const QHttpResponseHeader &header);
+	QHttpResponseHeader();
+	QHttpResponseHeader(const QHttpResponseHeader & header);
+	QHttpResponseHeader(const QString & str);
+	QHttpResponseHeader(int code, const QString & text = QString(), int majorVer = 1, int minorVer = 1);
+	QHttpResponseHeader & operator=(const QHttpResponseHeader & header);
 
-    void setStatusLine(int code, const QString &text = QString(), int majorVer = 1, int minorVer = 1);
+	void setStatusLine(int code, const QString & text = QString(), int majorVer = 1, int minorVer = 1);
 
-    int statusCode() const;
-    QString reasonPhrase() const;
+	int statusCode() const;
+	QString reasonPhrase() const;
 
-    int majorVersion() const;
-    int minorVersion() const;
+	int majorVersion() const;
+	int minorVersion() const;
 
-    QString toString() const;
+	QString toString() const;
 
 protected:
-    bool parseLine(const QString &line, int number);
+	bool parseLine(const QString & line, int number);
 
 private:
-    Q_DECLARE_PRIVATE(QHttpResponseHeader)
-    friend class QHttpPrivate;
+	Q_DECLARE_PRIVATE(QHttpResponseHeader)
+	friend class QHttpPrivate;
 };
 
 class QHttpRequestHeaderPrivate;
 class QHttpRequestHeader : public QHttpHeader
 {
 public:
-    QHttpRequestHeader();
-    QHttpRequestHeader(const QString &method, const QString &path, int majorVer = 1, int minorVer = 1);
-    QHttpRequestHeader(const QHttpRequestHeader &header);
-    QHttpRequestHeader(const QString &str);
-    QHttpRequestHeader &operator=(const QHttpRequestHeader &header);
+	QHttpRequestHeader();
+	QHttpRequestHeader(const QString & method, const QString & path, int majorVer = 1, int minorVer = 1);
+	QHttpRequestHeader(const QHttpRequestHeader & header);
+	QHttpRequestHeader(const QString & str);
+	QHttpRequestHeader & operator=(const QHttpRequestHeader & header);
 
-    void setRequest(const QString &method, const QString &path, int majorVer = 1, int minorVer = 1);
+	void setRequest(const QString & method, const QString & path, int majorVer = 1, int minorVer = 1);
 
-    QString method() const;
-    QString path() const;
+	QString method() const;
+	QString path() const;
 
-    int majorVersion() const;
-    int minorVersion() const;
+	int majorVersion() const;
+	int minorVersion() const;
 
-    QString toString() const;
+	QString toString() const;
 
 protected:
-    bool parseLine(const QString &line, int number);
+	bool parseLine(const QString & line, int number);
 
 private:
-    Q_DECLARE_PRIVATE(QHttpRequestHeader)
+	Q_DECLARE_PRIVATE(QHttpRequestHeader)
 };
 
 class QHttp : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    enum ConnectionMode {
-        ConnectionModeHttp,
-        ConnectionModeHttps
-    };
+	enum ConnectionMode
+	{
+		ConnectionModeHttp,
+		ConnectionModeHttps
+	};
 
-    explicit QHttp(QObject *parent = 0);
-    QHttp(const QString &hostname, quint16 port = 80, QObject *parent = 0);
-    QHttp(const QString &hostname, ConnectionMode mode, quint16 port = 0, QObject *parent = 0);
-    virtual ~QHttp();
+	explicit QHttp(QObject * parent = 0);
+	QHttp(const QString & hostname, quint16 port = 80, QObject * parent = 0);
+	QHttp(const QString & hostname, ConnectionMode mode, quint16 port = 0, QObject * parent = 0);
+	virtual ~QHttp();
 
-    enum State {
-        Unconnected,
-        HostLookup,
-        Connecting,
-        Sending,
-        Reading,
-        Connected,
-        Closing
-    };
-    enum Error {
-        NoError,
-        UnknownError,
-        HostNotFound,
-        ConnectionRefused,
-        UnexpectedClose,
-        InvalidResponseHeader,
-        WrongContentLength,
-        Aborted,
-        AuthenticationRequiredError,
-        ProxyAuthenticationRequiredError
-    };
+	enum State
+	{
+		Unconnected,
+		HostLookup,
+		Connecting,
+		Sending,
+		Reading,
+		Connected,
+		Closing
+	};
+	enum Error
+	{
+		NoError,
+		UnknownError,
+		HostNotFound,
+		ConnectionRefused,
+		UnexpectedClose,
+		InvalidResponseHeader,
+		WrongContentLength,
+		Aborted,
+		AuthenticationRequiredError,
+		ProxyAuthenticationRequiredError
+	};
 
-    int setHost(const QString &hostname, quint16 port = 80);
-    int setHost(const QString &hostname, ConnectionMode mode, quint16 port = 0);
+	int setHost(const QString & hostname, quint16 port = 80);
+	int setHost(const QString & hostname, ConnectionMode mode, quint16 port = 0);
 
-    int setSocket(QTcpSocket *socket);
-    int setUser(const QString &username, const QString &password = QString());
+	int setSocket(QTcpSocket * socket);
+	int setUser(const QString & username, const QString & password = QString());
 
 #ifndef QT_NO_NETWORKPROXY
-    int setProxy(const QString &host, int port,
-                 const QString &username = QString(),
-                 const QString &password = QString());
-    int setProxy(const QNetworkProxy &proxy);
+	int setProxy(const QString & host, int port,
+	    const QString & username = QString(),
+	    const QString & password = QString());
+	int setProxy(const QNetworkProxy & proxy);
 #endif
 
-    int get(const QString &path, QIODevice *to=0);
-    int post(const QString &path, QIODevice *data, QIODevice *to=0 );
-    int post(const QString &path, const QByteArray &data, QIODevice *to=0);
-    int head(const QString &path);
-    int request(const QHttpRequestHeader &header, QIODevice *device=0, QIODevice *to=0);
-    int request(const QHttpRequestHeader &header, const QByteArray &data, QIODevice *to=0);
+	int get(const QString & path, QIODevice * to = 0);
+	int post(const QString & path, QIODevice * data, QIODevice * to = 0);
+	int post(const QString & path, const QByteArray & data, QIODevice * to = 0);
+	int head(const QString & path);
+	int request(const QHttpRequestHeader & header, QIODevice * device = 0, QIODevice * to = 0);
+	int request(const QHttpRequestHeader & header, const QByteArray & data, QIODevice * to = 0);
 
-    int closeConnection();
-    int close();
+	int closeConnection();
+	int close();
 
-    qint64 bytesAvailable() const;
-    qint64 read(char *data, qint64 maxlen);
-    QByteArray readAll();
+	qint64 bytesAvailable() const;
+	qint64 read(char * data, qint64 maxlen);
+	QByteArray readAll();
 
-    int currentId() const;
-    QIODevice *currentSourceDevice() const;
-    QIODevice *currentDestinationDevice() const;
-    QHttpRequestHeader currentRequest() const;
-    QHttpResponseHeader lastResponse() const;
-    bool hasPendingRequests() const;
-    void clearPendingRequests();
+	int currentId() const;
+	QIODevice * currentSourceDevice() const;
+	QIODevice * currentDestinationDevice() const;
+	QHttpRequestHeader currentRequest() const;
+	QHttpResponseHeader lastResponse() const;
+	bool hasPendingRequests() const;
+	void clearPendingRequests();
 
-    State state() const;
+	State state() const;
 
-    Error error() const;
-    QString errorString() const;
+	Error error() const;
+	QString errorString() const;
 
 public Q_SLOTS:
-    void abort();
+	void abort();
 
 #ifndef QT_NO_OPENSSL
-    void ignoreSslErrors();
+	void ignoreSslErrors();
 #endif
 
-Q_SIGNALS:
-    void stateChanged(int);
-    void responseHeaderReceived(const QHttpResponseHeader &resp);
-    void readyRead(const QHttpResponseHeader &resp);
+	Q_SIGNALS : void stateChanged(int);
+	void responseHeaderReceived(const QHttpResponseHeader & resp);
+	void readyRead(const QHttpResponseHeader & resp);
 
-    // ### Qt 5: change to qint64
-    void dataSendProgress(int, int);
-    void dataReadProgress(int, int);
+	// ### Qt 5: change to qint64
+	void dataSendProgress(int, int);
+	void dataReadProgress(int, int);
 
-    void requestStarted(int);
-    void requestFinished(int, bool);
-    void done(bool);
+	void requestStarted(int);
+	void requestFinished(int, bool);
+	void done(bool);
 
 #ifndef QT_NO_NETWORKPROXY
-    void proxyAuthenticationRequired(const QNetworkProxy &proxy, QAuthenticator *);
+	void proxyAuthenticationRequired(const QNetworkProxy & proxy, QAuthenticator *);
 #endif
-    void authenticationRequired(const QString &hostname, quint16 port, QAuthenticator *);
+	void authenticationRequired(const QString & hostname, quint16 port, QAuthenticator *);
 
 #ifndef QT_NO_OPENSSL
-    void sslErrors(const QList<QSslError> &errors);
+	void sslErrors(const QList<QSslError> & errors);
 #endif
 
 private:
-    Q_DISABLE_COPY(QHttp)
-    QScopedPointer<QHttpPrivate> d;
+	Q_DISABLE_COPY(QHttp)
+	QScopedPointer<QHttpPrivate> d;
 
-    void _q_startNextRequest();
-    void _q_slotReadyRead();
-    void _q_slotConnected();
-    void _q_slotError(QAbstractSocket::SocketError e);
-    void _q_slotClosed();
-    void _q_slotBytesWritten(qint64 numBytes);
+	void _q_startNextRequest();
+	void _q_slotReadyRead();
+	void _q_slotConnected();
+	void _q_slotError(QAbstractSocket::SocketError e);
+	void _q_slotClosed();
+	void _q_slotBytesWritten(qint64 numBytes);
 #ifndef QT_NO_OPENSSL
-    void _q_slotEncryptedBytesWritten(qint64 numBytes);
+	void _q_slotEncryptedBytesWritten(qint64 numBytes);
 #endif
-    void _q_slotDoFinished();
-    void _q_slotSendRequest();
-    void _q_continuePost();
+	void _q_slotDoFinished();
+	void _q_slotSendRequest();
+	void _q_continuePost();
 
-    friend class QHttpNormalRequest;
-    friend class QHttpSetHostRequest;
-    friend class QHttpSetSocketRequest;
-    friend class QHttpSetUserRequest;
-    friend class QHttpSetProxyRequest;
-    friend class QHttpCloseRequest;
-    friend class QHttpPGHRequest;
+	friend class QHttpNormalRequest;
+	friend class QHttpSetHostRequest;
+	friend class QHttpSetSocketRequest;
+	friend class QHttpSetUserRequest;
+	friend class QHttpSetProxyRequest;
+	friend class QHttpCloseRequest;
+	friend class QHttpPGHRequest;
 };
 
 QT_END_HEADER

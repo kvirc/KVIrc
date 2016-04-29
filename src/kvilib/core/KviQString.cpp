@@ -28,7 +28,6 @@
 //
 //=============================================================================
 
-
 #include "KviQString.h"
 #include "KviCString.h"
 #include "KviMemory.h"
@@ -42,14 +41,14 @@
 extern unsigned char iso88591_toLower_map[256];
 extern unsigned char iso88591_toUpper_map[256];
 
-#define MY_MIN(a,b) (((a) < (b)) ? (a) : (b))
+#define MY_MIN(a, b) (((a) < (b)) ? (a) : (b))
 
 namespace KviQString
 {
 	// The global empty (and null) string
 	const QString Empty;
 
-	static char cHexDigits[16] = { '0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f' };
+	static char cHexDigits[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
 	bool equalCSN(const QString & sz1, const QString & sz2, unsigned int uLen)
 	{
@@ -60,7 +59,7 @@ namespace KviQString
 		}
 		const QChar * pC1 = sz1.unicode();
 		const QChar * pC2 = sz2.unicode();
-		unsigned int uLMin = MY_MIN(sz1.length(),sz2.length());
+		unsigned int uLMin = MY_MIN(sz1.length(), sz2.length());
 		if(uLMin < uLen)
 		{
 			return false;
@@ -93,7 +92,7 @@ namespace KviQString
 		}
 		const QChar * pC1 = sz1.unicode();
 		const QChar * pC2 = sz2.unicode();
-		unsigned int uLMin = MY_MIN(sz1.length(),sz2.length());
+		unsigned int uLMin = MY_MIN(sz1.length(), sz2.length());
 		if(uLMin < uLen)
 		{
 			return false;
@@ -228,31 +227,31 @@ namespace KviQString
 		double dSize = bytes;
 		if(dSize < 1024)
 		{
-			return QString(__tr2qs("%1 bytes")).arg(dSize,0,'f',0);
+			return QString(__tr2qs("%1 bytes")).arg(dSize, 0, 'f', 0);
 		}
 
 		dSize /= 1024;
 		if(dSize < 1024)
 		{
-			return QString(__tr2qs("%1 KiB")).arg(dSize,0,'f',3);
+			return QString(__tr2qs("%1 KiB")).arg(dSize, 0, 'f', 3);
 		}
 
 		dSize /= 1024;
 		if(dSize < 1024)
 		{
-			return QString(__tr2qs("%1 MiB")).arg(dSize,0,'f',3);
+			return QString(__tr2qs("%1 MiB")).arg(dSize, 0, 'f', 3);
 		}
 
 		//Pirated DVD?;)
 		dSize /= 1024;
 		if(dSize < 1024)
 		{
-			return QString(__tr2qs("%1 GiB")).arg(dSize,0,'f',3);
+			return QString(__tr2qs("%1 GiB")).arg(dSize, 0, 'f', 3);
 		}
 
 		//Uhm.. We are downloading a whole internet:)))
 		dSize /= 1024;
-		return QString(__tr2qs("%1 TiB")).arg(dSize,0,'f',3);
+		return QString(__tr2qs("%1 TiB")).arg(dSize, 0, 'f', 3);
 	}
 
 	bool equalCS(const QString & sz1, const QString & sz2)
@@ -410,7 +409,8 @@ namespace KviQString
 				if(pC1->isLetterOrNumber() && !pC2->isLetterOrNumber())
 				{
 					return -1;
-				} else if(!pC1->isLetterOrNumber() && pC2->isLetterOrNumber())
+				}
+				else if(!pC1->isLetterOrNumber() && pC2->isLetterOrNumber())
 				{
 					return 1;
 				}
@@ -420,7 +420,7 @@ namespace KviQString
 			{
 				if(pC2 < pC2e)
 				{
-					return /* 0 */ - (pC2->toLower().unicode());
+					return /* 0 */ -(pC2->toLower().unicode());
 				}
 				return 0;
 			}
@@ -451,8 +451,8 @@ namespace KviQString
 			// assume equal
 			return 0;
 		}
-		unsigned int u1 = MY_MIN(uLen,(unsigned)sz1.length());
-		unsigned int u2 = MY_MIN(u1,(unsigned)sz2.length()); // FIXME: THIS IS NOT OK
+		unsigned int u1 = MY_MIN(uLen, (unsigned)sz1.length());
+		unsigned int u2 = MY_MIN(u1, (unsigned)sz2.length()); // FIXME: THIS IS NOT OK
 
 		const QChar * pC1 = sz1.unicode();
 		const QChar * pC2 = sz2.unicode();
@@ -506,7 +506,9 @@ namespace KviQString
 		{
 			szRet = szSrc;
 			szSrc = "";
-		} else {
+		}
+		else
+		{
 			szRet = szSrc.left(i);
 			while(i < szSrc.length())
 			{
@@ -519,8 +521,10 @@ namespace KviQString
 			if(i == szSrc.length())
 			{
 				szSrc = "";
-			} else {
-				szSrc.remove(0,i);
+			}
+			else
+			{
+				szSrc.remove(0, i);
 			}
 		}
 		return szRet;
@@ -534,13 +538,15 @@ namespace KviQString
 			if(szSrc.at(szSrc.length() - (iRemove + 1)).isSpace())
 			{
 				iRemove++;
-			} else {
+			}
+			else
+			{
 				break;
 			}
 		}
 		if(iRemove > 0)
 		{
-			szSrc.remove(szSrc.length() - iRemove,iRemove);
+			szSrc.remove(szSrc.length() - iRemove, iRemove);
 		}
 	}
 
@@ -552,13 +558,15 @@ namespace KviQString
 			if(szSrc.at(szSrc.length() - (iRemove + 1)) == c)
 			{
 				iRemove++;
-			} else {
+			}
+			else
+			{
 				break;
 			}
 		}
 		if(iRemove > 0)
 		{
-			szSrc.remove(szSrc.length() - iRemove,iRemove);
+			szSrc.remove(szSrc.length() - iRemove, iRemove);
 		}
 	}
 
@@ -570,13 +578,15 @@ namespace KviQString
 			if(szSrc[iRemove] == c)
 			{
 				iRemove++;
-			} else {
+			}
+			else
+			{
 				break;
 			}
 		}
 		if(iRemove > 0)
 		{
-			szSrc.remove(0,iRemove);
+			szSrc.remove(0, iRemove);
 		}
 	}
 
@@ -588,7 +598,7 @@ namespace KviQString
 		cBuffer.setNum(dReal, 'f');
 #else
 		char cBuffer[512];
-		::sprintf(cBuffer,"%f",dReal);
+		::sprintf(cBuffer, "%f", dReal);
 #endif
 		szSrc.append(cBuffer);
 	}
@@ -596,28 +606,28 @@ namespace KviQString
 	void appendNumber(QString & szSrc, int iInteger)
 	{
 		char cBuffer[64];
-		::sprintf(cBuffer,"%d",iInteger);
+		::sprintf(cBuffer, "%d", iInteger);
 		szSrc.append(cBuffer);
 	}
 
 	void appendNumber(QString & szSrc, kvi_i64_t iInteger)
 	{
 		char cBuffer[64];
-		::sprintf(cBuffer,"%lld", (long long int)iInteger);
+		::sprintf(cBuffer, "%lld", (long long int)iInteger);
 		szSrc.append(cBuffer);
 	}
 
 	void appendNumber(QString & szSrc, kvi_u64_t uInteger)
 	{
 		char cBuffer[64];
-		::sprintf(cBuffer,"%llu", (long long unsigned int)uInteger);
+		::sprintf(cBuffer, "%llu", (long long unsigned int)uInteger);
 		szSrc.append(cBuffer);
 	}
 
 	void appendNumber(QString & szSrc, unsigned int uInteger)
 	{
 		char cBuffer[64];
-		::sprintf(cBuffer,"%u",uInteger);
+		::sprintf(cBuffer, "%u", uInteger);
 		szSrc.append(cBuffer);
 	}
 
@@ -651,23 +661,24 @@ namespace KviQString
 
 		QChar * p = pBuffer;
 
-#define INCREMENT_MEM \
-		{ \
-			iAllocSize += MEMINCREMENT; \
-			pBuffer = (QChar *)KviMemory::reallocate(pBuffer,sizeof(QChar) * iAllocSize); \
-			p = pBuffer + iRealLen; \
-		}
+#define INCREMENT_MEM                                                                  \
+	{                                                                                  \
+		iAllocSize += MEMINCREMENT;                                                    \
+		pBuffer = (QChar *)KviMemory::reallocate(pBuffer, sizeof(QChar) * iAllocSize); \
+		p = pBuffer + iRealLen;                                                        \
+	}
 
-#define INCREMENT_MEM_BY(numchars) \
-		{ \
-			iAllocSize += numchars + MEMINCREMENT; \
-			pBuffer = (QChar *)KviMemory::reallocate(pBuffer,sizeof(QChar) * iAllocSize); \
-			p = pBuffer + iRealLen; \
-		}
+#define INCREMENT_MEM_BY(numchars)                                                     \
+	{                                                                                  \
+		iAllocSize += numchars + MEMINCREMENT;                                         \
+		pBuffer = (QChar *)KviMemory::reallocate(pBuffer, sizeof(QChar) * iAllocSize); \
+		p = pBuffer + iRealLen;                                                        \
+	}
 
-		for(; pFmt->unicode() ; ++pFmt)
+		for(; pFmt->unicode(); ++pFmt)
 		{
-			if(iRealLen == iAllocSize)INCREMENT_MEM
+			if(iRealLen == iAllocSize)
+				INCREMENT_MEM
 
 			//copy up to a '%'
 			if(pFmt->unicode() != '%')
@@ -682,10 +693,10 @@ namespace KviQString
 			{
 				case 's': // char * string
 				{
-					pcArgString = kvi_va_arg(list,char *);
+					pcArgString = kvi_va_arg(list, char *);
 					if(!pcArgString)
 					{
-						pcArgString = (char*) "[!NULL!]";
+						pcArgString = (char *)"[!NULL!]";
 					}
 					QString szStr(pcArgString);
 					if(szStr.isEmpty())
@@ -711,7 +722,7 @@ namespace KviQString
 				}
 				case 'S': // KviCString * string
 				{
-					KviCString * szStr = kvi_va_arg(list,KviCString *);
+					KviCString * szStr = kvi_va_arg(list, KviCString *);
 					if(!szStr)
 					{
 						continue;
@@ -730,7 +741,7 @@ namespace KviQString
 				}
 				case 'Q': // QString * string
 				{
-					QString * szStr = kvi_va_arg(list,QString *);
+					QString * szStr = kvi_va_arg(list, QString *);
 					if(!szStr)
 					{
 						continue;
@@ -766,7 +777,7 @@ namespace KviQString
 					// as sizeof(int) bytes value.
 					// Is this always true ?
 					//
-					*p++ = (char)kvi_va_arg(list,int);
+					*p++ = (char)kvi_va_arg(list, int);
 					iRealLen++;
 					continue;
 				}
@@ -780,13 +791,13 @@ namespace KviQString
 					// as sizeof(int) bytes value.
 					// Is this always true ?
 					//
-					*p++ = *((QChar *)kvi_va_arg(list,QChar *));
+					*p++ = *((QChar *)kvi_va_arg(list, QChar *));
 					iRealLen++;
 					continue;
 				}
 				case 'd': //signed integer
 				{
-					lArgValue = kvi_va_arg(list,int);
+					lArgValue = kvi_va_arg(list, int);
 					if(lArgValue < 0)
 					{
 						//negative integer
@@ -802,7 +813,8 @@ namespace KviQString
 					}
 					//write the number in a temporary buffer
 					pcNumBuf = cNumberBuffer;
-					do {
+					do
+					{
 						iTmp = lArgValue / 10;
 						*pcNumBuf++ = lArgValue - (iTmp * 10) + '0';
 					} while((lArgValue = iTmp));
@@ -812,7 +824,8 @@ namespace KviQString
 					{
 						INCREMENT_MEM_BY(ulArgValue)
 					}
-					do {
+					do
+					{
 						*p++ = QChar(*--pcNumBuf);
 					} while(pcNumBuf != cNumberBuffer);
 					iRealLen += ulArgValue;
@@ -820,10 +833,11 @@ namespace KviQString
 				}
 				case 'u': //unsigned integer
 				{
-					ulArgValue = kvi_va_arg(list,unsigned int); //many implementations place int here
+					ulArgValue = kvi_va_arg(list, unsigned int); //many implementations place int here
 					//write the number in a temporary buffer
 					pcNumBuf = cNumberBuffer;
-					do {
+					do
+					{
 						iTmp = ulArgValue / 10;
 						*pcNumBuf++ = ulArgValue - (iTmp * 10) + '0';
 					} while((ulArgValue = iTmp));
@@ -833,7 +847,8 @@ namespace KviQString
 					{
 						INCREMENT_MEM_BY(lArgValue)
 					}
-					do {
+					do
+					{
 						*p++ = *--pcNumBuf;
 					} while(pcNumBuf != cNumberBuffer);
 					iRealLen += lArgValue;
@@ -843,10 +858,11 @@ namespace KviQString
 				case 'x': // hexadecimal unsigned integer
 				{
 					static char cHexSmallDigits[] = "0123456789abcdef";
-					ulArgValue = kvi_va_arg(list,unsigned int); //many implementations place int here
+					ulArgValue = kvi_va_arg(list, unsigned int); //many implementations place int here
 					//write the number in a temporary buffer
 					pcNumBuf = cNumberBuffer;
-					do {
+					do
+					{
 						iTmp = ulArgValue / 16;
 						*pcNumBuf++ = cHexSmallDigits[ulArgValue - (iTmp * 16)];
 					} while((ulArgValue = iTmp));
@@ -856,7 +872,8 @@ namespace KviQString
 					{
 						INCREMENT_MEM_BY(lArgValue)
 					}
-					do {
+					do
+					{
 						*p++ = *--pcNumBuf;
 					} while(pcNumBuf != cNumberBuffer);
 					iRealLen += lArgValue;
@@ -866,10 +883,11 @@ namespace KviQString
 				case 'X': // hexadecimal unsigned integer
 				{
 					static char cHexBigDigits[] = "0123456789ABCDEF";
-					ulArgValue = kvi_va_arg(list,unsigned int); //many implementations place int here
+					ulArgValue = kvi_va_arg(list, unsigned int); //many implementations place int here
 					//write the number in a temporary buffer
 					pcNumBuf = cNumberBuffer;
-					do {
+					do
+					{
 						iTmp = ulArgValue / 16;
 						*pcNumBuf++ = cHexBigDigits[ulArgValue - (iTmp * 16)];
 					} while((ulArgValue = iTmp));
@@ -879,7 +897,8 @@ namespace KviQString
 					{
 						INCREMENT_MEM_BY(lArgValue)
 					}
-					do {
+					do
+					{
 						*p++ = *--pcNumBuf;
 					} while(pcNumBuf != cNumberBuffer);
 					iRealLen += lArgValue;
@@ -888,7 +907,7 @@ namespace KviQString
 				default:
 				{
 					// a normal percent followed by some char
-					*p++ = '%';  //write it
+					*p++ = '%'; //write it
 					iRealLen++;
 					if(pFmt->unicode())
 					{
@@ -904,7 +923,7 @@ namespace KviQString
 			}
 		}
 
-		szSrc.setUnicode(pBuffer,iRealLen);
+		szSrc.setUnicode(pBuffer, iRealLen);
 		KviMemory::free(pBuffer);
 		//szSrc.squeeze();
 	}
@@ -913,9 +932,9 @@ namespace KviQString
 	{
 		QString szTmp;
 		kvi_va_list list;
-		kvi_va_start(list,szFmt);
+		kvi_va_start(list, szFmt);
 		//print...with max 256 chars
-		KviQString::vsprintf(szTmp,szFmt,list);
+		KviQString::vsprintf(szTmp, szFmt, list);
 		kvi_va_end(list);
 		szSrc.append(szTmp);
 	}
@@ -989,7 +1008,9 @@ namespace KviQString
 					//next savePos2 will be next char
 					pSavePos2++;
 				}
-			} else {
+			}
+			else
+			{
 				if(pM2->unicode() == '*')
 				{
 					//A wlidcard in the second string
@@ -1024,7 +1045,9 @@ namespace KviQString
 						//next pSavePos2 will be next char
 						pSavePos2++;
 					}
-				} else {
+				}
+				else
+				{
 					if(pSavePos1)
 					{
 						//Have a jolly man...allow not matching...
@@ -1034,7 +1057,9 @@ namespace KviQString
 						pM2 = pSavePos2;
 						//and set next pSavePos2
 						pSavePos2++;
-					} else {
+					}
+					else
+					{
 						//No previous wildcards...not matched!
 						return false;
 					}
@@ -1054,7 +1079,7 @@ namespace KviQString
 			// In wildcard matching mode, QRegExp not only interprets * and ?, but also [ ]
 			// This workaround embeds square brackes in square brackets (ticket #1264)
 
-			QChar * pPtr = (QChar*)szExp.constData();
+			QChar * pPtr = (QChar *)szExp.constData();
 
 			if(!pPtr)
 				return 0;
@@ -1066,16 +1091,20 @@ namespace KviQString
 					szWildcard.append("[");
 					szWildcard.append(*pPtr);
 					szWildcard.append("]");
-				} else {
+				}
+				else
+				{
 					szWildcard.append(*pPtr);
 				}
 				pPtr++;
 			}
-		} else {
+		}
+		else
+		{
 			szWildcard = szExp;
 		}
 
-		QRegExp re(szWildcard,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive,bIsRegExp ? QRegExp::RegExp : QRegExp::Wildcard);
+		QRegExp re(szWildcard, bCs ? Qt::CaseSensitive : Qt::CaseInsensitive, bIsRegExp ? QRegExp::RegExp : QRegExp::Wildcard);
 
 		if(bExact)
 			return re.exactMatch(szStr);
@@ -1086,14 +1115,16 @@ namespace KviQString
 	{
 		int iIdx = szSrc.indexOf(c);
 
-		if(iIdx == -1) return;
+		if(iIdx == -1)
+			return;
 		szSrc.truncate(bIncluded ? iIdx : iIdx + 1);
 	}
 
 	void cutFromFirst(QString & szSrc, const QString & szFind, bool bIncluded)
 	{
 		int iIdx = szSrc.indexOf(szFind);
-		if(iIdx == -1) return;
+		if(iIdx == -1)
+			return;
 		szSrc.truncate(bIncluded ? iIdx : iIdx + szFind.length());
 	}
 
@@ -1101,14 +1132,16 @@ namespace KviQString
 	{
 		int iIdx = szSrc.lastIndexOf(c);
 
-		if(iIdx == -1) return;
+		if(iIdx == -1)
+			return;
 		szSrc.truncate(bIncluded ? iIdx : iIdx + 1);
 	}
 
 	void cutFromLast(QString & szSrc, const QString & szFind, bool bIncluded)
 	{
 		int iIdx = szSrc.lastIndexOf(szFind);
-		if(iIdx == -1) return;
+		if(iIdx == -1)
+			return;
 		szSrc.truncate(bIncluded ? iIdx : iIdx + szFind.length());
 	}
 
@@ -1117,10 +1150,11 @@ namespace KviQString
 		int iIdx = szSrc.indexOf(c);
 		if(iIdx == -1)
 		{
-			if(bClearIfNotFound) szSrc = "";
+			if(bClearIfNotFound)
+				szSrc = "";
 			return;
 		}
-		szSrc.remove(0,bIncluded ? iIdx + 1 : iIdx);
+		szSrc.remove(0, bIncluded ? iIdx + 1 : iIdx);
 	}
 
 	void cutToFirst(QString & szSrc, const QString & szFind, bool bIncluded, bool bClearIfNotFound)
@@ -1128,10 +1162,11 @@ namespace KviQString
 		int iIdx = szSrc.indexOf(szFind);
 		if(iIdx == -1)
 		{
-			if(bClearIfNotFound) szSrc = "";
+			if(bClearIfNotFound)
+				szSrc = "";
 			return;
 		}
-		szSrc.remove(0,bIncluded ? iIdx + szFind.length() : iIdx);
+		szSrc.remove(0, bIncluded ? iIdx + szFind.length() : iIdx);
 	}
 
 	void cutToLast(QString & szSrc, const QChar & c, bool bIncluded, bool bClearIfNotFound)
@@ -1139,10 +1174,11 @@ namespace KviQString
 		int iIdx = szSrc.lastIndexOf(c);
 		if(iIdx == -1)
 		{
-			if(bClearIfNotFound) szSrc = "";
+			if(bClearIfNotFound)
+				szSrc = "";
 			return;
 		}
-		szSrc.remove(0,bIncluded ? iIdx + 1 : iIdx);
+		szSrc.remove(0, bIncluded ? iIdx + 1 : iIdx);
 	}
 
 	void cutToLast(QString & szSrc, const QString & szFind, bool bIncluded, bool bClearIfNotFound)
@@ -1150,10 +1186,11 @@ namespace KviQString
 		int iIdx = szSrc.lastIndexOf(szFind);
 		if(iIdx == -1)
 		{
-			if(bClearIfNotFound) szSrc = "";
+			if(bClearIfNotFound)
+				szSrc = "";
 			return;
 		}
-		szSrc.remove(0,bIncluded ? iIdx + szFind.length() : iIdx);
+		szSrc.remove(0, bIncluded ? iIdx + szFind.length() : iIdx);
 	}
 
 	QString leftToFirst(QString & szSrc, const QChar & c, bool bIncluded, bool bReturnFullStringIfNotFound)
@@ -1209,7 +1246,7 @@ namespace KviQString
 			pB++;
 			usX = pC->unicode();
 		}
-		QString szRet(pBuffer,szSrc.length());
+		QString szRet(pBuffer, szSrc.length());
 		KviMemory::free(pBuffer);
 		return szRet;
 	}
@@ -1230,13 +1267,14 @@ namespace KviQString
 			if(usX < 256)
 			{
 				*pB = QChar((unsigned short)iso88591_toLower_map[usX]);
-			} else
+			}
+			else
 				*pB = *pC;
 			pC++;
 			pB++;
 			usX = pC->unicode();
 		}
-		QString szRet(pBuffer,szSrc.length());
+		QString szRet(pBuffer, szSrc.length());
 		KviMemory::free(pBuffer);
 		return szRet;
 	}
@@ -1244,7 +1282,7 @@ namespace KviQString
 	void transliterate(QString & szSrc, const QString & szToFind, const QString & szReplacement)
 	{
 		int i = 0;
-		int il = MY_MIN(szToFind.length(),szReplacement.length());
+		int il = MY_MIN(szToFind.length(), szReplacement.length());
 		while(i < il)
 		{
 			int k = 0;
@@ -1267,9 +1305,9 @@ namespace KviQString
 		unsigned int u = 0;
 		while(u < (uLen * 2))
 		{
-			szRetBuffer[int(u)] = QChar((unsigned int)cHexDigits[(*pcBuffer) / 16] );
+			szRetBuffer[int(u)] = QChar((unsigned int)cHexDigits[(*pcBuffer) / 16]);
 			u++;
-			szRetBuffer[int(u)] = QChar((unsigned int)cHexDigits[(*pcBuffer) % 16] );
+			szRetBuffer[int(u)] = QChar((unsigned int)cHexDigits[(*pcBuffer) % 16]);
 			u++;
 			pcBuffer++;
 		}
@@ -1278,25 +1316,25 @@ namespace KviQString
 	void escapeKvs(QString * szData, uint uFlags)
 	{
 		// escape any $;\%
-		szData->replace("\\","\\\\");
-		szData->replace("\"","\\\"");
-		szData->replace(";","\\;");
+		szData->replace("\\", "\\\\");
+		szData->replace("\"", "\\\"");
+		szData->replace(";", "\\;");
 		if(!(uFlags & PermitFunctions))
-			szData->replace("$","\\$");
+			szData->replace("$", "\\$");
 		if(!(uFlags & PermitVariables))
-			szData->replace("%","\\%");
+			szData->replace("%", "\\%");
 		if(!(uFlags & PermitMultiLine))
 		{
-			szData->replace("\r"," ");
-			szData->replace("\n"," ");
+			szData->replace("\r", " ");
+			szData->replace("\n", " ");
 		}
 		if(uFlags & EscapeSpace)
-			szData->replace(" ","\\ ");
+			szData->replace(" ", "\\ ");
 
 		if(uFlags & EscapeParenthesis)
 		{
-			szData->replace("(","\\(");
-			szData->replace(")","\\)");
+			szData->replace("(", "\\(");
+			szData->replace(")", "\\)");
 		}
 	}
 

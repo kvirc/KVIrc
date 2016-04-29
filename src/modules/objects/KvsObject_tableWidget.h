@@ -39,10 +39,12 @@ class KvsObject_tableWidget;
 class KviCellItemDelegate : public QItemDelegate
 {
 public:
-	KviCellItemDelegate(QAbstractItemView * pWidget = 0,KvsObject_tableWidget *pParent=0);
+	KviCellItemDelegate(QAbstractItemView * pWidget = 0, KvsObject_tableWidget * pParent = 0);
 	~KviCellItemDelegate();
+
 protected:
-	KvsObject_tableWidget *m_pParentScript;
+	KvsObject_tableWidget * m_pParentScript;
+
 public:
 	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
 	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
@@ -59,56 +61,56 @@ public:
 
 protected:
 	KviKvsRunTimeContext * m_pContext;
-	KviCellItemDelegate  * m_pCellItemDelegate;
+	KviCellItemDelegate * m_pCellItemDelegate;
+
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool setText(KviKvsObjectFunctionCall *c);
-	bool setForeground(KviKvsObjectFunctionCall *c);
-	bool setNumber(KviKvsObjectFunctionCall *c);
-	bool setToolTip(KviKvsObjectFunctionCall *c);
-	bool text(KviKvsObjectFunctionCall *c);
-	bool setIcon(KviKvsObjectFunctionCall *c);
-	bool setItemFlags(KviKvsObjectFunctionCall *c);
+	bool setText(KviKvsObjectFunctionCall * c);
+	bool setForeground(KviKvsObjectFunctionCall * c);
+	bool setNumber(KviKvsObjectFunctionCall * c);
+	bool setToolTip(KviKvsObjectFunctionCall * c);
+	bool text(KviKvsObjectFunctionCall * c);
+	bool setIcon(KviKvsObjectFunctionCall * c);
+	bool setItemFlags(KviKvsObjectFunctionCall * c);
 
-	bool setColumnCount(KviKvsObjectFunctionCall *c);
-	bool columnCount(KviKvsObjectFunctionCall *c);
-	bool setRowCount(KviKvsObjectFunctionCall *c);
-	bool currentRow(KviKvsObjectFunctionCall *c);
-	bool currentColumn(KviKvsObjectFunctionCall *c);
-	bool itemRowColAt(KviKvsObjectFunctionCall *c);
+	bool setColumnCount(KviKvsObjectFunctionCall * c);
+	bool columnCount(KviKvsObjectFunctionCall * c);
+	bool setRowCount(KviKvsObjectFunctionCall * c);
+	bool currentRow(KviKvsObjectFunctionCall * c);
+	bool currentColumn(KviKvsObjectFunctionCall * c);
+	bool itemRowColAt(KviKvsObjectFunctionCall * c);
 
-	bool rowCount(KviKvsObjectFunctionCall *c);
+	bool rowCount(KviKvsObjectFunctionCall * c);
 
-	bool insertRow(KviKvsObjectFunctionCall *c);
-	bool insertColumn(KviKvsObjectFunctionCall *c);
-	bool removeRow(KviKvsObjectFunctionCall *c);
-	bool removeColumn(KviKvsObjectFunctionCall *c);
+	bool insertRow(KviKvsObjectFunctionCall * c);
+	bool insertColumn(KviKvsObjectFunctionCall * c);
+	bool removeRow(KviKvsObjectFunctionCall * c);
+	bool removeColumn(KviKvsObjectFunctionCall * c);
 
+	bool setHorizontalHeaderLabels(KviKvsObjectFunctionCall * c);
+	bool setVerticalHeaderLabels(KviKvsObjectFunctionCall * c);
+	bool setCellWidget(KviKvsObjectFunctionCall * c);
 
-	bool setHorizontalHeaderLabels(KviKvsObjectFunctionCall *c);
-	bool setVerticalHeaderLabels(KviKvsObjectFunctionCall *c);
-	bool setCellWidget(KviKvsObjectFunctionCall *c);
+	bool hideHorizontalHeader(KviKvsObjectFunctionCall * c);
+	bool showHorizontalHeader(KviKvsObjectFunctionCall * c);
+	bool hideVerticalHeader(KviKvsObjectFunctionCall * c);
+	bool showVerticalHeader(KviKvsObjectFunctionCall * c);
+	bool clear(KviKvsObjectFunctionCall * c);
+	bool itemEnteredEvent(KviKvsObjectFunctionCall * c);
+	bool cellActivatedEvent(KviKvsObjectFunctionCall * c);
+	bool cellDoubleClickedEvent(KviKvsObjectFunctionCall * c);
 
-	bool hideHorizontalHeader(KviKvsObjectFunctionCall *c);
-	bool showHorizontalHeader(KviKvsObjectFunctionCall *c);
-	bool hideVerticalHeader(KviKvsObjectFunctionCall *c);
-	bool showVerticalHeader(KviKvsObjectFunctionCall *c);
-	bool clear(KviKvsObjectFunctionCall *c);
-	bool itemEnteredEvent(KviKvsObjectFunctionCall *c);
-	bool cellActivatedEvent(KviKvsObjectFunctionCall *c);
-	bool cellDoubleClickedEvent(KviKvsObjectFunctionCall *c);
-
-	bool hideColumn(KviKvsObjectFunctionCall *c);
-	bool showColumn(KviKvsObjectFunctionCall *c);
-	bool hideRow(KviKvsObjectFunctionCall *c);
-	bool showRow(KviKvsObjectFunctionCall *c);
-	bool resizeRowsToContents(KviKvsObjectFunctionCall *c);
-	bool resizeColumnsToContents(KviKvsObjectFunctionCall *c);
+	bool hideColumn(KviKvsObjectFunctionCall * c);
+	bool showColumn(KviKvsObjectFunctionCall * c);
+	bool hideRow(KviKvsObjectFunctionCall * c);
+	bool showRow(KviKvsObjectFunctionCall * c);
+	bool resizeRowsToContents(KviKvsObjectFunctionCall * c);
+	bool resizeColumnsToContents(KviKvsObjectFunctionCall * c);
 protected slots:
 	void slotItemEntered(QTableWidgetItem *);
-	void cellActivated(int iRow,int iCol);
-	void cellDoubleClicked(int iRow,int iCol);
+	void cellActivated(int iRow, int iCol);
+	void cellDoubleClicked(int iRow, int iCol);
 };
 
-#endif	// !_CLASS_TABLEWIDGET_H_
+#endif // !_CLASS_TABLEWIDGET_H_

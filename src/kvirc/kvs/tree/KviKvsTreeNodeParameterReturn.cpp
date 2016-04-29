@@ -28,8 +28,8 @@
 #include "KviKvsVariantList.h"
 #include "KviLocale.h"
 
-KviKvsTreeNodeParameterReturn::KviKvsTreeNodeParameterReturn(const QChar * pLocation,KviKvsTreeNodeDataList * pDataList)
-: KviKvsTreeNodeInstruction(pLocation)
+KviKvsTreeNodeParameterReturn::KviKvsTreeNodeParameterReturn(const QChar * pLocation, KviKvsTreeNodeDataList * pDataList)
+    : KviKvsTreeNodeInstruction(pLocation)
 {
 	m_pDataList = pDataList;
 	m_pDataList->setParent(this);
@@ -40,15 +40,14 @@ KviKvsTreeNodeParameterReturn::~KviKvsTreeNodeParameterReturn()
 	delete m_pDataList;
 }
 
-void KviKvsTreeNodeParameterReturn::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeParameterReturn::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Parameter Return Evaluation";
 }
 
-
 void KviKvsTreeNodeParameterReturn::dump(const char * prefix)
 {
-	qDebug("%s ParameterReturn",prefix);
+	qDebug("%s ParameterReturn", prefix);
 	QString tmp = prefix;
 	tmp += "  ";
 	m_pDataList->dump(tmp.toUtf8().data());
@@ -57,7 +56,8 @@ void KviKvsTreeNodeParameterReturn::dump(const char * prefix)
 bool KviKvsTreeNodeParameterReturn::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariantList lBuffer;
-	if(!m_pDataList->evaluate(c,&lBuffer))return false;
+	if(!m_pDataList->evaluate(c, &lBuffer))
+		return false;
 	if(lBuffer.count() == 0)
 	{
 		c->returnValue()->setNothing();

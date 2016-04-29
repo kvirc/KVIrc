@@ -39,25 +39,28 @@ class KVIRC_API KviModuleManager : public QObject
 public:
 	KviModuleManager();
 	~KviModuleManager();
+
 private:
-	KviPointerHashTable<QString,KviModule>       * m_pModuleDict;
-	QTimer                                       * m_pCleanupTimer;
-	QString                                        m_szLastError;
+	KviPointerHashTable<QString, KviModule> * m_pModuleDict;
+	QTimer * m_pCleanupTimer;
+	QString m_szLastError;
+
 public:
-	QString & lastError(){ return m_szLastError; };
-	KviModule * findModule(const QString &modName);
-	KviModule * getModule(const QString &modName);
-	bool loadModule(const QString &modName);
-	bool unloadModule(const QString &modName);
+	QString & lastError() { return m_szLastError; };
+	KviModule * findModule(const QString & modName);
+	KviModule * getModule(const QString & modName);
+	bool loadModule(const QString & modName);
+	bool unloadModule(const QString & modName);
 	bool unloadModule(KviModule * module);
 	void unloadAllModules();
 	//void registerDefaultCommands(KviModule * module);
-	void loadModulesByCaps(const QString &caps,const QString &dir);
-	void loadModulesByCaps(const QString &caps);
+	void loadModulesByCaps(const QString & caps, const QString & dir);
+	void loadModulesByCaps(const QString & caps);
 	bool hasLockedModules();
-	void completeModuleNames(const QString &word,KviPointerList<QString> * matches);
+	void completeModuleNames(const QString & word, KviPointerList<QString> * matches);
+
 protected:
-	void completeModuleNames(const QString &path,const QString &work,KviPointerList<QString> * matches);
+	void completeModuleNames(const QString & path, const QString & work, KviPointerList<QString> * matches);
 public slots:
 	void cleanupUnusedModules();
 signals:

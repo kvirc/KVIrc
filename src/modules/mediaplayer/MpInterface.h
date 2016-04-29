@@ -35,8 +35,10 @@ public:
 	// implement lazy initialization in each function instead
 	MpInterface(){};
 	virtual ~MpInterface(){};
+
 protected:
 	QString m_szLastError;
+
 public:
 	const QString & lastError() const { return m_szLastError; };
 
@@ -90,16 +92,16 @@ public:
 	// the mrl may be (or may be not) added to the player's playlist
 	// the function should return false if the player doesn't support
 	// this function or there is a communication error
-	virtual bool playMrl(const QString &mrl);
+	virtual bool playMrl(const QString & mrl);
 	// what is this ? :D
-	virtual bool amipExec(const QString &cmd);
-	virtual QString amipEval(const QString &cmd);
+	virtual bool amipExec(const QString & cmd);
+	virtual QString amipEval(const QString & cmd);
 	// this is functions to hide,show and minimize the player interface
 	virtual bool hide();
 	virtual bool show();
 	virtual bool minimize();
 	// set the volume of mediaplayer (0-255)
-	virtual bool setVol(kvs_int_t &iVol);
+	virtual bool setVol(kvs_int_t & iVol);
 	// get the pvolume value(0-255)
 	virtual int getVol();
 	//mute the volume
@@ -108,7 +110,13 @@ public:
 	// return false only on communication failure
 	virtual bool quit();
 	// return the current player status
-	enum PlayerStatus { Unknown, Stopped, Playing, Paused };
+	enum PlayerStatus
+	{
+		Unknown,
+		Stopped,
+		Playing,
+		Paused
+	};
 	virtual MpInterface::PlayerStatus status();
 	// current position in the media (msecs)
 	// 0 if the player isn't playing anything and -1 if unknown
@@ -117,7 +125,7 @@ public:
 	// 0 if the player isn't playing anyting and -1 if unknown (e.g. a stream)
 	virtual int length();
 	// jump to position
-	virtual bool jumpTo(kvs_int_t &iPos);
+	virtual bool jumpTo(kvs_int_t & iPos);
 	// interface with a default implementation for certain types of media (read for mp3)
 	// reimplement only if the player knows better
 
@@ -156,83 +164,86 @@ public:
 	// get the position in the playlist
 	virtual int getPlayListPos();
 	// set the position in the playlist
-	virtual bool setPlayListPos(kvs_int_t &iPos);
+	virtual bool setPlayListPos(kvs_int_t & iPos);
 	// return the list's length
 	virtual int getListLength();
 	// return the Eq(number) value
-	virtual int getEqData(kvs_int_t &i_val);
+	virtual int getEqData(kvs_int_t & i_val);
 	// set the  Eq(iPos) to Eq(iVal) value
-	virtual bool setEqData(kvs_int_t &iPos, kvs_int_t &iVal);
+	virtual bool setEqData(kvs_int_t & iPos, kvs_int_t & iVal);
 	// get the   Repeat bool value
 	virtual bool getRepeat();
 	// get the  shuffle bool value
 	virtual bool getShuffle();
 	// set the   Repeat bool value
-	virtual bool setRepeat(bool &bVal);
+	virtual bool setRepeat(bool & bVal);
 	// set the  shuffle bool value
-	virtual bool setShuffle(bool &bVal);
-	void setLastError(const QString &szLastError){ m_szLastError = szLastError; };
+	virtual bool setShuffle(bool & bVal);
+	void setLastError(const QString & szLastError) { m_szLastError = szLastError; };
 protected:
 	void notImplemented();
 	QString getLocalFile();
 };
-
 
 class MpInterfaceDescriptor
 {
 public:
 	MpInterfaceDescriptor(){};
 	virtual ~MpInterfaceDescriptor(){};
+
 public:
 	virtual const QString & name() = 0;
 	virtual const QString & description() = 0;
 	virtual MpInterface * instance() = 0;
 };
 
-
-#define MP_DECLARE_DESCRIPTOR(_interfaceclass) \
-	class _interfaceclass ## Descriptor : public MpInterfaceDescriptor \
-	{ \
-	public: \
-		_interfaceclass ## Descriptor(); \
-		virtual ~_interfaceclass ## Descriptor(); \
-	protected: \
-		_interfaceclass * m_pInstance; \
-		QString m_szName; \
-		QString m_szDescription; \
-	public: \
-		virtual const QString & name(); \
-		virtual const QString & description(); \
-		virtual MpInterface * instance(); \
+#define MP_DECLARE_DESCRIPTOR(_interfaceclass)                       \
+	class _interfaceclass##Descriptor : public MpInterfaceDescriptor \
+	{                                                                \
+	public:                                                          \
+		_interfaceclass##Descriptor();                               \
+		virtual ~_interfaceclass##Descriptor();                      \
+                                                                     \
+	protected:                                                       \
+		_interfaceclass * m_pInstance;                               \
+		QString m_szName;                                            \
+		QString m_szDescription;                                     \
+                                                                     \
+	public:                                                          \
+		virtual const QString & name();                              \
+		virtual const QString & description();                       \
+		virtual MpInterface * instance();                            \
 	};
 
-#define MP_IMPLEMENT_DESCRIPTOR(_interfaceclass,_name,_description) \
-	_interfaceclass ## Descriptor::_interfaceclass ## Descriptor() \
-	: MpInterfaceDescriptor() \
-	{ \
-		m_pInstance = 0; \
-		m_szName = _name; \
-		m_szDescription = _description; \
-	} \
-	_interfaceclass ## Descriptor::~_interfaceclass ## Descriptor() \
-	{ \
-		if(m_pInstance)delete m_pInstance; \
-	} \
-	const QString & _interfaceclass ## Descriptor::name() \
-	{ \
-		return m_szName; \
-	} \
-	const QString & _interfaceclass ## Descriptor::description() \
-	{ \
-		return m_szDescription; \
-	} \
-	MpInterface * _interfaceclass ## Descriptor::instance() \
-	{ \
-		if(!m_pInstance)m_pInstance = new _interfaceclass(); \
-		return m_pInstance; \
+#define MP_IMPLEMENT_DESCRIPTOR(_interfaceclass, _name, _description) \
+	_interfaceclass##Descriptor::_interfaceclass##Descriptor()        \
+	    : MpInterfaceDescriptor()                                     \
+	{                                                                 \
+		m_pInstance = 0;                                              \
+		m_szName = _name;                                             \
+		m_szDescription = _description;                               \
+	}                                                                 \
+	_interfaceclass##Descriptor::~_interfaceclass##Descriptor()       \
+	{                                                                 \
+		if(m_pInstance)                                               \
+			delete m_pInstance;                                       \
+	}                                                                 \
+	const QString & _interfaceclass##Descriptor::name()               \
+	{                                                                 \
+		return m_szName;                                              \
+	}                                                                 \
+	const QString & _interfaceclass##Descriptor::description()        \
+	{                                                                 \
+		return m_szDescription;                                       \
+	}                                                                 \
+	MpInterface * _interfaceclass##Descriptor::instance()             \
+	{                                                                 \
+		if(!m_pInstance)                                              \
+			m_pInstance = new _interfaceclass();                      \
+		return m_pInstance;                                           \
 	}
 
 #define MP_CREATE_DESCRIPTOR(_interfaceclass) \
-	new _interfaceclass ## Descriptor()
+	new _interfaceclass##Descriptor()
 
 #endif //!_MP_INTERFACE_H_

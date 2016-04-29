@@ -28,9 +28,8 @@
 #include "KviKvsObject.h"
 #include "KviLocale.h"
 
-
-KviKvsTreeNodeHashCount::KviKvsTreeNodeHashCount(const QChar * pLocation,KviKvsTreeNodeData * pSource)
-: KviKvsTreeNodeIndirectData(pLocation,pSource)
+KviKvsTreeNodeHashCount::KviKvsTreeNodeHashCount(const QChar * pLocation, KviKvsTreeNodeData * pSource)
+    : KviKvsTreeNodeIndirectData(pLocation, pSource)
 {
 }
 
@@ -38,24 +37,28 @@ KviKvsTreeNodeHashCount::~KviKvsTreeNodeHashCount()
 {
 }
 
-void KviKvsTreeNodeHashCount::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeHashCount::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Hash Count Operator";
 }
 
 void KviKvsTreeNodeHashCount::dump(const char * prefix)
 {
-	qDebug("%s HashCount",prefix);
+	qDebug("%s HashCount", prefix);
 }
 
-bool KviKvsTreeNodeHashCount::evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeHashCount::evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	KviKvsVariant val;
 	if(o)
 	{
-		if(!m_pSource->evaluateReadOnlyInObjectScope(o,c,&val))return false;
-	} else {
-		if(!m_pSource->evaluateReadOnly(c,&val))return false;
+		if(!m_pSource->evaluateReadOnlyInObjectScope(o, c, &val))
+			return false;
+	}
+	else
+	{
+		if(!m_pSource->evaluateReadOnly(c, &val))
+			return false;
 	}
 
 	if(!val.isHash())
@@ -64,7 +67,7 @@ bool KviKvsTreeNodeHashCount::evaluateReadOnlyInObjectScope(KviKvsObject *o,KviK
 		{
 			QString szType;
 			val.getTypeName(szType);
-			c->warning(this,__tr2qs_ctx("The argument of the hash count '#' operator didn't evaluate to a hash: automatic conversion from type '%Q' supplied","kvs"),&szType);
+			c->warning(this, __tr2qs_ctx("The argument of the hash count '#' operator didn't evaluate to a hash: automatic conversion from type '%Q' supplied", "kvs"), &szType);
 		}
 		pBuffer->setInteger(0);
 		return true;
@@ -73,7 +76,7 @@ bool KviKvsTreeNodeHashCount::evaluateReadOnlyInObjectScope(KviKvsObject *o,KviK
 	pBuffer->setInteger(val.hash()->size());
 	return true;
 }
-bool KviKvsTreeNodeHashCount::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeHashCount::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
-	return evaluateReadOnlyInObjectScope(0,c,pBuffer);
+	return evaluateReadOnlyInObjectScope(0, c, pBuffer);
 }

@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "KviKvsTreeNodeInstruction.h"
 
 void KviKvsTreeNodeInstruction::contextDescription(QString & szBuffer)
@@ -32,5 +31,5 @@ void KviKvsTreeNodeInstruction::contextDescription(QString & szBuffer)
 
 void KviKvsTreeNodeInstruction::dump(const char * prefix)
 {
-	qDebug("%s Instruction",prefix);
+	qDebug("%s Instruction", prefix);
 }

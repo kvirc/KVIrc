@@ -37,21 +37,25 @@ class KVIRC_API KviKvsAsyncOperation : public QObject
 public:
 	KviKvsAsyncOperation(KviWindow * pWnd);
 	virtual ~KviKvsAsyncOperation();
+
 protected:
 	KviWindow * m_pWnd;
-public:
-	KviWindow * window(){ return m_pWnd; };
-};
 
+public:
+	KviWindow * window() { return m_pWnd; };
+};
 
 class KVIRC_API KviKvsAsyncOperationManager
 {
 	friend class KviKvsAsyncOperation;
+
 public:
 	KviKvsAsyncOperationManager();
 	~KviKvsAsyncOperationManager();
+
 protected:
 	KviPointerList<KviKvsAsyncOperation> * m_pOperationList;
+
 protected:
 	void registerOperation(KviKvsAsyncOperation * o);
 	void unregisterOperation(KviKvsAsyncOperation * o);

@@ -35,13 +35,13 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool addSeparator(KviKvsObjectFunctionCall *c);
-	bool setLabel(KviKvsObjectFunctionCall *c);
-	bool label(KviKvsObjectFunctionCall *c);
-	bool setStretchableWidget(KviKvsObjectFunctionCall *c);
-	bool clear(KviKvsObjectFunctionCall *c);
+	bool addSeparator(KviKvsObjectFunctionCall * c);
+	bool setLabel(KviKvsObjectFunctionCall * c);
+	bool label(KviKvsObjectFunctionCall * c);
+	bool setStretchableWidget(KviKvsObjectFunctionCall * c);
+	bool clear(KviKvsObjectFunctionCall * c);
 };
 
-#endif	//!_CLASS_TOOLBAR_H_
+#endif //!_CLASS_TOOLBAR_H_

@@ -36,18 +36,21 @@ class KVIRC_API KviDebugWindow : public KviWindow
 public:
 	KviDebugWindow();
 	~KviDebugWindow();
+
 protected:
 	static KviDebugWindow * m_pInstance;
+
 public:
-	static KviDebugWindow * instance(){ return m_pInstance; };
+	static KviDebugWindow * instance() { return m_pInstance; };
 	static KviDebugWindow * getInstance();
+
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent *e);
+	virtual void resizeEvent(QResizeEvent * e);
 	virtual void loadProperties(KviConfigurationFile * cfg);
 	virtual void saveProperties(KviConfigurationFile * cfg);
-	virtual void getBaseLogFileName(QString &buffer);
+	virtual void getBaseLogFileName(QString & buffer);
 	virtual QSize sizeHint() const;
 };
 

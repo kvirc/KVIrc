@@ -36,7 +36,7 @@
 #include <QFileInfo>
 #include <QSplitter>
 
-HelpIndex        * g_pDocIndex = 0;
+HelpIndex * g_pDocIndex = 0;
 KviPointerList<HelpWidget> * g_pHelpWidgetList = 0;
 KviPointerList<HelpWindow> * g_pHelpWindowList = 0;
 
@@ -80,21 +80,20 @@ KviPointerList<HelpWindow> * g_pHelpWindowList = 0;
 		[/example]
 */
 
-
 static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	QString szDoc, szHelpDir, szParam;
-        QDir dirHelp;
+	QDir dirHelp;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szParam)
+	KVSM_PARAMETER("document", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szParam)
 	KVSM_PARAMETERS_END(c)
 
 	// no document => index
 	if(szParam.isEmpty())
 	{
 		szParam = QString("index.html");
-		qDebug ("No file, use default at path %s",szDoc.toUtf8().data());
+		qDebug("No file, use default at path %s", szDoc.toUtf8().data());
 	}
 
 	/*
@@ -109,20 +108,20 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	if(!f.exists() || !f.isAbsolute())
 	{
 		// try relative path (to local help)
-		g_pApp->getLocalKvircDirectory(szHelpDir,KviApplication::Help);
+		g_pApp->getLocalKvircDirectory(szHelpDir, KviApplication::Help);
 		dirHelp = QDir(szHelpDir);
 		szDoc = dirHelp.absoluteFilePath(szParam);
-		qDebug("No abs path, trying local relative path: %s",szDoc.toUtf8().data());
+		qDebug("No abs path, trying local relative path: %s", szDoc.toUtf8().data());
 		f.setFile(szDoc);
 
 		if(!f.exists())
 		{
 			//try relative path (to global help)
-			g_pApp->getGlobalKvircDirectory(szHelpDir,KviApplication::Help);
+			g_pApp->getGlobalKvircDirectory(szHelpDir, KviApplication::Help);
 			dirHelp = QDir(szHelpDir);
 
 			szDoc = dirHelp.absoluteFilePath(szParam);
-			qDebug("No local relative, trying global relative path: %s",szDoc.toUtf8().data());
+			qDebug("No local relative, trying global relative path: %s", szDoc.toUtf8().data());
 			f.setFile(szDoc);
 		}
 	}
@@ -133,33 +132,37 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		qDebug("No path, trying search..");
 		if(g_pDocIndex)
 		{
-			if (!g_pDocIndex->documentList().count())
+			if(!g_pDocIndex->documentList().count())
 			{
-				QString szDoclist,szDict;
-				g_pApp->getLocalKvircDirectory(szDoclist,KviApplication::Help,"help.doclist." KVI_SOURCES_DATE);
-				g_pApp->getLocalKvircDirectory(szDict,KviApplication::Help,"help.dict." KVI_SOURCES_DATE);
-				if ( KviFileUtils::fileExists(szDoclist) && KviFileUtils::fileExists( szDict ))
+				QString szDoclist, szDict;
+				g_pApp->getLocalKvircDirectory(szDoclist, KviApplication::Help, "help.doclist." KVI_SOURCES_DATE);
+				g_pApp->getLocalKvircDirectory(szDict, KviApplication::Help, "help.dict." KVI_SOURCES_DATE);
+				if(KviFileUtils::fileExists(szDoclist) && KviFileUtils::fileExists(szDict))
 				{
 					g_pDocIndex->readDict();
-				} else {
+				}
+				else
+				{
 					g_pDocIndex->makeIndex();
 					g_pDocIndex->writeDict();
 				}
 			}
 
-			int i=g_pDocIndex->titlesList().indexOf(QRegExp(QRegExp::escape(szParam), Qt::CaseInsensitive));
-			if (i!=-1)
+			int i = g_pDocIndex->titlesList().indexOf(QRegExp(QRegExp::escape(szParam), Qt::CaseInsensitive));
+			if(i != -1)
 			{
-				szDoc=QUrl(g_pDocIndex->documentList()[ i ]).toLocalFile();
+				szDoc = QUrl(g_pDocIndex->documentList()[i]).toLocalFile();
 				f.setFile(szDoc);
-			} else {
+			}
+			else
+			{
 				QString szTmpDocName(".*/doc_");
 				szTmpDocName.append(QRegExp::escape(szParam));
 				szTmpDocName.append("\\.html");
-				i=g_pDocIndex->documentList().indexOf(QRegExp(szTmpDocName, Qt::CaseInsensitive));
-				if (i!=-1)
+				i = g_pDocIndex->documentList().indexOf(QRegExp(szTmpDocName, Qt::CaseInsensitive));
+				if(i != -1)
 				{
-					szDoc=QUrl(g_pDocIndex->documentList()[ i ]).toLocalFile();
+					szDoc = QUrl(g_pDocIndex->documentList()[i]).toLocalFile();
 					f.setFile(szDoc);
 				}
 			}
@@ -171,40 +174,42 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	{
 		szDoc = dirHelp.absoluteFilePath("nohelpavailable.html");
 
-		qDebug("Document not found, defaulting to error page: %s",szDoc.toUtf8().data());
+		qDebug("Document not found, defaulting to error page: %s", szDoc.toUtf8().data());
 		f.setFile(szDoc);
 	}
 
-	if(!c->switches()->find('n',"new"))
+	if(!c->switches()->find('n', "new"))
 	{
 		HelpWidget * w = (HelpWidget *)g_pMainWindow->findChild<HelpWidget *>("help_widget");
 
 		if(w)
 		{
-			#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBKIT_SUPPORT
 			w->textBrowser()->load(QUrl::fromLocalFile(f.absoluteFilePath()));
-			#else
+#else
 			w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
-			#endif
+#endif
 			return true;
 		}
 	}
-	if(c->switches()->find('m',"mdi"))
+	if(c->switches()->find('m', "mdi"))
 	{
-		HelpWindow *w = new HelpWindow("Help browser");
-		#ifdef COMPILE_WEBKIT_SUPPORT
+		HelpWindow * w = new HelpWindow("Help browser");
+#ifdef COMPILE_WEBKIT_SUPPORT
 		w->textBrowser()->load(QUrl::fromLocalFile(f.absoluteFilePath()));
-		#else
+#else
 		w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
-		#endif
+#endif
 		g_pMainWindow->addWindow(w);
-	} else {
-		HelpWidget *w = new HelpWidget(g_pMainWindow->splitter(), true);
-		#ifdef COMPILE_WEBKIT_SUPPORT
+	}
+	else
+	{
+		HelpWidget * w = new HelpWidget(g_pMainWindow->splitter(), true);
+#ifdef COMPILE_WEBKIT_SUPPORT
 		w->textBrowser()->load(QUrl::fromLocalFile(f.absoluteFilePath()));
-		#else
+#else
 		w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
-		#endif
+#endif
 		w->show();
 	}
 
@@ -213,15 +218,15 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 static bool help_module_init(KviModule * m)
 {
-	QString szHelpDir,szDocList;
+	QString szHelpDir, szDocList;
 
-	g_pApp->getLocalKvircDirectory(szDocList,KviApplication::Help,"help.doclist." KVI_SOURCES_DATE);
-	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApplication::Help);
+	g_pApp->getLocalKvircDirectory(szDocList, KviApplication::Help, "help.doclist." KVI_SOURCES_DATE);
+	g_pApp->getGlobalKvircDirectory(szHelpDir, KviApplication::Help);
 
-	g_pDocIndex = new HelpIndex(szHelpDir,szDocList);
+	g_pDocIndex = new HelpIndex(szHelpDir, szDocList);
 	g_pDocIndex->setDocListFile(szDocList);
 
-	g_pApp->getLocalKvircDirectory(szHelpDir,KviApplication::Help,"help.dict." KVI_SOURCES_DATE);
+	g_pApp->getLocalKvircDirectory(szHelpDir, KviApplication::Help, "help.dict." KVI_SOURCES_DATE);
 	g_pDocIndex->setDictionaryFile(szHelpDir);
 
 	g_pHelpWidgetList = new KviPointerList<HelpWidget>;
@@ -229,9 +234,7 @@ static bool help_module_init(KviModule * m)
 	g_pHelpWindowList = new KviPointerList<HelpWindow>;
 	g_pHelpWindowList->setAutoDelete(false);
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",help_kvs_cmd_open);
-
-
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", help_kvs_cmd_open);
 
 	return true;
 }
@@ -257,13 +260,12 @@ static bool help_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Help",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Help browser extension",
-	help_module_init,
-	help_module_can_unload,
-	0,
-	help_module_cleanup,
-	0
-)
+    "Help",                                                         // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Help browser extension",
+    help_module_init,
+    help_module_can_unload,
+    0,
+    help_module_cleanup,
+    0)

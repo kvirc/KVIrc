@@ -67,5 +67,4 @@ public:
 	~KviTalMenuBar();
 };
 
-
 #endif //_KVI_TAL_MENUBAR_H_

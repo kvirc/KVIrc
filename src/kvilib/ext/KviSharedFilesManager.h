@@ -38,19 +38,21 @@ class KVILIB_API KviSharedFilesManager : public QObject
 public:
 	KviSharedFilesManager();
 	~KviSharedFilesManager();
+
 private:
-	QTimer                     * m_pCleanupTimer;
-	KviPointerHashTable<QString,KviSharedFileList>   * m_pSharedListDict;
+	QTimer * m_pCleanupTimer;
+	KviPointerHashTable<QString, KviSharedFileList> * m_pSharedListDict;
+
 public:
 	void addSharedFile(KviSharedFile * f);
-	KviSharedFile * addSharedFile(const QString &szName,const QString &szAbsPath,const QString &szMask,int timeoutInSecs);
-	KviSharedFile * lookupSharedFile(const QString &szName,KviIrcMask * mask,unsigned int uFileSize = 0);
-	bool removeSharedFile(const QString &szName,const QString &szMask,unsigned int uFileSize);
-	bool removeSharedFile(const QString &szName,KviSharedFile * off);
-	void load(const QString &filename);
-	void save(const QString &filename);
+	KviSharedFile * addSharedFile(const QString & szName, const QString & szAbsPath, const QString & szMask, int timeoutInSecs);
+	KviSharedFile * lookupSharedFile(const QString & szName, KviIrcMask * mask, unsigned int uFileSize = 0);
+	bool removeSharedFile(const QString & szName, const QString & szMask, unsigned int uFileSize);
+	bool removeSharedFile(const QString & szName, KviSharedFile * off);
+	void load(const QString & filename);
+	void save(const QString & filename);
 	void clear();
-	KviPointerHashTable<QString,KviSharedFileList> * sharedFileListDict(){ return m_pSharedListDict; };
+	KviPointerHashTable<QString, KviSharedFileList> * sharedFileListDict() { return m_pSharedListDict; };
 private:
 	void doInsert(KviSharedFileList * l, KviSharedFile * o);
 private slots:

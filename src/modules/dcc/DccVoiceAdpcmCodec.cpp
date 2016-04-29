@@ -56,10 +56,8 @@
 #include <stdio.h> /*DBG*/
 
 #ifndef __STDC__
-	#define signed
+#define signed
 #endif
-
-
 
 #define ADPCM_PACKED_FRAME_SIZE_IN_BYTES 512
 #define ADPCM_UNPACKED_FRAME_SIZE_IN_BYTES 2048
@@ -83,10 +81,10 @@ static int stepsizeTable[89] = {
 	15289, 16818, 18500, 20350, 22385, 24623, 27086, 29794, 32767
 };
 
-void ADPCM_compress(short indata[],char outdata[],int len,ADPCM_state *state)
+void ADPCM_compress(short indata[], char outdata[], int len, ADPCM_state * state)
 {
-	short *lpIn;          /* Input buffer pointer */
-	signed char *lpOut;   /* output buffer pointer */
+	short * lpIn;         /* Input buffer pointer */
+	signed char * lpOut;  /* output buffer pointer */
 	int val;              /* Current input sample value */
 	int sign;             /* Current adpcm sign bit */
 	int delta;            /* Current adpcm output value */
@@ -96,10 +94,10 @@ void ADPCM_compress(short indata[],char outdata[],int len,ADPCM_state *state)
 	int vpdiff;           /* Current change to valpred */
 	int index;            /* Current step change index */
 	int outputbuffer = 0; /* place to keep previous 4-bit value */
-	int bufferstep;	      /* toggle between outputbuffer/output */
+	int bufferstep;       /* toggle between outputbuffer/output */
 
 	lpOut = (signed char *)outdata;
-	lpIn  = indata;
+	lpIn = indata;
 
 	valpred = state->valprev;
 	index = state->index;
@@ -107,12 +105,14 @@ void ADPCM_compress(short indata[],char outdata[],int len,ADPCM_state *state)
 
 	bufferstep = 1;
 
-	for ( ;len > 0;len-- ) {
+	for(; len > 0; len--)
+	{
 		val = *lpIn++;
 		// Step 1 - compute difference with previous value
 		diff = val - valpred;
 		sign = (diff < 0) ? 8 : 0;
-		if(sign)diff=(-diff);
+		if(sign)
+			diff = (-diff);
 		// Step 2 - Divide and clamp
 		// Note:
 		// This code *approximately* computes:
@@ -124,57 +124,69 @@ void ADPCM_compress(short indata[],char outdata[],int len,ADPCM_state *state)
 		//
 		delta = 0;
 		vpdiff = (step >> 3);
-		if (diff >=step){
+		if(diff >= step)
+		{
 			delta = 4;
 			diff -= step;
 			vpdiff += step;
 		}
 		step >>= 1;
-		if (diff >= step) {
+		if(diff >= step)
+		{
 			delta |= 2;
 			diff -= step;
 			vpdiff += step;
 		}
 		step >>= 1;
-		if ( diff >= step ) {
+		if(diff >= step)
+		{
 			delta |= 1;
 			vpdiff += step;
 		}
 		// Step 3 - Update previous value
-		if(sign)valpred -= vpdiff;
-		else valpred += vpdiff;
+		if(sign)
+			valpred -= vpdiff;
+		else
+			valpred += vpdiff;
 		// Step 4 - Clamp previous value to 16 bits
-		if ( valpred > 32767 )valpred = 32767;
-		else if ( valpred < -32768 )valpred = -32768;
+		if(valpred > 32767)
+			valpred = 32767;
+		else if(valpred < -32768)
+			valpred = -32768;
 		// Step 5 - Assemble value, update index and step values
 		delta |= sign;
 		index += indexTable[delta];
-		if ( index < 0 ) index = 0;
-		if ( index > 88 ) index = 88;
+		if(index < 0)
+			index = 0;
+		if(index > 88)
+			index = 88;
 		step = stepsizeTable[index];
 		// Step 6 - Output value
-		if ( bufferstep )outputbuffer = (delta << 4) & 0xf0;
-		else *lpOut++ = (delta & 0x0f) | outputbuffer;
+		if(bufferstep)
+			outputbuffer = (delta << 4) & 0xf0;
+		else
+			*lpOut++ = (delta & 0x0f) | outputbuffer;
 		bufferstep = !bufferstep;
 	}
 	// Output last step, if needed
-	if (!bufferstep)*lpOut++ = outputbuffer;
+	if(!bufferstep)
+		*lpOut++ = outputbuffer;
 	state->valprev = valpred;
 	state->index = index;
 }
 
-void ADPCM_uncompress(char indata[],short outdata[],int len,ADPCM_state *state)
+void ADPCM_uncompress(char indata[], short outdata[], int len, ADPCM_state * state)
 {
-	signed char *inp;		/* Input buffer pointer */
-	short *outp;		/* output buffer pointer */
-	int sign;			/* Current adpcm sign bit */
-	int delta;			/* Current adpcm output value */
-	int step;			/* Stepsize */
-	int valpred;		/* Predicted value */
-	int vpdiff;			/* Current change to valpred */
-	int index;			/* Current step change index */
-	int inputbuffer=0;  /* place to keep next 4-bit value */
-	int bufferstep;		/* toggle between inputbuffer/input */
+	signed char * inp;   /* Input buffer pointer */
+	short * outp;        /* output buffer pointer */
+	int sign;            /* Current adpcm sign bit */
+	int delta;           /* Current adpcm output value */
+	int step;            /* Stepsize */
+	int valpred;         /* Predicted value */
+	int vpdiff;          /* Current change to valpred */
+	int index;           /* Current step change index */
+	int inputbuffer = 0; /* place to keep next 4-bit value */
+	int bufferstep;      /* toggle between inputbuffer/input */
 
 	outp = outdata;
 	inp = (signed char *)indata;
@@ -185,10 +197,13 @@ void ADPCM_uncompress(char indata[],short outdata[],int len,ADPCM_state *state)
 
 	bufferstep = 0;
 
-	for ( ; len > 0 ; len-- ) {
+	for(; len > 0; len--)
+	{
 		/* Step 1 - get the delta value */
-		if ( bufferstep )delta = inputbuffer & 0xf;
-		else {
+		if(bufferstep)
+			delta = inputbuffer & 0xf;
+		else
+		{
 			inputbuffer = *inp++;
 			delta = (inputbuffer >> 4) & 0xf;
 		}
@@ -196,8 +211,10 @@ void ADPCM_uncompress(char indata[],short outdata[],int len,ADPCM_state *state)
 
 		/* Step 2 - Find new index value (for later) */
 		index += indexTable[delta];
-		if ( index < 0 ) index = 0;
-		if ( index > 88 ) index = 88;
+		if(index < 0)
+			index = 0;
+		if(index > 88)
+			index = 88;
 
 		/* Step 3 - Separate sign and magnitude */
 		sign = delta & 8;
@@ -209,16 +226,23 @@ void ADPCM_uncompress(char indata[],short outdata[],int len,ADPCM_state *state)
 		** in adpcm_coder.
 		*/
 		vpdiff = step >> 3;
-		if( delta & 4 )vpdiff += step;
-		if( delta & 2 )vpdiff += step>>1;
-		if( delta & 1 )vpdiff += step>>2;
+		if(delta & 4)
+			vpdiff += step;
+		if(delta & 2)
+			vpdiff += step >> 1;
+		if(delta & 1)
+			vpdiff += step >> 2;
 
-		if(sign)valpred -= vpdiff;
-		else valpred += vpdiff;
+		if(sign)
+			valpred -= vpdiff;
+		else
+			valpred += vpdiff;
 
 		/* Step 5 - clamp output value */
-		if(valpred > 32767)valpred = 32767;
-		else if(valpred < -32768)valpred = -32768;
+		if(valpred > 32767)
+			valpred = 32767;
+		else if(valpred < -32768)
+			valpred = -32768;
 
 		/* Step 6 - Update step value */
 		step = stepsizeTable[index];
@@ -231,9 +255,8 @@ void ADPCM_uncompress(char indata[],short outdata[],int len,ADPCM_state *state)
 	state->index = index;
 }
 
-
 DccVoiceAdpcmCodec::DccVoiceAdpcmCodec()
-: DccVoiceCodec()
+    : DccVoiceCodec()
 {
 	m_pEncodeState = new ADPCM_state;
 	m_pEncodeState->index = 0;
@@ -250,9 +273,10 @@ DccVoiceAdpcmCodec::~DccVoiceAdpcmCodec()
 	delete m_pDecodeState;
 }
 
-void DccVoiceAdpcmCodec::encode(KviDataBuffer * signal,KviDataBuffer * stream)
+void DccVoiceAdpcmCodec::encode(KviDataBuffer * signal, KviDataBuffer * stream)
 {
-	if(signal->size() < ADPCM_UNPACKED_FRAME_SIZE_IN_BYTES)return; // nothing to encode
+	if(signal->size() < ADPCM_UNPACKED_FRAME_SIZE_IN_BYTES)
+		return; // nothing to encode
 
 	char * ptr = (char *)signal->data();
 
@@ -265,16 +289,17 @@ void DccVoiceAdpcmCodec::encode(KviDataBuffer * signal,KviDataBuffer * stream)
 
 	while(ptr != endPtr)
 	{
-		ADPCM_compress((short *)ptr,(char *)(stream->data() + uFrameOffset),ADPCM_UNPACKED_FRAME_SIZE_IN_SHORTS,m_pEncodeState);
+		ADPCM_compress((short *)ptr, (char *)(stream->data() + uFrameOffset), ADPCM_UNPACKED_FRAME_SIZE_IN_SHORTS, m_pEncodeState);
 		ptr += ADPCM_UNPACKED_FRAME_SIZE_IN_BYTES;
 		uFrameOffset += ADPCM_PACKED_FRAME_SIZE_IN_BYTES;
 	}
 	signal->remove(uTotalDataCompressed);
 }
 
-void DccVoiceAdpcmCodec::decode(KviDataBuffer * stream,KviDataBuffer * signal)
+void DccVoiceAdpcmCodec::decode(KviDataBuffer * stream, KviDataBuffer * signal)
 {
-	if(stream->size() < ADPCM_PACKED_FRAME_SIZE_IN_BYTES)return; // nothing to decode
+	if(stream->size() < ADPCM_PACKED_FRAME_SIZE_IN_BYTES)
+		return; // nothing to decode
 
 	char * ptr = (char *)stream->data();
 
@@ -288,7 +313,7 @@ void DccVoiceAdpcmCodec::decode(KviDataBuffer * stream,KviDataBuffer * signal)
 
 	while(ptr != endPtr)
 	{
-		ADPCM_uncompress((char *)ptr,(short *)(signal->data() + uSignalOffset),ADPCM_UNPACKED_FRAME_SIZE_IN_SHORTS,m_pDecodeState);
+		ADPCM_uncompress((char *)ptr, (short *)(signal->data() + uSignalOffset), ADPCM_UNPACKED_FRAME_SIZE_IN_SHORTS, m_pDecodeState);
 		ptr += ADPCM_PACKED_FRAME_SIZE_IN_BYTES;
 		uSignalOffset += ADPCM_UNPACKED_FRAME_SIZE_IN_BYTES;
 	}

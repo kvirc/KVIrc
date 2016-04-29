@@ -23,12 +23,10 @@
 //
 //=============================================================================
 
-
 #include "KviError.h"
 #include "kvi_debug.h"
 #include "KviLocale.h"
 #include "KvsObject_checkBox.h"
-
 
 #include <QCheckBox>
 
@@ -63,63 +61,62 @@
 
 //---------------------------------------------------------------------------------
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_checkBox,"checkbox","button")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_checkBox,setChecked)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_checkBox,isChecked)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_checkBox,toggleEvent)
+KVSO_BEGIN_REGISTERCLASS(KvsObject_checkBox, "checkbox", "button")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_checkBox, setChecked)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_checkBox, isChecked)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_checkBox, toggleEvent)
 KVSO_END_REGISTERCLASS(KvsObject_checkBox)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_checkBox,KvsObject_button)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_checkBox, KvsObject_button)
 
 KVSO_END_CONSTRUCTOR(KvsObject_checkBox)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_checkBox)
 
 KVSO_END_CONSTRUCTOR(KvsObject_checkBox)
 
-bool KvsObject_checkBox::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_checkBox::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
-	QCheckBox  * cb = new QCheckBox(parentScriptWidget());
+	QCheckBox * cb = new QCheckBox(parentScriptWidget());
 	cb->setObjectName(getName().toUtf8().data());
 	setObject(cb, true);
-	connect(cb,SIGNAL(toggled(bool)),this,SLOT(toggled(bool)));
-	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
+	connect(cb, SIGNAL(toggled(bool)), this, SLOT(toggled(bool)));
+	connect(widget(), SIGNAL(clicked()), this, SLOT(slotClicked()));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(checkBox,isChecked)
+KVSO_CLASS_FUNCTION(checkBox, isChecked)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(((QCheckBox *)widget())->isChecked());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(checkBox,setChecked)
+KVSO_CLASS_FUNCTION(checkBox, setChecked)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	bool bChecked;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bChecked",KVS_PT_BOOL,KVS_PF_OPTIONAL,bChecked)
+	KVSO_PARAMETER("bChecked", KVS_PT_BOOL, KVS_PF_OPTIONAL, bChecked)
 	KVSO_PARAMETERS_END(c)
 	((QCheckBox *)widget())->setChecked(bChecked);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(checkBox,setText)
+KVSO_CLASS_FUNCTION(checkBox, setText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("<text>",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETER("<text>", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
 	((QCheckBox *)widget())->setText(szText);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(checkBox,toggleEvent)
+KVSO_CLASS_FUNCTION(checkBox, toggleEvent)
 {
-	emitSignal("toggled",c,c->params());
+	emitSignal("toggled", c, c->params());
 	return true;
 }
 
@@ -127,5 +124,5 @@ KVSO_CLASS_FUNCTION(checkBox,toggleEvent)
 void KvsObject_checkBox::toggled(bool b)
 {
 	KviKvsVariantList params(new KviKvsVariant(b));
-	callFunction(this,"toggleEvent",&params);
+	callFunction(this, "toggleEvent", &params);
 }

@@ -33,7 +33,6 @@
 
 KviPointerList<ListWindow> * g_pListWindowList = 0;
 
-
 /*
 	@doc: list.open
 	@type:
@@ -50,17 +49,19 @@ KviPointerList<ListWindow> * g_pListWindowList = 0;
 		is requested from the server.
 */
 
-
 static bool list_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 
-	if(!c->window()->console()) return c->context()->errorNoIrcContext();
+	if(!c->window()->console())
+		return c->context()->errorNoIrcContext();
 
 	if(!(c->window()->context()->listWindow()))
 	{
 		ListWindow * w = new ListWindow(c->window()->console());
 		g_pMainWindow->addWindow(w);
-	} else {
+	}
+	else
+	{
 		c->warning(__tr2qs("List window already open for this IRC context"));
 	}
 
@@ -72,7 +73,7 @@ static bool list_module_init(KviModule * m)
 	g_pListWindowList = new KviPointerList<ListWindow>;
 	g_pListWindowList->setAutoDelete(false);
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",list_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", list_kvs_cmd_open);
 	return true;
 }
 
@@ -91,13 +92,12 @@ static bool list_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"List",                                             // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"List window extension",
-	list_module_init,
-	list_module_can_unload,
-	0,
-	list_module_cleanup,
-	0
-)
+    "List",                                                              // module name
+    "4.0.0",                                                             // module version
+    "Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "List window extension",
+    list_module_init,
+    list_module_can_unload,
+    0,
+    list_module_cleanup,
+    0)

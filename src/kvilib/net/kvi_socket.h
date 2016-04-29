@@ -36,65 +36,62 @@
 #include "kvi_inttypes.h"
 
 //#ifndef _KVI_SOCKET_CPP_
-	extern KVILIB_API kvi_u64_t g_uOutgoingTraffic;
-	extern KVILIB_API kvi_u64_t g_uIncomingTraffic;
+extern KVILIB_API kvi_u64_t g_uOutgoingTraffic;
+extern KVILIB_API kvi_u64_t g_uIncomingTraffic;
 //#endif //!_KVI_SOCKET_CPP_
-
-
 
 #if defined(COMPILE_ON_WINDOWS) || (defined(COMPILE_ON_MINGW) && !defined(OS2))
 
-	#define KVI_INVALID_SOCKET INVALID_SOCKET
+#define KVI_INVALID_SOCKET INVALID_SOCKET
 
-	//every decent win version should contain IPPROTO_IPV6
+//every decent win version should contain IPPROTO_IPV6
 
-	//mingw win32 headers do not have this, mingw-w64-headers do however
+//mingw win32 headers do not have this, mingw-w64-headers do however
 #if defined(COMPILE_ON_MINGW)
-	#ifndef IPV6_PROTECTION_LEVEL
-		#define IPV6_PROTECTION_LEVEL          23
-		#define PROTECTION_LEVEL_UNRESTRICTED  10  /* for peer-to-peer apps  */
-		#define PROTECTION_LEVEL_DEFAULT       20  /* default level          */
-		#define PROTECTION_LEVEL_RESTRICTED    30  /* for Intranet apps      */
-	#endif
+#ifndef IPV6_PROTECTION_LEVEL
+#define IPV6_PROTECTION_LEVEL 23
+#define PROTECTION_LEVEL_UNRESTRICTED 10 /* for peer-to-peer apps  */
+#define PROTECTION_LEVEL_DEFAULT 20      /* default level          */
+#define PROTECTION_LEVEL_RESTRICTED 30   /* for Intranet apps      */
+#endif
 #endif
 
-	#define KVI_IPV6_PROTECTION_LEVEL          IPV6_PROTECTION_LEVEL
-	#define KVI_PROTECTION_LEVEL_RESTRICTED    PROTECTION_LEVEL_RESTRICTED
-	#define KVI_PROTECTION_LEVEL_DEFAULT       PROTECTION_LEVEL_DEFAULT
-	#define KVI_PROTECTION_LEVEL_UNRESTRICTED  PROTECTION_LEVEL_UNRESTRICTED
-	#define KVI_IPPROTO_IPV6                   IPPROTO_IPV6
+#define KVI_IPV6_PROTECTION_LEVEL IPV6_PROTECTION_LEVEL
+#define KVI_PROTECTION_LEVEL_RESTRICTED PROTECTION_LEVEL_RESTRICTED
+#define KVI_PROTECTION_LEVEL_DEFAULT PROTECTION_LEVEL_DEFAULT
+#define KVI_PROTECTION_LEVEL_UNRESTRICTED PROTECTION_LEVEL_UNRESTRICTED
+#define KVI_IPPROTO_IPV6 IPPROTO_IPV6
 
 #else //!(defined(COMPILE_ON_WINDOWS) || (defined(COMPILE_ON_MINGW) && !defined(OS2))
 
-	#include <sys/time.h>
-	#include <sys/types.h>
-	#include <sys/socket.h>
-	#include <netinet/tcp.h>
-	#include <netinet/in.h>
-	#include <fcntl.h>
-	#include <unistd.h>
+#include <sys/time.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/tcp.h>
+#include <netinet/in.h>
+#include <fcntl.h>
+#include <unistd.h>
 
-	#define KVI_INVALID_SOCKET (-1)
+#define KVI_INVALID_SOCKET (-1)
 #endif //!(defined(COMPILE_ON_WINDOWS) || (defined(COMPILE_ON_MINGW) && !defined(OS2))
 
 #ifndef MSG_NOSIGNAL
-	// At least solaris seems to not have it
-	#define MSG_NOSIGNAL 0
+// At least solaris seems to not have it
+#define MSG_NOSIGNAL 0
 #endif //!MSG_NOSIGNAL
-
 
 //================================================================================================
 // Constants for kvi_socket_create
 //
 
-#define KVI_SOCKET_PF_INET     PF_INET
-#define KVI_SOCKET_PF_INET6    PF_INET6
-#define KVI_SOCKET_PF_UNIX     PF_UNIX
+#define KVI_SOCKET_PF_INET PF_INET
+#define KVI_SOCKET_PF_INET6 PF_INET6
+#define KVI_SOCKET_PF_UNIX PF_UNIX
 
 #define KVI_SOCKET_TYPE_STREAM SOCK_STREAM
-#define KVI_SOCKET_TYPE_DGRAM  SOCK_DGRAM
+#define KVI_SOCKET_TYPE_DGRAM SOCK_DGRAM
 
-#define KVI_SOCKET_PROTO_TCP   0
+#define KVI_SOCKET_PROTO_TCP 0
 
 //================================================================================================
 // kvi_socket_create
@@ -108,19 +105,19 @@
 
 #define kvi_socket_open kvi_socket_create
 
-inline kvi_socket_t kvi_socket_create(int pf,int type,int proto)
+inline kvi_socket_t kvi_socket_create(int pf, int type, int proto)
 {
 #ifdef COMPILE_ON_MAC
 	/*
 	 * Ignore SIGPIPE. Under linux we set MSG_NOSIGNAL on send and recv calls,
 	 * but under OSX (and probably other *BSD) we need to set SO_NOSIGPIPE
 	 */
-	kvi_socket_t fd = (kvi_socket_t)socket(pf,type,proto);
+	kvi_socket_t fd = (kvi_socket_t)socket(pf, type, proto);
 	int set = 1;
 	setsockopt(fd, SOL_SOCKET, SO_NOSIGPIPE, (void *)&set, sizeof(int));
 	return fd;
 #else
-	return (kvi_socket_t)socket(pf,type,proto);
+	return (kvi_socket_t)socket(pf, type, proto);
 #endif
 }
 
@@ -169,9 +166,9 @@ inline bool kvi_socket_setNonBlocking(kvi_socket_t sock)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	unsigned long arg = 1;
-	return (ioctlsocket(sock,FIONBIO,(unsigned long FAR *)&arg) == 0);
+	return (ioctlsocket(sock, FIONBIO, (unsigned long FAR *)&arg) == 0);
 #else
-	return (fcntl(sock,F_SETFL,O_NONBLOCK) == 0);
+	return (fcntl(sock, F_SETFL, O_NONBLOCK) == 0);
 #endif
 }
 
@@ -181,9 +178,9 @@ inline bool kvi_socket_setNonBlocking(kvi_socket_t sock)
 //   Standard bind() call on the socket. Returns false in case of failure
 //
 
-inline bool kvi_socket_bind(kvi_socket_t sock,const struct sockaddr * sa,int salen)
+inline bool kvi_socket_bind(kvi_socket_t sock, const struct sockaddr * sa, int salen)
 {
-	return (::bind(sock,sa,salen) == 0);
+	return (::bind(sock, sa, salen) == 0);
 }
 
 //================================================================================================
@@ -194,12 +191,12 @@ inline bool kvi_socket_bind(kvi_socket_t sock,const struct sockaddr * sa,int sal
 //   You might take a look at kvi_socket_errno() then.
 //
 
-inline bool kvi_socket_connect(kvi_socket_t sock,const struct sockaddr *sa,int salen)
+inline bool kvi_socket_connect(kvi_socket_t sock, const struct sockaddr * sa, int salen)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	return (WSAConnect(sock,sa,salen,0,0,0,0) == 0);
+	return (WSAConnect(sock, sa, salen, 0, 0, 0, 0) == 0);
 #else
-	return (::connect(sock,sa,salen) == 0);
+	return (::connect(sock, sa, salen) == 0);
 #endif
 }
 
@@ -228,12 +225,12 @@ inline bool kvi_socket_recoverableError(int err)
 //   You should check kvi_socket_errno() then.
 //
 
-inline kvi_socket_t kvi_socket_accept(kvi_socket_t sock,struct sockaddr *sa,int * salen)
+inline kvi_socket_t kvi_socket_accept(kvi_socket_t sock, struct sockaddr * sa, int * salen)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	return (kvi_socket_t)::accept(sock,sa,salen);
+	return (kvi_socket_t)::accept(sock, sa, salen);
 #else
-	return (kvi_socket_t)::accept(sock,sa,(socklen_t *)salen);
+	return (kvi_socket_t)::accept(sock, sa, (socklen_t *)salen);
 #endif
 }
 
@@ -244,9 +241,9 @@ inline kvi_socket_t kvi_socket_accept(kvi_socket_t sock,struct sockaddr *sa,int 
 //   You should check kvi_socket_errno() then.
 //
 
-inline bool kvi_socket_listen(kvi_socket_t sock,int backlog)
+inline bool kvi_socket_listen(kvi_socket_t sock, int backlog)
 {
-	return (::listen(sock,backlog) == 0);
+	return (::listen(sock, backlog) == 0);
 }
 
 //================================================================================================
@@ -258,9 +255,9 @@ inline bool kvi_socket_listen(kvi_socket_t sock,int backlog)
 //   or something that is less than 0 in case of error. You should check kvi_socket_errno() then.
 //
 
-inline int kvi_socket_select(int nhpo,fd_set *r,fd_set *w,fd_set *e,struct timeval * t)
+inline int kvi_socket_select(int nhpo, fd_set * r, fd_set * w, fd_set * e, struct timeval * t)
 {
-	return ::select(nhpo,r,w,e,t);
+	return ::select(nhpo, r, w, e, t);
 }
 
 //================================================================================================
@@ -273,13 +270,13 @@ inline int kvi_socket_select(int nhpo,fd_set *r,fd_set *w,fd_set *e,struct timev
 
 #define kvi_socket_write kvi_socket_send
 
-inline int kvi_socket_send(kvi_socket_t sock,const void * buf,int size)
+inline int kvi_socket_send(kvi_socket_t sock, const void * buf, int size)
 {
-	g_uOutgoingTraffic+=size;
+	g_uOutgoingTraffic += size;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	return ::send(sock,(const char *)buf,size,0);
+	return ::send(sock, (const char *)buf, size, 0);
 #else
-	return ::send(sock,buf,size,MSG_NOSIGNAL | MSG_DONTWAIT);
+	return ::send(sock, buf, size, MSG_NOSIGNAL | MSG_DONTWAIT);
 #endif
 }
 
@@ -293,15 +290,15 @@ inline int kvi_socket_send(kvi_socket_t sock,const void * buf,int size)
 
 #define kvi_socket_read kvi_socket_recv
 
-inline int kvi_socket_recv(kvi_socket_t sock,void * buf,int maxlen)
+inline int kvi_socket_recv(kvi_socket_t sock, void * buf, int maxlen)
 {
 	int iReceived;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	iReceived = ::recv(sock,(char *)buf,maxlen,0);
+	iReceived = ::recv(sock, (char *)buf, maxlen, 0);
 #else
-	iReceived = ::recv(sock,buf,maxlen,MSG_NOSIGNAL);
+	iReceived = ::recv(sock, buf, maxlen, MSG_NOSIGNAL);
 #endif
-	g_uIncomingTraffic+=iReceived;
+	g_uIncomingTraffic += iReceived;
 	return iReceived;
 }
 
@@ -312,12 +309,12 @@ inline int kvi_socket_recv(kvi_socket_t sock,void * buf,int maxlen)
 //   You should check kvi_socket_errno() then.
 //
 
-inline bool kvi_socket_getsockopt(kvi_socket_t sock,int level,int optname,void *optval,int *optlen)
+inline bool kvi_socket_getsockopt(kvi_socket_t sock, int level, int optname, void * optval, int * optlen)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	return (::getsockopt(sock,level,optname,(char FAR *)optval,optlen) == 0);
+	return (::getsockopt(sock, level, optname, (char FAR *)optval, optlen) == 0);
 #else
-	return (::getsockopt(sock,level,optname,optval,(socklen_t *)optlen) == 0);
+	return (::getsockopt(sock, level, optname, optval, (socklen_t *)optlen) == 0);
 #endif
 }
 
@@ -328,15 +325,14 @@ inline bool kvi_socket_getsockopt(kvi_socket_t sock,int level,int optname,void *
 //   You should check kvi_socket_errno() then.
 //
 
-inline bool kvi_socket_setsockopt(kvi_socket_t sock,int level,int optname,const void *optval,int optlen)
+inline bool kvi_socket_setsockopt(kvi_socket_t sock, int level, int optname, const void * optval, int optlen)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	return (::setsockopt(sock,level,optname,(char FAR *)optval,optlen) == 0);
+	return (::setsockopt(sock, level, optname, (char FAR *)optval, optlen) == 0);
 #else
-	return (::setsockopt(sock,level,optname,optval,optlen) == 0);
+	return (::setsockopt(sock, level, optname, optval, optlen) == 0);
 #endif
 }
-
 
 //================================================================================================
 // kvi_socket_disableNagle
@@ -360,12 +356,12 @@ inline bool kvi_socket_disableNagle(kvi_socket_t sock)
 //   You should check kvi_socket_errno() then.
 //
 
-inline bool kvi_socket_getsockname(kvi_socket_t sock,struct sockaddr * addr,int * addrlen)
+inline bool kvi_socket_getsockname(kvi_socket_t sock, struct sockaddr * addr, int * addrlen)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	return (::getsockname(sock,addr,addrlen) == 0);
+	return (::getsockname(sock, addr, addrlen) == 0);
 #else
-	return (::getsockname(sock,addr,(socklen_t *)addrlen) == 0);
+	return (::getsockname(sock, addr, (socklen_t *)addrlen) == 0);
 #endif
 }
 
@@ -377,6 +373,5 @@ inline int kvi_socket_error()
 	return errno;
 #endif
 }
-
 
 #endif //_KVI_SOCKET_H_

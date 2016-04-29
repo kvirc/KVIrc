@@ -41,13 +41,12 @@
 
 #include <time.h>
 
-
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#define KVI_PATH_SEPARATOR "\\"
-	#define KVI_PATH_SEPARATOR_CHAR '\\'
+#define KVI_PATH_SEPARATOR "\\"
+#define KVI_PATH_SEPARATOR_CHAR '\\'
 #else
-	#define KVI_PATH_SEPARATOR "/"
-	#define KVI_PATH_SEPARATOR_CHAR '/'
+#define KVI_PATH_SEPARATOR "/"
+#define KVI_PATH_SEPARATOR_CHAR '/'
 #endif
 
 // #warning "Add kvi_trashFile(const char * path) ? - is it needed in the whole app"
@@ -89,7 +88,7 @@ namespace KviFileUtils
 	* \param szPath The path to the file
 	* \return bool
 	*/
-	inline bool fileExists(const QString & szPath){ return QFile::exists(szPath); }
+	inline bool fileExists(const QString & szPath) { return QFile::exists(szPath); }
 
 	/**
 	* \brief Removes a file
@@ -204,7 +203,7 @@ namespace KviFileUtils
 	* \param szFileNameWithPath The complete path to the file
 	* \return QString
 	*/
-	KVILIB_API QString extractFileName(const QString & szFileNameWithPath,bool bAllowEmpty = true);
+	KVILIB_API QString extractFileName(const QString & szFileNameWithPath, bool bAllowEmpty = true);
 
 	/**
 	* \brief Extracts the filename from a complete path (strips leading path)
@@ -235,7 +234,7 @@ namespace KviFileUtils
 	* \param szDst The destination file
 	* \return bool
 	*/
-	KVILIB_API bool renameFile(const QString & szSrc,const QString & szDst);
+	KVILIB_API bool renameFile(const QString & szSrc, const QString & szDst);
 
 	/**
 	* \brief Rename or move the file (mv)
@@ -312,12 +311,11 @@ namespace KviFileUtils
 	* \return void
 	*/
 	KVILIB_API void cleanFileName(QString & szPath);
-	
+
 	/**
 	* Build a recursive file listing
 	*/
-	KVILIB_API QStringList getFileListing(const QString &szPath);
-	
+	KVILIB_API QStringList getFileListing(const QString & szPath);
 }
 
 #endif //_KVI_FILEUTILS_H

@@ -36,17 +36,19 @@ class KVIRC_API KviKvsSwitchList
 public:
 	KviKvsSwitchList();
 	~KviKvsSwitchList();
+
 protected:
-	KviPointerHashTable<unsigned short,KviKvsVariant> * m_pShortSwitchDict;
-	KviPointerHashTable<QString,KviKvsVariant>    * m_pLongSwitchDict;
+	KviPointerHashTable<unsigned short, KviKvsVariant> * m_pShortSwitchDict;
+	KviPointerHashTable<QString, KviKvsVariant> * m_pLongSwitchDict;
+
 public:
 	void clear();
-	void addShort(unsigned short uShortKey,KviKvsVariant * pVariant);
-	void addLong(const QString &szLongKey,KviKvsVariant * pVariant);
+	void addShort(unsigned short uShortKey, KviKvsVariant * pVariant);
+	void addLong(const QString & szLongKey, KviKvsVariant * pVariant);
 
-	bool isEmpty(){ return ((m_pShortSwitchDict == 0) && (m_pLongSwitchDict == 0)); };
+	bool isEmpty() { return ((m_pShortSwitchDict == 0) && (m_pLongSwitchDict == 0)); };
 
-	KviKvsVariant * find(const QChar &c)
+	KviKvsVariant * find(const QChar & c)
 	{
 		return m_pShortSwitchDict ? m_pShortSwitchDict->find(c.unicode()) : 0;
 	};
@@ -56,25 +58,26 @@ public:
 		return m_pShortSwitchDict ? m_pShortSwitchDict->find((int)uShortKey) : 0;
 	};
 
-	KviKvsVariant * find(const QString &szLongKey)
+	KviKvsVariant * find(const QString & szLongKey)
 	{
 		return m_pLongSwitchDict ? m_pLongSwitchDict->find(szLongKey) : 0;
 	};
 
-	KviKvsVariant * find(unsigned short uShortKey,const QString &szLongKey)
+	KviKvsVariant * find(unsigned short uShortKey, const QString & szLongKey)
 	{
 		if(m_pLongSwitchDict)
 		{
 			KviKvsVariant * t;
 			t = m_pLongSwitchDict->find(szLongKey);
-			if(t)return t;
+			if(t)
+				return t;
 		}
 		return m_pShortSwitchDict ? m_pShortSwitchDict->find((int)uShortKey) : 0;
 	};
 
-	bool getAsStringIfExisting(unsigned short uShortKey,const QString &szLongKey,QString &szBuffer)
+	bool getAsStringIfExisting(unsigned short uShortKey, const QString & szLongKey, QString & szBuffer)
 	{
-		KviKvsVariant * v = find(uShortKey,szLongKey);
+		KviKvsVariant * v = find(uShortKey, szLongKey);
 		if(v)
 		{
 			v->asString(szBuffer);

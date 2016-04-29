@@ -34,10 +34,12 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeVariable : public KviKvsTreeNodeData
 {
 public:
-	KviKvsTreeNodeVariable(const QChar * pLocation,const QString &szIdentifier);
+	KviKvsTreeNodeVariable(const QChar * pLocation, const QString & szIdentifier);
 	~KviKvsTreeNodeVariable();
+
 protected:
 	QString m_szIdentifier;
+
 protected:
 	virtual bool isReadOnly();
 	virtual bool canEvaluateInObjectScope();

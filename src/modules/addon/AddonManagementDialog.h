@@ -42,44 +42,48 @@ class KviKvsScriptAddon;
 class AddonListViewItem : public KviTalListWidgetItem
 {
 public:
-	AddonListViewItem(KviTalListWidget * v,KviKvsScriptAddon * a);
+	AddonListViewItem(KviTalListWidget * v, KviKvsScriptAddon * a);
 	~AddonListViewItem();
+
 protected:
 	KviKvsScriptAddon * m_pAddon;
-	QTextDocument     * m_pText;
-	QPixmap           * m_pIcon;
-	QListWidget       * m_pListWidget;
-	QString             m_szKey;
+	QTextDocument * m_pText;
+	QPixmap * m_pIcon;
+	QListWidget * m_pListWidget;
+	QString m_szKey;
+
 public:
-	KviKvsScriptAddon * addon(){ return m_pAddon; };
+	KviKvsScriptAddon * addon() { return m_pAddon; };
 };
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-	class WebAddonInterfaceDialog;
+class WebAddonInterfaceDialog;
 #endif //COMPILE_WEBKIT_SUPPORT
-
 
 class AddonManagementDialog : public QWidget
 {
 	Q_OBJECT
 protected:
 	AddonManagementDialog(QWidget * p);
+
 public:
 	~AddonManagementDialog();
+
 protected:
-	KviTalListWidget                 * m_pListWidget;
+	KviTalListWidget * m_pListWidget;
 	static AddonManagementDialog * m_pInstance;
-	QToolButton                      * m_pConfigureButton;
-	QToolButton                      * m_pHelpButton;
-	QToolButton                      * m_pPackButton;
-	QToolButton                      * m_pUninstallButton;
+	QToolButton * m_pConfigureButton;
+	QToolButton * m_pHelpButton;
+	QToolButton * m_pPackButton;
+	QToolButton * m_pUninstallButton;
 #ifdef COMPILE_WEBKIT_SUPPORT
 	QPointer<WebAddonInterfaceDialog> m_pWebInterfaceDialog;
 #endif //COMPILE_WEBKIT_SUPPORT
 public:
-	static AddonManagementDialog * instance(){ return m_pInstance; };
+	static AddonManagementDialog * instance() { return m_pInstance; };
 	static void display(bool bTopLevel);
 	static void cleanup();
+
 protected:
 	void fillListView();
 	virtual void closeEvent(QCloseEvent * e);

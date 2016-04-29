@@ -37,10 +37,12 @@ class KVIRC_API KviTreeWindowListItem : public QTreeWidgetItem, public KviWindow
 	friend class KviTreeWindowList;
 	friend class KviTreeWindowListTreeWidget;
 	friend class KviTreeWindowListItemInternal;
+
 public:
-	KviTreeWindowListItem(QTreeWidget * par,KviWindow * wnd);
-	KviTreeWindowListItem(KviTreeWindowListItem * par,KviWindow * wnd);
+	KviTreeWindowListItem(QTreeWidget * par, KviWindow * wnd);
+	KviTreeWindowListItem(KviTreeWindowListItem * par, KviWindow * wnd);
 	~KviTreeWindowListItem();
+
 public:
 	virtual QString key() const;
 	virtual void captionChanged();
@@ -48,11 +50,12 @@ public:
 	virtual void unhighlight();
 	virtual void setProgress(int progress);
 	virtual void applyOptions();
+
 protected:
 	void setActive(bool bActive);
-	bool operator<(const QTreeWidgetItem &other)const
+	bool operator<(const QTreeWidgetItem & other) const
 	{
-		return key() < ((KviTreeWindowListItem*)&other)->key();
+		return key() < ((KviTreeWindowListItem *)&other)->key();
 	}
 };
 
@@ -71,6 +74,7 @@ protected:
 	virtual void wheelEvent(QWheelEvent * e);
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual void paintEvent(QPaintEvent * event);
+
 private:
 	KviWindowListItem * lastItem();
 	bool bReverseSort;
@@ -85,11 +89,13 @@ class KVIRC_API KviTreeWindowList : public KviWindowListBase
 public:
 	KviTreeWindowList();
 	~KviTreeWindowList();
+
 private:
-	KviTreeWindowListTreeWidget   * m_pTreeWidget;
-	KviTreeWindowListItem         * m_pCurrentItem;
-	KviDynamicToolTip             * m_pToolTip;
-	QStyledItemDelegate           * m_pItemDelegate;
+	KviTreeWindowListTreeWidget * m_pTreeWidget;
+	KviTreeWindowListItem * m_pCurrentItem;
+	KviDynamicToolTip * m_pToolTip;
+	QStyledItemDelegate * m_pItemDelegate;
+
 public:
 	virtual KviWindowListItem * addItem(KviWindow *);
 	virtual bool removeItem(KviWindowListItem *);
@@ -101,10 +107,11 @@ public:
 	virtual bool setIterationPointer(KviWindowListItem * it);
 	virtual void updatePseudoTransparency();
 	virtual void updateActivityMeter();
+
 protected:
 	virtual void moveEvent(QMoveEvent *);
 protected slots:
-	void tipRequest(KviDynamicToolTip *tip,const QPoint &pnt);
+	void tipRequest(KviDynamicToolTip * tip, const QPoint & pnt);
 };
 
 #define KVI_TTBID_HIGHLIGHT Qt::UserRole
@@ -114,11 +121,11 @@ class KVIRC_API KviTreeWindowListItemDelegate : public QStyledItemDelegate
 {
 	Q_OBJECT
 public:
-	KviTreeWindowListItemDelegate(QAbstractItemView * pWidget=0)
-		: QStyledItemDelegate(pWidget) {};
+	KviTreeWindowListItemDelegate(QAbstractItemView * pWidget = 0)
+	    : QStyledItemDelegate(pWidget){};
 	~KviTreeWindowListItemDelegate(){};
-	QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
-	void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
+	void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
 };
 
 #endif //_KVI_WINDOWLIST_TREE_H_

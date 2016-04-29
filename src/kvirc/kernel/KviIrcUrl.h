@@ -40,26 +40,29 @@ class KviConsoleWindow;
 // Create /server <server> commands (this irc context)
 #define KVI_IRCURL_CONTEXT_THIS 2
 
-typedef  struct _KviIrcUrlParts {
-		QString szHost;
-		kvi_u32_t iPort;
-		bool bIPv6;
-		bool bSsl;
-		QStringList chanList;
-		int iError;
-	} KviIrcUrlParts;
+typedef struct _KviIrcUrlParts
+{
+	QString szHost;
+	kvi_u32_t iPort;
+	bool bIPv6;
+	bool bSsl;
+	QStringList chanList;
+	int iError;
+} KviIrcUrlParts;
 
 namespace KviIrcUrl
 {
 
-	enum KviIrcUrlParserError {
+	enum KviIrcUrlParserError
+	{
 		InvalidProtocol = 1,
 		InvalidPort = 2,
 		NeedNewContext = 4,
 		InvalidUrl = 8
 	};
 
-	enum KviIrcUrlContextSpec {
+	enum KviIrcUrlContextSpec
+	{
 		FirstFreeContext = 1,
 		NewContext = 2,
 		CurrentContext = 4,
@@ -69,13 +72,13 @@ namespace KviIrcUrl
 		DoNotPartChans = 16
 	};
 
-	extern KVIRC_API bool parse(const char * url,KviCString &cmdBuffer,int contextSpec = KVI_IRCURL_CONTEXT_FIRSTFREE);
+	extern KVIRC_API bool parse(const char * url, KviCString & cmdBuffer, int contextSpec = KVI_IRCURL_CONTEXT_FIRSTFREE);
 
-	extern KVIRC_API int  run(const QString& url,int contextSpec = FirstFreeContext,KviConsoleWindow* pConsole = 0);
+	extern KVIRC_API int run(const QString & url, int contextSpec = FirstFreeContext, KviConsoleWindow * pConsole = 0);
 
-	extern KVIRC_API void split(QString url, KviIrcUrlParts& parts);
-	extern KVIRC_API void join(QString &url, KviIrcServer* server);
-	extern KVIRC_API void makeJoinCmd(const QStringList& chans, QString& szJoinCommand);
+	extern KVIRC_API void split(QString url, KviIrcUrlParts & parts);
+	extern KVIRC_API void join(QString & url, KviIrcServer * server);
+	extern KVIRC_API void makeJoinCmd(const QStringList & chans, QString & szJoinCommand);
 }
 
 #endif // _KVI_IRCURL_H_

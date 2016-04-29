@@ -24,21 +24,20 @@
 
 #include "KviKvsHash.h"
 
-
 KviKvsHash::KviKvsHash()
 {
-	m_pDict = new KviPointerHashTable<QString,KviKvsVariant>(17,false);
+	m_pDict = new KviPointerHashTable<QString, KviKvsVariant>(17, false);
 	m_pDict->setAutoDelete(true);
 }
 
 KviKvsHash::KviKvsHash(const KviKvsHash & hash)
 {
-	m_pDict = new KviPointerHashTable<QString,KviKvsVariant>();
+	m_pDict = new KviPointerHashTable<QString, KviKvsVariant>();
 	m_pDict->setAutoDelete(true);
-	KviPointerHashTableIterator<QString,KviKvsVariant> it(*(hash.m_pDict));
+	KviPointerHashTableIterator<QString, KviKvsVariant> it(*(hash.m_pDict));
 	while(it.current())
 	{
-		m_pDict->replace(it.currentKey(),new KviKvsVariant(*(it.current())));
+		m_pDict->replace(it.currentKey(), new KviKvsVariant(*(it.current())));
 		++it;
 	}
 }
@@ -71,7 +70,7 @@ void KviKvsHash::unset(const QString & szKey)
 
 void KviKvsHash::set(const QString & szKey, KviKvsVariant * pVal)
 {
-	m_pDict->replace(szKey,pVal);
+	m_pDict->replace(szKey, pVal);
 }
 
 KviKvsVariant * KviKvsHash::find(const QString & szKey) const
@@ -89,7 +88,7 @@ void KviKvsHash::clear()
 	m_pDict->clear();
 }
 
-const KviPointerHashTable<QString,KviKvsVariant> * KviKvsHash::dict()
+const KviPointerHashTable<QString, KviKvsVariant> * KviKvsHash::dict()
 {
 	return m_pDict;
 }
@@ -101,7 +100,7 @@ kvs_uint_t KviKvsHash::size() const
 
 void KviKvsHash::appendAsString(QString & szBuffer) const
 {
-	KviPointerHashTableIterator<QString,KviKvsVariant> it(*m_pDict);
+	KviPointerHashTableIterator<QString, KviKvsVariant> it(*m_pDict);
 	bool bNeedComma = false;
 	while(KviKvsVariant * pVariant = it.current())
 	{
@@ -118,7 +117,7 @@ void KviKvsHash::serialize(QString & szResult)
 {
 	QString szTmp;
 	szResult = "{";
-	KviPointerHashTableIterator<QString,KviKvsVariant> it(*m_pDict);
+	KviPointerHashTableIterator<QString, KviKvsVariant> it(*m_pDict);
 	bool bNeedComma = false;
 	while(KviKvsVariant * pVariant = it.current())
 	{
@@ -146,6 +145,6 @@ KviKvsVariant * KviKvsHash::get(const QString & szKey)
 	if(pVariant)
 		return pVariant;
 	pVariant = new KviKvsVariant();
-	m_pDict->replace(szKey,pVariant);
+	m_pDict->replace(szKey, pVariant);
 	return pVariant;
 }

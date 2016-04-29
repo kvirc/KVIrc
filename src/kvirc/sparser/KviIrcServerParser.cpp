@@ -36,9 +36,8 @@
 
 KviIrcServerParser * g_pServerParser = 0;
 
-
 KviIrcServerParser::KviIrcServerParser()
-: QObject(0)
+    : QObject(0)
 {
 	setObjectName("server_parser");
 }
@@ -47,11 +46,11 @@ KviIrcServerParser::~KviIrcServerParser()
 {
 }
 
-void KviIrcServerParser::parseMessage(const char * message,KviIrcConnection * pConnection)
+void KviIrcServerParser::parseMessage(const char * message, KviIrcConnection * pConnection)
 {
-	if(*message != 0 )
+	if(*message != 0)
 	{
-		KviIrcMessage msg(message,pConnection);
+		KviIrcMessage msg(message, pConnection);
 
 		if(msg.isNumeric())
 		{
@@ -61,10 +60,10 @@ void KviIrcServerParser::parseMessage(const char * message,KviIrcConnection * pC
 				parms.append(pConnection->decodeText(msg.safePrefix()));
 				parms.append(pConnection->decodeText(msg.command()));
 
-				for(KviCString * str = msg.firstParam();str;str = msg.nextParam())
+				for(KviCString * str = msg.firstParam(); str; str = msg.nextParam())
 					parms.append(pConnection->console()->decodeText(str->ptr()));
 
-				if(KviKvsEventManager::instance()->triggerRaw(msg.numeric(),pConnection->console(),&parms))
+				if(KviKvsEventManager::instance()->triggerRaw(msg.numeric(), pConnection->console(), &parms))
 					msg.setHaltOutput();
 			}
 
@@ -72,8 +71,11 @@ void KviIrcServerParser::parseMessage(const char * message,KviIrcConnection * pC
 			if(proc)
 			{
 				(this->*proc)(&msg);
-				if(!msg.unrecognized())return; // parsed
-			} else {
+				if(!msg.unrecognized())
+					return; // parsed
+			}
+			else
+			{
 				// we don't have a proc for this
 
 				// special handling of unknown RPL_WHOIS* messages
@@ -94,20 +96,23 @@ void KviIrcServerParser::parseMessage(const char * message,KviIrcConnection * pC
 						// we're in the middle of a RPL_WHOIS* sequence and haven't
 						// received a RPL_ENDOFWHOIS yet.
 						parseNumericWhoisOther(&msg);
-						if(!msg.unrecognized())return;
+						if(!msg.unrecognized())
+							return;
 					}
 				}
 			}
-		} else {
-			for(int i=0;m_literalParseProcTable[i].msgName;i++)
+		}
+		else
+		{
+			for(int i = 0; m_literalParseProcTable[i].msgName; i++)
 			{
-				if(kvi_strEqualCS(m_literalParseProcTable[i].msgName,msg.command()))
+				if(kvi_strEqualCS(m_literalParseProcTable[i].msgName, msg.command()))
 				{
 					(this->*(m_literalParseProcTable[i].proc))(&msg);
-					if(!msg.unrecognized())return; // parsed
+					if(!msg.unrecognized())
+						return; // parsed
 				}
 			}
-
 
 			if(KviKvsEventManager::instance()->hasAppHandlers(KviEvent_OnUnhandledLiteral))
 			{
@@ -115,10 +120,10 @@ void KviIrcServerParser::parseMessage(const char * message,KviIrcConnection * pC
 				parms.append(pConnection->decodeText(msg.safePrefix()));
 				parms.append(pConnection->decodeText(msg.command()));
 
-				for(KviCString * str = msg.firstParam();str;str = msg.nextParam())
+				for(KviCString * str = msg.firstParam(); str; str = msg.nextParam())
 					parms.append(pConnection->console()->decodeText(str->ptr()));
 
-				if(KviKvsEventManager::instance()->trigger(KviEvent_OnUnhandledLiteral,pConnection->console(),&parms))
+				if(KviKvsEventManager::instance()->trigger(KviEvent_OnUnhandledLiteral, pConnection->console(), &parms))
 					msg.setHaltOutput();
 			}
 		}
@@ -130,16 +135,18 @@ void KviIrcServerParser::parseMessage(const char * message,KviIrcConnection * pC
 			if(msg.unrecognized())
 			{
 				pConnection->console()->output(KVI_OUT_UNRECOGNIZED,
-					__tr2qs("[Server parser]: encountered problems while parsing the following message:"));
+				    __tr2qs("[Server parser]: encountered problems while parsing the following message:"));
 				pConnection->console()->output(KVI_OUT_UNRECOGNIZED,
-					__tr2qs("[Server parser]: [%s][%s] %Q"),msg.prefix(),msg.command(),&szWText);
+				    __tr2qs("[Server parser]: [%s][%s] %Q"), msg.prefix(), msg.command(), &szWText);
 				pConnection->console()->output(KVI_OUT_UNRECOGNIZED,
-					__tr2qs("[Server parser]: %s"),m_szLastParserError.ptr());
-			} else {
+				    __tr2qs("[Server parser]: %s"), m_szLastParserError.ptr());
+			}
+			else
+			{
 				// ignore spurious CRLF pairs (some servers send them a lot) unless we want PARANOID output
 				if((!msg.isEmpty()) || _OUTPUT_PARANOIC)
 					pConnection->console()->output(KVI_OUT_UNHANDLED,
-						"[%s][%s] %Q",msg.prefix(),msg.command(),&szWText);
+					    "[%s][%s] %Q", msg.prefix(), msg.command(), &szWText);
 			}
 		}
 	}

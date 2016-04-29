@@ -29,8 +29,7 @@
 
 #include <QStringList>
 
-const char * feature_array[]=
-{
+const char * feature_array[] = {
 	"IRC",
 #ifdef COMPILE_DEBUG_MODE
 	"Debug",
@@ -123,20 +122,20 @@ namespace KviBuildInfo
 
 	QString buildSystemName()
 	{
-		#ifdef COMPILE_ON_WINDOWS
-			return QString();
-		#else
-			return QString(KVIRC_BUILD_SYSTEM_NAME);
-		#endif
+#ifdef COMPILE_ON_WINDOWS
+		return QString();
+#else
+		return QString(KVIRC_BUILD_SYSTEM_NAME);
+#endif
 	}
 
 	QString buildSystemVersion()
 	{
-		#ifdef COMPILE_ON_WINDOWS
-			return QString();
-		#else
-			return QString(KVIRC_BUILD_SYSTEM_VERSION);
-		#endif
+#ifdef COMPILE_ON_WINDOWS
+		return QString();
+#else
+		return QString(KVIRC_BUILD_SYSTEM_VERSION);
+#endif
 	}
 
 	QString buildCPU()
@@ -152,16 +151,18 @@ namespace KviBuildInfo
 	QString buildCompilerFlags()
 	{
 		QString flags = QString(KVIRC_BUILD_COMPILER_FLAGS);
-		if(flags.isEmpty()) return "N/A";
-		else return flags;
+		if(flags.isEmpty())
+			return "N/A";
+		else
+			return flags;
 	}
 
 	QString buildRevision()
 	{
 		QString rev;
-		#ifdef KVIRC_BUILD_REVISION
+#ifdef KVIRC_BUILD_REVISION
 		rev = QString(KVIRC_BUILD_REVISION);
-		#endif
+#endif
 		return rev;
 	}
 
@@ -173,7 +174,8 @@ namespace KviBuildInfo
 	QString features()
 	{
 		QStringList tmp;
-		for(int i=0;feature_array[i];i++)tmp << QString(feature_array[i]);
+		for(int i = 0; feature_array[i]; i++)
+			tmp << QString(feature_array[i]);
 		return QString(tmp.join(", "));
 	}
 }

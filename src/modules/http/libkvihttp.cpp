@@ -34,11 +34,11 @@
 #include "KviCommandFormatter.h"
 #include "KviMainWindow.h"
 
-static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QString &szFileName,const QString &szCallback)
+static bool http_kvs_complete_get(KviKvsModuleCommandCall * c, QString & szUrl, QString & szFileName, const QString & szCallback)
 {
 	if(szUrl.isEmpty())
 	{
-		c->warning(__tr2qs_ctx("No URL specified","http"));
+		c->warning(__tr2qs_ctx("No URL specified", "http"));
 		return true;
 	}
 
@@ -48,40 +48,42 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 
 	if(szFileName.isEmpty())
 	{
-		if(c->switches()->find('a',"auto-file-name"))
+		if(c->switches()->find('a', "auto-file-name"))
 		{
 			tmp = szUrl;
-			tmp.replace('/',"_");
-			tmp.replace(':',"_");
-			tmp.replace('@',"_");
-			tmp.replace('?',"_");
+			tmp.replace('/', "_");
+			tmp.replace(':', "_");
+			tmp.replace('@', "_");
+			tmp.replace('?', "_");
 			// http____path_path2_path3_filename.ext
-			g_pApp->getLocalKvircDirectory(szFileName,KviApplication::Incoming,tmp);
-		} else {
+			g_pApp->getLocalKvircDirectory(szFileName, KviApplication::Incoming, tmp);
+		}
+		else
+		{
 			if(!KviFileDialog::askForSaveFileName(
-					szFileName,
-					__tr2qs_ctx("Choose a filename to save","http"),
-					QString(),
-					QString(),
-					false,
-					false,
-					true,
-					g_pMainWindow
-				))
+			       szFileName,
+			       __tr2qs_ctx("Choose a filename to save", "http"),
+			       QString(),
+			       QString(),
+			       false,
+			       false,
+			       true,
+			       g_pMainWindow))
 				return true;
-			if(szFileName.isEmpty())return true;
+			if(szFileName.isEmpty())
+				return true;
 		}
 	}
 
 	HttpFileTransfer * hft = new HttpFileTransfer();
 
-	bool bHead = c->switches()->find('h',"head");
+	bool bHead = c->switches()->find('h', "head");
 
-	if(c->switches()->getAsStringIfExisting('p',"post-data",tmp))
+	if(c->switches()->getAsStringIfExisting('p', "post-data", tmp))
 	{
 		if(bHead)
 		{
-			c->warning(__tr2qs_ctx("The switch -p is incompatible with -h: -p takes precedence","http"));
+			c->warning(__tr2qs_ctx("The switch -p is incompatible with -h: -p takes precedence", "http"));
 			bHead = false;
 		}
 		hft->request()->setPostData(tmp);
@@ -91,36 +93,38 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 	hft->request()->setProcessingType(bHead ? KviHttpRequest::HeadersOnly : KviHttpRequest::StoreToFile);
 	hft->request()->setFileName(szFileName);
 
-	if(c->switches()->getAsStringIfExisting('e',"existing-file-action",tmp))
+	if(c->switches()->getAsStringIfExisting('e', "existing-file-action", tmp))
 	{
-		if(KviQString::equalCI(tmp,"e"))
+		if(KviQString::equalCI(tmp, "e"))
 			hft->request()->setExistingFileAction(KviHttpRequest::RenameExisting);
-		else if(KviQString::equalCI(tmp,"i"))
+		else if(KviQString::equalCI(tmp, "i"))
 			hft->request()->setExistingFileAction(KviHttpRequest::RenameIncoming);
-		else if(KviQString::equalCI(tmp,"o"))
+		else if(KviQString::equalCI(tmp, "o"))
 			hft->request()->setExistingFileAction(KviHttpRequest::Overwrite);
-		else if(KviQString::equalCI(tmp,"r"))
+		else if(KviQString::equalCI(tmp, "r"))
 			hft->request()->setExistingFileAction(KviHttpRequest::Resume);
 	}
 
 	// FIXME: this should be numeric
-	if(c->switches()->getAsStringIfExisting('m',"max-len",tmp))
+	if(c->switches()->getAsStringIfExisting('m', "max-len", tmp))
 	{
 		bool bOk;
 		unsigned int uContentLength = tmp.toUInt(&bOk);
-		if(bOk)hft->request()->setMaxContentLength(uContentLength);
+		if(bOk)
+			hft->request()->setMaxContentLength(uContentLength);
 	}
 
 	// FIXME: this should be numeric
-	if(c->switches()->getAsStringIfExisting('o',"offset",tmp))
+	if(c->switches()->getAsStringIfExisting('o', "offset", tmp))
 	{
 		bool bOk;
 		unsigned int uContentOffset = tmp.toUInt(&bOk);
-		if(bOk)hft->request()->setContentOffset(uContentOffset);
+		if(bOk)
+			hft->request()->setContentOffset(uContentOffset);
 	}
 
 	// FIXME: this should be numeric
-	if(c->switches()->getAsStringIfExisting('t',"timeout",tmp))
+	if(c->switches()->getAsStringIfExisting('t', "timeout", tmp))
 	{
 		bool bOk;
 		unsigned int uConnectionTimeout = tmp.toUInt(&bOk);
@@ -128,40 +132,41 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 			hft->request()->setConnectionTimeout(uConnectionTimeout);
 	}
 
-	if(c->switches()->getAsStringIfExisting('w',"winctrl",tmp))
+	if(c->switches()->getAsStringIfExisting('w', "winctrl", tmp))
 	{
 		if(!tmp.contains('h'))
-			hft->invokeTransferWindow(tmp.contains('m'),tmp.contains('n'));
-	} else {
-		hft->invokeTransferWindow(false,false);
+			hft->invokeTransferWindow(tmp.contains('m'), tmp.contains('n'));
+	}
+	else
+	{
+		hft->invokeTransferWindow(false, false);
 	}
 
-	KviKvsVariant * v = c->switches()->find('i',"identifier");
+	KviKvsVariant * v = c->switches()->find('i', "identifier");
 	if(v)
 		hft->setMagicIdentifier(*v);
 
-	if(c->switches()->find('q',"quiet"))
+	if(c->switches()->find('q', "quiet"))
 		hft->setNotifyCompletion(false);
 
-	if(c->switches()->find('y',"no-output"))
+	if(c->switches()->find('y', "no-output"))
 		hft->setNoOutput(true);
 
 	if(!szCallback.isEmpty())
 		hft->setCompletionCallback(szCallback);
 
-	if(c->switches()->find('c',"clear"))
+	if(c->switches()->find('c', "clear"))
 		hft->setAutoClean(true);
 
 	if(!hft->startDownload())
 	{
 		tmp = hft->request()->lastError();
-		c->warning(__tr2qs_ctx("Failed to start the get request: %Q","http"),&tmp);
+		c->warning(__tr2qs_ctx("Failed to start the get request: %Q", "http"), &tmp);
 		delete hft;
 	}
 
 	return true;
 }
-
 
 /*
 	@doc: http.get
@@ -264,13 +269,13 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 
 static bool http_kvs_cmd_get(KviKvsModuleCommandCall * c)
 {
-	QString szUrl,szFileName;
+	QString szUrl, szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("url",KVS_PT_NONEMPTYSTRING,0,szUrl)
-		KVSM_PARAMETER("filename",KVS_PT_STRING,KVS_PF_OPTIONAL,szFileName)
+	KVSM_PARAMETER("url", KVS_PT_NONEMPTYSTRING, 0, szUrl)
+	KVSM_PARAMETER("filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
 	KVSM_PARAMETERS_END(c)
 
-	return http_kvs_complete_get(c,szUrl,szFileName,QString());
+	return http_kvs_complete_get(c, szUrl, szFileName, QString());
 }
 /*
 	@doc: http.asyncGet
@@ -303,21 +308,21 @@ static bool http_kvs_cmd_get(KviKvsModuleCommandCall * c)
 
 static bool http_kvs_cmd_asyncGet(KviKvsModuleCallbackCommandCall * c)
 {
-	QString szUrl,szFileName;
+	QString szUrl, szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("url",KVS_PT_NONEMPTYSTRING,0,szUrl)
-		KVSM_PARAMETER("filename",KVS_PT_STRING,KVS_PF_OPTIONAL,szFileName)
+	KVSM_PARAMETER("url", KVS_PT_NONEMPTYSTRING, 0, szUrl)
+	KVSM_PARAMETER("filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
 	KVSM_PARAMETERS_END(c)
 
-	return http_kvs_complete_get(c,szUrl,szFileName,c->callback()->code());
+	return http_kvs_complete_get(c, szUrl, szFileName, c->callback()->code());
 }
 
 static bool http_module_init(KviModule * m)
 {
 	HttpFileTransfer::init();
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"get",http_kvs_cmd_get);
-	KVSM_REGISTER_CALLBACK_COMMAND(m,"asyncGet",http_kvs_cmd_asyncGet);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "get", http_kvs_cmd_get);
+	KVSM_REGISTER_CALLBACK_COMMAND(m, "asyncGet", http_kvs_cmd_asyncGet);
 
 	return true;
 }
@@ -334,13 +339,12 @@ static bool http_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Http",                                                         // module name
-	"4.0.0",                                                        // module version
-	"Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"HTTP interface for KVIrc",
-	http_module_init,
-	http_module_can_unload,
-	0,
-	http_module_cleanup,
-	"http"
-)
+    "Http",                                                         // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "HTTP interface for KVIrc",
+    http_module_init,
+    http_module_can_unload,
+    0,
+    http_module_cleanup,
+    "http")

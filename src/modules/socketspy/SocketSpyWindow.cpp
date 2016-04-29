@@ -35,12 +35,12 @@
 extern KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList;
 
 SocketSpyWindow::SocketSpyWindow(KviConsoleWindow * lpConsole)
-: KviWindow(KviWindow::SocketSpy,"socket_spy",lpConsole), KviIrcDataStreamMonitor(lpConsole->context())
+    : KviWindow(KviWindow::SocketSpy, "socket_spy", lpConsole), KviIrcDataStreamMonitor(lpConsole->context())
 {
 	g_pSocketSpyWindowList->append(this);
-	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
 	setObjectName("spysocket_splitter");
-	m_pIrcView = new KviIrcView(m_pSplitter,this);
+	m_pIrcView = new KviIrcView(m_pSplitter, this);
 	// Ensure proper focusing
 	//setFocusHandler(m_pIrcView,this);
 }
@@ -62,7 +62,7 @@ QPixmap * SocketSpyWindow::myIconPtr()
 
 void SocketSpyWindow::resizeEvent(QResizeEvent *)
 {
-	m_pSplitter->setGeometry(0,0,width(),height());
+	m_pSplitter->setGeometry(0, 0, width(), height());
 }
 
 QSize SocketSpyWindow::sizeHint() const
@@ -70,9 +70,9 @@ QSize SocketSpyWindow::sizeHint() const
 	return m_pIrcView->sizeHint();
 }
 
-void SocketSpyWindow::getBaseLogFileName(QString &buffer)
+void SocketSpyWindow::getBaseLogFileName(QString & buffer)
 {
-	buffer.sprintf("SOCKETSPY_%d",context()->id());
+	buffer.sprintf("SOCKETSPY_%d", context()->id());
 }
 
 void SocketSpyWindow::fillCaptionBuffers()
@@ -82,25 +82,24 @@ void SocketSpyWindow::fillCaptionBuffers()
 
 bool SocketSpyWindow::incomingMessage(const char * message)
 {
-	outputNoFmt(KVI_OUT_SOCKETMESSAGE,console()->decodeText(message));
+	outputNoFmt(KVI_OUT_SOCKETMESSAGE, console()->decodeText(message));
 	return false;
 }
 
 bool SocketSpyWindow::outgoingMessage(const char * message)
 {
-	outputNoFmt(KVI_OUT_RAW,console()->decodeText(message));
+	outputNoFmt(KVI_OUT_RAW, console()->decodeText(message));
 	return false;
-
 }
 
 void SocketSpyWindow::connectionInitiated()
 {
-	output(KVI_OUT_SOCKETWARNING,__tr2qs("Socket open"));
+	output(KVI_OUT_SOCKETWARNING, __tr2qs("Socket open"));
 }
 
 void SocketSpyWindow::connectionTerminated()
 {
-	output(KVI_OUT_SOCKETWARNING,__tr2qs("Socket closed"));
+	output(KVI_OUT_SOCKETWARNING, __tr2qs("Socket closed"));
 }
 
 void SocketSpyWindow::applyOptions()

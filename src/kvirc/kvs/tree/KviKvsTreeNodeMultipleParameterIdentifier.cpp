@@ -26,9 +26,8 @@
 #include "KviKvsRunTimeContext.h"
 #include "KviKvsVariant.h"
 
-
-KviKvsTreeNodeMultipleParameterIdentifier::KviKvsTreeNodeMultipleParameterIdentifier(const QChar * pLocation,int iStart,int iEnd)
-: KviKvsTreeNodeData(pLocation)
+KviKvsTreeNodeMultipleParameterIdentifier::KviKvsTreeNodeMultipleParameterIdentifier(const QChar * pLocation, int iStart, int iEnd)
+    : KviKvsTreeNodeData(pLocation)
 {
 	m_iStart = iStart;
 	m_iEnd = iEnd;
@@ -38,21 +37,25 @@ KviKvsTreeNodeMultipleParameterIdentifier::~KviKvsTreeNodeMultipleParameterIdent
 {
 }
 
-void KviKvsTreeNodeMultipleParameterIdentifier::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeMultipleParameterIdentifier::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Multiple Parameter Identifier \"$";
-	if(m_iEnd < m_iStart)KviQString::appendFormatted(szBuffer,"%d-",m_iStart);
-	else KviQString::appendFormatted(szBuffer,"%d-%d",m_iStart,m_iEnd);
+	if(m_iEnd < m_iStart)
+		KviQString::appendFormatted(szBuffer, "%d-", m_iStart);
+	else
+		KviQString::appendFormatted(szBuffer, "%d-%d", m_iStart, m_iEnd);
 	szBuffer += "\"";
 }
 
 void KviKvsTreeNodeMultipleParameterIdentifier::dump(const char * prefix)
 {
-	if(m_iEnd < m_iStart)qDebug("%s MultipleParameterIdentifier(%d-)",prefix,m_iStart);
-	else qDebug("%s MultipleParameterIdentifier(%d-%d)",prefix,m_iStart,m_iEnd);
+	if(m_iEnd < m_iStart)
+		qDebug("%s MultipleParameterIdentifier(%d-)", prefix, m_iStart);
+	else
+		qDebug("%s MultipleParameterIdentifier(%d-%d)", prefix, m_iStart, m_iEnd);
 }
 
-bool KviKvsTreeNodeMultipleParameterIdentifier::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeMultipleParameterIdentifier::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	KviKvsVariant * v = c->parameterList()->at(m_iStart);
 	if(!v)
@@ -68,15 +71,17 @@ bool KviKvsTreeNodeMultipleParameterIdentifier::evaluateReadOnly(KviKvsRunTimeCo
 	{
 		// only up to m_iEnd
 		int idx = m_iStart;
-		for(v = c->parameterList()->next();v && (idx < m_iEnd);v = c->parameterList()->next())
+		for(v = c->parameterList()->next(); v && (idx < m_iEnd); v = c->parameterList()->next())
 		{
 			sz += QChar(' ');
 			v->appendAsString(sz);
 			idx++;
 		}
-	} else {
+	}
+	else
+	{
 		// all up to the end of the list
-		for(v = c->parameterList()->next();v;v = c->parameterList()->next())
+		for(v = c->parameterList()->next(); v; v = c->parameterList()->next())
 		{
 			sz += QChar(' ');
 			v->appendAsString(sz);

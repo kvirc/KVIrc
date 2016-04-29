@@ -33,12 +33,13 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeGlobalVariable : public KviKvsTreeNodeVariable
 {
 public:
-	KviKvsTreeNodeGlobalVariable(const QChar * pLocation,const QString &szIdentifier);
+	KviKvsTreeNodeGlobalVariable(const QChar * pLocation, const QString & szIdentifier);
 	~KviKvsTreeNodeGlobalVariable();
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pResult);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pResult);
 	virtual KviKvsRWEvaluationResult * evaluateReadWrite(KviKvsRunTimeContext * c);
 };
 

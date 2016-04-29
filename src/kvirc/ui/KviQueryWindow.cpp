@@ -48,12 +48,12 @@
 #include "KviTalHBox.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "KviCryptEngine.h"
-	#include "KviCryptController.h"
+#include "KviCryptEngine.h"
+#include "KviCryptController.h"
 #endif
 
 #ifdef COMPILE_ZLIB_SUPPORT
-	#include <zlib.h>
+#include <zlib.h>
 #endif
 
 #include <QDir>
@@ -65,7 +65,7 @@
 #include <QByteArray>
 
 KviQueryWindow::KviQueryWindow(KviConsoleWindow * lpConsole, const QString & szNick)
-: KviWindow(KviWindow::Query,szNick,lpConsole)
+    : KviWindow(KviWindow::Query, szNick, lpConsole)
 {
 	m_iFlags = 0;
 	connection()->registerQuery(this);
@@ -76,40 +76,40 @@ KviQueryWindow::KviQueryWindow(KviConsoleWindow * lpConsole, const QString & szN
 	m_pButtonBox->setMargin(0);
 	m_pLabel = new KviThemedLabel(m_pButtonBox, this, "query_label");
 	updateLabelText();
-	m_pButtonBox->setStretchFactor(m_pLabel,1);
+	m_pButtonBox->setStretchFactor(m_pLabel, 1);
 
 	// The button box on the right
 	//KviTalHBox * box = new KviTalHBox(m_pTopSplitter,"button_box");
-	m_pButtonGrid = (QFrame*) new KviTalHBox(m_pButtonBox);
+	m_pButtonGrid = (QFrame *)new KviTalHBox(m_pButtonBox);
 
 	createTextEncodingButton(m_pButtonGrid);
 
-	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
 	m_pSplitter->setObjectName("query_splitter");
 	m_pSplitter->setChildrenCollapsible(false);
 
 	m_pIrcView = new KviIrcView(m_pSplitter, this);
-	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
+	connect(m_pIrcView, SIGNAL(rightClicked()), this, SLOT(textViewRightClicked()));
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
 
-	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView,KviIconManager::ShowListView,__tr2qs("Show user list"),buttonContainer(),true);
+	m_pListViewButton = new KviWindowToolPageButton(KviIconManager::HideListView, KviIconManager::ShowListView, __tr2qs("Show user list"), buttonContainer(), true);
 	m_pListViewButton->setObjectName("list_view_button");
-	connect(m_pListViewButton,SIGNAL(clicked()),this,SLOT(toggleListView()));
+	connect(m_pListViewButton, SIGNAL(clicked()), this, SLOT(toggleListView()));
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	createCryptControllerButton(m_pButtonGrid);
 #endif
 
-	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,7,__tr2qs("Query targets"),"user_list_view");
+	m_pUserListView = new KviUserListView(m_pSplitter, m_pListViewButton, connection()->userDataBase(), this, 7, __tr2qs("Query targets"), "user_list_view");
 
-	m_pInput = new KviInput(this,m_pUserListView);
+	m_pInput = new KviInput(this, m_pUserListView);
 
 	if(KVI_OPTION_BOOL(KviOption_boolAutoLogQueries))
 		m_pIrcView->startLogging();
 	// FIXME: #warning "Maybe tell the user all that we know about the remote szEnd(s)....channels..."
 
 	m_pIrcView->enableDnd(true);
-	connect(m_pIrcView,SIGNAL(fileDropped(const QString &)),this,SLOT(slotDndEvents(const QString &)));
+	connect(m_pIrcView, SIGNAL(fileDropped(const QString &)), this, SLOT(slotDndEvents(const QString &)));
 
 	updateCaption();
 }
@@ -121,7 +121,9 @@ KviQueryWindow::~KviQueryWindow()
 	{
 		if(context())
 			context()->unregisterDeadQuery(this);
-	} else {
+	}
+	else
+	{
 		if(connection())
 			connection()->unregisterQuery(this);
 	}
@@ -135,7 +137,7 @@ void KviQueryWindow::updateLabelText()
 		m_pLabel->setText(szText);
 		QString szBuffer;
 		getWindowListTipText(szBuffer);
-		KviTalToolTip::add(m_pLabel,szBuffer);
+		KviTalToolTip::add(m_pLabel, szBuffer);
 	}
 }
 
@@ -152,8 +154,10 @@ void KviQueryWindow::getWindowListTipText(QString & szBuffer)
 	if(pEntry)
 	{
 		QString buffer;
-		console()->getUserTipText(m_szName,pEntry,szBuffer);
-	} else szBuffer = QString(__tr2qs("Nothing is known about %1")).arg(m_szName);
+		console()->getUserTipText(m_szName, pEntry, szBuffer);
+	}
+	else
+		szBuffer = QString(__tr2qs("Nothing is known about %1")).arg(m_szName);
 }
 
 QString KviQueryWindow::getInfoLabelText()
@@ -198,11 +202,13 @@ QString KviQueryWindow::getInfoLabelText()
 
 				szTmp += "\n";
 
-				if(connection()->getCommonChannels(m_szName,szChans,0))
+				if(connection()->getCommonChannels(m_szName, szChans, 0))
 					szTmp += __tr2qs("Common channels: %2").arg(szChans);
 				else
 					szTmp += __tr2qs("No common channels");
-			} else {
+			}
+			else
+			{
 				szTmp = __tr2qs("[Dead query]");
 			}
 		}
@@ -212,12 +218,12 @@ QString KviQueryWindow::getInfoLabelText()
 
 void KviQueryWindow::slotDndEvents(const QString & szFile)
 {
-        KVS_TRIGGER_EVENT_1(KviEvent_OnQueryFileDropped,this,szFile);
+	KVS_TRIGGER_EVENT_1(KviEvent_OnQueryFileDropped, this, szFile);
 }
 
 void KviQueryWindow::triggerCreationEvents()
 {
-	KVS_TRIGGER_EVENT_0(KviEvent_OnQueryWindowCreated,this);
+	KVS_TRIGGER_EVENT_0(KviEvent_OnQueryWindowCreated, this);
 }
 
 void KviQueryWindow::getBaseLogFileName(QString & szBuffer)
@@ -227,7 +233,9 @@ void KviQueryWindow::getBaseLogFileName(QString & szBuffer)
 		szBuffer = windowName();
 		szBuffer += ".";
 		szBuffer += console()->currentNetworkName();
-	} else {
+	}
+	else
+	{
 		szBuffer = windowName();
 		szBuffer += ".";
 		if(context())
@@ -245,14 +253,14 @@ void KviQueryWindow::mergeQuery(KviQueryWindow * pQuery)
 
 void KviQueryWindow::textViewRightClicked()
 {
-	KVS_TRIGGER_EVENT_0(KviEvent_OnQueryPopupRequest,this);
+	KVS_TRIGGER_EVENT_0(KviEvent_OnQueryPopupRequest, this);
 }
 
 void KviQueryWindow::saveProperties(KviConfigurationFile * pCfg)
 {
 	KviWindow::saveProperties(pCfg);
-	pCfg->writeEntry("Splitter",m_pUserListView->isHidden() ? m_SplitterSizesList : m_pSplitter->sizes());
-	pCfg->writeEntry("UserListViewVisible",m_pUserListView->isVisible());
+	pCfg->writeEntry("Splitter", m_pUserListView->isHidden() ? m_SplitterSizesList : m_pSplitter->sizes());
+	pCfg->writeEntry("UserListViewVisible", m_pUserListView->isVisible());
 }
 
 void KviQueryWindow::loadProperties(KviConfigurationFile * pCfg)
@@ -262,10 +270,10 @@ void KviQueryWindow::loadProperties(KviConfigurationFile * pCfg)
 	QList<int> def;
 	def.append((iWidth * 75) / 100);
 	def.append((iWidth * 25) / 100);
-	m_SplitterSizesList = pCfg->readIntListEntry("Splitter",def);
-	m_pSplitter->setStretchFactor(0,1);
+	m_SplitterSizesList = pCfg->readIntListEntry("Splitter", def);
+	m_pSplitter->setStretchFactor(0, 1);
 
-	showListView(pCfg->readBoolEntry("UserListViewVisible",false), true);
+	showListView(pCfg->readBoolEntry("UserListViewVisible", false), true);
 }
 
 void KviQueryWindow::notifyTargetChange(const QString & szOldNick, const QString & szOldUser, const QString & szOldHost, const QString & szNick, const QString & szUser, const QString & szHost)
@@ -275,12 +283,11 @@ void KviQueryWindow::notifyTargetChange(const QString & szOldNick, const QString
 	QString szOldH = szOldHost.isEmpty() ? QString("*") : szOldHost;
 
 	output(KVI_OUT_QUERYTRACE,
-		__tr2qs("The target of this query has changed from \r!n\r%Q\r [%Q@\r!h\r%Q\r] to \r!n\r%Q\r [%Q@\r!h\r%Q\r]"),
-		&szOldN,&szOldU,&szOldH,&szNick,&szUser,&szHost);
+	    __tr2qs("The target of this query has changed from \r!n\r%Q\r [%Q@\r!h\r%Q\r] to \r!n\r%Q\r [%Q@\r!h\r%Q\r]"),
+	    &szOldN, &szOldU, &szOldH, &szNick, &szUser, &szHost);
 
 	updateLabelText();
 }
-
 
 void KviQueryWindow::userAction(const QString & szNick, const QString & szUser, const QString & szHost, unsigned int uActionType)
 {
@@ -288,10 +295,12 @@ void KviQueryWindow::userAction(const QString & szNick, const QString & szUser, 
 	if(KVI_OPTION_BOOL(KviOption_boolEnableQueryTracing))
 	{
 		QString szOldUser, szOldHost;
-		if(!m_pUserListView->userActionVerifyMask(szNick,szUser,szHost,iTemperature,szOldUser,szOldHost))
-			notifyTargetChange(szNick,szOldUser,szOldHost,szNick,szUser,szHost);
-	} else {
-		m_pUserListView->userAction(szNick,szUser,szHost,iTemperature);
+		if(!m_pUserListView->userActionVerifyMask(szNick, szUser, szHost, iTemperature, szOldUser, szOldHost))
+			notifyTargetChange(szNick, szOldUser, szOldHost, szNick, szUser, szHost);
+	}
+	else
+	{
+		m_pUserListView->userAction(szNick, szUser, szHost, iTemperature);
 	}
 
 	updateLabelText();
@@ -300,7 +309,7 @@ void KviQueryWindow::userAction(const QString & szNick, const QString & szUser, 
 void KviQueryWindow::userAction(const QString & szNick, unsigned int uActionType)
 {
 	int iTemperature = kvi_getUserActionTemperature(uActionType);
-	m_pUserListView->userAction(szNick,iTemperature);
+	m_pUserListView->userAction(szNick, iTemperature);
 	updateLabelText();
 }
 
@@ -310,20 +319,22 @@ void KviQueryWindow::userAction(KviIrcMask * pUser, unsigned int uActionType)
 	if(KVI_OPTION_BOOL(KviOption_boolEnableQueryTracing))
 	{
 		QString szOldUser, szOldHost;
-		if(!m_pUserListView->userActionVerifyMask(pUser->nick(),pUser->user(),pUser->host(),iTemperature,szOldUser,szOldHost))
-			notifyTargetChange(pUser->nick(),szOldUser,szOldHost,pUser->nick(),pUser->user(),pUser->host());
-	} else {
-		m_pUserListView->userAction(pUser,iTemperature);
+		if(!m_pUserListView->userActionVerifyMask(pUser->nick(), pUser->user(), pUser->host(), iTemperature, szOldUser, szOldHost))
+			notifyTargetChange(pUser->nick(), szOldUser, szOldHost, pUser->nick(), pUser->user(), pUser->host());
+	}
+	else
+	{
+		m_pUserListView->userAction(pUser, iTemperature);
 	}
 	updateLabelText();
 }
 
 KviUserListEntry * KviQueryWindow::setTarget(const QString & szNick, const QString & szUser, const QString & szHost)
 {
-	KviUserListEntry * pEntry = m_pUserListView->join(szNick,szUser,szHost);
+	KviUserListEntry * pEntry = m_pUserListView->join(szNick, szUser, szHost);
 
 	if((!pEntry->globalData()->avatar()) && (!szUser.isEmpty()) && (szUser != "*"))
-		m_pConsole->checkDefaultAvatar(pEntry->globalData(),szNick,szUser,szHost);
+		m_pConsole->checkDefaultAvatar(pEntry->globalData(), szNick, szUser, szHost);
 
 	setWindowName(szNick);
 	updateCaption();
@@ -331,11 +342,11 @@ KviUserListEntry * KviQueryWindow::setTarget(const QString & szNick, const QStri
 	if(KVI_OPTION_BOOL(KviOption_boolEnableQueryTracing))
 	{
 		QString szChans;
-		int iChans = connection()->getCommonChannels(szNick,szChans);
-		notifyCommonChannels(szNick,szUser,szHost,iChans,szChans);
+		int iChans = connection()->getCommonChannels(szNick, szChans);
+		notifyCommonChannels(szNick, szUser, szHost, iChans, szChans);
 	}
 
-	KVS_TRIGGER_EVENT_3(KviEvent_OnQueryTargetAdded,this,szNick,szUser,szHost);
+	KVS_TRIGGER_EVENT_3(KviEvent_OnQueryTargetAdded, this, szNick, szUser, szHost);
 	updateLabelText();
 
 	return pEntry;
@@ -346,11 +357,13 @@ void KviQueryWindow::notifyCommonChannels(const QString & szNick, const QString 
 	static QString szStar("*");
 	if(iChans > 0)
 	{
-		output(KVI_OUT_QUERYTRACE,__tr2qs("Common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),
-			&szNick,szUser.isEmpty() ? &szStar : &szUser,szHost.isEmpty() ? &szStar : &szHost,&szChans);
-	} else {
-		output(KVI_OUT_QUERYTRACE,__tr2qs("No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"),
-			&szNick,szUser.isEmpty() ? &szStar : &szUser,szHost.isEmpty() ? &szStar : &szHost);
+		output(KVI_OUT_QUERYTRACE, __tr2qs("Common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"),
+		    &szNick, szUser.isEmpty() ? &szStar : &szUser, szHost.isEmpty() ? &szStar : &szHost, &szChans);
+	}
+	else
+	{
+		output(KVI_OUT_QUERYTRACE, __tr2qs("No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"),
+		    &szNick, szUser.isEmpty() ? &szStar : &szUser, szHost.isEmpty() ? &szStar : &szHost);
 	}
 
 	updateLabelText();
@@ -382,7 +395,7 @@ void KviQueryWindow::fillCaptionBuffers()
 
 bool KviQueryWindow::nickChange(const QString & szOldNick, const QString & szNewNick)
 {
-	bool bRet = m_pUserListView->nickChange(szOldNick,szNewNick);
+	bool bRet = m_pUserListView->nickChange(szOldNick, szNewNick);
 	if(!bRet)
 		return false; // ugh!! ?
 
@@ -401,7 +414,9 @@ void KviQueryWindow::showListView(bool bShow, bool bIgnoreSizeChange)
 			m_pListViewButton->setChecked(true);
 
 		m_pSplitter->setSizes(m_SplitterSizesList);
-	} else {
+	}
+	else
+	{
 		if(!bIgnoreSizeChange)
 			m_SplitterSizesList = m_pSplitter->sizes();
 
@@ -467,7 +482,7 @@ void KviQueryWindow::setAliveQuery()
 			}
 		}
 
-		setTarget(szNick,szUser,szHost);
+		setTarget(szNick, szUser, szHost);
 	}
 
 	// Update log file name
@@ -495,14 +510,14 @@ void KviQueryWindow::resizeEvent(QResizeEvent *)
 {
 	int iHeight = m_pInput->heightHint();
 	int iHeight2 = m_pButtonBox->sizeHint().height();
-	m_pButtonBox->setGeometry(0,0,width(),iHeight2);
-	m_pSplitter->setGeometry(0,iHeight2,width(),height() - (iHeight + iHeight2));
-	m_pInput->setGeometry(0,height() - iHeight,width(),iHeight);
+	m_pButtonBox->setGeometry(0, 0, width(), iHeight2);
+	m_pSplitter->setGeometry(0, iHeight2, width(), height() - (iHeight + iHeight2));
+	m_pInput->setGeometry(0, height() - iHeight, width(), iHeight);
 }
 
 QSize KviQueryWindow::sizeHint() const
 {
-	QSize ret(m_pSplitter->sizeHint().width(),m_pIrcView->sizeHint().height() + m_pInput->heightHint());
+	QSize ret(m_pSplitter->sizeHint().width(), m_pIrcView->sizeHint().height() + m_pInput->heightHint());
 	return ret;
 }
 
@@ -510,14 +525,14 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 {
 	if(!connection())
 	{
-		outputNoFmt(KVI_OUT_SYSTEMWARNING,__tr2qs("This query has no active targets, no message sent"));
+		outputNoFmt(KVI_OUT_SYSTEMWARNING, __tr2qs("This query has no active targets, no message sent"));
 		return;
 	}
 
 	//my full mask as seen by other users
 	QString szTmpMask = connection()->userInfo()->nickName() + "!" + connection()->userInfo()->userName() + "@" + connection()->userInfo()->hostName();
 	QByteArray szMyFullMask = connection()->encodeText(szTmpMask); //target name
-	QByteArray szName = connection()->encodeText(windowName()); //message
+	QByteArray szName = connection()->encodeText(windowName());    //message
 	QByteArray szData = encodeText(szBuffer);
 	const char * pcData = szData.data();
 
@@ -547,25 +562,25 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 			{
 				KviCString szEncrypted;
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(500 - szName.length());
-				switch(cryptSessionInfo()->m_pEngine->encrypt(pcData,szEncrypted))
+				switch(cryptSessionInfo()->m_pEngine->encrypt(pcData, szEncrypted))
 				{
 					case KviCryptEngine::Encrypted:
-						if(!connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),szEncrypted.ptr()))
+						if(!connection()->sendFmtData("PRIVMSG %s :%s", szName.data(), szEncrypted.ptr()))
 							return;
 						if(bUserFeedback)
-							m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
-								QString(),QString(),QString(),szBuffer,KviConsoleWindow::NoNotifications);
-					break;
+							m_pConsole->outputPrivmsg(this, KVI_OUT_OWNPRIVMSGCRYPTED,
+							    QString(), QString(), QString(), szBuffer, KviConsoleWindow::NoNotifications);
+						break;
 					case KviCryptEngine::Encoded:
 					{
-						if(!connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),szEncrypted.ptr()))
+						if(!connection()->sendFmtData("PRIVMSG %s :%s", szName.data(), szEncrypted.ptr()))
 							return;
 						if(bUserFeedback)
 						{
 							// ugly,but we must redecode here
 							QString szRedecoded = decodeText(szEncrypted.ptr());
-							m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
-								QString(),QString(),QString(),szRedecoded,KviConsoleWindow::NoNotifications);
+							m_pConsole->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG,
+							    QString(), QString(), QString(), szRedecoded, KviConsoleWindow::NoNotifications);
 						}
 					}
 					break;
@@ -573,17 +588,19 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 					{
 						QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
 						output(KVI_OUT_SYSTEMERROR,
-							__tr2qs("The encryption engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
-							&szBuffer,&szEngineError);
+						    __tr2qs("The encryption engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
+						    &szBuffer, &szEngineError);
 					}
 					break;
 				}
-				userAction(connection()->currentNickName(),KVI_USERACTION_PRIVMSG);
+				userAction(connection()->currentNickName(), KVI_USERACTION_PRIVMSG);
 				return;
-			} else {
+			}
+			else
+			{
 				//eat the escape code
 				pcData++;
-				szTmpBuffer.remove(0,1);
+				szTmpBuffer.remove(0, 1);
 				//let the normal function do it
 			}
 		}
@@ -597,11 +614,11 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 		 * Due to encoding stuff, this is frikin'time eater
 		 */
 		QTextEncoder * pEncoder = makeEncoder(); // our temp encoder
-		QByteArray szTmp;       // used to calculate the length of an encoded message
-		int iPos;               // contains the index where to truncate szTmpBuffer
-		int iC;                 // cycles counter (debugging/profiling purpose)
-		float fPosDiff;         // optimization internal; aggressivity factor
-		QString szCurSubString; // truncated parts as reported to the user
+		QByteArray szTmp;                        // used to calculate the length of an encoded message
+		int iPos;                                // contains the index where to truncate szTmpBuffer
+		int iC;                                  // cycles counter (debugging/profiling purpose)
+		float fPosDiff;                          // optimization internal; aggressivity factor
+		QString szCurSubString;                  // truncated parts as reported to the user
 
 		// run until we've something remaining in the message
 		while(szTmpBuffer.length())
@@ -623,8 +640,8 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 				//if szTmp.length() == 0 we already have break'ed out from here,
 				// so we can safely use it as a divisor
 				fPosDiff = (float)iMaxMsgLen / (float)szTmp.length();
-				iPos = (int) (iPos*fPosDiff); // cut the string at each cycle
-				//printf("OPTIMIZATION: fPosDiff %f, iPos %d\n", fPosDiff, iPos);
+				iPos = (int)(iPos * fPosDiff); // cut the string at each cycle
+				                               //printf("OPTIMIZATION: fPosDiff %f, iPos %d\n", fPosDiff, iPos);
 			}
 			//printf("Multi message: %d optimization cyles", iC);
 
@@ -646,11 +663,12 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 					iPos--;
 					szTmp = pEncoder->fromUnicode(szTmpBuffer.left(iPos));
 					break;
-				} else {
+				}
+				else
+				{
 					//there's still free space.. add another char
 					iPos++;
 				}
-
 			}
 			//printf(", finished at %d cycles, truncated at pos %d\n", iC, iPos);
 
@@ -658,13 +676,15 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 			szCurSubString = szTmpBuffer.left(iPos);
 
 			//sszEnd the string to the server
-			if(connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),szTmp.data()))
+			if(connection()->sendFmtData("PRIVMSG %s :%s", szName.data(), szTmp.data()))
 			{
 				//feeedback the user
 				if(bUserFeedback)
-					m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szCurSubString,KviConsoleWindow::NoNotifications);
-				userAction(connection()->currentNickName(),KVI_USERACTION_PRIVMSG);
-			} else {
+					m_pConsole->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG, QString(), QString(), QString(), szCurSubString, KviConsoleWindow::NoNotifications);
+				userAction(connection()->currentNickName(), KVI_USERACTION_PRIVMSG);
+			}
+			else
+			{
 				// skipped a part in this multi message.. we don't want to continue
 				return;
 			}
@@ -673,13 +693,14 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 			szTmpBuffer.remove(0, iPos);
 			//printf("Sent %d chars, %d remaining in the Qstring\n",iPos, szTmpBuffer.length());
 		}
-
-	} else {
-		if(connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),pcData))
+	}
+	else
+	{
+		if(connection()->sendFmtData("PRIVMSG %s :%s", szName.data(), pcData))
 		{
 			if(bUserFeedback)
-				m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szTmpBuffer,KviConsoleWindow::NoNotifications);
-			userAction(connection()->currentNickName(),KVI_USERACTION_PRIVMSG);
+				m_pConsole->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG, QString(), QString(), QString(), szTmpBuffer, KviConsoleWindow::NoNotifications);
+			userAction(connection()->currentNickName(), KVI_USERACTION_PRIVMSG);
 		}
 	}
 }
@@ -688,8 +709,10 @@ void KviQueryWindow::ownAction(const QString & szBuffer)
 {
 	if(!connection())
 	{
-		outputNoFmt(KVI_OUT_SYSTEMWARNING,__tr2qs("This query has no active targets, no message sent"));
-	} else {
+		outputNoFmt(KVI_OUT_SYSTEMWARNING, __tr2qs("This query has no active targets, no message sent"));
+	}
+	else
+	{
 
 		if(szBuffer.isEmpty())
 			return;
@@ -707,15 +730,15 @@ void KviQueryWindow::ownAction(const QString & szBuffer)
 		if(sz.isEmpty())
 			return;
 
-		if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,sz))
+		if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction, this, szTmpBuffer, sz))
 			return;
 
 		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",
-			connection()->encodeText(sz).data(),0x01,szBuffer.data(),0x01))
+		       connection()->encodeText(sz).data(), 0x01, szBuffer.data(), 0x01))
 			return;
 
-		output(KVI_OUT_ACTION,"\r!nc\r%Q\r %Q",&(connection()->currentNickName()),&szTmpBuffer);
-		m_pUserListView->userAction(connection()->currentNickName(),KVI_USERACTION_ACTION);
+		output(KVI_OUT_ACTION, "\r!nc\r%Q\r %Q", &(connection()->currentNickName()), &szTmpBuffer);
+		m_pUserListView->userAction(connection()->currentNickName(), KVI_USERACTION_ACTION);
 	}
 }
 
@@ -737,10 +760,10 @@ void KviQueryWindow::pasteLastLog()
 
 	// Get the logs
 	QString szLogPath;
-	g_pApp->getLocalKvircDirectory(szLogPath,KviApplication::Log);
+	g_pApp->getLocalKvircDirectory(szLogPath, KviApplication::Log);
 	QDir logDir(szLogPath);
 	QStringList filter = QStringList(szLogFilter);
-	QStringList logList = logDir.entryList(filter,QDir::Files,QDir::Name | QDir::Reversed);
+	QStringList logList = logDir.entryList(filter, QDir::Files, QDir::Name | QDir::Reversed);
 
 	// Scan log files
 	// Format: query_nick.networkName_year.month.day.log
@@ -769,14 +792,14 @@ void KviQueryWindow::pasteLastLog()
 		}
 
 		// Ok, we have the right nick/network log. Get date
-		QString szLogDate = szTmpName.section('.',-4,-1).section('_',1,1);
-		iLogYear = szLogDate.section('.',0,0).toInt();
-		iLogMonth = szLogDate.section('.',1,1).toInt();
-		iLogDay = szLogDate.section('.',2,2).toInt();
+		QString szLogDate = szTmpName.section('.', -4, -1).section('_', 1, 1);
+		iLogYear = szLogDate.section('.', 0, 0).toInt();
+		iLogMonth = szLogDate.section('.', 1, 1).toInt();
+		iLogDay = szLogDate.section('.', 2, 2).toInt();
 
 		// Check log validity
 		int iInterval = -KVI_OPTION_UINT(KviOption_uintDaysIntervalToPasteOnQueryJoin);
-		QDate logDate(iLogYear,iLogMonth,iLogDay);
+		QDate logDate(iLogYear, iLogMonth, iLogDay);
 		QDate checkDate = date.addDays(iInterval);
 
 		if(logDate < checkDate)
@@ -790,36 +813,36 @@ void KviQueryWindow::pasteLastLog()
 	szFileName.prepend(szLogPath);
 
 	// Load the log
-	QByteArray log = loadLogFile(szFileName,bGzip);
+	QByteArray log = loadLogFile(szFileName, bGzip);
 	if(log.size() > 0)
 	{
 		QList<QByteArray> list = log.split('\n');
 		unsigned int uCount = list.size();
 		unsigned int uLines = KVI_OPTION_UINT(KviOption_uintLinesToPasteOnQueryJoin);
 		unsigned int uStart = uCount - uLines - 1;
-/*
+		/*
 		// Check if the log is smaller than the lines to print
 		if(uStart < 0)
 			uStart = 0;
 */
 		QString szDummy = __tr2qs("Starting last log");
-		output(KVI_OUT_QUERYPRIVMSG,szDummy);
+		output(KVI_OUT_QUERYPRIVMSG, szDummy);
 
 		// Scan the log file
 		for(unsigned int i = uStart; i < uCount; i++)
 		{
 			QString szLine = QString(list.at(i));
-			szLine = szLine.section(' ',1);
+			szLine = szLine.section(' ', 1);
 #ifdef COMPILE_ON_WINDOWS
 			// Remove the \r char at the szEnd of line
 			szLine.chop(1);
 #endif
 			// Print the line in the channel buffer
-			output(KVI_OUT_QUERYPRIVMSG,szLine);
+			output(KVI_OUT_QUERYPRIVMSG, szLine);
 		}
 
 		szDummy = __tr2qs("End of log");
-		output(KVI_OUT_QUERYPRIVMSG,szDummy);
+		output(KVI_OUT_QUERYPRIVMSG, szDummy);
 	}
 }
 
@@ -830,26 +853,29 @@ QByteArray KviQueryWindow::loadLogFile(const QString & szFileName, bool bGzip)
 #ifdef COMPILE_ZLIB_SUPPORT
 	if(bGzip)
 	{
-		gzFile logFile = gzopen(szFileName.toLocal8Bit().data(),"rb");
+		gzFile logFile = gzopen(szFileName.toLocal8Bit().data(), "rb");
 		if(logFile)
 		{
 			char cBuff[1025];
 			int iLen;
 
-			iLen = gzread(logFile,cBuff,1024);
+			iLen = gzread(logFile, cBuff, 1024);
 			while(iLen > 0)
 			{
 				cBuff[iLen] = 0;
 				data.append(cBuff);
-				iLen = gzread(logFile,cBuff,1024);
+				iLen = gzread(logFile, cBuff, 1024);
 			}
 
 			gzclose(logFile);
-		} else {
-			qDebug("Can't open compressed file %s",szFileName.toUtf8().data());
 		}
-
-	} else {
+		else
+		{
+			qDebug("Can't open compressed file %s", szFileName.toUtf8().data());
+		}
+	}
+	else
+	{
 #endif
 		QFile logFile(szFileName);
 		if(!logFile.open(QIODevice::ReadOnly))

@@ -47,7 +47,7 @@
 /**
 * \brief Hash function for the char * data type
 */
-inline unsigned int kvi_hash_hash(const char * szKey,bool bCaseSensitive)
+inline unsigned int kvi_hash_hash(const char * szKey, bool bCaseSensitive)
 {
 	unsigned int uResult = 0;
 	if(bCaseSensitive)
@@ -57,7 +57,9 @@ inline unsigned int kvi_hash_hash(const char * szKey,bool bCaseSensitive)
 			uResult += (unsigned char)(*(szKey));
 			szKey++;
 		}
-	} else {
+	}
+	else
+	{
 		while(*szKey)
 		{
 			uResult += (unsigned char)tolower(*(szKey));
@@ -70,7 +72,7 @@ inline unsigned int kvi_hash_hash(const char * szKey,bool bCaseSensitive)
 /**
 * \brief Hash key compare function for the char * data type
 */
-inline bool kvi_hash_key_equal(const char * szKey1,const char * szKey2,bool bCaseSensitive)
+inline bool kvi_hash_key_equal(const char * szKey1, const char * szKey2, bool bCaseSensitive)
 {
 	if(bCaseSensitive)
 	{
@@ -81,7 +83,9 @@ inline bool kvi_hash_key_equal(const char * szKey1,const char * szKey2,bool bCas
 			szKey1++;
 			szKey2++;
 		}
-	} else {
+	}
+	else
+	{
 		while(*szKey1 && *szKey2)
 		{
 			if(tolower(*szKey1) != tolower(*szKey2))
@@ -99,7 +103,7 @@ inline bool kvi_hash_key_equal(const char * szKey1,const char * szKey2,bool bCas
 /**
 * \brief Hash key copy function for the char * data type
 */
-inline void kvi_hash_key_copy(const char * const &szFrom,const char * &szTo,bool bDeepCopy)
+inline void kvi_hash_key_copy(const char * const & szFrom, const char *& szTo, bool bDeepCopy)
 {
 	if(bDeepCopy)
 	{
@@ -110,10 +114,12 @@ inline void kvi_hash_key_copy(const char * const &szFrom,const char * &szTo,bool
 #else
 		int len = kvi_strLen(szFrom);
 #endif
-		char * dst = (char *)KviMemory::allocate(len+1);
-		KviMemory::copy(dst,szFrom,len+1);
+		char * dst = (char *)KviMemory::allocate(len + 1);
+		KviMemory::copy(dst, szFrom, len + 1);
 		szTo = dst;
-	} else {
+	}
+	else
+	{
 		szTo = szFrom; // we never modify it anyway
 	}
 }
@@ -121,7 +127,7 @@ inline void kvi_hash_key_copy(const char * const &szFrom,const char * &szTo,bool
 /**
 * \brief Hash key destruction function for the char * data type
 */
-inline void kvi_hash_key_destroy(const char * &szKey,bool bDeepCopy)
+inline void kvi_hash_key_destroy(const char *& szKey, bool bDeepCopy)
 {
 	if(bDeepCopy)
 		KviMemory::free((char *)szKey);
@@ -130,7 +136,7 @@ inline void kvi_hash_key_destroy(const char * &szKey,bool bDeepCopy)
 /**
 * \brief Default (empty) hash key for the char * data type
 */
-inline const char * & kvi_hash_key_default(const char **)
+inline const char *& kvi_hash_key_default(const char **)
 {
 	static const char * static_null = NULL;
 	return static_null;
@@ -139,7 +145,7 @@ inline const char * & kvi_hash_key_default(const char **)
 /**
 * \brief Hash function for the KviCString data type
 */
-inline unsigned int kvi_hash_hash(const KviCString &szKey,bool bCaseSensitive)
+inline unsigned int kvi_hash_hash(const KviCString & szKey, bool bCaseSensitive)
 {
 	unsigned int uResult = 0;
 	const char * p = szKey.ptr();
@@ -150,7 +156,9 @@ inline unsigned int kvi_hash_hash(const KviCString &szKey,bool bCaseSensitive)
 			uResult += *((const unsigned char *)p);
 			p++;
 		}
-	} else {
+	}
+	else
+	{
 		while(*p)
 		{
 			uResult += tolower(*((const unsigned char *)p));
@@ -163,15 +171,15 @@ inline unsigned int kvi_hash_hash(const KviCString &szKey,bool bCaseSensitive)
 /**
 * \brief Hash key compare function for the KviCString data type
 */
-inline bool kvi_hash_key_equal(const KviCString &szKey1,const KviCString &szKey2)
+inline bool kvi_hash_key_equal(const KviCString & szKey1, const KviCString & szKey2)
 {
-	return kvi_hash_key_equal(szKey1.ptr(),szKey2.ptr());
+	return kvi_hash_key_equal(szKey1.ptr(), szKey2.ptr());
 }
 
 /**
 * \brief Hash key copy function for the KviCString data type
 */
-inline void kvi_hash_key_copy(const KviCString &szFrom,KviCString &szTo,bool)
+inline void kvi_hash_key_copy(const KviCString & szFrom, KviCString & szTo, bool)
 {
 	szTo = szFrom;
 }
@@ -179,7 +187,7 @@ inline void kvi_hash_key_copy(const KviCString &szFrom,KviCString &szTo,bool)
 /**
 * \brief Hash key destruction function for the KviCString data type
 */
-inline void kvi_hash_key_destroy(KviCString &,bool)
+inline void kvi_hash_key_destroy(KviCString &, bool)
 {
 }
 
@@ -194,7 +202,7 @@ inline const KviCString & kvi_hash_key_default(KviCString *)
 /**
 * \brief Hash function for the int data type
 */
-inline unsigned int kvi_hash_hash(const int &iKey,bool)
+inline unsigned int kvi_hash_hash(const int & iKey, bool)
 {
 	return (unsigned int)iKey;
 }
@@ -202,7 +210,7 @@ inline unsigned int kvi_hash_hash(const int &iKey,bool)
 /**
 * \brief Hash key compare function for the int data type
 */
-inline bool kvi_hash_key_equal(const int &iKey1,const int &iKey2,bool)
+inline bool kvi_hash_key_equal(const int & iKey1, const int & iKey2, bool)
 {
 	return iKey1 == iKey2;
 }
@@ -210,7 +218,7 @@ inline bool kvi_hash_key_equal(const int &iKey1,const int &iKey2,bool)
 /**
 * \brief Hash key copy function for the int data type
 */
-inline void kvi_hash_key_copy(const int &iKeyFrom,int &iKeyTo,bool)
+inline void kvi_hash_key_copy(const int & iKeyFrom, int & iKeyTo, bool)
 {
 	iKeyTo = iKeyFrom;
 }
@@ -218,7 +226,7 @@ inline void kvi_hash_key_copy(const int &iKeyFrom,int &iKeyTo,bool)
 /**
 * \brief Hash key destruction function for the int data type
 */
-inline void kvi_hash_key_destroy(int &,bool)
+inline void kvi_hash_key_destroy(int &, bool)
 {
 }
 
@@ -234,7 +242,7 @@ inline const int & kvi_hash_key_default(int *)
 /**
 * \brief Hash function for the unsigned short data type
 */
-inline unsigned int kvi_hash_hash(const unsigned short &iKey,bool)
+inline unsigned int kvi_hash_hash(const unsigned short & iKey, bool)
 {
 	return (unsigned int)iKey;
 }
@@ -242,7 +250,7 @@ inline unsigned int kvi_hash_hash(const unsigned short &iKey,bool)
 /**
 * \brief Hash key compare function for the unsigned short data type
 */
-inline bool kvi_hash_key_equal(const unsigned short &iKey1,const unsigned short &iKey2,bool)
+inline bool kvi_hash_key_equal(const unsigned short & iKey1, const unsigned short & iKey2, bool)
 {
 	return iKey1 == iKey2;
 }
@@ -250,7 +258,7 @@ inline bool kvi_hash_key_equal(const unsigned short &iKey1,const unsigned short 
 /**
 * \brief Hash key copy function for the unsigned short data type
 */
-inline void kvi_hash_key_copy(const unsigned short &iKeyFrom,unsigned short &iKeyTo,bool)
+inline void kvi_hash_key_copy(const unsigned short & iKeyFrom, unsigned short & iKeyTo, bool)
 {
 	iKeyTo = iKeyFrom;
 }
@@ -258,7 +266,7 @@ inline void kvi_hash_key_copy(const unsigned short &iKeyFrom,unsigned short &iKe
 /**
 * \brief Hash key destruction function for the unsigned short data type
 */
-inline void kvi_hash_key_destroy(unsigned short &,bool)
+inline void kvi_hash_key_destroy(unsigned short &, bool)
 {
 }
 
@@ -274,7 +282,7 @@ inline const unsigned short & kvi_hash_key_default(unsigned short *)
 /**
 * \brief Hash function for the void * data type
 */
-inline unsigned int kvi_hash_hash(void * pKey,bool)
+inline unsigned int kvi_hash_hash(void * pKey, bool)
 {
 	unsigned char * pBytes = (unsigned char *)&(pKey);
 	unsigned char * pEnd = pBytes + sizeof(void *);
@@ -290,7 +298,7 @@ inline unsigned int kvi_hash_hash(void * pKey,bool)
 /**
 * \brief Hash key compare function for the void * data type
 */
-inline bool kvi_hash_key_equal(void *pKey1,void *pKey2,bool)
+inline bool kvi_hash_key_equal(void * pKey1, void * pKey2, bool)
 {
 	return pKey1 == pKey2;
 }
@@ -298,7 +306,7 @@ inline bool kvi_hash_key_equal(void *pKey1,void *pKey2,bool)
 /**
 * \brief Hash key copy function for the void * data type
 */
-inline void kvi_hash_key_copy(void * const &pKeyFrom,void *&pKeyTo,bool)
+inline void kvi_hash_key_copy(void * const & pKeyFrom, void *& pKeyTo, bool)
 {
 	pKeyTo = pKeyFrom;
 }
@@ -306,14 +314,14 @@ inline void kvi_hash_key_copy(void * const &pKeyFrom,void *&pKeyTo,bool)
 /**
 * \brief Hash key destruction function for the void * data type
 */
-inline void kvi_hash_key_destroy(void *,bool)
+inline void kvi_hash_key_destroy(void *, bool)
 {
 }
 
 /**
 * \brief Default (empty) hash key for the void * data type
 */
-inline void * & kvi_hash_key_default(void *)
+inline void *& kvi_hash_key_default(void *)
 {
 	static void * static_default = NULL;
 	return static_default;
@@ -322,11 +330,12 @@ inline void * & kvi_hash_key_default(void *)
 /**
 * \brief Hash function for the QString data type
 */
-inline unsigned int kvi_hash_hash(const QString &szKey,bool bCaseSensitive)
+inline unsigned int kvi_hash_hash(const QString & szKey, bool bCaseSensitive)
 {
 	unsigned int uResult = 0;
 	const QChar * p = szKey.constData();
-	if(!p)return 0;
+	if(!p)
+		return 0;
 	if(bCaseSensitive)
 	{
 		while(p->unicode())
@@ -334,7 +343,9 @@ inline unsigned int kvi_hash_hash(const QString &szKey,bool bCaseSensitive)
 			uResult += p->unicode();
 			p++;
 		}
-	} else {
+	}
+	else
+	{
 		while(p->unicode())
 		{
 			uResult += p->toLower().unicode();
@@ -347,17 +358,17 @@ inline unsigned int kvi_hash_hash(const QString &szKey,bool bCaseSensitive)
 /**
 * \brief Hash key compare function for the QString data type
 */
-inline bool kvi_hash_key_equal(const QString &szKey1,const QString &szKey2,bool bCaseSensitive)
+inline bool kvi_hash_key_equal(const QString & szKey1, const QString & szKey2, bool bCaseSensitive)
 {
 	if(bCaseSensitive)
-		return KviQString::equalCS(szKey1,szKey2);
-	return KviQString::equalCI(szKey1,szKey2);
+		return KviQString::equalCS(szKey1, szKey2);
+	return KviQString::equalCI(szKey1, szKey2);
 }
 
 /**
 * \brief Hash key copy function for the QString data type
 */
-inline void kvi_hash_key_copy(const QString &szFrom,QString &szTo,bool)
+inline void kvi_hash_key_copy(const QString & szFrom, QString & szTo, bool)
 {
 	szTo = szFrom;
 }
@@ -365,7 +376,7 @@ inline void kvi_hash_key_copy(const QString &szFrom,QString &szTo,bool)
 /**
 * \brief Hash key destruction function for the QString data type
 */
-inline void kvi_hash_key_destroy(QString &,bool)
+inline void kvi_hash_key_destroy(QString &, bool)
 {
 }
 
@@ -377,18 +388,23 @@ inline const QString & kvi_hash_key_default(QString *)
 	return KviQString::Empty;
 }
 
-template<typename Key,typename T> class KviPointerHashTable;
-template<typename Key,typename T> class KviPointerHashTableIterator;
+template <typename Key, typename T>
+class KviPointerHashTable;
+template <typename Key, typename T>
+class KviPointerHashTableIterator;
 
-template<typename Key,typename T> class KviPointerHashTableEntry
+template <typename Key, typename T>
+class KviPointerHashTableEntry
 {
-	friend class KviPointerHashTable<Key,T>;
+	friend class KviPointerHashTable<Key, T>;
+
 protected:
-	T  * pData;
-	Key  hKey;
+	T * pData;
+	Key hKey;
+
 public:
-	Key & key(){ return hKey; };
-	T * data(){ return pData; };
+	Key & key() { return hKey; };
+	T * data() { return pData; };
 };
 
 /**
@@ -430,17 +446,20 @@ public:
 * memory allocation routines will feel better and are less likely to waste
 * space.
 */
-template<class Key,class T> class KviPointerHashTable
+template <class Key, class T>
+class KviPointerHashTable
 {
-	friend class KviPointerHashTableIterator<Key,T>;
+	friend class KviPointerHashTableIterator<Key, T>;
+
 protected:
-	KviPointerList<KviPointerHashTableEntry<Key,T> > ** m_pDataArray;
-	bool                                                m_bAutoDelete;
-	unsigned int                                        m_uSize;
-	unsigned int                                        m_uCount;
-	bool                                                m_bCaseSensitive;
-	bool                                                m_bDeepCopyKeys;
-	unsigned int                                        m_uIteratorIdx;
+	KviPointerList<KviPointerHashTableEntry<Key, T>> ** m_pDataArray;
+	bool m_bAutoDelete;
+	unsigned int m_uSize;
+	unsigned int m_uCount;
+	bool m_bCaseSensitive;
+	bool m_bDeepCopyKeys;
+	unsigned int m_uIteratorIdx;
+
 public:
 	/**
 	* \brief Returns the item associated to the key
@@ -452,11 +471,13 @@ public:
 	*/
 	T * find(const Key & hKey)
 	{
-		m_uIteratorIdx = kvi_hash_hash(hKey,m_bCaseSensitive) % m_uSize;
-		if(!m_pDataArray[m_uIteratorIdx])return 0;
-		for(KviPointerHashTableEntry<Key,T> * e = m_pDataArray[m_uIteratorIdx]->first();e;e = m_pDataArray[m_uIteratorIdx]->next())
+		m_uIteratorIdx = kvi_hash_hash(hKey, m_bCaseSensitive) % m_uSize;
+		if(!m_pDataArray[m_uIteratorIdx])
+			return 0;
+		for(KviPointerHashTableEntry<Key, T> * e = m_pDataArray[m_uIteratorIdx]->first(); e; e = m_pDataArray[m_uIteratorIdx]->next())
 		{
-			if(kvi_hash_key_equal(e->hKey,hKey,m_bCaseSensitive))return (T *)e->pData;
+			if(kvi_hash_key_equal(e->hKey, hKey, m_bCaseSensitive))
+				return (T *)e->pData;
 		}
 		return 0;
 	}
@@ -505,19 +526,20 @@ public:
 	*/
 	void insert(const Key & hKey, T * pData)
 	{
-		if(!pData)return;
-		unsigned int uEntry = kvi_hash_hash(hKey,m_bCaseSensitive) % m_uSize;
+		if(!pData)
+			return;
+		unsigned int uEntry = kvi_hash_hash(hKey, m_bCaseSensitive) % m_uSize;
 		if(!m_pDataArray[uEntry])
-			m_pDataArray[uEntry] = new KviPointerList<KviPointerHashTableEntry<Key,T> >(true);
-		for(KviPointerHashTableEntry<Key,T> * e = m_pDataArray[uEntry]->first();e;e = m_pDataArray[uEntry]->next())
+			m_pDataArray[uEntry] = new KviPointerList<KviPointerHashTableEntry<Key, T>>(true);
+		for(KviPointerHashTableEntry<Key, T> * e = m_pDataArray[uEntry]->first(); e; e = m_pDataArray[uEntry]->next())
 		{
-			if(kvi_hash_key_equal(e->hKey,hKey,m_bCaseSensitive))
+			if(kvi_hash_key_equal(e->hKey, hKey, m_bCaseSensitive))
 			{
 				if(!m_bCaseSensitive)
 				{
 					// must change the key too
-					kvi_hash_key_destroy(e->hKey,m_bDeepCopyKeys);
-					kvi_hash_key_copy(hKey,e->hKey,m_bDeepCopyKeys);
+					kvi_hash_key_destroy(e->hKey, m_bDeepCopyKeys);
+					kvi_hash_key_copy(hKey, e->hKey, m_bDeepCopyKeys);
 				}
 				if(m_bAutoDelete)
 					delete e->pData;
@@ -525,8 +547,8 @@ public:
 				return;
 			}
 		}
-		KviPointerHashTableEntry<Key,T> * n = new KviPointerHashTableEntry<Key,T>;
-		kvi_hash_key_copy(hKey,n->hKey,m_bDeepCopyKeys);
+		KviPointerHashTableEntry<Key, T> * n = new KviPointerHashTableEntry<Key, T>;
+		kvi_hash_key_copy(hKey, n->hKey, m_bDeepCopyKeys);
 		n->pData = pData;
 		m_pDataArray[uEntry]->append(n);
 		m_uCount++;
@@ -545,7 +567,7 @@ public:
 	*/
 	void replace(const Key & hKey, T * pData)
 	{
-		insert(hKey,pData);
+		insert(hKey, pData);
 	}
 
 	/**
@@ -559,14 +581,16 @@ public:
 	*/
 	bool remove(const Key & hKey)
 	{
-		unsigned int uEntry = kvi_hash_hash(hKey,m_bCaseSensitive) % m_uSize;
-		if(!m_pDataArray[uEntry])return false;
-		for(KviPointerHashTableEntry<Key,T> * e = m_pDataArray[uEntry]->first();e;e = m_pDataArray[uEntry]->next())
+		unsigned int uEntry = kvi_hash_hash(hKey, m_bCaseSensitive) % m_uSize;
+		if(!m_pDataArray[uEntry])
+			return false;
+		for(KviPointerHashTableEntry<Key, T> * e = m_pDataArray[uEntry]->first(); e; e = m_pDataArray[uEntry]->next())
 		{
-			if(kvi_hash_key_equal(e->hKey,hKey,m_bCaseSensitive))
+			if(kvi_hash_key_equal(e->hKey, hKey, m_bCaseSensitive))
 			{
-				kvi_hash_key_destroy(e->hKey,m_bDeepCopyKeys);
-				if(m_bAutoDelete)delete ((T *)(e->pData));
+				kvi_hash_key_destroy(e->hKey, m_bDeepCopyKeys);
+				if(m_bAutoDelete)
+					delete((T *)(e->pData));
 				m_pDataArray[uEntry]->removeRef(e);
 				if(m_pDataArray[uEntry]->isEmpty())
 				{
@@ -591,16 +615,17 @@ public:
 	*/
 	bool removeRef(const T * pRef)
 	{
-		for(unsigned int i=0;i<m_uSize;i++)
+		for(unsigned int i = 0; i < m_uSize; i++)
 		{
 			if(m_pDataArray[i])
 			{
-				for(KviPointerHashTableEntry<Key,T> * e = m_pDataArray[i]->first();e;e = m_pDataArray[i]->next())
+				for(KviPointerHashTableEntry<Key, T> * e = m_pDataArray[i]->first(); e; e = m_pDataArray[i]->next())
 				{
 					if(e->pData == pRef)
 					{
-						kvi_hash_key_destroy(e->hKey,m_bDeepCopyKeys);
-						if(m_bAutoDelete)delete ((T *)(e->pData));
+						kvi_hash_key_destroy(e->hKey, m_bDeepCopyKeys);
+						if(m_bAutoDelete)
+							delete((T *)(e->pData));
 						m_pDataArray[i]->removeRef(e);
 						if(m_pDataArray[i]->isEmpty())
 						{
@@ -625,17 +650,17 @@ public:
 	*/
 	void clear()
 	{
-		for(unsigned int i=0;i<m_uSize;i++)
+		for(unsigned int i = 0; i < m_uSize; i++)
 		{
 			if(!m_pDataArray[i])
 				continue;
 
-			while(KviPointerHashTableEntry<Key,T> * e = m_pDataArray[i]->takeFirst())
+			while(KviPointerHashTableEntry<Key, T> * e = m_pDataArray[i]->takeFirst())
 			{
-				kvi_hash_key_destroy(e->hKey,m_bDeepCopyKeys);
+				kvi_hash_key_destroy(e->hKey, m_bDeepCopyKeys);
 
 				if(m_bAutoDelete)
-					delete ((T *)(e->pData));
+					delete((T *)(e->pData));
 
 				delete e;
 
@@ -660,15 +685,16 @@ public:
 	* \param pRef The pointer to search
 	* \return KviPointerHashTableEntry<Key,T> *
 	*/
-	KviPointerHashTableEntry<Key,T> * findRef(const T * pRef)
+	KviPointerHashTableEntry<Key, T> * findRef(const T * pRef)
 	{
-		for(m_uIteratorIdx = 0;m_uIteratorIdx<m_uSize;m_uIteratorIdx++)
+		for(m_uIteratorIdx = 0; m_uIteratorIdx < m_uSize; m_uIteratorIdx++)
 		{
 			if(m_pDataArray[m_uIteratorIdx])
 			{
-				for(KviPointerHashTableEntry<Key,T> * e = m_pDataArray[m_uIteratorIdx]->first();e;e = m_pDataArray[m_uIteratorIdx]->next())
+				for(KviPointerHashTableEntry<Key, T> * e = m_pDataArray[m_uIteratorIdx]->first(); e; e = m_pDataArray[m_uIteratorIdx]->next())
 				{
-					if(e->pData == pRef)return e;
+					if(e->pData == pRef)
+						return e;
 				}
 			}
 		}
@@ -682,10 +708,12 @@ public:
 	* or findRef().
 	* \return KviPointerHashTableEntry<Key,T> *
 	*/
-	KviPointerHashTableEntry<Key,T> * currentEntry()
+	KviPointerHashTableEntry<Key, T> * currentEntry()
 	{
-		if(m_uIteratorIdx >= m_uSize)return 0;
-		if(m_pDataArray[m_uIteratorIdx])return m_pDataArray[m_uIteratorIdx]->current();
+		if(m_uIteratorIdx >= m_uSize)
+			return 0;
+		if(m_pDataArray[m_uIteratorIdx])
+			return m_pDataArray[m_uIteratorIdx]->current();
 		return 0;
 	}
 
@@ -693,14 +721,15 @@ public:
 	* \brief Places the hash table iterator at the first entry and returns it.
 	* \return KviPointerHashTableEntry<Key,T> *
 	*/
-	KviPointerHashTableEntry<Key,T> * firstEntry()
+	KviPointerHashTableEntry<Key, T> * firstEntry()
 	{
 		m_uIteratorIdx = 0;
 		while(m_uIteratorIdx < m_uSize && (!m_pDataArray[m_uIteratorIdx]))
 		{
 			m_uIteratorIdx++;
 		}
-		if(m_uIteratorIdx == m_uSize)return 0;
+		if(m_uIteratorIdx == m_uSize)
+			return 0;
 		return m_pDataArray[m_uIteratorIdx]->first();
 	}
 
@@ -711,14 +740,16 @@ public:
 	* or findRef().
 	* \return KviPointerHashTableEntry<Key,T> *
 	*/
-	KviPointerHashTableEntry<Key,T> * nextEntry()
+	KviPointerHashTableEntry<Key, T> * nextEntry()
 	{
-		if(m_uIteratorIdx >= m_uSize)return 0;
+		if(m_uIteratorIdx >= m_uSize)
+			return 0;
 
 		if(m_uIteratorIdx < m_uSize)
 		{
-			KviPointerHashTableEntry<Key,T> * t = m_pDataArray[m_uIteratorIdx]->next();
-			if(t)return t;
+			KviPointerHashTableEntry<Key, T> * t = m_pDataArray[m_uIteratorIdx]->next();
+			if(t)
+				return t;
 		}
 
 		m_uIteratorIdx++;
@@ -728,10 +759,10 @@ public:
 			m_uIteratorIdx++;
 		}
 
-		if(m_uIteratorIdx == m_uSize)return 0;
+		if(m_uIteratorIdx == m_uSize)
+			return 0;
 
 		return m_pDataArray[m_uIteratorIdx]->first();
-
 	}
 
 	/**
@@ -743,11 +774,13 @@ public:
 	*/
 	T * current()
 	{
-		if(m_uIteratorIdx >= m_uSize)return 0;
+		if(m_uIteratorIdx >= m_uSize)
+			return 0;
 		if(m_pDataArray[m_uIteratorIdx])
 		{
-			KviPointerHashTableEntry<Key,T> * e = m_pDataArray[m_uIteratorIdx]->current();
-			if(!e)return 0;
+			KviPointerHashTableEntry<Key, T> * e = m_pDataArray[m_uIteratorIdx]->current();
+			if(!e)
+				return 0;
 			return e->data();
 		}
 		return 0;
@@ -762,11 +795,13 @@ public:
 	*/
 	const Key & currentKey()
 	{
-		if(m_uIteratorIdx >= m_uSize)return kvi_hash_key_default(((Key *)NULL));
+		if(m_uIteratorIdx >= m_uSize)
+			return kvi_hash_key_default(((Key *)NULL));
 		if(m_pDataArray[m_uIteratorIdx])
 		{
-			KviPointerHashTableEntry<Key,T> * e = m_pDataArray[m_uIteratorIdx]->current();
-			if(!e)return kvi_hash_key_default(((Key *)NULL));
+			KviPointerHashTableEntry<Key, T> * e = m_pDataArray[m_uIteratorIdx]->current();
+			if(!e)
+				return kvi_hash_key_default(((Key *)NULL));
 			return e->key();
 		}
 		return kvi_hash_key_default(((Key *)NULL));
@@ -784,9 +819,11 @@ public:
 		{
 			m_uIteratorIdx++;
 		}
-		if(m_uIteratorIdx == m_uSize)return 0;
-		KviPointerHashTableEntry<Key,T> * e = m_pDataArray[m_uIteratorIdx]->first();
-		if(!e)return 0;
+		if(m_uIteratorIdx == m_uSize)
+			return 0;
+		KviPointerHashTableEntry<Key, T> * e = m_pDataArray[m_uIteratorIdx]->first();
+		if(!e)
+			return 0;
 		return e->data();
 	}
 
@@ -799,11 +836,12 @@ public:
 	*/
 	T * next()
 	{
-		if(m_uIteratorIdx >= m_uSize)return 0;
+		if(m_uIteratorIdx >= m_uSize)
+			return 0;
 
 		if(m_uIteratorIdx < m_uSize)
 		{
-			KviPointerHashTableEntry<Key,T> * t = m_pDataArray[m_uIteratorIdx]->next();
+			KviPointerHashTableEntry<Key, T> * t = m_pDataArray[m_uIteratorIdx]->next();
 			if(t)
 			{
 				return t->data();
@@ -817,10 +855,12 @@ public:
 			m_uIteratorIdx++;
 		}
 
-		if(m_uIteratorIdx == m_uSize)return 0;
+		if(m_uIteratorIdx == m_uSize)
+			return 0;
 
-		KviPointerHashTableEntry<Key,T> * e = m_pDataArray[m_uIteratorIdx]->first();
-		if(!e)return 0;
+		KviPointerHashTableEntry<Key, T> * e = m_pDataArray[m_uIteratorIdx]->first();
+		if(!e)
+			return 0;
 		return e->data();
 	}
 
@@ -834,11 +874,11 @@ public:
 	* \param t The data to copy
 	* \return void
 	*/
-	void copyFrom(KviPointerHashTable<Key,T> & t)
+	void copyFrom(KviPointerHashTable<Key, T> & t)
 	{
 		clear();
-		for(KviPointerHashTableEntry<Key,T> * e = t.firstEntry();e;e = t.nextEntry())
-			insert(e->key(),e->data());
+		for(KviPointerHashTableEntry<Key, T> * e = t.firstEntry(); e; e = t.nextEntry())
+			insert(e->key(), e->data());
 	}
 
 	/**
@@ -848,10 +888,10 @@ public:
 	* \param t The data to insert
 	* \return void
 	*/
-	void insert(KviPointerHashTable<Key,T> & t)
+	void insert(KviPointerHashTable<Key, T> & t)
 	{
-		for(KviPointerHashTableEntry<Key,T> * e = t.firstEntry();e;e = t.nextEntry())
-			insert(e->key(),e->data());
+		for(KviPointerHashTableEntry<Key, T> * e = t.firstEntry(); e; e = t.nextEntry())
+			insert(e->key(), e->data());
 	}
 
 	/**
@@ -882,8 +922,9 @@ public:
 		m_bAutoDelete = true;
 		m_bDeepCopyKeys = bDeepCopyKeys;
 		m_uSize = uSize > 0 ? uSize : 32;
-		m_pDataArray = new KviPointerList<KviPointerHashTableEntry<Key,T> > *[m_uSize];
-		for(unsigned int i=0;i<m_uSize;i++)m_pDataArray[i] = NULL;
+		m_pDataArray = new KviPointerList<KviPointerHashTableEntry<Key, T>> *[m_uSize];
+		for(unsigned int i = 0; i < m_uSize; i++)
+			m_pDataArray[i] = NULL;
 	}
 
 	/**
@@ -893,15 +934,16 @@ public:
 	* \param t The data to copy
 	* \return KviPointerHashTable
 	*/
-	KviPointerHashTable(KviPointerHashTable<Key,T> & t)
+	KviPointerHashTable(KviPointerHashTable<Key, T> & t)
 	{
 		m_uCount = 0;
 		m_bAutoDelete = false;
 		m_bCaseSensitive = t.m_bCaseSensitive;
 		m_bDeepCopyKeys = t.m_bDeepCopyKeys;
 		m_uSize = t.m_uSize;
-		m_pDataArray = new KviPointerList<KviPointerHashTableEntry<Key,T> > *[m_uSize];
-		for(unsigned int i=0;i<m_uSize;i++)m_pDataArray[i] = NULL;
+		m_pDataArray = new KviPointerList<KviPointerHashTableEntry<Key, T>> *[m_uSize];
+		for(unsigned int i = 0; i < m_uSize; i++)
+			m_pDataArray[i] = NULL;
 		copyFrom(t);
 	}
 
@@ -913,7 +955,7 @@ public:
 	~KviPointerHashTable()
 	{
 		clear();
-		delete [] m_pDataArray;
+		delete[] m_pDataArray;
 	}
 };
 
@@ -921,12 +963,14 @@ public:
 * \class KviPointerHashTableIterator
 * \brief A fast pointer hash table iterator implementation
 */
-template<typename Key,typename T> class KviPointerHashTableIterator
+template <typename Key, typename T>
+class KviPointerHashTableIterator
 {
 protected:
-	const KviPointerHashTable<Key,T> * m_pHashTable;
-	unsigned int                       m_uEntryIndex;
-	KviPointerListIterator<KviPointerHashTableEntry<Key,T> > * m_pIterator;
+	const KviPointerHashTable<Key, T> * m_pHashTable;
+	unsigned int m_uEntryIndex;
+	KviPointerListIterator<KviPointerHashTableEntry<Key, T>> * m_pIterator;
+
 public:
 	/**
 	* \brief Creates an iterator copy.
@@ -935,12 +979,12 @@ public:
 	* \param src The source pointer to copy from
 	* \return void
 	*/
-	void operator = (const KviPointerHashTableIterator<Key,T> & src)
+	void operator=(const KviPointerHashTableIterator<Key, T> & src)
 	{
 		m_pHashTable = src.m_pHashTable;
 		m_uEntryIndex = src.m_uEntryIndex;
 		if(src.m_pIterator)
-			m_pIterator = new KviPointerListIterator<KviPointerHashTableEntry<Key,T> >(*(src.m_pIterator));
+			m_pIterator = new KviPointerListIterator<KviPointerHashTableEntry<Key, T>>(*(src.m_pIterator));
 		else
 			m_pIterator = NULL;
 	}
@@ -968,7 +1012,7 @@ public:
 		if(m_uEntryIndex == m_pHashTable->m_uSize)
 			return false;
 
-		m_pIterator = new KviPointerListIterator<KviPointerHashTableEntry<Key,T> >(*(m_pHashTable->m_pDataArray[m_uEntryIndex]));
+		m_pIterator = new KviPointerListIterator<KviPointerHashTableEntry<Key, T>>(*(m_pHashTable->m_pDataArray[m_uEntryIndex]));
 		bool bRet = m_pIterator->moveFirst();
 		if(!bRet)
 		{
@@ -998,7 +1042,7 @@ public:
 			m_uEntryIndex--;
 			if(m_pHashTable->m_pDataArray[m_uEntryIndex])
 			{
-				m_pIterator = new KviPointerListIterator<KviPointerHashTableEntry<Key,T> >(*(m_pHashTable->m_pDataArray[m_uEntryIndex]));
+				m_pIterator = new KviPointerListIterator<KviPointerHashTableEntry<Key, T>>(*(m_pHashTable->m_pDataArray[m_uEntryIndex]));
 				bool bRet = m_pIterator->moveLast();
 				if(!bRet)
 				{
@@ -1036,7 +1080,7 @@ public:
 		}
 		if(m_uEntryIndex == m_pHashTable->m_uSize)
 			return false;
-		m_pIterator = new KviPointerListIterator<KviPointerHashTableEntry<Key,T> >(*(m_pHashTable->m_pDataArray[m_uEntryIndex]));
+		m_pIterator = new KviPointerListIterator<KviPointerHashTableEntry<Key, T>>(*(m_pHashTable->m_pDataArray[m_uEntryIndex]));
 		bool bRet = m_pIterator->moveFirst();
 		if(!bRet)
 		{
@@ -1054,7 +1098,7 @@ public:
 	* This is just an alias to moveNext().
 	* \return bool
 	*/
-	bool operator ++()
+	bool operator++()
 	{
 		return moveNext();
 	}
@@ -1085,7 +1129,7 @@ public:
 			m_uEntryIndex--;
 			if(m_pHashTable->m_pDataArray[m_uEntryIndex])
 			{
-				m_pIterator = new KviPointerListIterator<KviPointerHashTableEntry<Key,T> >(*(m_pHashTable->m_pDataArray[m_uEntryIndex]));
+				m_pIterator = new KviPointerListIterator<KviPointerHashTableEntry<Key, T>>(*(m_pHashTable->m_pDataArray[m_uEntryIndex]));
 				bool bRet = m_pIterator->moveLast();
 				if(!bRet)
 				{
@@ -1107,7 +1151,7 @@ public:
 	* This is just an alias to movePrev() with a different name.
 	* \return bool
 	*/
-	bool operator --()
+	bool operator--()
 	{
 		return movePrev();
 	}
@@ -1131,7 +1175,7 @@ public:
 	* This is an alias to current() with just a different name.
 	* \return T *
 	*/
-	T * operator *() const
+	T * operator*() const
 	{
 		return m_pIterator ? m_pIterator->current()->data() : NULL;
 	}
@@ -1161,13 +1205,14 @@ public:
 			return NULL;
 		return current();
 	}
+
 public:
 	/**
 	* \brief Creates an iterator pointing to the first item in the hash table, if any.
 	* \param hTable The hash table
 	* \return KviPointerHashTableIterator
 	*/
-	KviPointerHashTableIterator(const KviPointerHashTable<Key,T> & hTable)
+	KviPointerHashTableIterator(const KviPointerHashTable<Key, T> & hTable)
 	{
 		m_pHashTable = &hTable;
 		m_uEntryIndex = 0;

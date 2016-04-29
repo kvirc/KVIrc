@@ -29,7 +29,6 @@
 #include "KviHeapObject.h"
 #include "KviCString.h"
 
-
 //
 // IANA media-types matching subsystem
 //
@@ -53,6 +52,7 @@ class KVILIB_API KviMediaType : public KviHeapObject
 public:
 	KviMediaType(){};
 	~KviMediaType(){};
+
 public:
 	KviCString szFileMask;
 	KviCString szMagicBytes;

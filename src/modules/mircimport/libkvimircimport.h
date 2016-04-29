@@ -40,8 +40,9 @@ class KviMircServersIniImport : public KviMexServerImport
 public:
 	KviMircServersIniImport(KviModuleExtensionDescriptor * d);
 	~KviMircServersIniImport();
+
 public:
-	int doImport(const QString& filename);
+	int doImport(const QString & filename);
 	virtual void start();
 	virtual void die();
 };
@@ -52,8 +53,10 @@ class KviRemoteMircServersIniImport : public KviMircServersIniImport
 public:
 	KviRemoteMircServersIniImport(KviModuleExtensionDescriptor * d);
 	~KviRemoteMircServersIniImport();
+
 protected:
 	KviRemoteMircServerImportWizard * m_pWizard;
+
 public:
 	virtual void start();
 	virtual void die();
@@ -65,20 +68,22 @@ class KviRemoteMircServerImportWizard : public KviTalWizard
 public:
 	KviRemoteMircServerImportWizard(KviRemoteMircServersIniImport * f);
 	~KviRemoteMircServerImportWizard();
+
 protected:
-	QLineEdit                     * m_pUrlEdit;
-	QLabel                        * m_pOutput;
+	QLineEdit * m_pUrlEdit;
+	QLabel * m_pOutput;
 	KviRemoteMircServersIniImport * m_pFilter;
-	KviHttpRequest                * m_pRequest;
-	QString                         m_szTmpFileName;
+	KviHttpRequest * m_pRequest;
+	QString m_szTmpFileName;
+
 protected:
-	virtual void closeEvent(QCloseEvent *e);
+	virtual void closeEvent(QCloseEvent * e);
 	virtual void done(int r);
 	void start();
 protected slots:
-	void getListMessage(const QString &message);
+	void getListMessage(const QString & message);
 	void getListTerminated(bool bSuccess);
-	void pageSelected(const QString &title);
+	void pageSelected(const QString & title);
 };
 
 #endif //_LIBKVIMIRCIMPORT_H_

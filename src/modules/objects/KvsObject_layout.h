@@ -33,18 +33,18 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool addWidget(KviKvsObjectFunctionCall *c);
-	bool addMultiCellWidget(KviKvsObjectFunctionCall *c);
-	bool setRowStretch(KviKvsObjectFunctionCall *c);
-	bool setColumnStretch(KviKvsObjectFunctionCall *c);
-	bool setMargin(KviKvsObjectFunctionCall *c);
-	bool setSpacing(KviKvsObjectFunctionCall *c);
-	bool addRowSpacing(KviKvsObjectFunctionCall *c);
-	bool addColSpacing(KviKvsObjectFunctionCall *c);
-	bool setResizeMode(KviKvsObjectFunctionCall *c);
-	bool setAlignment(KviKvsObjectFunctionCall *c);
+	bool addWidget(KviKvsObjectFunctionCall * c);
+	bool addMultiCellWidget(KviKvsObjectFunctionCall * c);
+	bool setRowStretch(KviKvsObjectFunctionCall * c);
+	bool setColumnStretch(KviKvsObjectFunctionCall * c);
+	bool setMargin(KviKvsObjectFunctionCall * c);
+	bool setSpacing(KviKvsObjectFunctionCall * c);
+	bool addRowSpacing(KviKvsObjectFunctionCall * c);
+	bool addColSpacing(KviKvsObjectFunctionCall * c);
+	bool setResizeMode(KviKvsObjectFunctionCall * c);
+	bool setAlignment(KviKvsObjectFunctionCall * c);
 };
 
 #endif //_CLASS_LAYOUT_H_

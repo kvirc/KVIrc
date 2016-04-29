@@ -124,6 +124,7 @@ class KviXmlHandler : public QXmlDefaultHandler
 protected:
 	KvsObject_xmlReader * m_pReader;
 	QString m_szErrorString;
+
 public:
 	KviXmlHandler(KvsObject_xmlReader * pReader)
 	{
@@ -132,23 +133,24 @@ public:
 	~KviXmlHandler()
 	{
 	}
+
 private:
 	bool kvsCodeFailure()
 	{
-		m_szErrorString = __tr2qs_ctx("Error in KVS class implementation: processing aborted","objects");
+		m_szErrorString = __tr2qs_ctx("Error in KVS class implementation: processing aborted", "objects");
 		return false;
 	}
 	bool kvsCodeAbort()
 	{
-		m_szErrorString = __tr2qs_ctx("Processing aborted","objects");
+		m_szErrorString = __tr2qs_ctx("Processing aborted", "objects");
 		return false;
 	}
-	void decodeException(QString &szMsg,bool bError,const QXmlParseException &exception)
+	void decodeException(QString & szMsg, bool bError, const QXmlParseException & exception)
 	{
 		if(bError)
-			szMsg = QString(__tr2qs_ctx("Error near line %1, column %2","objects")).arg(exception.lineNumber()).arg(exception.columnNumber());
+			szMsg = QString(__tr2qs_ctx("Error near line %1, column %2", "objects")).arg(exception.lineNumber()).arg(exception.columnNumber());
 		else
-			szMsg = QString(__tr2qs_ctx("Warning near line %1, column %2","objects")).arg(exception.lineNumber()).arg(exception.columnNumber());
+			szMsg = QString(__tr2qs_ctx("Warning near line %1, column %2", "objects")).arg(exception.lineNumber()).arg(exception.columnNumber());
 		szMsg += ": ";
 		szMsg += exception.message();
 	}
@@ -158,11 +160,12 @@ private:
 			return kvsCodeAbort();
 		return true;
 	}
+
 public:
 	virtual bool startDocument()
 	{
 		KviKvsVariant ret;
-		if(!m_pReader->callFunction(m_pReader,"onDocumentStart",&ret))
+		if(!m_pReader->callFunction(m_pReader, "onDocumentStart", &ret))
 			return kvsCodeFailure();
 		return handleKvsCallReturnValue(&ret);
 	}
@@ -170,12 +173,12 @@ public:
 	virtual bool endDocument()
 	{
 		KviKvsVariant ret;
-		if(!m_pReader->callFunction(m_pReader,"onDocumentEnd",&ret))
+		if(!m_pReader->callFunction(m_pReader, "onDocumentEnd", &ret))
 			return kvsCodeFailure();
 		return handleKvsCallReturnValue(&ret);
 	}
 
-	virtual bool startElement(const QString &szNamespaceUri,const QString &szLocalName,const QString &szQualifiedName,const QXmlAttributes &attrs)
+	virtual bool startElement(const QString & szNamespaceUri, const QString & szLocalName, const QString & szQualifiedName, const QXmlAttributes & attrs)
 	{
 		KviKvsVariant ret;
 		KviKvsVariantList par;
@@ -186,14 +189,14 @@ public:
 		par.append(new KviKvsVariant(szNamespaceUri));
 		par.append(new KviKvsVariant(szLocalName));
 		int c = attrs.count();
-		for(int i=0;i<c;i++)
-			pHash->set(attrs.qName(i),new KviKvsVariant(attrs.value(i)));
-		if(!m_pReader->callFunction(m_pReader,"onElementStart",&ret,&par))
+		for(int i = 0; i < c; i++)
+			pHash->set(attrs.qName(i), new KviKvsVariant(attrs.value(i)));
+		if(!m_pReader->callFunction(m_pReader, "onElementStart", &ret, &par))
 			return kvsCodeFailure();
 		return handleKvsCallReturnValue(&ret);
 	}
 
-	virtual bool endElement(const QString &szNamespaceUri,const QString &szLocalName,const QString &szQualifiedName)
+	virtual bool endElement(const QString & szNamespaceUri, const QString & szLocalName, const QString & szQualifiedName)
 	{
 		KviKvsVariant ret;
 		KviKvsVariantList par;
@@ -201,56 +204,56 @@ public:
 		par.append(new KviKvsVariant(szQualifiedName));
 		par.append(new KviKvsVariant(szNamespaceUri));
 		par.append(new KviKvsVariant(szLocalName));
-		if(!m_pReader->callFunction(m_pReader,"onElementEnd",&ret,&par))
+		if(!m_pReader->callFunction(m_pReader, "onElementEnd", &ret, &par))
 			return kvsCodeFailure();
 		return handleKvsCallReturnValue(&ret);
 	}
 
-	virtual bool characters(const QString &szChars)
+	virtual bool characters(const QString & szChars)
 	{
 		KviKvsVariant ret;
 		KviKvsVariantList par;
 		par.setAutoDelete(true);
 		par.append(new KviKvsVariant(szChars));
-		if(!m_pReader->callFunction(m_pReader,"onText",&ret,&par))
+		if(!m_pReader->callFunction(m_pReader, "onText", &ret, &par))
 			return kvsCodeFailure();
 		return handleKvsCallReturnValue(&ret);
 	}
 
-	virtual bool warning(const QXmlParseException &exception)
+	virtual bool warning(const QXmlParseException & exception)
 	{
 		// recoverable
 		QString szMsg;
-		decodeException(szMsg,false,exception);
+		decodeException(szMsg, false, exception);
 
 		KviKvsVariant ret;
 		KviKvsVariantList par;
 		par.setAutoDelete(true);
 		par.append(new KviKvsVariant(szMsg));
-		if(!m_pReader->callFunction(m_pReader,"onWarning",&ret,&par))
+		if(!m_pReader->callFunction(m_pReader, "onWarning", &ret, &par))
 			return kvsCodeFailure();
 		return handleKvsCallReturnValue(&ret);
 	}
 
-	virtual bool error(const QXmlParseException &exception)
+	virtual bool error(const QXmlParseException & exception)
 	{
 		// recoverable
 		QString szMsg;
-		decodeException(szMsg,false,exception);
+		decodeException(szMsg, false, exception);
 
 		KviKvsVariant ret;
 		KviKvsVariantList par;
 		par.setAutoDelete(true);
 		par.append(new KviKvsVariant(szMsg));
-		if(!m_pReader->callFunction(m_pReader,"onWarning",&ret,&par))
+		if(!m_pReader->callFunction(m_pReader, "onWarning", &ret, &par))
 			return kvsCodeFailure();
 		return handleKvsCallReturnValue(&ret);
 	}
 
-	virtual bool fatalError(const QXmlParseException &exception)
+	virtual bool fatalError(const QXmlParseException & exception)
 	{
 		QString szMsg;
-		decodeException(szMsg,true,exception);
+		decodeException(szMsg, true, exception);
 		m_pReader->fatalError(szMsg);
 		return true;
 	}
@@ -263,68 +266,67 @@ public:
 
 #endif // !QT_NO_XML
 
+KVSO_BEGIN_REGISTERCLASS(KvsObject_xmlReader, "xmlreader", "object")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_xmlReader, lastError)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_xmlReader, parse)
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_xmlReader,"xmlreader","object")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_xmlReader,lastError)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_xmlReader,parse)
-
-	KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader,"onDocumentStart")
-	KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader,"onDocumentEnd")
-	KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader,"onElementStart")
-	KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader,"onElementEnd")
-	KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader,"onText")
-	KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader,"onWarning")
-	KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader,"onError")
+KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader, "onDocumentStart")
+KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader, "onDocumentEnd")
+KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader, "onElementStart")
+KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader, "onElementEnd")
+KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader, "onText")
+KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader, "onWarning")
+KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KvsObject_xmlReader, "onError")
 KVSO_END_REGISTERCLASS(KvsObject_xmlReader)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_xmlReader,KviKvsObject)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_xmlReader, KviKvsObject)
 KVSO_END_CONSTRUCTOR(KvsObject_xmlReader)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_xmlReader)
 KVSO_END_DESTRUCTOR(KvsObject_xmlReader)
 
-void KvsObject_xmlReader::fatalError(const QString &szError)
+void KvsObject_xmlReader::fatalError(const QString & szError)
 {
 	m_szLastError = szError;
 
 	KviKvsVariantList vArgs;
 	vArgs.append(new KviKvsVariant(m_szLastError));
-	callFunction(this,"onError",&vArgs);
+	callFunction(this, "onError", &vArgs);
 }
 
-KVSO_CLASS_FUNCTION(xmlReader,parse)
+KVSO_CLASS_FUNCTION(xmlReader, parse)
 {
 	KviKvsVariant * pVariantData;
 
 	KVSO_PARAMETERS_BEGIN(c)
-			KVSO_PARAMETER("string_or_memorybuffer_object",KVS_PT_VARIANT,0,pVariantData)
+	KVSO_PARAMETER("string_or_memorybuffer_object", KVS_PT_VARIANT, 0, pVariantData)
 	KVSO_PARAMETERS_END(c)
-	#ifdef QT_NO_XML
+#ifdef QT_NO_XML
 	fatalError(__tr2qs_ctx("XML support not available in the Qt library"));
 	c->returnValue()->setBoolean(false);
-	#else
+#else
 	m_szLastError = "";
 	KviXmlHandler handler(this);
 	QXmlInputSource source;
 
-	if (pVariantData->isHObject())
+	if(pVariantData->isHObject())
 	{
 		KviKvsObject * pObject;
 		kvs_hobject_t hObject;
 		pVariantData->asHObject(hObject);
-		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-		if (!pObject)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		if(!pObject)
 		{
-			c->warning(__tr2qs_ctx("Data parameter is not an object","objects"));
+			c->warning(__tr2qs_ctx("Data parameter is not an object", "objects"));
 			return true;
 		}
-		if (pObject->inheritsClass("memorybuffer"))
+		if(pObject->inheritsClass("memorybuffer"))
 		{
 			source.setData(*((KvsObject_memoryBuffer *)pObject)->pBuffer());
 		}
 		else
 		{
-			c->warning(__tr2qs_ctx("Data parameter is not a memorybuffer object","objects"));
+			c->warning(__tr2qs_ctx("Data parameter is not a memorybuffer object", "objects"));
 			return true;
 		}
 	}
@@ -343,7 +345,7 @@ KVSO_CLASS_FUNCTION(xmlReader,parse)
 	}
 	else
 	{
-		c->warning(__tr2qs_ctx("Data is not a memorybuffer object or string","objects"));
+		c->warning(__tr2qs_ctx("Data is not a memorybuffer object or string", "objects"));
 		return true;
 	}
 	QXmlSimpleReader reader;
@@ -354,7 +356,7 @@ KVSO_CLASS_FUNCTION(xmlReader,parse)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(xmlReader,lastError)
+KVSO_CLASS_FUNCTION(xmlReader, lastError)
 {
 	c->returnValue()->setString(m_szLastError);
 	return true;

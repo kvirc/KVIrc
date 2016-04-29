@@ -28,19 +28,19 @@
 
 KviIrcUserEntry::KviIrcUserEntry(const QString & szUser, const QString & szHost)
 {
-	m_szUser                  = szUser;
-	m_szHost                  = szHost;
-	m_nRefs                   = 1;
-	m_iHops                   = -1;
-	m_bAway                   = false;
-	m_bIrcOp                  = false;
-	m_eGender                 = Unknown;
-	m_bBot                    = false;
-	m_bNotFoundRegUserLookup  = false;
-	m_bUseCustomColor         = false;
-	m_bAvatarRequested        = false;
-	m_iSmartNickColor         = -1;
-	m_szAccountName           = QString();
+	m_szUser = szUser;
+	m_szHost = szHost;
+	m_nRefs = 1;
+	m_iHops = -1;
+	m_bAway = false;
+	m_bIrcOp = false;
+	m_eGender = Unknown;
+	m_bBot = false;
+	m_bNotFoundRegUserLookup = false;
+	m_bUseCustomColor = false;
+	m_bAvatarRequested = false;
+	m_iSmartNickColor = -1;
+	m_szAccountName = QString();
 }
 
 void KviIrcUserEntry::setRealName(const QString & szReal)
@@ -55,18 +55,22 @@ void KviIrcUserEntry::setRealName(const QString & szReal)
 			if(m_szRealName[1].unicode() & 1 && m_szRealName[1].unicode() & 2)
 			{
 				setBot(true); //3
-			} else {
+			}
+			else
+			{
 				if(m_szRealName[1].unicode() & 1)
 				{
 					setGender(Male); //1
-				} else {
+				}
+				else
+				{
 					if(m_szRealName[1].unicode() & 2)
 					{
 						setGender(Female); //2
 					}
 				}
 			}
-			m_szRealName.remove(0,3);
+			m_szRealName.remove(0, 3);
 		}
 	}
 
@@ -87,7 +91,7 @@ void KviIrcUserEntry::setRealName(const QString & szReal)
 				int iColor = KviNickColors::getSmartColorIntByMircColor(cFore, cBack);
 				if(iColor >= 0)
 					setSmartNickColor(iColor);
-				m_szRealName.remove(0,iPos+1);
+				m_szRealName.remove(0, iPos + 1);
 			}
 		}
 	}

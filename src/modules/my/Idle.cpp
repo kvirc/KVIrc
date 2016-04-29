@@ -18,15 +18,14 @@
  *
  */
 
-#include"Idle.h"
+#include "Idle.h"
 
 #include <QCursor>
 #include <QDateTime>
 #include <QTimer>
 
-static IdlePlatform *platform = 0;
+static IdlePlatform * platform = 0;
 static int platform_ref = 0;
-
 
 Idle::Idle()
 {
@@ -35,8 +34,9 @@ Idle::Idle()
 	d->idleTime = 0;
 
 	// try to use platform idle
-	if(!platform) {
-		IdlePlatform *p = new IdlePlatform;
+	if(!platform)
+	{
+		IdlePlatform * p = new IdlePlatform;
 		if(p->init())
 			platform = p;
 		else
@@ -50,9 +50,11 @@ Idle::Idle()
 
 Idle::~Idle()
 {
-	if(platform) {
+	if(platform)
+	{
 		--platform_ref;
-		if(platform_ref == 0) {
+		if(platform_ref == 0)
+		{
 			delete platform;
 			platform = 0;
 		}
@@ -67,14 +69,15 @@ bool Idle::isActive() const
 
 bool Idle::usingPlatform() const
 {
-	return (platform ? true: false);
+	return (platform ? true : false);
 }
 
 void Idle::start()
 {
 	d->startTime = QDateTime::currentDateTime();
 
-	if(!platform) {
+	if(!platform)
+	{
 		// generic idle
 		d->lastMousePos = QCursor::pos();
 		d->idleSince = QDateTime::currentDateTime();
@@ -94,10 +97,12 @@ int Idle::secondsIdle()
 	int i;
 	if(platform)
 		i = platform->secondsIdle();
-	else {
+	else
+	{
 		QPoint curMousePos = QCursor::pos();
 		QDateTime curDateTime = QDateTime::currentDateTime();
-		if(d->lastMousePos != curMousePos) {
+		if(d->lastMousePos != curMousePos)
+		{
 			d->lastMousePos = curMousePos;
 			d->idleSince = curDateTime;
 		}
@@ -111,12 +116,14 @@ int Idle::secondsIdle()
 	int t = beginIdle.secsTo(d->startTime);
 
 	// beginIdle later than (or equal to) startTime?
-	if(t <= 0) {
+	if(t <= 0)
+	{
 		// scoot ourselves up to the new idle start
 		d->startTime = beginIdle;
 	}
 	// beginIdle earlier than startTime?
-	else if(t > 0) {
+	else if(t > 0)
+	{
 		// do nothing
 	}
 

@@ -29,46 +29,45 @@
 #include "KvsObject_widget.h"
 #include "KviFile.h"
 
-
 class KvsObject_file : public KvsObject_widget
 {
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_file)
 protected:
 	KviFile * m_pFile;
+
 public:
+	KviFile * file() { return m_pFile; };
+	bool setName(KviKvsObjectFunctionCall * c);
+	bool name(KviKvsObjectFunctionCall * c);
+	bool open(KviKvsObjectFunctionCall * c);
+	bool isOpen(KviKvsObjectFunctionCall * c);
+	bool close(KviKvsObjectFunctionCall * c);
+	bool flush(KviKvsObjectFunctionCall * c);
+	bool size(KviKvsObjectFunctionCall * c);
+	bool resize(KviKvsObjectFunctionCall * c);
 
-	KviFile * file(){ return m_pFile; };
-	bool setName(KviKvsObjectFunctionCall *c);
-	bool name(KviKvsObjectFunctionCall *c);
-	bool open(KviKvsObjectFunctionCall *c);
-	bool isOpen(KviKvsObjectFunctionCall *c);
-	bool close(KviKvsObjectFunctionCall *c);
-	bool flush(KviKvsObjectFunctionCall *c);
-	bool size(KviKvsObjectFunctionCall *c);
-	bool resize(KviKvsObjectFunctionCall *c);
-
-	bool atEnd(KviKvsObjectFunctionCall *c);
+	bool atEnd(KviKvsObjectFunctionCall * c);
 	// int QFile at() const
-	bool where(KviKvsObjectFunctionCall *c);
+	bool where(KviKvsObjectFunctionCall * c);
 	// void QFile at(int)
-	bool seek(KviKvsObjectFunctionCall *c);
-	bool putch(KviKvsObjectFunctionCall *c);
-	bool getch(KviKvsObjectFunctionCall *c);
-	bool readByte(KviKvsObjectFunctionCall *c);
-	bool unGetch(KviKvsObjectFunctionCall *c);
+	bool seek(KviKvsObjectFunctionCall * c);
+	bool putch(KviKvsObjectFunctionCall * c);
+	bool getch(KviKvsObjectFunctionCall * c);
+	bool readByte(KviKvsObjectFunctionCall * c);
+	bool unGetch(KviKvsObjectFunctionCall * c);
 
-	bool readBlock(KviKvsObjectFunctionCall *c);
-	bool writeBlock(KviKvsObjectFunctionCall *c);
+	bool readBlock(KviKvsObjectFunctionCall * c);
+	bool writeBlock(KviKvsObjectFunctionCall * c);
 
-	bool readLine(KviKvsObjectFunctionCall *c);
-	bool writeLine(KviKvsObjectFunctionCall *c);
+	bool readLine(KviKvsObjectFunctionCall * c);
+	bool writeLine(KviKvsObjectFunctionCall * c);
 
-	bool readHexBlock(KviKvsObjectFunctionCall *c);
-	bool writeHexBlock(KviKvsObjectFunctionCall *c);
+	bool readHexBlock(KviKvsObjectFunctionCall * c);
+	bool writeHexBlock(KviKvsObjectFunctionCall * c);
 
-	bool write(KviKvsObjectFunctionCall *c);
-	bool read(KviKvsObjectFunctionCall *c);
+	bool write(KviKvsObjectFunctionCall * c);
+	bool read(KviKvsObjectFunctionCall * c);
 };
 
-#endif	// !_CLASS_FILE_H_
+#endif // !_CLASS_FILE_H_

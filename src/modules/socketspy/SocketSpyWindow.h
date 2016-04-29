@@ -36,12 +36,14 @@ class SocketSpyWindow : public KviWindow, public KviIrcDataStreamMonitor
 public:
 	SocketSpyWindow(KviConsoleWindow * lpConsole);
 	~SocketSpyWindow();
+
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getBaseLogFileName(QString &buffer);
+	virtual void resizeEvent(QResizeEvent * e);
+	virtual void getBaseLogFileName(QString & buffer);
 	virtual void applyOptions();
+
 public:
 	virtual QSize sizeHint() const;
 	virtual bool incomingMessage(const char * message);

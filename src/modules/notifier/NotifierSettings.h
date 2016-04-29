@@ -26,20 +26,18 @@
 
 // Global settings for KviNotifier
 
-
-
-#define WDG_MIN_WIDTH	370
-#define WDG_MIN_HEIGHT	160
+#define WDG_MIN_WIDTH 370
+#define WDG_MIN_HEIGHT 160
 #define WDG_BORDER_THICKNESS 5
 #define SPACING 2
 
-#define WDG_ICON_OUT		0
-#define WDG_ICON_OVER		1
-#define WDG_ICON_CLICKED	2
-#define WDG_ICON_ON		3
-#define WDG_ICON_OFF		4
+#define WDG_ICON_OUT 0
+#define WDG_ICON_OVER 1
+#define WDG_ICON_CLICKED 2
+#define WDG_ICON_ON 3
+#define WDG_ICON_OFF 4
 
-#define NTF_TABS_FONT_BASELINE	8
+#define NTF_TABS_FONT_BASELINE 8
 
 #define MAX_MESSAGES_IN_WINDOW 20
 // keep hidden messages for 600 seconds : 10 min
@@ -49,18 +47,31 @@
 
 #define NUM_OLD_COLORS 6
 
-#define WDG_UPSX	1
-#define WDG_UP		2
-#define WDG_UPDX	3
-#define WDG_DWNSX	4
-#define WDG_DWN		5
-#define WDG_DWNDX	6
-#define WDG_SX		7
-#define WDG_DX		8
+#define WDG_UPSX 1
+#define WDG_UP 2
+#define WDG_UPDX 3
+#define WDG_DWNSX 4
+#define WDG_DWN 5
+#define WDG_DWNDX 6
+#define WDG_SX 7
+#define WDG_DX 8
 
-#define	m_mac_bkgColor	QColor(236,233,216)		// Light-brown color of notifier background widget
+#define m_mac_bkgColor QColor(236, 233, 216) // Light-brown color of notifier background widget
 
-enum State { Hidden, Showing, Visible, Hiding, FocusingOff, FocusingOn };
-enum TabState { Normal, Highlighted, Changed };
+enum State
+{
+	Hidden,
+	Showing,
+	Visible,
+	Hiding,
+	FocusingOff,
+	FocusingOn
+};
+enum TabState
+{
+	Normal,
+	Highlighted,
+	Changed
+};
 
-#endif	//_NOTIFIER_SETTINGS_H_
+#endif //_NOTIFIER_SETTINGS_H_

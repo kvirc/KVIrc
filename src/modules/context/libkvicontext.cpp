@@ -44,56 +44,56 @@
 #include "KviIrcSocket.h"
 
 #ifdef COMPILE_SSL_SUPPORT
-	#include "KviSSLMaster.h"
+#include "KviSSLMaster.h"
 #endif
 
-#define GET_CONSOLE_FROM_STANDARD_PARAMS \
-	kvs_uint_t iContextId; \
-	KVSM_PARAMETERS_BEGIN(c) \
-		KVSM_PARAMETER("irc_context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,iContextId) \
-	KVSM_PARAMETERS_END(c) \
-	KviConsoleWindow * pConsole = NULL; \
-	if(c->parameterCount() > 0) \
-		pConsole = g_pApp->findConsole(iContextId); \
-	else \
+#define GET_CONSOLE_FROM_STANDARD_PARAMS                                       \
+	kvs_uint_t iContextId;                                                     \
+	KVSM_PARAMETERS_BEGIN(c)                                                   \
+	KVSM_PARAMETER("irc_context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, iContextId) \
+	KVSM_PARAMETERS_END(c)                                                     \
+	KviConsoleWindow * pConsole = NULL;                                        \
+	if(c->parameterCount() > 0)                                                \
+		pConsole = g_pApp->findConsole(iContextId);                            \
+	else                                                                       \
 		pConsole = c->window()->console();
 
 #define GET_CONNECTION_FROM_STANDARD_PARAMS \
-	GET_CONSOLE_FROM_STANDARD_PARAMS \
-	KviIrcConnection * pConnection = NULL; \
-	if(pConsole) \
+	GET_CONSOLE_FROM_STANDARD_PARAMS        \
+	KviIrcConnection * pConnection = NULL;  \
+	if(pConsole)                            \
 		pConnection = pConsole->context()->connection();
 
-#define STANDARD_IRC_CONNECTION_TARGET_PARAMETER(_fncName,_setCall) \
-	static bool _fncName(KviKvsModuleFunctionCall * c) \
-	{ \
-		GET_CONNECTION_FROM_STANDARD_PARAMS \
-		if(pConnection) \
-		{ \
-			if(pConnection->target()) \
-			{ \
-				_setCall; \
-				return true; \
-			} \
-		} \
-		c->returnValue()->setNothing(); \
-		return true; \
+#define STANDARD_IRC_CONNECTION_TARGET_PARAMETER(_fncName, _setCall) \
+	static bool _fncName(KviKvsModuleFunctionCall * c)               \
+	{                                                                \
+		GET_CONNECTION_FROM_STANDARD_PARAMS                          \
+		if(pConnection)                                              \
+		{                                                            \
+			if(pConnection->target())                                \
+			{                                                        \
+				_setCall;                                            \
+				return true;                                         \
+			}                                                        \
+		}                                                            \
+		c->returnValue()->setNothing();                              \
+		return true;                                                 \
 	}
 
-#define STANDARD_SERVERINFO_TARGET_PARAMETER(_fncName,_setCall) \
-	static bool _fncName(KviKvsModuleFunctionCall * c) \
-	{ \
-		GET_CONNECTION_FROM_STANDARD_PARAMS \
-		if(pConnection) \
-		{ \
-			if(pConnection->serverInfo()) \
-			{ \
-				_setCall; \
-				return true; \
-			} \
-		} \
-		c->returnValue()->setNothing(); \
-		return true; \
+#define STANDARD_SERVERINFO_TARGET_PARAMETER(_fncName, _setCall) \
+	static bool _fncName(KviKvsModuleFunctionCall * c)           \
+	{                                                            \
+		GET_CONNECTION_FROM_STANDARD_PARAMS                      \
+		if(pConnection)                                          \
+		{                                                        \
+			if(pConnection->serverInfo())                        \
+			{                                                    \
+				_setCall;                                        \
+				return true;                                     \
+			}                                                    \
+		}                                                        \
+		c->returnValue()->setNothing();                          \
+		return true;                                             \
 	}
 
 /*
@@ -122,9 +122,8 @@
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
-		context_kvs_fnc_networkName,
-		c->returnValue()->setString(pConnection->currentNetworkName())
-	)
+    context_kvs_fnc_networkName,
+    c->returnValue()->setString(pConnection->currentNetworkName()))
 
 /*
 	@doc: context.serverdbNetworkName
@@ -154,9 +153,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
-		context_kvs_fnc_serverdbNetworkName,
-		c->returnValue()->setString(pConnection->target()->network()->name())
-	)
+    context_kvs_fnc_serverdbNetworkName,
+    c->returnValue()->setString(pConnection->target()->network()->name()))
 
 /*
 	@doc: context.serverHostName
@@ -190,9 +188,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
-		context_kvs_fnc_serverHostName,
-		c->returnValue()->setString(pConnection->currentServerName())
-	)
+    context_kvs_fnc_serverHostName,
+    c->returnValue()->setString(pConnection->currentServerName()))
 
 /*
 	@doc: context.serverdbServerHostName
@@ -224,9 +221,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
-		context_kvs_fnc_serverdbServerHostName,
-		c->returnValue()->setString(pConnection->target()->server()->hostName())
-	)
+    context_kvs_fnc_serverdbServerHostName,
+    c->returnValue()->setString(pConnection->target()->server()->hostName()))
 
 /*
 	@doc: context.serverIpAddress
@@ -252,9 +248,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
-		context_kvs_fnc_serverIpAddress,
-		c->returnValue()->setString(pConnection->target()->server()->ip())
-	)
+    context_kvs_fnc_serverIpAddress,
+    c->returnValue()->setString(pConnection->target()->server()->ip()))
 
 /*
 	@doc: context.serverIsIPV6
@@ -281,9 +276,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
-		context_kvs_fnc_serverIsIPV6,
-		c->returnValue()->setBoolean(pConnection->target()->server()->isIPv6())
-	)
+    context_kvs_fnc_serverIsIPV6,
+    c->returnValue()->setBoolean(pConnection->target()->server()->isIPv6()))
 
 /*
 	@doc: context.serverIsSSL
@@ -310,9 +304,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
-		context_kvs_fnc_serverIsSSL,
-		c->returnValue()->setBoolean(pConnection->target()->server()->useSSL())
-	)
+    context_kvs_fnc_serverIsSSL,
+    c->returnValue()->setBoolean(pConnection->target()->server()->useSSL()))
 
 /*
 	@doc: context.serverSoftware
@@ -340,9 +333,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 */
 
 STANDARD_SERVERINFO_TARGET_PARAMETER(
-		context_kvs_fnc_serverSoftware,
-		c->returnValue()->setString(pConnection->serverInfo()->software())
-	)
+    context_kvs_fnc_serverSoftware,
+    c->returnValue()->setString(pConnection->serverInfo()->software()))
 
 /*
 	@doc: context.serverPassword
@@ -368,10 +360,8 @@ STANDARD_SERVERINFO_TARGET_PARAMETER(
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
-		context_kvs_fnc_serverPassword,
-		c->returnValue()->setString(pConnection->target()->server()->password())
-	)
-
+    context_kvs_fnc_serverPassword,
+    c->returnValue()->setString(pConnection->target()->server()->password()))
 
 /*
 	@doc: context.serverPort
@@ -396,10 +386,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
-		context_kvs_fnc_serverPort,
-		c->returnValue()->setInteger(pConnection->target()->server()->port())
-	)
-
+    context_kvs_fnc_serverPort,
+    c->returnValue()->setInteger(pConnection->target()->server()->port()))
 
 /*
 	@doc: context.state
@@ -433,22 +421,22 @@ static bool context_kvs_fnc_state(KviKvsModuleFunctionCall * c)
 		{
 			case KviIrcContext::Idle:
 				c->returnValue()->setString(QString("idle"));
-			break;
+				break;
 			case KviIrcContext::PendingReconnection:
 				c->returnValue()->setString(QString("pending"));
-			break;
+				break;
 			case KviIrcContext::Connecting:
 				c->returnValue()->setString(QString("connecting"));
-			break;
+				break;
 			case KviIrcContext::LoggingIn:
 				c->returnValue()->setString(QString("loggingin"));
-			break;
+				break;
 			case KviIrcContext::Connected:
 				c->returnValue()->setString(QString("connected"));
-			break;
+				break;
 			default:
 				c->returnValue()->setString(QString("unknown"));
-			break;
+				break;
 		}
 		return true;
 	}
@@ -456,7 +444,6 @@ static bool context_kvs_fnc_state(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setNothing();
 	return true;
 }
-
 
 /*
 	@doc: context.list
@@ -485,11 +472,11 @@ static bool context_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 
 	KviPointerList<KviWindow> * pWinList = g_pMainWindow->windowList();
 	int idx = 0;
-	for(KviWindow * pWnd = pWinList->first();pWnd;pWnd = pWinList->next())
+	for(KviWindow * pWnd = pWinList->first(); pWnd; pWnd = pWinList->next())
 	{
 		if(pWnd->type() == KviWindow::Console)
 		{
-			pArray->set(idx,new KviKvsVariant((kvs_int_t)((KviConsoleWindow *)pWnd)->context()->id()));
+			pArray->set(idx, new KviKvsVariant((kvs_int_t)((KviConsoleWindow *)pWnd)->context()->id()));
 			idx++;
 		}
 	}
@@ -520,9 +507,8 @@ static bool context_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
-		context_kvs_fnc_connectionStartTime,
-		c->returnValue()->setInteger((kvs_int_t)(pConnection->statistics()->connectionStartTime()));
-	)
+    context_kvs_fnc_connectionStartTime,
+    c->returnValue()->setInteger((kvs_int_t)(pConnection->statistics()->connectionStartTime()));)
 
 /*
 	@doc: context.lastMessageTime
@@ -546,9 +532,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 */
 
 STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
-		context_kvs_fnc_lastMessageTime,
-		c->returnValue()->setInteger((kvs_int_t)(pConnection->statistics()->lastMessageTime()));
-	)
+    context_kvs_fnc_lastMessageTime,
+    c->returnValue()->setInteger((kvs_int_t)(pConnection->statistics()->lastMessageTime()));)
 
 /*
 	@doc: context.clearqueue
@@ -576,7 +561,7 @@ static bool context_kvs_cmd_clearQueue(KviKvsModuleCommandCall * c)
 {
 	KVSM_REQUIRE_CONNECTION(c)
 
-	c->window()->connection()->clearOutputQueue(!c->switches()->find('a',"all"));
+	c->window()->connection()->clearOutputQueue(!c->switches()->find('a', "all"));
 
 	return true;
 }
@@ -672,13 +657,13 @@ static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 	QString szQuery;
 	QString szType;
 	QString szParam1;
-	bool bRemote=true;
+	bool bRemote = true;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("query",KVS_PT_STRING,0,szQuery)
-		KVSM_PARAMETER("type",KVS_PT_STRING,KVS_PF_OPTIONAL,szType)
-		KVSM_PARAMETER("context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uContextId)
-		KVSM_PARAMETER("param1",KVS_PT_STRING,KVS_PF_OPTIONAL,szParam1)
+	KVSM_PARAMETER("query", KVS_PT_STRING, 0, szQuery)
+	KVSM_PARAMETER("type", KVS_PT_STRING, KVS_PF_OPTIONAL, szType)
+	KVSM_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
+	KVSM_PARAMETER("param1", KVS_PT_STRING, KVS_PF_OPTIONAL, szParam1)
 	KVSM_PARAMETERS_END(c)
 
 #ifndef COMPILE_SSL_SUPPORT
@@ -702,12 +687,14 @@ static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	if(szType.compare("local")==0)
+	if(szType.compare("local") == 0)
 	{
-		bRemote=false;
-	} else {
+		bRemote = false;
+	}
+	else
+	{
 		// already defaults to true, we only catch the error condition
-		if(szType.compare("remote")!=0)
+		if(szType.compare("remote") != 0)
 		{
 			c->warning(__tr2qs("You specified a bad string for the parameter \"type\""));
 			c->returnValue()->setString("");
@@ -772,24 +759,24 @@ static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 
 static bool context_module_init(KviModule * m)
 {
-	KVSM_REGISTER_FUNCTION(m,"serverHostName",context_kvs_fnc_serverHostName);
-	KVSM_REGISTER_FUNCTION(m,"serverIpAddress",context_kvs_fnc_serverIpAddress);
-	KVSM_REGISTER_FUNCTION(m,"serverPort",context_kvs_fnc_serverPort);
-	KVSM_REGISTER_FUNCTION(m,"serverIsIPV6",context_kvs_fnc_serverIsIPV6);
-	KVSM_REGISTER_FUNCTION(m,"serverIsSSL",context_kvs_fnc_serverIsSSL);
-	KVSM_REGISTER_FUNCTION(m,"serverPassword",context_kvs_fnc_serverPassword);
-	KVSM_REGISTER_FUNCTION(m,"networkName",context_kvs_fnc_networkName);
-	KVSM_REGISTER_FUNCTION(m,"serverdbNetworkName",context_kvs_fnc_serverdbNetworkName);
-	KVSM_REGISTER_FUNCTION(m,"serverdbServerHostName",context_kvs_fnc_serverdbServerHostName);
-	KVSM_REGISTER_FUNCTION(m,"state",context_kvs_fnc_state);
-	KVSM_REGISTER_FUNCTION(m,"list",context_kvs_fnc_list);
-	KVSM_REGISTER_FUNCTION(m,"serverSoftware",context_kvs_fnc_serverSoftware);
-	KVSM_REGISTER_FUNCTION(m,"connectionStartTime",context_kvs_fnc_connectionStartTime);
-	KVSM_REGISTER_FUNCTION(m,"lastMessageTime",context_kvs_fnc_lastMessageTime);
-	KVSM_REGISTER_FUNCTION(m,"queueSize",context_kvs_fnc_queueSize);
-	KVSM_REGISTER_FUNCTION(m,"getSSLCertInfo",context_kvs_fnc_getSSLCertInfo);
+	KVSM_REGISTER_FUNCTION(m, "serverHostName", context_kvs_fnc_serverHostName);
+	KVSM_REGISTER_FUNCTION(m, "serverIpAddress", context_kvs_fnc_serverIpAddress);
+	KVSM_REGISTER_FUNCTION(m, "serverPort", context_kvs_fnc_serverPort);
+	KVSM_REGISTER_FUNCTION(m, "serverIsIPV6", context_kvs_fnc_serverIsIPV6);
+	KVSM_REGISTER_FUNCTION(m, "serverIsSSL", context_kvs_fnc_serverIsSSL);
+	KVSM_REGISTER_FUNCTION(m, "serverPassword", context_kvs_fnc_serverPassword);
+	KVSM_REGISTER_FUNCTION(m, "networkName", context_kvs_fnc_networkName);
+	KVSM_REGISTER_FUNCTION(m, "serverdbNetworkName", context_kvs_fnc_serverdbNetworkName);
+	KVSM_REGISTER_FUNCTION(m, "serverdbServerHostName", context_kvs_fnc_serverdbServerHostName);
+	KVSM_REGISTER_FUNCTION(m, "state", context_kvs_fnc_state);
+	KVSM_REGISTER_FUNCTION(m, "list", context_kvs_fnc_list);
+	KVSM_REGISTER_FUNCTION(m, "serverSoftware", context_kvs_fnc_serverSoftware);
+	KVSM_REGISTER_FUNCTION(m, "connectionStartTime", context_kvs_fnc_connectionStartTime);
+	KVSM_REGISTER_FUNCTION(m, "lastMessageTime", context_kvs_fnc_lastMessageTime);
+	KVSM_REGISTER_FUNCTION(m, "queueSize", context_kvs_fnc_queueSize);
+	KVSM_REGISTER_FUNCTION(m, "getSSLCertInfo", context_kvs_fnc_getSSLCertInfo);
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"clearQueue",context_kvs_cmd_clearQueue);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "clearQueue", context_kvs_cmd_clearQueue);
 
 	return true;
 }
@@ -800,13 +787,12 @@ static bool context_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"context",
-	"4.0.0",
-	"Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)",
-	"IRC Context Related Functions",
-	context_module_init,
-	0,
-	0,
-	context_module_cleanup,
-	0
-)
+    "context",
+    "4.0.0",
+    "Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)",
+    "IRC Context Related Functions",
+    context_module_init,
+    0,
+    0,
+    context_module_cleanup,
+    0)

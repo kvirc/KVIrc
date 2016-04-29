@@ -35,7 +35,7 @@
 #include "KviWindow.h"
 
 #ifdef COMPILE_ZLIB_SUPPORT
-	#include <zlib.h>
+#include <zlib.h>
 #endif
 
 #include <QFileInfo>
@@ -74,17 +74,19 @@ void KviIrcView::stopLogging()
 			if(m_pLogFile->open(QIODevice::ReadOnly))
 			{
 				QByteArray bytes;
-				bytes=m_pLogFile->readAll();
+				bytes = m_pLogFile->readAll();
 				m_pLogFile->close();
 				QFileInfo fi(*m_pLogFile);
-				QString szFname=fi.absolutePath()+QString("/")+fi.completeBaseName();
-				gzFile file=gzopen(QTextCodec::codecForLocale()->fromUnicode(szFname).data(),"ab9");
+				QString szFname = fi.absolutePath() + QString("/") + fi.completeBaseName();
+				gzFile file = gzopen(QTextCodec::codecForLocale()->fromUnicode(szFname).data(), "ab9");
 				if(file)
 				{
-					gzwrite(file,bytes.data(),bytes.size());
+					gzwrite(file, bytes.data(), bytes.size());
 					gzclose(file);
 					m_pLogFile->remove();
-				} else {
+				}
+				else
+				{
 					qDebug("Can't open compressed stream");
 				}
 			}
@@ -95,17 +97,19 @@ void KviIrcView::stopLogging()
 	}
 }
 
-void KviIrcView::getLogFileName(QString &buffer)
+void KviIrcView::getLogFileName(QString & buffer)
 {
-	if(m_pLogFile) buffer=m_pLogFile->fileName();
+	if(m_pLogFile)
+		buffer = m_pLogFile->fileName();
 }
 
-void KviIrcView::getTextBuffer(QString &buffer)
+void KviIrcView::getTextBuffer(QString & buffer)
 {
 	// FIXME: #warning "This does not merge the KviChannelWindow::m_pMessageView buffer!"
 	buffer = "";
-	if(!m_pLastLine)return;
-	for(KviIrcViewLine *l=m_pFirstLine;l;l=l->pNext)
+	if(!m_pLastLine)
+		return;
+	for(KviIrcViewLine * l = m_pFirstLine; l; l = l->pNext)
 	{
 		buffer.append(l->szText);
 		buffer.append("\n");
@@ -114,7 +118,8 @@ void KviIrcView::getTextBuffer(QString &buffer)
 
 void KviIrcView::flushLog()
 {
-	if(m_pLogFile) {
+	if(m_pLogFile)
+	{
 #ifdef COMPILE_ZLIB_SUPPORT
 		if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
 		{
@@ -122,31 +127,35 @@ void KviIrcView::flushLog()
 			if(m_pLogFile->open(QIODevice::ReadOnly))
 			{
 				QByteArray bytes;
-				bytes=m_pLogFile->readAll();
+				bytes = m_pLogFile->readAll();
 				m_pLogFile->close();
 				QFileInfo fi(*m_pLogFile);
-				QString szFname=fi.absolutePath()+QString("/")+fi.completeBaseName();
-				gzFile file=gzopen(QTextCodec::codecForLocale()->fromUnicode(szFname).data(),"ab9");
+				QString szFname = fi.absolutePath() + QString("/") + fi.completeBaseName();
+				gzFile file = gzopen(QTextCodec::codecForLocale()->fromUnicode(szFname).data(), "ab9");
 				if(file)
 				{
-					gzwrite(file,bytes.data(),bytes.size());
+					gzwrite(file, bytes.data(), bytes.size());
 					gzclose(file);
 					m_pLogFile->remove();
-				} else {
+				}
+				else
+				{
 					qDebug("Can't open compressed stream");
 				}
 			}
-			m_pLogFile->open(QIODevice::Append|QIODevice::WriteOnly);
-		} else
+			m_pLogFile->open(QIODevice::Append | QIODevice::WriteOnly);
+		}
+		else
 #endif
-		m_pLogFile->flush();
+			m_pLogFile->flush();
 	}
-	else if(m_pMasterView)m_pMasterView->flushLog();
+	else if(m_pMasterView)
+		m_pMasterView->flushLog();
 }
 
 const QString & KviIrcView::lastMessageText()
 {
-	KviIrcViewLine * pCur=m_pLastLine;
+	KviIrcViewLine * pCur = m_pLastLine;
 	while(pCur)
 	{
 		switch(pCur->iMsgType)
@@ -161,22 +170,25 @@ const QString & KviIrcView::lastMessageText()
 			case KVI_OUT_HIGHLIGHT:
 				return pCur->szText;
 		}
-		pCur=pCur->pPrev;
+		pCur = pCur->pPrev;
 	}
 	return KviQString::Empty;
 }
 
 const QString & KviIrcView::lastLineOfText()
 {
-	if(!m_pLastLine)return KviQString::Empty;
+	if(!m_pLastLine)
+		return KviQString::Empty;
 	return m_pLastLine->szText;
 }
 
 void KviIrcView::setMasterView(KviIrcView * v)
 {
-	if(m_pMasterView)disconnect(this,SLOT(masterDead()));
+	if(m_pMasterView)
+		disconnect(this, SLOT(masterDead()));
 	m_pMasterView = v;
-	if(m_pMasterView)connect(m_pMasterView,SIGNAL(destroyed()),this,SLOT(masterDead()));
+	if(m_pMasterView)
+		connect(m_pMasterView, SIGNAL(destroyed()), this, SLOT(masterDead()));
 }
 
 void KviIrcView::masterDead()
@@ -184,33 +196,36 @@ void KviIrcView::masterDead()
 	m_pMasterView = 0;
 }
 
-bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
+bool KviIrcView::startLogging(const QString & fname, bool bPrependCurBuffer)
 {
 	stopLogging();
 	QString szFname(fname);
 
 	if(fname.isEmpty())
 	{
-		if(!m_pKviWindow)return false;
+		if(!m_pKviWindow)
+			return false;
 		m_pKviWindow->getDefaultLogFileName(szFname);
 	}
 
 #ifdef COMPILE_ZLIB_SUPPORT
 	if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
-		szFname+=".tmp";
+		szFname += ".tmp";
 #endif
 
 	m_pLogFile = new QFile(szFname);
 
 	if(m_pLogFile->exists())
 	{
-		if(!m_pLogFile->open(QIODevice::Append|QIODevice::WriteOnly))
+		if(!m_pLogFile->open(QIODevice::Append | QIODevice::WriteOnly))
 		{
 			delete m_pLogFile;
 			m_pLogFile = 0;
 			return false;
 		}
-	} else {
+	}
+	else
+	{
 		if(!m_pLogFile->open(QIODevice::WriteOnly))
 		{
 			delete m_pLogFile;
@@ -251,8 +266,7 @@ bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 	return true;
 }
 
-
-void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
+void KviIrcView::add2Log(const QString & szBuffer, int iMsgType, bool bPrependDate)
 {
 	QByteArray tmp;
 
@@ -262,7 +276,7 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 
 		tmp = szMessageType.toUtf8();
 
-		if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
+		if(m_pLogFile->write(tmp.data(), tmp.length()) == -1)
 			qDebug("WARNING: can't write to the log file.");
 	}
 
@@ -274,24 +288,24 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType,bool bPrependDate)
 		{
 			case 0:
 				szDate = date.toString("[hh:mm:ss] ");
-			break;
+				break;
 			case 1:
 				szDate = date.toString(Qt::ISODate);
-			break;
+				break;
 			case 2:
 				szDate = date.toString(Qt::SystemLocaleShortDate);
-			break;
+				break;
 		}
 
 		tmp = szDate.toUtf8();
 
-		if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
+		if(m_pLogFile->write(tmp.data(), tmp.length()) == -1)
 			qDebug("WARNING: can't write to the log file.");
 	}
 
 	tmp = szBuffer.toUtf8();
 	tmp.append('\n');
 
-	if(m_pLogFile->write(tmp.data(),tmp.length())==-1)
+	if(m_pLogFile->write(tmp.data(), tmp.length()) == -1)
 		qDebug("WARNING: can't write to the log file.");
 }

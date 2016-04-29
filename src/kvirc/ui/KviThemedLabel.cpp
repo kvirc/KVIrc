@@ -37,11 +37,11 @@
 #include <qdrawutil.h> // qDrawShadePanel
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
+extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-KviThemedLabel::KviThemedLabel(QWidget * par, KviWindow * pWindow,const char * name)
-: QLabel(par)
+KviThemedLabel::KviThemedLabel(QWidget * par, KviWindow * pWindow, const char * name)
+    : QLabel(par)
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
@@ -63,37 +63,37 @@ void KviThemedLabel::applyOptions()
 #endif
 
 	QString szStyle = QString("QLabel { background: %1; background-clip: content; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
-	.arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
-	.arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() :
-				KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
-	.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
-	.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
-	.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
-	.arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
+	                      .arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
+	                      .arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
+	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
+	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
+	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
+	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
 	setStyleSheet(szStyle);
 	update();
 }
 
-void KviThemedLabel::paintEvent(QPaintEvent *e)
+void KviThemedLabel::paintEvent(QPaintEvent * e)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	QPainter *p = new QPainter(this);
+	QPainter * p = new QPainter(this);
 
 	// In Qt5 QStyle::drawPrimitive seems to always overwrite the background, no matter what.
-	qDrawShadePanel(p,0,0,width(),height(),palette(),true,1,NULL);
+	qDrawShadePanel(p, 0, 0, width(), height(), palette(), true, 1, NULL);
 
-	QRect r(1,1,width()-2,height()-2);
+	QRect r(1, 1, width() - 2, height() - 2);
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
 		p->setCompositionMode(QPainter::CompositionMode_Source);
-		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		QColor col = KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
 		p->fillRect(r, col);
-	} else if(g_pShadedChildGlobalDesktopBackground)
+	}
+	else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = m_pKviWindow->isDocked() ? mapTo(g_pMainWindow, r.topLeft()) : mapTo(m_pKviWindow, r.topLeft());
-		p->drawTiledPixmap(r,*(g_pShadedChildGlobalDesktopBackground), pnt);
+		p->drawTiledPixmap(r, *(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 	delete p;
 #endif

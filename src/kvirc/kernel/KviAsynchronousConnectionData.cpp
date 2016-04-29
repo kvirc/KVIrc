@@ -26,9 +26,9 @@
 #include "KviIrcServerReconnectInfo.h"
 
 KviAsynchronousConnectionData::KviAsynchronousConnectionData()
-: KviHeapObject()
+    : KviHeapObject()
 {
-	m_pReconnectInfo=0;
+	m_pReconnectInfo = 0;
 	bUseLastServerInContext = false;
 }
 

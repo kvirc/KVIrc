@@ -35,14 +35,15 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeSpecialCommandIf : public KviKvsTreeNodeSpecialCommand
 {
 public:
-	KviKvsTreeNodeSpecialCommandIf(const QChar * pLocation,KviKvsTreeNodeExpression * e,KviKvsTreeNodeInstruction * pIf,KviKvsTreeNodeInstruction * pElse);
+	KviKvsTreeNodeSpecialCommandIf(const QChar * pLocation, KviKvsTreeNodeExpression * e, KviKvsTreeNodeInstruction * pIf, KviKvsTreeNodeInstruction * pElse);
 	~KviKvsTreeNodeSpecialCommandIf();
+
 private:
-	KviKvsTreeNodeExpression * m_pExpression; // can't be 0
-	KviKvsTreeNodeInstruction * m_pIfInstruction; // may be 0
+	KviKvsTreeNodeExpression * m_pExpression;       // can't be 0
+	KviKvsTreeNodeInstruction * m_pIfInstruction;   // may be 0
 	KviKvsTreeNodeInstruction * m_pElseInstruction; // may be 0
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };

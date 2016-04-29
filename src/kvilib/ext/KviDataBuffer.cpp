@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #define _KVI_DEBUG_CHECK_RANGE_
 
 #include "kvi_debug.h"
@@ -32,12 +31,13 @@
 
 // FIXME: this could resize in chunks!...this would be damn faster :)
 
-KviDataBuffer::KviDataBuffer(int uSize,const unsigned char * data)
+KviDataBuffer::KviDataBuffer(int uSize, const unsigned char * data)
 {
 	KVI_ASSERT(uSize > 0);
 	m_uSize = uSize;
 	m_pData = (unsigned char *)KviMemory::allocate(sizeof(unsigned char) * uSize);
-	if(data)KviMemory::move(m_pData,data,uSize);
+	if(data)
+		KviMemory::move(m_pData, data, uSize);
 }
 
 KviDataBuffer::KviDataBuffer()
@@ -55,21 +55,24 @@ KviDataBuffer::~KviDataBuffer()
 	}
 }
 
-int KviDataBuffer::find(const unsigned char * block,int uSize)
+int KviDataBuffer::find(const unsigned char * block, int uSize)
 {
-	if(uSize < 1)return -1;
-	if(uSize > m_uSize)return -1;
+	if(uSize < 1)
+		return -1;
+	if(uSize > m_uSize)
+		return -1;
 
 	int uSearchSize = (m_uSize - uSize) + 1;
 
-	for(int i=0;i<uSearchSize;i++)
+	for(int i = 0; i < uSearchSize; i++)
 	{
 		if(m_pData[i] == *block)
 		{
 			// good beginning
-			if(uSize == 1)return i;
+			if(uSize == 1)
+				return i;
 			int j;
-			for(j = 1;j<uSize;j++)
+			for(j = 1; j < uSize; j++)
 			{
 				if(m_pData[i + j] != block[j])
 				{
@@ -77,7 +80,8 @@ int KviDataBuffer::find(const unsigned char * block,int uSize)
 					break;
 				}
 			}
-			if(j > 0)return i;
+			if(j > 0)
+				return i;
 		}
 	}
 
@@ -90,12 +94,12 @@ int KviDataBuffer::find(unsigned char c)
 	const unsigned char * e = p + m_uSize;
 	while(p < e)
 	{
-		if(*p == c)return (p - m_pData);
+		if(*p == c)
+			return (p - m_pData);
 		p++;
 	}
 	return -1;
 }
-
 
 void KviDataBuffer::remove(int uSize)
 {
@@ -105,9 +109,11 @@ void KviDataBuffer::remove(int uSize)
 
 	if(m_uSize > 0)
 	{
-		KviMemory::move(m_pData,m_pData + uSize,m_uSize);
-		m_pData = (unsigned char *)KviMemory::reallocate(m_pData,m_uSize * sizeof(unsigned char));
-	} else {
+		KviMemory::move(m_pData, m_pData + uSize, m_uSize);
+		m_pData = (unsigned char *)KviMemory::reallocate(m_pData, m_uSize * sizeof(unsigned char));
+	}
+	else
+	{
 		KviMemory::free(m_pData);
 		m_pData = 0;
 	}
@@ -118,17 +124,19 @@ void KviDataBuffer::resize(int uSize)
 	KVI_ASSERT(uSize >= 0);
 	if(uSize > 0)
 	{
-		m_pData = (unsigned char *)KviMemory::reallocate(m_pData,uSize * sizeof(unsigned char));
-	} else {
+		m_pData = (unsigned char *)KviMemory::reallocate(m_pData, uSize * sizeof(unsigned char));
+	}
+	else
+	{
 		KviMemory::free(m_pData);
 		m_pData = 0;
 	}
 	m_uSize = uSize;
 }
 
-void KviDataBuffer::append(const unsigned char * data,int uSize)
+void KviDataBuffer::append(const unsigned char * data, int uSize)
 {
-	m_pData = (unsigned char *)KviMemory::reallocate(m_pData,m_uSize + uSize);
-	KviMemory::move(m_pData + m_uSize,data,uSize);
+	m_pData = (unsigned char *)KviMemory::reallocate(m_pData, m_uSize + uSize);
+	KviMemory::move(m_pData + m_uSize, data, uSize);
 	m_uSize += uSize;
 }

@@ -55,17 +55,19 @@ class KviMexLinkFilter;
 class KVIRC_API KviIrcLink : public QObject
 {
 	friend class KviIrcConnection; // upper protocol in the stack
-	friend class KviIrcSocket; // lower protocol in the stack
+	friend class KviIrcSocket;     // lower protocol in the stack
 	Q_OBJECT
 public:
 	/**
 	* \enum State
 	*/
-	enum State {
-		Idle, /**< Socket idling */
+	enum State
+	{
+		Idle,       /**< Socket idling */
 		Connecting, /**< Socket connecting */
-		Connected /**< Socket connected */
+		Connected   /**< Socket connected */
 	};
+
 protected:
 	/**
 	* \brief Constructs the IrcLink object
@@ -85,20 +87,21 @@ protected:
 	* \brief Destroys the IrcLink object
 	*/
 	~KviIrcLink();
+
 private:
-	KviIrcConnection               * m_pConnection;       // shallow, never null
-	KviIrcConnectionTarget         * m_pTarget;           // shallow, never null
-	KviConsoleWindow                     * m_pConsole;          // shallow, never null
-	KviIrcSocket                   * m_pSocket;           // owned, may be null!
-	KviMexLinkFilter               * m_pLinkFilter;       // owned, may be null!
+	KviIrcConnection * m_pConnection;   // shallow, never null
+	KviIrcConnectionTarget * m_pTarget; // shallow, never null
+	KviConsoleWindow * m_pConsole;      // shallow, never null
+	KviIrcSocket * m_pSocket;           // owned, may be null!
+	KviMexLinkFilter * m_pLinkFilter;   // owned, may be null!
 
-	State                            m_eState;
+	State m_eState;
 
-	char                           * m_pReadBuffer;
-	unsigned int                     m_uReadBufferLen;
-	unsigned int                     m_uReadPackets;
+	char * m_pReadBuffer;
+	unsigned int m_uReadBufferLen;
+	unsigned int m_uReadPackets;
 
-	KviIrcConnectionTargetResolver * m_pResolver;         // owned
+	KviIrcConnectionTargetResolver * m_pResolver; // owned
 public:
 	/**
 	* \brief Returns the socket
@@ -106,7 +109,7 @@ public:
 	* May be null!
 	* \return KviIrcSocket *
 	*/
-	KviIrcSocket * socket(){ return m_pSocket; };
+	KviIrcSocket * socket() { return m_pSocket; };
 
 	/**
 	* \brief Returns the connection object
@@ -114,7 +117,7 @@ public:
 	* Never null
 	* \return KviIrcConnection *
 	*/
-	KviIrcConnection * connection(){ return m_pConnection; };
+	KviIrcConnection * connection() { return m_pConnection; };
 
 	/**
 	* \brief Returns the console
@@ -122,13 +125,13 @@ public:
 	* Never null
 	* \return KviConsoleWindow *
 	*/
-	KviConsoleWindow * console(){ return m_pConsole; };
+	KviConsoleWindow * console() { return m_pConsole; };
 
 	/**
 	* \brief Returns the state of the socket
 	* \return State
 	*/
-	State state(){ return m_eState; };
+	State state() { return m_eState; };
 protected:
 	/**
 	* \brief Sends a data packet
@@ -160,6 +163,7 @@ protected:
 	* \return void
 	*/
 	void abort();
+
 protected:
 	/**
 	* \brief Starts a connection attempt.
@@ -171,6 +175,7 @@ protected:
 	* \return void
 	*/
 	void start();
+
 protected:
 	/**
 	* \brief Process a packet of raw data from the server
@@ -198,6 +203,7 @@ protected slots:
 	* \return void
 	*/
 	void linkFilterDestroyed();
+
 private:
 	/**
 	* \brief Destroys the socket

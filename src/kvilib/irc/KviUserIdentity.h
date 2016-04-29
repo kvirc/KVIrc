@@ -42,6 +42,7 @@
 class KVILIB_API KviUserIdentity : public KviHeapObject
 {
 	friend class KviUserIdentityManager;
+
 public:
 	/**
 	* \brief Constructs the user identity object
@@ -53,6 +54,7 @@ public:
 	* \brief Destroys the user identity object
 	*/
 	~KviUserIdentity();
+
 protected:
 	QString m_szId; // the identity set name
 
@@ -81,6 +83,7 @@ protected:
 
 	QString m_szOnConnectCommand;
 	QString m_szOnLoginCommand;
+
 public:
 	/**
 	* \brief Returns the id of the user
@@ -195,133 +198,133 @@ public:
 	* \param szId The id of the user
 	* \return void
 	*/
-	void setId(const QString & szId){ m_szId = szId; };
+	void setId(const QString & szId) { m_szId = szId; };
 
 	/**
 	* \brief Sets the nickname of the user
 	* \param szNickName The nickname of the user
 	* \return void
 	*/
-	void setNickName(const QString & szNickName){ m_szNickName = szNickName; };
+	void setNickName(const QString & szNickName) { m_szNickName = szNickName; };
 
 	/**
 	* \brief Sets the alternative nickname of the user
 	* \param szNickName The nickname of the user
 	* \return void
 	*/
-	void setAltNickName1(const QString & szNickName){ m_szAltNickName1 = szNickName; };
+	void setAltNickName1(const QString & szNickName) { m_szAltNickName1 = szNickName; };
 
 	/**
 	* \brief Sets the second alternative nickname of the user
 	* \param szNickName The nickname of the user
 	* \return void
 	*/
-	void setAltNickName2(const QString & szNickName){ m_szAltNickName2 = szNickName; };
+	void setAltNickName2(const QString & szNickName) { m_szAltNickName2 = szNickName; };
 
 	/**
 	* \brief Sets the third alternative nickname of the user
 	* \param szNickName The nickname of the user
 	* \return void
 	*/
-	void setAltNickName3(const QString & szNickName){ m_szAltNickName3 = szNickName; };
+	void setAltNickName3(const QString & szNickName) { m_szAltNickName3 = szNickName; };
 
 	/**
 	* \brief Sets the username of the user
 	* \param szUserName The username of the user
 	* \return void
 	*/
-	void setUserName(const QString & szUserName){ m_szUserName = szUserName; };
+	void setUserName(const QString & szUserName) { m_szUserName = szUserName; };
 
 	/**
 	* \brief Sets the realname of the user
 	* \param szRealName The realname of the user
 	* \return void
 	*/
-	void setRealName(const QString & szRealName){ m_szRealName = szRealName; };
+	void setRealName(const QString & szRealName) { m_szRealName = szRealName; };
 
 	/**
 	* \brief Sets the password of the user
 	* \param szPassword The password of the user
 	* \return void
 	*/
-	void setPassword(const QString & szPassword){ m_szPassword = szPassword; };
+	void setPassword(const QString & szPassword) { m_szPassword = szPassword; };
 
 	/**
 	* \brief Sets the avatar of the user
 	* \param pix The avatar of the user
 	* \return void
 	*/
-	void setAvatar(const KviPixmap & pix){ m_pixAvatar = pix; };
+	void setAvatar(const KviPixmap & pix) { m_pixAvatar = pix; };
 
 	/**
 	* \brief Sets the part messaege of the user
 	* \param szMsg The part message of the user
 	* \return void
 	*/
-	void setPartMessage(const QString & szMsg){ m_szPartMessage = szMsg; };
+	void setPartMessage(const QString & szMsg) { m_szPartMessage = szMsg; };
 
 	/**
 	* \brief Sets the quit messaege of the user
 	* \param szMsg The quit message of the user
 	* \return void
 	*/
-	void setQuitMessage(const QString & szMsg){ m_szQuitMessage = szMsg; };
+	void setQuitMessage(const QString & szMsg) { m_szQuitMessage = szMsg; };
 
 	/**
 	* \brief Sets the age of the user
 	* \param szAge The age of the user
 	* \return void
 	*/
-	void setAge(const QString & szAge){ m_szAge = szAge; };
+	void setAge(const QString & szAge) { m_szAge = szAge; };
 
 	/**
 	* \brief Sets the gender of the user
 	* \param szGender The gemder of the user
 	* \return void
 	*/
-	void setGender(const QString & szGender){ m_szGender = szGender; };
+	void setGender(const QString & szGender) { m_szGender = szGender; };
 
 	/**
 	* \brief Sets the location of the user
 	* \param szLocation The location of the user
 	* \return void
 	*/
-	void setLocation(const QString & szLocation){ m_szLocation = szLocation; };
+	void setLocation(const QString & szLocation) { m_szLocation = szLocation; };
 
 	/**
 	* \brief Sets the languages of the user
 	* \param szLanguages The languages of the user
 	* \return void
 	*/
-	void setLanguages(const QString & szLanguages){ m_szLanguages = szLanguages; };
+	void setLanguages(const QString & szLanguages) { m_szLanguages = szLanguages; };
 
 	/**
 	* \brief Sets the other info for the user
 	* \param szOtherInfo The other info of the user
 	* \return void
 	*/
-	void setOtherInfo(const QString & szOtherInfo){ m_szOtherInfo = szOtherInfo; };
+	void setOtherInfo(const QString & szOtherInfo) { m_szOtherInfo = szOtherInfo; };
 
 	/**
 	* \brief Sets the user mode of the user
 	* \param szUserMode The user mode of the user
 	* \return void
 	*/
-	void setUserMode(const QString & szUserMode){ m_szUserMode = szUserMode; };
+	void setUserMode(const QString & szUserMode) { m_szUserMode = szUserMode; };
 
 	/**
 	* \brief Sets the commands list to run on connection
 	* \param szOnConnectCommand The commands to run
 	* \return void
 	*/
-	void setOnConnectCommand(const QString & szOnConnectCommand){ m_szOnConnectCommand = szOnConnectCommand; };
+	void setOnConnectCommand(const QString & szOnConnectCommand) { m_szOnConnectCommand = szOnConnectCommand; };
 
 	/**
 	* \brief Sets the commands list to run on login
 	* \param szOnLoginCommand The commands to run
 	* \return void
 	*/
-	void setOnLoginCommand(const QString & szOnLoginCommand){ m_szOnLoginCommand = szOnLoginCommand; };
+	void setOnLoginCommand(const QString & szOnLoginCommand) { m_szOnLoginCommand = szOnLoginCommand; };
 protected:
 	/**
 	* \brief Carbon copy

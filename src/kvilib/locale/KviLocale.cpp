@@ -45,11 +45,10 @@
 #include <QLocale>
 #include <QByteArray>
 
-
-KVILIB_API KviMessageCatalogue  * g_pMainCatalogue = NULL;
+KVILIB_API KviMessageCatalogue * g_pMainCatalogue = NULL;
 
 static KviTranslator * g_pTranslator = NULL;
-static KviPointerHashTable<const char *,KviMessageCatalogue> * g_pCatalogueDict = NULL;
+static KviPointerHashTable<const char *, KviMessageCatalogue> * g_pCatalogueDict = NULL;
 static QTextCodec * g_pUtf8TextCodec = NULL;
 static QString g_szDefaultLocalePath; // FIXME: Convert this to a search path list
 
@@ -80,74 +79,72 @@ static QString g_szDefaultLocalePath; // FIXME: Convert this to a search path li
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
+#define UNICODE_VALID(Char) \
+	((Char) < 0x110000 && (((Char)&0xFFFFF800) != 0xD800) && ((Char) < 0xFDD0 || (Char) > 0xFDEF) && ((Char)&0xFFFE) != 0xFFFE)
 
-#define UNICODE_VALID(Char)                  \
-	((Char) < 0x110000 &&                    \
-	(((Char) & 0xFFFFF800) != 0xD800) &&     \
-	((Char) < 0xFDD0 || (Char) > 0xFDEF) &&  \
-	((Char) & 0xFFFE) != 0xFFFE)
+#define CONTINUATION_CHAR                                   \
+	if((*(unsigned char *)p & 0xc0) != 0x80) /* 10xxxxxx */ \
+		goto error;                                         \
+	val <<= 6;                                              \
+	val |= (*(unsigned char *)p) & 0x3f;
 
-#define CONTINUATION_CHAR                            \
-	if ((*(unsigned char *)p & 0xc0) != 0x80) /* 10xxxxxx */ \
-		goto error;                                     \
-		val <<= 6;                                      \
-		val |= (*(unsigned char *)p) & 0x3f;
-
-
-static const char * fast_validate (const char *str)
+static const char * fast_validate(const char * str)
 {
 	unsigned int val = 0;
 	unsigned int min = 0;
-	const char *p;
+	const char * p;
 
-	for (p = str; *p; p++)
+	for(p = str; *p; p++)
 	{
-		if (*(unsigned char *)p < 128)
+		if(*(unsigned char *)p < 128)
 			/* done */;
 		else
 		{
-			const char *last;
+			const char * last;
 
 			last = p;
-			if ((*(unsigned char *)p & 0xe0) == 0xc0) /* 110xxxxx */
+			if((*(unsigned char *)p & 0xe0) == 0xc0) /* 110xxxxx */
 			{
-				if ((*(unsigned char *)p & 0x1e) == 0)
+				if((*(unsigned char *)p & 0x1e) == 0)
 					goto error;
 				p++;
-				if ((*(unsigned char *)p & 0xc0) != 0x80) /* 10xxxxxx */
+				if((*(unsigned char *)p & 0xc0) != 0x80) /* 10xxxxxx */
 					goto error;
 			}
 			else
 			{
-				if ((*(unsigned char *)p & 0xf0) == 0xe0) /* 1110xxxx */
+				if((*(unsigned char *)p & 0xf0) == 0xe0) /* 1110xxxx */
 				{
 					min = (1 << 11);
 					val = *(unsigned char *)p & 0x0f;
 					goto TWO_REMAINING;
 				}
-				else if ((*(unsigned char *)p & 0xf8) == 0xf0) /* 11110xxx */
+				else if((*(unsigned char *)p & 0xf8) == 0xf0) /* 11110xxx */
 				{
 					min = (1 << 16);
 					val = *(unsigned char *)p & 0x07;
 				}
-				else goto error;
+				else
+					goto error;
 
 				p++;
 				CONTINUATION_CHAR;
-				TWO_REMAINING:
+			TWO_REMAINING:
 				p++;
 				CONTINUATION_CHAR;
 				p++;
 				CONTINUATION_CHAR;
 
-				if (val < min) goto error;
+				if(val < min)
+					goto error;
 
-				if (!UNICODE_VALID(val)) goto error;
+				if(!UNICODE_VALID(val))
+					goto error;
 			}
 
 			continue;
 
-			error:
+		error:
 			return last;
 		}
 	}
@@ -155,47 +152,47 @@ static const char * fast_validate (const char *str)
 	return p;
 }
 
-static const char * fast_validate_len (const char *str, int max_len)
+static const char * fast_validate_len(const char * str, int max_len)
 {
 	unsigned int val = 0;
 	unsigned int min = 0;
-	const char *p;
+	const char * p;
 
-	for (p = str; (max_len < 0 || (p - str) < max_len) && *p; p++)
+	for(p = str; (max_len < 0 || (p - str) < max_len) && *p; p++)
 	{
-		if (*(unsigned char *)p < 128)
+		if(*(unsigned char *)p < 128)
 			/* done */;
 		else
 		{
-			const char *last;
+			const char * last;
 
 			last = p;
-			if ((*(unsigned char *)p & 0xe0) == 0xc0) /* 110xxxxx */
+			if((*(unsigned char *)p & 0xe0) == 0xc0) /* 110xxxxx */
 			{
-			if (max_len >= 0 && max_len - (p - str) < 2)
-				goto error;
+				if(max_len >= 0 && max_len - (p - str) < 2)
+					goto error;
 
-			if ((*(unsigned char *)p & 0x1e) == 0)
-				goto error;
-			p++;
-			if ((*(unsigned char *)p & 0xc0) != 0x80) /* 10xxxxxx */
-				goto error;
+				if((*(unsigned char *)p & 0x1e) == 0)
+					goto error;
+				p++;
+				if((*(unsigned char *)p & 0xc0) != 0x80) /* 10xxxxxx */
+					goto error;
 			}
 			else
 			{
-				if ((*(unsigned char *)p & 0xf0) == 0xe0) /* 1110xxxx */
+				if((*(unsigned char *)p & 0xf0) == 0xe0) /* 1110xxxx */
 				{
-					if (max_len >= 0 && max_len - (p - str) < 3)
-					goto error;
+					if(max_len >= 0 && max_len - (p - str) < 3)
+						goto error;
 
 					min = (1 << 11);
 					val = *(unsigned char *)p & 0x0f;
 					goto TWO_REMAINING;
 				}
-				else if ((*(unsigned char *)p & 0xf8) == 0xf0) /* 11110xxx */
+				else if((*(unsigned char *)p & 0xf8) == 0xf0) /* 11110xxx */
 				{
-					if (max_len >= 0 && max_len - (p - str) < 4)
-					goto error;
+					if(max_len >= 0 && max_len - (p - str) < 4)
+						goto error;
 
 					min = (1 << 16);
 					val = *(unsigned char *)p & 0x07;
@@ -205,19 +202,21 @@ static const char * fast_validate_len (const char *str, int max_len)
 
 				p++;
 				CONTINUATION_CHAR;
-				TWO_REMAINING:
+			TWO_REMAINING:
 				p++;
 				CONTINUATION_CHAR;
 				p++;
 				CONTINUATION_CHAR;
 
-				if (val < min) goto error;
-				if (!UNICODE_VALID(val)) goto error;
+				if(val < min)
+					goto error;
+				if(!UNICODE_VALID(val))
+					goto error;
 			}
 
 			continue;
 
-			error:
+		error:
 			return last;
 		}
 	}
@@ -225,19 +224,19 @@ static const char * fast_validate_len (const char *str, int max_len)
 	return p;
 }
 
-static bool g_utf8_validate(const char *str,int max_len,const char **end)
+static bool g_utf8_validate(const char * str, int max_len, const char ** end)
 {
-	const char *p;
+	const char * p;
 
-	if (max_len < 0)
-		p = fast_validate (str);
+	if(max_len < 0)
+		p = fast_validate(str);
 	else
-		p = fast_validate_len (str, max_len);
+		p = fast_validate_len(str, max_len);
 
-	if (end) *end = p;
+	if(end)
+		*end = p;
 
-	if ((max_len >= 0 && p != str + max_len) ||
-	(max_len < 0 && *p != '\0'))
+	if((max_len >= 0 && p != str + max_len) || (max_len < 0 && *p != '\0'))
 		return false;
 	else
 		return true;
@@ -250,12 +249,13 @@ static bool g_utf8_validate(const char *str,int max_len,const char **end)
 class KviSmartTextCodec : public QTextCodec
 {
 private:
-	QByteArray  m_szName;
+	QByteArray m_szName;
 	QTextCodec * m_pRecvCodec;
 	QTextCodec * m_pSendCodec;
+
 public:
-	KviSmartTextCodec(const char * szName,QTextCodec * pChildCodec,bool bSendInUtf8)
-	: QTextCodec()
+	KviSmartTextCodec(const char * szName, QTextCodec * pChildCodec, bool bSendInUtf8)
+	    : QTextCodec()
 	{
 		Q_ASSERT(pChildCodec);
 
@@ -276,30 +276,30 @@ public:
 
 		m_pSendCodec = bSendInUtf8 ? g_pUtf8TextCodec : pChildCodec;
 	}
-public:
-	bool ok(){ return m_pRecvCodec && g_pUtf8TextCodec; };
 
-	virtual int mibEnum () const { return 0; };
+public:
+	bool ok() { return m_pRecvCodec && g_pUtf8TextCodec; };
+
+	virtual int mibEnum() const { return 0; };
 
 	virtual QByteArray name() const { return m_szName; };
 protected:
-	virtual QByteArray convertFromUnicode(const QChar * input,int number,ConverterState * state) const
+	virtual QByteArray convertFromUnicode(const QChar * input, int number, ConverterState * state) const
 	{
-		return m_pSendCodec->fromUnicode(input,number,state);
+		return m_pSendCodec->fromUnicode(input, number, state);
 	}
-	virtual QString convertToUnicode(const char * chars,int len,ConverterState * state) const
+	virtual QString convertToUnicode(const char * chars, int len, ConverterState * state) const
 	{
-		if(g_utf8_validate(chars,len,NULL))
-			return g_pUtf8TextCodec->toUnicode(chars,len,state);
+		if(g_utf8_validate(chars, len, NULL))
+			return g_pUtf8TextCodec->toUnicode(chars, len, state);
 
-		return m_pRecvCodec->toUnicode(chars,len,state);
+		return m_pRecvCodec->toUnicode(chars, len, state);
 	}
 };
 
-static KviPointerHashTable<const char *,KviSmartTextCodec>   * g_pSmartCodecDict      = 0;
+static KviPointerHashTable<const char *, KviSmartTextCodec> * g_pSmartCodecDict = 0;
 
-static const char * encoding_groups[] =
-{
+static const char * encoding_groups[] = {
 	"Unicode",
 	"West European",
 	"East European",
@@ -313,9 +313,8 @@ static const char * encoding_groups[] =
 	0
 };
 
-static KviLocale::EncodingDescription supported_encodings[] =
-{
-// clang-format off
+static KviLocale::EncodingDescription supported_encodings[] = {
+	// clang-format off
 	// Unicode
 	{ "UTF-8"                , 0 , 0 , 0, "8-bit Unicode" },
 	// West European
@@ -464,7 +463,7 @@ static KviLocale::EncodingDescription supported_encodings[] =
 	{ "UTF-8 [CP-949]"       , 1 , 1 , 7, "Unicode - Korean Codepage" },
 #endif
 	{ 0                      , 0 , 0 , 0 , 0 }
-// clang-format on
+	// clang-format on
 };
 
 KviLocale * KviLocale::m_pSelf = NULL;
@@ -481,7 +480,7 @@ KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QSt
 	if(KviFileUtils::fileExists(szLangFile))
 	{
 		QString szTmp;
-		KviFileUtils::readFile(szLangFile,szTmp);
+		KviFileUtils::readFile(szLangFile, szTmp);
 		g_szLang = szTmp;
 	}
 	if(g_szLang.isEmpty())
@@ -505,11 +504,11 @@ KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QSt
 	// the main catalogue is supposed to be kvirc_<language>.mo
 	g_pMainCatalogue = new KviMessageCatalogue();
 	// the catalogue dict
-	g_pCatalogueDict = new KviPointerHashTable<const char *,KviMessageCatalogue>;
+	g_pCatalogueDict = new KviPointerHashTable<const char *, KviMessageCatalogue>;
 	g_pCatalogueDict->setAutoDelete(true);
 
 	// the smart codec dict
-	g_pSmartCodecDict = new KviPointerHashTable<const char *,KviSmartTextCodec>;
+	g_pSmartCodecDict = new KviPointerHashTable<const char *, KviSmartTextCodec>;
 	// the Qt docs explicitly state that we shouldn't delete
 	// the codecs by ourselves...
 	g_pSmartCodecDict->setAutoDelete(false);
@@ -522,25 +521,23 @@ KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QSt
 		QLocale::setDefault(QLocale(QString::fromLatin1(g_szLang.ptr(), g_szLang.len())));
 
 		QString szBuffer;
-		if(findCatalogue(szBuffer,"kvirc",szLocaleDir))
+		if(findCatalogue(szBuffer, "kvirc", szLocaleDir))
 		{
 			g_pMainCatalogue->load(szBuffer);
 			g_pTranslator = new KviTranslator(m_pApp);
 			m_pApp->installTranslator(g_pTranslator);
-		} else {
+		}
+		else
+		{
 			KviCString szTmp = g_szLang;
 			szTmp.cutFromFirst('.');
 			szTmp.cutFromFirst('_');
 			szTmp.cutFromFirst('@');
 			szTmp.toLower();
-			if(!(kvi_strEqualCI(szTmp.ptr(),"en") ||
-				kvi_strEqualCI(szTmp.ptr(),"c") ||
-				kvi_strEqualCI(szTmp.ptr(),"us") ||
-				kvi_strEqualCI(szTmp.ptr(),"gb") ||
-				kvi_strEqualCI(szTmp.ptr(),"posix")))
+			if(!(kvi_strEqualCI(szTmp.ptr(), "en") || kvi_strEqualCI(szTmp.ptr(), "c") || kvi_strEqualCI(szTmp.ptr(), "us") || kvi_strEqualCI(szTmp.ptr(), "gb") || kvi_strEqualCI(szTmp.ptr(), "posix")))
 			{
 				// FIXME: THIS IS NO LONGER VALID!!!
-				qDebug("Can't find the catalogue for locale \"%s\" (%s)",g_szLang.ptr(),szTmp.ptr());
+				qDebug("Can't find the catalogue for locale \"%s\" (%s)", g_szLang.ptr(), szTmp.ptr());
 				qDebug("There is no such translation or the $LANG variable was incorrectly set");
 				qDebug("You can use $KVIRC_LANG to override the catalogue name");
 				qDebug("For example you can set KVIRC_LANG to it_IT to force usage of the it.mo catalogue");
@@ -573,7 +570,7 @@ void KviLocale::init(QApplication * pApp, const QString & szLocaleDir, const QSt
 {
 	if((!m_pSelf) && (m_pSelf->count() == 0))
 	{
-		m_pSelf = new KviLocale(pApp,szLocaleDir,szForceLocaleDir);
+		m_pSelf = new KviLocale(pApp, szLocaleDir, szForceLocaleDir);
 		m_uCount++;
 	}
 }
@@ -598,13 +595,15 @@ QTextCodec * KviLocale::codecForName(const char * pcName)
 		if(pCodec)
 			return pCodec; // got cached copy
 
-		if(kvi_strEqualCIN("UTF-8 [",pcName,7))
+		if(kvi_strEqualCIN("UTF-8 [", pcName, 7))
 		{
 			// Likely a smart codec that sends UTF-8
-			szTmp.replaceAll("UTF-8 [","");
-			szTmp.replaceAll("]","");
+			szTmp.replaceAll("UTF-8 [", "");
+			szTmp.replaceAll("]", "");
 			bSendUtf8 = true;
-		} else {
+		}
+		else
+		{
 			// Likely a smart codec that sends child encoding ?
 			szTmp.cutFromFirst(' ');
 			bSendUtf8 = false;
@@ -613,16 +612,18 @@ QTextCodec * KviLocale::codecForName(const char * pcName)
 		QTextCodec * pChildCodec = QTextCodec::codecForName(szTmp.ptr());
 		if(pChildCodec)
 		{
-			pCodec = new KviSmartTextCodec(pcName,pChildCodec,bSendUtf8);
+			pCodec = new KviSmartTextCodec(pcName, pChildCodec, bSendUtf8);
 
 			if(pCodec->ok())
 			{
-				g_pSmartCodecDict->replace(pcName,pCodec);
+				g_pSmartCodecDict->replace(pcName, pCodec);
 				return pCodec;
 			}
 
 			delete pCodec;
-		} else {
+		}
+		else
+		{
 			// The name of the child codec was invalid: can't create such a smart codec.
 			// We probably screwed up the guess above related to the [ char.
 			// This code path is also triggered by the yircfuzzer by specifying completly invalid codec names.
@@ -632,14 +633,14 @@ QTextCodec * KviLocale::codecForName(const char * pcName)
 	return QTextCodec::codecForName(pcName);
 }
 
-bool KviLocale::findCatalogue(QString & szBuffer, const QString & szName,const QString & szLocaleDir)
+bool KviLocale::findCatalogue(QString & szBuffer, const QString & szName, const QString & szLocaleDir)
 {
 	KviCString szLocale = g_szLang;
 
 	QString szLocDir = szLocaleDir;
-	KviQString::ensureLastCharIs(szLocDir,KVI_PATH_SEPARATOR_CHAR);
+	KviQString::ensureLastCharIs(szLocDir, KVI_PATH_SEPARATOR_CHAR);
 
-	szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+	szBuffer = QString("%1%2_%3.mo").arg(szLocDir, szName).arg(szLocale.ptr());
 
 	if(KviFileUtils::fileExists(szBuffer))
 		return true;
@@ -650,7 +651,7 @@ bool KviLocale::findCatalogue(QString & szBuffer, const QString & szName,const Q
 		// kill them
 		szLocale.cutFromFirst('.');
 
-		szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+		szBuffer = QString("%1%2_%3.mo").arg(szLocDir, szName).arg(szLocale.ptr());
 		if(KviFileUtils::fileExists(szBuffer))
 			return true;
 	}
@@ -660,7 +661,7 @@ bool KviLocale::findCatalogue(QString & szBuffer, const QString & szName,const Q
 		// things like @euro ?
 		// kill them
 		szLocale.cutFromFirst('@');
-		szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+		szBuffer = QString("%1%2_%3.mo").arg(szLocDir, szName).arg(szLocale.ptr());
 		if(KviFileUtils::fileExists(szBuffer))
 			return true;
 	}
@@ -670,14 +671,14 @@ bool KviLocale::findCatalogue(QString & szBuffer, const QString & szName,const Q
 		// things like en_GB
 		// kill them
 		szLocale.cutFromFirst('_');
-		szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+		szBuffer = QString("%1%2_%3.mo").arg(szLocDir, szName).arg(szLocale.ptr());
 		if(KviFileUtils::fileExists(szBuffer))
 			return true;
 	}
 
 	// try the lower case version too
 	szLocale.toLower();
-	szBuffer = QString("%1%2_%3.mo").arg(szLocDir,szName).arg(szLocale.ptr());
+	szBuffer = QString("%1%2_%3.mo").arg(szLocDir, szName).arg(szLocale.ptr());
 	if(KviFileUtils::fileExists(szBuffer))
 		return true;
 
@@ -693,13 +694,13 @@ KviMessageCatalogue * KviLocale::loadCatalogue(const QString & szName, const QSt
 	if(pCatalogue)
 		return pCatalogue; // already loaded
 
-	if(!findCatalogue(szBuffer,szName,szLocaleDir))
+	if(!findCatalogue(szBuffer, szName, szLocaleDir))
 		return NULL;
 
 	pCatalogue = new KviMessageCatalogue();
 	if(pCatalogue->load(szBuffer))
 	{
-		g_pCatalogueDict->insert(szName.toUtf8().data(),pCatalogue);
+		g_pCatalogueDict->insert(szName.toUtf8().data(), pCatalogue);
 		return pCatalogue;
 	}
 	delete pCatalogue;
@@ -739,12 +740,12 @@ const char * KviLocale::translate(const char * pcText, const char * pcContext)
 	KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(pcContext);
 	if(!pCatalogue)
 	{
-		pCatalogue = loadCatalogue(QString::fromUtf8(pcContext),g_szDefaultLocalePath);
+		pCatalogue = loadCatalogue(QString::fromUtf8(pcContext), g_szDefaultLocalePath);
 		if(!pCatalogue)
 		{
 			// Fake it....
 			pCatalogue = new KviMessageCatalogue();
-			g_pCatalogueDict->insert(pcContext,pCatalogue);
+			g_pCatalogueDict->insert(pcContext, pCatalogue);
 		}
 	}
 	return pCatalogue->translate(pcText);
@@ -758,12 +759,12 @@ const QString & KviLocale::translateToQString(const char * pcText, const char * 
 	KviMessageCatalogue * pCatalogue = g_pCatalogueDict->find(pcContext);
 	if(!pCatalogue)
 	{
-		pCatalogue = loadCatalogue(QString::fromUtf8(pcContext),g_szDefaultLocalePath);
+		pCatalogue = loadCatalogue(QString::fromUtf8(pcContext), g_szDefaultLocalePath);
 		if(!pCatalogue)
 		{
 			// Fake it....
 			pCatalogue = new KviMessageCatalogue();
-			g_pCatalogueDict->insert(pcContext,pCatalogue);
+			g_pCatalogueDict->insert(pcContext, pCatalogue);
 		}
 	}
 	return pCatalogue->translateToQString(pcText);

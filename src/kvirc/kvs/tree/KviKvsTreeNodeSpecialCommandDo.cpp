@@ -22,29 +22,30 @@
 //
 //=============================================================================
 
-
 #include "KviKvsTreeNodeSpecialCommandDo.h"
 #include "KviKvsTreeNodeExpression.h"
 #include "KviKvsTreeNodeInstruction.h"
 #include "KviKvsRunTimeContext.h"
 #include "KviLocale.h"
 
-KviKvsTreeNodeSpecialCommandDo::KviKvsTreeNodeSpecialCommandDo(const QChar * pLocation,KviKvsTreeNodeExpression * e,KviKvsTreeNodeInstruction * i)
-: KviKvsTreeNodeSpecialCommand(pLocation,"do")
+KviKvsTreeNodeSpecialCommandDo::KviKvsTreeNodeSpecialCommandDo(const QChar * pLocation, KviKvsTreeNodeExpression * e, KviKvsTreeNodeInstruction * i)
+    : KviKvsTreeNodeSpecialCommand(pLocation, "do")
 {
 	m_pExpression = e;
 	m_pExpression->setParent(this);
 	m_pInstruction = i;
-	if(i)m_pInstruction->setParent(this);
+	if(i)
+		m_pInstruction->setParent(this);
 }
 
 KviKvsTreeNodeSpecialCommandDo::~KviKvsTreeNodeSpecialCommandDo()
 {
 	delete m_pExpression;
-	if(m_pInstruction)delete m_pInstruction;
+	if(m_pInstruction)
+		delete m_pInstruction;
 }
 
-void KviKvsTreeNodeSpecialCommandDo::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSpecialCommandDo::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Special Command \"do\"";
 }
@@ -61,7 +62,8 @@ bool KviKvsTreeNodeSpecialCommandDo::execute(KviKvsRunTimeContext * c)
 		{
 			if(!m_pInstruction->execute(c))
 			{
-				if(c->error())return false;
+				if(c->error())
+					return false;
 
 				if(c->breakPending())
 				{
@@ -79,8 +81,10 @@ bool KviKvsTreeNodeSpecialCommandDo::execute(KviKvsRunTimeContext * c)
 		}
 
 		KviKvsVariant v;
-		if(!m_pExpression->evaluateReadOnly(c,&v))return false;
-		if(!v.asBoolean())break;
+		if(!m_pExpression->evaluateReadOnly(c, &v))
+			return false;
+		if(!v.asBoolean())
+			break;
 	}
 	return true;
 }

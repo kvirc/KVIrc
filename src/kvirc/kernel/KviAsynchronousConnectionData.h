@@ -24,7 +24,6 @@
 //
 //=============================================================================
 
-
 #include "kvi_settings.h"
 #include "KviQString.h"
 #include "KviHeapObject.h"
@@ -35,21 +34,22 @@ class KviAsynchronousConnectionData : public KviHeapObject
 public:
 	KviAsynchronousConnectionData();
 	~KviAsynchronousConnectionData();
+
 public:
-	QString            szServer;
-	bool               bUseLastServerInContext; // this is checked ONLY if szServer is empty
-	kvi_u32_t          uPort;
-	bool               bPortIsOk;
-	bool               bUseIPv6;
-	bool               bUseSSL;
-	bool               bSTARTTLS;
-	QString            szBindAddress; // ip address (or interface name) to bind the connection to
-	QString            szCommandToExecAfterConnect;
-	QString            szLinkFilter;
-	QString            szPass;
-	QString            szNick;
-	QString            szInitUMode;
-	QString            szServerId;
+	QString szServer;
+	bool bUseLastServerInContext; // this is checked ONLY if szServer is empty
+	kvi_u32_t uPort;
+	bool bPortIsOk;
+	bool bUseIPv6;
+	bool bUseSSL;
+	bool bSTARTTLS;
+	QString szBindAddress; // ip address (or interface name) to bind the connection to
+	QString szCommandToExecAfterConnect;
+	QString szLinkFilter;
+	QString szPass;
+	QString szNick;
+	QString szInitUMode;
+	QString szServerId;
 	KviIrcServerReconnectInfo * m_pReconnectInfo;
 };
 

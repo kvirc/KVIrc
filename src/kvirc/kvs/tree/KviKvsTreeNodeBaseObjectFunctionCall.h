@@ -36,15 +36,17 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeBaseObjectFunctionCall : public KviKvsTreeNodeObjectFunctionCall
 {
 public:
-	KviKvsTreeNodeBaseObjectFunctionCall(const QChar * pLocation,const QString &szBaseClass,const QString &szFncName,KviKvsTreeNodeDataList * pParams);
+	KviKvsTreeNodeBaseObjectFunctionCall(const QChar * pLocation, const QString & szBaseClass, const QString & szFncName, KviKvsTreeNodeDataList * pParams);
 	~KviKvsTreeNodeBaseObjectFunctionCall();
+
 protected:
 	QString m_szBaseClass;
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 
-	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
 };
 
 #endif //!_KVI_KVS_TREENODE_BASEOBJECTFUNCTIONCALL_H_

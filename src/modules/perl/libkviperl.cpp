@@ -32,34 +32,34 @@
 #include "kvi_out.h"
 
 #ifdef COMPILE_PERL_SUPPORT
-	#include "../perlcore/perlcoreinterface.h"
+#include "../perlcore/perlcoreinterface.h"
 
-	static KviModule * g_pPerlCoreModule = 0;
+static KviModule * g_pPerlCoreModule = 0;
 #endif // COMPILE_PERL_SUPPORT
 
 #ifdef COMPILE_PERL_SUPPORT
-	#define KVS_CHECK_PERLCORE(_m,_c) \
-		g_pPerlCoreModule = g_pModuleManager->getModule("perlcore"); \
-		if(!g_pPerlCoreModule) \
-		{ \
-			if(!_c->switches()->find('q',"quiet")) \
-			{ \
-				_c->warning(__tr2qs_ctx("The perlcore module can't be loaded: Perl support not available","perl")); \
-				_c->warning(__tr2qs_ctx("To see more details about loading failure try /perlcore.load","perl")); \
-				return true; \
-			} \
-		}
+#define KVS_CHECK_PERLCORE(_m, _c)                                                                               \
+	g_pPerlCoreModule = g_pModuleManager->getModule("perlcore");                                                 \
+	if(!g_pPerlCoreModule)                                                                                       \
+	{                                                                                                            \
+		if(!_c->switches()->find('q', "quiet"))                                                                  \
+		{                                                                                                        \
+			_c->warning(__tr2qs_ctx("The perlcore module can't be loaded: Perl support not available", "perl")); \
+			_c->warning(__tr2qs_ctx("To see more details about loading failure try /perlcore.load", "perl"));    \
+			return true;                                                                                         \
+		}                                                                                                        \
+	}
 #else // !COMPILE_PERL_SUPPORT
-	#define KVS_CHECK_PERLCORE(_m,_c)
+#define KVS_CHECK_PERLCORE(_m, _c)
 #endif // !COMPILE_PERL_SUPPORT
 
 #ifdef COMPILE_PERL_SUPPORT
-	#define KVS_CHECK_MODULE_STATE(_m,_c) KVS_CHECK_PERLCORE(_m,_c)
+#define KVS_CHECK_MODULE_STATE(_m, _c) KVS_CHECK_PERLCORE(_m, _c)
 #else // !COMPILE_PERL_SUPPORT
-	#define KVS_CHECK_MODULE_STATE(_m,_c) \
-		if(!_c->switches()->find('q',"quiet")) \
-			_c->warning(__tr2qs_ctx("This KVIrc executable has been compiled without Perl scripting support","perl")); \
-		return true;
+#define KVS_CHECK_MODULE_STATE(_m, _c)                                                                              \
+	if(!_c->switches()->find('q', "quiet"))                                                                         \
+		_c->warning(__tr2qs_ctx("This KVIrc executable has been compiled without Perl scripting support", "perl")); \
+	return true;
 #endif // !COMPILE_PERL_SUPPORT
 
 /*
@@ -424,15 +424,15 @@ static bool perl_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 	// The parser sets the perl code as the first parameter of our call,
 	// the remaining params are the context name and the arguments
 
-	QString szCode,szContext;
+	QString szCode, szContext;
 	KviKvsVariantList vList;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("code",KVS_PT_STRING,0,szCode)
-		KVSM_PARAMETER("context",KVS_PT_STRING,KVS_PF_OPTIONAL,szContext)
-		KVSM_PARAMETER("args",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,vList)
+	KVSM_PARAMETER("code", KVS_PT_STRING, 0, szCode)
+	KVSM_PARAMETER("context", KVS_PT_STRING, KVS_PF_OPTIONAL, szContext)
+	KVSM_PARAMETER("args", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, vList)
 	KVSM_PARAMETERS_END(c)
 
-	KVS_CHECK_MODULE_STATE(m,c)
+	KVS_CHECK_MODULE_STATE(m, c)
 
 #ifdef COMPILE_PERL_SUPPORT
 	KviPerlCoreCtrlCommand_execute ex;
@@ -440,45 +440,47 @@ static bool perl_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 	ex.pKvsContext = c->context();
 	ex.szContext = szContext;
 	ex.szCode = szCode;
-	for(KviKvsVariant * v = vList.first();v;v = vList.next())
+	for(KviKvsVariant * v = vList.first(); v; v = vList.next())
 	{
 		QString tmp;
 		v->asString(tmp);
 		ex.lArgs.append(tmp);
 	}
-	ex.bQuiet = c->switches()->find('q',"quiet");
+	ex.bQuiet = c->switches()->find('q', "quiet");
 
-	if(!g_pPerlCoreModule->ctrl(KVI_PERLCORECTRLCOMMAND_EXECUTE,&ex))
+	if(!g_pPerlCoreModule->ctrl(KVI_PERLCORECTRLCOMMAND_EXECUTE, &ex))
 	{
-		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The perlcore module failed to execute the code: something is wrong with the Perl support","perl"));
+		if(!c->switches()->find('q', "quiet"))
+			c->warning(__tr2qs_ctx("The perlcore module failed to execute the code: something is wrong with the Perl support", "perl"));
 		return true;
 	}
 
 	if(!ex.lWarnings.isEmpty())
 	{
-		for(QStringList::Iterator it = ex.lWarnings.begin();it != ex.lWarnings.end();++it)
+		for(QStringList::Iterator it = ex.lWarnings.begin(); it != ex.lWarnings.end(); ++it)
 			c->warning(*it);
 	}
 
 	if(!ex.bExitOk)
 	{
-		if(!c->switches()->find('q',"quiet"))
+		if(!c->switches()->find('q', "quiet"))
 		{
 
-			if(c->switches()->find('f',"fail-on-error"))
+			if(c->switches()->find('f', "fail-on-error"))
 			{
-				c->warning(__tr2qs_ctx("Perl execution error:","perl"));
+				c->warning(__tr2qs_ctx("Perl execution error:", "perl"));
 				c->warning(ex.szError);
 				return false;
-			} else {
-				c->warning(__tr2qs_ctx("Perl execution error:","perl"));
+			}
+			else
+			{
+				c->warning(__tr2qs_ctx("Perl execution error:", "perl"));
 				c->error(ex.szError);
 			}
 		}
 	}
 
-	if(!c->switches()->find('n',"no-return"))
+	if(!c->switches()->find('n', "no-return"))
 		c->context()->returnValue()->setString(ex.szRetVal);
 
 #endif //COMPILE_PERL_SUPPORT
@@ -512,20 +514,20 @@ static bool perl_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 {
 	QString szContext;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("context",KVS_PT_NONEMPTYSTRING,0,szContext)
+	KVSM_PARAMETER("context", KVS_PT_NONEMPTYSTRING, 0, szContext)
 	KVSM_PARAMETERS_END(c)
 
-	KVS_CHECK_MODULE_STATE(m,c)
+	KVS_CHECK_MODULE_STATE(m, c)
 
 #ifdef COMPILE_PERL_SUPPORT
 	KviPerlCoreCtrlCommand_destroy ex;
 	ex.uSize = sizeof(KviPerlCoreCtrlCommand_destroy);
 	ex.szContext = szContext;
 
-	if(!g_pPerlCoreModule->ctrl(KVI_PERLCORECTRLCOMMAND_DESTROY,&ex))
+	if(!g_pPerlCoreModule->ctrl(KVI_PERLCORECTRLCOMMAND_DESTROY, &ex))
 	{
-		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The perlcore module failed to execute the code: something is wrong with the Perl support","perl"));
+		if(!c->switches()->find('q', "quiet"))
+			c->warning(__tr2qs_ctx("The perlcore module failed to execute the code: something is wrong with the Perl support", "perl"));
 	}
 #endif //COMPILE_PERL_SUPPORT
 
@@ -551,7 +553,7 @@ static bool perl_kvs_fnc_isAvailable(KviKvsModuleFunctionCall * c)
 #ifdef COMPILE_PERL_SUPPORT
 	g_pPerlCoreModule = g_pModuleManager->getModule("perlcore");
 	c->returnValue()->setBoolean(g_pPerlCoreModule ? true : false);
-#else // COMPILE_PERL_SUPPORT
+#else  // COMPILE_PERL_SUPPORT
 	c->returnValue()->setBoolean(false);
 #endif // COMPILE_PERL_SUPPORT
 	return true;
@@ -560,12 +562,12 @@ static bool perl_kvs_fnc_isAvailable(KviKvsModuleFunctionCall * c)
 static bool perl_module_init(KviModule * m)
 {
 	// register the command anyway
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"begin",perl_kvs_cmd_begin);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"destroy",perl_kvs_cmd_destroy);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "begin", perl_kvs_cmd_begin);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "destroy", perl_kvs_cmd_destroy);
 
-	KVSM_REGISTER_FUNCTION(m,"isAvailable",perl_kvs_fnc_isAvailable);
+	KVSM_REGISTER_FUNCTION(m, "isAvailable", perl_kvs_fnc_isAvailable);
 
-	// FIXME: perl.isSupported()
+// FIXME: perl.isSupported()
 #ifdef COMPILE_PERL_SUPPORT
 	g_pPerlCoreModule = g_pModuleManager->getModule("perlcore");
 #endif // COMPILE_PERL_SUPPORT
@@ -578,13 +580,12 @@ static bool perl_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Perl",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Perl scripting engine",
-	perl_module_init,
-	0,
-	0,
-	perl_module_cleanup,
-	"perl"
-)
+    "Perl",                                                         // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Perl scripting engine",
+    perl_module_init,
+    0,
+    0,
+    perl_module_cleanup,
+    "perl")

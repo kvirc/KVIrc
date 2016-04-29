@@ -41,8 +41,7 @@ class QUdpSocket;
 namespace UPnP
 {
 
-
-/**
+	/**
  * The Simple Service Discovery Protocol allows UPnP clients
  * to discover UPnP devices on a network.
  * This is achieved by broadcasting a HTTP-like message over UDP.
@@ -53,27 +52,26 @@ namespace UPnP
  * @author Diederik van der Boor
  * @ingroup NetworkUPnP
  */
-class SsdpConnection : public QObject
-{
-	Q_OBJECT
+	class SsdpConnection : public QObject
+	{
+		Q_OBJECT
 
 	public:
-	SsdpConnection();
-	virtual ~SsdpConnection();
+		SsdpConnection();
+		virtual ~SsdpConnection();
 
-	void queryDevices(int bindPort = 1500);
+		void queryDevices(int bindPort = 1500);
 
 	private slots:
-	// Data was received by the socket
-	void slotDataReceived();
+		// Data was received by the socket
+		void slotDataReceived();
 
 	private:
-	QUdpSocket *m_pSocket;
+		QUdpSocket * m_pSocket;
 	signals:
-	// Called when a query completed
-	void deviceFound(const QString &hostname, int port, const QString &rootUrl);
-};
-
+		// Called when a query completed
+		void deviceFound(const QString & hostname, int port, const QString & rootUrl);
+	};
 }
 
 #endif

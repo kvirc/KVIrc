@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-
 #include "KvsObject_widget.h"
 #include "object_macros.h"
 
@@ -37,57 +36,56 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-	bool functionTextLine(KviKvsObjectFunctionCall *c);
-	bool functionInsertLine(KviKvsObjectFunctionCall *c);
-	bool functionRemoveLine(KviKvsObjectFunctionCall *c);
-	bool functionNumLines(KviKvsObjectFunctionCall *c);
-	bool functionAtBeginning(KviKvsObjectFunctionCall *c);
-	bool functionAtEnd(KviKvsObjectFunctionCall *c);
-	bool functionSetWordWrap(KviKvsObjectFunctionCall *c);
-	bool functionWordWrap(KviKvsObjectFunctionCall *c);
-	bool functionCursorPosition(KviKvsObjectFunctionCall *c);
-	bool functionText(KviKvsObjectFunctionCall *c);
-	bool functionLength(KviKvsObjectFunctionCall *c);
-	bool functionSetMaxLines(KviKvsObjectFunctionCall *c);
-	bool functionMaxLines(KviKvsObjectFunctionCall *c);
-	bool functionSetReadOnly(KviKvsObjectFunctionCall *c);
-	bool functionInsert(KviKvsObjectFunctionCall *c);
-	bool functionAppend(KviKvsObjectFunctionCall *c);
-	bool functionCopy(KviKvsObjectFunctionCall *c);
-	bool functionPaste(KviKvsObjectFunctionCall *c);
-	bool functionCut(KviKvsObjectFunctionCall *c);
-	bool functionsetItalic(KviKvsObjectFunctionCall *c);
-	bool functionitalic(KviKvsObjectFunctionCall *c);
-	bool functionsetBold(KviKvsObjectFunctionCall *c);
-	bool functionbold(KviKvsObjectFunctionCall *c);
-	bool functionsetUnderline(KviKvsObjectFunctionCall *c);
-	bool functionunderline(KviKvsObjectFunctionCall *c);
-	bool functionzoomIn(KviKvsObjectFunctionCall *c);
-	bool functionzoomOut(KviKvsObjectFunctionCall *c);
-	bool functionundo(KviKvsObjectFunctionCall *c);
-	bool functionredo(KviKvsObjectFunctionCall *c);
-	bool functiondel(KviKvsObjectFunctionCall *c);
-	bool functionclear(KviKvsObjectFunctionCall *c);
-	bool functionsetUndoRedoEnabled(KviKvsObjectFunctionCall *c);
-	bool functionisUndoRedoEnabled(KviKvsObjectFunctionCall *c);
-	bool functionsetText(KviKvsObjectFunctionCall *c);
-	bool functionsetHtmlText(KviKvsObjectFunctionCall *c);
-	bool functionsetPlainText(KviKvsObjectFunctionCall *c);
-	bool functionsetPointSize(KviKvsObjectFunctionCall *c);
-	bool functionsetColor(KviKvsObjectFunctionCall *c);
-	bool functionisUndoAvailable(KviKvsObjectFunctionCall *c);
-	bool functionisRedoAvailable(KviKvsObjectFunctionCall *c);
-	bool functionsetFamily(KviKvsObjectFunctionCall *c);
-	bool functionsetTextFormat(KviKvsObjectFunctionCall *c);
-	bool functiontextFormat(KviKvsObjectFunctionCall *c);
-	bool functionloadFile(KviKvsObjectFunctionCall *c);
-	bool functionlines(KviKvsObjectFunctionCall *c);
-	bool functionselectAll(KviKvsObjectFunctionCall *c);
-	bool functionsetModified(KviKvsObjectFunctionCall *c);
-	bool functionModified(KviKvsObjectFunctionCall *c);
-	bool functionsetAlignment(KviKvsObjectFunctionCall *c);
-
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool functionTextLine(KviKvsObjectFunctionCall * c);
+	bool functionInsertLine(KviKvsObjectFunctionCall * c);
+	bool functionRemoveLine(KviKvsObjectFunctionCall * c);
+	bool functionNumLines(KviKvsObjectFunctionCall * c);
+	bool functionAtBeginning(KviKvsObjectFunctionCall * c);
+	bool functionAtEnd(KviKvsObjectFunctionCall * c);
+	bool functionSetWordWrap(KviKvsObjectFunctionCall * c);
+	bool functionWordWrap(KviKvsObjectFunctionCall * c);
+	bool functionCursorPosition(KviKvsObjectFunctionCall * c);
+	bool functionText(KviKvsObjectFunctionCall * c);
+	bool functionLength(KviKvsObjectFunctionCall * c);
+	bool functionSetMaxLines(KviKvsObjectFunctionCall * c);
+	bool functionMaxLines(KviKvsObjectFunctionCall * c);
+	bool functionSetReadOnly(KviKvsObjectFunctionCall * c);
+	bool functionInsert(KviKvsObjectFunctionCall * c);
+	bool functionAppend(KviKvsObjectFunctionCall * c);
+	bool functionCopy(KviKvsObjectFunctionCall * c);
+	bool functionPaste(KviKvsObjectFunctionCall * c);
+	bool functionCut(KviKvsObjectFunctionCall * c);
+	bool functionsetItalic(KviKvsObjectFunctionCall * c);
+	bool functionitalic(KviKvsObjectFunctionCall * c);
+	bool functionsetBold(KviKvsObjectFunctionCall * c);
+	bool functionbold(KviKvsObjectFunctionCall * c);
+	bool functionsetUnderline(KviKvsObjectFunctionCall * c);
+	bool functionunderline(KviKvsObjectFunctionCall * c);
+	bool functionzoomIn(KviKvsObjectFunctionCall * c);
+	bool functionzoomOut(KviKvsObjectFunctionCall * c);
+	bool functionundo(KviKvsObjectFunctionCall * c);
+	bool functionredo(KviKvsObjectFunctionCall * c);
+	bool functiondel(KviKvsObjectFunctionCall * c);
+	bool functionclear(KviKvsObjectFunctionCall * c);
+	bool functionsetUndoRedoEnabled(KviKvsObjectFunctionCall * c);
+	bool functionisUndoRedoEnabled(KviKvsObjectFunctionCall * c);
+	bool functionsetText(KviKvsObjectFunctionCall * c);
+	bool functionsetHtmlText(KviKvsObjectFunctionCall * c);
+	bool functionsetPlainText(KviKvsObjectFunctionCall * c);
+	bool functionsetPointSize(KviKvsObjectFunctionCall * c);
+	bool functionsetColor(KviKvsObjectFunctionCall * c);
+	bool functionisUndoAvailable(KviKvsObjectFunctionCall * c);
+	bool functionisRedoAvailable(KviKvsObjectFunctionCall * c);
+	bool functionsetFamily(KviKvsObjectFunctionCall * c);
+	bool functionsetTextFormat(KviKvsObjectFunctionCall * c);
+	bool functiontextFormat(KviKvsObjectFunctionCall * c);
+	bool functionloadFile(KviKvsObjectFunctionCall * c);
+	bool functionlines(KviKvsObjectFunctionCall * c);
+	bool functionselectAll(KviKvsObjectFunctionCall * c);
+	bool functionsetModified(KviKvsObjectFunctionCall * c);
+	bool functionModified(KviKvsObjectFunctionCall * c);
+	bool functionsetAlignment(KviKvsObjectFunctionCall * c);
 };
 
-#endif	//!_CLASS_MULTILINEEDIT_H_
+#endif //!_CLASS_MULTILINEEDIT_H_

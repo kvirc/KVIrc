@@ -47,25 +47,25 @@ KviCustomToolBar * KviActionManager::m_pCurrentToolBar = 0;
 extern void register_core_actions(KviActionManager *);
 
 KviActionManager::KviActionManager()
-: QObject()
+    : QObject()
 {
-	m_pActions = new KviPointerHashTable<QString,KviAction>(101);
+	m_pActions = new KviPointerHashTable<QString, KviAction>(101);
 	m_pActions->setAutoDelete(false);
 
-	m_pCategories = new KviPointerHashTable<QString,KviActionCategory>(17,false);
+	m_pCategories = new KviPointerHashTable<QString, KviActionCategory>(17, false);
 	m_pCategories->setAutoDelete(true);
 
-#define CATEGORY(__var,__name,__vname,__descr) \
-	__var = new KviActionCategory(__name,__vname,__descr); \
-	m_pCategories->replace(__name,__var)
+#define CATEGORY(__var, __name, __vname, __descr)            \
+	__var = new KviActionCategory(__name, __vname, __descr); \
+	m_pCategories->replace(__name, __var)
 
-	CATEGORY(m_pCategoryIrc,"irc",__tr2qs("IRC"),__tr2qs("IRC context related actions"));
-	CATEGORY(m_pCategoryGeneric,"generic",__tr2qs("Generic"),__tr2qs("Generic actions"));
-	CATEGORY(m_pCategorySettings,"settings",__tr2qs("Settings"),__tr2qs("Actions related to settings"));
-	CATEGORY(m_pCategoryScripting,"scripting",__tr2qs("Scripting"),__tr2qs("Scripting related actions"));
-	CATEGORY(m_pCategoryGUI,"gui",__tr2qs("GUI"),__tr2qs("Actions related to the Graphic User Interface"));
-	CATEGORY(m_pCategoryChannel,"channel",__tr2qs("Channel"),__tr2qs("IRC channel related actions"));
-	CATEGORY(m_pCategoryTools,"tools",__tr2qs("Tools"),__tr2qs("Actions that will appear in the \"Tools\" menu"));
+	CATEGORY(m_pCategoryIrc, "irc", __tr2qs("IRC"), __tr2qs("IRC context related actions"));
+	CATEGORY(m_pCategoryGeneric, "generic", __tr2qs("Generic"), __tr2qs("Generic actions"));
+	CATEGORY(m_pCategorySettings, "settings", __tr2qs("Settings"), __tr2qs("Actions related to settings"));
+	CATEGORY(m_pCategoryScripting, "scripting", __tr2qs("Scripting"), __tr2qs("Scripting related actions"));
+	CATEGORY(m_pCategoryGUI, "gui", __tr2qs("GUI"), __tr2qs("Actions related to the Graphic User Interface"));
+	CATEGORY(m_pCategoryChannel, "channel", __tr2qs("Channel"), __tr2qs("IRC channel related actions"));
+	CATEGORY(m_pCategoryTools, "tools", __tr2qs("Tools"), __tr2qs("Actions that will appear in the \"Tools\" menu"));
 
 	m_bCustomizingToolBars = false;
 	m_pCurrentToolBar = 0;
@@ -79,10 +79,10 @@ KviActionManager::~KviActionManager()
 	// killed all the modules at this point...
 	//KviActionDialog::cleanup();
 
-	KviPointerHashTableIterator<QString,KviAction> it(*m_pActions);
+	KviPointerHashTableIterator<QString, KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
-		disconnect(a,SIGNAL(destroyed()),this,SLOT(actionDestroyed()));
+		disconnect(a, SIGNAL(destroyed()), this, SLOT(actionDestroyed()));
 		++it;
 	}
 	delete m_pActions;
@@ -90,27 +90,29 @@ KviActionManager::~KviActionManager()
 	delete m_pCategories;
 }
 
-void KviActionManager::load(const QString &szFileName)
+void KviActionManager::load(const QString & szFileName)
 {
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Read);
 
 	KviConfigurationFileIterator it(*(cfg.dict()));
 	while(it.current())
 	{
 		cfg.setGroup(it.currentKey());
 		KviKvsUserAction * a = new KviKvsUserAction(this);
-		if(a->load(&cfg))registerAction(a);
-		else delete a;
+		if(a->load(&cfg))
+			registerAction(a);
+		else
+			delete a;
 		++it;
 	}
 }
 
-void KviActionManager::save(const QString &szFileName)
+void KviActionManager::save(const QString & szFileName)
 {
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Write);
 	cfg.clear();
 
-	KviPointerHashTableIterator<QString,KviAction> it(*m_pActions);
+	KviPointerHashTableIterator<QString, KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		if(a->isKviUserActionNeverOverrideThis())
@@ -127,7 +129,7 @@ void KviActionManager::killAllKvsUserActions()
 	KviPointerList<KviKvsUserAction> dying;
 	dying.setAutoDelete(true);
 
-	KviPointerHashTableIterator<QString,KviAction> it(*m_pActions);
+	KviPointerHashTableIterator<QString, KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		if(a->isKviUserActionNeverOverrideThis())
@@ -140,11 +142,11 @@ void KviActionManager::killAllKvsUserActions()
 	dying.clear(); // bye :)
 }
 
-
-bool KviActionManager::coreActionExists(const QString &szName)
+bool KviActionManager::coreActionExists(const QString & szName)
 {
-	KviAction *a = m_pActions->find(szName);
-	if(a)return (!a->isKviUserActionNeverOverrideThis());
+	KviAction * a = m_pActions->find(szName);
+	if(a)
+		return (!a->isKviUserActionNeverOverrideThis());
 	return false;
 }
 
@@ -153,7 +155,8 @@ QString KviActionManager::nameForAutomaticAction(const QString & szTemplate)
 	QString szRet;
 
 	int i = 1;
-	do {
+	do
+	{
 		szRet = QString("%1%2").arg(szTemplate).arg(i);
 		i++;
 	} while(m_pActions->find(szRet));
@@ -166,12 +169,13 @@ void KviActionManager::emitRemoveActionsHintRequest()
 	emit removeActionsHintRequest();
 }
 
-KviActionCategory * KviActionManager::category(const QString &szName)
+KviActionCategory * KviActionManager::category(const QString & szName)
 {
 	if(!szName.isEmpty())
 	{
 		KviActionCategory * c = m_pCategories->find(szName);
-		if(c)return c;
+		if(c)
+			return c;
 	}
 	return m_pCategoryGeneric;
 }
@@ -180,7 +184,8 @@ void KviActionManager::customizeToolBarsDialogCreated()
 {
 	m_bCustomizingToolBars = true;
 	m_pCurrentToolBar = KviCustomToolBarManager::instance()->firstExistingToolBar();
-	if(m_pCurrentToolBar)m_pCurrentToolBar->update();
+	if(m_pCurrentToolBar)
+		m_pCurrentToolBar->update();
 	emit beginCustomizeToolBars();
 }
 
@@ -198,13 +203,16 @@ void KviActionManager::customizeToolBarsDialogDestroyed()
 
 void KviActionManager::setCurrentToolBar(KviCustomToolBar * t)
 {
-	if(m_pCurrentToolBar == t)return;
+	if(m_pCurrentToolBar == t)
+		return;
 	KviCustomToolBar * old = m_pCurrentToolBar;
 	m_pCurrentToolBar = t;
-	if(old)old->update();
+	if(old)
+		old->update();
 	if(!m_pCurrentToolBar && m_bCustomizingToolBars)
 		m_pCurrentToolBar = KviCustomToolBarManager::instance()->firstExistingToolBar();
-	if(m_pCurrentToolBar)m_pCurrentToolBar->update();
+	if(m_pCurrentToolBar)
+		m_pCurrentToolBar->update();
 	emit currentToolBarChanged();
 }
 
@@ -221,7 +229,8 @@ void KviActionManager::loadAllAvailableActions()
 
 void KviActionManager::init()
 {
-	if(!m_pInstance)m_pInstance = new KviActionManager();
+	if(!m_pInstance)
+		m_pInstance = new KviActionManager();
 }
 
 void KviActionManager::done()
@@ -235,7 +244,7 @@ void KviActionManager::done()
 
 void KviActionManager::delayedRegisterAccelerators()
 {
-	KviPointerHashTableIterator<QString,KviAction> it(*m_pActions);
+	KviPointerHashTableIterator<QString, KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		a->registerAccelerator();
@@ -245,10 +254,12 @@ void KviActionManager::delayedRegisterAccelerators()
 
 bool KviActionManager::registerAction(KviAction * a)
 {
-	if(m_pActions->find(a->name()))return false;
-	connect(a,SIGNAL(destroyed()),this,SLOT(actionDestroyed()));
-	m_pActions->insert(a->name(),a);
-	if(g_pMainWindow)a->registerAccelerator(); // otherwise it is delayed!
+	if(m_pActions->find(a->name()))
+		return false;
+	connect(a, SIGNAL(destroyed()), this, SLOT(actionDestroyed()));
+	m_pActions->insert(a->name(), a);
+	if(g_pMainWindow)
+		a->registerAccelerator(); // otherwise it is delayed!
 	return true;
 }
 
@@ -258,19 +269,21 @@ void KviActionManager::actionDestroyed()
 	m_pActions->remove(a->name());
 }
 
-bool KviActionManager::unregisterAction(const QString &szName)
+bool KviActionManager::unregisterAction(const QString & szName)
 {
 	KviAction * a = m_pActions->find(szName);
-	if(!a)return false;
-	disconnect(a,SIGNAL(destroyed()),this,SLOT(actionDestroyed()));
+	if(!a)
+		return false;
+	disconnect(a, SIGNAL(destroyed()), this, SLOT(actionDestroyed()));
 	a->unregisterAccelerator();
 	return m_pActions->remove(szName);
 }
 
-KviAction * KviActionManager::getAction(const QString &szName)
+KviAction * KviActionManager::getAction(const QString & szName)
 {
 	KviAction * a = m_pActions->find(szName);
-	if(a)return a;
+	if(a)
+		return a;
 	int idx = szName.indexOf('.');
 	if(idx < 0)
 	{
@@ -296,18 +309,20 @@ KviAction * KviActionManager::getAction(const QString &szName)
 	}
 	// try to preload the module that might register this action...
 	QString szModule = szName.left(idx);
-	if(!g_pModuleManager->getModule(szModule))return 0;
+	if(!g_pModuleManager->getModule(szModule))
+		return 0;
 	return m_pActions->find(szName);
 }
 
-void KviActionManager::listActionsByCategory(const QString &szCatName,KviPointerList<KviAction> * pBuffer)
+void KviActionManager::listActionsByCategory(const QString & szCatName, KviPointerList<KviAction> * pBuffer)
 {
 	loadAllAvailableActions();
 	KviActionCategory * pCat = category(szCatName);
 	pBuffer->setAutoDelete(false);
 	pBuffer->clear();
-	if(!pCat)return;
-	KviPointerHashTableIterator<QString,KviAction> it(*m_pActions);
+	if(!pCat)
+		return;
+	KviPointerHashTableIterator<QString, KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
 		if(a->category() == pCat)

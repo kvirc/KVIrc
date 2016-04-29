@@ -43,10 +43,11 @@ class KVIRC_API KviActionManager : public QObject
 public:
 	KviActionManager();
 	~KviActionManager();
+
 protected:
 	static KviActionManager * m_pInstance;
-	KviPointerHashTable<QString,KviAction> * m_pActions;
-	KviPointerHashTable<QString,KviActionCategory> * m_pCategories;
+	KviPointerHashTable<QString, KviAction> * m_pActions;
+	KviPointerHashTable<QString, KviActionCategory> * m_pCategories;
 	static bool m_bCustomizingToolBars;
 
 	// action categories
@@ -60,42 +61,44 @@ protected:
 	// internal, current toolbar to be edited (only when customizing)
 	static KviCustomToolBar * m_pCurrentToolBar;
 	bool m_bCoreActionsRegistered;
+
 public:
 	static void init();
 	static void done();
-	static KviActionManager * instance(){ return m_pInstance; };
+	static KviActionManager * instance() { return m_pInstance; };
 	static void loadAllAvailableActions();
-	static bool customizingToolBars(){ return m_bCustomizingToolBars; };
-	static KviActionCategory * categoryIrc(){ return m_pCategoryIrc; };
-	static KviActionCategory * categoryGeneric(){ return m_pCategoryGeneric; };
-	static KviActionCategory * categorySettings(){ return m_pCategorySettings; };
-	static KviActionCategory * categoryScripting(){ return m_pCategoryScripting; };
-	static KviActionCategory * categoryGUI(){ return m_pCategoryGUI; };
-	static KviActionCategory * categoryChannel(){ return m_pCategoryChannel; };
-	static KviActionCategory * categoryTools(){ return m_pCategoryTools; };
+	static bool customizingToolBars() { return m_bCustomizingToolBars; };
+	static KviActionCategory * categoryIrc() { return m_pCategoryIrc; };
+	static KviActionCategory * categoryGeneric() { return m_pCategoryGeneric; };
+	static KviActionCategory * categorySettings() { return m_pCategorySettings; };
+	static KviActionCategory * categoryScripting() { return m_pCategoryScripting; };
+	static KviActionCategory * categoryGUI() { return m_pCategoryGUI; };
+	static KviActionCategory * categoryChannel() { return m_pCategoryChannel; };
+	static KviActionCategory * categoryTools() { return m_pCategoryTools; };
 
-	KviPointerHashTable<QString,KviAction> * actions(){ return m_pActions; };
-	KviActionCategory * category(const QString &szName);
-	KviPointerHashTable<QString,KviActionCategory> * categories(){ return m_pCategories; };
+	KviPointerHashTable<QString, KviAction> * actions() { return m_pActions; };
+	KviActionCategory * category(const QString & szName);
+	KviPointerHashTable<QString, KviActionCategory> * categories() { return m_pCategories; };
 
 	void killAllKvsUserActions();
 
-	static KviCustomToolBar * currentToolBar(){ return m_pCurrentToolBar; };
-	KviAction * getAction(const QString &szName);
-	void listActionsByCategory(const QString &szCatName,KviPointerList<KviAction> * pBuffer);
-	QString nameForAutomaticAction(const QString &szTemplate);
-	bool coreActionExists(const QString &szName);
+	static KviCustomToolBar * currentToolBar() { return m_pCurrentToolBar; };
+	KviAction * getAction(const QString & szName);
+	void listActionsByCategory(const QString & szCatName, KviPointerList<KviAction> * pBuffer);
+	QString nameForAutomaticAction(const QString & szTemplate);
+	bool coreActionExists(const QString & szName);
 
-	void load(const QString &szFileName);
-	void save(const QString &szFileName);
+	void load(const QString & szFileName);
+	void save(const QString & szFileName);
 
 	bool registerAction(KviAction * a);
-	bool unregisterAction(const QString &szName);
+	bool unregisterAction(const QString & szName);
 
 	void emitRemoveActionsHintRequest();
+
 protected:
 	void setCurrentToolBar(KviCustomToolBar * t);
-	KviAction * findAction(const QString &szName){ return m_pActions->find(szName); };
+	KviAction * findAction(const QString & szName) { return m_pActions->find(szName); };
 	void customizeToolBarsDialogCreated();
 	void customizeToolBarsDialogDestroyed();
 	void tryFindCurrentToolBar();
@@ -105,14 +108,17 @@ protected slots:
 signals:
 	void beginCustomizeToolBars();
 	void endCustomizeToolBars();
-	void currentToolBarChanged(); // emitted only when customizing!
+	void currentToolBarChanged();    // emitted only when customizing!
 	void removeActionsHintRequest(); // connected by the KviCustomToolBarDialog to flash the trashcan
 	                                 // when the user tries to remove an action from the toolbar
 	                                 // and it fails to drag it on the trashcan
 };
 
-#define ACTION_POPUP_ITEM(__name,__popup) \
-	{ KviAction * a = KviActionManager::instance()->getAction(__name); if(a)a->addToPopupMenu(__popup); }
-
+#define ACTION_POPUP_ITEM(__name, __popup)                               \
+	{                                                                    \
+		KviAction * a = KviActionManager::instance()->getAction(__name); \
+		if(a)                                                            \
+			a->addToPopupMenu(__popup);                                  \
+	}
 
 #endif //!_KVI_ACTIONMANAGER_H_

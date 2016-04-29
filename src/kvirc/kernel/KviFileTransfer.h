@@ -39,7 +39,6 @@ class QPainter;
 // This is for the external extension
 #define KVI_FILE_TRANSFER_WINDOW_EXTENSION_NAME "File transfer extension"
 
-
 class KVIRC_API KviFileTransferManager : public QObject
 {
 	friend class KviApplication;
@@ -49,25 +48,27 @@ class KVIRC_API KviFileTransferManager : public QObject
 public:
 	KviFileTransferManager();
 	~KviFileTransferManager();
+
 protected:
 	KviPointerList<KviFileTransfer> * m_pTransferList;
-	KviWindow                   * m_pTransferWindow;
+	KviWindow * m_pTransferWindow;
+
 protected:
 	static void cleanup();
 	void registerTransfer(KviFileTransfer * t);
 	void unregisterTransfer(KviFileTransfer * t);
-	void setTransferWindow(KviWindow * wnd){ m_pTransferWindow = wnd; };
+	void setTransferWindow(KviWindow * wnd) { m_pTransferWindow = wnd; };
 public:
 	// might be zero!
-	KviWindow * transferWindow(){ return m_pTransferWindow; };
+	KviWindow * transferWindow() { return m_pTransferWindow; };
 	static KviFileTransferManager * instance();
-	KviPointerList<KviFileTransfer> * transferList(){ return m_pTransferList; };
+	KviPointerList<KviFileTransfer> * transferList() { return m_pTransferList; };
 	void invokeTransferWindow(bool bCreateMinimized = false, bool bNoRaise = false);
 	void killAllTransfers();
 	void killTerminatedTransfers();
 signals:
-	void transferRegistered(KviFileTransfer *t);
-	void transferUnregistering(KviFileTransfer *t);
+	void transferRegistered(KviFileTransfer * t);
+	void transferUnregistering(KviFileTransfer * t);
 };
 
 #define COLUMN_TRANSFERTYPE 0
@@ -80,20 +81,22 @@ class KVIRC_API KviFileTransfer : public QObject
 public:
 	KviFileTransfer();
 	~KviFileTransfer();
+
 protected:
-	int              m_iId;
-	KviTalTableWidgetItemEx  * m_pDisplayItem;
+	int m_iId;
+	KviTalTableWidgetItemEx * m_pDisplayItem;
+
 public:
 	// This is called by KviFileTransferItem at any time
-	void setDisplayItem(KviTalTableWidgetItemEx * i){ m_pDisplayItem = i; };
-	int id(){ return m_iId; };
+	void setDisplayItem(KviTalTableWidgetItemEx * i) { m_pDisplayItem = i; };
+	int id() { return m_iId; };
 	// this is just a convenience function : it's equivalent to !active()
 	bool terminated();
 	// This may be used to invoke the transfer window
 	void invokeTransferWindow(bool bCreateMinimized = false, bool bNoRaise = false);
-	KviFileTransferManager * manager(){ return KviFileTransferManager::instance(); };
+	KviFileTransferManager * manager() { return KviFileTransferManager::instance(); };
 	// this returns the pointer to the transfer window : may be 0!
-	KviWindow * transferWindow(){ return manager()->transferWindow(); };
+	KviWindow * transferWindow() { return manager()->transferWindow(); };
 	// this returns transferWindow() if not 0, otherwise the application's active window
 	KviWindow * outputWindow();
 
@@ -102,7 +105,7 @@ public:
 
 	// this must be implemented by the transfer
 	virtual bool active() = 0;
-	virtual void displayPaint(QPainter * p,int column, QRect rect) = 0;
+	virtual void displayPaint(QPainter * p, int column, QRect rect) = 0;
 	virtual QString tipText();
 	virtual QString localFileName();
 	virtual QString retryCommand();

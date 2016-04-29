@@ -26,52 +26,52 @@
 #include "TermWidget.h"
 
 #ifdef COMPILE_KDE4_SUPPORT
-	#include "KviIconManager.h"
-	#include "KviOptions.h"
-	#include "KviLocale.h"
-	#include "KviModule.h"
+#include "KviIconManager.h"
+#include "KviOptions.h"
+#include "KviLocale.h"
+#include "KviModule.h"
 
-	extern KviModule * g_pTermModule;
-	extern KviPointerList<TermWindow> * g_pTermWindowList;
-	extern KviPointerList<TermWidget> * g_pTermWidgetList;
-	extern KviIconManager * g_pIconManager;
+extern KviModule * g_pTermModule;
+extern KviPointerList<TermWindow> * g_pTermWindowList;
+extern KviPointerList<TermWidget> * g_pTermWidgetList;
+extern KviIconManager * g_pIconManager;
 
-	TermWindow::TermWindow(const char * name)
-	: KviWindow(KviWindow::Terminal,name)
-	{
-		g_pTermWindowList->append(this);
-		m_pTermWidget = 0;
-		m_pTermWidget = new TermWidget(this);
-		// Ensure proper focusing
+TermWindow::TermWindow(const char * name)
+    : KviWindow(KviWindow::Terminal, name)
+{
+	g_pTermWindowList->append(this);
+	m_pTermWidget = 0;
+	m_pTermWidget = new TermWidget(this);
+	// Ensure proper focusing
 	//	setFocusHandler(m_pTermWidget->konsoleWidget(),this);
-	}
+}
 
-	TermWindow::~TermWindow()
-	{
-		g_pTermWindowList->removeRef(this);
-		if(g_pTermWindowList->isEmpty() && g_pTermWidgetList->isEmpty())g_pTermModule->unlock();
-	}
+TermWindow::~TermWindow()
+{
+	g_pTermWindowList->removeRef(this);
+	if(g_pTermWindowList->isEmpty() && g_pTermWidgetList->isEmpty())
+		g_pTermModule->unlock();
+}
 
-	QPixmap * TermWindow::myIconPtr()
-	{
-		return g_pIconManager->getSmallIcon(KviIconManager::Raw);
-	}
+QPixmap * TermWindow::myIconPtr()
+{
+	return g_pIconManager->getSmallIcon(KviIconManager::Raw);
+}
 
-	void TermWindow::resizeEvent(QResizeEvent *)
-	{
-		if(m_pTermWidget)m_pTermWidget->setGeometry(0,0,width(),height());
-	}
+void TermWindow::resizeEvent(QResizeEvent *)
+{
+	if(m_pTermWidget)
+		m_pTermWidget->setGeometry(0, 0, width(), height());
+}
 
-	QSize TermWindow::sizeHint() const
-	{
-		return m_pTermWidget ? m_pTermWidget->sizeHint() : KviWindow::sizeHint();
-	}
+QSize TermWindow::sizeHint() const
+{
+	return m_pTermWidget ? m_pTermWidget->sizeHint() : KviWindow::sizeHint();
+}
 
-	void TermWindow::fillCaptionBuffers()
-	{
-		m_szPlainTextCaption = __tr("Terminal");
-	}
-
-
+void TermWindow::fillCaptionBuffers()
+{
+	m_szPlainTextCaption = __tr("Terminal");
+}
 
 #endif

@@ -37,11 +37,11 @@
 #include <QKeyEvent>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
+extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
 KviThemedComboBox::KviThemedComboBox(QWidget * par, KviWindow * pWindow, const char * name)
-: QComboBox(par)
+    : QComboBox(par)
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
@@ -72,25 +72,26 @@ void KviThemedComboBox::applyOptions()
 		//qcombobox forces QPalette::Text as its forecolor
 		pal.setBrush(QPalette::Text, bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()) : KVI_OPTION_COLOR(KviOption_colorLabelForeground));
 		setPalette(pal);
-	} else {
+	}
+	else
+	{
 		QString szStyle = QString("QComboBox { background: %1; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
-			.arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
-			.arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() :
-				KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
-		.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
-		.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
-		.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
-		.arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
+		                      .arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
+		                      .arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
+		                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
+		                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
+		                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
+		                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
 		setStyleSheet(szStyle);
 	}
 	update();
 }
 
-void KviThemedComboBox::paintEvent ( QPaintEvent * event )
+void KviThemedComboBox::paintEvent(QPaintEvent * event)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	QPainter * p = new QPainter(this);
-	QLineEdit *le = lineEdit();
+	QLineEdit * le = lineEdit();
 	if(le)
 	{
 		QRect r = rect();
@@ -121,22 +122,23 @@ void KviThemedComboBox::paintEvent ( QPaintEvent * event )
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
 		p->setCompositionMode(QPainter::CompositionMode_Source);
-		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		QColor col = KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
 		p->fillRect(contentsRect(), col);
-	} else if(g_pShadedChildGlobalDesktopBackground)
+	}
+	else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = m_pKviWindow->isDocked() ? mapTo(g_pMainWindow, contentsRect().topLeft()) : mapTo(m_pKviWindow, contentsRect().topLeft());
-		p->drawTiledPixmap(contentsRect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
+		p->drawTiledPixmap(contentsRect(), *(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 	delete p;
 #endif
 	QComboBox::paintEvent(event);
 }
 
-void KviThemedComboBox::keyPressEvent(QKeyEvent *e)
+void KviThemedComboBox::keyPressEvent(QKeyEvent * e)
 {
-	if (e->key() == Qt::Key_Return)
+	if(e->key() == Qt::Key_Return)
 		emit returnPressed(this->currentText());
 
 	QComboBox::keyPressEvent(e);

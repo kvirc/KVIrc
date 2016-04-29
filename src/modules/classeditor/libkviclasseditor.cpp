@@ -28,10 +28,8 @@
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
-
 ClassEditorWindow * g_pClassEditorWindow = 0;
 KviModule * g_pClassEditorModule = 0;
-
 
 /*
 	@doc: classeditor.open
@@ -61,7 +59,7 @@ static bool classeditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 
 static bool classeditor_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",classeditor_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", classeditor_kvs_cmd_open);
 	g_pClassEditorWindow = 0;
 	g_pClassEditorModule = m;
 	return true;
@@ -81,13 +79,12 @@ static bool classeditor_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"ClassEditor",                                                       // module name
-	"4.0.0",                                                             // module version
-	"Copyright (C) 2010 Carbone Alessandro (elfonol at gmail dot com)",  // author & (C)
-	"Editor for the script classes",
-	classeditor_module_init,
-	classeditor_module_can_unload,
-	0,
-	classeditor_module_cleanup,
-	"editor"
-)
+    "ClassEditor",                                                      // module name
+    "4.0.0",                                                            // module version
+    "Copyright (C) 2010 Carbone Alessandro (elfonol at gmail dot com)", // author & (C)
+    "Editor for the script classes",
+    classeditor_module_init,
+    classeditor_module_can_unload,
+    0,
+    classeditor_module_cleanup,
+    "editor")

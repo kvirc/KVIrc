@@ -106,8 +106,10 @@ public:
 	* \brief Destroys the userlist tooltip
 	*/
 	virtual ~KviUserListToolTip();
+
 private:
 	KviUserListView * m_pListView;
+
 public:
 	/**
 	* \brief Checks if user activated tooltips in the option panel
@@ -122,7 +124,7 @@ public:
 	* \param szStr The string to show
 	* \return void
 	*/
-	void doTip(const QRect & rect, const QString & szStr){ tip(rect,szStr); };
+	void doTip(const QRect & rect, const QString & szStr) { tip(rect, szStr); };
 };
 
 /**
@@ -134,6 +136,7 @@ class KVIRC_API KviUserListEntry : public QObject
 	Q_OBJECT
 	friend class KviUserListView;
 	friend class KviUserListViewArea;
+
 public:
 	/**
 	* \brief Constructs the user list entry object
@@ -150,20 +153,22 @@ public:
 	* \brief Destroys the user list entry object
 	*/
 	~KviUserListEntry();
-protected:
-	KviUserListView   * m_pListView;
-	QString             m_szNick;
-	KviIrcUserEntry   * m_pGlobalData;
-	short int           m_iFlags;
-	short int           m_iTemperature;    // user temperature : 0 = neutral
-	kvi_time_t          m_lastActionTime;
-	kvi_time_t          m_joinTime;
 
-	int                 m_iHeight;
-	bool                m_bSelected;
-	KviUserListEntry  * m_pNext;
-	KviUserListEntry  * m_pPrev;
+protected:
+	KviUserListView * m_pListView;
+	QString m_szNick;
+	KviIrcUserEntry * m_pGlobalData;
+	short int m_iFlags;
+	short int m_iTemperature; // user temperature : 0 = neutral
+	kvi_time_t m_lastActionTime;
+	kvi_time_t m_joinTime;
+
+	int m_iHeight;
+	bool m_bSelected;
+	KviUserListEntry * m_pNext;
+	KviUserListEntry * m_pPrev;
 	KviAnimatedPixmap * m_pAvatarPixmap;
+
 public:
 	/**
 	* \brief Returns the flags of the user
@@ -175,7 +180,7 @@ public:
 	* \brief Returns the irc user db entry
 	* \return KviIrcUserEntry *
 	*/
-	KviIrcUserEntry * globalData(){ return m_pGlobalData; };
+	KviIrcUserEntry * globalData() { return m_pGlobalData; };
 
 	/**
 	* \brief Returns the nick of the entry
@@ -187,7 +192,7 @@ public:
 	* \brief Returns the next entry in the list
 	* \return KviUserListEntry *
 	*/
-	KviUserListEntry * next(){ return m_pNext; };
+	KviUserListEntry * next() { return m_pNext; };
 
 	/**
 	* \brief Returns the color of the entry
@@ -245,30 +250,32 @@ public:
 	* \brief Destroys the user list view object
 	*/
 	~KviUserListView();
+
 protected:
-	KviPointerHashTable<QString,KviUserListEntry> * m_pEntryDict;
-	KviUserListEntry                              * m_pTopItem;
-	KviUserListEntry                              * m_pHeadItem;
-	KviUserListEntry                              * m_pTailItem;
-	KviUserListEntry                              * m_pIterator;
-	QLabel                                        * m_pUsersLabel;
-	KviUserListViewArea                           * m_pViewArea;
-	KviIrcUserDataBase                            * m_pIrcUserDataBase;
-	int                                             m_iSelectedCount;
-	int                                             m_iIrcOpCount;
-	int                                             m_iChanOwnerCount;
-	int                                             m_iChanAdminCount;
-	int                                             m_iOpCount;
-	int                                             m_iHalfOpCount;
-	int                                             m_iVoiceCount;
-	int                                             m_iUserOpCount;
-	int                                             m_iTotalHeight;
-	int                                             m_iFontHeight;
-	KviUserListToolTip                            * m_pToolTip;
-	int                                             m_ibEntries;
-	int                                             m_ieEntries;
-	int                                             m_iIEntries;
-	KviWindow                                     * m_pKviWindow;
+	KviPointerHashTable<QString, KviUserListEntry> * m_pEntryDict;
+	KviUserListEntry * m_pTopItem;
+	KviUserListEntry * m_pHeadItem;
+	KviUserListEntry * m_pTailItem;
+	KviUserListEntry * m_pIterator;
+	QLabel * m_pUsersLabel;
+	KviUserListViewArea * m_pViewArea;
+	KviIrcUserDataBase * m_pIrcUserDataBase;
+	int m_iSelectedCount;
+	int m_iIrcOpCount;
+	int m_iChanOwnerCount;
+	int m_iChanAdminCount;
+	int m_iOpCount;
+	int m_iHalfOpCount;
+	int m_iVoiceCount;
+	int m_iUserOpCount;
+	int m_iTotalHeight;
+	int m_iFontHeight;
+	KviUserListToolTip * m_pToolTip;
+	int m_ibEntries;
+	int m_ieEntries;
+	int m_iIEntries;
+	KviWindow * m_pKviWindow;
+
 public:
 	/**
 	* \brief Updates the list view area
@@ -300,13 +307,13 @@ public:
 	* \brief Returns the entry in the list
 	* \return KviPointerHashTable<QString,KviUserListEntry> *
 	*/
-	KviPointerHashTable<QString,KviUserListEntry> * entryDict(){ return m_pEntryDict; };
+	KviPointerHashTable<QString, KviUserListEntry> * entryDict() { return m_pEntryDict; };
 
 	/**
 	* \brief Returns the first item of the user list
 	* \return KviUserListEntry *
 	*/
-	KviUserListEntry * firstItem(){ return m_pHeadItem; };
+	KviUserListEntry * firstItem() { return m_pHeadItem; };
 
 	/**
 	* \brief Returns the item at the given position
@@ -327,61 +334,61 @@ public:
 	* \brief Returns the window associated to the userlist
 	* \return KviWindow *
 	*/
-	KviWindow * window(){ return m_pKviWindow; };
+	KviWindow * window() { return m_pKviWindow; };
 
 	/**
 	* \brief Returns the number of the entries in the userlist
 	* \return unsigned int
 	*/
-	unsigned int count(){ return m_pEntryDict->count(); };
+	unsigned int count() { return m_pEntryDict->count(); };
 
 	/**
 	* \brief Returns the number of selected entries in the userlist
 	* \return int
 	*/
-	int selectedCount(){ return m_iSelectedCount; };
+	int selectedCount() { return m_iSelectedCount; };
 
 	/**
 	* \brief Returns the number of ircops
 	* \return int
 	*/
-	int ircOpCount(){ return m_iIrcOpCount; };
+	int ircOpCount() { return m_iIrcOpCount; };
 
 	/**
 	* \brief Returns the number of chan owners
 	* \return int
 	*/
-	int chanOwnerCount(){ return m_iChanOwnerCount; };
+	int chanOwnerCount() { return m_iChanOwnerCount; };
 
 	/**
 	* \brief Returns the number of chan admins
 	* \return int
 	*/
-	int chanAdminCount(){ return m_iChanAdminCount; };
+	int chanAdminCount() { return m_iChanAdminCount; };
 
 	/**
 	* \brief Returns the number of operators
 	* \return int
 	*/
-	int opCount(){ return m_iOpCount; };
+	int opCount() { return m_iOpCount; };
 
 	/**
 	* \brief Returns the number of half operators
 	* \return int
 	*/
-	int halfOpCount(){ return m_iHalfOpCount; };
+	int halfOpCount() { return m_iHalfOpCount; };
 
 	/**
 	* \brief Returns the number of voices
 	* \return int
 	*/
-	int voiceCount(){ return m_iVoiceCount; };
+	int voiceCount() { return m_iVoiceCount; };
 
 	/**
 	* \brief Returns the number of user operators
 	* \return int
 	*/
-	int userOpCount(){ return m_iUserOpCount; };
+	int userOpCount() { return m_iUserOpCount; };
 
 	/**
 	* \brief Searches an entry in the userlist
@@ -390,7 +397,7 @@ public:
 	* \param szNick The nickname to find
 	* \return KviUserListEntry *
 	*/
-	KviUserListEntry * findEntry(const QString & szNick){ return szNick.isEmpty() ? 0 : m_pEntryDict->find(szNick); };
+	KviUserListEntry * findEntry(const QString & szNick) { return szNick.isEmpty() ? 0 : m_pEntryDict->find(szNick); };
 
 	/**
 	* \brief Appends the selected nicknames to the buffer
@@ -472,14 +479,14 @@ public:
 	* \param szNick The nickname of the user
 	* \return char
 	*/
-	char getUserFlag(const QString & szNick){ return getUserFlag(m_pEntryDict->find(szNick)); };
+	char getUserFlag(const QString & szNick) { return getUserFlag(m_pEntryDict->find(szNick)); };
 
 	/**
 	* \brief Check if a user parts from a channel
 	* \param szNick The nickname to check
 	* \return bool
 	*/
-	bool part(const QString & szNick){ return partInternal(szNick,true); };
+	bool part(const QString & szNick) { return partInternal(szNick, true); };
 
 	/**
 	* \brief Prepends the user flags before the nickname
@@ -732,6 +739,7 @@ public:
 	* \return void
 	*/
 	void completeNickBashLike(const QString & szBegin, KviPointerList<QString> * pList, bool bAppendMask);
+
 protected:
 	/**
 	* \brief Checks if user activated tooltips over the userlist
@@ -785,7 +793,7 @@ protected:
 	* \param pDb The source user database
 	* \return void
 	*/
-	void setUserDataBase(KviIrcUserDataBase * pDb){ m_pIrcUserDataBase = pDb; };
+	void setUserDataBase(KviIrcUserDataBase * pDb) { m_pIrcUserDataBase = pDb; };
 
 	/**
 	* \brief Updates the scrollbar range
@@ -824,6 +832,7 @@ public:
 	* \brief Destroys the user listview are object
 	*/
 	~KviUserListViewArea();
+
 public:
 	/**
 	* \brief A dummy function that always returns 0
@@ -831,12 +840,13 @@ public:
 	*/
 	int dummyRead() const { return 0; };
 protected:
-	KviUserListView  * m_pListView;
+	KviUserListView * m_pListView;
 	KviUserListEntry * m_pLastEntryUnderMouse;
-	QScrollBar       * m_pScrollBar;
-	int                m_iLastScrollBarVal;
-	int                m_iTopItemOffset;
-	bool               m_bIgnoreScrollBar;
+	QScrollBar * m_pScrollBar;
+	int m_iLastScrollBarVal;
+	int m_iTopItemOffset;
+	bool m_bIgnoreScrollBar;
+
 protected:
 	virtual void paintEvent(QPaintEvent * e);
 	virtual void resizeEvent(QResizeEvent * e);
@@ -854,6 +864,5 @@ protected slots:
 	*/
 	void scrollBarMoved(int iNewVal);
 };
-
 
 #endif //_KVI_USERLISTVIEW_H_

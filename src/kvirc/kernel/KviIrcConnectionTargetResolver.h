@@ -30,15 +30,15 @@
 #include <QObject>
 
 #ifdef Status
-	#undef Status
+#undef Status
 #endif
 
 #ifdef Success
-	#undef Success
+#undef Success
 #endif
 
 #ifdef Error
-	#undef Error
+#undef Error
 #endif
 
 class KviConsoleWindow;
@@ -55,31 +55,43 @@ class KVIRC_API KviIrcConnectionTargetResolver : public QObject
 protected:
 	KviIrcConnectionTargetResolver(KviIrcConnection * pConnection);
 	~KviIrcConnectionTargetResolver();
+
 public:
-	enum Status { Success, Error };
-	enum State { Idle, Running, Terminated };
+	enum Status
+	{
+		Success,
+		Error
+	};
+	enum State
+	{
+		Idle,
+		Running,
+		Terminated
+	};
+
 private:
-	KviIrcConnection             * m_pConnection;       // shallow, never null
-	KviIrcConnectionTarget       * m_pTarget;           // shallow, never null
-	KviConsoleWindow                   * m_pConsole;          // shallow, never null
-	Status                         m_eStatus;
-	State                          m_eState;
+	KviIrcConnection * m_pConnection;   // shallow, never null
+	KviIrcConnectionTarget * m_pTarget; // shallow, never null
+	KviConsoleWindow * m_pConsole;      // shallow, never null
+	Status m_eStatus;
+	State m_eState;
 
 	// Auxiliary stuff
-	QTimer                       * m_pStartTimer;       // timer used to start the connection
-	KviDnsResolver                       * m_pProxyDns;         // the dns object for the proxy hostnames
-	KviDnsResolver                       * m_pServerDns;        // the dns object for the server hostnames
+	QTimer * m_pStartTimer;        // timer used to start the connection
+	KviDnsResolver * m_pProxyDns;  // the dns object for the proxy hostnames
+	KviDnsResolver * m_pServerDns; // the dns object for the server hostnames
 
-	char                         * m_pReadBuffer;
-	unsigned int                   m_uReadBufferLen;
-	unsigned int                   m_uReadPackets;
+	char * m_pReadBuffer;
+	unsigned int m_uReadBufferLen;
+	unsigned int m_uReadPackets;
 
-	int                            m_iLastError;
+	int m_iLastError;
+
 public:
 	void start(KviIrcConnectionTarget * t);
 	// valid only after the terminated() signal
-	Status status(){ return m_eStatus; };
-	int lastError(){ return m_iLastError; };
+	Status status() { return m_eStatus; };
+	int lastError() { return m_iLastError; };
 	// causes the resolver to terminate with iLastError == KviError_operationAborted
 	// the terminated() signal is emitted.
 	void abort();
@@ -87,13 +99,14 @@ protected slots:
 	void asyncStartResolve();
 	void serverLookupTerminated(KviDnsResolver *);
 	void proxyLookupTerminated(KviDnsResolver *);
+
 private:
 	void cleanup();
 	void lookupProxyHostname();
 	void lookupServerHostname();
 	void haveServerIp();
-	bool validateLocalAddress(const QString &szAddress,QString &szBuffer);
-	void terminate(Status s,int iLastError);
+	bool validateLocalAddress(const QString & szAddress, QString & szBuffer);
+	void terminate(Status s, int iLastError);
 signals:
 	void terminated();
 };

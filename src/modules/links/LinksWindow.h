@@ -51,10 +51,11 @@ class LinksListView : public KviThemedTreeWidget
 public:
 	LinksListView(QWidget * par, KviWindow * wnd, const char * txt);
 	~LinksListView(){};
+
 protected:
-	void mousePressEvent (QMouseEvent *e);
+	void mousePressEvent(QMouseEvent * e);
 signals:
-	void rightButtonPressed(QTreeWidgetItem *,QPoint);
+	void rightButtonPressed(QTreeWidgetItem *, QPoint);
 };
 
 class LinksWindow : public KviWindow, public KviExternalServerDataParser
@@ -63,37 +64,42 @@ class LinksWindow : public KviWindow, public KviExternalServerDataParser
 public:
 	LinksWindow(KviConsoleWindow * lpConsole);
 	~LinksWindow();
+
 protected:
-	QSplitter               * m_pVertSplitter;
-	QSplitter               * m_pTopSplitter;
-	LinksListView        * m_pListView;
+	QSplitter * m_pVertSplitter;
+	QSplitter * m_pTopSplitter;
+	LinksListView * m_pListView;
 	KviPointerList<KviLink> * m_pLinkList;
-	QMenu         * m_pHostPopup;
-	QString                   m_szRootServer;
-	QToolButton             * m_pRequestButton;
-	KviThemedLabel          * m_pInfoLabel;
+	QMenu * m_pHostPopup;
+	QString m_szRootServer;
+	QToolButton * m_pRequestButton;
+	KviThemedLabel * m_pInfoLabel;
+
 public: // Methods
 	virtual void control(int msg);
 	virtual void processData(KviIrcMessage * msg);
 	virtual void die();
+
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 	virtual void applyOptions();
-	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getBaseLogFileName(QString &buffer);
+	virtual void resizeEvent(QResizeEvent * e);
+	virtual void getBaseLogFileName(QString & buffer);
 protected slots:
-	void showHostPopup(QTreeWidgetItem *i,const QPoint &p);
-    void hostPopupClicked(QAction *pAction);
+	void showHostPopup(QTreeWidgetItem * i, const QPoint & p);
+	void hostPopupClicked(QAction * pAction);
 	void requestLinks();
 	void connectionStateChange();
+
 public:
 	virtual QSize sizeHint() const;
+
 private:
 	void reset();
 	void endOfLinks();
 	QTreeWidgetItem * insertLink(KviLink * l);
-	QTreeWidgetItem * getItemByHost(const char *host,QTreeWidgetItem * par);
+	QTreeWidgetItem * getItemByHost(const char * host, QTreeWidgetItem * par);
 };
 
 #endif //_KVI_LINKSWINDOW_H_

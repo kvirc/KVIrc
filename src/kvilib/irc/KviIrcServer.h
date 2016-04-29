@@ -55,14 +55,15 @@ public:
 	* \enum Flags
 	* \brief Contains the features supported by the server
 	*/
-	enum Flags {
-		IPv6     =  1,   /**< IPv6 support */
-		CacheIP  =  2,   /**< whether we cache the server's IP */
-		SSL      =  4,   /**< SSL support */
-		STARTTLS =  8,   /**< STARTTLS support */
-		SASL     = 16,   /**< SASL support */
-		CAP      = 32,   /**< CAP support */
-		FAVORITE = 64    /**< Favorite Server */
+	enum Flags
+	{
+		IPv6 = 1,     /**< IPv6 support */
+		CacheIP = 2,  /**< whether we cache the server's IP */
+		SSL = 4,      /**< SSL support */
+		STARTTLS = 8, /**< STARTTLS support */
+		SASL = 16,    /**< SASL support */
+		CAP = 32,     /**< CAP support */
+		FAVORITE = 64 /**< Favorite Server */
 	};
 
 	/**
@@ -82,37 +83,36 @@ public:
 	* \brief Destroys the server object
 	*/
 	~KviIrcServer();
-private:
 
+private:
 	KviIrcServerReconnectInfo * m_pReconnectInfo;
-	QString                     m_szHostname;      /**< the server hostname (or IP eventually) */
-	QString                     m_szIp;            /**< the server's cached ip (if we're caching) */
-	QString                     m_szDescription;   /**< the server description */
-	kvi_u32_t                   m_uPort;           /**< the server's port */
-	unsigned short int          m_uFlags;          /**< flags */
+	QString m_szHostname;        /**< the server hostname (or IP eventually) */
+	QString m_szIp;              /**< the server's cached ip (if we're caching) */
+	QString m_szDescription;     /**< the server description */
+	kvi_u32_t m_uPort;           /**< the server's port */
+	unsigned short int m_uFlags; /**< flags */
 
 	// Extended data
-	QString                     m_szUserIdentityId;       /**< the user identity to use for this server: if empty, then use the network identity instead */
-	QString                     m_szUser;                 /**< special username */
-	QString                     m_szPass;                 /**< special password */
-	QString                     m_szNick;                 /**< special nickname */
-	QString                     m_szAlternativeNick;      /**< alternate special nickname */
-	QString                     m_szRealName;             /**< special real name */
-	QString                     m_szInitUMode;            /**< special user mode */
-	QString                     m_szOnConnectCommand;     /**< the command to run on connect */
-	QString                     m_szOnLoginCommand;       /**< the command to run after login */
-	QString                     m_szLinkFilter;           /**< the link filter object */
-	QString                     m_szEncoding;             /**< if empty, use network encoding */
-	QString                     m_szTextEncoding;         /**< if empty, use network encoding */
-	QStringList               * m_pAutoJoinChannelList;   /**< Channels to auto join */
-	bool                        m_bAutoConnect;           /**< autoconnect */
-	QString                     m_szId;                   /**< the server's may-be-unique id, may be auto-generated */
-	int                         m_iProxy;                 /**< proxy server's id */
-	QString                     m_szSaslNick;             /**< nickname for sasl auth */
-	QString                     m_szSaslPass;             /**< password for sasl auth */
+	QString m_szUserIdentityId;           /**< the user identity to use for this server: if empty, then use the network identity instead */
+	QString m_szUser;                     /**< special username */
+	QString m_szPass;                     /**< special password */
+	QString m_szNick;                     /**< special nickname */
+	QString m_szAlternativeNick;          /**< alternate special nickname */
+	QString m_szRealName;                 /**< special real name */
+	QString m_szInitUMode;                /**< special user mode */
+	QString m_szOnConnectCommand;         /**< the command to run on connect */
+	QString m_szOnLoginCommand;           /**< the command to run after login */
+	QString m_szLinkFilter;               /**< the link filter object */
+	QString m_szEncoding;                 /**< if empty, use network encoding */
+	QString m_szTextEncoding;             /**< if empty, use network encoding */
+	QStringList * m_pAutoJoinChannelList; /**< Channels to auto join */
+	bool m_bAutoConnect;                  /**< autoconnect */
+	QString m_szId;                       /**< the server's may-be-unique id, may be auto-generated */
+	int m_iProxy;                         /**< proxy server's id */
+	QString m_szSaslNick;                 /**< nickname for sasl auth */
+	QString m_szSaslPass;                 /**< password for sasl auth */
 
 public:
-
 	KviIrcServerReconnectInfo * reconnectInfo()
 	{
 		return m_pReconnectInfo;
@@ -262,13 +262,13 @@ public:
 	* \brief Returns the list of the channels in the autojoin list
 	* \return QStringList *
 	*/
-	inline QStringList * autoJoinChannelList(){ return m_pAutoJoinChannelList; };
+	inline QStringList * autoJoinChannelList() { return m_pAutoJoinChannelList; };
 
 	/**
 	* \brief Returns the list of the channels in the autojoin list as a string
 	* \return const QString &
 	*/
-	inline const QString autoJoinChannelListAsString(){ return m_pAutoJoinChannelList ? m_pAutoJoinChannelList->join(",") : ""; };
+	inline const QString autoJoinChannelListAsString() { return m_pAutoJoinChannelList ? m_pAutoJoinChannelList->join(",") : ""; };
 
 	/**
 	* \brief Returns true if the server uses IPv6
@@ -318,84 +318,84 @@ public:
 	* \param iProxy The proxy to connect through
 	* \return void
 	*/
-	inline void setProxy(int iProxy){ m_iProxy = iProxy; };
+	inline void setProxy(int iProxy) { m_iProxy = iProxy; };
 
 	/**
 	* \brief Sets the IP for the server
 	* \param szIp The IP of the server
 	* \return void
 	*/
-	inline void setIp(const QString & szIp){ m_szIp = szIp; };
+	inline void setIp(const QString & szIp) { m_szIp = szIp; };
 
 	/**
 	* \brief Sets the port for the server
 	* \param uPort The port of the server
 	* \return void
 	*/
-	inline void setPort(kvi_u32_t uPort){ m_uPort = uPort; };
+	inline void setPort(kvi_u32_t uPort) { m_uPort = uPort; };
 
 	/**
 	* \brief Sets the hostname for the server
 	* \param szHost The host name of the user
 	* \return void
 	*/
-	inline void setHostName(const QString & szHost){ m_szHostname = szHost; };
+	inline void setHostName(const QString & szHost) { m_szHostname = szHost; };
 
 	/**
 	* \brief Sets the description for the server
 	* \param szDesc The description of the server
 	* \return void
 	*/
-	inline void setDescription(const QString & szDesc){ m_szDescription = szDesc; };
+	inline void setDescription(const QString & szDesc) { m_szDescription = szDesc; };
 
 	/**
 	* \brief Sets the username of the user associated to the server
 	* \param szUser The user name of the user
 	* \return void
 	*/
-	inline void setUserName(const QString & szUser){ m_szUser = szUser; };
+	inline void setUserName(const QString & szUser) { m_szUser = szUser; };
 
 	/**
 	* \brief Sets the password of the user associated to the server
 	* \param szPass The password of the user
 	* \return void
 	*/
-	inline void setPassword(const QString & szPass){ m_szPass = szPass; };
+	inline void setPassword(const QString & szPass) { m_szPass = szPass; };
 
 	/**
 	* \brief Sets the nickname of the user associated to the server
 	* \param szNick The nick name of the user
 	* \return void
 	*/
-	inline void setNickName(const QString & szNick){ m_szNick = szNick; };
+	inline void setNickName(const QString & szNick) { m_szNick = szNick; };
 
 	/**
 	* \brief Sets the alternative nickname of the user associated to the server
 	* \param szNick The nick name of the user
 	* \return void
 	*/
-	inline void setAlternativeNickName(const QString & szNick){ m_szAlternativeNick = szNick; };
+	inline void setAlternativeNickName(const QString & szNick) { m_szAlternativeNick = szNick; };
 
 	/**
 	* \brief Sets the password used for sasl auth
 	* \param szPass The password of the user
 	* \return void
 	*/
-	inline void setSaslPass(const QString & szPass){ m_szSaslPass = szPass; };
+	inline void setSaslPass(const QString & szPass) { m_szSaslPass = szPass; };
 
 	/**
 	* \brief Sets the nickname used for sasl auth
 	* \param szNick The nick name of the user
 	* \return void
 	*/
-	inline void setSaslNick(const QString & szNick){ m_szSaslNick = szNick; };
+	inline void setSaslNick(const QString & szNick) { m_szSaslNick = szNick; };
 
 	/**
 	* \brief Sets the realname of the user associated to the server
 	* \param szReal The real name of the user
 	* \return void
 	*/
-	inline void setRealName(const QString & szReal){ m_szRealName = szReal; };
+	inline void setRealName(const QString & szReal) { m_szRealName = szReal; };
 
 	/**
 	* \brief Sets the encoding associated to the server
@@ -405,7 +405,7 @@ public:
 	* \param szEncoding The default encoding of the text
 	* \return void
 	*/
-	inline void setEncoding(const QString & szEncoding){ m_szEncoding = szEncoding; };
+	inline void setEncoding(const QString & szEncoding) { m_szEncoding = szEncoding; };
 
 	/**
 	* \brief Sets the encoding associated to the server
@@ -413,28 +413,28 @@ public:
 	* \param szEncoding The default encoding of the text
 	* \return void
 	*/
-	inline void setTextEncoding(const QString & szEncoding){ m_szTextEncoding = szEncoding; };
+	inline void setTextEncoding(const QString & szEncoding) { m_szTextEncoding = szEncoding; };
 
 	/**
 	* \brief Sets the user modes of the user associated to the server
 	* \param szUMode The user modes of the user
 	* \return void
 	*/
-	inline void setInitUMode(const QString & szUMode){ m_szInitUMode = szUMode; };
+	inline void setInitUMode(const QString & szUMode) { m_szInitUMode = szUMode; };
 
 	/**
 	* \brief Sets the commands to run on server connection
 	* \param szCmd The comands to run on connection
 	* \return void
 	*/
-	inline void setOnConnectCommand(const QString & szCmd){ m_szOnConnectCommand = szCmd; };
+	inline void setOnConnectCommand(const QString & szCmd) { m_szOnConnectCommand = szCmd; };
 
 	/**
 	* \brief Sets the commands to run on server login
 	* \param szCmd The comands to run on login
 	* \return void
 	*/
-	inline void setOnLoginCommand(const QString & szCmd){ m_szOnLoginCommand = szCmd; };
+	inline void setOnLoginCommand(const QString & szCmd) { m_szOnLoginCommand = szCmd; };
 
 	/**
 	* \brief Applies the filter to the server
@@ -445,7 +445,7 @@ public:
 	* \param szFilter
 	* \return void
 	*/
-	inline void setLinkFilter(const QString & szFilter){ m_szLinkFilter = szFilter; };
+	inline void setLinkFilter(const QString & szFilter) { m_szLinkFilter = szFilter; };
 
 	/**
 	* \brief Sets the list of channels to autojoin after connection
@@ -467,14 +467,14 @@ public:
 	* \param bAutoConnect Whether to set the autoconnection
 	* \return void
 	*/
-	inline void setAutoConnect(bool bAutoConnect){ m_bAutoConnect = bAutoConnect; };
+	inline void setAutoConnect(bool bAutoConnect) { m_bAutoConnect = bAutoConnect; };
 
 	/**
 	* \brief Sets the id of the user associated to the server
 	* \param szUserIdentityId The user identity id to set
 	* \return void
 	*/
-	inline void setUserIdentityId(const QString & szUserIdentityId){ m_szUserIdentityId = szUserIdentityId; };
+	inline void setUserIdentityId(const QString & szUserIdentityId) { m_szUserIdentityId = szUserIdentityId; };
 
 	/**
 	* \brief Sets if the server uses IPv6
@@ -565,7 +565,12 @@ public:
 	* \param szId The id of the server
 	* \return void
 	*/
-	inline void setId(const QString & szId){ m_szId = szId; if(m_szId.isEmpty()) generateUniqueId(); };
+	inline void setId(const QString & szId)
+	{
+		m_szId = szId;
+		if(m_szId.isEmpty())
+			generateUniqueId();
+	};
 
 	/**
 	* \brief Loads the information from the configuration file

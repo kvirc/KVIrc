@@ -69,6 +69,7 @@ public:
 	* \brief Destroys file object
 	*/
 	~KviFile();
+
 public:
 	/**
 	* \brief Saves a file
@@ -84,7 +85,7 @@ public:
 	* \warning This function saves LITTLE ENDIAN DATA!
 	* \return bool
 	*/
-	bool save(kvi_i64_t file){ return save((kvi_u64_t)file); };
+	bool save(kvi_i64_t file) { return save((kvi_u64_t)file); };
 
 	/**
 	* \brief Saves a file
@@ -100,7 +101,7 @@ public:
 	* \warning This function saves LITTLE ENDIAN DATA!
 	* \return bool
 	*/
-	bool save(kvi_i32_t file){ return save((kvi_u32_t)file); };
+	bool save(kvi_i32_t file) { return save((kvi_u32_t)file); };
 
 	/**
 	* \brief Saves a file
@@ -116,7 +117,7 @@ public:
 	* \warning This function saves LITTLE ENDIAN DATA!
 	* \return bool
 	*/
-	bool save(kvi_i16_t file){ return save((kvi_u16_t)file); };
+	bool save(kvi_i16_t file) { return save((kvi_u16_t)file); };
 
 	/**
 	* \brief Saves a file
@@ -132,7 +133,7 @@ public:
 	* \warning This function saves LITTLE ENDIAN DATA!
 	* \return bool
 	*/
-	bool save(kvi_i8_t file){ return save((kvi_u8_t)file); };
+	bool save(kvi_i8_t file) { return save((kvi_u8_t)file); };
 
 	/**
 	* \brief Saves a file
@@ -180,7 +181,7 @@ public:
 	* \warning This function loads LITTLE ENDIAN DATA!
 	* \return bool
 	*/
-	bool load(kvi_i64_t & file){ return load((kvi_u64_t &)file); };
+	bool load(kvi_i64_t & file) { return load((kvi_u64_t &)file); };
 
 	/**
 	* \brief Loads a file
@@ -196,7 +197,7 @@ public:
 	* \warning This function loads LITTLE ENDIAN DATA!
 	* \return bool
 	*/
-	bool load(kvi_i32_t & file){ return load((kvi_u32_t &)file); };
+	bool load(kvi_i32_t & file) { return load((kvi_u32_t &)file); };
 
 	/**
 	* \brief Loads a file
@@ -212,7 +213,7 @@ public:
 	* \warning This function loads LITTLE ENDIAN DATA!
 	* \return bool
 	*/
-	bool load(kvi_i16_t & file){ return load((kvi_u16_t &)file); };
+	bool load(kvi_i16_t & file) { return load((kvi_u16_t &)file); };
 
 	/**
 	* \brief Loads a file
@@ -228,7 +229,7 @@ public:
 	* \warning This function loads LITTLE ENDIAN DATA!
 	* \return bool
 	*/
-	bool load(kvi_i8_t & file){ return load((kvi_u8_t &)file); };
+	bool load(kvi_i8_t & file) { return load((kvi_u8_t &)file); };
 
 	/**
 	* \brief Loads a file

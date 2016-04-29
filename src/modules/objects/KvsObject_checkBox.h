@@ -1,5 +1,5 @@
-#ifndef	_CLASS_CHECKBOX_H_
-#define	_CLASS_CHECKBOX_H_
+#ifndef _CLASS_CHECKBOX_H_
+#define _CLASS_CHECKBOX_H_
 
 //=============================================================================
 //
@@ -26,8 +26,6 @@
 //
 //=============================================================================
 
-
-
 #include "KvsObject_button.h"
 #include "object_macros.h"
 
@@ -39,12 +37,12 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-	bool setChecked(KviKvsObjectFunctionCall *c);
-	bool isChecked(KviKvsObjectFunctionCall *c);
-	bool toggleEvent(KviKvsObjectFunctionCall *c);
-	bool setText(KviKvsObjectFunctionCall *c);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+	bool setChecked(KviKvsObjectFunctionCall * c);
+	bool isChecked(KviKvsObjectFunctionCall * c);
+	bool toggleEvent(KviKvsObjectFunctionCall * c);
+	bool setText(KviKvsObjectFunctionCall * c);
 protected slots:
 	void toggled(bool b);
 };
-#endif	// !_CLASS_CHECKBOX_H_
+#endif // !_CLASS_CHECKBOX_H_

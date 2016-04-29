@@ -36,7 +36,7 @@
 #include <QByteArray>
 
 #ifdef DEBUG
-	#undef DEBUG
+#undef DEBUG
 #endif
 
 // I MUST say that the perl embedding process is somewhat ugly :(
@@ -64,33 +64,33 @@
 // This version should work nice with both, but warranty is 5.10-only.
 
 #ifdef COMPILE_PERL_SUPPORT
-	#include <EXTERN.h>
-	#include <perl.h>
-	#include <XSUB.h>
+#include <EXTERN.h>
+#include <perl.h>
+#include <XSUB.h>
 
-	#define NEED_eval_pv
-	#include "ppport.h"
+#define NEED_eval_pv
+#include "ppport.h"
 
-	#include "KviKvsRunTimeContext.h"
+#include "KviKvsRunTimeContext.h"
 
-	static KviKvsRunTimeContext * g_pCurrentKvsContext = 0;
-	static bool g_bExecuteQuiet = false;
-	static KviCString g_szLastReturnValue("");
-	static QStringList g_lWarningList;
+static KviKvsRunTimeContext * g_pCurrentKvsContext = 0;
+static bool g_bExecuteQuiet = false;
+static KviCString g_szLastReturnValue("");
+static QStringList g_lWarningList;
 
-	// this is why we can't have nice things -- part of perl 5.17.1+
-	#ifdef __cplusplus
-		#define dNOOP (void)0
-	#else
-		#define dNOOP extern int Perl___notused(void)
-	#endif
+// this is why we can't have nice things -- part of perl 5.17.1+
+#ifdef __cplusplus
+#define dNOOP (void)0
+#else
+#define dNOOP extern int Perl___notused(void)
+#endif
 
-	#include "xs.inc"
+#include "xs.inc"
 #endif // COMPILE_PERL_SUPPORT
 
 // perl redefines bool :///
 #ifdef bool
-	#undef bool
+#undef bool
 #endif
 
 #ifdef COMPILE_PERL_SUPPORT
@@ -106,21 +106,23 @@
 class KviPerlInterpreter
 {
 public:
-	KviPerlInterpreter(const QString &szContextName);
+	KviPerlInterpreter(const QString & szContextName);
 	~KviPerlInterpreter();
+
 protected:
-	QString           m_szContextName;
+	QString m_szContextName;
 	PerlInterpreter * m_pInterpreter;
+
 public:
 	bool init(); // if this fails then well.. :D
 	void done();
-	bool execute(const QString &szCode,QStringList &args,QString &szRetVal,QString &szError,QStringList &lWarnings);
+	bool execute(const QString & szCode, QStringList & args, QString & szRetVal, QString & szError, QStringList & lWarnings);
 	const QString & contextName() const { return m_szContextName; };
 protected:
 	QString svToQString(SV * sv);
 };
 
-KviPerlInterpreter::KviPerlInterpreter(const QString &szContextName)
+KviPerlInterpreter::KviPerlInterpreter(const QString & szContextName)
 {
 	m_szContextName = szContextName;
 	m_pInterpreter = 0;
@@ -139,13 +141,13 @@ KviPerlInterpreter::~KviPerlInterpreter()
 // Update: it is no more needed as of perl 5.10, since it is
 // included in the standard libperl interface.
 
-extern "C" void boot_DynaLoader(pTHX_ CV* cv);
+extern "C" void boot_DynaLoader(pTHX_ CV * cv);
 
 extern "C" void xs_init(pTHX)
 {
 	char * file = (char *)__FILE__;
 	// boot up the DynaLoader
-	newXS("DynaLoader::boot_DynaLoader",boot_DynaLoader,file);
+	newXS("DynaLoader::boot_DynaLoader", boot_DynaLoader, file);
 	// now bootstrap the KVIrc module
 	// This stuff is simply cutted and pasted from xs.inc
 	// since I don't really know if it's safe to call
@@ -166,14 +168,16 @@ extern "C" void xs_init(pTHX)
 
 bool KviPerlInterpreter::init()
 {
-	if(m_pInterpreter)done();
+	if(m_pInterpreter)
+		done();
 	const char * daArgs[] = { "yo", "-e", "0", "-w" };
 	m_pInterpreter = perl_alloc();
-	if(!m_pInterpreter)return false;
+	if(!m_pInterpreter)
+		return false;
 	PERL_SET_CONTEXT(m_pInterpreter);
 	PL_perl_destruct_level = 1;
 	perl_construct(m_pInterpreter);
-	perl_parse(m_pInterpreter,xs_init,4,(char **)daArgs,NULL);
+	perl_parse(m_pInterpreter, xs_init, 4, (char **)daArgs, NULL);
 	QString szInitCode;
 
 	// this part of the code seems to be unnecessary
@@ -188,29 +192,31 @@ bool KviPerlInterpreter::init()
 	// I just haven't tried :D
 
 	szInitCode = QString(
-		"{\n" \
-			"package KVIrc;\n" \
-			"require Exporter;\n" \
-			"our @ISA = qw(Exporter);\n" \
-			"1;\n" \
-		"}\n" \
-		"$g_szContext = \"%1\";\n" \
-		"$g_bExecuteQuiet = 0;\n" \
-		"$SIG{__WARN__} = sub\n" \
-		"{\n" \
-		"	my($p,$f,$l,$x);\n" \
-		"	($p,$f,$l) = caller;\n" \
-		"	KVIrc::internalWarning(\"At line \".$l.\" of Perl code: \");\n" \
-		"	KVIrc::internalWarning(join(' ',@_));\n" \
-		"}\n").arg(m_szContextName);
+	                 "{\n"
+	                 "package KVIrc;\n"
+	                 "require Exporter;\n"
+	                 "our @ISA = qw(Exporter);\n"
+	                 "1;\n"
+	                 "}\n"
+	                 "$g_szContext = \"%1\";\n"
+	                 "$g_bExecuteQuiet = 0;\n"
+	                 "$SIG{__WARN__} = sub\n"
+	                 "{\n"
+	                 "	my($p,$f,$l,$x);\n"
+	                 "	($p,$f,$l) = caller;\n"
+	                 "	KVIrc::internalWarning(\"At line \".$l.\" of Perl code: \");\n"
+	                 "	KVIrc::internalWarning(join(' ',@_));\n"
+	                 "}\n")
+	                 .arg(m_szContextName);
 
-	eval_pv(szInitCode.toUtf8().data(),false);
+	eval_pv(szInitCode.toUtf8().data(), false);
 	return true;
 }
 
 void KviPerlInterpreter::done()
 {
-	if(!m_pInterpreter)return;
+	if(!m_pInterpreter)
+		return;
 	PERL_SET_CONTEXT(m_pInterpreter);
 	PL_perl_destruct_level = 1;
 	perl_destruct(m_pInterpreter);
@@ -221,23 +227,25 @@ void KviPerlInterpreter::done()
 QString KviPerlInterpreter::svToQString(SV * sv)
 {
 	QString ret = "";
-	if(!sv)return ret;
+	if(!sv)
+		return ret;
 	STRLEN len;
-	char * ptr = SvPV(sv,len);
-	if(ptr)ret = ptr;
+	char * ptr = SvPV(sv, len);
+	if(ptr)
+		ret = ptr;
 	return ret;
 }
 
 bool KviPerlInterpreter::execute(
-		const QString &szCode,
-		QStringList &args,
-		QString &szRetVal,
-		QString &szError,
-		QStringList &lWarnings)
+    const QString & szCode,
+    QStringList & args,
+    QString & szRetVal,
+    QString & szError,
+    QStringList & lWarnings)
 {
 	if(!m_pInterpreter)
 	{
-		szError = __tr2qs_ctx("Internal error: Perl interpreter not initialized","perl");
+		szError = __tr2qs_ctx("Internal error: Perl interpreter not initialized", "perl");
 		return false;
 	}
 
@@ -247,7 +255,7 @@ bool KviPerlInterpreter::execute(
 	PERL_SET_CONTEXT(m_pInterpreter);
 
 	// clear the _ array
-	AV * pArgs = get_av("_",1);
+	AV * pArgs = get_av("_", 1);
 	SV * pArg = av_shift(pArgs);
 	while(SvOK(pArg))
 	{
@@ -258,16 +266,16 @@ bool KviPerlInterpreter::execute(
 	if(args.count() > 0)
 	{
 		// set the args in the _ arry
-		av_unshift(pArgs,(I32)args.count());
+		av_unshift(pArgs, (I32)args.count());
 		int idx = 0;
-		for(QStringList::Iterator it = args.begin();it != args.end();++it)
+		for(QStringList::Iterator it = args.begin(); it != args.end(); ++it)
 		{
 			QString tmp = *it;
 			const char * val = tmp.toUtf8().data();
 			if(val)
 			{
-				pArg = newSVpv(val,tmp.length());
-				if(!av_store(pArgs,idx,pArg))
+				pArg = newSVpv(val, tmp.length());
+				if(!av_store(pArgs, idx, pArg))
 					SvREFCNT_dec(pArg);
 			}
 			idx++;
@@ -275,10 +283,10 @@ bool KviPerlInterpreter::execute(
 	}
 
 	// call the code
-	SV * pRet = eval_pv(szUtf8.data(),false);
+	SV * pRet = eval_pv(szUtf8.data(), false);
 
 	// clear the _ array again
-	pArgs = get_av("_",1);
+	pArgs = get_av("_", 1);
 	pArg = av_shift(pArgs);
 	while(SvOK(pArg))
 	{
@@ -298,39 +306,42 @@ bool KviPerlInterpreter::execute(
 		lWarnings = g_lWarningList;
 
 	// and the eventual error string
-	pRet = get_sv("@",false);
+	pRet = get_sv("@", false);
 	if(pRet)
 	{
 		if(SvOK(pRet))
 		{
 			szError = svToQString(pRet);
-			if(!szError.isEmpty())return false;
+			if(!szError.isEmpty())
+				return false;
 		}
 	}
 
 	return true;
 }
 
-static KviPointerHashTable<QString,KviPerlInterpreter> * g_pInterpreters = 0;
+static KviPointerHashTable<QString, KviPerlInterpreter> * g_pInterpreters = 0;
 
-static KviPerlInterpreter * perlcore_get_interpreter(const QString &szContextName)
+static KviPerlInterpreter * perlcore_get_interpreter(const QString & szContextName)
 {
 	KviPerlInterpreter * i = g_pInterpreters->find(szContextName);
-	if(i)return i;
+	if(i)
+		return i;
 	i = new KviPerlInterpreter(szContextName);
 	if(!i->init())
 	{
 		delete i;
 		return 0;
 	}
-	g_pInterpreters->replace(szContextName,i);
+	g_pInterpreters->replace(szContextName, i);
 	return i;
 }
 
-static void perlcore_destroy_interpreter(const QString &szContextName)
+static void perlcore_destroy_interpreter(const QString & szContextName)
 {
 	KviPerlInterpreter * i = g_pInterpreters->find(szContextName);
-	if(!i)return;
+	if(!i)
+		return;
 	g_pInterpreters->remove(szContextName);
 	i->done();
 	delete i;
@@ -338,7 +349,7 @@ static void perlcore_destroy_interpreter(const QString &szContextName)
 
 static void perlcore_destroy_all_interpreters()
 {
-	KviPointerHashTableIterator<QString,KviPerlInterpreter> it(*g_pInterpreters);
+	KviPointerHashTableIterator<QString, KviPerlInterpreter> it(*g_pInterpreters);
 
 	while(it.current())
 	{
@@ -352,13 +363,14 @@ static void perlcore_destroy_all_interpreters()
 
 #endif // COMPILE_PERL_SUPPORT
 
-static bool perlcore_module_ctrl(KviModule *,const char * cmd,void * param)
+static bool perlcore_module_ctrl(KviModule *, const char * cmd, void * param)
 {
 #ifdef COMPILE_PERL_SUPPORT
-	if(kvi_strEqualCS(cmd,KVI_PERLCORECTRLCOMMAND_EXECUTE))
+	if(kvi_strEqualCS(cmd, KVI_PERLCORECTRLCOMMAND_EXECUTE))
 	{
 		KviPerlCoreCtrlCommand_execute * ex = (KviPerlCoreCtrlCommand_execute *)param;
-		if(ex->uSize != sizeof(KviPerlCoreCtrlCommand_execute))return false;
+		if(ex->uSize != sizeof(KviPerlCoreCtrlCommand_execute))
+			return false;
 		g_pCurrentKvsContext = ex->pKvsContext;
 		g_bExecuteQuiet = ex->bQuiet;
 		if(ex->szContext.isEmpty())
@@ -369,19 +381,22 @@ static bool perlcore_module_ctrl(KviModule *,const char * cmd,void * param)
 				delete m;
 				return false;
 			}
-			ex->bExitOk = m->execute(ex->szCode,ex->lArgs,ex->szRetVal,ex->szError,ex->lWarnings);
+			ex->bExitOk = m->execute(ex->szCode, ex->lArgs, ex->szRetVal, ex->szError, ex->lWarnings);
 			m->done();
 			delete m;
-		} else {
+		}
+		else
+		{
 			KviPerlInterpreter * m = perlcore_get_interpreter(ex->szContext);
-			ex->bExitOk = m->execute(ex->szCode,ex->lArgs,ex->szRetVal,ex->szError,ex->lWarnings);
+			ex->bExitOk = m->execute(ex->szCode, ex->lArgs, ex->szRetVal, ex->szError, ex->lWarnings);
 		}
 		return true;
 	}
-	if(kvi_strEqualCS(cmd,KVI_PERLCORECTRLCOMMAND_DESTROY))
+	if(kvi_strEqualCS(cmd, KVI_PERLCORECTRLCOMMAND_DESTROY))
 	{
 		KviPerlCoreCtrlCommand_destroy * de = (KviPerlCoreCtrlCommand_destroy *)param;
-		if(de->uSize != sizeof(KviPerlCoreCtrlCommand_destroy))return false;
+		if(de->uSize != sizeof(KviPerlCoreCtrlCommand_destroy))
+			return false;
 		perlcore_destroy_interpreter(de->szContext);
 		return true;
 	}
@@ -392,14 +407,14 @@ static bool perlcore_module_ctrl(KviModule *,const char * cmd,void * param)
 static bool perlcore_module_init(KviModule *)
 {
 #ifdef COMPILE_PERL_SUPPORT
-	g_pInterpreters = new KviPointerHashTable<QString,KviPerlInterpreter>(17,false);
+	g_pInterpreters = new KviPointerHashTable<QString, KviPerlInterpreter>(17, false);
 	g_pInterpreters->setAutoDelete(false);
 	int daArgc = 4;
 	const char * daArgs[] = { "yo", "-e", "0", "-w" };
-	char ** daEnv=NULL;
-	PERL_SYS_INIT3(&daArgc,(char ***)&daArgs,&daEnv);
+	char ** daEnv = NULL;
+	PERL_SYS_INIT3(&daArgc, (char ***)&daArgs, &daEnv);
 	return true;
-#else // !COMPILE_PERL_SUPPORT
+#else  // !COMPILE_PERL_SUPPORT
 	return false;
 #endif // !COMPILE_PERL_SUPPORT
 }
@@ -410,7 +425,7 @@ static bool perlcore_module_cleanup(KviModule *)
 	perlcore_destroy_all_interpreters();
 	delete g_pInterpreters;
 	g_pInterpreters = 0;
-	// ifdef workaround for #842
+// ifdef workaround for #842
 #ifndef COMPILE_ON_MAC
 	PERL_SYS_TERM();
 #endif
@@ -427,13 +442,12 @@ static bool perlcore_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"PerlCore",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Perl scripting engine core",
-	perlcore_module_init,
-	perlcore_module_can_unload,
-	perlcore_module_ctrl,
-	perlcore_module_cleanup,
-	"perl"
-)
+    "PerlCore",                                                     // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Perl scripting engine core",
+    perlcore_module_init,
+    perlcore_module_can_unload,
+    perlcore_module_ctrl,
+    perlcore_module_cleanup,
+    "perl")

@@ -22,15 +22,12 @@
 //
 //=============================================================================
 
-
-
 #include "KviKvsCallbackObject.h"
 #include "KviConsoleWindow.h"
 #include "KviApplication.h"
 
-
-KviKvsCallbackObject::KviKvsCallbackObject(const QString &szCallbackName,KviWindow * pTargetWindow,const QString &szCallbackCode,KviKvsVariantList * pMagicParams,unsigned int uFlags)
-: KviHeapObject()
+KviKvsCallbackObject::KviKvsCallbackObject(const QString & szCallbackName, KviWindow * pTargetWindow, const QString & szCallbackCode, KviKvsVariantList * pMagicParams, unsigned int uFlags)
+    : KviHeapObject()
 {
 	m_uFlags = uFlags;
 	m_pTargetWindow = pTargetWindow;
@@ -40,13 +37,13 @@ KviKvsCallbackObject::KviKvsCallbackObject(const QString &szCallbackName,KviWind
 		m_pTargetConsole = 0;
 	m_pMagicParams = new KviKvsVariantList();
 	if(pMagicParams)
-		for(KviKvsVariant * v = pMagicParams->first();v;v = pMagicParams->next())
+		for(KviKvsVariant * v = pMagicParams->first(); v; v = pMagicParams->next())
 			m_pMagicParams->append(new KviKvsVariant(*v));
 	QString szName;
 	szName = szCallbackName;
 	szName += "::";
 	szName += "callback";
-	m_pScript = new KviKvsScript(szName,szCallbackCode);
+	m_pScript = new KviKvsScript(szName, szCallbackCode);
 }
 
 KviKvsCallbackObject::~KviKvsCallbackObject()
@@ -55,7 +52,7 @@ KviKvsCallbackObject::~KviKvsCallbackObject()
 	delete m_pMagicParams;
 }
 
-KviKvsCallbackObject::CallbackStatus KviKvsCallbackObject::execute(KviKvsVariantList * pParams,KviKvsVariant * pRetVal)
+KviKvsCallbackObject::CallbackStatus KviKvsCallbackObject::execute(KviKvsVariantList * pParams, KviKvsVariant * pRetVal)
 {
 	// first of all check the window
 	if(!m_pTargetWindow)
@@ -72,7 +69,9 @@ KviKvsCallbackObject::CallbackStatus KviKvsCallbackObject::execute(KviKvsVariant
 			m_pTargetWindow = g_pApp->activeConsole();
 			if(!m_pTargetWindow)
 				return Error; // ooops...
-		} else {
+		}
+		else
+		{
 			if(!g_pApp->windowExists(m_pTargetWindow))
 			{
 				m_pTargetWindow = g_pApp->activeConsole();
@@ -88,13 +87,13 @@ KviKvsCallbackObject::CallbackStatus KviKvsCallbackObject::execute(KviKvsVariant
 	KviKvsVariant * v;
 
 	if(pParams)
-		for(v = pParams->first();v;v = pParams->next())
+		for(v = pParams->first(); v; v = pParams->next())
 			params.append(v);
 
-	for(v = m_pMagicParams->first();v;v = m_pMagicParams->next())
+	for(v = m_pMagicParams->first(); v; v = m_pMagicParams->next())
 		params.append(v);
 
-	unsigned int uRet = m_pScript->run(m_pTargetWindow,&params,pRetVal,KviKvsScript::PreserveParams);
+	unsigned int uRet = m_pScript->run(m_pTargetWindow, &params, pRetVal, KviKvsScript::PreserveParams);
 
 	if(uRet)
 	{

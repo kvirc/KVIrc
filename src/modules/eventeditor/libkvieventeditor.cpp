@@ -30,7 +30,6 @@
 
 EventEditorWindow * g_pEventEditorWindow = 0;
 
-
 /*
 	@doc: eventeditor.open
 	@type:
@@ -60,7 +59,7 @@ static bool eventeditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 static bool eventeditor_module_init(KviModule * m)
 {
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",eventeditor_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", eventeditor_kvs_cmd_open);
 
 	g_pEventEditorWindow = 0;
 	return true;
@@ -80,13 +79,12 @@ static bool eventeditor_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"EventEditor",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Editor for the script events",
-	eventeditor_module_init,
-	eventeditor_module_can_unload,
-	0,
-	eventeditor_module_cleanup,
-	"editor"
-)
+    "EventEditor",                                                  // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Editor for the script events",
+    eventeditor_module_init,
+    eventeditor_module_can_unload,
+    0,
+    eventeditor_module_cleanup,
+    "editor")

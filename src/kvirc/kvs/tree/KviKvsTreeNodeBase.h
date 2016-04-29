@@ -40,6 +40,7 @@
 class KVIRC_API KviKvsTreeNode
 {
 	friend class KviKvsParser;
+
 public:
 	/**
 	* \brief Constructs the treenode object
@@ -52,28 +53,30 @@ public:
 	* \brief Destroys the treenode object
 	*/
 	virtual ~KviKvsTreeNode(){};
+
 protected:
 	KviKvsTreeNode * m_pParent;
-	const QChar    * m_pLocation;
+	const QChar * m_pLocation;
+
 public:
 	/**
 	* \brief Sets the parent object
 	* \param p The parent treenode
 	* \return void
 	*/
-	void setParent(KviKvsTreeNode * p){ m_pParent = p; };
+	void setParent(KviKvsTreeNode * p) { m_pParent = p; };
 
 	/**
 	* \brief Returns the parent object
 	* \return KviKvsTreeNode *
 	*/
-	KviKvsTreeNode * parent(){ return m_pParent; };
+	KviKvsTreeNode * parent() { return m_pParent; };
 
 	/**
 	* \brief Returns the location char
 	* \return const QChar *
 	*/
-	const QChar * location(){ return m_pLocation; };
+	const QChar * location() { return m_pLocation; };
 
 	/**
 	* \brief Dumps the tree
@@ -88,6 +91,7 @@ public:
 	* \return void
 	*/
 	virtual void contextDescription(QString & szBuffer) = 0;
+
 protected:
 	/**
 	* \brief Sets the location char
@@ -96,7 +100,7 @@ protected:
 	* \param pLocation The location char
 	* \return void
 	*/
-	void setLocation(const QChar * pLocation){ m_pLocation = pLocation; };
+	void setLocation(const QChar * pLocation) { m_pLocation = pLocation; };
 };
 
 #endif //_KVI_KVS_TREENODE_BASE_H_

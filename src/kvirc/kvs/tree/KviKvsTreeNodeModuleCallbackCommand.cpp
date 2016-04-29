@@ -31,18 +31,17 @@
 #include "KviKvsModuleInterface.h"
 #include "KviKvsRunTimeContext.h"
 
-KviKvsTreeNodeModuleCallbackCommand::KviKvsTreeNodeModuleCallbackCommand(const QChar * pLocation,const QString &szModuleName,const QString &szCmdName,KviKvsTreeNodeDataList * params,KviKvsScript * pCallback)
-: KviKvsTreeNodeCallbackCommand(pLocation,szCmdName,params,pCallback)
+KviKvsTreeNodeModuleCallbackCommand::KviKvsTreeNodeModuleCallbackCommand(const QChar * pLocation, const QString & szModuleName, const QString & szCmdName, KviKvsTreeNodeDataList * params, KviKvsScript * pCallback)
+    : KviKvsTreeNodeCallbackCommand(pLocation, szCmdName, params, pCallback)
 {
 	m_szModuleName = szModuleName;
 }
-
 
 KviKvsTreeNodeModuleCallbackCommand::~KviKvsTreeNodeModuleCallbackCommand()
 {
 }
 
-void KviKvsTreeNodeModuleCallbackCommand::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeModuleCallbackCommand::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Module Callback Command \"";
 	szBuffer += m_szModuleName;
@@ -53,7 +52,7 @@ void KviKvsTreeNodeModuleCallbackCommand::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeModuleCallbackCommand::dump(const char * prefix)
 {
-	qDebug("%s ModuleCallbackCommand(%s.%s)",prefix,m_szModuleName.toUtf8().data(),m_szCmdName.toUtf8().data());
+	qDebug("%s ModuleCallbackCommand(%s.%s)", prefix, m_szModuleName.toUtf8().data(), m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 	dumpCallback(prefix);
@@ -65,30 +64,32 @@ bool KviKvsTreeNodeModuleCallbackCommand::execute(KviKvsRunTimeContext * c)
 	if(!m)
 	{
 		QString szErr = g_pModuleManager->lastError();
-		c->error(this,__tr2qs_ctx("Module command call failed: can't load the module '%Q': %Q","kvs"),&m_szModuleName,&szErr);
+		c->error(this, __tr2qs_ctx("Module command call failed: can't load the module '%Q': %Q", "kvs"), &m_szModuleName, &szErr);
 		return false;
 	}
 
 	KviKvsModuleCallbackCommandExecRoutine * proc = m->kvsFindCallbackCommand(m_szCmdName);
 	if(!proc)
 	{
-		c->error(this,__tr2qs_ctx("Module command call failed: the module '%Q' doesn't export a callback command named '%Q'","kvs"),&m_szModuleName,&m_szCmdName);
+		c->error(this, __tr2qs_ctx("Module command call failed: the module '%Q' doesn't export a callback command named '%Q'", "kvs"), &m_szModuleName, &m_szCmdName);
 		return false;
 	}
 
 	KviKvsVariantList l;
 	l.setAutoDelete(true);
-	if(!(m_pParams->evaluate(c,&l)))return false;
+	if(!(m_pParams->evaluate(c, &l)))
+		return false;
 
 	KviKvsSwitchList swl;
 	if(m_pSwitches)
 	{
-		if(!(m_pSwitches->evaluate(c,&swl)))return false;
+		if(!(m_pSwitches->evaluate(c, &swl)))
+			return false;
 	}
 
 	c->setDefaultReportLocation(this);
 
-	KviKvsModuleCallbackCommandCall call(m,c,&l,&swl,m_pCallback,m_pParams);
+	KviKvsModuleCallbackCommandCall call(m, c, &l, &swl, m_pCallback, m_pParams);
 
 	return (*proc)(&call);
 }

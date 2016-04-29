@@ -27,49 +27,48 @@
 //
 //=============================================================================
 
-
 #include "TorrentInterface.h"
 
 #ifdef COMPILE_KDE_SUPPORT
 
-	#include <QtDBus/QtDBus>
+#include <QtDBus/QtDBus>
 
-	class KTorrentDbusInterface : public TorrentInterface
-	{
-		Q_OBJECT
+class KTorrentDbusInterface : public TorrentInterface
+{
+	Q_OBJECT
 
-	public:
-		KTorrentDbusInterface();
-		virtual ~KTorrentDbusInterface();
+public:
+	KTorrentDbusInterface();
+	virtual ~KTorrentDbusInterface();
 
-		virtual int detect();
+	virtual int detect();
 
-		virtual bool startAll();
-		virtual bool stopAll();
+	virtual bool startAll();
+	virtual bool stopAll();
 
-		virtual int count();
-		virtual bool start(int i);
-		virtual bool stop(int i);
-		virtual bool announce(int i);
-		virtual QString state(int i);
-		virtual QString name(int i);
-		virtual int fileCount(int i);
-		virtual QString fileName(int i, int file);
-		virtual QString filePriority(int i, int file);
-		virtual bool setFilePriority(int i, int file, const QString &prio);
+	virtual int count();
+	virtual bool start(int i);
+	virtual bool stop(int i);
+	virtual bool announce(int i);
+	virtual QString state(int i);
+	virtual QString name(int i);
+	virtual int fileCount(int i);
+	virtual QString fileName(int i, int file);
+	virtual QString filePriority(int i, int file);
+	virtual bool setFilePriority(int i, int file, const QString & prio);
 
-		virtual int maxUploadSpeed();
-		virtual int maxDownloadSpeed();
+	virtual int maxUploadSpeed();
+	virtual int maxDownloadSpeed();
 
-		virtual bool setMaxUploadSpeed(int kbytes_per_sec);
-		virtual bool setMaxDownloadSpeed(int kbytes_per_sec);
+	virtual bool setMaxUploadSpeed(int kbytes_per_sec);
+	virtual bool setMaxDownloadSpeed(int kbytes_per_sec);
 
-		virtual float speedUp();
-		virtual float speedDown();
+	virtual float speedUp();
+	virtual float speedDown();
 
-		virtual float trafficUp();
-		virtual float trafficDown();
-/*
+	virtual float trafficUp();
+	virtual float trafficDown();
+	/*
 	private slots:
 		// polls client and extracts information.
 		// this is done because the order of torrents returned changes
@@ -108,12 +107,12 @@
 
 		QValueList<TorrentInfo>	m_ti;
 */
-	private:
-//		bool makeTorrentInfo(TorrentInfo &ti, const KviQCStringList &ret);
-		bool findRunningApp();
-	};
+private:
+	//		bool makeTorrentInfo(TorrentInfo &ti, const KviQCStringList &ret);
+	bool findRunningApp();
+};
 
-	TORR_DECLARE_DESCRIPTOR(KTorrentDbusInterface)
+TORR_DECLARE_DESCRIPTOR(KTorrentDbusInterface)
 
 #endif // COMPILE_KDE_SUPPORT
 

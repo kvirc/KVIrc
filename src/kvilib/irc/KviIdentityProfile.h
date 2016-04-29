@@ -56,6 +56,7 @@ public:
 	* \return KviIdentityProfile
 	*/
 	~KviIdentityProfile();
+
 protected:
 	QString m_szName;
 	QString m_szNetwork;
@@ -63,6 +64,7 @@ protected:
 	QString m_szAltNick;
 	QString m_szUserName;
 	QString m_szRealName;
+
 public:
 	/**
 	* \brief Returns the name of the profile
@@ -105,42 +107,42 @@ public:
 	* \param szName The name of the profile
 	* \return void
 	*/
-	void setName(const QString & szName){ m_szName = szName; };
+	void setName(const QString & szName) { m_szName = szName; };
 
 	/**
 	* \brief Sets the network of the profile
 	* \param szNetwork The network of the profile
 	* \return void
 	*/
-	void setNetwork(const QString & szNetwork){ m_szNetwork = szNetwork; };
+	void setNetwork(const QString & szNetwork) { m_szNetwork = szNetwork; };
 
 	/**
 	* \brief Sets the nickname of the profile
 	* \param szNick The nickname of the profile
 	* \return void
 	*/
-	void setNick(const QString & szNick){ m_szNick = szNick; };
+	void setNick(const QString & szNick) { m_szNick = szNick; };
 
 	/**
 	* \brief Sets the alternative nickname of the profile
 	* \param szAltNick The alternative nickname of the profile
 	* \return void
 	*/
-	void setAltNick(const QString & szAltNick){ m_szAltNick = szAltNick; };
+	void setAltNick(const QString & szAltNick) { m_szAltNick = szAltNick; };
 
 	/**
 	* \brief Sets the username of the profile
 	* \param szUserName The username of the profile
 	* \return void
 	*/
-	void setUserName(const QString & szUserName){ m_szUserName = szUserName; };
+	void setUserName(const QString & szUserName) { m_szUserName = szUserName; };
 
 	/**
 	* \brief Sets the realname of the profile
 	* \param szRealName The realname of the profile
 	* \return void
 	*/
-	void setRealName(const QString & szRealName){ m_szRealName = szRealName; };
+	void setRealName(const QString & szRealName) { m_szRealName = szRealName; };
 
 	/**
 	* \brief Carbon copy

@@ -37,10 +37,13 @@ class KVIRC_API KviThemedLineEdit : public QLineEdit
 public:
 	KviThemedLineEdit(QWidget * par, KviWindow * pWindow, const char * name);
 	~KviThemedLineEdit();
+
 private:
 	KviWindow * m_pKviWindow;
+
 protected:
-	virtual void paintEvent ( QPaintEvent * event );
+	virtual void paintEvent(QPaintEvent * event);
+
 public:
 	int dummyRead() const { return 0; };
 	void applyOptions();

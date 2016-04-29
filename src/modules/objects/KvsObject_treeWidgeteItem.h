@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-
 #include "KvsObject_widget.h"
 #include "object_macros.h"
 
@@ -36,43 +35,46 @@ class KvsObject_treeWidgetItem : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_treeWidgetItem)
 	void childDestroyed();
+
 protected:
 	QTreeWidgetItem * m_pTreeWidgetItem;
+
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
+
 protected:
-	bool setText(KviKvsObjectFunctionCall *c);
-	bool insertItem(KviKvsObjectFunctionCall *c);
-	bool setPixmap(KviKvsObjectFunctionCall *c);
-	bool setItemEditable(KviKvsObjectFunctionCall *c);
-	bool isItemEditable(KviKvsObjectFunctionCall *c);
-	bool setEnabled(KviKvsObjectFunctionCall *c);
-	bool isEnabled(KviKvsObjectFunctionCall *c);
-	bool setOpen(KviKvsObjectFunctionCall *c);
-	bool isOpen(KviKvsObjectFunctionCall *c);
-	bool text(KviKvsObjectFunctionCall *c);
-	bool setCheckable(KviKvsObjectFunctionCall *c);
-	bool isCheckable(KviKvsObjectFunctionCall *c);
-	bool setChecked(KviKvsObjectFunctionCall *c);
-	bool isChecked(KviKvsObjectFunctionCall *c);
-	bool setFlags(KviKvsObjectFunctionCall *c);
+	bool setText(KviKvsObjectFunctionCall * c);
+	bool insertItem(KviKvsObjectFunctionCall * c);
+	bool setPixmap(KviKvsObjectFunctionCall * c);
+	bool setItemEditable(KviKvsObjectFunctionCall * c);
+	bool isItemEditable(KviKvsObjectFunctionCall * c);
+	bool setEnabled(KviKvsObjectFunctionCall * c);
+	bool isEnabled(KviKvsObjectFunctionCall * c);
+	bool setOpen(KviKvsObjectFunctionCall * c);
+	bool isOpen(KviKvsObjectFunctionCall * c);
+	bool text(KviKvsObjectFunctionCall * c);
+	bool setCheckable(KviKvsObjectFunctionCall * c);
+	bool isCheckable(KviKvsObjectFunctionCall * c);
+	bool setChecked(KviKvsObjectFunctionCall * c);
+	bool isChecked(KviKvsObjectFunctionCall * c);
+	bool setFlags(KviKvsObjectFunctionCall * c);
 
 public:
 	static kvs_hobject_t itemToHandle(QTreeWidgetItem * it);
 };
 
-
 class KviKvsStandardTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	KviKvsStandardTreeWidgetItem(KvsObject_treeWidgetItem * ob,QTreeWidget * par);
-	KviKvsStandardTreeWidgetItem(KvsObject_treeWidgetItem * ob,QTreeWidgetItem * par);
+	KviKvsStandardTreeWidgetItem(KvsObject_treeWidgetItem * ob, QTreeWidget * par);
+	KviKvsStandardTreeWidgetItem(KvsObject_treeWidgetItem * ob, QTreeWidgetItem * par);
 	virtual ~KviKvsStandardTreeWidgetItem();
+
 protected:
 	KvsObject_treeWidgetItem * m_pMasterObject;
-public:
-	KvsObject_treeWidgetItem * masterObject(){ return m_pMasterObject; }
-};
 
+public:
+	KvsObject_treeWidgetItem * masterObject() { return m_pMasterObject; }
+};
 
 #endif // _CLASS_TREEWIDGETITEM_H_

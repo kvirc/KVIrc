@@ -30,9 +30,9 @@
 KviUserIdentityManager * KviUserIdentityManager::m_pInstance = 0;
 
 KviUserIdentityManager::KviUserIdentityManager()
-: KviHeapObject()
+    : KviHeapObject()
 {
-	m_pIdentityDict = new KviPointerHashTable<QString,KviUserIdentity>();
+	m_pIdentityDict = new KviPointerHashTable<QString, KviUserIdentity>();
 	m_pIdentityDict->setAutoDelete(true);
 }
 
@@ -68,7 +68,7 @@ const KviUserIdentity * KviUserIdentityManager::defaultIdentity()
 
 	// the default identity is borken :/
 	// grab the first one
-	KviPointerHashTableIterator<QString,KviUserIdentity> it(*m_pIdentityDict);
+	KviPointerHashTableIterator<QString, KviUserIdentity> it(*m_pIdentityDict);
 	pUser = it.current();
 	if(pUser)
 	{
@@ -89,7 +89,7 @@ const KviUserIdentity * KviUserIdentityManager::defaultIdentity()
 	pUser->setPartMessage(KVI_DEFAULT_PART_MESSAGE);
 	pUser->setQuitMessage(KVI_DEFAULT_QUIT_MESSAGE);
 
-	m_pIdentityDict->replace(pUser->id(),pUser);
+	m_pIdentityDict->replace(pUser->id(), pUser);
 
 	return pUser;
 }
@@ -98,22 +98,22 @@ void KviUserIdentityManager::load(const QString & szFileName)
 {
 	m_pIdentityDict->clear();
 
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Read);
 
 	cfg.setGroup("KVIrc");
 
-	m_szDefaultIdentity = cfg.readEntry("DefaultIdentity","");
+	m_szDefaultIdentity = cfg.readEntry("DefaultIdentity", "");
 
 	KviConfigurationFileIterator it(*(cfg.dict()));
-	while( (it.current()) )
+	while((it.current()))
 	{
-		if(!KviQString::equalCI(it.currentKey(),"KVIrc"))
+		if(!KviQString::equalCI(it.currentKey(), "KVIrc"))
 		{
 			cfg.setGroup(it.currentKey());
 
 			KviUserIdentity * pUser = new KviUserIdentity();
 			if(pUser->load(cfg))
-				m_pIdentityDict->replace(pUser->id(),pUser);
+				m_pIdentityDict->replace(pUser->id(), pUser);
 			else
 				delete pUser;
 		}
@@ -123,14 +123,14 @@ void KviUserIdentityManager::load(const QString & szFileName)
 
 void KviUserIdentityManager::save(const QString & szFileName)
 {
-	KviConfigurationFile cfg(szFileName,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(szFileName, KviConfigurationFile::Write);
 	cfg.clear();
 
 	cfg.setGroup("KVIrc");
 
-	cfg.writeEntry("DefaultIdentity",m_szDefaultIdentity);
+	cfg.writeEntry("DefaultIdentity", m_szDefaultIdentity);
 
-	KviPointerHashTableIterator<QString,KviUserIdentity> it(*m_pIdentityDict);
+	KviPointerHashTableIterator<QString, KviUserIdentity> it(*m_pIdentityDict);
 	while(KviUserIdentity * pUser = it.current())
 	{
 		pUser->save(cfg);
@@ -142,12 +142,12 @@ void KviUserIdentityManager::copyFrom(KviUserIdentityManager * pWorkingCopy)
 {
 	m_pIdentityDict->clear();
 	m_szDefaultIdentity = pWorkingCopy->m_szDefaultIdentity;
-	KviPointerHashTableIterator<QString,KviUserIdentity> it(*(pWorkingCopy->m_pIdentityDict));
+	KviPointerHashTableIterator<QString, KviUserIdentity> it(*(pWorkingCopy->m_pIdentityDict));
 	while(KviUserIdentity * pUser = it.current())
 	{
 		KviUserIdentity * pNew = new KviUserIdentity();
 		pNew->copyFrom(*pUser);
-		m_pIdentityDict->replace(pNew->id(),pNew);
+		m_pIdentityDict->replace(pNew->id(), pNew);
 		++it;
 	}
 }

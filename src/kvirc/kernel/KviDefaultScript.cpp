@@ -44,13 +44,13 @@ KviDefaultScriptManager * KviDefaultScriptManager::m_pSelf = NULL;
 unsigned int KviDefaultScriptManager::m_uCount = 0;
 
 KviDefaultScriptManager::KviDefaultScriptManager()
-: QObject()
+    : QObject()
 {
 	m_bNoNeedToRestore = false;
 
 	// Check if versions' file exists in personal settings
 	QString szLocal;
-	g_pApp->getLocalKvircDirectory(szLocal,KviApplication::Config,"default.kvc");
+	g_pApp->getLocalKvircDirectory(szLocal, KviApplication::Config, "default.kvc");
 
 	if(!QFile::exists(szLocal))
 	{
@@ -58,15 +58,19 @@ KviDefaultScriptManager::KviDefaultScriptManager()
 		{
 			// new installation, create it
 			QString szGlobal;
-			g_pApp->getGlobalKvircDirectory(szGlobal,KviApplication::DefScript,"default.kvc");
-			QFile::copy(szGlobal,szLocal);
+			g_pApp->getGlobalKvircDirectory(szGlobal, KviApplication::DefScript, "default.kvc");
+			QFile::copy(szGlobal, szLocal);
 
-			m_bConfigFileMissing=false;
-		} else {
+			m_bConfigFileMissing = false;
+		}
+		else
+		{
 			// update from a < 4.2.0 (previous installation)
 			m_bConfigFileMissing = true;
 		}
-	} else {
+	}
+	else
+	{
 		m_bConfigFileMissing = false;
 	}
 }
@@ -98,12 +102,12 @@ bool KviDefaultScriptManager::isDefscriptUpToDate()
 	if(m_bConfigFileMissing)
 		return false;
 
-	g_pApp->getGlobalKvircDirectory(szConfig,KviApplication::DefScript,"default.kvc");
-	KviConfigurationFile oConfig(szConfig,KviConfigurationFile::Read);
+	g_pApp->getGlobalKvircDirectory(szConfig, KviApplication::DefScript, "default.kvc");
+	KviConfigurationFile oConfig(szConfig, KviConfigurationFile::Read);
 
 	szTmp = oConfig.readEntry("Date");
-	QDate cfgDate = QDate::fromString(szTmp,"yyyy-MM-dd");
-	QDate userDate = QDate::fromString(m_szDate,"yyyy-MM-dd");
+	QDate cfgDate = QDate::fromString(szTmp, "yyyy-MM-dd");
+	QDate userDate = QDate::fromString(m_szDate, "yyyy-MM-dd");
 
 	return (cfgDate == userDate);
 }
@@ -111,7 +115,7 @@ bool KviDefaultScriptManager::isDefscriptUpToDate()
 void KviDefaultScriptManager::restore()
 {
 	QString szGlobal, szError, szLocal;
-	g_pApp->getGlobalKvircDirectory(szGlobal,KviApplication::DefScript,"default.kvc");
+	g_pApp->getGlobalKvircDirectory(szGlobal, KviApplication::DefScript, "default.kvc");
 
 	m_pDialog = new KviDefaultScriptDialog();
 	if(m_pDialog->exec() == QDialog::Rejected)
@@ -121,15 +125,15 @@ void KviDefaultScriptManager::restore()
 	}
 
 	// Check data
-	if(!compareVersions(szGlobal,&szError))
+	if(!compareVersions(szGlobal, &szError))
 	{
-		QMessageBox::warning(0,__tr2qs("Restore Default - KVIrc"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+		QMessageBox::warning(0, __tr2qs("Restore Default - KVIrc"), szError, QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
 		return;
 	}
 
 	if(m_bNoNeedToRestore)
 	{
-		if(QMessageBox::warning(0,__tr2qs("Restore Default - KVIrc"),szError,QMessageBox::Yes, QMessageBox::No) != QMessageBox::Yes)
+		if(QMessageBox::warning(0, __tr2qs("Restore Default - KVIrc"), szError, QMessageBox::Yes, QMessageBox::No) != QMessageBox::Yes)
 			return;
 	}
 
@@ -139,8 +143,8 @@ void KviDefaultScriptManager::restore()
 void KviDefaultScriptManager::restoreInternal()
 {
 	QString szConfig, szTmp;
-	g_pApp->getGlobalKvircDirectory(szConfig,KviApplication::DefScript,"default.kvc");
-	KviConfigurationFile oConfig(szConfig,KviConfigurationFile::Read);
+	g_pApp->getGlobalKvircDirectory(szConfig, KviApplication::DefScript, "default.kvc");
+	KviConfigurationFile oConfig(szConfig, KviConfigurationFile::Read);
 
 	m_szVersion = oConfig.readEntry("Version");
 	m_szDate = oConfig.readEntry("Date");
@@ -213,12 +217,12 @@ void KviDefaultScriptManager::restoreInternal()
 	}
 }
 
-#define CHECK(__name,__global,__local) \
-	if(KviMiscUtils::compareVersions(__global,__local) == 1) \
-	{ \
-		if(pszError) \
-			*pszError = __tr2qs("There's something wrong in your personal data: my '%1' is %2, while yours is %3").arg(__name,__global,__local); \
-		return false; \
+#define CHECK(__name, __global, __local)                                                                                                           \
+	if(KviMiscUtils::compareVersions(__global, __local) == 1)                                                                                      \
+	{                                                                                                                                              \
+		if(pszError)                                                                                                                               \
+			*pszError = __tr2qs("There's something wrong in your personal data: my '%1' is %2, while yours is %3").arg(__name, __global, __local); \
+		return false;                                                                                                                              \
 	}
 
 bool KviDefaultScriptManager::compareVersions(QString & szConfig, QString * pszError)
@@ -228,12 +232,12 @@ bool KviDefaultScriptManager::compareVersions(QString & szConfig, QString * pszE
 	if(pszError)
 		*pszError = "";
 
-	KviConfigurationFile oConfig(szConfig,KviConfigurationFile::Read);
+	KviConfigurationFile oConfig(szConfig, KviConfigurationFile::Read);
 
 	szTmp = "Date";
 	szTmp2 = oConfig.readEntry(szTmp);
-	QDate cfgDate = QDate::fromString(szTmp2,"yyyy-MM-dd");
-	QDate userDate = QDate::fromString(m_szDate,"yyyy-MM-dd");
+	QDate cfgDate = QDate::fromString(szTmp2, "yyyy-MM-dd");
+	QDate userDate = QDate::fromString(m_szDate, "yyyy-MM-dd");
 
 	if(cfgDate <= userDate)
 	{
@@ -245,51 +249,51 @@ bool KviDefaultScriptManager::compareVersions(QString & szConfig, QString * pszE
 
 	szTmp = "Version";
 	szTmp2 = oConfig.readEntry(szTmp);
-	CHECK(szTmp,szTmp2,m_szVersion)
+	CHECK(szTmp, szTmp2, m_szVersion)
 
 	szTmp = "ActionVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
-	CHECK(szTmp,szTmp2,m_szAction)
+	CHECK(szTmp, szTmp2, m_szAction)
 
 	szTmp = "AddonVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
-	CHECK(szTmp,szTmp2,m_szAction)
+	CHECK(szTmp, szTmp2, m_szAction)
 
 	szTmp = "AliasVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
-	CHECK(szTmp,szTmp2,m_szAlias)
+	CHECK(szTmp, szTmp2, m_szAlias)
 
 	szTmp = "ClassVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
-	CHECK(szTmp,szTmp2,m_szClass)
+	CHECK(szTmp, szTmp2, m_szClass)
 
 	szTmp = "EventVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
-	CHECK(szTmp,szTmp2,m_szEvent)
+	CHECK(szTmp, szTmp2, m_szEvent)
 
 	szTmp = "PopupVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
-	CHECK(szTmp,szTmp2,m_szPopup)
+	CHECK(szTmp, szTmp2, m_szPopup)
 
 	szTmp = "RawVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
-	CHECK(szTmp,szTmp2,m_szRaw)
+	CHECK(szTmp, szTmp2, m_szRaw)
 
 	szTmp = "ToolbarVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
-	CHECK(szTmp,szTmp2,m_szToolbar)
+	CHECK(szTmp, szTmp2, m_szToolbar)
 
 	return true;
 }
 
 void KviDefaultScriptManager::load(const QString & szConfigFile)
 {
-	KviConfigurationFile cfg(szConfigFile,KviConfigurationFile::Read);
+	KviConfigurationFile cfg(szConfigFile, KviConfigurationFile::Read);
 	loadInternal(&cfg);
 }
 
-#define IS_EMPTY(__var,__default) \
-	if(__var.isEmpty()) \
+#define IS_EMPTY(__var, __default) \
+	if(__var.isEmpty())            \
 		__var = __default;
 
 void KviDefaultScriptManager::loadEmptyConfig()
@@ -316,49 +320,49 @@ void KviDefaultScriptManager::loadInternal(KviConfigurationFile * pCfg)
 	QString szEmptyVersion = QString("0.0.0");
 
 	szTmp = "Version";
-	m_szVersion = pCfg->readEntry(szTmp,szEmptyVersion);
-	IS_EMPTY(m_szVersion,szEmptyVersion)
+	m_szVersion = pCfg->readEntry(szTmp, szEmptyVersion);
+	IS_EMPTY(m_szVersion, szEmptyVersion)
 
 	szTmp = "Date";
-	m_szDate = pCfg->readEntry(szTmp,szEmptyDate);
-	IS_EMPTY(m_szDate,szEmptyDate)
+	m_szDate = pCfg->readEntry(szTmp, szEmptyDate);
+	IS_EMPTY(m_szDate, szEmptyDate)
 
 	szTmp = "ActionVersion";
-	m_szAction = pCfg->readEntry(szTmp,szEmptyVersion);
-	IS_EMPTY(m_szAction,szEmptyVersion)
+	m_szAction = pCfg->readEntry(szTmp, szEmptyVersion);
+	IS_EMPTY(m_szAction, szEmptyVersion)
 
 	szTmp = "AddonVersion";
-	m_szAddon = pCfg->readEntry(szTmp,szEmptyVersion);
-	IS_EMPTY(m_szAddon,szEmptyVersion)
+	m_szAddon = pCfg->readEntry(szTmp, szEmptyVersion);
+	IS_EMPTY(m_szAddon, szEmptyVersion)
 
 	szTmp = "AliasVersion";
-	m_szAlias = pCfg->readEntry(szTmp,szEmptyVersion);
-	IS_EMPTY(m_szAlias,szEmptyVersion)
+	m_szAlias = pCfg->readEntry(szTmp, szEmptyVersion);
+	IS_EMPTY(m_szAlias, szEmptyVersion)
 
 	szTmp = "ClassVersion";
-	m_szClass = pCfg->readEntry(szTmp,szEmptyVersion);
-	IS_EMPTY(m_szClass,szEmptyVersion)
+	m_szClass = pCfg->readEntry(szTmp, szEmptyVersion);
+	IS_EMPTY(m_szClass, szEmptyVersion)
 
 	szTmp = "EventVersion";
-	m_szEvent = pCfg->readEntry(szTmp,szEmptyVersion);
-	IS_EMPTY(m_szEvent,szEmptyVersion)
+	m_szEvent = pCfg->readEntry(szTmp, szEmptyVersion);
+	IS_EMPTY(m_szEvent, szEmptyVersion)
 
 	szTmp = "PopupVersion";
-	m_szPopup = pCfg->readEntry(szTmp,szEmptyVersion);
-	IS_EMPTY(m_szPopup,szEmptyVersion)
+	m_szPopup = pCfg->readEntry(szTmp, szEmptyVersion);
+	IS_EMPTY(m_szPopup, szEmptyVersion)
 
 	szTmp = "RawVersion";
-	m_szRaw = pCfg->readEntry(szTmp,szEmptyVersion);
-	IS_EMPTY(m_szRaw,szEmptyVersion)
+	m_szRaw = pCfg->readEntry(szTmp, szEmptyVersion);
+	IS_EMPTY(m_szRaw, szEmptyVersion)
 
 	szTmp = "ToolbarVersion";
-	m_szToolbar = pCfg->readEntry(szTmp,szEmptyVersion);
-	IS_EMPTY(m_szToolbar,szEmptyVersion)
+	m_szToolbar = pCfg->readEntry(szTmp, szEmptyVersion);
+	IS_EMPTY(m_szToolbar, szEmptyVersion)
 }
 
 void KviDefaultScriptManager::save(const QString & szConfigFile)
 {
-	KviConfigurationFile cfg(szConfigFile,KviConfigurationFile::Write);
+	KviConfigurationFile cfg(szConfigFile, KviConfigurationFile::Write);
 	cfg.clear();
 	saveInternal(&cfg);
 }
@@ -368,39 +372,38 @@ void KviDefaultScriptManager::saveInternal(KviConfigurationFile * pCfg)
 	QString szTmp;
 
 	szTmp = "Version";
-	pCfg->writeEntry(szTmp,m_szVersion);
+	pCfg->writeEntry(szTmp, m_szVersion);
 
 	szTmp = "Date";
-	pCfg->writeEntry(szTmp,m_szDate);
+	pCfg->writeEntry(szTmp, m_szDate);
 
 	szTmp = "ActionVersion";
-	pCfg->writeEntry(szTmp,m_szAction);
+	pCfg->writeEntry(szTmp, m_szAction);
 
 	szTmp = "AddonVersion";
-	pCfg->writeEntry(szTmp,m_szAddon);
+	pCfg->writeEntry(szTmp, m_szAddon);
 
 	szTmp = "AliasVersion";
-	pCfg->writeEntry(szTmp,m_szAlias);
+	pCfg->writeEntry(szTmp, m_szAlias);
 
 	szTmp = "ClassVersion";
-	pCfg->writeEntry(szTmp,m_szClass);
+	pCfg->writeEntry(szTmp, m_szClass);
 
 	szTmp = "EventVersion";
-	pCfg->writeEntry(szTmp,m_szEvent);
+	pCfg->writeEntry(szTmp, m_szEvent);
 
 	szTmp = "PopupVersion";
-	pCfg->writeEntry(szTmp,m_szPopup);
+	pCfg->writeEntry(szTmp, m_szPopup);
 
 	szTmp = "RawVersion";
-	pCfg->writeEntry(szTmp,m_szRaw);
+	pCfg->writeEntry(szTmp, m_szRaw);
 
 	szTmp = "ToolbarVersion";
-	pCfg->writeEntry(szTmp,m_szToolbar);
+	pCfg->writeEntry(szTmp, m_szToolbar);
 }
 
-
 KviDefaultScriptDialog::KviDefaultScriptDialog()
-: QDialog()
+    : QDialog()
 {
 	setObjectName("restore_default_script");
 	setWindowTitle(__tr2qs("Restore Default - KVIrc"));
@@ -411,86 +414,86 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 
 	QLabel * pLabel = new QLabel(this);
 	pLabel->setText(__tr2qs("You are about to restore the default script.\nAny script changes you have made will be erased if\nrestore \"All\" or \"Clear custom scripts\" are selected.\n\nDo you wish to proceed?\n"));
-	pLayout->addWidget(pLabel,0,0,1,4);
+	pLayout->addWidget(pLabel, 0, 0, 1, 4);
 
 	// Construct the advanced widget
-	m_pAdvanced = new QGroupBox(__tr2qs("Select the Items to Restore"),this);
+	m_pAdvanced = new QGroupBox(__tr2qs("Select the Items to Restore"), this);
 	m_pAdvanced->hide();
 
 	QGridLayout * pAdvLayout = new QGridLayout(m_pAdvanced);
-	pAdvLayout->setContentsMargins(0,10,0,0);
-	pLayout->addWidget(m_pAdvanced,1,0,1,4);
+	pAdvLayout->setContentsMargins(0, 10, 0, 0);
+	pLayout->addWidget(m_pAdvanced, 1, 0, 1, 4);
 
-	m_pAll = new QCheckBox(__tr2qs("All"),m_pAdvanced);
+	m_pAll = new QCheckBox(__tr2qs("All"), m_pAdvanced);
 	m_pAll->setChecked(true);
-	pAdvLayout->addWidget(m_pAll,0,0);
-	connect(m_pAll,SIGNAL(clicked(bool)),this,SLOT(toggleAll(bool)));
+	pAdvLayout->addWidget(m_pAll, 0, 0);
+	connect(m_pAll, SIGNAL(clicked(bool)), this, SLOT(toggleAll(bool)));
 
-	m_pData = new QCheckBox(__tr2qs("Clear custom scripts"),m_pAdvanced);
+	m_pData = new QCheckBox(__tr2qs("Clear custom scripts"), m_pAdvanced);
 	m_pData->setChecked(false);
 	m_pData->setEnabled(true);
-	pAdvLayout->addWidget(m_pData,0,1);
+	pAdvLayout->addWidget(m_pData, 0, 1);
 
 	pLabel = new QLabel(m_pAdvanced);
-	pAdvLayout->addWidget(pLabel,1,1,1,2);
+	pAdvLayout->addWidget(pLabel, 1, 1, 1, 2);
 
-	m_pAction = new QCheckBox(__tr2qs("Actions"),m_pAdvanced);
+	m_pAction = new QCheckBox(__tr2qs("Actions"), m_pAdvanced);
 	m_pAction->setChecked(true);
 	m_pAction->setEnabled(false);
-	pAdvLayout->addWidget(m_pAction,2,0);
+	pAdvLayout->addWidget(m_pAction, 2, 0);
 
-	m_pAddon = new QCheckBox(__tr2qs("Addons"),m_pAdvanced);
+	m_pAddon = new QCheckBox(__tr2qs("Addons"), m_pAdvanced);
 	m_pAddon->setChecked(true);
 	m_pAddon->setEnabled(false);
-	pAdvLayout->addWidget(m_pAddon,2,1);
+	pAdvLayout->addWidget(m_pAddon, 2, 1);
 
-	m_pAlias = new QCheckBox(__tr2qs("Aliases"),m_pAdvanced);
+	m_pAlias = new QCheckBox(__tr2qs("Aliases"), m_pAdvanced);
 	m_pAlias->setChecked(true);
 	m_pAlias->setEnabled(false);
-	pAdvLayout->addWidget(m_pAlias,3,0);
+	pAdvLayout->addWidget(m_pAlias, 3, 0);
 
-	m_pClass = new QCheckBox(__tr2qs("Classes"),m_pAdvanced);
+	m_pClass = new QCheckBox(__tr2qs("Classes"), m_pAdvanced);
 	m_pClass->setChecked(true);
 	m_pClass->setEnabled(false);
-	pAdvLayout->addWidget(m_pClass,3,1);
+	pAdvLayout->addWidget(m_pClass, 3, 1);
 
-	m_pEvent = new QCheckBox(__tr2qs("Events"),m_pAdvanced);
+	m_pEvent = new QCheckBox(__tr2qs("Events"), m_pAdvanced);
 	m_pEvent->setChecked(true);
 	m_pEvent->setEnabled(false);
-	pAdvLayout->addWidget(m_pEvent,4,0);
+	pAdvLayout->addWidget(m_pEvent, 4, 0);
 
-	m_pPopup = new QCheckBox(__tr2qs("Popups"),m_pAdvanced);
+	m_pPopup = new QCheckBox(__tr2qs("Popups"), m_pAdvanced);
 	m_pPopup->setChecked(true);
 	m_pPopup->setEnabled(false);
-	pAdvLayout->addWidget(m_pPopup,4,1);
+	pAdvLayout->addWidget(m_pPopup, 4, 1);
 
-	m_pRaw = new QCheckBox(__tr2qs("RAW events"),m_pAdvanced);
+	m_pRaw = new QCheckBox(__tr2qs("RAW events"), m_pAdvanced);
 	m_pRaw->setChecked(true);
 	m_pRaw->setEnabled(false);
-	pAdvLayout->addWidget(m_pRaw,5,0);
+	pAdvLayout->addWidget(m_pRaw, 5, 0);
 
-	m_pToolbar = new QCheckBox(__tr2qs("Toolbars"),m_pAdvanced);
+	m_pToolbar = new QCheckBox(__tr2qs("Toolbars"), m_pAdvanced);
 	m_pToolbar->setChecked(true);
 	m_pToolbar->setEnabled(false);
-	pAdvLayout->addWidget(m_pToolbar,5,1);
+	pAdvLayout->addWidget(m_pToolbar, 5, 1);
 
 	m_pAdvanced->setLayout(pAdvLayout);
 
 	QPixmap * pImage = g_pIconManager->getSmallIcon(150);
-	m_pAdvancedButton = new QPushButton(*pImage,__tr2qs("Advanced..."),this);
-	connect(m_pAdvancedButton,SIGNAL(clicked()),this,SLOT(advanced()));
-	pLayout->addWidget(m_pAdvancedButton,2,0,1,1);
+	m_pAdvancedButton = new QPushButton(*pImage, __tr2qs("Advanced..."), this);
+	connect(m_pAdvancedButton, SIGNAL(clicked()), this, SLOT(advanced()));
+	pLayout->addWidget(m_pAdvancedButton, 2, 0, 1, 1);
 
 	pImage = g_pIconManager->getSmallIcon(44);
-	QPushButton * pCancel = new QPushButton(*pImage,__tr2qs("Cancel"),this);
+	QPushButton * pCancel = new QPushButton(*pImage, __tr2qs("Cancel"), this);
 	pCancel->setDefault(true);
-	connect(pCancel,SIGNAL(clicked()),this,SLOT(reject()));
-	pLayout->addWidget(pCancel,2,2,1,1);
+	connect(pCancel, SIGNAL(clicked()), this, SLOT(reject()));
+	pLayout->addWidget(pCancel, 2, 2, 1, 1);
 
 	pImage = g_pIconManager->getSmallIcon(43);
-	QPushButton * pAccept = new QPushButton(*pImage,__tr2qs("Restore"),this);
-	connect(pAccept,SIGNAL(clicked()),this,SLOT(accept()));
-	pLayout->addWidget(pAccept,2,3,1,1);
+	QPushButton * pAccept = new QPushButton(*pImage, __tr2qs("Restore"), this);
+	connect(pAccept, SIGNAL(clicked()), this, SLOT(accept()));
+	pLayout->addWidget(pAccept, 2, 3, 1, 1);
 }
 
 KviDefaultScriptDialog::~KviDefaultScriptDialog()

@@ -31,11 +31,11 @@
 #include <QSplitter>
 
 #ifdef COMPILE_KDE4_SUPPORT
-	#include "TermWidget.h"
-	#include "TermWindow.h"
+#include "TermWidget.h"
+#include "TermWindow.h"
 
-	KviPointerList<TermWidget> * g_pTermWidgetList      = 0;
-	KviPointerList<TermWindow> * g_pTermWindowList      = 0;
+KviPointerList<TermWidget> * g_pTermWidgetList = 0;
+KviPointerList<TermWindow> * g_pTermWindowList = 0;
 #endif
 
 KviModule * g_pTermModule = 0;
@@ -68,14 +68,15 @@ static bool term_kvs_cmd_open(KviKvsModuleCommandCall * c)
 #ifdef COMPILE_KDE4_SUPPORT
 	c->module()->lock(); // multiple locks are allowed
 	if(
-			c->hasSwitch('m',"mdi") || // compat only
-			c->hasSwitch('d',"dockable")
-		)
+	    c->hasSwitch('m', "mdi") || // compat only
+	    c->hasSwitch('d', "dockable"))
 	{
-		TermWindow *w = new TermWindow("Terminal emulator");
+		TermWindow * w = new TermWindow("Terminal emulator");
 		g_pMainWindow->addWindow(w);
-	} else {
-		TermWidget *w = new TermWidget(g_pMainWindow->splitter(), true);
+	}
+	else
+	{
+		TermWidget * w = new TermWidget(g_pMainWindow->splitter(), true);
 		w->show();
 	}
 #else
@@ -95,7 +96,7 @@ static bool term_module_init(KviModule * m)
 	g_pTermWindowList->setAutoDelete(false);
 #endif
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",term_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", term_kvs_cmd_open);
 	return true;
 }
 
@@ -115,13 +116,12 @@ static bool term_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Term",                                                 // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Terminal emulator extension based on the KonsolePart KDE class",
-	term_module_init,
-	0,
-	0,
-	term_module_cleanup,
-	0
-)
+    "Term",                                                         // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Terminal emulator extension based on the KonsolePart KDE class",
+    term_module_init,
+    0,
+    0,
+    term_module_cleanup,
+    0)

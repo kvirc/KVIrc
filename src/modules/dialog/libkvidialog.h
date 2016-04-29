@@ -39,48 +39,49 @@ class KviKvsCallbackMessageBox : public QMessageBox, public KviKvsCallbackObject
 	Q_OBJECT
 public:
 	KviKvsCallbackMessageBox(
-		const QString &szCaption,
-		const QString &szText,
-		const QString &szIcon,
-		const QString &szButton0,
-		const QString &szButton1,
-		const QString &szButton2,
-		const QString &szCode,
-		KviKvsVariantList * pMagicParams,
-		KviWindow * pWindow, bool modal=false);
+	    const QString & szCaption,
+	    const QString & szText,
+	    const QString & szIcon,
+	    const QString & szButton0,
+	    const QString & szButton1,
+	    const QString & szButton2,
+	    const QString & szCode,
+	    KviKvsVariantList * pMagicParams,
+	    KviWindow * pWindow, bool modal = false);
 	~KviKvsCallbackMessageBox();
 protected slots:
 	virtual void done(int code);
 };
-
 
 class KviKvsCallbackTextInput : public QDialog, public KviKvsCallbackObject
 {
 	Q_OBJECT
 public:
 	KviKvsCallbackTextInput(
-		const QString &szCaption,
-		const QString &szLabel,
-		const QString &szDefaultText,
-		const QString &szIcon,
-		bool bMultiLine,
-		bool bPassword,
-		const QString &szButton0,
-		const QString &szButton1,
-		const QString &szButton2,
-		const QString &szCode,
-		KviKvsVariantList * pMagicParams,
-		KviWindow * pWindow, bool modal=false);
+	    const QString & szCaption,
+	    const QString & szLabel,
+	    const QString & szDefaultText,
+	    const QString & szIcon,
+	    bool bMultiLine,
+	    bool bPassword,
+	    const QString & szButton0,
+	    const QString & szButton1,
+	    const QString & szButton2,
+	    const QString & szCode,
+	    KviKvsVariantList * pMagicParams,
+	    KviWindow * pWindow, bool modal = false);
 	~KviKvsCallbackTextInput();
+
 protected:
-	bool      m_bMultiLine;
-	bool      m_bPassword;
+	bool m_bMultiLine;
+	bool m_bPassword;
 	QWidget * m_pEdit;
-	int       m_iEscapeButton;
-	int       m_iDefaultButton;
+	int m_iEscapeButton;
+	int m_iDefaultButton;
+
 protected:
-	virtual void closeEvent(QCloseEvent *e);
-	virtual void showEvent(QShowEvent *e);
+	virtual void closeEvent(QCloseEvent * e);
+	virtual void showEvent(QShowEvent * e);
 protected slots:
 	void b0Clicked();
 	void b1Clicked();
@@ -88,37 +89,37 @@ protected slots:
 	virtual void done(int code);
 };
 
-
 class KviKvsCallbackFileDialog : public KviFileDialog, public KviKvsCallbackObject
 {
 	Q_OBJECT
 public:
 	KviKvsCallbackFileDialog(
-		const QString &szCaption,
-		const QString &szInitialSelection,
-		const QString &szFilter,
-		const QString &szCode,
-		KviKvsVariantList * pMagicParams,
-		KviWindow * pWindow, bool modal=false);
+	    const QString & szCaption,
+	    const QString & szInitialSelection,
+	    const QString & szFilter,
+	    const QString & szCode,
+	    KviKvsVariantList * pMagicParams,
+	    KviWindow * pWindow, bool modal = false);
 	~KviKvsCallbackFileDialog();
+
 protected:
 	virtual void done(int code);
 };
-
 
 class KviKvsCallbackImageDialog : public KviImageDialog, public KviKvsCallbackObject
 {
 	Q_OBJECT
 public:
 	KviKvsCallbackImageDialog(
-		const QString &szCaption,
-		const QString &szInitialSelection,
-		int iType,
-		int iMaxSize,
-		const QString &szCode,
-		KviKvsVariantList * pMagicParams,
-		KviWindow * pWindow,bool modal=false);
+	    const QString & szCaption,
+	    const QString & szInitialSelection,
+	    int iType,
+	    int iMaxSize,
+	    const QString & szCode,
+	    KviKvsVariantList * pMagicParams,
+	    KviWindow * pWindow, bool modal = false);
 	~KviKvsCallbackImageDialog();
+
 protected:
 	virtual void done(int code);
 };

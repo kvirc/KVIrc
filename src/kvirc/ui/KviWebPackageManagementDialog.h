@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-
 #include "kvi_settings.h"
 
 #ifdef COMPILE_WEBKIT_SUPPORT
@@ -50,7 +49,6 @@ class KVIRC_API KviWebPackageManagementDialog : public QWidget
 	Q_OBJECT
 
 public:
-
 	///
 	/// Creates an instance of KviWebPackageManagementDialog
 	///
@@ -63,28 +61,28 @@ public:
 	virtual ~KviWebPackageManagementDialog();
 
 private:
-
-	QToolBar   * m_pToolBar;
-	QVBoxLayout *m_pLayout;
+	QToolBar * m_pToolBar;
+	QVBoxLayout * m_pLayout;
 	QWebView * m_pWebView;
 	bool m_bBusy;
-	QProgressBar *m_pProgressBar;
+	QProgressBar * m_pProgressBar;
 	QString m_szPackagePageUrl;
 	QString m_szLocalTemporaryPath;
-protected:
-	void setPackagePageUrl(const QString &szUrl);
-	virtual void showEvent(QShowEvent *e);
 
-	virtual bool packageIsInstalled(const QString &szId,const QString &szVersion) = 0;
-	virtual bool installPackage(const QString &szPath,QString &szError) = 0;
+protected:
+	void setPackagePageUrl(const QString & szUrl);
+	virtual void showEvent(QShowEvent * e);
+
+	virtual bool packageIsInstalled(const QString & szId, const QString & szVersion) = 0;
+	virtual bool installPackage(const QString & szPath, QString & szError) = 0;
 
 protected slots:
 
 	void slotLoadFinished(bool ok);
 	void slotLoadProgress(int iProgress);
-	void slotDataTransferProgress(qint64 iDone,qint64 iTotal);
+	void slotDataTransferProgress(qint64 iDone, qint64 iTotal);
 	void slotCommandFinished();
-	void slotLinkClicked(const QUrl &url);
+	void slotLinkClicked(const QUrl & url);
 
 }; // class KviWebPackageManagementDialog
 

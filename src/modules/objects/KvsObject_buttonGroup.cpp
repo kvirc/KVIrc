@@ -23,7 +23,6 @@
 //
 //=============================================================================
 
-
 #include "KvsObject_buttonGroup.h"
 #include "KviError.h"
 #include "kvi_debug.h"
@@ -54,53 +53,53 @@
 		Returns the button group's checked button, or [b]0[/b] if no buttons are checked.
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_buttonGroup,"buttongroup","object")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_buttonGroup,addButton)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_buttonGroup,checkedButton)
+KVSO_BEGIN_REGISTERCLASS(KvsObject_buttonGroup, "buttongroup", "object")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_buttonGroup, addButton)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_buttonGroup, checkedButton)
 KVSO_END_REGISTERCLASS(KvsObject_buttonGroup)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_buttonGroup,KviKvsObject)
-	m_iId=0;
-	btnDict.setAutoDelete(false);
-	m_pButtonGroup=new QButtonGroup();
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_buttonGroup, KviKvsObject)
+m_iId = 0;
+btnDict.setAutoDelete(false);
+m_pButtonGroup = new QButtonGroup();
 KVSO_END_CONSTRUCTOR(KvsObject_buttonGroup)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_buttonGroup)
-	btnDict.clear();
-	delete m_pButtonGroup;
+btnDict.clear();
+delete m_pButtonGroup;
 KVSO_END_CONSTRUCTOR(KvsObject_buttonGroup)
 
-
-KVSO_CLASS_FUNCTION(buttonGroup,addButton)
+KVSO_CLASS_FUNCTION(buttonGroup, addButton)
 {
 	CHECK_INTERNAL_POINTER(m_pButtonGroup)
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("button",KVS_PT_HOBJECT,0,hObject)
+	KVSO_PARAMETER("button", KVS_PT_HOBJECT, 0, hObject)
 	KVSO_PARAMETERS_END(c)
-	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	if(pObject->inheritsClass("radiobutton") || pObject->inheritsClass("checkbox"))
 	{
-		m_pButtonGroup->addButton(((QRadioButton *)(pObject->object())),m_iId);
+		m_pButtonGroup->addButton(((QRadioButton *)(pObject->object())), m_iId);
 		c->returnValue()->setInteger(m_iId);
-		btnDict.insert(m_iId,pObject);
+		btnDict.insert(m_iId, pObject);
 		m_iId++;
 	}
 	else
 	{
-		c->warning(__tr2qs_ctx("Buttongroup supports only checkbox and radiobox object","objects"));
+		c->warning(__tr2qs_ctx("Buttongroup supports only checkbox and radiobox object", "objects"));
 		return true;
 	}
 	return true;
 }
-KVSO_CLASS_FUNCTION(buttonGroup,checkedButton)
+KVSO_CLASS_FUNCTION(buttonGroup, checkedButton)
 {
 	CHECK_INTERNAL_POINTER(m_pButtonGroup)
-	int id=m_pButtonGroup->checkedId();
-	if (id!=-1) c->returnValue()->setHObject(btnDict.find(id)->handle());
-	else c->returnValue()->setNothing();
+	int id = m_pButtonGroup->checkedId();
+	if(id != -1)
+		c->returnValue()->setHObject(btnDict.find(id)->handle());
+	else
+		c->returnValue()->setNothing();
 	return true;
 }

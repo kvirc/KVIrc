@@ -43,6 +43,7 @@
 class NotifierMessage : public QWidget
 {
 	friend class NotifierWindow;
+
 public:
 	/**
 	* \brief Constructs the NotifierMessage object
@@ -50,22 +51,24 @@ public:
 	* \param szText const reference to message text in irc format
 	* \return NotifierMessage
 	*/
-	NotifierMessage(QPixmap * pPixmap, const QString &szText);
+	NotifierMessage(QPixmap * pPixmap, const QString & szText);
 	/**
 	* \brief Destroys the NotifierMessage object
 	*/
 	~NotifierMessage();
+
 private:
 	/// The message text
-	QString       m_szText;
+	QString m_szText;
 	/// The message icon (can be null)
-	QPixmap     * m_pPixmap;
+	QPixmap * m_pPixmap;
 	/// Layout for the labels
 	QHBoxLayout * m_pHBox;
 	/// Label for the message icon
-	QLabel      * m_pLabel0;
+	QLabel * m_pLabel0;
 	/// Label for the message text
-	QLabel      * m_pLabel1;
+	QLabel * m_pLabel1;
+
 public:
 	/**
 	* \brief Returns the original irc message

@@ -30,7 +30,6 @@
 #include <QLayout>
 #include <QLabel>
 
-
 /*
 	@doc: ctcpfloodprotectionoptions
 	@type:
@@ -72,40 +71,39 @@
 		see the [widget:ctcpavatarprotooptions]CTCP AVATAR protocol options[/widget] and [widget:ctcpdccprotooptions]CTCP DCC protocol options[/widget].[br]
 */
 
-
 OptionsWidget_ctcpFloodProtection::OptionsWidget_ctcpFloodProtection(QWidget * parent)
-: KviOptionsWidget(parent)
+    : KviOptionsWidget(parent)
 {
 	setObjectName("ctcpfloodprotection_options_widget");
 
 	createLayout();
 
-	KviBoolSelector * b = addBoolSelector(0,0,1,0,__tr2qs_ctx("Use flood protection for CTCP requests (recommended)","options"),KviOption_boolUseCtcpFloodProtection);
-	mergeTip(b,__tr2qs_ctx("This option makes KVIrc only respond to a limited number of CTCP requests within a specified time interval, to prevent \"flooding\" CTCP messages.","options"));
+	KviBoolSelector * b = addBoolSelector(0, 0, 1, 0, __tr2qs_ctx("Use flood protection for CTCP requests (recommended)", "options"), KviOption_boolUseCtcpFloodProtection);
+	mergeTip(b, __tr2qs_ctx("This option makes KVIrc only respond to a limited number of CTCP requests within a specified time interval, to prevent \"flooding\" CTCP messages.", "options"));
 
-	KviUIntSelector * u = addUIntSelector(0,1,0,1,__tr2qs_ctx("Allow up to:","options"),KviOption_uintMaxCtcpRequests,0,10000,3,KVI_OPTION_BOOL(KviOption_boolUseCtcpFloodProtection));
-	u->setSuffix(__tr2qs_ctx(" requests","options"));
-	mergeTip(u,__tr2qs_ctx("Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 requests</b>","options"));
-	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
+	KviUIntSelector * u = addUIntSelector(0, 1, 0, 1, __tr2qs_ctx("Allow up to:", "options"), KviOption_uintMaxCtcpRequests, 0, 10000, 3, KVI_OPTION_BOOL(KviOption_boolUseCtcpFloodProtection));
+	u->setSuffix(__tr2qs_ctx(" requests", "options"));
+	mergeTip(u, __tr2qs_ctx("Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 requests</b>", "options"));
+	connect(b, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
 
-	u = addUIntSelector(1,1,1,1,__tr2qs_ctx("within:","options"),KviOption_uintCtcpFloodCheckInterval,1,3600,6,KVI_OPTION_BOOL(KviOption_boolUseCtcpFloodProtection));
-	u->setSuffix(__tr2qs_ctx(" sec","options"));
-	mergeTip(u,__tr2qs_ctx("Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b>","options"));
-	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
+	u = addUIntSelector(1, 1, 1, 1, __tr2qs_ctx("within:", "options"), KviOption_uintCtcpFloodCheckInterval, 1, 3600, 6, KVI_OPTION_BOOL(KviOption_boolUseCtcpFloodProtection));
+	u->setSuffix(__tr2qs_ctx(" sec", "options"));
+	mergeTip(u, __tr2qs_ctx("Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b>", "options"));
+	connect(b, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
 
-	KviTalGroupBox * g = addGroupBox(0,2,1,2,Qt::Horizontal,__tr2qs_ctx("Ignored CTCP Requests","options"));
-	addBoolSelector(g,__tr2qs_ctx("PING","options"),KviOption_boolIgnoreCtcpPing);
-	addBoolSelector(g,__tr2qs_ctx("FINGER","options"),KviOption_boolIgnoreCtcpFinger);
-	addBoolSelector(g,__tr2qs_ctx("CLIENTINFO","options"),KviOption_boolIgnoreCtcpClientinfo);
-	addBoolSelector(g,__tr2qs_ctx("USERINFO","options"),KviOption_boolIgnoreCtcpUserinfo);
-	addBoolSelector(g,__tr2qs_ctx("VERSION","options"),KviOption_boolIgnoreCtcpVersion);
-	addBoolSelector(g,__tr2qs_ctx("SOURCE","options"),KviOption_boolIgnoreCtcpSource);
-	addBoolSelector(g,__tr2qs_ctx("TIME","options"),KviOption_boolIgnoreCtcpTime);
-	addBoolSelector(g,__tr2qs_ctx("PAGE","options"),KviOption_boolIgnoreCtcpPage);
-	addBoolSelector(g,__tr2qs_ctx("AVATAR","options"),KviOption_boolIgnoreCtcpAvatar);
-	addBoolSelector(g,__tr2qs_ctx("DCC/TDCC","options"),KviOption_boolIgnoreCtcpDcc);
+	KviTalGroupBox * g = addGroupBox(0, 2, 1, 2, Qt::Horizontal, __tr2qs_ctx("Ignored CTCP Requests", "options"));
+	addBoolSelector(g, __tr2qs_ctx("PING", "options"), KviOption_boolIgnoreCtcpPing);
+	addBoolSelector(g, __tr2qs_ctx("FINGER", "options"), KviOption_boolIgnoreCtcpFinger);
+	addBoolSelector(g, __tr2qs_ctx("CLIENTINFO", "options"), KviOption_boolIgnoreCtcpClientinfo);
+	addBoolSelector(g, __tr2qs_ctx("USERINFO", "options"), KviOption_boolIgnoreCtcpUserinfo);
+	addBoolSelector(g, __tr2qs_ctx("VERSION", "options"), KviOption_boolIgnoreCtcpVersion);
+	addBoolSelector(g, __tr2qs_ctx("SOURCE", "options"), KviOption_boolIgnoreCtcpSource);
+	addBoolSelector(g, __tr2qs_ctx("TIME", "options"), KviOption_boolIgnoreCtcpTime);
+	addBoolSelector(g, __tr2qs_ctx("PAGE", "options"), KviOption_boolIgnoreCtcpPage);
+	addBoolSelector(g, __tr2qs_ctx("AVATAR", "options"), KviOption_boolIgnoreCtcpAvatar);
+	addBoolSelector(g, __tr2qs_ctx("DCC/TDCC", "options"), KviOption_boolIgnoreCtcpDcc);
 
-	addRowSpacer(0,3,1,3);
+	addRowSpacer(0, 3, 1, 3);
 }
 
 OptionsWidget_ctcpFloodProtection::~OptionsWidget_ctcpFloodProtection()

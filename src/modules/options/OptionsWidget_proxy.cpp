@@ -43,13 +43,12 @@
 #include <QToolButton>
 #include <QMenu>
 
-
-ProxyOptionsTreeWidgetItem::ProxyOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,KviProxy * prx)
-: QTreeWidgetItem(parent)
+ProxyOptionsTreeWidgetItem::ProxyOptionsTreeWidgetItem(QTreeWidget * parent, const QPixmap & pm, KviProxy * prx)
+    : QTreeWidgetItem(parent)
 {
 	qDebug("Creating item");
-	setText(0,prx->m_szHostname);
-	setIcon(0,QIcon(pm));
+	setText(0, prx->m_szHostname);
+	setIcon(0, QIcon(pm));
 	m_pProxyData = new KviProxy(*prx);
 }
 
@@ -60,67 +59,69 @@ ProxyOptionsTreeWidgetItem::~ProxyOptionsTreeWidgetItem()
 }
 
 OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
-: KviOptionsWidget(parent,"proxy_options_widget")
+    : KviOptionsWidget(parent, "proxy_options_widget")
 {
 	createLayout();
 
-	m_pUseProxySelector = addBoolSelector(0,0,1,0,__tr2qs_ctx("Use proxy for all connections","options"),KviOption_boolUseProxyHost);
-	QString szTip = __tr2qs_ctx("When enabled, the selected proxy will be used as the default for all connections.<br>" \
-				"An alternative option to define a specific per-server proxy, is also located " \
-				"in the advanced server dialog in the connection tab.","options");
+	m_pUseProxySelector = addBoolSelector(0, 0, 1, 0, __tr2qs_ctx("Use proxy for all connections", "options"), KviOption_boolUseProxyHost);
+	QString szTip = __tr2qs_ctx("When enabled, the selected proxy will be used as the default for all connections.<br>"
+	                            "An alternative option to define a specific per-server proxy, is also located "
+	                            "in the advanced server dialog in the connection tab.",
+	    "options");
 
-	mergeTip(m_pUseProxySelector,szTip);
+	mergeTip(m_pUseProxySelector, szTip);
 
 	m_pTreeWidget = new QTreeWidget(this);
-	addWidgetToLayout(m_pTreeWidget,0,1,0,1);
-	m_pTreeWidget->setHeaderLabel(__tr2qs_ctx("Proxy","options"));
+	addWidgetToLayout(m_pTreeWidget, 0, 1, 0, 1);
+	m_pTreeWidget->setHeaderLabel(__tr2qs_ctx("Proxy", "options"));
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setAllColumnsShowFocus(true);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
-	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),
-		this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
+	connect(m_pTreeWidget, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)),
+	    this, SLOT(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)));
 	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
-	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
-		this,SLOT(customContextMenuRequested(const QPoint &)));
+	connect(m_pTreeWidget, SIGNAL(customContextMenuRequested(const QPoint &)),
+	    this, SLOT(customContextMenuRequested(const QPoint &)));
 
-	QString tiptxt = __tr2qs_ctx("This is the list of available proxy servers.<br>" \
-				"Right-click on the list to add or remove proxies.","options");
+	QString tiptxt = __tr2qs_ctx("This is the list of available proxy servers.<br>"
+	                             "Right-click on the list to add or remove proxies.",
+	    "options");
 
-	mergeTip(m_pTreeWidget,tiptxt);
-	mergeTip(m_pTreeWidget->viewport(),tiptxt);
+	mergeTip(m_pTreeWidget, tiptxt);
+	mergeTip(m_pTreeWidget->viewport(), tiptxt);
 
 	KviTalVBox * vbox = new KviTalVBox(this);
-	addWidgetToLayout(vbox,1,1,1,1);
+	addWidgetToLayout(vbox, 1, 1, 1, 1);
 
 	QToolButton * tb = new QToolButton(vbox);
 	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::NewProxy))));
 	tb->setAutoRaise(true);
-	connect(tb,SIGNAL(clicked()),this,SLOT(newProxy()));
-	mergeTip(tb,__tr2qs_ctx("New proxy","options"));
+	connect(tb, SIGNAL(clicked()), this, SLOT(newProxy()));
+	mergeTip(tb, __tr2qs_ctx("New proxy", "options"));
 
 	tb = new QToolButton(vbox);
 	tb->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Remove))));
 	tb->setAutoRaise(true);
-	connect(tb,SIGNAL(clicked()),this,SLOT(removeCurrent()));
-	mergeTip(tb,__tr2qs_ctx("Remove proxy","options"));
+	connect(tb, SIGNAL(clicked()), this, SLOT(removeCurrent()));
+	mergeTip(tb, __tr2qs_ctx("Remove proxy", "options"));
 
 	QFrame * lll = new QFrame(vbox);
-	vbox->setStretchFactor(lll,100);
+	vbox->setStretchFactor(lll, 100);
 
-	KviTalGroupBox * gbox = addGroupBox(0,2,1,2,Qt::Horizontal,__tr2qs_ctx("Configuration","options"));
+	KviTalGroupBox * gbox = addGroupBox(0, 2, 1, 2, Qt::Horizontal, __tr2qs_ctx("Configuration", "options"));
 
-	m_pProxyLabel = new QLabel(__tr2qs_ctx("Proxy:","options"),gbox);
+	m_pProxyLabel = new QLabel(__tr2qs_ctx("Proxy:", "options"), gbox);
 	m_pProxyEdit = new QLineEdit(gbox);
-	m_pPortLabel = new QLabel(__tr2qs_ctx("Port:","options"),gbox);
+	m_pPortLabel = new QLabel(__tr2qs_ctx("Port:", "options"), gbox);
 	m_pPortEdit = new QLineEdit(gbox);
-	m_pIpLabel = new QLabel(__tr2qs_ctx("IP address:","options"),gbox);
-	m_pIpEditor = new KviIpEditor(gbox,KviIpEditor::IPv4);
-	m_pUserLabel = new QLabel(__tr2qs_ctx("Username:","options"),gbox);
+	m_pIpLabel = new QLabel(__tr2qs_ctx("IP address:", "options"), gbox);
+	m_pIpEditor = new KviIpEditor(gbox, KviIpEditor::IPv4);
+	m_pUserLabel = new QLabel(__tr2qs_ctx("Username:", "options"), gbox);
 	m_pUserEdit = new QLineEdit(gbox);
-	m_pPassLabel = new QLabel(__tr2qs_ctx("Password:","options"),gbox);
+	m_pPassLabel = new QLabel(__tr2qs_ctx("Password:", "options"), gbox);
 	m_pPassEdit = new QLineEdit(gbox);
-	m_pProtocolLabel = new QLabel(__tr2qs_ctx("Protocol:","options"),gbox);
+	m_pProtocolLabel = new QLabel(__tr2qs_ctx("Protocol:", "options"), gbox);
 	m_pProtocolBox = new QComboBox(gbox);
 
 	QStringList l;
@@ -128,8 +129,8 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 
 	m_pProtocolBox->addItems(l);
 
-	m_pIPv6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),gbox);
-	connect(m_pIPv6Check,SIGNAL(toggled(bool)),this,SLOT(ipV6CheckToggled(bool)));
+	m_pIPv6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol", "options"), gbox);
+	connect(m_pIPv6Check, SIGNAL(toggled(bool)), this, SLOT(ipV6CheckToggled(bool)));
 #ifndef COMPILE_IPV6_SUPPORT
 	m_pIPv6Check->setEnabled(false);
 #endif
@@ -137,8 +138,8 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 
 	fillProxyList();
 
-	layout()->setRowStretch(0,1);
-	layout()->setColumnStretch(0,1);
+	layout()->setRowStretch(0, 1);
+	layout()->setColumnStretch(0, 1);
 
 	m_pContextPopup = new QMenu(this);
 }
@@ -165,9 +166,9 @@ void OptionsWidget_proxy::fillProxyList()
 
 	KviPointerList<KviProxy> * l = g_pProxyDataBase->proxyList();
 
-	for(KviProxy * p = l->first();p;p = l->next())
+	for(KviProxy * p = l->first(); p; p = l->next())
 	{
-		prx = new ProxyOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KviIconManager::Proxy)),p);
+		prx = new ProxyOptionsTreeWidgetItem(m_pTreeWidget, *(g_pIconManager->getSmallIcon(KviIconManager::Proxy)), p);
 		if(p == g_pProxyDataBase->currentProxy())
 		{
 			prx->setSelected(true);
@@ -176,14 +177,15 @@ void OptionsWidget_proxy::fillProxyList()
 		}
 	}
 	if(!(g_pProxyDataBase->currentProxy()))
-		currentItemChanged(0,0);
+		currentItemChanged(0, 0);
 
 	enableDisableUseProxySelector();
 }
 
-void OptionsWidget_proxy::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
+void OptionsWidget_proxy::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 {
-	if(m_pLastEditedItem)saveLastItem();
+	if(m_pLastEditedItem)
+		saveLastItem();
 	m_pLastEditedItem = (ProxyOptionsTreeWidgetItem *)it;
 
 	m_pProxyLabel->setEnabled(m_pLastEditedItem);
@@ -208,10 +210,10 @@ void OptionsWidget_proxy::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem
 	{
 		m_pProxyEdit->setText(m_pLastEditedItem->m_pProxyData->m_szHostname);
 
-		for(int i=0;i<m_pProtocolBox->count();i++)
+		for(int i = 0; i < m_pProtocolBox->count(); i++)
 		{
 			KviCString txt = m_pProtocolBox->itemText(i);
-			if(kvi_strEqualCI(m_pLastEditedItem->m_pProxyData->protocolName().toUtf8().data(),txt.ptr()))
+			if(kvi_strEqualCI(m_pLastEditedItem->m_pProxyData->protocolName().toUtf8().data(), txt.ptr()))
 			{
 				m_pProtocolBox->setCurrentIndex(i);
 				break;
@@ -236,9 +238,11 @@ void OptionsWidget_proxy::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem
 
 		m_pUserEdit->setText(m_pLastEditedItem->m_pProxyData->m_szUser);
 		m_pPassEdit->setText(m_pLastEditedItem->m_pProxyData->m_szPass);
-		KviCString tmp(KviCString::Format,"%u",m_pLastEditedItem->m_pProxyData->m_uPort);
+		KviCString tmp(KviCString::Format, "%u", m_pLastEditedItem->m_pProxyData->m_uPort);
 		m_pPortEdit->setText(tmp.ptr());
-	} else {
+	}
+	else
+	{
 		m_pProxyEdit->setText("");
 		m_pUserEdit->setText("");
 		m_pPassEdit->setText("");
@@ -257,7 +261,7 @@ void OptionsWidget_proxy::saveLastItem()
 		if(tmp.isEmpty())
 			tmp = "irc.unknown.net";
 
-		m_pLastEditedItem->setText(0,tmp.ptr());
+		m_pLastEditedItem->setText(0, tmp.ptr());
 		m_pLastEditedItem->m_pProxyData->m_szHostname = tmp;
 #ifdef COMPILE_IPV6_SUPPORT
 		m_pLastEditedItem->m_pProxyData->m_bIsIPv6 = m_pIPv6Check->isChecked();
@@ -273,15 +277,15 @@ void OptionsWidget_proxy::saveLastItem()
 #ifdef COMPILE_IPV6_SUPPORT
 			if(m_pIPv6Check->isChecked())
 			{
-				if((!KviQString::equalCI(tmpAddr,"0:0:0:0:0:0:0:0")) &&
-					KviNetUtils::isValidStringIPv6(tmpAddr))
+				if((!KviQString::equalCI(tmpAddr, "0:0:0:0:0:0:0:0")) && KviNetUtils::isValidStringIPv6(tmpAddr))
 				{
 					m_pLastEditedItem->m_pProxyData->m_szIp = tmpAddr;
 				}
-			} else {
+			}
+			else
+			{
 #endif
-				if((!KviQString::equalCI(tmpAddr,"0.0.0.0")) &&
-					KviNetUtils::isValidStringIp(tmpAddr))
+				if((!KviQString::equalCI(tmpAddr, "0.0.0.0")) && KviNetUtils::isValidStringIp(tmpAddr))
 				{
 					m_pLastEditedItem->m_pProxyData->m_szIp = tmpAddr;
 				}
@@ -294,10 +298,11 @@ void OptionsWidget_proxy::saveLastItem()
 		tmp = m_pPortEdit->text();
 		bool bOk;
 		kvi_u32_t uPort = tmp.toUInt(&bOk);
-		if(!bOk)uPort = 1080;
-			m_pLastEditedItem->m_pProxyData->m_uPort = uPort;
-			tmp = m_pProtocolBox->currentText();
-			m_pLastEditedItem->m_pProxyData->setNamedProtocol(tmp.ptr());
+		if(!bOk)
+			uPort = 1080;
+		m_pLastEditedItem->m_pProxyData->m_uPort = uPort;
+		tmp = m_pProtocolBox->currentText();
+		m_pLastEditedItem->m_pProxyData->setNamedProtocol(tmp.ptr());
 	}
 }
 
@@ -308,16 +313,17 @@ void OptionsWidget_proxy::commit()
 
 	ProxyOptionsTreeWidgetItem * it;
 
-	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+	for(int i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
 	{
-		it=(ProxyOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+		it = (ProxyOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		QString tmp = it->text(0);
 		if(!tmp.isEmpty())
 		{
 			KviProxy * prx = new KviProxy(*(it->m_pProxyData));
 			g_pProxyDataBase->insertProxy(prx);
 
-			if(it == m_pLastEditedItem)g_pProxyDataBase->setCurrentProxy(prx);
+			if(it == m_pLastEditedItem)
+				g_pProxyDataBase->setCurrentProxy(prx);
 		}
 	}
 
@@ -327,20 +333,20 @@ void OptionsWidget_proxy::commit()
 	KviOptionsWidget::commit();
 }
 
-void OptionsWidget_proxy::customContextMenuRequested(const QPoint &pos)
+void OptionsWidget_proxy::customContextMenuRequested(const QPoint & pos)
 {
-	QTreeWidgetItem *it=(QTreeWidgetItem *)m_pTreeWidget->itemAt(pos);
+	QTreeWidgetItem * it = (QTreeWidgetItem *)m_pTreeWidget->itemAt(pos);
 	m_pContextPopup->clear();
-	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NewProxy)),__tr2qs_ctx("&New Proxy","options"),this,SLOT(newProxy()));
-	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)),__tr2qs_ctx("Re&move Proxy","options"),this,SLOT(removeCurrent()))
-		->setEnabled(it);
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NewProxy)), __tr2qs_ctx("&New Proxy", "options"), this, SLOT(newProxy()));
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)), __tr2qs_ctx("Re&move Proxy", "options"), this, SLOT(removeCurrent()))
+	    ->setEnabled(it);
 	m_pContextPopup->popup(QCursor::pos());
 }
 
 void OptionsWidget_proxy::newProxy()
 {
 	KviProxy prx;
-	ProxyOptionsTreeWidgetItem * it = new ProxyOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KviIconManager::Proxy)),&prx);
+	ProxyOptionsTreeWidgetItem * it = new ProxyOptionsTreeWidgetItem(m_pTreeWidget, *(g_pIconManager->getSmallIcon(KviIconManager::Proxy)), &prx);
 	it->setSelected(true);
 	m_pTreeWidget->setCurrentItem(it);
 	m_pTreeWidget->scrollToItem(it);
@@ -358,8 +364,10 @@ void OptionsWidget_proxy::removeCurrent()
 		if(it)
 		{
 			it->setSelected(true);
-		} else {
-			currentItemChanged(0,0);
+		}
+		else
+		{
+			currentItemChanged(0, 0);
 		}
 	}
 }

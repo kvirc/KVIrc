@@ -39,50 +39,50 @@ public:
 
 public:
 	QWidget * widget() { return (QWidget *)object(); };
-	void fileDropped(QString &,QTreeWidgetItem *);
+	void fileDropped(QString &, QTreeWidgetItem *);
+
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-
-	bool setBackgroundImage(KviKvsObjectFunctionCall *c);
-	bool addColumn(KviKvsObjectFunctionCall *c);
-	bool setColumnText(KviKvsObjectFunctionCall *c);
-	bool takeItem(KviKvsObjectFunctionCall *c);
-	bool setSorting(KviKvsObjectFunctionCall *c);
-	bool setSortingEnabled(KviKvsObjectFunctionCall *c);
-	bool setRootIsDecorated(KviKvsObjectFunctionCall *c);
-	bool clear(KviKvsObjectFunctionCall *c);
-	bool setAllColumnsShowFocus(KviKvsObjectFunctionCall *c);
-	bool itemClickedEvent(KviKvsObjectFunctionCall *c);
-	bool selectionChangedEvent(KviKvsObjectFunctionCall *c);
-	bool currentChangedEvent(KviKvsObjectFunctionCall *c);
-	bool itemActivatedEvent(KviKvsObjectFunctionCall *c);
-	bool onItemEvent(KviKvsObjectFunctionCall *c);
-	bool itemExpandedEvent(KviKvsObjectFunctionCall *c);
-	bool itemCollapsedEvent(KviKvsObjectFunctionCall *c);
-	bool itemChangedEvent(KviKvsObjectFunctionCall *c);
-	bool selectedItems(KviKvsObjectFunctionCall *c);
-	bool currentItem(KviKvsObjectFunctionCall *c);
-	bool setSelectionMode(KviKvsObjectFunctionCall *c);
-	bool firstChild(KviKvsObjectFunctionCall *c);
-	bool listViewHeaderIsVisible(KviKvsObjectFunctionCall *c);
-	bool showListViewHeader(KviKvsObjectFunctionCall *c);
-	bool hideListViewHeader(KviKvsObjectFunctionCall *c);
-	bool setAcceptDrops(KviKvsObjectFunctionCall *c);
-	bool setHeaderLabels(KviKvsObjectFunctionCall *c);
-	bool setColumnCount(KviKvsObjectFunctionCall *c);
-	bool topLevelItem(KviKvsObjectFunctionCall *c);
-	bool topLevelItemCount(KviKvsObjectFunctionCall *c);
-	bool itemAt(KviKvsObjectFunctionCall *c);
+	bool setBackgroundImage(KviKvsObjectFunctionCall * c);
+	bool addColumn(KviKvsObjectFunctionCall * c);
+	bool setColumnText(KviKvsObjectFunctionCall * c);
+	bool takeItem(KviKvsObjectFunctionCall * c);
+	bool setSorting(KviKvsObjectFunctionCall * c);
+	bool setSortingEnabled(KviKvsObjectFunctionCall * c);
+	bool setRootIsDecorated(KviKvsObjectFunctionCall * c);
+	bool clear(KviKvsObjectFunctionCall * c);
+	bool setAllColumnsShowFocus(KviKvsObjectFunctionCall * c);
+	bool itemClickedEvent(KviKvsObjectFunctionCall * c);
+	bool selectionChangedEvent(KviKvsObjectFunctionCall * c);
+	bool currentChangedEvent(KviKvsObjectFunctionCall * c);
+	bool itemActivatedEvent(KviKvsObjectFunctionCall * c);
+	bool onItemEvent(KviKvsObjectFunctionCall * c);
+	bool itemExpandedEvent(KviKvsObjectFunctionCall * c);
+	bool itemCollapsedEvent(KviKvsObjectFunctionCall * c);
+	bool itemChangedEvent(KviKvsObjectFunctionCall * c);
+	bool selectedItems(KviKvsObjectFunctionCall * c);
+	bool currentItem(KviKvsObjectFunctionCall * c);
+	bool setSelectionMode(KviKvsObjectFunctionCall * c);
+	bool firstChild(KviKvsObjectFunctionCall * c);
+	bool listViewHeaderIsVisible(KviKvsObjectFunctionCall * c);
+	bool showListViewHeader(KviKvsObjectFunctionCall * c);
+	bool hideListViewHeader(KviKvsObjectFunctionCall * c);
+	bool setAcceptDrops(KviKvsObjectFunctionCall * c);
+	bool setHeaderLabels(KviKvsObjectFunctionCall * c);
+	bool setColumnCount(KviKvsObjectFunctionCall * c);
+	bool topLevelItem(KviKvsObjectFunctionCall * c);
+	bool topLevelItemCount(KviKvsObjectFunctionCall * c);
+	bool itemAt(KviKvsObjectFunctionCall * c);
 protected slots:
-	void slotClicked(QTreeWidgetItem *,int);
+	void slotClicked(QTreeWidgetItem *, int);
 	void slotSelectionChanged();
-	void slotCurrentChanged(QTreeWidgetItem *,QTreeWidgetItem *);
-	void slotItemActivated(QTreeWidgetItem *,int col);
-	void slotOnItemEntered(QTreeWidgetItem *,int col);
+	void slotCurrentChanged(QTreeWidgetItem *, QTreeWidgetItem *);
+	void slotItemActivated(QTreeWidgetItem *, int col);
+	void slotOnItemEntered(QTreeWidgetItem *, int col);
 	void slotItemExpanded(QTreeWidgetItem *);
 	void slotItemCollapsed(QTreeWidgetItem *);
-	void slotItemChanged(QTreeWidgetItem *,int);
+	void slotItemChanged(QTreeWidgetItem *, int);
 };
 
 class KviKvsTreeWidget : public QTreeWidget
@@ -91,12 +91,14 @@ class KviKvsTreeWidget : public QTreeWidget
 public:
 	KviKvsTreeWidget(QWidget * par, const char * name, KvsObject_treeWidget *);
 	virtual ~KviKvsTreeWidget();
+
 protected:
 	KvsObject_treeWidget * m_pParentScript;
+
 protected:
 	void dropEvent(QDropEvent * e);
 	void dragEnterEvent(QDragEnterEvent * e);
-        void dragMoveEvent( QDragMoveEvent * e );
+	void dragMoveEvent(QDragMoveEvent * e);
 };
 
 #endif // _CLASS_TREEWIDGET_H_

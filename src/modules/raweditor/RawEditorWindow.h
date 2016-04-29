@@ -37,52 +37,59 @@ class QMenu;
 
 class RawTreeWidget : public QTreeWidget
 {
-	public:
-	RawTreeWidget(QWidget *par)
-		: QTreeWidget(par){};
-	void updateItem(QTreeWidgetItem *item)
+public:
+	RawTreeWidget(QWidget * par)
+	    : QTreeWidget(par){};
+	void updateItem(QTreeWidgetItem * item)
 	{
-		update(indexFromItem(item,0));
+		update(indexFromItem(item, 0));
 	};
-	~RawTreeWidget() {};
+	~RawTreeWidget(){};
 };
 
 class RawTreeWidgetItem : public QTreeWidgetItem
 {
 public:
 	int m_iIdx;
+
 public:
-	RawTreeWidgetItem(QTreeWidget * par,int idx,bool bEnabled);
-	~RawTreeWidgetItem() {};
+	RawTreeWidgetItem(QTreeWidget * par, int idx, bool bEnabled);
+	~RawTreeWidgetItem(){};
+
 public:
 	void setEnabled(bool bEnabled)
 	{
-		if (bEnabled) setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KviIconManager::RawEvent)));
-			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KviIconManager::RawEventNoHandlers)));
-			((RawTreeWidget*)treeWidget())->updateItem(this);
+		if(bEnabled)
+			setIcon(0, QIcon(*g_pIconManager->getSmallIcon(KviIconManager::RawEvent)));
+		else
+			setIcon(0, QIcon(*g_pIconManager->getSmallIcon(KviIconManager::RawEventNoHandlers)));
+		((RawTreeWidget *)treeWidget())->updateItem(this);
 	};
 };
 
 class RawHandlerTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	RawHandlerTreeWidgetItem(QTreeWidgetItem * par,const QString & name,const QString & buffer,bool bEnabled)
-	: QTreeWidgetItem(par), m_szBuffer(buffer), m_bEnabled(bEnabled)
+	RawHandlerTreeWidgetItem(QTreeWidgetItem * par, const QString & name, const QString & buffer, bool bEnabled)
+	    : QTreeWidgetItem(par), m_szBuffer(buffer), m_bEnabled(bEnabled)
 	{
-		setText(0,name);
+		setText(0, name);
 		setEnabled(bEnabled);
 	};
-	~RawHandlerTreeWidgetItem() {};
+	~RawHandlerTreeWidgetItem(){};
+
 public:
 	void setEnabled(bool bEnabled)
 	{
-		if (bEnabled) setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Handler)));
-			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KviIconManager::HandlerDisabled)));
-			((RawTreeWidget*)treeWidget())->updateItem(this);
+		if(bEnabled)
+			setIcon(0, QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Handler)));
+		else
+			setIcon(0, QIcon(*g_pIconManager->getSmallIcon(KviIconManager::HandlerDisabled)));
+		((RawTreeWidget *)treeWidget())->updateItem(this);
 	};
 	QString m_szBuffer;
-	bool   m_bEnabled;
-	void setName(const QString &szName);
+	bool m_bEnabled;
+	void setName(const QString & szName);
 };
 
 class RawEditorWidget : public QWidget
@@ -91,29 +98,33 @@ class RawEditorWidget : public QWidget
 public:
 	RawEditorWidget(QWidget * par);
 	~RawEditorWidget();
+
 public:
 	KviScriptEditor * m_pEditor;
-	RawTreeWidget       * m_pTreeWidget;
-	QLineEdit       * m_pNameEditor;
-	QMenu      * m_pContextPopup;
+	RawTreeWidget * m_pTreeWidget;
+	QLineEdit * m_pNameEditor;
+	QMenu * m_pContextPopup;
 	RawHandlerTreeWidgetItem * m_pLastEditedItem;
-	bool              m_bOneTimeSetupDone;
+	bool m_bOneTimeSetupDone;
+
 public:
 	void commit();
 	void saveLastEditedItem();
-	void getUniqueHandlerName(RawTreeWidgetItem *it,QString &buffer);
-	void getExportEventBuffer(QString &szBuffer,RawHandlerTreeWidgetItem * it);
+	void getUniqueHandlerName(RawTreeWidgetItem * it, QString & buffer);
+	void getExportEventBuffer(QString & szBuffer, RawHandlerTreeWidgetItem * it);
 protected slots:
-	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *);
-	void customContextMenuRequested(const QPoint &pnt);
+	void currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *);
+	void customContextMenuRequested(const QPoint & pnt);
 	void toggleCurrentHandlerEnabled();
 	void removeCurrentHandler();
 	void addHandlerForCurrentRaw();
 	void addRaw();
 	void exportAllEvents();
 	void exportCurrentHandler();
+
 protected:
-	void showEvent(QShowEvent *e);
+	void showEvent(QShowEvent * e);
+
 private:
 	void oneTimeSetup();
 };
@@ -124,12 +135,14 @@ class RawEditorWindow : public KviWindow
 public:
 	RawEditorWindow();
 	~RawEditorWindow();
+
 protected:
 	RawEditorWidget * m_pEditor;
+
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
-	virtual void getConfigGroupName(QString &szName);
+	virtual void getConfigGroupName(QString & szName);
 	virtual void saveProperties(KviConfigurationFile *);
 	virtual void loadProperties(KviConfigurationFile *);
 protected slots:

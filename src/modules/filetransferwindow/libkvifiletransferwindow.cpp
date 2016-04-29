@@ -34,12 +34,12 @@
 
 FileTransferWindow * g_pFileTransferWindow = NULL;
 
-static FileTransferWindow * filetransferwindow_alloc(bool bCreateMinimized,bool bNoRaise)
+static FileTransferWindow * filetransferwindow_alloc(bool bCreateMinimized, bool bNoRaise)
 {
 	if(!g_pFileTransferWindow)
 	{
 		g_pFileTransferWindow = new FileTransferWindow();
-		g_pMainWindow->addWindow(g_pFileTransferWindow,!bCreateMinimized);
+		g_pMainWindow->addWindow(g_pFileTransferWindow, !bCreateMinimized);
 		return g_pFileTransferWindow;
 	}
 
@@ -69,7 +69,7 @@ static FileTransferWindow * filetransferwindow_alloc(bool bCreateMinimized,bool 
 
 static bool filetransferwindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	filetransferwindow_alloc(c->hasSwitch('m',QString::fromLatin1("minimized")),c->hasSwitch('n',QString::fromLatin1("noraise")));
+	filetransferwindow_alloc(c->hasSwitch('m', QString::fromLatin1("minimized")), c->hasSwitch('n', QString::fromLatin1("noraise")));
 
 	return true;
 }
@@ -95,7 +95,7 @@ static bool filetransferwindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 static bool filetransferwindow_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 {
 
-	if(c->hasSwitch('a',QString::fromLatin1("all")))
+	if(c->hasSwitch('a', QString::fromLatin1("all")))
 		KviFileTransferManager::instance()->killAllTransfers();
 	else
 		KviFileTransferManager::instance()->killTerminatedTransfers();
@@ -103,11 +103,10 @@ static bool filetransferwindow_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-
 static bool filetransferwindow_module_init(KviModule * m)
 {
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",filetransferwindow_kvs_cmd_open);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"clear",filetransferwindow_kvs_cmd_clear);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", filetransferwindow_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "clear", filetransferwindow_kvs_cmd_clear);
 
 	return true;
 }
@@ -126,14 +125,12 @@ static bool filetransferwindow_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"FileTransferWindow",
-	"4.0.0",
-	"Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)",
-	"File Transfer Window Extension",
-	filetransferwindow_module_init,
-	filetransferwindow_module_can_unload,
-	0,
-	filetransferwindow_module_cleanup,
-	"filetransferwindow"
-)
-
+    "FileTransferWindow",
+    "4.0.0",
+    "Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)",
+    "File Transfer Window Extension",
+    filetransferwindow_module_init,
+    filetransferwindow_module_can_unload,
+    0,
+    filetransferwindow_module_cleanup,
+    "filetransferwindow")

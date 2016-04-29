@@ -39,5 +39,4 @@ public:
 	~OptionsWidget_ctcp();
 };
 
-
 #endif //_OPTW_CTCP_H_

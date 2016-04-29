@@ -49,9 +49,11 @@ class KVIRC_API KviInputHistory
 {
 private:
 	static KviInputHistory * m_pSelf;
-	static unsigned int      m_uCount;
+	static unsigned int m_uCount;
+
 protected:
 	KviPointerList<QString> * m_pStringList;
+
 public:
 	/**
 	* \brief Constructs the input history object
@@ -79,13 +81,13 @@ public:
 	* \brief Returns the instance of the class
 	* \return KviInputHistory *
 	*/
-	static inline KviInputHistory * instance(){ return m_pSelf; };
+	static inline KviInputHistory * instance() { return m_pSelf; };
 
 	/**
 	* \brief Returns the number of instances of the class
 	* \return unsigned int
 	*/
-	unsigned int count(){ return m_uCount; };
+	unsigned int count() { return m_uCount; };
 
 	/**
 	* \brief Adds a reference to the class
@@ -110,7 +112,7 @@ public:
 	* \brief Returns the list of string in the history
 	* \return KviPointerList<QString> *
 	*/
-	KviPointerList<QString> * list(){ return m_pStringList; };
+	KviPointerList<QString> * list() { return m_pStringList; };
 
 	/**
 	* \brief Saves the history

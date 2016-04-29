@@ -24,7 +24,6 @@
 
 #include "KviKvsCoreSimpleCommands.h"
 
-
 #include "KviWindow.h"
 #include "kvi_out.h"
 #include "KviLocale.h"
@@ -40,24 +39,23 @@
 #include "KviKvsKernel.h"
 #include "KviKvsObjectController.h"
 
-
 #if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
-	#ifndef COMPILE_NO_X_BELL
-		#include "KviXlib.h"  // XBell : THIS SHOULD BE INCLUDED AS LAST!
-		#include <unistd.h>   // for usleep();
+#ifndef COMPILE_NO_X_BELL
+#include "KviXlib.h" // XBell : THIS SHOULD BE INCLUDED AS LAST!
+#include <unistd.h>  // for usleep();
 
-		#include <QX11Info>
-		#define get_xdisplay QX11Info::display
-	#endif
+#include <QX11Info>
+#define get_xdisplay QX11Info::display
+#endif
 #else
-	#ifndef COMPILE_NO_X_BELL
-		#define COMPILE_NO_X_BELL
-	#endif
+#ifndef COMPILE_NO_X_BELL
+#define COMPILE_NO_X_BELL
+#endif
 #endif
 #include "KviTalToolTip.h"
 
 // KviApplication.cpp
-extern KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;
+extern KviPointerHashTable<QString, KviWindow> * g_pGlobalWindowDict;
 
 namespace KviKvsCoreSimpleCommands
 {
@@ -117,7 +115,7 @@ namespace KviKvsCoreSimpleCommands
 	{
 		QString szReason;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("reason",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szReason)
+		KVSCSC_PARAMETER("reason", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szReason)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
@@ -130,22 +128,26 @@ namespace KviKvsCoreSimpleCommands
 				szReason = KVI_OPTION_STRING(KviOption_stringAwayMessage);
 				if(szReason.isEmpty())
 					szReason = __tr2qs("Away from keyboard.");
-			} else {
+			}
+			else
+			{
 				//user want to /back
-				if(KVSCSC_pSwitches->find('a',"all-networks"))
+				if(KVSCSC_pSwitches->find('a', "all-networks"))
 				{
-					KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
+					KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 					while(KviWindow * wnd = it.current())
 					{
-						if(wnd->type()==KviWindow::Console)
+						if(wnd->type() == KviWindow::Console)
 						{
-							KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
+							KviConsoleWindow * pConsole = (KviConsoleWindow *)wnd;
 							if(pConsole->isConnected())
 								pConsole->connection()->sendFmtData("AWAY");
 						}
 						++it;
 					}
-				} else {
+				}
+				else
+				{
 					KVSCSC_REQUIRE_CONNECTION
 
 					if(!(KVSCSC_pConnection->sendFmtData("AWAY")))
@@ -155,24 +157,25 @@ namespace KviKvsCoreSimpleCommands
 			}
 		}
 
-		if(KVSCSC_pSwitches->find('a',"all-networks"))
+		if(KVSCSC_pSwitches->find('a', "all-networks"))
 		{
-			KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
+			KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 			while(KviWindow * wnd = it.current())
 			{
-				if(wnd->type()==KviWindow::Console)
+				if(wnd->type() == KviWindow::Console)
 				{
-					KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
+					KviConsoleWindow * pConsole = (KviConsoleWindow *)wnd;
 					if(pConsole->isConnected())
 						pConsole->connection()->sendFmtData("AWAY :%s",
-								pConsole->connection()->encodeText(szReason).data()
-								);
+						    pConsole->connection()->encodeText(szReason).data());
 				}
 				++it;
 			}
-		} else  {
+		}
+		else
+		{
 			QByteArray szR = KVSCSC_pConnection->encodeText(szReason);
-			if(!(KVSCSC_pConnection->sendFmtData("AWAY :%s",szR.data())))
+			if(!(KVSCSC_pConnection->sendFmtData("AWAY :%s", szR.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();
 		}
 
@@ -210,20 +213,22 @@ namespace KviKvsCoreSimpleCommands
 	{
 		Q_UNUSED(__pParams);
 
-		if(KVSCSC_pSwitches->find('a',"all-networks"))
+		if(KVSCSC_pSwitches->find('a', "all-networks"))
 		{
-			KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
+			KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 			while(KviWindow * wnd = it.current())
 			{
-				if(wnd->type()==KviWindow::Console)
+				if(wnd->type() == KviWindow::Console)
 				{
-					KviConsoleWindow* pConsole=(KviConsoleWindow*)wnd;
+					KviConsoleWindow * pConsole = (KviConsoleWindow *)wnd;
 					if(pConsole->isConnected())
 						pConsole->connection()->sendFmtData("AWAY");
 				}
 				++it;
 			}
-		} else {
+		}
+		else
+		{
 			KVSCSC_REQUIRE_CONNECTION
 
 			if(!(KVSCSC_pConnection->sendFmtData("AWAY")))
@@ -266,7 +271,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(ban)
 	{
-		return multipleModeCommand(__pContext,__pParams,__pSwitches,'+','b');
+		return multipleModeCommand(__pContext, __pParams, __pSwitches, '+', 'b');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -325,71 +330,74 @@ namespace KviKvsCoreSimpleCommands
 	{
 		kvs_uint_t uVolume;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("volume",KVS_PT_UINT,KVS_PF_OPTIONAL,uVolume)
+		KVSCSC_PARAMETER("volume", KVS_PT_UINT, KVS_PF_OPTIONAL, uVolume)
 		KVSCSC_PARAMETERS_END
 
-		kvs_int_t pitch    = -1;
+		kvs_int_t pitch = -1;
 		kvs_int_t duration = -1;
 
-		KviKvsVariant * pPitch = KVSCSC_pSwitches->find('p',"pitch");
+		KviKvsVariant * pPitch = KVSCSC_pSwitches->find('p', "pitch");
 		if(pPitch)
 		{
 			if(!pPitch->asInteger(pitch))
 			{
-				KVSCSC_pContext->warning(__tr2qs_ctx("Invalid pitch value: using default","kvs"));
+				KVSCSC_pContext->warning(__tr2qs_ctx("Invalid pitch value: using default", "kvs"));
 				pitch = -1;
 			}
 		}
 
-		KviKvsVariant * pDuration = KVSCSC_pSwitches->find('d',"duration");
+		KviKvsVariant * pDuration = KVSCSC_pSwitches->find('d', "duration");
 		if(pDuration)
 		{
 			if(!pDuration->asInteger(duration))
 			{
-				KVSCSC_pContext->warning(__tr2qs_ctx("Invalid duration value: using default","kvs"));
+				KVSCSC_pContext->warning(__tr2qs_ctx("Invalid duration value: using default", "kvs"));
 				duration = -1;
 			}
 		}
 
-		if((uVolume > 100) || (uVolume < 1))uVolume = 100;
+		if((uVolume > 100) || (uVolume < 1))
+			uVolume = 100;
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		Beep(pitch,duration);
+		Beep(pitch, duration);
 #elif defined(COMPILE_X11_SUPPORT) && (!defined(COMPILE_NO_X_BELL))
-		bool bSync   = (KVSCSC_pSwitches->find('s',"sync") != 0);
+		bool bSync = (KVSCSC_pSwitches->find('s', "sync") != 0);
 
 		XKeyboardState st;
 		XKeyboardControl ctl;
 
-		XGetKeyboardControl(get_xdisplay(),&st);
+		XGetKeyboardControl(get_xdisplay(), &st);
 
 		unsigned long mask = KBBellPercent;
 		ctl.bell_percent = uVolume;
 		if(pitch >= 0)
 		{
-			ctl.bell_pitch    = pitch;
-			mask             |= KBBellPitch;
+			ctl.bell_pitch = pitch;
+			mask |= KBBellPitch;
 		}
 		if(duration >= 0)
 		{
 			ctl.bell_duration = duration;
-			mask             |= KBBellDuration;
+			mask |= KBBellDuration;
 		}
-		XChangeKeyboardControl(get_xdisplay(),mask,&ctl);
+		XChangeKeyboardControl(get_xdisplay(), mask, &ctl);
 
-		XBell(get_xdisplay(),100);
+		XBell(get_xdisplay(), 100);
 
 		if(bSync)
 		{
-			if(duration >= 0)usleep(duration * 1000);
-			else usleep(st.bell_duration * 1000);
+			if(duration >= 0)
+				usleep(duration * 1000);
+			else
+				usleep(st.bell_duration * 1000);
 		}
 
 		ctl.bell_pitch = st.bell_pitch;
 		ctl.bell_duration = st.bell_duration;
 		ctl.bell_percent = st.bell_percent;
 
-		XChangeKeyboardControl(get_xdisplay(),mask,&ctl);
+		XChangeKeyboardControl(get_xdisplay(), mask, &ctl);
 #endif //COMPILE_X11_SUPPORT
 
 		return true;
@@ -427,48 +435,52 @@ namespace KviKvsCoreSimpleCommands
 			[cmd]button[/cmd]
 	*/
 
-//#warning	"ALSO /HELP must NOT interpret the identifiers!"
-//#warning	"ALSO /DEBUG that relays to the DEBUG WINDOW"
+	//#warning	"ALSO /HELP must NOT interpret the identifiers!"
+	//#warning	"ALSO /DEBUG that relays to the DEBUG WINDOW"
 
 	KVSCSC(buttonctl)
 	{
-		QString tbTypeUnused,tbName,tbOp,tbPar;
+		QString tbTypeUnused, tbName, tbOp, tbPar;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("type",KVS_PT_STRING,0,tbTypeUnused)
-			KVSCSC_PARAMETER("name",KVS_PT_STRING,0,tbName)
-			KVSCSC_PARAMETER("operation",KVS_PT_STRING,0,tbOp)
-			KVSCSC_PARAMETER("parameter",KVS_PT_STRING,KVS_PF_OPTIONAL,tbPar)
+		KVSCSC_PARAMETER("type", KVS_PT_STRING, 0, tbTypeUnused)
+		KVSCSC_PARAMETER("name", KVS_PT_STRING, 0, tbName)
+		KVSCSC_PARAMETER("operation", KVS_PT_STRING, 0, tbOp)
+		KVSCSC_PARAMETER("parameter", KVS_PT_STRING, KVS_PF_OPTIONAL, tbPar)
 		KVSCSC_PARAMETERS_END
 
 		KviScriptUserButton * pButton = 0;
 
 		if(!KVSCSC_pWindow->buttonContainer())
 		{
-			if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs_ctx("The specified window has no button containers","kvs"));
+			if(!KVSCSC_pSwitches->find('q', "quiet"))
+				KVSCSC_pContext->warning(__tr2qs_ctx("The specified window has no button containers", "kvs"));
 			return true;
 		}
 
 		//pButton = (KviScriptUserButton *)(KVSCSC_pWindow->buttonContainer())->child(tbName.toUtf8().data(),"KviWindowScriptButton");
-		pButton = (KviScriptUserButton *)(KVSCSC_pWindow->buttonContainer())->findChild<KviWindowScriptButton*>(tbName);
+		pButton = (KviScriptUserButton *)(KVSCSC_pWindow->buttonContainer())->findChild<KviWindowScriptButton *>(tbName);
 
 		if(!pButton)
 		{
-			if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs_ctx("No button with type %Q named %Q","kvs"),&tbTypeUnused,&tbName);
+			if(!KVSCSC_pSwitches->find('q', "quiet"))
+				KVSCSC_pContext->warning(__tr2qs_ctx("No button with type %Q named %Q", "kvs"), &tbTypeUnused, &tbName);
 			return true;
 		}
 		QChar o;
-		if (tbOp.length() > 0) o=tbOp[0];
-			else o=QChar('x');
+		if(tbOp.length() > 0)
+			o = tbOp[0];
+		else
+			o = QChar('x');
 
-	//	QChar o = tbOp.length() > 0 ? tbOp[0] : QChar('x');
+		//	QChar o = tbOp.length() > 0 ? tbOp[0] : QChar('x');
 
 		switch(o.unicode())
 		{
 			case 't':
 				KviTalToolTip::remove(pButton);
-				KviTalToolTip::add(pButton,tbPar);
+				KviTalToolTip::add(pButton, tbPar);
 				pButton->setButtonText(tbPar);
-			break;
+				break;
 			case 'i':
 				if(!tbPar.isEmpty())
 				{
@@ -476,20 +488,22 @@ namespace KviKvsCoreSimpleCommands
 					if(pix)
 					{
 						pButton->setButtonPixmap(*pix);
-					} else {
-						if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs_ctx("Can't find the icon '%Q'","kvs"),&tbPar);
+					}
+					else
+					{
+						if(!KVSCSC_pSwitches->find('q', "quiet"))
+							KVSCSC_pContext->warning(__tr2qs_ctx("Can't find the icon '%Q'", "kvs"), &tbPar);
 					}
 				}
-			break;
+				break;
 			case 'e':
 				pButton->setEnabled(true);
-			break;
+				break;
 			case 'd':
 				pButton->setEnabled(false);
-			break;
+				break;
 		}
 		return true;
-
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -524,10 +538,10 @@ namespace KviKvsCoreSimpleCommands
 	{
 		Q_UNUSED(__pSwitches);
 
-		QString szCommand,szParams;
+		QString szCommand, szParams;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("command",KVS_PT_NONEMPTYSTRING,0,szCommand)
-			KVSCSC_PARAMETER("parameters",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szParams)
+		KVSCSC_PARAMETER("command", KVS_PT_NONEMPTYSTRING, 0, szCommand)
+		KVSCSC_PARAMETER("parameters", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szParams)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
@@ -537,10 +551,12 @@ namespace KviKvsCoreSimpleCommands
 
 		if(szEncodedParams.isEmpty())
 		{
-			if(!(KVSCSC_pConnection->sendFmtData("CAP %s",szEncodedCommand.data())))
+			if(!(KVSCSC_pConnection->sendFmtData("CAP %s", szEncodedCommand.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();
-		} else {
-			if(!(KVSCSC_pConnection->sendFmtData("CAP %s :%s",szEncodedCommand.data(),szEncodedParams.data())))
+		}
+		else
+		{
+			if(!(KVSCSC_pConnection->sendFmtData("CAP %s :%s", szEncodedCommand.data(), szEncodedParams.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();
 		}
 
@@ -576,7 +592,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(chanadmin)
 	{
-		return multipleModeCommand(__pContext,__pParams,__pSwitches,'+','a');
+		return multipleModeCommand(__pContext, __pParams, __pSwitches, '+', 'a');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -608,7 +624,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(chanowner)
 	{
-		return multipleModeCommand(__pContext,__pParams,__pSwitches,'+','q');
+		return multipleModeCommand(__pContext, __pParams, __pSwitches, '+', 'q');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -662,26 +678,26 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(ctcp)
 	{
-		QString szTarget,szCtcpData;
+		QString szTarget, szCtcpData;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("target",KVS_PT_NONEMPTYSTRING,0,szTarget)
-			KVSCSC_PARAMETER("ctcp_data",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szCtcpData)
+		KVSCSC_PARAMETER("target", KVS_PT_NONEMPTYSTRING, 0, szTarget)
+		KVSCSC_PARAMETER("ctcp_data", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szCtcpData)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		if(KviQString::equalCI(szCtcpData,"PING"))
+		if(KviQString::equalCI(szCtcpData, "PING"))
 		{
 			struct timeval tv;
-			kvi_gettimeofday(&tv,0);
-			KviQString::appendFormatted(szCtcpData," %d.%d",tv.tv_sec,tv.tv_usec);
+			kvi_gettimeofday(&tv, 0);
+			KviQString::appendFormatted(szCtcpData, " %d.%d", tv.tv_sec, tv.tv_usec);
 		}
 
 		QByteArray szT = KVSCSC_pConnection->encodeText(szTarget);
 		QByteArray szD = KVSCSC_pConnection->encodeText(szCtcpData);
 
 		if(!(KVSCSC_pConnection->sendFmtData("%s %s :%c%s%c",
-				KVSCSC_pSwitches->find('n',"notice") ? "NOTICE" : "PRIVMSG",szT.data(),0x01,szD.data(),0x01)))
+		       KVSCSC_pSwitches->find('n', "notice") ? "NOTICE" : "PRIVMSG", szT.data(), 0x01, szD.data(), 0x01)))
 			return KVSCSC_pContext->warningNoIrcConnection();
 
 		return true;
@@ -719,13 +735,14 @@ namespace KviKvsCoreSimpleCommands
 
 		QString szAll;
 		KVSCSC_pParams->allAsString(szAll);
-		if(KVSCSC_pSwitches->find('c',"scriptcontext-name"))
-			szAll.prepend(__pContext->script()->name()+": ");
-		if(KVSCSC_pSwitches->find('s',"system-console"))
-			qDebug("%s",szAll.toUtf8().data());
-		else {
+		if(KVSCSC_pSwitches->find('c', "scriptcontext-name"))
+			szAll.prepend(__pContext->script()->name() + ": ");
+		if(KVSCSC_pSwitches->find('s', "system-console"))
+			qDebug("%s", szAll.toUtf8().data());
+		else
+		{
 			KviWindow * pWnd = KviDebugWindow::getInstance();
-			pWnd->outputNoFmt(KVI_OUT_NONE,szAll);
+			pWnd->outputNoFmt(KVI_OUT_NONE, szAll);
 		}
 		return true;
 	}
@@ -759,7 +776,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(dechanadmin)
 	{
-		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','a');
+		return multipleModeCommand(__pContext, __pParams, __pSwitches, '-', 'a');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -791,7 +808,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(dechanowner)
 	{
-		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','q');
+		return multipleModeCommand(__pContext, __pParams, __pSwitches, '-', 'q');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -823,7 +840,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(dehalfop)
 	{
-		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','h');
+		return multipleModeCommand(__pContext, __pParams, __pSwitches, '-', 'h');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -890,20 +907,24 @@ namespace KviKvsCoreSimpleCommands
 	{
 		kvs_hobject_t hObject = (kvs_hobject_t)0;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("objectHandle",KVS_PT_HOBJECT,0,hObject)
+		KVSCSC_PARAMETER("objectHandle", KVS_PT_HOBJECT, 0, hObject)
 		KVSCSC_PARAMETERS_END
 		if(hObject == (kvs_hobject_t)0)
 		{
-			if(!KVSCSC_pSwitches->find('q',"quiet"))
-				KVSCSC_pContext->warning(__tr2qs_ctx("Can't delete a null object reference","kvs"));
-		} else {
+			if(!KVSCSC_pSwitches->find('q', "quiet"))
+				KVSCSC_pContext->warning(__tr2qs_ctx("Can't delete a null object reference", "kvs"));
+		}
+		else
+		{
 			KviKvsObject * o = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 			if(!o)
 			{
-				if(!KVSCSC_pSwitches->find('q',"quiet"))
-					KVSCSC_pContext->warning(__tr2qs_ctx("Can't delete a non-existent object","kvs"));
-			} else {
-				if(KVSCSC_pSwitches->find('i',"immediate"))
+				if(!KVSCSC_pSwitches->find('q', "quiet"))
+					KVSCSC_pContext->warning(__tr2qs_ctx("Can't delete a non-existent object", "kvs"));
+			}
+			else
+			{
+				if(KVSCSC_pSwitches->find('i', "immediate"))
 					o->dieNow();
 				else
 					o->die();
@@ -940,16 +961,18 @@ namespace KviKvsCoreSimpleCommands
 	{
 		QString szParams;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("params",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szParams)
+		KVSCSC_PARAMETER("params", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szParams)
 		KVSCSC_PARAMETERS_END
 
 		// We just alias the popup.delitem function
-		QString szSwitches="";
-		if(KVSCSC_pSwitches->find('d',"deep"))szSwitches.append("-d ");
-		if(KVSCSC_pSwitches->find('q',"quiet"))szSwitches.append("-q ");
+		QString szSwitches = "";
+		if(KVSCSC_pSwitches->find('d', "deep"))
+			szSwitches.append("-d ");
+		if(KVSCSC_pSwitches->find('q', "quiet"))
+			szSwitches.append("-q ");
 
 		KviQString::escapeKvs(&szParams);
-		KviKvsScript s("delpopupitem","popup.delitem " + szSwitches + szParams);
+		KviKvsScript s("delpopupitem", "popup.delitem " + szSwitches + szParams);
 		s.run(KVSCSC_pContext->window());
 		return true;
 	}
@@ -983,7 +1006,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(deop)
 	{
-		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','o');
+		return multipleModeCommand(__pContext, __pParams, __pSwitches, '-', 'o');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1015,7 +1038,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(deuserop)
 	{
-		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','u');
+		return multipleModeCommand(__pContext, __pParams, __pSwitches, '-', 'u');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1047,7 +1070,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(devoice)
 	{
-		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','v');
+		return multipleModeCommand(__pContext, __pParams, __pSwitches, '-', 'v');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1127,7 +1150,7 @@ namespace KviKvsCoreSimpleCommands
 		if(!KVSCSC_pSwitches->isEmpty())
 		{
 			KviKvsVariant * v;
-			if((v = KVSCSC_pSwitches->find('w',"window")))
+			if((v = KVSCSC_pSwitches->find('w', "window")))
 			{
 				QString szWnd;
 				v->asString(szWnd);
@@ -1135,30 +1158,32 @@ namespace KviKvsCoreSimpleCommands
 				pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 				if(!pWnd)
 				{
-					KVSCSC_pContext->warning(__tr2qs_ctx("The argument of the -w switch did not evaluate to a valid window ID: using default","kvs"));
+					KVSCSC_pContext->warning(__tr2qs_ctx("The argument of the -w switch did not evaluate to a valid window ID: using default", "kvs"));
 					pWnd = KVSCSC_pContext->window();
 				}
 			}
 
-			if((v = KVSCSC_pSwitches->find('i',"color-set")))
+			if((v = KVSCSC_pSwitches->find('i', "color-set")))
 			{
 				if(!v->asInteger(iMsgType))
 				{
-					KVSCSC_pContext->warning(__tr2qs_ctx("The argument of the -i switch did not evaluate to a number: using default","kvs"));
+					KVSCSC_pContext->warning(__tr2qs_ctx("The argument of the -i switch did not evaluate to a number: using default", "kvs"));
 					iMsgType = KVI_OUT_NONE;
-				} else {
+				}
+				else
+				{
 					iMsgType = iMsgType % KVI_NUM_MSGTYPE_OPTIONS;
 				}
 			}
 
-			if(KVSCSC_pSwitches->find('d',"debug"))
+			if(KVSCSC_pSwitches->find('d', "debug"))
 			{
 				pWnd = KviDebugWindow::getInstance();
 			}
 		}
 
-		int iFlags = KVSCSC_pSwitches->find('n',"no-timestamp") ? KviIrcView::NoTimestamp : 0;
-		pWnd->outputNoFmt(iMsgType,szAll,iFlags);
+		int iFlags = KVSCSC_pSwitches->find('n', "no-timestamp") ? KviIrcView::NoTimestamp : 0;
+		pWnd->outputNoFmt(iMsgType, szAll, iFlags);
 		return true;
 	}
 
@@ -1234,12 +1259,12 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(echoprivmsg)
 	{
-		QString szNick,szUser,szHost,szText;
+		QString szNick, szUser, szHost, szText;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
-			KVSCSC_PARAMETER("user",KVS_PT_STRING,0,szUser)
-			KVSCSC_PARAMETER("host",KVS_PT_STRING,0,szHost)
-			KVSCSC_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szText)
+		KVSCSC_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
+		KVSCSC_PARAMETER("user", KVS_PT_STRING, 0, szUser)
+		KVSCSC_PARAMETER("host", KVS_PT_STRING, 0, szHost)
+		KVSCSC_PARAMETER("text", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szText)
 		KVSCSC_PARAMETERS_END
 
 		int type = KVI_OUT_NONE;
@@ -1250,68 +1275,75 @@ namespace KviKvsCoreSimpleCommands
 
 		KviKvsVariant * v;
 
-
-		if( (v = KVSCSC_pSwitches->find('w',"window")) )
+		if((v = KVSCSC_pSwitches->find('w', "window")))
 		{
 			QString szWin;
 			v->asString(szWin);
 			pWnd = g_pApp->findWindow(szWin);
 			if(!pWnd)
 			{
-				KVSCSC_pContext->warning(__tr2qs_ctx("Window '%Q' not found, using current one","kvs"),&szWin);
+				KVSCSC_pContext->warning(__tr2qs_ctx("Window '%Q' not found, using current one", "kvs"), &szWin);
 				pWnd = KVSCSC_pWindow;
 			}
 		}
 
-		if( (v = KVSCSC_pSwitches->find('i',"color-set")) )
+		if((v = KVSCSC_pSwitches->find('i', "color-set")))
 		{
 			kvs_int_t msgType;
 			if(v->asInteger(msgType))
 			{
-				if(msgType < 0)msgType = -msgType;
+				if(msgType < 0)
+					msgType = -msgType;
 				type = (int)(msgType % KVI_NUM_MSGTYPE_OPTIONS);
-			} else KVSCSC_pContext->warning(__tr2qs_ctx("Invalid color-set specification, using default","kvs"));
-		} else {
-			bool bIsMe = pWnd->connection() && KviQString::equalCI(pWnd->connection()->currentNickName(),szNick);
+			}
+			else
+				KVSCSC_pContext->warning(__tr2qs_ctx("Invalid color-set specification, using default", "kvs"));
+		}
+		else
+		{
+			bool bIsMe = pWnd->connection() && KviQString::equalCI(pWnd->connection()->currentNickName(), szNick);
 
 			switch(pWnd->type())
 			{
 				case KviWindow::Channel:
 					type = bIsMe ? KVI_OUT_OWNPRIVMSG : KVI_OUT_CHANPRIVMSG;
-				break;
+					break;
 				case KviWindow::Query:
 					type = bIsMe ? KVI_OUT_OWNPRIVMSG : KVI_OUT_QUERYPRIVMSG;
-				break;
+					break;
 				default:
 					// keep KVI_OUT_NONE
-				break;
+					break;
 			}
 		}
 
-		QString szPrefix,szSuffix;
+		QString szPrefix, szSuffix;
 		bool bPrefix = false;
 		bool bSuffix = false;
 
-		if( (v = KVSCSC_pSwitches->find('p',"prefix")) )
+		if((v = KVSCSC_pSwitches->find('p', "prefix")))
 		{
 			v->asString(szPrefix);
 			bPrefix = true;
 		}
-		if( (v = KVSCSC_pSwitches->find('s',"suffix")) )
+		if((v = KVSCSC_pSwitches->find('s', "suffix")))
 		{
 			v->asString(szSuffix);
 			bSuffix = true;
 		}
 
 		int iFlags = 0;
-		if(KVSCSC_pSwitches->find('n',"no-highlighting"))iFlags |= KviConsoleWindow::NoHighlighting;
-		if(KVSCSC_pSwitches->find('f',"no-flashing"))iFlags |= KviConsoleWindow::NoWindowFlashing;
-		if(KVSCSC_pSwitches->find('x',"no-notifier"))iFlags |= KviConsoleWindow::NoNotifier;
+		if(KVSCSC_pSwitches->find('n', "no-highlighting"))
+			iFlags |= KviConsoleWindow::NoHighlighting;
+		if(KVSCSC_pSwitches->find('f', "no-flashing"))
+			iFlags |= KviConsoleWindow::NoWindowFlashing;
+		if(KVSCSC_pSwitches->find('x', "no-notifier"))
+			iFlags |= KviConsoleWindow::NoNotifier;
 
-		pConsole->outputPrivmsg(pWnd,type,
-				szNick,szUser,szHost,szText,
-				iFlags,
-				bPrefix ? szPrefix : QString(),bSuffix ? szSuffix : QString());
+		pConsole->outputPrivmsg(pWnd, type,
+		    szNick, szUser, szHost, szText,
+		    iFlags,
+		    bPrefix ? szPrefix : QString(), bSuffix ? szSuffix : QString());
 
 		return true;
 	}
@@ -1341,7 +1373,7 @@ namespace KviKvsCoreSimpleCommands
 
 		QString szAll;
 		KVSCSC_pParams->allAsString(szAll);
-		KVSCSC_pContext->error("%Q",&szAll);
+		KVSCSC_pContext->error("%Q", &szAll);
 		return false;
 	}
 
@@ -1421,17 +1453,17 @@ namespace KviKvsCoreSimpleCommands
 	{
 		QString szCommands;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("commands",KVS_PT_STRING,KVS_PF_APPENDREMAINING,szCommands)
+		KVSCSC_PARAMETER("commands", KVS_PT_STRING, KVS_PF_APPENDREMAINING, szCommands)
 		KVSCSC_PARAMETERS_END
 
-		KviKvsScript s("eval::inner",szCommands);
+		KviKvsScript s("eval::inner", szCommands);
 		int iRunFlags = 0;
-		if(KVSCSC_pContext->reportingDisabled() || KVSCSC_pSwitches->find('q',"quiet"))
+		if(KVSCSC_pContext->reportingDisabled() || KVSCSC_pSwitches->find('q', "quiet"))
 			iRunFlags |= KviKvsScript::Quiet;
-		bool bRet = s.run(KVSCSC_pContext,iRunFlags) ? true : false;
+		bool bRet = s.run(KVSCSC_pContext, iRunFlags) ? true : false;
 		if(!bRet)
 		{
-			if(!KVSCSC_pSwitches->find('f',"force"))
+			if(!KVSCSC_pSwitches->find('f', "force"))
 				return false;
 			KVSCSC_pContext->clearError();
 		}
@@ -1474,12 +1506,12 @@ namespace KviKvsCoreSimpleCommands
 	*/
 	KVSCSC(eventctl)
 	{
-		QString szEventName,szHandlerName;
+		QString szEventName, szHandlerName;
 		KviKvsVariantList vList;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("event_name",KVS_PT_NONEMPTYSTRING,0,szEventName)
-			KVSCSC_PARAMETER("handler_name",KVS_PT_NONEMPTYSTRING,0,szHandlerName)
-			KVSCSC_PARAMETER("parameters",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,vList)
+		KVSCSC_PARAMETER("event_name", KVS_PT_NONEMPTYSTRING, 0, szEventName)
+		KVSCSC_PARAMETER("handler_name", KVS_PT_NONEMPTYSTRING, 0, szHandlerName)
+		KVSCSC_PARAMETER("parameters", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, vList)
 		KVSCSC_PARAMETERS_END
 
 		bool bOk;
@@ -1490,56 +1522,67 @@ namespace KviKvsCoreSimpleCommands
 		{
 			if(!KviKvsEventManager::instance()->isValidRawEvent(iNumber))
 			{
-				if(!KVSCSC_pSwitches->find('q',"quiet"))
-					KVSCSC_pContext->warning(__tr2qs_ctx("No such event (%Q)","kvs"),&szEventName);
+				if(!KVSCSC_pSwitches->find('q', "quiet"))
+					KVSCSC_pContext->warning(__tr2qs_ctx("No such event (%Q)", "kvs"), &szEventName);
 				return true;
 			}
-		} else {
+		}
+		else
+		{
 			iNumber = KviKvsEventManager::instance()->findAppEventIndexByName(szEventName);
 			if(!KviKvsEventManager::instance()->isValidAppEvent(iNumber))
 			{
-				if(!KVSCSC_pSwitches->find('q',"quiet"))
-					KVSCSC_pContext->warning(__tr2qs_ctx("No such event (%Q)","kvs"),&szEventName);
+				if(!KVSCSC_pSwitches->find('q', "quiet"))
+					KVSCSC_pContext->warning(__tr2qs_ctx("No such event (%Q)", "kvs"), &szEventName);
 				return true;
 			}
 		}
 
-		if(KVSCSC_pSwitches->find('u',"unregister"))
+		if(KVSCSC_pSwitches->find('u', "unregister"))
 		{
 			// unregister it
 			if(bIsRaw)
 			{
-				if(!KviKvsEventManager::instance()->removeScriptRawHandler(iNumber,szHandlerName))
-					if(!KVSCSC_pSwitches->find('q',"quiet"))
-						KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for RAW numeric event '%d'","kvs"),&szHandlerName,iNumber);
-			} else {
-				if(!KviKvsEventManager::instance()->removeScriptAppHandler(iNumber,szHandlerName))
-					if(!KVSCSC_pSwitches->find('q',"quiet"))
-						KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for event '%Q'","kvs"),&szHandlerName,&szEventName);
+				if(!KviKvsEventManager::instance()->removeScriptRawHandler(iNumber, szHandlerName))
+					if(!KVSCSC_pSwitches->find('q', "quiet"))
+						KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for RAW numeric event '%d'", "kvs"), &szHandlerName, iNumber);
 			}
-		} else if(KVSCSC_pSwitches->find('e',"enable") || KVSCSC_pSwitches->find('d',"disable"))
+			else
+			{
+				if(!KviKvsEventManager::instance()->removeScriptAppHandler(iNumber, szHandlerName))
+					if(!KVSCSC_pSwitches->find('q', "quiet"))
+						KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for event '%Q'", "kvs"), &szHandlerName, &szEventName);
+			}
+		}
+		else if(KVSCSC_pSwitches->find('e', "enable") || KVSCSC_pSwitches->find('d', "disable"))
 		{
 			// enable it
 			if(bIsRaw)
 			{
-				if(!KviKvsEventManager::instance()->enableScriptRawHandler(iNumber,szHandlerName,KVSCSC_pSwitches->find('e',"enable")))
-					if(!KVSCSC_pSwitches->find('q',"quiet"))
-						KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for RAW numeric event '%d'","kvs"),&szHandlerName,iNumber);
-			} else {
-				if(!KviKvsEventManager::instance()->enableScriptAppHandler(iNumber,szHandlerName,KVSCSC_pSwitches->find('e',"enable")))
-					if(!KVSCSC_pSwitches->find('q',"quiet"))
-						KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for event '%Q'","kvs"),&szHandlerName,&szEventName);
+				if(!KviKvsEventManager::instance()->enableScriptRawHandler(iNumber, szHandlerName, KVSCSC_pSwitches->find('e', "enable")))
+					if(!KVSCSC_pSwitches->find('q', "quiet"))
+						KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for RAW numeric event '%d'", "kvs"), &szHandlerName, iNumber);
 			}
-		} else {
+			else
+			{
+				if(!KviKvsEventManager::instance()->enableScriptAppHandler(iNumber, szHandlerName, KVSCSC_pSwitches->find('e', "enable")))
+					if(!KVSCSC_pSwitches->find('q', "quiet"))
+						KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for event '%Q'", "kvs"), &szHandlerName, &szEventName);
+			}
+		}
+		else
+		{
 			// trigger it
 			KviKvsScriptEventHandler * h;
 			QString code;
 
 			if(bIsRaw)
 			{
-				h = KviKvsEventManager::instance()->findScriptRawHandler(iNumber,szHandlerName);
-			} else {
-				h = KviKvsEventManager::instance()->findScriptAppHandler(iNumber,szHandlerName);
+				h = KviKvsEventManager::instance()->findScriptRawHandler(iNumber, szHandlerName);
+			}
+			else
+			{
+				h = KviKvsEventManager::instance()->findScriptAppHandler(iNumber, szHandlerName);
 			}
 
 			if(h)
@@ -1547,10 +1590,12 @@ namespace KviKvsCoreSimpleCommands
 				KviKvsScript * s = h->script();
 				KviKvsScript copy(*s);
 				KviKvsVariant retVal;
-				copy.run(KVSCSC_pWindow,&vList,0,KviKvsScript::PreserveParams);
-			} else {
-				if(!KVSCSC_pSwitches->find('q',"quiet"))
-					KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for event '%Q'","kvs"),&szHandlerName,&szEventName);
+				copy.run(KVSCSC_pWindow, &vList, 0, KviKvsScript::PreserveParams);
+			}
+			else
+			{
+				if(!KVSCSC_pSwitches->find('q', "quiet"))
+					KVSCSC_pContext->warning(__tr2qs_ctx("No handler '%Q' for event '%Q'", "kvs"), &szHandlerName, &szEventName);
 			}
 		}
 
@@ -1582,5 +1627,4 @@ namespace KviKvsCoreSimpleCommands
 		g_pApp->quit();
 		return true;
 	}
-
 };

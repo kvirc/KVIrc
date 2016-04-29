@@ -29,9 +29,9 @@
 #include "KviPointerHashTable.h"
 
 #ifdef COMPILE_ON_WINDOWS
-	#include "KviCustomToolBarDescriptor.h"
+#include "KviCustomToolBarDescriptor.h"
 #else
-	class KviCustomToolBarDescriptor;
+class KviCustomToolBarDescriptor;
 #endif
 
 class KVIRC_API KviCustomToolBar : public KviToolBar
@@ -40,13 +40,16 @@ class KVIRC_API KviCustomToolBar : public KviToolBar
 	Q_OBJECT
 protected:
 	KviCustomToolBar(KviCustomToolBarDescriptor * d, const QString & szLabel, Qt::ToolBarArea type = Qt::TopToolBarArea, const char * pcName = "unnamed_customtoolbar");
+
 public:
 	~KviCustomToolBar();
+
 protected:
-	KviCustomToolBarDescriptor       * m_pDescriptor;
-	KviPointerHashTable<void *,bool> * m_pFilteredChildren;
+	KviCustomToolBarDescriptor * m_pDescriptor;
+	KviPointerHashTable<void *, bool> * m_pFilteredChildren;
+
 public:
-	KviCustomToolBarDescriptor * descriptor(){ return m_pDescriptor; };
+	KviCustomToolBarDescriptor * descriptor() { return m_pDescriptor; };
 protected:
 	virtual void dragEnterEvent(QDragEnterEvent * e);
 	virtual void dragMoveEvent(QDragMoveEvent * e);
@@ -71,10 +74,13 @@ class KviCustomToolBarSeparator : public QWidget
 	Q_OBJECT
 public:
 	KviCustomToolBarSeparator(KviCustomToolBar * pParent, const char * pcName);
+
 protected:
 	KviCustomToolBar * m_pToolBar;
+
 public:
 	QSize sizeHint() const;
+
 protected:
 	void paintEvent(QPaintEvent * e);
 };

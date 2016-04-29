@@ -35,14 +35,17 @@
 class KVILIB_API KviRegisteredUserGroup : public KviHeapObject
 {
 	friend class KviRegisteredUserDataBase;
+
 public:
 	KviRegisteredUserGroup(const QString & szName);
 	~KviRegisteredUserGroup();
+
 private:
 	QString m_szName;
+
 public:
 	void setName(const QString & szName) { m_szName = szName; };
-	const QString & name(){ return m_szName; };
+	const QString & name() { return m_szName; };
 };
 
 #endif // _KVIREGUSERGROUP_H_

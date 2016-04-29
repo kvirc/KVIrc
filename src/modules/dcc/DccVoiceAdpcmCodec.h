@@ -50,24 +50,24 @@
 typedef struct adpcm_state
 {
 	short valprev; /* Previous output value */
-	char  index;   /* HelpIndex into stepsize table */
+	char index;    /* HelpIndex into stepsize table */
 } ADPCM_state;
-
 
 class DccVoiceAdpcmCodec : public DccVoiceCodec
 {
 public:
 	DccVoiceAdpcmCodec();
 	virtual ~DccVoiceAdpcmCodec();
+
 private:
 	ADPCM_state * m_pEncodeState;
 	ADPCM_state * m_pDecodeState;
+
 public:
-	virtual void encode(KviDataBuffer * signal,KviDataBuffer * stream);
-	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
+	virtual void encode(KviDataBuffer * signal, KviDataBuffer * stream);
+	virtual void decode(KviDataBuffer * stream, KviDataBuffer * signal);
 	virtual int encodedFrameSize();
 	virtual int decodedFrameSize();
 };
-
 
 #endif //_ADPCMCODEC_H_

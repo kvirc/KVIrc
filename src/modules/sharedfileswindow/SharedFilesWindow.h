@@ -44,35 +44,35 @@ class QPushButton;
 class SharedFilesTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	SharedFilesTreeWidgetItem(QTreeWidget * lv,KviSharedFile * f);
+	SharedFilesTreeWidgetItem(QTreeWidget * lv, KviSharedFile * f);
 	~SharedFilesTreeWidgetItem();
+
 protected:
 	KviSharedFile * m_pSharedFilePointer; // THIS IS READ ONLY!
 public:
-	KviSharedFile * readOnlySharedFilePointer(){ return m_pSharedFilePointer; };
+	KviSharedFile * readOnlySharedFilePointer() { return m_pSharedFilePointer; };
 };
-
 
 class SharedFileEditDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	SharedFileEditDialog(QWidget* par,KviSharedFile * f = 0);
+	SharedFileEditDialog(QWidget * par, KviSharedFile * f = 0);
 	~SharedFileEditDialog();
 
 	QDateTimeEdit * m_pExpireDateTimeEdit;
-	QLineEdit     * m_pFilePathEdit;
-	QLineEdit     * m_pUserMaskEdit;
-	QPushButton   * m_pBrowseButton;
-	QLineEdit     * m_pShareNameEdit;
-	QCheckBox     * m_pExpireCheckBox;
+	QLineEdit * m_pFilePathEdit;
+	QLineEdit * m_pUserMaskEdit;
+	QPushButton * m_pBrowseButton;
+	QLineEdit * m_pShareNameEdit;
+	QCheckBox * m_pExpireCheckBox;
+
 public:
 	KviSharedFile * getResult();
 protected slots:
 	void okClicked();
 	void browse();
 };
-
 
 class SharedFilesWindow : public KviWindow
 {
@@ -81,21 +81,25 @@ class SharedFilesWindow : public KviWindow
 public:
 	SharedFilesWindow();
 	~SharedFilesWindow();
+
 protected:
-	QSplitter           * m_pVertSplitter;
+	QSplitter * m_pVertSplitter;
 
 	KviThemedTreeWidget * m_pTreeWidget;
 
-	QPushButton         * m_pRemoveButton;
-	QPushButton         * m_pEditButton;
-	QPushButton         * m_pAddButton;
+	QPushButton * m_pRemoveButton;
+	QPushButton * m_pEditButton;
+	QPushButton * m_pAddButton;
+
 public: // Methods
 	virtual void die();
+
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getBaseLogFileName(QString &buffer);
+	virtual void resizeEvent(QResizeEvent * e);
+	virtual void getBaseLogFileName(QString & buffer);
+
 public:
 	virtual QSize sizeHint() const;
 protected slots:

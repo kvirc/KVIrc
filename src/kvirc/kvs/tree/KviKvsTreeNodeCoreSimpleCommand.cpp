@@ -27,25 +27,24 @@
 #include "KviKvsTreeNodeSwitchList.h"
 #include "KviKvsRunTimeContext.h"
 
-KviKvsTreeNodeCoreSimpleCommand::KviKvsTreeNodeCoreSimpleCommand(const QChar * pLocation,const QString &szCmdName,KviKvsTreeNodeDataList * params,KviKvsCoreSimpleCommandExecRoutine * r)
-: KviKvsTreeNodeSimpleCommand(pLocation,szCmdName,params)
+KviKvsTreeNodeCoreSimpleCommand::KviKvsTreeNodeCoreSimpleCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params, KviKvsCoreSimpleCommandExecRoutine * r)
+    : KviKvsTreeNodeSimpleCommand(pLocation, szCmdName, params)
 {
 	m_pExecRoutine = r;
 }
-
 
 KviKvsTreeNodeCoreSimpleCommand::~KviKvsTreeNodeCoreSimpleCommand()
 {
 }
 
-void KviKvsTreeNodeCoreSimpleCommand::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeCoreSimpleCommand::contextDescription(QString & szBuffer)
 {
 	szBuffer = QString("Core Simple Command \"%1\"").arg(m_szCmdName);
 }
 
 void KviKvsTreeNodeCoreSimpleCommand::dump(const char * prefix)
 {
-	qDebug("%s CoreSimpleCommand(%s)",prefix,m_szCmdName.toUtf8().data());
+	qDebug("%s CoreSimpleCommand(%s)", prefix, m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 }
@@ -54,15 +53,17 @@ bool KviKvsTreeNodeCoreSimpleCommand::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariantList l;
 	l.setAutoDelete(true);
-	if(!(m_pParams->evaluate(c,&l)))return false;
+	if(!(m_pParams->evaluate(c, &l)))
+		return false;
 
 	KviKvsSwitchList swl;
 	if(m_pSwitches)
 	{
-		if(!(m_pSwitches->evaluate(c,&swl)))return false;
+		if(!(m_pSwitches->evaluate(c, &swl)))
+			return false;
 	}
 
 	c->setDefaultReportLocation(this);
 
-	return m_pExecRoutine->proc(c,&l,&swl);
+	return m_pExecRoutine->proc(c, &l, &swl);
 }

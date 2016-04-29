@@ -40,132 +40,131 @@ namespace KviKvsCoreSimpleCommands
 	{
 		KviKvsKernel * pKern = KviKvsKernel::instance();
 
-#define _REGCMD(__cmdName,__routine) \
-		{ \
-			KviKvsCoreSimpleCommandExecRoutine * r = new KviKvsCoreSimpleCommandExecRoutine; \
-			r->proc = KVI_PTR2MEMBER(KviKvsCoreSimpleCommands::__routine); \
-			pKern->registerCoreSimpleCommandExecRoutine(QString(__cmdName),r); \
-		}
+#define _REGCMD(__cmdName, __routine)                                                    \
+	{                                                                                    \
+		KviKvsCoreSimpleCommandExecRoutine * r = new KviKvsCoreSimpleCommandExecRoutine; \
+		r->proc = KVI_PTR2MEMBER(KviKvsCoreSimpleCommands::__routine);                   \
+		pKern->registerCoreSimpleCommandExecRoutine(QString(__cmdName), r);              \
+	}
 		// a_f
-		_REGCMD("admin",rfc2812wrapper)
-		_REGCMD("away",away)
-		_REGCMD("back",back)
-		_REGCMD("ban",ban)
-		_REGCMD("beep",beep)
-		_REGCMD("buttonctl",buttonctl)
-		_REGCMD("cap",cap)
-		_REGCMD("chanadmin",chanadmin)
-		_REGCMD("chanowner",chanowner)
-		_REGCMD("codepage",rfc2812wrapper)
-		_REGCMD("ctcp",ctcp)
-		_REGCMD("debug",debugCKEYWORDWORKAROUND)
-		_REGCMD("dechanadmin",dechanadmin)
-		_REGCMD("dechanowner",dechanowner)
-		_REGCMD("dehalfop",dehalfop)
-		_REGCMD("delete",deleteCKEYWORDWORKAROUND)
-		_REGCMD("delpopupitem",delpopupitem)
-		_REGCMD("destroy",deleteCKEYWORDWORKAROUND)
-		_REGCMD("deop",deop)
-		_REGCMD("deuserop",deuserop)
-		_REGCMD("devoice",devoice)
-		_REGCMD("die",error)
-		_REGCMD("echoprivmsg",echoprivmsg)
-		_REGCMD("echo",echo)
-		_REGCMD("error",error)
-		_REGCMD("eval",eval)
-		_REGCMD("eventctl",eventctl)
-		_REGCMD("exit",exit)
+		_REGCMD("admin", rfc2812wrapper)
+		_REGCMD("away", away)
+		_REGCMD("back", back)
+		_REGCMD("ban", ban)
+		_REGCMD("beep", beep)
+		_REGCMD("buttonctl", buttonctl)
+		_REGCMD("cap", cap)
+		_REGCMD("chanadmin", chanadmin)
+		_REGCMD("chanowner", chanowner)
+		_REGCMD("codepage", rfc2812wrapper)
+		_REGCMD("ctcp", ctcp)
+		_REGCMD("debug", debugCKEYWORDWORKAROUND)
+		_REGCMD("dechanadmin", dechanadmin)
+		_REGCMD("dechanowner", dechanowner)
+		_REGCMD("dehalfop", dehalfop)
+		_REGCMD("delete", deleteCKEYWORDWORKAROUND)
+		_REGCMD("delpopupitem", delpopupitem)
+		_REGCMD("destroy", deleteCKEYWORDWORKAROUND)
+		_REGCMD("deop", deop)
+		_REGCMD("deuserop", deuserop)
+		_REGCMD("devoice", devoice)
+		_REGCMD("die", error)
+		_REGCMD("echoprivmsg", echoprivmsg)
+		_REGCMD("echo", echo)
+		_REGCMD("error", error)
+		_REGCMD("eval", eval)
+		_REGCMD("eventctl", eventctl)
+		_REGCMD("exit", exit)
 		// g_l
-		_REGCMD("halfop",halfop)
-		_REGCMD("halt",halt)
-		_REGCMD("help",help)
-		_REGCMD("host",host)
-		_REGCMD("include",parse)
-		_REGCMD("info",rfc2812wrapper)
-		_REGCMD("inject",inject)
-		_REGCMD("invite",rfc2812wrapper)
-		_REGCMD("ison",rfc2812wrapper)
-		_REGCMD("join",join)
-		_REGCMD("kick",kick)
-		_REGCMD("killtimer",killtimer)
-		_REGCMD("leave",part)
-		_REGCMD("links",rfc2812wrapper)
-		_REGCMD("list",rfc2812wrapper)
-		_REGCMD("listtimers",listtimers)
-		_REGCMD("lusers",rfc2812wrapper)
+		_REGCMD("halfop", halfop)
+		_REGCMD("halt", halt)
+		_REGCMD("help", help)
+		_REGCMD("host", host)
+		_REGCMD("include", parse)
+		_REGCMD("info", rfc2812wrapper)
+		_REGCMD("inject", inject)
+		_REGCMD("invite", rfc2812wrapper)
+		_REGCMD("ison", rfc2812wrapper)
+		_REGCMD("join", join)
+		_REGCMD("kick", kick)
+		_REGCMD("killtimer", killtimer)
+		_REGCMD("leave", part)
+		_REGCMD("links", rfc2812wrapper)
+		_REGCMD("list", rfc2812wrapper)
+		_REGCMD("listtimers", listtimers)
+		_REGCMD("lusers", rfc2812wrapper)
 		// m_r
-		_REGCMD("map",rfc2812wrapper) // Technically not RFC
-		_REGCMD("me",me)
-		_REGCMD("mode",mode)
-		_REGCMD("motd",rfc2812wrapper)
-		_REGCMD("msg",privmsg)
-		_REGCMD("nick",nick)
-		_REGCMD("notice",notice)
-		_REGCMD("op",op)
-		_REGCMD("openurl",openurl)
-		_REGCMD("oper",rfc2812wrapper)
-		_REGCMD("option",option)
-		_REGCMD("parse",parse)
-		_REGCMD("part",part)
-		_REGCMD("pass",rfc2812wrapper)
-		_REGCMD("play",play)
-		_REGCMD("popup",popup)
-		_REGCMD("privmsg",privmsg)
-		_REGCMD("query",query)
-		_REGCMD("quit",quit)
-		_REGCMD("quote",raw)
-		_REGCMD("raise",raise)
-		_REGCMD("raw",raw)
-		_REGCMD("return",returnCKEYWORDWORKAROUND)
-		_REGCMD("rebind",rebind)
+		_REGCMD("map", rfc2812wrapper) // Technically not RFC
+		_REGCMD("me", me)
+		_REGCMD("mode", mode)
+		_REGCMD("motd", rfc2812wrapper)
+		_REGCMD("msg", privmsg)
+		_REGCMD("nick", nick)
+		_REGCMD("notice", notice)
+		_REGCMD("op", op)
+		_REGCMD("openurl", openurl)
+		_REGCMD("oper", rfc2812wrapper)
+		_REGCMD("option", option)
+		_REGCMD("parse", parse)
+		_REGCMD("part", part)
+		_REGCMD("pass", rfc2812wrapper)
+		_REGCMD("play", play)
+		_REGCMD("popup", popup)
+		_REGCMD("privmsg", privmsg)
+		_REGCMD("query", query)
+		_REGCMD("quit", quit)
+		_REGCMD("quote", raw)
+		_REGCMD("raise", raise)
+		_REGCMD("raw", raw)
+		_REGCMD("return", returnCKEYWORDWORKAROUND)
+		_REGCMD("rebind", rebind)
 		// s_z
-		_REGCMD("run",run)
-		_REGCMD("say",say)
-		_REGCMD("server",server)
-		_REGCMD("service",rfc2812wrapper)
-		_REGCMD("setmenu",setmenu)
-		_REGCMD("setreturn",setreturn)
-		_REGCMD("sockets",rfc2812wrapper)
-		_REGCMD("squery",squery)
-		_REGCMD("squit",rfc2812wrapper)
-		_REGCMD("srand",srand)
-		_REGCMD("stats",rfc2812wrapper)
-		_REGCMD("time",rfc2812wrapper)
-		_REGCMD("topic",topic)
-		_REGCMD("trace",rfc2812wrapper)
-		_REGCMD("trload",trload)
-		_REGCMD("trunload",trunload)
-		_REGCMD("unban",unban)
-		_REGCMD("userop",userop)
-		_REGCMD("version",rfc2812wrapper)
-		_REGCMD("voice",voice)
-		_REGCMD("warning",warning)
-		_REGCMD("who",who)
-		_REGCMD("whois",whois)
-		_REGCMD("whowas",whowas)
+		_REGCMD("run", run)
+		_REGCMD("say", say)
+		_REGCMD("server", server)
+		_REGCMD("service", rfc2812wrapper)
+		_REGCMD("setmenu", setmenu)
+		_REGCMD("setreturn", setreturn)
+		_REGCMD("sockets", rfc2812wrapper)
+		_REGCMD("squery", squery)
+		_REGCMD("squit", rfc2812wrapper)
+		_REGCMD("srand", srand)
+		_REGCMD("stats", rfc2812wrapper)
+		_REGCMD("time", rfc2812wrapper)
+		_REGCMD("topic", topic)
+		_REGCMD("trace", rfc2812wrapper)
+		_REGCMD("trload", trload)
+		_REGCMD("trunload", trunload)
+		_REGCMD("unban", unban)
+		_REGCMD("userop", userop)
+		_REGCMD("version", rfc2812wrapper)
+		_REGCMD("voice", voice)
+		_REGCMD("warning", warning)
+		_REGCMD("who", who)
+		_REGCMD("whois", whois)
+		_REGCMD("whowas", whowas)
 
 #undef _REGCMD
 	}
 
-
-	bool multipleModeCommand(KviKvsRunTimeContext * __pContext,KviKvsVariantList * __pParams,KviKvsSwitchList * __pSwitches,char plusminus,char flag)
+	bool multipleModeCommand(KviKvsRunTimeContext * __pContext, KviKvsVariantList * __pParams, KviKvsSwitchList * __pSwitches, char plusminus, char flag)
 	{
 		Q_UNUSED(__pSwitches);
 
 		QString szTokens;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("tokens",KVS_PT_STRING,KVS_PF_APPENDREMAINING,szTokens)
+		KVSCSC_PARAMETER("tokens", KVS_PT_STRING, KVS_PF_APPENDREMAINING, szTokens)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
 
 		if(KVSCSC_pWindow->type() != KviWindow::Channel)
 		{
-			KVSCSC_pContext->warning(__tr2qs_ctx("This is not a channel","kvs"));
+			KVSCSC_pContext->warning(__tr2qs_ctx("This is not a channel", "kvs"));
 			return true;
 		}
 
-		QStringList sl = szTokens.split(QRegExp("[, ]+"),QString::SkipEmptyParts);
+		QStringList sl = szTokens.split(QRegExp("[, ]+"), QString::SkipEmptyParts);
 
 		QByteArray szFlags;
 		QByteArray szTarget = KVSCSC_pConnection->encodeText(KVSCSC_pWindow->windowName());
@@ -189,7 +188,7 @@ namespace KviKvsCoreSimpleCommands
 		const int iMaxCharsPerLine = 502 - szTarget.size();
 		int iCurCharsPerLine = iMaxCharsPerLine;
 
-		for(QStringList::Iterator it = sl.begin();it != sl.end();++it)
+		for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
 		{
 			QByteArray szTxt = KVSCSC_pConnection->encodeText(*it);
 			if(!szTxt.isEmpty())
@@ -204,12 +203,12 @@ namespace KviKvsCoreSimpleCommands
 				}
 
 				szMessage += szTxt;
-				iCurCharsPerLine-=szTxt.size();
+				iCurCharsPerLine -= szTxt.size();
 
 				iCurModeChangesPerLine--;
 				if(iCurModeChangesPerLine < 0 || iCurCharsPerLine < 0)
 				{
-					if(!KVSCSC_pConnection->sendFmtData("MODE %s %c%s %s",szTarget.data(),plusminus,szFlags.data(),szMessage.data()))
+					if(!KVSCSC_pConnection->sendFmtData("MODE %s %c%s %s", szTarget.data(), plusminus, szFlags.data(), szMessage.data()))
 						return KVSCSC_pContext->warningNoIrcConnection();
 
 					// move back the iterator by one position
@@ -222,14 +221,13 @@ namespace KviKvsCoreSimpleCommands
 					iCurModeChangesPerLine = iMaxModeChangesPerLine;
 					szFlags = "";
 					szMessage = "";
-
 				}
 			}
 		}
 
 		if(iCurModeChangesPerLine != iMaxModeChangesPerLine)
 		{
-			if(!KVSCSC_pConnection->sendFmtData("MODE %s %c%s %s",szTarget.data(),plusminus,szFlags.data(),szMessage.data()))
+			if(!KVSCSC_pConnection->sendFmtData("MODE %s %c%s %s", szTarget.data(), plusminus, szFlags.data(), szMessage.data()))
 				return KVSCSC_pContext->warningNoIrcConnection();
 		}
 
@@ -267,7 +265,7 @@ namespace KviKvsCoreSimpleCommands
 
 		QString szText;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szText)
+		KVSCSC_PARAMETER("text", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szText)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
@@ -275,7 +273,7 @@ namespace KviKvsCoreSimpleCommands
 		QByteArray txt = KVSCSC_pConnection->encodeText(szText);
 		QByteArray cmd = KVSCSC_pConnection->encodeText(((KviKvsTreeNodeCommand *)(KVSCSC_pContext->defaultReportLocation()))->commandName());
 
-		if(!KVSCSC_pConnection->sendFmtData("%s %s",cmd.data(),txt.data() ? txt.data() : ""))
+		if(!KVSCSC_pConnection->sendFmtData("%s %s", cmd.data(), txt.data() ? txt.data() : ""))
 			return KVSCSC_pContext->warningNoIrcConnection();
 
 		return true;

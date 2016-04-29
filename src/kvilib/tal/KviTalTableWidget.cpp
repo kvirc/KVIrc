@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "KviTalTableWidget.h"
 /*
 #include "KviPointerHashTable.h"
@@ -36,9 +35,9 @@
 #include <QAccessible>
 */
 KviTalTableWidget::KviTalTableWidget(QWidget * pParent)
-: QTableWidget(pParent)
+    : QTableWidget(pParent)
 {
-/*
+	/*
   	connect(this,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(redirect_currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 	connect(this,SIGNAL(itemActivated(QTreeWidgetItem *,int)),this,SLOT(redirect_itemActivated(QTreeWidgetItem *,int)));
 	connect(this,SIGNAL(itemChanged(QTreeWidgetItem *,int)),this,SLOT(redirect_itemChanged(QTreeWidgetItem *,int)));
@@ -96,4 +95,3 @@ void KviTalTreeWidget::redirect_itemPressed(QTreeWidgetItem *pItem,int col)
 	emit itemPressed((KviTalTreeWidgetItem *)pItem,col);
 }
 */
-

@@ -34,7 +34,6 @@
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_sound OptionsWidget_general
 #define KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_sound true
 
-
 class OptionsWidget_sound : public KviOptionsWidget
 {
 	Q_OBJECT
@@ -55,6 +54,7 @@ class OptionsWidget_soundGeneral : public KviOptionsWidget
 public:
 	OptionsWidget_soundGeneral(QWidget * parent);
 	~OptionsWidget_soundGeneral();
+
 protected:
 	QComboBox * m_pSoundSystemBox;
 	QPushButton * m_pSoundTestButton;
@@ -68,11 +68,12 @@ protected:
 #endif
 	QComboBox * m_pTagsEncodingCombo;
 	bool m_bFirstShow;
+
 protected:
 	void soundFillBox();
 	void mediaFillBox();
 	virtual void commit();
-	virtual void showEvent(QShowEvent *e);
+	virtual void showEvent(QShowEvent * e);
 protected slots:
 	void soundTest();
 	void soundAutoDetect();

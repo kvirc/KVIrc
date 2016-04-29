@@ -32,25 +32,27 @@
 #include "KviKvsSwitchList.h"
 #include "KviKvsParameterProcessor.h"
 
-
-#define KVSCSC(_name) bool _name(KviKvsRunTimeContext * __pContext,KviKvsVariantList * __pParams,KviKvsSwitchList * __pSwitches)
+#define KVSCSC(_name) bool _name(KviKvsRunTimeContext * __pContext, KviKvsVariantList * __pParams, KviKvsSwitchList * __pSwitches)
 
 #define KVSCSC_pContext __pContext
 #define KVSCSC_pParams __pParams
 #define KVSCSC_pSwitches __pSwitches
 
-#define KVSCSC_PARAMETER(a,b,c,d) KVS_PARAMETER(a,b,c,d)
+#define KVSCSC_PARAMETER(a, b, c, d) KVS_PARAMETER(a, b, c, d)
 
 #define KVSCSC_PARAMETERS_BEGIN \
 	KVS_PARAMETERS_BEGIN(parameter_format_list)
 
-#define KVSCSC_PARAMETERS_END \
-	KVS_PARAMETERS_END \
-	if(!KviKvsParameterProcessor::process(KVSCSC_pParams,KVSCSC_pContext,parameter_format_list))return false;
+#define KVSCSC_PARAMETERS_END                                                                      \
+	KVS_PARAMETERS_END                                                                             \
+	if(!KviKvsParameterProcessor::process(KVSCSC_pParams, KVSCSC_pContext, parameter_format_list)) \
+		return false;
 
-#define KVSCSC_REQUIRE_CONNECTION \
-	if(!KVSCSC_pContext->window()->context())return KVSCSC_pContext->errorNoIrcContext(); \
-	if(!KVSCSC_pContext->window()->connection())return KVSCSC_pContext->warningNoIrcConnection();
+#define KVSCSC_REQUIRE_CONNECTION                    \
+	if(!KVSCSC_pContext->window()->context())        \
+		return KVSCSC_pContext->errorNoIrcContext(); \
+	if(!KVSCSC_pContext->window()->connection())     \
+		return KVSCSC_pContext->warningNoIrcConnection();
 
 #define KVSCSC_pWindow __pContext->window()
 #define KVSCSC_pConnection __pContext->window()->connection()
@@ -132,7 +134,7 @@ namespace KviKvsCoreSimpleCommands
 	KVSCSC(whois);
 	KVSCSC(whowas);
 
-	bool multipleModeCommand(KviKvsRunTimeContext * __pContext,KviKvsVariantList * __pParams,KviKvsSwitchList * __pSwitches,char plusminus,char flag);
+	bool multipleModeCommand(KviKvsRunTimeContext * __pContext, KviKvsVariantList * __pParams, KviKvsSwitchList * __pSwitches, char plusminus, char flag);
 
 	void init();
 };

@@ -1,5 +1,5 @@
-#ifndef	_CLASS_LABEL_H_
-#define	_CLASS_LABEL_H_
+#ifndef _CLASS_LABEL_H_
+#define _CLASS_LABEL_H_
 //=============================================================================
 //
 //   File : KvsObject_label.h
@@ -25,7 +25,6 @@
 //
 //=============================================================================
 
-
 #include "KvsObject_widget.h"
 #include "object_macros.h"
 
@@ -36,18 +35,18 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool setTitle(KviKvsObjectFunctionCall *c);
-	bool setText(KviKvsObjectFunctionCall *c);
-	bool text(KviKvsObjectFunctionCall *c);
-	bool margin(KviKvsObjectFunctionCall *c);
-	bool setMargin(KviKvsObjectFunctionCall *c);
-	bool alignment(KviKvsObjectFunctionCall *c);
-	bool setAlignment(KviKvsObjectFunctionCall *c);
-	bool clear(KviKvsObjectFunctionCall *c);
-	bool frameStyle(KviKvsObjectFunctionCall *c);
-	bool setFrameStyle(KviKvsObjectFunctionCall *c);
-	bool setImage(KviKvsObjectFunctionCall *c);
+	bool setTitle(KviKvsObjectFunctionCall * c);
+	bool setText(KviKvsObjectFunctionCall * c);
+	bool text(KviKvsObjectFunctionCall * c);
+	bool margin(KviKvsObjectFunctionCall * c);
+	bool setMargin(KviKvsObjectFunctionCall * c);
+	bool alignment(KviKvsObjectFunctionCall * c);
+	bool setAlignment(KviKvsObjectFunctionCall * c);
+	bool clear(KviKvsObjectFunctionCall * c);
+	bool frameStyle(KviKvsObjectFunctionCall * c);
+	bool setFrameStyle(KviKvsObjectFunctionCall * c);
+	bool setImage(KviKvsObjectFunctionCall * c);
 };
-#endif	// !_CLASS_LABEL_H_
+#endif // !_CLASS_LABEL_H_

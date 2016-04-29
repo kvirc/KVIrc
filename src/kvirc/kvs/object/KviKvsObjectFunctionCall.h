@@ -30,20 +30,20 @@
 #include "KviKvsVariantList.h"
 #include "KviKvsVariant.h"
 
-
 class KVIRC_API KviKvsObjectFunctionCall : public KviKvsRunTimeCall
 {
 protected:
 	KviKvsVariant * m_pResult;
+
 public:
 	KviKvsObjectFunctionCall(KviKvsRunTimeContext * pContext,
-					KviKvsVariantList * pParams,
-					KviKvsVariant * pResult)
-		: KviKvsRunTimeCall(pContext,pParams), m_pResult(pResult)
-		{};
+	    KviKvsVariantList * pParams,
+	    KviKvsVariant * pResult)
+	    : KviKvsRunTimeCall(pContext, pParams), m_pResult(pResult){};
 	~KviKvsObjectFunctionCall(){};
+
 public:
-	KviKvsVariant * returnValue(){ return m_pResult; };
+	KviKvsVariant * returnValue() { return m_pResult; };
 };
 
 #endif //!_KVI_KVS_OBJECT_FUNCTIONCALL_H_

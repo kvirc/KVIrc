@@ -35,18 +35,18 @@ class KviKvsObject;
 class KVIRC_API KviKvsTreeNodeHashElement : public KviKvsTreeNodeArrayOrHashElement
 {
 public:
-	KviKvsTreeNodeHashElement(const QChar * pLocation,KviKvsTreeNodeData * pSource,KviKvsTreeNodeData * pIndex);
+	KviKvsTreeNodeHashElement(const QChar * pLocation, KviKvsTreeNodeData * pSource, KviKvsTreeNodeData * pIndex);
 	~KviKvsTreeNodeHashElement();
+
 protected:
 	KviKvsTreeNodeData * m_pKey; // can't be null
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
 	virtual KviKvsRWEvaluationResult * evaluateReadWrite(KviKvsRunTimeContext * c);
-	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
-	virtual KviKvsRWEvaluationResult * evaluateReadWriteInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c);
+	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
+	virtual KviKvsRWEvaluationResult * evaluateReadWriteInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_HASHELEMENT_H_

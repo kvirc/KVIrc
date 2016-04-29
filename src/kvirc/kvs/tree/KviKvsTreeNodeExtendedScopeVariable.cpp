@@ -26,8 +26,8 @@
 #include "KviKvsRunTimeContext.h"
 #include "KviLocale.h"
 
-KviKvsTreeNodeExtendedScopeVariable::KviKvsTreeNodeExtendedScopeVariable(const QChar * pLocation,const QString &szIdentifier)
-: KviKvsTreeNodeVariable(pLocation,szIdentifier)
+KviKvsTreeNodeExtendedScopeVariable::KviKvsTreeNodeExtendedScopeVariable(const QChar * pLocation, const QString & szIdentifier)
+    : KviKvsTreeNodeVariable(pLocation, szIdentifier)
 {
 }
 
@@ -35,7 +35,7 @@ KviKvsTreeNodeExtendedScopeVariable::~KviKvsTreeNodeExtendedScopeVariable()
 {
 }
 
-void KviKvsTreeNodeExtendedScopeVariable::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeExtendedScopeVariable::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Extended Scope Variable \"";
 	szBuffer += m_szIdentifier;
@@ -44,14 +44,14 @@ void KviKvsTreeNodeExtendedScopeVariable::contextDescription(QString &szBuffer)
 
 void KviKvsTreeNodeExtendedScopeVariable::dump(const char * prefix)
 {
-	qDebug("%s ExtendedScopeVariable(%s)",prefix,m_szIdentifier.toUtf8().data());
+	qDebug("%s ExtendedScopeVariable(%s)", prefix, m_szIdentifier.toUtf8().data());
 }
 
-bool KviKvsTreeNodeExtendedScopeVariable::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeExtendedScopeVariable::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	if(!c->extendedScopeVariables())
 	{
-		c->error(this,__tr2qs_ctx("There are no extended scope variables in this scope","kvs"));
+		c->error(this, __tr2qs_ctx("There are no extended scope variables in this scope", "kvs"));
 		return false;
 	}
 
@@ -59,7 +59,9 @@ bool KviKvsTreeNodeExtendedScopeVariable::evaluateReadOnly(KviKvsRunTimeContext 
 	if(v)
 	{
 		pBuffer->copyFrom(v);
-	} else {
+	}
+	else
+	{
 		pBuffer->setNothing();
 	}
 	return true;
@@ -69,9 +71,9 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeExtendedScopeVariable::evaluateReadWrit
 {
 	if(!c->extendedScopeVariables())
 	{
-		c->error(this,__tr2qs_ctx("There are no extended scope variables in this scope","kvs"));
+		c->error(this, __tr2qs_ctx("There are no extended scope variables in this scope", "kvs"));
 		return 0;
 	}
 
-	return new KviKvsHashElement(0,c->extendedScopeVariables()->get(m_szIdentifier),c->extendedScopeVariables(),m_szIdentifier);
+	return new KviKvsHashElement(0, c->extendedScopeVariables()->get(m_szIdentifier), c->extendedScopeVariables(), m_szIdentifier);
 }

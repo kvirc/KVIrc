@@ -32,7 +32,7 @@
 #include <QFileInfo>
 
 #ifdef COMPILE_ZLIB_SUPPORT
-	#include <zlib.h>
+#include <zlib.h>
 #endif
 
 LogFile::LogFile(const QString & szName)
@@ -48,37 +48,42 @@ LogFile::LogFile(const QString & szName)
 		//removes trailing dot and extension
 		szTmpName.chop(3);
 	}
-	QString szTypeToken = szTmpName.section('_',0,0);
+	QString szTypeToken = szTmpName.section('_', 0, 0);
 	// Ignore non-logs files, this includes '.' and '..'
-	if(KviQString::equalCI(szTypeToken,"channel") || KviQString::equalCI(szTypeToken,"deadchannel"))
+	if(KviQString::equalCI(szTypeToken, "channel") || KviQString::equalCI(szTypeToken, "deadchannel"))
 	{
 		m_szType = "channel";
 		m_eType = Channel;
-	} else if(KviQString::equalCI(szTypeToken,"console"))
+	}
+	else if(KviQString::equalCI(szTypeToken, "console"))
 	{
 		m_szType = "console";
 		m_eType = Console;
-	} else if(KviQString::equalCI(szTypeToken,"query"))
+	}
+	else if(KviQString::equalCI(szTypeToken, "query"))
 	{
 		m_szType = "query";
 		m_eType = Query;
-	} else if(KviQString::equalCI(szTypeToken,"dccchat"))
+	}
+	else if(KviQString::equalCI(szTypeToken, "dccchat"))
 	{
 		m_szType = "dccchat";
 		m_eType = DccChat;
-	} else {
+	}
+	else
+	{
 		m_szType = "";
 		m_eType = Other;
 	}
 
-	KviCString szUndecoded = szTmpName.section('.',0,0);
+	KviCString szUndecoded = szTmpName.section('.', 0, 0);
 	szUndecoded.cutToFirst('_');
 	m_szName = szUndecoded.hexDecode(szUndecoded.ptr()).ptr();
 
-	szUndecoded = szTmpName.section('.',1).section('_',0,-2);
+	szUndecoded = szTmpName.section('.', 1).section('_', 0, -2);
 	m_szNetwork = szUndecoded.hexDecode(szUndecoded.ptr()).ptr();
 
-	QString szDate = szTmpName.section('_',-1).section('.',0,-2);
+	QString szDate = szTmpName.section('_', -1).section('.', 0, -2);
 
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
@@ -145,26 +150,30 @@ void LogFile::getText(QString & szText)
 #ifdef COMPILE_ZLIB_SUPPORT
 	if(m_bCompressed)
 	{
-		gzFile file = gzopen(szLogName.toLocal8Bit().data(),"rb");
+		gzFile file = gzopen(szLogName.toLocal8Bit().data(), "rb");
 		if(file)
 		{
 			char cBuff[1025];
 			int iLen;
 			QByteArray data;
 			//QCString data;
-			iLen = gzread(file,cBuff,1024);
+			iLen = gzread(file, cBuff, 1024);
 			while(iLen > 0)
 			{
 				cBuff[iLen] = 0;
 				data.append(cBuff);
-				iLen = gzread(file,cBuff,1024);
+				iLen = gzread(file, cBuff, 1024);
 			}
 			gzclose(file);
 			szText = QString::fromUtf8(data);
-		} else {
-			qDebug("Can't open compressed file %s",szLogName.toLocal8Bit().data());
 		}
-	} else {
+		else
+		{
+			qDebug("Can't open compressed file %s", szLogName.toLocal8Bit().data());
+		}
+	}
+	else
+	{
 #endif
 		logFile.setFileName(szLogName);
 
@@ -173,7 +182,7 @@ void LogFile::getText(QString & szText)
 
 		QByteArray bytes;
 		bytes = logFile.readAll();
-		szText = QString::fromUtf8(bytes.data(),bytes.size());
+		szText = QString::fromUtf8(bytes.data(), bytes.size());
 		logFile.close();
 #ifdef COMPILE_ZLIB_SUPPORT
 	}

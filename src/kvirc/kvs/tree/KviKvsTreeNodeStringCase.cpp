@@ -25,22 +25,22 @@
 #include "KviKvsTreeNodeStringCase.h"
 #include "KviQString.h"
 
-KviKvsTreeNodeStringCast::KviKvsTreeNodeStringCast(const QChar * pLocation,KviKvsTreeNodeData * pChildData)
-: KviKvsTreeNodeData(pLocation)
+KviKvsTreeNodeStringCast::KviKvsTreeNodeStringCast(const QChar * pLocation, KviKvsTreeNodeData * pChildData)
+    : KviKvsTreeNodeData(pLocation)
 {
 	m_pChildData = pChildData;
 	m_pChildData->setParent(this);
 }
-
 
 KviKvsTreeNodeStringCast::~KviKvsTreeNodeStringCast()
 {
 	delete m_pChildData;
 }
 
-bool KviKvsTreeNodeStringCast::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeStringCast::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
-	if(!m_pChildData->evaluateReadOnly(c,pBuffer))return false;
+	if(!m_pChildData->evaluateReadOnly(c, pBuffer))
+		return false;
 	if(!pBuffer->isString())
 	{
 		QString tmp;
@@ -50,14 +50,14 @@ bool KviKvsTreeNodeStringCast::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsV
 	return true;
 }
 
-void KviKvsTreeNodeStringCast::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeStringCast::contextDescription(QString & szBuffer)
 {
 	szBuffer = "String Cast";
 }
 
 void KviKvsTreeNodeStringCast::dump(const char * prefix)
 {
-	qDebug("%s StringCast",prefix);
+	qDebug("%s StringCast", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
 	m_pChildData->dump(tmp.toUtf8().data());

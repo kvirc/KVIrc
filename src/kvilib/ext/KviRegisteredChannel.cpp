@@ -29,7 +29,7 @@ KviRegisteredChannel::KviRegisteredChannel(const QString & szName, const QString
 {
 	m_szName = szName;
 	m_szNetMask = szNetMask;
-	m_pPropertyDict = new QHash<QString,QString>();
+	m_pPropertyDict = new QHash<QString, QString>();
 }
 
 KviRegisteredChannel::~KviRegisteredChannel()

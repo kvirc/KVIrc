@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviModule.h"
 #include "KviApplication.h"
 #include "kvi_settings.h"
@@ -38,14 +36,14 @@
 #include <time.h>
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "KviCryptEngine.h"
-	#include "KviCryptEngineDescription.h"
-	#include "KviCryptEngineManager.h"
+#include "KviCryptEngine.h"
+#include "KviCryptEngineDescription.h"
+#include "KviCryptEngineManager.h"
 
-	extern KviCryptEngineManager * g_pCryptEngineManager;
+extern KviCryptEngineManager * g_pCryptEngineManager;
 #endif
 
-extern KVIRC_API KviModuleExtensionManager    * g_pModuleExtensionManager;
+extern KVIRC_API KviModuleExtensionManager * g_pModuleExtensionManager;
 
 /*
 	@doc: modules
@@ -130,13 +128,10 @@ extern KVIRC_API KviModuleExtensionManager    * g_pModuleExtensionManager;
 		that uses this command.
 */
 
-
-
 // FIXME: #warning "Move all the modules to the new locking method ?"
 
-
-KviModule::KviModule(QLibrary* handle,KviModuleInfo * info,const QString &name,const QString &filename)
-: KviKvsModuleInterface()
+KviModule::KviModule(QLibrary * handle, KviModuleInfo * info, const QString & name, const QString & filename)
+    : KviKvsModuleInterface()
 {
 	m_pLibrary = handle;
 	m_pModuleInfo = info;
@@ -153,24 +148,25 @@ KviModule::~KviModule()
 #endif
 	unregisterAllExtensions();
 
-	if(m_pLibrary->isLoaded()) m_pLibrary->unload();
+	if(m_pLibrary->isLoaded())
+		m_pLibrary->unload();
 	delete m_pLibrary;
 }
 
-KviModuleExtensionDescriptor * KviModule::registerExtension(const KviCString &szType,const KviCString &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r)
+KviModuleExtensionDescriptor * KviModule::registerExtension(const KviCString & szType, const KviCString & szName, const QString & szVisibleName, KviModuleExtensionAllocRoutine r)
 {
 	QPixmap pix; // null
-	return g_pModuleExtensionManager->registerExtension(this,szType,szName,szVisibleName,r,pix);
+	return g_pModuleExtensionManager->registerExtension(this, szType, szName, szVisibleName, r, pix);
 }
 
-KviModuleExtensionDescriptor * KviModule::registerExtension(const KviCString &szType,const KviCString &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r,const QPixmap &icon)
+KviModuleExtensionDescriptor * KviModule::registerExtension(const KviCString & szType, const KviCString & szName, const QString & szVisibleName, KviModuleExtensionAllocRoutine r, const QPixmap & icon)
 {
-	return g_pModuleExtensionManager->registerExtension(this,szType,szName,szVisibleName,r,icon);
+	return g_pModuleExtensionManager->registerExtension(this, szType, szName, szVisibleName, r, icon);
 }
 
-KviModuleExtensionDescriptor * KviModule::findExtensionDescriptor(const KviCString &szType,const KviCString &szName)
+KviModuleExtensionDescriptor * KviModule::findExtensionDescriptor(const KviCString & szType, const KviCString & szName)
 {
-	return g_pModuleExtensionManager->findExtensionDescriptor(szType,szName);
+	return g_pModuleExtensionManager->findExtensionDescriptor(szType, szName);
 }
 
 void KviModule::unregisterAllExtensions()
@@ -187,7 +183,6 @@ unsigned int KviModule::secondsSinceLastAccess()
 {
 	return (unsigned int)(((long int)time(0)) - m_lastAccessTime);
 }
-
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
@@ -214,17 +209,17 @@ void * KviModule::getSymbol(const char * symname)
 	return (void *)m_pLibrary->resolve(symname);
 }
 
-
-void KviModule::getDefaultConfigFileName(QString &szBuffer)
+void KviModule::getDefaultConfigFileName(QString & szBuffer)
 {
 	QString tmp = "libkvi";
 	tmp += m_szName;
 	tmp += ".kvc";
-	g_pApp->getLocalKvircDirectory(szBuffer,KviApplication::ConfigPlugins,tmp);
+	g_pApp->getLocalKvircDirectory(szBuffer, KviApplication::ConfigPlugins, tmp);
 }
 
-bool KviModule::ctrl(const char * operation,void * param)
+bool KviModule::ctrl(const char * operation, void * param)
 {
-	if(!(m_pModuleInfo->ctrl_routine))return false;
-	return m_pModuleInfo->ctrl_routine(this,operation,param);
+	if(!(m_pModuleInfo->ctrl_routine))
+		return false;
+	return m_pModuleInfo->ctrl_routine(this, operation, param);
 }

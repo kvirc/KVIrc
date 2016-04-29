@@ -32,9 +32,9 @@
 
 #include <QTabWidget>
 #ifdef COMPILE_WEBKIT_SUPPORT
-	#include <QtWebKitWidgets/QWebView>
+#include <QtWebKitWidgets/QWebView>
 #else
-	class QTextBrowser;
+class QTextBrowser;
 #endif
 
 #include <QLineEdit>
@@ -50,48 +50,51 @@ class HelpWindow : public KviWindow
 public:
 	HelpWindow(const char * name);
 	~HelpWindow();
+
 protected:
 	HelpWidget * m_pHelpWidget;
-	KviTalVBox    * m_pToolBar;
-	QTabWidget    * m_pTabWidget;
-	KviTalVBox    * m_pIndexTab;
-	KviTalVBox    * m_pSearchTab;
-	KviTalHBox    * m_pBottomLayout;
-	QPushButton   * m_pCancelButton;
-	QProgressBar  * m_pProgressBar;
+	KviTalVBox * m_pToolBar;
+	QTabWidget * m_pTabWidget;
+	KviTalVBox * m_pIndexTab;
+	KviTalVBox * m_pSearchTab;
+	KviTalHBox * m_pBottomLayout;
+	QPushButton * m_pCancelButton;
+	QProgressBar * m_pProgressBar;
 
-	KviTalListWidget* m_pIndexListWidget;
-	QLineEdit     * m_pIndexSearch;
-	QStringList     m_foundDocs;
-	QStringList     m_terms;
-	KviTalListWidget* m_pResultBox;
-	QLineEdit     * m_pTermsEdit;
-	QPushButton   * m_pBtnRefreshIndex;
+	KviTalListWidget * m_pIndexListWidget;
+	QLineEdit * m_pIndexSearch;
+	QStringList m_foundDocs;
+	QStringList m_terms;
+	KviTalListWidget * m_pResultBox;
+	QLineEdit * m_pTermsEdit;
+	QPushButton * m_pBtnRefreshIndex;
+
 public:
-	HelpWidget * helpWidget(){ return m_pHelpWidget; };
+	HelpWidget * helpWidget() { return m_pHelpWidget; };
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent *e);
+	virtual void resizeEvent(QResizeEvent * e);
 	virtual void saveProperties(KviConfigurationFile * cfg);
 	virtual void loadProperties(KviConfigurationFile * cfg);
+
 public:
-	#ifdef COMPILE_WEBKIT_SUPPORT
+#ifdef COMPILE_WEBKIT_SUPPORT
 	QWebView * textBrowser();
-	#else
+#else
 	QTextBrowser * textBrowser();
-	#endif
+#endif
 public slots:
-	void indexSelected ( QListWidgetItem * );
-	void searchInIndex( const QString &s );
+	void indexSelected(QListWidgetItem *);
+	void searchInIndex(const QString & s);
 	void showIndexTopic();
 	void startSearch();
-	void searchSelected ( QListWidgetItem * );
+	void searchSelected(QListWidgetItem *);
 	void refreshIndex();
 
 	void initialSetup();
-	void indexingStart( int iNum );
-	void indexingProgress( int iNum );
+	void indexingStart(int iNum);
+	void indexingProgress(int iNum);
 	void indexingEnd();
 };
 

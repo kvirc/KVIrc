@@ -47,20 +47,20 @@ namespace KviControlCodes
 				case KviControlCodes::CryptEscape:
 				case KviControlCodes::CTCP:
 					if(i != iBegin)
-						szRet += szData.mid(iBegin,i - iBegin);
+						szRet += szData.mid(iBegin, i - iBegin);
 					i++;
 					iBegin = i;
-				break;
+					break;
 				case KviControlCodes::Color:
 					if(i != iBegin)
-						szRet += szData.mid(iBegin,i - iBegin);
+						szRet += szData.mid(iBegin, i - iBegin);
 					i++;
-					i = getUnicodeColorBytes(szData,i,&c1,&c2);
+					i = getUnicodeColorBytes(szData, i, &c1, &c2);
 					iBegin = i;
-				break;
+					break;
 				case KviControlCodes::Icon:
 					if(i != iBegin)
-						szRet += szData.mid(iBegin,i - iBegin);
+						szRet += szData.mid(iBegin, i - iBegin);
 					i++;
 					/*
 					* These lines will strip out the first word following the icon escape character
@@ -72,14 +72,14 @@ namespace KviControlCodes
 					}
 					*/
 					iBegin = i;
-				break;
+					break;
 				default:
 					i++;
-				break;
+					break;
 			}
 		}
 		if(i != iBegin)
-			szRet += szData.mid(iBegin,i - iBegin);
+			szRet += szData.mid(iBegin, i - iBegin);
 		return szRet;
 	}
 
@@ -91,58 +91,68 @@ namespace KviControlCodes
 		//
 
 		//First we can have a digit or a comma
-		if(((*pwData >= '0') && (*pwData <='9')))
+		if(((*pwData >= '0') && (*pwData <= '9')))
 		{
 			//Something interesting ok.
-			(*pcByte1) = ((*pwData)-'0'); //store the code
-			pwData++;     //and check the next
-			if(((*pwData >= '0') && (*pwData <= '9')) || (*pwData==','))
+			(*pcByte1) = ((*pwData) - '0'); //store the code
+			pwData++;                       //and check the next
+			if(((*pwData >= '0') && (*pwData <= '9')) || (*pwData == ','))
 			{
 				//Yes we can understand it
 				if(*pwData == ',')
 				{
 					//A comma, need to check for background
 					pwData++;
-				} else {
+				}
+				else
+				{
 					//A number
 					//(*pcByte1)=((((*pcByte1)*10)+((*pwData)-'0'))%16);
-					(*pcByte1) = ((*pcByte1)*10) + ((*pwData)-'0');
+					(*pcByte1) = ((*pcByte1) * 10) + ((*pwData) - '0');
 					pwData++;
 					if(*pwData == ',')
 					{
 						//A comma, need to check for background
 						pwData++;
-					} else {
+					}
+					else
+					{
 						//Senseless return
 						(*pcByte2) = KviControlCodes::NoChange;
 						return pwData;
 					}
 				}
-			} else {
+			}
+			else
+			{
 				//Senseless character control code OK and return
 				(*pcByte2) = KviControlCodes::NoChange;
 				return pwData;
 			}
-		} else {
+		}
+		else
+		{
 			//Senseless character : only a CTRL+K code
 			(*pcByte1) = KviControlCodes::NoChange;
 			(*pcByte2) = KviControlCodes::NoChange;
 			return pwData;
 		}
 
-		if((*pwData >= '0') && (*pwData <='9'))
+		if((*pwData >= '0') && (*pwData <= '9'))
 		{
 			//Background, a color code
-			(*pcByte2) = (*pwData)-'0';
+			(*pcByte2) = (*pwData) - '0';
 			pwData++;
-			if((*pwData >= '0') && (*pwData <='9'))
+			if((*pwData >= '0') && (*pwData <= '9'))
 			{
 				//(*pcByte2)=((((*pcByte2)*10)+((*pwData)-'0'))%16);
-				(*pcByte2) = ((*pcByte2)*10)+((*pwData)-'0');
+				(*pcByte2) = ((*pcByte2) * 10) + ((*pwData) - '0');
 				pwData++;
 			}
 			return pwData;
-		} else {
+		}
+		else
+		{
 			(*pcByte2) = KviControlCodes::NoChange;
 			return pwData - 1;
 		}
@@ -192,7 +202,7 @@ namespace KviControlCodes
 
 		if((c >= '0') && (c <= '9'))
 		{
-			(*pcByte1) = (((*pcByte1)*10)+(c-'0'))%16;
+			(*pcByte1) = (((*pcByte1) * 10) + (c - '0')) % 16;
 			iChar++;
 			if(iChar >= (unsigned int)szData.length())
 			{
@@ -211,7 +221,9 @@ namespace KviControlCodes
 				return iChar;
 			}
 			c = szData[(int)iChar].unicode();
-		} else {
+		}
+		else
+		{
 			(*pcByte2) = KviControlCodes::NoChange;
 			return iChar;
 		}
@@ -219,22 +231,22 @@ namespace KviControlCodes
 		if((c < '0') || (c > '9'))
 		{
 			(*pcByte2) = KviControlCodes::NoChange;
-			if(szData[(int)(iChar-1)].unicode()==',')
-				return iChar-1;
+			if(szData[(int)(iChar - 1)].unicode() == ',')
+				return iChar - 1;
 			else
 				return iChar;
 		}
 
 		//Background, a color code
-		(*pcByte2) = c-'0';
+		(*pcByte2) = c - '0';
 		iChar++;
 		if(iChar >= (unsigned int)szData.length())
 			return iChar;
 		c = szData[(int)iChar].unicode();
 
-		if((c >= '0') && (c <='9'))
+		if((c >= '0') && (c <= '9'))
 		{
-			(*pcByte2) = (((*pcByte2)*10) + (c-'0')) % 16;
+			(*pcByte2) = (((*pcByte2) * 10) + (c - '0')) % 16;
 			iChar++;
 		}
 

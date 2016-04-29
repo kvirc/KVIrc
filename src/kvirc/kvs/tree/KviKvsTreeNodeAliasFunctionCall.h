@@ -57,6 +57,7 @@ public:
 	* \brief Destroys the treenode alias function call object
 	*/
 	~KviKvsTreeNodeAliasFunctionCall();
+
 public:
 	/**
 	* \brief Dumps the tree

@@ -32,8 +32,9 @@ class AboutDialog : public KviTalTabDialog
 public:
 	AboutDialog();
 	~AboutDialog();
+
 protected:
-	virtual void closeEvent(QCloseEvent *e);
+	virtual void closeEvent(QCloseEvent * e);
 protected slots:
 	void closeButtonPressed();
 };

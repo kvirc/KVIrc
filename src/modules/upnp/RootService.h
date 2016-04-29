@@ -36,13 +36,12 @@
 
 #include "Service.h"
 
-
 namespace UPnP
 {
 
 #define InternetGatewayDeviceType "urn:schemas-upnp-org:device:InternetGatewayDevice:1"
 
-/**
+	/**
  * The services of a device can be retrieved using the device root service.
  * The URL of the root service is returned by an SSDP broadcast.
  * The root service returns the meta information and list of services the device supports.
@@ -50,54 +49,49 @@ namespace UPnP
  * @author Diederik van der Boor
  * @ingroup NetworkUPnP
  */
-class RootService : public Service
-{
-public:  // public methods
+	class RootService : public Service
+	{
+	public: // public methods
+		// The constructor
+		RootService(const QString & hostname, int port, const QString & rootUrl);
+		// The destructor
+		virtual ~RootService();
 
-	// The constructor
-	RootService(const QString &hostname, int port, const QString &rootUrl);
-	// The destructor
-	virtual             ~RootService();
+		// Return the device type
+		QString getDeviceType() const;
 
-	// Return the device type
-	QString              getDeviceType() const;
+		// Return a service from the cached root device entry
+		ServiceParameters getServiceById(const QString & serviceId) const;
+		// Return a service from a cached embedded device entry
+		bool getServiceById(const QString & serviceId, const QString & deviceUdn, ServiceParameters & params) const;
+		// Return a service from the cached root device entry
+		ServiceParameters getServiceByType(const QString & serviceType) const;
+		// Return a service from a cached embedded device entry
+		bool getServiceByType(const QString & serviceType, const QString & deviceUdn, ServiceParameters & params) const;
 
-	// Return a service from the cached root device entry
-	ServiceParameters    getServiceById(const QString &serviceId) const;
-	// Return a service from a cached embedded device entry
-	bool                 getServiceById(const QString &serviceId, const QString &deviceUdn, ServiceParameters &params) const;
-	// Return a service from the cached root device entry
-	ServiceParameters    getServiceByType(const QString &serviceType) const;
-	// Return a service from a cached embedded device entry
-	bool                 getServiceByType(const QString &serviceType, const QString &deviceUdn, ServiceParameters &params) const;
+		// Query the device for its service list
+		void queryDevice();
 
-	// Query the device for its service list
-	void                 queryDevice();
+	protected: // Protected methods
+		// The control point received a response to callInformationUrl()
+		virtual void gotInformationResponse(const QDomNode & response);
 
+	private: // Private methods
+		// Recursively add all devices and embedded devices to the deviceServices_ map
+		void addDeviceServices(const QDomNode & device);
 
-protected:  // Protected methods
-	// The control point received a response to callInformationUrl()
-	virtual void         gotInformationResponse(const QDomNode &response);
-
-
-private:  // Private methods
-	// Recursively add all devices and embedded devices to the deviceServices_ map
-	void                 addDeviceServices(const QDomNode &device);
-
-
-private:
-	// The device type
-	QString                     m_szDeviceType;
-	// A collection of all services provided by the device
-	QMap<QString,QDomNodeList>  m_deviceServices;
-	// The hostname of the device
-	QString                     m_szHostname;
-	// The port of the device
-	int                         m_iPort;
-	// The udn of the root device
-	QString                     m_szRootUdn;
-};
-
+	private:
+		// The device type
+		QString m_szDeviceType;
+		// A collection of all services provided by the device
+		QMap<QString, QDomNodeList> m_deviceServices;
+		// The hostname of the device
+		QString m_szHostname;
+		// The port of the device
+		int m_iPort;
+		// The udn of the root device
+		QString m_szRootUdn;
+	};
 }
 
 #endif

@@ -35,7 +35,6 @@
 #include <QTextCodec>
 #include <QTextStream>
 
-
 namespace KviFileUtils
 {
 	static char cHexChars[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
@@ -109,24 +108,24 @@ namespace KviFileUtils
 		if(idx == 1)
 		{
 			szCreatedDir = szDir.left(2);
-			szDir.remove(0,2);
+			szDir.remove(0, 2);
 		}
 #endif
 
-		KviQString::stripLeft(szDir,KVI_PATH_SEPARATOR_CHAR);
+		KviQString::stripLeft(szDir, KVI_PATH_SEPARATOR_CHAR);
 		while(!szDir.isEmpty())
 		{
 			szCreatedDir += KVI_PATH_SEPARATOR;
-			szCreatedDir += KviQString::getToken(szDir,KVI_PATH_SEPARATOR_CHAR);
+			szCreatedDir += KviQString::getToken(szDir, KVI_PATH_SEPARATOR_CHAR);
 			if(!directoryExists(szCreatedDir))
 			{
 				if(!d.mkdir(szCreatedDir))
 				{
-					qDebug("Can't create directory %s",szCreatedDir.toUtf8().data());
+					qDebug("Can't create directory %s", szCreatedDir.toUtf8().data());
 					return false;
 				}
 			}
-			KviQString::stripLeft(szDir,KVI_PATH_SEPARATOR_CHAR);
+			KviQString::stripLeft(szDir, KVI_PATH_SEPARATOR_CHAR);
 		}
 		return true;
 	}
@@ -140,14 +139,14 @@ namespace KviFileUtils
 	bool renameFile(const QString & szSrc, const QString & szDst)
 	{
 		QDir d;
-		return d.rename(szSrc,szDst);
+		return d.rename(szSrc, szDst);
 	}
 
 	bool renameFile(const char * pcSrc, const char * pcDst)
 	{
 		QString szPath = QString::fromUtf8(pcSrc);
 		QString szPath2 = QString::fromUtf8(pcDst);
-		return renameFile(szPath,szPath2);
+		return renameFile(szPath, szPath2);
 	}
 
 	bool copyFile(const QString & szSrc, const QString & szDst)
@@ -164,14 +163,14 @@ namespace KviFileUtils
 		char cBuffer[1024];
 		while(!f1.atEnd())
 		{
-			int iLen = f1.read(cBuffer,1024);
+			int iLen = f1.read(cBuffer, 1024);
 			if(iLen <= 0)
 			{
 				f1.close();
 				f2.close();
 				return false; //"serious error"
 			}
-			f2.write(cBuffer,iLen);
+			f2.write(cBuffer, iLen);
 		}
 		f1.close();
 		f2.close();
@@ -182,7 +181,7 @@ namespace KviFileUtils
 	{
 		QString szPath = QString::fromUtf8(pcSrc);
 		QString szPath2 = QString::fromUtf8(pcDst);
-		return copyFile(szPath,szPath2);
+		return copyFile(szPath, szPath2);
 	}
 
 	bool loadFile(const QString & szPath, QString & szBuffer, bool bUtf8)
@@ -193,9 +192,11 @@ namespace KviFileUtils
 		if(bUtf8)
 		{
 			QByteArray ba = f.readAll();
-			szBuffer = QString::fromUtf8(ba.data(),ba.size());
+			szBuffer = QString::fromUtf8(ba.data(), ba.size());
 			//qDebug("BUFFERLEN: %d",szBuffer.length());
-		} else {
+		}
+		else
+		{
 			szBuffer = QString(f.readAll());
 		}
 		return true;
@@ -204,25 +205,24 @@ namespace KviFileUtils
 	void adjustFilePath(QString & szPath)
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		szPath.replace('/',"\\");
-		szPath.replace("\\\\","\\");
+		szPath.replace('/', "\\");
+		szPath.replace("\\\\", "\\");
 		// FIXME: Use the default drive here ?
 		if(szPath.startsWith("\\"))
 			szPath.prepend("C:");
 #else
-		szPath.replace('\\',"/");
-		szPath.replace("//","/");
+		szPath.replace('\\', "/");
+		szPath.replace("//", "/");
 		// deal with windows paths
 		if((szPath.length() > 2) && (szPath.at(0) != QChar('/')))
 		{
 			if((szPath.at(1) == QChar(':')) && (szPath.at(2) == QChar('/')))
 			{
-				szPath.remove(0,2);
+				szPath.remove(0, 2);
 			}
 		}
 		szPath = QDir::cleanPath(szPath);
 #endif
-
 	}
 
 	bool removeFile(const QString & szPath)
@@ -255,10 +255,10 @@ namespace KviFileUtils
 
 		QFileInfoList lFileInfo = d.entryInfoList(QDir::Files | QDir::Dirs | QDir::Hidden | QDir::System | QDir::NoDotAndDotDot);
 
-		foreach(QFileInfo inf,lFileInfo)
+		foreach(QFileInfo inf, lFileInfo)
 		{
 			// just to be sure check that we're not deleting ..
-			if(KviQString::equalCS(inf.fileName(),"..") || KviQString::equalCS(inf.fileName(),"."))
+			if(KviQString::equalCS(inf.fileName(), "..") || KviQString::equalCS(inf.fileName(), "."))
 				continue;
 
 			if(inf.isDir())
@@ -270,14 +270,14 @@ namespace KviFileUtils
 
 			if(!KviFileUtils::removeFile(inf.absoluteFilePath()))
 			{
-				qDebug("Failed to remove file %s",inf.absoluteFilePath().toUtf8().data());
+				qDebug("Failed to remove file %s", inf.absoluteFilePath().toUtf8().data());
 				return false;
 			}
 		}
 
 		if(!KviFileUtils::removeDir(szPath))
 		{
-			qDebug("Failed to remove directory %s",szPath.toUtf8().data());
+			qDebug("Failed to remove directory %s", szPath.toUtf8().data());
 			return false;
 		}
 
@@ -291,7 +291,7 @@ namespace KviFileUtils
 			return false;
 		if(oData.length() < 1)
 			return true;
-		if(f.write(oData.data(),oData.length()) != ((unsigned int)(oData.length())))
+		if(f.write(oData.data(), oData.length()) != ((unsigned int)(oData.length())))
 			return false;
 		return true;
 	}
@@ -304,7 +304,7 @@ namespace KviFileUtils
 		QByteArray szTmp = szData.toUtf8();
 		if(!szTmp.data())
 			return true;
-		if(f.write(szTmp.data(),szTmp.length()) != ((unsigned int)(szTmp.length())))
+		if(f.write(szTmp.data(), szTmp.length()) != ((unsigned int)(szTmp.length())))
 			return false;
 		return true;
 	}
@@ -312,7 +312,7 @@ namespace KviFileUtils
 	bool writeFile(const char * pcPath, const QString & szData, bool bAppend)
 	{
 		QString szPath = QString::fromUtf8(pcPath);
-		return writeFile(szPath,szData,bAppend);
+		return writeFile(szPath, szData, bAppend);
 	}
 
 	bool writeFileLocal8Bit(const QString & szPath, const QString & szData, bool bAppend)
@@ -323,7 +323,7 @@ namespace KviFileUtils
 		QByteArray szTmp = QTextCodec::codecForLocale()->fromUnicode(szData);
 		if(!szTmp.data())
 			return true;
-		if(f.write(szTmp.data(),szTmp.length()) != ((unsigned int)(szTmp.length())))
+		if(f.write(szTmp.data(), szTmp.length()) != ((unsigned int)(szTmp.length())))
 			return false;
 		return true;
 	}
@@ -331,7 +331,7 @@ namespace KviFileUtils
 	bool writeFileLocal8Bit(const char * pcPath, const QString & szData, bool bAppend)
 	{
 		QString szPath = QString::fromUtf8(pcPath);
-		return writeFileLocal8Bit(szPath,szData,bAppend);
+		return writeFileLocal8Bit(szPath, szData, bAppend);
 	}
 
 	bool readFile(const QString & szPath, QString & szBuffer, unsigned int uMaxSize)
@@ -348,7 +348,7 @@ namespace KviFileUtils
 		if(f.size() > uMaxSize)
 			return false;
 		char * pcBuf = new char[f.size() + 1];
-		if(f.read(pcBuf,f.size()) != ((long int)f.size()))
+		if(f.read(pcBuf, f.size()) != ((long int)f.size()))
 		{
 			delete[] pcBuf;
 			pcBuf = 0;
@@ -364,10 +364,10 @@ namespace KviFileUtils
 	bool readFile(const char * pcPath, QString & szBuffer, unsigned int uMaxSize)
 	{
 		QString szPath = QString::fromUtf8(pcPath);
-		return readFile(szPath,szBuffer,uMaxSize);
+		return readFile(szPath, szBuffer, uMaxSize);
 	}
 
-	QString extractFileName(const QString & szFileNameWithPath,bool bAllowEmpty)
+	QString extractFileName(const QString & szFileNameWithPath, bool bAllowEmpty)
 	{
 		if(!bAllowEmpty)
 		{
@@ -404,19 +404,22 @@ namespace KviFileUtils
 		if(bUtf8)
 			stream.setCodec(QTextCodec::codecForMib(106));
 
-		for(int i=0;i<iStartLine;i++)
+		for(int i = 0; i < iStartLine; i++)
 			stream.readLine();
 
-		if(iCount>0)
+		if(iCount > 0)
 		{
-			for(; (iCount>0 && !stream.atEnd()) ; iCount-- )
+			for(; (iCount > 0 && !stream.atEnd()); iCount--)
 				buffer.append(stream.readLine());
-		} else {
-			while(!stream.atEnd()) {
+		}
+		else
+		{
+			while(!stream.atEnd())
+			{
 				buffer.append(stream.readLine());
 			}
 		}
-		return buffer.count()!= 0;
+		return buffer.count() != 0;
 	}
 
 	bool directoryExists(const QString & szPath)
@@ -450,9 +453,9 @@ namespace KviFileUtils
 		for(int i = 0; i < szSrc.length(); i++)
 		{
 			QChar cur = szSrc[i];
-			if( ! (cur.isLetter() || cur.isDigit() || cur==' ' || cur=='_' || cur=='.' || cur=='#' || cur=='%') )
+			if(!(cur.isLetter() || cur.isDigit() || cur == ' ' || cur == '_' || cur == '.' || cur == '#' || cur == '%'))
 			{
-				if(cur.row()!=0)
+				if(cur.row() != 0)
 				{
 					szPath += '%';
 					szPath += cHexChars[cur.row() >> 4];
@@ -461,10 +464,13 @@ namespace KviFileUtils
 				szPath += '%';
 				szPath += cHexChars[cur.cell() >> 4];
 				szPath += cHexChars[cur.cell() & 15];
-			} else if (cur=='%')
+			}
+			else if(cur == '%')
 			{
 				szPath += "%%";
-			} else {
+			}
+			else
+			{
 				szPath += cur;
 			}
 		}
@@ -478,36 +484,40 @@ namespace KviFileUtils
 		{
 			QChar cur = szSrc[i];
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-			if(cur.unicode() < 32 || cur=='<' || cur=='>' || cur==':' || cur=='"' || cur=='/' || cur=='\\' || cur=='|' || cur=='?' || cur=='*')
+			if(cur.unicode() < 32 || cur == '<' || cur == '>' || cur == ':' || cur == '"' || cur == '/' || cur == '\\' || cur == '|' || cur == '?' || cur == '*')
 #else
-			if(cur.unicode() == 0 || cur=='/')
+			if(cur.unicode() == 0 || cur == '/')
 #endif
 			{
 				szPath += '-';
-			} else {
+			}
+			else
+			{
 				szPath += cur;
 			}
 		}
 	}
 
-	static QStringList getFileListingInternal(const QString &szPath,const QString &szPrefix)
+	static QStringList getFileListingInternal(const QString & szPath, const QString & szPrefix)
 	{
 		//qDebug("Scan %s",szPath.toUtf8().data());
-	
+
 		QStringList sl;
-	
+
 		QDir d(szPath);
-		
-		QFileInfoList fl = d.entryInfoList(QStringList(),QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot,QDir::Name);
-		
-		Q_FOREACH(QFileInfo inf,fl)
+
+		QFileInfoList fl = d.entryInfoList(QStringList(), QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot, QDir::Name);
+
+		Q_FOREACH(QFileInfo inf, fl)
 		{
 			QString szName = szPrefix.isEmpty() ? inf.fileName() : QString("%1" KVI_PATH_SEPARATOR "%2").arg(szPrefix).arg(inf.fileName());
 			if(inf.isDir())
 			{
-				QStringList sub = getFileListingInternal(inf.canonicalFilePath(),szName);
+				QStringList sub = getFileListingInternal(inf.canonicalFilePath(), szName);
 				sl.append(sub);
-			} else {
+			}
+			else
+			{
 				sl.append(szName);
 			}
 		}
@@ -515,9 +525,8 @@ namespace KviFileUtils
 		return sl;
 	}
 
-	QStringList getFileListing(const QString &szPath)
+	QStringList getFileListing(const QString & szPath)
 	{
-		return getFileListingInternal(szPath,QString());
+		return getFileListingInternal(szPath, QString());
 	}
-
 }

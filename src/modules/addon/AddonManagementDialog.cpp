@@ -57,15 +57,14 @@
 #include <QShortcut>
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-	#include "WebAddonInterfaceDialog.h"
+#include "WebAddonInterfaceDialog.h"
 #endif //COMPILE_WEBKIT_SUPPORT
-
 
 AddonManagementDialog * AddonManagementDialog::m_pInstance = 0;
 extern QRect g_rectManagementDialogGeometry;
 
-AddonListViewItem::AddonListViewItem(KviTalListWidget *v,KviKvsScriptAddon * a)
-: KviTalListWidgetItem(v)
+AddonListViewItem::AddonListViewItem(KviTalListWidget * v, KviKvsScriptAddon * a)
+    : KviTalListWidgetItem(v)
 {
 	m_pAddon = new KviKvsScriptAddon(*a);
 	m_pListWidget = v;
@@ -83,11 +82,8 @@ AddonListViewItem::AddonListViewItem(KviTalListWidget *v,KviKvsScriptAddon * a)
 
 	setText(t);
 	QPixmap * p = a->icon();
-	if (p)
+	if(p)
 		setIcon(*p);
-
-
-
 }
 
 AddonListViewItem::~AddonListViewItem()
@@ -96,9 +92,9 @@ AddonListViewItem::~AddonListViewItem()
 }
 
 AddonManagementDialog::AddonManagementDialog(QWidget * p)
-: QWidget(p)
+    : QWidget(p)
 {
-	setWindowTitle(__tr2qs_ctx("Manage Addons - KVIrc","addon"));
+	setWindowTitle(__tr2qs_ctx("Manage Addons - KVIrc", "addon"));
 	setObjectName("Addon manager");
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Addons)));
 
@@ -109,31 +105,31 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 	m_pInstance = this;
 	QGridLayout * g = new QGridLayout(this);
 
-	KviTalHBox *hb = new KviTalHBox(this);
+	KviTalHBox * hb = new KviTalHBox(this);
 	hb->setMargin(1);
 	hb->setSpacing(1);
-	g->addWidget(hb,0,0);
+	g->addWidget(hb, 0, 0);
 
 	QToolButton * tb;
 	QFrame * sep;
 
 	m_pConfigureButton = new QToolButton(hb);
 	m_pConfigureButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_ADDONS)));
-	m_pConfigureButton->setIconSize(QSize(32,32));
-	KviTalToolTip::add(m_pConfigureButton,__tr2qs_ctx("Configure addon...","addon"));
-	connect(m_pConfigureButton,SIGNAL(clicked()),this,SLOT(configureScript()));
+	m_pConfigureButton->setIconSize(QSize(32, 32));
+	KviTalToolTip::add(m_pConfigureButton, __tr2qs_ctx("Configure addon...", "addon"));
+	connect(m_pConfigureButton, SIGNAL(clicked()), this, SLOT(configureScript()));
 
 	m_pHelpButton = new QToolButton(hb);
 	m_pHelpButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_HELP)));
-	m_pHelpButton->setIconSize(QSize(32,32));
-	KviTalToolTip::add(m_pHelpButton,__tr2qs_ctx("Show help","addon"));
-	connect(m_pHelpButton,SIGNAL(clicked()),this,SLOT(showScriptHelp()));
+	m_pHelpButton->setIconSize(QSize(32, 32));
+	KviTalToolTip::add(m_pHelpButton, __tr2qs_ctx("Show help", "addon"));
+	connect(m_pHelpButton, SIGNAL(clicked()), this, SLOT(showScriptHelp()));
 
 	m_pUninstallButton = new QToolButton(hb);
 	m_pUninstallButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_REMOVE)));
-	m_pUninstallButton->setIconSize(QSize(32,32));
-	KviTalToolTip::add(m_pUninstallButton,__tr2qs_ctx("Delete selected addon","addon"));
-	connect(m_pUninstallButton,SIGNAL(clicked()),this,SLOT(uninstallScript()));
+	m_pUninstallButton->setIconSize(QSize(32, 32));
+	KviTalToolTip::add(m_pUninstallButton, __tr2qs_ctx("Delete selected addon", "addon"));
+	connect(m_pUninstallButton, SIGNAL(clicked()), this, SLOT(uninstallScript()));
 
 	sep = new QFrame(hb);
 	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
@@ -141,9 +137,9 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 
 	m_pPackButton = new QToolButton(hb);
 	m_pPackButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
-	m_pPackButton->setIconSize(QSize(32,32));
-	KviTalToolTip::add(m_pPackButton,__tr2qs_ctx("Create an addon as a distributable package","addon"));
-	connect(m_pPackButton,SIGNAL(clicked()),this,SLOT(packScript()));
+	m_pPackButton->setIconSize(QSize(32, 32));
+	KviTalToolTip::add(m_pPackButton, __tr2qs_ctx("Create an addon as a distributable package", "addon"));
+	connect(m_pPackButton, SIGNAL(clicked()), this, SLOT(packScript()));
 
 	sep = new QFrame(hb);
 	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
@@ -151,53 +147,53 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 
 	tb = new QToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
-	tb->setIconSize(QSize(32,32));
-	KviTalToolTip::add(tb,__tr2qs_ctx("Install addon package from disk","addon"));
-	connect(tb,SIGNAL(clicked()),this,SLOT(installScript()));
+	tb->setIconSize(QSize(32, 32));
+	KviTalToolTip::add(tb, __tr2qs_ctx("Install addon package from disk", "addon"));
+	connect(tb, SIGNAL(clicked()), this, SLOT(installScript()));
 
 	tb = new QToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW)));
-	tb->setIconSize(QSize(32,32));
-	KviTalToolTip::add(tb,__tr2qs_ctx("Get more addons...","addon"));
-	connect(tb,SIGNAL(clicked()),this,SLOT(getMoreScripts()));
+	tb->setIconSize(QSize(32, 32));
+	KviTalToolTip::add(tb, __tr2qs_ctx("Get more addons...", "addon"));
+	connect(tb, SIGNAL(clicked()), this, SLOT(getMoreScripts()));
 
-	QWidget *w= new QWidget(hb);
-	w->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Minimum);
+	QWidget * w = new QWidget(hb);
+	w->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
 
 	m_pListWidget = new KviTalListWidget(this);
-	KviTalIconAndRichTextItemDelegate *itemDelegate=new KviTalIconAndRichTextItemDelegate(m_pListWidget);
+	KviTalIconAndRichTextItemDelegate * itemDelegate = new KviTalIconAndRichTextItemDelegate(m_pListWidget);
 
 	m_pListWidget->setItemDelegate(itemDelegate);
 	m_pListWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pListWidget->setSortingEnabled(true);
 	m_pListWidget->setMinimumHeight(400);
 	m_pListWidget->setMinimumWidth(380);
-	g->addWidget(m_pListWidget,1,0);
+	g->addWidget(m_pListWidget, 1, 0);
 
 	fillListView();
 
-	currentChanged(0,0);
-	connect(m_pListWidget,SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),this,SLOT(currentChanged(QListWidgetItem *,QListWidgetItem *)));
+	currentChanged(0, 0);
+	connect(m_pListWidget, SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)), this, SLOT(currentChanged(QListWidgetItem *, QListWidgetItem *)));
 	m_pListWidget->setCurrentItem(m_pListWidget->item(0));
 
-	QPushButton * pCloseBtn = new QPushButton(__tr2qs_ctx("Close","addon"),this);
-	pCloseBtn->setMaximumSize(pCloseBtn->sizeHint().width(),pCloseBtn->sizeHint().height());
-	connect(pCloseBtn,SIGNAL(clicked()),this,SLOT(closeClicked()));
-	g->addWidget(pCloseBtn,2,0);
+	QPushButton * pCloseBtn = new QPushButton(__tr2qs_ctx("Close", "addon"), this);
+	pCloseBtn->setMaximumSize(pCloseBtn->sizeHint().width(), pCloseBtn->sizeHint().height());
+	connect(pCloseBtn, SIGNAL(clicked()), this, SLOT(closeClicked()));
+	g->addWidget(pCloseBtn, 2, 0);
 
 	g->setMargin(5);
 	g->setSpacing(5);
-	g->setAlignment(pCloseBtn,Qt::AlignRight);
+	g->setAlignment(pCloseBtn, Qt::AlignRight);
 
 	if(g_rectManagementDialogGeometry.y() < 5)
 	{
 		g_rectManagementDialogGeometry.setY(5);
 	}
 	resize(g_rectManagementDialogGeometry.width(),
-		g_rectManagementDialogGeometry.height());
+	    g_rectManagementDialogGeometry.height());
 
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
-	move(rect.x() + ((rect.width() - g_rectManagementDialogGeometry.width())/2),rect.y() + ((rect.height() - g_rectManagementDialogGeometry.height())/2));
+	move(rect.x() + ((rect.width() - g_rectManagementDialogGeometry.width()) / 2), rect.y() + ((rect.height() - g_rectManagementDialogGeometry.height()) / 2));
 
 	new QShortcut(Qt::Key_Escape, this, SLOT(closeClicked()));
 }
@@ -208,25 +204,26 @@ AddonManagementDialog::~AddonManagementDialog()
 	if(m_pWebInterfaceDialog)
 		delete m_pWebInterfaceDialog;
 #endif //COMPILE_WEBKIT_SUPPORT
-	g_rectManagementDialogGeometry = QRect(pos().x(),pos().y(),size().width(),size().height());
+	g_rectManagementDialogGeometry = QRect(pos().x(), pos().y(), size().width(), size().height());
 	m_pInstance = NULL;
 }
 
 void AddonManagementDialog::fillListView()
 {
 	m_pListWidget->clear();
-	KviPointerHashTable<QString,KviKvsScriptAddon> * d = KviKvsScriptAddonManager::instance()->addonDict();
-	if(!d)return;
-	KviPointerHashTableIterator<QString,KviKvsScriptAddon> it(*d);
+	KviPointerHashTable<QString, KviKvsScriptAddon> * d = KviKvsScriptAddonManager::instance()->addonDict();
+	if(!d)
+		return;
+	KviPointerHashTableIterator<QString, KviKvsScriptAddon> it(*d);
 
 	while(KviKvsScriptAddon * a = it.current())
 	{
-		new AddonListViewItem(m_pListWidget,a);
+		new AddonListViewItem(m_pListWidget, a);
 		++it;
 	}
 }
 
-void AddonManagementDialog::currentChanged(QListWidgetItem *item,QListWidgetItem *)
+void AddonManagementDialog::currentChanged(QListWidgetItem * item, QListWidgetItem *)
 {
 	AddonListViewItem * it = (AddonListViewItem *)item;
 	if(!it)
@@ -234,7 +231,9 @@ void AddonManagementDialog::currentChanged(QListWidgetItem *item,QListWidgetItem
 		m_pConfigureButton->setEnabled(false);
 		m_pUninstallButton->setEnabled(false);
 		m_pHelpButton->setEnabled(false);
-	} else {
+	}
+	else
+	{
 		m_pConfigureButton->setEnabled(!(it->addon()->configureCallbackCode().isEmpty()));
 		m_pHelpButton->setEnabled(!(it->addon()->helpCallbackCode().isEmpty()));
 		m_pUninstallButton->setEnabled(true);
@@ -244,16 +243,20 @@ void AddonManagementDialog::currentChanged(QListWidgetItem *item,QListWidgetItem
 void AddonManagementDialog::showScriptHelp()
 {
 	AddonListViewItem * it = (AddonListViewItem *)m_pListWidget->currentItem();
-	if(!it)return;
-	if(it->addon()->helpCallbackCode().isEmpty())return;
+	if(!it)
+		return;
+	if(it->addon()->helpCallbackCode().isEmpty())
+		return;
 	it->addon()->executeHelpCallback(g_pActiveWindow);
 }
 
 void AddonManagementDialog::configureScript()
 {
 	AddonListViewItem * it = (AddonListViewItem *)m_pListWidget->currentItem();
-	if(!it)return;
-	if(it->addon()->configureCallbackCode().isEmpty())return;
+	if(!it)
+		return;
+	if(it->addon()->configureCallbackCode().isEmpty())
+		return;
 	it->addon()->executeConfigureCallback(g_pActiveWindow);
 }
 
@@ -267,22 +270,24 @@ void AddonManagementDialog::packScript()
 void AddonManagementDialog::uninstallScript()
 {
 	AddonListViewItem * it = (AddonListViewItem *)m_pListWidget->currentItem();
-	if(!it)return;
+	if(!it)
+		return;
 
 	QString txt = "<p>";
-	txt += __tr2qs_ctx("Do you really want to uninstall the addon \"%1\"?","addon").arg(it->addon()->visibleName());
+	txt += __tr2qs_ctx("Do you really want to uninstall the addon \"%1\"?", "addon").arg(it->addon()->visibleName());
 	txt += "</p>";
 
 	if(QMessageBox::question(
-		this,
-		__tr2qs_ctx("Confirm Addon Uninstallation - KVIrc","addon"),
-		txt, __tr2qs_ctx("Yes","addon"), __tr2qs_ctx("No","addon"),0,1
-		) != 0) return;
+	       this,
+	       __tr2qs_ctx("Confirm Addon Uninstallation - KVIrc", "addon"),
+	       txt, __tr2qs_ctx("Yes", "addon"), __tr2qs_ctx("No", "addon"), 0, 1)
+	    != 0)
+		return;
 
-	KviKvsScriptAddonManager::instance()->unregisterAddon(it->addon()->name(),g_pActiveWindow);
+	KviKvsScriptAddonManager::instance()->unregisterAddon(it->addon()->name(), g_pActiveWindow);
 
 	fillListView();
-	currentChanged(0,0);
+	currentChanged(0, 0);
 }
 
 void AddonManagementDialog::getMoreScripts()
@@ -291,9 +296,9 @@ void AddonManagementDialog::getMoreScripts()
 	if(m_pWebInterfaceDialog)
 		return;
 	m_pWebInterfaceDialog = new WebAddonInterfaceDialog();
-#else //!COMPILE_WEBKIT_SUPPORT
+#else  //!COMPILE_WEBKIT_SUPPORT
 	// If change this introducing not-fixed text, remember to escape this using KviQString::escapeKvs()!
-	KviKvsScript::run("openurl http://www.kvirc.net/?id=addons&version=" KVI_VERSION "." KVI_SOURCES_DATE,g_pActiveWindow);
+	KviKvsScript::run("openurl http://www.kvirc.net/?id=addons&version=" KVI_VERSION "." KVI_SOURCES_DATE, g_pActiveWindow);
 #endif //!COMPILE_WEBKIT_SUPPORT
 }
 
@@ -302,44 +307,44 @@ void AddonManagementDialog::installScript()
 	QString szFileName, szError;
 
 	if(!KviFileDialog::askForOpenFileName(
-		szFileName,
-		__tr2qs_ctx("Select a Installation File - KVIrc","addon"),
-		QString(),KVI_FILTER_ADDON,false,true,this
-		)) return;
+	       szFileName,
+	       __tr2qs_ctx("Select a Installation File - KVIrc", "addon"),
+	       QString(), KVI_FILTER_ADDON, false, true, this))
+		return;
 
-	szFileName.replace("\\","\\\\");
+	szFileName.replace("\\", "\\\\");
 
 	// Sanity check
 	if(szFileName.endsWith(".kva"))
 	{
-		if(!AddonFunctions::installAddonPackage(szFileName,szError,this))
+		if(!AddonFunctions::installAddonPackage(szFileName, szError, this))
 		{
 			QMessageBox::critical(
-				this,
-				__tr2qs_ctx("Install Addon - KVIrc","addon"),
-				szError,
-				QMessageBox::Ok,
-				QMessageBox::NoButton,
-				QMessageBox::NoButton
-			);
+			    this,
+			    __tr2qs_ctx("Install Addon - KVIrc", "addon"),
+			    szError,
+			    QMessageBox::Ok,
+			    QMessageBox::NoButton,
+			    QMessageBox::NoButton);
 			return;
 		}
-	} else {
+	}
+	else
+	{
 		// Just for sanity check. We should NEVER enter here
 		qDebug("Entered sanity check");
 		AddonFunctions::notAValidAddonPackage(szError);
 		QMessageBox::critical(
-			this,
-			__tr2qs_ctx("Install Addon - KVIrc","addon"),
-			szError,
-			QMessageBox::Ok,
-			QMessageBox::NoButton,
-			QMessageBox::NoButton
-		);
+		    this,
+		    __tr2qs_ctx("Install Addon - KVIrc", "addon"),
+		    szError,
+		    QMessageBox::Ok,
+		    QMessageBox::NoButton,
+		    QMessageBox::NoButton);
 	}
 
 	fillListView();
-	currentChanged(0,0);
+	currentChanged(0, 0);
 
 	//m_pListWidget->publicUpdateContents();
 	//m_pListWidget->triggerUpdate();
@@ -352,7 +357,8 @@ void AddonManagementDialog::closeClicked()
 
 void AddonManagementDialog::cleanup()
 {
-	if(!m_pInstance)return;
+	if(!m_pInstance)
+		return;
 	delete m_pInstance;
 	m_pInstance = 0;
 }
@@ -367,17 +373,23 @@ void AddonManagementDialog::display(bool bTopLevel)
 			{
 				m_pInstance->setParent(0);
 			}
-		} else {
+		}
+		else
+		{
 			if(m_pInstance->parent() != g_pMainWindow->splitter())
 			{
 				m_pInstance->setParent(g_pMainWindow->splitter());
 			}
 		}
-	} else {
+	}
+	else
+	{
 		if(bTopLevel)
 		{
 			m_pInstance = new AddonManagementDialog(0);
-		} else {
+		}
+		else
+		{
 			m_pInstance = new AddonManagementDialog(g_pMainWindow->splitter());
 		}
 	}

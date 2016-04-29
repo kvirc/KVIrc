@@ -26,7 +26,7 @@
 #include "KviConfigurationFile.h"
 #include "KviIrcMask.h"
 
-void KviNickServRule::copyFrom(const KviNickServRule &src)
+void KviNickServRule::copyFrom(const KviNickServRule & src)
 {
 	m_szRegisteredNick = src.m_szRegisteredNick;
 	m_szNickServMask = src.m_szNickServMask;
@@ -39,18 +39,18 @@ void KviNickServRule::save(KviConfigurationFile * cfg, const QString & szPrefix)
 {
 	QString szTmp;
 	szTmp = QString("%1RegisteredNick").arg(szPrefix);
-	cfg->writeEntry(szTmp,m_szRegisteredNick);
+	cfg->writeEntry(szTmp, m_szRegisteredNick);
 	szTmp = QString("%1NickServMask").arg(szPrefix);
-	cfg->writeEntry(szTmp,m_szNickServMask);
+	cfg->writeEntry(szTmp, m_szNickServMask);
 	szTmp = QString("%1MessageRegexp").arg(szPrefix);
-	cfg->writeEntry(szTmp,m_szMessageRegexp);
+	cfg->writeEntry(szTmp, m_szMessageRegexp);
 	szTmp = QString("%1IdentifyCommand").arg(szPrefix);
-	cfg->writeEntry(szTmp,m_szIdentifyCommand);
+	cfg->writeEntry(szTmp, m_szIdentifyCommand);
 	szTmp = QString("%1ServerMask").arg(szPrefix);
-	cfg->writeEntry(szTmp,m_szServerMask);
+	cfg->writeEntry(szTmp, m_szServerMask);
 }
 
-bool KviNickServRule::load(KviConfigurationFile * cfg,const QString & szPrefix)
+bool KviNickServRule::load(KviConfigurationFile * cfg, const QString & szPrefix)
 {
 	QString szTmp;
 	szTmp = QString("%1RegisteredNick").arg(szPrefix);
@@ -62,7 +62,7 @@ bool KviNickServRule::load(KviConfigurationFile * cfg,const QString & szPrefix)
 	if(m_szNickServMask.isEmpty())
 		return false;
 	szTmp = QString("%1ServerMask").arg(szPrefix);
-	m_szServerMask = cfg->readEntry(szTmp,QString());
+	m_szServerMask = cfg->readEntry(szTmp, QString());
 	szTmp = QString("%1MessageRegexp").arg(szPrefix);
 	m_szMessageRegexp = cfg->readEntry(szTmp);
 	if(m_szMessageRegexp.isEmpty())
@@ -72,11 +72,11 @@ bool KviNickServRule::load(KviConfigurationFile * cfg,const QString & szPrefix)
 	return !m_szIdentifyCommand.isEmpty();
 }
 
-KviNickServRule * KviNickServRule::createInstance(const QString &szRegisteredNick,
-		const QString &szNickServMask,
-		const QString &szMessageRegexp,
-		const QString &szIdentifyCommand,
-		const QString &szServerMask)
+KviNickServRule * KviNickServRule::createInstance(const QString & szRegisteredNick,
+    const QString & szNickServMask,
+    const QString & szMessageRegexp,
+    const QString & szIdentifyCommand,
+    const QString & szServerMask)
 {
-	return new KviNickServRule(szRegisteredNick,szNickServMask,szMessageRegexp,szIdentifyCommand,szServerMask);
+	return new KviNickServRule(szRegisteredNick, szNickServMask, szMessageRegexp, szIdentifyCommand, szServerMask);
 }

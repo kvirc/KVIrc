@@ -1,5 +1,5 @@
-#ifndef	_CLASS_LINEEDIT_H_
-#define	_CLASS_LINEEDIT_H_
+#ifndef _CLASS_LINEEDIT_H_
+#define _CLASS_LINEEDIT_H_
 //=============================================================================
 //
 //   File : KvsObject_lineEdit.h
@@ -25,8 +25,6 @@
 //
 //=============================================================================
 
-
-
 #include "KvsObject_widget.h"
 
 //#warning "Signals!"
@@ -42,49 +40,47 @@ public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
 	QCompleter * m_pCompleter;
+
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
+	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-	bool setCompleter(KviKvsObjectFunctionCall *c);
-	bool enableCompleter(KviKvsObjectFunctionCall *c);
-	bool disableCompleter(KviKvsObjectFunctionCall *c);
-	bool unsetCompleter(KviKvsObjectFunctionCall *c);
+	bool setCompleter(KviKvsObjectFunctionCall * c);
+	bool enableCompleter(KviKvsObjectFunctionCall * c);
+	bool disableCompleter(KviKvsObjectFunctionCall * c);
+	bool unsetCompleter(KviKvsObjectFunctionCall * c);
 
-	bool text(KviKvsObjectFunctionCall *c);
-	bool setText(KviKvsObjectFunctionCall *c);
-	bool maxLength(KviKvsObjectFunctionCall *c);
-	bool setMaxLength(KviKvsObjectFunctionCall *c);
-	bool frame(KviKvsObjectFunctionCall *c);
-	bool setCursorPosition(KviKvsObjectFunctionCall *c);
-	bool cursorPosition(KviKvsObjectFunctionCall *c);
-	bool setFrame(KviKvsObjectFunctionCall *c);
-	bool selectAll(KviKvsObjectFunctionCall *c);
-	bool setSelection(KviKvsObjectFunctionCall *c);
-	bool copy(KviKvsObjectFunctionCall *c);
-	bool cut(KviKvsObjectFunctionCall *c);
+	bool text(KviKvsObjectFunctionCall * c);
+	bool setText(KviKvsObjectFunctionCall * c);
+	bool maxLength(KviKvsObjectFunctionCall * c);
+	bool setMaxLength(KviKvsObjectFunctionCall * c);
+	bool frame(KviKvsObjectFunctionCall * c);
+	bool setCursorPosition(KviKvsObjectFunctionCall * c);
+	bool cursorPosition(KviKvsObjectFunctionCall * c);
+	bool setFrame(KviKvsObjectFunctionCall * c);
+	bool selectAll(KviKvsObjectFunctionCall * c);
+	bool setSelection(KviKvsObjectFunctionCall * c);
+	bool copy(KviKvsObjectFunctionCall * c);
+	bool cut(KviKvsObjectFunctionCall * c);
 
-	bool paste(KviKvsObjectFunctionCall *c);
-	bool echoMode(KviKvsObjectFunctionCall *c);
-	bool setEchoMode(KviKvsObjectFunctionCall *c);
-	bool clear(KviKvsObjectFunctionCall *c);
-	bool dragAndDrop(KviKvsObjectFunctionCall *c);
-	bool setInputMask(KviKvsObjectFunctionCall *c);
-	bool setReadOnly(KviKvsObjectFunctionCall *c);
+	bool paste(KviKvsObjectFunctionCall * c);
+	bool echoMode(KviKvsObjectFunctionCall * c);
+	bool setEchoMode(KviKvsObjectFunctionCall * c);
+	bool clear(KviKvsObjectFunctionCall * c);
+	bool dragAndDrop(KviKvsObjectFunctionCall * c);
+	bool setInputMask(KviKvsObjectFunctionCall * c);
+	bool setReadOnly(KviKvsObjectFunctionCall * c);
 
-	bool returnPressedEvent(KviKvsObjectFunctionCall *c);
+	bool returnPressedEvent(KviKvsObjectFunctionCall * c);
 
-	bool lostFocusEvent(KviKvsObjectFunctionCall *c);
+	bool lostFocusEvent(KviKvsObjectFunctionCall * c);
 
-	bool textChangedEvent(KviKvsObjectFunctionCall *c);
+	bool textChangedEvent(KviKvsObjectFunctionCall * c);
 
-
-	bool setInputValidator(KviKvsObjectFunctionCall *c);
+	bool setInputValidator(KviKvsObjectFunctionCall * c);
 protected slots:
 	void slotreturnPressed();
 	void slotlostFocus();
 	void slottextChanged(const QString &);
-
 };
 
-
-#endif	// ! _CLASS_LINEEDIT_H_
+#endif // ! _CLASS_LINEEDIT_H_

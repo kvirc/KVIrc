@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "kvi_debug.h"
 #include "kvi_out.h"
 #include "KviIrcContext.h"
@@ -67,9 +66,8 @@ static unsigned int g_uNextIrcContextId = 1;
 extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
-
 KviIrcContext::KviIrcContext(KviConsoleWindow * pConsole)
-: QObject(0)
+    : QObject(0)
 {
 	m_uId = g_uNextIrcContextId;
 	g_uNextIrcContextId++;
@@ -105,25 +103,32 @@ KviIrcContext::~KviIrcContext()
 	while(m_pMonitorList)
 	{
 		KviIrcDataStreamMonitor * m = m_pMonitorList->first();
-		if(m)m->die();
-		else {
+		if(m)
+			m->die();
+		else
+		{
 			delete m_pMonitorList;
 			m_pMonitorList = 0;
 		}
 	}
 
-	if(m_pReconnectTimer)delete m_pReconnectTimer;
+	if(m_pReconnectTimer)
+		delete m_pReconnectTimer;
 
-	if(m_pLinksWindow)m_pLinksWindow->die();
-	if(m_pListWindow)m_pListWindow->die();
+	if(m_pLinksWindow)
+		m_pLinksWindow->die();
+	if(m_pListWindow)
+		m_pListWindow->die();
 
 	closeAllDeadChannels();
 	closeAllDeadQueries();
 	closeAllContextWindows();
 
 	destroyConnection();
-	if(m_pAsynchronousConnectionData)delete m_pAsynchronousConnectionData;
-	if(m_pSavedAsynchronousConnectionData)delete m_pSavedAsynchronousConnectionData;
+	if(m_pAsynchronousConnectionData)
+		delete m_pAsynchronousConnectionData;
+	if(m_pSavedAsynchronousConnectionData)
+		delete m_pSavedAsynchronousConnectionData;
 }
 
 void KviIrcContext::registerDataStreamMonitor(KviIrcDataStreamMonitor * m)
@@ -136,9 +141,10 @@ void KviIrcContext::registerDataStreamMonitor(KviIrcDataStreamMonitor * m)
 	m_pMonitorList->append(m);
 }
 
-void KviIrcContext::unregisterDataStreamMonitor(KviIrcDataStreamMonitor *m)
+void KviIrcContext::unregisterDataStreamMonitor(KviIrcDataStreamMonitor * m)
 {
-	if(!m_pMonitorList)return;
+	if(!m_pMonitorList)
+		return;
 	m_pMonitorList->removeRef(m);
 	if(m_pMonitorList->isEmpty())
 	{
@@ -155,7 +161,9 @@ void KviIrcContext::closeAllDeadChannels()
 		if(c)
 		{
 			g_pMainWindow->closeWindow(c);
-		} else {
+		}
+		else
+		{
 			// ops....
 			delete m_pDeadChannels;
 			m_pDeadChannels = 0;
@@ -171,7 +179,9 @@ void KviIrcContext::closeAllDeadQueries()
 		if(q)
 		{
 			g_pMainWindow->closeWindow(q);
-		} else {
+		}
+		else
+		{
 			// ops....
 			delete m_pDeadQueries;
 			m_pDeadQueries = 0;
@@ -187,7 +197,9 @@ void KviIrcContext::closeAllContextWindows()
 		if(w)
 		{
 			g_pMainWindow->closeWindow(w);
-		} else {
+		}
+		else
+		{
 			// ops...
 			delete m_pContextWindows;
 			m_pContextWindows = 0;
@@ -195,24 +207,28 @@ void KviIrcContext::closeAllContextWindows()
 	}
 }
 
-KviChannelWindow * KviIrcContext::findDeadChannel(const QString &name)
+KviChannelWindow * KviIrcContext::findDeadChannel(const QString & name)
 {
-	if(!m_pDeadChannels)return 0;
-	for(KviChannelWindow * c = m_pDeadChannels->first();c;c = m_pDeadChannels->next())
+	if(!m_pDeadChannels)
+		return 0;
+	for(KviChannelWindow * c = m_pDeadChannels->first(); c; c = m_pDeadChannels->next())
 	{
 		KVI_ASSERT(c->isDeadChan());
-		if(KviQString::equalCI(name,c->windowName()))return c;
+		if(KviQString::equalCI(name, c->windowName()))
+			return c;
 	}
 	return 0;
 }
 
-KviQueryWindow * KviIrcContext::findDeadQuery(const QString &name)
+KviQueryWindow * KviIrcContext::findDeadQuery(const QString & name)
 {
-	if(!m_pDeadQueries)return 0;
-	for(KviQueryWindow * c = m_pDeadQueries->first();c;c = m_pDeadQueries->next())
+	if(!m_pDeadQueries)
+		return 0;
+	for(KviQueryWindow * c = m_pDeadQueries->first(); c; c = m_pDeadQueries->next())
 	{
 		KVI_ASSERT(c->isDeadQuery());
-		if(KviQString::equalCI(name,c->windowName()))return c;
+		if(KviQString::equalCI(name, c->windowName()))
+			return c;
 	}
 	return 0;
 }
@@ -264,7 +280,8 @@ void KviIrcContext::registerDeadQuery(KviQueryWindow * q)
 bool KviIrcContext::unregisterDeadChannel(KviChannelWindow * c)
 {
 	// was a dead channel ?
-	if(!m_pDeadChannels)return false;
+	if(!m_pDeadChannels)
+		return false;
 	if(!m_pDeadChannels->removeRef(c))
 	{
 		return false;
@@ -279,7 +296,8 @@ bool KviIrcContext::unregisterDeadChannel(KviChannelWindow * c)
 
 bool KviIrcContext::unregisterContextWindow(KviWindow * pWnd)
 {
-	if(!m_pContextWindows)return false;
+	if(!m_pContextWindows)
+		return false;
 	if(!m_pContextWindows->removeRef(pWnd))
 	{
 		return false;
@@ -294,7 +312,8 @@ bool KviIrcContext::unregisterContextWindow(KviWindow * pWnd)
 
 bool KviIrcContext::unregisterDeadQuery(KviQueryWindow * q)
 {
-	if(!m_pDeadQueries)return false;
+	if(!m_pDeadQueries)
+		return false;
 	if(!m_pDeadQueries->removeRef(q))
 	{
 		return false;
@@ -309,24 +328,29 @@ bool KviIrcContext::unregisterDeadQuery(KviQueryWindow * q)
 
 void KviIrcContext::createLinksWindow()
 {
-	if(m_pLinksWindow)return;
-	KviKvsScript::run("links.open",m_pConsole);
+	if(m_pLinksWindow)
+		return;
+	KviKvsScript::run("links.open", m_pConsole);
 }
 
 void KviIrcContext::createListWindow()
 {
-	if(m_pListWindow)return;
-	KviKvsScript::run("list.open",m_pConsole);
+	if(m_pListWindow)
+		return;
+	KviKvsScript::run("list.open", m_pConsole);
 }
 
 void KviIrcContext::destroyConnection()
 {
-	if(!m_pConnection)return;
+	if(!m_pConnection)
+		return;
 	m_pConnection->closeAllChannels();
 	m_pConnection->closeAllQueries();
 
-	if(m_pLinksWindow)m_pLinksWindow->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_RESET);
-	if(m_pListWindow)m_pListWindow->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_RESET);
+	if(m_pLinksWindow)
+		m_pLinksWindow->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_RESET);
+	if(m_pListWindow)
+		m_pListWindow->control(EXTERNAL_SERVER_DATA_PARSER_CONTROL_RESET);
 
 	m_pConsole->connectionDetached();
 
@@ -339,27 +363,31 @@ void KviIrcContext::destroyConnection()
 
 void KviIrcContext::setState(State eState)
 {
-	if(m_eState == eState)return;
+	if(m_eState == eState)
+		return;
 	m_eState = eState;
 
 	g_pMainWindow->childContextStateChange(this);
 
 	emit stateChanged();
 
-	if(eState == KviIrcContext::Idle || eState == KviIrcContext::PendingReconnection)destroyConnection();
+	if(eState == KviIrcContext::Idle || eState == KviIrcContext::PendingReconnection)
+		destroyConnection();
 
 	m_pConsole->updateCaption();
 }
 
 void KviIrcContext::setAsynchronousConnectionData(KviAsynchronousConnectionData * d)
 {
-	if(m_pAsynchronousConnectionData)delete m_pAsynchronousConnectionData;
+	if(m_pAsynchronousConnectionData)
+		delete m_pAsynchronousConnectionData;
 	m_pAsynchronousConnectionData = d;
 }
 
 void KviIrcContext::destroyAsynchronousConnectionData()
 {
-	if(!m_pAsynchronousConnectionData)return;
+	if(!m_pAsynchronousConnectionData)
+		return;
 	delete m_pAsynchronousConnectionData;
 	m_pAsynchronousConnectionData = 0;
 }
@@ -381,7 +409,7 @@ void KviIrcContext::connectButtonClicked()
 			destroyAsynchronousConnectionData();
 
 			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
-				__tr2qs("Reconnect attempt aborted"));
+			    __tr2qs("Reconnect attempt aborted"));
 
 			if(m_eState == KviIrcContext::PendingReconnection)
 				setState(Idle);
@@ -392,7 +420,9 @@ void KviIrcContext::connectButtonClicked()
 		// No connections in progress
 		m_uConnectAttemptCount = 1;
 		connectToCurrentServer();
-	} else {
+	}
+	else
+	{
 		// Sth is going on
 		terminateConnectionRequest(false);
 	}
@@ -406,7 +436,7 @@ void KviIrcContext::connectToCurrentServer()
 		m_pReconnectTimer = 0;
 	}
 
-	m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE," "); // spacer
+	m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE, " "); // spacer
 
 	// No connection target specified.
 	// If we have a saved target, reuse it
@@ -423,9 +453,7 @@ void KviIrcContext::connectToCurrentServer()
 		{
 			// an empty server might mean "reuse the last server in context"
 			if(
-					m_pAsynchronousConnectionData->bUseLastServerInContext &&
-					m_pSavedAsynchronousConnectionData
-				)
+			    m_pAsynchronousConnectionData->bUseLastServerInContext && m_pSavedAsynchronousConnectionData)
 			{
 				// reuse the saved connection data
 				// the server for sure
@@ -455,8 +483,10 @@ void KviIrcContext::connectToCurrentServer()
 					m_pAsynchronousConnectionData->szNick = m_pSavedAsynchronousConnectionData->szNick;
 				if(m_pAsynchronousConnectionData->szInitUMode.isEmpty())
 					m_pAsynchronousConnectionData->szInitUMode = m_pSavedAsynchronousConnectionData->szInitUMode;
-			} else {
-				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,__tr2qs("This is the first connection in this IRC context: using the global server setting"));
+			}
+			else
+			{
+				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING, __tr2qs("This is the first connection in this IRC context: using the global server setting"));
 			}
 		}
 
@@ -478,9 +508,9 @@ void KviIrcContext::connectToCurrentServer()
 			d.szInitUMode = m_pAsynchronousConnectionData->szInitUMode;
 			d.szId = m_pAsynchronousConnectionData->szServerId;
 			QString szError;
-			if(!g_pServerDataBase->makeCurrentServer(&d,szError))
+			if(!g_pServerDataBase->makeCurrentServer(&d, szError))
 			{
-				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,szError);
+				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR, szError);
 				destroyAsynchronousConnectionData();
 				return;
 			}
@@ -488,16 +518,16 @@ void KviIrcContext::connectToCurrentServer()
 	}
 
 	KviIrcNetwork * net = g_pServerDataBase->currentNetwork();
-	KviIrcServer  * srv = net ? net->currentServer() : 0;
+	KviIrcServer * srv = net ? net->currentServer() : 0;
 
-	KviProxy   * prx = 0;
+	KviProxy * prx = 0;
 
 	if(!srv)
 	{
 		if(g_pServerDataBase->networkCount())
-			KviKvsScript::run("options.edit OptionsWidget_servers",m_pConsole);
+			KviKvsScript::run("options.edit OptionsWidget_servers", m_pConsole);
 		else
-			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("No servers available. Check the options dialog or use the /SERVER command"));
+			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR, __tr2qs("No servers available. Check the options dialog or use the /SERVER command"));
 		destroyAsynchronousConnectionData();
 		return;
 	}
@@ -505,20 +535,19 @@ void KviIrcContext::connectToCurrentServer()
 	if(!net)
 	{
 		// BUG
-		m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Oops! You've hit a bug in the servers database... I have found a server but not a network..."));
+		m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR, __tr2qs("Oops! You've hit a bug in the servers database... I have found a server but not a network..."));
 		destroyAsynchronousConnectionData();
 		return;
 	}
 
-
 	prx = srv->proxyServer(g_pProxyDataBase);
 
-	if(!prx && (srv->proxy()!=-1) && KVI_OPTION_BOOL(KviOption_boolUseProxyHost))
+	if(!prx && (srv->proxy() != -1) && KVI_OPTION_BOOL(KviOption_boolUseProxyHost))
 	{
 		prx = g_pProxyDataBase->currentProxy();
 		if(!prx)
 		{
-			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,__tr2qs("No proxy hosts available, resuming direct connection"));
+			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING, __tr2qs("No proxy hosts available, resuming direct connection"));
 		}
 	}
 
@@ -555,15 +584,13 @@ void KviIrcContext::connectToCurrentServer()
 		delete m_pConnection;
 
 	m_pConnection = new KviIrcConnection(
-		this,
-		new KviIrcConnectionTarget(
-			net,
-			srv,
-			prx,
-			szBindAddress
-		),
-		new KviUserIdentity(*pIdentity)
-	);
+	    this,
+	    new KviIrcConnectionTarget(
+	        net,
+	        srv,
+	        prx,
+	        szBindAddress),
+	    new KviUserIdentity(*pIdentity));
 
 	setState(Connecting);
 
@@ -603,11 +630,12 @@ void KviIrcContext::connectToCurrentServer()
 
 void KviIrcContext::connectionFailed(int iError)
 {
-	if(!m_pConnection)return; // this may happen in the destructor!
+	if(!m_pConnection)
+		return; // this may happen in the destructor!
 
 	m_pConsole->output(KVI_OUT_SYSTEMERROR,
-		__tr2qs("Connection attempt failed [%s]"),
-		m_pConnection->target()->server()->hostName().toUtf8().data());
+	    __tr2qs("Connection attempt failed [%s]"),
+	    m_pConnection->target()->server()->hostName().toUtf8().data());
 
 	// if the connection has been aborted by the user then just go idle
 	if(iError == KviError::OperationAborted)
@@ -616,8 +644,7 @@ void KviIrcContext::connectionFailed(int iError)
 	// FIXME: this should stop on critical errors !
 	if(KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect))
 	{
-		if((!KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts) ||
-			(m_uConnectAttemptCount < KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts))))
+		if((!KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts) || (m_uConnectAttemptCount < KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts))))
 		{
 			m_uConnectAttemptCount++;
 			//FIXME: Multiply the delay by (m_uConnectAttemptCount / 2) so later connects are less frequent.
@@ -627,11 +654,11 @@ void KviIrcContext::connectionFailed(int iError)
 				QString szNum;
 
 				if(!KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts))
-				    szNum = QString(__tr2qs("%1")).arg(m_uConnectAttemptCount);
+					szNum = QString(__tr2qs("%1")).arg(m_uConnectAttemptCount);
 				else
-				    szNum = QString(__tr2qs("%1 of %2")).arg(m_uConnectAttemptCount).arg(KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts));
+					szNum = QString(__tr2qs("%1 of %2")).arg(m_uConnectAttemptCount).arg(KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts));
 				szTmp += " [" + szNum + "]";
-				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,szTmp);
+				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE, szTmp);
 			}
 
 			KviIrcServer oldServer(*(connection()->target()->server()));
@@ -655,9 +682,11 @@ void KviIrcContext::connectionFailed(int iError)
 			setState(PendingReconnection); // destroy the actual connection
 
 			return;
-		} else {
+		}
+		else
+		{
 			if(!_OUTPUT_MUTE)
-				m_pConsole->output(KVI_OUT_SYSTEMERROR,__tr2qs("Maximum number of reconnect attempts reached (%d): giving up"),KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts));
+				m_pConsole->output(KVI_OUT_SYSTEMERROR, __tr2qs("Maximum number of reconnect attempts reached (%d): giving up"), KVI_OPTION_UINT(KviOption_uintMaxAutoReconnectAttempts));
 		}
 	}
 
@@ -666,14 +695,11 @@ void KviIrcContext::connectionFailed(int iError)
 
 	if(connection()->target()->server()->cacheIp())
 	{
-		if((((int)iError) == KviError::ConnectionTimedOut) ||
-			(((int)iError) == KviError::ConnectionRefused) ||
-			(((int)iError) == KviError::NetworkUnreachable) ||
-			(((int)iError) == KviError::HostUnreachable))
+		if((((int)iError) == KviError::ConnectionTimedOut) || (((int)iError) == KviError::ConnectionRefused) || (((int)iError) == KviError::NetworkUnreachable) || (((int)iError) == KviError::HostUnreachable))
 		{
-			m_pConsole->output(KVI_OUT_SYSTEMWARNING,__tr2qs("The connection attempt failed while using a cached IP address for the current server"));
-			m_pConsole->output(KVI_OUT_SYSTEMWARNING,__tr2qs("The problem *might* be caused by an updated DNS entry"));
-			m_pConsole->output(KVI_OUT_SYSTEMWARNING,__tr2qs("Try reconnecting with caching disabled"));
+			m_pConsole->output(KVI_OUT_SYSTEMWARNING, __tr2qs("The connection attempt failed while using a cached IP address for the current server"));
+			m_pConsole->output(KVI_OUT_SYSTEMWARNING, __tr2qs("The problem *might* be caused by an updated DNS entry"));
+			m_pConsole->output(KVI_OUT_SYSTEMWARNING, __tr2qs("Try reconnecting with caching disabled"));
 		}
 	}
 
@@ -694,20 +720,20 @@ void KviIrcContext::connectionEstablished()
 
 	setState(LoggingIn); // this must be set in order for $server and other functions to return the correct values
 
-	bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRCConnectionEstablished,m_pConsole);
+	bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRCConnectionEstablished, m_pConsole);
 
 	if(!bStopOutput)
 	{
-		m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("%Q established [%s (%s:%u)]"),
-			connection()->link()->socket()->usingSSL() ? &(__tr2qs("Secure connection")) : &(__tr2qs("Connection")),
-			connection()->target()->server()->hostName().toUtf8().data(),
-			connection()->target()->server()->ip().toUtf8().data(),
-			connection()->target()->server()->port());
+		m_pConsole->output(KVI_OUT_CONNECTION, __tr2qs("%Q established [%s (%s:%u)]"),
+		    connection()->link()->socket()->usingSSL() ? &(__tr2qs("Secure connection")) : &(__tr2qs("Connection")),
+		    connection()->target()->server()->hostName().toUtf8().data(),
+		    connection()->target()->server()->ip().toUtf8().data(),
+		    connection()->target()->server()->port());
 	}
 
 	// Add to recent server list (build the URL of type irc[6]://<server>:<port>
 	QString url;
-	KviIrcUrl::join(url,connection()->target()->server());
+	KviIrcUrl::join(url, connection()->target()->server());
 	g_pApp->addRecentServer(url);
 
 	// save the last server this console used
@@ -735,15 +761,7 @@ void KviIrcContext::connectionTerminated()
 
 	// we consider it unexpected when we haven't sent a QUIT message and we're connected
 	// or alternatively when a simulation of such a termination is requested (this is used to keep the queries open etc.)
-	bool bUnexpectedDisconnect = (
-			(!(connection()->stateData()->sentQuit())) &&
-			(
-				(m_eState == KviIrcContext::Connected) ||
-				(m_eState == KviIrcContext::Connecting) ||
-				(m_eState == KviIrcContext::LoggingIn)
-			)
-		) ||
-		connection()->stateData()->simulateUnexpectedDisconnect();
+	bool bUnexpectedDisconnect = ((!(connection()->stateData()->sentQuit())) && ((m_eState == KviIrcContext::Connected) || (m_eState == KviIrcContext::Connecting) || (m_eState == KviIrcContext::LoggingIn))) || connection()->stateData()->simulateUnexpectedDisconnect();
 
 	if(bUnexpectedDisconnect)
 	{
@@ -761,7 +779,9 @@ void KviIrcContext::connectionTerminated()
 
 		if(KVI_OPTION_BOOL(KviOption_boolKeepQueriesOpenOnUnexpectedDisconnect) || KVI_OPTION_BOOL(KviOption_boolKeepQueriesOpenOnDisconnect))
 			connection()->keepQueriesOpenAfterDisconnect();
-	} else {
+	}
+	else
+	{
 		if(KVI_OPTION_BOOL(KviOption_boolKeepChannelsOpenOnDisconnect))
 			connection()->keepChannelsOpenAfterDisconnect();
 
@@ -771,14 +791,14 @@ void KviIrcContext::connectionTerminated()
 
 	bool bStopOutput = false;
 
-	bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRCConnectionTerminated,m_pConsole);
+	bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRCConnectionTerminated, m_pConsole);
 
 	if(!bStopOutput)
 	{
-		m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("Connection terminated [%s (%s:%u)]"),
-				oldServer.hostName().toUtf8().data(),
-				oldServer.ip().toUtf8().data(),
-				oldServer.port());
+		m_pConsole->output(KVI_OUT_CONNECTION, __tr2qs("Connection terminated [%s (%s:%u)]"),
+		    oldServer.hostName().toUtf8().data(),
+		    oldServer.ip().toUtf8().data(),
+		    oldServer.port());
 	}
 
 	// do reconnect
@@ -789,7 +809,7 @@ void KviIrcContext::connectionTerminated()
 
 		//m_uConnectAttemptCount = 1;
 		if(!_OUTPUT_MUTE)
-			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("The connection terminated unexpectedly. Trying to reconnect..."));
+			m_pConsole->output(KVI_OUT_CONNECTION, __tr2qs("The connection terminated unexpectedly. Trying to reconnect..."));
 
 		KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
 		d->szServerId = oldServer.id();
@@ -806,16 +826,19 @@ void KviIrcContext::connectionTerminated()
 		setAsynchronousConnectionData(d);
 
 		beginAsynchronousConnect(1000 * KVI_OPTION_UINT(KviOption_uintAutoReconnectDelay));
-	} else {
+	}
+	else
+	{
 		setState(Idle);
 	}
 }
 
 void KviIrcContext::beginAsynchronousConnect(unsigned int uDelayInMSecs)
 {
-	if(m_pReconnectTimer) delete m_pReconnectTimer;
+	if(m_pReconnectTimer)
+		delete m_pReconnectTimer;
 	m_pReconnectTimer = new QTimer(this);
-	connect(m_pReconnectTimer,SIGNAL(timeout()),this,SLOT(asynchronousConnect()));
+	connect(m_pReconnectTimer, SIGNAL(timeout()), this, SLOT(asynchronousConnect()));
 	m_pReconnectTimer->start(uDelayInMSecs);
 }
 
@@ -828,7 +851,7 @@ void KviIrcContext::asynchronousConnect()
 	}
 
 	if(state() != Idle) // need a brutal disconnect here
-		terminateConnectionRequest(true,"Changing server...");
+		terminateConnectionRequest(true, "Changing server...");
 
 	connectToCurrentServer();
 }
@@ -849,20 +872,20 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 
 			if(!connection()->stateData()->sentQuit())
 			{
-				KVS_TRIGGER_EVENT_0(KviEvent_OnDisconnectRequest,m_pConsole);
+				KVS_TRIGGER_EVENT_0(KviEvent_OnDisconnectRequest, m_pConsole);
 				QString szQuit = szQuitMsg;
 				if(szQuit.isEmpty())
 					szQuit = KVI_OPTION_STRING(KviOption_stringQuitMessage);
 				KviQString::escapeKvs(&szQuit, KviQString::PermitVariables | KviQString::PermitFunctions);
 				QString buffer;
 				KviKvsVariant ret;
-				if(KviKvsScript::evaluate(szQuit,console(),0,&ret))
+				if(KviKvsScript::evaluate(szQuit, console(), 0, &ret))
 					ret.asString(buffer);
 				else
 					buffer = szQuit;
 				QByteArray dat = connection()->encodeText(buffer);
 				connection()->stateData()->setSentQuit();
-				connection()->sendFmtData("QUIT :%s",dat.data() ? dat.data() : ""); // here theoretically we COULD get disconnected
+				connection()->sendFmtData("QUIT :%s", dat.data() ? dat.data() : ""); // here theoretically we COULD get disconnected
 				bQuitSentJustNow = true;
 			} // else it was already sent anyway
 
@@ -878,9 +901,11 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 				// and brutally abort the connection (if it still exists!!!)
 				if(connection())
 					connection()->abort();
-			} else {
+			}
+			else
+			{
 				if(bQuitSentJustNow)
-					m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sent QUIT, waiting for the server to close the connection..."));
+					m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Sent QUIT, waiting for the server to close the connection..."));
 			}
 		}
 		break;
@@ -891,11 +916,11 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 			// though act as if we sent the quit message, so we'll not treat the disconnection as "unexpected".
 			connection()->stateData()->setSentQuit();
 			connection()->abort();
-		break;
+			break;
 		default:
 			// should never end here!
 			KVI_ASSERT(false);
-		break;
+			break;
 	}
 }
 

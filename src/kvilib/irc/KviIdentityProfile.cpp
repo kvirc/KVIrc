@@ -26,7 +26,7 @@
 #include "KviConfigurationFile.h"
 
 KviIdentityProfile::KviIdentityProfile()
-: KviHeapObject()
+    : KviHeapObject()
 {
 }
 
@@ -49,17 +49,17 @@ void KviIdentityProfile::save(KviConfigurationFile * pCfg, const QString & szPre
 	QString szTmp;
 
 	szTmp = QString("%1Name").arg(szPrefix);
-	pCfg->writeEntry(szTmp,m_szName);
+	pCfg->writeEntry(szTmp, m_szName);
 	szTmp = QString("%1Network").arg(szPrefix);
-	pCfg->writeEntry(szTmp,m_szNetwork);
+	pCfg->writeEntry(szTmp, m_szNetwork);
 	szTmp = QString("%1Nick").arg(szPrefix);
-	pCfg->writeEntry(szTmp,m_szNick);
+	pCfg->writeEntry(szTmp, m_szNick);
 	szTmp = QString("%1AltNick").arg(szPrefix);
-	pCfg->writeEntry(szTmp,m_szAltNick);
+	pCfg->writeEntry(szTmp, m_szAltNick);
 	szTmp = QString("%1UserName").arg(szPrefix);
-	pCfg->writeEntry(szTmp,m_szUserName);
+	pCfg->writeEntry(szTmp, m_szUserName);
 	szTmp = QString("%1RealName").arg(szPrefix);
-	pCfg->writeEntry(szTmp,m_szRealName);
+	pCfg->writeEntry(szTmp, m_szRealName);
 }
 
 bool KviIdentityProfile::load(KviConfigurationFile * pCfg, const QString & szPrefix)

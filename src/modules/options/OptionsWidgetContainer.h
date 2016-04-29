@@ -35,19 +35,22 @@ class OptionsWidgetContainer : public QDialog
 {
 	Q_OBJECT
 public:
-	OptionsWidgetContainer(QWidget * par,bool bModal = false);
+	OptionsWidgetContainer(QWidget * par, bool bModal = false);
 	~OptionsWidgetContainer();
+
 protected:
 	KviOptionsWidget * m_pOptionsWidget;
-	QPushButton      * m_pCancel;
-	QGridLayout      * m_pLayout;
+	QPushButton * m_pCancel;
+	QGridLayout * m_pLayout;
+
 public:
 	void setup(KviOptionsWidget * w);
 	void setLeftCornerWidget(QWidget * pWidget);
 	void setNextToLeft(QWidget * pWidget);
+
 protected:
-	virtual void closeEvent(QCloseEvent *e);
-	virtual void showEvent(QShowEvent *e);
+	virtual void closeEvent(QCloseEvent * e);
+	virtual void showEvent(QShowEvent * e);
 	virtual void childEvent(QChildEvent * e);
 	virtual void reject();
 protected slots:

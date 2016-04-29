@@ -30,10 +30,10 @@
 
 namespace KviNickColors
 {
-	extern KVILIB_API int getSmartColorForNick(QString *szNick);
+	extern KVILIB_API int getSmartColorForNick(QString * szNick);
 
 	extern KVILIB_API const char * getSmartColor(int iPos);
 
-	extern KVILIB_API int getSmartColorIntByMircColor(unsigned char iFore,unsigned char iBack);
+	extern KVILIB_API int getSmartColorIntByMircColor(unsigned char iFore, unsigned char iBack);
 }
 #endif // _KVI_NICKCOLORS_H_

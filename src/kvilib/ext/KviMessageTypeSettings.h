@@ -47,29 +47,37 @@
 class KVILIB_API KviMessageTypeSettings
 {
 public:
-	KviMessageTypeSettings(const char * type,int pixId,unsigned char fore,unsigned char back,bool bLog,int iLevel);
-	KviMessageTypeSettings(const KviMessageTypeSettings &msg);
+	KviMessageTypeSettings(const char * type, int pixId, unsigned char fore, unsigned char back, bool bLog, int iLevel);
+	KviMessageTypeSettings(const KviMessageTypeSettings & msg);
 	~KviMessageTypeSettings();
+
 public:
-	const char *  m_szType;
-	int           m_iPixId;
+	const char * m_szType;
+	int m_iPixId;
 	unsigned char m_cForeColor;
 	unsigned char m_cBackColor;
-	bool          m_bLogEnabled;
-	int           m_iLevel;
+	bool m_bLogEnabled;
+	int m_iLevel;
+
 public:
-	void setBack(char back){ m_cBackColor = back; };
-	void setFore(char fore){ m_cForeColor = fore; };
-	int pixId(){ return m_iPixId; };
-	int level(){ return m_iLevel; };
-	void setLevel(int iLevel){ 	if((iLevel < KVI_MSGTYPE_MINLEVEL) || (iLevel > KVI_MSGTYPE_MAXLEVEL))m_iLevel = 1; else m_iLevel = iLevel; };
-	void setPixId(int pixId){ m_iPixId = pixId; };
-	unsigned char back(){ return m_cBackColor; };
-	unsigned char fore(){ return m_cForeColor; };
-	bool logEnabled(){ return m_bLogEnabled; };
-	void enableLogging(bool bEnable){ m_bLogEnabled = bEnable; };
-	const char * type(){ return m_szType; };
-	KviMessageTypeSettings & operator=(const KviMessageTypeSettings &msg);       // deep copy
+	void setBack(char back) { m_cBackColor = back; };
+	void setFore(char fore) { m_cForeColor = fore; };
+	int pixId() { return m_iPixId; };
+	int level() { return m_iLevel; };
+	void setLevel(int iLevel)
+	{
+		if((iLevel < KVI_MSGTYPE_MINLEVEL) || (iLevel > KVI_MSGTYPE_MAXLEVEL))
+			m_iLevel = 1;
+		else
+			m_iLevel = iLevel;
+	};
+	void setPixId(int pixId) { m_iPixId = pixId; };
+	unsigned char back() { return m_cBackColor; };
+	unsigned char fore() { return m_cForeColor; };
+	bool logEnabled() { return m_bLogEnabled; };
+	void enableLogging(bool bEnable) { m_bLogEnabled = bEnable; };
+	const char * type() { return m_szType; };
+	KviMessageTypeSettings & operator=(const KviMessageTypeSettings & msg); // deep copy
 };
 
 #endif //_KVI_MSGTYPE_H_

@@ -37,13 +37,13 @@
 #include <QPaintEvent>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
+extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-KviIOGraphWindow* g_pIOGraphWindow = 0;
+KviIOGraphWindow * g_pIOGraphWindow = 0;
 
 KviIOGraphWindow::KviIOGraphWindow(const char * name)
-: KviWindow(KviWindow::IOGraph, name)
+    : KviWindow(KviWindow::IOGraph, name)
 {
 	m_pIOGraph = new KviIOGraphWidget(this);
 	setAutoFillBackground(false);
@@ -53,7 +53,7 @@ KviIOGraphWindow::~KviIOGraphWindow()
 {
 	if(m_pIOGraph)
 		delete m_pIOGraph;
-	m_pIOGraph=0;
+	m_pIOGraph = 0;
 
 	g_pIOGraphWindow = 0;
 }
@@ -65,7 +65,7 @@ QPixmap * KviIOGraphWindow::myIconPtr()
 
 void KviIOGraphWindow::resizeEvent(QResizeEvent *)
 {
-	m_pIOGraph->setGeometry(0,0,width(),height());
+	m_pIOGraph->setGeometry(0, 0, width(), height());
 }
 
 void KviIOGraphWindow::fillCaptionBuffers()
@@ -102,25 +102,28 @@ void KviIOGraphWindow::paintEvent(QPaintEvent * e)
 	{
 		p.save();
 		p.setCompositionMode(QPainter::CompositionMode_Source);
-		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		QColor col = KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
 		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
 		p.fillRect(rect, col);
 		p.restore();
-	} else if(g_pShadedChildGlobalDesktopBackground)
+	}
+	else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = isDocked() ? mapTo(g_pMainWindow, rect.topLeft()) : rect.topLeft();
-		p.drawTiledPixmap(rect,*(g_pShadedChildGlobalDesktopBackground), pnt);
-	} else {
+		p.drawTiledPixmap(rect, *(g_pShadedChildGlobalDesktopBackground), pnt);
+	}
+	else
+	{
 #endif
 		//FIXME this is not the treewindowlist
-		p.fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground));
+		p.fillRect(rect, KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground));
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
 }
 
 KviIOGraphWidget::KviIOGraphWidget(QWidget * par)
-: QWidget(par)
+    : QWidget(par)
 {
 	m_uLastSentBytes = g_uOutgoingTraffic;
 	m_uLastRecvBytes = g_uIncomingTraffic;
@@ -129,7 +132,7 @@ KviIOGraphWidget::KviIOGraphWidget(QWidget * par)
 
 	unsigned int iMax = qMax(m_uLastSentBytes, m_uLastRecvBytes);
 	while(iMax > m_maxRate)
-		m_maxRate*=2;
+		m_maxRate *= 2;
 
 	m_sendRates.prepend(0);
 	m_recvRates.prepend(0);
@@ -147,7 +150,7 @@ KviIOGraphWidget::KviIOGraphWidget(QWidget * par)
 
 void KviIOGraphWidget::timerEvent(QTimerEvent *)
 {
-	static int uLastResize=0;
+	static int uLastResize = 0;
 
 	kvi_u64_t sB = g_uOutgoingTraffic;
 	kvi_u64_t rB = g_uIncomingTraffic;
@@ -161,30 +164,33 @@ void KviIOGraphWidget::timerEvent(QTimerEvent *)
 	{
 		if(m_maxRate > 1)
 		{
-			m_maxRate=1;
-			for(int i=0;i<m_sendRates.count();++i)
-				while(m_sendRates.at(i) > m_maxRate) m_maxRate*=2;
-			for(int i=0;i<m_recvRates.count();++i)
-				while(m_recvRates.at(i) > m_maxRate) m_maxRate*=2;
+			m_maxRate = 1;
+			for(int i = 0; i < m_sendRates.count(); ++i)
+				while(m_sendRates.at(i) > m_maxRate)
+					m_maxRate *= 2;
+			for(int i = 0; i < m_recvRates.count(); ++i)
+				while(m_recvRates.at(i) > m_maxRate)
+					m_maxRate *= 2;
 		}
-	} else uLastResize--;
+	}
+	else
+		uLastResize--;
 
 	if(iMax > m_maxRate)
 	{
 		while(iMax > m_maxRate)
-			m_maxRate*=2;
-		uLastResize=KVI_IOGRAPH_NUMBER_POINTS;
+			m_maxRate *= 2;
+		uLastResize = KVI_IOGRAPH_NUMBER_POINTS;
 	}
 
 	m_uLastSentBytes = sB;
 	m_uLastRecvBytes = rB;
 
-
 	m_sendRates.prepend(sDiff);
-	if(m_sendRates.count()>(KVI_IOGRAPH_NUMBER_POINTS+1))
+	if(m_sendRates.count() > (KVI_IOGRAPH_NUMBER_POINTS + 1))
 		m_sendRates.removeLast();
 	m_recvRates.prepend(rDiff);
-	if(m_recvRates.count()>(KVI_IOGRAPH_NUMBER_POINTS+1))
+	if(m_recvRates.count() > (KVI_IOGRAPH_NUMBER_POINTS + 1))
 		m_recvRates.removeLast();
 
 	update();
@@ -201,40 +207,39 @@ void KviIOGraphWidget::paintEvent(QPaintEvent *)
 	float sw = (width() - 2.0) / KVI_IOGRAPH_VERT_SEGMENTS;
 	float sh = (height() - 2.0) / KVI_IOGRAPH_HORIZ_SEGMENTS;
 
-	for(int i=0;i<=KVI_IOGRAPH_HORIZ_SEGMENTS;i++)
+	for(int i = 0; i <= KVI_IOGRAPH_HORIZ_SEGMENTS; i++)
 	{
 		p.drawLine(0, (int)c, width(), (int)c);
-		if(i>0)
-			p.drawText(2,(int)c,KviQString::makeSizeReadable(m_maxRate * (KVI_IOGRAPH_HORIZ_SEGMENTS - i) / KVI_IOGRAPH_HORIZ_SEGMENTS));
-		c+=sh;
+		if(i > 0)
+			p.drawText(2, (int)c, KviQString::makeSizeReadable(m_maxRate * (KVI_IOGRAPH_HORIZ_SEGMENTS - i) / KVI_IOGRAPH_HORIZ_SEGMENTS));
+		c += sh;
 	}
 
-	c=1;
-	for(int i=0;i<=KVI_IOGRAPH_VERT_SEGMENTS;i++)
+	c = 1;
+	for(int i = 0; i <= KVI_IOGRAPH_VERT_SEGMENTS; i++)
 	{
 		p.drawLine((int)c, 0, (int)c, height());
-		c+=sw;
+		c += sw;
 	}
 
 	QPainterPath sP, rP;
-	float wStep=(width() - 2.0) / KVI_IOGRAPH_NUMBER_POINTS;
-
+	float wStep = (width() - 2.0) / KVI_IOGRAPH_NUMBER_POINTS;
 
 	sP.moveTo(QPointF(width(), height()));
 	c = 1.0;
-	for(int i = 0;(i <= (KVI_IOGRAPH_NUMBER_POINTS + 1)) && (i < m_sendRates.count());i++)
+	for(int i = 0; (i <= (KVI_IOGRAPH_NUMBER_POINTS + 1)) && (i < m_sendRates.count()); i++)
 	{
-		sP.lineTo(QPointF(width()- c, height() - (height() * m_sendRates.at(i) / m_maxRate)));
-		c+=wStep;
+		sP.lineTo(QPointF(width() - c, height() - (height() * m_sendRates.at(i) / m_maxRate)));
+		c += wStep;
 	}
 	sP.lineTo(QPointF(0, height()));
 
 	rP.moveTo(QPointF(width(), height()));
 	c = 1.0;
-	for(int i = 0;(i <= (KVI_IOGRAPH_NUMBER_POINTS + 1)) && (i < m_recvRates.count());i++)
+	for(int i = 0; (i <= (KVI_IOGRAPH_NUMBER_POINTS + 1)) && (i < m_recvRates.count()); i++)
 	{
-		rP.lineTo(QPointF(width()-c,  height() - (height() * m_recvRates.at(i) / m_maxRate)));
-		c+=wStep;
+		rP.lineTo(QPointF(width() - c, height() - (height() * m_recvRates.at(i) / m_maxRate)));
+		c += wStep;
 	}
 	rP.lineTo(QPointF(0, height()));
 
@@ -263,13 +268,13 @@ void KviIOGraphWidget::paintEvent(QPaintEvent *)
 static bool iograph_module_cmd_open(KviKvsModuleCommandCall * c)
 {
 	QString dummy;
-	bool bCreateMinimized = c->hasSwitch('m',dummy);
-	bool bNoRaise = c->hasSwitch('n',dummy);
+	bool bCreateMinimized = c->hasSwitch('m', dummy);
+	bool bNoRaise = c->hasSwitch('n', dummy);
 
 	if(!g_pIOGraphWindow)
 	{
 		g_pIOGraphWindow = new KviIOGraphWindow("IOGraph Window");
-		g_pMainWindow->addWindow(g_pIOGraphWindow,!bCreateMinimized);
+		g_pMainWindow->addWindow(g_pIOGraphWindow, !bCreateMinimized);
 		return true;
 	}
 
@@ -278,11 +283,11 @@ static bool iograph_module_cmd_open(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-static bool iograph_module_init(KviModule *m)
+static bool iograph_module_init(KviModule * m)
 {
 	g_pIOGraphWindow = 0;
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",iograph_module_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", iograph_module_cmd_open);
 	return true;
 }
 
@@ -300,13 +305,12 @@ static bool iograph_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"IOGraph",                                              // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"IRC socket traffic monitor",
-	iograph_module_init,
-	iograph_module_can_unload,
-	0,
-	iograph_module_cleanup,
-	0
-)
+    "IOGraph",                                                      // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "IRC socket traffic monitor",
+    iograph_module_init,
+    iograph_module_can_unload,
+    0,
+    iograph_module_cleanup,
+    0)

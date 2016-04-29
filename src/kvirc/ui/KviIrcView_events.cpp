@@ -103,9 +103,8 @@
 
 // FIXME: #warning "Finish the doc above!! Maybe some examples ?!"
 
-
 //mouse events
-void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
+void KviIrcView::mouseDoubleClickEvent(QMouseEvent * e)
 {
 	QString szKvsCommand;
 	QString szLinkCommandPart;
@@ -114,16 +113,16 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 	if(m_iMouseTimer)
 	{
 		killTimer(m_iMouseTimer);
-		m_iMouseTimer=0;
+		m_iMouseTimer = 0;
 		delete m_pLastEvent;
 		m_pLastEvent = 0;
 	}
 
-	getLinkUnderMouse(e->pos().x(),e->pos().y(),0,&szLinkCommandPart,&szLinkTextPart);
+	getLinkUnderMouse(e->pos().x(), e->pos().y(), 0, &szLinkCommandPart, &szLinkTextPart);
 
 	if(szLinkCommandPart.isEmpty())
 	{
-		KVS_TRIGGER_EVENT_0(KviEvent_OnTextViewDoubleClicked,m_pKviWindow);
+		KVS_TRIGGER_EVENT_0(KviEvent_OnTextViewDoubleClicked, m_pKviWindow);
 		return;
 	}
 
@@ -139,23 +138,23 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 				case KviWindow::Channel:
 					if(((KviChannelWindow *)m_pKviWindow)->isOn(szLinkTextPart))
 					{
-						KVS_TRIGGER_EVENT(KviEvent_OnChannelNickDefaultActionRequest,m_pKviWindow,&lParams);
+						KVS_TRIGGER_EVENT(KviEvent_OnChannelNickDefaultActionRequest, m_pKviWindow, &lParams);
 						return;
 					}
-				break;
+					break;
 				case KviWindow::Query:
-					if(KviQString::equalCI(((KviQueryWindow *)m_pKviWindow)->windowName(),szLinkTextPart))
+					if(KviQString::equalCI(((KviQueryWindow *)m_pKviWindow)->windowName(), szLinkTextPart))
 					{
-						KVS_TRIGGER_EVENT(KviEvent_OnQueryNickDefaultActionRequest,m_pKviWindow,&lParams);
+						KVS_TRIGGER_EVENT(KviEvent_OnQueryNickDefaultActionRequest, m_pKviWindow, &lParams);
 						return;
 					}
-				break;
+					break;
 				default:
 					return; // unhandled window type (FIXME: Let it go anyway ?)
-				break;
+					break;
 			}
 			if(console())
-				KVS_TRIGGER_EVENT(KviEvent_OnNickLinkDefaultActionRequest,m_pKviWindow,&lParams);
+				KVS_TRIGGER_EVENT(KviEvent_OnNickLinkDefaultActionRequest, m_pKviWindow, &lParams);
 			return;
 		}
 		break;
@@ -177,16 +176,16 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 		}
 		break;
 		case 'h':
-			m_pKviWindow->output(KVI_OUT_HOSTLOOKUP,__tr2qs("Looking up host %Q..."),&szLinkTextPart);
+			m_pKviWindow->output(KVI_OUT_HOSTLOOKUP, __tr2qs("Looking up host %Q..."), &szLinkTextPart);
 			szKvsCommand = "host -a $0";
-		break;
+			break;
 		case 'u':
 			if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 2) // <-- ??????????
 			{
-				KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick,m_pKviWindow,&lParams);
+				KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick, m_pKviWindow, &lParams);
 				return;
 			}
-		break;
+			break;
 		case 'c':
 		{
 			if(!console())
@@ -210,14 +209,14 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 		break;
 		case 's':
 			szKvsCommand = "motd $0";
-		break;
+			break;
 		default:
 		{
 			// extract the user-supplied double click command
-			getLinkEscapeCommand(szKvsCommand,szLinkCommandPart,"[!dbl]");
+			getLinkEscapeCommand(szKvsCommand, szLinkCommandPart, "[!dbl]");
 			if(szKvsCommand.isEmpty())
 			{
-				KVS_TRIGGER_EVENT_0(KviEvent_OnTextViewDoubleClicked,m_pKviWindow);
+				KVS_TRIGGER_EVENT_0(KviEvent_OnTextViewDoubleClicked, m_pKviWindow);
 				return;
 			}
 		}
@@ -225,9 +224,8 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 	}
 
 	if(!szKvsCommand.isEmpty())
-		KviKvsScript::run(szKvsCommand,m_pKviWindow,&lParams);
+		KviKvsScript::run(szKvsCommand, m_pKviWindow, &lParams);
 }
-
 
 bool KviIrcView::checkMarkerArea(const QPoint & mousePos)
 {
@@ -262,7 +260,7 @@ void KviIrcView::mousePressEvent(QMouseEvent * e)
 	if(m_pSelectionInitLine)
 	{
 		m_iSelectionInitCharIndex = getVisibleCharIndexAt(m_pSelectionInitLine, e->pos().x(), e->pos().y());
-		m_iSelectionEndCharIndex=m_iSelectionInitCharIndex;
+		m_iSelectionEndCharIndex = m_iSelectionInitCharIndex;
 	}
 
 	if(m_pToolWidget && m_pToolWidget->isVisible())
@@ -271,7 +269,7 @@ void KviIrcView::mousePressEvent(QMouseEvent * e)
 		repaint();
 	}
 
-	m_mousePressPos   = e->pos();
+	m_mousePressPos = e->pos();
 	m_mouseCurrentPos = e->pos();
 
 	m_bMouseIsDown = true;
@@ -282,10 +280,12 @@ void KviIrcView::mousePressEvent(QMouseEvent * e)
 	if(m_iMouseTimer) // clicked at least twice within the doubleClickInterval(): this is a double click then...
 	{
 		killTimer(m_iMouseTimer);
-		m_iMouseTimer=0;
+		m_iMouseTimer = 0;
 		delete m_pLastEvent;
 		m_pLastEvent = 0;
-	} else {
+	}
+	else
+	{
 		// This is used to avoid triggering the single click KVS events
 		// if a double click is issued instead...
 		// We actually trigger the click event after the double click interval
@@ -295,124 +295,139 @@ void KviIrcView::mousePressEvent(QMouseEvent * e)
 	}
 }
 
-void KviIrcView::triggerMouseRelatedKvsEvents(QMouseEvent *e)
+void KviIrcView::triggerMouseRelatedKvsEvents(QMouseEvent * e)
 {
 	QString linkCmd;
 	QString linkText;
-	getLinkUnderMouse(e->pos().x(),e->pos().y(),0,&linkCmd,&linkText);
+	getLinkUnderMouse(e->pos().x(), e->pos().y(), 0, &linkCmd, &linkText);
 
 	QString szCmd(linkCmd);
-	szCmd.remove(0,1);
+	szCmd.remove(0, 1);
 
 	KviKvsVariantList * pParams = new KviKvsVariantList();
 
-	if(!szCmd.isEmpty()) pParams->append(szCmd); // <-- FIXME: why we do this ?
-	else pParams->append(linkText); // <-- FIXME: why we do this ?
+	if(!szCmd.isEmpty())
+		pParams->append(szCmd); // <-- FIXME: why we do this ?
+	else
+		pParams->append(linkText); // <-- FIXME: why we do this ?
 
 	pParams->append(linkText);
 	pParams->append(szCmd);
 
-	if(!(e->modifiers() & Qt::ControlModifier))//(e->button() & Qt::RightButton) && (
+	if(!(e->modifiers() & Qt::ControlModifier)) //(e->button() & Qt::RightButton) && (
 	{
 		if(!linkCmd.isEmpty())
 		{
 			switch(linkCmd[0].unicode())
 			{
 				case 'n':
+				{
+					bool bTrigger = false;
+					switch(m_pKviWindow->type())
 					{
-						bool bTrigger = false;
-						switch(m_pKviWindow->type())
-						{
-							case KviWindow::Channel:
-								if(((KviChannelWindow *)m_pKviWindow)->isOn(linkText))
-								{
-									if(e->button() & Qt::RightButton)
-										KVS_TRIGGER_EVENT(KviEvent_OnChannelNickPopupRequest,m_pKviWindow,pParams);
-									if(e->button() & Qt::LeftButton) {
-										KVS_TRIGGER_EVENT(KviEvent_OnChannelNickLinkClick,m_pKviWindow,pParams);
-									}
-								} else bTrigger = true;
-							break;
-							case KviWindow::Query:
-								if(KviQString::equalCI(((KviQueryWindow *)m_pKviWindow)->windowName(),linkText))
-								{
-									if(e->button() & Qt::RightButton)
-										KVS_TRIGGER_EVENT(KviEvent_OnQueryNickPopupRequest,m_pKviWindow,pParams);
-									if(e->button() & Qt::LeftButton)
-										KVS_TRIGGER_EVENT(KviEvent_OnQueryNickLinkClick,m_pKviWindow,pParams);
-								} else bTrigger = true;
-							break;
-							default:
-								bTrigger = true;
-						break;
-						}
-						if(bTrigger)
-						{
-							if(console())
+						case KviWindow::Channel:
+							if(((KviChannelWindow *)m_pKviWindow)->isOn(linkText))
 							{
 								if(e->button() & Qt::RightButton)
-									KVS_TRIGGER_EVENT(KviEvent_OnNickLinkPopupRequest,m_pKviWindow,pParams);
+									KVS_TRIGGER_EVENT(KviEvent_OnChannelNickPopupRequest, m_pKviWindow, pParams);
 								if(e->button() & Qt::LeftButton)
-									KVS_TRIGGER_EVENT(KviEvent_OnConsoleNickLinkClick,m_pKviWindow,pParams);
-							} else emit rightClicked();
-						}
+								{
+									KVS_TRIGGER_EVENT(KviEvent_OnChannelNickLinkClick, m_pKviWindow, pParams);
+								}
+							}
+							else
+								bTrigger = true;
+							break;
+						case KviWindow::Query:
+							if(KviQString::equalCI(((KviQueryWindow *)m_pKviWindow)->windowName(), linkText))
+							{
+								if(e->button() & Qt::RightButton)
+									KVS_TRIGGER_EVENT(KviEvent_OnQueryNickPopupRequest, m_pKviWindow, pParams);
+								if(e->button() & Qt::LeftButton)
+									KVS_TRIGGER_EVENT(KviEvent_OnQueryNickLinkClick, m_pKviWindow, pParams);
+							}
+							else
+								bTrigger = true;
+							break;
+						default:
+							bTrigger = true;
+							break;
 					}
+					if(bTrigger)
+					{
+						if(console())
+						{
+							if(e->button() & Qt::RightButton)
+								KVS_TRIGGER_EVENT(KviEvent_OnNickLinkPopupRequest, m_pKviWindow, pParams);
+							if(e->button() & Qt::LeftButton)
+								KVS_TRIGGER_EVENT(KviEvent_OnConsoleNickLinkClick, m_pKviWindow, pParams);
+						}
+						else
+							emit rightClicked();
+					}
+				}
 				break;
 				case 'h':
 					if(e->button() & Qt::RightButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnHostLinkPopupRequest,m_pKviWindow,pParams);
+						KVS_TRIGGER_EVENT(KviEvent_OnHostLinkPopupRequest, m_pKviWindow, pParams);
 					if(e->button() & Qt::LeftButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnHostLinkClick,m_pKviWindow,pParams);
-				break;
+						KVS_TRIGGER_EVENT(KviEvent_OnHostLinkClick, m_pKviWindow, pParams);
+					break;
 				case 'u':
 					if(e->button() & Qt::RightButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnURLLinkPopupRequest,m_pKviWindow,pParams);
+						KVS_TRIGGER_EVENT(KviEvent_OnURLLinkPopupRequest, m_pKviWindow, pParams);
 					if(e->button() & Qt::LeftButton && KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 1)
-						KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick,m_pKviWindow,pParams);
-				break;
+						KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick, m_pKviWindow, pParams);
+					break;
 				case 'c':
 					if(e->button() & Qt::RightButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnChannelLinkPopupRequest,m_pKviWindow,pParams);
+						KVS_TRIGGER_EVENT(KviEvent_OnChannelLinkPopupRequest, m_pKviWindow, pParams);
 					if(e->button() & Qt::LeftButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnChannelLinkClick,m_pKviWindow,pParams);
-				break;
+						KVS_TRIGGER_EVENT(KviEvent_OnChannelLinkClick, m_pKviWindow, pParams);
+					break;
 				case 's':
 					if(e->button() & Qt::RightButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnServerLinkPopupRequest,m_pKviWindow,pParams);
+						KVS_TRIGGER_EVENT(KviEvent_OnServerLinkPopupRequest, m_pKviWindow, pParams);
 					if(e->button() & Qt::LeftButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnServerLinkClick,m_pKviWindow,pParams);
-				break;
+						KVS_TRIGGER_EVENT(KviEvent_OnServerLinkClick, m_pKviWindow, pParams);
+					break;
 				default:
 				{
 					if(e->button() & Qt::RightButton)
 					{
 						QString tmp;
-						getLinkEscapeCommand(tmp,linkCmd,"[!rbt]");
+						getLinkEscapeCommand(tmp, linkCmd, "[!rbt]");
 						if(!tmp.isEmpty())
 						{
-							KviKvsScript::run(tmp,m_pKviWindow,pParams);
-						} else emit rightClicked();
+							KviKvsScript::run(tmp, m_pKviWindow, pParams);
+						}
+						else
+							emit rightClicked();
 					}
 				}
 				break;
 			}
-		} else if(e->button() & Qt::RightButton) emit rightClicked();
-
-	} else if((e->button() & Qt::MidButton) || ((e->button() & Qt::RightButton) && (e->modifiers() & Qt::ControlModifier)))
+		}
+		else if(e->button() & Qt::RightButton)
+			emit rightClicked();
+	}
+	else if((e->button() & Qt::MidButton) || ((e->button() & Qt::RightButton) && (e->modifiers() & Qt::ControlModifier)))
 	{
 		QString tmp;
-		getLinkEscapeCommand(tmp,linkCmd,QString("[!mbt]"));
+		getLinkEscapeCommand(tmp, linkCmd, QString("[!mbt]"));
 		if(!tmp.isEmpty())
 		{
-			KviKvsScript::run(tmp,m_pKviWindow,pParams);
-		} else {
-			KVS_TRIGGER_EVENT_0(KviEvent_OnWindowPopupRequest,m_pKviWindow);
+			KviKvsScript::run(tmp, m_pKviWindow, pParams);
+		}
+		else
+		{
+			KVS_TRIGGER_EVENT_0(KviEvent_OnWindowPopupRequest, m_pKviWindow);
 		}
 	}
 	delete pParams;
 }
 
-void KviIrcView::addControlCharacter(KviIrcViewLineChunk *pC, QString & szSelectionText)
+void KviIrcView::addControlCharacter(KviIrcViewLineChunk * pC, QString & szSelectionText)
 {
 	switch(pC->type)
 	{
@@ -421,7 +436,7 @@ void KviIrcView::addControlCharacter(KviIrcViewLineChunk *pC, QString & szSelect
 		case KviControlCodes::Reverse:
 		case KviControlCodes::Reset:
 			szSelectionText.append(QChar(pC->type));
-		break;
+			break;
 		case KviControlCodes::Color:
 			szSelectionText.append(QChar(pC->type));
 			if((pC->colors.fore != KviControlCodes::NoChange) && (pC->colors.fore != KviControlCodes::Transparent))
@@ -430,33 +445,33 @@ void KviIrcView::addControlCharacter(KviIrcViewLineChunk *pC, QString & szSelect
 					szSelectionText.append(QChar('1'));
 				else
 					szSelectionText.append(QChar('0'));
-				szSelectionText.append(QChar((pC->colors.fore%10)+'0'));
+				szSelectionText.append(QChar((pC->colors.fore % 10) + '0'));
 			}
-			if((pC->colors.back != KviControlCodes::NoChange) && (pC->colors.back != KviControlCodes::Transparent) )
+			if((pC->colors.back != KviControlCodes::NoChange) && (pC->colors.back != KviControlCodes::Transparent))
 			{
 				szSelectionText.append(QChar(','));
 				if(pC->colors.back > 9)
 					szSelectionText.append(QChar('1'));
 				else
 					szSelectionText.append(QChar('0'));
-				szSelectionText.append(QChar((pC->colors.back%10)+'0'));
+				szSelectionText.append(QChar((pC->colors.back % 10) + '0'));
 			}
-		break;
+			break;
 	}
 }
 
-void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
+void KviIrcView::mouseReleaseEvent(QMouseEvent * e)
 {
 	if(m_pSelectionInitLine)
 	{
 		killTimer(m_iSelectTimer);
 		m_iSelectTimer = 0;
 
-		KviIrcViewLine *tempLine=getVisibleLineAt(e->pos().y());
+		KviIrcViewLine * tempLine = getVisibleLineAt(e->pos().y());
 		if(tempLine)
 		{
 			m_pSelectionEndLine = tempLine;
-			int iTmp=getVisibleCharIndexAt(m_pSelectionEndLine, e->pos().x(), e->pos().y());
+			int iTmp = getVisibleCharIndexAt(m_pSelectionEndLine, e->pos().x(), e->pos().y());
 			if(iTmp > -1)
 				m_iSelectionEndCharIndex = iTmp;
 		}
@@ -466,31 +481,36 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 		int initChar, endChar;
 		if(m_pSelectionInitLine->uIndex == m_pSelectionEndLine->uIndex)
 		{
-			init=m_pSelectionInitLine;
-			end=m_pSelectionEndLine;
-			if(m_iSelectionInitCharIndex<=m_iSelectionEndCharIndex)
+			init = m_pSelectionInitLine;
+			end = m_pSelectionEndLine;
+			if(m_iSelectionInitCharIndex <= m_iSelectionEndCharIndex)
 			{
 				//one line ltor selection
-				initChar=m_iSelectionInitCharIndex;
-				endChar=m_iSelectionEndCharIndex;
-			} else {
-				//one line rtol selection
-				initChar=m_iSelectionEndCharIndex;
-				endChar=m_iSelectionInitCharIndex;
+				initChar = m_iSelectionInitCharIndex;
+				endChar = m_iSelectionEndCharIndex;
 			}
-		} else if(m_pSelectionInitLine->uIndex < m_pSelectionEndLine->uIndex)
+			else
+			{
+				//one line rtol selection
+				initChar = m_iSelectionEndCharIndex;
+				endChar = m_iSelectionInitCharIndex;
+			}
+		}
+		else if(m_pSelectionInitLine->uIndex < m_pSelectionEndLine->uIndex)
 		{
 			//multi line uptobottom selection
-			init=m_pSelectionInitLine;
-			end=m_pSelectionEndLine;
-			initChar=m_iSelectionInitCharIndex;
-			endChar=m_iSelectionEndCharIndex;
-		} else {
+			init = m_pSelectionInitLine;
+			end = m_pSelectionEndLine;
+			initChar = m_iSelectionInitCharIndex;
+			endChar = m_iSelectionEndCharIndex;
+		}
+		else
+		{
 			//multi line bottomtotop selection
-			end=m_pSelectionInitLine;
-			init=m_pSelectionEndLine;
-			initChar=m_iSelectionEndCharIndex;
-			endChar=m_iSelectionInitCharIndex;
+			end = m_pSelectionInitLine;
+			init = m_pSelectionEndLine;
+			initChar = m_iSelectionEndCharIndex;
+			endChar = m_iSelectionInitCharIndex;
 		}
 
 		tempLine = init;
@@ -506,9 +526,9 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 					//selection starts and ends in this line
 					if(m_bShiftPressed)
 					{
-						bool bStarted=false;
-						KviIrcViewLineChunk *pC;
-						for(unsigned int i=0;i<tempLine->uChunkCount; i++)
+						bool bStarted = false;
+						KviIrcViewLineChunk * pC;
+						for(unsigned int i = 0; i < tempLine->uChunkCount; i++)
 						{
 							pC = &tempLine->pChunks[i];
 							if(bStarted)
@@ -518,41 +538,51 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 									//the entire chunk is included
 									addControlCharacter(pC, szSelectionText);
 									szSelectionText.append(tempLine->szText.mid(pC->iTextStart, pC->iTextLen));
-								} else {
+								}
+								else
+								{
 									//ends in this chunk
 									addControlCharacter(pC, szSelectionText);
-									szSelectionText.append(tempLine->szText.mid(pC->iTextStart, endChar-pC->iTextStart));
+									szSelectionText.append(tempLine->szText.mid(pC->iTextStart, endChar - pC->iTextStart));
 									break;
 								}
-							} else {
+							}
+							else
+							{
 								if(initChar <= (pC->iTextStart + pC->iTextLen))
 								{
 									//starts in this chunk
 									addControlCharacter(pC, szSelectionText);
-									if((endChar-initChar) > pC->iTextLen)
+									if((endChar - initChar) > pC->iTextLen)
 									{
 										//don't end in this chunk
-										szSelectionText.append(tempLine->szText.mid(initChar, pC->iTextLen-(initChar-pC->iTextStart)));
-										bStarted=true;
-									} else {
+										szSelectionText.append(tempLine->szText.mid(initChar, pC->iTextLen - (initChar - pC->iTextStart)));
+										bStarted = true;
+									}
+									else
+									{
 										//ends in this chunk
-										szSelectionText.append(tempLine->szText.mid(initChar, endChar-initChar));
+										szSelectionText.append(tempLine->szText.mid(initChar, endChar - initChar));
 										break;
 									}
 								}
 							}
 						}
-					} else {
-						szSelectionText.append(tempLine->szText.mid(initChar, endChar-initChar));
+					}
+					else
+					{
+						szSelectionText.append(tempLine->szText.mid(initChar, endChar - initChar));
 					}
 					break;
-				} else {
+				}
+				else
+				{
 					// the first line of a multi line selection
 					if(m_bShiftPressed)
 					{
-						bool bStarted=false;
-						KviIrcViewLineChunk *pC;
-						for(unsigned int i=0;i<tempLine->uChunkCount; i++)
+						bool bStarted = false;
+						KviIrcViewLineChunk * pC;
+						for(unsigned int i = 0; i < tempLine->uChunkCount; i++)
 						{
 							pC = &tempLine->pChunks[i];
 							if(bStarted)
@@ -560,29 +590,35 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 								//the entire chunk is included
 								addControlCharacter(pC, szSelectionText);
 								szSelectionText.append(tempLine->szText.mid(pC->iTextStart, pC->iTextLen));
-							} else {
+							}
+							else
+							{
 								if(initChar <= (pC->iTextStart + pC->iTextLen))
 								{
 									//starts in this chunk
 									addControlCharacter(pC, szSelectionText);
-									szSelectionText.append(tempLine->szText.mid(initChar, pC->iTextLen-(initChar-pC->iTextStart)));
-									bStarted=true;
+									szSelectionText.append(tempLine->szText.mid(initChar, pC->iTextLen - (initChar - pC->iTextStart)));
+									bStarted = true;
 								}
 							}
 						}
-					} else {
+					}
+					else
+					{
 						szSelectionText.append(tempLine->szText.mid(initChar));
 					}
 					szSelectionText.append("\n");
 				}
-			} else {
+			}
+			else
+			{
 				if(tempLine->uIndex == end->uIndex)
 				{
 					// the last line of a multi line selection
 					if(m_bShiftPressed)
 					{
-						KviIrcViewLineChunk *pC;
-						for(unsigned int i=0;i<tempLine->uChunkCount; i++)
+						KviIrcViewLineChunk * pC;
+						for(unsigned int i = 0; i < tempLine->uChunkCount; i++)
 						{
 							pC = &tempLine->pChunks[i];
 							if(endChar >= (pC->iTextStart + pC->iTextLen))
@@ -590,30 +626,38 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 								//the entire chunk is included
 								addControlCharacter(pC, szSelectionText);
 								szSelectionText.append(tempLine->szText.mid(pC->iTextStart, pC->iTextLen));
-							} else {
+							}
+							else
+							{
 								//ends in this chunk
 								addControlCharacter(pC, szSelectionText);
-								szSelectionText.append(tempLine->szText.mid(pC->iTextStart, endChar-pC->iTextStart));
+								szSelectionText.append(tempLine->szText.mid(pC->iTextStart, endChar - pC->iTextStart));
 								break;
 							}
 						}
-					} else {
+					}
+					else
+					{
 						szSelectionText.append(tempLine->szText.left(endChar));
 					}
 					break;
-				} else {
+				}
+				else
+				{
 					//a middle line of a multi line selection
 					if(m_bShiftPressed)
 					{
-						KviIrcViewLineChunk *pC;
-						for(unsigned int i=0;i<tempLine->uChunkCount; i++)
+						KviIrcViewLineChunk * pC;
+						for(unsigned int i = 0; i < tempLine->uChunkCount; i++)
 						{
 							pC = &tempLine->pChunks[i];
 							//the entire chunk is included
 							addControlCharacter(pC, szSelectionText);
 							szSelectionText.append(tempLine->szText.mid(pC->iTextStart, pC->iTextLen));
 						}
-					} else {
+					}
+					else
+					{
 						szSelectionText.append(tempLine->szText);
 					}
 					szSelectionText.append("\n");
@@ -626,14 +670,14 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 		if(c && !szSelectionText.isEmpty())
 		{
 			// copy to both!
-			c->setText(szSelectionText,QClipboard::Clipboard);
+			c->setText(szSelectionText, QClipboard::Clipboard);
 			if(c->supportsSelection())
-				c->setText(szSelectionText,QClipboard::Selection);
+				c->setText(szSelectionText, QClipboard::Selection);
 		}
 		m_pSelectionInitLine = 0;
 		m_pSelectionEndLine = 0;
-		m_iSelectionInitCharIndex=0;
-		m_iSelectionEndCharIndex=0;
+		m_iSelectionInitCharIndex = 0;
+		m_iSelectionEndCharIndex = 0;
 	}
 
 	if(m_bMouseIsDown)
@@ -645,7 +689,7 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 		while(KviIrcViewLine * l = m_pMessagesStoppedWhileSelecting->first())
 		{
 			m_pMessagesStoppedWhileSelecting->removeFirst();
-			appendLine(l,false);
+			appendLine(l, false);
 		}
 		repaint();
 	}
@@ -667,16 +711,17 @@ void KviIrcView::mouseMoveEvent(QMouseEvent * e)
 		if(curY < KVI_IRCVIEW_VERTICAL_BORDER)
 		{
 			prevLine();
-		} else if(curY > (height() - KVI_IRCVIEW_VERTICAL_BORDER))
+		}
+		else if(curY > (height() - KVI_IRCVIEW_VERTICAL_BORDER))
 		{
 			nextLine();
 		}
 
-		KviIrcViewLine *tempLine=getVisibleLineAt(e->pos().y());
+		KviIrcViewLine * tempLine = getVisibleLineAt(e->pos().y());
 		if(tempLine)
 		{
 			m_pSelectionEndLine = tempLine;
-			int iTmp=getVisibleCharIndexAt(m_pSelectionEndLine, e->pos().x(), e->pos().y());
+			int iTmp = getVisibleCharIndexAt(m_pSelectionEndLine, e->pos().x(), e->pos().y());
 			if(iTmp > -1)
 				m_iSelectionEndCharIndex = iTmp;
 		}
@@ -694,7 +739,7 @@ void KviIrcView::mouseMoveEvent(QMouseEvent * e)
 	int rectTop;
 	int rectHeight;
 	QRect rctLink;
-	KviIrcViewWrappedBlock * newLinkUnderMouse = getLinkUnderMouse(e->pos().x(),yPos,&rctLink);
+	KviIrcViewWrappedBlock * newLinkUnderMouse = getLinkUnderMouse(e->pos().x(), yPos, &rctLink);
 
 	rectTop = rctLink.y();
 	rectHeight = rctLink.height();
@@ -704,8 +749,10 @@ void KviIrcView::mouseMoveEvent(QMouseEvent * e)
 		m_pLastLinkUnderMouse = newLinkUnderMouse;
 		if(m_pLastLinkUnderMouse)
 		{
-			if(rectTop < 0)rectTop = 0;
-			if((rectTop + rectHeight) > height())rectHeight = height() - rectTop;
+			if(rectTop < 0)
+				rectTop = 0;
+			if((rectTop + rectHeight) > height())
+				rectHeight = height() - rectTop;
 
 			if(m_iLastLinkRectHeight > -1)
 			{
@@ -713,20 +760,24 @@ void KviIrcView::mouseMoveEvent(QMouseEvent * e)
 				int top = (rectTop < m_iLastLinkRectTop) ? rectTop : m_iLastLinkRectTop;
 				int lastBottom = m_iLastLinkRectTop + m_iLastLinkRectHeight;
 				int thisBottom = rectTop + rectHeight;
-				QRect r(0,top,width(),((lastBottom > thisBottom) ? lastBottom : thisBottom) - top);
+				QRect r(0, top, width(), ((lastBottom > thisBottom) ? lastBottom : thisBottom) - top);
 				repaint(r);
-			} else {
+			}
+			else
+			{
 				// no prev link
-				QRect r(0,rectTop,width(),rectHeight);
+				QRect r(0, rectTop, width(), rectHeight);
 				repaint(r);
 			}
 			m_iLastLinkRectTop = rectTop;
 			m_iLastLinkRectHeight = rectHeight;
-		} else {
+		}
+		else
+		{
 			if(m_iLastLinkRectHeight > -1)
 			{
 				// There was a previous bottom rect
-				QRect r(0,m_iLastLinkRectTop,width(),m_iLastLinkRectHeight);
+				QRect r(0, m_iLastLinkRectTop, width(), m_iLastLinkRectHeight);
 				repaint(r);
 				m_iLastLinkRectTop = -1;
 				m_iLastLinkRectHeight = -1;
@@ -740,16 +791,16 @@ void KviIrcView::mouseMoveEvent(QMouseEvent * e)
 		setCursor(Qt::ArrowCursor);
 }
 
-void KviIrcView::leaveEvent(QEvent * )
+void KviIrcView::leaveEvent(QEvent *)
 {
 	if(m_pLastLinkUnderMouse)
 	{
-		 m_pLastLinkUnderMouse = 0;
-		 update();
+		m_pLastLinkUnderMouse = 0;
+		update();
 	}
 }
 
-void KviIrcView::timerEvent(QTimerEvent *e)
+void KviIrcView::timerEvent(QTimerEvent * e)
 {
 	m_mouseCurrentPos = mapFromGlobal(QCursor::pos());
 
@@ -762,10 +813,10 @@ void KviIrcView::timerEvent(QTimerEvent *e)
 	if(e->timerId() == m_iMouseTimer)
 	{
 		killTimer(m_iMouseTimer);
-		m_iMouseTimer=0;
+		m_iMouseTimer = 0;
 		triggerMouseRelatedKvsEvents(m_pLastEvent);
 		delete m_pLastEvent;
-		m_pLastEvent=0;
+		m_pLastEvent = 0;
 		return;
 	}
 
@@ -778,7 +829,7 @@ void KviIrcView::timerEvent(QTimerEvent *e)
 
 //not exactly events, but event-related
 
-void KviIrcView::maybeTip(const QPoint &pnt)
+void KviIrcView::maybeTip(const QPoint & pnt)
 {
 	QString linkCmd;
 	QString linkText;
@@ -788,32 +839,36 @@ void KviIrcView::maybeTip(const QPoint &pnt)
 		doMarkerToolTip();
 
 	// Check if the mouse is over a link
-	KviIrcViewWrappedBlock * linkUnderMouse = getLinkUnderMouse(pnt.x(),pnt.y(),&rctLink,&linkCmd,&linkText);
+	KviIrcViewWrappedBlock * linkUnderMouse = getLinkUnderMouse(pnt.x(), pnt.y(), &rctLink, &linkCmd, &linkText);
 
 	if((linkUnderMouse == m_pLastLinkUnderMouse) && linkUnderMouse)
-		doLinkToolTip(rctLink,linkCmd,linkText);
-	else m_pLastLinkUnderMouse = 0;
+		doLinkToolTip(rctLink, linkCmd, linkText);
+	else
+		m_pLastLinkUnderMouse = 0;
 }
 
 void KviIrcView::doMarkerToolTip()
 {
 	QString tip;
-	tip = "<table style=\"white-space: pre\">" \
-		"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::UnreadText) + "\">";
+	tip = "<table style=\"white-space: pre\">"
+	      "<tr><td valign=\"center\"><img src=\""
+	    + g_pIconManager->getSmallIconResourceName(KviIconManager::UnreadText) + "\">";
 	tip += __tr2qs("Scroll up to read from the last read line");
 	tip += "</td></tr></table>";
 
-	if(tip.isEmpty())return;
+	if(tip.isEmpty())
+		return;
 
-	m_pToolTip->doTip(m_lineMarkArea,tip);
+	m_pToolTip->doTip(m_lineMarkArea, tip);
 }
 
-void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkText)
+void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & linkText)
 {
-	if(linkCmd.isEmpty())return;
+	if(linkCmd.isEmpty())
+		return;
 
 	QString szCmd(linkCmd);
-	szCmd.remove(0,1);
+	szCmd.remove(0, 1);
 
 	QString tip;
 
@@ -823,18 +878,21 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		{
 			if(!KVI_OPTION_BOOL(KviOption_boolEnableUrlLinkToolTip))
 				return;
-			tip = "<table style=\"white-space: pre\">" \
-				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Url) + "\">";
+			tip = "<table style=\"white-space: pre\">"
+			      "<tr><td valign=\"center\"><img src=\""
+			    + g_pIconManager->getSmallIconResourceName(KviIconManager::Url) + "\">";
 			if(linkText.length() > 50)
 			{
 				tip += "<font color=\"#0022FF\"> <u>";
 				tip += linkText.left(47);
 				tip += "...";
-			} else {
+			}
+			else
+			{
 				tip += "<font color=\"#0022FF\"> <u>";
 				tip += linkText;
 			}
-			tip+="</u></font></td></tr><tr><td><hr>";
+			tip += "</u></font></td></tr><tr><td><hr>";
 
 			// Check clicks' number
 			if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 1)
@@ -848,24 +906,31 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		{
 			if(!KVI_OPTION_BOOL(KviOption_boolEnableHostLinkToolTip))
 				return;
-			tip = "<table style=\"white-space: pre\">" \
-				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Proxy) + "\">";
+			tip = "<table style=\"white-space: pre\">"
+			      "<tr><td valign=\"center\"><img src=\""
+			    + g_pIconManager->getSmallIconResourceName(KviIconManager::Proxy) + "\">";
 			if(linkText.length() > 50)
 			{
 				tip += "<font color=\"#0022FF\"><u>";
 				tip += linkText.left(47);
 				tip += "...";
-			} else {
+			}
+			else
+			{
 				tip += "<font color=\"#0022FF\"><u>";
 				tip += linkText;
 			}
-			tip+="</u></font></td></tr><tr><td><hr>";
+			tip += "</u></font></td></tr><tr><td><hr>";
 
 			if(linkText.indexOf('*') != -1)
 			{
-				if(linkText.length() > 1)tip += __tr2qs("Unable to look up hostname: hostname appears to be masked");
-				else tip += __tr2qs("Unable to look up hostname: unknown host");
-			} else {
+				if(linkText.length() > 1)
+					tip += __tr2qs("Unable to look up hostname: hostname appears to be masked");
+				else
+					tip += __tr2qs("Unable to look up hostname: unknown host");
+			}
+			else
+			{
 				tip += "<tr><td>";
 				tip += __tr2qs("Double-click to look up this hostname");
 				tip += "<br>";
@@ -880,24 +945,29 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				return;
 			// FIXME: #warning "Spit out some server info...hub ?...registered ?"
 
-			tip = "<table style=\"white-space: pre\">" \
-				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Server) + "\">";
+			tip = "<table style=\"white-space: pre\">"
+			      "<tr><td valign=\"center\"><img src=\""
+			    + g_pIconManager->getSmallIconResourceName(KviIconManager::Server) + "\">";
 
 			if(linkText.length() > 50)
 			{
 				tip += "<font color=\"#0022FF\"> <u>";
 				tip += linkText.left(47);
 				tip += "...";
-			} else {
+			}
+			else
+			{
 				tip += "<font color=\"#0022FF\"> <u>";
 				tip += linkText;
 			}
-			tip+="</u></font></td></tr><tr><td><hr>";
+			tip += "</u></font></td></tr><tr><td><hr>";
 
 			if(linkText.indexOf('*') != -1)
 			{
-				if(linkText.length() > 1)tip += __tr2qs("Server appears to be a network hub<br>");
-				else tip += __tr2qs("Unknown server<br>"); // might happen...
+				if(linkText.length() > 1)
+					tip += __tr2qs("Server appears to be a network hub<br>");
+				else
+					tip += __tr2qs("Unknown server<br>"); // might happen...
 			}
 			tip.append("<tr><td>");
 			tip.append(__tr2qs("Double-click to read the MOTD"));
@@ -915,8 +985,10 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				if(((KviChannelWindow *)m_pKviWindow)->isMeHalfOp(true))
 				{
 					QString part = linkCmd.mid(1);
-					KviQString::appendFormatted(tip,QString("<b>mode %Q %Q</b>"),&(m_pKviWindow->windowName()),&part);
-				} else {
+					KviQString::appendFormatted(tip, QString("<b>mode %Q %Q</b>"), &(m_pKviWindow->windowName()), &part);
+				}
+				else
+				{
 					// I'm not op... no way
 					tip = __tr2qs("You're not an operator: you may not change channel modes");
 				}
@@ -935,10 +1007,14 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 					if(e)
 					{
 						QString buffer;
-						console()->getUserTipText(linkText,e,buffer);
+						console()->getUserTipText(linkText, e, buffer);
 						tip = buffer;
-					} else tip = QString(__tr2qs("Nothing is known about %1")).arg(linkText);
-				} else tip = QString(__tr2qs("Nothing is known about %1 (no connection)")).arg(linkText);
+					}
+					else
+						tip = QString(__tr2qs("Nothing is known about %1")).arg(linkText);
+				}
+				else
+					tip = QString(__tr2qs("Nothing is known about %1 (no connection)")).arg(linkText);
 			}
 		}
 		break;
@@ -952,7 +1028,8 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				QString buf;
 				tip = "<img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Channel) + "\"> ";
 
-				if(szCmd.length()>0) szChan=szCmd;
+				if(szCmd.length() > 0)
+					szChan = szCmd;
 				KviChannelWindow * c = console()->connection()->findChannel(szChan);
 				QString szUrl;
 				if(c)
@@ -960,15 +1037,21 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 					QString chanMode;
 					c->getChannelModeString(chanMode);
 					QString topic = KviControlCodes::stripControlBytes(c->topicWidget()->topic());
-					KviIrcUrl::join(szUrl,console()->connection()->target()->server());
+					KviIrcUrl::join(szUrl, console()->connection()->target()->server());
 					szUrl.append(szChan);
 					buf = QString(__tr2qs("<b>%1</b><u><p style=\"white-space:pre;color:#0022FF\">"
-						"%2</p></u>Channel modes: <b>+%3</b><br>Users: <b>%4</b><hr>Topic is: %5")).arg(KviQString::toHtmlEscaped(szChan),KviQString::toHtmlEscaped(szUrl),KviQString::toHtmlEscaped(chanMode)).arg(c->count()).arg(KviQString::toHtmlEscaped(topic));
-				} else {
-					KviIrcUrl::join(szUrl,console()->connection()->target()->server());
+					                      "%2</p></u>Channel modes: <b>+%3</b><br>Users: <b>%4</b><hr>Topic is: %5"))
+					          .arg(KviQString::toHtmlEscaped(szChan), KviQString::toHtmlEscaped(szUrl), KviQString::toHtmlEscaped(chanMode))
+					          .arg(c->count())
+					          .arg(KviQString::toHtmlEscaped(topic));
+				}
+				else
+				{
+					KviIrcUrl::join(szUrl, console()->connection()->target()->server());
 					szUrl.append(szChan);
 					buf = QString(__tr2qs("<b>%1</b><u><p style=\"white-space:pre;color:#0022FF\">"
-						"%2</p></u><hr>Double-click to join %3<br>Right-click to view other options")).arg(KviQString::toHtmlEscaped(szChan),KviQString::toHtmlEscaped(szUrl),KviQString::toHtmlEscaped(szChan));
+					                      "%2</p></u><hr>Double-click to join %3<br>Right-click to view other options"))
+					          .arg(KviQString::toHtmlEscaped(szChan), KviQString::toHtmlEscaped(szUrl), KviQString::toHtmlEscaped(szChan));
 				}
 
 				tip += buf;
@@ -979,39 +1062,44 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		{
 			if(!KVI_OPTION_BOOL(KviOption_boolEnableEscapeLinkToolTip))
 				return;
-			QString dbl,rbt,txt,mbt;
-			getLinkEscapeCommand(dbl,linkCmd,"[!dbl]");
-			getLinkEscapeCommand(rbt,linkCmd,"[!rbt]");
-			getLinkEscapeCommand(txt,linkCmd,"[!txt]");
-			getLinkEscapeCommand(mbt,linkCmd,"[!mbt]");
+			QString dbl, rbt, txt, mbt;
+			getLinkEscapeCommand(dbl, linkCmd, "[!dbl]");
+			getLinkEscapeCommand(rbt, linkCmd, "[!rbt]");
+			getLinkEscapeCommand(txt, linkCmd, "[!txt]");
+			getLinkEscapeCommand(mbt, linkCmd, "[!mbt]");
 
-			if(!txt.isEmpty())tip = txt;
+			if(!txt.isEmpty())
+				tip = txt;
 			if(tip.isEmpty() && (!dbl.isEmpty()))
 			{
-				if(!tip.isEmpty())tip.append("<hr>");
-				KviQString::appendFormatted(tip,__tr2qs("<b>Double-click:</b><br>%Q"),&dbl);
+				if(!tip.isEmpty())
+					tip.append("<hr>");
+				KviQString::appendFormatted(tip, __tr2qs("<b>Double-click:</b><br>%Q"), &dbl);
 			}
 			if(tip.isEmpty() && (!mbt.isEmpty()))
 			{
-				if(!tip.isEmpty())tip.append("<hr>");
-				KviQString::appendFormatted(tip,__tr2qs("<b>Middle-click:</b><br>%Q"),&mbt);
+				if(!tip.isEmpty())
+					tip.append("<hr>");
+				KviQString::appendFormatted(tip, __tr2qs("<b>Middle-click:</b><br>%Q"), &mbt);
 			}
 			if(tip.isEmpty() && (!rbt.isEmpty()))
 			{
-				if(!tip.isEmpty())tip.append("<hr>");
-				KviQString::appendFormatted(tip,__tr2qs("<b>Right-click:</b><br>%Q"),&rbt);
+				if(!tip.isEmpty())
+					tip.append("<hr>");
+				KviQString::appendFormatted(tip, __tr2qs("<b>Right-click:</b><br>%Q"), &rbt);
 			}
 		}
 		break;
 	}
 
-	if(tip.isEmpty())return;
+	if(tip.isEmpty())
+		return;
 
-	m_pToolTip->doTip(rct,tip);
+	m_pToolTip->doTip(rct, tip);
 }
 
 //keyboard events
-void KviIrcView::keyPressEvent(QKeyEvent *e)
+void KviIrcView::keyPressEvent(QKeyEvent * e)
 {
 	switch(e->key())
 	{
@@ -1029,16 +1117,19 @@ void KviIrcView::keyPressEvent(QKeyEvent *e)
 }
 
 //drag&drop events
-void KviIrcView::dragEnterEvent(QDragEnterEvent *e)
+void KviIrcView::dragEnterEvent(QDragEnterEvent * e)
 {
-	if(!m_bAcceptDrops)return;
-	if(e->mimeData()->hasUrls()) e->acceptProposedAction();
+	if(!m_bAcceptDrops)
+		return;
+	if(e->mimeData()->hasUrls())
+		e->acceptProposedAction();
 	emit dndEntered();
 }
 
-void KviIrcView::dropEvent(QDropEvent *e)
+void KviIrcView::dropEvent(QDropEvent * e)
 {
-	if(!m_bAcceptDrops)return;
+	if(!m_bAcceptDrops)
+		return;
 	QList<QUrl> list;
 	if(e->mimeData()->hasUrls())
 	{
@@ -1046,7 +1137,7 @@ void KviIrcView::dropEvent(QDropEvent *e)
 		if(!list.isEmpty())
 		{
 			QList<QUrl>::Iterator it = list.begin();
-			for( ; it != list.end(); ++it )
+			for(; it != list.end(); ++it)
 			{
 				QUrl url = *it;
 				QString path = url.toLocalFile();
@@ -1058,7 +1149,7 @@ void KviIrcView::dropEvent(QDropEvent *e)
 
 //
 
-bool KviIrcView::event(QEvent *e)
+bool KviIrcView::event(QEvent * e)
 {
 	if(e->type() == QEvent::User)
 	{
@@ -1072,11 +1163,12 @@ bool KviIrcView::event(QEvent *e)
 	return QWidget::event(e);
 }
 
-void KviIrcView::wheelEvent(QWheelEvent *e)
+void KviIrcView::wheelEvent(QWheelEvent * e)
 {
 	static bool bHere = false;
-	if(bHere)return;
+	if(bHere)
+		return;
 	bHere = true; // Qt4 tends to jump into infinite recursion here
-	g_pApp->sendEvent(m_pScrollBar,e);
+	g_pApp->sendEvent(m_pScrollBar, e);
 	bHere = false;
 }

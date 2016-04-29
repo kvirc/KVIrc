@@ -33,20 +33,23 @@ class KVILIB_API KviUrl : public KviHeapObject
 public:
 	KviUrl();
 	KviUrl(const char * szUrl);
-	KviUrl(const QString &szUrl);
-	KviUrl(const KviUrl &u);
+	KviUrl(const QString & szUrl);
+	KviUrl(const KviUrl & u);
 	~KviUrl();
-protected:
-	QString             m_szUrl;
 
-	QString             m_szProtocol;
-	QString             m_szHost;
-	QString             m_szPath;
-	QString             m_szUser;
-	QString             m_szPass;
-	kvi_u32_t           m_uPort;
+protected:
+	QString m_szUrl;
+
+	QString m_szProtocol;
+	QString m_szHost;
+	QString m_szPath;
+	QString m_szUser;
+	QString m_szPass;
+	kvi_u32_t m_uPort;
+
 protected:
 	void parse();
+
 public:
 	const QString & url() const { return m_szUrl; };
 	const QString & protocol() const { return m_szProtocol; };
@@ -56,10 +59,8 @@ public:
 	const QString & pass() const { return m_szPass; };
 	kvi_u32_t port() const { return m_uPort; };
 
-	KviUrl & operator = (const QString& szUrl);
-	KviUrl & operator = (const KviUrl &u);
-
+	KviUrl & operator=(const QString & szUrl);
+	KviUrl & operator=(const KviUrl & u);
 };
-
 
 #endif //_KVI_URL_H_

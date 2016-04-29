@@ -50,29 +50,30 @@ class FileTransferWidget : public KviTalTableWidget
 	Q_PROPERTY(int TransparencyCapable READ dummyRead)
 public:
 	FileTransferWidget(QWidget * pParent);
-	~FileTransferWidget() {};
+	~FileTransferWidget(){};
 	void paintEvent(QPaintEvent * event);
 	int dummyRead() const { return 0; };
 protected:
-	void mousePressEvent (QMouseEvent *e);
-	void mouseDoubleClickEvent (QMouseEvent *e);
+	void mousePressEvent(QMouseEvent * e);
+	void mouseDoubleClickEvent(QMouseEvent * e);
 signals:
-	void rightButtonPressed(FileTransferItem *,QPoint pnt);
-	void doubleClicked(FileTransferItem *,QPoint pnt);
+	void rightButtonPressed(FileTransferItem *, QPoint pnt);
+	void doubleClicked(FileTransferItem *, QPoint pnt);
 };
 
 class FileTransferItem : public KviTalTableWidgetItemEx
 {
 public:
-	FileTransferItem(FileTransferWidget * v,KviFileTransfer * t);
+	FileTransferItem(FileTransferWidget * v, KviFileTransfer * t);
 	~FileTransferItem();
+
 protected:
 	KviFileTransfer * m_pTransfer;
 	KviTalTableWidgetItem * col1Item; //item on the second column
 	KviTalTableWidgetItem * col2Item; //item on the third column
 public:
-	KviFileTransfer * transfer(){ return m_pTransfer; };
-	virtual QString key(int column,bool bAcending) const;
+	KviFileTransfer * transfer() { return m_pTransfer; };
+	virtual QString key(int column, bool bAcending) const;
 	virtual void displayUpdate();
 };
 
@@ -80,11 +81,11 @@ class FileTransferItemDelegate : public KviTalIconAndRichTextItemDelegate
 {
 	Q_OBJECT
 public:
-	FileTransferItemDelegate(QAbstractItemView * pWidget=0)
-		: KviTalIconAndRichTextItemDelegate(pWidget) {};
+	FileTransferItemDelegate(QAbstractItemView * pWidget = 0)
+	    : KviTalIconAndRichTextItemDelegate(pWidget){};
 	~FileTransferItemDelegate(){};
-	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
-	void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
+	void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
 };
 
 class FileTransferWindow : public KviWindow
@@ -100,46 +101,49 @@ public:
 #if 0
 			KviModuleExtensionDescriptor * d
 #endif
-		);
+	    );
 	~FileTransferWindow();
+
 protected:
-	QSplitter		* m_pVertSplitter;
-	FileTransferWidget	* m_pTableWidget;
-	QAbstractItemDelegate	* m_pItemDelegate;
-	QMenu		* m_pContextPopup;
-	QMenu		* m_pLocalFilePopup;
-	QMenu		* m_pOpenFilePopup;
-	QTimer			* m_pTimer;
-	int			m_iLineSpacing; // cached fm value
-public: // Methods
+	QSplitter * m_pVertSplitter;
+	FileTransferWidget * m_pTableWidget;
+	QAbstractItemDelegate * m_pItemDelegate;
+	QMenu * m_pContextPopup;
+	QMenu * m_pLocalFilePopup;
+	QMenu * m_pOpenFilePopup;
+	QTimer * m_pTimer;
+	int m_iLineSpacing; // cached fm value
+public:                 // Methods
 	virtual void die();
+
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 	virtual void applyOptions();
-	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getBaseLogFileName(QString &buffer);
+	virtual void resizeEvent(QResizeEvent * e);
+	virtual void getBaseLogFileName(QString & buffer);
 	FileTransferItem * findItem(KviFileTransfer * t);
 	void fillTransferView();
 	KviFileTransfer * selectedTransfer();
-	bool eventFilter( QObject *obj, QEvent *ev );
+	bool eventFilter(QObject * obj, QEvent * ev);
+
 public:
 	virtual QSize sizeHint() const;
-	int lineSpacing(){ return m_iLineSpacing; };
+	int lineSpacing() { return m_iLineSpacing; };
 protected slots:
-	void transferRegistered(KviFileTransfer *t);
-	void transferUnregistering(KviFileTransfer *t);
-	void rightButtonPressed(FileTransferItem *it,const QPoint &pnt);
-	void doubleClicked(FileTransferItem *it,const QPoint &pnt);
+	void transferRegistered(KviFileTransfer * t);
+	void transferUnregistering(KviFileTransfer * t);
+	void rightButtonPressed(FileTransferItem * it, const QPoint & pnt);
+	void doubleClicked(FileTransferItem * it, const QPoint & pnt);
 	void heartbeat();
 	void clearTerminated();
 	void clearAll();
-	void tipRequest(KviDynamicToolTip * tip,const QPoint &pnt);
+	void tipRequest(KviDynamicToolTip * tip, const QPoint & pnt);
 	void openLocalFile();
 	void openLocalFileWith();
 	void copyLocalFileToClipboard();
 	void openLocalFileFolder();
-	void openFilePopupActivated(QAction *pAction);
+	void openFilePopupActivated(QAction * pAction);
 	void openLocalFileTerminal();
 	void deleteLocalFile();
 };

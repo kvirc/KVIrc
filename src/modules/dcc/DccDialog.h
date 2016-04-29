@@ -32,50 +32,53 @@ class DccDialog
 {
 protected:
 	DccDescriptor * m_pDescriptor;
-	DccBroker           * m_pBroker;
+	DccBroker * m_pBroker;
+
 public:
-	DccDialog(DccBroker * br,DccDescriptor * dcc);
+	DccDialog(DccBroker * br, DccDescriptor * dcc);
 	virtual ~DccDialog();
+
 public:
 	virtual void forgetDescriptor();
 };
-
 
 class DccAcceptDialog : public QWidget, public DccDialog
 {
 	Q_OBJECT
 public:
-	DccAcceptDialog(DccBroker * br,DccDescriptor * dcc,const QString &text,const QString &capt);
+	DccAcceptDialog(DccBroker * br, DccDescriptor * dcc, const QString & text, const QString & capt);
 	~DccAcceptDialog();
+
 protected:
-	virtual void closeEvent(QCloseEvent *e);
-	virtual void showEvent(QShowEvent *e);
+	virtual void closeEvent(QCloseEvent * e);
+	virtual void showEvent(QShowEvent * e);
 private slots:
 	void acceptClicked();
 	void rejectClicked();
 signals:
-	void accepted(DccDialog *,DccDescriptor *);
-	void rejected(DccDialog *,DccDescriptor *);
+	void accepted(DccDialog *, DccDescriptor *);
+	void rejected(DccDialog *, DccDescriptor *);
 };
 
 class DccRenameDialog : public QWidget, public DccDialog
 {
 	Q_OBJECT
 public:
-	DccRenameDialog(DccBroker * br,DccDescriptor * dcc,const QString &text,bool bDisableResume);
+	DccRenameDialog(DccBroker * br, DccDescriptor * dcc, const QString & text, bool bDisableResume);
 	~DccRenameDialog();
+
 protected:
-	virtual void closeEvent(QCloseEvent *e);
-	virtual void showEvent(QShowEvent *e);
+	virtual void closeEvent(QCloseEvent * e);
+	virtual void showEvent(QShowEvent * e);
 private slots:
 	void renameClicked();
 	void overwriteClicked();
 	void resumeClicked();
 	void cancelClicked();
 signals:
-	void overwriteSelected(DccDialog *,DccDescriptor *);
-	void renameSelected(DccDialog *,DccDescriptor *);
-	void cancelSelected(DccDialog *,DccDescriptor *);
+	void overwriteSelected(DccDialog *, DccDescriptor *);
+	void renameSelected(DccDialog *, DccDescriptor *);
+	void cancelSelected(DccDialog *, DccDescriptor *);
 };
 
 #endif

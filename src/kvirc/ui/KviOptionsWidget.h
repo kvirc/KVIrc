@@ -41,107 +41,108 @@ class KVIRC_API KviOptionsWidget : public QFrame, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
-	KviOptionsWidget(QWidget * parent,const char * name = 0,bool bSunken = true);
+	KviOptionsWidget(QWidget * parent, const char * name = 0, bool bSunken = true);
 	~KviOptionsWidget();
+
 private:
-	QGridLayout                      * m_pLayout;
-	QTabWidget                       * m_pTabWidget;
-	int                                m_iResetFlags;
-	int                                m_iSelectors;
+	QGridLayout * m_pLayout;
+	QTabWidget * m_pTabWidget;
+	int m_iResetFlags;
+	int m_iSelectors;
 	KviPointerList<KviSelectorInterface> * m_pSelectorInterfaceList;
-	static QString                     m_szBasicTipStart;
-	static QString                     m_szBasicTipEnd;
+	static QString m_szBasicTipStart;
+	static QString m_szBasicTipEnd;
+
 public:
-	void mergeResetFlag(int flag){ m_iResetFlags |= flag; };
+	void mergeResetFlag(int flag) { m_iResetFlags |= flag; };
 	void createLayout();
-	QGridLayout * layout(){ return m_pLayout; };
+	QGridLayout * layout() { return m_pLayout; };
 protected:
 	void commitSelectors();
 	void commitOptionsReset();
+
 public:
-	void mergeTip(QWidget * w,const QString &tip);
-	KviPointerList<KviSelectorInterface> *selectors(){return m_pSelectorInterfaceList;};
+	void mergeTip(QWidget * w, const QString & tip);
+	KviPointerList<KviSelectorInterface> * selectors() { return m_pSelectorInterfaceList; };
 
 	// tabbed page paradigm
 	void createTabbedPage();
-	void addOptionsWidget(const QString &szText,const QIcon &iconSet,KviOptionsWidget * pWidget);
-	QTabWidget * tabWidget(){ return m_pTabWidget; };
+	void addOptionsWidget(const QString & szText, const QIcon & iconSet, KviOptionsWidget * pWidget);
+	QTabWidget * tabWidget() { return m_pTabWidget; };
 
 	// non tabbed page paradigm
-	KviBoolSelector       * addBoolSelector(int x1,int y1,int x2,int y2,const QString & txt,bool * pOption,bool bEnabled = true);
-	KviBoolSelector       * addBoolSelector(QWidget * pParent,const QString & txt,bool * pOption,bool bEnabled = true);
-	KviBoolSelector       * addBoolSelector(int x1,int y1,int x2,int y2,const QString & txt,int optId,bool bEnabled = true);
-	KviBoolSelector       * addBoolSelector(QWidget * pParnt,const QString & txt,int optId,bool bEnabled = true);
+	KviBoolSelector * addBoolSelector(int x1, int y1, int x2, int y2, const QString & txt, bool * pOption, bool bEnabled = true);
+	KviBoolSelector * addBoolSelector(QWidget * pParent, const QString & txt, bool * pOption, bool bEnabled = true);
+	KviBoolSelector * addBoolSelector(int x1, int y1, int x2, int y2, const QString & txt, int optId, bool bEnabled = true);
+	KviBoolSelector * addBoolSelector(QWidget * pParnt, const QString & txt, int optId, bool bEnabled = true);
 
-	KviColorSelector      * addColorSelector(int x1,int y1,int x2,int y2,const QString & txt,QColor * pOption,bool bEnabled = true);
-	KviColorSelector      * addColorSelector(QWidget * pParent,const QString & txt,QColor * pOption,bool bEnabled = true);
-	KviColorSelector      * addColorSelector(int x1,int y1,int x2,int y2,const QString & txt,int optId,bool bEnabled = true);
-	KviColorSelector      * addColorSelector(QWidget * pParent,const QString & txt,int optId,bool bEnabled = true);
+	KviColorSelector * addColorSelector(int x1, int y1, int x2, int y2, const QString & txt, QColor * pOption, bool bEnabled = true);
+	KviColorSelector * addColorSelector(QWidget * pParent, const QString & txt, QColor * pOption, bool bEnabled = true);
+	KviColorSelector * addColorSelector(int x1, int y1, int x2, int y2, const QString & txt, int optId, bool bEnabled = true);
+	KviColorSelector * addColorSelector(QWidget * pParent, const QString & txt, int optId, bool bEnabled = true);
 
-	KviMircTextColorSelector * addMircTextColorSelector(int x1,int y1,int x2,int y2,const QString & txt,unsigned int *uFore,unsigned int *uBack,bool bEnabled = true);
-	KviMircTextColorSelector * addMircTextColorSelector(QWidget * pParent,const QString & txt,unsigned int *uFore,unsigned int *uBack,bool bEnabled = true);
-	KviMircTextColorSelector * addMircTextColorSelector(int x1,int y1,int x2,int y2,const QString & txt,int optForeId,int optBackId,bool bEnabled = true);
-	KviMircTextColorSelector * addMircTextColorSelector(QWidget * pParent,const QString & txt,int optForeId,int optBackId,bool bEnabled = true);
+	KviMircTextColorSelector * addMircTextColorSelector(int x1, int y1, int x2, int y2, const QString & txt, unsigned int * uFore, unsigned int * uBack, bool bEnabled = true);
+	KviMircTextColorSelector * addMircTextColorSelector(QWidget * pParent, const QString & txt, unsigned int * uFore, unsigned int * uBack, bool bEnabled = true);
+	KviMircTextColorSelector * addMircTextColorSelector(int x1, int y1, int x2, int y2, const QString & txt, int optForeId, int optBackId, bool bEnabled = true);
+	KviMircTextColorSelector * addMircTextColorSelector(QWidget * pParent, const QString & txt, int optForeId, int optBackId, bool bEnabled = true);
 
-	KviDirectorySelector  * addDirectorySelector(int x1,int y1,int x2,int y2,const QString & txt,QString * pOption,bool bEnabled = true);
-	KviDirectorySelector  * addDirectorySelector(QWidget * pParent,const QString & txt,QString * pOption,bool bEnabled = true);
-	KviDirectorySelector  * addDirectorySelector(int x1,int y1,int x2,int y2,const QString & txt,int optId,bool bEnabled = true);
-	KviDirectorySelector  * addDirectorySelector(QWidget * pParent,const QString & txt,int optId,bool bEnabled = true);
+	KviDirectorySelector * addDirectorySelector(int x1, int y1, int x2, int y2, const QString & txt, QString * pOption, bool bEnabled = true);
+	KviDirectorySelector * addDirectorySelector(QWidget * pParent, const QString & txt, QString * pOption, bool bEnabled = true);
+	KviDirectorySelector * addDirectorySelector(int x1, int y1, int x2, int y2, const QString & txt, int optId, bool bEnabled = true);
+	KviDirectorySelector * addDirectorySelector(QWidget * pParent, const QString & txt, int optId, bool bEnabled = true);
 
-	KviFileSelector       * addFileSelector(int x1,int y1,int x2,int y2,const QString & txt,QString * pOption,bool bEnabled = true);
-	KviFileSelector       * addFileSelector(QWidget * pParent,const QString & txt,QString * pOption,bool bEnabled = true);
-	KviFileSelector       * addFileSelector(int x1,int y1,int x2,int y2,const QString & txt,int optId,bool bEnabled = true);
-	KviFileSelector       * addFileSelector(QWidget * pParent,const QString & txt,int optId,bool bEnabled = true);
+	KviFileSelector * addFileSelector(int x1, int y1, int x2, int y2, const QString & txt, QString * pOption, bool bEnabled = true);
+	KviFileSelector * addFileSelector(QWidget * pParent, const QString & txt, QString * pOption, bool bEnabled = true);
+	KviFileSelector * addFileSelector(int x1, int y1, int x2, int y2, const QString & txt, int optId, bool bEnabled = true);
+	KviFileSelector * addFileSelector(QWidget * pParent, const QString & txt, int optId, bool bEnabled = true);
 
-	KviSoundSelector       * addSoundSelector(int x1,int y1,int x2,int y2,const QString & txt,QString * pOption,bool bEnabled = true);
-	KviSoundSelector       * addSoundSelector(QWidget * pParent,const QString & txt,QString * pOption,bool bEnabled = true);
-	KviSoundSelector       * addSoundSelector(int x1,int y1,int x2,int y2,const QString & txt,int optId,bool bEnabled = true);
-	KviSoundSelector       * addSoundSelector(QWidget * pParent,const QString & txt,int optId,bool bEnabled = true);
+	KviSoundSelector * addSoundSelector(int x1, int y1, int x2, int y2, const QString & txt, QString * pOption, bool bEnabled = true);
+	KviSoundSelector * addSoundSelector(QWidget * pParent, const QString & txt, QString * pOption, bool bEnabled = true);
+	KviSoundSelector * addSoundSelector(int x1, int y1, int x2, int y2, const QString & txt, int optId, bool bEnabled = true);
+	KviSoundSelector * addSoundSelector(QWidget * pParent, const QString & txt, int optId, bool bEnabled = true);
 
+	KviFontSelector * addFontSelector(int x1, int y1, int x2, int y2, const QString & txt, QFont * pOption, bool bEnabled = true);
+	KviFontSelector * addFontSelector(QWidget * pParent, const QString & txt, QFont * pOption, bool bEnabled = true);
+	KviFontSelector * addFontSelector(int x1, int y1, int x2, int y2, const QString & txt, int optId, bool bEnabled = true);
+	KviFontSelector * addFontSelector(QWidget * pParent, const QString & txt, int optId, bool bEnabled = true);
 
-	KviFontSelector       * addFontSelector(int x1,int y1,int x2,int y2,const QString & txt,QFont * pOption,bool bEnabled = true);
-	KviFontSelector       * addFontSelector(QWidget * pParent,const QString & txt,QFont * pOption,bool bEnabled = true);
-	KviFontSelector       * addFontSelector(int x1,int y1,int x2,int y2,const QString & txt,int optId,bool bEnabled = true);
-	KviFontSelector       * addFontSelector(QWidget * pParent,const QString & txt,int optId,bool bEnabled = true);
+	KviPasswordSelector * addPasswordSelector(int x1, int y1, int x2, int y2, const QString & txt, QString * pOption, bool bEnabled = true);
+	KviPasswordSelector * addPasswordSelector(QWidget * pParent, const QString & txt, QString * pOption, bool bEnabled = true);
+	KviPasswordSelector * addPasswordSelector(int x1, int y1, int x2, int y2, const QString & txt, int optId, bool bEnabled = true);
+	KviPasswordSelector * addPasswordSelector(QWidget * pParent, const QString & txt, int optId, bool bEnabled = true);
 
-	KviPasswordSelector   * addPasswordSelector(int x1,int y1,int x2,int y2,const QString & txt,QString * pOption,bool bEnabled = true);
-	KviPasswordSelector   * addPasswordSelector(QWidget * pParent,const QString & txt,QString * pOption,bool bEnabled = true);
-	KviPasswordSelector   * addPasswordSelector(int x1,int y1,int x2,int y2,const QString & txt,int optId,bool bEnabled = true);
-	KviPasswordSelector   * addPasswordSelector(QWidget * pParent,const QString & txt,int optId,bool bEnabled = true);
+	KviPixmapSelector * addPixmapSelector(int x1, int y1, int x2, int y2, const QString & txt, int optId, bool bEnabled = true);
+	KviPixmapSelector * addPixmapSelector(int x1, int y1, int x2, int y2, const QString & txt, KviPixmap * pOption, bool bEnabled = true);
 
-	KviPixmapSelector     * addPixmapSelector(int x1,int y1,int x2,int y2,const QString & txt,int optId,bool bEnabled = true);
-	KviPixmapSelector     * addPixmapSelector(int x1,int y1,int x2,int y2,const QString & txt,KviPixmap * pOption,bool bEnabled = true);
+	KviStringListSelector * addStringListSelector(int x1, int y1, int x2, int y2, const QString & txt, QStringList * pOption, bool bEnabled = true);
+	KviStringListSelector * addStringListSelector(int x1, int y1, int x2, int y2, const QString & txt, int optId, bool bEnabled = true);
 
-	KviStringListSelector * addStringListSelector(int x1,int y1,int x2,int y2,const QString & txt,QStringList * pOption,bool bEnabled = true);
-	KviStringListSelector * addStringListSelector(int x1,int y1,int x2,int y2,const QString & txt,int optId,bool bEnabled = true);
+	KviStringSelector * addStringSelector(int x1, int y1, int x2, int y2, const QString & txt, QString * pOption, bool bEnabled = true);
+	KviStringSelector * addStringSelector(QWidget * pParent, const QString & txt, QString * pOption, bool bEnabled = true);
+	KviStringSelector * addStringSelector(int x1, int y1, int x2, int y2, const QString & txt, int optId, bool bEnabled = true);
+	KviStringSelector * addStringSelector(QWidget * pParent, const QString & txt, int optId, bool bEnabled = true);
 
-	KviStringSelector     * addStringSelector(int x1,int y1,int x2,int y2,const QString & txt,QString * pOption,bool bEnabled = true);
-	KviStringSelector     * addStringSelector(QWidget * pParent,const QString & txt,QString * pOption,bool bEnabled = true);
-	KviStringSelector     * addStringSelector(int x1,int y1,int x2,int y2,const QString & txt,int optId,bool bEnabled = true);
-	KviStringSelector     * addStringSelector(QWidget * pParent,const QString & txt,int optId,bool bEnabled = true);
+	KviUIntSelector * addUIntSelector(int x1, int y1, int x2, int y2, const QString & txt, unsigned int * pOption,
+	    unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
+	KviUIntSelector * addUIntSelector(QWidget * pParent, const QString & txt, unsigned int * pOption,
+	    unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
+	KviUIntSelector * addUIntSelector(int x1, int y1, int x2, int y2, const QString & txt, int optId,
+	    unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
+	KviUIntSelector * addUIntSelector(QWidget * pParent, const QString & txt, int optId,
+	    unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
 
-	KviUIntSelector       * addUIntSelector(int x1,int y1,int x2,int y2,const QString & txt,unsigned int * pOption,
-								unsigned int uLowBound,unsigned int uHighBound,unsigned int uDefault,bool bEnabled = true);
-	KviUIntSelector       * addUIntSelector(QWidget * pParent,const QString & txt,unsigned int * pOption,
-								unsigned int uLowBound,unsigned int uHighBound,unsigned int uDefault,bool bEnabled = true);
-	KviUIntSelector       * addUIntSelector(int x1,int y1,int x2,int y2,const QString & txt,int optId,
-				unsigned int uLowBound,unsigned int uHighBound,unsigned int uDefault,bool bEnabled = true);
-	KviUIntSelector       * addUIntSelector(QWidget * pParent,const QString & txt,int optId,
-				unsigned int uLowBound,unsigned int uHighBound,unsigned int uDefault,bool bEnabled = true);
+	KviUIntSelector * addUShortIntSelector(int x1, int y1, int x2, int y2, const QString & txt, unsigned short int * pOption,
+	    unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
 
+	QLabel * addLabel(int x1, int y1, int x2, int y2, const QString & text, bool bEnabled = true);
+	QLabel * addLabel(QWidget * pParent, const QString & text, bool bEnabled = true);
+	QLineEdit * addLineEdit(int x1, int y1, int x2, int y2, bool bEnabled = true);
+	QPushButton * addPushButton(int x1, int y1, int x2, int y2, const QString & text, bool bEnabled = true);
+	KviTalGroupBox * addGroupBox(int x1, int y1, int x2, int y2, Qt::Orientation o, const QString & txt, bool bEnabled = true);
+	QFrame * addSeparator(int x1, int y1, int x2, int y2);
+	void addRowSpacer(int x1, int y1, int x2, int y2);
 
-	KviUIntSelector       * addUShortIntSelector(int x1,int y1,int x2,int y2,const QString & txt,unsigned short int * pOption,
-							unsigned int uLowBound,unsigned int uHighBound,unsigned int uDefault,bool bEnabled = true);
-
-	QLabel * addLabel(int x1,int y1,int x2,int y2,const QString & text,bool bEnabled = true);
-	QLabel * addLabel(QWidget * pParent,const QString & text,bool bEnabled = true);
-	QLineEdit * addLineEdit(int x1,int y1,int x2,int y2,bool bEnabled = true);
-	QPushButton * addPushButton(int x1,int y1,int x2,int y2,const QString & text,bool bEnabled = true);
-	KviTalGroupBox * addGroupBox(int x1,int y1,int x2,int y2,Qt::Orientation o,const QString &txt,bool bEnabled = true);
-	QFrame * addSeparator(int x1,int y1,int x2,int y2);
-	void addRowSpacer(int x1,int y1,int x2,int y2);
-
-	void addWidgetToLayout(QWidget * w,int x1,int y1,int x2,int y2);
+	void addWidgetToLayout(QWidget * w, int x1, int y1, int x2, int y2);
 
 	// this does NOT add the advanced button if this page is not inside a KviGeneralOptionsDialog
 	// this is because nobody listens to the "switchToAdvancedPage" requests....
@@ -152,7 +153,7 @@ public:
 	virtual void commit();
 	virtual void childEvent(QChildEvent * e);
 
-	virtual bool eventFilter(QObject * watched,QEvent * e);
+	virtual bool eventFilter(QObject * watched, QEvent * e);
 
 protected slots:
 	// this is internal to the options dialog (options module)
@@ -164,6 +165,5 @@ signals:
 	// internal signal used for the stuff above
 	//void wantToSwitchToAdvancedPage(KviOptionsWidget *);
 };
-
 
 #endif //!_KVI_OPTIONSWIDGET_H_

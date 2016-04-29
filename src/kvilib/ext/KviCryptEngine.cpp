@@ -22,13 +22,12 @@
 //
 //=============================================================================
 
-
 #include "KviCryptEngine.h"
 #include "KviLocale.h"
 #include "KviCString.h"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#include "KviMemory.h"
+#include "KviMemory.h"
 #endif
 
 /*
@@ -147,36 +146,36 @@
 		A [i]public key[/i] handshake protocol could be implemented.
 */
 
-	KviCryptEngine::KviCryptEngine()
-	{
+KviCryptEngine::KviCryptEngine()
+{
 #ifdef COMPILE_CRYPT_SUPPORT
-		setLastError(__tr2qs("Invalid encryption engine"));
-		m_iMaxEncryptLen = -1; // unlimited
-		m_deallocFunc = 0;
+	setLastError(__tr2qs("Invalid encryption engine"));
+	m_iMaxEncryptLen = -1; // unlimited
+	m_deallocFunc = 0;
 #endif //COMPILE_CRYPT_SUPPORT
-	}
+}
 
-	KviCryptEngine::~KviCryptEngine()
-	{
-	}
+KviCryptEngine::~KviCryptEngine()
+{
+}
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
-	bool KviCryptEngine::init(const char *, int, const char *, int)
-	{
-		return false;
-	}
+bool KviCryptEngine::init(const char *, int, const char *, int)
+{
+	return false;
+}
 
-	KviCryptEngine::EncryptResult KviCryptEngine::encrypt(const char *, KviCString &)
-	{
-//		qDebug("Pure virtual KviCryptEngine::encrypt() called");
-		return EncryptError;
-	}
+KviCryptEngine::EncryptResult KviCryptEngine::encrypt(const char *, KviCString &)
+{
+	//		qDebug("Pure virtual KviCryptEngine::encrypt() called");
+	return EncryptError;
+}
 
-	KviCryptEngine::DecryptResult KviCryptEngine::decrypt(const char *, KviCString &)
-	{
-//		qDebug("Pure virtual KviCryptEngine::decrypt() called");
-		return DecryptError;
-	}
+KviCryptEngine::DecryptResult KviCryptEngine::decrypt(const char *, KviCString &)
+{
+	//		qDebug("Pure virtual KviCryptEngine::decrypt() called");
+	return DecryptError;
+}
 
 #endif //COMPILE_CRYPT_SUPPORT

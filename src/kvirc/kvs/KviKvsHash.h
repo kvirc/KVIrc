@@ -36,7 +36,7 @@
 #include "KviKvsVariant.h"
 #include "KviHeapObject.h"
 
-typedef KVIRC_API_TYPEDEF KviPointerHashTableIterator<QString,KviKvsVariant> KviKvsHashIterator;
+typedef KVIRC_API_TYPEDEF KviPointerHashTableIterator<QString, KviKvsVariant> KviKvsHashIterator;
 
 /**
 * \class KviKvsHash
@@ -128,7 +128,7 @@ public:
 	* \brief Returns the internal dictionary of the hash
 	* \return const KviPointerHashTable<QString,KviKvsVariant> *
 	*/
-	const KviPointerHashTable<QString,KviKvsVariant> * dict();
+	const KviPointerHashTable<QString, KviKvsVariant> * dict();
 
 	/**
 	* \brief Serializes the hash to a given buffer
@@ -138,7 +138,7 @@ public:
 	void serialize(QString & szResult);
 
 private:
-	KviPointerHashTable<QString,KviKvsVariant> * m_pDict;
+	KviPointerHashTable<QString, KviKvsVariant> * m_pDict;
 };
 
 #endif // _KVI_KVS_HASH_H_

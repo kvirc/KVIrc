@@ -51,10 +51,10 @@ const int align_cod[] = {
 	Qt::AlignJustify,
 };
 
-#define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
+#define align_num (sizeof(align_tbl) / sizeof(align_tbl[0]))
 
 KviTalHBox::KviTalHBox(QWidget * pParent, char * pcName)
-: QWidget(pParent)
+    : QWidget(pParent)
 {
 	setObjectName(pcName);
 
@@ -91,7 +91,7 @@ void KviTalHBox::childEvent(QChildEvent * e)
 
 void KviTalHBox::setStretchFactor(QWidget * pChild, int iStretch)
 {
-	m_pLayout->setStretchFactor(pChild,iStretch);
+	m_pLayout->setStretchFactor(pChild, iStretch);
 }
 
 void KviTalHBox::setSpacing(int iSpacing)
@@ -101,17 +101,17 @@ void KviTalHBox::setSpacing(int iSpacing)
 
 void KviTalHBox::setMargin(int iMargin)
 {
-	m_pLayout->setContentsMargins(iMargin,iMargin,iMargin,iMargin);
+	m_pLayout->setContentsMargins(iMargin, iMargin, iMargin, iMargin);
 }
 
 void KviTalHBox::setAlignment(Qt::Alignment alignment)
 {
-	m_pLayout->setAlignment(this,alignment);
+	m_pLayout->setAlignment(this, alignment);
 }
 
 void KviTalHBox::setAlignment(QWidget * pChild, Qt::Alignment alignment)
 {
-	m_pLayout->setAlignment(pChild,alignment);
+	m_pLayout->setAlignment(pChild, alignment);
 }
 
 void KviTalHBox::addStretch(int iStretch)
@@ -123,5 +123,3 @@ void KviTalHBox::addSpacing(int iSpacing)
 {
 	m_pLayout->addSpacing(iSpacing);
 }
-
-

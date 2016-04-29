@@ -36,11 +36,12 @@ class KVIRC_API KviMexServerImport : public QObject, public KviModuleExtension
 public:
 	KviMexServerImport(KviModuleExtensionDescriptor * d);
 	~KviMexServerImport();
+
 public:
 	virtual void start() = 0;
 	virtual void die() = 0;
 signals:
-	void server(const KviIrcServer &s,const QString &network);
+	void server(const KviIrcServer & s, const QString & network);
 };
 
 #endif //!_KVI_MEXSERVERIMPORT_H_

@@ -39,7 +39,6 @@
 #include <QTranslator>
 #include <QString>
 
-
 /**
 * \class KviTranslator
 * \brief The KviTranslator class
@@ -48,7 +47,6 @@ class KVILIB_API KviTranslator : public QTranslator
 {
 	Q_OBJECT
 public:
-
 	/**
 	* \brief Creates an instance of KviTranslator
 	* \param pParent The parent object
@@ -60,6 +58,7 @@ public:
 	* \brief Destroys the instance of KviTranslator and frees all the relevant resources
 	*/
 	virtual ~KviTranslator();
+
 public:
 	/**
 	* \brief Decodes the string and returns the current one

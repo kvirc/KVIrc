@@ -37,7 +37,7 @@ KviAnimatedPixmapCache::KviAnimatedPixmapCache()
 {
 	m_pInstance = this;
 	m_animationTimer.setInterval(FRAME_DELAY);
-	connect(&m_animationTimer,SIGNAL(timeout()),this,SLOT(timeoutEvent()));
+	connect(&m_animationTimer, SIGNAL(timeout()), this, SLOT(timeoutEvent()));
 }
 
 KviAnimatedPixmapCache::~KviAnimatedPixmapCache()
@@ -65,38 +65,41 @@ void KviAnimatedPixmapCache::done()
 	m_pInstance = NULL;
 }
 
-KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalLoad(const QString &szFile,int iWidth,int iHeight)
+KviAnimatedPixmapCache::Data * KviAnimatedPixmapCache::internalLoad(const QString & szFile, int iWidth, int iHeight)
 {
 	m_cacheMutex.lock();
-	Data* newData = 0;
+	Data * newData = 0;
 
-	QMultiHash<QString, Data*>::iterator i = m_hCache.find(szFile);
-	while (i != m_hCache.end() && i.key() == szFile && !newData)
+	QMultiHash<QString, Data *>::iterator i = m_hCache.find(szFile);
+	while(i != m_hCache.end() && i.key() == szFile && !newData)
 	{
-		if (!i.value()->resized)
+		if(!i.value()->resized)
 			newData = i.value();
 		++i;
 	}
 
-	if (!newData) {
+	if(!newData)
+	{
 		newData = new Data(szFile);
 		QImageReader reader(szFile);
 		newData->size = reader.size();
 
 		QImage buffer;
-		QPixmap* framePixmap;
+		QPixmap * framePixmap;
 		while(reader.canRead())
 		{
 			uint delay = reader.nextImageDelay();
 			reader.read(&buffer);
 			if(!buffer.isNull())
 			{
-				if (iHeight && iWidth) framePixmap = new QPixmap(QPixmap::fromImage(buffer).scaled(iWidth,iHeight,Qt::KeepAspectRatio,Qt::SmoothTransformation));
-				else framePixmap = new QPixmap(QPixmap::fromImage(buffer));
-				newData->append(FrameInfo(framePixmap,delay));
+				if(iHeight && iWidth)
+					framePixmap = new QPixmap(QPixmap::fromImage(buffer).scaled(iWidth, iHeight, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+				else
+					framePixmap = new QPixmap(QPixmap::fromImage(buffer));
+				newData->append(FrameInfo(framePixmap, delay));
 			}
 		}
-		m_hCache.insert(szFile,newData);
+		m_hCache.insert(szFile, newData);
 	}
 	newData->refs++;
 
@@ -105,16 +108,18 @@ KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalLoad(const QString
 	return newData;
 }
 
-KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalResize(Data* data,const QSize &size)
+KviAnimatedPixmapCache::Data * KviAnimatedPixmapCache::internalResize(Data * data, const QSize & size)
 {
 	m_cacheMutex.lock();
 
 	bool hasToBeResized = false;
 
-	Data* newData = 0;
-	QMultiHash<QString, Data*>::iterator i = m_hCache.find(data->file);
-	while (i != m_hCache.end() && i.key() == data->file && !newData) {
-		if (i.value()->size == size) {
+	Data * newData = 0;
+	QMultiHash<QString, Data *>::iterator i = m_hCache.find(data->file);
+	while(i != m_hCache.end() && i.key() == data->file && !newData)
+	{
+		if(i.value()->size == size)
+		{
 			newData = i.value();
 		}
 		++i;
@@ -124,7 +129,7 @@ KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalResize(Data* data,
 	{
 		newData = new Data(*data);
 		newData->size = size;
-		m_hCache.insert(newData->file,newData);
+		m_hCache.insert(newData->file, newData);
 		hasToBeResized = true;
 		newData->resized = true;
 	}
@@ -137,9 +142,10 @@ KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalResize(Data* data,
 
 	if(hasToBeResized)
 	{
-		for(int i=0;i<newData->count();i++) {
-			QPixmap* old = newData->at(i).pixmap;
-			newData->operator [](i).pixmap=new QPixmap(old->scaled(size,Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
+		for(int i = 0; i < newData->count(); i++)
+		{
+			QPixmap * old = newData->at(i).pixmap;
+			newData->operator[](i).pixmap = new QPixmap(old->scaled(size, Qt::IgnoreAspectRatio, Qt::SmoothTransformation));
 			delete old;
 		}
 	}
@@ -147,31 +153,31 @@ KviAnimatedPixmapCache::Data* KviAnimatedPixmapCache::internalResize(Data* data,
 	return newData;
 }
 
-void KviAnimatedPixmapCache::internalFree(Data* data)
+void KviAnimatedPixmapCache::internalFree(Data * data)
 {
 	if(!data)
 		return;
 	m_cacheMutex.lock();
 	data->refs--;
-	if(data->refs==0)
+	if(data->refs == 0)
 	{
-		m_hCache.remove(data->file,data);
-		for(int i=0;i<data->count();i++)
+		m_hCache.remove(data->file, data);
+		for(int i = 0; i < data->count(); i++)
 		{
-			delete data->operator [](i).pixmap;
+			delete data->operator[](i).pixmap;
 		}
 		delete data;
 	}
 	m_cacheMutex.unlock();
 }
 
-void  KviAnimatedPixmapCache::internalScheduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver)
+void KviAnimatedPixmapCache::internalScheduleFrameChange(uint delay, KviAnimatedPixmapInterface * receiver)
 {
 	//qDebug("Adding %i - %i",(uint)KviTimeUtils::getCurrentTimeMills()+delay,receiver);
 	m_timerMutex.lock();
-	long long when = KviTimeUtils::getCurrentTimeMills()+delay;
+	long long when = KviTimeUtils::getCurrentTimeMills() + delay;
 
-	m_timerData.insert(when,receiver);
+	m_timerData.insert(when, receiver);
 
 	if(!m_animationTimer.isActive())
 		m_animationTimer.start();
@@ -204,17 +210,18 @@ void KviAnimatedPixmapCache::timeoutEvent()
 
 	//m_timerMutex.lock();
 
-	QMultiMap<long long, KviAnimatedPixmapInterface*>::iterator i =
-			m_timerData.begin();
+	QMultiMap<long long, KviAnimatedPixmapInterface *>::iterator i = m_timerData.begin();
 
-	QList<KviAnimatedPixmapInterface*> processed;
-	while (i != m_timerData.end() && i.key() <= now)
+	QList<KviAnimatedPixmapInterface *> processed;
+	while(i != m_timerData.end() && i.key() <= now)
 	{
 		if(processed.contains(i.value()))
 		{
 			// increase the frame index but do not emit the signals as we'll be emitting it later
 			i.value()->nextFrame(false);
-		} else {
+		}
+		else
+		{
 			// we'll be emitting the signal later
 			processed.append(i.value());
 		}
@@ -234,7 +241,7 @@ void KviAnimatedPixmapCache::timeoutEvent()
 		m_animationTimer.stop();
 }
 
-QPixmap* KviAnimatedPixmapCache::dummyPixmap()
+QPixmap * KviAnimatedPixmapCache::dummyPixmap()
 {
 	if(!g_pDummyPixmap)
 		g_pDummyPixmap = new QPixmap();
@@ -242,19 +249,20 @@ QPixmap* KviAnimatedPixmapCache::dummyPixmap()
 }
 
 void KviAnimatedPixmapCache::internalNotifyDelete(
-		KviAnimatedPixmapInterface* receiver
-	)
+    KviAnimatedPixmapInterface * receiver)
 {
 	m_timerMutex.lock();
 
-	QMultiMap<long long, KviAnimatedPixmapInterface*>::iterator i = m_timerData.begin();
+	QMultiMap<long long, KviAnimatedPixmapInterface *>::iterator i = m_timerData.begin();
 
 	while(i != m_timerData.end())
 	{
-		if (i.value() == receiver)
+		if(i.value() == receiver)
 		{
 			i = m_timerData.erase(i);
-		} else {
+		}
+		else
+		{
 			++i;
 		}
 	}

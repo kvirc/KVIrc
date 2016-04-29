@@ -33,7 +33,7 @@
 #include "KviLocale.h"
 #include "KviApplication.h"
 
-static QRect    g_rectLogViewGeometry;
+static QRect g_rectLogViewGeometry;
 LogViewWindow * g_pLogViewWindow = 0;
 
 #define LOGVIEW_MODULE_EXTENSION_NAME "Log viewer extension"
@@ -58,17 +58,16 @@ LogViewWindow * g_pLogViewWindow = 0;
 		stored on disk.
 */
 
-
 static bool logview_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	QString dummy;
-	bool bCreateMinimized = c->hasSwitch('m',dummy);
-	bool bNoRaise = c->hasSwitch('n',dummy);
+	bool bCreateMinimized = c->hasSwitch('m', dummy);
+	bool bNoRaise = c->hasSwitch('n', dummy);
 
 	if(!g_pLogViewWindow)
 	{
 		g_pLogViewWindow = new LogViewWindow();
-		g_pMainWindow->addWindow(g_pLogViewWindow,!bCreateMinimized);
+		g_pMainWindow->addWindow(g_pLogViewWindow, !bCreateMinimized);
 		return true;
 	}
 
@@ -81,7 +80,7 @@ static bool logview_module_init(KviModule * m)
 {
 	g_pLogViewWindow = 0;
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",logview_kvs_cmd_open);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", logview_kvs_cmd_open);
 
 	return true;
 }
@@ -101,7 +100,7 @@ static bool logview_module_can_unload(KviModule *)
 
 static bool logview_module_ctrl(KviModule *, const char * pcOperation, void * pParam)
 {
-	if(!kvi_strEqualCI("logview::export",pcOperation))
+	if(!kvi_strEqualCI("logview::export", pcOperation))
 		return false;
 
 	LogFileData * pData = (LogFileData *)pParam;
@@ -113,20 +112,19 @@ static bool logview_module_ctrl(KviModule *, const char * pcOperation, void * pP
 	if(pData->szType == "html")
 		iId = LogFile::HTML;
 
-	g_pLogViewWindow->createLog(pLog,iId,&(pData->szFile));
+	g_pLogViewWindow->createLog(pLog, iId, &(pData->szFile));
 
 	return true;
 }
 
 KVIRC_MODULE(
-	"KVIrc Log Viewer Widget",
-	"4.0.0",
-	"Copyright (C) 2000 Juanjo Alvarez <juanjux@yahoo.es>\n" \
-	"	2011 Elvio Basello (hellvis69 at gmail dot com)",
-	"A structured log file viewer",
-	logview_module_init,
-	logview_module_can_unload,
-	logview_module_ctrl,
-	logview_module_cleanup,
-	"logview"
-)
+    "KVIrc Log Viewer Widget",
+    "4.0.0",
+    "Copyright (C) 2000 Juanjo Alvarez <juanjux@yahoo.es>\n"
+    "	2011 Elvio Basello (hellvis69 at gmail dot com)",
+    "A structured log file viewer",
+    logview_module_init,
+    logview_module_can_unload,
+    logview_module_ctrl,
+    logview_module_cleanup,
+    "logview")

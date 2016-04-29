@@ -22,16 +22,13 @@
 //
 //=============================================================================
 
-
-
 #include "kvi_debug.h"
 #include "KviIrcUserDataBase.h"
 #include "KviQString.h"
 #include "KviStringConversion.h"
 
-
 KviIrcUserDataBase::KviIrcUserDataBase()
-: QObject()
+    : QObject()
 {
 	// we expect a maximum of ~4000 users (= ~16 KB array on a 32 bit machine)
 	// ...after that we will loose in performance
@@ -41,7 +38,7 @@ KviIrcUserDataBase::KviIrcUserDataBase()
 	// the performance increase since kvirc versions < 3.0.0
 	// is really big anyway (there was a linear list instead of a hash!!!)
 
-	m_pDict = new KviPointerHashTable<QString,KviIrcUserEntry>(4001,false);
+	m_pDict = new KviPointerHashTable<QString, KviIrcUserEntry>(4001, false);
 	m_pDict->setAutoDelete(true);
 	setupConnectionWithReguserDb();
 }
@@ -78,14 +75,13 @@ QColor * KviIrcUserDataBase::customColor(const QString & szNick)
 	return 0;
 }
 
-
 KviRegisteredUser * KviIrcUserDataBase::registeredUser(const QString & szNick, const QString & szUser, const QString & szHost)
 {
 	if(szNick.isEmpty())
 		return 0;
 	KviIrcUserEntry * pEntry = find(szNick);
 	if(!pEntry)
-		return g_pRegisteredUserDataBase->findMatchingUser(szNick,szUser,szHost);
+		return g_pRegisteredUserDataBase->findMatchingUser(szNick, szUser, szHost);
 
 	KviRegisteredUser * pUser = 0;
 
@@ -100,7 +96,7 @@ KviRegisteredUser * KviIrcUserDataBase::registeredUser(const QString & szNick, c
 		//user renamed or it is a first loockup
 		if(pEntry->hasHost() && pEntry->hasUser())
 		{
-			pUser = g_pRegisteredUserDataBase->findMatchingUser(szNick,pEntry->user(),pEntry->host());
+			pUser = g_pRegisteredUserDataBase->findMatchingUser(szNick, pEntry->user(), pEntry->host());
 			if(pUser)
 			{
 				pEntry->m_szLastRegisteredMatchNick = szNick;
@@ -108,10 +104,12 @@ KviRegisteredUser * KviIrcUserDataBase::registeredUser(const QString & szNick, c
 
 				pEntry->m_bUseCustomColor = pUser->getBoolProperty("useCustomColor");
 				QString szTmp = pUser->getProperty("customColor");
-				KviStringConversion::fromString(szTmp,pEntry->m_cachedColor);
+				KviStringConversion::fromString(szTmp, pEntry->m_cachedColor);
 
 				pEntry->m_bNotFoundRegUserLookup = false; //to be sure
-			} else {
+			}
+			else
+			{
 				pEntry->m_szLastRegisteredMatchNick = szNick;
 				pEntry->m_bNotFoundRegUserLookup = true;
 			}
@@ -128,13 +126,13 @@ KviRegisteredUser * KviIrcUserDataBase::registeredUser(const QString & szNick)
 	KviIrcUserEntry * pEntry = find(szNick);
 	if(!pEntry)
 		return 0;
-	return registeredUser(szNick,pEntry->user(),pEntry->host());
+	return registeredUser(szNick, pEntry->user(), pEntry->host());
 }
 
 void KviIrcUserDataBase::clear()
 {
 	delete m_pDict;
-	m_pDict = new KviPointerHashTable<QString,KviIrcUserEntry>(4001,false);
+	m_pDict = new KviPointerHashTable<QString, KviIrcUserEntry>(4001, false);
 	m_pDict->setAutoDelete(true);
 }
 
@@ -149,9 +147,11 @@ KviIrcUserEntry * KviIrcUserDataBase::insertUser(const QString & szNick, const Q
 			pEntry->m_szUser = szUser;
 			pEntry->m_szHost = szHost;
 		}
-	} else {
-		pEntry = new KviIrcUserEntry(szUser,szHost);
-		m_pDict->insert(szNick,pEntry);
+	}
+	else
+	{
+		pEntry = new KviIrcUserEntry(szUser, szHost);
+		m_pDict->insert(szNick, pEntry);
 	}
 	return pEntry;
 }
@@ -169,16 +169,16 @@ bool KviIrcUserDataBase::removeUser(const QString & szNick, KviIrcUserEntry * pE
 
 void KviIrcUserDataBase::setupConnectionWithReguserDb()
 {
-	connect(g_pRegisteredUserDataBase,SIGNAL(userRemoved(const QString&)),this,SLOT(registeredUserChanged(const QString&)));
-	connect(g_pRegisteredUserDataBase,SIGNAL(userChanged(const QString&)),this,SLOT(registeredUserChanged(const QString&)));
-	connect(g_pRegisteredUserDataBase,SIGNAL(userAdded(const QString&)),this,SLOT(registeredUserAdded(const QString&)));
-	connect(g_pRegisteredUserDataBase,SIGNAL(databaseCleared()),this,SLOT(registeredDatabaseCleared()));
+	connect(g_pRegisteredUserDataBase, SIGNAL(userRemoved(const QString &)), this, SLOT(registeredUserChanged(const QString &)));
+	connect(g_pRegisteredUserDataBase, SIGNAL(userChanged(const QString &)), this, SLOT(registeredUserChanged(const QString &)));
+	connect(g_pRegisteredUserDataBase, SIGNAL(userAdded(const QString &)), this, SLOT(registeredUserAdded(const QString &)));
+	connect(g_pRegisteredUserDataBase, SIGNAL(databaseCleared()), this, SLOT(registeredDatabaseCleared()));
 }
 
 void KviIrcUserDataBase::registeredUserChanged(const QString & szUser)
 {
-	KviPointerHashTableIterator<QString,KviIrcUserEntry> it(*m_pDict);
-	for( ; it.current(); ++it )
+	KviPointerHashTableIterator<QString, KviIrcUserEntry> it(*m_pDict);
+	for(; it.current(); ++it)
 	{
 		if(it.current()->m_szRegisteredUserName == szUser)
 		{
@@ -190,8 +190,8 @@ void KviIrcUserDataBase::registeredUserChanged(const QString & szUser)
 
 void KviIrcUserDataBase::registeredUserAdded(const QString &)
 {
-	KviPointerHashTableIterator<QString,KviIrcUserEntry> it(*m_pDict);
-	for( ; it.current(); ++it )
+	KviPointerHashTableIterator<QString, KviIrcUserEntry> it(*m_pDict);
+	for(; it.current(); ++it)
 	{
 		if(it.current()->m_szRegisteredUserName.isEmpty())
 		{
@@ -202,8 +202,8 @@ void KviIrcUserDataBase::registeredUserAdded(const QString &)
 
 void KviIrcUserDataBase::registeredDatabaseCleared()
 {
-	KviPointerHashTableIterator<QString,KviIrcUserEntry> it(*m_pDict);
-	for( ; it.current(); ++it )
+	KviPointerHashTableIterator<QString, KviIrcUserEntry> it(*m_pDict);
+	for(; it.current(); ++it)
 	{
 		it.current()->m_szRegisteredUserName = "";
 		it.current()->m_bNotFoundRegUserLookup = false;

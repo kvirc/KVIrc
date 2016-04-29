@@ -54,53 +54,54 @@ PyMODINIT_FUNC python_init();
 #ifdef __cplusplus
 extern "C" {
 #endif
-	#ifndef KVIRC_MODULE
-		// This section is used in modules that use kvircmodule's API
-		static void ** PyKVIrc_API;
+#ifndef KVIRC_MODULE
+// This section is used in modules that use kvircmodule's API
+static void ** PyKVIrc_API;
 
-		#define PyKVIrc_echo \
-			(*(int (*)(const char * pcCmd)) PyKVIrc_API[0])
-		#define PyKVIrc_say \
-			(*(int (*)(const char * pcCmd)) PyKVIrc_API[1])
-		#define PyKVIrc_warning \
-			(*(int (*)(const char * pcCmd)) PyKVIrc_API[2])
-		#define PyKVIrc_getLocal \
-			(*(int (*)(const char * pcCmd)) PyKVIrc_API[3])
-		#define PyKVIrc_setLocal \
-			(*(int (*)(const char * pcCmd)) PyKVIrc_API[4])
-		#define PyKVIrc_getGlobal \
-			(*(int (*)(const char * pcCmd)) PyKVIrc_API[5])
-		#define PyKVIrc_setGlobal \
-			(*(int (*)(const char * pcCmd)) PyKVIrc_API[6])
-		#define PyKVIrc_eval \
-			(*(int (*)(const char * pcCmd)) PyKVIrc_API[7])
-		#define PyKVIrc_internalWarning \
-			(*(int (*)(const char * pcCmd)) PyKVIrc_API[8])
-		#define PyKVIrc_error \
-			(*(int (*)(const char * pcCmd)) PyKVIrc_API[9])
-		/**
+#define PyKVIrc_echo \
+	(*(int (*)(const char * pcCmd))PyKVIrc_API[0])
+#define PyKVIrc_say \
+	(*(int (*)(const char * pcCmd))PyKVIrc_API[1])
+#define PyKVIrc_warning \
+	(*(int (*)(const char * pcCmd))PyKVIrc_API[2])
+#define PyKVIrc_getLocal \
+	(*(int (*)(const char * pcCmd))PyKVIrc_API[3])
+#define PyKVIrc_setLocal \
+	(*(int (*)(const char * pcCmd))PyKVIrc_API[4])
+#define PyKVIrc_getGlobal \
+	(*(int (*)(const char * pcCmd))PyKVIrc_API[5])
+#define PyKVIrc_setGlobal \
+	(*(int (*)(const char * pcCmd))PyKVIrc_API[6])
+#define PyKVIrc_eval \
+	(*(int (*)(const char * pcCmd))PyKVIrc_API[7])
+#define PyKVIrc_internalWarning \
+	(*(int (*)(const char * pcCmd))PyKVIrc_API[8])
+#define PyKVIrc_error \
+	(*(int (*)(const char * pcCmd))PyKVIrc_API[9])
+/**
 		* \brief Returns 0 on success, -1 otherwise
 		*
 		* In case on unsuccess, it sets the exception
 		* \return int
 		*/
-		inline static int import_kvirc()
-		{
-			PyObject * pModule = PyImport_ImportModule("kvirc");
-			if(pModule)
-			{
-				PyObject * pC_API_Object = PyObject_GetAttrString(pModule,"_C_API");
+inline static int import_kvirc()
+{
+	PyObject * pModule = PyImport_ImportModule("kvirc");
+	if(pModule)
+	{
+		PyObject * pC_API_Object = PyObject_GetAttrString(pModule, "_C_API");
 
-				if(!pC_API_Object) return -1;
+		if(!pC_API_Object)
+			return -1;
 
-				if(PyCObject_Check(pC_API_Object))
-					PyKVIrc_API = (void **)PyCObject_AsVoidPtr(pC_API_Object);
+		if(PyCObject_Check(pC_API_Object))
+			PyKVIrc_API = (void **)PyCObject_AsVoidPtr(pC_API_Object);
 
-				Py_DECREF(pC_API_Object);
-			}
-			return 0;
-		}
-	#endif // KVIRC_MODULE
+		Py_DECREF(pC_API_Object);
+	}
+	return 0;
+}
+#endif // KVIRC_MODULE
 
 #ifdef __cplusplus
 }

@@ -38,9 +38,11 @@ class KVIRC_API KviBasicIrcServerInfo
 protected:
 	QString m_szServerVersion;
 	KviIrcConnectionServerInfo * m_pParent;
+
 public:
 	KviBasicIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty);
 	virtual ~KviBasicIrcServerInfo();
+
 public:
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
@@ -60,7 +62,7 @@ class KVIRC_API KviHybridServerInfo : public KviBasicIrcServerInfo
 	// This is a major IRCd that most modern forks are based off of
 public:
 	KviHybridServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
+	    : KviBasicIrcServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -73,7 +75,7 @@ class KVIRC_API KviIrcdRatboxIrcServerInfo : public KviHybridServerInfo
 	// efnet
 public:
 	KviIrcdRatboxIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviHybridServerInfo(pParent, version) {;};
+	    : KviHybridServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -82,11 +84,11 @@ public:
 	virtual bool getNeedsOpToListModeseI() { return true; };
 };
 
-class KVIRC_API KviCharybdisServerInfo :public KviIrcdRatboxIrcServerInfo
+class KVIRC_API KviCharybdisServerInfo : public KviIrcdRatboxIrcServerInfo
 {
 public:
 	KviCharybdisServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviIrcdRatboxIrcServerInfo(pParent, version) {;};
+	    : KviIrcdRatboxIrcServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -99,7 +101,7 @@ class KVIRC_API KviIrcdSevenIrcServerInfo : public KviCharybdisServerInfo
 	// freenode
 public:
 	KviIrcdSevenIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviCharybdisServerInfo(pParent, version) {;};
+	    : KviCharybdisServerInfo(pParent, version) { ; };
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
 	virtual char getRegisterModeChar() { return 0; };
@@ -111,7 +113,7 @@ class KVIRC_API KviPlexusIrcServerInfo : public KviHybridServerInfo
 	// rizon; note: plexus is an extension to hybrid
 public:
 	KviPlexusIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviHybridServerInfo(pParent, version) {;};
+	    : KviHybridServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -124,7 +126,7 @@ class KVIRC_API KviOftcIrcServerInfo : public KviHybridServerInfo
 	// oftc; note: hybrid+oftc is an extension to hybrid
 public:
 	KviOftcIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviHybridServerInfo(pParent, version) {;};
+	    : KviHybridServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -142,7 +144,7 @@ class KVIRC_API KviIrcuIrcServerInfo : public KviBasicIrcServerInfo
 	// undernet
 public:
 	KviIrcuIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
+	    : KviBasicIrcServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -157,7 +159,7 @@ class KVIRC_API KviSnircdIrcServerInfo : public KviIrcuIrcServerInfo
 	// quakenet; note: snird is an extension to ircu
 public:
 	KviSnircdIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviIrcuIrcServerInfo(pParent, version) {;};
+	    : KviIrcuIrcServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -170,7 +172,7 @@ class KVIRC_API KviDarenetIrcServerInfo : public KviIrcuIrcServerInfo
 	// darenet; note: u2+ircd-darenet is an extension to ircu
 public:
 	KviDarenetIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviIrcuIrcServerInfo(pParent, version) {;};
+	    : KviIrcuIrcServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -187,7 +189,7 @@ class KVIRC_API KviUnrealIrcServerInfo : public KviBasicIrcServerInfo
 {
 public:
 	KviUnrealIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
+	    : KviBasicIrcServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual char getRegisterModeChar() { return 'r'; };
 	virtual const char * getSoftware() { return "Unreal"; };
@@ -201,7 +203,7 @@ class KVIRC_API KviUnreal32IrcServerInfo : public KviUnrealIrcServerInfo
 	// as a base class.
 public:
 	KviUnreal32IrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviUnrealIrcServerInfo(pParent, version) {;};
+	    : KviUnrealIrcServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -212,7 +214,7 @@ class KVIRC_API KviUnreal40IrcServerInfo : public KviUnreal32IrcServerInfo
 {
 public:
 	KviUnreal40IrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviUnreal32IrcServerInfo(pParent, version) {;};
+	    : KviUnreal32IrcServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const char * getSoftware() { return "Unreal40"; };
 };
@@ -222,7 +224,7 @@ class KVIRC_API KviCritenIrcServerInfo : public KviBasicIrcServerInfo
 	// abjects
 public:
 	KviCritenIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
+	    : KviBasicIrcServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -236,7 +238,7 @@ class KVIRC_API KviNemesisIrcServerInfo : public KviCritenIrcServerInfo
 	// criten
 public:
 	KviNemesisIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviCritenIrcServerInfo(pParent, version) {;};
+	    : KviCritenIrcServerInfo(pParent, version) { ; };
 	virtual const char * getSoftware() { return "Nemesis"; };
 };
 
@@ -244,7 +246,7 @@ class KVIRC_API KviNemesis20IrcServerInfo : public KviUnreal32IrcServerInfo
 {
 public:
 	KviNemesis20IrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviUnreal32IrcServerInfo(pParent, version) {;};
+	    : KviUnreal32IrcServerInfo(pParent, version) { ; };
 	virtual const char * getSoftware() { return "Nemesis2.0"; };
 	virtual bool getNeedsOperToSetS() { return false; };
 };
@@ -254,7 +256,7 @@ class KVIRC_API KviBahamutIrcServerInfo : public KviBasicIrcServerInfo
 	// dalnet, azzurranet
 public:
 	KviBahamutIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
+	    : KviBasicIrcServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -268,7 +270,7 @@ class KVIRC_API KviHyperionIrcServerInfo : public KviBasicIrcServerInfo
 	// legacy freenode : no longer maintained
 public:
 	KviHyperionIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
+	    : KviBasicIrcServerInfo(pParent, version) { ; };
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
 	virtual char getRegisterModeChar() { return 'e'; };
@@ -281,7 +283,7 @@ class KVIRC_API KviInspIRCdIrcServerInfo : public KviBasicIrcServerInfo
 	// chatspike
 public:
 	KviInspIRCdIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-		:KviBasicIrcServerInfo(pParent, version) {;};
+	    : KviBasicIrcServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -296,22 +298,24 @@ class KVIRC_API KviIrcConnectionServerInfo
 	friend class KviConsoleWindow; // for now
 	friend class KviIrcServerParser;
 	friend class KviIrcConnection;
+
 protected:
 	KviIrcConnectionServerInfo();
 	~KviIrcConnectionServerInfo();
+
 private:
 	KviBasicIrcServerInfo * m_pServInfo;
-	QString m_szNetworkName;               // the most actual network name (may be the one we specify or the one that the server reports)
-	QString m_szName;                      // the most actual server name (may be the one we specify or the one that the server wants to be known as)
-	QString m_szSupportedUserModes;        // the supported user modes
-	QString m_szSupportedChannelModes;     // the supported channel modes (all of them)
-	QString m_szSupportedModePrefixes;     // the actually used mode prefixes  @+
-	kvi_u32_t * m_pModePrefixTable;        // the mode prefixes above in a table
+	QString m_szNetworkName;           // the most actual network name (may be the one we specify or the one that the server reports)
+	QString m_szName;                  // the most actual server name (may be the one we specify or the one that the server wants to be known as)
+	QString m_szSupportedUserModes;    // the supported user modes
+	QString m_szSupportedChannelModes; // the supported channel modes (all of them)
+	QString m_szSupportedModePrefixes; // the actually used mode prefixes  @+
+	kvi_u32_t * m_pModePrefixTable;    // the mode prefixes above in a table
 	unsigned int m_uPrefixes;
-	QString m_szSupportedModeFlags;        // the actually used mode flags     ov
-	QString m_szSupportedChannelTypes;     // the supported channel types
-	bool m_bSupportsWatchList;             // supports the watch list ?
-	bool m_bSupportsCodePages;             // supports the /CODEPAGE command ?
+	QString m_szSupportedModeFlags;    // the actually used mode flags     ov
+	QString m_szSupportedChannelTypes; // the supported channel types
+	bool m_bSupportsWatchList;         // supports the watch list ?
+	bool m_bSupportsCodePages;         // supports the /CODEPAGE command ?
 	int m_iMaxTopicLen;
 	int m_iMaxModeChanges;
 	// Mode that adds or removes a nick or address to a list. Always has a parameter (eg: "b" as ban)
@@ -324,9 +328,9 @@ private:
 	QString m_szPlainModes;
 	bool m_bSupportsCap;
 	QStringList m_lSupportedCaps;
-	bool m_bSupportsWhox;                  // supports WHOX
+	bool m_bSupportsWhox; // supports WHOX
 public:
-	char  registerModeChar() { return m_pServInfo ?  m_pServInfo->getRegisterModeChar() : 0; };
+	char registerModeChar() { return m_pServInfo ? m_pServInfo->getRegisterModeChar() : 0; };
 	const char * software() { return m_pServInfo ? m_pServInfo->getSoftware() : 0; };
 	bool getNeedsOpToListModeseI() { return m_pServInfo ? m_pServInfo->getNeedsOpToListModeseI() : false; };
 	bool getNeedsOperToSetS() { return m_pServInfo ? m_pServInfo->getNeedsOperToSetS() : false; };
@@ -366,18 +370,19 @@ public:
 	QChar modeFlagChar(kvi_u32_t flag);
 	kvi_u32_t modeFlagFromPrefixChar(QChar c);
 	kvi_u32_t modeFlagFromModeChar(QChar c);
+
 protected:
-	void setNetworkName(const QString &szName){ m_szNetworkName = szName; };
-	void setName(const QString &szName) { m_szName = szName; };
-	void setSupportedUserModes(const QString &szSupportedUserModes) { m_szSupportedUserModes = szSupportedUserModes; };
-	void setSupportedChannelModes(const QString &szSupportedChannelModes);
-	void setSupportedModePrefixes(const QString &szSupportedModePrefixes,const QString &szSupportedModeFlags);
-	void setSupportedChannelTypes(const QString &szSupportedChannelTypes) { m_szSupportedChannelTypes = szSupportedChannelTypes; };
+	void setNetworkName(const QString & szName) { m_szNetworkName = szName; };
+	void setName(const QString & szName) { m_szName = szName; };
+	void setSupportedUserModes(const QString & szSupportedUserModes) { m_szSupportedUserModes = szSupportedUserModes; };
+	void setSupportedChannelModes(const QString & szSupportedChannelModes);
+	void setSupportedModePrefixes(const QString & szSupportedModePrefixes, const QString & szSupportedModeFlags);
+	void setSupportedChannelTypes(const QString & szSupportedChannelTypes) { m_szSupportedChannelTypes = szSupportedChannelTypes; };
 	void setSupportsWatchList(bool bSupportsWatchList) { m_bSupportsWatchList = bSupportsWatchList; };
 	void setSupportsCodePages(bool bSupportsCodePages) { m_bSupportsCodePages = bSupportsCodePages; };
-	void addSupportedCaps(const QString &szCapList);
-	void setMaxTopicLen(int iTopLen) { m_iMaxTopicLen=iTopLen; };
-	void setMaxModeChanges(int iModes) { m_iMaxModeChanges=iModes; };
+	void addSupportedCaps(const QString & szCapList);
+	void setMaxTopicLen(int iTopLen) { m_iMaxTopicLen = iTopLen; };
+	void setMaxModeChanges(int iModes) { m_iMaxModeChanges = iModes; };
 	void setSupportsWhox(bool bSupportsWhox) { m_bSupportsWhox = bSupportsWhox; };
 private:
 	void buildModePrefixTable();

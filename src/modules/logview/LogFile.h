@@ -43,9 +43,9 @@ class QString;
 */
 typedef struct _LogFileData
 {
-	QString szName;   /**< the name of the log */
-	QString szType;   /**< the type of the log */
-	QString szFile;   /**< the name of the exported log */
+	QString szName; /**< the name of the log */
+	QString szType; /**< the type of the log */
+	QString szFile; /**< the name of the exported log */
 } LogFileData;
 
 /**
@@ -65,23 +65,25 @@ public:
 	* \enum Type
 	* \brief Holds the type of the log file
 	*/
-	enum Type {
-		Channel = 0,   /**< the log file of a channel */
-		Console = 1,   /**< the log file of a console */
-		Query   = 2,   /**< the log file of a query */
-		DccChat = 3,   /**< the log file of a dcc chat */
-		Other   = 4    /**< any other log file */
+	enum Type
+	{
+		Channel = 0, /**< the log file of a channel */
+		Console = 1, /**< the log file of a console */
+		Query = 2,   /**< the log file of a query */
+		DccChat = 3, /**< the log file of a dcc chat */
+		Other = 4    /**< any other log file */
 	};
 
 	/**
 	* \enum ExportType
 	* \brief Holds the type of the exported log file
 	*/
-	enum ExportType {
-		PlainText,   /**< export log in plain text file */
-		HTML         /**< export log in a HTML archive */
-		//XML        /**< export log in a XML file */
-		//DB         /**< export log in a database file */
+	enum ExportType
+	{
+		PlainText, /**< export log in plain text file */
+		HTML       /**< export log in a HTML archive */
+		           //XML        /**< export log in a XML file */
+		           //DB         /**< export log in a database file */
 	};
 
 	/**
@@ -90,14 +92,16 @@ public:
 	* \return LogFile
 	*/
 	LogFile(const QString & szName);
+
 private:
-	Type    m_eType;
+	Type m_eType;
 	QString m_szType;
 	QString m_szFilename;
-	bool    m_bCompressed;
+	bool m_bCompressed;
 	QString m_szName;
 	QString m_szNetwork;
-	QDate   m_date;
+	QDate m_date;
+
 public:
 	/**
 	* \brief Returns the type of the log

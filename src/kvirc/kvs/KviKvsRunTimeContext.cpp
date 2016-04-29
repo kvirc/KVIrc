@@ -36,22 +36,26 @@ KviKvsExtendedRunTimeData::~KviKvsExtendedRunTimeData()
 {
 	if(m_bAutoDelete)
 	{
-		if(m_pExtendedScopeVariables) delete m_pExtendedScopeVariables;
-		if(m_pAliasSwitchList) delete m_pAliasSwitchList;
-		if(m_pThisObject) delete m_pThisObject;
-		if(m_pScriptFilePath) delete m_pScriptFilePath;
+		if(m_pExtendedScopeVariables)
+			delete m_pExtendedScopeVariables;
+		if(m_pAliasSwitchList)
+			delete m_pAliasSwitchList;
+		if(m_pThisObject)
+			delete m_pThisObject;
+		if(m_pScriptFilePath)
+			delete m_pScriptFilePath;
 		// don't delete m_pPopupId;
 	}
 }
 
 void KviKvsExtendedRunTimeData::setPopupId(QString * pPopupId)
 {
-/*	if(m_pPopupId)
+	/*	if(m_pPopupId)
 		delete m_pPopupId;*/
-	m_pPopupId=pPopupId;
+	m_pPopupId = pPopupId;
 };
 
-KviKvsRunTimeContext::KviKvsRunTimeContext(KviKvsScript * pScript,KviWindow * pWnd,KviKvsVariantList * pParams,KviKvsVariant * pRetVal,KviKvsExtendedRunTimeData * pExtData)
+KviKvsRunTimeContext::KviKvsRunTimeContext(KviKvsScript * pScript, KviWindow * pWnd, KviKvsVariantList * pParams, KviKvsVariant * pRetVal, KviKvsExtendedRunTimeData * pExtData)
 {
 	m_bError = false;
 	m_pScript = pScript;
@@ -81,8 +85,10 @@ void KviKvsRunTimeContext::enterBlockingSection()
 
 bool KviKvsRunTimeContext::leaveBlockingSection()
 {
-	if(g_pApp->kviClosingDown())return false;            // application quitting
-	if(!g_pApp->windowExists(m_pWindow))return false; // window lost
+	if(g_pApp->kviClosingDown())
+		return false; // application quitting
+	if(!g_pApp->windowExists(m_pWindow))
+		return false; // window lost
 	return true;
 }
 
@@ -93,10 +99,10 @@ KviKvsVariant * KviKvsRunTimeContext::swapReturnValuePointer(KviKvsVariant * pNe
 	return pAux;
 }
 
-void KviKvsRunTimeContext::report(bool bError,KviKvsTreeNode * pNode,const QString &szMsgFmt,kvi_va_list va)
+void KviKvsRunTimeContext::report(bool bError, KviKvsTreeNode * pNode, const QString & szMsgFmt, kvi_va_list va)
 {
 	QString szMsg;
-	KviQString::vsprintf(szMsg,szMsgFmt,va);
+	KviQString::vsprintf(szMsg, szMsgFmt, va);
 
 	KviPointerList<QString> * pCodeListing = 0;
 	KviPointerList<QString> * pCallStack = 0;
@@ -109,11 +115,11 @@ void KviKvsRunTimeContext::report(bool bError,KviKvsTreeNode * pNode,const QStri
 			pCodeListing = new KviPointerList<QString>;
 			pCodeListing->setAutoDelete(true);
 
-			int iLine,iCol;
+			int iLine, iCol;
 
-			KviKvsReport::findLineColAndListing(m_pScript->buffer(),pNode->location(),iLine,iCol,pCodeListing);
+			KviKvsReport::findLineColAndListing(m_pScript->buffer(), pNode->location(), iLine, iCol, pCodeListing);
 
-			szLocation = QString(__tr2qs_ctx("line %1, near character %2","kvs")).arg(iLine).arg(iCol);
+			szLocation = QString(__tr2qs_ctx("line %1, near character %2", "kvs")).arg(iLine).arg(iCol);
 		}
 
 		// create the call stack
@@ -130,8 +136,8 @@ void KviKvsRunTimeContext::report(bool bError,KviKvsTreeNode * pNode,const QStri
 			*pString = QString("#%1 %2").arg(iFrame).arg(szTmp);
 			if(pNode->location())
 			{
-				int iLine,iCol;
-				KviKvsReport::findLineAndCol(m_pScript->buffer(),pNode->location(),iLine,iCol);
+				int iLine, iCol;
+				KviKvsReport::findLineAndCol(m_pScript->buffer(), pNode->location(), iLine, iCol);
 				QString tmpi = QString(" [line %1, near character %2]").arg(iLine).arg(iCol);
 				*pString += tmpi;
 			}
@@ -144,66 +150,66 @@ void KviKvsRunTimeContext::report(bool bError,KviKvsTreeNode * pNode,const QStri
 	}
 
 	QString szContext = m_pScript ? m_pScript->name() : "kvirc core code";
-	KviKvsReport rep(bError ? KviKvsReport::RunTimeError : KviKvsReport::RunTimeWarning,szContext,szMsg,szLocation,m_pWindow);
+	KviKvsReport rep(bError ? KviKvsReport::RunTimeError : KviKvsReport::RunTimeWarning, szContext, szMsg, szLocation, m_pWindow);
 	if(pCodeListing)
 		rep.setCodeListing(pCodeListing);
 	if(pCallStack)
 		rep.setCallStack(pCallStack);
 
-	KviKvsReport::report(&rep,m_pWindow);
+	KviKvsReport::report(&rep, m_pWindow);
 }
 
-void KviKvsRunTimeContext::error(KviKvsTreeNode * pNode,QString szMsgFmt,...)
+void KviKvsRunTimeContext::error(KviKvsTreeNode * pNode, QString szMsgFmt, ...)
 {
 	m_bError = true;
 
 	kvi_va_list va;
-	kvi_va_start(va,szMsgFmt);
-	report(true,pNode,szMsgFmt,va);
+	kvi_va_start(va, szMsgFmt);
+	report(true, pNode, szMsgFmt, va);
 	kvi_va_end(va);
 }
 
-void KviKvsRunTimeContext::warning(KviKvsTreeNode * pNode,QString szMsgFmt,...)
+void KviKvsRunTimeContext::warning(KviKvsTreeNode * pNode, QString szMsgFmt, ...)
 {
 	kvi_va_list va;
-	kvi_va_start(va,szMsgFmt);
-	report(false,pNode,szMsgFmt,va);
+	kvi_va_start(va, szMsgFmt);
+	report(false, pNode, szMsgFmt, va);
 	kvi_va_end(va);
 }
 
-void KviKvsRunTimeContext::error(QString szMsgFmt,...)
+void KviKvsRunTimeContext::error(QString szMsgFmt, ...)
 {
 	m_bError = true;
 
 	kvi_va_list va;
-	kvi_va_start(va,szMsgFmt);
-	report(true,m_pDefaultReportLocation,szMsgFmt,va);
+	kvi_va_start(va, szMsgFmt);
+	report(true, m_pDefaultReportLocation, szMsgFmt, va);
 	kvi_va_end(va);
 }
 
-void KviKvsRunTimeContext::warning(QString szMsgFmt,...)
+void KviKvsRunTimeContext::warning(QString szMsgFmt, ...)
 {
 	kvi_va_list va;
-	kvi_va_start(va,szMsgFmt);
-	report(false,m_pDefaultReportLocation,szMsgFmt,va);
+	kvi_va_start(va, szMsgFmt);
+	report(false, m_pDefaultReportLocation, szMsgFmt, va);
 	kvi_va_end(va);
 }
 
 bool KviKvsRunTimeContext::errorNoIrcContext()
 {
-	error(m_pDefaultReportLocation,__tr2qs_ctx("This command can be used only in windows bound to an IRC context","kvs"));
+	error(m_pDefaultReportLocation, __tr2qs_ctx("This command can be used only in windows bound to an IRC context", "kvs"));
 	return false;
 }
 
 bool KviKvsRunTimeContext::warningNoIrcConnection()
 {
-	warning(m_pDefaultReportLocation,__tr2qs_ctx("You're not connected to an IRC server","kvs"));
+	warning(m_pDefaultReportLocation, __tr2qs_ctx("You're not connected to an IRC server", "kvs"));
 	return true;
 }
 
 bool KviKvsRunTimeContext::warningMissingParameter()
 {
-	warning(m_pDefaultReportLocation,__tr2qs_ctx("Missing parameter","kvs"));
+	warning(m_pDefaultReportLocation, __tr2qs_ctx("Missing parameter", "kvs"));
 	return true;
 }
 

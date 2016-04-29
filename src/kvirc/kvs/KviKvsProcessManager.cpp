@@ -33,11 +33,11 @@
 //#include <QSysInfo>
 
 KviKvsProcessAsyncOperation::KviKvsProcessAsyncOperation(KviKvsProcessDescriptorData * d)
-: KviKvsAsyncOperation(d->pWnd)
+    : KviKvsAsyncOperation(d->pWnd)
 {
 	m_pData = d;
 	m_pProcess = 0;
-	m_pExtendedRunTimeData = new KviKvsExtendedRunTimeData(new KviKvsHash(),true);
+	m_pExtendedRunTimeData = new KviKvsExtendedRunTimeData(new KviKvsHash(), true);
 	m_pPingTimer = 0;
 	m_pRunTimeTimer = 0;
 	m_bDeletePending = false;
@@ -45,17 +45,21 @@ KviKvsProcessAsyncOperation::KviKvsProcessAsyncOperation(KviKvsProcessDescriptor
 
 KviKvsProcessAsyncOperation::~KviKvsProcessAsyncOperation()
 {
-	if(m_pPingTimer)delete m_pPingTimer;
-	if(m_pRunTimeTimer)delete m_pRunTimeTimer;
+	if(m_pPingTimer)
+		delete m_pPingTimer;
+	if(m_pRunTimeTimer)
+		delete m_pRunTimeTimer;
 	if(m_pProcess)
 	{
-		QObject::disconnect(m_pProcess,0,this,0);
+		QObject::disconnect(m_pProcess, 0, this, 0);
 		m_pProcess->kill();
 		delete m_pProcess;
 	}
 	delete m_pExtendedRunTimeData;
-	if(m_pData->pCallback)delete m_pData->pCallback;
-	if(m_pData->pMagic)delete m_pData->pMagic;
+	if(m_pData->pCallback)
+		delete m_pData->pCallback;
+	if(m_pData->pMagic)
+		delete m_pData->pMagic;
 	delete m_pData;
 }
 
@@ -66,8 +70,10 @@ bool KviKvsProcessAsyncOperation::start()
 
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_NOSHELL)
 	{
-		args = m_pData->szCommandline.split(" ",QString::SkipEmptyParts);
-	} else {
+		args = m_pData->szCommandline.split(" ", QString::SkipEmptyParts);
+	}
+	else
+	{
 		QString szShell = m_pData->szShell;
 		if(szShell.isEmpty())
 		{
@@ -80,12 +86,12 @@ bool KviKvsProcessAsyncOperation::start()
 			// [02:50:21] <kode54> if ( QApplication::winVersion() & Qt::WV_NT_based )
 			// [02:50:41] <kode54> I see another implementation using that, maybe it is the official way of detecting that :[
 			szShell = !(QSysInfo::WindowsVersion & QSysInfo::WV_DOS_based) ? "cmd.exe /c" : "command.com /c";
-			// Thnx kode54 :)
+// Thnx kode54 :)
 #else
 			szShell = "sh -c";
 #endif
 		}
-		args = szShell.split(" ",QString::SkipEmptyParts);
+		args = szShell.split(" ", QString::SkipEmptyParts);
 		args.append(m_pData->szCommandline);
 	}
 
@@ -93,29 +99,33 @@ bool KviKvsProcessAsyncOperation::start()
 
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDOUT)
 	{
-		connect(m_pProcess,SIGNAL(readyReadStandardOutput()),this,SLOT(readStdout()));
-	} else {
+		connect(m_pProcess, SIGNAL(readyReadStandardOutput()), this, SLOT(readStdout()));
+	}
+	else
+	{
 		m_pProcess->closeReadChannel(QProcess::StandardOutput);
 	}
 
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDERR)
 	{
-		connect(m_pProcess,SIGNAL(readyReadStandardError()),this,SLOT(readStderr()));
-	} else {
+		connect(m_pProcess, SIGNAL(readyReadStandardError()), this, SLOT(readStderr()));
+	}
+	else
+	{
 		m_pProcess->closeReadChannel(QProcess::StandardError);
 	}
 
-	connect(m_pProcess,SIGNAL(finished(int)),this,SLOT(processExited(int)));
+	connect(m_pProcess, SIGNAL(finished(int)), this, SLOT(processExited(int)));
 
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTARTED)
 	{
-		connect(m_pProcess,SIGNAL(started()),this,SLOT(processStarted()));
+		connect(m_pProcess, SIGNAL(started()), this, SLOT(processStarted()));
 	}
 
 	szcmd = args.takeFirst();
 	m_pProcess->start(szcmd, args);
 
-	if(m_pProcess->state()==QProcess::NotRunning)
+	if(m_pProcess->state() == QProcess::NotRunning)
 	{
 		return false;
 	}
@@ -123,14 +133,14 @@ bool KviKvsProcessAsyncOperation::start()
 	if(m_pData->iMaxRunTime > 0)
 	{
 		m_pRunTimeTimer = new QTimer(this);
-		connect(m_pRunTimeTimer,SIGNAL(timeout()),this,SLOT(maxRunTimeExpired()));
+		connect(m_pRunTimeTimer, SIGNAL(timeout()), this, SLOT(maxRunTimeExpired()));
 		m_pRunTimeTimer->start(m_pData->iMaxRunTime);
 	}
 
 	if(m_pData->iPingTimeout > 0)
 	{
 		m_pPingTimer = new QTimer(this);
-		connect(m_pPingTimer,SIGNAL(timeout()),this,SLOT(ping()));
+		connect(m_pPingTimer, SIGNAL(timeout()), this, SLOT(ping()));
 		m_pPingTimer->start(m_pData->iPingTimeout);
 	}
 
@@ -139,7 +149,7 @@ bool KviKvsProcessAsyncOperation::start()
 
 void KviKvsProcessAsyncOperation::ping()
 {
-	if(trigger(EventPing,QString()))
+	if(trigger(EventPing, QString()))
 	{
 		triggerSelfDelete();
 	}
@@ -147,9 +157,10 @@ void KviKvsProcessAsyncOperation::ping()
 
 void KviKvsProcessAsyncOperation::triggerSelfDelete()
 {
-	if(m_bDeletePending)return;
+	if(m_bDeletePending)
+		return;
 	m_bDeletePending = true;
-	QTimer::singleShot(m_pData->iMaxRunTime,this,SLOT(selfDelete()));
+	QTimer::singleShot(m_pData->iMaxRunTime, this, SLOT(selfDelete()));
 }
 
 void KviKvsProcessAsyncOperation::selfDelete()
@@ -159,13 +170,14 @@ void KviKvsProcessAsyncOperation::selfDelete()
 
 void KviKvsProcessAsyncOperation::maxRunTimeExpired()
 {
-	trigger(EventTerminated,"0");
+	trigger(EventTerminated, "0");
 	triggerSelfDelete();
 }
 
-bool KviKvsProcessAsyncOperation::trigger(CallbackEvent e,const QString &szData)
+bool KviKvsProcessAsyncOperation::trigger(CallbackEvent e, const QString & szData)
 {
-	if(m_bDeletePending)return false;
+	if(m_bDeletePending)
+		return false;
 
 	if(!g_pApp->windowExists(m_pData->pWnd))
 	{
@@ -185,23 +197,23 @@ bool KviKvsProcessAsyncOperation::trigger(CallbackEvent e,const QString &szData)
 		{
 			case EventStdout:
 				params.append(new KviKvsVariant(QString("stdout")));
-			break;
+				break;
 			case EventStderr:
 				params.append(new KviKvsVariant(QString("stderr")));
-			break;
+				break;
 			case EventTerminated:
 				params.append(new KviKvsVariant(QString("terminated")));
-			break;
+				break;
 			case EventStarted:
 				params.append(new KviKvsVariant(QString("started")));
-			break;
+				break;
 			case EventPing:
 				params.append(new KviKvsVariant(QString("ping")));
-			break;
+				break;
 			default:
 				qDebug("Oops! Unknown trigger() CallbackEvent parameter in QProcessDescriptor::trigger()");
 				return false;
-			break;
+				break;
 		}
 
 		params.append(new KviKvsVariant(szData));
@@ -213,11 +225,11 @@ bool KviKvsProcessAsyncOperation::trigger(CallbackEvent e,const QString &szData)
 		}
 
 		KviKvsVariant retVal;
-		int iRet = m_pData->pCallback->run(m_pData->pWnd,&params,&retVal,KviKvsScript::PreserveParams,m_pExtendedRunTimeData);
+		int iRet = m_pData->pCallback->run(m_pData->pWnd, &params, &retVal, KviKvsScript::PreserveParams, m_pExtendedRunTimeData);
 		if(!iRet)
 		{
 			m_pData->pWnd->output(KVI_OUT_PARSERERROR,
-				__tr2qs_ctx("Error triggered from process callback handler: killing process","kvs"));
+			    __tr2qs_ctx("Error triggered from process callback handler: killing process", "kvs"));
 			return true;
 		}
 
@@ -240,13 +252,16 @@ bool KviKvsProcessAsyncOperation::trigger(CallbackEvent e,const QString &szData)
 
 void KviKvsProcessAsyncOperation::readStdout()
 {
-	if(m_bDeletePending)return;
+	if(m_bDeletePending)
+		return;
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_OUTPUTBYBLOCKS)
 	{
 		QByteArray a = m_pProcess->readAllStandardOutput();
 		if(a.size() > 0)
 			m_szStdoutBuffer += QString(a);
-	} else {
+	}
+	else
+	{
 		m_pProcess->setReadChannel(QProcess::StandardOutput);
 		QString l;
 		bool bBreak = false;
@@ -255,7 +270,7 @@ void KviKvsProcessAsyncOperation::readStdout()
 			l = m_pProcess->readLine();
 			if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDOUT)
 			{
-				if(trigger(EventStdout,l))
+				if(trigger(EventStdout, l))
 				{
 					bBreak = true;
 					triggerSelfDelete();
@@ -267,13 +282,16 @@ void KviKvsProcessAsyncOperation::readStdout()
 
 void KviKvsProcessAsyncOperation::readStderr()
 {
-	if(m_bDeletePending)return;
+	if(m_bDeletePending)
+		return;
 	if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_OUTPUTBYBLOCKS)
 	{
 		QByteArray a = m_pProcess->readAllStandardError();
 		if(a.size() > 0)
 			m_szStderrBuffer += QString(a);
-	} else {
+	}
+	else
+	{
 		m_pProcess->setReadChannel(QProcess::StandardError);
 		QString l;
 		bool bBreak = false;
@@ -283,7 +301,7 @@ void KviKvsProcessAsyncOperation::readStderr()
 
 			if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDERR)
 			{
-				if(trigger(EventStderr,l))
+				if(trigger(EventStderr, l))
 				{
 					bBreak = true;
 					triggerSelfDelete();
@@ -295,11 +313,12 @@ void KviKvsProcessAsyncOperation::readStderr()
 
 void KviKvsProcessAsyncOperation::processStarted()
 {
-	if(m_bDeletePending)return;
+	if(m_bDeletePending)
+		return;
 
 	QString szPid;
 	szPid.setNum((intptr_t)(m_pProcess->pid()));
-	if(trigger(EventStarted,szPid))
+	if(trigger(EventStarted, szPid))
 	{
 		triggerSelfDelete();
 		return;
@@ -308,7 +327,8 @@ void KviKvsProcessAsyncOperation::processStarted()
 
 void KviKvsProcessAsyncOperation::processExited(int exitCode)
 {
-	if(m_bDeletePending)return;
+	if(m_bDeletePending)
+		return;
 
 	readStdout(); // just to make sure
 	readStderr(); // just to make sure
@@ -318,7 +338,7 @@ void KviKvsProcessAsyncOperation::processExited(int exitCode)
 		// trigger Stdout and Stderr once
 		if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDOUT)
 		{
-			if(trigger(EventStdout,m_szStdoutBuffer))
+			if(trigger(EventStdout, m_szStdoutBuffer))
 			{
 				triggerSelfDelete();
 				return;
@@ -327,7 +347,7 @@ void KviKvsProcessAsyncOperation::processExited(int exitCode)
 
 		if(m_pData->iFlags & KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDERR)
 		{
-			if(trigger(EventStdout,m_szStderrBuffer))
+			if(trigger(EventStdout, m_szStderrBuffer))
 			{
 				triggerSelfDelete();
 				return;
@@ -339,12 +359,11 @@ void KviKvsProcessAsyncOperation::processExited(int exitCode)
 	{
 		QString szRetVal;
 		szRetVal.setNum(exitCode);
-		trigger(EventTerminated,szRetVal);
+		trigger(EventTerminated, szRetVal);
 	}
 
 	triggerSelfDelete();
 }
-
 
 /*
 

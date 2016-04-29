@@ -31,10 +31,11 @@
 class KVIRC_API KviKvsTreeNodeSpecialCommand : public KviKvsTreeNodeCommand
 {
 public:
-	KviKvsTreeNodeSpecialCommand(const QChar * pLocation,const QString &szCmdName);
+	KviKvsTreeNodeSpecialCommand(const QChar * pLocation, const QString & szCmdName);
 	~KviKvsTreeNodeSpecialCommand();
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 };
 

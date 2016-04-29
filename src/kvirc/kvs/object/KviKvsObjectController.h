@@ -24,7 +24,6 @@
 //
 //=============================================================================
 
-
 #include "kvi_settings.h"
 
 #include "KviQString.h"
@@ -40,20 +39,23 @@ class KVIRC_API KviKvsObjectController
 {
 	friend class KviKvsObject;
 	friend class KviKvsObjectClass;
+
 public:
 	KviKvsObjectController();
 	~KviKvsObjectController();
+
 protected:
-	KviPointerList<KviKvsObject>      * m_pTopLevelObjectList;
-	KviPointerHashTable<void *,KviKvsObject>        * m_pObjectDict;
-	KviPointerHashTable<QString,KviKvsObjectClass>      * m_pClassDict;
-	KviKvsObjectClass             * m_pObjectClass; //base class
+	KviPointerList<KviKvsObject> * m_pTopLevelObjectList;
+	KviPointerHashTable<void *, KviKvsObject> * m_pObjectDict;
+	KviPointerHashTable<QString, KviKvsObjectClass> * m_pClassDict;
+	KviKvsObjectClass * m_pObjectClass; //base class
 protected:
 	// the classes and the objects register themselves with the controller
-	void registerObject(KviKvsObject *pObject);
-	void unregisterObject(KviKvsObject *pObject);
-	void registerClass(KviKvsObjectClass *pClass);
-	void unregisterClass(KviKvsObjectClass *pClass);
+	void registerObject(KviKvsObject * pObject);
+	void unregisterObject(KviKvsObject * pObject);
+	void registerClass(KviKvsObjectClass * pClass);
+	void unregisterClass(KviKvsObjectClass * pClass);
+
 public:
 	void init();
 	void deleteClass(KviKvsObjectClass * pClass);
@@ -61,10 +63,10 @@ public:
 	void clearUserClasses();
 	void flushUserClasses();
 	void killAllObjectsWithClass(KviKvsObjectClass * pClass);
-	KviKvsObjectClass * lookupClass(const QString &szClass,bool bBuiltinOnly = false);
-	KviKvsObject * lookupObject(kvs_hobject_t hObject){ return m_pObjectDict->find(hObject); };
-	KviPointerHashTable<void *,KviKvsObject> * objectDict(){ return m_pObjectDict; };
-	KviPointerHashTable<QString,KviKvsObjectClass> * classDict(){ return m_pClassDict; };
+	KviKvsObjectClass * lookupClass(const QString & szClass, bool bBuiltinOnly = false);
+	KviKvsObject * lookupObject(kvs_hobject_t hObject) { return m_pObjectDict->find(hObject); };
+	KviPointerHashTable<void *, KviKvsObject> * objectDict() { return m_pObjectDict; };
+	KviPointerHashTable<QString, KviKvsObjectClass> * classDict() { return m_pClassDict; };
 };
 
 #endif //!_KVI_KVS_OBJECT_CONTROLLER_H_

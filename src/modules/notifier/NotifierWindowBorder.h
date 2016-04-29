@@ -35,21 +35,21 @@ class QPainter;
 class NotifierWindowBorder
 {
 public:
-	NotifierWindowBorder(QSize = QSize(WDG_MIN_WIDTH,WDG_MIN_HEIGHT));
+	NotifierWindowBorder(QSize = QSize(WDG_MIN_WIDTH, WDG_MIN_HEIGHT));
 	~NotifierWindowBorder();
 
-// ================================
-// Put members declaration below...
-// ================================
+	// ================================
+	// Put members declaration below...
+	// ================================
 private:
-	QRect 	m_rct;
-	QPoint	m_pnt;
+	QRect m_rct;
+	QPoint m_pnt;
 
-	QRect	m_closeIconRect;
+	QRect m_closeIconRect;
 
-	QRect	m_captionRect;
-	QRect	m_bodyRect;
-	QRect	m_titleRect;
+	QRect m_captionRect;
+	QRect m_bodyRect;
+	QRect m_titleRect;
 
 	// Pictures
 	QPixmap * m_pixSX;
@@ -92,6 +92,7 @@ private:
 	int m_eIconState;
 	int m_iRctWidth;
 	int m_iRctHeight;
+
 private:
 	void loadImages();
 	void recalculatePositions();
@@ -100,12 +101,35 @@ public:
 	// reading methods...
 	void setWidth(int w);
 	void setHeight(int h);
-	void resize(int w, int h) { setWidth(w); setHeight(h); };
-	void resize(QSize r) { setWidth(r.width()); setHeight(r.height()); };
-	void setGeometry(QRect r) { r.topLeft(); r.size(); 	/*qDebug("x,y: %d,%d", r.x(), r.y()); qDebug("w,h: %d,%d", r.width(), r.height());*/ };
-	void setGeometry(QPoint p, QSize s) { setPoint (p.x(), p.y()); setWidth (s.width()); setHeight (s.height()); };
+	void resize(int w, int h)
+	{
+		setWidth(w);
+		setHeight(h);
+	};
+	void resize(QSize r)
+	{
+		setWidth(r.width());
+		setHeight(r.height());
+	};
+	void setGeometry(QRect r)
+	{
+		r.topLeft();
+		r.size(); /*qDebug("x,y: %d,%d", r.x(), r.y()); qDebug("w,h: %d,%d", r.width(), r.height());*/
+	};
+	void setGeometry(QPoint p, QSize s)
+	{
+		setPoint(p.x(), p.y());
+		setWidth(s.width());
+		setHeight(s.height());
+	};
 
-	void setPoint(int x, int y) { m_pnt.setX(x); m_pnt.setY(y); m_rct.setX(x); m_rct.setY(y);  };
+	void setPoint(int x, int y)
+	{
+		m_pnt.setX(x);
+		m_pnt.setY(y);
+		m_rct.setX(x);
+		m_rct.setY(y);
+	};
 
 	void setCloseIcon(int state);
 	void resetIcons();
@@ -115,7 +139,7 @@ public:
 	inline int y() const { return m_pnt.y(); };
 	inline int width() const { return m_rct.width(); };
 	inline int height() const { return m_rct.height(); };
-	inline int baseLine() const { return (y()+height()); };
+	inline int baseLine() const { return (y() + height()); };
 
 	inline QRect bodyRect() const { return m_bodyRect; };
 	inline QRect captionRect() const { return m_captionRect; };

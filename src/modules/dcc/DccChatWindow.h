@@ -36,7 +36,7 @@
 #include "KviError.h"
 
 #ifdef COMPILE_SSL_SUPPORT
-	class KviSSL;
+class KviSSL;
 #endif
 
 class DccMarshal;
@@ -45,10 +45,12 @@ class QSplitter;
 class DccChatThread : public DccThread
 {
 public:
-	DccChatThread(KviWindow * wnd,kvi_socket_t fd);
+	DccChatThread(KviWindow * wnd, kvi_socket_t fd);
 	~DccChatThread();
+
 protected:
-	KviPointerList<KviDataBuffer>    * m_pOutBuffers;
+	KviPointerList<KviDataBuffer> * m_pOutBuffers;
+
 protected:
 	virtual void run();
 	bool tryFlushOutBuffers();
@@ -59,37 +61,38 @@ protected:
 	// since the thread is going to die
 	// It should return true if the handing was succesfull
 	// or false if the thread should be stopped
-	virtual bool handleIncomingData(KviDccThreadIncomingData *data,bool bCritical);
-public:
-	virtual void sendRawData(const void * buffer,int len); // mutex (m_pOutBuffers usage)
-};
+	virtual bool handleIncomingData(KviDccThreadIncomingData * data, bool bCritical);
 
+public:
+	virtual void sendRawData(const void * buffer, int len); // mutex (m_pOutBuffers usage)
+};
 
 class DccChatWindow : public DccWindow
 {
 	Q_OBJECT
 public:
-	DccChatWindow(DccDescriptor * dcc,const char * name);
+	DccChatWindow(DccDescriptor * dcc, const char * name);
 	~DccChatWindow();
-	QFrame * buttonContainer() { return (QFrame*)m_pButtonContainer; };
+	QFrame * buttonContainer() { return (QFrame *)m_pButtonContainer; };
 protected:
-	DccChatThread       * m_pSlaveThread;
-	QString                  m_szTarget;
-	QString                  m_szLocalNick;
-	KviThemedLabel         * m_pLabel;
-	KviTalHBox             * m_pButtonBox;
-	KviTalHBox             * m_pButtonContainer;
+	DccChatThread * m_pSlaveThread;
+	QString m_szTarget;
+	QString m_szLocalNick;
+	KviThemedLabel * m_pLabel;
+	KviTalHBox * m_pButtonBox;
+	KviTalHBox * m_pButtonContainer;
+
 protected:
 	virtual const QString & target();
 	virtual void fillCaptionBuffers();
-	virtual void getBaseLogFileName(QString &buffer);
+	virtual void getBaseLogFileName(QString & buffer);
 	virtual QPixmap * myIconPtr();
-	virtual void resizeEvent(QResizeEvent *e);
+	virtual void resizeEvent(QResizeEvent * e);
 	virtual QSize sizeHint() const;
 	virtual const QString & localNick();
-	virtual bool event(QEvent *e);
-	virtual void ownMessage(const QString &text, bool bUserFeedback = true);
-	virtual void ownAction(const QString &text);
+	virtual bool event(QEvent * e);
+	virtual void ownMessage(const QString & text, bool bUserFeedback = true);
+	virtual void ownAction(const QString & text);
 	virtual void triggerCreationEvents();
 	virtual void triggerDestructionEvents();
 	void startConnection();

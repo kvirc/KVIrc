@@ -69,23 +69,24 @@ class KVILIB_API KviAnimatedPixmap : public QObject, public KviAnimatedPixmapInt
 	Q_OBJECT
 
 protected:
-	QString                        m_szFileName;
-	KviAnimatedPixmapCache::Data*  m_pFrameData;
+	QString m_szFileName;
+	KviAnimatedPixmapCache::Data * m_pFrameData;
 
-	uint                           m_uCurrentFrameNumber;
-	int                            m_iStarted;
+	uint m_uCurrentFrameNumber;
+	int m_iStarted;
+
 public:
 	/*
 	* Creates KviAnimatedPixmap, and loads data from "fileName".
 	*/
-	KviAnimatedPixmap(QString fileName,int iWidth=0,int iHeight=0);
+	KviAnimatedPixmap(QString fileName, int iWidth = 0, int iHeight = 0);
 
 	virtual ~KviAnimatedPixmap();
 
 	/*
 	 * Creates new pixmap using "source" as source of images.
 	 */
-	KviAnimatedPixmap(const KviAnimatedPixmap &source);
+	KviAnimatedPixmap(const KviAnimatedPixmap & source);
 
 	/*
 	 * Returns true if animation is started.
@@ -112,7 +113,7 @@ public:
 	 */
 	inline bool isValid()
 	{
-		return (m_pFrameData->count()>0);
+		return (m_pFrameData->count() > 0);
 	}
 
 	/*
@@ -120,9 +121,9 @@ public:
 	 * Never fails.
 	 */
 
-	inline QPixmap* pixmap()
+	inline QPixmap * pixmap()
 	{
-		if(m_pFrameData->count()>0)
+		if(m_pFrameData->count() > 0)
 			return m_pFrameData->at(m_uCurrentFrameNumber).pixmap;
 		else
 			return KviAnimatedPixmapCache::dummyPixmap();
@@ -147,7 +148,7 @@ public:
 	/*
 	 * Returns current image size
 	 */
-	inline const QSize& size()
+	inline const QSize & size()
 	{
 		return m_pFrameData->size;
 	}
@@ -156,7 +157,7 @@ public:
 	 * Resizes all frames to the newSize size, using "ratioMode"
 	 * ratio.
 	 */
-	void resize(QSize newSize,Qt::AspectRatioMode ratioMode);
+	void resize(QSize newSize, Qt::AspectRatioMode ratioMode);
 
 	/*
 	 * Called when the frame changes

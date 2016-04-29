@@ -35,19 +35,23 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeDataList : public KviKvsTreeNode
 {
 	friend class KviKvsParser;
+
 public:
 	KviKvsTreeNodeDataList(const QChar * pLocation);
 	~KviKvsTreeNodeDataList();
+
 protected:
 	KviPointerList<KviKvsTreeNodeData> * m_pDataList;
+
 protected:
 	void addItem(KviKvsTreeNodeData * p);
 	void prependItem(KviKvsTreeNodeData * p);
+
 public:
 	KviKvsTreeNodeData * item(unsigned int uIdx);
 	KviKvsTreeNodeData * releaseFirst();
-	bool evaluate(KviKvsRunTimeContext * c,KviKvsVariantList * pBuffer);
-	virtual void contextDescription(QString &szBuffer);
+	bool evaluate(KviKvsRunTimeContext * c, KviKvsVariantList * pBuffer);
+	virtual void contextDescription(QString & szBuffer);
 
 	virtual void dump(const char * prefix);
 };

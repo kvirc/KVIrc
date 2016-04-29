@@ -29,13 +29,13 @@
 #include "KviCString.h"
 #include "KviMemory.h"
 
-static char hexdigits[16] = { '0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f' };
-
+static char hexdigits[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
 kvi_wslen_t kvi_wstrlen(const kvi_wchar_t * str)
 {
 	const kvi_wchar_t * ptr = str;
-	while(*ptr)ptr++;
+	while(*ptr)
+		ptr++;
 	return (ptr - str);
 }
 
@@ -188,19 +188,21 @@ int kvi_wvsnprintf(kvi_wchar_t *buffer,kvi_wslen_t len,const kvi_wchar_t *fmt,kv
 }
 */
 
-bool kvi_qstringEqualCI(const QString &s1,const QString &s2)
+bool kvi_qstringEqualCI(const QString & s1, const QString & s2)
 {
 	const QChar * p1 = s1.unicode();
 	const QChar * p2 = s2.unicode();
 	int l = s1.length() < s2.length() ? s1.length() : s2.length();
 
-	while(l-- && (p1->toLower() == p2->toLower()))p1++,p2++;
+	while(l-- && (p1->toLower() == p2->toLower()))
+		p1++, p2++;
 
-	if(l==-1)return true;
+	if(l == -1)
+		return true;
 	return false;
 }
 
-bool kvi_matchStringCI(const char * exp,const char * str)
+bool kvi_matchStringCI(const char * exp, const char * str)
 {
 	//               a
 	//               .
@@ -218,18 +220,21 @@ bool kvi_matchStringCI(const char * exp,const char * str)
 			// exp is a wildcard...
 			afterWild = ++exp;
 			nextStrToCheck = str + 1;
-			if(!(*exp))return true; // and it's the last char in the string: matches everything ahead
+			if(!(*exp))
+				return true; // and it's the last char in the string: matches everything ahead
 			continue;
 		}
 
-		if(!(*str))return false; // str finished but we had something to match :(
+		if(!(*str))
+			return false; // str finished but we had something to match :(
 
 		if(tolower(*exp) == tolower(*str))
 		{
 			// chars matched
 			++exp;
 			++str;
-			if((!(*exp)) && *str)goto check_recovery;
+			if((!(*exp)) && *str)
+				goto check_recovery;
 			continue;
 		}
 
@@ -241,7 +246,7 @@ bool kvi_matchStringCI(const char * exp,const char * str)
 			continue;
 		}
 
-check_recovery:
+	check_recovery:
 		// chars unmatched!!!
 		if(afterWild)
 		{
@@ -259,8 +264,7 @@ check_recovery:
 	return (!(*str));
 }
 
-
-bool kvi_matchStringCS(const char * exp,const char * str)
+bool kvi_matchStringCS(const char * exp, const char * str)
 {
 	//               a
 	//               .
@@ -278,18 +282,21 @@ bool kvi_matchStringCS(const char * exp,const char * str)
 			// exp is a wildcard...
 			afterWild = ++exp;
 			nextStrToCheck = str + 1;
-			if(!(*exp))return true; // and it's the last char in the string: matches everything ahead
+			if(!(*exp))
+				return true; // and it's the last char in the string: matches everything ahead
 			continue;
 		}
 
-		if(!(*str))return false; // str finished but we had something to match :(
+		if(!(*str))
+			return false; // str finished but we had something to match :(
 
 		if(*exp == *str)
 		{
 			// chars matched
 			++exp;
 			++str;
-			if((!(*exp)) && *str)goto check_recovery;
+			if((!(*exp)) && *str)
+				goto check_recovery;
 			continue;
 		}
 
@@ -301,7 +308,7 @@ bool kvi_matchStringCS(const char * exp,const char * str)
 			continue;
 		}
 
-check_recovery:
+	check_recovery:
 		// chars unmatched!!!
 		if(afterWild)
 		{
@@ -319,9 +326,7 @@ check_recovery:
 	return (!(*str));
 }
 
-
-
-bool kvi_matchStringWithTerminator(const char * exp,const char * str,char terminator,const char ** r1,const char ** r2)
+bool kvi_matchStringWithTerminator(const char * exp, const char * str, char terminator, const char ** r1, const char ** r2)
 {
 #define NOT_AT_END(__str) (*__str && (*__str != terminator))
 
@@ -343,7 +348,8 @@ bool kvi_matchStringWithTerminator(const char * exp,const char * str,char termin
 			nextStrToCheck = str + 1;
 			if(!(NOT_AT_END(exp)))
 			{
-				while(NOT_AT_END(str))str++;
+				while(NOT_AT_END(str))
+					str++;
 				*r1 = exp;
 				*r2 = str;
 				return true; // and it's the last char in the string: matches everything ahead
@@ -351,14 +357,16 @@ bool kvi_matchStringWithTerminator(const char * exp,const char * str,char termin
 			continue;
 		}
 
-		if(!(*str))return false; // str finished but we had something to match :(
+		if(!(*str))
+			return false; // str finished but we had something to match :(
 
 		if(tolower(*exp) == tolower(*str))
 		{
 			// chars matched
 			++exp;
 			++str;
-			if((!(NOT_AT_END(exp))) && NOT_AT_END(str))goto check_recovery;
+			if((!(NOT_AT_END(exp))) && NOT_AT_END(str))
+				goto check_recovery;
 			continue;
 		}
 
@@ -370,7 +378,7 @@ bool kvi_matchStringWithTerminator(const char * exp,const char * str,char termin
 			continue;
 		}
 
-check_recovery:
+	check_recovery:
 		// chars unmatched!!!
 		if(afterWild)
 		{
@@ -392,7 +400,7 @@ check_recovery:
 #undef NOT_AT_END
 }
 
-bool kvi_matchWildExpr(const char *m1,const char *m2)
+bool kvi_matchWildExpr(const char * m1, const char * m2)
 {
 	//Matches two regular expressions containging wildcards (* and ?)
 
@@ -414,46 +422,51 @@ bool kvi_matchWildExpr(const char *m1,const char *m2)
 	//      s1
 	//
 
-	if(!(m1 && m2 && (*m1)))return false;
+	if(!(m1 && m2 && (*m1)))
+		return false;
 	const char * savePos1 = 0;
 	const char * savePos2 = m2;
 	while(*m1)
 	{
 		//loop managed by m1 (initially first mask)
-		if(*m1=='*')
+		if(*m1 == '*')
 		{
 			//Found a wildcard in m1
-			savePos1 = ++m1;            //move to the next char and save the position...this is our jolly
-			if(!*savePos1)return true;  //last was a wildcard, matches everything ahead...
-			savePos2 = m2+1;            //next return state for the second string
-			continue;                   //and return
+			savePos1 = ++m1; //move to the next char and save the position...this is our jolly
+			if(!*savePos1)
+				return true;   //last was a wildcard, matches everything ahead...
+			savePos2 = m2 + 1; //next return state for the second string
+			continue;          //and return
 		}
-		if(!(*m2))return false;         //m2 finished and we had something to match here!
-		if(tolower(*m1)==tolower(*m2))
+		if(!(*m2))
+			return false; //m2 finished and we had something to match here!
+		if(tolower(*m1) == tolower(*m2))
 		{
 			//chars matched
-			m1++;                       //Go ahead in the two strings
-			m2++;                       //
+			m1++; //Go ahead in the two strings
+			m2++; //
 			if((!(*m1)) && *m2 && savePos1)
 			{
 				//m1 finished, but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
 				//retry matching the string following the * from the savePos2 (one char ahead last time)
-				m1 = savePos1;          //back to char after wildcard
-				m2 = savePos2;          //back to last savePos2
-				savePos2++;             //next savePos2 will be next char
+				m1 = savePos1; //back to char after wildcard
+				m2 = savePos2; //back to last savePos2
+				savePos2++;    //next savePos2 will be next char
 			}
-		} else {
+		}
+		else
+		{
 			if(*m2 == '*')
 			{
 				//A wlidcard in the second string
 				//Invert the game : mask1 <-> mask2
 				//mask2 now leads the game...
-				savePos1 = m1;          //aux
-				m1 = m2;                //...swap
-				m2 = savePos1;          //...swap
-				savePos1 = m1;          //sync save pos1
-				savePos2 = m2 + 1;      //sync save pos2
-				continue;               //...and again
+				savePos1 = m1;     //aux
+				m1 = m2;           //...swap
+				m2 = savePos1;     //...swap
+				savePos1 = m1;     //sync save pos1
+				savePos2 = m2 + 1; //sync save pos2
+				continue;          //...and again
 			}
 			// m1 != m2, m1 != *, m2 != *
 			if((*m1 == '?') || (*m2 == '?'))
@@ -464,23 +477,26 @@ bool kvi_matchWildExpr(const char *m1,const char *m2)
 				{
 					//m1 finished, but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
 					//retry matching the string following the * from the savePos2 (one char ahead last time)
-					m1 = savePos1;          //back to char after wildcard
-					m2 = savePos2;          //back to last savePos2
-					savePos2++;             //next savePos2 will be next char
+					m1 = savePos1; //back to char after wildcard
+					m2 = savePos2; //back to last savePos2
+					savePos2++;    //next savePos2 will be next char
 				}
-			} else {
+			}
+			else
+			{
 				if(savePos1)
 				{
 					//Have a jolly man...allow not matching...
-					m1 = savePos1;          //go back to char after wildcard...need to rematch...
-					m2 = savePos2;          //back to last savePos2
-					savePos2++;             //and set next savePos2
-				} else return false;        //No previous wildcards...not matched!
+					m1 = savePos1; //go back to char after wildcard...need to rematch...
+					m2 = savePos2; //back to last savePos2
+					savePos2++;    //and set next savePos2
+				}
+				else
+					return false; //No previous wildcards...not matched!
 			}
 		}
 	}
-	return (!(*m2));                     //m1 surely finished, so for the match, m2 must be finished too
-
+	return (!(*m2)); //m1 surely finished, so for the match, m2 must be finished too
 }
 
 /*
@@ -537,62 +553,67 @@ bool kvi_matchWildExprCS(const char *m1,const char *m2)
 }
 */
 
-bool kvi_matchWildExprWithTerminator(const char *m1,const char *m2,char terminator,
-			const char ** r1,const char ** r2)
+bool kvi_matchWildExprWithTerminator(const char * m1, const char * m2, char terminator,
+    const char ** r1, const char ** r2)
 {
-	//Matches two regular expressions containging wildcards
+//Matches two regular expressions containging wildcards
 
 #define NOT_AT_END(__str) (*__str && (*__str != terminator))
 
 	bool bSwapped = false;
-	if(!(m1 && m2 && (NOT_AT_END(m1))))return false;
+	if(!(m1 && m2 && (NOT_AT_END(m1))))
+		return false;
 	const char * savePos1 = 0;
 	const char * savePos2 = m2;
 	while(NOT_AT_END(m1))
 	{
 		//loop managed by m1 (initially first mask)
-		if(*m1=='*')
+		if(*m1 == '*')
 		{
 			//Found a wildcard in m1
-			savePos1 = ++m1;            //move to the next char and save the position...this is our jolly
+			savePos1 = ++m1; //move to the next char and save the position...this is our jolly
 			if(!NOT_AT_END(savePos1))
 			{
 				//last was a wildcard, matches everything ahead...
-				while(NOT_AT_END(m2))m2++;
+				while(NOT_AT_END(m2))
+					m2++;
 				*r1 = bSwapped ? m2 : m1;
 				*r2 = bSwapped ? m1 : m2;
 				return true;
 			}
-			savePos2 = m2+1;            //next return state for the second string
-			continue;                   //and return
+			savePos2 = m2 + 1; //next return state for the second string
+			continue;          //and return
 		}
-		if(!NOT_AT_END(m2))return false;         //m2 finished and we had something to match here!
-		if(tolower(*m1)==tolower(*m2))
+		if(!NOT_AT_END(m2))
+			return false; //m2 finished and we had something to match here!
+		if(tolower(*m1) == tolower(*m2))
 		{
 			//chars matched
-			m1++;                       //Go ahead in the two strings
-			m2++;                       //
+			m1++; //Go ahead in the two strings
+			m2++; //
 			if((!NOT_AT_END(m1)) && NOT_AT_END(m2) && savePos1)
 			{
 				//m1 finished, but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
 				//retry matching the string following the * from the savePos2 (one char ahead last time)
-				m1 = savePos1;          //back to char after wildcard
-				m2 = savePos2;          //back to last savePos2
-				savePos2++;             //next savePos2 will be next char
+				m1 = savePos1; //back to char after wildcard
+				m2 = savePos2; //back to last savePos2
+				savePos2++;    //next savePos2 will be next char
 			}
-		} else {
+		}
+		else
+		{
 			if(*m2 == '*')
 			{
 				//A wlidcard in the second string
 				//Invert the game : mask1 <-> mask2
 				//mask2 now leads the game...
 				bSwapped = !bSwapped;
-				savePos1 = m1;          //aux
-				m1 = m2;                //...swap
-				m2 = savePos1;          //...swap
-				savePos1 = m1;          //sync save pos1
-				savePos2 = m2 + 1;      //sync save pos2
-				continue;               //...and again
+				savePos1 = m1;     //aux
+				m1 = m2;           //...swap
+				m2 = savePos1;     //...swap
+				savePos1 = m1;     //sync save pos1
+				savePos2 = m2 + 1; //sync save pos2
+				continue;          //...and again
 			}
 			// m1 != m2, m1 != *, m2 != *
 			if((*m1 == '?') || (*m2 == '?'))
@@ -603,77 +624,83 @@ bool kvi_matchWildExprWithTerminator(const char *m1,const char *m2,char terminat
 				{
 					//m1 finished, but m2 not yet and we have a savePosition for m1 (there was a wildcard)...
 					//retry matching the string following the * from the savePos2 (one char ahead last time)
-					m1 = savePos1;          //back to char after wildcard
-					m2 = savePos2;          //back to last savePos2
-					savePos2++;             //next savePos2 will be next char
+					m1 = savePos1; //back to char after wildcard
+					m2 = savePos2; //back to last savePos2
+					savePos2++;    //next savePos2 will be next char
 				}
-			} else {
+			}
+			else
+			{
 				if(savePos1)
 				{
 					//Have a jolly man...allow not matching...
-					m1 = savePos1;          //go back to char after wildcard...need to rematch...
-					m2 = savePos2;          //back to last savePos2
-					savePos2++;             //and set next savePos2
-				} else return false;        //No previous wildcards...not matched!
+					m1 = savePos1; //go back to char after wildcard...need to rematch...
+					m2 = savePos2; //back to last savePos2
+					savePos2++;    //and set next savePos2
+				}
+				else
+					return false; //No previous wildcards...not matched!
 			}
 		}
 	}
 	*r1 = bSwapped ? m2 : m1;
 	*r2 = bSwapped ? m1 : m2;
 
-	return (!NOT_AT_END(m2));           //m1 surely finished, so for the match, m2 must be finished too
+	return (!NOT_AT_END(m2)); //m1 surely finished, so for the match, m2 must be finished too
 
 #undef NOT_AT_END
 }
 
-
-
-const char * kvi_extractToken(KviCString &str,const char *aux_ptr,char sep)
+const char * kvi_extractToken(KviCString & str, const char * aux_ptr, char sep)
 {
 	KVI_ASSERT(aux_ptr);
-	while(*aux_ptr && (*aux_ptr == sep))aux_ptr++;
-	const char *p=aux_ptr;
-	while(*p && (*p != sep))p++;
-	str.m_len=p-aux_ptr;
-	str.m_ptr = (char *)KviMemory::reallocate(str.m_ptr,str.m_len+1);
-	KviMemory::copy(str.m_ptr,aux_ptr,str.m_len);
-	*(str.m_ptr+str.m_len)='\0';
-	while(*p && (*p == sep))p++;
+	while(*aux_ptr && (*aux_ptr == sep))
+		aux_ptr++;
+	const char * p = aux_ptr;
+	while(*p && (*p != sep))
+		p++;
+	str.m_len = p - aux_ptr;
+	str.m_ptr = (char *)KviMemory::reallocate(str.m_ptr, str.m_len + 1);
+	KviMemory::copy(str.m_ptr, aux_ptr, str.m_len);
+	*(str.m_ptr + str.m_len) = '\0';
+	while(*p && (*p == sep))
+		p++;
 	return p;
 }
 
-const char * kvi_extractUpTo(KviCString &str,const char *aux_ptr,char sep)
+const char * kvi_extractUpTo(KviCString & str, const char * aux_ptr, char sep)
 {
 	KVI_ASSERT(aux_ptr);
-	const char *p=aux_ptr;
-	while(*p && (*p != sep))p++;
-	str.m_len=p-aux_ptr;
-	str.m_ptr = (char *)KviMemory::reallocate(str.m_ptr,str.m_len+1);
-	KviMemory::copy(str.m_ptr,aux_ptr,str.m_len);
-	*(str.m_ptr+str.m_len)='\0';
+	const char * p = aux_ptr;
+	while(*p && (*p != sep))
+		p++;
+	str.m_len = p - aux_ptr;
+	str.m_ptr = (char *)KviMemory::reallocate(str.m_ptr, str.m_len + 1);
+	KviMemory::copy(str.m_ptr, aux_ptr, str.m_len);
+	*(str.m_ptr + str.m_len) = '\0';
 	return p;
 }
 
-int kvi_vsnprintf(char *buffer,int len,const char *fmt,kvi_va_list list)
+int kvi_vsnprintf(char * buffer, int len, const char * fmt, kvi_va_list list)
 {
 	KVI_ASSERT(fmt);
 	KVI_ASSERT(buffer);
 	KVI_ASSERT(len > 0); //printing 0 characters is senseless
 
-	char *p;
-	char *argString;
+	char * p;
+	char * argString;
 	long argValue;
 	unsigned long argUValue;
 
 	//9999999999999999999999999999999\0
 	char numberBuffer[32]; //enough ? 10 is enough for 32bit unsigned int...
-	char *pNumBuf;
+	char * pNumBuf;
 	unsigned int tmp;
 
-
-	for(p=buffer ; *fmt ; ++fmt)
+	for(p = buffer; *fmt; ++fmt)
 	{
-		if(len < 1)return (-1); //not enough space ... (in fact this could be len < 2 for the terminator)
+		if(len < 1)
+			return (-1); //not enough space ... (in fact this could be len < 2 for the terminator)
 		//copy up to a '%'
 		if(*fmt != '%')
 		{
@@ -686,61 +713,82 @@ int kvi_vsnprintf(char *buffer,int len,const char *fmt,kvi_va_list list)
 		switch(*fmt)
 		{
 			case 's': //string
-				argString = kvi_va_arg(list,char *);
-				if(!argString)continue;
+				argString = kvi_va_arg(list, char *);
+				if(!argString)
+					continue;
 				argValue = (long)strlen(argString);
 				//check for space...
-				if(len <= argValue)return (-1); //not enough space for buffer and terminator
-				while(*argString)*p++ = *argString++;
+				if(len <= argValue)
+					return (-1); //not enough space for buffer and terminator
+				while(*argString)
+					*p++ = *argString++;
 				len -= argValue;
 				continue;
 			case 'd': //signed integer
-				argValue = kvi_va_arg(list,int);
-				if(argValue < 0){ //negative integer
+				argValue = kvi_va_arg(list, int);
+				if(argValue < 0)
+				{ //negative integer
 					*p++ = '-';
-					if(--len == 0)return (-1);
+					if(--len == 0)
+						return (-1);
 					argValue = -argValue; //need to have it positive
 					// most negative integer exception (avoid completely senseless (non digit) responses)
-					if(argValue < 0)argValue = 0;  //we get -0 here
+					if(argValue < 0)
+						argValue = 0; //we get -0 here
 				}
 				//write the number in a temporary buffer
 				pNumBuf = numberBuffer;
-				do {
+				do
+				{
 					tmp = argValue / 10;
 					*pNumBuf++ = argValue - (tmp * 10) + '0';
 				} while((argValue = tmp));
 				//copy now....
 				argUValue = pNumBuf - numberBuffer; //length of the number string
-				if(((uint)len) <= argUValue)return (-1); //not enough space for number and terminator
-				do { *p++ = *--pNumBuf; } while(pNumBuf != numberBuffer);
+				if(((uint)len) <= argUValue)
+					return (-1); //not enough space for number and terminator
+				do
+				{
+					*p++ = *--pNumBuf;
+				} while(pNumBuf != numberBuffer);
 				len -= argUValue;
 				continue;
-			case 'u': //unsigned integer
-				argUValue = kvi_va_arg(list,unsigned int); //many implementations place int here
+			case 'u':                                       //unsigned integer
+				argUValue = kvi_va_arg(list, unsigned int); //many implementations place int here
 				//write the number in a temporary buffer
 				pNumBuf = numberBuffer;
-				do {
+				do
+				{
 					tmp = argUValue / 10;
 					*pNumBuf++ = argUValue - (tmp * 10) + '0';
 				} while((argUValue = tmp));
 				//copy now....
 				argValue = pNumBuf - numberBuffer; //length of the number string
-				if(len <= argValue)return (-1); //not enough space for number and terminator
-				do { *p++ = *--pNumBuf; } while(pNumBuf != numberBuffer);
+				if(len <= argValue)
+					return (-1); //not enough space for number and terminator
+				do
+				{
+					*p++ = *--pNumBuf;
+				} while(pNumBuf != numberBuffer);
 				len -= argValue;
 				continue;
-			case 'x': // hexadecimal unsigned integer
-				argUValue = kvi_va_arg(list,unsigned int); //many implementations place int here
+			case 'x':                                       // hexadecimal unsigned integer
+				argUValue = kvi_va_arg(list, unsigned int); //many implementations place int here
 				//write the number in a temporary buffer
 				pNumBuf = numberBuffer;
-				do {
+				do
+				{
 					tmp = argUValue / 16;
 					*pNumBuf++ = hexdigits[argUValue % 16];
 				} while((argUValue = tmp));
 				//copy now....
 				argValue = pNumBuf - numberBuffer; //length of the number string
-				if(len <= argValue)return (-1); //not enough space for number and terminator
-				do { *p++ = *--pNumBuf; } while(pNumBuf != numberBuffer);
+				if(len <= argValue)
+					return (-1); //not enough space for number and terminator
+				do
+				{
+					*p++ = *--pNumBuf;
+				} while(pNumBuf != numberBuffer);
 				len -= argValue;
 				continue;
 			case 'c': //char
@@ -752,130 +800,158 @@ int kvi_vsnprintf(char *buffer,int len,const char *fmt,kvi_va_list list)
 				// as sizeof(int) bytes value.
 				// Is this always true ?
 				//
-				*p++ = (char)kvi_va_arg(list,int);
+				*p++ = (char)kvi_va_arg(list, int);
 				--len;
 				continue;
 			case 'Q': // QString! (this should almost never happen)
 			{
-				QString * s = kvi_va_arg(list,QString *);
+				QString * s = kvi_va_arg(list, QString *);
 				QByteArray cs = (*s).toUtf8();
 				const char * t = cs.data();
-				if(!t)continue; // nothing to do
+				if(!t)
+					continue; // nothing to do
 				//check for space...
-				if(len <= (int)cs.length())return (-1); //not enough space for buffer and terminator
-				while(*t)*p++ = *t++;
+				if(len <= (int)cs.length())
+					return (-1); //not enough space for buffer and terminator
+				while(*t)
+					*p++ = *t++;
 				len -= cs.length();
 				continue;
 			}
-			default: //a normal percent
-				*p++ = '%';  //write it
-				if(--len == 0)return (-1); //not enough space for next char or terminator
-				if(*fmt){        //this if is just in case that we have a % at the end of the string.
+			default:        //a normal percent
+				*p++ = '%'; //write it
+				if(--len == 0)
+					return (-1); //not enough space for next char or terminator
+				if(*fmt)
+				{                //this if is just in case that we have a % at the end of the string.
 					*p++ = *fmt; //and write this char
 					--len;
 				}
 				continue;
 		}
 	}
-	if(len < 1)return (-1); //missing space for terminator
+	if(len < 1)
+		return (-1); //missing space for terminator
 	*p = '\0';
-	return p-buffer;
+	return p - buffer;
 }
 
 //
 // Nearly the same as the above function...
 //
 
-int kvi_irc_vsnprintf(char *buffer,const char *fmt,kvi_va_list list,bool *bTruncated)
+int kvi_irc_vsnprintf(char * buffer, const char * fmt, kvi_va_list list, bool * bTruncated)
 {
 	KVI_ASSERT(fmt);
 	KVI_ASSERT(buffer);
-	if( !( buffer && fmt) ) return false;
-	char *p;
-	char *argString;
+	if(!(buffer && fmt))
+		return false;
+	char * p;
+	char * argString;
 	long argValue;
 	unsigned long argUValue;
 	char numberBuffer[64]; //enough ? 10 is enough for 32bit unsigned int...
-	char *pNumBuf;
+	char * pNumBuf;
 	unsigned int tmp;
 	*bTruncated = false;
 	int len = 512;
 
-	for (p=buffer ; *fmt ; ++fmt) {
-		if(len < 3)goto truncate;
+	for(p = buffer; *fmt; ++fmt)
+	{
+		if(len < 3)
+			goto truncate;
 		//copy up to a '%'
-		if (*fmt != '%') {
+		if(*fmt != '%')
+		{
 			*p++ = *fmt;
 			--len;
 			continue;
 		}
 		++fmt; //skip this '%'
-		switch(*fmt){
+		switch(*fmt)
+		{
 			case 's': //string
-				argString = kvi_va_arg(list,char *);
-				if(!argString)continue;
+				argString = kvi_va_arg(list, char *);
+				if(!argString)
+					continue;
 				//check for space...
-				while(*argString){
+				while(*argString)
+				{
 					*p++ = *argString++;
-					if(--len < 3)goto truncate;
+					if(--len < 3)
+						goto truncate;
 				}
 				continue;
 			case 'Q': // QString! (this should almost never happen)
 			{
-				QString * s = kvi_va_arg(list,QString *);
+				QString * s = kvi_va_arg(list, QString *);
 				QByteArray cs = (*s).toUtf8();
 				const char * t = cs.data();
-				if(!t)continue; // nothing to do
+				if(!t)
+					continue; // nothing to do
 				while(*t)
 				{
 					*p++ = *t++;
-					if(--len < 3)goto truncate;
+					if(--len < 3)
+						goto truncate;
 				}
 				continue;
 			}
 			case 'd': //signed integer
-				argValue = kvi_va_arg(list,int);
-				if(argValue < 0){ //negative integer
+				argValue = kvi_va_arg(list, int);
+				if(argValue < 0)
+				{ //negative integer
 					*p++ = '-';
-					if(--len < 3)goto truncate; //place just for CRLF
+					if(--len < 3)
+						goto truncate;    //place just for CRLF
 					argValue = -argValue; //need to have it positive
-					if(argValue < 0)argValue = 0; // -0 (hack the exception)
+					if(argValue < 0)
+						argValue = 0; // -0 (hack the exception)
 				}
 				//write the number in a temporary buffer
 				pNumBuf = numberBuffer;
-				do {
+				do
+				{
 					tmp = argValue / 10;
 					*pNumBuf++ = argValue - (tmp * 10) + '0';
 				} while((argValue = tmp));
 				//copy now....
-				do {
+				do
+				{
 					*p++ = *--pNumBuf;
-					if(--len < 3)goto truncate;
+					if(--len < 3)
+						goto truncate;
 				} while(pNumBuf != numberBuffer);
 				continue;
-			case 'u': //unsigned integer
-				argUValue = kvi_va_arg(list,unsigned int); //many implementations place int here
+			case 'u':                                       //unsigned integer
+				argUValue = kvi_va_arg(list, unsigned int); //many implementations place int here
 				//write the number in a temporary buffer
 				pNumBuf = numberBuffer;
-				do {
+				do
+				{
 					tmp = argUValue / 10;
 					*pNumBuf++ = argUValue - (tmp * 10) + '0';
 				} while((argUValue = tmp));
 				//copy now....
-				if(--len < 3)goto truncate; //no place for digits
-				do {
+				if(--len < 3)
+					goto truncate; //no place for digits
+				do
+				{
 					*p++ = *--pNumBuf;
-					if(--len < 3)goto truncate;
+					if(--len < 3)
+						goto truncate;
 				} while(pNumBuf != numberBuffer);
 				continue;
 			case 'c': //char
-				*p++ = (char)kvi_va_arg(list,int);
+				*p++ = (char)kvi_va_arg(list, int);
 				--len;
 				continue;
-			default: //a normal percent
-				*p++ = '%';  //write it
-				if(--len < 3)goto truncate; //not enough space for next char
-				if(*fmt){        //this if is just in case that we have a % at the end of the string.
+			default:        //a normal percent
+				*p++ = '%'; //write it
+				if(--len < 3)
+					goto truncate; //not enough space for next char
+				if(*fmt)
+				{                //this if is just in case that we have a % at the end of the string.
 					*p++ = *fmt; //and write this char
 					--len;
 				}
@@ -885,63 +961,75 @@ int kvi_irc_vsnprintf(char *buffer,const char *fmt,kvi_va_list list,bool *bTrunc
 	//succesfull finish
 	KVI_ASSERT(len >= 2);
 	*p++ = '\r';
-	*p   = '\n';
-	return ((p-buffer)+1);
+	*p = '\n';
+	return ((p - buffer) + 1);
 truncate:
 	KVI_ASSERT(len >= 2);
 	*bTruncated = true;
 	*p++ = '\r';
-	*p   = '\n';
-	return ((p-buffer)+1);
+	*p = '\n';
+	return ((p - buffer) + 1);
 }
 
 #ifndef COMPILE_ix86_ASM
 
-bool kvi_strEqualCS(const char *str1,const char *str2)
+bool kvi_strEqualCS(const char * str1, const char * str2)
 {
 	KVI_ASSERT(str1);
 	KVI_ASSERT(str2);
-	if( !( str1 && str2 ) ) return false;
-	unsigned char *s1 = (unsigned char *)str1;
-	unsigned char *s2 = (unsigned char *)str2;
-	while(*s1)if(*s1++ != *s2++)return false;
+	if(!(str1 && str2))
+		return false;
+	unsigned char * s1 = (unsigned char *)str1;
+	unsigned char * s2 = (unsigned char *)str2;
+	while(*s1)
+		if(*s1++ != *s2++)
+			return false;
 	return (*s1 == *s2);
 }
 
-bool kvi_strEqualCSN(const char *str1,const char *str2,int len)
+bool kvi_strEqualCSN(const char * str1, const char * str2, int len)
 {
 	KVI_ASSERT(str1);
 	KVI_ASSERT(str2);
 	KVI_ASSERT(len >= 0);
-	if( !( str1 && str2 && (len >= 0) ) ) return false;
-	unsigned char *s1 = (unsigned char *)str1;
-	unsigned char *s2 = (unsigned char *)str2;
-	while(len-- && *s1)if(*s1++ != *s2++)return false;
+	if(!(str1 && str2 && (len >= 0)))
+		return false;
+	unsigned char * s1 = (unsigned char *)str1;
+	unsigned char * s2 = (unsigned char *)str2;
+	while(len-- && *s1)
+		if(*s1++ != *s2++)
+			return false;
 	return (len < 0);
 }
 
 #endif
 
-bool kvi_strEqualCIN(const char *str1,const char *str2,int len)
+bool kvi_strEqualCIN(const char * str1, const char * str2, int len)
 {
 	KVI_ASSERT(str1);
 	KVI_ASSERT(str2);
 	KVI_ASSERT(len >= 0);
-	if( !( str1 && str2 && (len >= 0) ) ) return false;
-	unsigned char *s1 = (unsigned char *)str1;
-	unsigned char *s2 = (unsigned char *)str2;
-	while(len-- && *s1)if(tolower(*s1++) != tolower(*s2++))return false;
+	if(!(str1 && str2 && (len >= 0)))
+		return false;
+	unsigned char * s1 = (unsigned char *)str1;
+	unsigned char * s2 = (unsigned char *)str2;
+	while(len-- && *s1)
+		if(tolower(*s1++) != tolower(*s2++))
+			return false;
 	return (len < 0);
 }
 
-bool kvi_strEqualCI(const char *str1,const char *str2)
+bool kvi_strEqualCI(const char * str1, const char * str2)
 {
 	KVI_ASSERT(str1);
 	KVI_ASSERT(str2);
-	if( !( str1 && str2) ) return false;
-	unsigned char *s1 = (unsigned char *)str1;
-	unsigned char *s2 = (unsigned char *)str2;
-	while(*s1)if(tolower(*s1++) != tolower(*s2++))return false;
+	if(!(str1 && str2))
+		return false;
+	unsigned char * s1 = (unsigned char *)str1;
+	unsigned char * s2 = (unsigned char *)str2;
+	while(*s1)
+		if(tolower(*s1++) != tolower(*s2++))
+			return false;
 	return (*s1 == *s2);
 }
 
@@ -949,18 +1037,21 @@ bool kvi_strEqualCI(const char *str1,const char *str2)
 // return < 0 ---> str1 < str2
 // return = 0 ---> str1 = str2
 // return > 0 ---> str1 > str2
-int kvi_strcmpCI(const char *str1,const char *str2)
+int kvi_strcmpCI(const char * str1, const char * str2)
 {
 	//abcd abce
 	KVI_ASSERT(str1);
 	KVI_ASSERT(str2);
-	if( !( str1 && str2) ) return false;
-	unsigned char *s1 = (unsigned char *)str1;
-	unsigned char *s2 = (unsigned char *)str2;
+	if(!(str1 && str2))
+		return false;
+	unsigned char * s1 = (unsigned char *)str1;
+	unsigned char * s2 = (unsigned char *)str2;
 	int diff;
 	unsigned char rightchar;
-	while(!(diff=(rightchar=tolower(*s1++)) - tolower(*s2++)))if(!rightchar)break;
-    return diff; //diff is nonzero or end of both was reached (it is positive if *s2 > *s1
+	while(!(diff = (rightchar = tolower(*s1++)) - tolower(*s2++)))
+		if(!rightchar)
+			break;
+	return diff; //diff is nonzero or end of both was reached (it is positive if *s2 > *s1
 }
 
 //
@@ -985,42 +1076,52 @@ int kvi_strcmpCI(const char *str1,const char *str2)
 //    return diff; //diff is nonzero or end of both was reached (it is positive if *s2 > *s1
 //}
 
-int kvi_strcmpCS(const char *str1,const char *str2)
+int kvi_strcmpCS(const char * str1, const char * str2)
 {
 	//abcd abce
 	KVI_ASSERT(str1);
 	KVI_ASSERT(str2);
-	if( !( str1 && str2) ) return false;
-	unsigned char *s1 = (unsigned char *)str1;
-	unsigned char *s2 = (unsigned char *)str2;
+	if(!(str1 && str2))
+		return false;
+	unsigned char * s1 = (unsigned char *)str1;
+	unsigned char * s2 = (unsigned char *)str2;
 	int diff;
-	while(!(diff=(*s1)-(*s2++)))if(!*s1++)break;
-    return diff; //diff is nonzero or end of both was reached (it is positive if *s2 > *s1
+	while(!(diff = (*s1) - (*s2++)))
+		if(!*s1++)
+			break;
+	return diff; //diff is nonzero or end of both was reached (it is positive if *s2 > *s1
 }
 
-int kvi_strMatchRevCS(const char *str1, const char *str2, int index)
+int kvi_strMatchRevCS(const char * str1, const char * str2, int index)
 {
 	KVI_ASSERT(str1);
 	KVI_ASSERT(str2);
-	if( !( str1 && str2) ) return false;
-	char *s1=(char *)str1;
-	char *s2=(char *)str2;
+	if(!(str1 && str2))
+		return false;
+	char * s1 = (char *)str1;
+	char * s2 = (char *)str2;
 
-	int curlen=(int)strlen(str1);
+	int curlen = (int)strlen(str1);
 	int diff;
 
-	if (index<0 || index >= curlen) index = curlen-1;
+	if(index < 0 || index >= curlen)
+		index = curlen - 1;
 
-	s1+=index;
-	while (*s2) s2++;
+	s1 += index;
+	while(*s2)
+		s2++;
 	s2--;
 
 	// now start comparing
-	while (1){
+	while(1)
+	{
 		/* in this case, we have str1 = "lo" and str2 = "hello" */
-		if (s1<str1 && !(s2<str2)) return 256;
-		if (s2<str2) return 0;
-		if ((diff=(*s1)-(*s2))) return diff;
+		if(s1 < str1 && !(s2 < str2))
+			return 256;
+		if(s2 < str2)
+			return 0;
+		if((diff = (*s1) - (*s2)))
+			return diff;
 		s1--;
 		s2--;
 	}
@@ -1033,123 +1134,131 @@ KviCString::KviCString()
 	m_len = 0;
 }
 
-KviCString::KviCString(const char *str)
+KviCString::KviCString(const char * str)
 {
 	//Deep copy constructor
-	if(str){
+	if(str)
+	{
 		//Deep copy
 		m_len = (int)strlen(str);
-		m_ptr = (char *)KviMemory::allocate(m_len+1);
-		KviMemory::copy(m_ptr,str,m_len+1);
-	} else {
+		m_ptr = (char *)KviMemory::allocate(m_len + 1);
+		KviMemory::copy(m_ptr, str, m_len + 1);
+	}
+	else
+	{
 		m_ptr = (char *)KviMemory::allocate(1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
 }
 
-KviCString::KviCString(const QByteArray &str)
+KviCString::KviCString(const QByteArray & str)
 {
 	//Deep copy constructor
 	if(str.data())
 	{
 		//Deep copy
 		m_len = str.length();
-		m_ptr = (char *)KviMemory::allocate(m_len+1);
-		KviMemory::copy(m_ptr,str,m_len+1);
-	} else {
+		m_ptr = (char *)KviMemory::allocate(m_len + 1);
+		KviMemory::copy(m_ptr, str, m_len + 1);
+	}
+	else
+	{
 		m_ptr = (char *)KviMemory::allocate(1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
 }
 
-
-KviCString::KviCString(const char *str,int len)
+KviCString::KviCString(const char * str, int len)
 {
 	KVI_ASSERT(str);
 	//KVI_ASSERT(len <= ((int)strlen(str))); <-- we trust the user here (and a strlen() call may run AFTER len if data is not null terminated)
 	KVI_ASSERT(len >= 0);
 	m_len = len;
-	m_ptr = (char *)KviMemory::allocate(m_len+1);
-	KviMemory::copy(m_ptr,str,m_len);
-	*(m_ptr+m_len) = '\0';
+	m_ptr = (char *)KviMemory::allocate(m_len + 1);
+	KviMemory::copy(m_ptr, str, m_len);
+	*(m_ptr + m_len) = '\0';
 }
 
-KviCString::KviCString(const char *bg,const char *end)
+KviCString::KviCString(const char * bg, const char * end)
 {
 	KVI_ASSERT(bg);
 	KVI_ASSERT(end);
 	KVI_ASSERT(bg <= end);
-	m_len = end-bg;
-	m_ptr = (char *)KviMemory::allocate(m_len +1);
-	KviMemory::copy(m_ptr,bg,m_len);
-	*(m_ptr + m_len)='\0';
+	m_len = end - bg;
+	m_ptr = (char *)KviMemory::allocate(m_len + 1);
+	KviMemory::copy(m_ptr, bg, m_len);
+	*(m_ptr + m_len) = '\0';
 }
 
-KviCString::KviCString(KviFormatConstructorTag,const char *fmt,...)
+KviCString::KviCString(KviFormatConstructorTag, const char * fmt, ...)
 {
-	m_ptr=(char *)KviMemory::allocate(256);
+	m_ptr = (char *)KviMemory::allocate(256);
 	//First try
 	kvi_va_list list;
-	kvi_va_start(list,fmt);
+	kvi_va_start(list, fmt);
 	//print...with max 256 chars
-	m_len=kvi_vsnprintf(m_ptr,256,fmt,list);
+	m_len = kvi_vsnprintf(m_ptr, 256, fmt, list);
 	kvi_va_end(list);
 
 	//check if we failed
-	if(m_len < 0){
+	if(m_len < 0)
+	{
 		//yes, failed....
-		int dummy=256;
-		do{ //we failed, so retry with 256 more chars
-			dummy+=256;
+		int dummy = 256;
+		do
+		{ //we failed, so retry with 256 more chars
+			dummy += 256;
 			//realloc
-			m_ptr=(char *)KviMemory::reallocate(m_ptr,dummy);
+			m_ptr = (char *)KviMemory::reallocate(m_ptr, dummy);
 			//print...
-			kvi_va_start(list,fmt);
-			m_len=kvi_vsnprintf(m_ptr,dummy,fmt,list);
+			kvi_va_start(list, fmt);
+			m_len = kvi_vsnprintf(m_ptr, dummy, fmt, list);
 			kvi_va_end(list);
 		} while(m_len < 0);
 	}
 	//done...
 	//now m_len is the length of the written string not including the terminator...
 	//perfect! :)
-	m_ptr=(char *)KviMemory::reallocate(m_ptr,m_len+1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
 }
 
-KviCString::KviCString(const KviCString &str)
+KviCString::KviCString(const KviCString & str)
 {
 	KVI_ASSERT(str.m_ptr);
 	m_len = str.m_len;
-	m_ptr = (char *)KviMemory::allocate(m_len+1);
-	KviMemory::copy(m_ptr,str.m_ptr,m_len+1);
+	m_ptr = (char *)KviMemory::allocate(m_len + 1);
+	KviMemory::copy(m_ptr, str.m_ptr, m_len + 1);
 }
 
-KviCString::KviCString(const QString &str)
+KviCString::KviCString(const QString & str)
 {
 	QByteArray sz = str.toUtf8();
 	if(sz.length() > 0)
 	{
 		m_len = sz.length();
-		m_ptr = (char *)KviMemory::allocate(m_len+1);
-		KviMemory::copy(m_ptr,sz.data(),m_len+1);
-	} else {
+		m_ptr = (char *)KviMemory::allocate(m_len + 1);
+		KviMemory::copy(m_ptr, sz.data(), m_len + 1);
+	}
+	else
+	{
 		m_ptr = (char *)KviMemory::allocate(1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
 }
 
-KviCString::KviCString(char c,int fillLen)
+KviCString::KviCString(char c, int fillLen)
 {
 	KVI_ASSERT(fillLen >= 0);
 	m_len = fillLen;
-	m_ptr = (char *)KviMemory::allocate(m_len+1);
-	char *p=m_ptr;
-	while(fillLen--)*p++=c;
-	*p='\0';
+	m_ptr = (char *)KviMemory::allocate(m_len + 1);
+	char * p = m_ptr;
+	while(fillLen--)
+		*p++ = c;
+	*p = '\0';
 }
-
 
 KviCString::KviCString(const kvi_wchar_t * unicode)
 {
@@ -1158,16 +1267,19 @@ KviCString::KviCString(const kvi_wchar_t * unicode)
 		m_len = 0;
 		m_ptr = (char *)KviMemory::allocate(1);
 		*m_ptr = 0;
-	} else {
+	}
+	else
+	{
 		m_len = kvi_wstrlen(unicode);
 		m_ptr = (char *)KviMemory::allocate(m_len + 1);
 		char * p = m_ptr;
-		while(*unicode)*p++ = *unicode++;
+		while(*unicode)
+			*p++ = *unicode++;
 		*p = 0;
 	}
 }
 
-KviCString::KviCString(const kvi_wchar_t * unicode,int len)
+KviCString::KviCString(const kvi_wchar_t * unicode, int len)
 {
 	m_len = len;
 	m_ptr = (char *)KviMemory::allocate(m_len + 1);
@@ -1180,42 +1292,44 @@ KviCString::KviCString(const kvi_wchar_t * unicode,int len)
 	*p = 0;
 }
 
-
-
-
 KviCString::~KviCString()
 {
 	KviMemory::free(m_ptr);
 }
 
-KviCString & KviCString::operator=(const KviCString &str)
+KviCString & KviCString::operator=(const KviCString & str)
 {
 	KVI_ASSERT(str.m_ptr);
 	KVI_ASSERT(str.m_ptr != m_ptr);
 	m_len = str.m_len;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-	KviMemory::copy(m_ptr,str.m_ptr,m_len+1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	KviMemory::copy(m_ptr, str.m_ptr, m_len + 1);
 	return (*this);
 }
 
-KviCString & KviCString::operator=(const QByteArray &str)
+KviCString & KviCString::operator=(const QByteArray & str)
 {
 	m_len = str.length();
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-	if(str.data())KviMemory::copy(m_ptr,str.data(),m_len+1);
-	else *m_ptr = 0;
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	if(str.data())
+		KviMemory::copy(m_ptr, str.data(), m_len + 1);
+	else
+		*m_ptr = 0;
 	return (*this);
 }
 
-KviCString & KviCString::operator=(const char *str)
+KviCString & KviCString::operator=(const char * str)
 {
 	//KVI_ASSERT(str);
-	if(str){
+	if(str)
+	{
 		m_len = (int)strlen(str);
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-		KviMemory::move(m_ptr,str,m_len+1);
-	} else {
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,1);
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		KviMemory::move(m_ptr, str, m_len + 1);
+	}
+	else
+	{
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
@@ -1224,28 +1338,28 @@ KviCString & KviCString::operator=(const char *str)
 
 void KviCString::clear()
 {
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
 	*m_ptr = '\0';
 	m_len = 0;
 }
-
 
 bool KviCString::hasNonWhiteSpaceData() const
 {
 	const char * aux = m_ptr;
 	while(*aux)
 	{
-		if(((*aux) != ' ') && ((*aux) != '\t'))return true;
+		if(((*aux) != ' ') && ((*aux) != '\t'))
+			return true;
 		aux++;
 	}
 	return false;
 }
 
-void KviCString::bufferToHex(const char *buffer,int len)
+void KviCString::bufferToHex(const char * buffer, int len)
 {
 	KVI_ASSERT(buffer);
 	m_len = (len * 2);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len + 1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
 	char * aux = m_ptr;
 	while(len)
 	{
@@ -1256,16 +1370,17 @@ void KviCString::bufferToHex(const char *buffer,int len)
 		len--;
 		buffer++;
 	}
-	*(m_ptr+m_len) = '\0';
+	*(m_ptr + m_len) = '\0';
 }
-
-
 
 static char get_decimal_from_hex_digit_char(char dgt)
 {
-	if((dgt >= '0') && (dgt <= '9'))return (dgt - '0');
-	if((dgt >= 'A') && (dgt <= 'F'))return (10 + (dgt - 'A'));
-	if((dgt >= 'a') && (dgt <= 'f'))return (10 + (dgt - 'a'));
+	if((dgt >= '0') && (dgt <= '9'))
+		return (dgt - '0');
+	if((dgt >= 'A') && (dgt <= 'F'))
+		return (10 + (dgt - 'A'));
+	if((dgt >= 'a') && (dgt <= 'f'))
+		return (10 + (dgt - 'a'));
 	return -1;
 }
 
@@ -1304,12 +1419,14 @@ int KviCString::hexToBuffer(char ** buffer,bool bNullToNewlines)
 }
 */
 
-int KviCString::hexToBuffer(char ** buffer,bool bNullToNewlines)
+int KviCString::hexToBuffer(char ** buffer, bool bNullToNewlines)
 {
 	*buffer = 0;
-	if((m_len == 0) || (m_len & 1))return -1; // this is an error
+	if((m_len == 0) || (m_len & 1))
+		return -1; // this is an error
 	int len = (m_len / 2);
-	if(len < 1)return -1;
+	if(len < 1)
+		return -1;
 	*buffer = (char *)KviMemory::allocate(len);
 
 	char * ptr = *buffer;
@@ -1336,7 +1453,9 @@ int KviCString::hexToBuffer(char ** buffer,bool bNullToNewlines)
 		}
 		*ptr += aux2;
 		aux++;
-		if(bNullToNewlines)if(!(*ptr))*ptr = '\n';
+		if(bNullToNewlines)
+			if(!(*ptr))
+				*ptr = '\n';
 		ptr++;
 	}
 	return len;
@@ -1344,15 +1463,15 @@ int KviCString::hexToBuffer(char ** buffer,bool bNullToNewlines)
 
 static const char * base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-
-void KviCString::bufferToBase64(const char * buffer,int len)
+void KviCString::bufferToBase64(const char * buffer, int len)
 {
 	m_len = (len / 3) << 2;
-	if(len % 3)m_len += 4;
+	if(len % 3)
+		m_len += 4;
 
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len + 1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
 
-	unsigned char aux1,aux2,aux3;
+	unsigned char aux1, aux2, aux3;
 	char * aux_ptr = m_ptr;
 	while(len > 2)
 	{
@@ -1374,7 +1493,7 @@ void KviCString::bufferToBase64(const char * buffer,int len)
 			*aux_ptr++ = base64_chars[((aux1 & 0x03) << 4) | ((aux2 & 0xF0) >> 4)];
 			*aux_ptr++ = base64_chars[((aux2 & 0x0F) << 2)];
 			*aux_ptr++ = '=';
-		break;
+			break;
 		case 1:
 			aux1 = (unsigned char)*buffer++;
 			aux2 = (unsigned char)*buffer++;
@@ -1382,33 +1501,39 @@ void KviCString::bufferToBase64(const char * buffer,int len)
 			*aux_ptr++ = base64_chars[((aux1 & 0x03) << 4)];
 			*aux_ptr++ = '=';
 			*aux_ptr++ = '=';
-		break;
+			break;
 	}
 	*aux_ptr = 0;
 }
 
 static unsigned char get_base64_idx(char base64)
 {
-	if((base64 >= 'A') && (base64 <= 'Z'))return (base64 - 'A');
-	if((base64 >= 'a') && (base64 <= 'z'))return ((base64 - 'a') + 26);
-	if((base64 >= '0') && (base64 <= '9'))return ((base64 - '0') + 52);
-	if(base64 == '+')return 62;
-	if(base64 == '/')return 63;
-	if(base64 == '=')return 64;
+	if((base64 >= 'A') && (base64 <= 'Z'))
+		return (base64 - 'A');
+	if((base64 >= 'a') && (base64 <= 'z'))
+		return ((base64 - 'a') + 26);
+	if((base64 >= '0') && (base64 <= '9'))
+		return ((base64 - '0') + 52);
+	if(base64 == '+')
+		return 62;
+	if(base64 == '/')
+		return 63;
+	if(base64 == '=')
+		return 64;
 	return 65;
 }
 
-
-int KviCString::base64ToBuffer(char ** buffer,bool)
+int KviCString::base64ToBuffer(char ** buffer, bool)
 {
 	*buffer = 0;
-	if((m_len == 0) || (m_len & 3))return -1; // this is an error
+	if((m_len == 0) || (m_len & 3))
+		return -1; // this is an error
 	int len = (m_len >> 2) * 3;
 	*buffer = (char *)KviMemory::allocate(len);
 
 	char * auxBuf = *buffer;
 
-	unsigned char aux1,aux2,aux3,aux4;
+	unsigned char aux1, aux2, aux3, aux4;
 	char * aux_ptr = m_ptr;
 
 	int newLen = len;
@@ -1448,20 +1573,26 @@ int KviCString::base64ToBuffer(char ** buffer,bool)
 				// Double padding, only one digit here
 				*auxBuf++ = (char)((aux1 << 2) | (aux2 >> 4));
 				newLen -= 2;
-			} else {
+			}
+			else
+			{
 				// Single padding, two digits here
 				*auxBuf++ = (char)((aux1 << 2) | (aux2 >> 4)); // >> 4 is a shr, not a ror! :)
 				*auxBuf++ = (char)((aux2 << 4) | (aux3 >> 2));
 				newLen -= 1;
 			}
-		} else {
+		}
+		else
+		{
 			if(aux3 == 64)
 			{
 				// error... impossible padding
 				KviMemory::free(*buffer);
 				*buffer = 0;
 				return -1;
-			} else {
+			}
+			else
+			{
 				// Ok, no padding, three digits here
 				*auxBuf++ = (char)((aux1 << 2) | (aux2 >> 4));
 				*auxBuf++ = (char)((aux2 << 4) | (aux3 >> 2));
@@ -1470,11 +1601,12 @@ int KviCString::base64ToBuffer(char ** buffer,bool)
 		}
 	}
 
-	if(newLen != len)*buffer = (char *)KviMemory::reallocate(*buffer,newLen);
+	if(newLen != len)
+		*buffer = (char *)KviMemory::reallocate(*buffer, newLen);
 	return newLen;
 }
 
-KviCString & KviCString::setStr(const char *str,int len)
+KviCString & KviCString::setStr(const char * str, int len)
 {
 	if(!str)
 	{
@@ -1482,23 +1614,28 @@ KviCString & KviCString::setStr(const char *str,int len)
 		return *this;
 	}
 	int alen = (int)strlen(str);
-	if((len < 0) || (len > alen))m_len = alen;
-	else m_len = len;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-	KviMemory::move(m_ptr,str,m_len);
-	*(m_ptr+m_len) = '\0';
+	if((len < 0) || (len > alen))
+		m_len = alen;
+	else
+		m_len = len;
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	KviMemory::move(m_ptr, str, m_len);
+	*(m_ptr + m_len) = '\0';
 	return (*this);
 }
 
-KviCString & KviCString::operator=(const QString &str)
+KviCString & KviCString::operator=(const QString & str)
 {
 	QByteArray sz = str.toUtf8();
-	if(sz.length() > 0){
+	if(sz.length() > 0)
+	{
 		m_len = sz.length();
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-		KviMemory::copy(m_ptr,sz.data(),m_len+1);
-	} else {
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,1);
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		KviMemory::copy(m_ptr, sz.data(), m_len + 1);
+	}
+	else
+	{
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
@@ -1508,79 +1645,83 @@ KviCString & KviCString::operator=(const QString &str)
 KviCString & KviCString::operator=(char c)
 {
 	m_len = 1;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,2);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, 2);
 	*m_ptr = c;
-	*(m_ptr+1)='\0';
+	*(m_ptr + 1) = '\0';
 	return (*this);
 }
 
 void KviCString::append(char c)
 {
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+2);
-	*(m_ptr+m_len)=c;
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 2);
+	*(m_ptr + m_len) = c;
 	m_len++;
-	*(m_ptr+m_len)='\0';
+	*(m_ptr + m_len) = '\0';
 }
 
-void KviCString::append(const KviCString &str)
+void KviCString::append(const KviCString & str)
 {
 	KVI_ASSERT(str.m_ptr);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+str.m_len+1);
-	KviMemory::copy((m_ptr+m_len),str.m_ptr,str.m_len+1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + str.m_len + 1);
+	KviMemory::copy((m_ptr + m_len), str.m_ptr, str.m_len + 1);
 	m_len += str.m_len;
 }
 
-void KviCString::append(const char *str)
+void KviCString::append(const char * str)
 {
-	if(!str)return;
+	if(!str)
+		return;
 	int len = (int)strlen(str);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+len+1);
-	KviMemory::copy((m_ptr+m_len),str,len+1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + len + 1);
+	KviMemory::copy((m_ptr + m_len), str, len + 1);
 	m_len += len;
 }
 
-void KviCString::append(const QString &str)
+void KviCString::append(const QString & str)
 {
 	QByteArray sz = str.toUtf8();
-	if(sz.length() < 1)return;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+sz.length()+1);
-	KviMemory::copy((m_ptr+m_len),sz.data(),sz.length()+1);
+	if(sz.length() < 1)
+		return;
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + sz.length() + 1);
+	KviMemory::copy((m_ptr + m_len), sz.data(), sz.length() + 1);
 	m_len += sz.length();
 }
 
-void KviCString::append(const char *str,int len)
+void KviCString::append(const char * str, int len)
 {
 	KVI_ASSERT(str);
-//	KVI_ASSERT(len <= ((int)strlen(str)));
+	//	KVI_ASSERT(len <= ((int)strlen(str)));
 	KVI_ASSERT(len >= 0);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+len+1);
-	KviMemory::copy((m_ptr+m_len),str,len);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + len + 1);
+	KviMemory::copy((m_ptr + m_len), str, len);
 	m_len += len;
-	*(m_ptr + m_len)='\0';
+	*(m_ptr + m_len) = '\0';
 }
 
-void KviCString::append(KviFormatConstructorTag,const char *fmt,...)
+void KviCString::append(KviFormatConstructorTag, const char * fmt, ...)
 {
 	int auxLen;
-	m_ptr=(char *)KviMemory::reallocate(m_ptr,m_len + 256);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 256);
 	//First try
 	kvi_va_list list;
-	kvi_va_start(list,fmt);
+	kvi_va_start(list, fmt);
 	//print...with max 256 chars
-	auxLen =kvi_vsnprintf(m_ptr + m_len,256,fmt,list);
+	auxLen = kvi_vsnprintf(m_ptr + m_len, 256, fmt, list);
 	kvi_va_end(list);
 
 	//check if we failed
-	if(auxLen < 0){
+	if(auxLen < 0)
+	{
 		//yes, failed....
-		int dummy=256;
-		do{ //we failed, so retry with 256 more chars
-			dummy+=256;
+		int dummy = 256;
+		do
+		{ //we failed, so retry with 256 more chars
+			dummy += 256;
 			//realloc
-			m_ptr=(char *)KviMemory::reallocate(m_ptr,m_len + dummy);
+			m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + dummy);
 			//print...
-			kvi_va_start(list,fmt);
-			auxLen=kvi_vsnprintf(m_ptr + m_len,dummy,fmt,list);
+			kvi_va_start(list, fmt);
+			auxLen = kvi_vsnprintf(m_ptr + m_len, dummy, fmt, list);
 			kvi_va_end(list);
 		} while(auxLen < 0);
 	}
@@ -1588,53 +1729,53 @@ void KviCString::append(KviFormatConstructorTag,const char *fmt,...)
 	//done...
 	//now m_len is the length of the written string not including the terminator...
 	//perfect! :)
-	m_ptr=(char *)KviMemory::reallocate(m_ptr,m_len+1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
 }
 
-void KviCString::extractFromString(const char *begin,const char *end)
+void KviCString::extractFromString(const char * begin, const char * end)
 {
 	KVI_ASSERT(begin);
 	KVI_ASSERT(end);
 	KVI_ASSERT(end >= begin);
-	m_len = end-begin;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-	KviMemory::copy(m_ptr,begin,m_len);
-	*(m_ptr + m_len)='\0';
+	m_len = end - begin;
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	KviMemory::copy(m_ptr, begin, m_len);
+	*(m_ptr + m_len) = '\0';
 }
 
-void KviCString::prepend(const KviCString &str)
+void KviCString::prepend(const KviCString & str)
 {
 	KVI_ASSERT(str.m_ptr);
 	KVI_ASSERT(str.m_ptr != m_ptr);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+str.m_len+1);
-	KviMemory::move((m_ptr+str.m_len),m_ptr,m_len+1); //move self
-	KviMemory::copy(m_ptr,str.m_ptr,str.m_len);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + str.m_len + 1);
+	KviMemory::move((m_ptr + str.m_len), m_ptr, m_len + 1); //move self
+	KviMemory::copy(m_ptr, str.m_ptr, str.m_len);
 	m_len += str.m_len;
 }
 
-void KviCString::prepend(const char *str)
+void KviCString::prepend(const char * str)
 {
-	if(!str)return;
+	if(!str)
+		return;
 	int len = (int)strlen(str);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+len+1);
-	KviMemory::move((m_ptr+len),m_ptr,m_len+1); //move self
-	KviMemory::copy(m_ptr,str,len);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + len + 1);
+	KviMemory::move((m_ptr + len), m_ptr, m_len + 1); //move self
+	KviMemory::copy(m_ptr, str, len);
 	m_len += len;
 }
 
-void KviCString::prepend(const char *str,int len)
+void KviCString::prepend(const char * str, int len)
 {
 	KVI_ASSERT(str);
 	KVI_ASSERT(len <= ((int)strlen(str)));
 	KVI_ASSERT(len >= 0);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+len+1);
-	KviMemory::move((m_ptr+len),m_ptr,m_len+1); //move self
-	KviMemory::copy(m_ptr,str,len);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + len + 1);
+	KviMemory::move((m_ptr + len), m_ptr, m_len + 1); //move self
+	KviMemory::copy(m_ptr, str, len);
 	m_len += len;
 }
 
-unsigned char iso88591_toUpper_map[256]=
-{
+unsigned char iso88591_toUpper_map[256] = {
 	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
 	0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
 	0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
@@ -1671,26 +1812,25 @@ unsigned char iso88591_toUpper_map[256]=
 
 void KviCString::toUpperISO88591()
 {
-	char *p=m_ptr;
+	char * p = m_ptr;
 	while(*p)
 	{
-		*p=(char)iso88591_toUpper_map[(unsigned char)*p];
+		*p = (char)iso88591_toUpper_map[(unsigned char)*p];
 		p++;
 	}
 }
 
 void KviCString::toUpper()
 {
-	char *p=m_ptr;
+	char * p = m_ptr;
 	while(*p)
 	{
-		*p=toupper(*p);
+		*p = toupper(*p);
 		p++;
 	}
 }
 
-unsigned char iso88591_toLower_map[256]=
-{
+unsigned char iso88591_toLower_map[256] = {
 	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
 	0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
 	0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
@@ -1727,21 +1867,20 @@ unsigned char iso88591_toLower_map[256]=
 
 void KviCString::toLowerISO88591()
 {
-	char *p=m_ptr;
+	char * p = m_ptr;
 	while(*p)
 	{
-		*p=(char)iso88591_toLower_map[(unsigned char)*p];
+		*p = (char)iso88591_toLower_map[(unsigned char)*p];
 		p++;
 	}
 }
 
-
 void KviCString::toLower()
 {
-	char *p=m_ptr;
+	char * p = m_ptr;
 	while(*p)
 	{
-		*p=tolower(*p);
+		*p = tolower(*p);
 		p++;
 	}
 }
@@ -1781,8 +1920,9 @@ KviCString KviCString::left(int maxLen) const
 		KviCString empty;
 		return empty;
 	}
-	if(maxLen > m_len)maxLen=m_len;
-	KviCString str(m_ptr,maxLen);
+	if(maxLen > m_len)
+		maxLen = m_len;
+	KviCString str(m_ptr, maxLen);
 	return str;
 }
 
@@ -1793,25 +1933,29 @@ KviCString KviCString::right(int maxLen) const
 		KviCString empty;
 		return empty;
 	}
-	if(maxLen > m_len)maxLen=m_len;
-	KviCString str((m_ptr+(m_len-maxLen)),maxLen);
+	if(maxLen > m_len)
+		maxLen = m_len;
+	KviCString str((m_ptr + (m_len - maxLen)), maxLen);
 	return str;
 }
 
-KviCString KviCString::middle(int idx,int maxLen) const
+KviCString KviCString::middle(int idx, int maxLen) const
 {
 	KVI_ASSERT(maxLen >= 0);
 	KVI_ASSERT(idx >= 0);
-	if((maxLen <= 0) || (idx < 0)){ //max len negative...invalid params
+	if((maxLen <= 0) || (idx < 0))
+	{ //max len negative...invalid params
 		KviCString ret;
 		return ret;
 	}
-	if((maxLen + idx) <= m_len){ //valid params
-		KviCString str(m_ptr+idx,maxLen);
+	if((maxLen + idx) <= m_len)
+	{ //valid params
+		KviCString str(m_ptr + idx, maxLen);
 		return str;
 	}
-	if(idx < m_len){ //string shorter than requested
-		KviCString str(m_ptr+idx);
+	if(idx < m_len)
+	{ //string shorter than requested
+		KviCString str(m_ptr + idx);
 		return str;
 	}
 	// idx out of bounds
@@ -1819,7 +1963,7 @@ KviCString KviCString::middle(int idx,int maxLen) const
 	return ret;
 }
 
-KviCString ** KviCString::splitToArray(char sep,int max,int * realCount) const
+KviCString ** KviCString::splitToArray(char sep, int max, int * realCount) const
 {
 	KviCString ** strings = (KviCString **)KviMemory::allocate(sizeof(KviCString *));
 	int number = 0;
@@ -1827,12 +1971,15 @@ KviCString ** KviCString::splitToArray(char sep,int max,int * realCount) const
 	char * last = ptr;
 	while((max > 0) && *ptr)
 	{
-		strings = (KviCString **)KviMemory::reallocate((void *)strings,sizeof(KviCString *) * (number + 2));
+		strings = (KviCString **)KviMemory::reallocate((void *)strings, sizeof(KviCString *) * (number + 2));
 		if(max > 1)
 		{
-			while(*ptr && (*ptr != sep))ptr++;
-			strings[number] = new KviCString(last,ptr - last);
-		} else {
+			while(*ptr && (*ptr != sep))
+				ptr++;
+			strings[number] = new KviCString(last, ptr - last);
+		}
+		else
+		{
 			strings[number] = new KviCString(ptr);
 		}
 		number++;
@@ -1843,7 +1990,8 @@ KviCString ** KviCString::splitToArray(char sep,int max,int * realCount) const
 			last = ptr;
 		}
 	}
-	if(realCount)*realCount = number;
+	if(realCount)
+		*realCount = number;
 	strings[number] = 0;
 	return strings;
 }
@@ -1882,11 +2030,12 @@ KviCString ** KviCString::splitToArray(const char * sep,int max,int * realCount)
 */
 void KviCString::freeArray(KviCString ** strings)
 {
-	if(!strings)return;
+	if(!strings)
+		return;
 	KviCString ** aux = strings;
 	while(*aux)
 	{
-		delete (*aux); // delete (KviCString *)
+		delete(*aux); // delete (KviCString *)
 		aux++;
 	}
 	KviMemory::free(strings);
@@ -1894,14 +2043,16 @@ void KviCString::freeArray(KviCString ** strings)
 
 void KviCString::freeBuffer(char * buffer)
 {
-	if(!buffer)return;
+	if(!buffer)
+		return;
 	KviMemory::free(buffer);
 }
 
-void KviCString::joinFromArray(KviCString ** strings,const char * sep,bool bLastSep)
+void KviCString::joinFromArray(KviCString ** strings, const char * sep, bool bLastSep)
 {
 	setLen(0);
-	if(!strings)return;
+	if(!strings)
+		return;
 
 	while(*strings)
 	{
@@ -1909,31 +2060,37 @@ void KviCString::joinFromArray(KviCString ** strings,const char * sep,bool bLast
 		strings++;
 		if(*strings)
 		{
-			if(sep)append(sep);
-		} else {
-			if(sep && bLastSep)append(sep);
+			if(sep)
+				append(sep);
+		}
+		else
+		{
+			if(sep && bLastSep)
+				append(sep);
 		}
 	}
 }
 
-KviCString & KviCString::insert(int idx,const char *data)
+KviCString & KviCString::insert(int idx, const char * data)
 {
 	KVI_ASSERT(data);
-	if(idx <= m_len){
+	if(idx <= m_len)
+	{
 		int len = (int)strlen(data);
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+len+1);
-		KviMemory::move(m_ptr+idx+len,m_ptr+idx,(m_len - idx)+1);
-		KviMemory::copy(m_ptr+idx,data,len);
-		m_len+=len;
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + len + 1);
+		KviMemory::move(m_ptr + idx + len, m_ptr + idx, (m_len - idx) + 1);
+		KviMemory::copy(m_ptr + idx, data, len);
+		m_len += len;
 	}
 	return (*this);
 }
 
-KviCString & KviCString::insert(int idx,char c)
+KviCString & KviCString::insert(int idx, char c)
 {
-	if(idx <= m_len){
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+2);
-		KviMemory::move(m_ptr+idx+1,m_ptr+idx,(m_len - idx)+1);
+	if(idx <= m_len)
+	{
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 2);
+		KviMemory::move(m_ptr + idx + 1, m_ptr + idx, (m_len - idx) + 1);
 		m_len++;
 		*(m_ptr + idx) = c;
 	}
@@ -1947,7 +2104,7 @@ KviCString & KviCString::hexEncodeWithTable(const unsigned char table[256])
 	char * aux = m_ptr;
 	char * begin = m_ptr;
 
-	char * n  = 0;
+	char * n = 0;
 	int curSize = 0;
 
 	while(*aux)
@@ -1955,8 +2112,8 @@ KviCString & KviCString::hexEncodeWithTable(const unsigned char table[256])
 		if(table[*((unsigned char *)aux)] || (*aux == '%'))
 		{
 			int len = aux - begin;
-			n = (char *)KviMemory::reallocate(n,curSize + len + 3);
-			KviMemory::move(n + curSize,begin,len);
+			n = (char *)KviMemory::reallocate(n, curSize + len + 3);
+			KviMemory::move(n + curSize, begin, len);
 			curSize += len;
 
 			n[curSize] = '%';
@@ -1968,13 +2125,14 @@ KviCString & KviCString::hexEncodeWithTable(const unsigned char table[256])
 
 			aux++;
 			begin = aux;
-
-		} else aux++;
+		}
+		else
+			aux++;
 	}
 
 	int len = aux - begin;
-	n = (char *)KviMemory::reallocate(n,curSize + len + 1);
-	KviMemory::move(n + curSize,begin,len);
+	n = (char *)KviMemory::reallocate(n, curSize + len + 1);
+	KviMemory::move(n + curSize, begin, len);
 	curSize += len;
 
 	n[curSize] = '\0';
@@ -1988,8 +2146,7 @@ KviCString & KviCString::hexEncodeWithTable(const unsigned char table[256])
 
 KviCString & KviCString::hexEncodeWhiteSpace()
 {
-	static unsigned char ascii_jump_table[256]=
-	{
+	static unsigned char ascii_jump_table[256] = {
 		// clang-format off
 		//	000 001 002 003 004 005 006 007   008 009 010 011 012 013 014 015
 		//	NUL SOH STX ETX EOT ENQ ACK BEL   BS  HT  LF  VT  FF  CR  SO  SI
@@ -2039,7 +2196,7 @@ KviCString & KviCString::hexEncodeWhiteSpace()
 		//	240 241 242 243 244 245 246 247   248 249 250 251 252 253 254 255
 		//	�  �  �  �  �  �  �  �
 			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0
-				// clang-format on
+		// clang-format on
 	};
 
 	return hexEncodeWithTable(ascii_jump_table);
@@ -2051,7 +2208,7 @@ KviCString & KviCString::hexDecode(const char * pFrom)
 	const char * aux = pFrom;
 	const char * begin = pFrom;
 
-	char * n  = 0;
+	char * n = 0;
 	int curSize = 0;
 
 	while(*aux)
@@ -2060,8 +2217,8 @@ KviCString & KviCString::hexDecode(const char * pFrom)
 		{
 			// move last block
 			int len = aux - begin;
-			n = (char *)KviMemory::reallocate(n,curSize + len + 1);
-			KviMemory::move(n + curSize,begin,len);
+			n = (char *)KviMemory::reallocate(n, curSize + len + 1);
+			KviMemory::move(n + curSize, begin, len);
 			curSize += len;
 
 			// get the hex code
@@ -2072,7 +2229,9 @@ KviCString & KviCString::hexDecode(const char * pFrom)
 			{
 				n[curSize] = '%'; // wrong code...just a '%'
 				curSize++;
-			} else {
+			}
+			else
+			{
 				aux++;
 				char theChar2 = get_decimal_from_hex_digit_char(*aux);
 				if(theChar2 < 0)
@@ -2081,7 +2240,9 @@ KviCString & KviCString::hexDecode(const char * pFrom)
 					n[curSize] = '%';
 					curSize++;
 					aux--;
-				} else {
+				}
+				else
+				{
 					n[curSize] = (theChar * 16) + theChar2;
 					curSize++;
 					aux++;
@@ -2089,13 +2250,14 @@ KviCString & KviCString::hexDecode(const char * pFrom)
 			}
 
 			begin = aux;
-
-		} else aux++;
+		}
+		else
+			aux++;
 	}
 
 	int len = aux - begin;
-	n = (char *)KviMemory::reallocate(n,curSize + len + 2);
-	KviMemory::move(n + curSize,begin,len);
+	n = (char *)KviMemory::reallocate(n, curSize + len + 2);
+	KviMemory::move(n + curSize, begin, len);
 	curSize += len;
 	n[curSize] = '\0';
 
@@ -2106,52 +2268,56 @@ KviCString & KviCString::hexDecode(const char * pFrom)
 	return (*this);
 }
 
-KviCString & KviCString::replaceAll(const char c,const char *str)
+KviCString & KviCString::replaceAll(const char c, const char * str)
 {
 	int idx = findFirstIdx(c);
 	KviCString tmp;
-	while(idx >= 0){
-		if(idx > 0)tmp += left(idx);
-		cutLeft(idx+1);
+	while(idx >= 0)
+	{
+		if(idx > 0)
+			tmp += left(idx);
+		cutLeft(idx + 1);
 		tmp.append(str);
 		idx = findFirstIdx(c);
 	}
 	tmp.append(*this);
 	// Now copy
 	m_len = tmp.m_len;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-	KviMemory::copy(m_ptr,tmp.m_ptr,m_len+1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	KviMemory::copy(m_ptr, tmp.m_ptr, m_len + 1);
 	return (*this);
 }
 
-KviCString & KviCString::replaceAll(const char *toFind,const char *str,bool bCaseS)
+KviCString & KviCString::replaceAll(const char * toFind, const char * str, bool bCaseS)
 {
 	int len = (int)strlen(toFind);
-	int idx = findFirstIdx(toFind,bCaseS);
+	int idx = findFirstIdx(toFind, bCaseS);
 	KviCString tmp;
 	while(idx >= 0)
 	{
-		if(idx > 0)tmp += left(idx);
-		cutLeft(idx+len);
+		if(idx > 0)
+			tmp += left(idx);
+		cutLeft(idx + len);
 		tmp.append(str);
-		idx = findFirstIdx(toFind,bCaseS);
+		idx = findFirstIdx(toFind, bCaseS);
 	}
 	tmp.append(*this);
 	// Now copy
 	m_len = tmp.m_len;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-	KviMemory::copy(m_ptr,tmp.m_ptr,m_len+1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	KviMemory::copy(m_ptr, tmp.m_ptr, m_len + 1);
 	return (*this);
 }
 
-KviCString & KviCString::transliterate(const char * szToFind,const char * szReplacement)
+KviCString & KviCString::transliterate(const char * szToFind, const char * szReplacement)
 {
 	while(*szToFind && *szReplacement)
 	{
 		char * p = m_ptr;
 		while(*p)
 		{
-			if(*p == *szToFind)*p = *szReplacement;
+			if(*p == *szToFind)
+				*p = *szReplacement;
 			++p;
 		}
 		++szToFind;
@@ -2160,76 +2326,37 @@ KviCString & KviCString::transliterate(const char * szToFind,const char * szRepl
 	return (*this);
 }
 
-
-int KviCString::occurrences(char c,bool caseS) const
+int KviCString::occurrences(char c, bool caseS) const
 {
-	char *p = m_ptr;
-	int cnt=0;
-	if(caseS){
-		while(*p){
-			if(*p == c)cnt++;
-			p++;
-		}
-	} else {
-		char b=tolower(c);
-		while(*p){
-			if(tolower(*p) == b)cnt++;
-			p++;
-		}
-	}
-	return cnt;
-}
-
-int KviCString::occurrences(const char *str,bool caseS) const
-{
-	KVI_ASSERT(str);
-	char *p = m_ptr;
-	int cnt=0;
-	int len = (int)strlen(str);
-	if(caseS){
-		while(*p){
-			if(*p == *str){
-				if(kvi_strEqualCSN(p,str,len))cnt++;
-			}
-			p++;
-		}
-	} else {
-		while(*p){
-			char c = tolower(*str);
-			if(tolower(*p) == c){
-				if(kvi_strEqualCIN(p,str,len))cnt++;
-			}
-			p++;
-		}
-	}
-	return cnt;
-}
-
-bool KviCString::contains(char c,bool caseS) const
-{
-	char *p = m_ptr;
+	char * p = m_ptr;
+	int cnt = 0;
 	if(caseS)
 	{
 		while(*p)
 		{
-			if(*p == c)return true;
-			p++;
-		}
-	} else {
-		char b=tolower(c);
-		while(*p)
-		{
-			if(tolower(*p) == b)return true;
+			if(*p == c)
+				cnt++;
 			p++;
 		}
 	}
-	return false;
+	else
+	{
+		char b = tolower(c);
+		while(*p)
+		{
+			if(tolower(*p) == b)
+				cnt++;
+			p++;
+		}
+	}
+	return cnt;
 }
 
-bool KviCString::contains(const char *str,bool caseS) const
+int KviCString::occurrences(const char * str, bool caseS) const
 {
 	KVI_ASSERT(str);
-	char *p = m_ptr;
+	char * p = m_ptr;
+	int cnt = 0;
 	int len = (int)strlen(str);
 	if(caseS)
 	{
@@ -2237,17 +2364,79 @@ bool KviCString::contains(const char *str,bool caseS) const
 		{
 			if(*p == *str)
 			{
-				if(kvi_strEqualCSN(p,str,len))return true;
+				if(kvi_strEqualCSN(p, str, len))
+					cnt++;
 			}
 			p++;
 		}
-	} else {
+	}
+	else
+	{
 		while(*p)
 		{
 			char c = tolower(*str);
 			if(tolower(*p) == c)
 			{
-				if(kvi_strEqualCIN(p,str,len))return true;
+				if(kvi_strEqualCIN(p, str, len))
+					cnt++;
+			}
+			p++;
+		}
+	}
+	return cnt;
+}
+
+bool KviCString::contains(char c, bool caseS) const
+{
+	char * p = m_ptr;
+	if(caseS)
+	{
+		while(*p)
+		{
+			if(*p == c)
+				return true;
+			p++;
+		}
+	}
+	else
+	{
+		char b = tolower(c);
+		while(*p)
+		{
+			if(tolower(*p) == b)
+				return true;
+			p++;
+		}
+	}
+	return false;
+}
+
+bool KviCString::contains(const char * str, bool caseS) const
+{
+	KVI_ASSERT(str);
+	char * p = m_ptr;
+	int len = (int)strlen(str);
+	if(caseS)
+	{
+		while(*p)
+		{
+			if(*p == *str)
+			{
+				if(kvi_strEqualCSN(p, str, len))
+					return true;
+			}
+			p++;
+		}
+	}
+	else
+	{
+		while(*p)
+		{
+			char c = tolower(*str);
+			if(tolower(*p) == c)
+			{
+				if(kvi_strEqualCIN(p, str, len))
+					return true;
 			}
 			p++;
 		}
@@ -2255,14 +2444,13 @@ bool KviCString::contains(const char *str,bool caseS) const
 	return false;
 }
 
-
 KviCString & KviCString::setNum(long num)
 {
 	char numberBuffer[30];
 	bool bNegative = false;
 	long tmp;
-	char *p;
-	char *pNumBuf = numberBuffer;
+	char * p;
+	char * pNumBuf = numberBuffer;
 
 	// somebody can explain me why 	-(-2147483648) = -2147483648 ? (2^31)
 	// it is like signed char x = 128 ---> 10000000 that is signed -0 (!?)
@@ -2287,34 +2475,43 @@ KviCString & KviCString::setNum(long num)
 
 	// so should i use temporaneous doubles to make calculations ?
 
-	if(num < 0){ //negative integer
+	if(num < 0)
+	{ //negative integer
 		bNegative = true;
 		num = -num; //need to have it positive
-		if(num < 0){ // 2^31 exception
+		if(num < 0)
+		{ // 2^31 exception
 			// We need to avoid absurd responses like ".(./),." :)
 			num = 0; // we get a negative zero here...it is still an exception
 		}
 	}
 
 	//write the number in a temporary buffer (at least '0')
-	do {
+	do
+	{
 		tmp = num / 10;
 		*pNumBuf++ = num - (tmp * 10) + '0';
 	} while((num = tmp));
 
 	//copy now....
 	m_len = pNumBuf - numberBuffer; //length of the number string
-	if(bNegative){
+	if(bNegative)
+	{
 		m_len++;
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-		p=m_ptr;
-		*p++='-';
-	} else {
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-		p=m_ptr;
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		p = m_ptr;
+		*p++ = '-';
 	}
-	do { *p++ = *--pNumBuf; } while(pNumBuf != numberBuffer);
-	*(m_ptr + m_len)='\0';
+	else
+	{
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		p = m_ptr;
+	}
+	do
+	{
+		*p++ = *--pNumBuf;
+	} while(pNumBuf != numberBuffer);
+	*(m_ptr + m_len) = '\0';
 	return (*this);
 }
 
@@ -2322,135 +2519,184 @@ KviCString & KviCString::setNum(unsigned long num)
 {
 	char numberBuffer[30];
 	unsigned long tmp;
-	char *p;
-	char *pNumBuf = numberBuffer;
+	char * p;
+	char * pNumBuf = numberBuffer;
 
 	//write the number in a temporary buffer (at least '0')
-	do {
+	do
+	{
 		tmp = num / 10;
 		*pNumBuf++ = num - (tmp * 10) + '0';
 	} while((num = tmp));
 
 	//copy now....
 	m_len = pNumBuf - numberBuffer; //length of the number string
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-	p=m_ptr;
-	do { *p++ = *--pNumBuf; } while(pNumBuf != numberBuffer);
-	*(m_ptr + m_len)='\0';
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	p = m_ptr;
+	do
+	{
+		*p++ = *--pNumBuf;
+	} while(pNumBuf != numberBuffer);
+	*(m_ptr + m_len) = '\0';
 	return (*this);
 }
 
-long long KviCString::toLongLong(bool *bOk) const
+long long KviCString::toLongLong(bool * bOk) const
 {
 	long long result = 0;
-	if(bOk)*bOk = false;
-	char *p=m_ptr;
+	if(bOk)
+		*bOk = false;
+	char * p = m_ptr;
 	bool bNeg = false;
-	while(isspace(*p))p++; //skip spaces
-	if(*p == '-'){
+	while(isspace(*p))
+		p++; //skip spaces
+	if(*p == '-')
+	{
 		bNeg = true;
 		p++;
-	} else {
-		if(*p == '+')p++;
 	}
-	if(isdigit(*p)){                      //point to something interesting ?
-		do{
+	else
+	{
+		if(*p == '+')
+			p++;
+	}
+	if(isdigit(*p))
+	{ //point to something interesting ?
+		do
+		{
 			result = (result * 10) + (*p - '0');
 			p++;
 		} while(isdigit(*p));
-		if(bNeg)result = -result;
-		while(isspace(*p))p++;        //skip trailing spaces
-		if(*p)return 0;               //if this is not the end...die.
-		if(bOk)*bOk = true;
+		if(bNeg)
+			result = -result;
+		while(isspace(*p))
+			p++; //skip trailing spaces
+		if(*p)
+			return 0; //if this is not the end...die.
+		if(bOk)
+			*bOk = true;
 		return result;
 	}
 	return 0;
 }
 
-unsigned long long KviCString::toULongLong(bool *bOk) const
+unsigned long long KviCString::toULongLong(bool * bOk) const
 {
 	unsigned long long result = 0;
-	if(bOk)*bOk = false;
-	char *p=m_ptr;
-	while(isspace(*p))p++; //skip spaces
-	if(isdigit(*p)){                      //point to something interesting ?
-		do{
+	if(bOk)
+		*bOk = false;
+	char * p = m_ptr;
+	while(isspace(*p))
+		p++; //skip spaces
+	if(isdigit(*p))
+	{ //point to something interesting ?
+		do
+		{
 			result = (result * 10) + (*p - '0');
 			p++;
 		} while(isdigit(*p));
-		while(isspace(*p))p++;        //skip trailing spaces
-		if(*p)return 0;               //if this is not the end...die.
-		if(bOk)*bOk = true;
+		while(isspace(*p))
+			p++; //skip trailing spaces
+		if(*p)
+			return 0; //if this is not the end...die.
+		if(bOk)
+			*bOk = true;
 		return result;
 	}
 	return 0;
 }
 
-long KviCString::toLong(bool *bOk) const
+long KviCString::toLong(bool * bOk) const
 {
 	long result = 0;
-	if(bOk)*bOk = false;
-	char *p=m_ptr;
+	if(bOk)
+		*bOk = false;
+	char * p = m_ptr;
 	bool bNeg = false;
-	while(isspace(*p))p++; //skip spaces
-	if(*p == '-'){
+	while(isspace(*p))
+		p++; //skip spaces
+	if(*p == '-')
+	{
 		bNeg = true;
 		p++;
-	} else {
-		if(*p == '+')p++;
 	}
-	if(isdigit(*p)){                      //point to something interesting ?
-		do{
+	else
+	{
+		if(*p == '+')
+			p++;
+	}
+	if(isdigit(*p))
+	{ //point to something interesting ?
+		do
+		{
 			result = (result * 10) + (*p - '0');
 			p++;
 		} while(isdigit(*p));
-		if(bNeg)result = -result;
-		while(isspace(*p))p++;        //skip trailing spaces
-		if(*p)return 0;               //if this is not the end...die.
-		if(bOk)*bOk = true;
+		if(bNeg)
+			result = -result;
+		while(isspace(*p))
+			p++; //skip trailing spaces
+		if(*p)
+			return 0; //if this is not the end...die.
+		if(bOk)
+			*bOk = true;
 		return result;
 	}
 	return 0;
 }
 
-unsigned long KviCString::toULong(bool *bOk) const
+unsigned long KviCString::toULong(bool * bOk) const
 {
 	unsigned long result = 0;
-	if(bOk)*bOk = false;
-	char *p=m_ptr;
-	while(isspace(*p))p++; //skip spaces
-	if(isdigit(*p)){                      //point to something interesting ?
-		do{
+	if(bOk)
+		*bOk = false;
+	char * p = m_ptr;
+	while(isspace(*p))
+		p++; //skip spaces
+	if(isdigit(*p))
+	{ //point to something interesting ?
+		do
+		{
 			result = (result * 10) + (*p - '0');
 			p++;
 		} while(isdigit(*p));
-		while(isspace(*p))p++;        //skip trailing spaces
-		if(*p)return 0;               //if this is not the end...die.
-		if(bOk)*bOk = true;
+		while(isspace(*p))
+			p++; //skip trailing spaces
+		if(*p)
+			return 0; //if this is not the end...die.
+		if(bOk)
+			*bOk = true;
 		return result;
 	}
 	return 0;
 }
 
-long KviCString::toLongExt(bool *bOk,int base)
+long KviCString::toLongExt(bool * bOk, int base)
 {
-	if(m_len == 0){
-		if(bOk)*bOk = false;
+	if(m_len == 0)
+	{
+		if(bOk)
+			*bOk = false;
 		return 0;
 	}
 	char * endptr;
-	long result = strtol(m_ptr,&endptr,base);
-	if(*endptr){
+	long result = strtol(m_ptr, &endptr, base);
+	if(*endptr)
+	{
 		// must be whitespaces, otherwise there is trailing garbage inside
-		while(isspace(*endptr) && (*endptr))endptr++;
-		if(*endptr){
+		while(isspace(*endptr) && (*endptr))
+			endptr++;
+		if(*endptr)
+		{
 			// still not at the end
 			// trailing garbage not allowed
-			if(bOk)*bOk = false;
+			if(bOk)
+				*bOk = false;
 			return result;
 		}
 	}
-	if(bOk)*bOk = true;
+	if(bOk)
+		*bOk = true;
 	return result;
 }
 
@@ -2474,12 +2720,15 @@ long KviCString::toLongExt(bool *bOk,int base)
 KviCString & KviCString::cutLeft(int len)
 {
 	KVI_ASSERT(len >= 0);
-	if(len <= m_len){
+	if(len <= m_len)
+	{
 		m_len -= len;
-		KviMemory::move(m_ptr,m_ptr+len,m_len+1);
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-	} else {
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,1);
+		KviMemory::move(m_ptr, m_ptr + len, m_len + 1);
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+	}
+	else
+	{
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
@@ -2489,109 +2738,122 @@ KviCString & KviCString::cutLeft(int len)
 KviCString & KviCString::cutRight(int len)
 {
 	KVI_ASSERT(len >= 0);
-	if(len <= m_len){
+	if(len <= m_len)
+	{
 		m_len -= len;
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-		*(m_ptr +m_len)='\0';
-	} else {
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,1);
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		*(m_ptr + m_len) = '\0';
+	}
+	else
+	{
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
 	return (*this);
 }
 
-KviCString & KviCString::cut(int idx,int len)
+KviCString & KviCString::cut(int idx, int len)
 {
 	KVI_ASSERT(idx >= 0);
 	KVI_ASSERT(len >= 0);
-	if(idx < m_len){
+	if(idx < m_len)
+	{
 		// idx = 3 len = 3 m_len = 10
 		// 0123456789
 		// abcdefghij
 		//    ^  ^
 		//   p1  p2
-		char * p1 = m_ptr+idx;
-		if(len + idx > m_len)len = m_len - idx;
-		char * p2 = p1+len;
-		KviMemory::move(p1,p2,(m_len - (len+idx)) +1);
+		char * p1 = m_ptr + idx;
+		if(len + idx > m_len)
+			len = m_len - idx;
+		char * p2 = p1 + len;
+		KviMemory::move(p1, p2, (m_len - (len + idx)) + 1);
 		m_len -= len;
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
 	}
 	return (*this);
 }
 
-KviCString & KviCString::cutToFirst(char c,bool bIncluded)
+KviCString & KviCString::cutToFirst(char c, bool bIncluded)
 {
 	int idx = findFirstIdx(c);
-	if(idx != -1)cutLeft(bIncluded ? idx + 1 : idx);
+	if(idx != -1)
+		cutLeft(bIncluded ? idx + 1 : idx);
 	return (*this);
 }
 
-KviCString KviCString::leftToFirst(char c,bool bIncluded) const
+KviCString KviCString::leftToFirst(char c, bool bIncluded) const
 {
 	int idx = findFirstIdx(c);
-	if(idx == -1)return KviCString(*this);
-	return KviCString(m_ptr,bIncluded ? idx + 1 : idx);
+	if(idx == -1)
+		return KviCString(*this);
+	return KviCString(m_ptr, bIncluded ? idx + 1 : idx);
 }
 
-
-KviCString KviCString::leftToLast(char c,bool bIncluded) const
+KviCString KviCString::leftToLast(char c, bool bIncluded) const
 {
 	int idx = findLastIdx(c);
-	return KviCString(m_ptr,bIncluded ? idx + 1 : idx);
+	return KviCString(m_ptr, bIncluded ? idx + 1 : idx);
 }
 
-KviCString & KviCString::cutFromFirst(char c,bool bIncluded)
+KviCString & KviCString::cutFromFirst(char c, bool bIncluded)
 {
 	int idx = findFirstIdx(c);
-	if(idx != -1)cutRight(bIncluded ? (m_len - idx) : (m_len - (idx + 1)));
+	if(idx != -1)
+		cutRight(bIncluded ? (m_len - idx) : (m_len - (idx + 1)));
 	return (*this);
 }
 
-KviCString & KviCString::cutToLast(char c,bool bIncluded)
+KviCString & KviCString::cutToLast(char c, bool bIncluded)
 {
 	int idx = findLastIdx(c);
-	if(idx != -1)cutLeft(bIncluded ? idx + 1 : idx);
+	if(idx != -1)
+		cutLeft(bIncluded ? idx + 1 : idx);
 	return (*this);
 }
 
-KviCString & KviCString::cutFromLast(char c,bool bIncluded)
+KviCString & KviCString::cutFromLast(char c, bool bIncluded)
 {
 	int idx = findLastIdx(c);
-	if(idx != -1)cutRight(bIncluded ? (m_len - idx) : (m_len - (idx + 1)));
+	if(idx != -1)
+		cutRight(bIncluded ? (m_len - idx) : (m_len - (idx + 1)));
 	return (*this);
 }
 
-KviCString & KviCString::cutToFirst(const char *c,bool bIncluded)
+KviCString & KviCString::cutToFirst(const char * c, bool bIncluded)
 {
 	int len = (int)strlen(c);
 	int idx = findFirstIdx(c);
-	if(idx != -1)cutLeft(bIncluded ? idx + len : idx);
+	if(idx != -1)
+		cutLeft(bIncluded ? idx + len : idx);
 	return (*this);
 }
 
-KviCString & KviCString::cutFromFirst(const char *c,bool bIncluded)
+KviCString & KviCString::cutFromFirst(const char * c, bool bIncluded)
 {
 	int len = (int)strlen(c);
 	int idx = findFirstIdx(c);
-	if(idx != -1)cutRight(bIncluded ? (m_len - idx) : (m_len - (idx + len)));
+	if(idx != -1)
+		cutRight(bIncluded ? (m_len - idx) : (m_len - (idx + len)));
 	return (*this);
 }
 
-KviCString & KviCString::cutToLast(const char *c,bool bIncluded)
+KviCString & KviCString::cutToLast(const char * c, bool bIncluded)
 {
 	int len = (int)strlen(c);
 	int idx = findLastIdx(c);
-	if(idx != -1)cutLeft(bIncluded ? idx + len : idx);
+	if(idx != -1)
+		cutLeft(bIncluded ? idx + len : idx);
 	return (*this);
 }
 
-KviCString & KviCString::cutFromLast(const char *c,bool bIncluded)
+KviCString & KviCString::cutFromLast(const char * c, bool bIncluded)
 {
 	int len = (int)strlen(c);
 	int idx = findLastIdx(c);
-	if(idx != -1)cutRight(bIncluded ? (m_len - idx) : (m_len - (idx + len)));
+	if(idx != -1)
+		cutRight(bIncluded ? (m_len - idx) : (m_len - (idx + len)));
 	return (*this);
 }
 
@@ -2599,7 +2861,7 @@ KviCString & KviCString::setLen(int iLen)
 {
 	KVI_ASSERT(iLen >= 0);
 	m_len = iLen;
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
 	*(m_ptr + m_len) = '\0';
 	return (*this);
 }
@@ -2607,216 +2869,263 @@ KviCString & KviCString::setLen(int iLen)
 KviCString & KviCString::padRight(int iLen, const char c)
 {
 	KVI_ASSERT(iLen >= 0);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,iLen+1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, iLen + 1);
 	*(m_ptr + iLen) = '\0';
 	if(iLen > m_len)
-		KviMemory::set(m_ptr+m_len,c,iLen-m_len);
+		KviMemory::set(m_ptr + m_len, c, iLen - m_len);
 	m_len = iLen;
 	return (*this);
 }
 
 KviCString & KviCString::stripLeftWhiteSpace()
 {
-	char *p=m_ptr;
-	while(isspace(*p))p++;
-	m_len -= (p-m_ptr);
-	KviMemory::move(m_ptr,p,m_len+1);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
+	char * p = m_ptr;
+	while(isspace(*p))
+		p++;
+	m_len -= (p - m_ptr);
+	KviMemory::move(m_ptr, p, m_len + 1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
 	return (*this);
 }
 
 KviCString & KviCString::stripLeft(char c)
 {
 	KVI_ASSERT(c != '\0');
-	char *p=m_ptr;
-	while(*p == c)p++;
-	m_len -= (p-m_ptr);
-	KviMemory::move(m_ptr,p,m_len+1);
-	m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
+	char * p = m_ptr;
+	while(*p == c)
+		p++;
+	m_len -= (p - m_ptr);
+	KviMemory::move(m_ptr, p, m_len + 1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
 	return (*this);
 }
 
-bool KviCString::getToken(KviCString & str,char sep)
+bool KviCString::getToken(KviCString & str, char sep)
 {
 	KVI_ASSERT(str.m_ptr);
 	KVI_ASSERT(str.m_ptr != m_ptr);
-	char *p=m_ptr;
+	char * p = m_ptr;
 	//skip to the end
-	while(*p && (*p != sep))p++;
+	while(*p && (*p != sep))
+		p++;
 	//0123456789
 	//abcd xyz
 	//^   ^
-	str.m_len = p-m_ptr;
-	str.m_ptr = (char *)KviMemory::reallocate(str.m_ptr,str.m_len+1);
-	KviMemory::copy(str.m_ptr,m_ptr,str.m_len);
-	*(str.m_ptr + str.m_len)='\0';
-	while(*p && (*p == sep))p++;
-	cutLeft(p-m_ptr);
+	str.m_len = p - m_ptr;
+	str.m_ptr = (char *)KviMemory::reallocate(str.m_ptr, str.m_len + 1);
+	KviMemory::copy(str.m_ptr, m_ptr, str.m_len);
+	*(str.m_ptr + str.m_len) = '\0';
+	while(*p && (*p == sep))
+		p++;
+	cutLeft(p - m_ptr);
 	return (m_len != 0);
 }
 
-bool KviCString::getLine(KviCString &str)
+bool KviCString::getLine(KviCString & str)
 {
 	KVI_ASSERT(str.m_ptr);
 	KVI_ASSERT(str.m_ptr != m_ptr);
-	if(m_len == 0)return false;
-	char *p=m_ptr;
+	if(m_len == 0)
+		return false;
+	char * p = m_ptr;
 	//skip to the end
-	while(*p && (*p != '\n'))p++;
+	while(*p && (*p != '\n'))
+		p++;
 	//0123456789
 	//abcd xyz
 	//^   ^
-	str.m_len = p-m_ptr;
-	str.m_ptr = (char *)KviMemory::reallocate(str.m_ptr,str.m_len+1);
-	KviMemory::copy(str.m_ptr,m_ptr,str.m_len);
-	*(str.m_ptr + str.m_len)='\0';
+	str.m_len = p - m_ptr;
+	str.m_ptr = (char *)KviMemory::reallocate(str.m_ptr, str.m_len + 1);
+	KviMemory::copy(str.m_ptr, m_ptr, str.m_len);
+	*(str.m_ptr + str.m_len) = '\0';
 	p++;
-	cutLeft(p-m_ptr);
+	cutLeft(p - m_ptr);
 	return true;
 }
 
 KviCString KviCString::getToken(char sep)
 {
-	char *p=m_ptr;
-	while(*p && (*p != sep))p++;
-	KviCString ret(m_ptr,p);
-	while(*p && (*p == sep))p++;
-	cutLeft(p-m_ptr);
+	char * p = m_ptr;
+	while(*p && (*p != sep))
+		p++;
+	KviCString ret(m_ptr, p);
+	while(*p && (*p == sep))
+		p++;
+	cutLeft(p - m_ptr);
 	return ret;
 }
 
-KviCString & KviCString::vsprintf(const char *fmt,kvi_va_list list)
+KviCString & KviCString::vsprintf(const char * fmt, kvi_va_list list)
 {
 	kvi_va_list save;
-	kvi_va_copy(save,list);
+	kvi_va_copy(save, list);
 
-	m_ptr=(char *)KviMemory::reallocate(m_ptr,256);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, 256);
 	//First try
 	//print...with max 256 chars
-	m_len=kvi_vsnprintf(m_ptr,256,fmt,list);
+	m_len = kvi_vsnprintf(m_ptr, 256, fmt, list);
 
 	//check if we failed
 	if(m_len < 0)
 	{
 		//yes, failed....
-		int dummy=256;
-		do { //we failed, so retry with 256 more chars
-			dummy+=256;
+		int dummy = 256;
+		do
+		{ //we failed, so retry with 256 more chars
+			dummy += 256;
 			//realloc
-			m_ptr=(char *)KviMemory::reallocate(m_ptr,dummy);
+			m_ptr = (char *)KviMemory::reallocate(m_ptr, dummy);
 			//print...
-			kvi_va_copy(list,save);
-			m_len=kvi_vsnprintf(m_ptr,dummy,fmt,list);
-		} while (m_len < 0);
+			kvi_va_copy(list, save);
+			m_len = kvi_vsnprintf(m_ptr, dummy, fmt, list);
+		} while(m_len < 0);
 	}
 	//done...
 	//now m_len is the length of the written string not including the terminator...
 	//perfect! :)
-	m_ptr=(char *)KviMemory::reallocate(m_ptr,m_len+1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
 	kvi_va_end(save);
 	return (*this);
 }
 
-KviCString & KviCString::sprintf(const char *fmt,...)
+KviCString & KviCString::sprintf(const char * fmt, ...)
 {
-	m_ptr=(char *)KviMemory::reallocate(m_ptr,256);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, 256);
 	//First try
 	kvi_va_list list;
-	kvi_va_start(list,fmt);
+	kvi_va_start(list, fmt);
 	//print...with max 256 chars
-	m_len=kvi_vsnprintf(m_ptr,256,fmt,list);
+	m_len = kvi_vsnprintf(m_ptr, 256, fmt, list);
 	kvi_va_end(list);
 
 	//check if we failed
-	if(m_len < 0){
+	if(m_len < 0)
+	{
 		//yes, failed....
-		int dummy=256;
-		do{ //we failed, so retry with 256 more chars
-			dummy+=256;
+		int dummy = 256;
+		do
+		{ //we failed, so retry with 256 more chars
+			dummy += 256;
 			//realloc
-			m_ptr=(char *)KviMemory::reallocate(m_ptr,dummy);
+			m_ptr = (char *)KviMemory::reallocate(m_ptr, dummy);
 			//print...
-			kvi_va_start(list,fmt);
-			m_len=kvi_vsnprintf(m_ptr,dummy,fmt,list);
+			kvi_va_start(list, fmt);
+			m_len = kvi_vsnprintf(m_ptr, dummy, fmt, list);
 			kvi_va_end(list);
 		} while(m_len < 0);
 	}
 	//done...
 	//now m_len is the length of the written string not including the terminator...
 	//perfect! :)
-	m_ptr=(char *)KviMemory::reallocate(m_ptr,m_len+1);
+	m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
 	return (*this);
 }
 
-int KviCString::find(const char *str,int idx,bool caseS) const
+int KviCString::find(const char * str, int idx, bool caseS) const
 {
-	if(idx >= m_len)return -1;
-	char *p=m_ptr + idx;
-	int len = (int)strlen(str);
-	if(caseS){
-		for(;;){
-			while(*p && (*p != *str))p++;
-			if(*p){
-				if(kvi_strEqualCSN(str,p,len))return (p-m_ptr);
-				else p++;
-			} else return -1;
-		}
-	} else {
-		for(;;){
-			char tmp = toupper(*str);
-			while(*p && (toupper(*p) != tmp))p++;
-			if(*p){
-				if(kvi_strEqualCIN(str,p,len))return (p-m_ptr);
-				else p++;
-			} else return -1;
-		}
-	}
-}
-
-int KviCString::find(char c,int idx) const
-{
-	if(idx >= m_len)return -1;
-	char *p=m_ptr + idx;
-	while(*p && (*p != c))p++;
-	return (*p ? p-m_ptr : -1);
-}
-
-
-int KviCString::findRev(const char *str,int idx,bool caseS) const
-{
-	if((m_len + idx) < 0)return -1;
-	char *p=m_ptr + m_len + idx;
+	if(idx >= m_len)
+		return -1;
+	char * p = m_ptr + idx;
 	int len = (int)strlen(str);
 	if(caseS)
 	{
 		for(;;)
 		{
-			while((p >= m_ptr) && (*p != *str))p--;
-			if(p >= m_ptr){
-				if(kvi_strEqualCSN(str,p,len))return (p-m_ptr);
-				else p--;
-			} else return -1;
+			while(*p && (*p != *str))
+				p++;
+			if(*p)
+			{
+				if(kvi_strEqualCSN(str, p, len))
+					return (p - m_ptr);
+				else
+					p++;
+			}
+			else
+				return -1;
 		}
-	} else {
-		for(;;){
+	}
+	else
+	{
+		for(;;)
+		{
 			char tmp = toupper(*str);
-			while((p >= m_ptr) && (toupper(*p) != tmp))p--;
-			if(p >= m_ptr){
-				if(kvi_strEqualCIN(str,p,len))return (p-m_ptr);
-				else p--;
-			} else return -1;
+			while(*p && (toupper(*p) != tmp))
+				p++;
+			if(*p)
+			{
+				if(kvi_strEqualCIN(str, p, len))
+					return (p - m_ptr);
+				else
+					p++;
+			}
+			else
+				return -1;
+		}
+	}
+}
+
+int KviCString::find(char c, int idx) const
+{
+	if(idx >= m_len)
+		return -1;
+	char * p = m_ptr + idx;
+	while(*p && (*p != c))
+		p++;
+	return (*p ? p - m_ptr : -1);
+}
+
+int KviCString::findRev(const char * str, int idx, bool caseS) const
+{
+	if((m_len + idx) < 0)
+		return -1;
+	char * p = m_ptr + m_len + idx;
+	int len = (int)strlen(str);
+	if(caseS)
+	{
+		for(;;)
+		{
+			while((p >= m_ptr) && (*p != *str))
+				p--;
+			if(p >= m_ptr)
+			{
+				if(kvi_strEqualCSN(str, p, len))
+					return (p - m_ptr);
+				else
+					p--;
+			}
+			else
+				return -1;
+		}
+	}
+	else
+	{
+		for(;;)
+		{
+			char tmp = toupper(*str);
+			while((p >= m_ptr) && (toupper(*p) != tmp))
+				p--;
+			if(p >= m_ptr)
+			{
+				if(kvi_strEqualCIN(str, p, len))
+					return (p - m_ptr);
+				else
+					p--;
+			}
+			else
+				return -1;
 		}
 	}
 }
 
 int KviCString::findFirstIdx(char c) const
 {
-	char *p=m_ptr;
-	while(*p && (*p != c))p++;
-	return (*p ? p-m_ptr : -1);
+	char * p = m_ptr;
+	while(*p && (*p != c))
+		p++;
+	return (*p ? p - m_ptr : -1);
 }
 
-int KviCString::findFirstIdx(const char *str,bool caseS) const
+int KviCString::findFirstIdx(const char * str, bool caseS) const
 {
 	// This function can't be used to search inside
 	// multibyte encoded strings... convert your
@@ -2834,25 +3143,42 @@ int KviCString::findFirstIdx(const char *str,bool caseS) const
 	// since a single UNICODE char may use one or more bytes...
 
 	KVI_ASSERT(str);
-	char *p=m_ptr;
+	char * p = m_ptr;
 	int len = (int)strlen(str);
-	if(caseS){
-		for(;;){
-			while(*p && (*p != *str))p++;
-			if(*p){
-				if(kvi_strEqualCSN(str,p,len))return (p-m_ptr);
-				else p++;
-			} else return -1;
+	if(caseS)
+	{
+		for(;;)
+		{
+			while(*p && (*p != *str))
+				p++;
+			if(*p)
+			{
+				if(kvi_strEqualCSN(str, p, len))
+					return (p - m_ptr);
+				else
+					p++;
+			}
+			else
+				return -1;
 		}
-	} else {
+	}
+	else
+	{
 		// this will NOT work for strings that aren't in the current system encoding :(
-		for(;;){
+		for(;;)
+		{
 			char tmp = toupper(*str);
-			while(*p && (toupper(*p) != tmp))p++;
-			if(*p){
-				if(kvi_strEqualCIN(str,p,len))return (p-m_ptr);
-				else p++;
-			} else return -1;
+			while(*p && (toupper(*p) != tmp))
+				p++;
+			if(*p)
+			{
+				if(kvi_strEqualCIN(str, p, len))
+					return (p - m_ptr);
+				else
+					p++;
+			}
+			else
+				return -1;
 		}
 	}
 }
@@ -2860,16 +3186,18 @@ int KviCString::findFirstIdx(const char *str,bool caseS) const
 int KviCString::findLastIdx(char c) const
 {
 	//Empty string ?
-	if(m_len < 1)return -1;
+	if(m_len < 1)
+		return -1;
 	//p points to the last character in the string
-	char *p=((m_ptr+m_len)-1);
+	char * p = ((m_ptr + m_len) - 1);
 	//go back until we find a match or we run to the first char in the string.
-	while((*p != c) && (p > m_ptr))p--;
+	while((*p != c) && (p > m_ptr))
+		p--;
 	//if *p == c --> matched, else we are at the beginning of the string.
-	return ((*p == c)? p-m_ptr : -1);
+	return ((*p == c) ? p - m_ptr : -1);
 }
 
-int KviCString::findLastIdx(const char *str,bool caseS) const
+int KviCString::findLastIdx(const char * str, bool caseS) const
 {
 	// This function can't be used to search inside
 	// multibyte encoded strings... convert your
@@ -2882,38 +3210,58 @@ int KviCString::findLastIdx(const char *str,bool caseS) const
 	//Calc the len of the searched string
 	int len = (int)strlen(str);
 	//Too long ?
-	if(m_len < len)return -1;
+	if(m_len < len)
+		return -1;
 	//p points to the last character in the string
-	char *p=((m_ptr+m_len)-1);
-	if(caseS){
-		for(;;){
+	char * p = ((m_ptr + m_len) - 1);
+	if(caseS)
+	{
+		for(;;)
+		{
 			//go back until we find a character that mathes or we run to the first char.
-			while((*p != *str) && (p > m_ptr))p--;
-			if(*p == *str){
+			while((*p != *str) && (p > m_ptr))
+				p--;
+			if(*p == *str)
+			{
 				//maybe occurrence....
-				if(kvi_strEqualCSN(str,p,len))return (p-m_ptr);
-				else {
+				if(kvi_strEqualCSN(str, p, len))
+					return (p - m_ptr);
+				else
+				{
 					//Nope...continue if there is more data to check...
-					if(p == m_ptr)return -1;
+					if(p == m_ptr)
+						return -1;
 					p--;
 				}
-			} else return -1; //Beginning of the string
+			}
+			else
+				return -1; //Beginning of the string
 		}
-	} else {
+	}
+	else
+	{
 		// case insensitive
-		for(;;){
+		for(;;)
+		{
 			//go back until we find a character that mathes or we run to the first char.
 			char tmp = toupper(*str);
-			while((toupper(*p) != tmp) && (p > m_ptr))p--;
-			if(toupper(*p) == tmp){
+			while((toupper(*p) != tmp) && (p > m_ptr))
+				p--;
+			if(toupper(*p) == tmp)
+			{
 				//maybe occurrence....
-				if(kvi_strEqualCIN(str,p,len))return (p-m_ptr);
-				else {
+				if(kvi_strEqualCIN(str, p, len))
+					return (p - m_ptr);
+				else
+				{
 					//Nope...continue if there is more data to check...
-					if(p == m_ptr)return -1;
+					if(p == m_ptr)
+						return -1;
 					p--;
 				}
-			} else return -1; //Beginning of the string
+			}
+			else
+				return -1; //Beginning of the string
 		}
 	}
 }
@@ -2924,23 +3272,28 @@ KviCString & KviCString::trim()
 	//    abcd   0
 	// ^        ^
 	// left   right
-	char *left=m_ptr;
-	char *right=m_ptr+m_len-1;
+	char * left = m_ptr;
+	char * right = m_ptr + m_len - 1;
 	// skip initial spaces
-	while(isspace(*left))left++;
-	if(*left){
+	while(isspace(*left))
+		left++;
+	if(*left)
+	{
 		// valid string, left points to first non-space
-		while((right >= left) && isspace(*right))right--;
+		while((right >= left) && isspace(*right))
+			right--;
 		// 0123456789
 		//    abcd   0
 		//    ^  ^
 		// left   right
-		m_len = (right - left)+1;
-		KviMemory::move(m_ptr,left,m_len);
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-		*(m_ptr+m_len)='\0';
-	} else {
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,1);
+		m_len = (right - left) + 1;
+		KviMemory::move(m_ptr, left, m_len);
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		*(m_ptr + m_len) = '\0';
+	}
+	else
+	{
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
@@ -2951,15 +3304,16 @@ KviCString & KviCString::stripRightWhiteSpace()
 {
 	if(*m_ptr)
 	{
-		char *right=m_ptr+m_len-1;
-		const char *start=right;
+		char * right = m_ptr + m_len - 1;
+		const char * start = right;
 		//isspace accepts 0..255 values in MSVC
-		while((right >= m_ptr) && ((unsigned)(*right +1) <= 256) && isspace( *right ))right--;
+		while((right >= m_ptr) && ((unsigned)(*right + 1) <= 256) && isspace(*right))
+			right--;
 		if(right != start)
 		{
 			m_len = (right - m_ptr) + 1;
-			m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-			*(m_ptr+m_len)='\0';
+			m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+			*(m_ptr + m_len) = '\0';
 		}
 	}
 	return (*this);
@@ -2969,14 +3323,15 @@ KviCString & KviCString::stripRight(char c)
 {
 	if(*m_ptr)
 	{
-		char *right=m_ptr+m_len-1;
-		const char *start=right;
-		while((right >= m_ptr) && (*right == c))right--;
+		char * right = m_ptr + m_len - 1;
+		const char * start = right;
+		while((right >= m_ptr) && (*right == c))
+			right--;
 		if(right != start)
 		{
 			m_len = (right - m_ptr) + 1;
-			m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-			*(m_ptr+m_len)='\0';
+			m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+			*(m_ptr + m_len) = '\0';
 		}
 	}
 	return (*this);
@@ -2988,23 +3343,28 @@ KviCString & KviCString::stripSpace()
 	//    abcd   0
 	// ^        ^
 	// left   right
-	char *left=m_ptr;
-	char *right=m_ptr+m_len-1;
+	char * left = m_ptr;
+	char * right = m_ptr + m_len - 1;
 	// skip initial spaces
-	while((*left == ' ') || (*left == '\t'))left++;
-	if(*left){
+	while((*left == ' ') || (*left == '\t'))
+		left++;
+	if(*left)
+	{
 		// valid string, left points to first non-space
-		while((right >= left) && ((*right == ' ') || (*right == '\t')))right--;
+		while((right >= left) && ((*right == ' ') || (*right == '\t')))
+			right--;
 		// 0123456789
 		//    abcd   0
 		//    ^  ^
 		// left   right
-		m_len = (right - left)+1;
-		KviMemory::move(m_ptr,left,m_len);
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,m_len+1);
-		*(m_ptr+m_len)='\0';
-	} else {
-		m_ptr = (char *)KviMemory::reallocate(m_ptr,1);
+		m_len = (right - left) + 1;
+		KviMemory::move(m_ptr, left, m_len);
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, m_len + 1);
+		*(m_ptr + m_len) = '\0';
+	}
+	else
+	{
+		m_ptr = (char *)KviMemory::reallocate(m_ptr, 1);
 		*m_ptr = '\0';
 		m_len = 0;
 	}
@@ -3013,23 +3373,32 @@ KviCString & KviCString::stripSpace()
 
 bool KviCString::isNum() const
 {
-	char *p=m_ptr;
-	while(isspace(*p))p++;
-	if(*p=='-')p++;
-	if(!isdigit(*p))return false;
-	while(isdigit(*p))p++;
-	while(isspace(*p))p++;
-	return (*p=='\0');
+	char * p = m_ptr;
+	while(isspace(*p))
+		p++;
+	if(*p == '-')
+		p++;
+	if(!isdigit(*p))
+		return false;
+	while(isdigit(*p))
+		p++;
+	while(isspace(*p))
+		p++;
+	return (*p == '\0');
 }
 
 bool KviCString::isUnsignedNum() const
 {
-	char *p=m_ptr;
-	while(isspace(*p))p++;
-	if(!isdigit(*p))return false;
-	while(isdigit(*p))p++;
-	while(isspace(*p))p++;
-	return (*p=='\0');
+	char * p = m_ptr;
+	while(isspace(*p))
+		p++;
+	if(!isdigit(*p))
+		return false;
+	while(isdigit(*p))
+		p++;
+	while(isspace(*p))
+		p++;
+	return (*p == '\0');
 }
 
 static KviCString g_szApplicationWideEmptyString;
@@ -3039,8 +3408,7 @@ KviCString & KviCString::emptyString()
 	return g_szApplicationWideEmptyString;
 }
 
-
-bool KviCString::ext_contains(const char * data,const char * item,bool caseS)
+bool KviCString::ext_contains(const char * data, const char * item, bool caseS)
 {
 	if(item && data)
 	{
@@ -3050,28 +3418,35 @@ bool KviCString::ext_contains(const char * data,const char * item,bool caseS)
 		{
 			while(*data)
 			{
-				while(*data && (tolower(*data) != c))data++;
+				while(*data && (tolower(*data) != c))
+					data++;
 				if(*data)
 				{
-					if(kvi_strEqualCSN(item,data,len))return true;
-					else data++;
+					if(kvi_strEqualCSN(item, data, len))
+						return true;
+					else
+						data++;
 				}
 			}
-		} else {
+		}
+		else
+		{
 			while(*data)
 			{
-				while(*data && (tolower(*data) != c))data++;
+				while(*data && (tolower(*data) != c))
+					data++;
 				if(*data)
 				{
-					if(kvi_strEqualCIN(item,data,len))return true;
-					else data++;
+					if(kvi_strEqualCIN(item, data, len))
+						return true;
+					else
+						data++;
 				}
 			}
 		}
 	}
 	return false;
 }
-
 
 //void KviCString::pointerToBitString(const void * ptr)
 //{
@@ -3098,9 +3473,6 @@ bool KviCString::ext_contains(const char * data,const char * item,bool caseS)
 //	}
 //	return ptr;
 //}
-
-
-
 
 //	static char ascii_jump_table[256]=
 //	{

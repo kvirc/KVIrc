@@ -39,42 +39,42 @@ class KVILIB_API KviTalTableWidget : public QTableWidget
 	Q_OBJECT
 public:
 	KviTalTableWidget(QWidget * pParent);
-	virtual ~KviTalTableWidget() {};
+	virtual ~KviTalTableWidget(){};
+
 public:
 };
-
 
 class KVILIB_API KviTalTableWidgetItem : public QTableWidgetItem
 {
 public:
 	KviTalTableWidgetItem(KviTalTableWidget * pParent)
-	: QTableWidgetItem()
+	    : QTableWidgetItem()
 	{
 		pParent->insertRow(pParent->rowCount());
-		pParent->setItem(pParent->rowCount()-1, 0, this);
+		pParent->setItem(pParent->rowCount() - 1, 0, this);
 	};
 
 	KviTalTableWidgetItem(KviTalTableWidget * pParent, int row, int column)
-	: QTableWidgetItem()
+	    : QTableWidgetItem()
 	{
 		pParent->setItem(row, column, this);
 	};
 
 	KviTalTableWidgetItem(const KviTalTableWidgetItem & other)
-	: QTableWidgetItem(other) {};
+	    : QTableWidgetItem(other){};
 };
 
 class KVILIB_API KviTalTableWidgetItemEx : public KviTalTableWidgetItem
 {
 public:
 	KviTalTableWidgetItemEx(KviTalTableWidget * pParent)
-	: KviTalTableWidgetItem(pParent) {};
+	    : KviTalTableWidgetItem(pParent){};
 
 	KviTalTableWidgetItemEx(KviTalTableWidget * pParent, int row, int column)
-	: KviTalTableWidgetItem(pParent, row, column) {};
+	    : KviTalTableWidgetItem(pParent, row, column){};
 
 	KviTalTableWidgetItemEx(const KviTalTableWidgetItem & other)
-	: KviTalTableWidgetItem(other) {};
+	    : KviTalTableWidgetItem(other){};
 	virtual void displayUpdate() = 0;
 };
 

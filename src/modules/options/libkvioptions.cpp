@@ -38,7 +38,7 @@
 
 #include <QSplitter>
 
-KviPointerHashTable<QString,OptionsDialog> * g_pOptionsDialogDict = 0;
+KviPointerHashTable<QString, OptionsDialog> * g_pOptionsDialogDict = 0;
 
 OptionsInstanceManager * g_pOptionsInstanceManager = 0;
 
@@ -70,7 +70,6 @@ static bool options_kvs_cmd_save(KviKvsModuleCommandCall *)
 	return true;
 }
 
-
 /*
 	@doc: options.dialog
 	@type:
@@ -92,45 +91,51 @@ static bool options_kvs_cmd_save(KviKvsModuleCommandCall *)
 		[fnc]$options.isDialog[/fnc]
 */
 
-
 static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 {
 	QString szGroup;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("options_group",KVS_PT_STRING,KVS_PF_OPTIONAL,szGroup)
+	KVSM_PARAMETER("options_group", KVS_PT_STRING, KVS_PF_OPTIONAL, szGroup)
 	KVSM_PARAMETERS_END(c)
-	if(szGroup.isEmpty())szGroup = "general";
+	if(szGroup.isEmpty())
+		szGroup = "general";
 	if(szGroup != "general" && szGroup != "theme")
 	{
-		c->warning(__tr2qs_ctx("No such options_group %Q","options"),&szGroup);
+		c->warning(__tr2qs_ctx("No such options_group %Q", "options"), &szGroup);
 		return true;
 	}
 	OptionsDialog * d = g_pOptionsDialogDict->find(szGroup);
 	if(d)
 	{
-		if(c->hasSwitch('t',"toplevel"))
+		if(c->hasSwitch('t', "toplevel"))
 		{
 			if(d->parent())
 			{
 				d->setParent(0);
-				d->setGeometry(0,0,d->width(),d->height());
+				d->setGeometry(0, 0, d->width(), d->height());
 			}
-		} else {
+		}
+		else
+		{
 			if(d->parent() != g_pMainWindow->splitter())
 			{
 				d->setParent(g_pMainWindow->splitter());
-				d->setGeometry(0,0,d->width(),d->height());
+				d->setGeometry(0, 0, d->width(), d->height());
 				d->show();
 			}
 		}
-	} else {
-		if(c->hasSwitch('t',"toplevel"))
+	}
+	else
+	{
+		if(c->hasSwitch('t', "toplevel"))
 		{
-			d = new OptionsDialog(g_pMainWindow,szGroup,true);
-		} else {
-			d = new OptionsDialog(g_pMainWindow->splitter(),szGroup,false);
+			d = new OptionsDialog(g_pMainWindow, szGroup, true);
 		}
-		g_pOptionsDialogDict->insert(szGroup,d);
+		else
+		{
+			d = new OptionsDialog(g_pMainWindow->splitter(), szGroup, false);
+		}
+		g_pOptionsDialogDict->insert(szGroup, d);
 	}
 	d->raise();
 	d->show();
@@ -153,17 +158,16 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 	@seealso:
 */
 
-
-static void options_kvs_module_print_pages(KviKvsModuleCommandCall * c,OptionsWidgetInstanceEntry * e,const char * prefix)
+static void options_kvs_module_print_pages(KviKvsModuleCommandCall * c, OptionsWidgetInstanceEntry * e, const char * prefix)
 {
-	c->window()->output(KVI_OUT_SYSTEMMESSAGE,"%s%c%s%c  (%Q)",prefix,KviControlCodes::Bold,e->szClassName,KviControlCodes::Bold,&(e->szName));
+	c->window()->output(KVI_OUT_SYSTEMMESSAGE, "%s%c%s%c  (%Q)", prefix, KviControlCodes::Bold, e->szClassName, KviControlCodes::Bold, &(e->szName));
 	KviCString szPre = prefix;
 	szPre.append("  ");
 	if(e->pChildList)
 	{
-		for(OptionsWidgetInstanceEntry * ex = e->pChildList->first();ex;ex = e->pChildList->next())
+		for(OptionsWidgetInstanceEntry * ex = e->pChildList->first(); ex; ex = e->pChildList->next())
 		{
-			options_kvs_module_print_pages(c,ex,szPre.ptr());
+			options_kvs_module_print_pages(c, ex, szPre.ptr());
 		}
 	}
 }
@@ -172,9 +176,9 @@ static bool options_kvs_cmd_pages(KviKvsModuleCommandCall * c)
 {
 	KviPointerList<OptionsWidgetInstanceEntry> * l = g_pOptionsInstanceManager->instanceEntryTree();
 
-	for(OptionsWidgetInstanceEntry * e = l->first();e;e = l->next())
+	for(OptionsWidgetInstanceEntry * e = l->first(); e; e = l->next())
 	{
-		options_kvs_module_print_pages(c,e,"");
+		options_kvs_module_print_pages(c, e, "");
 	}
 
 	return true;
@@ -201,13 +205,13 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 {
 	QString szOption;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("option",KVS_PT_STRING,0,szOption)
+	KVSM_PARAMETER("option", KVS_PT_STRING, 0, szOption)
 	KVSM_PARAMETERS_END(c)
 
 	OptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(szOption.toUtf8().data());
 	if(!e)
 	{
-		c->warning(__tr2qs_ctx("No such options page class name %Q","options"),&szOption);
+		c->warning(__tr2qs_ctx("No such options page class name %Q", "options"), &szOption);
 		return true;
 	}
 
@@ -220,11 +224,10 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 	}
 
 	OptionsWidgetContainer * wc = new OptionsWidgetContainer(
-			g_pMainWindow,
-			!c->hasSwitch('n',"non-modal")
-		);
+	    g_pMainWindow,
+	    !c->hasSwitch('n', "non-modal"));
 
-	wc->setup(g_pOptionsInstanceManager->getInstance(e,wc));
+	wc->setup(g_pOptionsInstanceManager->getInstance(e, wc));
 
 	//wc->setModal(true);
 
@@ -256,13 +259,13 @@ static bool options_kvs_fnc_isdialog(KviKvsModuleFunctionCall * c)
 {
 	QString szGroup;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("options_group",KVS_PT_STRING,KVS_PF_OPTIONAL,szGroup)
+	KVSM_PARAMETER("options_group", KVS_PT_STRING, KVS_PF_OPTIONAL, szGroup)
 	KVSM_PARAMETERS_END(c)
-	if(szGroup.isEmpty())szGroup = "general";
+	if(szGroup.isEmpty())
+		szGroup = "general";
 	c->returnValue()->setBoolean(g_pOptionsDialogDict->find(szGroup));
 	return true;
 }
-
 
 /*
 	@doc: options.close
@@ -283,12 +286,11 @@ static bool options_kvs_fnc_isdialog(KviKvsModuleFunctionCall * c)
 		[fnc]$options.isDialog[/fnc]
 */
 
-
 static bool options_kvs_cmd_close(KviKvsModuleCommandCall * c)
 {
 	QString szGroup;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("options_group",KVS_PT_STRING,KVS_PF_OPTIONAL,szGroup)
+	KVSM_PARAMETER("options_group", KVS_PT_STRING, KVS_PF_OPTIONAL, szGroup)
 	KVSM_PARAMETERS_END(c)
 	if(szGroup.isEmpty())
 		szGroup = "general";
@@ -316,36 +318,36 @@ static bool options_kvs_cmd_close(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-
 static bool options_module_init(KviModule * m)
 {
 	g_pOptionsInstanceManager = new OptionsInstanceManager();
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"dialog",options_kvs_cmd_dialog);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"close",options_kvs_cmd_close);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"save",options_kvs_cmd_save);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"pages",options_kvs_cmd_pages);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"edit",options_kvs_cmd_edit);
-	KVSM_REGISTER_FUNCTION(m,"isDialog",options_kvs_fnc_isdialog);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "dialog", options_kvs_cmd_dialog);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "close", options_kvs_cmd_close);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "save", options_kvs_cmd_save);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "pages", options_kvs_cmd_pages);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "edit", options_kvs_cmd_edit);
+	KVSM_REGISTER_FUNCTION(m, "isDialog", options_kvs_fnc_isdialog);
 
-	g_pOptionsDialogDict = new KviPointerHashTable<QString,OptionsDialog>;
+	g_pOptionsDialogDict = new KviPointerHashTable<QString, OptionsDialog>;
 	g_pOptionsDialogDict->setAutoDelete(false);
 
 	return true;
 }
 
-static bool options_module_cleanup(KviModule *m)
+static bool options_module_cleanup(KviModule * m)
 {
-	KviPointerHashTableIterator<QString,OptionsDialog> it(*g_pOptionsDialogDict);
+	KviPointerHashTableIterator<QString, OptionsDialog> it(*g_pOptionsDialogDict);
 	KviPointerList<OptionsDialog> l;
 	l.setAutoDelete(false);
 	OptionsDialog * d;
-	while( (d = it.current()) )
+	while((d = it.current()))
 	{
 		l.append(d);
 		++it;
 	}
-	for(d = l.first();d;d = l.next())delete d;
+	for(d = l.first(); d; d = l.next())
+		delete d;
 	delete g_pOptionsDialogDict;
 	g_pOptionsDialogDict = 0;
 
@@ -362,13 +364,12 @@ static bool options_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Options",                                              // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Options Dialog",
-	options_module_init,
-	options_module_can_unload,
-	0,
-	options_module_cleanup,
-	"options"
-)
+    "Options",                                                      // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Options Dialog",
+    options_module_init,
+    options_module_can_unload,
+    0,
+    options_module_cleanup,
+    "options")

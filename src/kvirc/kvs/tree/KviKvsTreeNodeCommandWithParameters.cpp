@@ -25,8 +25,8 @@
 #include "KviKvsTreeNodeCommandWithParameters.h"
 #include "KviKvsTreeNodeDataList.h"
 
-KviKvsTreeNodeCommandWithParameters::KviKvsTreeNodeCommandWithParameters(const QChar * pLocation,const QString &szCmdName,KviKvsTreeNodeDataList * params)
-: KviKvsTreeNodeCommand(pLocation,szCmdName)
+KviKvsTreeNodeCommandWithParameters::KviKvsTreeNodeCommandWithParameters(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params)
+    : KviKvsTreeNodeCommand(pLocation, szCmdName)
 {
 	m_pParams = params;
 	m_pParams->setParent(this);
@@ -37,15 +37,14 @@ KviKvsTreeNodeCommandWithParameters::~KviKvsTreeNodeCommandWithParameters()
 	delete m_pParams;
 }
 
-void KviKvsTreeNodeCommandWithParameters::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeCommandWithParameters::contextDescription(QString & szBuffer)
 {
 	szBuffer = QString("Command With Parameters \"%1\"").arg(m_szCmdName);
 }
 
-
 void KviKvsTreeNodeCommandWithParameters::dump(const char * prefix)
 {
-	qDebug("%s CommandWithParameters(%s)",prefix,m_szCmdName.toUtf8().data());
+	qDebug("%s CommandWithParameters(%s)", prefix, m_szCmdName.toUtf8().data());
 	dumpSwitchList(prefix);
 	dumpParameterList(prefix);
 }

@@ -71,6 +71,7 @@ public:
 	* \brief Destroys the tree widget
 	*/
 	~ClassEditorTreeWidget();
+
 protected:
 	virtual void mousePressEvent(QMouseEvent * e);
 signals:
@@ -96,10 +97,11 @@ public:
 	*/
 	enum Type
 	{
-		Class,       /**< The item is a class */
-		Namespace,   /**< The item is a namespace */
-		Method       /**< The item is a member function */
+		Class,     /**< The item is a class */
+		Namespace, /**< The item is a namespace */
+		Method     /**< The item is a member function */
 	};
+
 public:
 	/**
 	* \brief Constructs the class editor tree widget item
@@ -123,34 +125,36 @@ public:
 	* \brief Destroys the class editor tree widget item
 	*/
 	~ClassEditorTreeWidgetItem(){};
+
 protected:
-	Type    m_eType;
+	Type m_eType;
 	QString m_szName;
 	QString m_szBuffer;
 	QString m_szInheritsClassName;
 	QString m_szReminder;
-	bool    m_bClassModified;
-	bool    m_bInternal;
-	int     m_iPos;
+	bool m_bClassModified;
+	bool m_bInternal;
+	int m_iPos;
+
 public:
 	/**
 	* \brief Sets the class name on which the class inherits from
 	* \param szInheritsClassName The parent class name
 	* \return void
 	*/
-	void setInheritsClass(QString szInheritsClassName){ m_szInheritsClassName = szInheritsClassName; };
+	void setInheritsClass(QString szInheritsClassName) { m_szInheritsClassName = szInheritsClassName; };
 
 	/**
 	* \brief Returns the class name of the classes we inherit from
 	* \return QString
 	*/
-	QString inheritsClass(){ return m_szInheritsClassName; };
+	QString inheritsClass() { return m_szInheritsClassName; };
 
 	/**
 	* \brief Returns the name of the item
 	* \return const QString &
 	*/
-	const QString & name(){ return m_szName; };
+	const QString & name() { return m_szName; };
 
 	/**
 	* \brief Sets the name of the item
@@ -164,13 +168,13 @@ public:
 	* \param szRem The parameters' list
 	* \return void
 	*/
-	void setReminder(const QString & szRem){ m_szReminder = szRem; };
+	void setReminder(const QString & szRem) { m_szReminder = szRem; };
 
 	/**
 	* \brief Returns the parameters list
 	* \return QString
 	*/
-	QString reminder(){ return m_szReminder; };
+	QString reminder() { return m_szReminder; };
 
 	/**
 	* \brief Sets the state of the class as non-built
@@ -183,26 +187,26 @@ public:
 	* \brief Returns true if we class is not built yet, false otherwise
 	* \return bool
 	*/
-	bool classNotBuilt(){ return m_bClassModified; };
+	bool classNotBuilt() { return m_bClassModified; };
 
 	/**
 	* \brief Sets the function as internal
 	* \param bInternal Whether the function is internal or not
 	* \return void
 	*/
-	void setInternalFunction(bool bInternal){ m_bInternal = bInternal; };
+	void setInternalFunction(bool bInternal) { m_bInternal = bInternal; };
 
 	/**
 	* \brief Returns true if the function is set as internal, false otherwise
 	* \return bool
 	*/
-	bool isInternalFunction(){ return m_bInternal; };
+	bool isInternalFunction() { return m_bInternal; };
 
 	/**
 	* \brief Returns the type of the item
 	* \return Type
 	*/
-	Type type(){ return m_eType; };
+	Type type() { return m_eType; };
 
 	/**
 	* \brief Sets the type of the item
@@ -215,45 +219,45 @@ public:
 	* \brief Returns true if the item is a class, false otherwise
 	* \return bool
 	*/
-	bool isClass(){ return m_eType == Class; };
+	bool isClass() { return m_eType == Class; };
 
 	/**
 	* \brief Returns true if the item is a namespace, false otherwise
 	* \return bool
 	*/
-	bool isNamespace(){ return m_eType == Namespace; };
+	bool isNamespace() { return m_eType == Namespace; };
 
 	/**
 	* \brief Returns true if the item is a member function, false otherwise
 	* \return bool
 	*/
-	bool isMethod(){ return m_eType == Method; };
+	bool isMethod() { return m_eType == Method; };
 
 	/**
 	* \brief Saves the code of the item in a buffer
 	* \param szBuffer The buffer ;)
 	* \return void
 	*/
-	void setBuffer(const QString & szBuffer){ m_szBuffer = szBuffer; };
+	void setBuffer(const QString & szBuffer) { m_szBuffer = szBuffer; };
 
 	/**
 	* \brief Returns the buffer containing the code of the item
 	* \return const QString &
 	*/
-	const QString & buffer(){ return m_szBuffer; };
+	const QString & buffer() { return m_szBuffer; };
 
 	/**
 	* \brief Returns the cursor's position
 	* \return const int &
 	*/
-	const int & cursorPosition(){ return m_iPos; };
+	const int & cursorPosition() { return m_iPos; };
 
 	/**
 	* \brief Sets the cursor position
 	* \param iPos The position of the cursor
 	* \return void
 	*/
-	void setCursorPosition(const int & iPos){ m_iPos = iPos; };
+	void setCursorPosition(const int & iPos) { m_iPos = iPos; };
 };
 
 /**
@@ -275,23 +279,26 @@ public:
 	* \brief Destroys the class editor object
 	*/
 	~ClassEditorWidget();
+
 public:
-	KviScriptEditor              * m_pEditor;
-	ClassEditorTreeWidget     * m_pTreeWidget;
-	QLabel                       * m_pClassNameLabel;
-	QPushButton                  * m_pClassNameRenameButton;
-	QLabel                       * m_pFunctionNameLabel;
-	QPushButton                  * m_pFunctionNameRenameButton;
-	QLabel                       * m_pReminderLabel;
+	KviScriptEditor * m_pEditor;
+	ClassEditorTreeWidget * m_pTreeWidget;
+	QLabel * m_pClassNameLabel;
+	QPushButton * m_pClassNameRenameButton;
+	QLabel * m_pFunctionNameLabel;
+	QPushButton * m_pFunctionNameRenameButton;
+	QLabel * m_pReminderLabel;
 
 	ClassEditorTreeWidgetItem * m_pLastEditedItem;
 	ClassEditorTreeWidgetItem * m_pLastClickedItem;
-	QMenu              * m_pContextPopup;
-	QSplitter                    * m_pSplitter;
-	QString                        m_szDir;
-	bool                           m_bSaving;
+	QMenu * m_pContextPopup;
+	QSplitter * m_pSplitter;
+	QString m_szDir;
+	bool m_bSaving;
+
 protected:
-	KviPointerHashTable<QString,ClassEditorTreeWidgetItem> * m_pClasses;
+	KviPointerHashTable<QString, ClassEditorTreeWidgetItem> * m_pClasses;
+
 public:
 	/**
 	* \brief Called to save the window properties
@@ -354,6 +361,7 @@ public:
 	* \return void
 	*/
 	void cutItem(ClassEditorTreeWidgetItem * pItem);
+
 protected:
 	//void recursiveSearchReplace(const QString &szSearch,ClassEditorTreeWidgetItem * it,bool bReplace=false,const QString &szReplace="n");
 
@@ -367,7 +375,7 @@ protected:
 	void appendSelectedClassItemsRecursive(KviPointerList<ClassEditorTreeWidgetItem> * pList, QTreeWidgetItem * pStartFrom);
 
 	void appendAllClassItems(KviPointerList<ClassEditorTreeWidgetItem> * pList);
-	void appendAllClassItemsRecursive(KviPointerList<ClassEditorTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom);
+	void appendAllClassItemsRecursive(KviPointerList<ClassEditorTreeWidgetItem> * l, QTreeWidgetItem * pStartFrom);
 
 	void openParentItems(QTreeWidgetItem * pItem);
 	void activateItem(QTreeWidgetItem * pItem);
@@ -398,10 +406,10 @@ protected:
 	*/
 	void renameNamespace(ClassEditorTreeWidgetItem * pNamespace);
 
-	bool removeItem(ClassEditorTreeWidgetItem * pItem, KviPointerList <ClassEditorTreeWidgetItem> & lRemovedItems, bool * pbYesToAll);
+	bool removeItem(ClassEditorTreeWidgetItem * pItem, KviPointerList<ClassEditorTreeWidgetItem> & lRemovedItems, bool * pbYesToAll);
 	void updateClassHierarchy(ClassEditorTreeWidgetItem * pClass);
 
-	void removeItemChildren(ClassEditorTreeWidgetItem * pItem, KviPointerList <ClassEditorTreeWidgetItem> & lRemovedItems);
+	void removeItemChildren(ClassEditorTreeWidgetItem * pItem, KviPointerList<ClassEditorTreeWidgetItem> & lRemovedItems);
 	void buildFullItemPath(ClassEditorTreeWidgetItem * pItem, QString & szBuffer);
 	QString buildFullClassName(ClassEditorTreeWidgetItem * pItem);
 	ClassEditorTreeWidgetItem * createFullItem(const QString & szFullName);
@@ -413,8 +421,6 @@ protected:
 	* \return ClassEditorTreeWidgetItem *
 	*/
 	ClassEditorTreeWidgetItem * findItem(const QString & szName);
-
-
 
 	ClassEditorTreeWidgetItem * findTopLevelItem(const QString & szName);
 	ClassEditorTreeWidgetItem * createFullItemRecursive(QTreeWidgetItem * pCurrent, QStringList & lNameSpaces, int & iLevel, bool bCreateNameSpace = 0);
@@ -482,8 +488,10 @@ public:
 	* \brief Destroys the class editor window
 	*/
 	~ClassEditorWindow();
+
 protected:
 	ClassEditorWidget * m_pEditor;
+
 protected:
 	/**
 	* \brief Returns the class editor small icon
@@ -535,7 +543,7 @@ protected slots:
 * \class KviClassEditorDialog
 * \brief This class constructs the dialog to create a new class
 */
-class KviClassEditorDialog: public QDialog
+class KviClassEditorDialog : public QDialog
 {
 	Q_OBJECT
 public:
@@ -549,28 +557,30 @@ public:
 	* \param bRenameMode Whether the dialog is in rename mode
 	* \return KviClassEditorDialog
 	*/
-	KviClassEditorDialog(QWidget * pParent, const QString & szName, KviPointerHashTable<QString,ClassEditorTreeWidgetItem> * pClasses, const QString & szClassName, const QString & szInheritsClassName, bool bRenameMode = false);
+	KviClassEditorDialog(QWidget * pParent, const QString & szName, KviPointerHashTable<QString, ClassEditorTreeWidgetItem> * pClasses, const QString & szClassName, const QString & szInheritsClassName, bool bRenameMode = false);
 
 	/**
 	* \brief Destroys the class dialog
 	*/
 	~KviClassEditorDialog();
+
 protected:
 	QPushButton * m_pNewClassButton;
-	QLineEdit   * m_pClassNameLineEdit;
-	QComboBox   * m_pInheritsClassComboBox;
+	QLineEdit * m_pClassNameLineEdit;
+	QComboBox * m_pInheritsClassComboBox;
+
 public:
 	/**
 	* \brief Returns the class name
 	* \return QString
 	*/
-	QString className(){ return m_pClassNameLineEdit->text(); };
+	QString className() { return m_pClassNameLineEdit->text(); };
 
 	/**
 	* \brief Returns the class name of the parent classes
 	* \return QString
 	*/
-	QString inheritsClassName(){ return m_pInheritsClassComboBox->currentText(); };
+	QString inheritsClassName() { return m_pInheritsClassComboBox->currentText(); };
 protected slots:
 	/**
 	* \brief Triggered when the name of the class change
@@ -583,7 +593,7 @@ protected slots:
 * \class KviClassEditorFunctionDialog
 * \brief This class constructs the dialog to create a new member function
 */
-class KviClassEditorFunctionDialog: public QDialog
+class KviClassEditorFunctionDialog : public QDialog
 {
 	Q_OBJECT
 public:
@@ -604,29 +614,31 @@ public:
 	* \brief Destroys the function dialog
 	*/
 	~KviClassEditorFunctionDialog();
+
 protected:
 	QPushButton * m_pNewFunctionButton;
-	QLineEdit   * m_pFunctionNameLineEdit;
-	QLineEdit   * m_pReminderLineEdit;
-	QCheckBox   * m_pInternalCheckBox;
+	QLineEdit * m_pFunctionNameLineEdit;
+	QLineEdit * m_pReminderLineEdit;
+	QCheckBox * m_pInternalCheckBox;
+
 public:
 	/**
 	* \brief Returns the function name
 	* \return QString
 	*/
-	QString functionName(){ return m_pFunctionNameLineEdit->text(); };
+	QString functionName() { return m_pFunctionNameLineEdit->text(); };
 
 	/**
 	* \brief Returns the parameters of the function
 	* \return QString
 	*/
-	QString reminder(){ return m_pReminderLineEdit->text(); };
+	QString reminder() { return m_pReminderLineEdit->text(); };
 
 	/**
 	* \brief Returns true if the function is set as internal, false otherwise
 	* \return bool
 	*/
-	bool isInternalFunction(){ return m_pInternalCheckBox->isChecked(); };
+	bool isInternalFunction() { return m_pInternalCheckBox->isChecked(); };
 protected slots:
 	/**
 	* \brief Triggered when the name of the function change

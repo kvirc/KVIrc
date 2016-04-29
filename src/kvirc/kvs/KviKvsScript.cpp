@@ -76,10 +76,14 @@ KviKvsScript::~KviKvsScript()
 {
 	if(m_pData->m_uRefs < 2)
 	{
-		if(m_pData->m_uLock)qDebug("WARNING: destroying a locked KviKvsScript");
-		if(m_pData->m_pTree)delete m_pData->m_pTree;
+		if(m_pData->m_uLock)
+			qDebug("WARNING: destroying a locked KviKvsScript");
+		if(m_pData->m_pTree)
+			delete m_pData->m_pTree;
 		delete m_pData;
-	} else {
+	}
+	else
+	{
 		m_pData->m_uRefs--;
 	}
 }
@@ -110,7 +114,8 @@ void KviKvsScript::dump(const char * prefix)
 {
 	if(m_pData->m_pTree)
 		m_pData->m_pTree->dump(prefix);
-	else qDebug("%s KviKvsScript : no tree to dump",prefix);
+	else
+		qDebug("%s KviKvsScript : no tree to dump", prefix);
 }
 
 void KviKvsScript::detach()
@@ -141,23 +146,23 @@ const QChar * KviKvsScript::buffer() const
 int KviKvsScript::run(const QString & szCode, KviWindow * pWindow, KviKvsVariantList * pParams, KviKvsVariant * pRetVal)
 {
 	// static helper
-	KviKvsScript s("kvirc::corecall(run)",szCode);
-	return s.run(pWindow,pParams,pRetVal,PreserveParams);
+	KviKvsScript s("kvirc::corecall(run)", szCode);
+	return s.run(pWindow, pParams, pRetVal, PreserveParams);
 }
 
 int KviKvsScript::evaluate(const QString & szCode, KviWindow * pWindow, KviKvsVariantList * pParams, KviKvsVariant * pRetVal)
 {
 	// static helper
-	KviKvsScript s("kvirc::corecall(evaluate)",szCode,Parameter);
-	return s.run(pWindow,pParams,pRetVal,PreserveParams);
+	KviKvsScript s("kvirc::corecall(evaluate)", szCode, Parameter);
+	return s.run(pWindow, pParams, pRetVal, PreserveParams);
 }
 
 int KviKvsScript::evaluateAsString(const QString & szCode, KviWindow * pWindow, KviKvsVariantList * pParams, QString & szRetVal)
 {
 	// static helper
 	KviKvsVariant ret;
-	KviKvsScript s("kvirc::corecall(evaluate)",szCode,Parameter);
-	int iRet = s.run(pWindow,pParams,&ret,PreserveParams);
+	KviKvsScript s("kvirc::corecall(evaluate)", szCode, Parameter);
+	int iRet = s.run(pWindow, pParams, &ret, PreserveParams);
 	ret.asString(szRetVal);
 	return iRet;
 }
@@ -165,7 +170,7 @@ int KviKvsScript::evaluateAsString(const QString & szCode, KviWindow * pWindow, 
 int KviKvsScript::run(KviWindow * pWnd, KviKvsVariantList * pParams, QString & szRetVal, int iRunFlags, KviKvsExtendedRunTimeData * pExtData)
 {
 	KviKvsVariant retVal;
-	int iRet = run(pWnd,pParams,&retVal,iRunFlags,pExtData);
+	int iRet = run(pWnd, pParams, &retVal, iRunFlags, pExtData);
 	retVal.asString(szRetVal);
 	return iRet;
 }
@@ -180,19 +185,21 @@ int KviKvsScript::run(KviWindow * pWnd, KviKvsVariantList * pParams, KviKvsVaria
 		//g_iTreeCacheMisses++;
 		//qDebug("CREATING TREE FOR SCRIPT %s",name().latin1());
 		//qDebug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
-		if(!parse(pWnd,iRunFlags))
+		if(!parse(pWnd, iRunFlags))
 		{
 			if(pParams && !(iRunFlags & PreserveParams))
 				delete pParams;
 			return Error;
 		}
-	} else {
+	}
+	else
+	{
 		//g_iTreeCacheHits++;
 		//qDebug("USING A CACHED TREE FOR SCRIPT %s",name().latin1());
 		//qDebug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
 	}
 
-	return execute(pWnd,pParams,pRetVal,iRunFlags,pExtData);
+	return execute(pWnd, pParams, pRetVal, iRunFlags, pExtData);
 }
 
 int KviKvsScript::run(KviKvsRunTimeContext * pContext, int iRunFlags)
@@ -202,9 +209,11 @@ int KviKvsScript::run(KviKvsRunTimeContext * pContext, int iRunFlags)
 		//g_iTreeCacheMisses++;
 		//qDebug("CREATING TREE FOR SCRIPT %s",name().latin1());
 		//qDebug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
-		if(!parse(pContext->window(),iRunFlags))
+		if(!parse(pContext->window(), iRunFlags))
 			return Error;
-	} else {
+	}
+	else
+	{
 		//g_iTreeCacheHits++;
 		//qDebug("USING A CACHED TREE FOR SCRIPT %s",name().latin1());
 		//qDebug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
@@ -217,8 +226,11 @@ int KviKvsScript::run(KviKvsRunTimeContext * pContext, int iRunFlags)
 		bool bMustReEnable = !(pContext->reportingDisabled());
 		pContext->disableReporting();
 		iRet = executeInternal(pContext);
-		if(bMustReEnable)pContext->enableReporting();
-	} else {
+		if(bMustReEnable)
+			pContext->enableReporting();
+	}
+	else
+	{
 		iRet = executeInternal(pContext);
 	}
 
@@ -235,7 +247,9 @@ bool KviKvsScript::parse(KviWindow * pOutput, int iRunFlags)
 		{
 			// mmmh.. more than one ref! .. detach
 			detach();
-		} else {
+		}
+		else
+		{
 			// only a single ref: we're the owner of the tree
 			if(m_pData->m_uLock)
 			{
@@ -250,7 +264,7 @@ bool KviKvsScript::parse(KviWindow * pOutput, int iRunFlags)
 		}
 	} // else there is no tree at all, nobody can be locked inside
 
-	KviKvsParser p(this,(iRunFlags & Quiet) ? 0 : pOutput);
+	KviKvsParser p(this, (iRunFlags & Quiet) ? 0 : pOutput);
 	// parse never blocks
 
 	int iFlags = iRunFlags & AssumeLocals ? KviKvsParser::AssumeLocals : 0;
@@ -260,15 +274,15 @@ bool KviKvsScript::parse(KviWindow * pOutput, int iRunFlags)
 	switch(m_pData->m_eType)
 	{
 		case Expression:
-			m_pData->m_pTree = p.parseAsExpression(m_pData->m_pBuffer,iFlags);
-		break;
+			m_pData->m_pTree = p.parseAsExpression(m_pData->m_pBuffer, iFlags);
+			break;
 		case Parameter:
-			m_pData->m_pTree = p.parseAsParameter(m_pData->m_pBuffer,iFlags);
-		break;
+			m_pData->m_pTree = p.parseAsParameter(m_pData->m_pBuffer, iFlags);
+			break;
 		case InstructionList:
 		default:
-			m_pData->m_pTree = p.parse(m_pData->m_pBuffer,iFlags);
-		break;
+			m_pData->m_pTree = p.parse(m_pData->m_pBuffer, iFlags);
+			break;
 	}
 
 	//qDebug("\n\nDUMPING SCRIPT");
@@ -287,8 +301,10 @@ int KviKvsScript::executeInternal(KviKvsRunTimeContext * pContext)
 
 	if(!m_pData->m_pTree->execute(pContext))
 	{
-		if(pContext->error())iRunStatus = Error;
-		else {
+		if(pContext->error())
+			iRunStatus = Error;
+		else
+		{
 			// else just a halt, return or sth like that
 			if(pContext->haltCalled())
 				iRunStatus |= HaltEncountered;
@@ -312,7 +328,7 @@ int KviKvsScript::execute(KviWindow * pWnd, KviKvsVariantList * pParams, KviKvsV
 			delete pParams;
 
 		// this is intended for developers only
-		pWnd->outputNoFmt(KVI_OUT_PARSERERROR,"[developer error]: you must successfully call KviKvsScript::parse() before KviKvsScript::execute()");
+		pWnd->outputNoFmt(KVI_OUT_PARSERERROR, "[developer error]: you must successfully call KviKvsScript::parse() before KviKvsScript::execute()");
 		return Error;
 	}
 
@@ -331,7 +347,7 @@ int KviKvsScript::execute(KviWindow * pWnd, KviKvsVariantList * pParams, KviKvsV
 		bDeleteRetVal = true;
 	}
 
-	KviKvsRunTimeContext ctx(this,pWnd,pParams,pRetVal,pExtData);
+	KviKvsRunTimeContext ctx(this, pWnd, pParams, pRetVal, pExtData);
 
 	if(iRunFlags & Quiet)
 		ctx.disableReporting();

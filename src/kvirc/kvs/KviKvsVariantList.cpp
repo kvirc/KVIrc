@@ -188,7 +188,6 @@ KviKvsVariantList::~KviKvsVariantList()
 	delete m_pList;
 }
 
-
 void KviKvsVariantList::setAutoDelete(bool bAutoDelete)
 {
 	m_pList->setAutoDelete(bAutoDelete);

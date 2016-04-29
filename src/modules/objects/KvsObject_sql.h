@@ -37,33 +37,31 @@ class KvsObject_sql : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_sql)
 protected:
-	QSqlQuery *m_pCurrentSQlQuery;
+	QSqlQuery * m_pCurrentSQlQuery;
 	QString mSzConnectionName;
 
 public:
-	bool setConnection(KviKvsObjectFunctionCall *c);
-	bool connectionNames(KviKvsObjectFunctionCall *c);
-	bool features(KviKvsObjectFunctionCall *c);
-	bool queryLastInsertId(KviKvsObjectFunctionCall *c);
+	bool setConnection(KviKvsObjectFunctionCall * c);
+	bool connectionNames(KviKvsObjectFunctionCall * c);
+	bool features(KviKvsObjectFunctionCall * c);
+	bool queryLastInsertId(KviKvsObjectFunctionCall * c);
 
-	bool tablesList(KviKvsObjectFunctionCall *c);
-	bool beginTransaction(KviKvsObjectFunctionCall *c);
-	bool commit(KviKvsObjectFunctionCall *c);
+	bool tablesList(KviKvsObjectFunctionCall * c);
+	bool beginTransaction(KviKvsObjectFunctionCall * c);
+	bool commit(KviKvsObjectFunctionCall * c);
 
-	bool queryResultsSize(KviKvsObjectFunctionCall *c);
-	bool queryNext(KviKvsObjectFunctionCall *c);
-	bool queryPrevious(KviKvsObjectFunctionCall *c);
-	bool queryFirst(KviKvsObjectFunctionCall *c);
-	bool queryLast(KviKvsObjectFunctionCall *c);
-	bool queryExec(KviKvsObjectFunctionCall *c);
-	bool queryRecord(KviKvsObjectFunctionCall *c);
-	bool queryPrepare(KviKvsObjectFunctionCall *c);
-	bool queryBindValue(KviKvsObjectFunctionCall *c);
-	bool queryFinish(KviKvsObjectFunctionCall *c);
-	bool closeConnection(KviKvsObjectFunctionCall *c);
-	bool lastError(KviKvsObjectFunctionCall *c);
-
+	bool queryResultsSize(KviKvsObjectFunctionCall * c);
+	bool queryNext(KviKvsObjectFunctionCall * c);
+	bool queryPrevious(KviKvsObjectFunctionCall * c);
+	bool queryFirst(KviKvsObjectFunctionCall * c);
+	bool queryLast(KviKvsObjectFunctionCall * c);
+	bool queryExec(KviKvsObjectFunctionCall * c);
+	bool queryRecord(KviKvsObjectFunctionCall * c);
+	bool queryPrepare(KviKvsObjectFunctionCall * c);
+	bool queryBindValue(KviKvsObjectFunctionCall * c);
+	bool queryFinish(KviKvsObjectFunctionCall * c);
+	bool closeConnection(KviKvsObjectFunctionCall * c);
+	bool lastError(KviKvsObjectFunctionCall * c);
 };
-
 
 #endif //_CLASS_SQLITE_H_

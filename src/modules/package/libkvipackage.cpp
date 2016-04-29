@@ -43,17 +43,17 @@ static QString createRandomDir()
 {
 	QString szDirName;
 	char chars[] = {
-		'A','B','C','D','E','F','G','H',
-		'I','J','K','L','M','N','O','P',
-		'Q','R','S','T','U','V','W','X',
-		'Y','Z','a','b','c','d','e','f',
-		'g','h','i','j','k','l','m','n',
-		'o','p','q','r','s','t','u','v',
-		'w','x','y','z','-','_','.'
+		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
+		'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
+		'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+		'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',
+		'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
+		'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+		'w', 'x', 'y', 'z', '-', '_', '.'
 	};
 
 	// Generate dir name
-	for(int i=0;i<10;i++)
+	for(int i = 0; i < 10; i++)
 	{
 		int n = rand() % sizeof(chars);
 		szDirName.append(chars[n]);
@@ -61,7 +61,6 @@ static QString createRandomDir()
 
 	return szDirName;
 }
-
 
 /*
 	@doc: package.info
@@ -84,7 +83,7 @@ static bool package_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 {
 	QString szPath;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("package_path",KVS_PT_NONEMPTYSTRING,0,szPath)
+	KVSM_PARAMETER("package_path", KVS_PT_NONEMPTYSTRING, 0, szPath)
 	KVSM_PARAMETERS_END(c)
 
 	KviKvsHash * pHash = new KviKvsHash();
@@ -95,8 +94,8 @@ static bool package_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 	QString szTmpPath, szUnpackPath;
 	QString szRandomDir = createRandomDir();
 
-	g_pApp->getLocalKvircDirectory(szTmpPath,KviApplication::Tmp);
-	KviQString::ensureLastCharIs(szTmpPath,QChar(KVI_PATH_SEPARATOR_CHAR));
+	g_pApp->getLocalKvircDirectory(szTmpPath, KviApplication::Tmp);
+	KviQString::ensureLastCharIs(szTmpPath, QChar(KVI_PATH_SEPARATOR_CHAR));
 	szUnpackPath = szTmpPath + szRandomDir;
 	QDir szTmpDir(szUnpackPath);
 
@@ -111,61 +110,59 @@ static bool package_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 	KviPackageReader r;
 
 	// Unpack addon package into the random tmp dir
-	if(!r.unpack(szPath,szUnpackPath))
+	if(!r.unpack(szPath, szUnpackPath))
 	{
-		pHash->set("error",new KviKvsVariant(r.lastError()));
+		pHash->set("error", new KviKvsVariant(r.lastError()));
 		return true;
 	}
 
 	KviKvsHash * pInfoHash = new KviKvsHash();
 
-	pHash->set("info",new KviKvsVariant(pInfoHash));
+	pHash->set("info", new KviKvsVariant(pInfoHash));
 
 	QFileInfo inf(szPath);
 
-	pInfoHash->set("path",new KviKvsVariant(szPath));
-	pInfoHash->set("name",new KviKvsVariant(inf.fileName()));
-	pInfoHash->set("size",new KviKvsVariant((kvs_int_t)inf.size()));
+	pInfoHash->set("path", new KviKvsVariant(szPath));
+	pInfoHash->set("name", new KviKvsVariant(inf.fileName()));
+	pInfoHash->set("size", new KviKvsVariant((kvs_int_t)inf.size()));
 
 	KviKvsHash * pMetadataHash = new KviKvsHash();
 
-	pHash->set("metadata",new KviKvsVariant(pMetadataHash));
+	pHash->set("metadata", new KviKvsVariant(pMetadataHash));
 
-	KviPointerHashTable<QString,QString> * pInfoFields1 = r.stringInfoFields();
-	KviPointerHashTableIterator<QString,QString> it(*pInfoFields1);
-
+	KviPointerHashTable<QString, QString> * pInfoFields1 = r.stringInfoFields();
+	KviPointerHashTableIterator<QString, QString> it(*pInfoFields1);
 
 	while(it.current())
 	{
-		pMetadataHash->set(it.currentKey(),new KviKvsVariant(*(it.current())));
+		pMetadataHash->set(it.currentKey(), new KviKvsVariant(*(it.current())));
 		it.moveNext();
 	}
 
-	KviPointerHashTable<QString,QByteArray> * pInfoFields2 = r.binaryInfoFields();
-	KviPointerHashTableIterator<QString,QByteArray> it2(*pInfoFields2);
+	KviPointerHashTable<QString, QByteArray> * pInfoFields2 = r.binaryInfoFields();
+	KviPointerHashTableIterator<QString, QByteArray> it2(*pInfoFields2);
 
 	while(it2.current())
 	{
-		pMetadataHash->set(it2.currentKey(),new KviKvsVariant(QString("<binary data, %1 bytes>").arg(it2.current()->size())));
+		pMetadataHash->set(it2.currentKey(), new KviKvsVariant(QString("<binary data, %1 bytes>").arg(it2.current()->size())));
 		it2.moveNext();
 	}
 
 	KviKvsArray * pFilesArray = new KviKvsArray();
 
-	pHash->set("files",new KviKvsVariant(pFilesArray));
+	pHash->set("files", new KviKvsVariant(pFilesArray));
 
 	QStringList sl = KviFileUtils::getFileListing(szUnpackPath);
 
-	Q_FOREACH(QString fn,sl)
+	Q_FOREACH(QString fn, sl)
 		pFilesArray->append(new KviKvsVariant(fn));
 
 	// delete the random tmp dir
 	if(!KviFileUtils::deleteDir(szUnpackPath))
-		qDebug("Could not delete temporary directory %s",szUnpackPath.toUtf8().data());
+		qDebug("Could not delete temporary directory %s", szUnpackPath.toUtf8().data());
 
 	return true;
 }
-
 
 /*
 	@doc: package.extractfield
@@ -183,11 +180,11 @@ static bool package_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 */
 static bool package_kvs_cmd_extractField(KviKvsModuleCommandCall * c)
 {
-	QString szPackagePath,szFieldId,szTargetFileName;
+	QString szPackagePath, szFieldId, szTargetFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("package_path",KVS_PT_NONEMPTYSTRING,0,szPackagePath)
-		KVSM_PARAMETER("field_id",KVS_PT_NONEMPTYSTRING,0,szFieldId)
-		KVSM_PARAMETER("target_file_name",KVS_PT_NONEMPTYSTRING,0,szTargetFileName)
+	KVSM_PARAMETER("package_path", KVS_PT_NONEMPTYSTRING, 0, szPackagePath)
+	KVSM_PARAMETER("field_id", KVS_PT_NONEMPTYSTRING, 0, szFieldId)
+	KVSM_PARAMETER("target_file_name", KVS_PT_NONEMPTYSTRING, 0, szTargetFileName)
 	KVSM_PARAMETERS_END(c)
 
 	KviPackageReader r;
@@ -195,7 +192,7 @@ static bool package_kvs_cmd_extractField(KviKvsModuleCommandCall * c)
 	// Unpack addon package into the random tmp dir
 	if(!r.readHeader(szPackagePath))
 	{
-		c->warning(__tr2qs_ctx("Failed to load package file: %1","package").arg(r.lastError()));
+		c->warning(__tr2qs_ctx("Failed to load package file: %1", "package").arg(r.lastError()));
 		return true;
 	}
 
@@ -203,25 +200,24 @@ static bool package_kvs_cmd_extractField(KviKvsModuleCommandCall * c)
 
 	if(!pField)
 	{
-		c->warning(__tr2qs_ctx("Package doesn't contain binary field %1","package").arg(szFieldId));
+		c->warning(__tr2qs_ctx("Package doesn't contain binary field %1", "package").arg(szFieldId));
 		return true;
 	}
 
-	if(!KviFileUtils::writeFile(szTargetFileName,*pField,false))
+	if(!KviFileUtils::writeFile(szTargetFileName, *pField, false))
 	{
-		c->warning(__tr2qs_ctx("Failed to save file %1","package").arg(szTargetFileName));
+		c->warning(__tr2qs_ctx("Failed to save file %1", "package").arg(szTargetFileName));
 		return true;
 	}
 
 	return true;
 }
 
-
-static bool package_module_init(KviModule *m)
+static bool package_module_init(KviModule * m)
 {
-	KVSM_REGISTER_FUNCTION(m,"info",package_kvs_fnc_info);
+	KVSM_REGISTER_FUNCTION(m, "info", package_kvs_fnc_info);
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"extractField",package_kvs_cmd_extractField);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "extractField", package_kvs_cmd_extractField);
 	return true;
 }
 
@@ -231,13 +227,12 @@ static bool package_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"package",                                                      // module name
-	"1.0.0",                                                        // module version
-	"Copyright (C) 2015 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"Interface to KVIrc package files",
-	package_module_init,
-	0,
-	0,
-	package_module_cleanup,
-	0
-)
+    "package",                                                      // module name
+    "1.0.0",                                                        // module version
+    "Copyright (C) 2015 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "Interface to KVIrc package files",
+    package_module_init,
+    0,
+    0,
+    package_module_cleanup,
+    0)

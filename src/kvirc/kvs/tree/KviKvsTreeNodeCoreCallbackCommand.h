@@ -37,15 +37,16 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeCoreCallbackCommand : public KviKvsTreeNodeCallbackCommand
 {
 public:
-	KviKvsTreeNodeCoreCallbackCommand(const QChar * pLocation,const QString &szCmdName,KviKvsTreeNodeDataList * params,KviKvsCoreCallbackCommandExecRoutine * r,KviKvsScript * pCallback);
+	KviKvsTreeNodeCoreCallbackCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params, KviKvsCoreCallbackCommandExecRoutine * r, KviKvsScript * pCallback);
 	~KviKvsTreeNodeCoreCallbackCommand();
+
 protected:
 	KviKvsCoreCallbackCommandExecRoutine * m_pExecRoutine;
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_CORECALLBACKCOMMAND_H_

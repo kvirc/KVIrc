@@ -34,13 +34,16 @@ class KviConnectAction : public KviAction
 	Q_OBJECT
 public:
 	KviConnectAction(QObject * pParent);
+
 protected:
 	QString m_szConnectString;
 	QString m_szAbortConnectionString;
 	QString m_szDisconnectString;
+
 public:
 	virtual bool addToPopupMenu(QMenu * pMenu);
 	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
+
 protected:
 	virtual void setup();
 	virtual void reloadImages();
@@ -54,6 +57,7 @@ class KviSeparatorAction : public KviAction
 	Q_OBJECT
 public:
 	KviSeparatorAction(QObject * pParent);
+
 public:
 	virtual bool addToPopupMenu(QMenu * pMenu);
 	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
@@ -66,27 +70,29 @@ class KviSubmenuAction : public KviKvsAction
 	Q_OBJECT
 public:
 	KviSubmenuAction(
-			QObject * pParent,
-			const QString & szName,
-			const QString & szScriptCode,
-			const QString & szVisibleName,
-			const QString & szDescription,
-			KviActionCategory * pCategory = NULL,
-			const QString & szBigIconId = QString(),
-			KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
-			unsigned int uFlags = 0
-		);
+	    QObject * pParent,
+	    const QString & szName,
+	    const QString & szScriptCode,
+	    const QString & szVisibleName,
+	    const QString & szDescription,
+	    KviActionCategory * pCategory = NULL,
+	    const QString & szBigIconId = QString(),
+	    KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
+	    unsigned int uFlags = 0);
 	~KviSubmenuAction();
+
 protected:
 	QMenu * m_pPopup;
+
 protected:
 	virtual void setup();
+
 public:
 	virtual bool addToPopupMenu(QMenu * pMenu);
 	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
 protected slots:
 	virtual void popupAboutToShow();
-	virtual void popupActivated(QAction *pAction);
+	virtual void popupActivated(QAction * pAction);
 };
 
 class KviJoinChannelAction : public KviSubmenuAction
@@ -96,7 +102,7 @@ public:
 	KviJoinChannelAction(QObject * pParent);
 protected slots:
 	virtual void popupAboutToShow();
-	virtual void popupActivated(QAction *pAction);
+	virtual void popupActivated(QAction * pAction);
 };
 
 class KviChangeNickAction : public KviSubmenuAction
@@ -106,7 +112,7 @@ public:
 	KviChangeNickAction(QObject * pParent);
 protected slots:
 	void popupAboutToShow();
-	void popupActivated(QAction *pAction);
+	void popupActivated(QAction * pAction);
 };
 
 class KviConnectToServerAction : public KviSubmenuAction
@@ -116,7 +122,7 @@ public:
 	KviConnectToServerAction(QObject * pParent);
 protected slots:
 	void popupAboutToShow();
-	void popupActivated(QAction *pAction);
+	void popupActivated(QAction * pAction);
 };
 
 class KviChangeUserModeAction : public KviSubmenuAction
@@ -126,7 +132,7 @@ public:
 	KviChangeUserModeAction(QObject * pParent);
 protected slots:
 	void popupAboutToShow();
-	void popupActivated(QAction *pAction);
+	void popupActivated(QAction * pAction);
 };
 
 class KviIrcToolsAction : public KviSubmenuAction
@@ -136,9 +142,8 @@ public:
 	KviIrcToolsAction(QObject * pParent);
 protected slots:
 	void popupAboutToShow();
-	void popupActivated(QAction *pAction);
+	void popupActivated(QAction * pAction);
 };
-
 
 class KviIrcOperationsAction : public KviSubmenuAction
 {
@@ -147,7 +152,7 @@ public:
 	KviIrcOperationsAction(QObject * pParent);
 protected slots:
 	void popupAboutToShow();
-	void popupActivated(QAction *pAction);
+	void popupActivated(QAction * pAction);
 };
 
 #include "KviIrcToolBar.h"
@@ -157,6 +162,7 @@ class KviIrcContextDisplayAction : public KviAction
 	Q_OBJECT
 public:
 	KviIrcContextDisplayAction(QObject * pParent);
+
 public:
 	virtual bool addToPopupMenu(QMenu * pMenu);
 	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
@@ -166,18 +172,20 @@ public:
 	virtual void setup();
 };
 
-
 class KviGoAwayAction : public KviKvsAction
 {
 	Q_OBJECT
 public:
 	KviGoAwayAction(QObject * pParent);
+
 protected:
 	QString m_szAwayString;
 	QString m_szBackString;
+
 public:
 	virtual bool addToPopupMenu(QMenu * pMenu);
 	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
+
 protected:
 	virtual void setup();
 	virtual void reloadImages();

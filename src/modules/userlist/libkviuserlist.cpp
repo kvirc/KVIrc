@@ -27,46 +27,50 @@
 #include "KviChannelWindow.h"
 #include "KviUserListView.h"
 
-#define GET_KVS_WINDOW_ID_AND_NICK \
-	QString szWnd, szNick; \
-	KviWindow * pWnd; \
-	KVSM_PARAMETERS_BEGIN(c) \
-		KVSM_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick) \
-		KVSM_PARAMETER("window_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWnd) \
-	KVSM_PARAMETERS_END(c) \
-	if(c->parameterList()->count() == 1) \
-	{ \
-		pWnd = c->window(); \
-	} else { \
-		pWnd = g_pApp->findWindow(szWnd.toUtf8().data()); \
-		if(!pWnd) \
-		{ \
-			if(!c->hasSwitch('q',"quiet")) \
-				c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data()); \
-			return true; \
-		} \
-	} \
-	if(!pWnd) \
-	  return true;
+#define GET_KVS_WINDOW_ID_AND_NICK                                                                   \
+	QString szWnd, szNick;                                                                           \
+	KviWindow * pWnd;                                                                                \
+	KVSM_PARAMETERS_BEGIN(c)                                                                         \
+	KVSM_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)                                         \
+	KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)                               \
+	KVSM_PARAMETERS_END(c)                                                                           \
+	if(c->parameterList()->count() == 1)                                                             \
+	{                                                                                                \
+		pWnd = c->window();                                                                          \
+	}                                                                                                \
+	else                                                                                             \
+	{                                                                                                \
+		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());                                            \
+		if(!pWnd)                                                                                    \
+		{                                                                                            \
+			if(!c->hasSwitch('q', "quiet"))                                                          \
+				c->warning(__tr2qs("The window with ID '%s' doesn't exist"), szWnd.toUtf8().data()); \
+			return true;                                                                             \
+		}                                                                                            \
+	}                                                                                                \
+	if(!pWnd)                                                                                        \
+		return true;
 
-#define GET_KVS_FNC_WINDOW_ID \
-	QString szWnd; \
-	KviWindow * pWnd; \
-	KVSM_PARAMETERS_BEGIN(c) \
-		KVSM_PARAMETER("window_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWnd) \
-	KVSM_PARAMETERS_END(c) \
-	if(c->parameterList()->count() == 0) \
-	{ \
-		pWnd = c->window(); \
-	} else { \
-		pWnd = g_pApp->findWindow(szWnd.toUtf8().data()); \
-		if(!pWnd) \
-			return true; \
-	} \
-	if(!pWnd) \
-	{ \
-		return true; \
-	} \
+#define GET_KVS_FNC_WINDOW_ID                                          \
+	QString szWnd;                                                     \
+	KviWindow * pWnd;                                                  \
+	KVSM_PARAMETERS_BEGIN(c)                                           \
+	KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd) \
+	KVSM_PARAMETERS_END(c)                                             \
+	if(c->parameterList()->count() == 0)                               \
+	{                                                                  \
+		pWnd = c->window();                                            \
+	}                                                                  \
+	else                                                               \
+	{                                                                  \
+		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());              \
+		if(!pWnd)                                                      \
+			return true;                                               \
+	}                                                                  \
+	if(!pWnd)                                                          \
+	{                                                                  \
+		return true;                                                   \
+	}
 
 // FIXME: #warning "THIS HAS TO WORK FOR QUERIES TOO!"
 /*
@@ -105,7 +109,7 @@ static bool userlist_kvs_fnc_selected(KviKvsModuleFunctionCall * c)
 
 	if(pWnd->type() != KviWindow::Channel)
 	{
-		c->warning(__tr2qs_ctx("The specified window is not a channel","kvs"));
+		c->warning(__tr2qs_ctx("The specified window is not a channel", "kvs"));
 		c->returnValue()->setNothing();
 		return true;
 	}
@@ -113,9 +117,9 @@ static bool userlist_kvs_fnc_selected(KviKvsModuleFunctionCall * c)
 	KviKvsArray * a = new KviKvsArray();
 
 	kvs_int_t i = 0;
-	for(QString * s = ((KviChannelWindow *)pWnd)->firstSelectedNickname();s;s = ((KviChannelWindow *)pWnd)->nextSelectedNickname())
+	for(QString * s = ((KviChannelWindow *)pWnd)->firstSelectedNickname(); s; s = ((KviChannelWindow *)pWnd)->nextSelectedNickname())
 	{
-		a->set(i,new KviKvsVariant(*s));
+		a->set(i, new KviKvsVariant(*s));
 		i++;
 	}
 
@@ -129,11 +133,11 @@ static bool userlist_kvs_cmd_select(KviKvsModuleCommandCall * c)
 
 	if(pWnd->type() != KviWindow::Channel)
 	{
-		c->warning(__tr2qs_ctx("The specified window is not a channel","kvs"));
+		c->warning(__tr2qs_ctx("The specified window is not a channel", "kvs"));
 		return true;
 	}
 
-	((KviUserListView*)((KviChannelWindow *)pWnd)->userListView())->select(szNick);
+	((KviUserListView *)((KviChannelWindow *)pWnd)->userListView())->select(szNick);
 	return true;
 }
 
@@ -143,20 +147,20 @@ static bool userlist_kvs_cmd_ensureVisible(KviKvsModuleCommandCall * c)
 
 	if(pWnd->type() != KviWindow::Channel)
 	{
-		c->warning(__tr2qs_ctx("The specified window is not a channel","kvs"));
+		c->warning(__tr2qs_ctx("The specified window is not a channel", "kvs"));
 		return true;
 	}
 
-	((KviUserListView*)((KviChannelWindow *)pWnd)->userListView())->ensureVisible(szNick);
+	((KviUserListView *)((KviChannelWindow *)pWnd)->userListView())->ensureVisible(szNick);
 	return true;
 }
 
-static bool userlist_module_init(KviModule *m)
+static bool userlist_module_init(KviModule * m)
 {
-	KVSM_REGISTER_FUNCTION(m,"selected",userlist_kvs_fnc_selected);
+	KVSM_REGISTER_FUNCTION(m, "selected", userlist_kvs_fnc_selected);
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"select",userlist_kvs_cmd_select);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"ensureVisible",userlist_kvs_cmd_ensureVisible);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "select", userlist_kvs_cmd_select);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "ensureVisible", userlist_kvs_cmd_ensureVisible);
 	return true;
 }
 
@@ -171,13 +175,12 @@ static bool userlist_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Userlist",                                               // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2010 Fabio Bas (ctrlaltca at gmail dot com)", // author & (C)
-	"KVIrc userlist management functions",
-	userlist_module_init,
-	userlist_module_can_unload,
-	0,
-	userlist_module_cleanup,
-	0
-)
+    "Userlist",                                                  // module name
+    "4.0.0",                                                     // module version
+    "Copyright (C) 2010 Fabio Bas (ctrlaltca at gmail dot com)", // author & (C)
+    "KVIrc userlist management functions",
+    userlist_module_init,
+    userlist_module_can_unload,
+    0,
+    userlist_module_cleanup,
+    0)

@@ -36,25 +36,26 @@ class KVIRC_API KviKvsTreeNodeData : public KviKvsTreeNode
 public:
 	KviKvsTreeNodeData(const QChar * pLocation);
 	~KviKvsTreeNodeData();
+
 protected:
 	const QChar * m_pEndingLocation; // note that this MIGHT be not set (it's set for sure for anything parsed by parseCommaSeparatedParameter()
 public:
-	void setEndingLocation(const QChar * pEndingLocation){ m_pEndingLocation = pEndingLocation; };
-	const QChar * endingLocation(){ return m_pEndingLocation; };
+	void setEndingLocation(const QChar * pEndingLocation) { m_pEndingLocation = pEndingLocation; };
+	const QChar * endingLocation() { return m_pEndingLocation; };
 
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
 	virtual KviKvsRWEvaluationResult * evaluateReadWrite(KviKvsRunTimeContext * c); // error by default
 
-	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer); // error by default
-	virtual KviKvsRWEvaluationResult * evaluateReadWriteInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c); // error by default
+	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer); // error by default
+	virtual KviKvsRWEvaluationResult * evaluateReadWriteInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c);   // error by default
 
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 
-	virtual bool isReadOnly(); // true by default
+	virtual bool isReadOnly();                   // true by default
 	virtual bool canEvaluateToObjectReference(); // no by default
-	virtual bool isFunctionCall(); // no by default
-	virtual bool canEvaluateInObjectScope(); // no by default
+	virtual bool isFunctionCall();               // no by default
+	virtual bool canEvaluateInObjectScope();     // no by default
 
 	virtual bool convertStringConstantToNumeric(); // this does nothing by default and is reimplemented only by KviKvsTreeNodeConstantData
 };

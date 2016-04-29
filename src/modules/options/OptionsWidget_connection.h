@@ -93,6 +93,7 @@ public:
 	~OptionsWidget_identService();
 
 	virtual void commit();
+
 protected:
 	KviBoolSelector * m_pEnableIdent;
 	KviBoolSelector * m_pEnableIpv6;
@@ -104,6 +105,5 @@ protected:
 public slots:
 	void enableIpv4InIpv6(bool);
 };
-
 
 #endif //_OPTW_CONNECTION_H_

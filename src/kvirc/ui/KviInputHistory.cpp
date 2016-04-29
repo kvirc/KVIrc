@@ -70,26 +70,26 @@ void KviInputHistory::delRef()
 
 void KviInputHistory::add(QString * szString)
 {
-	m_pStringList->insert(0,szString);
+	m_pStringList->insert(0, szString);
 	if(m_pStringList->count() > KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES)
 		m_pStringList->removeLast();
 }
 
 void KviInputHistory::load(const QString & szFileName)
 {
-	KviConfigurationFile c(szFileName,KviConfigurationFile::Read);
+	KviConfigurationFile c(szFileName, KviConfigurationFile::Read);
 
-	int iCount = c.readIntEntry("Count",0);
+	int iCount = c.readIntEntry("Count", 0);
 
 	if(iCount > KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES)
 		iCount = KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES;
 
 	KviCString szTmp;
 
-	for(int i=0; i<iCount; i++)
+	for(int i = 0; i < iCount; i++)
 	{
-		szTmp.sprintf("S%d",i);
-		QString szEntry = c.readEntry(szTmp.ptr(),"");
+		szTmp.sprintf("S%d", i);
+		QString szEntry = c.readEntry(szTmp.ptr(), "");
 		if(!szEntry.isEmpty())
 			add(new QString(szEntry));
 	}
@@ -97,10 +97,10 @@ void KviInputHistory::load(const QString & szFileName)
 
 void KviInputHistory::save(const QString & szFileName)
 {
-	KviConfigurationFile c(szFileName,KviConfigurationFile::Write);
+	KviConfigurationFile c(szFileName, KviConfigurationFile::Write);
 	c.clear();
 
-	c.writeEntry("Count",m_pStringList->count());
+	c.writeEntry("Count", m_pStringList->count());
 
 	KviCString szTmp;
 	int iIdx = 0;
@@ -109,8 +109,8 @@ void KviInputHistory::save(const QString & szFileName)
 	{
 		if(!szString->isEmpty())
 		{
-			szTmp.sprintf("S%d",iIdx);
-			c.writeEntry(szTmp.ptr(),*szString);
+			szTmp.sprintf("S%d", iIdx);
+			c.writeEntry(szTmp.ptr(), *szString);
 			iIdx++;
 		}
 	}

@@ -27,59 +27,59 @@
 #include "kvi_settings.h"
 
 #ifdef COMPILE_X11_SUPPORT
-	#ifdef Bool
-		// Someone has defined Bool ?
-		#undef Bool
-	#endif
-	
-	#ifdef None
-		#undef None
-	#endif
+#ifdef Bool
+// Someone has defined Bool ?
+#undef Bool
+#endif
 
-	#include <X11/Xlib.h>
+#ifdef None
+#undef None
+#endif
 
-	// Too bad that X11/Xlib.h defines Bool, Error and Success... this basically
-	// SUX since we can't use them anywhere in the source!
-	// this breaks, enums in Qt, enums in KVIrc and other stuff all around...
-	// Shame on you Xlib.h author :D
+#include <X11/Xlib.h>
 
-	#ifdef Bool
-		// NO!
-		#undef Bool
-	#endif
+// Too bad that X11/Xlib.h defines Bool, Error and Success... this basically
+// SUX since we can't use them anywhere in the source!
+// this breaks, enums in Qt, enums in KVIrc and other stuff all around...
+// Shame on you Xlib.h author :D
 
-	#ifdef None
-		// No
-		#undef None
-	#endif
-	
-	#ifdef KeyPress
-		#undef KeyPress
-	#endif
+#ifdef Bool
+// NO!
+#undef Bool
+#endif
 
-	#ifdef KeyRelease
-		#undef KeyRelease
-	#endif
+#ifdef None
+// No
+#undef None
+#endif
 
-	#ifdef FocusIn
-		#undef FocusIn
-	#endif
+#ifdef KeyPress
+#undef KeyPress
+#endif
 
-	#ifdef FocusOut
-		#undef FocusOut
-	#endif
+#ifdef KeyRelease
+#undef KeyRelease
+#endif
 
-	#ifdef FontChange
-		#undef FontChange
-	#endif
+#ifdef FocusIn
+#undef FocusIn
+#endif
 
-	#ifdef Expose
-		#undef Expose
-	#endif
+#ifdef FocusOut
+#undef FocusOut
+#endif
 
-	#ifdef CursorShape
-		#undef CursorShape
-	#endif
+#ifdef FontChange
+#undef FontChange
+#endif
+
+#ifdef Expose
+#undef Expose
+#endif
+
+#ifdef CursorShape
+#undef CursorShape
+#endif
 
 #endif //COMPILE_X11_SUPPORT
 

@@ -31,7 +31,6 @@
 #include "KviLocale.h"
 #include "KviIconManager.h"
 
-
 // Tables used in $setAlignment, $alignment and in $setOrientation & $orientation
 
 const char * const align_tbl[] = {
@@ -46,7 +45,7 @@ const int align_cod[] = {
 	Qt::AlignHCenter
 };
 
-#define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
+#define align_num (sizeof(align_tbl) / sizeof(align_tbl[0]))
 
 /*
 	@doc:	groupbox
@@ -130,159 +129,158 @@ const int align_cod[] = {
 		[/example]
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_groupBox,"groupbox","widget")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,setTitle)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,title)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,setFlat)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,isFlat)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,setCheckable)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,isCheckable)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,setInsideMargin)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,insideMargin)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,setInsideSpacing)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,insideSpacing)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,addSpace)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,alignment)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,setAlignment)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,setOrientation)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,isChecked)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox,setChecked)
+KVSO_BEGIN_REGISTERCLASS(KvsObject_groupBox, "groupbox", "widget")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, setTitle)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, title)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, setFlat)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, isFlat)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, setCheckable)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, isCheckable)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, setInsideMargin)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, insideMargin)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, setInsideSpacing)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, insideSpacing)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, addSpace)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, alignment)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, setAlignment)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, setOrientation)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, isChecked)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_groupBox, setChecked)
 
 KVSO_END_REGISTERCLASS(KvsObject_groupBox)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_groupBox,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_groupBox, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_groupBox)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_groupBox)
 
 KVSO_END_CONSTRUCTOR(KvsObject_groupBox)
 
-bool KvsObject_groupBox::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_groupBox::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
-	KviTalGroupBox *groupbox=new KviTalGroupBox(getName(),parentScriptWidget());
+	KviTalGroupBox * groupbox = new KviTalGroupBox(getName(), parentScriptWidget());
 
 	groupbox->setOrientation(Qt::Horizontal);
 	groupbox->setObjectName(getName());
-	setObject(groupbox,true);
+	setObject(groupbox, true);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(groupBox,setTitle)
+KVSO_CLASS_FUNCTION(groupBox, setTitle)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szTitle;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("title",KVS_PT_STRING,0,szTitle)
+	KVSO_PARAMETER("title", KVS_PT_STRING, 0, szTitle)
 	KVSO_PARAMETERS_END(c)
 	((KviTalGroupBox *)widget())->setTitle(szTitle);
 	return true;
 }
-KVSO_CLASS_FUNCTION(groupBox,title)
+KVSO_CLASS_FUNCTION(groupBox, title)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setString(((KviTalGroupBox *)widget())->title());
 	return true;
 }
-KVSO_CLASS_FUNCTION(groupBox,setFlat)
+KVSO_CLASS_FUNCTION(groupBox, setFlat)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bFlag",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETER("bFlag", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
 	((KviTalGroupBox *)widget())->setFlat(bEnabled);
 	return true;
 }
-KVSO_CLASS_FUNCTION(groupBox,isFlat)
+KVSO_CLASS_FUNCTION(groupBox, isFlat)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isFlat());
 	return true;
 }
-KVSO_CLASS_FUNCTION(groupBox,setCheckable)
+KVSO_CLASS_FUNCTION(groupBox, setCheckable)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bFlag",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETER("bFlag", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
 	((KviTalGroupBox *)widget())->setCheckable(bEnabled);
 	return true;
 }
-KVSO_CLASS_FUNCTION(groupBox,isCheckable)
+KVSO_CLASS_FUNCTION(groupBox, isCheckable)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isCheckable());
 	return true;
 }
-KVSO_CLASS_FUNCTION(groupBox,setChecked)
+KVSO_CLASS_FUNCTION(groupBox, setChecked)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bFlag",KVS_PT_BOOL,0,bEnabled)
+	KVSO_PARAMETER("bFlag", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
 	((KviTalGroupBox *)widget())->setChecked(bEnabled);
 	return true;
 }
-KVSO_CLASS_FUNCTION(groupBox,isChecked)
+KVSO_CLASS_FUNCTION(groupBox, isChecked)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isChecked());
 	return true;
 }
-KVSO_CLASS_FUNCTION(groupBox,setInsideMargin)
+KVSO_CLASS_FUNCTION(groupBox, setInsideMargin)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uMargin;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("margin",KVS_PT_UNSIGNEDINTEGER,0,uMargin)
+	KVSO_PARAMETER("margin", KVS_PT_UNSIGNEDINTEGER, 0, uMargin)
 	KVSO_PARAMETERS_END(c)
 	((KviTalGroupBox *)widget())->setInsideMargin(uMargin);
 	return true;
 }
-KVSO_CLASS_FUNCTION(groupBox,insideMargin)
+KVSO_CLASS_FUNCTION(groupBox, insideMargin)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((KviTalGroupBox *)widget())->insideMargin());
 	return true;
 }
-KVSO_CLASS_FUNCTION(groupBox,setInsideSpacing)
+KVSO_CLASS_FUNCTION(groupBox, setInsideSpacing)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uSpacing;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
+	KVSO_PARAMETER("spacing", KVS_PT_UNSIGNEDINTEGER, 0, uSpacing)
 	KVSO_PARAMETERS_END(c)
 	((KviTalGroupBox *)widget())->setInsideSpacing(uSpacing);
 	return true;
 }
-KVSO_CLASS_FUNCTION(groupBox,insideSpacing)
+KVSO_CLASS_FUNCTION(groupBox, insideSpacing)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((KviTalGroupBox *)widget())->insideSpacing());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(groupBox,addSpace)
+KVSO_CLASS_FUNCTION(groupBox, addSpace)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iSpace;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("columns",KVS_PT_UNSIGNEDINTEGER,0,iSpace)
+	KVSO_PARAMETER("columns", KVS_PT_UNSIGNEDINTEGER, 0, iSpace)
 	KVSO_PARAMETERS_END(c)
 	(((KviTalGroupBox *)widget())->addSpace(iSpace));
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(groupBox,setAlignment)
+KVSO_CLASS_FUNCTION(groupBox, setAlignment)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szAlign;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("alignment",KVS_PT_STRING,0,szAlign)
+	KVSO_PARAMETER("alignment", KVS_PT_STRING, 0, szAlign)
 	KVSO_PARAMETERS_END(c)
 	for(unsigned int i = 0; i < align_num; i++)
 	{
@@ -292,20 +290,20 @@ KVSO_CLASS_FUNCTION(groupBox,setAlignment)
 			return true;
 		}
 	}
-	c->warning(__tr2qs_ctx("Unknown alignment '%Q'","objets"),&szAlign);
+	c->warning(__tr2qs_ctx("Unknown alignment '%Q'", "objets"), &szAlign);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(groupBox,alignment)
+KVSO_CLASS_FUNCTION(groupBox, alignment)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	int mode = ((KviTalGroupBox *)widget())->alignment();
-	QString szAlignment="";
+	QString szAlignment = "";
 	for(unsigned int i = 0; i < align_num; i++)
 	{
 		if(mode == align_cod[i])
 		{
-			szAlignment=align_tbl[i];
+			szAlignment = align_tbl[i];
 			break;
 		}
 	}
@@ -313,19 +311,19 @@ KVSO_CLASS_FUNCTION(groupBox,alignment)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(groupBox,setOrientation)
+KVSO_CLASS_FUNCTION(groupBox, setOrientation)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("orientation",KVS_PT_STRING,0,szMode)
+	KVSO_PARAMETER("orientation", KVS_PT_STRING, 0, szMode)
 	KVSO_PARAMETERS_END(c)
 	if(KviQString::equalCI(szMode, "Horizontal"))
 		((KviTalGroupBox *)widget())->setOrientation(Qt::Vertical);
-	else
-	if(KviQString::equalCI(szMode, "Vertical"))
+	else if(KviQString::equalCI(szMode, "Vertical"))
 		((KviTalGroupBox *)widget())->setOrientation(Qt::Horizontal);
-	else c->warning( __tr2qs_ctx("Unknown orientation '%Q'","objects"),&szMode);
+	else
+		c->warning(__tr2qs_ctx("Unknown orientation '%Q'", "objects"), &szMode);
 
 	return true;
 }

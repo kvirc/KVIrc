@@ -25,28 +25,28 @@
 #include "KviParameterList.h"
 
 KviParameterList::KviParameterList()
-: KviPointerList<KviCString>()
+    : KviPointerList<KviCString>()
 {
 	setAutoDelete(true);
 }
 
-KviParameterList::KviParameterList(KviCString *p1)
-: KviPointerList<KviCString>()
+KviParameterList::KviParameterList(KviCString * p1)
+    : KviPointerList<KviCString>()
 {
 	setAutoDelete(true);
 	append(p1);
 }
 
-KviParameterList::KviParameterList(KviCString *p1,KviCString *p2)
-: KviPointerList<KviCString>()
+KviParameterList::KviParameterList(KviCString * p1, KviCString * p2)
+    : KviPointerList<KviCString>()
 {
 	setAutoDelete(true);
 	append(p1);
 	append(p2);
 }
 
-KviParameterList::KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3)
-: KviPointerList<KviCString>()
+KviParameterList::KviParameterList(KviCString * p1, KviCString * p2, KviCString * p3)
+    : KviPointerList<KviCString>()
 {
 	setAutoDelete(true);
 	append(p1);
@@ -54,8 +54,8 @@ KviParameterList::KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3)
 	append(p3);
 }
 
-KviParameterList::KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3,KviCString *p4)
-: KviPointerList<KviCString>()
+KviParameterList::KviParameterList(KviCString * p1, KviCString * p2, KviCString * p3, KviCString * p4)
+    : KviPointerList<KviCString>()
 {
 	setAutoDelete(true);
 	append(p1);
@@ -64,8 +64,8 @@ KviParameterList::KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3,
 	append(p4);
 }
 
-KviParameterList::KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3,KviCString *p4,KviCString *p5)
-: KviPointerList<KviCString>()
+KviParameterList::KviParameterList(KviCString * p1, KviCString * p2, KviCString * p3, KviCString * p4, KviCString * p5)
+    : KviPointerList<KviCString>()
 {
 	setAutoDelete(true);
 	append(p1);
@@ -75,8 +75,8 @@ KviParameterList::KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3,
 	append(p5);
 }
 
-KviParameterList::KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3,KviCString *p4,KviCString *p5,KviCString *p6)
-: KviPointerList<KviCString>()
+KviParameterList::KviParameterList(KviCString * p1, KviCString * p2, KviCString * p3, KviCString * p4, KviCString * p5, KviCString * p6)
+    : KviPointerList<KviCString>()
 {
 	setAutoDelete(true);
 	append(p1);
@@ -87,9 +87,8 @@ KviParameterList::KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3,
 	append(p6);
 }
 
-
-KviParameterList::KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3,KviCString *p4,KviCString *p5,KviCString *p6,KviCString *p7)
-: KviPointerList<KviCString>()
+KviParameterList::KviParameterList(KviCString * p1, KviCString * p2, KviCString * p3, KviCString * p4, KviCString * p5, KviCString * p6, KviCString * p7)
+    : KviPointerList<KviCString>()
 {
 	setAutoDelete(true);
 	append(p1);
@@ -101,14 +100,14 @@ KviParameterList::KviParameterList(KviCString *p1,KviCString *p2,KviCString *p3,
 	append(p7);
 }
 
-KviParameterList::KviParameterList(const char *paramBuffer)
-: KviPointerList<KviCString>()
+KviParameterList::KviParameterList(const char * paramBuffer)
+    : KviPointerList<KviCString>()
 {
 	setAutoDelete(true);
 	while(*paramBuffer)
 	{
 		KviCString * pStr = new KviCString();
-		paramBuffer = kvi_extractToken(*pStr,paramBuffer);
+		paramBuffer = kvi_extractToken(*pStr, paramBuffer);
 		append(pStr);
 	}
 }
@@ -119,7 +118,7 @@ KviParameterList::~KviParameterList()
 
 KviCString * KviParameterList::safeFirst()
 {
-	KviCString * f= first();
+	KviCString * f = first();
 	return f ? f : &m_szEmpty;
 }
 
@@ -129,16 +128,16 @@ KviCString * KviParameterList::safeNext()
 	return f ? f : &m_szEmpty;
 }
 
-
 bool KviParameterList::getBool()
 {
 	KviCString * par = current();
 	(void)next();
 	if(par)
 	{
-		if(kvi_strEqualCS(par->ptr(),"0"))return false;
+		if(kvi_strEqualCS(par->ptr(), "0"))
+			return false;
 	}
-	return true;  // default
+	return true; // default
 }
 
 int KviParameterList::getInt(bool * bOk)
@@ -149,7 +148,8 @@ int KviParameterList::getInt(bool * bOk)
 	{
 		return par->toInt(bOk);
 	}
-	if(bOk)*bOk = false;
+	if(bOk)
+		*bOk = false;
 	return 0;
 }
 
@@ -161,80 +161,90 @@ unsigned int KviParameterList::getUInt(bool * bOk)
 	{
 		return par->toUInt(bOk);
 	}
-	if(bOk)*bOk = false;
+	if(bOk)
+		*bOk = false;
 	return 0;
 }
 
 QRect KviParameterList::getRect(bool * bOk)
 {
 	int val[4];
-	for(int i=0;i<4;i++)
+	for(int i = 0; i < 4; i++)
 	{
 		KviCString * pszv = current();
 		(void)next();
 		if(!pszv)
 		{
-			if(bOk)*bOk = false;
+			if(bOk)
+				*bOk = false;
 			return QRect(); // invalid
 		}
 		bool mybOk;
 		val[i] = pszv->toInt(&mybOk);
 		if(!mybOk)
 		{
-			if(bOk)*bOk = false;
+			if(bOk)
+				*bOk = false;
 			return QRect(); // invalid
 		}
 	}
-	if(bOk)*bOk = true;
-	return QRect(val[0],val[1],val[2],val[3]);
+	if(bOk)
+		*bOk = true;
+	return QRect(val[0], val[1], val[2], val[3]);
 }
 
 QPoint KviParameterList::getPoint(bool * bOk)
 {
 	int val[2];
-	for(int i=0;i<2;i++)
+	for(int i = 0; i < 2; i++)
 	{
 		KviCString * pszv = current();
 		(void)next();
 		if(!pszv)
 		{
-			if(bOk)*bOk = false;
+			if(bOk)
+				*bOk = false;
 			return QPoint(); // invalid
 		}
 		bool mybOk;
 		val[i] = pszv->toInt(&mybOk);
 		if(!mybOk)
 		{
-			if(bOk)*bOk = false;
+			if(bOk)
+				*bOk = false;
 			return QPoint(); // invalid
 		}
 	}
-	if(bOk)*bOk = true;
-	return QPoint(val[0],val[1]);
+	if(bOk)
+		*bOk = true;
+	return QPoint(val[0], val[1]);
 }
 
 QSize KviParameterList::getSize(bool * bOk)
 {
 	int val[2];
-	for(int i=0;i<2;i++)
+	for(int i = 0; i < 2; i++)
 	{
 		KviCString * pszv = current();
 		(void)next();
 		if(!pszv)
 		{
-			if(bOk)*bOk = false;
+			if(bOk)
+				*bOk = false;
 			return QSize(); // invalid
 		}
 		bool mybOk;
 		val[i] = pszv->toInt(&mybOk);
 		if(!mybOk)
 		{
-			if(bOk)*bOk = false;
+			if(bOk)
+				*bOk = false;
 			return QSize(); // invalid
 		}
 	}
-	if(bOk)*bOk = true;
-	return QSize(val[0],val[1]);
+	if(bOk)
+		*bOk = true;
+	return QSize(val[0], val[1]);
 }
 
 //#ifdef COMPILE_ON_WINDOWS

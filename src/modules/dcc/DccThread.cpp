@@ -33,28 +33,30 @@
 #include "kvi_socket.h"
 
 #ifdef COMPILE_SSL_SUPPORT
-	#include "KviSSLMaster.h"
+#include "KviSSLMaster.h"
 #endif
 
-DccThread::DccThread(QObject * par,kvi_socket_t fd)
-: KviSensitiveThread()
+DccThread::DccThread(QObject * par, kvi_socket_t fd)
+    : KviSensitiveThread()
 {
-	m_pParent     = par;
-	m_fd          = fd;
-	m_pMutex      = new KviMutex();
+	m_pParent = par;
+	m_fd = fd;
+	m_pMutex = new KviMutex();
 #ifdef COMPILE_SSL_SUPPORT
-//	qDebug("CLEARING SSL IN DccThread constructor");
-	m_pSSL        = 0;
+	//	qDebug("CLEARING SSL IN DccThread constructor");
+	m_pSSL = 0;
 #endif
 }
 
 DccThread::~DccThread()
 {
 #ifdef COMPILE_SSL_SUPPORT
-	if(m_pSSL)KviSSLMaster::freeSSL(m_pSSL);
+	if(m_pSSL)
+		KviSSLMaster::freeSSL(m_pSSL);
 	m_pSSL = 0;
 #endif
-	if(m_fd != KVI_INVALID_SOCKET)kvi_socket_close(m_fd);
+	if(m_fd != KVI_INVALID_SOCKET)
+		kvi_socket_close(m_fd);
 	KVI_ASSERT(!m_pMutex->locked());
 	delete m_pMutex;
 }
@@ -62,7 +64,8 @@ DccThread::~DccThread()
 #ifdef COMPILE_SSL_SUPPORT
 void DccThread::setSSL(KviSSL * s)
 {
-	if(m_pSSL)KviSSLMaster::freeSSL(m_pSSL);
+	if(m_pSSL)
+		KviSSLMaster::freeSSL(m_pSSL);
 	m_pSSL = s;
 }
 #endif
@@ -75,7 +78,9 @@ bool DccThread::handleInvalidSocketRead(int readLen)
 		// connection closed
 		postErrorEvent(KviError::RemoteEndClosedConnection);
 		return false;
-	} else {
+	}
+	else
+	{
 		// error ?
 		int err = kvi_socket_error();
 		if((err != EINTR) && (err != EAGAIN))
@@ -93,7 +98,7 @@ void DccThread::raiseSSLError()
 	KviCString buffer;
 	while(m_pSSL->getLastErrorString(buffer))
 	{
-		KviCString msg(KviCString::Format,"[SSL ERROR]: %s",buffer.ptr());
+		KviCString msg(KviCString::Format, "[SSL ERROR]: %s", buffer.ptr());
 		postMessageEvent(msg.ptr());
 	}
 }
@@ -103,12 +108,12 @@ void DccThread::postErrorEvent(int err)
 {
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ERROR);
 	e->setData(new int(err));
-	postEvent(m_pParent,e);
+	postEvent(m_pParent, e);
 }
 
 void DccThread::postMessageEvent(const char * message)
 {
 	KviThreadDataEvent<KviCString> * e = new KviThreadDataEvent<KviCString>(KVI_DCC_THREAD_EVENT_MESSAGE);
 	e->setData(new KviCString(message));
-	postEvent(m_pParent,e);
+	postEvent(m_pParent, e);
 }

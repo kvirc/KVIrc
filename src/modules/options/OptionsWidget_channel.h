@@ -69,8 +69,10 @@ class OptionsWidget_channelAdvanced : public KviOptionsWidget
 public:
 	OptionsWidget_channelAdvanced(QWidget * parent);
 	~OptionsWidget_channelAdvanced();
+
 public:
 	virtual void commit();
+
 protected:
 	QComboBox * m_pBanTypeCombo;
 };

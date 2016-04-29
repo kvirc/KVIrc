@@ -37,20 +37,20 @@
 #include <QStringList>
 
 #ifdef COMPILE_KDE_SUPPORT
-	#include <KAboutData>
+#include <KAboutData>
 #endif
 
 #ifdef COMPILE_ON_WINDOWS
-	// The brain damaged MSVC compiler can't instantiate templates without this
-	#include "KviMainWindow.h"
-	#include "KviWindow.h"
-#else // !COMPILE_ON_WINDOWS
-	class KviMainWindow;
-	class KviWindow;
+// The brain damaged MSVC compiler can't instantiate templates without this
+#include "KviMainWindow.h"
+#include "KviWindow.h"
+#else  // !COMPILE_ON_WINDOWS
+class KviMainWindow;
+class KviWindow;
 #endif // !COMPILE_ON_WINDOWS
 
 #ifndef COMPILE_NO_IPC
-	class KviIpcSentinel;
+class KviIpcSentinel;
 #endif // !COMPILE_NO_IPC
 
 class QMenu;
@@ -68,10 +68,10 @@ class QStringList;
 typedef struct _KviPendingAvatarChange
 {
 	KviConsoleWindow * pConsole;
-	QString      szRemoteUrl;
-	QString      szNick;
-	QString      szUser;
-	QString      szHost;
+	QString szRemoteUrl;
+	QString szNick;
+	QString szUser;
+	QString szHost;
 } KviPendingAvatarChange;
 
 /**
@@ -81,10 +81,10 @@ typedef struct _KviPendingAvatarChange
 */
 typedef struct _KviNotifierMessageParam
 {
-	KviWindow    * pWindow;            /**< The window where the notifier was triggered */
-	QString        szIcon;             /**< The id of the icon (channel, query, ...) */
-	QString        szMessage;          /**< The message which triggered the notifier */
-	unsigned int   uMessageLifetime;   /**< The timeout of the notifier; 0 means no hide */
+	KviWindow * pWindow;           /**< The window where the notifier was triggered */
+	QString szIcon;                /**< The id of the icon (channel, query, ...) */
+	QString szMessage;             /**< The message which triggered the notifier */
+	unsigned int uMessageLifetime; /**< The timeout of the notifier; 0 means no hide */
 } KviNotifierMessageParam;
 
 typedef struct _KviDBusNotifierMessageQueue
@@ -92,12 +92,11 @@ typedef struct _KviDBusNotifierMessageQueue
 	QStringList lMessages;
 } KviDBusNotifierMessageQueue;
 
-
 #ifdef Unsorted
-	#undef Unsorted
+#undef Unsorted
 #endif
 #ifdef None
-	#undef None
+#undef None
 #endif
 
 class KVIRC_API KviApplication : public KviTalApplication
@@ -110,55 +109,79 @@ public:
 	// FIXME: "Plugins" and "ConfigPlugins" should become "Modules" and "ConfigModules"
 	enum KvircSubdir
 	{
-		None,         Pics,          Config,
-		Help,         HelpEN,        HelpNoIntl,
-		Log,          Incoming,      Audio,
-		Scripts,      Plugins,       ConfigPlugins,
-		Trash,        MsgColors,     Charmaps,
-		Avatars,      DefScript,     License,
-		Modules,      ConfigScripts, Filters,
-		Tmp,          Locale,        Themes,
-		Classes,      SmallIcons,    EasyPlugins
+		None,
+		Pics,
+		Config,
+		Help,
+		HelpEN,
+		HelpNoIntl,
+		Log,
+		Incoming,
+		Audio,
+		Scripts,
+		Plugins,
+		ConfigPlugins,
+		Trash,
+		MsgColors,
+		Charmaps,
+		Avatars,
+		DefScript,
+		License,
+		Modules,
+		ConfigScripts,
+		Filters,
+		Tmp,
+		Locale,
+		Themes,
+		Classes,
+		SmallIcons,
+		EasyPlugins
 	};
 
-	KviApplication(int &argc,char ** argv);
+	KviApplication(int & argc, char ** argv);
 	~KviApplication();
+
 public:
 	// setup stuff (accessed from KviMain.cpp: consider private otherwise)
-	QString	                                   m_szConfigFile;        // setup
-	bool                                       m_bCreateConfig;       // setup
-	QString                                    m_szExecAfterStartup;
+	QString m_szConfigFile; // setup
+	bool m_bCreateConfig;   // setup
+	QString m_szExecAfterStartup;
+
 protected:
 #ifdef COMPILE_KDE_SUPPORT
-	KAboutData                               * m_pAboutData;
+	KAboutData * m_pAboutData;
 #endif
 	// directories
-	QString                                    m_szGlobalKvircDir;
-	QString                                    m_szLocalKvircDir;
-	int                                        m_iHeartbeatTimerId;
-	bool                                       m_bFirstTimeRun;
-	bool                                       m_bClosingDown;
+	QString m_szGlobalKvircDir;
+	QString m_szLocalKvircDir;
+	int m_iHeartbeatTimerId;
+	bool m_bFirstTimeRun;
+	bool m_bClosingDown;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	bool                                       m_bPortable;
+	bool m_bPortable;
 #endif
-	KviWindow                                * m_pActiveWindow;
-	bool                                       m_bUpdateGuiPending;
-	KviPointerList<KviPendingAvatarChange>   * m_pPendingAvatarChanges;
-	bool                            m_bSetupDone;
-	KviPointerHashTable<QString,QStringList> * m_pRecentChannelDict;
+	KviWindow * m_pActiveWindow;
+	bool m_bUpdateGuiPending;
+	KviPointerList<KviPendingAvatarChange> * m_pPendingAvatarChanges;
+	bool m_bSetupDone;
+	KviPointerHashTable<QString, QStringList> * m_pRecentChannelDict;
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	bool                                       m_bUpdatePseudoTransparencyPending;
+	bool m_bUpdatePseudoTransparencyPending;
 #endif
 #ifndef COMPILE_NO_IPC
-	KviIpcSentinel                           * m_pIpcSentinel;
+	KviIpcSentinel * m_pIpcSentinel;
 #endif
-	QFont                                      m_fntDefaultFont;
+	QFont m_fntDefaultFont;
+
 public:
-	void setup();                                  // THIS SHOULD BE PRIVATE! (but is accessed from KviMain.cpp)
+	void setup(); // THIS SHOULD BE PRIVATE! (but is accessed from KviMain.cpp)
 
 #ifdef COMPILE_KDE_SUPPORT
-	void setAboutData(KAboutData * pAboutData){ m_pAboutData = pAboutData; };
-	KAboutData * aboutData(){ return m_pAboutData; };
+	void setAboutData(KAboutData * pAboutData)
+	{
+		m_pAboutData = pAboutData;
+	};
+	KAboutData * aboutData() { return m_pAboutData; };
 #endif
 
 #ifndef COMPILE_NO_IPC
@@ -169,7 +192,7 @@ public:
 
 	bool firstTimeRun() const { return m_bFirstTimeRun; };
 	bool kviClosingDown() const { return m_bClosingDown; };
-	void setKviClosingDown() { m_bClosingDown=true; };
+	void setKviClosingDown() { m_bClosingDown = true; };
 
 	bool supportsCompositing();
 
@@ -208,35 +231,35 @@ public:
 	void loadOptions();
 	void saveOptions();
 
-	void listAvailableOptions(KviWindow *wnd);
-	bool getOptionString(const QString &optName,QString &buffer);
-	bool setOptionValue(const QString &optName,const QString &value);
-	bool setCommonOptionValue(const QString &optName,const QString &value);
+	void listAvailableOptions(KviWindow * wnd);
+	bool getOptionString(const QString & optName, QString & buffer);
+	bool setOptionValue(const QString & optName, const QString & value);
+	bool setCommonOptionValue(const QString & optName, const QString & value);
 
 	void optionResetUpdate(int flags);
 
 	// KviApplication_filesystem.cpp : Filesystem thingies
-	void getGlobalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile = QString());
-	void getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile = QString(),bool bCreateIfNeeded = true);
+	void getGlobalKvircDirectory(QString & szData, KvircSubdir dir, const QString & appendFile = QString());
+	void getLocalKvircDirectory(QString & szData, KvircSubdir dir, const QString & appendFile = QString(), bool bCreateIfNeeded = true);
 
-	void getTmpFileName(QString &szBuffer,const QString &szEndingFileName = QString());
-	void getChannelDumpLogFileName(QString &str);
+	void getTmpFileName(QString & szBuffer, const QString & szEndingFileName = QString());
+	void getChannelDumpLogFileName(QString & str);
 
 	static QTextCodec * defaultTextCodec();
 	static QTextCodec * defaultSrvCodec();
 
-	bool findImageInImageSearchPath(QString &szRetPath,const QString &filename);
+	bool findImageInImageSearchPath(QString & szRetPath, const QString & filename);
 
-	bool findImage(QString &szRetPath,const QString &filename);
-	bool findImageThemeOnlyCompat(QString &szRetPath,const QString &filename); // temporary compat, will be removed soon (do not use)
-	bool findSmallIcon(QString &szRetPath,const QString &filename);
+	bool findImage(QString & szRetPath, const QString & filename);
+	bool findImageThemeOnlyCompat(QString & szRetPath, const QString & filename); // temporary compat, will be removed soon (do not use)
+	bool findSmallIcon(QString & szRetPath, const QString & filename);
 	// tries to map the full path filename to one of the KVIrc's mapped directories
 	// if it doesn't succeed it just returns the complete filename in szRetPath
 	//bool mapImageFile(KviCString &szRetPath,const char * filename);
-	bool mapImageFile(QString &szRetPath,const QString &filename);
+	bool mapImageFile(QString & szRetPath, const QString & filename);
 
 	//void getDefaultDccSaveFilePath(KviCString &path,const char *filename);
-	void completeDirectory(const QString &word,KviPointerList<QString> * matches);
+	void completeDirectory(const QString & word, KviPointerList<QString> * matches);
 	//
 	// Returns a config path suitable for reading (at least)
 	// First lookups the user local config directory,
@@ -246,8 +269,7 @@ public:
 	// if no config file has been found: in this case the local config
 	// directory is used
 	//
-	bool getReadOnlyConfigPath(QString &buffer,const char *config_name,KvircSubdir sbd = Config,bool bNoFail = false);
-
+	bool getReadOnlyConfigPath(QString & buffer, const char * config_name, KvircSubdir sbd = Config, bool bNoFail = false);
 
 	///
 	/// Attempts to locate the audio file specified by szFileName and put it's
@@ -258,18 +280,18 @@ public:
 	/// then it's searched in the local KVIrc "audio" directory, then in the global one
 	/// and finally in the user's home.
 	///
-	bool findAudioFile(QString &szRetPath,const QString &szFileName);
+	bool findAudioFile(QString & szRetPath, const QString & szFileName);
 
 	// KviApplication.cpp : Window stuff
-	KviWindow       * findWindow(const QString &windowId);
-	KviWindow       * findWindowByCaption(const QString &windowCaption,int iContextId=-1);
-	KviConsoleWindow      * findConsole(unsigned int ircContextId);
-	KviConsoleWindow      * findConsole(QString & servr,QString & nick);
-	KviConsoleWindow      * topmostConnectedConsole();
-	KviConsoleWindow      * activeConsole();
-	bool              windowExists(KviWindow *wnd);
-	bool              connectionExists(KviIrcConnection *cnn);
-	unsigned int      windowCount();
+	KviWindow * findWindow(const QString & windowId);
+	KviWindow * findWindowByCaption(const QString & windowCaption, int iContextId = -1);
+	KviConsoleWindow * findConsole(unsigned int ircContextId);
+	KviConsoleWindow * findConsole(QString & servr, QString & nick);
+	KviConsoleWindow * topmostConnectedConsole();
+	KviConsoleWindow * activeConsole();
+	bool windowExists(KviWindow * wnd);
+	bool connectionExists(KviIrcConnection * cnn);
+	unsigned int windowCount();
 
 	// KviApplication.cpp : Utilities
 	void resetAvatarForMatchingUsers(KviRegisteredUser * u);
@@ -281,54 +303,54 @@ public:
 #endif
 
 	// KviApplication.cpp : DCC (and CTCP AVATAR & SOUND) related stuff
-	void setAvatarOnFileReceived(KviConsoleWindow * pConsole,const QString &szRemoteUrl,const QString &szNick,const QString &szUser,const QString &szHost);
-	KviPendingAvatarChange * findPendingAvatarChange(KviConsoleWindow * pConsole,const QString &szNick,const QString &szRemoteUrl);
-	void fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,const QString &szLocalFileName,const QString &szNick = QString(),const QString &szError = QString(),bool bQuiet = false);
+	void setAvatarOnFileReceived(KviConsoleWindow * pConsole, const QString & szRemoteUrl, const QString & szNick, const QString & szUser, const QString & szHost);
+	KviPendingAvatarChange * findPendingAvatarChange(KviConsoleWindow * pConsole, const QString & szNick, const QString & szRemoteUrl);
+	void fileDownloadTerminated(bool bSuccess, const QString & szRemoteUrl, const QString & szLocalFileName, const QString & szNick = QString(), const QString & szError = QString(), bool bQuiet = false);
 
 	void setAvatarFromOptions();
 
 	// uMessageLifetime is in seconds! and 0 means "forever"
-	void notifierMessage(KviWindow * pWnd,int iIconId,const QString &szMsg,unsigned int uMessageLifetime);
+	void notifierMessage(KviWindow * pWnd, int iIconId, const QString & szMsg, unsigned int uMessageLifetime);
 
-	void addRecentNickname(const QString& newNick);
-	void addRecentChannel(const QString& chan,const QString& net);
+	void addRecentNickname(const QString & newNick);
+	void addRecentChannel(const QString & chan, const QString & net);
 
-	QStringList * recentChannelsForNetwork(const QString& net);
+	QStringList * recentChannelsForNetwork(const QString & net);
 
-	KviPointerHashTable<QString,QStringList> * recentChannels() const
+	KviPointerHashTable<QString, QStringList> * recentChannels() const
 	{
 		return m_pRecentChannelDict;
 	}
 
-
-	void addRecentServer(const QString& server);
-    void fillRecentServersPopup(QMenu * m);
-    void fillRecentNicknamesPopup(QMenu * m,KviConsoleWindow * pConsole);
-    void fillRecentChannelsPopup(QMenu * m,KviConsoleWindow * pConsole);
-//
+	void addRecentServer(const QString & server);
+	void fillRecentServersPopup(QMenu * m);
+	void fillRecentNicknamesPopup(QMenu * m, KviConsoleWindow * pConsole);
+	void fillRecentChannelsPopup(QMenu * m, KviConsoleWindow * pConsole);
+	//
 	void autoConnectToServers();
 
 	void checkSuggestRestoreDefaultScript();
 
 	void loadDefaultScript(QString szItem = QString());
 	QStyle * themedStyle();
+
 protected:
 	void buildRecentChannels();
 	void saveRecentChannels();
 	// KviApplication.cpp : KviWindow global database
-	void registerWindow(KviWindow *wnd);
-	void unregisterWindow(KviWindow *wnd);
+	void registerWindow(KviWindow * wnd);
+	void unregisterWindow(KviWindow * wnd);
 	void frameDestructorCallback();
 	void heartbeat(kvi_time_t tNow);
-	virtual void timerEvent(QTimerEvent *e);
-private:
+	virtual void timerEvent(QTimerEvent * e);
 
+private:
 	// KviApplication_setup.cpp : Setup stuff
 	void loadDirectories();
 	void findGlobalKvircDirectory();
 	bool findLocalKvircDirectory();
 	bool checkGlobalKvircDirectory(const QString);
-	bool checkLocalKvircDirectory(const QString &szSpecificPath);
+	bool checkLocalKvircDirectory(const QString & szSpecificPath);
 	bool checkLocalKvircDirectory(); // check the m_szLocalKvircDirectory path
 	bool checkFileAssociations();
 	void setupFileAssociations();
@@ -359,7 +381,7 @@ public slots:
 	void updateGui();
 	void updatePseudoTransparency();
 	void restoreDefaultScript();
-	void addRecentUrl(const QString& text);
+	void addRecentUrl(const QString & text);
 	void showParentFrame();
 signals:
 	void reloadImages();
@@ -368,8 +390,8 @@ signals:
 };
 
 #ifndef _KVI_APP_CPP_
-	extern KVIRC_API KviApplication * g_pApp;
-	extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
+extern KVIRC_API KviApplication * g_pApp;
+extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 #endif
 
 #endif //_KVI_APP_H_

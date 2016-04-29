@@ -34,12 +34,11 @@
 #define kvi_va_end va_end
 
 #ifdef va_copy
-	#define kvi_va_copy(a,b) va_copy(a,b)
+#define kvi_va_copy(a, b) va_copy(a, b)
 #elif defined(__va_copy)
-	#define kvi_va_copy(a,b) __va_copy(a,b)
+#define kvi_va_copy(a, b) __va_copy(a, b)
 #else
-	#define kvi_va_copy(a,b) ((a) = (b))
+#define kvi_va_copy(a, b) ((a) = (b))
 #endif
-
 
 #endif //_KVI_STDARG_H_

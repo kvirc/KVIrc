@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "KviKvsCoreFunctions.h"
 #include "KviKvsKernel.h"
 #include "KviKvsArrayCast.h"
@@ -106,11 +104,12 @@ namespace KviKvsCoreFunctions
 		kvs_uint_t maskType;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("nickname",KVS_PT_STRING,KVS_PF_OPTIONAL,szNick)
-			KVSCF_PARAMETER("maskType",KVS_PT_UINT,KVS_PF_OPTIONAL,maskType)
+		KVSCF_PARAMETER("nickname", KVS_PT_STRING, KVS_PF_OPTIONAL, szNick)
+		KVSCF_PARAMETER("maskType", KVS_PT_UINT, KVS_PF_OPTIONAL, maskType)
 		KVSCF_PARAMETERS_END
 
-		if(maskType > 26) maskType = 0;
+		if(maskType > 26)
+			maskType = 0;
 
 		if(KVSCF_pContext->window()->console())
 		{
@@ -125,7 +124,7 @@ namespace KviKvsCoreFunctions
 					u.setHost(e->host());
 
 					QString tmp;
-					u.mask(tmp,(KviIrcMask::MaskType)maskType);
+					u.mask(tmp, (KviIrcMask::MaskType)maskType);
 					KVSCF_pRetBuffer->setString(tmp);
 					return true;
 				}
@@ -162,7 +161,7 @@ namespace KviKvsCoreFunctions
 		kvs_uint_t uCntx;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("irc_context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uCntx)
+		KVSCF_PARAMETER("irc_context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uCntx)
 		KVSCF_PARAMETERS_END
 
 		KviConsoleWindow * cns;
@@ -176,10 +175,14 @@ namespace KviKvsCoreFunctions
 					KVSCF_pRetBuffer->setString(cns->connection()->currentNickName());
 				else
 					KVSCF_pRetBuffer->setNothing();
-			} else {
+			}
+			else
+			{
 				KVSCF_pRetBuffer->setNothing();
 			}
-		} else {
+		}
+		else
+		{
 			if(KVSCF_pContext->window()->console())
 			{
 				cns = KVSCF_pContext->window()->console();
@@ -187,12 +190,16 @@ namespace KviKvsCoreFunctions
 					KVSCF_pRetBuffer->setString(cns->connection()->currentNickName());
 				else
 					KVSCF_pRetBuffer->setNothing();
-			} else {
+			}
+			else
+			{
 				if(KVSCF_pContext->window()->type() == KviWindow::DccChat)
 				{
 					KVSCF_pRetBuffer->setString(KVSCF_pContext->window()->localNick());
-				} else {
-					KVSCF_pContext->warning(__tr2qs_ctx("This window has no associated IRC context and is not a DCC chat","kvs"));
+				}
+				else
+				{
+					KVSCF_pContext->warning(__tr2qs_ctx("This window has no associated IRC context and is not a DCC chat", "kvs"));
 					KVSCF_pRetBuffer->setNothing();
 				}
 			}
@@ -228,14 +235,14 @@ namespace KviKvsCoreFunctions
 	{
 		QString szName;
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("msg_type_color_set_name",KVS_PT_NONEMPTYSTRING,0,szName)
+		KVSCF_PARAMETER("msg_type_color_set_name", KVS_PT_NONEMPTYSTRING, 0, szName)
 		KVSCF_PARAMETERS_END
 
 		QString tmp = "msgtype";
 		tmp += szName;
-		for(int i=0;i< KVI_NUM_MSGTYPE_OPTIONS;i++)
+		for(int i = 0; i < KVI_NUM_MSGTYPE_OPTIONS; i++)
 		{
-			if(KviQString::equalCI(tmp,g_msgtypeOptionsTable[i].name))
+			if(KviQString::equalCI(tmp, g_msgtypeOptionsTable[i].name))
 			{
 				KVSCF_pRetBuffer->setInteger(i);
 				return true;
@@ -281,16 +288,16 @@ namespace KviKvsCoreFunctions
 		KviKvsVariantList vList;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("className",KVS_PT_NONEMPTYSTRING,0,szClassName)
-			KVSCF_PARAMETER("parentHandle",KVS_PT_HOBJECT,KVS_PF_OPTIONAL,hParent)
-			KVSCF_PARAMETER("name",KVS_PT_STRING,KVS_PF_OPTIONAL,szName)
-			KVSCF_PARAMETER("parameterList",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,vList)
+		KVSCF_PARAMETER("className", KVS_PT_NONEMPTYSTRING, 0, szClassName)
+		KVSCF_PARAMETER("parentHandle", KVS_PT_HOBJECT, KVS_PF_OPTIONAL, hParent)
+		KVSCF_PARAMETER("name", KVS_PT_STRING, KVS_PF_OPTIONAL, szName)
+		KVSCF_PARAMETER("parameterList", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, vList)
 		KVSCF_PARAMETERS_END
 
 		KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
 		if(!pClass)
 		{
-			KVSCF_pContext->error(__tr2qs_ctx("Class '%Q' is not defined","kvs"),&szClassName);
+			KVSCF_pContext->error(__tr2qs_ctx("Class '%Q' is not defined", "kvs"), &szClassName);
 			return false;
 		}
 
@@ -300,14 +307,16 @@ namespace KviKvsCoreFunctions
 			pParent = KviKvsKernel::instance()->objectController()->lookupObject(hParent);
 			if(!pParent)
 			{
-				KVSCF_pContext->error(__tr2qs_ctx("The specified parent object does not exist","kvs"));
+				KVSCF_pContext->error(__tr2qs_ctx("The specified parent object does not exist", "kvs"));
 				return false;
 			}
-		} else {
+		}
+		else
+		{
 			pParent = 0;
 		}
 
-		KviKvsObject * pObject = pClass->allocateInstance(pParent,szName,KVSCF_pContext,&vList);
+		KviKvsObject * pObject = pClass->allocateInstance(pParent, szName, KVSCF_pContext, &vList);
 
 		// epilogue: set the return value
 		KVSCF_pRetBuffer->setHObject(pObject ? pObject->handle() : (kvs_hobject_t)0);
@@ -346,7 +355,6 @@ namespace KviKvsCoreFunctions
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
-
 
 	/*
 		@doc: null
@@ -431,12 +439,14 @@ namespace KviKvsCoreFunctions
 		QString szOpt;
 		// FIXME: This should return a variant in general
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("optionName",KVS_PT_NONEMPTYSTRING,0,szOpt)
+		KVSCF_PARAMETER("optionName", KVS_PT_NONEMPTYSTRING, 0, szOpt)
 		KVSCF_PARAMETERS_END
 		QString tmp;
-		if(g_pApp->getOptionString(szOpt,tmp))KVSCF_pRetBuffer->setString(tmp);
-		else {
-			KVSCF_pContext->warning(__tr2qs_ctx("There is no option named '%Q'","kvs"),&szOpt);
+		if(g_pApp->getOptionString(szOpt, tmp))
+			KVSCF_pRetBuffer->setString(tmp);
+		else
+		{
+			KVSCF_pContext->warning(__tr2qs_ctx("There is no option named '%Q'", "kvs"), &szOpt);
 			KVSCF_pRetBuffer->setNothing();
 		}
 		return true;
@@ -479,8 +489,8 @@ namespace KviKvsCoreFunctions
 		QString szName;
 		kvs_uint_t uContextId;
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("query_name",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szName)
-			KVSCF_PARAMETER("context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uContextId)
+		KVSCF_PARAMETER("query_name", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szName)
+		KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
 		KVSCF_PARAMETERS_END
 
 		KviWindow * wnd = 0;
@@ -489,23 +499,32 @@ namespace KviKvsCoreFunctions
 			if(KVSCF_pParams->count() > 1)
 			{
 				KviConsoleWindow * cons = g_pApp->findConsole(uContextId);
-				if(!cons)KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)","kvs"),uContextId);
-				else {
+				if(!cons)
+					KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)", "kvs"), uContextId);
+				else
+				{
 					if(cons->connection())
 						wnd = cons->connection()->findQuery(szName);
 					else
 						wnd = 0;
 				}
-			} else {
-				if(KVSCF_pContext->window()->connection())wnd = KVSCF_pContext->window()->connection()->findQuery(szName);
-				else {
+			}
+			else
+			{
+				if(KVSCF_pContext->window()->connection())
+					wnd = KVSCF_pContext->window()->connection()->findQuery(szName);
+				else
+				{
 					if(!KVSCF_pContext->window()->console())
-						KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context","kvs"));
+						KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context", "kvs"));
 					wnd = 0;
 				}
 			}
-		} else {
-			if(KVSCF_pContext->window()->type() == KviWindow::Query)wnd = KVSCF_pContext->window();
+		}
+		else
+		{
+			if(KVSCF_pContext->window()->type() == KviWindow::Query)
+				wnd = KVSCF_pContext->window();
 		}
 
 		KVSCF_pRetBuffer->setInteger((kvs_int_t)(wnd ? wnd->numericId() : 0));
@@ -571,12 +590,14 @@ namespace KviKvsCoreFunctions
 		kvs_uint_t uMax;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("max",KVS_PT_UINT,KVS_PF_OPTIONAL,uMax)
+		KVSCF_PARAMETER("max", KVS_PT_UINT, KVS_PF_OPTIONAL, uMax)
 		KVSCF_PARAMETERS_END
 		if(KVSCF_pParams->count() > 0)
 		{
-			KVSCF_pRetBuffer->setInteger(::rand() % (uMax+1));
-		} else {
+			KVSCF_pRetBuffer->setInteger(::rand() % (uMax + 1));
+		}
+		else
+		{
 			KVSCF_pRetBuffer->setInteger(::rand());
 		}
 		return true;
@@ -617,13 +638,14 @@ namespace KviKvsCoreFunctions
 	{
 		KviKvsVariant * v;
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("data",KVS_PT_VARIANT,0,v)
+		KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
 		KVSCF_PARAMETERS_END
 
 		kvs_real_t dVal;
 		if(v->asReal(dVal))
 			KVSCF_pRetBuffer->setReal(dVal);
-		else {
+		else
+		{
 			kvs_int_t iVal;
 			v->castToInteger(iVal);
 			KVSCF_pRetBuffer->setReal((double)iVal);
@@ -669,7 +691,7 @@ namespace KviKvsCoreFunctions
 		QString szNick;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
+		KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
 		KVSCF_PARAMETERS_END
 
 		if(KVSCF_pContext->window()->console())
@@ -688,7 +710,6 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setNothing();
 		return true;
 	}
-
 
 	/*
 		@doc: receivedBytes
@@ -736,7 +757,7 @@ namespace KviKvsCoreFunctions
 		KviKvsArrayCast a;
 
 		KVSCF_PARAMETERS_BEGIN
-			KVSCF_PARAMETER("data",KVS_PT_ARRAYCAST,0,a)
+		KVSCF_PARAMETER("data", KVS_PT_ARRAYCAST, 0, a)
 		KVSCF_PARAMETERS_END
 
 		if(a.array())
@@ -744,7 +765,9 @@ namespace KviKvsCoreFunctions
 			KviKvsArray * arry = new KviKvsArray(*(a.array()));
 			arry->rsort();
 			KVSCF_pRetBuffer->setArray(arry);
-		} else {
+		}
+		else
+		{
 			KVSCF_pRetBuffer->setArray(new KviKvsArray());
 		}
 		return true;

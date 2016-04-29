@@ -45,55 +45,55 @@ namespace KviKvsParameterProcessor
 			case KVS_PT_STRING:
 			case KVS_PT_NONEMPTYSTRING:
 				*((QString *)(pFmtArray->pContainer)) = QString();
-			break;
+				break;
 			case KVS_PT_INT:
 				*((kvs_int_t *)(pFmtArray->pContainer)) = 0;
-			break;
+				break;
 			case KVS_PT_UINT:
 				*((kvs_uint_t *)(pFmtArray->pContainer)) = 0;
-			break;
+				break;
 			case KVS_PT_DOUBLE:
 				*((kvs_real_t *)(pFmtArray->pContainer)) = 0.0;
-			break;
+				break;
 			case KVS_PT_BOOL:
 				*((bool *)(pFmtArray->pContainer)) = false;
-			break;
+				break;
 			case KVS_PT_HASH:
 				*((KviKvsHash **)(pFmtArray->pContainer)) = 0;
-			break;
+				break;
 			case KVS_PT_ARRAY:
 				*((KviKvsArray **)(pFmtArray->pContainer)) = 0;
-			break;
+				break;
 			case KVS_PT_ARRAYCAST:
 				((KviKvsArrayCast *)(pFmtArray->pContainer))->clear();
-			break;
+				break;
 			case KVS_PT_VARIANT:
 				*((KviKvsVariant **)(pFmtArray->pContainer)) = 0;
-			break;
+				break;
 			case KVS_PT_CSTRING:
 			case KVS_PT_NONEMPTYCSTRING:
 				*((QByteArray *)(pFmtArray->pContainer)) = 0;
-			break;
+				break;
 			case KVS_PT_STRINGLIST:
 				((QStringList *)(pFmtArray->pContainer))->clear();
-			break;
+				break;
 			case KVS_PT_VARIANTLIST:
 				((KviKvsVariantList *)(pFmtArray->pContainer))->clear();
 				((KviKvsVariantList *)(pFmtArray->pContainer))->setAutoDelete(false);
-			break;
+				break;
 			case KVS_PT_HOBJECT:
 				*((kvs_hobject_t *)(pFmtArray->pContainer)) = (kvs_hobject_t)0;
-			break;
+				break;
 			case KVS_PT_IGNORE:
 				// ignore :)
-			break;
+				break;
 			default:
-				qDebug("Internal error in KviKvsParameterProcessor::setDefaultValue(): unknown parameter type %d",pFmtArray->uType);
-			break;
+				qDebug("Internal error in KviKvsParameterProcessor::setDefaultValue(): unknown parameter type %d", pFmtArray->uType);
+				break;
 		}
 	}
 
-	bool handleParameterTypeError(KviKvsRunTimeContext * pContext,KviKvsParameterProcessor::ParameterFormat * pFmtArray,KviKvsVariant * v,const char * szExpectedType)
+	bool handleParameterTypeError(KviKvsRunTimeContext * pContext, KviKvsParameterProcessor::ParameterFormat * pFmtArray, KviKvsVariant * v, const char * szExpectedType)
 	{
 		if(pFmtArray->uFlags & KVS_PF_OPTIONAL)
 		{
@@ -104,7 +104,7 @@ namespace KviKvsParameterProcessor
 			}
 		}
 
-		QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\"","kvs")).arg(pFmtArray->szName);
+		QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\"", "kvs")).arg(pFmtArray->szName);
 		szError += ": ";
 
 		if(v->isString())
@@ -112,25 +112,29 @@ namespace KviKvsParameterProcessor
 			QString tmp = v->string();
 			if(tmp.isEmpty())
 			{
-				KviQString::appendFormatted(szError,__tr2qs_ctx("found empty string where type '%s' was expected","kvs"),&tmp,szExpectedType);
-			} else {
+				KviQString::appendFormatted(szError, __tr2qs_ctx("found empty string where type '%s' was expected", "kvs"), &tmp, szExpectedType);
+			}
+			else
+			{
 				if(tmp.length() > 15)
 				{
 					tmp.truncate(15);
 					tmp.append("...");
 				}
-				KviQString::appendFormatted(szError,__tr2qs_ctx("found string value \"%Q\" where type '%s' was expected","kvs"),&tmp,szExpectedType);
+				KviQString::appendFormatted(szError, __tr2qs_ctx("found string value \"%Q\" where type '%s' was expected", "kvs"), &tmp, szExpectedType);
 			}
-		} else {
+		}
+		else
+		{
 			QString tmp;
 			v->getTypeName(tmp);
-			KviQString::appendFormatted(szError,__tr2qs_ctx("found type %Q where type '%s' was expected","kvs"),&tmp,szExpectedType);
+			KviQString::appendFormatted(szError, __tr2qs_ctx("found type %Q where type '%s' was expected", "kvs"), &tmp, szExpectedType);
 		}
 		pContext->error(szError);
 		return false;
 	}
 
-	bool process(KviKvsVariantList * pVariantList,KviKvsRunTimeContext * pContext,KviKvsParameterProcessor::ParameterFormat * pFmtArray)
+	bool process(KviKvsVariantList * pVariantList, KviKvsRunTimeContext * pContext, KviKvsParameterProcessor::ParameterFormat * pFmtArray)
 	{
 		KviKvsVariant * v = pVariantList->first();
 
@@ -143,13 +147,14 @@ namespace KviKvsParameterProcessor
 				if(!(pFmtArray->uFlags & KVS_PF_OPTIONAL))
 				{
 					// bad luck
-					QString szError = QString(__tr2qs_ctx("Missing non-optional parameter \"%1\"","kvs")).arg(pFmtArray->szName);
+					QString szError = QString(__tr2qs_ctx("Missing non-optional parameter \"%1\"", "kvs")).arg(pFmtArray->szName);
 					pContext->error(szError);
 					return false;
 				}
 				// ok, missing but optional (all the following are implicitly optional too)
 				// set to default values
-				do {
+				do
+				{
 					setDefaultValue(pFmtArray);
 					pFmtArray++;
 				} while(pFmtArray->szName);
@@ -171,7 +176,7 @@ namespace KviKvsParameterProcessor
 						}
 						return true;
 					}
-				break;
+					break;
 				case KVS_PT_STRINGLIST:
 				{
 					((QStringList *)(pFmtArray->pContainer))->clear();
@@ -219,11 +224,12 @@ namespace KviKvsParameterProcessor
 					}
 					if(((QString *)(pFmtArray->pContainer))->isEmpty())
 					{
-						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": found empty string while a non empty one was expected","kvs")).arg(pFmtArray->szName);
+						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": found empty string while a non empty one was expected", "kvs")).arg(pFmtArray->szName);
 						pContext->error(szError);
 						return false;
 					}
-					if(bDoReturn)return true;
+					if(bDoReturn)
+						return true;
 				}
 				break;
 				case KVS_PT_CSTRING:
@@ -265,31 +271,32 @@ namespace KviKvsParameterProcessor
 					*((QByteArray *)(pFmtArray->pContainer)) = tmp.toUtf8();
 					if(((QByteArray *)(pFmtArray->pContainer))->isEmpty())
 					{
-						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": found empty string while a non empty one was expected","kvs")).arg(pFmtArray->szName);
+						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": found empty string while a non empty one was expected", "kvs")).arg(pFmtArray->szName);
 						pContext->error(szError);
 						return false;
 					}
-					if(bDoReturn)return true;
+					if(bDoReturn)
+						return true;
 				}
 				break;
 				case KVS_PT_INT:
 					if(!v->asInteger(*((kvs_int_t *)(pFmtArray->pContainer))))
 					{
-						if(!handleParameterTypeError(pContext,pFmtArray,v,"integer"))
+						if(!handleParameterTypeError(pContext, pFmtArray, v, "integer"))
 							return false;
 					}
-				break;
+					break;
 				case KVS_PT_UINT:
 				{
 					kvs_int_t iTmp;
 					if(!v->asInteger(iTmp))
 					{
-						if(!handleParameterTypeError(pContext,pFmtArray,v,"unsigned integer"))
+						if(!handleParameterTypeError(pContext, pFmtArray, v, "unsigned integer"))
 							return false;
 					}
 					if(iTmp < 0)
 					{
-						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": found signed integer \"%2\" where type 'unsigned integer' was expected","kvs")).arg(pFmtArray->szName).arg(iTmp);
+						QString szError = QString(__tr2qs_ctx("Invalid data type for parameter \"%1\": found signed integer \"%2\" where type 'unsigned integer' was expected", "kvs")).arg(pFmtArray->szName).arg(iTmp);
 						pContext->error(szError);
 						return false;
 					}
@@ -299,57 +306,60 @@ namespace KviKvsParameterProcessor
 				case KVS_PT_DOUBLE:
 					if(!v->asReal(*((kvs_real_t *)(pFmtArray->pContainer))))
 					{
-						if(!handleParameterTypeError(pContext,pFmtArray,v,"real"))
+						if(!handleParameterTypeError(pContext, pFmtArray, v, "real"))
 							return false;
 					}
-				break;
+					break;
 				case KVS_PT_HASH:
 					if(!v->isHash())
 					{
-						if(!handleParameterTypeError(pContext,pFmtArray,v,"hash"))
+						if(!handleParameterTypeError(pContext, pFmtArray, v, "hash"))
 							return false;
-					} else {
+					}
+					else
+					{
 						*((KviKvsHash **)(pFmtArray->pContainer)) = v->hash();
 					}
-				break;
+					break;
 				case KVS_PT_ARRAYCAST:
 					v->castToArray((KviKvsArrayCast *)(pFmtArray->pContainer));
-				break;
+					break;
 				case KVS_PT_ARRAY:
 					if(!v->isArray())
 					{
-						if(!handleParameterTypeError(pContext,pFmtArray,v,"array"))
+						if(!handleParameterTypeError(pContext, pFmtArray, v, "array"))
 							return false;
-					} else {
+					}
+					else
+					{
 						*((KviKvsArray **)(pFmtArray->pContainer)) = v->array();
 					}
-				break;
+					break;
 				case KVS_PT_BOOL:
 					// this never fails: anything is converted to a boolean
 					*((bool *)(pFmtArray->pContainer)) = v->asBoolean();
-				break;
+					break;
 				case KVS_PT_VARIANT:
 					*((KviKvsVariant **)(pFmtArray->pContainer)) = v;
-				break;
+					break;
 				case KVS_PT_HOBJECT:
 					if(!v->asHObject(*((kvs_hobject_t *)(pFmtArray->pContainer))))
 					{
-						if(!handleParameterTypeError(pContext,pFmtArray,v,"hobject"))
+						if(!handleParameterTypeError(pContext, pFmtArray, v, "hobject"))
 							return false;
 					}
-				break;
+					break;
 				case KVS_PT_IGNORE:
 					// ignore
-				break;
+					break;
 				default:
-					qDebug("Internal error in KviKvsParameterProcessor::processAsParameters(): unknown parameter type %d",pFmtArray->uType);
+					qDebug("Internal error in KviKvsParameterProcessor::processAsParameters(): unknown parameter type %d", pFmtArray->uType);
 					return false;
-				break;
+					break;
 			}
 			pFmtArray++;
 			v = pVariantList->next();
 		}
 		return true;
 	}
-
 };

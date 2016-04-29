@@ -36,22 +36,23 @@
 class KviIdentRequest
 {
 public:
-	KviIdentRequest(kvi_socket_t sock,const char * host,kvi_u32_t uPort);
+	KviIdentRequest(kvi_socket_t sock, const char * host, kvi_u32_t uPort);
 	~KviIdentRequest();
+
 public:
-	kvi_socket_t       m_sock;
-	KviCString             m_szData;
-	KviCString             m_szHost;
+	kvi_socket_t m_sock;
+	KviCString m_szData;
+	KviCString m_szHost;
 	kvi_u32_t m_uPort;
-	time_t             m_tStart;
+	time_t m_tStart;
 };
 
 typedef struct _KviIdentMessageData
 {
-	KviCString             szMessage;
-	KviCString             szHost;
-	KviCString             szAux;
-	unsigned int       uPort;
+	KviCString szMessage;
+	KviCString szHost;
+	KviCString szAux;
+	unsigned int uPort;
 } KviIdentMessageData;
 
 class KviIdentSentinel : public QObject
@@ -60,29 +61,31 @@ class KviIdentSentinel : public QObject
 public:
 	KviIdentSentinel();
 	~KviIdentSentinel();
+
 protected:
 	virtual bool event(QEvent * e);
 };
-
 
 class KviIdentDaemon : public KviSensitiveThread
 {
 public:
 	KviIdentDaemon();
 	~KviIdentDaemon();
+
 private:
-	KviCString                    m_szUser;
-	kvi_u32_t        m_uPort;
-	bool                      m_bEnableIPv6;
-	bool                      m_bIPv6ContainsIPv4;
-	kvi_socket_t              m_sock;
-	kvi_socket_t              m_sock6;
-	KviPointerList<KviIdentRequest> *  m_pRequestList;
+	KviCString m_szUser;
+	kvi_u32_t m_uPort;
+	bool m_bEnableIPv6;
+	bool m_bIPv6ContainsIPv4;
+	kvi_socket_t m_sock;
+	kvi_socket_t m_sock6;
+	KviPointerList<KviIdentRequest> * m_pRequestList;
+
 public:
 	virtual void run();
-protected:
-	void postMessage(const char * message,KviIdentRequest * r,const char * szAux = 0);
-};
 
+protected:
+	void postMessage(const char * message, KviIdentRequest * r, const char * szAux = 0);
+};
 
 #endif //_LIBKVIIDENT_H_

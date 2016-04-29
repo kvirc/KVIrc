@@ -27,11 +27,11 @@
 #include "KviKvsRWEvaluationResult.h"
 #include "KviLocale.h"
 
-KviKvsTreeNodeSpecialCommandUnset::KviKvsTreeNodeSpecialCommandUnset(const QChar * pLocation,KviPointerList<KviKvsTreeNodeVariable> * pVariableList)
-: KviKvsTreeNodeSpecialCommand(pLocation,"unset")
+KviKvsTreeNodeSpecialCommandUnset::KviKvsTreeNodeSpecialCommandUnset(const QChar * pLocation, KviPointerList<KviKvsTreeNodeVariable> * pVariableList)
+    : KviKvsTreeNodeSpecialCommand(pLocation, "unset")
 {
 	m_pVariableList = pVariableList;
-	for(KviKvsTreeNodeVariable * pVar = m_pVariableList->first();pVar;pVar = m_pVariableList->next())
+	for(KviKvsTreeNodeVariable * pVar = m_pVariableList->first(); pVar; pVar = m_pVariableList->next())
 	{
 		pVar->setParent(this);
 	}
@@ -42,17 +42,17 @@ KviKvsTreeNodeSpecialCommandUnset::~KviKvsTreeNodeSpecialCommandUnset()
 	delete m_pVariableList;
 }
 
-void KviKvsTreeNodeSpecialCommandUnset::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSpecialCommandUnset::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Special Command \"unset\"";
 }
 
 void KviKvsTreeNodeSpecialCommandUnset::dump(const char * prefix)
 {
-	qDebug("%s SpecialCommandUnset",prefix);
+	qDebug("%s SpecialCommandUnset", prefix);
 	QString tmp = prefix;
 	tmp.append("  ");
-	for(KviKvsTreeNodeVariable * pVar = m_pVariableList->first();pVar;pVar = m_pVariableList->next())
+	for(KviKvsTreeNodeVariable * pVar = m_pVariableList->first(); pVar; pVar = m_pVariableList->next())
 	{
 		pVar->dump(tmp.toUtf8().data());
 	}
@@ -60,10 +60,11 @@ void KviKvsTreeNodeSpecialCommandUnset::dump(const char * prefix)
 
 bool KviKvsTreeNodeSpecialCommandUnset::execute(KviKvsRunTimeContext * c)
 {
-	for(KviKvsTreeNodeVariable * pVar = m_pVariableList->first();pVar;pVar = m_pVariableList->next())
+	for(KviKvsTreeNodeVariable * pVar = m_pVariableList->first(); pVar; pVar = m_pVariableList->next())
 	{
 		KviKvsRWEvaluationResult * r = pVar->evaluateReadWrite(c);
-		if(!r)return false;
+		if(!r)
+			return false;
 		r->result()->setNothing();
 		delete r; // this will remove the data from its container
 	}

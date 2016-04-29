@@ -50,9 +50,9 @@ namespace KviMemory
 
 #ifdef COMPILE_MEMORY_PROFILE
 
-	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		#error "This stuff should be never compiled on Windows"
-	#endif
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#error "This stuff should be never compiled on Windows"
+#endif
 
 	/**
 	* \brief Allocates size bytes of memory
@@ -69,7 +69,7 @@ namespace KviMemory
 	* \param size number of bytes
 	* \return void *
 	*/
-	KVILIB_API void * reallocate(void * ptr,int size);
+	KVILIB_API void * reallocate(void * ptr, int size);
 
 	/**
 	* \brief Frees the memory space pointed to by ptr
@@ -81,48 +81,46 @@ namespace KviMemory
 
 #else //!COMPILE_MEMORY_PROFILE
 
+#ifdef COMPILE_MEMORY_CHECKS
 
-	#ifdef COMPILE_MEMORY_CHECKS
+#ifdef COMPILE_ON_WINDOWS
+#error "This stuff should be never compiled on Windows"
+#endif
 
-		#ifdef COMPILE_ON_WINDOWS
-			#error "This stuff should be never compiled on Windows"
-		#endif
-
-		/**
+	/**
 		* \brief Prints a warning about failed memory allocation
 		*/
-		KVILIB_API void outOfMemory();
+	KVILIB_API void outOfMemory();
 
-		inline void * allocate(int size)
-		{
-			void * ptr = ::malloc(size);
-			if(!ptr)
-				outOfMemory();
-			return ptr;
-		}
+	inline void * allocate(int size)
+	{
+		void * ptr = ::malloc(size);
+		if(!ptr)
+			outOfMemory();
+		return ptr;
+	}
 
-		inline void * reallocate(void * ptr,int size)
-		{
-			ptr = ::realloc(ptr,size);
-			if(!ptr)
-				outOfMemory();
-			return ptr;
-		}
+	inline void * reallocate(void * ptr, int size)
+	{
+		ptr = ::realloc(ptr, size);
+		if(!ptr)
+			outOfMemory();
+		return ptr;
+	}
 
-	#else //!COMPILE_MEMORY_CHECKS
+#else //!COMPILE_MEMORY_CHECKS
 
-		inline void * allocate(int size)
-		{
-			return ::malloc(size);
-		}
+	inline void * allocate(int size)
+	{
+		return ::malloc(size);
+	}
 
-		inline void * reallocate(void * ptr,int size)
-		{
-			return ::realloc(ptr,size);
-		}
+	inline void * reallocate(void * ptr, int size)
+	{
+		return ::realloc(ptr, size);
+	}
 
-	#endif //!COMPILE_MEMORY_CHECKS
-
+#endif //!COMPILE_MEMORY_CHECKS
 
 	inline void free(void * ptr)
 	{
@@ -138,9 +136,9 @@ namespace KviMemory
 	* \param len the number of bytes to move
 	* \return void *
 	*/
-	inline void move(void *dst_ptr,const void *src_ptr,int len)
+	inline void move(void * dst_ptr, const void * src_ptr, int len)
 	{
-		memmove(dst_ptr,src_ptr,len);
+		memmove(dst_ptr, src_ptr, len);
 	}
 
 	/**
@@ -151,9 +149,9 @@ namespace KviMemory
 	* \param len the number of bytes to initialize
 	* \return void *
 	*/
-	inline void set(void *dst_ptr,char c,int len)
+	inline void set(void * dst_ptr, char c, int len)
 	{
-		memset(dst_ptr,c,len);
+		memset(dst_ptr, c, len);
 	}
 
 	/**
@@ -165,9 +163,9 @@ namespace KviMemory
 	* \return void *
 	* \warning In fastmove the src and dst may not overlap
 	*/
-	inline void copy(void *dst_ptr,const void *src_ptr,int len)
+	inline void copy(void * dst_ptr, const void * src_ptr, int len)
 	{
-		memcpy(dst_ptr,src_ptr,len);
+		memcpy(dst_ptr, src_ptr, len);
 	}
 
 } // namespace KviMemory

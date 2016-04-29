@@ -38,24 +38,25 @@ class QTextEdit;
 class QCheckBox;
 class KviFileSelector;
 
-
 class SaveThemeDialog : public KviTalWizard
 {
 	Q_OBJECT
 public:
 	SaveThemeDialog(QWidget * pParent);
 	virtual ~SaveThemeDialog();
+
 protected:
-	QString           m_szScreenshotPath;
+	QString m_szScreenshotPath;
 	KviFileSelector * m_pImageSelector;
-	QLabel          * m_pImageLabel;
-	QLineEdit       * m_pThemeNameEdit;
-	QTextEdit       * m_pThemeDescriptionEdit;
-	QLineEdit       * m_pThemeVersionEdit;
-	QLineEdit       * m_pAuthorNameEdit;
-	QWidget         * m_pImageSelectionPage;
-	QPushButton     * m_pOkButton;
-	QCheckBox       * m_pSaveIconsCheckBox;
+	QLabel * m_pImageLabel;
+	QLineEdit * m_pThemeNameEdit;
+	QTextEdit * m_pThemeDescriptionEdit;
+	QLineEdit * m_pThemeVersionEdit;
+	QLineEdit * m_pAuthorNameEdit;
+	QWidget * m_pImageSelectionPage;
+	QPushButton * m_pOkButton;
+	QCheckBox * m_pSaveIconsCheckBox;
+
 protected:
 	virtual void accept();
 	bool saveTheme();

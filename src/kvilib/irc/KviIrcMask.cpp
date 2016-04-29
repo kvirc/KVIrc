@@ -94,33 +94,33 @@
 */
 
 static unsigned char ucMaskTable[27][3] = {
-	{ 0 , 0 , 0 }, //0 means normal block
-	{ 0 , 0 , 2 }, //2 in the third field means type *.abc.host.top (or XXX.XXX.XXX.*) host mask
-	{ 0 , 0 , 1 }, //2 in the second field means *user (strip prefixes)
-	{ 0 , 1 , 0 }, //1 means *
-	{ 0 , 1 , 2 }, //3 in the third field means type *.host.top (or XXX.XXX.*) host mask
-	{ 0 , 1 , 1 }, //4 in the third field is like 3 but tries to detect masked ip addresses too
-	{ 1 , 0 , 0 },
-	{ 1 , 0 , 2 },
-	{ 1 , 0 , 1 },
-	{ 1 , 1 , 0 },
-	{ 1 , 1 , 2 },
-	{ 0 , 2 , 0 },
-	{ 0 , 2 , 2 },
-	{ 0 , 2 , 1 },
-	{ 1 , 2 , 0 },
-	{ 1 , 2 , 2 },
-	{ 1 , 2 , 1 },
-	{ 0 , 0 , 3 },
-	{ 0 , 1 , 3 },
-	{ 1 , 0 , 3 },
-	{ 0 , 2 , 3 },
-	{ 1 , 2 , 3 },
-	{ 0 , 0 , 4 },
-	{ 0 , 1 , 4 },
-	{ 1 , 0 , 4 },
-	{ 0 , 2 , 4 },
-	{ 1 , 2 , 4 }
+	{ 0, 0, 0 }, //0 means normal block
+	{ 0, 0, 2 }, //2 in the third field means type *.abc.host.top (or XXX.XXX.XXX.*) host mask
+	{ 0, 0, 1 }, //2 in the second field means *user (strip prefixes)
+	{ 0, 1, 0 }, //1 means *
+	{ 0, 1, 2 }, //3 in the third field means type *.host.top (or XXX.XXX.*) host mask
+	{ 0, 1, 1 }, //4 in the third field is like 3 but tries to detect masked ip addresses too
+	{ 1, 0, 0 },
+	{ 1, 0, 2 },
+	{ 1, 0, 1 },
+	{ 1, 1, 0 },
+	{ 1, 1, 2 },
+	{ 0, 2, 0 },
+	{ 0, 2, 2 },
+	{ 0, 2, 1 },
+	{ 1, 2, 0 },
+	{ 1, 2, 2 },
+	{ 1, 2, 1 },
+	{ 0, 0, 3 },
+	{ 0, 1, 3 },
+	{ 1, 0, 3 },
+	{ 0, 2, 3 },
+	{ 1, 2, 3 },
+	{ 0, 0, 4 },
+	{ 0, 1, 4 },
+	{ 1, 0, 4 },
+	{ 0, 2, 4 },
+	{ 1, 2, 4 }
 };
 
 KviIrcMask::KviIrcMask()
@@ -142,12 +142,14 @@ KviIrcMask::KviIrcMask(const QString & szMask)
 		if(pChar2->unicode())
 		{
 			if(pChar2 != pChar)
-				m_szNick.setUnicode(pChar,pChar2-pChar);
+				m_szNick.setUnicode(pChar, pChar2 - pChar);
 			else
 				m_szNick = szWild; // ???
-		} else {
+		}
+		else
+		{
 			if(pChar2 != pChar)
-				m_szNick.setUnicode(pChar,pChar2-pChar);
+				m_szNick.setUnicode(pChar, pChar2 - pChar);
 			else
 				m_szNick = szWild; // ???
 			m_szUser = szWild;
@@ -161,12 +163,14 @@ KviIrcMask::KviIrcMask(const QString & szMask)
 		if(pChar2->unicode())
 		{
 			if(pChar2 != pChar)
-				m_szUser.setUnicode(pChar,pChar2-pChar);
+				m_szUser.setUnicode(pChar, pChar2 - pChar);
 			else
 				m_szUser = szWild; // ???
-		} else {
+		}
+		else
+		{
 			if(pChar2 != pChar)
-				m_szUser.setUnicode(pChar,pChar2-pChar);
+				m_szUser.setUnicode(pChar, pChar2 - pChar);
 			else
 				m_szUser = szWild; // ???
 			m_szHost = szWild;
@@ -177,11 +181,12 @@ KviIrcMask::KviIrcMask(const QString & szMask)
 		while(pChar2->unicode())
 			pChar2++;
 		if(pChar2 != pChar)
-			m_szHost.setUnicode(pChar,pChar2-pChar);
+			m_szHost.setUnicode(pChar, pChar2 - pChar);
 		else
 			m_szHost = szWild; // ???
-
-	} else {
+	}
+	else
+	{
 		m_szUser = szWild;
 		m_szHost = szWild;
 		m_szNick = szWild;
@@ -206,10 +211,12 @@ bool KviIrcMask::hasNumericHost() const
 	{
 		if(uc == '.')
 			iPoints++; // ipv6 masks can contain dots too!
-		else {
+		else
+		{
 			if(uc == ':')
 				iDoublePoints++;
-			else {
+			else
+			{
 				if((uc < '0') || (uc > '9'))
 				{
 					uc = pChar->toUpper().unicode();
@@ -225,7 +232,7 @@ bool KviIrcMask::hasNumericHost() const
 
 void KviIrcMask::mask(QString & szMask, MaskType eMaskType) const
 {
-	if((((int)eMaskType) > 26)||(((int)eMaskType) < 0))
+	if((((int)eMaskType) > 26) || (((int)eMaskType) < 0))
 		eMaskType = NickUserHost;
 	szMask = ucMaskTable[((int)eMaskType)][0] ? m_szWild : m_szNick;
 	szMask.append("!");
@@ -242,16 +249,12 @@ void KviIrcMask::mask(QString & szMask, MaskType eMaskType) const
 			{
 				if(m_szUser[0].unicode() != '*')
 					szMask.append(m_szWild);
-				if((m_szUser[0].unicode() == '~') ||
-					(m_szUser[0].unicode() == '^') ||
-					(m_szUser[0].unicode() == '+') ||
-					(m_szUser[0].unicode() == '-') ||
-					(m_szUser[0].unicode() == '='))
+				if((m_szUser[0].unicode() == '~') || (m_szUser[0].unicode() == '^') || (m_szUser[0].unicode() == '+') || (m_szUser[0].unicode() == '-') || (m_szUser[0].unicode() == '='))
 					szMask.append(m_szUser.right(m_szUser.length() - 1));
 				else
 					szMask.append(m_szUser);
 			}
-		break;
+			break;
 	}
 	szMask.append('@');
 	switch(ucMaskTable[((int)eMaskType)][2])
@@ -270,11 +273,15 @@ void KviIrcMask::mask(QString & szMask, MaskType eMaskType) const
 					QString szHost(m_szHost.left(getIpDomainMaskLen()));
 					szMask.append(szHost);
 					szMask.append(m_szWild);
-				} else {
+				}
+				else
+				{
 					szMask.append(m_szWild);
 					szMask.append(getHostDomainMask());
 				}
-			} else {
+			}
+			else
+			{
 				szMask.append(m_szWild);
 			}
 			break;
@@ -286,11 +293,15 @@ void KviIrcMask::mask(QString & szMask, MaskType eMaskType) const
 					QString szHost(m_szHost.left(getLargeIpDomainMaskLen()));
 					szMask.append(szHost);
 					szMask.append(m_szWild);
-				} else {
+				}
+				else
+				{
 					szMask.append(m_szWild);
 					szMask.append(getLargeHostDomainMask());
 				}
-			} else {
+			}
+			else
+			{
 				szMask.append(m_szWild);
 			}
 			break;
@@ -302,11 +313,15 @@ void KviIrcMask::mask(QString & szMask, MaskType eMaskType) const
 					QString szHost(m_szHost.left(getLargeIpDomainMaskLen()));
 					szMask.append(szHost);
 					szMask.append(m_szWild);
-				} else {
+				}
+				else
+				{
 					szMask.append(m_szWild);
 					szMask.append(getLargeHostDomainMask());
 				}
-			} else {
+			}
+			else
+			{
 				szMask.append(m_szWild);
 			}
 			break;
@@ -315,11 +330,11 @@ void KviIrcMask::mask(QString & szMask, MaskType eMaskType) const
 
 bool KviIrcMask::matches(const KviIrcMask & mask) const
 {
-	if(KviQString::matchWildExpressions(m_szNick,mask.m_szNick))
+	if(KviQString::matchWildExpressions(m_szNick, mask.m_szNick))
 	{
-		if(KviQString::matchWildExpressions(m_szUser,mask.m_szUser))
+		if(KviQString::matchWildExpressions(m_szUser, mask.m_szUser))
 		{
-			if(KviQString::matchWildExpressions(m_szHost,mask.m_szHost))
+			if(KviQString::matchWildExpressions(m_szHost, mask.m_szHost))
 				return true;
 		}
 	}
@@ -328,11 +343,11 @@ bool KviIrcMask::matches(const KviIrcMask & mask) const
 
 bool KviIrcMask::matchesFixed(const KviIrcMask & mask) const
 {
-	if(matchWildString(m_szNick,mask.m_szNick))
+	if(matchWildString(m_szNick, mask.m_szNick))
 	{
-		if(matchWildString(m_szUser,mask.m_szUser))
+		if(matchWildString(m_szUser, mask.m_szUser))
 		{
-			if(matchWildString(m_szHost,mask.m_szHost))
+			if(matchWildString(m_szHost, mask.m_szHost))
 				return true;
 		}
 	}
@@ -341,11 +356,11 @@ bool KviIrcMask::matchesFixed(const KviIrcMask & mask) const
 
 bool KviIrcMask::matchesFixed(const QString & szNick, const QString & szUser, const QString & szHost) const
 {
-	if(!matchWildString(m_szNick,szNick))
+	if(!matchWildString(m_szNick, szNick))
 		return false;
-	if(!matchWildString(m_szUser,szUser))
+	if(!matchWildString(m_szUser, szUser))
 		return false;
-	if(!matchWildString(m_szHost,szHost))
+	if(!matchWildString(m_szHost, szHost))
 		return false;
 	return true;
 }
@@ -353,7 +368,7 @@ bool KviIrcMask::matchesFixed(const QString & szNick, const QString & szUser, co
 bool KviIrcMask::matchWildString(const QString & szExp, const QString & szStr) const
 {
 	QString szWildcard;
-	QChar * pPtr = (QChar*)szExp.constData();
+	QChar * pPtr = (QChar *)szExp.constData();
 
 	if(!pPtr)
 		return 0;
@@ -365,7 +380,9 @@ bool KviIrcMask::matchWildString(const QString & szExp, const QString & szStr) c
 			szWildcard.append("[");
 			szWildcard.append(*pPtr);
 			szWildcard.append("]");
-		} else {
+		}
+		else
+		{
 			szWildcard.append(*pPtr);
 		}
 		pPtr++;
@@ -390,9 +407,8 @@ int KviIrcMask::getIpDomainMaskLen() const
 	// 000.000.000.000
 	//            pChar
 	//
-	return (pChar == pChar2) ? 0 : ((pChar-pChar2) + 1);
+	return (pChar == pChar2) ? 0 : ((pChar - pChar2) + 1);
 }
-
 
 int KviIrcMask::getLargeIpDomainMaskLen() const
 {
@@ -415,7 +431,7 @@ int KviIrcMask::getLargeIpDomainMaskLen() const
 	// 000.000.000.000
 	//        pChar
 	//
-	return (pChar == pChar2) ? 0 : ((pChar-pChar2) + 1);
+	return (pChar == pChar2) ? 0 : ((pChar - pChar2) + 1);
 }
 
 QString KviIrcMask::getHostDomainMask() const
@@ -427,7 +443,7 @@ QString KviIrcMask::getHostDomainMask() const
 	const QChar * pChar2 = pChar;
 	while(pChar->unicode() && pChar->unicode() != '.')
 		pChar++;
-	QString szRet(pChar,iLen - (pChar - pChar2));
+	QString szRet(pChar, iLen - (pChar - pChar2));
 	return szRet;
 }
 
@@ -454,7 +470,7 @@ QString KviIrcMask::getLargeHostDomainMask() const
 	// xyz.klm.abc.host.top
 	//            pChar
 
-	QString szRet(pChar,iLen - (pChar - pChar2));
+	QString szRet(pChar, iLen - (pChar - pChar2));
 	return szRet;
 }
 
@@ -476,11 +492,11 @@ bool KviIrcMask::hasMaskedIp() const
 
 bool KviIrcMask::operator==(const KviIrcMask & user)
 {
-	if(KviQString::equalCI(m_szNick,user.m_szNick))
+	if(KviQString::equalCI(m_szNick, user.m_szNick))
 	{
-		if(KviQString::equalCI(m_szUser,user.m_szUser))
+		if(KviQString::equalCI(m_szUser, user.m_szUser))
 		{
-			if(KviQString::equalCI(m_szHost,user.m_szHost))
+			if(KviQString::equalCI(m_szHost, user.m_szHost))
 				return true;
 		}
 	}

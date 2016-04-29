@@ -44,6 +44,7 @@ class KviTrayIconWidget : public QSystemTrayIcon, public KviTrayIcon
 public:
 	KviTrayIconWidget();
 	~KviTrayIconWidget();
+
 protected:
 	KviDynamicToolTip m_Tip;
 	QMenu * m_pContextPopup;
@@ -52,8 +53,8 @@ protected:
 	QLabel * m_pTitleLabel;
 #endif
 
-	QAction* m_pToggleFrame;
-	QAction* m_pAwayMenuId;
+	QAction * m_pToggleFrame;
+	QAction * m_pAwayMenuId;
 
 	bool m_bFlashed;
 	bool m_bHidden;
@@ -65,10 +66,12 @@ protected:
 	unsigned int m_iChannels;
 	unsigned int m_iQueries;
 	unsigned int m_iOther;
+
 public:
 	virtual void refresh();
 	virtual void die();
 	void updateIcon();
+
 protected:
 	void grabActivityInfo();
 	virtual bool event(QEvent * e);
@@ -77,7 +80,7 @@ protected slots:
 	void toggleParentFrame();
 	void doAway(bool);
 	void flashingTimerShot();
-	void activatedSlot( QSystemTrayIcon::ActivationReason reason );
+	void activatedSlot(QSystemTrayIcon::ActivationReason reason);
 	void executeInternalCommand(bool);
 	void disableTrayIcon();
 };

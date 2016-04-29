@@ -33,29 +33,30 @@ class KVIRC_API KviKvsPopupManager : public QObject
 protected: // can only be created by init/done
 	KviKvsPopupManager();
 	~KviKvsPopupManager();
+
 protected:
-	KviPointerHashTable<QString,KviKvsPopupMenu>    * m_pPopupDict;
+	KviPointerHashTable<QString, KviKvsPopupMenu> * m_pPopupDict;
 	static KviKvsPopupManager * m_pInstance;
+
 public:
-	static KviKvsPopupManager * instance(){ return m_pInstance; };
+	static KviKvsPopupManager * instance() { return m_pInstance; };
 	static void init();
 	static void done();
-	int popupCount(){ return m_pPopupDict->count(); };
+	int popupCount() { return m_pPopupDict->count(); };
 
-	KviPointerHashTable<QString,KviKvsPopupMenu> * popupDict(){ return m_pPopupDict; };
+	KviPointerHashTable<QString, KviKvsPopupMenu> * popupDict() { return m_pPopupDict; };
 
-	KviKvsPopupMenu * lookup(const QString &szPopupName){ return m_pPopupDict->find(szPopupName); };
-	KviKvsPopupMenu * get(const QString &szPopupName);
-	void add(const QString &szPopupName,KviKvsPopupMenu * pPopup);
-	void remove(const QString &szPopupName){ m_pPopupDict->remove(szPopupName); };
-	void clear(){ m_pPopupDict->clear(); };
+	KviKvsPopupMenu * lookup(const QString & szPopupName) { return m_pPopupDict->find(szPopupName); };
+	KviKvsPopupMenu * get(const QString & szPopupName);
+	void add(const QString & szPopupName, KviKvsPopupMenu * pPopup);
+	void remove(const QString & szPopupName) { m_pPopupDict->remove(szPopupName); };
+	void clear() { m_pPopupDict->clear(); };
 
 	void save(const QString & filename);
 	void load(const QString & filename);
-	void emitRefresh(const QString &szPopupName);
+	void emitRefresh(const QString & szPopupName);
 signals:
-	void popupRefresh(const QString &szPopupName);
+	void popupRefresh(const QString & szPopupName);
 };
-
 
 #endif //!_KVI_KVS_POPUPMANAGER_H_

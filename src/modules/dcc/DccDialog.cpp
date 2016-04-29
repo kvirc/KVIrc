@@ -38,7 +38,7 @@
 #include <QShowEvent>
 #include <QIcon>
 
-DccDialog::DccDialog(DccBroker * br,DccDescriptor * dcc)
+DccDialog::DccDialog(DccBroker * br, DccDescriptor * dcc)
 {
 	m_pDescriptor = dcc;
 	m_pBroker = br;
@@ -46,7 +46,8 @@ DccDialog::DccDialog(DccBroker * br,DccDescriptor * dcc)
 
 DccDialog::~DccDialog()
 {
-	if(m_pDescriptor)delete m_pDescriptor;
+	if(m_pDescriptor)
+		delete m_pDescriptor;
 	m_pDescriptor = 0;
 	m_pBroker->unregisterDccBox(this);
 }
@@ -56,29 +57,29 @@ void DccDialog::forgetDescriptor()
 	m_pDescriptor = 0;
 }
 
-DccAcceptDialog::DccAcceptDialog(DccBroker * br,DccDescriptor * dcc,const QString &text,const QString &capt)
-: QWidget(0), DccDialog(br,dcc)
+DccAcceptDialog::DccAcceptDialog(DccBroker * br, DccDescriptor * dcc, const QString & text, const QString & capt)
+    : QWidget(0), DccDialog(br, dcc)
 {
 	setObjectName("dcc_accept_box");
 	//QVBoxLayout * vb = new QVBoxLayout(this,4,4);
 	QVBoxLayout * vb = new QVBoxLayout(this);
 	vb->setMargin(4);
 	vb->setSpacing(4);
-	QLabel * l = new QLabel(text,this);
+	QLabel * l = new QLabel(text, this);
 	l->setWordWrap(true);
 	vb->addWidget(l);
 
 	//QHBoxLayout *hb = new QHBoxLayout(4);
-	QHBoxLayout *hb = new QHBoxLayout();
+	QHBoxLayout * hb = new QHBoxLayout();
 	hb->setSpacing(4);
-	vb->addLayout(hb,Qt::AlignCenter);
-	QPushButton * btn = new QPushButton(__tr2qs_ctx("&Accept","dcc"),this);
+	vb->addLayout(hb, Qt::AlignCenter);
+	QPushButton * btn = new QPushButton(__tr2qs_ctx("&Accept", "dcc"), this);
 	btn->setDefault(true);
 	//btn->setFocus();
 	hb->addWidget(btn);
-	connect(btn,SIGNAL(clicked()),this,SLOT(acceptClicked()));
-	btn = new QPushButton(__tr2qs_ctx("&Reject","dcc"),this);
-	connect(btn,SIGNAL(clicked()),this,SLOT(rejectClicked()));
+	connect(btn, SIGNAL(clicked()), this, SLOT(acceptClicked()));
+	btn = new QPushButton(__tr2qs_ctx("&Reject", "dcc"), this);
+	connect(btn, SIGNAL(clicked()), this, SLOT(rejectClicked()));
 	hb->addWidget(btn);
 
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::DccMsg))));
@@ -95,7 +96,7 @@ DccAcceptDialog::~DccAcceptDialog()
 void DccAcceptDialog::acceptClicked()
 {
 	hide();
-	emit accepted(this,m_pDescriptor);
+	emit accepted(this, m_pDescriptor);
 	this->deleteLater();
 	//g_pApp->collectGarbage(this);
 }
@@ -103,95 +104,95 @@ void DccAcceptDialog::acceptClicked()
 void DccAcceptDialog::rejectClicked()
 {
 	hide();
-	emit rejected(this,m_pDescriptor);
+	emit rejected(this, m_pDescriptor);
 	this->deleteLater();
 	//g_pApp->collectGarbage(this);
 }
 
-void DccAcceptDialog::closeEvent(QCloseEvent *e)
+void DccAcceptDialog::closeEvent(QCloseEvent * e)
 {
 	hide();
 	e->ignore();
-	emit rejected(this,m_pDescriptor);
+	emit rejected(this, m_pDescriptor);
 	this->deleteLater();
 	//g_pApp->collectGarbage(this);
 }
 
-void DccAcceptDialog::showEvent(QShowEvent *e)
+void DccAcceptDialog::showEvent(QShowEvent * e)
 {
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-	move((rect.width() - width())/2,(rect.height() - height())/2);
+	move((rect.width() - width()) / 2, (rect.height() - height()) / 2);
 	QWidget::showEvent(e);
 }
 
-
-DccRenameDialog::DccRenameDialog(DccBroker * br,DccDescriptor * dcc,const QString &text,bool bDisableResume)
-: QWidget(0), DccDialog(br,dcc)
+DccRenameDialog::DccRenameDialog(DccBroker * br, DccDescriptor * dcc, const QString & text, bool bDisableResume)
+    : QWidget(0), DccDialog(br, dcc)
 {
 	setObjectName("dcc_rename_box");
 	//QVBoxLayout * vb = new QVBoxLayout(this,4,4);
 	QVBoxLayout * vb = new QVBoxLayout(this);
 	vb->setMargin(4);
 	vb->setSpacing(4);
-	QLabel * l = new QLabel(text,this);
+	QLabel * l = new QLabel(text, this);
 	l->setWordWrap(true);
 	vb->addWidget(l);
 
 	//QHBoxLayout *hb = new QHBoxLayout(4);
-	QHBoxLayout *hb = new QHBoxLayout();
+	QHBoxLayout * hb = new QHBoxLayout();
 	hb->setSpacing(4);
-	vb->addLayout(hb,Qt::AlignCenter);
+	vb->addLayout(hb, Qt::AlignCenter);
 
-	QPushButton * btn = new QPushButton(__tr2qs_ctx("&Rename","dcc"),this);
+	QPushButton * btn = new QPushButton(__tr2qs_ctx("&Rename", "dcc"), this);
 	hb->addWidget(btn);
-	connect(btn,SIGNAL(clicked()),this,SLOT(renameClicked()));
+	connect(btn, SIGNAL(clicked()), this, SLOT(renameClicked()));
 
-	btn = new QPushButton(__tr2qs_ctx("Over&write","dcc"),this);
+	btn = new QPushButton(__tr2qs_ctx("Over&write", "dcc"), this);
 	hb->addWidget(btn);
-	connect(btn,SIGNAL(clicked()),this,SLOT(overwriteClicked()));
+	connect(btn, SIGNAL(clicked()), this, SLOT(overwriteClicked()));
 
-	btn = new QPushButton(__tr2qs_ctx("Re&sume","dcc"),this);
+	btn = new QPushButton(__tr2qs_ctx("Re&sume", "dcc"), this);
 	hb->addWidget(btn);
-	connect(btn,SIGNAL(clicked()),this,SLOT(resumeClicked()));
-	if(bDisableResume)btn->setEnabled(false);
+	connect(btn, SIGNAL(clicked()), this, SLOT(resumeClicked()));
+	if(bDisableResume)
+		btn->setEnabled(false);
 
-	btn = new QPushButton(__tr2qs_ctx("Cancel","dcc"),this);
+	btn = new QPushButton(__tr2qs_ctx("Cancel", "dcc"), this);
 	hb->addWidget(btn);
-	connect(btn,SIGNAL(clicked()),this,SLOT(cancelClicked()));
+	connect(btn, SIGNAL(clicked()), this, SLOT(cancelClicked()));
 	btn->setDefault(true);
 	//btn->setFocus();
 
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::DccMsg))));
-	setWindowTitle(__tr2qs_ctx("File Already Exists - KVIrc","dcc"));
+	setWindowTitle(__tr2qs_ctx("File Already Exists - KVIrc", "dcc"));
 }
 
 DccRenameDialog::~DccRenameDialog()
 {
 }
 
-void DccRenameDialog::closeEvent(QCloseEvent *e)
+void DccRenameDialog::closeEvent(QCloseEvent * e)
 {
 	hide();
 	e->ignore();
 	if(m_pDescriptor)
 	{
-		emit cancelSelected(this,m_pDescriptor);
+		emit cancelSelected(this, m_pDescriptor);
 		//g_pApp->collectGarbage(this);
 		this->deleteLater();
 	}
 }
 
-void DccRenameDialog::showEvent(QShowEvent *e)
+void DccRenameDialog::showEvent(QShowEvent * e)
 {
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-	move((rect.width() - width())/2,(rect.height() - height())/2);
+	move((rect.width() - width()) / 2, (rect.height() - height()) / 2);
 	QWidget::showEvent(e);
 }
 
 void DccRenameDialog::renameClicked()
 {
 	hide();
-	emit renameSelected(this,m_pDescriptor);
+	emit renameSelected(this, m_pDescriptor);
 	//g_pApp->collectGarbage(this);
 	this->deleteLater();
 }
@@ -199,7 +200,7 @@ void DccRenameDialog::renameClicked()
 void DccRenameDialog::overwriteClicked()
 {
 	hide();
-	emit overwriteSelected(this,m_pDescriptor);
+	emit overwriteSelected(this, m_pDescriptor);
 	//g_pApp->collectGarbage(this);
 	this->deleteLater();
 }
@@ -208,7 +209,7 @@ void DccRenameDialog::resumeClicked()
 {
 	hide();
 	m_pDescriptor->bResume = true;
-	emit overwriteSelected(this,m_pDescriptor);
+	emit overwriteSelected(this, m_pDescriptor);
 	this->deleteLater();
 	//g_pApp->collectGarbage(this);
 }
@@ -216,7 +217,7 @@ void DccRenameDialog::resumeClicked()
 void DccRenameDialog::cancelClicked()
 {
 	hide();
-	emit cancelSelected(this,m_pDescriptor);
+	emit cancelSelected(this, m_pDescriptor);
 	this->deleteLater();
 	//g_pApp->collectGarbage(this);
 }

@@ -43,55 +43,56 @@
 
 #include <QTimer>
 
-
 #ifdef COMPILE_CRYPT_SUPPORT
-	#include "KviCryptEngine.h"
-	#include "KviCryptController.h"
-	// KviApplication.cpp
-	extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
+#include "KviCryptEngine.h"
+#include "KviCryptController.h"
+// KviApplication.cpp
+extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 #endif
 
-
 // KviApplication.cpp
-extern KVIRC_API KviPointerHashTable<QString,KviWindow> * g_pGlobalWindowDict;
+extern KVIRC_API KviPointerHashTable<QString, KviWindow> * g_pGlobalWindowDict;
 KviPointerList<UserWindow> * g_pUserWindowList = 0;
 
 // $window.caption $window.x $window.y $window.width $window.height $window.isActive $window.type
 // $window.input.text $window.input.cursorpos $window.input.textlen
 
-
-#define GET_KVS_WINDOW_ID \
-	QString szWnd; \
-	KviWindow * pWnd; \
-	KVSM_PARAMETERS_BEGIN(c) \
-		KVSM_PARAMETER("window_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWnd) \
-	KVSM_PARAMETERS_END(c) \
-	if(c->parameterList()->count() == 0) \
-	{ \
-		pWnd = c->window(); \
-	} else { \
-		pWnd = g_pApp->findWindow(szWnd.toUtf8().data()); \
-		if(!pWnd) \
-		{ \
-			if(!c->hasSwitch('q',"quiet")) \
-				c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data()); \
-			return true; \
-		} \
+#define GET_KVS_WINDOW_ID                                                                            \
+	QString szWnd;                                                                                   \
+	KviWindow * pWnd;                                                                                \
+	KVSM_PARAMETERS_BEGIN(c)                                                                         \
+	KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)                               \
+	KVSM_PARAMETERS_END(c)                                                                           \
+	if(c->parameterList()->count() == 0)                                                             \
+	{                                                                                                \
+		pWnd = c->window();                                                                          \
+	}                                                                                                \
+	else                                                                                             \
+	{                                                                                                \
+		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());                                            \
+		if(!pWnd)                                                                                    \
+		{                                                                                            \
+			if(!c->hasSwitch('q', "quiet"))                                                          \
+				c->warning(__tr2qs("The window with ID '%s' doesn't exist"), szWnd.toUtf8().data()); \
+			return true;                                                                             \
+		}                                                                                            \
 	}
 
-#define GET_KVS_FNC_WINDOW_ID \
-	QString szWnd; \
-	KviWindow * pWnd; \
-	KVSM_PARAMETERS_BEGIN(c) \
-		KVSM_PARAMETER("window_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWnd) \
-	KVSM_PARAMETERS_END(c) \
-	if(c->parameterList()->count() == 0) \
-	{ \
-		pWnd = c->window(); \
-	} else { \
-		pWnd = g_pApp->findWindow(szWnd.toUtf8().data()); \
-		if(!pWnd) \
-			return true; \
+#define GET_KVS_FNC_WINDOW_ID                                          \
+	QString szWnd;                                                     \
+	KviWindow * pWnd;                                                  \
+	KVSM_PARAMETERS_BEGIN(c)                                           \
+	KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd) \
+	KVSM_PARAMETERS_END(c)                                             \
+	if(c->parameterList()->count() == 0)                               \
+	{                                                                  \
+		pWnd = c->window();                                            \
+	}                                                                  \
+	else                                                               \
+	{                                                                  \
+		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());              \
+		if(!pWnd)                                                      \
+			return true;                                               \
 	}
 
 /*
@@ -121,11 +122,13 @@ static bool window_kvs_cmd_clearOutput(KviKvsModuleCommandCall * c)
 	GET_KVS_WINDOW_ID
 	if(pWnd)
 	{
-		if(pWnd->view())pWnd->view()->clearBuffer();
+		if(pWnd->view())
+			pWnd->view()->clearBuffer();
 		if(pWnd->type() == KviWindow::Channel)
 		{
-			KviChannelWindow *chan = (KviChannelWindow *)pWnd;
-			if(chan->messageView()) chan->messageView()->clearBuffer();
+			KviChannelWindow * chan = (KviChannelWindow *)pWnd;
+			if(chan->messageView())
+				chan->messageView()->clearBuffer();
 		}
 	}
 	return true;
@@ -310,10 +313,12 @@ static bool window_kvs_fnc_activityLevel(KviKvsModuleFunctionCall * c)
 	GET_KVS_FNC_WINDOW_ID
 	if(pWnd)
 	{
-		unsigned int v,t;
-		pWnd->activityMeter(&v,&t);
+		unsigned int v, t;
+		pWnd->activityMeter(&v, &t);
 		c->returnValue()->setInteger(v);
-	} else {
+	}
+	else
+	{
 		c->returnValue()->setInteger(0);
 	}
 	return true;
@@ -349,10 +354,12 @@ static bool window_kvs_fnc_activityTemperature(KviKvsModuleFunctionCall * c)
 	GET_KVS_FNC_WINDOW_ID
 	if(pWnd)
 	{
-		unsigned int v,t;
-		pWnd->activityMeter(&v,&t);
+		unsigned int v, t;
+		pWnd->activityMeter(&v, &t);
 		c->returnValue()->setInteger(t);
-	} else {
+	}
+	else
+	{
 		c->returnValue()->setInteger(0);
 	}
 	return true;
@@ -387,7 +394,6 @@ static bool window_kvs_fnc_isDocked(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-
 /*
 	@doc: window.hasInput
 	@type:
@@ -413,7 +419,8 @@ static bool window_kvs_fnc_hasInput(KviKvsModuleFunctionCall * c)
 	if(pWnd)
 	{
 		c->returnValue()->setBoolean(pWnd->input() ? true : false);
-	} else
+	}
+	else
 		c->returnValue()->setBoolean(false);
 	return true;
 }
@@ -447,7 +454,8 @@ static bool window_kvs_fnc_hasUserFocus(KviKvsModuleFunctionCall * c)
 	{
 		bool b = (pWnd == g_pActiveWindow) && pWnd->isActiveWindow();
 		c->returnValue()->setBoolean(b ? true : false);
-	} else
+	}
+	else
 		c->returnValue()->setBoolean(false);
 	return true;
 }
@@ -506,7 +514,8 @@ static bool window_kvs_fnc_hasOutput(KviKvsModuleFunctionCall * c)
 	if(pWnd)
 	{
 		c->returnValue()->setBoolean(pWnd->view() ? true : false);
-	} else
+	}
+	else
 		c->returnValue()->setBoolean(false);
 	return true;
 }
@@ -532,7 +541,8 @@ static bool window_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 	if(pWnd)
 	{
 		c->returnValue()->setBoolean(true);
-	} else
+	}
+	else
 		c->returnValue()->setBoolean(false);
 	return true;
 }
@@ -566,18 +576,20 @@ static bool window_kvs_cmd_highlight(KviKvsModuleCommandCall * c)
 	kvs_uint_t level;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("level",KVS_PT_UINT,0,level)
-		KVSM_PARAMETER("window_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWnd)
+	KVSM_PARAMETER("level", KVS_PT_UINT, 0, level)
+	KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)
 	KVSM_PARAMETERS_END(c)
 	if(c->parameterList()->count() == 1)
 	{
 		pWnd = c->window();
-	} else {
+	}
+	else
+	{
 		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 		if(!pWnd)
 		{
-			if(!c->hasSwitch('q',"quiet"))
-				c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data());
+			if(!c->hasSwitch('q', "quiet"))
+				c->warning(__tr2qs("The window with ID '%s' doesn't exist"), szWnd.toUtf8().data());
 			return true;
 		}
 	}
@@ -622,7 +634,9 @@ static bool window_kvs_fnc_highlightLevel(KviKvsModuleFunctionCall * c)
 		unsigned int v;
 		pWnd->highlightMeter(&v);
 		c->returnValue()->setInteger(v);
-	} else {
+	}
+	else
+	{
 		c->returnValue()->setInteger(0);
 	}
 	return true;
@@ -810,10 +824,10 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	QString szContext;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("type",KVS_PT_STRING,0,szType)
-		KVSM_PARAMETER("irc_context_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szContext)
+	KVSM_PARAMETER("type", KVS_PT_STRING, 0, szType)
+	KVSM_PARAMETER("irc_context_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szContext)
 	KVSM_PARAMETERS_END(c)
-	KviKvsArray* pArray = new KviKvsArray();
+	KviKvsArray * pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
 
 	if(szType.isEmpty())
@@ -822,13 +836,13 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	int id=0;
+	int id = 0;
 
-	if(KviQString::equalCI(szContext,"all"))
+	if(KviQString::equalCI(szContext, "all"))
 	{
 		// all contexts but no "no_context" windows
-		bool bAllWindows = KviQString::equalCI(szType,"all");
-		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
+		bool bAllWindows = KviQString::equalCI(szType, "all");
+		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -838,8 +852,10 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 				{
 					pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 					id++;
-				} else {
-					if(szType.toLower()==wnd->typeString())
+				}
+				else
+				{
+					if(szType.toLower() == wnd->typeString())
 					{
 						pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 						id++;
@@ -848,11 +864,12 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 			}
 			++it;
 		}
-	} else if(KviQString::equalCI(szContext,"any"))
+	}
+	else if(KviQString::equalCI(szContext, "any"))
 	{
 		// all contexts and also "no_context" windows
-		bool bAllWindows = KviQString::equalCI(szType.toLower(),"all");
-		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
+		bool bAllWindows = KviQString::equalCI(szType.toLower(), "all");
+		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -860,8 +877,10 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 			{
 				pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 				id++;
-			} else {
-				if(szType.toLower()==wnd->typeString())
+			}
+			else
+			{
+				if(szType.toLower() == wnd->typeString())
 				{
 					pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 					id++;
@@ -869,11 +888,12 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 			}
 			++it;
 		}
-	} else if(KviQString::equalCI(szContext,"none"))
+	}
+	else if(KviQString::equalCI(szContext, "none"))
 	{
 		// only "no_context" windows
-		bool bAllWindows = KviQString::equalCI(szType.toLower(),"all");
-		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
+		bool bAllWindows = KviQString::equalCI(szType.toLower(), "all");
+		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -883,8 +903,10 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 				{
 					pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 					id++;
-				} else {
-					if(szType.toLower()==wnd->typeString())
+				}
+				else
+				{
+					if(szType.toLower() == wnd->typeString())
 					{
 						pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 						id++;
@@ -893,8 +915,9 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 			}
 			++it;
 		}
-
-	} else {
+	}
+	else
+	{
 		// some specified context
 		unsigned int uId = 0;
 
@@ -905,10 +928,12 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 			uId = szContext.toUInt(&bOk);
 			if(!bOk)
 			{
-				c->warning(__tr2qs("Invalid IRC context ID '%Q'"),&szContext);
+				c->warning(__tr2qs("Invalid IRC context ID '%Q'"), &szContext);
 				return true;
 			}
-		} else {
+		}
+		else
+		{
 			// current irc context
 			if(!c->window()->console())
 			{
@@ -917,8 +942,8 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 			uId = c->window()->context()->id();
 		}
 
-		bool bAllWindows = KviQString::equalCI(szType.toLower(),"all");
-		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
+		bool bAllWindows = KviQString::equalCI(szType.toLower(), "all");
+		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 
 		while(KviWindow * wnd = it.current())
 		{
@@ -930,8 +955,10 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 					{
 						pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 						id++;
-					} else {
-						if(szType.toLower()==wnd->typeString())
+					}
+					else
+					{
+						if(szType.toLower() == wnd->typeString())
 						{
 							pArray->set(id, new KviKvsVariant(QString(wnd->id())));
 							id++;
@@ -943,7 +970,6 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 		}
 	}
 	return true;
-
 }
 
 /*
@@ -996,17 +1022,18 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	QString szIcon;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("flags",KVS_PT_STRING,KVS_PF_OPTIONAL,szFlags)
-		KVSM_PARAMETER("caption",KVS_PT_STRING,KVS_PF_OPTIONAL,szCaption)
-		KVSM_PARAMETER("irc_context",KVS_PT_UINT,KVS_PF_OPTIONAL,uCtx)
-		KVSM_PARAMETER("icon",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
+	KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
+	KVSM_PARAMETER("caption", KVS_PT_STRING, KVS_PF_OPTIONAL, szCaption)
+	KVSM_PARAMETER("irc_context", KVS_PT_UINT, KVS_PF_OPTIONAL, uCtx)
+	KVSM_PARAMETER("icon", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
 	KVSM_PARAMETERS_END(c)
-	QPixmap *pPix=g_pIconManager->getImage(szIcon);
-	if(!pPix){
+	QPixmap * pPix = g_pIconManager->getImage(szIcon);
+	if(!pPix)
+	{
 
-	    c->warning(__tr2qs("The specified icon doesn't exist: switching to 'none'"));
-	    szIcon.prepend("$icon(");
-	    szIcon.append(")");
+		c->warning(__tr2qs("The specified icon doesn't exist: switching to 'none'"));
+		szIcon.prepend("$icon(");
+		szIcon.append(")");
 	}
 	int iFlags = 0;
 	if(szFlags.contains('i'))
@@ -1023,12 +1050,12 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	}
 
 	UserWindow * pWnd = new UserWindow(
-		szCaption.toUtf8().data(),
-		szIcon,
-		pConsole,
-		iFlags);
+	    szCaption.toUtf8().data(),
+	    szIcon,
+	    pConsole,
+	    iFlags);
 
-	g_pMainWindow->addWindow(pWnd,!szFlags.contains('m'));
+	g_pMainWindow->addWindow(pWnd, !szFlags.contains('m'));
 
 	c->returnValue()->setInteger(QString(pWnd->id()).toUInt());
 	return true;
@@ -1060,22 +1087,24 @@ static bool window_kvs_cmd_setWindowTitle(KviKvsModuleCommandCall * c)
 	QString szPlain;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window_id",KVS_PT_STRING,0,szWnd)
-		KVSM_PARAMETER("plain_text_caption",KVS_PT_STRING,0,szPlain)
+	KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
+	KVSM_PARAMETER("plain_text_caption", KVS_PT_STRING, 0, szPlain)
 	KVSM_PARAMETERS_END(c)
 
 	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
-		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data());
+		if(!c->hasSwitch('q', "quiet"))
+			c->warning(__tr2qs("The window with ID '%s' doesn't exist"), szWnd.toUtf8().data());
 		return true;
 	}
 
 	if(pWnd->type() == KviWindow::UserWindow)
 	{
 		((UserWindow *)pWnd)->setWindowTitleStrings(szPlain);
-	} else {
+	}
+	else
+	{
 		//store the window title (needed for functions that search windows by their captions)
 		((KviWindow *)pWnd)->setFixedCaption(szPlain);
 		((KviWindow *)pWnd)->setWindowTitle(szPlain);
@@ -1108,25 +1137,24 @@ static bool window_kvs_cmd_setInputText(KviKvsModuleCommandCall * c)
 	QString szText;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window_id",KVS_PT_STRING,0,szWnd)
-		KVSM_PARAMETER("text",KVS_PT_STRING,0, szText)
+	KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
+	KVSM_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSM_PARAMETERS_END(c)
 
 	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
-		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data());
+		if(!c->hasSwitch('q', "quiet"))
+			c->warning(__tr2qs("The window with ID '%s' doesn't exist"), szWnd.toUtf8().data());
 		return true;
 	}
 	if(pWnd->input())
 		pWnd->input()->setText(szText);
-	else
-		if(!c->hasSwitch('q',"quiet")) c->warning(__tr2qs("Window doesn't have input widget"));
+	else if(!c->hasSwitch('q', "quiet"))
+		c->warning(__tr2qs("Window doesn't have input widget"));
 
 	return true;
 }
-
 
 /*
 	@doc: window.insertInInputText
@@ -1153,21 +1181,21 @@ static bool window_kvs_cmd_insertInInputText(KviKvsModuleCommandCall * c)
 	QString szText;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window_id",KVS_PT_STRING,0,szWnd)
-		KVSM_PARAMETER("text",KVS_PT_STRING,0, szText)
+	KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
+	KVSM_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSM_PARAMETERS_END(c)
 
 	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
-		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data());
+		if(!c->hasSwitch('q', "quiet"))
+			c->warning(__tr2qs("The window with ID '%s' doesn't exist"), szWnd.toUtf8().data());
 		return true;
 	}
 	if(pWnd->input())
 		pWnd->input()->insertText(szText);
-	else
-		if(!c->hasSwitch('q',"quiet")) c->warning(__tr2qs("Window doesn't have input widget"));
+	else if(!c->hasSwitch('q', "quiet"))
+		c->warning(__tr2qs("Window doesn't have input widget"));
 
 	return true;
 }
@@ -1226,15 +1254,15 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 	QString szBackground;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window_id",KVS_PT_STRING,0,szWnd)
-		KVSM_PARAMETER("plain_text_caption",KVS_PT_STRING,0, szBackground)
+	KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
+	KVSM_PARAMETER("plain_text_caption", KVS_PT_STRING, 0, szBackground)
 	KVSM_PARAMETERS_END(c)
 
 	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
-		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data());
+		if(!c->hasSwitch('q', "quiet"))
+			c->warning(__tr2qs("The window with ID '%s' doesn't exist"), szWnd.toUtf8().data());
 		return true;
 	}
 
@@ -1268,8 +1296,6 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-
-
 /*
 	@doc: window.savePropertiesAsDefault
 	@type:
@@ -1297,19 +1323,21 @@ static bool window_kvs_cmd_savePropertiesAsDefault(KviKvsModuleCommandCall * c)
 }
 
 #ifdef COMPILE_CRYPT_SUPPORT
-static bool initializeCryptEngine(KviCryptEngine * eng,KviCString &szEncryptKey,KviCString &szDecryptKey,QString &szError)
+static bool initializeCryptEngine(KviCryptEngine * eng, KviCString & szEncryptKey, KviCString & szDecryptKey, QString & szError)
 {
 	char * encKey = 0;
 	int encKeyLen = 0;
 
 	char * tmpKey;
-	encKeyLen = szEncryptKey.hexToBuffer(&tmpKey,false);
+	encKeyLen = szEncryptKey.hexToBuffer(&tmpKey, false);
 	if(encKeyLen > 0)
 	{
 		encKey = (char *)KviMemory::allocate(encKeyLen);
-		KviMemory::move(encKey,tmpKey,encKeyLen);
+		KviMemory::move(encKey, tmpKey, encKeyLen);
 		KviCString::freeBuffer(tmpKey);
-	} else {
+	}
+	else
+	{
 		szError = __tr2qs("The encryption key wasn't a valid hexadecimal string");
 		return false;
 	}
@@ -1317,21 +1345,25 @@ static bool initializeCryptEngine(KviCryptEngine * eng,KviCString &szEncryptKey,
 	char * decKey = 0;
 	int decKeyLen = 0;
 
-	decKeyLen = szDecryptKey.hexToBuffer(&tmpKey,false);
+	decKeyLen = szDecryptKey.hexToBuffer(&tmpKey, false);
 	if(decKeyLen > 0)
 	{
 		decKey = (char *)KviMemory::allocate(decKeyLen);
-		KviMemory::move(decKey,tmpKey,decKeyLen);
+		KviMemory::move(decKey, tmpKey, decKeyLen);
 		KviCString::freeBuffer(tmpKey);
-	} else {
+	}
+	else
+	{
 		szError = __tr2qs("The decryption key wasn't a valid hexadecimal string");
 		return false;
 	}
-	bool bRet = eng->init(encKey,encKeyLen,decKey,decKeyLen);
+	bool bRet = eng->init(encKey, encKeyLen, decKey, decKeyLen);
 	if(!bRet)
 		szError = eng->lastError();
-	if(encKey)KviMemory::free(encKey);
-	if(decKey)KviMemory::free(decKey);
+	if(encKey)
+		KviMemory::free(encKey);
+	if(decKey)
+		KviMemory::free(decKey);
 	return bRet;
 }
 #endif
@@ -1382,33 +1414,36 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 	QString szDecryptKey;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("window_id",KVS_PT_STRING,0,szWnd)
-		KVSM_PARAMETER("enginename",KVS_PT_STRING,KVS_PF_OPTIONAL,szEngine)
-		KVSM_PARAMETER("hex_encrypt_key",KVS_PT_STRING,KVS_PF_OPTIONAL,szEncryptKey)
-		KVSM_PARAMETER("hex_decrypt_key",KVS_PT_STRING,KVS_PF_OPTIONAL,szDecryptKey)
+	KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
+	KVSM_PARAMETER("enginename", KVS_PT_STRING, KVS_PF_OPTIONAL, szEngine)
+	KVSM_PARAMETER("hex_encrypt_key", KVS_PT_STRING, KVS_PF_OPTIONAL, szEncryptKey)
+	KVSM_PARAMETER("hex_decrypt_key", KVS_PT_STRING, KVS_PF_OPTIONAL, szDecryptKey)
 	KVSM_PARAMETERS_END(c)
-	if(szDecryptKey.isEmpty())szDecryptKey = szEncryptKey;
+	if(szDecryptKey.isEmpty())
+		szDecryptKey = szEncryptKey;
 #ifdef COMPILE_CRYPT_SUPPORT
 	KviWindow * pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
-		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("The window with ID '%s' doesn't exist"),szWnd.toUtf8().data());
+		if(!c->hasSwitch('q', "quiet"))
+			c->warning(__tr2qs("The window with ID '%s' doesn't exist"), szWnd.toUtf8().data());
 		return true;
 	}
-	if(c->hasSwitch('n',"onlydecrypt") && c->hasSwitch('m',"onlyencrypt"))
+	if(c->hasSwitch('n', "onlydecrypt") && c->hasSwitch('m', "onlyencrypt"))
 	{
-		if(!c->hasSwitch('q',"quiet"))
+		if(!c->hasSwitch('q', "quiet"))
 			c->warning(__tr2qs("Both -n and -m switches specified, -n takes precedence"));
 	}
 
 	if(szEngine.isEmpty())
 	{
 		pWnd->setCryptSessionInfo(0);
-	} else {
+	}
+	else
+	{
 		if(szEncryptKey.isEmpty() || szDecryptKey.isEmpty())
 		{
-			if(!c->hasSwitch('q',"quiet"))
+			if(!c->hasSwitch('q', "quiet"))
 				c->warning(__tr2qs("No encryption key specified: can't allocate engine"));
 			return true;
 		}
@@ -1421,28 +1456,33 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 			KviCString enc = KviCString(szEncryptKey.toUtf8().data());
 			KviCString dec = KviCString(szDecryptKey.toUtf8().data());
 			QString szError;
-			if(initializeCryptEngine(e,enc,dec,szError))
+			if(initializeCryptEngine(e, enc, dec, szError))
 			{
 				KviCryptSessionInfo * inf = KviCryptController::allocateCryptSessionInfo();
 				inf->m_pEngine = e;
 				inf->m_szEngineName = szEngine;
 
-				inf->m_bDoEncrypt = (!c->hasSwitch('n',"onlydecrypt"));
-				inf->m_bDoDecrypt = (!c->hasSwitch('m',"onlyencrypt")) || c->hasSwitch('n',"onlydecrypt");
+				inf->m_bDoEncrypt = (!c->hasSwitch('n', "onlydecrypt"));
+				inf->m_bDoDecrypt = (!c->hasSwitch('m', "onlyencrypt")) || c->hasSwitch('n', "onlydecrypt");
 				pWnd->setCryptSessionInfo(inf);
-			} else {
-				if(szError.isEmpty())szError = __tr2qs("Unknown engine error");
-				g_pCryptEngineManager->deallocateEngine(e);
-				if(!c->hasSwitch('q',"quiet"))
-					c->warning(__tr2qs("Failed to initialize the specified encryption engine: %Q"),&szError);
 			}
-		} else {
-			if(!c->hasSwitch('q',"quiet"))
-				c->warning(__tr2qs("The encryption engine \"%Q\" doesn't exist"),&szEngine);
+			else
+			{
+				if(szError.isEmpty())
+					szError = __tr2qs("Unknown engine error");
+				g_pCryptEngineManager->deallocateEngine(e);
+				if(!c->hasSwitch('q', "quiet"))
+					c->warning(__tr2qs("Failed to initialize the specified encryption engine: %Q"), &szError);
+			}
+		}
+		else
+		{
+			if(!c->hasSwitch('q', "quiet"))
+				c->warning(__tr2qs("The encryption engine \"%Q\" doesn't exist"), &szEngine);
 		}
 	}
 #else
-	if(!c->hasSwitch('q',"quiet"))
+	if(!c->hasSwitch('q', "quiet"))
 		c->warning(__tr2qs("This executable has been compiled without crypt support"));
 #endif
 	return true;
@@ -1473,8 +1513,8 @@ static bool window_kvs_fnc_cryptEngine(KviKvsModuleFunctionCall * c)
 #ifdef COMPILE_CRYPT_SUPPORT
 		if(KviCryptSessionInfo * pCryptSessionInfo = pWnd->cryptSessionInfo())
 			c->returnValue()->setString(pCryptSessionInfo->m_szEngineName);
-#else //!COMPILE_CRYPT_SUPPORT
-		// do nothing
+#else  //!COMPILE_CRYPT_SUPPORT
+// do nothing
 #endif //!COMPILE_CRYPT_SUPPORT
 	}
 	return true;
@@ -1491,50 +1531,50 @@ static bool window_kvs_cmd_fake(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-static bool window_module_init(KviModule *m)
+static bool window_module_init(KviModule * m)
 {
 	g_pUserWindowList = new KviPointerList<UserWindow>();
 	g_pUserWindowList->setAutoDelete(false);
 
-	KVSM_REGISTER_FUNCTION(m,"activityTemperature",window_kvs_fnc_activityTemperature);
-	KVSM_REGISTER_FUNCTION(m,"activityLevel",window_kvs_fnc_activityLevel);
-	KVSM_REGISTER_FUNCTION(m,"highlightLevel",window_kvs_fnc_highlightLevel);
-	KVSM_REGISTER_FUNCTION(m,"console",window_kvs_fnc_console);
-	KVSM_REGISTER_FUNCTION(m,"hasUserFocus",window_kvs_fnc_hasUserFocus);
-	KVSM_REGISTER_FUNCTION(m,"hasOutput",window_kvs_fnc_hasOutput);
-	KVSM_REGISTER_FUNCTION(m,"isDocked",window_kvs_fnc_isDocked);
-	KVSM_REGISTER_FUNCTION(m,"isMinimized",window_kvs_fnc_fake); // compat only
-	KVSM_REGISTER_FUNCTION(m,"isMaximized",window_kvs_fnc_fake); // compat only
-	KVSM_REGISTER_FUNCTION(m,"caption",window_kvs_fnc_caption);
-	KVSM_REGISTER_FUNCTION(m,"type",window_kvs_fnc_type);
-	KVSM_REGISTER_FUNCTION(m,"exists",window_kvs_fnc_exists);
-	KVSM_REGISTER_FUNCTION(m,"hasInput",window_kvs_fnc_hasInput);
-	KVSM_REGISTER_FUNCTION(m,"list",window_kvs_fnc_list);
-	KVSM_REGISTER_FUNCTION(m,"open",window_kvs_fnc_open);
-	KVSM_REGISTER_FUNCTION(m,"inputText",window_kvs_fnc_inputText);
-	KVSM_REGISTER_FUNCTION(m,"context",window_kvs_fnc_context);
-	KVSM_REGISTER_FUNCTION(m,"cryptEngine",window_kvs_fnc_cryptEngine);
+	KVSM_REGISTER_FUNCTION(m, "activityTemperature", window_kvs_fnc_activityTemperature);
+	KVSM_REGISTER_FUNCTION(m, "activityLevel", window_kvs_fnc_activityLevel);
+	KVSM_REGISTER_FUNCTION(m, "highlightLevel", window_kvs_fnc_highlightLevel);
+	KVSM_REGISTER_FUNCTION(m, "console", window_kvs_fnc_console);
+	KVSM_REGISTER_FUNCTION(m, "hasUserFocus", window_kvs_fnc_hasUserFocus);
+	KVSM_REGISTER_FUNCTION(m, "hasOutput", window_kvs_fnc_hasOutput);
+	KVSM_REGISTER_FUNCTION(m, "isDocked", window_kvs_fnc_isDocked);
+	KVSM_REGISTER_FUNCTION(m, "isMinimized", window_kvs_fnc_fake); // compat only
+	KVSM_REGISTER_FUNCTION(m, "isMaximized", window_kvs_fnc_fake); // compat only
+	KVSM_REGISTER_FUNCTION(m, "caption", window_kvs_fnc_caption);
+	KVSM_REGISTER_FUNCTION(m, "type", window_kvs_fnc_type);
+	KVSM_REGISTER_FUNCTION(m, "exists", window_kvs_fnc_exists);
+	KVSM_REGISTER_FUNCTION(m, "hasInput", window_kvs_fnc_hasInput);
+	KVSM_REGISTER_FUNCTION(m, "list", window_kvs_fnc_list);
+	KVSM_REGISTER_FUNCTION(m, "open", window_kvs_fnc_open);
+	KVSM_REGISTER_FUNCTION(m, "inputText", window_kvs_fnc_inputText);
+	KVSM_REGISTER_FUNCTION(m, "context", window_kvs_fnc_context);
+	KVSM_REGISTER_FUNCTION(m, "cryptEngine", window_kvs_fnc_cryptEngine);
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"highlight",window_kvs_cmd_highlight);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"close",window_kvs_cmd_close);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"clearOutput",window_kvs_cmd_clearOutput);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"dock",window_kvs_cmd_dock);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"undock",window_kvs_cmd_undock);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"minimize",window_kvs_cmd_fake);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"maximize",window_kvs_cmd_fake);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"restore",window_kvs_cmd_fake);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"activate",window_kvs_cmd_activate);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"demandAttention",window_kvs_cmd_demandAttention);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"listtypes",window_kvs_cmd_listtypes);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setBackground",window_kvs_cmd_setBackground);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setWindowTitle",window_kvs_cmd_setWindowTitle);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setCryptEngine",window_kvs_cmd_setCryptEngine);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setInputText",window_kvs_cmd_setInputText);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"insertInInputText",window_kvs_cmd_insertInInputText);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"savePropertiesAsDefault",window_kvs_cmd_savePropertiesAsDefault);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "highlight", window_kvs_cmd_highlight);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "close", window_kvs_cmd_close);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "clearOutput", window_kvs_cmd_clearOutput);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "dock", window_kvs_cmd_dock);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "undock", window_kvs_cmd_undock);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "minimize", window_kvs_cmd_fake);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "maximize", window_kvs_cmd_fake);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "restore", window_kvs_cmd_fake);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "activate", window_kvs_cmd_activate);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "demandAttention", window_kvs_cmd_demandAttention);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "listtypes", window_kvs_cmd_listtypes);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setBackground", window_kvs_cmd_setBackground);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setWindowTitle", window_kvs_cmd_setWindowTitle);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setCryptEngine", window_kvs_cmd_setCryptEngine);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setInputText", window_kvs_cmd_setInputText);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "insertInInputText", window_kvs_cmd_insertInInputText);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "savePropertiesAsDefault", window_kvs_cmd_savePropertiesAsDefault);
 
 	// saveOutput (view()->saveBuffer())
-/*
+	/*
 	m->registerFunction("geometry",window_module_fnc_geometry);
 	m->registerCommand("setGeometry",window_module_cmd_setGeometry);
 
@@ -1572,13 +1612,12 @@ static bool window_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Window",                                               // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2001-2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"KVIrc window management functions",
-	window_module_init,
-	window_module_can_unload,
-	0,
-	window_module_cleanup,
-	0
-)
+    "Window",                                                            // module name
+    "4.0.0",                                                             // module version
+    "Copyright (C) 2001-2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "KVIrc window management functions",
+    window_module_init,
+    window_module_can_unload,
+    0,
+    window_module_cleanup,
+    0)

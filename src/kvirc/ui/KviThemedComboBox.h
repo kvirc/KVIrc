@@ -35,13 +35,16 @@ class KVIRC_API KviThemedComboBox : public QComboBox
 	Q_OBJECT
 	Q_PROPERTY(int TransparencyCapable READ dummyRead)
 public:
-	KviThemedComboBox(QWidget * par, KviWindow * pWindow,const char * name);
+	KviThemedComboBox(QWidget * par, KviWindow * pWindow, const char * name);
 	~KviThemedComboBox();
+
 private:
 	KviWindow * m_pKviWindow;
+
 protected:
-	virtual void paintEvent ( QPaintEvent * event );
-	virtual void keyPressEvent ( QKeyEvent * e );
+	virtual void paintEvent(QPaintEvent * event);
+	virtual void keyPressEvent(QKeyEvent * e);
+
 public:
 	int dummyRead() const { return 0; };
 	void applyOptions();

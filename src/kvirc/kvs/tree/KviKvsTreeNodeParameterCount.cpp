@@ -27,7 +27,7 @@
 #include "KviKvsVariant.h"
 
 KviKvsTreeNodeParameterCount::KviKvsTreeNodeParameterCount(const QChar * pLocation)
-: KviKvsTreeNodeData(pLocation)
+    : KviKvsTreeNodeData(pLocation)
 {
 }
 
@@ -35,14 +35,14 @@ KviKvsTreeNodeParameterCount::~KviKvsTreeNodeParameterCount()
 {
 }
 
-void KviKvsTreeNodeParameterCount::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeParameterCount::contextDescription(QString & szBuffer)
 {
 	szBuffer = "ParameterCount \"$#\"";
 }
 
 void KviKvsTreeNodeParameterCount::dump(const char * prefix)
 {
-	qDebug("%s ParameterCount",prefix);
+	qDebug("%s ParameterCount", prefix);
 }
 
 bool KviKvsTreeNodeParameterCount::canEvaluateToObjectReference()
@@ -50,7 +50,7 @@ bool KviKvsTreeNodeParameterCount::canEvaluateToObjectReference()
 	return true;
 }
 
-bool KviKvsTreeNodeParameterCount::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeParameterCount::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	pBuffer->setInteger(c->parameterList()->count());
 	return true;

@@ -118,12 +118,12 @@ static bool serverdb_kvs_fnc_networkExists(KviKvsModuleFunctionCall * c)
 	QString szNetwork;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("network_name",KVS_PT_STRING,0,szNetwork)
+	KVSM_PARAMETER("network_name", KVS_PT_STRING, 0, szNetwork)
 	KVSM_PARAMETERS_END(c)
 
 	if(szNetwork.isEmpty())
 	{
-		c->error(__tr2qs_ctx("You must provide the network name as parameter","serverdb"));
+		c->error(__tr2qs_ctx("You must provide the network name as parameter", "serverdb"));
 		return false;
 	}
 
@@ -160,13 +160,13 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 	QString szServer, szNetwork;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("server_name",KVS_PT_STRING,0,szServer)
-		KVSM_PARAMETER("network_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szNetwork)
+	KVSM_PARAMETER("server_name", KVS_PT_STRING, 0, szServer)
+	KVSM_PARAMETER("network_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szNetwork)
 	KVSM_PARAMETERS_END(c)
 
 	if(szServer.isEmpty())
 	{
-		c->error(__tr2qs_ctx("You must provide the server name as parameter","serverdb"));
+		c->error(__tr2qs_ctx("You must provide the server name as parameter", "serverdb"));
 		return false;
 	}
 
@@ -188,9 +188,11 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 		}
 
 		c->returnValue()->setBoolean(true);
-	} else {
+	}
+	else
+	{
 		// Check through all networks
-		KviPointerHashTableIterator<QString,KviIrcNetwork> it(*(g_pServerDataBase->recordDict()));
+		KviPointerHashTableIterator<QString, KviIrcNetwork> it(*(g_pServerDataBase->recordDict()));
 
 		while(KviIrcNetwork * r = it.current())
 		{
@@ -198,7 +200,7 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 
 			for(KviIrcServer * s = sl->first(); s; s = sl->next())
 			{
-				if(QString::compare(s->hostName().toUtf8().data(),szServer,Qt::CaseInsensitive)==0)
+				if(QString::compare(s->hostName().toUtf8().data(), szServer, Qt::CaseInsensitive) == 0)
 				{
 					c->returnValue()->setBoolean(true);
 					return true;
@@ -213,86 +215,83 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-#define BEGIN_SERVERDB_GET_NETWORK_PROPERTY(__functionName) \
-	static bool __functionName(KviKvsModuleFunctionCall * c) \
-	{ \
-		QString szName; \
-		\
-		KVSM_PARAMETERS_BEGIN(c) \
-			KVSM_PARAMETER("name",KVS_PT_STRING,0,szName) \
-		KVSM_PARAMETERS_END(c) \
-		\
-		if(szName.isEmpty()) \
-		{ \
-			c->error(__tr2qs_ctx("You must provide the network name as parameter","serverdb")); \
-			return false; \
-		} \
-		\
-		KviIrcNetwork * pNetwork = g_pServerDataBase->findNetwork(szName); \
-		if(!pNetwork) \
-		{ \
-			c->error(__tr2qs_ctx("The specified network doesn't exist","serverdb")); \
-			return false; \
+#define BEGIN_SERVERDB_GET_NETWORK_PROPERTY(__functionName)                                      \
+	static bool __functionName(KviKvsModuleFunctionCall * c)                                     \
+	{                                                                                            \
+		QString szName;                                                                          \
+                                                                                                 \
+		KVSM_PARAMETERS_BEGIN(c)                                                                 \
+		KVSM_PARAMETER("name", KVS_PT_STRING, 0, szName)                                         \
+		KVSM_PARAMETERS_END(c)                                                                   \
+                                                                                                 \
+		if(szName.isEmpty())                                                                     \
+		{                                                                                        \
+			c->error(__tr2qs_ctx("You must provide the network name as parameter", "serverdb")); \
+			return false;                                                                        \
+		}                                                                                        \
+                                                                                                 \
+		KviIrcNetwork * pNetwork = g_pServerDataBase->findNetwork(szName);                       \
+		if(!pNetwork)                                                                            \
+		{                                                                                        \
+			c->error(__tr2qs_ctx("The specified network doesn't exist", "serverdb"));            \
+			return false;                                                                        \
 		}
-
 
 #define END_SERVERDB_GET_NETWORK_PROPERTY \
-		return true; \
+	return true;                          \
 	}
 
-#define SERVERDB_GET_NETWORK_PROPERTY(__functionName,__callName) \
-	BEGIN_SERVERDB_GET_NETWORK_PROPERTY(__functionName) \
-		\
-		c->returnValue()->setString(pNetwork->__callName()); \
-		\
+#define SERVERDB_GET_NETWORK_PROPERTY(__functionName, __callName) \
+	BEGIN_SERVERDB_GET_NETWORK_PROPERTY(__functionName)           \
+                                                                  \
+	c->returnValue()->setString(pNetwork->__callName());          \
+                                                                  \
 	END_SERVERDB_GET_NETWORK_PROPERTY
 
-#define BEGIN_SERVERDB_GET_SERVER_PROPERTY(__functionName) \
-	static bool __functionName(KviKvsModuleFunctionCall * c) \
-	{ \
-		QString szNetName, szServName; \
-		\
-		KVSM_PARAMETERS_BEGIN(c) \
-			KVSM_PARAMETER("network_name",KVS_PT_STRING,0,szNetName) \
-			KVSM_PARAMETER("server_name",KVS_PT_STRING,0,szServName) \
-		KVSM_PARAMETERS_END(c) \
-		\
-		if(szNetName.isEmpty()) \
-		{ \
-			c->error(__tr2qs_ctx("You must provide the network name as parameter","serverdb")); \
-			return false; \
-		} \
-		\
-		if(szServName.isEmpty()) \
-		{ \
-			c->error(__tr2qs_ctx("You must provide the server name as parameter","serverdb")); \
-			return false; \
-		} \
-		\
-		KviIrcNetwork * pRecord = g_pServerDataBase->findNetwork(szNetName); \
-		if(!pRecord) \
-		{ \
-			c->error(__tr2qs_ctx("The specified network doesn't exist","serverdb")); \
-			return false; \
-		} \
-		\
-		KviIrcServer * pServer = pRecord->findServer(szServName); \
-		if(!pServer) \
-		{ \
-			c->error(__tr2qs_ctx("The specified server doesn't exist","serverdb")); \
-			return false; \
+#define BEGIN_SERVERDB_GET_SERVER_PROPERTY(__functionName)                                       \
+	static bool __functionName(KviKvsModuleFunctionCall * c)                                     \
+	{                                                                                            \
+		QString szNetName, szServName;                                                           \
+                                                                                                 \
+		KVSM_PARAMETERS_BEGIN(c)                                                                 \
+		KVSM_PARAMETER("network_name", KVS_PT_STRING, 0, szNetName)                              \
+		KVSM_PARAMETER("server_name", KVS_PT_STRING, 0, szServName)                              \
+		KVSM_PARAMETERS_END(c)                                                                   \
+                                                                                                 \
+		if(szNetName.isEmpty())                                                                  \
+		{                                                                                        \
+			c->error(__tr2qs_ctx("You must provide the network name as parameter", "serverdb")); \
+			return false;                                                                        \
+		}                                                                                        \
+                                                                                                 \
+		if(szServName.isEmpty())                                                                 \
+		{                                                                                        \
+			c->error(__tr2qs_ctx("You must provide the server name as parameter", "serverdb"));  \
+			return false;                                                                        \
+		}                                                                                        \
+                                                                                                 \
+		KviIrcNetwork * pRecord = g_pServerDataBase->findNetwork(szNetName);                     \
+		if(!pRecord)                                                                             \
+		{                                                                                        \
+			c->error(__tr2qs_ctx("The specified network doesn't exist", "serverdb"));            \
+			return false;                                                                        \
+		}                                                                                        \
+                                                                                                 \
+		KviIrcServer * pServer = pRecord->findServer(szServName);                                \
+		if(!pServer)                                                                             \
+		{                                                                                        \
+			c->error(__tr2qs_ctx("The specified server doesn't exist", "serverdb"));             \
+			return false;                                                                        \
 		}
 
-
 #define END_SERVERDB_GET_SERVER_PROPERTY \
-		return true; \
+	return true;                         \
 	}
 
-#define SERVERDB_GET_SERVER_PROPERTY(__functionName,__callName,__variantSetCallName) \
-		BEGIN_SERVERDB_GET_SERVER_PROPERTY(__functionName) \
-		c->returnValue()->__variantSetCallName(pServer->__callName()); \
-		END_SERVERDB_GET_SERVER_PROPERTY
-
+#define SERVERDB_GET_SERVER_PROPERTY(__functionName, __callName, __variantSetCallName) \
+	BEGIN_SERVERDB_GET_SERVER_PROPERTY(__functionName)                                 \
+	c->returnValue()->__variantSetCallName(pServer->__callName());                     \
+	END_SERVERDB_GET_SERVER_PROPERTY
 
 /*
 	@doc: serverdb.networkNickName
@@ -309,7 +308,7 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkNickName,nickName)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkNickName, nickName)
 
 /*
 	@doc: serverdb.networkUserName
@@ -326,7 +325,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkNickName,nickName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkUserName,userName)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkUserName, userName)
 
 /*
 	@doc: serverdb.networkRealName
@@ -343,7 +342,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkUserName,userName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkRealName,realName)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkRealName, realName)
 
 /*
 	@doc: serverdb.networkEncoding
@@ -360,7 +359,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkRealName,realName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkEncoding,encoding)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkEncoding, encoding)
 
 /*
 	@doc: serverdb.networkTextEncoding
@@ -377,7 +376,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkEncoding,encoding)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkTextEncoding,textEncoding)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkTextEncoding, textEncoding)
 
 /*
 	@doc: serverdb.networkDescription
@@ -394,7 +393,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkTextEncoding,textEncoding)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkDescription,description)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkDescription, description)
 
 /*
 	@doc: serverdb.networkConnectCommand
@@ -411,7 +410,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkDescription,description)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkConnectCommand,onConnectCommand)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkConnectCommand, onConnectCommand)
 
 /*
 	@doc: serverdb.networkLoginCommand
@@ -428,7 +427,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkConnectCommand,onConnectCo
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkLoginCommand,onLoginCommand)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkLoginCommand, onLoginCommand)
 
 /*
 	@doc: serverdb.networkName
@@ -445,7 +444,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkLoginCommand,onLoginComman
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkName,name)
+SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkName, name)
 
 /*
 	@doc: serverdb.networkJoinChannels
@@ -465,20 +464,20 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkName,name)
 */
 BEGIN_SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkJoinChannels)
 
-	KviKvsArray * pArray = new KviKvsArray();
+KviKvsArray * pArray = new KviKvsArray();
 
-	QStringList * pAutoJoinChannels = pNetwork->autoJoinChannelList();
-	if(pAutoJoinChannels)
+QStringList * pAutoJoinChannels = pNetwork->autoJoinChannelList();
+if(pAutoJoinChannels)
+{
+	kvs_uint_t idx = 0;
+	foreach(QString szEntry, *pAutoJoinChannels)
 	{
-		kvs_uint_t idx = 0;
-		foreach(QString szEntry,*pAutoJoinChannels)
-		{
-			pArray->set(idx,new KviKvsVariant(szEntry));
-			idx++;
-		}
+		pArray->set(idx, new KviKvsVariant(szEntry));
+		idx++;
 	}
+}
 
-	c->returnValue()->setArray(pArray);
+c->returnValue()->setArray(pArray);
 
 END_SERVERDB_GET_NETWORK_PROPERTY
 
@@ -497,7 +496,7 @@ END_SERVERDB_GET_NETWORK_PROPERTY
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverNickName,nickName,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverNickName, nickName, setString)
 
 /*
 	@doc: serverdb.serverUserName
@@ -514,7 +513,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverNickName,nickName,setString)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverUserName,userName,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverUserName, userName, setString)
 
 /*
 	@doc: serverdb.serverRealName
@@ -531,7 +530,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverUserName,userName,setString)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverRealName,realName,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverRealName, realName, setString)
 
 /*
 	@doc: serverdb.serverEncoding
@@ -548,7 +547,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverRealName,realName,setString)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverEncoding,encoding,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverEncoding, encoding, setString)
 
 /*
 	@doc: serverdb.serverTextEncoding
@@ -565,7 +564,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverEncoding,encoding,setString)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverTextEncoding,textEncoding,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverTextEncoding, textEncoding, setString)
 
 /*
 	@doc: serverdb.serverDescription
@@ -582,7 +581,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverTextEncoding,textEncoding,se
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverDescription,description,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverDescription, description, setString)
 
 /*
 	@doc: serverdb.serverConnectCommand
@@ -599,7 +598,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverDescription,description,setS
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverConnectCommand,onConnectCommand,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverConnectCommand, onConnectCommand, setString)
 
 /*
 	@doc: serverdb.serverLoginCommand
@@ -616,7 +615,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverConnectCommand,onConnectComm
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverLoginCommand,onLoginCommand,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverLoginCommand, onLoginCommand, setString)
 
 /*
 	@doc: serverdb.serverIp
@@ -633,7 +632,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverLoginCommand,onLoginCommand,
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIp,ip,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIp, ip, setString)
 
 /*
 	@doc: serverdb.serverId
@@ -650,7 +649,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIp,ip,setString)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverId,id,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverId, id, setString)
 
 /*
 	@doc: serverdb.serverPassword
@@ -667,7 +666,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverId,id,setString)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPassword,password,setString)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPassword, password, setString)
 
 /*
 	@doc: serverdb.serverPort
@@ -684,7 +683,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPassword,password,setString)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPort,port,setInteger)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPort, port, setInteger)
 
 /*
 	@doc: serverdb.isAutoConnect
@@ -701,7 +700,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPort,port,setInteger)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverAutoConnect,autoConnect,setBoolean)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverAutoConnect, autoConnect, setBoolean)
 
 /*
 	@doc: serverdb.isIPv6
@@ -718,7 +717,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverAutoConnect,autoConnect,setB
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIPv6,isIPv6,setBoolean)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIPv6, isIPv6, setBoolean)
 
 /*
 	@doc: serverdb.isSSL
@@ -735,7 +734,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIPv6,isIPv6,setBoolean)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverSSL,useSSL,setBoolean)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverSSL, useSSL, setBoolean)
 
 /*
 	@doc: serverdb.cacheIp
@@ -752,7 +751,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverSSL,useSSL,setBoolean)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverCacheIp,cacheIp,setBoolean)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverCacheIp, cacheIp, setBoolean)
 
 /*
 	@doc: serverdb.favorite
@@ -767,7 +766,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverCacheIp,cacheIp,setBoolean)
 	@description:
 		Returns true if KVIrc has the server set to a favorite, false otherwise
 */
-SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverFavorite,favorite,setBoolean)
+SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverFavorite, favorite, setBoolean)
 
 /*
 	@doc: serverdb.serverJoinChannels
@@ -787,23 +786,22 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverFavorite,favorite,setBoolean
 */
 BEGIN_SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverJoinChannels)
 
-	KviKvsArray * pArray = new KviKvsArray();
+KviKvsArray * pArray = new KviKvsArray();
 
-	QStringList * pAutoJoinChannels = pServer->autoJoinChannelList();
-	if(pAutoJoinChannels)
+QStringList * pAutoJoinChannels = pServer->autoJoinChannelList();
+if(pAutoJoinChannels)
+{
+	kvs_uint_t idx = 0;
+	foreach(QString szEntry, *pAutoJoinChannels)
 	{
-		kvs_uint_t idx = 0;
-		foreach(QString szEntry,*pAutoJoinChannels)
-		{
-			pArray->set(idx,new KviKvsVariant(szEntry));
-			idx++;
-		}
+		pArray->set(idx, new KviKvsVariant(szEntry));
+		idx++;
 	}
+}
 
-	c->returnValue()->setArray(pArray);
+c->returnValue()->setArray(pArray);
 
 END_SERVERDB_GET_SERVER_PROPERTY
-
 
 /*
 	@doc: serverdb.addNetwork
@@ -833,25 +831,27 @@ static bool serverdb_kvs_cmd_addNetwork(KviKvsModuleCommandCall * c)
 	QString szNetName, szNetwork;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("network_name",KVS_PT_STRING,0,szNetName)
+	KVSM_PARAMETER("network_name", KVS_PT_STRING, 0, szNetName)
 	KVSM_PARAMETERS_END(c)
 
 	if(szNetName.isEmpty())
 	{
-		c->error(__tr2qs_ctx("You must provide the network name as parameter","serverdb"));
+		c->error(__tr2qs_ctx("You must provide the network name as parameter", "serverdb"));
 		return false;
 	}
 
 	KviIrcNetwork * pNetwork = g_pServerDataBase->findNetwork(szNetName);
 	if(pNetwork)
 	{
-		if(c->switches()->find('q',"quiet")) return true;
-		c->error(__tr2qs_ctx("The network specified already exists","serverdb"));
+		if(c->switches()->find('q', "quiet"))
+			return true;
+		c->error(__tr2qs_ctx("The network specified already exists", "serverdb"));
 		return false;
 	}
 
 	pNetwork = new KviIrcNetwork(szNetName);
-	if(c->switches()->find('a',"autoconnect")) pNetwork->setAutoConnect(true);
+	if(c->switches()->find('a', "autoconnect"))
+		pNetwork->setAutoConnect(true);
 
 	g_pServerDataBase->addNetwork(pNetwork);
 	return true;
@@ -906,19 +906,19 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 	QString szNetwork, szServer;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("network_name",KVS_PT_STRING,0,szNetwork)
-		KVSM_PARAMETER("server_name",KVS_PT_STRING,0,szServer)
+	KVSM_PARAMETER("network_name", KVS_PT_STRING, 0, szNetwork)
+	KVSM_PARAMETER("server_name", KVS_PT_STRING, 0, szServer)
 	KVSM_PARAMETERS_END(c)
 
 	if(szNetwork.isEmpty())
 	{
-		c->error(__tr2qs_ctx("You must provide the network name as parameter","serverdb"));
+		c->error(__tr2qs_ctx("You must provide the network name as parameter", "serverdb"));
 		return false;
 	}
 
 	if(szServer.isEmpty())
 	{
-		c->error(__tr2qs_ctx("You must provide the server name as parameter","serverdb"));
+		c->error(__tr2qs_ctx("You must provide the server name as parameter", "serverdb"));
 		return false;
 	}
 
@@ -926,7 +926,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 	if(!pRecord)
 	{
 		// FIXME: default to orphan servers
-		c->error(__tr2qs_ctx("The specified network doesn't exist","serverdb"));
+		c->error(__tr2qs_ctx("The specified network doesn't exist", "serverdb"));
 		return false;
 	}
 
@@ -936,105 +936,116 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 	KviIrcServer * pServerRecord = pRecord->findServer(pServer);
 	if(pServerRecord)
 	{
-		if(c->switches()->find('q',"quiet")) return true;
-		c->error(__tr2qs_ctx("The specified server already exists","serverdb"));
+		if(c->switches()->find('q', "quiet"))
+			return true;
+		c->error(__tr2qs_ctx("The specified server already exists", "serverdb"));
 		return false;
 	}
 
-	if(c->switches()->find('a',"autoconnect")) pServer->setAutoConnect(true);
-	if(c->switches()->find('c',"cache-ip")) pServer->setCacheIp(true);
-	if(c->switches()->find('f',"favorite")) pServer->setFavorite(true);
-	if(c->switches()->find('i',"ipv6")) pServer->setIPv6(true);
-	if(c->switches()->find('s',"ssl")) pServer->setUseSSL(true);
+	if(c->switches()->find('a', "autoconnect"))
+		pServer->setAutoConnect(true);
+	if(c->switches()->find('c', "cache-ip"))
+		pServer->setCacheIp(true);
+	if(c->switches()->find('f', "favorite"))
+		pServer->setFavorite(true);
+	if(c->switches()->find('i', "ipv6"))
+		pServer->setIPv6(true);
+	if(c->switches()->find('s', "ssl"))
+		pServer->setUseSSL(true);
 
 	QString tmp;
 
-	if(c->switches()->getAsStringIfExisting('p',"port",tmp))
+	if(c->switches()->getAsStringIfExisting('p', "port", tmp))
 	{
 		bool bOk;
 		unsigned int uPort = tmp.toInt(&bOk);
-		if(!bOk) uPort = 6667;
+		if(!bOk)
+			uPort = 6667;
 		pServer->setPort(uPort);
 	}
 
-	if(c->switches()->getAsStringIfExisting('w',"password",tmp)) pServer->setPassword(tmp);
+	if(c->switches()->getAsStringIfExisting('w', "password", tmp))
+		pServer->setPassword(tmp);
 
 	pRecord->insertServer(pServer);
 
 	return true;
 }
 
-#define SERVERDB_SET_NETWORK_PROPERTY(__functionName,__callName) \
-	static bool __functionName(KviKvsModuleCommandCall * c) \
-	{ \
-		QString szName, szPropertyValue; \
-		\
-		KVSM_PARAMETERS_BEGIN(c) \
-			KVSM_PARAMETER("name",KVS_PT_STRING,0,szName) \
-			KVSM_PARAMETER("property",KVS_PT_STRING,KVS_PF_APPENDREMAINING,szPropertyValue) \
-		KVSM_PARAMETERS_END(c) \
-		\
-		if(szName.isEmpty()) \
-		{ \
-			c->error(__tr2qs_ctx("You must provide the network name as parameter","serverdb")); \
-			return false; \
-		} \
-		\
-		KviIrcNetwork * pNetwork = g_pServerDataBase->findNetwork(szName); \
-		if(!pNetwork) \
-		{ \
-			if(c->switches()->find('q',"quiet")) return true; \
-			c->error(__tr2qs_ctx("The specified network doesn't exist","serverdb")); \
-			return false; \
-		} \
-		\
-		pNetwork->__callName(szPropertyValue); \
-		\
-		return true; \
+#define SERVERDB_SET_NETWORK_PROPERTY(__functionName, __callName)                                \
+	static bool __functionName(KviKvsModuleCommandCall * c)                                      \
+	{                                                                                            \
+		QString szName, szPropertyValue;                                                         \
+                                                                                                 \
+		KVSM_PARAMETERS_BEGIN(c)                                                                 \
+		KVSM_PARAMETER("name", KVS_PT_STRING, 0, szName)                                         \
+		KVSM_PARAMETER("property", KVS_PT_STRING, KVS_PF_APPENDREMAINING, szPropertyValue)       \
+		KVSM_PARAMETERS_END(c)                                                                   \
+                                                                                                 \
+		if(szName.isEmpty())                                                                     \
+		{                                                                                        \
+			c->error(__tr2qs_ctx("You must provide the network name as parameter", "serverdb")); \
+			return false;                                                                        \
+		}                                                                                        \
+                                                                                                 \
+		KviIrcNetwork * pNetwork = g_pServerDataBase->findNetwork(szName);                       \
+		if(!pNetwork)                                                                            \
+		{                                                                                        \
+			if(c->switches()->find('q', "quiet"))                                                \
+				return true;                                                                     \
+			c->error(__tr2qs_ctx("The specified network doesn't exist", "serverdb"));            \
+			return false;                                                                        \
+		}                                                                                        \
+                                                                                                 \
+		pNetwork->__callName(szPropertyValue);                                                   \
+                                                                                                 \
+		return true;                                                                             \
 	}
 
-#define SERVERDB_SET_SERVER_PROPERTY(__functionName,__callName) \
-	static bool __functionName(KviKvsModuleCommandCall * c) \
-	{ \
-		QString szNetName, szServName, szPropertyValue; \
-		\
-		KVSM_PARAMETERS_BEGIN(c) \
-			KVSM_PARAMETER("network_name",KVS_PT_STRING,0,szNetName) \
-			KVSM_PARAMETER("server_name",KVS_PT_STRING,0,szServName) \
-			KVSM_PARAMETER("property",KVS_PT_STRING,KVS_PF_APPENDREMAINING,szPropertyValue) \
-		KVSM_PARAMETERS_END(c) \
-		\
-		if(szNetName.isEmpty()) \
-		{ \
-			c->error(__tr2qs_ctx("You must provide the network name as parameter","serverdb")); \
-			return false; \
-		} \
-		\
-		if(szServName.isEmpty()) \
-		{ \
-			c->error(__tr2qs_ctx("You must provide the server name as parameter","serverdb")); \
-			return false; \
-		} \
-		\
-		KviIrcNetwork * pRecord = g_pServerDataBase->findNetwork(szNetName); \
-		if(!pRecord) \
-		{ \
-			if(c->switches()->find('q',"quiet")) return true; \
-			c->error(__tr2qs_ctx("The specified network doesn't exist","serverdb")); \
-			return false; \
-		} \
-		\
-		KviIrcServer * pServer = pRecord->findServer(szServName); \
-		if(!pServer) \
-		{ \
-			if(c->switches()->find('q',"quiet")) return true; \
-			c->error(__tr2qs_ctx("The specified server doesn't exist","serverdb")); \
-			return false; \
-		} \
-		\
-		pServer->__callName(szPropertyValue); \
-		\
-		return true; \
+#define SERVERDB_SET_SERVER_PROPERTY(__functionName, __callName)                                 \
+	static bool __functionName(KviKvsModuleCommandCall * c)                                      \
+	{                                                                                            \
+		QString szNetName, szServName, szPropertyValue;                                          \
+                                                                                                 \
+		KVSM_PARAMETERS_BEGIN(c)                                                                 \
+		KVSM_PARAMETER("network_name", KVS_PT_STRING, 0, szNetName)                              \
+		KVSM_PARAMETER("server_name", KVS_PT_STRING, 0, szServName)                              \
+		KVSM_PARAMETER("property", KVS_PT_STRING, KVS_PF_APPENDREMAINING, szPropertyValue)       \
+		KVSM_PARAMETERS_END(c)                                                                   \
+                                                                                                 \
+		if(szNetName.isEmpty())                                                                  \
+		{                                                                                        \
+			c->error(__tr2qs_ctx("You must provide the network name as parameter", "serverdb")); \
+			return false;                                                                        \
+		}                                                                                        \
+                                                                                                 \
+		if(szServName.isEmpty())                                                                 \
+		{                                                                                        \
+			c->error(__tr2qs_ctx("You must provide the server name as parameter", "serverdb"));  \
+			return false;                                                                        \
+		}                                                                                        \
+                                                                                                 \
+		KviIrcNetwork * pRecord = g_pServerDataBase->findNetwork(szNetName);                     \
+		if(!pRecord)                                                                             \
+		{                                                                                        \
+			if(c->switches()->find('q', "quiet"))                                                \
+				return true;                                                                     \
+			c->error(__tr2qs_ctx("The specified network doesn't exist", "serverdb"));            \
+			return false;                                                                        \
+		}                                                                                        \
+                                                                                                 \
+		KviIrcServer * pServer = pRecord->findServer(szServName);                                \
+		if(!pServer)                                                                             \
+		{                                                                                        \
+			if(c->switches()->find('q', "quiet"))                                                \
+				return true;                                                                     \
+			c->error(__tr2qs_ctx("The specified server doesn't exist", "serverdb"));             \
+			return false;                                                                        \
+		}                                                                                        \
+                                                                                                 \
+		pServer->__callName(szPropertyValue);                                                    \
+                                                                                                 \
+		return true;                                                                             \
 	}
 
 /*
@@ -1060,7 +1071,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkNickName,setNickName)
+SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkNickName, setNickName)
 
 /*
 	@doc: serverdb.setNetworkUserName
@@ -1085,7 +1096,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkNickName,setNickName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkUserName,setUserName)
+SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkUserName, setUserName)
 
 /*
 	@doc: serverdb.setNetworkRealName
@@ -1110,7 +1121,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkUserName,setUserName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkRealName,setRealName)
+SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkRealName, setRealName)
 
 /*
 	@doc: serverdb.setNetworkEncoding
@@ -1136,7 +1147,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkRealName,setRealName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkEncoding,setEncoding)
+SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkEncoding, setEncoding)
 
 /*
 	@doc: serverdb.setNetworkTextEncoding
@@ -1161,7 +1172,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkEncoding,setEncoding)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkTextEncoding,setTextEncoding)
+SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkTextEncoding, setTextEncoding)
 
 /*
 	@doc: serverdb.setNetworkDescription
@@ -1186,7 +1197,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkTextEncoding,setTextEnc
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkDescription,setDescription)
+SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkDescription, setDescription)
 
 /*
 	@doc: serverdb.setNetworkConnectCommand
@@ -1211,7 +1222,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkDescription,setDescript
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkConnectCommand,setOnConnectCommand)
+SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkConnectCommand, setOnConnectCommand)
 
 /*
 	@doc: serverdb.setNetworkLoginCommand
@@ -1236,7 +1247,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkConnectCommand,setOnCon
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkLoginCommand,setOnLoginCommand)
+SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkLoginCommand, setOnLoginCommand)
 
 /*
 	@doc: serverdb.setNetworkJoinChannels
@@ -1259,7 +1270,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkLoginCommand,setOnLogin
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkJoinChannels,setAutoJoinChannelList)
+SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkJoinChannels, setAutoJoinChannelList)
 
 /*
 	@doc: serverdb.setServerNickName
@@ -1284,7 +1295,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkJoinChannels,setAutoJoi
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerNickName,setNickName)
+SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerNickName, setNickName)
 
 /*
 	@doc: serverdb.setServerUserName
@@ -1309,7 +1320,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerNickName,setNickName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerUserName,setUserName)
+SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerUserName, setUserName)
 
 /*
 	@doc: serverdb.setServerRealName
@@ -1334,7 +1345,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerUserName,setUserName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerRealName,setRealName)
+SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerRealName, setRealName)
 
 /*
 	@doc: serverdb.setServerEncoding
@@ -1360,7 +1371,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerRealName,setRealName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerEncoding,setEncoding)
+SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerEncoding, setEncoding)
 
 /*
 	@doc: serverdb.setServerTextEncoding
@@ -1385,7 +1396,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerEncoding,setEncoding)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerTextEncoding,setTextEncoding)
+SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerTextEncoding, setTextEncoding)
 
 /*
 	@doc: serverdb.setServerDescription
@@ -1410,7 +1421,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerTextEncoding,setTextEncod
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerDescription,setDescription)
+SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerDescription, setDescription)
 
 /*
 	@doc: serverdb.setServerConnectCommand
@@ -1435,7 +1446,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerDescription,setDescriptio
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerConnectCommand,setOnConnectCommand)
+SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerConnectCommand, setOnConnectCommand)
 
 /*
 	@doc: serverdb.setServerLoginCommand
@@ -1460,7 +1471,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerConnectCommand,setOnConne
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerLoginCommand,setOnLoginCommand)
+SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerLoginCommand, setOnLoginCommand)
 
 /*
 	@doc: serverdb.setServerJoinChannels
@@ -1483,7 +1494,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerLoginCommand,setOnLoginCo
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
-SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerJoinChannels,setAutoJoinChannelList)
+SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerJoinChannels, setAutoJoinChannelList)
 
 static bool serverdb_module_init(KviModule * m)
 {
@@ -1491,57 +1502,57 @@ static bool serverdb_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"updateList",serverdb_kvs_cmd_updateList);
 	*/
 
-	KVSM_REGISTER_FUNCTION(m,"favorite",serverdb_kvs_fnc_serverFavorite);
-	KVSM_REGISTER_FUNCTION(m,"cacheIp",serverdb_kvs_fnc_serverCacheIp);
-	KVSM_REGISTER_FUNCTION(m,"networkConnectCommand",serverdb_kvs_fnc_networkConnectCommand);
-	KVSM_REGISTER_FUNCTION(m,"networkDescription",serverdb_kvs_fnc_networkDescription);
-	KVSM_REGISTER_FUNCTION(m,"networkEncoding",serverdb_kvs_fnc_networkEncoding);
-	KVSM_REGISTER_FUNCTION(m,"networkTextEncoding",serverdb_kvs_fnc_networkTextEncoding);
-	KVSM_REGISTER_FUNCTION(m,"networkLoginCommand",serverdb_kvs_fnc_networkLoginCommand);
-	KVSM_REGISTER_FUNCTION(m,"networkName",serverdb_kvs_fnc_networkName);
-	KVSM_REGISTER_FUNCTION(m,"networkNickName",serverdb_kvs_fnc_networkNickName);
-	KVSM_REGISTER_FUNCTION(m,"networkRealName",serverdb_kvs_fnc_networkRealName);
-	KVSM_REGISTER_FUNCTION(m,"networkUserName",serverdb_kvs_fnc_networkUserName);
-	KVSM_REGISTER_FUNCTION(m,"networkJoinChannels",serverdb_kvs_fnc_networkJoinChannels);
-	KVSM_REGISTER_FUNCTION(m,"serverConnectCommand",serverdb_kvs_fnc_serverConnectCommand);
-	KVSM_REGISTER_FUNCTION(m,"serverDescription",serverdb_kvs_fnc_serverDescription);
-	KVSM_REGISTER_FUNCTION(m,"serverEncoding",serverdb_kvs_fnc_serverEncoding);
-	KVSM_REGISTER_FUNCTION(m,"serverTextEncoding",serverdb_kvs_fnc_serverTextEncoding);
-	KVSM_REGISTER_FUNCTION(m,"serverId",serverdb_kvs_fnc_serverId)
-	KVSM_REGISTER_FUNCTION(m,"serverIp",serverdb_kvs_fnc_serverIp)
-	KVSM_REGISTER_FUNCTION(m,"serverLoginCommand",serverdb_kvs_fnc_serverLoginCommand);
-	KVSM_REGISTER_FUNCTION(m,"serverNickName",serverdb_kvs_fnc_serverNickName);
-	KVSM_REGISTER_FUNCTION(m,"serverPassword",serverdb_kvs_fnc_serverPassword);
-	KVSM_REGISTER_FUNCTION(m,"serverPort",serverdb_kvs_fnc_serverPort);
-	KVSM_REGISTER_FUNCTION(m,"serverRealName",serverdb_kvs_fnc_serverRealName);
-	KVSM_REGISTER_FUNCTION(m,"serverUserName",serverdb_kvs_fnc_serverUserName);
-	KVSM_REGISTER_FUNCTION(m,"serverJoinChannels",serverdb_kvs_fnc_serverJoinChannels);
-	KVSM_REGISTER_FUNCTION(m,"isAutoConnect",serverdb_kvs_fnc_serverAutoConnect);
-	KVSM_REGISTER_FUNCTION(m,"isIPv6",serverdb_kvs_fnc_serverIPv6);
-	KVSM_REGISTER_FUNCTION(m,"isSSL",serverdb_kvs_fnc_serverSSL);
-	KVSM_REGISTER_FUNCTION(m,"networkExists",serverdb_kvs_fnc_networkExists);
-	KVSM_REGISTER_FUNCTION(m,"serverExists",serverdb_kvs_fnc_serverExists);
+	KVSM_REGISTER_FUNCTION(m, "favorite", serverdb_kvs_fnc_serverFavorite);
+	KVSM_REGISTER_FUNCTION(m, "cacheIp", serverdb_kvs_fnc_serverCacheIp);
+	KVSM_REGISTER_FUNCTION(m, "networkConnectCommand", serverdb_kvs_fnc_networkConnectCommand);
+	KVSM_REGISTER_FUNCTION(m, "networkDescription", serverdb_kvs_fnc_networkDescription);
+	KVSM_REGISTER_FUNCTION(m, "networkEncoding", serverdb_kvs_fnc_networkEncoding);
+	KVSM_REGISTER_FUNCTION(m, "networkTextEncoding", serverdb_kvs_fnc_networkTextEncoding);
+	KVSM_REGISTER_FUNCTION(m, "networkLoginCommand", serverdb_kvs_fnc_networkLoginCommand);
+	KVSM_REGISTER_FUNCTION(m, "networkName", serverdb_kvs_fnc_networkName);
+	KVSM_REGISTER_FUNCTION(m, "networkNickName", serverdb_kvs_fnc_networkNickName);
+	KVSM_REGISTER_FUNCTION(m, "networkRealName", serverdb_kvs_fnc_networkRealName);
+	KVSM_REGISTER_FUNCTION(m, "networkUserName", serverdb_kvs_fnc_networkUserName);
+	KVSM_REGISTER_FUNCTION(m, "networkJoinChannels", serverdb_kvs_fnc_networkJoinChannels);
+	KVSM_REGISTER_FUNCTION(m, "serverConnectCommand", serverdb_kvs_fnc_serverConnectCommand);
+	KVSM_REGISTER_FUNCTION(m, "serverDescription", serverdb_kvs_fnc_serverDescription);
+	KVSM_REGISTER_FUNCTION(m, "serverEncoding", serverdb_kvs_fnc_serverEncoding);
+	KVSM_REGISTER_FUNCTION(m, "serverTextEncoding", serverdb_kvs_fnc_serverTextEncoding);
+	KVSM_REGISTER_FUNCTION(m, "serverId", serverdb_kvs_fnc_serverId)
+	KVSM_REGISTER_FUNCTION(m, "serverIp", serverdb_kvs_fnc_serverIp)
+	KVSM_REGISTER_FUNCTION(m, "serverLoginCommand", serverdb_kvs_fnc_serverLoginCommand);
+	KVSM_REGISTER_FUNCTION(m, "serverNickName", serverdb_kvs_fnc_serverNickName);
+	KVSM_REGISTER_FUNCTION(m, "serverPassword", serverdb_kvs_fnc_serverPassword);
+	KVSM_REGISTER_FUNCTION(m, "serverPort", serverdb_kvs_fnc_serverPort);
+	KVSM_REGISTER_FUNCTION(m, "serverRealName", serverdb_kvs_fnc_serverRealName);
+	KVSM_REGISTER_FUNCTION(m, "serverUserName", serverdb_kvs_fnc_serverUserName);
+	KVSM_REGISTER_FUNCTION(m, "serverJoinChannels", serverdb_kvs_fnc_serverJoinChannels);
+	KVSM_REGISTER_FUNCTION(m, "isAutoConnect", serverdb_kvs_fnc_serverAutoConnect);
+	KVSM_REGISTER_FUNCTION(m, "isIPv6", serverdb_kvs_fnc_serverIPv6);
+	KVSM_REGISTER_FUNCTION(m, "isSSL", serverdb_kvs_fnc_serverSSL);
+	KVSM_REGISTER_FUNCTION(m, "networkExists", serverdb_kvs_fnc_networkExists);
+	KVSM_REGISTER_FUNCTION(m, "serverExists", serverdb_kvs_fnc_serverExists);
 
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"addNetwork",serverdb_kvs_cmd_addNetwork);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"addServer",serverdb_kvs_cmd_addServer);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkConnectCommand",serverdb_kvs_cmd_setNetworkConnectCommand);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkEncoding",serverdb_kvs_cmd_setNetworkEncoding);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkTextEncoding",serverdb_kvs_cmd_setNetworkTextEncoding);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkDescription",serverdb_kvs_cmd_setNetworkDescription);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkLoginCommand",serverdb_kvs_cmd_setNetworkLoginCommand);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkNickName",serverdb_kvs_cmd_setNetworkNickName);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkRealName",serverdb_kvs_cmd_setNetworkRealName);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkUserName",serverdb_kvs_cmd_setNetworkUserName);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setNetworkJoinChannels",serverdb_kvs_cmd_setNetworkJoinChannels);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerConnectCommand",serverdb_kvs_cmd_setServerConnectCommand);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerEncoding",serverdb_kvs_cmd_setServerEncoding);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerTextEncoding",serverdb_kvs_cmd_setServerTextEncoding);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerDescription",serverdb_kvs_cmd_setServerDescription);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerLoginCommand",serverdb_kvs_cmd_setServerLoginCommand);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerNickName",serverdb_kvs_cmd_setServerNickName);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerRealName",serverdb_kvs_cmd_setServerRealName);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerUserName",serverdb_kvs_cmd_setServerUserName);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"setServerJoinChannels",serverdb_kvs_cmd_setServerJoinChannels);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "addNetwork", serverdb_kvs_cmd_addNetwork);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "addServer", serverdb_kvs_cmd_addServer);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setNetworkConnectCommand", serverdb_kvs_cmd_setNetworkConnectCommand);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setNetworkEncoding", serverdb_kvs_cmd_setNetworkEncoding);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setNetworkTextEncoding", serverdb_kvs_cmd_setNetworkTextEncoding);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setNetworkDescription", serverdb_kvs_cmd_setNetworkDescription);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setNetworkLoginCommand", serverdb_kvs_cmd_setNetworkLoginCommand);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setNetworkNickName", serverdb_kvs_cmd_setNetworkNickName);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setNetworkRealName", serverdb_kvs_cmd_setNetworkRealName);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setNetworkUserName", serverdb_kvs_cmd_setNetworkUserName);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setNetworkJoinChannels", serverdb_kvs_cmd_setNetworkJoinChannels);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setServerConnectCommand", serverdb_kvs_cmd_setServerConnectCommand);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setServerEncoding", serverdb_kvs_cmd_setServerEncoding);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setServerTextEncoding", serverdb_kvs_cmd_setServerTextEncoding);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setServerDescription", serverdb_kvs_cmd_setServerDescription);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setServerLoginCommand", serverdb_kvs_cmd_setServerLoginCommand);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setServerNickName", serverdb_kvs_cmd_setServerNickName);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setServerRealName", serverdb_kvs_cmd_setServerRealName);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setServerUserName", serverdb_kvs_cmd_setServerUserName);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "setServerJoinChannels", serverdb_kvs_cmd_setServerJoinChannels);
 
 	return true;
 }
@@ -1557,13 +1568,12 @@ static bool serverdb_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-	"ServerDB",                                              // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)", // author & (C)
-	"IRC serverDB related functions",
-	serverdb_module_init,
-	serverdb_module_can_unload,
-	0,
-	serverdb_module_cleanup,
-	"serverdb"
-)
+    "ServerDB",                                                        // module name
+    "4.0.0",                                                           // module version
+    "Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)", // author & (C)
+    "IRC serverDB related functions",
+    serverdb_module_init,
+    serverdb_module_can_unload,
+    0,
+    serverdb_module_cleanup,
+    "serverdb")

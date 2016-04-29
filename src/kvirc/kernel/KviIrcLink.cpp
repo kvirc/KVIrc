@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-
 #include "KviIrcLink.h"
 #include "KviDnsResolver.h"
 #include "KviLocale.h"
@@ -50,13 +49,12 @@
 
 #include <QTimer>
 
-extern KVIRC_API KviIrcServerDataBase   * g_pServerDataBase;
-extern KVIRC_API KviProxyDataBase    * g_pProxyDataBase;
+extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
+extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 //extern KVIRC_API KviGarbageCollector * g_pGarbageCollector;
 
-
 KviIrcLink::KviIrcLink(KviIrcConnection * pConnection)
-: QObject()
+    : QObject()
 {
 	m_pConnection = pConnection;
 	m_pTarget = pConnection->target();
@@ -66,9 +64,9 @@ KviIrcLink::KviIrcLink(KviIrcConnection * pConnection)
 	m_pLinkFilter = 0;
 	m_pResolver = 0;
 
-	m_pReadBuffer    = 0;            // incoming data buffer
-	m_uReadBufferLen = 0;            // incoming data buffer length
-	m_uReadPackets   = 0;            // total packets read per session
+	m_pReadBuffer = 0;    // incoming data buffer
+	m_uReadBufferLen = 0; // incoming data buffer length
+	m_uReadPackets = 0;   // total packets read per session
 
 	m_eState = Idle;
 }
@@ -84,7 +82,6 @@ KviIrcLink::~KviIrcLink()
 		KviMemory::free(m_pReadBuffer);
 }
 
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 // KviIrcSocket management
@@ -94,14 +91,14 @@ void KviIrcLink::linkFilterDestroyed()
 {
 	m_pLinkFilter = 0;
 	m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-		__tr2qs("Oops! For some reason the link filter object has been destroyed"));
+	    __tr2qs("Oops! For some reason the link filter object has been destroyed"));
 }
 
 void KviIrcLink::destroySocket()
 {
 	if(m_pLinkFilter)
 	{
-		QObject::disconnect(m_pLinkFilter,0,this,0);
+		QObject::disconnect(m_pLinkFilter, 0, this, 0);
 		// the module extension server links must be destroyed in the module that provided it
 		m_pLinkFilter->die();
 		m_pLinkFilter = 0;
@@ -125,22 +122,22 @@ void KviIrcLink::createSocket(const QString & szLinkFilterName)
 	if(szLinkFilterName.isEmpty())
 		return;
 
-	if(KviQString::equalCI(szLinkFilterName,"irc"))
+	if(KviQString::equalCI(szLinkFilterName, "irc"))
 		return;
 
 	m_pLinkFilter = (KviMexLinkFilter *)g_pModuleExtensionManager->allocateExtension("linkfilter",
-		szLinkFilterName.toUtf8().data(),m_pConsole,0,this,szLinkFilterName.toUtf8().data());
+	    szLinkFilterName.toUtf8().data(), m_pConsole, 0, this, szLinkFilterName.toUtf8().data());
 
 	if(m_pLinkFilter)
 	{
-		connect(m_pLinkFilter,SIGNAL(destroyed()),this,SLOT(linkFilterDestroyed()));
+		connect(m_pLinkFilter, SIGNAL(destroyed()), this, SLOT(linkFilterDestroyed()));
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-			__tr2qs("Using filtered IRC protocol: link filter is \"%Q\""),&szLinkFilterName);
+		    __tr2qs("Using filtered IRC protocol: link filter is \"%Q\""), &szLinkFilterName);
 		return;
 	}
 
 	m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-		__tr2qs("Failed to set up the link filter \"%Q\", will try with plain IRC"),&szLinkFilterName);
+	    __tr2qs("Failed to set up the link filter \"%Q\", will try with plain IRC"), &szLinkFilterName);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -170,7 +167,7 @@ void KviIrcLink::start()
 		delete m_pResolver; // this should never happen
 
 	m_pResolver = new KviIrcConnectionTargetResolver(m_pConnection);
-	connect(m_pResolver,SIGNAL(terminated()),this,SLOT(resolverTerminated()));
+	connect(m_pResolver, SIGNAL(terminated()), this, SLOT(resolverTerminated()));
 	m_pResolver->start(m_pTarget);
 }
 
@@ -195,22 +192,21 @@ void KviIrcLink::resolverTerminated()
 
 	createSocket(m_pTarget->server()->linkFilter());
 
-	KviError::Code eError = m_pSocket->startConnection(m_pTarget->server(),m_pTarget->proxy(),
-		m_pTarget->bindAddress().isEmpty() ? 0 : m_pTarget->bindAddress().toUtf8().data());
+	KviError::Code eError = m_pSocket->startConnection(m_pTarget->server(), m_pTarget->proxy(),
+	    m_pTarget->bindAddress().isEmpty() ? 0 : m_pTarget->bindAddress().toUtf8().data());
 
 	if(eError != KviError::Success)
 	{
 		QString szStrDescription(KviError::getDescription(eError));
 		m_pConsole->output(KVI_OUT_SYSTEMERROR,
-			__tr2qs("Failed to start the connection: %Q"),
-			&szStrDescription);
-//			&(KviError::getDescription(eError)));
+		    __tr2qs("Failed to start the connection: %Q"),
+		    &szStrDescription);
+		//			&(KviError::getDescription(eError)));
 
 		m_eState = Idle;
 		m_pConnection->linkAttemptFailed(eError);
 	}
 }
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -221,7 +217,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 {
 	if(m_pLinkFilter)
 	{
-		m_pLinkFilter->processData(buffer,iLen);
+		m_pLinkFilter->processData(buffer, iLen);
 		return;
 	}
 
@@ -232,7 +228,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 
 	while(*p)
 	{
-		if((*p == '\r' )||(*p == '\n'))
+		if((*p == '\r') || (*p == '\n'))
 		{
 			//found a CR or LF...
 			//prepare a message buffer
@@ -241,17 +237,19 @@ void KviIrcLink::processData(char * buffer, int iLen)
 			if(m_uReadBufferLen > 0)
 			{
 				KVI_ASSERT(m_pReadBuffer);
-				cMessageBuffer = (char *)KviMemory::reallocate(cMessageBuffer,iBufLen + m_uReadBufferLen + 1);
-				KviMemory::move(cMessageBuffer,m_pReadBuffer,m_uReadBufferLen);
-				KviMemory::move((void *)(cMessageBuffer + m_uReadBufferLen),cBeginOfCurData,iBufLen);
+				cMessageBuffer = (char *)KviMemory::reallocate(cMessageBuffer, iBufLen + m_uReadBufferLen + 1);
+				KviMemory::move(cMessageBuffer, m_pReadBuffer, m_uReadBufferLen);
+				KviMemory::move((void *)(cMessageBuffer + m_uReadBufferLen), cBeginOfCurData, iBufLen);
 				*(cMessageBuffer + iBufLen + m_uReadBufferLen) = '\0';
 				m_uReadBufferLen = 0;
 				KviMemory::free(m_pReadBuffer);
 				m_pReadBuffer = 0;
-			} else {
+			}
+			else
+			{
 				KVI_ASSERT(!m_pReadBuffer);
-				cMessageBuffer = (char *)KviMemory::reallocate(cMessageBuffer,iBufLen + 1);
-				KviMemory::move(cMessageBuffer,cBeginOfCurData,iBufLen);
+				cMessageBuffer = (char *)KviMemory::reallocate(cMessageBuffer, iBufLen + 1);
+				KviMemory::move(cMessageBuffer, cBeginOfCurData, iBufLen);
 				*(cMessageBuffer + iBufLen) = '\0';
 			}
 			m_uReadPackets++;
@@ -284,10 +282,12 @@ void KviIrcLink::processData(char * buffer, int iLen)
 				return;
 			}
 
-			while(*p && ((*p=='\r')||(*p=='\n')) )p++;
+			while(*p && ((*p == '\r') || (*p == '\n')))
+				p++;
 			cBeginOfCurData = p;
-
-		} else p++;
+		}
+		else
+			p++;
 	}
 
 	//now *p == '\0'
@@ -302,20 +302,23 @@ void KviIrcLink::processData(char * buffer, int iLen)
 		{
 			//and there was more stuff saved... (really slow connection)
 			KVI_ASSERT(m_pReadBuffer);
-			m_pReadBuffer =(char *)KviMemory::reallocate(m_pReadBuffer,m_uReadBufferLen + iBufLen);
-			KviMemory::move((void *)(m_pReadBuffer+m_uReadBufferLen),cBeginOfCurData,iBufLen);
+			m_pReadBuffer = (char *)KviMemory::reallocate(m_pReadBuffer, m_uReadBufferLen + iBufLen);
+			KviMemory::move((void *)(m_pReadBuffer + m_uReadBufferLen), cBeginOfCurData, iBufLen);
 			m_uReadBufferLen += iBufLen;
-		} else {
+		}
+		else
+		{
 			//
 			KVI_ASSERT(!m_pReadBuffer);
 			m_uReadBufferLen = iBufLen;
-			m_pReadBuffer =(char *)KviMemory::allocate(m_uReadBufferLen);
-			KviMemory::move(m_pReadBuffer,cBeginOfCurData,m_uReadBufferLen);
+			m_pReadBuffer = (char *)KviMemory::allocate(m_uReadBufferLen);
+			KviMemory::move(m_pReadBuffer, cBeginOfCurData, m_uReadBufferLen);
 		}
 		//The m_pReadBuffer contains at max 1 IRC message...
 		//that can not be longer than 510 bytes (the message is not CRLF terminated)
 		// FIXME: Is this limit *really* valid on all servers ?
-		if(m_uReadBufferLen > 510) qDebug("WARNING: receiving an invalid IRC message from server.");
+		if(m_uReadBufferLen > 510)
+			qDebug("WARNING: receiving an invalid IRC message from server.");
 	}
 	KviMemory::free(cMessageBuffer);
 }
@@ -348,7 +351,6 @@ unsigned int KviIrcLink::outputQueueSize()
 	return m_pSocket->outputQueueSize();
 }
 
-
 bool KviIrcLink::sendPacket(KviDataBuffer * pData)
 {
 	if(!m_pSocket)
@@ -372,7 +374,7 @@ void KviIrcLink::socketStateChange()
 		case KviIrcSocket::Connected:
 			m_eState = Connected;
 			m_pConnection->linkEstablished();
-		break;
+			break;
 		case KviIrcSocket::Idle:
 		{
 			State old = m_eState;
@@ -381,54 +383,54 @@ void KviIrcLink::socketStateChange()
 			{
 				case Connecting:
 					m_pConnection->linkAttemptFailed(m_pSocket->lastError());
-				break;
+					break;
 				case Connected:
 					m_pConnection->linkTerminated();
-				break;
+					break;
 				default: // currently can be only Idle
 					qDebug("Oops! Received a KviIrcSocket::Idle state change when KviIrcLink::m_eState was idle");
-				break;
+					break;
 			}
 		}
 		break;
 		case KviIrcSocket::Connecting:
-			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("Contacting %Q %s (%s) on port %u"),
-				connection()->target()->proxy() ? &(__tr2qs("proxy host")) : &(__tr2qs("IRC server")),
-				connection()->target()->proxy() ? connection()->target()->proxy()->hostName().toUtf8().data() : connection()->target()->server()->hostName().toUtf8().data(),
-				connection()->target()->proxy() ? connection()->target()->proxy()->ip().toUtf8().data() : connection()->target()->server()->ip().toUtf8().data(),
-				connection()->target()->proxy() ? connection()->target()->proxy()->port() : connection()->target()->server()->port());
-		break;
+			m_pConsole->output(KVI_OUT_CONNECTION, __tr2qs("Contacting %Q %s (%s) on port %u"),
+			    connection()->target()->proxy() ? &(__tr2qs("proxy host")) : &(__tr2qs("IRC server")),
+			    connection()->target()->proxy() ? connection()->target()->proxy()->hostName().toUtf8().data() : connection()->target()->server()->hostName().toUtf8().data(),
+			    connection()->target()->proxy() ? connection()->target()->proxy()->ip().toUtf8().data() : connection()->target()->server()->ip().toUtf8().data(),
+			    connection()->target()->proxy() ? connection()->target()->proxy()->port() : connection()->target()->server()->port());
+			break;
 		case KviIrcSocket::SSLHandshake:
-			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("Low-level transport connection established [%s (%s:%u)]"),
-				connection()->target()->proxy() ? connection()->target()->proxy()->hostName().toUtf8().data() : connection()->target()->server()->hostName().toUtf8().data(),
-				connection()->target()->proxy() ? connection()->target()->proxy()->ip().toUtf8().data() : connection()->target()->server()->ip().toUtf8().data(),
-				connection()->target()->proxy() ? connection()->target()->proxy()->port() : connection()->target()->server()->port());
-			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Starting Secure Socket Layer handshake"));
-		break;
+			m_pConsole->output(KVI_OUT_CONNECTION, __tr2qs("Low-level transport connection established [%s (%s:%u)]"),
+			    connection()->target()->proxy() ? connection()->target()->proxy()->hostName().toUtf8().data() : connection()->target()->server()->hostName().toUtf8().data(),
+			    connection()->target()->proxy() ? connection()->target()->proxy()->ip().toUtf8().data() : connection()->target()->server()->ip().toUtf8().data(),
+			    connection()->target()->proxy() ? connection()->target()->proxy()->port() : connection()->target()->server()->port());
+			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION, __tr2qs("Starting Secure Socket Layer handshake"));
+			break;
 		case KviIrcSocket::ProxyLogin:
-			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("%Q established [%s (%s:%u)]"),
-				connection()->link()->socket()->usingSSL() ? &(__tr2qs("Secure proxy connection")) : &(__tr2qs("Proxy connection")),
-				connection()->target()->proxy()->hostName().toUtf8().data(),
-				connection()->target()->proxy()->ip().toUtf8().data(),
-				connection()->target()->proxy()->port());
-			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Negotiating relay information"));
-		break;
+			m_pConsole->output(KVI_OUT_CONNECTION, __tr2qs("%Q established [%s (%s:%u)]"),
+			    connection()->link()->socket()->usingSSL() ? &(__tr2qs("Secure proxy connection")) : &(__tr2qs("Proxy connection")),
+			    connection()->target()->proxy()->hostName().toUtf8().data(),
+			    connection()->target()->proxy()->ip().toUtf8().data(),
+			    connection()->target()->proxy()->port());
+			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION, __tr2qs("Negotiating relay information"));
+			break;
 		case KviIrcSocket::ProxyFinalV4:
-			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Sent connection request, waiting for acknowledgement"));
-		break;
+			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION, __tr2qs("Sent connection request, waiting for acknowledgement"));
+			break;
 		case KviIrcSocket::ProxyFinalV5:
-			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Sent target host data, waiting for acknowledgement"));
-		break;
+			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION, __tr2qs("Sent target host data, waiting for acknowledgement"));
+			break;
 		case KviIrcSocket::ProxySelectAuthMethodV5:
-			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Sent auth method request, waiting for acknowledgement"));
-		break;
+			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION, __tr2qs("Sent auth method request, waiting for acknowledgement"));
+			break;
 		case KviIrcSocket::ProxyUserPassV5:
-			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Sent username and password, waiting for acknowledgement"));
-		break;
+			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION, __tr2qs("Sent username and password, waiting for acknowledgement"));
+			break;
 		case KviIrcSocket::ProxyFinalHttp:
-			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Sent connection request, waiting for \"HTTP 200\" acknowledgement"));
-		break;
+			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION, __tr2qs("Sent connection request, waiting for \"HTTP 200\" acknowledgement"));
+			break;
 		default:
-		break;
+			break;
 	}
 }

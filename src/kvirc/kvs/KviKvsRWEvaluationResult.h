@@ -31,16 +31,18 @@ class KVIRC_API KviKvsRWEvaluationResult
 {
 public:
 	// this result becomes the owner of the parent result!!!!
-	KviKvsRWEvaluationResult(KviKvsRWEvaluationResult *pParent,KviKvsVariant *pVariant);
+	KviKvsRWEvaluationResult(KviKvsRWEvaluationResult * pParent, KviKvsVariant * pVariant);
 	// the destructor must do (in order):
 	//    check if variant is empty and if it is then remove it from the container (destroy it)
 	//    delete the m_pParent result
 	virtual ~KviKvsRWEvaluationResult();
+
 protected:
 	KviKvsRWEvaluationResult * m_pParent;
-	KviKvsVariant            * m_pVariant;
+	KviKvsVariant * m_pVariant;
+
 public:
-	KviKvsVariant * result(){ return m_pVariant; };
+	KviKvsVariant * result() { return m_pVariant; };
 };
 
 class KviKvsArray;
@@ -48,11 +50,12 @@ class KviKvsArray;
 class KVIRC_API KviKvsArrayElement : public KviKvsRWEvaluationResult
 {
 public:
-	KviKvsArrayElement(KviKvsRWEvaluationResult *pParent,KviKvsVariant *pVariant,KviKvsArray *pArray,int iKey);
+	KviKvsArrayElement(KviKvsRWEvaluationResult * pParent, KviKvsVariant * pVariant, KviKvsArray * pArray, int iKey);
 	~KviKvsArrayElement();
+
 protected:
 	KviKvsArray * m_pArray;
-	int           m_iKey;
+	int m_iKey;
 };
 
 class KviKvsHash;
@@ -60,11 +63,12 @@ class KviKvsHash;
 class KVIRC_API KviKvsHashElement : public KviKvsRWEvaluationResult
 {
 public:
-	KviKvsHashElement(KviKvsRWEvaluationResult *pParent,KviKvsVariant *pVariant,KviKvsHash *pHash,const QString &szKey);
+	KviKvsHashElement(KviKvsRWEvaluationResult * pParent, KviKvsVariant * pVariant, KviKvsHash * pHash, const QString & szKey);
 	~KviKvsHashElement();
+
 protected:
 	KviKvsHash * m_pHash;
-	QString      m_szKey;
+	QString m_szKey;
 };
 
 #endif //!_KVI_KVS_RWEVALUATIONRESULT_H_

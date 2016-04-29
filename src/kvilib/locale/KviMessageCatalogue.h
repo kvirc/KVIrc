@@ -31,7 +31,8 @@
 
 #include <QString>
 
-template<typename A,typename B> class KviPointerHashTable;
+template <typename A, typename B>
+class KviPointerHashTable;
 
 class KviTranslationEntry;
 class QTextCodec;
@@ -56,9 +57,11 @@ public:
 	* \brief Destroys the instance of KviMessageCatalogue and frees all the relevant resources
 	*/
 	~KviMessageCatalogue();
+
 protected:
-	KviPointerHashTable<const char *,KviTranslationEntry> * m_pMessages;
+	KviPointerHashTable<const char *, KviTranslationEntry> * m_pMessages;
 	QTextCodec * m_pTextCodec;
+
 public:
 	/**
 	* \brief

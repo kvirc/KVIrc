@@ -27,43 +27,45 @@
 #include "DccBroker.h"
 
 #ifdef COMPILE_DCC_CANVAS
-	#include "DccDescriptor.h"
-	#include "DccWindow.h"
-	#include "DccThread.h"
+#include "DccDescriptor.h"
+#include "DccWindow.h"
+#include "DccThread.h"
 
-	#include "KviWindow.h"
-	#include "KviCString.h"
-	#include "KviPointerList.h"
+#include "KviWindow.h"
+#include "KviCString.h"
+#include "KviPointerList.h"
 
-	class DccMarshal;
-	class DccCanvasWidget;
-	class QSplitter;
+class DccMarshal;
+class DccCanvasWidget;
+class QSplitter;
 
-	class DccCanvasWindow : public DccWindow
-	{
-		Q_OBJECT
-	public:
-		DccCanvasWindow(DccDescriptor * dcc,const char * name);
-		~DccCanvasWindow();
-	protected:
+class DccCanvasWindow : public DccWindow
+{
+	Q_OBJECT
+public:
+	DccCanvasWindow(DccDescriptor * dcc, const char * name);
+	~DccCanvasWindow();
+
+protected:
 	//	KviDccCanvasThread     * m_pSlaveThread;
-		DccCanvasWidget        * m_pCanvas;
+	DccCanvasWidget * m_pCanvas;
 	//	QSplitter              * m_pTopSplitter;
-		QString                  m_szTarget;
-	protected:
-		virtual const QString &target();
-		virtual void fillCaptionBuffers();
-		virtual void getBaseLogFileName(KviCString &buffer);
-		virtual QPixmap * myIconPtr();
-		virtual void resizeEvent(QResizeEvent *e);
-		virtual QSize sizeHint() const;
-		virtual bool event(QEvent *e);
-		virtual void ownMessage(const char *text, bool bUserFeedback = true);
-		virtual void ownAction(const char *text);
-	protected slots:
-		void handleMarshalError(int err);
-		void connected();
-	};
+	QString m_szTarget;
+
+protected:
+	virtual const QString & target();
+	virtual void fillCaptionBuffers();
+	virtual void getBaseLogFileName(KviCString & buffer);
+	virtual QPixmap * myIconPtr();
+	virtual void resizeEvent(QResizeEvent * e);
+	virtual QSize sizeHint() const;
+	virtual bool event(QEvent * e);
+	virtual void ownMessage(const char * text, bool bUserFeedback = true);
+	virtual void ownAction(const char * text);
+protected slots:
+	void handleMarshalError(int err);
+	void connected();
+};
 #endif
 
 #endif // _CANVAS_H_

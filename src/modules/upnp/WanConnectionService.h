@@ -40,20 +40,19 @@
 namespace UPnP
 {
 
-struct PortMapping
-{
-  QString  protocol;
-  QString  remoteHost;
-  int      externalPort;
-  QString  internalClient;
-  int      internalPort;
-  int      leaseDuration;
-  QString  description;
-  bool     enabled;
-};
+	struct PortMapping
+	{
+		QString protocol;
+		QString remoteHost;
+		int externalPort;
+		QString internalClient;
+		int internalPort;
+		int leaseDuration;
+		QString description;
+		bool enabled;
+	};
 
-
-/**
+	/**
  * The Wan(IP/PPP)Connection service controls the connection and port forwarding settings of a router.
  * The Layer3ForwardingService result either defines a WanIPConnection or WanPPPConnection service.
  * Which one is returned depends on the external connection type.
@@ -63,52 +62,47 @@ struct PortMapping
  * @author Diederik van der Boor
  * @ingroup NetworkUPnP
  */
-class WanConnectionService : public Service
-{
-public:  // public methods
+	class WanConnectionService : public Service
+	{
+	public: // public methods
+		// The constructor
+		WanConnectionService(const ServiceParameters & params);
+		// The destructor
+		virtual ~WanConnectionService();
 
-	// The constructor
-			    WanConnectionService(const ServiceParameters &params);
-	// The destructor
-	virtual             ~WanConnectionService();
+		// Add a port mapping
+		void addPortMapping(const QString & protocol, const QString & remoteHost, int externalPort,
+		    const QString & internalClient, int internalPort, const QString & description,
+		    bool enabled = true, int leaseDuration = 0);
+		// Delete a port mapping
+		void deletePortMapping(const QString & protocol, const QString & remoteHost, int externalPort);
 
-	// Add a port mapping
-	void                 addPortMapping(const QString &protocol, const QString &remoteHost, int externalPort,
-						const QString &internalClient, int internalPort, const QString &description,
-						bool enabled = true, int leaseDuration = 0);
-	// Delete a port mapping
-	void                 deletePortMapping(const QString &protocol, const QString &remoteHost, int externalPort);
+		// Return the external IP address
+		QString getExternalIpAddress() const;
+		// Return true if NAT is enabled
+		bool getNatEnabled() const;
+		// Return the port mappings
+		const KviPointerList<PortMapping> & getPortMappings() const;
 
-	// Return the external IP address
-	QString              getExternalIpAddress() const;
-	// Return true if NAT is enabled
-	bool                 getNatEnabled() const;
-	// Return the port mappings
-	const KviPointerList<PortMapping>& getPortMappings() const;
+		// Query for the external IP address
+		void queryExternalIpAddress();
+		// Query for the Nat status
+		void queryNatEnabled();
+		// Query for a port mapping entry
+		void queryPortMappingEntry(int index);
 
-	// Query for the external IP address
-	void                 queryExternalIpAddress();
-	// Query for the Nat status
-	void                 queryNatEnabled();
-	// Query for a port mapping entry
-	void                 queryPortMappingEntry(int index);
+	protected: // protected methods
+		// The control point received a response to callAction()
+		virtual void gotActionResponse(const QString & responseType, const QMap<QString, QString> & resultValues);
 
-
-protected:  // protected methods
-
-	// The control point received a response to callAction()
-	virtual void         gotActionResponse(const QString &responseType, const QMap<QString,QString> &resultValues);
-
-
-private:  // private attributes
-	// The external IP address
-	QString              m_szExternalIpAddress;
-	// True if NAT is enabled
-	bool                 m_bNatEnabled;
-	// The current port mappings
-	KviPointerList<PortMapping> m_lPortMappings;
-};
-
+	private: // private attributes
+		// The external IP address
+		QString m_szExternalIpAddress;
+		// True if NAT is enabled
+		bool m_bNatEnabled;
+		// The current port mappings
+		KviPointerList<PortMapping> m_lPortMappings;
+	};
 }
 
 #endif

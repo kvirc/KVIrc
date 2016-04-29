@@ -35,8 +35,6 @@
 #include <QMessageBox>
 #include <QLabel>
 
-
-
 // Tables used in $setAlignment & $alignment
 const char * const align_tbl[] = {
 	"Left",
@@ -60,7 +58,7 @@ const int align_cod[] = {
 	Qt::AlignJustify,
 };
 
-#define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
+#define align_num (sizeof(align_tbl) / sizeof(align_tbl[0]))
 
 // used in $frameStyle & $setFrameStyle
 const char * const frame_tbl[] = {
@@ -86,7 +84,7 @@ const int frame_cod[] = {
 	QFrame::Sunken
 };
 
-#define frame_num	(sizeof(frame_tbl) / sizeof(frame_tbl[0]))
+#define frame_num (sizeof(frame_tbl) / sizeof(frame_tbl[0]))
 
 /*
 	@doc:	label
@@ -175,29 +173,28 @@ const int frame_cod[] = {
 
 */
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_label,"label","widget")
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label,setText)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label,text)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label,margin)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label,setMargin)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label,alignment)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label,setAlignment)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label,clear)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label,frameStyle)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label,setFrameStyle)
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label,setImage)
+KVSO_BEGIN_REGISTERCLASS(KvsObject_label, "label", "widget")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label, setText)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label, text)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label, margin)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label, setMargin)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label, alignment)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label, setAlignment)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label, clear)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label, frameStyle)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label, setFrameStyle)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_label, setImage)
 KVSO_END_REGISTERCLASS(KvsObject_label)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_label,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_label, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_label)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_label)
 
 KVSO_END_CONSTRUCTOR(KvsObject_label)
 
-bool KvsObject_label::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_label::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QLabel)
 	((QLabel *)widget())->setWordWrap(true);
@@ -205,50 +202,50 @@ bool KvsObject_label::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(label,setText)
+KVSO_CLASS_FUNCTION(label, setText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
 	((QLabel *)widget())->setText(szText);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(label,text)
+KVSO_CLASS_FUNCTION(label, text)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setString(((QLabel *)widget())->text());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(label,setMargin)
+KVSO_CLASS_FUNCTION(label, setMargin)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iMargin;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("margin",KVS_PT_UNSIGNEDINTEGER,0,iMargin)
+	KVSO_PARAMETER("margin", KVS_PT_UNSIGNEDINTEGER, 0, iMargin)
 	KVSO_PARAMETERS_END(c)
 	((QLabel *)widget())->setMargin(iMargin);
 	return true;
 }
-KVSO_CLASS_FUNCTION(label,margin)
+KVSO_CLASS_FUNCTION(label, margin)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((QLabel *)widget())->margin());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(label,setAlignment)
+KVSO_CLASS_FUNCTION(label, setAlignment)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QStringList alignment;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("alignment",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,alignment)
+	KVSO_PARAMETER("alignment", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, alignment)
 	KVSO_PARAMETERS_END(c)
-	int align,sum=0;
-	for ( QStringList::Iterator it = alignment.begin(); it != alignment.end(); ++it )
+	int align, sum = 0;
+	for(QStringList::Iterator it = alignment.begin(); it != alignment.end(); ++it)
 	{
 
 		align = 0;
@@ -256,30 +253,29 @@ KVSO_CLASS_FUNCTION(label,setAlignment)
 		{
 			if(KviQString::equalCI((*it), align_tbl[j]))
 			{
-				align=align_cod[j];
+				align = align_cod[j];
 				break;
 			}
 		}
 		if(align)
 			sum = sum | align;
 		else
-			c->warning(__tr2qs_ctx("Unknown alignment '%Q'","objects"),&(*it));
-
+			c->warning(__tr2qs_ctx("Unknown alignment '%Q'", "objects"), &(*it));
 	}
 	((QLabel *)widget())->setAlignment((Qt::Alignment)sum);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(label,alignment)
+KVSO_CLASS_FUNCTION(label, alignment)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	int mode = ((QLabel *)widget())->alignment();
-	QString szAlignment="";
+	QString szAlignment = "";
 	for(unsigned int i = 0; i < align_num; i++)
 	{
 		if(mode == align_cod[i])
 		{
-			szAlignment=align_tbl[i];
+			szAlignment = align_tbl[i];
 			break;
 		}
 	}
@@ -287,53 +283,53 @@ KVSO_CLASS_FUNCTION(label,alignment)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(label,clear)
+KVSO_CLASS_FUNCTION(label, clear)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	((QLabel *)widget())->clear();
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(label,setFrameStyle)
+KVSO_CLASS_FUNCTION(label, setFrameStyle)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QStringList style;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("style",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,style)
+	KVSO_PARAMETER("style", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, style)
 	KVSO_PARAMETERS_END(c)
-	if (!widget()) return true;
-	int framestyle,sum=0;
-	for ( QStringList::Iterator it = style.begin(); it != style.end(); ++it )
+	if(!widget())
+		return true;
+	int framestyle, sum = 0;
+	for(QStringList::Iterator it = style.begin(); it != style.end(); ++it)
 	{
 		framestyle = 0;
 		for(unsigned int j = 0; j < align_num; j++)
 		{
 			if(KviQString::equalCI((*it), frame_tbl[j]))
 			{
-				framestyle=frame_cod[j];
+				framestyle = frame_cod[j];
 				break;
 			}
 		}
 		if(framestyle)
 			sum = sum | framestyle;
 		else
-			c->warning(__tr2qs_ctx("Unknown style '%Q'","objects"),&(*it));
-
+			c->warning(__tr2qs_ctx("Unknown style '%Q'", "objects"), &(*it));
 	}
 	((QLabel *)widget())->setFrameStyle(sum);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(label,frameStyle)
+KVSO_CLASS_FUNCTION(label, frameStyle)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	int mode = ((QLabel *)widget())->frameStyle();
-	QString szStyle="";
+	QString szStyle = "";
 	for(unsigned int i = 0; i < frame_num; i++)
 	{
 		if(mode == frame_cod[i])
 		{
-			szStyle=frame_tbl[i];
+			szStyle = frame_tbl[i];
 			break;
 		}
 	}
@@ -341,14 +337,15 @@ KVSO_CLASS_FUNCTION(label,frameStyle)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(label,setImage)
+KVSO_CLASS_FUNCTION(label, setImage)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString icon;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("icon",KVS_PT_STRING,0,icon)
+	KVSO_PARAMETER("icon", KVS_PT_STRING, 0, icon)
 	KVSO_PARAMETERS_END(c)
 	QPixmap * pix = g_pIconManager->getImage(icon);
-	if(pix) ((QLabel *)widget())->setPixmap(*pix);
+	if(pix)
+		((QLabel *)widget())->setPixmap(*pix);
 	return true;
 }

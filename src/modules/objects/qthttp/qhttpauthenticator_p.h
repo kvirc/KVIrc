@@ -67,82 +67,92 @@ class QUrl;
 class QHttpAuthenticator
 {
 public:
-    QHttpAuthenticator();
-    ~QHttpAuthenticator();
+	QHttpAuthenticator();
+	~QHttpAuthenticator();
 
-    QHttpAuthenticator(const QHttpAuthenticator &other);
-    QHttpAuthenticator &operator=(const QHttpAuthenticator &other);
+	QHttpAuthenticator(const QHttpAuthenticator & other);
+	QHttpAuthenticator & operator=(const QHttpAuthenticator & other);
 
-    bool operator==(const QHttpAuthenticator &other) const;
-    inline bool operator!=(const QHttpAuthenticator &other) const { return !operator==(other); }
+	bool operator==(const QHttpAuthenticator & other) const;
+	inline bool operator!=(const QHttpAuthenticator & other) const { return !operator==(other); }
 
-    QString user() const;
-    void setUser(const QString &user);
+	QString user() const;
+	void setUser(const QString & user);
 
-    QString password() const;
-    void setPassword(const QString &password);
+	QString password() const;
+	void setPassword(const QString & password);
 
-    QString realm() const;
+	QString realm() const;
 
-    QVariant option(const QString &opt) const;
-    QVariantHash options() const;
-    void setOption(const QString &opt, const QVariant &value);
+	QVariant option(const QString & opt) const;
+	QVariantHash options() const;
+	void setOption(const QString & opt, const QVariant & value);
 
-    bool isNull() const;
-    void detach();
+	bool isNull() const;
+	void detach();
 
-    QHttpAuthenticator &operator=(const QAuthenticator& auth);
-    QAuthenticator toQAuthenticator();
+	QHttpAuthenticator & operator=(const QAuthenticator & auth);
+	QAuthenticator toQAuthenticator();
+
 private:
-    friend class QHttpAuthenticatorPrivate;
-    QHttpAuthenticatorPrivate *d;
+	friend class QHttpAuthenticatorPrivate;
+	QHttpAuthenticatorPrivate * d;
 };
 
 class QHttpAuthenticatorPrivate
 {
 public:
-    enum Method { None, Basic, Plain, Login, Ntlm, CramMd5, DigestMd5 };
-    QHttpAuthenticatorPrivate();
+	enum Method
+	{
+		None,
+		Basic,
+		Plain,
+		Login,
+		Ntlm,
+		CramMd5,
+		DigestMd5
+	};
+	QHttpAuthenticatorPrivate();
 
-    QAtomicInt ref;
-    QString user;
-    QString extractedUser;
-    QString password;
-    QVariantHash options;
-    Method method;
-    QString realm;
-    QByteArray challenge;
-    bool hasFailed; //credentials have been tried but rejected by server.
+	QAtomicInt ref;
+	QString user;
+	QString extractedUser;
+	QString password;
+	QVariantHash options;
+	Method method;
+	QString realm;
+	QByteArray challenge;
+	bool hasFailed; //credentials have been tried but rejected by server.
 
-    enum Phase {
-        Start,
-        Phase2,
-        Done,
-        Invalid
-    };
-    Phase phase;
+	enum Phase
+	{
+		Start,
+		Phase2,
+		Done,
+		Invalid
+	};
+	Phase phase;
 
-    // digest specific
-    QByteArray cnonce;
-    int nonceCount;
+	// digest specific
+	QByteArray cnonce;
+	int nonceCount;
 
-    // ntlm specific
-    QString workstation;
-    QString userDomain;
+	// ntlm specific
+	QString workstation;
+	QString userDomain;
 
-    QByteArray calculateResponse(const QByteArray &method, const QByteArray &path);
+	QByteArray calculateResponse(const QByteArray & method, const QByteArray & path);
 
-    inline static QHttpAuthenticatorPrivate *getPrivate(QHttpAuthenticator &auth) { return auth.d; }
-    inline static const QHttpAuthenticatorPrivate *getPrivate(const QHttpAuthenticator &auth) { return auth.d; }
+	inline static QHttpAuthenticatorPrivate * getPrivate(QHttpAuthenticator & auth) { return auth.d; }
+	inline static const QHttpAuthenticatorPrivate * getPrivate(const QHttpAuthenticator & auth) { return auth.d; }
 
-    QByteArray digestMd5Response(const QByteArray &challenge, const QByteArray &method, const QByteArray &path);
-    static QHash<QByteArray, QByteArray> parseDigestAuthenticationChallenge(const QByteArray &challenge);
+	QByteArray digestMd5Response(const QByteArray & challenge, const QByteArray & method, const QByteArray & path);
+	static QHash<QByteArray, QByteArray> parseDigestAuthenticationChallenge(const QByteArray & challenge);
 
 #ifndef QT_NO_HTTP
-    void parseHttpResponse(const QHttpResponseHeader &, bool isProxy);
+	void parseHttpResponse(const QHttpResponseHeader &, bool isProxy);
 #endif
-    void parseHttpResponse(const QList<QPair<QByteArray, QByteArray> >&, bool isProxy);
-
+	void parseHttpResponse(const QList<QPair<QByteArray, QByteArray>> &, bool isProxy);
 };
 
 #endif

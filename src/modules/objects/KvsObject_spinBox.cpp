@@ -99,164 +99,154 @@
 		If you reimplement that function you will have to emit the signal manually (if you still need it).
 */
 
+KVSO_BEGIN_REGISTERCLASS(KvsObject_spinBox, "spinbox", "widget")
 
-KVSO_BEGIN_REGISTERCLASS(KvsObject_spinBox,"spinbox","widget")
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox, setValue);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox, setMinValue);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox, setMaxValue);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox, setLineStep);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox, setSpecialValueText);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox, value);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox, minValue);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox, maxValue);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox, lineStep);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox, specialValueText);
 
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox, setPrefix);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox, setSuffix);
 
-
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox,setValue);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox,setMinValue);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox,setMaxValue);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox,setLineStep);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox,setSpecialValueText);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox,value);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox,minValue);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox,maxValue);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox,lineStep);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox,specialValueText);
-
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox,setPrefix);
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox,setSuffix);
-
-
-	KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox,valueChangedEvent);
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_spinBox, valueChangedEvent);
 KVSO_END_REGISTERCLASS(KvsObject_spinBox)
 
-KVSO_BEGIN_CONSTRUCTOR(KvsObject_spinBox,KvsObject_widget)
+KVSO_BEGIN_CONSTRUCTOR(KvsObject_spinBox, KvsObject_widget)
 
 KVSO_END_CONSTRUCTOR(KvsObject_spinBox)
-
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_spinBox)
 
 KVSO_END_CONSTRUCTOR(KvsObject_spinBox)
 
-bool KvsObject_spinBox::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KvsObject_spinBox::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QSpinBox)
-	connect(widget(),SIGNAL(valueChanged(int)),this,SLOT(valueChanged(int)));
+	connect(widget(), SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));
 	return true;
 }
 
-
-
-KVSO_CLASS_FUNCTION(spinBox,setValue)
+KVSO_CLASS_FUNCTION(spinBox, setValue)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iValue;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("value",KVS_PT_INT,0,iValue)
+	KVSO_PARAMETER("value", KVS_PT_INT, 0, iValue)
 	KVSO_PARAMETERS_END(c)
 	((QSpinBox *)widget())->setValue(iValue);
 	return true;
 }
-KVSO_CLASS_FUNCTION(spinBox,setMinValue)
+KVSO_CLASS_FUNCTION(spinBox, setMinValue)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iMinvalue;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("min_value",KVS_PT_INT,0,iMinvalue)
+	KVSO_PARAMETER("min_value", KVS_PT_INT, 0, iMinvalue)
 	KVSO_PARAMETERS_END(c)
 	((QSpinBox *)widget())->setMinimum(iMinvalue);
 	return true;
 }
-KVSO_CLASS_FUNCTION(spinBox,setMaxValue)
+KVSO_CLASS_FUNCTION(spinBox, setMaxValue)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iMaxvalue;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("max_value",KVS_PT_INT,0,iMaxvalue)
+	KVSO_PARAMETER("max_value", KVS_PT_INT, 0, iMaxvalue)
 	KVSO_PARAMETERS_END(c)
 	((QSpinBox *)widget())->setMaximum(iMaxvalue);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(spinBox,setLineStep)
+KVSO_CLASS_FUNCTION(spinBox, setLineStep)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iLinestep;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("line_step",KVS_PT_INT,0,iLinestep)
+	KVSO_PARAMETER("line_step", KVS_PT_INT, 0, iLinestep)
 	KVSO_PARAMETERS_END(c)
 	((QSpinBox *)widget())->setSingleStep(iLinestep);
 	return true;
 }
 
-
-KVSO_CLASS_FUNCTION(spinBox,value)
+KVSO_CLASS_FUNCTION(spinBox, value)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((QSpinBox *)widget())->value());
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(spinBox,minValue)
+KVSO_CLASS_FUNCTION(spinBox, minValue)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((QSpinBox *)widget())->minimum());
 	return true;
 }
-KVSO_CLASS_FUNCTION(spinBox,maxValue)
+KVSO_CLASS_FUNCTION(spinBox, maxValue)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((QSpinBox *)widget())->maximum());
 	return true;
 }
-KVSO_CLASS_FUNCTION(spinBox,lineStep)
+KVSO_CLASS_FUNCTION(spinBox, lineStep)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((QSpinBox *)widget())->singleStep());
 	return true;
 }
 
-
-KVSO_CLASS_FUNCTION(spinBox,specialValueText)
+KVSO_CLASS_FUNCTION(spinBox, specialValueText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setString(((QSpinBox *)widget())->specialValueText());
 	return true;
 }
 
-
-KVSO_CLASS_FUNCTION(spinBox,setSpecialValueText)
+KVSO_CLASS_FUNCTION(spinBox, setSpecialValueText)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
 	KVSO_PARAMETERS_END(c)
 	((QSpinBox *)widget())->setSpecialValueText(szText);
 	return true;
 }
-KVSO_CLASS_FUNCTION(spinBox,setPrefix)
+KVSO_CLASS_FUNCTION(spinBox, setPrefix)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szPrefix;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szPrefix)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szPrefix)
 	KVSO_PARAMETERS_END(c)
 	((QSpinBox *)widget())->setPrefix(szPrefix);
 	return true;
 }
-KVSO_CLASS_FUNCTION(spinBox,setSuffix)
+KVSO_CLASS_FUNCTION(spinBox, setSuffix)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	QString szSuffix;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szSuffix)
+	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szSuffix)
 	KVSO_PARAMETERS_END(c)
 	((QSpinBox *)widget())->setSuffix(szSuffix);
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(spinBox,valueChangedEvent)
+KVSO_CLASS_FUNCTION(spinBox, valueChangedEvent)
 {
-	emitSignal("valueChanged",c,c->params());
+	emitSignal("valueChanged", c, c->params());
 	return true;
 }
 
 void KvsObject_spinBox::valueChanged(int value)
 {
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)value));
-	callFunction(this,"valueChangedEvent",&params);
+	callFunction(this, "valueChangedEvent", &params);
 }

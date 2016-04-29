@@ -27,7 +27,7 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeSpecialCommandContinue::KviKvsTreeNodeSpecialCommandContinue(const QChar * pLocation)
-: KviKvsTreeNodeSpecialCommand(pLocation,"continue")
+    : KviKvsTreeNodeSpecialCommand(pLocation, "continue")
 {
 }
 
@@ -35,14 +35,14 @@ KviKvsTreeNodeSpecialCommandContinue::~KviKvsTreeNodeSpecialCommandContinue()
 {
 }
 
-void KviKvsTreeNodeSpecialCommandContinue::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeSpecialCommandContinue::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Special Command \"continue\"";
 }
 
 void KviKvsTreeNodeSpecialCommandContinue::dump(const char * prefix)
 {
-	qDebug("%s SpecialCommandContinue",prefix);
+	qDebug("%s SpecialCommandContinue", prefix);
 }
 
 bool KviKvsTreeNodeSpecialCommandContinue::execute(KviKvsRunTimeContext * c)

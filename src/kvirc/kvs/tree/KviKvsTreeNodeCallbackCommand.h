@@ -34,15 +34,16 @@ class KviKvsScript;
 class KVIRC_API KviKvsTreeNodeCallbackCommand : public KviKvsTreeNodeCommandWithParameters
 {
 public:
-	KviKvsTreeNodeCallbackCommand(const QChar * pLocation,const QString &szCmdName,KviKvsTreeNodeDataList * params,KviKvsScript * pCallback);
+	KviKvsTreeNodeCallbackCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params, KviKvsScript * pCallback);
 	~KviKvsTreeNodeCallbackCommand();
+
 protected:
 	KviKvsScript * m_pCallback;
+
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	void dumpCallback(const char * prefix);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_CALLBACKCOMMAND_H_

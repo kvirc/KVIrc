@@ -22,39 +22,38 @@
 //
 //=============================================================================
 
-
 #include "KviHeapObject.h"
 #include "KviMemory.h"
 
 #ifdef COMPILE_ON_WINDOWS
-	void * KviHeapObject::operator new(size_t uSize)
-	{
-		return KviMemory::allocate(uSize);
-	}
+void * KviHeapObject::operator new(size_t uSize)
+{
+	return KviMemory::allocate(uSize);
+}
 
-	void KviHeapObject::operator delete(void * pData)
-	{
-		KviMemory::free(pData);
-	}
+void KviHeapObject::operator delete(void * pData)
+{
+	KviMemory::free(pData);
+}
 
-	void * KviHeapObject::operator new[](size_t uSize)
-	{
-		return KviMemory::allocate(uSize);
-	}
+void * KviHeapObject::operator new[](size_t uSize)
+{
+	return KviMemory::allocate(uSize);
+}
 
-	void KviHeapObject::operator delete[](void * pData)
-	{
-		KviMemory::free(pData);
-	}
+void KviHeapObject::operator delete[](void * pData)
+{
+	KviMemory::free(pData);
+}
 
-	// these are the debug versions...
-	void * KviHeapObject::operator new(size_t uSize,const char *,int)
-	{
-		return KviMemory::allocate(uSize);
-	}
+// these are the debug versions...
+void * KviHeapObject::operator new(size_t uSize, const char *, int)
+{
+	return KviMemory::allocate(uSize);
+}
 
-	void KviHeapObject::operator delete(void * pData,const char *,int)
-	{
-		KviMemory::free(pData);
-	}
+void KviHeapObject::operator delete(void * pData, const char *, int)
+{
+	KviMemory::free(pData);
+}
 #endif

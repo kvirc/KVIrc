@@ -34,10 +34,11 @@ class KvsObject_xmlReader : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_xmlReader)
 public:
-	bool parse(KviKvsObjectFunctionCall *c);
-	bool lastError(KviKvsObjectFunctionCall *c);
+	bool parse(KviKvsObjectFunctionCall * c);
+	bool lastError(KviKvsObjectFunctionCall * c);
 
-	void fatalError(const QString &szError);
+	void fatalError(const QString & szError);
+
 protected:
 	QString m_szLastError;
 };

@@ -39,11 +39,10 @@
 #include <QCloseEvent>
 #include <QIcon>
 
-
 extern OptionsInstanceManager * g_pOptionsInstanceManager;
 
-OptionsWidgetContainer::OptionsWidgetContainer(QWidget * par,bool bModal)
-: QDialog(par)
+OptionsWidgetContainer::OptionsWidgetContainer(QWidget * par, bool bModal)
+    : QDialog(par)
 {
 	m_pLayout = new QGridLayout(this);
 
@@ -65,14 +64,14 @@ void OptionsWidgetContainer::setLeftCornerWidget(QWidget * pWidget)
 {
 	if(!pWidget)
 		return;
-	m_pLayout->addWidget(pWidget,1,0);
+	m_pLayout->addWidget(pWidget, 1, 0);
 }
 
 void OptionsWidgetContainer::setNextToLeft(QWidget * pWidget)
 {
 	if(!pWidget)
 		return;
-	m_pLayout->addWidget(pWidget,2,0);
+	m_pLayout->addWidget(pWidget, 2, 0);
 }
 
 void OptionsWidgetContainer::optionsWidgetDestroyed()
@@ -89,7 +88,7 @@ void OptionsWidgetContainer::childEvent(QChildEvent * e)
 	{
 		if(e->child() == static_cast<QObject *>(m_pOptionsWidget))
 		{
-			QObject::disconnect(m_pOptionsWidget,SIGNAL(destroyed()),this,SLOT(optionsWidgetDestroyed()));
+			QObject::disconnect(m_pOptionsWidget, SIGNAL(destroyed()), this, SLOT(optionsWidgetDestroyed()));
 			m_pOptionsWidget = NULL;
 		}
 	}
@@ -100,28 +99,27 @@ void OptionsWidgetContainer::childEvent(QChildEvent * e)
 void OptionsWidgetContainer::setup(KviOptionsWidget * w)
 {
 	if(m_pOptionsWidget)
-		QObject::disconnect(m_pOptionsWidget,SIGNAL(destroyed()),this,SLOT(optionsWidgetDestroyed()));
+		QObject::disconnect(m_pOptionsWidget, SIGNAL(destroyed()), this, SLOT(optionsWidgetDestroyed()));
 
-	m_pLayout->addWidget(w,0,0,1,3);
+	m_pLayout->addWidget(w, 0, 0, 1, 3);
 	//g->addMultiCellWidget(w,0,0,0,2);
 
-	QPushButton * b = new QPushButton(__tr2qs_ctx("&OK","options"),this);
-	KviTalToolTip::add(b,__tr2qs_ctx("Close this dialog, accepting all changes.","options"));
+	QPushButton * b = new QPushButton(__tr2qs_ctx("&OK", "options"), this);
+	KviTalToolTip::add(b, __tr2qs_ctx("Close this dialog, accepting all changes.", "options"));
 	//b->setMinimumWidth(m_pCancel->sizeHint().width());
-	m_pLayout->addWidget(b,1,1);
+	m_pLayout->addWidget(b, 1, 1);
 	b->setDefault(true);
-	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
+	connect(b, SIGNAL(clicked()), this, SLOT(okClicked()));
 	b->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Accept)));
 
-	m_pCancel = new QPushButton(__tr2qs_ctx("Cancel","options"),this);
-	KviTalToolTip::add(m_pCancel,__tr2qs_ctx("Close this dialog, discarding all changes.","options"));
-	m_pLayout->addWidget(m_pCancel,1,2);
-	connect(m_pCancel,SIGNAL(clicked()),this,SLOT(cancelClicked()));
+	m_pCancel = new QPushButton(__tr2qs_ctx("Cancel", "options"), this);
+	KviTalToolTip::add(m_pCancel, __tr2qs_ctx("Close this dialog, discarding all changes.", "options"));
+	m_pLayout->addWidget(m_pCancel, 1, 2);
+	connect(m_pCancel, SIGNAL(clicked()), this, SLOT(cancelClicked()));
 	m_pCancel->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)));
 
-
-	m_pLayout->setRowStretch(0,1);
-	m_pLayout->setColumnStretch(0,1);
+	m_pLayout->setRowStretch(0, 1);
+	m_pLayout->setColumnStretch(0, 1);
 
 	OptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(w->metaObject()->className());
 	if(e)
@@ -133,21 +131,21 @@ void OptionsWidgetContainer::setup(KviOptionsWidget * w)
 	m_pOptionsWidget = w;
 
 	if(m_pOptionsWidget)
-		QObject::connect(m_pOptionsWidget,SIGNAL(destroyed()),this,SLOT(optionsWidgetDestroyed()));
+		QObject::connect(m_pOptionsWidget, SIGNAL(destroyed()), this, SLOT(optionsWidgetDestroyed()));
 }
 
-void OptionsWidgetContainer::closeEvent(QCloseEvent *e)
+void OptionsWidgetContainer::closeEvent(QCloseEvent * e)
 {
 	e->ignore();
 	cancelClicked();
 }
 
-void OptionsWidgetContainer::showEvent(QShowEvent *e)
+void OptionsWidgetContainer::showEvent(QShowEvent * e)
 {
 	if(!parent())
 	{
 		QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
-		move(rect.x() + ((rect.width() - width())/2),rect.y() + ((rect.height() - height())/2));
+		move(rect.x() + ((rect.width() - width()) / 2), rect.y() + ((rect.height() - height()) / 2));
 	}
 
 	QWidget::showEvent(e);

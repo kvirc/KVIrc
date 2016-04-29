@@ -29,7 +29,6 @@
 
 #include <QComboBox>
 
-
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_inputLook KviIconManager::Input
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_inputLook __tr2qs_no_lookup("Input")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_inputLook __tr2qs_no_lookup("theme,colors,text")
@@ -39,8 +38,9 @@ class OptionsWidget_inputLook : public KviOptionsWidget
 {
 	Q_OBJECT
 private:
-	QComboBox* m_pHorizontalAlign;
-	QComboBox* m_pVerticalAlign;
+	QComboBox * m_pHorizontalAlign;
+	QComboBox * m_pVerticalAlign;
+
 public:
 	OptionsWidget_inputLook(QWidget * parent);
 	~OptionsWidget_inputLook();

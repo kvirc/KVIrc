@@ -42,102 +42,102 @@
 
 class SetupWizard;
 
-
 class SetupPage : public QWidget
 {
 	Q_OBJECT
 public:
 	SetupPage(SetupWizard * w);
 	~SetupPage();
+
 public:
 	KviTalVBox * m_pVBox;
 	QLabel * m_pPixmapLabel;
 	QLabel * m_pTextLabel;
 };
 
-
 #define THEME_APPLY_NONE 0
 #define THEME_APPLY_HIRES 1
 #define THEME_APPLY_LORES 2
 
-class SetupWizard : public  KviTalWizard
+class SetupWizard : public KviTalWizard
 {
 	Q_OBJECT
 public:
 	SetupWizard();
 	~SetupWizard();
-public:
-	QPixmap       * m_pLabelPixmap;
 
-	SetupPage  * m_pWelcome;
-	SetupPage  * m_pLicense;
-	SetupPage  * m_pDirectory;
-	SetupPage  * m_pIdentity;
-	SetupPage  * m_pTheme;
-	SetupPage  * m_pDesktopIntegration;
-	SetupPage  * m_pServers;
+public:
+	QPixmap * m_pLabelPixmap;
+
+	SetupPage * m_pWelcome;
+	SetupPage * m_pLicense;
+	SetupPage * m_pDirectory;
+	SetupPage * m_pIdentity;
+	SetupPage * m_pTheme;
+	SetupPage * m_pDesktopIntegration;
+	SetupPage * m_pServers;
 
 	// Theme
-	QGroupBox  * m_pThemeButtonGroup;
+	QGroupBox * m_pThemeButtonGroup;
 
-	QRadioButton  * m_pThemeHiRes;
-	QRadioButton  * m_pThemeLoRes;
-	QRadioButton  * m_pThemeNone;
+	QRadioButton * m_pThemeHiRes;
+	QRadioButton * m_pThemeLoRes;
+	QRadioButton * m_pThemeNone;
 
 	// Welcome
-	QCheckBox     * m_pCreateUrlHandlers;
-	QCheckBox     * m_pCreateDesktopShortcut;
+	QCheckBox * m_pCreateUrlHandlers;
+	QCheckBox * m_pCreateDesktopShortcut;
 
 	//Dir
-	QLineEdit     * m_pDataPathEdit;
-	QLineEdit     * m_pIncomingPathEdit;
+	QLineEdit * m_pDataPathEdit;
+	QLineEdit * m_pIncomingPathEdit;
 	KviTalGroupBox * m_pDirButtonGroup;
-	QRadioButton  * m_pDirUsePrev;
-	QRadioButton  * m_pDirUseNew;
+	QRadioButton * m_pDirUsePrev;
+	QRadioButton * m_pDirUseNew;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	QRadioButton  * m_pDirMakePortable;
+	QRadioButton * m_pDirMakePortable;
 #endif
 	//QRadioButton  * m_pDirRestore;
-	QLineEdit     * m_pOldDataPathEdit;
-	KviTalHBox         * m_pOldPathBox;
-	KviTalHBox         * m_pNewPathBox;
-	KviTalHBox         * m_pNewIncomingBox;
+	QLineEdit * m_pOldDataPathEdit;
+	KviTalHBox * m_pOldPathBox;
+	KviTalHBox * m_pNewPathBox;
+	KviTalHBox * m_pNewIncomingBox;
 
 	//Identify
-	QComboBox        * m_pAgeCombo;
-	QComboBox        * m_pGenderCombo;
+	QComboBox * m_pAgeCombo;
+	QComboBox * m_pGenderCombo;
 
 	KviStringSelector * m_pNickSelector;
 	KviStringSelector * m_pRealNameSelector;
 	KviStringSelector * m_pLocationSelector;
 	KviStringSelector * m_pLanguagesSelector;
-	//KviStringSelector * m_pOtherInfoSelector;
+//KviStringSelector * m_pOtherInfoSelector;
 
-	//Servers
-	//KviTalGroupBox * m_pServersButtonGroup;
-	//QRadioButton  * m_pServersChooseFromList;
-	//QRadioButton  * m_pServersSpecifyManually;
-	//QRadioButton  * m_pServersOpenIrcUrl;
-	//QRadioButton  * m_pServersLoadConfig;
+//Servers
+//KviTalGroupBox * m_pServersButtonGroup;
+//QRadioButton  * m_pServersChooseFromList;
+//QRadioButton  * m_pServersSpecifyManually;
+//QRadioButton  * m_pServersOpenIrcUrl;
+//QRadioButton  * m_pServersLoadConfig;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	QString         m_szMircServerIniFile;
-	QCheckBox  * m_pUseMircServerList;
+	QString m_szMircServerIniFile;
+	QCheckBox * m_pUseMircServerList;
 #endif
 
-	QString		    m_szServerConfigFile;
-	QString		    m_szServerUrl;
-	QString		    m_szServerHost;
-	unsigned int        m_uServerPort;
+	QString m_szServerConfigFile;
+	QString m_szServerUrl;
+	QString m_szServerHost;
+	unsigned int m_uServerPort;
 
 	KviStringSelector * m_pServerHostSelector;
 	KviStringSelector * m_pServerUrlSelector;
 	//KviFileSelector   * m_pServerConfigSelector;
-	KviUIntSelector   *m_pServerPortSelector;
+	KviUIntSelector * m_pServerPortSelector;
 
 protected:
 	void makeLink();
 	void setUrlHandlers();
-	virtual void showEvent(QShowEvent *e);
+	virtual void showEvent(QShowEvent * e);
 	void enableOrDisableIdentityPageNextButton();
 public slots:
 	void chooseOldDataPath();
@@ -150,11 +150,10 @@ public slots:
 	void newDirClicked();
 	void portableClicked();
 
-	void nickSelectorTextChanged(const QString & );
-	void oldDataTextChanged(const QString & );
-	void newDataTextChanged(const QString & );
-	void newIncomingTextChanged(const QString & );
+	void nickSelectorTextChanged(const QString &);
+	void oldDataTextChanged(const QString &);
+	void newDataTextChanged(const QString &);
+	void newIncomingTextChanged(const QString &);
 };
-
 
 #endif //_SETUPWIZARD_H_

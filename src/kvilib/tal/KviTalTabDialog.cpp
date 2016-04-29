@@ -30,18 +30,18 @@
 #include <QGridLayout>
 #include <QPushButton>
 
-KviTalTabDialog::KviTalTabDialog(QWidget * pParent,const char * name,bool bModal)
-: QDialog(pParent)
+KviTalTabDialog::KviTalTabDialog(QWidget * pParent, const char * name, bool bModal)
+    : QDialog(pParent)
 {
 	setObjectName(name);
 	setModal(bModal);
 
 	m_pLayout = new QGridLayout(this);
-	m_pLayout->setColumnStretch(0,10);
+	m_pLayout->setColumnStretch(0, 10);
 	setLayout(m_pLayout);
 
 	m_pTabWidget = new QTabWidget(this);
-	m_pLayout->addWidget(m_pTabWidget,0,0,1,3);
+	m_pLayout->addWidget(m_pTabWidget, 0, 0, 1, 3);
 }
 
 KviTalTabDialog::~KviTalTabDialog()
@@ -50,21 +50,21 @@ KviTalTabDialog::~KviTalTabDialog()
 
 void KviTalTabDialog::addTab(QWidget * widget, const QString & label)
 {
-	m_pTabWidget->addTab(widget,label);
+	m_pTabWidget->addTab(widget, label);
 }
 
 void KviTalTabDialog::setOkButton(const QString & text)
 {
-	QPushButton * pBtnOk = new QPushButton(text,this);
-	m_pLayout->addWidget(pBtnOk,1,1);
-	connect(pBtnOk,SIGNAL(clicked()),this,SLOT(okPressed()));
+	QPushButton * pBtnOk = new QPushButton(text, this);
+	m_pLayout->addWidget(pBtnOk, 1, 1);
+	connect(pBtnOk, SIGNAL(clicked()), this, SLOT(okPressed()));
 }
 
 void KviTalTabDialog::setCancelButton(const QString & text)
 {
-	QPushButton * pBtnCancel = new QPushButton(text,this);
-	m_pLayout->addWidget(pBtnCancel,1,2);
-	connect(pBtnCancel,SIGNAL(clicked()),this,SLOT(cancelPressed()));
+	QPushButton * pBtnCancel = new QPushButton(text, this);
+	m_pLayout->addWidget(pBtnCancel, 1, 2);
+	connect(pBtnCancel, SIGNAL(clicked()), this, SLOT(cancelPressed()));
 }
 
 void KviTalTabDialog::okPressed()
@@ -76,5 +76,3 @@ void KviTalTabDialog::cancelPressed()
 {
 	emit cancelButtonPressed();
 }
-
-

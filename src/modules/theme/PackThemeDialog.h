@@ -48,20 +48,21 @@ class PackThemeDialog : public QWizard
 public:
 	PackThemeDialog(QWidget * pParent, KviPointerList<KviThemeInfo> * pThemeInfoList);
 	~PackThemeDialog();
+
 protected:
-	PackThemeDataWidget       * m_pPackThemeDataWidget;
-	PackThemeInfoWidget       * m_pPackThemeInfoWidget;
-	PackThemeImageWidget      * m_pPackThemeImageWidget;
-	PackThemeSaveWidget       * m_pPackThemeSaveWidget;
+	PackThemeDataWidget * m_pPackThemeDataWidget;
+	PackThemeInfoWidget * m_pPackThemeInfoWidget;
+	PackThemeImageWidget * m_pPackThemeImageWidget;
+	PackThemeSaveWidget * m_pPackThemeSaveWidget;
 	KviPointerList<KviThemeInfo> * m_pThemeInfoList;
 
-	QString                        m_szAuthor;
-	QString                        m_szName;
-	QString                        m_szVersion;
-	QString                        m_szDescription;
-	QString                        m_szImagePath;
-	QString                        m_szPackagePath;
-	QString                        m_szSavePath;
+	QString m_szAuthor;
+	QString m_szName;
+	QString m_szVersion;
+	QString m_szDescription;
+	QString m_szImagePath;
+	QString m_szPackagePath;
+	QString m_szSavePath;
 
 	//QWidget                      * m_pImageSelectionPage;
 protected:
@@ -75,6 +76,7 @@ class PackThemeDataWidget : public QWizardPage
 public:
 	PackThemeDataWidget(PackThemeDialog * pParent);
 	~PackThemeDataWidget();
+
 public:
 	void parseThemes(KviPointerList<KviThemeInfo> * pThemeInfoList);
 };
@@ -85,11 +87,13 @@ class PackThemeInfoWidget : public QWizardPage
 public:
 	PackThemeInfoWidget(PackThemeDialog * pParent);
 	~PackThemeInfoWidget();
+
 public:
 	QLineEdit * m_pPackageNameEdit;
 	QTextEdit * m_pPackageDescriptionEdit;
 	QLineEdit * m_pPackageVersionEdit;
 	QLineEdit * m_pPackageAuthorEdit;
+
 protected:
 	virtual void initializePage();
 };
@@ -100,10 +104,11 @@ class PackThemeImageWidget : public QWizardPage
 public:
 	PackThemeImageWidget(PackThemeDialog * pParent);
 	~PackThemeImageWidget();
+
 protected:
 	KviFileSelector * m_pImageSelector;
-	QLabel          * m_pImageLabel;
-	QString           m_szImagePath;
+	QLabel * m_pImageLabel;
+	QString m_szImagePath;
 protected slots:
 	void imageSelectionChanged(const QString & szImagePath);
 };
@@ -114,9 +119,11 @@ class PackThemeSaveWidget : public QWizardPage
 public:
 	PackThemeSaveWidget(PackThemeDialog * pParent);
 	~PackThemeSaveWidget();
+
 protected:
 	KviFileSelector * m_pSavePathSelector;
-	QString           m_szPackagePath;
+	QString m_szPackagePath;
+
 protected:
 	virtual void initializePage();
 };

@@ -42,19 +42,32 @@ class MenuTreeWidgetItem;
 class PopupTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	enum Type { Item, Menu, Separator, Label, Epilogue, Prologue, ExtMenu };
+	enum Type
+	{
+		Item,
+		Menu,
+		Separator,
+		Label,
+		Epilogue,
+		Prologue,
+		ExtMenu
+	};
+
 public:
-	PopupTreeWidgetItem(QTreeWidget * pTreeWidget,PopupTreeWidgetItem * after,Type t);
-	PopupTreeWidgetItem(PopupTreeWidgetItem * parent,PopupTreeWidgetItem * after,Type t);
+	PopupTreeWidgetItem(QTreeWidget * pTreeWidget, PopupTreeWidgetItem * after, Type t);
+	PopupTreeWidgetItem(PopupTreeWidgetItem * parent, PopupTreeWidgetItem * after, Type t);
+
 public:
-	Type                   m_type;
-	QString                m_szText;
-	QString                m_szCondition;
-	QString                m_szIcon;
-	QString                m_szCode;
-	QString                m_szId;
+	Type m_type;
+	QString m_szText;
+	QString m_szCondition;
+	QString m_szIcon;
+	QString m_szCode;
+	QString m_szId;
+
 private:
 	void init();
+
 public:
 	void setItemText(const QString & szText);
 	void setCondition(const QString & szCondition);
@@ -63,43 +76,45 @@ public:
 	void setId(const QString & szId);
 };
 
-
 class SinglePopupEditor : public QWidget
 {
 	Q_OBJECT
 public:
 	SinglePopupEditor(QWidget * par);
 	~SinglePopupEditor();
+
 protected:
-	QPushButton           * m_pMenuButton;
-	KviKvsPopupMenu       * m_pClipboard;
-	KviKvsPopupMenu	      * m_pTestPopup;
-	PopupTreeWidgetItem   * m_pLastSelectedItem;
-	QTreeWidget           * m_pTreeWidget;
-	QLineEdit             * m_pNameEditor;
-	KviScriptEditor       * m_pEditor;
-	QLineEdit             * m_pTextEditor;
-	QLineEdit             * m_pIdEditor;
-	QLineEdit             * m_pIconEditor;
-	QLineEdit             * m_pConditionEditor;
-	QLineEdit             * m_pExtNameEditor;
-	QMenu                 * m_pContextPopup;
+	QPushButton * m_pMenuButton;
+	KviKvsPopupMenu * m_pClipboard;
+	KviKvsPopupMenu * m_pTestPopup;
+	PopupTreeWidgetItem * m_pLastSelectedItem;
+	QTreeWidget * m_pTreeWidget;
+	QLineEdit * m_pNameEditor;
+	KviScriptEditor * m_pEditor;
+	QLineEdit * m_pTextEditor;
+	QLineEdit * m_pIdEditor;
+	QLineEdit * m_pIconEditor;
+	QLineEdit * m_pConditionEditor;
+	QLineEdit * m_pExtNameEditor;
+	QMenu * m_pContextPopup;
+
 public:
 	void edit(MenuTreeWidgetItem * it);
 	KviKvsPopupMenu * getMenu();
+
 protected:
 	// theItem is the item above the first item that has to be inserted
-	void populateMenu(KviKvsPopupMenu * pop,PopupTreeWidgetItem * par,PopupTreeWidgetItem * theItem = 0);
+	void populateMenu(KviKvsPopupMenu * pop, PopupTreeWidgetItem * par, PopupTreeWidgetItem * theItem = 0);
 	void saveLastSelectedItem();
-	void addItemToMenu(KviKvsPopupMenu * pop,PopupTreeWidgetItem * par);
-	PopupTreeWidgetItem * newItem(PopupTreeWidgetItem * par,PopupTreeWidgetItem * after,PopupTreeWidgetItem::Type t);
-	PopupTreeWidgetItem * newItemBelow(PopupTreeWidgetItem * it,PopupTreeWidgetItem::Type t);
-	PopupTreeWidgetItem * newItemAbove(PopupTreeWidgetItem * it,PopupTreeWidgetItem::Type t);
-	PopupTreeWidgetItem * newItemInside(PopupTreeWidgetItem * it,PopupTreeWidgetItem::Type t);
+	void addItemToMenu(KviKvsPopupMenu * pop, PopupTreeWidgetItem * par);
+	PopupTreeWidgetItem * newItem(PopupTreeWidgetItem * par, PopupTreeWidgetItem * after, PopupTreeWidgetItem::Type t);
+	PopupTreeWidgetItem * newItemBelow(PopupTreeWidgetItem * it, PopupTreeWidgetItem::Type t);
+	PopupTreeWidgetItem * newItemAbove(PopupTreeWidgetItem * it, PopupTreeWidgetItem::Type t);
+	PopupTreeWidgetItem * newItemInside(PopupTreeWidgetItem * it, PopupTreeWidgetItem::Type t);
 	void createNewItemAboveLastSelected(PopupTreeWidgetItem::Type t);
 	void createNewItemBelowLastSelected(PopupTreeWidgetItem::Type t);
 	void createNewItemInsideLastSelected(PopupTreeWidgetItem::Type t);
-	PopupTreeWidgetItem * findMatchingItem(KviKvsPopupMenuItem * it,PopupTreeWidgetItem * item);
+	PopupTreeWidgetItem * findMatchingItem(KviKvsPopupMenuItem * it, PopupTreeWidgetItem * item);
 protected slots:
 	void contextCut();
 	void contextCopy();
@@ -125,26 +140,25 @@ protected slots:
 	void contextNewPrologue();
 	void contextNewEpilogue();
 	void selectionChanged();
-	void customContextMenuRequested(const QPoint &pnt);
+	void customContextMenuRequested(const QPoint & pnt);
 	void testPopup();
 	void testModeMenuItemClicked(KviKvsPopupMenuItem * it);
 };
 
-
-
 class MenuTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	MenuTreeWidgetItem(QTreeWidget * par,KviKvsPopupMenu * popup);
+	MenuTreeWidgetItem(QTreeWidget * par, KviKvsPopupMenu * popup);
 	~MenuTreeWidgetItem();
+
 public:
 	KviKvsPopupMenu * m_pPopup;
+
 public:
-	KviKvsPopupMenu * popup(){ return m_pPopup; };
+	KviKvsPopupMenu * popup() { return m_pPopup; };
 public:
 	void replacePopup(KviKvsPopupMenu * popup);
 };
-
 
 class PopupEditorWidget : public QWidget
 {
@@ -152,36 +166,38 @@ class PopupEditorWidget : public QWidget
 public:
 	PopupEditorWidget(QWidget * par);
 	~PopupEditorWidget();
+
 public:
-	SinglePopupEditor       * m_pEditor;
-	QTreeWidget             * m_pTreeWidget;
-	MenuTreeWidgetItem      * m_pLastEditedItem;
-	bool                      m_bOneTimeSetupDone;
-	QMenu                   * m_pContextPopup;
-	QMenu                   * m_pEmptyContextPopup;
-	bool                      m_bSaving;
+	SinglePopupEditor * m_pEditor;
+	QTreeWidget * m_pTreeWidget;
+	MenuTreeWidgetItem * m_pLastEditedItem;
+	bool m_bOneTimeSetupDone;
+	QMenu * m_pContextPopup;
+	QMenu * m_pEmptyContextPopup;
+	bool m_bSaving;
+
 public:
 	void commit();
 	void exportPopups(bool);
 protected slots:
-	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev);
-	void customContextMenuRequested(const QPoint &pnt);
+	void currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem * prev);
+	void customContextMenuRequested(const QPoint & pnt);
 	void newPopup();
 	void exportAll();
 	void exportSelected();
 	void exportCurrentPopup();
 	void removeCurrentPopup();
-	void popupRefresh(const QString &szName);
+	void popupRefresh(const QString & szName);
+
 protected:
-	void showEvent(QShowEvent *e);
-	void getExportPopupBuffer(QString &buffer,MenuTreeWidgetItem * it);
+	void showEvent(QShowEvent * e);
+	void getExportPopupBuffer(QString & buffer, MenuTreeWidgetItem * it);
+
 private:
 	void oneTimeSetup();
 	void saveLastEditedItem();
-	void getUniquePopupName(MenuTreeWidgetItem * it,QString &buffer);
+	void getUniquePopupName(MenuTreeWidgetItem * it, QString & buffer);
 };
-
-
 
 class PopupEditorWindow : public KviWindow
 {
@@ -189,12 +205,14 @@ class PopupEditorWindow : public KviWindow
 public:
 	PopupEditorWindow();
 	~PopupEditorWindow();
+
 protected:
 	PopupEditorWidget * m_pEditor;
+
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
-	virtual void getConfigGroupName(QString &szName);
+	virtual void getConfigGroupName(QString & szName);
 	virtual void saveProperties(KviConfigurationFile *);
 	virtual void loadProperties(KviConfigurationFile *);
 protected slots:

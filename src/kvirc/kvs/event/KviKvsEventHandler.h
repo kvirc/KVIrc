@@ -33,56 +33,64 @@
 class KVIRC_API KviKvsEventHandler : public KviHeapObject
 {
 public:
-	enum Type { Script, Module };
+	enum Type
+	{
+		Script,
+		Module
+	};
+
 protected:
 	Type m_type;
+
 public:
 	KviKvsEventHandler(Type t);
 	virtual ~KviKvsEventHandler();
-public:
-	Type type(){ return m_type; };
-};
 
+public:
+	Type type() { return m_type; };
+};
 
 class KVIRC_API KviKvsScriptEventHandler : public KviKvsEventHandler
 {
 public:
 	// the event handler becomes the owned of pszCode!
-	KviKvsScriptEventHandler(const QString &szHandlerName,const QString &szContextName,const QString &szCode,bool bEnabled = true);
+	KviKvsScriptEventHandler(const QString & szHandlerName, const QString & szContextName, const QString & szCode, bool bEnabled = true);
 	virtual ~KviKvsScriptEventHandler();
-protected:
-	QString        m_szName;
-	KviKvsScript * m_pScript;
-	bool           m_bEnabled;
-public:
-	KviKvsScript * script(){ return m_pScript; };
-	const QString & name(){ return m_szName; };
-	const QString & code(){ return m_pScript->code(); };
 
-	bool isEnabled(){ return m_bEnabled; };
-	void setEnabled(bool bEnabled){ m_bEnabled = bEnabled; };
+protected:
+	QString m_szName;
+	KviKvsScript * m_pScript;
+	bool m_bEnabled;
+
+public:
+	KviKvsScript * script() { return m_pScript; };
+	const QString & name() { return m_szName; };
+	const QString & code() { return m_pScript->code(); };
+
+	bool isEnabled() { return m_bEnabled; };
+	void setEnabled(bool bEnabled) { m_bEnabled = bEnabled; };
 
 	// Static allocator function.
 	// This MUST be used by the modules to allocate event structures
 	// instead of the new operator.
 	// See KviHeapObject.cpp for an explanation.
-	static KviKvsScriptEventHandler * createInstance(const QString &szHandlerName,const QString &szContextName,const QString &szCode,bool bEnabled = true);
+	static KviKvsScriptEventHandler * createInstance(const QString & szHandlerName, const QString & szContextName, const QString & szCode, bool bEnabled = true);
 };
-
 
 class KVIRC_API KviKvsModuleEventHandler : public KviKvsEventHandler
 {
 protected:
-	KviKvsModuleInterface           * m_pModule;
+	KviKvsModuleInterface * m_pModule;
 	KviKvsModuleEventHandlerRoutine * m_pProc;
-public:
-	KviKvsModuleEventHandler(KviKvsModuleInterface * m,KviKvsModuleEventHandlerRoutine proc);
-	virtual ~KviKvsModuleEventHandler();
-public:
-	KviKvsModuleInterface * moduleInterface(){ return m_pModule; };
-	KviKvsModuleEventHandlerRoutine * handlerRoutine(){ return m_pProc; };
-};
 
+public:
+	KviKvsModuleEventHandler(KviKvsModuleInterface * m, KviKvsModuleEventHandlerRoutine proc);
+	virtual ~KviKvsModuleEventHandler();
+
+public:
+	KviKvsModuleInterface * moduleInterface() { return m_pModule; };
+	KviKvsModuleEventHandlerRoutine * handlerRoutine() { return m_pProc; };
+};
 
 /*
 #include "KviModule.h"

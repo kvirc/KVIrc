@@ -24,20 +24,18 @@
 
 #include "KviKvsTreeNodeConstantData.h"
 
-
-KviKvsTreeNodeConstantData::KviKvsTreeNodeConstantData(const QChar * pLocation,KviKvsVariant * v)
-: KviKvsTreeNodeData(pLocation)
+KviKvsTreeNodeConstantData::KviKvsTreeNodeConstantData(const QChar * pLocation, KviKvsVariant * v)
+    : KviKvsTreeNodeData(pLocation)
 {
 	m_pValue = v;
 }
-
 
 KviKvsTreeNodeConstantData::~KviKvsTreeNodeConstantData()
 {
 	delete m_pValue;
 }
 
-void KviKvsTreeNodeConstantData::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeConstantData::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Constant Data Evaluation";
 }
@@ -65,13 +63,13 @@ bool KviKvsTreeNodeConstantData::convertStringConstantToNumeric()
 
 void KviKvsTreeNodeConstantData::dump(const char * prefix)
 {
-	qDebug("%s ConstantData",prefix);
+	qDebug("%s ConstantData", prefix);
 	QString tmp = prefix;
 	tmp.prepend("  ");
 	m_pValue->dump(tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeConstantData::evaluateReadOnly(KviKvsRunTimeContext *,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeConstantData::evaluateReadOnly(KviKvsRunTimeContext *, KviKvsVariant * pBuffer)
 {
 	pBuffer->copyFrom(m_pValue);
 	return true;

@@ -38,8 +38,9 @@ class OptionsWidget_notifierLook : public KviOptionsWidget
 {
 	Q_OBJECT
 private:
-	QComboBox* m_pHorizontalAlign;
-	QComboBox* m_pVerticalAlign;
+	QComboBox * m_pHorizontalAlign;
+	QComboBox * m_pVerticalAlign;
+
 public:
 	OptionsWidget_notifierLook(QWidget * parent);
 	~OptionsWidget_notifierLook();
@@ -58,6 +59,7 @@ class OptionsWidget_notifier : public KviOptionsWidget
 public:
 	OptionsWidget_notifier(QWidget * parent);
 	~OptionsWidget_notifier();
+
 private:
 #ifdef COMPILE_KDE_SUPPORT
 	KviBoolSelector * m_pKdeNotifier;

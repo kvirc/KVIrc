@@ -37,32 +37,33 @@
 #include "KviLocale.h"
 
 KviKvsObjectClass::KviKvsObjectClass(
-		KviKvsObjectClass * pParent,
-		const QString &szName,
-		KviKvsObjectAllocateInstanceProc pProc,
-		bool bBuiltin)
+    KviKvsObjectClass * pParent,
+    const QString & szName,
+    KviKvsObjectAllocateInstanceProc pProc,
+    bool bBuiltin)
 {
-	m_pParentClass  = pParent;
+	m_pParentClass = pParent;
 	if(m_pParentClass)
 		m_pParentClass->registerChildClass(this);
-	m_szName        = szName;
-	m_bBuiltin      = bBuiltin;
-	m_bDirty        = !bBuiltin;
-	m_pFunctionHandlers = new KviPointerHashTable<QString,KviKvsObjectFunctionHandler>(17,false);
+	m_szName = szName;
+	m_bBuiltin = bBuiltin;
+	m_bDirty = !bBuiltin;
+	m_pFunctionHandlers = new KviPointerHashTable<QString, KviKvsObjectFunctionHandler>(17, false);
 	m_pFunctionHandlers->setAutoDelete(true);
 	m_pChildClasses = new KviPointerList<KviKvsObjectClass>;
 	m_pChildClasses->setAutoDelete(false);
-	m_allocProc     = pProc ? pProc : pParent->m_allocProc;
+	m_allocProc = pProc ? pProc : pParent->m_allocProc;
 
 	// inherit everything from the class above
 	if(pParent)
 	{
-		KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler> it(*(pParent->functionHandlers()));
+		KviPointerHashTableIterator<QString, KviKvsObjectFunctionHandler> it(*(pParent->functionHandlers()));
 		while(KviKvsObjectFunctionHandler * fh = it.current())
 		{
-			m_pFunctionHandlers->insert(it.currentKey(),fh->clone());
-			KviKvsObjectFunctionHandler * f=m_pFunctionHandlers->find(it.currentKey());
-			if (f->isScriptHandler()){
+			m_pFunctionHandlers->insert(it.currentKey(), fh->clone());
+			KviKvsObjectFunctionHandler * f = m_pFunctionHandlers->find(it.currentKey());
+			if(f->isScriptHandler())
+			{
 				f->setClone(true);
 			}
 			++it;
@@ -80,14 +81,15 @@ KviKvsObjectClass::~KviKvsObjectClass()
 	// first of all kill our child classes
 	while(m_pChildClasses->first())
 	{
-	   // KviKvsKernel::instance()->objectController()->deleteClass(m_pChildClasses->first());
-	   delete m_pChildClasses->first();
+		// KviKvsKernel::instance()->objectController()->deleteClass(m_pChildClasses->first());
+		delete m_pChildClasses->first();
 	}
 	// then kill all objects that belong to our class
 	KviKvsKernel::instance()->objectController()->killAllObjectsWithClass(this);
 	// now we're quite clean: should have no object depending on us alive
 	// unregister from the parent, if any
-	if(m_pParentClass)m_pParentClass->unregisterChildClass(this);
+	if(m_pParentClass)
+		m_pParentClass->unregisterChildClass(this);
 	// unregister from the object controller
 	KviKvsKernel::instance()->objectController()->unregisterClass(this);
 	// and start effectively dying
@@ -96,45 +98,44 @@ KviKvsObjectClass::~KviKvsObjectClass()
 	delete m_pChildClasses;
 }
 
-void KviKvsObjectClass::registerFunctionHandler(const QString & szFunctionName,KviKvsObjectFunctionHandlerProc pProc,unsigned int uFlags)
+void KviKvsObjectClass::registerFunctionHandler(const QString & szFunctionName, KviKvsObjectFunctionHandlerProc pProc, unsigned int uFlags)
 {
-	m_pFunctionHandlers->replace(szFunctionName,new KviKvsObjectCoreCallFunctionHandler(pProc,uFlags));
+	m_pFunctionHandlers->replace(szFunctionName, new KviKvsObjectCoreCallFunctionHandler(pProc, uFlags));
 }
 
-void KviKvsObjectClass::registerFunctionHandler(const QString & szFunctionName,const QString &szBuffer,const QString &szReminder,unsigned int uFlags)
+void KviKvsObjectClass::registerFunctionHandler(const QString & szFunctionName, const QString & szBuffer, const QString & szReminder, unsigned int uFlags)
 {
 	QString szContext = m_szName;
 	szContext += "::";
 	szContext += szFunctionName;
-        m_pFunctionHandlers->replace(szFunctionName,new KviKvsObjectScriptFunctionHandler(szContext,szBuffer,szReminder,uFlags));
+	m_pFunctionHandlers->replace(szFunctionName, new KviKvsObjectScriptFunctionHandler(szContext, szBuffer, szReminder, uFlags));
 }
 
-void KviKvsObjectClass::registerStandardNothingReturnFunctionHandler(const QString &szFunctionName)
+void KviKvsObjectClass::registerStandardNothingReturnFunctionHandler(const QString & szFunctionName)
 {
-	m_pFunctionHandlers->replace(szFunctionName,new KviKvsObjectStandardNothingReturnFunctionHandler());
+	m_pFunctionHandlers->replace(szFunctionName, new KviKvsObjectStandardNothingReturnFunctionHandler());
 }
 
-void KviKvsObjectClass::registerStandardTrueReturnFunctionHandler(const QString &szFunctionName)
+void KviKvsObjectClass::registerStandardTrueReturnFunctionHandler(const QString & szFunctionName)
 {
-	m_pFunctionHandlers->replace(szFunctionName,new KviKvsObjectStandardTrueReturnFunctionHandler());
+	m_pFunctionHandlers->replace(szFunctionName, new KviKvsObjectStandardTrueReturnFunctionHandler());
 }
 
-void KviKvsObjectClass::registerStandardFalseReturnFunctionHandler(const QString &szFunctionName)
+void KviKvsObjectClass::registerStandardFalseReturnFunctionHandler(const QString & szFunctionName)
 {
-	m_pFunctionHandlers->replace(szFunctionName,new KviKvsObjectStandardFalseReturnFunctionHandler());
+	m_pFunctionHandlers->replace(szFunctionName, new KviKvsObjectStandardFalseReturnFunctionHandler());
 }
 
-
-KviKvsObject * KviKvsObjectClass::allocateInstance(KviKvsObject * pParent,const QString &szName,KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
+KviKvsObject * KviKvsObjectClass::allocateInstance(KviKvsObject * pParent, const QString & szName, KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams)
 {
 	if(!m_allocProc)
 		return 0;
 
-	KviKvsObject * pObject = m_allocProc(this,pParent,szName);
+	KviKvsObject * pObject = m_allocProc(this, pParent, szName);
 	if(!pObject)
 		return 0;
 
-	if(!pObject->init(pContext,pParams))
+	if(!pObject->init(pContext, pParams))
 	{
 		// internal init failure : abort
 		pObject->dieNow();
@@ -154,7 +155,7 @@ KviKvsObject * KviKvsObjectClass::allocateInstance(KviKvsObject * pParent,const 
 	}
 	KviKvsVariant ret;
 
-	if(!pObject->callFunction(pObject,"constructor",QString(),pContext,&ret,&copy))
+	if(!pObject->callFunction(pObject, "constructor", QString(), pContext, &ret, &copy))
 	{
 		// oops... constructor failed (script error!)
 		pObject->dieNow();
@@ -162,17 +163,17 @@ KviKvsObject * KviKvsObjectClass::allocateInstance(KviKvsObject * pParent,const 
 	}
 
 	if(!ret.isEmpty())
-		pContext->warning(__tr2qs_ctx("It's not allowed to return values in the constructor","kvs"));
+		pContext->warning(__tr2qs_ctx("It's not allowed to return values in the constructor", "kvs"));
 
 	return pObject;
 }
 
-void KviKvsObjectClass::registerChildClass(KviKvsObjectClass *pClass)
+void KviKvsObjectClass::registerChildClass(KviKvsObjectClass * pClass)
 {
 	m_pChildClasses->append(pClass);
 }
 
-void KviKvsObjectClass::unregisterChildClass(KviKvsObjectClass *pClass)
+void KviKvsObjectClass::unregisterChildClass(KviKvsObjectClass * pClass)
 {
 	m_pChildClasses->removeRef(pClass);
 }
@@ -184,9 +185,9 @@ bool KviKvsObjectClass::save(const QString & szFileName)
 	if(isBuiltin())
 		return false;
 
-	QString szBuffer = QString("# Automatically generated KVS class dump\n\nclass(\"%1\",\"%2\")\n{\n").arg(m_szName,m_pParentClass->name());
+	QString szBuffer = QString("# Automatically generated KVS class dump\n\nclass(\"%1\",\"%2\")\n{\n").arg(m_szName, m_pParentClass->name());
 
-	KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler> it(*m_pFunctionHandlers);
+	KviPointerHashTableIterator<QString, KviKvsObjectFunctionHandler> it(*m_pFunctionHandlers);
 
 	while(KviKvsObjectFunctionHandler * h = it.current())
 	{
@@ -194,10 +195,10 @@ bool KviKvsObjectClass::save(const QString & szFileName)
 		{
 			szBuffer += "	";
 			if(h->flags() & KviKvsObjectFunctionHandler::Internal)
-			szBuffer += "internal ";
+				szBuffer += "internal ";
 			szBuffer += "function ";
 			szBuffer += it.currentKey();
-			szBuffer += "("+h->reminder()+")\n";
+			szBuffer += "(" + h->reminder() + ")\n";
 			QString szCode = h->scriptHandlerCode();
 			KviCommandFormatter::blockFromBuffer(szCode);
 			KviCommandFormatter::indent(szCode);
@@ -209,25 +210,26 @@ bool KviKvsObjectClass::save(const QString & szFileName)
 
 	szBuffer += "}\n";
 
-	return KviFileUtils::writeFile(szFileName,szBuffer);
+	return KviFileUtils::writeFile(szFileName, szBuffer);
 }
-void KviKvsObjectClass::getFunctionCode(QString &szCode,KviKvsObjectFunctionHandler &h)
+void KviKvsObjectClass::getFunctionCode(QString & szCode, KviKvsObjectFunctionHandler & h)
 {
-	szCode=h.scriptHandlerCode();
+	szCode = h.scriptHandlerCode();
 }
 
-void KviKvsObjectClass::setReminder(const QString &szReminder,KviKvsObjectFunctionHandler *h)
+void KviKvsObjectClass::setReminder(const QString & szReminder, KviKvsObjectFunctionHandler * h)
 {
-        h->setReminder(szReminder);
+	h->setReminder(szReminder);
 }
-QString KviKvsObjectClass::reminder(KviKvsObjectFunctionHandler *h)
+QString KviKvsObjectClass::reminder(KviKvsObjectFunctionHandler * h)
 {
-        return h->reminder();
+	return h->reminder();
 }
 
-bool KviKvsObjectClass::load(const QString &szFileName)
+bool KviKvsObjectClass::load(const QString & szFileName)
 {
 	QString szBuffer;
-	if(!KviFileUtils::readFile(szFileName,szBuffer,0xffffff))return false;
-	return KviKvsScript::run(szBuffer,g_pActiveWindow);
+	if(!KviFileUtils::readFile(szFileName, szBuffer, 0xffffff))
+		return false;
+	return KviKvsScript::run(szBuffer, g_pActiveWindow);
 }

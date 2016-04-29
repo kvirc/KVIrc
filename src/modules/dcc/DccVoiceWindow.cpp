@@ -46,14 +46,14 @@
 #include <QToolTip>
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-	#include <sys/time.h>
-	#include <sys/types.h>
-	#include <unistd.h>
-	#include <errno.h>
-	#include <fcntl.h>
-	//#include "KviError.h"
-	#include <sys/stat.h>   // for open()
-	#include <sys/ioctl.h>  // for ioctl()
+#include <sys/time.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <errno.h>
+#include <fcntl.h>
+//#include "KviError.h"
+#include <sys/stat.h>  // for open()
+#include <sys/ioctl.h> // for ioctl()
 #endif
 
 extern DccBroker * g_pDccBroker;
@@ -61,25 +61,24 @@ extern DccBroker * g_pDccBroker;
 //Check for the *SS Api....we don't want to fail here...
 
 #ifndef COMPILE_DISABLE_DCC_VOICE
-	#ifdef HAVE_LINUX_SOUNDCARD_H
-		#include <linux/soundcard.h>
-	#else
-		#ifdef HAVE_SYS_SOUNDCARD_H
-			#include <sys/soundcard.h>
-		#else
-			#ifdef HAVE_SOUNDCARD_H
-				#include <soundcard.h>
-			#else
-				//CAN NOT COMPILE :(
-				#define COMPILE_DISABLE_DCC_VOICE
-				#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-					#warning "Can't find the soundcard.h header; you will NOT be able to use DCC Voice"
-				#endif
-			#endif
-		#endif
-	#endif
+#ifdef HAVE_LINUX_SOUNDCARD_H
+#include <linux/soundcard.h>
+#else
+#ifdef HAVE_SYS_SOUNDCARD_H
+#include <sys/soundcard.h>
+#else
+#ifdef HAVE_SOUNDCARD_H
+#include <soundcard.h>
+#else
+//CAN NOT COMPILE :(
+#define COMPILE_DISABLE_DCC_VOICE
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
+#warning "Can't find the soundcard.h header; you will NOT be able to use DCC Voice"
 #endif
-
+#endif
+#endif
+#endif
+#endif
 
 //#define KVI_AUDIO_DEVICE "/dev/dsp"
 // 32 fragments, 512 bytes
@@ -88,36 +87,39 @@ extern DccBroker * g_pDccBroker;
 #define KVI_FORMAT AFMT_S16_LE
 #define KVI_NUM_CHANNELS 1
 
-
 bool kvi_dcc_voice_is_valid_codec(const char * codecName)
 {
 #ifdef COMPILE_USE_GSM
-	if(kvi_strEqualCI("gsm",codecName))
+	if(kvi_strEqualCI("gsm", codecName))
 	{
 		return kvi_gsm_codec_init();
 	}
 #endif
-	if(kvi_strEqualCI("adpcm",codecName))return true;
-	if(kvi_strEqualCI("null",codecName))return true;
+	if(kvi_strEqualCI("adpcm", codecName))
+		return true;
+	if(kvi_strEqualCI("null", codecName))
+		return true;
 	return false;
 }
 
 static DccVoiceCodec * kvi_dcc_voice_get_codec(const char * codecName)
 {
 #ifdef COMPILE_USE_GSM
-	if(kvi_strEqualCI("gsm",codecName))
+	if(kvi_strEqualCI("gsm", codecName))
 	{
-		if(kvi_gsm_codec_init())return new DccVoiceGsmCodec();
+		if(kvi_gsm_codec_init())
+			return new DccVoiceGsmCodec();
 	}
 #endif
-	if(kvi_strEqualCI("adpcm",codecName))return new DccVoiceAdpcmCodec();
-	if(kvi_strEqualCI("null",codecName))return new DccVoiceNullCodec();
+	if(kvi_strEqualCI("adpcm", codecName))
+		return new DccVoiceAdpcmCodec();
+	if(kvi_strEqualCI("null", codecName))
+		return new DccVoiceNullCodec();
 	return new DccVoiceAdpcmCodec();
 }
 
-
-DccVoiceThread::DccVoiceThread(KviWindow * wnd,kvi_socket_t fd,KviDccVoiceThreadOptions * opt)
-: DccThread(wnd,fd)
+DccVoiceThread::DccVoiceThread(KviWindow * wnd, kvi_socket_t fd, KviDccVoiceThreadOptions * opt)
+    : DccThread(wnd, fd)
 {
 #ifndef COMPILE_DISABLE_DCC_VOICE
 	m_pOpt = opt;
@@ -148,7 +150,8 @@ bool DccVoiceThread::checkSoundcard()
 	bool bOpened = false;
 	if(m_soundFd == -1)
 	{
-		if(!openSoundcard(O_RDONLY))return false;
+		if(!openSoundcard(O_RDONLY))
+			return false;
 		bOpened = true;
 	}
 
@@ -156,25 +159,26 @@ bool DccVoiceThread::checkSoundcard()
 
 	m_bSoundcardChecked = true;
 
-	if(ioctl(m_soundFd,SNDCTL_DSP_GETCAPS,&caps) < 0)
+	if(ioctl(m_soundFd, SNDCTL_DSP_GETCAPS, &caps) < 0)
 	{
-		postMessageEvent(__tr2qs_ctx("WARNING: failed to check the soundcard duplex capabilities: if this is a half-duplex soundcard, use the DCC VOICE option to force half-duplex algorithm","dcc").toUtf8().data());
-		if(bOpened)closeSoundcard();
+		postMessageEvent(__tr2qs_ctx("WARNING: failed to check the soundcard duplex capabilities: if this is a half-duplex soundcard, use the DCC VOICE option to force half-duplex algorithm", "dcc").toUtf8().data());
+		if(bOpened)
+			closeSoundcard();
 		return false;
 	}
 
 	if(!(caps & DSP_CAP_DUPLEX))
 	{
 		m_pOpt->bForceHalfDuplex = true; // the device is half duplex...use it in that way
-		postMessageEvent(__tr2qs_ctx("Half-duplex soundcard detected, you will not be able to talk and listen at the same time","dcc").toUtf8().data());
+		postMessageEvent(__tr2qs_ctx("Half-duplex soundcard detected, you will not be able to talk and listen at the same time", "dcc").toUtf8().data());
 	}
 
-	if(bOpened)closeSoundcard();
+	if(bOpened)
+		closeSoundcard();
 
 	return true;
 #endif
 }
-
 
 bool DccVoiceThread::openSoundcard(int mode)
 {
@@ -182,40 +186,45 @@ bool DccVoiceThread::openSoundcard(int mode)
 	return false;
 #else
 	int speed = m_pOpt->iSampleRate;
-	static int chans=KVI_NUM_CHANNELS;
-	static int fmt=KVI_FORMAT;
+	static int chans = KVI_NUM_CHANNELS;
+	static int fmt = KVI_FORMAT;
 	static int frag = KVI_SNDCTL_FRAG_SIZE;
-
 
 	if(m_soundFd != -1)
 	{
-		if(m_soundFdMode == mode)return true; // already open
+		if(m_soundFdMode == mode)
+			return true; // already open
 		closeSoundcard();
 	}
 
-	m_soundFd = ::open(m_pOpt->szSoundDevice.ptr(),mode | O_NONBLOCK);
-	if(m_soundFd < 0)return false;
+	m_soundFd = ::open(m_pOpt->szSoundDevice.ptr(), mode | O_NONBLOCK);
+	if(m_soundFd < 0)
+		return false;
 
 	if(!m_pOpt->bForceHalfDuplex)
 	{
-		if(ioctl(m_soundFd,SNDCTL_DSP_SETDUPLEX,0) < 0)goto exit_false;
+		if(ioctl(m_soundFd, SNDCTL_DSP_SETDUPLEX, 0) < 0)
+			goto exit_false;
 	}
 
-	if(ioctl(m_soundFd,SNDCTL_DSP_SETFRAGMENT,&frag)<0)goto exit_false;
-	if(ioctl(m_soundFd,SNDCTL_DSP_SETFMT,&fmt)<0)goto exit_false;
-	if(ioctl(m_soundFd,SNDCTL_DSP_CHANNELS,&chans)<0)goto exit_false;
-	if(ioctl(m_soundFd,SNDCTL_DSP_SPEED,&speed)<0)goto exit_false;
+	if(ioctl(m_soundFd, SNDCTL_DSP_SETFRAGMENT, &frag) < 0)
+		goto exit_false;
+	if(ioctl(m_soundFd, SNDCTL_DSP_SETFMT, &fmt) < 0)
+		goto exit_false;
+	if(ioctl(m_soundFd, SNDCTL_DSP_CHANNELS, &chans) < 0)
+		goto exit_false;
+	if(ioctl(m_soundFd, SNDCTL_DSP_SPEED, &speed) < 0)
+		goto exit_false;
 	if(speed != m_pOpt->iSampleRate)
 	{
-		KviCString tmp(KviCString::Format,__tr2qs_ctx("WARNING: failed to set the requested sample rate (%d): the device used closest match (%d)","dcc").toUtf8().data(),
-						m_pOpt->iSampleRate,speed);
+		KviCString tmp(KviCString::Format, __tr2qs_ctx("WARNING: failed to set the requested sample rate (%d): the device used closest match (%d)", "dcc").toUtf8().data(),
+		    m_pOpt->iSampleRate, speed);
 		postMessageEvent(tmp.ptr());
 	}
 
 	//  TODO: #warning "We could also support blocking operations mode"
 
 	m_soundFdMode = mode;
-
 
 	return true;
 
@@ -228,7 +237,7 @@ exit_false:
 bool DccVoiceThread::openSoundcardForWriting()
 {
 #ifndef COMPILE_DISABLE_DCC_VOICE
-	return openSoundcardWithDuplexOption(O_WRONLY,O_RDONLY);
+	return openSoundcardWithDuplexOption(O_WRONLY, O_RDONLY);
 #else
 	return false;
 #endif
@@ -237,13 +246,13 @@ bool DccVoiceThread::openSoundcardForWriting()
 bool DccVoiceThread::openSoundcardForReading()
 {
 #ifndef COMPILE_DISABLE_DCC_VOICE
-	return openSoundcardWithDuplexOption(O_RDONLY,O_WRONLY);
+	return openSoundcardWithDuplexOption(O_RDONLY, O_WRONLY);
 #else
 	return false;
 #endif
 }
 
-bool DccVoiceThread::openSoundcardWithDuplexOption(int openMode,int failMode)
+bool DccVoiceThread::openSoundcardWithDuplexOption(int openMode, int failMode)
 {
 #ifndef COMPILE_DISABLE_DCC_VOICE
 	if(m_soundFd == -1)
@@ -252,8 +261,11 @@ bool DccVoiceThread::openSoundcardWithDuplexOption(int openMode,int failMode)
 		if(m_pOpt->bForceHalfDuplex)
 		{
 			// Forcing half duplex... (user option or the card does not support full duplex mode)
-			if(!openSoundcard(openMode))return false;
-		} else {
+			if(!openSoundcard(openMode))
+				return false;
+		}
+		else
+		{
 			// Try read/write open
 			if(!openSoundcard(O_RDWR))
 			{
@@ -262,15 +274,18 @@ bool DccVoiceThread::openSoundcardWithDuplexOption(int openMode,int failMode)
 				{
 					// We haven't checked the full-duplex support yet...
 					// Try to open in RDONLY o WRONLY mode
-					if(!openSoundcard(openMode))return false;
+					if(!openSoundcard(openMode))
+						return false;
 					if(!checkSoundcard())
 					{
-						postMessageEvent(__tr2qs_ctx("Oops! Failed to test the soundcard capabilities, expect problems...","dcc").toUtf8().data());
+						postMessageEvent(__tr2qs_ctx("Oops! Failed to test the soundcard capabilities, expect problems...", "dcc").toUtf8().data());
 					}
 				} // else the test has been done and it is a full duplex card that is just busy
 			}
 		}
-	} else {
+	}
+	else
+	{
 		// Hmmm...already open
 		// If it is open in O_RDWR or O_WRONLY mode...it is ok for us
 		// but if it is open in O_RDONLY mode...we can do nothing...just wait
@@ -302,23 +317,27 @@ bool DccVoiceThread::readWriteStep()
 	bool bCanRead;
 	bool bCanWrite;
 
-	if(kvi_select(m_fd,&bCanRead,&bCanWrite))
+	if(kvi_select(m_fd, &bCanRead, &bCanWrite))
 	{
 		if(bCanRead)
 		{
 			unsigned int actualSize = m_inFrameBuffer.size();
 			m_inFrameBuffer.resize(actualSize + 1024);
-			int readLen = kvi_socket_recv(m_fd,(void *)(m_inFrameBuffer.data() + actualSize),1024);
+			int readLen = kvi_socket_recv(m_fd, (void *)(m_inFrameBuffer.data() + actualSize), 1024);
 			if(readLen > 0)
 			{
-				if(readLen < 1024)m_inFrameBuffer.resize(actualSize + readLen);
-				m_pOpt->pCodec->decode(&m_inFrameBuffer,&m_inSignalBuffer);
-//#warning "A maximum length for the signal buffer is actually needed!!!"
-			} else {
-				if(!handleInvalidSocketRead(readLen))return false;
+				if(readLen < 1024)
+					m_inFrameBuffer.resize(actualSize + readLen);
+				m_pOpt->pCodec->decode(&m_inFrameBuffer, &m_inSignalBuffer);
+				//#warning "A maximum length for the signal buffer is actually needed!!!"
+			}
+			else
+			{
+				if(!handleInvalidSocketRead(readLen))
+					return false;
 				m_inFrameBuffer.resize(actualSize);
 			}
-		}// else {
+		} // else {
 		//	m_uSleepTime += 100;
 		//}
 
@@ -327,21 +346,24 @@ bool DccVoiceThread::readWriteStep()
 			// Have somethihg to write ?
 			if(m_outFrameBuffer.size() > 0)
 			{
-				int written = kvi_socket_send(m_fd,m_outFrameBuffer.data(),m_outFrameBuffer.size());
+				int written = kvi_socket_send(m_fd, m_outFrameBuffer.data(), m_outFrameBuffer.size());
 				if(written > 0)
 				{
 					m_outFrameBuffer.remove(written);
-				} else {
-					if(!handleInvalidSocketRead(written))return false;
 				}
-			}// else {
-	//			m_uSleepTime += 100;
-	//		}
-		}// else {
-	//		m_uSleepTime += 100;
-//		}
-//#warning "Usleep here ?"
-	}// else {
+				else
+				{
+					if(!handleInvalidSocketRead(written))
+						return false;
+				}
+			} // else {
+			  //			m_uSleepTime += 100;
+			  //		}
+		}     // else {
+		      //		m_uSleepTime += 100;
+		      //		}
+		      //#warning "Usleep here ?"
+	}         // else {
 //		if(!(m_bPlaying || m_bRecording))
 //		{
 //			// Really NOTHING is happening...sleep a bit more
@@ -367,7 +389,7 @@ bool DccVoiceThread::soundStep()
 		{
 			// Get the number of fragments that can be written to the soundcard without blocking
 
-			if(ioctl(m_soundFd,SNDCTL_DSP_GETOSPACE,&info) < 0)
+			if(ioctl(m_soundFd, SNDCTL_DSP_GETOSPACE, &info) < 0)
 			{
 				qDebug("get o space failed");
 				info.bytes = KVI_FRAGMENT_SIZE_IN_BYTES; // dummy... if this is not correct...well...we will block for 1024/16000 of a sec
@@ -378,29 +400,37 @@ bool DccVoiceThread::soundStep()
 			{
 				int toWrite = info.fragments * info.fragsize;
 				//qDebug("Can write %d bytes",toWrite);
-				if(m_inSignalBuffer.size() < toWrite)toWrite = m_inSignalBuffer.size();
-				int written = write(m_soundFd,m_inSignalBuffer.data(),toWrite);
-				if(written > 0)m_inSignalBuffer.remove(written);
-				else {
-//#warning "Do something for -1 here ?"
-//#warning "Usleep ?"
+				if(m_inSignalBuffer.size() < toWrite)
+					toWrite = m_inSignalBuffer.size();
+				int written = write(m_soundFd, m_inSignalBuffer.data(), toWrite);
+				if(written > 0)
+					m_inSignalBuffer.remove(written);
+				else
+				{
+					//#warning "Do something for -1 here ?"
+					//#warning "Usleep ?"
 				}
 			} //else {
-				// No stuff can be written...we are running too fast ?
-			//	m_uSleepTime += 100; // sleep for a while
-			//}
-		} else {
+			  // No stuff can be written...we are running too fast ?
+			  //	m_uSleepTime += 100; // sleep for a while
+			  //}
+		}
+		else
+		{
 			// hmmmm....playing, but nothing to write, possible underrun or EOF
 			// a nice idea would be to use SNDCTL_DSP_GETODELAY here...
 			// but it appears to be broken on some audio devices
-			if(ioctl(m_soundFd,SNDCTL_DSP_GETOSPACE,&info) < 0)info.fragstotal = info.fragments; // dummy...but what should we do ?
+			if(ioctl(m_soundFd, SNDCTL_DSP_GETOSPACE, &info) < 0)
+				info.fragstotal = info.fragments; // dummy...but what should we do ?
 			if(info.fragstotal == info.fragments)
 			{
 				// underrun or EOF: close the device
 				stopPlaying();
 			}
 		}
-	} else {
+	}
+	else
+	{
 		// do we have anything to play ?
 		if(m_inSignalBuffer.size() > 0)
 		{
@@ -410,11 +440,13 @@ bool DccVoiceThread::soundStep()
 				startPlaying();
 
 				m_iLastSignalBufferSize = m_inSignalBuffer.size();
-			} else {
+			}
+			else
+			{
 				// have stuff to play, but it's not enough to fill the pre-buffer
 				//
 				struct timeval tv;
-				gettimeofday(&tv,0);
+				gettimeofday(&tv, 0);
 
 				long int sigBufferTime = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 
@@ -431,16 +463,18 @@ bool DccVoiceThread::soundStep()
 					if((sigBufferTime - m_iLastSignalBufferTime) > preBufferTime)
 					{
 						startPlaying();
-						if(m_bPlaying)m_iLastSignalBufferSize = 0;
+						if(m_bPlaying)
+							m_iLastSignalBufferSize = 0;
 					}
-				} else {
+				}
+				else
+				{
 					// signal buffer size differs...we have received new packets
 					// and still pre-buffering
 					m_iLastSignalBufferSize = m_inSignalBuffer.size();
 					m_iLastSignalBufferTime = sigBufferTime;
 				}
 			}
-
 		}
 	}
 
@@ -449,16 +483,16 @@ bool DccVoiceThread::soundStep()
 	{
 		fd_set rs;
 		FD_ZERO(&rs);
-		FD_SET(m_soundFd,&rs);
+		FD_SET(m_soundFd, &rs);
 		struct timeval tv;
 		tv.tv_sec = 0;
 		tv.tv_usec = 10;
-		int ret = select(m_soundFd + 1,&rs,0,0,&tv);
+		int ret = select(m_soundFd + 1, &rs, 0, 0, &tv);
 		if(ret > 0)
 		{
 			// This is rather easy...
 			audio_buf_info info;
-			if(ioctl(m_soundFd,SNDCTL_DSP_GETISPACE,&info) < 0)
+			if(ioctl(m_soundFd, SNDCTL_DSP_GETISPACE, &info) < 0)
 			{
 				qDebug("Ispace failed");
 				info.fragments = 0; // dummy...
@@ -478,23 +512,27 @@ bool DccVoiceThread::soundStep()
 				int oldSize = m_outSignalBuffer.size();
 				int available = info.fragments * info.fragsize;
 				m_outSignalBuffer.addSize(available);
-				int readed = read(m_soundFd,m_outSignalBuffer.data() + oldSize,available);
+				int readed = read(m_soundFd, m_outSignalBuffer.data() + oldSize, available);
 
 				if(readed < available)
 				{
 					// huh ? ...error ?
-					if(readed >= 0)m_outSignalBuffer.resize(oldSize + readed);
-					else {
+					if(readed >= 0)
+						m_outSignalBuffer.resize(oldSize + readed);
+					else
+					{
 						if((errno == EINTR) || (errno == EAGAIN))
 						{
 							m_outSignalBuffer.resize(oldSize);
-						} else {
-//#warning "Critical error...do something reasonable!"
+						}
+						else
+						{
+							//#warning "Critical error...do something reasonable!"
 							m_outSignalBuffer.resize(oldSize);
 						}
 					}
 				}
-/*
+				/*
 				qDebug("Signal buffer:");
 				for(int i=0;i<200;i+=2)
 				{
@@ -504,12 +542,12 @@ bool DccVoiceThread::soundStep()
 				}
 				qDebug("END\n");
 */
-				m_pOpt->pCodec->encode(&m_outSignalBuffer,&m_outFrameBuffer);
+				m_pOpt->pCodec->encode(&m_outSignalBuffer, &m_outFrameBuffer);
 			}
-		}// else {
-			// Nothing to read
-	//		m_uSleepTime += 100;
-	//	}
+		} // else {
+		  // Nothing to read
+		  //		m_uSleepTime += 100;
+		  //	}
 	}
 
 #endif // !COMPILE_DISABLE_DCC_VOICE
@@ -520,17 +558,20 @@ void DccVoiceThread::startRecording()
 {
 #ifndef COMPILE_DISABLE_DCC_VOICE
 	//qDebug("Start recording");
-	if(m_bRecording)return; // already started
+	if(m_bRecording)
+		return; // already started
 	if(openSoundcardForReading())
 	{
-//		qDebug("Posting event");
+		//		qDebug("Posting event");
 		KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
 		e->setData(new int(KVI_DCC_VOICE_THREAD_ACTION_START_RECORDING));
-		postEvent(parent(),e);
+		postEvent(parent(), e);
 
 		m_bRecording = true;
 		m_bRecordingRequestPending = false;
-	} else {
+	}
+	else
+	{
 		m_bRecordingRequestPending = true;
 	}
 #endif
@@ -541,14 +582,16 @@ void DccVoiceThread::stopRecording()
 #ifndef COMPILE_DISABLE_DCC_VOICE
 	//qDebug("Stop recording");
 	m_bRecordingRequestPending = false;
-	if(!m_bRecording)return; // already stopped
+	if(!m_bRecording)
+		return; // already stopped
 
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
 	e->setData(new int(KVI_DCC_VOICE_THREAD_ACTION_STOP_RECORDING));
-	postEvent(parent(),e);
+	postEvent(parent(), e);
 
 	m_bRecording = false;
-	if(!m_bPlaying)closeSoundcard();
+	if(!m_bPlaying)
+		closeSoundcard();
 #endif
 }
 
@@ -556,13 +599,14 @@ void DccVoiceThread::startPlaying()
 {
 #ifndef COMPILE_DISABLE_DCC_VOICE
 	//qDebug("Start playing");
-	if(m_bPlaying)return;
+	if(m_bPlaying)
+		return;
 
 	if(openSoundcardForWriting())
 	{
 		KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
 		e->setData(new int(KVI_DCC_VOICE_THREAD_ACTION_START_PLAYING));
-		postEvent(parent(),e);
+		postEvent(parent(), e);
 		m_bPlaying = true;
 	}
 #endif
@@ -572,14 +616,16 @@ void DccVoiceThread::stopPlaying()
 {
 #ifndef COMPILE_DISABLE_DCC_VOICE
 	//qDebug("Stop playing");
-	if(!m_bPlaying)return;
+	if(!m_bPlaying)
+		return;
 
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
 	e->setData(new int(KVI_DCC_VOICE_THREAD_ACTION_STOP_PLAYING));
-	postEvent(parent(),e);
+	postEvent(parent(), e);
 
 	m_bPlaying = false;
-	if(!m_bRecording)closeSoundcard();
+	if(!m_bRecording)
+		closeSoundcard();
 #endif
 }
 
@@ -588,7 +634,7 @@ void DccVoiceThread::run()
 #ifndef COMPILE_DISABLE_DCC_VOICE
 	for(;;)
 	{
-//		m_uSleepTime = 0;
+		//		m_uSleepTime = 0;
 
 		// Dequeue events
 		while(KviThreadEvent * e = dequeueEvent())
@@ -597,21 +643,28 @@ void DccVoiceThread::run()
 			{
 				delete e;
 				goto exit_dcc;
-			} else if(e->id() == KVI_DCC_THREAD_EVENT_ACTION)
+			}
+			else if(e->id() == KVI_DCC_THREAD_EVENT_ACTION)
 			{
 				int * act = ((KviThreadDataEvent<int> *)e)->getData();
-				if(*act)startRecording();
-				else stopRecording();
+				if(*act)
+					startRecording();
+				else
+					stopRecording();
 				delete act;
 				delete e;
-			} else {
+			}
+			else
+			{
 				// Other events are senseless to us
 				delete e;
 			}
 		}
 
-		if(!readWriteStep())goto exit_dcc;
-		if(!soundStep())goto exit_dcc;
+		if(!readWriteStep())
+			goto exit_dcc;
+		if(!soundStep())
+			goto exit_dcc;
 
 		m_pInfoMutex->lock();
 		m_iInputBufferSize = m_inSignalBuffer.size();
@@ -621,12 +674,12 @@ void DccVoiceThread::run()
 		// Actually the maximum that we can sleep here is
 		// around 500 usecs... = 0.0005 sec -> 8 bytes at 8 KHz
 
-	//	if(m_uSleepTime)usleep(m_uSleepTime);
+		//	if(m_uSleepTime)usleep(m_uSleepTime);
 
 		// Start recording if the request was not fulfilled yet
-		if(m_bRecordingRequestPending)startRecording();
+		if(m_bRecordingRequestPending)
+			startRecording();
 	}
-
 
 exit_dcc:
 
@@ -636,24 +689,23 @@ exit_dcc:
 	m_fd = KVI_INVALID_SOCKET;
 }
 
-
-DccVoiceWindow::DccVoiceWindow(DccDescriptor * dcc,const char * name)
-: DccWindow(KviWindow::DccVoice,name,dcc)
+DccVoiceWindow::DccVoiceWindow(DccDescriptor * dcc, const char * name)
+    : DccWindow(KviWindow::DccVoice, name, dcc)
 {
 	m_pDescriptor = dcc;
 	m_pSlaveThread = 0;
 
-	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
 	m_pSplitter->setObjectName("dcc_window_splitter");
-	m_pIrcView = new KviIrcView(m_pSplitter,this);
+	m_pIrcView = new KviIrcView(m_pSplitter, this);
 
 	m_pHBox = new KviTalHBox(this);
 
 	KviTalVBox * vbox = new KviTalVBox(m_pHBox);
 
-	m_pInputLabel = new QLabel(__tr2qs_ctx("Input buffer","dcc"),vbox);
+	m_pInputLabel = new QLabel(__tr2qs_ctx("Input buffer", "dcc"), vbox);
 	m_pInputLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
-	m_pOutputLabel = new QLabel(__tr2qs_ctx("Output buffer","dcc"),vbox);
+	m_pOutputLabel = new QLabel(__tr2qs_ctx("Output buffer", "dcc"), vbox);
 	m_pOutputLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
 	vbox->setSpacing(1);
 
@@ -673,7 +725,7 @@ DccVoiceWindow::DccVoiceWindow(DccDescriptor * dcc,const char * name)
 
 	//#warning "The volume slider should be enabled only when receiving data"
 	//m_pVolumeSlider = new QSlider(-100, 0, 10, 0, Qt::Vertical, m_pHBox, "dcc_voice_volume_slider");
-	m_pVolumeSlider = new QSlider(Qt::Vertical,m_pHBox);
+	m_pVolumeSlider = new QSlider(Qt::Vertical, m_pHBox);
 	m_pVolumeSlider->setObjectName("dcc_voice_volume_slider");
 	m_pVolumeSlider->setMinimum(-100);
 	m_pVolumeSlider->setMaximum(0);
@@ -684,29 +736,29 @@ DccVoiceWindow::DccVoiceWindow(DccDescriptor * dcc,const char * name)
 	/* Update the tooltip */
 	setMixerVolume(m_pVolumeSlider->value());
 	m_pVolumeSlider->setMaximumWidth(16);
-	m_pVolumeSlider->setMaximumHeight(2*m_pPlayingLabel->height());
+	m_pVolumeSlider->setMaximumHeight(2 * m_pPlayingLabel->height());
 	connect(m_pVolumeSlider, SIGNAL(valueChanged(int)), this, SLOT(setMixerVolume(int)));
 
 	m_pTalkButton = new QToolButton(m_pHBox);
 	m_pTalkButton->setEnabled(false);
 	m_pTalkButton->setCheckable(true);
 	QIcon iset;
-	iset.addPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_DISCONNECTED)),QIcon::Normal,QIcon::Off);
-	iset.addPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_CONNECTED)),QIcon::Normal,QIcon::On);
+	iset.addPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_DISCONNECTED)), QIcon::Normal, QIcon::Off);
+	iset.addPixmap(*(g_pIconManager->getBigIcon(KVI_BIGICON_CONNECTED)), QIcon::Normal, QIcon::On);
 	m_pTalkButton->setIcon(iset);
-	m_pTalkButton->setIconSize(QSize(32,32));
-	connect(m_pTalkButton,SIGNAL(toggled(bool)),this,SLOT(startOrStopTalking(bool)));
+	m_pTalkButton->setIconSize(QSize(32, 32));
+	connect(m_pTalkButton, SIGNAL(toggled(bool)), this, SLOT(startOrStopTalking(bool)));
 
-	m_pHBox->setStretchFactor(vbox,1);
+	m_pHBox->setStretchFactor(vbox, 1);
 	m_pHBox->setMargin(2);
 	m_pHBox->setSpacing(1);
 
 	//setFocusHandler(m_pIrcView,this);
 
 	m_pMarshal = new DccMarshal(this);
-	connect(m_pMarshal,SIGNAL(error(KviError::Code)),this,SLOT(handleMarshalError(KviError::Code)));
-	connect(m_pMarshal,SIGNAL(connected()),this,SLOT(connected()));
-	connect(m_pMarshal,SIGNAL(inProgress()),this,SLOT(connectionInProgress()));
+	connect(m_pMarshal, SIGNAL(error(KviError::Code)), this, SLOT(handleMarshalError(KviError::Code)));
+	connect(m_pMarshal, SIGNAL(connected()), this, SLOT(connected()));
+	connect(m_pMarshal, SIGNAL(inProgress()), this, SLOT(connectionInProgress()));
 
 	m_pUpdateTimer = new QTimer();
 
@@ -726,24 +778,25 @@ DccVoiceWindow::~DccVoiceWindow()
 	KviThreadManager::killPendingEvents(this);
 
 	delete m_pUpdateTimer;
-//	delete m_pDescriptor;
-//	delete m_pMarshal;
+	//	delete m_pDescriptor;
+	//	delete m_pMarshal;
 }
-
 
 void DccVoiceWindow::startConnection()
 {
 	if(!(m_pDescriptor->bActive))
 	{
 		// PASSIVE CONNECTION
-		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Attempting a passive DCC VOICE connection","dcc"));
-		KviError::Code eError = m_pMarshal->dccListen(m_pDescriptor->szListenIp,m_pDescriptor->szListenPort,m_pDescriptor->bDoTimeout);
+		output(KVI_OUT_DCCMSG, __tr2qs_ctx("Attempting a passive DCC VOICE connection", "dcc"));
+		KviError::Code eError = m_pMarshal->dccListen(m_pDescriptor->szListenIp, m_pDescriptor->szListenPort, m_pDescriptor->bDoTimeout);
 		if(eError != KviError::Success)
 			handleMarshalError(eError);
-	} else {
+	}
+	else
+	{
 		// ACTIVE CONNECTION
-		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Attempting an active DCC VOICE connection","dcc"));
-		KviError::Code eError = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
+		output(KVI_OUT_DCCMSG, __tr2qs_ctx("Attempting an active DCC VOICE connection", "dcc"));
+		KviError::Code eError = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data(), m_pDescriptor->bDoTimeout);
 		if(eError != KviError::Success)
 			handleMarshalError(eError);
 	}
@@ -753,29 +806,34 @@ void DccVoiceWindow::connectionInProgress()
 {
 	if(m_pDescriptor->bActive)
 	{
-		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Contacting host %Q on port %Q","dcc"),&(m_pDescriptor->szIp),&(m_pDescriptor->szPort));
-	} else {
+		output(KVI_OUT_DCCMSG, __tr2qs_ctx("Contacting host %Q on port %Q", "dcc"), &(m_pDescriptor->szIp), &(m_pDescriptor->szPort));
+	}
+	else
+	{
 
-		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Listening on interface %Q port %Q","dcc"),
-			&(m_pMarshal->localIp()),&(m_pMarshal->localPort()));
+		output(KVI_OUT_DCCMSG, __tr2qs_ctx("Listening on interface %Q port %Q", "dcc"),
+		    &(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
 
 		if(m_pDescriptor->bSendRequest)
 		{
-			QString ip     = !m_pDescriptor->szFakeIp.isEmpty() ? m_pDescriptor->szFakeIp : m_pDescriptor->szListenIp;
-			KviCString port   = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort : m_pMarshal->localPort();
-//#warning "OPTION FOR SENDING 127.0.0.1 and so on (not an unsigned nuumber)"
+			QString ip = !m_pDescriptor->szFakeIp.isEmpty() ? m_pDescriptor->szFakeIp : m_pDescriptor->szListenIp;
+			KviCString port = !m_pDescriptor->szFakePort.isEmpty() ? m_pDescriptor->szFakePort : m_pMarshal->localPort();
+			//#warning "OPTION FOR SENDING 127.0.0.1 and so on (not an unsigned nuumber)"
 			struct in_addr a;
-			if(KviNetUtils::stringIpToBinaryIp(ip,&a)) {
+			if(KviNetUtils::stringIpToBinaryIp(ip, &a))
+			{
 				ip.setNum(htonl(a.s_addr));
 			}
 
 			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC VOICE %s %Q %s %d%c",
-					m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-					0x01,m_pDescriptor->szCodec.ptr(),
-					&ip,port.ptr(),m_pDescriptor->iSampleRate,0x01);
-			output(KVI_OUT_DCCMSG,__tr2qs_ctx("Sent DCC VOICE (%s) request to %Q, waiting for the remote client to connect...","dcc"),
-					m_pDescriptor->szCodec.ptr(),&(m_pDescriptor->szNick));
-		} else output(KVI_OUT_DCCMSG,__tr2qs_ctx("DCC VOICE request not sent: awaiting manual connections","dcc"));
+			    m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+			    0x01, m_pDescriptor->szCodec.ptr(),
+			    &ip, port.ptr(), m_pDescriptor->iSampleRate, 0x01);
+			output(KVI_OUT_DCCMSG, __tr2qs_ctx("Sent DCC VOICE (%s) request to %Q, waiting for the remote client to connect...", "dcc"),
+			    m_pDescriptor->szCodec.ptr(), &(m_pDescriptor->szNick));
+		}
+		else
+			output(KVI_OUT_DCCMSG, __tr2qs_ctx("DCC VOICE request not sent: awaiting manual connections", "dcc"));
 	}
 }
 
@@ -783,20 +841,20 @@ const QString & DccVoiceWindow::target()
 {
 	// This may change on the fly...
 	m_szTarget.sprintf("%s@%s:%s",
-		m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
+	    m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
 	return m_szTarget;
 }
 
-void DccVoiceWindow::getBaseLogFileName(QString &buffer)
+void DccVoiceWindow::getBaseLogFileName(QString & buffer)
 {
-	buffer.sprintf("dccvoice_%s_%s_%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szLocalFileName.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
+	buffer.sprintf("dccvoice_%s_%s_%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szLocalFileName.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
 }
 
 void DccVoiceWindow::fillCaptionBuffers()
 {
-	KviCString tmp(KviCString::Format,"DCC Voice %s@%s:%s %s",
-		m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data(),
-		m_pDescriptor->szLocalFileName.toUtf8().data());
+	KviCString tmp(KviCString::Format, "DCC Voice %s@%s:%s %s",
+	    m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data(),
+	    m_pDescriptor->szLocalFileName.toUtf8().data());
 
 	m_szPlainTextCaption = tmp;
 }
@@ -806,7 +864,7 @@ QPixmap * DccVoiceWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KviIconManager::DccVoice);
 }
 
-bool DccVoiceWindow::event(QEvent *e)
+bool DccVoiceWindow::event(QEvent * e)
 {
 	if(e->type() == KVI_THREAD_EVENT)
 	{
@@ -816,7 +874,7 @@ bool DccVoiceWindow::event(QEvent *e)
 			{
 				KviError::Code * pError = ((KviThreadDataEvent<KviError::Code> *)e)->getData();
 				QString ssss = KviError::getDescription(*pError);
-				output(KVI_OUT_DCCERROR,__tr2qs_ctx("ERROR: %Q","dcc"),&(ssss));
+				output(KVI_OUT_DCCERROR, __tr2qs_ctx("ERROR: %Q", "dcc"), &(ssss));
 				delete pError;
 				m_pUpdateTimer->stop();
 				updateInfo();
@@ -829,7 +887,7 @@ bool DccVoiceWindow::event(QEvent *e)
 			case KVI_DCC_THREAD_EVENT_MESSAGE:
 			{
 				KviCString * str = ((KviThreadDataEvent<KviCString> *)e)->getData();
-				outputNoFmt(KVI_OUT_DCCMSG,__tr_no_xgettext_ctx(str->ptr(),"dcc"));
+				outputNoFmt(KVI_OUT_DCCMSG, __tr_no_xgettext_ctx(str->ptr(), "dcc"));
 				delete str;
 				return true;
 			}
@@ -841,26 +899,25 @@ bool DccVoiceWindow::event(QEvent *e)
 				{
 					case KVI_DCC_VOICE_THREAD_ACTION_START_RECORDING:
 						m_pRecordingLabel->setEnabled(true);
-					break;
+						break;
 					case KVI_DCC_VOICE_THREAD_ACTION_STOP_RECORDING:
 						m_pRecordingLabel->setEnabled(false);
-					break;
+						break;
 					case KVI_DCC_VOICE_THREAD_ACTION_START_PLAYING:
 						m_pPlayingLabel->setEnabled(true);
-					break;
+						break;
 					case KVI_DCC_VOICE_THREAD_ACTION_STOP_PLAYING:
 						m_pPlayingLabel->setEnabled(false);
-					break;
+						break;
 				}
 				delete act;
 				return true;
 			}
 			break;
 			default:
-				qDebug("Invalid event type %d received",((KviThreadEvent *)e)->id());
-			break;
+				qDebug("Invalid event type %d received", ((KviThreadEvent *)e)->id());
+				break;
 		}
-
 	}
 
 	return KviWindow::event(e);
@@ -874,9 +931,9 @@ void DccVoiceWindow::updateInfo()
 		int iOSize = m_pSlaveThread->m_iOutputBufferSize;
 		int iISize = m_pSlaveThread->m_iInputBufferSize;
 		m_pSlaveThread->m_pInfoMutex->unlock();
-		KviCString tmp(KviCString::Format,__tr_ctx("Input buffer: %d bytes","dcc"),iISize);
+		KviCString tmp(KviCString::Format, __tr_ctx("Input buffer: %d bytes", "dcc"), iISize);
 		m_pInputLabel->setText(tmp.ptr());
-		tmp.sprintf(__tr_ctx("Output buffer: %d bytes","dcc"),iOSize);
+		tmp.sprintf(__tr_ctx("Output buffer: %d bytes", "dcc"), iOSize);
 		m_pOutputLabel->setText(tmp.ptr());
 	}
 }
@@ -884,8 +941,8 @@ void DccVoiceWindow::updateInfo()
 void DccVoiceWindow::resizeEvent(QResizeEvent *)
 {
 	int hght2 = m_pHBox->sizeHint().height();
-	m_pHBox->setGeometry(0,0,width(),hght2);
-	m_pSplitter->setGeometry(0,hght2,width(),height() - hght2);
+	m_pHBox->setGeometry(0, 0, width(), hght2);
+	m_pSplitter->setGeometry(0, hght2, width(), height() - hght2);
 }
 
 QSize DccVoiceWindow::sizeHint() const
@@ -899,7 +956,7 @@ QSize DccVoiceWindow::sizeHint() const
 void DccVoiceWindow::handleMarshalError(KviError::Code eError)
 {
 	QString ssss = KviError::getDescription(eError);
-	output(KVI_OUT_DCCERROR,__tr2qs_ctx("DCC failed: %Q","dcc"),&ssss);
+	output(KVI_OUT_DCCERROR, __tr2qs_ctx("DCC failed: %Q", "dcc"), &ssss);
 	m_pTalkButton->setEnabled(false);
 	m_pTalkButton->setChecked(false);
 	m_pRecordingLabel->setEnabled(false);
@@ -908,36 +965,35 @@ void DccVoiceWindow::handleMarshalError(KviError::Code eError)
 
 void DccVoiceWindow::connected()
 {
-	output(KVI_OUT_DCCMSG,__tr2qs_ctx("Connected to %Q:%Q","dcc"),
-		&(m_pMarshal->remoteIp()),&(m_pMarshal->remotePort()));
-	output(KVI_OUT_DCCMSG,__tr2qs_ctx("Local end is %Q:%Q","dcc"),
-		&(m_pMarshal->localIp()),&(m_pMarshal->localPort()));
+	output(KVI_OUT_DCCMSG, __tr2qs_ctx("Connected to %Q:%Q", "dcc"),
+	    &(m_pMarshal->remoteIp()), &(m_pMarshal->remotePort()));
+	output(KVI_OUT_DCCMSG, __tr2qs_ctx("Local end is %Q:%Q", "dcc"),
+	    &(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
 	if(!(m_pDescriptor->bActive))
 	{
-		m_pDescriptor->szIp   = m_pMarshal->remoteIp();
+		m_pDescriptor->szIp = m_pMarshal->remoteIp();
 		m_pDescriptor->szPort = m_pMarshal->remotePort();
 		m_pDescriptor->szHost = m_pMarshal->remoteIp();
 	}
 	updateCaption();
 
-	connect(m_pUpdateTimer,SIGNAL(timeout()),this,SLOT(updateInfo()));
+	connect(m_pUpdateTimer, SIGNAL(timeout()), this, SLOT(updateInfo()));
 	m_pUpdateTimer->start(1000);
 
 	KviDccVoiceThreadOptions * opt = new KviDccVoiceThreadOptions;
 
-
 	opt->pCodec = kvi_dcc_voice_get_codec(m_pDescriptor->szCodec.ptr());
 
-	output(KVI_OUT_DCCMSG,__tr2qs_ctx("Actual codec used is '%s'","dcc"),opt->pCodec->name());
+	output(KVI_OUT_DCCMSG, __tr2qs_ctx("Actual codec used is '%s'", "dcc"), opt->pCodec->name());
 
 	opt->bForceHalfDuplex = KVI_OPTION_BOOL(KviOption_boolDccVoiceForceHalfDuplex);
-//	opt->bForceDummyReadTrigger = false;
+	//	opt->bForceDummyReadTrigger = false;
 	opt->iPreBufferSize = KVI_OPTION_UINT(KviOption_uintDccVoicePreBufferSize);
 	opt->szSoundDevice = KVI_OPTION_STRING(KviOption_stringDccVoiceSoundDevice).toUtf8().data();
 	opt->iSampleRate = m_pDescriptor->iSampleRate;
 
-	m_pSlaveThread = new DccVoiceThread(this,m_pMarshal->releaseSocket(),opt);
-	connect(m_pUpdateTimer,SIGNAL(timeout()),this,SLOT(updateInfo()));
+	m_pSlaveThread = new DccVoiceThread(this, m_pMarshal->releaseSocket(), opt);
+	connect(m_pUpdateTimer, SIGNAL(timeout()), this, SLOT(updateInfo()));
 	m_pSlaveThread->start();
 
 	m_pTalkButton->setEnabled(true);
@@ -959,8 +1015,10 @@ void DccVoiceWindow::startTalking()
 
 void DccVoiceWindow::startOrStopTalking(bool bStart)
 {
-	if(bStart)startTalking();
-	else stopTalking();
+	if(bStart)
+		startTalking();
+	else
+		stopTalking();
 }
 
 int DccVoiceWindow::getMixerVolume(void) const
@@ -978,14 +1036,14 @@ int DccVoiceWindow::getMixerVolume(void) const
 
 	req = KVI_OPTION_BOOL(KviOption_boolDccVoiceVolumeSliderControlsPCM) ? SOUND_MIXER_READ_PCM : SOUND_MIXER_READ_VOLUME;
 
-	if(::ioctl(fd,req,&ret))
+	if(::ioctl(fd, req, &ret))
 	{
 		::close(fd);
 		return 0;
 	}
 
 	left = (ret & 0x00ff);
-//	right = (ret & 0xff00) >> 8;
+	//	right = (ret & 0xff00) >> 8;
 
 	::close(fd);
 
@@ -1011,17 +1069,16 @@ void DccVoiceWindow::setMixerVolume(int vol)
 	::ioctl(fd, req, &val);
 	::close(fd);
 
-	m_pVolumeSlider->setToolTip(__tr2qs_ctx("Volume: %1","dcc").arg(-vol));
+	m_pVolumeSlider->setToolTip(__tr2qs_ctx("Volume: %1", "dcc").arg(-vol));
 #endif
 }
-
 
 /* The code below doesn't work. Guess I have to catch some other widget's focusInEvent. Which one ? */
 /* The point is to move the volume slider to correct position if for example user switched to
  * another KVirc window, fired up xmms, changed the volume, and returned to our dcc voice window */
-void DccVoiceWindow::focusInEvent(QFocusEvent *e)
+void DccVoiceWindow::focusInEvent(QFocusEvent * e)
 {
-//	qDebug("focusInEvent()");
+	//	qDebug("focusInEvent()");
 	m_pVolumeSlider->setValue(getMixerVolume());
 	setMixerVolume(m_pVolumeSlider->value());
 

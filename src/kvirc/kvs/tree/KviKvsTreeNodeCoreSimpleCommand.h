@@ -35,15 +35,15 @@ class KviKvsRunTimeContext;
 class KVIRC_API KviKvsTreeNodeCoreSimpleCommand : public KviKvsTreeNodeSimpleCommand
 {
 public:
-	KviKvsTreeNodeCoreSimpleCommand(const QChar * pLocation,const QString &szCmdName,KviKvsTreeNodeDataList * params,KviKvsCoreSimpleCommandExecRoutine * r);
+	KviKvsTreeNodeCoreSimpleCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params, KviKvsCoreSimpleCommandExecRoutine * r);
 	~KviKvsTreeNodeCoreSimpleCommand();
+
 private:
 	KviKvsCoreSimpleCommandExecRoutine * m_pExecRoutine; // shallow pointer!
 public:
-	virtual void contextDescription(QString &szBuffer);
+	virtual void contextDescription(QString & szBuffer);
 	virtual void dump(const char * prefix);
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
-
 
 #endif //!_KVI_KVS_TREENODE_CORESIMPLECOMMAND_H_

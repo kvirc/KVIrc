@@ -35,12 +35,13 @@ class KviKvsVariant;
 class KviKvsTreeNodeCommandEvaluation : public KviKvsTreeNodeData
 {
 public:
-	KviKvsTreeNodeCommandEvaluation(const QChar * pLocation,KviKvsTreeNodeInstruction * pInstruction);
+	KviKvsTreeNodeCommandEvaluation(const QChar * pLocation, KviKvsTreeNodeInstruction * pInstruction);
 	~KviKvsTreeNodeCommandEvaluation();
+
 protected:
 	KviKvsTreeNodeInstruction * m_pInstruction; // owned, never 0
 public:
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
 };
 
 #endif //!_KVI_KVS_TREENODE_COMMANDEVALUATION_H_

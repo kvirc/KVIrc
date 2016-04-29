@@ -55,10 +55,12 @@ protected:
 	* \brief Destroys the user identity manager object
 	*/
 	~KviUserIdentityManager();
+
 protected:
 	static KviUserIdentityManager * m_pInstance;
-	KviPointerHashTable<QString,KviUserIdentity> * m_pIdentityDict;
+	KviPointerHashTable<QString, KviUserIdentity> * m_pIdentityDict;
 	QString m_szDefaultIdentity;
+
 public:
 	/**
 	* \brief Initializes a new user identity
@@ -76,20 +78,20 @@ public:
 	* \brief Returns the instance of the identity
 	* \returns KviUserIdentityManager *
 	*/
-	static KviUserIdentityManager * instance(){ return m_pInstance; };
+	static KviUserIdentityManager * instance() { return m_pInstance; };
 
 	/**
 	* \brief Returns the identity dictionary
 	* \returns KviPointerHashTable<QString,KviUserIdentity> *
 	*/
-	KviPointerHashTable<QString,KviUserIdentity> * identityDict(){ return m_pIdentityDict; };
+	KviPointerHashTable<QString, KviUserIdentity> * identityDict() { return m_pIdentityDict; };
 
 	/**
 	* \brief Searches fot an identity
 	* \param szId The identity id to find
 	* \return const KviUserIdentity *
 	*/
-	const KviUserIdentity * findIdentity(const QString & szId){ return m_pIdentityDict->find(szId); };
+	const KviUserIdentity * findIdentity(const QString & szId) { return m_pIdentityDict->find(szId); };
 
 	/**
 	* \brief Returns the default identity
@@ -103,7 +105,7 @@ public:
 	* \param szIdentityId The identity id to set
 	* \return void
 	*/
-	void setDefaultIdentity(const QString & szIdentityId){ m_szDefaultIdentity = szIdentityId; };
+	void setDefaultIdentity(const QString & szIdentityId) { m_szDefaultIdentity = szIdentityId; };
 
 	/**
 	* \brief Creates a new working copy

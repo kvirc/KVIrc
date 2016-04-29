@@ -61,43 +61,45 @@
 		[/example]
 */
 
-
 static bool language_kvs_cmd_detect(KviKvsModuleFunctionCall * c)
 {
 	QString text, error;
-	KviKvsArray *matches;
+	KviKvsArray * matches;
 	KviKvsHash *match, *ret;
 	LanguageAndEncodingResult r;
-	int matchcount=DLE_NUM_BEST_MATCHES;
+	int matchcount = DLE_NUM_BEST_MATCHES;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL,text)
+	KVSM_PARAMETER("text", KVS_PT_STRING, KVS_PF_OPTIONAL, text)
 	KVSM_PARAMETERS_END(c)
 
 	//on error we return an empty array
 	matches = new KviKvsArray();
 
-	if(text.isEmpty()){
+	if(text.isEmpty())
+	{
 		error = "err_notext";
 		matchcount = 0;
-	} else {
-		detect_language_and_encoding(text.toUtf8().data(),&r,0);
+	}
+	else
+	{
+		detect_language_and_encoding(text.toUtf8().data(), &r, 0);
 
-		for(int i=0;i<matchcount;i++)
+		for(int i = 0; i < matchcount; i++)
 		{
 			match = new KviKvsHash();
-			match->set("language",new KviKvsVariant(QString(r.match[i].szLanguage)));
-			match->set("encoding",new KviKvsVariant(r.match[i].szEncoding));
-			match->set("score",new KviKvsVariant((kvs_real_t)r.match[i].dScore));
+			match->set("language", new KviKvsVariant(QString(r.match[i].szLanguage)));
+			match->set("encoding", new KviKvsVariant(r.match[i].szEncoding));
+			match->set("score", new KviKvsVariant((kvs_real_t)r.match[i].dScore));
 			matches->set(i, new KviKvsVariant(match));
 		}
 	}
 
 	ret = new KviKvsHash();
-	ret->set("matches",new KviKvsVariant(matches));
-	ret->set("matchcount",new KviKvsVariant((kvs_int_t)matchcount));
-	ret->set("error",new KviKvsVariant(error));
-	ret->set("accuracy",new KviKvsVariant((kvs_real_t)r.dAccuracy));
+	ret->set("matches", new KviKvsVariant(matches));
+	ret->set("matchcount", new KviKvsVariant((kvs_int_t)matchcount));
+	ret->set("error", new KviKvsVariant(error));
+	ret->set("accuracy", new KviKvsVariant((kvs_real_t)r.dAccuracy));
 
 	c->returnValue()->setHash(ret);
 
@@ -106,7 +108,7 @@ static bool language_kvs_cmd_detect(KviKvsModuleFunctionCall * c)
 
 static bool language_module_init(KviModule * m)
 {
-	KVSM_REGISTER_FUNCTION(m,"detect",language_kvs_cmd_detect);
+	KVSM_REGISTER_FUNCTION(m, "detect", language_kvs_cmd_detect);
 	return true;
 }
 
@@ -116,13 +118,12 @@ static bool language_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-	"Language",                                              // module name
-	"4.0.0",                                                // module version
-	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-	"A simple statistical language/encoding detector",
-	language_module_init,
-	0,
-	0,
-	language_module_cleanup,
-	0
-)
+    "Language",                                                     // module name
+    "4.0.0",                                                        // module version
+    "Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+    "A simple statistical language/encoding detector",
+    language_module_init,
+    0,
+    0,
+    language_module_cleanup,
+    0)
