@@ -117,9 +117,8 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	i = 0;
 	int iMatch = 0;
 
-	for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
+	for(auto szTmp : list)
 	{
-		QString szTmp = *it;
 		szTmp.replace("kvirc_", "");
 		szTmp.replace(".mo", "");
 		m_pForcedLocaleCombo->insertItem(m_pForcedLocaleCombo->count(), szTmp);

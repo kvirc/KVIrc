@@ -388,9 +388,8 @@ void QHttpAuthenticatorPrivate::parseHttpResponse(const QList<QPair<QByteArray, 
     */
 
 	QByteArray headerVal;
-	for(int i = 0; i < values.size(); ++i)
+	for(const auto & current : values)
 	{
-		const QPair<QByteArray, QByteArray> & current = values.at(i);
 		if(current.first.toLower() != search)
 			continue;
 		QByteArray str = current.second.toLower();

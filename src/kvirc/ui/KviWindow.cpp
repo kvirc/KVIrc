@@ -489,8 +489,8 @@ void KviWindow::setProgress(int iProgress)
 void KviWindow::listWindowTypes()
 {
 	outputNoFmt(KVI_OUT_SYSTEMMESSAGE, __tr2qs("List of window types available in this release of KVIrc:"));
-	for(int i = 0; i < KviWindow::TypeCount; i++)
-		outputNoFmt(KVI_OUT_SYSTEMMESSAGE, m_typeTable[i]);
+	for(auto & i : m_typeTable)
+		outputNoFmt(KVI_OUT_SYSTEMMESSAGE, i);
 }
 
 void KviWindow::getConfigGroupName(QString & szBuffer)

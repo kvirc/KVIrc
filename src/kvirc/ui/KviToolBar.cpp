@@ -120,9 +120,9 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 
 		QAction * pTmp = nullptr;
 		IconSizes iconSize;
-		for(uint i = 0; i < VALID_ICONSIZES_NUM; i++)
+		for(auto & valid_iconsize : valid_iconsizes)
 		{
-			iconSize = valid_iconsizes[i];
+			iconSize = valid_iconsize;
 
 			pTmp = pIconSizeGroup->addAction(g_pToolBarIconSizesPopup->addAction(__tr2qs(iconSize.pcName)));
 			pTmp->setData((uint)iconSize.uSize);
@@ -138,9 +138,9 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 
 		pTmp = nullptr;
 		ButtonStyles buttonStyle;
-		for(uint i = 0; i < VALID_BUTTONSTYLES_NUM; i++)
+		for(auto & valid_buttonstyle : valid_buttonstyles)
 		{
-			buttonStyle = valid_buttonstyles[i];
+			buttonStyle = valid_buttonstyle;
 
 			pTmp = pButtonStyleGroup->addAction(g_pToolBarButtonStylePopup->addAction(__tr2qs(buttonStyle.pcName)));
 			pTmp->setData((uint)buttonStyle.uStyle);

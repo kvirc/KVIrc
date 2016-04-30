@@ -209,10 +209,10 @@ void ChannelsJoinDialog::fillListView()
 				hdr->setText(0, __tr2qs("Current Network"));
 				hdr->setExpanded(true);
 
-				for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
+				for(auto & it : *pList)
 				{
 					chld = new QTreeWidgetItem(hdr, RecentChannelItem);
-					chld->setText(0, *it);
+					chld->setText(0, it);
 					chld->setIcon(0, *(g_pIconManager->getSmallIcon(KviIconManager::Channel)));
 				}
 				hdr->sortChildren(0, Qt::AscendingOrder);
@@ -234,9 +234,8 @@ void ChannelsJoinDialog::fillListView()
 
 	for(QStringList * pChans = pDict->first(); pChans; pChans = pDict->next())
 	{
-		for(QStringList::Iterator it = pChans->begin(); it != pChans->end(); ++it)
+		for(auto chan : *pChans)
 		{
-			QString chan = *it;
 			if(hNoDuplicates.contains(chan.toLower()))
 				continue;
 			hNoDuplicates.insert(chan.toLower(), 1);

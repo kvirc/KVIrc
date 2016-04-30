@@ -254,9 +254,8 @@ void KviMainWindow::unregisterModuleExtensionToolBar(KviMexToolBar * t)
 
 void KviMainWindow::restoreModuleExtensionToolBars()
 {
-	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistModuleExtensionToolbars).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistModuleExtensionToolbars).end(); ++it)
+	for(auto szEntry : KVI_OPTION_STRINGLIST(KviOption_stringlistModuleExtensionToolbars))
 	{
-		QString szEntry = *it;
 		int idx = szEntry.indexOf(':');
 		if(idx != -1)
 		{

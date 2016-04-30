@@ -91,9 +91,9 @@ namespace AddonFunctions
 			return notAValidAddonPackage(szError);
 
 		// make sure the default fields exist
-		for(int i = 0; i < 6; i++)
+		for(auto & check_field : check_fields)
 		{
-			pValue = pInfoFields->find(check_fields[i]);
+			pValue = pInfoFields->find(check_field);
 			if(!pValue)
 				return notAValidAddonPackage(szError);
 		}
@@ -340,10 +340,8 @@ namespace AddonFunctions
 			return false;
 		}
 
-		for(QFileInfoList::Iterator it = ls.begin(); it != ls.end(); ++it)
+		for(auto & inf : ls)
 		{
-			const QFileInfo & inf = *it;
-
 			if(inf.isDir())
 			{
 				if(!pw.addDirectory(inf.absoluteFilePath(), QString("%1/").arg(inf.fileName())))

@@ -396,10 +396,10 @@ void HttpFileTransfer::requestSent(const QStringList & requestHeaders)
 	if(!m_bNoOutput)
 		out->output(KVI_OUT_GENERICSTATUS, __tr2qs_ctx("[HTTP %d]: Request data sent:", "http"), id());
 
-	for(QStringList::ConstIterator it = requestHeaders.begin(); it != requestHeaders.end(); ++it)
+	for(const auto & requestHeader : requestHeaders)
 	{
 		if(!m_bNoOutput)
-			out->output(KVI_OUT_GENERICSTATUS, "[HTTP %d]:   %s", id(), (*it).toUtf8().data());
+			out->output(KVI_OUT_GENERICSTATUS, "[HTTP %d]:   %s", id(), requestHeader.toUtf8().data());
 	}
 
 	m_lRequest = requestHeaders;

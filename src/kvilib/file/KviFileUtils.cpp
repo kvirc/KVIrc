@@ -450,9 +450,9 @@ namespace KviFileUtils
 	{
 		QString szSrc(szPath);
 		szPath = "";
-		for(int i = 0; i < szSrc.length(); i++)
+		for(const auto & i : szSrc)
 		{
-			QChar cur = szSrc[i];
+			QChar cur = i;
 			if(!(cur.isLetter() || cur.isDigit() || cur == ' ' || cur == '_' || cur == '.' || cur == '#' || cur == '%'))
 			{
 				if(cur.row() != 0)
@@ -480,9 +480,9 @@ namespace KviFileUtils
 	{
 		QString szSrc(szPath);
 		szPath = "";
-		for(int i = 0; i < szSrc.length(); i++)
+		for(const auto & i : szSrc)
 		{
-			QChar cur = szSrc[i];
+			QChar cur = i;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			if(cur.unicode() < 32 || cur == '<' || cur == '>' || cur == ':' || cur == '"' || cur == '/' || cur == '\\' || cur == '|' || cur == '?' || cur == '*')
 #else

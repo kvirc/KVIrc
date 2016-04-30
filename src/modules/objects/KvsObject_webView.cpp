@@ -821,12 +821,12 @@ KVSO_CLASS_FUNCTION(webView, findText)
 	KVSO_PARAMETERS_END(c)
 	int findflag = 0;
 	int sum = 0;
-	for(QStringList::Iterator it = szFindFlag.begin(); it != szFindFlag.end(); ++it)
+	for(auto & it : szFindFlag)
 	{
 		findflag = 0;
 		for(unsigned int j = 0; j < findflag_num; j++)
 		{
-			if(KviQString::equalCI((*it), findflag_tbl[j]))
+			if(KviQString::equalCI(it, findflag_tbl[j]))
 			{
 				findflag = findflag_cod[j];
 				break;
@@ -835,7 +835,7 @@ KVSO_CLASS_FUNCTION(webView, findText)
 		if(findflag)
 			sum = sum | findflag;
 		else
-			c->warning(__tr2qs_ctx("Unknown findflag  '%Q'", "objects"), &(*it));
+			c->warning(__tr2qs_ctx("Unknown findflag  '%Q'", "objects"), &it);
 	}
 	((QWebView *)widget())->findText(szName, (QWebPage::FindFlags)findflag);
 	return true;

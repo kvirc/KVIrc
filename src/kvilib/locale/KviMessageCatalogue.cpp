@@ -123,10 +123,10 @@ static int somePrimeNumbers[90] = {
 
 int kvi_getFirstBiggerPrime(int iNumber)
 {
-	for(int i = 0; i < 90; i++)
+	for(int somePrimeNumber : somePrimeNumbers)
 	{
-		if(somePrimeNumbers[i] >= iNumber)
-			return somePrimeNumbers[i];
+		if(somePrimeNumber >= iNumber)
+			return somePrimeNumber;
 	}
 	return 9973; //error!
 }

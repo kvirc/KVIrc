@@ -1948,11 +1948,11 @@ void KviIconManager::clearCache()
 void KviIconManager::reloadImages()
 {
 	clearCache();
-	for(int i = 0; i < KviIconManager::IconCount; i++)
+	for(auto & m_smallIcon : m_smallIcons)
 	{
-		if(m_smallIcons[i])
-			delete m_smallIcons[i];
-		m_smallIcons[i] = nullptr;
+		if(m_smallIcon)
+			delete m_smallIcon;
+		m_smallIcon = nullptr;
 	}
 }
 

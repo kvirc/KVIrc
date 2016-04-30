@@ -82,8 +82,8 @@ void KviProxy::setNamedProtocol(const char * proto)
 
 void KviProxy::getSupportedProtocolNames(QStringList & buf)
 {
-	for(int i = 0; i < 3; i++)
-		buf.append(QString(proxy_protocols_table[i]));
+	for(const auto & i : proxy_protocols_table)
+		buf.append(QString(i));
 }
 
 void KviProxy::normalizeUserAndPass()

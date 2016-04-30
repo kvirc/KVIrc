@@ -334,7 +334,7 @@ namespace KviTheme
 		QDir d(szThemePath);
 		QStringList sl = d.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 
-		for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
-			slThemes.append(*it);
+		for(auto & it : sl)
+			slThemes.append(it);
 	}
 };

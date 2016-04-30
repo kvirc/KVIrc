@@ -1246,11 +1246,11 @@ KVIMODULEEXPORTFUNC void dccModuleCtcpDccParseRoutine(KviDccRequest * dcc)
 {
 	dcc->szType.toUpper();
 
-	for(int i = 0; i < KVI_NUM_KNOWN_DCC_TYPES; i++)
+	for(auto & i : dccParseProcTable)
 	{
-		if(kvi_strEqualCS(dccParseProcTable[i].type, dcc->szType.ptr()))
+		if(kvi_strEqualCS(i.type, dcc->szType.ptr()))
 		{
-			(dccParseProcTable[i].proc)(dcc);
+			(i.proc)(dcc);
 			return;
 		}
 	}

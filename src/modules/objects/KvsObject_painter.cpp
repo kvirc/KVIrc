@@ -1323,12 +1323,12 @@ KVSO_CLASS_FUNCTION(painter, drawText)
 	int align, sum = 0;
 	if(szAlignList.count())
 	{
-		for(QStringList::Iterator it = szAlignList.begin(); it != szAlignList.end(); ++it)
+		for(auto & it : szAlignList)
 		{
 			align = 0;
 			for(unsigned int j = 0; j < align_num; j++)
 			{
-				if(KviQString::equalCI((*it), align_tbl[j]))
+				if(KviQString::equalCI(it, align_tbl[j]))
 				{
 					align = align_cod[j];
 					break;
@@ -1337,7 +1337,7 @@ KVSO_CLASS_FUNCTION(painter, drawText)
 			if(align)
 				sum = sum | align;
 			else
-				c->warning(__tr2qs_ctx("Unknown alignment '%Q'", "objects"), &(*it));
+				c->warning(__tr2qs_ctx("Unknown alignment '%Q'", "objects"), &it);
 		}
 	}
 	QRect rect;

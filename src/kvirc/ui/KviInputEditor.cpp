@@ -273,9 +273,8 @@ void KviInputEditor::dropEvent(QDropEvent * e)
 	if(list.isEmpty())
 		return;
 
-	for(QList<QUrl>::Iterator it = list.begin(); it != list.end(); ++it)
+	for(auto url : list)
 	{
-		QUrl url = *it;
 		QString szPath = url.toLocalFile();
 		if(szPath.endsWith(KVI_FILEEXTENSION_SCRIPT, Qt::CaseInsensitive))
 		{

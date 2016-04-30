@@ -518,9 +518,8 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 	QDir d(szPath);
 	QStringList sl;
 	sl = d.entryList(QDir::Files);
-	for(QStringList::Iterator it2 = sl.begin(); it2 != sl.end(); ++it2)
+	for(auto szName : sl)
 	{
-		QString szName = *it2;
 		szName.replace("--", "::");
 		if(szName != ".." && szName != ".")
 			classdict->insert(szName.left(szName.length() - 4), &bFake);

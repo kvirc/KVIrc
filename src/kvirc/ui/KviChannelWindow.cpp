@@ -174,9 +174,9 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 		szListModes = pServerInfo->supportedListModes();
 		szListModes.remove('b');
 
-		for(int i = 0; i < szListModes.size(); ++i)
+		for(auto szListMode : szListModes)
 		{
-			char cMode = szListModes.at(i).unicode();
+			char cMode = szListMode.unicode();
 			QString szDescription = pServerInfo->getChannelModeDescription(cMode);
 			if(szDescription.isEmpty())
 				szDescription = __tr2qs("Mode \"%1\" masks").arg(cMode);

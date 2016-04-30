@@ -68,9 +68,8 @@ void KviModuleManager::loadModulesByCaps(const QString & caps, const QString & d
 	// FIXME: maybe check timestamps ? (old modules)
 
 	QStringList sl = d.entryList(QDir::Files | QDir::Readable | QDir::NoSymLinks);
-	for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
+	for(auto modname : sl)
 	{
-		QString modname = *it;
 		KviQString::cutToLast(modname, KVI_PATH_SEPARATOR_CHAR);
 		getModule(modname);
 	}
@@ -98,9 +97,9 @@ void KviModuleManager::completeModuleNames(const QString & path, const QString &
 	// FIXME: maybe check timestamps ? (old modules)
 
 	QStringList sl = d.entryList(QDir::Files | QDir::Readable | QDir::NoSymLinks);
-	for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
+	for(auto & it : sl)
 	{
-		QString * modname = new QString(*it);
+		QString * modname = new QString(it);
 		KviQString::cutToLast(*modname, KVI_PATH_SEPARATOR_CHAR);
 		KviQString::cutToFirst(*modname, "kvi");
 		if(KviQString::equalCIN(word, *modname, word.length()))

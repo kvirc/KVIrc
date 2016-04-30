@@ -1909,16 +1909,13 @@ void KviApplication::buildRecentChannels()
 
 	QString szChan, szNet;
 
-	for(
-	    QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentChannels).begin();
-	    it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentChannels).end();
-	    ++it)
+	for(auto & it : KVI_OPTION_STRINGLIST(KviOption_stringlistRecentChannels))
 	{
-		if((*it).isEmpty())
+		if(it.isEmpty())
 			continue;
 
-		szChan = (*it).section(KVI_RECENT_CHANNELS_SEPARATOR, 0, 0);
-		szNet = (*it).section(KVI_RECENT_CHANNELS_SEPARATOR, 1);
+		szChan = it.section(KVI_RECENT_CHANNELS_SEPARATOR, 0, 0);
+		szNet = it.section(KVI_RECENT_CHANNELS_SEPARATOR, 1);
 
 		if(szNet.isEmpty())
 			continue;
@@ -1976,11 +1973,11 @@ void KviApplication::fillRecentServersPopup(QMenu * pMenu)
 {
 	// FIXME: #warning "MAYBE DISABLE THE SERVERS THAT WE ARE ALREADY CONNECTED TO ?"
 	pMenu->clear();
-	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).end(); ++it)
+	for(auto & it : KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers))
 	{
-		if(*it == "")
+		if(it == "")
 			continue;
-		pMenu->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)), *it);
+		pMenu->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Server)), it);
 	}
 }
 
@@ -1989,18 +1986,18 @@ void KviApplication::fillRecentNicknamesPopup(QMenu * pMenu, KviConsoleWindow * 
 	pMenu->clear();
 	QAction * pAction;
 	bool bAlreadyFound = false;
-	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentNicknames).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentNicknames).end(); ++it)
+	for(auto & it : KVI_OPTION_STRINGLIST(KviOption_stringlistRecentNicknames))
 	{
-		if(*it == "")
+		if(it == "")
 			continue;
-		pAction = pMenu->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Nick)), *it);
+		pAction = pMenu->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Nick)), it);
 		if(!pConsole->isConnected())
 			pAction->setEnabled(false);
 		else
 		{
 			if(!bAlreadyFound)
 			{
-				bool bIsCurrent = KviQString::equalCS(pConsole->connection()->currentNickName(), *it);
+				bool bIsCurrent = KviQString::equalCS(pConsole->connection()->currentNickName(), it);
 				pAction->setEnabled(!bIsCurrent);
 				if(bIsCurrent)
 					bAlreadyFound = true;
@@ -2016,15 +2013,15 @@ void KviApplication::fillRecentChannelsPopup(QMenu * pMenu, KviConsoleWindow * p
 	QStringList * pList = recentChannelsForNetwork(pConsole->currentNetworkName());
 	if(pList)
 	{
-		for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
+		for(auto & it : *pList)
 		{
-			if(*it == "")
+			if(it == "")
 				continue; // ?
-			pAction = pMenu->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)), *it);
+			pAction = pMenu->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)), it);
 			if(!pConsole->isConnected())
 				pAction->setEnabled(false);
 			else
-				pAction->setEnabled(!(pConsole->connection()->findChannel(*it)));
+				pAction->setEnabled(!(pConsole->connection()->findChannel(it)));
 		}
 	}
 }

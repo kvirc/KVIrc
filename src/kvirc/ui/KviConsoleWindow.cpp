@@ -154,12 +154,9 @@ void KviConsoleWindow::recentUrlsChanged()
 {
 	QString cur = m_pAddressEdit->currentText();
 	m_pAddressEdit->clear();
-	for(
-	    QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls).begin();
-	    it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls).end();
-	    ++it)
+	for(auto & it : KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls))
 	{
-		m_pAddressEdit->addItem(*(g_pIconManager->getSmallIcon(KviIconManager::Url)), *it);
+		m_pAddressEdit->addItem(*(g_pIconManager->getSmallIcon(KviIconManager::Url)), it);
 	}
 
 	int i = m_pAddressEdit->findText(cur);
@@ -233,20 +230,18 @@ void KviConsoleWindow::completeChannel(const QString & word, KviPointerList<QStr
 	QStringList * pList = g_pApp->recentChannelsForNetwork(currentNetworkName());
 	if(pList)
 	{
-		for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
+		for(auto & it : *pList)
 		{
-			if(KviQString::equalCIN((*it), word, word.length()))
-				matches->append(new QString(*it));
+			if(KviQString::equalCIN(it, word, word.length()))
+				matches->append(new QString(it));
 		}
 	}
 }
 
 void KviConsoleWindow::completeServer(const QString & word, KviPointerList<QString> * matches)
 {
-	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).end(); ++it)
+	for(auto srv : KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers))
 	{
-		QString srv((*it));
-
 		KviQString::cutToFirst(srv, '/');
 		while(srv.startsWith("/"))
 			srv.remove(0, 1);
@@ -645,28 +640,27 @@ int KviConsoleWindow::applyHighlighting(KviWindow * wnd, int type, const QString
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseWordHighlighting))
 	{
-		for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistHighlightWords).begin();
-		    it != KVI_OPTION_STRINGLIST(KviOption_stringlistHighlightWords).end(); ++it)
+		for(auto & it : KVI_OPTION_STRINGLIST(KviOption_stringlistHighlightWords))
 		{
-			if((*it).isEmpty())
+			if(it.isEmpty())
 				continue;
 
 			if(KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting))
 			{
-				if(szStripMsg.contains(*it, cs))
-					return triggerOnHighlight(wnd, type, nick, user, host, szMsg, *it);
+				if(szStripMsg.contains(it, cs))
+					return triggerOnHighlight(wnd, type, nick, user, host, szMsg, it);
 			}
 			else
 			{
 				if(!szPattern.isEmpty())
 					rgxHlite.setPattern(
-					    QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(QRegExp::escape(szPattern), QRegExp::escape(*it)));
+					    QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(QRegExp::escape(szPattern), QRegExp::escape(it)));
 				else
 					rgxHlite.setPattern(
-					    QString("(?:\\s|^)%1(?:\\s|$)").arg(QRegExp::escape(*it)));
+					    QString("(?:\\s|^)%1(?:\\s|$)").arg(QRegExp::escape(it)));
 				rgxHlite.setCaseSensitivity(cs);
 				if(szStripMsg.contains(rgxHlite))
-					return triggerOnHighlight(wnd, type, nick, user, host, szMsg, *it);
+					return triggerOnHighlight(wnd, type, nick, user, host, szMsg, it);
 			}
 		}
 	}

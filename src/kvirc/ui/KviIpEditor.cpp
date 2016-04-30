@@ -90,11 +90,11 @@ KviIpEditor::AddressType KviIpEditor::addressType() const
 bool KviIpEditor::hasEmptyFields() const
 {
 	bool bHasEF = false;
-	for(int i = 0; i < 8; i++)
+	for(auto i : m_pEdit)
 	{
-		if(m_pEdit[i])
+		if(i)
 		{
-			if(m_pEdit[i]->text().isEmpty())
+			if(i->text().isEmpty())
 				bHasEF = true;
 		}
 	}

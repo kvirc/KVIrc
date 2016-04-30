@@ -425,16 +425,16 @@ void LogViewWindow::itemSelected(QTreeWidgetItem * it, QTreeWidgetItem *)
 	QStringList lines = szText.split('\n');
 	bool bOk;
 	int iMsgType;
-	for(QStringList::Iterator it = lines.begin(); it != lines.end(); ++it)
+	for(auto & line : lines)
 	{
-		QString szNum = (*it).section(' ', 0, 0);
+		QString szNum = line.section(' ', 0, 0);
 		iMsgType = szNum.toInt(&bOk);
 		if(iMsgType < 0 || iMsgType > (KVI_NUM_MSGTYPE_OPTIONS - 1))
 			iMsgType = 0;
 		if(bOk)
-			outputNoFmt(iMsgType, (*it).section(' ', 1), KviIrcView::NoRepaint | KviIrcView::NoTimestamp);
+			outputNoFmt(iMsgType, line.section(' ', 1), KviIrcView::NoRepaint | KviIrcView::NoTimestamp);
 		else
-			outputNoFmt(0, *it, KviIrcView::NoRepaint | KviIrcView::NoTimestamp);
+			outputNoFmt(0, line, KviIrcView::NoRepaint | KviIrcView::NoTimestamp);
 	}
 	m_pIrcView->repaint();
 }
@@ -633,9 +633,9 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 				szLog += ".txt";
 
 			// Scan the file
-			for(QStringList::Iterator it = lines.begin(); it != lines.end(); ++it)
+			for(auto & line : lines)
 			{
-				szTmp = (*it);
+				szTmp = line;
 				szLine = KviControlCodes::stripControlBytes(szTmp);
 
 				// Remove icons' code
@@ -710,9 +710,9 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 			szOutputBuffer += "<h2>" + szTitle + "</h2>\n<h3>Date: " + szDate + "</h3>\n";
 
 			// Scan the file
-			for(QStringList::Iterator it = lines.begin(); it != lines.end(); ++it)
+			for(auto & line : lines)
 			{
-				szTmp = (*it);
+				szTmp = line;
 
 				// Find who has talked
 				QString szTmpNick = szTmp.section(" ", 2, 2);

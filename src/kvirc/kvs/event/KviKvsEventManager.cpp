@@ -91,8 +91,8 @@ KviKvsEventManager * KviKvsEventManager::m_pInstance = nullptr;
 KviKvsEventManager::KviKvsEventManager()
 {
 	m_pInstance = this;
-	for(int i = 0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
-		m_rawEventTable[i] = nullptr;
+	for(auto & i : m_rawEventTable)
+		i = nullptr;
 }
 
 KviKvsEventManager::~KviKvsEventManager()
@@ -273,14 +273,14 @@ bool KviKvsEventManager::removeModuleAppHandler(unsigned int uEvIdx, KviKvsModul
 void KviKvsEventManager::removeAllModuleAppHandlers(KviKvsModuleInterface * pIface)
 {
 	KviKvsEventHandler * h;
-	for(unsigned int i = 0; i < KVI_KVS_NUM_APP_EVENTS; i++)
+	for(auto & i : m_appEventTable)
 	{
-		if(!m_appEventTable[i].handlers())
+		if(!i.handlers())
 			continue;
 
 		KviPointerList<KviKvsEventHandler> l;
 		l.setAutoDelete(false);
-		for(h = m_appEventTable[i].handlers()->first(); h; h = m_appEventTable[i].handlers()->next())
+		for(h = i.handlers()->first(); h; h = i.handlers()->next())
 		{
 			if(h->type() == KviKvsEventHandler::Module)
 			{
@@ -302,21 +302,21 @@ void KviKvsEventManager::removeAllModuleAppHandlers(KviKvsModuleInterface * pIfa
 			// END COMPAT
 		}
 		for(h = l.first(); h; h = l.next())
-			m_appEventTable[i].removeHandler(h);
+			i.removeHandler(h);
 	}
 }
 
 void KviKvsEventManager::removeAllModuleRawHandlers(KviKvsModuleInterface * pIface)
 {
 	KviKvsEventHandler * h;
-	for(unsigned int i = 0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
+	for(auto & i : m_rawEventTable)
 	{
-		if(!m_rawEventTable[i])
+		if(!i)
 			continue;
 
 		KviPointerList<KviKvsEventHandler> l;
 		l.setAutoDelete(false);
-		for(h = m_rawEventTable[i]->first(); h; h = m_rawEventTable[i]->next())
+		for(h = i->first(); h; h = i->next())
 		{
 			if(h->type() == KviKvsEventHandler::Module)
 			{
@@ -338,11 +338,11 @@ void KviKvsEventManager::removeAllModuleRawHandlers(KviKvsModuleInterface * pIfa
 			// END COMPAT
 		}
 		for(h = l.first(); h; h = l.next())
-			m_rawEventTable[i]->removeRef(h);
-		if(m_rawEventTable[i]->isEmpty())
+			i->removeRef(h);
+		if(i->isEmpty())
 		{
-			delete m_rawEventTable[i];
-			m_rawEventTable[i] = nullptr;
+			delete i;
+			i = nullptr;
 		}
 	}
 }
@@ -433,22 +433,22 @@ void KviKvsEventManager::removeAllModuleHandlers(KviKvsModuleInterface * pIface)
 
 void KviKvsEventManager::removeAllScriptAppHandlers()
 {
-	for(size_t i = 0; i < KVI_KVS_NUM_APP_EVENTS; i++)
+	for(auto & i : m_appEventTable)
 	{
-		m_appEventTable[i].clearScriptHandlers();
+		i.clearScriptHandlers();
 	}
 }
 
 void KviKvsEventManager::removeAllScriptRawHandlers()
 {
-	for(size_t i = 0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
+	for(auto & i : m_rawEventTable)
 	{
-		if(m_rawEventTable[i])
+		if(i)
 		{
 			KviPointerList<KviKvsEventHandler> dl;
 			dl.setAutoDelete(false);
 			KviKvsEventHandler * e;
-			for(e = m_rawEventTable[i]->first(); e; e = m_rawEventTable[i]->next())
+			for(e = i->first(); e; e = i->next())
 			{
 				if(e->type() == KviKvsEventHandler::Script)
 					dl.append(e);
@@ -456,13 +456,13 @@ void KviKvsEventManager::removeAllScriptRawHandlers()
 
 			for(e = dl.first(); e; e = dl.next())
 			{
-				m_rawEventTable[i]->removeRef(e);
+				i->removeRef(e);
 			}
 
-			if(m_rawEventTable[i]->isEmpty())
+			if(i->isEmpty())
 			{
-				delete m_rawEventTable[i];
-				m_rawEventTable[i] = nullptr;
+				delete i;
+				i = nullptr;
 			}
 		}
 	}
@@ -470,19 +470,19 @@ void KviKvsEventManager::removeAllScriptRawHandlers()
 
 void KviKvsEventManager::clearRawEvents()
 {
-	for(size_t i = 0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
+	for(auto & i : m_rawEventTable)
 	{
-		if(m_rawEventTable[i])
-			delete m_rawEventTable[i];
-		m_rawEventTable[i] = nullptr;
+		if(i)
+			delete i;
+		i = nullptr;
 	}
 }
 
 void KviKvsEventManager::clearAppEvents()
 {
-	for(size_t i = 0; i < KVI_KVS_NUM_APP_EVENTS; i++)
+	for(auto & i : m_appEventTable)
 	{
-		m_appEventTable[i].clear();
+		i.clear();
 	}
 }
 

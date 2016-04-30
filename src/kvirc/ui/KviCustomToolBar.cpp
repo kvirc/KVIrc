@@ -130,10 +130,10 @@ void KviCustomToolBar::beginCustomize()
 	m_pFilteredChildren->setAutoDelete(true);
 	// filter the events for all the children
 	QList<QObject *> list = children();
-	for(QList<QObject *>::Iterator it = list.begin(); it != list.end(); ++it)
+	for(auto & it : list)
 	{
-		if((*it)->isWidgetType())
-			filterChild(*it);
+		if(it->isWidgetType())
+			filterChild(it);
 	}
 }
 
@@ -141,10 +141,10 @@ void KviCustomToolBar::endCustomize()
 {
 	// stop filtering events
 	QList<QObject *> list = children();
-	for(QList<QObject *>::Iterator it = list.begin(); it != list.end(); ++it)
+	for(auto & it : list)
 	{
-		if((*it)->isWidgetType())
-			unfilterChild(*it);
+		if(it->isWidgetType())
+			unfilterChild(it);
 	}
 
 	if(m_pFilteredChildren)

@@ -844,9 +844,9 @@ namespace KviKvsCoreSimpleCommands
 		if(!(KVSCSC_pConnection->sendFmtData("PART %s :%s", szEncodedChans.data(), szText.data())))
 			return KVSCSC_pContext->warningNoIrcConnection();
 
-		for(QStringList::Iterator it = sl.begin(); it != sl.end(); it++)
+		for(auto & it : sl)
 		{
-			KviChannelWindow * ch = KVSCSC_pConnection->findChannel(*it);
+			KviChannelWindow * ch = KVSCSC_pConnection->findChannel(it);
 			if(ch)
 			{
 				ch->partMessageSent(!KVSCSC_pSwitches->find('k', "keep"), !KVSCSC_pSwitches->find('s', "silent"));
@@ -854,7 +854,7 @@ namespace KviKvsCoreSimpleCommands
 			else
 			{
 				if(!KVSCSC_pSwitches->find('q', "quiet"))
-					KVSCSC_pContext->warning(__tr2qs_ctx("You don't appear to be on channel %s", "kvs"), (*it).toUtf8().data());
+					KVSCSC_pContext->warning(__tr2qs_ctx("You don't appear to be on channel %s", "kvs"), it.toUtf8().data());
 			}
 		}
 
@@ -1090,9 +1090,8 @@ namespace KviKvsCoreSimpleCommands
 		KviQueryWindow * query;
 
 		QStringList sl = szTargets.split(",", QString::SkipEmptyParts);
-		for(QStringList::Iterator it = sl.begin(); it != sl.end(); it++)
+		for(auto szNick : sl)
 		{
-			QString szNick = *it;
 			if(szNick.isEmpty())
 				KVSCSC_pContext->warning(__tr2qs_ctx("Empty target specified", "kvs"));
 			else

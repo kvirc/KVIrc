@@ -1411,9 +1411,9 @@ void KviUserListView::partAllButOne(const QString & szWhoNot)
 			list.append(it.currentKey());
 		++it;
 	}
-	for(QStringList::Iterator it2 = list.begin(); it2 != list.end(); it2++)
+	for(auto & it2 : list)
 	{
-		part(*it2);
+		part(it2);
 	}
 }
 

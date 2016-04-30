@@ -322,9 +322,9 @@ void KviTopicWidget::setTopic(const QString & topic)
 	m_pLabel->setText(KviHtmlGenerator::convertToHtml(KviQString::toHtmlEscaped(m_szTopic)));
 
 	bool bFound = false;
-	for(QStringList::Iterator it = g_pRecentTopicList->begin(); it != g_pRecentTopicList->end(); ++it)
+	for(auto & it : *g_pRecentTopicList)
 	{
-		if(*it == m_szTopic)
+		if(it == m_szTopic)
 		{
 			bFound = true;
 			break;
@@ -641,8 +641,8 @@ void KviTopicWidget::historyClicked()
 		m_pCompletionBox->installEventFilter(this);
 		m_pCompletionBox->clear();
 
-		for(QStringList::Iterator it = g_pRecentTopicList->begin(); it != g_pRecentTopicList->end(); ++it)
-			new KviTopicListBoxItem(m_pCompletionBox, *it);
+		for(auto & it : *g_pRecentTopicList)
+			new KviTopicListBoxItem(m_pCompletionBox, it);
 
 		m_pCompletionBox->resize(m_pInput->width(), 6 * m_pCompletionBox->fontMetrics().height() + 20);
 		QPoint point = m_pInput->mapToGlobal(QPoint(0, 0));

@@ -249,9 +249,9 @@ void HelpWindow::startSearch()
 	m_terms.clear();
 	bool isPhrase = false;
 	QString s = "";
-	for(int i = 0; i < (int)buf.length(); ++i)
+	for(const auto & i : buf)
 	{
-		if(buf[i] == '\"')
+		if(i == '\"')
 		{
 			isPhrase = !isPhrase;
 			s = s.simplified();
@@ -259,7 +259,7 @@ void HelpWindow::startSearch()
 				m_terms << s;
 			s = "";
 		}
-		else if(buf[i] == ' ' && !isPhrase)
+		else if(i == ' ' && !isPhrase)
 		{
 			s = s.simplified();
 			if(!s.isEmpty())
@@ -267,7 +267,7 @@ void HelpWindow::startSearch()
 			s = "";
 		}
 		else
-			s += buf[i];
+			s += i;
 	}
 	if(!s.isEmpty())
 		m_terms << s;

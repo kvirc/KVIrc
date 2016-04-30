@@ -53,8 +53,8 @@ namespace UglyBase64
 		if(!didinit)
 		{
 			// initialize base64unmap
-			for(int i = 0; i < 255; ++i)
-				base64unmap[i] = 0;
+			for(char & i : base64unmap)
+				i = 0;
 			for(int i = 0; i < 64; ++i)
 				base64unmap[fake_base64[i]] = i;
 			didinit = true;

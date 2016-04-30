@@ -771,12 +771,12 @@ void KviQueryWindow::pasteLastLog()
 	bool bGzip;
 	QString szFileName;
 
-	for(QStringList::Iterator it = logList.begin(); it != logList.end(); ++it)
+	for(auto & it : logList)
 	{
 		int iLogYear, iLogMonth, iLogDay;
 
-		szFileName = (*it);
-		QString szTmpName = (*it);
+		szFileName = it;
+		QString szTmpName = it;
 		QFileInfo fi(szTmpName);
 		bGzip = false;
 

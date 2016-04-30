@@ -1040,12 +1040,12 @@ bool KviStupidNotifyListManager::handleIsOn(KviIrcMessage * msg)
 	// ok...check the users that have left irc now...
 	QStringList sl = m_szLastIsOnMsg.isEmpty() ? QStringList() : m_szLastIsOnMsg.split(' ', QString::SkipEmptyParts);
 
-	for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
+	for(auto & it : sl)
 	{
-		if(m_pConsole->notifyListView()->findEntry(*it))
+		if(m_pConsole->notifyListView()->findEntry(it))
 		{
 			// has just left irc
-			notifyOffLine(*it);
+			notifyOffLine(it);
 		} // else has never been here...
 	}
 
@@ -1146,9 +1146,9 @@ void KviWatchNotifyListManager::buildRegUserDict()
 		{
 			notify = notify.trimmed();
 			QStringList sl = notify.split(' ', QString::SkipEmptyParts);
-			for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
+			for(auto & it : sl)
 			{
-				m_pRegUserDict->replace(*it, new QString(u->name()));
+				m_pRegUserDict->replace(it, new QString(u->name()));
 			}
 		}
 		++it;

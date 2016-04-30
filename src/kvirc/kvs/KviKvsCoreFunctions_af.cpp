@@ -961,9 +961,9 @@ namespace KviKvsCoreFunctions
 			goto leavenow;
 		}
 
-		for(int i = 0; i < szFormat.size(); i++)
+		for(auto i : szFormat)
 		{
-			ushort ch = szFormat.at(i).unicode();
+			ushort ch = i.unicode();
 			iLength = 2;
 			iVal = 0x8000000;
 			cDiv = ' ';
@@ -1126,7 +1126,7 @@ namespace KviKvsCoreFunctions
 				//case 'Z':   // TZ abbrev.
 				//    szFmtTime +=
 				default:
-					szFmtTime += szFormat.at(i);
+					szFmtTime += i;
 			}
 
 			if(iVal != 0x8000000)

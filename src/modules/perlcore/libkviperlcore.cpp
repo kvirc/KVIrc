@@ -268,9 +268,8 @@ bool KviPerlInterpreter::execute(
 		// set the args in the _ arry
 		av_unshift(pArgs, (I32)args.count());
 		int idx = 0;
-		for(QStringList::Iterator it = args.begin(); it != args.end(); ++it)
+		for(auto tmp : args)
 		{
-			QString tmp = *it;
 			const char * val = tmp.toUtf8().data();
 			if(val)
 			{

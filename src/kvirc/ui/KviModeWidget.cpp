@@ -117,9 +117,9 @@ void KviModeWidget::editorReturnPressed()
 		{
 			// first part: parameterless modes
 			QString szCurModes = szOldModes.count() ? szOldModes.at(0) : "";
-			for(int j = 0; j < szSubstring.length(); ++j)
+			for(auto j : szSubstring)
 			{
-				char cMode = szSubstring.at(j).unicode();
+				char cMode = j.unicode();
 				if(!szCurModes.contains(cMode))
 				{
 					// was not set, has to be inserted
@@ -167,9 +167,9 @@ void KviModeWidget::editorReturnPressed()
 		{
 			// first part: parameterless modes
 			QString szNewParameterLessModes = szNewModes.count() ? szNewModes.at(0) : "";
-			for(int j = 0; j < szSubstring.length(); ++j)
+			for(auto j : szSubstring)
 			{
-				char cMode = szSubstring.at(j).unicode();
+				char cMode = j.unicode();
 				if(!szNewParameterLessModes.contains(cMode))
 				{
 					// was set, has to be unset

@@ -592,9 +592,9 @@ void KviKvsCallbackFileDialog::done(int code)
 			KviKvsArray * a = new KviKvsArray();
 			QStringList sl = selectedFiles();
 			int idx = 0;
-			for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
+			for(auto & it : sl)
 			{
-				a->set(idx, new KviKvsVariant(*it));
+				a->set(idx, new KviKvsVariant(it));
 				idx++;
 			}
 			params.append(new KviKvsVariant(a));

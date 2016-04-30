@@ -675,10 +675,10 @@ QList<int> KviConfigurationFile::readIntListEntry(const QString & szKey, const Q
 
 	//qDebug("Got option list for group %s and key %s: %s",m_szGroup.latin1(),szKey.latin1(),p_str->latin1());
 
-	for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
+	for(auto & it : sl)
 	{
 		bool bOk;
-		int iTmp = (*it).toInt(&bOk);
+		int iTmp = it.toInt(&bOk);
 		if(bOk)
 			ret.append(iTmp);
 	}
@@ -691,11 +691,11 @@ void KviConfigurationFile::writeEntry(const QString & szKey, const QList<int> & 
 	m_bDirty = true;
 	KviConfigurationFileGroup * p_group = getCurrentGroup();
 	KviCString szData;
-	for(QList<int>::ConstIterator it = list.begin(); it != list.end(); ++it)
+	for(int it : list)
 	{
 		if(szData.hasData())
 			szData.append(',');
-		szData.append(KviCString::Format, "%d", *it);
+		szData.append(KviCString::Format, "%d", it);
 	}
 	//qDebug("Writing option list for group %s and key %s: %s",m_szGroup.latin1(),szKey.latin1(),szData.ptr());
 

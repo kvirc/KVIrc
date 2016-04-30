@@ -173,15 +173,15 @@ void KviIrcUrl::makeJoinCmd(const QStringList & chans, QString & szJoinCommand)
 	if(chans.count() != 0)
 	{
 
-		for(QStringList::ConstIterator it = chans.begin(); it != chans.end(); ++it)
+		for(const auto & chan : chans)
 		{
 
-			szCurPass = (*it).section('?', 1);
+			szCurPass = chan.section('?', 1);
 			if(szCurPass.isEmpty())
 			{
 				if(!szChannels.isEmpty())
 					szChannels.append(",");
-				szCurChan = (*it).section('?', 0, 0);
+				szCurChan = chan.section('?', 0, 0);
 				if(!(szCurChan[0] == '#' || szCurChan[0] == '&' || szCurChan[0] == '!'))
 					szCurChan.prepend('#');
 				szChannels.append(szCurChan);
@@ -190,7 +190,7 @@ void KviIrcUrl::makeJoinCmd(const QStringList & chans, QString & szJoinCommand)
 			{
 				if(!szProtectedChannels.isEmpty())
 					szProtectedChannels.append(",");
-				szCurChan = (*it).section('?', 0, 0);
+				szCurChan = chan.section('?', 0, 0);
 				if(!(szCurChan[0] == '#' || szCurChan[0] == '&' || szCurChan[0] == '!'))
 					szCurChan.prepend('#');
 				szProtectedChannels.append(szCurChan);

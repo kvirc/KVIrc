@@ -1688,9 +1688,8 @@ void KviIrcServerParser::parseNumericWhoisChannels(KviIrcMessage * msg)
 		QStringList sl = szChans.split(" ", QString::SkipEmptyParts);
 		QString szChanList;
 
-		for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
+		for(auto szCur : sl)
 		{
-			QString szCur = *it;
 			// deals with <flag>[#channel] and [##channel]
 			int len = szCur.length();
 			int i = 0;

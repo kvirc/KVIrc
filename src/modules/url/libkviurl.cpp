@@ -469,8 +469,8 @@ void ConfigDialog::closeEvent(QCloseEvent *)
 
 ConfigDialog::~ConfigDialog()
 {
-	for(int i = 0; i < cbnum; i++)
-		delete cb[i];
+	for(auto & i : cb)
+		delete i;
 	g_pConfigDialog = nullptr;
 }
 

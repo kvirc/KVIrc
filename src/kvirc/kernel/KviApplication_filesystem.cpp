@@ -423,10 +423,9 @@ void KviApplication::getChannelDumpLogFileName(QString & szStr)
 bool KviApplication::findImageInImageSearchPath(QString & szRetPath, const QString & filename)
 {
 	// first lookup the user defined paths
-	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).begin();
-	    it != KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).end(); ++it)
+	for(auto & it : KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths))
 	{
-		szRetPath = *it;
+		szRetPath = it;
 		KviQString::ensureLastCharIs(szRetPath, KVI_PATH_SEPARATOR_CHAR);
 		szRetPath.append(filename);
 		//qDebug("LOOK FOR %s",szRetPath.ptr());

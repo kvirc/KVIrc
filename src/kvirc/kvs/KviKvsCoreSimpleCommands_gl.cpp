@@ -411,13 +411,13 @@ namespace KviKvsCoreSimpleCommands
 		QStringList slChans = szChans.split(",", QString::SkipEmptyParts);
 
 		QString szChanTypes = KVSCSC_pConnection->serverInfo()->supportedChannelTypes();
-		for(QStringList::Iterator it = slChans.begin(); it != slChans.end(); ++it)
+		for(auto & slChan : slChans)
 		{
-			if(!(*it).isEmpty())
+			if(!slChan.isEmpty())
 			{
 				bool bFound = false;
 				int id = 0;
-				QChar f = (*it)[0];
+				QChar f = slChan[0];
 				while((id < szChanTypes.length()) && !bFound)
 				{
 					if(f == szChanTypes[id])
@@ -425,7 +425,7 @@ namespace KviKvsCoreSimpleCommands
 					id++;
 				}
 				if(!bFound)
-					(*it).prepend("#");
+					slChan.prepend("#");
 			}
 		}
 

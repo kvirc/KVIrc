@@ -57,11 +57,11 @@ namespace KviCommandFormatter
 	bool hasLeadingChars(QStringList & list, const QChar & c)
 	{
 		bool bGotIt = false;
-		for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
+		for(auto & it : list)
 		{
-			if((*it).length() < 1)
+			if(it.length() < 1)
 				continue;
-			if((*it).at(0) == c)
+			if(it.at(0) == c)
 			{
 				// found at least one such leading char
 				bGotIt = true;
@@ -69,12 +69,12 @@ namespace KviCommandFormatter
 			else
 			{
 				// we pretend this line to be empty
-				QString szTmp = *it;
+				QString szTmp = it;
 				szTmp = szTmp.trimmed();
 
 				if(!szTmp.isEmpty())
 					return false;
-				*it = ""; // set it to empty also in the main buffer
+				it = ""; // set it to empty also in the main buffer
 			}
 		}
 		return bGotIt;
@@ -92,9 +92,9 @@ namespace KviCommandFormatter
 
 	void trimLeading(QStringList & list)
 	{
-		for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
+		for(auto & it : list)
 		{
-			(*it).remove(0, 1);
+			it.remove(0, 1);
 		}
 	}
 
@@ -110,9 +110,9 @@ namespace KviCommandFormatter
 
 	void addLeading(QStringList & list, const QChar & c)
 	{
-		for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
+		for(auto & it : list)
 		{
-			(*it).prepend(c);
+			it.prepend(c);
 		}
 	}
 
@@ -139,9 +139,9 @@ namespace KviCommandFormatter
 		//szBuffer = list.join("\n"); join implementation sux :D
 		// we WANT the last newline
 		szBuffer = "";
-		for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
+		for(auto & it : list)
 		{
-			szBuffer.append(*it);
+			szBuffer.append(it);
 			szBuffer.append(QChar('\n'));
 		}
 	}
@@ -202,9 +202,9 @@ namespace KviCommandFormatter
 		//szBuffer = list.join("\n"); join implementation sux :D
 		// we WANT the last newline
 		szBuffer = "";
-		for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
+		for(auto & it : list)
 		{
-			szBuffer.append(*it);
+			szBuffer.append(it);
 			szBuffer.append(QChar('\n'));
 		}
 	}

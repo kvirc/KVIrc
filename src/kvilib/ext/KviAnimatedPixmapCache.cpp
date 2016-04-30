@@ -229,10 +229,10 @@ void KviAnimatedPixmapCache::timeoutEvent()
 		i = m_timerData.erase(i);
 	}
 
-	for(int i = 0; i < processed.size(); ++i)
+	for(auto i : processed)
 	{
 		// increase the frame index and emit the signal
-		processed.at(i)->nextFrame(true);
+		i->nextFrame(true);
 	}
 
 	// m_timerMutex.unlock();

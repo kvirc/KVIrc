@@ -91,9 +91,9 @@ namespace ThemeFunctions
 			return notAValidThemePackage(szError);
 
 		// make sure the default fields exist
-		for(int i = 0; i < 6; i++)
+		for(auto & check_field : check_fields)
 		{
-			pValue = pInfoFields->find(check_fields[i]);
+			pValue = pInfoFields->find(check_field);
 			if(!pValue)
 				return notAValidThemePackage(szError);
 		}

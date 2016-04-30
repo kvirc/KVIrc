@@ -989,9 +989,9 @@ void Rijndael::updateInitVector(UINT8 * initVector)
 	else
 	{
 		// zero init vector
-		for(int i = 0; i < MAX_IV_SIZE; i++)
+		for(unsigned char & i : m_initVector)
 		{
-			m_initVector[i] = 0;
+			i = 0;
 		}
 	}
 }
