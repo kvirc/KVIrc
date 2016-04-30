@@ -78,8 +78,7 @@ public:
 
 	// If is_ba is true, ba is used; ba is never 0.
 	// Otherwise dev is used; dev can be 0 or not.
-	union
-	{
+	union {
 		QByteArray * ba;
 		QIODevice * dev;
 	} data;

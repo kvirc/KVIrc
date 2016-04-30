@@ -234,8 +234,7 @@ protected:
 	QHttpRequestHeader header;
 
 private:
-	union
-	{
+	union {
 		QByteArray * ba;
 		QIODevice * dev;
 	} data;

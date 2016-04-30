@@ -672,8 +672,7 @@ void DccSendThread::updateStats()
 	m_pMutex->unlock();
 }
 
-union _ack_buffer
-{
+union _ack_buffer {
 	char cAckBuffer[4];
 	quint32 i32AckBuffer;
 };

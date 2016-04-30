@@ -252,7 +252,8 @@ public Q_SLOTS:
 	void ignoreSslErrors();
 #endif
 
-	Q_SIGNALS : void stateChanged(int);
+Q_SIGNALS:
+	void stateChanged(int);
 	void responseHeaderReceived(const QHttpResponseHeader & resp);
 	void readyRead(const QHttpResponseHeader & resp);
 

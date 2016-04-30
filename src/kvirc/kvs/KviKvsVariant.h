@@ -66,8 +66,7 @@ protected:
 	* \union DataType
 	* \brief This union holds an integer or a double floating point number
 	*/
-	union DataType
-	{
+	union DataType {
 		kvs_int_t iInt;
 		kvs_real_t dReal;
 	};
@@ -136,8 +135,7 @@ public:
 	* \union DataType
 	* \brief Holds the value of the variant data
 	*/
-	union DataType
-	{
+	union DataType {
 		kvs_int_t iInt;
 		kvs_real_t * pReal;
 		QString * pString;

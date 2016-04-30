@@ -441,8 +441,7 @@ void KviIrcConnection::handleInitialCapLs()
 
 	QString szRequests;
 
-	auto cap_add = [&](const char * c)
-	{
+	auto cap_add = [&](const char * c) {
 		if(serverInfo()->supportedCaps().contains(c, Qt::CaseInsensitive))
 		{
 			szRequests.append(c);

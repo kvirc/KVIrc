@@ -38,8 +38,7 @@
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <winsock2.h>
 
-typedef enum _QueryInfo
-{
+typedef enum _QueryInfo {
 	Os_Release,
 	Os_Version,
 	Os_Type

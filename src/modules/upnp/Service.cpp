@@ -233,7 +233,8 @@ namespace UPnP
 		QByteArray response = reply->readAll();
 		QDomDocument xml;
 
-		qDebug() << "Response:\n" << response << "\n---\n";
+		qDebug() << "Response:\n"
+		         << response << "\n---\n";
 
 		// Parse the XML
 		QString errorMessage;

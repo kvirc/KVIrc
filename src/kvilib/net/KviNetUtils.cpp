@@ -664,8 +664,7 @@ namespace KviNetUtils
 	}
 
 #ifdef COMPILE_GET_INTERFACE_ADDRESS
-	union sockaddr_union
-	{
+	union sockaddr_union {
 		struct sockaddr sa;
 		struct sockaddr_in sin;
 	};

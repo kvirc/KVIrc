@@ -143,7 +143,8 @@ public:
 public Q_SLOTS:
 	void abort();
 
-	Q_SIGNALS : void stateChanged(int);
+Q_SIGNALS:
+	void stateChanged(int);
 	void listInfo(const QUrlInfo &);
 	void readyRead();
 	void dataTransferProgress(qint64, qint64);
@@ -239,8 +240,7 @@ private:
 
 	// If is_ba is true, ba is used; ba is never 0.
 	// Otherwise dev is used; dev can be 0 or not.
-	union
-	{
+	union {
 		QByteArray * ba;
 		QIODevice * dev;
 	} data;
