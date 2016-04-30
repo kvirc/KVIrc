@@ -372,7 +372,7 @@ OptionsWidget_messageColors::OptionsWidget_messageColors(QWidget * parent)
 	createLayout();
 
 	int i;
-	m_pLastItem = 0;
+	m_pLastItem = nullptr;
 
 	m_pListView = new MessageListWidget(this);
 	m_pListViewItemDelegate = new MessageListWidgetItemDelegate(m_pListView);
@@ -525,7 +525,7 @@ void OptionsWidget_messageColors::itemChanged()
 	if(m_pLastItem)
 		saveLastItem();
 
-	m_pLastItem = 0; // do NOT save in this routine
+	m_pLastItem = nullptr; // do NOT save in this routine
 
 	m_pForeListWidget->setEnabled(it);
 	m_pBackListWidget->setEnabled(it);

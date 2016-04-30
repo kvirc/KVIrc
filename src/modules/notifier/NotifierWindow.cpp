@@ -52,7 +52,7 @@
 extern NotifierWindow * g_pNotifierWindow;
 
 NotifierWindow::NotifierWindow()
-    : QWidget(0,
+    : QWidget(nullptr,
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
           Qt::FramelessWindowHint | Qt::Tool | Qt::WindowStaysOnTopHint)
 #else
@@ -69,11 +69,11 @@ NotifierWindow::NotifierWindow()
 
 	m_eState = Hidden;
 	m_dOpacity = 0.0;
-	m_pShowHideTimer = 0;
-	m_pBlinkTimer = 0;
+	m_pShowHideTimer = nullptr;
+	m_pBlinkTimer = nullptr;
 	m_tAutoHideAt = 0;
 	m_tStartedAt = 0;
-	m_pAutoHideTimer = 0;
+	m_pAutoHideTimer = nullptr;
 
 	m_pWndBorder = new NotifierWindowBorder();
 
@@ -94,8 +94,8 @@ NotifierWindow::NotifierWindow()
 	m_bDiagonalResizing = false;
 	m_bResizing = false;
 
-	m_pContextPopup = 0;
-	m_pDisablePopup = 0;
+	m_pContextPopup = nullptr;
+	m_pDisablePopup = nullptr;
 
 	m_bDragging = false;
 
@@ -123,7 +123,7 @@ NotifierWindow::NotifierWindow()
 	m_pProgressBar->setMaximumWidth(8);
 	m_pProgressBar->installEventFilter(this);
 
-	m_pLineEdit = new KviThemedLineEdit(this, 0, "notifier_lineedit");
+	m_pLineEdit = new KviThemedLineEdit(this, nullptr, "notifier_lineedit");
 	QPalette palette = m_pLineEdit->palette();
 	palette.setColor(m_pLineEdit->backgroundRole(), Qt::transparent);
 	m_pLineEdit->setPalette(palette);
@@ -173,14 +173,14 @@ void NotifierWindow::addMessage(KviWindow * pWnd, const QString & szImageId, con
 	QString szMessage = szText;
 	szMessage.replace(QRegExp("\r([^\r])*\r([^\r])+\r"), "\\2");
 	if(szImageId.isEmpty())
-		pIcon = 0;
+		pIcon = nullptr;
 	else
 		pIcon = g_pIconManager->getImage(szImageId);
 
-	NotifierMessage * pMessage = new NotifierMessage(pIcon ? new QPixmap(*pIcon) : 0, szMessage);
+	NotifierMessage * pMessage = new NotifierMessage(pIcon ? new QPixmap(*pIcon) : nullptr, szMessage);
 
 	//search for an existing tab
-	NotifierWindowTab *pTab = 0, *pTmp = 0;
+	NotifierWindowTab *pTab = nullptr, *pTmp = nullptr;
 	for(int i = 0; i < m_pWndTabs->count(); ++i)
 	{
 		pTmp = (NotifierWindowTab *)m_pWndTabs->widget(i);
@@ -238,7 +238,7 @@ void NotifierWindow::stopShowHideTimer()
 	if(!m_pShowHideTimer)
 		return;
 	delete m_pShowHideTimer;
-	m_pShowHideTimer = 0;
+	m_pShowHideTimer = nullptr;
 }
 
 void NotifierWindow::stopBlinkTimer()
@@ -246,7 +246,7 @@ void NotifierWindow::stopBlinkTimer()
 	if(!m_pBlinkTimer)
 		return;
 	delete m_pBlinkTimer;
-	m_pBlinkTimer = 0;
+	m_pBlinkTimer = nullptr;
 }
 
 void NotifierWindow::stopAutoHideTimer()
@@ -254,7 +254,7 @@ void NotifierWindow::stopAutoHideTimer()
 	if(!m_pAutoHideTimer)
 		return;
 	delete m_pAutoHideTimer;
-	m_pAutoHideTimer = 0;
+	m_pAutoHideTimer = nullptr;
 	m_pProgressBar->setValue(0);
 }
 

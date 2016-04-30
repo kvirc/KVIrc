@@ -84,7 +84,7 @@ extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 
 //static members initialization
 int KviInputEditor::g_iInputInstances = 0;
-QFontMetricsF * KviInputEditor::g_pLastFontMetrics = 0;
+QFontMetricsF * KviInputEditor::g_pLastFontMetrics = nullptr;
 int KviInputEditor::g_iCachedHeight = 0;
 
 #define KVI_INPUT_MAX_UNDO_SIZE 256
@@ -142,7 +142,7 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	g_iInputInstances++;
 	setObjectName("input_widget");
 
-	m_pIconMenu = 0;
+	m_pIconMenu = nullptr;
 	m_pInputParent = pPar;
 	m_iMaxBufferSize = KVI_INPUT_MAX_BUFFER_SIZE;
 	m_iCursorPosition = 0;  //Index of the char AFTER the cursor
@@ -168,8 +168,8 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	m_pHistory->setAutoDelete(true);
 	m_bReadOnly = false;
 
-	m_pUndoStack = NULL;
-	m_pRedoStack = NULL;
+	m_pUndoStack = nullptr;
+	m_pRedoStack = nullptr;
 
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 
@@ -199,7 +199,7 @@ KviInputEditor::~KviInputEditor()
 	{
 		//last instance, delete shared resources
 		delete g_pLastFontMetrics;
-		g_pLastFontMetrics = 0;
+		g_pLastFontMetrics = nullptr;
 	}
 
 	if(m_pIconMenu)
@@ -248,7 +248,7 @@ void KviInputEditor::applyOptions(bool bRefreshCachedMetrics)
 		if(g_pLastFontMetrics)
 		{
 			delete g_pLastFontMetrics;
-			g_pLastFontMetrics = 0;
+			g_pLastFontMetrics = nullptr;
 		}
 
 		getLastFontMetrics(font());
@@ -345,7 +345,7 @@ bool KviInputEditor::checkWordSpelling(const QString & szWord)
 
 	KviKvsVariant bCorrect;
 	KviKvsVariantList params(new KviKvsVariant(szWord));
-	KviKvsScript::evaluate("$spellchecker.check($0)", NULL, &params, &bCorrect);
+	KviKvsScript::evaluate("$spellchecker.check($0)", nullptr, &params, &bCorrect);
 
 	return bCorrect.asBoolean();
 #else
@@ -434,8 +434,8 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, Kvi
 		ADD_SPELLCHECKER_BLOCK(lBuffer, QString(pCommandBlockBegin, p - pCommandBlockBegin), pCommandBlockBegin - pBufferBegin, false, false);
 	}
 
-	const QChar * pNonWordBegin = NULL;
-	const QChar * pWordBegin = NULL;
+	const QChar * pNonWordBegin = nullptr;
+	const QChar * pWordBegin = nullptr;
 
 	while(p < e)
 	{
@@ -452,7 +452,7 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, Kvi
 					if(pNonWordBegin)
 					{
 						ADD_SPELLCHECKER_BLOCK(lBuffer, QString(pNonWordBegin, p - pNonWordBegin), pNonWordBegin - pBufferBegin, false, false);
-						pNonWordBegin = NULL;
+						pNonWordBegin = nullptr;
 					}
 					pWordBegin = p;
 				}
@@ -488,7 +488,7 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, Kvi
 
 							QString szWord(pWordBegin, p - pWordBegin);
 							ADD_SPELLCHECKER_BLOCK(lBuffer, szWord, pWordBegin - pBufferBegin, true, checkWordSpelling(szWord));
-							pWordBegin = NULL;
+							pWordBegin = nullptr;
 						}
 						pNonWordBegin = p;
 					}
@@ -817,7 +817,7 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 #endif
 
 	// In Qt5 QStyle::drawPrimitive seems to always overwrite the background, no matter what.
-	qDrawShadePanel(&p, 0, 0, width(), height(), palette(), true, 1, NULL);
+	qDrawShadePanel(&p, 0, 0, width(), height(), palette(), true, 1, nullptr);
 
 	QRect r(1, 1, width() - 1, height() - 1);
 
@@ -1160,7 +1160,7 @@ void KviInputEditor::showContextPopupHere()
 
 KviInputEditorSpellCheckerBlock * KviInputEditor::findSpellCheckerBlockAtCursor(KviPointerList<KviInputEditorSpellCheckerBlock> & lBlocks)
 {
-	KviInputEditorSpellCheckerBlock * pCurrentBlock = NULL;
+	KviInputEditorSpellCheckerBlock * pCurrentBlock = nullptr;
 
 	for(KviInputEditorSpellCheckerBlock * pBlock = lBlocks.first(); pBlock; pBlock = lBlocks.next())
 	{
@@ -1211,7 +1211,7 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 
 		KviKvsVariant aRet;
 		KviKvsVariantList params(new KviKvsVariant(pCurrentBlock->szText));
-		KviKvsScript::evaluate("$spellchecker.suggestions($0)", NULL, &params, &aRet);
+		KviKvsScript::evaluate("$spellchecker.suggestions($0)", nullptr, &params, &aRet);
 
 		KviKvsArrayCast aCast;
 		aRet.castToArray(&aCast);
@@ -1694,13 +1694,13 @@ void KviInputEditor::clearUndoStack()
 	if(m_pUndoStack)
 	{
 		delete m_pUndoStack;
-		m_pUndoStack = NULL;
+		m_pUndoStack = nullptr;
 	}
 
 	if(m_pRedoStack)
 	{
 		delete m_pRedoStack;
-		m_pRedoStack = NULL;
+		m_pRedoStack = nullptr;
 	}
 }
 
@@ -1887,60 +1887,60 @@ void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 
 void KviInputEditor::installShortcuts()
 {
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_HISTORY, this, SLOT(openHistory()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_HISTORY_PREV, this, SLOT(historyPrev()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_HISTORY_NEXT, this, SLOT(historyNext()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_CHAR, this, SLOT(previousChar()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_CHAR, this, SLOT(nextChar()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_CHAR_SELECT, this, SLOT(previousCharSelection()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_CHAR_SELECT, this, SLOT(nextCharSelection()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_WORD, this, SLOT(previousWord()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_WORD, this, SLOT(nextWord()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_WORD_SELECT, this, SLOT(previousWordSelection()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_WORD_SELECT, this, SLOT(nextWordSelection()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_BOLD, this, SLOT(insertBold()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_RESET, this, SLOT(insertReset()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_UNDERLINE, this, SLOT(insertUnderline()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_REVERSE, this, SLOT(insertReverse()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_PLAINTEXT, this, SLOT(insertPlainText()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_ICON, this, SLOT(insertIcon()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_COLOR, this, SLOT(insertColor()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_COPY, this, SLOT(copyInternal()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_CUT, this, SLOT(cutInternal()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_PASTE, this, SLOT(pasteInternal()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_UNDO, this, SLOT(undoInternal()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_REDO, this, SLOT(redoInternal()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_SELECT_ALL, this, SLOT(selectAllInternal()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE_PREV_WORD, this, SLOT(deletePreviousWord()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE_NEXT_WORD, this, SLOT(deleteNextWord()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_LINE, this, SLOT(previousLine()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_LINE, this, SLOT(nextLine()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_PAGE, this, SLOT(previousPage()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_PAGE, this, SLOT(nextPage()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_SEARCH, this, SLOT(search()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE, this, SLOT(scrollToLastReadLine()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_PLAIN, this, SLOT(sendPlain()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_PLAIN_2, this, SLOT(sendPlain()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_HISTORY, this, SLOT(openHistory()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_HISTORY_PREV, this, SLOT(historyPrev()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_HISTORY_NEXT, this, SLOT(historyNext()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_CHAR, this, SLOT(previousChar()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_CHAR, this, SLOT(nextChar()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_CHAR_SELECT, this, SLOT(previousCharSelection()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_CHAR_SELECT, this, SLOT(nextCharSelection()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_WORD, this, SLOT(previousWord()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_WORD, this, SLOT(nextWord()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_WORD_SELECT, this, SLOT(previousWordSelection()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_WORD_SELECT, this, SLOT(nextWordSelection()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_BOLD, this, SLOT(insertBold()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_RESET, this, SLOT(insertReset()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_UNDERLINE, this, SLOT(insertUnderline()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_REVERSE, this, SLOT(insertReverse()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_PLAINTEXT, this, SLOT(insertPlainText()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_ICON, this, SLOT(insertIcon()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_COLOR, this, SLOT(insertColor()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_COPY, this, SLOT(copyInternal()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_CUT, this, SLOT(cutInternal()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_PASTE, this, SLOT(pasteInternal()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_UNDO, this, SLOT(undoInternal()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_REDO, this, SLOT(redoInternal()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_SELECT_ALL, this, SLOT(selectAllInternal()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE_PREV_WORD, this, SLOT(deletePreviousWord()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE_NEXT_WORD, this, SLOT(deleteNextWord()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_LINE, this, SLOT(previousLine()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_LINE, this, SLOT(nextLine()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_PAGE, this, SLOT(previousPage()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_PAGE, this, SLOT(nextPage()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_SEARCH, this, SLOT(search()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE, this, SLOT(scrollToLastReadLine()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_PLAIN, this, SLOT(sendPlain()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_PLAIN_2, this, SLOT(sendPlain()), nullptr, Qt::WidgetShortcut);
 	// 	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_KVS,this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
 	// 	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_KVS_2,this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_HOME, this, SLOT(homeInternal()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_END, this, SLOT(endInternal()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_HOME_SELECT, this, SLOT(homeInternalSelection()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_END_SELECT, this, SLOT(endInternalSelection()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_HOME, this, SLOT(homeInternal()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_END, this, SLOT(endInternal()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_HOME_SELECT, this, SLOT(homeInternalSelection()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_END_SELECT, this, SLOT(endInternalSelection()), nullptr, Qt::WidgetShortcut);
 	//KviShortcut::create(KVI_SHORTCUTS_INPUT_RETURN,this,SLOT(returnHit()),0,Qt::WidgetShortcut);
 	//KviShortcut::create(KVI_SHORTCUTS_INPUT_RETURN_2,this,SLOT(returnHit()),0,Qt::WidgetShortcut);
 	//KviShortcut::create(KVI_SHORTCUTS_INPUT_BACKSPACE,this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
 	//KviShortcut::create(KVI_SHORTCUTS_INPUT_BACKSPACE_2,this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
 	//KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE,this,SLOT(deleteHit()),0,Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_ESCAPE, this, SLOT(escapeHit()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_COMMANDLINE, this, SLOT(toggleCommandMode()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_DUMMY, this, SLOT(dummy()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_IN, this, SLOT(zoomIn()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_OUT, this, SLOT(zoomOut()), 0, Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_CORRECT_SPELLING, this, SLOT(showSpellCheckerCorrectionsPopup()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_ESCAPE, this, SLOT(escapeHit()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_COMMANDLINE, this, SLOT(toggleCommandMode()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_DUMMY, this, SLOT(dummy()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_IN, this, SLOT(zoomIn()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_OUT, this, SLOT(zoomOut()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_CORRECT_SPELLING, this, SLOT(showSpellCheckerCorrectionsPopup()), nullptr, Qt::WidgetShortcut);
 	// this is currently ambigous, since we're using it for scripting, too
 	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_DEFAULT, this, SLOT(zoomDefault()), SLOT(zoomDefault()), Qt::WidgetShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_MENU, this, SLOT(showContextPopupHere()), 0, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_MENU, this, SLOT(showContextPopupHere()), nullptr, Qt::WidgetShortcut);
 }
 
 void KviInputEditor::zoomIn()
@@ -2644,7 +2644,7 @@ void KviInputEditor::undo()
 	if(m_pUndoStack->isEmpty())
 	{
 		delete m_pUndoStack;
-		m_pUndoStack = NULL;
+		m_pUndoStack = nullptr;
 	}
 
 	m_iSelectionBegin = -1;
@@ -2695,7 +2695,7 @@ void KviInputEditor::redo()
 	if(m_pRedoStack->isEmpty())
 	{
 		delete m_pRedoStack;
-		m_pRedoStack = NULL;
+		m_pRedoStack = nullptr;
 	}
 
 	m_iSelectionBegin = -1;

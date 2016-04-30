@@ -38,9 +38,9 @@
 
 #include <QSplitter>
 
-KviPointerHashTable<QString, OptionsDialog> * g_pOptionsDialogDict = 0;
+KviPointerHashTable<QString, OptionsDialog> * g_pOptionsDialogDict = nullptr;
 
-OptionsInstanceManager * g_pOptionsInstanceManager = 0;
+OptionsInstanceManager * g_pOptionsInstanceManager = nullptr;
 
 extern int g_iOptionWidgetInstances;
 
@@ -111,7 +111,7 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 		{
 			if(d->parent())
 			{
-				d->setParent(0);
+				d->setParent(nullptr);
 				d->setGeometry(0, 0, d->width(), d->height());
 			}
 		}
@@ -349,11 +349,11 @@ static bool options_module_cleanup(KviModule * m)
 	for(d = l.first(); d; d = l.next())
 		delete d;
 	delete g_pOptionsDialogDict;
-	g_pOptionsDialogDict = 0;
+	g_pOptionsDialogDict = nullptr;
 
 	g_pOptionsInstanceManager->cleanup(m);
 	delete g_pOptionsInstanceManager;
-	g_pOptionsInstanceManager = 0;
+	g_pOptionsInstanceManager = nullptr;
 
 	return true;
 }

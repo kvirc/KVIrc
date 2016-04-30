@@ -109,7 +109,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWriteInObjectS
 {
 	KviKvsVariant key;
 	if(!m_pKey->evaluateReadOnly(c, &key))
-		return 0;
+		return nullptr;
 
 	QString szKey;
 	key.asString(szKey);
@@ -125,7 +125,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWriteInObjectS
 	else
 		result = m_pSource->evaluateReadWrite(c);
 	if(!result)
-		return 0;
+		return nullptr;
 
 	if(!result->result()->isHash())
 	{
@@ -145,10 +145,10 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWriteInObjectS
 
 bool KviKvsTreeNodeHashElement::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
-	return evaluateReadOnlyInObjectScope(0, c, pBuffer);
+	return evaluateReadOnlyInObjectScope(nullptr, c, pBuffer);
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
-	return evaluateReadWriteInObjectScope(0, c);
+	return evaluateReadWriteInObjectScope(nullptr, c);
 }

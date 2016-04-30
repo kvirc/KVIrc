@@ -140,7 +140,7 @@ bool KviConfigurationFile::load()
 		return false;
 
 	KviCString tmp;
-	KviConfigurationFileGroup * p_group = 0;
+	KviConfigurationFileGroup * p_group = nullptr;
 
 	int iLoadBlockSize = LOAD_BLOCK_SIZE;
 
@@ -588,12 +588,12 @@ void KviConfigurationFile::setGroup(const QString & szGroup)
 bool KviConfigurationFile::hasKey(const QString & szKey)
 {
 	KviConfigurationFileGroup * p_group = getCurrentGroup();
-	return (p_group->find(szKey) != 0);
+	return (p_group->find(szKey) != nullptr);
 }
 
 bool KviConfigurationFile::hasGroup(const QString & szGroup)
 {
-	return (m_pDict->find(szGroup) != 0);
+	return (m_pDict->find(szGroup) != nullptr);
 }
 
 KviConfigurationFileGroup * KviConfigurationFile::getCurrentGroup()

@@ -90,7 +90,7 @@ const char * feature_array[] = {
 #endif
 	"Qt5",
 	"KVS",
-	0
+	nullptr
 };
 
 namespace KviBuildInfo

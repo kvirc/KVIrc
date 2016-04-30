@@ -720,7 +720,7 @@ void KviIrcServerParser::parseLiteralKick(KviIrcMessage * msg)
 		       szNick, szUser, szHost, szKickMsg))
 			msg->setHaltOutput();
 		if(!KVI_OPTION_STRING(KviOption_stringOnMeKickedSound).isEmpty())
-			KviKvsScript::run("snd.play $0", 0, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnMeKickedSound))));
+			KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnMeKickedSound))));
 
 		QString szPass = chan->hasChannelMode('k') ? chan->channelModeParam('k') : "";
 
@@ -1041,7 +1041,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 				if(query)
 				{
 					if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
-						KviKvsScript::run("snd.play $0", 0, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
+						KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
 
 					if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
 						query->pasteLastLog();
@@ -1298,7 +1298,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 		// Nickserv nick identification routine
 		QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
 		KviIrcMask talker(szNick, szUser, szHost);
-		KviNickServRule * rule = 0;
+		KviNickServRule * rule = nullptr;
 
 		// Figure out early if we have a query window open: if we have it then use it unconditionally
 		KviQueryWindow * query = msg->connection()->findQuery(szNick);
@@ -1490,7 +1490,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 				if(query)
 				{
 					if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
-						KviKvsScript::run("snd.play $0", 0, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
+						KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
 
 					if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
 						query->pasteLastLog();

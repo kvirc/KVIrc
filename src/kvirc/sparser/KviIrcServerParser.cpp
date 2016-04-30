@@ -34,10 +34,10 @@
 #include "KviKvsEventTriggers.h"
 #include "KviIrcConnectionStateData.h"
 
-KviIrcServerParser * g_pServerParser = 0;
+KviIrcServerParser * g_pServerParser = nullptr;
 
 KviIrcServerParser::KviIrcServerParser()
-    : QObject(0)
+    : QObject(nullptr)
 {
 	setObjectName("server_parser");
 }

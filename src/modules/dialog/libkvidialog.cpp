@@ -59,7 +59,7 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
     const QString & szCode,
     KviKvsVariantList * pMagicParams,
     KviWindow * pWindow, bool modal)
-    : QMessageBox(0),
+    : QMessageBox(nullptr),
       KviKvsCallbackObject("dialog.message", pWindow, szCode, pMagicParams, 0)
 {
 	setObjectName("dialog_message");
@@ -561,8 +561,8 @@ KviKvsCallbackFileDialog::KviKvsCallbackFileDialog(
     : KviFileDialog(
           szInitialSelection,
           szFilter,
-          NULL, // parent
-          0,
+          nullptr, // parent
+          nullptr,
           modal),
       KviKvsCallbackObject("dialog.file", pWindow, szCode, pMagicParams, 0)
 {
@@ -704,7 +704,7 @@ KviKvsCallbackImageDialog::KviKvsCallbackImageDialog(
     const QString & szCode,
     KviKvsVariantList * pMagicParams,
     KviWindow * pWindow, bool modal)
-    : KviImageDialog(0, szCaption, iType, 0, szInitialSelection, iMaxSize, modal), KviKvsCallbackObject("dialog.image", pWindow, szCode, pMagicParams, 0)
+    : KviImageDialog(nullptr, szCaption, iType, 0, szInitialSelection, iMaxSize, modal), KviKvsCallbackObject("dialog.image", pWindow, szCode, pMagicParams, 0)
 {
 	g_pDialogModuleDialogList->append(this);
 	setObjectName("dialog_image");
@@ -956,7 +956,7 @@ static bool dialog_module_cleanup(KviModule *)
 	while(g_pDialogModuleDialogList->first())
 		delete g_pDialogModuleDialogList->first();
 	delete g_pDialogModuleDialogList;
-	g_pDialogModuleDialogList = 0;
+	g_pDialogModuleDialogList = nullptr;
 	return true;
 }
 

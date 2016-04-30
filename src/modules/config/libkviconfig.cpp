@@ -30,7 +30,7 @@
 #include "KviLocale.h"
 #include "KviPointerHashTable.h"
 
-static KviPointerHashTable<QString, KviConfigurationFile> * g_pConfigDict = 0;
+static KviPointerHashTable<QString, KviConfigurationFile> * g_pConfigDict = nullptr;
 static int g_iNextConfigId = 0;
 
 /*
@@ -901,7 +901,7 @@ static bool config_module_init(KviModule * m)
 static bool config_module_cleanup(KviModule *)
 {
 	delete g_pConfigDict;
-	g_pConfigDict = 0;
+	g_pConfigDict = nullptr;
 	return true;
 }
 

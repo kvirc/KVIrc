@@ -109,7 +109,7 @@ static Window kvi_x11_findIpcSentinel(Window win)
 	Atom type;
 	int format;
 	unsigned long nItems, after;
-	unsigned char * data = 0;
+	unsigned char * data = nullptr;
 	if(XGetWindowProperty(kvi_ipc_get_xdisplay(), win, kvi_atom_ipc_sentinel_window, 0, 32, false, XA_STRING,
 	       &type, &format, &nItems, &after, &data)
 	    == Success)
@@ -215,7 +215,7 @@ bool kvi_sendIpcMessage(const char * message)
 //////////////////////////////////////////////////////////////////////
 
 KviIpcSentinel::KviIpcSentinel()
-    : QWidget(0)
+    : QWidget(nullptr)
 {
 	setObjectName("kvirc4_ipc_sentinel");
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -275,7 +275,7 @@ bool KviIpcSentinel::x11GetRemoteMessage()
 	Atom type;
 	int format;
 	unsigned long nItems, after;
-	unsigned char * data = 0;
+	unsigned char * data = nullptr;
 	KviCString szData;
 
 	if(XGetWindowProperty(kvi_ipc_get_xdisplay(), winId(), kvi_atom_ipc_remote_command, 0, 1024, false, XA_STRING,

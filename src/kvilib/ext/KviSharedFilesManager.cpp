@@ -96,7 +96,7 @@ KviSharedFilesManager::~KviSharedFilesManager()
 void KviSharedFilesManager::cleanup()
 {
 	KviPointerHashTableIterator<QString, KviSharedFileList> it(*m_pSharedListDict);
-	time_t curTime = time(0);
+	time_t curTime = time(nullptr);
 
 	bool bOtherStuffToCleanup = false;
 	//bool bChanged = false;
@@ -242,7 +242,7 @@ KviSharedFile * KviSharedFilesManager::addSharedFile(const QString & szName, con
 		}
 
 		// Now insert
-		KviSharedFile * o = new KviSharedFile(szName, szAbsPath, szMask, timeoutInSecs > 0 ? (((int)(time(0))) + timeoutInSecs) : 0, inf.size());
+		KviSharedFile * o = new KviSharedFile(szName, szAbsPath, szMask, timeoutInSecs > 0 ? (((int)(time(nullptr))) + timeoutInSecs) : 0, inf.size());
 
 		doInsert(l, o);
 
@@ -259,7 +259,7 @@ KviSharedFile * KviSharedFilesManager::addSharedFile(const QString & szName, con
 	else
 	{
 		qDebug("File %s unreadable: can't add offer", szAbsPath.toUtf8().data());
-		return 0;
+		return nullptr;
 	}
 }
 
@@ -267,7 +267,7 @@ KviSharedFile * KviSharedFilesManager::lookupSharedFile(const QString & szName, 
 {
 	KviSharedFileList * l = m_pSharedListDict->find(szName);
 	if(!l)
-		return 0;
+		return nullptr;
 
 	for(KviSharedFile * o = l->first(); o; o = l->next())
 	{
@@ -291,7 +291,7 @@ KviSharedFile * KviSharedFilesManager::lookupSharedFile(const QString & szName, 
 		}
 	}
 
-	return 0;
+	return nullptr;
 }
 bool KviSharedFilesManager::removeSharedFile(const QString & szName, const QString & szMask, unsigned int uFileSize)
 {

@@ -138,7 +138,7 @@ KVSO_CLASS_FUNCTION(textBrowser, reload)
 void KvsObject_textBrowser::anchorClicked(const QUrl & url)
 {
 	KviKvsVariantList parms(new KviKvsVariant(url.path()));
-	callFunction(this, "linkClickedEvent", 0, &parms);
+	callFunction(this, "linkClickedEvent", nullptr, &parms);
 }
 
 KVSO_CLASS_FUNCTION(textBrowser, linkClickedEvent)

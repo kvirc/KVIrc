@@ -394,7 +394,7 @@ RegisteredUserEntryDialog::RegisteredUserEntryDialog(QWidget * p, KviRegisteredU
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 	g->addWidget(f, 2, 0, 1, 3);
 
-	m_pAvatar = 0;
+	m_pAvatar = nullptr;
 	if(r)
 	{
 		const QString av = r->getProperty("avatar");

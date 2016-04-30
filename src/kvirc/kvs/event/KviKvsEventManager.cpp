@@ -86,13 +86,13 @@
 		You may take a look at the list of available [doc:event_index_all]events[/doc].[br]
 */
 
-KviKvsEventManager * KviKvsEventManager::m_pInstance = 0;
+KviKvsEventManager * KviKvsEventManager::m_pInstance = nullptr;
 
 KviKvsEventManager::KviKvsEventManager()
 {
 	m_pInstance = this;
 	for(int i = 0; i < KVI_KVS_NUM_RAW_EVENTS; i++)
-		m_rawEventTable[i] = 0;
+		m_rawEventTable[i] = nullptr;
 }
 
 KviKvsEventManager::~KviKvsEventManager()
@@ -143,7 +143,7 @@ KviKvsEvent * KviKvsEventManager::findAppEventByName(const QString & szName)
 		if((u == 4) && KviQString::equalCI(szName, "OnIrcConnectionEstablished"))
 			return &(m_appEventTable[u]);
 	}
-	return 0;
+	return nullptr;
 }
 
 bool KviKvsEventManager::addAppHandler(unsigned int uEvIdx, KviKvsEventHandler * h)
@@ -191,9 +191,9 @@ bool KviKvsEventManager::removeScriptAppHandler(unsigned int uEvIdx, const QStri
 KviKvsScriptEventHandler * KviKvsEventManager::findScriptRawHandler(unsigned int uEvIdx, const QString & szName)
 {
 	if(uEvIdx >= KVI_KVS_NUM_RAW_EVENTS)
-		return 0;
+		return nullptr;
 	if(!m_rawEventTable[uEvIdx])
-		return 0;
+		return nullptr;
 	KviKvsEventHandler * h;
 	for(h = m_rawEventTable[uEvIdx]->first(); h; h = m_rawEventTable[uEvIdx]->next())
 	{
@@ -205,16 +205,16 @@ KviKvsScriptEventHandler * KviKvsEventManager::findScriptRawHandler(unsigned int
 			}
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 KviKvsScriptEventHandler * KviKvsEventManager::findScriptAppHandler(unsigned int uEvIdx, const QString & szName)
 {
 	if(uEvIdx >= KVI_KVS_NUM_APP_EVENTS)
-		return 0;
+		return nullptr;
 	KviKvsEventHandler * h;
 	if(!(m_appEventTable[uEvIdx].handlers()))
-		return 0;
+		return nullptr;
 	for(h = m_appEventTable[uEvIdx].handlers()->first(); h; h = m_appEventTable[uEvIdx].handlers()->next())
 	{
 		if(h->type() == KviKvsEventHandler::Script)
@@ -225,7 +225,7 @@ KviKvsScriptEventHandler * KviKvsEventManager::findScriptAppHandler(unsigned int
 			}
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 bool KviKvsEventManager::enableScriptAppHandler(unsigned int uEvIdx, const QString & szName, bool bEnable)
@@ -342,7 +342,7 @@ void KviKvsEventManager::removeAllModuleRawHandlers(KviKvsModuleInterface * pIfa
 		if(m_rawEventTable[i]->isEmpty())
 		{
 			delete m_rawEventTable[i];
-			m_rawEventTable[i] = 0;
+			m_rawEventTable[i] = nullptr;
 		}
 	}
 }
@@ -364,7 +364,7 @@ bool KviKvsEventManager::removeScriptRawHandler(unsigned int uEvIdx, const QStri
 				if(m_rawEventTable[uEvIdx]->isEmpty())
 				{
 					delete m_rawEventTable[uEvIdx];
-					m_rawEventTable[uEvIdx] = 0;
+					m_rawEventTable[uEvIdx] = nullptr;
 				}
 				return true;
 			}
@@ -399,7 +399,7 @@ bool KviKvsEventManager::removeModuleRawHandler(unsigned int uRawIdx, KviKvsModu
 				if(m_rawEventTable[uRawIdx]->isEmpty())
 				{
 					delete m_rawEventTable[uRawIdx];
-					m_rawEventTable[uRawIdx] = 0;
+					m_rawEventTable[uRawIdx] = nullptr;
 				}
 				return true;
 			}
@@ -462,7 +462,7 @@ void KviKvsEventManager::removeAllScriptRawHandlers()
 			if(m_rawEventTable[i]->isEmpty())
 			{
 				delete m_rawEventTable[i];
-				m_rawEventTable[i] = 0;
+				m_rawEventTable[i] = nullptr;
 			}
 		}
 	}
@@ -474,7 +474,7 @@ void KviKvsEventManager::clearRawEvents()
 	{
 		if(m_rawEventTable[i])
 			delete m_rawEventTable[i];
-		m_rawEventTable[i] = 0;
+		m_rawEventTable[i] = nullptr;
 	}
 }
 
@@ -530,7 +530,7 @@ bool KviKvsEventManager::triggerHandlers(KviPointerList<KviKvsEventHandler> * pH
 				KviModule * m = (KviModule *)((KviKvsModuleEventHandler *)h)->moduleInterface();
 				KviKvsModuleEventHandlerRoutine * proc = ((KviKvsModuleEventHandler *)h)->handlerRoutine();
 				KviKvsVariant retVal;
-				KviKvsRunTimeContext ctx(0, pWnd, pParams, &retVal);
+				KviKvsRunTimeContext ctx(nullptr, pWnd, pParams, &retVal);
 				KviKvsModuleEventCall call(m, &ctx, pParams);
 				if(!(*proc)(&call))
 					bGotHalt = true;

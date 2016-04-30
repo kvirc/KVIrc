@@ -641,7 +641,7 @@ const char * KviIrcServerParser::extractCtcpParameter(const char * msg_ptr, KviC
 	//
 
 	if(!msg_ptr)
-		return 0;
+		return nullptr;
 	while(*msg_ptr == ' ')
 		msg_ptr++; // skip leading spaces
 
@@ -745,7 +745,7 @@ const char * KviIrcServerParser::extractCtcpParameter(const char * p_msg_ptr, QS
 	const char * msg_ptr = p_msg_ptr;
 	int bInString = 0;
 	if(!msg_ptr)
-		return 0;
+		return nullptr;
 	while(*msg_ptr == ' ')
 		msg_ptr++; // skip leading spaces
 
@@ -1122,7 +1122,7 @@ void KviIrcServerParser::parseCtcpReplyPing(KviCtcpMessage * msg)
 		KviCString szTime;
 
 		struct timeval tv;
-		kvi_gettimeofday(&tv, 0);
+		kvi_gettimeofday(&tv, nullptr);
 
 		msg->pData = extractCtcpParameter(msg->pData, szTime, true);
 
@@ -1281,7 +1281,7 @@ static const char * ctcpTagTable[][2] = {
 	            " sets your own on this side if sent through a NOTICE" },
 	{ "DCC", "Initiates a DCC connection (XDCC,TDCC)" },
 	{ "PAGE", "Leaves a message for this user" },
-	{ 0, 0 }
+	{ nullptr, nullptr }
 };
 
 void KviIrcServerParser::parseCtcpRequestClientinfo(KviCtcpMessage * msg)
@@ -1448,7 +1448,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 	//msg->pData = extractCtcpParameter(msg->pData,szData8,false);
 	szData8 = msg->pData;
 
-	KviWindow * pOut = 0;
+	KviWindow * pOut = nullptr;
 	bool bIsChannel = !IS_ME(msg->msg, msg->szTarget);
 
 	QString szData;
@@ -1490,7 +1490,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 					query->setTarget(msg->pSource->nick(), msg->pSource->user(), msg->pSource->host());
 				}
 				if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
-					KviKvsScript::run("snd.play $0", 0, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
+					KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
 			}
 		}
 		else
@@ -1673,7 +1673,7 @@ void KviIrcServerParser::parseCtcpReplyAvatar(KviCtcpMessage * msg)
 	bool bPrivate = IS_ME(msg->msg, msg->szTarget);
 
 	QString textLine;
-	KviAvatar * avatar = 0;
+	KviAvatar * avatar = nullptr;
 
 	bool bResetAvatar = true;
 
@@ -1724,7 +1724,7 @@ void KviIrcServerParser::parseCtcpReplyAvatar(KviCtcpMessage * msg)
 
 		avatar = g_pIconManager->getAvatar(QString(), szRemoteFile);
 
-		if((avatar == 0) && e)
+		if((avatar == nullptr) && e)
 		{
 			// we have no such file on our HD....
 			bResetAvatar = false;

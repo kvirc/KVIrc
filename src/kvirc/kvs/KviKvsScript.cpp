@@ -264,7 +264,7 @@ bool KviKvsScript::parse(KviWindow * pOutput, int iRunFlags)
 		}
 	} // else there is no tree at all, nobody can be locked inside
 
-	KviKvsParser p(this, (iRunFlags & Quiet) ? 0 : pOutput);
+	KviKvsParser p(this, (iRunFlags & Quiet) ? nullptr : pOutput);
 	// parse never blocks
 
 	int iFlags = iRunFlags & AssumeLocals ? KviKvsParser::AssumeLocals : 0;

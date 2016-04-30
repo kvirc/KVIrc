@@ -70,7 +70,7 @@ KviMenuBar::KviMenuBar(KviMainWindow * par, const char * name)
 	addDefaultItem("&IRC", pop);
 #endif //COMPILE_ON_MAC
 
-	m_pScriptItemList = 0;
+	m_pScriptItemList = nullptr;
 
 	pop = new QMenu("scripting", this);
 	setupScriptingPopup(pop);
@@ -303,7 +303,7 @@ void KviMenuBar::updateModulesToolsPopup()
 {
 	m_pModulesToolsPopup->clear();
 
-	QAction * pAction = 0;
+	QAction * pAction = nullptr;
 	KviModuleExtensionDescriptorList * l = g_pModuleExtensionManager->getExtensionList("tool");
 	if(l)
 	{
@@ -408,25 +408,25 @@ int KviMenuBar::getDefaultItemRealIndex(int iDefaultIndex)
 KviScriptMenuBarItem * KviMenuBar::findMenu(const QString & text)
 {
 	if(!m_pScriptItemList)
-		return 0;
+		return nullptr;
 	for(KviScriptMenuBarItem * i = m_pScriptItemList->first(); i; i = m_pScriptItemList->next())
 	{
 		if(KviQString::equalCI(text, i->szText))
 			return i;
 	}
-	return 0;
+	return nullptr;
 }
 
 KviScriptMenuBarItem * KviMenuBar::findMenu(KviKvsPopupMenu * p)
 {
 	if(!m_pScriptItemList)
-		return 0;
+		return nullptr;
 	for(KviScriptMenuBarItem * i = m_pScriptItemList->first(); i; i = m_pScriptItemList->next())
 	{
 		if(i->pPopup == p)
 			return i;
 	}
-	return 0;
+	return nullptr;
 }
 
 bool KviMenuBar::removeMenu(const QString & text)

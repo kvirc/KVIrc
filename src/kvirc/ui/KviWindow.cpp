@@ -97,7 +97,7 @@ static QAction * g_pMdiWindowSystemTextEncodingDefaultAction = nullptr;
 unsigned long int g_uUniqueWindowId = 1;
 
 KviWindow::KviWindow(Type eType, const QString & szName, KviConsoleWindow * lpConsole)
-    : QWidget(0)
+    : QWidget(nullptr)
 {
 	m_uId = g_uUniqueWindowId;
 	g_uUniqueWindowId++;
@@ -509,7 +509,7 @@ void KviWindow::getDefaultLogFileName(QString & szBuffer)
 		KviQString::escapeKvs(&szDynamicPath, KviQString::PermitVariables | KviQString::PermitFunctions);
 
 		KviKvsVariant vRet;
-		if(KviKvsScript::evaluate(szDynamicPath, this, 0, &vRet))
+		if(KviKvsScript::evaluate(szDynamicPath, this, nullptr, &vRet))
 			vRet.asString(szDynamicPath);
 	}
 
@@ -751,7 +751,7 @@ void KviWindow::createSystemTextEncodingPopup()
 			szTmp += ")";
 		}
 
-		disconnect(g_pMdiWindowSystemTextEncodingActionGroup, SIGNAL(triggered(QAction *)), 0, 0);
+		disconnect(g_pMdiWindowSystemTextEncodingActionGroup, SIGNAL(triggered(QAction *)), nullptr, nullptr);
 		connect(g_pMdiWindowSystemTextEncodingActionGroup, SIGNAL(triggered(QAction *)), this, SLOT(systemTextEncodingPopupActivated(QAction *)));
 		g_pMdiWindowSystemTextEncodingDefaultAction->setText(szTmp);
 
@@ -785,7 +785,7 @@ void KviWindow::createSystemTextEncodingPopup()
 		}
 	}
 
-	disconnect(g_pMdiWindowSystemTextEncodingActionGroup, SIGNAL(triggered(QAction *)), NULL, NULL);
+	disconnect(g_pMdiWindowSystemTextEncodingActionGroup, SIGNAL(triggered(QAction *)), nullptr, nullptr);
 	connect(g_pMdiWindowSystemTextEncodingActionGroup, SIGNAL(triggered(QAction *)), this, SLOT(systemTextEncodingPopupActivated(QAction *)));
 }
 

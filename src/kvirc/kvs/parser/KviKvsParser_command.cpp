@@ -42,7 +42,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 
 	int iIdentifierLen = KVSP_curCharPointer - pIdentifier;
 
-	const QChar * pSecondPart = 0;
+	const QChar * pSecondPart = nullptr;
 	int iSecondPartLen = 0;
 
 	bool bHasNamespaceSoMustBeAlias = false;
@@ -58,7 +58,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 		{
 			warning(KVSP_curCharPointer - 1, __tr2qs_ctx("Stray dot ('.') character or invalid following module command name", "kvs"));
 			error(KVSP_curCharPointer, __tr2qs_ctx("Syntax error: malformed module command identifier", "kvs"));
-			return 0;
+			return nullptr;
 		}
 
 		KVSP_skipChar;
@@ -86,7 +86,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 				{
 					warning(KVSP_curCharPointer - 1, __tr2qs_ctx("Stray '::' sequence or invalid following alias name", "kvs"));
 					error(KVSP_curCharPointer, __tr2qs_ctx("Syntax error: malformed alias identifier", "kvs"));
-					return 0;
+					return nullptr;
 				}
 
 				KVSP_skipChar;
@@ -97,7 +97,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 			{
 				warning(KVSP_curCharPointer - 1, __tr2qs_ctx("Stray ':' character: did you mean '...<namespace>::<alias_name>' ?", "kvs"));
 				error(KVSP_curCharPointer, __tr2qs_ctx("Syntax error: malformed (alias?) command identifier", "kvs"));
-				return 0;
+				return nullptr;
 			}
 
 			iIdentifierLen = KVSP_curCharPointer - pIdentifier;
@@ -107,7 +107,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 
 	skipSpaces();
 
-	KviKvsTreeNodeSwitchList * sw = 0;
+	KviKvsTreeNodeSwitchList * sw = nullptr;
 	KviKvsTreeNodeData * pRebindData;
 
 	if(KVSP_curCharUnicode == '-')
@@ -117,10 +117,10 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 		if(!sw)
 		{
 			if(error())
-				return 0;
+				return nullptr;
 			// else it might be a negative number or something that does not seem
 			// to be a switch anyway
-			pRebindData = 0;
+			pRebindData = nullptr;
 		}
 		else
 		{
@@ -129,10 +129,10 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 	}
 	else
 	{
-		pRebindData = 0;
+		pRebindData = nullptr;
 	}
 
-	KviKvsTreeNodeCommand * cmd = 0;
+	KviKvsTreeNodeCommand * cmd = nullptr;
 
 	if(!bHasNamespaceSoMustBeAlias)
 	{
@@ -182,7 +182,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 									delete sw;
 								if(pRebindData)
 									delete pRebindData;
-								return 0;
+								return nullptr;
 							}
 							cmd->setLocation(pIdentifier);
 							if(sw)
@@ -223,7 +223,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 						delete sw;
 					if(pRebindData)
 						delete pRebindData;
-					return 0;
+					return nullptr;
 				}
 				cmd->setLocation(pIdentifier);
 				if(sw)
@@ -249,7 +249,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 					delete sw;
 				if(pRebindData)
 					delete pRebindData;
-				return 0;
+				return nullptr;
 			}
 			if(!skipSpacesAndNewlines())
 			{
@@ -258,7 +258,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 				if(pRebindData)
 					delete pRebindData;
 				delete dl;
-				return 0;
+				return nullptr;
 			}
 
 			const QChar * pClbkBegin = KVSP_curCharPointer;
@@ -272,7 +272,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 						delete sw;
 					if(pRebindData)
 						delete pRebindData;
-					return 0;
+					return nullptr;
 				}
 				// actually we need empty callbacks (for alias() at least)
 				// the single command implementations should take care of checking it
@@ -324,7 +324,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 						delete pRebindData;
 					delete dl;
 					delete clbk;
-					return 0;
+					return nullptr;
 				}
 			}
 
@@ -348,7 +348,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 			delete sw;
 		if(pRebindData)
 			delete pRebindData;
-		return 0; // this MUST be an error
+		return nullptr; // this MUST be an error
 	}
 
 	if(bHasNamespaceSoMustBeAlias)

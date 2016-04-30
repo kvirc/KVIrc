@@ -750,7 +750,7 @@ bool KvsObject_widget::eventFilter(QObject * o, QEvent * e)
 				QRect rect = ((QPaintEvent *)e)->rect();
 				KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("painter");
 				KviKvsVariantList params;
-				KviKvsObject * pObject = pClass->allocateInstance(0, "internalpainter", m_pContext, &params);
+				KviKvsObject * pObject = pClass->allocateInstance(nullptr, "internalpainter", m_pContext, &params);
 				QPainter p(widget());
 				((KvsObject_painter *)pObject)->setInternalPainter(&p);
 				p.setClipRect(rect);
@@ -870,7 +870,7 @@ bool KvsObject_widget::eventFilter(QObject * o, QEvent * e)
 				}
 
 				KviKvsVariantList params(new KviKvsVariant(tmp));
-				callFunction(this, "keyPressEvent", 0, &params);
+				callFunction(this, "keyPressEvent", nullptr, &params);
 			}
 			break;
 			case QEvent::MouseButtonPress:
@@ -926,7 +926,7 @@ bool KvsObject_widget::eventFilter(QObject * o, QEvent * e)
 				lParams.append(new KviKvsVariant((kvs_int_t)aparam));
 				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
 				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
-				if(!callFunction(this, "mouseDoubleClickEvent", 0, &lParams))
+				if(!callFunction(this, "mouseDoubleClickEvent", nullptr, &lParams))
 					brokenhandler = true; // ignore results of a broken event handler
 			}
 
@@ -936,16 +936,16 @@ bool KvsObject_widget::eventFilter(QObject * o, QEvent * e)
 				KviKvsVariantList lParams;
 				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
 				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
-				if(!callFunction(this, "mouseMoveEvent", 0, &lParams))
+				if(!callFunction(this, "mouseMoveEvent", nullptr, &lParams))
 					brokenhandler = true; // ignore results of a broken event handler
 			}
 			break;
 			case QEvent::FocusIn:
-				if(!callFunction(this, "focusInEvent", &oReturnBuffer, 0))
+				if(!callFunction(this, "focusInEvent", &oReturnBuffer, nullptr))
 					brokenhandler = true;
 				break;
 			case QEvent::FocusOut:
-				if(!callFunction(this, "focusOutEvent", &oReturnBuffer, 0))
+				if(!callFunction(this, "focusOutEvent", &oReturnBuffer, nullptr))
 					brokenhandler = true;
 				break;
 			case QEvent::Resize:
@@ -958,27 +958,27 @@ bool KvsObject_widget::eventFilter(QObject * o, QEvent * e)
 				break;
 			}
 			case QEvent::Move:
-				if(!callFunction(this, "moveEvent", &oReturnBuffer, 0))
+				if(!callFunction(this, "moveEvent", &oReturnBuffer, nullptr))
 					brokenhandler = true;
 				break;
 			case QEvent::Close:
-				if(!callFunction(this, "closeEvent", &oReturnBuffer, 0))
+				if(!callFunction(this, "closeEvent", &oReturnBuffer, nullptr))
 					brokenhandler = true;
 				break;
 			case QEvent::Enter:
-				if(!callFunction(this, "mouseEnterEvent", &oReturnBuffer, 0))
+				if(!callFunction(this, "mouseEnterEvent", &oReturnBuffer, nullptr))
 					brokenhandler = true;
 				break;
 			case QEvent::Leave:
-				if(!callFunction(this, "mouseLeaveEvent", &oReturnBuffer, 0))
+				if(!callFunction(this, "mouseLeaveEvent", &oReturnBuffer, nullptr))
 					brokenhandler = true;
 				break;
 			case QEvent::Show:
-				if(!callFunction(this, "showEvent", &oReturnBuffer, 0))
+				if(!callFunction(this, "showEvent", &oReturnBuffer, nullptr))
 					brokenhandler = true;
 				break;
 			case QEvent::Hide:
-				if(!callFunction(this, "hideEvent", &oReturnBuffer, 0))
+				if(!callFunction(this, "hideEvent", &oReturnBuffer, nullptr))
 					ret = false;
 				break;
 			default:
@@ -1434,7 +1434,7 @@ KVSO_CLASS_FUNCTION(widget, parentWidget)
 	if(parentScriptWidget())
 		c->returnValue()->setHObject(parentObject()->handle());
 	else
-		c->returnValue()->setHObject((kvs_hobject_t)0);
+		c->returnValue()->setHObject((kvs_hobject_t) nullptr);
 	return true;
 }
 
@@ -1733,10 +1733,10 @@ KVSO_CLASS_FUNCTION(widget, setWFlags)
 	KVSO_PARAMETERS_BEGIN(c)
 	KVSO_PARAMETER("widget_flags", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, wflags)
 	KVSO_PARAMETERS_END(c)
-	Qt::WindowFlags flag, sum = 0;
+	Qt::WindowFlags flag, sum = nullptr;
 	for(auto & it : wflags)
 	{
-		flag = 0;
+		flag = nullptr;
 		for(size_t j{}; j < widgettypes_num; j++)
 		{
 			if(KviQString::equalCI(it, widgettypes_tbl[j]))
@@ -1843,7 +1843,7 @@ KVSO_CLASS_FUNCTION(widget, setParent)
 
 	if(!ob)
 	{
-		widget()->setParent(0);
+		widget()->setParent(nullptr);
 		return true;
 	}
 	else if(!ob->object()->isWidgetType())
@@ -2066,7 +2066,7 @@ KVSO_CLASS_FUNCTION(widget, grab)
 	*pPixmap = QPixmap::grabWidget(((QWidget *)(ob->object())));
 	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("pixmap");
 	KviKvsVariantList params;
-	KviKvsObject * pObject = pClass->allocateInstance(0, "internalpixmap", c->context(), &params);
+	KviKvsObject * pObject = pClass->allocateInstance(nullptr, "internalpixmap", c->context(), &params);
 	((KvsObject_pixmap *)pObject)->setInternalPixmap(pPixmap);
 	c->returnValue()->setHObject(pObject->handle());
 	return true;

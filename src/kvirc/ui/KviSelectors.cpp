@@ -621,7 +621,7 @@ void KviColorSelector::forceColor(QColor clr)
 
 void KviColorSelector::changeClicked()
 {
-	QColor tmp = QColorDialog::getColor(m_memColor, 0, __tr2qs("Choose Color"), QColorDialog::ShowAlphaChannel);
+	QColor tmp = QColorDialog::getColor(m_memColor, nullptr, __tr2qs("Choose Color"), QColorDialog::ShowAlphaChannel);
 	if(tmp.isValid())
 		setButtonPalette(&tmp);
 }
@@ -706,7 +706,7 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par, const QString 
 
 	m_pContextPopup = new QMenu(this);
 
-	QAction * pAction = 0;
+	QAction * pAction = nullptr;
 	m_pForePopup = new QMenu(this);
 	connect(m_pForePopup, SIGNAL(triggered(QAction *)), this, SLOT(foreSelected(QAction *)));
 	int iColor;
@@ -820,7 +820,7 @@ KviSoundSelector::~KviSoundSelector()
 
 void KviSoundSelector::playSound()
 {
-	KviKvsScript::run("snd.play $0", 0, new KviKvsVariantList(new KviKvsVariant(m_pLineEdit->text())));
+	KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(m_pLineEdit->text())));
 }
 
 void KviSoundSelector::setEnabled(bool bEnabled)

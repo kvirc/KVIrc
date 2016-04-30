@@ -37,16 +37,16 @@
 #include <QTimer>
 
 DccMarshal::DccMarshal(DccMarshalOutputContext * ctx)
-    : QObject(0)
+    : QObject(nullptr)
 {
 	setObjectName("dcc_marshal");
-	m_pSn = 0;
+	m_pSn = nullptr;
 	m_fd = KVI_INVALID_SOCKET;
-	m_pTimeoutTimer = 0;
+	m_pTimeoutTimer = nullptr;
 	m_bIPv6 = false;
 	m_pOutputContext = ctx;
 #ifdef COMPILE_SSL_SUPPORT
-	m_pSSL = 0;
+	m_pSSL = nullptr;
 #endif
 	m_szIp = "";
 	m_szPort = "";
@@ -70,7 +70,7 @@ kvi_socket_t DccMarshal::releaseSocket()
 KviSSL * DccMarshal::releaseSSL()
 {
 	KviSSL * theSSL = m_pSSL;
-	m_pSSL = 0;
+	m_pSSL = nullptr;
 	return theSSL;
 }
 #endif
@@ -80,7 +80,7 @@ void DccMarshal::reset()
 	if(m_pSn)
 	{
 		delete m_pSn;
-		m_pSn = 0;
+		m_pSn = nullptr;
 	}
 	if(m_fd != KVI_INVALID_SOCKET)
 	{
@@ -93,13 +93,13 @@ void DccMarshal::reset()
 	{
 		//		qDebug("MARSHAL CLEARING THE SSL");
 		KviSSLMaster::freeSSL(m_pSSL);
-		m_pSSL = 0;
+		m_pSSL = nullptr;
 	}
 #endif
 	if(m_pTimeoutTimer)
 	{
 		delete m_pTimeoutTimer;
-		m_pTimeoutTimer = 0;
+		m_pTimeoutTimer = nullptr;
 	}
 	m_bIPv6 = false;
 }
@@ -119,7 +119,7 @@ KviError::Code DccMarshal::dccListen(const QString & ip, const QString & port, b
 	if(m_pTimeoutTimer)
 	{
 		delete m_pTimeoutTimer;
-		m_pTimeoutTimer = 0;
+		m_pTimeoutTimer = nullptr;
 	}
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -287,7 +287,7 @@ void DccMarshal::doListen()
 	if(m_pTimeoutTimer)
 	{
 		delete m_pTimeoutTimer;
-		m_pTimeoutTimer = 0;
+		m_pTimeoutTimer = nullptr;
 	}
 
 	if(m_bUseTimeout)
@@ -329,7 +329,7 @@ void DccMarshal::doConnect()
 	if(m_pTimeoutTimer)
 	{
 		delete m_pTimeoutTimer;
-		m_pTimeoutTimer = 0;
+		m_pTimeoutTimer = nullptr;
 	}
 	// Check the address type
 	if(!KviNetUtils::isValidStringIp(m_szIp))
@@ -432,7 +432,7 @@ void DccMarshal::doConnect()
 	if(m_pTimeoutTimer)
 	{
 		delete m_pTimeoutTimer;
-		m_pTimeoutTimer = 0;
+		m_pTimeoutTimer = nullptr;
 	}
 
 	if(m_bUseTimeout)
@@ -453,7 +453,7 @@ void DccMarshal::snActivated(int)
 	if(m_pTimeoutTimer)
 	{
 		delete m_pTimeoutTimer;
-		m_pTimeoutTimer = 0;
+		m_pTimeoutTimer = nullptr;
 	}
 #ifdef COMPILE_IPV6_SUPPORT
 	struct sockaddr_in6 hostSockAddr6;
@@ -493,7 +493,7 @@ void DccMarshal::snActivated(int)
 		}
 		//Successfully connected...
 		delete m_pSn;
-		m_pSn = 0;
+		m_pSn = nullptr;
 		// get the local address
 		if(!kvi_socket_getsockname(m_fd, addr, &size))
 		{
@@ -528,7 +528,7 @@ void DccMarshal::snActivated(int)
 		{
 			// Connected
 			delete m_pSn;
-			m_pSn = 0;
+			m_pSn = nullptr;
 #ifdef COMPILE_IPV6_SUPPORT
 			if(m_bIPv6)
 			{
@@ -591,7 +591,7 @@ void DccMarshal::doSSLHandshake(int)
 	if(m_pSn)
 	{
 		delete m_pSn;
-		m_pSn = 0;
+		m_pSn = nullptr;
 	}
 
 	if(!m_pSSL)

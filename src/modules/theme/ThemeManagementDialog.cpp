@@ -109,14 +109,14 @@ ThemeListWidgetItem::~ThemeListWidgetItem()
 	delete m_pThemeInfo;
 }
 
-ThemeManagementDialog * ThemeManagementDialog::m_pInstance = 0;
+ThemeManagementDialog * ThemeManagementDialog::m_pInstance = nullptr;
 
 ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
     : QWidget(parent)
 {
-	m_pItemDelegate = NULL;
+	m_pItemDelegate = nullptr;
 #ifdef COMPILE_WEBKIT_SUPPORT
-	m_pWebThemeInterfaceDialog = NULL;
+	m_pWebThemeInterfaceDialog = nullptr;
 #endif
 	setObjectName("theme_options_widget");
 	setWindowTitle(__tr2qs_ctx("Manage Themes - KVIrc", "theme"));
@@ -252,12 +252,12 @@ ThemeManagementDialog::~ThemeManagementDialog()
 	if(m_pItemDelegate)
 		delete m_pItemDelegate;
 	g_rectManagementDialogGeometry = QRect(pos().x(), pos().y(), size().width(), size().height());
-	m_pInstance = 0;
+	m_pInstance = nullptr;
 #ifdef COMPILE_WEBKIT_SUPPORT
 	if(m_pWebThemeInterfaceDialog)
 	{
 		m_pWebThemeInterfaceDialog->deleteLater();
-		m_pWebThemeInterfaceDialog = NULL;
+		m_pWebThemeInterfaceDialog = nullptr;
 	}
 #endif //COMPILE_WEBKIT_SUPPORT
 }
@@ -265,7 +265,7 @@ ThemeManagementDialog::~ThemeManagementDialog()
 void ThemeManagementDialog::closeClicked()
 {
 	deleteLater();
-	m_pInstance = 0;
+	m_pInstance = nullptr;
 }
 
 void ThemeManagementDialog::display(bool bTopLevel)
@@ -276,7 +276,7 @@ void ThemeManagementDialog::display(bool bTopLevel)
 		{
 			if(m_pInstance->parent())
 			{
-				m_pInstance->setParent(0);
+				m_pInstance->setParent(nullptr);
 			}
 		}
 		else
@@ -291,7 +291,7 @@ void ThemeManagementDialog::display(bool bTopLevel)
 	{
 		if(bTopLevel)
 		{
-			m_pInstance = new ThemeManagementDialog(0);
+			m_pInstance = new ThemeManagementDialog(nullptr);
 		}
 		else
 		{
@@ -308,7 +308,7 @@ void ThemeManagementDialog::cleanup()
 	if(!m_pInstance)
 		return;
 	delete m_pInstance;
-	m_pInstance = 0;
+	m_pInstance = nullptr;
 }
 
 void ThemeManagementDialog::packTheme()
@@ -329,7 +329,7 @@ void ThemeManagementDialog::packTheme()
 void ThemeManagementDialog::contextMenuRequested(const QPoint & pos)
 {
 	ThemeListWidgetItem * pItem = dynamic_cast<ThemeListWidgetItem *>(m_pListWidget->itemAt(pos));
-	if(pItem != 0)
+	if(pItem != nullptr)
 	{
 		m_pListWidget->setCurrentItem(pItem);
 		m_pContextPopup->clear();
@@ -453,7 +453,7 @@ void ThemeManagementDialog::getMoreThemes()
 void ThemeManagementDialog::webThemeInterfaceDialogDestroyed()
 {
 #ifdef COMPILE_WEBKIT_SUPPORT
-	m_pWebThemeInterfaceDialog = NULL;
+	m_pWebThemeInterfaceDialog = nullptr;
 #endif
 	fillThemeBox();
 }

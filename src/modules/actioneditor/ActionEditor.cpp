@@ -94,7 +94,7 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
     : QWidget(par)
 {
 	m_pActionEditor = ed;
-	m_pActionData = 0;
+	m_pActionData = nullptr;
 
 	QGridLayout * g = new QGridLayout(this);
 
@@ -650,8 +650,8 @@ ActionEditor::ActionEditor(QWidget * par)
 
 	m_pSingleActionEditor = new SingleActionEditor(m_pSplitter, this);
 
-	ActionEditorTreeWidgetItem * last = 0;
-	ActionEditorTreeWidgetItem * first = 0;
+	ActionEditorTreeWidgetItem * last = nullptr;
+	ActionEditorTreeWidgetItem * first = nullptr;
 
 	KviPointerHashTableIterator<QString, KviAction> it(*(KviActionManager::instance()->actions()));
 	while(KviAction * a = it.current())
@@ -668,7 +668,7 @@ ActionEditor::ActionEditor(QWidget * par)
 			    a->smallIconId(),
 			    a->flags(),
 			    a->keySequence(),
-			    0);
+			    nullptr);
 			ActionEditorTreeWidgetItem * lvi = new ActionEditorTreeWidgetItem(m_pTreeWidget, ad);
 			ad->m_pItem = lvi;
 			if(ad->m_szName == g_szLastEditedAction)
@@ -689,7 +689,7 @@ ActionEditor::ActionEditor(QWidget * par)
 	}
 	else
 	{
-		currentItemChanged(0, 0);
+		currentItemChanged(nullptr, nullptr);
 	}
 }
 
@@ -765,7 +765,7 @@ void ActionEditor::deleteActions()
 	for(ActionEditorTreeWidgetItem * i = l.first(); i; i = l.next())
 	{
 		if(m_pSingleActionEditor->actionData() == i->actionData())
-			m_pSingleActionEditor->setActionData(0);
+			m_pSingleActionEditor->setActionData(nullptr);
 		delete i;
 	}
 }
@@ -807,7 +807,7 @@ void ActionEditor::newAction()
 	    QString(),
 	    0,
 	    QString(),
-	    0);
+	    nullptr);
 
 	ActionEditorTreeWidgetItem * lvi = new ActionEditorTreeWidgetItem(m_pTreeWidget, ad);
 	ad->m_pItem = lvi;
@@ -835,7 +835,7 @@ void ActionEditor::currentItemChanged(QTreeWidgetItem * i, QTreeWidgetItem *)
 	ActionEditorTreeWidgetItem * it = (ActionEditorTreeWidgetItem *)i;
 	if(!it)
 	{
-		m_pSingleActionEditor->setActionData(0);
+		m_pSingleActionEditor->setActionData(nullptr);
 		m_pDeleteActionsButton->setEnabled(false);
 		m_pExportActionsButton->setEnabled(false);
 		return;
@@ -879,7 +879,7 @@ void ActionEditor::commit()
 }
 
 ActionEditorWindow::ActionEditorWindow()
-    : KviWindow(KviWindow::ScriptEditor, "actioneditor", 0)
+    : KviWindow(KviWindow::ScriptEditor, "actioneditor", nullptr)
 {
 	g_pActionEditorWindow = this;
 	setFixedCaption(__tr2qs_ctx("Action Editor", "editor"));
@@ -911,7 +911,7 @@ ActionEditorWindow::ActionEditorWindow()
 
 ActionEditorWindow::~ActionEditorWindow()
 {
-	g_pActionEditorWindow = 0;
+	g_pActionEditorWindow = nullptr;
 }
 
 void ActionEditorWindow::okClicked()

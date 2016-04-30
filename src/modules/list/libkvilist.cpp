@@ -31,7 +31,7 @@
 
 #include <QSplitter>
 
-KviPointerList<ListWindow> * g_pListWindowList = 0;
+KviPointerList<ListWindow> * g_pListWindowList = nullptr;
 
 /*
 	@doc: list.open
@@ -82,7 +82,7 @@ static bool list_module_cleanup(KviModule *)
 	while(g_pListWindowList->first())
 		g_pListWindowList->first()->die();
 	delete g_pListWindowList;
-	g_pListWindowList = 0;
+	g_pListWindowList = nullptr;
 	return true;
 }
 

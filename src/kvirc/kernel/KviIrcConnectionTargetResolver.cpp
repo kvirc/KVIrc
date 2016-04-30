@@ -59,12 +59,12 @@ KviIrcConnectionTargetResolver::KviIrcConnectionTargetResolver(KviIrcConnection 
     : QObject()
 {
 	m_pConnection = pConnection;
-	m_pTarget = 0;
+	m_pTarget = nullptr;
 	m_pConsole = m_pConnection->console();
 
-	m_pStartTimer = 0;
-	m_pProxyDns = 0;
-	m_pServerDns = 0;
+	m_pStartTimer = nullptr;
+	m_pProxyDns = nullptr;
+	m_pServerDns = nullptr;
 
 	m_eState = Idle;
 	m_eStatus = Success;
@@ -93,7 +93,7 @@ void KviIrcConnectionTargetResolver::cleanup()
 			// can't block : just delete it
 			delete m_pProxyDns;
 		}
-		m_pProxyDns = 0;
+		m_pProxyDns = nullptr;
 	}
 	if(m_pServerDns)
 	{
@@ -109,12 +109,12 @@ void KviIrcConnectionTargetResolver::cleanup()
 			// can't block : just delete it
 			delete m_pServerDns;
 		}
-		m_pServerDns = 0;
+		m_pServerDns = nullptr;
 	}
 	if(m_pStartTimer)
 	{
 		delete m_pStartTimer;
-		m_pStartTimer = 0;
+		m_pStartTimer = nullptr;
 	}
 }
 
@@ -127,7 +127,7 @@ void KviIrcConnectionTargetResolver::start(KviIrcConnectionTarget * t)
 	if(m_pStartTimer) // this should never happen I guess
 	{
 		delete m_pStartTimer;
-		m_pStartTimer = 0;
+		m_pStartTimer = nullptr;
 	}
 	m_pStartTimer = new QTimer(this);
 	connect(m_pStartTimer, SIGNAL(timeout()), this, SLOT(asyncStartResolve()));
@@ -153,7 +153,7 @@ void KviIrcConnectionTargetResolver::asyncStartResolve()
 	if(m_pStartTimer)
 	{
 		delete m_pStartTimer;
-		m_pStartTimer = 0;
+		m_pStartTimer = nullptr;
 	}
 
 	m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
@@ -240,7 +240,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 			{
 				qDebug("Something weird is happening, m_pProxyDns is non-zero in lookupProxyHostname()");
 				delete m_pProxyDns;
-				m_pProxyDns = 0;
+				m_pProxyDns = nullptr;
 			}
 
 			m_pProxyDns = new KviDnsResolver();
@@ -255,7 +255,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 				    __tr2qs("Resuming direct server connection"));
 				// FIXME: #warning "Option for resuming direct connection or not ?"
 				delete m_pProxyDns;
-				m_pProxyDns = 0;
+				m_pProxyDns = nullptr;
 				m_pTarget->clearProxy();
 				lookupServerHostname();
 			}
@@ -295,7 +295,7 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDnsResolver *)
 	}
 
 	delete m_pProxyDns;
-	m_pProxyDns = 0;
+	m_pProxyDns = nullptr;
 	if(m_pTarget->proxy())
 	{
 		if(m_pTarget->proxy()->protocol() == KviProxy::Http
@@ -358,7 +358,7 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 			{
 				qDebug("Something weird is happening, m_pServerDns is non-zero in lookupServerHostname()");
 				delete m_pServerDns;
-				m_pServerDns = 0;
+				m_pServerDns = nullptr;
 			}
 			m_pServerDns = new KviDnsResolver();
 			connect(m_pServerDns, SIGNAL(lookupDone(KviDnsResolver *)), this,
@@ -451,7 +451,7 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 	m_pTarget->server()->setIp(szIpAddress);
 
 	delete m_pServerDns;
-	m_pServerDns = 0;
+	m_pServerDns = nullptr;
 	haveServerIp();
 }
 

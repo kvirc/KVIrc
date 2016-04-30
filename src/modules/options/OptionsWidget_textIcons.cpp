@@ -70,9 +70,9 @@ void TextIconTableItem::setId(int id)
 OptionsWidget_textIcons::OptionsWidget_textIcons(QWidget * parent)
     : KviOptionsWidget(parent)
 {
-	m_pPopup = 0;
+	m_pPopup = nullptr;
 	m_iLastEditedRow = -1;
-	m_pCurrentIconButton = 0;
+	m_pCurrentIconButton = nullptr;
 	setObjectName("texticons_options_widget");
 	createLayout();
 
@@ -169,7 +169,7 @@ void OptionsWidget_textIcons::iconSelected(KviIconManager::SmallIcon eIcon)
 	m_pCurrentItem->icon()->setId(eIcon);
 	m_pCurrentItem->setIcon(QIcon(*m_pCurrentItem->icon()->pixmap()));
 
-	KviTalHBox * pBox = new KviTalHBox(0);
+	KviTalHBox * pBox = new KviTalHBox(nullptr);
 	pBox->setSpacing(0);
 	pBox->setMargin(0);
 
@@ -230,10 +230,10 @@ void OptionsWidget_textIcons::currentItemChanged(QTableWidgetItem * cur, QTableW
 	{
 		QWidget * pOldWidget = m_pTable->cellWidget(prev->row(), 1);
 		if(pOldWidget)
-			m_pTable->setCellWidget(prev->row(), 1, NULL);
+			m_pTable->setCellWidget(prev->row(), 1, nullptr);
 	}
 
-	m_pCurrentItem = NULL;
+	m_pCurrentItem = nullptr;
 
 	if(!cur)
 		return;
@@ -244,7 +244,7 @@ void OptionsWidget_textIcons::currentItemChanged(QTableWidgetItem * cur, QTableW
 
 	m_pCurrentItem = (TextIconTableItem *)cur;
 
-	KviTalHBox * pBox = new KviTalHBox(0);
+	KviTalHBox * pBox = new KviTalHBox(nullptr);
 	pBox->setSpacing(0);
 	pBox->setMargin(0);
 
@@ -266,7 +266,7 @@ void OptionsWidget_textIcons::addClicked()
 {
 	m_pTable->setRowCount(m_pTable->rowCount() + 1);
 	m_pTable->setItem(m_pTable->rowCount() - 1, 0, new QTableWidgetItem(__tr2qs_ctx("unnamed", "options")));
-	m_pTable->setItem(m_pTable->rowCount() - 1, 1, new TextIconTableItem(m_pTable, 0));
+	m_pTable->setItem(m_pTable->rowCount() - 1, 1, new TextIconTableItem(m_pTable, nullptr));
 	m_pTable->scrollToBottom();
 	m_pDel->setEnabled(true);
 }

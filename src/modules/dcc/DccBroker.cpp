@@ -60,7 +60,7 @@ extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 //#warning "The broker might lookup the remote host name"
 
 DccBroker::DccBroker()
-    : QObject(0)
+    : QObject(nullptr)
 {
 	setObjectName("dcc_broker");
 	DccFileTransfer::init();
@@ -81,7 +81,7 @@ DccBroker::~DccBroker()
 	while(m_pBoxList->first())
 		delete m_pBoxList->first();
 	delete m_pBoxList;
-	m_pBoxList = 0;
+	m_pBoxList = nullptr;
 	while(m_pDccWindowList->first())
 		delete m_pDccWindowList->first();
 	delete m_pDccWindowList;
@@ -106,12 +106,12 @@ KviDccZeroPortTag * DccBroker::findZeroPortTag(const QString & szTag)
 {
 	KviDccZeroPortTag * t = m_pZeroPortTags->find(szTag);
 	if(!t)
-		return 0;
+		return nullptr;
 	if(t->m_tTimestamp.secsTo(QDateTime::currentDateTime()) > 180)
 	{
 		// too late man...
 		m_pZeroPortTags->remove(szTag);
-		return 0;
+		return nullptr;
 	}
 	return t;
 }
@@ -140,7 +140,7 @@ void DccBroker::unregisterDccBox(DccDialog * box)
 void DccBroker::cancelDcc(DccDescriptor * dcc)
 {
 	delete dcc;
-	dcc = 0;
+	dcc = nullptr;
 }
 
 void DccBroker::cancelDcc(DccDialog * box, DccDescriptor * dcc)
@@ -148,7 +148,7 @@ void DccBroker::cancelDcc(DccDialog * box, DccDescriptor * dcc)
 	if(box)
 		box->forgetDescriptor();
 	delete dcc;
-	dcc = 0;
+	dcc = nullptr;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -160,7 +160,7 @@ void DccBroker::rsendManage(DccDescriptor * dcc)
 	// We need the filename...
 	QFileInfo fi(dcc->szLocalFileName);
 	if(fi.exists())
-		rsendExecute(0, dcc);
+		rsendExecute(nullptr, dcc);
 	else
 		rsendAskForFileName(dcc);
 }
@@ -326,7 +326,7 @@ void DccBroker::handleChatRequest(DccDescriptor * dcc)
 	else
 	{
 		// auto accept
-		executeChat(0, dcc);
+		executeChat(nullptr, dcc);
 	}
 }
 
@@ -380,7 +380,7 @@ void DccBroker::activeVoiceManage(DccDescriptor * dcc)
 	else
 	{
 		// auto accept
-		activeVoiceExecute(0, dcc);
+		activeVoiceExecute(nullptr, dcc);
 	}
 }
 
@@ -584,7 +584,7 @@ void DccBroker::recvFileManage(DccDescriptor * dcc)
 		{
 			if(size >= KVI_OPTION_UINT(KviOption_uintMaximumRequestedAvatarSize))
 			{
-				cancelDcc(0, dcc);
+				cancelDcc(nullptr, dcc);
 				return;
 			}
 		}
@@ -659,7 +659,7 @@ void DccBroker::recvFileManage(DccDescriptor * dcc)
 			    &(dcc->szType), &(dcc->szNick), &(dcc->szUser),
 			    &(dcc->szHost), &(dcc->szFileName));
 		}
-		chooseSaveFileName(0, dcc);
+		chooseSaveFileName(nullptr, dcc);
 	}
 }
 
@@ -737,7 +737,7 @@ void DccBroker::chooseSaveFileName(DccDialog * box, DccDescriptor * dcc)
 		       true,
 		       g_pMainWindow))
 		{
-			renameOverwriteResume(0, dcc);
+			renameOverwriteResume(nullptr, dcc);
 		}
 		else
 		{
@@ -758,7 +758,7 @@ void DccBroker::chooseSaveFileName(DccDialog * box, DccDescriptor * dcc)
 			    &(dcc->szType), &(dcc->szFileName), &(dcc->szLocalFileName));
 		}
 
-		renameOverwriteResume(0, dcc);
+		renameOverwriteResume(nullptr, dcc);
 	}
 }
 
@@ -834,17 +834,17 @@ void DccBroker::renameOverwriteResume(DccDialog * box, DccDescriptor * dcc)
 		{
 			// yep, auto resume...
 			dcc->bResume = true;
-			recvFileExecute(0, dcc);
+			recvFileExecute(nullptr, dcc);
 		}
 		else if(iRemoteSize == (quint64)fi.size())
 		{
 			dcc->console()->output(KVI_OUT_DCCMSG, "Transfer aborted: file %Q already completed", &(dcc->szLocalFileName));
-			cancelDcc(0, dcc);
+			cancelDcc(nullptr, dcc);
 		}
 		else
 		{
 			// otherwise auto rename
-			renameDccSendFile(0, dcc);
+			renameDccSendFile(nullptr, dcc);
 		}
 		return;
 	}
@@ -852,7 +852,7 @@ void DccBroker::renameOverwriteResume(DccDialog * box, DccDescriptor * dcc)
 	dcc->szLocalFileSize = "0";
 
 	// everything OK
-	recvFileExecute(0, dcc);
+	recvFileExecute(nullptr, dcc);
 }
 
 void DccBroker::renameDccSendFile(DccDialog * box, DccDescriptor * dcc)
@@ -894,7 +894,7 @@ void DccBroker::renameDccSendFile(DccDialog * box, DccDescriptor * dcc)
 
 	dcc->szLocalFileSize = "0"; // 0 for sure
 
-	recvFileExecute(0, dcc);
+	recvFileExecute(nullptr, dcc);
 }
 
 void DccBroker::recvFileExecute(DccDialog * box, DccDescriptor * dcc)
@@ -940,7 +940,7 @@ void DccBroker::sendFileManage(DccDescriptor * dcc)
 				if(d->szLocalFileName.isEmpty())
 					cancelDcc(d);
 				else
-					sendFileExecute(0, d);
+					sendFileExecute(nullptr, d);
 			}
 			delete dcc;
 		}

@@ -31,7 +31,7 @@
 
 // Please use our common variable naming conventions and coding style :)
 // Let's be so:)
-UPnP::Manager * g_pManager = 0;
+UPnP::Manager * g_pManager = nullptr;
 
 /*
 	@doc: upnp.getExternalIpAddress
@@ -179,7 +179,7 @@ static bool upnp_kvs_cmd_refresh(KviKvsModuleCommandCall *)
 {
 	if(g_pManager)
 		delete g_pManager;
-	g_pManager = 0;
+	g_pManager = nullptr;
 
 	g_pManager = UPnP::Manager::instance();
 
@@ -190,7 +190,7 @@ static bool upnp_module_init(KviModule * m)
 {
 	if(g_pManager)
 		delete g_pManager;
-	g_pManager = 0;
+	g_pManager = nullptr;
 
 	g_pManager = UPnP::Manager::instance();
 
@@ -206,7 +206,7 @@ static bool upnp_module_init(KviModule * m)
 static bool upnp_module_cleanup(KviModule *)
 {
 	delete g_pManager;
-	g_pManager = 0;
+	g_pManager = nullptr;
 	return true;
 }
 

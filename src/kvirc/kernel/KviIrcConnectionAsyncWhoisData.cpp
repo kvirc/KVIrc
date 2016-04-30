@@ -27,8 +27,8 @@
 
 KviAsyncWhoisInfo::KviAsyncWhoisInfo()
 {
-	pCallback = 0;
-	pMagic = 0;
+	pCallback = nullptr;
+	pMagic = nullptr;
 }
 
 KviAsyncWhoisInfo::~KviAsyncWhoisInfo()

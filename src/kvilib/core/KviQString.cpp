@@ -967,7 +967,7 @@ namespace KviQString
 			return false;
 		}
 
-		const QChar * pSavePos1 = 0;
+		const QChar * pSavePos1 = nullptr;
 		const QChar * pSavePos2 = pM2;
 		while(pM1->unicode())
 		{

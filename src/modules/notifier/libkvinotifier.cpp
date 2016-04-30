@@ -38,7 +38,7 @@
 
 #include <QSplitter>
 
-NotifierWindow * g_pNotifierWindow = 0;
+NotifierWindow * g_pNotifierWindow = nullptr;
 kvi_time_t g_tNotifierDisabledUntil = 0;
 
 /*
@@ -279,7 +279,7 @@ static bool notifier_module_cleanup(KviModule *)
 	if(g_pNotifierWindow)
 	{
 		delete g_pNotifierWindow;
-		g_pNotifierWindow = 0;
+		g_pNotifierWindow = nullptr;
 	}
 	return true;
 }

@@ -133,13 +133,13 @@ KVSO_END_REGISTERCLASS(KvsObject_sql)
 
 KVSO_BEGIN_CONSTRUCTOR(KvsObject_sql, KviKvsObject)
 
-m_pCurrentSQlQuery = 0;
+m_pCurrentSQlQuery = nullptr;
 KVSO_END_CONSTRUCTOR(KvsObject_sql)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_sql)
 if(m_pCurrentSQlQuery)
 	delete m_pCurrentSQlQuery;
-m_pCurrentSQlQuery = 0;
+m_pCurrentSQlQuery = nullptr;
 KVSO_END_DESTRUCTOR(KvsObject_sql)
 
 KVSO_CLASS_FUNCTION(sql, setConnection)
@@ -179,7 +179,7 @@ KVSO_CLASS_FUNCTION(sql, setConnection)
 		m_pCurrentSQlQuery = new QSqlQuery(db);
 	}
 	else
-		m_pCurrentSQlQuery = 0;
+		m_pCurrentSQlQuery = nullptr;
 	c->returnValue()->setBoolean(bOk);
 	return true;
 }
@@ -303,7 +303,7 @@ KVSO_CLASS_FUNCTION(sql, closeConnection)
 		if(m_pCurrentSQlQuery)
 		{
 			delete m_pCurrentSQlQuery;
-			m_pCurrentSQlQuery = 0;
+			m_pCurrentSQlQuery = nullptr;
 		}
 		QSqlDatabase::removeDatabase(szConnectionName);
 		return true;
@@ -311,7 +311,7 @@ KVSO_CLASS_FUNCTION(sql, closeConnection)
 	if(m_pCurrentSQlQuery)
 	{
 		delete m_pCurrentSQlQuery;
-		m_pCurrentSQlQuery = 0;
+		m_pCurrentSQlQuery = nullptr;
 	}
 	QSqlDatabase::removeDatabase(mSzConnectionName);
 	return true;
@@ -465,7 +465,7 @@ KVSO_CLASS_FUNCTION(sql, queryRecord)
 	QSqlRecord record = m_pCurrentSQlQuery->record();
 	for(int i = 0; i < record.count(); i++)
 	{
-		KviKvsVariant * pValue = 0;
+		KviKvsVariant * pValue = nullptr;
 		QVariant value = record.value(i);
 		if(value.type() == QVariant::LongLong)
 			pValue = new KviKvsVariant((kvs_int_t)value.toLongLong());
@@ -475,7 +475,7 @@ KVSO_CLASS_FUNCTION(sql, queryRecord)
 		{
 			KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("memoryBuffer");
 			KviKvsVariantList params(new KviKvsVariant(QString()));
-			KviKvsObject * pObject = pClass->allocateInstance(0, "", c->context(), &params);
+			KviKvsObject * pObject = pClass->allocateInstance(nullptr, "", c->context(), &params);
 			*((KvsObject_memoryBuffer *)pObject)->pBuffer() = value.toByteArray();
 			pValue = new KviKvsVariant(pObject->handle());
 		}

@@ -236,7 +236,7 @@ int KviIrcUrl::run(const QString & text, int contextSpec, KviConsoleWindow * pCo
 		if(pConsole)
 		{
 			KviConsoleWindow * pTmpConsole = pConsole;
-			pConsole = 0;
+			pConsole = nullptr;
 
 			if(pTmpConsole->connection())
 			{
@@ -261,8 +261,8 @@ int KviIrcUrl::run(const QString & text, int contextSpec, KviConsoleWindow * pCo
 	if(contextSpec & TryEveryContext)
 	{
 		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-		KviConsoleWindow * pTmpConsole = 0;
-		pConsole = 0;
+		KviConsoleWindow * pTmpConsole = nullptr;
+		pConsole = nullptr;
 
 		while(KviWindow * wnd = it.current())
 		{

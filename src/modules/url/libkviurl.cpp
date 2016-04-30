@@ -245,7 +245,7 @@ void UrlDialog::remove()
 {
 	if(!m_pUrlList->currentItem())
 	{
-		QMessageBox::warning(0, __tr2qs("Entry Selection - KVIrc"), __tr2qs("Must select a URL entry from the list to remove it."), QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+		QMessageBox::warning(nullptr, __tr2qs("Entry Selection - KVIrc"), __tr2qs("Must select a URL entry from the list to remove it."), QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
 		return;
 	}
 
@@ -299,11 +299,11 @@ void UrlDialog::dblclk_url(QTreeWidgetItem * item, int)
 void UrlDialog::popup(QTreeWidgetItem * item, const QPoint & point)
 {
 	m_szUrl = item->text(0);
-	QMenu p("menu", 0);
+	QMenu p("menu", nullptr);
 	p.addAction(__tr2qs("&Remove"), this, SLOT(remove()));
 	// 	p.addAction(__tr2qs("&Find Text"),this,SLOT(findtext()));
 	p.addSeparator();
-	m_pListPopup = new QMenu("list", 0);
+	m_pListPopup = new QMenu("list", nullptr);
 
 	for(KviWindow * w = g_pMainWindow->windowList()->first(); w; w = g_pMainWindow->windowList()->next())
 	{
@@ -319,7 +319,7 @@ void UrlDialog::popup(QTreeWidgetItem * item, const QPoint & point)
 
 void UrlDialog::contextMenu(const QPoint & point)
 {
-	QMenu p("contextmenu", 0);
+	QMenu p("contextmenu", nullptr);
 	p.addAction(__tr2qs("Configure"), this, SLOT(config()));
 	p.exec(point);
 }
@@ -339,7 +339,7 @@ void UrlDialog::sayToWin(QAction * act)
 	}
 	else
 	{
-		QMessageBox::warning(0, __tr2qs("Window Not Found - KVIrc"), __tr2qs("Window not found."), QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+		QMessageBox::warning(nullptr, __tr2qs("Window Not Found - KVIrc"), __tr2qs("Window not found."), QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
 	}
 }
 
@@ -394,7 +394,7 @@ UrlDialog::~UrlDialog()
 	if (m_pMenuBar) delete m_pMenuBar;
 	m_pMenuBar = 0;*/
 	UrlDlgList * tmpitem = findFrame();
-	tmpitem->dlg = 0;
+	tmpitem->dlg = nullptr;
 }
 
 // ----------------------------- CLASS URLDIALOG -------------------------end //
@@ -471,7 +471,7 @@ ConfigDialog::~ConfigDialog()
 {
 	for(int i = 0; i < cbnum; i++)
 		delete cb[i];
-	g_pConfigDialog = 0;
+	g_pConfigDialog = nullptr;
 }
 
 // --------------------------- CLASS CONFIGDIALOG ------------------------end //
@@ -540,7 +540,7 @@ void BanFrame::removeBan()
 
 	if(!m_pBanList->currentItem()->isSelected())
 	{
-		QMessageBox::warning(0, __tr2qs("Entry Selection - KVIrc"), __tr2qs("Must select a ban entry from the list to remove it."), QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+		QMessageBox::warning(nullptr, __tr2qs("Entry Selection - KVIrc"), __tr2qs("Must select a ban entry from the list to remove it."), QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
 		return;
 	}
 	QString item(m_pBanList->currentItem()->text());
@@ -735,7 +735,7 @@ UrlDlgList * findFrame()
 	if(!tmpitem)
 	{
 		UrlDlgList * udl = new UrlDlgList();
-		udl->dlg = 0;
+		udl->dlg = nullptr;
 		udl->menu_id = -1;
 		g_pUrlDlgList->append(udl);
 		tmpitem = g_pUrlDlgList->current();
@@ -887,7 +887,7 @@ static bool url_module_init(KviModule * m)
 	loadBanList();
 
 	UrlDlgList * udl = new UrlDlgList();
-	udl->dlg = 0;
+	udl->dlg = nullptr;
 	g_pUrlDlgList->append(udl);
 
 	return true;
@@ -906,12 +906,12 @@ static bool url_module_cleanup(KviModule *)
 	}
 
 	delete g_pList;
-	g_pList = 0;
+	g_pList = nullptr;
 	delete g_pBanList;
-	g_pBanList = 0;
+	g_pBanList = nullptr;
 
 	delete g_pUrlDlgList;
-	g_pUrlDlgList = 0;
+	g_pUrlDlgList = nullptr;
 
 	return true;
 }

@@ -115,10 +115,10 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent * e)
 		killTimer(m_iMouseTimer);
 		m_iMouseTimer = 0;
 		delete m_pLastEvent;
-		m_pLastEvent = 0;
+		m_pLastEvent = nullptr;
 	}
 
-	getLinkUnderMouse(e->pos().x(), e->pos().y(), 0, &szLinkCommandPart, &szLinkTextPart);
+	getLinkUnderMouse(e->pos().x(), e->pos().y(), nullptr, &szLinkCommandPart, &szLinkTextPart);
 
 	if(szLinkCommandPart.isEmpty())
 	{
@@ -282,7 +282,7 @@ void KviIrcView::mousePressEvent(QMouseEvent * e)
 		killTimer(m_iMouseTimer);
 		m_iMouseTimer = 0;
 		delete m_pLastEvent;
-		m_pLastEvent = 0;
+		m_pLastEvent = nullptr;
 	}
 	else
 	{
@@ -299,7 +299,7 @@ void KviIrcView::triggerMouseRelatedKvsEvents(QMouseEvent * e)
 {
 	QString linkCmd;
 	QString linkText;
-	getLinkUnderMouse(e->pos().x(), e->pos().y(), 0, &linkCmd, &linkText);
+	getLinkUnderMouse(e->pos().x(), e->pos().y(), nullptr, &linkCmd, &linkText);
 
 	QString szCmd(linkCmd);
 	szCmd.remove(0, 1);
@@ -674,8 +674,8 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent * e)
 			if(c->supportsSelection())
 				c->setText(szSelectionText, QClipboard::Selection);
 		}
-		m_pSelectionInitLine = 0;
-		m_pSelectionEndLine = 0;
+		m_pSelectionInitLine = nullptr;
+		m_pSelectionEndLine = nullptr;
 		m_iSelectionInitCharIndex = 0;
 		m_iSelectionEndCharIndex = 0;
 	}
@@ -795,7 +795,7 @@ void KviIrcView::leaveEvent(QEvent *)
 {
 	if(m_pLastLinkUnderMouse)
 	{
-		m_pLastLinkUnderMouse = 0;
+		m_pLastLinkUnderMouse = nullptr;
 		update();
 	}
 }
@@ -816,7 +816,7 @@ void KviIrcView::timerEvent(QTimerEvent * e)
 		m_iMouseTimer = 0;
 		triggerMouseRelatedKvsEvents(m_pLastEvent);
 		delete m_pLastEvent;
-		m_pLastEvent = 0;
+		m_pLastEvent = nullptr;
 		return;
 	}
 
@@ -844,7 +844,7 @@ void KviIrcView::maybeTip(const QPoint & pnt)
 	if((linkUnderMouse == m_pLastLinkUnderMouse) && linkUnderMouse)
 		doLinkToolTip(rctLink, linkCmd, linkText);
 	else
-		m_pLastLinkUnderMouse = 0;
+		m_pLastLinkUnderMouse = nullptr;
 }
 
 void KviIrcView::doMarkerToolTip()

@@ -627,19 +627,19 @@
 
 // we use a char * pointer just to store a number
 // we don't use void * just because incrementing a void pointer doesn't look that good
-static char * g_hNextObjectHandle = (char *)0;
+static char * g_hNextObjectHandle = (char *)nullptr;
 
 KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass, KviKvsObject * pParent, const QString & szName)
     : QObject(pParent)
 {
 	setObjectName(szName);
 
-	if(g_hNextObjectHandle == 0)
+	if(g_hNextObjectHandle == nullptr)
 		g_hNextObjectHandle++; // make sure it's never 0
 	m_hObject = (kvs_hobject_t)g_hNextObjectHandle;
 	g_hNextObjectHandle++;
 
-	m_pObject = 0;
+	m_pObject = nullptr;
 	m_bObjectOwner = true; // true by default
 
 	m_szName = szName;
@@ -651,14 +651,14 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass, KviKvsObject * pParent, c
 
 	m_pDataContainer = new KviKvsHash();
 
-	m_pFunctionHandlers = 0; // no local function handlers yet!
+	m_pFunctionHandlers = nullptr; // no local function handlers yet!
 
 	m_bInDelayedDeath = false;
 	m_bDestructorCalled = false;
 	m_bAboutToDie = false;
 
-	m_pSignalDict = 0;     // no signals connected to remote slots
-	m_pConnectionList = 0; // no local slots connected to remote signals
+	m_pSignalDict = nullptr;     // no signals connected to remote slots
+	m_pConnectionList = nullptr; // no local slots connected to remote signals
 
 	if(pParent)
 		pParent->registerChild(this);
@@ -800,7 +800,7 @@ QWidget * KviKvsObject::parentScriptWidget()
 				return (QWidget *)(parentObject()->object());
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 void KviKvsObject::unregisterChild(KviKvsObject * pChild)
@@ -880,7 +880,7 @@ bool KviKvsObject::disconnectSignal(const QString & sigName, KviKvsObject * pTar
 				if(m_pSignalDict->isEmpty())
 				{
 					delete m_pSignalDict;
-					m_pSignalDict = 0;
+					m_pSignalDict = nullptr;
 				}
 				return true;
 			}
@@ -906,7 +906,7 @@ bool KviKvsObject::disconnectSignal(const QString & sigName, KviKvsObjectConnect
 	if(m_pSignalDict->isEmpty())
 	{
 		delete m_pSignalDict;
-		m_pSignalDict = 0;
+		m_pSignalDict = nullptr;
 	}
 	return true;
 }
@@ -921,7 +921,7 @@ bool KviKvsObject::unregisterConnection(KviKvsObjectConnection * pConnection)
 	if(m_pConnectionList->isEmpty())
 	{
 		delete m_pConnectionList;
-		m_pConnectionList = 0;
+		m_pConnectionList = nullptr;
 	}
 	return true;
 }
@@ -938,7 +938,7 @@ int KviKvsObject::emitSignal(const QString & sigName, KviKvsObjectFunctionCall *
 	KviKvsVariant retVal;
 
 	// The objects we're going to disconnect
-	KviPointerList<KviKvsObjectConnection> * pDis = 0;
+	KviPointerList<KviKvsObjectConnection> * pDis = nullptr;
 
 	kvs_int_t emitted = 0;
 
@@ -1017,7 +1017,7 @@ bool KviKvsObject::function_name(KviKvsObjectFunctionCall * c)
 bool KviKvsObject::function_parent(KviKvsObjectFunctionCall * c)
 {
 	KviKvsObject * o = parentObject();
-	c->returnValue()->setHObject(o ? o->handle() : (kvs_hobject_t)0);
+	c->returnValue()->setHObject(o ? o->handle() : (kvs_hobject_t) nullptr);
 	return true;
 }
 
@@ -1073,7 +1073,7 @@ bool KviKvsObject::function_findChild(KviKvsObjectFunctionCall * c)
 	KVSO_PARAMETERS_END(c)
 
 	KviKvsObject * o = findChild(szClass, szName);
-	c->returnValue()->setHObject(o ? o->handle() : (kvs_hobject_t)0);
+	c->returnValue()->setHObject(o ? o->handle() : (kvs_hobject_t) nullptr);
 
 	return true;
 }
@@ -1121,7 +1121,7 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 
 	c->returnValue()->setNothing();
 
-	KviKvsArray * a = bArray ? new KviKvsArray() : 0;
+	KviKvsArray * a = bArray ? new KviKvsArray() : nullptr;
 
 	KviWindow * w = c->context()->window();
 
@@ -1170,7 +1170,7 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 				p = &prop;
 			}
 			else
-				p = 0;
+				p = nullptr;
 			cnt++;
 		}
 	}
@@ -1391,7 +1391,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		{
 			if(v->isHObject())
 			{
-				if(v->hobject() == (kvs_hobject_t)0)
+				if(v->hobject() == (kvs_hobject_t) nullptr)
 				{
 					// null pixmap
 					if(vv.type() == QVariant::Pixmap)
@@ -1659,7 +1659,7 @@ KviKvsObjectClass * KviKvsObject::getClass(const QString & classOverride)
 
 KviKvsObjectFunctionHandler * KviKvsObject::lookupFunctionHandler(const QString & funcName, const QString & classOverride)
 {
-	KviKvsObjectFunctionHandler * h = 0;
+	KviKvsObjectFunctionHandler * h = nullptr;
 
 	if(classOverride.isEmpty() && m_pFunctionHandlers)
 	{
@@ -1729,7 +1729,7 @@ void KviKvsObject::setObject(QObject * o, bool bIsOwned)
 
 void KviKvsObject::objectDestroyed()
 {
-	m_pObject = 0;
+	m_pObject = nullptr;
 	die();
 }
 
@@ -1752,7 +1752,7 @@ bool KviKvsObject::callFunction(KviKvsObject * pCaller, const QString & fncName,
 	KviKvsVariant rv;
 	if(!pRetVal)
 		pRetVal = &rv;
-	KviKvsRunTimeContext ctx(0, g_pApp->activeConsole(), KviKvsKernel::instance()->emptyParameterList(), pRetVal, 0);
+	KviKvsRunTimeContext ctx(nullptr, g_pApp->activeConsole(), KviKvsKernel::instance()->emptyParameterList(), pRetVal, nullptr);
 	if(!pParams)
 		pParams = KviKvsKernel::instance()->emptyParameterList();
 	return callFunction(pCaller, fncName, QString(), &ctx, pRetVal, pParams);
@@ -1815,7 +1815,7 @@ void KviKvsObject::registerPrivateImplementation(const QString & szFunctionName,
 			if(m_pFunctionHandlers->isEmpty())
 			{
 				delete m_pFunctionHandlers;
-				m_pFunctionHandlers = 0;
+				m_pFunctionHandlers = nullptr;
 			}
 		}
 	}
@@ -1863,5 +1863,5 @@ KviKvsObject * KviKvsObject::findChild(const QString & szClass, const QString & 
 		if(c)
 			return c;
 	}
-	return 0;
+	return nullptr;
 }

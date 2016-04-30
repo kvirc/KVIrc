@@ -92,7 +92,7 @@ void KviKvsAsyncDnsOperation::lookupTerminated(KviDnsResolver *)
 			params.append(new KviKvsVariant(*m_pMagic));
 		}
 
-		m_pCallback->run(pWnd, &params, 0, KviKvsScript::PreserveParams);
+		m_pCallback->run(pWnd, &params, nullptr, KviKvsScript::PreserveParams);
 
 		delete this;
 		return;

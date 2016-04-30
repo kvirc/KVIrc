@@ -182,7 +182,7 @@ void KviModeWidget::editorReturnPressed()
 
 	// now flush out mode changes
 	int iModesPerLine = 3; // a good default
-	KviIrcConnectionServerInfo * pServerInfo = 0;
+	KviIrcConnectionServerInfo * pServerInfo = nullptr;
 	if(m_pChannel)
 		pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)
@@ -274,7 +274,7 @@ void KviModeWidget::editorReturnPressed()
 
 inline bool KviModeWidget::modeNeedsParameterOnlyWhenSet(char cMode)
 {
-	KviIrcConnectionServerInfo * pServerInfo = 0;
+	KviIrcConnectionServerInfo * pServerInfo = nullptr;
 	if(m_pChannel)
 		pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)

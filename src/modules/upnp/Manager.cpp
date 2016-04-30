@@ -43,11 +43,11 @@ namespace UPnP
 {
 
 	// Set the static variable
-	Manager * Manager::m_pInstance(0);
+	Manager * Manager::m_pInstance(nullptr);
 
 	// The constructor
 	Manager::Manager()
-	    : m_pActiveIgdControlPoint(0), m_bBroadcastFailed(false), m_bBroadcastFoundIt(false), m_pSsdpConnection(0), m_pSsdpTimer(0)
+	    : m_pActiveIgdControlPoint(nullptr), m_bBroadcastFailed(false), m_bBroadcastFoundIt(false), m_pSsdpConnection(nullptr), m_pSsdpTimer(nullptr)
 	{
 	}
 
@@ -56,7 +56,7 @@ namespace UPnP
 	{
 		delete m_pSsdpTimer;
 		delete m_pSsdpConnection;
-		m_pInstance = 0; // Unregister the instance
+		m_pInstance = nullptr; // Unregister the instance
 	}
 
 	// Initialize the manager, detect all devices
@@ -85,7 +85,7 @@ namespace UPnP
 	Manager * Manager::instance()
 	{
 		// Create when it's required
-		if(m_pInstance == 0)
+		if(m_pInstance == nullptr)
 		{
 			m_pInstance = new Manager();
 			m_pInstance->initialize();
@@ -98,26 +98,26 @@ namespace UPnP
 	QString Manager::getExternalIpAddress() const
 	{
 		// Do not expose activeIgd_;
-		return (m_pActiveIgdControlPoint != 0 ? m_pActiveIgdControlPoint->getExternalIpAddress() : QString());
+		return (m_pActiveIgdControlPoint != nullptr ? m_pActiveIgdControlPoint->getExternalIpAddress() : QString());
 	}
 
 	// Return true if a controlable gateway is available
 	bool Manager::isGatewayAvailable()
 	{
-		return (m_pActiveIgdControlPoint != 0 && m_pActiveIgdControlPoint->isGatewayAvailable());
+		return (m_pActiveIgdControlPoint != nullptr && m_pActiveIgdControlPoint->isGatewayAvailable());
 	}
 
 	// Add a port mapping
 	void Manager::addPortMapping(const QString & protocol, const QString & remoteHost, int externalPort, const QString & internalClient, int internalPort, const QString & description, bool enabled, int leaseDuration)
 	{
-		if(m_pActiveIgdControlPoint != 0)
+		if(m_pActiveIgdControlPoint != nullptr)
 			m_pActiveIgdControlPoint->addPortMapping(protocol, remoteHost, externalPort, internalClient, internalPort, description, enabled, leaseDuration);
 	}
 
 	// Delete a port mapping
 	void Manager::deletePortMapping(const QString & protocol, const QString & remoteHost, int externalPort)
 	{
-		if(m_pActiveIgdControlPoint != 0)
+		if(m_pActiveIgdControlPoint != nullptr)
 			m_pActiveIgdControlPoint->deletePortMapping(protocol, remoteHost, externalPort);
 	}
 
@@ -143,7 +143,7 @@ namespace UPnP
 		IgdControlPoint * controlPoint = new IgdControlPoint(hostname, port, rootUrl);
 		m_lIgdControlPoints.append(controlPoint);
 
-		if(m_pActiveIgdControlPoint == 0)
+		if(m_pActiveIgdControlPoint == nullptr)
 		{
 			m_pActiveIgdControlPoint = controlPoint;
 			m_pActiveIgdControlPoint->initialize();

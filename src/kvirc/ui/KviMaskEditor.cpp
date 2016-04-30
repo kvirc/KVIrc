@@ -131,7 +131,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par, KviChannelWindow * pChannel, KviWind
 
 	m_cFlag = cMode;
 
-	KviIrcConnectionServerInfo * pServerInfo = 0;
+	KviIrcConnectionServerInfo * pServerInfo = nullptr;
 	QString szDescription = "";
 	if(m_pChannel)
 		pServerInfo = m_pChannel->serverInfo();

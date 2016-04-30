@@ -167,7 +167,7 @@ KVSO_CLASS_FUNCTION(dateTimeEdit, setTime)
 // slots
 void KvsObject_dateTimeEdit::slotDateTimeChanged(const QDateTime &)
 {
-	KviKvsVariantList * params = 0;
+	KviKvsVariantList * params = nullptr;
 	callFunction(this, "dateTimeChangedEvent", params);
 }
 
@@ -186,7 +186,7 @@ KVSO_CLASS_FUNCTION(dateTimeEdit, timeChangedEvent)
 // slots
 void KvsObject_dateTimeEdit::slotTimeChanged(const QTime &)
 {
-	KviKvsVariantList * params = 0;
+	KviKvsVariantList * params = nullptr;
 	callFunction(this, "timeChangedEvent", params);
 }
 
@@ -199,6 +199,6 @@ KVSO_CLASS_FUNCTION(dateTimeEdit, dateChangedEvent)
 // slots
 void KvsObject_dateTimeEdit::slotDateChanged(const QDate &)
 {
-	KviKvsVariantList * params = 0;
+	KviKvsVariantList * params = nullptr;
 	callFunction(this, "dateChangedEvent", params);
 }

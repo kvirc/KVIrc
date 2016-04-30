@@ -47,7 +47,7 @@
 #include "KviPointerList.h"
 #include "KviCryptEngineDescription.h"
 
-static KviPointerList<KviCryptEngine> * g_pEngineList = 0;
+static KviPointerList<KviCryptEngine> * g_pEngineList = nullptr;
 
 KviRot13Engine::KviRot13Engine()
     : KviCryptEngine()
@@ -133,7 +133,7 @@ static bool rot13_module_cleanup(KviModule * m)
 	while(g_pEngineList->first())
 		delete g_pEngineList->first();
 	delete g_pEngineList;
-	g_pEngineList = 0;
+	g_pEngineList = nullptr;
 	m->unregisterCryptEngines();
 	return true;
 #else

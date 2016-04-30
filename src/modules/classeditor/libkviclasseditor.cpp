@@ -28,8 +28,8 @@
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
-ClassEditorWindow * g_pClassEditorWindow = 0;
-KviModule * g_pClassEditorModule = 0;
+ClassEditorWindow * g_pClassEditorWindow = nullptr;
+KviModule * g_pClassEditorModule = nullptr;
 
 /*
 	@doc: classeditor.open
@@ -60,21 +60,21 @@ static bool classeditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 static bool classeditor_module_init(KviModule * m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", classeditor_kvs_cmd_open);
-	g_pClassEditorWindow = 0;
+	g_pClassEditorWindow = nullptr;
 	g_pClassEditorModule = m;
 	return true;
 }
 
 static bool classeditor_module_can_unload(KviModule *)
 {
-	return (g_pClassEditorWindow == 0);
+	return (g_pClassEditorWindow == nullptr);
 }
 
 static bool classeditor_module_cleanup(KviModule *)
 {
 	if(g_pClassEditorWindow && g_pMainWindow)
 		g_pMainWindow->closeWindow(g_pClassEditorWindow);
-	g_pClassEditorWindow = 0;
+	g_pClassEditorWindow = nullptr;
 	return true;
 }
 

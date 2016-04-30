@@ -138,7 +138,7 @@ KviModule::KviModule(QLibrary * handle, KviModuleInfo * info, const QString & na
 	m_szName = name;
 	m_szFileName = filename;
 	m_uLock = 0;
-	m_lastAccessTime = (long int)time(0);
+	m_lastAccessTime = (long int)time(nullptr);
 }
 
 KviModule::~KviModule()
@@ -176,12 +176,12 @@ void KviModule::unregisterAllExtensions()
 
 void KviModule::updateAccessTime()
 {
-	m_lastAccessTime = (long int)time(0);
+	m_lastAccessTime = (long int)time(nullptr);
 }
 
 unsigned int KviModule::secondsSinceLastAccess()
 {
-	return (unsigned int)(((long int)time(0)) - m_lastAccessTime);
+	return (unsigned int)(((long int)time(nullptr)) - m_lastAccessTime);
 }
 
 #ifdef COMPILE_CRYPT_SUPPORT

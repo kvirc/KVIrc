@@ -25,7 +25,7 @@
 #include "KviKvsAliasManager.h"
 #include "KviConfigurationFile.h"
 
-KviKvsAliasManager * KviKvsAliasManager::m_pAliasManager = 0;
+KviKvsAliasManager * KviKvsAliasManager::m_pAliasManager = nullptr;
 
 KviKvsAliasManager::KviKvsAliasManager()
 {
@@ -37,7 +37,7 @@ KviKvsAliasManager::KviKvsAliasManager()
 KviKvsAliasManager::~KviKvsAliasManager()
 {
 	delete m_pAliasDict;
-	m_pAliasManager = 0;
+	m_pAliasManager = nullptr;
 }
 
 void KviKvsAliasManager::init()

@@ -242,7 +242,7 @@ void KviApplication::setup()
 	// Don't move stuff around unless you really know what you're doing.
 
 	// Initialize the random number generator
-	::srand(::time(0));
+	::srand(::time(nullptr));
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	// setup winsock.dll
@@ -735,7 +735,7 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 		actions << __tr2qs("View");
 		actions << __tr2qs("Ignore");
 
-		QPixmap * pIcon = 0;
+		QPixmap * pIcon = nullptr;
 		KviIconManager::SmallIcon eIcon = KviIconManager::None;
 		switch(pWnd->type())
 		{
@@ -961,7 +961,7 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 	if(!KviDefaultScriptManager::instance()->isDefscriptUpToDate())
 	{
 		switch(
-		    QMessageBox::question(0, __tr2qs("Update Default Scripts - KVIrc"),
+		    QMessageBox::question(nullptr, __tr2qs("Update Default Scripts - KVIrc"),
 		        __tr2qs("<b>Hi!</b><br><br>"
 		                "<b>It seems that you have just upgraded KVIrc from a previous version.</b><br><br>"
 		                "The KVIrc default scripts needs to be updated too, to play nice with your fresh new KVIrc.<br>"
@@ -1027,7 +1027,7 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 	bSuggestedOnce = true;
 
 	switch(
-	    QMessageBox::question(0, __tr2qs("Detected Installation Issues - KVIrc"),
+	    QMessageBox::question(nullptr, __tr2qs("Detected Installation Issues - KVIrc"),
 	        __tr2qs("<b>Oops!</b><br><br>"
 	                "<b>There are some reasons that make me think your KVIrc installation is incomplete.</b><br><br>"
 	                "You seem to be missing some of the features that the default KVIrc scripts provide."
@@ -1141,7 +1141,7 @@ KviPendingAvatarChange * KviApplication::findPendingAvatarChange(
     const QString & szRemoteUrl)
 {
 	if(!m_pPendingAvatarChanges)
-		return NULL;
+		return nullptr;
 
 	KviPendingAvatarChange * pAvatar;
 
@@ -1157,7 +1157,7 @@ KviPendingAvatarChange * KviApplication::findPendingAvatarChange(
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 void KviApplication::fileDownloadTerminated(
@@ -1171,7 +1171,7 @@ void KviApplication::fileDownloadTerminated(
 	KviPendingAvatarChange * pAvatar;
 
 	if(m_pPendingAvatarChanges)
-		pAvatar = findPendingAvatarChange(0, szNick, szRemoteUrl);
+		pAvatar = findPendingAvatarChange(nullptr, szNick, szRemoteUrl);
 	else
 		pAvatar = nullptr;
 
@@ -1212,7 +1212,7 @@ void KviApplication::fileDownloadTerminated(
 				szMsg += szLocalFileName;
 				szMsg += ")";
 			}
-			notifierMessage(0, iIconId, KviQString::toHtmlEscaped(szMsg), KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+			notifierMessage(nullptr, iIconId, KviQString::toHtmlEscaped(szMsg), KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 		}
 		return;
 	}
@@ -1633,7 +1633,7 @@ void KviApplication::createFrame()
 	else
 		new KviMainWindow(new QWidget(0, 0));
 #else
-	new KviMainWindow(0);
+	new KviMainWindow(nullptr);
 #endif
 
 	Q_ASSERT(g_pMainWindow != nullptr);
@@ -1725,7 +1725,7 @@ KviConsoleWindow * KviApplication::findConsole(QString & szServer, QString & szN
 
 		++it;
 	}
-	return NULL;
+	return nullptr;
 }
 
 void KviApplication::restartLagMeters()
@@ -1778,7 +1778,7 @@ KviConsoleWindow * KviApplication::findConsole(unsigned int uIrcContextId)
 			return pWindow;
 		++it;
 	}
-	return NULL;
+	return nullptr;
 }
 
 KviConsoleWindow * KviApplication::topmostConnectedConsole()
@@ -1787,7 +1787,7 @@ KviConsoleWindow * KviApplication::topmostConnectedConsole()
 
 	KviConsoleWindow * pConsole = activeConsole();
 	if(!pConsole)
-		return NULL;
+		return nullptr;
 	if(pConsole->isConnected())
 		return pConsole;
 
@@ -1803,7 +1803,7 @@ KviConsoleWindow * KviApplication::topmostConnectedConsole()
 		++it;
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 KviWindow * KviApplication::findWindow(const QString & szWindowId)
@@ -1821,7 +1821,7 @@ KviWindow * KviApplication::findWindowByCaption(const QString & szWindowCaption,
 			return it.current();
 		++it;
 	}
-	return NULL;
+	return nullptr;
 }
 
 void KviApplication::registerWindow(KviWindow * pWnd)
@@ -1837,7 +1837,7 @@ void KviApplication::unregisterWindow(KviWindow * pWnd)
 KviConsoleWindow * KviApplication::activeConsole()
 {
 	if(!g_pMainWindow)
-		return NULL;
+		return nullptr;
 	if(g_pActiveWindow)
 	{
 		if(g_pActiveWindow->console())
@@ -2046,7 +2046,7 @@ void KviApplication::heartbeat(kvi_time_t tNow)
 		while(it.current())
 		{
 			if(it.current()->view() && it.current()->view()->isLogging())
-				it.current()->view()->startLogging(0);
+				it.current()->view()->startLogging(nullptr);
 			++it;
 		}
 	}

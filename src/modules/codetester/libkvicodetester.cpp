@@ -29,7 +29,7 @@
 #include "KviMainWindow.h"
 #include "KviPointerList.h"
 
-KviPointerList<CodeTesterWindow> * g_pCodeTesterWindowList = 0;
+KviPointerList<CodeTesterWindow> * g_pCodeTesterWindowList = nullptr;
 
 /*
 	@doc: codetester.open

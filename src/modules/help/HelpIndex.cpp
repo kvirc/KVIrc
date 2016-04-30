@@ -77,7 +77,7 @@ QDataStream & operator<<(QDataStream & s, const Document & l)
 }
 
 HelpIndex::HelpIndex(const QString & dp, const QString & hp)
-    : QObject(0), docPath(dp)
+    : QObject(nullptr), docPath(dp)
 {
 	Q_UNUSED(hp);
 
@@ -93,7 +93,7 @@ HelpIndex::HelpIndex(const QString & dp, const QString & hp)
 }
 
 HelpIndex::HelpIndex(const QStringList & dl, const QString & hp)
-    : QObject(0)
+    : QObject(nullptr)
 {
 	Q_UNUSED(hp);
 	docList = dl;
@@ -172,7 +172,7 @@ void HelpIndex::insertInDict(const QString & str, int docNum)
 {
 	if(str == QLatin1String("amp") || str == QLatin1String("nbsp"))
 		return;
-	Entry * e = 0;
+	Entry * e = nullptr;
 	if(dict.count())
 		e = dict[str];
 
@@ -351,7 +351,7 @@ QStringList HelpIndex::query(const QStringList & terms, const QStringList & term
 	QList<Term> termList;
 	for(QStringList::ConstIterator it = terms.begin(); it != terms.end(); ++it)
 	{
-		Entry * e = 0;
+		Entry * e = nullptr;
 		if((*it).contains(QLatin1Char('*')))
 		{
 			QVector<Document> wcts = setupDummyTerm(getWildcardTerms(*it));
@@ -533,7 +533,7 @@ QVector<Document> HelpIndex::setupDummyTerm(const QStringList & terms)
 	QList<Term> termList;
 	for(QStringList::ConstIterator it = terms.begin(); it != terms.end(); ++it)
 	{
-		Entry * e = 0;
+		Entry * e = nullptr;
 		if(dict[*it])
 		{
 			e = dict[*it];

@@ -77,7 +77,7 @@ KviWindowStack::~KviWindowStack()
 void KviWindowStack::currentWindowChanged(int iIdx)
 {
 	//if(g_pMainWindow->isActiveWindow())
-	g_pMainWindow->windowActivated((iIdx >= 0) ? (KviWindow *)widget(iIdx) : NULL);
+	g_pMainWindow->windowActivated((iIdx >= 0) ? (KviWindow *)widget(iIdx) : nullptr);
 }
 
 void KviWindowStack::addWindow(KviWindow * pWnd)

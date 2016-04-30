@@ -118,7 +118,7 @@ namespace KviSSLMaster
 		if(!s->initContext(m))
 		{
 			delete s;
-			return 0;
+			return nullptr;
 		}
 
 		if(!contextString)
@@ -180,7 +180,7 @@ namespace KviSSLMaster
 		if(!s->initSocket(sock))
 		{
 			delete s;
-			return 0;
+			return nullptr;
 		}
 
 		return s;

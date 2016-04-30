@@ -32,16 +32,16 @@
 #include "KviLocale.h"
 #include "kvi_out.h"
 
-static KviPointerList<TorrentInterfaceDescriptor> * g_pDescriptorList = 0;
+static KviPointerList<TorrentInterfaceDescriptor> * g_pDescriptorList = nullptr;
 
-static TorrentInterface * auto_detect_torrent_client(KviWindow * pOut = 0)
+static TorrentInterface * auto_detect_torrent_client(KviWindow * pOut = nullptr)
 {
 	int iBest = 0;
-	TorrentInterface * pBest = 0;
+	TorrentInterface * pBest = nullptr;
 	TorrentInterfaceDescriptor * d;
-	TorrentInterfaceDescriptor * pDBest = 0;
+	TorrentInterfaceDescriptor * pDBest = nullptr;
 
-	for(d = g_pDescriptorList->first(); d != 0; d = g_pDescriptorList->next())
+	for(d = g_pDescriptorList->first(); d != nullptr; d = g_pDescriptorList->next())
 	{
 		// instance gets deleted by descriptor later
 		TorrentInterface * i = d->instance();
@@ -296,7 +296,7 @@ static TorrentInterface * auto_detect_torrent_client(KviWindow * pOut = 0)
 
 TC_KVS_COMMAND(detect)
 {
-	TorrentInterface::select(auto_detect_torrent_client(c->hasSwitch('q', "quiet") ? 0 : c->window()));
+	TorrentInterface::select(auto_detect_torrent_client(c->hasSwitch('q', "quiet") ? nullptr : c->window()));
 	return true;
 }
 
@@ -873,7 +873,7 @@ static bool torrent_module_init(KviModule * m)
 	g_pDescriptorList->append(new KTorrentDbusInterfaceDescriptor);
 #endif // COMPILE_KDE_SUPPORT
 
-	TorrentInterface::select(0);
+	TorrentInterface::select(nullptr);
 
 	if(g_pMainWindow->mainStatusBar())
 		StatusBarApplet::selfRegister(g_pMainWindow->mainStatusBar());

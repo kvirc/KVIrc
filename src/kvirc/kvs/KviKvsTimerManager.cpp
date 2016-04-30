@@ -55,7 +55,7 @@ KviKvsTimer::~KviKvsTimer()
 	delete m_pCallback;
 }
 
-KviKvsTimerManager * KviKvsTimerManager::m_pInstance = 0;
+KviKvsTimerManager * KviKvsTimerManager::m_pInstance = nullptr;
 
 KviKvsTimerManager::KviKvsTimerManager()
     : QObject()
@@ -64,7 +64,7 @@ KviKvsTimerManager::KviKvsTimerManager()
 	m_pTimerDictById->setAutoDelete(false);
 	m_pTimerDictByName = new KviPointerHashTable<QString, KviKvsTimer>(17, false);
 	m_pTimerDictByName->setAutoDelete(false);
-	m_pKilledTimerList = 0;
+	m_pKilledTimerList = nullptr;
 	m_iAssassinTimer = 0;
 	m_iCurrentTimer = 0;
 }
@@ -96,7 +96,7 @@ void KviKvsTimerManager::done()
 		return;
 	}
 	delete KviKvsTimerManager::m_pInstance;
-	KviKvsTimerManager::m_pInstance = 0;
+	KviKvsTimerManager::m_pInstance = nullptr;
 }
 
 bool KviKvsTimerManager::addTimer(const QString & szName, KviKvsTimer::Lifetime l, KviWindow * pWnd, int iDelay, KviKvsScript * pCallback, KviKvsVariantList * pParams)
@@ -106,9 +106,9 @@ bool KviKvsTimerManager::addTimer(const QString & szName, KviKvsTimer::Lifetime 
 	if(iId <= 0)
 	{
 		delete pCallback;
-		pCallback = 0;
+		pCallback = nullptr;
 		delete pParams;
-		pParams = 0;
+		pParams = nullptr;
 		return false;
 	}
 
@@ -228,7 +228,7 @@ void KviKvsTimerManager::timerEvent(QTimerEvent * e)
 	m_iCurrentTimer = t->id();
 	bool bRet = copy.run(t->window(),
 	    t->parameterList(),
-	    0,
+	    nullptr,
 	    KviKvsScript::PreserveParams,
 	    t->runTimeData());
 

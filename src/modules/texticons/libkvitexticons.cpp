@@ -47,7 +47,7 @@
 static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 {
 	QString szIcon;
-	KviTextIcon * pIcon = 0;
+	KviTextIcon * pIcon = nullptr;
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETER("iconName", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szIcon)
 	KVSM_PARAMETERS_END(c)
@@ -107,7 +107,7 @@ static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 static bool texticons_kvs_cmd_set(KviKvsModuleCommandCall * c)
 {
 	QString szName, szIcon;
-	KviTextIcon * pIcon = 0;
+	KviTextIcon * pIcon = nullptr;
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETER("iconName", KVS_PT_NONEMPTYSTRING, 0, szName)
 	KVSM_PARAMETER("iconIdOrFile", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)

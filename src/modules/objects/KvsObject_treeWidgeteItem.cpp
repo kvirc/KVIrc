@@ -145,7 +145,7 @@ KVSO_END_REGISTERCLASS(KvsObject_treeWidgetItem)
 
 KVSO_BEGIN_CONSTRUCTOR(KvsObject_treeWidgetItem, KviKvsObject)
 
-m_pTreeWidgetItem = 0;
+m_pTreeWidgetItem = nullptr;
 
 KVSO_END_CONSTRUCTOR(KvsObject_treeWidgetItem)
 
@@ -183,9 +183,9 @@ bool KvsObject_treeWidgetItem::init(KviKvsRunTimeContext * pContext, KviKvsVaria
 
 void KvsObject_treeWidgetItem::childDestroyed()
 {
-	if(m_pTreeWidgetItem == 0)
+	if(m_pTreeWidgetItem == nullptr)
 		return;
-	m_pTreeWidgetItem = 0;
+	m_pTreeWidgetItem = nullptr;
 	die();
 }
 
@@ -208,11 +208,11 @@ KviKvsStandardTreeWidgetItem::~KviKvsStandardTreeWidgetItem()
 kvs_hobject_t KvsObject_treeWidgetItem::itemToHandle(QTreeWidgetItem * it)
 {
 	if(!it)
-		return (kvs_hobject_t)0;
+		return (kvs_hobject_t) nullptr;
 	KvsObject_treeWidgetItem * pObject;
 	pObject = ((KviKvsStandardTreeWidgetItem *)it)->masterObject();
 	if(!pObject)
-		return (kvs_hobject_t)0;
+		return (kvs_hobject_t) nullptr;
 	return pObject->handle();
 }
 
@@ -393,7 +393,7 @@ KVSO_CLASS_FUNCTION(treeWidgetItem, setPixmap)
 	KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
 	KVSO_PARAMETER("pixmap", KVS_PT_VARIANT, 0, vPixmap)
 	KVSO_PARAMETERS_END(c)
-	QPixmap * pix = 0;
+	QPixmap * pix = nullptr;
 	if(vPixmap->isEmpty())
 	{
 		m_pTreeWidgetItem->setIcon(uCol, QIcon());

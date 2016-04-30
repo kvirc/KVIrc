@@ -825,7 +825,7 @@ static bool popup_kvs_cmd_show(KviKvsModuleCommandCall * c)
 	if(!pMenu)
 	{
 		delete pPopupParams;
-		pPopupParams = 0;
+		pPopupParams = nullptr;
 		c->error(__tr2qs_ctx("Popup %Q is not defined", "kvs"), &szPopupName);
 		return false;
 	}
@@ -833,7 +833,7 @@ static bool popup_kvs_cmd_show(KviKvsModuleCommandCall * c)
 	if(pMenu->isSoftLocked())
 	{
 		delete pPopupParams;
-		pPopupParams = 0;
+		pPopupParams = nullptr;
 		c->error(__tr2qs_ctx("A popup menu can't be popped up twice", "kvs"));
 		return false;
 	}

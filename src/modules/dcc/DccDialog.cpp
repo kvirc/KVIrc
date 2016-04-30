@@ -48,17 +48,17 @@ DccDialog::~DccDialog()
 {
 	if(m_pDescriptor)
 		delete m_pDescriptor;
-	m_pDescriptor = 0;
+	m_pDescriptor = nullptr;
 	m_pBroker->unregisterDccBox(this);
 }
 
 void DccDialog::forgetDescriptor()
 {
-	m_pDescriptor = 0;
+	m_pDescriptor = nullptr;
 }
 
 DccAcceptDialog::DccAcceptDialog(DccBroker * br, DccDescriptor * dcc, const QString & text, const QString & capt)
-    : QWidget(0), DccDialog(br, dcc)
+    : QWidget(nullptr), DccDialog(br, dcc)
 {
 	setObjectName("dcc_accept_box");
 	//QVBoxLayout * vb = new QVBoxLayout(this,4,4);
@@ -126,7 +126,7 @@ void DccAcceptDialog::showEvent(QShowEvent * e)
 }
 
 DccRenameDialog::DccRenameDialog(DccBroker * br, DccDescriptor * dcc, const QString & text, bool bDisableResume)
-    : QWidget(0), DccDialog(br, dcc)
+    : QWidget(nullptr), DccDialog(br, dcc)
 {
 	setObjectName("dcc_rename_box");
 	//QVBoxLayout * vb = new QVBoxLayout(this,4,4);

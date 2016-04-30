@@ -78,7 +78,7 @@
 #endif //COMPILE_OSS_SUPPORT
 #endif
 
-static KviSoundPlayer * g_pSoundPlayer = 0;
+static KviSoundPlayer * g_pSoundPlayer = nullptr;
 
 KviSoundPlayer::KviSoundPlayer()
     : QObject()
@@ -87,10 +87,10 @@ KviSoundPlayer::KviSoundPlayer()
 	m_pThreadList->setAutoDelete(true);
 
 #ifdef COMPILE_PHONON_SUPPORT
-	m_pPhononPlayer = NULL;
+	m_pPhononPlayer = nullptr;
 #endif //!COMPILE_PHONON_SUPPORT
 
-	m_pLastUsedSoundPlayerEntry = NULL;
+	m_pLastUsedSoundPlayerEntry = nullptr;
 
 	m_pSoundSystemDict = new KviPointerHashTable<QString, KviSoundPlayerEntry>(17, false);
 	m_pSoundSystemDict->setAutoDelete(true);
@@ -137,7 +137,7 @@ KviSoundPlayer::~KviSoundPlayer()
 		delete m_pPhononPlayer;
 #endif //COMPILE_PHONON_SUPPORT
 
-	g_pSoundPlayer = 0;
+	g_pSoundPlayer = nullptr;
 }
 
 void KviSoundPlayer::stopAllSoundThreads()
@@ -159,7 +159,7 @@ void KviSoundPlayer::cleanupAfterLastPlayerEntry()
 	SoundSystemCleanupRoutine r = m_pLastUsedSoundPlayerEntry->cleanupRoutine();
 	if(r)
 		(this->*r)();
-	m_pLastUsedSoundPlayerEntry = NULL;
+	m_pLastUsedSoundPlayerEntry = nullptr;
 }
 
 void KviSoundPlayer::getAvailableSoundSystems(QStringList * l)
@@ -281,7 +281,7 @@ void KviSoundPlayer::cleanupPhonon()
 	if(!m_pPhononPlayer)
 		return;
 	delete m_pPhononPlayer; // must be stopped
-	m_pPhononPlayer = NULL;
+	m_pPhononPlayer = nullptr;
 }
 #endif //!COMPILE_PHONON_SUPPORT
 
@@ -468,7 +468,7 @@ void KviOssAudiofileSoundThread::play()
 	float frameSize;
 	void * buffer;
 
-	file = afOpenFile(m_szFileName.toUtf8().data(), "r", NULL);
+	file = afOpenFile(m_szFileName.toUtf8().data(), "r", nullptr);
 	if(!file)
 	{
 		qDebug("libaudiofile could not open the file %s", m_szFileName.toUtf8().data());
@@ -806,7 +806,7 @@ static bool snd_module_init(KviModule * m)
 static bool snd_module_cleanup(KviModule *)
 {
 	delete g_pSoundPlayer;
-	g_pSoundPlayer = 0;
+	g_pSoundPlayer = nullptr;
 	return true;
 }
 

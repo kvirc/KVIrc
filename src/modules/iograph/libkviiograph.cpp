@@ -40,7 +40,7 @@
 extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-KviIOGraphWindow * g_pIOGraphWindow = 0;
+KviIOGraphWindow * g_pIOGraphWindow = nullptr;
 
 KviIOGraphWindow::KviIOGraphWindow(const char * name)
     : KviWindow(KviWindow::IOGraph, name)
@@ -53,9 +53,9 @@ KviIOGraphWindow::~KviIOGraphWindow()
 {
 	if(m_pIOGraph)
 		delete m_pIOGraph;
-	m_pIOGraph = 0;
+	m_pIOGraph = nullptr;
 
-	g_pIOGraphWindow = 0;
+	g_pIOGraphWindow = nullptr;
 }
 
 QPixmap * KviIOGraphWindow::myIconPtr()
@@ -285,7 +285,7 @@ static bool iograph_module_cmd_open(KviKvsModuleCommandCall * c)
 
 static bool iograph_module_init(KviModule * m)
 {
-	g_pIOGraphWindow = 0;
+	g_pIOGraphWindow = nullptr;
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", iograph_module_cmd_open);
 	return true;
@@ -295,7 +295,7 @@ static bool iograph_module_cleanup(KviModule *)
 {
 	if(g_pIOGraphWindow && g_pMainWindow)
 		g_pMainWindow->closeWindow(g_pIOGraphWindow);
-	g_pIOGraphWindow = 0;
+	g_pIOGraphWindow = nullptr;
 	return true;
 }
 

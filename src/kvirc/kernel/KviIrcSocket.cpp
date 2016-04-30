@@ -69,26 +69,26 @@ KviIrcSocket::KviIrcSocket(KviIrcLink * pLink)
 
 	m_state = Idle; // current socket state
 
-	m_pRsn = 0;                  // read socket notifier
-	m_pWsn = 0;                  // write socket notifier
+	m_pRsn = nullptr;            // read socket notifier
+	m_pWsn = nullptr;            // write socket notifier
 	m_sock = KVI_INVALID_SOCKET; // socket
 
-	m_pIrcServer = 0; // current server data
-	m_pProxy = 0;     // current proxy data
+	m_pIrcServer = nullptr; // current server data
+	m_pProxy = nullptr;     // current proxy data
 
-	m_pTimeoutTimer = 0; // timeout for connect()
+	m_pTimeoutTimer = nullptr; // timeout for connect()
 
 	m_uReadBytes = 0;   // total read bytes per session
 	m_uSentBytes = 0;   // total sent bytes per session
 	m_uSentPackets = 0; // total packets sent per session
 
-	m_pSendQueueHead = 0; // data queue
-	m_pSendQueueTail = 0; //
+	m_pSendQueueHead = nullptr; // data queue
+	m_pSendQueueTail = nullptr; //
 
 	m_eLastError = KviError::Success;
 
 #ifdef COMPILE_SSL_SUPPORT
-	m_pSSL = 0;
+	m_pSSL = nullptr;
 #endif
 
 	m_tAntiFloodLastMessageTime.tv_sec = 0;
@@ -115,31 +115,31 @@ void KviIrcSocket::reset()
 	if(m_pSSL)
 	{
 		KviSSLMaster::freeSSL(m_pSSL);
-		m_pSSL = 0;
+		m_pSSL = nullptr;
 	}
 #endif
 	if(m_pIrcServer)
 	{
 		delete m_pIrcServer;
-		m_pIrcServer = 0;
+		m_pIrcServer = nullptr;
 	}
 
 	if(m_pProxy)
 	{
 		delete m_pProxy;
-		m_pProxy = 0;
+		m_pProxy = nullptr;
 	}
 
 	if(m_pRsn)
 	{
 		delete m_pRsn;
-		m_pRsn = 0;
+		m_pRsn = nullptr;
 	}
 
 	if(m_pWsn)
 	{
 		delete m_pWsn;
-		m_pWsn = 0;
+		m_pWsn = nullptr;
 	}
 
 	if(kvi_socket_isValid(m_sock))
@@ -152,7 +152,7 @@ void KviIrcSocket::reset()
 	{
 		m_pTimeoutTimer->stop();
 		delete m_pTimeoutTimer;
-		m_pTimeoutTimer = 0;
+		m_pTimeoutTimer = nullptr;
 	}
 
 	m_bInProcessData = false;
@@ -451,7 +451,7 @@ void KviIrcSocket::writeNotifierFired(int)
 	if(m_pTimeoutTimer)
 	{
 		delete m_pTimeoutTimer;
-		m_pTimeoutTimer = 0;
+		m_pTimeoutTimer = nullptr;
 	}
 
 	// Check for errors...
@@ -477,7 +477,7 @@ void KviIrcSocket::writeNotifierFired(int)
 
 	// kill the write notifier
 	delete m_pWsn;
-	m_pWsn = 0;
+	m_pWsn = nullptr;
 
 	//Successfully connected...
 	connectionEstablished();
@@ -508,7 +508,7 @@ void KviIrcSocket::connectedToProxy()
 	if(m_pRsn)
 	{
 		delete m_pRsn;
-		m_pRsn = 0;
+		m_pRsn = nullptr;
 	}
 
 	m_pRsn = new QSocketNotifier((int)m_sock, QSocketNotifier::Read);
@@ -1301,13 +1301,13 @@ void KviIrcSocket::proxyHandleHttpFinalReply(const char * pcBuffer, int)
 	if(m_pWsn)
 	{
 		delete m_pWsn;
-		m_pWsn = 0;
+		m_pWsn = nullptr;
 	}
 
 	if(m_pRsn)
 	{
 		delete m_pRsn;
-		m_pRsn = 0;
+		m_pRsn = nullptr;
 	}
 
 	m_pRsn = new QSocketNotifier((int)m_sock, QSocketNotifier::Read);
@@ -1376,13 +1376,13 @@ void KviIrcSocket::doSSLHandshake(int)
 	if(m_pRsn)
 	{
 		delete m_pRsn;
-		m_pRsn = 0;
+		m_pRsn = nullptr;
 	}
 
 	if(m_pWsn)
 	{
 		delete m_pWsn;
-		m_pWsn = 0;
+		m_pWsn = nullptr;
 	}
 
 	if(!m_pSSL)
@@ -1467,13 +1467,13 @@ void KviIrcSocket::linkUp()
 	if(m_pWsn)
 	{
 		delete m_pWsn;
-		m_pWsn = 0;
+		m_pWsn = nullptr;
 	}
 
 	if(m_pRsn)
 	{
 		delete m_pRsn;
-		m_pRsn = 0;
+		m_pRsn = nullptr;
 	}
 
 	m_pRsn = new QSocketNotifier((int)m_sock, QSocketNotifier::Read);
@@ -1619,7 +1619,7 @@ void KviIrcSocket::queue_insertMessage(KviIrcSocketMsgEntry * pMsg)
 {
 	KVI_ASSERT(pMsg);
 
-	pMsg->next_ptr = 0;
+	pMsg->next_ptr = nullptr;
 
 	if(m_pSendQueueHead)
 	{
@@ -1638,7 +1638,7 @@ void KviIrcSocket::free_msgEntry(KviIrcSocketMsgEntry * e)
 	if(e->pData)
 		delete e->pData;
 
-	e->pData = 0;
+	e->pData = nullptr;
 	KviMemory::free(e);
 }
 
@@ -1654,9 +1654,9 @@ bool KviIrcSocket::queue_removeMessage()
 	m_pSendQueueHead = pEntry->next_ptr;
 	KviMemory::free((void *)pEntry);
 
-	if(m_pSendQueueHead == 0)
+	if(m_pSendQueueHead == nullptr)
 	{
-		m_pSendQueueTail = 0;
+		m_pSendQueueTail = nullptr;
 		return false;
 	}
 	else
@@ -1673,7 +1673,7 @@ void KviIrcSocket::queue_removeAllMessages()
 
 void KviIrcSocket::queue_removePrivateMessages()
 {
-	KviIrcSocketMsgEntry * pPrevEntry = 0;
+	KviIrcSocketMsgEntry * pPrevEntry = nullptr;
 	KviIrcSocketMsgEntry * pEntry = m_pSendQueueHead;
 	while(pEntry)
 	{
@@ -1686,7 +1686,7 @@ void KviIrcSocket::queue_removePrivateMessages()
 				{
 					pPrevEntry->next_ptr = pEntry->next_ptr;
 					if(!pPrevEntry->next_ptr)
-						m_pSendQueueTail = 0;
+						m_pSendQueueTail = nullptr;
 					free_msgEntry(pEntry);
 					pEntry = pPrevEntry->next_ptr;
 				}
@@ -1694,7 +1694,7 @@ void KviIrcSocket::queue_removePrivateMessages()
 				{
 					m_pSendQueueHead = pEntry->next_ptr;
 					if(!m_pSendQueueHead)
-						m_pSendQueueTail = 0;
+						m_pSendQueueTail = nullptr;
 					free_msgEntry(pEntry);
 					pEntry = m_pSendQueueHead;
 				}
@@ -1721,7 +1721,7 @@ void KviIrcSocket::flushSendQueue()
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolLimitOutgoingTraffic))
 		{
-			kvi_gettimeofday(&curTime, 0);
+			kvi_gettimeofday(&curTime, nullptr);
 
 			int iTimeDiff = curTime.tv_usec - m_tAntiFloodLastMessageTime.tv_usec;
 			iTimeDiff += (curTime.tv_sec - m_tAntiFloodLastMessageTime.tv_sec) * 1000000;
@@ -1976,7 +1976,7 @@ bool KviIrcSocket::sendPacket(KviDataBuffer * pData)
 	if(m_state != Connected)
 	{
 		delete pData;
-		pData = 0;
+		pData = nullptr;
 		return false;
 	}
 

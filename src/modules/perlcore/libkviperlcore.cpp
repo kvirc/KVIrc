@@ -73,7 +73,7 @@
 
 #include "KviKvsRunTimeContext.h"
 
-static KviKvsRunTimeContext * g_pCurrentKvsContext = 0;
+static KviKvsRunTimeContext * g_pCurrentKvsContext = nullptr;
 static bool g_bExecuteQuiet = false;
 static KviCString g_szLastReturnValue("");
 static QStringList g_lWarningList;
@@ -125,7 +125,7 @@ protected:
 KviPerlInterpreter::KviPerlInterpreter(const QString & szContextName)
 {
 	m_szContextName = szContextName;
-	m_pInterpreter = 0;
+	m_pInterpreter = nullptr;
 }
 
 KviPerlInterpreter::~KviPerlInterpreter()
@@ -177,7 +177,7 @@ bool KviPerlInterpreter::init()
 	PERL_SET_CONTEXT(m_pInterpreter);
 	PL_perl_destruct_level = 1;
 	perl_construct(m_pInterpreter);
-	perl_parse(m_pInterpreter, xs_init, 4, (char **)daArgs, NULL);
+	perl_parse(m_pInterpreter, xs_init, 4, (char **)daArgs, nullptr);
 	QString szInitCode;
 
 	// this part of the code seems to be unnecessary
@@ -221,7 +221,7 @@ void KviPerlInterpreter::done()
 	PL_perl_destruct_level = 1;
 	perl_destruct(m_pInterpreter);
 	perl_free(m_pInterpreter);
-	m_pInterpreter = 0;
+	m_pInterpreter = nullptr;
 }
 
 QString KviPerlInterpreter::svToQString(SV * sv)
@@ -320,7 +320,7 @@ bool KviPerlInterpreter::execute(
 	return true;
 }
 
-static KviPointerHashTable<QString, KviPerlInterpreter> * g_pInterpreters = 0;
+static KviPointerHashTable<QString, KviPerlInterpreter> * g_pInterpreters = nullptr;
 
 static KviPerlInterpreter * perlcore_get_interpreter(const QString & szContextName)
 {
@@ -331,7 +331,7 @@ static KviPerlInterpreter * perlcore_get_interpreter(const QString & szContextNa
 	if(!i->init())
 	{
 		delete i;
-		return 0;
+		return nullptr;
 	}
 	g_pInterpreters->replace(szContextName, i);
 	return i;
@@ -411,7 +411,7 @@ static bool perlcore_module_init(KviModule *)
 	g_pInterpreters->setAutoDelete(false);
 	int daArgc = 4;
 	const char * daArgs[] = { "yo", "-e", "0", "-w" };
-	char ** daEnv = NULL;
+	char ** daEnv = nullptr;
 	PERL_SYS_INIT3(&daArgc, (char ***)&daArgs, &daEnv);
 	return true;
 #else  // !COMPILE_PERL_SUPPORT
@@ -424,7 +424,7 @@ static bool perlcore_module_cleanup(KviModule *)
 #ifdef COMPILE_PERL_SUPPORT
 	perlcore_destroy_all_interpreters();
 	delete g_pInterpreters;
-	g_pInterpreters = 0;
+	g_pInterpreters = nullptr;
 // ifdef workaround for #842
 #ifndef COMPILE_ON_MAC
 	PERL_SYS_TERM();

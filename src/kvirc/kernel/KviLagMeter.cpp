@@ -50,7 +50,7 @@ KviLagMeter::KviLagMeter(KviIrcConnection * c)
 	m_tLastOwnCheck = 0;
 	m_tFirstOwnCheck = 0;
 	m_bOnAlarm = false;
-	m_pDeletionSignal = 0;
+	m_pDeletionSignal = nullptr;
 
 	// FIXME: We could use the KviIrcConnection::heartbeat() here!
 	if(KVI_OPTION_UINT(KviOption_uintLagMeterHeartbeat) < 2000)
@@ -72,7 +72,7 @@ KviLagMeter::~KviLagMeter()
 unsigned int KviLagMeter::secondsSinceLastCompleted()
 {
 	struct timeval tv;
-	kvi_gettimeofday(&tv, 0);
+	kvi_gettimeofday(&tv, nullptr);
 	return tv.tv_sec - m_tLastCompleted;
 }
 
@@ -114,12 +114,12 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 		if(bDeletionSignal)
 			return; // killed, probably by a quit -f -u
 
-		m_pDeletionSignal = 0;
+		m_pDeletionSignal = nullptr;
 	}
 
 	// get current time
 	struct timeval tv;
-	kvi_gettimeofday(&tv, 0);
+	kvi_gettimeofday(&tv, nullptr);
 	unsigned int uDiff = tv.tv_sec - m_tLastCompleted;
 	unsigned int uHeartbeat = KVI_OPTION_UINT(KviOption_uintLagMeterHeartbeat) / 1000;
 	if(uHeartbeat < 2)
@@ -200,7 +200,7 @@ void KviLagMeter::lagCheckRegister(const char * key, unsigned int uReliability)
 	KviLagCheck * c = new KviLagCheck;
 	c->szKey = key;
 	struct timeval tv;
-	kvi_gettimeofday(&tv, 0);
+	kvi_gettimeofday(&tv, nullptr);
 	c->lSecs = tv.tv_sec;
 	c->lUSecs = tv.tv_usec;
 	c->uReliability = uReliability <= 100 ? uReliability : 100;
@@ -233,7 +233,7 @@ bool KviLagMeter::lagCheckComplete(const char * key)
 		m_pConnection->console()->output(KVI_OUT_VERBOSE, __tr2qs("Lag check completed (%s)"), key);
 
 	struct timeval tv;
-	kvi_gettimeofday(&tv, 0);
+	kvi_gettimeofday(&tv, nullptr);
 
 	unsigned int uLag = ((tv.tv_sec - c->lSecs) * 1000);
 	if(tv.tv_usec < c->lUSecs)

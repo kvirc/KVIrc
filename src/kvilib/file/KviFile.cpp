@@ -186,7 +186,7 @@ bool KviFile::load(KviPointerList<KviCString> * pData)
 		if(!load(*s))
 		{
 			delete s;
-			s = 0;
+			s = nullptr;
 			return false;
 		}
 		pData->append(s);

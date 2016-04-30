@@ -349,7 +349,7 @@ KVSO_CLASS_FUNCTION(listWidget, setIcon)
 	if(!pItem)
 		return true;
 
-	QPixmap * pix = 0;
+	QPixmap * pix = nullptr;
 	if(vPixmap->isEmpty())
 	{
 		pItem->setIcon(QIcon());
@@ -696,26 +696,26 @@ KVSO_CLASS_FUNCTION(listWidget, itemEnteredEvent)
 void KvsObject_listWidget::currentItemChanged(QListWidgetItem * currentItem, QListWidgetItem *)
 {
 	if(!currentItem)
-		callFunction(this, "currentItemChangedEvent", 0, 0);
+		callFunction(this, "currentItemChangedEvent", nullptr, nullptr);
 	else
 	{
 		KviKvsVariantList params(new KviKvsVariant(currentItem->text()));
-		callFunction(this, "currentItemChangedEvent", 0, &params);
+		callFunction(this, "currentItemChangedEvent", nullptr, &params);
 	}
 }
 void KvsObject_listWidget::selectionChanged()
 {
-	callFunction(this, "selectionChangedEvent", 0, 0);
+	callFunction(this, "selectionChangedEvent", nullptr, nullptr);
 }
 
 void KvsObject_listWidget::slotItemEntered(QListWidgetItem * item)
 {
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)((QListWidget *)widget())->row(item)));
-	callFunction(this, "itemEnteredEvent", 0, &params);
+	callFunction(this, "itemEnteredEvent", nullptr, &params);
 }
 
 void KvsObject_listWidget::slotItemChanged(QListWidgetItem * item)
 {
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)((QListWidget *)widget())->row(item)));
-	callFunction(this, "itemChangedEvent", 0, &params);
+	callFunction(this, "itemChangedEvent", nullptr, &params);
 }

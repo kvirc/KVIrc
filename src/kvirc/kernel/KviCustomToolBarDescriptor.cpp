@@ -38,7 +38,7 @@ KviCustomToolBarDescriptor::KviCustomToolBarDescriptor(const QString & szId, con
 	m_szId = szId;
 	m_pActions = new KviPointerList<QString>;
 	m_pActions->setAutoDelete(true);
-	m_pToolBar = 0;
+	m_pToolBar = nullptr;
 	m_bVisibleAtStartup = false;
 	createLabelScript(szLabelCode);
 }
@@ -61,7 +61,7 @@ void KviCustomToolBarDescriptor::createLabelScript(const QString & szLabelCode)
 
 const QString & KviCustomToolBarDescriptor::label()
 {
-	if(!m_pLabelScript->run(g_pActiveWindow, 0, m_szParsedLabel))
+	if(!m_pLabelScript->run(g_pActiveWindow, nullptr, m_szParsedLabel))
 		m_szParsedLabel = m_pLabelScript->code();
 	return m_szParsedLabel;
 }
@@ -167,7 +167,7 @@ void KviCustomToolBarDescriptor::registerToolBar(KviCustomToolBar * t)
 
 void KviCustomToolBarDescriptor::unregisterToolBar(KviCustomToolBar *)
 {
-	m_pToolBar = 0;
+	m_pToolBar = nullptr;
 }
 
 void KviCustomToolBarDescriptor::rename(const QString & szNewLabelCode)
@@ -184,7 +184,7 @@ void KviCustomToolBarDescriptor::clear()
 	if(m_pToolBar)
 	{
 		delete m_pToolBar;
-		m_pToolBar = 0;
+		m_pToolBar = nullptr;
 	}
 }
 

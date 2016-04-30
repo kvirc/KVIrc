@@ -37,6 +37,6 @@ void KviKvsArrayCast::clear()
 	{
 		if(m_bOwned)
 			delete m_pArray;
-		m_pArray = 0;
+		m_pArray = nullptr;
 	}
 }

@@ -664,13 +664,13 @@ void KvsObject_socket::slotReadyRead()
 
 void KvsObject_socket::slotConnected()
 {
-	KviKvsVariantList * lParams = 0;
+	KviKvsVariantList * lParams = nullptr;
 	callFunction(this, "connectedEvent", lParams);
 }
 
 void KvsObject_socket::slotDisconnected()
 {
-	KviKvsVariantList * lParams = 0;
+	KviKvsVariantList * lParams = nullptr;
 	callFunction(this, "disconnectedEvent", lParams);
 }
 
@@ -684,7 +684,7 @@ void KvsObject_socket::slotError(QAbstractSocket::SocketError socketError)
 
 void KvsObject_socket::slotHostFound()
 {
-	KviKvsVariantList * lParams = 0;
+	KviKvsVariantList * lParams = nullptr;
 	callFunction(this, "hostFoundEvent", lParams);
 }
 

@@ -31,7 +31,7 @@ DccWindow::DccWindow(KviWindow::Type eType, const char * name, DccDescriptor * d
 {
 	m_pDescriptor = d;
 	m_pDescriptor->setWindow(this);
-	m_pMarshal = 0;
+	m_pMarshal = nullptr;
 	m_pButtonBox = new KviTalHBox(this);
 	createTextEncodingButton(m_pButtonBox);
 }

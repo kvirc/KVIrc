@@ -48,7 +48,7 @@ typedef struct _DetectorDescriptor
 	DetectorNGram * ngram_hash[256];
 } DetectorDescriptor;
 
-static DetectorNGram X[] = { { 0, 0 } };
+static DetectorNGram X[] = { { nullptr, 0 } };
 
 ///////////////////////////////////////////////////////////////////////////////
 // DEFINES THAT SAVE (A LOT OF) SPACE
@@ -18747,10 +18747,10 @@ void detect_language_and_encoding(const char * data, LanguageAndEncodingResult *
 	DetectorDescriptor * match[DLE_NUM_BEST_MATCHES];
 	for(i = 0; i < DLE_NUM_BEST_MATCHES; i++)
 	{
-		retBuffer->match[i].szLanguage = 0;
-		retBuffer->match[i].szEncoding = 0;
+		retBuffer->match[i].szLanguage = nullptr;
+		retBuffer->match[i].szEncoding = nullptr;
 		retBuffer->match[i].dScore = -99999999999.9;
-		match[i] = 0;
+		match[i] = nullptr;
 	}
 	retBuffer->dAccuracy = 0.0;
 

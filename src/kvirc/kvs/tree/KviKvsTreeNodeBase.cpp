@@ -26,6 +26,6 @@
 
 KviKvsTreeNode::KviKvsTreeNode(const QChar * pLocation)
 {
-	m_pParent = 0;
+	m_pParent = nullptr;
 	m_pLocation = pLocation;
 }

@@ -34,7 +34,7 @@
 #ifdef COMPILE_PERL_SUPPORT
 #include "../perlcore/perlcoreinterface.h"
 
-static KviModule * g_pPerlCoreModule = 0;
+static KviModule * g_pPerlCoreModule = nullptr;
 #endif // COMPILE_PERL_SUPPORT
 
 #ifdef COMPILE_PERL_SUPPORT

@@ -75,7 +75,7 @@ KviStatusBarAppletDescriptor::KviStatusBarAppletDescriptor(const QString & szVis
 	if(!pixIcon.isNull())
 		m_pIcon = new QPixmap(pixIcon);
 	else
-		m_pIcon = 0;
+		m_pIcon = nullptr;
 }
 
 KviStatusBarAppletDescriptor::~KviStatusBarAppletDescriptor()
@@ -477,14 +477,14 @@ void KviStatusBarClock::fillContextPopup(QMenu * p)
 void KviStatusBarClock::toggleUtc()
 {
 	m_bUtc = !m_bUtc;
-	timerEvent(0);
+	timerEvent(nullptr);
 }
 
 void KviStatusBarClock::toggle24h()
 {
 	m_b24h = !m_b24h;
 	adjustMinWidth();
-	timerEvent(0);
+	timerEvent(nullptr);
 }
 
 void KviStatusBarClock::changeFormat(QAction * pAct)
@@ -648,7 +648,7 @@ KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,
 	m_bUpdateStatus = false;
 	m_bUpdateOnStartup = false;
 	m_bUpdateRevision = false;
-	m_pHttpRequest = 0;
+	m_pHttpRequest = nullptr;
 
 	updateDisplay();
 

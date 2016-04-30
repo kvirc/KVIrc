@@ -67,29 +67,29 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 KviIrcContext::KviIrcContext(KviConsoleWindow * pConsole)
-    : QObject(0)
+    : QObject(nullptr)
 {
 	m_uId = g_uNextIrcContextId;
 	g_uNextIrcContextId++;
 
 	m_pConsole = pConsole;
 
-	m_pConnection = 0;
+	m_pConnection = nullptr;
 
-	m_pDeadChannels = 0;
-	m_pDeadQueries = 0;
-	m_pContextWindows = 0;
+	m_pDeadChannels = nullptr;
+	m_pDeadQueries = nullptr;
+	m_pContextWindows = nullptr;
 
-	m_pLinksWindow = 0;
-	m_pListWindow = 0;
+	m_pLinksWindow = nullptr;
+	m_pListWindow = nullptr;
 
 	m_eState = Idle;
 
-	m_pAsynchronousConnectionData = 0;
-	m_pSavedAsynchronousConnectionData = 0;
+	m_pAsynchronousConnectionData = nullptr;
+	m_pSavedAsynchronousConnectionData = nullptr;
 	m_uConnectAttemptCount = 0;
-	m_pMonitorList = 0;
-	m_pReconnectTimer = 0;
+	m_pMonitorList = nullptr;
+	m_pReconnectTimer = nullptr;
 
 	m_uConnectAttemptCount = 1;
 
@@ -108,7 +108,7 @@ KviIrcContext::~KviIrcContext()
 		else
 		{
 			delete m_pMonitorList;
-			m_pMonitorList = 0;
+			m_pMonitorList = nullptr;
 		}
 	}
 
@@ -149,7 +149,7 @@ void KviIrcContext::unregisterDataStreamMonitor(KviIrcDataStreamMonitor * m)
 	if(m_pMonitorList->isEmpty())
 	{
 		delete m_pMonitorList;
-		m_pMonitorList = 0;
+		m_pMonitorList = nullptr;
 	}
 }
 
@@ -166,7 +166,7 @@ void KviIrcContext::closeAllDeadChannels()
 		{
 			// ops....
 			delete m_pDeadChannels;
-			m_pDeadChannels = 0;
+			m_pDeadChannels = nullptr;
 		}
 	}
 }
@@ -184,7 +184,7 @@ void KviIrcContext::closeAllDeadQueries()
 		{
 			// ops....
 			delete m_pDeadQueries;
-			m_pDeadQueries = 0;
+			m_pDeadQueries = nullptr;
 		}
 	}
 }
@@ -202,7 +202,7 @@ void KviIrcContext::closeAllContextWindows()
 		{
 			// ops...
 			delete m_pContextWindows;
-			m_pContextWindows = 0;
+			m_pContextWindows = nullptr;
 		}
 	}
 }
@@ -210,40 +210,40 @@ void KviIrcContext::closeAllContextWindows()
 KviChannelWindow * KviIrcContext::findDeadChannel(const QString & name)
 {
 	if(!m_pDeadChannels)
-		return 0;
+		return nullptr;
 	for(KviChannelWindow * c = m_pDeadChannels->first(); c; c = m_pDeadChannels->next())
 	{
 		KVI_ASSERT(c->isDeadChan());
 		if(KviQString::equalCI(name, c->windowName()))
 			return c;
 	}
-	return 0;
+	return nullptr;
 }
 
 KviQueryWindow * KviIrcContext::findDeadQuery(const QString & name)
 {
 	if(!m_pDeadQueries)
-		return 0;
+		return nullptr;
 	for(KviQueryWindow * c = m_pDeadQueries->first(); c; c = m_pDeadQueries->next())
 	{
 		KVI_ASSERT(c->isDeadQuery());
 		if(KviQString::equalCI(name, c->windowName()))
 			return c;
 	}
-	return 0;
+	return nullptr;
 }
 
 KviQueryWindow * KviIrcContext::firstDeadQuery()
 {
 	if(!m_pDeadQueries)
-		return 0;
+		return nullptr;
 	return m_pDeadQueries->first();
 }
 
 KviChannelWindow * KviIrcContext::firstDeadChannel()
 {
 	if(!m_pDeadChannels)
-		return 0;
+		return nullptr;
 	return m_pDeadChannels->first();
 }
 
@@ -289,7 +289,7 @@ bool KviIrcContext::unregisterDeadChannel(KviChannelWindow * c)
 	if(m_pDeadChannels->isEmpty())
 	{
 		delete m_pDeadChannels;
-		m_pDeadChannels = 0;
+		m_pDeadChannels = nullptr;
 	}
 	return true;
 }
@@ -305,7 +305,7 @@ bool KviIrcContext::unregisterContextWindow(KviWindow * pWnd)
 	if(m_pContextWindows->isEmpty())
 	{
 		delete m_pContextWindows;
-		m_pContextWindows = 0;
+		m_pContextWindows = nullptr;
 	}
 	return true;
 }
@@ -321,7 +321,7 @@ bool KviIrcContext::unregisterDeadQuery(KviQueryWindow * q)
 	if(m_pDeadQueries->isEmpty())
 	{
 		delete m_pDeadQueries;
-		m_pDeadQueries = 0;
+		m_pDeadQueries = nullptr;
 	}
 	return true;
 }
@@ -357,7 +357,7 @@ void KviIrcContext::destroyConnection()
 	// make sure that m_pConnection is already 0 in any
 	// event triggered by KviIrcConnection destructor
 	KviIrcConnection * pTmp = m_pConnection;
-	m_pConnection = 0;
+	m_pConnection = nullptr;
 	delete pTmp;
 }
 
@@ -389,7 +389,7 @@ void KviIrcContext::destroyAsynchronousConnectionData()
 	if(!m_pAsynchronousConnectionData)
 		return;
 	delete m_pAsynchronousConnectionData;
-	m_pAsynchronousConnectionData = 0;
+	m_pAsynchronousConnectionData = nullptr;
 }
 
 void KviIrcContext::loginComplete()
@@ -405,7 +405,7 @@ void KviIrcContext::connectButtonClicked()
 		{
 			// reconnection was in progress...
 			delete m_pReconnectTimer;
-			m_pReconnectTimer = 0;
+			m_pReconnectTimer = nullptr;
 			destroyAsynchronousConnectionData();
 
 			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
@@ -433,7 +433,7 @@ void KviIrcContext::connectToCurrentServer()
 	if(m_pReconnectTimer)
 	{
 		delete m_pReconnectTimer;
-		m_pReconnectTimer = 0;
+		m_pReconnectTimer = nullptr;
 	}
 
 	m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE, " "); // spacer
@@ -443,7 +443,7 @@ void KviIrcContext::connectToCurrentServer()
 	if(!m_pAsynchronousConnectionData && m_pSavedAsynchronousConnectionData)
 	{
 		m_pAsynchronousConnectionData = m_pSavedAsynchronousConnectionData;
-		m_pSavedAsynchronousConnectionData = 0;
+		m_pSavedAsynchronousConnectionData = nullptr;
 	}
 
 	if(m_pAsynchronousConnectionData)
@@ -468,7 +468,7 @@ void KviIrcContext::connectToCurrentServer()
 				if(m_pSavedAsynchronousConnectionData->m_pReconnectInfo)
 					m_pAsynchronousConnectionData->m_pReconnectInfo = new KviIrcServerReconnectInfo(*(m_pSavedAsynchronousConnectionData->m_pReconnectInfo));
 				else
-					m_pAsynchronousConnectionData->m_pReconnectInfo = 0;
+					m_pAsynchronousConnectionData->m_pReconnectInfo = nullptr;
 
 				// and the other info, only if not overridden by the user
 				if(m_pAsynchronousConnectionData->szBindAddress.isEmpty())
@@ -518,9 +518,9 @@ void KviIrcContext::connectToCurrentServer()
 	}
 
 	KviIrcNetwork * net = g_pServerDataBase->currentNetwork();
-	KviIrcServer * srv = net ? net->currentServer() : 0;
+	KviIrcServer * srv = net ? net->currentServer() : nullptr;
 
-	KviProxy * prx = 0;
+	KviProxy * prx = nullptr;
 
 	if(!srv)
 	{
@@ -564,7 +564,7 @@ void KviIrcContext::connectToCurrentServer()
 	// Find out the identity we'll be using in this connection
 	// First check the server for one
 
-	const KviUserIdentity * pIdentity = 0;
+	const KviUserIdentity * pIdentity = nullptr;
 
 	QString szUserIdentityId = srv->userIdentityId();
 	if(!szUserIdentityId.isEmpty())
@@ -622,7 +622,7 @@ void KviIrcContext::connectToCurrentServer()
 	if(srv->reconnectInfo())
 		m_pSavedAsynchronousConnectionData->m_pReconnectInfo = new KviIrcServerReconnectInfo(*(srv->reconnectInfo()));
 	else
-		m_pSavedAsynchronousConnectionData->m_pReconnectInfo = 0;
+		m_pSavedAsynchronousConnectionData->m_pReconnectInfo = nullptr;
 
 	// this never fails!
 	m_pConnection->start();
@@ -847,7 +847,7 @@ void KviIrcContext::asynchronousConnect()
 	if(m_pReconnectTimer)
 	{
 		delete m_pReconnectTimer;
-		m_pReconnectTimer = 0;
+		m_pReconnectTimer = nullptr;
 	}
 
 	if(state() != Idle) // need a brutal disconnect here
@@ -879,7 +879,7 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 				KviQString::escapeKvs(&szQuit, KviQString::PermitVariables | KviQString::PermitFunctions);
 				QString buffer;
 				KviKvsVariant ret;
-				if(KviKvsScript::evaluate(szQuit, console(), 0, &ret))
+				if(KviKvsScript::evaluate(szQuit, console(), nullptr, &ret))
 					ret.asString(buffer);
 				else
 					buffer = szQuit;

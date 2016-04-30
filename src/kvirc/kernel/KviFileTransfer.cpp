@@ -31,13 +31,13 @@
 
 #include <QMenu>
 
-static KviFileTransferManager * g_pFileTransferManager = 0;
+static KviFileTransferManager * g_pFileTransferManager = nullptr;
 
 KviFileTransferManager::KviFileTransferManager()
     : QObject()
 {
-	m_pTransferList = 0;
-	m_pTransferWindow = 0;
+	m_pTransferList = nullptr;
+	m_pTransferWindow = nullptr;
 }
 
 KviFileTransferManager::~KviFileTransferManager()
@@ -59,7 +59,7 @@ void KviFileTransferManager::cleanup()
 	if(g_pFileTransferManager)
 	{
 		delete g_pFileTransferManager;
-		g_pFileTransferManager = 0;
+		g_pFileTransferManager = nullptr;
 	}
 }
 
@@ -132,14 +132,14 @@ void KviFileTransferManager::unregisterTransfer(KviFileTransfer * t)
 	if(m_pTransferList->isEmpty())
 	{
 		delete m_pTransferList;
-		m_pTransferList = 0;
+		m_pTransferList = nullptr;
 	}
 }
 
 KviFileTransfer::KviFileTransfer()
     : QObject()
 {
-	m_pDisplayItem = 0;
+	m_pDisplayItem = nullptr;
 	m_iId = g_pApp->getGloballyUniqueId();
 	manager()->registerTransfer(this);
 }

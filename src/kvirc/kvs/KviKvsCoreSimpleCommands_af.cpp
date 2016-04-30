@@ -362,7 +362,7 @@ namespace KviKvsCoreSimpleCommands
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		Beep(pitch, duration);
 #elif defined(COMPILE_X11_SUPPORT) && (!defined(COMPILE_NO_X_BELL))
-		bool bSync = (KVSCSC_pSwitches->find('s', "sync") != 0);
+		bool bSync = (KVSCSC_pSwitches->find('s', "sync") != nullptr);
 
 		XKeyboardState st;
 		XKeyboardControl ctl;
@@ -448,7 +448,7 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_PARAMETER("parameter", KVS_PT_STRING, KVS_PF_OPTIONAL, tbPar)
 		KVSCSC_PARAMETERS_END
 
-		KviScriptUserButton * pButton = 0;
+		KviScriptUserButton * pButton = nullptr;
 
 		if(!KVSCSC_pWindow->buttonContainer())
 		{
@@ -689,7 +689,7 @@ namespace KviKvsCoreSimpleCommands
 		if(KviQString::equalCI(szCtcpData, "PING"))
 		{
 			struct timeval tv;
-			kvi_gettimeofday(&tv, 0);
+			kvi_gettimeofday(&tv, nullptr);
 			KviQString::appendFormatted(szCtcpData, " %d.%d", tv.tv_sec, tv.tv_usec);
 		}
 
@@ -905,11 +905,11 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(deleteCKEYWORDWORKAROUND)
 	{
-		kvs_hobject_t hObject = (kvs_hobject_t)0;
+		kvs_hobject_t hObject = (kvs_hobject_t) nullptr;
 		KVSCSC_PARAMETERS_BEGIN
 		KVSCSC_PARAMETER("objectHandle", KVS_PT_HOBJECT, 0, hObject)
 		KVSCSC_PARAMETERS_END
-		if(hObject == (kvs_hobject_t)0)
+		if(hObject == (kvs_hobject_t) nullptr)
 		{
 			if(!KVSCSC_pSwitches->find('q', "quiet"))
 				KVSCSC_pContext->warning(__tr2qs_ctx("Can't delete a null object reference", "kvs"));
@@ -1590,7 +1590,7 @@ namespace KviKvsCoreSimpleCommands
 				KviKvsScript * s = h->script();
 				KviKvsScript copy(*s);
 				KviKvsVariant retVal;
-				copy.run(KVSCSC_pWindow, &vList, 0, KviKvsScript::PreserveParams);
+				copy.run(KVSCSC_pWindow, &vList, nullptr, KviKvsScript::PreserveParams);
 			}
 			else
 			{

@@ -27,7 +27,7 @@
 #include "KviLocale.h"
 #include "kvi_defaults.h"
 
-KviUserIdentityManager * KviUserIdentityManager::m_pInstance = 0;
+KviUserIdentityManager * KviUserIdentityManager::m_pInstance = nullptr;
 
 KviUserIdentityManager::KviUserIdentityManager()
     : KviHeapObject()
@@ -53,7 +53,7 @@ void KviUserIdentityManager::done()
 	if(!m_pInstance)
 		return;
 	delete m_pInstance;
-	m_pInstance = 0;
+	m_pInstance = nullptr;
 }
 
 const KviUserIdentity * KviUserIdentityManager::defaultIdentity()

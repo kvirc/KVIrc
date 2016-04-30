@@ -211,7 +211,7 @@ LogViewWindow::LogViewWindow()
 
 LogViewWindow::~LogViewWindow()
 {
-	g_pLogViewWindow = 0;
+	g_pLogViewWindow = nullptr;
 }
 
 void LogViewWindow::keyPressEvent(QKeyEvent * pEvent)
@@ -286,8 +286,8 @@ void LogViewWindow::setupItemList()
 	m_pProgressBar->setRange(0, m_logList.count());
 	m_pProgressBar->setValue(0);
 
-	m_pLastCategory = 0;
-	m_pLastGroupItem = 0;
+	m_pLastCategory = nullptr;
+	m_pLastGroupItem = nullptr;
 	m_logList.first();
 	m_pTimer->start(); //singleshot
 }
@@ -344,7 +344,7 @@ void LogViewWindow::filterNext()
 	{
 		if(m_pLastCategory->m_eType != pFile->type())
 		{
-			m_pLastCategory = 0;
+			m_pLastCategory = nullptr;
 			for(int i = 0; i < m_pListView->topLevelItemCount(); ++i)
 			{
 				LogListViewItemType * pTmp = (LogListViewItemType *)m_pListView->topLevelItem(i);
@@ -368,7 +368,7 @@ void LogViewWindow::filterNext()
 	if(m_szLastGroup != szCurGroup)
 	{
 		m_szLastGroup = szCurGroup;
-		m_pLastGroupItem = 0;
+		m_pLastGroupItem = nullptr;
 		for(int i = 0; i < m_pLastCategory->childCount(); ++i)
 		{
 			LogListViewItemFolder * pTmp = (LogListViewItemFolder *)m_pLastCategory->child(i);
@@ -474,7 +474,7 @@ void LogViewWindow::deleteCurrent()
 			       this,
 			       __tr2qs_ctx("Confirm Current User Log Deletion", "log"),
 			       __tr2qs_ctx("Do you really wish to delete this log?", "log"),
-			       __tr2qs("Yes"), __tr2qs("No"), 0, 1)
+			       __tr2qs("Yes"), __tr2qs("No"), nullptr, 1)
 			    != 0)
 				return;
 
@@ -492,7 +492,7 @@ void LogViewWindow::deleteCurrent()
 	       this,
 	       __tr2qs_ctx("Confirm Current User Logs Deletion", "log"),
 	       __tr2qs_ctx("Do you really wish to delete all these logs?", "log"),
-	       __tr2qs("Yes"), __tr2qs("No"), 0, 1)
+	       __tr2qs("Yes"), __tr2qs("No"), nullptr, 1)
 	    != 0)
 		return;
 	KviPointerList<LogListViewItem> itemsList;

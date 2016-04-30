@@ -60,7 +60,7 @@
 #include "WebAddonInterfaceDialog.h"
 #endif //COMPILE_WEBKIT_SUPPORT
 
-AddonManagementDialog * AddonManagementDialog::m_pInstance = 0;
+AddonManagementDialog * AddonManagementDialog::m_pInstance = nullptr;
 extern QRect g_rectManagementDialogGeometry;
 
 AddonListViewItem::AddonListViewItem(KviTalListWidget * v, KviKvsScriptAddon * a)
@@ -99,7 +99,7 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Addons)));
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-	m_pWebInterfaceDialog = NULL;
+	m_pWebInterfaceDialog = nullptr;
 #endif //COMPILE_WEBKIT_SUPPORT
 
 	m_pInstance = this;
@@ -172,7 +172,7 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 
 	fillListView();
 
-	currentChanged(0, 0);
+	currentChanged(nullptr, nullptr);
 	connect(m_pListWidget, SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)), this, SLOT(currentChanged(QListWidgetItem *, QListWidgetItem *)));
 	m_pListWidget->setCurrentItem(m_pListWidget->item(0));
 
@@ -205,7 +205,7 @@ AddonManagementDialog::~AddonManagementDialog()
 		delete m_pWebInterfaceDialog;
 #endif //COMPILE_WEBKIT_SUPPORT
 	g_rectManagementDialogGeometry = QRect(pos().x(), pos().y(), size().width(), size().height());
-	m_pInstance = NULL;
+	m_pInstance = nullptr;
 }
 
 void AddonManagementDialog::fillListView()
@@ -280,14 +280,14 @@ void AddonManagementDialog::uninstallScript()
 	if(QMessageBox::question(
 	       this,
 	       __tr2qs_ctx("Confirm Addon Uninstallation - KVIrc", "addon"),
-	       txt, __tr2qs_ctx("Yes", "addon"), __tr2qs_ctx("No", "addon"), 0, 1)
+	       txt, __tr2qs_ctx("Yes", "addon"), __tr2qs_ctx("No", "addon"), nullptr, 1)
 	    != 0)
 		return;
 
 	KviKvsScriptAddonManager::instance()->unregisterAddon(it->addon()->name(), g_pActiveWindow);
 
 	fillListView();
-	currentChanged(0, 0);
+	currentChanged(nullptr, nullptr);
 }
 
 void AddonManagementDialog::getMoreScripts()
@@ -344,7 +344,7 @@ void AddonManagementDialog::installScript()
 	}
 
 	fillListView();
-	currentChanged(0, 0);
+	currentChanged(nullptr, nullptr);
 
 	//m_pListWidget->publicUpdateContents();
 	//m_pListWidget->triggerUpdate();
@@ -360,7 +360,7 @@ void AddonManagementDialog::cleanup()
 	if(!m_pInstance)
 		return;
 	delete m_pInstance;
-	m_pInstance = 0;
+	m_pInstance = nullptr;
 }
 
 void AddonManagementDialog::display(bool bTopLevel)
@@ -371,7 +371,7 @@ void AddonManagementDialog::display(bool bTopLevel)
 		{
 			if(m_pInstance->parent())
 			{
-				m_pInstance->setParent(0);
+				m_pInstance->setParent(nullptr);
 			}
 		}
 		else
@@ -386,7 +386,7 @@ void AddonManagementDialog::display(bool bTopLevel)
 	{
 		if(bTopLevel)
 		{
-			m_pInstance = new AddonManagementDialog(0);
+			m_pInstance = new AddonManagementDialog(nullptr);
 		}
 		else
 		{

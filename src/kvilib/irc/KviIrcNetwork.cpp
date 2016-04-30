@@ -28,8 +28,8 @@
 
 KviIrcNetwork::KviIrcNetwork(const KviIrcNetwork & src)
 {
-	m_pChannelList = 0;
-	m_pNickServRuleSet = 0;
+	m_pChannelList = nullptr;
+	m_pNickServRuleSet = nullptr;
 	m_pServerList = new KviPointerList<KviIrcServer>;
 	m_pServerList->setAutoDelete(true);
 	copyFrom(src);
@@ -38,12 +38,12 @@ KviIrcNetwork::KviIrcNetwork(const KviIrcNetwork & src)
 KviIrcNetwork::KviIrcNetwork(const QString & name)
 {
 	m_szName = name;
-	m_pChannelList = 0;
-	m_pNickServRuleSet = 0;
+	m_pChannelList = nullptr;
+	m_pNickServRuleSet = nullptr;
 	m_bAutoConnect = false;
 	m_pServerList = new KviPointerList<KviIrcServer>;
 	m_pServerList->setAutoDelete(true);
-	m_pCurrentServer = 0;
+	m_pCurrentServer = nullptr;
 }
 
 KviIrcNetwork::~KviIrcNetwork()
@@ -68,7 +68,7 @@ void KviIrcNetwork::setAutoJoinChannelList(const QString & szNewChannelList)
 		delete m_pChannelList;
 	QStringList lChans = szNewChannelList.split(",");
 	if(lChans.isEmpty())
-		m_pChannelList = NULL;
+		m_pChannelList = nullptr;
 	else
 		m_pChannelList = new QStringList(lChans);
 }
@@ -100,13 +100,13 @@ void KviIrcNetwork::copyFrom(const KviIrcNetwork & src)
 	if(src.m_pChannelList)
 		m_pChannelList = new QStringList(*(src.m_pChannelList));
 	else
-		m_pChannelList = 0;
+		m_pChannelList = nullptr;
 	if(m_pNickServRuleSet)
 		delete m_pNickServRuleSet;
 	if(src.m_pNickServRuleSet)
 		m_pNickServRuleSet = new KviNickServRuleSet(*(src.m_pNickServRuleSet));
 	else
-		m_pNickServRuleSet = 0;
+		m_pNickServRuleSet = nullptr;
 	/*
 	// We don't copy the server list, since this function is called in KviIrcServerOptionsWidget::commit()
 	// to recreate the server list from scratch; copying the original servers will mean duplicate servers
@@ -130,7 +130,7 @@ KviIrcServer * KviIrcNetwork::findServer(const QString & szHostname)
 		if(KviQString::equalCI(s->hostName(), szHostname))
 			return s;
 	}
-	return 0;
+	return nullptr;
 }
 
 KviIrcServer * KviIrcNetwork::findServer(const KviIrcServer * pServer)
@@ -155,7 +155,7 @@ KviIrcServer * KviIrcNetwork::findServer(const KviIrcServer * pServer)
 				return s;
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 void KviIrcNetwork::setCurrentServer(KviIrcServer * srv)

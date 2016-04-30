@@ -74,7 +74,7 @@ extern AboutDialog * g_pAboutDialog;
 #include "abouttext.inc"
 
 AboutDialog::AboutDialog()
-    : KviTalTabDialog(0)
+    : KviTalTabDialog(nullptr)
 {
 	setWindowTitle(__tr2qs_ctx("About KVIrc", "about"));
 	setOkButton(__tr2qs_ctx("Close", "about"));
@@ -239,7 +239,7 @@ AboutDialog::AboutDialog()
 
 AboutDialog::~AboutDialog()
 {
-	g_pAboutDialog = 0;
+	g_pAboutDialog = nullptr;
 }
 
 void AboutDialog::closeEvent(QCloseEvent * e)

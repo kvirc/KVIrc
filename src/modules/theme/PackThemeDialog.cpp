@@ -144,7 +144,7 @@ void PackThemeDataWidget::parseThemes(KviPointerList<KviThemeInfo> * pThemeInfoL
 	QString szPackageAuthor;
 	QString szPackageDescription;
 	QString szPackageVersion;
-	KviThemeInfo * pThemeInfo = 0;
+	KviThemeInfo * pThemeInfo = nullptr;
 	bool bPackagePathSet = false;
 
 	QString szPackagePath = QDir::homePath();

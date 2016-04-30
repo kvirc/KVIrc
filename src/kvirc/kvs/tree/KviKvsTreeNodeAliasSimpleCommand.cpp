@@ -114,7 +114,7 @@ bool KviKvsTreeNodeAliasSimpleCommand::execute(KviKvsRunTimeContext * c)
 	//        it would avoid the constructor call each time
 	KviKvsExtendedRunTimeData extData(&swl);
 
-	if(!copy.run(c->window(), &l, 0, KviKvsScript::PreserveParams, &extData))
+	if(!copy.run(c->window(), &l, nullptr, KviKvsScript::PreserveParams, &extData))
 	{
 		c->error(this, __tr2qs_ctx("Error in inner alias command call '%Q', called from this context", "kvs"), &m_szCmdName);
 		return false;

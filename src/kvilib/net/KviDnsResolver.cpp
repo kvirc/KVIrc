@@ -286,14 +286,14 @@ void KviDnsResolverThread::run()
 			ipv4Addr.sin_family = AF_INET;
 			ipv4Addr.sin_port = 0;
 			// NI_NAMEREQD as last param ?
-			retVal = getnameinfo((struct sockaddr *)&ipv4Addr, sizeof(ipv4Addr), retname, 1025, 0, 0, NI_NAMEREQD);
+			retVal = getnameinfo((struct sockaddr *)&ipv4Addr, sizeof(ipv4Addr), retname, 1025, nullptr, 0, NI_NAMEREQD);
 #ifdef COMPILE_IPV6_SUPPORT
 		}
 		else
 		{
 			ipv6Addr.sin6_family = AF_INET6;
 			ipv6Addr.sin6_port = 0;
-			retVal = getnameinfo((struct sockaddr *)&ipv6Addr, sizeof(ipv6Addr), retname, 1025, 0, 0, NI_NAMEREQD);
+			retVal = getnameinfo((struct sockaddr *)&ipv6Addr, sizeof(ipv6Addr), retname, 1025, nullptr, 0, NI_NAMEREQD);
 		}
 #endif
 
@@ -312,7 +312,7 @@ void KviDnsResolverThread::run()
 		//#ifdef COMPILE_IPV6_SUPPORT
 		//		struct in6_addr in6Addr;
 		//#endif
-		struct addrinfo * pRet = 0;
+		struct addrinfo * pRet = nullptr;
 		struct addrinfo * pNext;
 		struct addrinfo hints;
 		hints.ai_flags = 0; //AI_CANONNAME; <-- for IPV6 it makes cannoname to point to the IP address!
@@ -324,11 +324,11 @@ void KviDnsResolverThread::run()
 		hints.ai_socktype = SOCK_STREAM;
 		hints.ai_protocol = 0;
 		hints.ai_addrlen = 0;
-		hints.ai_canonname = 0;
-		hints.ai_addr = 0;
-		hints.ai_next = 0;
+		hints.ai_canonname = nullptr;
+		hints.ai_addr = nullptr;
+		hints.ai_next = nullptr;
 
-		retVal = getaddrinfo(m_szQuery.toUtf8().data(), 0, &hints, &pRet);
+		retVal = getaddrinfo(m_szQuery.toUtf8().data(), nullptr, &hints, &pRet);
 
 		if(retVal != 0)
 		{
@@ -397,7 +397,7 @@ KviDnsResolver::KviDnsResolver()
 {
 	m_pSlaveThread = new KviDnsResolverThread(this);
 	m_pDnsResult = new KviDnsResolverResult();
-	m_pAuxData = 0;
+	m_pAuxData = nullptr;
 	m_state = Idle;
 }
 

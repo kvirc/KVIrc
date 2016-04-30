@@ -26,7 +26,7 @@
 #include "KviLocale.h"
 #include "KviConfigurationFile.h"
 
-KviKvsPopupManager * KviKvsPopupManager::m_pInstance = 0;
+KviKvsPopupManager * KviKvsPopupManager::m_pInstance = nullptr;
 
 KviKvsPopupManager::KviKvsPopupManager()
 {

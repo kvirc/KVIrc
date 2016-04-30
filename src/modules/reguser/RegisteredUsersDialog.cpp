@@ -346,10 +346,10 @@ RegisteredUsersDialog::~RegisteredUsersDialog()
 		KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry) = geometry();
 #endif
 
-	g_pRegisteredUsersDialog = 0;
+	g_pRegisteredUsersDialog = nullptr;
 
 	delete g_pLocalRegisteredUserDataBase;
-	g_pLocalRegisteredUserDataBase = 0;
+	g_pLocalRegisteredUserDataBase = nullptr;
 }
 
 void RegisteredUsersDialog::itemPressed(QTreeWidgetItem * it, int c)
@@ -584,7 +584,7 @@ void RegisteredUsersDialog::cancelClicked()
 
 void RegisteredUsersDialog::addClicked()
 {
-	RegisteredUserEntryDialog * dlg = new RegisteredUserEntryDialog(this, 0);
+	RegisteredUserEntryDialog * dlg = new RegisteredUserEntryDialog(this, nullptr);
 	int ret = dlg->exec();
 	delete dlg;
 
@@ -669,7 +669,7 @@ void RegisteredUsersDialog::editItem(RegisteredUsersDialogItem * i)
 {
 	KviRegisteredUser * u = i->user();
 
-	i->setUser(0);
+	i->setUser(nullptr);
 
 	QString szName = u->name();
 
@@ -747,7 +747,7 @@ void RegisteredUsersDialog::exportClicked()
 
 	QString buffer;
 
-	if(!KviFileDialog::askForSaveFileName(buffer, __tr2qs_ctx("Enter a Filename - KVIrc", "register"), 0, 0, true, true, true, this))
+	if(!KviFileDialog::askForSaveFileName(buffer, __tr2qs_ctx("Enter a Filename - KVIrc", "register"), nullptr, nullptr, true, true, true, this))
 		return;
 
 	if(!g_pRegisteredUsersDialog)

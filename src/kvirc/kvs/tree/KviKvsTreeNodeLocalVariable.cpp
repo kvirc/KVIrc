@@ -61,7 +61,7 @@ bool KviKvsTreeNodeLocalVariable::evaluateReadOnly(KviKvsRunTimeContext * c, Kvi
 KviKvsRWEvaluationResult * KviKvsTreeNodeLocalVariable::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
 	return new KviKvsHashElement(
-	    0,
+	    nullptr,
 	    c->localVariables()->get(m_szIdentifier),
 	    c->localVariables(),
 	    m_szIdentifier);

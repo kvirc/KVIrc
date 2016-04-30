@@ -37,8 +37,8 @@
 #include <QPainter>
 #include <QMenu>
 
-static KviPointerList<HttpFileTransfer> * g_pHttpFileTransfers = 0;
-static QPixmap * g_pHttpIcon = 0;
+static KviPointerList<HttpFileTransfer> * g_pHttpFileTransfers = nullptr;
+static QPixmap * g_pHttpIcon = nullptr;
 
 HttpFileTransfer::HttpFileTransfer()
     : KviFileTransfer()
@@ -52,7 +52,7 @@ HttpFileTransfer::HttpFileTransfer()
 
 	m_bNotifyCompletion = true;
 	m_bAutoClean = false;
-	m_pAutoCleanTimer = 0;
+	m_pAutoCleanTimer = nullptr;
 	m_bNoOutput = false;
 
 	m_pHttpRequest = new KviHttpRequest();
@@ -359,7 +359,7 @@ void HttpFileTransfer::init()
 	if(pix)
 		g_pHttpIcon = new QPixmap(*pix);
 	else
-		g_pHttpIcon = 0;
+		g_pHttpIcon = nullptr;
 }
 
 void HttpFileTransfer::done()
@@ -369,11 +369,11 @@ void HttpFileTransfer::done()
 	while(HttpFileTransfer * t = g_pHttpFileTransfers->first())
 		delete t;
 	delete g_pHttpFileTransfers;
-	g_pHttpFileTransfers = 0;
+	g_pHttpFileTransfers = nullptr;
 	if(g_pHttpIcon)
 	{
 		delete g_pHttpIcon;
-		g_pHttpIcon = 0;
+		g_pHttpIcon = nullptr;
 	}
 }
 

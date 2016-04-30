@@ -25,19 +25,19 @@
 #include "KviIdentityProfileSet.h"
 #include "KviConfigurationFile.h"
 
-KviIdentityProfileSet * KviIdentityProfileSet::m_pSelf = NULL;
+KviIdentityProfileSet * KviIdentityProfileSet::m_pSelf = nullptr;
 unsigned int KviIdentityProfileSet::m_uCount = 0;
 
 KviIdentityProfileSet::KviIdentityProfileSet()
     : KviHeapObject()
 {
 	m_bEnabled = false;
-	m_pProfiles = 0;
+	m_pProfiles = nullptr;
 }
 
 KviIdentityProfileSet::KviIdentityProfileSet(const KviIdentityProfileSet & set)
 {
-	m_pProfiles = 0;
+	m_pProfiles = nullptr;
 	copyFrom(set);
 }
 
@@ -68,7 +68,7 @@ void KviIdentityProfileSet::clear()
 	if(m_pProfiles)
 	{
 		delete m_pProfiles;
-		m_pProfiles = 0;
+		m_pProfiles = nullptr;
 	}
 	m_bEnabled = false;
 }
@@ -76,7 +76,7 @@ void KviIdentityProfileSet::clear()
 KviIdentityProfile * KviIdentityProfileSet::findName(const QString & szName)
 {
 	if(!m_pProfiles)
-		return 0;
+		return nullptr;
 
 	KviIdentityProfile * pProfile;
 	for(pProfile = m_pProfiles->first(); pProfile; pProfile = m_pProfiles->next())
@@ -85,13 +85,13 @@ KviIdentityProfile * KviIdentityProfileSet::findName(const QString & szName)
 			return pProfile;
 	}
 
-	return 0;
+	return nullptr;
 }
 
 KviIdentityProfile * KviIdentityProfileSet::findNetwork(const QString & szNetwork)
 {
 	if(!m_pProfiles)
-		return 0;
+		return nullptr;
 
 	KviIdentityProfile * pProfile;
 	for(pProfile = m_pProfiles->first(); pProfile; pProfile = m_pProfiles->next())
@@ -100,7 +100,7 @@ KviIdentityProfile * KviIdentityProfileSet::findNetwork(const QString & szNetwor
 			return pProfile;
 	}
 
-	return 0;
+	return nullptr;
 }
 
 void KviIdentityProfileSet::copyFrom(const KviIdentityProfileSet & src)
@@ -126,7 +126,7 @@ void KviIdentityProfileSet::copyFrom(const KviIdentityProfileSet & src)
 		{
 			m_bEnabled = false;
 			delete m_pProfiles;
-			m_pProfiles = 0;
+			m_pProfiles = nullptr;
 		}
 		else
 		{
@@ -139,7 +139,7 @@ void KviIdentityProfileSet::copyFrom(const KviIdentityProfileSet & src)
 		if(m_pProfiles)
 		{
 			delete m_pProfiles;
-			m_pProfiles = 0;
+			m_pProfiles = nullptr;
 		}
 	}
 }
@@ -231,7 +231,7 @@ bool KviIdentityProfileSet::loadPrivate(KviConfigurationFile * pCfg, const QStri
 	{
 		m_bEnabled = false;
 		delete m_pProfiles;
-		m_pProfiles = 0;
+		m_pProfiles = nullptr;
 		return false;
 	}
 	return true;

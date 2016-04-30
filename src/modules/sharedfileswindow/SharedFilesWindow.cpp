@@ -209,7 +209,7 @@ SharedFilesTreeWidgetItem::~SharedFilesTreeWidgetItem()
 }
 
 SharedFilesWindow::SharedFilesWindow()
-    : KviWindow(KviWindow::Tool, "shared files window", 0)
+    : KviWindow(KviWindow::Tool, "shared files window", nullptr)
 {
 	g_pSharedFilesWindow = this;
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
@@ -253,7 +253,7 @@ SharedFilesWindow::SharedFilesWindow()
 
 SharedFilesWindow::~SharedFilesWindow()
 {
-	g_pSharedFilesWindow = 0;
+	g_pSharedFilesWindow = nullptr;
 }
 
 void SharedFilesWindow::enableButtons()
@@ -274,7 +274,7 @@ void SharedFilesWindow::removeClicked()
 
 void SharedFilesWindow::addClicked()
 {
-	SharedFileEditDialog dlg(0);
+	SharedFileEditDialog dlg(nullptr);
 	if(dlg.exec() != QDialog::Accepted)
 		return;
 
@@ -290,7 +290,7 @@ void SharedFilesWindow::editClicked()
 	if(!it)
 		return;
 
-	SharedFileEditDialog dlg(0, it->readOnlySharedFilePointer());
+	SharedFileEditDialog dlg(nullptr, it->readOnlySharedFilePointer());
 	if(dlg.exec() != QDialog::Accepted)
 		return;
 

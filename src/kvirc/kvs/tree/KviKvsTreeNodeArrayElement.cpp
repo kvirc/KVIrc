@@ -119,7 +119,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeArrayElement::evaluateReadWriteInObject
 {
 	kvs_int_t iVal;
 	if(!evaluateIndex(c, iVal))
-		return 0;
+		return nullptr;
 
 	KviKvsRWEvaluationResult * result;
 	if(o)
@@ -128,7 +128,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeArrayElement::evaluateReadWriteInObject
 		result = m_pSource->evaluateReadWrite(c);
 
 	if(!result)
-		return 0;
+		return nullptr;
 
 	if(!result->result()->isArray())
 	{
@@ -146,10 +146,10 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeArrayElement::evaluateReadWriteInObject
 
 bool KviKvsTreeNodeArrayElement::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
-	return evaluateReadOnlyInObjectScope(0, c, pBuffer);
+	return evaluateReadOnlyInObjectScope(nullptr, c, pBuffer);
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeArrayElement::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
-	return evaluateReadWriteInObjectScope(0, c);
+	return evaluateReadWriteInObjectScope(nullptr, c);
 }

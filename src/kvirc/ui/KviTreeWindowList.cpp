@@ -499,14 +499,14 @@ KviWindowListItem * KviTreeWindowList::firstItem()
 KviWindowListItem * KviTreeWindowList::nextItem()
 {
 	if(!m_pCurrentItem)
-		return 0;
+		return nullptr;
 	return m_pCurrentItem = (KviTreeWindowListItem *)m_pTreeWidget->itemBelow(m_pCurrentItem);
 }
 
 KviWindowListItem * KviTreeWindowList::prevItem()
 {
 	if(!m_pCurrentItem)
-		return 0;
+		return nullptr;
 	return m_pCurrentItem = (KviTreeWindowListItem *)m_pTreeWidget->itemAbove(m_pCurrentItem);
 }
 
@@ -528,7 +528,7 @@ KviWindowListItem * KviTreeWindowList::lastItem()
 	}
 	else
 	{
-		return 0;
+		return nullptr;
 	}
 }
 
@@ -539,7 +539,7 @@ bool KviTreeWindowList::setIterationPointer(KviWindowListItem * it)
 		return true;
 	if(m_pTreeWidget == m_pCurrentItem->treeWidget())
 		return true;
-	m_pCurrentItem = 0;
+	m_pCurrentItem = nullptr;
 	return false;
 }
 

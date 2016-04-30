@@ -40,7 +40,7 @@ KviHistoryWindow::KviHistoryWindow(QWidget * pParent)
     : QListWidget(pParent)
 {
 	m_pParent = pParent;
-	m_pOwner = 0;
+	m_pOwner = nullptr;
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
@@ -200,7 +200,7 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent * e)
 
 void KviHistoryWindow::ownerDead()
 {
-	m_pOwner = 0;
+	m_pOwner = nullptr;
 	doHide();
 }
 
@@ -218,7 +218,7 @@ void KviHistoryWindow::timerEvent(QTimerEvent * e)
 		return;
 	}
 
-	m_pOwner = 0; // do not setFocus() to the owner after the timeout
+	m_pOwner = nullptr; // do not setFocus() to the owner after the timeout
 	doHide();
 }
 
@@ -253,7 +253,7 @@ void KviHistoryWindow::hideEvent(QHideEvent *)
 }
 
 KviHistoryWindowWidget::KviHistoryWindowWidget()
-    : QWidget(0)
+    : QWidget(nullptr)
 {
 	setWindowFlags(Qt::Popup);
 	m_pWindow = new KviHistoryWindow(this);

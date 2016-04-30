@@ -50,7 +50,7 @@ KviKvsPopupMenuItem::KviKvsPopupMenuItem(Type t, const QString & szItemName, con
 	if(szCondition.isEmpty())
 	{
 		// true by default
-		m_pKvsCondition = 0;
+		m_pKvsCondition = nullptr;
 	}
 	else
 	{
@@ -67,7 +67,7 @@ KviKvsPopupMenuItem::KviKvsPopupMenuItem(Type t, const QString & szItemName, con
 	if(!pCondition)
 	{
 		// true by default
-		m_pKvsCondition = 0;
+		m_pKvsCondition = nullptr;
 	}
 	else
 	{
@@ -87,17 +87,17 @@ void KviKvsPopupMenuItem::clear()
 
 KviKvsScript * KviKvsPopupMenuItem::kvsIcon()
 {
-	return 0;
+	return nullptr;
 }
 
 KviKvsScript * KviKvsPopupMenuItem::kvsText()
 {
-	return 0;
+	return nullptr;
 }
 
 KviKvsScript * KviKvsPopupMenuItem::kvsCode()
 {
-	return 0;
+	return nullptr;
 }
 
 bool KviKvsPopupMenuItem::evaluateCondition(KviKvsPopupMenuTopLevelData * pData)
@@ -158,7 +158,7 @@ KviKvsPopupMenuItemWithTextAndIcon::KviKvsPopupMenuItemWithTextAndIcon(KviKvsPop
 
 	if(szIcon.isEmpty())
 	{
-		m_pKvsIcon = 0;
+		m_pKvsIcon = nullptr;
 	}
 	else
 	{
@@ -185,7 +185,7 @@ KviKvsPopupMenuItemWithTextAndIcon::KviKvsPopupMenuItemWithTextAndIcon(KviKvsPop
 
 	if(!pIcon)
 	{
-		m_pKvsIcon = 0;
+		m_pKvsIcon = nullptr;
 	}
 	else
 	{
@@ -213,9 +213,9 @@ KviKvsScript * KviKvsPopupMenuItemWithTextAndIcon::kvsText()
 QPixmap * KviKvsPopupMenuItemWithTextAndIcon::evaluateIcon(KviKvsPopupMenuTopLevelData * pData)
 {
 	if(!KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus))
-		return 0;
+		return nullptr;
 	if(!m_pKvsIcon)
-		return 0;
+		return nullptr;
 
 	KviKvsVariant vRet;
 	if(!m_pKvsIcon->run(pData->window(),
@@ -226,7 +226,7 @@ QPixmap * KviKvsPopupMenuItemWithTextAndIcon::evaluateIcon(KviKvsPopupMenuTopLev
 	{
 		// broken text
 		pData->window()->output(KVI_OUT_PARSERWARNING, __tr2qs_ctx("Broken icon parameter: ignoring", "kvs"));
-		return 0;
+		return nullptr;
 	}
 
 	QString szRet;
@@ -278,14 +278,14 @@ void KviKvsPopupMenuItemLabelHelper::labelDestroyed()
 KviKvsPopupMenuItemLabel::KviKvsPopupMenuItemLabel(const QString & szItemName, const QString & szText, const QString & szIcon, const QString & szCondition)
     : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Label, szItemName, szText, szIcon, szCondition)
 {
-	m_pLabel = 0;
+	m_pLabel = nullptr;
 	m_pSignalRelay = new KviKvsPopupMenuItemLabelHelper(this);
 }
 
 KviKvsPopupMenuItemLabel::KviKvsPopupMenuItemLabel(const QString & szItemName, const KviKvsScript * pText, const KviKvsScript * pIcon, const KviKvsScript * pCondition)
     : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Label, szItemName, pText, pIcon, pCondition)
 {
-	m_pLabel = 0;
+	m_pLabel = nullptr;
 	m_pSignalRelay = new KviKvsPopupMenuItemLabelHelper(this);
 }
 
@@ -301,7 +301,7 @@ KviKvsPopupMenuItemLabel::~KviKvsPopupMenuItemLabel()
 
 void KviKvsPopupMenuItemLabel::labelDestroyed()
 {
-	m_pLabel = 0; // someone (maybe qt, maybe us) has destroyed the label
+	m_pLabel = nullptr; // someone (maybe qt, maybe us) has destroyed the label
 }
 
 KviKvsPopupMenuItem * KviKvsPopupMenuItemLabel::clone() const
@@ -315,7 +315,7 @@ void KviKvsPopupMenuItemLabel::clear()
 	{
 		QObject::disconnect(m_pLabel, SIGNAL(destroyed()), m_pSignalRelay, SLOT(labelDestroyed()));
 		delete m_pLabel;
-		m_pLabel = 0;
+		m_pLabel = nullptr;
 	}
 }
 
@@ -454,7 +454,7 @@ KviKvsPopupMenuItemExtMenu::KviKvsPopupMenuItemExtMenu(const QString & szItemNam
 		m_szMenuName.remove(0, 1);
 		m_szMenuName.remove(m_szMenuName.length() - 1, 1);
 	}
-	m_pMenu = 0;
+	m_pMenu = nullptr;
 }
 
 KviKvsPopupMenuItemExtMenu::KviKvsPopupMenuItemExtMenu(const QString & szItemName, const QString & szMenuName, const KviKvsScript * pText, const KviKvsScript * pIcon, const KviKvsScript * pCondition)
@@ -466,7 +466,7 @@ KviKvsPopupMenuItemExtMenu::KviKvsPopupMenuItemExtMenu(const QString & szItemNam
 		m_szMenuName.remove(0, 1);
 		m_szMenuName.remove(m_szMenuName.length() - 1, 1);
 	}
-	m_pMenu = 0;
+	m_pMenu = nullptr;
 }
 
 KviKvsPopupMenuItemExtMenu::~KviKvsPopupMenuItemExtMenu()
@@ -480,7 +480,7 @@ void KviKvsPopupMenuItemExtMenu::clear()
 	if(m_pMenu)
 	{
 		delete m_pMenu;
-		m_pMenu = 0;
+		m_pMenu = nullptr;
 	}
 }
 
@@ -541,7 +541,7 @@ KviKvsPopupMenuTopLevelData::~KviKvsPopupMenuTopLevelData()
 }
 
 KviKvsPopupMenu::KviKvsPopupMenu(const QString & szName)
-    : QMenu(szName, 0)
+    : QMenu(szName, nullptr)
 {
 	m_szName = szName;
 	m_pItemList = new KviPointerList<KviKvsPopupMenuItem>;
@@ -550,9 +550,9 @@ KviKvsPopupMenu::KviKvsPopupMenu(const QString & szName)
 	m_pPrologues->setAutoDelete(true);
 	m_pEpilogues = new KviPointerList<KviKvsScript>;
 	m_pEpilogues->setAutoDelete(true);
-	m_pParentPopup = 0;
-	m_pTopLevelData = 0;
-	m_pTempTopLevelData = 0;
+	m_pParentPopup = nullptr;
+	m_pTopLevelData = nullptr;
+	m_pTempTopLevelData = nullptr;
 	m_bSetupDone = false;
 	connect(this, SIGNAL(triggered(QAction *)), this, SLOT(itemClicked(QAction *)));
 	connect(this, SIGNAL(aboutToShow()), this, SLOT(setupMenuContents()));
@@ -628,7 +628,7 @@ KviKvsPopupMenu * KviKvsPopupMenu::findChildPopupByName(const QString & szItemNa
 			continue;
 		return pMenu;
 	}
-	return NULL;
+	return nullptr;
 }
 
 bool KviKvsPopupMenu::removeItemByName(const QString & szItemName, bool bRecursive)
@@ -778,12 +778,12 @@ void KviKvsPopupMenu::clearMenuContents()
 	if(m_pTopLevelData)
 	{
 		delete m_pTopLevelData;
-		m_pTopLevelData = 0;
+		m_pTopLevelData = nullptr;
 	}
 	if(m_pTempTopLevelData)
 	{
 		delete m_pTempTopLevelData;
-		m_pTempTopLevelData = 0;
+		m_pTempTopLevelData = nullptr;
 	}
 }
 
@@ -793,12 +793,12 @@ void KviKvsPopupMenu::doClear()
 	if(m_pTopLevelData)
 	{
 		delete m_pTopLevelData;
-		m_pTopLevelData = 0;
+		m_pTopLevelData = nullptr;
 	}
 	if(m_pTempTopLevelData)
 	{
 		delete m_pTempTopLevelData;
-		m_pTempTopLevelData = 0;
+		m_pTempTopLevelData = nullptr;
 	}
 	m_bSetupDone = false;
 	m_pItemList->clear();
@@ -818,9 +818,9 @@ void KviKvsPopupMenu::lock(KviKvsPopupMenuTopLevelData::LockStatus eLock)
 void KviKvsPopupMenu::setupMenuContents()
 {
 	// This might be a compat problem later :((((
-	if(parentPopup() == 0)
+	if(parentPopup() == nullptr)
 	{
-		if(m_pTempTopLevelData == 0)
+		if(m_pTempTopLevelData == nullptr)
 		{
 			// We have been called by a KviMenuBar!
 			// m_bSetupDone is not valid here
@@ -837,7 +837,7 @@ void KviKvsPopupMenu::setupMenuContents()
 				qDebug("Oops! Something got messed in KviKvsPopupMenu activation system");
 			// Swap the top level data from temporary to the permanent
 			m_pTopLevelData = m_pTempTopLevelData;
-			m_pTempTopLevelData = 0;
+			m_pTempTopLevelData = nullptr;
 		}
 	}
 	else
@@ -890,7 +890,7 @@ void KviKvsPopupMenu::executePrologues(KviKvsPopupMenuTopLevelData * pData)
 	{
 		if(!s->run(pData->window(),
 		       pData->parameters(),
-		       0,
+		       nullptr,
 		       KviKvsScript::PreserveParams,
 		       pData->extendedRunTimeData()))
 		{
@@ -905,7 +905,7 @@ void KviKvsPopupMenu::executeEpilogues(KviKvsPopupMenuTopLevelData * pData)
 	{
 		if(!s->run(pData->window(),
 		       pData->parameters(),
-		       0,
+		       nullptr,
 		       KviKvsScript::PreserveParams,
 		       pData->extendedRunTimeData()))
 		{
@@ -943,7 +943,7 @@ void KviKvsPopupMenu::itemClicked(QAction * pAction)
 				lock(KviKvsPopupMenuTopLevelData::HardLocked);
 				if(d->extendedRunTimeData())
 					d->extendedRunTimeData()->setPopupId(new QString(it->name()));
-				((KviKvsPopupMenuItemItem *)it)->kvsCode()->run(d->window(), d->parameters(), 0, KviKvsScript::PreserveParams, d->extendedRunTimeData());
+				((KviKvsPopupMenuItemItem *)it)->kvsCode()->run(d->window(), d->parameters(), nullptr, KviKvsScript::PreserveParams, d->extendedRunTimeData());
 				// FIXME: should we print somethng if run() returns false ?
 				lock(KviKvsPopupMenuTopLevelData::Unlocked);
 			}

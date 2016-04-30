@@ -103,7 +103,7 @@ RawEditorWidget::RawEditorWidget(QWidget * par)
 	m_pEditor = KviScriptEditor::createInstance(box);
 
 	m_bOneTimeSetupDone = false;
-	m_pLastEditedItem = 0;
+	m_pLastEditedItem = nullptr;
 }
 
 RawEditorWidget::~RawEditorWidget()
@@ -252,7 +252,7 @@ void RawEditorWidget::addHandlerForCurrentRaw()
 	RawTreeWidgetItem * it = (RawTreeWidgetItem *)m_pTreeWidget->currentItem();
 	if(it)
 	{
-		if(it->parent() == 0)
+		if(it->parent() == nullptr)
 		{
 			QString buffer = __tr2qs_ctx("default", "editor");
 			getUniqueHandlerName((RawTreeWidgetItem *)it, buffer);
@@ -273,7 +273,7 @@ void RawEditorWidget::removeCurrentHandler()
 	{
 		QTreeWidgetItem * it = m_pLastEditedItem;
 		RawTreeWidgetItem * parent = (RawTreeWidgetItem *)it->parent();
-		m_pLastEditedItem = 0;
+		m_pLastEditedItem = nullptr;
 		delete it;
 		m_pEditor->setEnabled(false);
 		m_pNameEditor->setEnabled(false);
@@ -363,7 +363,7 @@ void RawEditorWidget::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *
 	}
 	else
 	{
-		m_pLastEditedItem = 0;
+		m_pLastEditedItem = nullptr;
 		m_pNameEditor->setEnabled(false);
 		m_pNameEditor->setText("");
 		m_pEditor->setEnabled(false);
@@ -474,7 +474,7 @@ void RawEditorWidget::exportAllEvents()
 }
 
 RawEditorWindow::RawEditorWindow()
-    : KviWindow(KviWindow::ScriptEditor, "raweditor", 0)
+    : KviWindow(KviWindow::ScriptEditor, "raweditor", nullptr)
 {
 	g_pRawEditorWindow = this;
 
@@ -505,7 +505,7 @@ RawEditorWindow::RawEditorWindow()
 
 RawEditorWindow::~RawEditorWindow()
 {
-	g_pRawEditorWindow = 0;
+	g_pRawEditorWindow = nullptr;
 }
 
 void RawEditorWindow::okClicked()

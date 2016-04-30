@@ -54,7 +54,7 @@ KviKvsTreeNodeData * KviKvsTreeNodeDataList::releaseFirst()
 KviKvsTreeNodeData * KviKvsTreeNodeDataList::item(unsigned int uIdx)
 {
 	if(uIdx >= m_pDataList->count())
-		return 0;
+		return nullptr;
 	return m_pDataList->at(uIdx);
 }
 

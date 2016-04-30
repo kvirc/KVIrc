@@ -76,11 +76,11 @@ static PyObject * PyKVIrc_echo(PyObject * pSelf, PyObject * pArgs)
 	if(QThread::currentThread() != g_pApp->thread())
 	{
 		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
-		return 0; // Sorry, we're NOT thread safe
+		return nullptr; // Sorry, we're NOT thread safe
 	}
 
 	if(!PyArg_ParseTuple(pArgs, "s|is", &pcText, &iColorSet, &pcWinId))
-		return 0;
+		return nullptr;
 
 	if(pcText)
 	{
@@ -113,11 +113,11 @@ static PyObject * PyKVIrc_say(PyObject * pSelf, PyObject * pArgs)
 	if(QThread::currentThread() != g_pApp->thread())
 	{
 		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
-		return 0; // Sorry, we're NOT thread safe
+		return nullptr; // Sorry, we're NOT thread safe
 	}
 
 	if(!PyArg_ParseTuple(pArgs, "s|s", &pcText, &pcWinId))
-		return 0;
+		return nullptr;
 
 	if(pcText)
 	{
@@ -151,11 +151,11 @@ static PyObject * PyKVIrc_warning(PyObject * pSelf, PyObject * pArgs)
 	if(QThread::currentThread() != g_pApp->thread())
 	{
 		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
-		return 0; // Sorry, we're NOT thread safe
+		return nullptr; // Sorry, we're NOT thread safe
 	}
 
 	if(!PyArg_ParseTuple(pArgs, "s", &pcText))
-		return 0;
+		return nullptr;
 
 	if(pcText && !g_bExecuteQuiet)
 	{
@@ -175,11 +175,11 @@ static PyObject * PyKVIrc_getLocal(PyObject * pSelf, PyObject * pArgs)
 	if(QThread::currentThread() != g_pApp->thread())
 	{
 		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
-		return 0; // Sorry, we're NOT thread safe
+		return nullptr; // Sorry, we're NOT thread safe
 	}
 
 	if(!PyArg_ParseTuple(pArgs, "s", &szVarName))
-		return 0;
+		return nullptr;
 
 	if(g_pCurrentKvsContext)
 	{
@@ -194,7 +194,7 @@ static PyObject * PyKVIrc_getLocal(PyObject * pSelf, PyObject * pArgs)
 			return Py_BuildValue("s", "");
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 static PyObject * PyKVIrc_setLocal(PyObject * pSelf, PyObject * pArgs)
@@ -206,11 +206,11 @@ static PyObject * PyKVIrc_setLocal(PyObject * pSelf, PyObject * pArgs)
 	if(QThread::currentThread() != g_pApp->thread())
 	{
 		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
-		return 0; // Sorry, we're NOT thread safe
+		return nullptr; // Sorry, we're NOT thread safe
 	}
 
 	if(!PyArg_ParseTuple(pArgs, "ss", &szVarName, &szVarValue))
-		return 0;
+		return nullptr;
 
 	if(g_pCurrentKvsContext)
 	{
@@ -225,7 +225,7 @@ static PyObject * PyKVIrc_setLocal(PyObject * pSelf, PyObject * pArgs)
 		}
 		return Py_BuildValue("i", 1);
 	}
-	return 0;
+	return nullptr;
 }
 
 static PyObject * PyKVIrc_getGlobal(PyObject * pSelf, PyObject * pArgs)
@@ -237,11 +237,11 @@ static PyObject * PyKVIrc_getGlobal(PyObject * pSelf, PyObject * pArgs)
 	if(QThread::currentThread() != g_pApp->thread())
 	{
 		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
-		return 0; // Sorry, we're NOT thread safe
+		return nullptr; // Sorry, we're NOT thread safe
 	}
 
 	if(!PyArg_ParseTuple(pArgs, "s", &szVarName))
-		return 0;
+		return nullptr;
 
 	if(g_pCurrentKvsContext)
 	{
@@ -256,7 +256,7 @@ static PyObject * PyKVIrc_getGlobal(PyObject * pSelf, PyObject * pArgs)
 			return Py_BuildValue("s", "");
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 static PyObject * PyKVIrc_setGlobal(PyObject * pSelf, PyObject * pArgs)
@@ -268,11 +268,11 @@ static PyObject * PyKVIrc_setGlobal(PyObject * pSelf, PyObject * pArgs)
 	if(QThread::currentThread() != g_pApp->thread())
 	{
 		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
-		return 0; // Sorry, we're NOT thread safe
+		return nullptr; // Sorry, we're NOT thread safe
 	}
 
 	if(!PyArg_ParseTuple(pArgs, "ss", &szVarName, &szVarValue))
-		return 0;
+		return nullptr;
 
 	if(g_pCurrentKvsContext)
 	{
@@ -287,7 +287,7 @@ static PyObject * PyKVIrc_setGlobal(PyObject * pSelf, PyObject * pArgs)
 		}
 		return Py_BuildValue("i", 1);
 	}
-	return 0;
+	return nullptr;
 }
 
 static PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs)
@@ -300,11 +300,11 @@ static PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs)
 	if(QThread::currentThread() != g_pApp->thread())
 	{
 		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
-		return 0; // Sorry, we're NOT thread safe
+		return nullptr; // Sorry, we're NOT thread safe
 	}
 
 	if(!PyArg_ParseTuple(pArgs, "s", &pcCode))
-		return 0;
+		return nullptr;
 
 	if(pcCode)
 	{
@@ -319,7 +319,7 @@ static PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs)
 		{
 			KviKvsVariant ret;
 			QString szRet;
-			if(KviKvsScript::run(QString::fromUtf8(pcCode), pWnd, 0, &ret))
+			if(KviKvsScript::run(QString::fromUtf8(pcCode), pWnd, nullptr, &ret))
 			{
 				ret.asString(szRet);
 				pcRetVal = szRet.toUtf8().data();
@@ -338,11 +338,11 @@ static PyObject * PyKVIrc_internalWarning(PyObject * pSelf, PyObject * pArgs)
 	if(QThread::currentThread() != g_pApp->thread())
 	{
 		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
-		return 0; // Sorry, we're NOT thread safe
+		return nullptr; // Sorry, we're NOT thread safe
 	}
 
 	if(!PyArg_ParseTuple(pArgs, "s", &pcText))
-		return 0;
+		return nullptr;
 
 	if(pcText && !g_bExecuteQuiet)
 		g_lWarningList.append(QString(pcText));
@@ -358,11 +358,11 @@ static PyObject * PyKVIrc_error(PyObject * pSelf, PyObject * pArgs)
 	if(QThread::currentThread() != g_pApp->thread())
 	{
 		qDebug("[pythoncore][ERROR] KVIrc module functions must be called from the main KVIrc thread");
-		return 0; // Sorry, we're NOT thread safe
+		return nullptr; // Sorry, we're NOT thread safe
 	}
 
 	if(!PyArg_ParseTuple(pArgs, "s", &pcText))
-		return 0;
+		return nullptr;
 
 	if(pcText)
 		g_lError.append(pcText);

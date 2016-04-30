@@ -351,13 +351,13 @@ namespace KviFileUtils
 		if(f.read(pcBuf, f.size()) != ((long int)f.size()))
 		{
 			delete[] pcBuf;
-			pcBuf = 0;
+			pcBuf = nullptr;
 			return false;
 		}
 		pcBuf[f.size()] = '\0';
 		szBuffer = QString::fromUtf8(pcBuf);
 		delete[] pcBuf;
-		pcBuf = 0;
+		pcBuf = nullptr;
 		return true;
 	}
 

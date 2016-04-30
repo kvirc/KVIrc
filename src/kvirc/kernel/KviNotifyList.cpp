@@ -114,7 +114,7 @@
 // Basic NotifyListManager: this does completely nothing
 
 KviNotifyListManager::KviNotifyListManager(KviIrcConnection * pConnection)
-    : QObject(0)
+    : QObject(nullptr)
 {
 	setObjectName("notify_list_manager");
 	m_pConnection = pConnection;

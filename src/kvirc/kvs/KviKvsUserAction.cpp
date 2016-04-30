@@ -47,7 +47,7 @@ KviKvsUserAction::KviKvsUserAction(QObject * pParent,
           szScriptCode,
           szVisibleNameCode,
           szDescriptionCode,
-          NULL,
+          nullptr,
           szBigIconId,
           szSmallIconId,
           uFlags,
@@ -69,11 +69,11 @@ KviKvsUserAction::KviKvsUserAction(QObject * pParent,
 }
 
 KviKvsUserAction::KviKvsUserAction(QObject * pParent)
-    : KviKvsAction(pParent, QString(), QString(), QString(), QString(), NULL, QString(), QString())
+    : KviKvsAction(pParent, QString(), QString(), QString(), QString(), nullptr, QString(), QString())
 {
 	// needs loading!
-	m_pDescriptionScript = 0;
-	m_pVisibleNameScript = 0;
+	m_pDescriptionScript = nullptr;
+	m_pVisibleNameScript = nullptr;
 }
 
 KviKvsUserAction::~KviKvsUserAction()
@@ -285,7 +285,7 @@ const QString & KviKvsUserAction::visibleName()
 {
 	if(!m_pVisibleNameScript)
 		return m_szVisibleName;
-	if(!m_pVisibleNameScript->run(g_pActiveWindow, 0, m_szVisibleName))
+	if(!m_pVisibleNameScript->run(g_pActiveWindow, nullptr, m_szVisibleName))
 		m_szVisibleName = m_pVisibleNameScript->code();
 	return m_szVisibleName;
 }
@@ -294,7 +294,7 @@ const QString & KviKvsUserAction::description()
 {
 	if(!m_pDescriptionScript)
 		return m_szDescription;
-	if(!m_pDescriptionScript->run(g_pActiveWindow, 0, m_szDescription))
+	if(!m_pDescriptionScript->run(g_pActiveWindow, nullptr, m_szDescription))
 		m_szDescription = m_pDescriptionScript->code();
 	return m_szDescription;
 }

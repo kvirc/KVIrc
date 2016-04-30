@@ -36,7 +36,7 @@ int IdlePlatform::secondsIdle() const { return 0; }
 #include <X11/Xutil.h>
 #include <X11/extensions/scrnsaver.h>
 
-static XErrorHandler old_handler = 0;
+static XErrorHandler old_handler = nullptr;
 extern "C" int xerrhandler(Display * dpy, XErrorEvent * err)
 {
 	if(err->error_code == BadDrawable)
@@ -53,7 +53,7 @@ public:
 	Private()
 	{
 		// make coverity happy
-		ss_info = 0;
+		ss_info = nullptr;
 	}
 };
 
@@ -69,7 +69,7 @@ IdlePlatform::~IdlePlatform()
 	if(old_handler)
 	{
 		XSetErrorHandler(old_handler);
-		old_handler = 0;
+		old_handler = nullptr;
 	}
 	delete d;
 }

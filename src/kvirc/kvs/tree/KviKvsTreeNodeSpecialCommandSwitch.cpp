@@ -33,8 +33,8 @@
 KviKvsTreeNodeSpecialCommandSwitchLabel::KviKvsTreeNodeSpecialCommandSwitchLabel(const QChar * pLocation)
     : KviKvsTreeNode(pLocation)
 {
-	m_pParameter = 0;
-	m_pInstruction = 0;
+	m_pParameter = nullptr;
+	m_pInstruction = nullptr;
 	m_bHasTerminatingBreak = false;
 }
 

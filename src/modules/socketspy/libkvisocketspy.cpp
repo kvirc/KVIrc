@@ -30,7 +30,7 @@
 
 #include <QSplitter>
 
-KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList = 0;
+KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList = nullptr;
 
 /*
 	@doc: socketspy.open
@@ -71,7 +71,7 @@ static bool socketspy_module_cleanup(KviModule *)
 	while(g_pSocketSpyWindowList->first())
 		g_pSocketSpyWindowList->first()->die();
 	delete g_pSocketSpyWindowList;
-	g_pSocketSpyWindowList = 0;
+	g_pSocketSpyWindowList = nullptr;
 	return true;
 }
 

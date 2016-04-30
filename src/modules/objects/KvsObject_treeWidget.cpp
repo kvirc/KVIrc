@@ -254,7 +254,7 @@ KVSO_CLASS_FUNCTION(treeWidget, topLevelItem)
 	KVSO_PARAMETERS_END(c)
 	QTreeWidgetItem * pItem = ((QTreeWidget *)widget())->topLevelItem(iIdx);
 	if(!pItem)
-		c->returnValue()->setHObject((kvs_hobject_t)0);
+		c->returnValue()->setHObject((kvs_hobject_t) nullptr);
 	else
 		c->returnValue()->setHObject(KvsObject_treeWidgetItem::itemToHandle(pItem));
 	return true;
@@ -271,7 +271,7 @@ KVSO_CLASS_FUNCTION(treeWidget, itemAt)
 	QPoint pPoint = ((QTreeWidget *)widget())->viewport()->mapFromGlobal(QPoint(iXpos, iYpos));
 	QTreeWidgetItem * pItem = ((QTreeWidget *)widget())->itemAt(pPoint);
 	if(!pItem)
-		c->returnValue()->setHObject((kvs_hobject_t)0);
+		c->returnValue()->setHObject((kvs_hobject_t) nullptr);
 	else
 		c->returnValue()->setHObject(KvsObject_treeWidgetItem::itemToHandle(pItem));
 	return true;
@@ -335,7 +335,7 @@ KVSO_CLASS_FUNCTION(treeWidget, selectedItems)
 			pArray->set(i, new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle((QTreeWidgetItem *)list.at(i))));
 	}
 	else
-		c->returnValue()->setHObject((kvs_hobject_t)0);
+		c->returnValue()->setHObject((kvs_hobject_t) nullptr);
 	return true;
 }
 
@@ -344,7 +344,7 @@ KVSO_CLASS_FUNCTION(treeWidget, firstChild)
 	if(widget())
 		c->returnValue()->setHObject(KvsObject_treeWidgetItem::itemToHandle((QTreeWidgetItem *)((QTreeWidget *)widget())->topLevelItem(0)));
 	else
-		c->returnValue()->setHObject((kvs_hobject_t)0);
+		c->returnValue()->setHObject((kvs_hobject_t) nullptr);
 	return true;
 }
 
@@ -353,7 +353,7 @@ KVSO_CLASS_FUNCTION(treeWidget, currentItem)
 	if(widget())
 		c->returnValue()->setHObject(KvsObject_treeWidgetItem::itemToHandle((QTreeWidgetItem *)((QTreeWidget *)widget())->currentItem()));
 	else
-		c->returnValue()->setHObject((kvs_hobject_t)0);
+		c->returnValue()->setHObject((kvs_hobject_t) nullptr);
 	return true;
 }
 /*
@@ -484,7 +484,7 @@ void KvsObject_treeWidget::slotClicked(QTreeWidgetItem * i, int col)
 	KviKvsVariant * column = new KviKvsVariant((kvs_int_t)col);
 
 	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)), column);
-	callFunction(this, "itemClickedEvent", 0, &params);
+	callFunction(this, "itemClickedEvent", nullptr, &params);
 }
 
 KVSO_CLASS_FUNCTION(treeWidget, selectionChangedEvent)
@@ -499,12 +499,12 @@ void KvsObject_treeWidget::slotSelectionChanged()
 	{
 		QTreeWidgetItem * it = (QTreeWidgetItem *)((QTreeWidget *)widget())->currentItem();
 		KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(it)));
-		callFunction(this, "selectionChangedEvent", 0, &params);
+		callFunction(this, "selectionChangedEvent", nullptr, &params);
 	}
 	else
 	{
-		KviKvsVariantList params(new KviKvsVariant((kvs_hobject_t)0));
-		callFunction(this, "selectionChangedEvent", 0, &params);
+		KviKvsVariantList params(new KviKvsVariant((kvs_hobject_t) nullptr));
+		callFunction(this, "selectionChangedEvent", nullptr, &params);
 	}
 }
 
@@ -517,7 +517,7 @@ KVSO_CLASS_FUNCTION(treeWidget, currentChangedEvent)
 void KvsObject_treeWidget::slotCurrentChanged(QTreeWidgetItem * i, QTreeWidgetItem * prev)
 {
 	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)), new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(prev)));
-	callFunction(this, "currentChangedEvent", 0, &params);
+	callFunction(this, "currentChangedEvent", nullptr, &params);
 }
 
 KVSO_CLASS_FUNCTION(treeWidget, itemActivatedEvent)
@@ -530,7 +530,7 @@ void KvsObject_treeWidget::slotItemActivated(QTreeWidgetItem * i, int col)
 {
 	KviKvsVariant * column = new KviKvsVariant((kvs_int_t)col);
 	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)), column);
-	callFunction(this, "itemActivatedEvent", 0, &params);
+	callFunction(this, "itemActivatedEvent", nullptr, &params);
 }
 
 KVSO_CLASS_FUNCTION(treeWidget, onItemEvent)
@@ -544,7 +544,7 @@ void KvsObject_treeWidget::slotOnItemEntered(QTreeWidgetItem * i, int col)
 	KviKvsVariant * column = new KviKvsVariant((kvs_int_t)col);
 
 	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)), column);
-	callFunction(this, "onItemEvent", 0, &params);
+	callFunction(this, "onItemEvent", nullptr, &params);
 }
 
 KVSO_CLASS_FUNCTION(treeWidget, itemExpandedEvent)
@@ -556,7 +556,7 @@ KVSO_CLASS_FUNCTION(treeWidget, itemExpandedEvent)
 void KvsObject_treeWidget::slotItemExpanded(QTreeWidgetItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)));
-	callFunction(this, "itemExpandedEvent", 0, &params);
+	callFunction(this, "itemExpandedEvent", nullptr, &params);
 }
 
 KVSO_CLASS_FUNCTION(treeWidget, itemCollapsedEvent)
@@ -568,7 +568,7 @@ KVSO_CLASS_FUNCTION(treeWidget, itemCollapsedEvent)
 void KvsObject_treeWidget::slotItemCollapsed(QTreeWidgetItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(i)));
-	callFunction(this, "itemCollapsedEvent", 0, &params);
+	callFunction(this, "itemCollapsedEvent", nullptr, &params);
 }
 
 KVSO_CLASS_FUNCTION(treeWidget, itemChangedEvent)
@@ -581,14 +581,14 @@ void KvsObject_treeWidget::slotItemChanged(QTreeWidgetItem * item, int col)
 {
 	KviKvsVariant * column = new KviKvsVariant((kvs_int_t)col);
 	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(item)), column);
-	callFunction(this, "itemChangedEvent", 0, &params);
+	callFunction(this, "itemChangedEvent", nullptr, &params);
 }
 
 void KvsObject_treeWidget::fileDropped(QString & szFile, QTreeWidgetItem * item)
 {
 	KviKvsVariant * file = new KviKvsVariant(szFile);
 	KviKvsVariantList params(new KviKvsVariant(KvsObject_treeWidgetItem::itemToHandle(item)), file);
-	callFunction(this, "fileDroppedEvent", 0, &params);
+	callFunction(this, "fileDroppedEvent", nullptr, &params);
 }
 
 KviKvsTreeWidget::KviKvsTreeWidget(QWidget * par, const char *, KvsObject_treeWidget * parent)

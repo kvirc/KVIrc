@@ -93,7 +93,7 @@ void KviIrcView::stopLogging()
 		}
 #endif
 		delete m_pLogFile;
-		m_pLogFile = 0;
+		m_pLogFile = nullptr;
 	}
 }
 
@@ -193,7 +193,7 @@ void KviIrcView::setMasterView(KviIrcView * v)
 
 void KviIrcView::masterDead()
 {
-	m_pMasterView = 0;
+	m_pMasterView = nullptr;
 }
 
 bool KviIrcView::startLogging(const QString & fname, bool bPrependCurBuffer)
@@ -220,7 +220,7 @@ bool KviIrcView::startLogging(const QString & fname, bool bPrependCurBuffer)
 		if(!m_pLogFile->open(QIODevice::Append | QIODevice::WriteOnly))
 		{
 			delete m_pLogFile;
-			m_pLogFile = 0;
+			m_pLogFile = nullptr;
 			return false;
 		}
 	}
@@ -229,7 +229,7 @@ bool KviIrcView::startLogging(const QString & fname, bool bPrependCurBuffer)
 		if(!m_pLogFile->open(QIODevice::WriteOnly))
 		{
 			delete m_pLogFile;
-			m_pLogFile = 0;
+			m_pLogFile = nullptr;
 			return false;
 		}
 	}

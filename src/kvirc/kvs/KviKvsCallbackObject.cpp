@@ -34,7 +34,7 @@ KviKvsCallbackObject::KviKvsCallbackObject(const QString & szCallbackName, KviWi
 	if(pTargetWindow)
 		m_pTargetConsole = pTargetWindow->console();
 	else
-		m_pTargetConsole = 0;
+		m_pTargetConsole = nullptr;
 	m_pMagicParams = new KviKvsVariantList();
 	if(pMagicParams)
 		for(KviKvsVariant * v = pMagicParams->first(); v; v = pMagicParams->next())

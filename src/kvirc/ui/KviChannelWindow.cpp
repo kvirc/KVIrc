@@ -219,7 +219,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	m_pModeEditorButton = new KviWindowToolPageButton(KviIconManager::ChanModeHide, KviIconManager::ChanMode, __tr2qs("Mode editor"), buttonContainer(), false);
 	m_pModeEditorButton->setObjectName("mode_editor_button");
 	connect(m_pModeEditorButton, SIGNAL(clicked()), this, SLOT(toggleModeEditor()));
-	m_pModeEditor = 0;
+	m_pModeEditor = nullptr;
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	createCryptControllerButton(m_pButtonContainer);
@@ -405,7 +405,7 @@ void KviChannelWindow::loadProperties(KviConfigurationFile * pCfg)
 		m_pListViewButton->setChecked(!bHidden);
 		if(!bHidden)
 			m_pSplitter->setSizes(m_SplitterSizesList);
-		resizeEvent(0);
+		resizeEvent(nullptr);
 	}
 
 	if(pCfg->readBoolEntry("ToolButtonsHidden", KVI_OPTION_BOOL(KviOption_boolHideWindowToolButtons)) != buttonContainer()->isHidden())
@@ -423,7 +423,7 @@ void KviChannelWindow::showDoubleView(bool bShow)
 		m_VertSplitterSizesList = m_pVertSplitter->sizes();
 
 		delete m_pMessageView;
-		m_pMessageView = 0;
+		m_pMessageView = nullptr;
 
 		if(m_pDoubleViewButton->isChecked())
 			m_pDoubleViewButton->setChecked(false);
@@ -500,7 +500,7 @@ void KviChannelWindow::toggleModeEditor()
 		m_pSplitter->setMinimumHeight(20);
 		if(m_pModeEditorButton->isChecked())
 			m_pModeEditorButton->setChecked(false);
-		resizeEvent(0);
+		resizeEvent(nullptr);
 	}
 	else
 	{
@@ -750,7 +750,7 @@ void KviChannelWindow::setDeadChan()
 	m_pUserListView->enableUpdates(false);
 	m_pUserListView->partAll();
 	m_pUserListView->enableUpdates(true);
-	m_pUserListView->setUserDataBase(0);
+	m_pUserListView->setUserDataBase(nullptr);
 
 	//clear all mask editors
 	QMap<char, KviMaskEditor *>::const_iterator iter2 = m_pListEditors.constBegin();
@@ -1847,7 +1847,7 @@ void KviChannelWindow::closeEvent(QCloseEvent * pEvent)
 			KviQString::escapeKvs(&szTmp, KviQString::PermitVariables | KviQString::PermitFunctions);
 			KviKvsVariant vRet;
 
-			if(KviKvsScript::evaluate(szTmp, this, 0, &vRet))
+			if(KviKvsScript::evaluate(szTmp, this, nullptr, &vRet))
 				vRet.asString(szTmp);
 
 			QByteArray dat = encodeText(szTmp);

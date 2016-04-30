@@ -41,9 +41,9 @@
 #include <QScrollBar>
 
 KviTextIconWindow::KviTextIconWindow()
-    : QWidget(0, Qt::Popup)
+    : QWidget(nullptr, Qt::Popup)
 {
-	m_pOwner = 0;
+	m_pOwner = nullptr;
 	m_bAltMode = false;
 
 	setFixedSize(KVI_TEXTICON_WIN_WIDTH, KVI_TEXTICON_WIN_HEIGHT);
@@ -107,7 +107,7 @@ void KviTextIconWindow::fill()
 	}
 
 	m_pTable->sortItems(0, Qt::AscendingOrder);
-	m_pTable->setCurrentItem(0);
+	m_pTable->setCurrentItem(nullptr);
 }
 
 void KviTextIconWindow::popup(QWidget * pOwner, bool bAltMode)
@@ -226,7 +226,7 @@ void KviTextIconWindow::autoSelectBestMatchBasedOnOwnerText()
 
 void KviTextIconWindow::ownerDead()
 {
-	m_pOwner = 0;
+	m_pOwner = nullptr;
 	doHide();
 }
 

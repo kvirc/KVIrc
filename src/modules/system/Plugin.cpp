@@ -123,7 +123,7 @@ Plugin * Plugin::load(const QString & szFileName)
 	if(!pLibrary->load())
 	{
 		delete pLibrary;
-		return 0;
+		return nullptr;
 	}
 
 	Plugin * pPlugin = new Plugin(pLibrary, KviFileUtils::extractFileName(szFileName));
@@ -279,7 +279,7 @@ bool PluginManager::pluginCall(KviKvsModuleFunctionCall * c)
 		pArgvBuffer = (char *)malloc(iSize);
 
 		i = 2;
-		char * x = 0;
+		char * x = nullptr;
 		x = pArgvBuffer;
 		while(i < (iArgc + 2))
 		{
@@ -296,8 +296,8 @@ bool PluginManager::pluginCall(KviKvsModuleFunctionCall * c)
 	else
 	{
 		//Avoid using unfilled variables
-		ppArgv = 0;
-		pArgvBuffer = 0;
+		ppArgv = nullptr;
+		pArgvBuffer = nullptr;
 		iArgc = 0;
 	}
 
@@ -414,7 +414,7 @@ bool PluginManager::loadPlugin(const QString & szPluginPath)
 {
 	if(isPluginLoaded(szPluginPath))
 	{
-		return getPlugin(szPluginPath) != 0;
+		return getPlugin(szPluginPath) != nullptr;
 	}
 	else
 	{

@@ -97,7 +97,7 @@ namespace KviKvsCoreFunctions
 			if(cons)
 				wnd = cons->activeWindow();
 			else
-				wnd = 0;
+				wnd = nullptr;
 		}
 		else
 		{
@@ -529,7 +529,7 @@ namespace KviKvsCoreFunctions
 		return true;
 #else
 		KviSSL::globalSSLInit();
-		X509 * cert = 0;
+		X509 * cert = nullptr;
 
 		if(!KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate))
 		{
@@ -547,7 +547,7 @@ namespace KviKvsCoreFunctions
 		}
 
 		QString szPass = KVI_OPTION_STRING(KviOption_stringSSLCertificatePass).toUtf8();
-		PEM_read_X509(f, &cert, NULL, szPass.data());
+		PEM_read_X509(f, &cert, nullptr, szPass.data());
 
 		fclose(f);
 
@@ -613,7 +613,7 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
 		KVSCF_PARAMETERS_END
 
-		KviWindow * wnd = 0;
+		KviWindow * wnd = nullptr;
 		if(KVSCF_pParams->count() > 0)
 		{
 			if(KVSCF_pParams->count() > 1)
@@ -626,7 +626,7 @@ namespace KviKvsCoreFunctions
 					if(cons->connection())
 						wnd = cons->connection()->findChannel(szName);
 					else
-						wnd = 0;
+						wnd = nullptr;
 				}
 			}
 			else
@@ -637,7 +637,7 @@ namespace KviKvsCoreFunctions
 				{
 					if(!KVSCF_pContext->window()->console())
 						KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context", "kvs"));
-					wnd = 0;
+					wnd = nullptr;
 				}
 			}
 		}
@@ -707,7 +707,7 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETERS_BEGIN
 		KVSCF_PARAMETER("className", KVS_PT_NONEMPTYSTRING, 0, szClassName)
 		KVSCF_PARAMETERS_END
-		KVSCF_pRetBuffer->setBoolean(KviKvsKernel::instance()->objectController()->lookupClass(szClassName) != 0);
+		KVSCF_pRetBuffer->setBoolean(KviKvsKernel::instance()->objectController()->lookupClass(szClassName) != nullptr);
 		return true;
 	}
 

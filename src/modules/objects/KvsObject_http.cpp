@@ -291,7 +291,7 @@ bool KvsObject_http::functionGet(KviKvsObjectFunctionCall * c)
 	KVSO_PARAMETER("local_filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szDest)
 	KVSO_PARAMETERS_END(c)
 
-	QFile * pFile = 0;
+	QFile * pFile = nullptr;
 	if(!szDest.isEmpty())
 	{
 		pFile = new QFile(szDest);
@@ -324,7 +324,7 @@ bool KvsObject_http::functionPost(KviKvsObjectFunctionCall * c)
 	KVSO_PARAMETER("post_data", KVS_PT_STRING, 0, szData)
 	KVSO_PARAMETER("local_filename", KVS_PT_STRING, 0, szDest)
 	KVSO_PARAMETERS_END(c)
-	QFile * pFile = 0;
+	QFile * pFile = nullptr;
 	if(!szDest.isEmpty())
 	{
 		pFile = new QFile(szDest);
@@ -409,7 +409,7 @@ void KvsObject_http::slotRequestFinished(int id, bool error)
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant((kvs_int_t)id));
 	lParams.append(new KviKvsVariant(error));
-	callFunction(this, "requestFinishedEvent", 0, &lParams);
+	callFunction(this, "requestFinishedEvent", nullptr, &lParams);
 }
 
 bool KvsObject_http::functionRequestStartedEvent(KviKvsObjectFunctionCall * c)
@@ -421,7 +421,7 @@ void KvsObject_http::slotRequestStarted(int id)
 {
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant((kvs_int_t)id));
-	callFunction(this, "requestStartedEvent", 0, &lParams);
+	callFunction(this, "requestStartedEvent", nullptr, &lParams);
 }
 
 void KvsObject_http::slotDataReadProgress(int done, int total)
@@ -429,7 +429,7 @@ void KvsObject_http::slotDataReadProgress(int done, int total)
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant((kvs_int_t)done));
 	lParams.append(new KviKvsVariant((kvs_int_t)total));
-	callFunction(this, "dataReadProgressEvent", 0, &lParams);
+	callFunction(this, "dataReadProgressEvent", nullptr, &lParams);
 }
 bool KvsObject_http::functionDataReadProgressEvent(KviKvsObjectFunctionCall * c)
 {
@@ -441,7 +441,7 @@ void KvsObject_http::slotDataSendProgress(int done, int total)
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant((kvs_int_t)done));
 	lParams.append(new KviKvsVariant((kvs_int_t)total));
-	callFunction(this, "dataSendProgressEvent", 0, &lParams);
+	callFunction(this, "dataSendProgressEvent", nullptr, &lParams);
 }
 bool KvsObject_http::functionDataSendProgressEvent(KviKvsObjectFunctionCall * c)
 {
@@ -457,7 +457,7 @@ void KvsObject_http::slotDone(bool error)
 {
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant(error));
-	callFunction(this, "doneEvent", 0, &lParams);
+	callFunction(this, "doneEvent", nullptr, &lParams);
 }
 
 bool KvsObject_http::functionResponseHeaderReceivedEvent(KviKvsObjectFunctionCall * c)
@@ -474,7 +474,7 @@ void KvsObject_http::redirect(QString & file, const QHttpResponseHeader & r)
 {
 	QUrl url(r.value("location"));
 	m_pHttp->setHost(url.host());
-	QFile * pFile = 0;
+	QFile * pFile = nullptr;
 	pFile = new QFile(file);
 	pFile->open(QIODevice::WriteOnly);
 	int id = m_pHttp->get(url.path(), pFile);
@@ -512,7 +512,7 @@ void KvsObject_http::slotResponseHeaderReceived(const QHttpResponseHeader & r)
 	}
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant(szResponse));
-	callFunction(this, "responseHeaderReceivedEvent", 0, &lParams);
+	callFunction(this, "responseHeaderReceivedEvent", nullptr, &lParams);
 }
 void KvsObject_http::slotReadyRead(const QHttpResponseHeader & r)
 {
@@ -540,7 +540,7 @@ void KvsObject_http::slotReadyRead(const QHttpResponseHeader & r)
 	}
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant(szResponse));
-	callFunction(this, "readyreadEvent", 0, &lParams);
+	callFunction(this, "readyreadEvent", nullptr, &lParams);
 }
 
 void KvsObject_http::slotStateChanged(int state)
@@ -563,7 +563,7 @@ void KvsObject_http::slotStateChanged(int state)
 		szState = "Closing";
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant(szState));
-	callFunction(this, "stateChangedEvent", 0, &lParams);
+	callFunction(this, "stateChangedEvent", nullptr, &lParams);
 }
 bool KvsObject_http::functionStateChangedEvent(KviKvsObjectFunctionCall * c)
 {
@@ -581,7 +581,7 @@ bool KvsObject_http::functionIgnoreSslErrors(KviKvsObjectFunctionCall *)
 }
 void KvsObject_http::slotSslErrors(QList<QSslError> sslerrors)
 {
-	KviKvsArray * pArray = 0;
+	KviKvsArray * pArray = nullptr;
 	pArray = new KviKvsArray();
 	for(int i = 0; i < sslerrors.count(); i++)
 	{
@@ -589,7 +589,7 @@ void KvsObject_http::slotSslErrors(QList<QSslError> sslerrors)
 	}
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant(pArray));
-	callFunction(this, "sslErrorEvent", 0, &lParams);
+	callFunction(this, "sslErrorEvent", nullptr, &lParams);
 }
 
 bool KvsObject_http::functionSslErrorsEvent(KviKvsObjectFunctionCall * c)

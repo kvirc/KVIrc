@@ -39,7 +39,7 @@
 extern KviPointerList<SlowPasteController> * g_pControllerList;
 
 SlowPasteController::SlowPasteController(KviWindow * w, int id)
-    : m_pClipBuff(NULL), m_pFile(NULL), m_pId(id), m_pWindow(w)
+    : m_pClipBuff(nullptr), m_pFile(nullptr), m_pId(id), m_pWindow(w)
 {
 	g_pControllerList->append(this);
 	//m_pWindow = w;
@@ -73,7 +73,7 @@ bool SlowPasteController::pasteFileInit(QString & fileName)
 	if(!m_pFile->open(QIODevice::ReadOnly))
 		return false;
 	//avoid double connection
-	disconnect(m_pTimer, SIGNAL(timeout()), 0, 0);
+	disconnect(m_pTimer, SIGNAL(timeout()), nullptr, nullptr);
 	connect(m_pTimer, SIGNAL(timeout()), this, SLOT(pasteFile()));
 	//avoid timer reset if always active
 	if(!m_pTimer->isActive())
@@ -95,7 +95,7 @@ bool SlowPasteController::pasteClipboardInit(void)
 		m_pClipBuff = new QStringList(tmp.isEmpty() ? QStringList() : tmp.split("\n", QString::KeepEmptyParts));
 	}
 	//avoid double connection
-	disconnect(m_pTimer, SIGNAL(timeout()), 0, 0);
+	disconnect(m_pTimer, SIGNAL(timeout()), nullptr, nullptr);
 	connect(m_pTimer, SIGNAL(timeout()), this, SLOT(pasteClipboard()));
 	//avoid timer reset if always active
 	if(!m_pTimer->isActive())

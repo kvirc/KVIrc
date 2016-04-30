@@ -285,7 +285,7 @@ bool KviMessageCatalogue::load(const QString & szName)
 	KviMemory::free(pcBuffer);
 	f.close();
 
-	m_pTextCodec = 0;
+	m_pTextCodec = nullptr;
 
 	// find out the text encoding, if possible
 	if(szHeader.hasData())

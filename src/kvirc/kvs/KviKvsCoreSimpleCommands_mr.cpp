@@ -486,7 +486,7 @@ namespace KviKvsCoreSimpleCommands
 				QString szName = "openurl::handler";
 				KviKvsScript script(szName, szCommand);
 
-				if(!script.run(KVSCSC_pWindow, &vList, 0, KviKvsScript::PreserveParams))
+				if(!script.run(KVSCSC_pWindow, &vList, nullptr, KviKvsScript::PreserveParams))
 					KVSCSC_pContext->warning(__tr2qs_ctx("The commandline for this URL type seems to be broken (%Q)", "kvs"), &szUrl);
 			}
 			else
@@ -746,7 +746,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KviKvsScript s(szFileName, szBuffer);
 
-		KviKvsVariant * pRetVal = KVSCSC_pSwitches->find('r', "propagate-return") ? KVSCSC_pContext->returnValue() : 0;
+		KviKvsVariant * pRetVal = KVSCSC_pSwitches->find('r', "propagate-return") ? KVSCSC_pContext->returnValue() : nullptr;
 		KviKvsVariant vFileName(szFileName);
 		vList.prepend(&vFileName);
 
@@ -964,7 +964,7 @@ namespace KviKvsCoreSimpleCommands
 			szParams.append(QString::fromLatin1(" $%1 ").arg(i));
 
 		KviKvsScript s("popup", "popup.show " + szSwitches + szParams);
-		s.run(KVSCSC_pContext->window(), &lParameters, 0, KviKvsScript::PreserveParams);
+		s.run(KVSCSC_pContext->window(), &lParameters, nullptr, KviKvsScript::PreserveParams);
 		return true;
 	}
 

@@ -103,12 +103,12 @@ KviTopicWidget::KviTopicWidget(QWidget * par, KviChannelWindow * pChannel, const
 {
 	setObjectName(name);
 	m_pKviChannelWindow = pChannel;
-	m_pHistory = 0;
-	m_pAccept = 0;
-	m_pDiscard = 0;
-	m_pContextPopup = 0;
+	m_pHistory = nullptr;
+	m_pAccept = nullptr;
+	m_pDiscard = nullptr;
+	m_pContextPopup = nullptr;
 	m_iCursorPosition = 0;
-	m_pInput = 0;
+	m_pInput = nullptr;
 
 	m_pLabel = new KviThemedLabel(this, pChannel, "topic_label");
 	m_pLabel->setTextFormat(Qt::RichText);
@@ -448,7 +448,7 @@ void KviTopicWidget::switchMode()
 		}
 		w = w->parent();
 	}
-	if(m_pInput == 0)
+	if(m_pInput == nullptr)
 	{
 		m_pInput = new KviInputEditor(this, m_pKviChannelWindow);
 		m_pInput->setObjectName("topicw_inputeditor");
@@ -615,17 +615,17 @@ void KviTopicWidget::deactivate()
 	if(m_pInput)
 	{
 		m_pInput->deleteLater();
-		m_pInput = 0;
+		m_pInput = nullptr;
 		m_pHistory->deleteLater();
-		m_pHistory = 0;
+		m_pHistory = nullptr;
 		m_pAccept->deleteLater();
-		m_pAccept = 0;
+		m_pAccept = nullptr;
 		m_pDiscard->deleteLater();
-		m_pDiscard = 0;
+		m_pDiscard = nullptr;
 	}
 
 	m_pLabel->show();
-	resizeEvent(0);
+	resizeEvent(nullptr);
 	// try to find a KviWindow parent and give it the focus
 
 	m_pKviChannelWindow->setFocus();

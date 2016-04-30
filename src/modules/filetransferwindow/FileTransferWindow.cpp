@@ -86,7 +86,7 @@ FileTransferItem::FileTransferItem(FileTransferWidget * v, KviFileTransfer * t)
 
 FileTransferItem::~FileTransferItem()
 {
-	m_pTransfer->setDisplayItem(0);
+	m_pTransfer->setDisplayItem(nullptr);
 	delete col1Item;
 	delete col2Item;
 }
@@ -94,7 +94,7 @@ FileTransferItem::~FileTransferItem()
 void FileTransferItem::displayUpdate()
 {
 	//FIXME this hurts
-	int dummy = (int)time(NULL);
+	int dummy = (int)time(nullptr);
 	tableWidget()->model()->setData(tableWidget()->model()->index(row(), 0), dummy, Qt::DisplayRole);
 	tableWidget()->model()->setData(tableWidget()->model()->index(row(), 1), dummy, Qt::DisplayRole);
 	tableWidget()->model()->setData(tableWidget()->model()->index(row(), 2), dummy, Qt::DisplayRole);
@@ -254,7 +254,7 @@ FileTransferWindow::FileTransferWindow(
 	KviModuleExtensionDescriptor * d
 #endif
     )
-    : KviWindow(KviWindow::Tool, "file transfer window", 0)
+    : KviWindow(KviWindow::Tool, "file transfer window", nullptr)
 #if 0
 	, KviModuleExtension(d)
 #endif
@@ -262,9 +262,9 @@ FileTransferWindow::FileTransferWindow(
 	g_pFileTransferWindow = this;
 	setAutoFillBackground(false);
 
-	m_pContextPopup = 0;
-	m_pLocalFilePopup = 0;
-	m_pOpenFilePopup = 0;
+	m_pContextPopup = nullptr;
+	m_pLocalFilePopup = nullptr;
+	m_pOpenFilePopup = nullptr;
 
 	m_pTimer = new QTimer(this);
 	connect(m_pTimer, SIGNAL(timeout()), this, SLOT(heartbeat()));
@@ -311,8 +311,8 @@ FileTransferWindow::FileTransferWindow(
 
 FileTransferWindow::~FileTransferWindow()
 {
-	KviFileTransferManager::instance()->setTransferWindow(0);
-	g_pFileTransferWindow = 0;
+	KviFileTransferManager::instance()->setTransferWindow(nullptr);
+	g_pFileTransferWindow = nullptr;
 }
 
 bool FileTransferWindow::eventFilter(QObject * obj, QEvent * ev)
@@ -375,7 +375,7 @@ FileTransferItem * FileTransferWindow::findItem(KviFileTransfer * t)
 		if(it->transfer() == t)
 			return it;
 	}
-	return 0;
+	return nullptr;
 }
 
 void FileTransferWindow::transferRegistered(KviFileTransfer * t)
@@ -391,7 +391,7 @@ void FileTransferWindow::transferUnregistering(KviFileTransfer * t)
 	if(it)
 	{
 		delete it;
-		it = 0;
+		it = nullptr;
 	}
 }
 
@@ -545,10 +545,10 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 KviFileTransfer * FileTransferWindow::selectedTransfer()
 {
 	if(m_pTableWidget->selectedItems().count() == 0)
-		return 0;
+		return nullptr;
 	FileTransferItem * it = (FileTransferItem *)m_pTableWidget->selectedItems().first();
 	if(!it)
-		return 0;
+		return nullptr;
 	FileTransferItem * i = (FileTransferItem *)it;
 	return i->transfer();
 }
@@ -781,7 +781,7 @@ void FileTransferWindow::heartbeat()
 	int i;
 	QModelIndex index;
 	FileTransferItem * it;
-	int dummy = (int)time(NULL);
+	int dummy = (int)time(nullptr);
 
 	for(i = 0; i <= m_pTableWidget->rowCount(); i++)
 	{

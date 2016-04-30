@@ -138,7 +138,7 @@ KviConsoleWindow::KviConsoleWindow(int iFlags)
 	m_pNotifyViewButton = new KviWindowToolPageButton(KviIconManager::HideListView, KviIconManager::ShowListView, __tr2qs("Notify list"), buttonContainer(), true);
 	connect(m_pNotifyViewButton, SIGNAL(clicked()), this, SLOT(toggleNotifyView()));
 
-	m_pNotifyListView = new KviUserListView(m_pSplitter, m_pNotifyViewButton, 0, this, 19, __tr2qs("Notify list"), "notify_list_view");
+	m_pNotifyListView = new KviUserListView(m_pSplitter, m_pNotifyViewButton, nullptr, this, 19, __tr2qs("Notify list"), "notify_list_view");
 
 	m_pInput = new KviInput(this, m_pNotifyListView);
 
@@ -178,7 +178,7 @@ void KviConsoleWindow::recentUrlsChanged()
 
 bool KviConsoleWindow::connectionInProgress()
 {
-	if(context()->asynchronousConnectionData() != 0)
+	if(context()->asynchronousConnectionData() != nullptr)
 		return true;
 	if(context()->state() != KviIrcContext::Idle)
 		return true;
@@ -197,7 +197,7 @@ KviConsoleWindow::~KviConsoleWindow()
 	//if(m_pLastIrcServer)delete m_pLastIrcServer;
 
 	delete m_pContext;
-	m_pContext = 0;
+	m_pContext = nullptr;
 
 	delete m_pTmpHighLightedChannels;
 }
@@ -507,7 +507,7 @@ void KviConsoleWindow::connectionDetached()
 {
 	//need to update URI?
 	m_pNotifyListView->partAll();
-	m_pNotifyListView->setUserDataBase(0); // this is rather for crash tests
+	m_pNotifyListView->setUserDataBase(nullptr); // this is rather for crash tests
 }
 
 void KviConsoleWindow::closeEvent(QCloseEvent * e)
@@ -588,7 +588,7 @@ int KviConsoleWindow::triggerOnHighlight(KviWindow * pWnd, int iType, const QStr
 			return iType;
 	}
 	if(!KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound).isEmpty() && pWnd && !pWnd->hasAttention())
-		KviKvsScript::run("snd.play $0", 0, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound))));
+		KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound))));
 
 	QString szMessageType = QString("%1").arg(iType);
 
@@ -1027,7 +1027,7 @@ void KviConsoleWindow::resetAvatarForMatchingUsers(KviRegisteredUser * u)
 KviAvatar * KviConsoleWindow::setAvatar(const QString & nick, const QString & user, const QString & host, const QString & szLocalPath, const QString & szName)
 {
 	if(!connection())
-		return 0;
+		return nullptr;
 	KviIrcUserEntry * e = connection()->userDataBase()->find(nick);
 	if(e)
 	{
@@ -1035,13 +1035,13 @@ KviAvatar * KviConsoleWindow::setAvatar(const QString & nick, const QString & us
 		if((!user.isEmpty()) && e->hasUser())
 		{
 			if(!KviQString::equalCI(user, e->user()))
-				return 0;
+				return nullptr;
 		}
 
 		if((!host.isEmpty()) && e->hasHost())
 		{
 			if(!KviQString::equalCI(host, e->host()))
-				return 0;
+				return nullptr;
 		}
 
 		// Ok...got it
@@ -1058,7 +1058,7 @@ KviAvatar * KviConsoleWindow::setAvatar(const QString & nick, const QString & us
 				output(KVI_OUT_VERBOSE, __tr2qs("Failed to load avatar with name \"%Q\" and local path \"%Q\""), &szName, &szLocalPath);
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 KviAvatar * KviConsoleWindow::defaultAvatarFromOptions()
@@ -1066,13 +1066,13 @@ KviAvatar * KviConsoleWindow::defaultAvatarFromOptions()
 	QPixmap * avatar = KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar).pixmap();
 
 	if(!avatar)
-		return 0;
+		return nullptr;
 
 	if(avatar->isNull())
-		return 0;
+		return nullptr;
 
 	if(KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty())
-		return 0;
+		return nullptr;
 
 	KviAvatar * loadedAvatar = new KviAvatar(KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar).path(), KVI_OPTION_STRING(KviOption_stringMyAvatar));
 
@@ -1080,18 +1080,18 @@ KviAvatar * KviConsoleWindow::defaultAvatarFromOptions()
 		return loadedAvatar;
 
 	delete loadedAvatar;
-	return 0;
+	return nullptr;
 }
 
 KviAvatar * KviConsoleWindow::currentAvatar()
 {
 	if(!connection())
-		return 0;
+		return nullptr;
 
 	KviIrcUserEntry * e = connection()->userDataBase()->find(connection()->userInfo()->nickName());
 
 	if(!e)
-		return 0;
+		return nullptr;
 
 	KviAvatar * a = e->avatar();
 

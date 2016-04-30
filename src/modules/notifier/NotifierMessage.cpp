@@ -34,8 +34,8 @@
 
 NotifierMessage::NotifierMessage(QPixmap * pPixmap, const QString & szText)
 {
-	m_pLabel0 = 0;
-	m_pLabel1 = 0;
+	m_pLabel0 = nullptr;
+	m_pLabel1 = nullptr;
 
 	m_szText = szText;
 	m_pPixmap = pPixmap;
@@ -80,7 +80,7 @@ void NotifierMessage::updateGui()
 	}
 	else
 	{
-		m_pLabel0 = 0;
+		m_pLabel0 = nullptr;
 	}
 
 	m_pLabel1 = new QLabel(this);

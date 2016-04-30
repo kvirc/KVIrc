@@ -54,7 +54,7 @@ static const char * xmms_lib_names[] = {
 	"/usr/lib/libxmms.so.1",
 	"/usr/local/lib/libxmms.so",
 	"/usr/local/lib/libxmms.so.1",
-	0
+	nullptr
 };
 
 static const char * audacious_lib_names[] = {
@@ -64,13 +64,13 @@ static const char * audacious_lib_names[] = {
 	"/usr/lib/libaudacious.so.4",
 	"/usr/local/lib/libaudacious.so",
 	"/usr/local/lib/libaudacious.so.4",
-	0
+	nullptr
 };
 
 KviXmmsInterface::KviXmmsInterface()
     : MpInterface()
 {
-	m_pPlayerLibrary = 0;
+	m_pPlayerLibrary = nullptr;
 	m_szPlayerLibraryName = "libxmms.so";
 	m_pLibraryPaths = xmms_lib_names;
 }
@@ -81,7 +81,7 @@ KviXmmsInterface::~KviXmmsInterface()
 	{
 		m_pPlayerLibrary->unload();
 		delete m_pPlayerLibrary;
-		m_pPlayerLibrary = 0;
+		m_pPlayerLibrary = nullptr;
 	}
 }
 
@@ -111,7 +111,7 @@ bool KviXmmsInterface::loadPlayerLibrary()
 			return true;
 		}
 		delete m_pPlayerLibrary;
-		m_pPlayerLibrary = 0;
+		m_pPlayerLibrary = nullptr;
 		lib_name++;
 	}
 	return false;
@@ -125,7 +125,7 @@ void * KviXmmsInterface::lookupSymbol(const char * szSymbolName)
 		{
 			QString szTmp = QString(__tr2qs_ctx("Can't load the player library (%1)", "mediaplayer")).arg(m_szPlayerLibraryName);
 			setLastError(szTmp);
-			return 0;
+			return nullptr;
 		}
 	}
 	void * symptr = (void *)m_pPlayerLibrary->resolve(szSymbolName);

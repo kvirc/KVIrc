@@ -394,7 +394,7 @@ static bool my_kvs_fnc_network(KviKvsModuleFunctionCall * c)
 
 static bool my_module_init(KviModule * m)
 {
-	g_pIdle = 0;
+	g_pIdle = nullptr;
 	KVSM_REGISTER_FUNCTION(m, "nick", my_kvs_fnc_nick);
 	KVSM_REGISTER_FUNCTION(m, "user", my_kvs_fnc_user);
 	KVSM_REGISTER_FUNCTION(m, "host", my_kvs_fnc_host);
@@ -415,7 +415,7 @@ static bool my_module_cleanup(KviModule *)
 {
 	if(g_pIdle)
 		delete g_pIdle;
-	g_pIdle = 0;
+	g_pIdle = nullptr;
 	return true;
 }
 

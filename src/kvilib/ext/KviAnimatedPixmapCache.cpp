@@ -30,8 +30,8 @@
 
 #define FRAME_DELAY 100
 
-KviAnimatedPixmapCache * KviAnimatedPixmapCache::m_pInstance = NULL;
-static QPixmap * g_pDummyPixmap = NULL;
+KviAnimatedPixmapCache * KviAnimatedPixmapCache::m_pInstance = nullptr;
+static QPixmap * g_pDummyPixmap = nullptr;
 
 KviAnimatedPixmapCache::KviAnimatedPixmapCache()
 {
@@ -45,9 +45,9 @@ KviAnimatedPixmapCache::~KviAnimatedPixmapCache()
 	if(g_pDummyPixmap)
 	{
 		delete g_pDummyPixmap;
-		g_pDummyPixmap = NULL;
+		g_pDummyPixmap = nullptr;
 	}
-	m_pInstance = NULL;
+	m_pInstance = nullptr;
 }
 
 void KviAnimatedPixmapCache::init()
@@ -62,13 +62,13 @@ void KviAnimatedPixmapCache::done()
 	if(!m_pInstance)
 		return;
 	delete m_pInstance;
-	m_pInstance = NULL;
+	m_pInstance = nullptr;
 }
 
 KviAnimatedPixmapCache::Data * KviAnimatedPixmapCache::internalLoad(const QString & szFile, int iWidth, int iHeight)
 {
 	m_cacheMutex.lock();
-	Data * newData = 0;
+	Data * newData = nullptr;
 
 	QMultiHash<QString, Data *>::iterator i = m_hCache.find(szFile);
 	while(i != m_hCache.end() && i.key() == szFile && !newData)
@@ -114,7 +114,7 @@ KviAnimatedPixmapCache::Data * KviAnimatedPixmapCache::internalResize(Data * dat
 
 	bool hasToBeResized = false;
 
-	Data * newData = 0;
+	Data * newData = nullptr;
 	QMultiHash<QString, Data *>::iterator i = m_hCache.find(data->file);
 	while(i != m_hCache.end() && i.key() == data->file && !newData)
 	{

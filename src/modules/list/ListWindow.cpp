@@ -176,7 +176,7 @@ ListWindow::ListWindow(KviConsoleWindow * lpConsole)
 {
 	g_pListWindowList->append(this);
 
-	m_pFlushTimer = 0;
+	m_pFlushTimer = nullptr;
 
 	m_pItemList = new KviPointerList<ChannelTreeWidgetItemData>;
 	m_pItemList->setAutoDelete(false);
@@ -270,7 +270,7 @@ ListWindow::ListWindow(KviConsoleWindow * lpConsole)
 ListWindow::~ListWindow()
 {
 	g_pListWindowList->removeRef(this);
-	m_pConsole->context()->setListWindowPointer(0);
+	m_pConsole->context()->setListWindowPointer(nullptr);
 
 	if(m_pFlushTimer)
 		delete m_pFlushTimer;
@@ -366,7 +366,7 @@ void ListWindow::exportList()
 {
 	if(!m_pTreeWidget->topLevelItemCount())
 	{
-		QMessageBox::warning(0, __tr2qs("Warning While Exporting - KVIrc"), __tr2qs("You can't export an empty list!"));
+		QMessageBox::warning(nullptr, __tr2qs("Warning While Exporting - KVIrc"), __tr2qs("You can't export an empty list!"));
 		return;
 	}
 
@@ -472,7 +472,7 @@ void ListWindow::endOfList()
 	if(m_pFlushTimer)
 	{
 		delete m_pFlushTimer;
-		m_pFlushTimer = 0;
+		m_pFlushTimer = nullptr;
 	}
 	m_pRequestButton->setEnabled(true);
 	outputNoFmt(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Channels list download finished"));
@@ -494,7 +494,7 @@ void ListWindow::liveSearch(const QString & szText)
 {
 	QRegExp res(szText, Qt::CaseInsensitive, QRegExp::Wildcard);
 
-	ChannelTreeWidgetItem * pItem = 0;
+	ChannelTreeWidgetItem * pItem = nullptr;
 	for(int i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
 	{
 		pItem = (ChannelTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);

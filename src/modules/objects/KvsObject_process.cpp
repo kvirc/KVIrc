@@ -308,12 +308,12 @@ KVSO_CLASS_FUNCTION(process, normalExit)
 
 void KvsObject_process::slotReadStdout()
 {
-	KviKvsVariantList * params = 0;
+	KviKvsVariantList * params = nullptr;
 	callFunction(this, "readyReadStdoutEvent", params);
 }
 
 void KvsObject_process::slotReadStderr()
 {
-	KviKvsVariantList * params = 0;
+	KviKvsVariantList * params = nullptr;
 	callFunction(this, "readyReadStderrEvent", params);
 }

@@ -46,7 +46,7 @@ namespace KviMessageBox
 		KviQString::vsprintf(s, fmt, list);
 		kvi_va_end(list);
 #ifdef COMPILE_KDE_SUPPORT
-		KMessageBox::error(0, s, "KVIrc");
+		KMessageBox::error(nullptr, s, "KVIrc");
 #else
 		QMessageBox::warning(0, "KVIrc", s);
 #endif
@@ -60,7 +60,7 @@ namespace KviMessageBox
 		KviQString::vsprintf(s, fmt, list);
 		kvi_va_end(list);
 #ifdef COMPILE_KDE_SUPPORT
-		KMessageBox::information(0, s, "KVIrc");
+		KMessageBox::information(nullptr, s, "KVIrc");
 #else
 		QMessageBox::information(0, "KVIrc", s);
 #endif
@@ -75,7 +75,7 @@ namespace KviMessageBox
 		kvi_va_end(list);
 		bool bRet;
 #ifdef COMPILE_KDE_SUPPORT
-		bRet = (KMessageBox::questionYesNo(0, s, caption) == KMessageBox::Yes);
+		bRet = (KMessageBox::questionYesNo(nullptr, s, caption) == KMessageBox::Yes);
 #else
 		bRet = (QMessageBox::information(0, caption, s,
 		            QMessageBox::Yes | QMessageBox::Default,

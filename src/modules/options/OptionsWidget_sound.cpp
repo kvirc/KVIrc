@@ -197,7 +197,7 @@ void OptionsWidget_soundGeneral::soundAutoDetect()
 
 	g_pApp->setOverrideCursor(Qt::WaitCursor);
 
-	m->ctrl("detectSoundSystem", 0);
+	m->ctrl("detectSoundSystem", nullptr);
 	soundFillBox();
 
 	g_pApp->restoreOverrideCursor();
@@ -211,7 +211,7 @@ void OptionsWidget_soundGeneral::mediaAutoDetect()
 
 	g_pApp->setOverrideCursor(Qt::WaitCursor);
 
-	m->ctrl("detectMediaPlayer", 0);
+	m->ctrl("detectMediaPlayer", nullptr);
 	mediaFillBox();
 
 	g_pApp->restoreOverrideCursor();

@@ -28,7 +28,7 @@
 #include "KviConfigurationFile.h"
 #include "KviCString.h"
 
-KviInputHistory * KviInputHistory::m_pSelf = NULL;
+KviInputHistory * KviInputHistory::m_pSelf = nullptr;
 unsigned int KviInputHistory::m_uCount = 0;
 
 KviInputHistory::KviInputHistory()

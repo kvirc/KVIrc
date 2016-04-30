@@ -52,7 +52,7 @@
 #include <QDir>
 #include <QLibrary>
 
-static QLibrary * g_pSetupLibrary = 0;
+static QLibrary * g_pSetupLibrary = nullptr;
 
 //
 // Things launched at startup:
@@ -830,7 +830,7 @@ void KviApplication::setupFinish()
 
 	g_pSetupLibrary->unload();
 	delete g_pSetupLibrary;
-	g_pSetupLibrary = 0;
+	g_pSetupLibrary = nullptr;
 }
 
 void KviApplication::saveKvircDirectory()
@@ -851,7 +851,7 @@ void KviApplication::saveKvircDirectory()
 				pCfgMainGroup->writeEntry("SourcesDate", KVI_SOURCES_DATE_NUMERIC);
 				pCfg->sync();
 				delete pCfgMainGroup;
-				pCfgMainGroup = 0;
+				pCfgMainGroup = nullptr;
 				return;
 			}
 		}

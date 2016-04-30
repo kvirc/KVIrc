@@ -61,7 +61,7 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 	setWindowTitle(__tr2qs("Join Channels - KVIrc"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Channel)));
 
-	m_pConsole = 0;
+	m_pConsole = nullptr;
 
 	QGridLayout * g = new QGridLayout(this);
 
@@ -152,7 +152,7 @@ ChannelsJoinDialog::~ChannelsJoinDialog()
 	KVI_OPTION_BOOL(KviOption_boolShowChannelsJoinOnIrc) = m_pShowAtStartupCheck->isChecked();
 
 	g_rectChannelsJoinGeometry = QRect(pos().x(), pos().y(), size().width(), size().height());
-	g_pChannelsWindow = 0;
+	g_pChannelsWindow = nullptr;
 }
 
 void ChannelsJoinDialog::setConsole(KviConsoleWindow * pConsole)

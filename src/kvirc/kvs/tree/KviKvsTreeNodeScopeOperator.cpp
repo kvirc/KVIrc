@@ -89,20 +89,20 @@ KviKvsObject * KviKvsTreeNodeScopeOperator::objectFromVariant(KviKvsRunTimeConte
 	if(!v->asHObject(hObject))
 	{
 		c->error(this, __tr2qs_ctx("The left side of the scope operator didn't evaluate as an object reference", "kvs"));
-		return 0;
+		return nullptr;
 	}
 
-	if(hObject == (kvs_hobject_t)0)
+	if(hObject == (kvs_hobject_t) nullptr)
 	{
 		c->error(this, __tr2qs_ctx("The left side of the scope operator evaluated to a null object reference", "kvs"));
-		return 0;
+		return nullptr;
 	}
 
 	KviKvsObject * o = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!o)
 	{
 		c->error(this, __tr2qs_ctx("The left side of the scope operator evaluated to an invalid object reference (object doesn't exist)", "kvs"));
-		return 0;
+		return nullptr;
 	}
 	return o;
 }
@@ -122,10 +122,10 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeScopeOperator::evaluateReadWrite(KviKvs
 {
 	KviKvsVariant ret;
 	if(!m_pObjectReference->evaluateReadOnly(c, &ret))
-		return 0;
+		return nullptr;
 	KviKvsObject * o = objectFromVariant(c, &ret);
 	if(!o)
-		return 0;
+		return nullptr;
 	return m_pRightSide->evaluateReadWriteInObjectScope(o, c);
 }
 
@@ -144,9 +144,9 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeScopeOperator::evaluateReadWriteInObjec
 {
 	KviKvsVariant ret;
 	if(!m_pObjectReference->evaluateReadOnlyInObjectScope(o, c, &ret))
-		return 0;
+		return nullptr;
 	KviKvsObject * pObject = objectFromVariant(c, &ret);
 	if(!pObject)
-		return 0;
+		return nullptr;
 	return m_pRightSide->evaluateReadWriteInObjectScope(pObject, c);
 }

@@ -928,14 +928,14 @@ static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 		" ", "#", "$", "/", ":",
 		"<", "=", ">", "?", "@",
 		"[", "\\", "]", "^", "`",
-		"{", "|", "}", 0
+		"{", "|", "}", nullptr
 	};
 
 	const char * const newStr[] = {
 		"%20", "%23", "%24", "%2F", "%3A",
 		"%3C", "%3D", "%3E", "%3F", "%40",
 		"%5B", "%5C", "%5D", "%5E", "%60",
-		"%7B", "%7C", "%7D", 0
+		"%7B", "%7C", "%7D", nullptr
 	};
 
 	while(toReplace[idx])
@@ -1409,7 +1409,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	}
 
 	EVP_MD_CTX_init(&mdctx);
-	EVP_DigestInit_ex(&mdctx, md, NULL);
+	EVP_DigestInit_ex(&mdctx, md, nullptr);
 	EVP_DigestUpdate(&mdctx, szString.toUtf8().data(), szString.toUtf8().length());
 	EVP_DigestFinal_ex(&mdctx, md_value, &md_len);
 	EVP_MD_CTX_cleanup(&mdctx);
@@ -2285,9 +2285,9 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 
 	KviSSL::globalSSLInit();
 	EVP_MD_CTX md_ctx;
-	EVP_PKEY * pKey = 0;
+	EVP_PKEY * pKey = nullptr;
 	unsigned int len = 0;
-	unsigned char * sig = 0;
+	unsigned char * sig = nullptr;
 
 	if(szCert.isEmpty())
 	{
@@ -2308,7 +2308,7 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 		}
 
 		szPass = KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPass).toUtf8();
-		PEM_read_PrivateKey(f, &pKey, NULL, szPass.data());
+		PEM_read_PrivateKey(f, &pKey, nullptr, szPass.data());
 
 		fclose(f);
 
@@ -2324,7 +2324,7 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 		// get from parameter (with optional password)
 		BIO * in;
 		in = BIO_new_mem_buf((unsigned char *)szCert.data(), szCert.size());
-		PEM_read_bio_PrivateKey(in, &pKey, NULL, szPass.data());
+		PEM_read_bio_PrivateKey(in, &pKey, nullptr, szPass.data());
 		BIO_free(in);
 
 		if(!pKey)
@@ -2422,8 +2422,8 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 	const char * message = szMessage.data();
 
 	EVP_MD_CTX md_ctx;
-	EVP_PKEY * pKey = 0;
-	X509 * cert = 0;
+	EVP_PKEY * pKey = nullptr;
+	X509 * cert = nullptr;
 	int err = -1;
 
 	if(szCert.isEmpty())
@@ -2445,7 +2445,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 		}
 
 		szPass = KVI_OPTION_STRING(KviOption_stringSSLCertificatePass).toUtf8();
-		PEM_read_X509(f, &cert, NULL, szPass.data());
+		PEM_read_X509(f, &cert, nullptr, szPass.data());
 
 		fclose(f);
 
@@ -2466,7 +2466,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 	{
 		// get from parameter (with optional password)
 		BIO * in = BIO_new_mem_buf((unsigned char *)szCert.data(), szCert.size());
-		PEM_read_bio_X509(in, &cert, 0, szPass.data());
+		PEM_read_bio_X509(in, &cert, nullptr, szPass.data());
 
 		if(cert)
 		{
@@ -2475,7 +2475,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 		}
 		else
 		{
-			pKey = PEM_read_bio_PUBKEY(in, NULL, 0, szPass.data());
+			pKey = PEM_read_bio_PUBKEY(in, nullptr, nullptr, szPass.data());
 		}
 
 		BIO_free(in);

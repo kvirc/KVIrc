@@ -52,7 +52,7 @@ namespace UPnP
 
 	SsdpConnection::~SsdpConnection()
 	{
-		if(m_pSocket != 0)
+		if(m_pSocket != nullptr)
 		{
 			m_pSocket->close();
 			delete m_pSocket;

@@ -65,9 +65,9 @@ KviStatusBar::KviStatusBar(KviMainWindow * pFrame)
 	setSizeGripEnabled(false);
 	setAcceptDrops(true);
 
-	m_pContextPopup = 0;
-	m_pAppletsPopup = 0;
-	m_pClickedApplet = 0;
+	m_pContextPopup = nullptr;
+	m_pAppletsPopup = nullptr;
+	m_pClickedApplet = nullptr;
 
 	m_pAppletDescriptors = new KviPointerHashTable<QString, KviStatusBarAppletDescriptor>;
 	m_pAppletDescriptors->setAutoDelete(true);
@@ -85,7 +85,7 @@ KviStatusBar::KviStatusBar(KviMainWindow * pFrame)
 	m_pMessageQueue = new KviPointerList<KviStatusBarMessage>;
 	m_pMessageQueue->setAutoDelete(true);
 
-	m_pMessageTimer = 0;
+	m_pMessageTimer = nullptr;
 
 	m_pMessageLabel = new QLabel("<b>[x]</b> x", this);
 	m_pMessageLabel->setObjectName("msgstatuslabel");
@@ -109,7 +109,7 @@ KviStatusBar::KviStatusBar(KviMainWindow * pFrame)
 void KviStatusBar::dropEvent(QDropEvent * de)
 {
 	de->accept();
-	m_pClickedApplet = 0;
+	m_pClickedApplet = nullptr;
 }
 
 void KviStatusBar::dragEnterEvent(QDragEnterEvent * event)
@@ -120,7 +120,7 @@ void KviStatusBar::dragEnterEvent(QDragEnterEvent * event)
 void KviStatusBar::dragMoveEvent(QDragMoveEvent * de)
 {
 	// Unpack dropped data and handle it the way you want
-	if(de->mimeData()->hasFormat("kvirc/statusbarapplet") && de->source() != 0 && m_pClickedApplet && appletExists(m_pClickedApplet))
+	if(de->mimeData()->hasFormat("kvirc/statusbarapplet") && de->source() != nullptr && m_pClickedApplet && appletExists(m_pClickedApplet))
 	{
 		KviStatusBarApplet * pApplet = m_pAppletList->last();
 		int oldIndex = m_pClickedApplet->index();
@@ -303,7 +303,7 @@ KviStatusBarApplet * KviStatusBar::appletAt(const QPoint & pnt, bool bBestMatch)
 			}
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 void KviStatusBar::tipRequest(QHelpEvent * e)
@@ -404,7 +404,7 @@ void KviStatusBar::removeClickedApplet()
 		return;
 
 	delete m_pClickedApplet;
-	m_pClickedApplet = 0;
+	m_pClickedApplet = nullptr;
 }
 
 void KviStatusBar::appletsPopupAboutToShow()
@@ -417,7 +417,7 @@ void KviStatusBar::appletsPopupAboutToShow()
 	// FIXME: could we cache the module results in some way ?
 	g_pModuleManager->loadModulesByCaps("statusbarapplet");
 
-	QAction * pAction = 0;
+	QAction * pAction = nullptr;
 	KviPointerHashTableIterator<QString, KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
 	while(KviStatusBarAppletDescriptor * d = it.current())
 	{
@@ -435,7 +435,7 @@ KviStatusBarApplet * KviStatusBar::createApplet(const QString & szInternalName)
 {
 	KviStatusBarAppletDescriptor * d = m_pAppletDescriptors->find(szInternalName);
 	if(!d)
-		return 0;
+		return nullptr;
 
 	return d->create(this);
 }
@@ -514,7 +514,7 @@ int KviStatusBar::insertPermanentWidgetAtTheEnd(QWidget * widget, int stretch)
 
 void KviStatusBar::mousePressEvent(QMouseEvent * e)
 {
-	m_pClickedApplet = 0;
+	m_pClickedApplet = nullptr;
 	if((e->button() == Qt::LeftButton) && (e->modifiers() & (Qt::ShiftModifier | Qt::ControlModifier)))
 	{
 		// move!
@@ -637,7 +637,7 @@ void KviStatusBar::messageTimerFired()
 	}
 	// nothing else to show
 	delete m_pMessageTimer;
-	m_pMessageTimer = 0;
+	m_pMessageTimer = nullptr;
 
 	setPermanentMessage();
 }
@@ -650,7 +650,7 @@ void KviStatusBar::showFirstMessageInQueue()
 		if(m_pMessageTimer)
 		{
 			delete m_pMessageTimer;
-			m_pMessageTimer = 0;
+			m_pMessageTimer = nullptr;
 		}
 		return;
 	}

@@ -60,7 +60,7 @@ extern AliasEditorWindow * g_pAliasEditorWindow;
 extern KviModule * g_pAliasEditorModule;
 
 AliasEditorTreeWidgetItem::AliasEditorTreeWidgetItem(QTreeWidget * pTreeWidget, Type eType, const QString & szName)
-    : QTreeWidgetItem(pTreeWidget), KviHeapObject(), m_eType(eType), m_pParentItem(0)
+    : QTreeWidgetItem(pTreeWidget), KviHeapObject(), m_eType(eType), m_pParentItem(nullptr)
 {
 	setName(szName);
 	m_cPos = 0;
@@ -120,8 +120,8 @@ AliasEditorWidget::AliasEditorWidget(QWidget * par)
 	m_pAliases->setAutoDelete(false);
 
 	m_bSaving = false;
-	m_pLastEditedItem = 0;
-	m_pLastClickedItem = 0;
+	m_pLastEditedItem = nullptr;
+	m_pLastClickedItem = nullptr;
 	m_szDir = QDir::homePath();
 
 	QGridLayout * l = new QGridLayout(this);
@@ -156,7 +156,7 @@ AliasEditorWidget::AliasEditorWidget(QWidget * par)
 
 	oneTimeSetup();
 
-	currentItemChanged(0, 0);
+	currentItemChanged(nullptr, nullptr);
 }
 
 AliasEditorWidget::~AliasEditorWidget()
@@ -206,24 +206,24 @@ QString AliasEditorWidget::buildFullItemName(AliasEditorTreeWidgetItem * it)
 //FIXME this should be called something like "findNamespace"
 AliasEditorTreeWidgetItem * AliasEditorWidget::findTopLevelItem(const QString & szName)
 {
-	AliasEditorTreeWidgetItem * pItem = 0;
+	AliasEditorTreeWidgetItem * pItem = nullptr;
 	for(int i = 0; i < m_pTreeWidget->topLevelItemCount(); i++)
 	{
 		pItem = (AliasEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		if(pItem->text(0) == szName && pItem->isNamespace())
 			return (AliasEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 	}
-	return 0;
+	return nullptr;
 }
 
 AliasEditorTreeWidgetItem * AliasEditorWidget::findItem(const QString & szFullName)
 {
 	QStringList lNamespaces = szFullName.split("::");
 	if(!lNamespaces.count())
-		return 0;
+		return nullptr;
 	AliasEditorTreeWidgetItem * pItem = findTopLevelItem(lNamespaces.at(0));
 	if(!pItem)
-		return 0;
+		return nullptr;
 	bool bFound;
 	int i;
 	int j;
@@ -240,7 +240,7 @@ AliasEditorTreeWidgetItem * AliasEditorWidget::findItem(const QString & szFullNa
 			}
 		}
 		if(!bFound)
-			return 0;
+			return nullptr;
 	}
 	return (AliasEditorTreeWidgetItem *)pItem;
 }
@@ -249,7 +249,7 @@ AliasEditorTreeWidgetItem * AliasEditorWidget::createFullItem(const QString & sz
 {
 	QStringList lNamespaces = szFullName.split("::");
 	if(!lNamespaces.count())
-		return 0;
+		return nullptr;
 	if(lNamespaces.count() == 1)
 		return new AliasEditorTreeWidgetItem(m_pTreeWidget, AliasEditorTreeWidgetItem::Alias, lNamespaces.at(0));
 	AliasEditorTreeWidgetItem * pItem = findTopLevelItem(lNamespaces.at(0));
@@ -305,7 +305,7 @@ void AliasEditorWidget::aliasRefresh(const QString & szName)
 {
 	if(m_bSaving)
 		return;
-	AliasEditorTreeWidgetItem * item = 0;
+	AliasEditorTreeWidgetItem * item = nullptr;
 	KviKvsScript * alias = KviKvsAliasManager::instance()->aliasDict()->find(szName);
 
 	// search for old alias with same name
@@ -332,7 +332,7 @@ void AliasEditorWidget::aliasRefresh(const QString & szName)
 		return;
 	}
 	if(
-	    QMessageBox::warning(0, __tr2qs_ctx("Confirm Overwriting Current - KVIrc", "editor"),
+	    QMessageBox::warning(nullptr, __tr2qs_ctx("Confirm Overwriting Current - KVIrc", "editor"),
 	        __tr2qs_ctx("An external script has changed the alias you are currently editing. Do you want to accept the external changes?", "editor"),
 	        QMessageBox::Yes, QMessageBox::No | QMessageBox::Default | QMessageBox::Escape)
 	    != QMessageBox::Yes)
@@ -493,8 +493,8 @@ void AliasEditorWidget::renameItem()
 	bool bYesToAll = true;
 	removeItem(m_pLastEditedItem, &bYesToAll, true);
 
-	m_pLastEditedItem = 0;  // make sure it's true (but it already should be because of removeItem())
-	m_pLastClickedItem = 0; // make sure it's true (but it already should be because of removeItem())
+	m_pLastEditedItem = nullptr;  // make sure it's true (but it already should be because of removeItem())
+	m_pLastClickedItem = nullptr; // make sure it's true (but it already should be because of removeItem())
 	AliasEditorTreeWidgetItem * pItem = createFullItem(szNewName);
 	if(bAlias)
 	{
@@ -1000,9 +1000,9 @@ bool AliasEditorWidget::removeItem(AliasEditorTreeWidgetItem * it, bool * pbYesT
 	}
 
 	if(it == m_pLastEditedItem)
-		m_pLastEditedItem = 0;
+		m_pLastEditedItem = nullptr;
 	if(it == m_pLastClickedItem)
-		m_pLastClickedItem = 0;
+		m_pLastClickedItem = nullptr;
 	if(it->childCount())
 		removeItemChildren(it);
 	delete it;
@@ -1197,7 +1197,7 @@ void AliasEditorWidget::newItem(QString & szName, AliasEditorTreeWidgetItem::Typ
 {
 	if(m_pLastClickedItem)
 		if(!itemExists(m_pLastClickedItem))
-			m_pLastClickedItem = 0;
+			m_pLastClickedItem = nullptr;
 	if(m_pLastClickedItem)
 		buildFullItemPath(m_pLastClickedItem, szName);
 	int idx = 1;
@@ -1237,7 +1237,7 @@ void AliasEditorWidget::commit()
 }
 
 AliasEditorWindow::AliasEditorWindow()
-    : KviWindow(KviWindow::ScriptEditor, "aliaseditor", 0)
+    : KviWindow(KviWindow::ScriptEditor, "aliaseditor", nullptr)
 {
 	g_pAliasEditorWindow = this;
 
@@ -1270,7 +1270,7 @@ AliasEditorWindow::AliasEditorWindow()
 
 AliasEditorWindow::~AliasEditorWindow()
 {
-	g_pAliasEditorWindow = 0;
+	g_pAliasEditorWindow = nullptr;
 }
 
 void AliasEditorWindow::okClicked()

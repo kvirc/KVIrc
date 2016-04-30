@@ -36,7 +36,7 @@
 #include <QDir>
 #include <QLibrary>
 
-KviModuleManager * g_pModuleManager = 0;
+KviModuleManager * g_pModuleManager = nullptr;
 
 KviModuleManager::KviModuleManager()
 {
@@ -147,7 +147,7 @@ KviModule * KviModuleManager::getModule(const QString & modName)
 	if(!m)
 	{
 		if(!loadModule(modName))
-			return 0;
+			return nullptr;
 		m = m_pModuleDict->find(modName);
 	}
 	if(m)

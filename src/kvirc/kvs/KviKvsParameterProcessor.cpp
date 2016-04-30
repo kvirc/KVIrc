@@ -59,20 +59,20 @@ namespace KviKvsParameterProcessor
 				*((bool *)(pFmtArray->pContainer)) = false;
 				break;
 			case KVS_PT_HASH:
-				*((KviKvsHash **)(pFmtArray->pContainer)) = 0;
+				*((KviKvsHash **)(pFmtArray->pContainer)) = nullptr;
 				break;
 			case KVS_PT_ARRAY:
-				*((KviKvsArray **)(pFmtArray->pContainer)) = 0;
+				*((KviKvsArray **)(pFmtArray->pContainer)) = nullptr;
 				break;
 			case KVS_PT_ARRAYCAST:
 				((KviKvsArrayCast *)(pFmtArray->pContainer))->clear();
 				break;
 			case KVS_PT_VARIANT:
-				*((KviKvsVariant **)(pFmtArray->pContainer)) = 0;
+				*((KviKvsVariant **)(pFmtArray->pContainer)) = nullptr;
 				break;
 			case KVS_PT_CSTRING:
 			case KVS_PT_NONEMPTYCSTRING:
-				*((QByteArray *)(pFmtArray->pContainer)) = 0;
+				*((QByteArray *)(pFmtArray->pContainer)) = nullptr;
 				break;
 			case KVS_PT_STRINGLIST:
 				((QStringList *)(pFmtArray->pContainer))->clear();
@@ -82,7 +82,7 @@ namespace KviKvsParameterProcessor
 				((KviKvsVariantList *)(pFmtArray->pContainer))->setAutoDelete(false);
 				break;
 			case KVS_PT_HOBJECT:
-				*((kvs_hobject_t *)(pFmtArray->pContainer)) = (kvs_hobject_t)0;
+				*((kvs_hobject_t *)(pFmtArray->pContainer)) = (kvs_hobject_t) nullptr;
 				break;
 			case KVS_PT_IGNORE:
 				// ignore :)

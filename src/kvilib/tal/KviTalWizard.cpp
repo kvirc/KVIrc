@@ -81,7 +81,7 @@ public:
 			if(pData->pWidget == pWidget)
 				return pData;
 		}
-		return NULL;
+		return nullptr;
 	}
 
 	KviTalWizardPageData * findFirstEnabledPage()
@@ -92,7 +92,7 @@ public:
 			if(pData->bEnabled)
 				return pData;
 		}
-		return NULL;
+		return nullptr;
 	}
 
 	KviTalWizardPageData * findLastEnabledPage()
@@ -103,7 +103,7 @@ public:
 			if(pData->bEnabled)
 				return pData;
 		}
-		return NULL;
+		return nullptr;
 	}
 
 	KviTalWizardPageData * findNextEnabledPage(QWidget * pReference)
@@ -112,13 +112,13 @@ public:
 			return findFirstEnabledPage();
 		KviTalWizardPageData * pData = findPage(pReference);
 		if(!pData)
-			return NULL;
+			return nullptr;
 		for(pData = pPageList->next(); pData; pData = pPageList->next())
 		{
 			if(pData->bEnabled)
 				return pData;
 		}
-		return NULL;
+		return nullptr;
 	}
 
 	KviTalWizardPageData * findPrevEnabledPage(QWidget * pReference)
@@ -127,13 +127,13 @@ public:
 			return findLastEnabledPage();
 		KviTalWizardPageData * pData = findPage(pReference);
 		if(!pData)
-			return NULL;
+			return nullptr;
 		for(pData = pPageList->prev(); pData; pData = pPageList->prev())
 		{
 			if(pData->bEnabled)
 				return pData;
 		}
-		return NULL;
+		return nullptr;
 	}
 
 	int reindexPages()
@@ -157,7 +157,7 @@ KviTalWizard::KviTalWizard(QWidget * pParent)
 	m_p = new KviTalWizardPrivate;
 	m_p->pPageList = new KviPointerList<KviTalWizardPageData>;
 	m_p->pPageList->setAutoDelete(true);
-	m_p->pCurrentPage = NULL;
+	m_p->pCurrentPage = nullptr;
 	m_p->iEnabledPageCount = 0;
 	m_p->pLayout = new QGridLayout(this);
 
@@ -317,7 +317,7 @@ bool KviTalWizard::setCurrentPage(QWidget * pWidget)
 QWidget * KviTalWizard::currentPage()
 {
 	if(!m_p->pCurrentPage)
-		return NULL;
+		return nullptr;
 	return m_p->pCurrentPage->pWidget;
 }
 

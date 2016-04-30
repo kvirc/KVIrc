@@ -190,7 +190,7 @@ if(pWidgetDict)
 {
 	pWidgetDict->clear();
 	delete pWidgetDict;
-	pWidgetDict = 0;
+	pWidgetDict = nullptr;
 }
 KVSO_END_CONSTRUCTOR(KvsObject_workspace)
 
@@ -300,7 +300,7 @@ KVSO_CLASS_FUNCTION(workspace, activeWindow)
 		}
 	}
 	else
-		c->returnValue()->setHObject((kvs_hobject_t)0);
+		c->returnValue()->setHObject((kvs_hobject_t) nullptr);
 	return true;
 }
 

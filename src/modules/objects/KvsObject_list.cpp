@@ -146,7 +146,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_list)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_list)
 delete m_pDataList;
-m_pDataList = 0;
+m_pDataList = nullptr;
 KVSO_END_CONSTRUCTOR(KvsObject_list)
 
 KVSO_CLASS_FUNCTION(list, current)
@@ -168,35 +168,35 @@ KVSO_CLASS_FUNCTION(list, current)
 KVSO_CLASS_FUNCTION(list, eof)
 {
 	CHECK_INTERNAL_POINTER(m_pDataList)
-	c->returnValue()->setBoolean(m_pDataList->current() != 0);
+	c->returnValue()->setBoolean(m_pDataList->current() != nullptr);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(list, moveLast)
 {
 	CHECK_INTERNAL_POINTER(m_pDataList)
-	c->returnValue()->setBoolean(m_pDataList->last() != 0);
+	c->returnValue()->setBoolean(m_pDataList->last() != nullptr);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(list, movePrev)
 {
 	CHECK_INTERNAL_POINTER(m_pDataList)
-	c->returnValue()->setBoolean(m_pDataList->prev() != 0);
+	c->returnValue()->setBoolean(m_pDataList->prev() != nullptr);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(list, moveNext)
 {
 	CHECK_INTERNAL_POINTER(m_pDataList)
-	c->returnValue()->setBoolean(m_pDataList->next() != 0);
+	c->returnValue()->setBoolean(m_pDataList->next() != nullptr);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(list, moveFirst)
 {
 	CHECK_INTERNAL_POINTER(m_pDataList)
-	c->returnValue()->setBoolean(m_pDataList->first() != 0);
+	c->returnValue()->setBoolean(m_pDataList->first() != nullptr);
 	return true;
 }
 

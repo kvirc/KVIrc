@@ -665,9 +665,9 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 OptionsWidget_identityAdvanced::OptionsWidget_identityAdvanced(QWidget * parent)
     : KviOptionsWidget(parent)
 {
-	m_pISelector = 0;
-	m_pWSelector = 0;
-	m_pSSelector = 0;
+	m_pISelector = nullptr;
+	m_pWSelector = nullptr;
+	m_pSSelector = nullptr;
 
 	m_sModeStr = KVI_OPTION_STRING(KviOption_stringDefaultUserMode);
 	m_bI = m_sModeStr.contains('i');
@@ -721,7 +721,7 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
     : KviOptionsWidget(pParent)
 {
 	setObjectName("identity_profiles_option_widget");
-	m_pEditor = 0;
+	m_pEditor = nullptr;
 	m_iCurrentEditedProfile = -1;
 
 	createLayout();

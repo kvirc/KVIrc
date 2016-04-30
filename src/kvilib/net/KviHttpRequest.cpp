@@ -58,13 +58,13 @@ KviHttpRequest::KviHttpRequest()
     : QObject()
 {
 	m_p = new KviHttpRequestPrivate();
-	m_p->pSocket = NULL;
+	m_p->pSocket = nullptr;
 	m_p->bIsSSL = false;
-	m_p->pConnectTimeoutTimer = NULL;
+	m_p->pConnectTimeoutTimer = nullptr;
 	m_p->pBuffer = new KviDataBuffer();
-	m_p->pFile = NULL;
+	m_p->pFile = nullptr;
 
-	m_pPrivateData = 0;
+	m_pPrivateData = nullptr;
 	m_bHeaderProcessed = false;
 	m_uConnectionTimeout = 60;
 	m_bFollowRedirects = true;
@@ -100,7 +100,7 @@ void KviHttpRequest::resetInternalStatus()
 	if(m_p->pConnectTimeoutTimer)
 	{
 		delete m_p->pConnectTimeoutTimer;
-		m_p->pConnectTimeoutTimer = NULL;
+		m_p->pConnectTimeoutTimer = nullptr;
 	}
 
 	if(m_p->pSocket)
@@ -110,7 +110,7 @@ void KviHttpRequest::resetInternalStatus()
 	{
 		m_p->pFile->close();
 		delete m_p->pFile;
-		m_p->pFile = NULL;
+		m_p->pFile = nullptr;
 	}
 
 	m_p->pBuffer->clear();
@@ -221,7 +221,7 @@ void KviHttpRequest::closeSocket()
 
 	//delete m_p->pSocket;
 
-	m_p->pSocket = NULL;
+	m_p->pSocket = nullptr;
 }
 
 void KviHttpRequest::slotSocketDisconnected()
@@ -264,7 +264,7 @@ void KviHttpRequest::slotSocketConnected()
 	if(m_p->pConnectTimeoutTimer)
 	{
 		delete m_p->pConnectTimeoutTimer;
-		m_p->pConnectTimeoutTimer = NULL;
+		m_p->pConnectTimeoutTimer = nullptr;
 	}
 
 	emit connectionEstablished();
@@ -440,7 +440,7 @@ bool KviHttpRequest::doConnect()
 	if(m_p->pConnectTimeoutTimer)
 	{
 		delete m_p->pConnectTimeoutTimer;
-		m_p->pConnectTimeoutTimer = NULL;
+		m_p->pConnectTimeoutTimer = nullptr;
 	}
 
 	m_p->pConnectTimeoutTimer = new QTimer();
