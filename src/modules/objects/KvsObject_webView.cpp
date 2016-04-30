@@ -1413,6 +1413,5 @@ bool KviKvsWebView::event(QEvent * e)
 	return QWebView::event(e);
 }
 KviKvsWebView::~KviKvsWebView()
-{
-}
+    = default;
 #endif // COMPILE_WEBKIT_SUPPORT

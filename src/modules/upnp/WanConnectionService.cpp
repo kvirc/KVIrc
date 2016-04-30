@@ -45,8 +45,7 @@ namespace UPnP
 
 	// The destructor
 	WanConnectionService::~WanConnectionService()
-	{
-	}
+	    = default;
 
 	// Add a port mapping
 	void WanConnectionService::addPortMapping(const QString & protocol, const QString & remoteHost, int externalPort,

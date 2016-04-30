@@ -72,5 +72,4 @@ OptionsWidget_interfaceFeatures::OptionsWidget_interfaceFeatures(QWidget * paren
 }
 
 OptionsWidget_interfaceFeatures::~OptionsWidget_interfaceFeatures()
-{
-}
+    = default;

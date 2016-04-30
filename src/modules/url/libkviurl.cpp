@@ -565,8 +565,7 @@ void BanFrame::saveBans(KviConfigurationFile * cfg)
 }
 
 BanFrame::~BanFrame()
-{
-}
+    = default;
 
 // ---------------------------- CLASS URLTOOLBAR -------------------------end //
 

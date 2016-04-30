@@ -64,8 +64,7 @@ KviTopicListBoxItemDelegate::KviTopicListBoxItemDelegate(QAbstractItemView * pWi
 }
 
 KviTopicListBoxItemDelegate::~KviTopicListBoxItemDelegate()
-{
-}
+    = default;
 
 QSize KviTopicListBoxItemDelegate::sizeHint(const QStyleOptionViewItem &, const QModelIndex & index) const
 {
@@ -90,8 +89,7 @@ KviTopicListBoxItem::KviTopicListBoxItem(KviTalListWidget * listbox, const QStri
 }
 
 KviTopicListBoxItem::~KviTopicListBoxItem()
-{
-}
+    = default;
 
 int KviTopicListBoxItem::width(const KviTalListWidget * lb) const
 {

@@ -145,8 +145,7 @@ namespace UPnP
 
 	// The destructor
 	RootService::~RootService()
-	{
-	}
+	    = default;
 
 	// Recursively add all devices and embedded devices to the deviceServices_ map
 	void RootService::addDeviceServices(const QDomNode & device)

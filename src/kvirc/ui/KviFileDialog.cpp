@@ -45,8 +45,7 @@ KviFileDialog::KviFileDialog(const QString & szDirName, const QString & szFilter
 }
 
 KviFileDialog::~KviFileDialog()
-{
-}
+    = default;
 
 /*
 void KviFileDialog::goKvirc()

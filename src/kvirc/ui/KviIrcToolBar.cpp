@@ -205,8 +205,7 @@ KviIrcContextDisplay::KviIrcContextDisplay(QWidget * par, const char * name)
 }
 
 KviIrcContextDisplay::~KviIrcContextDisplay()
-{
-}
+    = default;
 
 void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 {

@@ -471,8 +471,7 @@ void KviIconWidget::init()
 }
 
 KviIconWidget::~KviIconWidget()
-{
-}
+    = default;
 
 void KviIconWidget::closeEvent(QCloseEvent * pEvent)
 {

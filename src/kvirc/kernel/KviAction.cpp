@@ -41,8 +41,7 @@ KviActionCategory::KviActionCategory(const QString & szName, const QString & szV
 }
 
 KviActionCategory::~KviActionCategory()
-{
-}
+    = default;
 
 KviAction::KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory, const QString & szBigIconId, const QString & szSmallIconId, unsigned int uFlags, const QString & szKeySequence)
     : QObject(pParent),

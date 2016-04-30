@@ -35,8 +35,7 @@ KviScriptEditor::KviScriptEditor(QWidget * par)
 }
 
 KviScriptEditor::~KviScriptEditor()
-{
-}
+    = default;
 
 void KviScriptEditor::setText(const char * txt)
 {

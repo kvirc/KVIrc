@@ -78,8 +78,7 @@ KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation, const QString & szTi
 }
 
 KviTalGroupBox::~KviTalGroupBox()
-{
-}
+    = default;
 
 void KviTalGroupBox::childEvent(QChildEvent * e)
 {

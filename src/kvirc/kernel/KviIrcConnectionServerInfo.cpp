@@ -296,8 +296,7 @@ KviBasicIrcServerInfo::KviBasicIrcServerInfo(KviIrcConnectionServerInfo * pParen
 }
 
 KviBasicIrcServerInfo::~KviBasicIrcServerInfo()
-{
-}
+    = default;
 
 ////////////////
 // User modes

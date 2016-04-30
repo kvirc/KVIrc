@@ -33,8 +33,7 @@ KviKvsTreeNodeObjectField::KviKvsTreeNodeObjectField(const QChar * pLocation, co
 }
 
 KviKvsTreeNodeObjectField::~KviKvsTreeNodeObjectField()
-{
-}
+    = default;
 
 void KviKvsTreeNodeObjectField::contextDescription(QString & szBuffer)
 {

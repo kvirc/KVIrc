@@ -872,8 +872,7 @@ KviCellItemDelegate::KviCellItemDelegate(QAbstractItemView * pWidget, KvsObject_
 }
 
 KviCellItemDelegate::~KviCellItemDelegate()
-{
-}
+    = default;
 
 void KviCellItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {

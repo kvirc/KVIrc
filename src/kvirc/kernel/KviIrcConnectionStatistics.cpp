@@ -31,5 +31,4 @@ KviIrcConnectionStatistics::KviIrcConnectionStatistics()
 }
 
 KviIrcConnectionStatistics::~KviIrcConnectionStatistics()
-{
-}
+    = default;

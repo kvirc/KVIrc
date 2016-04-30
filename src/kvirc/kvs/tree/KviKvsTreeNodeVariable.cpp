@@ -31,8 +31,7 @@ KviKvsTreeNodeVariable::KviKvsTreeNodeVariable(const QChar * pLocation, const QS
 }
 
 KviKvsTreeNodeVariable::~KviKvsTreeNodeVariable()
-{
-}
+    = default;
 
 bool KviKvsTreeNodeVariable::isReadOnly()
 {

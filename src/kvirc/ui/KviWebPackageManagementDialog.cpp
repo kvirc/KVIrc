@@ -101,8 +101,7 @@ KviWebPackageManagementDialog::KviWebPackageManagementDialog(QWidget * pParent)
 }
 
 KviWebPackageManagementDialog::~KviWebPackageManagementDialog()
-{
-}
+    = default;
 
 void KviWebPackageManagementDialog::setPackagePageUrl(const QString & szUrl)
 {

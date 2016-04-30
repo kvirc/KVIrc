@@ -37,8 +37,7 @@ OptionsWidget_userList::OptionsWidget_userList(QWidget * parent)
 }
 
 OptionsWidget_userList::~OptionsWidget_userList()
-{
-}
+    = default;
 
 OptionsWidget_userListForeground::OptionsWidget_userListForeground(QWidget * parent)
     : KviOptionsWidget(parent, "userlistlook_foreground_options_widget")
@@ -79,8 +78,7 @@ OptionsWidget_userListForeground::OptionsWidget_userListForeground(QWidget * par
 }
 
 OptionsWidget_userListForeground::~OptionsWidget_userListForeground()
-{
-}
+    = default;
 
 OptionsWidget_userListGrid::OptionsWidget_userListGrid(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -111,8 +109,7 @@ OptionsWidget_userListGrid::OptionsWidget_userListGrid(QWidget * parent)
 }
 
 OptionsWidget_userListGrid::~OptionsWidget_userListGrid()
-{
-}
+    = default;
 
 void OptionsWidget_userListGrid::commit()
 {
@@ -184,8 +181,7 @@ OptionsWidget_userListBackground::OptionsWidget_userListBackground(QWidget * par
 }
 
 OptionsWidget_userListBackground::~OptionsWidget_userListBackground()
-{
-}
+    = default;
 
 void OptionsWidget_userListBackground::commit()
 {
@@ -243,5 +239,4 @@ OptionsWidget_userListFeatures::OptionsWidget_userListFeatures(QWidget * parent)
 }
 
 OptionsWidget_userListFeatures::~OptionsWidget_userListFeatures()
-{
-}
+    = default;

@@ -36,8 +36,7 @@ OptionsWidget_ircViewTheme::OptionsWidget_ircViewTheme(QWidget * pParent)
 }
 
 OptionsWidget_ircViewTheme::~OptionsWidget_ircViewTheme()
-{
-}
+    = default;
 
 OptionsWidget_ircViewLook::OptionsWidget_ircViewLook(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -102,8 +101,7 @@ OptionsWidget_ircViewLook::OptionsWidget_ircViewLook(QWidget * parent)
 }
 
 OptionsWidget_ircViewLook::~OptionsWidget_ircViewLook()
-{
-}
+    = default;
 
 void OptionsWidget_ircViewLook::commit()
 {
@@ -166,8 +164,7 @@ OptionsWidget_ircViewFeatures::OptionsWidget_ircViewFeatures(QWidget * parent)
 }
 
 OptionsWidget_ircViewFeatures::~OptionsWidget_ircViewFeatures()
-{
-}
+    = default;
 
 OptionsWidget_ircViewMarker::OptionsWidget_ircViewMarker(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -198,8 +195,7 @@ OptionsWidget_ircViewMarker::OptionsWidget_ircViewMarker(QWidget * parent)
 }
 
 OptionsWidget_ircViewMarker::~OptionsWidget_ircViewMarker()
-{
-}
+    = default;
 
 void OptionsWidget_ircViewMarker::commit()
 {

@@ -55,8 +55,7 @@ KviEngineListBoxItem::KviEngineListBoxItem(KviTalListWidget * pList, KviCryptEng
 }
 
 KviEngineListBoxItem::~KviEngineListBoxItem()
-{
-}
+    = default;
 
 KviCryptController::KviCryptController(QWidget * pParent, KviWindowToolPageButton * pButton, KviWindow * pWnd, KviCryptSessionInfo * pInfo)
     : KviWindowToolWidget(pParent, pButton)

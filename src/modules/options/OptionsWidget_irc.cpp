@@ -36,8 +36,7 @@ OptionsWidget_irc::OptionsWidget_irc(QWidget * parent)
 }
 
 OptionsWidget_irc::~OptionsWidget_irc()
-{
-}
+    = default;
 
 OptionsWidget_ircGeneral::OptionsWidget_ircGeneral(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -50,8 +49,7 @@ OptionsWidget_ircGeneral::OptionsWidget_ircGeneral(QWidget * parent)
 }
 
 OptionsWidget_ircGeneral::~OptionsWidget_ircGeneral()
-{
-}
+    = default;
 
 OptionsWidget_ircAdvanced::OptionsWidget_ircAdvanced(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -77,5 +75,4 @@ OptionsWidget_ircAdvanced::OptionsWidget_ircAdvanced(QWidget * parent)
 }
 
 OptionsWidget_ircAdvanced::~OptionsWidget_ircAdvanced()
-{
-}
+    = default;

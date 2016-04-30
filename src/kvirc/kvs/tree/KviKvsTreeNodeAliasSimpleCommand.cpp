@@ -41,8 +41,7 @@ KviKvsTreeNodeAliasSimpleCommand::KviKvsTreeNodeAliasSimpleCommand(const QChar *
 }
 
 KviKvsTreeNodeAliasSimpleCommand::~KviKvsTreeNodeAliasSimpleCommand()
-{
-}
+    = default;
 
 void KviKvsTreeNodeAliasSimpleCommand::contextDescription(QString & szBuffer)
 {

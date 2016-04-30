@@ -184,8 +184,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 }
 
 OptionsWidget_textEncoding::~OptionsWidget_textEncoding()
-{
-}
+    = default;
 
 void OptionsWidget_textEncoding::commit()
 {

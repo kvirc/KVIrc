@@ -50,17 +50,7 @@ KviMessageTypeSettings::KviMessageTypeSettings(const KviMessageTypeSettings & ms
 }
 
 KviMessageTypeSettings::~KviMessageTypeSettings()
-{
-}
+    = default;
 
 KviMessageTypeSettings & KviMessageTypeSettings::operator=(const KviMessageTypeSettings & msg)
-{
-	//if(m_szType.ptr() == msg.m_szType.ptr())return (*this); // self assignment (!!!)
-	m_szType = msg.m_szType;
-	m_iPixId = msg.m_iPixId;
-	m_cForeColor = msg.m_cForeColor;
-	m_cBackColor = msg.m_cBackColor;
-	m_bLogEnabled = msg.m_bLogEnabled;
-	m_iLevel = msg.m_iLevel;
-	return (*this);
-}
+    = default;

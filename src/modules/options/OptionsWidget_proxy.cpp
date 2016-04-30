@@ -145,8 +145,7 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 }
 
 OptionsWidget_proxy::~OptionsWidget_proxy()
-{
-}
+    = default;
 
 void OptionsWidget_proxy::enableDisableUseProxySelector()
 {

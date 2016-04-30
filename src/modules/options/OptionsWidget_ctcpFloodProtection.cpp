@@ -107,5 +107,4 @@ OptionsWidget_ctcpFloodProtection::OptionsWidget_ctcpFloodProtection(QWidget * p
 }
 
 OptionsWidget_ctcpFloodProtection::~OptionsWidget_ctcpFloodProtection()
-{
-}
+    = default;

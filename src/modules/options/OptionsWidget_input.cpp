@@ -97,8 +97,7 @@ OptionsWidget_inputLook::OptionsWidget_inputLook(QWidget * parent)
 }
 
 OptionsWidget_inputLook::~OptionsWidget_inputLook()
-{
-}
+    = default;
 
 void OptionsWidget_inputLook::commit()
 {
@@ -166,5 +165,4 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 }
 
 OptionsWidget_inputFeatures::~OptionsWidget_inputFeatures()
-{
-}
+    = default;

@@ -67,8 +67,7 @@ MpMprisInterface::MpMprisInterface()
 }
 
 MpMprisInterface::~MpMprisInterface()
-{
-}
+    = default;
 
 int MpMprisInterface::detect(bool)
 {

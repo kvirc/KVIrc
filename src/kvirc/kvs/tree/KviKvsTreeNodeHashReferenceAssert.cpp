@@ -34,8 +34,7 @@ KviKvsTreeNodeHashReferenceAssert::KviKvsTreeNodeHashReferenceAssert(const QChar
 }
 
 KviKvsTreeNodeHashReferenceAssert::~KviKvsTreeNodeHashReferenceAssert()
-{
-}
+    = default;
 
 bool KviKvsTreeNodeHashReferenceAssert::isReadOnly()
 {

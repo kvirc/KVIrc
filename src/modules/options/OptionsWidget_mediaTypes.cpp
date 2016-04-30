@@ -53,8 +53,7 @@ MediaTypeTreeWidgetItem::MediaTypeTreeWidgetItem(QTreeWidget * w, KviMediaType *
 }
 
 MediaTypeTreeWidgetItem::~MediaTypeTreeWidgetItem()
-{
-}
+    = default;
 
 void MediaTypeTreeWidgetItem::copyData(KviMediaType * t)
 {
@@ -152,8 +151,7 @@ OptionsWidget_mediaTypes::OptionsWidget_mediaTypes(QWidget * parent)
 }
 
 OptionsWidget_mediaTypes::~OptionsWidget_mediaTypes()
-{
-}
+    = default;
 
 void OptionsWidget_mediaTypes::fillTreeWidget()
 {

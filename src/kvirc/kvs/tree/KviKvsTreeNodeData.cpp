@@ -31,8 +31,7 @@ KviKvsTreeNodeData::KviKvsTreeNodeData(const QChar * pLocation)
 }
 
 KviKvsTreeNodeData::~KviKvsTreeNodeData()
-{
-}
+    = default;
 
 void KviKvsTreeNodeData::contextDescription(QString & szBuffer)
 {

@@ -31,8 +31,7 @@ KviKvsTreeNodeLocalVariable::KviKvsTreeNodeLocalVariable(const QChar * pLocation
 }
 
 KviKvsTreeNodeLocalVariable::~KviKvsTreeNodeLocalVariable()
-{
-}
+    = default;
 
 void KviKvsTreeNodeLocalVariable::contextDescription(QString & szBuffer)
 {

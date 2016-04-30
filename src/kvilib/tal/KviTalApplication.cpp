@@ -39,8 +39,7 @@ KviTalApplication::KviTalApplication(int & iArgc, char ** ppcArgv)
 #endif //!defined(COMPILE_KDE4_SUPPORT)
 
 KviTalApplication::~KviTalApplication()
-{
-}
+    = default;
 
 void KviTalApplication::commitData(QSessionManager & manager)
 {

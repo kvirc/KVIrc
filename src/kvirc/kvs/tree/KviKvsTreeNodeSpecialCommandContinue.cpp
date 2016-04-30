@@ -32,8 +32,7 @@ KviKvsTreeNodeSpecialCommandContinue::KviKvsTreeNodeSpecialCommandContinue(const
 }
 
 KviKvsTreeNodeSpecialCommandContinue::~KviKvsTreeNodeSpecialCommandContinue()
-{
-}
+    = default;
 
 void KviKvsTreeNodeSpecialCommandContinue::contextDescription(QString & szBuffer)
 {

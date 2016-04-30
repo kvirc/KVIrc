@@ -56,8 +56,7 @@ OptionsWidget_away::OptionsWidget_away(QWidget * parent)
 }
 
 OptionsWidget_away::~OptionsWidget_away()
-{
-}
+    = default;
 
 void OptionsWidget_away::enableCustomAwayText(bool)
 {

@@ -30,8 +30,7 @@ KviIrcServerReconnectInfo::KviIrcServerReconnectInfo()
 }
 
 KviIrcServerReconnectInfo::~KviIrcServerReconnectInfo()
-{
-}
+    = default;
 
 KviIrcServerReconnectInfo::KviIrcServerReconnectInfo(const KviIrcServerReconnectInfo & info)
 {

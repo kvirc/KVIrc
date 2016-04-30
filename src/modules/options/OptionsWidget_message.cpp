@@ -55,8 +55,7 @@ OptionsWidget_message::OptionsWidget_message(QWidget * pParent)
 }
 
 OptionsWidget_message::~OptionsWidget_message()
-{
-}
+    = default;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -123,8 +122,7 @@ void OptionsWidget_privmsg::enableDisableSmartColorSelector(bool)
 }
 
 OptionsWidget_privmsg::~OptionsWidget_privmsg()
-{
-}
+    = default;
 
 OptionsWidget_timestamp::OptionsWidget_timestamp(QWidget * pParent)
     : KviOptionsWidget(pParent)
@@ -154,8 +152,7 @@ OptionsWidget_timestamp::OptionsWidget_timestamp(QWidget * pParent)
 }
 
 OptionsWidget_timestamp::~OptionsWidget_timestamp()
-{
-}
+    = default;
 
 void OptionsWidget_timestamp::enableDisableTimestampSelector(bool)
 {
@@ -191,8 +188,7 @@ OptionsWidget_standardColors::OptionsWidget_standardColors(QWidget * parent)
 }
 
 OptionsWidget_standardColors::~OptionsWidget_standardColors()
-{
-}
+    = default;
 
 void OptionsWidget_standardColors::resetToDefaults()
 {
@@ -326,8 +322,7 @@ MessageColorListWidgetItem::MessageColorListWidgetItem(KviTalListWidget * b, int
 }
 
 MessageColorListWidgetItem::~MessageColorListWidgetItem()
-{
-}
+    = default;
 
 void MessageColorListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const
 {

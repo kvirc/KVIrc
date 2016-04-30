@@ -33,8 +33,7 @@ KviKvsTreeNodeSingleParameterIdentifier::KviKvsTreeNodeSingleParameterIdentifier
 }
 
 KviKvsTreeNodeSingleParameterIdentifier::~KviKvsTreeNodeSingleParameterIdentifier()
-{
-}
+    = default;
 
 void KviKvsTreeNodeSingleParameterIdentifier::contextDescription(QString & szBuffer)
 {

@@ -48,8 +48,7 @@ KviProxy::KviProxy(const KviProxy & prx)
 }
 
 KviProxy::~KviProxy()
-{
-}
+    = default;
 
 static const QString proxy_protocols_table[3] = { "SOCKSv4", "SOCKSv5", "HTTP" };
 

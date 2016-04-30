@@ -47,5 +47,4 @@ KviTalMenuBar::KviTalMenuBar(QWidget * pParent, const char * pcName)
 #endif //!COMPILE_KDE4_SUPPORT
 
 KviTalMenuBar::~KviTalMenuBar()
-{
-}
+    = default;

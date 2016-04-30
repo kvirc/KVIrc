@@ -34,8 +34,7 @@ KviKvsTreeNodeArrayCount::KviKvsTreeNodeArrayCount(const QChar * pLocation, KviK
 }
 
 KviKvsTreeNodeArrayCount::~KviKvsTreeNodeArrayCount()
-{
-}
+    = default;
 
 void KviKvsTreeNodeArrayCount::contextDescription(QString & szBuffer)
 {

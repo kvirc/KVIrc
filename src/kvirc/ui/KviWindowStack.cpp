@@ -71,8 +71,7 @@ KviWindowStack::KviWindowStack(QWidget * parent, const char * pcName)
 }
 
 KviWindowStack::~KviWindowStack()
-{
-}
+    = default;
 
 void KviWindowStack::currentWindowChanged(int iIdx)
 {

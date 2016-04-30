@@ -105,8 +105,7 @@ NickAlternativesDialog::NickAlternativesDialog(QWidget * par, const QString & n1
 }
 
 NickAlternativesDialog::~NickAlternativesDialog()
-{
-}
+    = default;
 
 void NickAlternativesDialog::fill(QString & n1, QString & n2, QString & n3)
 {
@@ -250,8 +249,7 @@ AvatarSelectionDialog::AvatarSelectionDialog(QWidget * par, const QString & szIn
 }
 
 AvatarSelectionDialog::~AvatarSelectionDialog()
-{
-}
+    = default;
 
 void AvatarSelectionDialog::okClicked()
 {
@@ -285,8 +283,7 @@ OptionsWidget_identity::OptionsWidget_identity(QWidget * parent)
 }
 
 OptionsWidget_identity::~OptionsWidget_identity()
-{
-}
+    = default;
 
 KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -413,8 +410,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 }
 
 KviIdentityGeneralOptionsWidget::~KviIdentityGeneralOptionsWidget()
-{
-}
+    = default;
 
 void KviIdentityGeneralOptionsWidget::setNickAlternatives()
 {
@@ -701,8 +697,7 @@ OptionsWidget_identityAdvanced::OptionsWidget_identityAdvanced(QWidget * parent)
 }
 
 OptionsWidget_identityAdvanced::~OptionsWidget_identityAdvanced()
-{
-}
+    = default;
 
 void OptionsWidget_identityAdvanced::commit()
 {
@@ -795,8 +790,7 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 }
 
 OptionsWidget_identityProfile::~OptionsWidget_identityProfile()
-{
-}
+    = default;
 
 void OptionsWidget_identityProfile::toggleControls()
 {
@@ -982,8 +976,7 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 }
 
 IdentityProfileEditor::~IdentityProfileEditor()
-{
-}
+    = default;
 
 bool IdentityProfileEditor::editProfile(KviIdentityProfile * pProfile)
 {

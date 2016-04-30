@@ -51,8 +51,7 @@ KviThemedComboBox::KviThemedComboBox(QWidget * par, KviWindow * pWindow, const c
 }
 
 KviThemedComboBox::~KviThemedComboBox()
-{
-}
+    = default;
 
 void KviThemedComboBox::applyOptions()
 {

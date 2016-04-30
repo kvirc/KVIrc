@@ -30,5 +30,4 @@ KviMexLinkFilter::KviMexLinkFilter(KviModuleExtensionDescriptor * d)
 }
 
 KviMexLinkFilter::~KviMexLinkFilter()
-{
-}
+    = default;

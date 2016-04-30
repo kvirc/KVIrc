@@ -31,8 +31,7 @@ KviKvsTreeNodeGlobalVariable::KviKvsTreeNodeGlobalVariable(const QChar * pLocati
 }
 
 KviKvsTreeNodeGlobalVariable::~KviKvsTreeNodeGlobalVariable()
-{
-}
+    = default;
 
 void KviKvsTreeNodeGlobalVariable::contextDescription(QString & szBuffer)
 {

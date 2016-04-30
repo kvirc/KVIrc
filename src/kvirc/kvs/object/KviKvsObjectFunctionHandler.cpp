@@ -31,8 +31,7 @@ KviKvsObjectFunctionHandler::KviKvsObjectFunctionHandler(unsigned int uFlags)
 }
 
 KviKvsObjectFunctionHandler::~KviKvsObjectFunctionHandler()
-{
-}
+    = default;
 
 bool KviKvsObjectFunctionHandler::isScriptHandler()
 {

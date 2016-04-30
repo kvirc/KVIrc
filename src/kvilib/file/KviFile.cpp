@@ -39,8 +39,7 @@ KviFile::KviFile(const QString & szName)
 }
 
 KviFile::~KviFile()
-{
-}
+    = default;
 
 bool KviFile::save(kvi_u8_t t)
 {

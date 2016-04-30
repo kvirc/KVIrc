@@ -31,8 +31,7 @@ KviDynamicToolTipHelper::KviDynamicToolTipHelper(QWidget * parent, KviDynamicToo
 }
 
 KviDynamicToolTipHelper::~KviDynamicToolTipHelper()
-{
-}
+    = default;
 
 void KviDynamicToolTipHelper::maybeTip(const QPoint & pnt)
 {

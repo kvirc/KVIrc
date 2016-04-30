@@ -124,8 +124,7 @@ RegisteredUserPropertiesDialog::RegisteredUserPropertiesDialog(QWidget * p, KviP
 }
 
 RegisteredUserPropertiesDialog::~RegisteredUserPropertiesDialog()
-{
-}
+    = default;
 
 void RegisteredUserPropertiesDialog::closeEvent(QCloseEvent * e)
 {
@@ -271,8 +270,7 @@ RegisteredUserMaskDialog::RegisteredUserMaskDialog(QWidget * p, KviIrcMask * m)
 }
 
 RegisteredUserMaskDialog::~RegisteredUserMaskDialog()
-{
-}
+    = default;
 
 void RegisteredUserMaskDialog::closeEvent(QCloseEvent * e)
 {

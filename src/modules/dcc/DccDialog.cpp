@@ -90,8 +90,7 @@ DccAcceptDialog::DccAcceptDialog(DccBroker * br, DccDescriptor * dcc, const QStr
 }
 
 DccAcceptDialog::~DccAcceptDialog()
-{
-}
+    = default;
 
 void DccAcceptDialog::acceptClicked()
 {
@@ -167,8 +166,7 @@ DccRenameDialog::DccRenameDialog(DccBroker * br, DccDescriptor * dcc, const QStr
 }
 
 DccRenameDialog::~DccRenameDialog()
-{
-}
+    = default;
 
 void DccRenameDialog::closeEvent(QCloseEvent * e)
 {

@@ -126,8 +126,7 @@ SharedFileEditDialog::SharedFileEditDialog(QWidget * par, KviSharedFile * f)
 }
 
 SharedFileEditDialog::~SharedFileEditDialog()
-{
-}
+    = default;
 
 void SharedFileEditDialog::browse()
 {
@@ -205,8 +204,7 @@ SharedFilesTreeWidgetItem::SharedFilesTreeWidgetItem(QTreeWidget * lv, KviShared
 }
 
 SharedFilesTreeWidgetItem::~SharedFilesTreeWidgetItem()
-{
-}
+    = default;
 
 SharedFilesWindow::SharedFilesWindow()
     : KviWindow(KviWindow::Tool, "shared files window", nullptr)

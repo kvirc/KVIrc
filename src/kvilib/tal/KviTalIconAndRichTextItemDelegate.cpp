@@ -37,8 +37,7 @@ KviTalIconAndRichTextItemDelegate::KviTalIconAndRichTextItemDelegate(QAbstractIt
 }
 
 KviTalIconAndRichTextItemDelegate::~KviTalIconAndRichTextItemDelegate()
-{
-}
+    = default;
 
 void KviTalIconAndRichTextItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {

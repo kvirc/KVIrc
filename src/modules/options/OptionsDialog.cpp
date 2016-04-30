@@ -70,8 +70,7 @@ OptionsDialogFrontWidget::OptionsDialogFrontWidget(QWidget * parent, const QStri
 }
 
 OptionsDialogFrontWidget::~OptionsDialogFrontWidget()
-{
-}
+    = default;
 
 OptionsDialogTreeWidgetItem::OptionsDialogTreeWidgetItem(QTreeWidget * parent, OptionsWidgetInstanceEntry * e)
     : QTreeWidgetItem()
@@ -94,8 +93,7 @@ OptionsDialogTreeWidgetItem::OptionsDialogTreeWidgetItem(QTreeWidgetItem * paren
 }
 
 OptionsDialogTreeWidgetItem::~OptionsDialogTreeWidgetItem()
-{
-}
+    = default;
 
 OptionsDialog::OptionsDialog(QWidget * par, const QString & szGroup, bool bModal)
     : QDialog(par)

@@ -126,8 +126,7 @@ SetupPage::SetupPage(SetupWizard * w)
 }
 
 SetupPage::~SetupPage()
-{
-}
+    = default;
 
 SetupWizard::SetupWizard()
     : KviTalWizard(nullptr)

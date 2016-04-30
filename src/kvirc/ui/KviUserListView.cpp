@@ -80,8 +80,7 @@ KviUserListToolTip::KviUserListToolTip(KviUserListView * pView, KviUserListViewA
 }
 
 KviUserListToolTip::~KviUserListToolTip()
-{
-}
+    = default;
 
 void KviUserListToolTip::maybeTip(const QPoint & pnt)
 {
@@ -1694,8 +1693,7 @@ KviUserListViewArea::KviUserListViewArea(KviUserListView * pPar)
 }
 
 KviUserListViewArea::~KviUserListViewArea()
-{
-}
+    = default;
 
 void KviUserListViewArea::scrollBarMoved(int iNewVal)
 {

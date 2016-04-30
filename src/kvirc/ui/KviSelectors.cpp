@@ -145,8 +145,7 @@ KviStringSelector::KviStringSelector(QWidget * par, const QString & txt, QString
 }
 
 KviStringSelector::~KviStringSelector()
-{
-}
+    = default;
 
 void KviStringSelector::commit()
 {
@@ -199,8 +198,7 @@ void KviPasswordSelector::checkToggled(int state)
 }
 
 KviPasswordSelector::~KviPasswordSelector()
-{
-}
+    = default;
 
 void KviPasswordSelector::commit()
 {
@@ -245,8 +243,7 @@ void KviPasswordLineEdit::checkToggled(int state)
 }
 
 KviPasswordLineEdit::~KviPasswordLineEdit()
-{
-}
+    = default;
 
 QString KviPasswordLineEdit::text()
 {
@@ -274,8 +271,7 @@ KviPixmapPreview::KviPixmapPreview(QWidget * par)
 }
 
 KviPixmapPreview::~KviPixmapPreview()
-{
-}
+    = default;
 
 void KviPixmapPreview::setPixmap(KviPixmap * pix)
 {
@@ -322,8 +318,7 @@ KviPixmapSelector::KviPixmapSelector(QWidget * par, const QString & txt, KviPixm
 }
 
 KviPixmapSelector::~KviPixmapSelector()
-{
-}
+    = default;
 
 void KviPixmapSelector::checkBoxToggled(bool)
 {
@@ -510,8 +505,7 @@ KviStringListSelector::KviStringListSelector(QWidget * par, const QString & txt,
 }
 
 KviStringListSelector::~KviStringListSelector()
-{
-}
+    = default;
 
 void KviStringListSelector::itemSelectionChanged()
 {
@@ -738,8 +732,7 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par, const QString 
 }
 
 KviMircTextColorSelector::~KviMircTextColorSelector()
-{
-}
+    = default;
 
 void KviMircTextColorSelector::commit()
 {
@@ -815,8 +808,7 @@ KviSoundSelector::KviSoundSelector(QWidget * par, const QString & txt, QString *
 }
 
 KviSoundSelector::~KviSoundSelector()
-{
-}
+    = default;
 
 void KviSoundSelector::playSound()
 {
@@ -883,8 +875,7 @@ KviChannelListSelector::KviChannelListSelector(QWidget * par, const QString & tx
 }
 
 KviChannelListSelector::~KviChannelListSelector()
-{
-}
+    = default;
 
 void KviChannelListSelector::commit()
 {

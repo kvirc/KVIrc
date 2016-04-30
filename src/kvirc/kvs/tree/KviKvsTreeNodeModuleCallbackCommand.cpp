@@ -38,8 +38,7 @@ KviKvsTreeNodeModuleCallbackCommand::KviKvsTreeNodeModuleCallbackCommand(const Q
 }
 
 KviKvsTreeNodeModuleCallbackCommand::~KviKvsTreeNodeModuleCallbackCommand()
-{
-}
+    = default;
 
 void KviKvsTreeNodeModuleCallbackCommand::contextDescription(QString & szBuffer)
 {

@@ -93,8 +93,7 @@ KviAudaciousClassicInterface::KviAudaciousClassicInterface()
 }
 
 KviAudaciousClassicInterface::~KviAudaciousClassicInterface()
-{
-}
+    = default;
 
 bool KviXmmsInterface::loadPlayerLibrary()
 {

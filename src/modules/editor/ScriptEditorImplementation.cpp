@@ -635,8 +635,7 @@ ScriptEditorSyntaxHighlighter::ScriptEditorSyntaxHighlighter(ScriptEditorWidget 
 }
 
 ScriptEditorSyntaxHighlighter::~ScriptEditorSyntaxHighlighter()
-{
-}
+    = default;
 
 void ScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 {
@@ -1143,8 +1142,7 @@ ScriptEditorReplaceDialog::ScriptEditorReplaceDialog(QWidget * pParent, const QS
 }
 
 ScriptEditorReplaceDialog::~ScriptEditorReplaceDialog()
-{
-}
+    = default;
 
 void ScriptEditorReplaceDialog::textChanged(const QString & szText)
 {

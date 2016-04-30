@@ -143,8 +143,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par, bool bUseServerMaskField)
 }
 
 NickServRuleEditor::~NickServRuleEditor()
-{
-}
+    = default;
 
 bool NickServRuleEditor::validate()
 {
@@ -298,8 +297,7 @@ OptionsWidget_nickServ::OptionsWidget_nickServ(QWidget * parent)
 }
 
 OptionsWidget_nickServ::~OptionsWidget_nickServ()
-{
-}
+    = default;
 
 void OptionsWidget_nickServ::editNickServRule()
 {

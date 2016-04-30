@@ -65,8 +65,7 @@ KviTreeWindowListItem::KviTreeWindowListItem(KviTreeWindowListItem * par, KviWin
 }
 
 KviTreeWindowListItem::~KviTreeWindowListItem()
-{
-}
+    = default;
 
 void KviTreeWindowListItem::applyOptions()
 {
@@ -209,8 +208,7 @@ KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
 }
 
 KviTreeWindowListTreeWidget::~KviTreeWindowListTreeWidget()
-{
-}
+    = default;
 
 void KviTreeWindowListTreeWidget::mouseMoveEvent(QMouseEvent *)
 {
@@ -396,8 +394,7 @@ KviTreeWindowList::KviTreeWindowList()
 }
 
 KviTreeWindowList::~KviTreeWindowList()
-{
-}
+    = default;
 
 void KviTreeWindowList::updatePseudoTransparency()
 {

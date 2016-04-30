@@ -41,8 +41,7 @@ KviIrcConnectionStateData::KviIrcConnectionStateData()
 }
 
 KviIrcConnectionStateData::~KviIrcConnectionStateData()
-{
-}
+    = default;
 
 void KviIrcConnectionStateData::changeEnabledCapList(const QString & szCapList)
 {

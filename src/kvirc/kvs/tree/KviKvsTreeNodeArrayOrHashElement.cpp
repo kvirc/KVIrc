@@ -30,8 +30,7 @@ KviKvsTreeNodeArrayOrHashElement::KviKvsTreeNodeArrayOrHashElement(const QChar *
 }
 
 KviKvsTreeNodeArrayOrHashElement::~KviKvsTreeNodeArrayOrHashElement()
-{
-}
+    = default;
 bool KviKvsTreeNodeArrayOrHashElement::isReadOnly()
 {
 	return m_pSource->isReadOnly();

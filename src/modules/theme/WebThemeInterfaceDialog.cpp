@@ -52,8 +52,7 @@ WebThemeInterfaceDialog::WebThemeInterfaceDialog(QWidget * par)
 	        .arg(QString::fromUtf8(KviLocale::instance()->localeName().ptr())));
 }
 WebThemeInterfaceDialog::~WebThemeInterfaceDialog()
-{
-}
+    = default;
 
 bool WebThemeInterfaceDialog::installPackage(const QString & szPath, QString & szError)
 {

@@ -137,8 +137,7 @@ KviStatusBarAwayIndicator::KviStatusBarAwayIndicator(KviStatusBar * pParent, Kvi
 }
 
 KviStatusBarAwayIndicator::~KviStatusBarAwayIndicator()
-{
-}
+    = default;
 
 void KviStatusBarAwayIndicator::updateDisplay()
 {
@@ -258,8 +257,7 @@ KviStatusBarLagIndicator::KviStatusBarLagIndicator(KviStatusBar * pParent, KviSt
 }
 
 KviStatusBarLagIndicator::~KviStatusBarLagIndicator()
-{
-}
+    = default;
 
 void KviStatusBarLagIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 {
@@ -382,8 +380,7 @@ KviStatusBarClock::KviStatusBarClock(KviStatusBar * pParent, KviStatusBarAppletD
 }
 
 KviStatusBarClock::~KviStatusBarClock()
-{
-}
+    = default;
 
 void KviStatusBarClock::adjustMinWidth()
 {
@@ -543,8 +540,7 @@ KviStatusBarConnectionTimer::KviStatusBarConnectionTimer(KviStatusBar * pParent,
 }
 
 KviStatusBarConnectionTimer::~KviStatusBarConnectionTimer()
-{
-}
+    = default;
 //g_pApp->topmostConnectedConsole()
 void KviStatusBarConnectionTimer::timerEvent(QTimerEvent *)
 {
@@ -622,8 +618,7 @@ KviStatusBarSeparator::KviStatusBarSeparator(KviStatusBar * pParent, KviStatusBa
 }
 
 KviStatusBarSeparator::~KviStatusBarSeparator()
-{
-}
+    = default;
 
 KviStatusBarApplet * CreateStatusBarSeparator(KviStatusBar * pBar, KviStatusBarAppletDescriptor * pDescriptor)
 {
@@ -657,8 +652,7 @@ KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,
 }
 
 KviStatusBarUpdateIndicator::~KviStatusBarUpdateIndicator()
-{
-}
+    = default;
 
 void KviStatusBarUpdateIndicator::updateDisplay()
 {

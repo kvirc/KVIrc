@@ -108,8 +108,7 @@ KviKvsTreeNodeOperationDecrement::KviKvsTreeNodeOperationDecrement(const QChar *
 }
 
 KviKvsTreeNodeOperationDecrement::~KviKvsTreeNodeOperationDecrement()
-{
-}
+    = default;
 
 void KviKvsTreeNodeOperationDecrement::contextDescription(QString & szBuffer)
 {
@@ -159,8 +158,7 @@ KviKvsTreeNodeOperationIncrement::KviKvsTreeNodeOperationIncrement(const QChar *
 }
 
 KviKvsTreeNodeOperationIncrement::~KviKvsTreeNodeOperationIncrement()
-{
-}
+    = default;
 
 void KviKvsTreeNodeOperationIncrement::contextDescription(QString & szBuffer)
 {

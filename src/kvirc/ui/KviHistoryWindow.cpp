@@ -260,8 +260,7 @@ KviHistoryWindowWidget::KviHistoryWindowWidget()
 }
 
 KviHistoryWindowWidget::~KviHistoryWindowWidget()
-{
-}
+    = default;
 
 void KviHistoryWindowWidget::popup(KviInput * pOwner)
 {

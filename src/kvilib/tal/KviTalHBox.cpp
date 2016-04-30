@@ -66,8 +66,7 @@ KviTalHBox::KviTalHBox(QWidget * pParent, char * pcName)
 }
 
 KviTalHBox::~KviTalHBox()
-{
-}
+    = default;
 
 void KviTalHBox::childEvent(QChildEvent * e)
 {

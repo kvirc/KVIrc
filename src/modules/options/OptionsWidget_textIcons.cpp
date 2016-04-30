@@ -112,8 +112,7 @@ OptionsWidget_textIcons::OptionsWidget_textIcons(QWidget * parent)
 }
 
 OptionsWidget_textIcons::~OptionsWidget_textIcons()
-{
-}
+    = default;
 
 void OptionsWidget_textIcons::fillTable()
 {

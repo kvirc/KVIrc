@@ -148,8 +148,7 @@ RegisteredUsersDialogItem::RegisteredUsersDialogItem(QTreeWidgetItem * par, KviR
 }
 
 RegisteredUsersDialogItem::~RegisteredUsersDialogItem()
-{
-}
+    = default;
 
 QString RegisteredUsersDialogItem::key(int, bool) const
 {

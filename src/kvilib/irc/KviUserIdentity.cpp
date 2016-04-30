@@ -34,8 +34,7 @@ KviUserIdentity::KviUserIdentity()
 }
 
 KviUserIdentity::~KviUserIdentity()
-{
-}
+    = default;
 
 bool KviUserIdentity::load(KviConfigurationFile & cfg)
 {

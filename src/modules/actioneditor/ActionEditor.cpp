@@ -292,8 +292,7 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
 }
 
 SingleActionEditor::~SingleActionEditor()
-{
-}
+    = default;
 
 void SingleActionEditor::channelQueryOrConsoleWindowCheckToggled(bool)
 {
@@ -608,8 +607,7 @@ ActionEditorTreeView::ActionEditorTreeView(QWidget * pParent)
 }
 
 ActionEditorTreeView::~ActionEditorTreeView()
-{
-}
+    = default;
 
 void ActionEditorTreeView::resizeEvent(QResizeEvent * e)
 {
@@ -694,8 +692,7 @@ ActionEditor::ActionEditor(QWidget * par)
 }
 
 ActionEditor::~ActionEditor()
-{
-}
+    = default;
 
 void ActionEditor::exportActions()
 {

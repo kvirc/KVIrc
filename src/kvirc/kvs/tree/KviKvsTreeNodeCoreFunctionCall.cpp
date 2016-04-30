@@ -32,8 +32,7 @@ KviKvsTreeNodeCoreFunctionCall::KviKvsTreeNodeCoreFunctionCall(const QChar * pLo
 }
 
 KviKvsTreeNodeCoreFunctionCall::~KviKvsTreeNodeCoreFunctionCall()
-{
-}
+    = default;
 
 void KviKvsTreeNodeCoreFunctionCall::contextDescription(QString & szBuffer)
 {

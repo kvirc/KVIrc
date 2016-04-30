@@ -242,8 +242,7 @@ KviIpcSentinel::KviIpcSentinel()
 }
 
 KviIpcSentinel::~KviIpcSentinel()
-{
-}
+    = default;
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 

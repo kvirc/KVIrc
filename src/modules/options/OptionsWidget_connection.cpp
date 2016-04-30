@@ -92,8 +92,7 @@ OptionsWidget_connection::OptionsWidget_connection(QWidget * parent)
 }
 
 OptionsWidget_connection::~OptionsWidget_connection()
-{
-}
+    = default;
 
 OptionsWidget_connectionSsl::OptionsWidget_connectionSsl(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -138,8 +137,7 @@ OptionsWidget_connectionSsl::OptionsWidget_connectionSsl(QWidget * parent)
 }
 
 OptionsWidget_connectionSsl::~OptionsWidget_connectionSsl()
-{
-}
+    = default;
 
 OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -188,8 +186,7 @@ OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
 }
 
 OptionsWidget_connectionSocket::~OptionsWidget_connectionSocket()
-{
-}
+    = default;
 
 OptionsWidget_identService::OptionsWidget_identService(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -278,8 +275,7 @@ OptionsWidget_identService::OptionsWidget_identService(QWidget * parent)
 }
 
 OptionsWidget_identService::~OptionsWidget_identService()
-{
-}
+    = default;
 
 void OptionsWidget_identService::commit()
 {
@@ -306,5 +302,4 @@ OptionsWidget_connectionAdvanced::OptionsWidget_connectionAdvanced(QWidget * par
 }
 
 OptionsWidget_connectionAdvanced::~OptionsWidget_connectionAdvanced()
-{
-}
+    = default;

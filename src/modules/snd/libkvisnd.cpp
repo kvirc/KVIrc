@@ -455,8 +455,7 @@ KviOssAudiofileSoundThread::KviOssAudiofileSoundThread(const QString & szFileNam
 }
 
 KviOssAudiofileSoundThread::~KviOssAudiofileSoundThread()
-{
-}
+    = default;
 
 void KviOssAudiofileSoundThread::play()
 {
@@ -552,8 +551,7 @@ KviOssSoundThread::KviOssSoundThread(const QString & szFileName)
 }
 
 KviOssSoundThread::~KviOssSoundThread()
-{
-}
+    = default;
 
 void KviOssSoundThread::play()
 {

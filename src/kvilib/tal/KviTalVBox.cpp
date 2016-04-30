@@ -40,8 +40,7 @@ KviTalVBox::KviTalVBox(QWidget * pParent, char * pcName)
 }
 
 KviTalVBox::~KviTalVBox()
-{
-}
+    = default;
 
 void KviTalVBox::childEvent(QChildEvent * e)
 {

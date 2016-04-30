@@ -132,8 +132,7 @@ KviKvsPopupMenuItemSeparator::KviKvsPopupMenuItemSeparator(const QString & szIte
 }
 
 KviKvsPopupMenuItemSeparator::~KviKvsPopupMenuItemSeparator()
-{
-}
+    = default;
 
 void KviKvsPopupMenuItemSeparator::fill(KviKvsPopupMenu * pMenu, KviKvsPopupMenuTopLevelData * pData, int)
 {
@@ -267,8 +266,7 @@ KviKvsPopupMenuItemLabelHelper::KviKvsPopupMenuItemLabelHelper(KviKvsPopupMenuIt
 }
 
 KviKvsPopupMenuItemLabelHelper::~KviKvsPopupMenuItemLabelHelper()
-{
-}
+    = default;
 
 void KviKvsPopupMenuItemLabelHelper::labelDestroyed()
 {

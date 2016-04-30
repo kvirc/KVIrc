@@ -63,8 +63,7 @@ ChannelTreeWidgetItemData::ChannelTreeWidgetItemData(const QString & szChan, con
 }
 
 ChannelTreeWidgetItemData::~ChannelTreeWidgetItemData()
-{
-}
+    = default;
 
 ChannelTreeWidgetItem::ChannelTreeWidgetItem(ChannelTreeWidgetItemData * pData)
     : QTreeWidgetItem(), m_pData(pData)
@@ -75,8 +74,7 @@ ChannelTreeWidgetItem::ChannelTreeWidgetItem(ChannelTreeWidgetItemData * pData)
 }
 
 ChannelTreeWidgetItem::~ChannelTreeWidgetItem()
-{
-}
+    = default;
 
 bool ChannelTreeWidgetItem::operator<(const QTreeWidgetItem & other) const
 {
@@ -104,8 +102,7 @@ ChannelTreeWidgetItemDelegate::ChannelTreeWidgetItemDelegate(QTreeWidget * pWidg
 }
 
 ChannelTreeWidgetItemDelegate::~ChannelTreeWidgetItemDelegate()
-{
-}
+    = default;
 
 #define BORDER 2
 

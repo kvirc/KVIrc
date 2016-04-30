@@ -66,8 +66,7 @@ KviIrcMessageCheckListItem::KviIrcMessageCheckListItem(QTreeWidget * par, KviIrc
 }
 
 KviIrcMessageCheckListItem::~KviIrcMessageCheckListItem()
-{
-}
+    = default;
 
 KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
     : QWidget(pParent)
@@ -311,8 +310,7 @@ KviIrcViewToolTip::KviIrcViewToolTip(KviIrcView * pView)
 }
 
 KviIrcViewToolTip::~KviIrcViewToolTip()
-{
-}
+    = default;
 
 void KviIrcViewToolTip::maybeTip(const QPoint & pnt)
 {

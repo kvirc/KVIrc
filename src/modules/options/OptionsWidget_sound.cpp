@@ -45,8 +45,7 @@ OptionsWidget_sound::OptionsWidget_sound(QWidget * pParent)
 }
 
 OptionsWidget_sound::~OptionsWidget_sound()
-{
-}
+    = default;
 
 OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -142,8 +141,7 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 }
 
 OptionsWidget_soundGeneral::~OptionsWidget_soundGeneral()
-{
-}
+    = default;
 
 void OptionsWidget_soundGeneral::showEvent(QShowEvent *)
 {
@@ -350,5 +348,4 @@ OptionsWidget_sounds::OptionsWidget_sounds(QWidget * parent)
 }
 
 OptionsWidget_sounds::~OptionsWidget_sounds()
-{
-}
+    = default;

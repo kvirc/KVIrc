@@ -32,8 +32,7 @@ KviKvsTreeNodeExtendedScopeVariable::KviKvsTreeNodeExtendedScopeVariable(const Q
 }
 
 KviKvsTreeNodeExtendedScopeVariable::~KviKvsTreeNodeExtendedScopeVariable()
-{
-}
+    = default;
 
 void KviKvsTreeNodeExtendedScopeVariable::contextDescription(QString & szBuffer)
 {

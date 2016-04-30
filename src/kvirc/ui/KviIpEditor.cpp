@@ -53,8 +53,7 @@ KviIpEditor::KviIpEditor(QWidget * parent, AddressType addrType, const QString &
 }
 
 KviIpEditor::~KviIpEditor()
-{
-}
+    = default;
 
 void KviIpEditor::setEnabled(bool bEnabled)
 {

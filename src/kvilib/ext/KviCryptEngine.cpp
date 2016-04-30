@@ -156,8 +156,7 @@ KviCryptEngine::KviCryptEngine()
 }
 
 KviCryptEngine::~KviCryptEngine()
-{
-}
+    = default;
 
 #ifdef COMPILE_CRYPT_SUPPORT
 

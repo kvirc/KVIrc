@@ -56,8 +56,7 @@ OptionsWidget_windowList::OptionsWidget_windowList(QWidget * parent)
 }
 
 OptionsWidget_windowList::~OptionsWidget_windowList()
-{
-}
+    = default;
 
 OptionsWidget_windowListTree::OptionsWidget_windowListTree(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -66,8 +65,7 @@ OptionsWidget_windowListTree::OptionsWidget_windowListTree(QWidget * parent)
 }
 
 OptionsWidget_windowListTree::~OptionsWidget_windowListTree()
-{
-}
+    = default;
 
 OptionsWidget_windowListTreeForeground::OptionsWidget_windowListTreeForeground(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -93,8 +91,7 @@ OptionsWidget_windowListTreeForeground::OptionsWidget_windowListTreeForeground(Q
 }
 
 OptionsWidget_windowListTreeForeground::~OptionsWidget_windowListTreeForeground()
-{
-}
+    = default;
 
 OptionsWidget_windowListTreeBackground::OptionsWidget_windowListTreeBackground(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -161,8 +158,7 @@ OptionsWidget_windowListTreeBackground::OptionsWidget_windowListTreeBackground(Q
 }
 
 OptionsWidget_windowListTreeBackground::~OptionsWidget_windowListTreeBackground()
-{
-}
+    = default;
 
 void OptionsWidget_windowListTreeBackground::commit()
 {
@@ -213,8 +209,7 @@ OptionsWidget_windowListTreeFeatures::OptionsWidget_windowListTreeFeatures(QWidg
 }
 
 OptionsWidget_windowListTreeFeatures::~OptionsWidget_windowListTreeFeatures()
-{
-}
+    = default;
 
 OptionsWidget_windowListClassic::OptionsWidget_windowListClassic(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -246,5 +241,4 @@ OptionsWidget_windowListClassic::OptionsWidget_windowListClassic(QWidget * paren
 }
 
 OptionsWidget_windowListClassic::~OptionsWidget_windowListClassic()
-{
-}
+    = default;

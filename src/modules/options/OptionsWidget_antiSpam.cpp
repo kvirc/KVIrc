@@ -51,8 +51,7 @@ OptionsWidget_antispam::OptionsWidget_antispam(QWidget * parent)
 }
 
 OptionsWidget_antispam::~OptionsWidget_antispam()
-{
-}
+    = default;
 
 void OptionsWidget_antispam::reenableStuff(bool)
 {

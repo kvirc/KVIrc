@@ -130,9 +130,7 @@ public:
 	{
 		m_pReader = pReader;
 	}
-	~KviXmlHandler() override
-	{
-	}
+	~KviXmlHandler() override = default;
 
 private:
 	bool kvsCodeFailure()

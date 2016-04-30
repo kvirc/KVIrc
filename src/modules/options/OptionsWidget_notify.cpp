@@ -85,5 +85,4 @@ OptionsWidget_notify::OptionsWidget_notify(QWidget * parent)
 }
 
 OptionsWidget_notify::~OptionsWidget_notify()
-{
-}
+    = default;

@@ -43,8 +43,7 @@ KviIrcServerParser::KviIrcServerParser()
 }
 
 KviIrcServerParser::~KviIrcServerParser()
-{
-}
+    = default;
 
 void KviIrcServerParser::parseMessage(const char * message, KviIrcConnection * pConnection)
 {

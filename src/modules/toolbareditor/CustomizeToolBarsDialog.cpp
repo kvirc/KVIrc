@@ -204,8 +204,7 @@ CustomToolBarPropertiesDialog::CustomToolBarPropertiesDialog(QWidget * p, const 
 }
 
 CustomToolBarPropertiesDialog::~CustomToolBarPropertiesDialog()
-{
-}
+    = default;
 
 void CustomToolBarPropertiesDialog::iconSelected(const QString & szIconId)
 {

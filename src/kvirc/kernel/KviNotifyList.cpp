@@ -122,8 +122,7 @@ KviNotifyListManager::KviNotifyListManager(KviIrcConnection * pConnection)
 }
 
 KviNotifyListManager::~KviNotifyListManager()
-{
-}
+    = default;
 
 void KviNotifyListManager::start()
 {

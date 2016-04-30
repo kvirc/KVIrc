@@ -36,8 +36,7 @@ NotifierWindowBorder::NotifierWindowBorder(QSize s)
 }
 
 NotifierWindowBorder::~NotifierWindowBorder()
-{
-}
+    = default;
 
 void NotifierWindowBorder::loadImages()
 {

@@ -70,8 +70,7 @@ KviKvsTreeNodeSpecialCommandSwitchLabelCase::KviKvsTreeNodeSpecialCommandSwitchL
 }
 
 KviKvsTreeNodeSpecialCommandSwitchLabelCase::~KviKvsTreeNodeSpecialCommandSwitchLabelCase()
-{
-}
+    = default;
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelCase::contextDescription(QString & szBuffer)
 {
@@ -165,8 +164,7 @@ KviKvsTreeNodeSpecialCommandSwitchLabelMatch::KviKvsTreeNodeSpecialCommandSwitch
 }
 
 KviKvsTreeNodeSpecialCommandSwitchLabelMatch::~KviKvsTreeNodeSpecialCommandSwitchLabelMatch()
-{
-}
+    = default;
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelMatch::contextDescription(QString & szBuffer)
 {
@@ -225,8 +223,7 @@ KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::KviKvsTreeNodeSpecialCommandSwitc
 }
 
 KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::~KviKvsTreeNodeSpecialCommandSwitchLabelRegexp()
-{
-}
+    = default;
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::contextDescription(QString & szBuffer)
 {
@@ -285,8 +282,7 @@ KviKvsTreeNodeSpecialCommandSwitchLabelDefault::KviKvsTreeNodeSpecialCommandSwit
 }
 
 KviKvsTreeNodeSpecialCommandSwitchLabelDefault::~KviKvsTreeNodeSpecialCommandSwitchLabelDefault()
-{
-}
+    = default;
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelDefault::contextDescription(QString & szBuffer)
 {

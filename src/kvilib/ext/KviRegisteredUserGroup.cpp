@@ -30,5 +30,4 @@ KviRegisteredUserGroup::KviRegisteredUserGroup(const QString & szName)
 }
 
 KviRegisteredUserGroup::~KviRegisteredUserGroup()
-{
-}
+    = default;

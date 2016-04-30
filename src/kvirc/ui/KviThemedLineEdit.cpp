@@ -62,8 +62,7 @@ KviThemedLineEdit::KviThemedLineEdit(QWidget * par, KviWindow * pWindow, const c
 }
 
 KviThemedLineEdit::~KviThemedLineEdit()
-{
-}
+    = default;
 
 void KviThemedLineEdit::applyOptions()
 {

@@ -88,8 +88,7 @@ KviDnsResolverThread::KviDnsResolverThread(KviDnsResolver * pDns)
 }
 
 KviDnsResolverThread::~KviDnsResolverThread()
-{
-}
+    = default;
 
 KviError::Code KviDnsResolverThread::translateDnsError(int iErr)
 {

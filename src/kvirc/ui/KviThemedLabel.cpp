@@ -51,8 +51,7 @@ KviThemedLabel::KviThemedLabel(QWidget * par, KviWindow * pWindow, const char * 
 }
 
 KviThemedLabel::~KviThemedLabel()
-{
-}
+    = default;
 
 void KviThemedLabel::applyOptions()
 {

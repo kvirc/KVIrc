@@ -33,8 +33,7 @@ DccVoiceCodec::DccVoiceCodec()
 }
 
 DccVoiceCodec::~DccVoiceCodec()
-{
-}
+    = default;
 
 void DccVoiceCodec::encode(KviDataBuffer *, KviDataBuffer *)
 {
@@ -66,8 +65,7 @@ DccVoiceNullCodec::DccVoiceNullCodec()
 }
 
 DccVoiceNullCodec::~DccVoiceNullCodec()
-{
-}
+    = default;
 
 void DccVoiceNullCodec::encode(KviDataBuffer * signal, KviDataBuffer * stream)
 {
@@ -103,8 +101,7 @@ DccVideoCodec::DccVideoCodec()
 }
 
 DccVideoCodec::~DccVideoCodec()
-{
-}
+    = default;
 
 void DccVideoCodec::encodeVideo(KviDataBuffer *, KviDataBuffer *)
 {
@@ -140,8 +137,7 @@ DccVideoSJpegCodec::DccVideoSJpegCodec()
 }
 
 DccVideoSJpegCodec::~DccVideoSJpegCodec()
-{
-}
+    = default;
 
 void DccVideoSJpegCodec::encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream)
 {

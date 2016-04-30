@@ -76,8 +76,7 @@ KviDefaultScriptManager::KviDefaultScriptManager()
 }
 
 KviDefaultScriptManager::~KviDefaultScriptManager()
-{
-}
+    = default;
 
 void KviDefaultScriptManager::init()
 {
@@ -497,8 +496,7 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 }
 
 KviDefaultScriptDialog::~KviDefaultScriptDialog()
-{
-}
+    = default;
 
 void KviDefaultScriptDialog::toggleAll(bool)
 {

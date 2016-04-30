@@ -33,8 +33,7 @@ KviKvsTreeNodeAliasFunctionCall::KviKvsTreeNodeAliasFunctionCall(const QChar * p
 }
 
 KviKvsTreeNodeAliasFunctionCall::~KviKvsTreeNodeAliasFunctionCall()
-{
-}
+    = default;
 
 void KviKvsTreeNodeAliasFunctionCall::contextDescription(QString & szBuffer)
 {

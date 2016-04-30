@@ -910,8 +910,7 @@ KviSSLCipherInfo::KviSSLCipherInfo(SSL_CIPHER * c, SSL * s)
 }
 
 KviSSLCipherInfo::~KviSSLCipherInfo()
-{
-}
+    = default;
 
 #ifdef COMPILE_ON_WINDOWS
 

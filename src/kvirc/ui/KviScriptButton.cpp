@@ -79,5 +79,4 @@ KviWindowScriptButton::KviWindowScriptButton(QWidget * p, KviWindow * wnd, const
 }
 
 KviWindowScriptButton::~KviWindowScriptButton()
-{
-}
+    = default;

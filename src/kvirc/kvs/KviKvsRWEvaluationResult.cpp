@@ -33,8 +33,7 @@ KviKvsRWEvaluationResult::KviKvsRWEvaluationResult(KviKvsRWEvaluationResult * pP
 }
 
 KviKvsRWEvaluationResult::~KviKvsRWEvaluationResult()
-{
-}
+    = default;
 
 KviKvsArrayElement::KviKvsArrayElement(KviKvsRWEvaluationResult * pParent, KviKvsVariant * pVariant, KviKvsArray * pArray, int iKey)
     : KviKvsRWEvaluationResult(pParent, pVariant)

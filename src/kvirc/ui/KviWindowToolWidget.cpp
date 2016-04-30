@@ -40,8 +40,7 @@ KviWindowToolWidget::KviWindowToolWidget(QWidget * pParent, KviWindowToolPageBut
 }
 
 KviWindowToolWidget::~KviWindowToolWidget()
-{
-}
+    = default;
 
 KviWindowToolPageButton::KviWindowToolPageButton(KviIconManager::SmallIcon eIconOff, KviIconManager::SmallIcon eIconOn, const QString & szText, QWidget * pParent, bool bOn)
     : QToolButton(pParent)
@@ -59,5 +58,4 @@ KviWindowToolPageButton::KviWindowToolPageButton(KviIconManager::SmallIcon eIcon
 }
 
 KviWindowToolPageButton::~KviWindowToolPageButton()
-{
-}
+    = default;

@@ -66,8 +66,7 @@ KviKvsWidget::KviKvsWidget(KvsObject_widget * object, QWidget * par)
 }
 
 KviKvsWidget::~KviKvsWidget()
-{
-}
+    = default;
 
 QSize KviKvsWidget::sizeHint() const
 {

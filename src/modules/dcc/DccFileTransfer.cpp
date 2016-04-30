@@ -2522,8 +2522,7 @@ DccFileTransferBandwidthDialog::DccFileTransferBandwidthDialog(QWidget * pParent
 }
 
 DccFileTransferBandwidthDialog::~DccFileTransferBandwidthDialog()
-{
-}
+    = default;
 
 void DccFileTransferBandwidthDialog::okClicked()
 {

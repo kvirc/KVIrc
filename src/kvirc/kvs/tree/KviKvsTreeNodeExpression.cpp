@@ -34,8 +34,7 @@ KviKvsTreeNodeExpression::KviKvsTreeNodeExpression(const QChar * pLocation)
 }
 
 KviKvsTreeNodeExpression::~KviKvsTreeNodeExpression()
-{
-}
+    = default;
 
 void KviKvsTreeNodeExpression::contextDescription(QString & szBuffer)
 {
@@ -162,8 +161,7 @@ KviKvsTreeNodeExpressionOperator::KviKvsTreeNodeExpressionOperator(const QChar *
 }
 
 KviKvsTreeNodeExpressionOperator::~KviKvsTreeNodeExpressionOperator()
-{
-}
+    = default;
 
 void KviKvsTreeNodeExpressionOperator::contextDescription(QString & szBuffer)
 {
@@ -225,8 +223,7 @@ KviKvsTreeNodeExpressionUnaryOperatorNegate::KviKvsTreeNodeExpressionUnaryOperat
 }
 
 KviKvsTreeNodeExpressionUnaryOperatorNegate::~KviKvsTreeNodeExpressionUnaryOperatorNegate()
-{
-}
+    = default;
 
 void KviKvsTreeNodeExpressionUnaryOperatorNegate::contextDescription(QString & szBuffer)
 {
@@ -265,8 +262,7 @@ KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot::KviKvsTreeNodeExpressionUnaryOp
 }
 
 KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot::~KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot()
-{
-}
+    = default;
 
 void KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot::contextDescription(QString & szBuffer)
 {
@@ -305,8 +301,7 @@ KviKvsTreeNodeExpressionUnaryOperatorLogicalNot::KviKvsTreeNodeExpressionUnaryOp
 }
 
 KviKvsTreeNodeExpressionUnaryOperatorLogicalNot::~KviKvsTreeNodeExpressionUnaryOperatorLogicalNot()
-{
-}
+    = default;
 
 void KviKvsTreeNodeExpressionUnaryOperatorLogicalNot::contextDescription(QString & szBuffer)
 {

@@ -1125,8 +1125,7 @@ PopupEditorWidget::PopupEditorWidget(QWidget * par)
 }
 
 PopupEditorWidget::~PopupEditorWidget()
-{
-}
+    = default;
 
 void PopupEditorWidget::oneTimeSetup()
 {

@@ -40,8 +40,7 @@ KviModeWidget::KviModeWidget(QWidget * par, KviChannelWindow * chan, const char 
 }
 
 KviModeWidget::~KviModeWidget()
-{
-}
+    = default;
 
 void KviModeWidget::reset()
 {

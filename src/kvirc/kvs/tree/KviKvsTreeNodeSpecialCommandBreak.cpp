@@ -32,8 +32,7 @@ KviKvsTreeNodeSpecialCommandBreak::KviKvsTreeNodeSpecialCommandBreak(const QChar
 }
 
 KviKvsTreeNodeSpecialCommandBreak::~KviKvsTreeNodeSpecialCommandBreak()
-{
-}
+    = default;
 
 void KviKvsTreeNodeSpecialCommandBreak::contextDescription(QString & szBuffer)
 {

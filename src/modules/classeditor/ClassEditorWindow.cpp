@@ -2051,8 +2051,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 }
 
 KviClassEditorDialog::~KviClassEditorDialog()
-{
-}
+    = default;
 
 void KviClassEditorDialog::textChanged(const QString & szText)
 {
@@ -2153,8 +2152,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 }
 
 KviClassEditorFunctionDialog::~KviClassEditorFunctionDialog()
-{
-}
+    = default;
 
 void KviClassEditorFunctionDialog::textChanged(const QString & szText)
 {

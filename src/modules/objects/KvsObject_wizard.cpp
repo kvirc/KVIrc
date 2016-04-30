@@ -374,5 +374,4 @@ void KviKvsMdmWizard::slotBackClicked()
 	m_pParentScript->backClicked();
 }
 KviKvsMdmWizard::~KviKvsMdmWizard()
-{
-}
+    = default;

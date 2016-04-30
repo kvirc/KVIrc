@@ -39,8 +39,7 @@ KviKvsScriptWindowWindow::KviKvsScriptWindowWindow(const QString & szName)
 }
 
 KviKvsScriptWindowWindow::~KviKvsScriptWindowWindow()
-{
-}
+    = default;
 
 void KviKvsScriptWindowWindow::setCentralWidget(KvsObject_widget * o, QWidget * w)
 {

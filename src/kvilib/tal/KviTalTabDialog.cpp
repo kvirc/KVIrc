@@ -45,8 +45,7 @@ KviTalTabDialog::KviTalTabDialog(QWidget * pParent, const char * name, bool bMod
 }
 
 KviTalTabDialog::~KviTalTabDialog()
-{
-}
+    = default;
 
 void KviTalTabDialog::addTab(QWidget * widget, const QString & label)
 {

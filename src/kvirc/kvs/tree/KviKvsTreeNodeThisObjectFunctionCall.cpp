@@ -31,8 +31,7 @@ KviKvsTreeNodeThisObjectFunctionCall::KviKvsTreeNodeThisObjectFunctionCall(const
 }
 
 KviKvsTreeNodeThisObjectFunctionCall::~KviKvsTreeNodeThisObjectFunctionCall()
-{
-}
+    = default;
 
 void KviKvsTreeNodeThisObjectFunctionCall::contextDescription(QString & szBuffer)
 {

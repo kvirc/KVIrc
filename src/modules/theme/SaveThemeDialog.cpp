@@ -207,8 +207,7 @@ SaveThemeDialog::SaveThemeDialog(QWidget * pParent)
 }
 
 SaveThemeDialog::~SaveThemeDialog()
-{
-}
+    = default;
 
 void SaveThemeDialog::imageSelectionChanged(const QString & szImagePath)
 {

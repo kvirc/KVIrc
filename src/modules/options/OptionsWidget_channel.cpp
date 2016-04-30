@@ -41,8 +41,7 @@ OptionsWidget_channel::OptionsWidget_channel(QWidget * pParent)
 }
 
 OptionsWidget_channel::~OptionsWidget_channel()
-{
-}
+    = default;
 
 OptionsWidget_channelGeneral::OptionsWidget_channelGeneral(QWidget * pParent)
     : KviOptionsWidget(pParent)
@@ -90,8 +89,7 @@ OptionsWidget_channelGeneral::OptionsWidget_channelGeneral(QWidget * pParent)
 }
 
 OptionsWidget_channelGeneral::~OptionsWidget_channelGeneral()
-{
-}
+    = default;
 
 OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
     : KviOptionsWidget(pParent)
@@ -165,8 +163,7 @@ OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
 }
 
 OptionsWidget_channelAdvanced::~OptionsWidget_channelAdvanced()
-{
-}
+    = default;
 
 void OptionsWidget_channelAdvanced::commit()
 {

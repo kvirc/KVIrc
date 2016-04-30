@@ -45,8 +45,7 @@ StatusBarApplet::StatusBarApplet(KviStatusBar * parent, KviStatusBarAppletDescri
 }
 
 StatusBarApplet::~StatusBarApplet()
-{
-}
+    = default;
 
 static KviStatusBarApplet * CreateTorrentClientApplet(KviStatusBar * bar, KviStatusBarAppletDescriptor * desc)
 {

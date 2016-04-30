@@ -41,8 +41,7 @@ OptionsWidget_alertsAndHighlighting::OptionsWidget_alertsAndHighlighting(QWidget
 }
 
 OptionsWidget_alertsAndHighlighting::~OptionsWidget_alertsAndHighlighting()
-{
-}
+    = default;
 
 OptionsWidget_highlighting::OptionsWidget_highlighting(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -98,8 +97,7 @@ OptionsWidget_highlighting::OptionsWidget_highlighting(QWidget * parent)
 }
 
 OptionsWidget_highlighting::~OptionsWidget_highlighting()
-{
-}
+    = default;
 
 void OptionsWidget_highlighting::commit()
 {
@@ -140,7 +138,6 @@ OptionsWidget_alerts::OptionsWidget_alerts(QWidget * parent)
 }
 
 OptionsWidget_alerts::~OptionsWidget_alerts()
-{
-}
+    = default;
 
 #endif //_OPTW_HIGHLIGHTING_CPP_

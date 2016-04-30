@@ -603,8 +603,7 @@ KviKvsTreeWidget::KviKvsTreeWidget(QWidget * par, const char *, KvsObject_treeWi
 }
 
 KviKvsTreeWidget::~KviKvsTreeWidget()
-{
-}
+    = default;
 
 void KviKvsTreeWidget::dragEnterEvent(QDragEnterEvent * e)
 {

@@ -35,8 +35,7 @@ OptionsWidget_dcc::OptionsWidget_dcc(QWidget * pParent)
 }
 
 OptionsWidget_dcc::~OptionsWidget_dcc()
-{
-}
+    = default;
 
 OptionsWidget_dccGeneral::OptionsWidget_dccGeneral(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -54,8 +53,7 @@ OptionsWidget_dccGeneral::OptionsWidget_dccGeneral(QWidget * parent)
 }
 
 OptionsWidget_dccGeneral::~OptionsWidget_dccGeneral()
-{
-}
+    = default;
 
 OptionsWidget_dccAdvanced::OptionsWidget_dccAdvanced(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -155,8 +153,7 @@ OptionsWidget_dccAdvanced::OptionsWidget_dccAdvanced(QWidget * parent)
 }
 
 OptionsWidget_dccAdvanced::~OptionsWidget_dccAdvanced()
-{
-}
+    = default;
 
 OptionsWidget_dccSend::OptionsWidget_dccSend(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -165,8 +162,7 @@ OptionsWidget_dccSend::OptionsWidget_dccSend(QWidget * parent)
 }
 
 OptionsWidget_dccSend::~OptionsWidget_dccSend()
-{
-}
+    = default;
 
 OptionsWidget_dccSendGeneral::OptionsWidget_dccSendGeneral(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -223,8 +219,7 @@ OptionsWidget_dccSendGeneral::OptionsWidget_dccSendGeneral(QWidget * parent)
 }
 
 OptionsWidget_dccSendGeneral::~OptionsWidget_dccSendGeneral()
-{
-}
+    = default;
 
 OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -326,8 +321,7 @@ OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
 }
 
 OptionsWidget_dccSendAdvanced::~OptionsWidget_dccSendAdvanced()
-{
-}
+    = default;
 
 OptionsWidget_dccChat::OptionsWidget_dccChat(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -375,8 +369,7 @@ OptionsWidget_dccChat::OptionsWidget_dccChat(QWidget * parent)
 }
 
 OptionsWidget_dccChat::~OptionsWidget_dccChat()
-{
-}
+    = default;
 
 OptionsWidget_dccVoice::OptionsWidget_dccVoice(QWidget * p) : KviOptionsWidget(p)
 {
@@ -419,5 +412,4 @@ OptionsWidget_dccVoice::OptionsWidget_dccVoice(QWidget * p) : KviOptionsWidget(p
 }
 
 OptionsWidget_dccVoice::~OptionsWidget_dccVoice()
-{
-}
+    = default;

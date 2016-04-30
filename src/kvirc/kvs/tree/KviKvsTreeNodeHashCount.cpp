@@ -34,8 +34,7 @@ KviKvsTreeNodeHashCount::KviKvsTreeNodeHashCount(const QChar * pLocation, KviKvs
 }
 
 KviKvsTreeNodeHashCount::~KviKvsTreeNodeHashCount()
-{
-}
+    = default;
 
 void KviKvsTreeNodeHashCount::contextDescription(QString & szBuffer)
 {

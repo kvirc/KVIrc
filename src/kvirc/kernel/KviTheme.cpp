@@ -45,8 +45,7 @@ KviThemeInfo::KviThemeInfo()
 }
 
 KviThemeInfo::~KviThemeInfo()
-{
-}
+    = default;
 
 void KviThemeInfo::setDirectoryAndLocation(const QString & szDirectory, Location eLocation)
 {
