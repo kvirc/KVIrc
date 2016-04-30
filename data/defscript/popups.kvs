@@ -750,14 +750,14 @@ defpopup(defaulttextview)
 		}
 	}
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),90) (!%:multiple && $server && $popup.exists(0))
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),90) (!%:multiple && $server)
 	{
 		whois $0 $0
 	}
 
 	separator
 
-	popup($tr("&Information","defscript"),317) ($server && $popup.exists(0))
+	popup($tr("&Information","defscript"),317) ($server)
 	{
 		item($str.printf($tr("/WHOIS ?s","defscript"),$0),88)
 		{
@@ -784,26 +784,26 @@ defpopup(defaulttextview)
 
 	separator
 
-	item($tr("&Query","defscript") %:visible,47) ($server && $popup.exists(0))
+	item($tr("&Query","defscript") %:visible,47) ($server)
 	{
 		query $0
 	}
 
 	separator
 
-	extpopup(C&TCP,ctcp,162) ($server && $popup.exists(0))
+	extpopup(C&TCP,ctcp,162) ($server)
 
-	extpopup(&DCC,dcc,325) ($server && $popup.exists(0))
+	extpopup(&DCC,dcc,325) ($server)
 
 	separator
 
-	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple && $server && $popup.exists(0))
+	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple && $server)
 
-	extpopup($tr("&Highlight","defscript"),highlight,269) (!%:multiple && $server && $popup.exists(0))
+	extpopup($tr("&Highlight","defscript"),highlight,269) (!%:multiple && $server)
 
-	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple && $server && $popup.exists(0))
+	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple && $server)
 
-	item($tr("Notify avatar","defscript"),57) ($server && $popup.exists(0))
+	item($tr("Notify avatar","defscript"),57) ($server)
 	{
 		avatar.notify $0
 	}
