@@ -280,15 +280,15 @@ public:
 public:
 	bool ok() { return m_pRecvCodec && g_pUtf8TextCodec; };
 
-	virtual int mibEnum() const { return 0; };
+	int mibEnum() const override { return 0; };
 
-	virtual QByteArray name() const { return m_szName; };
+	QByteArray name() const override { return m_szName; };
 protected:
-	virtual QByteArray convertFromUnicode(const QChar * input, int number, ConverterState * state) const
+	QByteArray convertFromUnicode(const QChar * input, int number, ConverterState * state) const override
 	{
 		return m_pSendCodec->fromUnicode(input, number, state);
 	}
-	virtual QString convertToUnicode(const char * chars, int len, ConverterState * state) const
+	QString convertToUnicode(const char * chars, int len, ConverterState * state) const override
 	{
 		if(g_utf8_validate(chars, len, nullptr))
 			return g_pUtf8TextCodec->toUnicode(chars, len, state);

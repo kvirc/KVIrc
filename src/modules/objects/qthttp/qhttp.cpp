@@ -216,19 +216,19 @@ public:
 		data.ba = d;
 	}
 
-	~QHttpNormalRequest()
+	~QHttpNormalRequest() override
 	{
 		if(is_ba)
 			delete data.ba;
 	}
 
-	void start(QHttp *);
-	bool hasRequestHeader();
-	QHttpRequestHeader requestHeader();
+	void start(QHttp *) override;
+	bool hasRequestHeader() override;
+	QHttpRequestHeader requestHeader() override;
 	inline void setRequestHeader(const QHttpRequestHeader & h) { header = h; }
 
-	QIODevice * sourceDevice();
-	QIODevice * destinationDevice();
+	QIODevice * sourceDevice() override;
+	QIODevice * destinationDevice() override;
 
 protected:
 	QHttpRequestHeader header;
@@ -324,11 +324,11 @@ public:
 	{
 	}
 
-	~QHttpPGHRequest()
+	~QHttpPGHRequest() override
 	{
 	}
 
-	void start(QHttp *);
+	void start(QHttp *) override;
 };
 
 void QHttpPGHRequest::start(QHttp * http)
@@ -354,13 +354,13 @@ public:
 	{
 	}
 
-	void start(QHttp *);
+	void start(QHttp *) override;
 
-	QIODevice * sourceDevice()
+	QIODevice * sourceDevice() override
 	{
 		return nullptr;
 	}
-	QIODevice * destinationDevice()
+	QIODevice * destinationDevice() override
 	{
 		return nullptr;
 	}
@@ -403,13 +403,13 @@ public:
 	{
 	}
 
-	void start(QHttp *);
+	void start(QHttp *) override;
 
-	QIODevice * sourceDevice()
+	QIODevice * sourceDevice() override
 	{
 		return nullptr;
 	}
-	QIODevice * destinationDevice()
+	QIODevice * destinationDevice() override
 	{
 		return nullptr;
 	}
@@ -442,7 +442,7 @@ public:
 		this->proxy = proxy;
 	}
 
-	inline void start(QHttp * http)
+	inline void start(QHttp * http) override
 	{
 		http->d->proxy = proxy;
 		QString user = proxy.user();
@@ -454,11 +454,11 @@ public:
 		http->d->finishedWithSuccess();
 	}
 
-	inline QIODevice * sourceDevice()
+	inline QIODevice * sourceDevice() override
 	{
 		return nullptr;
 	}
-	inline QIODevice * destinationDevice()
+	inline QIODevice * destinationDevice() override
 	{
 		return nullptr;
 	}
@@ -482,13 +482,13 @@ public:
 	{
 	}
 
-	void start(QHttp *);
+	void start(QHttp *) override;
 
-	QIODevice * sourceDevice()
+	QIODevice * sourceDevice() override
 	{
 		return nullptr;
 	}
-	QIODevice * destinationDevice()
+	QIODevice * destinationDevice() override
 	{
 		return nullptr;
 	}
@@ -515,13 +515,13 @@ public:
 	QHttpCloseRequest()
 	{
 	}
-	void start(QHttp *);
+	void start(QHttp *) override;
 
-	QIODevice * sourceDevice()
+	QIODevice * sourceDevice() override
 	{
 		return nullptr;
 	}
-	QIODevice * destinationDevice()
+	QIODevice * destinationDevice() override
 	{
 		return nullptr;
 	}
