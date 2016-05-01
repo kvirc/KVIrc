@@ -2582,12 +2582,14 @@ static bool dcc_kvs_fnc_averageSpeed(KviKvsModuleFunctionCall * c)
 	@type:
 		function
 	@title:
+		$dcc.currentSpeed
+	@short:
 		Returns the current speed of a DCC file transfer
 	@syntax:
 		$dcc.currentSpeed
 		$dcc.currentSpeed(<dcc_id>)
 	@description:
-                Returns the instant speed (in bytes/sec) of the specified DCC session.[br]
+                Returns the current speed (in bytes/sec) of the specified DCC session.[br]
                 If <dcc_id> is omitted then the DCC Session associated
                 with the current window is assumed.[br]
                 If <dcc_id> is not a valid DCC session identifier (or it is omitted
