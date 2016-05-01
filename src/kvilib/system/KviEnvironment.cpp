@@ -84,7 +84,7 @@ namespace KviEnvironment
 		else
 		{
 			// hmmm
-			if(getVariable(name) == 0)
+			if(getVariable(name) == nullptr)
 			{
 				// ok, the string is not in the environment
 				// we can free it

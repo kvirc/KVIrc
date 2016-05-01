@@ -52,7 +52,7 @@ extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 
 // KviApplication.cpp
 extern KVIRC_API KviPointerHashTable<QString, KviWindow> * g_pGlobalWindowDict;
-KviPointerList<UserWindow> * g_pUserWindowList = 0;
+KviPointerList<UserWindow> * g_pUserWindowList = nullptr;
 
 // $window.caption $window.x $window.y $window.width $window.height $window.isActive $window.type
 // $window.input.text $window.input.cursorpos $window.input.textlen
@@ -1039,7 +1039,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	if(szFlags.contains('i'))
 		iFlags |= UserWindow::HasInput;
 
-	KviConsoleWindow * pConsole = 0;
+	KviConsoleWindow * pConsole = nullptr;
 	if(c->parameterList()->count() >= 3)
 	{
 		pConsole = g_pApp->findConsole(uCtx);
@@ -1325,7 +1325,7 @@ static bool window_kvs_cmd_savePropertiesAsDefault(KviKvsModuleCommandCall * c)
 #ifdef COMPILE_CRYPT_SUPPORT
 static bool initializeCryptEngine(KviCryptEngine * eng, KviCString & szEncryptKey, KviCString & szDecryptKey, QString & szError)
 {
-	char * encKey = 0;
+	char * encKey = nullptr;
 	int encKeyLen = 0;
 
 	char * tmpKey;
@@ -1342,7 +1342,7 @@ static bool initializeCryptEngine(KviCryptEngine * eng, KviCString & szEncryptKe
 		return false;
 	}
 
-	char * decKey = 0;
+	char * decKey = nullptr;
 	int decKeyLen = 0;
 
 	decKeyLen = szDecryptKey.hexToBuffer(&tmpKey, false);
@@ -1437,7 +1437,7 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 
 	if(szEngine.isEmpty())
 	{
-		pWnd->setCryptSessionInfo(0);
+		pWnd->setCryptSessionInfo(nullptr);
 	}
 	else
 	{

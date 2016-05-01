@@ -38,8 +38,7 @@ KviKvsTreeNodeModuleSimpleCommand::KviKvsTreeNodeModuleSimpleCommand(const QChar
 }
 
 KviKvsTreeNodeModuleSimpleCommand::~KviKvsTreeNodeModuleSimpleCommand()
-{
-}
+    = default;
 
 void KviKvsTreeNodeModuleSimpleCommand::contextDescription(QString & szBuffer)
 {

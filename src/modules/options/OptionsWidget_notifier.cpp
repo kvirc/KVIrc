@@ -95,8 +95,7 @@ OptionsWidget_notifierLook::OptionsWidget_notifierLook(QWidget * parent)
 }
 
 OptionsWidget_notifierLook::~OptionsWidget_notifierLook()
-{
-}
+    = default;
 
 void OptionsWidget_notifierLook::commit()
 {
@@ -252,8 +251,7 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 }
 
 OptionsWidget_notifier::~OptionsWidget_notifier()
-{
-}
+    = default;
 
 #ifdef COMPILE_KDE_SUPPORT
 void OptionsWidget_notifier::toggleNotifierProtocol(bool)

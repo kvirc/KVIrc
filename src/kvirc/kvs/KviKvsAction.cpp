@@ -77,8 +77,7 @@ KviKvsAction::KviKvsAction(
 }
 
 KviKvsAction::~KviKvsAction()
-{
-}
+    = default;
 
 const QString & KviKvsAction::scriptCode()
 {

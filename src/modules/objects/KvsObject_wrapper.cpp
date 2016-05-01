@@ -172,14 +172,14 @@ bool KvsObject_wrapper::init(KviKvsRunTimeContext * pContext, KviKvsVariantList 
 	if(!pParams)
 		return false;
 
-	QWidget * pWidget = NULL;
+	QWidget * pWidget = nullptr;
 	unsigned int i = 0;
 
 	while(i < pParams->count())
 	{
 		QString szClass;
 		QString szName;
-		QString s = 0;
+		QString s = nullptr;
 
 		pParams->at(i)->asString(s);
 		i++;
@@ -283,7 +283,7 @@ QWidget * KvsObject_wrapper::findTopLevelWidgetToWrap(const QString & szClass, c
 {
 	QWidgetList list = g_pApp->topLevelWidgets();
 	if(list.isEmpty())
-		return NULL;
+		return nullptr;
 
 	Q_FOREACH(QWidget * w, list)
 	{
@@ -305,14 +305,14 @@ QWidget * KvsObject_wrapper::findTopLevelWidgetToWrap(const QString & szClass, c
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 
 QWidget * KvsObject_wrapper::findWidgetToWrap(const QString & szClass, const QString & szName, QWidget * pParent, bool bRecursive)
 {
 	QList<QObject *> list = pParent->children();
 	if(list.isEmpty())
-		return NULL;
+		return nullptr;
 
 	Q_FOREACH(QObject * obj, list)
 	{
@@ -340,5 +340,5 @@ QWidget * KvsObject_wrapper::findWidgetToWrap(const QString & szClass, const QSt
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }

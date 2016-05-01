@@ -53,8 +53,8 @@ KviOptionsWidget::KviOptionsWidget(QWidget * parent, const char * name, bool)
 	// FIXME: The bSunken value is ignored!
 	//if(bSunken)setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
 	//setFrameStyle(QFrame::StyledPanel | QFrame::Plain);
-	m_pLayout = 0;
-	m_pTabWidget = 0;
+	m_pLayout = nullptr;
+	m_pTabWidget = nullptr;
 	m_iResetFlags = 0;
 	m_iSelectors = 0;
 	m_pSelectorInterfaceList = new KviPointerList<KviSelectorInterface>();

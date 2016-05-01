@@ -37,8 +37,8 @@ KviIrcServerDataBase::KviIrcServerDataBase()
 {
 	m_pRecords = new KviPointerHashTable<QString, KviIrcNetwork>(17, false);
 	m_pRecords->setAutoDelete(true);
-	m_pAutoConnectOnStartupServers = 0;
-	m_pAutoConnectOnStartupNetworks = 0;
+	m_pAutoConnectOnStartupServers = nullptr;
+	m_pAutoConnectOnStartupNetworks = nullptr;
 }
 
 KviIrcServerDataBase::~KviIrcServerDataBase()
@@ -56,7 +56,7 @@ void KviIrcServerDataBase::clearAutoConnectOnStartupServers()
 		return;
 
 	delete m_pAutoConnectOnStartupServers;
-	m_pAutoConnectOnStartupServers = 0;
+	m_pAutoConnectOnStartupServers = nullptr;
 }
 
 void KviIrcServerDataBase::clearAutoConnectOnStartupNetworks()
@@ -65,7 +65,7 @@ void KviIrcServerDataBase::clearAutoConnectOnStartupNetworks()
 		return;
 
 	delete m_pAutoConnectOnStartupNetworks;
-	m_pAutoConnectOnStartupNetworks = 0;
+	m_pAutoConnectOnStartupNetworks = nullptr;
 }
 
 void KviIrcServerDataBase::clear()
@@ -92,13 +92,13 @@ unsigned int KviIrcServerDataBase::networkCount() const
 
 KviIrcNetwork * KviIrcServerDataBase::currentNetwork()
 {
-	KviIrcNetwork * pNet = 0;
+	KviIrcNetwork * pNet = nullptr;
 	if(!m_szCurrentNetwork.isEmpty())
 		pNet = m_pRecords->find(m_szCurrentNetwork);
 	if(pNet)
 		return pNet;
 
-	return 0;
+	return nullptr;
 }
 
 bool KviIrcServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetName, KviIrcNetwork * pNet, QString & szError)
@@ -144,10 +144,10 @@ bool KviIrcServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetN
 
 bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * pDef, QString & szError)
 {
-	KviIrcServer * pServer = 0;
+	KviIrcServer * pServer = nullptr;
 
 	KviPointerHashTableIterator<QString, KviIrcNetwork> it(*m_pRecords);
-	KviIrcNetwork * pNet = 0;
+	KviIrcNetwork * pNet = nullptr;
 	KviIrcServer * pServ;
 
 	if(KviQString::equalCIN(pDef->szServer, "net:", 4))

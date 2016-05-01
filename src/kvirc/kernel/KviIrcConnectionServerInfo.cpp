@@ -33,7 +33,7 @@ KviIrcConnectionServerInfo::KviIrcConnectionServerInfo()
 	m_szSupportedChannelTypes = "#&!+";
 	m_szSupportedModePrefixes = "@+";
 	m_szSupportedModeFlags = "ov";
-	m_pModePrefixTable = 0;
+	m_pModePrefixTable = nullptr;
 	buildModePrefixTable();
 	m_bSupportsWatchList = false;
 	m_bSupportsCodePages = false;
@@ -296,8 +296,7 @@ KviBasicIrcServerInfo::KviBasicIrcServerInfo(KviIrcConnectionServerInfo * pParen
 }
 
 KviBasicIrcServerInfo::~KviBasicIrcServerInfo()
-{
-}
+    = default;
 
 ////////////////
 // User modes

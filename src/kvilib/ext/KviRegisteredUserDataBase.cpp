@@ -116,7 +116,7 @@
 		It provides a set of commands for adding and removing masks and manipulating properties.[br]
 */
 
-KVILIB_API KviRegisteredUserDataBase * g_pRegisteredUserDataBase = 0;
+KVILIB_API KviRegisteredUserDataBase * g_pRegisteredUserDataBase = nullptr;
 
 //============================================================================================================
 //
@@ -150,9 +150,9 @@ KviRegisteredUserDataBase::~KviRegisteredUserDataBase()
 KviRegisteredUser * KviRegisteredUserDataBase::addUser(const QString & name)
 {
 	if(name.isEmpty())
-		return 0;
+		return nullptr;
 	if(m_pUserDict->find(name))
-		return 0;
+		return nullptr;
 	KviRegisteredUser * u = new KviRegisteredUser(name);
 	m_pUserDict->replace(u->name(), u); //u->name() because we're NOT copying keys!
 	emit(userAdded(name));
@@ -162,9 +162,9 @@ KviRegisteredUser * KviRegisteredUserDataBase::addUser(const QString & name)
 KviRegisteredUserGroup * KviRegisteredUserDataBase::addGroup(const QString & name)
 {
 	if(name.isEmpty())
-		return 0;
+		return nullptr;
 	if(m_pGroupDict->find(name))
-		return 0;
+		return nullptr;
 	KviRegisteredUserGroup * pGroup = new KviRegisteredUserGroup(name);
 	m_pGroupDict->replace(pGroup->name(), pGroup); //u->name() because we're NOT copying keys!
 	return pGroup;
@@ -173,7 +173,7 @@ KviRegisteredUserGroup * KviRegisteredUserDataBase::addGroup(const QString & nam
 KviRegisteredUser * KviRegisteredUserDataBase::getUser(const QString & name)
 {
 	if(name.isEmpty())
-		return 0;
+		return nullptr;
 	KviRegisteredUser * u = m_pUserDict->find(name);
 	if(!u)
 	{
@@ -202,7 +202,7 @@ static void append_mask_to_list(KviRegisteredUserMaskList * l, KviRegisteredUser
 KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u, KviIrcMask * mask)
 {
 	if(!u || !mask)
-		return 0;
+		return nullptr;
 	KVI_ASSERT(u == m_pUserDict->find(u->name()));
 
 	KviRegisteredUserMaskList * l;
@@ -213,7 +213,7 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u, Kv
 			if(*(m->mask()) == *mask)
 			{
 				delete mask;
-				mask = 0;
+				mask = nullptr;
 				return m->user();
 			}
 		}
@@ -232,7 +232,7 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u, Kv
 				if(*(m->mask()) == *mask)
 				{
 					delete mask;
-					mask = 0;
+					mask = nullptr;
 					return m->user();
 				}
 			}
@@ -248,24 +248,24 @@ KviRegisteredUser * KviRegisteredUserDataBase::addMask(KviRegisteredUser * u, Kv
 			{
 				qDebug("Oops! Received an incoherent regusers action, recovered?");
 				delete l;
-				l = 0;
+				l = nullptr;
 			}
 			else
 			{
 				append_mask_to_list(l, u, mask);
 				m_pMaskDict->insert(mask->nick(), l);
 			}
-			return 0;
+			return nullptr;
 		}
 	}
 	// Ok...add it
 	if(!u->addMask(mask))
 	{
 		qDebug("Oops! Received an incoherent regusers action, recovered?");
-		return 0; // ops...already there ?
+		return nullptr; // ops...already there ?
 	}
 	append_mask_to_list(l, u, mask);
-	return 0;
+	return nullptr;
 }
 
 void KviRegisteredUserDataBase::copyFrom(KviRegisteredUserDataBase * db)
@@ -424,14 +424,14 @@ KviRegisteredUser * KviRegisteredUserDataBase::findMatchingUser(const QString & 
 	KviRegisteredUserMask * m = findMatchingMask(nick, user, host);
 	if(m)
 		return m->user();
-	return 0; // no match at all
+	return nullptr; // no match at all
 }
 
 KviRegisteredUserMask * KviRegisteredUserDataBase::findMatchingMask(const QString & nick, const QString & user, const QString & host)
 {
 	// first lookup the nickname in the maskDict
 	if(nick.isEmpty())
-		return 0;
+		return nullptr;
 	KviRegisteredUserMaskList * l = m_pMaskDict->find(nick);
 	if(l)
 	{
@@ -447,7 +447,7 @@ KviRegisteredUserMask * KviRegisteredUserDataBase::findMatchingMask(const QStrin
 		if(m->mask()->matchesFixed(nick, user, host))
 			return m;
 	}
-	return 0; // no match at all
+	return nullptr; // no match at all
 }
 
 KviRegisteredUser * KviRegisteredUserDataBase::findUserWithMask(const KviIrcMask & mask)
@@ -455,14 +455,14 @@ KviRegisteredUser * KviRegisteredUserDataBase::findUserWithMask(const KviIrcMask
 	KviRegisteredUserMask * m = findExactMask(mask);
 	if(m)
 		return m->user();
-	return 0;
+	return nullptr;
 }
 
 KviRegisteredUserMask * KviRegisteredUserDataBase::findExactMask(const KviIrcMask & mask)
 {
 	// first lookup the nickname in the maskDict
 	if(mask.nick() == "")
-		return 0;
+		return nullptr;
 	KviRegisteredUserMaskList * l = m_pMaskDict->find(mask.nick());
 	if(l)
 	{
@@ -478,7 +478,7 @@ KviRegisteredUserMask * KviRegisteredUserDataBase::findExactMask(const KviIrcMas
 		if(*(m->mask()) == mask)
 			return m;
 	}
-	return 0; // no match at all
+	return nullptr; // no match at all
 }
 /*
 bool KviRegisteredUserDataBase::isIgnoredUser(const QString & nick,const QString & user,const QString & host)

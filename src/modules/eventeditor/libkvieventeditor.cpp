@@ -28,7 +28,7 @@
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
-EventEditorWindow * g_pEventEditorWindow = 0;
+EventEditorWindow * g_pEventEditorWindow = nullptr;
 
 /*
 	@doc: eventeditor.open
@@ -61,20 +61,20 @@ static bool eventeditor_module_init(KviModule * m)
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", eventeditor_kvs_cmd_open);
 
-	g_pEventEditorWindow = 0;
+	g_pEventEditorWindow = nullptr;
 	return true;
 }
 
 static bool eventeditor_module_can_unload(KviModule *)
 {
-	return (g_pEventEditorWindow == 0);
+	return (g_pEventEditorWindow == nullptr);
 }
 
 static bool eventeditor_module_cleanup(KviModule *)
 {
 	if(g_pEventEditorWindow && g_pMainWindow)
 		g_pMainWindow->closeWindow(g_pEventEditorWindow);
-	g_pEventEditorWindow = 0;
+	g_pEventEditorWindow = nullptr;
 	return true;
 }
 

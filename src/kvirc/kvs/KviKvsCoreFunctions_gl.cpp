@@ -348,7 +348,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pParams);
 
 		struct timeval tv;
-		kvi_gettimeofday(&tv, 0);
+		kvi_gettimeofday(&tv, nullptr);
 		kvs_real_t dTimestamp = (kvs_real_t)(tv.tv_sec);
 		dTimestamp += (((kvs_real_t)(tv.tv_usec)) / 1000000.0);
 		KVSCF_pRetBuffer->setReal(dTimestamp);
@@ -679,7 +679,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(isEventEnabled)
 	{
 		QString szEventName, szHandlerName;
-		KviKvsScriptEventHandler * h = 0;
+		KviKvsScriptEventHandler * h = nullptr;
 
 		KVSCF_PARAMETERS_BEGIN
 		KVSCF_PARAMETER("event_name", KVS_PT_NONEMPTYSTRING, 0, szEventName)
@@ -910,7 +910,7 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(keys)
 	{
-		KviKvsHash * pHash = 0;
+		KviKvsHash * pHash = nullptr;
 		KVSCF_PARAMETERS_BEGIN
 		KVSCF_PARAMETER("hash", KVS_PT_HASH, KVS_PF_OPTIONAL, pHash)
 		KVSCF_PARAMETERS_END

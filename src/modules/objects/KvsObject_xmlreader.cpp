@@ -130,9 +130,7 @@ public:
 	{
 		m_pReader = pReader;
 	}
-	~KviXmlHandler()
-	{
-	}
+	~KviXmlHandler() override = default;
 
 private:
 	bool kvsCodeFailure()
@@ -162,7 +160,7 @@ private:
 	}
 
 public:
-	virtual bool startDocument()
+	bool startDocument() override
 	{
 		KviKvsVariant ret;
 		if(!m_pReader->callFunction(m_pReader, "onDocumentStart", &ret))
@@ -170,7 +168,7 @@ public:
 		return handleKvsCallReturnValue(&ret);
 	}
 
-	virtual bool endDocument()
+	bool endDocument() override
 	{
 		KviKvsVariant ret;
 		if(!m_pReader->callFunction(m_pReader, "onDocumentEnd", &ret))
@@ -178,7 +176,7 @@ public:
 		return handleKvsCallReturnValue(&ret);
 	}
 
-	virtual bool startElement(const QString & szNamespaceUri, const QString & szLocalName, const QString & szQualifiedName, const QXmlAttributes & attrs)
+	bool startElement(const QString & szNamespaceUri, const QString & szLocalName, const QString & szQualifiedName, const QXmlAttributes & attrs) override
 	{
 		KviKvsVariant ret;
 		KviKvsVariantList par;
@@ -196,7 +194,7 @@ public:
 		return handleKvsCallReturnValue(&ret);
 	}
 
-	virtual bool endElement(const QString & szNamespaceUri, const QString & szLocalName, const QString & szQualifiedName)
+	bool endElement(const QString & szNamespaceUri, const QString & szLocalName, const QString & szQualifiedName) override
 	{
 		KviKvsVariant ret;
 		KviKvsVariantList par;
@@ -209,7 +207,7 @@ public:
 		return handleKvsCallReturnValue(&ret);
 	}
 
-	virtual bool characters(const QString & szChars)
+	bool characters(const QString & szChars) override
 	{
 		KviKvsVariant ret;
 		KviKvsVariantList par;
@@ -220,7 +218,7 @@ public:
 		return handleKvsCallReturnValue(&ret);
 	}
 
-	virtual bool warning(const QXmlParseException & exception)
+	bool warning(const QXmlParseException & exception) override
 	{
 		// recoverable
 		QString szMsg;
@@ -235,7 +233,7 @@ public:
 		return handleKvsCallReturnValue(&ret);
 	}
 
-	virtual bool error(const QXmlParseException & exception)
+	bool error(const QXmlParseException & exception) override
 	{
 		// recoverable
 		QString szMsg;
@@ -250,7 +248,7 @@ public:
 		return handleKvsCallReturnValue(&ret);
 	}
 
-	virtual bool fatalError(const QXmlParseException & exception)
+	bool fatalError(const QXmlParseException & exception) override
 	{
 		QString szMsg;
 		decodeException(szMsg, true, exception);
@@ -258,7 +256,7 @@ public:
 		return true;
 	}
 
-	virtual QString errorString() const
+	QString errorString() const override
 	{
 		return m_szErrorString;
 	}

@@ -45,10 +45,10 @@
 
 KviIrcServer::KviIrcServer()
 {
-	m_pReconnectInfo = NULL;
+	m_pReconnectInfo = nullptr;
 	m_uFlags = Flags::CAP | Flags::STARTTLS;
 	m_uPort = 6667;
-	m_pAutoJoinChannelList = NULL;
+	m_pAutoJoinChannelList = nullptr;
 	m_bAutoConnect = false;
 	m_iProxy = -1;
 }
@@ -57,7 +57,7 @@ KviProxy * KviIrcServer::proxyServer(KviProxyDataBase * pDb)
 {
 	int i = 0;
 	if(proxy() < 0)
-		return 0;
+		return nullptr;
 	KviPointerList<KviProxy> * proxylist = pDb->proxyList();
 	for(KviProxy * pProxy = proxylist->first(); pProxy; pProxy = proxylist->next())
 	{
@@ -65,7 +65,7 @@ KviProxy * KviIrcServer::proxyServer(KviProxyDataBase * pDb)
 			return pProxy;
 		i++;
 	}
-	return 0;
+	return nullptr;
 }
 
 KviIrcServer::KviIrcServer(const KviIrcServer & serv)
@@ -96,12 +96,12 @@ KviIrcServer::KviIrcServer(const KviIrcServer & serv)
 	if(serv.m_pAutoJoinChannelList)
 		m_pAutoJoinChannelList = new QStringList(*(serv.m_pAutoJoinChannelList));
 	else
-		m_pAutoJoinChannelList = NULL;
+		m_pAutoJoinChannelList = nullptr;
 
 	if(serv.m_pReconnectInfo)
 		m_pReconnectInfo = new KviIrcServerReconnectInfo(*(serv.m_pReconnectInfo));
 	else
-		m_pReconnectInfo = NULL;
+		m_pReconnectInfo = nullptr;
 }
 
 void KviIrcServer::operator=(const KviIrcServer & serv)
@@ -134,14 +134,14 @@ void KviIrcServer::operator=(const KviIrcServer & serv)
 	if(serv.m_pAutoJoinChannelList)
 		m_pAutoJoinChannelList = new QStringList(*(serv.m_pAutoJoinChannelList));
 	else
-		m_pAutoJoinChannelList = NULL;
+		m_pAutoJoinChannelList = nullptr;
 
 	if(m_pReconnectInfo)
 		delete m_pReconnectInfo;
 	if(serv.m_pReconnectInfo)
 		m_pReconnectInfo = new KviIrcServerReconnectInfo(*(serv.m_pReconnectInfo));
 	else
-		m_pReconnectInfo = NULL;
+		m_pReconnectInfo = nullptr;
 }
 
 KviIrcServer::~KviIrcServer()
@@ -149,12 +149,12 @@ KviIrcServer::~KviIrcServer()
 	if(m_pAutoJoinChannelList)
 	{
 		delete m_pAutoJoinChannelList;
-		m_pAutoJoinChannelList = NULL;
+		m_pAutoJoinChannelList = nullptr;
 	}
 	if(m_pReconnectInfo)
 	{
 		delete m_pReconnectInfo;
-		m_pReconnectInfo = NULL;
+		m_pReconnectInfo = nullptr;
 	}
 }
 
@@ -170,13 +170,13 @@ void KviIrcServer::clearReconnectInfo()
 	if(!m_pReconnectInfo)
 		return;
 	delete m_pReconnectInfo;
-	m_pReconnectInfo = NULL;
+	m_pReconnectInfo = nullptr;
 }
 
 void KviIrcServer::generateUniqueId()
 {
 	struct timeval tv;
-	kvi_gettimeofday(&tv, 0);
+	kvi_gettimeofday(&tv, nullptr);
 	m_szId = QString("myserver%1%2%3").arg(tv.tv_usec).arg(rand() % 1000).arg(rand() % 1000);
 }
 
@@ -213,7 +213,7 @@ void KviIrcServer::setAutoJoinChannelList(const QString & szNewChannelList)
 		delete m_pAutoJoinChannelList;
 	QStringList lChans = szNewChannelList.split(",");
 	if(lChans.isEmpty())
-		m_pAutoJoinChannelList = NULL;
+		m_pAutoJoinChannelList = nullptr;
 	else
 		m_pAutoJoinChannelList = new QStringList(lChans);
 }

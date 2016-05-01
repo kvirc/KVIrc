@@ -48,7 +48,7 @@ OptionsWidgetContainer::OptionsWidgetContainer(QWidget * par, bool bModal)
 
 	setObjectName("container");
 
-	m_pOptionsWidget = NULL;
+	m_pOptionsWidget = nullptr;
 
 	if(bModal)
 		setWindowModality(par ? Qt::WindowModal : Qt::ApplicationModal);
@@ -76,7 +76,7 @@ void OptionsWidgetContainer::setNextToLeft(QWidget * pWidget)
 
 void OptionsWidgetContainer::optionsWidgetDestroyed()
 {
-	m_pOptionsWidget = NULL;
+	m_pOptionsWidget = nullptr;
 }
 
 void OptionsWidgetContainer::childEvent(QChildEvent * e)
@@ -89,7 +89,7 @@ void OptionsWidgetContainer::childEvent(QChildEvent * e)
 		if(e->child() == static_cast<QObject *>(m_pOptionsWidget))
 		{
 			QObject::disconnect(m_pOptionsWidget, SIGNAL(destroyed()), this, SLOT(optionsWidgetDestroyed()));
-			m_pOptionsWidget = NULL;
+			m_pOptionsWidget = nullptr;
 		}
 	}
 

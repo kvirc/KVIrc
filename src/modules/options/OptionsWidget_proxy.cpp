@@ -134,7 +134,7 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 #ifndef COMPILE_IPV6_SUPPORT
 	m_pIPv6Check->setEnabled(false);
 #endif
-	m_pLastEditedItem = 0;
+	m_pLastEditedItem = nullptr;
 
 	fillProxyList();
 
@@ -145,8 +145,7 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 }
 
 OptionsWidget_proxy::~OptionsWidget_proxy()
-{
-}
+    = default;
 
 void OptionsWidget_proxy::enableDisableUseProxySelector()
 {
@@ -177,7 +176,7 @@ void OptionsWidget_proxy::fillProxyList()
 		}
 	}
 	if(!(g_pProxyDataBase->currentProxy()))
-		currentItemChanged(0, 0);
+		currentItemChanged(nullptr, nullptr);
 
 	enableDisableUseProxySelector();
 }
@@ -357,7 +356,7 @@ void OptionsWidget_proxy::removeCurrent()
 	if(m_pLastEditedItem)
 	{
 		QTreeWidgetItem * tmp = m_pLastEditedItem;
-		m_pLastEditedItem = 0;
+		m_pLastEditedItem = nullptr;
 		delete tmp;
 
 		QTreeWidgetItem * it = (QTreeWidgetItem *)m_pTreeWidget->topLevelItem(0);
@@ -367,7 +366,7 @@ void OptionsWidget_proxy::removeCurrent()
 		}
 		else
 		{
-			currentItemChanged(0, 0);
+			currentItemChanged(nullptr, nullptr);
 		}
 	}
 }

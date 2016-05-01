@@ -64,12 +64,12 @@ KviNickServRuleSet::KviNickServRuleSet()
     : KviHeapObject()
 {
 	m_bEnabled = false;
-	m_pRules = 0;
+	m_pRules = nullptr;
 }
 
 KviNickServRuleSet::KviNickServRuleSet(const KviNickServRuleSet & s)
 {
-	m_pRules = 0;
+	m_pRules = nullptr;
 	copyFrom(s);
 }
 
@@ -108,12 +108,12 @@ KviNickServRuleSet * KviNickServRuleSet::load(KviConfigurationFile * pCfg, const
 	szTmp = QString("%1NSRules").arg(szPrefix);
 	unsigned int uCount = pCfg->readUIntEntry(szTmp, 0);
 	if(uCount == 0)
-		return 0;
+		return nullptr;
 	KviNickServRuleSet * pSet = new KviNickServRuleSet();
 	if(pSet->loadPrivate(pCfg, szPrefix, uCount))
 		return pSet;
 	delete pSet;
-	return 0;
+	return nullptr;
 }
 
 void KviNickServRuleSet::load(const QString & szConfigFile)
@@ -165,7 +165,7 @@ bool KviNickServRuleSet::loadPrivate(KviConfigurationFile * pCfg, const QString 
 	{
 		m_bEnabled = false;
 		delete m_pRules;
-		m_pRules = 0;
+		m_pRules = nullptr;
 		return false;
 	}
 	return true;
@@ -176,7 +176,7 @@ void KviNickServRuleSet::clear()
 	if(m_pRules)
 	{
 		delete m_pRules;
-		m_pRules = 0;
+		m_pRules = nullptr;
 	}
 	m_bEnabled = false;
 }
@@ -199,7 +199,7 @@ KviNickServRuleSet * KviNickServRuleSet::createInstance()
 KviNickServRule * KviNickServRuleSet::matchRule(const QString & szNick, const KviIrcMask * pNickServ, const QString & szMsg, const QString & szServer)
 {
 	if(!m_pRules)
-		return 0;
+		return nullptr;
 
 	for(KviNickServRule * r = m_pRules->first(); r; r = m_pRules->next())
 	{
@@ -218,7 +218,7 @@ KviNickServRule * KviNickServRuleSet::matchRule(const QString & szNick, const Kv
 		if(re.exactMatch(szMsg))
 			return r;
 	}
-	return 0;
+	return nullptr;
 }
 
 void KviNickServRuleSet::copyFrom(const KviNickServRuleSet & src)
@@ -242,7 +242,7 @@ void KviNickServRuleSet::copyFrom(const KviNickServRuleSet & src)
 		{
 			m_bEnabled = false;
 			delete m_pRules;
-			m_pRules = 0;
+			m_pRules = nullptr;
 		}
 		else
 		{
@@ -255,7 +255,7 @@ void KviNickServRuleSet::copyFrom(const KviNickServRuleSet & src)
 		if(m_pRules)
 		{
 			delete m_pRules;
-			m_pRules = 0;
+			m_pRules = nullptr;
 		}
 	}
 }

@@ -138,7 +138,7 @@ KviConsoleWindow::KviConsoleWindow(int iFlags)
 	m_pNotifyViewButton = new KviWindowToolPageButton(KviIconManager::HideListView, KviIconManager::ShowListView, __tr2qs("Notify list"), buttonContainer(), true);
 	connect(m_pNotifyViewButton, SIGNAL(clicked()), this, SLOT(toggleNotifyView()));
 
-	m_pNotifyListView = new KviUserListView(m_pSplitter, m_pNotifyViewButton, 0, this, 19, __tr2qs("Notify list"), "notify_list_view");
+	m_pNotifyListView = new KviUserListView(m_pSplitter, m_pNotifyViewButton, nullptr, this, 19, __tr2qs("Notify list"), "notify_list_view");
 
 	m_pInput = new KviInput(this, m_pNotifyListView);
 
@@ -154,12 +154,9 @@ void KviConsoleWindow::recentUrlsChanged()
 {
 	QString cur = m_pAddressEdit->currentText();
 	m_pAddressEdit->clear();
-	for(
-	    QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls).begin();
-	    it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls).end();
-	    ++it)
+	for(auto & it : KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls))
 	{
-		m_pAddressEdit->addItem(*(g_pIconManager->getSmallIcon(KviIconManager::Url)), *it);
+		m_pAddressEdit->addItem(*(g_pIconManager->getSmallIcon(KviIconManager::Url)), it);
 	}
 
 	int i = m_pAddressEdit->findText(cur);
@@ -178,7 +175,7 @@ void KviConsoleWindow::recentUrlsChanged()
 
 bool KviConsoleWindow::connectionInProgress()
 {
-	if(context()->asynchronousConnectionData() != 0)
+	if(context()->asynchronousConnectionData() != nullptr)
 		return true;
 	if(context()->state() != KviIrcContext::Idle)
 		return true;
@@ -197,7 +194,7 @@ KviConsoleWindow::~KviConsoleWindow()
 	//if(m_pLastIrcServer)delete m_pLastIrcServer;
 
 	delete m_pContext;
-	m_pContext = 0;
+	m_pContext = nullptr;
 
 	delete m_pTmpHighLightedChannels;
 }
@@ -233,20 +230,18 @@ void KviConsoleWindow::completeChannel(const QString & word, KviPointerList<QStr
 	QStringList * pList = g_pApp->recentChannelsForNetwork(currentNetworkName());
 	if(pList)
 	{
-		for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
+		for(auto & it : *pList)
 		{
-			if(KviQString::equalCIN((*it), word, word.length()))
-				matches->append(new QString(*it));
+			if(KviQString::equalCIN(it, word, word.length()))
+				matches->append(new QString(it));
 		}
 	}
 }
 
 void KviConsoleWindow::completeServer(const QString & word, KviPointerList<QString> * matches)
 {
-	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).end(); ++it)
+	for(auto srv : KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers))
 	{
-		QString srv((*it));
-
 		KviQString::cutToFirst(srv, '/');
 		while(srv.startsWith("/"))
 			srv.remove(0, 1);
@@ -507,7 +502,7 @@ void KviConsoleWindow::connectionDetached()
 {
 	//need to update URI?
 	m_pNotifyListView->partAll();
-	m_pNotifyListView->setUserDataBase(0); // this is rather for crash tests
+	m_pNotifyListView->setUserDataBase(nullptr); // this is rather for crash tests
 }
 
 void KviConsoleWindow::closeEvent(QCloseEvent * e)
@@ -588,7 +583,7 @@ int KviConsoleWindow::triggerOnHighlight(KviWindow * pWnd, int iType, const QStr
 			return iType;
 	}
 	if(!KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound).isEmpty() && pWnd && !pWnd->hasAttention())
-		KviKvsScript::run("snd.play $0", 0, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound))));
+		KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound))));
 
 	QString szMessageType = QString("%1").arg(iType);
 
@@ -645,28 +640,27 @@ int KviConsoleWindow::applyHighlighting(KviWindow * wnd, int type, const QString
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseWordHighlighting))
 	{
-		for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistHighlightWords).begin();
-		    it != KVI_OPTION_STRINGLIST(KviOption_stringlistHighlightWords).end(); ++it)
+		for(auto & it : KVI_OPTION_STRINGLIST(KviOption_stringlistHighlightWords))
 		{
-			if((*it).isEmpty())
+			if(it.isEmpty())
 				continue;
 
 			if(KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting))
 			{
-				if(szStripMsg.contains(*it, cs))
-					return triggerOnHighlight(wnd, type, nick, user, host, szMsg, *it);
+				if(szStripMsg.contains(it, cs))
+					return triggerOnHighlight(wnd, type, nick, user, host, szMsg, it);
 			}
 			else
 			{
 				if(!szPattern.isEmpty())
 					rgxHlite.setPattern(
-					    QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(QRegExp::escape(szPattern), QRegExp::escape(*it)));
+					    QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(QRegExp::escape(szPattern), QRegExp::escape(it)));
 				else
 					rgxHlite.setPattern(
-					    QString("(?:\\s|^)%1(?:\\s|$)").arg(QRegExp::escape(*it)));
+					    QString("(?:\\s|^)%1(?:\\s|$)").arg(QRegExp::escape(it)));
 				rgxHlite.setCaseSensitivity(cs);
 				if(szStripMsg.contains(rgxHlite))
-					return triggerOnHighlight(wnd, type, nick, user, host, szMsg, *it);
+					return triggerOnHighlight(wnd, type, nick, user, host, szMsg, it);
 			}
 		}
 	}
@@ -1027,7 +1021,7 @@ void KviConsoleWindow::resetAvatarForMatchingUsers(KviRegisteredUser * u)
 KviAvatar * KviConsoleWindow::setAvatar(const QString & nick, const QString & user, const QString & host, const QString & szLocalPath, const QString & szName)
 {
 	if(!connection())
-		return 0;
+		return nullptr;
 	KviIrcUserEntry * e = connection()->userDataBase()->find(nick);
 	if(e)
 	{
@@ -1035,13 +1029,13 @@ KviAvatar * KviConsoleWindow::setAvatar(const QString & nick, const QString & us
 		if((!user.isEmpty()) && e->hasUser())
 		{
 			if(!KviQString::equalCI(user, e->user()))
-				return 0;
+				return nullptr;
 		}
 
 		if((!host.isEmpty()) && e->hasHost())
 		{
 			if(!KviQString::equalCI(host, e->host()))
-				return 0;
+				return nullptr;
 		}
 
 		// Ok...got it
@@ -1058,7 +1052,7 @@ KviAvatar * KviConsoleWindow::setAvatar(const QString & nick, const QString & us
 				output(KVI_OUT_VERBOSE, __tr2qs("Failed to load avatar with name \"%Q\" and local path \"%Q\""), &szName, &szLocalPath);
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 KviAvatar * KviConsoleWindow::defaultAvatarFromOptions()
@@ -1066,13 +1060,13 @@ KviAvatar * KviConsoleWindow::defaultAvatarFromOptions()
 	QPixmap * avatar = KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar).pixmap();
 
 	if(!avatar)
-		return 0;
+		return nullptr;
 
 	if(avatar->isNull())
-		return 0;
+		return nullptr;
 
 	if(KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty())
-		return 0;
+		return nullptr;
 
 	KviAvatar * loadedAvatar = new KviAvatar(KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar).path(), KVI_OPTION_STRING(KviOption_stringMyAvatar));
 
@@ -1080,18 +1074,18 @@ KviAvatar * KviConsoleWindow::defaultAvatarFromOptions()
 		return loadedAvatar;
 
 	delete loadedAvatar;
-	return 0;
+	return nullptr;
 }
 
 KviAvatar * KviConsoleWindow::currentAvatar()
 {
 	if(!connection())
-		return 0;
+		return nullptr;
 
 	KviIrcUserEntry * e = connection()->userDataBase()->find(connection()->userInfo()->nickName());
 
 	if(!e)
-		return 0;
+		return nullptr;
 
 	KviAvatar * a = e->avatar();
 

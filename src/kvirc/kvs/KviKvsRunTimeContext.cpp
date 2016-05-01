@@ -65,7 +65,7 @@ KviKvsRunTimeContext::KviKvsRunTimeContext(KviKvsScript * pScript, KviWindow * p
 	m_pReturnValue = pRetVal;
 	m_uRunTimeFlags = 0;
 	m_pExtendedData = pExtData;
-	m_pDefaultReportLocation = 0;
+	m_pDefaultReportLocation = nullptr;
 }
 
 KviKvsRunTimeContext::~KviKvsRunTimeContext()
@@ -104,8 +104,8 @@ void KviKvsRunTimeContext::report(bool bError, KviKvsTreeNode * pNode, const QSt
 	QString szMsg;
 	KviQString::vsprintf(szMsg, szMsgFmt, va);
 
-	KviPointerList<QString> * pCodeListing = 0;
-	KviPointerList<QString> * pCallStack = 0;
+	KviPointerList<QString> * pCodeListing = nullptr;
+	KviPointerList<QString> * pCallStack = nullptr;
 	QString szLocation;
 
 	if(pNode)

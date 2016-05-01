@@ -77,28 +77,28 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par, KviIrcNetwork * 
 	setModal(true);
 	setObjectName("network_details");
 
-	m_pOnConnectEditor = NULL;
-	m_pOnLoginEditor = NULL;
+	m_pOnConnectEditor = nullptr;
+	m_pOnLoginEditor = nullptr;
 
-	m_pUserEditor = NULL;
-	m_pPassEditor = NULL;
-	m_pNickEditor = NULL;
-	m_pAlternativeNickEditor = NULL;
-	m_pRealEditor = NULL;
-	m_pDescEditor = NULL;
+	m_pUserEditor = nullptr;
+	m_pPassEditor = nullptr;
+	m_pNickEditor = nullptr;
+	m_pAlternativeNickEditor = nullptr;
+	m_pRealEditor = nullptr;
+	m_pDescEditor = nullptr;
 
-	m_pEncodingEditor = NULL;
-	m_pTextEncodingEditor = NULL;
+	m_pEncodingEditor = nullptr;
+	m_pTextEncodingEditor = nullptr;
 
-	m_pAutoConnectCheck = NULL;
+	m_pAutoConnectCheck = nullptr;
 
-	m_pNickServTreeWidget = NULL;
-	m_pNickServCheck = NULL;
-	m_pAddRuleButton = NULL;
-	m_pDelRuleButton = NULL;
-	m_pEditRuleButton = NULL;
+	m_pNickServTreeWidget = nullptr;
+	m_pNickServCheck = nullptr;
+	m_pAddRuleButton = nullptr;
+	m_pDelRuleButton = nullptr;
+	m_pEditRuleButton = nullptr;
 
-	m_pChannelListSelector = NULL;
+	m_pChannelListSelector = nullptr;
 
 	QGridLayout * g = new QGridLayout(this);
 
@@ -482,7 +482,7 @@ void IrcNetworkDetailsWidget::fillData(KviIrcNetwork * n)
 		m_pChannelListSelector->commit();
 
 	if(m_lstChannels.isEmpty())
-		n->setAutoJoinChannelList(0);
+		n->setAutoJoinChannelList(nullptr);
 	else
 		n->setAutoJoinChannelList(new QStringList(m_lstChannels));
 
@@ -501,7 +501,7 @@ void IrcNetworkDetailsWidget::fillData(KviIrcNetwork * n)
 			n->setNickServRuleSet(rs);
 		}
 		else
-			n->setNickServRuleSet(0);
+			n->setNickServRuleSet(nullptr);
 	}
 
 	if(m_pOnConnectEditor)
@@ -1225,7 +1225,7 @@ void IrcServerDetailsWidget::fillData(KviIrcServer * s)
 	if(m_pChannelListSelector)
 		m_pChannelListSelector->commit();
 	if(m_lstChannels.isEmpty())
-		s->setAutoJoinChannelList(0);
+		s->setAutoJoinChannelList(nullptr);
 	else
 		s->setAutoJoinChannelList(new QStringList(m_lstChannels));
 
@@ -1250,7 +1250,7 @@ IrcServerOptionsTreeWidgetItem::IrcServerOptionsTreeWidgetItem(QTreeWidget * par
     : QTreeWidgetItem(parent)
 {
 	setIcon(0, QIcon(pm));
-	m_pServerData = 0;
+	m_pServerData = nullptr;
 	m_pNetworkData = new KviIrcNetwork(*n);
 	setText(0, n->name());
 	setText(1, n->description());
@@ -1263,7 +1263,7 @@ IrcServerOptionsTreeWidgetItem::IrcServerOptionsTreeWidgetItem(QTreeWidgetItem *
 	m_pServerData = new KviIrcServer(*s);
 	setText(0, s->hostName());
 	setText(1, s->description());
-	m_pNetworkData = 0;
+	m_pNetworkData = nullptr;
 }
 
 IrcServerOptionsTreeWidgetItem::~IrcServerOptionsTreeWidgetItem()
@@ -1303,9 +1303,9 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	connect(m_pImportPopup, SIGNAL(aboutToShow()), this, SLOT(importPopupAboutToShow()));
 	connect(m_pImportPopup, SIGNAL(triggered(QAction *)), this, SLOT(importPopupActivated(QAction *)));
 
-	m_pServerDetailsDialog = 0;
-	m_pNetworkDetailsDialog = 0;
-	m_pImportFilter = 0;
+	m_pServerDetailsDialog = nullptr;
+	m_pNetworkDetailsDialog = nullptr;
+	m_pImportFilter = nullptr;
 
 	m_pFilterLabel = new QLabel(__tr2qs_ctx("Filter:", "options"), this);
 	addWidgetToLayout(m_pFilterLabel, 0, 0, 0, 0);
@@ -1433,7 +1433,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	KviTalToolTip::add(tb, __tr2qs_ctx("This button shows a list of recently used servers.<br>It allows you to quickly find them in the list.", "options"));
 
-	m_pShowThisDialogAtStartupSelector = NULL;
+	m_pShowThisDialogAtStartupSelector = nullptr;
 
 	// The "Show this dialog at startup" option is shown only when the server options widget is shown as standalone dialog
 	if(parent->inherits("OptionsWidgetContainer"))
@@ -1498,12 +1498,12 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	}
 	else
 	{
-		m_pConnectCurrent = NULL;
+		m_pConnectCurrent = nullptr;
 	}
 
-	m_pLastEditedItem = 0;
+	m_pLastEditedItem = nullptr;
 
-	m_pClipboard = 0;
+	m_pClipboard = nullptr;
 
 	m_bShowingFavoritesOnly = KVI_OPTION_BOOL(KviOption_boolShowFavoriteServersOnly);
 
@@ -1519,9 +1519,9 @@ OptionsWidget_servers::~OptionsWidget_servers()
 {
 	if(m_pImportFilter)
 	{
-		disconnect(m_pImportFilter, 0, this, 0);
+		disconnect(m_pImportFilter, nullptr, this, nullptr);
 		m_pImportFilter->die();
-		m_pImportFilter = 0;
+		m_pImportFilter = nullptr;
 	}
 
 	if(m_pClipboard)
@@ -1539,7 +1539,7 @@ void OptionsWidget_servers::slotShowThisDialogAtStartupSelectorDestroyed()
 	KVI_ASSERT(m_pShowThisDialogAtStartupSelector);
 
 	removeSelector(m_pShowThisDialogAtStartupSelector);
-	m_pShowThisDialogAtStartupSelector = NULL;
+	m_pShowThisDialogAtStartupSelector = nullptr;
 }
 
 void OptionsWidget_servers::recentServersPopupAboutToShow()
@@ -1585,7 +1585,7 @@ void OptionsWidget_servers::selectBestServerByUrl(const QString & szUrl)
 	int uCount = m_pTreeWidget->topLevelItemCount();
 	int uIdx = 0;
 
-	IrcServerOptionsTreeWidgetItem * pBestCandidate = NULL;
+	IrcServerOptionsTreeWidgetItem * pBestCandidate = nullptr;
 	kvi_u32_t uBestCandidateScore = 0;
 
 	while(uIdx < uCount)
@@ -1658,7 +1658,7 @@ void OptionsWidget_servers::fillServerList()
 {
 	IrcServerOptionsTreeWidgetItem * net;
 	IrcServerOptionsTreeWidgetItem * srv;
-	IrcServerOptionsTreeWidgetItem * cur = 0;
+	IrcServerOptionsTreeWidgetItem * cur = nullptr;
 
 	KviPointerHashTableIterator<QString, KviIrcNetwork> it(*(g_pServerDataBase->recordDict()));
 
@@ -1961,9 +1961,9 @@ void OptionsWidget_servers::importPopupActivated(QAction * pAction)
 
 	if(m_pImportFilter)
 	{
-		disconnect(m_pImportFilter, 0, this, 0);
+		disconnect(m_pImportFilter, nullptr, this, nullptr);
 		m_pImportFilter->die();
-		m_pImportFilter = 0;
+		m_pImportFilter = nullptr;
 	}
 
 	bool bOk = false;
@@ -1971,7 +1971,7 @@ void OptionsWidget_servers::importPopupActivated(QAction * pAction)
 	if(!bOk)
 		return;
 
-	m_pImportFilter = (KviMexServerImport *)KviModuleExtensionManager::instance()->allocateExtension("serverimport", id, 0);
+	m_pImportFilter = (KviMexServerImport *)KviModuleExtensionManager::instance()->allocateExtension("serverimport", id, nullptr);
 
 	if(!m_pImportFilter)
 	{
@@ -1987,7 +1987,7 @@ void OptionsWidget_servers::importPopupActivated(QAction * pAction)
 
 void OptionsWidget_servers::importerDead()
 {
-	m_pImportFilter = 0;
+	m_pImportFilter = nullptr;
 }
 
 void OptionsWidget_servers::importServer(const KviIrcServer & s, const QString & network)
@@ -2203,7 +2203,7 @@ IrcServerOptionsTreeWidgetItem * OptionsWidget_servers::findNetItem(const QStrin
 		if(KviQString::equalCI(it->text(0), netname))
 			return it;
 	}
-	return 0;
+	return nullptr;
 }
 
 void OptionsWidget_servers::clearList()
@@ -2216,13 +2216,13 @@ void OptionsWidget_servers::clearList()
 
 	if(QMessageBox::question(this,
 	       __tr2qs_ctx("Confirm Clearing Server List - KVIrc", "options"), txt,
-	       __tr2qs_ctx("Yes", "options"), __tr2qs_ctx("No", "options"), 0, 1)
+	       __tr2qs_ctx("Yes", "options"), __tr2qs_ctx("No", "options"), nullptr, 1)
 	    != 0)
 		return;
 
 	m_pTreeWidget->clear();
-	m_pLastEditedItem = 0;
-	currentItemChanged(0, 0);
+	m_pLastEditedItem = nullptr;
+	currentItemChanged(nullptr, nullptr);
 }
 
 void OptionsWidget_servers::detailsClicked()
@@ -2249,7 +2249,7 @@ void OptionsWidget_servers::detailsClicked()
 		}
 
 		delete m_pServerDetailsDialog;
-		m_pServerDetailsDialog = 0;
+		m_pServerDetailsDialog = nullptr;
 		return;
 	}
 	if(m_pLastEditedItem->m_pNetworkData)
@@ -2272,6 +2272,6 @@ void OptionsWidget_servers::detailsClicked()
 		}
 
 		delete m_pNetworkDetailsDialog;
-		m_pNetworkDetailsDialog = 0;
+		m_pNetworkDetailsDialog = nullptr;
 	}
 }

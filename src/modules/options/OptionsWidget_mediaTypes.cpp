@@ -53,8 +53,7 @@ MediaTypeTreeWidgetItem::MediaTypeTreeWidgetItem(QTreeWidget * w, KviMediaType *
 }
 
 MediaTypeTreeWidgetItem::~MediaTypeTreeWidgetItem()
-{
-}
+    = default;
 
 void MediaTypeTreeWidgetItem::copyData(KviMediaType * t)
 {
@@ -146,14 +145,13 @@ OptionsWidget_mediaTypes::OptionsWidget_mediaTypes(QWidget * parent)
 	layout()->setColumnStretch(2, 1);
 	layout()->setRowStretch(0, 1);
 
-	m_pLastItem = 0;
+	m_pLastItem = nullptr;
 
 	fillTreeWidget();
 }
 
 OptionsWidget_mediaTypes::~OptionsWidget_mediaTypes()
-{
-}
+    = default;
 
 void OptionsWidget_mediaTypes::fillTreeWidget()
 {
@@ -241,7 +239,7 @@ void OptionsWidget_mediaTypes::delMediaType()
 	if(m_pLastItem)
 	{
 		MediaTypeTreeWidgetItem * it = m_pLastItem;
-		m_pLastItem = 0;
+		m_pLastItem = nullptr;
 		delete it;
 	}
 }

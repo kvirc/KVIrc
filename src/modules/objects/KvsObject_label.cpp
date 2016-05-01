@@ -245,13 +245,13 @@ KVSO_CLASS_FUNCTION(label, setAlignment)
 	KVSO_PARAMETER("alignment", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, alignment)
 	KVSO_PARAMETERS_END(c)
 	int align, sum = 0;
-	for(QStringList::Iterator it = alignment.begin(); it != alignment.end(); ++it)
+	for(auto & it : alignment)
 	{
 
 		align = 0;
 		for(unsigned int j = 0; j < align_num; j++)
 		{
-			if(KviQString::equalCI((*it), align_tbl[j]))
+			if(KviQString::equalCI(it, align_tbl[j]))
 			{
 				align = align_cod[j];
 				break;
@@ -260,7 +260,7 @@ KVSO_CLASS_FUNCTION(label, setAlignment)
 		if(align)
 			sum = sum | align;
 		else
-			c->warning(__tr2qs_ctx("Unknown alignment '%Q'", "objects"), &(*it));
+			c->warning(__tr2qs_ctx("Unknown alignment '%Q'", "objects"), &it);
 	}
 	((QLabel *)widget())->setAlignment((Qt::Alignment)sum);
 	return true;
@@ -300,12 +300,12 @@ KVSO_CLASS_FUNCTION(label, setFrameStyle)
 	if(!widget())
 		return true;
 	int framestyle, sum = 0;
-	for(QStringList::Iterator it = style.begin(); it != style.end(); ++it)
+	for(auto & it : style)
 	{
 		framestyle = 0;
 		for(unsigned int j = 0; j < align_num; j++)
 		{
-			if(KviQString::equalCI((*it), frame_tbl[j]))
+			if(KviQString::equalCI(it, frame_tbl[j]))
 			{
 				framestyle = frame_cod[j];
 				break;
@@ -314,7 +314,7 @@ KVSO_CLASS_FUNCTION(label, setFrameStyle)
 		if(framestyle)
 			sum = sum | framestyle;
 		else
-			c->warning(__tr2qs_ctx("Unknown style '%Q'", "objects"), &(*it));
+			c->warning(__tr2qs_ctx("Unknown style '%Q'", "objects"), &it);
 	}
 	((QLabel *)widget())->setFrameStyle(sum);
 	return true;

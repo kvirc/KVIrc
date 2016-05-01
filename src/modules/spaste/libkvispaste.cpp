@@ -42,7 +42,7 @@
 #include <unistd.h>
 #endif
 
-KviPointerList<SlowPasteController> * g_pControllerList = 0;
+KviPointerList<SlowPasteController> * g_pControllerList = nullptr;
 int ctrlId = 0;
 
 static SlowPasteController * spaste_find_controller(KviWindow * w)
@@ -52,7 +52,7 @@ static SlowPasteController * spaste_find_controller(KviWindow * w)
 		if(spc->window() == w)
 			return spc;
 	}
-	return 0;
+	return nullptr;
 }
 
 static KviWindow * spaste_kvs_find_window(QString & win, KviKvsModuleCommandCall * c)
@@ -65,12 +65,12 @@ static KviWindow * spaste_kvs_find_window(QString & win, KviKvsModuleCommandCall
 	if(!w)
 	{
 		c->warning(__tr("Window with ID '%Q' not found"), &win);
-		return 0;
+		return nullptr;
 	}
 	if((w->type() == KviWindow::Channel) || (w->type() == KviWindow::Query) || (w->type() == KviWindow::DccChat))
 		return w;
 	c->warning(__tr2qs("The specified window (%Q) is not a channel/query/DCC chat"), &win);
-	return 0;
+	return nullptr;
 }
 
 /*
@@ -231,7 +231,7 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 		}
 		else
 		{
-			while((item = it.current()) != 0)
+			while((item = it.current()) != nullptr)
 			{
 				++it;
 				if(KviQString::equalCS(item->window()->id(), c->window()->id()))
@@ -242,7 +242,7 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 	else
 	{
 		//Delete the spaste with the given id
-		while((item = it.current()) != 0)
+		while((item = it.current()) != nullptr)
 		{
 			++it;
 			if(item->getId() == (kvs_int_t)iId)
@@ -277,7 +277,7 @@ static bool spaste_kvs_cmd_list(KviKvsModuleCommandCall * c)
 	KviPointerListIterator<SlowPasteController> it(*g_pControllerList);
 	SlowPasteController * item;
 
-	while((item = it.current()) != 0)
+	while((item = it.current()) != nullptr)
 	{
 		++it;
 		QString szWinId = item->window()->id();
@@ -332,7 +332,7 @@ static bool spaste_module_cleanup(KviModule *)
 	while(g_pControllerList->first())
 		delete g_pControllerList->first();
 	delete g_pControllerList;
-	g_pControllerList = 0;
+	g_pControllerList = nullptr;
 
 	return true;
 }

@@ -104,12 +104,11 @@
 
 bool kvi_mayBeSpam(KviCString * msg, KviCString & spamWord)
 {
-	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistSpamWords).begin();
-	    it != KVI_OPTION_STRINGLIST(KviOption_stringlistSpamWords).end(); ++it)
+	for(auto & it : KVI_OPTION_STRINGLIST(KviOption_stringlistSpamWords))
 	{
 		// FIXME : This is SLOOOOOOOOW (QString -> ascii translation!!)
 
-		const char * aux = (*it).toLatin1();
+		const char * aux = it.toLatin1();
 		if(aux)
 		{
 			if(msg->findFirstIdx(aux, false) != -1)

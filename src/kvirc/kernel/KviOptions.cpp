@@ -933,7 +933,7 @@ void KviApplication::saveOptions()
 
 	if(!cfg.ensureWritable())
 	{
-		QMessageBox::warning(0, __tr2qs("Warning While Writing Configuration - KVIrc"),
+		QMessageBox::warning(nullptr, __tr2qs("Warning While Writing Configuration - KVIrc"),
 		    __tr2qs("I can't write to the main configuration file:\n\t%1\nPlease ensure the directory exists and that you have the proper permissions before continuing, "
 		            "or else any custom configuration will be lost.")
 		        .arg(buffer));
@@ -1087,13 +1087,13 @@ namespace KviTheme
 			QDir d(szPicsPath);
 			QStringList sl = d.entryList(QDir::nameFiltersFromString("kvi_bigicon_*.png"), QDir::Files);
 
-			for(QStringList::Iterator it = sl.begin(); it != sl.end(); it++)
+			for(auto & it : sl)
 			{
-				KviCachedPixmap * p = g_pIconManager->getPixmapWithCache(*it);
+				KviCachedPixmap * p = g_pIconManager->getPixmapWithCache(it);
 				if(p)
 				{
 					QString szPixPath = szThemeDirPath;
-					szPixPath += *it;
+					szPixPath += it;
 
 					if(!KviFileUtils::copyFile(p->path(), szPixPath))
 					{
@@ -1390,13 +1390,13 @@ bool KviApplication::setOptionValue(const QString & optName, const QString & val
 			szBuffer = szVal;
 		}
 
-		for(int i = 0; i < KVI_NUM_PIXMAP_OPTIONS; i++)
+		for(auto & i : g_pixmapOptionsTable)
 		{
-			if(KviQString::equalCI(optName, g_pixmapOptionsTable[i].name))
+			if(KviQString::equalCI(optName, i.name))
 			{
-				if(!KviStringConversion::fromString(szBuffer, g_pixmapOptionsTable[i].option))
+				if(!KviStringConversion::fromString(szBuffer, i.option))
 					return false;
-				optionResetUpdate(g_pixmapOptionsTable[i].flags);
+				optionResetUpdate(i.flags);
 				return true;
 			}
 		}

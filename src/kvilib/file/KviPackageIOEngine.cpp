@@ -99,7 +99,7 @@
 
 KviPackageIOEngine::KviPackageIOEngine()
 {
-	m_pProgressDialog = 0;
+	m_pProgressDialog = nullptr;
 	m_pStringInfoFields = new KviPointerHashTable<QString, QString>();
 	m_pStringInfoFields->setAutoDelete(true);
 	m_pBinaryInfoFields = new KviPointerHashTable<QString, QByteArray>();
@@ -132,7 +132,7 @@ bool KviPackageIOEngine::updateProgress(int iProgress, const QString & szLabel)
 
 void KviPackageIOEngine::showProgressDialog(const QString & szCaption, int iTotalSteps)
 {
-	m_pProgressDialog = new QProgressDialog(QString(""), __tr2qs("Cancel"), 0, iTotalSteps, 0);
+	m_pProgressDialog = new QProgressDialog(QString(""), __tr2qs("Cancel"), 0, iTotalSteps, nullptr);
 	m_pProgressDialog->setModal(true);
 	m_pProgressDialog->setWindowTitle(szCaption);
 
@@ -146,7 +146,7 @@ void KviPackageIOEngine::hideProgressDialog()
 	if(!m_pProgressDialog)
 		return;
 	delete m_pProgressDialog;
-	m_pProgressDialog = 0;
+	m_pProgressDialog = nullptr;
 }
 
 bool KviPackageIOEngine::writeError()

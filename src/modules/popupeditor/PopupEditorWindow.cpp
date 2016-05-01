@@ -355,7 +355,7 @@ not_this_one:
 			return found;
 	}
 
-	return 0;
+	return nullptr;
 }
 
 void SinglePopupEditor::testModeMenuItemClicked(KviKvsPopupMenuItem * it)
@@ -583,14 +583,14 @@ PopupTreeWidgetItem * SinglePopupEditor::newItem(PopupTreeWidgetItem * par, Popu
 PopupTreeWidgetItem * SinglePopupEditor::newItemBelow(PopupTreeWidgetItem * it, PopupTreeWidgetItem::Type t)
 {
 	if(!it)
-		return newItem(0, 0, t);
+		return newItem(nullptr, nullptr, t);
 	return newItem((PopupTreeWidgetItem *)it->parent(), it, t);
 }
 
 PopupTreeWidgetItem * SinglePopupEditor::newItemAbove(PopupTreeWidgetItem * it, PopupTreeWidgetItem::Type t)
 {
 	if(!it)
-		return newItem(0, 0, t);
+		return newItem(nullptr, nullptr, t);
 	return newItem((PopupTreeWidgetItem *)it->parent(), (PopupTreeWidgetItem *)m_pTreeWidget->itemAbove(it), t);
 }
 
@@ -608,7 +608,7 @@ PopupTreeWidgetItem * SinglePopupEditor::newItemInside(PopupTreeWidgetItem * it,
 
 void SinglePopupEditor::contextNewPrologue()
 {
-	PopupTreeWidgetItem * it = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pLastSelectedItem->parent() : 0;
+	PopupTreeWidgetItem * it = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pLastSelectedItem->parent() : nullptr;
 	//	if(!findPrologue(it))
 	//	{
 	m_pTreeWidget->setCurrentItem(newItem(it, it, PopupTreeWidgetItem::Prologue));
@@ -617,7 +617,7 @@ void SinglePopupEditor::contextNewPrologue()
 
 void SinglePopupEditor::contextNewEpilogue()
 {
-	PopupTreeWidgetItem * it = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pLastSelectedItem->parent() : 0;
+	PopupTreeWidgetItem * it = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pLastSelectedItem->parent() : nullptr;
 	//	if(!findEpilogue(it))
 	//	{
 	PopupTreeWidgetItem * after = it ? (PopupTreeWidgetItem *)it->child(0) : (PopupTreeWidgetItem *)m_pTreeWidget->topLevelItem(0);
@@ -672,7 +672,7 @@ void SinglePopupEditor::contextPasteBelow()
 {
 	if(!m_pClipboard)
 		return;
-	PopupTreeWidgetItem * par = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pLastSelectedItem->parent() : 0;
+	PopupTreeWidgetItem * par = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pLastSelectedItem->parent() : nullptr;
 	populateMenu(m_pClipboard, par, m_pLastSelectedItem);
 }
 
@@ -680,8 +680,8 @@ void SinglePopupEditor::contextPasteAbove()
 {
 	if(!m_pClipboard)
 		return;
-	PopupTreeWidgetItem * par = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pLastSelectedItem->parent() : 0;
-	PopupTreeWidgetItem * above = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pTreeWidget->itemAbove(m_pLastSelectedItem) : 0;
+	PopupTreeWidgetItem * par = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pLastSelectedItem->parent() : nullptr;
+	PopupTreeWidgetItem * above = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pTreeWidget->itemAbove(m_pLastSelectedItem) : nullptr;
 	populateMenu(m_pClipboard, par, above);
 }
 
@@ -698,7 +698,7 @@ void SinglePopupEditor::contextPasteInside()
 		}
 		m_pLastSelectedItem->setExpanded(true);
 	}
-	populateMenu(m_pClipboard, m_pLastSelectedItem, 0);
+	populateMenu(m_pClipboard, m_pLastSelectedItem, nullptr);
 }
 
 void SinglePopupEditor::saveLastSelectedItem()
@@ -852,7 +852,7 @@ void SinglePopupEditor::selectionChanged()
 
 	if(m_pTreeWidget->selectedItems().empty())
 	{
-		it = 0;
+		it = nullptr;
 	}
 	else
 	{
@@ -1012,7 +1012,7 @@ void SinglePopupEditor::populateMenu(KviKvsPopupMenu * pop, PopupTreeWidgetItem 
 				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString());
 				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
 				theItem->setId(item->name());
-				populateMenu(((KviKvsPopupMenuItemMenu *)item)->menu(), theItem, 0);
+				populateMenu(((KviKvsPopupMenuItemMenu *)item)->menu(), theItem, nullptr);
 				break;
 			default:
 				break;
@@ -1045,7 +1045,7 @@ void SinglePopupEditor::edit(MenuTreeWidgetItem * it)
 	if(it)
 	{
 		m_pNameEditor->setText(it->m_pPopup->popupName());
-		populateMenu(it->m_pPopup, 0, 0);
+		populateMenu(it->m_pPopup, nullptr, nullptr);
 	}
 	else
 	{
@@ -1121,12 +1121,11 @@ PopupEditorWidget::PopupEditorWidget(QWidget * par)
 	spl->setStretchFactor(0, 20);
 	spl->setStretchFactor(1, 80);
 
-	currentItemChanged(0, 0);
+	currentItemChanged(nullptr, nullptr);
 }
 
 PopupEditorWidget::~PopupEditorWidget()
-{
-}
+    = default;
 
 void PopupEditorWidget::oneTimeSetup()
 {
@@ -1178,7 +1177,7 @@ void PopupEditorWidget::popupRefresh(const QString & szName)
 			if(ch == m_pLastEditedItem)
 			{
 				if(
-				    QMessageBox::warning(0, __tr2qs_ctx("Confirm Overwriting Current - KVIrc", "editor"),
+				    QMessageBox::warning(nullptr, __tr2qs_ctx("Confirm Overwriting Current - KVIrc", "editor"),
 				        __tr2qs_ctx("An external script has changed the popup you are currently editing. Do you want to accept the external changes?", "editor"),
 				        QMessageBox::Yes, QMessageBox::No | QMessageBox::Default | QMessageBox::Escape)
 				    != QMessageBox::Yes)
@@ -1326,14 +1325,14 @@ void PopupEditorWidget::removeCurrentPopup()
 		m_pLastEditedItem = nullptr;
 		delete it;
 		if(!m_pLastEditedItem)
-			currentItemChanged(0, 0);
+			currentItemChanged(nullptr, nullptr);
 	}
 }
 
 void PopupEditorWidget::newPopup()
 {
 	QString newName;
-	getUniquePopupName(0, newName);
+	getUniquePopupName(nullptr, newName);
 	MenuTreeWidgetItem * it = new MenuTreeWidgetItem(m_pTreeWidget, new KviKvsPopupMenu(newName));
 	m_pTreeWidget->setCurrentItem(it);
 }
@@ -1445,7 +1444,7 @@ void PopupEditorWidget::getUniquePopupName(MenuTreeWidgetItem * item, QString & 
 }
 
 PopupEditorWindow::PopupEditorWindow()
-    : KviWindow(KviWindow::ScriptEditor, "popupeditor", 0)
+    : KviWindow(KviWindow::ScriptEditor, "popupeditor", nullptr)
 {
 	g_pPopupEditorWindow = this;
 

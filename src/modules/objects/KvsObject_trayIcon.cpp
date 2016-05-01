@@ -105,7 +105,7 @@ KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_trayIcon, messageClickedEvent)
 KVSO_END_REGISTERCLASS(KvsObject_trayIcon)
 
 KVSO_BEGIN_CONSTRUCTOR(KvsObject_trayIcon, KviKvsObject)
-m_pTrayIcon = new QSystemTrayIcon(0);
+m_pTrayIcon = new QSystemTrayIcon(nullptr);
 connect(m_pTrayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(slotActivated(QSystemTrayIcon::ActivationReason)));
 connect(m_pTrayIcon, SIGNAL(messageClicked()), this, SLOT(slotMessageClicked()));
 
@@ -221,8 +221,8 @@ KVSO_CLASS_FUNCTION(trayIcon, messageClickedEvent)
 }
 void KvsObject_trayIcon::slotMessageClicked()
 {
-	KviKvsVariantList * lParams = 0;
-	callFunction(this, "messageClickedEvent", 0, lParams);
+	KviKvsVariantList * lParams = nullptr;
+	callFunction(this, "messageClickedEvent", nullptr, lParams);
 }
 
 void KvsObject_trayIcon::slotActivated(QSystemTrayIcon::ActivationReason reason)
@@ -240,5 +240,5 @@ void KvsObject_trayIcon::slotActivated(QSystemTrayIcon::ActivationReason reason)
 		szReason = "MiddleClick";
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant(szReason));
-	callFunction(this, "activatedEvent", 0, &lParams);
+	callFunction(this, "activatedEvent", nullptr, &lParams);
 }

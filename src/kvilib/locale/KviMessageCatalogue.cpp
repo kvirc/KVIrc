@@ -123,10 +123,10 @@ static int somePrimeNumbers[90] = {
 
 int kvi_getFirstBiggerPrime(int iNumber)
 {
-	for(int i = 0; i < 90; i++)
+	for(int somePrimeNumber : somePrimeNumbers)
 	{
-		if(somePrimeNumbers[i] >= iNumber)
-			return somePrimeNumbers[i];
+		if(somePrimeNumber >= iNumber)
+			return somePrimeNumber;
 	}
 	return 9973; //error!
 }
@@ -285,7 +285,7 @@ bool KviMessageCatalogue::load(const QString & szName)
 	KviMemory::free(pcBuffer);
 	f.close();
 
-	m_pTextCodec = 0;
+	m_pTextCodec = nullptr;
 
 	// find out the text encoding, if possible
 	if(szHeader.hasData())

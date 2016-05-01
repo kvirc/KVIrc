@@ -87,14 +87,14 @@ namespace KviStringConversion
 
 	void encodePath(QStringList & buffer)
 	{
-		for(QStringList::Iterator it = buffer.begin(); it != buffer.end(); ++it)
-			encodePath(*it);
+		for(auto & it : buffer)
+			encodePath(it);
 	}
 
 	void decodePath(QStringList & buffer)
 	{
-		for(QStringList::Iterator it = buffer.begin(); it != buffer.end(); ++it)
-			decodePath(*it);
+		for(auto & it : buffer)
+			decodePath(it);
 	}
 
 	void toString(const bool bValue, QString & szBuffer)

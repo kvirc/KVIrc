@@ -284,7 +284,7 @@ namespace KviKvsCoreFunctions
 		// prologue: parameter handling
 		QString szClassName;
 		QString szName;
-		kvs_hobject_t hParent = 0;
+		kvs_hobject_t hParent = nullptr;
 		KviKvsVariantList vList;
 
 		KVSCF_PARAMETERS_BEGIN
@@ -302,7 +302,7 @@ namespace KviKvsCoreFunctions
 		}
 
 		KviKvsObject * pParent;
-		if(hParent != (kvs_hobject_t)0)
+		if(hParent != (kvs_hobject_t) nullptr)
 		{
 			pParent = KviKvsKernel::instance()->objectController()->lookupObject(hParent);
 			if(!pParent)
@@ -313,13 +313,13 @@ namespace KviKvsCoreFunctions
 		}
 		else
 		{
-			pParent = 0;
+			pParent = nullptr;
 		}
 
 		KviKvsObject * pObject = pClass->allocateInstance(pParent, szName, KVSCF_pContext, &vList);
 
 		// epilogue: set the return value
-		KVSCF_pRetBuffer->setHObject(pObject ? pObject->handle() : (kvs_hobject_t)0);
+		KVSCF_pRetBuffer->setHObject(pObject ? pObject->handle() : (kvs_hobject_t) nullptr);
 		return true;
 	}
 
@@ -380,7 +380,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-		KVSCF_pRetBuffer->setHObject(0);
+		KVSCF_pRetBuffer->setHObject(nullptr);
 		return true;
 	}
 
@@ -493,7 +493,7 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
 		KVSCF_PARAMETERS_END
 
-		KviWindow * wnd = 0;
+		KviWindow * wnd = nullptr;
 		if(KVSCF_pParams->count() > 0)
 		{
 			if(KVSCF_pParams->count() > 1)
@@ -506,7 +506,7 @@ namespace KviKvsCoreFunctions
 					if(cons->connection())
 						wnd = cons->connection()->findQuery(szName);
 					else
-						wnd = 0;
+						wnd = nullptr;
 				}
 			}
 			else
@@ -517,7 +517,7 @@ namespace KviKvsCoreFunctions
 				{
 					if(!KVSCF_pContext->window()->console())
 						KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context", "kvs"));
-					wnd = 0;
+					wnd = nullptr;
 				}
 			}
 		}

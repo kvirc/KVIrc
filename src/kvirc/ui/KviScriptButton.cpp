@@ -34,7 +34,7 @@
 KviScriptUserButton::KviScriptUserButton(QWidget * par, const char * name)
     : QToolButton(par)
 {
-	m_pScript = 0;
+	m_pScript = nullptr;
 	setObjectName(name);
 	//	setAutoRaise(true);
 	connect(this, SIGNAL(clicked()), this, SLOT(btnClicked()));
@@ -69,7 +69,7 @@ void KviScriptUserButton::btnClicked()
 	KviKvsVariantList vList;
 	vList.append((kvs_int_t)pos.x());
 	vList.append((kvs_int_t)pos.y());
-	m_pScript->run(pWnd, &vList, 0, KviKvsScript::PreserveParams);
+	m_pScript->run(pWnd, &vList, nullptr, KviKvsScript::PreserveParams);
 }
 
 KviWindowScriptButton::KviWindowScriptButton(QWidget * p, KviWindow * wnd, const char * name)
@@ -79,5 +79,4 @@ KviWindowScriptButton::KviWindowScriptButton(QWidget * p, KviWindow * wnd, const
 }
 
 KviWindowScriptButton::~KviWindowScriptButton()
-{
-}
+    = default;

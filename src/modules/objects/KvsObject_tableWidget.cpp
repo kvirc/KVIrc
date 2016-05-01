@@ -477,7 +477,7 @@ KVSO_CLASS_FUNCTION(tableWidget, setIcon)
 	KVSO_PARAMETER("col", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
 	KVSO_PARAMETER("icon", KVS_PT_VARIANT, 0, vPixmap)
 	KVSO_PARAMETERS_END(c)
-	QPixmap * pix = 0;
+	QPixmap * pix = nullptr;
 	if(vPixmap->isHObject())
 	{
 		vPixmap->asHObject(obHpixmap);
@@ -809,7 +809,7 @@ KVSO_CLASS_FUNCTION(tableWidget, setItemFlags)
 void KvsObject_tableWidget::slotItemEntered(QTableWidgetItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i->row()), new KviKvsVariant((kvs_int_t)i->column()));
-	callFunction(this, "itemEnteredEvent", 0, &params);
+	callFunction(this, "itemEnteredEvent", nullptr, &params);
 }
 
 KVSO_CLASS_FUNCTION(tableWidget, itemEnteredEvent)
@@ -821,7 +821,7 @@ KVSO_CLASS_FUNCTION(tableWidget, itemEnteredEvent)
 void KvsObject_tableWidget::cellActivated(int iRow, int iCol)
 {
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)iRow), new KviKvsVariant((kvs_int_t)iCol));
-	callFunction(this, "cellActivatedEvent", 0, &params);
+	callFunction(this, "cellActivatedEvent", nullptr, &params);
 }
 
 KVSO_CLASS_FUNCTION(tableWidget, cellActivatedEvent)
@@ -833,7 +833,7 @@ KVSO_CLASS_FUNCTION(tableWidget, cellActivatedEvent)
 void KvsObject_tableWidget::cellDoubleClicked(int iRow, int iCol)
 {
 	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)iRow), new KviKvsVariant((kvs_int_t)iCol));
-	callFunction(this, "cellDoubleClickedEvent", 0, &params);
+	callFunction(this, "cellDoubleClickedEvent", nullptr, &params);
 }
 
 KVSO_CLASS_FUNCTION(tableWidget, cellDoubleClickedEvent)
@@ -846,7 +846,7 @@ bool KvsObject_tableWidget::paint(QPainter * p, const QStyleOptionViewItem & opt
 	p->save();
 	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("painter");
 	KviKvsVariantList params;
-	KviKvsObject * pObject = pClass->allocateInstance(0, "internalpainter", m_pContext, &params);
+	KviKvsObject * pObject = pClass->allocateInstance(nullptr, "internalpainter", m_pContext, &params);
 	((KvsObject_painter *)pObject)->setInternalPainter(p);
 	p->setClipRect(option.rect);
 	p->translate(option.rect.x(), option.rect.y());
@@ -872,8 +872,7 @@ KviCellItemDelegate::KviCellItemDelegate(QAbstractItemView * pWidget, KvsObject_
 }
 
 KviCellItemDelegate::~KviCellItemDelegate()
-{
-}
+    = default;
 
 void KviCellItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {

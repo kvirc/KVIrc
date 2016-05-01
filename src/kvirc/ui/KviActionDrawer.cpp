@@ -45,8 +45,7 @@ KviActionDrawer::KviActionDrawer(QWidget * pParent)
 }
 
 KviActionDrawer::~KviActionDrawer()
-{
-}
+    = default;
 
 void KviActionDrawer::fill()
 {
@@ -104,8 +103,7 @@ KviActionDrawerPage::KviActionDrawerPage(QWidget * pParent, const QString & szDe
 }
 
 KviActionDrawerPage::~KviActionDrawerPage()
-{
-}
+    = default;
 
 void KviActionDrawerPage::add(KviAction * pAction)
 {
@@ -123,8 +121,7 @@ KviActionDrawerPageListWidget::KviActionDrawerPageListWidget(KviActionDrawerPage
 }
 
 KviActionDrawerPageListWidget::~KviActionDrawerPageListWidget()
-{
-}
+    = default;
 
 void KviActionDrawerPageListWidget::mousePressEvent(QMouseEvent * e)
 {
@@ -179,5 +176,4 @@ KviActionDrawerPageListWidgetItem::KviActionDrawerPageListWidgetItem(KviTalListW
 }
 
 KviActionDrawerPageListWidgetItem::~KviActionDrawerPageListWidgetItem()
-{
-}
+    = default;

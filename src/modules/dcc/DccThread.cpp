@@ -44,7 +44,7 @@ DccThread::DccThread(QObject * par, kvi_socket_t fd)
 	m_pMutex = new KviMutex();
 #ifdef COMPILE_SSL_SUPPORT
 	//	qDebug("CLEARING SSL IN DccThread constructor");
-	m_pSSL = 0;
+	m_pSSL = nullptr;
 #endif
 }
 
@@ -53,7 +53,7 @@ DccThread::~DccThread()
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pSSL)
 		KviSSLMaster::freeSSL(m_pSSL);
-	m_pSSL = 0;
+	m_pSSL = nullptr;
 #endif
 	if(m_fd != KVI_INVALID_SOCKET)
 		kvi_socket_close(m_fd);

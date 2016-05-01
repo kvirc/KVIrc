@@ -64,8 +64,7 @@ KviTopicListBoxItemDelegate::KviTopicListBoxItemDelegate(QAbstractItemView * pWi
 }
 
 KviTopicListBoxItemDelegate::~KviTopicListBoxItemDelegate()
-{
-}
+    = default;
 
 QSize KviTopicListBoxItemDelegate::sizeHint(const QStyleOptionViewItem &, const QModelIndex & index) const
 {
@@ -90,8 +89,7 @@ KviTopicListBoxItem::KviTopicListBoxItem(KviTalListWidget * listbox, const QStri
 }
 
 KviTopicListBoxItem::~KviTopicListBoxItem()
-{
-}
+    = default;
 
 int KviTopicListBoxItem::width(const KviTalListWidget * lb) const
 {
@@ -103,12 +101,12 @@ KviTopicWidget::KviTopicWidget(QWidget * par, KviChannelWindow * pChannel, const
 {
 	setObjectName(name);
 	m_pKviChannelWindow = pChannel;
-	m_pHistory = 0;
-	m_pAccept = 0;
-	m_pDiscard = 0;
-	m_pContextPopup = 0;
+	m_pHistory = nullptr;
+	m_pAccept = nullptr;
+	m_pDiscard = nullptr;
+	m_pContextPopup = nullptr;
 	m_iCursorPosition = 0;
-	m_pInput = 0;
+	m_pInput = nullptr;
 
 	m_pLabel = new KviThemedLabel(this, pChannel, "topic_label");
 	m_pLabel->setTextFormat(Qt::RichText);
@@ -324,9 +322,9 @@ void KviTopicWidget::setTopic(const QString & topic)
 	m_pLabel->setText(KviHtmlGenerator::convertToHtml(KviQString::toHtmlEscaped(m_szTopic)));
 
 	bool bFound = false;
-	for(QStringList::Iterator it = g_pRecentTopicList->begin(); it != g_pRecentTopicList->end(); ++it)
+	for(auto & it : *g_pRecentTopicList)
 	{
-		if(*it == m_szTopic)
+		if(it == m_szTopic)
 		{
 			bFound = true;
 			break;
@@ -448,7 +446,7 @@ void KviTopicWidget::switchMode()
 		}
 		w = w->parent();
 	}
-	if(m_pInput == 0)
+	if(m_pInput == nullptr)
 	{
 		m_pInput = new KviInputEditor(this, m_pKviChannelWindow);
 		m_pInput->setObjectName("topicw_inputeditor");
@@ -615,17 +613,17 @@ void KviTopicWidget::deactivate()
 	if(m_pInput)
 	{
 		m_pInput->deleteLater();
-		m_pInput = 0;
+		m_pInput = nullptr;
 		m_pHistory->deleteLater();
-		m_pHistory = 0;
+		m_pHistory = nullptr;
 		m_pAccept->deleteLater();
-		m_pAccept = 0;
+		m_pAccept = nullptr;
 		m_pDiscard->deleteLater();
-		m_pDiscard = 0;
+		m_pDiscard = nullptr;
 	}
 
 	m_pLabel->show();
-	resizeEvent(0);
+	resizeEvent(nullptr);
 	// try to find a KviWindow parent and give it the focus
 
 	m_pKviChannelWindow->setFocus();
@@ -643,8 +641,8 @@ void KviTopicWidget::historyClicked()
 		m_pCompletionBox->installEventFilter(this);
 		m_pCompletionBox->clear();
 
-		for(QStringList::Iterator it = g_pRecentTopicList->begin(); it != g_pRecentTopicList->end(); ++it)
-			new KviTopicListBoxItem(m_pCompletionBox, *it);
+		for(auto & it : *g_pRecentTopicList)
+			new KviTopicListBoxItem(m_pCompletionBox, it);
 
 		m_pCompletionBox->resize(m_pInput->width(), 6 * m_pCompletionBox->fontMetrics().height() + 20);
 		QPoint point = m_pInput->mapToGlobal(QPoint(0, 0));

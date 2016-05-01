@@ -41,8 +41,7 @@ KviActionCategory::KviActionCategory(const QString & szName, const QString & szV
 }
 
 KviActionCategory::~KviActionCategory()
-{
-}
+    = default;
 
 KviAction::KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory, const QString & szBigIconId, const QString & szSmallIconId, unsigned int uFlags, const QString & szKeySequence)
     : QObject(pParent),
@@ -53,11 +52,11 @@ KviAction::KviAction(QObject * pParent, const QString & szName, const QString & 
       m_szBigIconId(szBigIconId),
       m_szSmallIconId(szSmallIconId),
       m_eSmallIcon(KviIconManager::None),
-      m_pActionList(NULL),
+      m_pActionList(nullptr),
       m_uInternalFlags(KviAction::Enabled),
       m_uFlags(uFlags),
       m_szKeySequence(szKeySequence),
-      m_pAccel(NULL)
+      m_pAccel(nullptr)
 {
 }
 
@@ -69,11 +68,11 @@ KviAction::KviAction(QObject * pParent, const QString & szName, const QString & 
       m_pCategory(pCategory),
       m_szBigIconId(szBigIconId),
       m_eSmallIcon(eSmallIcon),
-      m_pActionList(NULL),
+      m_pActionList(nullptr),
       m_uInternalFlags(KviAction::Enabled),
       m_uFlags(uFlags),
       m_szKeySequence(szKeySequence),
-      m_pAccel(NULL)
+      m_pAccel(nullptr)
 {
 }
 
@@ -115,14 +114,14 @@ void KviAction::registerAccelerator()
 	{
 		g_pMainWindow->freeAccelleratorKeySequence(m_szKeySequence);
 
-		m_pAccel = new QShortcut(m_szKeySequence, g_pMainWindow, 0, 0, Qt::ApplicationShortcut);
+		m_pAccel = new QShortcut(m_szKeySequence, g_pMainWindow, nullptr, nullptr, Qt::ApplicationShortcut);
 		connect(m_pAccel, SIGNAL(activated()), this, SLOT(activate()));
 		//no way to have Ctrl+Alt+Key events fired as no-ambiguous, probably qt bug
 		connect(m_pAccel, SIGNAL(activatedAmbiguously()), this, SLOT(activate()));
 	}
 	else
 	{
-		m_pAccel = NULL;
+		m_pAccel = nullptr;
 	}
 }
 
@@ -133,7 +132,7 @@ void KviAction::unregisterAccelerator()
 
 	delete m_pAccel;
 
-	m_pAccel = NULL;
+	m_pAccel = nullptr;
 }
 
 void KviAction::setEnabled(bool bEnabled)
@@ -184,17 +183,17 @@ QPixmap * KviAction::smallIcon()
 	{
 		QPixmap * pPix = g_pIconManager->getImage(m_szSmallIconId);
 		if(!pPix)
-			return NULL;
+			return nullptr;
 	}
 	if(m_eSmallIcon != KviIconManager::None)
 		return g_pIconManager->getSmallIcon(m_eSmallIcon);
-	return NULL;
+	return nullptr;
 }
 
 QPixmap * KviAction::bigIcon()
 {
 	if(m_szBigIconId.isEmpty())
-		return NULL;
+		return nullptr;
 	return g_pIconManager->getImage(m_szBigIconId);
 }
 

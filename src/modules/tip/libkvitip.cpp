@@ -37,7 +37,7 @@
 #include <QDesktopWidget>
 #include <QCloseEvent>
 
-TipWindow * g_pTipWindow = 0;
+TipWindow * g_pTipWindow = nullptr;
 
 TipFrame::TipFrame(QWidget * par)
     : QFrame(par)
@@ -62,7 +62,7 @@ TipFrame::TipFrame(QWidget * par)
 
 TipFrame::~TipFrame()
 {
-	g_pTipWindow = 0;
+	g_pTipWindow = nullptr;
 }
 
 void TipFrame::setText(const QString & text)
@@ -75,7 +75,7 @@ void TipFrame::setText(const QString & text)
 TipWindow::TipWindow()
 {
 	setObjectName("kvirc_tip_window");
-	m_pConfig = 0;
+	m_pConfig = nullptr;
 
 	m_pTipFrame = new TipFrame(this);
 	QPushButton * pb = new QPushButton("<<", this);
@@ -147,7 +147,7 @@ void TipWindow::closeConfig()
 	g_pApp->getLocalKvircDirectory(buffer, KviApplication::ConfigPlugins, m_szConfigFileName);
 	m_pConfig->setSavePath(buffer);
 	delete m_pConfig;
-	m_pConfig = 0;
+	m_pConfig = nullptr;
 }
 
 void TipWindow::nextTip()
@@ -277,7 +277,7 @@ static bool tip_module_cleanup(KviModule *)
 
 static bool tip_module_can_unload(KviModule *)
 {
-	return (g_pTipWindow == 0);
+	return (g_pTipWindow == nullptr);
 }
 
 KVIRC_MODULE(

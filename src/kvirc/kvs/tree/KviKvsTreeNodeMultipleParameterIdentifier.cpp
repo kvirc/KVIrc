@@ -34,8 +34,7 @@ KviKvsTreeNodeMultipleParameterIdentifier::KviKvsTreeNodeMultipleParameterIdenti
 }
 
 KviKvsTreeNodeMultipleParameterIdentifier::~KviKvsTreeNodeMultipleParameterIdentifier()
-{
-}
+    = default;
 
 void KviKvsTreeNodeMultipleParameterIdentifier::contextDescription(QString & szBuffer)
 {

@@ -98,8 +98,7 @@ KviTalListWidgetText::KviTalListWidgetText(KviTalListWidget* listbox, const QStr
 }*/
 
 KviTalListWidgetText::~KviTalListWidgetText()
-{
-}
+    = default;
 
 void KviTalListWidgetText::paint(QPainter * painter)
 {
@@ -145,8 +144,7 @@ KviTalListWidgetPixmap::KviTalListWidgetPixmap(const QPixmap & pixmap)
 // }
 
 KviTalListWidgetPixmap::~KviTalListWidgetPixmap()
-{
-}
+    = default;
 
 KviTalListWidgetPixmap::KviTalListWidgetPixmap(KviTalListWidget * listbox, const QPixmap & pix, const QString & text)
     : KviTalListWidgetItem(listbox)

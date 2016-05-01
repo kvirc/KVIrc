@@ -45,8 +45,7 @@ KviThemeInfo::KviThemeInfo()
 }
 
 KviThemeInfo::~KviThemeInfo()
-{
-}
+    = default;
 
 void KviThemeInfo::setDirectoryAndLocation(const QString & szDirectory, Location eLocation)
 {
@@ -335,7 +334,7 @@ namespace KviTheme
 		QDir d(szThemePath);
 		QStringList sl = d.entryList(QDir::Dirs | QDir::NoDotAndDotDot);
 
-		for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
-			slThemes.append(*it);
+		for(auto & it : sl)
+			slThemes.append(it);
 	}
 };

@@ -70,14 +70,13 @@ OptionsDialogFrontWidget::OptionsDialogFrontWidget(QWidget * parent, const QStri
 }
 
 OptionsDialogFrontWidget::~OptionsDialogFrontWidget()
-{
-}
+    = default;
 
 OptionsDialogTreeWidgetItem::OptionsDialogTreeWidgetItem(QTreeWidget * parent, OptionsWidgetInstanceEntry * e)
     : QTreeWidgetItem()
 {
 	m_pInstanceEntry = e;
-	m_pOptionsWidget = 0;
+	m_pOptionsWidget = nullptr;
 	setText(0, e->szName);
 	setIcon(0, *(g_pIconManager->getSmallIcon(e->eIcon)));
 	parent->insertTopLevelItem(0, this);
@@ -87,15 +86,14 @@ OptionsDialogTreeWidgetItem::OptionsDialogTreeWidgetItem(QTreeWidgetItem * paren
     : QTreeWidgetItem()
 {
 	m_pInstanceEntry = e;
-	m_pOptionsWidget = 0;
+	m_pOptionsWidget = nullptr;
 	setText(0, e->szName);
 	setIcon(0, *(g_pIconManager->getSmallIcon(e->eIcon)));
 	parent->insertChild(0, this);
 }
 
 OptionsDialogTreeWidgetItem::~OptionsDialogTreeWidgetItem()
-{
-}
+    = default;
 
 OptionsDialog::OptionsDialog(QWidget * par, const QString & szGroup, bool bModal)
     : QDialog(par)
@@ -184,7 +182,7 @@ OptionsDialog::OptionsDialog(QWidget * par, const QString & szGroup, bool bModal
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setSortingEnabled(false);
 	m_pTreeWidget->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::MinimumExpanding);
-	m_pTreeWidget->setCurrentItem(NULL);
+	m_pTreeWidget->setCurrentItem(nullptr);
 
 	connect(m_pTreeWidget, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(treeWidgetItemSelectionChanged(QTreeWidgetItem *, QTreeWidgetItem *)));
 
@@ -259,7 +257,7 @@ OptionsDialog::OptionsDialog(QWidget * par, const QString & szGroup, bool bModal
 	g1->setRowStretch(0, 1);
 	g1->setColumnStretch(1, 1);
 
-	fillTreeWidget(0, g_pOptionsInstanceManager->instanceEntryTree(), szGroup);
+	fillTreeWidget(nullptr, g_pOptionsInstanceManager->instanceEntryTree(), szGroup);
 
 	if(!parent())
 	{
@@ -633,7 +631,7 @@ void OptionsDialog::apply(bool bDialogAboutToClose)
 		it = (OptionsDialogTreeWidgetItem *)m_pTreeWidget->currentItem();
 		if(it)
 		{
-			treeWidgetItemSelectionChanged(it, 0);
+			treeWidgetItemSelectionChanged(it, nullptr);
 			if(curTab > 0 && it->m_pOptionsWidget)
 				if(it->m_pOptionsWidget->tabWidget())
 					it->m_pOptionsWidget->tabWidget()->setCurrentIndex(curTab);
@@ -677,7 +675,7 @@ void OptionsDialog::recursiveCommit(OptionsDialogTreeWidgetItem * it)
 	{
 		it->m_pOptionsWidget->commit();
 		delete it->m_pOptionsWidget;
-		it->m_pOptionsWidget = 0;
+		it->m_pOptionsWidget = nullptr;
 	}
 	//refreshTreeWidget(); // <-- this tends to jump into infinite recursion
 }

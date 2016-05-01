@@ -30,7 +30,7 @@
 #include "KviApplication.h"
 
 // created and destroyed in KviApplication.cpp
-KVIRC_API KviModuleExtensionManager * g_pModuleExtensionManager = 0;
+KVIRC_API KviModuleExtensionManager * g_pModuleExtensionManager = nullptr;
 
 KviModuleExtensionDescriptor::KviModuleExtensionDescriptor(KviModule * m, const KviCString & szType, const KviCString & szName, const QString & szVisibleName, KviModuleExtensionAllocRoutine r, const QPixmap & pix)
 {
@@ -44,7 +44,7 @@ KviModuleExtensionDescriptor::KviModuleExtensionDescriptor(KviModule * m, const 
 	m_pObjectList = new KviPointerList<KviModuleExtension>;
 	m_pObjectList->setAutoDelete(false);
 	if(pix.isNull())
-		m_pIcon = 0;
+		m_pIcon = nullptr;
 	else
 		m_pIcon = new QPixmap(pix);
 }
@@ -63,7 +63,7 @@ void KviModuleExtensionDescriptor::setIcon(const QPixmap & pix)
 	if(m_pIcon)
 		delete m_pIcon;
 	if(pix.isNull())
-		m_pIcon = 0;
+		m_pIcon = nullptr;
 	else
 		m_pIcon = new QPixmap(pix);
 }
@@ -173,7 +173,7 @@ KviModuleExtensionDescriptor * KviModuleExtensionManager::findExtensionDescripto
 {
 	KviModuleExtensionDescriptorList * l = m_pExtensionDict->find(szType.ptr());
 	if(!l)
-		return 0;
+		return nullptr;
 
 	for(KviModuleExtensionDescriptor * d = l->first(); d; d = l->next())
 	{
@@ -181,14 +181,14 @@ KviModuleExtensionDescriptor * KviModuleExtensionManager::findExtensionDescripto
 			return d;
 	}
 
-	return 0;
+	return nullptr;
 }
 
 KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviCString & szType, const KviCString & szName, KviWindow * pWnd, KviPointerHashTable<QString, QVariant> * pParams, void * pSpecial, const QString & preloadModule)
 {
 	KviModuleExtensionDescriptorList * l = allocateExtensionGetDescriptorList(szType, preloadModule);
 	if(!l)
-		return 0;
+		return nullptr;
 
 	KviModuleExtensionDescriptor * d;
 
@@ -210,14 +210,14 @@ KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviCStri
 
 	// no way : no such extension
 
-	return 0;
+	return nullptr;
 }
 
 KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviCString & szType, int id, KviWindow * pWnd, KviPointerHashTable<QString, QVariant> * pParams, void * pSpecial, const QString & preloadModule)
 {
 	KviModuleExtensionDescriptorList * l = allocateExtensionGetDescriptorList(szType, preloadModule);
 	if(!l)
-		return 0;
+		return nullptr;
 
 	KviModuleExtensionDescriptor * d;
 	for(d = l->first(); d; d = l->next())
@@ -237,7 +237,7 @@ KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviCStri
 	}
 	// no way : no such extension
 
-	return 0;
+	return nullptr;
 }
 
 KviModuleExtension::KviModuleExtension(KviModuleExtensionDescriptor * d)

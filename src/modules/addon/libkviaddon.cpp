@@ -730,9 +730,9 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 
 	KviFileUtils::makeDir(szTargetPath);
 
-	for(QStringList::Iterator it = lExpandedEntries.begin(); it != lExpandedEntries.end(); ++it)
+	for(auto & lExpandedEntrie : lExpandedEntries)
 	{
-		QFileInfo inf(*it);
+		QFileInfo inf(lExpandedEntrie);
 		if(!inf.exists())
 		{
 			qDebug("ERROR: file %s doesn't exist, but it should...", inf.fileName().toUtf8().data());
@@ -743,9 +743,9 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 		g_pApp->getLocalKvircDirectory(szTargetPath, KviApplication::None, szEntry);
 
 		if(!bQuiet)
-			c->window()->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs_ctx("Installing file '%1' into '%2'", "addon").arg(*it).arg(szTargetPath));
+			c->window()->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs_ctx("Installing file '%1' into '%2'", "addon").arg(lExpandedEntrie).arg(szTargetPath));
 
-		KviFileUtils::copyFile(*it, szTargetPath);
+		KviFileUtils::copyFile(lExpandedEntrie, szTargetPath);
 
 		a->addInstalledFile(szEntry);
 	}

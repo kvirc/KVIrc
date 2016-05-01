@@ -101,7 +101,7 @@ LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
 LinksWindow::~LinksWindow()
 {
 	g_pLinksWindowList->removeRef(this);
-	m_pConsole->context()->setLinksWindowPointer(0);
+	m_pConsole->context()->setLinksWindowPointer(nullptr);
 	delete m_pLinkList;
 	delete m_pHostPopup;
 }
@@ -193,8 +193,8 @@ void LinksWindow::endOfLinks()
 	outputNoFmt(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Received end of links."));
 	outputNoFmt(KVI_OUT_SYSTEMMESSAGE, "======================");
 
-	QTreeWidgetItem * it = 0;
-	QTreeWidgetItem * root = 0;
+	QTreeWidgetItem * it = nullptr;
+	QTreeWidgetItem * root = nullptr;
 
 	int totalHosts = 0;
 	int totalHops = 0;
@@ -342,11 +342,11 @@ void LinksWindow::endOfLinks()
 QTreeWidgetItem * LinksWindow::insertLink(KviLink * l)
 {
 	KVI_ASSERT(l->hops > 0);
-	QTreeWidgetItem * i = getItemByHost(l->parent.ptr(), 0);
-	QTreeWidgetItem * it = 0;
+	QTreeWidgetItem * i = getItemByHost(l->parent.ptr(), nullptr);
+	QTreeWidgetItem * it = nullptr;
 	if(!i)
 	{
-		return 0;
+		return nullptr;
 	}
 	else
 	{
@@ -387,7 +387,7 @@ QTreeWidgetItem * LinksWindow::getItemByHost(const char * host, QTreeWidgetItem 
 				return ch;
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 void LinksWindow::showHostPopup(QTreeWidgetItem * i, const QPoint & p)

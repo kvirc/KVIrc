@@ -39,8 +39,8 @@
 
 // FIXME: Should have a timeout on the requests!!!
 
-static KviIdentDaemon * g_pIdentDaemon = 0;
-static KviIdentSentinel * g_pIdentSentinel = 0;
+static KviIdentDaemon * g_pIdentDaemon = nullptr;
+static KviIdentSentinel * g_pIdentSentinel = nullptr;
 
 extern KVIRC_API int g_iIdentDaemonRunningUsers;
 
@@ -67,12 +67,12 @@ void stopIdentService()
 	//	qDebug("Stopping");
 	if(g_pIdentDaemon)
 		delete g_pIdentDaemon;
-	g_pIdentDaemon = 0;
+	g_pIdentDaemon = nullptr;
 	//	qDebug("Stopped");
 }
 
 KviIdentSentinel::KviIdentSentinel()
-    : QObject(0)
+    : QObject(nullptr)
 {
 }
 
@@ -144,7 +144,7 @@ KviIdentRequest::KviIdentRequest(kvi_socket_t sock, const char * host, kvi_u32_t
 	m_sock = sock;
 	m_szHost = host;
 	m_uPort = uPort;
-	m_tStart = time(0);
+	m_tStart = time(nullptr);
 }
 
 KviIdentRequest::~KviIdentRequest()
@@ -175,7 +175,7 @@ KviIdentDaemon::~KviIdentDaemon()
 	terminate();
 	g_iIdentDaemonRunningUsers = 0;
 
-	g_pIdentDaemon = 0;
+	g_pIdentDaemon = nullptr;
 	//	qDebug("Destructor gone");
 }
 
@@ -230,31 +230,31 @@ void KviIdentDaemon::run()
 
 	if(m_sock == KVI_INVALID_SOCKET)
 	{
-		postMessage(__tr("Can't start the Ident service : socket() failed"), 0);
+		postMessage(__tr("Can't start the Ident service : socket() failed"), nullptr);
 		goto exit_thread;
 	}
 
 	if(!kvi_socket_setNonBlocking(m_sock))
 	{
-		postMessage(__tr("Can't start the Ident service : async setting failed"), 0);
+		postMessage(__tr("Can't start the Ident service : async setting failed"), nullptr);
 		goto exit_thread;
 	}
 
 	if(!sa.socketAddress())
 	{
-		postMessage(__tr("Can't enable the Ident service : can't setup the listen address"), 0);
+		postMessage(__tr("Can't enable the Ident service : can't setup the listen address"), nullptr);
 		goto exit_thread;
 	}
 
 	if(!kvi_socket_bind(m_sock, sa.socketAddress(), ((int)(sa.addressLength()))))
 	{
-		postMessage(__tr("Can't start the Ident service : bind() failed"), 0);
+		postMessage(__tr("Can't start the Ident service : bind() failed"), nullptr);
 		goto exit_thread;
 	}
 
 	if(!kvi_socket_listen(m_sock, 128))
 	{
-		postMessage(__tr("Can't start the Ident service : listen() failed"), 0);
+		postMessage(__tr("Can't start the Ident service : listen() failed"), nullptr);
 		goto exit_thread;
 	}
 
@@ -267,13 +267,13 @@ void KviIdentDaemon::run()
 
 		if(m_sock6 == KVI_INVALID_SOCKET)
 		{
-			postMessage(__tr("Can't start the Ident service on IPv6 : socket() failed"), 0);
+			postMessage(__tr("Can't start the Ident service on IPv6 : socket() failed"), nullptr);
 			goto ipv6_failure;
 		}
 
 		if(!kvi_socket_setNonBlocking(m_sock6))
 		{
-			postMessage(__tr("Can't start the Ident service on IPv6 : async setting failed"), 0);
+			postMessage(__tr("Can't start the Ident service on IPv6 : async setting failed"), nullptr);
 			kvi_socket_close(m_sock6);
 			m_sock6 = KVI_INVALID_SOCKET;
 			goto ipv6_failure;
@@ -294,7 +294,7 @@ void KviIdentDaemon::run()
 #endif
 		if(!sa6.socketAddress())
 		{
-			postMessage(__tr("Can't enable the Ident service on IPv6 : can't setup the listen address"), 0);
+			postMessage(__tr("Can't enable the Ident service on IPv6 : can't setup the listen address"), nullptr);
 			kvi_socket_close(m_sock6);
 			m_sock6 = KVI_INVALID_SOCKET;
 			goto ipv6_failure;
@@ -302,7 +302,7 @@ void KviIdentDaemon::run()
 
 		if(!kvi_socket_bind(m_sock6, sa6.socketAddress(), ((int)(sa6.addressLength()))))
 		{
-			postMessage(__tr("Can't start the Ident service on IPv6 : bind() failed"), 0);
+			postMessage(__tr("Can't start the Ident service on IPv6 : bind() failed"), nullptr);
 			kvi_socket_close(m_sock6);
 			m_sock6 = KVI_INVALID_SOCKET;
 			goto ipv6_failure;
@@ -310,7 +310,7 @@ void KviIdentDaemon::run()
 
 		if(!kvi_socket_listen(m_sock6, 128))
 		{
-			postMessage(__tr("Can't start the Ident service on IPv6 : listen() failed"), 0);
+			postMessage(__tr("Can't start the Ident service on IPv6 : listen() failed"), nullptr);
 			kvi_socket_close(m_sock6);
 			m_sock6 = KVI_INVALID_SOCKET;
 			goto ipv6_failure;
@@ -326,18 +326,18 @@ ipv6_failure:
 		if(m_sock6 != KVI_INVALID_SOCKET)
 		{
 			if(_OUTPUT_PARANOIC)
-				postMessage(__tr("Starting Ident service (IPv4/v6 on separate namespaces)"), 0);
+				postMessage(__tr("Starting Ident service (IPv4/v6 on separate namespaces)"), nullptr);
 		}
 		else
 		{
 			if(_OUTPUT_PARANOIC)
-				postMessage(__tr("Starting Ident service (IPv4/v6 in IPv6 namespace)"), 0);
+				postMessage(__tr("Starting Ident service (IPv4/v6 in IPv6 namespace)"), nullptr);
 		}
 	}
 	else
 	{
 		if(_OUTPUT_PARANOIC)
-			postMessage(__tr("Starting Ident service (IPv4)"), 0);
+			postMessage(__tr("Starting Ident service (IPv4)"), nullptr);
 	}
 #else  //!COMPILE_IPV6_SUPPORT
 	if(_OUTPUT_PARANOIC)
@@ -386,7 +386,7 @@ ipv6_failure:
 
 		// FIXME: SO_REUSEADDR ?
 
-		int ret = kvi_socket_select(nmax + 1, &rs, 0, 0, &t);
+		int ret = kvi_socket_select(nmax + 1, &rs, nullptr, nullptr, &t);
 
 		if(ret == 0)
 			msleep(100);
@@ -522,7 +522,7 @@ ipv6_failure:
 			}
 		}
 
-		time_t curTime = time(0);
+		time_t curTime = time(nullptr);
 
 		for(r = m_pRequestList->first(); r; r = m_pRequestList->next())
 		{
@@ -554,7 +554,7 @@ exit_thread:
 	if(m_sock6 != KVI_INVALID_SOCKET)
 		kvi_socket_close(m_sock6);
 	delete m_pRequestList;
-	m_pRequestList = 0;
+	m_pRequestList = nullptr;
 
 	//	qDebug("RUN EXITING");
 }
@@ -621,7 +621,7 @@ static bool ident_module_cleanup(KviModule *)
 {
 	stopIdentService();
 	delete g_pIdentSentinel;
-	g_pIdentSentinel = 0;
+	g_pIdentSentinel = nullptr;
 
 	return true;
 }

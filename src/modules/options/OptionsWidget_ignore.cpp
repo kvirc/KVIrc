@@ -50,8 +50,7 @@ OptionsWidget_ignore::OptionsWidget_ignore(QWidget * parent)
 }
 
 OptionsWidget_ignore::~OptionsWidget_ignore()
-{
-}
+    = default;
 
 void OptionsWidget_ignore::enableVerbose(bool)
 {

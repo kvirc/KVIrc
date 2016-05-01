@@ -33,7 +33,7 @@ void KviKvsEvent::clear()
 {
 	if(m_pHandlers)
 		delete m_pHandlers;
-	m_pHandlers = 0;
+	m_pHandlers = nullptr;
 }
 
 void KviKvsEvent::removeHandler(KviKvsEventHandler * h)
@@ -42,7 +42,7 @@ void KviKvsEvent::removeHandler(KviKvsEventHandler * h)
 	if(m_pHandlers->isEmpty())
 	{
 		delete m_pHandlers;
-		m_pHandlers = 0;
+		m_pHandlers = nullptr;
 	}
 }
 
@@ -75,6 +75,6 @@ void KviKvsEvent::clearScriptHandlers()
 	if(m_pHandlers->isEmpty())
 	{
 		delete m_pHandlers;
-		m_pHandlers = 0;
+		m_pHandlers = nullptr;
 	}
 }

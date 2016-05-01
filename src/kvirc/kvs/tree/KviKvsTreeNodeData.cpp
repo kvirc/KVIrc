@@ -26,13 +26,12 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeData::KviKvsTreeNodeData(const QChar * pLocation)
-    : KviKvsTreeNode(pLocation), m_pEndingLocation(0)
+    : KviKvsTreeNode(pLocation), m_pEndingLocation(nullptr)
 {
 }
 
 KviKvsTreeNodeData::~KviKvsTreeNodeData()
-{
-}
+    = default;
 
 void KviKvsTreeNodeData::contextDescription(QString & szBuffer)
 {
@@ -85,7 +84,7 @@ bool KviKvsTreeNodeData::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVarian
 KviKvsRWEvaluationResult * KviKvsTreeNodeData::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
 	c->error(this, __tr2qs_ctx("Internal error: trying to evaluate as read-write a read-only data location", "kvs"));
-	return 0;
+	return nullptr;
 }
 
 bool KviKvsTreeNodeData::evaluateReadOnlyInObjectScope(KviKvsObject *, KviKvsRunTimeContext * c, KviKvsVariant *)
@@ -97,5 +96,5 @@ bool KviKvsTreeNodeData::evaluateReadOnlyInObjectScope(KviKvsObject *, KviKvsRun
 KviKvsRWEvaluationResult * KviKvsTreeNodeData::evaluateReadWriteInObjectScope(KviKvsObject *, KviKvsRunTimeContext * c)
 {
 	c->error(this, __tr2qs_ctx("Internal error: trying to evaluate as read-write a read-only data location", "kvs"));
-	return 0;
+	return nullptr;
 }

@@ -151,13 +151,12 @@ KviCryptEngine::KviCryptEngine()
 #ifdef COMPILE_CRYPT_SUPPORT
 	setLastError(__tr2qs("Invalid encryption engine"));
 	m_iMaxEncryptLen = -1; // unlimited
-	m_deallocFunc = 0;
+	m_deallocFunc = nullptr;
 #endif //COMPILE_CRYPT_SUPPORT
 }
 
 KviCryptEngine::~KviCryptEngine()
-{
-}
+    = default;
 
 #ifdef COMPILE_CRYPT_SUPPORT
 

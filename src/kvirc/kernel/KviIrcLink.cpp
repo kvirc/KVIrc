@@ -60,13 +60,13 @@ KviIrcLink::KviIrcLink(KviIrcConnection * pConnection)
 	m_pTarget = pConnection->target();
 	m_pConsole = m_pConnection->console();
 
-	m_pSocket = 0;
-	m_pLinkFilter = 0;
-	m_pResolver = 0;
+	m_pSocket = nullptr;
+	m_pLinkFilter = nullptr;
+	m_pResolver = nullptr;
 
-	m_pReadBuffer = 0;    // incoming data buffer
-	m_uReadBufferLen = 0; // incoming data buffer length
-	m_uReadPackets = 0;   // total packets read per session
+	m_pReadBuffer = nullptr; // incoming data buffer
+	m_uReadBufferLen = 0;    // incoming data buffer length
+	m_uReadPackets = 0;      // total packets read per session
 
 	m_eState = Idle;
 }
@@ -89,7 +89,7 @@ KviIrcLink::~KviIrcLink()
 
 void KviIrcLink::linkFilterDestroyed()
 {
-	m_pLinkFilter = 0;
+	m_pLinkFilter = nullptr;
 	m_pConsole->output(KVI_OUT_SYSTEMWARNING,
 	    __tr2qs("Oops! For some reason the link filter object has been destroyed"));
 }
@@ -98,10 +98,10 @@ void KviIrcLink::destroySocket()
 {
 	if(m_pLinkFilter)
 	{
-		QObject::disconnect(m_pLinkFilter, 0, this, 0);
+		QObject::disconnect(m_pLinkFilter, nullptr, this, nullptr);
 		// the module extension server links must be destroyed in the module that provided it
 		m_pLinkFilter->die();
-		m_pLinkFilter = 0;
+		m_pLinkFilter = nullptr;
 	}
 
 	if(m_pSocket)
@@ -109,7 +109,7 @@ void KviIrcLink::destroySocket()
 		// We use deleteLater() here, since we could actually be inside an event
 		// related to the QSocketNotifier that the socket is attached to...
 		m_pSocket->deleteLater();
-		m_pSocket = 0;
+		m_pSocket = nullptr;
 	}
 }
 
@@ -126,7 +126,7 @@ void KviIrcLink::createSocket(const QString & szLinkFilterName)
 		return;
 
 	m_pLinkFilter = (KviMexLinkFilter *)g_pModuleExtensionManager->allocateExtension("linkfilter",
-	    szLinkFilterName.toUtf8().data(), m_pConsole, 0, this, szLinkFilterName.toUtf8().data());
+	    szLinkFilterName.toUtf8().data(), m_pConsole, nullptr, this, szLinkFilterName.toUtf8().data());
 
 	if(m_pLinkFilter)
 	{
@@ -188,12 +188,12 @@ void KviIrcLink::resolverTerminated()
 
 	// resolver terminated successfully
 	delete m_pResolver;
-	m_pResolver = 0;
+	m_pResolver = nullptr;
 
 	createSocket(m_pTarget->server()->linkFilter());
 
 	KviError::Code eError = m_pSocket->startConnection(m_pTarget->server(), m_pTarget->proxy(),
-	    m_pTarget->bindAddress().isEmpty() ? 0 : m_pTarget->bindAddress().toUtf8().data());
+	    m_pTarget->bindAddress().isEmpty() ? nullptr : m_pTarget->bindAddress().toUtf8().data());
 
 	if(eError != KviError::Success)
 	{
@@ -243,7 +243,7 @@ void KviIrcLink::processData(char * buffer, int iLen)
 				*(cMessageBuffer + iBufLen + m_uReadBufferLen) = '\0';
 				m_uReadBufferLen = 0;
 				KviMemory::free(m_pReadBuffer);
-				m_pReadBuffer = 0;
+				m_pReadBuffer = nullptr;
 			}
 			else
 			{
@@ -356,7 +356,7 @@ bool KviIrcLink::sendPacket(KviDataBuffer * pData)
 	if(!m_pSocket)
 	{
 		delete pData;
-		pData = 0;
+		pData = nullptr;
 		return false;
 	}
 

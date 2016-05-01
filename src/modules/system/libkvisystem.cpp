@@ -514,9 +514,9 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall * c)
 
 	QList<QVariant> ds;
 
-	for(QStringList::Iterator it = parms.begin(); it != parms.end(); ++it)
+	for(auto & parm : parms)
 	{
-		KviCString tmp = *it;
+		KviCString tmp = parm;
 
 		if(tmp.isEmpty())
 		{
@@ -605,9 +605,9 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall * c)
 				QStringList csl(v.toStringList());
 				KviKvsArray * arry = new KviKvsArray();
 				int idx = 0;
-				for(QStringList::Iterator iter = csl.begin(); iter != csl.end(); ++iter)
+				for(auto & iter : csl)
 				{
-					arry->set(idx, new KviKvsVariant(*iter));
+					arry->set(idx, new KviKvsVariant(iter));
 					idx++;
 				}
 				c->returnValue()->setArray(arry);

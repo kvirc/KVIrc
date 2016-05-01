@@ -606,13 +606,13 @@ void KviConnectAction::activeContextStateChanged()
 				txt = m_szDisconnectString;
 				break;
 			default:
-				p = 0;
+				p = nullptr;
 				break;
 		}
 	}
 	else
 	{
-		p = 0;
+		p = nullptr;
 	}
 
 	if(p)
@@ -738,7 +738,7 @@ KviSubmenuAction::KviSubmenuAction(
           eSmallIcon,
           uFlags)
 {
-	m_pPopup = 0;
+	m_pPopup = nullptr;
 }
 
 KviSubmenuAction::~KviSubmenuAction()
@@ -1107,12 +1107,12 @@ void KviGoAwayAction::activeContextStateChanged()
 		}
 		else
 		{
-			p = 0;
+			p = nullptr;
 		}
 	}
 	else
 	{
-		p = 0;
+		p = nullptr;
 	}
 
 	if(p)

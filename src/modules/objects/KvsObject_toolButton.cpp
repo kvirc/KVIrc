@@ -334,6 +334,6 @@ KVSO_CLASS_FUNCTION(toolButton, clickEvent)
 
 void KvsObject_toolButton::slotClicked()
 {
-	KviKvsVariantList * params = 0;
+	KviKvsVariantList * params = nullptr;
 	callFunction(this, "clickEvent", params);
 }

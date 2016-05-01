@@ -39,5 +39,4 @@ OptionsWidget_protection::OptionsWidget_protection(QWidget * parent)
 }
 
 OptionsWidget_protection::~OptionsWidget_protection()
-{
-}
+    = default;

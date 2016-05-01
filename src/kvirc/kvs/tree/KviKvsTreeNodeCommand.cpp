@@ -29,7 +29,7 @@ KviKvsTreeNodeCommand::KviKvsTreeNodeCommand(const QChar * pLocation, const QStr
     : KviKvsTreeNodeInstruction(pLocation)
 {
 	m_szCmdName = szCmdName;
-	m_pSwitches = 0;
+	m_pSwitches = nullptr;
 }
 
 KviKvsTreeNodeCommand::~KviKvsTreeNodeCommand()

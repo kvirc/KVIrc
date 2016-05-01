@@ -503,7 +503,7 @@ __DATA__*/
 #endif
 #endif
 #ifndef PoisonWith
-#define PoisonWith(d, n, t, b) (void) memset((char *)(d), (U8)(b), (n) * sizeof(t))
+#define PoisonWith(d, n, t, b) (void)memset((char *)(d), (U8)(b), (n) * sizeof(t))
 #endif
 #ifndef PoisonNew
 #define PoisonNew(d, n, t) PoisonWith(d, n, t, 0xAB)
@@ -631,7 +631,7 @@ typedef NVTYPE NV;
 #else
 #if defined(VOIDFLAGS) && (VOIDFLAGS) && (defined(sun) || defined(__sun__)) && !defined(__GNUC__)
 #define STMT_START if(1)
-#define STMT_END else(void)0
+#define STMT_END else(void) 0
 #else
 #define STMT_START do
 #define STMT_END while(0)
@@ -1018,8 +1018,8 @@ extern yy_parser DPPP_(dummy_PL_parser);
                                                    (flags) & ~G_METHOD)                       \
                                              : perl_call_sv(sv, flags))
 #else
-#define call_sv(sv, flags) ((flags)&G_METHOD ? Perl_call_method(aTHX_(char *)SvPV_nolen_const(sv), \
-                                                   (flags) & ~G_METHOD)                            \
+#define call_sv(sv, flags) ((flags)&G_METHOD ? Perl_call_method(aTHX_(char *) SvPV_nolen_const(sv), \
+                                                   (flags) & ~G_METHOD)                             \
                                              : Perl_call_sv(aTHX_ sv, flags))
 #endif
 #endif

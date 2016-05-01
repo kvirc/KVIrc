@@ -37,7 +37,7 @@
 #include "KviModuleManager.h"
 
 #include <QDir>
-KviKvsKernel * KviKvsKernel::m_pKvsKernel = 0;
+KviKvsKernel * KviKvsKernel::m_pKvsKernel = nullptr;
 
 ////////////////////////////////////////////////////////////////////////////////
 // CONSTRUCTION AND DESTRUCTION
@@ -95,7 +95,7 @@ void KviKvsKernel::done()
 	if(m_pKvsKernel)
 	{
 		delete m_pKvsKernel;
-		m_pKvsKernel = 0;
+		m_pKvsKernel = nullptr;
 	}
 }
 

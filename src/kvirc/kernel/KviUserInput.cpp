@@ -89,14 +89,14 @@ namespace KviUserInput
 			KviQString::escapeKvs(&szCmd, KviQString::EscapeParenthesis);
 
 			KviKvsScript kvs(szContext.isEmpty() ? szUserFriendlyCommandlineContext : szContext, szCmd);
-			return (kvs.run(pWindow, 0, 0) != KviKvsScript::Error);
+			return (kvs.run(pWindow, nullptr, nullptr) != KviKvsScript::Error);
 		}
 		else
 		{
 			static QString szCommandlineContext(__tr2qs("commandline::kvs"));
 
 			KviKvsScript kvs(szContext.isEmpty() ? szCommandlineContext : szContext, szData);
-			return (kvs.run(pWindow, 0, 0 /*,KviKvsScript::AssumeLocals*/) != KviKvsScript::Error);
+			return (kvs.run(pWindow, nullptr, nullptr /*,KviKvsScript::AssumeLocals*/) != KviKvsScript::Error);
 		}
 	}
 

@@ -210,8 +210,8 @@ bool kvi_matchStringCI(const char * exp, const char * str)
 	// str = arexoxmexamemizazv
 	//                         .
 	//                         n
-	const char * afterWild = 0;
-	const char * nextStrToCheck = 0;
+	const char * afterWild = nullptr;
+	const char * nextStrToCheck = nullptr;
 
 	while(*exp)
 	{
@@ -272,8 +272,8 @@ bool kvi_matchStringCS(const char * exp, const char * str)
 	// str = arexoxmexamemizazv
 	//                         .
 	//                         n
-	const char * afterWild = 0;
-	const char * nextStrToCheck = 0;
+	const char * afterWild = nullptr;
+	const char * nextStrToCheck = nullptr;
 
 	while(*exp)
 	{
@@ -336,8 +336,8 @@ bool kvi_matchStringWithTerminator(const char * exp, const char * str, char term
 	// str = arexoxmexamemizazv
 	//                         .
 	//                         n
-	const char * afterWild = 0;
-	const char * nextStrToCheck = 0;
+	const char * afterWild = nullptr;
+	const char * nextStrToCheck = nullptr;
 
 	while(NOT_AT_END(exp))
 	{
@@ -424,7 +424,7 @@ bool kvi_matchWildExpr(const char * m1, const char * m2)
 
 	if(!(m1 && m2 && (*m1)))
 		return false;
-	const char * savePos1 = 0;
+	const char * savePos1 = nullptr;
 	const char * savePos2 = m2;
 	while(*m1)
 	{
@@ -563,7 +563,7 @@ bool kvi_matchWildExprWithTerminator(const char * m1, const char * m2, char term
 	bool bSwapped = false;
 	if(!(m1 && m2 && (NOT_AT_END(m1))))
 		return false;
-	const char * savePos1 = 0;
+	const char * savePos1 = nullptr;
 	const char * savePos2 = m2;
 	while(NOT_AT_END(m1))
 	{
@@ -1421,7 +1421,7 @@ int KviCString::hexToBuffer(char ** buffer,bool bNullToNewlines)
 
 int KviCString::hexToBuffer(char ** buffer, bool bNullToNewlines)
 {
-	*buffer = 0;
+	*buffer = nullptr;
 	if((m_len == 0) || (m_len & 1))
 		return -1; // this is an error
 	int len = (m_len / 2);
@@ -1440,7 +1440,7 @@ int KviCString::hexToBuffer(char ** buffer, bool bNullToNewlines)
 		if(*ptr == -1)
 		{
 			KviMemory::free(*buffer);
-			*buffer = 0;
+			*buffer = nullptr;
 			return -1;
 		}
 		aux++;
@@ -1448,7 +1448,7 @@ int KviCString::hexToBuffer(char ** buffer, bool bNullToNewlines)
 		if(aux2 == -1)
 		{
 			KviMemory::free(*buffer);
-			*buffer = 0;
+			*buffer = nullptr;
 			return -1;
 		}
 		*ptr += aux2;
@@ -1525,7 +1525,7 @@ static unsigned char get_base64_idx(char base64)
 
 int KviCString::base64ToBuffer(char ** buffer, bool)
 {
-	*buffer = 0;
+	*buffer = nullptr;
 	if((m_len == 0) || (m_len & 3))
 		return -1; // this is an error
 	int len = (m_len >> 2) * 3;
@@ -1545,7 +1545,7 @@ int KviCString::base64ToBuffer(char ** buffer, bool)
 			// ops... there was a padding and we still have chars after it
 			// this is an error
 			KviMemory::free(*buffer);
-			*buffer = 0;
+			*buffer = nullptr;
 			return -1;
 		}
 		aux1 = get_base64_idx(*aux_ptr++);
@@ -1556,14 +1556,14 @@ int KviCString::base64ToBuffer(char ** buffer, bool)
 		{
 			// error
 			KviMemory::free(*buffer);
-			*buffer = 0;
+			*buffer = nullptr;
 			return -1;
 		}
 		if((aux1 | aux2) > 63)
 		{
 			// again error...impossible padding
 			KviMemory::free(*buffer);
-			*buffer = 0;
+			*buffer = nullptr;
 			return -1;
 		}
 		if(aux4 == 64)
@@ -1588,7 +1588,7 @@ int KviCString::base64ToBuffer(char ** buffer, bool)
 			{
 				// error... impossible padding
 				KviMemory::free(*buffer);
-				*buffer = 0;
+				*buffer = nullptr;
 				return -1;
 			}
 			else
@@ -1992,7 +1992,7 @@ KviCString ** KviCString::splitToArray(char sep, int max, int * realCount) const
 	}
 	if(realCount)
 		*realCount = number;
-	strings[number] = 0;
+	strings[number] = nullptr;
 	return strings;
 }
 /*
@@ -2104,7 +2104,7 @@ KviCString & KviCString::hexEncodeWithTable(const unsigned char table[256])
 	char * aux = m_ptr;
 	char * begin = m_ptr;
 
-	char * n = 0;
+	char * n = nullptr;
 	int curSize = 0;
 
 	while(*aux)
@@ -2208,7 +2208,7 @@ KviCString & KviCString::hexDecode(const char * pFrom)
 	const char * aux = pFrom;
 	const char * begin = pFrom;
 
-	char * n = 0;
+	char * n = nullptr;
 	int curSize = 0;
 
 	while(*aux)

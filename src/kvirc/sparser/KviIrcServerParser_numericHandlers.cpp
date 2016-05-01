@@ -1688,9 +1688,8 @@ void KviIrcServerParser::parseNumericWhoisChannels(KviIrcMessage * msg)
 		QStringList sl = szChans.split(" ", QString::SkipEmptyParts);
 		QString szChanList;
 
-		for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
+		for(auto szCur : sl)
 		{
-			QString szCur = *it;
 			// deals with <flag>[#channel] and [##channel]
 			int len = szCur.length();
 			int i = 0;
@@ -1999,7 +1998,7 @@ void KviIrcServerParser::parseNumericEndOfWhois(KviIrcMessage * msg)
 		vl.append(new KviKvsVariant(*(i->pMagic)));
 		vl.append(new KviKvsVariant(i->szAuth));
 		vl.append(new KviKvsVariant(i->szAdditional));
-		i->pCallback->run(i->pWindow, &vl, 0, KviKvsScript::PreserveParams);
+		i->pCallback->run(i->pWindow, &vl, nullptr, KviKvsScript::PreserveParams);
 		msg->connection()->asyncWhoisData()->remove(i);
 		return;
 	}
@@ -2052,7 +2051,7 @@ void KviIrcServerParser::parseNumericNoSuchNick(KviIrcMessage * msg)
 			for(unsigned int ii = 0; ii < 9; ii++)
 				vl.append(new KviKvsVariant());
 			vl.append(new KviKvsVariant(*(i->pMagic)));
-			i->pCallback->run(i->pWindow, &vl, 0, KviKvsScript::PreserveParams);
+			i->pCallback->run(i->pWindow, &vl, nullptr, KviKvsScript::PreserveParams);
 			msg->connection()->asyncWhoisData()->remove(i);
 			return;
 		}
@@ -2729,7 +2728,7 @@ void KviIrcServerParser::parseNumericNoSuchServer(KviIrcMessage * msg)
 		for(unsigned int ii = 0; ii < 9; ii++)
 			vl.append(new KviKvsVariant());
 		vl.append(new KviKvsVariant(*(i->pMagic)));
-		i->pCallback->run(i->pWindow, &vl, 0, KviKvsScript::PreserveParams);
+		i->pCallback->run(i->pWindow, &vl, nullptr, KviKvsScript::PreserveParams);
 		msg->connection()->asyncWhoisData()->remove(i);
 		return;
 	}

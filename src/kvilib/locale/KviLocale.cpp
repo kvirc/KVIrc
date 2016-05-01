@@ -45,11 +45,11 @@
 #include <QLocale>
 #include <QByteArray>
 
-KVILIB_API KviMessageCatalogue * g_pMainCatalogue = NULL;
+KVILIB_API KviMessageCatalogue * g_pMainCatalogue = nullptr;
 
-static KviTranslator * g_pTranslator = NULL;
-static KviPointerHashTable<const char *, KviMessageCatalogue> * g_pCatalogueDict = NULL;
-static QTextCodec * g_pUtf8TextCodec = NULL;
+static KviTranslator * g_pTranslator = nullptr;
+static KviPointerHashTable<const char *, KviMessageCatalogue> * g_pCatalogueDict = nullptr;
+static QTextCodec * g_pUtf8TextCodec = nullptr;
 static QString g_szDefaultLocalePath; // FIXME: Convert this to a search path list
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -280,24 +280,24 @@ public:
 public:
 	bool ok() { return m_pRecvCodec && g_pUtf8TextCodec; };
 
-	virtual int mibEnum() const { return 0; };
+	int mibEnum() const override { return 0; };
 
-	virtual QByteArray name() const { return m_szName; };
+	QByteArray name() const override { return m_szName; };
 protected:
-	virtual QByteArray convertFromUnicode(const QChar * input, int number, ConverterState * state) const
+	QByteArray convertFromUnicode(const QChar * input, int number, ConverterState * state) const override
 	{
 		return m_pSendCodec->fromUnicode(input, number, state);
 	}
-	virtual QString convertToUnicode(const char * chars, int len, ConverterState * state) const
+	QString convertToUnicode(const char * chars, int len, ConverterState * state) const override
 	{
-		if(g_utf8_validate(chars, len, NULL))
+		if(g_utf8_validate(chars, len, nullptr))
 			return g_pUtf8TextCodec->toUnicode(chars, len, state);
 
 		return m_pRecvCodec->toUnicode(chars, len, state);
 	}
 };
 
-static KviPointerHashTable<const char *, KviSmartTextCodec> * g_pSmartCodecDict = 0;
+static KviPointerHashTable<const char *, KviSmartTextCodec> * g_pSmartCodecDict = nullptr;
 
 static const char * encoding_groups[] = {
 	"Unicode",
@@ -310,7 +310,7 @@ static const char * encoding_groups[] = {
 	"Japanese",
 	"Other asiatic",
 #endif
-	0
+	nullptr
 };
 
 static KviLocale::EncodingDescription supported_encodings[] = {
@@ -462,11 +462,11 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 	{ "UTF-8 [TSCII]"        , 1 , 1 , 7, "Unicode - Tamil" },
 	{ "UTF-8 [CP-949]"       , 1 , 1 , 7, "Unicode - Korean Codepage" },
 #endif
-	{ 0                      , 0 , 0 , 0 , 0 }
+	{ nullptr                      , 0 , 0 , 0 , nullptr }
 	// clang-format on
 };
 
-KviLocale * KviLocale::m_pSelf = NULL;
+KviLocale * KviLocale::m_pSelf = nullptr;
 unsigned int KviLocale::m_uCount = 0;
 KviCString KviLocale::g_szLang = "";
 
@@ -555,14 +555,14 @@ KviLocale::~KviLocale()
 	delete g_pMainCatalogue;
 	delete g_pCatalogueDict;
 	delete g_pSmartCodecDict;
-	g_pMainCatalogue = 0;
-	g_pCatalogueDict = 0;
-	g_pSmartCodecDict = 0;
+	g_pMainCatalogue = nullptr;
+	g_pCatalogueDict = nullptr;
+	g_pSmartCodecDict = nullptr;
 	if(g_pTranslator)
 	{
 		m_pApp->removeTranslator(g_pTranslator);
 		delete g_pTranslator;
-		g_pTranslator = 0;
+		g_pTranslator = nullptr;
 	}
 }
 
@@ -695,7 +695,7 @@ KviMessageCatalogue * KviLocale::loadCatalogue(const QString & szName, const QSt
 		return pCatalogue; // already loaded
 
 	if(!findCatalogue(szBuffer, szName, szLocaleDir))
-		return NULL;
+		return nullptr;
 
 	pCatalogue = new KviMessageCatalogue();
 	if(pCatalogue->load(szBuffer))
@@ -704,7 +704,7 @@ KviMessageCatalogue * KviLocale::loadCatalogue(const QString & szName, const QSt
 		return pCatalogue;
 	}
 	delete pCatalogue;
-	return NULL;
+	return nullptr;
 }
 
 bool KviLocale::unloadCatalogue(const QString & szName)

@@ -116,7 +116,7 @@ EventEditor::EventEditor(QWidget * par)
 	m_pEditor = KviScriptEditor::createInstance(box);
 	m_pEditor->setFocus();
 	m_bOneTimeSetupDone = false;
-	m_pLastEditedItem = 0;
+	m_pLastEditedItem = nullptr;
 }
 
 EventEditor::~EventEditor()
@@ -280,7 +280,7 @@ void EventEditor::addHandlerForCurrentEvent()
 	{
 		QTreeWidgetItem * it = m_pTreeWidget->selectedItems().first();
 
-		if(it->parent() == 0)
+		if(it->parent() == nullptr)
 		{
 			if(it->childCount() == 0)
 				it->setIcon(0, QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Event))));
@@ -301,7 +301,7 @@ void EventEditor::removeCurrentHandler()
 	{
 		QTreeWidgetItem * it = m_pLastEditedItem;
 		QTreeWidgetItem * parent = m_pLastEditedItem->parent();
-		m_pLastEditedItem = 0;
+		m_pLastEditedItem = nullptr;
 		delete it;
 
 		if(parent)
@@ -322,7 +322,7 @@ void EventEditor::toggleCurrentHandlerEnabled()
 	{
 		m_pLastEditedItem->setEnabled(!(m_pLastEditedItem->m_bEnabled));
 		m_pTreeWidget->repaint(m_pTreeWidget->visualItemRect(m_pLastEditedItem));
-		currentItemChanged(m_pLastEditedItem, 0);
+		currentItemChanged(m_pLastEditedItem, nullptr);
 	}
 }
 
@@ -407,7 +407,7 @@ void EventEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 	}
 	else
 	{
-		m_pLastEditedItem = 0;
+		m_pLastEditedItem = nullptr;
 		m_pNameEditor->setEnabled(false);
 		m_pNameEditor->setText("");
 		m_pEditor->setEnabled(false);
@@ -525,7 +525,7 @@ void EventEditor::exportAllEvents()
 }
 
 EventEditorWindow::EventEditorWindow()
-    : KviWindow(KviWindow::ScriptEditor, "eventeditor", 0)
+    : KviWindow(KviWindow::ScriptEditor, "eventeditor", nullptr)
 {
 	g_pEventEditorWindow = this;
 
@@ -555,7 +555,7 @@ EventEditorWindow::EventEditorWindow()
 
 EventEditorWindow::~EventEditorWindow()
 {
-	g_pEventEditorWindow = 0;
+	g_pEventEditorWindow = nullptr;
 }
 
 void EventEditorWindow::okClicked()

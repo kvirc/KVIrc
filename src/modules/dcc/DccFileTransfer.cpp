@@ -83,8 +83,8 @@ extern DccBroker * g_pDccBroker;
 
 extern KVIRC_API KviMediaManager * g_pMediaManager; // KviApplication.cpp
 
-static KviPointerList<DccFileTransfer> * g_pDccFileTransfers = 0;
-static QPixmap * g_pDccFileTransferIcon = 0;
+static KviPointerList<DccFileTransfer> * g_pDccFileTransfers = nullptr;
+static QPixmap * g_pDccFileTransferIcon = nullptr;
 
 //#warning "The events that have a KviCString data pointer should become real classes, that take care of deleting the data pointer!"
 //#warning "Otherwise, when left undispatched we will be leaking memory (event class destroyed but not the data ptr)"
@@ -99,7 +99,7 @@ DccRecvThread::DccRecvThread(QObject * par, kvi_socket_t fd, KviDccRecvThreadOpt
 
 	m_uTotalReceivedBytes = 0;
 	m_uInstantReceivedBytes = 0;
-	m_pFile = 0;
+	m_pFile = nullptr;
 	m_pTimeInterval = new KviMSecTimeInterval();
 	m_uStartTime = 0;
 	m_uInstantSpeedInterval = 0;
@@ -577,14 +577,14 @@ exit_dcc:
 	{
 		m_pFile->close();
 		delete m_pFile;
-		m_pFile = 0;
+		m_pFile = nullptr;
 	}
 
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pSSL)
 	{
 		KviSSLMaster::freeSSL(m_pSSL);
-		m_pSSL = 0;
+		m_pSSL = nullptr;
 	}
 #endif
 
@@ -672,8 +672,7 @@ void DccSendThread::updateStats()
 	m_pMutex->unlock();
 }
 
-union _ack_buffer
-{
+union _ack_buffer {
 	char cAckBuffer[4];
 	quint32 i32AckBuffer;
 };
@@ -1165,13 +1164,13 @@ exit_dcc:
 	KviMemory::free(buffer);
 	pFile->close();
 	delete pFile;
-	pFile = 0;
+	pFile = nullptr;
 
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pSSL)
 	{
 		KviSSLMaster::freeSSL(m_pSSL);
-		m_pSSL = 0;
+		m_pSSL = nullptr;
 	}
 #endif
 	kvi_socket_close(m_fd);
@@ -1194,8 +1193,8 @@ DccFileTransfer::DccFileTransfer(DccDescriptor * dcc)
 	init(); // ensure we're initialized
 	g_pDccFileTransfers->append(this);
 
-	m_pResumeTimer = 0;
-	m_pBandwidthDialog = 0;
+	m_pResumeTimer = nullptr;
+	m_pBandwidthDialog = nullptr;
 
 	m_szTransferIdString = QString(__tr2qs_ctx("TRANSFER %1", "dcc")).arg(id());
 
@@ -1219,8 +1218,8 @@ DccFileTransfer::DccFileTransfer(DccDescriptor * dcc)
 	if(dcc->bIsSSL)
 		m_szDccType.prepend("S");
 #endif
-	m_pSlaveRecvThread = 0;
-	m_pSlaveSendThread = 0;
+	m_pSlaveRecvThread = nullptr;
+	m_pSlaveSendThread = nullptr;
 
 	m_tTransferStartTime = 0;
 	m_tTransferEndTime = 0;
@@ -1254,14 +1253,14 @@ DccFileTransfer::~DccFileTransfer()
 	{
 		m_pSlaveRecvThread->terminate();
 		delete m_pSlaveRecvThread;
-		m_pSlaveRecvThread = 0;
+		m_pSlaveRecvThread = nullptr;
 	}
 
 	if(m_pSlaveSendThread)
 	{
 		m_pSlaveSendThread->terminate();
 		delete m_pSlaveSendThread;
-		m_pSlaveSendThread = 0;
+		m_pSlaveSendThread = nullptr;
 	}
 
 	KviThreadManager::killPendingEvents(this);
@@ -1272,7 +1271,7 @@ DccFileTransfer::~DccFileTransfer()
 
 void DccFileTransfer::bandwidthDialogDestroyed()
 {
-	m_pBandwidthDialog = 0;
+	m_pBandwidthDialog = nullptr;
 }
 
 KviWindow * DccFileTransfer::eventWindow()
@@ -1376,7 +1375,7 @@ void DccFileTransfer::resumeTimedOut()
 	if(m_pResumeTimer)
 	{
 		delete m_pResumeTimer;
-		m_pResumeTimer = 0;
+		m_pResumeTimer = nullptr;
 	}
 	handleMarshalError(KviError::ConnectionTimedOut);
 }
@@ -1916,7 +1915,7 @@ void DccFileTransfer::init()
 	if(pix)
 		g_pDccFileTransferIcon = new QPixmap(*pix);
 	else
-		g_pDccFileTransferIcon = 0;
+		g_pDccFileTransferIcon = nullptr;
 }
 
 void DccFileTransfer::done()
@@ -1926,10 +1925,10 @@ void DccFileTransfer::done()
 	while(DccFileTransfer * t = g_pDccFileTransfers->first())
 		delete t;
 	delete g_pDccFileTransfers;
-	g_pDccFileTransfers = 0;
+	g_pDccFileTransfers = nullptr;
 	if(g_pDccFileTransferIcon)
 		delete g_pDccFileTransferIcon;
-	g_pDccFileTransferIcon = 0;
+	g_pDccFileTransferIcon = nullptr;
 }
 
 unsigned int DccFileTransfer::transferCount()
@@ -1942,7 +1941,7 @@ unsigned int DccFileTransfer::transferCount()
 DccFileTransfer * DccFileTransfer::nonFailedTransferWithLocalFileName(const QString & szLocalFileName)
 {
 	if(!g_pDccFileTransfers)
-		return 0;
+		return nullptr;
 	for(DccFileTransfer * t = g_pDccFileTransfers->first(); t; t = g_pDccFileTransfers->next())
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -1956,7 +1955,7 @@ DccFileTransfer * DccFileTransfer::nonFailedTransferWithLocalFileName(const QStr
 				return t;
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 unsigned int DccFileTransfer::runningTransfersCount()
@@ -2356,7 +2355,7 @@ bool DccFileTransfer::resumeAccepted(const char * filename, const char * port, c
 	}
 
 	delete m_pResumeTimer;
-	m_pResumeTimer = 0;
+	m_pResumeTimer = nullptr;
 
 	outputAndLog(__tr2qs_ctx("RESUME accepted, transfer will begin at position %1", "dcc").arg(m_pDescriptor->szLocalFileSize));
 
@@ -2523,8 +2522,7 @@ DccFileTransferBandwidthDialog::DccFileTransferBandwidthDialog(QWidget * pParent
 }
 
 DccFileTransferBandwidthDialog::~DccFileTransferBandwidthDialog()
-{
-}
+    = default;
 
 void DccFileTransferBandwidthDialog::okClicked()
 {

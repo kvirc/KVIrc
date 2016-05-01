@@ -119,8 +119,7 @@ PackAddonDialog::PackAddonDialog(QWidget * pParent)
 }
 
 PackAddonDialog::~PackAddonDialog()
-{
-}
+    = default;
 
 void PackAddonDialog::accept()
 {
@@ -250,8 +249,7 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 }
 
 PackAddonInfoPackageWidget::~PackAddonInfoPackageWidget()
-{
-}
+    = default;
 
 PackAddonFileSelectionWidget::PackAddonFileSelectionWidget(PackAddonDialog * pParent)
     : QWizardPage(pParent)
@@ -276,8 +274,7 @@ PackAddonFileSelectionWidget::PackAddonFileSelectionWidget(PackAddonDialog * pPa
 }
 
 PackAddonFileSelectionWidget::~PackAddonFileSelectionWidget()
-{
-}
+    = default;
 
 PackAddonSaveSelectionWidget::PackAddonSaveSelectionWidget(PackAddonDialog * pParent)
     : QWizardPage(pParent)
@@ -303,8 +300,7 @@ PackAddonSaveSelectionWidget::PackAddonSaveSelectionWidget(PackAddonDialog * pPa
 }
 
 PackAddonSaveSelectionWidget::~PackAddonSaveSelectionWidget()
-{
-}
+    = default;
 
 void PackAddonSaveSelectionWidget::initializePage()
 {
@@ -335,8 +331,7 @@ PackAddonSummaryInfoWidget::PackAddonSummaryInfoWidget(PackAddonDialog * pParent
 }
 
 PackAddonSummaryInfoWidget::~PackAddonSummaryInfoWidget()
-{
-}
+    = default;
 
 void PackAddonSummaryInfoWidget::initializePage()
 {
@@ -417,8 +412,7 @@ PackAddonSummaryFilesWidget::PackAddonSummaryFilesWidget(PackAddonDialog * pPare
 }
 
 PackAddonSummaryFilesWidget::~PackAddonSummaryFilesWidget()
-{
-}
+    = default;
 
 void PackAddonSummaryFilesWidget::accept()
 {

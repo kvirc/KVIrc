@@ -44,7 +44,7 @@
 #endif
 
 static bool g_bSSLInitialized = false;
-static KviMutex * g_pSSLMutex = 0;
+static KviMutex * g_pSSLMutex = nullptr;
 
 static inline void my_ssl_lock()
 {
@@ -58,10 +58,10 @@ static inline void my_ssl_unlock()
 
 // THIS PART OF OpenSSL SUCKS
 
-static DH * dh_512 = 0;
-static DH * dh_1024 = 0;
-static DH * dh_2048 = 0;
-static DH * dh_4096 = 0;
+static DH * dh_512 = nullptr;
+static DH * dh_1024 = nullptr;
+static DH * dh_2048 = nullptr;
+static DH * dh_4096 = nullptr;
 
 static unsigned char dh512_p[] = {
 	0x90, 0x86, 0xDD, 0x06, 0xE8, 0x0F, 0x10, 0x86, 0xF0, 0x91, 0xC5, 0x55,
@@ -163,9 +163,9 @@ static unsigned char dh4096_g[] = { 0x02 };
 
 static DH * my_get_dh(int keylength)
 {
-	DH * dh = 0;
-	unsigned char * p = 0;
-	unsigned char * g = 0;
+	DH * dh = nullptr;
+	unsigned char * p = nullptr;
+	unsigned char * g = nullptr;
 	int sp = 0;
 	int sg = 0;
 	switch(keylength)
@@ -208,13 +208,13 @@ static DH * my_get_dh(int keylength)
 		return dh;
 	dh = DH_new();
 	if(!dh)
-		return 0;
-	dh->p = BN_bin2bn(p, sp, 0);
-	dh->g = BN_bin2bn(g, sg, 0);
-	if((dh->p == 0) || (dh->g == 0))
+		return nullptr;
+	dh->p = BN_bin2bn(p, sp, nullptr);
+	dh->g = BN_bin2bn(g, sg, nullptr);
+	if((dh->p == nullptr) || (dh->g == nullptr))
 	{
 		DH_free(dh);
-		return 0;
+		return nullptr;
 	}
 	return dh;
 }
@@ -248,7 +248,7 @@ void KviSSL::globalDestroy()
 		DH_free(dh_4096);
 	globalSSLDestroy();
 	delete g_pSSLMutex;
-	g_pSSLMutex = 0;
+	g_pSSLMutex = nullptr;
 }
 
 void KviSSL::globalSSLInit()
@@ -280,8 +280,8 @@ void KviSSL::globalSSLDestroy()
 KviSSL::KviSSL()
 {
 	globalSSLInit();
-	m_pSSL = 0;
-	m_pSSLCtx = 0;
+	m_pSSL = nullptr;
+	m_pSSLCtx = nullptr;
 }
 
 KviSSL::~KviSSL()
@@ -328,12 +328,12 @@ void KviSSL::shutdown()
 		SSL_shutdown(m_pSSL);
 #endif
 		SSL_free(m_pSSL);
-		m_pSSL = 0;
+		m_pSSL = nullptr;
 	}
 	if(m_pSSLCtx)
 	{
 		SSL_CTX_free(m_pSSLCtx);
-		m_pSSLCtx = 0;
+		m_pSSLCtx = nullptr;
 	}
 }
 
@@ -402,7 +402,7 @@ KviSSL::Result KviSSL::useCertificateFile(QString cert, QString pass)
 	m_szPass = pass.toUtf8().data();
 	if(m_szPass.len() < 4)
 		m_szPass.append("xxxx");
-	X509 * x509 = 0;
+	X509 * x509 = nullptr;
 
 #ifdef COMPILE_ON_WINDOWS
 	FILE * f = _wfopen(cert.toStdWString().data(), L"r");
@@ -436,7 +436,7 @@ KviSSL::Result KviSSL::usePrivateKeyFile(QString key, QString pass)
 	if(m_szPass.len() < 4)
 		m_szPass.append("xxxx");
 
-	EVP_PKEY * k = 0;
+	EVP_PKEY * k = nullptr;
 
 #ifdef COMPILE_ON_WINDOWS
 	FILE * f = _wfopen(key.toStdWString().data(), L"r");
@@ -581,34 +581,34 @@ KviSSL::Result KviSSL::getProtocolError(int ret)
 KviSSLCertificate * KviSSL::getPeerCertificate()
 {
 	if(!m_pSSL)
-		return 0;
+		return nullptr;
 	X509 * x509 = SSL_get_peer_certificate(m_pSSL);
 	if(!x509)
-		return 0;
+		return nullptr;
 	return new KviSSLCertificate(x509);
 }
 
 KviSSLCertificate * KviSSL::getLocalCertificate()
 {
 	if(!m_pSSL)
-		return 0;
+		return nullptr;
 	X509 * x509 = SSL_get_certificate(m_pSSL);
 	if(!x509)
-		return 0;
+		return nullptr;
 	return new KviSSLCertificate(x509);
 }
 
 KviSSLCipherInfo * KviSSL::getCurrentCipherInfo()
 {
 	if(!m_pSSL)
-		return 0;
+		return nullptr;
 #if OPENSSL_VERSION_NUMBER >= 0x10000000L
 	const SSL_CIPHER * c = SSL_get_current_cipher(m_pSSL);
 #else
 	SSL_CIPHER * c = SSL_get_current_cipher(m_pSSL);
 #endif
 	if(!c)
-		return 0;
+		return nullptr;
 	return new KviSSLCipherInfo(c, m_pSSL);
 }
 
@@ -618,7 +618,7 @@ KviSSLCertificate::KviSSLCertificate(X509 * x509)
 	m_pSubject->setAutoDelete(true);
 	m_pIssuer = new KviPointerHashTable<const char *, KviCString>(17);
 	m_pIssuer->setAutoDelete(true);
-	m_pX509 = 0;
+	m_pX509 = nullptr;
 	setX509(x509);
 }
 
@@ -701,10 +701,10 @@ int KviSSLCertificate::fingerprintDigestId()
 		return 0;
 	}
 
-	const EVP_MD * mdType = NULL;
+	const EVP_MD * mdType = nullptr;
 	mdType = EVP_get_digestbyname(OBJ_nid2sn(NID));
 
-	if(mdType == NULL)
+	if(mdType == nullptr)
 	{
 		// Unknown digest
 		return 0;
@@ -752,10 +752,10 @@ int KviSSLCertificate::getFingerprint(unsigned char * bufferData, unsigned int *
 	if(!m_pX509)
 		return -99;
 
-	const EVP_MD * mdType = NULL;
+	const EVP_MD * mdType = nullptr;
 	mdType = EVP_get_digestbyname(digestName);
 
-	if(mdType == NULL)
+	if(mdType == nullptr)
 	{
 		// Unknown digest
 		return -98;
@@ -910,8 +910,7 @@ KviSSLCipherInfo::KviSSLCipherInfo(SSL_CIPHER * c, SSL * s)
 }
 
 KviSSLCipherInfo::~KviSSLCipherInfo()
-{
-}
+    = default;
 
 #ifdef COMPILE_ON_WINDOWS
 

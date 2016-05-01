@@ -44,8 +44,7 @@ KviPackageReader::KviPackageReader()
 }
 
 KviPackageReader::~KviPackageReader()
-{
-}
+    = default;
 
 bool KviPackageReader::readHeaderInternal(KviFile * pFile, const QString &)
 {

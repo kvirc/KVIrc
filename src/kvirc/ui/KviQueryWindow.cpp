@@ -438,7 +438,7 @@ void KviQueryWindow::setDeadQuery()
 	m_pUserListView->enableUpdates(false);
 	m_pUserListView->partAll();
 	m_pUserListView->enableUpdates(true);
-	m_pUserListView->setUserDataBase(0);
+	m_pUserListView->setUserDataBase(nullptr);
 	if(connection())
 		connection()->unregisterQuery(this);
 	if(context())
@@ -771,12 +771,12 @@ void KviQueryWindow::pasteLastLog()
 	bool bGzip;
 	QString szFileName;
 
-	for(QStringList::Iterator it = logList.begin(); it != logList.end(); ++it)
+	for(auto & it : logList)
 	{
 		int iLogYear, iLogMonth, iLogDay;
 
-		szFileName = (*it);
-		QString szTmpName = (*it);
+		szFileName = it;
+		QString szTmpName = it;
 		QFileInfo fi(szTmpName);
 		bGzip = false;
 

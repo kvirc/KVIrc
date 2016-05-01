@@ -73,7 +73,7 @@ namespace UPnP
 	// TODO: rename to callMethod / callSoapMethod
 	int Service::callAction(const QString & actionName, const QString & prefix)
 	{
-		return callActionInternal(actionName, 0, prefix);
+		return callActionInternal(actionName, nullptr, prefix);
 	}
 
 	// Makes a UPnP action request
@@ -112,7 +112,7 @@ namespace UPnP
 		    + prefix + ":" + actionName + " xmlns:" + prefix + "=\"" + m_szServiceType + "\">\n";
 
 		// Do we have any arguments?
-		if(arguments != 0)
+		if(arguments != nullptr)
 		{
 			// Add the arguments
 			QMap<QString, QString>::const_iterator it;
@@ -233,7 +233,8 @@ namespace UPnP
 		QByteArray response = reply->readAll();
 		QDomDocument xml;
 
-		qDebug() << "Response:\n" << response << "\n---\n";
+		qDebug() << "Response:\n"
+		         << response << "\n---\n";
 
 		// Parse the XML
 		QString errorMessage;

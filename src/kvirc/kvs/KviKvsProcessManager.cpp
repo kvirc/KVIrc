@@ -36,10 +36,10 @@ KviKvsProcessAsyncOperation::KviKvsProcessAsyncOperation(KviKvsProcessDescriptor
     : KviKvsAsyncOperation(d->pWnd)
 {
 	m_pData = d;
-	m_pProcess = 0;
+	m_pProcess = nullptr;
 	m_pExtendedRunTimeData = new KviKvsExtendedRunTimeData(new KviKvsHash(), true);
-	m_pPingTimer = 0;
-	m_pRunTimeTimer = 0;
+	m_pPingTimer = nullptr;
+	m_pRunTimeTimer = nullptr;
 	m_bDeletePending = false;
 }
 
@@ -51,7 +51,7 @@ KviKvsProcessAsyncOperation::~KviKvsProcessAsyncOperation()
 		delete m_pRunTimeTimer;
 	if(m_pProcess)
 	{
-		QObject::disconnect(m_pProcess, 0, this, 0);
+		QObject::disconnect(m_pProcess, nullptr, this, nullptr);
 		m_pProcess->kill();
 		delete m_pProcess;
 	}

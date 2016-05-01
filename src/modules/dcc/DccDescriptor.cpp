@@ -32,7 +32,7 @@
 #include "KviApplication.h"
 
 static unsigned int g_uNextDescriptorId = 1; // we use 0 as an invalid descriptor id
-static KviPointerHashTable<int, DccDescriptor> * g_pDescriptorDict = 0;
+static KviPointerHashTable<int, DccDescriptor> * g_pDescriptorDict = nullptr;
 
 KviPointerHashTable<int, DccDescriptor> * DccDescriptor::descriptorDict()
 {
@@ -47,8 +47,8 @@ DccDescriptor::DccDescriptor(const DccDescriptor & src)
 DccDescriptor::DccDescriptor(KviConsoleWindow * pConsole)
 {
 	m_pConsole = pConsole;
-	m_pDccWindow = 0;
-	m_pDccTransfer = 0;
+	m_pDccWindow = nullptr;
+	m_pDccTransfer = nullptr;
 
 	m_uId = g_uNextDescriptorId;
 	g_uNextDescriptorId++;
@@ -112,7 +112,7 @@ DccDescriptor::~DccDescriptor()
 		if(g_pDescriptorDict->count() < 1)
 		{
 			delete g_pDescriptorDict;
-			g_pDescriptorDict = 0;
+			g_pDescriptorDict = nullptr;
 		}
 	}
 }
@@ -139,7 +139,7 @@ void DccDescriptor::triggerCreationEvent()
 DccDescriptor * DccDescriptor::find(unsigned int uId)
 {
 	if(!g_pDescriptorDict)
-		return 0;
+		return nullptr;
 	return g_pDescriptorDict->find((long)uId);
 }
 

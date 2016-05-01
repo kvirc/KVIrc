@@ -55,7 +55,7 @@
 #include <QDesktopWidget>
 #include <QMimeData>
 
-CustomizeToolBarsDialog * CustomizeToolBarsDialog::m_pInstance = 0;
+CustomizeToolBarsDialog * CustomizeToolBarsDialog::m_pInstance = nullptr;
 extern QRect g_rectToolBarEditorDialogGeometry;
 
 TrashcanLabel::TrashcanLabel(QWidget * p)
@@ -68,7 +68,7 @@ TrashcanLabel::TrashcanLabel(QWidget * p)
 	setAlignment(Qt::AlignCenter);
 	setMinimumSize(40, 40);
 	m_uFlashCount = 0;
-	m_pFlashTimer = 0;
+	m_pFlashTimer = nullptr;
 	m_clrOriginal = palette().color(backgroundRole());
 	setAutoFillBackground(true); //needed for flashing
 	connect(KviActionManager::instance(), SIGNAL(removeActionsHintRequest()), this, SLOT(flash()));
@@ -113,7 +113,7 @@ void TrashcanLabel::heartbeat()
 	{
 		m_pFlashTimer->stop();
 		delete m_pFlashTimer;
-		m_pFlashTimer = 0;
+		m_pFlashTimer = nullptr;
 	}
 }
 
@@ -204,8 +204,7 @@ CustomToolBarPropertiesDialog::CustomToolBarPropertiesDialog(QWidget * p, const 
 }
 
 CustomToolBarPropertiesDialog::~CustomToolBarPropertiesDialog()
-{
-}
+    = default;
 
 void CustomToolBarPropertiesDialog::iconSelected(const QString & szIconId)
 {
@@ -363,7 +362,7 @@ CustomizeToolBarsDialog::~CustomizeToolBarsDialog()
 	g_rectToolBarEditorDialogGeometry = QRect(pos().x(), pos().y(), size().width(), size().height());
 
 	KviActionManager::instance()->customizeToolBarsDialogDestroyed();
-	m_pInstance = 0;
+	m_pInstance = nullptr;
 }
 
 void CustomizeToolBarsDialog::currentToolBarChanged()
@@ -543,7 +542,7 @@ void CustomizeToolBarsDialog::cleanup()
 	if(!m_pInstance)
 		return;
 	delete m_pInstance;
-	m_pInstance = 0;
+	m_pInstance = nullptr;
 }
 
 void CustomizeToolBarsDialog::display(bool bTopLevel)
@@ -554,7 +553,7 @@ void CustomizeToolBarsDialog::display(bool bTopLevel)
 		{
 			if(m_pInstance->parent())
 			{
-				m_pInstance->setParent(0);
+				m_pInstance->setParent(nullptr);
 			}
 		}
 		else
@@ -569,7 +568,7 @@ void CustomizeToolBarsDialog::display(bool bTopLevel)
 	{
 		if(bTopLevel)
 		{
-			m_pInstance = new CustomizeToolBarsDialog(0);
+			m_pInstance = new CustomizeToolBarsDialog(nullptr);
 		}
 		else
 		{

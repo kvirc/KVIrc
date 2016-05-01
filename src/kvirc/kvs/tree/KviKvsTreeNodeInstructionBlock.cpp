@@ -59,7 +59,7 @@ KviKvsTreeNodeInstruction * KviKvsTreeNodeInstructionBlock::releaseFirst()
 	KviKvsTreeNodeInstruction * i = m_pInstructionList->first();
 	if(i)
 	{
-		i->setParent(0);
+		i->setParent(nullptr);
 		m_pInstructionList->removeFirst();
 	}
 	m_pInstructionList->setAutoDelete(true);

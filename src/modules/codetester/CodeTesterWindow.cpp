@@ -80,7 +80,7 @@ void CodeTesterWidget::execute()
 }
 
 CodeTesterWindow::CodeTesterWindow()
-    : KviWindow(KviWindow::ScriptEditor, "codetester", 0)
+    : KviWindow(KviWindow::ScriptEditor, "codetester", nullptr)
 {
 	g_pCodeTesterWindowList->append(this);
 

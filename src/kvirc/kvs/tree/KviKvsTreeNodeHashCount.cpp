@@ -34,8 +34,7 @@ KviKvsTreeNodeHashCount::KviKvsTreeNodeHashCount(const QChar * pLocation, KviKvs
 }
 
 KviKvsTreeNodeHashCount::~KviKvsTreeNodeHashCount()
-{
-}
+    = default;
 
 void KviKvsTreeNodeHashCount::contextDescription(QString & szBuffer)
 {
@@ -78,5 +77,5 @@ bool KviKvsTreeNodeHashCount::evaluateReadOnlyInObjectScope(KviKvsObject * o, Kv
 }
 bool KviKvsTreeNodeHashCount::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
-	return evaluateReadOnlyInObjectScope(0, c, pBuffer);
+	return evaluateReadOnlyInObjectScope(nullptr, c, pBuffer);
 }

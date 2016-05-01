@@ -46,8 +46,7 @@ WebAddonInterfaceDialog::WebAddonInterfaceDialog(QWidget * par)
 	        .arg(QString::fromUtf8(KviLocale::instance()->localeName().ptr())));
 }
 WebAddonInterfaceDialog::~WebAddonInterfaceDialog()
-{
-}
+    = default;
 
 bool WebAddonInterfaceDialog::installPackage(const QString & szPath, QString & szError)
 {

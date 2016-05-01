@@ -48,7 +48,7 @@ KviLiteralMessageParseStruct KviIrcServerParser::m_literalParseProcTable[] = {
 	{ "QUIT"         , PTM(parseLiteralQuit)         },
 	{ "TOPIC"        , PTM(parseLiteralTopic)        },
 	{ "WALLOPS"      , PTM(parseLiteralWallops)      },
-	{ 0              , 0                             }
+	{ nullptr              , nullptr                             }
 	// clang-format on
 };
 
@@ -62,7 +62,7 @@ KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpParseProcTable[] = {
 	{ "CLIENTINFO" , PTM(REQ(Clientinfo)) , PTM(RPL(Generic))  , 0 },
 	{ "DCC"        , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
 	{ "FINGER"     , PTM(REQ(Finger))     , PTM(RPL(Generic))  , 0 },
-	{ "LAGCHECK"   , 0                    , PTM(RPL(Lagcheck)) , KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT },
+	{ "LAGCHECK"   , nullptr                    , PTM(RPL(Lagcheck)) , KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT },
 	{ "PAGE"       , PTM(REQ(Page))       , PTM(RPL(Generic))  , 0 },
 	{ "PING"       , PTM(REQ(Ping))       , PTM(RPL(Ping))     , 0 },
 	{ "SOURCE"     , PTM(REQ(Source))     , PTM(RPL(Generic))  , 0 },
@@ -71,7 +71,7 @@ KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpParseProcTable[] = {
 	{ "USERINFO"   , PTM(REQ(Userinfo))   , PTM(RPL(Userinfo)) , 0 },
 	{ "VERSION"    , PTM(REQ(Version))    , PTM(RPL(Generic))  , 0 },
 	{ "XDCC"       , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
-	{ 0            , 0                    , 0                  , 0 }
+	{ nullptr            , nullptr                    , nullptr                  , 0 }
 	// clang-format on
 };
 
@@ -79,245 +79,245 @@ KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpParseProcTable[] = {
 #undef RPL
 
 messageParseProc KviIrcServerParser::m_numericParseProcTable[1000] = {
-	0,                                            // 000
+	nullptr,                                      // 000
 	PTM(parseNumeric001),                         // 001 RPL_WELCOME
 	PTM(parseNumeric002),                         // 002 RPL_YOURHOST
 	PTM(parseNumeric003),                         // 003 RPL_CREATED
 	PTM(parseNumeric004),                         // 004 RPL_MYINFO
 	PTM(parseNumeric005),                         // 005 RPL_BOUNCE, RPL_PROTOCTL, RPL_ISUPPORT
-	0,                                            // 006 RPL_MAP
-	0,                                            // 007 RPL_MAPEND
+	nullptr,                                      // 006 RPL_MAP
+	nullptr,                                      // 007 RPL_MAPEND
 	PTM(parseNumericSnomask),                     // 008 RPL_SNOMASK
-	0,                                            // 009 RPL_STATMEMTOT
-	0,                                            // 010 RPL_BOUNCE, RPL_REDIR, RPL_STATMEM
-	0,                                            // 011
-	0,                                            // 012
-	0,                                            // 013
-	0,                                            // 014 RPL_YOURCOOKIE
-	0,                                            // 015 RPL_MAP
-	0,                                            // 016 RPL_MAPMORE
-	0,                                            // 017 RPL_MAPEND
-	0,                                            // 018
-	0,                                            // 019
+	nullptr,                                      // 009 RPL_STATMEMTOT
+	nullptr,                                      // 010 RPL_BOUNCE, RPL_REDIR, RPL_STATMEM
+	nullptr,                                      // 011
+	nullptr,                                      // 012
+	nullptr,                                      // 013
+	nullptr,                                      // 014 RPL_YOURCOOKIE
+	nullptr,                                      // 015 RPL_MAP
+	nullptr,                                      // 016 RPL_MAPMORE
+	nullptr,                                      // 017 RPL_MAPEND
+	nullptr,                                      // 018
+	nullptr,                                      // 019
 	PTM(parseNumeric020),                         // 020
-	0,                                            // 021
-	0,                                            // 022
-	0,                                            // 023
-	0,                                            // 024
-	0,                                            // 025
-	0,                                            // 026
-	0,                                            // 027
-	0,                                            // 028
-	0,                                            // 029
-	0,                                            // 030
-	0,                                            // 031
-	0,                                            // 032
-	0,                                            // 033
-	0,                                            // 034
-	0,                                            // 035
-	0,                                            // 036
-	0,                                            // 037
-	0,                                            // 038
-	0,                                            // 039
-	0,                                            // 040
-	0,                                            // 041
+	nullptr,                                      // 021
+	nullptr,                                      // 022
+	nullptr,                                      // 023
+	nullptr,                                      // 024
+	nullptr,                                      // 025
+	nullptr,                                      // 026
+	nullptr,                                      // 027
+	nullptr,                                      // 028
+	nullptr,                                      // 029
+	nullptr,                                      // 030
+	nullptr,                                      // 031
+	nullptr,                                      // 032
+	nullptr,                                      // 033
+	nullptr,                                      // 034
+	nullptr,                                      // 035
+	nullptr,                                      // 036
+	nullptr,                                      // 037
+	nullptr,                                      // 038
+	nullptr,                                      // 039
+	nullptr,                                      // 040
+	nullptr,                                      // 041
 	PTM(parseNumericYourUID),                     // 042 RPL_YOURID
-	0,                                            // 043 RPL_SAVENICK
-	0,                                            // 044
-	0,                                            // 045
-	0,                                            // 046
-	0,                                            // 047
-	0,                                            // 048
-	0,                                            // 049
-	0,                                            // 050 RPL_ATTEMPTINGJUNC
-	0,                                            // 051 RPL_ATTEMPTINGREROUTE
-	0,                                            // 052
-	0,                                            // 053
-	0,                                            // 054
-	0,                                            // 055
-	0,                                            // 056
-	0,                                            // 057
-	0,                                            // 058
-	0,                                            // 059
-	0,                                            // 060
-	0,                                            // 061
-	0,                                            // 062
-	0,                                            // 063
-	0,                                            // 064
-	0,                                            // 065
-	0,                                            // 066
-	0,                                            // 067
-	0,                                            // 068
-	0,                                            // 069
-	0,                                            // 070
-	0,                                            // 071
-	0,                                            // 072
-	0,                                            // 073
-	0,                                            // 074
-	0,                                            // 075
-	0,                                            // 076
-	0,                                            // 077
-	0,                                            // 078
-	0,                                            // 079
-	0,                                            // 080
-	0,                                            // 081
-	0,                                            // 082
-	0,                                            // 083
-	0,                                            // 084
-	0,                                            // 085
-	0,                                            // 086
-	0,                                            // 087
-	0,                                            // 088
-	0,                                            // 089
-	0,                                            // 090
-	0,                                            // 091
-	0,                                            // 092
-	0,                                            // 093
-	0,                                            // 094
-	0,                                            // 095
-	0,                                            // 096
-	0,                                            // 097
-	0,                                            // 098
-	0,                                            // 099
-	0,                                            // 100
-	0,                                            // 101
-	0,                                            // 102
-	0,                                            // 103
-	0,                                            // 104
-	0,                                            // 105
-	0,                                            // 106
-	0,                                            // 107
-	0,                                            // 108
-	0,                                            // 109
-	0,                                            // 110
-	0,                                            // 111
-	0,                                            // 112
-	0,                                            // 113
-	0,                                            // 114
-	0,                                            // 115
-	0,                                            // 116
-	0,                                            // 117
-	0,                                            // 118
-	0,                                            // 119
-	0,                                            // 120
-	0,                                            // 121
-	0,                                            // 122
-	0,                                            // 123
-	0,                                            // 124
-	0,                                            // 125
-	0,                                            // 126
-	0,                                            // 127
-	0,                                            // 128
-	0,                                            // 129
-	0,                                            // 130
-	0,                                            // 131
-	0,                                            // 132
-	0,                                            // 133
-	0,                                            // 134
-	0,                                            // 135
-	0,                                            // 136
-	0,                                            // 137
-	0,                                            // 138
-	0,                                            // 139
-	0,                                            // 140
-	0,                                            // 141
-	0,                                            // 142
-	0,                                            // 143
-	0,                                            // 144
-	0,                                            // 145
-	0,                                            // 146
-	0,                                            // 147
-	0,                                            // 148
-	0,                                            // 149
-	0,                                            // 150
-	0,                                            // 151
-	0,                                            // 152
-	0,                                            // 153
-	0,                                            // 154
-	0,                                            // 155
-	0,                                            // 156
-	0,                                            // 157
-	0,                                            // 158
-	0,                                            // 159
-	0,                                            // 160
-	0,                                            // 161
-	0,                                            // 162
-	0,                                            // 163
-	0,                                            // 164
-	0,                                            // 165
-	0,                                            // 166
-	0,                                            // 167
-	0,                                            // 168
-	0,                                            // 169
-	0,                                            // 170
-	0,                                            // 171
-	0,                                            // 172
-	0,                                            // 173
-	0,                                            // 174
-	0,                                            // 175
-	0,                                            // 176
-	0,                                            // 177
-	0,                                            // 178
-	0,                                            // 179
-	0,                                            // 180
-	0,                                            // 181
-	0,                                            // 182
-	0,                                            // 183
-	0,                                            // 184
-	0,                                            // 185
-	0,                                            // 186
-	0,                                            // 187
-	0,                                            // 188
-	0,                                            // 189
-	0,                                            // 190
-	0,                                            // 191
-	0,                                            // 192
-	0,                                            // 193
-	0,                                            // 194
-	0,                                            // 195
-	0,                                            // 196
-	0,                                            // 197
-	0,                                            // 198
-	0,                                            // 199
-	0,                                            // 200 RPL_TRACELINK
-	0,                                            // 201 RPL_TRACECONNECTING
-	0,                                            // 202 RPL_TRACEHANDSHAKE
-	0,                                            // 203 RPL_TRACEUNKNOWN
-	0,                                            // 204 RPL_TRACEOPERATOR
-	0,                                            // 205 RPL_TRACEUSER
-	0,                                            // 206 RPL_TRACESERVER
-	0,                                            // 207 RPL_TRACESERVICE
-	0,                                            // 208 RPL_TRACENEWTYPE
-	0,                                            // 209 RPL_TRACECLASS
-	0,                                            // 210 RPL_TRACERECONNECT, RPL_STATS
-	0,                                            // 211 RPL_STATSLINKINFO
-	0,                                            // 212 RPL_STATSCOMMANDS
-	0,                                            // 213 RPL_STATSCLINE
-	0,                                            // 214 RPL_STATSNLINE
-	0,                                            // 215 RPL_STATSILINE
-	0,                                            // 216 RPL_STATSKLINE
-	0,                                            // 217 RPL_STATSQLINE, RPL_STATSPLINE
-	0,                                            // 218 RPL_STATSYLINE
+	nullptr,                                      // 043 RPL_SAVENICK
+	nullptr,                                      // 044
+	nullptr,                                      // 045
+	nullptr,                                      // 046
+	nullptr,                                      // 047
+	nullptr,                                      // 048
+	nullptr,                                      // 049
+	nullptr,                                      // 050 RPL_ATTEMPTINGJUNC
+	nullptr,                                      // 051 RPL_ATTEMPTINGREROUTE
+	nullptr,                                      // 052
+	nullptr,                                      // 053
+	nullptr,                                      // 054
+	nullptr,                                      // 055
+	nullptr,                                      // 056
+	nullptr,                                      // 057
+	nullptr,                                      // 058
+	nullptr,                                      // 059
+	nullptr,                                      // 060
+	nullptr,                                      // 061
+	nullptr,                                      // 062
+	nullptr,                                      // 063
+	nullptr,                                      // 064
+	nullptr,                                      // 065
+	nullptr,                                      // 066
+	nullptr,                                      // 067
+	nullptr,                                      // 068
+	nullptr,                                      // 069
+	nullptr,                                      // 070
+	nullptr,                                      // 071
+	nullptr,                                      // 072
+	nullptr,                                      // 073
+	nullptr,                                      // 074
+	nullptr,                                      // 075
+	nullptr,                                      // 076
+	nullptr,                                      // 077
+	nullptr,                                      // 078
+	nullptr,                                      // 079
+	nullptr,                                      // 080
+	nullptr,                                      // 081
+	nullptr,                                      // 082
+	nullptr,                                      // 083
+	nullptr,                                      // 084
+	nullptr,                                      // 085
+	nullptr,                                      // 086
+	nullptr,                                      // 087
+	nullptr,                                      // 088
+	nullptr,                                      // 089
+	nullptr,                                      // 090
+	nullptr,                                      // 091
+	nullptr,                                      // 092
+	nullptr,                                      // 093
+	nullptr,                                      // 094
+	nullptr,                                      // 095
+	nullptr,                                      // 096
+	nullptr,                                      // 097
+	nullptr,                                      // 098
+	nullptr,                                      // 099
+	nullptr,                                      // 100
+	nullptr,                                      // 101
+	nullptr,                                      // 102
+	nullptr,                                      // 103
+	nullptr,                                      // 104
+	nullptr,                                      // 105
+	nullptr,                                      // 106
+	nullptr,                                      // 107
+	nullptr,                                      // 108
+	nullptr,                                      // 109
+	nullptr,                                      // 110
+	nullptr,                                      // 111
+	nullptr,                                      // 112
+	nullptr,                                      // 113
+	nullptr,                                      // 114
+	nullptr,                                      // 115
+	nullptr,                                      // 116
+	nullptr,                                      // 117
+	nullptr,                                      // 118
+	nullptr,                                      // 119
+	nullptr,                                      // 120
+	nullptr,                                      // 121
+	nullptr,                                      // 122
+	nullptr,                                      // 123
+	nullptr,                                      // 124
+	nullptr,                                      // 125
+	nullptr,                                      // 126
+	nullptr,                                      // 127
+	nullptr,                                      // 128
+	nullptr,                                      // 129
+	nullptr,                                      // 130
+	nullptr,                                      // 131
+	nullptr,                                      // 132
+	nullptr,                                      // 133
+	nullptr,                                      // 134
+	nullptr,                                      // 135
+	nullptr,                                      // 136
+	nullptr,                                      // 137
+	nullptr,                                      // 138
+	nullptr,                                      // 139
+	nullptr,                                      // 140
+	nullptr,                                      // 141
+	nullptr,                                      // 142
+	nullptr,                                      // 143
+	nullptr,                                      // 144
+	nullptr,                                      // 145
+	nullptr,                                      // 146
+	nullptr,                                      // 147
+	nullptr,                                      // 148
+	nullptr,                                      // 149
+	nullptr,                                      // 150
+	nullptr,                                      // 151
+	nullptr,                                      // 152
+	nullptr,                                      // 153
+	nullptr,                                      // 154
+	nullptr,                                      // 155
+	nullptr,                                      // 156
+	nullptr,                                      // 157
+	nullptr,                                      // 158
+	nullptr,                                      // 159
+	nullptr,                                      // 160
+	nullptr,                                      // 161
+	nullptr,                                      // 162
+	nullptr,                                      // 163
+	nullptr,                                      // 164
+	nullptr,                                      // 165
+	nullptr,                                      // 166
+	nullptr,                                      // 167
+	nullptr,                                      // 168
+	nullptr,                                      // 169
+	nullptr,                                      // 170
+	nullptr,                                      // 171
+	nullptr,                                      // 172
+	nullptr,                                      // 173
+	nullptr,                                      // 174
+	nullptr,                                      // 175
+	nullptr,                                      // 176
+	nullptr,                                      // 177
+	nullptr,                                      // 178
+	nullptr,                                      // 179
+	nullptr,                                      // 180
+	nullptr,                                      // 181
+	nullptr,                                      // 182
+	nullptr,                                      // 183
+	nullptr,                                      // 184
+	nullptr,                                      // 185
+	nullptr,                                      // 186
+	nullptr,                                      // 187
+	nullptr,                                      // 188
+	nullptr,                                      // 189
+	nullptr,                                      // 190
+	nullptr,                                      // 191
+	nullptr,                                      // 192
+	nullptr,                                      // 193
+	nullptr,                                      // 194
+	nullptr,                                      // 195
+	nullptr,                                      // 196
+	nullptr,                                      // 197
+	nullptr,                                      // 198
+	nullptr,                                      // 199
+	nullptr,                                      // 200 RPL_TRACELINK
+	nullptr,                                      // 201 RPL_TRACECONNECTING
+	nullptr,                                      // 202 RPL_TRACEHANDSHAKE
+	nullptr,                                      // 203 RPL_TRACEUNKNOWN
+	nullptr,                                      // 204 RPL_TRACEOPERATOR
+	nullptr,                                      // 205 RPL_TRACEUSER
+	nullptr,                                      // 206 RPL_TRACESERVER
+	nullptr,                                      // 207 RPL_TRACESERVICE
+	nullptr,                                      // 208 RPL_TRACENEWTYPE
+	nullptr,                                      // 209 RPL_TRACECLASS
+	nullptr,                                      // 210 RPL_TRACERECONNECT, RPL_STATS
+	nullptr,                                      // 211 RPL_STATSLINKINFO
+	nullptr,                                      // 212 RPL_STATSCOMMANDS
+	nullptr,                                      // 213 RPL_STATSCLINE
+	nullptr,                                      // 214 RPL_STATSNLINE
+	nullptr,                                      // 215 RPL_STATSILINE
+	nullptr,                                      // 216 RPL_STATSKLINE
+	nullptr,                                      // 217 RPL_STATSQLINE, RPL_STATSPLINE
+	nullptr,                                      // 218 RPL_STATSYLINE
 	PTM(parseNumericEndOfStats),                  // 219 RPL_ENDOFSTATS
-	0,                                            // 220 RPL_STATSPLINE, RPL_STATSBLINE
+	nullptr,                                      // 220 RPL_STATSPLINE, RPL_STATSBLINE
 	PTM(parseNumericUserMode),                    // 221 RPL_UMODEIS
 	PTM(parseNumericCodePageSet),                 // 222 RusNet Codepage set, RPL_MODLIST, RPL_SQLINE_NICK, RPL_STATSBLINE
-	0,                                            // 223 RPL_STATSELINE, RPL_STATSGLINE
-	0,                                            // 224 RPL_STATSFLINE, RPL_STATSTLINE
-	0,                                            // 225 RPL_STATSDLINE, RPL_STATSZLINE, RPL_STATSELINE
-	0,                                            // 226 RPL_STATSCOUNT, RPL_STATSNLINE
-	0,                                            // 227 RPL_STATSGLINE, RPL_STATSVLINE
-	0,                                            // 228 RPL_STATSQLINE
-	0,                                            // 229
-	0,                                            // 230
-	0,                                            // 231 RPL_SERVICEINFO
-	0,                                            // 232 RPL_ENDOFSERVICES, RPL_RULES
-	0,                                            // 233 RPL_SERVICE
-	0,                                            // 234 RPL_SERVLIST
-	0,                                            // 235 RPL_SERVLISTEND
-	0,                                            // 236 RPL_STATSVERBOSE
-	0,                                            // 237 RPL_STATSENGINE
-	0,                                            // 238 RPL_STATSFLINE
+	nullptr,                                      // 223 RPL_STATSELINE, RPL_STATSGLINE
+	nullptr,                                      // 224 RPL_STATSFLINE, RPL_STATSTLINE
+	nullptr,                                      // 225 RPL_STATSDLINE, RPL_STATSZLINE, RPL_STATSELINE
+	nullptr,                                      // 226 RPL_STATSCOUNT, RPL_STATSNLINE
+	nullptr,                                      // 227 RPL_STATSGLINE, RPL_STATSVLINE
+	nullptr,                                      // 228 RPL_STATSQLINE
+	nullptr,                                      // 229
+	nullptr,                                      // 230
+	nullptr,                                      // 231 RPL_SERVICEINFO
+	nullptr,                                      // 232 RPL_ENDOFSERVICES, RPL_RULES
+	nullptr,                                      // 233 RPL_SERVICE
+	nullptr,                                      // 234 RPL_SERVLIST
+	nullptr,                                      // 235 RPL_SERVLISTEND
+	nullptr,                                      // 236 RPL_STATSVERBOSE
+	nullptr,                                      // 237 RPL_STATSENGINE
+	nullptr,                                      // 238 RPL_STATSFLINE
 	PTM(parseNumericStats),                       // 239 RPL_STATSIAUTH
 	PTM(parseNumericStats),                       // 240 RPL_STATSVLINE
 	PTM(parseNumericStats),                       // 241 RPL_STATSLLINE
@@ -339,51 +339,51 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000] = {
 	PTM(parseNumericServerAdminInfoServerName),   // 257 RPL_ADMINLOC1
 	PTM(parseNumericServerAdminInfoAdminName),    // 258 RPL_ADMINLOC2
 	PTM(parseNumericServerAdminInfoAdminContact), // 259 RPL_ADMINEMAIL
-	0,                                            // 260
-	0,                                            // 261 RPL_TRACELOG
-	0,                                            // 262 RPL_TRACEPING, RPL_TRACEEND
+	nullptr,                                      // 260
+	nullptr,                                      // 261 RPL_TRACELOG
+	nullptr,                                      // 262 RPL_TRACEPING, RPL_TRACEEND
 	PTM(parseNumericTryAgain),                    // 263 RPL_TRYAGAIN
-	0,                                            // 264
+	nullptr,                                      // 264
 	PTM(parseNumericStats),                       // 265 RPL_LOCALUSERS
 	PTM(parseNumericStats),                       // 266 RPL_GLOBALUSERS
 	PTM(parseNumericStats),                       // 267 RPL_SHAREDUSERS, RPL_START_NETSTAT
-	0,                                            // 268 RPL_NETSTAT
-	0,                                            // 269 RPL_END_NETSTAT
-	0,                                            // 270 RPL_PRIVS, RPL_MAPUSERS
-	0,                                            // 271 RPL_SILELIST
-	0,                                            // 272 RPL_ENDOFSILELIST
-	0,                                            // 273 RPL_NOTIFY
-	0,                                            // 274 RPL_ENDOFNOTIFY, RPL_STATSDELTA
+	nullptr,                                      // 268 RPL_NETSTAT
+	nullptr,                                      // 269 RPL_END_NETSTAT
+	nullptr,                                      // 270 RPL_PRIVS, RPL_MAPUSERS
+	nullptr,                                      // 271 RPL_SILELIST
+	nullptr,                                      // 272 RPL_ENDOFSILELIST
+	nullptr,                                      // 273 RPL_NOTIFY
+	nullptr,                                      // 274 RPL_ENDOFNOTIFY, RPL_STATSDELTA
 	PTM(parseNumericWhoisOther),                  // 275 RPL_WHOISSSL, RPL_STATSDLINE
-	0,                                            // 276 RPL_VCHANEXIST
-	0,                                            // 277 RPL_VCHANLIST
-	0,                                            // 278 RPL_VCHANHELP
-	0,                                            // 279
-	0,                                            // 280 RPL_GLIST
-	0,                                            // 281 RPL_ENDOFGLIST, RPL_ACCEPTLIST
-	0,                                            // 282 RPL_ENDOFACCEPT, RPL_JUPELIST
-	0,                                            // 283 RPL_ALIST, RPL_ENDOFJUPELIST
-	0,                                            // 284 RPL_ENDOFALIST, RPL_FEATURE
-	0,                                            // 285 RPL_FEATURE, RPL_CHANINFO_HANDLE
-	0,                                            // 286 RPL_CHANINFO_USERS, RPL_CHKHEAD
-	0,                                            // 287 RPL_CHANINFO_CHOPS, RPL_CHANUSER
-	0,                                            // 288 RPL_CHANINFO_VOICES, RPL_PATCHHEAD
-	0,                                            // 289 RPL_CHANINFO_AWAY, RPL_PATCHCON
-	0,                                            // 290 RPL_CHANINFO_OPERS, RPL_HELPHDR, RPL_DATASTR
-	0,                                            // 291 RPL_CHANINFO_BANNED, RPL_HELPOP, RPL_ENDOFCHECK
-	0,                                            // 292 RPL_CHANINFO_BANS, RPL_HELPTLR
-	0,                                            // 293 RPL_CHANINFO_INVITE, RPL_HELPHLP
-	0,                                            // 294 RPL_CHANINFO_INVITES, RPL_HELPFWD
-	0,                                            // 295 RPL_CHANINFO_KICK, RPL_HELPIGN
-	0,                                            // 296 RPL_CHANINFO_KICKS
-	0,                                            // 297
-	0,                                            // 298
-	0,                                            // 299 RPL_END_CHANINFO
-	0,                                            // 300 RPL_NONE
+	nullptr,                                      // 276 RPL_VCHANEXIST
+	nullptr,                                      // 277 RPL_VCHANLIST
+	nullptr,                                      // 278 RPL_VCHANHELP
+	nullptr,                                      // 279
+	nullptr,                                      // 280 RPL_GLIST
+	nullptr,                                      // 281 RPL_ENDOFGLIST, RPL_ACCEPTLIST
+	nullptr,                                      // 282 RPL_ENDOFACCEPT, RPL_JUPELIST
+	nullptr,                                      // 283 RPL_ALIST, RPL_ENDOFJUPELIST
+	nullptr,                                      // 284 RPL_ENDOFALIST, RPL_FEATURE
+	nullptr,                                      // 285 RPL_FEATURE, RPL_CHANINFO_HANDLE
+	nullptr,                                      // 286 RPL_CHANINFO_USERS, RPL_CHKHEAD
+	nullptr,                                      // 287 RPL_CHANINFO_CHOPS, RPL_CHANUSER
+	nullptr,                                      // 288 RPL_CHANINFO_VOICES, RPL_PATCHHEAD
+	nullptr,                                      // 289 RPL_CHANINFO_AWAY, RPL_PATCHCON
+	nullptr,                                      // 290 RPL_CHANINFO_OPERS, RPL_HELPHDR, RPL_DATASTR
+	nullptr,                                      // 291 RPL_CHANINFO_BANNED, RPL_HELPOP, RPL_ENDOFCHECK
+	nullptr,                                      // 292 RPL_CHANINFO_BANS, RPL_HELPTLR
+	nullptr,                                      // 293 RPL_CHANINFO_INVITE, RPL_HELPHLP
+	nullptr,                                      // 294 RPL_CHANINFO_INVITES, RPL_HELPFWD
+	nullptr,                                      // 295 RPL_CHANINFO_KICK, RPL_HELPIGN
+	nullptr,                                      // 296 RPL_CHANINFO_KICKS
+	nullptr,                                      // 297
+	nullptr,                                      // 298
+	nullptr,                                      // 299 RPL_END_CHANINFO
+	nullptr,                                      // 300 RPL_NONE
 	PTM(parseNumericWhoisAway),                   // 301 RPL_AWAY
 	PTM(parseNumericUserhost),                    // 302 RPL_USERHOST
 	PTM(parseNumericIsOn),                        // 303 RPL_ISON
-	0,                                            // 304 RPL_TEXT, RPL_SYNTAX
+	nullptr,                                      // 304 RPL_TEXT, RPL_SYNTAX
 	PTM(parseNumericBackFromAway),                // 305 RPL_UNAWAY
 	PTM(parseNumericAway),                        // 306 RPL_NOWAWAY
 	PTM(parseNumericWhoisRegistered),             // 307 RPL_WHOISREGNICK
@@ -404,9 +404,9 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000] = {
 	PTM(parseNumericList),                        // 322 RPL_LIST
 	PTM(parseNumericListEnd),                     // 323 RPL_LISTEND
 	PTM(parseNumericChannelModeIs),               // 324 RPL_CHANNELMODEIS
-	0,                                            // 325 RPL_UNIQOPIS, RPL_CHANNELPASSIS
-	0,                                            // 326 RPL_NOCHANPASS
-	0,                                            // 327 RPL_CHPASSUNKNOWN
+	nullptr,                                      // 325 RPL_UNIQOPIS, RPL_CHANNELPASSIS
+	nullptr,                                      // 326 RPL_NOCHANPASS
+	nullptr,                                      // 327 RPL_CHPASSUNKNOWN
 	PTM(parseNumericChanUrl),                     // 328 RPL_CHANNEL_URL
 	PTM(parseNumericCreationTime),                // 329 RPL_CREATIONTIME, RPL_CHANNELCREATED
 	PTM(parseNumericWhoisAuth),                   // 330 RPL_WHOISAUTH
@@ -414,42 +414,42 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000] = {
 	PTM(parseNumericTopic),                       // 332 RPL_TOPIC
 	PTM(parseNumericTopicWhoTime),                // 333 RPL_TOPICWHOTIME, RPL_TOPICTIME
 	PTM(parseNumericCommandSyntax),               // 334 RPL_COMMANDSYNTAX
-	0,                                            // 335 RPL_WHOISBOT
-	0,                                            // 336
-	0,                                            // 337
+	nullptr,                                      // 335 RPL_WHOISBOT
+	nullptr,                                      // 336
+	nullptr,                                      // 337
 	PTM(parseNumericWhoisActually),               // 338 RPL_WHOISACTUALLY, RPL_CHANPASSOK
 	PTM(parseNumericWhoisOther),                  // 339 RPL_BADCHANPASS
-	0,                                            // 340 RPL_USERIP
+	nullptr,                                      // 340 RPL_USERIP
 	PTM(parseNumericInviting),                    // 341 RPL_INVITING
-	0,                                            // 342 RPL_SUMMONING
-	0,                                            // 343
+	nullptr,                                      // 342 RPL_SUMMONING
+	nullptr,                                      // 343
 	PTM(parseNumeric344),                         // 344 RPL_REOPLIST, RPL_QUIETLIST
 	PTM(parseNumeric345),                         // 345 RPL_ENDOFREOPLIST, RPL_INVITED, RPL_QUIETLISTEND
 	PTM(parseNumericInviteList),                  // 346 RPL_INVITELIST
 	PTM(parseNumericEndOfInviteList),             // 347 RPL_ENDOFINVITELIST
 	PTM(parseNumericExceptList),                  // 348 RPL_EXCEPTLIST
 	PTM(parseNumericEndOfExceptList),             // 349 RPL_ENDOFEXCEPTLIST
-	0,                                            // 350
-	0,                                            // 351 RPL_VERSION
+	nullptr,                                      // 350
+	nullptr,                                      // 351 RPL_VERSION
 	PTM(parseNumericWhoReply),                    // 352 RPL_WHOREPLY
 	PTM(parseNumericNames),                       // 353 RPL_NAMREPLY
 	PTM(parseNumericWhospcrpl),                   // 354 RPL_WHOSPCRPL
-	0,                                            // 355 RPL_NAMREPLY_
-	0,                                            // 356
-	0,                                            // 357 RPL_MAP
-	0,                                            // 358 RPL_MAPMORE
-	0,                                            // 359 RPL_MAPEND
-	0,                                            // 360
-	0,                                            // 361 RPL_KILLDONE
-	0,                                            // 362 RPL_CLOSING
-	0,                                            // 363 RPL_CLOSEEND
+	nullptr,                                      // 355 RPL_NAMREPLY_
+	nullptr,                                      // 356
+	nullptr,                                      // 357 RPL_MAP
+	nullptr,                                      // 358 RPL_MAPMORE
+	nullptr,                                      // 359 RPL_MAPEND
+	nullptr,                                      // 360
+	nullptr,                                      // 361 RPL_KILLDONE
+	nullptr,                                      // 362 RPL_CLOSING
+	nullptr,                                      // 363 RPL_CLOSEEND
 	PTM(parseNumericLinks),                       // 364 RPL_LINKS
 	PTM(parseNumericEndOfLinks),                  // 365 RPL_ENDOFLINKS
 	PTM(parseNumericEndOfNames),                  // 366 RPL_ENDOFNAMES
 	PTM(parseNumeric367),                         // 367 RPL_BANLIST
 	PTM(parseNumeric368),                         // 368 RPL_ENDOFBANLIST
 	PTM(parseNumericEndOfWhowas),                 // 369 RPL_ENDOFWHOWAS
-	0,                                            // 370
+	nullptr,                                      // 370
 	PTM(parseNumericInfo),                        // 371 RPL_INFO
 	PTM(parseNumericMotd),                        // 372 RPL_MOTD
 	PTM(parseNumericInfoStart),                   // 373 RPL_INFOSTART
@@ -458,625 +458,625 @@ messageParseProc KviIrcServerParser::m_numericParseProcTable[1000] = {
 	PTM(parseNumericMotd),                        // 376 RPL_ENDOFMOTD
 	PTM(parseNumericMotd),                        // 377 RPL_MOTD2, RPL_KICKEXPIRED, RPL_SPAM
 	PTM(parseNumericWhoisOther),                  // 378 RPL_WHOISHOST, RPL_BANEXPIRED
-	0,                                            // 379 RPL_KICKLINKED, RPL_WHOISMODES, RPL_WHOWASIP
-	0,                                            // 380 RPL_BANLINKED, RPL_YOURHELPER
+	nullptr,                                      // 379 RPL_KICKLINKED, RPL_WHOISMODES, RPL_WHOWASIP
+	nullptr,                                      // 380 RPL_BANLINKED, RPL_YOURHELPER
 	PTM(parseNumericYoureOper),                   // 381 RPL_YOUREOPER
-	0,                                            // 382 RPL_REHASHING
-	0,                                            // 383 RPL_YOURESERVICE
-	0,                                            // 384 RPL_MYPORTIS
-	0,                                            // 385 RPL_NOTOPERANYMORE
+	nullptr,                                      // 382 RPL_REHASHING
+	nullptr,                                      // 383 RPL_YOURESERVICE
+	nullptr,                                      // 384 RPL_MYPORTIS
+	nullptr,                                      // 385 RPL_NOTOPERANYMORE
 	PTM(parseNumericQList),                       // 386 RPL_QLIST
 	PTM(parseNumericEndOfQList),                  // 387 RPL_ENDOFQLIST, RPL_ENDOFIRCOPS
 	PTM(parseNumericAList),                       // 388 RPL_ALIST
 	PTM(parseNumericEndOfAList),                  // 389 RPL_ENDOFALIST
-	0,                                            // 390
+	nullptr,                                      // 390
 	PTM(parseNumericTime),                        // 391 RPL_TIME
-	0,                                            // 392 RPL_USERSSTART
-	0,                                            // 393 RPL_USERS
-	0,                                            // 394 RPL_ENDOFUSERS
-	0,                                            // 395 RPL_NOUSERS
+	nullptr,                                      // 392 RPL_USERSSTART
+	nullptr,                                      // 393 RPL_USERS
+	nullptr,                                      // 394 RPL_ENDOFUSERS
+	nullptr,                                      // 395 RPL_NOUSERS
 	PTM(parseNumericHiddenHost),                  // 396 RPL_HOSTHIDDEN, RPL_YOURDISPLAYEDHOST
-	0,                                            // 397
-	0,                                            // 398
-	0,                                            // 399
-	0,                                            // 400 ERR_UNKNOWNERROR
+	nullptr,                                      // 397
+	nullptr,                                      // 398
+	nullptr,                                      // 399
+	nullptr,                                      // 400 ERR_UNKNOWNERROR
 	PTM(parseNumericNoSuchNick),                  // 401 ERR_NOSUCHNICK
 	PTM(parseNumericNoSuchServer),                // 402 ERR_NOSUCHSERVER
 	PTM(parseNumericNoSuchChannel),               // 403 ERR_NOSUCHCHANNEL
 	PTM(parseNumericCannotSend),                  // 404 ERR_CANNOTSENDTOCHAN
-	0,                                            // 405 ERR_TOOMANYCHANNELS
+	nullptr,                                      // 405 ERR_TOOMANYCHANNELS
 	PTM(parseNumericNoSuchNick),                  // 406 ERR_WASNOSUCHNICK
-	0,                                            // 407 ERR_TOOMANYTARGETS
+	nullptr,                                      // 407 ERR_TOOMANYTARGETS
 	PTM(parseNumericCannotSendColor),             // 408 ERR_NOCOLORSONCHAN, ERR_NOSUCHSERVICE
-	0,                                            // 409 ERR_NOORIGIN
-	0,                                            // 410 ERR_INVALIDCAPSUBCOMMAND
-	0,                                            // 411 ERR_NORECIPIENT
-	0,                                            // 412 ERR_NOTEXTTOSEND
-	0,                                            // 413 ERR_NOTOPLEVEL
-	0,                                            // 414 ERR_WILDTOPLEVEL
+	nullptr,                                      // 409 ERR_NOORIGIN
+	nullptr,                                      // 410 ERR_INVALIDCAPSUBCOMMAND
+	nullptr,                                      // 411 ERR_NORECIPIENT
+	nullptr,                                      // 412 ERR_NOTEXTTOSEND
+	nullptr,                                      // 413 ERR_NOTOPLEVEL
+	nullptr,                                      // 414 ERR_WILDTOPLEVEL
 	PTM(otherChannelError),                       // 415 ERR_BADMASK
-	0,                                            // 416 ERR_TOOMANYMATCHES, ERR_QUERYTOOLONG
-	0,                                            // 417
-	0,                                            // 418
-	0,                                            // 419 ERR_LENGTHTRUNCATED
-	0,                                            // 420
+	nullptr,                                      // 416 ERR_TOOMANYMATCHES, ERR_QUERYTOOLONG
+	nullptr,                                      // 417
+	nullptr,                                      // 418
+	nullptr,                                      // 419 ERR_LENGTHTRUNCATED
+	nullptr,                                      // 420
 	PTM(parseNumericUnknownCommand),              // 421 ERR_UNKNOWNCOMMAND
 	PTM(parseNumericMotdMissing),                 // 422 ERR_NOMOTD
-	0,                                            // 423 ERR_NOADMININFO
-	0,                                            // 424 ERR_FILEERROR
-	0,                                            // 425 ERR_NOOPERMOTD
-	0,                                            // 426
-	0,                                            // 427
-	0,                                            // 428
-	0,                                            // 429 ERR_TOOMANYAWAY
-	0,                                            // 430 ERR_EVENTNICKCHANGE
-	0,                                            // 431 ERR_NONICKNAMEGIVEN
+	nullptr,                                      // 423 ERR_NOADMININFO
+	nullptr,                                      // 424 ERR_FILEERROR
+	nullptr,                                      // 425 ERR_NOOPERMOTD
+	nullptr,                                      // 426
+	nullptr,                                      // 427
+	nullptr,                                      // 428
+	nullptr,                                      // 429 ERR_TOOMANYAWAY
+	nullptr,                                      // 430 ERR_EVENTNICKCHANGE
+	nullptr,                                      // 431 ERR_NONICKNAMEGIVEN
 	PTM(parseNumericNicknameProblem),             // 432 ERR_ERRONEUSNICKNAME
 	PTM(parseNumericNicknameProblem),             // 433 ERR_NICKNAMEINUSE
-	0,                                            // 434 ERR_SERVICENAMEINUSE, ERR_NORULES
+	nullptr,                                      // 434 ERR_SERVICENAMEINUSE, ERR_NORULES
 	PTM(parseNumericBanOnChan),                   // 435 ERR_SERVICECONFUSED, ERR_BANONCHAN
-	0,                                            // 436 ERR_NICKCOLLISION
+	nullptr,                                      // 436 ERR_NICKCOLLISION
 	PTM(parseNumericUnavailResource),             // 437 ERR_UNAVAILRESOURCE, ERR_BANNICKCHANGE
-	0,                                            // 438 ERR_NICKTOOFAST, ERR_DEAD
-	0,                                            // 439 ERR_TARGETTOOFAST
-	0,                                            // 440 ERR_SERVICESDOWN
-	0,                                            // 441 ERR_USERNOTINCHANNEL
-	0,                                            // 442 ERR_NOTONCHANNEL
+	nullptr,                                      // 438 ERR_NICKTOOFAST, ERR_DEAD
+	nullptr,                                      // 439 ERR_TARGETTOOFAST
+	nullptr,                                      // 440 ERR_SERVICESDOWN
+	nullptr,                                      // 441 ERR_USERNOTINCHANNEL
+	nullptr,                                      // 442 ERR_NOTONCHANNEL
 	PTM(parseNumericUserInChan),                  // 443 ERR_USERONCHANNEL
-	0,                                            // 444 ERR_NOLOGIN
-	0,                                            // 445 ERR_SUMMONDISABLED
-	0,                                            // 446 ERR_USERSDISABLED
-	0,                                            // 447 ERR_NONICKCHANGE, ERR_CANTCHANGENICK
-	0,                                            // 448
-	0,                                            // 449 ERR_NOTIMPLEMENTED
-	0,                                            // 450
+	nullptr,                                      // 444 ERR_NOLOGIN
+	nullptr,                                      // 445 ERR_SUMMONDISABLED
+	nullptr,                                      // 446 ERR_USERSDISABLED
+	nullptr,                                      // 447 ERR_NONICKCHANGE, ERR_CANTCHANGENICK
+	nullptr,                                      // 448
+	nullptr,                                      // 449 ERR_NOTIMPLEMENTED
+	nullptr,                                      // 450
 	PTM(parseNumericNotRegistered),               // 451 ERR_NOTREGISTERED
-	0,                                            // 452 ERR_IDCOLLISION
-	0,                                            // 453 ERR_NICKLOST
-	0,                                            // 454
-	0,                                            // 455 ERR_HOSTILENAME
-	0,                                            // 456 ERR_ACCEPTFULL
-	0,                                            // 457 ERR_ACCEPTEXIST
-	0,                                            // 458 ERR_ACCEPTNOT
-	0,                                            // 459 ERR_NOHIDING
-	0,                                            // 460 ERR_NOTFORHALFOPS
+	nullptr,                                      // 452 ERR_IDCOLLISION
+	nullptr,                                      // 453 ERR_NICKLOST
+	nullptr,                                      // 454
+	nullptr,                                      // 455 ERR_HOSTILENAME
+	nullptr,                                      // 456 ERR_ACCEPTFULL
+	nullptr,                                      // 457 ERR_ACCEPTEXIST
+	nullptr,                                      // 458 ERR_ACCEPTNOT
+	nullptr,                                      // 459 ERR_NOHIDING
+	nullptr,                                      // 460 ERR_NOTFORHALFOPS
 	PTM(parseNumericNotEnoughParams),             // 461 ERR_NEEDMOREPARAMS
 	PTM(parseNumericAlreadyRegistered),           // 462 ERR_ALREADYREGISTERED
-	0,                                            // 463 ERR_NOPERMFORHOST
+	nullptr,                                      // 463 ERR_NOPERMFORHOST
 	PTM(parseNumericPasswordIncorrect),           // 464 ERR_PASSWDMISMATCH
-	0,                                            // 465 ERR_YOUREBANNEDCREEP
-	0,                                            // 466 ERR_YOUWILLBEBANNED
+	nullptr,                                      // 465 ERR_YOUREBANNEDCREEP
+	nullptr,                                      // 466 ERR_YOUWILLBEBANNED
 	PTM(otherChannelError),                       // 467 ERR_KEYSET
-	0,                                            // 468 ERR_ONLYSERVERSCANCHANGE
-	0,                                            // 469 ERR_LINKSET
+	nullptr,                                      // 468 ERR_ONLYSERVERSCANCHANGE
+	nullptr,                                      // 469 ERR_LINKSET
 	PTM(parseNumericForward),                     // 470 ERR_LINKCHANNEL, ERR_KICKEDFROMCHAN
 	PTM(parseNumericCantJoinChannel),             // 471 ERR_CHANNELISFULL
 	PTM(otherChannelError),                       // 472 ERR_UNKNOWNMODE
 	PTM(parseNumericCantJoinChannel),             // 473 ERR_INVITEONLYCHAN
 	PTM(parseNumericCantJoinChannel),             // 474 ERR_BANNEDFROMCHAN
 	PTM(parseNumericCantJoinChannel),             // 475 ERR_BADCHANNELKEY
-	0,                                            // 476 ERR_BADCHANMASK
+	nullptr,                                      // 476 ERR_BADCHANMASK
 	PTM(parseChannelHelp),                        // 477 RPL_CHANNELHELP
-	0,                                            // 478 ERR_BANLISTFULL
-	0,                                            // 479 ERR_BADCHANNAME, ERR_LINKFAIL
+	nullptr,                                      // 478 ERR_BANLISTFULL
+	nullptr,                                      // 479 ERR_BADCHANNAME, ERR_LINKFAIL
 	PTM(parseNumeric480),                         // 480 ERR_NOULINE, ERR_CANNOTKNOCK, ERR_SSLONLYCHAN
 	PTM(parseNumericNoPrivs),                     // 481 ERR_NOPRIVILEGES
 	PTM(otherChannelError),                       // 482 ERR_CHANOPRIVSNEEDED
-	0,                                            // 483 ERR_CANTKILLSERVER
-	0,                                            // 484 ERR_RESTRICTED, ERR_ISCHANSERVICE, ERR_DESYNC, ERR_ATTACKDENY
-	0,                                            // 485 ERR_UNIQOPRIVSNEEDED, ERR_KILLDENY, ERR_CANTKICKADMIN, ERR_ISREALSERVICE
+	nullptr,                                      // 483 ERR_CANTKILLSERVER
+	nullptr,                                      // 484 ERR_RESTRICTED, ERR_ISCHANSERVICE, ERR_DESYNC, ERR_ATTACKDENY
+	nullptr,                                      // 485 ERR_UNIQOPRIVSNEEDED, ERR_KILLDENY, ERR_CANTKICKADMIN, ERR_ISREALSERVICE
 	PTM(parseNumeric486),                         // 486 ERR_NONONREG, ERR_HTMDISABLED, ERR_ACCOUNTONLY
-	0,                                            // 487 ERR_CHANTOORECENT, ERR_MSGSERVICES
-	0,                                            // 488 ERR_TSLESSCHAN
-	0,                                            // 489 ERR_VOICENEEDED, ERR_SECUREONLYCHAN
-	0,                                            // 490 ERR_ALLMUSTSSL
-	0,                                            // 491 ERR_NOOPERHOST
-	0,                                            // 492 ERR_NOSERVICEHOST, ERR_NOCTCPALLOWED
-	0,                                            // 493 ERR_NOFEATURE
-	0,                                            // 494 ERR_BADFEATURE
-	0,                                            // 495 ERR_BADLOGTYPE, ERR_DELAYREJOIN
-	0,                                            // 496 ERR_BADLOGSYS
-	0,                                            // 497 ERR_BADLOGVALUE
-	0,                                            // 498 ERR_ISOPERLCHAN
-	0,                                            // 499 ERR_CHANOWNPRIVNEEDED
-	0,                                            // 500
-	0,                                            // 501 ERR_UMODEUNKNOWNFLAG, ERR_UNKNOWNSNOMASK
+	nullptr,                                      // 487 ERR_CHANTOORECENT, ERR_MSGSERVICES
+	nullptr,                                      // 488 ERR_TSLESSCHAN
+	nullptr,                                      // 489 ERR_VOICENEEDED, ERR_SECUREONLYCHAN
+	nullptr,                                      // 490 ERR_ALLMUSTSSL
+	nullptr,                                      // 491 ERR_NOOPERHOST
+	nullptr,                                      // 492 ERR_NOSERVICEHOST, ERR_NOCTCPALLOWED
+	nullptr,                                      // 493 ERR_NOFEATURE
+	nullptr,                                      // 494 ERR_BADFEATURE
+	nullptr,                                      // 495 ERR_BADLOGTYPE, ERR_DELAYREJOIN
+	nullptr,                                      // 496 ERR_BADLOGSYS
+	nullptr,                                      // 497 ERR_BADLOGVALUE
+	nullptr,                                      // 498 ERR_ISOPERLCHAN
+	nullptr,                                      // 499 ERR_CHANOWNPRIVNEEDED
+	nullptr,                                      // 500
+	nullptr,                                      // 501 ERR_UMODEUNKNOWNFLAG, ERR_UNKNOWNSNOMASK
 	PTM(parseNumericUsersDontMatch),              // 502 ERR_USERSDONTMATCH
-	0,                                            // 503 ERR_GHOSTEDCLIENT
-	0,                                            // 504 ERR_USERNOTONSERV
-	0,                                            // 505
-	0,                                            // 506
-	0,                                            // 507
-	0,                                            // 508
-	0,                                            // 509
-	0,                                            // 510
-	0,                                            // 511 ERR_SILELISTFULL
-	0,                                            // 512 ERR_TOOMANYWATCH
-	0,                                            // 513 ERR_BADPING
-	0,                                            // 514 ERR_INVALID_ERROR, ERR_TOOMANYDCC
-	0,                                            // 515 ERR_BADEXPIRE
-	0,                                            // 516 ERR_DONTCHEAT
-	0,                                            // 517 ERR_DISABLED
-	0,                                            // 518 ERR_NOINVITE, ERR_LONGMASK
-	0,                                            // 519 ERR_ADMONLY, ERR_TOOMANYUSERS
-	0,                                            // 520 ERR_OPERONLY, ERR_MASKTOOWIDE, ERR_WHOTRUNC, ERR_CANTJOINOPERSONLY
-	0,                                            // 521 ERR_LISTSYNTAX
-	0,                                            // 522 ERR_WHOSYNTAX
-	0,                                            // 523 ERR_WHOLIMEXCEED
-	0,                                            // 524 ERR_QUARANTINED, ERR_OPERSPVERIFY
-	0,                                            // 525 ERR_REMOTEPFX
-	0,                                            // 526 ERR_PFXUNROUTABLE
-	0,                                            // 527
-	0,                                            // 528
-	0,                                            // 529
-	0,                                            // 530
-	0,                                            // 531 ERR_CANTSENDTOUSER
-	0,                                            // 532
-	0,                                            // 533
-	0,                                            // 534
-	0,                                            // 535
-	0,                                            // 536
-	0,                                            // 537
-	0,                                            // 538
-	0,                                            // 539
-	0,                                            // 540
-	0,                                            // 541
-	0,                                            // 542
-	0,                                            // 543
-	0,                                            // 544
-	0,                                            // 545
-	0,                                            // 546
-	0,                                            // 547
-	0,                                            // 548
-	0,                                            // 549
-	0,                                            // 550 ERR_BADHOSTMASK
-	0,                                            // 551 ERR_HOSTUNAVAIL
-	0,                                            // 552 ERR_USINGSLINE
-	0,                                            // 553 ERR_STATSSLINE
-	0,                                            // 554
-	0,                                            // 555
-	0,                                            // 556
-	0,                                            // 557
-	0,                                            // 558
-	0,                                            // 559
-	0,                                            // 560
-	0,                                            // 561
-	0,                                            // 562
-	0,                                            // 563
-	0,                                            // 564
-	0,                                            // 565
-	0,                                            // 566
-	0,                                            // 567
-	0,                                            // 568
-	0,                                            // 569
-	0,                                            // 570
-	0,                                            // 571
-	0,                                            // 572
-	0,                                            // 573
-	0,                                            // 574
-	0,                                            // 575
-	0,                                            // 576
-	0,                                            // 577
-	0,                                            // 578
-	0,                                            // 579
-	0,                                            // 580
-	0,                                            // 581
-	0,                                            // 582
-	0,                                            // 583
-	0,                                            // 584
-	0,                                            // 585
-	0,                                            // 586
-	0,                                            // 587
-	0,                                            // 588
-	0,                                            // 589
-	0,                                            // 590
-	0,                                            // 591
-	0,                                            // 592
-	0,                                            // 593
-	0,                                            // 594
-	0,                                            // 595
-	0,                                            // 596
-	0,                                            // 597
-	0,                                            // 598
-	0,                                            // 599
+	nullptr,                                      // 503 ERR_GHOSTEDCLIENT
+	nullptr,                                      // 504 ERR_USERNOTONSERV
+	nullptr,                                      // 505
+	nullptr,                                      // 506
+	nullptr,                                      // 507
+	nullptr,                                      // 508
+	nullptr,                                      // 509
+	nullptr,                                      // 510
+	nullptr,                                      // 511 ERR_SILELISTFULL
+	nullptr,                                      // 512 ERR_TOOMANYWATCH
+	nullptr,                                      // 513 ERR_BADPING
+	nullptr,                                      // 514 ERR_INVALID_ERROR, ERR_TOOMANYDCC
+	nullptr,                                      // 515 ERR_BADEXPIRE
+	nullptr,                                      // 516 ERR_DONTCHEAT
+	nullptr,                                      // 517 ERR_DISABLED
+	nullptr,                                      // 518 ERR_NOINVITE, ERR_LONGMASK
+	nullptr,                                      // 519 ERR_ADMONLY, ERR_TOOMANYUSERS
+	nullptr,                                      // 520 ERR_OPERONLY, ERR_MASKTOOWIDE, ERR_WHOTRUNC, ERR_CANTJOINOPERSONLY
+	nullptr,                                      // 521 ERR_LISTSYNTAX
+	nullptr,                                      // 522 ERR_WHOSYNTAX
+	nullptr,                                      // 523 ERR_WHOLIMEXCEED
+	nullptr,                                      // 524 ERR_QUARANTINED, ERR_OPERSPVERIFY
+	nullptr,                                      // 525 ERR_REMOTEPFX
+	nullptr,                                      // 526 ERR_PFXUNROUTABLE
+	nullptr,                                      // 527
+	nullptr,                                      // 528
+	nullptr,                                      // 529
+	nullptr,                                      // 530
+	nullptr,                                      // 531 ERR_CANTSENDTOUSER
+	nullptr,                                      // 532
+	nullptr,                                      // 533
+	nullptr,                                      // 534
+	nullptr,                                      // 535
+	nullptr,                                      // 536
+	nullptr,                                      // 537
+	nullptr,                                      // 538
+	nullptr,                                      // 539
+	nullptr,                                      // 540
+	nullptr,                                      // 541
+	nullptr,                                      // 542
+	nullptr,                                      // 543
+	nullptr,                                      // 544
+	nullptr,                                      // 545
+	nullptr,                                      // 546
+	nullptr,                                      // 547
+	nullptr,                                      // 548
+	nullptr,                                      // 549
+	nullptr,                                      // 550 ERR_BADHOSTMASK
+	nullptr,                                      // 551 ERR_HOSTUNAVAIL
+	nullptr,                                      // 552 ERR_USINGSLINE
+	nullptr,                                      // 553 ERR_STATSSLINE
+	nullptr,                                      // 554
+	nullptr,                                      // 555
+	nullptr,                                      // 556
+	nullptr,                                      // 557
+	nullptr,                                      // 558
+	nullptr,                                      // 559
+	nullptr,                                      // 560
+	nullptr,                                      // 561
+	nullptr,                                      // 562
+	nullptr,                                      // 563
+	nullptr,                                      // 564
+	nullptr,                                      // 565
+	nullptr,                                      // 566
+	nullptr,                                      // 567
+	nullptr,                                      // 568
+	nullptr,                                      // 569
+	nullptr,                                      // 570
+	nullptr,                                      // 571
+	nullptr,                                      // 572
+	nullptr,                                      // 573
+	nullptr,                                      // 574
+	nullptr,                                      // 575
+	nullptr,                                      // 576
+	nullptr,                                      // 577
+	nullptr,                                      // 578
+	nullptr,                                      // 579
+	nullptr,                                      // 580
+	nullptr,                                      // 581
+	nullptr,                                      // 582
+	nullptr,                                      // 583
+	nullptr,                                      // 584
+	nullptr,                                      // 585
+	nullptr,                                      // 586
+	nullptr,                                      // 587
+	nullptr,                                      // 588
+	nullptr,                                      // 589
+	nullptr,                                      // 590
+	nullptr,                                      // 591
+	nullptr,                                      // 592
+	nullptr,                                      // 593
+	nullptr,                                      // 594
+	nullptr,                                      // 595
+	nullptr,                                      // 596
+	nullptr,                                      // 597
+	nullptr,                                      // 598
+	nullptr,                                      // 599
 	PTM(parseNumericWatch),                       // 600 RPL_LOGON
 	PTM(parseNumericWatch),                       // 601 RPL_LOGOFF
 	PTM(parseNumericWatch),                       // 602 RPL_WATCHOFF
-	0,                                            // 603 RPL_WATCHSTAT
+	nullptr,                                      // 603 RPL_WATCHSTAT
 	PTM(parseNumericWatch),                       // 604 RPL_NOWON
 	PTM(parseNumericWatch),                       // 605 RPL_NOWOFF
-	0,                                            // 606 RPL_WATCHLIST
-	0,                                            // 607 RPL_ENDOFWATCH
-	0,                                            // 608 RPL_WATCHCLEAR
-	0,                                            // 609
-	0,                                            // 610 RPL_MAPMORE, RPL_ISOPER
-	0,                                            // 611 RPL_ISLOCOP
-	0,                                            // 612 RPL_ISNOTOPER
-	0,                                            // 613 RPL_ENDOFISOPER
-	0,                                            // 614
-	0,                                            // 615 RPL_MAPMORE
-	0,                                            // 616 RPL_WHOISHOST
-	0,                                            // 617 RPL_DCCSTATUS, RPL_WHOISBOT
-	0,                                            // 618 RPL_DCCLIST
-	0,                                            // 619 RPL_ENDOFDCCLIST, RPL_WHOWASHOST
-	0,                                            // 620 RPL_DCCINFO, RPL_RULESSTART
-	0,                                            // 621 RPL_RULES
-	0,                                            // 622 RPL_ENDOFRULES
-	0,                                            // 623 RPL_MAPMORE
-	0,                                            // 624 RPL_OMOTDSTART
-	0,                                            // 625 RPL_OMOTD
-	0,                                            // 626 RPL_ENDOFO
-	0,                                            // 627
-	0,                                            // 628
-	0,                                            // 629
-	0,                                            // 630 RPL_SETTINGS
-	0,                                            // 631 RPL_ENDOFSETTINGS
-	0,                                            // 632
-	0,                                            // 633
-	0,                                            // 634
-	0,                                            // 635
-	0,                                            // 636
-	0,                                            // 637
-	0,                                            // 638
-	0,                                            // 639
-	0,                                            // 640 RPL_DUMPING
-	0,                                            // 641 RPL_DUMPRPL
-	0,                                            // 642 RPL_EODUMP
-	0,                                            // 643
-	0,                                            // 644
-	0,                                            // 645
-	0,                                            // 646
-	0,                                            // 647
-	0,                                            // 648
-	0,                                            // 649
-	0,                                            // 650
-	0,                                            // 651
-	0,                                            // 652
-	0,                                            // 653
-	0,                                            // 654
-	0,                                            // 655
-	0,                                            // 656
-	0,                                            // 657
-	0,                                            // 658
-	0,                                            // 659
-	0,                                            // 660 RPL_TRACEROUTE_HOP
-	0,                                            // 661 RPL_TRACEROUTE_START
-	0,                                            // 662 RPL_MODECHANGEWARN
-	0,                                            // 663 RPL_CHANREDIR
-	0,                                            // 664 RPL_SERVMODEIS
-	0,                                            // 665 RPL_OTHERUMODEIS
-	0,                                            // 666 RPL_ENDOF_GENERIC
-	0,                                            // 667
-	0,                                            // 668
-	0,                                            // 669
+	nullptr,                                      // 606 RPL_WATCHLIST
+	nullptr,                                      // 607 RPL_ENDOFWATCH
+	nullptr,                                      // 608 RPL_WATCHCLEAR
+	nullptr,                                      // 609
+	nullptr,                                      // 610 RPL_MAPMORE, RPL_ISOPER
+	nullptr,                                      // 611 RPL_ISLOCOP
+	nullptr,                                      // 612 RPL_ISNOTOPER
+	nullptr,                                      // 613 RPL_ENDOFISOPER
+	nullptr,                                      // 614
+	nullptr,                                      // 615 RPL_MAPMORE
+	nullptr,                                      // 616 RPL_WHOISHOST
+	nullptr,                                      // 617 RPL_DCCSTATUS, RPL_WHOISBOT
+	nullptr,                                      // 618 RPL_DCCLIST
+	nullptr,                                      // 619 RPL_ENDOFDCCLIST, RPL_WHOWASHOST
+	nullptr,                                      // 620 RPL_DCCINFO, RPL_RULESSTART
+	nullptr,                                      // 621 RPL_RULES
+	nullptr,                                      // 622 RPL_ENDOFRULES
+	nullptr,                                      // 623 RPL_MAPMORE
+	nullptr,                                      // 624 RPL_OMOTDSTART
+	nullptr,                                      // 625 RPL_OMOTD
+	nullptr,                                      // 626 RPL_ENDOFO
+	nullptr,                                      // 627
+	nullptr,                                      // 628
+	nullptr,                                      // 629
+	nullptr,                                      // 630 RPL_SETTINGS
+	nullptr,                                      // 631 RPL_ENDOFSETTINGS
+	nullptr,                                      // 632
+	nullptr,                                      // 633
+	nullptr,                                      // 634
+	nullptr,                                      // 635
+	nullptr,                                      // 636
+	nullptr,                                      // 637
+	nullptr,                                      // 638
+	nullptr,                                      // 639
+	nullptr,                                      // 640 RPL_DUMPING
+	nullptr,                                      // 641 RPL_DUMPRPL
+	nullptr,                                      // 642 RPL_EODUMP
+	nullptr,                                      // 643
+	nullptr,                                      // 644
+	nullptr,                                      // 645
+	nullptr,                                      // 646
+	nullptr,                                      // 647
+	nullptr,                                      // 648
+	nullptr,                                      // 649
+	nullptr,                                      // 650
+	nullptr,                                      // 651
+	nullptr,                                      // 652
+	nullptr,                                      // 653
+	nullptr,                                      // 654
+	nullptr,                                      // 655
+	nullptr,                                      // 656
+	nullptr,                                      // 657
+	nullptr,                                      // 658
+	nullptr,                                      // 659
+	nullptr,                                      // 660 RPL_TRACEROUTE_HOP
+	nullptr,                                      // 661 RPL_TRACEROUTE_START
+	nullptr,                                      // 662 RPL_MODECHANGEWARN
+	nullptr,                                      // 663 RPL_CHANREDIR
+	nullptr,                                      // 664 RPL_SERVMODEIS
+	nullptr,                                      // 665 RPL_OTHERUMODEIS
+	nullptr,                                      // 666 RPL_ENDOF_GENERIC
+	nullptr,                                      // 667
+	nullptr,                                      // 668
+	nullptr,                                      // 669
 	PTM(parseNumericStartTls),                    // 670 RPL_STARTTLSOK, RPL_WHOWASDETAILS
 	PTM(parseNumericWhoisOther),                  // 671 RPL_WHOISSECURE
-	0,                                            // 672 RPL_UNKNOWNMODES
-	0,                                            // 673 RPL_CANNOTSETMODES
-	0,                                            // 674
-	0,                                            // 675
-	0,                                            // 676
-	0,                                            // 677
-	0,                                            // 678 RPL_LUSERSTAFF
-	0,                                            // 679 RPL_TIMEONSERVERIS
-	0,                                            // 680
-	0,                                            // 681
-	0,                                            // 682 RPL_NETWORKS
-	0,                                            // 683
-	0,                                            // 684
-	0,                                            // 685
-	0,                                            // 686
-	0,                                            // 687 RPL_YOURLANGUAGEIS
-	0,                                            // 688 RPL_LANGUAGE
-	0,                                            // 689 RPL_WHOISSTAFF
-	0,                                            // 690 RPL_WHOISLANGUAGE
+	nullptr,                                      // 672 RPL_UNKNOWNMODES
+	nullptr,                                      // 673 RPL_CANNOTSETMODES
+	nullptr,                                      // 674
+	nullptr,                                      // 675
+	nullptr,                                      // 676
+	nullptr,                                      // 677
+	nullptr,                                      // 678 RPL_LUSERSTAFF
+	nullptr,                                      // 679 RPL_TIMEONSERVERIS
+	nullptr,                                      // 680
+	nullptr,                                      // 681
+	nullptr,                                      // 682 RPL_NETWORKS
+	nullptr,                                      // 683
+	nullptr,                                      // 684
+	nullptr,                                      // 685
+	nullptr,                                      // 686
+	nullptr,                                      // 687 RPL_YOURLANGUAGEIS
+	nullptr,                                      // 688 RPL_LANGUAGE
+	nullptr,                                      // 689 RPL_WHOISSTAFF
+	nullptr,                                      // 690 RPL_WHOISLANGUAGE
 	PTM(parseNumericStartTls),                    // 691 RPL_STARTTLSFAIL
-	0,                                            // 692
-	0,                                            // 693
-	0,                                            // 694
-	0,                                            // 695
-	0,                                            // 696
-	0,                                            // 697
-	0,                                            // 698
-	0,                                            // 699
+	nullptr,                                      // 692
+	nullptr,                                      // 693
+	nullptr,                                      // 694
+	nullptr,                                      // 695
+	nullptr,                                      // 696
+	nullptr,                                      // 697
+	nullptr,                                      // 698
+	nullptr,                                      // 699
 	PTM(parseNumericCodePageSet),                 // 700 RPL_CODEPAGESET
-	0,                                            // 701
-	0,                                            // 702 RPL_MODLIST, RPL_COMMANDS
+	nullptr,                                      // 701
+	nullptr,                                      // 702 RPL_MODLIST, RPL_COMMANDS
 	PTM(parseNumericCodePageScheme),              // 703 RPL_WHOISSCHEME, RPL_ENDOFMODLIST, RPL_COMMANDSEND
 	PTM(parseCommandSyntaxHelp),                  // 704 RPL_COMMANDSYNTAX, RPL_HELPSTART
 	PTM(parseCommandHelp),                        // 705 RPL_COMMANDHELP, RPL_HELPTXT
 	PTM(parseCommandEndOfHelp),                   // 706 RPL_ENDOFCOMMANDHELP, RPL_ENDOFHELP
-	0,                                            // 707
-	0,                                            // 708 RPL_ETRACEFULL
-	0,                                            // 709 RPL_ETRACE
-	0,                                            // 710 RPL_KNOCK
-	0,                                            // 711 RPL_KNOCKDLVR
-	0,                                            // 712 ERR_TOOMANYKNOCK
-	0,                                            // 713 ERR_CHANOPEN
-	0,                                            // 714 ERR_KNOCKONCHAN
-	0,                                            // 715 ERR_KNOCKDISABLED
+	nullptr,                                      // 707
+	nullptr,                                      // 708 RPL_ETRACEFULL
+	nullptr,                                      // 709 RPL_ETRACE
+	nullptr,                                      // 710 RPL_KNOCK
+	nullptr,                                      // 711 RPL_KNOCKDLVR
+	nullptr,                                      // 712 ERR_TOOMANYKNOCK
+	nullptr,                                      // 713 ERR_CHANOPEN
+	nullptr,                                      // 714 ERR_KNOCKONCHAN
+	nullptr,                                      // 715 ERR_KNOCKDISABLED
 	PTM(parseNumericNotifyGeneric),               // 716 RPL_TARGUMODEG
 	PTM(parseNumericNotifyGeneric),               // 717 RPL_TARGNOTIFY
 	PTM(parseNumericYouHaveCallerID),             // 718 RPL_UMODEGMSG
-	0,                                            // 719
-	0,                                            // 720 RPL_OMOTDSTART
-	0,                                            // 721 RPL_OMOTD
-	0,                                            // 722 RPL_ENDOFOMOTD
-	0,                                            // 723 ERR_NOPRIVS
-	0,                                            // 724 RPL_TESTMARK
-	0,                                            // 725 RPL_TESTLINE
-	0,                                            // 726 RPL_NOTESTLINE
-	0,                                            // 727
+	nullptr,                                      // 719
+	nullptr,                                      // 720 RPL_OMOTDSTART
+	nullptr,                                      // 721 RPL_OMOTD
+	nullptr,                                      // 722 RPL_ENDOFOMOTD
+	nullptr,                                      // 723 ERR_NOPRIVS
+	nullptr,                                      // 724 RPL_TESTMARK
+	nullptr,                                      // 725 RPL_TESTLINE
+	nullptr,                                      // 726 RPL_NOTESTLINE
+	nullptr,                                      // 727
 	PTM(parseNumeric728),                         // 728 RPL_QUIETLIST
 	PTM(parseNumeric729),                         // 729 RPL_QUIETLISTEND
-	0,                                            // 730
-	0,                                            // 731
-	0,                                            // 732
-	0,                                            // 733
-	0,                                            // 734
-	0,                                            // 735
-	0,                                            // 736
-	0,                                            // 737
-	0,                                            // 738
-	0,                                            // 739
-	0,                                            // 740
-	0,                                            // 741
+	nullptr,                                      // 730
+	nullptr,                                      // 731
+	nullptr,                                      // 732
+	nullptr,                                      // 733
+	nullptr,                                      // 734
+	nullptr,                                      // 735
+	nullptr,                                      // 736
+	nullptr,                                      // 737
+	nullptr,                                      // 738
+	nullptr,                                      // 739
+	nullptr,                                      // 740
+	nullptr,                                      // 741
 	PTM(parseNumeric742),                         // 742
-	0,                                            // 743
-	0,                                            // 744
-	0,                                            // 745
-	0,                                            // 746
-	0,                                            // 747
-	0,                                            // 748
-	0,                                            // 749
-	0,                                            // 750
-	0,                                            // 751
-	0,                                            // 752
-	0,                                            // 753
-	0,                                            // 754
-	0,                                            // 755
-	0,                                            // 756
-	0,                                            // 757
-	0,                                            // 758
-	0,                                            // 759
-	0,                                            // 760
-	0,                                            // 761
-	0,                                            // 762
-	0,                                            // 763
-	0,                                            // 764
-	0,                                            // 765
-	0,                                            // 766
-	0,                                            // 767
-	0,                                            // 768
-	0,                                            // 769
-	0,                                            // 770
-	0,                                            // 771 RPL_XINFO
-	0,                                            // 772
-	0,                                            // 773 RPL_XINFOSTART
-	0,                                            // 774 RPL_XINFOEND
-	0,                                            // 775
-	0,                                            // 776
-	0,                                            // 777
-	0,                                            // 778
-	0,                                            // 779
-	0,                                            // 780
-	0,                                            // 781
-	0,                                            // 782
-	0,                                            // 783
-	0,                                            // 784
-	0,                                            // 785
-	0,                                            // 786
-	0,                                            // 787
-	0,                                            // 788
-	0,                                            // 789
-	0,                                            // 790
-	0,                                            // 791
-	0,                                            // 792
-	0,                                            // 793
-	0,                                            // 794
-	0,                                            // 795
-	0,                                            // 796
-	0,                                            // 797
-	0,                                            // 798
-	0,                                            // 799
-	0,                                            // 800
-	0,                                            // 801
-	0,                                            // 802
-	0,                                            // 803
-	0,                                            // 804
-	0,                                            // 805
-	0,                                            // 806
-	0,                                            // 807
-	0,                                            // 808
-	0,                                            // 809
-	0,                                            // 810
-	0,                                            // 811
-	0,                                            // 812
-	0,                                            // 813
-	0,                                            // 814
-	0,                                            // 815
-	0,                                            // 816
-	0,                                            // 817
-	0,                                            // 818
-	0,                                            // 819
-	0,                                            // 820
-	0,                                            // 821
-	0,                                            // 822
-	0,                                            // 823
-	0,                                            // 824
-	0,                                            // 825
-	0,                                            // 826
-	0,                                            // 827
-	0,                                            // 828
-	0,                                            // 829
-	0,                                            // 830
-	0,                                            // 831
-	0,                                            // 832
-	0,                                            // 833
-	0,                                            // 834
-	0,                                            // 835
-	0,                                            // 836
-	0,                                            // 837
-	0,                                            // 838
-	0,                                            // 839
-	0,                                            // 840
-	0,                                            // 841
-	0,                                            // 842
-	0,                                            // 843
-	0,                                            // 844
-	0,                                            // 845
-	0,                                            // 846
-	0,                                            // 847
-	0,                                            // 848
-	0,                                            // 849
-	0,                                            // 850
-	0,                                            // 851
-	0,                                            // 852
-	0,                                            // 853
-	0,                                            // 854
-	0,                                            // 855
-	0,                                            // 856
-	0,                                            // 857
-	0,                                            // 858
-	0,                                            // 859
-	0,                                            // 860
-	0,                                            // 861
-	0,                                            // 862
-	0,                                            // 863
-	0,                                            // 864
-	0,                                            // 865
-	0,                                            // 866
-	0,                                            // 867
-	0,                                            // 868
-	0,                                            // 869
-	0,                                            // 870
-	0,                                            // 871
-	0,                                            // 872
-	0,                                            // 873
-	0,                                            // 874
-	0,                                            // 875
-	0,                                            // 876
-	0,                                            // 877
-	0,                                            // 878
-	0,                                            // 879
-	0,                                            // 880
-	0,                                            // 881
-	0,                                            // 882
-	0,                                            // 883
-	0,                                            // 884
-	0,                                            // 885
-	0,                                            // 886
-	0,                                            // 887
-	0,                                            // 888
-	0,                                            // 889
-	0,                                            // 890
-	0,                                            // 891
-	0,                                            // 892
-	0,                                            // 893
-	0,                                            // 894
-	0,                                            // 895
-	0,                                            // 896
-	0,                                            // 897
-	0,                                            // 898
-	0,                                            // 899
+	nullptr,                                      // 743
+	nullptr,                                      // 744
+	nullptr,                                      // 745
+	nullptr,                                      // 746
+	nullptr,                                      // 747
+	nullptr,                                      // 748
+	nullptr,                                      // 749
+	nullptr,                                      // 750
+	nullptr,                                      // 751
+	nullptr,                                      // 752
+	nullptr,                                      // 753
+	nullptr,                                      // 754
+	nullptr,                                      // 755
+	nullptr,                                      // 756
+	nullptr,                                      // 757
+	nullptr,                                      // 758
+	nullptr,                                      // 759
+	nullptr,                                      // 760
+	nullptr,                                      // 761
+	nullptr,                                      // 762
+	nullptr,                                      // 763
+	nullptr,                                      // 764
+	nullptr,                                      // 765
+	nullptr,                                      // 766
+	nullptr,                                      // 767
+	nullptr,                                      // 768
+	nullptr,                                      // 769
+	nullptr,                                      // 770
+	nullptr,                                      // 771 RPL_XINFO
+	nullptr,                                      // 772
+	nullptr,                                      // 773 RPL_XINFOSTART
+	nullptr,                                      // 774 RPL_XINFOEND
+	nullptr,                                      // 775
+	nullptr,                                      // 776
+	nullptr,                                      // 777
+	nullptr,                                      // 778
+	nullptr,                                      // 779
+	nullptr,                                      // 780
+	nullptr,                                      // 781
+	nullptr,                                      // 782
+	nullptr,                                      // 783
+	nullptr,                                      // 784
+	nullptr,                                      // 785
+	nullptr,                                      // 786
+	nullptr,                                      // 787
+	nullptr,                                      // 788
+	nullptr,                                      // 789
+	nullptr,                                      // 790
+	nullptr,                                      // 791
+	nullptr,                                      // 792
+	nullptr,                                      // 793
+	nullptr,                                      // 794
+	nullptr,                                      // 795
+	nullptr,                                      // 796
+	nullptr,                                      // 797
+	nullptr,                                      // 798
+	nullptr,                                      // 799
+	nullptr,                                      // 800
+	nullptr,                                      // 801
+	nullptr,                                      // 802
+	nullptr,                                      // 803
+	nullptr,                                      // 804
+	nullptr,                                      // 805
+	nullptr,                                      // 806
+	nullptr,                                      // 807
+	nullptr,                                      // 808
+	nullptr,                                      // 809
+	nullptr,                                      // 810
+	nullptr,                                      // 811
+	nullptr,                                      // 812
+	nullptr,                                      // 813
+	nullptr,                                      // 814
+	nullptr,                                      // 815
+	nullptr,                                      // 816
+	nullptr,                                      // 817
+	nullptr,                                      // 818
+	nullptr,                                      // 819
+	nullptr,                                      // 820
+	nullptr,                                      // 821
+	nullptr,                                      // 822
+	nullptr,                                      // 823
+	nullptr,                                      // 824
+	nullptr,                                      // 825
+	nullptr,                                      // 826
+	nullptr,                                      // 827
+	nullptr,                                      // 828
+	nullptr,                                      // 829
+	nullptr,                                      // 830
+	nullptr,                                      // 831
+	nullptr,                                      // 832
+	nullptr,                                      // 833
+	nullptr,                                      // 834
+	nullptr,                                      // 835
+	nullptr,                                      // 836
+	nullptr,                                      // 837
+	nullptr,                                      // 838
+	nullptr,                                      // 839
+	nullptr,                                      // 840
+	nullptr,                                      // 841
+	nullptr,                                      // 842
+	nullptr,                                      // 843
+	nullptr,                                      // 844
+	nullptr,                                      // 845
+	nullptr,                                      // 846
+	nullptr,                                      // 847
+	nullptr,                                      // 848
+	nullptr,                                      // 849
+	nullptr,                                      // 850
+	nullptr,                                      // 851
+	nullptr,                                      // 852
+	nullptr,                                      // 853
+	nullptr,                                      // 854
+	nullptr,                                      // 855
+	nullptr,                                      // 856
+	nullptr,                                      // 857
+	nullptr,                                      // 858
+	nullptr,                                      // 859
+	nullptr,                                      // 860
+	nullptr,                                      // 861
+	nullptr,                                      // 862
+	nullptr,                                      // 863
+	nullptr,                                      // 864
+	nullptr,                                      // 865
+	nullptr,                                      // 866
+	nullptr,                                      // 867
+	nullptr,                                      // 868
+	nullptr,                                      // 869
+	nullptr,                                      // 870
+	nullptr,                                      // 871
+	nullptr,                                      // 872
+	nullptr,                                      // 873
+	nullptr,                                      // 874
+	nullptr,                                      // 875
+	nullptr,                                      // 876
+	nullptr,                                      // 877
+	nullptr,                                      // 878
+	nullptr,                                      // 879
+	nullptr,                                      // 880
+	nullptr,                                      // 881
+	nullptr,                                      // 882
+	nullptr,                                      // 883
+	nullptr,                                      // 884
+	nullptr,                                      // 885
+	nullptr,                                      // 886
+	nullptr,                                      // 887
+	nullptr,                                      // 888
+	nullptr,                                      // 889
+	nullptr,                                      // 890
+	nullptr,                                      // 891
+	nullptr,                                      // 892
+	nullptr,                                      // 893
+	nullptr,                                      // 894
+	nullptr,                                      // 895
+	nullptr,                                      // 896
+	nullptr,                                      // 897
+	nullptr,                                      // 898
+	nullptr,                                      // 899
 	PTM(parseNumericSaslLogin),                   // 900 RPL_SASLLOGIN
-	0,                                            // 901
-	0,                                            // 902
+	nullptr,                                      // 901
+	nullptr,                                      // 902
 	PTM(parseNumericSaslSuccess),                 // 903 RPL_SASLSUCCESS
 	PTM(parseNumericSaslFail),                    // 904 RPL_SASLFAILED
 	PTM(parseNumericSaslFail),                    // 905 RPL_SASLERROR
 	PTM(parseNumericSaslFail),                    // 906 RPL_SASLABORT
 	PTM(parseNumericSaslFail),                    // 907 RPL_SASLALREADYAUTH
 	PTM(parseNumericSaslFail),                    // 908 RPL_SASLMECHS
-	0,                                            // 909
+	nullptr,                                      // 909
 	PTM(parseNumericChanAccessList),              // 910 RPL_CHANACCESS
 	PTM(parseNumericEndOfChanAccessList),         // 911 RPL_ENDOFCHANACCESS
-	0,                                            // 912
-	0,                                            // 913
-	0,                                            // 914
-	0,                                            // 915
-	0,                                            // 916
-	0,                                            // 917
-	0,                                            // 918
-	0,                                            // 919
-	0,                                            // 920
-	0,                                            // 921
-	0,                                            // 922
-	0,                                            // 923
-	0,                                            // 924
-	0,                                            // 925
-	0,                                            // 926
-	0,                                            // 927
-	0,                                            // 928
-	0,                                            // 929
-	0,                                            // 930
-	0,                                            // 931
-	0,                                            // 932
-	0,                                            // 933
-	0,                                            // 934
+	nullptr,                                      // 912
+	nullptr,                                      // 913
+	nullptr,                                      // 914
+	nullptr,                                      // 915
+	nullptr,                                      // 916
+	nullptr,                                      // 917
+	nullptr,                                      // 918
+	nullptr,                                      // 919
+	nullptr,                                      // 920
+	nullptr,                                      // 921
+	nullptr,                                      // 922
+	nullptr,                                      // 923
+	nullptr,                                      // 924
+	nullptr,                                      // 925
+	nullptr,                                      // 926
+	nullptr,                                      // 927
+	nullptr,                                      // 928
+	nullptr,                                      // 929
+	nullptr,                                      // 930
+	nullptr,                                      // 931
+	nullptr,                                      // 932
+	nullptr,                                      // 933
+	nullptr,                                      // 934
 	PTM(otherChannelError),                       // 935 RPL_WORDFILTERTOOLONG
-	0,                                            // 936 RPL_WORDFILTERED
+	nullptr,                                      // 936 RPL_WORDFILTERED
 	PTM(otherChannelError),                       // 937 RPL_WORDALREADYEXISTS
 	PTM(otherChannelError),                       // 938 RPL_NOSUCHWORDFILTER
 	PTM(otherChannelError),                       // 939 RPL_WORDFILTERFULL
 	PTM(parseNumericEndOfSpamFilterList),         // 940 RPL_SPAMFILTERLIST
 	PTM(parseNumericSpamFilterList),              // 941 RPL_ENDOFSPAMFILTERLIST
-	0,                                            // 942
-	0,                                            // 943
-	0,                                            // 944
-	0,                                            // 945
-	0,                                            // 946
-	0,                                            // 947
-	0,                                            // 948
-	0,                                            // 949
-	0,                                            // 950
-	0,                                            // 951
-	0,                                            // 952
+	nullptr,                                      // 942
+	nullptr,                                      // 943
+	nullptr,                                      // 944
+	nullptr,                                      // 945
+	nullptr,                                      // 946
+	nullptr,                                      // 947
+	nullptr,                                      // 948
+	nullptr,                                      // 949
+	nullptr,                                      // 950
+	nullptr,                                      // 951
+	nullptr,                                      // 952
 	PTM(parseNumericEndOfExemptChanOpList),       // 953 RPL_ENDOFEXEMPTCHANOPLIST
 	PTM(parseNumericExemptChanOpList),            // 954 RPL_EXEMPTCHANOPLIST
-	0,                                            // 955
-	0,                                            // 956
-	0,                                            // 957
-	0,                                            // 958
-	0,                                            // 959
-	0,                                            // 960
-	0,                                            // 961
-	0,                                            // 962
-	0,                                            // 963
-	0,                                            // 964
-	0,                                            // 965
-	0,                                            // 966
-	0,                                            // 967
-	0,                                            // 968
-	0,                                            // 969
-	0,                                            // 970
-	0,                                            // 971
-	0,                                            // 972 ERR_CANNOTDOCOMMAND, ERR_CANTUNLOADMODULE
-	0,                                            // 973 ERR_CANNOTCHANGEUMODE, RPL_UNLOADEDMODULE
-	0,                                            // 974 ERR_CANNOTCHANGECHANMODE, ERR_CANTLOADMODULE
-	0,                                            // 975 ERR_CANNOTCHANGESERVERMODE, RPL_LOADEDMODULE
-	0,                                            // 976 ERR_CANNOTSENDTONICK
-	0,                                            // 977 ERR_UNKNOWNSERVERMODE
-	0,                                            // 978
-	0,                                            // 979 ERR_SERVERMODELOCK
-	0,                                            // 980 ERR_BADCHARENCODING
-	0,                                            // 981 ERR_TOOMANYLANGUAGES
-	0,                                            // 982 ERR_NOLANGUAGE
-	0,                                            // 983 ERR_TEXTTOOSHORT
-	0,                                            // 984
-	0,                                            // 985
-	0,                                            // 986
-	0,                                            // 987
-	0,                                            // 988
-	0,                                            // 989
-	0,                                            // 990
-	0,                                            // 991
-	0,                                            // 992
-	0,                                            // 993
-	0,                                            // 994
-	0,                                            // 995
-	0,                                            // 996
-	0,                                            // 997
-	0,                                            // 998
-	0                                             // 999 ERR_NUMERIC_ERR
+	nullptr,                                      // 955
+	nullptr,                                      // 956
+	nullptr,                                      // 957
+	nullptr,                                      // 958
+	nullptr,                                      // 959
+	nullptr,                                      // 960
+	nullptr,                                      // 961
+	nullptr,                                      // 962
+	nullptr,                                      // 963
+	nullptr,                                      // 964
+	nullptr,                                      // 965
+	nullptr,                                      // 966
+	nullptr,                                      // 967
+	nullptr,                                      // 968
+	nullptr,                                      // 969
+	nullptr,                                      // 970
+	nullptr,                                      // 971
+	nullptr,                                      // 972 ERR_CANNOTDOCOMMAND, ERR_CANTUNLOADMODULE
+	nullptr,                                      // 973 ERR_CANNOTCHANGEUMODE, RPL_UNLOADEDMODULE
+	nullptr,                                      // 974 ERR_CANNOTCHANGECHANMODE, ERR_CANTLOADMODULE
+	nullptr,                                      // 975 ERR_CANNOTCHANGESERVERMODE, RPL_LOADEDMODULE
+	nullptr,                                      // 976 ERR_CANNOTSENDTONICK
+	nullptr,                                      // 977 ERR_UNKNOWNSERVERMODE
+	nullptr,                                      // 978
+	nullptr,                                      // 979 ERR_SERVERMODELOCK
+	nullptr,                                      // 980 ERR_BADCHARENCODING
+	nullptr,                                      // 981 ERR_TOOMANYLANGUAGES
+	nullptr,                                      // 982 ERR_NOLANGUAGE
+	nullptr,                                      // 983 ERR_TEXTTOOSHORT
+	nullptr,                                      // 984
+	nullptr,                                      // 985
+	nullptr,                                      // 986
+	nullptr,                                      // 987
+	nullptr,                                      // 988
+	nullptr,                                      // 989
+	nullptr,                                      // 990
+	nullptr,                                      // 991
+	nullptr,                                      // 992
+	nullptr,                                      // 993
+	nullptr,                                      // 994
+	nullptr,                                      // 995
+	nullptr,                                      // 996
+	nullptr,                                      // 997
+	nullptr,                                      // 998
+	nullptr                                       // 999 ERR_NUMERIC_ERR
 };

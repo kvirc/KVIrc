@@ -65,28 +65,28 @@ QColor * KviIrcUserDataBase::customColor(const QString & szNick)
 {
 	KviIrcUserEntry * pEntry = find(szNick);
 	if(!pEntry)
-		return 0;
+		return nullptr;
 	if(pEntry->m_szLastRegisteredMatchNick != szNick)
 		registeredUser(szNick);
 
 	if(!pEntry->m_bNotFoundRegUserLookup)
 		return &(pEntry->m_cachedColor);
 
-	return 0;
+	return nullptr;
 }
 
 KviRegisteredUser * KviIrcUserDataBase::registeredUser(const QString & szNick, const QString & szUser, const QString & szHost)
 {
 	if(szNick.isEmpty())
-		return 0;
+		return nullptr;
 	KviIrcUserEntry * pEntry = find(szNick);
 	if(!pEntry)
 		return g_pRegisteredUserDataBase->findMatchingUser(szNick, szUser, szHost);
 
-	KviRegisteredUser * pUser = 0;
+	KviRegisteredUser * pUser = nullptr;
 
 	if(pEntry->m_bNotFoundRegUserLookup && pEntry->m_szLastRegisteredMatchNick == szNick)
-		return 0;
+		return nullptr;
 
 	if(!pEntry->m_szRegisteredUserName.isEmpty() && pEntry->m_szLastRegisteredMatchNick == szNick)
 		pUser = g_pRegisteredUserDataBase->getUser(pEntry->m_szRegisteredUserName);
@@ -122,10 +122,10 @@ KviRegisteredUser * KviIrcUserDataBase::registeredUser(const QString & szNick, c
 KviRegisteredUser * KviIrcUserDataBase::registeredUser(const QString & szNick)
 {
 	if(szNick.isEmpty())
-		return 0;
+		return nullptr;
 	KviIrcUserEntry * pEntry = find(szNick);
 	if(!pEntry)
-		return 0;
+		return nullptr;
 	return registeredUser(szNick, pEntry->user(), pEntry->host());
 }
 

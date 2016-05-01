@@ -210,7 +210,7 @@ KviKvsTreeNodeExpressionBinaryOperator * KviKvsParser::parseExpressionBinaryOper
 	}
 
 	error(KVSP_curCharPointer, __tr2qs_ctx("Unknown binary operator '%q'", "kvs"), KVSP_curCharPointer);
-	return 0;
+	return nullptr;
 }
 
 static unsigned char binary_operator_initial_char[256] = {
@@ -293,7 +293,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperand(char terminator)
 		case '\r':
 		case '\n':
 			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in expression", "kvs"));
-			return 0;
+			return nullptr;
 			break;
 		case '(':
 			KVSP_skipChar;
@@ -306,7 +306,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperand(char terminator)
 			skipSpaces();
 			KviKvsTreeNodeExpression * d = parseExpressionOperand(terminator);
 			if(!d)
-				return 0;
+				return nullptr;
 			return new KviKvsTreeNodeExpressionUnaryOperatorNegate(d->location(), d);
 		}
 		break;
@@ -316,7 +316,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperand(char terminator)
 			skipSpaces();
 			KviKvsTreeNodeExpression * d = parseExpressionOperand(terminator);
 			if(!d)
-				return 0;
+				return nullptr;
 			return new KviKvsTreeNodeExpressionUnaryOperatorLogicalNot(d->location(), d);
 		}
 		break;
@@ -326,7 +326,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperand(char terminator)
 			skipSpaces();
 			KviKvsTreeNodeExpression * d = parseExpressionOperand(terminator);
 			if(!d)
-				return 0;
+				return nullptr;
 			return new KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot(d->location(), d);
 		}
 		break;
@@ -338,7 +338,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperand(char terminator)
 
 	// not reached
 	KVSP_ASSERT(false);
-	return 0;
+	return nullptr;
 }
 
 KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperandCore(char terminator)
@@ -361,7 +361,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperandCore(char termina
 			case '\n':
 				error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in expression", "kvs"));
 				delete pDataList;
-				return 0;
+				return nullptr;
 				break;
 			case ' ':
 			case '\t':
@@ -379,7 +379,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperandCore(char termina
 				if(!d)
 				{
 					delete pDataList;
-					return 0;
+					return nullptr;
 				}
 				pDataList->append(d);
 			}
@@ -393,7 +393,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperandCore(char termina
 				if(!d)
 				{
 					delete pDataList;
-					return 0;
+					return nullptr;
 				}
 				pDataList->append(d);
 			}
@@ -449,7 +449,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperandCore(char termina
 				{
 					error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected character %q (Unicode %h) in expression. If it meant to be a string use the quotes.", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 					delete pDataList;
-					return 0;
+					return nullptr;
 				}
 				break;
 		}
@@ -464,7 +464,7 @@ postprocess_operand:
 	{
 		delete pDataList;
 		error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected empty expression operand", "kvs"));
-		return 0;
+		return nullptr;
 	}
 
 	if(pDataList->count() > 1)
@@ -500,7 +500,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpression(char terminator)
 
 	KviKvsTreeNodeExpression * left = parseExpressionOperand(terminator);
 	if(!left)
-		return 0;
+		return nullptr;
 	QString sz;
 	left->contextDescription(sz);
 
@@ -518,7 +518,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpression(char terminator)
 	if(!curTopOperator)
 	{
 		delete left;
-		return 0; // error
+		return nullptr; // error
 	}
 	curTopOperator->contextDescription(sz);
 
@@ -542,7 +542,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpression(char terminator)
 		if(!operand)
 		{
 			delete curTopOperator;
-			return 0;
+			return nullptr;
 		}
 		operand->contextDescription(sz);
 
@@ -560,7 +560,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpression(char terminator)
 		{
 			delete curTopOperator;
 			delete operand;
-			return 0;
+			return nullptr;
 		}
 
 		auxOperator->contextDescription(sz);
@@ -579,7 +579,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpression(char terminator)
 			incompleteOperator->setRight(operand); //right tree complete
 			// go up until we find an operator with lower precedence than auxOperator (>=)
 			KviKvsTreeNodeExpression * tempOperator = incompleteOperator->parentWithPrecedenceLowerThan(auxOperator->precedence());
-			if(tempOperator == 0)
+			if(tempOperator == nullptr)
 			{
 				auxOperator->setLeft(curTopOperator);
 				curTopOperator = auxOperator;
@@ -592,12 +592,12 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpression(char terminator)
 			}
 		}
 		incompleteOperator = auxOperator;
-		KVSP_ASSERT(incompleteOperator->right() == 0);
+		KVSP_ASSERT(incompleteOperator->right() == nullptr);
 	}
 
 	KVSP_ASSERT(false);
 
-	return 0; //newer here
+	return nullptr; //newer here
 
 	/*
 

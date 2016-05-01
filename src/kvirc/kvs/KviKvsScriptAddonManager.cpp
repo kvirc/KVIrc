@@ -32,7 +32,7 @@
 
 #include <QFileInfo>
 
-KviKvsScriptAddonManager * KviKvsScriptAddonManager::m_pInstance = 0;
+KviKvsScriptAddonManager * KviKvsScriptAddonManager::m_pInstance = nullptr;
 
 KviKvsScriptAddon::KviKvsScriptAddon(
     const QString & szName,
@@ -43,8 +43,8 @@ KviKvsScriptAddon::KviKvsScriptAddon(
     const QString & szIconId) : KviHeapObject(), m_szName(szName), m_szVersion(szVersion), m_szIconId(szIconId)
 {
 	allocateScripts(szVisibleNameCode, szDescriptionCode, szUninstallCallbackCode);
-	m_pConfigureCallback = 0;
-	m_pHelpCallback = 0;
+	m_pConfigureCallback = nullptr;
+	m_pHelpCallback = nullptr;
 }
 
 KviKvsScriptAddon::KviKvsScriptAddon(const KviKvsScriptAddon & a)
@@ -54,20 +54,20 @@ KviKvsScriptAddon::KviKvsScriptAddon(const KviKvsScriptAddon & a)
 	m_szVersion = a.m_szVersion;
 	m_szIconId = a.m_szIconId;
 	allocateScripts(a.m_pVisibleNameScript->code(), a.m_pDescriptionScript->code(), a.m_pUninstallCallback ? a.m_pUninstallCallback->code() : QString());
-	m_pConfigureCallback = 0;
+	m_pConfigureCallback = nullptr;
 	setConfigureCallback(a.m_pConfigureCallback ? a.m_pConfigureCallback->code() : QString());
-	m_pHelpCallback = 0;
+	m_pHelpCallback = nullptr;
 	setHelpCallback(a.m_pHelpCallback ? a.m_pHelpCallback->code() : QString());
 }
 
 KviKvsScriptAddon::KviKvsScriptAddon()
     : KviHeapObject()
 {
-	m_pVisibleNameScript = 0;
-	m_pDescriptionScript = 0;
-	m_pUninstallCallback = 0;
-	m_pConfigureCallback = 0;
-	m_pHelpCallback = 0;
+	m_pVisibleNameScript = nullptr;
+	m_pDescriptionScript = nullptr;
+	m_pUninstallCallback = nullptr;
+	m_pConfigureCallback = nullptr;
+	m_pHelpCallback = nullptr;
 }
 
 KviKvsScriptAddon::~KviKvsScriptAddon()
@@ -94,7 +94,7 @@ const QString & KviKvsScriptAddon::visibleName()
 {
 	if(!m_pVisibleNameScript)
 		return m_szVisibleName;
-	if(!m_pVisibleNameScript->run(g_pActiveWindow, 0, m_szVisibleName))
+	if(!m_pVisibleNameScript->run(g_pActiveWindow, nullptr, m_szVisibleName))
 		m_szVisibleName = m_pVisibleNameScript->code();
 	return m_szVisibleName;
 }
@@ -103,7 +103,7 @@ const QString & KviKvsScriptAddon::description()
 {
 	if(!m_pDescriptionScript)
 		return m_szDescription;
-	if(!m_pDescriptionScript->run(g_pActiveWindow, 0, m_szDescription))
+	if(!m_pDescriptionScript->run(g_pActiveWindow, nullptr, m_szDescription))
 		m_szDescription = m_pDescriptionScript->code();
 	return m_szDescription;
 }
@@ -175,7 +175,7 @@ void KviKvsScriptAddon::setConfigureCallback(const QString & szConfigureCallback
 		delete m_pConfigureCallback;
 	if(szConfigureCallbackCode.isEmpty())
 	{
-		m_pConfigureCallback = 0;
+		m_pConfigureCallback = nullptr;
 		return;
 	}
 
@@ -195,7 +195,7 @@ void KviKvsScriptAddon::setHelpCallback(const QString & szHelpCallbackCode)
 		delete m_pHelpCallback;
 	if(szHelpCallbackCode.isEmpty())
 	{
-		m_pHelpCallback = 0;
+		m_pHelpCallback = nullptr;
 		return;
 	}
 

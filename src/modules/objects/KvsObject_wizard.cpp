@@ -315,14 +315,14 @@ KVSO_CLASS_FUNCTION(wizard, setFinishBtnText)
 }
 bool KvsObject_wizard::accept()
 {
-	KviKvsVariantList * pParams = 0;
-	callFunction(this, "acceptEvent", 0, pParams);
+	KviKvsVariantList * pParams = nullptr;
+	callFunction(this, "acceptEvent", nullptr, pParams);
 	return true;
 }
 bool KvsObject_wizard::reject()
 {
-	KviKvsVariantList * pParams = 0;
-	callFunction(this, "rejectEvent", 0, pParams);
+	KviKvsVariantList * pParams = nullptr;
+	callFunction(this, "rejectEvent", nullptr, pParams);
 	return true;
 }
 KVSO_CLASS_FUNCTION(wizard, nextClickedEvent)
@@ -333,7 +333,7 @@ KVSO_CLASS_FUNCTION(wizard, nextClickedEvent)
 
 void KvsObject_wizard::nextClicked()
 {
-	KviKvsVariantList * params = 0;
+	KviKvsVariantList * params = nullptr;
 	callFunction(this, "nextClickedEvent", params);
 }
 KVSO_CLASS_FUNCTION(wizard, backClickedEvent)
@@ -344,7 +344,7 @@ KVSO_CLASS_FUNCTION(wizard, backClickedEvent)
 
 void KvsObject_wizard::backClicked()
 {
-	KviKvsVariantList * params = 0;
+	KviKvsVariantList * params = nullptr;
 	callFunction(this, "backClickedEvent", params);
 }
 KviKvsMdmWizard::KviKvsMdmWizard(QWidget * par, const char * name, KvsObject_wizard * parent)
@@ -374,5 +374,4 @@ void KviKvsMdmWizard::slotBackClicked()
 	m_pParentScript->backClicked();
 }
 KviKvsMdmWizard::~KviKvsMdmWizard()
-{
-}
+    = default;

@@ -232,8 +232,8 @@ KVSO_CLASS_FUNCTION(popupMenu, insertItem)
 	KVSO_PARAMETER("icon_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
 	KVSO_PARAMETERS_END(c)
 
-	QPixmap * pix = 0;
-	QAction * pAction = 0;
+	QPixmap * pix = nullptr;
+	QAction * pAction = nullptr;
 	if(!szIcon.isEmpty())
 	{
 		pix = g_pIconManager->getImage(szIcon);

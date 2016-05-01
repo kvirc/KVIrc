@@ -153,7 +153,7 @@ bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 		c->error(this, __tr2qs_ctx("Can't override the builtin class '%Q'", "kvs"), &szClassName);
 		return false;
 	}
-	pActualClass = new KviKvsObjectClass(pBaseClass, szClassName, 0, false);
+	pActualClass = new KviKvsObjectClass(pBaseClass, szClassName, nullptr, false);
 
 	for(KviKvsTreeNodeSpecialCommandClassFunctionDefinition * d = m_pFunctions->first(); d; d = m_pFunctions->next())
 	{

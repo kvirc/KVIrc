@@ -34,7 +34,7 @@
 
 #define KVI_SHARED_FILES_WINDOW_EXTENSION_NAME "Shared files window extension"
 
-SharedFilesWindow * g_pSharedFilesWindow = 0;
+SharedFilesWindow * g_pSharedFilesWindow = nullptr;
 
 /*
 	@doc: sharedfileswindow.open
@@ -84,7 +84,7 @@ static bool sharedfileswindow_module_cleanup(KviModule *)
 {
 	if(g_pSharedFilesWindow && g_pMainWindow)
 		g_pMainWindow->closeWindow(g_pSharedFilesWindow);
-	g_pSharedFilesWindow = 0;
+	g_pSharedFilesWindow = nullptr;
 	return true;
 }
 

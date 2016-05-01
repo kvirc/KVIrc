@@ -53,7 +53,7 @@
 extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-static KviPointerList<KviToolBarGraphicalApplet> * g_pToolBarGraphicalAppletList = 0;
+static KviPointerList<KviToolBarGraphicalApplet> * g_pToolBarGraphicalAppletList = nullptr;
 
 KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par, const char * name)
     : QWidget(par)
@@ -91,7 +91,7 @@ KviToolBarGraphicalApplet::~KviToolBarGraphicalApplet()
 	if(g_pToolBarGraphicalAppletList->isEmpty())
 	{
 		delete g_pToolBarGraphicalAppletList;
-		g_pToolBarGraphicalAppletList = 0;
+		g_pToolBarGraphicalAppletList = nullptr;
 	}
 }
 
@@ -205,8 +205,7 @@ KviIrcContextDisplay::KviIrcContextDisplay(QWidget * par, const char * name)
 }
 
 KviIrcContextDisplay::~KviIrcContextDisplay()
-{
-}
+    = default;
 
 void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 {
@@ -286,7 +285,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 {
 	// The context indicator
 	KviWindow * wnd = g_pActiveWindow;
-	KviConsoleWindow * c = wnd ? wnd->console() : 0;
+	KviConsoleWindow * c = wnd ? wnd->console() : nullptr;
 
 	if(c)
 	{

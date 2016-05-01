@@ -145,8 +145,7 @@ KviStringSelector::KviStringSelector(QWidget * par, const QString & txt, QString
 }
 
 KviStringSelector::~KviStringSelector()
-{
-}
+    = default;
 
 void KviStringSelector::commit()
 {
@@ -199,8 +198,7 @@ void KviPasswordSelector::checkToggled(int state)
 }
 
 KviPasswordSelector::~KviPasswordSelector()
-{
-}
+    = default;
 
 void KviPasswordSelector::commit()
 {
@@ -245,8 +243,7 @@ void KviPasswordLineEdit::checkToggled(int state)
 }
 
 KviPasswordLineEdit::~KviPasswordLineEdit()
-{
-}
+    = default;
 
 QString KviPasswordLineEdit::text()
 {
@@ -274,8 +271,7 @@ KviPixmapPreview::KviPixmapPreview(QWidget * par)
 }
 
 KviPixmapPreview::~KviPixmapPreview()
-{
-}
+    = default;
 
 void KviPixmapPreview::setPixmap(KviPixmap * pix)
 {
@@ -322,8 +318,7 @@ KviPixmapSelector::KviPixmapSelector(QWidget * par, const QString & txt, KviPixm
 }
 
 KviPixmapSelector::~KviPixmapSelector()
-{
-}
+    = default;
 
 void KviPixmapSelector::checkBoxToggled(bool)
 {
@@ -510,8 +505,7 @@ KviStringListSelector::KviStringListSelector(QWidget * par, const QString & txt,
 }
 
 KviStringListSelector::~KviStringListSelector()
-{
-}
+    = default;
 
 void KviStringListSelector::itemSelectionChanged()
 {
@@ -621,7 +615,7 @@ void KviColorSelector::forceColor(QColor clr)
 
 void KviColorSelector::changeClicked()
 {
-	QColor tmp = QColorDialog::getColor(m_memColor, 0, __tr2qs("Choose Color"), QColorDialog::ShowAlphaChannel);
+	QColor tmp = QColorDialog::getColor(m_memColor, nullptr, __tr2qs("Choose Color"), QColorDialog::ShowAlphaChannel);
 	if(tmp.isValid())
 		setButtonPalette(&tmp);
 }
@@ -706,7 +700,7 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par, const QString 
 
 	m_pContextPopup = new QMenu(this);
 
-	QAction * pAction = 0;
+	QAction * pAction = nullptr;
 	m_pForePopup = new QMenu(this);
 	connect(m_pForePopup, SIGNAL(triggered(QAction *)), this, SLOT(foreSelected(QAction *)));
 	int iColor;
@@ -738,8 +732,7 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par, const QString 
 }
 
 KviMircTextColorSelector::~KviMircTextColorSelector()
-{
-}
+    = default;
 
 void KviMircTextColorSelector::commit()
 {
@@ -815,12 +808,11 @@ KviSoundSelector::KviSoundSelector(QWidget * par, const QString & txt, QString *
 }
 
 KviSoundSelector::~KviSoundSelector()
-{
-}
+    = default;
 
 void KviSoundSelector::playSound()
 {
-	KviKvsScript::run("snd.play $0", 0, new KviKvsVariantList(new KviKvsVariant(m_pLineEdit->text())));
+	KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(m_pLineEdit->text())));
 }
 
 void KviSoundSelector::setEnabled(bool bEnabled)
@@ -883,8 +875,7 @@ KviChannelListSelector::KviChannelListSelector(QWidget * par, const QString & tx
 }
 
 KviChannelListSelector::~KviChannelListSelector()
-{
-}
+    = default;
 
 void KviChannelListSelector::commit()
 {

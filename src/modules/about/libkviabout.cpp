@@ -30,7 +30,7 @@
 #include "KviModule.h"
 #include "KviLocale.h"
 
-AboutDialog * g_pAboutDialog = 0;
+AboutDialog * g_pAboutDialog = nullptr;
 
 /*
 	@doc: about.kvirc
@@ -84,7 +84,7 @@ static bool about_module_cleanup(KviModule *)
 {
 	if(g_pAboutDialog)
 		delete g_pAboutDialog;
-	g_pAboutDialog = 0;
+	g_pAboutDialog = nullptr;
 	return true;
 }
 

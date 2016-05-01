@@ -95,7 +95,7 @@ static bool bCompleterReady = false;
 ScriptEditorWidget::ScriptEditorWidget(QWidget * pParent)
     : QTextEdit(pParent)
 {
-	m_pSyntaxHighlighter = 0;
+	m_pSyntaxHighlighter = nullptr;
 	setTabStopWidth(48);
 	setAcceptRichText(false);
 	setWordWrapMode(QTextOption::NoWrap);
@@ -103,7 +103,7 @@ ScriptEditorWidget::ScriptEditorWidget(QWidget * pParent)
 	m_szHelp = "Nothing";
 	updateOptions();
 	m_szFind = "";
-	m_pCompleter = 0;
+	m_pCompleter = nullptr;
 	QStringList szListFunctionsCommands;
 	QString tmp("kvscompleter.idx");
 	iModulesCount = 0;
@@ -146,7 +146,7 @@ void ScriptEditorWidget::checkReadyCompleter()
 	{
 		m_pStartTimer->stop();
 		delete m_pStartTimer;
-		m_pStartTimer = 0;
+		m_pStartTimer = nullptr;
 		loadCompleterFromFile();
 	}
 }
@@ -198,7 +198,7 @@ void ScriptEditorWidget::asyncCompleterCreation()
 	{
 		m_pStartTimer->stop();
 		m_pStartTimer->deleteLater();
-		m_pStartTimer = 0;
+		m_pStartTimer = nullptr;
 		QString szTmp("kvscompleter.idx");
 		QString szPath;
 		g_pApp->getLocalKvircDirectory(szPath, KviApplication::ConfigPlugins, szTmp);
@@ -304,7 +304,7 @@ void ScriptEditorWidget::disableSyntaxHighlighter()
 {
 	if(m_pSyntaxHighlighter)
 		delete m_pSyntaxHighlighter;
-	m_pSyntaxHighlighter = 0;
+	m_pSyntaxHighlighter = nullptr;
 }
 
 void ScriptEditorWidget::updateOptions()
@@ -635,8 +635,7 @@ ScriptEditorSyntaxHighlighter::ScriptEditorSyntaxHighlighter(ScriptEditorWidget 
 }
 
 ScriptEditorSyntaxHighlighter::~ScriptEditorSyntaxHighlighter()
-{
-}
+    = default;
 
 void ScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 {
@@ -801,7 +800,7 @@ void ScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
     : KviScriptEditor(par)
 {
-	m_pOptionsDialog = 0;
+	m_pOptionsDialog = nullptr;
 	if(g_pScriptEditorWindowList->isEmpty())
 		loadOptions();
 	g_pScriptEditorWindowList->append(this);
@@ -863,7 +862,7 @@ ScriptEditorImplementation::~ScriptEditorImplementation()
 	if(m_pOptionsDialog)
 	{
 		m_pOptionsDialog->deleteLater();
-		m_pOptionsDialog = 0;
+		m_pOptionsDialog = nullptr;
 	}
 	g_pScriptEditorWindowList->removeRef(this);
 	if(g_pScriptEditorWindowList->isEmpty())
@@ -1143,8 +1142,7 @@ ScriptEditorReplaceDialog::ScriptEditorReplaceDialog(QWidget * pParent, const QS
 }
 
 ScriptEditorReplaceDialog::~ScriptEditorReplaceDialog()
-{
-}
+    = default;
 
 void ScriptEditorReplaceDialog::textChanged(const QString & szText)
 {

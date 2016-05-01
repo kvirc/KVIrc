@@ -28,7 +28,7 @@
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
-ActionEditorWindow * g_pActionEditorWindow = 0;
+ActionEditorWindow * g_pActionEditorWindow = nullptr;
 
 /*
 	@doc: actioneditor.open
@@ -59,20 +59,20 @@ static bool actioneditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 static bool actioneditor_module_init(KviModule * m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", actioneditor_kvs_cmd_open);
-	g_pActionEditorWindow = 0;
+	g_pActionEditorWindow = nullptr;
 	return true;
 }
 
 static bool actioneditor_module_can_unload(KviModule *)
 {
-	return (g_pActionEditorWindow == 0);
+	return (g_pActionEditorWindow == nullptr);
 }
 
 static bool actioneditor_module_cleanup(KviModule *)
 {
 	if(g_pActionEditorWindow && g_pMainWindow)
 		g_pMainWindow->closeWindow(g_pActionEditorWindow);
-	g_pActionEditorWindow = 0;
+	g_pActionEditorWindow = nullptr;
 	return true;
 }
 

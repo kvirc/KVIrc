@@ -80,8 +80,7 @@ KviUserListToolTip::KviUserListToolTip(KviUserListView * pView, KviUserListViewA
 }
 
 KviUserListToolTip::~KviUserListToolTip()
-{
-}
+    = default;
 
 void KviUserListToolTip::maybeTip(const QPoint & pnt)
 {
@@ -100,7 +99,7 @@ KviUserListEntry::KviUserListEntry(KviUserListView * pParent, const QString & sz
 	m_iTemperature = bJoinTimeUnknown ? 0 : KVI_USERACTION_JOIN;
 
 	m_bSelected = false;
-	m_pAvatarPixmap = NULL;
+	m_pAvatarPixmap = nullptr;
 
 	updateAvatarData();
 	recalcSize();
@@ -117,7 +116,7 @@ void KviUserListEntry::detachAvatarData()
 	if(!m_pAvatarPixmap)
 		return;
 
-	m_pAvatarPixmap = NULL;
+	m_pAvatarPixmap = nullptr;
 }
 
 void KviUserListEntry::updateAvatarData()
@@ -163,7 +162,7 @@ void KviUserListEntry::avatarFrameChanged()
 
 void KviUserListEntry::avatarDestroyed()
 {
-	m_pAvatarPixmap = NULL;
+	m_pAvatarPixmap = nullptr;
 }
 
 bool KviUserListEntry::color(QColor & color)
@@ -231,9 +230,9 @@ KviUserListView::KviUserListView(QWidget * pParent, KviWindowToolPageButton * pB
 
 	m_pViewArea = new KviUserListViewArea(this);
 	m_pToolTip = new KviUserListToolTip(this, m_pViewArea);
-	m_pTopItem = 0;
-	m_pHeadItem = 0;
-	m_pTailItem = 0;
+	m_pTopItem = nullptr;
+	m_pHeadItem = nullptr;
+	m_pTailItem = nullptr;
 	m_iOpCount = 0;
 	m_iHalfOpCount = 0;
 	m_iVoiceCount = 0;
@@ -371,7 +370,7 @@ void KviUserListView::applyOptions()
 	updateScrollBarRange();
 	m_pUsersLabel->setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
 	setMinimumWidth(22);
-	resizeEvent(0); // this will call update() too
+	resizeEvent(nullptr); // this will call update() too
 	repaint();
 }
 
@@ -710,7 +709,7 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 			// inserting
 			pUserEntry->m_pNext = pEntry;
 			pUserEntry->m_pPrev = pEntry->m_pPrev;
-			if(pUserEntry->m_pPrev == 0)
+			if(pUserEntry->m_pPrev == nullptr)
 				m_pHeadItem = pUserEntry;
 			else
 				pUserEntry->m_pPrev->m_pNext = pUserEntry;
@@ -750,7 +749,7 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 		{
 			// appending to the end (may be visible)
 			m_pTailItem->m_pNext = pUserEntry;
-			pUserEntry->m_pNext = 0;
+			pUserEntry->m_pNext = nullptr;
 			pUserEntry->m_pPrev = m_pTailItem;
 			m_pTailItem = pUserEntry;
 			triggerUpdate();
@@ -762,8 +761,8 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 		m_pHeadItem = pUserEntry;
 		m_pTailItem = pUserEntry;
 		m_pTopItem = pUserEntry;
-		pUserEntry->m_pNext = 0;
-		pUserEntry->m_pPrev = 0;
+		pUserEntry->m_pNext = nullptr;
+		pUserEntry->m_pPrev = nullptr;
 		triggerUpdate();
 	}
 
@@ -1115,7 +1114,7 @@ QString * KviUserListView::firstSelectedNickname()
 		}
 		m_pIterator = m_pIterator->m_pNext;
 	}
-	return 0;
+	return nullptr;
 }
 
 QString * KviUserListView::nextSelectedNickname()
@@ -1130,7 +1129,7 @@ QString * KviUserListView::nextSelectedNickname()
 		}
 		m_pIterator = m_pIterator->m_pNext;
 	}
-	return 0;
+	return nullptr;
 }
 
 void KviUserListView::appendSelectedNicknames(QString & szBuffer)
@@ -1292,7 +1291,7 @@ bool KviUserListView::partInternal(const QString & szNick, bool bRemoveDefinitiv
 	{
 		bGotTopItem = true; // !!! the previous while() does not handle it!
 		m_pTopItem = pUserEntry->m_pNext;
-		if(m_pTopItem == 0)
+		if(m_pTopItem == nullptr)
 			m_pTopItem = pUserEntry->m_pPrev;
 	}
 	if(pUserEntry == m_pHeadItem)
@@ -1412,9 +1411,9 @@ void KviUserListView::partAllButOne(const QString & szWhoNot)
 			list.append(it.currentKey());
 		++it;
 	}
-	for(QStringList::Iterator it2 = list.begin(); it2 != list.end(); it2++)
+	for(auto & it2 : list)
 	{
-		part(*it2);
+		part(it2);
 	}
 }
 
@@ -1430,8 +1429,8 @@ void KviUserListView::removeAllEntries()
 	}
 
 	m_pEntryDict->clear();
-	m_pHeadItem = 0;
-	m_pTopItem = 0;
+	m_pHeadItem = nullptr;
+	m_pTopItem = nullptr;
 	m_iVoiceCount = 0;
 	m_iHalfOpCount = 0;
 	m_iChanAdminCount = 0;
@@ -1498,9 +1497,9 @@ bool KviUserListView::itemVisible(KviUserListEntry * e)
 KviUserListEntry * KviUserListView::itemAt(const QPoint & pnt, QRect * pRect)
 {
 	if(!m_pTopItem)
-		return 0;
+		return nullptr;
 	if(pnt.y() < 0)
-		return 0;
+		return nullptr;
 
 	int iCurTop = KVI_USERLIST_BORDER_WIDTH - m_pViewArea->m_iTopItemOffset;
 	int iCurBottom = 0;
@@ -1522,7 +1521,7 @@ KviUserListEntry * KviUserListView::itemAt(const QPoint & pnt, QRect * pRect)
 		iCurTop = iCurBottom;
 		pEntry = pEntry->m_pNext;
 	}
-	return 0;
+	return nullptr;
 }
 
 void KviUserListView::userStats(KviUserListViewUserStats * pStats)
@@ -1690,12 +1689,11 @@ KviUserListViewArea::KviUserListViewArea(KviUserListView * pPar)
 	m_iLastScrollBarVal = 0;
 	m_iTopItemOffset = 0;
 	m_bIgnoreScrollBar = false;
-	m_pLastEntryUnderMouse = 0;
+	m_pLastEntryUnderMouse = nullptr;
 }
 
 KviUserListViewArea::~KviUserListViewArea()
-{
-}
+    = default;
 
 void KviUserListViewArea::scrollBarMoved(int iNewVal)
 {
@@ -1830,7 +1828,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 
 		if(iBottom >= r.top())
 		{
-			QColor * pClrFore = 0;
+			QColor * pClrFore = nullptr;
 			if(pEntry->m_bSelected)
 			{
 				QColor col(KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionBackground));
@@ -2207,7 +2205,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 		else
 		{
 			KviUserListEntry * pAux = m_pListView->m_pHeadItem;
-			KviUserListEntry * pNick = 0;
+			KviUserListEntry * pNick = nullptr;
 			while(pAux)
 			{
 				if(pAux->m_bSelected)
@@ -2260,7 +2258,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 		else
 		{
 			KviUserListEntry * pAux = m_pListView->m_pTailItem;
-			KviUserListEntry * pNick = 0;
+			KviUserListEntry * pNick = nullptr;
 			while(pAux)
 			{
 				if(pAux->m_bSelected)
@@ -2313,7 +2311,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 		else
 		{
 			KviUserListEntry * pAux = m_pListView->m_pHeadItem;
-			KviUserListEntry * pNick = 0;
+			KviUserListEntry * pNick = nullptr;
 			while(pAux)
 			{
 				if(pAux->m_bSelected)
@@ -2380,7 +2378,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 		else
 		{
 			KviUserListEntry * pAux = m_pListView->m_pTailItem;
-			KviUserListEntry * pNick = 0;
+			KviUserListEntry * pNick = nullptr;
 			while(pAux)
 			{
 				if(pAux->m_bSelected)
@@ -2450,7 +2448,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 		QString szKey = e->text();
 		if(!szKey.isEmpty())
 		{
-			KviUserListEntry * pNick = 0;
+			KviUserListEntry * pNick = nullptr;
 			KviUserListEntry * pAux = m_pListView->m_pHeadItem;
 
 			if(m_pListView->selectedCount() == 1)
@@ -2582,7 +2580,7 @@ void KviUserListViewArea::mouseMoveEvent(QMouseEvent * e)
 
 void KviUserListViewArea::mouseReleaseEvent(QMouseEvent *)
 {
-	m_pLastEntryUnderMouse = 0;
+	m_pLastEntryUnderMouse = nullptr;
 }
 
 void KviUserListViewArea::wheelEvent(QWheelEvent * e)

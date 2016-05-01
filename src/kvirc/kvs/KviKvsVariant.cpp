@@ -88,14 +88,14 @@ int KviKvsVariantComparison::compareIntArray(const KviKvsVariant * pV1, const Kv
 int KviKvsVariantComparison::compareIntHObject(const KviKvsVariant * pV1, const KviKvsVariant * pV2)
 {
 	if(pV1->m_pData->m_u.iInt == 0.0)
-		return (pV2->m_pData->m_u.hObject == (kvs_hobject_t)0) ? KviKvsVariantComparison::Equal : KviKvsVariantComparison::FirstGreater;
+		return (pV2->m_pData->m_u.hObject == (kvs_hobject_t) nullptr) ? KviKvsVariantComparison::Equal : KviKvsVariantComparison::FirstGreater;
 	return KviKvsVariantComparison::SecondGreater;
 }
 
 int KviKvsVariantComparison::compareRealHObject(const KviKvsVariant * pV1, const KviKvsVariant * pV2)
 {
 	if(*(pV1->m_pData->m_u.pReal) == 0.0)
-		return (pV2->m_pData->m_u.hObject == (kvs_hobject_t)0) ? KviKvsVariantComparison::Equal : KviKvsVariantComparison::FirstGreater;
+		return (pV2->m_pData->m_u.hObject == (kvs_hobject_t) nullptr) ? KviKvsVariantComparison::Equal : KviKvsVariantComparison::FirstGreater;
 	return KviKvsVariantComparison::SecondGreater;
 }
 
@@ -167,7 +167,7 @@ int KviKvsVariantComparison::compareStringHObject(const KviKvsVariant * pV1, con
 {
 	kvs_real_t dReal;
 
-	if(pV2->m_pData->m_u.hObject == (kvs_hobject_t)0)
+	if(pV2->m_pData->m_u.hObject == (kvs_hobject_t) nullptr)
 	{
 		if(pV1->m_pData->m_u.pString->isEmpty())
 			return KviKvsVariantComparison::Equal;
@@ -209,9 +209,9 @@ int KviKvsVariantComparison::compareBoolArray(const KviKvsVariant * pV1, const K
 int KviKvsVariantComparison::compareBoolHObject(const KviKvsVariant * pV1, const KviKvsVariant * pV2)
 {
 	if(pV1->m_pData->m_u.bBoolean)
-		return pV2->m_pData->m_u.hObject == ((kvs_hobject_t)0) ? KviKvsVariantComparison::FirstGreater : KviKvsVariantComparison::Equal;
+		return pV2->m_pData->m_u.hObject == ((kvs_hobject_t) nullptr) ? KviKvsVariantComparison::FirstGreater : KviKvsVariantComparison::Equal;
 	else
-		return pV2->m_pData->m_u.hObject == ((kvs_hobject_t)0) ? KviKvsVariantComparison::Equal : KviKvsVariantComparison::SecondGreater;
+		return pV2->m_pData->m_u.hObject == ((kvs_hobject_t) nullptr) ? KviKvsVariantComparison::Equal : KviKvsVariantComparison::SecondGreater;
 }
 
 int KviKvsVariantComparison::compareArrayHash(const KviKvsVariant * pV1, const KviKvsVariant * pV2)
@@ -226,20 +226,20 @@ int KviKvsVariantComparison::compareArrayHash(const KviKvsVariant * pV1, const K
 int KviKvsVariantComparison::compareHObjectHash(const KviKvsVariant * pV1, const KviKvsVariant * pV2)
 {
 	if(pV2->m_pData->m_u.pHash->isEmpty())
-		return pV1->m_pData->m_u.hObject == ((kvs_hobject_t)0) ? KviKvsVariantComparison::Equal : KviKvsVariantComparison::SecondGreater;
-	return pV1->m_pData->m_u.hObject == ((kvs_hobject_t)0) ? KviKvsVariantComparison::FirstGreater : KviKvsVariantComparison::Equal;
+		return pV1->m_pData->m_u.hObject == ((kvs_hobject_t) nullptr) ? KviKvsVariantComparison::Equal : KviKvsVariantComparison::SecondGreater;
+	return pV1->m_pData->m_u.hObject == ((kvs_hobject_t) nullptr) ? KviKvsVariantComparison::FirstGreater : KviKvsVariantComparison::Equal;
 }
 
 int KviKvsVariantComparison::compareHObjectArray(const KviKvsVariant * pV1, const KviKvsVariant * pV2)
 {
 	if(pV2->m_pData->m_u.pArray->isEmpty())
-		return pV1->m_pData->m_u.hObject == ((kvs_hobject_t)0) ? KviKvsVariantComparison::Equal : KviKvsVariantComparison::SecondGreater;
-	return pV1->m_pData->m_u.hObject == ((kvs_hobject_t)0) ? KviKvsVariantComparison::FirstGreater : KviKvsVariantComparison::Equal;
+		return pV1->m_pData->m_u.hObject == ((kvs_hobject_t) nullptr) ? KviKvsVariantComparison::Equal : KviKvsVariantComparison::SecondGreater;
+	return pV1->m_pData->m_u.hObject == ((kvs_hobject_t) nullptr) ? KviKvsVariantComparison::FirstGreater : KviKvsVariantComparison::Equal;
 }
 
 KviKvsVariant::KviKvsVariant()
 {
-	m_pData = 0;
+	m_pData = nullptr;
 }
 
 KviKvsVariant::KviKvsVariant(QString * pString, bool bEscape)
@@ -472,7 +472,7 @@ void KviKvsVariant::setNothing()
 			// just detach
 			m_pData->m_uRefs--;
 		}
-		m_pData = 0;
+		m_pData = nullptr;
 	}
 }
 
@@ -492,7 +492,7 @@ bool KviKvsVariant::isEmpty() const
 			return m_pData->m_u.pHash->isEmpty();
 			break;
 		case KviKvsVariantData::HObject:
-			return m_pData->m_u.hObject == 0;
+			return m_pData->m_u.hObject == nullptr;
 			break;
 		default: /* make gcc happy */
 			break;
@@ -553,7 +553,7 @@ bool KviKvsVariant::asHObject(kvs_hobject_t & hObject) const
 	if(!m_pData)
 	{
 		// nothing evaluates to a null object
-		hObject = 0;
+		hObject = nullptr;
 		return true;
 	}
 	switch(m_pData->m_eType)
@@ -565,7 +565,7 @@ bool KviKvsVariant::asHObject(kvs_hobject_t & hObject) const
 		case KviKvsVariantData::Integer:
 			if(m_pData->m_u.iInt == 0)
 			{
-				hObject = 0;
+				hObject = nullptr;
 				return true;
 			}
 			return false;
@@ -573,7 +573,7 @@ bool KviKvsVariant::asHObject(kvs_hobject_t & hObject) const
 		case KviKvsVariantData::String:
 			if(*(m_pData->m_u.pString) == "0")
 			{
-				hObject = 0;
+				hObject = nullptr;
 				return true;
 			}
 			return false;
@@ -581,7 +581,7 @@ bool KviKvsVariant::asHObject(kvs_hobject_t & hObject) const
 		case KviKvsVariantData::Boolean:
 			if(!(m_pData->m_u.bBoolean))
 			{
-				hObject = 0;
+				hObject = nullptr;
 				return true;
 			}
 		default: /* make gcc happy */
@@ -974,14 +974,14 @@ void KviKvsVariant::takeFrom(KviKvsVariant * pVariant)
 {
 	DETACH_CONTENTS
 	m_pData = pVariant->m_pData;
-	pVariant->m_pData = 0;
+	pVariant->m_pData = nullptr;
 }
 
 void KviKvsVariant::takeFrom(KviKvsVariant & variant)
 {
 	DETACH_CONTENTS
 	m_pData = variant.m_pData;
-	variant.m_pData = 0;
+	variant.m_pData = nullptr;
 }
 
 void KviKvsVariant::getTypeName(QString & szBuffer) const
@@ -1027,7 +1027,7 @@ bool KviKvsVariant::isEqualToNothing() const
 	switch(m_pData->m_eType)
 	{
 		case KviKvsVariantData::HObject:
-			return (m_pData->m_u.hObject == (kvs_hobject_t)0);
+			return (m_pData->m_u.hObject == (kvs_hobject_t) nullptr);
 			break;
 		case KviKvsVariantData::Integer:
 			return (m_pData->m_u.iInt == 0);
@@ -1082,7 +1082,7 @@ int KviKvsVariant::compare(const KviKvsVariant * pOther, bool bPreferNumeric) co
 				case KviKvsVariantData::HObject:
 					if(m_pData->m_u.hObject == pOther->m_pData->m_u.hObject)
 						return CMP_EQUAL;
-					if(m_pData->m_u.hObject == ((kvs_hobject_t)0))
+					if(m_pData->m_u.hObject == ((kvs_hobject_t) nullptr))
 						return CMP_OTHERGREATER;
 					return CMP_THISGREATER;
 					break;
@@ -1369,7 +1369,7 @@ void KviKvsVariant::serialize(QString & szResult)
 
 KviKvsVariant * KviKvsVariant::unserialize(const QString & szBuffer)
 {
-	KviKvsVariant * pResult = NULL;
+	KviKvsVariant * pResult = nullptr;
 
 	const QChar * pAux = (const QChar *)szBuffer.constData();
 
@@ -1380,7 +1380,7 @@ KviKvsVariant * KviKvsVariant::unserialize(const QString & szBuffer)
 		//strange extra characters?
 		if(pResult)
 			delete pResult;
-		pResult = NULL;
+		pResult = nullptr;
 	}
 
 	return pResult;
@@ -1388,7 +1388,7 @@ KviKvsVariant * KviKvsVariant::unserialize(const QString & szBuffer)
 
 KviKvsVariant * KviKvsVariant::unserialize(const QChar ** ppAux)
 {
-	KviKvsVariant * pResult = NULL;
+	KviKvsVariant * pResult = nullptr;
 
 	while((*ppAux)->isSpace())
 		(*ppAux)++;
@@ -1435,7 +1435,7 @@ KviKvsVariant * KviKvsVariant::unserialize(const QChar ** ppAux)
 			break;
 		default:
 			//incorrect value
-			return NULL;
+			return nullptr;
 	}
 
 	while((*ppAux)->isSpace())
@@ -1467,7 +1467,7 @@ KviKvsVariant * KviKvsVariant::unserializeBool(const QChar ** ppAux, bool bBool)
 
 	if(bOk)
 		return new KviKvsVariant(bBool);
-	return NULL;
+	return nullptr;
 }
 
 KviKvsVariant * KviKvsVariant::unserializeNull(const QChar ** ppAux)
@@ -1477,7 +1477,7 @@ KviKvsVariant * KviKvsVariant::unserializeNull(const QChar ** ppAux)
 		(*ppAux) += 4;
 		return new KviKvsVariant();
 	}
-	return NULL;
+	return nullptr;
 }
 
 KviKvsVariant * KviKvsVariant::unserializeNumber(const QChar ** ppAux)
@@ -1491,7 +1491,7 @@ KviKvsVariant * KviKvsVariant::unserializeNumber(const QChar ** ppAux)
 	}
 
 	if(!(*ppAux)->isDigit())
-		return NULL;
+		return nullptr;
 
 	while((*ppAux)->isDigit())
 	{
@@ -1650,7 +1650,7 @@ void KviKvsVariant::unserializeString(const QChar ** ppAux, QString & szData)
 							}
 						}
 						(*ppAux)--;
-						szData.append(QChar(szHex.toUInt(0, 16)));
+						szData.append(QChar(szHex.toUInt(nullptr, 16)));
 						break;
 					default:
 						//Fallback; incorrect escape
@@ -1671,7 +1671,7 @@ KviKvsVariant * KviKvsVariant::unserializeHash(const QChar ** ppAux)
 {
 	KviKvsHash * pHash = new KviKvsHash();
 	QString szKey;
-	KviKvsVariant * pElement = 0;
+	KviKvsVariant * pElement = nullptr;
 	//skip leading '{'
 	(*ppAux)++;
 	int i = 0;
@@ -1685,14 +1685,14 @@ KviKvsVariant * KviKvsVariant::unserializeHash(const QChar ** ppAux)
 		{
 			//strange characters
 			delete pHash;
-			return 0;
+			return nullptr;
 		}
 		unserializeString(ppAux, szKey);
 		if(szKey.isEmpty())
 		{
 			//Strange element name
 			delete pHash;
-			return 0;
+			return nullptr;
 		}
 
 		//skip leading space before ':'
@@ -1703,7 +1703,7 @@ KviKvsVariant * KviKvsVariant::unserializeHash(const QChar ** ppAux)
 		{
 			//strange characters
 			delete pHash;
-			return 0;
+			return nullptr;
 		}
 		(*ppAux)++;
 
@@ -1728,7 +1728,7 @@ KviKvsVariant * KviKvsVariant::unserializeHash(const QChar ** ppAux)
 					break;
 				default:
 					delete pHash;
-					return 0;
+					return nullptr;
 					break;
 			}
 		}
@@ -1736,16 +1736,16 @@ KviKvsVariant * KviKvsVariant::unserializeHash(const QChar ** ppAux)
 		{
 			//error
 			delete pHash;
-			return 0;
+			return nullptr;
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 KviKvsVariant * KviKvsVariant::unserializeArray(const QChar ** ppAux)
 {
 	KviKvsArray * pArray = new KviKvsArray();
-	KviKvsVariant * pElement = 0;
+	KviKvsVariant * pElement = nullptr;
 	(*ppAux)++;
 	int i = 0;
 	while(1)
@@ -1770,7 +1770,7 @@ KviKvsVariant * KviKvsVariant::unserializeArray(const QChar ** ppAux)
 					break;
 				default:
 					delete pArray;
-					return 0;
+					return nullptr;
 					break;
 			}
 		}
@@ -1778,8 +1778,8 @@ KviKvsVariant * KviKvsVariant::unserializeArray(const QChar ** ppAux)
 		{
 			//error
 			delete pArray;
-			return 0;
+			return nullptr;
 		}
 	}
-	return 0;
+	return nullptr;
 }

@@ -75,7 +75,7 @@ KviStatusBarAppletDescriptor::KviStatusBarAppletDescriptor(const QString & szVis
 	if(!pixIcon.isNull())
 		m_pIcon = new QPixmap(pixIcon);
 	else
-		m_pIcon = 0;
+		m_pIcon = nullptr;
 }
 
 KviStatusBarAppletDescriptor::~KviStatusBarAppletDescriptor()
@@ -137,8 +137,7 @@ KviStatusBarAwayIndicator::KviStatusBarAwayIndicator(KviStatusBar * pParent, Kvi
 }
 
 KviStatusBarAwayIndicator::~KviStatusBarAwayIndicator()
-{
-}
+    = default;
 
 void KviStatusBarAwayIndicator::updateDisplay()
 {
@@ -258,8 +257,7 @@ KviStatusBarLagIndicator::KviStatusBarLagIndicator(KviStatusBar * pParent, KviSt
 }
 
 KviStatusBarLagIndicator::~KviStatusBarLagIndicator()
-{
-}
+    = default;
 
 void KviStatusBarLagIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 {
@@ -382,8 +380,7 @@ KviStatusBarClock::KviStatusBarClock(KviStatusBar * pParent, KviStatusBarAppletD
 }
 
 KviStatusBarClock::~KviStatusBarClock()
-{
-}
+    = default;
 
 void KviStatusBarClock::adjustMinWidth()
 {
@@ -477,14 +474,14 @@ void KviStatusBarClock::fillContextPopup(QMenu * p)
 void KviStatusBarClock::toggleUtc()
 {
 	m_bUtc = !m_bUtc;
-	timerEvent(0);
+	timerEvent(nullptr);
 }
 
 void KviStatusBarClock::toggle24h()
 {
 	m_b24h = !m_b24h;
 	adjustMinWidth();
-	timerEvent(0);
+	timerEvent(nullptr);
 }
 
 void KviStatusBarClock::changeFormat(QAction * pAct)
@@ -543,8 +540,7 @@ KviStatusBarConnectionTimer::KviStatusBarConnectionTimer(KviStatusBar * pParent,
 }
 
 KviStatusBarConnectionTimer::~KviStatusBarConnectionTimer()
-{
-}
+    = default;
 //g_pApp->topmostConnectedConsole()
 void KviStatusBarConnectionTimer::timerEvent(QTimerEvent *)
 {
@@ -622,8 +618,7 @@ KviStatusBarSeparator::KviStatusBarSeparator(KviStatusBar * pParent, KviStatusBa
 }
 
 KviStatusBarSeparator::~KviStatusBarSeparator()
-{
-}
+    = default;
 
 KviStatusBarApplet * CreateStatusBarSeparator(KviStatusBar * pBar, KviStatusBarAppletDescriptor * pDescriptor)
 {
@@ -648,7 +643,7 @@ KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,
 	m_bUpdateStatus = false;
 	m_bUpdateOnStartup = false;
 	m_bUpdateRevision = false;
-	m_pHttpRequest = 0;
+	m_pHttpRequest = nullptr;
 
 	updateDisplay();
 
@@ -657,8 +652,7 @@ KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,
 }
 
 KviStatusBarUpdateIndicator::~KviStatusBarUpdateIndicator()
-{
-}
+    = default;
 
 void KviStatusBarUpdateIndicator::updateDisplay()
 {

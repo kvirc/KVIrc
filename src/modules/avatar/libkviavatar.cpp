@@ -55,7 +55,7 @@
 #include <QCloseEvent>
 #include <QByteArray>
 
-static KviPointerList<KviAsyncAvatarSelectionDialog> * g_pAvatarSelectionDialogList = 0;
+static KviPointerList<KviAsyncAvatarSelectionDialog> * g_pAvatarSelectionDialogList = nullptr;
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 
 KviAsyncAvatarSelectionDialog::KviAsyncAvatarSelectionDialog(QWidget * par, const QString & szInitialPath, KviIrcConnection * c)
@@ -308,8 +308,8 @@ static bool avatar_kvs_cmd_unset(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	e->setAvatar(0);
-	c->window()->console()->avatarChanged(0,
+	e->setAvatar(nullptr);
+	c->window()->console()->avatarChanged(nullptr,
 	    c->window()->connection()->userInfo()->nickName(),
 	    c->window()->connection()->userInfo()->userName(),
 	    c->window()->connection()->userInfo()->hostName(),
@@ -397,12 +397,12 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 		KviIrcServerParser::encodeCtcpParameter(szTmp.toUtf8().data(), avatar);
 	}
 
-	KviSharedFile * o = 0;
+	KviSharedFile * o = nullptr;
 	if((!absPath.isEmpty()) && (!avatar.isEmpty()))
 	{
 		bool bTargetIsChan = (szTarget.contains('#') || szTarget.contains('&') || szTarget.contains('!') || szTarget.contains('+'));
 		if(bTargetIsChan)
-			o = g_pSharedFilesManager->lookupSharedFile(avatar, 0);
+			o = g_pSharedFilesManager->lookupSharedFile(avatar, nullptr);
 		else
 		{
 			KviIrcMask u(szTarget);

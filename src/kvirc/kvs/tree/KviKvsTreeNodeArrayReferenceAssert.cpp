@@ -35,8 +35,7 @@ KviKvsTreeNodeArrayReferenceAssert::KviKvsTreeNodeArrayReferenceAssert(const QCh
 }
 
 KviKvsTreeNodeArrayReferenceAssert::~KviKvsTreeNodeArrayReferenceAssert()
-{
-}
+    = default;
 
 bool KviKvsTreeNodeArrayReferenceAssert::isReadOnly()
 {
@@ -88,17 +87,17 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeArrayReferenceAssert::evaluateReadWrite
 		r = m_pSource->evaluateReadWrite(c);
 
 	if(!r)
-		return 0;
+		return nullptr;
 
 	return r;
 }
 
 bool KviKvsTreeNodeArrayReferenceAssert::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
-	return evaluateReadOnlyInObjectScope(0, c, pBuffer);
+	return evaluateReadOnlyInObjectScope(nullptr, c, pBuffer);
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeArrayReferenceAssert::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
-	return evaluateReadWriteInObjectScope(0, c);
+	return evaluateReadWriteInObjectScope(nullptr, c);
 }

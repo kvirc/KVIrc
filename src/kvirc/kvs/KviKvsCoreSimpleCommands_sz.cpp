@@ -227,7 +227,7 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_PARAMETER("port", KVS_PT_UINT, KVS_PF_OPTIONAL, uPort)
 		KVSCSC_PARAMETERS_END
 
-		KviConsoleWindow * console = 0;
+		KviConsoleWindow * console = nullptr;
 		if(KVSCSC_pSwitches->find('n', "new-context"))
 			console = g_pMainWindow->createNewConsole(false, !KVSCSC_pSwitches->find('m', "minimized"));
 		else
@@ -241,7 +241,7 @@ namespace KviKvsCoreSimpleCommands
 					// if there is a connection in progress, proceed in searching
 					if(console->connectionInProgress())
 					{
-						console = 0;
+						console = nullptr;
 					}
 				}
 				if(!console)
@@ -281,7 +281,7 @@ namespace KviKvsCoreSimpleCommands
 			}
 
 			KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
-			d->bUseLastServerInContext = KVSCSC_pSwitches->find('l', "last") != 0;
+			d->bUseLastServerInContext = KVSCSC_pSwitches->find('l', "last") != nullptr;
 			d->szCommandToExecAfterConnect = szCmd;
 			d->szBindAddress = szBindAddress;
 			d->szPass = szPassword;
@@ -299,14 +299,14 @@ namespace KviKvsCoreSimpleCommands
 		{
 			// server is not empty.
 			KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
-			d->bUseSSL = (KVSCSC_pSwitches->find('s', "ssl") != 0);
+			d->bUseSSL = (KVSCSC_pSwitches->find('s', "ssl") != nullptr);
 			d->bSTARTTLS = false;
 			d->szServer = szServer;
 			d->uPort = (kvi_u32_t)uPort;
 			d->szLinkFilter = szSocketFilter;
 			d->bPortIsOk = (uPort > 0);
 #ifdef COMPILE_IPV6_SUPPORT
-			d->bUseIPv6 = (KVSCSC_pSwitches->find('i', "ipv6") != 0) || KviNetUtils::isValidStringIPv6(szServer);
+			d->bUseIPv6 = (KVSCSC_pSwitches->find('i', "ipv6") != nullptr) || KviNetUtils::isValidStringIPv6(szServer);
 #else
 			d->bUseIPv6 = false;
 #endif

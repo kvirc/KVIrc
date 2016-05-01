@@ -28,8 +28,8 @@
 KviKvsTreeNodeSwitchList::KviKvsTreeNodeSwitchList(const QChar * pLocation)
     : KviKvsTreeNode(pLocation)
 {
-	m_pShortSwitchDict = 0;
-	m_pLongSwitchDict = 0;
+	m_pShortSwitchDict = nullptr;
+	m_pLongSwitchDict = nullptr;
 }
 
 KviKvsTreeNodeSwitchList::~KviKvsTreeNodeSwitchList()
@@ -165,5 +165,5 @@ KviKvsTreeNodeData * KviKvsTreeNodeSwitchList::getStandardRebindingSwitch()
 			return d;
 		}
 	}
-	return 0;
+	return nullptr;
 }

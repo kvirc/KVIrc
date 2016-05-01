@@ -271,7 +271,7 @@ static bool file_kvs_cmd_write(KviKvsModuleCommandCall * c)
 static bool file_kvs_cmd_writeBytes(KviKvsModuleCommandCall * c)
 {
 	QString szFileName;
-	KviKvsArray * pArray = NULL;
+	KviKvsArray * pArray = nullptr;
 
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
@@ -759,7 +759,7 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	QFlags<QDir::Filter> iFlags = 0;
+	QFlags<QDir::Filter> iFlags = nullptr;
 	if(szFlags.isEmpty())
 		iFlags = QDir::Dirs | QDir::Files | QDir::NoSymLinks | QDir::Readable | QDir::Writable | QDir::Executable | QDir::Hidden | QDir::System;
 	else
@@ -782,7 +782,7 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 			iFlags |= QDir::System;
 	}
 
-	QFlags<QDir::SortFlag> iSort = 0;
+	QFlags<QDir::SortFlag> iSort = nullptr;
 	if(szFlags.isEmpty())
 		iSort = QDir::Unsorted;
 	else
@@ -1573,7 +1573,7 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	}
 
 	EVP_MD_CTX_init(&mdctx);
-	EVP_DigestInit_ex(&mdctx, pMD, NULL);
+	EVP_DigestInit_ex(&mdctx, pMD, nullptr);
 	EVP_DigestUpdate(&mdctx, content.constData(), content.size());
 	EVP_DigestFinal_ex(&mdctx, ucMDValue, &uMDLen);
 	EVP_MD_CTX_cleanup(&mdctx);

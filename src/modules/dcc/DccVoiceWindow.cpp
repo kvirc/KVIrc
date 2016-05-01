@@ -446,7 +446,7 @@ bool DccVoiceThread::soundStep()
 				// have stuff to play, but it's not enough to fill the pre-buffer
 				//
 				struct timeval tv;
-				gettimeofday(&tv, 0);
+				gettimeofday(&tv, nullptr);
 
 				long int sigBufferTime = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 
@@ -487,7 +487,7 @@ bool DccVoiceThread::soundStep()
 		struct timeval tv;
 		tv.tv_sec = 0;
 		tv.tv_usec = 10;
-		int ret = select(m_soundFd + 1, &rs, 0, 0, &tv);
+		int ret = select(m_soundFd + 1, &rs, nullptr, nullptr, &tv);
 		if(ret > 0)
 		{
 			// This is rather easy...
@@ -693,7 +693,7 @@ DccVoiceWindow::DccVoiceWindow(DccDescriptor * dcc, const char * name)
     : DccWindow(KviWindow::DccVoice, name, dcc)
 {
 	m_pDescriptor = dcc;
-	m_pSlaveThread = 0;
+	m_pSlaveThread = nullptr;
 
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
 	m_pSplitter->setObjectName("dcc_window_splitter");
@@ -772,7 +772,7 @@ DccVoiceWindow::~DccVoiceWindow()
 	{
 		m_pSlaveThread->terminate();
 		delete m_pSlaveThread;
-		m_pSlaveThread = 0;
+		m_pSlaveThread = nullptr;
 	}
 
 	KviThreadManager::killPendingEvents(this);

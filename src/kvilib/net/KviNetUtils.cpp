@@ -540,7 +540,7 @@ bool kvi_select(int fd, bool * bCanRead, bool * bCanWrite, int iUSecs)
 	tv.tv_sec = 0;
 	tv.tv_usec = iUSecs;
 
-	int ret = select(fd + 1, &rs, &ws, 0, &tv);
+	int ret = select(fd + 1, &rs, &ws, nullptr, &tv);
 	if(ret < 1)
 		return false; // EINTR or ENOSTUFFATALL
 
@@ -664,8 +664,7 @@ namespace KviNetUtils
 	}
 
 #ifdef COMPILE_GET_INTERFACE_ADDRESS
-	union sockaddr_union
-	{
+	union sockaddr_union {
 		struct sockaddr sa;
 		struct sockaddr_in sin;
 	};
@@ -807,7 +806,7 @@ KviSockaddr::KviSockaddr(const char * szIpAddress, kvi_u32_t uPort, bool bIPv6, 
 	hints.ai_socktype = bUdp ? SOCK_DGRAM : SOCK_STREAM;
 
 	hints.ai_protocol = 0;
-	m_pData = 0;
+	m_pData = nullptr;
 	KviCString szPort(KviCString::Format, "%u", uPort);
 	getaddrinfo(szIpAddress, szPort.ptr(), &hints, &m_pData);
 }
@@ -825,9 +824,9 @@ KviSockaddr::KviSockaddr(kvi_u32_t uPort, bool bIPv6, bool bUdp) // passive sock
 #endif
 	hints.ai_socktype = bUdp ? SOCK_DGRAM : SOCK_STREAM;
 	hints.ai_protocol = 0;
-	m_pData = 0;
+	m_pData = nullptr;
 	KviCString szPort(KviCString::Format, "%u", uPort);
-	getaddrinfo(0, szPort.ptr(), &hints, &m_pData);
+	getaddrinfo(nullptr, szPort.ptr(), &hints, &m_pData);
 }
 
 KviSockaddr::~KviSockaddr()
@@ -835,14 +834,14 @@ KviSockaddr::~KviSockaddr()
 	if(m_pData)
 	{
 		freeaddrinfo(m_pData);
-		m_pData = 0;
+		m_pData = nullptr;
 	}
 }
 
 struct sockaddr * KviSockaddr::socketAddress()
 {
 	if(!m_pData)
-		return 0;
+		return nullptr;
 	return (m_pData)->ai_addr;
 }
 

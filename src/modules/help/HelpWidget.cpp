@@ -59,8 +59,8 @@ HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
 		g_pHelpWidgetList->append(this);
 	m_bIsStandalone = bIsStandalone;
 
-	new QShortcut(QKeySequence::Copy, this, SLOT(slotCopy()), 0, Qt::WidgetWithChildrenShortcut);
-	new QShortcut(QKeySequence::Find, this, SLOT(slotShowHideFind()), 0, bIsStandalone ? Qt::WidgetWithChildrenShortcut : Qt::WindowShortcut);
+	new QShortcut(QKeySequence::Copy, this, SLOT(slotCopy()), nullptr, Qt::WidgetWithChildrenShortcut);
+	new QShortcut(QKeySequence::Find, this, SLOT(slotShowHideFind()), nullptr, bIsStandalone ? Qt::WidgetWithChildrenShortcut : Qt::WindowShortcut);
 
 	// layout
 	m_pLayout = new QVBoxLayout(this);

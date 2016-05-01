@@ -50,9 +50,9 @@
 
 extern KVIRC_API KviRegisteredUserDataBase * g_pRegisteredUserDataBase;
 
-KviPointerList<RegistrationWizard> * g_pRegistrationWizardList = 0;
+KviPointerList<RegistrationWizard> * g_pRegistrationWizardList = nullptr;
 
-RegisteredUsersDialog * g_pRegisteredUsersDialog = 0;
+RegisteredUsersDialog * g_pRegisteredUsersDialog = nullptr;
 
 /*
 	@doc: reguser
@@ -115,7 +115,7 @@ static bool reguser_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 		{
 			if(g_pRegisteredUsersDialog->parent())
 			{
-				g_pRegisteredUsersDialog->setParent(0);
+				g_pRegisteredUsersDialog->setParent(nullptr);
 			}
 		}
 		else
@@ -130,7 +130,7 @@ static bool reguser_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 	{
 		if(c->hasSwitch('t', "toplevel"))
 		{
-			g_pRegisteredUsersDialog = new RegisteredUsersDialog(0);
+			g_pRegisteredUsersDialog = new RegisteredUsersDialog(nullptr);
 		}
 		else
 		{
@@ -205,7 +205,7 @@ static bool reguser_kvs_cmd_add(KviKvsModuleCommandCall * c)
 		c->switches()->getAsStringIfExisting('g', "group", group);
 		u->setGroup(group);
 	}
-	if(u == 0)
+	if(u == nullptr)
 	{
 		if(c->hasSwitch('f', "force"))
 		{
@@ -224,7 +224,7 @@ static bool reguser_kvs_cmd_add(KviKvsModuleCommandCall * c)
 		{
 			KviIrcMask * m = new KviIrcMask(szMask);
 			u = g_pRegisteredUserDataBase->addMask(u, m);
-			if(u != 0)
+			if(u != nullptr)
 			{
 				if(!c->hasSwitch('q', "quiet"))
 					c->warning(__tr2qs_ctx("Mask %Q is already used to identify user %s", "register"), &szMask, u->name().toUtf8().data());
@@ -365,7 +365,7 @@ static bool reguser_kvs_cmd_addmask(KviKvsModuleCommandCall * c)
 
 	u = g_pRegisteredUserDataBase->addMask(u, mk);
 
-	if(u != 0)
+	if(u != nullptr)
 		c->warning(__tr2qs_ctx("Mask %Q already used to identify user %Q", "register"), &szMask, &(u->name()));
 	return true;
 }
@@ -1217,7 +1217,7 @@ static bool reguser_kvs_cmd_wizard(KviKvsModuleCommandCall * c)
 
 static bool reguser_module_init(KviModule * m)
 {
-	g_pLocalRegisteredUserDataBase = 0;
+	g_pLocalRegisteredUserDataBase = nullptr;
 	g_pRegistrationWizardList = new KviPointerList<RegistrationWizard>;
 	g_pRegistrationWizardList->setAutoDelete(true);
 
@@ -1248,12 +1248,12 @@ static bool reguser_module_cleanup(KviModule *)
 {
 	if(g_pRegisteredUsersDialog)
 		delete g_pRegisteredUsersDialog;
-	g_pRegisteredUsersDialog = 0;
+	g_pRegisteredUsersDialog = nullptr;
 
 	while(RegistrationWizard * w = g_pRegistrationWizardList->first())
 		delete w;
 	delete g_pRegistrationWizardList;
-	g_pRegistrationWizardList = 0;
+	g_pRegistrationWizardList = nullptr;
 
 	// FIXME: UNREGISTER THE METAOBJECTS
 	return true;
@@ -1261,7 +1261,7 @@ static bool reguser_module_cleanup(KviModule *)
 
 static bool reguser_module_can_unload(KviModule *)
 {
-	return ((g_pRegistrationWizardList->isEmpty()) && (g_pRegisteredUsersDialog == 0));
+	return ((g_pRegistrationWizardList->isEmpty()) && (g_pRegisteredUsersDialog == nullptr));
 }
 
 KVIRC_MODULE(

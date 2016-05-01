@@ -69,5 +69,4 @@ OptionsWidget_uparser::OptionsWidget_uparser(QWidget * parent)
 }
 
 OptionsWidget_uparser::~OptionsWidget_uparser()
-{
-}
+    = default;

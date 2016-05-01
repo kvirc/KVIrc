@@ -68,10 +68,10 @@ KviCryptEngine * KviCryptEngineManager::allocateEngine(const QString & szName)
 {
 	KviCryptEngineDescription * pDesc = m_pEngineDict->find(szName);
 	if(!pDesc)
-		return 0;
+		return nullptr;
 	KviCryptEngine * pEngine = pDesc->m_allocFunc();
 	if(!pEngine)
-		return 0;
+		return nullptr;
 	pEngine->m_deallocFunc = pDesc->m_deallocFunc; // remember the dealloc func from now on
 	return pEngine;
 }

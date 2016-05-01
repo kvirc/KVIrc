@@ -41,13 +41,13 @@ KviTalGroupBox::KviTalGroupBox(QWidget * pParent, char * pcName)
 KviTalGroupBox::KviTalGroupBox(QWidget * pParent)
     : QGroupBox(pParent)
 {
-	m_pLayout = 0;
+	m_pLayout = nullptr;
 }
 
 KviTalGroupBox::KviTalGroupBox(const QString & szTitle, QWidget * pParent)
     : QGroupBox(szTitle, pParent)
 {
-	m_pLayout = 0;
+	m_pLayout = nullptr;
 }
 
 KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation, QWidget * pParent)
@@ -78,8 +78,7 @@ KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation, const QString & szTi
 }
 
 KviTalGroupBox::~KviTalGroupBox()
-{
-}
+    = default;
 
 void KviTalGroupBox::childEvent(QChildEvent * e)
 {
@@ -121,7 +120,7 @@ void KviTalGroupBox::setOrientation(Qt::Orientation orientation)
 	if(m_pLayout)
 	{
 		delete m_pLayout;
-		m_pLayout = NULL;
+		m_pLayout = nullptr;
 	}
 
 	mOrientation = orientation;
@@ -138,7 +137,7 @@ void KviTalGroupBox::setLayout(QLayout * layout)
 	if(m_pLayout)
 	{
 		delete m_pLayout;
-		m_pLayout = NULL;
+		m_pLayout = nullptr;
 	}
 
 	QGroupBox::setLayout(layout);

@@ -35,7 +35,7 @@
 // keep the unaccessed avatars for 30 days
 #define MAX_UNACCESSED_TIME (3600 * 24 * 30)
 
-KviAvatarCache * KviAvatarCache::m_pAvatarCacheInstance = 0;
+KviAvatarCache * KviAvatarCache::m_pAvatarCacheInstance = nullptr;
 
 void KviAvatarCache::init()
 {
@@ -57,7 +57,7 @@ void KviAvatarCache::done()
 	}
 
 	delete m_pAvatarCacheInstance;
-	m_pAvatarCacheInstance = 0;
+	m_pAvatarCacheInstance = nullptr;
 }
 
 KviAvatarCache::KviAvatarCache()

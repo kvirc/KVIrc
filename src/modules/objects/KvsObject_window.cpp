@@ -34,13 +34,12 @@
 KviKvsScriptWindowWindow::KviKvsScriptWindowWindow(const QString & szName)
     : KviWindow(KviWindow::ScriptObject, szName)
 {
-	m_pCentralWidget = 0;
-	m_pIcon = 0;
+	m_pCentralWidget = nullptr;
+	m_pIcon = nullptr;
 }
 
 KviKvsScriptWindowWindow::~KviKvsScriptWindowWindow()
-{
-}
+    = default;
 
 void KviKvsScriptWindowWindow::setCentralWidget(KvsObject_widget * o, QWidget * w)
 {
@@ -56,14 +55,14 @@ void KviKvsScriptWindowWindow::resizeEvent(QResizeEvent *)
 
 void KviKvsScriptWindowWindow::centralWidgetObjectDestroyed()
 {
-	m_pCentralWidget = 0;
-	m_pCentralWidgetObject = 0;
+	m_pCentralWidget = nullptr;
+	m_pCentralWidgetObject = nullptr;
 }
 
 void KviKvsScriptWindowWindow::centralWidgetDestroyed()
 {
-	m_pCentralWidget = 0;
-	m_pCentralWidgetObject = 0;
+	m_pCentralWidget = nullptr;
+	m_pCentralWidgetObject = nullptr;
 }
 
 QPixmap * KviKvsScriptWindowWindow::myIconPtr()

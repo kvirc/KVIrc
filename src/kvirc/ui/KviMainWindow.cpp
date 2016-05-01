@@ -90,7 +90,7 @@ extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 
 // Declared and managed by KviApplication (KviApplication.cpp)
 extern KviConfigurationFile * g_pWinPropertiesConfig;
-KVIRC_API KviMainWindow * g_pMainWindow = NULL; // the one and only frame object
+KVIRC_API KviMainWindow * g_pMainWindow = nullptr; // the one and only frame object
 
 KviMainWindow::KviMainWindow(QWidget * pParent)
     : KviTalMainWindow(pParent, "kvirc_frame")
@@ -114,9 +114,9 @@ KviMainWindow::KviMainWindow(QWidget * pParent)
 	m_pModuleExtensionToolBarList = new KviPointerList<KviMexToolBar>;
 	m_pModuleExtensionToolBarList->setAutoDelete(false);
 
-	m_pActiveContext = NULL;
+	m_pActiveContext = nullptr;
 
-	m_pTrayIcon = NULL;
+	m_pTrayIcon = nullptr;
 
 	m_pSplitter = new QSplitter(Qt::Horizontal, this);
 	m_pSplitter->setObjectName("main_frame_splitter");
@@ -150,10 +150,10 @@ KviMainWindow::KviMainWindow(QWidget * pParent)
 	}
 	else
 	{
-		m_pStatusBar = NULL;
+		m_pStatusBar = nullptr;
 	}
 
-	m_pWindowList = NULL;
+	m_pWindowList = nullptr;
 
 	createWindowList();
 
@@ -210,7 +210,7 @@ KviMainWindow::~KviMainWindow()
 		t->die();
 	delete m_pModuleExtensionToolBarList;
 
-	KVI_OPTION_BOOL(KviOption_boolShowDockExtension) = m_pTrayIcon != NULL;
+	KVI_OPTION_BOOL(KviOption_boolShowDockExtension) = m_pTrayIcon != nullptr;
 
 	if(m_pTrayIcon)
 	{
@@ -254,15 +254,14 @@ void KviMainWindow::unregisterModuleExtensionToolBar(KviMexToolBar * t)
 
 void KviMainWindow::restoreModuleExtensionToolBars()
 {
-	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistModuleExtensionToolbars).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistModuleExtensionToolbars).end(); ++it)
+	for(auto szEntry : KVI_OPTION_STRINGLIST(KviOption_stringlistModuleExtensionToolbars))
 	{
-		QString szEntry = *it;
 		int idx = szEntry.indexOf(':');
 		if(idx != -1)
 		{
 			QString szMod = szEntry.left(idx);
 			szEntry.remove(0, idx + 1);
-			g_pModuleExtensionManager->allocateExtension("toolbar", KviCString(szEntry), firstConsole(), 0, 0, szMod);
+			g_pModuleExtensionManager->allocateExtension("toolbar", KviCString(szEntry), firstConsole(), nullptr, nullptr, szMod);
 		}
 	}
 }
@@ -292,20 +291,20 @@ KviMexToolBar * KviMainWindow::moduleExtensionToolBar(int extensionId)
 		if(extensionId == t->descriptor()->id())
 			return t;
 	}
-	return 0;
+	return nullptr;
 }
 
 void KviMainWindow::installAccelerators()
 {
-	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV, this, SLOT(switchToPrevWindow()), 0, Qt::ApplicationShortcut));
-	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT, this, SLOT(switchToNextWindow()), 0, Qt::ApplicationShortcut));
-	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_CONTEXT, this, SLOT(switchToPrevWindowInContext()), 0, Qt::ApplicationShortcut));
-	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_CONTEXT, this, SLOT(switchToNextWindowInContext()), 0, Qt::ApplicationShortcut));
-	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT, this, SLOT(switchToPrevHighlightedWindow()), 0, Qt::ApplicationShortcut));
-	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT, this, SLOT(switchToNextHighlightedWindow()), 0, Qt::ApplicationShortcut));
-	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_CLOSE, this, SLOT(closeActiveWindow()), 0, Qt::ApplicationShortcut));
-	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_TAB, this, SLOT(switchToPrevWindow()), 0, Qt::ApplicationShortcut));
-	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_TAB, this, SLOT(switchToNextWindow()), 0, Qt::ApplicationShortcut));
+	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV, this, SLOT(switchToPrevWindow()), nullptr, Qt::ApplicationShortcut));
+	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT, this, SLOT(switchToNextWindow()), nullptr, Qt::ApplicationShortcut));
+	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_CONTEXT, this, SLOT(switchToPrevWindowInContext()), nullptr, Qt::ApplicationShortcut));
+	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_CONTEXT, this, SLOT(switchToNextWindowInContext()), nullptr, Qt::ApplicationShortcut));
+	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT, this, SLOT(switchToPrevHighlightedWindow()), nullptr, Qt::ApplicationShortcut));
+	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT, this, SLOT(switchToNextHighlightedWindow()), nullptr, Qt::ApplicationShortcut));
+	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_CLOSE, this, SLOT(closeActiveWindow()), nullptr, Qt::ApplicationShortcut));
+	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_TAB, this, SLOT(switchToPrevWindow()), nullptr, Qt::ApplicationShortcut));
+	m_pAccellerators->append(KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_TAB, this, SLOT(switchToNextWindow()), nullptr, Qt::ApplicationShortcut));
 
 	static int accel_table[] = {
 		Qt::Key_1 + Qt::ControlModifier, // script accels...
@@ -372,7 +371,7 @@ void KviMainWindow::accelActivated()
 
 void KviMainWindow::executeInternalCommand(int index)
 {
-	KviConsoleWindow * pConsole = 0;
+	KviConsoleWindow * pConsole = nullptr;
 	if(activeContext() && activeContext()->console())
 		pConsole = activeContext()->console();
 	else
@@ -383,7 +382,7 @@ void KviMainWindow::executeInternalCommand(int index)
 void KviMainWindow::saveWindowProperties(KviWindow * wnd, const QString & szSection)
 {
 	g_pWinPropertiesConfig->setGroup(szSection);
-	g_pWinPropertiesConfig->writeEntry("EntryTimestamp", (unsigned int)time(0));
+	g_pWinPropertiesConfig->writeEntry("EntryTimestamp", (unsigned int)time(nullptr));
 
 	// Allow max 80 window properties to be floating around
 	while(g_pWinPropertiesConfig->groupsCount() > 80)
@@ -391,7 +390,7 @@ void KviMainWindow::saveWindowProperties(KviWindow * wnd, const QString & szSect
 		// Kill the oldest group
 		KviConfigurationFileIterator it(*(g_pWinPropertiesConfig->dict()));
 		QString minKey;
-		unsigned int minVal = time(0);
+		unsigned int minVal = time(nullptr);
 		while(it.current() && minVal)
 		{
 			QString * pVal = it.current()->find("EntryTimestamp");
@@ -500,14 +499,14 @@ void KviMainWindow::closeWindow(KviWindow * wnd)
 			if(!bGotIt)
 			{
 				// :/
-				g_pActiveWindow = NULL;
-				m_pActiveContext = NULL;
+				g_pActiveWindow = nullptr;
+				m_pActiveContext = nullptr;
 			}
 		}
 		else
 		{
-			g_pActiveWindow = NULL;
-			m_pActiveContext = NULL;
+			g_pActiveWindow = nullptr;
+			m_pActiveContext = nullptr;
 		}
 	}
 
@@ -633,7 +632,7 @@ void KviMainWindow::undockWindow(KviWindow * wnd)
 		return;
 
 	m_pWindowStack->removeWidget(wnd);
-	wnd->setParent(NULL);
+	wnd->setParent(nullptr);
 
 	wnd->show();
 	wnd->youAreUndocked();
@@ -688,7 +687,7 @@ KviConsoleWindow * KviMainWindow::firstConsole()
 
 	// We end up here when we have not console windows.
 	// This may happen at early startup or late before shutdown.
-	return NULL;
+	return nullptr;
 }
 
 KviConsoleWindow * KviMainWindow::firstNotConnectedConsole()
@@ -701,7 +700,7 @@ KviConsoleWindow * KviMainWindow::firstNotConnectedConsole()
 				return (KviConsoleWindow *)wnd;
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 void KviMainWindow::childWindowCloseRequest(KviWindow * wnd)
@@ -717,7 +716,7 @@ void KviMainWindow::setActiveWindow(KviWindow * wnd)
 
 KviIrcConnection * KviMainWindow::activeConnection()
 {
-	return m_pActiveContext ? m_pActiveContext->connection() : 0;
+	return m_pActiveContext ? m_pActiveContext->connection() : nullptr;
 }
 
 void KviMainWindow::childWindowSelectionStateChange(KviWindow * pWnd, bool bGotSelectionNow)
@@ -856,7 +855,7 @@ void KviMainWindow::closeEvent(QCloseEvent * e)
 {
 	//check if the user just want us to minimize in tray; if we're not the sender
 	//of this signal (sender!=0), it has been generated by a "quit" action in a menu
-	if(KVI_OPTION_BOOL(KviOption_boolCloseInTray) && QObject::sender() == 0 && e->spontaneous())
+	if(KVI_OPTION_BOOL(KviOption_boolCloseInTray) && QObject::sender() == nullptr && e->spontaneous())
 	{
 		if(!trayIcon())
 		{
@@ -1073,7 +1072,7 @@ void KviMainWindow::fillToolBarsPopup(QMenu * p)
 	disconnect(p, SIGNAL(triggered(QAction *)), this, SLOT(toolbarsPopupSelected(QAction *))); // just to be sure
 	connect(p, SIGNAL(triggered(QAction *)), this, SLOT(toolbarsPopupSelected(QAction *)));
 
-	QAction * pAction = 0;
+	QAction * pAction = nullptr;
 	int cnt = 0;
 
 	KviModuleExtensionDescriptorList * l = g_pModuleExtensionManager->getExtensionList("toolbar");

@@ -32,8 +32,7 @@ KviKvsTreeNodeParameterCount::KviKvsTreeNodeParameterCount(const QChar * pLocati
 }
 
 KviKvsTreeNodeParameterCount::~KviKvsTreeNodeParameterCount()
-{
-}
+    = default;
 
 void KviKvsTreeNodeParameterCount::contextDescription(QString & szBuffer)
 {

@@ -38,8 +38,8 @@
 #include <QDir>
 #include <QPushButton>
 
-KviMircServersIniImport * g_pMircServersIniImport = 0;
-KviRemoteMircServersIniImport * g_pRemoteMircServersIniImport = 0;
+KviMircServersIniImport * g_pMircServersIniImport = nullptr;
+KviRemoteMircServersIniImport * g_pRemoteMircServersIniImport = nullptr;
 
 KviMircServersIniImport::KviMircServersIniImport(KviModuleExtensionDescriptor * d)
     : KviMexServerImport(d)
@@ -48,7 +48,7 @@ KviMircServersIniImport::KviMircServersIniImport(KviModuleExtensionDescriptor * 
 
 KviMircServersIniImport::~KviMircServersIniImport()
 {
-	g_pMircServersIniImport = 0;
+	g_pMircServersIniImport = nullptr;
 }
 
 int KviMircServersIniImport::doImport(const QString & filename)
@@ -117,7 +117,7 @@ int KviMircServersIniImport::doImport(const QString & filename)
 	else
 	{
 		QString szTmp = QString(__tr2qs("%1 doesn't look like a servers.ini file.\nImport failed.")).arg(filename);
-		QMessageBox::warning(0, __tr2qs("File Import - KVIrc"), szTmp);
+		QMessageBox::warning(nullptr, __tr2qs("File Import - KVIrc"), szTmp);
 	}
 	return iCount;
 }
@@ -126,7 +126,7 @@ void KviMircServersIniImport::start()
 {
 	//KviCString buffer;
 	QString buffer;
-	if(!KviFileDialog::askForOpenFileName(buffer, __tr("Select a File - KVIrc"), 0, KVI_FILTER_INI, false, true, g_pMainWindow))
+	if(!KviFileDialog::askForOpenFileName(buffer, __tr("Select a File - KVIrc"), nullptr, KVI_FILTER_INI, false, true, g_pMainWindow))
 		return;
 
 	doImport(buffer);
@@ -141,14 +141,14 @@ void KviMircServersIniImport::die()
 #define KVI_WWWMIRCCOUK_SERVERSINI "http://www.mirc.co.uk/servers.ini"
 
 KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircServersIniImport * f)
-    : KviTalWizard(0)
+    : KviTalWizard(nullptr)
 {
 	QString capt = __tr2qs("Remote mIRC servers.ini - Import Wizard");
 	setWindowTitle(capt);
 
 	setModal(true);
 
-	m_pRequest = 0;
+	m_pRequest = nullptr;
 	m_pFilter = f;
 
 	QLabel * l = new QLabel(this);
@@ -228,7 +228,7 @@ void KviRemoteMircServerImportWizard::start()
 	if(!m_pRequest->get(KviUrl(url), KviHttpRequest::StoreToFile, m_szTmpFileName))
 	{
 		delete m_pRequest;
-		m_pRequest = 0;
+		m_pRequest = nullptr;
 		m_pOutput->setText(__tr2qs("Failed to start the server list transfer :("));
 		finishButton()->setEnabled(true);
 	}
@@ -265,7 +265,7 @@ void KviRemoteMircServerImportWizard::getListTerminated(bool bSuccess)
 		m_pOutput->setText(m_pRequest->lastError());
 
 	delete m_pRequest;
-	m_pRequest = 0;
+	m_pRequest = nullptr;
 	cancelButton()->setEnabled(false);
 	finishButton()->setEnabled(true);
 }
@@ -273,14 +273,14 @@ void KviRemoteMircServerImportWizard::getListTerminated(bool bSuccess)
 KviRemoteMircServersIniImport::KviRemoteMircServersIniImport(KviModuleExtensionDescriptor * d)
     : KviMircServersIniImport(d)
 {
-	m_pWizard = 0;
+	m_pWizard = nullptr;
 }
 
 KviRemoteMircServersIniImport::~KviRemoteMircServersIniImport()
 {
 	if(m_pWizard)
 		delete m_pWizard;
-	g_pRemoteMircServersIniImport = 0;
+	g_pRemoteMircServersIniImport = nullptr;
 }
 
 void KviRemoteMircServersIniImport::start()
@@ -315,14 +315,14 @@ static KviModuleExtension * mircimport_remote_filter_alloc(KviModuleExtensionAll
 static bool mircimport_module_init(KviModule * m)
 {
 	QString szPath;
-	QPixmap * pix = 0;
+	QPixmap * pix = nullptr;
 	if(g_pApp->findImage(szPath, "kvi_mircimport.png"))
 	{
 		pix = new QPixmap(szPath);
 		if(pix->isNull())
 		{
 			delete pix;
-			pix = 0;
+			pix = nullptr;
 		}
 	}
 
@@ -353,8 +353,8 @@ static bool mircimport_module_cleanup(KviModule *)
 		delete g_pMircServersIniImport;
 	if(g_pRemoteMircServersIniImport)
 		delete g_pRemoteMircServersIniImport;
-	g_pMircServersIniImport = 0;
-	g_pRemoteMircServersIniImport = 0;
+	g_pMircServersIniImport = nullptr;
+	g_pRemoteMircServersIniImport = nullptr;
 
 	return true;
 }

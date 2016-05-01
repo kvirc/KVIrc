@@ -63,7 +63,7 @@ extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 #include <openssl/ssl.h>
 #include <openssl/sha.h>
 
-DH * g_fish_dh = 0;
+DH * g_fish_dh = nullptr;
 
 // ### new sophie-germain 1080bit prime number ###
 // const char *g_fish_prime1080_bin="++ECLiPSE+is+proud+to+present+latest+FiSH+release+featuring+even+more+security+for+you+++shouts+go+out+to+TMG+for+helping+to+generate+this+cool+sophie+germain+prime+number++++/C32L";
@@ -134,7 +134,7 @@ bool fish_event_onQueryNotice(KviKvsModuleEventCall * c)
 	if(!szMessage.startsWith("DH1080_", Qt::CaseSensitive))
 		return true;
 
-	unsigned char * szMyPubKey = 0;
+	unsigned char * szMyPubKey = nullptr;
 	QByteArray szHisPubKey, szTmp;
 	int iMyPubKeyLen, *pMyPubKeyLen = &iMyPubKeyLen;
 	if(!fish_DH1080_gen(&szMyPubKey, pMyPubKeyLen))
@@ -212,7 +212,7 @@ bool fish_event_onQueryNotice(KviKvsModuleEventCall * c)
 #if defined(COMPILE_SSL_SUPPORT)
 	unsigned char * secret = (unsigned char *)KviMemory::allocate(DH_size(g_fish_dh));
 	int secretLen;
-	BIGNUM * bn = BN_bin2bn((unsigned char *)szHisPubKey.data(), szHisPubKey.size(), NULL);
+	BIGNUM * bn = BN_bin2bn((unsigned char *)szHisPubKey.data(), szHisPubKey.size(), nullptr);
 	if(-1 == (secretLen = DH_compute_key(secret, bn, g_fish_dh)))
 	{
 		c->warning(__tr2qs("FiSH: error verifying peer public key (size=%1)").arg(szHisPubKey.size()));
@@ -274,7 +274,7 @@ static bool fish_cmd_keyx(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETER("target", KVS_PT_NONEMPTYSTRING, 0, szTarget)
 	KVSM_PARAMETERS_END(c)
 
-	unsigned char * szMyPubKey = 0;
+	unsigned char * szMyPubKey = nullptr;
 	KviCString szHisPubKey, szTmp;
 	int iMyPubKeyLen, *pMyPubKeyLen = &iMyPubKeyLen;
 	if(!fish_DH1080_gen(&szMyPubKey, pMyPubKeyLen))

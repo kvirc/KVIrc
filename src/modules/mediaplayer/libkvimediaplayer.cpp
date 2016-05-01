@@ -36,16 +36,16 @@
 #include "kvi_out.h"
 #include <QUrl>
 
-static KviPointerList<MpInterfaceDescriptor> * g_pDescriptorList = 0;
+static KviPointerList<MpInterfaceDescriptor> * g_pDescriptorList = nullptr;
 
-static MpInterface * g_pMPInterface = 0;
+static MpInterface * g_pMPInterface = nullptr;
 
-static MpInterface * auto_detect_player(KviWindow * pOut = 0)
+static MpInterface * auto_detect_player(KviWindow * pOut = nullptr)
 {
 	int iBest = 0;
-	MpInterface * pBest = 0;
+	MpInterface * pBest = nullptr;
 	MpInterfaceDescriptor * d;
-	MpInterfaceDescriptor * pDBest = 0;
+	MpInterfaceDescriptor * pDBest = nullptr;
 	for(d = g_pDescriptorList->first(); d; d = g_pDescriptorList->next())
 	{
 		MpInterface * i = d->instance();
@@ -426,7 +426,7 @@ MP_KVS_SIMPLE_COMMAND(pause, pause)
 
 MP_KVS_COMMAND(detect)
 {
-	g_pMPInterface = auto_detect_player(c->hasSwitch('q', "quiet") ? 0 : c->window());
+	g_pMPInterface = auto_detect_player(c->hasSwitch('q', "quiet") ? nullptr : c->window());
 	return true;
 }
 
@@ -1629,7 +1629,7 @@ static bool mediaplayer_module_init(KviModule * m)
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(MpAmipInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviWinampInterface));
 #endif
-	g_pMPInterface = 0;
+	g_pMPInterface = nullptr;
 
 	if(KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) == "auto")
 	{
@@ -1736,7 +1736,7 @@ static bool mediaplayer_module_ctrl(KviModule *, const char * operation, void * 
 	}
 	if(kvi_strEqualCI(operation, "detectMediaPlayer"))
 	{
-		auto_detect_player(0);
+		auto_detect_player(nullptr);
 		return true;
 	}
 	return false;

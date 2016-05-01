@@ -32,7 +32,7 @@
 
 #include <QSplitter>
 
-ChannelsJoinDialog * g_pChannelsWindow = 0;
+ChannelsJoinDialog * g_pChannelsWindow = nullptr;
 QRect g_rectChannelsJoinGeometry;
 
 /*
@@ -87,7 +87,7 @@ static bool channelsjoin_module_cleanup(KviModule * m)
 
 	if(g_pChannelsWindow)
 		delete g_pChannelsWindow;
-	g_pChannelsWindow = 0;
+	g_pChannelsWindow = nullptr;
 	return true;
 }
 

@@ -41,5 +41,4 @@ OptionsWidget_topicLabel::OptionsWidget_topicLabel(QWidget * p) : KviOptionsWidg
 }
 
 OptionsWidget_topicLabel::~OptionsWidget_topicLabel()
-{
-}
+    = default;

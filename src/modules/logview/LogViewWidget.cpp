@@ -51,13 +51,13 @@ LogListViewItem::LogListViewItem(QTreeWidget * pPar, LogFile::Type eType, LogFil
 }
 
 LogListViewItemFolder::LogListViewItemFolder(QTreeWidgetItem * pPar, const QString & szLabel)
-    : LogListViewItem(pPar, LogFile::Other, 0)
+    : LogListViewItem(pPar, LogFile::Other, nullptr)
 {
 	setText(0, szLabel);
 }
 
 LogListViewItemType::LogListViewItemType(QTreeWidget * pPar, LogFile::Type eType)
-    : LogListViewItem(pPar, eType, 0)
+    : LogListViewItem(pPar, eType, nullptr)
 {
 	QIcon icon;
 	QString szText;

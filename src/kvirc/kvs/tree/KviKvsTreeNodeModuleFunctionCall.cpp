@@ -37,8 +37,7 @@ KviKvsTreeNodeModuleFunctionCall::KviKvsTreeNodeModuleFunctionCall(const QChar *
 }
 
 KviKvsTreeNodeModuleFunctionCall::~KviKvsTreeNodeModuleFunctionCall()
-{
-}
+    = default;
 
 void KviKvsTreeNodeModuleFunctionCall::contextDescription(QString & szBuffer)
 {

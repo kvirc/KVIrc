@@ -55,8 +55,7 @@ KviEngineListBoxItem::KviEngineListBoxItem(KviTalListWidget * pList, KviCryptEng
 }
 
 KviEngineListBoxItem::~KviEngineListBoxItem()
-{
-}
+    = default;
 
 KviCryptController::KviCryptController(QWidget * pParent, KviWindowToolPageButton * pButton, KviWindow * pWnd, KviCryptSessionInfo * pInfo)
     : KviWindowToolWidget(pParent, pButton)
@@ -135,8 +134,8 @@ KviCryptController::KviCryptController(QWidget * pParent, KviWindowToolPageButto
 	pLayout->setRowStretch(3, 1);
 	pLayout->setColumnStretch(2, 1);
 
-	m_pLastItem = 0;
-	m_pSessionInfo = 0;
+	m_pLastItem = nullptr;
+	m_pSessionInfo = nullptr;
 
 	fillEngineList();
 
@@ -216,7 +215,7 @@ void KviCryptController::engineHighlighted(QListWidgetItem * pItem, QListWidgetI
 		enableWidgets(true);
 	}
 	else
-		m_pLastItem = 0;
+		m_pLastItem = nullptr;
 }
 
 void KviCryptController::enableCheckToggled(bool bChecked)
@@ -271,7 +270,7 @@ void KviCryptController::okClicked()
 				{
 					m_pWindow->output(KVI_OUT_SYSTEMERROR, __tr2qs("Encryption: can't create an engine instance: encryption disabled"));
 					delete m_pSessionInfo;
-					m_pSessionInfo = 0;
+					m_pSessionInfo = nullptr;
 				}
 				else
 				{
@@ -281,7 +280,7 @@ void KviCryptController::okClicked()
 						QString szErrStr = m_pSessionInfo->m_pEngine->lastError();
 						g_pCryptEngineManager->deallocateEngine(m_pSessionInfo->m_pEngine);
 						delete m_pSessionInfo;
-						m_pSessionInfo = 0;
+						m_pSessionInfo = nullptr;
 						m_pWindow->output(KVI_OUT_SYSTEMERROR, __tr2qs("Encryption: can't initialize the engine: %s"), szErrStr.toUtf8().data());
 					}
 					else
@@ -391,7 +390,7 @@ bool KviCryptController::initializeEngine(KviCryptEngine * pEngine)
 KviCryptSessionInfo * KviCryptController::getNewSessionInfo()
 {
 	KviCryptSessionInfo * pInfo = m_pSessionInfo;
-	m_pSessionInfo = 0;
+	m_pSessionInfo = nullptr;
 	return pInfo;
 }
 
@@ -408,7 +407,7 @@ void KviCryptController::destroyCryptSessionInfo(KviCryptSessionInfo ** ppInfo)
 	(*ppInfo)->m_pEngine->disconnect();                            // disconnect every signal (this is mainly for destroyed())
 	g_pCryptEngineManager->deallocateEngine((*ppInfo)->m_pEngine); // kill the engine
 	delete *ppInfo;
-	*ppInfo = 0;
+	*ppInfo = nullptr;
 }
 
 #endif //COMPILE_CRYPT_SUPPORT

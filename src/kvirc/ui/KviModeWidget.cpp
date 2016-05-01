@@ -40,8 +40,7 @@ KviModeWidget::KviModeWidget(QWidget * par, KviChannelWindow * chan, const char 
 }
 
 KviModeWidget::~KviModeWidget()
-{
-}
+    = default;
 
 void KviModeWidget::reset()
 {
@@ -118,9 +117,9 @@ void KviModeWidget::editorReturnPressed()
 		{
 			// first part: parameterless modes
 			QString szCurModes = szOldModes.count() ? szOldModes.at(0) : "";
-			for(int j = 0; j < szSubstring.length(); ++j)
+			for(auto j : szSubstring)
 			{
-				char cMode = szSubstring.at(j).unicode();
+				char cMode = j.unicode();
 				if(!szCurModes.contains(cMode))
 				{
 					// was not set, has to be inserted
@@ -168,9 +167,9 @@ void KviModeWidget::editorReturnPressed()
 		{
 			// first part: parameterless modes
 			QString szNewParameterLessModes = szNewModes.count() ? szNewModes.at(0) : "";
-			for(int j = 0; j < szSubstring.length(); ++j)
+			for(auto j : szSubstring)
 			{
-				char cMode = szSubstring.at(j).unicode();
+				char cMode = j.unicode();
 				if(!szNewParameterLessModes.contains(cMode))
 				{
 					// was set, has to be unset
@@ -182,7 +181,7 @@ void KviModeWidget::editorReturnPressed()
 
 	// now flush out mode changes
 	int iModesPerLine = 3; // a good default
-	KviIrcConnectionServerInfo * pServerInfo = 0;
+	KviIrcConnectionServerInfo * pServerInfo = nullptr;
 	if(m_pChannel)
 		pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)
@@ -274,7 +273,7 @@ void KviModeWidget::editorReturnPressed()
 
 inline bool KviModeWidget::modeNeedsParameterOnlyWhenSet(char cMode)
 {
-	KviIrcConnectionServerInfo * pServerInfo = 0;
+	KviIrcConnectionServerInfo * pServerInfo = nullptr;
 	if(m_pChannel)
 		pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)

@@ -91,9 +91,9 @@ namespace ThemeFunctions
 			return notAValidThemePackage(szError);
 
 		// make sure the default fields exist
-		for(int i = 0; i < 6; i++)
+		for(auto & check_field : check_fields)
 		{
-			pValue = pInfoFields->find(check_fields[i]);
+			pValue = pInfoFields->find(check_field);
 			if(!pValue)
 				return notAValidThemePackage(szError);
 		}
@@ -115,7 +115,7 @@ namespace ThemeFunctions
 		// load its picture
 		pByteArray = r.binaryInfoFields()->find("Image");
 		if(pByteArray)
-			pix.loadFromData(*pByteArray, 0, 0);
+			pix.loadFromData(*pByteArray, nullptr, nullptr);
 
 		if(pix.isNull())
 		{
@@ -182,7 +182,7 @@ namespace ThemeFunctions
 			QPixmap pixScreenshot;
 			pByteArray = r.binaryInfoFields()->find(szTmp);
 			if(pByteArray)
-				pixScreenshot.loadFromData(*pByteArray, 0, 0);
+				pixScreenshot.loadFromData(*pByteArray, nullptr, nullptr);
 
 			if(szThemeName.isEmpty() || szThemeVersion.isEmpty() || szThemeSubdirectory.isEmpty() || szThemeEngineVersion.isEmpty())
 				bValid = false;
@@ -442,7 +442,7 @@ namespace ThemeFunctions
 		if(!out.isNull())
 		{
 			QByteArray * pba = new QByteArray();
-			QBuffer buffer(pba, 0);
+			QBuffer buffer(pba, nullptr);
 			buffer.open(QIODevice::WriteOnly);
 			out.save(&buffer, "PNG");
 			buffer.close();
@@ -493,7 +493,7 @@ namespace ThemeFunctions
 				szTmp = QString("Theme%1Screenshot").arg(iIdx);
 				QByteArray * pba = new QByteArray();
 
-				QBuffer bufferz(pba, 0);
+				QBuffer bufferz(pba, nullptr);
 				bufferz.open(QIODevice::WriteOnly);
 				pixScreenshot.save(&bufferz, "PNG");
 				bufferz.close();

@@ -43,8 +43,7 @@ KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & sz
 #endif //!defined(COMPILE_KDE4_SUPPORT))
 
 KviTalFileDialog::~KviTalFileDialog()
-{
-}
+    = default;
 
 void KviTalFileDialog::setFileMode(FileMode m)
 {

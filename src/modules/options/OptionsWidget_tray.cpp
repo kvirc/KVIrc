@@ -73,8 +73,7 @@ OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
 }
 
 OptionsWidget_tray::~OptionsWidget_tray()
-{
-}
+    = default;
 
 void OptionsWidget_tray::setEnabled(bool)
 {

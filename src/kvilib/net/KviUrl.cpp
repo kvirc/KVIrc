@@ -47,8 +47,7 @@ KviUrl::KviUrl(const QString & szUrl)
 }
 
 KviUrl::~KviUrl()
-{
-}
+    = default;
 
 void KviUrl::parse()
 {

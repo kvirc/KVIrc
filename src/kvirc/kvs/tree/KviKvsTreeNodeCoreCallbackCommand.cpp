@@ -35,8 +35,7 @@ KviKvsTreeNodeCoreCallbackCommand::KviKvsTreeNodeCoreCallbackCommand(const QChar
 }
 
 KviKvsTreeNodeCoreCallbackCommand::~KviKvsTreeNodeCoreCallbackCommand()
-{
-}
+    = default;
 
 void KviKvsTreeNodeCoreCallbackCommand::contextDescription(QString & szBuffer)
 {

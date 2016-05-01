@@ -117,9 +117,8 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	i = 0;
 	int iMatch = 0;
 
-	for(QStringList::Iterator it = list.begin(); it != list.end(); ++it)
+	for(auto szTmp : list)
 	{
-		QString szTmp = *it;
 		szTmp.replace("kvirc_", "");
 		szTmp.replace(".mo", "");
 		m_pForcedLocaleCombo->insertItem(m_pForcedLocaleCombo->count(), szTmp);
@@ -139,7 +138,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 		gbox = addGroupBox(0, 2, 0, 2, Qt::Horizontal, __tr2qs_ctx("Spell Checker Dictionaries", "options"));
 
 		KviKvsVariant availableDictionaries;
-		KviKvsScript::evaluate("$spellchecker.availableDictionaries", NULL, NULL, &availableDictionaries);
+		KviKvsScript::evaluate("$spellchecker.availableDictionaries", nullptr, nullptr, &availableDictionaries);
 		const KviPointerHashTable<QString, KviKvsVariant> * hashTable = availableDictionaries.hash()->dict();
 		KviPointerHashTableIterator<QString, KviKvsVariant> iter(*hashTable);
 		QMap<QString, QString> dictMap;
@@ -184,8 +183,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 }
 
 OptionsWidget_textEncoding::~OptionsWidget_textEncoding()
-{
-}
+    = default;
 
 void OptionsWidget_textEncoding::commit()
 {
@@ -240,6 +238,6 @@ void OptionsWidget_textEncoding::commit()
 		}
 	}
 	KVI_OPTION_STRINGLIST(KviOption_stringlistSpellCheckerDictionaries) = wantedDictionaries;
-	KviKvsScript::run("spellchecker.reloadDictionaries", NULL);
+	KviKvsScript::run("spellchecker.reloadDictionaries", nullptr);
 #endif
 }

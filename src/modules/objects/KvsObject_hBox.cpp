@@ -176,13 +176,13 @@ KVSO_CLASS_FUNCTION(hBox, setAlignment)
 		return true;
 	}
 	int align, sum = 0;
-	for(QStringList::Iterator it = alignment.begin(); it != alignment.end(); ++it)
+	for(auto & it : alignment)
 	{
 
 		align = 0;
 		for(unsigned int j = 0; j < align_num; j++)
 		{
-			if(KviQString::equalCI((*it), align_tbl[j]))
+			if(KviQString::equalCI(it, align_tbl[j]))
 			{
 				align = align_cod[j];
 				break;
@@ -191,7 +191,7 @@ KVSO_CLASS_FUNCTION(hBox, setAlignment)
 		if(align)
 			sum = sum | align;
 		else
-			c->warning(__tr2qs_ctx("Unknown alignment '%Q'", "objects"), &(*it));
+			c->warning(__tr2qs_ctx("Unknown alignment '%Q'", "objects"), &it);
 	}
 	((KviTalHBox *)widget())->setAlignment(((QWidget *)(pObject->object())), (Qt::Alignment)sum);
 	return true;

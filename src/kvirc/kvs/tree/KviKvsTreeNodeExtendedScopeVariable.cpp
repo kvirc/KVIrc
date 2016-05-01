@@ -32,8 +32,7 @@ KviKvsTreeNodeExtendedScopeVariable::KviKvsTreeNodeExtendedScopeVariable(const Q
 }
 
 KviKvsTreeNodeExtendedScopeVariable::~KviKvsTreeNodeExtendedScopeVariable()
-{
-}
+    = default;
 
 void KviKvsTreeNodeExtendedScopeVariable::contextDescription(QString & szBuffer)
 {
@@ -72,8 +71,8 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeExtendedScopeVariable::evaluateReadWrit
 	if(!c->extendedScopeVariables())
 	{
 		c->error(this, __tr2qs_ctx("There are no extended scope variables in this scope", "kvs"));
-		return 0;
+		return nullptr;
 	}
 
-	return new KviKvsHashElement(0, c->extendedScopeVariables()->get(m_szIdentifier), c->extendedScopeVariables(), m_szIdentifier);
+	return new KviKvsHashElement(nullptr, c->extendedScopeVariables()->get(m_szIdentifier), c->extendedScopeVariables(), m_szIdentifier);
 }

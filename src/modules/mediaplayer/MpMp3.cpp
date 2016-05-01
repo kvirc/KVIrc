@@ -178,7 +178,7 @@ const char * emphasis_text[] = {
 
 void resetmp3infoStruct(mp3info * i)
 {
-	i->file = 0;
+	i->file = nullptr;
 	i->datasize = 0;
 	i->header_isvalid = 0;
 	memset(&i->header, 0, sizeof(i->header));

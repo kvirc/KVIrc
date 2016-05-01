@@ -62,8 +62,7 @@ KviMaskItem::KviMaskItem(QTreeWidget * pParent, KviMaskEntry * pEntry)
 }
 
 KviMaskItem::~KviMaskItem()
-{
-}
+    = default;
 
 KviMaskInputDialog::KviMaskInputDialog(const QString & szMask, KviMaskEditor * pEditor, KviChannelWindow * pChannel)
     : QDialog(pEditor)
@@ -95,8 +94,7 @@ KviMaskInputDialog::KviMaskInputDialog(const QString & szMask, KviMaskEditor * p
 }
 
 KviMaskInputDialog::~KviMaskInputDialog()
-{
-}
+    = default;
 
 void KviMaskInputDialog::accept()
 {
@@ -131,7 +129,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par, KviChannelWindow * pChannel, KviWind
 
 	m_cFlag = cMode;
 
-	KviIrcConnectionServerInfo * pServerInfo = 0;
+	KviIrcConnectionServerInfo * pServerInfo = nullptr;
 	QString szDescription = "";
 	if(m_pChannel)
 		pServerInfo = m_pChannel->serverInfo();
@@ -235,8 +233,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par, KviChannelWindow * pChannel, KviWind
 }
 
 KviMaskEditor::~KviMaskEditor()
-{
-}
+    = default;
 
 void KviMaskEditor::updateOpStatus()
 {

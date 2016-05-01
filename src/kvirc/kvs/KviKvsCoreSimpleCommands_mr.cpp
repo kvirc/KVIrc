@@ -486,7 +486,7 @@ namespace KviKvsCoreSimpleCommands
 				QString szName = "openurl::handler";
 				KviKvsScript script(szName, szCommand);
 
-				if(!script.run(KVSCSC_pWindow, &vList, 0, KviKvsScript::PreserveParams))
+				if(!script.run(KVSCSC_pWindow, &vList, nullptr, KviKvsScript::PreserveParams))
 					KVSCSC_pContext->warning(__tr2qs_ctx("The commandline for this URL type seems to be broken (%Q)", "kvs"), &szUrl);
 			}
 			else
@@ -746,7 +746,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KviKvsScript s(szFileName, szBuffer);
 
-		KviKvsVariant * pRetVal = KVSCSC_pSwitches->find('r', "propagate-return") ? KVSCSC_pContext->returnValue() : 0;
+		KviKvsVariant * pRetVal = KVSCSC_pSwitches->find('r', "propagate-return") ? KVSCSC_pContext->returnValue() : nullptr;
 		KviKvsVariant vFileName(szFileName);
 		vList.prepend(&vFileName);
 
@@ -844,9 +844,9 @@ namespace KviKvsCoreSimpleCommands
 		if(!(KVSCSC_pConnection->sendFmtData("PART %s :%s", szEncodedChans.data(), szText.data())))
 			return KVSCSC_pContext->warningNoIrcConnection();
 
-		for(QStringList::Iterator it = sl.begin(); it != sl.end(); it++)
+		for(auto & it : sl)
 		{
-			KviChannelWindow * ch = KVSCSC_pConnection->findChannel(*it);
+			KviChannelWindow * ch = KVSCSC_pConnection->findChannel(it);
 			if(ch)
 			{
 				ch->partMessageSent(!KVSCSC_pSwitches->find('k', "keep"), !KVSCSC_pSwitches->find('s', "silent"));
@@ -854,7 +854,7 @@ namespace KviKvsCoreSimpleCommands
 			else
 			{
 				if(!KVSCSC_pSwitches->find('q', "quiet"))
-					KVSCSC_pContext->warning(__tr2qs_ctx("You don't appear to be on channel %s", "kvs"), (*it).toUtf8().data());
+					KVSCSC_pContext->warning(__tr2qs_ctx("You don't appear to be on channel %s", "kvs"), it.toUtf8().data());
 			}
 		}
 
@@ -964,7 +964,7 @@ namespace KviKvsCoreSimpleCommands
 			szParams.append(QString::fromLatin1(" $%1 ").arg(i));
 
 		KviKvsScript s("popup", "popup.show " + szSwitches + szParams);
-		s.run(KVSCSC_pContext->window(), &lParameters, 0, KviKvsScript::PreserveParams);
+		s.run(KVSCSC_pContext->window(), &lParameters, nullptr, KviKvsScript::PreserveParams);
 		return true;
 	}
 
@@ -1090,9 +1090,8 @@ namespace KviKvsCoreSimpleCommands
 		KviQueryWindow * query;
 
 		QStringList sl = szTargets.split(",", QString::SkipEmptyParts);
-		for(QStringList::Iterator it = sl.begin(); it != sl.end(); it++)
+		for(auto szNick : sl)
 		{
-			QString szNick = *it;
 			if(szNick.isEmpty())
 				KVSCSC_pContext->warning(__tr2qs_ctx("Empty target specified", "kvs"));
 			else

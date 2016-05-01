@@ -28,7 +28,7 @@
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
-PopupEditorWindow * g_pPopupEditorWindow = 0;
+PopupEditorWindow * g_pPopupEditorWindow = nullptr;
 
 /*
 	@doc: popupeditor.open
@@ -59,20 +59,20 @@ static bool popupeditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 static bool popupeditor_module_init(KviModule * m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", popupeditor_kvs_cmd_open);
-	g_pPopupEditorWindow = 0;
+	g_pPopupEditorWindow = nullptr;
 	return true;
 }
 
 static bool popupeditor_module_can_unload(KviModule *)
 {
-	return (g_pPopupEditorWindow == 0);
+	return (g_pPopupEditorWindow == nullptr);
 }
 
 static bool popupeditor_module_cleanup(KviModule *)
 {
 	if(g_pPopupEditorWindow && g_pMainWindow)
 		g_pMainWindow->closeWindow(g_pPopupEditorWindow);
-	g_pPopupEditorWindow = 0;
+	g_pPopupEditorWindow = nullptr;
 	return true;
 }
 

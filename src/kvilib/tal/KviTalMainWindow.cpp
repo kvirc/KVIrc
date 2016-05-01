@@ -43,5 +43,4 @@ KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
 #endif //!COMPILE_KDE_SUPPORT
 
 KviTalMainWindow::~KviTalMainWindow()
-{
-}
+    = default;

@@ -37,22 +37,22 @@
 #include <QList>
 #include <QPixmap>
 
-KviDebugWindow * KviDebugWindow::m_pInstance = 0;
+KviDebugWindow * KviDebugWindow::m_pInstance = nullptr;
 
 KviDebugWindow::KviDebugWindow()
-    : KviWindow(KviWindow::Debug, __tr2qs("Debug Messages"), 0)
+    : KviWindow(KviWindow::Debug, __tr2qs("Debug Messages"), nullptr)
 {
 	m_pInstance = this;
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
 	m_pSplitter->setObjectName("main_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter, this);
-	m_pInput = new KviInput(this, 0);
+	m_pInput = new KviInput(this, nullptr);
 	updateCaption();
 }
 
 KviDebugWindow::~KviDebugWindow()
 {
-	m_pInstance = 0;
+	m_pInstance = nullptr;
 }
 
 KviDebugWindow * KviDebugWindow::getInstance()

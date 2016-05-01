@@ -33,10 +33,10 @@
 #include <QMouseEvent>
 #include <QMenu>
 
-static QMenu * g_pToolBarContextPopup = 0;
-static QMenu * g_pToolBarWindowsPopup = 0;
-static QMenu * g_pToolBarIconSizesPopup = 0;
-static QMenu * g_pToolBarButtonStylePopup = 0;
+static QMenu * g_pToolBarContextPopup = nullptr;
+static QMenu * g_pToolBarWindowsPopup = nullptr;
+static QMenu * g_pToolBarIconSizesPopup = nullptr;
+static QMenu * g_pToolBarButtonStylePopup = nullptr;
 static uint uToolBarInstances = 0;
 
 KviToolBar::KviToolBar(const QString & szLabel, Qt::ToolBarArea type, const char * pcName)
@@ -68,10 +68,10 @@ KviToolBar::~KviToolBar()
 		if(g_pToolBarContextPopup)
 			delete g_pToolBarContextPopup;
 
-		g_pToolBarButtonStylePopup = 0;
-		g_pToolBarIconSizesPopup = 0;
-		g_pToolBarWindowsPopup = 0;
-		g_pToolBarContextPopup = 0;
+		g_pToolBarButtonStylePopup = nullptr;
+		g_pToolBarIconSizesPopup = nullptr;
+		g_pToolBarWindowsPopup = nullptr;
+		g_pToolBarContextPopup = nullptr;
 	}
 }
 
@@ -118,11 +118,11 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 		// fill icon size menu
 		QActionGroup * pIconSizeGroup = new QActionGroup(g_pToolBarIconSizesPopup);
 
-		QAction * pTmp = 0;
+		QAction * pTmp = nullptr;
 		IconSizes iconSize;
-		for(uint i = 0; i < VALID_ICONSIZES_NUM; i++)
+		for(auto & valid_iconsize : valid_iconsizes)
 		{
-			iconSize = valid_iconsizes[i];
+			iconSize = valid_iconsize;
 
 			pTmp = pIconSizeGroup->addAction(g_pToolBarIconSizesPopup->addAction(__tr2qs(iconSize.pcName)));
 			pTmp->setData((uint)iconSize.uSize);
@@ -136,11 +136,11 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 		// fill button style menu
 		QActionGroup * pButtonStyleGroup = new QActionGroup(g_pToolBarButtonStylePopup);
 
-		pTmp = 0;
+		pTmp = nullptr;
 		ButtonStyles buttonStyle;
-		for(uint i = 0; i < VALID_BUTTONSTYLES_NUM; i++)
+		for(auto & valid_buttonstyle : valid_buttonstyles)
 		{
-			buttonStyle = valid_buttonstyles[i];
+			buttonStyle = valid_buttonstyle;
 
 			pTmp = pButtonStyleGroup->addAction(g_pToolBarButtonStylePopup->addAction(__tr2qs(buttonStyle.pcName)));
 			pTmp->setData((uint)buttonStyle.uStyle);

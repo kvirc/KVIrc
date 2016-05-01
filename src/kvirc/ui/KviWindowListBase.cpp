@@ -64,7 +64,7 @@ extern QPixmap * g_pActivityMeterPixmap;
 //
 
 KviWindowListBase::KviWindowListBase()
-    : QDockWidget(__tr2qs("Window List"), g_pMainWindow), m_pTitleWidget(0)
+    : QDockWidget(__tr2qs("Window List"), g_pMainWindow), m_pTitleWidget(nullptr)
 {
 	// FIXME: this timer should be started only if KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter)
 	setObjectName("windowlist");
@@ -121,7 +121,7 @@ KviWindowListItem * KviWindowListBase::item(int number)
 {
 	KviWindowListItem * it = firstItem();
 	if(!setIterationPointer(it))
-		return 0;
+		return nullptr;
 
 	while(it && (number > 0))
 	{
@@ -246,7 +246,7 @@ KviWindowListItem::KviWindowListItem(KviWindow * wnd)
 
 KviWindowListItem::~KviWindowListItem()
 {
-	m_pWindow->m_pWindowListItem = 0;
+	m_pWindow->m_pWindowListItem = nullptr;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -561,7 +561,7 @@ KviClassicWindowList::KviClassicWindowList()
 KviClassicWindowList::~KviClassicWindowList()
 {
 	delete m_pButtonList;
-	m_pButtonList = 0;
+	m_pButtonList = nullptr;
 }
 
 void KviClassicWindowList::orientationChangedSlot(Qt::Orientation)

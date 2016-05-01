@@ -77,7 +77,7 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 			return false;
 	}
 
-	bool bIncludeEmptyScalars = swl.find('a', "all") != 0;
+	bool bIncludeEmptyScalars = swl.find('a', "all") != nullptr;
 
 	for(KviKvsVariant * pArg = l.first(); pArg; pArg = l.next())
 	{

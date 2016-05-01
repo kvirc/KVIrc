@@ -88,7 +88,7 @@ KVSO_CLASS_FUNCTION(dockWindow, addWidget)
 	KVSO_PARAMETERS_BEGIN(c)
 	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hWidget)
 	KVSO_PARAMETERS_END(c)
-	if(hWidget == (kvs_hobject_t)0)
+	if(hWidget == (kvs_hobject_t) nullptr)
 	{
 		// null widget ?
 		c->warning(__tr2qs_ctx("Can't add a null object", "objects"));

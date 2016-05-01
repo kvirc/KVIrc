@@ -28,8 +28,8 @@
 #include <enchant.h>
 #include <enchant-provider.h>
 
-static EnchantBroker * g_pEnchantBroker = NULL;
-static KviPointerList<EnchantDict> * g_pEnchantDicts = NULL;
+static EnchantBroker * g_pEnchantBroker = nullptr;
+static KviPointerList<EnchantDict> * g_pEnchantDicts = nullptr;
 
 /*
 	@doc: spellchecker.available_dictionaries
@@ -208,9 +208,9 @@ static bool spellchecker_module_cleanup(KviModule *)
 		enchant_broker_free_dict(g_pEnchantBroker, g_pEnchantDicts->takeFirst());
 
 	delete g_pEnchantDicts;
-	g_pEnchantDicts = NULL;
+	g_pEnchantDicts = nullptr;
 	enchant_broker_free(g_pEnchantBroker);
-	g_pEnchantBroker = NULL;
+	g_pEnchantBroker = nullptr;
 	return true;
 }
 

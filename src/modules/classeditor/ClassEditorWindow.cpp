@@ -168,8 +168,8 @@ ClassEditorWidget::ClassEditorWidget(QWidget * pParent)
 {
 	m_pClasses = new KviPointerHashTable<QString, ClassEditorTreeWidgetItem>(100, false);
 	m_pClasses->setAutoDelete(false);
-	m_pLastEditedItem = 0;
-	m_pLastClickedItem = 0;
+	m_pLastEditedItem = nullptr;
+	m_pLastClickedItem = nullptr;
 	m_szDir = QDir::homePath();
 
 	QGridLayout * pLayout = new QGridLayout(this);
@@ -222,7 +222,7 @@ ClassEditorWidget::ClassEditorWidget(QWidget * pParent)
 
 	oneTimeSetup();
 	m_pTreeWidget->setSortingEnabled(true);
-	currentItemChanged(0, 0);
+	currentItemChanged(nullptr, nullptr);
 }
 
 ClassEditorWidget::~ClassEditorWidget()
@@ -313,7 +313,7 @@ ClassEditorTreeWidgetItem * ClassEditorWidget::createFullItem(const QString & sz
 
 	QStringList lNamespaces = szFullName.split("::");
 	if(lNamespaces.count() == 0)
-		return 0;
+		return nullptr;
 	if(lNamespaces.count() == 1)
 	{
 		ClassEditorTreeWidgetItem * pItem = findTopLevelItem(lNamespaces.at(0));
@@ -394,7 +394,7 @@ void ClassEditorWidget::oneTimeSetup()
 	while(KviKvsObjectClass * pClass = it.current())
 	{
 		if(pClass->isBuiltin())
-			m_pClasses->insert(it.currentKey(), 0);
+			m_pClasses->insert(it.currentKey(), nullptr);
 		else
 		{
 			QString szTmp;
@@ -860,7 +860,7 @@ void ClassEditorWidget::currentItemChanged(QTreeWidgetItem * pTree, QTreeWidgetI
 		KviPointerHashTable<QString, ClassEditorTreeWidgetItem> lFunctions;
 		lFunctions.setAutoDelete(false);
 
-		ClassEditorTreeWidgetItem * pItem = 0;
+		ClassEditorTreeWidgetItem * pItem = nullptr;
 		for(int i = 0; i < pTree->childCount(); i++)
 		{
 			pItem = ((ClassEditorTreeWidgetItem *)pTree->child(i));
@@ -1419,9 +1419,9 @@ bool ClassEditorWidget::removeItem(ClassEditorTreeWidgetItem * pItem, KviPointer
 	}
 
 	if(pItem == m_pLastEditedItem)
-		m_pLastEditedItem = 0;
+		m_pLastEditedItem = nullptr;
 	if(pItem == m_pLastClickedItem)
-		m_pLastClickedItem = 0;
+		m_pLastClickedItem = nullptr;
 	if(pItem->childCount())
 		removeItemChildren(pItem, lRemovedItems);
 	if(pItem->isClass())
@@ -1873,7 +1873,7 @@ void ClassEditorWidget::searchInheritedClasses(const QString szClass, KviPointer
 }
 
 ClassEditorWindow::ClassEditorWindow()
-    : KviWindow(KviWindow::ScriptEditor, "classeditor", 0)
+    : KviWindow(KviWindow::ScriptEditor, "classeditor", nullptr)
 {
 	g_pClassEditorWindow = this;
 
@@ -1906,7 +1906,7 @@ ClassEditorWindow::ClassEditorWindow()
 
 ClassEditorWindow::~ClassEditorWindow()
 {
-	g_pClassEditorWindow = 0;
+	g_pClassEditorWindow = nullptr;
 }
 
 void ClassEditorWindow::buildClicked()
@@ -2051,8 +2051,7 @@ KviClassEditorDialog::KviClassEditorDialog(QWidget * pParent, const QString & sz
 }
 
 KviClassEditorDialog::~KviClassEditorDialog()
-{
-}
+    = default;
 
 void KviClassEditorDialog::textChanged(const QString & szText)
 {
@@ -2153,8 +2152,7 @@ KviClassEditorFunctionDialog::KviClassEditorFunctionDialog(QWidget * pParent, co
 }
 
 KviClassEditorFunctionDialog::~KviClassEditorFunctionDialog()
-{
-}
+    = default;
 
 void KviClassEditorFunctionDialog::textChanged(const QString & szText)
 {

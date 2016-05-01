@@ -31,7 +31,7 @@
 
 #include <QSplitter>
 
-KviPointerList<LinksWindow> * g_pLinksWindowList = 0;
+KviPointerList<LinksWindow> * g_pLinksWindowList = nullptr;
 
 /*
 	@doc: links.open
@@ -93,7 +93,7 @@ static bool links_module_cleanup(KviModule *)
 	while(g_pLinksWindowList->first())
 		g_pLinksWindowList->first()->die();
 	delete g_pLinksWindowList;
-	g_pLinksWindowList = 0;
+	g_pLinksWindowList = nullptr;
 	return true;
 }
 

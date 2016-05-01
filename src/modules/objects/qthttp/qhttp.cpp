@@ -76,8 +76,7 @@ public:
 		id = idCounter.fetchAndAddRelaxed(1);
 	}
 	virtual ~QHttpRequest()
-	{
-	}
+	    = default;
 
 	virtual void start(QHttp *) = 0;
 	virtual bool hasRequestHeader();
@@ -99,10 +98,10 @@ public:
 	Q_DECLARE_PUBLIC(QHttp)
 
 	inline QHttpPrivate(QHttp * parent)
-	    : socket(0), reconnectAttempts(2),
+	    : socket(nullptr), reconnectAttempts(2),
 	      deleteSocket(0), state(QHttp::Unconnected),
 	      error(QHttp::NoError), port(0), mode(QHttp::ConnectionModeHttp),
-	      toDevice(0), postDevice(0), bytesDone(0), chunkedSize(-1),
+	      toDevice(nullptr), postDevice(nullptr), bytesDone(0), chunkedSize(-1),
 	      repost(false), pendingPost(false), q_ptr(parent)
 	{
 	}
@@ -216,26 +215,25 @@ public:
 		data.ba = d;
 	}
 
-	~QHttpNormalRequest()
+	~QHttpNormalRequest() override
 	{
 		if(is_ba)
 			delete data.ba;
 	}
 
-	void start(QHttp *);
-	bool hasRequestHeader();
-	QHttpRequestHeader requestHeader();
+	void start(QHttp *) override;
+	bool hasRequestHeader() override;
+	QHttpRequestHeader requestHeader() override;
 	inline void setRequestHeader(const QHttpRequestHeader & h) { header = h; }
 
-	QIODevice * sourceDevice();
-	QIODevice * destinationDevice();
+	QIODevice * sourceDevice() override;
+	QIODevice * destinationDevice() override;
 
 protected:
 	QHttpRequestHeader header;
 
 private:
-	union
-	{
+	union {
 		QByteArray * ba;
 		QIODevice * dev;
 	} data;
@@ -246,7 +244,7 @@ private:
 void QHttpNormalRequest::start(QHttp * http)
 {
 	if(!http->d->socket)
-		http->d->setSock(0);
+		http->d->setSock(nullptr);
 	http->d->header = header;
 
 	if(is_ba)
@@ -255,7 +253,7 @@ void QHttpNormalRequest::start(QHttp * http)
 		if(http->d->buffer.size() >= 0)
 			http->d->header.setContentLength(http->d->buffer.size());
 
-		http->d->postDevice = 0;
+		http->d->postDevice = nullptr;
 	}
 	else
 	{
@@ -269,14 +267,14 @@ void QHttpNormalRequest::start(QHttp * http)
 		}
 		else
 		{
-			http->d->postDevice = 0;
+			http->d->postDevice = nullptr;
 		}
 	}
 
 	if(to && (to->isOpen() || to->open(QIODevice::WriteOnly)))
 		http->d->toDevice = to;
 	else
-		http->d->toDevice = 0;
+		http->d->toDevice = nullptr;
 
 	http->d->reconnectAttempts = 2;
 	http->d->_q_slotSendRequest();
@@ -295,7 +293,7 @@ QHttpRequestHeader QHttpNormalRequest::requestHeader()
 QIODevice * QHttpNormalRequest::sourceDevice()
 {
 	if(is_ba)
-		return 0;
+		return nullptr;
 	return data.dev;
 }
 
@@ -325,11 +323,9 @@ public:
 	{
 	}
 
-	~QHttpPGHRequest()
-	{
-	}
+	~QHttpPGHRequest() override = default;
 
-	void start(QHttp *);
+	void start(QHttp *) override;
 };
 
 void QHttpPGHRequest::start(QHttp * http)
@@ -355,15 +351,15 @@ public:
 	{
 	}
 
-	void start(QHttp *);
+	void start(QHttp *) override;
 
-	QIODevice * sourceDevice()
+	QIODevice * sourceDevice() override
 	{
-		return 0;
+		return nullptr;
 	}
-	QIODevice * destinationDevice()
+	QIODevice * destinationDevice() override
 	{
-		return 0;
+		return nullptr;
 	}
 
 private:
@@ -404,15 +400,15 @@ public:
 	{
 	}
 
-	void start(QHttp *);
+	void start(QHttp *) override;
 
-	QIODevice * sourceDevice()
+	QIODevice * sourceDevice() override
 	{
-		return 0;
+		return nullptr;
 	}
-	QIODevice * destinationDevice()
+	QIODevice * destinationDevice() override
 	{
-		return 0;
+		return nullptr;
 	}
 
 private:
@@ -443,7 +439,7 @@ public:
 		this->proxy = proxy;
 	}
 
-	inline void start(QHttp * http)
+	inline void start(QHttp * http) override
 	{
 		http->d->proxy = proxy;
 		QString user = proxy.user();
@@ -455,13 +451,13 @@ public:
 		http->d->finishedWithSuccess();
 	}
 
-	inline QIODevice * sourceDevice()
+	inline QIODevice * sourceDevice() override
 	{
-		return 0;
+		return nullptr;
 	}
-	inline QIODevice * destinationDevice()
+	inline QIODevice * destinationDevice() override
 	{
-		return 0;
+		return nullptr;
 	}
 
 private:
@@ -483,15 +479,15 @@ public:
 	{
 	}
 
-	void start(QHttp *);
+	void start(QHttp *) override;
 
-	QIODevice * sourceDevice()
+	QIODevice * sourceDevice() override
 	{
-		return 0;
+		return nullptr;
 	}
-	QIODevice * destinationDevice()
+	QIODevice * destinationDevice() override
 	{
-		return 0;
+		return nullptr;
 	}
 
 private:
@@ -516,15 +512,15 @@ public:
 	QHttpCloseRequest()
 	{
 	}
-	void start(QHttp *);
+	void start(QHttp *) override;
 
-	QIODevice * sourceDevice()
+	QIODevice * sourceDevice() override
 	{
-		return 0;
+		return nullptr;
 	}
-	QIODevice * destinationDevice()
+	QIODevice * destinationDevice() override
 	{
-		return 0;
+		return nullptr;
 	}
 };
 
@@ -537,7 +533,7 @@ class QHttpHeaderPrivate
 {
 	Q_DECLARE_PUBLIC(QHttpHeader)
 public:
-	inline virtual ~QHttpHeaderPrivate() {}
+	inline virtual ~QHttpHeaderPrivate() = default;
 
 	QList<QPair<QString, QString>> values;
 	bool valid;
@@ -663,8 +659,7 @@ QHttpHeader::QHttpHeader(QHttpHeaderPrivate & dd, const QHttpHeader & header)
     Destructor.
 */
 QHttpHeader::~QHttpHeader()
-{
-}
+    = default;
 
 /*!
     Assigns \a h and returns a reference to this http header.
@@ -1964,7 +1959,7 @@ qint64 QHttp::bytesAvailable() const
 */
 qint64 QHttp::read(char * data, qint64 maxlen)
 {
-	if(data == 0 && maxlen != 0)
+	if(data == nullptr && maxlen != 0)
 	{
 		qWarning("QHttp::read: Null pointer error");
 		return -1;
@@ -2060,7 +2055,7 @@ QHttpResponseHeader QHttp::lastResponse() const
 QIODevice * QHttp::currentSourceDevice() const
 {
 	if(d->pending.isEmpty())
-		return 0;
+		return nullptr;
 	return d->pending.first()->sourceDevice();
 }
 
@@ -2077,7 +2072,7 @@ QIODevice * QHttp::currentSourceDevice() const
 QIODevice * QHttp::currentDestinationDevice() const
 {
 	if(d->pending.isEmpty())
-		return 0;
+		return nullptr;
 	return d->pending.first()->destinationDevice();
 }
 
@@ -2286,7 +2281,7 @@ int QHttp::get(const QString & path, QIODevice * to)
 {
 	QHttpRequestHeader header(QLatin1String("GET"), path);
 	header.setValue(QLatin1String("Connection"), QLatin1String("Keep-Alive"));
-	return d->addRequest(new QHttpPGHRequest(header, (QIODevice *)0, to));
+	return d->addRequest(new QHttpPGHRequest(header, (QIODevice *)nullptr, to));
 }
 
 /*!
@@ -2360,7 +2355,7 @@ int QHttp::head(const QString & path)
 {
 	QHttpRequestHeader header(QLatin1String("HEAD"), path);
 	header.setValue(QLatin1String("Connection"), QLatin1String("Keep-Alive"));
-	return d->addRequest(new QHttpPGHRequest(header, (QIODevice *)0, 0));
+	return d->addRequest(new QHttpPGHRequest(header, (QIODevice *)nullptr, nullptr));
 }
 
 /*!
@@ -2689,7 +2684,7 @@ void QHttpPrivate::_q_slotClosed()
 		finishedWithError(QLatin1String(QT_TRANSLATE_NOOP("QHttp", "Server closed connection unexpectedly")), QHttp::UnexpectedClose);
 	}
 
-	postDevice = 0;
+	postDevice = nullptr;
 	if(state != QHttp::Closing)
 		setState(QHttp::Closing);
 	QMetaObject::invokeMethod(q, "_q_slotDoFinished", Qt::QueuedConnection);
@@ -2742,7 +2737,7 @@ void QHttpPrivate::_q_slotConnected()
 void QHttpPrivate::_q_slotError(QAbstractSocket::SocketError err)
 {
 	Q_Q(QHttp);
-	postDevice = 0;
+	postDevice = nullptr;
 
 	if(state == QHttp::Connecting || state == QHttp::Reading || state == QHttp::Sending)
 	{
@@ -2831,7 +2826,7 @@ void QHttpPrivate::postMoreData()
 		}
 		if(postDevice->atEnd())
 		{
-			postDevice = 0;
+			postDevice = nullptr;
 		}
 
 		socket->write(arr, n);
@@ -3024,7 +3019,7 @@ void QHttpPrivate::_q_slotReadyRead()
 	else
 	{
 		qint64 n = socket->bytesAvailable();
-		QByteArray * arr = 0;
+		QByteArray * arr = nullptr;
 		if(chunkedSize != -1)
 		{
 			// transfer-encoding is chunked
@@ -3139,7 +3134,7 @@ void QHttpPrivate::_q_slotReadyRead()
 				qint64 bytesWritten;
 				bytesWritten = toDevice->write(*arr, n);
 				delete arr;
-				arr = 0;
+				arr = nullptr;
 				// if writing to the device does not succeed, quit with error
 				if(bytesWritten == -1 || bytesWritten < n)
 				{
@@ -3162,7 +3157,7 @@ void QHttpPrivate::_q_slotReadyRead()
 				char * ptr = rba.reserve(arr->size());
 				memcpy(ptr, arr->data(), arr->size());
 				delete arr;
-				arr = 0;
+				arr = nullptr;
 #if defined(QHTTP_DEBUG)
 				qDebug("QHttp::_q_slotReadyRead(): read %lld bytes (%lld bytes done)", n, bytesDone + q->bytesAvailable());
 #endif
@@ -3263,7 +3258,7 @@ void QHttpPrivate::closeConn()
 	if(state == QHttp::Closing || state == QHttp::Unconnected)
 		return;
 
-	postDevice = 0;
+	postDevice = nullptr;
 	setState(QHttp::Closing);
 
 	// Already closed ?
@@ -3289,7 +3284,7 @@ void QHttpPrivate::setSock(QTcpSocket * sock)
 		delete socket;
 
 	// use the new QTcpSocket socket, or create one if socket is 0.
-	deleteSocket = (sock == 0);
+	deleteSocket = (sock == nullptr);
 	socket = sock;
 	if(!socket)
 	{

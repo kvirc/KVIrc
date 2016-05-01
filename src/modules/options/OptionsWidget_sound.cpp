@@ -45,8 +45,7 @@ OptionsWidget_sound::OptionsWidget_sound(QWidget * pParent)
 }
 
 OptionsWidget_sound::~OptionsWidget_sound()
-{
-}
+    = default;
 
 OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -142,8 +141,7 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 }
 
 OptionsWidget_soundGeneral::~OptionsWidget_soundGeneral()
-{
-}
+    = default;
 
 void OptionsWidget_soundGeneral::showEvent(QShowEvent *)
 {
@@ -197,7 +195,7 @@ void OptionsWidget_soundGeneral::soundAutoDetect()
 
 	g_pApp->setOverrideCursor(Qt::WaitCursor);
 
-	m->ctrl("detectSoundSystem", 0);
+	m->ctrl("detectSoundSystem", nullptr);
 	soundFillBox();
 
 	g_pApp->restoreOverrideCursor();
@@ -211,7 +209,7 @@ void OptionsWidget_soundGeneral::mediaAutoDetect()
 
 	g_pApp->setOverrideCursor(Qt::WaitCursor);
 
-	m->ctrl("detectMediaPlayer", 0);
+	m->ctrl("detectMediaPlayer", nullptr);
 	mediaFillBox();
 
 	g_pApp->restoreOverrideCursor();
@@ -350,5 +348,4 @@ OptionsWidget_sounds::OptionsWidget_sounds(QWidget * parent)
 }
 
 OptionsWidget_sounds::~OptionsWidget_sounds()
-{
-}
+    = default;

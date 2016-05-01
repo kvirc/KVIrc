@@ -31,5 +31,4 @@ KviIrcConnectionAntiCtcpFloodData::KviIrcConnectionAntiCtcpFloodData()
 }
 
 KviIrcConnectionAntiCtcpFloodData::~KviIrcConnectionAntiCtcpFloodData()
-{
-}
+    = default;

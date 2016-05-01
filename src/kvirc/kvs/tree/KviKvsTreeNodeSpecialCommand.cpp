@@ -30,8 +30,7 @@ KviKvsTreeNodeSpecialCommand::KviKvsTreeNodeSpecialCommand(const QChar * pLocati
 }
 
 KviKvsTreeNodeSpecialCommand::~KviKvsTreeNodeSpecialCommand()
-{
-}
+    = default;
 
 void KviKvsTreeNodeSpecialCommand::contextDescription(QString & szBuffer)
 {

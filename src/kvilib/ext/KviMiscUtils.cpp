@@ -71,10 +71,10 @@ namespace KviMiscUtils
 		if(sl.isEmpty())
 			return false;
 		// must all be numbers
-		for(QStringList::Iterator it = sl.begin(); it != sl.end(); ++it)
+		for(auto & it : sl)
 		{
 			bool bOk;
-			int i = (*it).toInt(&bOk);
+			int i = it.toInt(&bOk);
 			if(!bOk)
 				return false;
 			if(i < 0)

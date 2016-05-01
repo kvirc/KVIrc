@@ -30,8 +30,7 @@ KviKvsEventHandler::KviKvsEventHandler(Type t)
 }
 
 KviKvsEventHandler::~KviKvsEventHandler()
-{
-}
+    = default;
 
 KviKvsScriptEventHandler::KviKvsScriptEventHandler(const QString & szHandlerName, const QString & szContextName, const QString & szCode, bool bEnabled)
     : KviKvsEventHandler(KviKvsEventHandler::Script), m_szName(szHandlerName), m_bEnabled(bEnabled)

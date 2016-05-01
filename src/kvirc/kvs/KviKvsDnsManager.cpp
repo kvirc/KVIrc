@@ -34,7 +34,7 @@
 #include "KviLocale.h"
 #include "KviError.h"
 
-KviKvsDnsManager * KviKvsDnsManager::m_pInstance = 0;
+KviKvsDnsManager * KviKvsDnsManager::m_pInstance = nullptr;
 
 KviKvsDnsObject::KviKvsDnsObject(KviDnsResolver * pDns, KviWindow * pWnd, const QString & szQuery, bool bRebindOnWindowClose, KviKvsScript * pCallback, KviKvsVariantList * pParameterList)
 {
@@ -48,7 +48,7 @@ KviKvsDnsObject::KviKvsDnsObject(KviDnsResolver * pDns, KviWindow * pWnd, const 
 
 KviKvsDnsObject::~KviKvsDnsObject()
 {
-	QObject::disconnect(m_pDns, 0, 0, 0);
+	QObject::disconnect(m_pDns, nullptr, nullptr, nullptr);
 	if(m_pDns->isRunning())
 	{
 		//g_pApp->collectGarbage(m_pDns);
@@ -67,7 +67,7 @@ KviKvsDnsObject::~KviKvsDnsObject()
 KviKvsDnsManager::KviKvsDnsManager()
     : QObject()
 {
-	m_pDnsObjects = 0;
+	m_pDnsObjects = nullptr;
 }
 
 KviKvsDnsManager::~KviKvsDnsManager()
@@ -94,7 +94,7 @@ void KviKvsDnsManager::done()
 		return;
 	}
 	delete KviKvsDnsManager::m_pInstance;
-	KviKvsDnsManager::m_pInstance = 0;
+	KviKvsDnsManager::m_pInstance = nullptr;
 }
 
 void KviKvsDnsManager::addDns(KviKvsDnsObject * pObject)
@@ -156,7 +156,7 @@ void KviKvsDnsManager::dnsLookupTerminated(KviDnsResolver * pDns)
 		}
 		o->parameterList()->prepend(new KviKvsVariant(o->query())); // $0
 
-		copy.run(o->window(), o->parameterList(), 0, KviKvsScript::PreserveParams);
+		copy.run(o->window(), o->parameterList(), nullptr, KviKvsScript::PreserveParams);
 	}
 	else
 	{

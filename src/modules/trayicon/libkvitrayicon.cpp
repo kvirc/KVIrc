@@ -71,7 +71,7 @@ KviTrayIconWidget::KviTrayIconWidget()
     : QSystemTrayIcon(g_pMainWindow), m_CurrentPixmap(ICON_SIZE, ICON_SIZE), m_Tip(g_pMainWindow, "dock_tooltip")
 {
 	g_pTrayIcon = this;
-	m_pContextPopup = new QMenu(0);
+	m_pContextPopup = new QMenu(nullptr);
 	setContextMenu(m_pContextPopup);
 
 	m_iConsoles = 0;
@@ -87,7 +87,7 @@ KviTrayIconWidget::KviTrayIconWidget()
 
 	g_pMainWindow->setTrayIcon(this);
 
-	m_pAwayPopup = new QMenu(0);
+	m_pAwayPopup = new QMenu(nullptr);
 
 #ifndef COMPILE_ON_MAC
 	m_pTitleLabel = new QLabel(__tr2qs("<b><center>KVIrc Tray Options</center></b>"), m_pContextPopup);
@@ -128,7 +128,7 @@ KviTrayIconWidget::KviTrayIconWidget()
 KviTrayIconWidget::~KviTrayIconWidget()
 {
 	g_pTrayIcon = nullptr;
-	g_pMainWindow->setTrayIcon(0);
+	g_pMainWindow->setTrayIcon(nullptr);
 	delete m_pAwayPopup;
 #ifndef COMPILE_ON_MAC
 	delete m_pTitleLabel;
@@ -238,7 +238,7 @@ bool KviTrayIconWidget::event(QEvent * e)
 			}
 		}
 
-		srand(time(0));
+		srand(time(nullptr));
 
 		// We use the bad way to generate random numbers :)))))
 

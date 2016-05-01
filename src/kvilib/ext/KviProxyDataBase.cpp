@@ -30,7 +30,7 @@ KviProxyDataBase::KviProxyDataBase()
 {
 	m_pProxyList = new KviPointerList<KviProxy>;
 	m_pProxyList->setAutoDelete(true);
-	m_pCurrentProxy = 0;
+	m_pCurrentProxy = nullptr;
 }
 
 KviProxyDataBase::~KviProxyDataBase()
@@ -65,7 +65,7 @@ KviProxy * KviProxyDataBase::findProxy(const KviProxy * pProxy, bool bName)
 				return p;
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 void KviProxyDataBase::clear()
@@ -73,7 +73,7 @@ void KviProxyDataBase::clear()
 	delete m_pProxyList;
 	m_pProxyList = new KviPointerList<KviProxy>;
 	m_pProxyList->setAutoDelete(true);
-	m_pCurrentProxy = 0;
+	m_pCurrentProxy = nullptr;
 }
 
 void KviProxyDataBase::load(const QString & filename)

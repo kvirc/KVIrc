@@ -36,9 +36,9 @@
 #include <QFileInfo>
 #include <QSplitter>
 
-HelpIndex * g_pDocIndex = 0;
-KviPointerList<HelpWidget> * g_pHelpWidgetList = 0;
-KviPointerList<HelpWindow> * g_pHelpWindowList = 0;
+HelpIndex * g_pDocIndex = nullptr;
+KviPointerList<HelpWidget> * g_pHelpWidgetList = nullptr;
+KviPointerList<HelpWindow> * g_pHelpWindowList = nullptr;
 
 /*
 	@doc: help.open
@@ -246,11 +246,11 @@ static bool help_module_cleanup(KviModule *)
 	while(g_pHelpWidgetList->first())
 		delete g_pHelpWidgetList->first();
 	delete g_pHelpWidgetList;
-	g_pHelpWidgetList = 0;
+	g_pHelpWidgetList = nullptr;
 	while(g_pHelpWindowList->first())
 		g_pHelpWindowList->first()->close();
 	delete g_pHelpWindowList;
-	g_pHelpWindowList = 0;
+	g_pHelpWindowList = nullptr;
 	return true;
 }
 

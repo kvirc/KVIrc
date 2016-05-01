@@ -285,7 +285,7 @@ QString * KviIrcMessage::messageTagPtr(const QString & szTag)
 {
 	QHash<QString, QString>::iterator i = m_ParsedMessageTags.find(szTag);
 	if(i == m_ParsedMessageTags.end())
-		return NULL;
+		return nullptr;
 	return &*i;
 }
 

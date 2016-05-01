@@ -105,8 +105,7 @@ NickAlternativesDialog::NickAlternativesDialog(QWidget * par, const QString & n1
 }
 
 NickAlternativesDialog::~NickAlternativesDialog()
-{
-}
+    = default;
 
 void NickAlternativesDialog::fill(QString & n1, QString & n2, QString & n3)
 {
@@ -250,8 +249,7 @@ AvatarSelectionDialog::AvatarSelectionDialog(QWidget * par, const QString & szIn
 }
 
 AvatarSelectionDialog::~AvatarSelectionDialog()
-{
-}
+    = default;
 
 void AvatarSelectionDialog::okClicked()
 {
@@ -285,8 +283,7 @@ OptionsWidget_identity::OptionsWidget_identity(QWidget * parent)
 }
 
 OptionsWidget_identity::~OptionsWidget_identity()
-{
-}
+    = default;
 
 KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -413,8 +410,7 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 }
 
 KviIdentityGeneralOptionsWidget::~KviIdentityGeneralOptionsWidget()
-{
-}
+    = default;
 
 void KviIdentityGeneralOptionsWidget::setNickAlternatives()
 {
@@ -665,9 +661,9 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 OptionsWidget_identityAdvanced::OptionsWidget_identityAdvanced(QWidget * parent)
     : KviOptionsWidget(parent)
 {
-	m_pISelector = 0;
-	m_pWSelector = 0;
-	m_pSSelector = 0;
+	m_pISelector = nullptr;
+	m_pWSelector = nullptr;
+	m_pSSelector = nullptr;
 
 	m_sModeStr = KVI_OPTION_STRING(KviOption_stringDefaultUserMode);
 	m_bI = m_sModeStr.contains('i');
@@ -701,8 +697,7 @@ OptionsWidget_identityAdvanced::OptionsWidget_identityAdvanced(QWidget * parent)
 }
 
 OptionsWidget_identityAdvanced::~OptionsWidget_identityAdvanced()
-{
-}
+    = default;
 
 void OptionsWidget_identityAdvanced::commit()
 {
@@ -721,7 +716,7 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
     : KviOptionsWidget(pParent)
 {
 	setObjectName("identity_profiles_option_widget");
-	m_pEditor = 0;
+	m_pEditor = nullptr;
 	m_iCurrentEditedProfile = -1;
 
 	createLayout();
@@ -795,8 +790,7 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 }
 
 OptionsWidget_identityProfile::~OptionsWidget_identityProfile()
-{
-}
+    = default;
 
 void OptionsWidget_identityProfile::toggleControls()
 {
@@ -982,8 +976,7 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 }
 
 IdentityProfileEditor::~IdentityProfileEditor()
-{
-}
+    = default;
 
 bool IdentityProfileEditor::editProfile(KviIdentityProfile * pProfile)
 {

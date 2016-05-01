@@ -54,7 +54,7 @@ static KviChannelWindow * chan_kvs_find_channel(KviKvsModuleFunctionCall * c, QS
 		{
 			if(!bNoWarnings)
 				c->warning(__tr2qs("Can't find the window with ID '%Q'"), &szChan);
-			return 0;
+			return nullptr;
 		}
 		if(w->type() == KviWindow::Channel)
 			return (KviChannelWindow *)w;
@@ -63,7 +63,7 @@ static KviChannelWindow * chan_kvs_find_channel(KviKvsModuleFunctionCall * c, QS
 		if(!bNoWarnings)
 			c->warning(__tr2qs("The specified window (%Q) is not a channel"), &szChan);
 	}
-	return 0;
+	return nullptr;
 }
 
 /*
@@ -1925,7 +1925,7 @@ static bool chan_kvs_fnc_common(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, iContextId)
 	KVSM_PARAMETERS_END(c)
 
-	KviConsoleWindow * pConsole = NULL;
+	KviConsoleWindow * pConsole = nullptr;
 	if(c->parameterCount() > 1)
 		pConsole = g_pApp->findConsole(iContextId);
 	else

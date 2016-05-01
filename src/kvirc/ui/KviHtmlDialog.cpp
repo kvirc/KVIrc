@@ -120,8 +120,7 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent, KviHtmlDialogData * pData)
 }
 
 KviHtmlDialog::~KviHtmlDialog()
-{
-}
+    = default;
 
 void KviHtmlDialog::button1Pressed()
 {

@@ -105,7 +105,7 @@ DccChatWindow::DccChatWindow(DccDescriptor * dcc, const char * name)
 
 	//setFocusHandler(m_pInput,this);
 
-	m_pSlaveThread = 0;
+	m_pSlaveThread = nullptr;
 
 	if(KVI_OPTION_BOOL(KviOption_boolAutoLogDccChat))
 		m_pIrcView->startLogging();
@@ -119,7 +119,7 @@ DccChatWindow::DccChatWindow(DccDescriptor * dcc, const char * name)
 	connect(m_pMarshal, SIGNAL(sslError(const char *)), this, SLOT(sslError(const char *)));
 #endif
 
-	m_pSlaveThread = 0;
+	m_pSlaveThread = nullptr;
 
 	startConnection();
 }
@@ -131,7 +131,7 @@ DccChatWindow::~DccChatWindow()
 	{
 		m_pSlaveThread->terminate();
 		delete m_pSlaveThread;
-		m_pSlaveThread = 0;
+		m_pSlaveThread = nullptr;
 	}
 	KviThreadManager::killPendingEvents(this);
 }
@@ -628,7 +628,7 @@ void DccChatThread::run()
 {
 	KviDccThreadIncomingData data;
 	data.iLen = 0;
-	data.buffer = 0;
+	data.buffer = nullptr;
 
 	for(;;)
 	{
@@ -728,7 +728,7 @@ void DccChatThread::run()
 					else
 					{
 						KviMemory::free(data.buffer);
-						data.buffer = 0;
+						data.buffer = nullptr;
 					}
 
 					if(!handleInvalidSocketRead(readLen))
@@ -753,7 +753,7 @@ out_of_the_loop:
 	if(m_pSSL)
 	{
 		KviSSLMaster::freeSSL(m_pSSL);
-		m_pSSL = 0;
+		m_pSSL = nullptr;
 	}
 #endif
 
@@ -801,7 +801,7 @@ bool DccChatThread::handleIncomingData(KviDccThreadIncomingData * data, bool bCr
 				// no more data in the buffer
 				KVI_ASSERT(data->iLen == 0);
 				KviMemory::free(data->buffer);
-				data->buffer = end = aux = 0;
+				data->buffer = end = aux = nullptr;
 			}
 			postEvent(parent(), e);
 		}
@@ -823,7 +823,7 @@ bool DccChatThread::handleIncomingData(KviDccThreadIncomingData * data, bool bCr
 			e->setData(s);
 			data->iLen = 0;
 			KviMemory::free(data->buffer);
-			data->buffer = 0;
+			data->buffer = nullptr;
 			postEvent(parent(), e);
 		}
 	}

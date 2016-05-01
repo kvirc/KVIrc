@@ -43,7 +43,7 @@ KviDataBuffer::KviDataBuffer(int uSize, const unsigned char * data)
 KviDataBuffer::KviDataBuffer()
 {
 	m_uSize = 0;
-	m_pData = 0;
+	m_pData = nullptr;
 }
 
 KviDataBuffer::~KviDataBuffer()
@@ -115,7 +115,7 @@ void KviDataBuffer::remove(int uSize)
 	else
 	{
 		KviMemory::free(m_pData);
-		m_pData = 0;
+		m_pData = nullptr;
 	}
 }
 
@@ -129,7 +129,7 @@ void KviDataBuffer::resize(int uSize)
 	else
 	{
 		KviMemory::free(m_pData);
-		m_pData = 0;
+		m_pData = nullptr;
 	}
 	m_uSize = uSize;
 }

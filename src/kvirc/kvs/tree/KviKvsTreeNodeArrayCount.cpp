@@ -34,8 +34,7 @@ KviKvsTreeNodeArrayCount::KviKvsTreeNodeArrayCount(const QChar * pLocation, KviK
 }
 
 KviKvsTreeNodeArrayCount::~KviKvsTreeNodeArrayCount()
-{
-}
+    = default;
 
 void KviKvsTreeNodeArrayCount::contextDescription(QString & szBuffer)
 {
@@ -79,5 +78,5 @@ bool KviKvsTreeNodeArrayCount::evaluateReadOnlyInObjectScope(KviKvsObject * o, K
 
 bool KviKvsTreeNodeArrayCount::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
-	return evaluateReadOnlyInObjectScope(0, c, pBuffer);
+	return evaluateReadOnlyInObjectScope(nullptr, c, pBuffer);
 }

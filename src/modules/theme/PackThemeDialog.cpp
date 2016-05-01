@@ -144,7 +144,7 @@ void PackThemeDataWidget::parseThemes(KviPointerList<KviThemeInfo> * pThemeInfoL
 	QString szPackageAuthor;
 	QString szPackageDescription;
 	QString szPackageVersion;
-	KviThemeInfo * pThemeInfo = 0;
+	KviThemeInfo * pThemeInfo = nullptr;
 	bool bPackagePathSet = false;
 
 	QString szPackagePath = QDir::homePath();
@@ -242,8 +242,7 @@ void PackThemeDataWidget::parseThemes(KviPointerList<KviThemeInfo> * pThemeInfoL
 }
 
 PackThemeDataWidget::~PackThemeDataWidget()
-{
-}
+    = default;
 
 PackThemeInfoWidget::PackThemeInfoWidget(PackThemeDialog * pParent)
     : QWizardPage(pParent)
@@ -312,8 +311,7 @@ void PackThemeInfoWidget::initializePage()
 }
 
 PackThemeInfoWidget::~PackThemeInfoWidget()
-{
-}
+    = default;
 
 PackThemeImageWidget::PackThemeImageWidget(PackThemeDialog * pParent)
     : QWizardPage(pParent)
@@ -340,8 +338,7 @@ PackThemeImageWidget::PackThemeImageWidget(PackThemeDialog * pParent)
 }
 
 PackThemeImageWidget::~PackThemeImageWidget()
-{
-}
+    = default;
 
 void PackThemeImageWidget::imageSelectionChanged(const QString & szImagePath)
 {
@@ -393,8 +390,7 @@ PackThemeSaveWidget::PackThemeSaveWidget(PackThemeDialog * pParent)
 }
 
 PackThemeSaveWidget::~PackThemeSaveWidget()
-{
-}
+    = default;
 
 void PackThemeSaveWidget::initializePage()
 {
@@ -410,8 +406,7 @@ void PackThemeSaveWidget::initializePage()
 #endif
 
 PackThemeDialog::~PackThemeDialog()
-{
-}
+    = default;
 
 void PackThemeDialog::accept()
 {

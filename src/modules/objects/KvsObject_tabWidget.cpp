@@ -250,7 +250,7 @@ KVSO_CLASS_FUNCTION(tabWidget, widgetAt)
 	KVSO_PARAMETER("index", KVS_PT_INTEGER, 0, iIndex)
 	KVSO_PARAMETERS_END(c)
 	if(iIndex >= tabsList.count() || iIndex < 0)
-		c->returnValue()->setHObject((kvs_hobject_t)0);
+		c->returnValue()->setHObject((kvs_hobject_t) nullptr);
 	else
 		c->returnValue()->setHObject(tabsList.at(iIndex));
 	return true;

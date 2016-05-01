@@ -31,8 +31,7 @@ KviKvsTreeNodeGlobalVariable::KviKvsTreeNodeGlobalVariable(const QChar * pLocati
 }
 
 KviKvsTreeNodeGlobalVariable::~KviKvsTreeNodeGlobalVariable()
-{
-}
+    = default;
 
 void KviKvsTreeNodeGlobalVariable::contextDescription(QString & szBuffer)
 {
@@ -58,5 +57,5 @@ bool KviKvsTreeNodeGlobalVariable::evaluateReadOnly(KviKvsRunTimeContext * c, Kv
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeGlobalVariable::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
-	return new KviKvsHashElement(0, c->globalVariables()->get(m_szIdentifier), c->globalVariables(), m_szIdentifier);
+	return new KviKvsHashElement(nullptr, c->globalVariables()->get(m_szIdentifier), c->globalVariables(), m_szIdentifier);
 }

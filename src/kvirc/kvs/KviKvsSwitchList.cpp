@@ -26,8 +26,8 @@
 
 KviKvsSwitchList::KviKvsSwitchList()
 {
-	m_pShortSwitchDict = 0;
-	m_pLongSwitchDict = 0;
+	m_pShortSwitchDict = nullptr;
+	m_pLongSwitchDict = nullptr;
 }
 
 KviKvsSwitchList::~KviKvsSwitchList()
@@ -43,12 +43,12 @@ void KviKvsSwitchList::clear()
 	if(m_pShortSwitchDict)
 	{
 		delete m_pShortSwitchDict;
-		m_pShortSwitchDict = 0;
+		m_pShortSwitchDict = nullptr;
 	}
 	if(m_pLongSwitchDict)
 	{
 		delete m_pLongSwitchDict;
-		m_pLongSwitchDict = 0;
+		m_pLongSwitchDict = nullptr;
 	}
 }
 

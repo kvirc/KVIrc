@@ -33,8 +33,7 @@ KviTranslator::KviTranslator(QObject * pParent)
 }
 
 KviTranslator::~KviTranslator()
-{
-}
+    = default;
 
 QString KviTranslator::translate(const char *, const char * pcMessage, const char *) const
 {

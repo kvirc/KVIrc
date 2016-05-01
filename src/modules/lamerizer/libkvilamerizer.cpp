@@ -47,7 +47,7 @@
 #include "KviPointerList.h"
 #include "KviCryptEngineDescription.h"
 
-static KviPointerList<KviCryptEngine> * g_pEngineList = 0;
+static KviPointerList<KviCryptEngine> * g_pEngineList = nullptr;
 
 KviLamerizerEngine::KviLamerizerEngine(bool bLight)
     : KviCryptEngine()
@@ -236,7 +236,7 @@ static bool lamerizer_module_cleanup(KviModule * m)
 	while(g_pEngineList->first())
 		delete g_pEngineList->first();
 	delete g_pEngineList;
-	g_pEngineList = 0;
+	g_pEngineList = nullptr;
 	m->unregisterCryptEngines();
 	return true;
 #else

@@ -41,13 +41,13 @@
 #include <QMimeData>
 #include <QMenu>
 
-static QAction * g_pDraggedAction = 0;
+static QAction * g_pDraggedAction = nullptr;
 
 KviCustomToolBar::KviCustomToolBar(KviCustomToolBarDescriptor * pDesc, const QString & szLabel, Qt::ToolBarArea type, const char * pcName)
     : KviToolBar(szLabel, type, pcName)
 {
 	m_pDescriptor = pDesc;
-	m_pFilteredChildren = 0;
+	m_pFilteredChildren = nullptr;
 	setAcceptDrops(true);
 	// if the user removes all the items from this toolbar, keep a minimum size to permit dropping new item
 	setMinimumSize(16, 16);
@@ -69,7 +69,7 @@ KviCustomToolBar::~KviCustomToolBar()
 	if(KviActionManager::customizingToolBars())
 	{
 		if(KviActionManager::currentToolBar() == this)
-			KviActionManager::instance()->setCurrentToolBar(0);
+			KviActionManager::instance()->setCurrentToolBar(nullptr);
 	}
 
 	if(m_pFilteredChildren)
@@ -130,10 +130,10 @@ void KviCustomToolBar::beginCustomize()
 	m_pFilteredChildren->setAutoDelete(true);
 	// filter the events for all the children
 	QList<QObject *> list = children();
-	for(QList<QObject *>::Iterator it = list.begin(); it != list.end(); ++it)
+	for(auto & it : list)
 	{
-		if((*it)->isWidgetType())
-			filterChild(*it);
+		if(it->isWidgetType())
+			filterChild(it);
 	}
 }
 
@@ -141,16 +141,16 @@ void KviCustomToolBar::endCustomize()
 {
 	// stop filtering events
 	QList<QObject *> list = children();
-	for(QList<QObject *>::Iterator it = list.begin(); it != list.end(); ++it)
+	for(auto & it : list)
 	{
-		if((*it)->isWidgetType())
-			unfilterChild(*it);
+		if(it->isWidgetType())
+			unfilterChild(it);
 	}
 
 	if(m_pFilteredChildren)
 	{
 		delete m_pFilteredChildren;
-		m_pFilteredChildren = 0;
+		m_pFilteredChildren = nullptr;
 	}
 	syncDescriptor();
 }
@@ -250,7 +250,7 @@ void KviCustomToolBar::dropEvent(QDropEvent * e)
 
 	if(!g_pDraggedAction->objectName().compare(e->mimeData()->text()))
 	{
-		g_pDraggedAction = 0;
+		g_pDraggedAction = nullptr;
 		e->acceptProposedAction();
 	}
 }
@@ -286,7 +286,7 @@ bool KviCustomToolBar::eventFilter(QObject * o, QEvent * e)
 					{
 						if(pEvent->pos().x() > (pMovedWidget->width() - 4))
 						{
-							g_pDraggedAction = 0;
+							g_pDraggedAction = nullptr;
 							return KviToolBar::eventFilter(o, e); // let the applet handle the event it
 						}
 					}
@@ -309,7 +309,7 @@ bool KviCustomToolBar::eventFilter(QObject * o, QEvent * e)
 
 					// search for the action after the moved one: we'll need it
 					// to reinsert m_pMovedChild in the right position if necessary
-					QAction * pAfterAction = 0;
+					QAction * pAfterAction = nullptr;
 					bool found = false;
 					foreach(QAction * pTmp, actions())
 					{
@@ -334,7 +334,7 @@ bool KviCustomToolBar::eventFilter(QObject * o, QEvent * e)
 						KviActionManager::instance()->emitRemoveActionsHintRequest();
 						insertAction(pAfterAction, g_pDraggedAction);
 					}
-					g_pDraggedAction = 0;
+					g_pDraggedAction = nullptr;
 					return true;
 				}
 			}

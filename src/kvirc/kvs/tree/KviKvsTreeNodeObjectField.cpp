@@ -33,8 +33,7 @@ KviKvsTreeNodeObjectField::KviKvsTreeNodeObjectField(const QChar * pLocation, co
 }
 
 KviKvsTreeNodeObjectField::~KviKvsTreeNodeObjectField()
-{
-}
+    = default;
 
 void KviKvsTreeNodeObjectField::contextDescription(QString & szBuffer)
 {
@@ -65,5 +64,5 @@ bool KviKvsTreeNodeObjectField::evaluateReadOnlyInObjectScope(KviKvsObject * o, 
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeObjectField::evaluateReadWriteInObjectScope(KviKvsObject * o, KviKvsRunTimeContext *)
 {
-	return new KviKvsHashElement(0, o->dataContainer()->get(m_szIdentifier), o->dataContainer(), m_szIdentifier);
+	return new KviKvsHashElement(nullptr, o->dataContainer()->get(m_szIdentifier), o->dataContainer(), m_szIdentifier);
 }

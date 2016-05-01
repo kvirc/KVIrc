@@ -31,8 +31,7 @@ KviKvsTreeNodeLocalVariable::KviKvsTreeNodeLocalVariable(const QChar * pLocation
 }
 
 KviKvsTreeNodeLocalVariable::~KviKvsTreeNodeLocalVariable()
-{
-}
+    = default;
 
 void KviKvsTreeNodeLocalVariable::contextDescription(QString & szBuffer)
 {
@@ -61,7 +60,7 @@ bool KviKvsTreeNodeLocalVariable::evaluateReadOnly(KviKvsRunTimeContext * c, Kvi
 KviKvsRWEvaluationResult * KviKvsTreeNodeLocalVariable::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
 	return new KviKvsHashElement(
-	    0,
+	    nullptr,
 	    c->localVariables()->get(m_szIdentifier),
 	    c->localVariables(),
 	    m_szIdentifier);

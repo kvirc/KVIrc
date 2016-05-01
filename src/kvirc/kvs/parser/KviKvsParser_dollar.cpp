@@ -45,7 +45,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		else
 			warning(KVSP_curCharPointer, __tr2qs_ctx("Unexpected character %q (Unicode %x) after '$' function call prefix", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 		error(KVSP_curCharPointer, __tr2qs_ctx("Syntax error after '$' function call prefix. If you want to use a plain '$' in the code you need to escape it", "kvs"));
-		return 0;
+		return nullptr;
 	}
 
 	if(KVSP_curCharUnicode == '(')
@@ -54,7 +54,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		if(bInObjScope)
 		{
 			error(KVSP_curCharPointer, __tr2qs_ctx("Invalid expression evaluation in object scope", "kvs"));
-			return 0;
+			return nullptr;
 		}
 
 		KVSP_skipChar;
@@ -69,17 +69,17 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		if(bInObjScope)
 		{
 			error(KVSP_curCharPointer, __tr2qs_ctx("Invalid command evaluation in object scope", "kvs"));
-			return 0;
+			return nullptr;
 		}
 
 		KviKvsTreeNodeInstruction * i = parseInstructionBlock();
 		if(!i)
 		{
 			if(error())
-				return 0;
+				return nullptr;
 			// trigger an error anyway: this is abused syntax :D
 			error(KVSP_curCharPointer, __tr2qs_ctx("Empty instruction block for command evaluation", "kvs"));
-			return 0;
+			return nullptr;
 		}
 
 		return new KviKvsTreeNodeCommandEvaluation(pDollarBegin, i);
@@ -91,7 +91,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		if(bInObjScope)
 		{
 			error(KVSP_curCharPointer, __tr2qs_ctx("Parameter identifiers are forbidden in object scope (after the '->' operator)", "kvs"));
-			return 0;
+			return nullptr;
 		}
 
 		KVSP_skipChar;
@@ -107,7 +107,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		if(bInObjScope)
 		{
 			error(KVSP_curCharPointer, __tr2qs_ctx("Parameter identifiers are forbidden in object scope (after the '->' operator)", "kvs"));
-			return 0;
+			return nullptr;
 		}
 
 		pBegin = KVSP_curCharPointer;
@@ -172,7 +172,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		if(bInObjScope)
 		{
 			error(KVSP_curCharPointer, __tr2qs_ctx("Syntax error: invalid $$ ($this) function call in object scope", "kvs"));
-			return 0;
+			return nullptr;
 		}
 		// handle $$
 		KVSP_skipChar;
@@ -201,7 +201,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 					{
 						warning(KVSP_curCharPointer - 1, __tr2qs_ctx("Stray '::' sequence or invalid following alias name", "kvs"));
 						error(KVSP_curCharPointer, __tr2qs_ctx("Syntax error: malformed alias function call identifier", "kvs"));
-						return 0;
+						return nullptr;
 					}
 
 					KVSP_skipChar;
@@ -212,7 +212,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 				{
 					warning(KVSP_curCharPointer - 1, __tr2qs_ctx("Stray ':' character: did you mean '...<namespace>::<alias_name>' ?", "kvs"));
 					error(KVSP_curCharPointer, __tr2qs_ctx("Syntax error: malformed (alias?) function call identifier", "kvs"));
-					return 0;
+					return nullptr;
 				}
 			}
 		}
@@ -220,7 +220,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 
 	QString szIdentifier1(pBegin, KVSP_curCharPointer - pBegin);
 
-	const QChar * pId2 = 0;
+	const QChar * pId2 = nullptr;
 	int iId2Len = 0;
 	bool bModuleFunctionCall = false;
 
@@ -270,7 +270,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 					else
 					{
 						KVSP_setCurCharPointer(pOriginalEndOfId1);
-						pId2 = 0;
+						pId2 = nullptr;
 						iId2Len = 0;
 						break;
 					}
@@ -278,7 +278,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 				else
 				{
 					KVSP_setCurCharPointer(pOriginalEndOfId1);
-					pId2 = 0;
+					pId2 = nullptr;
 					iId2Len = 0;
 					break;
 				}
@@ -315,7 +315,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 			KVSP_backChar;
 			l = parseCommaSeparatedParameterList();
 			if(!l)
-				return 0; // error
+				return nullptr; // error
 		}
 	}
 
@@ -365,5 +365,5 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 
 	// not reached
 	KVSP_ASSERT(false);
-	return 0;
+	return nullptr;
 }

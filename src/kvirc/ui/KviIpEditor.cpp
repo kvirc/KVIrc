@@ -42,10 +42,10 @@ KviIpEditor::KviIpEditor(QWidget * parent, AddressType addrType, const QString &
 	setObjectName(name);
 	for(int i = 0; i < 7; i++)
 	{
-		m_pEdit[i] = 0;
-		m_pLabel[i] = 0;
+		m_pEdit[i] = nullptr;
+		m_pLabel[i] = nullptr;
 	}
-	m_pEdit[7] = 0;
+	m_pEdit[7] = nullptr;
 	setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	setBackgroundRole(QPalette::Base);
 	setAddressType(addrType);
@@ -53,8 +53,7 @@ KviIpEditor::KviIpEditor(QWidget * parent, AddressType addrType, const QString &
 }
 
 KviIpEditor::~KviIpEditor()
-{
-}
+    = default;
 
 void KviIpEditor::setEnabled(bool bEnabled)
 {
@@ -91,11 +90,11 @@ KviIpEditor::AddressType KviIpEditor::addressType() const
 bool KviIpEditor::hasEmptyFields() const
 {
 	bool bHasEF = false;
-	for(int i = 0; i < 8; i++)
+	for(auto i : m_pEdit)
 	{
-		if(m_pEdit[i])
+		if(i)
 		{
-			if(m_pEdit[i]->text().isEmpty())
+			if(i->text().isEmpty())
 				bHasEF = true;
 		}
 	}
@@ -246,18 +245,18 @@ void KviIpEditor::recreateChildren()
 			if(m_pEdit[i])
 			{
 				delete m_pEdit[i];
-				m_pEdit[i] = 0;
+				m_pEdit[i] = nullptr;
 			}
 			if(m_pLabel[i - 1])
 			{
 				delete m_pLabel[i - 1];
-				m_pLabel[i - 1] = 0;
+				m_pLabel[i - 1] = nullptr;
 			}
 		}
 	}
 	//setMinimumWidth(4 + (max * minWidth) + ((max - 1) * m_pLabel[0]->sizeHint().width()));
 	setMinimumHeight(m_pLabel[0]->sizeHint().height() + 4);
-	resizeEvent(0);
+	resizeEvent(nullptr);
 }
 
 bool KviIpEditor::eventFilter(QObject * o, QEvent * e)

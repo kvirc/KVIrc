@@ -126,7 +126,7 @@ public:
 
 QUrlInfo::QUrlInfo()
 {
-	d = 0;
+	d = nullptr;
 }
 
 /*!
@@ -142,7 +142,7 @@ QUrlInfo::QUrlInfo(const QUrlInfo & ui)
 	}
 	else
 	{
-		d = 0;
+		d = nullptr;
 	}
 }
 
@@ -442,7 +442,7 @@ QUrlInfo & QUrlInfo::operator=(const QUrlInfo & ui)
 	else
 	{
 		delete d;
-		d = 0;
+		d = nullptr;
 	}
 	return *this;
 }
@@ -684,7 +684,7 @@ bool QUrlInfo::equal(const QUrlInfo & i1, const QUrlInfo & i2,
 bool QUrlInfo::operator==(const QUrlInfo & other) const
 {
 	if(!d)
-		return other.d == 0;
+		return other.d == nullptr;
 	if(!other.d)
 		return false;
 
@@ -710,7 +710,7 @@ bool QUrlInfo::operator==(const QUrlInfo & other) const
 */
 bool QUrlInfo::isValid() const
 {
-	return d != 0;
+	return d != nullptr;
 }
 
 QT_END_NAMESPACE

@@ -65,9 +65,9 @@ void KviKvsDownloadHandler::slotReplyFinished()
 	m_pParentScript->callFunction(m_pParentScript, "downloadCompletedEvent", &params);
 	m_pFile->close();
 	delete m_pFile;
-	m_pFile = 0;
+	m_pFile = nullptr;
 	m_pReply->deleteLater();
-	m_pReply = 0;
+	m_pReply = nullptr;
 	this->deleteLater();
 }
 
@@ -77,12 +77,12 @@ KviKvsDownloadHandler::~KviKvsDownloadHandler()
 	{
 		m_pFile->close();
 		delete m_pFile;
-		m_pFile = 0;
+		m_pFile = nullptr;
 	}
 	if(m_pReply)
 	{
 		delete m_pReply;
-		m_pReply = 0;
+		m_pReply = nullptr;
 	}
 }
 void KviKvsDownloadHandler::slotReadyRead()
@@ -449,7 +449,7 @@ QWebFrame * KvsObject_webView::findFrame(QWebFrame * pCurFrame, QString & szFram
 				return pCurFrame;
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 KVSO_CLASS_FUNCTION(webView, setLinkDelegationPolicy)
@@ -518,7 +518,7 @@ KVSO_CLASS_FUNCTION(webView, makePreview)
 	painter.end();
 	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("pixmap");
 	KviKvsVariantList params;
-	KviKvsObject * pObject = pClass->allocateInstance(0, "internalpixmap", c->context(), &params);
+	KviKvsObject * pObject = pClass->allocateInstance(nullptr, "internalpixmap", c->context(), &params);
 	((KvsObject_pixmap *)pObject)->setInternalImage(pImage);
 	c->returnValue()->setHObject(pObject->handle());
 	return true;
@@ -821,12 +821,12 @@ KVSO_CLASS_FUNCTION(webView, findText)
 	KVSO_PARAMETERS_END(c)
 	int findflag = 0;
 	int sum = 0;
-	for(QStringList::Iterator it = szFindFlag.begin(); it != szFindFlag.end(); ++it)
+	for(auto & it : szFindFlag)
 	{
 		findflag = 0;
 		for(unsigned int j = 0; j < findflag_num; j++)
 		{
-			if(KviQString::equalCI((*it), findflag_tbl[j]))
+			if(KviQString::equalCI(it, findflag_tbl[j]))
 			{
 				findflag = findflag_cod[j];
 				break;
@@ -835,7 +835,7 @@ KVSO_CLASS_FUNCTION(webView, findText)
 		if(findflag)
 			sum = sum | findflag;
 		else
-			c->warning(__tr2qs_ctx("Unknown findflag  '%Q'", "objects"), &(*it));
+			c->warning(__tr2qs_ctx("Unknown findflag  '%Q'", "objects"), &it);
 	}
 	((QWebView *)widget())->findText(szName, (QWebPage::FindFlags)findflag);
 	return true;
@@ -1169,7 +1169,7 @@ KVSO_CLASS_FUNCTION(webView, appendWebViewActionToMenu)
 		c->warning(__tr2qs_ctx("Can't add a non-popupmenu object", "objects"));
 		return true;
 	}
-	QAction * pAction = 0;
+	QAction * pAction = nullptr;
 	for(unsigned int i = 0; i < actions_num; i++)
 	{
 		if(KviQString::equalCI(szActionName, actions_tbl[i]))
@@ -1311,7 +1311,7 @@ void KvsObject_webView::slotLoadFinished(bool bOk)
 
 void KvsObject_webView::slotLoadStarted()
 {
-	KviKvsVariantList * lParams = 0;
+	KviKvsVariantList * lParams = nullptr;
 	callFunction(this, "loadStartedEvent", lParams);
 }
 
@@ -1413,6 +1413,5 @@ bool KviKvsWebView::event(QEvent * e)
 	return QWebView::event(e);
 }
 KviKvsWebView::~KviKvsWebView()
-{
-}
+    = default;
 #endif // COMPILE_WEBKIT_SUPPORT

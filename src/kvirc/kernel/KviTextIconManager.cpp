@@ -52,13 +52,13 @@ static KviTextIconAssocEntry default_associations[] = {
 	{ ":S", KviIconManager::Afraid },
 	{ ":|", KviIconManager::Demoralized },
 	{ ":P'", KviIconManager::Slurp },
-	{ 0, 0 }
+	{ nullptr, 0 }
 };
 
-KVIRC_API KviTextIconManager * g_pTextIconManager = 0;
+KVIRC_API KviTextIconManager * g_pTextIconManager = nullptr;
 
 KviTextIcon::KviTextIcon(KviIconManager::SmallIcon eIcon)
-    : m_eIcon(eIcon), m_pAnimatedPixmap(NULL)
+    : m_eIcon(eIcon), m_pAnimatedPixmap(nullptr)
 {
 }
 
@@ -77,7 +77,7 @@ KviTextIcon::KviTextIcon(QString szFile)
 	}
 	else
 	{
-		m_pAnimatedPixmap = NULL;
+		m_pAnimatedPixmap = nullptr;
 	}
 }
 
@@ -88,7 +88,7 @@ KviTextIcon::KviTextIcon(KviTextIcon * pIcon)
 	if(pIcon->m_pAnimatedPixmap)
 		m_pAnimatedPixmap = new KviAnimatedPixmap(*(pIcon->m_pAnimatedPixmap));
 	else
-		m_pAnimatedPixmap = NULL;
+		m_pAnimatedPixmap = nullptr;
 }
 
 KviTextIcon::~KviTextIcon()
@@ -125,7 +125,7 @@ void KviTextIcon::setFilename(QString szFileName)
 	}
 	else
 	{
-		m_pAnimatedPixmap = NULL;
+		m_pAnimatedPixmap = nullptr;
 	}
 	m_szFileName = szFileName;
 }
@@ -290,7 +290,7 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 		{
 			int iId = cfg.readIntEntry(*s, -1);
 			QString szTmp;
-			QPixmap * pix = 0;
+			QPixmap * pix = nullptr;
 			//qDebug("%s %s %i %i",__FILE__,__FUNCTION__,__LINE__,id);
 			if(iId > 0)
 			{

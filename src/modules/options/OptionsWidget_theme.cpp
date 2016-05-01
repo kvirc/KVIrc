@@ -48,8 +48,7 @@ OptionsWidget_theme::OptionsWidget_theme(QWidget * parent)
 }
 
 OptionsWidget_theme::~OptionsWidget_theme()
-{
-}
+    = default;
 
 OptionsWidget_themeTransparency::OptionsWidget_themeTransparency(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -142,8 +141,7 @@ OptionsWidget_themeTransparency::OptionsWidget_themeTransparency(QWidget * paren
 }
 
 OptionsWidget_themeTransparency::~OptionsWidget_themeTransparency()
-{
-}
+    = default;
 
 void OptionsWidget_themeTransparency::enableGlobalBackgroundPixmapSelector(bool)
 {
@@ -173,5 +171,4 @@ OptionsWidget_themeToolBarApplets::OptionsWidget_themeToolBarApplets(QWidget * p
 }
 
 OptionsWidget_themeToolBarApplets::~OptionsWidget_themeToolBarApplets()
-{
-}
+    = default;

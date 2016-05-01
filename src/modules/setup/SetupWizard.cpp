@@ -126,11 +126,10 @@ SetupPage::SetupPage(SetupWizard * w)
 }
 
 SetupPage::~SetupPage()
-{
-}
+    = default;
 
 SetupWizard::SetupWizard()
-    : KviTalWizard(0)
+    : KviTalWizard(nullptr)
 {
 	setWindowTitle(__tr2qs("Setup Wizard - KVIrc"));
 
@@ -205,7 +204,7 @@ SetupWizard::SetupWizard()
 
 	setHelpEnabled(m_pLicense, false);
 #else
-	m_pLicense = 0;
+	m_pLicense = nullptr;
 #endif
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Directories

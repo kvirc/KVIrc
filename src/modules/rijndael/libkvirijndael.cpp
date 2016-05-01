@@ -65,14 +65,14 @@
 #include "KviPointerList.h"
 #include "KviCryptEngineDescription.h"
 
-static KviPointerList<KviCryptEngine> * g_pEngineList = 0;
+static KviPointerList<KviCryptEngine> * g_pEngineList = nullptr;
 
 KviRijndaelEngine::KviRijndaelEngine()
     : KviCryptEngine()
 {
 	g_pEngineList->append(this);
-	m_pEncryptCipher = 0;
-	m_pDecryptCipher = 0;
+	m_pEncryptCipher = nullptr;
+	m_pDecryptCipher = nullptr;
 }
 
 KviRijndaelEngine::~KviRijndaelEngine()
@@ -89,12 +89,12 @@ bool KviRijndaelEngine::init(const char * encKey, int encKeyLen, const char * de
 	if(m_pEncryptCipher)
 	{
 		delete m_pEncryptCipher;
-		m_pEncryptCipher = 0;
+		m_pEncryptCipher = nullptr;
 	}
 	if(m_pDecryptCipher)
 	{
 		delete m_pDecryptCipher;
-		m_pDecryptCipher = 0;
+		m_pDecryptCipher = nullptr;
 	}
 
 	if(encKey && (encKeyLen > 0))
@@ -172,7 +172,7 @@ bool KviRijndaelEngine::init(const char * encKey, int encKeyLen, const char * de
 	if(retVal != RIJNDAEL_SUCCESS)
 	{
 		delete m_pEncryptCipher;
-		m_pEncryptCipher = 0;
+		m_pEncryptCipher = nullptr;
 		setLastErrorFromRijndaelErrorCode(retVal);
 		return false;
 	}
@@ -186,9 +186,9 @@ bool KviRijndaelEngine::init(const char * encKey, int encKeyLen, const char * de
 	if(retVal != RIJNDAEL_SUCCESS)
 	{
 		delete m_pEncryptCipher;
-		m_pEncryptCipher = 0;
+		m_pEncryptCipher = nullptr;
 		delete m_pDecryptCipher;
-		m_pDecryptCipher = 0;
+		m_pDecryptCipher = nullptr;
 		setLastErrorFromRijndaelErrorCode(retVal);
 		return false;
 	}
@@ -239,7 +239,7 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
 	}
 	int len = (int)kvi_strLen(plainText);
 	char * buf = (char *)KviMemory::allocate(len + 16); // needed for the eventual padding
-	unsigned char * iv = 0;
+	unsigned char * iv = nullptr;
 	if(m_bEncryptMode == CBC)
 	{
 		iv = (unsigned char *)KviMemory::allocate(MAX_IV_SIZE);
@@ -312,7 +312,7 @@ KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer, 
 		return KviCryptEngine::DecryptError;
 
 	char * buf = (char *)KviMemory::allocate(len + 1);
-	unsigned char * iv = 0;
+	unsigned char * iv = nullptr;
 	if(m_bEncryptMode == CBC)
 	{
 		// extract the IV from the cyphered string
@@ -360,7 +360,7 @@ bool KviRijndaelHexEngine::asciiToBinary(const char * inBuffer, int * len, char 
 	}
 	else
 	{
-		if(len > 0)
+		if(len > nullptr)
 		{
 			*outBuffer = (char *)KviMemory::allocate(*len);
 			KviMemory::move(*outBuffer, tmpBuf, *len);
@@ -388,7 +388,7 @@ bool KviRijndaelBase64Engine::asciiToBinary(const char * inBuffer, int * len, ch
 	}
 	else
 	{
-		if(len > 0)
+		if(len > nullptr)
 		{
 			*outBuffer = (char *)KviMemory::allocate(*len);
 			KviMemory::move(*outBuffer, tmpBuf, *len);
@@ -610,7 +610,7 @@ bool KviMircryptionEngine::doEncryptECB(KviCString & plain, KviCString & encoded
 
 bool KviMircryptionEngine::doDecryptECB(KviCString & encoded, KviCString & plain)
 {
-	unsigned char * buf = 0;
+	unsigned char * buf = nullptr;
 	int len;
 	UglyBase64::decode(encoded, &buf, &len);
 
@@ -803,7 +803,7 @@ static bool rijndael_module_cleanup(KviModule * m)
 	while(g_pEngineList->first())
 		delete g_pEngineList->first();
 	delete g_pEngineList;
-	g_pEngineList = 0;
+	g_pEngineList = nullptr;
 	m->unregisterCryptEngines();
 	return true;
 #else

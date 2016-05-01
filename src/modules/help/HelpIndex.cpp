@@ -77,7 +77,7 @@ QDataStream & operator<<(QDataStream & s, const Document & l)
 }
 
 HelpIndex::HelpIndex(const QString & dp, const QString & hp)
-    : QObject(0), docPath(dp)
+    : QObject(nullptr), docPath(dp)
 {
 	Q_UNUSED(hp);
 
@@ -93,7 +93,7 @@ HelpIndex::HelpIndex(const QString & dp, const QString & hp)
 }
 
 HelpIndex::HelpIndex(const QStringList & dl, const QString & hp)
-    : QObject(0)
+    : QObject(nullptr)
 {
 	Q_UNUSED(hp);
 	docList = dl;
@@ -172,7 +172,7 @@ void HelpIndex::insertInDict(const QString & str, int docNum)
 {
 	if(str == QLatin1String("amp") || str == QLatin1String("nbsp"))
 		return;
-	Entry * e = 0;
+	Entry * e = nullptr;
 	if(dict.count())
 		e = dict[str];
 
@@ -349,18 +349,18 @@ void HelpIndex::readDocumentList()
 QStringList HelpIndex::query(const QStringList & terms, const QStringList & termSeq, const QStringList & seqWords)
 {
 	QList<Term> termList;
-	for(QStringList::ConstIterator it = terms.begin(); it != terms.end(); ++it)
+	for(const auto & term : terms)
 	{
-		Entry * e = 0;
-		if((*it).contains(QLatin1Char('*')))
+		Entry * e = nullptr;
+		if(term.contains(QLatin1Char('*')))
 		{
-			QVector<Document> wcts = setupDummyTerm(getWildcardTerms(*it));
+			QVector<Document> wcts = setupDummyTerm(getWildcardTerms(term));
 			termList.append(Term(QLatin1String("dummy"), wcts.count(), wcts));
 		}
-		else if(dict[*it])
+		else if(dict[term])
 		{
-			e = dict[*it];
-			termList.append(Term(*it, e->documents.count(), e->documents));
+			e = dict[term];
+			termList.append(Term(term, e->documents.count(), e->documents));
 		}
 		else
 		{
@@ -372,9 +372,9 @@ QStringList HelpIndex::query(const QStringList & terms, const QStringList & term
 	qSort(termList);
 
 	QVector<Document> minDocs = termList.takeFirst().documents;
-	for(QList<Term>::Iterator it = termList.begin(); it != termList.end(); ++it)
+	for(auto & it : termList)
 	{
-		Term * t = &(*it);
+		Term * t = &it;
 		QVector<Document> docs = t->documents;
 		for(QVector<Document>::Iterator minDoc_it = minDocs.begin(); minDoc_it != minDocs.end();)
 		{
@@ -399,15 +399,15 @@ QStringList HelpIndex::query(const QStringList & terms, const QStringList & term
 	qSort(minDocs);
 	if(termSeq.isEmpty())
 	{
-		for(QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it)
-			results << docList.at((int)(*it).docNumber);
+		for(auto & minDoc : minDocs)
+			results << docList.at((int)minDoc.docNumber);
 		return results;
 	}
 
 	QString fileName;
-	for(QVector<Document>::Iterator it = minDocs.begin(); it != minDocs.end(); ++it)
+	for(auto & minDoc : minDocs)
 	{
-		fileName = docList[(int)(*it).docNumber];
+		fileName = docList[(int)minDoc.docNumber];
 		if(searchForPattern(termSeq, seqWords, fileName))
 			results << fileName;
 	}
@@ -531,13 +531,13 @@ QStringList HelpIndex::split(const QString & str)
 QVector<Document> HelpIndex::setupDummyTerm(const QStringList & terms)
 {
 	QList<Term> termList;
-	for(QStringList::ConstIterator it = terms.begin(); it != terms.end(); ++it)
+	for(const auto & term : terms)
 	{
-		Entry * e = 0;
-		if(dict[*it])
+		Entry * e = nullptr;
+		if(dict[term])
 		{
-			e = dict[*it];
-			termList.append(Term(*it, e->documents.count(), e->documents));
+			e = dict[term];
+			termList.append(Term(term, e->documents.count(), e->documents));
 		}
 	}
 	QVector<Document> maxList(0);
@@ -546,14 +546,14 @@ QVector<Document> HelpIndex::setupDummyTerm(const QStringList & terms)
 	qSort(termList);
 
 	maxList = termList.takeLast().documents;
-	for(QList<Term>::Iterator it = termList.begin(); it != termList.end(); ++it)
+	for(auto & it : termList)
 	{
-		Term * t = &(*it);
+		Term * t = &it;
 		QVector<Document> docs = t->documents;
-		for(QVector<Document>::iterator docIt = docs.begin(); docIt != docs.end(); ++docIt)
+		for(auto & doc : docs)
 		{
-			if(maxList.indexOf(*docIt) == -1)
-				maxList.append(*docIt);
+			if(maxList.indexOf(doc) == -1)
+				maxList.append(doc);
 		}
 	}
 	return maxList;

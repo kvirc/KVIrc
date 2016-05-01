@@ -69,7 +69,7 @@ class QFtpCommand
 {
 public:
 	QFtpCommand(QFtp::Command cmd, QStringList raw, const QByteArray & ba);
-	QFtpCommand(QFtp::Command cmd, QStringList raw, QIODevice * dev = 0);
+	QFtpCommand(QFtp::Command cmd, QStringList raw, QIODevice * dev = nullptr);
 	~QFtpCommand();
 
 	int id;
@@ -78,8 +78,7 @@ public:
 
 	// If is_ba is true, ba is used; ba is never 0.
 	// Otherwise dev is used; dev can be 0 or not.
-	union
-	{
+	union {
 		QByteArray * ba;
 		QIODevice * dev;
 	} data;
@@ -116,7 +115,7 @@ QFtpCommand::~QFtpCommand()
  *
  *********************************************************************/
 QFtpDTP::QFtpDTP(QFtpPI * p, QObject * parent) : QObject(parent),
-                                                 socket(0),
+                                                 socket(nullptr),
                                                  listener(this),
                                                  pi(p),
                                                  callWriteData(false)
@@ -152,7 +151,7 @@ void QFtpDTP::connectToHost(const QString & host, quint16 port)
 	if(socket)
 	{
 		delete socket;
-		socket = 0;
+		socket = nullptr;
 	}
 	socket = new QTcpSocket(this);
 #ifndef QT_NO_BEARERMANAGEMENT
@@ -277,7 +276,7 @@ void QFtpDTP::writeData()
 		}
 
 		// do we continue uploading?
-		callWriteData = data.dev != 0;
+		callWriteData = data.dev != nullptr;
 	}
 }
 
@@ -658,7 +657,7 @@ void QFtpDTP::setupSocket()
 void QFtpDTP::clearData()
 {
 	is_ba = false;
-	data.dev = 0;
+	data.dev = nullptr;
 }
 
 /**********************************************************************
@@ -670,7 +669,7 @@ QFtpPI::QFtpPI(QObject * parent) : QObject(parent),
                                    rawCommand(false),
                                    transferConnectionExtended(true),
                                    dtp(this),
-                                   commandSocket(0),
+                                   commandSocket(nullptr),
                                    state(Begin), abortState(None),
                                    currentCmd(QString()),
                                    waitForDtpToConnect(false),
@@ -2068,10 +2067,10 @@ QFtp::Command QFtp::currentCommand() const
 QIODevice * QFtp::currentDevice() const
 {
 	if(d->pending.isEmpty())
-		return 0;
+		return nullptr;
 	QFtpCommand * c = d->pending.first();
 	if(c->is_ba)
-		return 0;
+		return nullptr;
 	return c->data.dev;
 }
 

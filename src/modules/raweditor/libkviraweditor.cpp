@@ -28,7 +28,7 @@
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
-RawEditorWindow * g_pRawEditorWindow = 0;
+RawEditorWindow * g_pRawEditorWindow = nullptr;
 
 /*
 	@doc: raweditor.open
@@ -58,20 +58,20 @@ static bool raweditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 static bool raweditor_module_init(KviModule * m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", raweditor_kvs_cmd_open);
-	g_pRawEditorWindow = 0;
+	g_pRawEditorWindow = nullptr;
 	return true;
 }
 
 static bool raweditor_module_can_unload(KviModule *)
 {
-	return (g_pRawEditorWindow == 0);
+	return (g_pRawEditorWindow == nullptr);
 }
 
 static bool raweditor_module_cleanup(KviModule *)
 {
 	if(g_pRawEditorWindow && g_pMainWindow)
 		g_pMainWindow->closeWindow(g_pRawEditorWindow);
-	g_pRawEditorWindow = 0;
+	g_pRawEditorWindow = nullptr;
 	return true;
 }
 

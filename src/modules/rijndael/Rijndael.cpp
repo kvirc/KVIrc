@@ -989,9 +989,9 @@ void Rijndael::updateInitVector(UINT8 * initVector)
 	else
 	{
 		// zero init vector
-		for(int i = 0; i < MAX_IV_SIZE; i++)
+		for(unsigned char & i : m_initVector)
 		{
-			m_initVector[i] = 0;
+			i = 0;
 		}
 	}
 }
@@ -1070,7 +1070,7 @@ int Rijndael::blockEncrypt(const UINT8 * input, int inputLen, UINT8 * outBuffer,
 	if(m_direction != Encrypt)
 		return RIJNDAEL_BAD_DIRECTION;
 
-	if(input == 0 || inputLen <= 0)
+	if(input == nullptr || inputLen <= 0)
 		return 0;
 
 	numBlocks = inputLen / 128;
@@ -1163,7 +1163,7 @@ int Rijndael::padEncrypt(const UINT8 * input, int inputOctets, UINT8 * outBuffer
 	if(m_direction != Encrypt)
 		return RIJNDAEL_NOT_INITIALIZED;
 
-	if(input == 0 || inputOctets <= 0)
+	if(input == nullptr || inputOctets <= 0)
 		return 0;
 
 	numBlocks = inputOctets / 16;
@@ -1230,7 +1230,7 @@ int Rijndael::blockDecrypt(const UINT8 * input, int inputLen, UINT8 * outBuffer,
 	if((m_mode != CFB1) && (m_direction == Encrypt))
 		return RIJNDAEL_BAD_DIRECTION;
 
-	if(input == 0 || inputLen <= 0)
+	if(input == nullptr || inputLen <= 0)
 		return 0;
 
 	numBlocks = inputLen / 128;
@@ -1339,7 +1339,7 @@ int Rijndael::padDecrypt(const UINT8 * input, int inputOctets, UINT8 * outBuffer
 	if(m_direction != Decrypt)
 		return RIJNDAEL_BAD_DIRECTION;
 
-	if(input == 0 || inputOctets <= 0)
+	if(input == nullptr || inputOctets <= 0)
 		return 0;
 
 	if((inputOctets % 16) != 0)

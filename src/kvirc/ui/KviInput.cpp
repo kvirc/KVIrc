@@ -78,7 +78,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pLayout->setSpacing(0);
 
 	m_pWindow = pPar;
-	m_pMultiLineEditor = 0;
+	m_pMultiLineEditor = nullptr;
 
 	m_pHideToolsButton = new QToolButton(this);
 	m_pHideToolsButton->setObjectName("hide_container_button");
@@ -211,8 +211,8 @@ void KviInput::inputEditorEnterPressed()
 
 void KviInput::installShortcuts()
 {
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_MULTILINE, this, SLOT(toggleMultiLine()), 0, Qt::WidgetWithChildrenShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_INPUT_MULTILINE_2, this, SLOT(toggleMultiLine()), 0, Qt::WidgetWithChildrenShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_MULTILINE, this, SLOT(toggleMultiLine()), nullptr, Qt::WidgetWithChildrenShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_MULTILINE_2, this, SLOT(toggleMultiLine()), nullptr, Qt::WidgetWithChildrenShortcut);
 }
 
 void KviInput::keyPressEvent(QKeyEvent * e)
@@ -258,7 +258,7 @@ void KviInput::keyPressEvent(QKeyEvent * e)
 									{
 										KVI_OPTION_BOOL(KviOption_boolWarnAboutPastingMultipleLines) = false;
 									}
-									else if(pMsgBox.clickedButton() == pNoButton || pMsgBox.clickedButton() == 0)
+									else if(pMsgBox.clickedButton() == pNoButton || pMsgBox.clickedButton() == nullptr)
 									{
 										return;
 									}
@@ -297,16 +297,16 @@ void KviInput::multiLineEditorButtonToggled(bool bOn)
 		m_pLayout->removeWidget(m_pHelpLabel);
 
 		KviScriptEditor::destroyInstance(m_pMultiLineEditor);
-		m_pMultiLineEditor = 0;
+		m_pMultiLineEditor = nullptr;
 
 		delete m_pHelpLabel;
-		m_pHelpLabel = 0;
+		m_pHelpLabel = nullptr;
 
 		szTmp.replace(QRegExp("[\a\f\n\r\v]"), QString(" "));
 		szTmp.replace('\t', QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput), ' ')); //expand tabs to spaces
 		m_pInputEditor->setText(szTmp);
 		m_pInputEditor->show();
-		m_pWindow->childrenTreeChanged(0);
+		m_pWindow->childrenTreeChanged(nullptr);
 		m_pInputEditor->setFocus();
 		m_pMultiEditorButton->setChecked(false);
 	}

@@ -107,10 +107,10 @@ KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_pixmap, frameChangedEvent)
 KVSO_END_REGISTERCLASS(KvsObject_pixmap)
 
 KVSO_BEGIN_CONSTRUCTOR(KvsObject_pixmap, KviKvsObject)
-m_pAnimatedPixmap = 0;
+m_pAnimatedPixmap = nullptr;
 m_currentType = Image;
-m_pPixmap = 0;
-m_pImage = 0;
+m_pPixmap = nullptr;
+m_pImage = nullptr;
 KVSO_END_CONSTRUCTOR(KvsObject_pixmap)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_pixmap)
@@ -181,17 +181,17 @@ KVSO_CLASS_FUNCTION(pixmap, fill)
 				m_pPixmap = new QPixmap();
 			*m_pPixmap = QPixmap::fromImage(*m_pImage);
 			delete m_pImage;
-			m_pImage = 0;
+			m_pImage = nullptr;
 		}
 		else
 		{
-			m_pPixmap = 0;
+			m_pPixmap = nullptr;
 		}
 	}
 	else if(m_currentType == AnimatedPixmap)
 	{
 		delete m_pAnimatedPixmap;
-		m_pAnimatedPixmap = 0;
+		m_pAnimatedPixmap = nullptr;
 	}
 	m_currentType = Pixmap;
 	if(!m_pPixmap)
@@ -213,7 +213,7 @@ KVSO_CLASS_FUNCTION(pixmap, resize)
 		if(m_pImage)
 		{
 			delete m_pImage;
-			m_pImage = 0;
+			m_pImage = nullptr;
 		}
 	}
 	else if(m_currentType == AnimatedPixmap)
@@ -221,7 +221,7 @@ KVSO_CLASS_FUNCTION(pixmap, resize)
 		if(m_pAnimatedPixmap)
 		{
 			delete m_pAnimatedPixmap;
-			m_pAnimatedPixmap = 0;
+			m_pAnimatedPixmap = nullptr;
 		}
 	}
 	else if(m_pPixmap)
@@ -339,7 +339,7 @@ KVSO_CLASS_FUNCTION(pixmap, pixel)
 		m_pImage = new QImage();
 		*m_pImage = m_pPixmap->toImage();
 		delete m_pPixmap;
-		m_pPixmap = 0;
+		m_pPixmap = nullptr;
 	}
 	m_currentType = Image;
 	QRgb rgb = m_pImage->pixel(iX, iY);
@@ -521,12 +521,12 @@ KVSO_CLASS_FUNCTION(pixmap, loadAnimation)
 	if(m_pAnimatedPixmap)
 	{
 		delete m_pAnimatedPixmap;
-		m_pAnimatedPixmap = 0;
+		m_pAnimatedPixmap = nullptr;
 	}
 	if(m_pPixmap)
 	{
 		delete m_pPixmap;
-		m_pPixmap = 0;
+		m_pPixmap = nullptr;
 	}
 	m_pAnimatedPixmap = new KviAnimatedPixmap(szFile);
 	connect(m_pAnimatedPixmap, SIGNAL(frameChanged()), this, SLOT(frameChanged()));
@@ -658,7 +658,7 @@ KVSO_CLASS_FUNCTION(pixmap, loadFromMemoryBuffer)
 	if(m_pAnimatedPixmap)
 	{
 		delete m_pAnimatedPixmap;
-		m_pAnimatedPixmap = 0;
+		m_pAnimatedPixmap = nullptr;
 	}
 	if(!m_pPixmap)
 		m_pPixmap = new QPixmap();
@@ -680,7 +680,7 @@ KVSO_CLASS_FUNCTION(pixmap, grabWidget)
 	if(m_pAnimatedPixmap)
 	{
 		delete m_pAnimatedPixmap;
-		m_pAnimatedPixmap = 0;
+		m_pAnimatedPixmap = nullptr;
 	}
 	if(!m_pPixmap)
 		m_pPixmap = new QPixmap();
@@ -744,6 +744,6 @@ KVSO_CLASS_FUNCTION(pixmap, frameChangedEvent)
 // slots
 void KvsObject_pixmap::frameChanged()
 {
-	KviKvsVariantList * params = 0;
+	KviKvsVariantList * params = nullptr;
 	callFunction(this, "frameChangedEvent", params);
 }

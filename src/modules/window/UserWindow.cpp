@@ -43,9 +43,9 @@ UserWindow::UserWindow(const char * pcName, QString & szIcon, KviConsoleWindow *
 	m_pIrcView = new KviIrcView(this, this);
 
 	if(iCreationFlags & HasInput)
-		m_pInput = new KviInput(this, 0);
+		m_pInput = new KviInput(this, nullptr);
 	else
-		m_pInput = 0;
+		m_pInput = nullptr;
 
 	if(context())
 		context()->registerContextWindow(this);

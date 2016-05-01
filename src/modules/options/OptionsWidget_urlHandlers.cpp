@@ -95,8 +95,7 @@ OptionsWidget_urlHandlers::OptionsWidget_urlHandlers(QWidget * parent)
 }
 
 OptionsWidget_urlHandlers::~OptionsWidget_urlHandlers()
-{
-}
+    = default;
 
 void OptionsWidget_urlHandlers::toggleEditors(bool bToggled)
 {

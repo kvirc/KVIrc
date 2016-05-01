@@ -32,7 +32,7 @@ KviRegisteredUser::KviRegisteredUser(const QString & name)
 	m_iIgnoreFlags = 0;
 	m_bIgnoreEnabled = false;
 	m_szName = name;
-	m_pPropertyDict = 0;
+	m_pPropertyDict = nullptr;
 	m_pMaskList = new KviPointerList<KviIrcMask>;
 	m_pMaskList->setAutoDelete(true);
 }
@@ -58,7 +58,7 @@ KviIrcMask * KviRegisteredUser::findMask(const KviIrcMask & mask)
 		if(*m == mask)
 			return m;
 	}
-	return 0;
+	return nullptr;
 }
 
 bool KviRegisteredUser::addMask(KviIrcMask * mask)
@@ -66,7 +66,7 @@ bool KviRegisteredUser::addMask(KviIrcMask * mask)
 	if(findMask(*mask))
 	{
 		delete mask;
-		mask = 0;
+		mask = nullptr;
 		return false;
 	}
 	m_pMaskList->append(mask);
@@ -133,7 +133,7 @@ void KviRegisteredUser::setProperty(const QString & name, const QString & value)
 		else
 		{
 			delete val;
-			val = 0;
+			val = nullptr;
 		}
 	}
 	else

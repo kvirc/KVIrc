@@ -456,7 +456,7 @@ namespace KviKvsCoreCallbackCommands
 		KVSCCC_PARAMETER("label", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szLabel)
 		KVSCCC_PARAMETERS_END
 
-		KviScriptUserButton * pButton = 0;
+		KviScriptUserButton * pButton = nullptr;
 
 		if(!KVSCCC_pWindow->buttonContainer())
 		{
@@ -953,19 +953,19 @@ namespace KviKvsCoreCallbackCommands
 
 		int f = 0;
 
-		if(KVSCCC_pSwitches->find('t', "trigger-termination") != 0)
+		if(KVSCCC_pSwitches->find('t', "trigger-termination") != nullptr)
 			f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERTERMINATED;
-		if(KVSCCC_pSwitches->find('n', "no-stdout") == 0)
+		if(KVSCCC_pSwitches->find('n', "no-stdout") == nullptr)
 			f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDOUT;
-		if(KVSCCC_pSwitches->find('e', "trigger-stderr") != 0)
+		if(KVSCCC_pSwitches->find('e', "trigger-stderr") != nullptr)
 			f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDERR;
-		if(KVSCCC_pSwitches->find('x', "trigger-startup") != 0)
+		if(KVSCCC_pSwitches->find('x', "trigger-startup") != nullptr)
 			f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTARTED;
-		if(KVSCCC_pSwitches->find('b', "output-block") != 0)
+		if(KVSCCC_pSwitches->find('b', "output-block") != nullptr)
 			f |= KVI_KVS_PROCESSDESCRIPTOR_OUTPUTBYBLOCKS;
-		if(KVSCCC_pSwitches->find('w', "bind-to-window") != 0)
+		if(KVSCCC_pSwitches->find('w', "bind-to-window") != nullptr)
 			f |= KVI_KVS_PROCESSDESCRIPTOR_KILLIFNOWINDOW;
-		if(KVSCCC_pSwitches->find('d', "direct") != 0)
+		if(KVSCCC_pSwitches->find('d', "direct") != nullptr)
 			f |= KVI_KVS_PROCESSDESCRIPTOR_NOSHELL;
 
 		QString szShell;
@@ -999,7 +999,7 @@ namespace KviKvsCoreCallbackCommands
 		d->szCommandline = szCommandline;
 		d->szShell = szShell;
 		d->pWnd = KVSCCC_pContext->window();
-		d->pMagic = pMagic ? new KviKvsVariant(*pMagic) : 0;
+		d->pMagic = pMagic ? new KviKvsVariant(*pMagic) : nullptr;
 		d->iFlags = f;
 		d->pCallback = new KviKvsScript(*KVSCCC_pCallback);
 		d->iMaxRunTime = iMaxRunTime;
@@ -1008,7 +1008,7 @@ namespace KviKvsCoreCallbackCommands
 		KviKvsProcessAsyncOperation * op = new KviKvsProcessAsyncOperation(d);
 		if(!op->start())
 		{
-			if(KVSCCC_pSwitches->find('q', "quiet") == 0)
+			if(KVSCCC_pSwitches->find('q', "quiet") == nullptr)
 				KVSCCC_pContext->warning(__tr2qs_ctx("Failed to start the process", "kvs"));
 			delete op;
 		}

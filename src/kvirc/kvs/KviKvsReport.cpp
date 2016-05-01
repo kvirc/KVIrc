@@ -34,8 +34,8 @@
 KviKvsReport::KviKvsReport(Type t, const QString & szContext, const QString & szMessage, const QString & szLocation, KviWindow * pWindow)
     : m_eType(t), m_szContext(szContext), m_szMessage(szMessage), m_szLocation(szLocation), m_pWindow(pWindow)
 {
-	m_pCallStack = 0;
-	m_pCodeListing = 0;
+	m_pCallStack = nullptr;
+	m_pCodeListing = nullptr;
 }
 
 KviKvsReport::~KviKvsReport()
@@ -77,7 +77,7 @@ void KviKvsReport::findLineColAndListing(const QChar * pBegin, const QChar * pPo
 	iLine = 1;
 
 	const QChar * pBufferBegin = pBegin;
-	const QChar * pPrevLine = 0;
+	const QChar * pPrevLine = nullptr;
 	const QChar * pLineBegin = pBegin;
 
 	unsigned short us = pBegin->unicode();

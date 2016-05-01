@@ -61,7 +61,7 @@
 
 //extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 
-DccBroker * g_pDccBroker = 0;
+DccBroker * g_pDccBroker = nullptr;
 
 static void dcc_module_set_dcc_type(DccDescriptor * d, const char * szBaseType)
 {
@@ -80,7 +80,7 @@ static bool dcc_kvs_parse_default_parameters(DccDescriptor * d, KviKvsModuleComm
 
 	KviKvsVariant * pSw = c->switches()->find('m', "minimize");
 
-	if(pSw != 0)
+	if(pSw != nullptr)
 		d->bOverrideMinimize = pSw->asBoolean();
 	else
 		d->bOverrideMinimize = false;
@@ -455,7 +455,7 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 
 	//c->window()->output(0,"%Q %Q %Q",&(d->szIp),&(d->szPort),&(d->szListenIp));
 	d->triggerCreationEvent();
-	g_pDccBroker->executeChat(0, d);
+	g_pDccBroker->executeChat(nullptr, d);
 
 	return true;
 }
@@ -608,7 +608,7 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 	d->szNick = szTarget; // we always specify the nickname
 
 	QString szTmp;
-	KviKvsVariant * pSw = 0;
+	KviKvsVariant * pSw = nullptr;
 
 	if((pSw = c->switches()->find('g', "get")))
 	{
@@ -637,10 +637,10 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 
 	d->szUser = __tr2qs_ctx("unknown", "dcc"); // username is always unknown
 	d->szHost = d->szUser;                     // host is always unknown
-	d->bRecvFile = pSw != 0;
+	d->bRecvFile = pSw != nullptr;
 	d->bNoAcks = c->switches()->find('b', "blind") || c->switches()->find('t', "tdcc");
 	d->bResume = false;
-	d->bAutoAccept = pSw != 0;
+	d->bAutoAccept = pSw != nullptr;
 	d->bIsIncomingAvatar = false;
 
 	if(!dcc_kvs_parse_default_parameters(d, c))
@@ -680,7 +680,7 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 		d->triggerCreationEvent();
 		if(!d->szLocalFileName.isEmpty())
 		{
-			g_pDccBroker->sendFileExecute(0, d);
+			g_pDccBroker->sendFileExecute(nullptr, d);
 		}
 		else
 		{
@@ -1155,7 +1155,7 @@ static bool dcc_kvs_cmd_voice(KviKvsModuleCommandCall * c)
 		d->bActive = true;
 
 		d->triggerCreationEvent();
-		g_pDccBroker->activeVoiceExecute(0, d);
+		g_pDccBroker->activeVoiceExecute(nullptr, d);
 	}
 	else
 	{
@@ -1621,7 +1621,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 
 static DccDescriptor * dcc_kvs_find_dcc_descriptor(const kvs_uint_t & uId, KviKvsModuleRunTimeCall * c, bool bWarn = true)
 {
-	DccDescriptor * dcc = 0;
+	DccDescriptor * dcc = nullptr;
 	if(uId == 0)
 	{
 		if(c->window()->inherits("DccWindow"))
@@ -2648,7 +2648,7 @@ static bool dcc_kvs_fnc_session(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWinId)
 	KVSM_PARAMETERS_END(c)
 
-	DccDescriptor * dcc = 0;
+	DccDescriptor * dcc = nullptr;
 	if(szWinId.isEmpty())
 	{
 		if(c->window()->inherits("DccWindow"))
@@ -2855,7 +2855,7 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 			return true;
 		}
 
-		DccThread * pSlaveThread = 0;
+		DccThread * pSlaveThread = nullptr;
 		if(dcc->window())
 			pSlaveThread = dcc->window()->getSlaveThread();
 		else if(dcc->transfer())
@@ -3004,7 +3004,7 @@ static bool dcc_module_init(KviModule * m)
 static bool dcc_module_cleanup(KviModule *)
 {
 	delete g_pDccBroker;
-	g_pDccBroker = 0;
+	g_pDccBroker = nullptr;
 #ifdef COMPILE_USE_GSM
 	kvi_gsm_codec_done();
 #endif

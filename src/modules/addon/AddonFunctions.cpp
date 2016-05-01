@@ -91,9 +91,9 @@ namespace AddonFunctions
 			return notAValidAddonPackage(szError);
 
 		// make sure the default fields exist
-		for(int i = 0; i < 6; i++)
+		for(auto & check_field : check_fields)
 		{
-			pValue = pInfoFields->find(check_fields[i]);
+			pValue = pInfoFields->find(check_field);
 			if(!pValue)
 				return notAValidAddonPackage(szError);
 		}
@@ -102,7 +102,7 @@ namespace AddonFunctions
 		// load its picture
 		pByteArray = r.binaryInfoFields()->find("Image");
 		if(pByteArray)
-			pix.loadFromData(*pByteArray, 0, 0);
+			pix.loadFromData(*pByteArray, nullptr, nullptr);
 
 		if(pix.isNull())
 		{
@@ -241,7 +241,7 @@ namespace AddonFunctions
 		}
 
 		if(!KviFileUtils::deleteDir(szUnpackPath))
-			QMessageBox::warning(NULL, __tr2qs_ctx("Warning While Unpacking Addon - KVIrc", "addon"), __tr2qs_ctx("Failed to delete the directory '%1'", "addon").arg(szUnpackPath));
+			QMessageBox::warning(nullptr, __tr2qs_ctx("Warning While Unpacking Addon - KVIrc", "addon"), __tr2qs_ctx("Failed to delete the directory '%1'", "addon").arg(szUnpackPath));
 
 		return true;
 	}
@@ -323,7 +323,7 @@ namespace AddonFunctions
 			}
 
 			QByteArray * pba = new QByteArray();
-			QBuffer bufferz(pba, 0);
+			QBuffer bufferz(pba, nullptr);
 
 			bufferz.open(QIODevice::WriteOnly);
 			pix.save(&bufferz, "PNG");
@@ -340,10 +340,8 @@ namespace AddonFunctions
 			return false;
 		}
 
-		for(QFileInfoList::Iterator it = ls.begin(); it != ls.end(); ++it)
+		for(auto & inf : ls)
 		{
-			const QFileInfo & inf = *it;
-
 			if(inf.isDir())
 			{
 				if(!pw.addDirectory(inf.absoluteFilePath(), QString("%1/").arg(inf.fileName())))

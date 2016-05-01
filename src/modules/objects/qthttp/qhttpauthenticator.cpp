@@ -132,7 +132,7 @@ static QByteArray qNtlmPhase3(QHttpAuthenticatorPrivate * ctx, const QByteArray 
   Constructs an empty authentication object
 */
 QHttpAuthenticator::QHttpAuthenticator()
-    : d(0)
+    : d(nullptr)
 {
 }
 
@@ -388,9 +388,8 @@ void QHttpAuthenticatorPrivate::parseHttpResponse(const QList<QPair<QByteArray, 
     */
 
 	QByteArray headerVal;
-	for(int i = 0; i < values.size(); ++i)
+	for(const auto & current : values)
 	{
-		const QPair<QByteArray, QByteArray> & current = values.at(i);
 		if(current.first.toLower() != search)
 			continue;
 		QByteArray str = current.second.toLower();
@@ -443,7 +442,7 @@ void QHttpAuthenticatorPrivate::parseHttpResponse(const QList<QPair<QByteArray, 
 QByteArray QHttpAuthenticatorPrivate::calculateResponse(const QByteArray & requestMethod, const QByteArray & path)
 {
 	QByteArray response;
-	const char * methodString = 0;
+	const char * methodString = nullptr;
 	switch(method)
 	{
 		case QHttpAuthenticatorPrivate::None:
@@ -1219,7 +1218,7 @@ QByteArray qEncodeHmacMd5(QByteArray & key, const QByteArray & message)
 static QByteArray qCreatev2Hash(const QHttpAuthenticatorPrivate * ctx,
     QNtlmPhase3Block * phase3)
 {
-	Q_ASSERT(phase3 != 0);
+	Q_ASSERT(phase3 != nullptr);
 	// since v2 Hash is need for both NTLMv2 and LMv2 it is calculated
 	// only once and stored and reused
 	if(phase3->v2Hash.size() == 0)
@@ -1277,7 +1276,7 @@ static QByteArray qEncodeNtlmv2Response(const QHttpAuthenticatorPrivate * ctx,
     const QNtlmPhase2Block & ch,
     QNtlmPhase3Block * phase3)
 {
-	Q_ASSERT(phase3 != 0);
+	Q_ASSERT(phase3 != nullptr);
 	// return value stored in phase3
 	qCreatev2Hash(ctx, phase3);
 
@@ -1352,7 +1351,7 @@ static QByteArray qEncodeLmv2Response(const QHttpAuthenticatorPrivate * ctx,
     const QNtlmPhase2Block & ch,
     QNtlmPhase3Block * phase3)
 {
-	Q_ASSERT(phase3 != 0);
+	Q_ASSERT(phase3 != nullptr);
 	// return value stored in phase3
 	qCreatev2Hash(ctx, phase3);
 

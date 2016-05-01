@@ -78,8 +78,8 @@ KviModeEditor::KviModeEditor(QWidget * par, KviWindowToolPageButton * button, co
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 	g->addWidget(f, 1, 0, 1, 3);
 
-	QCheckBox * pCheckBox = 0;
-	QLineEdit * pLineEdit = 0;
+	QCheckBox * pCheckBox = nullptr;
+	QLineEdit * pLineEdit = nullptr;
 	int iRow = 1;
 	QString szTmp;
 	QString cDesc;
@@ -143,7 +143,7 @@ KviModeEditor::KviModeEditor(QWidget * par, KviWindowToolPageButton * button, co
 	}
 
 	// third, check if the we have any info about other modes supported by the server
-	KviIrcConnectionServerInfo * pServerInfo = 0;
+	KviIrcConnectionServerInfo * pServerInfo = nullptr;
 	if(m_pChannel)
 		pServerInfo = m_pChannel->serverInfo();
 	if(!pServerInfo)
@@ -348,7 +348,7 @@ void KviModeEditor::commit()
 
 	// now flush out mode changes
 	int iModesPerLine = 3; // a good default
-	KviIrcConnectionServerInfo * pServerInfo = 0;
+	KviIrcConnectionServerInfo * pServerInfo = nullptr;
 	if(m_pChannel)
 		pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)
@@ -441,11 +441,11 @@ void KviModeEditor::commit()
 inline const QString * KviModeEditor::getModeDescription(char cMode)
 {
 	if(!m_pChannel)
-		return 0;
+		return nullptr;
 	KviIrcConnectionServerInfo * pServerInfo = m_pChannel->serverInfo();
 	if(pServerInfo)
 		return &(pServerInfo->getChannelModeDescription(cMode));
-	return 0;
+	return nullptr;
 }
 
 inline bool KviModeEditor::modeNeedsParameterOnlyWhenSet(char cMode)

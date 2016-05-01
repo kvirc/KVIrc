@@ -611,10 +611,10 @@ KVSO_BEGIN_CONSTRUCTOR(KvsObject_painter, KviKvsObject)
 
 m_pPainter = new QPainter();
 bDonotdeleteinternalqpainter = false;
-m_pPrinter = 0;
-m_pDeviceObject = 0;
-m_pPainterPath = 0;
-m_pGradient = 0;
+m_pPrinter = nullptr;
+m_pDeviceObject = nullptr;
+m_pPainterPath = nullptr;
+m_pGradient = nullptr;
 
 KVSO_END_CONSTRUCTOR(KvsObject_painter)
 
@@ -622,16 +622,16 @@ KVSO_BEGIN_DESTRUCTOR(KvsObject_painter)
 
 if(m_pPainterPath)
 	delete m_pPainterPath;
-m_pPainterPath = 0;
+m_pPainterPath = nullptr;
 if(m_pGradient)
 	delete m_pGradient;
-m_pGradient = 0;
+m_pGradient = nullptr;
 if(m_pPainter && !bDonotdeleteinternalqpainter)
 	delete m_pPainter;
-m_pPainter = 0;
+m_pPainter = nullptr;
 if(m_pPrinter)
 	delete m_pPrinter;
-m_pPrinter = 0;
+m_pPrinter = nullptr;
 
 KVSO_END_CONSTRUCTOR(KvsObject_painter)
 
@@ -1193,7 +1193,7 @@ KVSO_CLASS_FUNCTION(painter, begin)
 			}
 			else
 			{
-				QPrintDialog printDialog(m_pPrinter, 0);
+				QPrintDialog printDialog(m_pPrinter, nullptr);
 				if(printDialog.exec() == QDialog::Accepted)
 				{
 					qDebug("papersize %d", m_pPrinter->paperSize());
@@ -1202,7 +1202,7 @@ KVSO_CLASS_FUNCTION(painter, begin)
 				}
 				else
 				{
-					m_pPrinter = 0;
+					m_pPrinter = nullptr;
 					return true;
 				}
 			}
@@ -1267,9 +1267,9 @@ void KvsObject_painter::detachDevice()
 	if(m_pPrinter)
 	{
 		delete m_pPrinter;
-		m_pPrinter = 0;
+		m_pPrinter = nullptr;
 	}
-	m_pDeviceObject = 0;
+	m_pDeviceObject = nullptr;
 }
 
 KVSO_CLASS_FUNCTION(painter, end)
@@ -1282,7 +1282,7 @@ KVSO_CLASS_FUNCTION(painter, end)
 		if(m_pPrinter)
 		{
 			delete m_pPrinter;
-			m_pPrinter = 0;
+			m_pPrinter = nullptr;
 		}
 	}
 	else
@@ -1323,12 +1323,12 @@ KVSO_CLASS_FUNCTION(painter, drawText)
 	int align, sum = 0;
 	if(szAlignList.count())
 	{
-		for(QStringList::Iterator it = szAlignList.begin(); it != szAlignList.end(); ++it)
+		for(auto & it : szAlignList)
 		{
 			align = 0;
 			for(unsigned int j = 0; j < align_num; j++)
 			{
-				if(KviQString::equalCI((*it), align_tbl[j]))
+				if(KviQString::equalCI(it, align_tbl[j]))
 				{
 					align = align_cod[j];
 					break;
@@ -1337,7 +1337,7 @@ KVSO_CLASS_FUNCTION(painter, drawText)
 			if(align)
 				sum = sum | align;
 			else
-				c->warning(__tr2qs_ctx("Unknown alignment '%Q'", "objects"), &(*it));
+				c->warning(__tr2qs_ctx("Unknown alignment '%Q'", "objects"), &it);
 		}
 	}
 	QRect rect;
@@ -1964,7 +1964,7 @@ KVSO_CLASS_FUNCTION(painter, clearGradient)
 	Q_UNUSED(c);
 	if(!m_pGradient)
 		delete m_pGradient;
-	m_pGradient = 0;
+	m_pGradient = nullptr;
 	return true;
 }
 
@@ -2151,7 +2151,7 @@ KVSO_CLASS_FUNCTION(painter, resetPath)
 	if(m_pPainterPath)
 	{
 		delete m_pPainterPath;
-		m_pPainterPath = 0;
+		m_pPainterPath = nullptr;
 	}
 	return true;
 }

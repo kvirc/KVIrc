@@ -116,7 +116,7 @@ KviIrcConnection::~KviIrcConnection()
 	m_bIdentdAttached = false;
 	if(m_pLocalhostDns)
 	{
-		QObject::disconnect(m_pLocalhostDns, SIGNAL(lookupDone(KviDnsResolver *)), 0, 0);
+		QObject::disconnect(m_pLocalhostDns, SIGNAL(lookupDone(KviDnsResolver *)), nullptr, nullptr);
 		if(m_pLocalhostDns->isRunning())
 			m_pLocalhostDns->deleteLater();
 		else
@@ -441,8 +441,7 @@ void KviIrcConnection::handleInitialCapLs()
 
 	QString szRequests;
 
-	auto cap_add = [&](const char * c)
-	{
+	auto cap_add = [&](const char * c) {
 		if(serverInfo()->supportedCaps().contains(c, Qt::CaseInsensitive))
 		{
 			szRequests.append(c);
@@ -576,7 +575,7 @@ KviChannelWindow * KviIrcConnection::findChannel(const QString & szName)
 		if(KviQString::equalCI(szName, c->windowName()))
 			return c;
 	}
-	return 0;
+	return nullptr;
 }
 
 int KviIrcConnection::getCommonChannels(const QString & szNick, QString & szChansBuffer, bool bAddEscapeSequences)
@@ -709,7 +708,7 @@ KviQueryWindow * KviIrcConnection::findQuery(const QString & szName)
 		if(KviQString::equalCI(szName, c->windowName()))
 			return c;
 	}
-	return 0;
+	return nullptr;
 }
 
 void KviIrcConnection::registerChannel(KviChannelWindow * c)
@@ -1150,7 +1149,7 @@ void KviIrcConnection::useRealName(const QString & szRealName)
 		KviQString::escapeKvs(&szRealNameBuffer, KviQString::PermitVariables | KviQString::PermitFunctions);
 
 		KviKvsVariant vRet;
-		if(KviKvsScript::evaluate(szRealNameBuffer, console(), 0, &vRet))
+		if(KviKvsScript::evaluate(szRealNameBuffer, console(), nullptr, &vRet))
 			vRet.asString(szRealNameBuffer);
 	}
 
@@ -1985,7 +1984,7 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 				{
 					// find the channel that has the older list now
 					kvi_time_t tOldest = tNow;
-					KviChannelWindow * pOldest = 0;
+					KviChannelWindow * pOldest = nullptr;
 					for(KviChannelWindow * pChan = m_pChannelList->first(); pChan; pChan = m_pChannelList->next())
 					{
 						if(pChan->lastReceivedWhoReply() < tOldest)

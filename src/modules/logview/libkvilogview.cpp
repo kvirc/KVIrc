@@ -34,7 +34,7 @@
 #include "KviApplication.h"
 
 static QRect g_rectLogViewGeometry;
-LogViewWindow * g_pLogViewWindow = 0;
+LogViewWindow * g_pLogViewWindow = nullptr;
 
 #define LOGVIEW_MODULE_EXTENSION_NAME "Log viewer extension"
 
@@ -78,7 +78,7 @@ static bool logview_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 static bool logview_module_init(KviModule * m)
 {
-	g_pLogViewWindow = 0;
+	g_pLogViewWindow = nullptr;
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", logview_kvs_cmd_open);
 
@@ -89,7 +89,7 @@ static bool logview_module_cleanup(KviModule *)
 {
 	if(g_pLogViewWindow && g_pMainWindow)
 		g_pMainWindow->closeWindow(g_pLogViewWindow);
-	g_pLogViewWindow = 0;
+	g_pLogViewWindow = nullptr;
 	return true;
 }
 

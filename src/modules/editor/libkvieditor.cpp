@@ -27,9 +27,9 @@
 #include "KviModule.h"
 #include "KviWindow.h"
 
-KviModule * g_pEditorModulePointer = 0;
+KviModule * g_pEditorModulePointer = nullptr;
 
-KviPointerList<ScriptEditorImplementation> * g_pScriptEditorWindowList = 0;
+KviPointerList<ScriptEditorImplementation> * g_pScriptEditorWindowList = nullptr;
 
 static bool editor_module_init(KviModule * m)
 {
@@ -69,14 +69,14 @@ static bool editor_module_cleanup(KviModule *)
 	}
 
 	delete g_pScriptEditorWindowList;
-	g_pScriptEditorWindowList = 0;
+	g_pScriptEditorWindowList = nullptr;
 
 	return true;
 }
 
 static bool editor_module_can_unload(KviModule *)
 {
-	return ((g_pScriptEditorWindowList == 0) || (g_pScriptEditorWindowList->count() == 0));
+	return ((g_pScriptEditorWindowList == nullptr) || (g_pScriptEditorWindowList->count() == 0));
 }
 
 KVIRC_MODULE(

@@ -165,7 +165,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
     bool bEnableTimeStamp,
     const QDateTime & datetime_param)
 {
-	const kvi_wchar_t * pUnEscapeAt = 0;
+	const kvi_wchar_t * pUnEscapeAt = nullptr;
 
 	// Splits the text data in lines (separated by '\n')
 
@@ -357,70 +357,70 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 
 	static void * char_to_check_jump_table[256] = {
 		// clang-format off
-		&&found_end_of_buffer  ,0                      ,&&found_mirc_escape    ,&&found_color_escape   ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,&&found_end_of_line    ,0                      ,
-		0                      ,&&found_command_escape ,0                      ,&&found_mirc_escape    ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,&&found_mirc_escape    ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,&&found_icon_escape    ,0                      ,&&found_mirc_escape    , // 000-031
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      , // 032-047
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,&&check_emoticon_char  ,&&check_emoticon_char  ,
-		0                      ,&&check_emoticon_char  ,0                      ,0                      , // 048-063 // 61='=' , 59=';' , 58=':'
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,&&check_e2k_url        ,&&check_file_or_ftp_url,0                      ,
-		&&check_http_url       ,&&check_irc_url        ,0                      ,0                      ,
-		0                      ,&&check_mailto_or_magnet_url     ,0            ,0                      , // 064-079  // 070==F 072==H 073==I  077==M
-		0                      ,0                      ,0                      ,&&check_spotify_url    ,
-		0                      ,0                      ,0                      ,&&check_www_url        ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      , // 080-095  // 083==S 087==W
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,&&check_e2k_url        ,&&check_file_or_ftp_url,0                      ,
-		&&check_http_url       ,&&check_irc_url        ,0                      ,0                      ,
-		0                      ,&&check_mailto_or_magnet_url     ,0            ,0                      , // 096-111  // 101=e 102=f 104=h 105=i 109==m
-		0                      ,0                      ,0                      ,&&check_spotify_url    ,
-		0                      ,0                      ,0                      ,&&check_www_url        ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      , // 112-127  // 115==s 119==w
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      , // 128-133
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      , // 134-159
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      , // 160-175
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      , // 176-191
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      , // 192-207
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      , // 208-223
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      , // 224-239
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                      ,
-		0                      ,0                      ,0                      ,0                        // 240-255
+		&&found_end_of_buffer  ,nullptr                      ,&&found_mirc_escape    ,&&found_color_escape   ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,&&found_end_of_line    ,nullptr                      ,
+		nullptr                      ,&&found_command_escape ,nullptr                      ,&&found_mirc_escape    ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,&&found_mirc_escape    ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,&&found_icon_escape    ,nullptr                      ,&&found_mirc_escape    , // 000-031
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 032-047
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,&&check_emoticon_char  ,&&check_emoticon_char  ,
+		nullptr                      ,&&check_emoticon_char  ,nullptr                      ,nullptr                      , // 048-063 // 61='=' , 59=';' , 58=':'
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,&&check_e2k_url        ,&&check_file_or_ftp_url,nullptr                      ,
+		&&check_http_url       ,&&check_irc_url        ,nullptr                      ,nullptr                      ,
+		nullptr                      ,&&check_mailto_or_magnet_url     ,nullptr            ,nullptr                      , // 064-079  // 070==F 072==H 073==I  077==M
+		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_url    ,
+		nullptr                      ,nullptr                      ,nullptr                      ,&&check_www_url        ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 080-095  // 083==S 087==W
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,&&check_e2k_url        ,&&check_file_or_ftp_url,nullptr                      ,
+		&&check_http_url       ,&&check_irc_url        ,nullptr                      ,nullptr                      ,
+		nullptr                      ,&&check_mailto_or_magnet_url     ,nullptr            ,nullptr                      , // 096-111  // 101=e 102=f 104=h 105=i 109==m
+		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_url    ,
+		nullptr                      ,nullptr                      ,nullptr                      ,&&check_www_url        ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 112-127  // 115==s 119==w
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 128-133
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 134-159
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 160-175
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 176-191
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 192-207
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 208-223
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 224-239
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
+		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                        // 240-255
 		// clang-format on
 	};
 
@@ -579,7 +579,7 @@ check_escape_switch:
 				// This is the terminator of an escape
 				APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr);
 				NEW_LINE_CHUNK(KviControlCodes::UnEscape);
-				pUnEscapeAt = 0;
+				pUnEscapeAt = nullptr;
 				p++;
 				data_ptr = p;
 				break;
@@ -1114,7 +1114,7 @@ check_emoticon_char:
 					case 39: //  -> alt 39 : teardrop
 					{
 						const kvi_wchar_t * item = p;
-						const kvi_wchar_t * item2 = 0;
+						const kvi_wchar_t * item2 = nullptr;
 						p++;
 						while(*p == *item)
 							p++;
@@ -1242,7 +1242,7 @@ void KviIrcView::appendText(int iMsgType, const kvi_wchar_t * data_ptr, int iFla
 	//appends a text string to the buffer list
 	//splits the lines
 	KVI_ASSERT(data_ptr);
-	m_pLastLinkUnderMouse = 0;
+	m_pLastLinkUnderMouse = nullptr;
 
 	if(!KVI_OPTION_BOOL(KviOption_boolStripControlCodesInLogs))
 	{

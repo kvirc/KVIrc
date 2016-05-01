@@ -66,8 +66,7 @@ KviIrcMessageCheckListItem::KviIrcMessageCheckListItem(QTreeWidget * par, KviIrc
 }
 
 KviIrcMessageCheckListItem::~KviIrcMessageCheckListItem()
-{
-}
+    = default;
 
 KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
     : QWidget(pParent)
@@ -167,8 +166,8 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 
 	// Focussing the 'string to find' widget has been moved to the toggle function so that it happens whenever the widget is shown
 
-	KviShortcut::create(Qt::Key_Escape, m_pIrcView, SLOT(toggleToolWidget()), 0, Qt::WidgetWithChildrenShortcut);
-	KviShortcut::create(KVI_SHORTCUTS_WIN_SEARCH, m_pIrcView, SLOT(toggleToolWidget()), 0, Qt::WidgetWithChildrenShortcut);
+	KviShortcut::create(Qt::Key_Escape, m_pIrcView, SLOT(toggleToolWidget()), nullptr, Qt::WidgetWithChildrenShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_SEARCH, m_pIrcView, SLOT(toggleToolWidget()), nullptr, Qt::WidgetWithChildrenShortcut);
 }
 
 KviIrcViewToolWidget::~KviIrcViewToolWidget()
@@ -271,7 +270,7 @@ void KviIrcViewToolWidget::forceRepaint()
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_pIrcView->repaint();
 #else
-	m_pIrcView->paintEvent(0);
+	m_pIrcView->paintEvent(nullptr);
 #endif
 }
 
@@ -311,8 +310,7 @@ KviIrcViewToolTip::KviIrcViewToolTip(KviIrcView * pView)
 }
 
 KviIrcViewToolTip::~KviIrcViewToolTip()
-{
-}
+    = default;
 
 void KviIrcViewToolTip::maybeTip(const QPoint & pnt)
 {

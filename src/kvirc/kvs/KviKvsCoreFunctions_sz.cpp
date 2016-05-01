@@ -161,7 +161,7 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(serialize)
 	{
-		KviKvsVariant * pVar = 0;
+		KviKvsVariant * pVar = nullptr;
 		QString szBuffer;
 
 		KVSCF_PARAMETERS_BEGIN
@@ -494,7 +494,7 @@ namespace KviKvsCoreFunctions
 
 		// prologue: parameter handling
 		KviKvsObject * o = KVSCF_pContext->thisObject();
-		KVSCF_pRetBuffer->setHObject(o ? o->handle() : ((kvs_hobject_t)0));
+		KVSCF_pRetBuffer->setHObject(o ? o->handle() : ((kvs_hobject_t) nullptr));
 		return true;
 	}
 
@@ -920,7 +920,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 		Q_UNUSED(__pParams);
 
-		KVSCF_pRetBuffer->setInteger((kvs_int_t)(time(0)));
+		KVSCF_pRetBuffer->setInteger((kvs_int_t)(time(nullptr)));
 		return true;
 	}
 

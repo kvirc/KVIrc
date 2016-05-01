@@ -45,8 +45,7 @@ KviThemedTreeWidget::KviThemedTreeWidget(QWidget * par, KviWindow * pWindow, con
 }
 
 KviThemedTreeWidget::~KviThemedTreeWidget()
-{
-}
+    = default;
 
 void KviThemedTreeWidget::applyOptions()
 {

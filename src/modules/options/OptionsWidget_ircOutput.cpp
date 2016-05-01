@@ -89,8 +89,7 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 }
 
 OptionsWidget_ircOutput::~OptionsWidget_ircOutput()
-{
-}
+    = default;
 
 void OptionsWidget_ircOutput::commit()
 {

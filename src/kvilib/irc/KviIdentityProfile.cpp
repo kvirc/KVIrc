@@ -31,8 +31,7 @@ KviIdentityProfile::KviIdentityProfile()
 }
 
 KviIdentityProfile::~KviIdentityProfile()
-{
-}
+    = default;
 
 void KviIdentityProfile::copyFrom(const KviIdentityProfile & src)
 {

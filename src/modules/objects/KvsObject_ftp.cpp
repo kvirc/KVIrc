@@ -291,7 +291,7 @@ void KvsObject_ftp::slotCommandFinished(int iId, bool bError)
 	lParams.append(new KviKvsVariant(bError));
 	if(bError)
 		lParams.append(new KviKvsVariant(m_pFtp->errorString()));
-	callFunction(this, "commandFinishedEvent", 0, &lParams);
+	callFunction(this, "commandFinishedEvent", nullptr, &lParams);
 }
 
 void KvsObject_ftp::slotCommandStarted(int)
@@ -303,7 +303,7 @@ void KvsObject_ftp::slotDataTransferProgress(qint64 done, qint64 total)
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant((kvs_int_t)done));
 	lParams.append(new KviKvsVariant((kvs_int_t)total));
-	callFunction(this, "dataTransferProgressEvent", 0, &lParams);
+	callFunction(this, "dataTransferProgressEvent", nullptr, &lParams);
 }
 
 KVSO_CLASS_FUNCTION(ftp, dataTransferProgressEvent)
@@ -320,7 +320,7 @@ void KvsObject_ftp::slotListInfo(const QUrlInfo & i)
 {
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant(i.name()));
-	callFunction(this, "listInfoEvent", 0, &lParams);
+	callFunction(this, "listInfoEvent", nullptr, &lParams);
 }
 
 KVSO_CLASS_FUNCTION(ftp, listInfoEvent)
@@ -354,7 +354,7 @@ void KvsObject_ftp::slotStateChanged(int state)
 		szState = "Closing";
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant(szState));
-	callFunction(this, "stateChangedEvent", 0, &lParams);
+	callFunction(this, "stateChangedEvent", nullptr, &lParams);
 }
 
 KVSO_CLASS_FUNCTION(ftp, stateChangedEvent)

@@ -225,14 +225,14 @@ KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_lineEdit, setInputValidator)
 KVSO_END_REGISTERCLASS(KvsObject_lineEdit)
 
 KVSO_BEGIN_CONSTRUCTOR(KvsObject_lineEdit, KvsObject_widget)
-m_pCompleter = 0;
+m_pCompleter = nullptr;
 KVSO_END_CONSTRUCTOR(KvsObject_lineEdit)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_lineEdit)
 if(m_pCompleter)
 {
 	delete m_pCompleter;
-	m_pCompleter = 0;
+	m_pCompleter = nullptr;
 }
 KVSO_END_CONSTRUCTOR(KvsObject_lineEdit)
 
@@ -496,7 +496,7 @@ KVSO_CLASS_FUNCTION(lineEdit, enableCompleter)
 KVSO_CLASS_FUNCTION(lineEdit, disableCompleter)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QLineEdit *)widget())->setCompleter(0);
+	((QLineEdit *)widget())->setCompleter(nullptr);
 	return true;
 }
 KVSO_CLASS_FUNCTION(lineEdit, unsetCompleter)
@@ -504,9 +504,9 @@ KVSO_CLASS_FUNCTION(lineEdit, unsetCompleter)
 	CHECK_INTERNAL_POINTER(widget())
 	if(m_pCompleter)
 	{
-		((QLineEdit *)widget())->setCompleter(0);
+		((QLineEdit *)widget())->setCompleter(nullptr);
 		delete m_pCompleter;
-		m_pCompleter = 0;
+		m_pCompleter = nullptr;
 	}
 	return true;
 }
@@ -519,7 +519,7 @@ KVSO_CLASS_FUNCTION(lineEdit, returnPressedEvent)
 
 void KvsObject_lineEdit::slotreturnPressed()
 {
-	KviKvsVariantList * params = 0;
+	KviKvsVariantList * params = nullptr;
 	callFunction(this, "returnPressedEvent", params);
 }
 
@@ -531,7 +531,7 @@ KVSO_CLASS_FUNCTION(lineEdit, lostFocusEvent)
 
 void KvsObject_lineEdit::slotlostFocus()
 {
-	KviKvsVariantList * params = 0;
+	KviKvsVariantList * params = nullptr;
 	callFunction(this, "lostFocusEvent", params);
 }
 

@@ -28,8 +28,8 @@
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 
-AliasEditorWindow * g_pAliasEditorWindow = 0;
-KviModule * g_pAliasEditorModule = 0;
+AliasEditorWindow * g_pAliasEditorWindow = nullptr;
+KviModule * g_pAliasEditorModule = nullptr;
 
 /*
 	@doc: aliaseditor.open
@@ -61,21 +61,21 @@ static bool aliaseditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 static bool aliaseditor_module_init(KviModule * m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", aliaseditor_kvs_cmd_open);
-	g_pAliasEditorWindow = 0;
+	g_pAliasEditorWindow = nullptr;
 	g_pAliasEditorModule = m;
 	return true;
 }
 
 static bool aliaseditor_module_can_unload(KviModule *)
 {
-	return (g_pAliasEditorWindow == 0);
+	return (g_pAliasEditorWindow == nullptr);
 }
 
 static bool aliaseditor_module_cleanup(KviModule *)
 {
 	if(g_pAliasEditorWindow && g_pMainWindow)
 		g_pMainWindow->closeWindow(g_pAliasEditorWindow);
-	g_pAliasEditorWindow = 0;
+	g_pAliasEditorWindow = nullptr;
 	return true;
 }
 

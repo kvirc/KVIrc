@@ -307,7 +307,7 @@ static void dccModuleParseDccChat(KviDccRequest * dcc)
 			}
 			d->setZeroPortRequestTag(dcc->szParam4.ptr());
 			QString tmp;
-			if(!dcc_kvs_get_listen_ip_address(0, d->console(), tmp))
+			if(!dcc_kvs_get_listen_ip_address(nullptr, d->console(), tmp))
 				d->szListenIp = "0.0.0.0";
 			else
 				d->szListenIp = tmp;
@@ -521,7 +521,7 @@ static void dccModuleParseDccSend(KviDccRequest * dcc)
 		}
 		d->setZeroPortRequestTag(dcc->szParam5.ptr());
 		QString tmp;
-		if(!dcc_kvs_get_listen_ip_address(0, d->console(), tmp))
+		if(!dcc_kvs_get_listen_ip_address(nullptr, d->console(), tmp))
 			d->szListenIp = "0.0.0.0";
 		else
 			d->szListenIp = QString(tmp);
@@ -706,7 +706,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 		d->bActive = true;
 		dcc_module_set_dcc_type(d, "SEND");
 		d->triggerCreationEvent();
-		g_pDccBroker->sendFileExecute(0, d);
+		g_pDccBroker->sendFileExecute(nullptr, d);
 
 		return;
 	}
@@ -801,7 +801,7 @@ static void dccModuleParseDccRSend(KviDccRequest * dcc)
 	d->szIp = __tr2qs_ctx("(unknown)", "dcc");
 	d->szPort = d->szIp;
 	QString tmp;
-	if(!dcc_kvs_get_listen_ip_address(0, d->console(), tmp))
+	if(!dcc_kvs_get_listen_ip_address(nullptr, d->console(), tmp))
 	{
 		d->console()->output(KVI_OUT_DCCMSG,
 		    __tr2qs_ctx("No suitable interface to listen on, trying to continue anyway...", "dcc"));
@@ -949,7 +949,7 @@ static void dccModuleParseDccGet(KviDccRequest * dcc)
 	dcc_fill_local_nick_user_host(d, dcc);
 
 	QString tmp;
-	if(!dcc_kvs_get_listen_ip_address(0, d->console(), tmp))
+	if(!dcc_kvs_get_listen_ip_address(nullptr, d->console(), tmp))
 	{
 		d->console()->output(KVI_OUT_DCCMSG,
 		    __tr2qs_ctx("No suitable interface to listen on, trying to continue anyway...", "dcc"));
@@ -992,7 +992,7 @@ static void dccModuleParseDccGet(KviDccRequest * dcc)
 		    &(o->absFilePath()), &(d->szType));
 	}
 	d->triggerCreationEvent();
-	g_pDccBroker->sendFileExecute(0, d);
+	g_pDccBroker->sendFileExecute(nullptr, d);
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1246,11 +1246,11 @@ KVIMODULEEXPORTFUNC void dccModuleCtcpDccParseRoutine(KviDccRequest * dcc)
 {
 	dcc->szType.toUpper();
 
-	for(int i = 0; i < KVI_NUM_KNOWN_DCC_TYPES; i++)
+	for(auto & i : dccParseProcTable)
 	{
-		if(kvi_strEqualCS(dccParseProcTable[i].type, dcc->szType.ptr()))
+		if(kvi_strEqualCS(i.type, dcc->szType.ptr()))
 		{
-			(dccParseProcTable[i].proc)(dcc);
+			(i.proc)(dcc);
 			return;
 		}
 	}

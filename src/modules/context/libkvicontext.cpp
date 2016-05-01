@@ -671,7 +671,7 @@ static bool context_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 	return true;
 #else
 
-	KviConsoleWindow * pConsole = NULL;
+	KviConsoleWindow * pConsole = nullptr;
 	if(c->parameterCount() > 2)
 		pConsole = g_pApp->findConsole(uContextId);
 	else

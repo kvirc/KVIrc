@@ -78,7 +78,7 @@
 extern QPixmap * g_pUserChanStatePixmap;
 extern QPixmap * g_pActivityMeterPixmap;
 
-KviIconManager * g_pIconManager = 0;
+KviIconManager * g_pIconManager = nullptr;
 
 static const char * g_szIconNames[KviIconManager::IconCount] = {
 	"none",                 // 0
@@ -422,7 +422,7 @@ static const char * g_szIconNames[KviIconManager::IconCount] = {
 };
 
 KviIconWidget::KviIconWidget()
-    : QWidget(0)
+    : QWidget(nullptr)
 {
 	setObjectName("global_icon_widget");
 	init();
@@ -471,8 +471,7 @@ void KviIconWidget::init()
 }
 
 KviIconWidget::~KviIconWidget()
-{
-}
+    = default;
 
 void KviIconWidget::closeEvent(QCloseEvent * pEvent)
 {
@@ -542,7 +541,7 @@ KviIconManager::KviIconManager()
 {
 	int i = 0;
 	for(i = 0; i < IconCount; i++)
-		m_smallIcons[i] = 0;
+		m_smallIcons[i] = nullptr;
 
 	initQResourceBackend();
 
@@ -552,7 +551,7 @@ KviIconManager::KviIconManager()
 	m_uCacheTotalSize = 0;
 	m_uCacheMaxSize = 1024 * 1024; // 1 MB
 
-	m_pIconWidget = 0;
+	m_pIconWidget = nullptr;
 
 	QString szBuffer;
 
@@ -563,7 +562,7 @@ KviIconManager::KviIconManager()
 	g_pApp->findImage(szBuffer, KVI_ACTIVITYMETER_IMAGE_NAME);
 	g_pActivityMeterPixmap = new QPixmap(szBuffer);
 
-	m_pIconNames = 0;
+	m_pIconNames = nullptr;
 }
 
 KviIconManager::~KviIconManager()
@@ -1676,13 +1675,13 @@ void KviIconManager::showIconWidget()
 void KviIconManager::iconWidgetClosed()
 {
 	delete m_pIconWidget;
-	m_pIconWidget = 0;
+	m_pIconWidget = nullptr;
 }
 
 KviCachedPixmap * KviIconManager::getPixmapWithCache(const QString & szName)
 {
 	if(szName.isEmpty())
-		return 0;
+		return nullptr;
 
 	KviCachedPixmap * pCache = m_pCachedImages->find(szName);
 
@@ -1692,19 +1691,19 @@ KviCachedPixmap * KviIconManager::getPixmapWithCache(const QString & szName)
 		return pCache;
 	}
 
-	QPixmap * pPix = 0;
+	QPixmap * pPix = nullptr;
 
 	QString szRetPath;
 
 	if(!g_pApp->findImage(szRetPath, szName))
-		return 0;
+		return nullptr;
 
 	pPix = new QPixmap(szRetPath);
 	if(pPix->isNull())
 	{
 		delete pPix; // it is not an valid image!!! (really bad situation...)
-		pPix = 0;
-		return 0;
+		pPix = nullptr;
+		return nullptr;
 	}
 
 	pCache = new KviCachedPixmap(pPix, QString(szRetPath));
@@ -1716,7 +1715,7 @@ KviCachedPixmap * KviIconManager::getPixmapWithCache(const QString & szName)
 KviCachedPixmap * KviIconManager::getPixmapWithCacheScaleOnLoad(const QString & szName, int iMaxWidth, int iMaxHeight)
 {
 	if(szName.isEmpty())
-		return 0;
+		return nullptr;
 
 	KviCachedPixmap * pCache = m_pCachedImages->find(szName);
 
@@ -1726,19 +1725,19 @@ KviCachedPixmap * KviIconManager::getPixmapWithCacheScaleOnLoad(const QString & 
 		return pCache;
 	}
 
-	QPixmap * pPix = 0;
+	QPixmap * pPix = nullptr;
 
 	QString szRetPath;
 
 	if(!g_pApp->findImage(szRetPath, szName))
-		return 0;
+		return nullptr;
 
 	pPix = new QPixmap(szRetPath);
 	if(pPix->isNull())
 	{
 		delete pPix; // it is not an valid image!!! (really bad situation...)
-		pPix = 0;
-		return 0;
+		pPix = nullptr;
+		return nullptr;
 	}
 	if((pPix->width() > iMaxWidth) || (pPix->height() > iMaxHeight))
 	{
@@ -1774,7 +1773,7 @@ void KviIconManager::addToCache(const QString & szName, KviCachedPixmap * pCache
 QPixmap * KviIconManager::getImage(const QString & szId, bool bCanBeNumber, QString * pszRetPath)
 {
 	if(szId.isEmpty())
-		return NULL;
+		return nullptr;
 
 	if(bCanBeNumber)
 	{
@@ -1804,7 +1803,7 @@ QPixmap * KviIconManager::getImage(const QString & szId, bool bCanBeNumber, QStr
 
 	KviCachedPixmap * pCache = getPixmapWithCache(szId);
 	if(!pCache)
-		return NULL;
+		return nullptr;
 
 	if(pszRetPath)
 		*pszRetPath = pCache->path();
@@ -1879,7 +1878,7 @@ KviAvatar * KviIconManager::getAvatar(const QString & szLocalPath, const QString
 	{
 		//both path and name empty => fail
 		if(szName.isEmpty())
-			return 0;
+			return nullptr;
 		if(KviQString::equalCIN("http://", szName, 7) || KviQString::equalCIN("https://", szName, 8))
 		{
 			// it's a URL, cache it locally
@@ -1898,7 +1897,7 @@ KviAvatar * KviIconManager::getAvatar(const QString & szLocalPath, const QString
 	else if(szName.isEmpty())
 	{
 		if(szLocalPath.isEmpty())
-			return 0;
+			return nullptr;
 		szP = szLocalPath;
 		szN = KviFileUtils::extractFileName(szLocalPath);
 	}
@@ -1914,7 +1913,7 @@ KviAvatar * KviIconManager::getAvatar(const QString & szLocalPath, const QString
 	//	,KVI_OPTION_UINT(KviOption_uintScaleAvatarsOnLoadHeight)) : getPixmapWithCache(szP);
 	//if(!p)return 0;
 
-	KviAvatar * pResult = 0;
+	KviAvatar * pResult = nullptr;
 
 	if(KviFileUtils::fileExists(szP))
 	{
@@ -1935,7 +1934,7 @@ KviAvatar * KviIconManager::getAvatar(const QString & szLocalPath, const QString
 	if(pResult && !pResult->isValid())
 	{
 		delete pResult;
-		pResult = 0;
+		pResult = nullptr;
 	}
 
 	return pResult;
@@ -1949,20 +1948,20 @@ void KviIconManager::clearCache()
 void KviIconManager::reloadImages()
 {
 	clearCache();
-	for(int i = 0; i < KviIconManager::IconCount; i++)
+	for(auto & m_smallIcon : m_smallIcons)
 	{
-		if(m_smallIcons[i])
-			delete m_smallIcons[i];
-		m_smallIcons[i] = 0;
+		if(m_smallIcon)
+			delete m_smallIcon;
+		m_smallIcon = nullptr;
 	}
 }
 
 QPixmap * KviIconManager::loadSmallIcon(int iIdx)
 {
 	if(iIdx >= KviIconManager::IconCount)
-		return 0;
+		return nullptr;
 	if(iIdx < 0)
-		return 0;
+		return nullptr;
 
 	QString szPath = QString(KVI_SMALLICONS_PREFIX "%1.png").arg(g_szIconNames[iIdx]);
 	//KviQString::sprintf(szPath,KVI_SMALLICONS_PREFIX "%s.png",g_szIconNames[iIdx]);

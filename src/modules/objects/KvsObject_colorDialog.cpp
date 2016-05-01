@@ -170,12 +170,12 @@ KVSO_CLASS_FUNCTION(colorDialog, setOptions)
 	if(!widget())
 		return true;
 	int colorDialogOption, sum = 0;
-	for(QStringList::Iterator it = szOptions.begin(); it != szOptions.end(); ++it)
+	for(auto & szOption : szOptions)
 	{
 		colorDialogOption = 0;
 		for(unsigned int j = 0; j < option_num; j++)
 		{
-			if(KviQString::equalCI((*it), option_tbl[j]))
+			if(KviQString::equalCI(szOption, option_tbl[j]))
 			{
 				colorDialogOption = option_cod[j];
 				break;
@@ -184,7 +184,7 @@ KVSO_CLASS_FUNCTION(colorDialog, setOptions)
 		if(colorDialogOption)
 			sum = sum | colorDialogOption;
 		else
-			c->warning(__tr2qs_ctx("Unknown szOptions '%Q'", "objects"), &(*it));
+			c->warning(__tr2qs_ctx("Unknown szOptions '%Q'", "objects"), &szOption);
 	}
 	((QColorDialog *)widget())->setOptions(QColorDialog::ColorDialogOptions(sum));
 	return true;

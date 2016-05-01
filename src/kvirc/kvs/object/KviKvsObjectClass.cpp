@@ -129,17 +129,17 @@ void KviKvsObjectClass::registerStandardFalseReturnFunctionHandler(const QString
 KviKvsObject * KviKvsObjectClass::allocateInstance(KviKvsObject * pParent, const QString & szName, KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams)
 {
 	if(!m_allocProc)
-		return 0;
+		return nullptr;
 
 	KviKvsObject * pObject = m_allocProc(this, pParent, szName);
 	if(!pObject)
-		return 0;
+		return nullptr;
 
 	if(!pObject->init(pContext, pParams))
 	{
 		// internal init failure : abort
 		pObject->dieNow();
-		return 0;
+		return nullptr;
 	}
 
 	// copy params
@@ -159,7 +159,7 @@ KviKvsObject * KviKvsObjectClass::allocateInstance(KviKvsObject * pParent, const
 	{
 		// oops... constructor failed (script error!)
 		pObject->dieNow();
-		return 0;
+		return nullptr;
 	}
 
 	if(!ret.isEmpty())

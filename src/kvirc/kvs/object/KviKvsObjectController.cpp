@@ -55,7 +55,7 @@ KviKvsObjectController::~KviKvsObjectController()
 		m_pTopLevelObjectList->first()->dieNow();
 	delete m_pTopLevelObjectList; // empty list
 	delete m_pObjectDict;         // empty dict
-	m_pObjectDict = 0;
+	m_pObjectDict = nullptr;
 	delete m_pObjectClass; // delete the class tree
 	delete m_pClassDict;   // empty dict
 }
@@ -64,7 +64,7 @@ void KviKvsObjectController::init()
 {
 	// allocate the "object" builtin class
 	// this is the only one that is always in core memory
-	m_pObjectClass = new KviKvsObjectClass(0, "object", objectClassCreateInstance, true);
+	m_pObjectClass = new KviKvsObjectClass(nullptr, "object", objectClassCreateInstance, true);
 
 	m_pObjectClass->registerFunctionHandler("name", KVI_PTR2MEMBER(KviKvsObject::function_name));
 	m_pObjectClass->registerFunctionHandler("startTimer", KVI_PTR2MEMBER(KviKvsObject::function_startTimer));
@@ -172,14 +172,14 @@ void KviKvsObjectController::unregisterClass(KviKvsObjectClass * pClass)
 void KviKvsObjectController::registerObject(KviKvsObject * pObject)
 {
 	m_pObjectDict->insert(pObject->handle(), pObject);
-	if(pObject->parent() == 0)
+	if(pObject->parent() == nullptr)
 		m_pTopLevelObjectList->append(pObject);
 }
 
 void KviKvsObjectController::unregisterObject(KviKvsObject * pObject)
 {
 	m_pObjectDict->remove(pObject->handle());
-	if(pObject->parent() == 0)
+	if(pObject->parent() == nullptr)
 		m_pTopLevelObjectList->removeRef(pObject);
 }
 
@@ -217,14 +217,14 @@ KviKvsObjectClass * KviKvsObjectController::lookupClass(const QString & szClass,
 		if(!pModule)
 		{
 			qDebug("Oops! something wrong with the libkviobjects module!");
-			return 0;
+			return nullptr;
 		}
 		else
 			pC = m_pClassDict->find(szClass);
 		if(!pC)
 		{
 			if(bBuiltinOnly)
-				return 0;
+				return nullptr;
 			// maybe we need to load it from permanent storage...
 			QString szPath;
 			QString szFileName = szClass.toLower();
@@ -234,9 +234,9 @@ KviKvsObjectClass * KviKvsObjectController::lookupClass(const QString & szClass,
 			if(!KviFileUtils::fileExists(szPath))
 				g_pApp->getGlobalKvircDirectory(szPath, KviApplication::Classes, szFileName);
 			if(!KviFileUtils::fileExists(szPath))
-				return 0;
+				return nullptr;
 			if(!KviKvsObjectClass::load(szPath))
-				return 0;
+				return nullptr;
 			pC = m_pClassDict->find(szClass);
 			if(pC)
 				pC->clearDirtyFlag(); // just loaded from disk: no need to sync it
@@ -247,7 +247,7 @@ KviKvsObjectClass * KviKvsObjectController::lookupClass(const QString & szClass,
 		if(bBuiltinOnly)
 		{
 			if(!pC->isBuiltin())
-				return 0;
+				return nullptr;
 		}
 	}
 	return pC;

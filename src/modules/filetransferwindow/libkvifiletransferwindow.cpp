@@ -32,7 +32,7 @@
 
 #include <QSplitter>
 
-FileTransferWindow * g_pFileTransferWindow = NULL;
+FileTransferWindow * g_pFileTransferWindow = nullptr;
 
 static FileTransferWindow * filetransferwindow_alloc(bool bCreateMinimized, bool bNoRaise)
 {
@@ -115,7 +115,7 @@ static bool filetransferwindow_module_cleanup(KviModule *)
 {
 	if(g_pFileTransferWindow && g_pMainWindow)
 		g_pMainWindow->closeWindow(g_pFileTransferWindow);
-	g_pFileTransferWindow = 0;
+	g_pFileTransferWindow = nullptr;
 	return true;
 }
 

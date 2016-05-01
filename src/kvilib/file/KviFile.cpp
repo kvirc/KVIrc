@@ -39,8 +39,7 @@ KviFile::KviFile(const QString & szName)
 }
 
 KviFile::~KviFile()
-{
-}
+    = default;
 
 bool KviFile::save(kvi_u8_t t)
 {
@@ -186,7 +185,7 @@ bool KviFile::load(KviPointerList<KviCString> * pData)
 		if(!load(*s))
 		{
 			delete s;
-			s = 0;
+			s = nullptr;
 			return false;
 		}
 		pData->append(s);

@@ -38,7 +38,7 @@ KviPointerList<TermWidget> * g_pTermWidgetList = 0;
 KviPointerList<TermWindow> * g_pTermWindowList = 0;
 #endif
 
-KviModule * g_pTermModule = 0;
+KviModule * g_pTermModule = nullptr;
 
 /*
 	@doc: term.open

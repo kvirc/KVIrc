@@ -221,7 +221,7 @@ static bool sharedfile_kvs_cmd_list(KviKvsModuleCommandCall * c)
 			    o->userMask().toUtf8().data());
 			if(o->expireTime() > 0)
 			{
-				int secs = ((int)(o->expireTime())) - ((int)(time(0)));
+				int secs = ((int)(o->expireTime())) - ((int)(time(nullptr)));
 				int hour = secs / 3600;
 				secs = secs % 3600;
 				int mins = secs / 60;

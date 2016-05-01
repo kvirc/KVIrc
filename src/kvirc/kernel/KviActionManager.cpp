@@ -33,16 +33,16 @@
 #include "KviConfigurationFile.h"
 #include "KviMainWindow.h"
 
-KviActionManager * KviActionManager::m_pInstance = 0;
-KviActionCategory * KviActionManager::m_pCategoryIrc = 0;
-KviActionCategory * KviActionManager::m_pCategoryGeneric = 0;
-KviActionCategory * KviActionManager::m_pCategorySettings = 0;
-KviActionCategory * KviActionManager::m_pCategoryScripting = 0;
-KviActionCategory * KviActionManager::m_pCategoryGUI = 0;
-KviActionCategory * KviActionManager::m_pCategoryChannel = 0;
-KviActionCategory * KviActionManager::m_pCategoryTools = 0;
+KviActionManager * KviActionManager::m_pInstance = nullptr;
+KviActionCategory * KviActionManager::m_pCategoryIrc = nullptr;
+KviActionCategory * KviActionManager::m_pCategoryGeneric = nullptr;
+KviActionCategory * KviActionManager::m_pCategorySettings = nullptr;
+KviActionCategory * KviActionManager::m_pCategoryScripting = nullptr;
+KviActionCategory * KviActionManager::m_pCategoryGUI = nullptr;
+KviActionCategory * KviActionManager::m_pCategoryChannel = nullptr;
+KviActionCategory * KviActionManager::m_pCategoryTools = nullptr;
 bool KviActionManager::m_bCustomizingToolBars = false;
-KviCustomToolBar * KviActionManager::m_pCurrentToolBar = 0;
+KviCustomToolBar * KviActionManager::m_pCurrentToolBar = nullptr;
 // KviCoreActions.cpp
 extern void register_core_actions(KviActionManager *);
 
@@ -68,7 +68,7 @@ KviActionManager::KviActionManager()
 	CATEGORY(m_pCategoryTools, "tools", __tr2qs("Tools"), __tr2qs("Actions that will appear in the \"Tools\" menu"));
 
 	m_bCustomizingToolBars = false;
-	m_pCurrentToolBar = 0;
+	m_pCurrentToolBar = nullptr;
 	m_bCoreActionsRegistered = false;
 }
 
@@ -196,7 +196,7 @@ void KviActionManager::customizeToolBarsDialogDestroyed()
 	if(m_pCurrentToolBar)
 	{
 		m_pCurrentToolBar->update();
-		m_pCurrentToolBar = 0;
+		m_pCurrentToolBar = nullptr;
 	}
 	g_pApp->saveToolBars();
 }
@@ -238,7 +238,7 @@ void KviActionManager::done()
 	if(m_pInstance)
 	{
 		delete m_pInstance;
-		m_pInstance = 0;
+		m_pInstance = nullptr;
 	}
 }
 
@@ -310,7 +310,7 @@ KviAction * KviActionManager::getAction(const QString & szName)
 	// try to preload the module that might register this action...
 	QString szModule = szName.left(idx);
 	if(!g_pModuleManager->getModule(szModule))
-		return 0;
+		return nullptr;
 	return m_pActions->find(szName);
 }
 

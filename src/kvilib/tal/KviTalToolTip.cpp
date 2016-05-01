@@ -45,7 +45,7 @@ KviTalToolTipHelper::~KviTalToolTipHelper()
 
 void KviTalToolTipHelper::toolTipDying()
 {
-	m_pToolTip = 0;
+	m_pToolTip = nullptr;
 }
 
 bool KviTalToolTipHelper::eventFilter(QObject *, QEvent * pEvent)
@@ -76,7 +76,7 @@ KviTalToolTip::~KviTalToolTip()
 
 void KviTalToolTip::helperDying()
 {
-	m_pHelper = 0;
+	m_pHelper = nullptr;
 }
 
 void KviTalToolTip::add(QWidget * widget, const QString & text)

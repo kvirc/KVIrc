@@ -30,5 +30,4 @@ KviMexServerImport::KviMexServerImport(KviModuleExtensionDescriptor * d)
 }
 
 KviMexServerImport::~KviMexServerImport()
-{
-}
+    = default;

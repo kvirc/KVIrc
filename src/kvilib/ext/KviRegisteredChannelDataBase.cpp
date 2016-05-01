@@ -92,7 +92,7 @@ KviRegisteredChannel * KviRegisteredChannelDataBase::find(const QString & name, 
 	KviRegisteredChannelList * l = m_pChannelDict->value(name);
 
 	if(!l)
-		return 0;
+		return nullptr;
 
 	for(KviRegisteredChannel * c = l->first(); c; c = l->next())
 	{
@@ -100,7 +100,7 @@ KviRegisteredChannel * KviRegisteredChannelDataBase::find(const QString & name, 
 			return c;
 	}
 
-	return 0;
+	return nullptr;
 }
 
 KviRegisteredChannel * KviRegisteredChannelDataBase::findExact(const QString & name, const QString & netmask)
@@ -108,7 +108,7 @@ KviRegisteredChannel * KviRegisteredChannelDataBase::findExact(const QString & n
 	KviRegisteredChannelList * l = m_pChannelDict->value(name);
 
 	if(!l)
-		return 0;
+		return nullptr;
 
 	for(KviRegisteredChannel * c = l->first(); c; c = l->next())
 	{
@@ -116,7 +116,7 @@ KviRegisteredChannel * KviRegisteredChannelDataBase::findExact(const QString & n
 			return c;
 	}
 
-	return 0;
+	return nullptr;
 }
 
 void KviRegisteredChannelDataBase::remove(KviRegisteredChannel * c)

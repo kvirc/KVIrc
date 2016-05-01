@@ -78,8 +78,7 @@ KviKvsObjectCoreCallFunctionHandler::KviKvsObjectCoreCallFunctionHandler(const K
 }
 
 KviKvsObjectCoreCallFunctionHandler::~KviKvsObjectCoreCallFunctionHandler()
-{
-}
+    = default;
 
 KviKvsObjectFunctionHandler * KviKvsObjectCoreCallFunctionHandler::clone()
 {

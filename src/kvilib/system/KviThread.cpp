@@ -129,7 +129,7 @@ static void kvi_threadCatchSigpipe()
 	act.sa_flags |= SA_RESTART;
 #endif
 
-	if(sigaction(SIGPIPE, &act, 0L) == -1)
+	if(sigaction(SIGPIPE, &act, nullptr) == -1)
 		qDebug("Failed to set the handler for SIGPIPE.");
 #endif
 }
@@ -149,7 +149,7 @@ static void kvi_threadInitialize()
 // over this length, the slave is forced to usleep()
 #define KVI_THREAD_MAX_EVENT_QUEUE_LENGTH 50
 
-static KviThreadManager * g_pThreadManager = 0;
+static KviThreadManager * g_pThreadManager = nullptr;
 
 void KviThreadManager::globalInit()
 {
@@ -160,7 +160,7 @@ void KviThreadManager::globalInit()
 void KviThreadManager::globalDestroy()
 {
 	delete g_pThreadManager;
-	g_pThreadManager = 0;
+	g_pThreadManager = nullptr;
 }
 
 KviThreadManager::KviThreadManager()
@@ -220,11 +220,11 @@ KviThreadManager::~KviThreadManager()
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	m_pSn->setEnabled(false);
 	delete m_pSn;
-	m_pSn = 0;
+	m_pSn = nullptr;
 #endif
 
 	// we're no longer in this world
-	g_pThreadManager = 0;
+	g_pThreadManager = nullptr;
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	// close the pipes
@@ -237,16 +237,16 @@ KviThreadManager::~KviThreadManager()
 		m_pEventQueue->removeFirst();
 	}
 	delete m_pEventQueue;
-	m_pEventQueue = 0;
+	m_pEventQueue = nullptr;
 #endif
 
 	m_pMutex->unlock();
 
 	// finish the cleanup
 	delete m_pMutex;
-	m_pMutex = 0;
+	m_pMutex = nullptr;
 	delete m_pThreadList;
-	m_pThreadList = 0;
+	m_pThreadList = nullptr;
 
 	// byez :)
 }
@@ -450,7 +450,7 @@ static void * internal_start_thread(void * arg)
 {
 	// Slave thread...
 	((KviThread *)arg)->internalThreadRun_doNotTouchThis();
-	return 0;
+	return nullptr;
 }
 #endif
 
@@ -601,10 +601,10 @@ KviSensitiveThread::~KviSensitiveThread()
 	m_pLocalEventQueueMutex->lock();
 	m_pLocalEventQueue->setAutoDelete(true);
 	delete m_pLocalEventQueue;
-	m_pLocalEventQueue = 0;
+	m_pLocalEventQueue = nullptr;
 	m_pLocalEventQueueMutex->unlock();
 	delete m_pLocalEventQueueMutex;
-	m_pLocalEventQueueMutex = 0;
+	m_pLocalEventQueueMutex = nullptr;
 	//	qDebug("Exiting KviSensitiveThread::~KviSensitiveThread (this=%d)",this);
 }
 

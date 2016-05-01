@@ -46,7 +46,7 @@ namespace UPnP
 
 	// The constructor
 	IgdControlPoint::IgdControlPoint(const QString & hostname, int port, const QString & rootUrl)
-	    : QObject(), m_bGatewayAvailable(false), m_iIgdPort(0), m_pRootService(0), m_pWanConnectionService(0)
+	    : QObject(), m_bGatewayAvailable(false), m_iIgdPort(0), m_pRootService(nullptr), m_pWanConnectionService(nullptr)
 	{
 		qDebug() << "CREATED UPnP::IgdControlPoint: created control point"
 		         << " url='" << hostname << ":" << port << "/" << rootUrl << "'." << endl;
@@ -75,7 +75,7 @@ namespace UPnP
 	QString IgdControlPoint::getExternalIpAddress() const
 	{
 		// Do not expose  wanConnectionService_;
-		if(m_pWanConnectionService != 0)
+		if(m_pWanConnectionService != nullptr)
 		{
 			return m_pWanConnectionService->getExternalIpAddress();
 		}
@@ -145,7 +145,7 @@ namespace UPnP
 	void IgdControlPoint::addPortMapping(const QString & protocol, const QString & remoteHost, int externalPort, const QString & internalClient, int internalPort, const QString & description, bool enabled, int leaseDuration)
 	{
 		// Do not expose  wanConnectionService_;
-		if(m_pWanConnectionService != 0)
+		if(m_pWanConnectionService != nullptr)
 		{
 			m_pWanConnectionService->addPortMapping(protocol, remoteHost, externalPort, internalClient, internalPort, description, enabled, leaseDuration);
 		}
@@ -155,7 +155,7 @@ namespace UPnP
 	void IgdControlPoint::deletePortMapping(const QString & protocol, const QString & remoteHost, int externalPort)
 	{
 		// Do not expose  wanConnectionService_;
-		if(m_pWanConnectionService != 0)
+		if(m_pWanConnectionService != nullptr)
 		{
 			m_pWanConnectionService->deletePortMapping(protocol, remoteHost, externalPort);
 		}

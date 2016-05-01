@@ -34,7 +34,7 @@
 #ifdef COMPILE_PERL_SUPPORT
 #include "../perlcore/perlcoreinterface.h"
 
-static KviModule * g_pPerlCoreModule = 0;
+static KviModule * g_pPerlCoreModule = nullptr;
 #endif // COMPILE_PERL_SUPPORT
 
 #ifdef COMPILE_PERL_SUPPORT
@@ -457,8 +457,8 @@ static bool perl_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 
 	if(!ex.lWarnings.isEmpty())
 	{
-		for(QStringList::Iterator it = ex.lWarnings.begin(); it != ex.lWarnings.end(); ++it)
-			c->warning(*it);
+		for(auto & lWarning : ex.lWarnings)
+			c->warning(lWarning);
 	}
 
 	if(!ex.bExitOk)

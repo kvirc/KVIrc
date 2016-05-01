@@ -27,7 +27,7 @@
 #include "KviConfigurationFile.h"
 #include "KviLocale.h"
 
-KviCustomToolBarManager * KviCustomToolBarManager::m_pInstance = 0;
+KviCustomToolBarManager * KviCustomToolBarManager::m_pInstance = nullptr;
 
 KviCustomToolBarManager::KviCustomToolBarManager()
 {
@@ -49,7 +49,7 @@ KviCustomToolBar * KviCustomToolBarManager::firstExistingToolBar()
 			return d->toolBar();
 		++it;
 	}
-	return 0;
+	return nullptr;
 }
 
 void KviCustomToolBarManager::init()
@@ -63,7 +63,7 @@ void KviCustomToolBarManager::done()
 	if(m_pInstance)
 	{
 		delete m_pInstance;
-		m_pInstance = 0;
+		m_pInstance = nullptr;
 	}
 }
 
@@ -102,7 +102,7 @@ KviCustomToolBarDescriptor * KviCustomToolBarManager::findDescriptorByInternalId
 			return d;
 		++it;
 	}
-	return 0;
+	return nullptr;
 }
 
 bool KviCustomToolBarManager::renameDescriptor(const QString & szId, const QString & szNewId, const QString & szNewLabelCode)
@@ -149,7 +149,7 @@ void KviCustomToolBarManager::storeVisibilityState()
 	KviPointerHashTableIterator<QString, KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
-		d->m_bVisibleAtStartup = d->toolBar() != 0;
+		d->m_bVisibleAtStartup = d->toolBar() != nullptr;
 		++it;
 	}
 }
@@ -160,7 +160,7 @@ int KviCustomToolBarManager::visibleToolBarCount()
 	KviPointerHashTableIterator<QString, KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
-		if(d->toolBar() != 0)
+		if(d->toolBar() != nullptr)
 			cnt++;
 		++it;
 	}

@@ -87,7 +87,7 @@ KviMediaType * KviMediaManager::findMediaTypeByIanaType(const char * ianaType)
 			return mt;
 	}
 
-	return 0;
+	return nullptr;
 }
 
 KviMediaType * KviMediaManager::findMediaTypeByFileMask(const char * filemask)
@@ -100,7 +100,7 @@ KviMediaType * KviMediaManager::findMediaTypeByFileMask(const char * filemask)
 			return mt;
 	}
 
-	return 0;
+	return nullptr;
 }
 
 void KviMediaManager::copyMediaType(KviMediaType * dst, KviMediaType * src)
@@ -436,7 +436,7 @@ static KviDefaultMediaType g_defMediaTypes[] = {
 	{ "*.tar.bz2", "", "applicatoin/x-bzip2", "BZipped tarball", "run ark $0" },
 	{ "*.tgz", "", "application/x-gzip", "GZipped tarball", "run ark $0" },
 	{ "*.wav", "", "audio/wav", "Wave audio", "run play $0" },
-	{ 0, 0, 0, 0, 0 }
+	{ nullptr, nullptr, nullptr, nullptr, nullptr }
 };
 
 void KviMediaManager::load(const QString & filename)
