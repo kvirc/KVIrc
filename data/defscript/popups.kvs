@@ -133,6 +133,8 @@ defpopup(querytextview)
 		}
 	}
 
+	label($tr("You're not connected to a server","defscript")) (!$server)
+
 	item($tr("Dock","defscript"),6) (!$window.isDocked())
 	{
 		window.dock
@@ -145,16 +147,16 @@ defpopup(querytextview)
 		window.close
 	}
 
-	separator($server)
+	separator
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),88) (!%:multiple && $server)
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),88) ($server && $isWellKnown($0))
 	{
 		whois $0 $0
 	}
 
 	separator($server)
 
-	popup($tr("&Information","defscript"),317) ($server)
+	popup($tr("&Information","defscript"),317) (!%:multiple && $server && $isWellKnown($0))
 	{
 		item($str.printf($tr("/WHOIS ?s","defscript"),$0),88)
 		{
@@ -178,7 +180,7 @@ defpopup(querytextview)
 			foreach(%i,$str.split(",",$0))dns %i
 		}
 
-		item($tr("Mask for","defscript") $0,15) (!%:multiple && $server)
+		item($tr("Mask for","defscript") $0,15)
 		{
 			echo $mask($0,11)
 		}
@@ -186,24 +188,22 @@ defpopup(querytextview)
 
 	separator($server)
 
-	extpopup(C&TCP,ctcp,162) ($server)
+	extpopup(C&TCP,ctcp,162) (!%:multiple && $server && $isWellKnown($0))
 
-	extpopup(&DCC,dcc,325) ($server)
+	extpopup(&DCC,dcc,325) (!%:multiple && $server && $isWellKnown($0))
 
 	separator($server)
 
-	extpopup($tr("&Ignore","defscript"),ignore,203) (!%:multiple && $server)
+	extpopup($tr("&Ignore","defscript"),ignore,203) (!%:multiple && $server && $isWellKnown($0))
 
-	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple && $server)
+	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple && $server && $isWellKnown($0))
 
-	item($tr("Notify Avatar","defscript"),57) ($server)
+	item($tr("Notify Avatar","defscript"),57) (!%:multiple && $server && $isWellKnown($0))
 	{
 		avatar.notify $0
 	}
 
 	separator($server)
-
-	label($tr("You're not connected to a server","defscript")) (!$server)
 
 	item($tr("Clear Buffer","defscript"),120)
 	{
@@ -213,6 +213,8 @@ defpopup(querytextview)
 
 defpopup(channelpopup)
 {
+	label($tr("You're not connected to a server","defscript")) (!$server)
+
 	item($tr("&Hop","defscript") $0,289) ($server)
 	{
 		hop $0;
@@ -228,7 +230,7 @@ defpopup(channelpopup)
 		join $0;
 	}
 
-	separator
+	separator($server)
 
 	item(/NAMES $0,75) ($server)
 	{
@@ -240,9 +242,7 @@ defpopup(channelpopup)
 		who $0;
 	}
 
-	separator
-
-	label($tr("You're not connected to a server","defscript")) (!$server)
+	separator($server)
 
 	item($tr("Copy Channel Address","defscript"),18)
 	{
@@ -252,6 +252,20 @@ defpopup(channelpopup)
 
 defpopup(ctcp)
 {
+	prologue
+	{
+		%:ProtectPing = $option(boolIgnoreCTCPPing)
+		%:ProtectFinger = $option(boolIgnoreCTCPFinger)
+		%:ProtectVersion = $option(boolIgnoreCTCPVersion)
+		%:ProtectUserinfo = $option(boolIgnoreCTCPUserinfo)
+		%:ProtectClientinfo = $option(boolIgnoreCTCPClientinfo)
+		%:ProtectSource = $option(boolIgnoreCTCPSource)
+		%:ProtectTime = $option(boolIgnoreCTCPTime)
+		%:ProtectPage = $option(boolIgnoreCTCPPage)
+		%:ProtectAvatar = $option(boolIgnoreCTCPAvatar)
+		%:ProtectDCC = $option(boolIgnoreCTCPDCC)
+	}
+
 	item(PING,36)
 	{
 		ctcp $0 PING
@@ -300,6 +314,111 @@ defpopup(ctcp)
 	{
 		ctcp $0 AVATAR
 	}
+
+	separator
+
+	popup($tr("CTCP Protection","defscript"),20)
+	{
+		item(PING - $tr("Disable Ignore","defscript"),36) (%:ProtectPing)
+		{
+			option boolIgnoreCTCPPing 0
+		}
+
+		item(PING - $tr("Enable Ignore","defscript"),36) (!%:ProtectPing)
+		{
+			option boolIgnoreCTCPPing 1
+		}
+
+		item(FINGER - $tr("Disable Ignore","defscript"),268) (%:ProtectFinger)
+		{
+			option boolIgnoreCTCPFinger 0
+		}
+
+		item(FINGER - $tr("Enable Ignore","defscript"),268) (!%:ProtectFinger)
+		{
+			option boolIgnoreCTCPFinger 1
+		}
+
+		item(VERSION - $tr("Disable Ignore","defscript"),16) (%:ProtectVersion)
+		{
+			option boolIgnoreCTCPVersion 0
+		}
+
+		item(VERSION - $tr("Enable Ignore","defscript"),16) (!%:ProtectVersion)
+		{
+			option boolIgnoreCTCPVersion 1
+		}
+
+		item(USERINFO - $tr("Disable Ignore","defscript"),178) (%:ProtectUserinfo)
+		{
+			option boolIgnoreCTCPUserinfo 0
+		}
+
+		item(USERINFO - $tr("Enable Ignore","defscript"),178) (!%:ProtectUserinfo)
+		{
+			option boolIgnoreCTCPUserinfo 1
+		}
+
+		item(CLIENTINFO - $tr("Disable Ignore","defscript"),29) (%:ProtectClientinfo)
+		{
+			option boolIgnoreCTCPClientinfo 0
+		}
+
+		item(CLIENTINFO - $tr("Enable Ignore","defscript"),29) (!%:ProtectClientinfo)
+		{
+			option boolIgnoreCTCPClientinfo 1
+		}
+
+		item(SOURCE - $tr("Disable Ignore","defscript"),55) (%:ProtectSource)
+		{
+			option boolIgnoreCTCPSource 0
+		}
+
+		item(SOURCE - $tr("Enable Ignore","defscript"),55) (!%:ProtectSource)
+		{
+			option boolIgnoreCTCPSource 1
+		}
+
+		item(TIME - $tr("Disable Ignore","defscript"),93) (%:ProtectTime)
+		{
+			option boolIgnoreCTCPTime 0
+		}
+
+		item(TIME - $tr("Enable Ignore","defscript"),93) (!%:ProtectTime)
+		{
+			option boolIgnoreCTCPTime 1
+		}
+
+		item(PAGE - $tr("Disable Ignore","defscript"),180) (%:ProtectPage)
+		{
+			option boolIgnoreCTCPPage 0
+		}
+
+		item(PAGE - $tr("Enable Ignore","defscript"),180) (!%:ProtectPage)
+		{
+			option boolIgnoreCTCPPage 1
+		}
+
+		item(AVATAR - $tr("Disable Ignore","defscript"),57) (%:ProtectAvatar)
+		{
+			option boolIgnoreCTCPAvatar 0
+		}
+
+		item(AVATAR - $tr("Enable Ignore","defscript"),57) (!%:ProtectAvatar)
+		{
+			option boolIgnoreCTCPAvatar 1
+		}
+
+		item(DCC - $tr("Disable Ignore","defscript"),325) (%:ProtectDCC)
+		{
+			option boolIgnoreCTCPAvatar 0
+		}
+
+		item(DCC - $tr("Enable Ignore","defscript"),325) (!%:ProtectDCC)
+		{
+			option boolIgnoreCTCPAvatar 1
+		}
+	}
 }
 
 defpopup(urlpopup)
@@ -312,19 +431,21 @@ defpopup(urlpopup)
 
 defpopup(consoletextview)
 {
+	label($tr("You're not connected to a server","defscript")) (!$server)
+
 	item($tr("Dock","defscript"),6) (!$window.isDocked())
 	{
 		window.dock
 	}
 
-	separator($server)
+	separator(!$window.isDocked())
 
 	item($tr("Close","defscript"),1)
 	{
 		window.close
 	}
 
-	separator($server)
+	separator
 
 	extpopup($tr("Default Channels","defscript"),channels,31) ($server)
 
@@ -417,8 +538,6 @@ defpopup(consoletextview)
 	}
 
 	separator($server)
-
-	label($tr("You're not connected to a server","defscript")) (!$server)
 
 	item($tr("Clear Buffer","defscript"),120)
 	{
@@ -750,14 +869,16 @@ defpopup(defaulttextview)
 		}
 	}
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),90) (!%:multiple && $server)
+	label($tr("You're not connected to a server","defscript")) (!$server)
+
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),90) (!%:multiple && $server && $isWellKnown($0))
 	{
 		whois $0 $0
 	}
 
-	separator
+	separator($server)
 
-	popup($tr("&Information","defscript"),317) ($server)
+	popup($tr("&Information","defscript"),317) ($server && $isWellKnown($0))
 	{
 		item($str.printf($tr("/WHOIS ?s","defscript"),$0),88)
 		{
@@ -776,41 +897,44 @@ defpopup(defaulttextview)
 
 		separator
 
-		item(DNS $0,91) ($server)
+		item($tr("DNS for","defscript") $0,91)
 		{
 			foreach(%i,$str.split(",",$0))dns %i
 		}
+
+		item($tr("Mask for","defscript") $0,15)
+		{
+			echo $mask($0,11)
+		}
 	}
 
-	separator
+	separator($server)
 
-	item($tr("&Query","defscript") %:visible,47) ($server)
+	item($tr("&Query","defscript") %:visible,47) ($server && $isWellKnown($0))
 	{
 		query $0
 	}
 
-	separator
+	separator($server)
 
-	extpopup(C&TCP,ctcp,162) ($server)
+	extpopup(C&TCP,ctcp,162) ($server && $isWellKnown($0))
 
-	extpopup(&DCC,dcc,325) ($server)
+	extpopup(&DCC,dcc,325) ($server && $isWellKnown($0))
 
-	separator
+	separator($server)
 
-	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple && $server)
+	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple && $server && $isWellKnown($0))
 
-	extpopup($tr("&Highlight","defscript"),highlight,269) (!%:multiple && $server)
+	extpopup($tr("&Highlight","defscript"),highlight,269) (!%:multiple && $server && $isWellKnown($0))
 
-	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple && $server)
+	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple && $server && $isWellKnown($0))
 
-	item($tr("Notify avatar","defscript"),57) ($server)
+	item($tr("Notify avatar","defscript"),57) ($server && $isWellKnown($0))
 	{
 		avatar.notify $0
 	}
 
 	separator($server)
-
-	label($tr("You're not connected to a server","defscript")) (!$server)
 
 	item($tr("Clear Buffer","defscript"),120)
 	{
@@ -820,46 +944,55 @@ defpopup(defaulttextview)
 
 defpopup(hostpopup)
 {
-	item($tr("Look Up ","defscript")$0,13)
+	label($tr("You're not connected to a server","defscript")) (!$server)
+
+	item($tr("Look Up ","defscript")$0,13) ($server)
 	{
 		host -a $0
 	}
 
-	separator
+	separator($server)
 
-	item($tr("Open ","defscript")"ftp://"$0"/",185) ("$system.ostype" == "unix")
+	item($tr("Open ","defscript")"ftp://"$0"/",185) ("$system.ostype" == "unix" && $server)
 	{
 		openurl "ftp://$0/"
 	}
 
-	item($tr("Telnet to ","defscript")$0,9)
+	item($tr("Telnet to ","defscript")$0,9) ($server)
 	{
 		system.runcmd telnet $0
 	}
 
-	separator
+	separator($server)
 
-	item($tr("Traceroute to ","defscript")$0,36)
+	item($tr("Traceroute to ","defscript")$0,36) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute $0
 		else system.runcmd tracert $0
 	}
 
-	item($tr("Traceroute6 to ","defscript")$0,36)
+	item($tr("Traceroute6 to ","defscript")$0,36) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute6 $0
 		else system.runcmd tracert -6 $0
 	}
 
-	item("Ping "$0,36)
+	item("Ping "$0,36) ($server)
 	{
 		system.runcmd ping $0
 	}
 
-	item("Ping6 "$0,36)
+	item("Ping6 "$0,36) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd ping6 $0
 		else system.runcmd ping -6 $0
+	}
+
+	separator($server)
+
+	item($tr("Clear Buffer","defscript"),120)
+	{
+		clear;
 	}
 }
 
@@ -985,19 +1118,21 @@ defpopup(dcc)
 
 defpopup(channeltextview)
 {
+	label($tr("You're not connected to a server","defscript")) (!$server)
+
 	item($tr("Dock","defscript"),6) (!$window.isDocked())
 	{
 		window.dock
 	}
 
-	separator(!$window.isDocked() $server)
+	separator(!$window.isDocked())
 
 	item($tr("Close","defscript"),1)
 	{
 		window.close
 	}
 
-	separator($server)
+	separator
 
 	extpopup($tr("Default Channels","defscript"),channels,31) ($server)
 
@@ -1006,7 +1141,7 @@ defpopup(channeltextview)
 		if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open
 	}
 
-	separator($server)
+	separator
 
 	item($tr("&Hop","defscript") $0,289) ($channel && $server)
 	{
@@ -1023,11 +1158,11 @@ defpopup(channeltextview)
 		join $0;
 	}
 
-	separator($server)
+	separator
 
 	extpopup(C&TCP,ctcp,162) ($server)
 
-	separator($server)
+	separator
 
 	item(/NAMES $0,75) ($server)
 	{
@@ -1044,7 +1179,7 @@ defpopup(channeltextview)
 		avatar.notify $0
 	}
 
-	separator($server)
+	separator
 
 	extpopup($tr("&Highlight","defscript"),channelhighlight,269) ($server)
 
@@ -1053,9 +1188,7 @@ defpopup(channeltextview)
 		str.toClipboard $chan.getUrl
 	}
 
-	separator($server)
-
-	label($tr("You're not connected to a server","defscript")) (!$server)
+	separator
 
 	item($tr("Clear Buffer","defscript"),120)
 	{
@@ -1538,7 +1671,7 @@ defpopup(channel)
 		}
 	}
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),%:visible),88) ($server)
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),%:visible),88) (!%:multiple && $server)
 	{
 		foreach(%i,$str.split(",",$0))
 			whois %i %i
@@ -1546,7 +1679,7 @@ defpopup(channel)
 
 	separator
 
-	popup($tr("&Information","defscript"),317) ($server)
+	popup($tr("&Information","defscript"),317) (!%:multiple && $server)
 	{
 		item($str.printf($tr("/WHOIS ?s","defscript"),%:visible),88)
 		{
@@ -1565,12 +1698,12 @@ defpopup(channel)
 
 		separator
 
-		item($tr("DNS for","defscript") %:visible,91) ($server)
+		item($tr("DNS for","defscript") %:visible,91)
 		{
 			foreach(%i,$str.split(",",$0))dns %i
 		}
 
-		item($tr("Mask for","defscript") %:visible,15) (!%:multiple)
+		item($tr("Mask for","defscript") %:visible,15)
 		{
 			echo $mask($0,11)
 		}
