@@ -484,17 +484,15 @@ void KviWindowListButton::drawButtonLabel(QPainter * pPainter)
 
 	if(bRect.width() > cRect.width())
 	{
-		pPainter->setClipRect(cRect.right(), cRect.y(), 10, cRect.height());
+		pPainter->setClipRect(cRect.right() - 15, cRect.y(), 10, cRect.height());
 		QColor base = pPainter->pen().color();
 		QColor bg = palette().color(QPalette::Background);
 		base.setRgb((base.red() + bg.red()) / 2, (base.green() + bg.green()) / 2, (base.blue() + bg.blue()) / 2);
 		pPainter->setPen(base);
-		cRect.setWidth(cRect.width() + 10);
 		pPainter->drawText(cRect, Qt::AlignLeft | Qt::AlignTop, szText);
-		pPainter->setClipRect(cRect.right(), cRect.y(), 5, cRect.height());
+		pPainter->setClipRect(cRect.right() - 5, cRect.y(), 6, cRect.height()); /* Use a bit more width than the visible 5 due to glitches */
 		base.setRgb((base.red() + bg.red()) / 2, (base.green() + bg.green()) / 2, (base.blue() + bg.blue()) / 2);
 		pPainter->setPen(base);
-		cRect.setWidth(cRect.width() + 10);
 		pPainter->drawText(cRect, Qt::AlignLeft | Qt::AlignTop, szText);
 	}
 }
