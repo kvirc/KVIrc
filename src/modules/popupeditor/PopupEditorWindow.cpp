@@ -33,7 +33,6 @@
 #include "KviFileUtils.h"
 #include "KviScriptEditor.h"
 #include "kvi_debug.h"
-#include "KviLocale.h"
 #include "KviApplication.h"
 #include "KviKvsPopupManager.h"
 #include "KviKvsPopupMenu.h"
@@ -386,12 +385,10 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint & pos)
 
 	m_pContextPopup->clear();
 
-	//PopupTreeWidgetItem * parentMenu = nullptr;
 	bool bIsMenu = false;
 
 	if(it)
 	{
-		//parentMenu = (PopupTreeWidgetItem *) (((PopupTreeWidgetItem *)it)->parent());
 		bIsMenu = ((PopupTreeWidgetItem *)it)->m_type == PopupTreeWidgetItem::Menu;
 	}
 
@@ -435,29 +432,23 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint & pos)
 
 	m_pContextPopup->addSeparator();
 
-	m_pContextPopup->addAction(
-	                   *(g_pIconManager->getSmallIcon(KviIconManager::Cut)),
-	                   __tr2qs_ctx("Cu&t", "editor"), this, SLOT(contextCut()))
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),
+	    __tr2qs_ctx("Cu&t", "editor"), this, SLOT(contextCut()))
 	    ->setEnabled(it);
-	m_pContextPopup->addAction(
-	                   *(g_pIconManager->getSmallIcon(KviIconManager::Copy)),
-	                   __tr2qs_ctx("&Copy", "editor"), this, SLOT(contextCopy()))
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),
+	    __tr2qs_ctx("&Copy", "editor"), this, SLOT(contextCopy()))
 	    ->setEnabled(it);
-	m_pContextPopup->addAction(
-	                   *(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
-	                   __tr2qs_ctx("Re&move", "editor"), this, SLOT(contextRemove()))
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
+	    __tr2qs_ctx("Re&move", "editor"), this, SLOT(contextRemove()))
 	    ->setEnabled(it);
-	m_pContextPopup->addAction(
-	                   *(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
-	                   __tr2qs_ctx("&Paste Below", "editor"), this, SLOT(contextPasteBelow()))
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
+	    __tr2qs_ctx("&Paste Below", "editor"), this, SLOT(contextPasteBelow()))
 	    ->setEnabled(m_pClipboard);
-	m_pContextPopup->addAction(
-	                   *(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
-	                   __tr2qs_ctx("Paste Above", "editor"), this, SLOT(contextPasteAbove()))
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
+	    __tr2qs_ctx("Paste Above", "editor"), this, SLOT(contextPasteAbove()))
 	    ->setEnabled(it && m_pClipboard);
-	m_pContextPopup->addAction(
-	                   *(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
-	                   __tr2qs_ctx("Paste Inside", "editor"), this, SLOT(contextPasteInside()))
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
+	    __tr2qs_ctx("Paste Inside", "editor"), this, SLOT(contextPasteInside()))
 	    ->setEnabled(it && bIsMenu && m_pClipboard);
 
 	bool bSeparatorInserted = false;
@@ -468,16 +459,11 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint & pos)
 	bSeparatorInserted = true;
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Prologue)),
 	    __tr2qs_ctx("New Menu Prologue", "editor"), this, SLOT(contextNewPrologue()));
-	//	}
 
-	//	if(!findEpilogue(parentMenu))
-	//	{
 	if(!bSeparatorInserted)
 		m_pContextPopup->addSeparator();
-	m_pContextPopup->addAction(
-	    *(g_pIconManager->getSmallIcon(KviIconManager::Epilogue)),
+	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Epilogue)),
 	    __tr2qs_ctx("New Menu Epilogue", "editor"), this, SLOT(contextNewEpilogue()));
-	//	}
 
 	m_pContextPopup->popup(QCursor::pos());
 }
@@ -609,17 +595,12 @@ PopupTreeWidgetItem * SinglePopupEditor::newItemInside(PopupTreeWidgetItem * it,
 void SinglePopupEditor::contextNewPrologue()
 {
 	PopupTreeWidgetItem * it = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pLastSelectedItem->parent() : nullptr;
-	//	if(!findPrologue(it))
-	//	{
 	m_pTreeWidget->setCurrentItem(newItem(it, it, PopupTreeWidgetItem::Prologue));
-	//	}
 }
 
 void SinglePopupEditor::contextNewEpilogue()
 {
 	PopupTreeWidgetItem * it = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pLastSelectedItem->parent() : nullptr;
-	//	if(!findEpilogue(it))
-	//	{
 	PopupTreeWidgetItem * after = it ? (PopupTreeWidgetItem *)it->child(0) : (PopupTreeWidgetItem *)m_pTreeWidget->topLevelItem(0);
 	if(after)
 	{
@@ -634,7 +615,6 @@ void SinglePopupEditor::contextNewEpilogue()
 		after = it;
 	}
 	m_pTreeWidget->setCurrentItem(newItem(it, after, PopupTreeWidgetItem::Epilogue));
-	//	}
 }
 
 void SinglePopupEditor::contextCopy()
@@ -1150,8 +1130,7 @@ void PopupEditorWidget::oneTimeSetup()
 
 	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(m_pTreeWidget, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)));
-	connect(m_pTreeWidget, SIGNAL(customContextMenuRequested(const QPoint &)),
-	    this, SLOT(customContextMenuRequested(const QPoint &)));
+	connect(m_pTreeWidget, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(customContextMenuRequested(const QPoint &)));
 	connect(KviKvsPopupManager::instance(), SIGNAL(popupRefresh(const QString &)), this, SLOT(popupRefresh(const QString &)));
 }
 
@@ -1179,8 +1158,7 @@ void PopupEditorWidget::popupRefresh(const QString & szName)
 				if(
 				    QMessageBox::warning(nullptr, __tr2qs_ctx("Confirm Overwriting Current - KVIrc", "editor"),
 				        __tr2qs_ctx("An external script has changed the popup you are currently editing. Do you want to accept the external changes?", "editor"),
-				        QMessageBox::Yes, QMessageBox::No | QMessageBox::Default | QMessageBox::Escape)
-				    != QMessageBox::Yes)
+				        QMessageBox::Yes, QMessageBox::No | QMessageBox::Default | QMessageBox::Escape) != QMessageBox::Yes)
 					return;
 			}
 			KviKvsPopupMenu * pCopy = new KviKvsPopupMenu(szName);
@@ -1208,21 +1186,15 @@ void PopupEditorWidget::customContextMenuRequested(const QPoint & pos)
 	{
 		m_pContextPopup->clear();
 
-		m_pContextPopup->addAction(
-		    *(g_pIconManager->getSmallIcon(KviIconManager::Popup)),
-		    __tr2qs_ctx("&New Popup", "editor"),
-		    this, SLOT(newPopup()));
+		m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Popup)),
+		    __tr2qs_ctx("&New Popup", "editor"), this, SLOT(newPopup()));
 
-		m_pContextPopup->addAction(
-		                   *(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
-		                   __tr2qs_ctx("Re&move Popup", "editor"),
-		                   this, SLOT(removeCurrentPopup()))
+		m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
+		    __tr2qs_ctx("Re&move Popup", "editor"), this, SLOT(removeCurrentPopup()))
 		    ->setEnabled(it);
 
-		m_pContextPopup->addAction(
-		                   *(g_pIconManager->getSmallIcon(KviIconManager::Save)),
-		                   __tr2qs_ctx("&Export Popup to...", "editor"),
-		                   this, SLOT(exportCurrentPopup()))
+		m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Save)),
+		    __tr2qs_ctx("&Export Popup to...", "editor"), this, SLOT(exportCurrentPopup()))
 		    ->setEnabled(it);
 
 		m_pContextPopup->popup(QCursor::pos());
@@ -1231,10 +1203,8 @@ void PopupEditorWidget::customContextMenuRequested(const QPoint & pos)
 	{
 		m_pEmptyContextPopup->clear();
 
-		m_pEmptyContextPopup->addAction(
-		    *(g_pIconManager->getSmallIcon(KviIconManager::Popup)),
-		    __tr2qs_ctx("&New Popup", "editor"),
-		    this, SLOT(newPopup()));
+		m_pEmptyContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Popup)),
+		    __tr2qs_ctx("&New Popup", "editor"), this, SLOT(newPopup()));
 		m_pEmptyContextPopup->popup(QCursor::pos());
 	}
 }
