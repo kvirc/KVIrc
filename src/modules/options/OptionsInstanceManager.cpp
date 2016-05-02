@@ -3668,7 +3668,7 @@ void OptionsInstanceManager::deleteInstanceTree(KviPointerList<OptionsWidgetInst
 				}
 				else
 				{
-					qDebug("Ops...i have deleted the options dialog ?");
+					qDebug("Oops! Have I deleted the options dialog?");
 				}
 			} //else qDebug("Class %s has no widget",e->szName);
 			if(pEntry->pChildList)
@@ -3681,7 +3681,7 @@ void OptionsInstanceManager::deleteInstanceTree(KviPointerList<OptionsWidgetInst
 OptionsInstanceManager::~OptionsInstanceManager()
 {
 	if(m_pInstanceTree)
-		qDebug("Ops...OptionsInstanceManager::cleanup() not called ?");
+		qDebug("Oops! OptionsInstanceManager::cleanup() not called?");
 }
 
 void OptionsInstanceManager::cleanup(KviModule *)

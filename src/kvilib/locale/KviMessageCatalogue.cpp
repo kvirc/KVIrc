@@ -179,7 +179,7 @@ bool KviMessageCatalogue::load(const QString & szName)
 		}
 		else
 		{
-			qDebug("KviLocale: Bad locale magic for file %s: not a *.mo file ?", szCatalogueFile.toUtf8().data());
+			qDebug("KviLocale: Bad locale magic for file %s: not a *.mo file?", szCatalogueFile.toUtf8().data());
 			f.close();
 			return false;
 		}

@@ -95,7 +95,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 			}
 			else
 			{
-				warning(KVSP_curCharPointer - 1, __tr2qs_ctx("Stray ':' character: did you mean '...<namespace>::<alias_name>' ?", "kvs"));
+				warning(KVSP_curCharPointer - 1, __tr2qs_ctx("Stray ':' character: did you mean '...<namespace>::<alias_name>'?", "kvs"));
 				error(KVSP_curCharPointer, __tr2qs_ctx("Syntax error: malformed (alias?) command identifier", "kvs"));
 				return nullptr;
 			}
