@@ -27,7 +27,6 @@
 #include "DccFileTransfer.h"
 #include "DccBroker.h"
 #include "DccMarshal.h"
-#include "DccBroker.h"
 #include "DccWindow.h"
 
 #include "kvi_debug.h"
