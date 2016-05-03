@@ -54,7 +54,7 @@ OptionsWidget_uparser::OptionsWidget_uparser(QWidget * parent)
 	mergeTip(b, __tr2qs_ctx("This option will show the script errors and warnings "
 	                        "also in the special debug window. This makes tracking of scripts that might "
 	                        "be running in several windows far easier. The messages in the debug window "
-	                        "also contain a deeper call stack which will help you identifying the "
+	                        "also contain a deeper call stack which will help you to identify the "
 	                        "scripting problems.",
 	                "options"));
 
