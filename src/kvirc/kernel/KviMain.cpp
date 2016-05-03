@@ -399,9 +399,6 @@ int main(int argc, char ** argv)
 	qputenv("QT_BEARER_POLL_TIMEOUT", QByteArray::number(-1));
 #endif
 
-	if(qgetenv("QT_QPA_PLATFORMTHEME") == QByteArray("appmenu-qt5"))
-		qunsetenv("QT_QPA_PLATFORMTHEME");
-
 	KviApplication * pTheApp = new KviApplication(argc, argv);
 
 #ifdef COMPILE_KDE_SUPPORT
