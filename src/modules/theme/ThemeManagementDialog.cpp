@@ -77,7 +77,7 @@ ThemeListWidgetItem::ThemeListWidgetItem(KviTalListWidget * pBox, KviThemeInfo *
 	m_pThemeInfo = pInfo;
 
 	QString szText;
-	szText = "<nobr><b>";
+	szText = "<b>";
 	szText += pInfo->name();
 	szText += "</b>";
 
@@ -90,17 +90,16 @@ ThemeListWidgetItem::ThemeListWidgetItem(KviTalListWidget * pBox, KviThemeInfo *
 
 	if(!pInfo->author().isEmpty())
 	{
-		szText += " <font color=\"#636363\"> ";
+		szText += " <font color=\"#454545\"> ";
 		szText += __tr2qs_ctx("by", "theme");
 		szText += " ";
 		szText += pInfo->author();
 		szText += "</font>";
 	}
 
-	szText += "</nobr>";
-	szText += "<br><nobr><font size=\"-1\">";
+	szText += "<br><font size=\"-1\">";
 	szText += pInfo->description();
-	szText += "</font></nobr>";
+	szText += "</font>";
 	setText(szText);
 }
 
