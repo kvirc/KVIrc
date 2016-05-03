@@ -43,8 +43,6 @@
 
 namespace KviKvsCoreSimpleCommands
 {
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: say
 		@type:
@@ -109,8 +107,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: server
 		@type:
@@ -127,49 +123,39 @@ namespace KviKvsCoreSimpleCommands
 			!sw: -b=<local address:string> | --bind-address=<local address:string>
 			Bind the outgoing connection to <local address>. The <local address> must be
 			either the IP address of a local interface or a local interface name itself
-			(e.g. eth0 under Linux, en0 under Mac OS etc.) suitable for contacting the
+			(e.g. eth0 under Linux, en0 under OS X etc.) suitable for contacting the
 			remote <server>:
 			this means that if you're going to use the -i switch, the <local address>
 			[b]must[/b] be an IPv6 address.
 			If using a local interface name as <local address> (working on most, but not all systems),
 			the KVIrc network engine will automatically detect the interface address (i.e. the default
 			address of that interface).
-
 			!sw: -c=<command sequence:string> | --command=<command sequence:string>
 			The <command sequence> will be executed just after the login operations
 			have been completed.
-
 			!sw: -f=<socket filter:string> | --filter=<socket filter:string>
 			Activates <socket filter> on the connection.
 			A socket filter is a plugin that can adapt the IRC protocol to other existing protocols such as OpenNap.
 			For plain IRC it is not needed.
-
 			!sw: -i | --ipv6
 			Connects to the <server> via the IPv6 protocol
 			(if IPv6 support has been compiled in).
-
 			!sw: -n | --new-context
 			Forces the connection to be attempted in a new IRC context (server window) instead of the current one.
-
 			!sw: -m | --minimized
 			If a new console window is created (due to -n or -u) then create it as minimized.
-
 			!sw: -p=<password:string> | --password=<password:string>
 			Uses <password> to login to the server (the password will be stored in the server
 			entry too).
-
 			!sw: -q=<nick:string> | --nickname=<nick:string>
 			Uses <nick> to login to the server (the nickname will be stored in the server
 			entry too).
-
 			!sw: -s | --ssl
 			Activates the SSL support for this connection (if OpenSSL support has been compiled in).
-
 			!sw: -u | --unused-context
 			Forces the connection to be attempted in the first IRC context that has
 			no connection in progress. If all the IRC contexts have connections in progress
 			then a new one is created.
-
 			!sw: -l | --last
 			When <server> and <port> are empty use the last ones used in the IRC context.
 		@description:
@@ -326,8 +312,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	};
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: service
 		@type:
@@ -341,11 +325,9 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Registers a new IRC service: this is for IRC operators only.[br]
 			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
-			WARNING: the <info> parameter may contain spaces: in that case you [b]must[/b] add the leading ':' character.[br]
+			WARNING: the <info> parameter may contain spaces: in that case you [b]must[/b] add the leading [b]]:[/b]] character.[br]
 	*/
 	// RFC2921 wrapper
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: setmenu
@@ -368,7 +350,7 @@ namespace KviKvsCoreSimpleCommands
 			menu bar text for the new popup.[br]
 			If a popup menu with the same <visible_text> or the same <menu_name> already exists in
 			the current frame, it is removed first.[br]
-			<visible_text> can optionally contain the '&' character to identify
+			<visible_text> can optionally contain the [b]]&[/b]] character to identify
 			the popup menu accelerator.[br]
 			[menu_name], if given, must be a valid name of a popup menu created earlier
 			with [cmd]defpopup[/cmd] (or the popup editor).[br]
@@ -382,10 +364,10 @@ namespace KviKvsCoreSimpleCommands
 			[cmd]defpopup[/cmd]
 		@examples:
 			[example]
-			setmenu -q -i=2 Test a popup
-			setmenu Test
-			setmenu ThisDoesNotExist
-			setmenu -q ThisDoesNotExist
+				setmenu -q -i=2 Test a popup
+				setmenu Test
+				setmenu ThisDoesNotExist
+				setmenu -q ThisDoesNotExist
 			[/example]
 	*/
 
@@ -437,8 +419,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: setreturn
 		@type:
@@ -479,8 +459,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: sockets
 		@type:
@@ -497,8 +475,6 @@ namespace KviKvsCoreSimpleCommands
 			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: squery
@@ -519,7 +495,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 		@examples:
 			[example]
-			squery Alis LIST * -min 100
+				squery Alis LIST * -min 100
 			[/example]
 	*/
 
@@ -558,8 +534,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: squit
 		@type:
@@ -573,12 +547,10 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Disconnects a server socket: this is for IRC operators only.[br]
 			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
-			WARNING: the <comment> parameter may contain spaces: in that case you MUST add the leading ':' character
+			WARNING: the <comment> parameter may contain spaces: in that case you MUST add the leading [b]]:[/b]] character
 			before.[br]
 	*/
 	// RFC2812 wrapper
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: srand
@@ -615,8 +587,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: stats
 		@type:
@@ -630,12 +600,10 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Requests the stats information from the specified server or the current server if no [target server] is specified.[br]
 			The query parameter is usually a letter indicating the type of the query requested: some query letters
-			are defined by [doc]rfc2812[/doc] and some others are server implementation dependent.[br]
+			are defined by [doc]RFC2812[/doc] and some others are server implementation dependent.[br]
 			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: time
@@ -653,8 +621,6 @@ namespace KviKvsCoreSimpleCommands
 	*/
 	// RFC2812 wrapper
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: topic
 		@type:
@@ -668,12 +634,12 @@ namespace KviKvsCoreSimpleCommands
 		@description:
 			Changes the topic for the specified <channel> to <topic text>.
 			If no topic is specified, the current channel topic will be returned.[br]
-			This command is "server based"; you will see its results only
+			This command is [i]]server based[/i]]; you will see its results only
 			after the server acknowledges it.[br]
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
-			topic #kvirc KVIrc 3.4.0 has been released!
+				topic #kvirc KVIrc 3.4.0 has been released!
 			[/example]
 	*/
 
@@ -717,8 +683,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: trace
 		@type:
@@ -734,8 +698,6 @@ namespace KviKvsCoreSimpleCommands
 			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: trload
@@ -804,8 +766,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: trunload
 		@type:
@@ -843,8 +803,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: unban
 		@type:
@@ -864,12 +822,12 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
-			# Unban people on the current channel (say #kvirc)
-			unban Maxim,Gizmo!*@*,*!root@*
-			# Do the same but from another window belonging to this IRC context
-			unban -r=[fnc]$channel[/fnc](#kvirc) Maxim,Gizmo!*@*,*!root@*
-			# Do the same from any window
-			unban -r=[fnc]$channel[/fnc](#kvirc,[fnc]$context[/fnc](irc.myirc.net,Pragma)) Maxim,Gizmo!*@*,*!root*@*
+				# Unban people on the current channel (say #kvirc)
+				unban Maxim,Gizmo!*@*,*!root@*
+				# Do the same but from another window belonging to this IRC context
+				unban -r=[fnc]$channel[/fnc](#kvirc) Maxim,Gizmo!*@*,*!root@*
+				# Do the same from any window
+				unban -r=[fnc]$channel[/fnc](#kvirc,[fnc]$context[/fnc](irc.myirc.net,Pragma)) Maxim,Gizmo!*@*,*!root*@*
 			[/example]
 		@seealso:
 			[cmd]op[/cmd],
@@ -883,8 +841,6 @@ namespace KviKvsCoreSimpleCommands
 	{
 		return multipleModeCommand(__pContext, __pParams, __pSwitches, '-', 'b');
 	}
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: userop
@@ -905,7 +861,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
-			userop Pragma,Crocodile
+				userop Pragma,Crocodile
 			[/example]
 		@seealso:
 			[cmd]chanowner[/cmd], [cmd]dechanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]dechanadmin[/cmd], [cmd]op[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]deuserop[/cmd]
@@ -915,8 +871,6 @@ namespace KviKvsCoreSimpleCommands
 	{
 		return multipleModeCommand(__pContext, __pParams, __pSwitches, '+', 'u');
 	}
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: version
@@ -933,8 +887,6 @@ namespace KviKvsCoreSimpleCommands
 			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: voice
@@ -955,7 +907,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
-			voice Pragma,Crocodile
+				voice Pragma,Crocodile
 			[/example]
 		@seealso:
 			[cmd]chanowner[/cmd], [cmd]dechanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]dechanadmin[/cmd], [cmd]op[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd], [cmd]deuserop[/cmd]
@@ -965,8 +917,6 @@ namespace KviKvsCoreSimpleCommands
 	{
 		return multipleModeCommand(__pContext, __pParams, __pSwitches, '+', 'v');
 	}
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: warning
@@ -996,8 +946,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: who
 		@type:
@@ -1024,10 +972,10 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
-			[comment]# Lists users on #kvirc[/comment]
-			who #kvirc
-			[comment]# WHOX: Get a list of +o users, aka ircops (works on unreal, bahamut, others)[/comment]
-			who 0 o%nuhs
+				[comment]# Lists users on #kvirc[/comment]
+				who #kvirc
+				[comment]# WHOX: Get a list of +o users, aka ircops (works on unreal, bahamut, others)[/comment]
+				who 0 o%nuhs
 			[/example]
 		@seealso:
 			[cmd]names[/cmd]
@@ -1063,8 +1011,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: whois
 		@type:
@@ -1081,16 +1027,16 @@ namespace KviKvsCoreSimpleCommands
 			may be a nickname so that the request is redirected to the server that
 			the user with that nickname is connected to.[br]
 			An useful trick is to use the following syntax:[br]
-			whois <nickname> <nickname>[br]
+			WHOIS <nickname> <nickname>[br]
 			This will requests information about the user <nickname> to the server that he is currently
 			connected to; returning the idle time among the other common information.[br]
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
 			[comment]# Query info about Pragma[/comment]
-			whois Pragma
-			[comment]# Get the Pragma idle time[/comment]
-			whois Pragma Pragma
+				whois Pragma
+				[comment]# Get the Pragma idle time[/comment]
+				whois Pragma Pragma
 			[/example]
 		@seealso:
 			[cmd]whowas[/cmd]
@@ -1113,8 +1059,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: whowas
 		@type:
@@ -1127,7 +1071,7 @@ namespace KviKvsCoreSimpleCommands
 			Requests user information
 		@description:
 			Requests information about an IRC user specified by <nickname>.[br]
-			Whowas requests [i]history[/i] records. See [doc:rfc2812]RFC2812[/doc] for more info.[br]
+			WHOWAS requests [i]history[/i] records. See [doc:rfc2812]RFC2812[/doc] for more info.[br]
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
