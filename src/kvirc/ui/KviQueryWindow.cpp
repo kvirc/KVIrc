@@ -146,7 +146,9 @@ void KviQueryWindow::getWindowListTipText(QString & szBuffer)
 	QString szText;
 	if(!connection())
 	{
-		szBuffer = __tr2qs("[Dead query]");
+		szBuffer = "<html><body><table style=\"white-space: pre\">" START_TABLE_BOLD_ROW;
+		szBuffer += __tr2qs("Dead query");
+		szBuffer += "</table></body></html>"; END_TABLE_BOLD_ROW;
 		return;
 	}
 
