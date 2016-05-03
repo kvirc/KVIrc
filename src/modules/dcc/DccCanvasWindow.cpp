@@ -146,9 +146,9 @@ void DccCanvasWindow::fillCaptionBuffers()
 
 	m_szPlainTextCaption = tmp;
 
-	m_szHtmlActiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
+	m_szHtmlActiveCaption.sprintf("<font color=\"%s\"><b>%s</b></font>",
 	    KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().ascii(), tmp.ptr());
-	m_szHtmlInactiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
+	m_szHtmlInactiveCaption.sprintf("<font color=\"%s\"><b>%s</b></font>",
 	    KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().ascii(), tmp.ptr());
 }
 

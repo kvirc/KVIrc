@@ -1377,7 +1377,7 @@ void KviUserListView::updateUsersLabel()
 		return;
 
 	KviCString tmp;
-	tmp.sprintf("<nobr><b>[%u]</b>", m_pEntryDict->count());
+	tmp.sprintf("<b>[%u]</b>", m_pEntryDict->count());
 	if(m_iChanOwnerCount)
 		tmp.append(KviCString::Format, " q:%d", m_iChanOwnerCount);
 	if(m_iChanAdminCount)
@@ -1396,7 +1396,6 @@ void KviUserListView::updateUsersLabel()
 		tmp.append(KviCString::Format, " e:%d", m_ieEntries);
 	if(m_iIEntries)
 		tmp.append(KviCString::Format, " I:%d", m_iIEntries);
-	tmp.append("</nobr>");
 	m_pUsersLabel->setText(tmp.ptr());
 }
 

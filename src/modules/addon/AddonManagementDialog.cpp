@@ -68,17 +68,17 @@ AddonListViewItem::AddonListViewItem(KviTalListWidget * v, KviKvsScriptAddon * a
 {
 	m_pAddon = new KviKvsScriptAddon(*a);
 	m_pListWidget = v;
-	QString t = "<nobr><b>";
+	QString t = "<b>";
 	t += a->visibleName();
 	t += "</b> [";
 	t += a->version();
 	t += "]";
 	t += " <font color=\"#a0a0a0\">[";
 	t += a->name();
-	t += "]</font></nobr>";
+	t += "]";
 	t += "<br><nobr><font size=\"-1\">";
 	t += a->description();
-	t += "</font></nobr>";
+	t += "</font>";
 
 	setText(t);
 	QPixmap * p = a->icon();

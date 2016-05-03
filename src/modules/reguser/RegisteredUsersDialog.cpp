@@ -114,7 +114,7 @@ RegisteredUsersDialogItem::RegisteredUsersDialogItem(QTreeWidgetItem * par, KviR
     : RegisteredUsersDialogItemBase(User, par), m_pUser(u)
 {
 	QString szTmp;
-	QString t = "<nobr><b>";
+	QString t = "<b>";
 	t += u->name();
 	t += "</b> [";
 	szTmp = m_pUser->getProperty("notify");
@@ -128,8 +128,8 @@ RegisteredUsersDialogItem::RegisteredUsersDialogItem(QTreeWidgetItem * par, KviR
 		t += " ";
 		t += szTmp;
 	}
-	t += "]</nobr>";
-	t += "<br><nobr><font size=\"-1\">";
+	t += "]";
+	t += "<br><font size=\"-1\">";
 	szTmp = m_pUser->getProperty("comment");
 	if(szTmp.isEmpty())
 	{
@@ -141,7 +141,7 @@ RegisteredUsersDialogItem::RegisteredUsersDialogItem(QTreeWidgetItem * par, KviR
 		t += " ";
 		t += m_pUser->getProperty("comment");
 	}
-	t += "</font></nobr>";
+	t += "</font>";
 	m_pText.setHtml(t);
 	m_pText.setTextWidth(-1);
 	// 	setText(0,t);

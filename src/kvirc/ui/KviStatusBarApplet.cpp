@@ -341,8 +341,8 @@ void KviStatusBarLagIndicator::updateDisplay()
 				{
 					// one minute lag!
 					// paint it in red
-					szTmp.prepend("<nobr><font color=\"#e00000\">");
-					szTmp.append("</font></nobr>");
+					szTmp.prepend("<font color=\"#e00000\">");
+					szTmp.append("</font>");
 				}
 				setText(szTmp);
 				return;

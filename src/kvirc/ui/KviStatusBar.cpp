@@ -665,7 +665,7 @@ void KviStatusBar::showFirstMessageInQueue()
 		m_pMessageTimer->stop();
 	}
 
-	m_pMessageLabel->setText("<nobr>" + pMsg->text() + "</nobr>");
+	m_pMessageLabel->setText(pMsg->text());
 	m_pMessageTimer->start(pMsg->timeout());
 }
 
@@ -676,7 +676,7 @@ void KviStatusBar::setPermanentMessage()
 
 	KviIrcContext * c = m_pFrame->activeContext();
 
-	QString szTxt = "<nobr>";
+	QString szTxt;
 
 	if(c)
 	{
@@ -712,8 +712,6 @@ void KviStatusBar::setPermanentMessage()
 	{
 		szTxt += __tr2qs("No IRC context");
 	}
-
-	szTxt += "</nobr>";
 
 	m_pMessageLabel->setText(szTxt);
 }
