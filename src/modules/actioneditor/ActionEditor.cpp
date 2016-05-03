@@ -149,8 +149,8 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
 	gl->addWidget(m_pSmallIconButton, 2, 2);
 	QString s = __tr2qs_ctx("The small icon associated to this action.<br>"
 	                        "It will appear at least in the popup menus when this action is inserted.<br>"
-	                        "It has to be 16x16 pixels.",
-	    "editor");
+	                        "It has to be 16x16 pixels.", "editor");
+
 	m_pSmallIconEdit->setToolTip(s);
 	m_pSmallIconButton->setToolTip(s);
 
@@ -165,8 +165,8 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
 	gl->addWidget(m_pBigIconButton, 3, 2, 2, 2);
 	s = __tr2qs_ctx("The big icon associated to this action.<br>"
 	                "It will appear at least in the toolbar buttons when this action is inserted.<br>"
-	                "It has to be 32x32 pixels.",
-	    "editor");
+	                "It has to be 32x32 pixels.", "editor");
+
 	m_pBigIconEdit->setToolTip(s);
 	m_pBigIconButton->setToolTip(s);
 
@@ -177,9 +177,7 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
 	m_pKeySequenceEdit->setToolTip(__tr2qs_ctx("Optional keyboard sequence that will activate this action.<br>"
 	                                           "The sequence has to be expressed as a string of up to four key codes separated by commas "
 	                                           "eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta\".<br>"
-	                                           "Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ...",
-	    "editor"));
-
+	                                           "Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ...", "editor"));
 	l = new QLabel(tab);
 	gl->addWidget(l, 6, 0, 1, 4);
 
@@ -195,8 +193,7 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
 	m_pNeedsContextCheck = new QCheckBox(__tr2qs_ctx("Needs IRC context", "editor"), tab);
 	connect(m_pNeedsContextCheck, SIGNAL(toggled(bool)), this, SLOT(needsContextCheckToggled(bool)));
 	m_pNeedsContextCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when "
-	                                             "the active window belongs to an IRC context",
-	    "editor"));
+	                                             "the active window belongs to an IRC context", "editor"));
 	gl->addWidget(m_pNeedsContextCheck, 0, 0, 1, 4);
 
 	l = new QLabel(tab);
@@ -205,72 +202,72 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
 
 	m_pNeedsConnectionCheck = new QCheckBox(__tr2qs_ctx("Needs IRC connection", "editor"), tab);
 	connect(m_pNeedsConnectionCheck, SIGNAL(toggled(bool)), this, SLOT(needsConnectionCheckToggled(bool)));
-	m_pNeedsConnectionCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when "
-	                                                "the active window has an active IRC connection",
-	    "editor"));
-	gl->addWidget(m_pNeedsConnectionCheck, 1, 1, 1, 3);
+	m_pNeedsConnectionCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when<br>"
+	                                                "the active window has an active IRC connection", "editor"));
+
+	gl->addWidget(m_pNeedsConnectionCheck, 1, 0, 1, 4);
 
 	l = new QLabel(tab);
 	l->setMinimumWidth(40);
 	gl->addWidget(l, 2, 1);
 
 	m_pEnableAtLoginCheck = new QCheckBox(__tr2qs_ctx("Enable at login", "editor"), tab);
-	m_pEnableAtLoginCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled also during "
-	                                              "the login operations (so when the logical IRC connection hasn't been established yet)",
-	    "editor"));
-	gl->addWidget(m_pEnableAtLoginCheck, 2, 2, 1, 2);
+	m_pEnableAtLoginCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled also during the login operations<br>"
+	                                              "i.e. when the logical IRC connection hasn't been established yet.", "editor"));
+
+	gl->addWidget(m_pEnableAtLoginCheck, 2, 0, 1, 4);
 
 	m_pSpecificWindowsCheck = new QCheckBox(__tr2qs_ctx("Enable only in specified windows", "editor"), tab);
 	connect(m_pSpecificWindowsCheck, SIGNAL(toggled(bool)), this, SLOT(specificWindowsCheckToggled(bool)));
-	m_pSpecificWindowsCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when "
-	                                                "the active window is of a specified type",
-	    "editor"));
+	m_pSpecificWindowsCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled<br>"
+	                                                "only when the active window is of a specified type", "editor"));
+
 	gl->addWidget(m_pSpecificWindowsCheck, 3, 0, 1, 4);
 
 	m_pWindowConsoleCheck = new QCheckBox(__tr2qs_ctx("Enable in console windows", "editor"), tab);
-	m_pWindowConsoleCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when "
-	                                              "the active window is a console",
-	    "editor"));
+	m_pWindowConsoleCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled<br>"
+	                                              "only when the active window is a console", "editor"));
+
 	connect(m_pWindowConsoleCheck, SIGNAL(toggled(bool)), this, SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
-	gl->addWidget(m_pWindowConsoleCheck, 4, 1, 1, 3);
+	gl->addWidget(m_pWindowConsoleCheck, 4, 1, 1, 4);
 
 	m_pConsoleOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs_ctx("Only if there are selected users", "editor"), tab);
-	m_pConsoleOnlyIfUsersSelectedCheck->setToolTip(__tr2qs_ctx("This will enable the action only if there are "
-	                                                           "selected users in the active window",
-	    "editor"));
-	gl->addWidget(m_pConsoleOnlyIfUsersSelectedCheck, 5, 2, 1, 2);
+	m_pConsoleOnlyIfUsersSelectedCheck->setToolTip(__tr2qs_ctx("This will enable the action only if there<br>"
+	                                                           "are selected users in the active window", "editor"));
+
+	gl->addWidget(m_pConsoleOnlyIfUsersSelectedCheck, 5, 1, 1, 4);
 
 	m_pWindowChannelCheck = new QCheckBox(__tr2qs_ctx("Enable in channel windows", "editor"), tab);
-	m_pWindowChannelCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when "
-	                                              "the active window is a channel",
-	    "editor"));
+	m_pWindowChannelCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled<br>"
+	                                              "only when the active window is a channel", "editor"));
+
 	connect(m_pWindowChannelCheck, SIGNAL(toggled(bool)), this, SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
-	gl->addWidget(m_pWindowChannelCheck, 6, 1, 1, 3);
+	gl->addWidget(m_pWindowChannelCheck, 6, 1, 1, 4);
 
 	m_pChannelOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs_ctx("Only if there are selected users", "editor"), tab);
-	m_pChannelOnlyIfUsersSelectedCheck->setToolTip(__tr2qs_ctx("This will enable the action only if there are "
-	                                                           "selected users in the active window",
-	    "editor"));
-	gl->addWidget(m_pChannelOnlyIfUsersSelectedCheck, 7, 2, 1, 2);
+	m_pChannelOnlyIfUsersSelectedCheck->setToolTip(__tr2qs_ctx("This will enable the action only if there<br>"
+	                                                           "are selected users in the active window", "editor"));
+
+	gl->addWidget(m_pChannelOnlyIfUsersSelectedCheck, 7, 1, 1, 4);
 
 	m_pWindowQueryCheck = new QCheckBox(__tr2qs_ctx("Enable in query windows", "editor"), tab);
-	m_pWindowQueryCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when "
-	                                            "the active window is a query",
-	    "editor"));
+	m_pWindowQueryCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled<br>"
+	                                            "only when the active window is a query", "editor"));
+
 	connect(m_pWindowQueryCheck, SIGNAL(toggled(bool)), this, SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
-	gl->addWidget(m_pWindowQueryCheck, 8, 1, 1, 3);
+	gl->addWidget(m_pWindowQueryCheck, 8, 1, 1, 4);
 
 	m_pQueryOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs_ctx("Only if there are selected users", "editor"), tab);
-	m_pQueryOnlyIfUsersSelectedCheck->setToolTip(__tr2qs_ctx("This will enable the action only if there are "
-	                                                         "selected users in the active window",
-	    "editor"));
-	gl->addWidget(m_pQueryOnlyIfUsersSelectedCheck, 9, 2, 1, 2);
+	m_pQueryOnlyIfUsersSelectedCheck->setToolTip(__tr2qs_ctx("This will enable the action only if there<br>"
+	                                                         "are selected users in the active window", "editor"));
+
+	gl->addWidget(m_pQueryOnlyIfUsersSelectedCheck, 9, 1, 1, 4);
 
 	m_pWindowDccChatCheck = new QCheckBox(__tr2qs_ctx("Enable in DCC chat windows", "editor"), tab);
-	m_pWindowDccChatCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when "
-	                                              "the active window is a DCC chat",
-	    "editor"));
-	gl->addWidget(m_pWindowDccChatCheck, 10, 1, 1, 2);
+	m_pWindowDccChatCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled<br>"
+	                                              "only when the active window is a DCC chat", "editor"));
+
+	gl->addWidget(m_pWindowDccChatCheck, 10, 1, 1, 4);
 
 	l = new QLabel(tab);
 	gl->addWidget(l, 11, 0, 1, 4);
