@@ -902,7 +902,6 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	if(m_iStateFlags & DeadChan)
 	{
 		szBuffer += __tr2qs("Dead channel");
-		szBuffer += " ";
 		szBuffer += szEndOfFontBoldRow;
 		szBuffer += szEndOfDoc;
 		return;
@@ -919,7 +918,6 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	QString szOp = __tr2qs("operator");
 	QString szOps = __tr2qs("operators");
 
-	//////////////////////
 
 	szBuffer += szHtmlTab;
 	szBuffer += szHtmlBold;
@@ -942,27 +940,8 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	szBuffer += (s.uActiveOp == 1 ? szOp : szOps);
 
 	szBuffer += p9;
-	/*
-	FIXME: What is this supposed to mean?
-	szBuffer += "<font size=\"-1\">";
-	szBuffer += p7;
 
-	szBuffer += __tr2qs("humanity");
-
-	szBuffer += p8;
-	szBuffer += szHtmlBold;
-
-	szNum.setNum(s.iAvgTemperature);
-
-	szBuffer += szNum;
-	szBuffer += "</bold>";
-
-	szBuffer += p9;
-*/
 	szBuffer += p10;
-	//szBuffer += "</font>";
-
-	//////////////////////
 
 	szBuffer += szHtmlTab;
 	szBuffer += szHtmlBold;
@@ -984,12 +963,10 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 
 	szBuffer += p9;
 
-	/////////////
 
 	szBuffer += szRowEnd;
 	szBuffer += szRowStart;
 
-	///////////////////
 
 	if(s.uIrcOp > 0)
 	{
@@ -1332,7 +1309,6 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 				}
 			}
 			//printf(", finished at %d cycles, truncated at pos %d\n", iC, iPos);
-
 			//prepare the feedback string for the user
 			szCurSubString = szTmpBuffer.left(iPos);
 
@@ -1439,7 +1415,6 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 				                               //printf("OPTIMIZATION: fPosDiff %f, iPos %d\n", fPosDiff, iPos);
 			}
 			//printf("Multi message: %d optimization cyles", iC);
-
 			// now, do it the simple way: increment our index until we perfectly fit into the
 			// available space
 			while(1)
@@ -1466,10 +1441,8 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 				}
 			}
 			//printf(", finished at %d cycles, truncated at pos %d\n", iC, iPos);
-
 			//prepare the feedback string for the user
 			szCurSubString = szTmpBuffer.left(iPos);
-
 			//send the string to the server
 			if(connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szTmp.data(), 0x01))
 			{
