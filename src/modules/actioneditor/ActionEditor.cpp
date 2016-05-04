@@ -233,13 +233,13 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
 	gl->addWidget(m_pWindowConsoleCheck, 4, 1, 1, 4);
 
 	m_pConsoleOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs_ctx("Only if there are selected users", "editor"), tab);
-	m_pConsoleOnlyIfUsersSelectedCheck->setToolTip(__tr2qs_ctx("This will enable the action only if there are"
+	m_pConsoleOnlyIfUsersSelectedCheck->setToolTip(__tr2qs_ctx("This will enable the action only if there are "
 	                                                           "selected users in the active window", "editor"));
 
 	gl->addWidget(m_pConsoleOnlyIfUsersSelectedCheck, 5, 1, 1, 4);
 
 	m_pWindowChannelCheck = new QCheckBox(__tr2qs_ctx("Enable in channel windows", "editor"), tab);
-	m_pWindowChannelCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when" 
+	m_pWindowChannelCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when " 
 	                                              "the active window is a channel", "editor"));
 
 	connect(m_pWindowChannelCheck, SIGNAL(toggled(bool)), this, SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
@@ -259,7 +259,7 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
 	gl->addWidget(m_pWindowQueryCheck, 8, 1, 1, 4);
 
 	m_pQueryOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs_ctx("Only if there are selected users", "editor"), tab);
-	m_pQueryOnlyIfUsersSelectedCheck->setToolTip(__tr2qs_ctx("This will enable the action only if there are"
+	m_pQueryOnlyIfUsersSelectedCheck->setToolTip(__tr2qs_ctx("This will enable the action only if there are "
 	                                                         "selected users in the active window", "editor"));
 
 	gl->addWidget(m_pQueryOnlyIfUsersSelectedCheck, 9, 1, 1, 4);
