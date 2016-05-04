@@ -35,7 +35,6 @@
 #include "KviCString.h"
 #include "KviQString.h"
 #include "KviMemory.h"
-#include "KviMemory.h"
 #include "kvi_debug.h"
 
 #include <ctype.h>

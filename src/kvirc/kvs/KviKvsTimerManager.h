@@ -28,7 +28,6 @@
 #include "KviQString.h"
 
 #include "KviPointerHashTable.h"
-#include "KviPointerHashTable.h"
 #include "KviPointerList.h"
 
 #include <QObject>

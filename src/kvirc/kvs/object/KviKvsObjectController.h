@@ -30,7 +30,6 @@
 #include "KviPointerList.h"
 
 #include "KviPointerHashTable.h"
-#include "KviPointerHashTable.h"
 
 #include "KviKvsObject.h"
 #include "KviKvsObjectClass.h"

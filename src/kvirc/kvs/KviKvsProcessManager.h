@@ -30,7 +30,6 @@
 #include "KviWindow.h"
 #include "KviKvsVariant.h"
 #include "KviKvsRunTimeContext.h"
-#include "KviKvsVariant.h"
 
 #include "KviPointerHashTable.h"
 

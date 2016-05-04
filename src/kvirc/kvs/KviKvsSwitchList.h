@@ -29,7 +29,6 @@
 #include "KviKvsVariant.h"
 
 #include "KviPointerHashTable.h"
-#include "KviPointerHashTable.h"
 
 class KVIRC_API KviKvsSwitchList
 {

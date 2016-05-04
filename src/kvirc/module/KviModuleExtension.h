@@ -29,7 +29,6 @@
 #include "KviPointerList.h"
 #include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
-#include "KviPointerHashTable.h"
 
 #include <QPixmap>
 #include <QVariant>

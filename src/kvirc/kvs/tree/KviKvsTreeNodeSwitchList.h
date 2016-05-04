@@ -28,7 +28,6 @@
 #include "KviQString.h"
 
 #include "KviPointerHashTable.h"
-#include "KviPointerHashTable.h"
 
 #include "KviKvsTreeNodeBase.h"
 #include "KviKvsTreeNodeData.h"
