@@ -29,7 +29,6 @@
 
 #include "KviThread.h"
 #include "KviMemory.h"
-#include "KviMemory.h"
 
 #include <openssl/asn1.h>
 #include <openssl/bn.h>

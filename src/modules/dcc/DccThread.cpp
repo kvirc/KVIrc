@@ -28,7 +28,6 @@
 #include "KviWindow.h"
 #include "KviError.h"
 #include "KviMemory.h"
-#include "KviMemory.h"
 #include "KviNetUtils.h"
 #include "kvi_socket.h"
 

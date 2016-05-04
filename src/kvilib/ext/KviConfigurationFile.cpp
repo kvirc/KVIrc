@@ -28,7 +28,6 @@
 #include "KviMessageTypeSettings.h"
 #include "KviStringConversion.h"
 #include "KviMemory.h"
-#include "KviMemory.h"
 #include "KviFile.h"
 
 KviConfigurationFile::KviConfigurationFile(const QString & filename, FileMode f, bool bLocal8Bit)

@@ -30,7 +30,6 @@
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "KviConsoleWindow.h"
-//#include "KviModule.h"
 
 extern KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList;
 

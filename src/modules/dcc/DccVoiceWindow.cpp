@@ -51,7 +51,6 @@
 #include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
-//#include "KviError.h"
 #include <sys/stat.h>  // for open()
 #include <sys/ioctl.h> // for ioctl()
 #endif

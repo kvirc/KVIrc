@@ -67,8 +67,6 @@
 
 #include "KviKvsScript.h"
 
-//#include "KviRegisteredUserDataBase.h"
-//#include "KviIconManager.h"
 #include <QDateTime>
 #include <QByteArray>
 #include <QLocale>

@@ -32,7 +32,6 @@
 #include "KviFileDialog.h"
 #include "KviApplication.h"
 #include "KviThemedLineEdit.h"
-#include "KviMemory.h"
 #include "KviShortcut.h"
 #include "KviWindow.h"
 

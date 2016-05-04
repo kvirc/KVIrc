@@ -40,7 +40,6 @@
 #include "KviFileUtils.h"
 #include "kvi_settings.h"
 #include "KviStringConversion.h"
-#include "KviOptions.h"
 #include "KviPointerHashTable.h"
 #include "KviTalHBox.h"
 #include "KviTalVBox.h"

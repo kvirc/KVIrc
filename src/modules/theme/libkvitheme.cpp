@@ -40,7 +40,6 @@
 #include "KviFileUtils.h"
 #include "KviFileDialog.h"
 #include "KviTheme.h"
-#include "ThemeFunctions.h"
 
 #include <QFileInfo>
 #include <QMessageBox>

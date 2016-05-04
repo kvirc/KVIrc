@@ -31,7 +31,6 @@
 #include "KviIrcView_private.h"
 #include "KviKvsEventTriggers.h"
 #include "KviMemory.h"
-#include "KviMemory.h"
 #include "KviControlCodes.h"
 #include "KviOptions.h"
 #include "kvi_out.h"

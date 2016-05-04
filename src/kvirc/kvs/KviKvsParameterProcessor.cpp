@@ -25,7 +25,6 @@
 #include "KviKvsParameterProcessor.h"
 #include "KviKvsVariantList.h"
 #include "KviKvsRunTimeContext.h"
-#include "KviKvsVariantList.h"
 #include "KviKvsArray.h"
 #include "KviKvsArrayCast.h"
 #include "KviKvsHash.h"

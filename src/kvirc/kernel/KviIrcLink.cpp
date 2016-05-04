@@ -37,13 +37,10 @@
 #include "KviInternalCommand.h"
 #include "KviMainWindow.h"
 #include "KviMexLinkFilter.h"
-//#include "kvi_garbage.h"
-#include "KviMemory.h"
 #include "KviMemory.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionTarget.h"
 #include "KviIrcConnectionTargetResolver.h"
-#include "KviIrcSocket.h"
 #include "KviDataBuffer.h"
 #include "kvi_debug.h"
 

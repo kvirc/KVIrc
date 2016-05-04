@@ -33,7 +33,6 @@
 #include "kvi_debug.h"
 #include "KviCString.h"
 #include "KviOptions.h"
-#include "KviMemory.h"
 #include "kvi_socket.h"
 #include "KviConsoleWindow.h"
 #include "kvi_out.h"

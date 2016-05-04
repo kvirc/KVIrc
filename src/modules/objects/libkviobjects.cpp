@@ -79,7 +79,6 @@
 
 #include "KviIconManager.h"
 #include "KviWindow.h"
-#include "kvi_out.h"
 #include "KviControlCodes.h"
 #include "KviApplication.h"
 #include "KviModule.h"
@@ -87,7 +86,6 @@
 #include "KviError.h"
 #include "KviCommandFormatter.h"
 #include "kvi_out.h"
-#include "KviApplication.h"
 #include "KviFileUtils.h"
 
 #include <QDir>

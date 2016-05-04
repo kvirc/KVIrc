@@ -29,7 +29,6 @@
 #include "KviIconManager.h"
 #include "kvi_settings.h"
 #include "KviOptions.h"
-#include "KviMainWindow.h"
 #include "KviApplication.h"
 #include "KviDynamicToolTip.h"
 #include "KviIrcUrl.h"

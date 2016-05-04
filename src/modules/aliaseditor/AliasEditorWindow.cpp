@@ -56,6 +56,7 @@
 #include <QList>
 #include <QPainter>
 #include <QBrush>
+
 extern AliasEditorWindow * g_pAliasEditorWindow;
 extern KviModule * g_pAliasEditorModule;
 

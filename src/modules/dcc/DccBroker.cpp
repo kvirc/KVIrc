@@ -53,7 +53,6 @@
 #include <QFileInfo>
 #include <QString>
 
-// KviApplication.cpp
 extern KVIRC_API KviMediaManager * g_pMediaManager;
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 

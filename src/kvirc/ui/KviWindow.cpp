@@ -53,7 +53,6 @@
 #include "KviWindowToolWidget.h"
 #include "KviKvsScript.h"
 #include "KviTalToolTip.h"
-#include "KviKvsScript.h"
 #include "KviKvsEventTriggers.h"
 
 #include <QPixmap>

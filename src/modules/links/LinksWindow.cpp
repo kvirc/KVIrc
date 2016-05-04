@@ -30,7 +30,6 @@
 #include "kvi_out.h"
 #include "KviOptions.h"
 #include "KviLocale.h"
-#include "kvi_out.h"
 #include "KviControlCodes.h"
 #include "KviThemedLabel.h"
 #include "KviIrcContext.h"

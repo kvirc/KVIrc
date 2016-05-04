@@ -41,7 +41,6 @@
 #include "KviIrcConnectionStatistics.h"
 #include "KviIrcLink.h"
 #include "KviIrcSocket.h"
-#include "KviIrcSocket.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 #include "KviSSLMaster.h"

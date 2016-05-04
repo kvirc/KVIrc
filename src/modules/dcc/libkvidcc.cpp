@@ -42,7 +42,6 @@
 #include "KviConsoleWindow.h"
 #include "KviNetUtils.h"
 #include "KviMainWindow.h"
-#include "KviConsoleWindow.h"
 #include "KviError.h"
 #include "KviOptions.h"
 #include "kvi_defaults.h"

@@ -35,7 +35,6 @@
 #include "KviIrcSocket.h"
 #include "KviChannelWindow.h"
 #include "kvi_defaults.h"
-#include "KviChannelWindow.h"
 #include "KviQueryWindow.h"
 #include "KviIrcUserDataBase.h"
 #include "KviIconManager.h"
