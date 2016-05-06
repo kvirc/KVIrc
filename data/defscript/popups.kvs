@@ -946,7 +946,7 @@ defpopup(hostpopup)
 {
 	label($tr("You're not connected to a server","defscript")) (!$server)
 
-	item($tr("Look Up ","defscript")$0,13) ($server)
+	item($tr("Look Up","defscript") $0,13) ($server)
 	{
 		host -a $0
 	}
