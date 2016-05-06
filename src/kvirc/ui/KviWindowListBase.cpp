@@ -29,7 +29,7 @@
 #define KVI_WINDOWLISTBUTTON_LEFT_MARGIN 6
 #define KVI_WINDOWLISTBUTTON_BOTTOM_MARGIN 6
 #define KVI_WINDOWLISTBUTTON_RIGHT_MARGIN 6
-#define KVI_WINDOWLIST_MIN_WIDTH 120
+#define KVI_WINDOWLIST_MIN_WIDTH 130
 
 #define _KVI_DEBUG_CHECK_RANGE_
 #include "KviChannelWindow.h"
@@ -37,6 +37,7 @@
 #include "kvi_debug.h"
 #include "KviDynamicToolTip.h"
 #include "KviMainWindow.h"
+#include "KviIconManager.h"
 #include "KviIrcConnection.h"
 #include "KviLocale.h"
 #include "KviOptions.h"
@@ -259,13 +260,20 @@ KviWindowListButton::KviWindowListButton(QWidget * par, KviWindow * wnd, const c
 	setObjectName(name);
 	m_bActive = false;
 	m_pTip = new KviDynamicToolTip(this);
+	m_pLayout = new QBoxLayout(QBoxLayout::RightToLeft);
+	m_pTool = new KviClassicWindowListToolButton(this);
+	m_pLayout->addWidget(m_pTool);
+	m_pLayout->setAlignment(m_pTool, Qt::AlignRight | Qt::AlignTop);
+	m_pLayout->setContentsMargins(0, KVI_WINDOWLISTBUTTON_TOP_MARGIN, KVI_WINDOWLISTBUTTON_RIGHT_MARGIN, 0);
+	setLayout(m_pLayout);
 	connect(m_pTip, SIGNAL(tipRequest(KviDynamicToolTip *, const QPoint &)), this, SLOT(tipRequest(KviDynamicToolTip *, const QPoint &)));
 	setCheckable(true); //setToggleButton (true);
-	                    //setFlat(KVI_OPTION_BOOL(KviOption_boolUseFlatClassicWindowListButtons)); // we paint it ourselves anyway
 }
 
 KviWindowListButton::~KviWindowListButton()
 {
+	delete m_pTool;
+	delete m_pLayout;
 	delete m_pTip; //not necessary ?
 }
 
@@ -338,6 +346,11 @@ void KviWindowListButton::paintEvent(QPaintEvent *)
 
 	style()->drawControl(QStyle::CE_PushButtonBevel, &opt, &p, this);
 
+	if(!KVI_OPTION_BOOL(KviOption_boolUseWindowListCloseButton))
+	{
+		m_pTool->hide();
+	}
+
 	drawButtonLabel(&p);
 }
 
@@ -401,6 +414,11 @@ void KviWindowListButton::drawButtonLabel(QPainter * pPainter)
 	    KVI_WINDOWLISTBUTTON_TOP_MARGIN,
 	    iWidth - (KVI_WINDOWLISTBUTTON_RIGHT_MARGIN + daX),
 	    iHeight - (KVI_WINDOWLISTBUTTON_TOP_MARGIN + KVI_WINDOWLISTBUTTON_BOTTOM_MARGIN));
+
+	if(KVI_OPTION_BOOL(KviOption_boolUseWindowListCloseButton))
+	{
+		cRect.setRight(cRect.right() - m_pTool->width());
+	}
 
 	if(m_iProgress >= 0)
 	{
@@ -531,6 +549,33 @@ void KviWindowListButton::highlight(int iLevel)
 	update();
 	if(m_bActive)
 		return;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// KviClassicWindowListToolButton
+//
+
+KviClassicWindowListToolButton::KviClassicWindowListToolButton(KviWindowListButton * par)
+	: QToolButton(par)
+{
+	m_pPar = par;
+	setAutoRaise(true);
+	setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Close))));
+	setToolTip(__tr2qs("Close this window"));
+}
+
+void KviClassicWindowListToolButton::mousePressEvent(QMouseEvent *e)
+{
+	if(e->button() & Qt::LeftButton)
+	{
+		m_pPar->kviWindow()->delayedClose();
+	}
+}
+
+QSize KviClassicWindowListToolButton::sizeHint() const
+{
+	QSize ret(iconSize().width(), iconSize().height());
+	return ret;
 }
 
 //

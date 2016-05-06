@@ -29,6 +29,8 @@
 #include "KviTalToolTip.h"
 
 #include <QPushButton>
+#include <QToolButton>
+#include <QBoxLayout>
 #include <QFrame>
 #include <QDockWidget>
 
@@ -116,9 +118,15 @@ protected slots:
 
 class KviClassicWindowList;
 
+// KviWindowListButton
+//
+// Button to show/hide the window and containing the button to close it
+//
+
 class KVIRC_API KviWindowListButton : public QPushButton, KviWindowListItem
 {
 	friend class KviClassicWindowList;
+	friend class KviClassicWindowListToolButton;
 	Q_OBJECT
 public:
 	KviWindowListButton(QWidget * par, KviWindow * wnd, const char * name);
@@ -126,6 +134,8 @@ public:
 
 protected:
 	bool m_bActive;
+	QBoxLayout * m_pLayout;
+	QToolButton * m_pTool;
 	KviDynamicToolTip * m_pTip;
 
 protected:
@@ -145,6 +155,28 @@ protected:
 	void setActive(bool bActive);
 protected slots:
 	void tipRequest(KviDynamicToolTip * tip, const QPoint & pnt);
+};
+
+// KviClassicWindowListToolButton
+//
+// Button to close the window
+//
+
+class KVIRC_API KviClassicWindowListToolButton : public QToolButton
+{
+	Q_OBJECT
+protected:
+	KviWindowListButton * m_pPar;
+
+public:
+	KviClassicWindowListToolButton(KviWindowListButton * par);
+	~KviClassicWindowListToolButton() {};
+
+protected:
+	virtual void mousePressEvent(QMouseEvent *e);
+
+public:
+	virtual QSize sizeHint() const;
 };
 
 class KVIRC_API KviClassicWindowList : public KviWindowListBase
