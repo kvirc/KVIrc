@@ -348,7 +348,7 @@ CustomizeToolBarsDialog::CustomizeToolBarsDialog(QWidget * p)
 	{
 		g_rectToolBarEditorDialogGeometry.setY(5);
 	}
-	//setGeometry(KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry));
+
 	resize(g_rectToolBarEditorDialogGeometry.width(),
 	    g_rectToolBarEditorDialogGeometry.height());
 	move(g_rectToolBarEditorDialogGeometry.x(),

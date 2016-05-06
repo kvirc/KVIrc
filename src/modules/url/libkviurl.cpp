@@ -144,42 +144,19 @@ UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
 	m_pUrlList = new UrlDialogTreeWidget(this);
 
 	m_pMenuBar = new KviTalMenuBar(this, "URL menu");
-	//m_pUrlList = new KviListView(this,"list");
+
 	KviConfigurationFile cfg(szConfigPath, KviConfigurationFile::Read);
-	/*
-    QMenu *pop;
 
-    pop = new QMenu(this);
-	pop->addAction(__tr2qs("&Configure"),this,SLOT(config()));
-// 	pop->addAction(__tr2qs("&Help"),this,SLOT(help()));
-	pop->addAction(__tr2qs("Clo&se"),this,SLOT(close_slot()));
-	pop->setTitle(__tr2qs("&Module"));
-	m_pMenuBar->addMenu(pop);
-
-    pop = new QMenu(this);
-	pop->addAction(__tr2qs("&Load"),this,SLOT(loadList()));
-	pop->addAction(__tr2qs("&Save"),this,SLOT(saveList()));
-	pop->addAction(__tr2qs("&Clear"),this,SLOT(clear()));
-	pop->setTitle(__tr2qs("&List"));
-	m_pMenuBar->addMenu(pop);
-*/
 	m_pUrlList->header()->setSortIndicatorShown(true);
 	m_pUrlList->setColumnCount(4);
 
 	QStringList labels;
 	labels << __tr2qs("URL") << __tr2qs("Window") << __tr2qs("Count") << __tr2qs("Timestamp");
 	m_pUrlList->setHeaderLabels(labels);
-	/*
-	cfg.setGroup("colsWidth");
-	m_pUrlList->setColumnWidth(0,cfg.readIntEntry("Url",170));
-	m_pUrlList->setColumnWidth(1,cfg.readIntEntry("Window",130));
-	m_pUrlList->setColumnWidth(2,cfg.readIntEntry("Count",70));
-	m_pUrlList->setColumnWidth(3,cfg.readIntEntry("Timestamp",70));
-*/
+
 	connect(m_pUrlList, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), SLOT(dblclk_url(QTreeWidgetItem *, int)));
 	connect(m_pUrlList, SIGNAL(rightButtonPressed(QTreeWidgetItem *, const QPoint &)), SLOT(popup(QTreeWidgetItem *, const QPoint &)));
 	connect(m_pUrlList, SIGNAL(contextMenuRequested(const QPoint &)), SLOT(contextMenu(const QPoint &)));
-	//	setFocusHandlerNoChildren(m_pUrlList);
 	m_pUrlList->setFocusPolicy(Qt::StrongFocus);
 	m_pUrlList->setFocus();
 }
@@ -192,8 +169,6 @@ void UrlDialog::config()
 
 void UrlDialog::help()
 {
-	//#warning "help"
-	//	m_pFrm->requestHelpOn("doc_plugin_url.kvihelp");
 }
 
 void UrlDialog::saveList()
@@ -216,26 +191,6 @@ void UrlDialog::clear()
 	}
 }
 
-/*
-void UrlDialog::saveProperties()
-{
-
-	KviWindowProperty p;
-	p.rect = externalGeometry();
-	p.isDocked = isAttached();
-	p.splitWidth1 = 0;
-	p.splitWidth2 = 0;
-	p.timestamp = 0;
-	p.imagesVisible = 0;
-	KviWindow * w = m_pFrm->activeWindow();
-	p.isMaximized = isAttached() && w ? w->isMaximized() : isMaximized();
-	p.topSplitWidth1 = 0;
-	p.topSplitWidth2 = 0;
-	p.topSplitWidth3 = 0;
-	g_pOptions->m_pWinPropertiesList->setProperty(caption(),&p);
-}
-*/
-
 void UrlDialog::close_slot()
 {
 	close();
@@ -255,7 +210,6 @@ void UrlDialog::remove()
 		{
 			g_pList->removeRef(tmp);
 			delete m_pUrlList->currentItem();
-			//m_pUrlList->takeTopLevelItem(m_pUrlList->currentItem());
 			return;
 		}
 	}
@@ -263,28 +217,6 @@ void UrlDialog::remove()
 
 void UrlDialog::findtext()
 {
-	//#warning "find text"
-	/*
-	if (!m_pUrlList->currentItem()) {
-		kvirc_plugin_warning_box(__tr("Select an URL"));
-		return;
-	}
-	for(KviUrl *tmp=g_pList->first();tmp;tmp=g_pList->next())
-	{
-		if (tmp->url == KviCString(m_pUrlList->currentItem()->text(0))) {
-			g_pList->find(tmp);
-			KviCString ft="findtext %";
-			ft.replaceAll('%',tmp->url.ptr());
-			KviWindow *wnd = m_pFrm->findWindow(tmp->window.ptr());
-			if (wnd) {
-				if (kvirc_plugin_execute_command(wnd,ft.ptr())) {
-					if (wnd->mdiParent()) m_pFrm->m_pWindowStack->setTopChild(wnd->mdiParent(),true);
-				}
-			} else kvirc_plugin_warning_box(__tr("Window not found"));
-		}
-
-	}
-*/
 }
 
 void UrlDialog::dblclk_url(QTreeWidgetItem * item, int)
@@ -301,7 +233,7 @@ void UrlDialog::popup(QTreeWidgetItem * item, const QPoint & point)
 	m_szUrl = item->text(0);
 	QMenu p("menu", nullptr);
 	p.addAction(__tr2qs("&Remove"), this, SLOT(remove()));
-	// 	p.addAction(__tr2qs("&Find Text"),this,SLOT(findtext()));
+
 	p.addSeparator();
 	m_pListPopup = new QMenu("list", nullptr);
 
@@ -377,22 +309,8 @@ void UrlDialog::resizeEvent(QResizeEvent *)
 
 UrlDialog::~UrlDialog()
 {
-	/*
-	KviConfigurationFile cfg(szConfigPath,KviConfigurationFile::Write);
-	cfg.setGroup("ConfigDialog");
-	if (cfg.readBoolEntry("SaveColumnWidthOnClose",false)) {
-		cfg.setGroup("ColsWidth");
-		cfg.writeEntry("Url",m_pUrlList->columnWidth(0));
-		cfg.writeEntry("Window",m_pUrlList->columnWidth(1));
-		cfg.writeEntry("Count",m_pUrlList->columnWidth(2));
-		cfg.writeEntry("Timestamp",m_pUrlList->columnWidth(3));
-	}
-*/
+
 	delete m_pUrlList;
-	/*	if (m_pListPopup) delete m_pListPopup;
-	m_pListPopup = 0;
-	if (m_pMenuBar) delete m_pMenuBar;
-	m_pMenuBar = 0;*/
 	UrlDlgList * tmpitem = findFrame();
 	tmpitem->dlg = nullptr;
 }

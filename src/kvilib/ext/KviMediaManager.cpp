@@ -179,53 +179,6 @@ void KviMediaManager::insertMediaType(KviMediaType * m)
 		index++;
 	}
 	m_pMediaTypeList->append(m);
-
-	/*
-	// the masks with no wildcards go first
-	// longer masks go first
-
-	bool bHasWildcards = m->szFileMask.contains('*');
-	int index = 0;
-	for(KviMediaType * mt = m_pMediaTypeList->first();mt;mt = m_pMediaTypeList->next())
-	{
-		if(bHasWildcards)
-		{
-			if(mt->szFileMask.len() < m->szFileMask.len())
-			{
-				m_pMediaTypeList->insert(index,m);
-				return;
-			} else if(mt->szFileMask.len() == m->szFileMask.len())
-			{
-				if(mt->szMagicBytes.len() < m->szMagicBytes.len())
-				{
-					m_pMediaTypeList->insert(index,m);
-					return;
-				}
-			}
-		} else {
-			if(mt->szFileMask.contains('*'))
-			{
-				m_pMediaTypeList->insert(index,m);
-				return;
-			} else {
-				if(mt->szFileMask.len() < m->szFileMask.len())
-				{
-					m_pMediaTypeList->insert(index,m);
-					return;
-				} else if(mt->szFileMask.len() == m->szFileMask.len())
-				{
-					if(mt->szMagicBytes.len() < m->szMagicBytes.len())
-					{
-						m_pMediaTypeList->insert(index,m);
-						return;
-					}
-				}
-			}
-		}
-		index++;
-	}
-	m_pMediaTypeList->append(m);
-*/
 }
 
 KviMediaType * KviMediaManager::findMediaType(const char * filename, bool bCheckMagic)

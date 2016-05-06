@@ -42,8 +42,6 @@ TermWindow::TermWindow(const char * name)
 	g_pTermWindowList->append(this);
 	m_pTermWidget = 0;
 	m_pTermWidget = new TermWidget(this);
-	// Ensure proper focusing
-	//	setFocusHandler(m_pTermWidget->konsoleWidget(),this);
 }
 
 TermWindow::~TermWindow()

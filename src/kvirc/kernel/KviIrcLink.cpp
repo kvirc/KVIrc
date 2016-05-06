@@ -48,7 +48,6 @@
 
 extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
-//extern KVIRC_API KviGarbageCollector * g_pGarbageCollector;
 
 KviIrcLink::KviIrcLink(KviIrcConnection * pConnection)
     : QObject()
@@ -317,10 +316,9 @@ void KviIrcLink::processData(char * buffer, int iLen)
 	KviMemory::free(cMessageBuffer);
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
+//////////////////////////////////////////////////////////////////////////////////////
 // Outgoing data processing
-//
+//////////////////////////////////////////////////////////////////////////////////////
 
 void KviIrcLink::clearOutputQueue(bool bPrivateMessagesOnly)
 {

@@ -36,8 +36,6 @@ KviAnimatedPixmap::KviAnimatedPixmap(QString fileName, int iWidth, int iHeight)
       m_iStarted(0)
 {
 	m_pFrameData = KviAnimatedPixmapCache::load(fileName, iWidth, iHeight);
-
-	//start(); <-- absolutely NO
 }
 
 KviAnimatedPixmap::KviAnimatedPixmap(const KviAnimatedPixmap & source)
@@ -48,18 +46,10 @@ KviAnimatedPixmap::KviAnimatedPixmap(const KviAnimatedPixmap & source)
       m_iStarted(0)
 {
 	m_pFrameData->refs++;
-
-	//restore started state
-	//if(isStarted() && (framesCount()>1))
-	//{
-	//	KviAnimatedPixmapCache::scheduleFrameChange(m_pFrameData->at(m_uCurrentFrameNumber).delay,this);
-	//}
 }
 
 KviAnimatedPixmap::~KviAnimatedPixmap()
 {
-	//if(m_iStarted > 0)
-	//	qDebug("WARNING: KviAnimatedPixmap wasn't stopped enough times");
 	KviAnimatedPixmapCache::notifyDelete(this);
 	KviAnimatedPixmapCache::free(m_pFrameData);
 }

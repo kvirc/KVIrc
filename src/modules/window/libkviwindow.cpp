@@ -1572,28 +1572,6 @@ static bool window_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "insertInInputText", window_kvs_cmd_insertInInputText);
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "savePropertiesAsDefault", window_kvs_cmd_savePropertiesAsDefault);
 
-	// saveOutput (view()->saveBuffer())
-	/*
-	m->registerFunction("geometry",window_module_fnc_geometry);
-	m->registerCommand("setGeometry",window_module_cmd_setGeometry);
-
-	m->registerFunction("isActive",window_module_fnc_isActive);
-
-
-	// Output stuff
-	m->registerFunction("outputBufferSize",window_module_fnc_outputBufferSize);
-	m->registerCommand("setOutputBufferSize",window_module_cmd_setOutputBufferSize);
-
-	m->registerFunction("outputShowsImages",window_module_fnc_outputShowsImages);
-	m->registerCommand("setOutputShowsImages",window_module_cmd_setOutputShowsImages);
-
-	m->registerFunction("outputTimestamp",window_module_fnc_outputTimestamp);
-	m->registerCommand("setOutputTimestamp",window_module_cmd_setOutputTimestamp);
-
-	m->registerFunction("hasOutputBackgroundPixmap",window_module_fnc_hasOutputBackgroundPixmap);
-	m->registerCommand("setOutputBackgroundPixmap",window_module_cmd_setOutputBackgroundPixmap);
-
-*/
 	return true;
 }
 

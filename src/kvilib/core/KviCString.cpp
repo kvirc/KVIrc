@@ -39,155 +39,6 @@ kvi_wslen_t kvi_wstrlen(const kvi_wchar_t * str)
 	return (ptr - str);
 }
 
-/*
-WORKING CODE, COMMENTED OUT BECAUSE NOT USED AND GENERATES WARNINGS
-// %s = Latin1 char string (can't be null)
-// %d = signed int (short,char)
-// %u = unsigned int (short,char)
-// %c = char value (kvi_wchar_t value)
-
-// %f = double value
-
-// %w = kvi_wchar_t string (can't be null)
-
-// %S = Latin1 KviCString pointer (#ifdef WSTRINGCONFIG_USE_KVISTR) : can't be NULL!
-// %W = KviWStr pointer : can't be NULL!
-// %Q = QString pointer : can't be NULL!
-
-#define _WSTRING_WMEMCPY(_dst,_src,_len) KviMemory::copy((void *)(_dst),(const void *)(_src),sizeof(kvi_wchar_t) * (_len))
-#define _WSTRING_STRLEN(_str) kvi_strLen(_str)
-
-#define WVSNPRINTF_BODY \
-\
-	kvi_wchar_t *p; \
-	long int argValue; \
-	unsigned long argUValue; \
-\
-	kvi_wchar_t numberBuffer[32]; \
-	kvi_wchar_t *pNumBuf; \
-	unsigned int tmp; \
-\
-	for(p=buffer ; *fmt ; ++fmt) \
-	{ \
-		if(len < 1)return (-1); \
-\
-		if(*fmt != '%') \
-		{ \
-			*p++ = *fmt; \
-			--len; \
-			continue; \
-		} \
-\
-		++fmt; \
-\
-		switch(*fmt) \
-		{ \
-			case 's': \
-			{ \
-				char * argString = kvi_va_arg(list,char *); \
-				argValue = (int)_WSTRING_STRLEN(argString); \
-				if(len <= argValue)return (-1); \
-				while(*argString)*p++ = *argString++; \
-				len -= argValue; \
-			} \
-			break; \
-			case 'S': \
-			{ \
-				KviCString * pString = kvi_va_arg(list,KviCString *); \
-				char * argString = pString->ptr(); \
-				if(len <= ((int)(pString->len())))return (-1); \
-				while(*argString)*p++ = *argString++; \
-				len -= pString->len(); \
-			} \
-			break; \
-			case 'Q': \
-			{ \
-				QString * pString = kvi_va_arg(list,QString *); \
-				if(pString->length() > 0) \
-				{ \
-					if(len <= ((int)(pString->length())))return (-1); \
-					_WSTRING_WMEMCPY(p,pString->unicode(),pString->length()); \
-					p += pString->length(); \
-					len -= pString->length(); \
-				} \
-			} \
-			break; \
-			case 'd': \
-				argValue = kvi_va_arg(list,int); \
-				if(argValue < 0) \
-				{ \
-					*p++ = '-'; \
-					if(--len == 0)return (-1); \
-					argValue = -argValue; \
-					if(argValue < 0)argValue = 0; \
-				} \
-				pNumBuf = numberBuffer; \
-				do { \
-					tmp = argValue / 10; \
-					*pNumBuf++ = argValue - (tmp * 10) + '0'; \
-				} while((argValue = tmp)); \
-				argUValue = pNumBuf - numberBuffer; \
-				if(((unsigned int)len) <= argUValue)return (-1); \
-				do { \
-					*p++ = *--pNumBuf; \
-				} while(pNumBuf != numberBuffer); \
-				len -= argUValue; \
-			break; \
-			case 'u': \
-				argUValue = kvi_va_arg(list,unsigned int); \
-				pNumBuf = numberBuffer; \
-				do { \
-					tmp = argUValue / 10; \
-					*pNumBuf++ = argUValue - (tmp * 10) + '0'; \
-				} while((argUValue = tmp)); \
-				argValue = pNumBuf - numberBuffer; \
-				if(len <= argValue)return (-1); \
-				do { \
-					*p++ = *--pNumBuf; \
-				} while(pNumBuf != numberBuffer); \
-				len -= argValue; \
-			break; \
-			case 'f': \
-			{ \
-				double dVal = (double)kvi_va_arg(list,double); \
-				char sprintfBuffer[32]; \
-				argValue = sprintf(sprintfBuffer,"%f",dVal); \
-				if(len <= argValue)return (-1); \
-				char * pSprintfBuffer = sprintfBuffer; \
-				while(*pSprintfBuffer)*p++ = *pSprintfBuffer++; \
-				len -= argValue; \
-			} \
-			break; \
-			case 'c': \
-				*p++ = (kvi_wchar_t)kvi_va_arg(list,int); \
-				--len; \
-			break; \
-			default: \
-				*p++ = '%';  \
-				if(--len == 0)return (-1); \
-				if(*fmt){ \
-					*p++ = *fmt; \
-					--len; \
-				} \
-			break; \
-		} \
-		continue; \
-	} \
-	if(len < 1)return (-1); \
-	*p = 0; \
-	return p-buffer;
-
-int kvi_wvsnprintcf(kvi_wchar_t *buffer,kvi_wslen_t len,const char *fmt,kvi_va_list list)
-{
-	WVSNPRINTF_BODY
-}
-
-int kvi_wvsnprintf(kvi_wchar_t *buffer,kvi_wslen_t len,const kvi_wchar_t *fmt,kvi_va_list list)
-{
-	WVSNPRINTF_BODY
-}
-*/
-
 bool kvi_qstringEqualCI(const QString & s1, const QString & s2)
 {
 	const QChar * p1 = s1.unicode();
@@ -1060,21 +911,7 @@ int kvi_strcmpCI(const char * str1, const char * str2)
 //// return = 0 ---> str1 = str2
 //// return > 0 ---> str1 > str2
 //int kvi_strcmpCIN(const char *str1,const char *str2,int len)
-//{
-//	//abcd abce
-//	KVI_ASSERT(str1);
-//	KVI_ASSERT(str2);
-//	unsigned char *s1 = (unsigned char *)str1;
-//	unsigned char *s2 = (unsigned char *)str2;
-//	int diff;
-//	unsigned char rightchar;
-//	while(len--)
-//	{
-//		if(!(diff=(rightchar=tolower(*s1++)) - tolower(*s2++)))break;
-//		if(!rightchar)break;
-//	}
-//    return diff; //diff is nonzero or end of both was reached (it is positive if *s2 > *s1
-//}
+//
 
 int kvi_strcmpCS(const char * str1, const char * str2)
 {
@@ -1383,41 +1220,6 @@ static char get_decimal_from_hex_digit_char(char dgt)
 		return (10 + (dgt - 'a'));
 	return -1;
 }
-
-// This is just error-correcting...it treats non hex stuff as zeros
-/*
-static inline char get_decimal_from_hex_digit_char(char dgt)
-{
-	char c = pedantic_get_decimal_from_hex_digit(dgt);
-	if(c == -1)return 0;
-	return c;
-}
-
-int KviCString::hexToBuffer(char ** buffer,bool bNullToNewlines)
-{
-	int len;
-	if(m_len % 2)len = (m_len / 2) + 1;
-	else len = (m_len / 2);
-	*buffer = (char *)KviMemory::allocate(len);
-
-	char * ptr = *buffer;
-
-	char * aux = m_ptr;
-	while(*aux)
-	{
-		*ptr = get_decimal_from_hex_digit_char(*aux) * 16;
-		aux++;
-		if(*aux)
-		{
-			*ptr += get_decimal_from_hex_digit_char(*aux);
-			aux++;
-		}
-		if(bNullToNewlines)if(!(*ptr))*ptr = '\n';
-		ptr++;
-	}
-	return len;
-}
-*/
 
 int KviCString::hexToBuffer(char ** buffer, bool bNullToNewlines)
 {
@@ -1995,39 +1797,7 @@ KviCString ** KviCString::splitToArray(char sep, int max, int * realCount) const
 	strings[number] = nullptr;
 	return strings;
 }
-/*
-	WORKING BUT UNUSED
 
-KviCString ** KviCString::splitToArray(const char * sep,int max,int * realCount) const
-{
-	KviCString ** strings = (KviCString **)KviMemory::allocate(sizeof(KviCString *));
-	KviCString tmp = *this;
-	int idx = tmp.findFirstIdx(sep);
-	int number = 0;
-	int seplen = kvi_strLen(sep);
-
-
-	while(idx != -1)
-	{
-		strings = (KviCString **)KviMemory::reallocate(sizeof(KviCString *) * (number + 2));
-		strings[number] = new KviCString(tmp.ptr(),idx);
-		tmp.cutLeft(idx + seplen);
-		number++;
-		idx = tmp.findFirstIdx(sep);
-	}
-
-	if(tmp.hasData())
-	{
-		strings = (KviCString **)KviMemory::reallocate(sizeof(KviCString *) * (number + 2));
-		strings[number] = new KviCString(tmp);
-		number++;
-	}
-
-	if(realCount)*realCount = number;
-	strings[number] = 0;
-	return strings;
-}
-*/
 void KviCString::freeArray(KviCString ** strings)
 {
 	if(!strings)
@@ -2452,7 +2222,7 @@ KviCString & KviCString::setNum(long num)
 	char * p;
 	char * pNumBuf = numberBuffer;
 
-	// somebody can explain me why 	-(-2147483648) = -2147483648 ? (2^31)
+	// somebody can explain to me why 	-(-2147483648) = -2147483648 ? (2^31)
 	// it is like signed char x = 128 ---> 10000000 that is signed -0 (!?)
 	// mmmmh...or it is assumed to be -128 (a number representation exception)
 	// at least on my machine it happens...
@@ -2480,7 +2250,7 @@ KviCString & KviCString::setNum(long num)
 		bNegative = true;
 		num = -num; //need to have it positive
 		if(num < 0)
-		{ // 2^31 exception
+		{	// 2^31 exception
 			// We need to avoid absurd responses like ".(./),." :)
 			num = 0; // we get a negative zero here...it is still an exception
 		}
@@ -2699,23 +2469,6 @@ long KviCString::toLongExt(bool * bOk, int base)
 		*bOk = true;
 	return result;
 }
-
-//
-//working code, but unused in kvirc
-//
-//unsigned long KviCString::toULongExt(bool *bOk = 0,int base = 0)
-//{
-//	if(m_len == 0){
-//		if(bOk)*bOk = false;
-//		return 0;
-//	}
-//	char * endptr;
-//	unsigned long result = strtoul(m_ptr,&endptr,base);
-//	if(*endptr != '\0'){
-//		if(bOk)*bOk = false;
-//	}
-//	return result;
-//}
 
 KviCString & KviCString::cutLeft(int len)
 {
@@ -3447,81 +3200,3 @@ bool KviCString::ext_contains(const char * data, const char * item, bool caseS)
 	}
 	return false;
 }
-
-//void KviCString::pointerToBitString(const void * ptr)
-//{
-//	m_len = (sizeof(void *) * 8);
-//	m_ptr = KviMemory::reallocate(m_ptr,m_len + 1);
-//	for(int i=0;i < m_len;i++)
-//	{
-//		m_ptr[i] = (ptr & 1) ? '1' : '0';
-//		ptr >> 1;
-//	}
-//	m_ptr[i] = '\0';
-//}
-//
-//void * KviCString::bitStringToPointer()
-//{
-//	if(m_len != (sizeof(void *) * 8))return 0;
-//	const char * aux = m_ptr;
-//	void * ptr = 0;
-//	for(int i=m_len - 1;i >= 0;i--)
-//	{
-//		if(m_ptr[i] == '1')ptr &= 1;
-//		else if(m_ptr[i] !='0')return 0;
-//		ptr << 1;
-//	}
-//	return ptr;
-//}
-
-//	static char ascii_jump_table[256]=
-//	{
-//		//	000 001 002 003 004 005 006 007   008 009 010 011 012 013 014 015
-//		//	NUL SOH STX ETX EOT ENQ ACK BEL   BS  HT  LF  VT  FF  CR  SO  SI
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	016 017 018 019 020 021 022 023   024 025 026 027 028 029 030 031
-//		//	DLE DC1 DC2 DC3 DC4 NAK SYN ETB   CAN EM  SUB ESC FS  GS  RS  US
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	032 033 034 035 036 037 038 039   040 041 042 043 044 045 046 047
-//		//	    !   "   #   $   %   &   '     (   )   *   +   ,   -   .   /
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	048 049 050 051 052 053 054 055   056 057 058 059 060 061 062 063
-//		//	0   1   2   3   4   5   6   7     8   9   :   ;   <   =   >   ?
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	064 065 066 067 068 069 070 071   072 073 074 075 076 077 078 079
-//		//	@   A   B   C   D   E   F   G     H   I   J   K   L   M   N   O
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	080 081 082 083 084 085 086 087   088 089 090 091 092 093 094 095
-//		//	P   Q   R   S   T   U   V   W     X   Y   Z   [   \   ]   ^   _
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	096 097 098 099 100 101 102 103   104 105 106 107 108 109 110 111
-//		//	`   a   b   c   d   e   f   g     h   i   j   k   l   m   n   o
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	112 113 114 115 116 117 118 119   120 121 122 123 124 125 126 127
-//		//	p   q   r   s   t   u   v   w     x   y   z   {   |   }   ~   
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	128 129 130 131 132 133 134 135   136 137 138 139 140 141 142 143
-//		//
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	144 145 146 147 148 149 150 151   152 153 154 155 156 157 158 159
-//		//
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	160 161 162 163 164 165 166 167   168 169 170 171 172 173 174 175
-//		//
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	176 177 178 179 180 181 182 183   184 185 186 187 188 189 190 191
-//		//
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	192 193 194 195 196 197 198 199   200 201 202 203 204 205 206 207
-//		//	�  �  �  �  �  �  �  �    �  �  �  �  �  �  �  �
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	208 209 210 211 212 213 214 215   216 217 218 219 220 221 222 223
-//		//	�  �  �  �  �  �  �  �    �  �  �  �  �  �  �  �
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	224 225 226 227 228 229 230 231   232 233 234 235 236 237 238 239
-//		//	�  �  �  �  �  �  �  �    �  �  �  �  �  �  �  �
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-//		//	240 241 242 243 244 245 246 247   248 249 250 251 252 253 254 255
-//		//	�  �  �  �  �  �  �  �
-//			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0
-//	};

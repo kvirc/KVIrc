@@ -39,7 +39,7 @@
 
 #include "KviNetworkAccessManager.h"
 
-// This implementation was created with the help of the following documentation:
+//   This implementation was created with the help of the following documentation:
 //   http://www.upnp.org/standardizeddcps/documents/UPnP_IGD_1.0.zip
 //   http://zacbowling.com/upnp/
 //   http://www.knoxscape.com/Upnp/NAT.htm
@@ -242,17 +242,6 @@ namespace UPnP
 
 		if(!error)
 		{
-			//extract the xml prefix used by the device; should be "s"
-
-			//this is the reply of my Zyxel:
-			// <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" >
-			//  <SOAP-ENV:Body>
-			//   <u:GetDefaultConnectionServiceResponse xmlns:u="urn:schemas-upnp-org:service:Layer3Forwarding:1" >
-			//    <NewDefaultConnectionService>WANIPConnection</NewDefaultConnectionService>
-			//   </u:GetDefaultConnectionServiceResponse>
-			//  </SOAP-ENV:Body>
-			// </SOAP-ENV:Envelope>
-
 			QString baseNamespace = xml.documentElement().tagName();
 
 			if(baseNamespace.length() > 0)

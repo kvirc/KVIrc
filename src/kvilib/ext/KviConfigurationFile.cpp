@@ -91,42 +91,6 @@ void KviConfigurationFile::clearKey(const QString & szKey)
 		clearGroup(m_szGroup);
 }
 
-/*
-void KviConfigurationFile::getContentsString(KviCString &buffer)
-{
-	buffer = __tr("Contents of config file ");
-	buffer.append(m_szFileName.ptr());
-	buffer.append('\n');
-	int sections = 0;
-	int keys     = 0;
-	KviPointerHashTableIterator<QString,KviCStringDict> it(*m_pDict);
-	while(it.current()){
-		buffer.append(" Section [");
-		buffer.append(it.currentKey());
-		buffer.append("]\n");
-		int sectionKeys = 0;
-		KviPointerHashTableIterator<QString,KviCString> it2(*it.current());
-		while(it2.current()){
-			buffer.append("  Key [");
-			buffer.append(it2.currentKey());
-			buffer.append("] : ");
-			buffer.append(it2.current()->ptr());
-			buffer.append('\n');
-			++it2;
-			++sectionKeys;
-			++keys;
-		}
-		KviCString tmp(KviCString::Format,__tr("  Total: %d keys"),sectionKeys);
-		buffer.append(tmp);
-		buffer.append('\n');
-		++it;
-		++sections;
-	}
-	KviCString tmp(KviCString::Format,__tr("Total: %d keys in %d sections"),keys,sections);
-	buffer.append(tmp);
-}
-*/
-
 #define LOAD_BLOCK_SIZE 32768
 
 bool KviConfigurationFile::load()

@@ -190,7 +190,6 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	connect(m_pListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem *)), this, SLOT(applyTheme(QListWidgetItem *)));
 
 	//FIXME tooltip
-	//connect(m_pListWidget,SIGNAL(tipRequest(QListWidgetItem *,const QPoint &)),this,SLOT(tipRequest(QListWidgetItem *,const QPoint &)));
 	connect(m_pListWidget, SIGNAL(customContextMenuRequested(const QPoint &)),
 	    this, SLOT(contextMenuRequested(const QPoint &)));
 	connect(m_pListWidget, SIGNAL(itemSelectionChanged()), this, SLOT(enableDisableButtons()));
@@ -201,34 +200,25 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 	pSep->setMinimumHeight(8);
 	pVBox->addWidget(pSep);
 
-	//g->addWidget(pSep,2,0);
-
 	m_pCurrentInstalledThemeLabel = new QLabel(this);
 	m_pCurrentInstalledThemeLabel->setText(__tr2qs_ctx("<b><u>Current Installed Theme:</u> ", "theme") + " " + KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) + "</b>");
-	//	g->addWidget(pLabel,2,0);
+
 	pVBox->addWidget(m_pCurrentInstalledThemeLabel);
 
 	pSep = new QFrame(this);
 	pSep->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 	pSep->setMinimumWidth(400);
 
-	//	g->addWidget(pSep,3,0);
 	pVBox->addWidget(pSep);
 
-	//	g->addWidget(m_pListWidget,4,0);
 	pVBox->addWidget(m_pListWidget);
-
-	//	KviDynamicToolTip * tip = new KviDynamicToolTip(m_pListWidget);
-	//	connect(tip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
 
 	QPushButton * b = new QPushButton(__tr2qs("Close"), this);
 	b->setMaximumSize(b->sizeHint().width(), b->sizeHint().height());
 	connect(b, SIGNAL(clicked()), this, SLOT(closeClicked()));
-	//	g->addWidget(b,5,0);
+
 	pVBox->addWidget(b);
 
-	//	g->setMargin(1);
-	//	g->setSpacing(1);
 	pVBox->setAlignment(b, Qt::AlignRight);
 	fillThemeBox();
 	m_pContextPopup = new QMenu(this);
@@ -366,7 +356,6 @@ void ThemeManagementDialog::applyCurrentTheme()
 	KviThemeInfo out;
 
 	//qDebug("Apply theme item %x, info %x, %s : %s at location %d",(long)it,(long)it->themeInfo(),it->themeInfo()->directory().toUtf8().data(),it->themeInfo()->subdirectory().toUtf8().data(),it->themeInfo()->location());
-
 	if(!KviTheme::apply(it->themeInfo()->subdirectory(), it->themeInfo()->location(), out))
 	{
 		QString szErr = out.lastError();
@@ -473,14 +462,12 @@ void ThemeManagementDialog::fillThemeBox(bool bBuiltin)
 	for(int i = 0; i < slThemes.count(); i++)
 	{
 		//qDebug("Installed theme %s builtin %d",slThemes.at(i).toUtf8().data(),bBuiltin);
-
 		KviThemeInfo * inf = new KviThemeInfo();
 		if(inf->load(slThemes.at(i), bBuiltin ? KviThemeInfo::Builtin : KviThemeInfo::User))
 		{
 			ThemeListWidgetItem * it = new ThemeListWidgetItem(m_pListWidget, inf);
 
 			//qDebug("Item %x, info %x, info2 %x, %s : %s at location %d",(long)it,(long)inf,(long)it->themeInfo(),it->themeInfo()->directory().toUtf8().data(),it->themeInfo()->subdirectory().toUtf8().data(),it->themeInfo()->location());
-
 			QPixmap pixmap = inf->smallScreenshot();
 			if(!pixmap.isNull())
 				it->setIcon(pixmap.scaled(300, 280, Qt::KeepAspectRatio));

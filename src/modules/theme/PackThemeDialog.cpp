@@ -50,9 +50,6 @@
 #include <QPainter>
 #include <QImage>
 #include <QBuffer>
-//#include <QComboBox>
-//#include <QToolTip>
-//#include <QPushButton>
 
 PackThemeDialog::PackThemeDialog(QWidget * pParent, KviPointerList<KviThemeInfo> * pThemeInfoList)
     : QWizard(pParent)
@@ -333,8 +330,6 @@ PackThemeImageWidget::PackThemeImageWidget(PackThemeDialog * pParent)
 	pLayout->addWidget(m_pImageSelector);
 	// Store data in the fields
 	registerField("packageImagePath*", m_pImageSelector);
-
-	//m_pImageSelectionPage = pPage;
 }
 
 PackThemeImageWidget::~PackThemeImageWidget()
@@ -417,9 +412,6 @@ void PackThemeDialog::accept()
 
 bool PackThemeDialog::packTheme()
 {
-	//m_pImageSelector->commit();
-	//m_pPathSelector->commit();
-
 	// Get data from registered fields
 	m_szAuthor = field("packageAuthor").toString();
 	m_szName = field("packageName").toString();

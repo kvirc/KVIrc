@@ -33,6 +33,7 @@
 
 #include <QDir>
 #include <QFileInfo>
+
 /*
 	@doc: easyplugins
 	@type:

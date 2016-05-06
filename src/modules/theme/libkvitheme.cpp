@@ -106,6 +106,7 @@ static bool theme_kvs_cmd_install(KviKvsModuleCommandCall * c)
 		If no switch is present then KVIrc tries to determine automatically the
 		type of theme (user, builtin or external).
 */
+
 static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
 {
 	QString szTheme;

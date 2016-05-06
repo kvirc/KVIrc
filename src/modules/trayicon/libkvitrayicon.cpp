@@ -251,13 +251,6 @@ bool KviTrayIconWidget::event(QEvent * e)
 	return false;
 }
 
-//int KviTrayIconWidget::message(int,void *)
-//{
-//	qDebug("Message");
-//	update();
-//	return 0;
-//}
-
 void KviTrayIconWidget::doAway(bool)
 {
 	int id;
