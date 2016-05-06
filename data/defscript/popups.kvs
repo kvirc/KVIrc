@@ -630,24 +630,24 @@ defpopup(serverpopup)
 
 	separator($server)
 
-	item($tr("Traceroute to ","defscript")$0,36) ($server)
+	item($tr("Traceroute to","defscript") $0,36) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute $0
 		else system.runcmd tracert $0
 	}
 
-	item($tr("Traceroute6 to ","defscript")$0,36) ($server)
+	item($tr("Traceroute6 to","defscript") $0,36) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute6 $0
 		else system.runcmd tracert -6 $0
 	}
 
-	item("Ping "$0,36) ($server)
+	item("Ping" $0,36) ($server)
 	{
 		system.runcmd ping $0
 	}
 
-	item("Ping6 "$0,36) ($server)
+	item("Ping6" $0,36) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd ping6 $0
 		else system.runcmd ping -6 $0
@@ -953,36 +953,36 @@ defpopup(hostpopup)
 
 	separator($server)
 
-	item($tr("Open ","defscript")"ftp://"$0"/",185) ("$system.ostype" == "unix" && $server)
+	item($tr("Open","defscript") "ftp://"$0"/",185) ("$system.ostype" == "unix" && $server)
 	{
 		openurl "ftp://$0/"
 	}
 
-	item($tr("Telnet to ","defscript")$0,9) ($server)
+	item($tr("Telnet to","defscript") $0,9) ($server)
 	{
 		system.runcmd telnet $0
 	}
 
 	separator($server)
 
-	item($tr("Traceroute to ","defscript")$0,36) ($server)
+	item($tr("Traceroute to","defscript") $0,36) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute $0
 		else system.runcmd tracert $0
 	}
 
-	item($tr("Traceroute6 to ","defscript")$0,36) ($server)
+	item($tr("Traceroute6 to","defscript") $0,36) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute6 $0
 		else system.runcmd tracert -6 $0
 	}
 
-	item("Ping "$0,36) ($server)
+	item("Ping" $0,36) ($server)
 	{
 		system.runcmd ping $0
 	}
 
-	item("Ping6 "$0,36) ($server)
+	item("Ping6" $0,36) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd ping6 $0
 		else system.runcmd ping -6 $0
