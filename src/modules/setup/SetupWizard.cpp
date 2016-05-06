@@ -148,8 +148,9 @@ SetupWizard::SetupWizard()
 		m_pLabelPixmap = new QPixmap(250, 450);
 	}
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////
 	// Welcome
+	//////////////////////////////////////////////////////////////////////////////////////
 
 	m_pWelcome = new SetupPage(this);
 
@@ -171,8 +172,10 @@ SetupWizard::SetupWizard()
 	setBackEnabled(m_pWelcome, false);
 	setHelpEnabled(m_pWelcome, false);
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 // License
+//////////////////////////////////////////////////////////////////////////////////////
+
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW) //it have been already shown by installer
 	SetupPage * m_pLicense = new SetupPage(this);
 	m_pLicense->m_pTextLabel->setText(__tr2qs(
@@ -206,8 +209,9 @@ SetupWizard::SetupWizard()
 #else
 	m_pLicense = nullptr;
 #endif
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////
 	// Directories
+	//////////////////////////////////////////////////////////////////////////////////////
 
 	m_pDirectory = new SetupPage(this);
 
@@ -302,8 +306,9 @@ SetupWizard::SetupWizard()
 	connect(m_pDataPathEdit, SIGNAL(textChanged(const QString &)), this, SLOT(newDataTextChanged(const QString &)));
 	connect(m_pIncomingPathEdit, SIGNAL(textChanged(const QString &)), this, SLOT(newIncomingTextChanged(const QString &)));
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////
 	// Identity
+	//////////////////////////////////////////////////////////////////////////////////////
 
 	m_pIdentity = new SetupPage(this);
 
@@ -391,17 +396,14 @@ SetupWizard::SetupWizard()
 	m_pLanguagesSelector->setMinimumLabelWidth(120);
 	m_pLanguagesSelector->setMargin(0);
 
-	//m_pOtherInfoSelector = new KviStringSelector(gbox,__tr2qs("Other:"),&(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoOther)),true);
-	//m_pOtherInfoSelector->setMinimumLabelWidth(120);
-
 	addPage(m_pIdentity, __tr2qs("Identity"));
-
-	//l = new QLabel(m_pIdentity->m_pVBox,"<b> </b>");
 
 	setHelpEnabled(m_pIdentity, false);
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////
 	// Default theme
+	//////////////////////////////////////////////////////////////////////////////////////
+
 	m_pTheme = new SetupPage(this);
 	m_pTheme->m_pTextLabel->setText(__tr2qs(
 	    "<p>Here you can choose the default appearance of KVIrc.<br><br>"
@@ -465,8 +467,9 @@ SetupWizard::SetupWizard()
 
 	setHelpEnabled(m_pTheme, false);
 
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////
 	// Desktop integration
+	//////////////////////////////////////////////////////////////////////////////////////
 
 	m_pDesktopIntegration = new SetupPage(this);
 
@@ -583,8 +586,6 @@ SetupWizard::SetupWizard()
 							m_pUseMircServerList->setChecked(true);
 						}
 					}
-					//KviMessageBox::information(__tr2qs("Setup found existing mIRC installation. It will try to import "
-					//	"some of mIRC settings and serverlist. If you don't want to do it, unselect import in setup pages"));
 				}
 			}
 		}
@@ -983,13 +984,7 @@ void SetupWizard::accept()
 				setCurrentPage(m_pDirectory);
 				return;
 			}
-		} /*else {
-			kvi_infoBox(__tr("Kvirc setup"),
-				__tr("The directory '%s' already exists.\n" \
-				"(maybe from a previous Kvirc installation)\n"\
-				"If you experience any problems try deleting the old directory:\n" \
-				"the setup program will be started automatically again."),szDir.ptr());
-		}*/
+		}
 
 		g_pApp->m_szLocalKvircDir = szDir;
 		KviFileUtils::adjustFilePath(g_pApp->m_szLocalKvircDir);
@@ -1061,7 +1056,6 @@ void SetupWizard::accept()
 			m_pRealNameSelector->commit();
 			m_pLocationSelector->commit();
 			m_pLanguagesSelector->commit();
-			//m_pOtherInfoSelector->commit();
 
 			KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
 
@@ -1113,23 +1107,7 @@ void SetupWizard::accept()
 					KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "";
 					break;
 			}
-/*
-			m_pServerHostSelector->commit();
-			m_pServerUrlSelector->commit();
-			//m_pServerConfigSelector->commit();
-			m_pServerPortSelector->commit();
 
-			if(m_pServersSpecifyManually->isOn())
-			{
-				KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = false;
-				szHost = m_szServerHost;
-				uPort=m_uServerPort;
-			} else if(m_pServersOpenIrcUrl->isOn())
-			{
-				KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = false;
-				szUrl=m_szServerUrl;
-			}
-			*/
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			if(m_pUseMircServerList->isEnabled() && m_pUseMircServerList->isChecked())
 				szMircServers = m_szMircServerIniFile;

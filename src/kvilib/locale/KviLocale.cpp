@@ -52,7 +52,7 @@ static KviPointerHashTable<const char *, KviMessageCatalogue> * g_pCatalogueDict
 static QTextCodec * g_pUtf8TextCodec = nullptr;
 static QString g_szDefaultLocalePath; // FIXME: Convert this to a search path list
 
-/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 //
 // The following code was extracted and adapted from gutf8.c
 // from the GNU GLIB2 package.
@@ -77,7 +77,7 @@ static QString g_szDefaultLocalePath; // FIXME: Convert this to a search path li
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 //
-/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 
 #define UNICODE_VALID(Char) \
 	((Char) < 0x110000 && (((Char)&0xFFFFF800) != 0xD800) && ((Char) < 0xFDD0 || (Char) > 0xFDEF) && ((Char)&0xFFFE) != 0xFFFE)
@@ -242,9 +242,9 @@ static bool g_utf8_validate(const char * str, int max_len, const char ** end)
 		return true;
 }
 
-/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 //   End of gutf8.c
-/////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
 
 class KviSmartTextCodec : public QTextCodec
 {
@@ -544,10 +544,6 @@ KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QSt
 			}
 		}
 	}
-
-	//g_pTextCodec = QTextCodec::codecForLocale();
-	//if(!g_pTextCodec)
-	//	g_pTextCodec = QTextCodec::codecForLocale();
 }
 
 KviLocale::~KviLocale()

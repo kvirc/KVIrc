@@ -1315,8 +1315,6 @@ void KviIrcSocket::proxyHandleHttpFinalReply(const char * pcBuffer, int)
 
 	setState(ProxyHttpError);
 
-	//raiseError(KviError::ProxyHttpFailure);
-	//reset();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -1346,7 +1344,6 @@ void KviIrcSocket::printSSLCipherInfo()
 	KviSSLCipherInfo * ci = m_pSSL->getCurrentCipherInfo();
 	if(ci)
 	{
-		//m_pConsole->socketEvent(SSLCipherInfo,(void *)ci);
 		KviSSLMaster::printSSLCipherInfo(m_pConsole, __tr("Current transmission cipher"), ci);
 		delete ci;
 	}

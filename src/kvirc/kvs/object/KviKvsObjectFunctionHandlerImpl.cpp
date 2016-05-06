@@ -37,8 +37,6 @@ bool KviKvsObjectStandardTrueReturnFunctionHandler::call(KviKvsObject *, KviKvsO
 	return true;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 KviKvsObjectFunctionHandler * KviKvsObjectStandardFalseReturnFunctionHandler::clone()
 {
 	return new KviKvsObjectStandardFalseReturnFunctionHandler();
@@ -50,8 +48,6 @@ bool KviKvsObjectStandardFalseReturnFunctionHandler::call(KviKvsObject *, KviKvs
 	return true;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 KviKvsObjectFunctionHandler * KviKvsObjectStandardNothingReturnFunctionHandler::clone()
 {
 	return new KviKvsObjectStandardNothingReturnFunctionHandler();
@@ -62,8 +58,6 @@ bool KviKvsObjectStandardNothingReturnFunctionHandler::call(KviKvsObject *, KviK
 	pCall->returnValue()->setNothing();
 	return true;
 }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviKvsObjectCoreCallFunctionHandler::KviKvsObjectCoreCallFunctionHandler(KviKvsObjectFunctionHandlerProc pProc, unsigned int uFlags)
     : KviKvsObjectFunctionHandler(uFlags)
@@ -88,16 +82,8 @@ KviKvsObjectFunctionHandler * KviKvsObjectCoreCallFunctionHandler::clone()
 bool KviKvsObjectCoreCallFunctionHandler::call(KviKvsObject * pObject, KviKvsObjectFunctionCall * pCall)
 {
 	// Actually m_pProc can't be 0: if it's zero then it's a BUG and should be traced down: we just crash
-	//if(m_pProc)
 	return (pObject->*m_pProc)(pCall);
-	//else {
-	// empty handler
-	//pCall->returnValue()->setNothing();
-	//return true;
-	//}
 }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviKvsObjectScriptFunctionHandler::KviKvsObjectScriptFunctionHandler(const QString & szScriptContext, const QString & szCode, const QString & szReminder, unsigned int uFlags)
     : KviKvsObjectFunctionHandler(uFlags)
