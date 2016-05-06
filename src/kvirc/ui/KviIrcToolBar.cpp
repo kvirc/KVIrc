@@ -215,18 +215,19 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 	static QString b = "<b>";
 	static QString nb = "</b>";
 	static QString br = "<br>";
+	static QString ths = "<html><body><table style=\"white-space: pre\">" START_TABLE_BOLD_ROW;
+	static QString the = "</table></body></html>"; END_TABLE_BOLD_ROW;
 
 	if(c)
 	{
 		KviIrcConnection * ic = c->connection();
 
-		txt = b;
+		txt = ths;
 
 		if(!ic)
 		{
 			txt += __tr2qs("No connection");
-			txt += nb;
-			txt += br;
+			txt += the;
 		}
 		else
 		{
@@ -235,8 +236,7 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 				nickAndMode.append(KviCString::Format, " (+%s)", ic->userInfo()->userMode().toUtf8().data());
 
 			txt += ic->currentServerName();
-			txt += nb;
-			txt += br;
+			txt += the;
 			txt += nickAndMode.ptr();
 			txt += br;
 		}
@@ -244,11 +244,9 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 		QString szNum;
 		szNum.setNum(c->context()->id());
 
-		QString szIrcContext = QChar('(');
-		szIrcContext += __tr2qs("IRC context");
+		QString szIrcContext = __tr2qs("IRC context");
 		szIrcContext += QChar(' ');
 		szIrcContext += szNum;
-		szIrcContext += QChar(')');
 		txt += szIrcContext;
 
 		if(ic && ic->lagMeter() && (KVI_OPTION_BOOL(KviOption_boolShowLagOnContextDisplay)))
@@ -270,9 +268,9 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 	}
 	else
 	{
-		txt = b;
+		txt = ths;
 		txt += __tr2qs("No IRC context");
-		txt += nb;
+		txt += the;
 	}
 
 	tip->tip(rect(), txt);
