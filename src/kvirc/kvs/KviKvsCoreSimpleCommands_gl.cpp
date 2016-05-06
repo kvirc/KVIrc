@@ -64,8 +64,6 @@ namespace KviKvsCoreSimpleCommands
 		return multipleModeCommand(__pContext, __pParams, __pSwitches, '+', 'h');
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: halt
 		@type:
@@ -94,8 +92,6 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_pContext->setHaltCalled();
 		return false;
 	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: help
@@ -164,8 +160,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: host
 		@type:
@@ -224,8 +218,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: include
 		@type:
@@ -242,8 +234,6 @@ namespace KviKvsCoreSimpleCommands
 			[cmd]parse[/cmd]
 	*/
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: info
 		@type:
@@ -259,8 +249,6 @@ namespace KviKvsCoreSimpleCommands
 			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: inject
@@ -286,6 +274,7 @@ namespace KviKvsCoreSimpleCommands
 			inject :foo!bar@foobar PRIVMSG HelLViS69 :message
 			[/example]
 	*/
+
 	KVSCSC(inject)
 	{
 		Q_UNUSED(__pSwitches);
@@ -335,8 +324,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: invite
 		@type:
@@ -353,8 +340,6 @@ namespace KviKvsCoreSimpleCommands
 	*/
 	// RCF2812 wrapper
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: ison
 		@type:
@@ -370,8 +355,6 @@ namespace KviKvsCoreSimpleCommands
 			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: join
@@ -447,8 +430,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: kick
 		@type:
@@ -505,8 +486,6 @@ namespace KviKvsCoreSimpleCommands
 
 		return true;
 	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: killtimer
@@ -567,8 +546,6 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 	}
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: leave
 		@type:
@@ -583,8 +560,6 @@ namespace KviKvsCoreSimpleCommands
 			Builtin alias for the command [cmd]part[/cmd].
 	*/
 	// Internally aliased to leave
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: links
@@ -605,8 +580,6 @@ namespace KviKvsCoreSimpleCommands
 	*/
 	// RFC2812 wrapper
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 	/*
 		@doc: list
 		@type:
@@ -623,8 +596,6 @@ namespace KviKvsCoreSimpleCommands
 			This command is an [doc:rfc2812wrappers]RFC2812 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2812 wrapper
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: listtimers
@@ -694,8 +665,6 @@ namespace KviKvsCoreSimpleCommands
 
 		return true;
 	}
-
-	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/*
 		@doc: lusers

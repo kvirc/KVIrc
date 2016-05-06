@@ -518,8 +518,6 @@
 			by all the modern kernels and used in inter-process communication).[br]
 	*/
 
-///////////////////////////////////////////////////////////////////////////////////////
-
 /*
 		@doc: object
 		@keyterms:

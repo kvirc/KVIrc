@@ -57,8 +57,6 @@ OptionsWidget_message::OptionsWidget_message(QWidget * pParent)
 OptionsWidget_message::~OptionsWidget_message()
     = default;
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 OptionsWidget_privmsg::OptionsWidget_privmsg(QWidget * parent)
     : KviOptionsWidget(parent)
 {
@@ -158,8 +156,6 @@ void OptionsWidget_timestamp::enableDisableTimestampSelector(bool)
 {
 	m_pTimestampColorSelector->setEnabled(m_pUseTimestampSelector->isChecked() && m_pSpecialTimestampColorSelector->isChecked());
 }
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 OptionsWidget_standardColors::OptionsWidget_standardColors(QWidget * parent)
     : KviOptionsWidget(parent)

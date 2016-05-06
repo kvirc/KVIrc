@@ -29,14 +29,10 @@
 
 #include <QPointer>
 
-////////////////////////////////////////////////////////////////////////////////////////
-
 static KviKvsObject * objectClassCreateInstance(KviKvsObjectClass * pClass, KviKvsObject * pParent, const QString & szName)
 {
 	return new KviKvsObject(pClass, pParent, szName);
 }
-
-////////////////////////////////////////////////////////////////////////////////////////
 
 KviKvsObjectController::KviKvsObjectController()
 {

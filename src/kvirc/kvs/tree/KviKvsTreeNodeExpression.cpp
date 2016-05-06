@@ -89,8 +89,6 @@ int KviKvsTreeNodeExpression::firstBinaryOperator()
 	return left()->firstBinaryOperator();
 }
 
-///////////////////////////////////////////////////////////////////////////////
-
 KviKvsTreeNodeExpressionVariableOperand::KviKvsTreeNodeExpressionVariableOperand(const QChar * pLocation, KviKvsTreeNodeData * pData)
     : KviKvsTreeNodeExpression(pLocation)
 {
@@ -120,8 +118,6 @@ bool KviKvsTreeNodeExpressionVariableOperand::evaluateReadOnly(KviKvsRunTimeCont
 {
 	return m_pData->evaluateReadOnly(c, pBuffer);
 }
-
-///////////////////////////////////////////////////////////////////////////////
 
 KviKvsTreeNodeExpressionConstantOperand::KviKvsTreeNodeExpressionConstantOperand(const QChar * pLocation, KviKvsVariant * pConstant)
     : KviKvsTreeNodeExpression(pLocation)
@@ -153,8 +149,6 @@ bool KviKvsTreeNodeExpressionConstantOperand::evaluateReadOnly(KviKvsRunTimeCont
 	return true;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-
 KviKvsTreeNodeExpressionOperator::KviKvsTreeNodeExpressionOperator(const QChar * pLocation)
     : KviKvsTreeNodeExpression(pLocation)
 {
@@ -172,8 +166,6 @@ void KviKvsTreeNodeExpressionOperator::dump(const char * prefix)
 {
 	qDebug("%s ExpressionOperator", prefix);
 }
-
-///////////////////////////////////////////////////////////////////////////////
 
 KviKvsTreeNodeExpressionUnaryOperator::KviKvsTreeNodeExpressionUnaryOperator(const QChar * pLocation, KviKvsTreeNodeExpression * pData)
     : KviKvsTreeNodeExpressionOperator(pLocation)
@@ -215,8 +207,6 @@ bool KviKvsTreeNodeExpressionUnaryOperator::evaluateOperand(KviKvsRunTimeContext
 	return true;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-
 KviKvsTreeNodeExpressionUnaryOperatorNegate::KviKvsTreeNodeExpressionUnaryOperatorNegate(const QChar * pLocation, KviKvsTreeNodeExpression * pData)
     : KviKvsTreeNodeExpressionUnaryOperator(pLocation, pData)
 {
@@ -253,8 +243,6 @@ bool KviKvsTreeNodeExpressionUnaryOperatorNegate::evaluateReadOnly(KviKvsRunTime
 		pBuffer->setInteger(-m_nData.integer());
 	return true;
 }
-
-///////////////////////////////////////////////////////////////////////////////
 
 KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot::KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot(const QChar * pLocation, KviKvsTreeNodeExpression * pData)
     : KviKvsTreeNodeExpressionUnaryOperator(pLocation, pData)
@@ -293,8 +281,6 @@ bool KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot::evaluateReadOnly(KviKvsRun
 	return true;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-
 KviKvsTreeNodeExpressionUnaryOperatorLogicalNot::KviKvsTreeNodeExpressionUnaryOperatorLogicalNot(const QChar * pLocation, KviKvsTreeNodeExpression * pData)
     : KviKvsTreeNodeExpressionUnaryOperator(pLocation, pData)
 {
@@ -330,8 +316,6 @@ bool KviKvsTreeNodeExpressionUnaryOperatorLogicalNot::evaluateReadOnly(KviKvsRun
 	pBuffer->setBoolean(!v.asBoolean());
 	return true;
 }
-
-///////////////////////////////////////////////////////////////////////////////
 
 KviKvsTreeNodeExpressionBinaryOperator::KviKvsTreeNodeExpressionBinaryOperator(const QChar * pLocation)
     : KviKvsTreeNodeExpressionOperator(pLocation)
@@ -418,8 +402,6 @@ void KviKvsTreeNodeExpressionBinaryOperator::dump(const char * prefix)
 	qDebug("%s ExpressionBinaryOperator", prefix);
 	dumpOperands(prefix);
 }
-
-////////////////////////////////////////////////////////////////////////////////
 
 #define PREIMPLEMENT_BINARY_OPERATOR(__name, __stringname, __contextdescription, __precedence) \
 	__name::__name(const QChar * pLocation)                                                    \

@@ -1756,7 +1756,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 
 		if((szLabelLow == "prologue") || (szLabelLow == "epilogue"))
 		{
-			/////////////////////////////////////////////////////////////////////////////////////////////////
 			bool bPrologue = (szLabelLow == "prologue");
 			if(!skipSpacesAndNewlines())
 			{
@@ -1816,7 +1815,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		}
 		else if(szLabelLow == "separator")
 		{
-			/////////////////////////////////////////////////////////////////////////////////////////////////
 			EXTRACT_POPUP_LABEL_CONDITION
 			if(KVSP_curCharUnicode == ';')
 				KVSP_skipChar;
@@ -1825,7 +1823,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		}
 		else if(szLabelLow == "separatorid")
 		{
-			/////////////////////////////////////////////////////////////////////////////////////////////////
 			EXTRACT_POPUP_LABEL_PARAMETERS
 			EXTRACT_POPUP_LABEL_CONDITION
 			if(KVSP_curCharUnicode == ';')
@@ -1836,7 +1833,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		}
 		else if(szLabelLow == "label")
 		{
-			/////////////////////////////////////////////////////////////////////////////////////////////////
 			EXTRACT_POPUP_LABEL_PARAMETERS
 			EXTRACT_POPUP_LABEL_CONDITION
 
@@ -1857,7 +1853,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		}
 		else if(szLabelLow == "popup")
 		{
-			/////////////////////////////////////////////////////////////////////////////////////////////////
 			EXTRACT_POPUP_LABEL_PARAMETERS
 			EXTRACT_POPUP_LABEL_CONDITION
 
@@ -1890,7 +1885,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		}
 		else if(szLabelLow == "item")
 		{
-			/////////////////////////////////////////////////////////////////////////////////////////////////
 			EXTRACT_POPUP_LABEL_PARAMETERS
 			EXTRACT_POPUP_LABEL_CONDITION
 
@@ -1943,7 +1937,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		}
 		else if(szLabelLow == "extpopup")
 		{
-			/////////////////////////////////////////////////////////////////////////////////////////////////
 			EXTRACT_POPUP_LABEL_PARAMETERS
 			EXTRACT_POPUP_LABEL_CONDITION
 
@@ -1972,7 +1965,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		}
 		else
 		{
-			/////////////////////////////////////////////////////////////////////////////////////////////////
 			error(pLabelBegin, __tr2qs_ctx("Found token '%Q' where a 'prologue', 'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected", "kvs"), &szLabel);
 			delete pPopup;
 			return nullptr;

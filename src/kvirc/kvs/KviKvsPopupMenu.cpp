@@ -119,8 +119,6 @@ bool KviKvsPopupMenuItem::evaluateCondition(KviKvsPopupMenuTopLevelData * pData)
 	return vRet.asBoolean();
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 KviKvsPopupMenuItemSeparator::KviKvsPopupMenuItemSeparator(const QString & szItemName, const QString & szCondition)
     : KviKvsPopupMenuItem(KviKvsPopupMenuItem::Separator, szItemName, szCondition)
 {
@@ -145,8 +143,6 @@ KviKvsPopupMenuItem * KviKvsPopupMenuItemSeparator::clone() const
 {
 	return new KviKvsPopupMenuItemSeparator(m_szItemName, m_pKvsCondition);
 }
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviKvsPopupMenuItemWithTextAndIcon::KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Type t, const QString & szItemName, const QString & szText, const QString & szIcon, const QString & szCondition)
     : KviKvsPopupMenuItem(t, szItemName, szCondition)
@@ -257,8 +253,6 @@ QString KviKvsPopupMenuItemWithTextAndIcon::evaluateText(KviKvsPopupMenuTopLevel
 	return szRet;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 KviKvsPopupMenuItemLabelHelper::KviKvsPopupMenuItemLabelHelper(KviKvsPopupMenuItemLabel * pItem)
     : QObject()
 {
@@ -349,8 +343,6 @@ void KviKvsPopupMenuItemLabel::fill(KviKvsPopupMenu * pMenu, KviKvsPopupMenuTopL
 	pMenu->addAction(pAction);
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 KviKvsPopupMenuItemItem::KviKvsPopupMenuItemItem(const QString & szItemName, const QString & szCode, const QString & szText, const QString & szIcon, const QString & szCondition)
     : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Item, szItemName, szText, szIcon, szCondition)
 {
@@ -393,8 +385,6 @@ KviKvsScript * KviKvsPopupMenuItemItem::kvsCode()
 {
 	return m_pKvsCode;
 }
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviKvsPopupMenuItemMenu::KviKvsPopupMenuItemMenu(const QString & szItemName, KviKvsPopupMenu * pMenu, const QString & szText, const QString & szIcon, const QString & szCondition)
     : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Menu, szItemName, szText, szIcon, szCondition)
@@ -440,8 +430,6 @@ void KviKvsPopupMenuItemMenu::clear()
 {
 	m_pMenu->clearMenuContents();
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviKvsPopupMenuItemExtMenu::KviKvsPopupMenuItemExtMenu(const QString & szItemName, const QString & szMenuName, const QString & szText, const QString & szIcon, const QString & szCondition)
     : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::ExtMenu, szItemName, szText, szIcon, szCondition)

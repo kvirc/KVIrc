@@ -185,8 +185,6 @@ void KviOptionsWidget::addWidgetToLayout(QWidget * w, int x1, int y1, int x2, in
 		layout()->addWidget(w, y1, x1, (y2 < 0) ? -1 : y2 - y1 + 1, (x2 < 0) ? -1 : x2 - x1 + 1);
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
 KviDirectorySelector * KviOptionsWidget::addDirectorySelector(int x1, int y1, int x2, int y2, const QString & txt, QString * pOption, bool bEnabled)
 {
 	KviDirectorySelector * d = new KviDirectorySelector(this, txt, pOption, bEnabled);
@@ -229,8 +227,6 @@ KviDirectorySelector * KviOptionsWidget::addDirectorySelector(QWidget * pParent,
 	return d;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
 KviFileSelector * KviOptionsWidget::addFileSelector(int x1, int y1, int x2, int y2, const QString & txt, QString * pOption, bool bEnabled)
 {
 	KviFileSelector * d = new KviFileSelector(this, txt, pOption, bEnabled);
@@ -271,8 +267,6 @@ KviFileSelector * KviOptionsWidget::addFileSelector(QWidget * pParent, const QSt
 
 	return d;
 }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviSoundSelector * KviOptionsWidget::addSoundSelector(int x1, int y1, int x2, int y2, const QString & txt, QString * pOption, bool bEnabled)
 {
@@ -315,8 +309,6 @@ KviSoundSelector * KviOptionsWidget::addSoundSelector(QWidget * pParent, const Q
 	return d;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
 KviBoolSelector * KviOptionsWidget::addBoolSelector(int x1, int y1, int x2, int y2, const QString & txt, bool * pOption, bool bEnabled)
 {
 	KviBoolSelector * b = new KviBoolSelector(this, txt, pOption, bEnabled);
@@ -354,8 +346,6 @@ KviBoolSelector * KviOptionsWidget::addBoolSelector(QWidget * pParent, const QSt
 	return d;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
 KviPixmapSelector * KviOptionsWidget::addPixmapSelector(int x1, int y1, int x2, int y2, const QString & txt, KviPixmap * pOption, bool bEnabled)
 {
 	KviPixmapSelector * b = new KviPixmapSelector(this, txt, pOption, bEnabled);
@@ -374,8 +364,6 @@ KviPixmapSelector * KviOptionsWidget::addPixmapSelector(int x1, int y1, int x2, 
 	KviTalToolTip::add(d, tmp);
 	return d;
 }
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviUIntSelector * KviOptionsWidget::addUIntSelector(int x1, int y1, int x2, int y2, const QString & txt,
     unsigned int * pOption, unsigned int uLowBound,
@@ -422,8 +410,6 @@ KviUIntSelector * KviOptionsWidget::addUIntSelector(QWidget * pParent, const QSt
 	return d;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-
 KviUIntSelector * KviOptionsWidget::addUShortIntSelector(int x1, int y1, int x2, int y2, const QString & txt,
     unsigned short int * pOption, unsigned int uLowBound,
     unsigned int uHighBound, unsigned int uDefault, bool bEnabled)
@@ -433,8 +419,6 @@ KviUIntSelector * KviOptionsWidget::addUShortIntSelector(int x1, int y1, int x2,
 	m_pSelectorInterfaceList->append(u);
 	return u;
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviStringSelector * KviOptionsWidget::addStringSelector(int x1, int y1, int x2, int y2, const QString & txt, QString * pOption, bool bEnabled)
 {
@@ -473,8 +457,6 @@ KviStringSelector * KviOptionsWidget::addStringSelector(QWidget * pParent, const
 	return d;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-
 KviPasswordSelector * KviOptionsWidget::addPasswordSelector(int x1, int y1, int x2, int y2, const QString & txt, QString * pOption, bool bEnabled)
 {
 	KviPasswordSelector * d = new KviPasswordSelector(this, txt, pOption, bEnabled);
@@ -512,8 +494,6 @@ KviPasswordSelector * KviOptionsWidget::addPasswordSelector(QWidget * pParent, c
 	return d;
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////
-
 KviStringListSelector * KviOptionsWidget::addStringListSelector(int x1, int y1, int x2, int y2, const QString & txt, QStringList * pOption, bool bEnabled)
 {
 	KviStringListSelector * d = new KviStringListSelector(this, txt, pOption, bEnabled);
@@ -532,8 +512,6 @@ KviStringListSelector * KviOptionsWidget::addStringListSelector(int x1, int y1, 
 	KviTalToolTip::add(d, tmp);
 	return d;
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviColorSelector * KviOptionsWidget::addColorSelector(int x1, int y1, int x2, int y2, const QString & txt, QColor * pOption, bool bEnabled)
 {
@@ -571,8 +549,6 @@ KviColorSelector * KviOptionsWidget::addColorSelector(QWidget * pParent, const Q
 	KviTalToolTip::add(d, tmp);
 	return d;
 }
-
-/////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviMircTextColorSelector * KviOptionsWidget::addMircTextColorSelector(int x1, int y1, int x2, int y2, const QString & txt, unsigned int * uFore, unsigned int * uBack, bool bEnabled)
 {
@@ -612,8 +588,6 @@ KviMircTextColorSelector * KviOptionsWidget::addMircTextColorSelector(QWidget * 
 	KviTalToolTip::add(d, tmp);
 	return d;
 }
-
-////////////////////////////////////////////////////////////////////////////////////////////////
 
 KviFontSelector * KviOptionsWidget::addFontSelector(int x1, int y1, int x2, int y2, const QString & txt, QFont * pOption, bool bEnabled)
 {
