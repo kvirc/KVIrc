@@ -55,15 +55,13 @@ OptionsWidget_uparser::OptionsWidget_uparser(QWidget * parent)
 	                        "also in the special debug window. This makes tracking of scripts that might "
 	                        "be running in several windows far easier. The messages in the debug window "
 	                        "also contain a deeper call stack which will help you to identify the "
-	                        "scripting problems.",
-	                "options"));
+	                        "scripting problems.", "options"));
 
 	b1 = addBoolSelector(0, 9, 0, 9, __tr2qs_ctx("Create debug window without focus", "options"), KviOption_boolShowMinimizedDebugWindow);
 	mergeTip(b1, __tr2qs_ctx("This option prevents the debug window "
 	                         "from opening and diverting application focus.<br>"
 	                         "Enable this if you don't like the debug window "
-	                         "popping up while you're typing something in a channel.",
-	                 "options"));
+	                         "popping up while you're typing something in a channel.", "options"));
 
 	addRowSpacer(0, 10, 0, 10);
 }
