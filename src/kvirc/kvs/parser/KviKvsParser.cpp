@@ -1739,21 +1739,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 */
 
 /*
-	@doc: command_rebinding
-	@type:
-		language
-	@keyterms:
-		Not supported
-	@title:
-		Standard -r switch no longer supported
-	@short:
-		Standard -r switch no longer supported
-	@body:
-		Starting from version 3.0.0, the standard -r switch to commands is no longer supported.
-		You should rebind your command sequences with [cmd]rebind[/cmd]
-*/
-
-/*
 	@doc: kvs_datatypes
 	@type:
 		language
@@ -1897,7 +1882,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[br]
 		[note]
 		[br]
-			[big]Food for thoughts:[/big]
+			[big]Food for thought:[/big]
 			KVIrc allocates a pointer for each item in the array. The pointer is
 			empty when the item is unset and points to an additional block
 			of memory when the item is set. The size of a pointer is platform
@@ -2658,7 +2643,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseInstruction()
 			}
 			break;
 	}
-
 	// never here
 	KVSP_ASSERT(false);
 	return nullptr;
