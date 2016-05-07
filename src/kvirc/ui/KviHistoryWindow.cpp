@@ -113,6 +113,7 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent * e)
 			doHide();
 			return;
 			break;
+	}
 
 	if(m_pOwner)
 		g_pApp->sendEvent(m_pOwner, e);
