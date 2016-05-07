@@ -775,22 +775,44 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 			case KviWindow::Debug:
 				eIcon = KviIconManager::Bomb;
 				break;
-			//KviWindow::DeadChannel
-			//KviWindow::DeadQuery
-			//KviWindow::Editor
-			//KviWindow::Help
-			//KviWindow::Terminal
-			//KviWindow::Links
-			//KviWindow::List
-			//KviWindow::DccCanvas
-			//KviWindow::DccVoice
-			//KviWindow::DccVideo
-			//KviWindow::Tool
-			//KviWindow::IOGraph
-			//KviWindow::ScriptEditor
-			//KviWindow::ScriptObject
-			//KviWindow::LogView
-			//KviWindow::Offer
+			case KviWindow::DeadChannel:
+				eIcon = KviIconManager::DeadChannel;
+				break;
+			case KviWindow::DeadQuery:
+				eIcon = KviIconManager::DeadQuery;
+				break;
+			case KviWindow::Editor:
+				eIcon = KviIconManager::Editor;
+				break;
+			case KviWindow::Terminal:
+				eIcon = KviIconManager::Terminal;
+				break;
+			case KviWindow::Links:
+				eIcon = KviIconManager::Links;
+				break;
+			case KviWindow::List:
+				eIcon = KviIconManager::List;
+				break;
+			//KviWindow::DccCanvas:
+			case KviWindow::DccVoice:
+				eIcon = KviIconManager::DccVoice;
+				break;
+			//KviWindow::DccVideo:
+			case KviWindow::Tool:
+				eIcon = KviIconManager::Tools;
+				break;
+			case KviWindow::IOGraph:
+				eIcon = KviIconManager::SysMonitor;
+				break;
+			//KviWindow::DirBrowser
+			case KviWindow::ScriptEditor:
+				eIcon = KviIconManager::ScriptCenter;
+				break;
+			//KviWindow::ScriptObject:
+			case KviWindow::LogView:
+				eIcon = KviIconManager::Log;
+				break;
+			//KviWindow::Offer:
 			case KviWindow::Unknown:
 			default:
 				eIcon = KviIconManager::KVIrc;
