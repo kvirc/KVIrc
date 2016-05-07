@@ -491,7 +491,6 @@ void KviApplication::setup()
 void KviApplication::frameDestructorCallback()
 {
 	// here we should kill anything that depends on g_pMainWindow, g_pActiveWindow and related being non zero...
-
 	// kill all the objects, while we have windows...
 	if(KviKvsKernel::instance())
 	{
@@ -615,7 +614,6 @@ KviApplication::~KviApplication()
 #endif
 
 	KviLocale::done();
-
 	// goodbye cruel world...
 }
 

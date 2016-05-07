@@ -399,26 +399,6 @@ bool KviRegisteredUserDataBase::removeMaskByPointer(KviIrcMask * mask)
 	return false;
 }
 
-/*
-KviRegisteredUser * KviRegisteredUserDataBase::findMatchingUser(const KviIrcMask &mask)
-{
-	// first lookup the nickname in the maskDict
-	KviRegisteredUserMaskList * l = m_pMaskDict->find(mask.nick());
-	if(l)
-	{
-		for(KviRegisteredUserMask *m = l->first();m;m = l->next())
-		{
-			if(m->mask()->matchesFixed(0,mask.user(),mask.host()))return m->user();
-		}
-	}
-	// not found....lookup the wild ones
-	for(KviRegisteredUserMask * m = m_pWildMaskList->first();m;m = m_pWildMaskList->next())
-	{
-		if(m->mask()->matchesFixed(mask))return m->user();
-	}
-	return 0; // no match at all
-}
-*/
 KviRegisteredUser * KviRegisteredUserDataBase::findMatchingUser(const QString & nick, const QString & user, const QString & host)
 {
 	KviRegisteredUserMask * m = findMatchingMask(nick, user, host);
@@ -480,14 +460,7 @@ KviRegisteredUserMask * KviRegisteredUserDataBase::findExactMask(const KviIrcMas
 	}
 	return nullptr; // no match at all
 }
-/*
-bool KviRegisteredUserDataBase::isIgnoredUser(const QString & nick,const QString & user,const QString & host)
-{
-	KviRegisteredUser * u = findMatchingUser(nick,user,host);
-	if(u)return u->getBoolProperty("IGNORE");
-	else return false;
-}
-*/
+
 void KviRegisteredUserDataBase::load(const QString & filename)
 {
 	QString szCurrent;

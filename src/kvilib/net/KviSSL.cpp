@@ -390,7 +390,7 @@ static int cb(char * buf, int size, int, void * u)
 	if(len >= size)
 		return 0;
 	KviMemory::move(buf, p->ptr(), len + 1);
-	//	qDebug("PASS REQYESTED: %s",p->ptr());
+	//qDebug("PASS REQYESTED: %s",p->ptr());
 	return len;
 }
 
@@ -411,7 +411,7 @@ KviSSL::Result KviSSL::useCertificateFile(QString cert, QString pass)
 	if(!f)
 		return FileIoError;
 
-	//	qDebug("READING CERTIFICATE %s",cert.Utf8().data());
+	//qDebug("READING CERTIFICATE %s",cert.Utf8().data());
 	if(PEM_read_X509(f, &x509, cb, &m_szPass))
 	{
 		if(!SSL_CTX_use_certificate(m_pSSLCtx, x509))
@@ -445,7 +445,7 @@ KviSSL::Result KviSSL::usePrivateKeyFile(QString key, QString pass)
 	if(!f)
 		return FileIoError;
 
-	//	qDebug("READING KEY %s",key.toUtf8().data());
+	//qDebug("READING KEY %s",key.toUtf8().data());
 	if(PEM_read_PrivateKey(f, &k, cb, &m_szPass))
 	{
 		if(!SSL_CTX_use_PrivateKey(m_pSSLCtx, k))
@@ -534,12 +534,10 @@ KviSSL::Result KviSSL::connectOrAcceptError(int ret)
 
 int KviSSL::read(char * buffer, int len)
 {
-	//	if(!m_pSSL)return -1;
 	return SSL_read(m_pSSL, buffer, len);
 }
 int KviSSL::write(const char * buffer, int len)
 {
-	//	if(!m_pSSL)return -1;
 	return SSL_write(m_pSSL, buffer, len);
 }
 
@@ -696,8 +694,8 @@ int KviSSLCertificate::fingerprintDigestId()
 	int NID = OBJ_obj2nid(m_pX509->sig_alg->algorithm);
 	if(NID == NID_undef)
 	{
-		// unknown digest function: it means the signature can't be verified: the certificate can't be trusted
-		return 0;
+		return 0; // unknown digest function: it means the signature can't be verified: the certificate can't be trusted
+
 	}
 
 	const EVP_MD * mdType = nullptr;
@@ -705,8 +703,7 @@ int KviSSLCertificate::fingerprintDigestId()
 
 	if(mdType == nullptr)
 	{
-		// Unknown digest
-		return 0;
+		return 0; // Unknown digest
 	}
 
 	return mdType->type;
@@ -729,8 +726,7 @@ const char * KviSSLCertificate::fingerprintContents(QString digestName)
 	const char * pDigestName;
 	if(digestName.isEmpty())
 	{
-		// use the one used to create the signature
-		pDigestName = OBJ_nid2sn(fingerprintDigestId());
+		pDigestName = OBJ_nid2sn(fingerprintDigestId()); // use the one used to create the signature
 	}
 	else
 	{
@@ -756,8 +752,7 @@ int KviSSLCertificate::getFingerprint(unsigned char * bufferData, unsigned int *
 
 	if(mdType == nullptr)
 	{
-		// Unknown digest
-		return -98;
+		return -98; // Unknown digest
 	}
 
 	if(!X509_digest(m_pX509, mdType, bufferData, bufferLen))
@@ -824,25 +819,6 @@ const char * KviSSLCertificate::dictEntry(KviPointerHashTable<const char *, KviC
 	return t->ptr();
 }
 
-/*
-void KviSSLCertificate::getPKeyType(int type,KviCString &buffer)
-{
-	switch(type)
-	{
-#ifndef NO_RSA
-		case EVP_PKEY_RSA:   buffer = "RSA";     break;
-#endif
-#ifndef NO_DSA
-		case EVP_PKEY_DSA:   buffer = "DSA";     break;
-#endif
-#ifndef NO_DH
-		case EVP_PKEY_DH:    buffer = "DH";      break;
-#endif
-		case EVP_PKEY_NONE:  buffer = "NONE";    break;
-	}
-}
-*/
-
 void KviSSLCertificate::extractPubKeyInfo()
 {
 	EVP_PKEY * p = X509_get_pubkey(m_pX509);
@@ -872,8 +848,6 @@ void KviSSLCertificate::extractSignature()
 {
 	static char hexdigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
-	//getPKeyType(X509_get_signature_type(m_pX509),m_szSignatureType);
-
 	int i = OBJ_obj2nid(m_pX509->sig_alg->algorithm);
 	m_szSignatureType = (i == NID_undef) ? __tr("Unknown") : OBJ_nid2ln(i);
 
@@ -887,13 +861,6 @@ void KviSSLCertificate::extractSignature()
 		m_szSignatureContents.append(hexdigits[(m_pX509->signature->data[i] & 0x0f)]);
 	}
 }
-
-/*
-const char * KviSSLCertificate::verify()
-{
-
-}
-*/
 
 #if OPENSSL_VERSION_NUMBER >= 0x10000000L
 KviSSLCipherInfo::KviSSLCipherInfo(const SSL_CIPHER * c, const SSL * s)

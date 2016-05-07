@@ -246,18 +246,3 @@ QSize KviParameterList::getSize(bool * bOk)
 		*bOk = true;
 	return QSize(val[0], val[1]);
 }
-
-//#ifdef COMPILE_ON_WINDOWS
-//
-//	#include "KviMemory.h"
-//
-//	void * KviParameterList::operator new(size_t tSize)
-//	{
-//		return KviMemory::allocate(tSize);
-//	}
-//
-//	void KviParameterList::operator delete(void * p)
-//	{
-//		KviMemory::free(p);
-//	}
-//#endif

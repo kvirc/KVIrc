@@ -805,9 +805,6 @@ void KviApplication::setupBegin()
 #endif
 	}
 
-	// Now save it
-	//Let it be done by setup function
-	//	saveKvircDirectory();
 }
 
 void KviApplication::setupFinish()

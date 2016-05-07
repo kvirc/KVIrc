@@ -1959,13 +1959,6 @@ void KviIrcServerParser::parseLiteralMode(KviIrcMessage * msg)
 	QString szNick, szUser, szHost;
 	msg->decodeAndSplitPrefix(szNick, szUser, szHost);
 
-	//	if(!source.hasHost())
-	//	{
-	//		// This is a server or a channel service
-	//		KviCString snick = source.nick();
-	//		if(snick.contains('.'))source.setHost(source.nick()); // this is a server
-	//	}
-
 	QString szTarget = msg->connection()->decodeText(msg->safeParam(0));
 	KviCString modefl(msg->safeParam(1));
 
@@ -1999,8 +1992,6 @@ void KviIrcServerParser::parseChannelMode(const QString & szNick, const QString 
 {
 	bool bSet = true;
 
-	// bIsMultiMode: +snt
-	// bIsMultiSingleMode: +ooo
 	bool bIsMultiMode = false;
 	bool bIsMultiSingleMode = false;
 	bool bShowAsCompact = false;
@@ -2415,7 +2406,7 @@ void KviIrcServerParser::parseChannelMode(const QString & szNick, const QString 
 				else if(msg->connection()->serverInfo()->supportedParameterModes().contains(*aux)
 				    || (msg->connection()->serverInfo()->supportedParameterWhenSetModes().contains(*aux) && bSet))
 				{
-					/*
+				/*
 				 * Examples:
 				 * flood mode with parameter like "[5m#M4]:5", see bug #505
 				 * Channel join throttling like "4:5", see bug #731
@@ -2443,7 +2434,7 @@ void KviIrcServerParser::parseChannelMode(const QString & szNick, const QString 
 				}
 				else if(msg->connection()->serverInfo()->isSupportedModeFlag(*aux))
 				{
-					/*
+				/*
 				 * A custom mode prefix, like inspircd's  +y => !
 				 * We need to correctly echo it, and be sure it doesn't
 				 * get confused as a channel mode

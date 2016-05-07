@@ -37,9 +37,9 @@
 #include <zlib.h>
 #endif
 
-//
+//////////////////////////////////////////////////////////////////////////////////////
 // See KviPackageIOEngine.cpp for the description of the KVIrc package file
-//
+//////////////////////////////////////////////////////////////////////////////////////
 
 class KviPackageWriterDataField
 {
@@ -278,7 +278,6 @@ bool KviPackageWriter::packFile(KviFile * pFile, KviPackageWriterDataField * pDa
 				}
 			}
 		}
-
 		// flush pending output
 		zstr.next_out = obuffer;
 		zstr.avail_out = BUFFER_SIZE;
@@ -387,7 +386,6 @@ bool KviPackageWriter::packInternal(const QString & szFileName, kvi_u32_t)
 	}
 
 	// write the PackageHeader
-
 	// Magic
 	char magic[4];
 	magic[0] = 'K';
@@ -408,7 +406,6 @@ bool KviPackageWriter::packInternal(const QString & szFileName, kvi_u32_t)
 		return writeError();
 
 	// write PackageInfo
-
 	// InfoFieldCount
 	kvi_u32_t uCount = stringInfoFields()->count() + binaryInfoFields()->count();
 	if(!f.save(uCount))

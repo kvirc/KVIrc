@@ -27,34 +27,6 @@
 #include "KviAntiSpam.h"
 #include "KviOptions.h"
 
-//[05:10:48] <Nataly19> :2http://www.extrababes.com5Go ahead punk, make my day !
-//[05:11:04] <treeman>  :-ææ¸`ææ¸`ææ¸ -= for mp3's go to http://members.xoom.com/treemansmp3/start.htm
-//						=- `ææ¸`ææ¸`ææ-
-//[05:10:51] <Suzi48498>:P*** **** squirms like CRAZY when **** licks between her ...
-//[05:12:11] <dea_>     :Hi my name is **** and I just posted pics of myself and
-//						other hot girls on my website at http://133.16.114.32/~guest/
-//						tell me what you think!
-//[15:18:37] <JuL|aN^bZ> Join #Teens4eva...Have Fun PPl!!!
-//[15:19:37] <jkhnbn> Ciao, vai sul sito  www.sitromba.3000.it ci sono un casino di
-//						immagini e video porno gratisssssssssssssssss!!!!!
-//[15:19:46] <emjot``> zapraszam na kanal #poke super zabawa i opa za free !!!!!
-//[15:23:20] <AlExXxX> IMPORTANTE: Se cerchi foto e video HARD andate quì:
-//						http://216.221.175.58/cgi-bin/affiliate/ad.cgi?id=m4rines [automsg]
-//[15:23:36] <Jane> hi..join #hard sex channel --Venom ScRipT³-- SToRM iN THe DaRK!!
-//[15:23:47] <lovghgh> VISIT>> http://go.to/mp3andwarez/ << VISIT[15:23:47] <lovghgh> VISIT>> http://go.to/mp3andwarez/ << VISIT
-//[15:23:56] <PIMPOLO> HO le prove certe che si puo' far soldi dovendo solo ricevere sms pubblicitari sul cellulare.
-//						Mi sono arrivati sms pubblicitari!!! Ti interessa ? ISCRIVITI CLICCANDO DIRETTAMENTE SU QUESTO SITO:
-//						http://www.smscash.it/index.php3?pagid=reg&p_form=P&p_pres=0&cpre=95620&p_desc=1 (Messaggio Automatico) IR©Simpson
-
-// Yes...it is really annoying when I join a channel and
-// i am flooded with all that messages.
-// On large-newbie-high-traffic channels I get lagged
-// with the Query windows popping up with all that stuff.
-// What I can do ? Ignore queries ?
-// mmmmh
-//
-// kvi_mayBeSpam : try to guess if text may be a spam message.
-// Ideas:
 // - A spam message is generally a single PRIVMSG <mynick> :<text>
 //		so this function should be (and is) called when
 //		a PRIVMSG is received from a person that has no QUERY
@@ -65,15 +37,6 @@
 //   free, mp3, sex, teen, porn, pics, girls, babe, pass, user..., hard, join
 //
 // In this way we can get rid of a good 70% of spam msgs.
-
-// Just a minor change. This allows to easily add more "banned" words.
-// Maybe there should be a config dialog for that ? Some people like to get
-// porno pics, but don't like mp3's for example ... ;-)))
-// -- Kristoff
-
-// Ok...made this completely configurable....
-// The default spam words get "installed" by the default script
-// 09-01-2001: Pragma
 
 /*
 	@doc: antispam
@@ -107,7 +70,6 @@ bool kvi_mayBeSpam(KviCString * msg, KviCString & spamWord)
 	for(auto & it : KVI_OPTION_STRINGLIST(KviOption_stringlistSpamWords))
 	{
 		// FIXME : This is SLOOOOOOOOW (QString -> ascii translation!!)
-
 		const char * aux = it.toLatin1();
 		if(aux)
 		{

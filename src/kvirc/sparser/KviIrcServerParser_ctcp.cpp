@@ -369,14 +369,16 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		[b]Syntax: <0x01>DCC <type> <type dependent parameters><0x01>[/b][br]
 		The DCC tag is used to initiate a Direct Client Connection.
 		The known DCC types are:[br]
+		[pre]
 			CHAT[br]
 			SEND[br]
+			SSEND[br]
 			TSEND[br]
 			GET[br]
 			TGET[br]
 			ACCEPT[br]
 			RESUME[br]
-
+		[/pre]
 */
 
 void KviIrcServerParser::encodeCtcpParameter(const char * param, KviCString & buffer, bool bSpaceBreaks)
@@ -461,10 +463,8 @@ void KviIrcServerParser::encodeCtcpParameter(const char * param, KviCString & bu
 
 void KviIrcServerParser::encodeCtcpParameter(const char * parametr, QString & resultBuffer, bool bSpaceBreaks)
 {
-	//
 	// This one encodes a single ctcp parameter with the simplest
 	// subset of rules and places it in the supplied buffer
-	//
 	QByteArray buffer;
 	const char * param = parametr;
 	if(!param)
@@ -528,7 +528,6 @@ void KviIrcServerParser::encodeCtcpParameter(const char * parametr, QString & re
 
 const char * KviIrcServerParser::decodeCtcpEscape(const char * msg_ptr, KviCString & buffer)
 {
-	//
 	// This one decodes an octal sequence
 	// and returns the pointer "just after it".
 	// It should be called when *msg_ptr points
@@ -536,7 +535,6 @@ const char * KviIrcServerParser::decodeCtcpEscape(const char * msg_ptr, KviCStri
 	// The decoded escape is appended to the buffer
 	//
 	// We're also assuming that *msg_ptr is not null here
-	//
 	if((*msg_ptr >= '0') && (*msg_ptr < '8'))
 	{
 		// a digit follows the backslash */
@@ -551,7 +549,7 @@ const char * KviIrcServerParser::decodeCtcpEscape(const char * msg_ptr, KviCStri
 				c = ((c << 3) + (*msg_ptr - '0'));
 				msg_ptr++;
 			} // else broken message, but let's be flexible
-		}     // else it is broken, but let's be flexible
+		}         // else it is broken, but let's be flexible
 		buffer.append(c);
 		return msg_ptr;
 	}
@@ -568,10 +566,8 @@ const char * KviIrcServerParser::decodeCtcpEscape(const char * msg_ptr, KviCStri
 		return ++msg_ptr;
 	}
 
-	//
 	// null escape: just append the following
 	// character (thus discarding its semantics)
-	//
 
 	buffer.append(msg_ptr);
 	return ++msg_ptr;
@@ -579,7 +575,6 @@ const char * KviIrcServerParser::decodeCtcpEscape(const char * msg_ptr, KviCStri
 
 const char * KviIrcServerParser::decodeCtcpEscape(const char * msg_ptr, QByteArray & buffer)
 {
-	//
 	// This one decodes an octal sequence
 	// and returns the pointer "just after it".
 	// It should be called when *msg_ptr points
@@ -587,7 +582,6 @@ const char * KviIrcServerParser::decodeCtcpEscape(const char * msg_ptr, QByteArr
 	// The decoded escape is appended to the buffer
 	//
 	// We're also assuming that *msg_ptr is not null here
-	//
 	if((*msg_ptr >= '0') && (*msg_ptr < '8'))
 	{
 		// a digit follows the backslash */
@@ -617,10 +611,9 @@ const char * KviIrcServerParser::decodeCtcpEscape(const char * msg_ptr, QByteArr
 		buffer += '\n';
 		return ++msg_ptr;
 	}
-	//
+
 	// null escape: just append the following
 	// character (thus discarding its semantics)
-	//
 
 	buffer += *msg_ptr;
 	return ++msg_ptr;
@@ -628,7 +621,6 @@ const char * KviIrcServerParser::decodeCtcpEscape(const char * msg_ptr, QByteArr
 
 const char * KviIrcServerParser::extractCtcpParameter(const char * msg_ptr, KviCString & buffer, bool bSpaceBreaks, bool bSafeOnly)
 {
-	//
 	// This one extracts the "next" ctcp parameter in msg_ptr
 	// and puts it in the supplied buffer.
 	// It is assumed that the leading and trailing CTCP
@@ -637,7 +629,6 @@ const char * KviIrcServerParser::extractCtcpParameter(const char * msg_ptr, KviC
 	// bSpaceBreaks should be set to false if (and only if) the
 	// extracted parameter is the last in a positional parameter
 	// based CTCP message.
-	//
 
 	if(!msg_ptr)
 		return nullptr;
@@ -729,7 +720,6 @@ const char * KviIrcServerParser::extractCtcpParameter(const char * msg_ptr, KviC
 
 const char * KviIrcServerParser::extractCtcpParameter(const char * p_msg_ptr, QString & resultBuffer, bool bSpaceBreaks, bool bSafeOnly)
 {
-	//
 	// This one extracts the "next" ctcp parameter in p_msg_ptr
 	// and puts it in the supplied buffer.
 	// It is assumed that the leading and trailing CTCP
@@ -738,7 +728,6 @@ const char * KviIrcServerParser::extractCtcpParameter(const char * p_msg_ptr, QS
 	// bSpaceBreaks should be set to false if (and only if) the
 	// extracted parameter is the last in a positional parameter
 	// based CTCP message.
-	//
 
 	QByteArray buffer;
 	const char * msg_ptr = p_msg_ptr;
@@ -1150,9 +1139,6 @@ void KviIrcServerParser::parseCtcpReplyPing(KviCtcpMessage * msg)
 
 		unsigned int uDiffSecs = tv.tv_sec - uSecs;
 
-		//unsigned int uDiffMSecs = ((((unsigned int)tv.tv_usec) - uMSecs) / 1000) % 1000;
-		//if ((uMSecs  / 1000000) <= uDiffSecs) uDiffSecs -= (uMSecs  / 1000000)
-
 		while(uMSecs > 1000000)
 			uMSecs /= 10; // precision too high?
 		if(((unsigned int)tv.tv_usec) < uMSecs)
@@ -1194,7 +1180,6 @@ void KviIrcServerParser::parseCtcpRequestVersion(KviCtcpMessage * msg)
 #else
 			szVersion.append(QString(" - %1 (%2)").arg(KviRuntimeInfo::name(), KviRuntimeInfo::release()));
 #endif
-			//szVersion.append(QString(" - QT Version: %1 - %2").arg(qVersion(), __tr2qs("http://www.kvirc.net/")));
 			if(!KVI_OPTION_STRING(KviOption_stringCtcpVersionPostfix).isEmpty())
 			{
 				QString sz = KVI_OPTION_STRING(KviOption_stringCtcpVersionPostfix);
@@ -1583,7 +1568,6 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 }
 
 // FIXME: #warning "UTSNAME ?...AND OTHER INFO ?...SYSTEM IDLE TIME ?...KVIRC IDLE TIME ?"
-
 void KviIrcServerParser::parseCtcpRequestAvatar(KviCtcpMessage * msg)
 {
 	// AVATAR
@@ -1850,19 +1834,6 @@ void KviIrcServerParser::parseCtcpRequestDcc(KviCtcpMessage * msg)
 			return;
 		}
 	}
-
-	/*if(KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpDcc))
-	{
-		if(!msg->msg->haltOutput())
-		{
-			msg->msg->console()->output(KVI_OUT_DCCREQUEST,
-				__tr2qs("Ignoring DCC %S request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q %S)"),
-				&p.szType,&(msg->pSource->nick()),
-				&(msg->pSource->user()),&(msg->pSource->host()),
-				&msg->szTag,&aux);
-		}
-		return;
-	}*/
 
 	bool bIsFlood = checkCtcpFlood(msg);
 

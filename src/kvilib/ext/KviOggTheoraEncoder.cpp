@@ -212,7 +212,6 @@ KviOggTheoraEncoder::~KviOggTheoraEncoder()
 	th_encode_free(td);
 
 	// clear out state
-
 	ogg_stream_clear(&to);
 	th_comment_clear(&tc);
 
@@ -231,7 +230,7 @@ void KviOggTheoraEncoder::addVideoFrame(QRgb * rgb32, int)
 		videoYuv = new quint8[geometry.pic_w * geometry.pic_h * YUV444_BPP];
 
 	rgb32toyuv444(rgb32, videoYuv, geometry.pic_w, geometry.pic_h);
-	//	qDebug("addFrame p%p size%d yuv%p",rgb32,videoSize,videoYuv);
+	//qDebug("addFrame p%p size%d yuv%p",rgb32,videoSize,videoYuv);
 
 	ogg_page videopage;
 
@@ -263,7 +262,6 @@ void KviOggTheoraEncoder::addTextFrame(unsigned char * textPkt, int textSize)
 	ogg_stream_pageout(&zo, &textpage);
 
 	// no pages?  Must be end of stream.
-	// 	if(!textflag) return;
 
 	m_pStream->append(textpage.header, textpage.header_len);
 	m_pStream->append(textpage.body, textpage.body_len);

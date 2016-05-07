@@ -101,7 +101,7 @@ namespace KviNickColors
 				if(!g_nickColors[i][numc] && !comb[numc])
 				{
 					//exact match
-					// 					qDebug("Exact match %s",g_nickColors[i]);
+					//qDebug("Exact match %s",g_nickColors[i]);
 					KviMemory::free(comb);
 					return i;
 				}
@@ -119,7 +119,7 @@ namespace KviNickColors
 		}
 		KviMemory::free(comb);
 		//no exact match
-		// 		qDebug("Best match %s",g_nickColors[iBestMatch]);
+		//qDebug("Best match %s",g_nickColors[iBestMatch]);
 		return iBestMatch;
 	}
 }

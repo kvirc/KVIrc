@@ -611,13 +611,6 @@ bool KviApplication::findSmallIcon(QString & szRetPath, const QString & filename
 	// this is a bit optimized for the small builtin icons
 	// looks up less places.
 
-	//if(kvi_isAbsolutePath(filename))
-	//{
-	// BUG!.. we should never
-	//szRetPath=filename;
-	//return KviFileUtils::fileExists(filename);
-	//}
-
 	// if we have a theme, look it up as first
 	if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
 	{
@@ -717,6 +710,6 @@ bool KviApplication::getReadOnlyConfigPath(QString & buffer, const char * config
 		}
 		else
 			buffer = tmp; // get the defaults this time
-	}                     // else file exists...
+	}                             // else file exists...
 	return true;
 }

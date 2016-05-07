@@ -77,7 +77,6 @@ KviActionManager::~KviActionManager()
 	// the customizeToolBars dialog has been already
 	// destroyed since the module manager has already
 	// killed all the modules at this point...
-	//KviActionDialog::cleanup();
 
 	KviPointerHashTableIterator<QString, KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())

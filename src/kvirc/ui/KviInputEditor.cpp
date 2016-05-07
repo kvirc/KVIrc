@@ -1920,24 +1920,24 @@ void KviInputEditor::installShortcuts()
 	KviShortcut::create(KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE, this, SLOT(scrollToLastReadLine()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_PLAIN, this, SLOT(sendPlain()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_PLAIN_2, this, SLOT(sendPlain()), nullptr, Qt::WidgetShortcut);
-	// 	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_KVS,this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
-	// 	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_KVS_2,this,SLOT(sendKvs()),0,Qt::WidgetShortcut);
+	//KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_KVS,this,SLOT(sendKvs()),nullptr,Qt::WidgetShortcut);
+	//KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_KVS_2,this,SLOT(sendKvs()),nullptr,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_HOME, this, SLOT(homeInternal()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_END, this, SLOT(endInternal()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_HOME_SELECT, this, SLOT(homeInternalSelection()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_END_SELECT, this, SLOT(endInternalSelection()), nullptr, Qt::WidgetShortcut);
-	//KviShortcut::create(KVI_SHORTCUTS_INPUT_RETURN,this,SLOT(returnHit()),0,Qt::WidgetShortcut);
-	//KviShortcut::create(KVI_SHORTCUTS_INPUT_RETURN_2,this,SLOT(returnHit()),0,Qt::WidgetShortcut);
-	//KviShortcut::create(KVI_SHORTCUTS_INPUT_BACKSPACE,this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
-	//KviShortcut::create(KVI_SHORTCUTS_INPUT_BACKSPACE_2,this,SLOT(backspaceHit()),0,Qt::WidgetShortcut);
-	//KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE,this,SLOT(deleteHit()),0,Qt::WidgetShortcut);
+	//KviShortcut::create(KVI_SHORTCUTS_INPUT_RETURN,this,SLOT(returnHit()),nullptr,Qt::WidgetShortcut);
+	//KviShortcut::create(KVI_SHORTCUTS_INPUT_RETURN_2,this,SLOT(returnHit()),nullptr,Qt::WidgetShortcut);
+	//KviShortcut::create(KVI_SHORTCUTS_INPUT_BACKSPACE,this,SLOT(backspaceHit()),nullptr,Qt::WidgetShortcut);
+	//KviShortcut::create(KVI_SHORTCUTS_INPUT_BACKSPACE_2,this,SLOT(backspaceHit()),nullptr,Qt::WidgetShortcut);
+	//KviShortcut::create(KVI_SHORTCUTS_INPUT_DELETE,this,SLOT(deleteHit()),nullptr,Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_ESCAPE, this, SLOT(escapeHit()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_COMMANDLINE, this, SLOT(toggleCommandMode()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_DUMMY, this, SLOT(dummy()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_IN, this, SLOT(zoomIn()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_OUT, this, SLOT(zoomOut()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_CORRECT_SPELLING, this, SLOT(showSpellCheckerCorrectionsPopup()), nullptr, Qt::WidgetShortcut);
-	// this is currently ambigous, since we're using it for scripting, too
+	// this is currently ambiguous, since we're using it for scripting, too
 	KviShortcut::create(KVI_SHORTCUTS_WIN_ZOOM_DEFAULT, this, SLOT(zoomDefault()), SLOT(zoomDefault()), Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_MENU, this, SLOT(showContextPopupHere()), nullptr, Qt::WidgetShortcut);
 }
@@ -2010,8 +2010,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 		{
 			case Qt::Key_J:
 			{
-				//avoid Ctrl+J from inserting a linefeed
-				break;
+				break; //avoid Ctrl+J from inserting a linefeed
 			}
 			default:
 				if(!m_bReadOnly)
@@ -2275,8 +2274,7 @@ void KviInputEditor::completion(bool bShift)
 
 			if(bInCommand && !bIsCommand)
 			{
-				// escape crazy things like Nick\nquit
-				completionEscapeUnsafeToken(szMatch);
+				completionEscapeUnsafeToken(szMatch); // escape crazy things like Nick\nquit
 			}
 		}
 		else
@@ -2351,8 +2349,7 @@ void KviInputEditor::standardNickCompletionInsertCompletedText(const QString & s
 	}
 	if(bInCommand)
 	{
-		// escape crazy things like Nick\nquit
-		completionEscapeUnsafeToken(szBuffer);
+		completionEscapeUnsafeToken(szBuffer); // escape crazy things like Nick\nquit
 	}
 	replaceWordBeforeCursor(szReplacedWord, szBuffer, false);
 }
@@ -3229,8 +3226,7 @@ void KviInputEditor::homeInternalSelection()
 
 	if((m_iSelectionBegin == -1) && (m_iSelectionEnd == -1))
 	{
-		// There is no selection
-		m_iSelectionEnd = m_iCursorPosition;
+		m_iSelectionEnd = m_iCursorPosition; // There is no selection
 	}
 	else
 	{
@@ -3256,13 +3252,11 @@ void KviInputEditor::endInternalSelection()
 {
 	if((m_iSelectionBegin == -1) && (m_iSelectionEnd == -1))
 	{
-		// There is no selection
-		m_iSelectionBegin = m_iCursorPosition;
+		m_iSelectionBegin = m_iCursorPosition; // There is no selection
 	}
 	else
 	{
-		// There is selection
-		m_iSelectionBegin = m_iSelectionEnd;
+		m_iSelectionBegin = m_iSelectionEnd; // There is no selection
 	}
 
 	m_iSelectionEnd = m_szTextBuffer.length();

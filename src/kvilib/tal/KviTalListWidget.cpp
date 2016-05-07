@@ -90,12 +90,6 @@ KviTalListWidgetText::KviTalListWidgetText(const QString & text)
 {
 	setText(text);
 }
-/*
-KviTalListWidgetText::KviTalListWidgetText(KviTalListWidget* listbox, const QString &text, KviTalListWidgetItem *after)
-: KviTalListWidgetItem(listbox, after)
-{
-	setText(text);
-}*/
 
 KviTalListWidgetText::~KviTalListWidgetText()
     = default;
@@ -137,12 +131,6 @@ KviTalListWidgetPixmap::KviTalListWidgetPixmap(const QPixmap & pixmap)
 	pm = pixmap;
 }
 
-// KviTalListWidgetPixmap::KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap &pixmap, KviTalListWidgetItem *after)
-// : KviTalListWidgetItem(listbox, after)
-// {
-// 	pm = pixmap;
-// }
-
 KviTalListWidgetPixmap::~KviTalListWidgetPixmap()
     = default;
 
@@ -160,13 +148,6 @@ KviTalListWidgetPixmap::KviTalListWidgetPixmap(const QPixmap & pix, const QStrin
 	pm = pix;
 	setText(text);
 }
-
-// KviTalListWidgetPixmap::KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap & pix, const QString& text,KviTalListWidgetItem *after)
-// : KviTalListWidgetItem(listbox, after)
-// {
-// 	pm = pix;
-// 	setText(text);
-// }
 
 void KviTalListWidgetPixmap::paint(QPainter * painter)
 {

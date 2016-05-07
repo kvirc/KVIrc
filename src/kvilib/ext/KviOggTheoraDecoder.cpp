@@ -47,7 +47,6 @@
 
 using namespace KviOggIrcText;
 
-//------------------------------------------------------------------------------
 #define OC_CLAMP255(_x) ((unsigned char)((((_x) < 0) - 1) & ((_x) | -((_x) > 255))))
 
 KviOggTheoraDecoder::KviOggTheoraDecoder(KviDataBuffer * videoSignal, KviDataBuffer * textSignal)
@@ -105,7 +104,7 @@ KviOggTheoraDecoder::~KviOggTheoraDecoder()
 
 void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 {
-	// 	qDebug("adddata signal %p stream size %d",m_pVideoSignal, stream->size() );
+	//qDebug("adddata signal %p stream size %d",m_pVideoSignal, stream->size() );
 	if(stream->size() == 0)
 		return;
 	/* Ogg file open; parse the headers */
@@ -126,7 +125,7 @@ void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 			if(!ogg_page_bos(&og))
 			{
 				/* don't leak the page; get it into the appropriate stream */
-				// 				qDebug("queue_page && return");
+				//qDebug("queue_page && return");
 				queue_page(&og);
 				stateflag = 1;
 				return;
@@ -153,7 +152,7 @@ void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 			}
 			else
 			{
-				// 				qDebug("is other");
+				//qDebug("is other");
 				/* whatever it is, we don't care about it */
 				ogg_stream_clear(&test);
 			}
@@ -161,7 +160,7 @@ void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 		/* fall through to non-bos page parsing */
 	}
 
-	// 	qDebug("checkpoint 2, theora_p=%d ",theora_p);
+	//qDebug("checkpoint 2, theora_p=%d ",theora_p);
 	/* we're expecting more header packets. */
 	if((theora_p && theora_p < 3))
 	{
@@ -198,7 +197,7 @@ void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 		}
 	}
 
-	// 	qDebug("checkpoint 3");
+	//qDebug("checkpoint 3");
 	/* and now we have it all.  initialize decoders */
 	if(theora_p && !thda)
 	{
@@ -271,7 +270,7 @@ void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 			while(ogg_sync_pageout(&oy, &og) > 0)
 				queue_page(&og);
 		}
-		// 		qDebug("loop4 theora_p=%d videobuf_ready=%d",theora_p, videobuf_ready);
+		//qDebug("loop4 theora_p=%d videobuf_ready=%d",theora_p, videobuf_ready);
 		// theora is one in, one out...
 
 		if(ogg_stream_packetout(&to, &op) > 0)
@@ -281,7 +280,7 @@ void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 		}
 		else
 		{
-			// 			qDebug("ogg_stream_packetout <=0");
+			//qDebug("ogg_stream_packetout <=0");
 			//need more data :)
 			return;
 		}
@@ -303,7 +302,7 @@ void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 
 /* helper: push a page into the appropriate steam */
 /* this can be done blindly; a stream won't accept a page
-                that doesn't belong to it */
+   that doesn't belong to it */
 int KviOggTheoraDecoder::queue_page(ogg_page * page)
 {
 	if(theora_p)
@@ -343,7 +342,7 @@ void KviOggTheoraDecoder::video_write(void)
 
 	int size = sizeof(char) * geometry.pic_w * geometry.pic_h * ARGB32_BPP;
 
-	// 	qDebug("VIDEO WRITE size=%d",size);
+	//qDebug("VIDEO WRITE size=%d",size);
 	m_pVideoSignal->clear();
 	m_pVideoSignal->append(RGBbuffer, size);
 }

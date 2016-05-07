@@ -96,14 +96,12 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pButtonContainer->setMargin(0);
 
 	m_pButtonContainer->setSizePolicy(QSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum));
-	//if(m_pButtonContainer->layout())
-	// m_pButtonContainer->layout()->setSizeConstraint(QLayout::SetMinimumSize);
 
 	m_pHistoryButton = new QToolButton(m_pButtonContainer);
 	m_pHistoryButton->setObjectName("historybutton");
 
 	m_pHistoryButton->setIconSize(QSize(22, 22));
-	//m_pHistoryButton->setUpdatesEnabled(true); ???
+
 	QIcon is1;
 	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory)) //G&N mar 2005
 	{

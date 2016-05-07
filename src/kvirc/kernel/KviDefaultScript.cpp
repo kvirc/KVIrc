@@ -154,7 +154,6 @@ void KviDefaultScriptManager::restoreInternal()
 		if(m_pDialog->m_pData->isChecked())
 			KviActionManager::instance()->killAllKvsUserActions();
 		// No need to load here since we haven't a default actions script yet
-		//g_pApp->loadDefaultScript("action");
 		m_szAction = oConfig.readEntry("ActionVersion");
 	}
 
@@ -163,7 +162,6 @@ void KviDefaultScriptManager::restoreInternal()
 		if(m_pDialog->m_pData->isChecked())
 			KviKvs::clearScriptAddons();
 		// No need to load here since we haven't a default actions script yet
-		//g_pApp->loadDefaultScript("addons");
 		m_szAddon = oConfig.readEntry("AddonVersion");
 	}
 
@@ -203,7 +201,6 @@ void KviDefaultScriptManager::restoreInternal()
 		if(m_pDialog->m_pData->isChecked())
 			KviKvs::clearRawEvents();
 		// No need to load here since we haven't a default raw events script yet
-		//g_pApp->loadDefaultScript("raws");
 		m_szRaw = oConfig.readEntry("RawVersion");
 	}
 

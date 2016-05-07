@@ -185,9 +185,6 @@ bool KviRegisteredUser::getBoolProperty(const QString & name, bool def)
 			return true;
 		if(KviQString::equalCI(*pValue, "yes"))
 			return true;
-		//if(KviQString::equalCI(*pValue,"yeah"))return true;
-		//if(KviQString::equalCI(*pValue,"sure"))return true;
-		//if(KviQString::equalCI(*pValue,"sureashell"))return true;
 	}
 	return def;
 }

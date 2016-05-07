@@ -208,7 +208,6 @@ void KviAvatarCache::cleanup()
 
 	// here we use the cache entries in another way
 	// szAvatar is the KEY instead of the avatar name
-
 	while((e = it.current()))
 	{
 		KviAvatarCacheEntry * current = ll.first();

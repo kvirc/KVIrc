@@ -38,9 +38,6 @@ KviIrcMessage::KviIrcMessage(const char * message, KviIrcConnection * pConnectio
 	m_pParams = new KviPointerList<KviCString>;
 	m_pParams->setAutoDelete(true);
 
-	//m_pcParams = new KviPointerList<QCString>;
-	//m_pcParams->setAutoDelete(true);
-
 	while(*m_ptr == ' ')
 		++m_ptr;
 	const char * allParams = m_ptr; // just to be sure
@@ -125,7 +122,6 @@ KviIrcMessage::KviIrcMessage(const char * message, KviIrcConnection * pConnectio
 		m_iNumericCommand = -1;
 		m_szCommand.toUpper();
 	}
-	//m_SafeTrailingString=QCString(m_pParams->last()->ptr());
 }
 
 KviIrcMessage::~KviIrcMessage()

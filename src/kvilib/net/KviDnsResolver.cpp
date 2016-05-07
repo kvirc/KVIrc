@@ -251,7 +251,6 @@ void KviDnsResolverThread::run()
 
 	int retVal;
 
-	//#ifdef HAVE_GETNAMEINFO
 	struct sockaddr_in ipv4Addr;
 
 #ifdef COMPILE_IPV6_SUPPORT
@@ -266,7 +265,6 @@ void KviDnsResolverThread::run()
 		bIsIPv6Ip = KviNetUtils::stringIpToBinaryIp_V6(m_szQuery, (struct in6_addr *)&(ipv6Addr.sin6_addr));
 #endif
 
-//#ifdef HAVE_GETNAMEINFO
 
 #ifdef COMPILE_IPV6_SUPPORT
 	if(bIsIPv4Ip || bIsIPv6Ip)
@@ -306,11 +304,6 @@ void KviDnsResolverThread::run()
 	}
 	else
 	{
-		//#endif //HAVE_GETNAMEINFO
-
-		//#ifdef COMPILE_IPV6_SUPPORT
-		//		struct in6_addr in6Addr;
-		//#endif
 		struct addrinfo * pRet = nullptr;
 		struct addrinfo * pNext;
 		struct addrinfo hints;
@@ -381,9 +374,7 @@ void KviDnsResolverThread::run()
 		}
 		if(pRet)
 			freeaddrinfo(pRet);
-		//#ifdef HAVE_GETNAMEINFO
 	}
-//#endif //HAVE_GETNAMEINFO
 
 #endif // !COMPILE_ON_WINDOWS
 
@@ -409,8 +400,6 @@ KviDnsResolver::~KviDnsResolver()
 		delete m_pSlaveThread; // will eventually terminate it (but it will also block us!!!)
 	}
 
-	//QApplication::removePostedEvents(this); // the Qt doc says that we shouldn't need this
-
 	if(m_pDnsResult)
 		delete m_pDnsResult;
 	if(m_pAuxData)
@@ -429,7 +418,6 @@ bool KviDnsResolver::lookup(const QString & szQuery, QueryType type)
 	m_pSlaveThread->setQuery(szQuery.trimmed(), type);
 	m_pSlaveThread->start();
 	m_state = Busy;
-	//m_state = bStarted ? Busy : Failure;
 	return true;
 }
 

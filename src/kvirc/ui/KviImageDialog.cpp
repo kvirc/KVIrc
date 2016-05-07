@@ -148,9 +148,6 @@ KviImageDialog::KviImageDialog(QWidget * par,
 	g->addWidget(l, 1, 0, 1, 3);
 
 	m_pListBox = new KviTalListWidget(this);
-	//not supported by listwidget.. we'd need treewidget here
-	// 	m_pListBox->setColumnMode(KviTalListWidget::FitToWidth);
-	// 	m_pListBox->setRowMode(KviTalListWidget::Variable);
 
 	m_pTip = new KviDynamicToolTip(m_pListBox->viewport());
 

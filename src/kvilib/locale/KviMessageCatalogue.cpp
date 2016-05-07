@@ -62,12 +62,6 @@
 
 #include <stdio.h>
 
-/*
-#if HAVE_LIMITS_H || _LIBC
-	#include <limits.h>
-#endif
-*/
-
 // The magic number of the GNU message catalog format.
 #define KVI_LOCALE_MAGIC 0x950412de
 #define KVI_LOCALE_MAGIC_SWAPPED 0xde120495

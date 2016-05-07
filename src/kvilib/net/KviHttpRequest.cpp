@@ -219,8 +219,6 @@ void KviHttpRequest::closeSocket()
 	// This can be called from a socket handler slot
 	m_p->pSocket->deleteLater();
 
-	//delete m_p->pSocket;
-
 	m_p->pSocket = nullptr;
 }
 
@@ -334,7 +332,6 @@ void KviHttpRequest::slotSocketConnected()
 	emit requestSent(sl);
 
 	// now wait for the response
-
 	// FIXME: Handle read timeouts!
 }
 
@@ -352,7 +349,6 @@ void KviHttpRequest::slotSocketReadDataReady()
 	}
 
 	// FIXME: Avoid double-buffering here!
-
 	KviDataBuffer oBuffer(iBytes);
 
 	int iRead = m_p->pSocket->read((char *)(oBuffer.data()), iBytes);
@@ -366,8 +362,6 @@ void KviHttpRequest::slotSocketReadDataReady()
 		}
 
 		// FIXME
-		// well... otherwise just wait.
-		// FIXME ?
 		oBuffer.resize(iRead);
 	}
 
@@ -449,20 +443,6 @@ bool KviHttpRequest::doConnect()
 
 	m_p->pConnectTimeoutTimer->start(m_uConnectionTimeout * 1000);
 
-	/*
-	m_pThread = new KviHttpRequestThread(
-			this,
-			m_connectionUrl.host(),
-			m_szIp,
-			uPort,
-			m_connectionUrl.path(),
-			m_uContentOffset,
-			(m_eProcessingType == HeadersOnly) ? KviHttpRequestThread::Head : (m_szPostData.isEmpty() ? KviHttpRequestThread::Get : KviHttpRequestThread::Post),
-			m_szPostData,
-			m_connectionUrl.protocol()=="https"
-		);
-	*/
-
 	return true;
 }
 
@@ -479,34 +459,6 @@ void KviHttpRequest::emitLines(KviDataBuffer * pDataBuffer)
 	}
 }
 
-//    header += "Accept: ";
-//    QString acceptHeader = metaData("accept");
-//    if (!acceptHeader.isEmpty())
-//      header += acceptHeader;
-//    else
-//      header += DEFAULT_ACCEPT_HEADER;
-//    header += "\r\n";
-//
-//#ifdef DO_GZIP
-//    if (m_request.allowCompressedPage)
-//      header += "Accept-Encoding: x-gzip, x-deflate, gzip, deflate, identity\r\n";
-//#endif
-//
-//    if (!m_request.charsets.isEmpty())
-//      header += "Accept-Charset: " + m_request.charsets + "\r\n";
-//
-//    if (!m_request.languages.isEmpty())
-//      header += "Accept-Language: " + m_request.languages + "\r\n";
-//
-//
-//    /* support for virtual hosts and required by HTTP 1.1 */
-//    header += "Host: ";
-//      header += "Pragma: no-cache\r\n"; /* for HTTP/1.0 caches */
-//      header += "Cache-control: no-cache\r\n"; /* for HTTP >=1.1 caches */
-
-//        header += "Referer: "; //Don't try to correct spelling!
-//        header += m_request.referrer;
-//        header += "\r\n";
 bool KviHttpRequest::openFile()
 {
 	if(m_eProcessingType != StoreToFile)
@@ -687,48 +639,47 @@ bool KviHttpRequest::processHeader(KviCString & szHeader)
 
 	// check the status
 
-	//				case 200: // OK
-	//				case 206: // Partial content
-
-	//				case 100: // Continue ??
-	//				case 101: // Switching protocols ???
-	//				case 201: // Created
-	//				case 202: // Accepted
-	//				case 203: // Non-Authoritative Information
-	//				case 204: // No content
-	//				case 205: // Reset content
-	//				case 300: // Multiple choices
-	//				case 301: // Moved permanently
-	//				case 302: // Found
-	//				case 303: // See Other
-	//				case 304: // Not modified
-	//				case 305: // Use Proxy
-	//				case 306: // ???
-	//				case 307: // Temporary Redirect
-	//				case 400: // Bad request
-	//				case 401: // Unauthorized
-	//				case 402: // Payment Required
-	//				case 403: // Forbidden
-	//				case 404: // Not found
-	//				case 405: // Method not allowed
-	//				case 406: // Not acceptable
-	//				case 407: // Proxy authentication required
-	//				case 408: // Request timeout
-	//				case 409: // Conflict
-	//				case 410: // Gone
-	//				case 411: // Length required
-	//				case 412: // Precondition failed
-	//				case 413: // Request entity too large
-	//				case 414: // Request-URI Too Long
-	//				case 415: // Unsupported media type
-	//				case 416: // Requested range not satisfiable
-	//				case 417: // Expectation Failed
-	//				case 500: // Internal server error
-	//				case 501: // Not implemented
-	//				case 502: // Bad gateway
-	//				case 503: // Service unavailable
-	//				case 504: // Gateway timeout
-	//				case 505: // HTTP Version not supported
+	// case 200: // OK
+	// case 206: // Partial content
+	// case 100: // Continue
+	// case 101: // Switching protocols
+	// case 201: // Created
+	// case 202: // Accepted
+	// case 203: // Non-Authoritative Information
+	// case 204: // No content
+	// case 205: // Reset content
+	// case 300: // Multiple choices
+	// case 301: // Moved permanently
+	// case 302: // Found
+	// case 303: // See Other
+	// case 304: // Not modified
+	// case 305: // Use Proxy
+	// case 306: // Switch Proxy
+	// case 307: // Temporary Redirect
+	// case 400: // Bad request
+	// case 401: // Unauthorized
+	// case 402: // Payment Required
+	// case 403: // Forbidden
+	// case 404: // Not found
+	// case 405: // Method not allowed
+	// case 406: // Not acceptable
+	// case 407: // Proxy authentication required
+	// case 408: // Request timeout
+	// case 409: // Conflict
+	// case 410: // Gone
+	// case 411: // Length required
+	// case 412: // Precondition failed
+	// case 413: // Request entity too large
+	// case 414: // Request-URI Too Long
+	// case 415: // Unsupported media type
+	// case 416: // Requested range not satisfiable
+	// case 417: // Expectation Failed
+	// case 500: // Internal server error
+	// case 501: // Not implemented
+	// case 502: // Bad gateway
+	// case 503: // Service unavailable
+	// case 504: // Gateway timeout
+	// case 505: // HTTP Version not supported
 
 	if(
 	    (uStatus != 200) && // OK
@@ -868,7 +819,6 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 		}
 
 		m_uReceivedSize = m_p->pBuffer->size();
-
 		// here the header is complete and the eventual remaining data is in m_p->pBuffer. data has been already used.
 	}
 	else

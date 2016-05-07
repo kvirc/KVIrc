@@ -39,63 +39,6 @@ namespace KviFileUtils
 {
 	static char cHexChars[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
 
-	/*
-	WORKING CODE BUT UNUSED FOR NOW
-	bool readLine(QFile * f,QString &szBuffer,bool bClearBuffer)
-	{
-		// FIXME: Should this assume UTF8 encoding ?
-		char tmp_buf[256];
-		int cur_len = 0;
-		//char *cur_ptr = tmp_buf;
-		if(bClearBuffer)szBuffer = "";
-		int ch = f->getch();
-
-		while((ch != -1)&&(ch != '\n')&&(ch != 0))
-		{
-			tmp_buf[cur_len] = ch;
-			cur_len++;
-			if(cur_len > 255)
-			{
-				if(tmp_buf[255] == '\r')cur_len--; //Ignore CR...
-				int lastlen = szBuffer.length();
-				szBuffer.resize(lastlen + cur_len);
-				QChar *p1 = szBuffer.unicode() + lastlen;
-				char * p2 = tmp_buf;
-				for(int i=0;i<cur_len;i++)*p1++ = *p2++;
-				cur_len = 0;
-			}
-			ch = f->getch();
-		}
-		if(ch == 0)
-		{
-			qDebug("Warning : %s is not an ascii file",f->name().latin1());
-		}
-		if(cur_len > 0)
-		{
-			if(tmp_buf[cur_len - 1] == '\r')cur_len--; //Ignore CR...
-			int lastlen = szBuffer.length();
-			szBuffer.resize(lastlen + cur_len);
-			QChar *p1 = szBuffer.unicode() + lastlen;
-			char * p2 = tmp_buf;
-			for(int i=0;i<cur_len;i++)*p1++ = *p2++;
-		}
-		return (ch == '\n'); //more data to read else a broken file or EOF
-	}
-
-	bool loadFileStripCR(const QString &szPath,QString &szBuffer)
-	{
-		QFile f(szPath);
-		if(!f.open(IO_ReadOnly))return false;
-		szBuffer = "";
-		while(readLine(&f,szBuffer,false))
-		{
-			szBuffer.append('\n'); // readLine returned true...last char was a newline
-		}
-		// readLine returned false, no ending newline encountered
-		return true;
-	}
-	*/
-
 	bool makeDir(const QString & szPath)
 	{
 		QDir d;
@@ -501,7 +444,6 @@ namespace KviFileUtils
 	static QStringList getFileListingInternal(const QString & szPath, const QString & szPrefix)
 	{
 		//qDebug("Scan %s",szPath.toUtf8().data());
-
 		QStringList sl;
 
 		QDir d(szPath);

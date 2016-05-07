@@ -97,40 +97,6 @@ hideme:
 	doHide();
 }
 
-/*
-bool KviHistoryWindow::findTypedSeq()
-{
-	int cnt = count();
-	int max = 0;
-	int mit = -1;
-	bool bFullMax = false;
-	for(int i=0;i<cnt;i++)
-	{
-		KviCString szIt = text(i);
-		int j;
-		for(j=0;j<szIt.len();j++)
-		{
-			if(tolower(*(szIt.ptr() + j)) != tolower(*(m_szTypedSeq.ptr() + j)))break;
-		}
-		if(j < max)
-		{
-			goto got_mit;
-		} else {
-			if(j >= max)
-			{
-				bFullMax = (j == szIt.len());
-				max = j;
-				mit = i;
-			}
-		}
-	}
-got_mit:
-	setCurrentItem(mit);
-	m_szCurFullSeq = text(mit);
-	return bFullMax;
-}
-*/
-
 void KviHistoryWindow::keyPressEvent(QKeyEvent * e)
 {
 	switch(e->key())
@@ -147,55 +113,9 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent * e)
 			doHide();
 			return;
 			break;
-			/*
-		case Qt::Key_Backspace:
-			if(m_szTypedSeq.hasData())
-			{
-				m_szTypedSeq.cutRight(1);
-				findTypedSeq();
-			} else {
-				doHide();
-				if(m_pOwner)g_pApp->sendEvent(m_pOwner,e);
-			}
-			return;
-		break;
-		case Qt::Key_Space:
-			doHide();
-			if(findTypedSeq())
-			{
-				KviCString szItem = m_szTypedSeq;
-				szItem.append(' ');
-				if(m_pOwner)m_pOwner->insertText(szItem);
-			} else {
-				if(m_pOwner)g_pApp->sendEvent(m_pOwner,e);
-			}
-			return;
-		break;
-		case Qt::Key_Tab:
-			doHide();
-			findTypedSeq();
-			KviCString szItem = m_szCurFullSeq;
-			szItem.append(KVI_TEXT_ICON);
-			if(m_pOwner)m_pOwner->insertText(szItem);
-			return;
-		break;
-	*/
-	}
 
-	/*
-	int as = e->ascii();
-	if((as >= 'a' && as <= 'z') || (as >= 'A' && as <= 'Z') || (as >= '0' && as <= '9')
-		|| (as == '?') || (as == '$') || (as == '.') || (as == ',') || (as == '!') || (as =='&'))
-	{
-		m_szTypedSeq.append((char)as);
-		findTypedSeq();
-	} else {
-	*/
 	if(m_pOwner)
 		g_pApp->sendEvent(m_pOwner, e);
-	/*
-	}
-	*/
 }
 
 void KviHistoryWindow::ownerDead()
@@ -266,7 +186,6 @@ void KviHistoryWindowWidget::popup(KviInput * pOwner)
 {
 	m_pWindow->popup(pOwner);
 	m_pWindow->setFixedSize(width(), height());
-	//move(QCursor::pos());
 	show();
 }
 

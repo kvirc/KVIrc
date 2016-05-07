@@ -329,7 +329,6 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 					msg->console()->outputNoFmt(KVI_OUT_SERVERINFO, __tr2qs("This server supports the CODEPAGE command, it will be used"));
 				}
 
-				//msg->connection()->sendFmtData("CODEPAGE %s",msg->console()->textCodec()->name());
 			}
 			else if(kvi_strEqualCIN("CHANMODES=", p, 10))
 			{
@@ -368,10 +367,6 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 					msg->console()->outputNoFmt(KVI_OUT_SERVERINFO, __tr2qs("This server supports the CODEPAGE command, it will be used"));
 				}
 
-				/*if( tmp.contains(msg->console()->textCodec()->name(),false) || tmp.contains("*",false) )
-				{
-					msg->connection()->sendFmtData("CODEPAGE %s",msg->console()->textCodec()->name());
-				}*/
 			}
 			else if(kvi_strEqualCIN("WHOX", p, 4))
 			{
@@ -407,10 +402,6 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 		if(!msg->haltOutput())
 			msg->console()->outputNoFmt(KVI_OUT_SERVERINFO, inf);
 	}
-	// } else {
-	// 	// RPL_BOUNCE prolly
-	// 	if(!msg->haltOutput())msg->console()->outputNoFmt(KVI_OUT_SERVERINFO,msg->safeTrailing());
-	// }
 }
 
 void KviIrcServerParser::parseNumericSnomask(KviIrcMessage * msg)
@@ -502,7 +493,6 @@ void KviIrcServerParser::parseNumericNames(KviIrcMessage * msg)
 	// [=|*|@] is the type of the channel:
 	// = --> public  * --> private   @ --> secret
 	// ...but we ignore it
-	//QString szChan = msg->connection()->decodeText(msg->cSafeParam(2)->data()); // <-- QByteArray::data() is implicitly unsafe: it CAN return 0
 	QString szChan = msg->connection()->decodeText(msg->safeParam(2));
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
 	// and run to the first nickname
@@ -2712,7 +2702,6 @@ void KviIrcServerParser::parseNumericHiddenHost(KviIrcMessage * msg)
 void KviIrcServerParser::parseNumericNoSuchServer(KviIrcMessage * msg)
 {
 	//ERR_NOSUCHSERVER     402
-
 	//this can be an "awhois -i" reply for a nickname that's not connected
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
 

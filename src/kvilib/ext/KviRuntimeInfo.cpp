@@ -574,7 +574,6 @@ static QString queryWinInfo(QueryInfo info)
 									szVersion += "Professional ";
 							}
 						}
-
 						// Test for the server type.
 						else if(osvi.wProductType == VER_NT_SERVER || osvi.wProductType == VER_NT_DOMAIN_CONTROLLER)
 						{
@@ -597,7 +596,6 @@ static QString queryWinInfo(QueryInfo info)
 									else
 										szVersion += "Standard x64 Edition ";
 								}
-
 								else
 								{
 									if(osvi.wSuiteMask & VER_SUITE_DATACENTER)

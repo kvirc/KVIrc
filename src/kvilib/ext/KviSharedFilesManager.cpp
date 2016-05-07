@@ -99,7 +99,6 @@ void KviSharedFilesManager::cleanup()
 	time_t curTime = time(nullptr);
 
 	bool bOtherStuffToCleanup = false;
-	//bool bChanged = false;
 
 	KviPointerList<QString> lDying;
 	lDying.setAutoDelete(true);
@@ -115,7 +114,6 @@ void KviSharedFilesManager::cleanup()
 				if(((int)o->expireTime()) <= ((int)curTime))
 				{
 					tmp.append(o);
-					//bChanged = true;
 				}
 				else
 				{
@@ -139,7 +137,6 @@ void KviSharedFilesManager::cleanup()
 
 	if(!bOtherStuffToCleanup)
 		m_pCleanupTimer->stop();
-	//if(bChanged)emit sharedFilesChanged();
 }
 
 void KviSharedFilesManager::clear()

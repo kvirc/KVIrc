@@ -86,7 +86,7 @@ namespace KviControlCodes
 	const kvi_wchar_t * getColorBytesW(const kvi_wchar_t * pwData, unsigned char * pcByte1, unsigned char * pcByte2)
 	{
 		//
-		// Scans the pwData for a mIrc color code XX,XX
+		// Scans the pwData for a mIRC color code XX,XX
 		// and fills the color values in the two bytes
 		//
 

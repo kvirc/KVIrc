@@ -96,7 +96,6 @@ void KviConfigurationFile::clearKey(const QString & szKey)
 bool KviConfigurationFile::load()
 {
 	// this is really faster than the old version :)
-
 	// open the file
 	KviFile f(m_szFileName);
 	if(!f.open(QFile::ReadOnly))
@@ -332,84 +331,6 @@ bool KviConfigurationFile::load()
 	KviMemory::free(buffer);
 	return true;
 }
-
-/*
-
-bool KviConfigurationFile::load()
-{
-	QFile f(m_szFileName);
-	if(!f.open(IO_ReadOnly))return false;
-
-
-	KviConfigurationFileGroup * p_group = 0;
-
-	KviCString dataLine;
-	bool bContinue;
-
-	do {
-		bContinue = kvi_readLine(&f,dataLine);
-		dataLine.trimmed();
-		if(dataLine.hasData())
-		{
-			switch(*(dataLine.ptr()))
-			{
-				case '#':
-					// just skip it, it is a comment
-				break;
-				case '[':
-				{
-					//set the group
-					dataLine.cutLeft(1);
-					dataLine.cutRight(1);
-					dataLine.hexDecode();
-					if(dataLine.hasData())
-					{
-						QString szUtf8 = QString::fromUtf8(dataLine.ptr());
-						p_group = m_pDict->find(szUtf8);
-
-						if(!p_group)
-						{
-							p_group = new KviConfigurationFileGroup(17,false);
-							p_group->setAutoDelete(true);
-							m_pDict->insert(szUtf8,p_group);
-						}
-					}
-				}
-				break;
-				default:
-				{
-					//data entry...split in two...
-					KviCString name=dataLine.getToken('=');
-					name.stripRightWhiteSpace(); // strip any whitespace added externally
-					name.hexDecode();
-					if(name.hasData())
-					{
-						dataLine.stripLeftWhiteSpace(); // strip any whitespace added externally
-						dataLine.hexDecode();
-						//insert (replace items if needed)
-						QString *p_data=new QString(QString::fromUtf8(dataLine.ptr()));
-						if(!p_group)
-						{
-							// ops...we're missing a group
-							// use the default one
-							p_group = new KviConfigurationFileGroup(17,false);
-							p_group->setAutoDelete(true);
-							m_pDict->insert(KVI_CONFIG_DEFAULT_GROUP,p_group);
-						}
-						QString szName = QString::fromUtf8(name.ptr());
-						p_group->replace(szName,p_data);
-					}
-				}
-				break;
-			}
-		}
-	} while (bContinue);
-
-	f.close();
-	return true;
-}
-
-*/
 
 bool KviConfigurationFile::ensureWritable()
 {
@@ -868,30 +789,6 @@ unsigned short int KviConfigurationFile::readUShortEntry(const QString & szKey, 
 	unsigned short int usVal = p_str->toUShort(&bOk);
 	return bOk ? usVal : usDefault;
 }
-
-/*
-////////////////////////////////// unsigned long
-
-Unused code
-void KviConfigurationFile::writeEntry(const char *szKey,unsigned long lValue)
-{
-	m_bDirty = true;
-	KviCStringDict * p_group = getCurrentGroup();
-	KviCString *p_data = new KviCString();
-	p_data->setNum(lValue);
-	p_group->replace(szKey,p_data);
-}
-
-unsigned long KviConfigurationFile::readULongEntry(const char *szKey,unsigned long lDefault)
-{
-	KviCStringDict * p_group = getCurrentGroup();
-	KviCString * p_str = p_group->find(szKey);
-	if(!p_str)return lDefault;
-	bool bOk;
-	unsigned long lVal=p_str->toULong(&bOk);
-	return bOk ? lVal : lDefault;
-}
-*/
 
 ////////////////////////////////// int
 

@@ -1907,12 +1907,6 @@ KviAvatar * KviIconManager::getAvatar(const QString & szLocalPath, const QString
 		szN = szName;
 	}
 
-	// avatars bigger than 1024x768 just sux: they can't be seen on tooltips anyway
-	//KviCachedPixmap * p = KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad) ? getPixmapWithCacheScaleOnLoad(szP,
-	//	KVI_OPTION_UINT(KviOption_uintScaleAvatarsOnLoadWidth)
-	//	,KVI_OPTION_UINT(KviOption_uintScaleAvatarsOnLoadHeight)) : getPixmapWithCache(szP);
-	//if(!p)return 0;
-
 	KviAvatar * pResult = nullptr;
 
 	if(KviFileUtils::fileExists(szP))
