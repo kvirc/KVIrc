@@ -713,8 +713,6 @@ defpopup(windowpopup)
 		}
 	}
 
-	label($tr("You're not connected to a server","defscript")) (!$server)
-
 	item($tr("Dock","defscript"),6) (!$window.isDocked())
 	{
 		window.dock
@@ -746,7 +744,7 @@ defpopup(windowpopup)
 
 	separator
 
-	extpopup($tr("Logging","defscript"),logging,119) ($server)
+	extpopup($tr("Logging","defscript"),logging,119)
 
 	item($tr("Set Window Properties As Default","defscript"),10)
 	{
