@@ -3961,7 +3961,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnWindowTitleRequest",
-	    "$0 = window id\n"
+	    "$0 = window ID\n"
 	    "$1 = default window title"),
 
 	/*
@@ -3985,7 +3985,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnInputBarPaste",
-	    "$0 = window id\n"
+	    "$0 = window ID\n"
 	    "$1 = pasted text"),
 
 	/*
