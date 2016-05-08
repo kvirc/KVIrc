@@ -356,19 +356,7 @@ KVSO_CLASS_FUNCTION(treeWidget, currentItem)
 		c->returnValue()->setHObject((kvs_hobject_t) nullptr);
 	return true;
 }
-/*
-KVSO_CLASS_FUNCTION(treeWidget,setColumnText)
-{
-	kvs_int_t uCol;
-	QString szText;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
-		KVSO_PARAMETERS_END(c)
-	if (widget())((QTreeWidget *)widget())->setColumnText(uCol,szText);
-    return true;
-}
-*/
+
 KVSO_CLASS_FUNCTION(treeWidget, setColumnCount)
 {
 	kvs_uint_t uCol;

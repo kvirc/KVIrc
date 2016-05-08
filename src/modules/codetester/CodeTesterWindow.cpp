@@ -50,7 +50,7 @@ CodeTesterWidget::CodeTesterWidget(QWidget * par)
 	QGridLayout * g = new QGridLayout(this);
 	m_pEditor = KviScriptEditor::createInstance(this);
 	g->addWidget(m_pEditor, 0, 0, 1, 4);
-	//g->addMultiCellWidget(m_pEditor,0,0,0,3);
+
 	m_pExecuteButton = new QPushButton(__tr2qs_ctx("&Execute", "editor"), this);
 	g->addWidget(m_pExecuteButton, 1, 3);
 	connect(m_pExecuteButton, SIGNAL(clicked()), this, SLOT(execute()));
@@ -114,26 +114,8 @@ void CodeTesterWindow::getConfigGroupName(QString & szName)
 
 void CodeTesterWindow::saveProperties(KviConfigurationFile *) //cfg
 {
-	/*
-#ifdef COMPILE_SCRIPTTOOLBAR
-	cfg->writeEntry("Sizes",m_pEditor->sizes());
-	cfg->writeEntry("LastRaw",m_pEditor->lastEditedRaw().ptr());
-	//qDebug("LAST EDITED=%s",m_pEditor->lastEditedRaw().ptr());
-#endif // COMPILE_SCRIPTTOOLBAR
-*/
 }
 
 void CodeTesterWindow::loadProperties(KviConfigurationFile *) //cfg
 {
-	/*
-#ifdef COMPILE_SCRIPTTOOLBAR
-	QValueList<int> def;
-	def.append(20);
-	def.append(80);
-	m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
-	KviCString tmp = cfg->readEntry("LastRaw","");
-	m_pEditor->editRaw(tmp);
-	//qDebug("LAST EDITED WAS %s",tmp.ptr());
-#endif // COMPILE_SCRIPTTOOLBAR
-*/
 }

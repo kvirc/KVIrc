@@ -18580,7 +18580,7 @@ static double score_for_ngram(DetectorDescriptor * d, const unsigned char * ngra
 	while(g->szNGram)
 	{
 		if(strcmp((const char *)ngram, (const char *)g->szNGram) == 0)
-		{ /*printf("GOT NGRAM %s SCORE %f\n",ngram,g->dScore);*/
+		{
 			return g->dScore;
 		}
 		g++;
@@ -18591,8 +18591,7 @@ static double score_for_ngram(DetectorDescriptor * d, const unsigned char * ngra
 static double compute_descriptor_score(const unsigned char * data, DetectorDescriptor * d)
 {
 	double dRet = 0.0;
-	//unsigned char x[256];
-	//memset(x,0,256)
+
 	const unsigned char * p = data;
 	while(*p)
 	{
@@ -18601,34 +18600,7 @@ static double compute_descriptor_score(const unsigned char * data, DetectorDescr
 			dRet += d->single_char_data[z];
 		p++;
 	}
-	//unsigned int x[256];
-	//int i;
-	//for(i=0;i<256;i++)x[i] = 0;
-	//unsigned int total = 0;
-	//while(*p)
-	//{
-	//	unsigned char z = (unsigned char)tolower((char)*p);
-	//	if(valid_char_jump_table[z])
-	//	{
-	//		x[z]++;
-	//		total++;
-	//	}
-	//	p++;
-	//}
-	//for(i=0;i<256;i++)
-	//{
-	//	if(valid_char_jump_table[i])
-	//	{
-	//		double dPercent = ((double)x[i]) / ((double)total);
-	//		double dDiff = dPercent - d->single_char_data[i];
-	//		if(dDiff < 0.0)dDiff = -dDiff;
-	//		if(dPercent > d->single_char_data[i])dDiff *= d->single_char_data[i] == 0.0 ? 3.0 : 1.5;
-	//		if(i > 127)dDiff *= 1.5;
-	//		if(i > 192)dDiff *= 1.5;
-	//		dRet -= ((double)total) * dDiff;
-	//		//printf("CHAR %d FILE %f REF %f DIFF %f SCORE %f\n",i,dPercent,d->single_char_data[i],dDiff,((double)total) * dDiff);
-	//	}
-	//}
+
 	// now by hash...this is hard
 	p = data;
 	unsigned char buffer[1024]; // we handle words up to 1024 chars

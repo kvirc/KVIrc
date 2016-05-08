@@ -381,13 +381,11 @@ FileTransferItem * FileTransferWindow::findItem(KviFileTransfer * t)
 void FileTransferWindow::transferRegistered(KviFileTransfer * t)
 {
 	new FileTransferItem(m_pTableWidget, t);
-	//t->setDisplayItem(it);
 }
 
 void FileTransferWindow::transferUnregistering(KviFileTransfer * t)
 {
 	FileTransferItem * it = findItem(t);
-	//t->setDisplayItem(0);
 	if(it)
 	{
 		delete it;
@@ -862,35 +860,6 @@ void FileTransferWindow::die()
 {
 	close();
 }
-
-//#warning "Load & save properties of this kind of window"
-
-//void FileTransferWindow::saveProperties()
-//{
-//	KviWindowProperty p;
-//	p.rect = externalGeometry();
-//	p.isDocked = isAttacched();
-//	QValueList<int> l(m_pSplitter->sizes());
-//	if(l.count() >= 1)p.splitWidth1 = *(l.at(0));
-//	if(l.count() >= 2)p.splitWidth2 = *(l.at(1));
-//	p.timestamp = m_pView->timestamp();
-//	p.imagesVisible = m_pView->imagesVisible();
-//	p.isMaximized = isAttacched() && isMaximized();
-//	p.topSplitWidth1 = 0;
-//	p.topSplitWidth2 = 0;
-//	p.topSplitWidth3 = 0;
-//	g_pOptions->m_pWinPropertiesList->setProperty(caption(),&p);
-//}
-//
-//void FileTransferWindow::setProperties(KviWindowProperty *p)
-//{
-//	QValueList<int> l;
-//	l.append(p->splitWidth1);
-//	l.append(p->splitWidth2);
-//	m_pVertSplitter->setSizes(l);
-//	m_pIrcView->setTimestamp(p->timestamp);
-//	m_pIrcView->setShowImages(p->imagesVisible);
-//}
 
 void FileTransferWindow::applyOptions()
 {

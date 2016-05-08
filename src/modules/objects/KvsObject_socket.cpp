@@ -562,18 +562,6 @@ KVSO_CLASS_FUNCTION(socket, functionConnect)
 	return true;
 }
 
-/*
-KVSO_CLASS_FUNCTION(socket,functionsetReadBufferSize)
-{
-	kvs_int_t iBufferSize;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("buffer_size",KVS_PT_INTEGER,0,iBufferSize)
-	KVSO_PARAMETERS_END(c)
-	m_pSocket->setReadBufferSize(iBufferSize);
-	return true;
-}
-*/
-
 KVSO_CLASS_FUNCTION(socket, listen)
 {
 	kvs_uint_t uLocalPort;

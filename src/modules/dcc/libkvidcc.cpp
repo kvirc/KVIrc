@@ -452,7 +452,6 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		d->bSendRequest = !c->switches()->find('n', "no-ctcp");
 	}
 
-	//c->window()->output(0,"%Q %Q %Q",&(d->szIp),&(d->szPort),&(d->szListenIp));
 	d->triggerCreationEvent();
 	g_pDccBroker->executeChat(nullptr, d);
 

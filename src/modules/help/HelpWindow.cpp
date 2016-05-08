@@ -118,9 +118,6 @@ void HelpWindow::initialSetup()
 {
 	m_pIndexSearch->setFocus();
 
-	/*	if(!g_bIndexingDone)
-	{
-		g_bIndexingDone=true;*/
 	QString szDoclist, szDict;
 
 	g_pApp->getLocalKvircDirectory(szDoclist, KviApplication::Help, "help.doclist." KVI_SOURCES_DATE);

@@ -442,104 +442,15 @@ QString ScriptEditorWidget::textUnderCursor() const
 		szWord.remove(0, 1);
 	return szWord;
 }
-/*
-void ScriptEditorWidget::mouseReleaseEvent(QMouseEvent * e)
-{
 
-	return;
-		QRect r = cursorRect();
-		QTextCursor cur = cursorForPosition(e->pos());
-	//	cur.select(
-
-
-	//completelistbox->hide();
-	if (e->button() == Qt::RightButton)
-	{
-		QString szBuffer;
-		/\*
-		int iPara = paragraphAt(e->pos());
-		int iIndex=charAt(e->pos(),&iPara);
-		szBuffer = this->text(iPara);
-		getWordOnCursor(szBuffer,iIndex);
-		*\/
-		QRect r = cursorRect();
-		QTextCursor cur = cursorForPosition(e->pos());
-		cur.select(QTextCursor::WordUnderCursor);
-		szBuffer = cur.selectedText();
-		QString szTmp = szBuffer;
-		KviPointerList<QString> * pList;
-		if(szTmp.left(1) == "$")
-		{
-			szTmp.remove(0,1);
-			pList = KviKvsKernel::instance()->completeCommandAllocateResult(szTmp);
-			if (pList->count() != 1)
-				szBuffer = "";
-			else
-				szBuffer = *(pList->at(0));
-		} else {
-			pList = KviKvsKernel::instance()->completeCommandAllocateResult(szTmp);
-			if (pList->count() != 1)
-				szBuffer = "";
-			else
-				szBuffer = *(pList->at(0));
-		}
-
-		for (unsigned int i=0; i < pList->count(); i++)
-			QString str = *(pList->at(i));
-
-		KviKvsKernel::instance()->freeCompletionResult(pList);
-		m_szHelp = szBuffer;
-	}
-
-	QTextEdit::mouseReleaseEvent(e);
-}
-*/
 bool ScriptEditorWidget::contextSensitiveHelp() const
 {
-	/*
-	QString szBuffer;
-	int iPara, iIndex;
-	getCursorPosition(&iPara,&iIndex);
-	szBuffer = text(iPara);
-	getWordOnCursor(szBuffer,iIndex);
-	*/
 
 	QRect r = cursorRect();
 	QTextCursor cur = cursorForPosition(QPoint(r.x(), r.y()));
 	cur.select(QTextCursor::WordUnderCursor);
 	QString szText = cur.selectedText();
 	QString szTmp = szText;
-	/*
-	KviPointerList<QString> * pList;
-	if(szTmp.left(1) == "$")
-	{
-		szTmp.remove(0,1);
-		pList = g_pUserParser->completeFunctionAllocateResult(szTmp);
-	} else {
-		pList = g_pUserParser->completeCommandAllocateResult(szTmp);
-	}
-	qDebug("command or func %s",szTmp.toUtf8().data());
-
-	bool bOk = false;
-	if(pList)
-	{
-		for(QString * s = pList->first(); s; s = pList->next())
-		{
-			if(KviQString::equalCI(*s,szBuffer))
-			{
-				pList->last();
-				bOk = true;
-			}
-		}
-	}
-
-	g_pUserParser->freeCompletionResult(pList);
-	if(!bOk)return false;
-
-	QString szParse = QString("timer -s (help,0){ help -s %Q; }").arg(szBuffer);
-	qDebug("parsing %s",szParse.toLatin1());
-	KviKvsScript::run(szParse,(KviWindow*)g_pApp->activeConsole());
-	*/
 
 	return true;
 }

@@ -59,13 +59,6 @@ winampGeneralPurposePlugin plugin = {
 	quit,
 };
 
-/*
-BOOL WINAPI _DllMainCRTStartup(HANDLE hInst, ULONG ul_reason_for_call, LPVOID lpReserved)
-{
-	return true;
-}
-*/
-
 #define KVIRC_WM_USER 63112
 
 #define KVIRC_WM_USER_GETTITLE 5000

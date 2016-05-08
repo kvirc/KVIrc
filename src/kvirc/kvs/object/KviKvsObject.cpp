@@ -47,7 +47,7 @@
 
 #include <time.h>
 
-/*
+	/*
 		@doc: objects
 		@title:
 			Object scripting
@@ -518,7 +518,7 @@
 			by all the modern kernels and used in inter-process communication).[br]
 	*/
 
-/*
+	/*
 		@doc: object
 		@keyterms:
 			object class, object, class
@@ -662,22 +662,10 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass, KviKvsObject * pParent, c
 		pParent->registerChild(this);
 
 	KviKvsKernel::instance()->objectController()->registerObject(this);
-
-	//	qDebug("Hello world!");
-	//	[root@localhost cvs3]# kvirc
-	//	Hello world!
-	//	[root@localhost cvs3]# date
-	//	Tue Sep  5 21:53:54 CEST 2000
-	//	[root@localhost cvs3]#
-
-	//  Ported to KVS on 29.04.2005
 }
 
 KviKvsObject::~KviKvsObject()
 {
-	//KVI_TRACE_FUNCTION;
-	//KVI_TRACE("Destroying kvs object %x, child of %x",this,parentObject());
-
 	if(!m_bDestructorCalled)
 	{
 		// Destructor not called yet.. something is wrong.
@@ -978,7 +966,6 @@ int KviKvsObject::emitSignal(const QString & sigName, KviKvsObjectFunctionCall *
 			else
 			{
 				// else destroyed in the call! (already disconnected)
-
 				pOuterCall->warning(
 				    __tr2qs_ctx("Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'", "kvs"),
 				    &(sigName),
@@ -1718,7 +1705,6 @@ void KviKvsObject::delayedDie()
 
 void KviKvsObject::setObject(QObject * o, bool bIsOwned)
 {
-	//__range_invalid(m_pObject);
 	m_bObjectOwner = bIsOwned;
 	m_pObject = o;
 	o->installEventFilter(this);
@@ -1793,14 +1779,6 @@ bool KviKvsObject::callFunction(
 	KviKvsObjectFunctionCall fc(pContext, pParams, pRetVal);
 
 	return h->call(this, &fc);
-
-	// Not only gcc spits out compiler errors:
-	// 25.09.2001, at this point in file
-
-	// c:\programmi\microsoft visual studio\myprojects\kvirc3\src\kvirc\uparser\kvi_scriptobject.cpp(1234) : fatal error C1001: INTERNAL COMPILER ERROR
-	//    (compiler file 'E:\8168\vc98\p2\src\P2\main.c', line 494)
-	//    Please choose the Technical Support command on the Visual C++
-	//    Help menu, or open the Technical Support help file for more information
 }
 
 void KviKvsObject::registerPrivateImplementation(const QString & szFunctionName, const QString & szCode)

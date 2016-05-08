@@ -1480,26 +1480,8 @@ void PopupEditorWindow::getConfigGroupName(QString & szName)
 
 void PopupEditorWindow::saveProperties(KviConfigurationFile *) //cfg
 {
-	/*
-#ifdef COMPILE_SCRIPTTOOLBAR
-	cfg->writeEntry("Sizes",m_pEditor->sizes());
-	cfg->writeEntry("LastPopup",m_pEditor->lastEditedPopup().ptr());
-	//qDebug("LAST EDITED=%s",m_pEditor->lastEditedPopup().ptr());
-#endif // COMPILE_SCRIPTTOOLBAR
-*/
 }
 
 void PopupEditorWindow::loadProperties(KviConfigurationFile *) // cfg
 {
-	/*
-#ifdef COMPILE_SCRIPTTOOLBAR
-	QValueList<int> def;
-	def.append(20);
-	def.append(80);
-	m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
-	KviCString tmp = cfg->readEntry("LastPopup","");
-	m_pEditor->editPopup(tmp);
-	//qDebug("LAST EDITED WAS %s",tmp.ptr());
-#endif // COMPILE_SCRIPTTOOLBAR
-*/
 }

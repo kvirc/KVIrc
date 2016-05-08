@@ -556,42 +556,6 @@ void OptionsDialog::treeWidgetItemSelectionChanged(QTreeWidgetItem * it, QTreeWi
 	}
 }
 
-/*
-OptionsDialogTreeWidgetItem * OptionsDialog::findItemByPage(OptionsDialogTreeWidgetItem *it,KviOptionsWidget * pPage)
-{
-	if(!it)return 0;
-	if(it->m_pOptionsWidget == pPage)return it;
-
-	OptionsDialogTreeWidgetItem *i;
-
-	int ccount = it->childCount();
-
-	for(int j=0;j<ccount;j++)
-	{
-		OptionsDialogTreeWidgetItem * i = (OptionsDialogTreeWidgetItem *)it->child(j);
-
-		i = findItemByPage(i,pPage);
-		if(i)return i;
-	}
-
-	// not found in the children tree.. look in the next sibling
-	for(int j=0;j<ccount;j++)
-	{
-		OptionsDialogTreeWidgetItem * pChild = (OptionsDialogTreeWidgetItem *)pItem->child(j);
-
-		i = findItemByPage(i,pPage);
-		if(i)return i;
-	}
-
-	i = (OptionsDialogTreeWidgetItem *)(it->nextSibling());
-	if(i)
-	{
-		i = findItemByPage(i,pPage);
-		if(i)return i;
-	}
-	return 0;
-}
-*/
 void OptionsDialog::pageWantsToSwitchToAdvancedPage(KviOptionsWidget *)
 {
 	// unused

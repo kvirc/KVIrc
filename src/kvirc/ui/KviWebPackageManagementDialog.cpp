@@ -125,10 +125,7 @@ void KviWebPackageManagementDialog::slotLoadFinished(bool bOk)
 
 	// main frame
 	QWebFrame * pFrame = m_pWebView->page()->mainFrame();
-	/*QWebElement style=pFrame->documentElement().findFirst("style");
-	QString szCss=style.toPlainText();
-	szCss.append("div.item_entry:hover {background-color: rgba(0,0,0,0.9)}");
-	style.setPlainText(szCss);*/
+
 	// search for all item_entry div
 	QWebElementCollection elementscollection = pFrame->documentElement().findAll("div.item_entry");
 

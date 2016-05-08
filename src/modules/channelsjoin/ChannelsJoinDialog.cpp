@@ -70,7 +70,6 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	g->addWidget(m_pTreeWidget, 0, 0, 1, 2);
-	//connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *,int)));
 
 	m_pGroupBox = new KviTalGroupBox(Qt::Horizontal, __tr2qs("Channel"), this);
 	QString szMsg = __tr2qs("Name");
@@ -118,18 +117,6 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 
 	g->addWidget(cancelButton, 3, 1, Qt::AlignRight);
 
-	/*
-	KviTalHBox * hb = new KviTalHBox(this);
-	hb->setSpacing(4);
-
-	QPushButton * namesButton = new QPushButton("/names", hb);
-	connect(namesButton,SIGNAL(clicked()),this,SLOT(namesClicked()));
-	QPushButton * whoButton = new QPushButton("/who", hb);
-	connect(whoButton,SIGNAL(clicked()),this,SLOT(whoClicked()));
-
-	g->addWidget(hb,2,0);
-*/
-
 	g->setRowStretch(0, 1);
 	g->setColumnStretch(0, 1);
 
@@ -139,7 +126,6 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 		g_rectChannelsJoinGeometry.setY(5);
 
 	resize(g_rectChannelsJoinGeometry.width(), g_rectChannelsJoinGeometry.height());
-	//move(g_rectChannelsJoinGeometry.x(),g_rectChannelsJoinGeometry.y());
 
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
 	move(rect.x() + ((rect.width() - g_rectChannelsJoinGeometry.width()) / 2), rect.y() + ((rect.height() - g_rectChannelsJoinGeometry.height()) / 2));
@@ -466,22 +452,6 @@ void ChannelsJoinDialog::clearClicked()
 	KviKvsScript::run(szCmd, w);
 	fillListView();
 }
-
-/*
-void ChannelsJoinDialog::whoClicked()
-{
-	KviCString tmp = m_pChannelEdit->text();
-	if(!tmp.isEmpty())doCmd("who", tmp.ptr());
-}
-
-void ChannelsJoinDialog::namesClicked()
-{
-	KviCString tmp = m_pChannelEdit->text();
-	//FIXME: I must be a nice guy and implement /names in the core...
-	if(!tmp.isEmpty())doCmd("raw names", tmp.ptr());
-}
-
-*/
 
 void ChannelsJoinDialog::editReturnPressed()
 {

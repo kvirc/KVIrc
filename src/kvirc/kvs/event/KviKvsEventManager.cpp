@@ -254,18 +254,6 @@ bool KviKvsEventManager::removeModuleAppHandler(unsigned int uEvIdx, KviKvsModul
 				return true;
 			}
 		}
-		// COMPAT
-		/*
-		} else if(h->type() == KviKvsEventHandler::OldModule)
-		{
-			if(((KviKvsOldModuleEventHandler *)h)->module() == i)
-			{
-				m_appEventTable[uEvIdx].removeHandler(h);
-				return true;
-			}
-		}
-		*/
-		// END COMPAT
 	}
 	return false;
 }
@@ -289,17 +277,6 @@ void KviKvsEventManager::removeAllModuleAppHandlers(KviKvsModuleInterface * pIfa
 					l.append(h);
 				}
 			}
-			// COMPAT
-			/*
-			} else if(h->type() == KviKvsEventHandler::OldModule)
-			{
-				if(((KviKvsOldModuleEventHandler *)h)->module() == pIface)
-				{
-					l.append(h);
-				}
-			}
-			*/
-			// END COMPAT
 		}
 		for(h = l.first(); h; h = l.next())
 			i.removeHandler(h);
@@ -325,17 +302,6 @@ void KviKvsEventManager::removeAllModuleRawHandlers(KviKvsModuleInterface * pIfa
 					l.append(h);
 				}
 			}
-			// COMPAT
-			/*
-			} else if(h->type() == KviKvsEventHandler::OldModule)
-			{
-				if(((KviKvsOldModuleEventHandler *)h)->module() == pIface)
-				{
-					l.append(h);
-				}
-			}
-			*/
-			// END COMPAT
 		}
 		for(h = l.first(); h; h = l.next())
 			i->removeRef(h);
@@ -404,23 +370,6 @@ bool KviKvsEventManager::removeModuleRawHandler(unsigned int uRawIdx, KviKvsModu
 				return true;
 			}
 		}
-		// COMPAT
-		/*
-		} else if(h->type() == KviKvsEventHandler::OldModule)
-		{
-			if(((KviKvsOldModuleEventHandler *)h)->module() == i)
-			{
-				m_rawEventTable[uRawIdx]->removeRef(h);
-				if(m_rawEventTable[uRawIdx]->isEmpty())
-				{
-					delete m_rawEventTable[uRawIdx];
-					m_rawEventTable[uRawIdx] = 0;
-				}
-				return true;
-			}
-		}
-		*/
-		// END COMPAT
 	}
 	return false;
 }

@@ -291,17 +291,6 @@ bool DccVideoThread::handleIncomingData(KviDccThreadIncomingData * data, bool bC
 void DccVideoThread::restartRecording(int iDevice, int iInput, int)
 {
 	m_bRecording = false;
-	/*
-	if(!g_pVideoDevicePool)
-		g_pVideoDevicePool = Kopete::AV::VideoDevicePool::self();
-
-	g_pVideoDevicePool->stopCapturing();
-	if (EXIT_SUCCESS != g_pVideoDevicePool->open(iDevice)) return;
-	g_pVideoDevicePool->setImageSize(320, 240);
-	if(iInput >= 0)
-		g_pVideoDevicePool->selectInput(iInput);
-	g_pVideoDevicePool->startCapturing();
-*/
 	m_bRecording = true;
 }
 
@@ -310,9 +299,6 @@ void DccVideoThread::startRecording()
 	//qDebug("Start recording");
 	if(m_bRecording)
 		return; // already started
-
-	//ensure capturing
-	//	g_pVideoDevicePool->startCapturing();
 
 	//qDebug("Posting event");
 	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
@@ -938,16 +924,12 @@ bool DccVideoWindow::event(QEvent * e)
 				switch(*act)
 				{
 					case KVI_DCC_VIDEO_THREAD_ACTION_START_RECORDING:
-						// 						m_pRecordingLabel->setEnabled(true);
 						break;
 					case KVI_DCC_VIDEO_THREAD_ACTION_STOP_RECORDING:
-						// 						m_pRecordingLabel->setEnabled(false);
 						break;
 					case KVI_DCC_VIDEO_THREAD_ACTION_START_PLAYING:
-						// 						m_pPlayingLabel->setEnabled(true);
 						break;
 					case KVI_DCC_VIDEO_THREAD_ACTION_STOP_PLAYING:
-						// 						m_pPlayingLabel->setEnabled(false);
 						break;
 					case KVI_DCC_VIDEO_THREAD_ACTION_GRAB_FRAME:
 						m_pCameraView->render(m_pCameraImage);
@@ -993,19 +975,7 @@ void DccVideoWindow::connected()
 	output(KVI_OUT_DCCMSG, __tr2qs_ctx("Actual codec used is '%s'", "dcc"), opt->pCodec->name());
 
 	m_pSlaveThread = new DccVideoThread(this, m_pMarshal->releaseSocket(), opt);
-	/*
-#ifndef COMPILE_DISABLE_DCC_VIDEO
-	if(g_pVideoDevicePool)
-	{
-		g_pVideoDevicePool->fillDeviceQComboBox(m_pCDevices);
-		g_pVideoDevicePool->fillInputQComboBox(m_pCInputs);
-		g_pVideoDevicePool->fillStandardQComboBox(m_pCStandards);
 
-		connect(g_pVideoDevicePool, SIGNAL(deviceRegistered(const QString &) ), SLOT(deviceRegistered(const QString &)) );
-		connect(g_pVideoDevicePool, SIGNAL(deviceUnregistered(const QString &) ), SLOT(deviceUnregistered(const QString &)) );
-	}
-#endif
-*/
 	m_pSlaveThread->start();
 }
 

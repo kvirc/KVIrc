@@ -992,16 +992,7 @@ bool KvsObject_widget::eventFilter(QObject * o, QEvent * e)
 			return ret;
 		}
 	}
-	/*
-	if(o->parent())
-	{
-		qDebug("Propagation to parent");
-		return KviKvsObject::eventFilter(o->parent(),e);
-	} else {
-		qDebug("Propagation to object");
-	*/
 	return KviKvsObject::eventFilter(o, e);
-	//}
 }
 
 KVSO_CLASS_FUNCTION(widget, show)

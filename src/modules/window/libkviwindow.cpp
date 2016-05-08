@@ -1264,34 +1264,6 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 			c->warning(__tr2qs("The window with ID '%s' doesn't exist"), szWnd.toUtf8().data());
 		return true;
 	}
-
-	/*
-	QPixmap *pix=0;
-	pix = g_pIconManager->getImage(szBackground);
-	if (!pix){
-		KviScriptObject * ob = g_pScriptObjectController->lookupObject(szBackground);
-		if(!ob){
-			if(!c->hasSwitch('q',"quiet")) c->warning(__tr2qs("Background not found %Q "),&szBackground);
-			return true;
-			}
-		if(!ob->inherits("KviScriptPixmapObject")){
-			c->warning(__tr("Pixmap objects required!"));
-			return true;
-		}
-		QVariant pix1= ob->property("pixmap");
-		if (!pix1.asPixmap().isNull()){
-			c->warning(__tr("Pixmap is null"));
-			return true;
-		}
-		pWnd->view()->setPrivateBackgroundPixmap(pix1.asPixmap());
-		return true;
-		}
-	if(pWnd)
-		pWnd->view()->setPrivateBackgroundPixmap(*pix);
-	*/
-
-	//FIXME: This is broken
-
 	return true;
 }
 
@@ -1405,6 +1377,7 @@ static bool initializeCryptEngine(KviCryptEngine * eng, KviCString & szEncryptKe
 	@seealso:
 		[fnc]$asciiToHex[/fnc], [fnc]$features[/fnc]
 */
+
 static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 {
 	QString szWnd;

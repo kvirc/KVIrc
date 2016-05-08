@@ -519,34 +519,4 @@ void ThemeManagementDialog::closeEvent(QCloseEvent * e)
 
 void ThemeManagementDialog::tipRequest(QListWidgetItem *, const QPoint &)
 {
-	// FIXME
-	/*
-	//ThemeListWidgetItem * it = (ThemeListWidgetItem *)(m_pListWidget->itemAt(pnt));
-
-	//if(!it)return;
-
-	KviThemeInfo * pThemeInfo = ((ThemeListWidgetItem *)it)->themeInfo();
-
-	QString szThemeDescription;
-
-	ThemeFunctions::getThemeHtmlDescription(
-		szThemeDescription,
-		pThemeInfo->name(),
-		pThemeInfo->version(),
-		pThemeInfo->description(),
-		pThemeInfo->subdirectory(),
-		pThemeInfo->application(),
-		pThemeInfo->author(),
-		pThemeInfo->date(),
-		pThemeInfo->themeEngineVersion(),
-		pThemeInfo->mediumScreenshot(),
-		0
-	);
-	QLabel *wid=new QLabel(0);
-	wid->setWindowFlags(Qt::Popup);
-	wid->setText("Prova del tooltip");
-	wid->move(pnt);
-	wid->show();
-//	pTip->tip(m_pListWidget->visualItemRect(it),szThemeDescription);
-*/
 }

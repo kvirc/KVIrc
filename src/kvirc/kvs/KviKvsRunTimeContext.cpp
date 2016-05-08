@@ -50,8 +50,6 @@ KviKvsExtendedRunTimeData::~KviKvsExtendedRunTimeData()
 
 void KviKvsExtendedRunTimeData::setPopupId(QString * pPopupId)
 {
-	/*	if(m_pPopupId)
-		delete m_pPopupId;*/
 	m_pPopupId = pPopupId;
 };
 

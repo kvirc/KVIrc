@@ -554,32 +554,6 @@ KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffe
 	if(m_bDecryptCBC)
 		return doDecryptCBC(szIn, plainText) ? KviCryptEngine::DecryptOkWasEncrypted : KviCryptEngine::DecryptError;
 	return doDecryptECB(szIn, plainText) ? KviCryptEngine::DecryptOkWasEncrypted : KviCryptEngine::DecryptError;
-
-	/*
-		int len1 = kvi_strLen(MCPS2_STARTTAG);
-		int len2 = kvi_strLen(MCPS2_ENDTAG);
-		while(szIn.len() > 0)
-		{
-			int idx = szIn.findFirstIdx(MCPS2_STARTTAG);
-			if(idx == -1)
-			{
-				// no more encrypted stuff
-				plainText += szIn;
-				return true;
-			}
-			if(idx > 0) // a non encrypted block
-				plainText += szIn.left(idx);
-			szIn.cutLeft(idx + len1);
-
-			idx = szIn.findFirstIdx(MCPS2_ENDTAG);
-			if(idx != -1)
-			{
-				KviCString toDecrypt = szIn.left(idx);
-				if(!doDecrypt(toDecrypt,plainText))return false;
-			}
-			szIn.cutLeft(idx + len2);
-		}
-		*/
 }
 
 bool KviMircryptionEngine::doEncryptECB(KviCString & plain, KviCString & encoded)
@@ -594,8 +568,6 @@ bool KviMircryptionEngine::doEncryptECB(KviCString & plain, KviCString & encoded
 		while(padB < padE)
 			*padB++ = 0;
 	}
-
-	//byteswap_buffer((unsigned char *)plain.ptr(),plain.len());
 
 	unsigned char * out = (unsigned char *)KviMemory::allocate(plain.len()); // we use this to avoid endiannes problems
 
@@ -703,9 +675,10 @@ static KviCryptEngine * allocMircryptionEngine()
 
 #endif
 
-// =======================================
+///////////////////////////////////////////////////////////////////////////////
 // module routines
-// =======================================
+///////////////////////////////////////////////////////////////////////////////
+
 static bool rijndael_module_init(KviModule * m)
 {
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -820,9 +793,6 @@ static bool rijndael_module_can_unload(KviModule *)
 #endif
 }
 
-// =======================================
-// plugin definition structure
-// =======================================
 KVIRC_MODULE(
     "Rijndael crypt engine",
     "4.0.0",

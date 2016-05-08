@@ -1697,17 +1697,7 @@ static bool mediaplayer_module_init(KviModule * m)
 	MP_KVS_REGFNC(getRepeat, "getRepeat");
 	MP_KVS_REGFNC(getShuffle, "getShuffle");
 	MP_KVS_REGFNC(getVol, "getVol");
-	/*
-	// Crissi
-	m->registerFunction( "getmp3tag_date", mediaplayer_fnc_getmp3tag_date );
-	m->registerFunction( "getmp3tag_version", mediaplayer_fnc_getmp3tag_version );
-	m->registerFunction( "getmp3tag_layer", mediaplayer_fnc_getmp3tag_layer );
-	m->registerFunction( "getmp3tag_crc", mediaplayer_fnc_getmp3tag_crc );
-	m->registerFunction( "getmp3tag_copyright", mediaplayer_fnc_getmp3tag_copyright );
-	m->registerFunction( "getmp3tag_original", mediaplayer_fnc_getmp3tag_original );
-	m->registerFunction( "getmp3tag_emphasis", mediaplayer_fnc_getmp3tag_emphasis );
-	m->registerFunction( "getmp3tag_tracknumber", mediaplayer_fnc_getmp3tag_tracknumber );
-*/
+
 	return true;
 }
 

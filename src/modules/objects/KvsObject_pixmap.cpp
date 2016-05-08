@@ -566,18 +566,6 @@ KVSO_CLASS_FUNCTION(pixmap, load)
 	m_currentType = Image;
 	m_pImage->load(szFile);
 	return true;
-	/*
- *	FIXME UNUSED CODE
-	if (m_currentType==Image && m_pImage)
-		delete m_pImage;
-	else if (m_currentType==AnimatedPixmap && m_pAnimatedPixmap)
-		delete m_pAnimatedPixmap;
-	if(!m_pPixmap) m_pPixmap=new QPixmap();
-	m_currentType=Pixmap;
-	m_pPixmap->load(szFile);
-	qDebug("alpha %i",m_pPixmap->hasAlpha());
-	return true;
-*/
 }
 
 KVSO_CLASS_FUNCTION(pixmap, save)
@@ -687,20 +675,6 @@ KVSO_CLASS_FUNCTION(pixmap, grabWidget)
 	*m_pPixmap = QPixmap::grabWidget(((KvsObject_widget *)pObject)->widget());
 	return true;
 
-	/*	FIXME UNUSED CODE
-	QString szFileName;
-	KVSO_PARAMETERS_BEGIN(c)
-			KVSO_PARAMETER("file_name",KVS_PT_STRING,0,szFileName)
-	KVSO_PARAMETERS_END(c)
-	QPrinter printer;//(QPrinter::HighResolution);
-	printer.setOutputFormat(QPrinter::PdfFormat);
-	printer.setPaperSize(QPrinter::A4);
-	printer.setOutputFileName(szFileName);
-
-	QPixmap pixmap=QPixmap::grabWidget(((QTableWidget *)widget()));
-	QPainter painter(&printer);
-	painter.drawPixmap(QPoint(0,0), pixmap, pixmap.rect());
-*/
 }
 
 KVSO_CLASS_FUNCTION(pixmap, height)
@@ -711,8 +685,6 @@ KVSO_CLASS_FUNCTION(pixmap, height)
 		c->returnValue()->setInteger(m_pPixmap->height());
 	else
 		c->returnValue()->setInteger(0);
-	//else if(m_pAnimatedPixmap) c->returnValue()->setInteger(m_pAnimatedPixmap->size().height());
-	//else c->returnValue()->setInteger(m_pPixmap->height());
 	return true;
 }
 
@@ -724,17 +696,9 @@ KVSO_CLASS_FUNCTION(pixmap, width)
 		c->returnValue()->setInteger(m_pPixmap->width());
 	else
 		c->returnValue()->setInteger(0);
-	//else if(m_pAnimatedPixmap) c->returnValue()->setInteger(m_pAnimatedPixmap->size().height());
-	//else c->returnValue()->setInteger(m_pPixmap->height());
 	return true;
 }
 
-/*QPixmap * KvsObject_pixmap::getPixmap()
-{
-	if (!m_pAnimatedPixmap && !m_pPixmap) return new QPixmap();
-	else if(m_pAnimatedPixmap) return m_pAnimatedPixmap->pixmap();
-	else return m_pPixmap;
-}*/
 KVSO_CLASS_FUNCTION(pixmap, frameChangedEvent)
 {
 	emitSignal("frameChanged", c);

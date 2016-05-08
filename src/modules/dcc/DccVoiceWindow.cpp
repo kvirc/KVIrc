@@ -722,8 +722,6 @@ DccVoiceWindow::DccVoiceWindow(DccDescriptor * dcc, const char * name)
 
 	vbox2->setSpacing(1);
 
-	//#warning "The volume slider should be enabled only when receiving data"
-	//m_pVolumeSlider = new QSlider(-100, 0, 10, 0, Qt::Vertical, m_pHBox, "dcc_voice_volume_slider");
 	m_pVolumeSlider = new QSlider(Qt::Vertical, m_pHBox);
 	m_pVolumeSlider->setObjectName("dcc_voice_volume_slider");
 	m_pVolumeSlider->setMinimum(-100);
@@ -752,8 +750,6 @@ DccVoiceWindow::DccVoiceWindow(DccDescriptor * dcc, const char * name)
 	m_pHBox->setMargin(2);
 	m_pHBox->setSpacing(1);
 
-	//setFocusHandler(m_pIrcView,this);
-
 	m_pMarshal = new DccMarshal(this);
 	connect(m_pMarshal, SIGNAL(error(KviError::Code)), this, SLOT(handleMarshalError(KviError::Code)));
 	connect(m_pMarshal, SIGNAL(connected()), this, SLOT(connected()));
@@ -777,8 +773,6 @@ DccVoiceWindow::~DccVoiceWindow()
 	KviThreadManager::killPendingEvents(this);
 
 	delete m_pUpdateTimer;
-	//	delete m_pDescriptor;
-	//	delete m_pMarshal;
 }
 
 void DccVoiceWindow::startConnection()
@@ -986,7 +980,7 @@ void DccVoiceWindow::connected()
 	output(KVI_OUT_DCCMSG, __tr2qs_ctx("Actual codec used is '%s'", "dcc"), opt->pCodec->name());
 
 	opt->bForceHalfDuplex = KVI_OPTION_BOOL(KviOption_boolDccVoiceForceHalfDuplex);
-	//	opt->bForceDummyReadTrigger = false;
+
 	opt->iPreBufferSize = KVI_OPTION_UINT(KviOption_uintDccVoicePreBufferSize);
 	opt->szSoundDevice = KVI_OPTION_STRING(KviOption_stringDccVoiceSoundDevice).toUtf8().data();
 	opt->iSampleRate = m_pDescriptor->iSampleRate;
@@ -1042,7 +1036,6 @@ int DccVoiceWindow::getMixerVolume(void) const
 	}
 
 	left = (ret & 0x00ff);
-	//	right = (ret & 0xff00) >> 8;
 
 	::close(fd);
 

@@ -31,6 +31,7 @@
 #include "KviIconManager.h"
 
 #include <QMenu>
+
 /*
 	@doc:	toolbutton
 	@keyterms:
@@ -282,24 +283,7 @@ KVSO_CLASS_FUNCTION(toolButton, openPopup)
 	((QToolButton *)widget())->showMenu();
 	return true;
 }
-/*
-KVSO_CLASS_FUNCTION(toolButton,setPopupDelay)
-{
-	kvs_int_t uDelay;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("delay",KVS_PT_UNSIGNEDINTEGER,0,uDelay)
-	KVSO_PARAMETERS_END(c)
-	if (widget())
-		  ((QToolButton *)widget())->setPopupDelay(uDelay);
-	return true;
-}
-KVSO_CLASS_FUNCTION(toolButton,popupDelay)
-{
-	if (widget())
-		c->returnValue()->setInteger(((QToolButton *)widget())->popupDelay());
-	return true;
-}
-*/
+
 KVSO_CLASS_FUNCTION(toolButton, setTextPosition)
 {
 	CHECK_INTERNAL_POINTER(widget())

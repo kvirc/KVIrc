@@ -813,41 +813,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow * wnd,
 		szNick.prepend(KviControlCodes::Color);
 		szNick.append(KviControlCodes::Color);
 	}
-	/*	if(KVI_OPTION_BOOL(KviOption_boolUseUserListColorsAsNickColors) && bIsChan)
-	{
-		if(((KviChannelWindow*)wnd)->userListView())
-		{
-			KviUserListEntry *e = ((KviChannelWindow*)wnd)->userListView()->findEntry(nick);
-			if(e)
-			{
-				int sum = 0;
-				int i = nick.length();
-				const QChar * aux = nick.unicode();
-				// FIXME: Shouldn't this be case insensitive ?
-				while(i > 0)
-				{
-					sum += aux->unicode();
-					aux++;
-					i--;
-				}
-				int color;
-				if(e->flags() == 0)
-				{
-					color = KVI_COLOR_EXT_USER_NORMAL;
-				} else {
-					color = (e->flags() & KVI_USERFLAG_CHANOWNER) ? \
-						KVI_COLOR_EXT_USER_OWNER : ((e->flags() & KVI_USERFLAG_CHANADMIN) ? \
-						KVI_COLOR_EXT_USER_ADMIN : ((e->flags() & KVI_USERFLAG_OP) ? \
-						KVI_COLOR_EXT_USER_OP : ((e->flags() & KVI_USERFLAG_HALFOP) ? \
-						KVI_COLOR_EXT_USER_HALFOP : ((e->flags() & KVI_USERFLAG_VOICE) ? \
-						KVI_COLOR_EXT_USER_VOICE : KVI_COLOR_EXT_USER_USEROP))));
-				}
-				szNick.prepend(QString("%1").arg(color));
-				szNick.prepend(KVI_TEXT_COLOR);
-				szNick.append(KVI_TEXT_COLOR);
-			}
-		}
-	}*/
+
 	if(KVI_OPTION_BOOL(KviOption_boolBoldedNicks))
 	{
 		szNick.prepend(KviControlCodes::Bold);

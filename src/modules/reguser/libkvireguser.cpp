@@ -955,58 +955,6 @@ static bool reguser_kvs_fnc_exactMatch(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-///*
-//	@doc: reguser.matches
-//	@type:
-//		function
-//	@title:
-//		$reguser.matches
-//	@short:
-//		Returns entries in the registered user database
-//	@syntax:
-//		$reguser.matches(<user_mask>)
-//	@description:
-//		Returns a comma separated list of registered user masks that match <user_mask>.[br]
-//		User mask must be in the format <nick>!<user>@<host>, where <user> and
-//		<host> may contain '*' wildcards.[br]
-//		If no registered mask matches the <user_mask> an empty string is returned.[br]
-//	@seealso:
-//		[module:reguser]reguser module documentation[/module]
-//*/
-
-//static void search_reguser_list(KviRegisteredUserList * l,KviWindow * w,const char * mask,KviCString & buffer)
-//{
-//	for(KviRegisteredUser * u = l->first();u;u = l->next())
-//	{
-//		if(u->matches(mask))
-//		{
-//			if(buffer.hasData())buffer.append(',');
-//			buffer.append(u->mask());
-//		}
-//	}
-//}
-
-//static bool reguser_module_fnc_matches(KviModule *m,KviCommand *c,KviParameterList * parms,KviCString &buffer)
-//{
-//	ENTER_STACK_FRAME(c,"reguser.matches");
-//
-//	KviCString list;
-//
-//	const KviPointerHashTable<const char *,KviRegisteredUserList> * d = g_pRegisteredUserDataBase->nickDict();
-//	KviPointerHashTableIterator<const char *,KviRegisteredUserList> it(*d);
-//	while(KviRegisteredUserList * l = it.current())
-//	{
-//		search_reguser_list(l,c->window(),parms->safeFirstParam(),list);
-//		++it;
-//	}
-//
-//	search_reguser_list(g_pRegisteredUserDataBase->wildList(),c->window(),parms->safeFirstParam(),list);
-//
-//	buffer.append(list);
-//
-//	return c->leaveStackFrame();
-//}
-
 /*
 	@doc: reguser.mask
 	@type:

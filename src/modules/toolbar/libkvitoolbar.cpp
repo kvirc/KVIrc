@@ -77,12 +77,6 @@ static bool toolbar_kvs_cmd_create(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETER("icon_id", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szIconId)
 	KVSM_PARAMETERS_END(c)
 
-	/*	if(!c->getParameterCode(1,szLabel))
-	{
-		c->error(__tr2qs("Internal error: call a head-shrinker"));
-		return false;
-	}
-*/
 	if(szLabel.isEmpty())
 		szLabel = "$tr(Unnamed)";
 

@@ -189,25 +189,6 @@ void KviTextIconManager::load()
 	int iUpd = 0;
 	QString szPath;
 
-	/*
-	Gone: texticons not supported in themes. Otherwise saving them is problematic (where they should be saved?)
-	bool bCheckUserDefinedTheme = false;
-
-	if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
-	{
-		g_pApp->getLocalKvircDirectory(szPath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
-		szPath += KVI_PATH_SEPARATOR_CHAR;
-		szPath += KVI_CONFIGFILE_TEXTICONS;
-		bCheckUserDefinedTheme = QFile::exists(szPath);
-	}
-
-	if(bCheckUserDefinedTheme)
-	{
-		load(szPath,false);
-		return;
-	}
-	*/
-
 	if(g_pApp->getReadOnlyConfigPath(szTmp, KVI_CONFIGFILE_TEXTICONS))
 		iUpd = load(szTmp, false);
 
@@ -241,21 +222,8 @@ void KviTextIconManager::applyOptions()
 void KviTextIconManager::save()
 {
 	QString szPath;
-	/*
-	Gone: texticons not supported in themes. Otherwise saving them is problematic (where they should be saved?)
-	if(!KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).isEmpty())
-	{
-		g_pApp->getLocalKvircDirectory(szPath,KviApplication::Themes,KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
-		// getLocalKvircDirectory will not create the last component if it doesn't exist
-		KviFileUtils::makeDir(szPath);
-		szPath += KVI_PATH_SEPARATOR_CHAR;
-		szPath += KVI_CONFIGFILE_TEXTICONS;
-	} else {
-	*/
 	g_pApp->getLocalKvircDirectory(szPath, KviApplication::Config, KVI_CONFIGFILE_TEXTICONS);
-	/*
-	}
-	*/
+
 	//qDebug("Saving text icons to %s",szPath.toUtf8().data());
 	save(szPath);
 }

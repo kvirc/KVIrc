@@ -591,26 +591,8 @@ void EventEditorWindow::getConfigGroupName(QString & szName)
 
 void EventEditorWindow::saveProperties(KviConfigurationFile *) //cfg
 {
-	/*
-#ifdef COMPILE_SCRIPTTOOLBAR
-	cfg->writeEntry("Sizes",m_pEditor->sizes());
-	cfg->writeEntry("LastEvent",m_pEditor->lastEditedEvent().ptr());
-	//qDebug("LAST EDITED=%s",m_pEditor->lastEditedEvent().ptr());
-#endif // COMPILE_SCRIPTTOOLBAR
-*/
 }
 
 void EventEditorWindow::loadProperties(KviConfigurationFile *) //cfg
 {
-	/*
-#ifdef COMPILE_SCRIPTTOOLBAR
-	QValueList<int> def;
-	def.append(20);
-	def.append(80);
-	m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
-	KviCString tmp = cfg->readEntry("LastEvent","");
-	m_pEditor->editEvent(tmp);
-	//qDebug("LAST EDITED WAS %s",tmp.ptr());
-#endif // COMPILE_SCRIPTTOOLBAR
-*/
 }

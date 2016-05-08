@@ -890,7 +890,6 @@ static void dccModuleParseDccGet(KviDccRequest * dcc)
 	}
 
 	//#warning "IF NOT IGNORE DCC GET!"
-
 	//#warning "CREATE IT MINIMIZED ETC..."
 	//#warning "MAYBE USE A DIALOG TO ACCEPT THE REQUEST ?"
 	//#warning "DO NOT ACCEPT /etc/* requests..."
@@ -1108,19 +1107,6 @@ static void dccModuleParseDccVideo(KviDccRequest * dcc)
 		}
 	}
 
-	// 	bool bOk;
-
-	// 	int iSampleRate = dcc->szParam4.toInt(&bOk);
-	// 	if(!bOk)
-	// 	{
-	// 		if(!dcc->ctcpMsg->msg->haltOutput())
-	// 		{
-	// 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-	// 				__tr2qs_ctx("The above request appears to be broken: Invalid sample-rate '%s', defaulting to 8000","dcc"),dcc->szParam4.ptr());
-	// 		}
-	// 		iSampleRate = 8000;
-	// 	}
-
 	DccDescriptor * d = new DccDescriptor(dcc->pConsole);
 	d->szNick = dcc->ctcpMsg->pSource->nick();
 	d->szUser = dcc->ctcpMsg->pSource->user();
@@ -1162,15 +1148,6 @@ static void dccModuleParseDccCanvas(KviDccRequest * dcc)
 	if(!dcc_module_normalize_target_data(dcc, dcc->szParam2, dcc->szParam3))
 		return;
 
-//  Actually unused parameter
-//	if(!(kvi_strEqualCI("canvas",dcc->szParam1.ptr())))
-//	{
-//		if(!dcc->ctcpMsg->msg->haltOutput())
-//		{
-//			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-//				__tr("The above request is broken: the second parameter is '%s' and shoud be 'chat'; trying to continue"),dcc->szParam1.ptr());
-//		}
-//	}
 #ifdef COMPILE_DCC_CANVAS
 	DccDescriptor * d = new DccDescriptor(dcc->pConsole);
 	d->szNick = dcc->ctcpMsg->pSource->nick();

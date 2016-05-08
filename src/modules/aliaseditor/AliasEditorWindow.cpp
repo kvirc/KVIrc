@@ -922,6 +922,7 @@ void AliasEditorWidget::appendSelectedAliasItems(KviPointerList<AliasEditorTreeW
 		}
 	}
 }
+
 void AliasEditorWidget::appendSelectedAliasItemsRecursive(KviPointerList<AliasEditorTreeWidgetItem> * l, QTreeWidgetItem * pStartFrom)
 {
 	for(int i = 0; i < pStartFrom->childCount(); i++)
@@ -939,10 +940,9 @@ void AliasEditorWidget::appendSelectedItems(KviPointerList<AliasEditorTreeWidget
 	for(int i = 0; i < list.count(); i++)
 	{
 		l->append((AliasEditorTreeWidgetItem *)list.at(i));
-		/* if (!((AliasEditorTreeWidgetItem *)list.at(i))->isAlias())
-			appendSelectedAliasItemsRecursive(l,list.at(i));*/
 	}
 }
+
 void AliasEditorWidget::appendSelectedItemsRecursive(KviPointerList<AliasEditorTreeWidgetItem> * l, QTreeWidgetItem * pStartFrom)
 {
 	for(int i = 0; i < pStartFrom->childCount(); i++)
@@ -1178,6 +1178,7 @@ void AliasEditorWidget::activateItem(QTreeWidgetItem * it)
 	openParentItems(it);
 	m_pTreeWidget->setCurrentItem(it);
 }
+
 void AliasEditorWidget::newAlias()
 {
 	QString szNewName = askForAliasName(__tr2qs_ctx("Enter a Filename - KVIrc", "editor"), __tr2qs_ctx("Please enter the new name for the alias.", "editor"), "myfunction");

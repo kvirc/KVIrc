@@ -626,25 +626,6 @@ KviFontSelector * KviOptionsWidget::addFontSelector(QWidget * pParent, const QSt
 	return d;
 }
 
-//#define DECLARE_COMMIT_FUNCTION(__fnc,__class,__classString)
-//	void KviOptionsWidget::__fnc()
-//	{
-//		QObjectList * l = queryList(__classString);
-//		if(!l)return;
-//		QObjectListIt it(*l);
-//		while(it.current())
-//		{
-//			((__class *)it.current())->commit();
-//			++it;
-//		}
-//		delete l;
-//	}
-
-//DECLARE_COMMIT_FUNCTION(commitBoolSelectors,KviBoolSelector,"KviBoolSelector")
-//DECLARE_COMMIT_FUNCTION(commitUIntSelectors,KviUIntSelector,"KviUIntSelector")
-//DECLARE_COMMIT_FUNCTION(commitStringSelectors,KviStringSelector,"KviStringSelector")
-//DECLARE_COMMIT_FUNCTION(commitPixmapSelectors,KviPixmapSelector,"KviPixmapSelector")
-
 void KviOptionsWidget::addRowSpacer(int x1, int y1, int x2, int y2)
 {
 	QWidget * w = new QWidget(this);
@@ -701,27 +682,8 @@ KviTalGroupBox * KviOptionsWidget::addGroupBox(int x1, int y1, int x2, int y2, Q
 	return g;
 }
 
-/*
-void KviOptionsWidget::addAdvancedButton(int x1,int y1,int x2,int y2)
-{
-	QWidget * w = topLevelWidget();
-	if(!w)return;
-	if(!w->inherits("KviGeneralOptionsDialog"))
-		return;
-
-	QPushButton * b = new QPushButton(__tr2qs("Advanced..."),this);
-	connect(b,SIGNAL(clicked()),this,SLOT(switchToAdvancedPage()));
-	addWidgetToLayout(b,x1,y1,x2,y2);
-}
-*/
-
 void KviOptionsWidget::commitSelectors()
 {
-	//	if(m_iSelectors & KVI_OPTIONSELECTOR_TYPE_BOOL)commitBoolSelectors();
-	//	if(m_iSelectors & KVI_OPTIONSELECTOR_TYPE_UINT)commitUIntSelectors();
-	//	if(m_iSelectors & KVI_OPTIONSELECTOR_TYPE_STRING)commitStringSelectors();
-	//	if(m_iSelectors & KVI_OPTIONSELECTOR_TYPE_PIXMAP)commitPixmapSelectors();
-	//	m_iSelectors = 0;
 	for(KviSelectorInterface * i = m_pSelectorInterfaceList->first(); i; i = m_pSelectorInterfaceList->next())
 	{
 		i->commit();
@@ -732,7 +694,6 @@ void KviOptionsWidget::commitOptionsReset()
 {
 	if(m_iResetFlags)
 		g_pApp->optionResetUpdate(m_iResetFlags);
-	//m_iResetFlags = 0;
 }
 
 void KviOptionsWidget::commit()
@@ -740,11 +701,3 @@ void KviOptionsWidget::commit()
 	commitSelectors();
 	commitOptionsReset();
 }
-
-//void KviOptionsWidget::switchToAdvancedPage()
-//{
-// FIXME: what happens if we're toplevel ????
-// (so nobody listens to this signal....)
-
-//	emit wantToSwitchToAdvancedPage(this);
-//}

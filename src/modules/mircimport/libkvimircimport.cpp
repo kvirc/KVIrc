@@ -364,21 +364,6 @@ static bool mircimport_module_can_unload(KviModule *)
 	return ((!g_pMircServersIniImport) && (!g_pRemoteMircServersIniImport));
 }
 
-/*
-KVIMODULEEXPORTFUNC KviIrcServerImport * mircimport_module_createIrcServerImport(const char *filterName)
-{
-	if(kvi_strEqualCI(filterName,__tr("Import from servers.ini")))
-	{
-		if(!g_pMircServersIniImport)g_pMircServersIniImport = new KviMircServersIniImport();
-		return g_pMircServersIniImport;
-	} else {
-		if(!g_pRemoteMircServersIniImport)g_pRemoteMircServersIniImport = new KviRemoteMircServersIniImport("http://www.mirc.co.uk/servers.ini");
-		return g_pRemoteMircServersIniImport;
-	}
-	return 0;
-}
-*/
-
 KVIRC_MODULE(
     "mIRCimport",                                                   // module name
     "4.0.0",                                                        // module version

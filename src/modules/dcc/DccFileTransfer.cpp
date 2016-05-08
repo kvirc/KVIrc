@@ -2205,14 +2205,7 @@ bool DccFileTransfer::event(QEvent * e)
 					    &(m_pDescriptor->szNick), &(m_pDescriptor->szIp), &(m_pDescriptor->szPort),
 					    &(m_pDescriptor->szLocalFileName));
 				}
-				/*
-				// Also add an optional message to the notifier, unless it is an AVATAR download!
-				if(KVI_OPTION_BOOL(KviOption_boolNotifiDccDownloadSuccessInNotifier))
-				{
-					QString szMsg = __tr2qs_ctx("");
-					g_pApp->notifierMessage(0,KVI_SMALLICON_DCCMSG,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
-				}
-				*/
+
 				if(m_pDescriptor->bRecvFile)
 					g_pApp->fileDownloadTerminated(true, m_pDescriptor->szFileName.toUtf8().data(), m_pDescriptor->szLocalFileName.toUtf8().data(), m_pDescriptor->szNick.toUtf8().data());
 				m_szStatusString = __tr2qs_ctx("Transfer completed", "dcc");
@@ -2247,8 +2240,6 @@ bool DccFileTransfer::event(QEvent * e)
 				break;
 		}
 	}
-	//#warning "Remove this!"
-	//	if(e->type() == QEvent::Close)qDebug("Close event received");
 	return KviFileTransfer::event(e);
 }
 
@@ -2359,18 +2350,6 @@ bool DccFileTransfer::resumeAccepted(const char * filename, const char * port, c
 	outputAndLog(__tr2qs_ctx("RESUME accepted, transfer will begin at position %1", "dcc").arg(m_pDescriptor->szLocalFileSize));
 
 	listenOrConnect();
-
-	/*
-	int ret = m_pMarshal->dccConnect(m_pDescriptor->szIp.toUtf8().data(),
-					m_pDescriptor->szPort.toUtf8().data(),m_pDescriptor->bDoTimeout);
-
-	if(ret != KviError::Success)handleMarshalError(ret);
-	else {
-		m_szStatusString = __tr2qs_ctx("Contacting host %1 on port %2","dcc").arg(m_pDescriptor->szIp, m_pDescriptor->szPort);
-		outputAndLog(m_szStatusString);
-		displayUpdate();
-	}
-	*/
 
 	return true;
 }

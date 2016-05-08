@@ -623,24 +623,7 @@ KVSO_CLASS_FUNCTION(webView, removeFromDocument)
 	element.removeFromDocument();
 	return true;
 }
-/*KVSO_CLASS_FUNCTION(webView,cloneElement)
-{
-	kvs_int_t iEleId;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("element_identifier",KVS_PT_INTEGER,0,iEleId)
-	KVSO_PARAMETERS_END(c)
-	QWebElement element=getElement(iEleId);
-	if (element.isNull())
-	{
-		c->warning(__tr2qs_ctx("Document element with ID %d doesn't exist","objects"),iEleId);
-		return true;
-	}
-	element.removeFromDocument();
-	int id=insertElement(element.clone(),true);
-	c->returnValue()->setInteger((kvs_int_t) id);
-	return true;
-}
-*/
+
 KVSO_CLASS_FUNCTION(webView, appendInside)
 {
 	kvs_int_t iEleId;
@@ -1294,13 +1277,7 @@ void KvsObject_webView::slotOnMouseOut(QString szParam)
 	callFunction(this, "jsMouseOutEvent", &params);
 }
 
-/*KVSO_CLASS_FUNCTION(webView,jsWindowObjectClearedEvent)
-{
-	emitSignal("jsWindowObjectCleared",c,c->params());
-	return true;
-}*/
 // slots
-
 void KvsObject_webView::slotLoadFinished(bool bOk)
 {
 	if(bOk)
@@ -1327,12 +1304,6 @@ void KvsObject_webView::slotLinkClicked(const QUrl & url)
 	KviKvsVariantList params(new KviKvsVariant(szUrl));
 	callFunction(this, "linkClickedEvent", &params);
 }
-/*void KvsObject_webView::javaScriptWindowObjectCleared(const QUrl &url)
-{
-	//KviKvsVariantList *lParams=0;
-	//callFunction(this,"jsWindowObjectClearedEvent",lParams);
-	addToJavaScriptWindowObject
-}*/
 
 void KvsObject_webView::slotDownloadRequest(const QNetworkRequest & r)
 {

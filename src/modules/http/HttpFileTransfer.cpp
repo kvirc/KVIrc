@@ -231,18 +231,7 @@ void HttpFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 			int iLeftHalf = (iW - 2) / 2;
 			int iRightHalf = iW - (iLeftHalf + 1);
 			int iLineSpacing = fm.lineSpacing() + 2;
-			/*
-			txt = __tr2qs_ctx("Spd:","dcc");
-			txt += " ";
-			if(iInstantSpeed >= 0)
-			{
-				QString tmpisp;
-				KviNetUtils::formatNetworkBandwidthString(tmpisp,iAvgSpeed);
-				txt += tmpisp;
-			} else {
-				txt += "? B/s";
-			}
-			*/
+
 			txt = __tr2qs_ctx("Avg:", "dcc");
 			txt += " ";
 			if(iAvgSpeed >= 0)

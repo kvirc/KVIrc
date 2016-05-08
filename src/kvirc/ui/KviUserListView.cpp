@@ -339,14 +339,6 @@ void KviUserListView::updateScrollBarRange()
 
 void KviUserListView::applyOptions()
 {
-	/*	if(!KVI_OPTION_BOOL(KviOption_boolDisableUserListLabel)){
-		m_pUsersLabel->hide();
-		m_pViewArea->setGeometry(0,0,width(),height());
-	}
-	if(KVI_OPTION_BOOL(KviOption_boolDisableUserListLabel)){
-		m_pUsersLabel->show();
-		updateUsersLabel();
-	}*/
 	setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
 	QFontMetrics fm(font());
 
@@ -528,28 +520,6 @@ bool KviUserListView::completeNickStandard(const QString & szBegin, const QStrin
 				}
 				return true;
 			}
-			/*
-			 * This part of code has been commented out to fix #236
-			 * This code takes some absurt assterion about the first character of nicknames
-			 * and their order in the userlist.
-
-			else if(iResult < 0)
-			{
-				// No match...begin is lower than the current entry
-				if(pEntry->m_iFlags == 0) return false;
-				else {
-					int iFlags = pEntry->m_iFlags;
-					// skip the current flag
-					while(pEntry)
-					{
-						if(pEntry->m_iFlags != iFlags)
-							break;
-						pEntry = pEntry->m_pNext;
-					}
-					continue;
-				}
-			}
-			*/
 		}
 		pEntry = pEntry->m_pNext;
 	}
@@ -560,7 +530,6 @@ bool KviUserListView::completeNickStandard(const QString & szBegin, const QStrin
 void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry * pUserEntry)
 {
 	// Complex insertion task :)
-
 	m_pEntryDict->insert(szNnick, pUserEntry);
 	m_iTotalHeight += pUserEntry->m_iHeight;
 
@@ -687,11 +656,11 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 									pEntry = pEntry->m_pNext;
 								}
 							} // else is userop, ops, halfops, and voiced are skipped
-						}     // else it is voiced, ops and halfops are skipped
-					}         // else it is halfop,  ops are skipped
-				}             // else it is op, chan admins are skipped
-			}                 // else it is chan admin, chan owners are skipped
-		}                     // else it is chan owner, so nothing to skip: they are first in the list
+						}         // else it is voiced, ops and halfops are skipped
+					}                 // else it is halfop,  ops are skipped
+				}                         // else it is op, chan admins are skipped
+			}                                 // else it is chan admin, chan owners are skipped
+		}                                         // else it is chan owner, so nothing to skip: they are first in the list
 
 		// now strcmp within the current user-flag group...
 		while(pEntry && (KviQString::cmpCI(pEntry->m_szNick, pUserEntry->m_szNick,

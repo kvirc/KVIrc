@@ -525,7 +525,6 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpression(char terminator)
 	curTopOperator->setLeft(left);
 
 	// ok.. parse the right side
-
 	// Now curTopOperator has the left subtree (one node) set
 	// and it points to the TOP (=ROOT) node
 	// Evaluate the rest
@@ -598,41 +597,4 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpression(char terminator)
 	KVSP_ASSERT(false);
 
 	return nullptr; //newer here
-
-	/*
-
-
-	KviKvsTreeNodeExpression * right = parseExpression(terminator);
-	if(!right)
-	{
-		delete op;
-		return 0;
-	}
-
-	// left * a + b
-
-	//      *
-	// left      +
-	//         a    b
-
-*/
-	/*
-	// now.. the left side is a single operand for sure
-	// the right side might be a single operand or a sequence of operations
-	if(right->isOperator())
-	{
-		// if the operator has lower precedence than op then
-		if(right->precedence() < op->precedence())
-		{
-			right->attachHighPrecedenceOperator(op);
-			return right;
-		}
-	}
-*/
-	/*
-	// a single operand or a greater precedence operator
-	op->setRight(right);
-
-	return op;
-	*/
 }

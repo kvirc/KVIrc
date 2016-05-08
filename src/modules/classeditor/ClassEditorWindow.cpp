@@ -459,30 +459,6 @@ void ClassEditorWidget::createFullClass(KviKvsObjectClass * pClass, ClassEditorT
 	}
 }
 
-/*
-void ClassEditorWidget::classRefresh(const QString & szName)
-{
-	if(m_bSaving)
-		return;
-	ClassEditorTreeWidgetItem * item;
-	KviKvsScript * class = KviKvsClassManager::instance()->classDict()->find(szName);
-	item = createFullItem(szName);
-	if(item!=m_pLastEditedItem)
-	{
-		item->setBuffer(class->code());
-		return;
-	}
-	if(
-		QMessageBox::warning(0,__tr2qs_ctx("Confirm Overwriting Current - KVIrc","editor"),
-				__tr2qs_ctx("An external script has changed the class you are currently editing. Do you want to accept the external changes?","editor"),
-				QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes
-		)
-		return;
-	item->setBuffer(class->code());
-	m_pEditor->setText(class->code());
-}
-*/
-
 bool ClassEditorWidget::hasSelectedItems()
 {
 	return m_pTreeWidget->selectedItems().count() ? 1 : 0;
@@ -1057,12 +1033,6 @@ void ClassEditorWidget::slotReplaceAll(const QString & szFind, const QString & s
 {
 	m_pEditor->setFindText(szReplace);
 	searchReplace(szFind, true, szReplace);
-	/*
-	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
-	{
-		recursiveSearchReplace(szFind,(ClassEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i),true,szReplace);
-	}
-	*/
 }
 
 void ClassEditorWidget::exportClassBuffer(QString & szBuffer, ClassEditorTreeWidgetItem * pItem)

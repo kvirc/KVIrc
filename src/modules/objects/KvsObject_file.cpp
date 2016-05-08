@@ -360,7 +360,7 @@ KVSO_CLASS_FUNCTION(file, readByte)
 	char ch;
 	if(!m_pFile->getChar(&ch))
 		c->warning(__tr2qs_ctx("Read error occurred!", "objects")); // c->error ?
-	//QString szChar = QChar(ch);
+
 	c->returnValue()->setInteger((kvs_int_t)ch);
 	return true;
 }
@@ -406,14 +406,14 @@ KVSO_CLASS_FUNCTION(file, readBlock)
 			c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object", "objects"));
 			return true;
 		}
-		//m_pFile->flush();
+
 		((KvsObject_memoryBuffer *)pObject)->pBuffer()->append(m_pFile->read(uLen));
 		return true;
 	}
 	else
 	{
 		char * buff = new char[uLen + 1];
-		//m_pFile->flush(); // advice from QFile man page (to avoid trash)
+
 		int rlen = m_pFile->read(buff, uLen);
 		buff[rlen] = '\0';
 		QString szBlock(buff);
@@ -537,7 +537,7 @@ KVSO_CLASS_FUNCTION(file, writeBlock)
 				const char * pData = ((KvsObject_memoryBuffer *)pObject)->pBuffer()->data();
 				int rlen = m_pFile->write(pData, uLen);
 				c->returnValue()->setInteger(rlen);
-				//m_pFile->flush();
+
 			}
 			else
 			{
@@ -557,7 +557,6 @@ KVSO_CLASS_FUNCTION(file, writeBlock)
 			const char * block = szBlock.toUtf8().data();
 			int rlen = m_pFile->write(block, uLen);
 			c->returnValue()->setInteger(rlen);
-			//m_pFile->flush();
 		}
 	}
 	return true;
@@ -568,7 +567,7 @@ KVSO_CLASS_FUNCTION(file, readLine)
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	QString buffer;
-	//bool ok=KviFileUtils::readLine(m_pFile,buffer);
+
 	buffer = m_pFile->readLine();
 	c->returnValue()->setString(buffer);
 	return true;

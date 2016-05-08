@@ -532,26 +532,8 @@ void RawEditorWindow::getConfigGroupName(QString & szName)
 
 void RawEditorWindow::saveProperties(KviConfigurationFile *)
 {
-	/*
-	#ifdef COMPILE_SCRIPTTOOLBAR
-		cfg->writeEntry("Sizes",m_pEditor->sizes());
-		cfg->writeEntry("LastRaw",m_pEditor->lastEditedRaw().ptr());
-		//qDebug("LAST EDITED=%s",m_pEditor->lastEditedRaw().ptr());
-	#endif // COMPILE_SCRIPTTOOLBAR
-	*/
 }
 
 void RawEditorWindow::loadProperties(KviConfigurationFile *)
 {
-	/*
-	#ifdef COMPILE_SCRIPTTOOLBAR
-		QValueList<int> def;
-		def.append(20);
-		def.append(80);
-		m_pEditor->setSizes(cfg->readIntListEntry("Sizes",def));
-		KviCString tmp = cfg->readEntry("LastRaw","");
-		m_pEditor->editRaw(tmp);
-		//qDebug("LAST EDITED WAS %s",tmp.ptr());
-	#endif // COMPILE_SCRIPTTOOLBAR
-	*/
 }

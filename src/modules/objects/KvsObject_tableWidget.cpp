@@ -240,11 +240,7 @@ KVSO_BEGIN_CONSTRUCTOR(KvsObject_tableWidget, KvsObject_widget)
 KVSO_END_CONSTRUCTOR(KvsObject_tableWidget)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_tableWidget)
-/*if (m_pCellItemDelegate)
-{
-	delete m_pCellItemDelegate;
-	m_pCellItemDelegate=0;
-}*/
+
 KVSO_END_DESTRUCTOR(KvsObject_tableWidget)
 
 bool KvsObject_tableWidget::init(KviKvsRunTimeContext * c, KviKvsVariantList *)

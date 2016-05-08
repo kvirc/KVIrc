@@ -65,34 +65,6 @@ static TorrentInterface * auto_detect_torrent_client(KviWindow * pOut = nullptr)
 		}
 	}
 
-	/*	if(iBest < 90)
-	{
-		if(pOut)
-			pOut->outputNoFmt(KVI_OUT_MULTIMEDIA,__tr2qs_ctx("Not sure about the results, trying a second, more aggressive detection pass","torrent"));
-		// no sure player found... try again with a destructive test
-		for(d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
-		{
-			MpInterface * i = d->instance();
-			if(i)
-			{
-				int iScore = i->detect(true);
-				if(iScore > iBest)
-				{
-					iBest = iScore;
-					pBest = i;
-					pDBest = d;
-				}
-				if(pOut)
-				{
-					QString szOut;
-					QString szNam = d->name();
-					KviQString::sprintf(szOut,__tr2qs_ctx("Trying media player interface \"%Q\": score %d","torrent"),&(szNam),iScore);
-					pOut->output(KVI_OUT_MULTIMEDIA,szOut);
-				}
-			}
-		}
-	}
-*/
 	if(pDBest)
 	{
 		KVI_OPTION_STRING(KviOption_stringPreferredTorrentClient) = pDBest->name();
@@ -317,6 +289,7 @@ TC_KVS_COMMAND(detect)
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_INTRET_FUNCTION(maxUploadSpeed, maxUploadSpeed)
 
 /*
@@ -336,6 +309,7 @@ TC_KVS_INTRET_FUNCTION(maxUploadSpeed, maxUploadSpeed)
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_INTRET_FUNCTION(maxDownloadSpeed, maxDownloadSpeed)
 
 /*
@@ -355,6 +329,7 @@ TC_KVS_INTRET_FUNCTION(maxDownloadSpeed, maxDownloadSpeed)
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_INT_COMMAND(setMaxUploadSpeed, setMaxUploadSpeed, "kbytes_per_sec")
 
 /*
@@ -374,6 +349,7 @@ TC_KVS_INT_COMMAND(setMaxUploadSpeed, setMaxUploadSpeed, "kbytes_per_sec")
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_INT_COMMAND(setMaxDownloadSpeed, setMaxDownloadSpeed, "kbytes_per_sec")
 
 /*
@@ -393,6 +369,7 @@ TC_KVS_INT_COMMAND(setMaxDownloadSpeed, setMaxDownloadSpeed, "kbytes_per_sec")
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_FLOATRET_FUNCTION(speedUp, speedUp)
 
 /*
@@ -412,6 +389,7 @@ TC_KVS_FLOATRET_FUNCTION(speedUp, speedUp)
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_FLOATRET_FUNCTION(speedDown, speedDown)
 
 /*
@@ -431,6 +409,7 @@ TC_KVS_FLOATRET_FUNCTION(speedDown, speedDown)
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_FLOATRET_FUNCTION(trafficUp, trafficUp)
 
 /*
@@ -450,6 +429,7 @@ TC_KVS_FLOATRET_FUNCTION(trafficUp, trafficUp)
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_FLOATRET_FUNCTION(trafficDown, trafficDown)
 
 /*
@@ -469,6 +449,7 @@ TC_KVS_FLOATRET_FUNCTION(trafficDown, trafficDown)
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_INTRET_FUNCTION(count, count)
 
 /*
@@ -488,6 +469,7 @@ TC_KVS_INTRET_FUNCTION(count, count)
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_STRINGRET_INT_FUNCTION(name, name, "torrent_number")
 
 /*
@@ -509,6 +491,7 @@ TC_KVS_STRINGRET_INT_FUNCTION(name, name, "torrent_number")
 		[cmd]torrent.stop[/cmd], [cmd]torrent.stopAll[/cmd],
 		[cmd]torrent.startAll[/cmd]
 */
+
 TC_KVS_INT_COMMAND(start, start, "torrent_number")
 
 /*
@@ -530,6 +513,7 @@ TC_KVS_INT_COMMAND(start, start, "torrent_number")
 		[cmd]torrent.stopAll[/cmd], [cmd]torrent.startAll[/cmd],
 		[cmd]torrent.start[/cmd]
 */
+
 TC_KVS_INT_COMMAND(stop, stop, "torrent_number")
 
 /*
@@ -549,6 +533,7 @@ TC_KVS_INT_COMMAND(stop, stop, "torrent_number")
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_INT_COMMAND(announce, announce, "torrent_number")
 
 /*
@@ -568,6 +553,7 @@ TC_KVS_INT_COMMAND(announce, announce, "torrent_number")
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_INTRET_INT_FUNCTION(fileCount, fileCount, "torrent_number")
 
 /*
@@ -587,6 +573,7 @@ TC_KVS_INTRET_INT_FUNCTION(fileCount, fileCount, "torrent_number")
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_STRINGRET_INT_INT_FUNCTION(fileName, fileName, "torrent_number", "file_number")
 
 /*
@@ -606,6 +593,7 @@ TC_KVS_STRINGRET_INT_INT_FUNCTION(fileName, fileName, "torrent_number", "file_nu
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_STRINGRET_INT_INT_FUNCTION(filePriority, filePriority, "torrent_number", "file_number")
 
 /*
@@ -625,6 +613,7 @@ TC_KVS_STRINGRET_INT_INT_FUNCTION(filePriority, filePriority, "torrent_number", 
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_INT_INT_STRING_COMMAND(setFilePriority, setFilePriority, "torrent_number", "file_number", "priority")
 
 /*
@@ -741,6 +730,7 @@ TC_KVS_COMMAND(setClient)
 		[module:torrent]torrent module documentation[/module],
 		[cmd]torrent.detect[/cmd], [cmd]torrent.setClient[/cmd]
 */
+
 TC_KVS_FUNCTION(client)
 {
 	c->returnValue()->setString(KVI_OPTION_STRING(KviOption_stringPreferredTorrentClient));
@@ -766,6 +756,7 @@ TC_KVS_FUNCTION(client)
 		[cmd]torrent.detect[/cmd], [cmd]torrent.setClient[/cmd],
 		[cmd]torrent.client[/cmd]
 */
+
 TC_KVS_FUNCTION(clientList)
 {
 	KviKvsArray * pArray = new KviKvsArray();
@@ -795,6 +786,7 @@ TC_KVS_FUNCTION(clientList)
 	@seealso:
 		[module:torrent]torrent module documentation[/module]
 */
+
 TC_KVS_STRINGRET_INT_FUNCTION(state, state, "torrent_number")
 
 /*
@@ -907,22 +899,6 @@ static bool torrent_module_can_unload(KviModule *)
 
 static bool torrent_module_ctrl(KviModule *, const char *, void *) // KviModule * m,const char * operation,void * param)
 {
-	/*	if(kvi_strEqualCI(operation,"getAvailableMediaPlayers"))
-	{
-		// we expect param to be a pointer to QStringList
-		QStringList * l = (QStringList *)param;
-		for(MpInterfaceDescriptor * d = g_pDescriptorList->first();d;d = g_pDescriptorList->next())
-		{
-			l->append(d->name());
-		}
-		return true;
-	}
-	if(kvi_strEqualCI(operation,"detectMediaPlayer"))
-	{
-		auto_detect_player(0);
-		return true;
-	}
-*/
 	return false;
 }
 

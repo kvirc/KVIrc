@@ -855,51 +855,6 @@ static bool dialog_kvs_fnc_yesno(KviKvsModuleFunctionCall * c)
 }
 
 /*
-
-static int g_iLocalEventLoops = 0;
-
-static bool dialog_module_cmd_unload(KviModule *m,KviCommand *c)
-{
-	// We use local loops in this module: we must FORBID explicit unloading of the
-	// module while local even loops are running
-	ENTER_STACK_FRAME(c,"dialog_module_cmd_unload");
-	c->warning(__tr("The dialog module can't be explicitly unloaded: a modal dialog is currently open"));
-	return c->leaveStackFrame();
-}
-
-static void dialog_module_entering_local_loop(KviModule * m)
-{
-	// Replace unload
-	g_iLocalEventLoops++;
-	if(g_iLocalEventLoops == 1)m->registerCommand("unload",dialog_module_cmd_unload);
-}
-
-static void dialog_module_exiting_local_loop(KviModule * m)
-{
-	g_pModuleManager->registerDefaultCommands(m);
-	g_iLocalEventLoops--;
-}
-
-static bool dialog_module_fnc_textline(KviModule *m,KviCommand *c,KviParameterList * parms,KviCString &buffer)
-{
-	ENTER_STACK_FRAME(c,"dialog_module_fnc_textline");
-
-	KviCString caption = parms->safeFirstParam();
-	KviCString info    = parms->safeNextParam();
-	KviCString initial = parms->safeNextParam();
-
-	dialog_module_entering_local_loop(m);
-	QMessageBox::information(0,caption.ptr(),info.ptr(),QMessageBox::Ok);
-	dialog_module_exiting_local_loop(m);
-
-	// It might be that the current window is no longer available!!!
-
-	return c->leaveStackFrame();
-}
-
-*/
-
-/*
 	@doc: noblockingdialogs
 	@type:
 		generic

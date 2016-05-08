@@ -209,15 +209,9 @@ static bool system_kvs_fnc_getenv(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	QByteArray szVar = szVariable.toLocal8Bit();
-	/*#ifdef COMPILE_ON_WINDOWS
-	QString env= getenv(szVar.data());
-	QString def= __tr2qs("No environment variable found, please don't use the %% in the request");
-	c->returnValue()->setString(env.isEmpty() ? QString::fromLocal8Bit(env) : QString::fromLocal8Bit(def));
-#else
-*/
+
 	char * b = KviEnvironment::getVariable(szVar.data());
 	c->returnValue()->setString(b ? QString::fromLocal8Bit(b) : QString());
-	//#endif
 	return true;
 }
 
@@ -831,6 +825,7 @@ static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall * c)
 		1 (no conversion), 2 (short), 4 (32 bit int) and 8 (64 bit int).
 		If omitted, bytecount is assumed to be 4.
 */
+
 static bool system_kvs_fnc_ntohi(KviKvsModuleFunctionCall * c)
 {
 	kvs_int_t iValue;
@@ -886,6 +881,7 @@ static bool system_kvs_fnc_ntohi(KviKvsModuleFunctionCall * c)
 		1 (no conversion), 2 (short), 4 (32 bit int) and 8 (64 bit int).
 		If omitted, bytecount is assumed to be 4.
 */
+
 static bool system_kvs_fnc_htoni(KviKvsModuleFunctionCall * c)
 {
 	kvs_int_t iValue;

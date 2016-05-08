@@ -274,17 +274,6 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 						delete pRebindData;
 					return nullptr;
 				}
-				// actually we need empty callbacks (for alias() at least)
-				// the single command implementations should take care of checking it
-				/*else {
-
-					warning(pIdentifier,__tr2qs_ctx("Callback command called with an empty callback instruction","kvs"));
-					error(KVSP_curCharPointer,__tr2qs_ctx("Callback commands must have a callback instruction","kvs"));
-					if(sw)delete sw;
-					delete dl;
-					return 0;
-
-				}*/
 			}
 			else
 			{

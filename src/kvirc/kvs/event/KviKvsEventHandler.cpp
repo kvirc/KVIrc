@@ -58,14 +58,3 @@ KviKvsModuleEventHandler::~KviKvsModuleEventHandler()
 {
 	delete m_pProc;
 }
-
-/*
-KviKvsOldModuleEventHandler::KviKvsOldModuleEventHandler(KviModuleEventParseProc p,KviModule * m)
-: KviKvsEventHandler(KviKvsEventHandler::OldModule), m_pModule(m), m_proc(p)
-{
-}
-
-KviKvsOldModuleEventHandler::~KviKvsOldModuleEventHandler()
-{
-}
-*/

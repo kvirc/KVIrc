@@ -763,10 +763,6 @@ bool KviKvsVariant::asInteger(kvs_int_t & iVal) const
 			iVal = m_pData->m_u.bBoolean ? 1 : 0;
 			return true;
 			break;
-		//case KviKvsVariantData::HObject: <-- light casts from objects to integer are not valid
-		//	iVal = m_pData->m_u.hObject ? 1 : 0;
-		//	return true;
-		//break;
 		default: /* make gcc happy */
 			break;
 	}
