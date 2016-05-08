@@ -48,11 +48,12 @@ OptionsWidget_windowList::OptionsWidget_windowList(QWidget * parent)
 	                "options"));
 
 	addBoolSelector(0, 4, 0, 4, __tr2qs_ctx("Show IRC context indicator in window list", "options"), KviOption_boolUseWindowListIrcContextIndicator);
-	addBoolSelector(0, 5, 0, 5, __tr2qs_ctx("Enable window tooltips", "options"), KviOption_boolShowWindowListToolTips);
-	addBoolSelector(0, 6, 0, 6, __tr2qs_ctx("Allow the window list to be moved", "options"), KviOption_boolShowTreeWindowListHandle);
-	addBoolSelector(0, 7, 0, 7, __tr2qs_ctx("Show user flag for channels", "options"), KviOption_boolShowUserFlagForChannelsInWindowList);
+	addBoolSelector(0, 5, 0, 5, __tr2qs_ctx("Show close button on window list items", "options"), KviOption_boolUseWindowListCloseButton);
+	addBoolSelector(0, 6, 0, 6, __tr2qs_ctx("Enable window tooltips", "options"), KviOption_boolShowWindowListToolTips);
+	addBoolSelector(0, 7, 0, 7, __tr2qs_ctx("Allow the window list to be moved", "options"), KviOption_boolShowTreeWindowListHandle);
+	addBoolSelector(0, 8, 0, 8, __tr2qs_ctx("Show user flag for channels", "options"), KviOption_boolShowUserFlagForChannelsInWindowList);
 
-	addRowSpacer(0, 8, 0, 8);
+	addRowSpacer(0, 9, 0, 9);
 }
 
 OptionsWidget_windowList::~OptionsWidget_windowList()

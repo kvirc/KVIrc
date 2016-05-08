@@ -358,8 +358,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolWarnAboutHidingMenuBar 267
 #define KviOption_boolWhoRepliesToActiveWindow 268 /* irc::output */
 #define KviOption_boolShowTaskBarButton 269        /* windows only, used in KviApplication::createFrame only */
+#define KviOption_boolUseWindowListCloseButton 270             /* irc::output */
 
-#define KVI_NUM_BOOL_OPTIONS 270
+#define KVI_NUM_BOOL_OPTIONS 271
 
 #define KVI_STRING_OPTIONS_PREFIX "string"
 #define KVI_STRING_OPTIONS_PREFIX_LEN 6
