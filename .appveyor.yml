@@ -1,4 +1,4 @@
-version: 0.0.0.0.1-branch-{branch}-build-{build}
+version: 0.0.7-dev-branch-{branch}-build-{build}
 cache:
     - c:\OpenSSL-Win32 -> .appveyor.yml
     - c:\OpenSSL-Win64 -> .appveyor.yml
