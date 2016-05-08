@@ -1187,12 +1187,12 @@ void KviIrcServerParser::parseLoginNicknameProblem(KviIrcMessage * msg)
 	{
 		msg->console()->output(
 		    KVI_OUT_NICKNAMEPROBLEM,
-		    __tr2qs("No way to login as '\r!n\r%1\r': the server said '%2: %3'")
+		    __tr2qs("No way to login as \r!n\r%1\r: the server said '%2: %3'")
 		        .arg(msg->connection()->decodeText(msg->safeParam(1)))
 		        .arg(msg->numeric())
 		        .arg(msg->connection()->decodeText(msg->safeTrailing())));
 
-		QString szOut = __tr2qs("Trying to use '%1' as nickname").arg(szNextNick);
+		QString szOut = __tr2qs("Trying to use %1 as nickname").arg(szNextNick);
 		if(_OUTPUT_VERBOSE)
 			szOut += QString::fromLatin1(" (%1)").arg(szChoiceDescriptionBuffer);
 
@@ -1911,7 +1911,7 @@ void KviIrcServerParser::parseNumericWhoisActually(KviIrcMessage * msg)
 		if(szOth.contains(QChar(',')))
 		{
 			pOut->output(
-			    KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c's actual user@host: %Q, actual ip: %Q"), KviControlCodes::Bold,
+			    KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c's actual user@host: %Q, actual IP: %Q"), KviControlCodes::Bold,
 			    &szNick, KviControlCodes::Bold, &szUserHost, &szIpAddr);
 		}
 		else
@@ -2079,14 +2079,14 @@ void KviIrcServerParser::parseNumericChanUrl(KviIrcMessage * msg)
 		szUrl = chan->decodeText(msg->safeTrailing());
 		if(!msg->haltOutput())
 		{
-			chan->output(KVI_OUT_CHANURL, __tr2qs("Channel web site is %Q"), &szUrl);
+			chan->output(KVI_OUT_CHANURL, __tr2qs("This channel's website is: %Q"), &szUrl);
 		}
 	}
 	else
 	{
 		szUrl = msg->console()->decodeText(msg->safeTrailing());
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
-		pOut->output(KVI_OUT_CHANURL, __tr2qs("Channel web site is %Q"), &szUrl);
+		pOut->output(KVI_OUT_CHANURL, __tr2qs("This channel's website is: %Q"), &szUrl);
 	}
 }
 
@@ -2628,13 +2628,13 @@ void KviIrcServerParser::parseNumeric742(KviIrcMessage * msg)
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
 	if(chan)
 	{
-		chan->output(KVI_OUT_GENERICERROR, __tr2qs("Cannot set mode %Q on %Q due to it having an active MLOCK policy, including modes %Q."),
+		chan->output(KVI_OUT_GENERICERROR, __tr2qs("Can't set mode %Q on %Q due to it having an active MLOCK policy, including modes %Q."),
 		    &mode, &szChan, &lock);
 	}
 	else
 	{
 		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
-		pOut->output(KVI_OUT_GENERICERROR, __tr2qs("Cannot set mode %Q on %Q due to it having an active MLOCK policy, including modes %Q."),
+		pOut->output(KVI_OUT_GENERICERROR, __tr2qs("Can't set mode %Q on %Q due to it having an active MLOCK policy, including modes %Q."),
 		    &mode, &szChan, &lock);
 	}
 }
