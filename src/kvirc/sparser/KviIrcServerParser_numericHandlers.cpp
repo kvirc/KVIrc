@@ -1468,7 +1468,7 @@ void KviIrcServerParser::parseChannelHelp(KviIrcMessage * msg)
 		else
 		{
 			pOut = static_cast<KviWindow *>(msg->console());
-			pOut->output(KVI_OUT_HELP, __tr2qs("Tip for %Q: %Q"), &szChan, &szText);
+			pOut->output(KVI_OUT_HELP, __tr2qs("Tip for \r!c\r%Q\r: %Q"), &szChan, &szText);
 		}
 	}
 }
