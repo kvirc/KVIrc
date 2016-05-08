@@ -270,8 +270,8 @@ namespace KviKvsCoreSimpleCommands
 			the socketspy window (if open). The -q switch suppresses only the console warnings.
 		@examples:
 			[example]
-			[comment]Injects the string as we were sending a query message[/comment][br]
-			inject :foo!bar@foobar PRIVMSG HelLViS69 :message
+				[comment]Injects the string as we were sending a query message[/comment][br]
+				inject :foo!bar@foobar PRIVMSG HelLViS69 :message
 			[/example]
 	*/
 
@@ -374,8 +374,8 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 		@examples:
 			[example]
-			join #kvirc
-			join #linux-it,#xmms,#kde linus
+				join #kvirc
+				join #linux-it,#xmms,#kde linus
 			[/example]
 	*/
 
@@ -446,7 +446,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
-			kick Pragma Go coding in Pascal!
+				kick Pragma Go coding in Pascal!
 			[/example]
 	*/
 

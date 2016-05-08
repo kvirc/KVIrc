@@ -83,7 +83,7 @@ namespace KviKvsCoreFunctions
 			Returns the actual script context's name. Useful only for custom debug.
 		@seealso:
 			[cmd]debug[/cmd]
-*/
+	*/
 
 	KVSCF(scriptContextName)
 	{

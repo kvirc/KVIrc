@@ -72,11 +72,11 @@ KviPointerList<HelpWindow> * g_pHelpWindowList = nullptr;
 		if there are other help browsers already open.[br]
 	@examples:
 		[example]
-		help.open /home/pragma/myfile.html	//absolute path
-		help.open cmd_snd.play.html		//relative path
-		help.open "Binding operator"		//keyword search, remember quoting
-		help.open OnNickServAuth		//keyword search for an event
-		help.open \$my.user			//keyword search, $ needs to be escaped
+			help.open /home/pragma/myfile.html	//absolute path
+			help.open cmd_snd.play.html		//relative path
+			help.open "Binding operator"		//keyword search, remember quoting
+			help.open OnNickServAuth		//keyword search for an event
+			help.open \$my.user			//keyword search, $ needs to be escaped
 		[/example]
 */
 

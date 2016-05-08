@@ -513,10 +513,10 @@ namespace KviKvsCoreSimpleCommands
 			that implement the CAP capability.
 		@examples:
 			[example]
-			cap LS
-			cap REQ identify-msg
-			cap LIST
-			cap REQ -identify-msg
+				cap LS
+				cap REQ identify-msg
+				cap LIST
+				cap REQ -identify-msg
 			[/example]
 	*/
 
@@ -568,7 +568,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
-			chanadmin Pragma,Crocodile
+				chanadmin Pragma,Crocodile
 			[/example]
 		@seealso:
 			[cmd]chanowner[/cmd], [cmd]dechanowner[/cmd], [cmd]dechanadmin[/cmd], [cmd]op[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd], [cmd]deuserop[/cmd]
@@ -598,7 +598,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
-			chanowner Pragma,Crocodile
+				chanowner Pragma,Crocodile
 			[/example]
 		@seealso:
 			[cmd]dechanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]dechanadmin[/cmd], [cmd]op[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd], [cmd]deuserop[/cmd]
@@ -650,7 +650,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].[br]
 		@examples:
 			[example]
-			ctcp Pragma VERSION
+				ctcp Pragma VERSION
 			[/example]
 	*/
 
@@ -742,7 +742,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
-			dechanadmin Pragma,Crocodile
+				dechanadmin Pragma,Crocodile
 			[/example]
 		@seealso:
 			[cmd]chanowner[/cmd], [cmd]dechanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]op[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd], [cmd]deuserop[/cmd]
@@ -772,7 +772,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
-			dechanowner Pragma,Crocodile
+				dechanowner Pragma,Crocodile
 			[/example]
 		@seealso:
 			[cmd]chanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]dechanadmin[/cmd], [cmd]op[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd], [cmd]deuserop[/cmd]
@@ -802,7 +802,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependent_commands]connection dependent[/doc].
 		@examples:
 			[example]
-			dehalfop Pragma,Crocodile
+				dehalfop Pragma,Crocodile
 			[/example]
 		@seealso:
 			[cmd]op[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd]
@@ -1086,8 +1086,8 @@ namespace KviKvsCoreSimpleCommands
 			or not timestamp at all.[br]
 		@examples:
 			[example]
-			echo Hey! this is my first echo test!
-			echo -i=[fnc]$msgtype[/fnc](parsererror) this has the colors of the parser error messages
+				echo Hey! this is my first echo test!
+				echo -i=[fnc]$msgtype[/fnc](parsererror) this has the colors of the parser error messages
 			[/example]
 		@seealso:
 			[fnc]$window[/fnc],
@@ -1200,8 +1200,8 @@ namespace KviKvsCoreSimpleCommands
 			The KVIrc view widgets support clickable sockets that can be realized by using special [doc:escape_sequences]escape sequences[/doc].[br]
 		@examples:
 			[example]
-			echoprivmsg Test * * This is a test message
-			echoprivmsg -i=$msgtype(ChanPrivmsgCrypted) Pragma pragma staff.kvirc.net Hi people! :)
+				echoprivmsg Test * * This is a test message
+				echoprivmsg -i=$msgtype(ChanPrivmsgCrypted) Pragma pragma staff.kvirc.net Hi people! :)
 			[/example]
 		@seealso:
 			[fnc]$window[/fnc],
@@ -1562,7 +1562,7 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Closes KVIrc
 		@description:
-			It closes KVIrc application
+			It closes the KVIrc application
 	*/
 
 	KVSCSC(exit)
