@@ -143,8 +143,7 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 	                            "the notifier window. Please note that if this option is not activated then "
 	                            "the notifier will NOT popup even if all the other options around specify "
 	                            "to use it in response to particular events. Also note that this option "
-	                            "will make all the /notifier.* commands fail silently.",
-	    "options");
+	                            "will make all the /notifier.* commands fail silently.", "options");
 	mergeTip(b, szTip);
 
 	iRow++;
@@ -156,8 +155,8 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 	szTip += __tr2qs_ctx("This option uses the KDE notification system "
 	                     "instead of KVIrc one.<br>"
 	                     "This is cool if you want to better integrate KVIrc inside KDE. "
-	                     "Note that KDE's notifier isn't flexible and \"tabbed\" like KVIrc's",
-	    "options");
+	                     "Note that KDE's notifier isn't flexible and \"tabbed\" like KVIrc's", "options");
+
 	mergeTip(m_pKdeNotifier, szTip);
 
 	m_pKdeNotifier->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
@@ -173,8 +172,8 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 	                     "KVIrc one.<br>"
 	                     "This is cool if you want to better integrate KVIrc inside your "
 	                     "desktop environment. "
-	                     "Note that this notifier isn't flexible and \"tabbed\" like KVIrc's",
-	    "options");
+	                     "Note that this notifier isn't flexible and \"tabbed\" like KVIrc's", "options");
+
 	mergeTip(m_pDBusNotifier, szTip);
 
 	m_pDBusNotifier->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
@@ -196,8 +195,7 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 
 	szTip += __tr2qs_ctx("This option stops the notifier from being displayed when there is an active fullscreen window. "
 	                     "This is useful for gaming sessions where you may be distracted by the notifier or it may even switch "
-	                     "your game from fullscreen to window mode.",
-	    "options");
+	                     "your game from fullscreen to window mode.", "options");
 	mergeTip(b2, szTip);
 
 	b2->setEnabled(KVI_OPTION_BOOL(KviOption_boolEnableNotifier));
@@ -222,28 +220,16 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 	iRow++;
 
 	KviTalGroupBox * g = addGroupBox(0, iRow, 0, iRow, Qt::Horizontal, __tr2qs_ctx("Advanced Configuration", "options"));
-	connect(b, SIGNAL(toggled(bool)), g, SLOT(setEnabled(bool)));
+	//connect(b, SIGNAL(toggled(bool)), g, SLOT(setEnabled(bool)));
 
-	connect(b,
-	    SIGNAL(toggled(bool)),
-	    addUIntSelector(g, __tr2qs_ctx("Default auto hiding time for messages (0 to disable):", "options"),
-	            KviOption_uintNotifierAutoHideTime,
-	            0, 86400, 30, KVI_OPTION_BOOL(KviOption_boolEnableNotifier)),
-	    SLOT(setEnabled(bool)));
+	connect(b, SIGNAL(toggled(bool)), addUIntSelector(g, __tr2qs_ctx("Default auto hiding time for messages (0 to disable):", "options"),
+	            KviOption_uintNotifierAutoHideTime, 0, 86400, 30, KVI_OPTION_BOOL(KviOption_boolEnableNotifier)), SLOT(setEnabled(bool)));
 
-	connect(b2,
-	    SIGNAL(toggled(bool)),
-	    addUIntSelector(g, __tr2qs_ctx("Notifier window opacity while active (mouseover):", "options"),
-	            KviOption_uintNotifierActiveTransparency,
-	            0, 100, 90, KVI_OPTION_BOOL(KviOption_boolNotifierFading)),
-	    SLOT(setEnabled(bool)));
+	connect(b2, SIGNAL(toggled(bool)), addUIntSelector(g, __tr2qs_ctx("Notifier window opacity while active (mouseover):", "options"),
+	            KviOption_uintNotifierActiveTransparency, 0, 100, 90, KVI_OPTION_BOOL(KviOption_boolNotifierFading)), SLOT(setEnabled(bool)));
 
-	connect(b2,
-	    SIGNAL(toggled(bool)),
-	    addUIntSelector(g, __tr2qs_ctx("Notifier window opacity while inactive:", "options"),
-	            KviOption_uintNotifierInactiveTransparency,
-	            0, 100, 40, KVI_OPTION_BOOL(KviOption_boolNotifierFading)),
-	    SLOT(setEnabled(bool)));
+	connect(b2, SIGNAL(toggled(bool)), addUIntSelector(g, __tr2qs_ctx("Notifier window opacity while inactive:", "options"),
+	            KviOption_uintNotifierInactiveTransparency, 0, 100, 40, KVI_OPTION_BOOL(KviOption_boolNotifierFading)), SLOT(setEnabled(bool)));
 
 	iRow++;
 
