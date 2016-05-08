@@ -24,6 +24,7 @@
 
 #include "OptionsWidget_notifier.h"
 
+#include "kvi_settings.h"
 #include "KviOptions.h"
 #include "KviLocale.h"
 
@@ -133,17 +134,17 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
     : KviOptionsWidget(parent)
 {
 	setObjectName("notifier_options_widget");
-
 	createLayout();
 
 	int iRow = 0;
+	QString szTip;
 
 	KviBoolSelector * b = addBoolSelector(0, iRow, 0, iRow, __tr2qs_ctx("Enable the notifier", "options"), KviOption_boolEnableNotifier);
-	QString szTip = __tr2qs_ctx("This is an option for the impatient: it allows one to forcibly and permanently disable "
-	                            "the notifier window. Please note that if this option is not activated then "
-	                            "the notifier will NOT popup even if all the other options around specify "
-	                            "to use it in response to particular events. Also note that this option "
-	                            "will make all the /notifier.* commands fail silently.", "options");
+	szTip += __tr2qs_ctx("This is an option for the impatient: it allows one to forcibly and permanently disable "
+	                     "the notifier window. Please note that if this option is not activated then "
+	                     "the notifier will NOT popup even if all the other options around specify "
+	                     "to use it in response to particular events. Also note that this option "
+	                     "will make all the /notifier.* commands fail silently.", "options");
 	mergeTip(b, szTip);
 
 	iRow++;
@@ -152,10 +153,9 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 
 #ifdef COMPILE_KDE_SUPPORT
 	m_pKdeNotifier = addBoolSelector(0, iRow, 0, iRow, __tr2qs_ctx("Use the KDE notifier", "options"), KviOption_boolUseKDENotifier);
-	szTip += __tr2qs_ctx("This option uses the KDE notification system "
-	                     "instead of KVIrc one.<br>"
-	                     "This is cool if you want to better integrate KVIrc inside KDE. "
-	                     "Note that KDE's notifier isn't flexible and \"tabbed\" like KVIrc's", "options");
+	szTip += __tr2qs_ctx("This option uses the KDE notification system instead of the KVIrc's builtin.<br>"
+	                     "This is cool if you want to better integrate KVIrc inside KDE.<br>"
+	                     "Note that KDE's notifier isn't as flexible or \"tabbed\" like KVIrc's", "options");
 
 	mergeTip(m_pKdeNotifier, szTip);
 
@@ -164,15 +164,14 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 	connect(m_pKdeNotifier, SIGNAL(toggled(bool)), this, SLOT(toggleNotifierProtocol(bool)));
 
 	iRow++;
+
 #endif // COMPILE_KDE_SUPPORT
 
 #ifdef COMPILE_DBUS_SUPPORT
 	m_pDBusNotifier = addBoolSelector(0, iRow, 0, iRow, __tr2qs_ctx("Use the D-Bus-based notifiers", "options"), KviOption_boolUseDBusNotifier);
-	szTip += __tr2qs_ctx("This option uses the D-Bus-based notifier instead of "
-	                     "KVIrc one.<br>"
-	                     "This is cool if you want to better integrate KVIrc inside your "
-	                     "desktop environment. "
-	                     "Note that this notifier isn't flexible and \"tabbed\" like KVIrc's", "options");
+	szTip += __tr2qs_ctx("This option uses the D-Bus-based notifier instead of the KVIrc's builtin.<br>"
+	                     "This is cool if you want to better integrate KVIrc inside your desktop environment.<br>"
+	                     "Note that this notifier isn't as flexible or \"tabbed\" like KVIrc's is.", "options");
 
 	mergeTip(m_pDBusNotifier, szTip);
 
@@ -220,16 +219,22 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 	iRow++;
 
 	KviTalGroupBox * g = addGroupBox(0, iRow, 0, iRow, Qt::Horizontal, __tr2qs_ctx("Advanced Configuration", "options"));
-	//connect(b, SIGNAL(toggled(bool)), g, SLOT(setEnabled(bool)));
-
+	connect(b, SIGNAL(toggled(bool)), g, SLOT(setEnabled(bool)));
+	
 	connect(b, SIGNAL(toggled(bool)), addUIntSelector(g, __tr2qs_ctx("Default auto hiding time for messages (0 to disable):", "options"),
-	            KviOption_uintNotifierAutoHideTime, 0, 86400, 30, KVI_OPTION_BOOL(KviOption_boolEnableNotifier)), SLOT(setEnabled(bool)));
+	    KviOption_uintNotifierAutoHideTime, 0, 86400, 30, KVI_OPTION_BOOL(KviOption_boolEnableNotifier)), SLOT(setEnabled(bool)));
+	
+	KviUIntSelector * u;
 
-	connect(b2, SIGNAL(toggled(bool)), addUIntSelector(g, __tr2qs_ctx("Notifier window opacity while active (mouseover):", "options"),
-	            KviOption_uintNotifierActiveTransparency, 0, 100, 90, KVI_OPTION_BOOL(KviOption_boolNotifierFading)), SLOT(setEnabled(bool)));
+	u = addUIntSelector(g, __tr2qs_ctx("Notifier window opacity while active (mouseover):", "options"),
+	    KviOption_uintNotifierActiveTransparency, 0, 100, 90, KVI_OPTION_BOOL(KviOption_boolNotifierFading));
+	u->setSuffix("%");
+	connect(b2, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
 
-	connect(b2, SIGNAL(toggled(bool)), addUIntSelector(g, __tr2qs_ctx("Notifier window opacity while inactive:", "options"),
-	            KviOption_uintNotifierInactiveTransparency, 0, 100, 40, KVI_OPTION_BOOL(KviOption_boolNotifierFading)), SLOT(setEnabled(bool)));
+	u = addUIntSelector(g, __tr2qs_ctx("Notifier window opacity while inactive:", "options"),
+	    KviOption_uintNotifierInactiveTransparency, 0, 100, 40, KVI_OPTION_BOOL(KviOption_boolNotifierFading));
+	u->setSuffix("%");
+	connect(b2, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
 
 	iRow++;
 
