@@ -110,12 +110,6 @@ static bool fish_DH1080_gen(unsigned char ** szPubKey, int * iLen)
 
 bool fish_event_onQueryNotice(KviKvsModuleEventCall * c)
 {
-	/*	EVENT("OnQueryNotice", \
-			"$0 = source nick\n" \
-			"$1 = source username\n" \
-			"$2 = source host\n" \
-			"$3 = message"),
-			*/
 	KviKvsVariantList * pParams = c->params();
 	if(!pParams)
 		return true;
