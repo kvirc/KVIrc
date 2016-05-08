@@ -375,6 +375,7 @@ static bool proxydb_kvs_cmd_addProxy(KviKvsModuleCommandCall * c)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 static bool proxydb_kvs_cmd_setPort(KviKvsModuleCommandCall * c)
 {
 	QString szProxy, szPort;

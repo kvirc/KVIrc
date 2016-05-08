@@ -107,7 +107,6 @@ static bool spaste_kvs_cmd_file(KviKvsModuleCommandCall * c)
 		return false;
 
 	// FIXME
-	//if(szFile.isEmpty() || (!KviFileUtils::fileExists(szFile.toAscii())))
 	if(szFile.isEmpty() || (!KviFileUtils::fileExists(szFile)))
 	{
 		c->warning(__tr2qs("File not found or empty"));
@@ -153,9 +152,10 @@ static bool spaste_kvs_cmd_file(KviKvsModuleCommandCall * c)
 		[cmd]spaste.list[/cmd],
 		[cmd]spaste.setdelay[/cmd]
 */
-//-------------------------------------------------
+
+///////////////////////////////////////////////////////////////////////////////
 // spaste.clipboard
-//-------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////
 
 static bool spaste_kvs_cmd_clipboard(KviKvsModuleCommandCall * c)
 {
@@ -200,9 +200,10 @@ static bool spaste_kvs_cmd_clipboard(KviKvsModuleCommandCall * c)
 		[cmd]spaste.setdelay[/cmd]
 
 */
-//--------------------------------------------------
+
+///////////////////////////////////////////////////////////////////////////////
 // spaste.stop
-//--------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////
 
 static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 {
@@ -304,6 +305,7 @@ static bool spaste_kvs_cmd_list(KviKvsModuleCommandCall * c)
 		[cmd]spaste.stop[/cmd],
 		[cmd]spaste.list[/cmd]
 */
+
 static bool spaste_kvs_cmd_setdelay(KviKvsModuleCommandCall * c)
 {
 	kvs_int_t delay;

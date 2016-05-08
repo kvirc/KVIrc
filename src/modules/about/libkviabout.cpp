@@ -70,9 +70,9 @@ static bool about_kvs_command_kvirc(KviKvsModuleCommandCall *)
 	return true;
 }
 
-// =======================================
+///////////////////////////////////////////////////////////////////////////////
 // init routine
-// =======================================
+///////////////////////////////////////////////////////////////////////////////
 
 static bool about_module_init(KviModule * m)
 {
@@ -92,10 +92,6 @@ static bool about_module_can_unload(KviModule *)
 {
 	return (!g_pAboutDialog);
 }
-
-// =======================================
-// plugin definition structure
-// =======================================
 
 KVIRC_MODULE(
     "KVIrc about dialog",

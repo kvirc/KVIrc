@@ -103,9 +103,10 @@ static void deallocRot13Engine(KviCryptEngine * e)
 
 #endif
 
-// =======================================
+///////////////////////////////////////////////////////////////////////////////
 // module routines
-// =======================================
+///////////////////////////////////////////////////////////////////////////////
+
 static bool rot13_module_init(KviModule * m)
 {
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -150,9 +151,6 @@ static bool rot13_module_can_unload(KviModule *)
 #endif
 }
 
-// =======================================
-// plugin definition structure
-// =======================================
 KVIRC_MODULE(
     "ROT13 crypt engine",
     "4.0.0",

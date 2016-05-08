@@ -308,6 +308,7 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkNickName, nickName)
 
 /*
@@ -325,6 +326,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkNickName, nickName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkUserName, userName)
 
 /*
@@ -342,6 +344,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkUserName, userName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkRealName, realName)
 
 /*
@@ -359,6 +362,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkRealName, realName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkEncoding, encoding)
 
 /*
@@ -376,6 +380,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkEncoding, encoding)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkTextEncoding, textEncoding)
 
 /*
@@ -410,6 +415,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkDescription, description)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkConnectCommand, onConnectCommand)
 
 /*
@@ -427,6 +433,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkConnectCommand, onConnectC
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkLoginCommand, onLoginCommand)
 
 /*
@@ -444,6 +451,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkLoginCommand, onLoginComma
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkName, name)
 
 /*
@@ -462,6 +470,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkName, name)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 BEGIN_SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkJoinChannels)
 
 KviKvsArray * pArray = new KviKvsArray();
@@ -496,6 +505,7 @@ END_SERVERDB_GET_NETWORK_PROPERTY
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverNickName, nickName, setString)
 
 /*
@@ -513,6 +523,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverNickName, nickName, setStrin
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverUserName, userName, setString)
 
 /*
@@ -530,6 +541,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverUserName, userName, setStrin
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverRealName, realName, setString)
 
 /*
@@ -547,6 +559,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverRealName, realName, setStrin
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverEncoding, encoding, setString)
 
 /*
@@ -564,6 +577,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverEncoding, encoding, setStrin
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverTextEncoding, textEncoding, setString)
 
 /*
@@ -581,6 +595,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverTextEncoding, textEncoding, 
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverDescription, description, setString)
 
 /*
@@ -598,6 +613,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverDescription, description, se
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverConnectCommand, onConnectCommand, setString)
 
 /*
@@ -615,6 +631,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverConnectCommand, onConnectCom
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverLoginCommand, onLoginCommand, setString)
 
 /*
@@ -632,6 +649,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverLoginCommand, onLoginCommand
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIp, ip, setString)
 
 /*
@@ -649,6 +667,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIp, ip, setString)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverId, id, setString)
 
 /*
@@ -666,6 +685,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverId, id, setString)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPassword, password, setString)
 
 /*
@@ -683,6 +703,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPassword, password, setStrin
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPort, port, setInteger)
 
 /*
@@ -700,6 +721,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverPort, port, setInteger)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverAutoConnect, autoConnect, setBoolean)
 
 /*
@@ -717,6 +739,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverAutoConnect, autoConnect, se
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIPv6, isIPv6, setBoolean)
 
 /*
@@ -734,6 +757,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverIPv6, isIPv6, setBoolean)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverSSL, useSSL, setBoolean)
 
 /*
@@ -751,6 +775,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverSSL, useSSL, setBoolean)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverCacheIp, cacheIp, setBoolean)
 
 /*
@@ -766,6 +791,7 @@ SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverCacheIp, cacheIp, setBoolean
 	@description:
 		Returns true if KVIrc has the server set to a favorite, false otherwise
 */
+
 SERVERDB_GET_SERVER_PROPERTY(serverdb_kvs_fnc_serverFavorite, favorite, setBoolean)
 
 /*
@@ -826,6 +852,7 @@ END_SERVERDB_GET_SERVER_PROPERTY
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 static bool serverdb_kvs_cmd_addNetwork(KviKvsModuleCommandCall * c)
 {
 	QString szNetName, szNetwork;
@@ -901,6 +928,7 @@ static bool serverdb_kvs_cmd_addNetwork(KviKvsModuleCommandCall * c)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 {
 	QString szNetwork, szServer;
@@ -1071,6 +1099,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkNickName, setNickName)
 
 /*
@@ -1096,6 +1125,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkNickName, setNickName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkUserName, setUserName)
 
 /*
@@ -1121,6 +1151,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkUserName, setUserName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkRealName, setRealName)
 
 /*
@@ -1147,6 +1178,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkRealName, setRealName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkEncoding, setEncoding)
 
 /*
@@ -1172,6 +1204,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkEncoding, setEncoding)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkTextEncoding, setTextEncoding)
 
 /*
@@ -1197,6 +1230,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkTextEncoding, setTextEn
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkDescription, setDescription)
 
 /*
@@ -1222,6 +1256,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkDescription, setDescrip
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkConnectCommand, setOnConnectCommand)
 
 /*
@@ -1247,6 +1282,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkConnectCommand, setOnCo
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkLoginCommand, setOnLoginCommand)
 
 /*
@@ -1270,6 +1306,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkLoginCommand, setOnLogi
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkJoinChannels, setAutoJoinChannelList)
 
 /*
@@ -1295,6 +1332,7 @@ SERVERDB_SET_NETWORK_PROPERTY(serverdb_kvs_cmd_setNetworkJoinChannels, setAutoJo
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerNickName, setNickName)
 
 /*
@@ -1320,6 +1358,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerNickName, setNickName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerUserName, setUserName)
 
 /*
@@ -1345,6 +1384,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerUserName, setUserName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerRealName, setRealName)
 
 /*
@@ -1371,6 +1411,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerRealName, setRealName)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerEncoding, setEncoding)
 
 /*
@@ -1396,6 +1437,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerEncoding, setEncoding)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerTextEncoding, setTextEncoding)
 
 /*
@@ -1421,6 +1463,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerTextEncoding, setTextEnco
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerDescription, setDescription)
 
 /*
@@ -1446,6 +1489,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerDescription, setDescripti
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerConnectCommand, setOnConnectCommand)
 
 /*
@@ -1471,6 +1515,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerConnectCommand, setOnConn
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerLoginCommand, setOnLoginCommand)
 
 /*
@@ -1494,6 +1539,7 @@ SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerLoginCommand, setOnLoginC
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 SERVERDB_SET_SERVER_PROPERTY(serverdb_kvs_cmd_setServerJoinChannels, setAutoJoinChannelList)
 
 static bool serverdb_module_init(KviModule * m)

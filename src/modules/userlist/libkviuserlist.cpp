@@ -101,7 +101,7 @@
 		[fnc]$window[/fnc],
 		[fnc]$channel[/fnc],
 		[doc:window_naming_conventions]Window naming conventions[/doc]
-	*/
+*/
 
 static bool userlist_kvs_fnc_selected(KviKvsModuleFunctionCall * c)
 {

@@ -32,6 +32,7 @@
 #include <QTextBrowser>
 #include <QFile>
 #include <QUrl>
+
 /*
 	@doc: textBrowser
 	@keyterms:

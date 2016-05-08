@@ -146,6 +146,7 @@ static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
 	@description:
 		Returns a hash with information about the global theme specified by <theme>.
 */
+
 static bool theme_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 {
 	QString szTheme;
@@ -280,6 +281,7 @@ static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 		<theme> is a either a single path to a directory containing a theme as it's exported by KVIrc,
 		or an array of such paths.
 */
+
 static bool theme_kvs_cmd_pack(KviKvsModuleCommandCall * c)
 {
 	QString szPath, szName, szVersion, szDescription, szAuthor, szImage;

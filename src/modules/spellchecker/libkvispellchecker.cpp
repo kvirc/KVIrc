@@ -45,6 +45,7 @@ static KviPointerList<EnchantDict> * g_pEnchantDicts = nullptr;
 		This function returns a hash. For every supported dictionary, key is the language code,
 		value is name of provider for that language (e.g. Aspell).
 */
+
 static void spellchecker_enumerate_dicts(
     const char * szLang,
     const char * /*szName*/,
@@ -79,6 +80,7 @@ static bool spellchecker_kvs_available_dictionaries(KviKvsModuleFunctionCall * c
 	@description:
 		This function returns true if the word is spelled correctly.
 */
+
 static bool spellchecker_kvs_check(KviKvsModuleFunctionCall * c)
 {
 	QString szWord;
@@ -110,6 +112,7 @@ static bool spellchecker_kvs_check(KviKvsModuleFunctionCall * c)
 		If the word seems to be spelled correctly or there are no dictionaries
 		selected then the function returns an empty array.
 */
+
 static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall * c)
 {
 	QString szWord;
@@ -180,6 +183,7 @@ static void spellchecker_reload_dicts()
 	@description:
 		Reload spell checker dictionaries
 */
+
 static bool spellchecker_kvs_reload_dictionaries(KviKvsModuleCommandCall * c)
 {
 	KVSM_PARAMETERS_BEGIN(c)

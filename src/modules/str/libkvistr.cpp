@@ -70,6 +70,7 @@
 		%s is "surname".
 		[/example]
 */
+
 static bool str_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szSeparator, szSplittedString;
@@ -103,6 +104,7 @@ static bool str_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[cmd]str.toClipboard[/cmd]
 */
+
 static bool str_kvs_fnc_fromclipboard(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -131,6 +133,7 @@ static bool str_kvs_fnc_fromclipboard(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$str.fromClipboard[/fnc]
 */
+
 static bool str_kvs_cmd_toClipboard(KviKvsModuleCommandCall * c)
 {
 	QString szValue;
@@ -156,6 +159,7 @@ static bool str_kvs_cmd_toClipboard(KviKvsModuleCommandCall * c)
 		Returns the length (that is, number of characters) of the given string.
 		This function is internally aliased to [fnc]$str.length[/fnc]() too.
 */
+
 /*
 	@doc: str.length
 	@type:
@@ -196,6 +200,7 @@ static bool str_kvs_fnc_len(KviKvsModuleFunctionCall * c)
 		If you want to use a locale aware translation mapping then please
 		use localelowcase.
 */
+
 static bool str_kvs_fnc_lowcase(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -222,6 +227,7 @@ static bool str_kvs_fnc_lowcase(KviKvsModuleFunctionCall * c)
 		If you want to use a locale aware translation mapping then please
 		use $str.localeupcase.
 */
+
 static bool str_kvs_fnc_upcase(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -248,6 +254,7 @@ static bool str_kvs_fnc_upcase(KviKvsModuleFunctionCall * c)
 		results in locales that contain strange exceptions (like Turkish which maps
 		i to Y with an accent). For IRC interaction you might prefer using $str.lowcase
 */
+
 static bool str_kvs_fnc_localelowcase(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -274,6 +281,7 @@ static bool str_kvs_fnc_localelowcase(KviKvsModuleFunctionCall * c)
 		results in locales that contain strange exceptions (like Turkish which maps
 		i to Y with an accent). For IRC interaction you might prefer using $str.upcase
 */
+
 static bool str_kvs_fnc_localeupcase(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -297,6 +305,7 @@ static bool str_kvs_fnc_localeupcase(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns [b]1[/b] if the given string represents a number, and [b]0[/b] otherwise.
 */
+
 static bool str_kvs_fnc_isnumber(KviKvsModuleFunctionCall * c)
 {
 	KviKvsVariant * v;
@@ -321,6 +330,7 @@ static bool str_kvs_fnc_isnumber(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns [b]1[/b] if the given string represents an unsigned number, and [b]0[/b] otherwise.
 */
+
 static bool str_kvs_fnc_isunsignednumber(KviKvsModuleFunctionCall * c)
 {
 	KviKvsVariant * v;
@@ -357,6 +367,7 @@ static bool str_kvs_fnc_isunsignednumber(KviKvsModuleFunctionCall * c)
 		This function is almost useless since it is equivalent to the
 		comparison with an empty string...
 */
+
 static bool str_kvs_fnc_isempty(KviKvsModuleFunctionCall * c)
 {
 	QString v;
@@ -388,6 +399,7 @@ static bool str_kvs_fnc_isempty(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$str.match[/fnc]()
 */
+
 static bool str_kvs_fnc_contains(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szSubString;
@@ -418,6 +430,7 @@ static bool str_kvs_fnc_contains(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$str.match[/fnc]()
 */
+
 static bool str_kvs_fnc_equal(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szString2;
@@ -448,6 +461,7 @@ static bool str_kvs_fnc_equal(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$str.match[/fnc]()
 */
+
 static bool str_kvs_fnc_cmp(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szString2;
@@ -545,6 +559,7 @@ static bool str_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 		This function search in the string given as the first parameter for the string given as his second parameter, and will return the index where is first located or -1 if it's not located. It starts counting at 0.
 		If the third parameter is set to true, then the search is case sensitive.
 */
+
 static bool str_kvs_fnc_findfirst(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szString2;
@@ -577,6 +592,7 @@ static bool str_kvs_fnc_findfirst(KviKvsModuleFunctionCall * c)
 		given as his second parameter, and will return the index where is last located or -1 if it's not located.
 		If the third parameter is set to true, then the search is case sensitive.
 */
+
 static bool str_kvs_fnc_findlast(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szString2;
@@ -606,6 +622,7 @@ static bool str_kvs_fnc_findlast(KviKvsModuleFunctionCall * c)
 		This function returns a substring of the first string parameter which is the
 		string starting from the left until the index specified in the second parameter.
 */
+
 static bool str_kvs_fnc_left(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -633,6 +650,7 @@ static bool str_kvs_fnc_left(KviKvsModuleFunctionCall * c)
 		string starting from the right until the index specified in the second parameter.
 		The index start counting at the last character and increase until the first.
 */
+
 static bool str_kvs_fnc_right(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -661,6 +679,7 @@ static bool str_kvs_fnc_right(KviKvsModuleFunctionCall * c)
 		forward. If <nchars> is not given or is less than 1, all the characters until
 		the end of the string will be returned.
 */
+
 static bool str_kvs_fnc_mid(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -688,6 +707,7 @@ static bool str_kvs_fnc_mid(KviKvsModuleFunctionCall * c)
 		This function returns a string created appending the second string parameter
 		to the end of the first string parameter.
 */
+
 static bool str_kvs_fnc_append(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szString2;
@@ -713,6 +733,7 @@ static bool str_kvs_fnc_append(KviKvsModuleFunctionCall * c)
 		This function returns a string created prepending the second string parameter
 		to the start of the first string parameter.
 */
+
 static bool str_kvs_fnc_prepend(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szString2;
@@ -739,6 +760,7 @@ static bool str_kvs_fnc_prepend(KviKvsModuleFunctionCall * c)
 		first parameter at the index given in the third parameter, then returns the
 		resulting string.
 */
+
 static bool str_kvs_fnc_insert(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szString2;
@@ -766,6 +788,7 @@ static bool str_kvs_fnc_insert(KviKvsModuleFunctionCall * c)
 		Returns a left and right whitespace stripped version of the string given as the
 		first parameter.
 */
+
 static bool str_kvs_fnc_strip(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -790,6 +813,7 @@ static bool str_kvs_fnc_strip(KviKvsModuleFunctionCall * c)
 		Returns a left whitespace stripped version of the string given as the
 		first parameter.
 */
+
 static bool str_kvs_fnc_stripleft(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -822,6 +846,7 @@ static bool str_kvs_fnc_stripleft(KviKvsModuleFunctionCall * c)
 		Returns a right whitespace stripped version of the string given as the
 		first parameter.
 */
+
 static bool str_kvs_fnc_stripright(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -857,6 +882,7 @@ static bool str_kvs_fnc_stripright(KviKvsModuleFunctionCall * c)
 		Removes all mIRC color codes from a string, including also bold, underline, reverse,
 		icon, crypting and ctcp control codes.
 */
+
 static bool str_kvs_fnc_stripcolors(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -887,6 +913,7 @@ static bool str_kvs_fnc_stripcolors(KviKvsModuleFunctionCall * c)
 			echo $str.replace("I like big networks","big","neural")
 		[/example]
 */
+
 static bool str_kvs_fnc_replace(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szNewStr, szToReplace;
@@ -916,6 +943,7 @@ static bool str_kvs_fnc_replace(KviKvsModuleFunctionCall * c)
 		This function returns a string created replacing all occurrences in the parameter ('string') with their respective html entities.[br]
 		The replacement is case insensitive.
 */
+
 static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -972,6 +1000,7 @@ static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 			echo $str.lefttofirst(%test, invalid);	//  "Hello! My nickname is Pragma, my name is Szymon"
 		[/example]
 */
+
 static bool str_kvs_fnc_lefttofirst(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szNewstr;
@@ -1013,6 +1042,7 @@ static bool str_kvs_fnc_lefttofirst(KviKvsModuleFunctionCall * c)
 			echo $str.lefttolast(%test, invalid);	//  "Hello! My nickname is Pragma, my name is Szymon"
 		[/example]
 */
+
 static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szNewstr;
@@ -1054,6 +1084,7 @@ static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
 			echo $str.rightfromfirst(%test, invalid);	//  ""
 		[/example]
 */
+
 static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szNewstr;
@@ -1095,6 +1126,7 @@ static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
 			echo $str.rightfromlast(%test, invalid);	//  ""
 		[/example]
 */
+
 static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szNewstr;
@@ -1142,6 +1174,7 @@ static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$str.contains[/fnc](),[fnc]$str.equal[/fnc]()
 */
+
 static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 {
 	QString szWildcard, szString, szFlags;
@@ -1186,6 +1219,7 @@ static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$str.token[/fnc]
 */
+
 static bool str_kvs_fnc_word(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -1251,6 +1285,7 @@ static bool str_kvs_fnc_word(KviKvsModuleFunctionCall * c)
 		[fnc]$str.word[/fnc][br]
 		[fnc]$str.split[/fnc][br]
 */
+
 static bool str_kvs_fnc_token(KviKvsModuleFunctionCall * c)
 {
 	QString szString, sep;
@@ -1310,6 +1345,7 @@ static bool str_kvs_fnc_token(KviKvsModuleFunctionCall * c)
 		If <bCaseInsensitive> is specified and $true then the string
 		will be converted to toLowercase first.
 */
+
 static bool str_kvs_fnc_charsum(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
@@ -1354,6 +1390,7 @@ static bool str_kvs_fnc_charsum(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns a string removing n characters from the end of it.
 */
+
 static bool str_kvs_fnc_chop(KviKvsModuleFunctionCall * c)
 {
 	QString szString, sep;
@@ -1382,6 +1419,7 @@ static bool str_kvs_fnc_chop(KviKvsModuleFunctionCall * c)
 		Currently supported: md5, md4, md2, sha1, mdc2, ripemd160, dss1
 		Default is md5. Requires OpenSSL support, but offers a minimal set of hashes in any case.
 */
+
 static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szType, szResult;
@@ -1468,6 +1506,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 		array are skipped.
 
 */
+
 static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 {
 	QString szSep;
@@ -1564,6 +1603,7 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$array[/fnc]
 */
+
 static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 {
 	KviKvsArrayCast ac;
@@ -1711,6 +1751,7 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 			[cmd]echo[/cmd] $str.split("[ ]*","Condense spaces and change &nbsp; &nbsp; all &nbsp; &nbsp; &nbsp; it in commas",r)
 		[/example]
 */
+
 static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 {
 	QString szSep, szStr, szFla;
@@ -1874,6 +1915,7 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 			$str.printf("1/3 with a precision of 3 digits is ?.3f, while in scientific notation it's ?e",%val,%val)
 		[/example]
 */
+
 static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 {
 	QString szFormat;
@@ -1886,8 +1928,6 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 	QString s;
 
 #define MEMINCREMENT 32
-
-	//s.setLength(allocsize);
 
 	const QChar * fmt = szFormat.constData();
 
@@ -2513,9 +2553,9 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 #endif
 }
 
-/*********************************************************************/
-//              Module stuff
-/********************************************************************/
+///////////////////////////////////////////////////////////////////////////////
+//  Module stuff
+///////////////////////////////////////////////////////////////////////////////
 
 static bool str_module_init(KviModule * m)
 {

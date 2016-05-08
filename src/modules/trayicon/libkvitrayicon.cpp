@@ -743,9 +743,10 @@ static bool trayicon_kvs_fnc_isvisible(KviKvsModuleFunctionCall * c)
 #define ICON_INFIX "normal"
 #endif
 
-// =======================================
+///////////////////////////////////////////////////////////////////////////////
 // init routine
-// =======================================
+///////////////////////////////////////////////////////////////////////////////
+
 static bool trayicon_module_init(KviModule * m)
 {
 	QString buffer;
@@ -788,9 +789,6 @@ static bool trayicon_module_can_unload(KviModule *)
 	return g_pTrayIcon == nullptr;
 }
 
-// =======================================
-// plugin definition structure
-// =======================================
 KVIRC_MODULE(
     "KVIrc Tray Icon Implementation",
     "4.0.0",

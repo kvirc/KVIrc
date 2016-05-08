@@ -519,7 +519,6 @@ const char * const brushstyles_tbl[] = {
 		[/example]
 */
 
-// ========================================================================
 KVSO_BEGIN_REGISTERCLASS(KvsObject_painter, "painter", "object")
 
 // Fonts

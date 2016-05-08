@@ -51,6 +51,7 @@ UPnP::Manager * g_pManager = nullptr;
 	@seealso:
 		[fnc]$upnp.isGatewayAvailable[/fnc]
 */
+
 static bool upnp_kvs_fnc_getExternalIpAddress(KviKvsModuleFunctionCall * c)
 {
 	if(g_pManager)
@@ -74,6 +75,7 @@ static bool upnp_kvs_fnc_getExternalIpAddress(KviKvsModuleFunctionCall * c)
 		Returns if a UPnP-capable gateway has been found on the local network.[br]
 		If this function returns false (0), no other command or function from the UPnP module will work.
 */
+
 static bool upnp_kvs_fnc_isGatewayAvailable(KviKvsModuleFunctionCall * c)
 {
 	if(g_pManager)
@@ -106,6 +108,7 @@ static bool upnp_kvs_fnc_isGatewayAvailable(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$upnp.isGatewayAvailable[/fnc], [cmd]upnp.delPortMapping[/cmd]
 */
+
 static bool upnp_kvs_cmd_addPortMapping(KviKvsModuleCommandCall * c)
 {
 	kvs_int_t iPort;
@@ -147,6 +150,7 @@ static bool upnp_kvs_cmd_addPortMapping(KviKvsModuleCommandCall * c)
 	@seealso:
 		[fnc]$upnp.isGatewayAvailable[/fnc], [cmd]upnp.addPortMapping[/cmd]
 */
+
 static bool upnp_kvs_cmd_delPortMapping(KviKvsModuleCommandCall * c)
 {
 	kvs_int_t iPort;
@@ -175,6 +179,7 @@ static bool upnp_kvs_cmd_delPortMapping(KviKvsModuleCommandCall * c)
 	@seealso:
 		[fnc]$upnp.isGatewayAvailable[/fnc]
 */
+
 static bool upnp_kvs_cmd_refresh(KviKvsModuleCommandCall *)
 {
 	if(g_pManager)

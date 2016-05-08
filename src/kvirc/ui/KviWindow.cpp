@@ -1044,7 +1044,7 @@ void KviWindow::childInserted(QWidget * pObject)
 		// not a KviInput
 		if(!m_pFocusHandler && (pObject->focusPolicy() == Qt::StrongFocus))
 		{
-			// still without a focus handler: take this widget (possibly only temporairly)
+			// still without a focus handler: take this widget (possibly only temporarily)
 			m_pFocusHandler = pObject;
 		}
 	}

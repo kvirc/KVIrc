@@ -418,7 +418,6 @@ namespace KviKvsCoreSimpleCommands
 			intptr_t iRet = (intptr_t)::ShellExecute(NULL, "open", szUrl.toLocal8Bit().data(), NULL, NULL, SW_SHOWNORMAL);
 			if(iRet <= 32)
 			{
-				// FIXME: Write a better error message
 				/*
 					The ShellExecute() function returns the value 31 if there is no association for the specified file
 					type or if there is no association for the specified action within the file type.
@@ -451,6 +450,7 @@ namespace KviKvsCoreSimpleCommands
 					                 DLLs required to run this application was corrupt.
 					  21             Application requires Microsoft Windows 32-bit extensions.
 				*/
+				// FIXME: Write a better error message
 				KVSCSC_pContext->warning(__tr2qs_ctx("The system handler for the URL failed to execute: system error is %1", "kvs").arg(iRet));
 			}
 		}

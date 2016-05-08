@@ -59,8 +59,6 @@
 		The default implementation emits the toggled(<bool>) signal.
 */
 
-//---------------------------------------------------------------------------------
-
 KVSO_BEGIN_REGISTERCLASS(KvsObject_checkBox, "checkbox", "button")
 KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_checkBox, setChecked)
 KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_checkBox, isChecked)

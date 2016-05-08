@@ -1147,8 +1147,6 @@ void KviIrcView::dropEvent(QDropEvent * e)
 	}
 }
 
-//
-
 bool KviIrcView::event(QEvent * e)
 {
 	if(e->type() == QEvent::User)
