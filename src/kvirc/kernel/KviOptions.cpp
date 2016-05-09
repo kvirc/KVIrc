@@ -79,7 +79,6 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("UseExtendedPrivmsgView", false, KviOption_sectFlagIrcView | KviOption_groupTheme),
 	BOOL_OPTION("ShowUserAndHostInPrivmsgView", false, KviOption_sectFlagIrcView | KviOption_groupTheme),
 	BOOL_OPTION("UseWordHighlighting", true, KviOption_sectFlagIrcView), /* _ALL_ newbie users, with who i was taling asks me where can they switch on */
-	BOOL_OPTION("UseBigIcons", false, KviOption_sectFlagFrame),          /* Almost all users asks me "How to decrease icon size?" */
 	BOOL_OPTION("CleanupUnusedModules", true, KviOption_sectFlagModules),
 	BOOL_OPTION("IgnoreCtcpPing", false, KviOption_sectFlagCtcp),
 	BOOL_OPTION("IgnoreCtcpVersion", false, KviOption_sectFlagCtcp),
@@ -195,7 +194,6 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("VerboseIgnore", false, KviOption_sectFlagConnection),
 	BOOL_OPTION("EnableIgnoreOnNotice", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("NotifyFailedDccHandshakes", true, KviOption_sectFlagDcc),
-	BOOL_OPTION("Unused00001", false, KviOption_sectFlagFrame),
 	BOOL_OPTION("DrawEmoticons", true, KviOption_sectFlagIrcView | KviOption_groupTheme),
 	BOOL_OPTION("IgnoreCtcpPage", false, KviOption_sectFlagCtcp),
 	BOOL_OPTION("ShowDialogOnCtcpPage", true, KviOption_sectFlagCtcp),
@@ -213,12 +211,10 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("DisableWhoRequestOnJoin", false, KviOption_sectFlagConnection),
 	BOOL_OPTION("ShowDockExtension", true, KviOption_sectFlagFrame),
 	BOOL_OPTION("DccAddressByIrcDns", false, KviOption_sectFlagFrame),
-	BOOL_OPTION("MinimizeConsoleAfterConnect", false, KviOption_sectFlagFrame),
 	BOOL_OPTION("HighlightOnlyNormalMsg", false, KviOption_sectFlagFrame),
 	BOOL_OPTION("HighlightOnlyNormalMsgQueryToo", false, KviOption_sectFlagFrame),
 	BOOL_OPTION("HighlightOnlyNormalMsgNickinChanToo", false, KviOption_sectFlagFrame),
 	BOOL_OPTION("HighlightOnlyAtCustomHighlightLevel", false, KviOption_sectFlagFrame),
-	BOOL_OPTION("Unused00000", true, KviOption_sectFlagFrame),
 	BOOL_OPTION("DccBrokenBouncerHack", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("ExternalMessagesToActiveWindow", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("IgnoreChannelAvatarRequestsWhenNoAvatarSet", true, KviOption_sectFlagAvatar),
@@ -294,7 +290,6 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("EnableAnimatedAvatars", true, KviOption_sectFlagGui | KviOption_resetUpdateGui),
 	BOOL_OPTION("EnableAnimatedSmiles", true, KviOption_sectFlagGui | KviOption_resetUpdateGui),
 	BOOL_OPTION("PlaceNickWithNonAlphaCharsAtEnd", true, KviOption_sectFlagGui | KviOption_resetUpdateGui),
-	BOOL_OPTION("UNUSED:UseStartTlsIfAvailable", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("PasteLastLogOnChannelJoin", false, KviOption_sectFlagLogging),
 	BOOL_OPTION("PasteLastLogOnQueryJoin", false, KviOption_sectFlagLogging),
 	BOOL_OPTION("UseSpecifiedSmartColorForOwnNick", false, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
@@ -358,7 +353,6 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 #endif
 
 KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS] = {
-	STRING_OPTION("UNUSED:FrameCaption", "", KviOption_sectFlagFrame),
 	STRING_OPTION("Nickname1", "", KviOption_sectFlagUser),
 	STRING_OPTION("Nickname2", "", KviOption_sectFlagUser),
 	STRING_OPTION("Nickname3", "", KviOption_sectFlagUser),
@@ -468,7 +462,6 @@ KviColorOption g_mirccolorOptionsTable[KVI_NUM_MIRCCOLOR_OPTIONS] = {
 	    _flags | KviOption_resetUpdateGui | KviOption_groupTheme | KviOption_resetUpdatePseudoTransparency)
 
 KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS] = {
-	COLOR_OPTION("Unused00000", 0, 0, 0, 255, KviOption_sectFlagFrame),
 	COLOR_OPTION("WindowListNormalText", 0, 0, 0, 255, KviOption_sectFlagWindowList),
 	COLOR_OPTION("WindowListMinimizedText", 60, 60, 60, 255, KviOption_sectFlagWindowList),
 	COLOR_OPTION("WindowListHighlight1Text", 0, 16, 144, 255, KviOption_sectFlagWindowList),
@@ -544,7 +537,6 @@ KviColorOption g_iccolorOptionsTable[KVI_NUM_ICCOLOR_OPTIONS] = {
 	    _flags | KviOption_resetUpdateGui)
 
 KviPixmapOption g_pixmapOptionsTable[KVI_NUM_PIXMAP_OPTIONS] = {
-	PIXMAP_OPTION("Unused00000", KviOption_sectFlagFrame | KviOption_groupTheme),
 	PIXMAP_OPTION("IrcViewBackground", KviOption_sectFlagIrcView | KviOption_groupTheme),
 	PIXMAP_OPTION("InputBackground", KviOption_sectFlagInput | KviOption_groupTheme),
 	PIXMAP_OPTION("UserListViewBackground", KviOption_sectFlagUserListView | KviOption_groupTheme),
@@ -599,7 +591,6 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS] = {
 	UINT_OPTION("TileMethod", 5, KviOption_sectFlagMdi),
 	UINT_OPTION("LagMeterHeartbeat", 5000, KviOption_sectFlagConnection | KviOption_resetRestartLagMeter),
 	UINT_OPTION("LagAlarmTime", 120000, KviOption_sectFlagConnection),
-	UINT_OPTION("UNUSED", 0, KviOption_sectFlagFrame),
 	UINT_OPTION("WindowListButtonMinWidth", 100, KviOption_sectFlagWindowList),
 	UINT_OPTION("OutputVerbosityLevel", KVI_VERBOSITY_LEVEL_NORMAL, KviOption_sectFlagFrame),
 	UINT_OPTION("IrcContextAppletWidth", 160, KviOption_sectFlagFrame),
@@ -701,7 +692,6 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS] = {
 	    KviOption_sectFlagMsgType | KviOption_groupTheme)
 
 // FIXME: #warning "FIX THE ICONS HERE!!!"
-
 KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS] = {
 	MSGTYPE_OPTION("Echo", __tr_no_lookup("Normal text"), KviIconManager::None, KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION_SPEC("Selection", __tr_no_lookup("Selection"), KviIconManager::None, KviControlCodes::White, KviControlCodes::Black, KVI_MSGTYPE_LEVEL_1),
@@ -839,11 +829,6 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS] = {
 	MSGTYPE_OPTION_SPEC("ServerError", __tr_no_lookup("Server error"), KviIconManager::ServerError, KviControlCodes::Red, KviControlCodes::Transparent, KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION_SPEC("Help", __tr_no_lookup("Help"), KviIconManager::Help, KviControlCodes::DarkGreen, KviControlCodes::Transparent, KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("TextEncoding", __tr_no_lookup("Text encoding server message"), KviIconManager::TextEncoding, KVI_MSGTYPE_LEVEL_1),
-	// TODO: add icon and check what level means
-	// Pragma: the message level is a warning level that is rendered in the WindowList
-	//         messages with higher level are rendered with more visible color (i.e. red)
-	//         messages with very high level might flash the tray and end up in the notifier
-	//         level 1 or 2 for standard torrent messages is ok
 	MSGTYPE_OPTION("BitTorrent", __tr_no_lookup("BitTorrent message"), KviIconManager::Gnutella, KVI_MSGTYPE_LEVEL_2),
 	MSGTYPE_OPTION("IrcOp", __tr_no_lookup("IRC Op status set"), KviIconManager::IrcOp, KVI_MSGTYPE_LEVEL_5),
 	MSGTYPE_OPTION("DeIrcOp", __tr_no_lookup("IRC Op status unset"), KviIconManager::DeIrcOp, KVI_MSGTYPE_LEVEL_5),
@@ -852,7 +837,6 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS] = {
 	MSGTYPE_OPTION("Cap", __tr_no_lookup("Extended capability message"), KviIconManager::ServerInfo, KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("ChanURL", __tr_no_lookup("Channel URL"), KviIconManager::Url, KVI_MSGTYPE_LEVEL_3),
 	MSGTYPE_OPTION("MemoServ", __tr_no_lookup("MemoServ message"), KviIconManager::MemoServ, KVI_MSGTYPE_LEVEL_1)
-
 };
 
 static const char * options_section_table[KVI_NUM_OPTION_SECT_FLAGS] = {
@@ -1111,7 +1095,6 @@ namespace KviTheme
 			// We actually need to *save* the small icons since
 			// we have a compatibility mode that can load them from
 			// the old format kvi_smallicon_XY.png multiimage libraries.
-
 			for(int j = 0; j < KviIconManager::IconCount; j++)
 			{
 				QPixmap * pix = g_pIconManager->getSmallIcon(j);
@@ -1236,7 +1219,6 @@ namespace KviTheme
 				}
 			}
 		}
-
 		// force reloading of images anyway
 		g_pApp->optionResetUpdate(iResetFlags | KviOption_resetReloadImages);
 		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = szThemeDir;
@@ -1430,7 +1412,6 @@ bool KviApplication::setCommonOptionValue(const QString & optName, const QString
 	SET_OPTION_VALUE(KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable, KVI_COLOR_OPTIONS_PREFIX, KVI_COLOR_OPTIONS_PREFIX_LEN)
 	SET_OPTION_VALUE(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable, KVI_MIRCCOLOR_OPTIONS_PREFIX, KVI_MIRCCOLOR_OPTIONS_PREFIX_LEN)
 	SET_OPTION_VALUE(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable, KVI_ICCOLOR_OPTIONS_PREFIX, KVI_ICCOLOR_OPTIONS_PREFIX_LEN)
-	//	SET_OPTION_VALUE(KVI_NUM_PIXMAP_OPTIONS,g_pixmapOptionsTable,KVI_PIXMAP_OPTIONS_PREFIX,KVI_PIXMAP_OPTIONS_PREFIX_LEN)
 	SET_OPTION_VALUE(KVI_NUM_UINT_OPTIONS, g_uintOptionsTable, KVI_UINT_OPTIONS_PREFIX, KVI_UINT_OPTIONS_PREFIX_LEN)
 	SET_OPTION_VALUE(KVI_NUM_FONT_OPTIONS, g_fontOptionsTable, KVI_FONT_OPTIONS_PREFIX, KVI_FONT_OPTIONS_PREFIX_LEN)
 	SET_OPTION_VALUE(KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable, KVI_MSGTYPE_OPTIONS_PREFIX, KVI_MSGTYPE_OPTIONS_PREFIX_LEN)
