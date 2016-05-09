@@ -42,7 +42,6 @@ class KviConsoleWindow;
 
 //
 // KviWindowListItem
-//
 // The base class for the WindowList items
 // this is the only interface to an item visible to external classes
 //
@@ -71,7 +70,6 @@ public:
 
 //
 // KviWindowListBase
-//
 // The base class for the WindowList implementations
 // This is the basic interface that all the external classes should see
 //
@@ -118,8 +116,8 @@ protected slots:
 
 class KviClassicWindowList;
 
-// KviWindowListButton
 //
+// KviWindowListButton
 // Button to show/hide the window and containing the button to close it
 //
 
@@ -157,8 +155,8 @@ protected slots:
 	void tipRequest(KviDynamicToolTip * tip, const QPoint & pnt);
 };
 
-// KviClassicWindowListToolButton
 //
+// KviClassicWindowListToolButton 
 // Button to close the window
 //
 
