@@ -1928,9 +1928,6 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 
 		joinChannels(lChansAndPass);
 	}
-	// minimize after connect
-	//if(KVI_OPTION_BOOL(KviOption_boolMinimizeConsoleAfterConnect))
-	//	m_pConsole->minimize();
 }
 
 void KviIrcConnection::incomingMessage(const char * pcMessage)
