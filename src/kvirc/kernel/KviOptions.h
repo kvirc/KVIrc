@@ -322,12 +322,12 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolAutoAcceptDccVideo 231                      /* dcc::video */
 #define KviOption_boolCreateMinimizedDccVideo 232                 /* dcc::video */
 #define KviOption_boolCreateMinimizedDccVideoWhenAutoAccepted 233 /* dcc::video */
-// #define KviOption_boolShowTreeWindowListHeader 234
+#define KviOption_boolShowTaskBarButton 234                       /* windows only, used in KviApplication::createFrame only */
 #define KviOption_boolFlashDccChatWindowOnNewMessages 235   /* dcc:chat */
 #define KviOption_boolPopupNotifierOnNewDccChatMessages 236 /* dcc:chat */
 #define KviOption_boolUseAwayMessage 237                    /* away */
 #define KviOption_boolDisableQuietBanListRequestOnJoin 238  /* channel */
-//#define KviOption_boolUseSaslIfAvailable 239 // UNUSED
+#define KviOption_boolUseWindowListCloseButton 239          /* irc::output */
 #define KviOption_boolFrameIsMaximized 240 /* internal */
 #define KviOption_boolPrependNickColorInfoToRealname 241
 #define KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen 242 /* notifier */
@@ -357,10 +357,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolMenuBarVisible 266
 #define KviOption_boolWarnAboutHidingMenuBar 267
 #define KviOption_boolWhoRepliesToActiveWindow 268 /* irc::output */
-#define KviOption_boolShowTaskBarButton 269        /* windows only, used in KviApplication::createFrame only */
-#define KviOption_boolUseWindowListCloseButton 270             /* irc::output */
 
-#define KVI_NUM_BOOL_OPTIONS 271
+#define KVI_NUM_BOOL_OPTIONS 269
 
 #define KVI_STRING_OPTIONS_PREFIX "string"
 #define KVI_STRING_OPTIONS_PREFIX_LEN 6

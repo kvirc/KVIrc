@@ -66,7 +66,6 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("IrcViewUrlHighlighting", true, KviOption_sectFlagIrcView | KviOption_groupTheme),
 	BOOL_OPTION("IrcViewWrapMargin", true, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("InputHistoryCursorAtEnd", true, KviOption_sectFlagInput),
-
 	BOOL_OPTION("AvoidParserWarnings", false, KviOption_sectFlagUserParser),
 	BOOL_OPTION("UseProxyHost", false, KviOption_sectFlagConnection),
 	BOOL_OPTION("ShowGeneralOptionsDialogAsToplevel", true, KviOption_sectFlagFrame),
@@ -303,12 +302,12 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("AutoAcceptDccVideo", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccVideo", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccVideoWhenAutoAccepted", true, KviOption_sectFlagDcc),
-	BOOL_OPTION("UNUSED:ShowTreeWindowListHeader", false, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("ShowTaskBarButton", true, KviOption_sectFlagFrame),
 	BOOL_OPTION("FlashDccChatWindowOnNewMessages", true, KviOption_sectFlagFrame),
 	BOOL_OPTION("PopupNotifierOnNewDccChatMessages", true, KviOption_sectFlagFrame),
 	BOOL_OPTION("UseAwayMessage", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("DisableQuietBanListRequestOnJoin", true, KviOption_sectFlagConnection),
-	BOOL_OPTION("UNUSED:UseSaslIfAvailable", true, KviOption_sectFlagConnection),
+	BOOL_OPTION("UseWindowListCloseButton", false, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("FrameIsMaximized", false, KviOption_sectFlagGeometry),
 	BOOL_OPTION("PrependNickColorInfoToRealname", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("DontShowNotifierIfActiveWindowIsFullScreen", true, KviOption_sectFlagFrame),
@@ -337,9 +336,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("ShowTreeWindowListHandle", true, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("MenuBarVisible", true, KviOption_sectFlagFrame | KviOption_resetUpdateGui),
 	BOOL_OPTION("WarnAboutHidingMenuBar", true, KviOption_sectFlagFrame),
-	BOOL_OPTION("WhoRepliesToActiveWindow", false, KviOption_sectFlagConnection),
-	BOOL_OPTION("ShowTaskBarButton", true, KviOption_sectFlagFrame),
-	BOOL_OPTION("UseWindowListCloseButton", false, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme)
+	BOOL_OPTION("WhoRepliesToActiveWindow", false, KviOption_sectFlagConnection)
 };
 
 #define STRING_OPTION(_txt, _val, _flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt, _val, _flags)
