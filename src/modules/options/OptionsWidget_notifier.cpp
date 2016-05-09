@@ -220,10 +220,10 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 
 	KviTalGroupBox * g = addGroupBox(0, iRow, 0, iRow, Qt::Horizontal, __tr2qs_ctx("Advanced Configuration", "options"));
 	connect(b, SIGNAL(toggled(bool)), g, SLOT(setEnabled(bool)));
-	
+
 	connect(b, SIGNAL(toggled(bool)), addUIntSelector(g, __tr2qs_ctx("Default auto hiding time for messages (0 to disable):", "options"),
 	    KviOption_uintNotifierAutoHideTime, 0, 86400, 30, KVI_OPTION_BOOL(KviOption_boolEnableNotifier)), SLOT(setEnabled(bool)));
-	
+
 	KviUIntSelector * u;
 
 	u = addUIntSelector(g, __tr2qs_ctx("Notifier window opacity while active (mouseover):", "options"),
