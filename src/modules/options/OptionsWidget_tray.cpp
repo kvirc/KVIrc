@@ -36,7 +36,6 @@ OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
     : KviOptionsWidget(parent)
 {
 	setObjectName("tray_options_widget");
-
 	createLayout();
 
 	m_pEnable = addBoolSelector(0, 0, 0, 0, __tr2qs_ctx("Enable tray icon", "options"), KviOption_boolShowDockExtension);
@@ -45,8 +44,8 @@ OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
 #ifdef COMPILE_KDE_SUPPORT
 	QString szTip = __tr2qs_ctx("Take into account that if you're using KDE, this won't work if "
 	                            "you've set \"Keep window thumbnails\" as \"Always\" at \"Desktop Effects\" "
-	                            "advanced settings.",
-	    "options");
+	                            "advanced settings.", "options");
+
 	mergeTip(m_pMinimizeInTray, szTip);
 #endif
 #endif
@@ -57,13 +56,9 @@ OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
 
 	m_pLevelsGroup = addGroupBox(0, 5, 0, 5, Qt::Horizontal, __tr2qs_ctx("Select Message Levels to Notify", "options"));
 
-	addUIntSelector(m_pLevelsGroup, __tr2qs_ctx("Minimum level for low-priority messages:", "options"),
-	    KviOption_uintMinTrayLowLevelMessage,
-	    1, 5, 1, true);
+	addUIntSelector(m_pLevelsGroup, __tr2qs_ctx("Minimum level for low-priority messages:", "options"), KviOption_uintMinTrayLowLevelMessage, 1, 5, 1, true);
 
-	addUIntSelector(m_pLevelsGroup, __tr2qs_ctx("Minimum level for high-priority message:", "options"),
-	    KviOption_uintMinTrayHighLevelMessage,
-	    1, 5, 4, true);
+	addUIntSelector(m_pLevelsGroup, __tr2qs_ctx("Minimum level for high-priority message:", "options"), KviOption_uintMinTrayHighLevelMessage, 1, 5, 4, true);
 
 	addRowSpacer(0, 6, 0, 6);
 

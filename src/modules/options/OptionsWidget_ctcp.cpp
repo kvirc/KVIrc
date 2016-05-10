@@ -35,11 +35,9 @@ OptionsWidget_ctcp::OptionsWidget_ctcp(QWidget * parent)
 
 	createLayout();
 
-	addLabel(0, 0, 0, 0, __tr2qs_ctx("<p>The <b>Client-to-client protocol</b> (CTCP) "
+	addLabel(0, 0, 0, 0, __tr2qs_ctx("<p><b>Client-to-client protocol</b> (CTCP) "
 	                                 "is used to transmit special control messages over an IRC connection. "
-	                                 "These messages can request information from clients or negotiate file transfers."
-	                                 "</p>",
-	                         "options"));
+	                                 "These messages can request information from clients or negotiate file transfers.</p>", "options"));
 
 	KviTalGroupBox * gs = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("CTCP Replies", "options"));
 	KviStringSelector * s = addStringSelector(gs, __tr2qs_ctx("Append to VERSION reply:", "options"), KviOption_stringCtcpVersionPostfix);
@@ -53,11 +51,6 @@ OptionsWidget_ctcp::OptionsWidget_ctcp(QWidget * parent)
 
 	mergeTip(s,
 	    __tr2qs_ctx("This text will be appended to the CTCP SOURCE reply.<br>For example, you can place the source URL for a script here.", "options"));
-
-	//	s = addStringSelector(gs, __tr2qs_ctx("USERINFO reply:","options"),KviOption_stringCtcpUserinfoReply);
-
-	//	mergeTip(s,
-	//		__tr2qs_ctx("This is the CTCP USERINFO reply.<br>It can contain some information about yourself.","options"));
 
 	s = addStringSelector(gs, __tr2qs_ctx("PAGE reply:", "options"), KviOption_stringCtcpPageReply);
 	s->setMinimumLabelWidth(200);

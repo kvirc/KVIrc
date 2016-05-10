@@ -55,35 +55,30 @@ OptionsWidget_channelGeneral::OptionsWidget_channelGeneral(QWidget * pParent)
 
 	b = addBoolSelector(g, __tr2qs_ctx("Rejoin channel", "options"), KviOption_boolRejoinChannelOnKick);
 	mergeTip(b, __tr2qs_ctx("This option will cause KVIrc to attempt "
-	                        "to rejoin a channel after being kicked.",
-	                "options"));
+	                        "to rejoin a channel after being kicked.", "options"));
 
 	b = addBoolSelector(g, __tr2qs_ctx("Keep channel open", "options"), KviOption_boolKeepChannelOpenOnKick);
 	mergeTip(b, __tr2qs_ctx("This option will cause KVIrc to keep "
-	                        "the channel window open after being kicked.<br>"
+	                        "the channel window open after being kicked. "
 	                        "It might be a good idea to also enable the "
-	                        "\"Rejoin channel\" option.",
-	                "options"));
+	                        "\"Rejoin channel\" option.", "options"));
 
 	g = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("On Channel Part", "options"));
 
 	b = addBoolSelector(g, __tr2qs_ctx("Keep channel open", "options"), KviOption_boolKeepChannelOpenOnPart);
 	mergeTip(b, __tr2qs_ctx("This option will cause KVIrc to keep "
-	                        "the channel window open after leaving it.",
-	                "options"));
+	                        "the channel window open after leaving it.", "options"));
 
 	b = addBoolSelector(0, 2, 0, 2, __tr2qs_ctx("Automatically join channel on invite", "options"), KviOption_boolAutoJoinOnInvite);
 	mergeTip(b, __tr2qs_ctx("This option will cause KVIrc to automatically "
 	                        "join a channel when an INVITE message for that channel is received.<br>"
-	                        "<b>Warning:</b> this may help spammers harass you.",
-	                "options"));
+	                        "<b>Warning:</b> this may help spammers harass you.", "options"));
 
 	b = addBoolSelector(0, 3, 0, 3, __tr2qs_ctx("Open channel windows without focus", "options"), KviOption_boolCreateMinimizedChannels);
 	mergeTip(b, __tr2qs_ctx("This option prevents newly created "
 	                        "channel windows from diverting application focus.<br>"
-	                        "Enable this if you don't like channels "
-	                        "popping up while you're typing something in a channel.",
-	                "options"));
+	                        "Enable this if you don't like channel windows "
+	                        "popping up while you're typing something in a channel.", "options"));
 
 	addRowSpacer(0, 4, 0, 4);
 }

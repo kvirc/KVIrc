@@ -46,8 +46,7 @@ OptionsWidget_dccGeneral::OptionsWidget_dccGeneral(QWidget * parent)
 	KviBoolSelector * b = addBoolSelector(0, 0, 0, 0, __tr2qs_ctx("Use workaround for firewall", "options"), KviOption_boolCantAcceptIncomingDccConnections);
 	mergeTip(b, __tr2qs_ctx("Enable this option if you can't accept incoming connections.<br>"
 	                        "KVIrc will try to use different methods to send and receive files.<br>"
-	                        "Please note that these methods may NOT work when communicating with a non-KVIrc client.",
-	                "options"));
+	                        "Please note that these methods may NOT work when communicating with a non-KVIrc client.", "options"));
 
 	addRowSpacer(0, 1, 0, 1);
 }
@@ -72,15 +71,13 @@ OptionsWidget_dccAdvanced::OptionsWidget_dccAdvanced(QWidget * parent)
 	b = addBoolSelector(g, __tr2qs_ctx("Use user-defined address or network interface", "options"), KviOption_boolDccListenOnSpecifiedInterfaceByDefault);
 	mergeTip(b, __tr2qs_ctx("Enable this option if you are on a multihost machine and want "
 	                        "to force one of the available IP addresses to be used for outgoing DCCs.<br>This is especially useful "
-	                        "when you use IPv6 and IPv4 addresses.<br>You can force KVIrc to always choose the IPv4 interface.",
-	                "options"));
+	                        "when you use IPv6 and IPv4 addresses. You can force KVIrc to always choose the IPv4 interface.", "options"));
 
 	s = addStringSelector(g, __tr2qs_ctx("Listen on address/interface:", "options"), KviOption_stringDccListenDefaultInterface,
 	    KVI_OPTION_BOOL(KviOption_boolDccListenOnSpecifiedInterfaceByDefault));
 	mergeTip(s, __tr2qs_ctx("This is the IP address or name of the interface to use by default for outgoing DCC transfers.<br>"
 	                        "On UNIX systems that support it, you can also specify IPv4 interface names (such as <b>ppp0</b>).<br>"
-	                        "If you set it to <b>0.0.0.0</b>, KVIrc will try to use the first available IPv4 interface",
-	                "options"));
+	                        "If you set it to <b>0.0.0.0</b>, KVIrc will try to use the first available IPv4 interface.", "options"));
 
 	connect(b, SIGNAL(toggled(bool)), s, SLOT(setEnabled(bool)));
 
@@ -101,8 +98,7 @@ OptionsWidget_dccAdvanced::OptionsWidget_dccAdvanced(QWidget * parent)
 	b = addBoolSelector(g, __tr2qs_ctx("Send a fixed address in requests", "options"), KviOption_boolDccSendFakeAddressByDefault);
 	mergeTip(b, __tr2qs_ctx("Enable this option if you want to always send a fake IP address in your DCC requests.<br>"
 	                        "This might be useful if you're behind a router with a static address that does network address "
-	                        "translation (NAT) and forwards all or a range of ports.",
-	                "options"));
+	                        "translation (NAT) and forwards all or a range of ports.", "options"));
 
 	s = addStringSelector(g, __tr2qs_ctx("Send address/interface:", "options"), KviOption_stringDefaultDccFakeAddress,
 	    KVI_OPTION_BOOL(KviOption_boolDccSendFakeAddressByDefault));
@@ -117,15 +113,13 @@ OptionsWidget_dccAdvanced::OptionsWidget_dccAdvanced(QWidget * parent)
 	mergeTip(b2, __tr2qs_ctx("You can enable this option if you are behind a router that forwards all or a range of ports.<br>"
 	                         "KVIrc will try to guess the IP address to use for DCC by looking up the local hostname as seen "
 	                         "by the IRC server you're connected to.<br>This method is an exclusive alternative to the \"fixed address\" above.<br>"
-	                         "It might guess the correct address automatically if certain conditions are met (e.g. the IRC server doesn't mask hostnames).",
-	                 "options"));
+	                         "It might guess the correct address automatically if certain conditions are met (e.g. the IRC server doesn't mask hostnames).", "options"));
 
 	b = addBoolSelector(g, __tr2qs_ctx("Use \"broken bouncer hack\" to detect address", "options"), KviOption_boolDccBrokenBouncerHack,
 	    KVI_OPTION_BOOL(KviOption_boolDccGuessIpFromServerWhenLocalIsUnroutable));
 	mergeTip(b, __tr2qs_ctx("When you're behind a dialup router and also tunneling through a psyBNC bouncer, "
 	                        "you can use a bug in the bouncer to force KVIrc to bind the DCC connections to the dialup router's address.<br>"
-	                        "It's an ugly hack - use it only if nothing else works.",
-	                "options"));
+	                        "It's an ugly hack - use it only if nothing else works.", "options"));
 
 	connect(b2, SIGNAL(toggled(bool)), b, SLOT(setEnabled(bool)));
 
@@ -134,20 +128,17 @@ OptionsWidget_dccAdvanced::OptionsWidget_dccAdvanced(QWidget * parent)
 	                        "user can't be satisfied KVIrc will notify him by a CTCP ERRMSG. This is "
 	                        "a nice feature so it is a good idea to leave it on unless for some reason "
 	                        "you have deactivated the anti-flood system: in this case turning off this option "
-	                        "might help if you often get attacked by CTCP floods.",
-	                "options"));
+	                        "might help if you often get attacked by CTCP floods.", "options"));
 
 	u = addUIntSelector(0, 2, 1, 2, __tr2qs_ctx("Maximum number of DCC sessions:", "options"), KviOption_uintMaxDccSlots, 0, 1000, 64);
 	mergeTip(u, __tr2qs_ctx("This is the maximum number of concurrent DCC sessions "
-	                        "and it includes all the DCC types (send, chat, recv...). "
-	                        "KVIrc will refuse the requests when this limit is reached.",
-	                "options"));
+	                        "and it includes all the DCC types (send, chat, recv.). "
+	                        "KVIrc will refuse the requests when this limit is reached.", "options"));
 
 	u = addUIntSelector(0, 3, 1, 3, __tr2qs_ctx("DCC socket timeout:", "options"), KviOption_uintDccSocketTimeout, 10, 65536, 180);
 	u->setSuffix(__tr2qs_ctx(" sec", "options"));
 	mergeTip(u, __tr2qs_ctx("This is the amount of time that KVIrc will wait for a response before assuming that a DCC has failed "
-	                        "because the remote client was unable to connect to our listening socket.",
-	                "options"));
+	                        "because the remote client was unable to connect to our listening socket.", "options"));
 
 	addRowSpacer(0, 4, 1, 4);
 }
@@ -184,8 +175,7 @@ OptionsWidget_dccSendGeneral::OptionsWidget_dccSendGeneral(QWidget * parent)
 	mergeTip(b3, __tr2qs_ctx("This option prevents the transfer window "
 	                         "from opening and diverting application focus.<br>"
 	                         "Enable this if you don't like the transfer window "
-	                         "popping up while you're typing something in a channel.",
-	                 "options"));
+	                         "popping up while you're typing something in a channel.", "options"));
 
 	b4 = addBoolSelector(g, __tr2qs_ctx("Automatically resume when auto-accepted", "options"), KviOption_boolAutoResumeDccSendWhenAutoAccepted,
 	    KVI_OPTION_BOOL(KviOption_boolAutoAcceptDccSend));
@@ -202,15 +192,13 @@ OptionsWidget_dccSendGeneral::OptionsWidget_dccSendGeneral(QWidget * parent)
 	addBoolSelector(g, __tr2qs_ctx("Notify completion in notifier", "options"), KviOption_boolNotifyDccSendSuccessInNotifier);
 	b = addBoolSelector(g, __tr2qs_ctx("Automatically clear transfer", "options"), KviOption_boolAutoCloseDccSendOnSuccess);
 	mergeTip(b, __tr2qs_ctx("This option will cause successfully terminated transfers "
-	                        "to be automatically removed from the transfer window.",
-	                "options"));
+	                        "to be automatically removed from the transfer window.", "options"));
 
 	b1 = addBoolSelector(0, 3, 0, 3, __tr2qs_ctx("Open transfer window without focus", "options"), KviOption_boolCreateMinimizedDccSend);
 	mergeTip(b1, __tr2qs_ctx("This option prevents the transfer window "
 	                         "from opening and diverting application focus.<br>"
 	                         "Enable this if you don't like the transfer window "
-	                         "popping up while you're typing something in a channel.",
-	                 "options"));
+	                         "popping up while you're typing something in a channel.", "options"));
 
 	connect(b1, SIGNAL(toggled(bool)), b3, SLOT(setNotEnabled(bool)));
 	connect(b2, SIGNAL(toggled(bool)), b4, SLOT(setEnabled(bool)));
@@ -341,29 +329,25 @@ OptionsWidget_dccChat::OptionsWidget_dccChat(QWidget * parent)
 	mergeTip(b1, __tr2qs_ctx("This option prevents incoming "
 	                         "auto-accepted DCC chat windows from diverting application focus.<br>"
 	                         "Enable this if you don't like DCC chat windows "
-	                         "popping up while you're typing something in a channel.",
-	                 "options"));
+	                         "popping up while you're typing something in a channel.", "options"));
 
 	b2 = addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Open DCC chat windows without focus", "options"), KviOption_boolCreateMinimizedDccChat);
 	mergeTip(b2, __tr2qs_ctx("This option prevents incoming "
 	                         "DCC chat windows from diverting application focus.<br>"
 	                         "Enable this if you don't like DCC chat windows "
-	                         "popping up while you're typing something in a channel.",
-	                 "options"));
+	                         "popping up while you're typing something in a channel.", "options"));
 
 	connect(b2, SIGNAL(toggled(bool)), b1, SLOT(setNotEnabled(bool)));
 
 #if(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MINGW))
 	b2 = addBoolSelector(0, 2, 0, 2, __tr2qs_ctx("Flash system taskbar on new DCC chat message", "options"), KviOption_boolFlashDccChatWindowOnNewMessages);
 	mergeTip(b2, __tr2qs_ctx("This option causes the system taskbar entry for KVIrc to flash when a new DCC chat message "
-	                         "is received and the KVIrc window is not the active.",
-	                 "options"));
+	                         "is received and the KVIrc window is not the active.", "options"));
 #endif
 	b2 = addBoolSelector(0, 3, 0, 3, __tr2qs_ctx("Popup notifier on new DCC chat message", "options"), KviOption_boolPopupNotifierOnNewDccChatMessages);
 	mergeTip(b2, __tr2qs_ctx("This option causes a small notifier window to pop up "
 	                         "in the low right corner of the screen when a new message is received "
-	                         "and the KVIrc window is not active.",
-	                 "options"));
+	                         "and the KVIrc window is not active.", "options"));
 
 	addRowSpacer(0, 4, 0, 4);
 }
@@ -380,12 +364,11 @@ OptionsWidget_dccVoice::OptionsWidget_dccVoice(QWidget * p) : KviOptionsWidget(p
 	KviTalGroupBox * g;
 	KviUIntSelector * u;
 
-	b1 = addBoolSelector(0, 0, 0, 0, __tr2qs_ctx("Open all DCC voice windows without focus", "options"), KviOption_boolCreateMinimizedDccVoice);
+	b1 = addBoolSelector(0, 0, 0, 0, __tr2qs_ctx("Open DCC voice windows without focus", "options"), KviOption_boolCreateMinimizedDccVoice);
 	mergeTip(b1, __tr2qs_ctx("This option prevents all incoming "
 	                         "DCC voice windows from diverting application focus.<br>"
 	                         "Enable this if you don't like DCC voice windows "
-	                         "popping up while you're typing something in a channel.",
-	                 "options"));
+	                         "popping up while you're typing something in a channel.", "options"));
 
 	g = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("On Voice Request", "options"));
 	b = addBoolSelector(g, __tr2qs_ctx("Automatically accept", "options"), KviOption_boolAutoAcceptDccVoice);
@@ -394,8 +377,7 @@ OptionsWidget_dccVoice::OptionsWidget_dccVoice(QWidget * p) : KviOptionsWidget(p
 	mergeTip(b, __tr2qs_ctx("This option prevents incoming "
 	                        "auto-accepted DCC voice windows from diverting application focus.<br>"
 	                        "Enable this if you don't like DCC voice windows "
-	                        "popping up while you're typing something in a channel.",
-	                "options"));
+	                        "popping up while you're typing something in a channel.", "options"));
 
 	connect(b1, SIGNAL(toggled(bool)), b, SLOT(setNotEnabled(bool)));
 
