@@ -135,7 +135,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("NotifyListSendUserhostForOnlineUsers", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("UseIntelligentNotifyListManager", true, KviOption_sectFlagConnection | KviOption_resetRestartNotifyList),
 	BOOL_OPTION("UseWatchListIfAvailable", true, KviOption_sectFlagConnection),
-	BOOL_OPTION("UseTreeWindowList", true, KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList | KviOption_groupTheme),
+	BOOL_OPTION("UseTreeWindowListWindowList", true, KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList | KviOption_groupTheme),
 	BOOL_OPTION("BindIrcIPv4ConnectionsToSpecifiedAddress", false, KviOption_sectFlagConnection),
 	BOOL_OPTION("BindIrcIPv6ConnectionsToSpecifiedAddress", false, KviOption_sectFlagConnection),
 	BOOL_OPTION("UseAntiSpamOnNotice", false, KviOption_sectFlagAntiSpam),
@@ -182,7 +182,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("ReopenQueriesAfterReconnect", true, KviOption_sectFlagFrame),
 	BOOL_OPTION("EnableQueryTracing", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("OperatorMessagesToActiveWindow", false, KviOption_sectFlagConnection),
-	BOOL_OPTION("InviteToActiveWindow", true, KviOption_sectFlagConnection),
+	BOOL_OPTION("InvitesToActiveWindow", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("ShowChannelUserFlagInPrivmsgView", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("DccSendFakeAddressByDefault", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("UseWindowListActivityMeter", false, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
@@ -213,7 +213,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("DccAddressByIrcDns", false, KviOption_sectFlagFrame),
 	BOOL_OPTION("HighlightOnlyNormalMsg", false, KviOption_sectFlagFrame),
 	BOOL_OPTION("HighlightOnlyNormalMsgQueryToo", false, KviOption_sectFlagFrame),
-	BOOL_OPTION("HighlightOnlyNormalMsgNickinChanToo", false, KviOption_sectFlagFrame),
+	BOOL_OPTION("HighlightOnlyNormalMsgHighlightInChanToo", false, KviOption_sectFlagFrame),
 	BOOL_OPTION("HighlightOnlyAtCustomHighlightLevel", false, KviOption_sectFlagFrame),
 	BOOL_OPTION("DccBrokenBouncerHack", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("ExternalMessagesToActiveWindow", true, KviOption_sectFlagConnection),
@@ -474,7 +474,7 @@ KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS] = {
 	COLOR_OPTION("NotifierForeground", 0, 0, 0, 255, KviOption_sectFlagNotifier),
 	COLOR_OPTION("NotifierTitleForeground", 255, 255, 255, 255, KviOption_sectFlagNotifier),
 	COLOR_OPTION("IrcViewBackground", 255, 255, 255, 255, KviOption_sectFlagIrcView),
-	COLOR_OPTION("InputBackgroundColor", 255, 255, 255, 255, KviOption_sectFlagInput),
+	COLOR_OPTION("InputBackground", 255, 255, 255, 255, KviOption_sectFlagInput),
 	COLOR_OPTION("InputSelectionBackground", 0, 0, 0, 255, KviOption_sectFlagInput),
 	COLOR_OPTION("InputSelectionForeground", 255, 255, 255, 255, KviOption_sectFlagInput),
 	COLOR_OPTION("InputCursor", 0, 0, 0, 255, KviOption_sectFlagInput),
@@ -846,7 +846,7 @@ static const char * options_section_table[KVI_NUM_OPTION_SECT_FLAGS] = {
 	"User", "UserListView", "Label", "Modules",
 	"Ctcp", "Dcc", "Gui", "IrcToolBar",
 	"Logging", "AntiSpam", "Avatar", "Url",
-	"Recent", "Geometry"
+	"Recent", "Geometry", "Notifier"
 };
 
 static void config_set_section(int flag, KviConfigurationFile * cfg)
