@@ -44,6 +44,7 @@
 	@seealso:
 		[fnc]$texticons.get[/fnc]
 */
+
 static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 {
 	QString szIcon;

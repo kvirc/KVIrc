@@ -87,9 +87,8 @@ OptionsWidget_textIcons::OptionsWidget_textIcons(QWidget * parent)
 	m_pTable->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 	mergeTip(m_pTable->viewport(), __tr2qs_ctx("This table contains the text icon associations.<br>"
-	                                           "KVirc will use them to display the CTRL+I escape sequences and eventually the "
-	                                           "emoticons.",
-	                                   "options"));
+	                                           "KVIrc will use them to display the CTRL+I escape sequences "
+	                                           "and eventually the emoticons.", "options"));
 
 	layout()->addWidget(m_pTable, 0, 0, 1, 3);
 
@@ -173,12 +172,12 @@ void OptionsWidget_textIcons::iconSelected(KviIconManager::SmallIcon eIcon)
 	pBox->setMargin(0);
 
 	m_pCurrentIconButton = new QToolButton(pBox);
-	m_pCurrentIconButton->setMinimumWidth(150);
+	m_pCurrentIconButton->setMinimumWidth(90);
 	m_pCurrentIconButton->setIcon(QIcon(*m_pCurrentItem->icon()->pixmap()));
 	connect(m_pCurrentIconButton, SIGNAL(clicked()), this, SLOT(doPopup()));
 
 	QToolButton * pBrowseButton = new QToolButton(pBox);
-	pBrowseButton->setText("...");
+	pBrowseButton->setText(__tr2qs("&Browse..."));
 	connect(pBrowseButton, SIGNAL(clicked()), this, SLOT(chooseFromFile()));
 
 	m_pTable->setCellWidget(m_pCurrentItem->row(), 1, pBox);
@@ -248,13 +247,12 @@ void OptionsWidget_textIcons::currentItemChanged(QTableWidgetItem * cur, QTableW
 	pBox->setMargin(0);
 
 	m_pCurrentIconButton = new QToolButton(pBox);
-	m_pCurrentIconButton->setMinimumWidth(150);
+	m_pCurrentIconButton->setMinimumWidth(90);
 	m_pCurrentIconButton->setIcon(QIcon(cur->icon()));
 	connect(m_pCurrentIconButton, SIGNAL(clicked()), this, SLOT(doPopup()));
 
-	// FIXME: this does not work currently!
 	QToolButton * pBrowseButton = new QToolButton(pBox);
-	pBrowseButton->setText("...");
+	pBrowseButton->setText(__tr2qs("&Browse..."));
 	connect(pBrowseButton, SIGNAL(clicked()), this, SLOT(chooseFromFile()));
 
 	m_pTable->setCellWidget(cur->row(), 1, pBox);
