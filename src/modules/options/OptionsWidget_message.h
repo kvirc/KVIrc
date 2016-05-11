@@ -94,8 +94,8 @@ protected slots:
 };
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_messageColors KviIconManager::IconManager
-#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_messageColors __tr2qs_no_lookup("Message Colors")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_messageColors __tr2qs_no_lookup("theme,colors,messages,output")
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_messageColors __tr2qs_no_lookup("Message Decorations")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_messageColors __tr2qs_no_lookup("theme,icons,colors,messages,output")
 #define KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_messageColors "theme"
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_messageColors OptionsWidget_message
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_messageColors 30
