@@ -218,7 +218,7 @@ void CustomToolBarPropertiesDialog::iconSelected(const QString & szIconId)
 	}
 	else
 	{
-		m_pIconButton->setText("Browse...");
+		m_pIconButton->setText(__tr2qs("&Browse..."));
 		m_szIconId = "";
 		m_pIconEdit->setText("");
 	}

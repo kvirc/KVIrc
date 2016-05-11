@@ -306,7 +306,7 @@ KviPixmapSelector::KviPixmapSelector(QWidget * par, const QString & txt, KviPixm
 		m_pFileNameLabel->setText(m_localPixmap.path());
 	g->addWidget(m_pFileNameLabel, 2, 0);
 
-	m_pChooseButton = new QPushButton("&Browse...", this);
+	m_pChooseButton = new QPushButton(__tr2qs("&Browse..."), this);
 	g->addWidget(m_pChooseButton, 2, 1);
 	connect(m_pChooseButton, SIGNAL(clicked()), this, SLOT(choosePixmap()));
 
