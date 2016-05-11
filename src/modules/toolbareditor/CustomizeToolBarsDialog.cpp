@@ -266,10 +266,8 @@ void CustomToolBarPropertiesDialog::okClicked()
 			if(QMessageBox::information(this, __tr2qs_ctx("Duplicate Toolbar ID - KVIrc", "editor"),
 			       __tr2qs_ctx("The specified toolbar ID already exists.<br>"
 			                   "Would you like KVIrc to assign it automatically (so it doesn't "
-			                   "collide with any other toolbar) or you prefer to do it manually?",
-			                                "editor"),
-			       __tr2qs_ctx("Manually", "editor"), __tr2qs_ctx("Automatically", "editor"))
-			    == 0)
+			                   "collide with any other toolbar) or you prefer to do it manually?", "editor"),
+			       __tr2qs_ctx("Manually", "editor"), __tr2qs_ctx("Automatically", "editor")) == 0)
 				return;
 			m_szId = KviCustomToolBarManager::instance()->idForNewToolBar(m_szLabel);
 		}

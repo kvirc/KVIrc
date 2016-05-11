@@ -224,30 +224,25 @@ OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
 	b = addBoolSelector(g, __tr2qs_ctx("Send ACK for byte 0", "options"), KviOption_boolSendZeroAckInDccRecv);
 	mergeTip(b, __tr2qs_ctx("This option causes KVIrc to send a zero-byte acknowledge to kick-start "
 	                        "the DCC transfer with some buggy IRC clients.<br>"
-	                        "Use it only if your DCC transfers stall just after establishing a connection without sending any data.",
-	                "options"));
+	                        "Use it only if your DCC transfers stall just after establishing a connection without sending any data.", "options"));
 
 	b = addBoolSelector(g, __tr2qs_ctx("Accept RESUME requests with broken filename (mIRC file.ext)", "options"), KviOption_boolAcceptBrokenFileNameDccResumeRequests);
 	mergeTip(b, __tr2qs_ctx("This option causes KVIrc to accept RESUME requests with invalid filenames.<br>"
-	                        "Use it if KVIrc fails to accept RESUME requests from other clients (e.g. some versions of mIRC).",
-	                "options"));
+	                        "Use it if KVIrc fails to accept RESUME requests from other clients (e.g. some versions of mIRC).", "options"));
 
 	b = addBoolSelector(g, __tr2qs_ctx("Accept RESUME requests with mismatched ports", "options"), KviOption_boolAcceptMismatchedPortDccResumeRequests);
 	mergeTip(b, __tr2qs_ctx("This option causes KVIrc to accept RESUME requests with mismatched ports.<br>"
 	                        "Use it if some router on the path between you and the receiver remaps the ports in DCC SEND "
 	                        "but not in DCC RESUME requests.<br>Please note that this option may misbehave in certain usage "
-	                        "patterns since KVIrc must differentiate between transfers only by looking at the filename. Be careful.",
-	                "options"));
+	                        "patterns since KVIrc must differentiate between transfers only by looking at the filename. Be careful.", "options"));
 
 	b = addBoolSelector(g, __tr2qs_ctx("Replace spaces with underscores in outgoing filenames", "options"), KviOption_boolDCCFileTransferReplaceOutgoingSpacesWithUnderscores);
 	mergeTip(b, __tr2qs_ctx("This option causes KVIrc to replace spaces with underscores in filenames "
-	                        "for all the outgoing file transfers. This will fix filename handling with some buggy clients (e.g. some versions of mIRC).",
-	                "options"));
+	                        "for all the outgoing file transfers. This will fix filename handling with some buggy clients (e.g. some versions of mIRC).", "options"));
 
 	b = addBoolSelector(g, __tr2qs_ctx("Send 64-bit ACKs for files larger than 4GiB", "options"), KviOption_boolSend64BitAckInDccRecv);
 	mergeTip(b, __tr2qs_ctx("This option causes KVIrc to send ACKs as 64-bit integers instead of 32-bit integers<br>"
-	                        "Use this to fix DCC RECEIVE transfers where the other client is using the mIRC ACK standard.",
-	                "options"));
+	                        "Use this to fix DCC RECEIVE transfers where the other client is using the mIRC ACK standard.", "options"));
 
 	g = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("Limits", "options"));
 
@@ -266,16 +261,14 @@ OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
 
 	u = addUIntSelector(g, __tr2qs_ctx("Maximum number of DCC transfers:", "options"), KviOption_uintMaxDccSendTransfers, 0, 1000, 10);
 	mergeTip(u, __tr2qs_ctx("This is the maximum number of concurrent DCC transfers. "
-	                        "KVIrc will refuse the requests when this limit is reached.",
-	                "options"));
+	                        "KVIrc will refuse the requests when this limit is reached.", "options"));
 
 	g = addGroupBox(0, 2, 0, 2, Qt::Horizontal, __tr2qs_ctx("Tweaks", "options"));
 
 	b = addBoolSelector(g, __tr2qs_ctx("Use fast send (send ahead)", "options"), KviOption_boolUseFastDccSend);
 	mergeTip(b, __tr2qs_ctx("The \"send ahead\" DCC method allows data to be sent faster by breaking "
 	                        "some of the rules of the original DCC SEND protocol specification.<br>"
-	                        "Most clients can handle this kind of optimisation so disable it only if you have problems.",
-	                "options"));
+	                        "Most clients can handle this kind of optimisation so disable it only if you have problems.", "options"));
 
 	hb = new KviTalHBox(g);
 
@@ -283,8 +276,7 @@ OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
 	mergeTip(b, __tr2qs_ctx("Enable this option when the DCC file transfers "
 	                        "tend to block your computer by consuming too much CPU time. "
 	                        "When this option is enabled the idle interval below will be "
-	                        "forcibly inserted between each sent/received data packet.",
-	                "options"));
+	                        "forcibly inserted between each sent/received data packet.", "options"));
 
 	u = addUIntSelector(hb, "", KviOption_uintDccSendIdleStepInMSec, 1, 65536, 30, KVI_OPTION_BOOL(KviOption_boolDccSendForceIdleStep));
 	connect(b, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
@@ -293,8 +285,7 @@ OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
 	mergeTip(u, __tr2qs_ctx("This parameter controls the average delay between two packets sent or received.<br>"
 	                        "A smaller interval will cause you to send data faster but will also "
 	                        "add load to your CPU, disk and network interface.<br>"
-	                        "Reasonable values are from 5 to 50 milliseconds.",
-	                "options"));
+	                        "Reasonable values are from 5 to 50 milliseconds.", "options"));
 
 	u = addUIntSelector(g, __tr2qs_ctx("Packet size:", "options"), KviOption_uintDccSendPacketSize, 16, 65536, 1024);
 	u->setSuffix(__tr2qs_ctx(" bytes", "options"));
@@ -302,8 +293,7 @@ OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
 	                        "With bigger packets you will be probably send data faster, but "
 	                        "you will also saturate your bandwidth and in some cases "
 	                        "cause more disk activity.<br>"
-	                        "Reasonable values are from 512 to 4096 bytes.",
-	                "options"));
+	                        "Reasonable values are from 512 to 4096 bytes.", "options"));
 
 	addRowSpacer(0, 3, 0, 4);
 }
