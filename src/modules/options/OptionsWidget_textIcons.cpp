@@ -174,6 +174,7 @@ void OptionsWidget_textIcons::iconSelected(KviIconManager::SmallIcon eIcon)
 	m_pCurrentIconButton = new QToolButton(pBox);
 	m_pCurrentIconButton->setMinimumWidth(90);
 	m_pCurrentIconButton->setIcon(QIcon(*m_pCurrentItem->icon()->pixmap()));
+
 	connect(m_pCurrentIconButton, SIGNAL(clicked()), this, SLOT(doPopup()));
 
 	QToolButton * pBrowseButton = new QToolButton(pBox);
@@ -249,6 +250,7 @@ void OptionsWidget_textIcons::currentItemChanged(QTableWidgetItem * cur, QTableW
 	m_pCurrentIconButton = new QToolButton(pBox);
 	m_pCurrentIconButton->setMinimumWidth(90);
 	m_pCurrentIconButton->setIcon(QIcon(cur->icon()));
+	m_pCurrentIconButton->setText(__tr2qs("&Select..."));
 	connect(m_pCurrentIconButton, SIGNAL(clicked()), this, SLOT(doPopup()));
 
 	QToolButton * pBrowseButton = new QToolButton(pBox);
