@@ -135,7 +135,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("NotifyListSendUserhostForOnlineUsers", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("UseIntelligentNotifyListManager", true, KviOption_sectFlagConnection | KviOption_resetRestartNotifyList),
 	BOOL_OPTION("UseWatchListIfAvailable", true, KviOption_sectFlagConnection),
-	BOOL_OPTION("UseTreeWindowListWindowList", true, KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList | KviOption_groupTheme),
+	BOOL_OPTION("UseTreeWindowList", true, KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList | KviOption_groupTheme),
 	BOOL_OPTION("BindIrcIPv4ConnectionsToSpecifiedAddress", false, KviOption_sectFlagConnection),
 	BOOL_OPTION("BindIrcIPv6ConnectionsToSpecifiedAddress", false, KviOption_sectFlagConnection),
 	BOOL_OPTION("UseAntiSpamOnNotice", false, KviOption_sectFlagAntiSpam),

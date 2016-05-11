@@ -1267,7 +1267,7 @@ void KviMainWindow::createWindowList()
 		delete m_pWindowList;
 	}
 
-	if(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowListWindowList))
+	if(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowList))
 	{
 		m_pWindowList = new KviTreeWindowList();
 		m_pWindowList->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);

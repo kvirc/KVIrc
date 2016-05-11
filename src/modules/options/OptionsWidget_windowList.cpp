@@ -34,7 +34,7 @@ OptionsWidget_windowList::OptionsWidget_windowList(QWidget * parent)
 	setObjectName("windowlist_options_widget");
 	createLayout();
 
-	addBoolSelector(0, 0, 0, 0, __tr2qs_ctx("Use tree window list", "options"), KviOption_boolUseTreeWindowListWindowList);
+	addBoolSelector(0, 0, 0, 0, __tr2qs_ctx("Use tree window list", "options"), KviOption_boolUseTreeWindowList);
 	addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Sort windows by name", "options"), KviOption_boolSortWindowListItemsByName);
 	addBoolSelector(0, 2, 0, 2, __tr2qs_ctx("Show window icons in window list", "options"), KviOption_boolUseWindowListIcons);
 	KviBoolSelector * b = addBoolSelector(0, 3, 0, 3, __tr2qs_ctx("Show activity meter in window list", "options"), KviOption_boolUseWindowListActivityMeter);
