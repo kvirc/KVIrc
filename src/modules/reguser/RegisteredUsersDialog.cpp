@@ -95,8 +95,7 @@ KviRegisteredUsersListView::KviRegisteredUsersListView(QWidget * par)
 	                       "KVIrc can automatically recognize and associate properties to them.<br>"
 	                       "Use the buttons on the right to add, edit and remove entries. "
 	                       "The \"notify\" column allows you to quickly add users to the notify list. "
-	                       "Notify list fine-tuning can be performed by editing the entry properties.",
-	    "register"));
+	                       "Notify list fine-tuning can be performed by editing the entry properties.", "register"));
 }
 
 void KviRegisteredUsersListView::mousePressEvent(QMouseEvent * e)
@@ -424,9 +423,9 @@ void RegisteredUsersDialog::itemDoubleClicked(QTreeWidgetItem * it, int)
 void RegisteredUsersDialog::addGroupClicked()
 {
 	bool ok;
-	QString text = QInputDialog::getText(this,
-	    "KVIrc", __tr2qs_ctx("Group name:", "register"), QLineEdit::Normal,
-	    QString(), &ok);
+	QString text = QInputDialog::getText(this, "Add Group Name - KVIrc", 
+	    __tr2qs_ctx("Group name:", "register"), QLineEdit::Normal, QString(), &ok);
+   
 	if(ok && !text.isEmpty())
 	{
 		g_pLocalRegisteredUserDataBase->addGroup(text);
@@ -438,9 +437,9 @@ void RegisteredUsersDialog::editGroup(KviRegisteredUserGroup * group)
 {
 	bool ok;
 
-	QString text = QInputDialog::getText(this,
-	    "KVIrc", __tr2qs_ctx("Group name:", "register"), QLineEdit::Normal,
-	    group->name(), &ok);
+	QString text = QInputDialog::getText(this, "Change Group Name - KVIrc", 
+	    __tr2qs_ctx("Group name:", "register"), QLineEdit::Normal, group->name(), &ok);
+
 	if(ok && !text.isEmpty())
 	{
 		QString szOldGroup = group->name();
@@ -625,26 +624,6 @@ void RegisteredUsersDialog::removeClicked()
 		}
 	}
 	fillList();
-	// 	RegisteredUsersDialogItem *it = (RegisteredUsersDialogItem *)m_pListView->firstChild();
-	// 	RegisteredUsersDialogItemBase* b=(RegisteredUsersDialogItemBase*)it;
-	// 	if(b->type()==RegisteredUsersDialogItemBase::User)
-	// 	{
-	// 		KviPointerList<RegisteredUsersDialogItem> l;
-	// 		l.setAutoDelete(false);
-	// 		while(it)
-	// 		{
-	// 			if(it->isSelected())l.append(it);
-	// 			it = (RegisteredUsersDialogItem *)it->nextSibling();
-	// 		}
-	//
-	// 		for(RegisteredUsersDialogItem * i = l.first();i;i = l.next())
-	// 		{
-	// 			//g_pLocalRegisteredUserDataBase->removeUser(i->user()->name());
-	// 			delete i;
-	// 		}
-	// 	} else {
-	//
-	// 	}
 }
 
 void RegisteredUsersDialog::editClicked()
