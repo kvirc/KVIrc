@@ -453,8 +453,6 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint & pos)
 
 	bool bSeparatorInserted = false;
 
-	//	if(!findPrologue(parentMenu))
-	//	{
 	m_pContextPopup->addSeparator();
 	bSeparatorInserted = true;
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Prologue)),
@@ -1330,7 +1328,6 @@ void PopupEditorWidget::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem
 	saveLastEditedItem();
 
 	m_pLastEditedItem = (MenuTreeWidgetItem *)it;
-
 	m_pEditor->edit(m_pLastEditedItem);
 }
 
@@ -1347,8 +1344,6 @@ void PopupEditorWidget::commit()
 		return;
 
 	saveLastEditedItem();
-
-	//KviKvsPopupManager::instance()->clear();
 
 	int topcount = m_pTreeWidget->topLevelItemCount();
 

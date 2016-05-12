@@ -461,11 +461,14 @@ ScriptEditorWidgetColorOptions::ScriptEditorWidgetColorOptions(QWidget * pParent
 	m_pSelectorInterfaceList = new KviPointerList<KviSelectorInterface>;
 	m_pSelectorInterfaceList->setAutoDelete(false);
 	setWindowTitle(__tr2qs_ctx("Editor Configuration - KVIrc", "editor"));
+
 	QGridLayout * g = new QGridLayout(this);
 	KviTalVBox * box = new KviTalVBox(this);
 	g->addWidget(box, 0, 0);
 	box->setMargin(0);
 	box->setSpacing(0);
+	box->setMinimumWidth(280);
+
 	KviFontSelector * f = new KviFontSelector(box, __tr2qs_ctx("Font:", "editor"), &g_fntNormal, true);
 	m_pSelectorInterfaceList->append(f);
 	KviTalGroupBox * gbox = new KviTalGroupBox(Qt::Horizontal, __tr2qs_ctx("Colors", "editor"), box);
@@ -871,8 +874,6 @@ void ScriptEditorImplementation::saveToFile()
 	{
 		QString szBuffer = m_pEditor->toPlainText();
 
-		//if(tmp.isEmpty())tmp = "";
-		//KviCString buffer = tmp.toUtf8().data();
 		if(!KviFileUtils::writeFile(szFileName, szBuffer))
 		{
 			QString szTmp;
@@ -960,8 +961,6 @@ void ScriptEditorImplementation::loadFromFile()
 		{
 			m_pEditor->setPlainText(szBuffer);
 			setCursorPosition(0);
-			//m_pEditor->moveCursor(QTextEdit::MoveEnd,false);
-			//updateRowColLabel();
 		}
 		else
 		{
@@ -1002,7 +1001,7 @@ ScriptEditorReplaceDialog::ScriptEditorReplaceDialog(QWidget * pParent, const QS
 	emit initFind();
 	QPalette p = palette();
 	p.setColor(foregroundRole(), QColor(0, 0, 0));
-	p.setColor(backgroundRole(), QColor(236, 233, 216));
+	p.setColor(backgroundRole(), QColor(255, 255, 255));
 	setPalette(p);
 
 	QGridLayout * pLayout = new QGridLayout(this);
