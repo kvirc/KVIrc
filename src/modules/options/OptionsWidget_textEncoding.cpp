@@ -153,7 +153,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 		m_pSpellCheckerDictionaries->setRowCount(dictMap.size());
 		m_pSpellCheckerDictionaries->setColumnCount(2);
 		QStringList header;
-		header << __tr2qs_ctx("Language code", "options");
+		header << __tr2qs_ctx("Language Code", "options");
 		header << __tr2qs_ctx("Provided by", "options");
 		m_pSpellCheckerDictionaries->setHorizontalHeaderLabels(header);
 		m_pSpellCheckerDictionaries->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -222,7 +222,7 @@ void OptionsWidget_textEncoding::commit()
 		g_szPrevSettedLocale = m_pForcedLocaleCombo->itemText(idx);
 		if(!KviFileUtils::writeFile(szLangFile, m_pForcedLocaleCombo->itemText(idx)))
 		{
-			QMessageBox::critical(this, "KVIrc", __tr2qs_ctx("Unable to write language information to", "options") + "\n" + szLangFile, __tr2qs_ctx("OK", "options"));
+			QMessageBox::critical(this, "Writing to File Failed - KVIrc", __tr2qs_ctx("Unable to write language information to", "options") + "\n" + szLangFile, __tr2qs_ctx("OK", "options"));
 		}
 	}
 
