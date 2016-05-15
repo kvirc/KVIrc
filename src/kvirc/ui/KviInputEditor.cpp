@@ -1020,6 +1020,9 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 
 	QString szClip;
 
+	static QString ths = "<html><body><table width=\"100%\">" START_TABLE_BOLD_ROW;
+	static QString the = "</table></body></html>"; END_TABLE_BOLD_ROW;
+
 	QClipboard * pClip = QApplication::clipboard();
 	if(pClip)
 	{
@@ -1040,11 +1043,13 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 			szClip.replace(QChar('>'), "&gt;");
 			szClip.replace(QChar('\n'), "<br>");
 
-			QString szLabel = "<center><b>";
+			QString szLabel = ths;
+			szLabel += "<center><b>";
 			szLabel += __tr2qs("Clipboard");
-			szLabel += ":</b><br>";
+			szLabel += "</b></center>";			
+			szLabel += the;
 			szLabel += szClip;
-			szLabel += "<br><b>";
+			szLabel += "<br><b><center>";
 
 			QString szNum;
 			szNum.setNum(iOcc);
@@ -1062,8 +1067,6 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 			pAction->setDefaultWidget(pLabel);
 
 			g_pInputPopup->addAction(pAction);
-
-			//delete pLabel;
 		}
 	}
 
