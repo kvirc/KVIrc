@@ -157,11 +157,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
 	m_pCaseSensitive = new QCheckBox(__tr2qs("&Case sensitive"), m_pOptionsWidget);
 	pOptionsLayout->addWidget(m_pCaseSensitive, 9, 1);
 
-	// 	m_pFindResult = new QLabel(this);
-	// 	m_pFindResult->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
-	// 	pOptionsLayout->addWidget(m_pFindResult,0,6);
-
-	// Focussing the 'string to find' widget has been moved to the toggle function so that it happens whenever the widget is shown
+	// Focusing the 'string to find' widget has been moved to the toggle function so that it happens whenever the widget is shown
 
 	KviShortcut::create(Qt::Key_Escape, m_pIrcView, SLOT(toggleToolWidget()), nullptr, Qt::WidgetWithChildrenShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_WIN_SEARCH, m_pIrcView, SLOT(toggleToolWidget()), nullptr, Qt::WidgetWithChildrenShortcut);
