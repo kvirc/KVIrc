@@ -73,10 +73,10 @@ AddonListViewItem::AddonListViewItem(KviTalListWidget * v, KviKvsScriptAddon * a
 	t += "</b> [";
 	t += a->version();
 	t += "]";
-	t += " <font color=\"#a0a0a0\">[";
+	t += " <font color=\"#454545\">[";
 	t += a->name();
 	t += "]";
-	t += "<br><nobr><font size=\"-1\">";
+	t += "<br><font size=\"-1\">";
 	t += a->description();
 	t += "</font>";
 
