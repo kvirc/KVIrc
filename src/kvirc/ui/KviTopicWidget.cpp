@@ -357,9 +357,7 @@ void KviTopicWidget::updateToolTip()
 {
 	KviTalToolTip::remove(this);
 
-	QString txt = "<html>"
-	              "<body>"
-	              "<table width=\"100%\">";
+	QString txt = "<html><body><table width=\"100%\">";
 
 	if(!m_szTopic.isEmpty())
 	{
@@ -375,7 +373,7 @@ void KviTopicWidget::updateToolTip()
 		//FIXME hardcoding styles sucks
 		if(!m_szSetBy.isEmpty())
 		{
-			txt += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
+			txt += "<tr><td style=\"white-space: pre bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
 			txt += __tr2qs("Set by") + ":" + " <b>" + m_szSetBy + "</b>";
 			txt += "</font></td></tr>";
 
@@ -401,9 +399,7 @@ void KviTopicWidget::updateToolTip()
 		txt += "</td></tr>";
 	}
 
-	txt += "</table>"
-	       "</body>"
-	       "</html>";
+	txt += "</table></body></html>";
 
 	KviTalToolTip::add(this, txt);
 }

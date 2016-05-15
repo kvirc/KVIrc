@@ -740,19 +740,19 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 	labels.append(__tr2qs_ctx("Name", "options"));
 	labels.append(__tr2qs_ctx("Network", "options"));
 	labels.append(__tr2qs_ctx("Nickname", "options"));
-	labels.append(__tr2qs_ctx("Alt. nickname", "options"));
+	labels.append(__tr2qs_ctx("Alt. Nickname", "options"));
 	labels.append(__tr2qs_ctx("Username", "options"));
-	labels.append(__tr2qs_ctx("Real name", "options"));
+	labels.append(__tr2qs_ctx("Real Name", "options"));
 	m_pTreeWidget->setHeaderLabels(labels);
+	m_pTreeWidget->setMinimumWidth(100);
 
-	KviTalToolTip::add(m_pTreeWidget,
-	    __tr2qs_ctx("This is a set of rules to use profiles.<br>"
-	                "KVIrc will use them to handle the user connection "
-	                "data before the data is sent to the IRC server.<br>"
-	                "This is useful if a user wants to use different data "
-	                "on different networks without changing them at every "
-	                "connection attempt.",
-	                       "options"));
+	KviTalToolTip::add(m_pTreeWidget, __tr2qs_ctx("This is a set of rules to use profiles.<br>"
+	                                              "KVIrc will use them to handle the user connection "
+	                                              "data before the data is sent to the IRC server.<br>"
+	                                              "This is useful if a user wants to use different data "
+	                                              "on different networks without changing them at every "
+	                                              "connection attempt.", "options"));
+			
 	pLayout->addWidget(m_pTreeWidget, 1, 0, 1, 3);
 	connect(m_pTreeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(toggleControls()));
 

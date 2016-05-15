@@ -895,9 +895,7 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	static QString szRowStart = "<tr><td>";
 	static QString szRowEnd = "</td></tr>";
 
-	szBuffer = "<html>"
-	           "<body>"
-	           "<table style=\"white-space: pre\">" START_TABLE_BOLD_ROW;
+	szBuffer = "<html><body><table style=\"white-space: pre\">" START_TABLE_BOLD_ROW;
 
 	if(m_iStateFlags & DeadChan)
 	{
@@ -1943,17 +1941,13 @@ void KviChannelWindow::internalMask(const QString & szMask, bool bAdd, const QSt
 
 void KviChannelWindow::updateModeLabel()
 {
-	QString szTip = "<html>"
-	                "<body>"
-	                "<table width=\"100%\">";
+	QString szTip = "<html><body><table width=\"100%\">";
 	szTip += START_TABLE_BOLD_ROW;
-	szTip += "<b><center>";
+	szTip += "<center>";
 	szTip += __tr2qs("Channel Modes");
-	szTip += "</b></center>";
+	szTip += "</center>";
 	szTip += END_TABLE_BOLD_ROW;
-	szTip += "</table>"
-	         "</body>"
-	         "</html>";
+	szTip += "</table></body></html>";
 	KviCString szMod = m_szChannelMode;
 	const char * pcAux = szMod.ptr();
 	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
