@@ -54,7 +54,7 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			<string> $gender(<nickname:string>)
 		@description:
-			Returns the gender, or 'unknown' if not setted from remote user, of the specified IRC user IF it is known.[br]
+			Returns the gender, or 'unknown' if not set from remote user, of the specified IRC user IF it is known.[br]
 			The gender is known if [fnc]$isWellKnown[/fnc] returns 1.[br]
 			The gender is generally known if the user is on a channel with you
 			or has an open query with you.[br]

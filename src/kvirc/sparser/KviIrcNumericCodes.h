@@ -346,7 +346,7 @@
 #define ERR_NOSERVICEHOST 492 /* ??? [I,D] */
 //      ERR_???????????  493-500
 #define ERR_UMODEUNKNOWNFLAG 501 /* ":Unknown MODE flag" [I,E,U,D] */
-#define ERR_USERSDONTMATCH 502   /* ":Cant change mode for other users" [I,E,U,D] */
+#define ERR_USERSDONTMATCH 502   /* ":Can't change mode for other users" [I,E,U,D] */
 #define ERR_GHOSTEDCLIENT 503    /* ":Message could not be delivered to %s" [E] */
 #define ERR_LAST_ERR_MSG 504     /* ":Last Error Message" [E] */
 //      ERR_???????????  505-510

@@ -36,7 +36,7 @@
 #include <QMessageBox>
 #include <QHeaderView>
 
-QString g_szPrevSettedLocale;
+QString g_szPrevSetLocale;
 
 OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
     : KviOptionsWidget(parent)
@@ -103,9 +103,9 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	g_pApp->getLocalKvircDirectory(szLangFile, KviApplication::None, KVI_FORCE_LOCALE_FILE_NAME);
 
 	bool bIsDefaultLocale = !KviFileUtils::fileExists(szLangFile);
-	//We Have setted locale, but not restarted kvirc
-	if(!g_szPrevSettedLocale.isEmpty())
-		m_szLanguage = g_szPrevSettedLocale;
+	//We Have set locale, but not restarted kvirc
+	if(!g_szPrevSetLocale.isEmpty())
+		m_szLanguage = g_szPrevSetLocale;
 	else
 		m_szLanguage = KviLocale::instance()->localeName();
 
@@ -219,7 +219,7 @@ void OptionsWidget_textEncoding::commit()
 	}
 	else
 	{
-		g_szPrevSettedLocale = m_pForcedLocaleCombo->itemText(idx);
+		g_szPrevSetLocale = m_pForcedLocaleCombo->itemText(idx);
 		if(!KviFileUtils::writeFile(szLangFile, m_pForcedLocaleCombo->itemText(idx)))
 		{
 			QMessageBox::critical(this, "Writing to File Failed - KVIrc", __tr2qs_ctx("Unable to write language information to", "options") + "\n" + szLangFile, __tr2qs_ctx("OK", "options"));
