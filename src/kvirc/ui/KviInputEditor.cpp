@@ -633,7 +633,7 @@ void KviInputEditor::rebuildTextBlocks()
 						}
 						else
 						{
-							// ONLY a CTRL+K
+							// ONLY a Ctrl+K
 							uCurBack = KVI_INPUT_DEF_BACK;
 							uCurFore = KVI_INPUT_DEF_FORE;
 						}

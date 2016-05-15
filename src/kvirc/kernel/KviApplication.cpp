@@ -634,7 +634,7 @@ bool KviApplication::supportsCompositing()
 
 #ifdef COMPILE_QX11INFO_SUPPORT
 	// Qt5 does not support QX11Info::isCompositingManagerRunning()
-	// Well...assume we're compositing capable, should be true on all recent linux distros
+	// Well...assume we're compositing capable, should be true on all recent Linux distros
 	return true;
 #endif // COMPILE_QX11INFO_SUPPORT
 #ifdef COMPILE_ON_MAC

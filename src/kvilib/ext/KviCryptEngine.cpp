@@ -95,7 +95,7 @@
 		of the window. Once an engine has been enabled all the text that you type
 		in the input line (that is not a command obviously) is encrypted
 		and sent to the remote endpoint. If you want to send a non-encrypted message
-		while an engine is working, you can use the CTRL+P escape: by placing
+		while an engine is working, you can use the Ctrl+P escape: by placing
 		that character as the FIRST CHARACTER of the line you will avoid encrypting.
 		Every engine has different capabilities: some can both encrypt
 		and decrypt, other perform only half of the operations. Some engines

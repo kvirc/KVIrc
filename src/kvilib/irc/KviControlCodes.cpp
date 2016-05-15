@@ -132,7 +132,7 @@ namespace KviControlCodes
 		}
 		else
 		{
-			//Senseless character : only a CTRL+K code
+			//Senseless character : only a Ctrl+K code
 			(*pcByte1) = KviControlCodes::NoChange;
 			(*pcByte2) = KviControlCodes::NoChange;
 			return pwData;
@@ -161,7 +161,7 @@ namespace KviControlCodes
 	unsigned int getUnicodeColorBytes(const QString & szData, unsigned int iChar, unsigned char * pcByte1, unsigned char * pcByte2)
 	{
 		//
-		// Scans the szData for a mIrc color code XX,XX
+		// Scans the szData for a mIRC color code XX,XX
 		// and fills the color values in the two bytes
 		//
 
@@ -177,13 +177,13 @@ namespace KviControlCodes
 		//First we can have a digit or a comma
 		if(((c < '0') || (c > '9')))
 		{
-			// senseless : only a CTRL+K code
+			//Senseless : only a Ctrl+K code
 			(*pcByte1) = KviControlCodes::NoChange;
 			(*pcByte2) = KviControlCodes::NoChange;
 			return iChar;
 		}
 
-		//Something interesting ok.
+		//Something interesting OK.
 		(*pcByte1) = c - '0'; //store the code
 		iChar++;
 		if(iChar >= (unsigned int)szData.length())
@@ -257,7 +257,7 @@ namespace KviControlCodes
 	const char * getColorBytes(const char * pcData, unsigned char * pcByte1, unsigned char * pcByte2)
 	{
 		//
-		// Scans the pcData for a mIrc color code XX,XX
+		// Scans the pcData for a mIRC color code XX,XX
 		// and fills the color values in the two bytes
 		//
 
@@ -294,7 +294,7 @@ namespace KviControlCodes
 				return pcData;
 			}
 		} else {
-			//Senseless character : only a CTRL+K code
+			//Senseless character : only a Ctrl+K code
 			(*pcByte1)=KviControlCodes::NoChange;
 			(*pcByte2)=KviControlCodes::NoChange;
 			return pcData;

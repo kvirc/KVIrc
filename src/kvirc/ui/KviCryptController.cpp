@@ -196,7 +196,7 @@ void KviCryptController::engineHighlighted(QListWidgetItem * pItem, QListWidgetI
 		QString szDesc = "<p>";
 		szDesc += pEngine->m_szDescription.toUtf8().data();
 		szDesc += "<br><br>";
-		szDesc += __tr2qs("If you don't want to encrypt a particular text line then just start it with the CTRL+P prefix");
+		szDesc += __tr2qs("If you don't want to encrypt a particular text line then just start it with the Ctrl+P prefix");
 		m_pDescriptionText->setText(szDesc);
 		m_pEnableEncrypt->setEnabled(pEngine->m_iFlags & KviCryptEngine::CanEncrypt);
 		m_pEncryptKeyLabel->setEnabled((pEngine->m_iFlags & KviCryptEngine::CanEncrypt) && (pEngine->m_iFlags & KviCryptEngine::WantEncryptKey));

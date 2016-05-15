@@ -192,7 +192,7 @@ namespace KviHtmlGenerator
 					}
 					else
 					{
-						// only a CTRL+K
+						// only a Ctrl+K
 						uCurBack = Background;
 						uCurFore = Foreground;
 					}
