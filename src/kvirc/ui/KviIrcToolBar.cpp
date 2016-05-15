@@ -215,7 +215,7 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 	static QString b = "<b>";
 	static QString nb = "</b>";
 	static QString br = "<br>";
-	static QString ths = "<html><body><table style=\"white-space: pre\">" START_TABLE_BOLD_ROW;
+	static QString ths = "<html><body><table width=\"100%\">" START_TABLE_BOLD_ROW;
 	static QString the = "</table></body></html>"; END_TABLE_BOLD_ROW;
 
 	if(c)

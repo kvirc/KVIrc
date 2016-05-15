@@ -373,7 +373,7 @@ void KviTopicWidget::updateToolTip()
 		//FIXME hardcoding styles sucks
 		if(!m_szSetBy.isEmpty())
 		{
-			txt += "<tr><td style=\"white-space: pre bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
+			txt += "<tr><td style=\"white-space: pre\"; bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
 			txt += __tr2qs("Set by") + ":" + " <b>" + m_szSetBy + "</b>";
 			txt += "</font></td></tr>";
 
