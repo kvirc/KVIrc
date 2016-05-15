@@ -382,7 +382,7 @@ void KvsObject_popupMenu::slothovered(QAction * a)
 }
 void KvsObject_popupMenu::aboutToDie(QObject * pObject)
 {
-	qDebug("Removing popup from kvs dict");
+	qDebug("Removing popup from KVS dict");
 	removeMenuAllActions((QMenu *)pObject);
 }
 KVSO_CLASS_FUNCTION(popupMenu, highlightedEvent)

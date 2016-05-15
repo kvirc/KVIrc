@@ -137,6 +137,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	is0.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::SayKvs)), QIcon::Normal, QIcon::Off);
 	m_pCommandlineModeButton->setIcon(is0);
 	KviTalToolTip::add(m_pCommandlineModeButton, __tr2qs("User friendly commandline mode<br>See also /help commandline"));
+	
 	if(KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault))
 		m_pCommandlineModeButton->setChecked(true);
 
@@ -149,6 +150,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	is2.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::IrcView)), QIcon::Normal, QIcon::On);
 	is2.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)), QIcon::Normal, QIcon::Off);
 	m_pMultiEditorButton->setIcon(is2);
+
 	QString szTip = __tr2qs("Multi-line editor<br>&lt;Alt+Return&gt;");
 	KviTalToolTip::add(m_pMultiEditorButton, szTip);
 
@@ -243,8 +245,8 @@ void KviInput::keyPressEvent(QKeyEvent * e)
 									                        "pasting and sending a really large, potentially unedited message from your clipboard.<br><br>"
 									                        "Some IRC servers may also consider %1 lines of text a flood, "
 									                        "in which case you will be disconnected from said server.<br><br>"
-									                        "Do you still want the message to be sent?")
-									                    .arg(nLines));
+									                        "Do you still want the message to be sent?").arg(nLines));
+
 									pMsgBox.setWindowTitle(__tr2qs("Confirm Sending a Large Message - KVIrc"));
 									pMsgBox.setIcon(QMessageBox::Question);
 									QAbstractButton * pAlwaysButton = pMsgBox.addButton(__tr2qs("Always"), QMessageBox::YesRole);
@@ -456,10 +458,10 @@ void KviInput::toggleMultiLine()
 		[big]The two operating modes[/big]
 		[br]
 		The commandline input has two operating modes: the [i]user friendly mode[/i] and
-		the [i]kvs mode[/i]. In the user friendly mode all the parameters of the commands
+		the [i]KVS mode[/i]. In the user friendly mode all the parameters of the commands
 		are interpreted exactly like you type them. There is no special interpretation
 		of [b]$[/b], [b]%[/b], [b]-[/b], [b]([/b] and [b];[/b] characters. This allows you to type [i]/me is happy ;)[/i], for example.
-		In the kvs mode the full parameter interpretation is enabled and the commands
+		In the KVS mode the full parameter interpretation is enabled and the commands
 		work just like in any other script editor. This means that anything that
 		starts with a [b]$[/b] is a function call, anything that starts with a % is a variable,
 		the dash characters after command names are interpreted as switches and [b];[/b] is the

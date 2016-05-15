@@ -354,7 +354,7 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			<string> $b
 		@description:
-			Returns the BOLD mIRC control character (CTRL+B).[br]
+			Returns the BOLD mIRC control character (Ctrl+B).[br]
 		@seealso:
 			[fnc]$k[/fnc], [fnc]$u[/fnc]
 	*/

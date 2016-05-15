@@ -118,7 +118,7 @@
 		Then you can try to activate encryption only and leaving decryption disabled:
 		you will see how the text would appear to a possible [i]man in the middle[/i].
 		You can also try to use different keys for encrypting and decrypting,
-		and play with the CTRL+P escape.[br]
+		and play with the Ctrl+P escape.[br]
 		[big]The protocol[/big][br]
 		Well, there is no protocol actually, only the existing implementations, that
 		can be accessed by anyone that want to reproduce them. There are only some

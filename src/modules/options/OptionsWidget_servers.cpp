@@ -1343,14 +1343,14 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	m_pFavoriteServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::ServerFavorite))));
 	m_pFavoriteServerButton->setAutoRaise(true);
 	connect(m_pFavoriteServerButton, SIGNAL(clicked()), this, SLOT(favoriteServer()));
-	KviTalToolTip::add(m_pFavoriteServerButton, __tr2qs_ctx("Favorite/Unfavorite server", "options"));
+	KviTalToolTip::add(m_pFavoriteServerButton, __tr2qs_ctx("Favorite / Unfavorite server", "options"));
 
 	m_pRemoveButton = new QToolButton(vbox);
 	m_pRemoveButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Remove))));
 	m_pRemoveButton->setEnabled(false);
 	m_pRemoveButton->setAutoRaise(true);
 	connect(m_pRemoveButton, SIGNAL(clicked()), this, SLOT(removeCurrent()));
-	KviTalToolTip::add(m_pRemoveButton, __tr2qs_ctx("Remove network/server", "options"));
+	KviTalToolTip::add(m_pRemoveButton, __tr2qs_ctx("Remove network / server", "options"));
 
 	m_pCopyServerButton = new QToolButton(vbox);
 	m_pCopyServerButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Copy))));

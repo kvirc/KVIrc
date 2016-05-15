@@ -1214,7 +1214,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 						else
 						{
 							/*
-							* When KVIrc encounters a CTRL+K code without any trailing numbers, we then
+							* When KVIrc encounters a Ctrl+K code without any trailing numbers, we then
 							* use KVIrc's default color value defined by the user in the Options dialog.
 							*/
 							curFore = defaultFore;

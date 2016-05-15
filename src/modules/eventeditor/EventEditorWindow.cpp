@@ -413,7 +413,7 @@ void EventEditor::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *)
 		m_pEditor->setEnabled(false);
 		QString parms = ((EventEditorEventTreeWidgetItem *)it)->m_szParams;
 		if(parms.isEmpty())
-			parms = __tr2qs_ctx("none", "editor");
+			parms = __tr2qs_ctx("None", "editor");
 		KviCommandFormatter::indent(parms);
 		KviCommandFormatter::indent(parms);
 		QString szTmp = QString(__tr2qs_ctx("\n\nEvent:\n%1\n\nParameters:\n%2", "editor")).arg(((EventEditorEventTreeWidgetItem *)it)->m_szName, parms);

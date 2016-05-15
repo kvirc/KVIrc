@@ -787,7 +787,7 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			<string> $u
 		@description:
-			Returns the UNDERLINE mIRC control character (CTRL+U).[br]
+			Returns the UNDERLINE mIRC control character (Ctrl+U).[br]
 		@seealso:
 			[fnc]$k[/fnc], [fnc]$b[/fnc], [fnc]$r[/fnc], [fnc]$o[/fnc]
 	*/
