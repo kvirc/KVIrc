@@ -850,9 +850,8 @@ void KviIrcView::maybeTip(const QPoint & pnt)
 void KviIrcView::doMarkerToolTip()
 {
 	QString tip;
-	tip = "<table style=\"white-space: pre\">"
-	      "<tr><td valign=\"center\"><img src=\""
-	    + g_pIconManager->getSmallIconResourceName(KviIconManager::UnreadText) + "\">";
+	tip = "<table style=\"white-space: pre\"><tr><td valign=\"center\">"
+	      "<img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::UnreadText) + "\">";
 	tip += __tr2qs("Scroll up to read from the last read line");
 	tip += "</td></tr></table>";
 
@@ -878,9 +877,9 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 		{
 			if(!KVI_OPTION_BOOL(KviOption_boolEnableUrlLinkToolTip))
 				return;
-			tip = "<table style=\"white-space: pre\">"
-			      "<tr><td valign=\"center\"><img src=\""
-			    + g_pIconManager->getSmallIconResourceName(KviIconManager::Url) + "\">";
+			tip = "<table style=\"white-space: pre\"><tr><td valign=\"center\">"
+			      "<img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Url) + "\">";
+
 			if(linkText.length() > 50)
 			{
 				tip += "<font color=\"#0022FF\"> <u>";
@@ -906,18 +905,18 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 		{
 			if(!KVI_OPTION_BOOL(KviOption_boolEnableHostLinkToolTip))
 				return;
-			tip = "<table style=\"white-space: pre\">"
-			      "<tr><td valign=\"center\"><img src=\""
-			    + g_pIconManager->getSmallIconResourceName(KviIconManager::Proxy) + "\">";
+			tip = "<table style=\"white-space: pre\"><tr><td valign=\"center\">"
+			      "<img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Proxy) + "\">";
+
 			if(linkText.length() > 50)
 			{
-				tip += "<font color=\"#0022FF\"><u>";
+				tip += "<font color=\"#0022FF\"> <u>";
 				tip += linkText.left(47);
 				tip += "...";
 			}
 			else
 			{
-				tip += "<font color=\"#0022FF\"><u>";
+				tip += "<font color=\"#0022FF\"> <u>";
 				tip += linkText;
 			}
 			tip += "</u></font></td></tr><tr><td><hr>";
@@ -945,9 +944,8 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 				return;
 			// FIXME: #warning "Spit out some server info...hub ?...registered ?"
 
-			tip = "<table style=\"white-space: pre\">"
-			      "<tr><td valign=\"center\"><img src=\""
-			    + g_pIconManager->getSmallIconResourceName(KviIconManager::Server) + "\">";
+			tip = "<table style=\"white-space: pre\"><tr><td valign=\"center\">"
+			      "<img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Server) + "\">";
 
 			if(linkText.length() > 50)
 			{
@@ -967,7 +965,8 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 				if(linkText.length() > 1)
 					tip += __tr2qs("Server appears to be a network hub<br>");
 				else
-					tip += __tr2qs("Unknown server<br>"); // might happen...
+					tip += __tr2qs("Unknown server"); // might happen...
+					tip += "<br>";
 			}
 			tip.append("<tr><td>");
 			tip.append(__tr2qs("Double-click to read the MOTD"));
@@ -1026,7 +1025,7 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 			{
 				QString szChan = linkText;
 				QString buf;
-				tip = "<img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Channel) + "\"> ";
+				tip = "<pre style=\"white-space: pre\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KviIconManager::Channel) + "\">";
 
 				if(szCmd.length() > 0)
 					szChan = szCmd;
@@ -1039,9 +1038,9 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 					QString topic = KviControlCodes::stripControlBytes(c->topicWidget()->topic());
 					KviIrcUrl::join(szUrl, console()->connection()->target()->server());
 					szUrl.append(szChan);
-					buf = QString(__tr2qs("<b>%1</b><u><p style=\"white-space:pre;color:#0022FF\">"
-					                      "%2</p></u>Channel modes: <b>+%3</b><br>Users: <b>%4</b><hr>Topic is: %5"))
-					          .arg(KviQString::toHtmlEscaped(szChan), KviQString::toHtmlEscaped(szUrl), KviQString::toHtmlEscaped(chanMode))
+					buf = QString(__tr2qs("<font color=\"#0022FF\"> <u>%1</u> </font></pre>"
+					                      "Channel modes: <b>+%2</b><br>Users: <b>%3</b><hr>Topic is: %4"))
+					          .arg(KviQString::toHtmlEscaped(szUrl), KviQString::toHtmlEscaped(chanMode))
 					          .arg(c->count())
 					          .arg(KviQString::toHtmlEscaped(topic));
 				}
@@ -1049,9 +1048,9 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 				{
 					KviIrcUrl::join(szUrl, console()->connection()->target()->server());
 					szUrl.append(szChan);
-					buf = QString(__tr2qs("<b>%1</b><u><p style=\"white-space:pre;color:#0022FF\">"
-					                      "%2</p></u><hr>Double-click to join %3<br>Right-click to view other options"))
-					          .arg(KviQString::toHtmlEscaped(szChan), KviQString::toHtmlEscaped(szUrl), KviQString::toHtmlEscaped(szChan));
+					buf = QString(__tr2qs("<font color=\"#0022FF\"> <u>%1</u> </font></pre><hr>"
+					                      "Double-click to join %2<br>Right-click to view other options"))
+					          .arg(KviQString::toHtmlEscaped(szUrl), KviQString::toHtmlEscaped(szChan));
 				}
 
 				tip += buf;
