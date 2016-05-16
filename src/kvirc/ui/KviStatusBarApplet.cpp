@@ -280,7 +280,7 @@ void KviStatusBarLagIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 QString KviStatusBarLagIndicator::tipText(const QPoint &)
 {
 	KviIrcConnection * c = statusBar()->frame()->activeConnection();
-	QString szRet = "<b>";
+	QString szRet;
 
 	if(!c)
 		goto not_connected;
@@ -294,21 +294,23 @@ QString KviStatusBarLagIndicator::tipText(const QPoint &)
 			int llls = lll / 1000;
 			int llld = (lll % 1000) / 100;
 			int lllc = (lll % 100) / 10;
-			KviQString::appendFormatted(szRet, __tr2qs("Lag: %d.%d%d secs"), llls, llld, lllc);
+			KviQString::appendFormatted(szRet, __tr2qs("Lag: <b>%d.%d%d secs"), llls, llld, lllc);
 			szRet += "</b><br>";
 			int vss = c->lagMeter()->secondsSinceLastCompleted();
 			int vmm = vss / 60;
 			vss = vss % 60;
-			KviQString::appendFormatted(szRet, __tr2qs("Last checked: %d mins %d secs ago"), vmm, vss);
+			KviQString::appendFormatted(szRet, __tr2qs("Last checked: <b>%d mins %d secs ago</b>"), vmm, vss);
 		}
 		else
 		{
+			szRet += "<b>";
 			szRet += __tr2qs("Lag measure not available yet");
 			szRet += "</b>";
 		}
 	}
 	else
 	{
+		szRet += "<b>";
 		szRet += __tr2qs("Lag meter engine disabled");
 		szRet += "</b><br>";
 		szRet += __tr2qs("Double-click to enable it");
@@ -316,6 +318,7 @@ QString KviStatusBarLagIndicator::tipText(const QPoint &)
 	return szRet;
 
 not_connected:
+	szRet += "<b>";
 	szRet += __tr2qs("Not connected");
 	szRet += "</b>";
 	return szRet;
@@ -336,7 +339,7 @@ void KviStatusBarLagIndicator::updateDisplay()
 				int llls = lll / 1000;
 				int llld = (lll % 1000) / 100;
 				int lllc = (lll % 100) / 10;
-				QString szTmp = QString(__tr2qs("Lag: %1.%2%3")).arg(llls).arg(llld).arg(lllc);
+				QString szTmp = QString(__tr2qs("Lag: %1.%2%3 secs")).arg(llls).arg(llld).arg(lllc);
 				if(lll > 60000)
 				{
 					// one minute lag!

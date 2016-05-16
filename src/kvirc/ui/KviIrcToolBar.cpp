@@ -73,7 +73,7 @@ KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par, const char *
 	setSizePolicy(QSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed));
 
 	setMinimumWidth(32);
-	setMaximumWidth(480);
+	setMaximumWidth(580);
 
 	if(KVI_OPTION_UINT(KviOption_uintIrcContextAppletWidth) < 32)
 		KVI_OPTION_UINT(KviOption_uintIrcContextAppletWidth) = 32;
@@ -186,15 +186,13 @@ void KviToolBarGraphicalApplet::drawContents(QPainter *)
 	// nothing here
 }
 
-//////////////////////////////////////////////////////////////////////////////
 //
 // KviIrcContextDisplay
 //
-//      Main applet of all irc contexts
+//      Main applet of all IRC contexts
 //      Displays the server connection status, server name
 //      nickname, user mode and the graphical indication of the context
 //
-//////////////////////////////////////////////////////////////////////////////
 
 KviIrcContextDisplay::KviIrcContextDisplay(QWidget * par, const char * name)
     : KviToolBarGraphicalApplet(par, name)
@@ -212,17 +210,26 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 
 	KviConsoleWindow * c = g_pActiveWindow->console();
 
-	static QString b = "<b>";
-	static QString nb = "</b>";
 	static QString br = "<br>";
-	static QString ths = "<html><body><table width=\"100%\">" START_TABLE_BOLD_ROW;
+	static QString space(' ');
+	static QString nbspc("&nbsp;");
+	static QString ths = "<html><body><table width=\"100%\"; style=\"white-space: pre\">";
+	static QString sbr = START_TABLE_BOLD_ROW;
 	static QString the = "</table></body></html>"; END_TABLE_BOLD_ROW;
 
 	if(c)
 	{
 		KviIrcConnection * ic = c->connection();
 
-		txt = ths;
+		QString szNum;
+		szNum.setNum(c->context()->id());
+
+		QString szIrcContext;
+		szIrcContext += __tr2qs("IRC context number");
+		szIrcContext += ":" + space + "<b>";
+		szIrcContext += szNum + "</b>";
+
+		txt = ths + sbr;
 
 		if(!ic)
 		{
@@ -231,44 +238,56 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 		}
 		else
 		{
-			KviCString nickAndMode = ic->userInfo()->nickName();
-			if(!(ic->userInfo()->userMode().isEmpty()))
-				nickAndMode.append(KviCString::Format, " (+%s)", ic->userInfo()->userMode().toUtf8().data());
-
+			txt += __tr2qs("Using server") + ":" + space;;
 			txt += ic->currentServerName();
 			txt += the;
+
+			KviCString nickAndMode = ic->userInfo()->nickName();
+			if(!(ic->userInfo()->userMode().isEmpty()))
+				nickAndMode.append(KviCString::Format, ": <b>+%s</b>", ic->userInfo()->userMode().toUtf8().data());
+
+			txt += nbspc;
+			txt += __tr2qs("Modes for") + space;
 			txt += nickAndMode.ptr();
-			txt += br;
+
+			if(ic->userInfo()->isAway())
+			{
+				txt += br;
+				txt += nbspc;
+				txt += ic->currentNickName();
+				txt += space + "<b>";
+				txt += __tr2qs("is away") + "</b>";
+			}
+
 		}
-
-		QString szNum;
-		szNum.setNum(c->context()->id());
-
-		QString szIrcContext = __tr2qs("IRC context");
-		szIrcContext += QChar(' ');
-		szIrcContext += szNum;
-		txt += szIrcContext;
 
 		if(ic && ic->lagMeter() && (KVI_OPTION_BOOL(KviOption_boolShowLagOnContextDisplay)))
 		{
 			txt += br;
+			txt += nbspc;
+			
 			int lll;
 			if((lll = ic->lagMeter()->lag()) > 0)
 			{
 				int llls = lll / 1000;
 				int llld = (lll % 1000) / 100;
 				int lllc = (lll % 100) / 10;
-				KviQString::appendFormatted(txt, __tr2qs("Lag: %d.%d%d"), llls, llld, lllc);
+				KviQString::appendFormatted(txt, __tr2qs("Lag: <b>%d.%d%d secs</b>"), llls, llld, lllc);
 			}
 			else
 			{
-				txt += __tr2qs("Lag: ?.??");
+				txt += __tr2qs("Lag: <b>?.?\?</b>"); //escaped a ? due to compiler trigraphs warning 
 			}
 		}
+
+		txt += ths;
+		txt += "<tr><td width=\"inherit\"; bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+		txt += szIrcContext;
+		txt += "</font></td></tr></table></body></html>";
 	}
 	else
 	{
-		txt = ths;
+		txt =  ths + sbr;
 		txt += __tr2qs("No IRC context");
 		txt += the;
 	}
@@ -284,6 +303,9 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 	KviWindow * wnd = g_pActiveWindow;
 	KviConsoleWindow * c = wnd ? wnd->console() : nullptr;
 
+	static QString space(' ');
+	static QString sprtr("-");
+
 	if(c)
 	{
 		QString serv, nick;
@@ -297,40 +319,41 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 			if(c->isConnected())
 			{
 				KviIrcConnection * ic = c->connection();
-				nick = ic->currentNickName();
+				nick =  __tr2qs("Modes for") + space;
+				nick += ic->currentNickName() + ":";
 				if(!ic->userInfo()->userMode().isEmpty())
 				{
-					static QString spp(" (+");
-					nick += spp;
+					nick += space + "+";
 					nick += ic->userInfo()->userMode();
 					if(ic->userInfo()->isAway())
 					{
-						nick += QChar(' ');
-						nick += __tr2qs("away");
+						nick += space + sprtr + space;
+						nick += __tr2qs("is away");
 					}
-					nick += QChar(')');
+
 				}
 				else
 				{
 					if(ic->userInfo()->isAway())
 					{
-						static QString ugly(" (");
-						nick += ugly;
-						nick += __tr2qs("away");
-						nick += QChar(')');
+						nick += space;
+						nick += __tr2qs("is away");
+						nick += space + sprtr;
 					}
 				}
-				serv = ic->currentServerName();
+				serv =  __tr2qs("Using server");
+				serv += ":" + space;
+				serv += ic->currentServerName();
 				if(ic->lagMeter() && (KVI_OPTION_BOOL(KviOption_boolShowLagOnContextDisplay)))
 				{
-					nick += " ";
+					nick += space + sprtr + space;
 					int lll;
 					if((lll = ic->lagMeter()->lag()) > 0)
 					{
 						int llls = lll / 1000;
 						int llld = (lll % 1000) / 100;
 						int lllc = (lll % 100) / 10;
-						KviQString::appendFormatted(nick, __tr2qs("Lag: %d.%d%d"), llls, llld, lllc);
+						KviQString::appendFormatted(nick, __tr2qs("Lag: %d.%d%d secs"), llls, llld, lllc);
 					}
 					else
 					{
@@ -340,7 +363,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 			}
 			else
 			{
-				serv = __tr2qs("In progress...");
+				serv = __tr2qs("Connection in progress...");
 			}
 		}
 
