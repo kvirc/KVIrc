@@ -212,42 +212,42 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 
 	KviConsoleWindow * c = g_pActiveWindow->console();
 
-	static QString b = "<b>";
-	static QString nb = "</b>";
 	static QString br = "<br>";
-	static QString ths = "<html><body><table width=\"100%\">" START_TABLE_BOLD_ROW;
+	static QString ths = "<html><body><table width=\"100%\"; style=\"white-space: pre\">" START_TABLE_BOLD_ROW;
 	static QString the = "</table></body></html>"; END_TABLE_BOLD_ROW;
 
 	if(c)
 	{
 		KviIrcConnection * ic = c->connection();
 
+		QString szNum;
+		szNum.setNum(c->context()->id());
+
+		QString szIrcContext;
+		szIrcContext += " - ";
+		szIrcContext += __tr2qs("context");
+		szIrcContext += QChar(' ');
+		szIrcContext += szNum;
+
 		txt = ths;
 
 		if(!ic)
 		{
-			txt += __tr2qs("No connection");
+			txt += __tr2qs("No connection") + szIrcContext;
 			txt += the;
 		}
 		else
 		{
 			KviCString nickAndMode = ic->userInfo()->nickName();
 			if(!(ic->userInfo()->userMode().isEmpty()))
-				nickAndMode.append(KviCString::Format, " (+%s)", ic->userInfo()->userMode().toUtf8().data());
+				nickAndMode.append(KviCString::Format, ": <b>+%s</b>", ic->userInfo()->userMode().toUtf8().data());
 
-			txt += ic->currentServerName();
+			txt += ic->currentServerName() + szIrcContext;
 			txt += the;
+			txt += __tr2qs("User modes for");
+			txt += " ";
 			txt += nickAndMode.ptr();
-			txt += br;
 		}
-
-		QString szNum;
-		szNum.setNum(c->context()->id());
-
-		QString szIrcContext = __tr2qs("IRC context");
-		szIrcContext += QChar(' ');
-		szIrcContext += szNum;
-		txt += szIrcContext;
 
 		if(ic && ic->lagMeter() && (KVI_OPTION_BOOL(KviOption_boolShowLagOnContextDisplay)))
 		{
@@ -258,11 +258,11 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 				int llls = lll / 1000;
 				int llld = (lll % 1000) / 100;
 				int lllc = (lll % 100) / 10;
-				KviQString::appendFormatted(txt, __tr2qs("Lag: %d.%d%d"), llls, llld, lllc);
+				KviQString::appendFormatted(txt, __tr2qs("Lag: <b>%d.%d%d</b>"), llls, llld, lllc);
 			}
 			else
 			{
-				txt += __tr2qs("Lag: ?.??");
+				txt += __tr2qs("Lag: <b>?.?? </b>");
 			}
 		}
 	}
