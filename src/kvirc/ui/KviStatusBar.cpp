@@ -683,24 +683,29 @@ void KviStatusBar::setPermanentMessage()
 		switch(c->state())
 		{
 			case KviIrcContext::Connected:
-				szTxt += "<b>[";
+				szTxt += __tr2qs("Server");
+				szTxt += ": <b>";
 				szTxt += c->connection()->currentServerName();
-				szTxt += "]</b> ";
+				szTxt += "</b> - ";
+				szTxt += __tr2qs("User modes for");
+				szTxt += " ";
 				szTxt += c->connection()->currentNickName();
+				szTxt += ": ";
 				if(!c->connection()->userInfo()->userMode().isEmpty())
 				{
-					szTxt += " (+";
+					szTxt += "<b>+";
 					szTxt += c->connection()->userInfo()->userMode();
-					szTxt += ")";
+					szTxt += "</b>";
 				}
 				break;
 			case KviIrcContext::Connecting:
 				szTxt += __tr2qs("Connection in progress...");
 				break;
 			case KviIrcContext::LoggingIn:
-				szTxt += "<b>[";
+				szTxt += __tr2qs("Server");
+				szTxt += ": <b>";
 				szTxt += c->connection()->currentServerName();
-				szTxt += "]</b> ";
+				szTxt += "</b> - ";
 				szTxt += __tr2qs("Login in progress...");
 				break;
 			default:
