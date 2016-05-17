@@ -218,17 +218,17 @@ public:
 extern KVILIB_API KviMessageCatalogue * g_pMainCatalogue;
 #endif // !_KVI_LOCALE_CPP_
 
-#define __tr(__text__) g_pMainCatalogue->translate(__text__)
-#define __tr_no_lookup(__text__) __text__
-#define __tr_no_xgettext(__text__) g_pMainCatalogue->translate(__text__)
-#define __tr2qs(__text__) g_pMainCatalogue->translateToQString(__text__)
-#define __tr2qs_no_lookup(__text__) __text__
-#define __tr2qs_no_xgettext(__text__) g_pMainCatalogue->translateToQString(__text__)
+#define __tr(text) g_pMainCatalogue->translate(text)
+#define __tr_no_lookup(text) text
+#define __tr_no_xgettext(text) g_pMainCatalogue->translate(text)
+#define __tr2qs(text) g_pMainCatalogue->translateToQString(text)
+#define __tr2qs_no_lookup(text) text
+#define __tr2qs_no_xgettext(text) g_pMainCatalogue->translateToQString(text)
 
-#define __tr_ctx(__text__, __context__) KviLocale::instance()->translate(__text__, __context__)
-#define __tr_no_lookup_ctx(__text__, __context__) __text__
-#define __tr_no_xgettext_ctx(__text__, __context__) KviLocale::instance()->translate(__text__, __context__)
-#define __tr2qs_ctx(__text__, __context__) KviLocale::instance()->translateToQString(__text__, __context__)
-#define __tr2qs_ctx_no_xgettext(__text__, __context__) KviLocale::instance()->translateToQString(__text__, __context__)
+#define __tr_ctx(text, context) KviLocale::instance()->translate(text, context)
+#define __tr_no_lookup_ctx(text, context) text
+#define __tr_no_xgettext_ctx(text, context) KviLocale::instance()->translate(text, context)
+#define __tr2qs_ctx(text, context) KviLocale::instance()->translateToQString(text, context)
+#define __tr2qs_ctx_no_xgettext(text, context) KviLocale::instance()->translateToQString(text, context)
 
 #endif //_KVI_LOCALE_H_
