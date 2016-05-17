@@ -100,7 +100,6 @@ after_success:
     - |
           if [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
               kvi_version="$(grep -i "^set(VERSION_RELEASE .*)$" CMakeLists.txt | egrep -o '[0-9\.]' | tr -d '\n')";
-              git fetch --unshallow
               git_desc="$(git describe)";
               curl --ftp-create-dirs -T KVIrc.dmg -u $FTP_USER:$FTP_PASS ${FTP_HOST}KVIrc-${kvi_version}-dev-${git_desc}.dmg
           fi
