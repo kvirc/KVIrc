@@ -116,7 +116,7 @@ endif()
 
 #we need this defined when mingw will compile moc files
 if(WIN32)
-	add_definitions(-D__KVILIB__)
+	add_definitions(-D_WANT_KVILIB_)
 endif()
 
 if(MSVC)

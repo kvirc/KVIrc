@@ -56,7 +56,7 @@
 	 */
 #define COMPILE_ON_MINGW
 
-#ifdef __KVILIB__
+#ifdef _WANT_KVILIB_
 #define KVILIB_API __declspec(dllexport) __attribute__((visibility("default")))
 #define KVILIB_API_TYPEDEF __declspec(dllexport)
 #else
@@ -64,7 +64,7 @@
 #define KVILIB_API_TYPEDEF __declspec(dllimport)
 #endif
 
-#ifdef __KVIRC__
+#ifdef _WANT_KVIRC_
 #define KVIRC_API __declspec(dllexport) __attribute__((visibility("default")))
 #define KVIRC_API_TYPEDEF __declspec(dllexport)
 #else
@@ -79,7 +79,7 @@
 #define COMPILE_ON_MINGW
 
 // visibility attribute is not supported by gcc/os2
-#ifdef __KVILIB__
+#ifdef _WANT_KVILIB_
 #define KVILIB_API __declspec(dllexport)
 #define KVILIB_API_TYPEDEF __declspec(dllexport)
 #else
@@ -87,7 +87,7 @@
 #define KVILIB_API_TYPEDEF __declspec(dllimport)
 #endif
 
-#ifdef __KVIRC__
+#ifdef _WANT_KVIRC_
 #define KVIRC_API __declspec(dllexport)
 #define KVIRC_API_TYPEDEF __declspec(dllexport)
 #else
@@ -104,7 +104,7 @@
 	 */
 #define COMPILE_ON_WINDOWS
 
-#ifdef __KVILIB__
+#ifdef _WANT_KVILIB_
 #define KVILIB_API __declspec(dllexport)
 #define KVILIB_API_TYPEDEF __declspec(dllexport)
 #else
@@ -112,7 +112,7 @@
 #define KVILIB_API_TYPEDEF __declspec(dllimport)
 #endif
 
-#ifdef __KVIRC__
+#ifdef _WANT_KVIRC_
 #define KVIRC_API __declspec(dllexport)
 #define KVIRC_API_TYPEDEF __declspec(dllexport)
 #else

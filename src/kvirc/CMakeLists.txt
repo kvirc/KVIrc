@@ -294,7 +294,7 @@ set_target_properties(${KVIRC_BINARYNAME} PROPERTIES ENABLE_EXPORTS ON)
 
 if(WIN32)
 	# We need this defined when mingw will compile moc files
-	add_definitions(-D__KVIRC__)
+	add_definitions(-D_WANT_KVIRC_)
 endif()
 
 if(WANT_STRIP)
