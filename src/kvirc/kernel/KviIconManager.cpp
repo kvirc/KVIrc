@@ -539,8 +539,7 @@ void KviCachedPixmap::updateLastAccessTime()
 
 KviIconManager::KviIconManager()
 {
-	int i = 0;
-	for(i = 0; i < IconCount; i++)
+	for(int i = 0; i < IconCount; i++)
 		m_smallIcons[i] = nullptr;
 
 	initQResourceBackend();
@@ -573,9 +572,7 @@ KviIconManager::~KviIconManager()
 	if(m_pIconWidget)
 		delete m_pIconWidget;
 
-	int i;
-
-	for(i = 0; i < KviIconManager::IconCount; i++)
+	for(int i = 0; i < KviIconManager::IconCount; i++)
 	{
 		if(m_smallIcons[i])
 			delete m_smallIcons[i];
