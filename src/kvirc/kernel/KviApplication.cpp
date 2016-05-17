@@ -1844,7 +1844,9 @@ KviConsoleWindow * KviApplication::activeConsole()
 	return g_pMainWindow->firstConsole();
 }
 
-/////////////////// RECENT STUFF LISTS & POPUPS HANDLING
+//
+// RECENT STUFF LISTS & POPUPS HANDLING
+//
 
 // Helper for KviApplication::addRecent*()
 static void merge_to_stringlist_option(const QString & szItem, int iOption, int iMaxEntries)

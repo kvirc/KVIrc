@@ -1317,9 +1317,9 @@ void KviIrcSocket::proxyHandleHttpFinalReply(const char * pcBuffer, int)
 
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // SSL HANDSHAKE
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 #ifdef COMPILE_SSL_SUPPORT
 void KviIrcSocket::printSSLPeerCertificate()
@@ -1447,9 +1447,9 @@ void KviIrcSocket::doSSLHandshake(int)
 #endif //COMPILE_SSL_SUPPORT
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // LINK UP
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 void KviIrcSocket::linkUp()
 {
@@ -1475,8 +1475,6 @@ void KviIrcSocket::linkUp()
 	m_pRsn = new QSocketNotifier((int)m_sock, QSocketNotifier::Read);
 	QObject::connect(m_pRsn, SIGNAL(activated(int)), this, SLOT(readData(int)));
 	m_pRsn->setEnabled(true);
-
-	// yahoo!
 }
 
 void KviIrcSocket::readData(int)

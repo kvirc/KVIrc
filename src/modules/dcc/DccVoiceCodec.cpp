@@ -94,8 +94,6 @@ int DccVoiceNullCodec::decodedFrameSize()
 	return 1024;
 }
 
-//--------------------------
-
 DccVideoCodec::DccVideoCodec()
 {
 }

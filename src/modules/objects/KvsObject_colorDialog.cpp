@@ -73,8 +73,6 @@ const int option_cod[] = {
 		The default implementation emits the toggled(<bool>) signal.
 */
 
-//---------------------------------------------------------------------------------
-
 KVSO_BEGIN_REGISTERCLASS(KvsObject_colorDialog, "colorDialog", "dialog")
 KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_colorDialog, setCurrentColor)
 KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_colorDialog, setOptions)

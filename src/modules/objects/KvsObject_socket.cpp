@@ -316,7 +316,6 @@ if(m_pServer)
 	delete m_pServer;
 m_pServer = nullptr;
 KVSO_END_DESTRUCTOR(KvsObject_socket)
-//----------------------
 
 KVSO_CLASS_FUNCTION(socket, status)
 {

@@ -149,14 +149,11 @@ protected slots:
 
 #if 0
 
-
-
 /*
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-CODEC DEFINITION
+//
+// CODEC DEFINITION
+//
 
 	Sample rate = samples/sec (ex. 8000)
 	Sample size = bits (ex. 16 bits)
@@ -169,8 +166,6 @@ CODEC DEFINITION
 	8000:16:le:null
 	8000:16:le:gsm
 	8000:16:le:adpcm
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class KviVoiceParty
 {
@@ -211,8 +206,6 @@ void KviVoiceParty::addChild(KviVoiceParty * pChild)
 	m_pChildrenTree->append(pChild);
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 class KviVoiceAudioEncoder
 {
 public:
@@ -228,8 +221,6 @@ public:
 	KviVoiceAudioDecoder();
 	~KviVoiceAudioDecoder();
 };
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class KviVoiceLink
 {
@@ -260,8 +251,6 @@ KviVoiceLink::~KviVoiceLink()
 	if(m_pAudioEncoder)delete m_pAudioEncoder;
 	if(m_pAudioDecoder)delete m_pAudioDecoder;
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class KviVoice_r8000s16eL_to_r8000s16eB_Transformer
 {
@@ -386,14 +375,15 @@ void KviVoiceConference::conferenceThread()
 	shutdownUdpSocket();
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 */
 
+//
 // DCC VOICE NG proto
+//
 
 //
-// tcp control connection
+// TCP control connection
 //     --> HELLO: DccVoice protocol header
 //     <-- HELLO: DccVoice protocol header
 //     --> IACCEPT: Codec-description|CodecId,Codec-description|CodecID,Codec... (in order of preference)
@@ -415,7 +405,7 @@ void KviVoiceConference::conferenceThread()
 //   Each chunk should be encoded independently of the others
 //   We can switch codec at each chunk (but not at each packet)
 // When some packets are lost we loose the entire chunk
-// A block is completly synchronized in time (unless we loose some chunks: in that case
+// A block is completely synchronized in time (unless we loose some chunks: in that case
 // we may decide to synchronize with silence or insert a glitch...)
 // Decoding never depends on the future
 

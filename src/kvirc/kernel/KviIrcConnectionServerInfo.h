@@ -53,9 +53,9 @@ public:
 	virtual bool getNeedsOperToSetS() { return false; };
 };
 
-//////
+//
 // Hybrid + forks
-//////
+//
 
 class KVIRC_API KviHybridServerInfo : public KviBasicIrcServerInfo
 {
@@ -135,9 +135,9 @@ public:
 	virtual bool getNeedsOpToListModeseI() { return true; };
 };
 
-//////
+//
 // P10
-//////
+//
 
 class KVIRC_API KviIrcuIrcServerInfo : public KviBasicIrcServerInfo
 {
@@ -181,9 +181,9 @@ public:
 	virtual bool getNeedsOpToListModeseI() { return false; };
 };
 
-//////
+//
 // Unreal -> Unreal 3.2 -> Unreal 4.0
-//////
+//
 
 class KVIRC_API KviUnrealIrcServerInfo : public KviBasicIrcServerInfo
 {

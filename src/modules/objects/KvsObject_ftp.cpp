@@ -119,7 +119,6 @@ KVSO_END_CONSTRUCTOR(KvsObject_ftp)
 KVSO_BEGIN_DESTRUCTOR(KvsObject_ftp)
 delete m_pFtp;
 KVSO_END_DESTRUCTOR(KvsObject_ftp)
-//----------------------
 
 KVSO_CLASS_FUNCTION(ftp, functionConnect)
 {

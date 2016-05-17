@@ -201,7 +201,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 	return new KviKvsTreeNodeParameterReturn(pBuffer, l);
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // THE REAL KVS
 //
 // <script> ::= <instruction list> '\0'
@@ -226,7 +226,9 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 // <string parameter> ::= '"'<string parameter body>'"'
 // <string parameter body> ::= <anything except '"' or null>...
 // <command terminator> ::= ';' | '\n' | '\0'
+//
 
+//
 // <data> ::=
 // <data_reference> ::= <function_call> | <structured_data>
 // <structured_data> ::= <data_structure> | <variable> | <pointer_data>
@@ -240,6 +242,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 // <simple_function_call> ::= '$'<identifier>'('<function_parameter_list>')'
 // <pointer_function_call> ::= <variable>'->'<function_call> | <simple_function_call>'->'<function_call>
 // <pointer_data> ::= <variable>'->'<data>' | <simple_function_call>'->'<data>
+//
 
 //
 // This must evaluate SCOPE OBJECT operators!
@@ -249,7 +252,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 // if there is then take it as the top of the tree, the <variable> or <simple_function_call>
 // go at the left param of the scope operator and re-evaluate the right side <data> or <simple_function_call>
 //
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 /*
 	@doc: kvs_introduction

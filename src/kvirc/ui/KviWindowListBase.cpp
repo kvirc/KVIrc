@@ -60,9 +60,9 @@
 
 extern QPixmap * g_pActivityMeterPixmap;
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // KviWindowListBase
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 KviWindowListBase::KviWindowListBase()
     : QDockWidget(__tr2qs("Window List"), g_pMainWindow), m_pTitleWidget(nullptr)
@@ -234,9 +234,9 @@ QSize KviWindowListTitleWidget::sizeHint() const
 	//
 	return m_pParent->style()->sizeFromContents(QStyle::CT_Splitter, &opt, QSize(w, h), m_pParent).expandedTo(QApplication::globalStrut());
 }
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // KviWindowListItem
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 KviWindowListItem::KviWindowListItem(KviWindow * wnd)
 {
@@ -250,9 +250,9 @@ KviWindowListItem::~KviWindowListItem()
 	m_pWindow->m_pWindowListItem = nullptr;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // KviWindowListButton
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 KviWindowListButton::KviWindowListButton(QWidget * par, KviWindow * wnd, const char * name)
     : QPushButton(par), KviWindowListItem(wnd)
@@ -551,7 +551,7 @@ void KviWindowListButton::highlight(int iLevel)
 		return;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
 // KviClassicWindowListToolButton
 //
 
@@ -635,19 +635,19 @@ void KviClassicWindowList::calcButtonHeight()
 void KviClassicWindowList::insertButton(KviWindowListButton * b)
 {
 	int idx = 0;
-	// first sort by irc context
+	// first sort by IRC context
 	for(KviWindowListButton * btn = m_pButtonList->first(); btn; btn = m_pButtonList->next())
 	{
 		if(btn->kviWindow()->console() == b->kviWindow()->console())
 		{
-			// same irc context (or none)
+			// same IRC context (or none)
 			// sort by type now
 			for(; btn; btn = m_pButtonList->next())
 			{
 				if(
 				    (btn->kviWindow()->type() > b->kviWindow()->type()) || (btn->kviWindow()->console() != b->kviWindow()->console()))
 				{
-					// greater type or another irc context
+					// greater type or another IRC context
 					m_pButtonList->insert(idx, b);
 					return;
 				}
@@ -679,7 +679,7 @@ void KviClassicWindowList::insertButton(KviWindowListButton * b)
 			return;
 		}
 		else
-			idx++; // wrong irc contet...go on searching
+			idx++; // wrong IRC context...go on searching
 	}
 
 	m_pButtonList->append(b);

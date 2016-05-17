@@ -211,7 +211,6 @@ getDict.clear();
 delete m_pHttp;
 
 KVSO_END_DESTRUCTOR(KvsObject_http)
-//----------------------
 
 bool KvsObject_http::functionSetHost(KviKvsObjectFunctionCall * c)
 {

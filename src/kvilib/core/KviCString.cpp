@@ -884,10 +884,13 @@ bool kvi_strEqualCI(const char * str1, const char * str2)
 	return (*s1 == *s2);
 }
 
+//
 //note that greater here means that come AFTER in the alphabetic order
 // return < 0 ---> str1 < str2
 // return = 0 ---> str1 = str2
 // return > 0 ---> str1 > str2
+//
+
 int kvi_strcmpCI(const char * str1, const char * str2)
 {
 	//abcd abce
@@ -906,10 +909,10 @@ int kvi_strcmpCI(const char * str1, const char * str2)
 }
 
 //
-////note that greater here means that come AFTER in the alphabetic order
-//// return < 0 ---> str1 < str2
-//// return = 0 ---> str1 = str2
-//// return > 0 ---> str1 > str2
+//note that greater here means that come AFTER in the alphabetic order
+// return < 0 ---> str1 < str2
+// return = 0 ---> str1 = str2
+// return > 0 ---> str1 > str2
 //int kvi_strcmpCIN(const char *str1,const char *str2,int len)
 //
 

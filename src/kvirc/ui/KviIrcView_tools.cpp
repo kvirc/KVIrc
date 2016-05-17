@@ -47,9 +47,9 @@
 #include <QIcon>
 #include <QMenu>
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // Tool widget implementation
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 KviIrcMessageCheckListItem::KviIrcMessageCheckListItem(QTreeWidget * par, KviIrcViewToolWidget * w, int id)
     : QTreeWidgetItem(par)
@@ -290,9 +290,9 @@ void KviIrcViewToolWidget::findNext()
 	m_pIrcView->findNext(m_pStringToFind->text(), m_pCaseSensitive->isChecked(), eMode != PlainText, eMode == RegExp);
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // Link tip label implementation
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 KviIrcViewToolTip::KviIrcViewToolTip(KviIrcView * pView)
     : KviTalToolTip(pView)

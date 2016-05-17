@@ -495,7 +495,9 @@ KviConfigurationFileGroup * KviConfigurationFile::getCurrentGroup()
 	return p_group;
 }
 
-////////////////////////////////// QString
+//
+// QString
+//
 
 void KviConfigurationFile::writeEntry(const QString & szKey, const QString & szValue)
 {
@@ -520,7 +522,9 @@ QString KviConfigurationFile::readEntry(const QString & szKey, const QString & s
 	return m_szStrBuffer;
 }
 
-////////////////////////////////// QStringList
+//
+// QStringList
+//
 
 static QString g_szConfigStringListSeparator(",\\[ITEM],");
 
@@ -542,7 +546,9 @@ void KviConfigurationFile::writeEntry(const QString & szKey, const QStringList &
 	p_group->replace(szKey, p_data);
 }
 
-////////////////////////////////// QList<int>
+//
+// QList<int>
+//
 
 QList<int> KviConfigurationFile::readIntListEntry(const QString & szKey, const QList<int> & list)
 {
@@ -586,10 +592,11 @@ void KviConfigurationFile::writeEntry(const QString & szKey, const QList<int> & 
 	p_group->replace(szKey, new QString(szData.ptr()));
 }
 
-////////////////////////////////// KviPixmap
+//
+// KviPixmap
+//
 
 // FIXME: #warning "Spaces in image names ?"
-
 void KviConfigurationFile::writeEntry(const QString & szKey, const KviPixmap & pixmap)
 {
 	m_bDirty = true;
@@ -614,7 +621,9 @@ KviPixmap KviConfigurationFile::readPixmapEntry(const QString & szKey, const Kvi
 	}
 }
 
-////////////////////////////////// KviMessageTypeSettings
+//
+// KviMessageTypeSettings
+//
 
 void KviConfigurationFile::writeEntry(const QString & szKey, const KviMessageTypeSettings & msg)
 {
@@ -636,7 +645,9 @@ KviMessageTypeSettings KviConfigurationFile::readMsgTypeEntry(const QString & sz
 	return ret;
 }
 
-////////////////////////////////// QColor
+//
+// QColor
+//
 
 void KviConfigurationFile::writeEntry(const QString & szKey, const QColor & clr)
 {
@@ -690,7 +701,9 @@ QColor KviConfigurationFile::readColorEntry(const QString & szKey, const QColor 
 	return color;
 }
 
-////////////////////////////////// QFont
+//
+// QFont
+//
 
 void KviConfigurationFile::getFontProperties(KviCString & buffer, QFont * fnt)
 {
@@ -728,7 +741,9 @@ QFont KviConfigurationFile::readFontEntry(const QString & szKey, const QFont & f
 	return font;
 }
 
-////////////////////////////////// bool
+//
+// bool
+//
 
 void KviConfigurationFile::writeEntry(const QString & szKey, bool bTrue)
 {
@@ -747,7 +762,9 @@ bool KviConfigurationFile::readBoolEntry(const QString & szKey, bool bTrue)
 	return p_str->toLower() == "true";
 }
 
-////////////////////////////////// QRect
+//
+// QRect
+//
 
 void KviConfigurationFile::writeEntry(const QString & szKey, const QRect & rct)
 {
@@ -768,7 +785,9 @@ QRect KviConfigurationFile::readRectEntry(const QString & szKey, const QRect & r
 	return KviStringConversion::fromString(*str, ret) ? ret : rct;
 }
 
-////////////////////////////////// unsigned short
+//
+// unsigned short
+//
 
 void KviConfigurationFile::writeEntry(const QString & szKey, unsigned short int usValue)
 {
@@ -790,7 +809,9 @@ unsigned short int KviConfigurationFile::readUShortEntry(const QString & szKey, 
 	return bOk ? usVal : usDefault;
 }
 
-////////////////////////////////// int
+//
+// int
+//
 
 void KviConfigurationFile::writeEntry(const QString & szKey, int iValue)
 {
@@ -812,7 +833,9 @@ int KviConfigurationFile::readIntEntry(const QString & szKey, int iDefault)
 	return bOk ? iVal : iDefault;
 }
 
-////////////////////////////////// unsigned int
+//
+// unsigned int
+//
 
 void KviConfigurationFile::writeEntry(const QString & szKey, unsigned int iValue)
 {
@@ -834,7 +857,9 @@ unsigned int KviConfigurationFile::readUIntEntry(const QString & szKey, unsigned
 	return bOk ? iVal : iDefault;
 }
 
-////////////////////////////////// char
+//
+// char
+//
 
 void KviConfigurationFile::writeEntry(const QString & szKey, char iValue)
 {
@@ -856,7 +881,9 @@ char KviConfigurationFile::readCharEntry(const QString & szKey, char iDefault)
 	return bOk ? iVal : iDefault;
 }
 
-////////////////////////////////// unsigned char
+//
+// unsigned char
+//
 
 void KviConfigurationFile::writeEntry(const QString & szKey, unsigned char iValue)
 {
@@ -880,11 +907,13 @@ unsigned char KviConfigurationFile::readUCharEntry(const QString & szKey, unsign
 
 #ifdef COMPILE_ON_WINDOWS
 
+//
 // On windows we need to override new and delete operators
 // to ensure that always the right new/delete pair is called for an object instance
 // This bug is present in all the classes exported by a module that
 // can be instantiated/destroyed from external modules.
 // (this is a well known bug described in Q122675 of MSDN)
+//
 
 void * KviConfigurationFile::operator new(size_t tSize)
 {

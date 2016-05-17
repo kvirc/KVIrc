@@ -298,9 +298,9 @@ KviBasicIrcServerInfo::KviBasicIrcServerInfo(KviIrcConnectionServerInfo * pParen
 KviBasicIrcServerInfo::~KviBasicIrcServerInfo()
     = default;
 
-////////////////
+//
 // User modes
-////////////////
+//
 
 const QString & KviBasicIrcServerInfo::getUserModeDescription(QChar mode)
 {
@@ -1057,9 +1057,9 @@ const QString & KviInspIRCdIrcServerInfo::getUserModeDescription(QChar mode)
 	return KviBasicIrcServerInfo::getUserModeDescription(mode);
 }
 
-////////////////
+//
 // UMODE Requirements
-////////////////
+//
 
 // Cases returning themselves (case 'o': return 'o';) are modes
 // that can be obtained by IRCd commands (/OPER) yet can be removed
@@ -1553,9 +1553,9 @@ QChar KviInspIRCdIrcServerInfo::getUserModeRequirement(QChar mode)
 	return QChar::Null;
 }
 
-////////////////
+//
 // Channel modes
-////////////////
+//
 
 const QString & KviBasicIrcServerInfo::getChannelModeDescription(char mode)
 {

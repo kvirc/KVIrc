@@ -73,9 +73,9 @@
 
 extern KviNickServRuleSet * g_pNickServRuleSet;
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // PING
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 void KviIrcServerParser::parseLiteralPing(KviIrcMessage * msg)
 {
@@ -97,9 +97,9 @@ void KviIrcServerParser::parseLiteralPing(KviIrcMessage * msg)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // PONG
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 void KviIrcServerParser::parseLiteralPong(KviIrcMessage * msg)
 {
@@ -122,9 +122,9 @@ void KviIrcServerParser::parseLiteralPong(KviIrcMessage * msg)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // ERROR
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 void KviIrcServerParser::parseLiteralError(KviIrcMessage * msg)
 {
@@ -145,9 +145,9 @@ void KviIrcServerParser::parseLiteralError(KviIrcMessage * msg)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // ACCOUNT
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 void KviIrcServerParser::parseLiteralAccount(KviIrcMessage * msg)
 {
@@ -174,9 +174,9 @@ void KviIrcServerParser::parseLiteralAccount(KviIrcMessage * msg)
 		msg->setHaltOutput();
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // CHGHOST
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 void KviIrcServerParser::parseLiteralChghost(KviIrcMessage * msg)
 {
@@ -245,9 +245,9 @@ void KviIrcServerParser::parseLiteralChghost(KviIrcMessage * msg)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // JOIN
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 void KviIrcServerParser::parseLiteralJoin(KviIrcMessage * msg)
 {
@@ -423,9 +423,9 @@ void KviIrcServerParser::parseLiteralJoin(KviIrcMessage * msg)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // PART
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 void KviIrcServerParser::parseLiteralPart(KviIrcMessage * msg)
 {
@@ -483,7 +483,6 @@ void KviIrcServerParser::parseLiteralPart(KviIrcMessage * msg)
 	else
 	{
 		// Someone else
-
 		if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnPart, chan, szNick, szUser, szHost, partMsg))
 			msg->setHaltOutput();
 
@@ -522,9 +521,9 @@ void KviIrcServerParser::parseLiteralPart(KviIrcMessage * msg)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // QUIT
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 void KviIrcServerParser::parseLiteralQuit(KviIrcMessage * msg)
 {
@@ -591,7 +590,6 @@ void KviIrcServerParser::parseLiteralQuit(KviIrcMessage * msg)
 	}
 
 	// FIXME: #warning "Add a netsplit parameter ?"
-
 	if(KviKvsEventManager::instance()->hasAppHandlers(KviEvent_OnQuit))
 	{
 		// compute the channel list
@@ -666,9 +664,9 @@ void KviIrcServerParser::parseLiteralQuit(KviIrcMessage * msg)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // KICK
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 void KviIrcServerParser::parseLiteralKick(KviIrcMessage * msg)
 {
@@ -695,7 +693,6 @@ void KviIrcServerParser::parseLiteralKick(KviIrcMessage * msg)
 	if(IS_ME(msg, victim))
 	{
 		// Oops...I have been kicked
-
 		if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnMeKick, chan,
 		       szNick, szUser, szHost, szKickMsg))
 			msg->setHaltOutput();
@@ -747,7 +744,6 @@ void KviIrcServerParser::parseLiteralKick(KviIrcMessage * msg)
 	else
 	{
 		// ok...someone else has been kicked
-
 		if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnKick, chan,
 		       szNick, szUser, szHost, victim, szKickMsg))
 			msg->setHaltOutput();
@@ -1132,7 +1128,6 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 	else
 	{
 		// Channel PRIVMSG
-
 		KviChannelWindow * chan = msg->connection()->findChannel(szTarget);
 
 		QString szOriginalTarget = szTarget;
@@ -1657,9 +1652,9 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 	}
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // TOPIC
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 void KviIrcServerParser::parseLiteralTopic(KviIrcMessage * msg)
 {
@@ -2623,9 +2618,9 @@ void KviIrcServerParser::parseLiteralAuthenticate(KviIrcMessage * msg)
 	msg->connection()->handleAuthenticate(szAuth);
 }
 
-//////////////////////////////////////////////////////////////////////////////////////
+//
 // AWAY
-//////////////////////////////////////////////////////////////////////////////////////
+//
 
 void KviIrcServerParser::parseLiteralAway(KviIrcMessage * msg)
 {

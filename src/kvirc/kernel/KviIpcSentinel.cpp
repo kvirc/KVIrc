@@ -207,12 +207,10 @@ bool kvi_sendIpcMessage(const char * message)
 	return false;
 }
 
-//////////////////////////////////////////////////////////////////////
+//
 // class KviIpcSentinel
+//    hidden sentinel of IPC messages
 //
-//    hidden sentinel of ipc messages
-//
-//////////////////////////////////////////////////////////////////////
 
 KviIpcSentinel::KviIpcSentinel()
     : QWidget(nullptr)
