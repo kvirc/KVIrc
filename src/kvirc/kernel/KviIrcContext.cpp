@@ -54,7 +54,6 @@
 #include "KviUserIdentity.h"
 #include "KviUserIdentityManager.h"
 
-#define __KVI_DEBUG__
 #include "kvi_debug.h"
 
 #include <QTimer>

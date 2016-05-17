@@ -82,7 +82,6 @@
 #include <QRegExp>
 #include <QMenu>
 
-#define __KVI_DEBUG__
 #include "kvi_debug.h"
 
 extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
