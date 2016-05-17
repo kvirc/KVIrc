@@ -965,8 +965,10 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 				if(linkText.length() > 1)
 					tip += __tr2qs("Server appears to be a network hub<br>");
 				else
+				{
 					tip += __tr2qs("Unknown server"); // might happen...
 					tip += "<br>";
+				}
 			}
 			tip.append("<tr><td>");
 			tip.append(__tr2qs("Double-click to read the MOTD"));
