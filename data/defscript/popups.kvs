@@ -142,16 +142,16 @@ defpopup(querytextview)
 
 	separator(!$window.isDocked())
 
-	item($tr("Close","defscript"),1)
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),88) ($server && $isWellKnown($0))
 	{
-		window.close
+		whois $0 $0
 	}
 
 	separator
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),88) ($server && $isWellKnown($0))
+	item($tr("Close","defscript"),1)
 	{
-		whois $0 $0
+		window.close
 	}
 
 	separator($server)
@@ -421,14 +421,6 @@ defpopup(ctcp)
 	}
 }
 
-defpopup(urlpopup)
-{
-	item($tr("Copy to Clipboard","defscript"),18)
-	{
-		str.toClipboard $0
-	}
-}
-
 defpopup(consoletextview)
 {
 	label($tr("You're not connected to a server","defscript")) (!$server)
@@ -440,16 +432,16 @@ defpopup(consoletextview)
 
 	separator(!$window.isDocked())
 
+	extpopup($tr("Default Channels","defscript"),channels,31) ($server)
+
+	separator($server)
+
 	item($tr("Close","defscript"),1)
 	{
 		window.close
 	}
 
 	separator
-
-	extpopup($tr("Default Channels","defscript"),channels,31) ($server)
-
-	separator($server)
 
 	item($tr("&Join Channels...","defscript"),39) ($server)
 	{
@@ -542,6 +534,14 @@ defpopup(consoletextview)
 	item($tr("Clear Buffer","defscript"),120)
 	{
 		clear;
+	}
+}
+
+defpopup(urlpopup)
+{
+	item($tr("Copy to Clipboard","defscript"),18)
+	{
+		str.toClipboard $0
 	}
 }
 
@@ -1002,8 +1002,12 @@ defpopup(dcc)
 {
 	prologue
 	{
+		# detect if SSL support is present
 		if($features("SSL"))%:bHaveSSL=1
 		else %:bHaveSSL=0
+		# detect if DCC voice support is present
+		if($features("DCCVoice"))%:bHaveDCCVoice=1
+		else %:bHaveDCCVoice=0
 	}
 
 	item($tr("Chat with","defscript") $0,78)
@@ -1057,7 +1061,7 @@ defpopup(dcc)
 
 	separator
 
-	popup($tr("Voice Chat","defscript"),166)
+	popup($tr("Voice Chat","defscript"),166) (%:bHaveDCCVoice)
 	{
 		item($tr("Default","defscript")": ADPCM 8 KHz (32 kbps)")
 		{
@@ -1129,18 +1133,18 @@ defpopup(channeltextview)
 
 	separator(!$window.isDocked())
 
-	item($tr("Close","defscript"),1)
-	{
-		window.close
-	}
-
-	separator
-
 	extpopup($tr("Default Channels","defscript"),channels,31) ($server)
 
 	item($tr("&Join Channels...","defscript"),31) ($server)
 	{
 		if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open
+	}
+
+	separator
+
+	item($tr("Close","defscript"),1)
+	{
+		window.close
 	}
 
 	separator
@@ -1525,7 +1529,7 @@ defpopup(registration)
 		%:labelText = "<p><b>$0</b>";
 		if(%:regName)
 		{
-			%:labelText << $tr("is registered as","defscript") ": <b>"%:regName"</b>"
+			%:labelText << $tr("is registered as","defscript")": <b>"%:regName"</b>"
 			# We want to display masks here!!!
 			%:inNotifyList = $reguser.property(%:regName,notify);
 			if(%:inNotifyList)%:labelText << "<br><b>$0</b>" $tr("is in the notify list","defscript")
