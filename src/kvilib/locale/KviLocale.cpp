@@ -306,7 +306,7 @@ static const char * encoding_groups[] = {
 #ifndef QT_NO_BIG_CODECS
 	"Chinese",
 	"Japanese",
-	"Other asiatic",
+	"Other Asiatic",
 #endif
 	nullptr
 };
@@ -345,7 +345,7 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 	{ "ISO-8859-8"           , 0 , 0 , 4, "Hebrew, visually ordered" },
 	{ "ISO-8859-8-i"         , 0 , 0 , 4, "Hebrew, logically ordered" },
 	{ "CP-1255"              , 0 , 0 , 4, "Hebrew Codepage" },
-	// Other asiatic
+	// Other Asiatic
 	{ "TIS-620"              , 0 , 0 , 7, "Thai" },
 	{ "CP874"                , 0 , 0 , 7, "Thai Codepage" },
 #ifndef QT_NO_BIG_CODECS
@@ -357,7 +357,7 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 	{ "ISO-2022-JP"          , 0 , 0 , 6, "Japanese (ISO-2022-JP/JIS7)" },
 	{ "Shift-JIS"            , 0 , 0 , 6, "Japanese (Shift-JIS)" },
 	{ "EUC-JP"               , 0 , 0 , 6, "Japanese (EUC-JP)" },
-	// Other asiatic
+	// Other Asiatic
 	{ "EUC-KR"               , 0 , 0 , 7, "Korean" },
 	{ "TSCII"                , 0 , 0 , 7, "Tamil" },
 	{ "CP-949"               , 0 , 0 , 7, "Korean Codepage" },
@@ -394,7 +394,7 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 	{ "ISO-8859-8 [UTF-8]"   , 1 , 0 , 4, "Hebrew, visually ordered - Unicode" },
 	{ "ISO-8859-8-i [UTF-8]" , 1 , 0 , 4, "Hebrew, logically ordered - Unicode" },
 	{ "CP-1255 [UTF-8]"      , 1 , 0 , 4, "Hebrew Codepage - Unicode" },
-	// Other asiatic
+	// Other Asiatic
 	{ "TIS-620 [UTF-8]"      , 1 , 0 , 7, "Thai - Unicode" },
 	{ "CP874 [UTF-8]"        , 1 , 0 , 7, "Thai Codepage - Unicode" },
 #ifndef QT_NO_BIG_CODECS
@@ -406,7 +406,7 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 	{ "ISO-2022-JP [UTF-8]"  , 1 , 0 , 6, "Japanese (ISO-2022-JP/JIS7) - Unicode" },
 	{ "Shift-JIS [UTF-8]"    , 1 , 0 , 6, "Japanese (Shift-JIS) - Unicode" },
 	{ "EUC-JP [UTF-8]"       , 1 , 0 , 6, "Japanese (EUC-JP) - Unicode" },
-	// Other asiatic
+	// Other Asiatic
 	{ "EUC-KR [UTF-8]"       , 1 , 0 , 7, "Korean - Unicode" },
 	{ "TSCII [UTF-8]"        , 1 , 0 , 7, "Tamil - Unicode" },
 	{ "CP-949 [UTF-8]"       , 1 , 0 , 7, "Korean Codepage - Unicode" },
@@ -443,7 +443,7 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 	{ "UTF-8 [ISO-8859-8]"   , 1 , 1 , 4, "Unicode - Hebrew, visually ordered" },
 	{ "UTF-8 [ISO-8859-8-i]" , 1 , 1 , 4, "Unicode - Hebrew, logically ordered" },
 	{ "UTF-8 [CP-1255]"      , 1 , 1 , 4, "Unicode - Hebrew Codepage" },
-	// Other asiatic
+	// Other Asiatic
 	{ "UTF-8 [TIS-620]"      , 1 , 1 , 7, "Unicode - Thai" },
 	{ "UTF-8 [CP874]"        , 1 , 1 , 7, "Unicode - Thai Codepage" },
 #ifndef QT_NO_BIG_CODECS
@@ -455,7 +455,7 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 	{ "UTF-8 [ISO-2022-JP]"  , 1 , 1 , 6, "Unicode - Japanese (ISO-2022-JP/JIS7)" },
 	{ "UTF-8 [Shift-JIS]"    , 1 , 1 , 6, "Unicode - Japanese (Shift-JIS)" },
 	{ "UTF-8 [EUC-JP]"       , 1 , 1 , 6, "Unicode - Japanese (EUC-JP)" },
-	// Other asiatic
+	// Other Asiatic
 	{ "UTF-8 [EUC-KR]"       , 1 , 1 , 7, "Unicode - Korean" },
 	{ "UTF-8 [TSCII]"        , 1 , 1 , 7, "Unicode - Tamil" },
 	{ "UTF-8 [CP-949]"       , 1 , 1 , 7, "Unicode - Korean Codepage" },
