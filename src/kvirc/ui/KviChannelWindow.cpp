@@ -881,7 +881,7 @@ void KviChannelWindow::getTalkingUsersStats(QString & szBuffer, QStringList & li
 void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 {
 	static QString szHtmlBold("<b>");
-	static QString szHtmlTab("&nbsp;&nbsp;");
+	static QString szHtmlTab("&nbsp;");
 	static QString szHtmlBoldEnd("</b> ");
 	static QString p5(" (");
 	// p6 == p4
@@ -1941,6 +1941,8 @@ void KviChannelWindow::internalMask(const QString & szMask, bool bAdd, const QSt
 
 void KviChannelWindow::updateModeLabel()
 {
+	static QString br("<br>");
+
 	QString szTip = "<html><body><table width=\"100%\">";
 	szTip += START_TABLE_BOLD_ROW;
 	szTip += "<center>";
@@ -1948,6 +1950,7 @@ void KviChannelWindow::updateModeLabel()
 	szTip += "</center>";
 	szTip += END_TABLE_BOLD_ROW;
 	szTip += "</table></body></html>";
+
 	KviCString szMod = m_szChannelMode;
 	const char * pcAux = szMod.ptr();
 	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
@@ -1955,7 +1958,7 @@ void KviChannelWindow::updateModeLabel()
 	while(*pcAux)
 	{
 		if(pServerInfo)
-			KviQString::appendFormatted(szTip, " %c: %Q<br>", *pcAux, &(m_pConsole->connection()->serverInfo()->getChannelModeDescription(*pcAux)));
+			KviQString::appendFormatted(szTip, "<b>%c</b>: %Q" + br, *pcAux, &(m_pConsole->connection()->serverInfo()->getChannelModeDescription(*pcAux)));
 		++pcAux;
 	}
 
