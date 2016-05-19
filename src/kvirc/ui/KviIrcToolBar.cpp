@@ -210,12 +210,21 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 
 	KviConsoleWindow * c = g_pActiveWindow->console();
 
-	static QString br = "<br>";
+	static QString br("<br>");
+	static QString bb("<b>");
+	static QString be("</b>");
+	static QString cln(":");
 	static QString space(' ');
 	static QString nbspc("&nbsp;");
-	static QString ths = "<html><body><table width=\"100%\"; style=\"white-space: pre\">";
+
+	static QString ths = "<html><body><table style=\"white-space: pre\">";
 	static QString sbr = START_TABLE_BOLD_ROW;
-	static QString the = "</table></body></html>"; END_TABLE_BOLD_ROW;
+	static QString ebr = END_TABLE_BOLD_ROW;
+	static QString snr = "<tr><td style=\"white-space: pre\">";
+	static QString enr = "</td></tr>";
+	static QString the = "</table></body></html>";
+
+	txt = ths;
 
 	if(c)
 	{
@@ -225,23 +234,24 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 		szNum.setNum(c->context()->id());
 
 		QString szIrcContext;
-		szIrcContext += __tr2qs("IRC context number");
-		szIrcContext += ":" + space + "<b>";
-		szIrcContext += szNum + "</b>";
-
-		txt = ths + sbr;
+		szIrcContext += __tr2qs("IRC context");
+		szIrcContext += ":" + space + bb;
+		szIrcContext += szNum + be;
 
 		if(!ic)
 		{
-			txt += __tr2qs("No connection");
-			txt += the;
+			txt =  sbr;
+			txt += __tr2qs("Not connected");
+			txt += ebr;
 		}
 		else
 		{
+			txt =  sbr;
 			txt += __tr2qs("Using server") + ":" + space;;
 			txt += ic->currentServerName();
-			txt += the;
+			txt += ebr;
 
+			txt += snr;
 			KviCString nickAndMode = ic->userInfo()->nickName();
 			if(!(ic->userInfo()->userMode().isEmpty()))
 				nickAndMode.append(KviCString::Format, ": <b>+%s</b>", ic->userInfo()->userMode().toUtf8().data());
@@ -255,15 +265,16 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 				txt += br;
 				txt += nbspc;
 				txt += ic->currentNickName();
-				txt += space + "<b>";
-				txt += __tr2qs("is away") + "</b>";
+				txt += space + bb;
+				txt += __tr2qs("is away") + be;
 			}
 
+			txt += enr;
 		}
 
+		txt += snr;
 		if(ic && ic->lagMeter() && (KVI_OPTION_BOOL(KviOption_boolShowLagOnContextDisplay)))
 		{
-			txt += br;
 			txt += nbspc;
 			
 			int lll;
@@ -280,18 +291,19 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 			}
 		}
 
-		txt += ths;
-		txt += "<tr><td width=\"inherit\"; bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+		txt += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 		txt += szIrcContext;
-		txt += "</font></td></tr></table></body></html>";
+		txt += "</font>" + enr;
+
 	}
 	else
 	{
-		txt =  ths + sbr;
+		txt =  sbr;
 		txt += __tr2qs("No IRC context");
-		txt += the;
+		txt += ebr;
 	}
 
+	txt += the;
 	tip->tip(rect(), txt);
 }
 
@@ -305,6 +317,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 
 	static QString space(' ');
 	static QString sprtr("-");
+	static QString cln(":");
 
 	if(c)
 	{
@@ -320,7 +333,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 			{
 				KviIrcConnection * ic = c->connection();
 				nick =  __tr2qs("Modes for") + space;
-				nick += ic->currentNickName() + ":";
+				nick += ic->currentNickName() + cln;
 				if(!ic->userInfo()->userMode().isEmpty())
 				{
 					nick += space + "+";
@@ -342,7 +355,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 					}
 				}
 				serv =  __tr2qs("Using server");
-				serv += ":" + space;
+				serv += cln + space;
 				serv += ic->currentServerName();
 				if(ic->lagMeter() && (KVI_OPTION_BOOL(KviOption_boolShowLagOnContextDisplay)))
 				{
