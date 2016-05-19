@@ -218,8 +218,8 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 	static QString nbspc("&nbsp;");
 
 	static QString ths = "<html><body><table style=\"white-space: pre\">";
-	static QString sbr = START_TABLE_BOLD_ROW;
-	static QString ebr = END_TABLE_BOLD_ROW;
+	static QString sbr = "<tr><td style=\"background-color: rgb(48,48,48); white-space: nowrap; font-weight: bold; color: rgb(255,255,255); padding-left: 5px; padding-right: 5px;\">";
+	static QString ebr = "</td></font></color></tr>";
 	static QString snr = "<tr><td style=\"white-space: pre\">";
 	static QString enr = "</td></tr>";
 	static QString the = "</table></body></html>";
