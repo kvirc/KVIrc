@@ -1959,7 +1959,7 @@ void KviChannelWindow::updateModeLabel()
 	while(*pcAux)
 	{
 		if(pServerInfo)
-			KviQString::appendFormatted(szTip, "<b>%c</b>: %Q", *pcAux, &(m_pConsole->connection()->serverInfo()->getChannelModeDescription(*pcAux)));
+			KviQString::appendFormatted(szTip, "<b>%c</b>: %Q" + br, *pcAux, &(m_pConsole->connection()->serverInfo()->getChannelModeDescription(*pcAux)));
 		++pcAux;
 	}
 
