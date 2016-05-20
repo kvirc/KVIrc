@@ -1942,23 +1942,24 @@ void KviChannelWindow::internalMask(const QString & szMask, bool bAdd, const QSt
 void KviChannelWindow::updateModeLabel()
 {
 	static QString br("<br>");
+	static QString tds = "<tr><td style=\"background-color: rgb(48,48,48); white-space: nowrap; font-weight: bold; color: rgb(255,255,255); text-align:center; padding-left: 5px; padding-right: 5px;\">";
+	static QString snr = "<tr><td style=\"white-space: pre; padding-left: 5px; padding-right: 5px;\">";
+	static QString enr = "</td></tr>";
 
-	QString szTip = "<html><body><table width=\"100%\">";
-	szTip += START_TABLE_BOLD_ROW;
-	szTip += "<center>";
+	QString szTip = "<html><body><table>";
+	szTip += tds;
 	szTip += __tr2qs("Channel Modes");
-	szTip += "</center>";
-	szTip += END_TABLE_BOLD_ROW;
-	szTip += "</table></body></html>";
+	szTip += enr;
 
 	KviCString szMod = m_szChannelMode;
 	const char * pcAux = szMod.ptr();
 	KviIrcConnectionServerInfo * pServerInfo = serverInfo();
 
+	szTip += snr;
 	while(*pcAux)
 	{
 		if(pServerInfo)
-			KviQString::appendFormatted(szTip, "<b>%c</b>: %Q" + br, *pcAux, &(m_pConsole->connection()->serverInfo()->getChannelModeDescription(*pcAux)));
+			KviQString::appendFormatted(szTip, "<b>%c</b>: %Q", *pcAux, &(m_pConsole->connection()->serverInfo()->getChannelModeDescription(*pcAux)));
 		++pcAux;
 	}
 
@@ -1967,9 +1968,14 @@ void KviChannelWindow::updateModeLabel()
 	{
 		QString szDescription = KviQString::toHtmlEscaped(m_pConsole->connection()->serverInfo()->getChannelModeDescription(iter.key()));
 		QString szValue = KviQString::toHtmlEscaped(iter.value());
-		KviQString::appendFormatted(szTip, "<br>%c: %Q: <b>%Q</b>", iter.key(), &szDescription, &szValue);
+		KviQString::appendFormatted(szTip, br + "<b>%c</b>: %Q: <b>%Q</b>", iter.key(), &szDescription, &szValue);
 		++iter;
 	}
+
+	szTip += enr + snr + "<hr>";
+	szTip +=  __tr2qs("Double-click to edit...");
+	szTip += enr;
+	szTip += "</table></body></html>";
 
 	m_pModeWidget->refreshModes();
 	KviTalToolTip::remove(m_pModeWidget);
