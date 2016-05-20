@@ -379,7 +379,7 @@ void KviTopicWidget::updateToolTip()
 
 			if(!m_szSetAt.isEmpty())
 			{
-				txt += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
+				txt += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 				txt += __tr2qs("Set on") + ":" + " <b>" + m_szSetAt + "</b>";
 				txt += "</font></td></tr>";
 			}

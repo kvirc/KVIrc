@@ -338,7 +338,7 @@ void KviConsoleWindow::getUserTipText(const QString & nick, KviIrcUserEntry * e,
 
 	if(e->hasServer())
 	{
-		buffer += "<tr><td style=\"white-space: pre\" bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
+		buffer += "<tr><td style=\"white-space: pre\" bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 		buffer += __tr2qs("Using server: <b>%1</b>").arg(KviQString::toHtmlEscaped(e->server()));
 
 		if(e->hasHops())
@@ -355,14 +355,14 @@ void KviConsoleWindow::getUserTipText(const QString & nick, KviIrcUserEntry * e,
 
 	if(e->hasAccountName())
 	{
-		buffer += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
+		buffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 		buffer += __tr2qs("Identified to account: <b>%1</b>").arg(e->accountName());
 		buffer += "</font></td></tr>";
 	}
 
 	if(e->isAway())
 	{
-		buffer += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
+		buffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 		buffer += __tr2qs("Probably away");
 		buffer += "</font></td></tr>";
 	}
@@ -1286,7 +1286,7 @@ void KviConsoleWindow::getWindowListTipText(QString & buffer)
 		buffer += tspan;
 		buffer += html_eofbold;
 
-		buffer += "</td></tr><tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
+		buffer += "</td></tr><tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 
 		tspan = KviTimeUtils::formatTimeInterval((unsigned int)(kvi_secondsSince(connection()->statistics()->lastMessageTime())),
 		    KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);

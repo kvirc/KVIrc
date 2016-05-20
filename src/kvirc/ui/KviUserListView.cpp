@@ -1611,7 +1611,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 						break;
 				}
 
-				szBuffer += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
+				szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 				szBuffer += __tr2qs("Joined on: <b>%1</b>").arg(szTmp);
 				szBuffer += "</font></td></tr>";
 			}
@@ -1623,14 +1623,14 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 				iSecs = iSecs % 60;
 				int iHours = iMins / 60;
 				iMins = iMins % 60;
-				szBuffer += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
+				szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 				szBuffer += __tr2qs("Quiet for: <b>%1h %2m %3s</b>").arg(iHours).arg(iMins).arg(iSecs);
 				szBuffer += "</font></td></tr>";
 			}
 
 			if(pEntry->m_pGlobalData->isIrcOp())
 			{
-				szBuffer += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
+				szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 				szBuffer += __tr2qs("%1 is an <b>IrcOp</b>").arg(pEntry->m_szNick);
 				szBuffer += "</font></td></tr>";
 			}
