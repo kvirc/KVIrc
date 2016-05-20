@@ -255,72 +255,80 @@ void KviConsoleWindow::completeServer(const QString & word, KviPointerList<QStri
 
 void KviConsoleWindow::getUserTipText(const QString & nick, KviIrcUserEntry * e, QString & buffer)
 {
+	static QString br("<br>");
+	static QString bb("<b>");
+	static QString be("</b>");
+	static QString cln(":");
+	static QString space(' ');
+	static QString tds = "<tr><td style=\"background-color: rgb(48,48,48); white-space: pre; font-weight: bold; color: rgb(255,255,255); padding-left: 5px; padding-right: 5px;\">";
+	static QString nrs = "<tr><td>";
+	static QString enr = "</td></tr>";
+
 	KviRegisteredUserMask * u = g_pRegisteredUserDataBase->findMatchingMask(nick, e->user(), e->host());
 
-	buffer = "<table>"
-	         "<tr><td style=\"white-space: pre\" bgcolor=\"#303030\">"
-	         "<font color=\"#FFFFFF\"><b> ";
+	buffer =  "<table>";
+	buffer += tds;
 
 	buffer += KviQString::toHtmlEscaped(nick);
 	buffer += "!";
 	buffer += KviQString::toHtmlEscaped(e->user().isEmpty() ? QString("*") : e->user());
 	buffer += "@";
 	buffer += KviQString::toHtmlEscaped(e->host().isEmpty() ? QString("*") : e->host());
-	buffer += " </b></font></td></tr>";
+	buffer += "</font>" + enr;
 
 	if(u)
 	{
 		QString szComment = u->user()->getProperty("comment");
 		if(!szComment.isEmpty())
 		{
-			buffer += "<tr bgcolor=\"#F0F0F0\"><td>";
+			buffer += "<tr bgcolor=\"#E0E0E0\"><td>";
 			buffer += __tr2qs("Comment");
-			buffer += ": (<b>";
+			buffer += cln + space + "(" + bb;
 			buffer += KviQString::toHtmlEscaped(szComment);
-			buffer += "</b>)</td></tr>";
+			buffer += be + ")" + enr;
 		}
 	}
 
 	if(e->avatar())
 	{
-		buffer += QString("<tr><td><center><img src=\"%1\" width=\"%2\"></center></td></tr>").arg(e->avatar()->localPath()).arg(e->avatar()->size().width());
+		buffer += QString(nrs + "<center><img src=\"%1\" width=\"%2\"></center>" + enr).arg(e->avatar()->localPath()).arg(e->avatar()->size().width());
 	}
 
 	if(e->hasRealName())
 	{
-		buffer += "<tr><td>";
+		buffer += "<tr><td style=\"white-space: pre\">";
 		buffer += __tr2qs("Real name");
-		buffer += ": <b>";
+		buffer += cln + space + bb;
 		buffer += KviQString::toHtmlEscaped(KviControlCodes::stripControlBytes(e->realName()));
-		buffer += "</b></td></tr>";
+		buffer += be + enr;
 	}
 
 	if(e->gender() != KviIrcUserEntry::Unknown)
 	{
-		buffer += "<tr><td>";
+		buffer += nrs;
 		buffer += __tr2qs("Gender");
-		buffer += ": <b>";
+		buffer += cln + space + bb;
 		buffer += (e->gender() == KviIrcUserEntry::Male) ? __tr2qs("Male") : __tr2qs("Female");
-		buffer += "</b></td></tr>";
+		buffer += be + enr;
 	}
 
 	if(u)
 	{
 		QString mask;
 		u->mask()->mask(mask);
-		buffer += "<tr><td>";
+		buffer += nrs;
 		buffer += __tr2qs("Registered as");
-		buffer += ": <b>";
+		buffer += cln + space + bb;
 		buffer += KviQString::toHtmlEscaped(u->user()->name());
-		buffer += "</b>; ";
+		buffer += be + ";" + space;
 		buffer += "Group";
-		buffer += ": <b>";
+		buffer += cln + space + bb;
 		buffer += KviQString::toHtmlEscaped(u->user()->group());
-		buffer += "</b></td></tr><tr><td>";
+		buffer += be + enr + nrs;
 		buffer += __tr2qs("Matched by");
-		buffer += ": <b><font size=\"-1\">";
+		buffer += cln + space + bb + "<font size=\"-1\">";
 		buffer += KviQString::toHtmlEscaped(mask);
-		buffer += "</font></b></td></tr>";
+		buffer += "</font>" + be + enr;
 	}
 
 	if(connection())
@@ -328,11 +336,11 @@ void KviConsoleWindow::getUserTipText(const QString & nick, KviIrcUserEntry * e,
 		QString chans;
 		if(connection()->getCommonChannels(nick, chans, false))
 		{
-			buffer += "<tr><td><font color=\"#000000\">";
+			buffer += nrs;
 			buffer += __tr2qs("On");
-			buffer += ": <b>";
+			buffer += cln + space + bb;
 			buffer += KviQString::toHtmlEscaped(chans);
-			buffer += "</b></font></td></tr>";
+			buffer += be + enr;
 		}
 	}
 
@@ -343,13 +351,14 @@ void KviConsoleWindow::getUserTipText(const QString & nick, KviIrcUserEntry * e,
 
 		if(e->hasHops())
 		{
-			buffer += "<br>";
+			buffer += br;
 			buffer += __tr2qs("Hops: <b>%1</b>").arg(e->hops());
-			buffer += "</font></td></tr>";
+			buffer += "</font>" + enr;
 		}
 		else
 		{
-			buffer += "</font></td></tr></table>";
+			buffer += "</font>" + enr;
+			buffer += "</table>";
 		}
 	}
 
@@ -357,14 +366,14 @@ void KviConsoleWindow::getUserTipText(const QString & nick, KviIrcUserEntry * e,
 	{
 		buffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 		buffer += __tr2qs("Identified to account: <b>%1</b>").arg(e->accountName());
-		buffer += "</font></td></tr>";
+		buffer += "</font>" + enr;
 	}
 
 	if(e->isAway())
 	{
 		buffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 		buffer += __tr2qs("Probably away");
-		buffer += "</font></td></tr>";
+		buffer += "</font>" + enr;
 	}
 }
 
@@ -587,9 +596,9 @@ int KviConsoleWindow::triggerOnHighlight(KviWindow * pWnd, int iType, const QStr
 	QString szMessageType = QString("%1").arg(iType);
 
 	if(KVS_TRIGGER_EVENT_7_HALTED(KviEvent_OnHighlight,
-	       pWnd, szNick, szUser, szHost,
-	       szMsg, szTrigger,
-	       szMessageType, (iType == KVI_OUT_ACTION)))
+	    pWnd, szNick, szUser, szHost,
+	    szMsg, szTrigger,
+	    szMessageType, (iType == KVI_OUT_ACTION)))
 		return -1;
 	return KVI_OUT_HIGHLIGHT;
 }
@@ -731,6 +740,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow * wnd,
 		type = applyHighlighting(wnd, type, nick, user, host, szDecodedMessage);
 		if(type < 0)
 			return; // event stopped the message!
+
 		if(type == KVI_OUT_HIGHLIGHT)
 		{
 			if(!wnd->hasAttention(KviWindow::MainWindowIsVisible))
@@ -1190,19 +1200,22 @@ void KviConsoleWindow::getWindowListTipText(QString & buffer)
 {
 	fillStatusString();
 
-	static QString html_bold("<b>");
-	static QString html_tab("&nbsp;&nbsp;");
-	static QString html_eofbold("</b>");
-	static QString html_hrbr("<br><hr>");
 	static QString html_channel(__tr2qs("channel"));
 	static QString html_channels(__tr2qs("channels"));
 	static QString html_query(__tr2qs("query"));
 	static QString html_queries(__tr2qs("queries"));
+	static QString html_bold("<b>");
+	static QString html_tab("&nbsp;");
+	static QString html_eofbold("</b>");
+	static QString html_hrbr("<br><hr>");
+	static QString html_cln(":");
 	static QString html_space(" ");
 	static QString html_commaspace(", ");
 	static QString html_br("<br>");
 	static QString html_spaceparopen(" (");
 	static QString html_spaceparclosed(")");
+	static QString nrs = "<tr><td>";
+	static QString enr = "</td></tr>";
 
 	// no wrapping contents
 	buffer = "<table style=\"white-space: pre\">" START_TABLE_BOLD_ROW;
@@ -1220,7 +1233,7 @@ void KviConsoleWindow::getWindowListTipText(QString & buffer)
 
 		if(uD || uH > 0)
 		{
-			buffer += "<tr><td>";
+			buffer += nrs;
 			buffer += html_tab;
 
 			if(uD > 0)
@@ -1233,19 +1246,22 @@ void KviConsoleWindow::getWindowListTipText(QString & buffer)
 				buffer += html_space;
 				buffer += uD > 1 ? html_channels : html_channel;
 				if(uH > 0)
-					buffer += html_commaspace;
+					buffer += html_br;
 			}
-
+ 
 			if(uH > 0)
 			{
 				num.setNum(uH);
+
+				buffer += html_tab;
 				buffer += html_bold;
 				buffer += num;
 				buffer += html_eofbold;
 				buffer += html_space;
 				buffer += uH > 1 ? html_queries : html_query;
 			}
-			buffer += "</td></tr>";
+
+			buffer += enr;
 		}
 
 		QString szTmp;
@@ -1266,10 +1282,10 @@ void KviConsoleWindow::getWindowListTipText(QString & buffer)
 				break;
 		}
 
-		buffer += START_TABLE_NORMAL_ROW;
+		buffer += nrs;
 
 		buffer += __tr2qs("Connected since");
-		buffer += ":";
+		buffer += html_cln;
 		buffer += html_space;
 		buffer += html_bold;
 		buffer += szTmp;
@@ -1280,24 +1296,24 @@ void KviConsoleWindow::getWindowListTipText(QString & buffer)
 		    KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
 
 		buffer += __tr2qs("Online for");
-		buffer += ":";
+		buffer += html_cln;
 		buffer += html_space;
 		buffer += html_bold;
 		buffer += tspan;
 		buffer += html_eofbold;
 
-		buffer += "</td></tr><tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+		buffer += enr + "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 
 		tspan = KviTimeUtils::formatTimeInterval((unsigned int)(kvi_secondsSince(connection()->statistics()->lastMessageTime())),
 		    KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
 
 		buffer += __tr2qs("Server idle for");
-		buffer += ":";
+		buffer += html_cln;
 		buffer += html_space;
 		buffer += html_bold;
 		buffer += tspan;
 		buffer += html_eofbold;
-		buffer += "</font></td></tr>";
+		buffer += "</font>" + enr;
 	}
 
 	buffer += "</table>";
