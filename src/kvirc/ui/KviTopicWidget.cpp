@@ -357,46 +357,53 @@ void KviTopicWidget::updateToolTip()
 {
 	KviTalToolTip::remove(this);
 
-	QString txt = "<html><body><table width=\"100%\">";
+	static QString br("<br>");
+	static QString bb("<b>");
+	static QString be("</b>");
+	static QString cln(":");
+	static QString space(' ');
+	static QString tds = "<tr><td style=\"background-color: rgb(48,48,48); white-space: nowrap; font-weight: bold; color: rgb(255,255,255); text-align:center; padding-left: 5px; padding-right: 5px;\">";
+	static QString snr = "<tr><td style=\"white-space: pre; padding-left: 5px; padding-right: 5px;\">";
+	static QString nrs = "<tr><td>";
+	static QString enr = "</td></tr>";
 
+	QString txt = "<html><body><table>";
+	
 	if(!m_szTopic.isEmpty())
 	{
-		txt += START_TABLE_BOLD_ROW;
-		txt += "<center>";
+		txt += tds;
 		txt += __tr2qs("Channel Topic");
-		txt += "</center>";
-		txt += END_TABLE_BOLD_ROW;
-		txt += "<tr><td>";
+		txt += enr + nrs;
 		txt += KviHtmlGenerator::convertToHtml(KviControlCodes::stripControlBytes(KviQString::toHtmlEscaped(m_szTopic)));
-		txt += "</td></tr>";
+		txt += enr;
 
-		//FIXME hardcoding styles sucks
 		if(!m_szSetBy.isEmpty())
 		{
-			txt += "<tr><td style=\"white-space: pre\"; bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
-			txt += __tr2qs("Set by") + ":" + " <b>" + m_szSetBy + "</b>";
-			txt += "</font></td></tr>";
+			txt += "<tr><td style=\"white-space: pre\"; bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+			txt += __tr2qs("Set by") + cln + space + bb + m_szSetBy + be;
+			txt += "</font>" + enr;
 
 			if(!m_szSetAt.isEmpty())
 			{
 				txt += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
-				txt += __tr2qs("Set on") + ":" + " <b>" + m_szSetAt + "</b>";
-				txt += "</font></td></tr>";
+				txt += __tr2qs("Set on") + cln + space + bb + m_szSetAt + be;
+				txt += "</font>" + enr;
 			}
 		}
 
-		txt += "<tr><td>";
+		txt += nrs;
 		txt += __tr2qs("Double-click to edit...");
-		txt += "</td></tr>";
+		txt += enr;
 	}
 	else
 	{
-		txt += "<tr><td>";
+		txt += tds;
+		txt += __tr2qs("Channel Topic");
+		txt += enr + nrs;
 		txt += __tr2qs("No topic is set");
-		txt += "</td></tr>";
-		txt += "<tr><td>";
+		txt += enr + nrs;
 		txt += __tr2qs("Double-click to set...");
-		txt += "</td></tr>";
+		txt += enr;
 	}
 
 	txt += "</table></body></html>";
