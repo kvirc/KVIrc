@@ -146,11 +146,29 @@ void KviTopicWidget::popDownListBox()
 void KviTopicWidget::reset()
 {
 	KviTalToolTip::remove(this);
+	QString szTip;
+
+	static QString tdh = "<tr><td style=\"background-color: rgb(48,48,48); white-space: nowrap; font-weight: bold; color: rgb(255,255,255); text-align:center; padding-left: 5px; padding-right: 5px;\">";
+	static QString nrs = "<tr><td style=\"white-space: pre;\">";
+	static QString enr = "</td></tr>";
+
+	szTip = "<table>";
+
 	m_szTopic = "";
-	m_pLabel->setText(KviHtmlGenerator::convertToHtml(__tr2qs("Unknown")));
-	KviTalToolTip::add(this, __tr2qs("No topic message has been received from the server yet"));
+	m_pLabel->setText(KviHtmlGenerator::convertToHtml(__tr2qs("Unknown channel topic")));
+	
+	szTip += tdh;
+	szTip += __tr2qs("Channel Topic");
+	szTip += enr + nrs;
+	szTip += __tr2qs("No topic message has been received from the server yet");
+	szTip += enr;
+
 	m_szSetAt = "";
 	m_szSetBy = "";
+	
+	szTip += "</table>";
+
+	KviTalToolTip::add(this, szTip);
 }
 
 void KviTopicWidget::applyOptions()
