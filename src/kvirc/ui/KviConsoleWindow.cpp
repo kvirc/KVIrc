@@ -259,7 +259,7 @@ void KviConsoleWindow::getUserTipText(const QString & nick, KviIrcUserEntry * e,
 	static QString bb("<b>");
 	static QString be("</b>");
 	static QString cln(":");
-	static QString space(' ');
+	static QString space(" ");
 	static QString tds = "<tr><td style=\"background-color: rgb(48,48,48); white-space: pre; font-weight: bold; color: rgb(255,255,255); padding-left: 5px; padding-right: 5px;\">";
 	static QString nrs = "<tr><td>";
 	static QString enr = "</td></tr>";
@@ -320,15 +320,15 @@ void KviConsoleWindow::getUserTipText(const QString & nick, KviIrcUserEntry * e,
 		buffer += __tr2qs("Registered as");
 		buffer += cln + space + bb;
 		buffer += KviQString::toHtmlEscaped(u->user()->name());
-		buffer += be + ";" + space;
+		buffer += be + br;
 		buffer += "Group";
 		buffer += cln + space + bb;
 		buffer += KviQString::toHtmlEscaped(u->user()->group());
 		buffer += be + enr + nrs;
 		buffer += __tr2qs("Matched by");
-		buffer += cln + space + bb + "<font size=\"-1\">";
+		buffer += cln + space + bb;
 		buffer += KviQString::toHtmlEscaped(mask);
-		buffer += "</font>" + be + enr;
+		buffer += be + enr;
 	}
 
 	if(connection())
@@ -452,8 +452,8 @@ void KviConsoleWindow::ircUriChanged(const QString & text)
 	int iStatus = KviIrcUrl::run(text, KviIrcUrl::CurrentContext, this);
 	if(iStatus & KviIrcUrl::InvalidProtocol || iStatus & KviIrcUrl::InvalidUrl)
 	{
-		KviMessageBox::warning(__tr2qs("KVIrc can accept only irc://, irc6://, ircs:// or ircs6:// URL's\n"
-		                               "Your URL is invalid. Check spelling and try again"));
+		KviMessageBox::warning(__tr2qs("KVIrc can only recognize irc://, irc6://, ircs:// or ircs6:// URL's\n"
+		                               "The URL you provided is invalid. Check spelling and try again"));
 	}
 	m_pInput->setFocus();
 }

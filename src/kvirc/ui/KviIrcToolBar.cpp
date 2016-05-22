@@ -214,7 +214,7 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 	static QString bb("<b>");
 	static QString be("</b>");
 	static QString cln(":");
-	static QString space(' ');
+	static QString space(" ");
 	static QString nbspc("&nbsp;");
 
 	static QString ths = "<html><body><table style=\"white-space: pre\">";
@@ -315,7 +315,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 	KviWindow * wnd = g_pActiveWindow;
 	KviConsoleWindow * c = wnd ? wnd->console() : nullptr;
 
-	static QString space(' ');
+	static QString space(" ");
 	static QString sprtr("-");
 	static QString cln(":");
 

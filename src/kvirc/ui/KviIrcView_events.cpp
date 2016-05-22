@@ -867,6 +867,7 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 	static QString br("<br>");
 	static QString ub("<u>");
 	static QString ue("</u>");
+	static QString cln(":");
 	static QString nbspc("&nbsp;");
 	static QString tdp = "<tr><td style=\"background-color: rgb(245,245,245); white-space: pre; padding-left: 5px; padding-right: 5px;\">";
 	static QString pre = "<tr><td style=\"white-space: pre; padding-left: 5px; padding-right: 5px;\">";
@@ -892,15 +893,15 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 			if(linkText.length() > 50)
 			{
 				tip += tdp;
-				tip += __tr2qs("URL:");
-				tip += nbspc + "<font color=\"#0022FF\">" + ub;
+				tip += __tr2qs("URL") + cln + nbspc;
+				tip += "<font color=\"#0022FF\">" + ub;
 				tip += linkText.left(47);
 				tip += ue + "...";
 			}
 			else
 			{	tip += tdp;
-				tip += __tr2qs("URL:");
-				tip += nbspc + "<font color=\"#0022FF\">" + ub;
+				tip += __tr2qs("URL") + cln + nbspc;
+				tip += "<font color=\"#0022FF\">" + ub;
 				tip += linkText + ue;
 			}
 
@@ -928,15 +929,15 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 			if(linkText.length() > 50)
 			{
 				tip += tdp;
-				tip += __tr2qs("Hostname:");
-				tip += nbspc + "<font color=\"#0022FF\">" + ub;
+				tip += __tr2qs("Hostname") + cln + nbspc;
+				tip += "<font color=\"#0022FF\">" + ub;
 				tip += linkText.left(47);
 				tip += ue + "...";
 			}
 			else
 			{	tip += tdp;
-				tip += __tr2qs("Hostname:");
-				tip += nbspc + "<font color=\"#0022FF\">" + ub;
+				tip += __tr2qs("Hostname") + cln + nbspc;
+				tip += "<font color=\"#0022FF\">" + ub;
 				tip += linkText + ue;
 			}
 
@@ -977,22 +978,24 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 			if(linkText.length() > 50)
 			{
 				tip += tdp;
-				tip += __tr2qs("Server URL:");
-				tip += nbspc + "<font color=\"#0022FF\">" + ub;
+				tip += __tr2qs("Server URL") + cln + nbspc;
+				tip += "<font color=\"#0022FF\">" + ub;
 				tip += linkText.left(47);
 				tip += ue + "...";
 			}
 			else
 			{	tip += tdp;
-				tip += __tr2qs("Server URL:");
-				tip += nbspc + "<font color=\"#0022FF\">" + ub;
+				tip += __tr2qs("Server URL") + cln + nbspc;
+				tip += "<font color=\"#0022FF\">" + ub;
 				tip += linkText + ue;
 			}
 
-			tip += "</font>" + pre;
+			tip += "</font>";
 
 			if(linkText.indexOf('*') != -1)
 			{
+				tip += pre;
+
 				if(linkText.length() > 1)
 					tip += __tr2qs("Server appears to be a network hub");
 				else
@@ -1082,7 +1085,7 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 					tip += KviQString::toHtmlEscaped(topic) + enr + tdp;
 					tip += __tr2qs("Channel modes: <b>+%1</b>").arg(KviQString::toHtmlEscaped(chanMode)) + enr + tdp;
 					tip += __tr2qs("Total users: <b>%1</b>").arg(c->count()) + enr + tdp;
-					tip += __tr2qs("IRC URI:") + nbspc;
+					tip += __tr2qs("IRC URI") + cln + nbspc;
 					tip += "<font color=\"#0022FF\">" + ub + KviQString::toHtmlEscaped(szUrl) + ue + "</font>";	
 					tip += enr;
 				}
@@ -1091,7 +1094,7 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 					KviIrcUrl::join(szUrl, console()->connection()->target()->server());
 					szUrl.append(szChan);
 
-					tip += tdp + __tr2qs("IRC URI: ") + nbspc;
+					tip += tdp + __tr2qs("IRC URI") + cln + nbspc;
 					tip += "<font color=\"#0022FF\">" + ub + KviQString::toHtmlEscaped(szUrl) + ue + "</font>" + enr;
 
 					tip += pre;

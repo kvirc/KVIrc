@@ -379,7 +379,7 @@ void KviTopicWidget::updateToolTip()
 	static QString bb("<b>");
 	static QString be("</b>");
 	static QString cln(":");
-	static QString space(' ');
+	static QString space(" ");
 	static QString tds = "<tr><td style=\"background-color: rgb(48,48,48); white-space: nowrap; font-weight: bold; color: rgb(255,255,255); text-align:center; padding-left: 5px; padding-right: 5px;\">";
 	static QString snr = "<tr><td style=\"white-space: pre; padding-left: 5px; padding-right: 5px;\">";
 	static QString nrs = "<tr><td>";
