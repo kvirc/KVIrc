@@ -25,6 +25,7 @@
 
 #include "KviError.h"
 #include "kvi_debug.h"
+#include "KviFileUtils.h"
 #include "KviLocale.h"
 #include "KviMemory.h"
 
@@ -58,8 +59,8 @@
 		string.
 		!fn: <integer> $numLines()
 		Returns number of lines in the widget.
-		!fn: <line,col:integer> $cursorPosition()
-		Returns current cursor position in "<line:uinteger>, <col:uinteger>" format.
+		!fn: <array> $cursorPosition()
+		Returns current cursor position in "<line:uinteger>, <col:uinteger>" format. Both numbers start counting from zero.
 		!fn: $setReadOnly(<bReadOnly:boolean>)
 		Sets the editor to be read-only if bReadOnly is 1 or
 		removes the read-only status if bReadOnly is 0
@@ -78,12 +79,20 @@
 		[/example]
 		!fn: <string> $wordWrap()
 		Returns the word wrap mode. NoWrap, WidgetWidth, FixedPixelWidth, FixedColumnWidth.
+		!fn: $setWordWrapWidth(<width:integer>)
+		When [b]$wordWrap[/b] is set to FixedPixelWidth or FixedColumnWidth, sets the width at which
+		text will be wrapped in columns or pixels.
+		!fn: <integer> $wordWrapWidth()
+		When [b]$wordWrap[/b] is set to FixedPixelWidth or FixedColumnWidth, returns the width at which
+		text is wrapped in columns or pixels.
 		!fn: <string> $text()
 		Returns the multiline edits text.
+		!fn: <string> $html()
+		Returns the content of the widget as a HTML document.
 		!fn: <integer> $length()
 		Returns the number of characters in the text This function ignores newlines.
-		!fn: $setMaxLines(<mac_lines:integer>)
-		Sets the max number of the lines to <a>
+		!fn: $setMaxLines(<max_lines:integer>)
+		Sets the max number of the lines to <max_lines>
 		!fn: <integer> $maxLines()
 		Returns the max number of the lines in the multiline edit.
 		!fn: $insert(<text:string>)
@@ -132,11 +141,11 @@
 		Sets the foreground color of this widget to <rgb_value>
 		Valid values are:
 		[example]
-		- hex string: must be a string with 6 hexadecimal digits (like the ones used to
-		  specify colors in HTML pages). The first two digits specify
-		  the [b]red[/b] component, the third and fourth digit specify the [b]green[/b] component
-		  and the last two specify the [b]blue[/b] component.
-		- array(red:integer, green:integer, blue:integer)
+		- hex string: must be a string with 6 hexadecimal digits (like the ones used to[br]
+		  specify colors in HTML pages). The first two digits specify[br]
+		  the [b]red[/b] component, the third and fourth digit specify the [b]green[/b] component[br]
+		  and the last two specify the [b]blue[/b] component.[br]
+		- array(red:integer, green:integer, blue:integer)[br]
 		- red:integer, green:integer, blue:integer.
 		[/example]
 		!fn: $setPointSize(<point_size:integer))
@@ -146,9 +155,23 @@
 		!fn: $setTextFormat(<textformat:string>)
 		Sets the text format. Correct values are RichText, PlainText.
 		!fn: <string> $textFormat()
-		Returns the text format: rich text or plain text.
-		!fn: $loadFile(<path:string>)
-		Load the file specified in the <path>, also HTML files.
+		Returns the text format: RichText or PlainText.
+		!fn: $loadFile(<path:string>[,<format:string>])
+		Load the file specified in the <path>.[br]
+		Valid values for <format> are:
+		[example]
+			- text - interprets the file as a plain text document.[br]
+			- html - interprets the file as a HTML document.
+		[/example]
+		If <format> is omitted, the widget will try to guess whether or not the text is a HTML document.
+		!fn: $saveFile(<path:string>[,<format:string>])
+		Writes the content of the widget to the file specified by <path>.[br]
+		Valid values for <format> are:
+		[example]
+			- text - writes the file as a plain text document (default).[br]
+			- html - writes the file as a HTML document.
+		[/example]
+		The file is saved in UTF-8.
 		!fn: <boolean> $isUndoAvailable ()
 		Returns [b]1 (true)[/b] if undo is available; otherwise returns [b]0 (false)[/b].
 		!fn: <boolean> $isRedoAvailable ()
@@ -167,7 +190,7 @@
 			- Auto - Aligns according to the language.[br]
 			- Left - Aligns with the left edge.[br]
 			- Right - Aligns with the right edge.[br]
-			- Center - Centers in both dimensions.
+			- Center - Centers in both dimensions.[br]
 			- Justify - Justify the text.
 		[/example]
 */
@@ -177,12 +200,15 @@ KVSO_BEGIN_REGISTERCLASS(KvsObject_textedit, "multilineedit", "widget")
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "textLine", functionTextLine)
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "setWordWrap", functionSetWordWrap)
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "wordWrap", functionWordWrap)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "setWordWrapWidth", functionSetWordWrapWidth)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "wordWrapWidth", functionWordWrapWidth)
 
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "atEnd", functionAtEnd)
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "numLines", functionNumLines)
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "atBeginning", functionAtBeginning)
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "cursorPosition", functionCursorPosition)
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "text", functionText)
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "html", functionHtml)
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "insert", functionInsert)
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "maxLines", functionMaxLines)
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "setMaxLines", functionSetMaxLines)
@@ -223,6 +249,7 @@ KVSO_REGISTER_HANDLER(KvsObject_textedit, "setReadOnly", functionSetReadOnly)
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "setTextFormat", functionsetTextFormat)
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "textFormat", functiontextFormat)
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "loadFile", functionloadFile);
+KVSO_REGISTER_HANDLER(KvsObject_textedit, "saveFile", functionsaveFile);
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "setAlignment", functionsetAlignment)
 
 KVSO_REGISTER_HANDLER(KvsObject_textedit, "lines", functionlines)
@@ -347,10 +374,39 @@ bool KvsObject_textedit::functionWordWrap(KviKvsObjectFunctionCall * c)
 	return true;
 }
 
+bool KvsObject_textedit::functionSetWordWrapWidth(KviKvsObjectFunctionCall * c)
+{
+	if(!widget())
+		return true;
+	kvs_int_t iWrap;
+	KVSO_PARAMETERS_BEGIN(c)
+	KVSO_PARAMETER("word_wrap", KVS_PT_INTEGER, 0, iWrap)
+	KVSO_PARAMETERS_END(c)
+
+	((QTextEdit *)widget())->setLineWrapColumnOrWidth(iWrap);
+	return true;
+}
+
+bool KvsObject_textedit::functionWordWrapWidth(KviKvsObjectFunctionCall * c)
+{
+
+	if(widget())
+		c->returnValue()->setInteger(((QTextEdit *)widget())->lineWrapColumnOrWidth());
+
+	return true;
+}
+
 bool KvsObject_textedit::functionText(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
 		c->returnValue()->setString(((QTextEdit *)widget())->document()->toPlainText());
+	return true;
+}
+
+bool KvsObject_textedit::functionHtml(KviKvsObjectFunctionCall * c)
+{
+	if(widget())
+		c->returnValue()->setString(((QTextEdit *)widget())->document()->toHtml(QByteArray("utf-8")));
 	return true;
 }
 
@@ -724,9 +780,10 @@ bool KvsObject_textedit::functionsetTextFormat(KviKvsObjectFunctionCall * c)
 
 bool KvsObject_textedit::functionloadFile(KviKvsObjectFunctionCall * c)
 {
-	QString szFile;
+	QString szFile, szFormat;
 	KVSO_PARAMETERS_BEGIN(c)
 	KVSO_PARAMETER("file_name", KVS_PT_STRING, 0, szFile)
+	KVSO_PARAMETER("format", KVS_PT_STRING, KVS_PF_OPTIONAL, szFormat)
 	KVSO_PARAMETERS_END(c)
 	if(!QFile::exists(szFile))
 	{
@@ -743,10 +800,47 @@ bool KvsObject_textedit::functionloadFile(KviKvsObjectFunctionCall * c)
 
 	QTextStream ts(&file);
 	QString txt = ts.readAll();
-	//settext tries to understand if the text is html or plain
-	((QTextEdit *)widget())->setText(txt);
+
+	if (szFormat.isEmpty())
+		//settext tries to understand if the text is html or plain
+		((QTextEdit *)widget())->setText(txt);
+	else if (KviQString::equalCI(szFormat, "text"))
+		((QTextEdit *)widget())->setPlainText(txt);
+	else if (KviQString::equalCI(szFormat, "html"))
+		((QTextEdit *)widget())->setHtml(txt);
+	else {
+		c->warning(__tr2qs_ctx("Unknown text document format '%Q'", "objects"), &szFormat);
+		((QTextEdit *)widget())->setText(txt);
+	}
 
 	file.close();
+	return true;
+}
+
+bool KvsObject_textedit::functionsaveFile(KviKvsObjectFunctionCall * c)
+{
+	QString szFile, szFormat, szData;
+	KVSO_PARAMETERS_BEGIN(c)
+	KVSO_PARAMETER("file_name", KVS_PT_STRING, 0, szFile)
+	KVSO_PARAMETER("format", KVS_PT_STRING, KVS_PF_OPTIONAL, szFormat)
+	KVSO_PARAMETERS_END(c)
+
+	if (KviQString::equalCI(szFormat, "html"))
+		szData = ((QTextEdit *)widget())->document()->toHtml(QByteArray("utf-8"));
+	else {
+		if (!szFormat.isEmpty() && !KviQString::equalCI(szFormat, "text"))
+			c->warning(__tr2qs_ctx("Unknown text document format '%Q'. Writing the document as plain text.", "objects"), &szFormat);
+
+		szData = ((QTextEdit *)widget())->toPlainText();
+	}
+
+	if(szFile.left(2) != "\\\\")
+		KviFileUtils::adjustFilePath(szFile);
+
+	bool bRet = KviFileUtils::writeFile(szFile, szData);
+	if(!bRet)
+		c->warning(__tr2qs("Failed to write to file '%Q': the destination couldn't be opened"), &szFile);
+
 	return true;
 }
 
