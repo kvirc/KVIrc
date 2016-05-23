@@ -1080,13 +1080,23 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 					KviIrcUrl::join(szUrl, console()->connection()->target()->server());
 					szUrl.append(szChan);
 
-					tip += tdh;
-					tip += __tr2qs("Channel Topic") + enr + nrs;
-					tip += KviQString::toHtmlEscaped(topic) + enr + tdp;
+					if(!topic.isEmpty())
+					{
+						tip += tdh;
+						tip += __tr2qs("Channel Topic") + enr + nrs;
+						tip += KviQString::toHtmlEscaped(topic) + enr + tdp;
+					}
+					else
+					{
+						tip += tdh;
+						tip += __tr2qs("Channel Topic") + enr + nrs;
+						tip += __tr2qs("No topic message has been received from the server yet") + enr + tdp;
+					}
+
 					tip += __tr2qs("Channel modes: <b>+%1</b>").arg(KviQString::toHtmlEscaped(chanMode)) + enr + tdp;
 					tip += __tr2qs("Total users: <b>%1</b>").arg(c->count()) + enr + tdp;
 					tip += __tr2qs("IRC URI") + cln + nbspc;
-					tip += "<font color=\"#0022FF\">" + ub + KviQString::toHtmlEscaped(szUrl) + ue + "</font>";	
+					tip += "<font color=\"#0022FF\">" + ub + KviQString::toHtmlEscaped(szUrl) + ue + "</font>";
 					tip += enr;
 				}
 				else
