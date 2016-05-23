@@ -284,6 +284,11 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 				int llld = (lll % 1000) / 100;
 				int lllc = (lll % 100) / 10;
 				KviQString::appendFormatted(txt, __tr2qs("Lag: <b>%d.%d%d secs</b>"), llls, llld, lllc);
+				txt += br;
+				int vss = ic->lagMeter()->secondsSinceLastCompleted();
+				int vmm = vss / 60;
+				vss = vss % 60;
+				KviQString::appendFormatted(txt, nbspc + __tr2qs("Last checked: <b>%d mins %d secs ago</b>"), vmm, vss);
 			}
 			else
 			{
