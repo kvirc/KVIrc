@@ -887,10 +887,8 @@ void KviMainWindow::closeEvent(QCloseEvent * e)
 
 		if(bGotRunningConnection)
 		{
-			QString txt = "<p>";
-			txt += __tr2qs("There are active connections, are you sure you wish to ");
-			txt += __tr2qs("quit KVIrc?");
-			txt += "</p>";
+			QString txt;
+			txt += __tr2qs("There are active connections, are you sure you wish to quit KVIrc?");
 
 			switch(QMessageBox::warning(this, __tr2qs("Confirm Close - KVIrc"), txt, __tr2qs("&Yes"), __tr2qs("&Always"), __tr2qs("&No"), 2, 2))
 			{
