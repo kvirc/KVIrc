@@ -1096,7 +1096,8 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 					tip += __tr2qs("Channel modes: <b>+%1</b>").arg(KviQString::toHtmlEscaped(chanMode)) + enr + tdp;
 					tip += __tr2qs("Total users: <b>%1</b>").arg(c->count()) + enr + tdp;
 					tip += __tr2qs("IRC URI") + cln + nbspc;
-					tip += "<font color=\"#0022FF\">" + ub + KviQString::toHtmlEscaped(szUrl) + ue + "</font>";
+					tip += "<font color=\"#0022FF\">" + ub + KviQString::toHtmlEscaped(szUrl) + ue + "</font>" + enr + pre;
+					tip += __tr2qs("Right-click to view other options");
 					tip += enr;
 				}
 				else
