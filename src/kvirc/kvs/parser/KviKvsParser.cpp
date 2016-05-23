@@ -1512,7 +1512,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[big]Where to start[/big]
 		[br]
 		It is a good idea to start in the KVIrc scripts GitHub repository https://github.com/kvirc/kvirc-scripts. There are surely
-		several addons to look at. Pick one that seems simple and analyze its layout and code 
+		several addons to look at. Pick one that seems simple and analyze its layout and code
 		(wow... amazing free software!). It will be easier to do than it was to explain it :D[br]
 		Have fun! :)
 		[br]

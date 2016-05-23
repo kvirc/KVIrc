@@ -1121,7 +1121,7 @@ namespace KviKvsCoreSimpleCommands
 			If the -u switch is specified then an [i]unexpected disconnection[/i] will be simulated
 			and all the related options will be applied (e.g. automatic reconnection,
 			channels and queries kept open etc.). The QUIT message will be still sent unless
-			the -f switch is used. You can control all the [i]unexpected disconnection[/i] 
+			the -f switch is used. You can control all the [i]unexpected disconnection[/i]
 			options in the options dialog.
 			If the -q switch is specified, this command terminates KVIrc immediately.[br]
 		@examples:

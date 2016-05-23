@@ -40,7 +40,7 @@ OptionsWidget_lag::OptionsWidget_lag(QWidget * parent)
 	KviBoolSelector * pUse = addBoolSelector(0, 0, 0, 0, __tr2qs_ctx("Enable lag meter", "options"), KviOption_boolUseLagMeterEngine);
 	mergeTip(pUse, __tr2qs_ctx("This enables the lag meter engine, which checks at regular intervals how much latency the server has.", "options"));
 	KviTalGroupBox * g = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("Configuration", "options"), KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine));
-	KviUIntSelector * pInterval = addUIntSelector(g, __tr2qs_ctx("Lag meter heartbeat:", "options"), KviOption_uintLagMeterHeartbeat, 2000, 10000, 5000, 
+	KviUIntSelector * pInterval = addUIntSelector(g, __tr2qs_ctx("Lag meter heartbeat:", "options"), KviOption_uintLagMeterHeartbeat, 2000, 10000, 5000,
 		KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine));
 	pInterval->setSuffix(__tr2qs_ctx(" msec", "options"));
 	mergeTip(pInterval, __tr2qs_ctx("This option allows you to set the lag meter heartbeat interval.<br>"

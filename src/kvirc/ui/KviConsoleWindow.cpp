@@ -1248,7 +1248,7 @@ void KviConsoleWindow::getWindowListTipText(QString & buffer)
 				if(uH > 0)
 					buffer += html_br;
 			}
- 
+
 			if(uH > 0)
 			{
 				num.setNum(uH);

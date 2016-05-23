@@ -599,11 +599,11 @@
 
 6.5 On Windows, how do I use Firefox, Opera or any other browser to open links instead of explorer?
 
-  Currently any browsers defined as the default browser, will be used automatically. 
+  Currently any browsers defined as the default browser, will be used automatically.
   Use the instructions below only to set your preferred browser.
-  
+
   These days KVIrc uses a "run cmd.exe /c start \ "$0" command to open the currently set default browser.
-  
+
   Go to the "URL Handlers" options page and set
 
       run "C:\\path\\to\\your\\browser.exe" "$0"

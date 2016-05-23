@@ -766,7 +766,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDo()
 				{
 					echo "Executed!";
 					%i++;
-				} 
+				}
 				while(%i < 1)
 				echo "After second execution:  %i";
 			[/example]

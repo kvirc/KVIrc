@@ -330,7 +330,7 @@ const char * const brushstyles_tbl[] = {
 		!fn: $scale(<dh:real>,<dw:real>)
 		Scales the coordinate system by <dh>, <dv>.
 		!fn: $setBackgroundMode(<bgMode:enum>)
-		Sets the background mode of the painter to <bgMode>: 
+		Sets the background mode of the painter to <bgMode>:
 		Valid values are:[br]
 		[pre]
 			- Transparent (that is the default value);[br]
@@ -472,7 +472,7 @@ const char * const brushstyles_tbl[] = {
 				{
 					$$->%degree=0;
 					if ($$->%Zoomindex == 99) $$->%Noanim=1
-				} 
+				}
 				if ($$->%Noanim != 1) return
 				[comment]#sinusoid animation[/comment]
 				if (($$->%xstart <1) && ($$->%xoffset == -4)) $$->%xoffset=4;
@@ -495,11 +495,11 @@ const char * const brushstyles_tbl[] = {
 
 			privateimpl(%Btn,mousepressevent)
 			{
-				if ($$->$parent->%nextanim==0) 
+				if ($$->$parent->%nextanim==0)
 				{
 					$$->$parent->%nextanim=1
 					$$->$settext(Prev)
-				} 
+				}
 				else
 				{
 					$$->$parent->%nextanim=0
@@ -515,7 +515,7 @@ const char * const brushstyles_tbl[] = {
 			%Hello->$setmaximumheight(600)
 			%Hello->$setminimumheight(600)
 			%Hello->$move(10,10)
-			%Hello->$show(); 
+			%Hello->$show();
 		[/example]
 */
 

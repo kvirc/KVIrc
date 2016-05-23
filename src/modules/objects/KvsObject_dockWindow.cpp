@@ -52,7 +52,7 @@
 		!fn: $setAllowedDockAreas(<docks:string>)
 		Sets the allowed main window dock areas for this dock window.[br]
 		<docks> must be a combination of [i]l[/i], [i]r[/i], [i]t[/i], [i]b[/i], [b]f[/b] and [b]m[/b].[br]
-		[b]l[/b] stands for left dock area, [b]r[/b] stands for right dock area, [b]t[/b] stands for the top dock areas, [b]b[/b] stands for the bottom dock area, 
+		[b]l[/b] stands for left dock area, [b]r[/b] stands for right dock area, [b]t[/b] stands for the top dock areas, [b]b[/b] stands for the bottom dock area,
 		[b]f[/b] stands for [i]floating[/i] and [b]m[/b] for [i]minimized[/i].[br]
 		If a flag is present then the related block area is enabled,otherwise it is disabled.
 		!fn: $dock(<dockarea:string>)

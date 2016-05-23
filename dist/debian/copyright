@@ -1,5 +1,5 @@
 This package was debianized by Andrea Briganti <kbytesys@tin.it>  on
-Wed,  8 Sep 2004 18:49:44 +0100 and reworked by Raúl Sánchez Siles 
+Wed,  8 Sep 2004 18:49:44 +0100 and reworked by Raúl Sánchez Siles
 <rasasi78@gmail.com> on Thu, 17 Apr 2008 09:49:21 +0200
 
 It was updated to 4.0.0 pre-release (svn 20090126) by Roderick B. Greening <roderick.greening@gmail.com>
@@ -19,7 +19,7 @@ License:
 This is the KVIrc IRC Client license.
 
 It is based on the GNU General Public License either version 2, or
-(at your option) any later version. The full text of versions 2 and 3 of 
+(at your option) any later version. The full text of versions 2 and 3 of
 the GPL can be found respectively in the files LICENSE-GPLV2 and LICENSE-GPLV3.
 KVIrc License contains all the GPL terms and conditions and adds a special
 exception (see "OpenSSL Exception" below) to the distribution limitations.
@@ -33,7 +33,7 @@ The source code for all versions of KVIrc is available at http://www.kvirc.net
 Have fun!
 Szymon Stefanek :)
 
-On Debian GNU/Linux systems, the complete text of the GNU General Public 
+On Debian GNU/Linux systems, the complete text of the GNU General Public
 License version 2 and version 3 can be found in
 `/usr/share/common-licenses/GPL-2' and `/usr/share/common-licenses/GPL-3',
 respectively.
@@ -77,7 +77,7 @@ KVIrc:
     Copyright 2002-2015 Szymon Stefanek <kvirc@tin.it> and "The KVIrc
     Development Team".
 
--- 
+--
 
 src/modules/my/idle.cpp
 src/modules/my/idle.h
@@ -104,7 +104,7 @@ src/modules/my/idle_x11.cpp:
 
 On Debian GNU/Linux systems, the complete text of the GNU Lesser General Public
 License can be found in `/usr/share/common-licenses/LGPL-2.1'.
--- 
+--
 
 For the following files, the license and copyright holders are different:
     * cmake/modules/FindLibV4L2.cmake   [CMAKE1]

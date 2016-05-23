@@ -94,8 +94,8 @@
 		and you're implementing an auto-kick system, the correct mask to register is [i]Eddie!*@*.org[/i].
 		[br][br]
 		KVIrc tries to be smart, and always find the most correct match for a user:
-		If you have two masks registered: [b]Pragma!*xor@*.myisp.it[/b] and [b]*!*@*.myisp.it[/b], 
-		KVIrc will match [b]Pragma!~xor@233-dyn.myisp.it[/b] with the first one even if the second 
+		If you have two masks registered: [b]Pragma!*xor@*.myisp.it[/b] and [b]*!*@*.myisp.it[/b],
+		KVIrc will match [b]Pragma!~xor@233-dyn.myisp.it[/b] with the first one even if the second
 		one also matches; the first one however, is a best match.
 		[br][br]
 		[big]Properties[/big][br]

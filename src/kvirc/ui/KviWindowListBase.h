@@ -156,7 +156,7 @@ protected slots:
 };
 
 //
-// KviClassicWindowListToolButton 
+// KviClassicWindowListToolButton
 // Button to close the window
 //
 

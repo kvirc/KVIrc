@@ -743,7 +743,7 @@ MP_KVS_SIMPLE_COMMAND(mute, mute)
 	@description:
 		Returns the MRL of the media currently played by the selected media player interface.
 		The MRL is a standard Media Resource Locator.
-		Examples of such locators are: 
+		Examples of such locators are:
 		[example]
 			file:///home/myfile.mp3
 			http://streaming.server.top:123

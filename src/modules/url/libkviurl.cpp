@@ -861,13 +861,13 @@ void url_module_config()
 		[b]Window[/b]: window where the URL has been shown last[br]
 		[b]Count[/b]: number of URLs shown[br]
 		[b]Timestamp[/b]: date/time when the URL has been shown first[br]
-    
+
 		Clicking right on the URL column of the list a menu will popup, through it
 		you can remove the selected item, find the URL in the window it appeared last, and
 		say it to: [i]@Console, Channels, Queries, DCC Chats[/i] and [i]User windows[/i].[br]
 		The list is saved to file when you click on the menu item or when you unload the plugin
 		on condition that you have checked the relative checkbox in configuration dialog.[br]
-    
+
 		You can also open the URL in your web browser double clicking on it in the URL list window.[br][br]
 
 		Mail me if you have any suggestion or you want to notice a bug.[br]

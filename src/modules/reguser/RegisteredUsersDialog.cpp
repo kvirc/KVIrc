@@ -423,9 +423,9 @@ void RegisteredUsersDialog::itemDoubleClicked(QTreeWidgetItem * it, int)
 void RegisteredUsersDialog::addGroupClicked()
 {
 	bool ok;
-	QString text = QInputDialog::getText(this, "Add Group Name - KVIrc", 
+	QString text = QInputDialog::getText(this, "Add Group Name - KVIrc",
 	    __tr2qs_ctx("Group name:", "register"), QLineEdit::Normal, QString(), &ok);
-   
+
 	if(ok && !text.isEmpty())
 	{
 		g_pLocalRegisteredUserDataBase->addGroup(text);
@@ -437,7 +437,7 @@ void RegisteredUsersDialog::editGroup(KviRegisteredUserGroup * group)
 {
 	bool ok;
 
-	QString text = QInputDialog::getText(this, "Change Group Name - KVIrc", 
+	QString text = QInputDialog::getText(this, "Change Group Name - KVIrc",
 	    __tr2qs_ctx("Group name:", "register"), QLineEdit::Normal, group->name(), &ok);
 
 	if(ok && !text.isEmpty())

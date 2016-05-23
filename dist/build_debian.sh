@@ -102,7 +102,7 @@ then
     branch="${TRAVIS_BRANCH}"
 fi
 
-tar -cpf  "${BUILDDIR}/${PKG_NAME}_${VERSION1}${SVNGITBZR}${dat}.orig.tar" --exclude ".git" --exclude "dist" . 
+tar -cpf  "${BUILDDIR}/${PKG_NAME}_${VERSION1}${SVNGITBZR}${dat}.orig.tar" --exclude ".git" --exclude "dist" .
 cd ${BUILDDIR}
 xz -9 "${PKG_NAME}_${VERSION1}${SVNGITBZR}${dat}.orig.tar"
 mkdir "${PKG_NAME}-${VERSION1}${SVNGITBZR}${dat}"

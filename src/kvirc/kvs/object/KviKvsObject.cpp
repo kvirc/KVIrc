@@ -465,7 +465,7 @@
 			created and [fnc]$new[/fnc]() returns its ID to the caller.[br]
 			This said, KVI++ will automatically return a value of 1 and you should [b]never[/b]
 			return a value other than 0 if something bad happened (like a mandatory parameter was not given in the $new()
-			call or the like.) KVIrc will also issue a warning message and remind you of this when a non-zero value is 
+			call or the like.) KVIrc will also issue a warning message and remind you of this when a non-zero value is
 			returned.[br]
 			All the builtin classes have a constructor defined that will almost never fail (only if we run out of memory),
 			so you can avoid to check the [fnc]$new[/fnc]() return value

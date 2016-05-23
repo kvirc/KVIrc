@@ -239,7 +239,7 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
 	gl->addWidget(m_pConsoleOnlyIfUsersSelectedCheck, 5, 1, 1, 4);
 
 	m_pWindowChannelCheck = new QCheckBox(__tr2qs_ctx("Enable in channel windows", "editor"), tab);
-	m_pWindowChannelCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when " 
+	m_pWindowChannelCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when "
 	                                              "the active window is a channel", "editor"));
 
 	connect(m_pWindowChannelCheck, SIGNAL(toggled(bool)), this, SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));

@@ -64,7 +64,7 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par, bool bUseServerMaskField)
 	                                                    "You can use wildcards for this field, but generally it is a security flaw. "
 	                                                    "If you're 100%% sure that NO user on the network can use the nickname \"NickServ\", "
 	                                                    "the mask <b>NickServ!*@*</b> may be safe to use in this field.", "options"));
-			       
+
 	gl->addWidget(m_pNickServMaskEdit, 1, 1, 1, 3);
 	//	gl->addMultiCellWidget(m_pNickServMaskEdit,1,1,1,3);
 

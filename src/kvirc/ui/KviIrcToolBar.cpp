@@ -292,7 +292,7 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 			}
 			else
 			{
-				txt += __tr2qs("Lag: <b>?.?\?</b>"); //escaped a ? due to compiler trigraphs warning 
+				txt += __tr2qs("Lag: <b>?.?\?</b>"); //escaped a ? due to compiler trigraphs warning
 			}
 		}
 

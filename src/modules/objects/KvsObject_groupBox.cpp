@@ -105,13 +105,13 @@ const int align_cod[] = {
 			%gb->$setAlignment("Left")
 			[comment]# Add the groupbox to the main layout[/comment]
 			%layout->$addWidget(%gb,0,0)
-			[comment]# Now we create the user field 
+			[comment]# Now we create the user field
 			(labels + lineedit) in a horizontal box[/comment]
 			%hbox=$new(hbox,%gb)
 			%labeluser=$new(label,%hbox)
 			%labeluser->$settext(User: )
 			%inputuser=$new(lineedit,%hbox)
-			[comment]# Now we create the password field 
+			[comment]# Now we create the password field
 			(labels + lineedit) in a horizontal box[/comment]
 			%hbox=$new(hbox,%gb)
 			%labelpass=$new(label,%hbox)
