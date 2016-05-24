@@ -687,16 +687,19 @@ void KviStatusBar::setPermanentMessage()
 				szTxt += ": <b>";
 				szTxt += c->connection()->currentServerName();
 				szTxt += "</b> - ";
-				szTxt += __tr2qs("Modes for");
-				szTxt += " ";
-				szTxt += c->connection()->currentNickName();
-				szTxt += ": ";
 				if(!c->connection()->userInfo()->userMode().isEmpty())
 				{
+					szTxt += __tr2qs("Modes for");
+					szTxt += " ";
+					szTxt += c->connection()->currentNickName();
+					szTxt += ": ";
 					szTxt += "<b>+";
 					szTxt += c->connection()->userInfo()->userMode();
 					szTxt += "</b>";
 				}
+				else if(c->connection()->userInfo()->userMode().isEmpty())
+					szTxt += c->connection()->currentNickName();
+
 				break;
 			case KviIrcContext::Connecting:
 				szTxt += "<b>";
