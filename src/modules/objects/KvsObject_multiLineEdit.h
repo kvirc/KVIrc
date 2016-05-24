@@ -45,8 +45,11 @@ protected:
 	bool functionAtEnd(KviKvsObjectFunctionCall * c);
 	bool functionSetWordWrap(KviKvsObjectFunctionCall * c);
 	bool functionWordWrap(KviKvsObjectFunctionCall * c);
+	bool functionSetWordWrapWidth(KviKvsObjectFunctionCall * c);
+	bool functionWordWrapWidth(KviKvsObjectFunctionCall * c);
 	bool functionCursorPosition(KviKvsObjectFunctionCall * c);
 	bool functionText(KviKvsObjectFunctionCall * c);
+	bool functionHtml(KviKvsObjectFunctionCall * c);
 	bool functionLength(KviKvsObjectFunctionCall * c);
 	bool functionSetMaxLines(KviKvsObjectFunctionCall * c);
 	bool functionMaxLines(KviKvsObjectFunctionCall * c);
@@ -81,6 +84,7 @@ protected:
 	bool functionsetTextFormat(KviKvsObjectFunctionCall * c);
 	bool functiontextFormat(KviKvsObjectFunctionCall * c);
 	bool functionloadFile(KviKvsObjectFunctionCall * c);
+	bool functionsaveFile(KviKvsObjectFunctionCall * c);
 	bool functionlines(KviKvsObjectFunctionCall * c);
 	bool functionselectAll(KviKvsObjectFunctionCall * c);
 	bool functionsetModified(KviKvsObjectFunctionCall * c);
