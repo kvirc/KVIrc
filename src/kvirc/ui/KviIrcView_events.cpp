@@ -1134,19 +1134,19 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 			{
 				if(!tip.isEmpty())
 					tip.append("<hr>");
-				KviQString::appendFormatted(tip, __tr2qs("<b>Double-click:</b><br>%Q"), &dbl);
+				KviQString::appendFormatted(tip, __tr2qs("Double-click: %Q"), &dbl);
 			}
 			if(tip.isEmpty() && (!mbt.isEmpty()))
 			{
 				if(!tip.isEmpty())
 					tip.append("<hr>");
-				KviQString::appendFormatted(tip, __tr2qs("<b>Middle-click:</b><br>%Q"), &mbt);
+				KviQString::appendFormatted(tip, __tr2qs("Middle-click: %Q"), &mbt);
 			}
 			if(tip.isEmpty() && (!rbt.isEmpty()))
 			{
 				if(!tip.isEmpty())
 					tip.append("<hr>");
-				KviQString::appendFormatted(tip, __tr2qs("<b>Right-click:</b><br>%Q"), &rbt);
+				KviQString::appendFormatted(tip, __tr2qs("Right-click: %Q"), &rbt);
 			}
 		}
 		break;
