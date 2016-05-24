@@ -77,7 +77,7 @@ OptionsWidget_connection::OptionsWidget_connection(QWidget * parent)
 	                        "<tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p>",
 	                "options"));
 
-	KviUIntSelector * u = addUIntSelector(gbox, __tr2qs_ctx("Maximum attempts (0: unlimited):", "options"),
+	KviUIntSelector * u = addUIntSelector(gbox, __tr2qs_ctx("Maximum attempts (0 = unlimited):", "options"),
 	    KviOption_uintMaxAutoReconnectAttempts, 0, 100, 5, KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
 	connect(b, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
 
