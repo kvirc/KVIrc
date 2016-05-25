@@ -287,7 +287,7 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 
 		if(ic && ic->lagMeter() && (KVI_OPTION_BOOL(KviOption_boolShowLagOnContextDisplay)))
 		{
-			txt += nbspc + snr;
+			txt += snr;
 
 			int lll;
 			if((lll = ic->lagMeter()->lag()) > 0)
@@ -306,9 +306,7 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 				txt += enr;
 			}
 			else
-			{
-				txt += __tr2qs("Lag: <b>?.?\?</b>"); //escaped a ? due to compiler trigraphs warning
-			}
+				txt += nbspc + __tr2qs("Lag: <b>?.?\?</b>"); //escaped a ? due to compiler trigraphs warning
 		}
 
 		txt += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
