@@ -229,8 +229,6 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 	if(c)
 	{
 		KviIrcConnection * ic = c->connection();
-		KviWindow * wnd = g_pActiveWindow;
-		KviConsoleWindow * c = wnd ? wnd->console() : nullptr;
 
 		QString szNum;
 		szNum.setNum(c->context()->id());
