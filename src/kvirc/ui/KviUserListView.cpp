@@ -1588,8 +1588,6 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 			QString szBuffer;
 			m_pKviWindow->console()->getUserTipText(pEntry->m_szNick, pEntry->m_pGlobalData, szBuffer);
 
-			szBuffer += "<table style=\"white-space: pre\">";
-
 			if(pEntry->m_joinTime != 0)
 			{
 				QString szTmp;
@@ -1634,7 +1632,6 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 				szBuffer += __tr2qs("%1 is an <b>IrcOp</b>").arg(pEntry->m_szNick);
 				szBuffer += "</font></td></tr>";
 			}
-			szBuffer += "</table>";
 
 			pTip->doTip(itRect, szBuffer);
 		}
