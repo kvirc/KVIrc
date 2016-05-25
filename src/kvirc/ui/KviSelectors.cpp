@@ -174,9 +174,9 @@ KviPasswordSelector::KviPasswordSelector(QWidget * par, const QString & txt, QSt
 	m_pLabel = new QLabel(txt, this);
 	m_pLineEdit = new QLineEdit(this);
 	addSpacing(4);
-	m_pCheckBox = new QCheckBox(this);
+	m_pCheckBox = new QCheckBox(__tr2qs("Reveal password"), this);
 	m_pLineEdit->setEchoMode(QLineEdit::Password);
-	m_pCheckBox->setCheckState(Qt::Checked);
+	m_pCheckBox->setCheckState(Qt::Unchecked);
 	connect(m_pCheckBox, SIGNAL(stateChanged(int)), this, SLOT(checkToggled(int)));
 
 	QString tmp = *pOption;
@@ -191,7 +191,7 @@ KviPasswordSelector::KviPasswordSelector(QWidget * par, const QString & txt, QSt
 
 void KviPasswordSelector::checkToggled(int state)
 {
-	if(state == Qt::Checked)
+	if(state == Qt::Unchecked)
 		m_pLineEdit->setEchoMode(QLineEdit::Password);
 	else
 		m_pLineEdit->setEchoMode(QLineEdit::Normal);
@@ -227,16 +227,16 @@ KviPasswordLineEdit::KviPasswordLineEdit(QWidget * par)
 
 	m_pLineEdit = new QLineEdit(this);
 	addSpacing(4);
-	m_pCheckBox = new QCheckBox(this);
+	m_pCheckBox = new QCheckBox(__tr2qs("Reveal password"), this);
 	m_pLineEdit->setEchoMode(QLineEdit::Password);
-	m_pCheckBox->setCheckState(Qt::Checked);
+	m_pCheckBox->setCheckState(Qt::Unchecked);
 	connect(m_pCheckBox, SIGNAL(stateChanged(int)), this, SLOT(checkToggled(int)));
 	setStretchFactor(m_pLineEdit, 1);
 }
 
 void KviPasswordLineEdit::checkToggled(int state)
 {
-	if(state == Qt::Checked)
+	if(state == Qt::Unchecked)
 		m_pLineEdit->setEchoMode(QLineEdit::Password);
 	else
 		m_pLineEdit->setEchoMode(QLineEdit::Normal);
