@@ -165,7 +165,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par, KviIrcNetwork * 
 	m_pNickEditor->setText(n->nickName());
 	pPropertiesBoxLayout->addWidget(m_pNickEditor, 2, 1);
 
-	KviTalToolTip::add(m_pNickEditor, __tr2qs_ctx("You can specify a \"special\" <b>nickname</b> that will be used to log in to the servers on this network.<br>"
+	KviTalToolTip::add(m_pNickEditor, __tr2qs_ctx("You can specify a special nickname that will be used to login to the servers on this network.<br>"
 	                                              "If this field is left empty (most common case), the default nickname (specified in the \"Identity\" settings) will be used.", "options"));
 
 	l = new QLabel(__tr2qs_ctx("Alt. nickname:", "options"), gbox);
@@ -187,7 +187,7 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par, KviIrcNetwork * 
 	m_pRealEditor->setText(n->realName());
 	pPropertiesBoxLayout->addWidget(m_pRealEditor, 4, 1);
 
-	KviTalToolTip::add(m_pRealEditor, __tr2qs_ctx("You can specify a \"special\" <b>real name</b> that will be used to login with the servers on this network."
+	KviTalToolTip::add(m_pRealEditor, __tr2qs_ctx("You can specify a special <b>real name</b> that will be used to login with the servers on this network."
 	                                              "If you leave this field empty (most common case), the default \"real name\" (specified in the \"Identity\" settings) will be used.", "options"));
 
 	l = new QLabel(__tr2qs_ctx("Server encoding:", "options"), tab);
@@ -578,7 +578,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par, KviIrcServer * s)
 	m_pNickEditor->setText(s->nickName());
 	pPropertiesBoxLayout->addWidget(m_pNickEditor, 2, 1);
 
-	KviTalToolTip::add(m_pNickEditor, __tr2qs_ctx("You can specify a \"special\" <b>nickname</b> that will be used to log in to this server.<br>"
+	KviTalToolTip::add(m_pNickEditor, __tr2qs_ctx("You can specify a special <b>nickname</b> that will be used to login to this server.<br>"
 	                                              "If this field is left empty (most common case), KVIrc will first look if a nickname is specified "
 	                                              "for the network that this server belongs to, and if that is empty then the default nickname "
 						      "(specified in the \"Identity\" settings) will be used.", "options"));
@@ -602,7 +602,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par, KviIrcServer * s)
 	m_pRealEditor->setText(s->realName());
 	pPropertiesBoxLayout->addWidget(m_pRealEditor, 4, 1);
 
-	KviTalToolTip::add(m_pRealEditor, __tr2qs_ctx("You can specify a \"special\" <b>real name</b> that will be used to login with this server.<br>"
+	KviTalToolTip::add(m_pRealEditor, __tr2qs_ctx("You can specify a special <b>real name</b> that will be used to login with this server.<br>"
 	                                              "If you leave this field empty (most common case), KVIrc will first look if a real name is specified "
 	                                              "for the network that this server belongs to, and if that is empty the default \"real name\" "
 						      "(specified in the \"Identity\" settings) will be used.", "options"));
