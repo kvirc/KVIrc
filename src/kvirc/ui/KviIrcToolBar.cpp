@@ -270,7 +270,7 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 					txt += nickAndMode.ptr();
 				}
 				else if(ic->userInfo()->userMode().isEmpty())
-					txt += ic->currentNickName();
+					txt += nbspc + ic->currentNickName();
 
 				if(ic->userInfo()->isAway())
 				{
@@ -285,10 +285,9 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 			txt += enr;
 		}
 
-		txt += snr;
 		if(ic && ic->lagMeter() && (KVI_OPTION_BOOL(KviOption_boolShowLagOnContextDisplay)))
 		{
-			txt += nbspc;
+			txt += nbspc + snr;
 
 			int lll;
 			if((lll = ic->lagMeter()->lag()) > 0)
@@ -296,12 +295,15 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 				int llls = lll / 1000;
 				int llld = (lll % 1000) / 100;
 				int lllc = (lll % 100) / 10;
+				txt += nbspc;
 				KviQString::appendFormatted(txt, __tr2qs("Lag: <b>%d.%d%d secs</b>"), llls, llld, lllc);
-				txt += br;
+				txt += enr;
 				int vss = ic->lagMeter()->secondsSinceLastCompleted();
 				int vmm = vss / 60;
 				vss = vss % 60;
+				txt += snr;
 				KviQString::appendFormatted(txt, nbspc + __tr2qs("Last checked: <b>%d mins %d secs ago</b>"), vmm, vss);
+				txt += enr;
 			}
 			else
 			{
