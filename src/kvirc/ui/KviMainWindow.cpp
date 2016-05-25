@@ -871,7 +871,6 @@ void KviMainWindow::closeEvent(QCloseEvent * e)
 	if(KVI_OPTION_BOOL(KviOption_boolConfirmCloseWhenThereAreConnections))
 	{
 		// check for running connections
-
 		bool bGotRunningConnection = false;
 		for(KviWindow * w = m_pWinList->first(); w; w = m_pWinList->next())
 		{
@@ -1031,8 +1030,7 @@ void KviMainWindow::toggleMenuBar()
 			QMessageBox pMsgBox;
 			QCheckBox cb(__tr2qs("Do not show this message again"));
 			pMsgBox.setText(__tr2qs("This will hide the menu bar completely. "
-			                        "You can show it again by typing %1.")
-			                    .arg(QString(KVI_SHORTCUTS_TOGGLE_MENU_BAR)));
+			                        "You can show it again by pressing %1.").arg(QString(KVI_SHORTCUTS_TOGGLE_MENU_BAR)));
 			pMsgBox.setWindowTitle(__tr2qs("Hide Menu Bar - KVIrc"));
 			pMsgBox.setIcon(QMessageBox::Icon::Information);
 			pMsgBox.addButton(QMessageBox::Ok);
