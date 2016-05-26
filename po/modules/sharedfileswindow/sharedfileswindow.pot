@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-29 12:13+0100\n"
+"POT-Creation-Date: 2016-05-26 15:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/sharedfile/libkvisharedfile.cpp:85
+#: src/modules/sharedfile/libkvisharedfile.cpp:83
 msgid "The file '%Q' is not readable"
 msgstr ""
 
-#: src/modules/sharedfile/libkvisharedfile.cpp:101
+#: src/modules/sharedfile/libkvisharedfile.cpp:100
 msgid "Invalid timeout, ignoring"
 msgstr ""
 
-#: src/modules/sharedfile/libkvisharedfile.cpp:115
+#: src/modules/sharedfile/libkvisharedfile.cpp:114
 msgid "Invalid visible name: using default"
 msgstr ""
 
-#: src/modules/sharedfile/libkvisharedfile.cpp:121
+#: src/modules/sharedfile/libkvisharedfile.cpp:122
 msgid "Oops! Failed to add the sharedfile..."
 msgstr ""
 
@@ -37,126 +37,126 @@ msgstr ""
 msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
 msgstr ""
 
-#: src/modules/sharedfile/libkvisharedfile.cpp:221
+#: src/modules/sharedfile/libkvisharedfile.cpp:218
 #, c-format
 msgid "File: %s (%u bytes)"
 msgstr ""
 
-#: src/modules/sharedfile/libkvisharedfile.cpp:223
+#: src/modules/sharedfile/libkvisharedfile.cpp:220
 #, c-format
 msgid "Mask: %s"
 msgstr ""
 
-#: src/modules/sharedfile/libkvisharedfile.cpp:232
+#: src/modules/sharedfile/libkvisharedfile.cpp:229
 #, c-format
 msgid "Expires in %d hours %d minutes %d seconds"
 msgstr ""
 
-#: src/modules/sharedfile/libkvisharedfile.cpp:242
+#: src/modules/sharedfile/libkvisharedfile.cpp:240
 msgid "No active file sharedfile"
 msgstr ""
 
-#: src/modules/sharedfile/libkvisharedfile.cpp:243
+#: src/modules/sharedfile/libkvisharedfile.cpp:242
 #, c-format
 msgid "Total: %d sharedfile"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:59
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:58
 msgid "Shared File Configuration - KVIrc"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:61
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:60
 msgid "Share name:"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:68
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:66
 msgid "File path:"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:75
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:72
 msgid "&Browse..."
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:79
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:76
 msgid "User mask:"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:86
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:82
 msgid "Expire at:"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:97
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:92
 msgid "&OK"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:101
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:96
 msgid "Cancel"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:159
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:154
 msgid "Invalid Expiry Time - KVIrc"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:160
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:155
 msgid ""
 "The expiry date/time is in the past: please either remove the \"Expires at"
 "\"check mark or specify a expiry date/time in the future"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:162
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:170
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:179
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:158
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:166
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:175
 msgid "OK"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:168
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:164
 msgid "Invalid Share Name - KVIrc"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:169
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:165
 msgid "The share name can't be empty, please correct it"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:177
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:173
 msgid "Error Opening File - KVIrc"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:178
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:174
 msgid "The file doesn't exist or it is not readable, please check the path"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:199
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:196
 msgid "Never"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:222
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:217
 msgid "Name"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:223
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:218
 msgid "Filename"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:224
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:219
 msgid "Mask"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:226
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:221
 msgid "Expires"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:242
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:237
 msgid "&Add..."
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:244
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:239
 msgid "Re&move"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:246
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:241
 msgid "&Edit"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:695
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:359
 msgid "Shared Files"
 msgstr ""

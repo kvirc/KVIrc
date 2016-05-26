@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-29 12:14+0100\n"
+"POT-Creation-Date: 2016-05-26 15:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,58 +17,58 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/notifier/libkvinotifier.cpp:136
-msgid "The specified window does not exist"
-msgstr ""
-
-#: src/modules/notifier/libkvinotifier.cpp:150
-msgid "The specified timeout is not valid, assuming 0"
-msgstr ""
-
-#: src/modules/notifier/libkvinotifier.cpp:153
-msgid "The -t switch expects a timeout in seconds"
-msgstr ""
-
-#: src/modules/notifier/NotifierWindow.cpp:965
+#: src/modules/notifier/NotifierWindow.cpp:987
 msgid "Show/Hide input line"
 msgstr ""
 
-#: src/modules/notifier/NotifierWindow.cpp:966
+#: src/modules/notifier/NotifierWindow.cpp:988
 msgid "Hide"
 msgstr ""
 
-#: src/modules/notifier/NotifierWindow.cpp:969
+#: src/modules/notifier/NotifierWindow.cpp:991
 msgid "1 Minute"
 msgstr ""
 
-#: src/modules/notifier/NotifierWindow.cpp:970
+#: src/modules/notifier/NotifierWindow.cpp:992
 msgid "5 Minutes"
 msgstr ""
 
-#: src/modules/notifier/NotifierWindow.cpp:971
+#: src/modules/notifier/NotifierWindow.cpp:993
 msgid "15 Minutes"
 msgstr ""
 
-#: src/modules/notifier/NotifierWindow.cpp:972
+#: src/modules/notifier/NotifierWindow.cpp:994
 msgid "30 Minutes"
 msgstr ""
 
-#: src/modules/notifier/NotifierWindow.cpp:973
+#: src/modules/notifier/NotifierWindow.cpp:995
 msgid "1 Hour"
 msgstr ""
 
-#: src/modules/notifier/NotifierWindow.cpp:975
+#: src/modules/notifier/NotifierWindow.cpp:997
 msgid "Until KVIrc is Restarted"
 msgstr ""
 
-#: src/modules/notifier/NotifierWindow.cpp:976
+#: src/modules/notifier/NotifierWindow.cpp:998
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr ""
 
-#: src/modules/notifier/NotifierWindow.cpp:978
+#: src/modules/notifier/NotifierWindow.cpp:1000
 msgid "Disable"
 msgstr ""
 
-#: src/modules/notifier/NotifierWindow.cpp:1053
+#: src/modules/notifier/NotifierWindow.cpp:1074
 msgid "Write text or commands to window"
+msgstr ""
+
+#: src/modules/notifier/libkvinotifier.cpp:137
+msgid "The specified window does not exist"
+msgstr ""
+
+#: src/modules/notifier/libkvinotifier.cpp:151
+msgid "The specified timeout is not valid, assuming 0"
+msgstr ""
+
+#: src/modules/notifier/libkvinotifier.cpp:156
+msgid "The -t switch expects a timeout in seconds"
 msgstr ""

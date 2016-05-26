@@ -1,352 +1,184 @@
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# Zé <mmodem00@gmail.com>, 2010.
-# Zé <mmodem00@gmal.com>, 2010.
-# Rafael_C_V <rafaelvizioni@ig.com.br> - PT-BR - 2011
+# 
+# Translators:
+# Daniel Neves, 2015-2016
+# Zé <mmodem00@gmail.com>, 2010
+# Zé <mmodem00@gmal.com>, 2010
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2011-06-16 01:13-0300\n"
-"Last-Translator: Rafael <rafaelvizioni@ig.com.br>\n"
-"Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
-"Language: pt\n"
+"POT-Creation-Date: 2016-02-29 12:14+0100\n"
+"PO-Revision-Date: 2016-03-02 11:21+0000\n"
+"Last-Translator: Daniel Neves\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/kvirc/KVIrc/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/modules/addon/libkviaddon.cpp:146
-msgid "%cAddon id %Q, version %Q%c"
-msgstr "%cId do extra %Q, versão %Q%c"
+#: src/modules/addon/AddonFunctions.cpp:54
+msgid "The selected file doesn't seem to be a valid KVIrc addon package"
+msgstr "O arquivo selecionado não perece ser um pacote de addon do Kvirc válido"
 
-#: src/modules/addon/PackAddonDialog.cpp:280
-msgid "Addon Packaging Error"
-msgstr "Erro de Empacotamento do Extra"
+#: src/modules/addon/AddonFunctions.cpp:75
+msgid "The selected file doesn't seem to be a valid KVIrc package: %1"
+msgstr "O arquivo selecionado não parece ser um pacote válido do KVirc: %1"
 
-#: src/modules/addon/AddonFunctions.cpp:231
-#, fuzzy
-msgid "Addon Unpack Warning"
-msgstr "Aviso de Empacotamento do Extra"
-
-#: src/modules/addon/libkviaddon.cpp:583
-msgid "Addon registration failed"
-msgstr "Falha no registo do extra"
-
-#: src/modules/addon/libkviaddon.cpp:588
-msgid "Addon successfully registered"
-msgstr "Extra registado com sucesso"
-
-#: src/modules/addon/libkviaddon.cpp:555
-msgid "Attempting to register addon \"%Q\" with version %Q"
-msgstr "Tentando registar o extra \"%Q\" com a versão %Q"
-
-#: src/modules/addon/AddonFunctions.cpp:117
+#: src/modules/addon/AddonFunctions.cpp:123
 msgid "Author"
 msgstr "Autor"
 
-#: src/modules/addon/PackAddonDialog.cpp:621
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: src/modules/addon/PackAddonDialog.cpp:246
-msgid "Cannot open file for writing."
-msgstr "Não é possível abrir o arquivo para escrita."
-
-#: src/modules/addon/PackAddonDialog.cpp:253
-msgid "Cannot write to the file descriptor."
-msgstr "Não é possível escrever para o arquivo descritor."
-
-#: src/modules/addon/AddonManagementDialog.cpp:185
-msgid "Close"
-msgstr "Fechar"
-
-#: src/modules/addon/AddonManagementDialog.cpp:125
-msgid "Configure Addon..."
-msgstr "Configurar Extra..."
-
-#: src/modules/addon/AddonManagementDialog.cpp:280
-msgid "Confirm addon uninstallation"
-msgstr "Confirme a desinstalação do extra"
-
-#: src/modules/addon/PackAddonDialog.cpp:53
-msgid "Create Addon Package - KVIrc"
-msgstr "Criar Pacote Extra - KVIrc"
-
-#: src/modules/addon/AddonManagementDialog.cpp:147
-msgid "Create an Addon as a Distributable Package"
-msgstr "Criar um Extra como um Pacote Distribuível"
-
-#: src/modules/addon/AddonFunctions.cpp:118
+#: src/modules/addon/AddonFunctions.cpp:124
 msgid "Created at"
 msgstr "Criado em "
 
-#: src/modules/addon/AddonFunctions.cpp:119
+#: src/modules/addon/AddonFunctions.cpp:125
 msgid "Created with"
 msgstr "Criado com"
 
-#: src/modules/addon/AddonManagementDialog.cpp:137
-msgid "Delete Selected Addons"
-msgstr "Apagar Extras Seleccionados"
+#: src/modules/addon/AddonFunctions.cpp:156
+msgid "Warning: The addon might be incompatible with this version of KVIrc"
+msgstr "Aviso: O extra pode ser incompatível com esta versão KVIrc"
 
-#: src/modules/addon/libkviaddon.cpp:148
-msgid "Description: %Q"
-msgstr "Descrição: %Q"
-
-#: src/modules/addon/AddonFunctions.cpp:183
-msgid "Do Not Install"
-msgstr "Não Instalar"
-
-#: src/modules/addon/AddonManagementDialog.cpp:275
-msgid "Do you really want to uninstall the addon \"%1\" ?"
-msgstr "Deseja realmente desinstalar o extra \"%1\" ?"
-
-#: src/modules/addon/AddonFunctions.cpp:182
-msgid "Do you want to proceed with the installation ?"
-msgstr "Deseja proceder com a instalação?"
-
-#: src/modules/addon/libkviaddon.cpp:662
-msgid "Empty file list"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:809
-msgid "Error installing addon package: %Q"
-msgstr "Erro ao instalar pacote extra: %Q"
-
-#: src/modules/addon/PackAddonDialog.cpp:329
-#: src/modules/addon/PackAddonDialog.cpp:344
-#: src/modules/addon/PackAddonDialog.cpp:357
-#: src/modules/addon/PackAddonDialog.cpp:376
-#: src/modules/addon/PackAddonDialog.cpp:385
-#: src/modules/addon/PackAddonDialog.cpp:390
-msgid "Export Addon - KVIrc"
-msgstr "Exportar Extra - KVIrc"
-
-#: src/modules/addon/AddonFunctions.cpp:231
-msgid "Failed to delete the directory '%1'"
-msgstr ""
-
-#: src/modules/addon/AddonFunctions.cpp:218
-#, fuzzy
-msgid "Failed to unpack the selected file: %1"
-msgstr "Falha ao desempacotar o arquivo seleccionado: %1"
-
-#: src/modules/addon/PackAddonDialog.cpp:376
-msgid "File %1 already exists. Do you want to overwrite it?"
-msgstr ""
-
-#: src/modules/addon/PackAddonDialog.cpp:605
-msgid "File Summary"
-msgstr "Sumário do Arquivo"
-
-#: src/modules/addon/PackAddonDialog.cpp:539
-msgid "Final Information"
-msgstr "Informação Final"
-
-#: src/modules/addon/PackAddonDialog.cpp:625
-msgid "Finish"
-msgstr "Terminar"
-
-#: src/modules/addon/AddonManagementDialog.cpp:163
-msgid "Get More Addons..."
-msgstr "Obter Mais Extras..."
-
-#: src/modules/addon/PackAddonDialog.cpp:612
-msgid ""
-"Here there are the files I found in the directories you provided.\n"
-"If these and the information showed in the previous page are correct, hit "
-"the \"Finish\" button to complete\n"
-"the packaging operations."
-msgstr ""
-"Aqui estão os arquivos encontrados nos diretórios que indicou.\n"
-"Se estes diretórios e a informação mostrada na página anterior estão "
-"correctos, clique no botão \"Terminar\"\n"
-"para completar as operações de empacotamento."
-
-#: src/modules/addon/PackAddonDialog.cpp:540
-msgid ""
-"Here there are the information you provided. If these information are "
-"correct, hit the \"Finish\" button to complete the packaging operations."
-msgstr ""
-"Aqui está a informação que indicou. Se esta informação está correcta, clique "
-"no botão \"Terminar\" para completar as operações de empacotamento."
-
-#: src/modules/addon/PackAddonDialog.cpp:401
-msgid ""
-"Here you need to provide information about you (the packager) and a short "
-"description of the package you're creating."
-msgstr ""
-"Aqui precisa indicar informação acerca de si (o empacotador) e uma breve "
-"descrição do pacote que está a criar."
-
-#: src/modules/addon/PackAddonDialog.cpp:495
-msgid "Here you need to provide the path where to save the addon package"
-msgstr "Aqui precisa indicar a localização onde gravar o pacote extra"
-
-#: src/modules/addon/PackAddonDialog.cpp:468
-msgid "Here you need to select the directory where the addon files are."
-msgstr "Aqui precisa seleccionar o diretório onde os arquivos do extra estão."
-
-#: src/modules/addon/PackAddonDialog.cpp:99
-msgid "Hit the \"Next\" button to begin."
-msgstr "Clique no botão \"Próximo\" para começar."
-
-#: src/modules/addon/PackAddonDialog.cpp:585
-msgid "Icon File"
-msgstr "Arquivo do Ícone"
-
-#: src/modules/addon/AddonManagementDialog.cpp:321
-#: src/modules/addon/AddonManagementDialog.cpp:335
-msgid "Install Addon - KVIrc"
-msgstr "Instalar Extra - KVIrc"
-
-#: src/modules/addon/AddonFunctions.cpp:180
+#: src/modules/addon/AddonFunctions.cpp:193
 msgid "Install Addon Pack - KVIrc"
 msgstr "Instalar Pacote Extra - KVIrc"
 
-#: src/modules/addon/AddonManagementDialog.cpp:157
-msgid "Install Addon Package From Disk"
-msgstr "Instalar Pacote Extra Do Disco"
+#: src/modules/addon/AddonFunctions.cpp:194
+msgid "You're about to install the following addon package"
+msgstr "Está prestes a instalar o seguinte pacote extra"
 
-#: src/modules/addon/libkviaddon.cpp:751
-msgid "Installing file '%1' into '%2'"
-msgstr ""
+#: src/modules/addon/AddonFunctions.cpp:195
+msgid "Do you want to proceed with the installation?"
+msgstr "Você que continuar com a instalação?"
 
-#: src/modules/addon/libkviaddon.cpp:529
-msgid "Internal error: call a head-shrinker"
-msgstr "Erro interno: chame um psiquiatra"
+#: src/modules/addon/AddonFunctions.cpp:196
+msgid "Do Not Install"
+msgstr "Não Instalar"
 
-#: src/modules/addon/WebAddonInterfaceDialog.cpp:43
-msgid "KVIrc : Download Addons"
-msgstr ""
+#: src/modules/addon/AddonFunctions.cpp:197
+msgid "Yes, Proceed"
+msgstr "Sim, Continuar"
 
-#: src/modules/addon/AddonManagementDialog.cpp:103
-msgid "Manage Script-Based Addons"
-msgstr "Editar Extras Baseados em 'Scripts'"
+#: src/modules/addon/AddonFunctions.cpp:231
+msgid "Failed to unpack the selected file: %1"
+msgstr "Falha ao desempacotar o arquivo selecionado: %1"
 
-#: src/modules/addon/PackAddonDialog.cpp:442
-msgid "Minimum &KVIrc Version:"
-msgstr "Versão KVIrc Mínima:"
+#: src/modules/addon/AddonFunctions.cpp:244
+msgid "Warning While Unpacking Addon - KVIrc"
+msgstr "Aviso ao Desempacotar Addon - KVIrc"
 
-#: src/modules/addon/PackAddonDialog.cpp:581
-msgid "Minimum KVIrc Version"
-msgstr "Versão KVIrc Mínima"
+#: src/modules/addon/AddonFunctions.cpp:244
+msgid "Failed to delete the directory '%1'"
+msgstr "Falha ao apagar o diretório '%1'"
+
+#: src/modules/addon/AddonFunctions.cpp:280
+msgid "The selected directory doesn't exist."
+msgstr "O diretório selecionado não existe."
+
+#: src/modules/addon/AddonFunctions.cpp:287
+msgid "The initialization script (install.kvs) doesn't exist."
+msgstr "O script de inicialização (install.kvs) não existe."
+
+#: src/modules/addon/AddonFunctions.cpp:321
+msgid "Failed to load the image at %1"
+msgstr "Falha ao carregar a imagem no %1"
+
+#: src/modules/addon/AddonFunctions.cpp:339
+msgid "The package file list is empty"
+msgstr "A lista de arquivos do pacote está vazio"
+
+#: src/modules/addon/AddonFunctions.cpp:370
+msgid "Save path is empty"
+msgstr "Caminho para salvar está vazio"
+
+#: src/modules/addon/AddonManagementDialog.cpp:101
+msgid "Manage Addons - KVIrc"
+msgstr "Gerenciar Addons - KVIrc"
+
+#: src/modules/addon/AddonManagementDialog.cpp:123
+msgid "Configure addon..."
+msgstr "Configurar addon..."
+
+#: src/modules/addon/AddonManagementDialog.cpp:129
+msgid "Show help"
+msgstr "Exibir ajuda"
+
+#: src/modules/addon/AddonManagementDialog.cpp:135
+msgid "Delete selected addon"
+msgstr "Apagar o addon selecionado"
+
+#: src/modules/addon/AddonManagementDialog.cpp:145
+msgid "Create an addon as a distributable package"
+msgstr "Criar um addon como um pacote distribuível"
+
+#: src/modules/addon/AddonManagementDialog.cpp:155
+msgid "Install addon package from disk"
+msgstr "Instalar pacote de addon a partir do disco"
+
+#: src/modules/addon/AddonManagementDialog.cpp:161
+msgid "Get more addons..."
+msgstr "Obter mais addons..."
+
+#: src/modules/addon/AddonManagementDialog.cpp:183
+msgid "Close"
+msgstr "Fechar"
+
+#: src/modules/addon/AddonManagementDialog.cpp:273
+msgid "Do you really want to uninstall the addon \"%1\"?"
+msgstr "Você realmente quer desinstalar o addon \"%1\"?"
+
+#: src/modules/addon/AddonManagementDialog.cpp:278
+msgid "Confirm Addon Uninstallation - KVIrc"
+msgstr "Confirmar Desinstalação de Addon - KVIrc"
+
+#: src/modules/addon/AddonManagementDialog.cpp:279
+msgid "Yes"
+msgstr "Sim"
+
+#: src/modules/addon/AddonManagementDialog.cpp:279
+msgid "No"
+msgstr "Não"
+
+#: src/modules/addon/AddonManagementDialog.cpp:306
+msgid "Select a Installation File - KVIrc"
+msgstr "Selecionar Arquivo de Instalação - KVIrc"
+
+#: src/modules/addon/AddonManagementDialog.cpp:319
+#: src/modules/addon/AddonManagementDialog.cpp:333
+msgid "Install Addon - KVIrc"
+msgstr "Instalar Extra - KVIrc"
+
+#: src/modules/addon/libkviaddon.cpp:146
+msgid "%cAddon ID %Q, version %Q%c"
+msgstr "%cAddon ID %Q, versão %Q%c"
 
 #: src/modules/addon/libkviaddon.cpp:147
 msgid "Name: %Q"
 msgstr "Nome: %Q"
 
-#: src/modules/addon/AddonManagementDialog.cpp:281
-msgid "No"
-msgstr "Não"
+#: src/modules/addon/libkviaddon.cpp:148
+msgid "Description: %Q"
+msgstr "Descrição: %Q"
 
-#: src/modules/addon/PackAddonDialog.cpp:419
-msgid "No spaces allowed, like MyAddon"
-msgstr "Não são permitidos espaços, como OMeuExtra"
+#: src/modules/addon/libkviaddon.cpp:154
+#, c-format
+msgid "Total: %d addons installed"
+msgstr "Total: %d extras instalados"
 
-#: src/modules/addon/PackAddonDialog.cpp:406
-msgid "Package &Author:"
-msgstr "&Autor do Pacote:"
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
+msgid "Uninstalling existing addon version %Q"
+msgstr "A desinstalar a versão do extra existente %Q"
 
-#: src/modules/addon/PackAddonDialog.cpp:433
-msgid "Package &Description:"
-msgstr "&Descrição do Pacote:"
-
-#: src/modules/addon/PackAddonDialog.cpp:415
-msgid "Package &Name:"
-msgstr "&Nome do Pacote:"
-
-#: src/modules/addon/PackAddonDialog.cpp:424
-msgid "Package &Version:"
-msgstr "&Versão do Pacote:"
-
-#: src/modules/addon/PackAddonDialog.cpp:565
-msgid "Package Author"
-msgstr "Autor do Pacote"
-
-#: src/modules/addon/PackAddonDialog.cpp:577
-msgid "Package Description"
-msgstr "Descrição do Pacote"
-
-#: src/modules/addon/PackAddonDialog.cpp:467
-msgid "Package Files"
-msgstr "Arquivos do Pacote"
-
-#: src/modules/addon/PackAddonDialog.cpp:400
-msgid "Package Information"
-msgstr "Informação do Pacote"
-
-#: src/modules/addon/PackAddonDialog.cpp:569
-msgid "Package Name"
-msgstr "Nome do Pacote"
-
-#: src/modules/addon/PackAddonDialog.cpp:573
-msgid "Package Version"
-msgstr "Versão do Pacote"
-
-#: src/modules/addon/PackAddonDialog.cpp:390
-msgid "Package saved successfully in %1"
-msgstr ""
-
-#: src/modules/addon/PackAddonDialog.cpp:326
-#: src/modules/addon/PackAddonDialog.cpp:341
-#: src/modules/addon/PackAddonDialog.cpp:354
-#: src/modules/addon/PackAddonDialog.cpp:382
-msgid "Packaging failed"
-msgstr "Empacotamento falhado"
-
-#: src/modules/addon/AddonManagementDialog.cpp:308
-msgid "Please select the addon installation file"
-msgstr "Por favor seleccione o arquivo extra de instalação"
-
-#: src/modules/addon/PackAddonDialog.cpp:494
-msgid "Save Package"
-msgstr "Gravar Pacote"
-
-#: src/modules/addon/PackAddonDialog.cpp:593
-msgid "Save Path"
-msgstr "Localização de Gravação"
-
-#: src/modules/addon/PackAddonDialog.cpp:502
-msgid "Select save path:"
-msgstr "Seleccione a localização de gravação:"
-
-#: src/modules/addon/PackAddonDialog.cpp:477
-msgid "Select the icon file:"
-msgstr "Seleccione o arquivo do ícone:"
-
-#: src/modules/addon/PackAddonDialog.cpp:473
-msgid "Select the source directory:"
-msgstr "Seleccione o diretório fonte:"
-
-#: src/modules/addon/AddonManagementDialog.cpp:131
-msgid "Show Help"
-msgstr "Mostrar Ajuda"
-
-#: src/modules/addon/libkviaddon.cpp:693
-#: src/modules/addon/libkviaddon.cpp:716
-msgid "Skipping inexistant entry '%1'"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:725
-msgid "Skipping invalid entry '%1'"
-msgstr ""
-
-#: src/modules/addon/PackAddonDialog.cpp:589
-msgid "Source Directory"
-msgstr "Diretório Fonte"
-
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
-#: src/modules/addon/libkviaddon.cpp:386
-#: src/modules/addon/libkviaddon.cpp:649
-msgid "The addon \"%1\" does not exist"
-msgstr "O extra \"%1\" não existe"
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:386 src/modules/addon/libkviaddon.cpp:649
+msgid "The addon \"%1\" doesn't exist"
+msgstr "O addon \"%1\" não existe"
 
 #: src/modules/addon/libkviaddon.cpp:240
 msgid "The addon \"%1\" has no configure callback set"
@@ -356,159 +188,254 @@ msgstr "O extra \"%1\" não tem uma configuração definida"
 msgid "The addon \"%1\" has no help callback set"
 msgstr "O extra \"%1\"  não tem uma ajuda definida"
 
-#: src/modules/addon/libkviaddon.cpp:567
-msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
-msgstr "O extra \"%Q\" já existe com a versão %Q que é maior que %Q"
-
-#: src/modules/addon/libkviaddon.cpp:691
-msgid "The directory '%1' doesn't exist"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:723
-msgid "The entry '%1' is not a file"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:714
-#, fuzzy
-msgid "The file '%1' doesn't exist"
-msgstr "O extra \"%1\" não existe"
-
-#: src/modules/addon/PackAddonDialog.cpp:151
-#, fuzzy
-msgid "The initialization script (install.kvs) does not exist."
-msgstr "O 'script' de inicialização (init.kvs) não existe."
-
-#: src/modules/addon/PackAddonDialog.cpp:328
-msgid "The package file list is empty"
-msgstr ""
-
-#: src/modules/addon/PackAddonDialog.cpp:144
-msgid "The selected directory does not exist."
-msgstr "O diretório seleccionado não existe."
-
-#: src/modules/addon/AddonFunctions.cpp:49
-msgid "The selected file does not seem to be a valid KVIrc addon package"
-msgstr "O arquivo seleccionado não parece ser um pacote extra KVIrc válido"
-
-#: src/modules/addon/AddonFunctions.cpp:70
-#, fuzzy
-msgid "The selected file does not seem to be a valid KVIrc package: %1"
-msgstr "O arquivo seleccionado não parece ser um pacote KVIrc válido: %1"
-
-#: src/modules/addon/libkviaddon.cpp:544
-msgid "The specified KVIrc version \"%Q\" is not a valid version string"
-msgstr "A versão KVIrc indicada \"%Q\" não é uma 'string' de versão válida"
+#: src/modules/addon/libkviaddon.cpp:529
+msgid "Internal error: call a head-shrinker"
+msgstr "Erro interno: chame um psiquiatra"
 
 #: src/modules/addon/libkviaddon.cpp:538
 msgid "The specified version \"%Q\" is not a valid version string"
 msgstr "A versão indicada \"%Q\" não é uma 'string de versão válida"
 
-#: src/modules/addon/libkviaddon.cpp:654
-msgid "The target path can't be empty"
-msgstr ""
-
-#: src/modules/addon/libkviaddon.cpp:657
-msgid "The target path can't contain .."
-msgstr ""
+#: src/modules/addon/libkviaddon.cpp:544
+msgid "The specified KVIrc version \"%Q\" is not a valid version string"
+msgstr "A versão KVIrc indicada \"%Q\" não é uma 'string' de versão válida"
 
 #: src/modules/addon/libkviaddon.cpp:550
 msgid ""
-"This KVIrc executable is too old to run this addon (minimum version required "
-"is %Q)"
-msgstr ""
-"O executável KVIrc é demasiado antigo para correr este extra (a versão "
-"mínima requerida é %Q)"
+"This KVIrc executable is too old to run this addon (minimum version required"
+" is %Q)"
+msgstr "O executável KVIrc é demasiado antigo para correr este extra (a versão mínima requerida é %Q)"
 
-#: src/modules/addon/PackAddonDialog.cpp:563
-msgid "This is what I will check for:"
-msgstr "Isto é o que eu vou buscar:"
+#: src/modules/addon/libkviaddon.cpp:555
+msgid "Attempting to register addon \"%Q\" with version %Q"
+msgstr "Tentando registar o extra \"%Q\" com a versão %Q"
 
-#: src/modules/addon/PackAddonDialog.cpp:91
-msgid ""
-"This procedure allows you to export the selected addon to a single package. "
-"It is useful when you want to distribute your addon to the public."
-msgstr ""
-"Este procedimento permite-lhe exportar o extra seleccionado para um único "
-"pacote. É útil quando deseja distribuir o seu pacote publicamente."
+#: src/modules/addon/libkviaddon.cpp:567
+msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
+msgstr "O extra \"%Q\" já existe com a versão %Q que é maior que %Q"
 
-#: src/modules/addon/libkviaddon.cpp:154
-#, c-format
-msgid "Total: %d addons installed"
-msgstr "Total: %d extras instalados"
+#: src/modules/addon/libkviaddon.cpp:583
+msgid "Addon registration failed"
+msgstr "Falha no registo do extra"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
-msgid "Uninstalling existing addon version %Q"
-msgstr "A desinstalar a versão do extra existente %Q"
+#: src/modules/addon/libkviaddon.cpp:588
+msgid "Addon successfully registered"
+msgstr "Extra registado com sucesso"
 
-#: src/modules/addon/PackAddonDialog.cpp:428
-msgid "Version in the form x.y[.z], like 1.0 or 2.0.3"
-msgstr "Versão na forma x.y[.z], como 1.0 ou 2.0.3"
+#: src/modules/addon/libkviaddon.cpp:654
+msgid "The target path can't be empty"
+msgstr "A pasta de destino não pode estar vazia"
 
-#: src/modules/addon/AddonFunctions.cpp:144
-msgid "Warning: The addon might be incompatible with this version of KVIrc"
-msgstr "Aviso: O extra pode ser incompatível com esta versão KVIrc"
+#: src/modules/addon/libkviaddon.cpp:657
+msgid "The target path can't contain .."
+msgstr "O caminho de destino não pode conter .."
 
-#: src/modules/addon/PackAddonDialog.cpp:87
+#: src/modules/addon/libkviaddon.cpp:662
+msgid "Empty file list"
+msgstr "Lista arquivo vazio"
+
+#: src/modules/addon/libkviaddon.cpp:691
+msgid "The directory '%1' doesn't exist"
+msgstr "O diretório '%1' não existe"
+
+#: src/modules/addon/libkviaddon.cpp:693 src/modules/addon/libkviaddon.cpp:716
+msgid "Skipping non-existent entry '%1'"
+msgstr "Pulando entrada não existente '%1'"
+
+#: src/modules/addon/libkviaddon.cpp:714
+msgid "The file '%1' doesn't exist"
+msgstr "O arquivo '%1' não existe"
+
+#: src/modules/addon/libkviaddon.cpp:723
+msgid "The entry '%1' is not a file"
+msgstr "A entrada '%1' não é um arquivo"
+
+#: src/modules/addon/libkviaddon.cpp:725
+msgid "Skipping invalid entry '%1'"
+msgstr "Ignorando entrada inválida '%1'"
+
+#: src/modules/addon/libkviaddon.cpp:751
+msgid "Installing file '%1' into '%2'"
+msgstr "Instalando arquivo '%1' em '%2'"
+
+#: src/modules/addon/libkviaddon.cpp:809
+msgid "Error installing addon package: %Q"
+msgstr "Erro ao instalar pacote extra: %Q"
+
+#: src/modules/addon/PackAddonDialog.cpp:50
+msgid "Create Addon Package - KVIrc"
+msgstr "Criar Pacote Extra - KVIrc"
+
+#: src/modules/addon/PackAddonDialog.cpp:84
 msgid "Welcome"
 msgstr "Bem-vindo"
 
-#: src/modules/addon/AddonManagementDialog.cpp:281
-msgid "Yes"
-msgstr "Sim"
+#: src/modules/addon/PackAddonDialog.cpp:88
+msgid ""
+"This procedure allows you to export the selected addon to a single "
+"package.<br>It is useful when you want to distribute your addon to the "
+"public."
+msgstr "Este procedimento permite exportar o addon selecionado para um único pacote.<br>É útil quando você quer distribuir o seu addon para o público."
 
-#: src/modules/addon/AddonFunctions.cpp:184
-msgid "Yes, Proceed"
-msgstr "Sim, Continuar"
-
-#: src/modules/addon/PackAddonDialog.cpp:97
+#: src/modules/addon/PackAddonDialog.cpp:94
 msgid ""
 "You will be asked to provide some information like the package name, the "
 "version, a description and so on."
-msgstr ""
-"Será-lhe pedido para indicar alguma informação como o nome do pacote, a "
-"versão, a descrição e por ai adiante."
+msgstr "Será-lhe pedido para indicar alguma informação como o nome do pacote, a versão, a descrição e por ai adiante."
 
-#: src/modules/addon/AddonFunctions.cpp:181
-msgid "You're about to install the following addon package"
-msgstr "Está prestes a instalar o seguinte pacote extra"
+#: src/modules/addon/PackAddonDialog.cpp:96
+msgid "Hit the \"Next\" button to begin."
+msgstr "Clique no botão \"Próximo\" para começar."
 
-#: src/modules/addon/PackAddonDialog.cpp:410
-msgid "Your name here"
-msgstr "O seu nome aqui:"
+#: src/modules/addon/PackAddonDialog.cpp:160
+msgid "Exporting Addon Confirmation - KVIrc"
+msgstr "Confirmar Exportação do Addon - KVIrc"
 
-#~ msgid "Addon Engine Version"
-#~ msgstr "Versão do Motor do Extra"
+#: src/modules/addon/PackAddonDialog.cpp:161
+msgid "File %1 already exists. Do you want to overwrite it?"
+msgstr "Arquivo %1 já existe. Você quer sobrescrevê-lo?"
 
-#~ msgid "Description must be short"
-#~ msgstr "A descrição tem que ser breve"
+#: src/modules/addon/PackAddonDialog.cpp:182
+msgid "Addon Packaging - KVIrc"
+msgstr "Empacotar Addon - KVIrc"
 
-#~ msgid "Go Back to Package Data"
-#~ msgstr "Voltar para os Dados do Pacote"
+#: src/modules/addon/PackAddonDialog.cpp:188
+msgid "Exporting Addon Completed - KVIrc"
+msgstr "Exportação de Addon Completa - KVIrc"
 
-#~ msgid "One or more files can't be deleted"
-#~ msgstr "Um ou mais arquivos não podem ser apagados"
+#: src/modules/addon/PackAddonDialog.cpp:188
+msgid "The Package was saved successfully in %1"
+msgstr "O Pacote foi salvo com sucesso em %1"
 
-#~ msgid "Show Details"
-#~ msgstr "Mostrar Detalhes"
+#: src/modules/addon/PackAddonDialog.cpp:198
+msgid "Package Information"
+msgstr "Informação do Pacote"
 
-#~ msgid "Subdirectory"
-#~ msgstr "Subdiretório"
+#: src/modules/addon/PackAddonDialog.cpp:199
+msgid ""
+"Here you need to provide information about you (the packager) and a short "
+"description of the package you're creating."
+msgstr "Aqui precisa indicar informação acerca de si (o empacotador) e uma breve descrição do pacote que está a criar."
 
-#~ msgid "The configurations directory (config) does not exist."
-#~ msgstr "O diretório de configuração (config) não existe."
+#: src/modules/addon/PackAddonDialog.cpp:204
+msgid "Package &author:"
+msgstr "&Autor do Pacote:"
 
-#~ msgid "The help directory (help) does not exist."
-#~ msgstr "O diretório da ajuda (help) não existe."
+#: src/modules/addon/PackAddonDialog.cpp:212
+msgid "Package &name:"
+msgstr "&Nome do Pacote:"
 
-#~ msgid "The pictures directory (pics) does not exist."
-#~ msgstr "O diretório de imagens (pics) não existe."
+#: src/modules/addon/PackAddonDialog.cpp:216
+msgid "No spaces allowed"
+msgstr "Sem espaços permitidos"
 
-#~ msgid "The sounds directory (sound) does not exist."
-#~ msgstr "O diretório de sons (sound) não existe."
+#: src/modules/addon/PackAddonDialog.cpp:221
+msgid "Package &version:"
+msgstr "&Versão do Pacote:"
 
-#~ msgid "The sources directory (src) does not exist."
-#~ msgstr "O diretório de fontes (src) não existe."
+#: src/modules/addon/PackAddonDialog.cpp:230
+msgid "Package &description:"
+msgstr "&Descrição do Pacote:"
 
-#~ msgid "The translations directory (locale) does not exist."
-#~ msgstr "O diretório de traduções (locale) não existe."
+#: src/modules/addon/PackAddonDialog.cpp:239
+msgid "Minimum &KVIrc version:"
+msgstr "Versão mínima do &KVirc:"
+
+#: src/modules/addon/PackAddonDialog.cpp:264
+msgid "Package Files"
+msgstr "Arquivos do Pacote"
+
+#: src/modules/addon/PackAddonDialog.cpp:265
+msgid ""
+"Here you need to select the directory where the addon files to be packed are"
+" located."
+msgstr "Aqui você precisa selecionar o diretório onde os arquivos do addon estão localizados para ser empacotados."
+
+#: src/modules/addon/PackAddonDialog.cpp:270
+msgid "Select the source directory:"
+msgstr "Seleccione o diretório fonte:"
+
+#: src/modules/addon/PackAddonDialog.cpp:274
+msgid "Select the image file:"
+msgstr "Selecionar arquivo de imagem:"
+
+#: src/modules/addon/PackAddonDialog.cpp:291
+msgid "Save Package"
+msgstr "Gravar Pacote"
+
+#: src/modules/addon/PackAddonDialog.cpp:292
+msgid ""
+"Here you need to provide the path where to save the created addon package"
+msgstr "Aqui você precisa fornecer o caminho onde deseja salvar o pacote addon criado"
+
+#: src/modules/addon/PackAddonDialog.cpp:299
+msgid "Select save path:"
+msgstr "Seleccione a localização de gravação:"
+
+#: src/modules/addon/PackAddonDialog.cpp:336
+msgid "Final Information"
+msgstr "Informação Final"
+
+#: src/modules/addon/PackAddonDialog.cpp:337
+msgid ""
+"Here are the details you provided. If this information is correct, hit the "
+"\"Finish\" button to complete the packaging operations."
+msgstr "Aqui estão os detalhes que você forneceu. Se essas informações estiverem corretas, clique no botão \"Terminar\" para concluir as operações de empacotamento."
+
+#: src/modules/addon/PackAddonDialog.cpp:360
+msgid "This is what I will check for:"
+msgstr "Isto é o que eu vou buscar:"
+
+#: src/modules/addon/PackAddonDialog.cpp:362
+msgid "Package author"
+msgstr "Autor do Pacote"
+
+#: src/modules/addon/PackAddonDialog.cpp:366
+msgid "Package name"
+msgstr "Nome do Pacote"
+
+#: src/modules/addon/PackAddonDialog.cpp:370
+msgid "Package version"
+msgstr "Versão do Pacote"
+
+#: src/modules/addon/PackAddonDialog.cpp:374
+msgid "Package description"
+msgstr "Descrição do Pacote"
+
+#: src/modules/addon/PackAddonDialog.cpp:378
+msgid "Minimum KVIrc version"
+msgstr "Versão mínima do KVirc"
+
+#: src/modules/addon/PackAddonDialog.cpp:382
+msgid "Image file"
+msgstr "arquivo de imagem"
+
+#: src/modules/addon/PackAddonDialog.cpp:386
+msgid "Source directory"
+msgstr "diretório fonte"
+
+#: src/modules/addon/PackAddonDialog.cpp:390
+msgid "Save path"
+msgstr "salvar na pasta"
+
+#: src/modules/addon/PackAddonDialog.cpp:402
+msgid "File Summary Review - KVIrc"
+msgstr "Relatório Sumário do Arquivo - KVIrc"
+
+#: src/modules/addon/PackAddonDialog.cpp:409
+msgid ""
+"Here are the files found in the directories you provided.\n"
+"If the files listed below are correct, hit the \"Finish\" button to complete the packaging operation."
+msgstr "Aqui estão os arquivos encontrados nos diretórios que você forneceu.\nSe os arquivos listados abaixo estão corretas, clique no botão \"Terminar\" para concluir a operação de empacotamento."
+
+#: src/modules/addon/PackAddonDialog.cpp:418
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/modules/addon/PackAddonDialog.cpp:422
+msgid "Finish"
+msgstr "Terminar"
+
+#: src/modules/addon/WebAddonInterfaceDialog.cpp:43
+msgid "Download Addons - KVIrc"
+msgstr "Baixar Addons - KVIrc"
