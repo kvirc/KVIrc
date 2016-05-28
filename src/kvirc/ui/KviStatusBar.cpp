@@ -683,16 +683,10 @@ void KviStatusBar::setPermanentMessage()
 		switch(c->state())
 		{
 			case KviIrcContext::Connected:
-				szTxt += __tr2qs("Using server");
-				szTxt += ": <b>";
-				szTxt += c->connection()->currentServerName();
-				szTxt += "</b> - ";
 				if(!c->connection()->userInfo()->userMode().isEmpty())
 				{
-					szTxt += __tr2qs("Modes for");
-					szTxt += " ";
 					szTxt += c->connection()->currentNickName();
-					szTxt += ": ";
+					szTxt += " ";
 					szTxt += "<b>+";
 					szTxt += c->connection()->userInfo()->userMode();
 					szTxt += "</b>";
@@ -700,6 +694,9 @@ void KviStatusBar::setPermanentMessage()
 				else if(c->connection()->userInfo()->userMode().isEmpty())
 					szTxt += c->connection()->currentNickName();
 
+				szTxt += __tr2qs(" on ") + "<b>";
+				szTxt += c->connection()->currentServerName();
+				szTxt += "</b>";
 				break;
 			case KviIrcContext::Connecting:
 				szTxt += "<b>";
@@ -707,14 +704,15 @@ void KviStatusBar::setPermanentMessage()
 				szTxt += "</b>";
 				break;
 			case KviIrcContext::LoggingIn:
-				szTxt += __tr2qs("Using server");
-				szTxt += ": <b>";
+				szTxt += "<b>";
 				szTxt += c->connection()->currentServerName();
 				szTxt += "</b> - ";
 				szTxt += __tr2qs("Login in progress...");
 				break;
 			default:
+				szTxt += "<b>";
 				szTxt += __tr2qs("Not connected");
+				szTxt += "</b>";
 				break;
 		}
 	}
