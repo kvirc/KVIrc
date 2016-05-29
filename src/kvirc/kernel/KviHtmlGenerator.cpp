@@ -35,6 +35,7 @@ namespace KviHtmlGenerator
 	{
 		QString szResult = "<qt>";
 		bool bCurBold = false;
+		bool bCurItalic = false;
 		bool bCurUnderline = false;
 		bool bIgnoreIcons = false;
 		bool bShowIcons = KVI_OPTION_BOOL(KviOption_boolDrawEmoticons);
@@ -50,7 +51,7 @@ namespace KviHtmlGenerator
 			unsigned int uStart = uIdx;
 
 			while(
-			    (c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Icon) && ((c != ':') || bIgnoreIcons) && ((c != ';') || bIgnoreIcons) && ((c != '=') || bIgnoreIcons))
+			    (c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Italic) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Icon) && ((c != ':') || bIgnoreIcons) && ((c != ';') || bIgnoreIcons) && ((c != '=') || bIgnoreIcons))
 			{
 				bIgnoreIcons = false;
 				if(c == '&')
@@ -138,6 +139,19 @@ namespace KviHtmlGenerator
 					}
 				}
 
+				if(bCurItalic)
+				{
+					if(!bOpened)
+					{
+						szResult.append("<span style=\"font-style:italic");
+						bOpened = true;
+					}
+					else
+					{
+						szResult.append(";font-style:italic");
+					}
+				}
+
 				if(bOpened)
 					szResult.append(";\">");
 
@@ -152,6 +166,12 @@ namespace KviHtmlGenerator
 				case KviControlCodes::Bold:
 				{
 					bCurBold = !bCurBold;
+					++uIdx;
+					break;
+				}
+				case KviControlCodes::Italic:
+				{
+					bCurItalic = !bCurItalic;
 					++uIdx;
 					break;
 				}
@@ -174,6 +194,7 @@ namespace KviHtmlGenerator
 					uCurFore = Foreground;
 					uCurBack = Background;
 					bCurBold = false;
+					bCurItalic = false;
 					bCurUnderline = false;
 					++uIdx;
 					break;

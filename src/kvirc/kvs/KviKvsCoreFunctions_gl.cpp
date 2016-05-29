@@ -375,6 +375,31 @@ namespace KviKvsCoreFunctions
 			[fnc]$iconName[/fnc]
 	*/
 
+	/*
+		@doc: i
+		@type:
+			function
+		@title:
+			$b
+		@short:
+			Returns the ITALIC mIRC control character
+		@syntax:
+			<string> $b
+		@description:
+			Returns the ITALIC mIRC control character (Ctrl+I).[br]
+		@seealso:
+			[fnc]$k[/fnc], [fnc]$b[/fnc], [fnc]$u[/fnc], [fnc]$r[/fnc], [fnc]$o[/fnc]
+	*/
+
+	KVSCF(i)
+	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
+		KVSCF_pRetBuffer->setString(QString(QChar(KviControlCodes::Italic)));
+		return true;
+	}
+
 	KVSCF(icon)
 	{
 		QString szName;
@@ -865,7 +890,7 @@ namespace KviKvsCoreFunctions
 			If <foreground> and <background> are passed, a standard mIRC
 			color escape is returned.[br]
 		@seealso:
-			[fnc]$b[/fnc]
+			[fnc]$b[/fnc], [fnc]$i[/fnc], [fnc]$u[/fnc], [fnc]$r[/fnc], [fnc]$o[/fnc]
 	*/
 
 	KVSCF(k)

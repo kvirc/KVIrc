@@ -75,6 +75,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("hexToAscii", hexToAscii);
 		_REGFNC("hostname", hostname);
 		_REGFNC("hptimestamp", hptimestamp);
+		_REGFNC("i", i);
 		_REGFNC("ic", context);
 		_REGFNC("icon", icon);
 		_REGFNC("iconName", iconName);

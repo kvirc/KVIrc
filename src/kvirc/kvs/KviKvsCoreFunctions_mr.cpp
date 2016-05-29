@@ -381,11 +381,11 @@ namespace KviKvsCoreFunctions
 		@short:
 			Returns the RESET mIRC control character
 		@syntax:
-			<string> $o
+			<string> $oE
 		@description:
 			Returns the RESET mIRC control character (Ctrl+O).[br]
 		@seealso:
-			[fnc]$k[/fnc], [fnc]$b[/fnc], [fnc]$u[/fnc], [fnc]$r[/fnc]
+			[fnc]$k[/fnc], [fnc]$b[/fnc], [fnc]$i[/fnc], [fnc]$u[/fnc], [fnc]$r[/fnc]
 	*/
 
 	KVSCF(o)
@@ -526,7 +526,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			Returns the REVERSE mIRC control character (Ctrl+R).[br]
 		@seealso:
-			[fnc]$k[/fnc], [fnc]$b[/fnc], [fnc]$u[/fnc], [fnc]$o[/fnc]
+			[fnc]$k[/fnc], [fnc]$b[/fnc], [fnc]$i[/fnc], [fnc]$u[/fnc], [fnc]$o[/fnc]
 	*/
 
 	KVSCF(r)

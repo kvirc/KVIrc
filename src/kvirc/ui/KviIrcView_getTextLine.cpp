@@ -356,36 +356,36 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 
 	static void * char_to_check_jump_table[256] = {
 		// clang-format off
-		&&found_end_of_buffer  ,nullptr                      ,&&found_mirc_escape    ,&&found_color_escape   ,
+		&&found_end_of_buffer        ,nullptr                      ,&&found_mirc_escape          ,&&found_color_escape         ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
-		nullptr                      ,nullptr                      ,&&found_end_of_line    ,nullptr                      ,
-		nullptr                      ,&&found_command_escape ,nullptr                      ,&&found_mirc_escape    ,
+		nullptr                      ,nullptr                      ,&&found_end_of_line          ,nullptr                      ,
+		nullptr                      ,&&found_command_escape       ,nullptr                      ,&&found_mirc_escape          ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
-		nullptr                      ,nullptr                      ,&&found_mirc_escape    ,nullptr                      ,
+		nullptr                      ,nullptr                      ,&&found_mirc_escape          ,nullptr                      ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
-		nullptr                      ,&&found_icon_escape    ,nullptr                      ,&&found_mirc_escape    , // 000-031
+		&&found_icon_escape          ,&&found_mirc_escape          ,nullptr                      ,&&found_mirc_escape          , // 000-031
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 032-047
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
-		nullptr                      ,nullptr                      ,&&check_emoticon_char  ,&&check_emoticon_char  ,
-		nullptr                      ,&&check_emoticon_char  ,nullptr                      ,nullptr                      , // 048-063 // 61='=' , 59=';' , 58=':'
+		nullptr                      ,nullptr                      ,&&check_emoticon_char        ,&&check_emoticon_char        ,
+		nullptr                      ,&&check_emoticon_char        ,nullptr                      ,nullptr                      , // 048-063 // 61='=' , 59=';' , 58=':'
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
-		nullptr                      ,&&check_e2k_url        ,&&check_file_or_ftp_url,nullptr                      ,
-		&&check_http_url       ,&&check_irc_url        ,nullptr                      ,nullptr                      ,
-		nullptr                      ,&&check_mailto_or_magnet_url     ,nullptr            ,nullptr                      , // 064-079  // 070==F 072==H 073==I  077==M
-		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_url    ,
-		nullptr                      ,nullptr                      ,nullptr                      ,&&check_www_url        ,
+		nullptr                      ,&&check_e2k_url              ,&&check_file_or_ftp_url      ,nullptr                      ,
+		&&check_http_url             ,&&check_irc_url              ,nullptr                      ,nullptr                      ,
+		nullptr                      ,&&check_mailto_or_magnet_url ,nullptr                      ,nullptr                      , // 064-079  // 070==F 072==H 073==I  077==M
+		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_url          ,
+		nullptr                      ,nullptr                      ,nullptr                      ,&&check_www_url              ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 080-095  // 083==S 087==W
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
-		nullptr                      ,&&check_e2k_url        ,&&check_file_or_ftp_url,nullptr                      ,
-		&&check_http_url       ,&&check_irc_url        ,nullptr                      ,nullptr                      ,
-		nullptr                      ,&&check_mailto_or_magnet_url     ,nullptr            ,nullptr                      , // 096-111  // 101=e 102=f 104=h 105=i 109==m
-		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_url    ,
-		nullptr                      ,nullptr                      ,nullptr                      ,&&check_www_url        ,
+		nullptr                      ,&&check_e2k_url              ,&&check_file_or_ftp_url      ,nullptr                      ,
+		&&check_http_url             ,&&check_irc_url              ,nullptr                      ,nullptr                      ,
+		nullptr                      ,&&check_mailto_or_magnet_url ,nullptr                      ,nullptr                      , // 096-111  // 101=e 102=f 104=h 105=i 109==m
+		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_url          ,
+		nullptr                      ,nullptr                      ,nullptr                      ,&&check_www_url              ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 112-127  // 115==s 119==w
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
@@ -730,6 +730,7 @@ check_escape_switch:
 			}
 			break;
 		case KviControlCodes::Bold:
+		case KviControlCodes::Italic:
 		case KviControlCodes::Underline:
 		case KviControlCodes::Reverse:
 		case KviControlCodes::Reset:

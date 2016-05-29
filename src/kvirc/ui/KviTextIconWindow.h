@@ -65,12 +65,12 @@ public:
 private:
 	QWidget * m_pOwner;
 	QTableWidget * m_pTable;
-	bool m_bAltMode; // in alt mode the inserted string will contains also the Ctrl+I escape code
+	bool m_bAltMode; // in alt mode the inserted string will contains also the Ctrl+E escape code
 public:
 	/**
 	* \brief Shows the popup
 	* \param pOwner The owner of the widget
-	* \param bAltMode Whether to prepend the Ctrl+I escape code in the inserted string
+	* \param bAltMode Whether to prepend the Ctrl+E escape code in the inserted string
 	* \return void
 	*/
 	void popup(QWidget * pOwner, bool bAltMode);

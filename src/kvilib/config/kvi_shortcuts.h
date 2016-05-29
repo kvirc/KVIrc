@@ -57,6 +57,7 @@
 * \def KVI_SHORTCUTS_INPUT_BACKSPACE Backspace key
 * \def KVI_SHORTCUTS_INPUT_BACKSPACE_2 Shift + Backspace key
 * \def KVI_SHORTCUTS_INPUT_BOLD Insert the 'bold' mIRC text control character
+* \def KVI_SHORTCUTS_INPUT_ITALIC Insert the 'italic' mIRC text control character
 * \def KVI_SHORTCUTS_INPUT_COLOR Insert the 'color' mIRC text control character
 * \def KVI_SHORTCUTS_INPUT_COMMANDLINE Toggle the commandline's KVS/User-friendly mode
 * \def KVI_SHORTCUTS_INPUT_COPY Copy the selected text to clipboard
@@ -132,8 +133,9 @@
 #define KVI_SHORTCUTS_INPUT_SELECT_ALL QKeySequence::SelectAll // Ctrl+A
 #define KVI_SHORTCUTS_INPUT_BOLD QKeySequence::Bold            // Ctrl+B
 #define KVI_SHORTCUTS_INPUT_COPY QKeySequence::Copy            // Ctrl+C
+#define KVI_SHORTCUTS_INPUT_ICON "Ctrl+E"                      // Ctrl+E
 #define KVI_SHORTCUTS_WIN_SEARCH QKeySequence::Find            // Ctrl+F
-#define KVI_SHORTCUTS_INPUT_ICON QKeySequence::Italic          // Ctrl+I <= yes we know this should be "italic"
+#define KVI_SHORTCUTS_INPUT_ITALIC QKeySequence::Italic        // Ctrl+I
 #define KVI_SHORTCUTS_JOIN "Ctrl+J"
 #define KVI_SHORTCUTS_INPUT_COLOR "Ctrl+K"
 #define KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE "Ctrl+L"
@@ -244,10 +246,11 @@
 		[b]Ctrl+A:[/b] Select all[br]
 		[b]Ctrl+B:[/b] Insert Bold control character[br]
 		[b]Ctrl+C:[/b] Copy to clipboard[br]
+		[b]Ctrl+E:[/b] Open [i]Insert icon[/i] dialog[br]
 		[b]Ctrl+F:[/b] Open [i]Find Text[/i] dialog[br]
 		[b]Ctrl+G:[/b] Activate spell-checker[br]
+		[b]Ctrl+I:[/b] Insert italic control character[br]
 		[b]Ctrl+L:[/b] Scroll to the [i]last read[/i] line marker[br]
-		[b]Ctrl+I:[/b] Open [i]Insert icon[/i] dialog[br]
 		[b]Ctrl+J:[/b] Open [i]Join Channels[/i] dialog[br]
 		[b]Ctrl+K:[/b] Open [i]Insert Color[/i] dialog[br]
 		[b]Ctrl+L:[/b] Scroll to the last read line[br]
@@ -312,6 +315,7 @@
 		[b]Ctrl+<digit>:[/b] Script accelerators (see OnAccelKeyPressed)[br]
 		[b]F2-F12, Shift+(F1-F12):[/b] Script accelerators (see OnAccelKeyPressed)[br]
 		[b]Ctrl+B:[/b] Insert the 'bold' mIRC text control character[br]
+		[b]Ctrl+I:[/b] Insert the 'italic' mIRC text control character[br]
 		[b]Ctrl+K:[/b] Insert the 'color' mIRC text control character[br]
 		[b]Ctrl+R:[/b] Insert the 'reverse' mIRC text control character[br]
 		[b]Ctrl+U:[/b] Insert the 'underline' mIRC text control character[br]
@@ -320,7 +324,7 @@
 		[b]Ctrl+C:[/b] Copy the selected text to clipboard[br]
 		[b]Ctrl+X:[/b] Cut the selected text[br]
 		[b]Ctrl+V:[/b] Paste the clipboard contents (same as middle mouse click)[br]
-		[b]Ctrl+I:[/b] Insert the 'icon' control code and pops up the icon list box[br]
+		[b]Ctrl+E:[/b] Insert the 'icon' control code and pops up the icon list box[br]
 		[b]UpArrow:[/b] Move backward in the command history and in the history popup[br]
 		[b]DownArrow:[/b] Move forward in the command history and in the history popup[br]
 		[b]Ctrl+PageUp:[/b] Open the history popup[br]

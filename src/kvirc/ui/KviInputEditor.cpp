@@ -96,9 +96,10 @@ public:
 	{
 		IsControlBlock = 1,
 		IsBold = 2,
-		IsUnderline = 4,
-		IsSpellingMistake = 8,
-		IsSelected = 16
+		IsItalic = 4,
+		IsUnderline = 8,
+		IsSpellingMistake = 16,
+		IsSelected = 32
 	};
 
 public:
@@ -537,7 +538,7 @@ void KviInputEditor::rebuildTextBlocks()
 
 #define NOT_CONTROL_CHAR() \
 	(                      \
-	    (c > 32) || ((c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::CryptEscape) && (c != KviControlCodes::Icon)))
+	    (c > 32) || ((c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Italic) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::CryptEscape) && (c != KviControlCodes::Icon)))
 
 	// FIXME: get rid of getLastFontMetrics() ?
 	QFontMetricsF * fm = getLastFontMetrics(font());
@@ -594,6 +595,12 @@ void KviInputEditor::rebuildTextBlocks()
 						uFlags &= ~KviInputEditorTextBlock::IsBold;
 					else
 						uFlags |= KviInputEditorTextBlock::IsBold;
+					break;
+				case KviControlCodes::Italic:
+					if(uFlags & KviInputEditorTextBlock::IsItalic)
+						uFlags &= ~KviInputEditorTextBlock::IsItalic;
+					else
+						uFlags |= KviInputEditorTextBlock::IsItalic;
 					break;
 				case KviControlCodes::Underline:
 					if(uFlags & KviInputEditorTextBlock::IsUnderline)
@@ -905,6 +912,12 @@ void KviInputEditor::drawContents(QPainter * p)
 						p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iBottom - iTop), KVI_OPTION_MIRCCOLOR(pBlock->uBackground));
 				}
 
+				if (pBlock->uFlags & KviInputEditorTextBlock::IsItalic) {
+					QFont newFont = p->font();
+					newFont.setStyle(QFont::StyleItalic);
+					p->setFont(newFont);
+				}
+
 				p->drawText(QPointF(fCurX, iTextBaseline), pBlock->szText);
 
 				if(pBlock->uFlags & KviInputEditorTextBlock::IsBold)
@@ -920,6 +933,12 @@ void KviInputEditor::drawContents(QPainter * p)
 					int iY = iTextBaseline + fm->descent() - 1;
 					p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iY - iTop), QColor(255, 0, 0, 30)); // alpha = 30
 					p->drawLine(QPointF(fCurX, iY), QPointF(fCurX + pBlock->fWidth, iY));
+				}
+
+				if (pBlock->uFlags & KviInputEditorTextBlock::IsItalic) {
+					QFont newFont = p->font();
+					newFont.setStyle(QFont::StyleNormal);
+					p->setFont(newFont);
 				}
 			}
 		}
@@ -949,6 +968,9 @@ QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
 		case KviControlCodes::Bold:
 			return QChar('B');
 			break;
+		case KviControlCodes::Italic:
+			return QChar('I');
+			break;
 		case KviControlCodes::Reset:
 			return QChar('O');
 			break;
@@ -962,7 +984,7 @@ QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
 			return QChar('P');
 			break;
 		case KviControlCodes::Icon:
-			return QChar('I');
+			return QChar('E');
 			break;
 		default:
 			return QChar(uControlCode);
@@ -1901,6 +1923,7 @@ void KviInputEditor::installShortcuts()
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_PREV_WORD_SELECT, this, SLOT(previousWordSelection()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_NEXT_WORD_SELECT, this, SLOT(nextWordSelection()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_BOLD, this, SLOT(insertBold()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_INPUT_ITALIC, this, SLOT(insertItalic()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_RESET, this, SLOT(insertReset()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_UNDERLINE, this, SLOT(insertUnderline()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_REVERSE, this, SLOT(insertReverse()), nullptr, Qt::WidgetShortcut);
@@ -2883,6 +2906,12 @@ void KviInputEditor::insertBold()
 {
 	if(!m_bReadOnly)
 		insertChar(KviControlCodes::Bold);
+}
+
+void KviInputEditor::insertItalic()
+{
+	if(!m_bReadOnly)
+		insertChar(KviControlCodes::Italic);
 }
 
 void KviInputEditor::insertReset()

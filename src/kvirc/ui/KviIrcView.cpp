@@ -1063,6 +1063,8 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 	int rectHeight = r.height();
 	int rectBottom = rectTop + rectHeight;
 
+	QFont newFont;
+
 	QPainter pa(this);
 
 	SET_ANTI_ALIASING(pa);
@@ -1180,6 +1182,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 		char defaultBack = pCurTextLine->pBlocks->pChunk->colors.back;
 		char defaultFore = pCurTextLine->pBlocks->pChunk->colors.fore;
 		bool curBold = false;
+		bool curItalic = false;
 		bool curUnderline = false;
 		char foreBeforeEscape = KviControlCodes::Black;
 		bool curLink = false;
@@ -1235,11 +1238,15 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 					case KviControlCodes::Bold:
 						curBold = !curBold;
 						break;
+					case KviControlCodes::Italic:
+						curItalic = !curItalic;
+						break;
 					case KviControlCodes::Underline:
 						curUnderline = !curUnderline;
 						break;
 					case KviControlCodes::Reset:
 						curBold = false;
+						curItalic = false;
 						curUnderline = false;
 						bacWasTransp = false;
 						curFore = defaultFore;
@@ -1353,6 +1360,9 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 			theWdth = width() - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER + scrollbarWidth);                                                                    \
 		pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR((unsigned char)curBack)); \
 	}                                                                                                                                                               \
+	newFont = pa.font();                                                                                                                                               \
+	newFont.setStyle(curItalic ? QFont::StyleItalic : QFont::StyleNormal);                                                                                             \
+	pa.setFont(newFont);                                                                                                                                               \
 	pa.drawText(curLeftCoord, curBottomCoord, _text_str.mid(_text_idx, _text_len));                                                                                 \
 	if(curBold)                                                                                                                                                     \
 		pa.drawText(curLeftCoord + 1, curBottomCoord, _text_str.mid(_text_idx, _text_len));                                                                         \
@@ -1497,6 +1507,10 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 					{
 						pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, wdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR((unsigned char)curBack));
 					}
+
+					newFont = pa.font();
+					newFont.setStyle(curItalic ? QFont::StyleItalic : QFont::StyleNormal);
+					pa.setFont(newFont);
 
 					if(curLink)
 					{
@@ -2826,6 +2840,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 											switch(l->pBlocks[iEndOfLInk].pChunk->type)
 											{
 												case KviControlCodes::Bold:
+												case KviControlCodes::Italic:
 												case KviControlCodes::Underline:
 												case KviControlCodes::Reverse:
 												case KviControlCodes::Reset:

@@ -789,7 +789,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			Returns the UNDERLINE mIRC control character (Ctrl+U).[br]
 		@seealso:
-			[fnc]$k[/fnc], [fnc]$b[/fnc], [fnc]$r[/fnc], [fnc]$o[/fnc]
+			[fnc]$k[/fnc], [fnc]$b[/fnc], [fnc]$i[/fnc], [fnc]$r[/fnc], [fnc]$o[/fnc]
 	*/
 
 	KVSCF(u)

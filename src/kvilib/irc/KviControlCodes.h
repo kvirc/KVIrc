@@ -158,7 +158,8 @@ namespace KviControlCodes
 		UnIcon = 0x06,      /**< Unicon, totally artificial and internal to KviIrcView */
 		Reset = 0x0f,       /**< Reset */
 		Reverse = 0x16,     /**< Reverse */
-		Icon = 0x1d,        /**< Icon, KVIrc control code */
+		Icon = 0x1c,        /**< Icon, KVIrc control code */
+		Italic = 0x1d,
 		CryptEscape = 0x1e, /**< Crypt escape, KVIrc control code */
 		Underline = 0x1f    /**< Underline */
 	};

@@ -82,6 +82,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(hexToAscii);
 	KVSCF(hostname);
 	KVSCF(hptimestamp);
+	KVSCF(i);
 	KVSCF(icon);
 	KVSCF(iconName);
 	KVSCF(insideAlias);

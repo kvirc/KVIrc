@@ -432,6 +432,7 @@ void KviIrcView::addControlCharacter(KviIrcViewLineChunk * pC, QString & szSelec
 	switch(pC->type)
 	{
 		case KviControlCodes::Bold:
+		case KviControlCodes::Italic:
 		case KviControlCodes::Underline:
 		case KviControlCodes::Reverse:
 		case KviControlCodes::Reset:

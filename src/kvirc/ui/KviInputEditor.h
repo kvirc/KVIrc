@@ -671,6 +671,11 @@ private slots:
 	void insertBold();
 
 	/**
+	* \brief Inserts italic control character
+	* \return void
+	*/
+	void insertItalic();
+	/**
 	* \brief Inserts reset control character
 	* \return void
 	*/

@@ -190,6 +190,7 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 {
 	QFontMetrics fm(p->fontMetrics());
 	bool curBold = false;
+	bool curItalic = false;
 	bool curUnderline = false;
 	unsigned char curFore = KVI_LABEL_DEF_FORE; //default fore
 	unsigned char curBack = KVI_LABEL_DEF_BACK; //default back
@@ -205,7 +206,7 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 
 		unsigned int start = idx;
 
-		while((idx < (unsigned int)text.length()) && (c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Icon))
+		while((idx < (unsigned int)text.length()) && (c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Italic) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Icon))
 		{
 			idx++;
 			c = text[(int)idx].unicode();
@@ -250,6 +251,9 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 
 			if(curBold)
 				p->drawText(curX + 1, baseline, szText.left(len));
+			QFont newFont = p->font();
+			newFont.setStyle(curItalic ? QFont::StyleItalic : QFont::StyleNormal);
+			p->setFont(newFont);
 			if(curUnderline)
 			{
 				p->drawLine(curX, baseline + 1, curX + wdth, baseline + 1);
@@ -268,6 +272,10 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 				curBold = !curBold;
 				++idx;
 				break;
+			case KviControlCodes::Italic:
+				curItalic = !curItalic;
+				++idx;
+				break;
 			case KviControlCodes::Underline:
 				curUnderline = !curUnderline;
 				++idx;
@@ -284,6 +292,7 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 				curFore = KVI_LABEL_DEF_FORE;
 				curBack = KVI_LABEL_DEF_BACK;
 				curBold = false;
+				curItalic = false;
 				curUnderline = false;
 				++idx;
 				break;
@@ -715,6 +724,9 @@ QChar KviTopicWidget::getSubstituteChar(unsigned short control_code)
 		case KviControlCodes::Bold:
 			return QChar('B');
 			break;
+		case KviControlCodes::Italic:
+			return QChar('I');
+			break;
 		case KviControlCodes::Reset:
 			return QChar('O');
 			break;
@@ -725,7 +737,7 @@ QChar KviTopicWidget::getSubstituteChar(unsigned short control_code)
 			return QChar('U');
 			break;
 		case KviControlCodes::Icon:
-			return QChar('I');
+			return QChar('E');
 			break;
 		default:
 			return QChar(control_code);

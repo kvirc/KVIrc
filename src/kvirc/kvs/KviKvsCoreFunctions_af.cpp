@@ -356,7 +356,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			Returns the BOLD mIRC control character (Ctrl+B).[br]
 		@seealso:
-			[fnc]$k[/fnc], [fnc]$u[/fnc]
+			[fnc]$k[/fnc], [fnc]$i[/fnc], [fnc]$u[/fnc], [fnc]$r[/fnc], [fnc]$o[/fnc]
 	*/
 
 	KVSCF(b)
