@@ -133,7 +133,6 @@
 #define KVI_SHORTCUTS_INPUT_SELECT_ALL QKeySequence::SelectAll // Ctrl+A
 #define KVI_SHORTCUTS_INPUT_BOLD QKeySequence::Bold            // Ctrl+B
 #define KVI_SHORTCUTS_INPUT_COPY QKeySequence::Copy            // Ctrl+C
-#define KVI_SHORTCUTS_INPUT_ICON "Ctrl+E"                      // Ctrl+E
 #define KVI_SHORTCUTS_WIN_SEARCH QKeySequence::Find            // Ctrl+F
 #define KVI_SHORTCUTS_INPUT_ITALIC QKeySequence::Italic        // Ctrl+I
 #define KVI_SHORTCUTS_JOIN "Ctrl+J"
@@ -155,7 +154,8 @@
 #define KVI_SHORTCUTS_WIN_CLOSE "Ctrl+W"                      // QKeySequence::Close seems to be problematic
 #define KVI_SHORTCUTS_INPUT_CUT QKeySequence::Cut             // Ctrl+X
 #define KVI_SHORTCUTS_INPUT_COMMANDLINE "Ctrl+Y"
-#define KVI_SHORTCUTS_INPUT_UNDO QKeySequence::Undo // Ctrl+Z
+#define KVI_SHORTCUTS_INPUT_UNDO QKeySequence::Undo           // Ctrl+Z
+#define KVI_SHORTCUTS_INPUT_ICON "Ctrl+Alt+E"                 // CtrlAlt++E
 #define KVI_SHORTCUTS_AWAY "Ctrl+Shift+A"
 #define KVI_SHORTCUTS_EDITORS_TOOLBAR "Ctrl+Shift+B"
 #define KVI_SHORTCUTS_CONNECT "Ctrl+Shift+C"
@@ -246,7 +246,6 @@
 		[b]Ctrl+A:[/b] Select all[br]
 		[b]Ctrl+B:[/b] Insert Bold control character[br]
 		[b]Ctrl+C:[/b] Copy to clipboard[br]
-		[b]Ctrl+E:[/b] Open [i]Insert icon[/i] dialog[br]
 		[b]Ctrl+F:[/b] Open [i]Find Text[/i] dialog[br]
 		[b]Ctrl+G:[/b] Activate spell-checker[br]
 		[b]Ctrl+I:[/b] Insert italic control character[br]
@@ -269,6 +268,7 @@
 		[b]Ctrl+"+":[/b] Increase font size[br]
 		[b]Ctrl+"-":[/b] Decrease font size[br]
 		[b]Ctrl+0:[/b] Restore default font (and font size)[br]
+		[b]Ctrl+Alt+E:[/b] Open [i]Insert icon[/i] dialog[br]
 		[b]Ctrl+Shift+A:[/b] Go away/back[br]
 		[b]Ctrl+Shift+B:[/b] Open [i]Manage Toolbars[/i] dialog[br]
 		[b]Ctrl+Shift+C:[/b] Connect/disconnect current irc context[br]
@@ -324,7 +324,7 @@
 		[b]Ctrl+C:[/b] Copy the selected text to clipboard[br]
 		[b]Ctrl+X:[/b] Cut the selected text[br]
 		[b]Ctrl+V:[/b] Paste the clipboard contents (same as middle mouse click)[br]
-		[b]Ctrl+E:[/b] Insert the 'icon' control code and pops up the icon list box[br]
+		[b]Ctrl+Alt+E:[/b] Insert the 'icon' control code and pops up the icon list box[br]
 		[b]UpArrow:[/b] Move backward in the command history and in the history popup[br]
 		[b]DownArrow:[/b] Move forward in the command history and in the history popup[br]
 		[b]Ctrl+PageUp:[/b] Open the history popup[br]

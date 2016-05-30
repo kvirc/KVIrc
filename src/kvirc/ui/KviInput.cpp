@@ -124,7 +124,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	QIcon is3;
 	is3.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)));
 	m_pIconButton->setIcon(is3);
-	KviTalToolTip::add(m_pIconButton, __tr2qs("Show icons popup<br>&lt;Ctrl+E&gt;<br>See also /help texticons"));
+	KviTalToolTip::add(m_pIconButton, __tr2qs("Show icons popup<br>&lt;Ctrl+Alt+E&gt;<br>See also /help texticons"));
 	connect(m_pIconButton, SIGNAL(clicked()), this, SLOT(iconButtonClicked()));
 
 	m_pCommandlineModeButton = new QToolButton(m_pButtonContainer);
