@@ -155,7 +155,7 @@
 #define KVI_SHORTCUTS_INPUT_CUT QKeySequence::Cut             // Ctrl+X
 #define KVI_SHORTCUTS_INPUT_COMMANDLINE "Ctrl+Y"
 #define KVI_SHORTCUTS_INPUT_UNDO QKeySequence::Undo           // Ctrl+Z
-#define KVI_SHORTCUTS_INPUT_ICON "Ctrl+Alt+E"                 // CtrlAlt++E
+#define KVI_SHORTCUTS_INPUT_ICON "Ctrl+Alt+E"                 // Ctrl+Alt+E
 #define KVI_SHORTCUTS_AWAY "Ctrl+Shift+A"
 #define KVI_SHORTCUTS_EDITORS_TOOLBAR "Ctrl+Shift+B"
 #define KVI_SHORTCUTS_CONNECT "Ctrl+Shift+C"
