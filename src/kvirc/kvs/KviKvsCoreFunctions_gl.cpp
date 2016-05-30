@@ -380,11 +380,11 @@ namespace KviKvsCoreFunctions
 		@type:
 			function
 		@title:
-			$b
+			$i
 		@short:
 			Returns the ITALIC mIRC control character
 		@syntax:
-			<string> $b
+			<string> $i
 		@description:
 			Returns the ITALIC mIRC control character (Ctrl+I).[br]
 		@seealso:

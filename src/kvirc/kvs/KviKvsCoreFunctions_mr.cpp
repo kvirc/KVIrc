@@ -381,7 +381,7 @@ namespace KviKvsCoreFunctions
 		@short:
 			Returns the RESET mIRC control character
 		@syntax:
-			<string> $oE
+			<string> $o
 		@description:
 			Returns the RESET mIRC control character (Ctrl+O).[br]
 		@seealso:
