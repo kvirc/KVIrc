@@ -69,6 +69,9 @@ set(CMAKE_KVIRC_BUILD_CPU ${CMAKE_SYSTEM_PROCESSOR})
 set(CMAKE_KVIRC_BUILD_COMPILER ${CMAKE_CXX_COMPILER})
 set(CMAKE_KVIRC_BUILD_COMPILER_FLAGS ${CMAKE_CXX_FLAGS})
 
+# Allow the use of the LOCATION property
+cmake_policy(SET CMP0026 OLD)
+
 # Suffix for GNU/Linux
 set(LIB_SUFFIX
 	CACHE STRING "Define suffix of directory name (32/64)"
