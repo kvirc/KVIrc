@@ -374,7 +374,7 @@ KviMediaType * KviMediaManager::findMediaTypeForRegularFile(const char * szFullP
 	return mtd;
 }
 
-// FIXME : default handlers for windows ?
+// FIXME : add default handlers for Windows, OS X and Non KDE??
 
 static KviDefaultMediaType g_defMediaTypes[] = {
 	{ "*.jpg", "^\\0330\\0377", "image/jpeg", "JPEG image", "run kview $0" },
