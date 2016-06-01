@@ -2200,7 +2200,7 @@ bool DccFileTransfer::event(QEvent * e)
 						c = g_pApp->activeConsole();
 					else
 						c = m_pDescriptor->console();
-					c->output(KVI_OUT_DCCMSG, __tr2qs_ctx("DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r", "dcc"),
+					c->output(KVI_OUT_DCCMSG, __tr2qs_ctx("DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%Q\r", "dcc"),
 					    m_pDescriptor->bIsTdcc ? (m_pDescriptor->bRecvFile ? "TRECV" : "TSEND") : (m_pDescriptor->bRecvFile ? "RECV" : "SEND"),
 					    &(m_pDescriptor->szNick), &(m_pDescriptor->szIp), &(m_pDescriptor->szPort),
 					    &(m_pDescriptor->szLocalFileName));
