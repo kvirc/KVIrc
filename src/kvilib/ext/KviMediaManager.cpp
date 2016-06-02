@@ -374,23 +374,55 @@ KviMediaType * KviMediaManager::findMediaTypeForRegularFile(const char * szFullP
 	return mtd;
 }
 
-// FIXME : add default handlers for Windows, OS X and Non KDE??
+// FIXME : add proper default handlers for Windows
+// e.g. a KVS function which calls https://msdn.microsoft.com/en-us/library/windows/desktop/bb762153(v=vs.85).aspx
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 static KviDefaultMediaType g_defMediaTypes[] = {
-	{ "*.jpg", "^\\0330\\0377", "image/jpeg", "JPEG image", "run kview $0" },
-	{ "*.jpeg", "^\\0330\\0377", "image/jpeg", "JPEG image", "run kview $0" },
-	{ "*.png", "", "image/png", "PNG image", "run kview $0" },
-	{ "*.mp3", "", "audio/mpeg", "MPEG audio", "run xmms -e $0" },
-	{ "*.gif", "", "image/gif", "GIF image", "run kvirc $0" },
-	{ "*.mpeg", "", "video/mpeg", "MPEG video", "run xanim $0" },
+	{ "*.jpg", "^\\0330\\0377", "image/jpeg", "JPEG image", "run cmd.exe /c start $0" },
+	{ "*.jpeg", "^\\0330\\0377", "image/jpeg", "JPEG image", "run cmd.exe /c start $0" },
+	{ "*.png", "", "image/png", "PNG image", "run cmd.exe /c start $0" },
+	{ "*.mp3", "", "audio/mpeg", "MPEG audio", "run cmd.exe /c start $0" },
+	{ "*.gif", "", "image/gif", "GIF image", "run cmd.exe /c start $0" },
+	{ "*.mpeg", "", "video/mpeg", "MPEG video", "run cmd.exe /c start $0" },
+	{ "*.zip", "^PK\\0003\\0004", "application/zip", "ZIP archive", "run cmd.exe /c start $0" },
 	{ "*.exe", "", "application/x-executable-file", "Executable file", "run $0" },
-	{ "*.zip", "^PK\\0003\\0004", "application/zip", "ZIP archive", "run ark $0" },
-	{ "*.tar.gz", "", "application/x-gzip", "GZipped tarball", "run ark $0" },
-	{ "*.tar.bz2", "", "applicatoin/x-bzip2", "BZipped tarball", "run ark $0" },
-	{ "*.tgz", "", "application/x-gzip", "GZipped tarball", "run ark $0" },
-	{ "*.wav", "", "audio/wav", "Wave audio", "run play $0" },
+	{ "*.wav", "", "audio/wav", "Wave audio", "run cmd.exe /c start $0" },
 	{ nullptr, nullptr, nullptr, nullptr, nullptr }
 };
+#else
+#ifdef COMPILE_ON_MAC
+static KviDefaultMediaType g_defMediaTypes[] = {
+	{ "*.jpg", "^\\0330\\0377", "image/jpeg", "JPEG image", "run open $0" },
+	{ "*.jpeg", "^\\0330\\0377", "image/jpeg", "JPEG image", "run open $0" },
+	{ "*.png", "", "image/png", "PNG image", "run open $0" },
+	{ "*.mp3", "", "audio/mpeg", "MPEG audio", "run open $0" },
+	{ "*.gif", "", "image/gif", "GIF image", "run open $0" },
+	{ "*.mpeg", "", "video/mpeg", "MPEG video", "run open $0" },
+	{ "*.zip", "^PK\\0003\\0004", "application/zip", "ZIP archive", "run open $0" },
+	{ "*.tar.gz", "", "application/x-gzip", "GZipped tarball", "run open $0" },
+	{ "*.tar.bz2", "", "application/x-bzip2", "BZipped tarball", "run open $0" },
+	{ "*.tgz", "", "application/x-gzip", "GZipped tarball", "run open $0" },
+	{ "*.wav", "", "audio/wav", "Wave audio", "run open $0" },
+	{ nullptr, nullptr, nullptr, nullptr, nullptr }
+};
+#else
+static KviDefaultMediaType g_defMediaTypes[] = {
+	{ "*.jpg", "^\\0330\\0377", "image/jpeg", "JPEG image", "run xdg-open $0" },
+	{ "*.jpeg", "^\\0330\\0377", "image/jpeg", "JPEG image", "run xdg-open $0" },
+	{ "*.png", "", "image/png", "PNG image", "run xdg-open $0" },
+	{ "*.mp3", "", "audio/mpeg", "MPEG audio", "run xdg-open $0" },
+	{ "*.gif", "", "image/gif", "GIF image", "run xdg-open $0" },
+	{ "*.mpeg", "", "video/mpeg", "MPEG video", "run xdg-open $0" },
+	{ "*.zip", "^PK\\0003\\0004", "application/zip", "ZIP archive", "run xdg-open $0" },
+	{ "*.tar.gz", "", "application/x-gzip", "GZipped tarball", "run xdg-open $0" },
+	{ "*.tar.bz2", "", "application/x-bzip2", "BZipped tarball", "run xdg-open $0" },
+	{ "*.tgz", "", "application/x-gzip", "GZipped tarball", "run xdg-open $0" },
+	{ "*.wav", "", "audio/wav", "Wave audio", "run xdg-open $0" },
+	{ nullptr, nullptr, nullptr, nullptr, nullptr }
+};
+#endif
+#endif
 
 void KviMediaManager::load(const QString & filename)
 {
