@@ -294,7 +294,7 @@ FunctionEnd
 ; Functions
 
 Function RemoveAutostartShortcuts
-  ; Remove user created sturtup shortcuts
+  ; Remove user created startup shortcuts
   ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" "Common Startup"
   StrLen $R1 "$R0"
   ${If} $R1 > 0
@@ -311,7 +311,7 @@ Function RemoveAutostartShortcuts
 FunctionEnd
 
 Function un.RemoveAutostartShortcuts
-  ; Remove user created sturtup shortcuts
+  ; Remove user created startup shortcuts
   ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" "Common Startup"
   StrLen $R1 "$R0"
   ${If} $R1 > 0
@@ -359,7 +359,7 @@ Function CheckUserInstallRights
 FunctionEnd
 
 Function CloseKVIrcInstances
-; Waits for all running instances of KVirc to close
+; Waits for all running instances of KVIrc to close
     Push $0 ;saving stack
   newcheck:
     FindWindow $0 "QWidget" "Kvirc" 0
@@ -372,7 +372,7 @@ Function CloseKVIrcInstances
 FunctionEnd
 
 Function un.CloseKVIrcInstances
-; Waits for all running instances of KVirc to close
+; Waits for all running instances of KVIrc to close
     Push $0 ;saving stack
   newcheck:
     FindWindow $0 "QWidget" "Kvirc" 0
