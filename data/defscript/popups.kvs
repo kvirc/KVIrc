@@ -147,14 +147,14 @@ defpopup(querytextview)
 		whois $0 $0
 	}
 
-	separator
+	separator($server)
 
 	item($tr("Close","defscript"),1)
 	{
 		window.close
 	}
 
-	separator($server)
+	separator
 
 	popup($tr("&Information","defscript"),317) (!%:multiple && $server && $isWellKnown($0))
 	{
