@@ -1,6 +1,5 @@
 !insertmacro MUI_LANGUAGE "Japanese"
 LangString UnLocalDataDescr ${LANG_JAPANESE} "ログ、テーマ、設定を削除するでしょう。もし跡で KVIrc を再インストールをする場合、チェックをはずせば設定を維持します。"
-
 LangString UnLocalData ${_ENGLISH} "設定"
 LangString UnGeneralFiles ${LANG_JAPANESE} "Program files"
 LangString ProgramDescription ${LANG_JAPANESE} "ビジュアル IRC クライアント"
@@ -16,3 +15,4 @@ LangString MsgUninstallOldInstaller ${LANG_JAPANESE} "KVIrc の前のバージ�
 LangString KVIrcIsRunning ${LANG_JAPANESE} "KVIrc を現在実行しています。再度実行するには KVIrc を終了してください。"
 LangString WinampSection ${LANG_JAPANESE} "Winamp プラグイン"
 LangString WinampSectionDescr ${LANG_JAPANESE} "Winamp のプラグインをインストールするｗ"
+LangString WinVerUnsupported ${LANG_JAPANESE} "KVIrc does not support the currently running Windows Version.$\r$\nWindows XP or higher is required."
