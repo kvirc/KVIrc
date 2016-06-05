@@ -88,6 +88,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KVI_BOOL_OPTIONS_PREFIX "bool"
 #define KVI_BOOL_OPTIONS_PREFIX_LEN 4
 
+// NOTICE: REUSE EQUIVALENT UNUSED BOOL_OPTION in KviOptions.cpp ENTRIES BEFORE ADDING NEW ENTRIES BELOW
+
 #define KviOption_boolWindowsRememberProperties 0                              /* interface::features::global */
 #define KviOption_boolIrcViewShowImages 1                                      /* interface::features::components::ircview */
 #define KviOption_boolIrcViewTimestamp 2                                       /* interface::features::components::ircview */
@@ -96,7 +98,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolInputHistoryCursorAtEnd 5                                /* interface::features::components::input */
 #define KviOption_boolAvoidParserWarnings 6                                    /* ircengine::uparser */
 #define KviOption_boolUseProxyHost 7                                           /* transport */
-#define KviOption_boolShowGeneralOptionsDialogAsToplevel 8                     /* interface::features::global */
+//#define KviOption_boolShowGeneralOptionsDialogAsToplevel 8                     /* interface::features::global */ // UNUSED
 #define KviOption_boolForceBrutalQuit 9                                        /* irc */
 #define KviOption_boolShowPingPong 10                                          /* ircoutput */
 #define KviOption_boolPopupNotifierOnNewQueryMessages 11                       /* query */
@@ -153,7 +155,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolCreateMinimizedDccSendWhenAutoAccepted 62                /* dcc::send */
 #define KviOption_boolCreateMinimizedDccChatWhenAutoAccepted 63                /* dcc::chat */
 #define KviOption_boolDccGuessIpFromServerWhenLocalIsUnroutable 64             /* dcc */
-#define KviOption_boolShowRegisteredUsersDialogAsToplevel 65                   /* interface::features::global */
+//#define KviOption_boolShowRegisteredUsersDialogAsToplevel 65                   /* interface::features::global */ //UNUSED
 #define KviOption_boolAutoLogQueries 66                                        /* ircengine::logging */
 #define KviOption_boolAutoLogChannels 67                                       /* ircendine::logging */
 #define KviOption_boolAutoLogDccChat 68                                        /* ircengine::logging */
@@ -192,14 +194,14 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolExitAwayOnInput 101                                      /* ircengine::away */
 #define KviOption_boolAlwaysHighlightNick 102                                  /* ircengine::outputcontrol::highlighting */
 #define KviOption_boolShowChannelsJoinOnIrc 103                                /* internal */
-#define KviOption_boolShowChannelsJoinDialogAsToplevel 104                     /* FIXME: internal ??? */
+//#define KviOption_boolShowChannelsJoinDialogAsToplevel 104                     /* FIXME: internal ??? */ //UNUSED
 #define KviOption_boolUserDefinedPortRange 105                                 /* dcc */
 #define KviOption_boolCreateQueryOnPrivmsg 106                                 /* query */
 #define KviOption_boolCreateQueryOnNotice 107                                  /* query */
 #define KviOption_boolCreateIncomingQueriesAsMinimized 108                     /* query */
 #define KviOption_boolAutoJoinOnInvite 109                                     /* channel */
 #define KviOption_boolShowServersConnectDialogOnStart 110                      /* connection::ircservers */
-#define KviOption_boolShowServersConnectDialogAsToplevel 111                   /* FIXME: internal ?? */
+//#define KviOption_boolShowServersConnectDialogAsToplevel 111                   /* FIXME: internal ?? */  //UNUSED
 #define KviOption_boolAcceptBrokenFileNameDccResumeRequests 112                /* dcc::send */
 #define KviOption_boolAutoReconnectOnUnexpectedDisconnect 113                  /* connection */
 #define KviOption_boolRejoinChannelsAfterReconnect 114                         /* connection */
@@ -211,7 +213,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolDccSendFakeAddressByDefault 120                          /* dcc::general */
 #define KviOption_boolUseWindowListActivityMeter 121                           /* irc::output */
 #define KviOption_boolCloseServerWidgetAfterConnect 122                        /* IMPLEMENTATION NEEDED !!! */
-#define KviOption_boolShowIdentityDialogAsToplevel 123                         /* ??? */
+//#define KviOption_boolShowIdentityDialogAsToplevel 123                         /* ??? */  //UNUSED
 #define KviOption_boolShowUserChannelIcons 124                                 /* look & feel::interface features::userlist */
 #define KviOption_boolShowUserChannelState 125                                 /* look & feel::interface features::userlist */
 #define KviOption_boolEnableIgnoreOnPrivMsg 126                                /* irc::ignore */
@@ -352,6 +354,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolMenuBarVisible 261
 #define KviOption_boolWarnAboutHidingMenuBar 262
 #define KviOption_boolWhoRepliesToActiveWindow 263                             /* irc::output */
+
+// NOTICE: REUSE EQUIVALENT UNUSED BOOL_OPTION in KviOptions.cpp ENTRIES BEFORE ADDING NEW ENTRIES ABOVE
 
 #define KVI_NUM_BOOL_OPTIONS 264
 

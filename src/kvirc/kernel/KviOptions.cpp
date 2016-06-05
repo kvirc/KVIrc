@@ -59,6 +59,7 @@ KviRectOption g_rectOptionsTable[KVI_NUM_RECT_OPTIONS] = {
 
 #define BOOL_OPTION(_txt, _val, _flags) KviBoolOption(KVI_BOOL_OPTIONS_PREFIX _txt, _val, _flags)
 
+// NOTICE: REUSE EQUIVALENT UNUSED KviOption_bool in KviOptions.h ENTRIES BEFORE ADDING NEW ENTRIES BELOW
 KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("WindowsRememberProperties", true, KviOption_sectFlagWindows),
 	BOOL_OPTION("IrcViewShowImages", false, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
@@ -68,7 +69,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("InputHistoryCursorAtEnd", true, KviOption_sectFlagInput),
 	BOOL_OPTION("AvoidParserWarnings", false, KviOption_sectFlagUserParser),
 	BOOL_OPTION("UseProxyHost", false, KviOption_sectFlagConnection),
-	BOOL_OPTION("ShowGeneralOptionsDialogAsToplevel", true, KviOption_sectFlagFrame),
+	BOOL_OPTION("ShowGeneralOptionsDialogAsToplevel", true, KviOption_sectFlagFrame), //UNUSED
 	BOOL_OPTION("ForceBrutalQuit", false, KviOption_sectFlagIrcSocket),
 	BOOL_OPTION("ShowPingPong", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("PopupNotifierOnNewQueryMessages", true, KviOption_sectFlagFrame),
@@ -125,7 +126,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("CreateMinimizedDccSendWhenAutoAccepted", true, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccChatWhenAutoAccepted", true, KviOption_sectFlagDcc),
 	BOOL_OPTION("DccGuessIpFromServerWhenLocalIsUnroutable", true, KviOption_sectFlagDcc),
-	BOOL_OPTION("ShowRegisteredUsersDialogAsToplevel", true, KviOption_sectFlagFrame),
+	BOOL_OPTION("ShowRegisteredUsersDialogAsToplevel", true, KviOption_sectFlagFrame),  //UNUSED
 	BOOL_OPTION("AutoLogQueries", true, KviOption_sectFlagLogging), /* this options enabled by default in mIRC,XChat and irssi. People are confused while they want to see logs, but see empty dir*/
 	BOOL_OPTION("AutoLogChannels", true, KviOption_sectFlagLogging),
 	BOOL_OPTION("AutoLogDccChat", false, KviOption_sectFlagLogging),
@@ -168,14 +169,14 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("ExitAwayOnInput", false, KviOption_sectFlagConnection),
 	BOOL_OPTION("AlwaysHighlightNick", true, KviOption_sectFlagIrcView),
 	BOOL_OPTION("ShowChannelsJoinOnIrc", true, KviOption_sectFlagFrame),
-	BOOL_OPTION("ShowChannelsJoinDialogAsToplevel", true, KviOption_sectFlagFrame),
+	BOOL_OPTION("ShowChannelsJoinDialogAsToplevel", true, KviOption_sectFlagFrame), //UNUSED
 	BOOL_OPTION("UserDefinedPortRange", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateQueryOnPrivmsg", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("CreateQueryOnNotice", false, KviOption_sectFlagConnection),
 	BOOL_OPTION("CreateIncomingQueriesAsMinimized", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("AutoJoinOnInvite", false, KviOption_sectFlagConnection),
 	BOOL_OPTION("ShowServersConnectDialogOnStart", true, KviOption_sectFlagFrame),
-	BOOL_OPTION("ShowServersConnectDialogAsToplevel", true, KviOption_sectFlagFrame),
+	BOOL_OPTION("ShowServersConnectDialogAsToplevel", true, KviOption_sectFlagFrame),  //UNUSED
 	BOOL_OPTION("AcceptBrokenFileNameDccResumeRequests", true, KviOption_sectFlagDcc),
 	BOOL_OPTION("AutoReconnectOnUnexpectedDisconnect", true, KviOption_sectFlagFrame),
 	BOOL_OPTION("RejoinChannelsAfterReconnect", true, KviOption_sectFlagFrame),
@@ -187,7 +188,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("DccSendFakeAddressByDefault", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("UseWindowListActivityMeter", false, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("CloseServerWidgetAfterConnect", false, KviOption_sectFlagFrame),
-	BOOL_OPTION("ShowIdentityDialogAsToplevel", true, KviOption_sectFlagFrame),
+	BOOL_OPTION("ShowIdentityDialogAsToplevel", true, KviOption_sectFlagFrame), //UNUSED
 	BOOL_OPTION("ShowUserChannelIcons", true, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ShowUserChannelState", false, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("EnableIgnoreOnPrivMsg", true, KviOption_sectFlagConnection),
@@ -333,6 +334,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("WarnAboutHidingMenuBar", true, KviOption_sectFlagFrame),
 	BOOL_OPTION("WhoRepliesToActiveWindow", false, KviOption_sectFlagConnection)
 };
+
+// NOTICE: REUSE EQUIVALENT UNUSED KviOption_bool in KviOptions.h ENTRIES BEFORE ADDING NEW ENTRIES ABOVE
 
 #define STRING_OPTION(_txt, _val, _flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt, _val, _flags)
 
