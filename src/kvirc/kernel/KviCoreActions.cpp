@@ -309,7 +309,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 	    KVI_COREACTION_HELPINDEX,
-	    "help -m",
+	    "help.open -m",
 	    __tr2qs("Help Index"),
 	    __tr2qs("Shows the documentation index"),
 	    KviActionManager::categoryGeneric(),

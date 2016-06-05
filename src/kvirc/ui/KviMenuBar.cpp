@@ -116,10 +116,7 @@ void KviMenuBar::setupHelpPopup(QMenu * pop)
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_HELPINDEX, help)
 
-	QAction * pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Help)), __tr2qs("&Help Browser (Panel)"));
-	pAction->setData(KVI_INTERNALCOMMAND_HELP_NEWSTATICWINDOW);
-
-	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)), __tr2qs("&Tip of the Day"));
+	QAction * pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)), __tr2qs("&Tip of the Day"));
 	pAction->setData(KVI_INTERNALCOMMAND_TIP_OPEN);
 	help->addSeparator();
 
