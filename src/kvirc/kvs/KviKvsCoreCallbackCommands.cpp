@@ -634,7 +634,7 @@ namespace KviKvsCoreCallbackCommands
 			!sw: -e | --trigger-stderr
 				Trigger stderr events
 			!sw: -b | --output-block
-				Trigger the <callback comand> with the stdout and stderr events exactly once,
+				Trigger the <callback command> with the stdout and stderr events exactly once,
 				passing the complete block of process output. The events are triggered even
 				if the process output is empty.
 			!sw: -k=<maximum run time> | --kill-after=<maximum run time>

@@ -4,9 +4,9 @@
 /*
 ----------------------------------------------------------------------
 
-    ppport.h -- Perl/Pollution/Portability Version 3.32
+    ppport.h -- Perl/Pollution/Portability Version 3.33
 
-    Automatically created by Devel::PPPort running under perl 5.022001.
+    Automatically created by Devel::PPPort running under perl 5.024000.
 
     Version 3.x, Copyright (c) 2004-2013, Marcus Holland-Moritz.
 
@@ -23,8 +23,8 @@ SKIP
 if (@ARGV && $ARGV[0] eq '--unstrip') {
   eval { require Devel::PPPort };
   $@ and die "Cannot require Devel::PPPort, please install.\n";
-  if (eval $Devel::PPPort::VERSION < 3.32) {
-    die "ppport.h was originally generated with Devel::PPPort 3.32.\n"
+  if (eval $Devel::PPPort::VERSION < 3.33) {
+    die "ppport.h was originally generated with Devel::PPPort 3.33.\n"
       . "Your Devel::PPPort is only version $Devel::PPPort::VERSION.\n"
       . "Please install a newer version, or --unstrip will not work.\n";
   }
@@ -503,6 +503,58 @@ sv_setnv(sv, (double)TeMpUv); \
 #ifndef Newxz
 #define Newxz(v,n,t) Newz(0,v,n,t)
 #endif
+#ifndef PERL_MAGIC_qr
+#define PERL_MAGIC_qr 'r'
+#endif
+#ifndef cBOOL
+#define cBOOL(cbool) ((cbool) ? (bool)1 : (bool)0)
+#endif
+#ifndef OpHAS_SIBLING
+#define OpHAS_SIBLING(o) (cBOOL((o)->op_sibling))
+#endif
+#ifndef OpSIBLING
+#define OpSIBLING(o) (0 + (o)->op_sibling)
+#endif
+#ifndef OpMORESIB_set
+#define OpMORESIB_set(o, sib) ((o)->op_sibling = (sib))
+#endif
+#ifndef OpLASTSIB_set
+#define OpLASTSIB_set(o, parent) ((o)->op_sibling = NULL)
+#endif
+#ifndef OpMAYBESIB_set
+#define OpMAYBESIB_set(o, sib, parent) ((o)->op_sibling = (sib))
+#endif
+#ifndef SvRX
+#if defined(NEED_SvRX)
+static void * DPPP_(my_SvRX)(pTHX_ SV *rv);
+static
+#else
+extern void * DPPP_(my_SvRX)(pTHX_ SV *rv);
+#endif
+#ifdef SvRX
+#undef SvRX
+#endif
+#define SvRX(a) DPPP_(my_SvRX)(aTHX_ a)
+#if defined(NEED_SvRX) || defined(NEED_SvRX_GLOBAL)
+void *
+DPPP_(my_SvRX)(pTHX_ SV *rv)
+{
+if (SvROK(rv)) {
+SV *sv = SvRV(rv);
+if (SvMAGICAL(sv)) {
+MAGIC *mg = mg_find(sv, PERL_MAGIC_qr);
+if (mg && mg->mg_obj) {
+return mg->mg_obj;
+}
+}
+}
+return 0;
+}
+#endif
+#endif
+#ifndef SvRXOK
+#define SvRXOK(sv) (!!SvRX(sv))
+#endif
 #ifndef PERL_UNUSED_DECL
 #ifdef HASATTRIBUTE
 #if (defined(__GNUC__) && defined(__cplusplus)) || defined(__INTEL_COMPILER)
@@ -530,6 +582,13 @@ sv_setnv(sv, (double)TeMpUv); \
 #define PERL_UNUSED_CONTEXT PERL_UNUSED_ARG(my_perl)
 #else
 #define PERL_UNUSED_CONTEXT
+#endif
+#endif
+#ifndef PERL_UNUSED_RESULT
+#if defined(__GNUC__) && defined(HASATTRIBUTE_WARN_UNUSED_RESULT)
+#define PERL_UNUSED_RESULT(v) STMT_START { __typeof__(v) z = (v); (void)sizeof(z); } STMT_END
+#else
+#define PERL_UNUSED_RESULT(v) ((void)(v))
 #endif
 #endif
 #ifndef NOOP
@@ -798,6 +857,12 @@ typedef OP* (CPERLscope(*Perl_check_t)) (pTHX_ OP*);
 SvUTF8(HeKEY_sv(he)) : \
 (U32)HeKUTF8(he))
 #endif
+#endif
+#ifndef C_ARRAY_LENGTH
+#define C_ARRAY_LENGTH(a) (sizeof(a)/sizeof((a)[0]))
+#endif
+#ifndef C_ARRAY_END
+#define C_ARRAY_END(a) ((a) + C_ARRAY_LENGTH(a))
 #endif
 #ifndef PERL_SIGNALS_UNSAFE_FLAG
 #define PERL_SIGNALS_UNSAFE_FLAG 0x0001
@@ -1804,20 +1869,42 @@ return sv;
 #ifndef HvNAMELEN_get
 #define HvNAMELEN_get(hv) (HvNAME_get(hv) ? (I32)strlen(HvNAME_get(hv)) : 0)
 #endif
+#ifndef gv_fetchpvn_flags
+#if defined(NEED_gv_fetchpvn_flags)
+static GV* DPPP_(my_gv_fetchpvn_flags)(pTHX_ const char* name, STRLEN len, int flags, int types);
+static
+#else
+extern GV* DPPP_(my_gv_fetchpvn_flags)(pTHX_ const char* name, STRLEN len, int flags, int types);
+#endif
+#ifdef gv_fetchpvn_flags
+#undef gv_fetchpvn_flags
+#endif
+#define gv_fetchpvn_flags(a,b,c,d) DPPP_(my_gv_fetchpvn_flags)(aTHX_ a,b,c,d)
+#define Perl_gv_fetchpvn_flags DPPP_(my_gv_fetchpvn_flags)
+#if defined(NEED_gv_fetchpvn_flags) || defined(NEED_gv_fetchpvn_flags_GLOBAL)
+GV*
+DPPP_(my_gv_fetchpvn_flags)(pTHX_ const char* name, STRLEN len, int flags, int types) {
+char *namepv = savepvn(name, len);
+GV* stash = gv_fetchpv(namepv, TRUE, SVt_PVHV);
+Safefree(namepv);
+return stash;
+}
+#endif
+#endif
 #ifndef GvSVn
 #define GvSVn(gv) GvSV(gv)
 #endif
 #ifndef isGV_with_GP
 #define isGV_with_GP(gv) isGV(gv)
 #endif
-#ifndef gv_fetchpvn_flags
-#define gv_fetchpvn_flags(name, len, flags, svt) gv_fetchpv(name, flags, svt)
-#endif
 #ifndef gv_fetchsv
 #define gv_fetchsv(name, flags, svt) gv_fetchpv(SvPV_nolen_const(name), flags, svt)
 #endif
 #ifndef get_cvn_flags
 #define get_cvn_flags(name, namelen, flags) get_cv(name, flags)
+#endif
+#ifndef gv_init_pvn
+#define gv_init_pvn(gv, stash, ptr, len, flags) gv_init(gv, stash, ptr, len, flags & GV_ADDMULTI ? TRUE : FALSE)
 #endif
 #ifndef WARN_ALL
 #define WARN_ALL 0
@@ -2034,12 +2121,16 @@ warn("%s", SvPV_nolen(sv));
 #ifndef HEf_SVKEY
 #define HEf_SVKEY -2
 #endif
+#ifndef MUTABLE_PTR
 #if defined(__GNUC__) && !defined(PERL_GCC_BRACE_GROUPS_FORBIDDEN)
 #define MUTABLE_PTR(p) ({ void *_p = (p); _p; })
 #else
 #define MUTABLE_PTR(p) ((void *) (p))
 #endif
+#endif
+#ifndef MUTABLE_SV
 #define MUTABLE_SV(p) ((SV *)MUTABLE_PTR(p))
+#endif
 #ifndef PERL_MAGIC_sv
 #define PERL_MAGIC_sv '\0'
 #endif
