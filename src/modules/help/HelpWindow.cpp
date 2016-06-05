@@ -73,10 +73,8 @@ HelpWindow::HelpWindow(const char * name)
 
 	KviTalHBox * pSearchBox = new KviTalHBox(m_pIndexTab);
 	m_pIndexSearch = new QLineEdit(pSearchBox);
-	connect(m_pIndexSearch, SIGNAL(textChanged(const QString &)),
-	    this, SLOT(searchInIndex(const QString &)));
-	connect(m_pIndexSearch, SIGNAL(returnPressed()),
-	    this, SLOT(showIndexTopic()));
+	connect(m_pIndexSearch, SIGNAL(textChanged(const QString &)), this, SLOT(searchInIndex(const QString &)));
+	connect(m_pIndexSearch, SIGNAL(returnPressed()), this, SLOT(showIndexTopic()));
 
 	m_pBtnRefreshIndex = new QPushButton(pSearchBox);
 	m_pBtnRefreshIndex->setIcon(*g_pIconManager->getBigIcon(KVI_REFRESH_IMAGE_NAME));
@@ -91,8 +89,7 @@ HelpWindow::HelpWindow(const char * name)
 
 	m_pTermsEdit = new QLineEdit(m_pSearchTab);
 
-	connect(m_pTermsEdit, SIGNAL(returnPressed()),
-	    this, SLOT(startSearch()));
+	connect(m_pTermsEdit, SIGNAL(returnPressed()), this, SLOT(startSearch()));
 
 	m_pResultBox = new KviTalListWidget(m_pSearchTab);
 	connect(m_pResultBox, SIGNAL(itemActivated(QListWidgetItem *)), this, SLOT(searchSelected(QListWidgetItem *)));
@@ -133,10 +130,7 @@ void HelpWindow::initialSetup()
 		m_pBtnRefreshIndex->setEnabled(true);
 	}
 	else
-	{
 		g_pDocIndex->makeIndex();
-	}
-	//}
 }
 
 void HelpWindow::indexingStart(int iNum)
@@ -146,6 +140,7 @@ void HelpWindow::indexingStart(int iNum)
 	m_pProgressBar->setRange(0, iNum);
 	m_pProgressBar->setValue(0);
 }
+
 void HelpWindow::indexingProgress(int iNum)
 {
 	m_pProgressBar->setValue(iNum);
@@ -219,8 +214,8 @@ void HelpWindow::startSearch()
 				s = s.simplified();
 				if(s.contains('*'))
 				{
-					QMessageBox::warning(this, tr("Full Text Search - KVIrc"),
-					    tr("Using a wildcard within phrases is not allowed."));
+					QMessageBox::warning(this, __tr2qs("Full Text Search - KVIrc"),
+					    __tr2qs("Using a wildcard within phrases is not allowed."));
 					return;
 				}
 				seqWords += s.split(' ', QString::SkipEmptyParts);
@@ -230,8 +225,8 @@ void HelpWindow::startSearch()
 		}
 		else
 		{
-			QMessageBox::warning(this, tr("Full Text Search - KVIrc"),
-			    tr("The closing quotation mark is missing."));
+			QMessageBox::warning(this, __tr2qs("Full Text Search - KVIrc"),
+			    __tr2qs("The closing quotation mark is missing."));
 			return;
 		}
 	}

@@ -93,8 +93,8 @@ HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
 	connect(m_pFindText, SIGNAL(textChanged(const QString)), this, SLOT(slotTextChanged(const QString)));
 
 	m_pToolBarHighlight->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Discard), __tr2qs("Reset"), this, SLOT(slotResetFind()));
-	m_pToolBarHighlight->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Part), __tr2qs("Find previous"), this, SLOT(slotFindPrev()));
-	m_pToolBarHighlight->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Join), __tr2qs("Find next"), this, SLOT(slotFindNext()));
+	m_pToolBarHighlight->addAction(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPBACK), __tr2qs("Find previous"), this, SLOT(slotFindPrev()));
+	m_pToolBarHighlight->addAction(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPFORWARD), __tr2qs("Find next"), this, SLOT(slotFindNext()));
 
 	// upper toolbar contents (depends on webview)
 	QLabel * pBrowsingLabel = new QLabel();
@@ -165,6 +165,7 @@ void HelpWidget::slotFindNext()
 {
 	m_pTextBrowser->findText(m_pFindText->text());
 }
+
 void HelpWidget::slotZoomIn()
 {
 	kvs_real_t dZoom = m_pTextBrowser->zoomFactor();
@@ -214,19 +215,19 @@ HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
 	connect(m_pBtnForward, SIGNAL(clicked()), m_pTextBrowser, SLOT(forward()));
 	m_pBtnForward->setEnabled(false);
 
-	QWidget * pSpacer = new QWidget(m_pToolBar);
-
 	if(bIsStandalone)
 	{
 		setAttribute(Qt::WA_DeleteOnClose);
-		QToolButton * b = new QToolButton(m_pToolBar);
-		b->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPCLOSE));
-		connect(b, SIGNAL(clicked()), this, SLOT(close()));
+		QToolButton * m_pBtnClose = new QToolButton(m_pToolBar);
+		m_pBtnClose->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPCLOSE));
+		connect(m_pBtnClose, SIGNAL(clicked()), this, SLOT(close()));
 	}
 
-	m_pToolBar->setStretchFactor(pSpacer, 1);
 	connect(m_pTextBrowser, SIGNAL(backwardAvailable(bool)), m_pBtnBackward, SLOT(setEnabled(bool)));
 	connect(m_pTextBrowser, SIGNAL(forwardAvailable(bool)), m_pBtnForward, SLOT(setEnabled(bool)));
+
+	QWidget * pSpacer = new QWidget(m_pToolBar);
+	m_pToolBar->setStretchFactor(pSpacer, 1);
 }
 
 #endif
