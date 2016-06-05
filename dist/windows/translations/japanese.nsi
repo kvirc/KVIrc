@@ -1,6 +1,6 @@
 !insertmacro MUI_LANGUAGE "Japanese"
 LangString UnLocalDataDescr ${LANG_JAPANESE} "ログ、テーマ、設定を削除するでしょう。もし跡で KVIrc を再インストールをする場合、チェックをはずせば設定を維持します。"
-LangString UnLocalData ${_ENGLISH} "設定"
+LangString UnLocalData ${LANG_JAPANESE} "設定"
 LangString UnGeneralFiles ${LANG_JAPANESE} "Program files"
 LangString ProgramDescription ${LANG_JAPANESE} "ビジュアル IRC クライアント"
 LangString TraySection ${LANG_JAPANESE} "クイック起動のアイコン"
