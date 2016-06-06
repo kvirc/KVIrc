@@ -754,7 +754,7 @@ void DccBroker::chooseSaveFileName(DccDialog * box, DccDescriptor * dcc)
 
 		if(_OUTPUT_VERBOSE)
 		{
-			dcc->console()->output(KVI_OUT_DCCMSG, __tr2qs_ctx("Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r", "dcc"),
+			dcc->console()->output(KVI_OUT_DCCMSG, __tr2qs_ctx("Auto-saving DCC %Q file %Q as %Q", "dcc"),
 			    &(dcc->szType), &(dcc->szFileName), &(dcc->szLocalFileName));
 		}
 
