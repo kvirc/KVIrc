@@ -27,9 +27,9 @@
 #include "KviOptionsWidget.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_notify KviIconManager::UserWindow
-#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_notify __tr2qs_no_lookup("Contacts")
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_notify __tr2qs_no_lookup("Notifications")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_notify OptionsWidget_tools
-#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_notify __tr2qs_no_lookup("notify,buddy,buddies,friends")
+#define KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_notify __tr2qs_no_lookup("notify,notifications,buddy,buddies,friend,friends")
 #define KVI_OPTIONS_WIDGET_MINIMAL_USER_EXPERIENCE_LEVEL_OptionsWidget_notify 2
 
 class OptionsWidget_notify : public KviOptionsWidget
