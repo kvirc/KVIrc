@@ -1189,7 +1189,7 @@ void KviWatchNotifyListManager::start()
 void KviWatchNotifyListManager::stop()
 {
 	m_pConsole->notifyListView()->partAllButOne(m_pConnection->currentNickName());
-	m_pConnection->sendFmtData("WATCH clear");
+	m_pConnection->sendFmtData("WATCH c");
 	m_pRegUserDict->clear();
 }
 
