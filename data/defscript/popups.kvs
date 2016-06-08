@@ -1,7 +1,7 @@
 # Default popups file
 #
-# Here comes a nice part...
-# The popups. KVIrc has a lot of events that merely ask for a popup to be shown :)
+# KVIrc has a lot of events that merely ask for a popup to be shown :)
+# Notice: when assigning icons to popups entries use $icon("iconname") not icon numbers
 #
 defpopup(highlight)
 {
@@ -18,17 +18,17 @@ defpopup(highlight)
 		}
 	}
 
-	item($tr("Stop Highlighting (Local)","defscript"),44) (%:beingHlTmp && !%:beingHl)
+	item($tr("Stop Highlighting (Local)","defscript"),$icon("discard")) (%:beingHlTmp && !%:beingHl)
 	{
 		tmphighlight.removeNick $0
 	}
 
-	item($tr("Start Highlighting (Local)","defscript"),269) (!%:beingHlTmp && !%:beingHl)
+	item($tr("Start Highlighting (Local)","defscript"),$icon("highlighttext")) (!%:beingHlTmp && !%:beingHl)
 	{
 		tmphighlight.addNick $0
 	}
 
-	popup($tr("Always Highlight","defscript"),269) (!%:beingHl && !%:regName)
+	popup($tr("Always Highlight","defscript"),$icon("highlighttext")) (!%:beingHl && !%:regName)
 	{
 		item($tr("Highlight As","defscript") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
 		{
@@ -61,12 +61,12 @@ defpopup(highlight)
 		}
 	}
 
-	item($tr("Always Highlight","defscript"),269) (!%:beingHl && %:regName)
+	item($tr("Always Highlight","defscript"),$icon("highlighttext")) (!%:beingHl && %:regName)
 	{
 		reguser.setproperty $0 highlight 1
 	}
 
-	item($tr("Stop Highlighting","defscript"),44) (%:beingHl)
+	item($tr("Stop Highlighting","defscript"),$icon("discard")) (%:beingHl)
 	{
 		reguser.setproperty $0 highlight 0
 	}
@@ -94,20 +94,20 @@ defpopup(dccchat)
 
 	separator
 
-	extpopup(C&TCP,ctcp,162) ($server)
+	extpopup(C&TCP,ctcp,$icon("ctcpreplyunknown")) ($server)
 
-	extpopup(&DCC,dcc,325) ($server)
+	extpopup(&DCC,dcc,$icon("dcc")) ($server)
 
 	separator($server)
 
-	item($tr("Notify Avatar","defscript"),57) ($server)
+	item($tr("Notify Avatar","defscript"),$icon("avatar")) ($server)
 	{
 		avatar.notify $0
 	}
 
 	separator
 
-	item($tr("Clear Buffer","defscript"),120)
+	item($tr("Clear Buffer","defscript"),$icon("remove"))
 	{
 		clear
 	}
@@ -135,52 +135,52 @@ defpopup(querytextview)
 
 	label($tr("You're not connected to a server","defscript")) (!$server)
 
-	item($tr("Dock","defscript"),6) (!$window.isDocked())
+	item($tr("Dock","defscript"),$icon("dock")) (!$window.isDocked())
 	{
 		window.dock
 	}
 
 	separator(!$window.isDocked())
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),88) ($server && $isWellKnown($0))
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),$icon("whoisuser")) ($server && $isWellKnown($0))
 	{
 		whois $0 $0
 	}
 
 	separator($server)
 
-	item($tr("Close","defscript"),1)
+	item($tr("Close","defscript"),$icon("close"))
 	{
 		window.close
 	}
 
 	separator
 
-	popup($tr("&Information","defscript"),317) (!%:multiple && $server && $isWellKnown($0))
+	popup($tr("&Information","defscript"),$icon("info")) (!%:multiple && $server && $isWellKnown($0))
 	{
-		item($str.printf($tr("/WHOIS ?s","defscript"),$0),88)
+		item($str.printf($tr("/WHOIS ?s","defscript"),$0),$icon("whoisuser"))
 		{
 			whois $0
 		}
 
-		item($str.printf($tr("/WHOWAS ?s","defscript"),$0),92)
+		item($str.printf($tr("/WHOWAS ?s","defscript"),$0),$icon("whoisother"))
 		{
 			whowas $0
 		}
 
-		item($str.printf($tr("/WHO ?s","defscript"),$0),75)
+		item($str.printf($tr("/WHO ?s","defscript"),$0),$icon("who"))
 		{
 			who $0
 		}
 
 		separator
 
-		item($tr("DNS for","defscript") $0,91)
+		item($tr("DNS for","defscript") $0,$icon("whoisserver"))
 		{
 			foreach(%i,$str.split(",",$0))dns %i
 		}
 
-		item($tr("Mask for","defscript") $0,15)
+		item($tr("Mask for","defscript") $0,$icon("proxy"))
 		{
 			echo $mask($0,11)
 		}
@@ -188,24 +188,24 @@ defpopup(querytextview)
 
 	separator($server)
 
-	extpopup(C&TCP,ctcp,162) (!%:multiple && $server && $isWellKnown($0))
+	extpopup(C&TCP,ctcp,$icon("ctcpreplyunknown")) (!%:multiple && $server && $isWellKnown($0))
 
-	extpopup(&DCC,dcc,325) (!%:multiple && $server && $isWellKnown($0))
+	extpopup(&DCC,dcc,$icon("dcc")) (!%:multiple && $server && $isWellKnown($0))
 
 	separator($server)
 
-	extpopup($tr("&Ignore","defscript"),ignore,203) (!%:multiple && $server && $isWellKnown($0))
+	extpopup($tr("&Ignore","defscript"),ignore,$icon("ignore")) (!%:multiple && $server && $isWellKnown($0))
 
-	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple && $server && $isWellKnown($0))
+	extpopup($tr("&Registration","defscript"),registration,$icon("regusers")) (!%:multiple && $server && $isWellKnown($0))
 
-	item($tr("Notify Avatar","defscript"),57) (!%:multiple && $server && $isWellKnown($0))
+	item($tr("Notify Avatar","defscript"),$icon("avatar")) (!%:multiple && $server && $isWellKnown($0))
 	{
 		avatar.notify $0
 	}
 
 	separator($server)
 
-	item($tr("Clear Buffer","defscript"),120)
+	item($tr("Clear Buffer","defscript"),$icon("remove"))
 	{
 		clear
 	}
@@ -215,36 +215,36 @@ defpopup(channelpopup)
 {
 	label($tr("You're not connected to a server","defscript")) (!$server)
 
-	item($tr("&Hop","defscript") $0,289) ($server)
+	item($tr("&Hop","defscript") $0,$icon("refresh")) ($server)
 	{
 		hop $0;
 	}
 
-	item($tr("&Part","defscript") $0,40) ($channel($0) && $server)
+	item($tr("&Part","defscript") $0,$icon("part")) ($channel($0) && $server)
 	{
 		if($channel($0)) eval "part $escape($0) $option(stringPartMessage)";
 	}
 
-	item($tr("&Join","defscript") $0,39) (!$channel($0) && $server)
+	item($tr("&Join","defscript") $0,$icon("join")) (!$channel($0) && $server)
 	{
 		join $0;
 	}
 
 	separator($server)
 
-	item(/NAMES $0,75) ($server)
+	item(/NAMES $0,$icon("who")) ($server)
 	{
 		names $0;
 	}
 
-	item(/WHO $0,75) ($server)
+	item(/WHO $0,$icon("who")) ($server)
 	{
 		who $0;
 	}
 
 	separator($server)
 
-	item($tr("Copy Channel Address","defscript"),18)
+	item($tr("Copy Channel Address","defscript"),$icon("copy"))
 	{
 		str.toClipboard $chan.getUrl($0)
 	}
@@ -266,42 +266,42 @@ defpopup(ctcp)
 		%:ProtectDCC = $option(boolIgnoreCTCPDCC)
 	}
 
-	item(PING,36)
+	item(PING,$icon("serverping"))
 	{
 		ctcp $0 PING
 	}
 
-	item(FINGER,268)
+	item(FINGER,$icon("finger"))
 	{
 		ctcp $0 FINGER
 	}
 
-	item(VERSION,16)
+	item(VERSION,$icon("kvirc"))
 	{
 		ctcp $0 VERSION
 	}
 
-	item(USERINFO,178)
+	item(USERINFO,$icon("user"))
 	{
 		ctcp $0 USERINFO
 	}
 
-	item(CLIENTINFO,29)
+	item(CLIENTINFO,$icon("serverinfo"))
 	{
 		ctcp $0 CLIENTINFO
 	}
 
-	item(SOURCE,55)
+	item(SOURCE,$icon("ctcprequestunknown"))
 	{
 		ctcp $0 SOURCE
 	}
 
-	item(TIME,93)
+	item(TIME,$icon("time"))
 	{
 		ctcp $0 TIME
 	}
 
-	item(PAGE...,180)
+	item(PAGE...,$icon("messages"))
 	{
 		#dialog.textinput -d=$tr("Wakeup!","defscript") ($tr("CTCP Page to","defscript") $0,$tr("Enter the message text","defscript"),$tr("Ok","defscript"),$tr("Cancel","defscript"))
 		dialog.textinput(CTCP Page $0,$tr("Enter the message text","defscript"),$tr("&Page","defscript"),$tr("Cancel","defscript"),"",$0)
@@ -310,111 +310,111 @@ defpopup(ctcp)
 		}
 	}
 
-	item(AVATAR,57)
+	item(AVATAR,$icon("avatar"))
 	{
 		ctcp $0 AVATAR
 	}
 
 	separator
 
-	popup($tr("CTCP Protection","defscript"),20)
+	popup($tr("CTCP Protection","defscript"),$icon("options"))
 	{
-		item(PING - $tr("Disable Ignore","defscript"),36) (%:ProtectPing)
+		item(PING - $tr("Disable Ignore","defscript"),$icon("serverping")) (%:ProtectPing)
 		{
 			option boolIgnoreCTCPPing 0
 		}
 
-		item(PING - $tr("Enable Ignore","defscript"),36) (!%:ProtectPing)
+		item(PING - $tr("Enable Ignore","defscript"),$icon("serverping")) (!%:ProtectPing)
 		{
 			option boolIgnoreCTCPPing 1
 		}
 
-		item(FINGER - $tr("Disable Ignore","defscript"),268) (%:ProtectFinger)
+		item(FINGER - $tr("Disable Ignore","defscript"),$icon("finger")) (%:ProtectFinger)
 		{
 			option boolIgnoreCTCPFinger 0
 		}
 
-		item(FINGER - $tr("Enable Ignore","defscript"),268) (!%:ProtectFinger)
+		item(FINGER - $tr("Enable Ignore","defscript"),$icon("finger")) (!%:ProtectFinger)
 		{
 			option boolIgnoreCTCPFinger 1
 		}
 
-		item(VERSION - $tr("Disable Ignore","defscript"),16) (%:ProtectVersion)
+		item(VERSION - $tr("Disable Ignore","defscript"),$icon("kvirc")) (%:ProtectVersion)
 		{
 			option boolIgnoreCTCPVersion 0
 		}
 
-		item(VERSION - $tr("Enable Ignore","defscript"),16) (!%:ProtectVersion)
+		item(VERSION - $tr("Enable Ignore","defscript"),$icon("kvirc")) (!%:ProtectVersion)
 		{
 			option boolIgnoreCTCPVersion 1
 		}
 
-		item(USERINFO - $tr("Disable Ignore","defscript"),178) (%:ProtectUserinfo)
+		item(USERINFO - $tr("Disable Ignore","defscript"),$icon("user")) (%:ProtectUserinfo)
 		{
 			option boolIgnoreCTCPUserinfo 0
 		}
 
-		item(USERINFO - $tr("Enable Ignore","defscript"),178) (!%:ProtectUserinfo)
+		item(USERINFO - $tr("Enable Ignore","defscript"),$icon("user")) (!%:ProtectUserinfo)
 		{
 			option boolIgnoreCTCPUserinfo 1
 		}
 
-		item(CLIENTINFO - $tr("Disable Ignore","defscript"),29) (%:ProtectClientinfo)
+		item(CLIENTINFO - $tr("Disable Ignore","defscript"),$icon("serverinfo")) (%:ProtectClientinfo)
 		{
 			option boolIgnoreCTCPClientinfo 0
 		}
 
-		item(CLIENTINFO - $tr("Enable Ignore","defscript"),29) (!%:ProtectClientinfo)
+		item(CLIENTINFO - $tr("Enable Ignore","defscript"),$icon("serverinfo")) (!%:ProtectClientinfo)
 		{
 			option boolIgnoreCTCPClientinfo 1
 		}
 
-		item(SOURCE - $tr("Disable Ignore","defscript"),55) (%:ProtectSource)
+		item(SOURCE - $tr("Disable Ignore","defscript"),$icon("ctcprequestunknown")) (%:ProtectSource)
 		{
 			option boolIgnoreCTCPSource 0
 		}
 
-		item(SOURCE - $tr("Enable Ignore","defscript"),55) (!%:ProtectSource)
+		item(SOURCE - $tr("Enable Ignore","defscript"),$icon("ctcprequestunknown")) (!%:ProtectSource)
 		{
 			option boolIgnoreCTCPSource 1
 		}
 
-		item(TIME - $tr("Disable Ignore","defscript"),93) (%:ProtectTime)
+		item(TIME - $tr("Disable Ignore","defscript"),$icon("time")) (%:ProtectTime)
 		{
 			option boolIgnoreCTCPTime 0
 		}
 
-		item(TIME - $tr("Enable Ignore","defscript"),93) (!%:ProtectTime)
+		item(TIME - $tr("Enable Ignore","defscript"),$icon("time")) (!%:ProtectTime)
 		{
 			option boolIgnoreCTCPTime 1
 		}
 
-		item(PAGE - $tr("Disable Ignore","defscript"),180) (%:ProtectPage)
+		item(PAGE - $tr("Disable Ignore","defscript"),$icon("messages")) (%:ProtectPage)
 		{
 			option boolIgnoreCTCPPage 0
 		}
 
-		item(PAGE - $tr("Enable Ignore","defscript"),180) (!%:ProtectPage)
+		item(PAGE - $tr("Enable Ignore","defscript"),$icon("messages")) (!%:ProtectPage)
 		{
 			option boolIgnoreCTCPPage 1
 		}
 
-		item(AVATAR - $tr("Disable Ignore","defscript"),57) (%:ProtectAvatar)
+		item(AVATAR - $tr("Disable Ignore","defscript"),$icon("avatar")) (%:ProtectAvatar)
 		{
 			option boolIgnoreCTCPAvatar 0
 		}
 
-		item(AVATAR - $tr("Enable Ignore","defscript"),57) (!%:ProtectAvatar)
+		item(AVATAR - $tr("Enable Ignore","defscript"),$icon("avatar")) (!%:ProtectAvatar)
 		{
 			option boolIgnoreCTCPAvatar 1
 		}
 
-		item(DCC - $tr("Disable Ignore","defscript"),325) (%:ProtectDCC)
+		item(DCC - $tr("Disable Ignore","defscript"),$icon("dcc")) (%:ProtectDCC)
 		{
 			option boolIgnoreCTCPAvatar 0
 		}
 
-		item(DCC - $tr("Enable Ignore","defscript"),325) (!%:ProtectDCC)
+		item(DCC - $tr("Enable Ignore","defscript"),$icon("dcc")) (!%:ProtectDCC)
 		{
 			option boolIgnoreCTCPAvatar 1
 		}
@@ -425,47 +425,47 @@ defpopup(consoletextview)
 {
 	label($tr("You're not connected to a server","defscript")) (!$server)
 
-	item($tr("Dock","defscript"),6) (!$window.isDocked())
+	item($tr("Dock","defscript"),$icon("dock")) (!$window.isDocked())
 	{
 		window.dock
 	}
 
 	separator(!$window.isDocked())
 
-	extpopup($tr("Default Channels","defscript"),channels,31) ($server)
+	extpopup($tr("Default Channels","defscript"),channels,$icon("channel")) ($server)
 
 	separator($server)
 
-	item($tr("Close","defscript"),1)
+	item($tr("Close","defscript"),$icon("close"))
 	{
 		window.close
 	}
 
 	separator
 
-	item($tr("&Join Channels...","defscript"),39) ($server)
+	item($tr("&Join Channels...","defscript"),$icon("join")) ($server)
 	{
 		if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open
 	}
 
-	popup($tr("&Information","defscript"),317) ($server)
+	popup($tr("&Information","defscript"),$icon("info")) ($server)
 	{
-		item(/MOTD,30)
+		item(/MOTD,$icon("motd"))
 		{
 			motd
 		}
 
-		item(/INFO,317)
+		item(/INFO,$icon("info"))
 		{
 			info
 		}
 
-		item(/LUSERS,178)
+		item(/LUSERS,$icon("user"))
 		{
 			lusers
 		}
 
-		popup(/STATS,205)
+		popup(/STATS,$icon("stats"))
 		{
 			item($tr("d (Debug/DNS?)","defscript"))
 			{
@@ -508,22 +508,22 @@ defpopup(consoletextview)
 			}
 		}
 
-		item(/TIME,93)
+		item(/TIME,$icon("time"))
 		{
 			time
 		}
 
-		item(/ADMIN,261)
+		item(/ADMIN,$icon("chanunowner"))
 		{
 			admin
 		}
 
-		item(/VERSION,16)
+		item(/VERSION,$icon("kvirc"))
 		{
 			version
 		}
 
-		item(/HELP,49)
+		item(/HELP,$icon("help"))
 		{
 			raw help
 		}
@@ -531,7 +531,7 @@ defpopup(consoletextview)
 
 	separator($server)
 
-	item($tr("Clear Buffer","defscript"),120)
+	item($tr("Clear Buffer","defscript"),$icon("remove"))
 	{
 		clear;
 	}
@@ -539,7 +539,7 @@ defpopup(consoletextview)
 
 defpopup(urlpopup)
 {
-	item($tr("Copy to Clipboard","defscript"),18)
+	item($tr("Copy to Clipboard","defscript"),$icon("copy"))
 	{
 		str.toClipboard $0
 	}
@@ -547,24 +547,24 @@ defpopup(urlpopup)
 
 defpopup(serverpopup)
 {
-	popup($tr("&Information","defscript"),317) ($server)
+	popup($tr("&Information","defscript"),$icon("info")) ($server)
 	{
-		item(/MOTD,30)
+		item(/MOTD,$icon("motd"))
 		{
 			motd
 		}
 
-		item(/INFO,317)
+		item(/INFO,$icon("info"))
 		{
 			info
 		}
 
-		item(/LUSERS,178)
+		item(/LUSERS,$icon("user"))
 		{
 			lusers
 		}
 
-		popup(/STATS,205)
+		popup(/STATS,$icon("stats"))
 		{
 			item($tr("d (Debug/DNS?)","defscript"))
 			{
@@ -607,22 +607,22 @@ defpopup(serverpopup)
 			}
 		}
 
-		item(/TIME,93)
+		item(/TIME,$icon("time"))
 		{
 			time
 		}
 
-		item(/ADMIN,261)
+		item(/ADMIN,$icon("chanunadmin"))
 		{
 			admin
 		}
 
-		item(/VERSION,16)
+		item(/VERSION,$icon("kvirc"))
 		{
 			version
 		}
 
-		item(/HELP,49)
+		item(/HELP,$icon("help"))
 		{
 			raw help
 		}
@@ -630,24 +630,24 @@ defpopup(serverpopup)
 
 	separator($server)
 
-	item($tr("Traceroute to","defscript") $0,36) ($server)
+	item($tr("Traceroute to","defscript") $0,$icon("serverping")) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute $0
 		else system.runcmd tracert $0
 	}
 
-	item($tr("Traceroute6 to","defscript") $0,36) ($server)
+	item($tr("Traceroute6 to","defscript") $0,$icon("serverping")) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute6 $0
 		else system.runcmd tracert -6 $0
 	}
 
-	item("Ping" $0,36) ($server)
+	item("Ping" $0,$icon("serverping")) ($server)
 	{
 		system.runcmd ping $0
 	}
 
-	item("Ping6" $0,36) ($server)
+	item("Ping6" $0,$icon("serverping")) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd ping6 $0
 		else system.runcmd ping -6 $0
@@ -657,7 +657,7 @@ defpopup(serverpopup)
 
 	label($tr("You're not connected to a server","defscript")) (!$server)
 
-	item($tr("Clear Buffer","defscript"),120)
+	item($tr("Clear Buffer","defscript"),$icon("remove"))
 	{
 		clear
 	}
@@ -713,40 +713,40 @@ defpopup(windowpopup)
 		}
 	}
 
-	item($tr("Dock","defscript"),6) (!$window.isDocked())
+	item($tr("Dock","defscript"),$icon("dock")) (!$window.isDocked())
 	{
 		window.dock
 	}
 
-	item($tr("Undock","defscript"),7) ($window.isDocked())
+	item($tr("Undock","defscript"),$icon("undock")) ($window.isDocked())
 	{
 		window.undock
 	}
 
 	separator
 
-	item($tr("Close","defscript"),1)
+	item($tr("Close","defscript"),$icon("close"))
 	{
 		window.close
 	}
 
 	separator
 
-	item($tr("&Hop","defscript") $0,289) ($channel)
+	item($tr("&Hop","defscript") $0,$icon("refresh")) ($channel)
 	{
 		hop $0;
 	}
 
-	item($tr("&Part","defscript") $0,40) ($channel)
+	item($tr("&Part","defscript") $0,$icon("part")) ($channel)
 	{
 		if($channel) eval "part $escape($chan.name) $option(stringPartMessage)";
 	}
 
 	separator
 
-	extpopup($tr("Logging","defscript"),logging,119)
+	extpopup($tr("Logging","defscript"),logging,$icon("log"))
 
-	item($tr("Set Window Properties As Default","defscript"),10)
+	item($tr("Set Window Properties As Default","defscript"),$icon("save"))
 	{
 		window.savePropertiesAsDefault
 	}
@@ -770,7 +770,7 @@ defpopup(windowpopup)
 		}
 	}
 
-	item($str.printf($tr("Stop Auto-joining Channel on Server '?s'","defscript"),%:szServer),44) (%:bIsChannel && %:bIsAutoJoinedOnServer)
+	item($str.printf($tr("Stop Auto-joining Channel on Server '?s'","defscript"),%:szServer),$icon("discard")) (%:bIsChannel && %:bIsAutoJoinedOnServer)
 	{
 		%aChans = $array()
 		foreach(%szChanAndPass,$serverdb.serverJoinChannels(%:szNetwork,%:szServer))
@@ -783,7 +783,7 @@ defpopup(windowpopup)
 		serverdb.setServerJoinChannels %:szNetwork %:szServer %aChans
 	}
 
-	item($str.printf($tr("Stop Auto-joining Channel on Network '?s'","defscript"),%:szNetwork),44) (%:bIsChannel && %:bIsAutoJoinedOnNetwork)
+	item($str.printf($tr("Stop Auto-joining Channel on Network '?s'","defscript"),%:szNetwork),$icon("discard")) (%:bIsChannel && %:bIsAutoJoinedOnNetwork)
 	{
 		%aChans = $array()
 		foreach(%szChanAndPass,$serverdb.networkJoinChannels(%:szNetwork))
@@ -798,33 +798,33 @@ defpopup(windowpopup)
 
 	separator(%:bIsConnectedConsole)
 
-	item($tr("Part All Channels","defscript"),40) (%:bIsConnectedConsole && ($window.list(channel)))
+	item($tr("Part All Channels","defscript"),$icon("part")) (%:bIsConnectedConsole && ($window.list(channel)))
 	{
 		foreach(%x,$window.list(channel))
 			%channels <+ $target(%x);
 		part $str.join(",",%channels);
 	}
 
-	item($tr("Close All Queries","defscript"),47) (%:bIsConnectedConsole && ($window.list(query)))
+	item($tr("Close All Queries","defscript"),$icon("query")) (%:bIsConnectedConsole && ($window.list(query)))
 	{
 		foreach(%x,$window.list(query))
 			window.close %x
 	}
 
-	item($tr("Rejoin All Dead Channels" ,"defscript"),232) (%:bIsConnectedConsole && ($window.list(deadchannel)))
+	item($tr("Rejoin All Dead Channels" ,"defscript"),$icon("deadchannel")) (%:bIsConnectedConsole && ($window.list(deadchannel)))
 	{
 		foreach(%x,$window.list(deadchannel))
 			%channels <+ $target(%x);
 		join $str.join(",",%channels);
 	}
 
-	item($tr("Close All Dead Channels" ,"defscript"),232) (%:bIsConnectedConsole && ($window.list(deadchannel)))
+	item($tr("Close All Dead Channels" ,"defscript"),$icon("deadchannel")) (%:bIsConnectedConsole && ($window.list(deadchannel)))
 	{
 		foreach(%x,$window.list(deadchannel))
 			window.close %x
 	}
 
-	item($tr("Close All Dead Queries" ,"defscript"),233) (%:bIsConnectedConsole && ($window.list(deadquery)))
+	item($tr("Close All Dead Queries" ,"defscript"),$icon("deadquery")) (%:bIsConnectedConsole && ($window.list(deadquery)))
 	{
 		foreach(%x,$window.list(deadquery))
 			window.close %x
@@ -873,38 +873,38 @@ defpopup(defaulttextview)
 
 	label($tr("You're not connected to a server","defscript")) (!$server)
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),90) (!%:multiple && $server && $isWellKnown($0))
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),$icon("whoisidle")) (!%:multiple && $server && $isWellKnown($0))
 	{
 		whois $0 $0
 	}
 
 	separator($server)
 
-	popup($tr("&Information","defscript"),317) ($server && $isWellKnown($0))
+	popup($tr("&Information","defscript"),$icon("info")) ($server && $isWellKnown($0))
 	{
-		item($str.printf($tr("/WHOIS ?s","defscript"),$0),88)
+		item($str.printf($tr("/WHOIS ?s","defscript"),$0),$icon("whoisuser"))
 		{
 			whois $0
 		}
 
-		item($str.printf($tr("/WHOWAS ?s","defscript"),$0),92)
+		item($str.printf($tr("/WHOWAS ?s","defscript"),$0),$icon("whoisother"))
 		{
 			whowas $0
 		}
 
-		item($str.printf($tr("/WHO ?s","defscript"),$0),75)
+		item($str.printf($tr("/WHO ?s","defscript"),$0),$icon("who"))
 		{
 			who $0
 		}
 
 		separator
 
-		item($tr("DNS for","defscript") $0,91)
+		item($tr("DNS for","defscript") $0,$icon("whoisserver"))
 		{
 			foreach(%i,$str.split(",",$0))dns %i
 		}
 
-		item($tr("Mask for","defscript") $0,15)
+		item($tr("Mask for","defscript") $0,$icon("proxy"))
 		{
 			echo $mask($0,11)
 		}
@@ -912,33 +912,33 @@ defpopup(defaulttextview)
 
 	separator($server)
 
-	item($tr("&Query","defscript") %:visible,47) ($server && $isWellKnown($0))
+	item($tr("&Query","defscript") %:visible,$icon("query")) ($server && $isWellKnown($0))
 	{
 		query $0
 	}
 
 	separator($server)
 
-	extpopup(C&TCP,ctcp,162) ($server && $isWellKnown($0))
+	extpopup(C&TCP,ctcp,$icon("ctcpreplyunknown")) ($server && $isWellKnown($0))
 
-	extpopup(&DCC,dcc,325) ($server && $isWellKnown($0))
+	extpopup(&DCC,dcc,$icon("dcc")) ($server && $isWellKnown($0))
 
 	separator($server)
 
-	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple && $server && $isWellKnown($0))
+	extpopup($tr("&Registration","defscript"),registration,$icon("regusers")) (!%:multiple && $server && $isWellKnown($0))
 
-	extpopup($tr("&Highlight","defscript"),highlight,269) (!%:multiple && $server && $isWellKnown($0))
+	extpopup($tr("&Highlight","defscript"),highlight,$icon("highlighttext")) (!%:multiple && $server && $isWellKnown($0))
 
-	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple && $server && $isWellKnown($0))
+	extpopup($tr("Ig&nore","defscript"),ignore,$icon("ignore")) (!%:multiple && $server && $isWellKnown($0))
 
-	item($tr("Notify avatar","defscript"),57) ($server && $isWellKnown($0))
+	item($tr("Notify avatar","defscript"),$icon("avatar")) ($server && $isWellKnown($0))
 	{
 		avatar.notify $0
 	}
 
 	separator($server)
 
-	item($tr("Clear Buffer","defscript"),120)
+	item($tr("Clear Buffer","defscript"),$icon("remove"))
 	{
 		clear
 	}
@@ -948,43 +948,43 @@ defpopup(hostpopup)
 {
 	label($tr("You're not connected to a server","defscript")) (!$server)
 
-	item($tr("Look Up","defscript") $0,13) ($server)
+	item($tr("Look Up","defscript") $0,$icon("server")) ($server)
 	{
 		host -a $0
 	}
 
 	separator($server)
 
-	item($tr("Open","defscript") "ftp://"$0"/",185) ("$system.ostype" == "unix" && $server)
+	item($tr("Open","defscript") "ftp://"$0"/",$icon("url")) ("$system.ostype" == "unix" && $server)
 	{
 		openurl "ftp://$0/"
 	}
 
-	item($tr("Telnet to","defscript") $0,9) ($server)
+	item($tr("Telnet to","defscript") $0,$icon("console")) ($server)
 	{
 		system.runcmd telnet $0
 	}
 
 	separator($server)
 
-	item($tr("Traceroute to","defscript") $0,36) ($server)
+	item($tr("Traceroute to","defscript") $0,$icon("serverping")) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute $0
 		else system.runcmd tracert $0
 	}
 
-	item($tr("Traceroute6 to","defscript") $0,36) ($server)
+	item($tr("Traceroute6 to","defscript") $0,$icon("serverping")) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd traceroute6 $0
 		else system.runcmd tracert -6 $0
 	}
 
-	item("Ping" $0,36) ($server)
+	item("Ping" $0,$icon("serverping")) ($server)
 	{
 		system.runcmd ping $0
 	}
 
-	item("Ping6" $0,36) ($server)
+	item("Ping6" $0,$icon("serverping")) ($server)
 	{
 		if("$system.ostype" == "unix") system.runcmd ping6 $0
 		else system.runcmd ping -6 $0
@@ -992,7 +992,7 @@ defpopup(hostpopup)
 
 	separator($server)
 
-	item($tr("Clear Buffer","defscript"),120)
+	item($tr("Clear Buffer","defscript"),$icon("remove"))
 	{
 		clear;
 	}
@@ -1010,58 +1010,58 @@ defpopup(dcc)
 		else %:bHaveDCCVoice=0
 	}
 
-	item($tr("Chat with","defscript") $0,78)
+	item($tr("Chat with","defscript") $0,$icon("dccmsg"))
 	{
 		dcc.chat $0
 	}
 
-	item($tr("Reverse Chat with","defscript") $0,78)
+	item($tr("Reverse Chat with","defscript") $0,$icon("dccmsg"))
 	{
 		dcc.chat -z $0
 	}
 
-	item($tr("Secure Chat with","defscript") $0,78) (%:bHaveSSL)
+	item($tr("Secure Chat with","defscript") $0,$icon("dccmsg")) (%:bHaveSSL)
 	{
 		dcc.chat -s $0
 	}
 
 	separator
 
-	item($tr("Send to","defscript") $0,78)
+	item($tr("Send to","defscript") $0,$icon("dccmsg"))
 	{
 		dcc.send $0
 	}
 
-	item($tr("Secure Send to","defscript") $0,78)
+	item($tr("Secure Send to","defscript") $0,$icon("dccmsg")) (%:bHaveSSL)
 	{
 		dcc.send -s $0
 	}
 
-	item($tr("Reverse Send to","defscript") $0,78)
+	item($tr("Reverse Send to","defscript") $0,$icon("dccmsg"))
 	{
 		dcc.rsend -z $0
 	}
 
-	item($tr("Secure Reverse Send to","defscript") $0,78)
+	item($tr("Secure Reverse Send to","defscript") $0,$icon("dccmsg")) (%:bHaveSSL)
 	{
 		dcc.rsend -z -s $0
 	}
 
 	separator
 
-	item($tr("TDCC Send to","defscript") $0,77)
+	item($tr("TDCC Send to","defscript") $0,$icon("dccmsg"))
 	{
 		dcc.send -t $0
 	}
 
-	item($tr("TDCC Reverse Send to","defscript") $0,77)
+	item($tr("TDCC Reverse Send to","defscript") $0,$icon("dccmsg"))
 	{
 		dcc.rsend -t $0
 	}
 
 	separator
 
-	popup($tr("Voice Chat","defscript"),166) (%:bHaveDCCVoice)
+	popup($tr("Voice Chat","defscript"),$icon("dccvoice")) (%:bHaveDCCVoice)
 	{
 		item($tr("Default","defscript")": ADPCM 8 KHz (32 kbps)")
 		{
@@ -1126,77 +1126,77 @@ defpopup(channeltextview)
 {
 	label($tr("You're not connected to a server","defscript")) (!$server)
 
-	item($tr("Dock","defscript"),6) (!$window.isDocked())
+	item($tr("Dock","defscript"),$icon("dock")) (!$window.isDocked())
 	{
 		window.dock
 	}
 
 	separator(!$window.isDocked())
 
-	extpopup($tr("Default Channels","defscript"),channels,31) ($server)
+	extpopup($tr("Default Channels","defscript"),channels,$icon("channel")) ($server)
 
-	item($tr("&Join Channels...","defscript"),31) ($server)
+	item($tr("&Join Channels...","defscript"),$icon("channel")) ($server)
 	{
 		if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open
 	}
 
 	separator
 
-	item($tr("Close","defscript"),1)
+	item($tr("Close","defscript"),$icon("close"))
 	{
 		window.close
 	}
 
 	separator
 
-	item($tr("&Hop","defscript") $0,289) ($channel && $server)
+	item($tr("&Hop","defscript") $0,$icon("refresh")) ($channel && $server)
 	{
 		hop $0;
 	}
 
-	item($tr("&Part","defscript") $0,40) ($channel && $server)
+	item($tr("&Part","defscript") $0,$icon("part")) ($channel && $server)
 	{
 		if($channel($0)) eval "part $escape($0) $option(stringPartMessage)";
 	}
 
-	item($tr("&Join","defscript") $0,39) (!$channel && $server)
+	item($tr("&Join","defscript") $0,$icon("join")) (!$channel && $server)
 	{
 		join $0;
 	}
 
 	separator
 
-	extpopup(C&TCP,ctcp,162) ($server)
+	extpopup(C&TCP,ctcp,$icon("ctcpreplyunknown")) ($server)
 
 	separator
 
-	item(/NAMES $0,75) ($server)
+	item(/NAMES $0,$icon("who")) ($server)
 	{
 		names $0;
 	}
 
-	item(/WHO $0,75) ($server)
+	item(/WHO $0,$icon("who")) ($server)
 	{
 		who $0;
 	}
 
-	item($tr("Notify Avatar","defscript"),57) ($server)
+	item($tr("Notify Avatar","defscript"),$icon("avatar")) ($server)
 	{
 		avatar.notify $0
 	}
 
 	separator
 
-	extpopup($tr("&Highlight","defscript"),channelhighlight,269) ($server)
+	extpopup($tr("&Highlight","defscript"),channelhighlight,$icon("highlighttext")) ($server)
 
-	item($tr("Copy Channel URL to Clipboard","defscript"),18) ($server)
+	item($tr("Copy Channel URL to Clipboard","defscript"),$icon("copy")) ($server)
 	{
 		str.toClipboard $chan.getUrl
 	}
 
 	separator
 
-	item($tr("Clear Buffer","defscript"),120)
+	item($tr("Clear Buffer","defscript"),$icon("remove"))
 	{
 		clear;
 	}
@@ -1204,17 +1204,17 @@ defpopup(channeltextview)
 
 defpopup(channels)
 {
-	item(#freenode,31)
+	item(#freenode,$icon("channel"))
 	{
 		j #freenode;
 	}
 
-	item(#kde,31)
+	item(#kde,$icon("channel"))
 	{
 		j #kde;
 	}
 
-	item(#KVIrc,31)
+	item(#KVIrc,$icon("channel"))
 	{
 		j #KVIrc;
 	}
@@ -1232,31 +1232,31 @@ defpopup(logging)
 
 	label($tr("Logging to","defscript"):<br><b>%:logfile</b>) ("%:logfile" != "")
 
-	item($tr("Flush Log File","defscript"),120) (%:logfile)
+	item($tr("Flush Log File","defscript"),$icon("remove")) (%:logfile)
 	{
 		log.flush
 	}
 
 	separator
 
-	item($tr("Stop Logging","defscript"),44) (%:logfile)
+	item($tr("Stop Logging","defscript"),$icon("discard")) (%:logfile)
 	{
 		log.stop
 	}
 
 	label($tr("Not Logging","defscript")) (!%:logfile)
 
-	item($tr("Log to Default File","defscript"),119) (!%:logfile)
+	item($tr("Log to Default File","defscript"),$icon("log")) (!%:logfile)
 	{
 		log.start
 	}
 
-	item($tr("Log to Default File","defscript") "("$tr("Include Existing Buffer","defscript")")",119) (!%:logfile)
+	item($tr("Log to Default File","defscript") "("$tr("Include Existing Buffer","defscript")")",$icon("log")) (!%:logfile)
 	{
 		log.start -p
 	}
 
-	item($tr("Log to...","defscript"),119) (!%:logfile)
+	item($tr("Log to...","defscript"),$icon("log")) (!%:logfile)
 	{
 		dialog.file(save,$tr("Choose Log Filename","defscript"))
 		{
@@ -1264,7 +1264,7 @@ defpopup(logging)
 		}
 	}
 
-	item($tr("Log to...","defscript") "("$tr("Include Existing Buffer","defscript")")",119) (!%:logfile)
+	item($tr("Log to...","defscript") "("$tr("Include Existing Buffer","defscript")")",$icon("log")) (!%:logfile)
 	{
 		dialog.file(save,$tr("Choose Log Filename","defscript"))
 		{
@@ -1315,12 +1315,12 @@ defpopup(ignore)
 
 	label(%:ignLabelText)
 
-	item($tr("Enable Ignore","defscript"),203) (!%:inIgnoreList && %:regName)
+	item($tr("Enable Ignore","defscript"),$icon("ignore")) (!%:inIgnoreList && %:regName)
 	{
 		reguser.setIgnoreEnabled %:regName 1;
 	}
 
-	popup($tr("Ignore As...","defscript"),69) (!%:inIgnoreList)
+	popup($tr("Ignore As...","defscript"),$icon("ignore")) (!%:inIgnoreList)
 	{
 		item($tr("Ignore As","defscript") $0 "("$mask($0,0)")") ("$reguser.exactMatch($mask($0,0))" == "")
 		{
@@ -1512,7 +1512,7 @@ defpopup(ignore)
 		}
 	}
 
-	item($tr("Unignore","defscript"),68) (%:inIgnoreList)
+	item($tr("Unignore","defscript"),$icon("discard")) (%:inIgnoreList)
 	{
 		reguser.setIgnoreEnabled %:regName 0;
 	}
@@ -1544,12 +1544,12 @@ defpopup(registration)
 
 	label(%:labelText)
 
-	item($tr("Register...","defscript"),113) (!%:regName)
+	item($tr("Register...","defscript"),$icon("regusers")) (!%:regName)
 	{
 		reguser.wizard $mask($0)
 	}
 
-	popup($tr("Quick Registration","defscript"),254) (!%:regName)
+	popup($tr("Quick Registration","defscript"),$icon("userwindow")) (!%:regName)
 	{
 		item($tr("Register As","defscript") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
 		{
@@ -1584,7 +1584,7 @@ defpopup(registration)
 
 	item($tr("Edit Registration...","defscript")) (%:regName)
 	{
-		reguser.edit "%:regName"
+		reguser.edit -t "%:regName"
 	}
 
 	item($tr("Unregister","defscript") %:regName) (%:regName)
@@ -1594,17 +1594,17 @@ defpopup(registration)
 
 	separator
 
-	item($tr("Add to Notify","defscript"),94) (%:regName && !%:inNotifyList)
+	item($tr("Add to Notify","defscript"),$icon("notifyonline")) (%:regName && !%:inNotifyList)
 	{
 		reguser.setproperty -n "%:regName" notify $0
 	}
 
-	item($tr("Remove from Notify","defscript"),95) (%:regName && %:inNotifyList)
+	item($tr("Remove from Notify","defscript"),$icon("notifyoffline")) (%:regName && %:inNotifyList)
 	{
 		reguser.setproperty -n "%:regName" notify
 	}
 
-	popup($tr("Avatar","defscript"),57) (%:regName)
+	popup($tr("Avatar","defscript"),$icon("avatar")) (%:regName)
 	{
 		item($tr("Choose...","defscript")) (%:regName)
 		{
@@ -1677,7 +1677,7 @@ defpopup(channel)
 		}
 	}
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),%:visible),88) (!%:multiple && $server)
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),%:visible),$icon("whoisuser")) (!%:multiple && $server)
 	{
 		foreach(%i,$str.split(",",$0))
 			whois %i %i
@@ -1685,98 +1685,98 @@ defpopup(channel)
 
 	separator
 
-	popup($tr("&Information","defscript"),317) (!%:multiple && $server)
+	popup($tr("&Information","defscript"),$icon("info")) (!%:multiple && $server)
 	{
-		item($str.printf($tr("/WHOIS ?s","defscript"),%:visible),88)
+		item($str.printf($tr("/WHOIS ?s","defscript"),%:visible),$icon("whoisuser"))
 		{
 			whois $0
 		}
 
-		item($str.printf($tr("/WHOWAS ?s","defscript"),%:visible),92)
+		item($str.printf($tr("/WHOWAS ?s","defscript"),%:visible),$icon("whoisother"))
 		{
 			whowas $0
 		}
 
-		item($str.printf($tr("/WHO ?s","defscript"),%:visible),75)
+		item($str.printf($tr("/WHO ?s","defscript"),%:visible),$icon("who"))
 		{
 			who $0
 		}
 
 		separator
 
-		item($tr("DNS for","defscript") %:visible,91)
+		item($tr("DNS for","defscript") %:visible,$icon("whoisserver"))
 		{
 			foreach(%i,$str.split(",",$0))dns %i
 		}
 
-		item($tr("Mask for","defscript") %:visible,15)
+		item($tr("Mask for","defscript") %:visible,$icon("proxy"))
 		{
 			echo $mask($0,11)
 		}
 	}
 
-	popup($tr("&Control","defscript"),20) (%:isMeHalfOp)
+	popup($tr("&Control","defscript"),$icon("options")) (%:isMeHalfOp)
 	{
 		label($usermodename($me()))
 
-		item($tr("O&wner","defscript") %:visible,260) (%:isMeOwner)
+		item($tr("O&wner","defscript") %:visible,$icon("chanowner")) (%:isMeOwner)
 		{
 			chanowner $0
 		}
 
-		item($tr("&Deowner","defscript") %:visible,261) (%:isMeOwner)
+		item($tr("&Deowner","defscript") %:visible,$icon("chanunowner")) (%:isMeOwner)
 		{
 			dechanowner $0
 		}
 
-		item($tr("&Administrator","defscript") %:visible,242) (%:isMeAdmin)
+		item($tr("&Administrator","defscript") %:visible,$icon("chanadmin")) (%:isMeAdmin)
 		{
 			chanadmin $0
 		}
 
-		item($tr("&Deadministrator","defscript") %:visible,243) (%:isMeAdmin)
+		item($tr("&Deadministrator","defscript") %:visible,$icon("chanunadmin")) (%:isMeAdmin)
 		{
 			dechanadmin $0
 		}
 
-		item($tr("&Op","defscript") %:visible,34) (%:isMeOp)
+		item($tr("&Op","defscript") %:visible,$icon("op")) (%:isMeOp)
 		{
 			op $0
 		}
 
-		item($tr("&Deop","defscript") %:visible,62) (%:isMeOp)
+		item($tr("&Deop","defscript") %:visible,$icon("deop")) (%:isMeOp)
 		{
 			deop $0
 		}
 
-		item($tr("&Halfop","defscript") %:visible,174) (%:isMeOp)
+		item($tr("&Halfop","defscript") %:visible,$icon("halfop")) (%:isMeOp)
 		{
 			halfop $0
 		}
 
-		item($tr("&Dehalfop","defscript") %:visible,175) (%:isMeOp)
+		item($tr("&Dehalfop","defscript") %:visible,$icon("halfdeop")) (%:isMeOp)
 		{
 			dehalfop $0
 		}
 
-		item($tr("&Voice","defscript") %:visible,35) (%:isMeHalfOp)
+		item($tr("&Voice","defscript") %:visible,$icon("voice")) (%:isMeHalfOp)
 		{
 			voice $0
 		}
 
-		item($tr("D&evoice","defscript") %:visible,63) (%:isMeHalfOp)
+		item($tr("D&evoice","defscript") %:visible,$icon("devoice")) (%:isMeHalfOp)
 		{
 			devoice $0
 		}
 
 		separator
 
-		item($tr("&Kick","defscript") %:visible,110) (%:bCanKB)
+		item($tr("&Kick","defscript") %:visible,$icon("kick")) (%:bCanKB)
 		{
 			foreach(%i,$str.split(",",$0))kick %i
 		}
 
-		item($tr("K&ick","defscript") %:visible $tr("With...","defscript"),110) (%:bCanKB)
+		item($tr("K&ick","defscript") %:visible $tr("With...","defscript"),$icon("kick")) (%:bCanKB)
 		{
 			dialog.textinput -d="$me" -i=110 ($tr("Kick Reason","defscript"),$tr("Enter a kick reason","defscript"),$tr("&Kick","defscript"),$tr("Cancel","defscript"),,$0)
 			{
@@ -1787,22 +1787,22 @@ defpopup(channel)
 			}
 		}
 
-		item($tr("&Ban","defscript") %:visible "("%:itemBanMask")",110) (("%:itemBanMask" != "*!*@*") && %:bCanKB)
+		item($tr("&Ban","defscript") %:visible "("%:itemBanMask")",$icon("kick")) (("%:itemBanMask" != "*!*@*") && %:bCanKB)
 		{
 			ban $mask($0,$option(uintDefaultBanType))
 		}
 
-		item(%:itemBanName %:visible "("%:itemBanNick!*@*")",110) (%:bCanKB)
+		item(%:itemBanName %:visible "("%:itemBanNick!*@*")",$icon("kick")) (%:bCanKB)
 		{
 			ban $0
 		}
 
-		item($tr("Kick/Ban","defscript") %:visible,110) (%:bCanKB)
+		item($tr("Kick/Ban","defscript") %:visible,$icon("kick")) (%:bCanKB)
 		{
 			kb $0
 		}
 
-		item($tr("Kick/Ban","defscript") %:visible $tr("with...","defscript"),110) (%:bCanKB)
+		item($tr("Kick/Ban","defscript") %:visible $tr("with...","defscript"),$icon("kick")) (%:bCanKB)
 		{
 			dialog.textinput -d="$me" -i=110 ($tr("Kick/Ban Reason","defscript"),$tr("Enter a kick/ban reason","defscript"),$tr("&Kick/Ban","defscript"),$tr("Cancel","defscript"),,$0)
 			{
@@ -1815,7 +1815,7 @@ defpopup(channel)
 
 		separator
 
-		item($tr("Configure Ban Mask...","defscript"),20)
+		item($tr("Configure Ban Mask...","defscript"),$icon("options"))
 		{
 			options.edit OptionsWidget_channelAdvanced
 		}
@@ -1823,26 +1823,26 @@ defpopup(channel)
 
 	separator
 
-	item($tr("&Query","defscript") %:visible,47) ($server)
+	item($tr("&Query","defscript") %:visible,$icon("query")) ($server)
 	{
 		query $0
 	}
 
 	separator
 
-	extpopup(C&TCP,ctcp,162) ($server)
+	extpopup(C&TCP,ctcp,$icon("ctcpreplyunknown")) ($server)
 
-	extpopup(&DCC,dcc,325) (!%:multiple && $server)
+	extpopup(&DCC,dcc,$icon("dcc")) (!%:multiple && $server)
 
 	separator
 
-	extpopup($tr("&Registration","defscript"),registration,113) (!%:multiple && $server)
+	extpopup($tr("&Registration","defscript"),registration,$icon("regusers")) (!%:multiple && $server)
 
-	extpopup($tr("&Highlight","defscript"),highlight,269) (!%:multiple && $server)
+	extpopup($tr("&Highlight","defscript"),highlight,$icon("highlighttext")) (!%:multiple && $server)
 
-	extpopup($tr("Ig&nore","defscript"),ignore,203) (!%:multiple && $server)
+	extpopup($tr("Ig&nore","defscript"),ignore,$icon("ignore")) (!%:multiple && $server)
 
-	item($tr("Notify Avatar","defscript"),57) ($server)
+	item($tr("Notify Avatar","defscript"),$icon("avatar")) ($server)
 	{
 		avatar.notify $0
 	}
