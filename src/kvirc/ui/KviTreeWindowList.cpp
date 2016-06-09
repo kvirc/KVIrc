@@ -56,12 +56,14 @@ KviTreeWindowListItem::KviTreeWindowListItem(QTreeWidget * par, KviWindow * wnd)
     : QTreeWidgetItem(par), KviWindowListItem(wnd)
 {
 	applyOptions();
+	captionChanged();
 }
 
 KviTreeWindowListItem::KviTreeWindowListItem(KviTreeWindowListItem * par, KviWindow * wnd)
     : QTreeWidgetItem(par), KviWindowListItem(wnd)
 {
 	applyOptions();
+	captionChanged();
 }
 
 KviTreeWindowListItem::~KviTreeWindowListItem()
@@ -69,7 +71,7 @@ KviTreeWindowListItem::~KviTreeWindowListItem()
 
 void KviTreeWindowListItem::applyOptions()
 {
-	//sort the widget
+	//sort the widget [FIXME: expensive?]
 	treeWidget()->sortItems(0, ((KviTreeWindowListTreeWidget *)treeWidget())->isReverseSort() ? Qt::DescendingOrder : Qt::AscendingOrder);
 }
 
@@ -705,6 +707,8 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 
 		p->setPen(KVI_OPTION_COLOR(iLevel));
 	}
+
+	//qDebug("Draw text in %d,%d,%d,%d (%s)",cRect.left(),cRect.top(),cRect.width(),cRect.height(),szText.toUtf8().data());
 
 	//draw window name
 	p->drawText(cRect, Qt::AlignLeft | Qt::AlignVCenter, szText);
