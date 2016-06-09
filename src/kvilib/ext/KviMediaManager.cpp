@@ -228,23 +228,6 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename, bool bCheck
 #endif
 	}
 
-	if(S_ISDIR(st.st_mode))
-	{
-		// Directory : return default media type
-		KviMediaType * mtd = findMediaTypeByIanaType("inode/directory");
-		if(!mtd)
-		{
-			// Add it
-			mtd = new KviMediaType;
-			mtd->szIanaType = "inode/directory";
-			mtd->szDescription = __tr("Directory");
-			mtd->szCommandline = "dirbrowser.open -m $0";
-			mtd->szIcon = "kvi_dbfolder.png"; // hardcoded ?
-			insertMediaType(mtd);
-		}
-		return mtd;
-	}
-
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	if(S_ISSOCK(st.st_mode))
 	{

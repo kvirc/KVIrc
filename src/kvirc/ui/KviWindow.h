@@ -148,7 +148,7 @@ public:
 		UserWindow = 16,
 		Tool = 17,
 		IOGraph = 18,
-		DirBrowser = 19,
+		DirBrowser = 19,   //!\ no longer exists please reuse entry
 		ScriptEditor = 20,
 		ScriptObject = 21,
 		LogView = 22,
