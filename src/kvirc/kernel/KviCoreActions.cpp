@@ -431,9 +431,9 @@ void register_core_actions(KviActionManager * m)
 
 	SLOT_ACTION(
 	    KVI_COREACTION_QUITKVIRC,
-	    g_pApp,
-	    SLOT(quit()),
-	    __tr2qs("Quit KVIrc"),
+	    g_pMainWindow,
+	    SLOT(close()),
+	    __tr2qs("&Quit KVIrc"),
 	    __tr2qs("Quits KVIrc closing all the current connections"),
 	    KviActionManager::categoryGeneric(),
 	    "kvi_bigicon_quitapp.png",
