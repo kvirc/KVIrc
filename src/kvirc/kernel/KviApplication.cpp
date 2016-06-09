@@ -787,7 +787,6 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 			//KviWindow::DccVideo
 			//KviWindow::Tool
 			//KviWindow::IOGraph
-			//KviWindow::DirBrowser
 			//KviWindow::ScriptEditor
 			//KviWindow::ScriptObject
 			//KviWindow::LogView

@@ -325,14 +325,14 @@ const char * KviWindow::m_typeTable[TypeCount] = {
 	"userwindow",   // 16
 	"tool",         // 17
 	"iograph",      // 18
-	"dirbrowser",   // 19
+	"dirbrowser",   // 19 /!\ no longer exists please reuse entry
 	"scripteditor", // 20
 	"scriptobject", // 21
 	"logview",      // 22
 	"offer",        // 23
 	"debug",        // 24
 	// <------ NEW TYPES GO HERE!
-	"unknown" // 25
+	"unknown"       // 25
 };
 
 const char * KviWindow::typeString()
