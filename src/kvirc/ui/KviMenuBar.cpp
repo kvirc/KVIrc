@@ -185,6 +185,11 @@ void KviMenuBar::setupSettingsPopup(QMenu * pop)
 
 	m_pStatusBarAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::StatusBar)), __tr2qs("Show Status Bar"), m_pFrm, SLOT(toggleStatusBar()));
 	m_pStatusBarAction->setCheckable(true);
+	
+	m_pWindowListAction = opt->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::TreeWindowList)), __tr2qs("Show Tree Window List"), m_pFrm, SLOT(toggleWindowList()));
+	g_pMainWindow->addAction(m_pWindowListAction);
+	m_pWindowListAction->setCheckable(true);
+	m_pWindowListAction->setShortcut(QKeySequence::fromString(KVI_SHORTCUTS_TOGGLE_TREE_LIST));
 
 	opt->addSeparator();
 	// FIXME: #warning "Toggle these items on the fly ?"
@@ -197,15 +202,6 @@ void KviMenuBar::setupSettingsPopup(QMenu * pop)
 	opt->addSeparator();
 	ACTION_POPUP_ITEM(KVI_COREACTION_MANAGETHEMES, opt)
 	ACTION_POPUP_ITEM(KVI_COREACTION_MANAGEADDONS, opt)
-
-	// In 2010 this is not professional :D
-	// The app must take care of saving user options whenever they are changed.
-	//
-	// If you're playing with unstable stuff then use /options.save to obtain
-	// the same effect.
-	//
-	//opt->addSeparator();
-	//opt->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FLOPPY)),__tr2qs("&Save Configuration"),g_pApp,SLOT(saveConfiguration()));
 }
 
 void KviMenuBar::setupScriptingPopup(QMenu * pop)

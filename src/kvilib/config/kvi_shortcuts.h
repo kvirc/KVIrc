@@ -149,6 +149,7 @@
 #endif
 #define KVI_SHORTCUTS_INPUT_REVERSE "Ctrl+R"
 #define KVI_SHORTCUTS_SERVERS "Ctrl+S"
+#define KVI_SHORTCUTS_TOGGLE_TREE_LIST "Ctrl+T"               // Ctrl+T
 #define KVI_SHORTCUTS_INPUT_UNDERLINE QKeySequence::Underline // Ctrl+U
 #define KVI_SHORTCUTS_INPUT_PASTE QKeySequence::Paste         // Ctrl+V
 #define KVI_SHORTCUTS_WIN_CLOSE "Ctrl+W"                      // QKeySequence::Close seems to be problematic

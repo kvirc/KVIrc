@@ -1059,6 +1059,13 @@ void KviMainWindow::toggleMenuBar()
 	}
 }
 
+void KviMainWindow::toggleWindowList()
+{
+	KVI_OPTION_BOOL(KviOption_boolUseTreeWindowList) = !KVI_OPTION_BOOL(KviOption_boolUseTreeWindowList);
+	recreateWindowList();
+	applyOptions();
+}
+
 void KviMainWindow::fillToolBarsPopup(QMenu * p)
 {
 	p->clear();
