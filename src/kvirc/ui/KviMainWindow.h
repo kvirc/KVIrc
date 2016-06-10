@@ -159,7 +159,6 @@ public slots:
 	void executeInternalCommand(int index);
 	void toggleStatusBar();
 	void toggleMenuBar();
-	void toggleWindowList();
 	void customizeToolBars();
 
 protected:
