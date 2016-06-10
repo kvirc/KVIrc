@@ -107,7 +107,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	{
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::History)));
 		m_pHistoryButton->setIcon(is1);
-		KviTalToolTip::add(m_pHistoryButton, __tr2qs("Show history<br>&lt;Ctrl+PageUp&gt;"));
+		KviTalToolTip::add(m_pHistoryButton, __tr2qs("Show history Ctrl+PageUp"));
 		connect(m_pHistoryButton, SIGNAL(clicked()), this, SLOT(historyButtonClicked()));
 	}
 	else
@@ -124,7 +124,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	QIcon is3;
 	is3.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::BigGrin)));
 	m_pIconButton->setIcon(is3);
-	KviTalToolTip::add(m_pIconButton, __tr2qs("Show icons popup<br>&lt;Ctrl+Alt+E&gt;<br>See also /help texticons"));
+	KviTalToolTip::add(m_pIconButton, __tr2qs("Show icons popup Alt+E<br>See also /help texticons"));
 	connect(m_pIconButton, SIGNAL(clicked()), this, SLOT(iconButtonClicked()));
 
 	m_pCommandlineModeButton = new QToolButton(m_pButtonContainer);
@@ -151,7 +151,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	is2.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)), QIcon::Normal, QIcon::Off);
 	m_pMultiEditorButton->setIcon(is2);
 
-	QString szTip = __tr2qs("Multi-line editor<br>&lt;Alt+Return&gt;");
+	QString szTip = __tr2qs("Multi-line editor Alt+Return");
 	KviTalToolTip::add(m_pMultiEditorButton, szTip);
 
 	connect(m_pMultiEditorButton, SIGNAL(toggled(bool)), this, SLOT(multiLineEditorButtonToggled(bool)));
@@ -319,10 +319,10 @@ void KviInput::multiLineEditorButtonToggled(bool bOn)
 		m_pHelpLabel = new QLabel();
 		m_pHelpLabel->setContentsMargins(15, 5, 0, 0);
 
-		QString tmpHelpLabel = __tr2qs("<Ctrl+Return>; submits, <Alt+Return>; hides this editor");
+		QString tmpHelpLabel = __tr2qs("Ctrl+Return; submits contents, Alt+Return; hides this editor");
 #ifdef COMPILE_ON_MAC
-		tmpHelpLabel.replace(QString("<Ctrl+Return>;"), QString("⌘↩"));
-		tmpHelpLabel.replace(QString("<Alt+Return>;"), QString("⌥↩"));
+		tmpHelpLabel.replace(QString("Ctrl+Return;"), QString("⌘↩"));
+		tmpHelpLabel.replace(QString("Alt+Return;"), QString("⌥↩"));
 #endif
 		m_pHelpLabel->setText(tmpHelpLabel);
 		m_pLayout->addWidget(m_pHelpLabel, 0, 0, 1, 1);
@@ -405,7 +405,7 @@ void KviInput::applyOptions()
 		QIcon is1;
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::History)));
 		m_pHistoryButton->setIcon(is1);
-		KviTalToolTip::add(m_pHistoryButton, __tr2qs("Show history<br>&lt;Ctrl+PageUp&gt;"));
+		KviTalToolTip::add(m_pHistoryButton, __tr2qs("Show history Ctrl+PageUp"));
 		connect(m_pHistoryButton, SIGNAL(clicked()), this, SLOT(historyButtonClicked()));
 	}
 	else

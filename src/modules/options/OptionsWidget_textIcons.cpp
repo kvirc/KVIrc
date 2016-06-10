@@ -87,7 +87,7 @@ OptionsWidget_textIcons::OptionsWidget_textIcons(QWidget * parent)
 	m_pTable->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 	mergeTip(m_pTable->viewport(), __tr2qs_ctx("This table contains the text icon associations.<br>"
-	                                           "KVIrc will use them to display the Ctrl+Alt+E escape sequences "
+	                                           "KVIrc will use them to display the Alt+E escape sequences "
 	                                           "and eventually the emoticons.", "options"));
 
 	layout()->addWidget(m_pTable, 0, 0, 1, 3);

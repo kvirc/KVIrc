@@ -80,7 +80,6 @@
 * \def KVI_SHORTCUTS_INPUT_NEXT_CHAR_SELECT Move the selection to the right
 * \def KVI_SHORTCUTS_INPUT_NEXT_WORD Move to the end of the next word
 * \def KVI_SHORTCUTS_INPUT_NEXT_WORD_SELECT Select up to the end of the next word
-* \def KVI_SHORTCUTS_INPUT_UNDERLINE Insert Underline control character
 * \def KVI_SHORTCUTS_INPUT_PASTE Paste the clipboard contents (same as middle mouse click)
 * \def KVI_SHORTCUTS_INPUT_PLAINTEXT Insert the 'non-crypt' (plain text) KVIrc control character used to disable encryption of the current text line
 * \def KVI_SHORTCUTS_INPUT_PREV_CHAR Move the cursor to the left
@@ -161,7 +160,8 @@
 #define KVI_SHORTCUTS_INPUT_COMMANDLINE "Ctrl+Y"               // Ctrl+Y
 #define KVI_SHORTCUTS_INPUT_UNDO QKeySequence::Undo            // Ctrl+Z
 
-#define KVI_SHORTCUTS_INPUT_ICON "Ctrl+Alt+E"                  // Ctrl+Alt+E
+#define KVI_SHORTCUTS_INPUT_ICON "Alt+E"                       // Alt+E
+#define KVI_SHORTCUTS_USERS "Alt+U"                            // Alt+U
 
 #define KVI_SHORTCUTS_AWAY "Ctrl+Shift+A"                      // Ctrl+Shift+A
 #define KVI_SHORTCUTS_EDITORS_TOOLBAR "Ctrl+Shift+B"           // Ctrl+Shift+B
@@ -178,7 +178,6 @@
 #define KVI_SHORTCUTS_EDITORS_RAW "Ctrl+Shift+R"               // Ctrl+Shift+R
 #define KVI_SHORTCUTS_EDITORS_TESTER "Ctrl+Shift+S"            // Ctrl+Shift+S
 #define KVI_SHORTCUTS_THEME "Ctrl+Shift+T"                     // Ctrl+Shift+T
-#define KVI_SHORTCUTS_USERS "Ctrl+Shift+U"                     // Ctrl+Shift+U
 #define KVI_SHORTCUTS_EXEC "Ctrl+Shift+X"                      // Ctrl+Shift+X
 #define KVI_SHORTCUTS_INPUT_REDO QKeySequence::Redo            // Ctrl+Shift+Z
 
@@ -280,7 +279,8 @@
 		[b]Ctrl+"-":[/b] Decrease font size[br]
 		[b]Ctrl+0:[/b] Restore default font (and font size)[br]
 
-		[b]Ctrl+Alt+E:[/b] Open [i]Insert icon[/i] dialog[br]
+		[b]Alt+E:[/b] Open [i]Insert icon[/i] dialog[br]
+		[b]Alt+U:[/b] Open [i]Registered users[/i] dialog[br]
 
 		[b]Ctrl+Shift+A:[/b] Go away/back[br]
 		[b]Ctrl+Shift+B:[/b] Open [i]Manage Toolbars[/i] dialog[br]
@@ -297,7 +297,6 @@
 		[b]Ctrl+Shift+R:[/b] Open Raw events editor[br]
 		[b]Ctrl+Shift+S:[/b] Open Script tester[br]
 		[b]Ctrl+Shift+T:[/b] Open [i]Theme Options[/i] dialog[br]
-		[b]Ctrl+Shift+U:[/b] Open [i]Registered users[/i] dialog[br]
 		[b]Ctrl+Shift+X:[/b] Open [i]Execute Script[/i] dialog[br]
 		[b]Ctrl+Shift+Z:[/b] Redo last action[br]
 
