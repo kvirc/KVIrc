@@ -136,7 +136,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	is0.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::SaySmile)), QIcon::Normal, QIcon::On);
 	is0.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::SayKvs)), QIcon::Normal, QIcon::Off);
 	m_pCommandlineModeButton->setIcon(is0);
-	KviTalToolTip::add(m_pCommandlineModeButton, __tr2qs("User friendly commandline mode<br>See also /help commandline"));
+	KviTalToolTip::add(m_pCommandlineModeButton, __tr2qs("User friendly command-line mode Ctrl+Y<br>See also /help commandline"));
 	
 	if(KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault))
 		m_pCommandlineModeButton->setChecked(true);
@@ -152,6 +152,9 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pMultiEditorButton->setIcon(is2);
 
 	QString szTip = __tr2qs("Multi-line editor Alt+Return");
+#ifdef COMPILE_ON_MAC
+	szTip.replace(QString("Alt+Return;"), QString("⌥↩"));
+#endif
 	KviTalToolTip::add(m_pMultiEditorButton, szTip);
 
 	connect(m_pMultiEditorButton, SIGNAL(toggled(bool)), this, SLOT(multiLineEditorButtonToggled(bool)));
