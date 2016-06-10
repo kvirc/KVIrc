@@ -35,6 +35,7 @@
 #include "KviKvsPopupMenu.h"
 #include "KviMemory.h"
 #include "KviModuleExtension.h"
+#include "KviOptions.h"
 #include "KviActionManager.h"
 #include "KviCoreActionNames.h"
 #include "KviKvsScript.h"
@@ -165,6 +166,7 @@ void KviMenuBar::updateSettingsPopup()
 #ifndef COMPILE_ON_MAC
 	m_pMenuBarAction->setChecked(true);
 #endif
+	m_pWindowListAction->setChecked(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowList));
 }
 
 void KviMenuBar::setupSettingsPopup(QMenu * pop)
