@@ -39,6 +39,7 @@
 #include "KviCoreActionNames.h"
 #include "KviKvsScript.h"
 #include "KviShortcut.h"
+#include "KviOptions.h"
 
 #include <QKeySequence>
 #include <QMenu>
@@ -165,6 +166,7 @@ void KviMenuBar::updateSettingsPopup()
 #ifndef COMPILE_ON_MAC
 	m_pMenuBarAction->setChecked(true);
 #endif
+	m_pWindowListAction->setChecked(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowList));
 }
 
 void KviMenuBar::setupSettingsPopup(QMenu * pop)
