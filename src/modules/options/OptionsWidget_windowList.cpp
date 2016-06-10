@@ -98,7 +98,6 @@ OptionsWidget_windowListTreeBackground::OptionsWidget_windowListTreeBackground(Q
     : KviOptionsWidget(parent)
 {
 	setObjectName("treewindowlist_options_widget");
-
 	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0, 0, 1, 0, Qt::Horizontal, __tr2qs_ctx("Background Colors", "options"));

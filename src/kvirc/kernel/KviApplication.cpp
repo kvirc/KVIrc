@@ -1331,7 +1331,7 @@ void KviApplication::updatePseudoTransparency()
 		else
 #endif // COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
-		    if(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap())
+		if(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap())
 		{
 			createGlobalBackgrounds(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap());
 		}
@@ -1356,7 +1356,6 @@ void KviApplication::updatePseudoTransparency()
 	else
 	{
 		//transparency is disabled
-
 		//destroy pseudo transparency pixmaps
 		destroyPseudoTransparency();
 		//make sure real transparency is disabled

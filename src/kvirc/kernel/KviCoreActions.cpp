@@ -89,7 +89,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 	    KVI_COREACTION_SERVEROPTIONS,
-	    "options.edit -t OptionsWidget_servers",
+	    "options.edit OptionsWidget_servers",
 	    __tr2qs("Configure Servers..."),
 	    __tr2qs("Allows you to configure the servers and eventually to connect to them"),
 	    KviActionManager::categorySettings(),
@@ -122,7 +122,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 	    KVI_COREACTION_IDENTITYOPTIONS,
-	    "options.edit -t OptionsWidget_identity",
+	    "options.edit OptionsWidget_identity",
 	    __tr2qs("Configure Identity..."),
 	    __tr2qs("Allows you to configure nickname, username, avatar etc..."),
 	    KviActionManager::categorySettings(),
@@ -136,7 +136,7 @@ void register_core_actions(KviActionManager * m)
 	    "socketspy.open",
 	    __tr2qs("Show Socket Spy"),
 	    __tr2qs("Shows a window that allows monitoring the socket traffic"),
-	    KviActionManager::categoryScripting(),
+	    KviActionManager::categoryIrc(),
 	    "kvi_bigicon_socketspy.png",
 	    KviIconManager::Spy,
 	    KviAction::NeedsContext,
@@ -166,7 +166,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 	    KVI_COREACTION_GENERALOPTIONS,
-	    "options.dialog -t",
+	    "options.dialog",
 	    __tr2qs("Configure KVIrc..."),
 	    __tr2qs("Shows the general options dialog"),
 	    KviActionManager::categorySettings(),
@@ -177,7 +177,7 @@ void register_core_actions(KviActionManager * m)
 
 	SCRIPT_ACTION(
 	    KVI_COREACTION_THEMEOPTIONS,
-	    "options.dialog -t theme",
+	    "options.dialog theme",
 	    __tr2qs("Configure Theme..."),
 	    __tr2qs("Shows the theme options dialog"),
 	    KviActionManager::categorySettings(),
@@ -378,7 +378,7 @@ void register_core_actions(KviActionManager * m)
 	    "iograph.open",
 	    __tr2qs("Show I/O &Traffic Graph"),
 	    __tr2qs("Shows a graph representing I/O bandwidth traffic"),
-	    KviActionManager::categoryGeneric(),
+	    KviActionManager::categoryIrc(),
 	    "kvi_bigicon_sysmonitor.png",
 	    KviIconManager::SysMonitor,
 	    0,
@@ -435,7 +435,7 @@ void register_core_actions(KviActionManager * m)
 	    SLOT(close()),
 	    __tr2qs("&Quit KVIrc"),
 	    __tr2qs("Quits KVIrc closing all the current connections"),
-	    KviActionManager::categoryGeneric(),
+	    KviActionManager::categoryIrc(),
 	    "kvi_bigicon_quitapp.png",
 	    KviIconManager::QuitApp,
 	    0,
