@@ -58,6 +58,7 @@ protected:
 	// Dynamic actions
 	QAction * m_pMenuBarAction;
 	QAction * m_pStatusBarAction;
+	QAction * m_pWindowListAction;
 	QAction * m_pDisconnectAction;
 	QAction * m_pModulesToolsAction;
 	QAction * m_pActionsToolsAction;
