@@ -2160,14 +2160,20 @@ void KviIrcView::showToolsPopup()
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Search)), __tr2qs("Toggle Search"), this, SLOT(toggleToolWidget()));
 
 		m_pToolsPopup->addSeparator();
+
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)), __tr2qs("Zoom In"), this, SLOT(increaseFontSize())); // We let fly "in" as a capitalized preposition.
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)), __tr2qs("Zoom Out"), this, SLOT(decreaseFontSize()));
-		m_pToolsPopup->addAction(__tr2qs("Choose Temporary Font..."), this, SLOT(chooseFont()));
-		m_pToolsPopup->addAction(__tr2qs("Choose Temporary Background..."), this, SLOT(chooseBackground()));
-		m_pToolsPopup->addAction(__tr2qs("Reset Temporary Background"), this, SLOT(resetBackground()));
-		//		pAction->setEnabled(m_pPrivateBackgroundPixmap != 0);
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Topic)), __tr2qs("Choose Temporary Font..."), this, SLOT(chooseFont()));
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Canvas)), __tr2qs("Choose Temporary Background..."), this, SLOT(chooseBackground()));
+
 		m_pToolsPopup->addSeparator();
-		m_pToolsPopup->addAction(__tr2qs("Clear Buffer"), this, SLOT(clearBuffer()));
+
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)), __tr2qs("Reset Font"), this, SLOT(resetDefaultFont()));
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)), __tr2qs("Reset Background"), this, SLOT(resetBackground()));
+
+		m_pToolsPopup->addSeparator();
+
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Remove)), __tr2qs("Clear Buffer"), this, SLOT(clearBuffer()));
 	}
 	QSize s = m_pToolsPopup->sizeHint();
 
