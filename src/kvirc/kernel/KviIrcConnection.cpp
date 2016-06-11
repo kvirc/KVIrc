@@ -321,7 +321,7 @@ void KviIrcConnection::linkEstablished()
 	{
 		/*
 		 * HACK: this is needed to avoid timeouts connecting to server that does not
-		 * support thye CAP extension (yet). Adding a somewhat broken message to a
+		 * support the CAP extension (yet). Adding a somewhat broken message to a
 		 * CAP LS request will force the server to output an error message.
 		 *
 		 * I'm currently aware of 2 methods:
@@ -331,7 +331,7 @@ void KviIrcConnection::linkEstablished()
 		 * Both method works, but the first method could compromise STARTTLS on some
 		 * server that won't allow you to use tsl if the registration has already started
 		 *
-		 * Please note that irc bouncers are currently broken for this setup: eg. psyBNC
+		 * Please note that IRC bouncers are currently broken for this setup: eg. psyBNC
 		 * will let the user login with a "-" (single dash) nickname or executing any
 		 * invalid command without throwing any error at all.
 		 *
@@ -856,9 +856,9 @@ bool KviIrcConnection::sendData(const char * pcBuffer, int iBuflen)
 	return m_pLink->sendPacket(pData);
 }
 
-//==============================================================================================
+//
 // notify list management
-//==============================================================================================
+//
 
 void KviIrcConnection::delayedStartNotifyList()
 {

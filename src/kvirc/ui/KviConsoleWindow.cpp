@@ -843,7 +843,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow * wnd,
 		{
 			static QString pre1("*");
 			static QString suf1("* ");
-			szMessage = prefix.isEmpty() ? pre1 : prefix;
+			szMessage =  prefix.isEmpty() ? pre1 : prefix;
 			szMessage += szNick;
 			szMessage += suffix.isEmpty() ? suf1 : suffix;
 		}
@@ -851,7 +851,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow * wnd,
 		{
 			static QString pre2("<");
 			static QString suf2("> ");
-			szMessage = prefix.isEmpty() ? pre2 : prefix;
+			szMessage =  prefix.isEmpty() ? pre2 : prefix;
 			szMessage += szNick;
 			szMessage += suffix.isEmpty() ? suf2 : suffix;
 		}

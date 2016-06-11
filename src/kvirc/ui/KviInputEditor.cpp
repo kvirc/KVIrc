@@ -146,15 +146,15 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	m_pIconMenu = nullptr;
 	m_pInputParent = pPar;
 	m_iMaxBufferSize = KVI_INPUT_MAX_BUFFER_SIZE;
-	m_iCursorPosition = 0;  //Index of the char AFTER the cursor
-	m_iSelectionBegin = -1; //Index of the first char in the selection
-	m_iSelectionEnd = -1;   //Index of the last char in the selection
-	m_bIMComposing = false; //Whether the input method is active (composing).
+	m_iCursorPosition = 0;       //Index of the char AFTER the cursor
+	m_iSelectionBegin = -1;      //Index of the first char in the selection
+	m_iSelectionEnd = -1;        //Index of the last char in the selection
+	m_bIMComposing = false;      //Whether the input method is active (composing).
 	// for input method support
-	m_iIMStart = 0;           //Index of the start of the preedit string.
-	m_iIMLength = 0;          //Length of the preedit string.
-	m_iIMSelectionBegin = 0;  //Index of the start of the selection in preedit string.
-	m_iIMSelectionLength = 0; //Length of the selection in preedit string.
+	m_iIMStart = 0;              //Index of the start of the preedit string.
+	m_iIMLength = 0;             //Length of the preedit string.
+	m_iIMSelectionBegin = 0;     //Index of the start of the selection in preedit string.
+	m_iIMSelectionLength = 0;    //Length of the selection in preedit string.
 	m_p->bTextBlocksDirty = true;
 
 	m_bCursorOn = false;         //Cursor state
@@ -210,6 +210,7 @@ KviInputEditor::~KviInputEditor()
 
 	if(m_pUndoStack)
 		delete m_pUndoStack;
+
 	if(m_pRedoStack)
 		delete m_pRedoStack;
 

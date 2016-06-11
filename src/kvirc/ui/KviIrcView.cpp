@@ -1021,9 +1021,7 @@ void KviIrcView::fastScroll(int lines)
 
 void KviIrcView::paintEvent(QPaintEvent * p)
 {
-	//
 	// THIS FUNCTION IS A MONSTER
-	//
 
 	/*
 	 * Profane description: this is ircview's most important function. It takes a lot of cpu cycles to complete, so we want to be sure
@@ -1375,7 +1373,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 	}                                                                                                                                                               \
 	curLeftCoord += _text_width;
 
-			// EOF macro declarations
+	// EOF macro declarations
 
 			if(pCurTextLine == m_pCursorLine)
 			{
@@ -1494,7 +1492,6 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 				}
 				else
 				{
-
 					int wdth = block->block_width;
 					if(wdth < 0)
 						wdth = widgetWidth - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER);
@@ -1575,7 +1572,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 				pa.setPen(pen);
 				pa.drawLine(0, curBottomCoord, widgetWidth, curBottomCoord);
 				//pa.setRasterOp(CopyROP);
-			} // else was partially visible only
+			}       // else was partially visible only
 		}
 
 		pCurTextLine = pCurTextLine->pPrev;
@@ -1671,10 +1668,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 
 void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 {
-	//
 	// Another monster
-	//
-
 	if(maxWidth <= m_iIconWidth)
 		return;
 
@@ -1845,7 +1839,9 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 	ptr->iBlockCount++;
 }
 
-//=============== checkSelectionBlock ===============//
+//
+// checkSelectionBlock
+//
 
 bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line, int bufIndex)
 {
@@ -2070,7 +2066,9 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line, int bufIndex)
 	return false;
 }
 
-//============ recalcFontVariables ==============//
+//
+// recalcFontVariables
+//
 
 void KviIrcView::recalcFontVariables(const QFontMetrics & fm, const QFontInfo & fi)
 {
@@ -2129,7 +2127,9 @@ void KviIrcView::recalcFontVariables(const QFontMetrics & fm, const QFontInfo & 
 	}
 }
 
-//================ resizeEvent ===============//
+//
+// resizeEvent
+//
 
 void KviIrcView::resizeEvent(QResizeEvent *)
 {
@@ -2587,7 +2587,7 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 			}
 			else
 			{
-				/*
+			/*
 			 * Profane description: Once we get here, we know the correct line l, the correct row top coordinate iTop and
 			 * the index of the first chunk in this line i.
 			 * Calculate the left border of this row: if this is not the first one, add any margin.

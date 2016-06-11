@@ -425,8 +425,7 @@ void KviInput::applyOptions()
 
 void KviInput::setFocusProxy(QWidget *)
 {
-	/* do nothing */
-}
+}/* do nothing */
 
 QString KviInput::text()
 {

@@ -80,7 +80,7 @@ extern KVILIB_API kvi_u64_t g_uIncomingTraffic;
 #define MSG_NOSIGNAL 0
 #endif //!MSG_NOSIGNAL
 
-//================================================================================================
+//
 // Constants for kvi_socket_create
 //
 
@@ -93,7 +93,7 @@ extern KVILIB_API kvi_u64_t g_uIncomingTraffic;
 
 #define KVI_SOCKET_PROTO_TCP 0
 
-//================================================================================================
+//
 // kvi_socket_create
 // kvi_socket_open
 //
@@ -121,7 +121,7 @@ inline kvi_socket_t kvi_socket_create(int pf, int type, int proto)
 #endif
 }
 
-//================================================================================================
+//
 // kvi_socket_isValid
 //
 //   Check if a socket is valid or not
@@ -138,7 +138,7 @@ inline bool kvi_socket_isValid(kvi_socket_t sock)
 	return (sock != ((kvi_socket_t)(KVI_INVALID_SOCKET)));
 }
 
-//================================================================================================
+//
 // kvi_socket_destroy
 // kvi_socket_close
 //
@@ -156,7 +156,7 @@ inline void kvi_socket_destroy(kvi_socket_t sock)
 #endif
 }
 
-//================================================================================================
+//
 // kvi_socket_setNonBlocking
 //
 //   Sets the socket in nonBlocking mode. Obviously returns false in case of failure
@@ -172,7 +172,7 @@ inline bool kvi_socket_setNonBlocking(kvi_socket_t sock)
 #endif
 }
 
-//================================================================================================
+//
 // kvi_socket_bind
 //
 //   Standard bind() call on the socket. Returns false in case of failure
@@ -183,7 +183,7 @@ inline bool kvi_socket_bind(kvi_socket_t sock, const struct sockaddr * sa, int s
 	return (::bind(sock, sa, salen) == 0);
 }
 
-//================================================================================================
+//
 // kvi_socket_connect
 //
 //   Starts a connection to the specified remote address
@@ -218,7 +218,7 @@ inline bool kvi_socket_recoverableError(int err)
 #endif
 }
 
-//================================================================================================
+//
 // kvi_socket_accept
 //
 //   Standard accept() call. Returns KVI_INVALID_SOCKET in case of failure
@@ -234,7 +234,7 @@ inline kvi_socket_t kvi_socket_accept(kvi_socket_t sock, struct sockaddr * sa, i
 #endif
 }
 
-//================================================================================================
+//
 // kvi_socket_listen
 //
 //   Standard listen() call. Returns false in case of failure
@@ -246,7 +246,7 @@ inline bool kvi_socket_listen(kvi_socket_t sock, int backlog)
 	return (::listen(sock, backlog) == 0);
 }
 
-//================================================================================================
+//
 // kvi_socket_select
 //
 //   Standard select() call. This is complex so here is a mini-reminder:
@@ -260,7 +260,7 @@ inline int kvi_socket_select(int nhpo, fd_set * r, fd_set * w, fd_set * e, struc
 	return ::select(nhpo, r, w, e, t);
 }
 
-//================================================================================================
+//
 // kvi_socket_send
 // kvi_socket_write
 //
@@ -280,7 +280,7 @@ inline int kvi_socket_send(kvi_socket_t sock, const void * buf, int size)
 #endif
 }
 
-//================================================================================================
+//
 // kvi_socket_recv
 // kvi_socket_read
 //
@@ -302,7 +302,7 @@ inline int kvi_socket_recv(kvi_socket_t sock, void * buf, int maxlen)
 	return iReceived;
 }
 
-//================================================================================================
+//
 // kvi_socket_getsockopt
 //
 //   Standard getsockopt() call. Returns false in case of failure.
@@ -318,7 +318,7 @@ inline bool kvi_socket_getsockopt(kvi_socket_t sock, int level, int optname, voi
 #endif
 }
 
-//================================================================================================
+//
 // kvi_socket_setsockopt
 //
 //   Standard setsockopt() call. Returns false in case of failure.
@@ -334,7 +334,7 @@ inline bool kvi_socket_setsockopt(kvi_socket_t sock, int level, int optname, con
 #endif
 }
 
-//================================================================================================
+//
 // kvi_socket_disableNagle
 //
 //   Disables the nagle algorithm (sets TCP_NODELAY)
@@ -349,7 +349,7 @@ inline bool kvi_socket_disableNagle(kvi_socket_t sock)
 }
 */
 
-//================================================================================================
+//
 // kvi_socket_getsockname
 //
 //   Standard getsockname() call. Returns false in case of failure.

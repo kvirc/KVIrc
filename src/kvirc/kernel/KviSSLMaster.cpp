@@ -191,7 +191,7 @@ namespace KviSSLMaster
 		delete s;
 	}
 
-	/**
+/*
  * Used for $certificate() and $dcc.getSSLCertInfo() function
  */
 	KVIRC_API bool getSSLCertInfo(KviSSLCertificate * pCert, QString szQuery, QString szOptionalParam, KviKvsVariant * pRetBuffer)

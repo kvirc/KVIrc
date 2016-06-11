@@ -118,7 +118,6 @@
 
 KVILIB_API KviRegisteredUserDataBase * g_pRegisteredUserDataBase = nullptr;
 
-//============================================================================================================
 //
 // KviRegisteredUserDb
 //
