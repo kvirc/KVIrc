@@ -27,7 +27,6 @@
 #include "kvi_debug.h"
 #include "KviIconManager.h"
 #include "KviIrcView.h"
-#include "kvi_out.h"
 #include "KviOptions.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
