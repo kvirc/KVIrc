@@ -47,6 +47,7 @@ namespace KviControlCodes
 				case KviControlCodes::Reverse:
 				case KviControlCodes::CryptEscape:
 				case KviControlCodes::CTCP:
+				case KviControlCodes::Icon:
 					if(i != iBegin)
 						szRet += szData.mid(iBegin, i - iBegin);
 					i++;
@@ -57,21 +58,6 @@ namespace KviControlCodes
 						szRet += szData.mid(iBegin, i - iBegin);
 					i++;
 					i = getUnicodeColorBytes(szData, i, &c1, &c2);
-					iBegin = i;
-					break;
-				case KviControlCodes::Icon:
-					if(i != iBegin)
-						szRet += szData.mid(iBegin, i - iBegin);
-					i++;
-					/*
-					* These lines will strip out the first word following the icon escape character
-					while(i < l)
-					{
-						if(szData[i].unicode() == ' ')
-							break;
-						else i++;
-					}
-					*/
 					iBegin = i;
 					break;
 				default:
