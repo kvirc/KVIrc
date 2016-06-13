@@ -356,7 +356,6 @@ bool KvsObject_textedit::functionSetWordWrap(KviKvsObjectFunctionCall * c)
 
 bool KvsObject_textedit::functionWordWrap(KviKvsObjectFunctionCall * c)
 {
-
 	if(!widget())
 		return true;
 	QTextEdit::LineWrapMode mode = ((QTextEdit *)widget())->lineWrapMode();
@@ -370,7 +369,6 @@ bool KvsObject_textedit::functionWordWrap(KviKvsObjectFunctionCall * c)
 	else
 		szWrapMode = "FixedColumnWidth";
 	c->returnValue()->setString(szWrapMode);
-
 	return true;
 }
 
@@ -392,7 +390,6 @@ bool KvsObject_textedit::functionWordWrapWidth(KviKvsObjectFunctionCall * c)
 
 	if(widget())
 		c->returnValue()->setInteger(((QTextEdit *)widget())->lineWrapColumnOrWidth());
-
 	return true;
 }
 
@@ -840,7 +837,6 @@ bool KvsObject_textedit::functionsaveFile(KviKvsObjectFunctionCall * c)
 	bool bRet = KviFileUtils::writeFile(szFile, szData);
 	if(!bRet)
 		c->warning(__tr2qs("Failed to write to file '%Q': the destination couldn't be opened"), &szFile);
-
 	return true;
 }
 

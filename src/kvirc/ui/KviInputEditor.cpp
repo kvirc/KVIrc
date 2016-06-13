@@ -467,7 +467,7 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, Kvi
 			case QChar::Number_Other:
 				if(!pWordBegin && !pNonWordBegin)
 					pNonWordBegin = p; // start a non-word
-				                       // else just go ahead keeping current state
+				                           // else just go ahead keeping current state
 				break;
 			default:
 				if(!pNonWordBegin)
@@ -475,9 +475,9 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, Kvi
 					if(p->unicode() == '\'')
 					{
 						// special case for the ' character which can be part of a word in many languages
-						if(!pWordBegin)        // word not started
+						if(!pWordBegin)            // word not started
 							pNonWordBegin = p; // then start a nonwod
-						                       // else keep current state
+						                           // else keep current state
 					}
 					else
 					{
@@ -485,7 +485,7 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, Kvi
 						{
 							// a word to spellcheck
 							if((p - 1)->unicode() == '\'') // exclude the trailing ' from the word
-								p--;                       // go back one char, so it will become a non-word
+								p--;                   // go back one char, so it will become a non-word
 
 							QString szWord(pWordBegin, p - pWordBegin);
 							ADD_SPELLCHECKER_BLOCK(lBuffer, szWord, pWordBegin - pBufferBegin, true, checkWordSpelling(szWord));
@@ -535,7 +535,7 @@ void KviInputEditor::rebuildTextBlocks()
 	m_p->bTextBlocksDirty = false;
 
 	if(lSpellCheckerBlocks.isEmpty()) // should never happen, but well...
-		return;                       // nothing to do
+		return;                   // nothing to do
 
 #define NOT_CONTROL_CHAR() \
 	(                      \
@@ -588,7 +588,6 @@ void KviInputEditor::rebuildTextBlocks()
 			}
 
 			// control char
-
 			switch(c)
 			{
 				case KviControlCodes::Bold:
@@ -730,8 +729,7 @@ void KviInputEditor::rebuildTextBlocks()
 
 				if(m_iSelectionEnd >= iCurEnd)
 				{
-					// selection ends after or at the end of this block
-				}
+				}	// selection ends after or at the end of this block
 				else
 				{
 					// selection ends in the middle of the block
@@ -928,9 +926,7 @@ void KviInputEditor::drawContents(QPainter * p)
 
 				if(pBlock->uFlags & KviInputEditorTextBlock::IsSpellingMistake)
 				{
-					p->setPen(QPen(Qt::red, 1));
-
-					// red overlay
+					p->setPen(QPen(Qt::red, 1)); // red overlay
 					int iY = iTextBaseline + fm->descent() - 1;
 					p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iY - iTop), QColor(255, 0, 0, 30)); // alpha = 30
 					p->drawLine(QPointF(fCurX, iY), QPointF(fCurX + pBlock->fWidth, iY));
@@ -1116,7 +1112,6 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 		pAction->setEnabled(false);
 	else
 		pAction->setEnabled(!m_bReadOnly);
-
 	if(m_bSpSlowFlag)
 		pAction = g_pInputPopup->addAction(__tr2qs("Stop Paste"), this, SLOT(stopPasteSlow())); /*G&N 2005*/
 
@@ -3428,5 +3423,5 @@ void KviInputEditor::toggleCommandMode()
 
 void KviInputEditor::dummy()
 {
-	// this function does nothing. check the header file for explanation
-}
+} // this function does nothing. check the header file for explanation
+

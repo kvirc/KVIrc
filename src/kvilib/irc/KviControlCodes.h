@@ -159,7 +159,7 @@ namespace KviControlCodes
 		Reset = 0x0f,       /**< Reset */
 		Reverse = 0x16,     /**< Reverse */
 		Icon = 0x1c,        /**< Icon, KVIrc control code */
-		Italic = 0x1d,
+		Italic = 0x1d,      /**< Italic */
 		CryptEscape = 0x1e, /**< Crypt escape, KVIrc control code */
 		Underline = 0x1f    /**< Underline */
 	};
