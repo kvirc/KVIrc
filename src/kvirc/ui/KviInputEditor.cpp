@@ -1147,8 +1147,7 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 	}
 	else
 	{
-		pAction = g_pInputPopup->addAction(
-		    __tr2qs("Correct Spelling"));
+		pAction = g_pInputPopup->addAction(__tr2qs("Correct Spelling"));
 		pAction->setEnabled(false);
 	}
 #endif
@@ -1219,8 +1218,7 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 
 	if(!pCurrentBlock->bSpellCheckable)
 	{
-		pLabel->setText(__tr2qs("Spelling Checker"));
-
+		pLabel->setText(__tr2qs("Spell Checker"));
 		m_SpellCheckerPopup.addAction(__tr2qs("No Suggestions Available"))->setEnabled(false);
 	}
 	else
