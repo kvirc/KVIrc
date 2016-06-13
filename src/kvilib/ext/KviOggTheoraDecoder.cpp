@@ -22,18 +22,18 @@
 //
 //   Based on the example encoder/player from Xiph.Org Foundation:
 //=============================================================================
+
 //
 //  function: example encoder application; makes an Ogg Theora/Vorbis
 //            file from YUV4MPEG2 and WAV input
 //  last mod: $Id: encoder_example.c 16517 2009-08-25 19:48:57Z giles $
 //
-//=============================================================================
+
 //
 //  function: example SDL player application; plays Ogg Theora files (with
 //            optional Vorbis audio second stream)
 //  last mod: $Id: player_example.c 16628 2009-10-10 05:50:52Z gmaxwell $
 //
-//=============================================================================
 
 #ifndef COMPILE_DISABLE_OGG_THEORA
 

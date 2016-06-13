@@ -1,6 +1,5 @@
 #ifndef _OPTW_TOOLS_H_
 #define _OPTW_TOOLS_H_
-
 //=============================================================================
 //
 //   File : OptionsWidget_tools.h

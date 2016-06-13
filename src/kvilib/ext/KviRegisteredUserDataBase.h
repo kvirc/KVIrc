@@ -1,6 +1,6 @@
 #ifndef _KVI_REGUSERSDB_H_
 #define _KVI_REGUSERSDB_H_
-//=================================================================================================
+//=============================================================================
 //
 //   File : KviRegisteredUserDataBase.h
 //   Creation date : Sat Sep 09 2000 15:30:56 by Szymon Stefanek
@@ -22,7 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
-//=================================================================================================
+//=============================================================================
 
 //
 // REGISTERED USERS

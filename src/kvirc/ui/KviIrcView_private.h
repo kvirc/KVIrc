@@ -28,9 +28,9 @@
 
 #include <QString>
 
-//=============================================================================
+//
 // Internal data structures
-//=============================================================================
+//
 
 // Force the structs to be packed...
 #ifdef COMPILE_ON_WINDOWS
@@ -148,9 +148,9 @@ typedef struct _KviIrcViewWrappedBlockSelectionInfoTag
 #undef _KVI_PACKED
 #endif //!COMPILE_ON_WINDOWS
 
-//=========================================================================================================
+//
 // Screen layout
-//=========================================================================================================
+//
 
 //FIRST LINE (prev_line = 0) <---m_pFirstLine
 //LINE

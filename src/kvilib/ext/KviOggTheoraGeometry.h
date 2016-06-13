@@ -1,6 +1,5 @@
 #ifndef _KVIOGGTHEORAGEOMETRY_H_
 #define _KVIOGGTHEORAGEOMETRY_H_
-
 //=============================================================================
 //
 //   File : KviOggTheoraGeometry.h

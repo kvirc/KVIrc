@@ -1,6 +1,5 @@
 #ifndef _KVI_NOTIFYLIST_H_
 #define _KVI_NOTIFYLIST_H_
-
 //=============================================================================
 //
 //   File : KviNotifyList.h

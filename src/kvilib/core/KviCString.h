@@ -43,7 +43,6 @@
 #include "kvi_stdarg.h"
 
 //
-//  sigh...
 //  IRC is not UNICODE ...(yet) :(
 //
 
@@ -91,7 +90,6 @@ __KVI_EXTERN KVILIB_API kvi_wslen_t kvi_wstrlen(const kvi_wchar_t * str);
 __KVI_EXTERN KVILIB_API int kvi_wvsnprintcf(kvi_wchar_t * buffer, kvi_wslen_t len, const char * fmt, kvi_va_list list);
 __KVI_EXTERN KVILIB_API int kvi_wvsnprintf(kvi_wchar_t * buffer, kvi_wslen_t len, const kvi_wchar_t * fmt, kvi_va_list list);
 
-//=============================================================================
 //
 // A simple string class.<br>
 // -No data sharing.<br>
@@ -100,7 +98,6 @@ __KVI_EXTERN KVILIB_API int kvi_wvsnprintf(kvi_wchar_t * buffer, kvi_wslen_t len
 // -(Maybe)Unsafe :)<br>
 // WARNING : Handle with care and use at own risk :)<br>
 //
-//=============================================================================
 
 class KVILIB_API KviCString : public KviHeapObject
 {
@@ -114,10 +111,7 @@ public:
 		Sprintf
 	};
 
-	//=============================================================================
 	// Constructors
-	//=============================================================================
-
 	// Empty string == "", len = 0, 1 byte allocated
 	KviCString();
 
@@ -164,10 +158,8 @@ public:
 	int m_len;    // string data length not including the terminator
 
 public:
-	//=============================================================================
-	// Basic const interface (read stuff)
-	//=============================================================================
 
+	// Basic const interface (read stuff)
 	// Internal data buffer
 	char * ptr() const { return m_ptr; };
 	// Length: fast, cached
@@ -209,10 +201,7 @@ public:
 	KviCString leftToLast(char c, bool bIncluded = false) const;
 	//	KviCString leftToFirst(const char * str); const;
 
-	//=============================================================================
 	// Non-const interface (write stuff)
-	//=============================================================================
-
 	// Null terminator is NOT included in len
 	KviCString & setLen(int len);
 
@@ -300,10 +289,7 @@ public:
 	bool equalsCIN(const char * other, int len) const { return kvi_strEqualCIN(m_ptr, other, len); };
 	bool equalsCSN(const char * other, int len) const { return kvi_strEqualCSN(m_ptr, other, len); };
 
-	//=============================================================================
 	// HEX and Base64 stuff
-	//=============================================================================
-
 	// HEX transforms functions
 	void bufferToHex(const char * buffer, int len);
 	// Allocates the needed buffer and returns the allocated length,
@@ -319,10 +305,7 @@ public:
 	// frees a buffer allocated by hexToBuffer or base64ToBuffer
 	static void freeBuffer(char * buffer);
 
-	//=============================================================================
 	// Splitters
-	//=============================================================================
-
 	// cut
 	KviCString & cutLeft(int len);  // kills the first len characters
 	KviCString & cutRight(int len); // kills the last len characters
@@ -361,10 +344,8 @@ public:
 
 	// either "truncate to" or "add padding up" to iLen characters.
 	KviCString & padRight(int iLen, const char c = '\0');
-	//=============================================================================
-	// Tokenize
-	//=============================================================================
 
+	// Tokenize
 	// Extracts (copy to str and remove) a token from this string,<br>
 	// and returns true if there are more tokens to extract<br>
 	// Does not strip initial separators!!<br>
@@ -388,10 +369,7 @@ public:
 	// of the buffer (after the last string)
 	void joinFromArray(KviCString ** strings, const char * sep = 0, bool bLastSep = false);
 
-	//=============================================================================
 	// Utils
-	//=============================================================================
-
 	// encodes chars that have nonzero in the jumptable
 	// into %HH equivalents
 	KviCString & hexEncodeWithTable(const unsigned char table[256]);
@@ -399,10 +377,7 @@ public:
 	KviCString & hexDecode(const char * pFrom);
 	KviCString & hexDecode() { return hexDecode(m_ptr); };
 
-	//=============================================================================
 	// Contains / occurrence count
-	//=============================================================================
-
 	// Returns true if at least one occurrence of str is found
 	bool contains(const char * str, bool caseS = true) const;
 	// Returns true if at least one occurrence of character c is found in this string
@@ -413,10 +388,7 @@ public:
 	// Returns the number of occurrences of character c in this string
 	int occurrences(char c, bool caseS = true) const;
 
-	//=============================================================================
 	// Find
-	//=============================================================================
-
 	// Finds the first occurrence of the character c in this string,<br>
 	// and returns its zero-based index or -1 if c can not be found.<br>
 	// c can NOT be '\0' here.
@@ -437,10 +409,7 @@ public:
 	int find(const char * str, int startIdx, bool caseS = true) const;
 	int findRev(const char * str, int startIdx, bool caseS = true) const;
 
-	//=============================================================================
 	// Numbers
-	//=============================================================================
-
 	// everything in base 10.... no overflow checks here
 	long toLong(bool * bOk = 0) const;
 	unsigned long toULong(bool * bOk = 0) const;
@@ -478,18 +447,14 @@ public:
 	// this if often useful!
 	static KviCString & emptyString();
 
-	//=============================================================================
 	// Dead interface
-	//=============================================================================
 
 	// Transform a pointer to a string with all 0 and 1
 	// void pointerToBitString(const void * ptr);
 	// Get a pointer from a string all of 0 and 1 : return 0 if invalid
 	// void * bitStringToPointer();
 
-	//=============================================================================
 	// "External string" helper functions
-	//=============================================================================
 
 	// FIXME: Should it be KviCStringExt::contains namespace ?
 	static bool ext_contains(const char * data, const char * item, bool caseS = true);

@@ -1,6 +1,5 @@
 #ifndef _KVI_IRCUSER_ENTRY_H_
 #define _KVI_IRCUSER_ENTRY_H_
-
 //=============================================================================
 //
 //   File : KviIrcUserEntry.h

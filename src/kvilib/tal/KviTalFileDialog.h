@@ -1,6 +1,5 @@
 #ifndef _KVI_TAL_FILEDIALOG_H_
 #define _KVI_TAL_FILEDIALOG_H_
-
 //=============================================================================
 //
 //   File : KviTalFileDialog.h

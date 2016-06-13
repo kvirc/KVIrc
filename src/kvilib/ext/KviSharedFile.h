@@ -1,6 +1,5 @@
 #ifndef _KVISHAREDFILE_H_
 #define _KVISHAREDFILE_H_
-
 //=============================================================================
 //
 //   File : KviSharedFile.h

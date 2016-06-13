@@ -24,7 +24,9 @@
 //
 //=============================================================================
 
+//
 // this file was originally part of KviRegisteredUserDataBase.h
+//
 
 #include "kvi_settings.h"
 #include "KviHeapObject.h"

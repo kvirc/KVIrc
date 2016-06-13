@@ -1,6 +1,5 @@
 #ifndef _KVIDEBUGCONTEXT_H_
 #define _KVIDEBUGCONTEXT_H_
-
 //=============================================================================
 //
 //   File : KviDebugContext.h

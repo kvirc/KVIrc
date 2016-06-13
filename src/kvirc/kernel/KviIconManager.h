@@ -1,6 +1,5 @@
 #ifndef _KVI_ICONMANAGER_H_
 #define _KVI_ICONMANAGER_H_
-
 //=============================================================================
 //
 //   File : KviIconManager.h

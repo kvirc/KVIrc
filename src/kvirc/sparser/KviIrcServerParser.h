@@ -1,6 +1,5 @@
 #ifndef _KVI_SPARSER_H_
 #define _KVI_SPARSER_H_
-
 //=============================================================================
 //
 //   File : KviIrcServerParser.h

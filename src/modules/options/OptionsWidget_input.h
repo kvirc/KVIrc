@@ -1,6 +1,5 @@
 #ifndef _OPTW_INPUT_H_
 #define _OPTW_INPUT_H_
-
 //=============================================================================
 //
 //   File : OptionsWidget_input.h

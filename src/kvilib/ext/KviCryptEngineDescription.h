@@ -1,6 +1,5 @@
 #ifndef _KVI_CRYPT_ENGINE_DESC_H_
 #define _KVI_CRYPT_ENGINE_DESC_H_
-
 //=============================================================================
 //
 //   File : KviCryptEngineManager.h
@@ -25,7 +24,9 @@
 //
 //=============================================================================
 
+//
 // this file was originally part of KviCryptEngine.h
+//
 
 #include "kvi_settings.h"
 #include "KviHeapObject.h"

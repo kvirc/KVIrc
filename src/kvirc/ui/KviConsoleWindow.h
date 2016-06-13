@@ -63,11 +63,9 @@ class KviChannelWindow;
 class KviQueryWindow;
 #endif
 
-//=================================================================================================
 //
 // The console window
 //
-//=================================================================================================
 
 #define KVI_CONSOLE_FLAG_FIRSTINAPP 1
 #define KVI_CONSOLE_FLAG_FIRSTINFRAME 2

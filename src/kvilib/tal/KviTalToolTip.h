@@ -1,6 +1,5 @@
 #ifndef _KVI_TAL_TOOLTIP_H_
 #define _KVI_TAL_TOOLTIP_H_
-
 //=============================================================================
 //
 //   File : KviTalToolTip.h

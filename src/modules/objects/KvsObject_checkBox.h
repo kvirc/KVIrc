@@ -1,6 +1,5 @@
 #ifndef _CLASS_CHECKBOX_H_
 #define _CLASS_CHECKBOX_H_
-
 //=============================================================================
 //
 //   File : KvsObject_checkBox.h

@@ -1,6 +1,5 @@
 #ifndef _KVI_CRYPT_ENGINE_H_
 #define _KVI_CRYPT_ENGINE_H_
-
 //=============================================================================
 //
 //   File : KviCryptEngine.h

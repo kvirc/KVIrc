@@ -1,6 +1,5 @@
 #ifndef _KVIPIXMAPUTILS_H_
 #define _KVIPIXMAPUTILS_H_
-
 //=============================================================================
 //
 //   File : KviPixmapUtils.h

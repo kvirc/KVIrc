@@ -1,6 +1,6 @@
 #ifndef _KVI_POINTERLIST_H_
 #define _KVI_POINTERLIST_H_
-//===============================================================================
+//=============================================================================
 //
 //   File : KviPointerList.h
 //   Creation date : Tue Jul 6 1999 14:52:20 by Szymon Stefanek
@@ -22,14 +22,14 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
-//===============================================================================
+//=============================================================================
+
 //
 //   C++ Template based double linked pointer list class
 //   Original ss_list.h Created on 10 Dec 2001
 //   Copyright (C) 2001-2010 Szymon Stefanek (pragma at kvirc dot net)
 //   Added to KVIrc on 02 Jan 2008.
 //
-//===============================================================================
 
 /**
 * \file KviPointerList.h

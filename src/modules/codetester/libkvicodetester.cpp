@@ -1,4 +1,4 @@
-//===============================================================================
+//=============================================================================
 //
 //   File : libkvicodetester.cpp
 //   Creation date : Mon 23 Dec 2002 20:23:59 2002 GMT by Szymon Stefanek
@@ -20,7 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
-//===============================================================================
+//=============================================================================
 
 #include "CodeTesterWindow.h"
 

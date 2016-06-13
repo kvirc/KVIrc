@@ -1,6 +1,5 @@
 #ifndef _TC_KTORRENTDCOPINTERFACE_H_
 #define _TC_KTORRENTDCOPINTERFACE_H_
-
 //=============================================================================
 //
 //   DBus interface for KTorrent client.

@@ -1,6 +1,5 @@
 #ifndef _KVI_MODEW_H_
 #define _KVI_MODEW_H_
-
 //============================================================================
 //
 //   File : KviModeWidget.h

@@ -1,6 +1,5 @@
 #ifndef _KVI_TOOLWINDOWS_CONTAINER_H_
 #define _KVI_TOOLWINDOWS_CONTAINER_H_
-
 //=============================================================================
 //
 //   File : KviWindowToolWidget.h

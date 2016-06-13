@@ -1,4 +1,4 @@
-//================================================================================
+//==============================================================================
 //
 //   File : KviRegisteredUserDataBase.cpp
 //   Creation date : Sat Sep 09 2000 15:46:12 by Szymon Stefanek
@@ -20,7 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
-//================================================================================
+//==============================================================================
 
 #define _KVI_REGUSERDB_CPP_
 

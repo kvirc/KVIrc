@@ -1,7 +1,6 @@
 #ifndef _OPTW_WINDOWLIST_H_
 #define _OPTW_WINDOWLIST_H_
-
-//===============================================================================
+//=============================================================================
 //
 //   File : OptionsWidget_windowList.h
 //   Creation date : Wed Jan 16 04:30:41 2002 GMT by Szymon Stefanek
@@ -23,7 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
-//===============================================================================
+//=============================================================================
 
 #include "KviOptionsWidget.h"
 

@@ -1,6 +1,5 @@
 #ifndef _KVI_MEDIATYPE_H_
 #define _KVI_MEDIATYPE_H_
-
 //=============================================================================
 //
 //   File : KviMediaType.h

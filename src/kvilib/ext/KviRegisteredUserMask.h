@@ -1,6 +1,5 @@
 #ifndef _KVIREGMASK_H_
 #define _KVIREGMASK_H_
-
 //=============================================================================
 //
 //   File : KviRegisteredUserMask.h

@@ -1,6 +1,5 @@
 #ifndef _OPTW_INTERFACEFEATURES_H_
 #define _OPTW_INTERFACEFEATURES_H_
-
 //=============================================================================
 //
 //   File : OptionsWidget_interfaceFeatures.h

@@ -1,6 +1,5 @@
 #ifndef _KVI_TAL_HBOX_H_
 #define _KVI_TAL_HBOX_H_
-
 //=============================================================================
 //
 //   File : KviTalHBox.h

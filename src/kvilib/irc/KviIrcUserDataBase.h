@@ -1,6 +1,5 @@
 #ifndef _KVI_IRCUSERDB_H_
 #define _KVI_IRCUSERDB_H_
-
 //=============================================================================
 //
 //   File : KviIrcUserDataBase.h

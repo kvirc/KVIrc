@@ -1,6 +1,5 @@
 #ifndef _KVI_PROXYDB_H_
 #define _KVI_PROXYDB_H_
-
 //=============================================================================
 //
 //   File : KviProxyDataBase.h

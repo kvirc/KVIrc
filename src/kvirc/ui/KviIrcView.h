@@ -178,7 +178,6 @@ public:
 	void setPrivateBackgroundPixmap(const QPixmap & pixmap, bool bRepaint = true);
 	bool hasPrivateBackgroundPixmap() { return (m_pPrivateBackgroundPixmap != 0); };
 
-	//==============================================================================================
 	// Logging
 	// Stops previous logging session too...
 	bool startLogging(const QString & fname = QString(), bool bPrependCurBuffer = false);
@@ -187,7 +186,6 @@ public:
 	void getLogFileName(QString & buffer);
 	void add2Log(const QString & szBuffer, int iMsgType = 0, bool bPrependDate = false);
 
-	//==============================================================================================
 	// Channel view splitting
 	void setMasterView(KviIrcView * v);
 	void splitMessagesTo(KviIrcView * v);

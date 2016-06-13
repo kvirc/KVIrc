@@ -1,6 +1,5 @@
 #ifndef _KVI_STRINGCONVERSION_H_
 #define _KVI_STRINGCONVERSION_H_
-
 //=============================================================================
 //
 //   File : KviStringConversion.h

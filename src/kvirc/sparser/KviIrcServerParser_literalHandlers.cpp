@@ -1,4 +1,4 @@
-//===============================================================================
+//=============================================================================
 //
 //   File : KviIrcServerParser_literalHandlers.cpp
 //   Creation date : Thu Aug 3 2000 01:29:12 by Szymon Stefanek
@@ -21,7 +21,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
-//===============================================================================
+//=============================================================================
 
 #include "KviIrcServerParser.h"
 #include "KviWindow.h"

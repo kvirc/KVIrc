@@ -1,6 +1,5 @@
 #ifndef _KVI_TAL_LISTWIDGET_H_
 #define _KVI_TAL_LISTWIDGET_H_
-
 //=============================================================================
 //
 //   File : KviTalListWidget.h

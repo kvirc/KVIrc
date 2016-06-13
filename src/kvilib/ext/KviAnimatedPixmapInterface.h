@@ -1,6 +1,5 @@
 #ifndef _KVIANIPIXINTERFACE_H_
 #define _KVIANIPIXINTERFACE_H_
-
 //=============================================================================
 //
 //   File : KviAnimatedPixmapInterface.h

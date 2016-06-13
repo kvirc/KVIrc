@@ -22,11 +22,11 @@
 //
 //=============================================================================
 
-//=============================================================================
+//
 // C memory allocation routines
 // This stuff is rather unused, because in normal compilations
 // KviMemory, kvi_free and kvi_realloc are macros (see KviMemory.h)
-//=============================================================================
+//
 
 #define _KVI_MALLOC_CPP_
 #include "KviMemory.h"
@@ -441,13 +441,11 @@ namespace KviMemory
 	//
 	//=============================================================================
 
-	//=============================================================================
 	//
 	//   Inline assembly implementations of the commonly used string functions
 	//   These will work only on i386 based machines and can be compiled
 	//   only by gcc
 	//
-	//=============================================================================
 
 	inline bool kvi_strEqualCS(const char * pcStr1, const char * pcStr2)
 	{

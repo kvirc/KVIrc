@@ -1,6 +1,5 @@
 #ifndef _OPTW_SERVERS_H_
 #define _OPTW_SERVERS_H_
-
 //=============================================================================
 //
 //   File : OptionsWidget_servers.h

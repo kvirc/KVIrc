@@ -1,6 +1,5 @@
 #ifndef _PERLCOREINTERFACE_H_
 #define _PERLCOREINTERFACE_H_
-
 //=============================================================================
 //
 //   File : perlcoreinterface.h

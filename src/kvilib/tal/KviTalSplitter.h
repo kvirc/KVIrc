@@ -1,6 +1,5 @@
 #ifndef _KVI_TAL_SPLITTER_H_
 #define _KVI_TAL_SPLITTER_H_
-
 //=============================================================================
 //
 //   File : KviTalSplitter.cpp

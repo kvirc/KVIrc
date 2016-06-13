@@ -1,6 +1,5 @@
 #ifndef _PYTHONCOREINTERFACE_H_
 #define _PYTHONCOREINTERFACE_H_
-
 //=============================================================================
 //
 //   File : pythoncoreinterface.h

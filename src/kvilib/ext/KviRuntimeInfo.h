@@ -1,6 +1,5 @@
 #ifndef _KVI_OSINFO_H_
 #define _KVI_OSINFO_H_
-
 //=============================================================================
 //
 //   File : KviRuntimeInfo.h

@@ -1,6 +1,5 @@
 #ifndef _KVI_FILETRANSFER_H_
 #define _KVI_FILETRANSFER_H_
-
 //=============================================================================
 //
 //   File : KviFileTransfer.h

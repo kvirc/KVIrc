@@ -1,6 +1,5 @@
 #ifndef _KVI_USERACTION_H_
 #define _KVI_USERACTION_H_
-
 //=============================================================================
 //
 //   File : KviUserAction.h

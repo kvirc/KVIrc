@@ -1,6 +1,5 @@
 #ifndef _KVI_SETTINGS_H_
 #define _KVI_SETTINGS_H_
-
 //=============================================================================
 //
 //   File : kvi_settings.h

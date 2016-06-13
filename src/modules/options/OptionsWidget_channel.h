@@ -23,10 +23,10 @@
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
 //=============================================================================
+
 //
 // This file was originally part of OptionsWidget_irc.h
 //
-//=============================================================================
 
 #include "KviOptionsWidget.h"
 

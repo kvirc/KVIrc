@@ -1,6 +1,5 @@
 #ifndef _KVI_BYTEORDER_H_
 #define _KVI_BYTEORDER_H_
-
 //=============================================================================
 //
 //   File : KviByteOrder.h

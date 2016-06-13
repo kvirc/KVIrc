@@ -1,6 +1,5 @@
 #ifndef _KVI_TAL_TABLEWIDGET_H_
 #define _KVI_TAL_TABLEWIDGET_H_
-
 //=============================================================================
 //
 //   File : KviTalTableWidget.h

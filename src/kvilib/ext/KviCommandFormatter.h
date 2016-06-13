@@ -1,6 +1,5 @@
 #ifndef _KVI_CMDFORMATTER_H_
 #define _KVI_CMDFORMATTER_H_
-
 //=============================================================================
 //
 //   File : KviCommandFormatter.h

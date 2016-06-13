@@ -1,6 +1,5 @@
 #ifndef _OPTW_IDENTITY_H_
 #define _OPTW_IDENTITY_H_
-
 //=============================================================================
 //
 //   File : OptionsWidget_identity.h

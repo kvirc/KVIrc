@@ -1,6 +1,5 @@
 #ifndef _KVI_TAL_DELEGATES_H_
 #define _KVI_TAL_DELEGATES_H_
-
 //=============================================================================
 //
 //   File : KviTalIconAndRichTextItemDelegate.h

@@ -1,6 +1,5 @@
 #ifndef _OPTW_AVATAR_H_
 #define _OPTW_AVATAR_H_
-
 //=============================================================================
 //
 //   File : OptionsWidget_avatar.cpp

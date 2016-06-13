@@ -1,6 +1,5 @@
 #ifndef _KVIREGCHANDB_H_
 #define _KVIREGCHANDB_H_
-
 //=============================================================================
 //
 //   File : KviRegisteredChannelDataBase.h

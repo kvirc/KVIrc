@@ -1,6 +1,5 @@
 #ifndef _KVI_IRCSERVER_H_
 #define _KVI_IRCSERVER_H_
-
 //=============================================================================
 //
 //   File : KviIrcServer.h

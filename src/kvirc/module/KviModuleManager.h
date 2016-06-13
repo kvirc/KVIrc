@@ -1,6 +1,5 @@
 #ifndef _KVI_MODULEMANAGER_H_
 #define _KVI_MODULEMANAGER_H_
-
 //=============================================================================
 //
 //   File : KviModuleManager.h

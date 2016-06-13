@@ -23,10 +23,10 @@
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
 //=============================================================================
+
 //
 // This file was originally named kvi_appbase_kde.h, created on 1999
 //
-//=============================================================================
 
 /**
 * \file KviTalApplication.h

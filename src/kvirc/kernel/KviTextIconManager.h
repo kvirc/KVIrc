@@ -1,6 +1,5 @@
 #ifndef _KVI_TEXTICONMANAGER_H_
 #define _KVI_TEXTICONMANAGER_H_
-
 //=============================================================================
 //
 //   File : KviTextIconManager.h

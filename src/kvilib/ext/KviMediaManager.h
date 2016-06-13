@@ -1,6 +1,5 @@
 #ifndef _KVI_MEDIAMANAGER_H_
 #define _KVI_MEDIAMANAGER_H_
-
 //=============================================================================
 //
 //   File : KviMediaManager.h

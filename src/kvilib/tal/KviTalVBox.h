@@ -1,6 +1,5 @@
 #ifndef _KVI_TAL_VBOX_H_
 #define _KVI_TAL_VBOX_H_
-
 //=============================================================================
 //
 //   File : KviTalVBox.h

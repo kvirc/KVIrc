@@ -1,6 +1,5 @@
 #ifndef _OPTW_IRCVIEW_H_
 #define _OPTW_IRCVIEW_H_
-
 //=============================================================================
 //
 //   File : OptionsWidget_ircView.h

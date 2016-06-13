@@ -1,6 +1,5 @@
 #ifndef _TC_INTERFACE_H_
 #define _TC_INTERFACE_H_
-
 //=============================================================================
 //
 //   Common interface for BitTorrent clients.

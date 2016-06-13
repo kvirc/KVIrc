@@ -1,6 +1,5 @@
 #ifndef _KVI_TAL_WIZARD_H_
 #define _KVI_TAL_WIZARD_H_
-
 //=============================================================================
 //
 //   File : KviTalWizard.h

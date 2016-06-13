@@ -1,6 +1,5 @@
 #ifndef _KVI_TAL_TABDIALOG_H_
 #define _KVI_TAL_TABDIALOG_H_
-
 //=============================================================================
 //
 //   File : KviTalTabDialog.h

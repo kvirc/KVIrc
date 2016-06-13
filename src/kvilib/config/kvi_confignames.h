@@ -1,6 +1,5 @@
 #ifndef _KVI_CONFIGNAMES_H_
 #define _KVI_CONFIGNAMES_H_
-
 //=============================================================================
 //
 //   File : kvi_confignames.h

@@ -1,6 +1,5 @@
 #ifndef _CLASS_COMBOBOX_H_
 #define _CLASS_COMBOBOX_H_
-
 //=============================================================================
 //
 //   File : KvsObject_comboBox.h

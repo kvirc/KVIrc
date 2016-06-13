@@ -1,6 +1,5 @@
 #ifndef _KVI_TAL_GROUPBOX_H_
 #define _KVI_TAL_GROUPBOX_H_
-
 //=============================================================================
 //
 //   File : KviTalGroupBox.h

@@ -1,6 +1,5 @@
 #ifndef _OPTW_NOTIFIER_H_
 #define _OPTW_NOTIFIER_H_
-
 //=============================================================================
 //
 //   File : OptionsWidget_notifier.h

@@ -1,6 +1,5 @@
 #ifndef _KVIREGUSERGROUP_H_
 #define _KVIREGUSERGROUP_H_
-
 //=============================================================================
 //
 //   File : KviRegisteredUserGroup.h

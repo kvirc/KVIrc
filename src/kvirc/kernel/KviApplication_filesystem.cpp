@@ -385,7 +385,8 @@ void KviApplication::completeDirectory(const QString & word, KviPointerList<QStr
 	}
 }
 
-//============= getChannelDumpLogFileName ==============//
+//
+// getChannelDumpLogFileName
 //
 // Returns a valid filename for the channel dump log
 //
@@ -409,7 +410,8 @@ void KviApplication::getChannelDumpLogFileName(QString & szStr)
 	KviFileUtils::adjustFilePath(szStr);
 }
 
-//========================= findImage ===========================//
+//
+// findImage
 //
 // Find a file inside the default "Image" directories
 // This should be thread safe (and in fact IS used by other threads)
@@ -686,7 +688,8 @@ bool KviApplication::findAudioFile(QString & szRetPath, const QString & szFileNa
 	return false;
 }
 
-//================== getReadOnlyConfigPath ====================//
+//
+// getReadOnlyConfigPath
 //
 // We want to READ a config file...find it
 //

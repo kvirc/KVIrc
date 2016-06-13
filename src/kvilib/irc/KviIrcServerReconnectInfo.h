@@ -1,6 +1,5 @@
 #ifndef _KVI_IRCSERVER_INFO_H_
 #define _KVI_IRCSERVER_INFO_H_
-
 //=============================================================================
 //
 //   File : KviIrcServerReconnectInfo.h

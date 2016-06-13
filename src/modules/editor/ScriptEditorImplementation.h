@@ -1,6 +1,5 @@
 #ifndef _SCRIPTEDITOR_H_
 #define _SCRIPTEDITOR_H_
-
 //=============================================================================
 //
 //   File : ScriptEditorImplementation.h

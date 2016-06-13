@@ -1,6 +1,5 @@
 #ifndef _KVIOGGTHEORAENCODER_H_
 #define _KVIOGGTHEORAENCODER_H_
-
 //=============================================================================
 //
 //   File : KviOggTheoraEncoder.h

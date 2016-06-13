@@ -720,7 +720,9 @@ void KviIrcView::appendLine(KviIrcViewLine * ptr, bool bRepaint)
 	}
 }
 
-//============== removeHeadLine ===============//
+//
+// removeHeadLine
+//
 
 void KviIrcView::removeHeadLine(bool bRepaint)
 {

@@ -1,6 +1,5 @@
 #ifndef _KVI_IRCMASK_H_
 #define _KVI_IRCMASK_H_
-
 //=============================================================================
 //
 //   File : KviIrcMask.h
@@ -24,9 +23,11 @@
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
 //=============================================================================
+
+//
 // originally this file was named kvi_ircuser.h and the class was KviIrcUser
 // ported to UNICODE on 2004.10.28 1:50 am
-//=============================================================================
+//
 
 /**
 * \file KviIrcMask.h

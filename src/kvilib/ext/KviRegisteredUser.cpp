@@ -1,6 +1,5 @@
 #ifndef _KVIREGUSER_H_
 #define _KVIREGUSER_H_
-
 //=============================================================================
 //
 //   File : KviRegisteredUser.cpp

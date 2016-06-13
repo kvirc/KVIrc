@@ -1,6 +1,5 @@
 #ifndef _KVI_MENUBAR_H_
 #define _KVI_MENUBAR_H_
-
 //=============================================================================
 //
 //   File : KviMenuBar.h

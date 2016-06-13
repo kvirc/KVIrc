@@ -1,6 +1,5 @@
 #ifndef _KVI_OPTIONS_H_
 #define _KVI_OPTIONS_H_
-
 //=============================================================================
 //
 //   File : KviOptions.h

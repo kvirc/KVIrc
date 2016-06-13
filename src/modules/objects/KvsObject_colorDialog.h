@@ -1,6 +1,5 @@
 #ifndef _CLASS_COLORDIALOG_H_
 #define _CLASS_COLORDIALOG_H_
-
 //=============================================================================
 //
 //   File : KvsObject_colorDialog.h

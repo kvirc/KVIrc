@@ -1,6 +1,5 @@
 #ifndef _OPTW_NICKSERV_H_
 #define _OPTW_NICKSERV_H_
-
 //=============================================================================
 //
 //   File : OptionsWidget_nickserv.h
