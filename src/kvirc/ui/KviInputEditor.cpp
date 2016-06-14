@@ -883,7 +883,6 @@ void KviInputEditor::drawContents(QPainter * p)
 		if((fNextX > 0) && (pBlock->fWidth > 0))
 		{
 			// draw this block
-
 			bool bIsSelected = pBlock->uFlags & KviInputEditorTextBlock::IsSelected;
 
 			if(bIsSelected)
@@ -913,7 +912,8 @@ void KviInputEditor::drawContents(QPainter * p)
 						p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iBottom - iTop), KVI_OPTION_MIRCCOLOR(pBlock->uBackground));
 				}
 
-				if (pBlock->uFlags & KviInputEditorTextBlock::IsItalic) {
+				if (pBlock->uFlags & KviInputEditorTextBlock::IsItalic)
+				{
 					QFont newFont = p->font();
 					newFont.setStyle(QFont::StyleItalic);
 					p->setFont(newFont);
@@ -923,6 +923,7 @@ void KviInputEditor::drawContents(QPainter * p)
 
 				if(pBlock->uFlags & KviInputEditorTextBlock::IsBold)
 					p->drawText(QPointF(fCurX + 1, iTextBaseline), pBlock->szText);
+
 				if(pBlock->uFlags & KviInputEditorTextBlock::IsUnderline)
 					p->drawLine(QPointF(fCurX, iTextBaseline + fm->descent()), QPointF(fCurX + pBlock->fWidth, iTextBaseline + fm->descent()));
 
@@ -934,7 +935,8 @@ void KviInputEditor::drawContents(QPainter * p)
 					p->drawLine(QPointF(fCurX, iY), QPointF(fCurX + pBlock->fWidth, iY));
 				}
 
-				if (pBlock->uFlags & KviInputEditorTextBlock::IsItalic) {
+				if (pBlock->uFlags & KviInputEditorTextBlock::IsItalic)
+				{
 					QFont newFont = p->font();
 					newFont.setStyle(QFont::StyleNormal);
 					p->setFont(newFont);
