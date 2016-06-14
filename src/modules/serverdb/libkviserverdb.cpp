@@ -155,6 +155,7 @@ static bool serverdb_kvs_fnc_networkExists(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[module:serverdb]ServerDB module documentation[/module]
 */
+
 static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 {
 	QString szServer, szNetwork;
