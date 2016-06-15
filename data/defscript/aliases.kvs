@@ -1,5 +1,4 @@
 # Default aliases file
-
 #
 # TODO:
 #	ignore, notify and unignore should go in the core
@@ -9,6 +8,7 @@
 #	(Find a core function that retrieves the number of nicknames passed ?)
 #	Another solution would be to increase the str.module core lock-time ?
 #
+# Coding style/curly brackets: Allman style
 
 #
 # Backward compatibility stuff
@@ -92,7 +92,6 @@ alias(ms)
 alias(gnotice)
 {
 	# Global notice
-
 	# Check channel validity
 	%szChan = $0
 	if(!%szChan)
@@ -118,11 +117,14 @@ alias(gnotice)
 	}
 
 	# Detect message type
-	if($sw(m,message)) %szCmd = "msg"
-	else %szCmd = "notice"
+	if($sw(m,message))
+		%szCmd = "msg"
+	else
+		%szCmd = "notice"
 
 	# Check for quiet message
-	if($sw(q,quiet)) %szCmd = $str.append(%szCmd," -q")
+	if($sw(q,quiet))
+		%szCmd = $str.append(%szCmd," -q")
 
 	# Check null switches
 	if((!$sw(w,owners)) && (!$sw(a,admins)) && (!$sw(o,ops)) && (!$sw(h,halfops)) && (!$sw(v,voices)))
@@ -132,16 +134,22 @@ alias(gnotice)
 	}
 
 	# Check switches passed
-	if($sw(w,owners)) eval %szCmd \~%szChan %szMsg
-	if($sw(a,admins)) eval %szCmd \!%szChan %szMsg
-	if($sw(o,ops)) eval %szCmd \@%szChan %szMsg
-	if($sw(h,halfops)) eval %szCmd \%%szChan %szMsg
-	if($sw(v,voices)) eval %szCmd \+%szChan %szMsg
+	if($sw(w,owners))
+		eval %szCmd \~%szChan %szMsg
+	if($sw(a,admins))
+		eval %szCmd \!%szChan %szMsg
+	if($sw(o,ops))
+		eval %szCmd \@%szChan %szMsg
+	if($sw(h,halfops))
+		eval %szCmd \%%szChan %szMsg
+	if($sw(v,voices))
+		eval %szCmd \+%szChan %szMsg
 }
 
 alias(wallop)
 {
-	if(!$0){
+	if(!$0)
+	{
 		echo $tr("Usage","defscript"): /wallop <$tr("message","defscript")>
 		halt
 	}
@@ -150,14 +158,25 @@ alias(wallop)
 	echo -w=$active $tr("Sending wallop to","defscript") $chan.name($active)
 	timer(wallop,5000,$chan.users(,,o),$0-)
 	{
-		if(%:localOps == ""){ %:localOps = $chan.users(,,o); %:curIndex = 0; }
-		if(%:curIndex == %:localOps[]#){ killtimer wallop; return; }
+		if(%:localOps == "")
+		{
+			%:localOps = $chan.users(,,o);
+			%:curIndex = 0;
+		}
+		if(%:curIndex == %:localOps[]#)
+		{
+			killtimer wallop; return;
+		}
 
 		for(%i=0;%i<1;%i++)
 		{
 			if(%:localOps[%:curIndex] != $my.nick)
 			{
-				if(%:curIndex == %:localOps[]#){ killtimer wallop; return; }
+				if(%:curIndex == %:localOps[]#)
+				{
+					killtimer wallop;
+					return;
+				}
 				msg -q %:localOps[%:curIndex] $1-
 				%:curIndex++
 			}
@@ -183,8 +202,10 @@ alias(j)
 	if(!$0)
 	{
 		echo $tr("Usage:","defscript")
-		echo "	  /j <chan>"
-	} else {
+		echo "	/j <chan>"
+	}
+	else
+	{
 		join $0-
 	}
 }
@@ -195,8 +216,10 @@ alias(s)
 	if(!$0)
 	{
 		echo $tr("Usage:","defscript")
-		echo "		/s <server>"
-	} else {
+		echo "	/s <server>"
+	}
+	else
+	{
 		server $0-
 	}
 }
@@ -207,8 +230,10 @@ alias(q)
 	if(!$0)
 	{
 		echo $tr("Usage:","defscript")
-		echo "		/q <nicklist> [message]"
-	} else {
+		echo "	/q <nicklist> [message]"
+	}
+	else
+	{
 		query $0 $1-
 	}
 }
@@ -221,11 +246,15 @@ alias(names)
 	{
 		if($window.type($active)!="channel")
 		{
-		        echo $tr("Usage:","defscript") "/names <channel>"
-		} else {
+			echo $tr("Usage:","defscript") "/names <channel>"
+		}
+		else
+		{
 			raw names $chan.name($active)
 		}
-	} else {
+	}
+	else
+	{
 		raw names $0-
 	}
 }
@@ -236,13 +265,13 @@ alias(kb)
 	if(!$0)
 	{
 		echo $tr("Usage:","defscript")
-		echo "	  /kb <nick_list> [" $tr("reason","defscript") "]"
+		echo "	/kb <nick_list> [" $tr("reason","defscript") "]"
 		halt;
 	}
 
 	if(!$channel)
 	{
-		echo "[KB]: " $tr("This is not a channel window","defscript")
+		echo "[KB]: "$tr("This is not a channel window","defscript")
 		halt;
 	}
 
@@ -251,13 +280,17 @@ alias(kb)
 		if(%nick)
 		{
 			#if we don't know the user ident/host (yet), we can only ban his nick
-			if($isWellKnown(%nick)) %mask = $mask(%nick,$option(uintDefaultBanType));
-			else %mask = %nick;
+			if($isWellKnown(%nick))
+				%mask = $mask(%nick,$option(uintDefaultBanType));
+			else
+				%mask = %nick;
 
-			if(!%mask)%mask = %nick; # plain ban
+			if(!%mask)
+				%mask = %nick; # plain ban
 
 			%reason = $1-
-			#if(!%reason)%reason = $tr("You're not welcome here!","defscript")
+			#if(!%reason)
+			#%reason = $tr("You're not welcome here!","defscript")
 
 			# This is tricky : we send everything
 			# as a single raw message just because
@@ -268,8 +301,10 @@ alias(kb)
 
 			# kick %nick %reason
 
-			if($chan.isOp(%nick))%raw2 = "mode $target -o+b %nick %mask"
-			else %raw2 = "mode $target +b %mask"
+			if($chan.isOp(%nick))
+				%raw2 = "mode $target -o+b %nick %mask"
+			else
+				%raw2 = "mode $target +b %mask"
 
 			raw -q %raw2$cr$lf%raw
 		}
@@ -279,30 +314,38 @@ alias(kb)
 # ame and amsg
 alias(ame)
 {
-	foreach(%i,$window.list(channel))if(%i!="") me -r=%i $0-
+	foreach(%i,$window.list(channel))
+	{
+		if(%i!="")
+			me -r=%i $0-
+	}
 }
 
 alias(amsg)
 {
-	foreach(%i,$window.list(channel))msg $target(%i) $0-
+	foreach(%i,$window.list(channel))
+		msg $target(%i) $0-
 }
 
 alias(amsgall)
 {
-	foreach(%i,$window.list(channel),$window.list(query))msg $target(%i) $0-
+	foreach(%i,$window.list(channel),$window.list(query))
+		msg $target(%i) $0-
 }
 
 alias(ameall)
 {
 	foreach(%i,$window.list(channel),$window.list(query))
 	{
-		if(%i!="") me -r=%i $0-
+		if(%i!="")
+			me -r=%i $0-
 	}
 }
 
 alias(awayall)
 {
-	foreach(%w,$window.list(console,all))away -r=%w $0-;
+	foreach(%w,$window.list(console,all))
+		away -r=%w $0-;
 }
 
 # notify: this is a bit more complex
@@ -318,7 +361,7 @@ alias(notify)
 	if(!$0)
 	{
 		echo $tr("Usage:","defscript")
-		echo "	  /notify <nick> [mask]"
+		echo "	/notify <nick> [mask]"
 		halt
 	}
 
@@ -328,7 +371,8 @@ alias(notify)
 
 	# no mask specified ? build it
 
-	if(!%mask)%mask = $0!*@*
+	if(!%mask)
+		%mask = $0!*@*
 
 	# Now add the user (but do not replace old entries)
 
@@ -360,7 +404,7 @@ alias(ignore)
 	if(!$0)
 	{
 		echo $tr("Usage:","defscript")
-		echo "	  /ignore [-m|--remove] [-p|--query] [-c|--channel] [-n|--notice] [-t|--ctcp] [-i|--invite] [-d|--dcc] [-h|--highlight] <nick>"
+		echo "	/ignore [-m|--remove] [-p|--query] [-c|--channel] [-n|--notice] [-t|--ctcp] [-i|--invite] [-d|--dcc] [-h|--highlight] <nick>"
 		halt
 	}
 
@@ -374,19 +418,29 @@ alias(ignore)
 	if($sw(m,remove))
 	{
 		reguser.setIgnoreEnabled $0 0
-	} else {
+	}
+	else
+	{
 		reguser.setIgnoreEnabled $0 1
 		%flags="";
-		if($sw(p, query)) %flags = $str.append(%flags," -p")
-		if($sw(c, channel)) %flags = $str.append(%flags," -c")
-		if($sw(n, notice)) %flags = $str.append(%flags," -n")
-		if($sw(t, ctcp)) %flags = $str.append(%flags," -t")
-		if($sw(i, invite)) %flags = $str.append(%flags," -i")
-		if($sw(d, dcc)) %flags = $str.append(%flags," -d")
-		if($sw(h, highlight)) %flags = $str.append(%flags," -h")
+		if($sw(p, query))
+			%flags = $str.append(%flags," -p")
+		if($sw(c, channel))
+			%flags = $str.append(%flags," -c")
+		if($sw(n, notice))
+			%flags = $str.append(%flags," -n")
+		if($sw(t, ctcp))
+			%flags = $str.append(%flags," -t")
+		if($sw(i, invite))
+			%flags = $str.append(%flags," -i")
+		if($sw(d, dcc))
+			%flags = $str.append(%flags," -d")
+		if($sw(h, highlight))
+			%flags = $str.append(%flags," -h")
 
 		# if no flag has been passed, enable them all
-		if($isEmpty(%flags)) %flags = " -p -c -n -t -i -d -h"
+		if($isEmpty(%flags))
+			%flags = " -p -c -n -t -i -d -h"
 		eval reguser.setIgnoreFlags %flags $escape($0)
 	}
 }
@@ -418,7 +472,7 @@ alias(dcc)
 		}
 		default:
 		{
-			echo "[DCC]: " $tr("Unsupported type:","defscript") $0
+			echo "[DCC]: "$tr("Unsupported type:","defscript") $0
 		}
 	}
 }
@@ -431,7 +485,7 @@ alias(usermodename)
 	if(!$0)
 	{
 		echo $tr("Usage:","defscript")
-		echo "	  /usermodename <nick>"
+		echo "	/usermodename <nick>"
 		halt;
 	}
 	if(!$channel)
@@ -440,19 +494,32 @@ alias(usermodename)
 		halt;
 	}
 
-	if($chan.isOwner($0,$channel)){
+	if($chan.isOwner($0,$channel))
+	{
 		return $tr("Channel Owner","defscript")
-	} elseif($chan.isAdmin($0,$channel)){
+	}
+	elseif($chan.isAdmin($0,$channel))
+	{
 		return $tr("Channel Administrator","defscript")
-	} elseif($chan.isOp($0,$channel)){
+	}
+	elseif($chan.isOp($0,$channel))
+	{
 		return $tr("Channel Operator","defscript")
-	} elseif($chan.isHalfOp($0,$channel)){
+	}
+	elseif($chan.isHalfOp($0,$channel))
+	{
 		return $tr("Half Operator","defscript")
-	} elseif($chan.isVoice($0,$channel)){
+	}
+	elseif($chan.isVoice($0,$channel))
+	{
 		return $tr("Voice","defscript")
-	} elseif($chan.isUserOp($0,$channel)){
+	}
+	elseif($chan.isUserOp($0,$channel))
+	{
 		return $tr("User Operator","defscript")
-	} else {
+	}
+	else
+	{
 		return $tr("Normal User","defscript")
 	}
 }
@@ -497,7 +564,9 @@ alias(dns)
 			if(!$2)
 			{
 				echo "[DNS]: " $tr("No such user:","defscript") $0
-			} else {
+			}
+			else
+			{
 				host -a $2
 			}
 		}
@@ -507,7 +576,7 @@ alias(dns)
 alias(ss)
 {
 	# Silent
-        msg -q SeenServ $0-
+	msg -q SeenServ $0-
 }
 
 alias(seenserv)
@@ -524,19 +593,25 @@ alias(hs)
 
 alias(hop)
 {
-	// Retrieve channel
 	%chan=$0
-	if(!%chan) %chan=$chan.name
+
+	// Retrieve channel
+	if(!%chan)
+		%chan=$chan.name
 
 	// Retrieve channel key
 	if($channel(%chan)!=0)
 		%key=$chan.key($channel(%chan))
-	else %key=0
+	else
+		%key=0
 
 	// Exit channel
 	if($window.type($channel(%chan))=="channel")
 		eval "part --keep $escape(%chan) $option(stringPartMessage)"
+
 	// Rejoin channel
-	if(!%key) join %chan
-	else join %chan %key
+	if(!%key)
+		join %chan
+	else
+		join %chan %key
 }
