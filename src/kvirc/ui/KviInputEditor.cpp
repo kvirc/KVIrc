@@ -1123,7 +1123,9 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 
 	pAction = g_pInputPopup->addAction(__tr2qs("Clear"), this, SLOT(clear()));
 	pAction->setEnabled(!m_szTextBuffer.isEmpty() && !m_bReadOnly);
+
 	g_pInputPopup->addSeparator();
+
 	pAction = g_pInputPopup->addAction(__tr2qs("Select All"), this, SLOT(selectAll()));
 	pAction->setEnabled((!m_szTextBuffer.isEmpty()));
 

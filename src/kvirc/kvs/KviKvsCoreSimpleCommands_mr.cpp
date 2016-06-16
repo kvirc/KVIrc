@@ -1277,7 +1277,7 @@ namespace KviKvsCoreSimpleCommands
 				echo "Again in this window :)"
 			[/example]
 			[note][br]
-				[big]Deprecated switches:[/big][br]]
+				[big]Deprecated switches:[/big][br]
 				From version 3.0.0, the standard -r switch support to commands was removed.
 			[/note]
 	*/

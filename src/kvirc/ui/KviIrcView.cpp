@@ -737,7 +737,7 @@ void KviIrcView::removeHeadLine(bool bRepaint)
 		KviIrcViewLine * aux_ptr = m_pFirstLine->pNext; //get the next line
 		aux_ptr->pPrev = nullptr;                       //becomes the first
 		if(m_pFirstLine == m_pCurLine)
-			m_pCurLine = aux_ptr;                           //move the cur line if necessary
+			m_pCurLine = aux_ptr;                       //move the cur line if necessary
 		delete_text_line(m_pFirstLine, &m_hAnimatedSmiles); //delete the struct
 		m_pFirstLine = aux_ptr;                             //set the last
 		m_iNumLines--;                                      //and decrement the count
@@ -926,7 +926,6 @@ void KviIrcView::joinMessagesFrom(KviIrcView * v)
 	v->m_iNumLines = 0;
 	//	v->m_pScrollBar->setRange(0,0);
 	//	v->m_pScrollBar->setValue(0);
-
 	m_iLastScrollBarValue = m_iNumLines;
 	m_pScrollBar->setRange(0, m_iNumLines);
 	m_pScrollBar->setValue(m_iNumLines);
@@ -965,10 +964,8 @@ void KviIrcView::fastScroll(int lines)
 
 	if(!m_pFm)
 	{
-		// We must get the metrics from a real paint event :/
-		// must do a full repaint to get them...
-		repaint();
-		return;
+		repaint(); // We must get the metrics from a real paint event :/
+		return;	   // must do a full repaint to get them..
 	}
 
 	// Ok...the current line is the last one here
@@ -1006,8 +1003,7 @@ void KviIrcView::fastScroll(int lines)
 	scroll(0, -(heightToPaint - 1), QRect(1, 1, widgetWidth - 2, widgetHeight - 2));
 
 	if(m_iLastLinkRectHeight > -1)
-	{
-		// need to kill the last highlighted link
+	{	// need to kill the last highlighted link
 		m_iLastLinkRectTop -= heightToPaint;
 		if(m_iLastLinkRectTop < 0)
 		{
@@ -1033,7 +1029,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 	if(!isVisible())
 	{
 		m_iUnprocessedPaintEventRequests = 0; // assume a full repaint when this widget is shown...
-		return;                               //can't show stuff here
+		return;                               // can't show stuff here
 	}
 
 	int scrollbarWidth = m_pScrollBar->width();
@@ -1111,7 +1107,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 	if(widgetWidth < 20)
 	{
 		m_iUnprocessedPaintEventRequests = 0; // assume a full repaint when this widget is shown...
-		return;                               //can't show stuff here
+		return;                               // can't show stuff here
 	}
 
 	/*
@@ -1804,10 +1800,8 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 		}
 		else
 		{
-			//found a space...
-			//include it in the first block
-			p++;
-			curBlockLen++;
+			p++;           //found a space...
+			curBlockLen++; //include it in the first block
 		}
 
 		ptr->pBlocks[ptr->iBlockCount].block_len = curBlockLen;
@@ -1832,8 +1826,7 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine * ptr, int maxWidth)
 				return;
 		}
 		else if(ptr->uLineWraps > 128)
-		{
-			// oops.. this is looping endlessly: it may happen in certain insane window width / font size configurations...
+		{	// oops.. this is looping endlessly: it may happen in certain insane window width / font size configurations...
 			return;
 		}
 	}
@@ -1994,15 +1987,13 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line, int bufIndex)
 			return true;
 		}
 		if(line->pBlocks[bufIndex].block_start >= initChar)
-		{
-			//Whole chunk selected
+		{	//Whole chunk selected
 			m_pWrappedBlockSelectionInfo->selection_type = KVI_IRCVIEW_BLOCK_SELECTION_TOTAL;
 			return true;
 		}
 
 		if(line->pBlocks[bufIndex].block_start < initChar && (line->pBlocks[bufIndex].block_start + line->pBlocks[bufIndex].block_len) > initChar)
-		{
-			//Selection begins in THIS BLOCK!
+		{	//Selection begins in THIS BLOCK!
 			m_pWrappedBlockSelectionInfo->selection_type = KVI_IRCVIEW_BLOCK_SELECTION_RIGHT;
 			m_pWrappedBlockSelectionInfo->part_1_length = initChar - line->pBlocks[bufIndex].block_start;
 			m_pWrappedBlockSelectionInfo->part_1_width = 0;
@@ -2041,15 +2032,13 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line, int bufIndex)
 			return true;
 		}
 		if((line->pBlocks[bufIndex].block_start + line->pBlocks[bufIndex].block_len) <= endChar)
-		{
-			//Whole chunk selected
+		{	//Whole chunk selected
 			m_pWrappedBlockSelectionInfo->selection_type = KVI_IRCVIEW_BLOCK_SELECTION_TOTAL;
 			return true;
 		}
 
 		if(line->pBlocks[bufIndex].block_start < endChar && (line->pBlocks[bufIndex].block_start + line->pBlocks[bufIndex].block_len) > endChar)
-		{
-			//Selection ends in THIS BLOCK!
+		{	//Selection ends in THIS BLOCK!
 			m_pWrappedBlockSelectionInfo->selection_type = KVI_IRCVIEW_BLOCK_SELECTION_LEFT;
 			m_pWrappedBlockSelectionInfo->part_1_length = endChar - line->pBlocks[bufIndex].block_start;
 			m_pWrappedBlockSelectionInfo->part_1_width = 0;
@@ -2165,10 +2154,11 @@ void KviIrcView::showToolsPopup()
 
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)), __tr2qs("Zoom In"), this, SLOT(increaseFontSize())); // We let fly "in" as a capitalized preposition.
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)), __tr2qs("Zoom Out"), this, SLOT(decreaseFontSize()));
-		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Topic)), __tr2qs("Choose Temporary Font..."), this, SLOT(chooseFont()));
-		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Canvas)), __tr2qs("Choose Temporary Background..."), this, SLOT(chooseBackground()));
 
 		m_pToolsPopup->addSeparator();
+
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Topic)), __tr2qs("Choose Temporary Font..."), this, SLOT(chooseFont()));
+		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Canvas)), __tr2qs("Choose Temporary Background..."), this, SLOT(chooseBackground()));
 
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)), __tr2qs("Reset Font"), this, SLOT(resetDefaultFont()));
 		m_pToolsPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)), __tr2qs("Reset Background"), this, SLOT(resetBackground()));
@@ -2595,7 +2585,6 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 			 * Calculate the left border of this row: if this is not the first one, add any margin.
 			 * Note: iLeft will contain the right border position of the current chunk.
 			 */
-
 				// this is not the first row of this line and the margin option is enabled?
 				if(iTop != firstRowTop)
 					if(KVI_OPTION_BOOL(KviOption_boolIrcViewWrapMargin))
@@ -2642,8 +2631,7 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 }
 
 KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect * pRect, QString * linkCmd, QString * linkText)
-{
-	/*
+{	/*
 	 * Profane description: this functions sums up most of the complications involved in the ircview. We got a mouse position and have
 	 * to identify if there's a link inside the KviIrcViewLine at that position.
 	 * l contains the current KviIrcViewLine we're checking, iTop is the y coordinate of the
@@ -2698,8 +2686,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 				{
 					if(l->pBlocks[i].pChunk == nullptr)
 					{
-						//word wrap found
-						break;
+						break; //word wrap found
 					}
 					else
 					{
@@ -2728,7 +2715,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 			}
 			else
 			{
-				/*
+			/*
 			 * Profane description: Once we get here, we know the correct line l, the correct row top coordinate iTop and
 			 * the index of the first chunk in this line i.
 			 * Calculate the left border of this row: if this is not the first one, add any margin.
@@ -2769,8 +2756,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 					else
 					{
 						if(i < (l->iBlockCount - 1))
-						{
-							// There is another block, check if it is a wrap (we reached the end of the row)
+						{	// There is another block, check if it is a wrap (we reached the end of the row)
 							if(l->pBlocks[i + 1].pChunk == nullptr)
 							{
 								iBlockWidth = width() - iLastLeft;
@@ -2942,8 +2928,7 @@ void KviIrcView::scrollToMarker()
 		pLine = pLine->pPrev;
 
 	if(pLine == nullptr)
-	{
-		// The buffer has already cleaned the marker line
+	{	// The buffer has already cleaned the marker line
 		ensureLineVisible(m_pFirstLine);
 	}
 	else
