@@ -62,7 +62,7 @@ QPixmap * UserWindow::myIconPtr()
 {
 	QPixmap * pPix = g_pIconManager->getImage(m_szIcon);
 	if(!pPix)
-		return g_pIconManager->getSmallIcon(0);
+		return g_pIconManager->getSmallIcon(KviIconManager::None);
 	else
 		return pPix;
 }

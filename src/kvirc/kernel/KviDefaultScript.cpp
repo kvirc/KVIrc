@@ -475,18 +475,18 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 
 	m_pAdvanced->setLayout(pAdvLayout);
 
-	QPixmap * pImage = g_pIconManager->getSmallIcon(150);
+	QPixmap * pImage = g_pIconManager->getSmallIcon(KviIconManager::Gui);
 	m_pAdvancedButton = new QPushButton(*pImage, __tr2qs("Advanced..."), this);
 	connect(m_pAdvancedButton, SIGNAL(clicked()), this, SLOT(advanced()));
 	pLayout->addWidget(m_pAdvancedButton, 2, 0, 1, 1);
 
-	pImage = g_pIconManager->getSmallIcon(44);
+	pImage = g_pIconManager->getSmallIcon(KviIconManager::Discard);
 	QPushButton * pCancel = new QPushButton(*pImage, __tr2qs("Cancel"), this);
 	pCancel->setDefault(true);
 	connect(pCancel, SIGNAL(clicked()), this, SLOT(reject()));
 	pLayout->addWidget(pCancel, 2, 2, 1, 1);
 
-	pImage = g_pIconManager->getSmallIcon(43);
+	pImage = g_pIconManager->getSmallIcon(KviIconManager::Accept);
 	QPushButton * pAccept = new QPushButton(*pImage, __tr2qs("Restore"), this);
 	connect(pAccept, SIGNAL(clicked()), this, SLOT(accept()));
 	pLayout->addWidget(pAccept, 2, 3, 1, 1);
