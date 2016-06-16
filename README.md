@@ -39,8 +39,8 @@ Compiling KVIrc on your chosen platform is an alternative way to enjoy KVIrc, se
 - [OS X install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL-MacOS.txt)
 - Windows [32-bit install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL-Win32.txt) or [64-bit install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL-Win64.txt)
 
-### Licensing
+### Licensed under
 
-- [GPLv2](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV2)
-- [GPLv3](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV3)
-- [OpenSSL](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-OPENSSL)
+[![License GPLv2](https://img.shields.io/badge/License-GPLv2-blue.svg)](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV2)
+[![License GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV3)
+[![OpenSSL Exception](https://img.shields.io/badge/OpenSSL-Exception-orange.svg)](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-OPENSSL)
