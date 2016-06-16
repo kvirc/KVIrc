@@ -154,7 +154,7 @@ void DccCanvasWindow::fillCaptionBuffers()
 
 QPixmap * DccCanvasWindow::myIconPtr()
 {
-	return g_pIconManager->getSmallIcon(KVI_SMALLICON_CANVAS);
+	return g_pIconManager->getSmallIcon(KviIconManager::Canvas);
 }
 
 void DccCanvasWindow::getBaseLogFileName(KviCString & buffer)
