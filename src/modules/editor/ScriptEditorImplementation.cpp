@@ -362,6 +362,9 @@ void ScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 			case Qt::Key_B:
 				insertPlainText("$b");
 				return;
+			case Qt::Key_I:
+				insertPlainText("$i");
+				return;
 			case Qt::Key_K:
 				insertPlainText("$k");
 				return;
