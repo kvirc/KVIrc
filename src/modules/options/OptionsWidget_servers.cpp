@@ -1265,7 +1265,6 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
     : KviOptionsWidget(parent)
 {
 	setObjectName("server_options_widget");
-
 	createLayout();
 
 	m_pContextPopup = new QMenu(this);
@@ -1300,8 +1299,8 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	QStringList columLabels;
 	columLabels.append(__tr2qs_ctx("Server", "options"));
 	columLabels.append(__tr2qs_ctx("Description", "options"));
-	m_pTreeWidget->setColumnWidth(0, 250);
-	m_pTreeWidget->setColumnWidth(1, 250);
+	m_pTreeWidget->setColumnWidth(0, 300);
+	m_pTreeWidget->setColumnWidth(1, 300);
 
 	m_pTreeWidget->setSortingEnabled(true);
 	m_pTreeWidget->sortByColumn(0, Qt::AscendingOrder);
@@ -1317,6 +1316,7 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 	QString tiptxt = __tr2qs_ctx("This is the list of available IRC servers.<br>"
 	                             "Right-click on the list to add or remove servers and perform other actions.<br>"
 	                             "Double-click on a item for advanced options.", "options");
+
 	KviTalToolTip::add(m_pTreeWidget, tiptxt);
 	KviTalToolTip::add(m_pTreeWidget->viewport(), tiptxt);
 
@@ -1482,7 +1482,8 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	layout()->setRowStretch(1, 1);
 	layout()->setColumnStretch(1, 1);
-	setMinimumWidth(600);
+	setMinimumWidth(840);
+	setMinimumHeight(480);
 }
 
 OptionsWidget_servers::~OptionsWidget_servers()
@@ -1601,8 +1602,7 @@ void OptionsWidget_servers::selectBestServerByUrl(const QString & szUrl)
 				uBestCandidateScore = uScore;
 				pBestCandidate = pServer;
 				if(uScore >= 4)
-				{
-					// exact match
+				{                      // exact match
 					uIdx = uCount; // break the outer loop
 					break;         // break the inner loop
 				}
@@ -1764,7 +1764,7 @@ void OptionsWidget_servers::filterTextEdited(const QString &)
 					uServers++;
 				ch->setHidden(bHidden);
 			}
-			//if at list one server matches, we show its network
+			// if at list one server matches, we show its network
 			network->setHidden(!uServers);
 		}
 	}
