@@ -165,7 +165,8 @@ alias(wallop)
 		}
 		if(%:curIndex == %:localOps[]#)
 		{
-			killtimer wallop; return;
+			killtimer wallop;
+			return;
 		}
 
 		for(%i=0;%i<1;%i++)
