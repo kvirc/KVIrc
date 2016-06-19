@@ -3,7 +3,6 @@
 set(license
 	COPYING
 	LICENSE-GPLV2
-	LICENSE-GPLV3
 	LICENSE-OPENSSL
 )
 set(howto
