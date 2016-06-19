@@ -6,6 +6,9 @@ env:
    - secure: "VKCmVzcnJe58/2F5ciPa6FQqnNi/MAUott/rMEFEim9Qk9cFeEuhhhb8JvjoKT1NVC2j+3VJgSczwHtoi06jKUHFqMWJ9pQEa7sNuStSfUGF7ADEjmvooXE/c0nKw5IZf2+pVk3HjvsJerUPOgcSEZSB8JvA7Lb3K1TPEW82xgm7okonE60kz1m0/oDQAAAbocY0uswOPhu5wZ2Df7nseSrLpI56SepHF2r8SJRleeWfMO31inEhexOOqzS5dAE/tTjLjH+nI03JzJA2S3ugkVvU/zs9Ib2xgqWO5JTvk2waOKBnNAaOg9V6S6gYfNt5It0bzeFifzauP6Z7zBuaOJaRKQ+x+dehIv09wgLben2kacJOTI9fjZ7IflYHZH4+rs6eIGcem+C6T64OW0fjkbGnOjSH0wa4uhOacVigNWZik85Ro1JMk6wSDHBmmzjJZ8zmMbBSwd5Za/t8YfffP9y6/250R772tCOeI9Su3Fg+SuWzP3XoaHKbVrKZrrC5mlKnnACgV59E9fQUFJOfVXixGJ09d3hfA48BKoKKXEm9vY4JVSw5gSczJAdLHPGyY37s5nMXuJUY8fVf1bhNJ4iDwWVcQJDF1lJXMFV01pNsSb9xGnyKm+wfOI/HyCQfX3kHHfExrZ2I2he84vV4Sll4Rx1eWluWAbXSSLca4NU="
 
 addons:
+  apt:
+    packages:
+    - ca-certificates
   coverity_scan:
     project:
       name: "kvirc/coverity"
@@ -19,3 +22,5 @@ script:
   - /bin/true
 sudo: required
 dist: trusty
+before_install:
+  - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-certificates.crt
