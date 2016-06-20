@@ -132,7 +132,7 @@ event(OnURLLinkClick,default)
 	openurl $0
 }
 
-event(OnURLLinkPopupRequest,URLpopup)
+event(OnURLLinkPopupRequest,URL popup)
 {
 	popup.show urlpopup $0
 }
