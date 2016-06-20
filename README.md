@@ -2,7 +2,8 @@
 [![AppVeyor Build status](https://img.shields.io/appveyor/ci/DarthGandalf/KVIrc/master.svg?label=windows)](https://ci.appveyor.com/project/DarthGandalf/kvirc/branch/master)
 [![Coverity Scan Build Status](https://img.shields.io/coverity/scan/6841.svg)](https://scan.coverity.com/projects/kvirc-coverity)
 
-![KVIrc logo](../master/data/icons/128x128/kvirc.png "KVIrc - The visual IRC client for the masses!")
+![KVIrc-Midnight](https://github.com/kvirc/KVIrc/wiki/images/KVIrc-midnight.png)
+<!--![KVIrc logo](../master/data/icons/128x128/kvirc.png "KVIrc - The visual IRC client for the masses!") -->>
 
 ## About
 
