@@ -56,12 +56,15 @@ void KviIrcView::stopLogging()
 				// this is the equivalent to an empty date.toString() call, but it's needed
 				// to ensure qt4 will use the default() locale and not the system() one
 				szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
+				szDate += " ";
 				break;
 			case 1:
 				szDate = date.toString(Qt::ISODate);
+				szDate += " ";
 				break;
 			case 2:
 				szDate = date.toString(Qt::SystemLocaleShortDate);
+				szDate += " ";
 				break;
 		}
 
@@ -242,12 +245,15 @@ bool KviIrcView::startLogging(const QString & fname, bool bPrependCurBuffer)
 			// this is the equivalent to an empty date.toString() call, but it's needed
 			// to ensure qt4 will use the default() locale and not the system() one
 			szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
+			szDate += " ";
 			break;
 		case 1:
 			szDate = date.toString(Qt::ISODate);
+			szDate += " ";
 			break;
 		case 2:
 			szDate = date.toString(Qt::SystemLocaleShortDate);
+			szDate += " ";
 			break;
 	}
 
@@ -291,9 +297,11 @@ void KviIrcView::add2Log(const QString & szBuffer, int iMsgType, bool bPrependDa
 				break;
 			case 1:
 				szDate = date.toString(Qt::ISODate);
+				szDate += " ";
 				break;
 			case 2:
 				szDate = date.toString(Qt::SystemLocaleShortDate);
+				szDate += " ";
 				break;
 		}
 
