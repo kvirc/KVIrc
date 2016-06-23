@@ -396,7 +396,7 @@ void KviConsoleWindow::saveProperties(KviConfigurationFile * cfg)
 
 void KviConsoleWindow::getBaseLogFileName(QString & buffer)
 {
-	buffer = QString("CONSOLE%1").arg(context()->id());
+	buffer = QString("CONSOLE_%1").arg(context()->id());
 }
 
 void KviConsoleWindow::showNotifyList(bool bShow, bool bIgnoreSizeChange)
