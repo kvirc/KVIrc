@@ -153,7 +153,7 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 
 #ifdef COMPILE_KDE_SUPPORT
 	m_pKdeNotifier = addBoolSelector(0, iRow, 0, iRow, __tr2qs_ctx("Use the KDE notifier", "options"), KviOption_boolUseKDENotifier);
-	szTip += __tr2qs_ctx("This option uses the KDE notification system instead of the KVIrc's builtin.<br>"
+	szTip = __tr2qs_ctx("This option uses the KDE notification system instead of the KVIrc's builtin.<br>"
 	                     "This is cool if you want to better integrate KVIrc inside KDE.<br>"
 	                     "Note that KDE's notifier isn't as flexible or \"tabbed\" like KVIrc's", "options");
 
@@ -169,7 +169,7 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 
 #ifdef COMPILE_DBUS_SUPPORT
 	m_pDBusNotifier = addBoolSelector(0, iRow, 0, iRow, __tr2qs_ctx("Use the D-Bus-based notifiers", "options"), KviOption_boolUseDBusNotifier);
-	szTip += __tr2qs_ctx("This option uses the D-Bus-based notifier instead of the KVIrc's builtin.<br>"
+	szTip = __tr2qs_ctx("This option uses the D-Bus-based notifier instead of the KVIrc's builtin.<br>"
 	                     "This is cool if you want to better integrate KVIrc inside your desktop environment.<br>"
 	                     "Note that this notifier isn't as flexible or \"tabbed\" like KVIrc's is.", "options");
 
@@ -192,7 +192,7 @@ OptionsWidget_notifier::OptionsWidget_notifier(QWidget * parent)
 
 	b2 = addBoolSelector(0, iRow, 0, iRow, __tr2qs_ctx("Don't show notifier when there is an active fullscreen window", "options"), KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen);
 
-	szTip += __tr2qs_ctx("This option stops the notifier from being displayed when there is an active fullscreen window. "
+	szTip = __tr2qs_ctx("This option stops the notifier from being displayed when there is an active fullscreen window. "
 	                     "This is useful for gaming sessions where you may be distracted by the notifier or it may even switch "
 	                     "your game from fullscreen to window mode.", "options");
 	mergeTip(b2, szTip);
