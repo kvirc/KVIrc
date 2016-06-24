@@ -88,7 +88,10 @@ void KviTreeWindowListItem::captionChanged()
 		break;
 		case KviWindow::Channel:
 		case KviWindow::DeadChannel:
-			szText = ((KviChannelWindow *)m_pWindow)->nameWithUserFlag();
+			if(KVI_OPTION_BOOL(KviOption_boolShowUserFlagForChannelsInWindowList))
+				szText = ((KviChannelWindow *)m_pWindow)->nameWithUserFlag();
+			else
+				szText = ((KviChannelWindow *)m_pWindow)->target();
 			break;
 		case KviWindow::Query:
 		case KviWindow::DeadQuery:
