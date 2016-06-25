@@ -654,6 +654,10 @@ void KviTopicWidget::deactivate()
 
 	m_pLabel->show();
 	resizeEvent(nullptr);
+
+	if(g_pColorWindow && g_pColorWindow->isVisible())
+		g_pColorWindow->hide();
+
 	// try to find a KviWindow parent and give it the focus
 
 	m_pKviChannelWindow->setFocus();
