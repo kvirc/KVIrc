@@ -42,8 +42,8 @@ install:
     - nuget install Gettext.Tools -OutputDirectory c:\deps
     - c:\cygwin\bin\find /cygdrive/c/deps "-type" f
     - ps: |
-        if (Test-Path "c:\OpenSSL-$env:ssl_arch") {
-            echo "using openssl from cache"
+        if (-Not (Test-Path "c:\OpenSSL-$env:ssl_arch")) {
+            echo "no openssl found, this is pretty sad."
         } else {
             echo "downloading openssl"
             Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2h.exe" -OutFile c:\openssl-setup.exe
