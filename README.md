@@ -1,6 +1,6 @@
-[![Travis Build Status](https://img.shields.io/travis/kvirc/KVIrc/master.svg?label=linux%2Fosx)](https://travis-ci.org/kvirc/KVIrc)
-[![AppVeyor Build status](https://img.shields.io/appveyor/ci/DarthGandalf/KVIrc/master.svg?label=windows)](https://ci.appveyor.com/project/DarthGandalf/kvirc/branch/master)
-[![Coverity Scan Build Status](https://img.shields.io/coverity/scan/6841.svg)](https://scan.coverity.com/projects/kvirc-coverity)
+[![Travis Build Status](https://img.shields.io/travis/kvirc/KVIrc/master.svg?label=Linux%20%2F%20OS%20X)](https://travis-ci.org/kvirc/KVIrc)
+[![AppVeyor Build status](https://img.shields.io/appveyor/ci/DarthGandalf/KVIrc/master.svg?label=Windows)](https://ci.appveyor.com/project/DarthGandalf/kvirc/branch/master)
+[![Coverity Scan Build Status](https://img.shields.io/coverity/scan/6841.svg?label=Coverity Scan)](https://scan.coverity.com/projects/kvirc-coverity)
 
 ![KVIrc-Midnight](https://github.com/kvirc/KVIrc/wiki/images/KVIrc-midnight.png)
 <!--![KVIrc logo](../master/data/icons/128x128/kvirc.png "KVIrc - The visual IRC client for the masses!") -->
@@ -42,6 +42,6 @@ Compiling KVIrc on your chosen platform is an alternative way to enjoy KVIrc, se
 
 ### Licensed under
 
-[![License GPLv2](https://img.shields.io/badge/License-GPLv2-blue.svg)](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV2)
-[![License GPLv3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV3)
-[![OpenSSL Exception](https://img.shields.io/badge/OpenSSL-Exception-orange.svg)](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-OPENSSL)
+[![KVIrc GPLv2+](https://img.shields.io/badge/KVIrc-GPLv2+-blue.svg)](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV2)
+[![Qt GPLv3](https://img.shields.io/badge/Qt-GPLv3-blue.svg)](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV3)
+[![OpenSSL](https://img.shields.io/badge/OpenSSL-Exception-orange.svg)](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-OPENSSL)
