@@ -667,15 +667,15 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS] = {
 	FONT_OPTION("Notifier", "Lucida Grande", 12, KviOption_sectFlagNotifier | KviOption_resetUpdateNotifier),
 	FONT_OPTION("NotifierTitle", "Lucida Grande", 12, KviOption_sectFlagNotifier | KviOption_resetUpdateNotifier)
 #else
-	FONT_OPTION("IrcView", "Monospace", 10, KviOption_sectFlagIrcView | KviOption_resetUpdateGui),
-	FONT_OPTION("Input", "Sans Serif", 12, KviOption_sectFlagInput | KviOption_resetUpdateGui),
-	FONT_OPTION("UserListView", "Sans Serif", 10, KviOption_sectFlagUserListView | KviOption_resetUpdateGui),
-	FONT_OPTION("Label", "Sans Serif", 10, KviOption_sectFlagLabel | KviOption_resetUpdateGui),
-	FONT_OPTION("Application", "Sans Serif", 10, KviOption_sectFlagGui | KviOption_resetUpdateAppFont),
-	FONT_OPTION("WindowList", "Sans Serif", 10, KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
-	FONT_OPTION("TreeWindowList", "Sans Serif", 10, KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
-	FONT_OPTION("Notifier", "Sans Serif", 9, KviOption_sectFlagNotifier | KviOption_resetUpdateNotifier),
-	FONT_OPTION("NotifierTitle", "Sans Serif", 9, KviOption_sectFlagNotifier | KviOption_resetUpdateNotifier)
+	FONT_OPTION("IrcView", "sans-serif", 10, KviOption_sectFlagIrcView | KviOption_resetUpdateGui),
+	FONT_OPTION("Input", "sans-serif", 10, KviOption_sectFlagInput | KviOption_resetUpdateGui),
+	FONT_OPTION("UserListView", "sans-serif", 10, KviOption_sectFlagUserListView | KviOption_resetUpdateGui),
+	FONT_OPTION("Label", "sans-serif", 10, KviOption_sectFlagLabel | KviOption_resetUpdateGui),
+	FONT_OPTION("Application", "sans-serif", 10, KviOption_sectFlagGui | KviOption_resetUpdateAppFont),
+	FONT_OPTION("WindowList", "sans-serif", 10, KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
+	FONT_OPTION("TreeWindowList", "sans-serif", 10, KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
+	FONT_OPTION("Notifier", "sans-serif", 10, KviOption_sectFlagNotifier | KviOption_resetUpdateNotifier),
+	FONT_OPTION("NotifierTitle", "sans-serif", 10, KviOption_sectFlagNotifier | KviOption_resetUpdateNotifier)
 #endif
 };
 
