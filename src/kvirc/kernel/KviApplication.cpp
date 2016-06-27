@@ -433,8 +433,6 @@ void KviApplication::setup()
 	g_pCryptEngineManager = new KviCryptEngineManager();
 #endif
 
-	//g_pGarbageCollector = new KviGarbageCollector();
-
 	// and the input popup
 	g_pInputPopup = new QMenu();
 

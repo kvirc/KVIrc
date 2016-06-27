@@ -48,7 +48,6 @@
 
 extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
-//extern KVIRC_API KviGarbageCollector         * g_pGarbageCollector;
 
 KviIrcConnectionTargetResolver::KviIrcConnectionTargetResolver(KviIrcConnection * pConnection)
     : QObject()
