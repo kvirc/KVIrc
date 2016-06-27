@@ -853,6 +853,8 @@ void KviInputEditor::drawContents(QPainter * p)
 
 	int iTextBaseline = iBottom - fm->descent();
 
+	QFont::Style normalFontStyle = p->font().style();
+
 	// When m_bIMComposing is true, the text between m_iIMStart and m_iIMStart+m_iIMLength should be highlighted to show that this is the active
 	// preedit area for the input method, and the text outside cannot be edited while
 	// composing. Maybe this can be implemented similarly as painting the selection?
@@ -912,10 +914,11 @@ void KviInputEditor::drawContents(QPainter * p)
 						p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iBottom - iTop), KVI_OPTION_MIRCCOLOR(pBlock->uBackground));
 				}
 
+
 				if (pBlock->uFlags & KviInputEditorTextBlock::IsItalic)
 				{
 					QFont newFont = p->font();
-					newFont.setStyle(QFont::StyleItalic);
+					newFont.setStyle(normalFontStyle == QFont::StyleNormal ? QFont::StyleItalic : QFont::StyleNormal);
 					p->setFont(newFont);
 				}
 
@@ -938,7 +941,7 @@ void KviInputEditor::drawContents(QPainter * p)
 				if (pBlock->uFlags & KviInputEditorTextBlock::IsItalic)
 				{
 					QFont newFont = p->font();
-					newFont.setStyle(QFont::StyleNormal);
+					newFont.setStyle(normalFontStyle);
 					p->setFont(newFont);
 				}
 			}

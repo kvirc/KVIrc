@@ -1065,6 +1065,8 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 	SET_ANTI_ALIASING(pa);
 
 	pa.setFont(font());
+	QFont::Style normalFontStyle = pa.font().style();
+
 	if(!m_pFm)
 	{
 		// note that QFontMetrics(pa.font()) may be not the same as QFontMetrics(font())
@@ -1355,9 +1357,9 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 			theWdth = width() - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER + scrollbarWidth);                                                                    \
 		pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR((unsigned char)curBack)); \
 	}                                                                                                                                                               \
-	newFont = pa.font();                                                                                                                                               \
-	newFont.setStyle(curItalic ? QFont::StyleItalic : QFont::StyleNormal);                                                                                             \
-	pa.setFont(newFont);                                                                                                                                               \
+	newFont = pa.font();                                                                                                                                            \
+	newFont.setStyle(curItalic ^ normalFontStyle != QFont::StyleNormal ? QFont::StyleItalic : QFont::StyleNormal);                                                  \
+	pa.setFont(newFont);                                                                                                                                            \
 	pa.drawText(curLeftCoord, curBottomCoord, _text_str.mid(_text_idx, _text_len));                                                                                 \
 	if(curBold)                                                                                                                                                     \
 		pa.drawText(curLeftCoord + 1, curBottomCoord, _text_str.mid(_text_idx, _text_len));                                                                         \
@@ -1502,7 +1504,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 					}
 
 					newFont = pa.font();
-					newFont.setStyle(curItalic ? QFont::StyleItalic : QFont::StyleNormal);
+					newFont.setStyle(curItalic ^ normalFontStyle != QFont::StyleNormal ? QFont::StyleItalic : QFont::StyleNormal);
 					pa.setFont(newFont);
 
 					if(curLink)
