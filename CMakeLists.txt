@@ -783,7 +783,7 @@ endif()
 # Check for Python support
 option(WANT_PYTHON "Compile Python support" ON)
 if(WANT_PYTHON)
-	find_package(PythonLibs 2.7)
+	find_package(PythonLibs 2.7 EXACT)
 	if(PYTHONLIBS_FOUND)
 		set(COMPILE_PYTHON_SUPPORT 1)
 		set(CMAKE_STATUS_PYTHON_SUPPORT "Yes")
