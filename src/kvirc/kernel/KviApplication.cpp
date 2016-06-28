@@ -958,13 +958,11 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 	{
 		switch(
 		    QMessageBox::question(nullptr, __tr2qs("Update Default Scripts - KVIrc"),
-		        __tr2qs("<b>Hi!</b><br><br>"
-		                "<b>It seems that you have just upgraded KVIrc from a previous version.</b><br><br>"
-		                "The KVIrc default scripts needs to be updated too, to play nice with your fresh new KVIrc.<br>"
-		                "You may want to avoid this update if you plan to revert to a previous KVIrc version soon,"
-		                "or if you have created a lot of custom scripts and want to stay safe and avoid any deletion or overwrite.<br>"
-		                "If you want to update the default scripts, I can restore the new default script for you.<br>"
-		                "<b>Do you want the default script to be restored?</b><br><br>"),
+		        __tr2qs("<b>Your KVirc installation has been updated successfully.</b><br><br>"
+		                "KVIrc's default scripts should also be updated. "
+		                "<b>Do you want to restore the default scripts?</b><br><br>"
+		                "Hint: If you choose \"No\" you can always restore the "
+		                "default scripts by selecting the appropriate entry from the \"Scripting\" menu later."),
 		        __tr2qs("No and Don't Ask Me Again"), __tr2qs("No"), __tr2qs("Yes"), 1, 1))
 		{
 			case 0:
@@ -1024,18 +1022,11 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 
 	switch(
 	    QMessageBox::question(nullptr, __tr2qs("Detected Installation Issues - KVIrc"),
-	        __tr2qs("<b>Oops!</b><br><br>"
-	                "<b>There are some reasons that make me think your KVIrc installation is incomplete.</b><br><br>"
-	                "You seem to be missing some of the features that the default KVIrc scripts provide."
-	                "This may happen because a recent upgrade may have accidentally corrupted, "
-	                "deleted or damaged your configuration files, or because you have hit a bug in KVIrc.<br><br>"
-	                "Repeating the installation of the default scripts in order "
-	                "to restore the missing features is a way to try to correct the issue.<br>"
-	                "<b>Do you want the default scripts to be restored?</b><br><br>"
-	                "<font size=\"-1\">Hint: If you're a scripter and have intentionally removed some of the scripting features "
-	                "then you may safely click on \"No and Don't Ask Me Again\", otherwise it might be "
-	                "a good idea to click \"Yes\". If you still want to choose \"No\" you can always restore the "
-	                "default script by choosing the appropriate entry from the \"Scripting\" menu.</font>"),
+	        __tr2qs("<b>Your KVIrc installation is incomplete.</b><br><br>"
+	                "You seem to be missing some of the features that the KVIrc default scripts provide. "
+	                "<b>Do you want to restore the default scripts?</b><br><br>"
+	                "Hint: If you choose \"No\" you can always restore the "
+	                "default scripts by selecting the appropriate entry from the \"Scripting\" menu later."),
 	        __tr2qs("No and Don't Ask Me Again"), __tr2qs("No"), __tr2qs("Yes"), 1, 1))
 	{
 		case 0:
