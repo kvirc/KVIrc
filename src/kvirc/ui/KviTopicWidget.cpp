@@ -200,6 +200,8 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 	int maxX = rect.width() - 2; // 2 is 1*margin
 	unsigned int idx = 0;
 
+	QFont::Style normalFontStyle = p->font().style();
+
 	while((idx < (unsigned int)text.length()) && (curX < maxX))
 	{
 		unsigned short c = text[(int)idx].unicode();
@@ -247,13 +249,14 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 				}
 			}
 
+			QFont newFont = p->font();
+			newFont.setStyle((curItalic ^ (normalFontStyle != QFont::StyleNormal)) ? QFont::StyleItalic : QFont::StyleNormal);
+			p->setFont(newFont);
+
 			p->drawText(curX, baseline, szText.left(len));
 
 			if(curBold)
 				p->drawText(curX + 1, baseline, szText.left(len));
-			QFont newFont = p->font();
-			newFont.setStyle(curItalic ? QFont::StyleItalic : QFont::StyleNormal);
-			p->setFont(newFont);
 			if(curUnderline)
 			{
 				p->drawLine(curX, baseline + 1, curX + wdth, baseline + 1);
