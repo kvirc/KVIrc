@@ -345,6 +345,11 @@ void KviUserListView::applyOptions()
 	m_iFontHeight = fm.lineSpacing();
 	m_pViewArea->m_pScrollBar->setSingleStep(m_iFontHeight);
 
+	if(KVI_OPTION_UINT(KviOption_uintUserListMinimumWidth) < 100)
+		KVI_OPTION_UINT(KviOption_uintUserListMinimumWidth) = 100;
+
+	setMinimumWidth(KVI_OPTION_UINT(KviOption_uintUserListMinimumWidth));
+
 	KviUserListEntry * pEntry = m_pHeadItem;
 
 	//reset scrollarea position and scrollbar position
@@ -361,7 +366,6 @@ void KviUserListView::applyOptions()
 	}
 	updateScrollBarRange();
 	m_pUsersLabel->setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
-	setMinimumWidth(22);
 	resizeEvent(nullptr); // this will call update() too
 	repaint();
 }

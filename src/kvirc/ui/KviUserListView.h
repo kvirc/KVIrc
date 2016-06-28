@@ -136,7 +136,6 @@ class KVIRC_API KviUserListEntry : public QObject
 	Q_OBJECT
 	friend class KviUserListView;
 	friend class KviUserListViewArea;
-
 public:
 	/**
 	* \brief Constructs the user list entry object
@@ -214,6 +213,7 @@ protected:
 	* \return void
 	*/
 	void recalcSize();
+
 private slots:
 	void avatarFrameChanged();
 	void avatarDestroyed();
@@ -802,6 +802,7 @@ protected:
 	void updateScrollBarRange();
 
 	virtual void resizeEvent(QResizeEvent * e);
+
 public slots:
 	/**
 	* \brief Called when an animated avatar is updated (every frame)
@@ -839,6 +840,7 @@ public:
 	* \return int
 	*/
 	int dummyRead() const { return 0; };
+
 protected:
 	KviUserListView * m_pListView;
 	KviUserListEntry * m_pLastEntryUnderMouse;
@@ -857,6 +859,7 @@ protected:
 	virtual void wheelEvent(QWheelEvent * e);
 	virtual void keyPressEvent(QKeyEvent * e);
 protected slots:
+
 	/**
 	* \brief Called when the scrollbar is moved
 	* \param iNewVal The new value of the scrollbar
