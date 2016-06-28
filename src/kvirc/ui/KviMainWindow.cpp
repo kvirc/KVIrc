@@ -1140,7 +1140,7 @@ void KviMainWindow::fillToolBarsPopup(QMenu * p)
 
 void KviMainWindow::customizeToolBars()
 {
-	KviKvsScript::run("toolbareditor.open", g_pActiveWindow);
+	KviKvsScript::run("toolbareditor.open -t", g_pActiveWindow);
 }
 
 void KviMainWindow::toolbarsPopupSelected(QAction * pAction)
