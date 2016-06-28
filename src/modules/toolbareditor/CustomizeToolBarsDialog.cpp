@@ -326,15 +326,15 @@ CustomizeToolBarsDialog::CustomizeToolBarsDialog(QWidget * p)
 	connect(m_pExportToolBarButton, SIGNAL(clicked()), this, SLOT(exportToolBar()));
 	g->addWidget(m_pExportToolBarButton, 4, 1);
 
-	m_pImportToolBarButton = new QPushButton(__tr2qs_ctx("Import Toolbar","editor"),this);
-	connect(m_pImportToolBarButton,SIGNAL(clicked()),this,SLOT(importToolBar()));
+	m_pImportToolBarButton = new QPushButton(__tr2qs_ctx("Import Toolbar", "editor"), this);
+	connect(m_pImportToolBarButton, SIGNAL(clicked()), this, SLOT(importToolBar()));
 	g->addWidget(m_pImportToolBarButton, 5, 1);
 
 	TrashcanLabel * t = new TrashcanLabel(this);
 	g->addWidget(t, 7, 1);
 
 	b = new QPushButton(__tr2qs_ctx("Close","editor"),this);
-	connect(b,SIGNAL(clicked()),this,SLOT(closeClicked()));
+	connect(b,SIGNAL(clicked()), this, SLOT(closeClicked()));
 	g->addWidget(b, 8, 1);
 
 	g->setRowStretch(6, 1);
