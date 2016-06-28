@@ -314,6 +314,10 @@ IrcNetworkDetailsWidget::IrcNetworkDetailsWidget(QWidget * par, KviIrcNetwork * 
 	columnLabels.append(__tr2qs_ctx("NickServ Request Mask", "options"));
 	columnLabels.append(__tr2qs_ctx("Identify Command", "options"));
 	m_pNickServTreeWidget->setHeaderLabels(columnLabels);
+	m_pNickServTreeWidget->setColumnWidth(0, 130);
+	m_pNickServTreeWidget->setColumnWidth(1, 150);
+	m_pNickServTreeWidget->setColumnWidth(2, 190);
+	m_pNickServTreeWidget->setColumnWidth(3, 130);
 	connect(m_pNickServTreeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(enableDisableNickServControls()));
 	gl->addWidget(m_pNickServTreeWidget, 1, 0, 1, 3);
 
@@ -1482,8 +1486,8 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	layout()->setRowStretch(1, 1);
 	layout()->setColumnStretch(1, 1);
-	setMinimumWidth(840);
-	setMinimumHeight(480);
+	setMinimumWidth(800);
+	setMinimumHeight(440);
 }
 
 OptionsWidget_servers::~OptionsWidget_servers()

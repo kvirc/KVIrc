@@ -153,7 +153,7 @@ KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircSe
 
 	QLabel * l = new QLabel(this);
 	l->setWordWrap(true);
-	l->setText(__tr2qs("<center><b>Welcome!</b></center><br><br>This wizard will guide you in the process of "
+	l->setText(__tr2qs("<center><b>Welcome!</b></center><br>This wizard will guide you in the process of "
 	                   "downloading a list of IRC servers. Please click \"<b>Next</b>\" to begin the operation."));
 	addPage(l, capt);
 

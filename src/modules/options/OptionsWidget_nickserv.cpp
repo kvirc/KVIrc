@@ -240,6 +240,11 @@ OptionsWidget_nickServ::OptionsWidget_nickServ(QWidget * parent)
 	columnLabels.append(__tr2qs_ctx("NickServ Request Mask", "options"));
 	columnLabels.append(__tr2qs_ctx("Identify Command", "options"));
 	m_pNickServTreeWidget->setHeaderLabels(columnLabels);
+	m_pNickServTreeWidget->setColumnWidth(0, 150);
+	m_pNickServTreeWidget->setColumnWidth(1, 150);
+	m_pNickServTreeWidget->setColumnWidth(2, 150);
+	m_pNickServTreeWidget->setColumnWidth(3, 150);
+	m_pNickServTreeWidget->setColumnWidth(4, 150);
 	connect(m_pNickServTreeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(enableDisableNickServControls()));
 
 	gl->addWidget(m_pNickServTreeWidget, 1, 0, 1, 3);

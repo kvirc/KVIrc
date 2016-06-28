@@ -744,7 +744,12 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 	labels.append(__tr2qs_ctx("Username", "options"));
 	labels.append(__tr2qs_ctx("Real Name", "options"));
 	m_pTreeWidget->setHeaderLabels(labels);
-	m_pTreeWidget->setMinimumWidth(100);
+	m_pTreeWidget->setColumnWidth(0, 110);
+	m_pTreeWidget->setColumnWidth(1, 110);
+	m_pTreeWidget->setColumnWidth(2, 110);
+	m_pTreeWidget->setColumnWidth(3, 130);
+	m_pTreeWidget->setColumnWidth(4, 120);
+	m_pTreeWidget->setColumnWidth(5, 120);
 
 	KviTalToolTip::add(m_pTreeWidget, __tr2qs_ctx("This is a set of rules to use profiles.<br>"
 	                                              "KVIrc will use them to handle the user connection "

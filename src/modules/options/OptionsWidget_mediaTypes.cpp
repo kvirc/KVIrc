@@ -77,6 +77,9 @@ OptionsWidget_mediaTypes::OptionsWidget_mediaTypes(QWidget * parent)
 	columnLabels.append(__tr2qs_ctx("MIME Type", "options"));
 	columnLabels.append(__tr2qs_ctx("Description", "options"));
 	m_pTreeWidget->setHeaderLabels(columnLabels);
+	m_pTreeWidget->setColumnWidth(0, 150);
+	m_pTreeWidget->setColumnWidth(1, 180);
+	m_pTreeWidget->setColumnWidth(2, 150);
 	m_pTreeWidget->setAllColumnsShowFocus(true);
 	m_pTreeWidget->setRootIsDecorated(false);
 	connect(m_pTreeWidget, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)));
