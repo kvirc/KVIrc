@@ -1486,8 +1486,8 @@ OptionsWidget_servers::OptionsWidget_servers(QWidget * parent)
 
 	layout()->setRowStretch(1, 1);
 	layout()->setColumnStretch(1, 1);
-	setMinimumWidth(800);
-	setMinimumHeight(440);
+	setMinimumWidth(600);  // made this dialog taller but cant make it wider https://github.com/kvirc/KVIrc/issues/1355
+	setMinimumHeight(440); // The server dilaog opens inside general prefs as well and wider makes the parent window way too large
 }
 
 OptionsWidget_servers::~OptionsWidget_servers()
