@@ -152,14 +152,14 @@ KVSO_CLASS_FUNCTION(toolButton, setUsesBigPixmap)
 	KVSO_PARAMETERS_BEGIN(c)
 	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
 	KVSO_PARAMETERS_END(c)
-	((QToolButton *)widget())->setIconSize(bEnabled ? QSize(32, 32) : QSize(22, 22));
+	((QToolButton *)widget())->setIconSize(bEnabled ? QSize(32, 32) : QSize(16, 16));
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(toolButton, usesBigPixmap)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(((QToolButton *)widget())->iconSize().height() > 22);
+	c->returnValue()->setBoolean(((QToolButton *)widget())->iconSize().height() > 16);
 	return true;
 }
 
