@@ -1263,6 +1263,11 @@ defpopup(channels)
 	{
 		j #python;
 	}
+
+	item($tr("Join","defscript") #znc,$icon("channel"))
+	{
+		j #znc;
+	}
 }
 
 defpopup(logging)
