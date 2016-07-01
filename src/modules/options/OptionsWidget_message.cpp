@@ -71,7 +71,7 @@ OptionsWidget_privmsg::OptionsWidget_privmsg(QWidget * parent)
 
 	g = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("Nicknames", "options"));
 
-	m_pUseSmartColorSelector = addBoolSelector(g, __tr2qs_ctx("\"Smart\" nickname colors", "options"), KviOption_boolColorNicks);
+	m_pUseSmartColorSelector = addBoolSelector(g, __tr2qs_ctx("Smart nickname colors", "options"), KviOption_boolColorNicks);
 
 	KviTalHBox * hb = new KviTalHBox(g);
 	hb->setSpacing(4);

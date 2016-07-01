@@ -61,7 +61,7 @@ OptionsWidget_notify::OptionsWidget_notify(QWidget * parent)
 	b = addBoolSelector(g, __tr2qs_ctx("Check USERHOST for online users", "options"), KviOption_boolNotifyListSendUserhostForOnlineUsers, KVI_OPTION_BOOL(KviOption_boolUseNotifyList));
 	connect(notifyEnableBox, SIGNAL(toggled(bool)), b, SLOT(setEnabled(bool)));
 
-	b = addBoolSelector(g, __tr2qs_ctx("Use \"smart\" notify list manager", "options"), KviOption_boolUseIntelligentNotifyListManager, KVI_OPTION_BOOL(KviOption_boolUseNotifyList));
+	b = addBoolSelector(g, __tr2qs_ctx("Use smart notify list manager", "options"), KviOption_boolUseIntelligentNotifyListManager, KVI_OPTION_BOOL(KviOption_boolUseNotifyList));
 	connect(notifyEnableBox, SIGNAL(toggled(bool)), b, SLOT(setEnabled(bool)));
 
 	b = addBoolSelector(g, __tr2qs_ctx("Use the WATCH method if available", "options"), KviOption_boolUseWatchListIfAvailable, KVI_OPTION_BOOL(KviOption_boolUseNotifyList));
