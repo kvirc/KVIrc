@@ -306,8 +306,8 @@ bool KvsObject_textedit::functionCursorPosition(KviKvsObjectFunctionCall * c)
 {
 	if(!widget())
 		return true;
-	int iRow = ((QTextEdit *)widget())->textCursor().blockNumber();
-	int iCol = ((QTextEdit *)widget())->textCursor().columnNumber();
+	int iRow = ((QTextEdit *)widget())->textCursor().blockNumber() + 1;
+	int iCol = ((QTextEdit *)widget())->textCursor().columnNumber() + 1;
 
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0, new KviKvsVariant((kvs_int_t)iRow));
