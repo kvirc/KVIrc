@@ -149,7 +149,7 @@ defpopup(querytextview)
 
 	separator(!$window.isDocked())
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),$icon("whoisuser")) ($server && $isWellKnown($0))
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),$icon("whoisuser")) ($server)
 	{
 		whois $0 $0
 	}
@@ -163,7 +163,7 @@ defpopup(querytextview)
 
 	separator
 
-	popup($tr("&Information","defscript"),$icon("info")) (!%:multiple && $server && $isWellKnown($0))
+	popup($tr("&Information","defscript"),$icon("info")) (!%:multiple && $server)
 	{
 		item($str.printf($tr("/WHOIS ?s","defscript"),$0),$icon("whoisuser"))
 		{
@@ -196,17 +196,17 @@ defpopup(querytextview)
 
 	separator($server)
 
-	extpopup(C&TCP,ctcp,$icon("ctcpreplyunknown")) (!%:multiple && $server && $isWellKnown($0))
+	extpopup(C&TCP,ctcp,$icon("ctcpreplyunknown")) (!%:multiple && $server)
 
-	extpopup(&DCC,dcc,$icon("dcc")) (!%:multiple && $server && $isWellKnown($0))
+	extpopup(&DCC,dcc,$icon("dcc")) (!%:multiple && $server)
 
 	separator($server)
 
-	extpopup($tr("&Ignore","defscript"),ignore,$icon("ignore")) (!%:multiple && $server && $isWellKnown($0))
+	extpopup($tr("&Ignore","defscript"),ignore,$icon("ignore")) (!%:multiple && $server)
 
-	extpopup($tr("&Registration","defscript"),registration,$icon("regusers")) (!%:multiple && $server && $isWellKnown($0))
+	extpopup($tr("&Registration","defscript"),registration,$icon("regusers")) (!%:multiple && $server)
 
-	item($tr("Notify Avatar","defscript"),$icon("avatar")) (!%:multiple && $server && $isWellKnown($0))
+	item($tr("Notify Avatar","defscript"),$icon("avatar")) (!%:multiple && $server)
 	{
 		avatar.notify $0
 	}
@@ -896,14 +896,14 @@ defpopup(defaulttextview)
 
 	label($tr("You're not connected to a server","defscript")) (!$server)
 
-	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),$icon("whoisidle")) (!%:multiple && $server && $isWellKnown($0))
+	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),$0),$icon("whoisidle")) (!%:multiple && $server)
 	{
 		whois $0 $0
 	}
 
 	separator($server)
 
-	popup($tr("&Information","defscript"),$icon("info")) ($server && $isWellKnown($0))
+	popup($tr("&Information","defscript"),$icon("info")) ($server)
 	{
 		item($str.printf($tr("/WHOIS ?s","defscript"),$0),$icon("whoisuser"))
 		{
@@ -936,26 +936,26 @@ defpopup(defaulttextview)
 
 	separator($server)
 
-	item($tr("&Query","defscript") %:visible,$icon("query")) ($server && $isWellKnown($0))
+	item($tr("&Query","defscript") %:visible,$icon("query")) ($server)
 	{
 		query $0
 	}
 
 	separator($server)
 
-	extpopup(C&TCP,ctcp,$icon("ctcpreplyunknown")) ($server && $isWellKnown($0))
+	extpopup(C&TCP,ctcp,$icon("ctcpreplyunknown")) ($server)
 
-	extpopup(&DCC,dcc,$icon("dcc")) ($server && $isWellKnown($0))
+	extpopup(&DCC,dcc,$icon("dcc")) ($server)
 
 	separator($server)
 
-	extpopup($tr("&Registration","defscript"),registration,$icon("regusers")) (!%:multiple && $server && $isWellKnown($0))
+	extpopup($tr("&Registration","defscript"),registration,$icon("regusers")) (!%:multiple && $server)
 
-	extpopup($tr("&Highlight","defscript"),highlight,$icon("highlighttext")) (!%:multiple && $server && $isWellKnown($0))
+	extpopup($tr("&Highlight","defscript"),highlight,$icon("highlighttext")) (!%:multiple && $server)
 
-	extpopup($tr("Ig&nore","defscript"),ignore,$icon("ignore")) (!%:multiple && $server && $isWellKnown($0))
+	extpopup($tr("Ig&nore","defscript"),ignore,$icon("ignore")) (!%:multiple && $server)
 
-	item($tr("Notify avatar","defscript"),$icon("avatar")) ($server && $isWellKnown($0))
+	item($tr("Notify avatar","defscript"),$icon("avatar")) ($server)
 	{
 		avatar.notify $0
 	}
