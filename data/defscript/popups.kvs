@@ -421,12 +421,12 @@ defpopup(ctcp)
 
 		item(DCC - $tr("Disable Ignore","defscript"),$icon("dcc")) (%:ProtectDCC)
 		{
-			option boolIgnoreCTCPAvatar 0
+			option boolIgnoreCTCPDCC 0
 		}
 
 		item(DCC - $tr("Enable Ignore","defscript"),$icon("dcc")) (!%:ProtectDCC)
 		{
-			option boolIgnoreCTCPAvatar 1
+			option boolIgnoreCTCPDCC 1
 		}
 	}
 }
