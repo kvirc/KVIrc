@@ -762,7 +762,7 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
 	pLab->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
 	g->addWidget(pLab, 1, 1);
 
-	m_pRowColLabel = new QLabel(QString(__tr2qs_ctx("Row: %1 Col: %2", "editor")).arg(0).arg(0), this);
+	m_pRowColLabel = new QLabel(QString(__tr2qs_ctx("Line: %1 Col: %2", "editor")).arg(0).arg(0), this);
 	m_pRowColLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
 	m_pRowColLabel->setMinimumWidth(80);
 	g->addWidget(m_pRowColLabel, 1, 3);
@@ -939,7 +939,7 @@ void ScriptEditorImplementation::updateRowColLabel()
 		return;
 	int iRow = m_pEditor->textCursor().blockNumber();
 	int iCol = m_pEditor->textCursor().columnNumber();
-	QString szTmp = QString(__tr2qs_ctx("Row: %1 Col: %2", "editor")).arg(iRow).arg(iCol);
+	QString szTmp = QString(__tr2qs_ctx("Line: %1 Col: %2", "editor")).arg(iRow).arg(iCol);
 	m_pRowColLabel->setText(szTmp);
 	m_lastCursorPos = m_pEditor->textCursor().position();
 }

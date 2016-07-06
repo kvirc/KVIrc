@@ -225,7 +225,7 @@ void KviKvsReport::report(KviKvsReport * r, KviWindow * pOutput)
 
 		pOutput->output(out, __tr2qs_ctx("[KVS] Window:", "kvs"));
 		if(g_pApp->windowExists(r->window()))
-			pOutput->output(out, "[KVS]   %Q [id: %u]", &(r->window()->windowName()), r->window()->numericId());
+			pOutput->output(out, "[KVS]   %Q [ID: %u]", &(r->window()->windowName()), r->window()->numericId());
 		else
 			pOutput->output(out, __tr2qs_ctx("[KVS]   Destroyed window with pointer %x", "kvs"), r->window());
 
