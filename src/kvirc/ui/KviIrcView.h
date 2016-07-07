@@ -106,6 +106,7 @@ private:
 	int m_iFontLineWidth;
 	int m_iFontDescent;
 	int m_iFontCharacterWidth[256]; //1024 bytes fixed
+	bool m_bUseRealBold;
 
 	int m_iWrapMargin;
 	int m_iMinimumPaintWidth;
@@ -233,7 +234,7 @@ private:
 	void fastScroll(int lines = 1);
 	const kvi_wchar_t * getTextLine(int msg_type, const kvi_wchar_t * data_ptr, KviIrcViewLine * line_ptr, bool bEnableTimeStamp = true, const QDateTime & datetime = QDateTime());
 	void calculateLineWraps(KviIrcViewLine * ptr, int maxWidth);
-	void recalcFontVariables(const QFontMetrics & fm, const QFontInfo & fi);
+	void recalcFontVariables(const QFont & font, const QFontInfo & fi);
 	bool checkSelectionBlock(KviIrcViewLine * line, int bufIndex);
 	KviIrcViewWrappedBlock * getLinkUnderMouse(int xPos, int yPos, QRect * pRect = 0, QString * linkCmd = 0, QString * linkText = 0);
 	void doLinkToolTip(const QRect & rct, QString & linkCmd, QString & linkText);

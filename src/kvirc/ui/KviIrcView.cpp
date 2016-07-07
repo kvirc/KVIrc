@@ -1072,7 +1072,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 		// note that QFontMetrics(pa.font()) may be not the same as QFontMetrics(font())
 		// because the painter might effectively use an approximation of the QFont specified
 		// by font().
-		recalcFontVariables(QFontMetrics(pa.font()), pa.fontInfo());
+		recalcFontVariables(pa.font(), pa.fontInfo());
 	}
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -1345,7 +1345,13 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 			theWdth = width() - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER + scrollbarWidth);                                                                                       \
 		pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_SELECT).back())); \
 	}                                                                                                                                                                                  \
-	pa.drawText(curLeftCoord, curBottomCoord, _text_str.mid(_text_idx, _text_len));                                                                                                    \
+	pPenFont.setStyle(curItalic ^ normalFontStyle != QFont::StyleNormal ? QFont::StyleItalic : QFont::StyleNormal);                                                 \
+	if (m_bUseRealBold)                                                                                                                                             \
+		pPenFont.setBold(curBold);                                                                                                                                  \
+	pa.setFont(pPenFont);                                                                                                                                           \
+	pa.drawText(curLeftCoord, curBottomCoord, _text_str.mid(_text_idx, _text_len));                                                                                 \
+	if(curBold && !m_bUseRealBold)                                                                                                                                  \
+		pa.drawText(curLeftCoord + 1, curBottomCoord, _text_str.mid(_text_idx, _text_len));                                                                         \
 	curLeftCoord += _text_width;
 
 #define DRAW_NORMAL_TEXT(_text_str, _text_idx, _text_len, _text_width)                                                                                              \
@@ -1357,11 +1363,12 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 			theWdth = width() - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER + scrollbarWidth);                                                                    \
 		pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR((unsigned char)curBack)); \
 	}                                                                                                                                                               \
-	newFont = pa.font();                                                                                                                                            \
-	newFont.setStyle(curItalic ^ normalFontStyle != QFont::StyleNormal ? QFont::StyleItalic : QFont::StyleNormal);                                                  \
-	pa.setFont(newFont);                                                                                                                                            \
+	pPenFont.setStyle(curItalic ^ normalFontStyle != QFont::StyleNormal ? QFont::StyleItalic : QFont::StyleNormal);                                                 \
+	if (m_bUseRealBold)                                                                                                                                             \
+	    pPenFont.setBold(curBold);                                                                                                                                  \
+	pa.setFont(pPenFont);                                                                                                                                           \
 	pa.drawText(curLeftCoord, curBottomCoord, _text_str.mid(_text_idx, _text_len));                                                                                 \
-	if(curBold)                                                                                                                                                     \
+	if(curBold && !m_bUseRealBold)                                                                                                                                  \
 		pa.drawText(curLeftCoord + 1, curBottomCoord, _text_str.mid(_text_idx, _text_len));                                                                         \
 	if(curUnderline)                                                                                                                                                \
 	{                                                                                                                                                               \
@@ -1383,6 +1390,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 
 			if(m_bMouseIsDown)
 			{
+				QFont pPenFont = pa.font();
 				// Check if the block or a part of it is selected
 				if(checkSelectionBlock(pCurTextLine, i))
 				{
@@ -1503,28 +1511,27 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 						pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, wdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR((unsigned char)curBack));
 					}
 
+					bool bBold = curBold || curLink;
+
 					newFont = pa.font();
 					newFont.setStyle(curItalic ^ normalFontStyle != QFont::StyleNormal ? QFont::StyleItalic : QFont::StyleNormal);
+					if (m_bUseRealBold)
+						newFont.setBold(bBold);
 					pa.setFont(newFont);
 
 					if(curLink)
 					{
 						SET_PEN(KVI_OPTION_MSGTYPE(KVI_OUT_LINK).fore(), block->pChunk ? block->pChunk->customFore : QColor());
-						pa.drawText(curLeftCoord, curBottomCoord, pCurTextLine->szText.mid(block->block_start, block->block_len));
-						pa.drawText(curLeftCoord + 1, curBottomCoord, pCurTextLine->szText.mid(block->block_start, block->block_len));
 						pa.drawLine(curLeftCoord, curBottomCoord + 2, curLeftCoord + wdth, curBottomCoord + 2);
 					}
-					else if(curBold)
+
+					pa.drawText(curLeftCoord, curBottomCoord, pCurTextLine->szText.mid(block->block_start, block->block_len));
+
+					if (bBold && !m_bUseRealBold)
 					{
 						// Draw doubled font (simulate bold)
-						pa.drawText(curLeftCoord, curBottomCoord, pCurTextLine->szText.mid(block->block_start, block->block_len));
 						pa.drawText(curLeftCoord + 1, curBottomCoord, pCurTextLine->szText.mid(block->block_start, block->block_len));
 					}
-					else
-					{
-						pa.drawText(curLeftCoord, curBottomCoord, pCurTextLine->szText.mid(block->block_start, block->block_len));
-					}
-
 					if(curUnderline)
 					{
 						// Draw a line under the text block....
@@ -2060,12 +2067,12 @@ bool KviIrcView::checkSelectionBlock(KviIrcViewLine * line, int bufIndex)
 // recalcFontVariables
 //
 
-void KviIrcView::recalcFontVariables(const QFontMetrics & fm, const QFontInfo & fi)
+void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 {
 	if(m_pFm)
 		delete m_pFm;
 
-	m_pFm = new QFontMetrics(fm);
+	m_pFm = new QFontMetrics(font);
 
 	m_iFontLineSpacing = m_pFm->lineSpacing();
 
@@ -2078,6 +2085,24 @@ void KviIrcView::recalcFontVariables(const QFontMetrics & fm, const QFontInfo & 
 	// cache the first 256 characters
 	for(unsigned short i = 0; i < 256; i++)
 		m_iFontCharacterWidth[i] = m_pFm->width(QChar(i));
+
+	// Currently KviIrcView requires that the bold font variant has the same metrics as the non-bold one.
+	// To ensure this, we check if the width of the bold and non-bold variants of the first 256 characters match.
+	// If it does, use real bold; otherwise, use faux-bold by drawing the text again at (x,y+1).
+	{
+		m_bUseRealBold = true;
+		QFont fontBold = QFont(font);
+		fontBold.setBold(true);
+		QFontMetrics fmBold = QFontMetrics(fontBold);
+		for(unsigned short i = 32; i < 256; i++)
+			if (m_iFontCharacterWidth[i] && fmBold.width(QChar(i)) != m_iFontCharacterWidth[i])
+			{
+				//printf("Char %d: %d != %d\n", i, fmBold.width(QChar(i)), m_iFontCharacterWidth[i]);
+				m_bUseRealBold = false;
+				break;
+			}
+		//printf("m_bUseRealBold = %d\n", m_bUseRealBold);
+	}
 
 	// fix for #489 (horizontal tabulations)
 	m_iFontCharacterWidth[9] = m_pFm->width("\t");
