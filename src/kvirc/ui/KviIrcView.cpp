@@ -2612,15 +2612,25 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 						return l->szText.size();
 				}
 				// now, get the right character inside the block
-				int retValue = 0;
+				int retValue = 0, oldIndex = 0, oldLeft = iLeft;
 				QChar curChar;
 				// add the width of each single character until we get the right one
 				while(iLeft < xPos && retValue < l->pBlocks[i].block_len)
 				{
+					oldIndex = retValue; oldLeft = iLeft;
+
 					curChar = l->szText.at(l->pBlocks[i].block_start + retValue);
 					iLeft += (curChar < 0xff) ? m_iFontCharacterWidth[curChar.unicode()] : m_pFm->width(curChar);
 					retValue++;
 				}
+
+				// Make the horizontal point delimiting which characters are to be selected be in the middle of the character,
+				// i.e. if the user starts selecting from the left half of a character, select that character too.
+				// This mimics the behavior of most other GUI applications.
+				int iMid = (oldLeft + iLeft) / 2;
+				if (xPos <= iMid)
+					retValue = oldIndex;
+
 				//printf("%d\n",l->pBlocks[i].block_start+retValue);
 				return l->pBlocks[i].block_start + retValue;
 			}
