@@ -492,6 +492,13 @@ void KviTreeWindowList::updateActivityMeter()
 	}
 }
 
+void KviTreeWindowList::wheelEvent(QWheelEvent * e)
+{
+	// Override KviWindowListBase::wheelEvent.
+	// Mouse wheel handling is done in
+	// KviTreeWindowListTreeWidget::wheelEvent.
+}
+
 KviWindowListItem * KviTreeWindowList::firstItem()
 {
 	m_pCurrentItem = (KviTreeWindowListItem *)m_pTreeWidget->topLevelItem(0);

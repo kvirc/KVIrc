@@ -108,6 +108,8 @@ public:
 	virtual void updatePseudoTransparency();
 	virtual void updateActivityMeter();
 
+	virtual void wheelEvent(QWheelEvent * e);
+
 protected:
 	virtual void moveEvent(QMoveEvent *);
 protected slots:
