@@ -456,6 +456,7 @@ void KviIrcConnection::handleInitialCapLs()
 	cap_add("extended-join");
 	cap_add("userhost-in-names");
 	cap_add("chghost");
+	cap_add("znc.in/self-message");
 
 	if(szRequests.isEmpty())
 	{

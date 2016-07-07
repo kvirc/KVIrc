@@ -891,7 +891,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 				ctcp.pData = pTrailing->ptr();
 				KviIrcMask talker(szNick, szUser, szHost); // FIXME!
 				ctcp.pSource = &talker;
-				ctcp.szTarget = msg->connection()->decodeText(msg->safeParam(0));
+				ctcp.szTarget = szTarget;
 				ctcp.bIgnored = false;
 				ctcp.bIsFlood = false;
 				ctcp.bUnknown = false;
@@ -902,7 +902,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 	}
 
 	// Normal PRIVMSG
-	if(IS_ME(msg, szTarget))
+	if(msg->connection()->serverInfo()->supportedChannelTypes().indexOf(szTarget[0]) == -1)
 	{
 		//Ignore it?
 		if(u)
@@ -954,9 +954,13 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 		//			}
 		//		}
 
+		// "znc.in/self-message" capability: Handle a replayed message from ourselves to someone else.
+		bool bSelfMessage = IS_ME(msg, szNick);
+		QString szWindow = bSelfMessage ? szTarget : szNick;
+
 		// A query request
 		// do we have a matching window ?
-		KviQueryWindow * query = msg->connection()->findQuery(szNick);
+		KviQueryWindow * query = msg->connection()->findQuery(szWindow);
 
 		if(!query)
 		{
@@ -1002,15 +1006,16 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 				       console, szNick, szUser, szHost, szMsg, msg->messageTagsKvsHash()))
 				{
 					// check if the scripter hasn't created it
-					query = msg->connection()->findQuery(szNick);
+					query = msg->connection()->findQuery(szWindow);
 				}
 				else
 				{
 					// no query yet, create it!
 					// this will trigger OnQueryWindowCreated
-					query = console->connection()->createQuery(szNick);
+					query = console->connection()->createQuery(szWindow);
 					// and this will trigger OnQueryTargetAdded
-					query->setTarget(szNick, szUser, szHost);
+					if (!bSelfMessage)
+						query->setTarget(szNick, szUser, szHost);
 				}
 
 				//check for query, since the user could have halt'ed its creation
