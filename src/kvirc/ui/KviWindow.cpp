@@ -72,6 +72,11 @@
 #include <QActionGroup>
 #include <QMenu>
 #include <QInputMethodEvent>
+#include <QFileInfo>
+
+#ifdef COMPILE_ZLIB_SUPPORT
+#include <zlib.h>
+#endif
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"
@@ -499,6 +504,12 @@ void KviWindow::getConfigGroupName(QString & szBuffer)
 
 void KviWindow::getDefaultLogFileName(QString & szBuffer)
 {
+	return getDefaultLogFileName(szBuffer, QDate::currentDate(), KVI_OPTION_BOOL(KviOption_boolGzipLogs),
+		KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat));
+}
+
+void KviWindow::getDefaultLogFileName(QString & szBuffer, QDate date, bool bGzip, unsigned int uDatetimeFormat)
+{
 	QString szLog;
 
 	// dynamic log path
@@ -519,9 +530,8 @@ void KviWindow::getDefaultLogFileName(QString & szBuffer)
 	KviFileUtils::makeDir(szLog);
 
 	QString szDate;
-	QDate date(QDate::currentDate());
 
-	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+	switch(uDatetimeFormat)
 	{
 		case 1:
 			szDate = date.toString(Qt::ISODate);
@@ -544,7 +554,7 @@ void KviWindow::getDefaultLogFileName(QString & szBuffer)
 	szBase.replace("%%2e", "%2e");
 
 	QString szTmp;
-	if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
+	if(bGzip)
 		szTmp = "%1_%2_%3.log.gz";
 	else
 		szTmp = "%1_%2_%3.log";
@@ -1379,4 +1389,116 @@ KviIrcContext * KviWindow::context()
 			return console()->context();
 	}
 	return nullptr;
+}
+
+void KviWindow::pasteLastLog()
+{
+	bool bChannel = type() == KviWindow::Channel || type() == KviWindow::DeadChannel;
+	QDate date = QDate::currentDate();
+	int iInterval = -(int)KVI_OPTION_UINT(bChannel ? KviOption_uintDaysIntervalToPasteOnChannelJoin : KviOption_uintDaysIntervalToPasteOnQueryJoin);
+	QDate checkDate = date.addDays(iInterval);
+
+	unsigned int uMaxLines = KVI_OPTION_UINT(bChannel ? KviOption_uintLinesToPasteOnChannelJoin : KviOption_uintLinesToPasteOnQueryJoin);
+	if (!uMaxLines)
+		return;
+	unsigned int uCurLines = 0;
+
+	QVector<QString> vLines = QVector<QString>(uMaxLines);
+
+	for (; date >= checkDate; date = date.addDays(-1))
+		for (int iGzip = 0; iGzip <= 1; iGzip++)
+			for (unsigned int uDatetimeFormat = 0; uDatetimeFormat < 3; uDatetimeFormat++)
+			{
+				bool bGzip = !!iGzip;
+
+				QString szFileName;
+				getDefaultLogFileName(szFileName, date, bGzip, uDatetimeFormat);
+
+				QFileInfo fi(szFileName);
+				if (!fi.exists() || !fi.isFile())
+					continue;
+
+				// Load the log
+				QByteArray log = loadLogFile(szFileName, bGzip);
+
+				if(log.size() == 0)
+					continue;
+
+				QList<QByteArray> list = log.split('\n');
+				unsigned int uCount = list.size();
+
+				while (uCount)
+				{
+					vLines[uCurLines++] = QString(list.at(--uCount));
+					if (uCurLines == uMaxLines)
+						goto enough;
+				}
+			}
+
+	if (!uCurLines)
+		return;
+
+enough:
+	QString szDummy = __tr2qs("Starting last log");
+	output(KVI_OUT_CHANPRIVMSG, szDummy);
+
+	for (size_t u = uCurLines; u > 0; u--)
+	{
+		QString szLine = QString(vLines.at(u-1));
+		szLine = szLine.section(' ', 1);
+		if (szLine.endsWith("\r"))
+		{
+			// Remove the \r char at the szEnd of line
+			szLine.chop(1);
+		}
+		// Print the line in the channel buffer
+		output(KVI_OUT_CHANPRIVMSG, szLine);
+	}
+
+	szDummy = __tr2qs("End of log");
+	output(KVI_OUT_CHANPRIVMSG, szDummy);
+}
+
+QByteArray KviWindow::loadLogFile(const QString & szFileName, bool bGzip)
+{
+	QByteArray data;
+
+#ifdef COMPILE_ZLIB_SUPPORT
+	if(bGzip)
+	{
+		gzFile logFile = gzopen(szFileName.toLocal8Bit().data(), "rb");
+		if(logFile)
+		{
+			char cBuff[1025];
+			int iLen;
+
+			iLen = gzread(logFile, cBuff, 1024);
+			while(iLen > 0)
+			{
+				cBuff[iLen] = 0;
+				data.append(cBuff);
+				iLen = gzread(logFile, cBuff, 1024);
+			}
+
+			gzclose(logFile);
+		}
+		else
+		{
+			qDebug("Can't open compressed file %s", szFileName.toUtf8().data());
+		}
+	}
+	else
+	{
+#endif
+		QFile logFile(szFileName);
+		if(!logFile.open(QIODevice::ReadOnly))
+			return QByteArray();
+
+		data = logFile.readAll();
+		logFile.close();
+#ifdef COMPILE_ZLIB_SUPPORT
+	}
+#endif
+
+	return data;
 }

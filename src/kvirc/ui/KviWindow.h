@@ -368,6 +368,7 @@ public:
 
 	// Retrieves the default log file name: this is pre-build
 	void getDefaultLogFileName(QString & szBuffer);
+	void getDefaultLogFileName(QString & szBuffer, QDate date, bool bGzip, unsigned int uDatetimeFormat);
 
 	void delayedClose(); // close that jumps out of the current event loop
 
@@ -427,6 +428,27 @@ public:
 	inline void setFixedCaption(const QString & szCaption) { m_szPlainTextCaption = szCaption; };
 
 	void setWindowTitle(QString & szTitle);
+
+	/**
+	* \brief Pastes the most recent channel log into the buffer
+	*
+	* It searches for the most recent channel log of the channel we have just
+	* joined, and pastes into the buffer the last N lines, where N is get from
+	* the options
+	* \return void
+	*/
+	void pasteLastLog();
+
+private:
+	/**
+	* \brief Loads a log file
+	*
+	* It opens a logfile, gzipped or not, and returns the content in a buffer
+	* \param szFileName The filename of the log file
+	* \param bGzip Whether the log file is gzipped
+	* \return QByteArray
+	*/
+	QByteArray loadLogFile(const QString & szFileName, bool bGzip);
 
 protected:
 	// Loading and saving of properties

@@ -232,26 +232,6 @@ public:
 	*/
 	void updateLabelText();
 
-	/**
-	* \brief Pastes the most recent channel log into the buffer
-	*
-	* It searches for the most recent channel log of the channel we have just
-	* joined, and pastes into the buffer the last N lines, where N is get from
-	* the options
-	* \return void
-	*/
-	void pasteLastLog();
-
-	/**
-	* \brief Loads a log file
-	*
-	* It opens a logfile, gzipped or not, and returns the content in a buffer
-	* \param szFileName The filename of the log file
-	* \param bGzip Whether the log file is gzipped
-	* \return QByteArray
-	*/
-	QByteArray loadLogFile(const QString & szFileName, bool bGzip);
-
 protected:
 	/**
 	* \brief Called to notify us that the target of the query is changed
