@@ -435,13 +435,24 @@ private:
 	void moveCursorTo(int iIdx, bool bRepaint = true);
 
 	/**
-	* \brief Adds the text to the history
+	* \brief Submits input
 	*
 	* Triggered when the user press return
 	* \param bRepaint Whether to repain the input line
 	* \return void
 	*/
 	void returnPressed(bool bRepaint = true);
+
+	/**
+	* \brief Adds the text to the history
+	*
+	* Called when the user is done editing the current
+	* input line (either by submitting or clearing it).
+	* Adds the content (if any) to the history,
+	* and hides helper windows.
+	* \return void
+	*/
+	void finishInput();
 
 	/**
 	* \brief Autocompletion function
