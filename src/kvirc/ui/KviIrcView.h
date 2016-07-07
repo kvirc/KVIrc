@@ -113,9 +113,6 @@ private:
 	int m_iIconWidth;
 	int m_iIconSideSpacing;
 
-	QPoint m_mousePressPos;
-	QPoint m_mouseCurrentPos;
-
 	// Selection
 	KviIrcViewLine * m_pSelectionInitLine;
 	KviIrcViewLine * m_pSelectionEndLine;

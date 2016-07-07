@@ -269,9 +269,6 @@ void KviIrcView::mousePressEvent(QMouseEvent * e)
 		repaint();
 	}
 
-	m_mousePressPos = e->pos();
-	m_mouseCurrentPos = e->pos();
-
 	m_bMouseIsDown = true;
 
 	m_bShiftPressed = (e->modifiers() & Qt::ShiftModifier);
@@ -803,8 +800,6 @@ void KviIrcView::leaveEvent(QEvent *)
 
 void KviIrcView::timerEvent(QTimerEvent * e)
 {
-	m_mouseCurrentPos = mapFromGlobal(QCursor::pos());
-
 	if(e->timerId() == m_iSelectTimer)
 	{
 		repaint();
