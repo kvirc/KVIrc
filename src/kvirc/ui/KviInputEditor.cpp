@@ -1945,6 +1945,8 @@ void KviInputEditor::installShortcuts()
 	KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_LINE, this, SLOT(nextLine()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_WIN_PREV_PAGE, this, SLOT(previousPage()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_WIN_NEXT_PAGE, this, SLOT(nextPage()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_HOME, this, SLOT(scrollTop()), nullptr, Qt::WidgetShortcut);
+	KviShortcut::create(KVI_SHORTCUTS_WIN_END, this, SLOT(scrollBottom()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_WIN_SEARCH, this, SLOT(search()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE, this, SLOT(scrollToLastReadLine()), nullptr, Qt::WidgetShortcut);
 	KviShortcut::create(KVI_SHORTCUTS_INPUT_SEND_PLAIN, this, SLOT(sendPlain()), nullptr, Qt::WidgetShortcut);
@@ -3152,6 +3154,18 @@ void KviInputEditor::nextPage()
 {
 	if(m_pKviWindow && m_pKviWindow->view())
 		m_pKviWindow->view()->nextPage();
+}
+
+void KviInputEditor::scrollTop()
+{
+	if(m_pKviWindow && m_pKviWindow->view())
+		m_pKviWindow->view()->scrollTop();
+}
+
+void KviInputEditor::scrollBottom()
+{
+	if(m_pKviWindow && m_pKviWindow->view())
+		m_pKviWindow->view()->scrollBottom();
 }
 
 void KviInputEditor::search()

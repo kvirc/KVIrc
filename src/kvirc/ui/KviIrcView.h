@@ -199,6 +199,8 @@ public:
 	void nextLine();
 	void nextPage();
 	void prevPage();
+	void scrollTop();
+	void scrollBottom();
 	virtual QSize sizeHint() const;
 	const QString & lastLineOfText();
 	const QString & lastMessageText();
