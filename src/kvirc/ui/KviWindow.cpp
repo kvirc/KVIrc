@@ -1497,7 +1497,15 @@ enough:
 				}
 				date = QDateTime::fromString(szLine.section(' ', 0, iSpaceCount), Qt::SystemLocaleShortDate);
 				if (date.isValid())
+				{
 					szLine = szLine.section(' ', iSpaceCount+1);
+
+					// Work around Qt bug:
+					// if the date string contains a two-digit year, it may be
+					// parsed in the wrong century (i.e. 1916 instead of 2016).
+					if (logLine.date.year() == date.date().year() + 100)
+						date = date.addYears(100);
+				}
 				break;
 			}
 		}
