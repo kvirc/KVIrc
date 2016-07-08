@@ -647,9 +647,6 @@ KviChannelWindow * KviIrcConnection::createChannel(const QString & szName)
 	{
 		c = new KviChannelWindow(m_pConsole, szName);
 		g_pMainWindow->addWindow(c, !KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels));
-
-		if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin))
-			c->pasteLastLog();
 	}
 	return c;
 }

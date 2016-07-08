@@ -240,6 +240,9 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	//setFocusHandler(m_pInput,this);
 	// And turn on the secondary IRC view if needed
 
+	if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin))
+		pasteLastLog();
+
 	if(KVI_OPTION_BOOL(KviOption_boolAutoLogChannels))
 		m_pIrcView->startLogging();
 

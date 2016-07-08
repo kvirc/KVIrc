@@ -98,6 +98,9 @@ KviQueryWindow::KviQueryWindow(KviConsoleWindow * lpConsole, const QString & szN
 
 	m_pInput = new KviInput(this, m_pUserListView);
 
+	if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
+		pasteLastLog();
+
 	if(KVI_OPTION_BOOL(KviOption_boolAutoLogQueries))
 		m_pIrcView->startLogging();
 	// FIXME: #warning "Maybe tell the user all that we know about the remote szEnd(s)....channels..."
