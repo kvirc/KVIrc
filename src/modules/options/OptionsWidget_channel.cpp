@@ -136,15 +136,15 @@ OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
 
 	KviTalHBox * box = new KviTalHBox(g);
 
-	u = addUIntSelector(box, __tr2qs_ctx("Paste up to:", "options"), KviOption_uintLinesToPasteOnChannelJoin, 0, 50, 10, KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin));
+	u = addUIntSelector(box, __tr2qs_ctx("Paste up to:", "options"), KviOption_uintLinesToPasteOnChannelJoin, 0, 32767, 10, KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin));
 	u->setSuffix(__tr2qs_ctx(" lines", "options"));
-	mergeTip(u, __tr2qs_ctx("Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b>", "options"));
+	mergeTip(u, __tr2qs_ctx("Minimum value: <b>0 lines</b><br>Maximum value: <b>32767 lines</b>", "options"));
 
 	connect(b, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
 
-	u = addUIntSelector(box, __tr2qs_ctx("Interval:", "options"), KviOption_uintDaysIntervalToPasteOnChannelJoin, 1, 10, 10, KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin));
+	u = addUIntSelector(box, __tr2qs_ctx("Interval:", "options"), KviOption_uintDaysIntervalToPasteOnChannelJoin, 1, 3652, 10, KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin));
 	u->setSuffix(__tr2qs_ctx(" days", "options"));
-	mergeTip(u, __tr2qs_ctx("Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b>", "options"));
+	mergeTip(u, __tr2qs_ctx("Minimum value: <b>0 days</b><br>Maximum value: <b>3652 days</b>", "options"));
 
 	connect(b, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
 
