@@ -1403,7 +1403,14 @@ void KviWindow::pasteLastLog()
 		return;
 	unsigned int uCurLines = 0;
 
-	QVector<QString> vLines = QVector<QString>(uMaxLines);
+	struct LogLine
+	{
+		QString line;
+		QDate date;
+		int uDatetimeFormat;
+	};
+
+	QVector<LogLine> vLines = QVector<LogLine>(uMaxLines);
 
 	for (; date >= checkDate; date = date.addDays(-1))
 		for (int iGzip = 0; iGzip <= 1; iGzip++)
@@ -1429,7 +1436,12 @@ void KviWindow::pasteLastLog()
 
 				while (uCount)
 				{
-					vLines[uCurLines++] = QString(list.at(--uCount));
+					LogLine logLine;
+					logLine.line = QString(list.at(--uCount));
+					logLine.date = date;
+					logLine.uDatetimeFormat = uDatetimeFormat;
+					vLines[uCurLines++] = logLine;
+
 					if (uCurLines == uMaxLines)
 						goto enough;
 				}
@@ -1440,23 +1452,68 @@ void KviWindow::pasteLastLog()
 
 enough:
 	QString szDummy = __tr2qs("Starting last log");
-	output(KVI_OUT_CHANPRIVMSG, szDummy);
+	output(KVI_OUT_LOG, szDummy);
 
 	for (size_t u = uCurLines; u > 0; u--)
 	{
-		QString szLine = QString(vLines.at(u-1));
-		szLine = szLine.section(' ', 1);
+		const LogLine& logLine = vLines.at(u-1);
+		QString szLine = logLine.line;
+
+		bool ok;
+		int msgType = szLine.section(' ', 0, 0).toInt(&ok);
+		if (ok)
+			szLine = szLine.section(' ', 1);
+		else
+			msgType = KVI_OUT_LOG;
+
+		QDateTime date;
+		switch(logLine.uDatetimeFormat)
+		{
+			case 0:
+			{
+				QTime time = QTime::fromString(szLine.section(' ', 0, 0), "[hh:mm:ss]");
+				if (time.isValid())
+				{
+					date = QDateTime(logLine.date, time);
+					szLine = szLine.section(' ', 1);
+				}
+				break;
+			}
+			case 1:
+				date = QDateTime::fromString(szLine.section(' ', 0, 0), Qt::ISODate);
+				if (date.isValid())
+					szLine = szLine.section(' ', 1);
+				break;
+			case 2:
+			{
+				// The system-locale format is hairy, because it has no clear delimiter.
+				// Count how many spaces a typical time format has,
+				// and assume that that number is not going to change.
+				static int iSpaceCount = -1;
+				if (iSpaceCount == -1)
+				{
+					QString szTypicalDate = QDateTime::currentDateTime().toString(Qt::SystemLocaleShortDate);
+					iSpaceCount = szTypicalDate.count(' ');
+				}
+				date = QDateTime::fromString(szLine.section(' ', 0, iSpaceCount), Qt::SystemLocaleShortDate);
+				if (date.isValid())
+					szLine = szLine.section(' ', iSpaceCount+1);
+				break;
+			}
+		}
+
 		if (szLine.endsWith("\r"))
 		{
 			// Remove the \r char at the szEnd of line
 			szLine.chop(1);
 		}
+
 		// Print the line in the channel buffer
-		output(KVI_OUT_CHANPRIVMSG, szLine);
+		output(msgType, date, szLine);
 	}
 
 	szDummy = __tr2qs("End of log");
-	output(KVI_OUT_CHANPRIVMSG, szDummy);
+	output(KVI_OUT_LOG, szDummy);
 }
 
 QByteArray KviWindow::loadLogFile(const QString & szFileName, bool bGzip)
