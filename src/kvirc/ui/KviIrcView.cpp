@@ -601,7 +601,7 @@ void KviIrcView::postUpdateEvent()
 	}
 }
 
-void KviIrcView::appendLine(KviIrcViewLine * ptr, bool bRepaint)
+void KviIrcView::appendLine(KviIrcViewLine * ptr, const QDateTime & date, bool bRepaint)
 {
 	// This one appends a KviIrcViewLine to
 	// the buffer list (at the end)
@@ -622,7 +622,7 @@ void KviIrcView::appendLine(KviIrcViewLine * ptr, bool bRepaint)
 		// a slave view has no log files!
 		if(KVI_OPTION_MSGTYPE(ptr->iMsgType).logEnabled())
 		{
-			add2Log(ptr->szText, ptr->iMsgType, false);
+			add2Log(ptr->szText, date, ptr->iMsgType, false);
 			// If we fail...this has been already reported!
 		}
 
@@ -645,7 +645,7 @@ void KviIrcView::appendLine(KviIrcViewLine * ptr, bool bRepaint)
 			if(m_pMasterView->m_pLogFile && KVI_OPTION_BOOL(KviOption_boolStripControlCodesInLogs))
 			{
 				if(KVI_OPTION_MSGTYPE(ptr->iMsgType).logEnabled())
-					m_pMasterView->add2Log(ptr->szText, ptr->iMsgType, false);
+					m_pMasterView->add2Log(ptr->szText, date, ptr->iMsgType, false);
 			}
 			ptr->uIndex = m_pMasterView->m_uNextLineIndex;
 			m_pMasterView->m_uNextLineIndex++;

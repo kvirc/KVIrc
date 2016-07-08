@@ -69,7 +69,7 @@ void KviIrcView::stopLogging()
 		}
 
 		QString szLogEnd = QString(__tr2qs("### Log session terminated at %1 ###")).arg(szDate);
-		add2Log(szLogEnd);
+		add2Log(szLogEnd, date);
 		m_pLogFile->close();
 #ifdef COMPILE_ZLIB_SUPPORT
 		if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
@@ -258,21 +258,21 @@ bool KviIrcView::startLogging(const QString & fname, bool bPrependCurBuffer)
 	}
 
 	QString szLogStart = QString(__tr2qs("### Log session started at %1 ###")).arg(szDate);
-	add2Log(szLogStart);
+	add2Log(szLogStart, date);
 	if(bPrependCurBuffer)
 	{
-		add2Log(__tr2qs("### Existing data buffer:"));
+		add2Log(__tr2qs("### Existing data buffer:"), date);
 		QString buffer;
 		getTextBuffer(buffer);
-		add2Log(buffer);
-		add2Log(__tr2qs("### End of existing data buffer."));
+		add2Log(buffer, date);
+		add2Log(__tr2qs("### End of existing data buffer."), date);
 		m_pLogFile->flush();
 	}
 
 	return true;
 }
 
-void KviIrcView::add2Log(const QString & szBuffer, int iMsgType, bool bPrependDate)
+void KviIrcView::add2Log(const QString & szBuffer, const QDateTime & aDate, int iMsgType, bool bPrependDate)
 {
 	QByteArray tmp;
 
@@ -289,7 +289,7 @@ void KviIrcView::add2Log(const QString & szBuffer, int iMsgType, bool bPrependDa
 	if(bPrependDate)
 	{
 		QString szDate;
-		QDateTime date = QDateTime::currentDateTime();
+		QDateTime date = aDate.isValid() ? aDate : QDateTime::currentDateTime();
 		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 		{
 			case 0:

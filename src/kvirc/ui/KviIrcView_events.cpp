@@ -690,7 +690,8 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent * e)
 		while(KviIrcViewLine * l = m_pMessagesStoppedWhileSelecting->first())
 		{
 			m_pMessagesStoppedWhileSelecting->removeFirst();
-			appendLine(l, false);
+			QDateTime date = QDateTime::currentDateTime(); // TODO
+			appendLine(l, date, false);
 		}
 		repaint();
 	}
