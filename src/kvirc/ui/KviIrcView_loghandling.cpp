@@ -259,6 +259,13 @@ void KviIrcView::add2Log(const QString & szBuffer, const QDateTime & aDate, int 
 				break;
 			case 1:
 				szDate = date.toString(Qt::ISODate);
+				if (date.timeSpec() == Qt::LocalTime)
+				{
+					// Log milliseconds. QDateTime.fromString can parse them already.
+					// However, the format is more complicated if a timezone is present,
+					// so only log them for local time.
+					szDate += date.toString(".zzz");
+				}
 				szDate += " ";
 				break;
 			case 2:
