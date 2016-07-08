@@ -989,6 +989,16 @@ void KviIrcConnection::changeAwayState(bool bAway)
 	else
 		m_pUserInfo->setBack();
 
+	// Update the user entry
+	KviIrcUserEntry * e = userDataBase()->find(userInfo()->nickName());
+	if(e)
+	{
+		e->setAway(bAway);
+		// immediately update the userlist of the current channel
+		if(g_pActiveWindow->isChannel())
+			((KviChannelWindow *)g_pActiveWindow)->userListView()->updateArea();
+	}
+
 	m_pConsole->updateCaption();
 	g_pMainWindow->childConnectionAwayStateChange(this);
 
