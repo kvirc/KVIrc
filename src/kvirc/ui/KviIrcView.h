@@ -184,7 +184,7 @@ public:
 	void stopLogging();
 	bool isLogging() { return (m_pLogFile != 0); };
 	void getLogFileName(QString & buffer);
-	void add2Log(const QString & szBuffer, const QDateTime & date, int iMsgType = 0, bool bPrependDate = false);
+	void add2Log(const QString & szBuffer, const QDateTime & date, int iMsgType, bool bPrependDate);
 
 	// Channel view splitting
 	void setMasterView(KviIrcView * v);
