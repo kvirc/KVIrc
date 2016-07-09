@@ -797,6 +797,18 @@ private slots:
 	void nextPage();
 
 	/**
+	* \brief Scrolls the output window to the top
+	* \return void
+	*/
+	void scrollTop();
+
+	/**
+	* \brief Scrolls the output window to the bottom
+	* \return void
+	*/
+	void scrollBottom();
+
+	/**
 	* \brief Opens the search window
 	* \return void
 	*/

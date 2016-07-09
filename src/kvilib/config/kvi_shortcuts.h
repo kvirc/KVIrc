@@ -122,6 +122,8 @@
 * \def KVI_SHORTCUTS_WIN_PREV_HIGHLIGHT Previous highlighted window
 * \def KVI_SHORTCUTS_WIN_PREV_LINE Scroll the output window up one line
 * \def KVI_SHORTCUTS_WIN_PREV_PAGE Scroll the output window up one page
+* \def KVI_SHORTCUTS_WIN_HOME Scroll the output window to the top
+* \def KVI_SHORTCUTS_WIN_END Scroll the output window to the bottom
 * \def KVI_SHORTCUTS_WIN_SCROLL_TO_LAST_READ_LINE Scroll to the last read line
 * \def KVI_SHORTCUTS_WIN_SEARCH Open "Find Text" dialog
 * \def KVI_SHORTCUTS_WIN_ZOOM_IN Increase font size
@@ -195,6 +197,8 @@
 #define KVI_SHORTCUTS_WIN_NEXT_HIGHLIGHT Qt::AltModifier + Qt::Key_PageDown               // Qt::AltModifier + Qt::Key_PageDown
 #define KVI_SHORTCUTS_WIN_PREV_PAGE QKeySequence::MoveToPreviousPage                      // Qt::Key_PageUp
 #define KVI_SHORTCUTS_WIN_NEXT_PAGE QKeySequence::MoveToNextPage                          // Qt::Key_PageDown
+#define KVI_SHORTCUTS_WIN_HOME QKeySequence::MoveToStartOfDocument                        // Qt::ControlModifier + Qt::Key_Home
+#define KVI_SHORTCUTS_WIN_END QKeySequence::MoveToEndOfDocument                           // Qt::ControlModifier + Qt::Key_End
 #define KVI_SHORTCUTS_WIN_PREV_LINE Qt::ShiftModifier + Qt::Key_PageUp                    // Qt::ShiftModifier + Qt::Key_PageUp
 #define KVI_SHORTCUTS_WIN_NEXT_LINE Qt::ShiftModifier + Qt::Key_PageDown                  // Qt::ShiftModifier + Qt::Key_PageDown
 #define KVI_SHORTCUTS_INPUT_PREV_WORD QKeySequence::MoveToPreviousWord                    // Qt::ControlModifier + Qt::Key_Left

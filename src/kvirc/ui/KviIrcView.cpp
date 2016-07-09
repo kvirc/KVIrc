@@ -453,6 +453,8 @@ void KviIrcView::prevLine() { m_pScrollBar->triggerAction(QAbstractSlider::Slide
 void KviIrcView::nextLine() { m_pScrollBar->triggerAction(QAbstractSlider::SliderSingleStepAdd); }
 void KviIrcView::prevPage() { m_pScrollBar->triggerAction(QAbstractSlider::SliderPageStepSub); }
 void KviIrcView::nextPage() { m_pScrollBar->triggerAction(QAbstractSlider::SliderPageStepAdd); }
+void KviIrcView::scrollTop() { m_pScrollBar->triggerAction(QAbstractSlider::SliderToMinimum); }
+void KviIrcView::scrollBottom() { m_pScrollBar->triggerAction(QAbstractSlider::SliderToMaximum); }
 
 void KviIrcView::setPrivateBackgroundPixmap(const QPixmap & pixmap, bool bRepaint)
 {
