@@ -1692,7 +1692,7 @@ void KviInputEditor::handleDragSelection()
 	repaintWithCursorOn();
 }
 
-void KviInputEditor::returnPressed(bool)
+void KviInputEditor::finishInput()
 {
 	if(!m_szTextBuffer.isEmpty() /* && (!m_pHistory->current() || m_szTextBuffer.compare(*(m_pHistory->current())))*/)
 	{
@@ -1712,6 +1712,11 @@ void KviInputEditor::returnPressed(bool)
 		m_pHistory->removeLast();
 
 	m_iCurHistoryIdx = -1;
+}
+
+void KviInputEditor::returnPressed(bool)
+{
+	finishInput();
 
 	emit enterPressed();
 }
@@ -3419,6 +3424,8 @@ void KviInputEditor::deleteHit()
 
 void KviInputEditor::escapeHit()
 {
+	finishInput();
+	setText("");
 	emit escapePressed();
 }
 
