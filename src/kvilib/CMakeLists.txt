@@ -82,6 +82,7 @@ set(kvilib_SRCS
 	net/KviSSL.cpp
 	net/KviUrl.cpp
 	system/KviEnvironment.cpp
+	system/KviSignalHandler.cpp
 	system/KviThread.cpp
 	system/KviTimeUtils.cpp
 	tal/KviTalApplication.cpp

@@ -84,6 +84,7 @@
 #include "KviPointerHashTable.h"
 #include "KviQueryWindow.h"
 #include "KviCaster.h"
+#include "KviSignalHandler.h"
 
 #include <QMenu>
 
@@ -262,6 +263,8 @@ void KviApplication::setup()
 #ifdef COMPILE_SSL_SUPPORT
 	KviSSL::globalInit();
 #endif
+
+	::kvi_signalHandlerSetup();
 
 	// Setup our filesystem and initialize locale
 	loadDirectories();
