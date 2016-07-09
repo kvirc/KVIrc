@@ -143,9 +143,6 @@ KviConsoleWindow::KviConsoleWindow(int iFlags)
 
 	m_pTmpHighLightedChannels = new QStringList;
 
-	if(KVI_OPTION_BOOL(KviOption_boolAutoLogConsole))
-		m_pIrcView->startLogging();
-
 	applyOptions();
 }
 
@@ -396,7 +393,10 @@ void KviConsoleWindow::saveProperties(KviConfigurationFile * cfg)
 
 void KviConsoleWindow::getBaseLogFileName(QString & buffer)
 {
-	buffer = QString("CONSOLE_%1").arg(context()->id());
+	if(context()->connection())
+		buffer = context()->connection()->target()->network()->name();
+	else
+		buffer = context()->id();
 }
 
 void KviConsoleWindow::showNotifyList(bool bShow, bool bIgnoreSizeChange)
@@ -504,6 +504,14 @@ void KviConsoleWindow::connectionAttached()
 	connect(m_pContext->connection(), SIGNAL(chanListChanged()), this, SLOT(updateUri()));
 	updateUri();
 	m_pNotifyListView->setUserDataBase(connection()->userDataBase());
+
+	// Update log file name
+	if(KVI_OPTION_BOOL(KviOption_boolAutoLogConsole))
+	{
+		if (m_pIrcView->isLogging())
+			m_pIrcView->stopLogging();
+		m_pIrcView->startLogging();
+	}
 }
 
 void KviConsoleWindow::connectionDetached()
