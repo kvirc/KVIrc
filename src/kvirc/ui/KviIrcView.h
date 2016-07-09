@@ -182,7 +182,7 @@ public:
 	void stopLogging();
 	bool isLogging() { return (m_pLogFile != 0); };
 	void getLogFileName(QString & buffer);
-	void add2Log(const QString & szBuffer, int iMsgType = 0, bool bPrependDate = false);
+	void add2Log(const QString & szBuffer, const QDateTime & date, int iMsgType, bool bPrependDate);
 
 	// Channel view splitting
 	void setMasterView(KviIrcView * v);
@@ -228,7 +228,7 @@ private:
 	KviIrcViewLine * getVisibleLineAt(int yPos);
 	int getVisibleCharIndexAt(KviIrcViewLine * line, int xPos, int yPos);
 	void getLinkEscapeCommand(QString & buffer, const QString & escape_cmd, const QString & escape_label);
-	void appendLine(KviIrcViewLine * ptr, bool bRepaint);
+	void appendLine(KviIrcViewLine * ptr, const QDateTime & date, bool bRepaint);
 	void postUpdateEvent();
 	void fastScroll(int lines = 1);
 	const kvi_wchar_t * getTextLine(int msg_type, const kvi_wchar_t * data_ptr, KviIrcViewLine * line_ptr, bool bEnableTimeStamp = true, const QDateTime & datetime = QDateTime());

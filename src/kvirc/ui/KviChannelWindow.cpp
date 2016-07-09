@@ -60,14 +60,8 @@
 #include "KviCryptController.h"
 #endif
 
-#ifdef COMPILE_ZLIB_SUPPORT
-#include <zlib.h>
-#endif
-
 #include <time.h>
 
-#include <QDir>
-#include <QFileInfo>
 #include <QDate>
 #include <QByteArray>
 #include <QLabel>
@@ -245,6 +239,9 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	// Ensure proper focusing
 	//setFocusHandler(m_pInput,this);
 	// And turn on the secondary IRC view if needed
+
+	if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin))
+		pasteLastLog();
 
 	if(KVI_OPTION_BOOL(KviOption_boolAutoLogChannels))
 		m_pIrcView->startLogging();
@@ -2091,153 +2088,4 @@ void KviChannelWindow::unhighlight()
 KviIrcConnectionServerInfo * KviChannelWindow::serverInfo()
 {
 	return connection() ? connection()->serverInfo() : nullptr;
-}
-
-// FIXME: this currently does not work if the user has changed his date format,
-// since . is hardcoded as date parts separator.
-void KviChannelWindow::pasteLastLog()
-{
-	QString szChannel = target().toLower();
-	QString szNetwork = console()->currentNetworkName().toLower();
-	QDate date = QDate::currentDate();
-
-	// Create the filter for the dir
-	// Format: channel_<channel>.<network>_*.*.*.log*
-	QString szLogFilter = "channel_";
-	szLogFilter += szChannel;
-	szLogFilter += ".";
-	szLogFilter += szNetwork;
-	szLogFilter += "_*.*.*.log*";
-
-	// Get the logs
-	QString szLogPath;
-	g_pApp->getLocalKvircDirectory(szLogPath, KviApplication::Log);
-	QDir logDir(szLogPath);
-	QStringList filter = QStringList(szLogFilter);
-	QStringList logList = logDir.entryList(filter, QDir::Files, QDir::Name | QDir::Reversed);
-
-	// Scan log files
-	// Format: channel_#channelName.networkName_year.month.day.log
-	// Format: channel_#channelName.networkName_year.month.day.log.gz
-	bool bGzip;
-	QString szFileName;
-
-	for(const auto & it : logList)
-	{
-		int iLogYear, iLogMonth, iLogDay;
-
-		szFileName = it;
-		QString szTmpName = it;
-		QFileInfo fi(szTmpName);
-		bGzip = false;
-
-		// Skip the log just created on join
-		if(fi.suffix() == "tmp")
-			continue;
-
-		// Remove trailing dot and extension .gz
-		if(fi.suffix() == "gz")
-		{
-			bGzip = true;
-			szTmpName.chop(3);
-		}
-
-		// Ok, we have the right channel/network log. Get date
-		QString szLogDate = szTmpName.section('.', -4, -1).section('_', 1, 1);
-		iLogYear = szLogDate.section('.', 0, 0).toInt();
-		iLogMonth = szLogDate.section('.', 1, 1).toInt();
-		iLogDay = szLogDate.section('.', 2, 2).toInt();
-
-		// Check log validity
-		int iInterval = -(int)KVI_OPTION_UINT(KviOption_uintDaysIntervalToPasteOnChannelJoin);
-		QDate logDate(iLogYear, iLogMonth, iLogDay);
-		QDate checkDate = date.addDays(iInterval);
-
-		if(logDate < checkDate)
-			return;
-		else
-			break;
-	}
-
-	// Get the right log name
-	szFileName.prepend("/");
-	szFileName.prepend(szLogPath);
-
-	// Load the log
-	QByteArray log = loadLogFile(szFileName, bGzip);
-	if(log.size() > 0)
-	{
-		QList<QByteArray> list = log.split('\n');
-		unsigned int uCount = list.size();
-		unsigned int uLines = KVI_OPTION_UINT(KviOption_uintLinesToPasteOnChannelJoin);
-		unsigned int uStart = uCount - uLines - 1;
-
-		/*
-		// Check if the log is smaller than the lines to print
-		if(uStart < 0)
-			uStart = 0;
-*/
-		QString szDummy = __tr2qs("Starting last log");
-		outputMessage(KVI_OUT_CHANPRIVMSG, szDummy);
-
-		// Scan the log file
-		for(size_t u = uStart; u < uCount; u++)
-		{
-			QString szLine = QString(list.at(u));
-			szLine = szLine.section(' ', 1);
-#ifdef COMPILE_ON_WINDOWS
-			// Remove the \r char at the szEnd of line
-			szLine.chop(1);
-#endif
-			// Print the line in the channel buffer
-			outputMessage(KVI_OUT_CHANPRIVMSG, szLine);
-		}
-
-		szDummy = __tr2qs("End of log");
-		outputMessage(KVI_OUT_CHANPRIVMSG, szDummy);
-	}
-}
-
-QByteArray KviChannelWindow::loadLogFile(const QString & szFileName, bool bGzip)
-{
-	QByteArray data;
-
-#ifdef COMPILE_ZLIB_SUPPORT
-	if(bGzip)
-	{
-		gzFile logFile = gzopen(szFileName.toLocal8Bit().data(), "rb");
-		if(logFile)
-		{
-			char cBuff[1025];
-			int iLen;
-
-			iLen = gzread(logFile, cBuff, 1024);
-			while(iLen > 0)
-			{
-				cBuff[iLen] = 0;
-				data.append(cBuff);
-				iLen = gzread(logFile, cBuff, 1024);
-			}
-
-			gzclose(logFile);
-		}
-		else
-		{
-			qDebug("Can't open compressed file %s", szFileName.toUtf8().data());
-		}
-	}
-	else
-	{
-#endif
-		QFile logFile(szFileName);
-		if(!logFile.open(QIODevice::ReadOnly))
-			return QByteArray();
-
-		data = logFile.readAll();
-		logFile.close();
-#ifdef COMPILE_ZLIB_SUPPORT
-	}
-#endif
-
-	return data;
 }

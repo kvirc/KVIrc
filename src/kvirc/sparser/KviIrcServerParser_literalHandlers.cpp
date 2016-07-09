@@ -1018,9 +1018,6 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 				{
 					if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
 						KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
-
-					if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
-						query->pasteLastLog();
 				}
 			}
 		}
@@ -1466,9 +1463,6 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 				{
 					if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
 						KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
-
-					if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
-						query->pasteLastLog();
 				}
 			}
 		}

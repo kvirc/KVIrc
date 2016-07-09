@@ -48,28 +48,9 @@ void KviIrcView::stopLogging()
 {
 	if(m_pLogFile)
 	{
-		QString szDate;
 		QDateTime date = QDateTime::currentDateTime();
-		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
-		{
-			case 0:
-				// this is the equivalent to an empty date.toString() call, but it's needed
-				// to ensure qt4 will use the default() locale and not the system() one
-				szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
-				szDate += " ";
-				break;
-			case 1:
-				szDate = date.toString(Qt::ISODate);
-				szDate += " ";
-				break;
-			case 2:
-				szDate = date.toString(Qt::SystemLocaleShortDate);
-				szDate += " ";
-				break;
-		}
-
-		QString szLogEnd = QString(__tr2qs("### Log session terminated at %1 ###")).arg(szDate);
-		add2Log(szLogEnd);
+		QString szLogEnd = QString(__tr2qs("### Log session terminated ###"));
+		add2Log(szLogEnd, date, KVI_OUT_LOG, true);
 		m_pLogFile->close();
 #ifdef COMPILE_ZLIB_SUPPORT
 		if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
@@ -237,46 +218,27 @@ bool KviIrcView::startLogging(const QString & fname, bool bPrependCurBuffer)
 		}
 	}
 
-	QString szDate;
 	QDateTime date = QDateTime::currentDateTime();
-	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
-	{
-		case 0:
-			// this is the equivalent to an empty date.toString() call, but it's needed
-			// to ensure qt4 will use the default() locale and not the system() one
-			szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
-			szDate += " ";
-			break;
-		case 1:
-			szDate = date.toString(Qt::ISODate);
-			szDate += " ";
-			break;
-		case 2:
-			szDate = date.toString(Qt::SystemLocaleShortDate);
-			szDate += " ";
-			break;
-	}
-
-	QString szLogStart = QString(__tr2qs("### Log session started at %1 ###")).arg(szDate);
-	add2Log(szLogStart);
+	QString szLogStart = QString(__tr2qs("### Log session started ###"));
+	add2Log(szLogStart, date, KVI_OUT_LOG, true);
 	if(bPrependCurBuffer)
 	{
-		add2Log(__tr2qs("### Existing data buffer:"));
+		add2Log(__tr2qs("### Existing data buffer:"), date, KVI_OUT_LOG, true);
 		QString buffer;
 		getTextBuffer(buffer);
-		add2Log(buffer);
-		add2Log(__tr2qs("### End of existing data buffer."));
+		add2Log(buffer, date, -1, false);
+		add2Log(__tr2qs("### End of existing data buffer."), date, KVI_OUT_LOG, true);
 		m_pLogFile->flush();
 	}
 
 	return true;
 }
 
-void KviIrcView::add2Log(const QString & szBuffer, int iMsgType, bool bPrependDate)
+void KviIrcView::add2Log(const QString & szBuffer, const QDateTime & aDate, int iMsgType, bool bPrependDate)
 {
 	QByteArray tmp;
 
-	if(!KVI_OPTION_BOOL(KviOption_boolStripMsgTypeInLogs))
+	if(iMsgType >= 0 && !KVI_OPTION_BOOL(KviOption_boolStripMsgTypeInLogs))
 	{
 		QString szMessageType = QString("%1 ").arg(iMsgType);
 
@@ -289,7 +251,7 @@ void KviIrcView::add2Log(const QString & szBuffer, int iMsgType, bool bPrependDa
 	if(bPrependDate)
 	{
 		QString szDate;
-		QDateTime date = QDateTime::currentDateTime();
+		QDateTime date = aDate.isValid() ? aDate : QDateTime::currentDateTime();
 		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 		{
 			case 0:
@@ -297,6 +259,13 @@ void KviIrcView::add2Log(const QString & szBuffer, int iMsgType, bool bPrependDa
 				break;
 			case 1:
 				szDate = date.toString(Qt::ISODate);
+				if (date.timeSpec() == Qt::LocalTime)
+				{
+					// Log milliseconds. QDateTime.fromString can parse them already.
+					// However, the format is more complicated if a timezone is present,
+					// so only log them for local time.
+					szDate += date.toString(".zzz");
+				}
 				szDate += " ";
 				break;
 			case 2:
