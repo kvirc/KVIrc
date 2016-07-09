@@ -2618,8 +2618,16 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 				while(iLeft < xPos && retValue < l->pBlocks[i].block_len)
 				{
 					curChar = l->szText.at(l->pBlocks[i].block_start + retValue);
-					iLeft += (curChar < 0xff) ? m_iFontCharacterWidth[curChar.unicode()] : m_pFm->width(curChar);
-					retValue++;
+					if (curChar >= 0xD800 && curChar <= 0xDC00) // Surrogate pair
+					{
+						iLeft += m_pFm->width(l->szText.mid(retValue), 2);
+						retValue+=2;
+					}
+					else
+					{
+						iLeft += (curChar < 0xff) ? m_iFontCharacterWidth[curChar.unicode()] : m_pFm->width(curChar);
+						retValue++;
+					}
 				}
 				//printf("%d\n",l->pBlocks[i].block_start+retValue);
 				return l->pBlocks[i].block_start + retValue;
