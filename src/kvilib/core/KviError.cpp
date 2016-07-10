@@ -89,7 +89,8 @@ const char * g_errorTable[KviError::ErrorCount] = {
 	__tr_no_lookup("Out of address space"),                                        // 041
 	__tr_no_lookup("Connection refused"),                                          // 042
 	__tr_no_lookup("Kernel networking panic"),                                     // 043
-	__tr_no_lookup("Connection timed out"),                                        // 045
+	__tr_no_lookup("Connection timed out"),                                        // 044
+	__tr_no_lookup("Network is unreachable"),                                      // 045
 	__tr_no_lookup("Broken pipe"),                                                 // 046
 	__tr_no_lookup("Invalid proxy address"),                                       // 047
 	__tr_no_lookup("Remote end has closed the connection"),                        // 048
@@ -157,13 +158,13 @@ const char * g_errorTable[KviError::ErrorCount] = {
 	__tr_no_lookup("Invalid array index: positive integer expected"),              // 110
 	__tr_no_lookup("listen() call failed"),                                        // 111
 	__tr_no_lookup("This executable has been compiled without SSL support"),       // 112
-	__tr_no_lookup("Secure Socket Layer error"),                                   // 103
-	__tr_no_lookup("Slash (/) character expected"),                                // 104
-	__tr_no_lookup("Unknown string manipulation operation"),                       // 105
-	__tr_no_lookup("Operation aborted"),                                           // 106
-	__tr_no_lookup("Unexpected token"),                                            // 107
-	__tr_no_lookup("Scope object already defined (unexpected @)"),                 // 108
-	__tr_no_lookup("There is no $this pointer in this scope (unexpected @)")       // 109
+	__tr_no_lookup("Secure Socket Layer error"),                                   // 113
+	__tr_no_lookup("Slash (/) character expected"),                                // 114
+	__tr_no_lookup("Unknown string manipulation operation"),                       // 115
+	__tr_no_lookup("Operation aborted"),                                           // 116
+	__tr_no_lookup("Unexpected token"),                                            // 117
+	__tr_no_lookup("Scope object already defined (unexpected @)"),                 // 118
+	__tr_no_lookup("There is no $this pointer in this scope (unexpected @)")       // 119
 };
 
 namespace KviError
