@@ -89,7 +89,8 @@ const char * g_errorTable[KviError::ErrorCount] = {
 	__tr_no_lookup("Out of address space"),                                        // 041
 	__tr_no_lookup("Connection refused"),                                          // 042
 	__tr_no_lookup("Kernel networking panic"),                                     // 043
-	__tr_no_lookup("Connection timed out"),                                        // 045
+	__tr_no_lookup("Connection timed out"),                                        // 044
+	__tr_no_lookup("Network is unreachable"),                                      // 045
 	__tr_no_lookup("Broken pipe"),                                                 // 046
 	__tr_no_lookup("Invalid proxy address"),                                       // 047
 	__tr_no_lookup("Remote end has closed the connection"),                        // 048
