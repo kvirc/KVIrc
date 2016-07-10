@@ -136,23 +136,22 @@ OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
 
 	KviTalHBox * box = new KviTalHBox(g);
 
-	u = addUIntSelector(box, __tr2qs_ctx("Paste up to:", "options"), KviOption_uintLinesToPasteOnChannelJoin, 0, 32767, 10, KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin));
+	u = addUIntSelector(box, __tr2qs_ctx("Paste up to:", "options"), KviOption_uintLinesToPasteOnChannelJoin, 1, 32767, 10, KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin));
 	u->setSuffix(__tr2qs_ctx(" lines", "options"));
-	mergeTip(u, __tr2qs_ctx("Minimum value: <b>0 lines</b><br>Maximum value: <b>32767 lines</b>", "options"));
+	mergeTip(u, __tr2qs_ctx("Minimum value: <b>1 lines</b><br>Maximum value: <b>32767 lines</b>", "options"));
 
 	connect(b, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
 
 	u = addUIntSelector(box, __tr2qs_ctx("Interval:", "options"), KviOption_uintDaysIntervalToPasteOnChannelJoin, 1, 3652, 10, KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin));
 	u->setSuffix(__tr2qs_ctx(" days", "options"));
-	mergeTip(u, __tr2qs_ctx("Minimum value: <b>0 days</b><br>Maximum value: <b>3652 days</b>", "options"));
+	mergeTip(u, __tr2qs_ctx("Minimum value: <b>1 days</b><br>Maximum value: <b>3652 days</b>", "options"));
 
 	connect(b, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
 
 	b = addBoolSelector(0, 3, 4, 3, __tr2qs_ctx("Keep away list updated", "options"), KviOption_boolEnableAwayListUpdates);
 	mergeTip(b, __tr2qs_ctx("KVIrc sends out a channel /WHO message every now and then to keep the channel away list in sync. "
 	                        "Use this option to disable this feature (and to save your IRC bandwidth).<br>"
-	                        "If the server supports IRCv3.1's away-notify extension, it will be used instead of WHO requests.",
-	                "options"));
+	                        "If the server supports IRCv3.1's away-notify extension, it will be used instead of WHO requests.", "options"));
 
 	addRowSpacer(0, 5, 4, 5);
 }
