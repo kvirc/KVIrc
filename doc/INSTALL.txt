@@ -3,26 +3,27 @@
 -------------------------------------------------------------------------------
 
    1. Introduction
-   2. Hacker Installation - Advanced or power users:
+   2. Hacker Installation - Advanced or power users
    3. Dependencies and requirements
    4. Configuring the environment
-   5. Getting and updating the source code:
+   5. Getting and updating the source code
    6. Configuring KVIrc
    7. Interactive CMake KVIrc configuration
    8. Compiling KVIrc
    9. Compiling on OS X
-  10. Compiling on Win32
+  10. Compiling on Windows
   11. Creating a KVIrc package
 
 -------------------------------------------------------------------------------
   1. Introduction
 -------------------------------------------------------------------------------
 
-  This document contains the procedures to clone KVIrc's source code
-  configure your environment, configure, compile and install KVIrc.
+  This document contains the procedures to Install required development libraries
+  clone KVIrc's source code, configure your environment, configure and
+  compile and install KVIrc.
 
   If you have found this document in a binary distribution then
-  KVIrc has been probably already installed by your favorite package
+  KVIrc has been probably already installed by your distros package
   manager and maybe something is not working as expected. In this case
   this document and the accompanying F.A.Q. can help you determining
   the issue.
@@ -37,14 +38,14 @@
   Compiling KVIrc in your preferred Linux distributions is possible,
   provided the minimum required dependencies and their versions are met.
 
-  From here on in this doc refer to "Ubuntu or variants", where variants
-  are distributions which are Ubuntu derivatives.
+  From here on in this doc refers to "Ubuntu or variants", where variants
+  are distributions classed as Ubuntu derivatives.
 
   Note on lines prefixed with "$" or "0." or "1.":
 
   "$"  Signifies the command prompt on your shell.
-  "0." Prefixes are default command variation or the default command.
-  "1." Prefixes are alternative variation of command or alternative option.
+  "0." Prefixes are default command variation.
+  "1." Prefixes are a possible alternative variation of the command.
 
   Note: If anyone could find the time to test KVIrc with ICC please let us know!
 
@@ -104,14 +105,14 @@
     - Python .................. (Optional)
     - Perl .................... (Preferred) >= 5.004 (5.10 recommended)
 
-  For further information on these libraries read 4. Configuring the environment
+  Note: For further information on these libraries read 4. Configuring the environment
 
   For CMake >= 3.1.0 run:
 
+  Note: PPA for CMake for Ubuntu and variants <= 14.04 LTS:
+
       $ sudo add-apt-repository ppa:kvirc/kvirc -y
       $ sudo apt-get update
-
-  Note: Make sure that CMake 3.1.x or better is installed before proceeding
 
   For Ubuntu or variant distributions the complete list of dependencies
   and installation command is:
@@ -120,16 +121,18 @@
         libenchant-dev libgettextpo-dev libgsm1-dev libperl-dev libpthread-stubs0-dev \
         libssl-dev libx11-dev libxrender-dev pkg-config python-dev zlib1g-dev
 
-  Compiling KVIRC with Qt5.x install:
+  Note: KVIrc is complied by default against Qt5.x those libraries are:
 
       $ sudo apt-get install libqt5webkit5-dev libqt5svg5-dev \
         libqt5webkit5-dev libqt5x11extras5-dev qtbase5-dev
 
-  Compiling KVIRC with qtmultimedia5 audio support:
+  Note: An audio support backend is required for audio the choices are as follows:
+
+  Compiling KVIrc with qtmultimedia5 audio support:
 
       $ sudo apt-get install qtmultimedia5-dev
 
-  Compiling KVIRC with phonon audio support:
+  Compiling KVIrc with phonon audio support:
 
       $ sudo apt-get install libphonon4qt5-dev libphonon4qt5experimental-dev
 
@@ -271,7 +274,7 @@
   configure script can detect this.
 
 -------------------------------------------------------------------------------
-  4. Getting and updating the source code:
+  5. Getting and updating the source code:
 -------------------------------------------------------------------------------
 
   The KVIrc development code is located at https://github.com/kvirc/KVIrc
@@ -284,7 +287,7 @@
 
   Keeping the git clone up-to-date  is simple.
 
-      $ git pull --rebase upstream master
+      $ git pull --rebase origin master
 
   Cleaning the git directory of any files or directories generated my CMake or Make.
   This is recommended previous to configuring or compiling any updated git clones,
@@ -301,7 +304,7 @@
       $ tar -zxvf kvirc.git.tar.gz
 
 -------------------------------------------------------------------------------
-  5. Configuring KVIrc
+  6. Configuring KVIrc
 -------------------------------------------------------------------------------
 
   Since KVIrc 4.2 uses CMake as build system, we have to use it to create
@@ -336,6 +339,12 @@
   -DWANT_DEBUG=  (default: OFF)
     When enabled, compiles the executable with debug symbols.
     Useful for reporting bugs.
+    Note: An alternative method of defining build type is using:
+  -DCMAKE_BUILD_TYPE=
+
+    Supported options are:
+
+    None Debug Release RelWithDebInfo MinSizeRel
 
   -DWANT_STRIP=  (default: OFF)
     Available only if debug is disabled, this flag disables objects
@@ -470,8 +479,8 @@
     the KVIrc executable, a new session will be started.
     If you don't use this switch, a new session will be started
     only if no session is running on the same display or
-    "new session" has been forced by a commandline switch.
-    If a session is already running, the commandline will be
+    "new session" has been forced by a command-line switch.
+    If a session is already running, the command-line will be
     passed to that session via IPC (X-event-based communication).
     This option saves the KVIrc executable some KByte in size,
     so if you're really, really short in memory, you might use it,
@@ -485,7 +494,7 @@
 
   -DWANT_GSM=  (default: ON)
     Enables or disables the usage of the GSM library. This will
-    disable the DCC VOICE gsm codec but might help when the
+    disable the DCC VOICE GSM codec but might help when the
     compilation stops complaining of something related to GSM. :)
 
   -DWANT_IGNORE_SIGALARM=  (default: OFF)
@@ -541,7 +550,7 @@
     Add some beers to chat. :)
 
 -------------------------------------------------------------------------------
-   6. Interactive CMake KVIrc configuration
+   7. Interactive CMake KVIrc configuration
 -------------------------------------------------------------------------------
 
   The CMake build system provide also an interactive mode to configure
@@ -557,7 +566,7 @@
   to configure your compilation environment.
 
 -------------------------------------------------------------------------------
-  7. Compiling
+  8. Compiling
 -------------------------------------------------------------------------------
 
   This step is easy:
@@ -600,14 +609,14 @@
   in /etc/ld.so.conf.
 
 -------------------------------------------------------------------------------
-  8. Compiling on OS X
+  9. Compiling on OS X
 -------------------------------------------------------------------------------
 
   There is a detailed compilation and installation HOW-TO for OS X systems
   located in the doc directory. It's named INSTALL-MacOS.txt.
 
 -------------------------------------------------------------------------------
-  9. Compiling on Windows
+  10. Compiling on Windows
 -------------------------------------------------------------------------------
 
   There is a detailed compilation and installation HOW-TO for Win32 and Win64 systems
