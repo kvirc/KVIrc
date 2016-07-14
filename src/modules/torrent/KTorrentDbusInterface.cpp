@@ -37,7 +37,7 @@ TORR_IMPLEMENT_DESCRIPTOR(
     KTorrentDbusInterface,
     "ktorrentdbus",
     __tr2qs_ctx(
-        "An interface for KDE's excellent KTorrent client.\n"
+        "An interface for KDE's KTorrent client.\n"
         "Download it from http://www.ktorrent.org\n",
         "torrent"))
 
