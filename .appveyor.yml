@@ -99,7 +99,7 @@ build_script:
         $zlibinc = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v120*/zlib.h'
         $zlibinc = c:\cygwin\bin\dirname $zlibinc
         $zlibinc = c:\cygwin\bin\cygpath -m $zlibinc
-        $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.lib"
+        $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Debug/zlib.lib"
         $zliblib = c:\cygwin\bin\cygpath -m $zliblib
         $gettext = c:\cygwin\bin\find /cygdrive/c/deps/ -name xgettext.exe
         $gettext = c:\cygwin\bin\dirname $gettext
@@ -109,37 +109,37 @@ build_script:
         cmake .. "-GNMake Makefiles" "-DCMAKE_BUILD_TYPE=Debug" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DOPENSSL_ROOT_DIR=c:/OpenSSL-$env:ssl_arch" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO" "-DWANT_PYTHON=YES"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - nmake install VERBOSE=1
-    - c:\cygwin\bin\ls -l release/
+    - c:\cygwin\bin\ls -l debug/
     - ps: |
         $env:Path += ";c:/Qt/$env:qt_ver/bin"
-        windeployqt "-xml" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
-    - c:\cygwin\bin\ls -l release/
+        windeployqt "-xml" "--dir" "debug/qt-plugins" "--libdir" "debug/" "debug/kvirc.exe"
+    - c:\cygwin\bin\ls -l debug/
     - ps: |
-        $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.dll"
-        c:\cygwin\bin\cp -pv "$zlib" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libenchant.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libpcre-1.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libglib-2.0-0.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libgmodule-2.0-0.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libintl-8.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libwinpthread-1.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libiconv-2.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/$env:mingw_libgcc release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libstdc++-6.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libhunspell-1.3-0.dll release/
-        c:\cygwin\bin\mkdir -p release/lib/enchant/ release/share/enchant/ release/share/myspell/dicts/
-        c:\cygwin\bin\touch release/share/locale
-        c:\cygwin\bin\cp -pv $env:mingw_root/share/enchant/enchant.ordering release/share/enchant/
-        c:\cygwin\bin\cp -pv $env:mingw_root/lib/enchant/libenchant_myspell.dll release/lib/enchant/
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.aff release/share/myspell/dicts/ru_RU_yo.aff
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.dic release/share/myspell/dicts/ru_RU_yo.dic
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_US.aff release/share/myspell/dicts/
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_US.dic release/share/myspell/dicts/
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.dic release/share/myspell/dicts/en_GB_ise.dic
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.aff release/share/myspell/dicts/en_GB_ise.aff
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.dic release/share/myspell/dicts/en_GB_ize.dic
-        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.aff release/share/myspell/dicts/en_GB_ize.aff
-    - c:\cygwin\bin\ls -l release/
+        $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Debug/zlib.dll"
+        c:\cygwin\bin\cp -pv "$zlib" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" debug/
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libenchant.dll debug/
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libpcre-1.dll debug/
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libglib-2.0-0.dll debug/
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libgmodule-2.0-0.dll debug/
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libintl-8.dll debug/
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libwinpthread-1.dll debug/
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libiconv-2.dll debug/
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/$env:mingw_libgcc debug/
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libstdc++-6.dll debug/
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libhunspell-1.3-0.dll debug/
+        c:\cygwin\bin\mkdir -p debug/lib/enchant/ debug/share/enchant/ debug/share/myspell/dicts/
+        c:\cygwin\bin\touch debug/share/locale
+        c:\cygwin\bin\cp -pv $env:mingw_root/share/enchant/enchant.ordering debug/share/enchant/
+        c:\cygwin\bin\cp -pv $env:mingw_root/lib/enchant/libenchant_myspell.dll debug/lib/enchant/
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.aff debug/share/myspell/dicts/ru_RU_yo.aff
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/ru/russian-aot.dic debug/share/myspell/dicts/ru_RU_yo.dic
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_US.aff debug/share/myspell/dicts/
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_US.dic debug/share/myspell/dicts/
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.dic debug/share/myspell/dicts/en_GB_ise.dic
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ise.aff debug/share/myspell/dicts/en_GB_ise.aff
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.dic debug/share/myspell/dicts/en_GB_ize.dic
+        c:\cygwin\bin\cp -pv /cygdrive/c/spellcheck-dicts/unzip/en_GB-ize.aff debug/share/myspell/dicts/en_GB_ize.aff
+    - c:\cygwin\bin\ls -l debug/
     - '"c:\Program Files (x86)\NSIS\makensis.exe" KVIrc.nsi'
     - c:\cygwin\bin\ls -l
     - ps: |
