@@ -261,20 +261,6 @@ defpopup(channelpopup)
 
 defpopup(ctcp)
 {
-	prologue
-	{
-		%:ProtectPing = $option(boolIgnoreCTCPPing)
-		%:ProtectFinger = $option(boolIgnoreCTCPFinger)
-		%:ProtectVersion = $option(boolIgnoreCTCPVersion)
-		%:ProtectUserinfo = $option(boolIgnoreCTCPUserinfo)
-		%:ProtectClientinfo = $option(boolIgnoreCTCPClientinfo)
-		%:ProtectSource = $option(boolIgnoreCTCPSource)
-		%:ProtectTime = $option(boolIgnoreCTCPTime)
-		%:ProtectPage = $option(boolIgnoreCTCPPage)
-		%:ProtectAvatar = $option(boolIgnoreCTCPAvatar)
-		%:ProtectDCC = $option(boolIgnoreCTCPDCC)
-	}
-
 	item(PING,$icon("serverping"))
 	{
 		ctcp $0 PING
@@ -323,111 +309,6 @@ defpopup(ctcp)
 	item(AVATAR,$icon("avatar"))
 	{
 		ctcp $0 AVATAR
-	}
-
-	separator
-
-	popup($tr("CTCP Protection","defscript"),$icon("options"))
-	{
-		item(PING - $tr("Disable Ignore","defscript"),$icon("serverping")) (%:ProtectPing)
-		{
-			option boolIgnoreCTCPPing 0
-		}
-
-		item(PING - $tr("Enable Ignore","defscript"),$icon("serverping")) (!%:ProtectPing)
-		{
-			option boolIgnoreCTCPPing 1
-		}
-
-		item(FINGER - $tr("Disable Ignore","defscript"),$icon("finger")) (%:ProtectFinger)
-		{
-			option boolIgnoreCTCPFinger 0
-		}
-
-		item(FINGER - $tr("Enable Ignore","defscript"),$icon("finger")) (!%:ProtectFinger)
-		{
-			option boolIgnoreCTCPFinger 1
-		}
-
-		item(VERSION - $tr("Disable Ignore","defscript"),$icon("kvirc")) (%:ProtectVersion)
-		{
-			option boolIgnoreCTCPVersion 0
-		}
-
-		item(VERSION - $tr("Enable Ignore","defscript"),$icon("kvirc")) (!%:ProtectVersion)
-		{
-			option boolIgnoreCTCPVersion 1
-		}
-
-		item(USERINFO - $tr("Disable Ignore","defscript"),$icon("user")) (%:ProtectUserinfo)
-		{
-			option boolIgnoreCTCPUserinfo 0
-		}
-
-		item(USERINFO - $tr("Enable Ignore","defscript"),$icon("user")) (!%:ProtectUserinfo)
-		{
-			option boolIgnoreCTCPUserinfo 1
-		}
-
-		item(CLIENTINFO - $tr("Disable Ignore","defscript"),$icon("serverinfo")) (%:ProtectClientinfo)
-		{
-			option boolIgnoreCTCPClientinfo 0
-		}
-
-		item(CLIENTINFO - $tr("Enable Ignore","defscript"),$icon("serverinfo")) (!%:ProtectClientinfo)
-		{
-			option boolIgnoreCTCPClientinfo 1
-		}
-
-		item(SOURCE - $tr("Disable Ignore","defscript"),$icon("ctcprequestunknown")) (%:ProtectSource)
-		{
-			option boolIgnoreCTCPSource 0
-		}
-
-		item(SOURCE - $tr("Enable Ignore","defscript"),$icon("ctcprequestunknown")) (!%:ProtectSource)
-		{
-			option boolIgnoreCTCPSource 1
-		}
-
-		item(TIME - $tr("Disable Ignore","defscript"),$icon("time")) (%:ProtectTime)
-		{
-			option boolIgnoreCTCPTime 0
-		}
-
-		item(TIME - $tr("Enable Ignore","defscript"),$icon("time")) (!%:ProtectTime)
-		{
-			option boolIgnoreCTCPTime 1
-		}
-
-		item(PAGE - $tr("Disable Ignore","defscript"),$icon("messages")) (%:ProtectPage)
-		{
-			option boolIgnoreCTCPPage 0
-		}
-
-		item(PAGE - $tr("Enable Ignore","defscript"),$icon("messages")) (!%:ProtectPage)
-		{
-			option boolIgnoreCTCPPage 1
-		}
-
-		item(AVATAR - $tr("Disable Ignore","defscript"),$icon("avatar")) (%:ProtectAvatar)
-		{
-			option boolIgnoreCTCPAvatar 0
-		}
-
-		item(AVATAR - $tr("Enable Ignore","defscript"),$icon("avatar")) (!%:ProtectAvatar)
-		{
-			option boolIgnoreCTCPAvatar 1
-		}
-
-		item(DCC - $tr("Disable Ignore","defscript"),$icon("dcc")) (%:ProtectDCC)
-		{
-			option boolIgnoreCTCPDCC 0
-		}
-
-		item(DCC - $tr("Enable Ignore","defscript"),$icon("dcc")) (!%:ProtectDCC)
-		{
-			option boolIgnoreCTCPDCC 1
-		}
 	}
 }
 
@@ -853,7 +734,14 @@ defpopup(windowpopup)
 			window.close %x
 	}
 
-	separator(%:bIsConnectedConsole)
+	separator
+
+	item($tr("&Option Controllers","defscript"),$icon("options"))
+	{
+		action.trigger optionctrlr;
+	}
+
+	separator
 
 	item($tr("Unhighlight All Windows" ,"defscript")) (%:bIsConnectedConsole)
 	{
