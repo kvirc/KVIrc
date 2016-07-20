@@ -88,6 +88,11 @@ event(OnChannelWindowCreated,default)
 	{
 		popup.show -p=$0,$1 logging;
 	}
+
+	button(w,Controllers,$icon("options"),$tr("Option controllers","defscript"))
+	{
+		action.trigger optionctrlr;
+	}
 }
 
 event(OnQueryWindowCreated,default)
@@ -96,7 +101,33 @@ event(OnQueryWindowCreated,default)
 	{
 		popup.show -p=$0,$1 logging;
 	}
+
+	button(w,Controllers,$icon("options"),$tr("Option controllers","defscript"))
+	{
+		action.trigger optionctrlr;
+	}
 }
+
+event(OnJoin,suppressJoinMsgs)
+{
+	halt;
+}
+
+eventctl -d OnJoin suppressJoinMsgs
+
+event(OnPart,suppressPartMsgs)
+{
+	halt;
+}
+
+eventctl -d OnPart suppressPartMsgs
+
+event(OnQuit,suppressQuitMsgs)
+{
+	halt;
+}
+
+eventctl -d OnQuit suppressQuitMsgs
 
 event(OnDCCChatWindowCreated,default)
 {
