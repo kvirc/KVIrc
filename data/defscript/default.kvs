@@ -12,6 +12,7 @@
 %mypath = "$file.extractpath($0)$file.ps"
 
 # Fetch default scripts data
+include "actions.kvs" %mypath
 include "aliases.kvs" %mypath
 include "events.kvs" %mypath
 include "popups.kvs" %mypath

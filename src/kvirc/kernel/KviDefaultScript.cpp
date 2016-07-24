@@ -153,7 +153,7 @@ void KviDefaultScriptManager::restoreInternal()
 	{
 		if(m_pDialog->m_pData->isChecked())
 			KviActionManager::instance()->killAllKvsUserActions();
-		// No need to load here since we haven't a default actions script yet
+		g_pApp->loadDefaultScript("actions");
 		m_szAction = oConfig.readEntry("ActionVersion");
 	}
 
