@@ -99,12 +99,15 @@
 			In well written scripts it is not common that the object creation fails, anyway
 			you can check if the creation has failed in the following way:[br]
 			[example]
-				[cmd]if[/cmd](%myobject)[cmd]echo[/cmd] "Object created!"
-				else [cmd]echo[/cmd] "Object creation failed!"
+				[cmd]if[/cmd](%myobject)
+					[cmd]echo[/cmd] "Object created!"
+				else 
+					[cmd]echo[/cmd] "Object creation failed!"
 			[/example]
 			You can also test the object ID's for equality:[br]
 			[example]
-				[cmd]if[/cmd](%myobject == %anotherobject)[cmd]echo[/cmd] "This is the same object!";
+				[cmd]if[/cmd](%myobject == %anotherobject)[cmd]
+					echo[/cmd] "This is the same object!";
 			[/example]
 			The parent object ID is optional, if not specified it is assumed to be 0.
 			The object name is optional, but it may help you later in finding the object.
@@ -140,7 +143,8 @@
 			[example]
 				%myobject-&gt;%fieldVariable = 0
 				%myobject-&gt;%fieldVarialbe ++
-				[cmd]if[/cmd]0(%myobject-&gt;%fieldVariable != 1)[cmd]echo[/cmd] KVIrc is drunk, maybe a reboot will help?
+				[cmd]if[/cmd]0(%myobject-&gt;%fieldVariable != 1)
+					[cmd]echo[/cmd] KVIrc is drunk, maybe a reboot will help?
 			[/example]
 			You can simulate C structures [i]on the fly[/i] by using objects and fields:[br]
 			[example]
@@ -176,7 +180,8 @@
 						%test = "will this persist?"
 					}
 
-					anotherfunc() {
+					anotherfunc() 
+					{
 						[cmd]echo[/cmd] "var: %test"
 					}
 				}
@@ -251,7 +256,10 @@
 				[cmd]foreach[/cmd](%i,1,2,3)
 				{
 					%tmpchild = [fnc]$new[/fnc]([class]object[/class],%tmp,child%i)
-					[cmd]privateimpl[/cmd](%tmpchild,destructor){ [cmd]echo[/cmd] Object [fnc]$this[/fnc] ([fnc]$this[/fnc]-&gt;[classfnc:object]$name[/classfnc]()) destroyed; }
+					[cmd]privateimpl[/cmd](%tmpchild,destructor)
+					{
+						[cmd]echo[/cmd] Object [fnc]$this[/fnc] ([fnc]$this[/fnc]-&gt;[classfnc:object]$name[/classfnc]()) destroyed;
+					}
 				}
 				[cmd]privateimpl[/cmd](%tmp,destructor)
 				{
@@ -603,10 +611,10 @@
 			[example]
 				%X=$new(lineedit, 0, a_name)[br]
 				%X-&gt;$show()[br]
-				%X-&gt;$setProperty(echoMode,Password)[br]
+				%X-&gt;$setProperty(echoMode,Password)
 			[/example]
 			The available properties to be set are listed by [classfnc]$listProperties[/classfnc]()[br]
-			and must appear in the list as writeable.[br]
+			and must appear in the list as writable.[br]
 			This function will be mainly useful in the [class]wrapper[/class] class.
 			!fn: $listProperties([bArray])
 			Lists the properties of this object.[br]

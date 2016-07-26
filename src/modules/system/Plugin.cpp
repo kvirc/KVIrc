@@ -55,7 +55,7 @@
 		[example]
 			int _free(void * p)
 			{
-				// Always free the memory here!
+				[comment]// Always free the memory here![/comment]
 				free(p);
 				return 0;
 			}

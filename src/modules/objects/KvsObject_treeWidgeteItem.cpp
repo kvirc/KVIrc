@@ -113,7 +113,7 @@ const char * const itemflags_tbl[] = {
 		Sets the flags for the item to the given flags. These determine whether the item can be selected or modified.[br]
 		This is often used to disable an item.
 		Supported flags are:
-		[pre]
+		[example]
 			- noitemflag : no flag sets;[br]
 			- selectable : item is selectable;[br]
 			- editable : item is editable;[br]
@@ -122,7 +122,7 @@ const char * const itemflags_tbl[] = {
 			- userCheckable : item is checkable;[br]
 			- enabled :item is enabled;[br]
 			- tristate : item is checkable with three separate states.
-		[/pre]
+		[/example]
 */
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_treeWidgetItem, "listviewitem", "object")

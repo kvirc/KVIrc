@@ -135,8 +135,8 @@ const char * const itemflags_tbl[] = {
 		Sets the flags for the cell pointed by row and col to the given flags.
 		These determine whether the cell can be selected or modified.
 		Supported flags are:
-		[pre]
-			- noitemflag : no flag sets;
+		[example]
+			- noitemflag : no flag sets;[br]
 			- selectable : cell is selectable;[br]
 			- editable : cell is editable;[br]
 			- dragEnabled : cell can dragged;[br]
@@ -144,7 +144,7 @@ const char * const itemflags_tbl[] = {
 			- userCheckable : cell is checkable;[br]
 			- enabled :cell is enabled;[br]
 			- tristate : cell is checkable with three separate states.
-		[/pre]
+		[/example]
 		!fn: $setCellWidget(<row:uint>,<column:uint>,<widget:hobject>)
 		Sets the given widget to be displayed in the cell in the given row and column, passing the ownership of the widget to the table.
 		!fn: $setIcon(<row:uint>,<column:uint>,<icon:imageid or hobject>)
