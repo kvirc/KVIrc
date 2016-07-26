@@ -30,8 +30,8 @@
 
 $g_currenttime=gmtime;
 $g_currentuser = getlogin || getpwuid($<) || "Unknown";
-$g_notetablebgcolor="#F0F0F0";
-$g_notetextcolor="#909090";
+$g_notetablebgcolor="#F2F2F2";
+$g_notetextcolor="#636363";
 $g_syntaxcolor="#802000";
 
 $g_kvssyntaxcolor="#802000";
@@ -51,7 +51,6 @@ $g_fileextension=".html";
 #$g_headerborderlightcolor="#A0A0A0";
 #$g_headerborderdarkcolor="#000000";
 $g_headerbgcolor="#FFFFFF";
-
 
 $g_prefixes{'command'}="cmd";
 $g_prefixes{'function'}="fnc";
