@@ -50,58 +50,54 @@
 		The important thing is that these so/dll-files export some of the following functions.
 		[br][br]
 		[b]Exported functions by easyplugin (C/C++-Examples):[/b][br]
-		[br][b]_free function[/b] [i] (needed)[/i][br]
+		[b]_free function[/b] [i] (needed)[/i][br][br]
 		This function is important! Since KVIrc can not free directly the memory of the dll, the plugins need the _free function so that the memory can be freed by the plugin to prevent memory-leaks.[br]
 		[example]
-		int _free(void * p)[br]
-		{[br]
-			// Always free the memory here![br]
-			free(p);[br]
-			return 0;[br]
-		}[br]
+			int _free(void * p)
+			{
+				// Always free the memory here!
+				free(p);
+				return 0;
+			}
 		[/example]
-
-		[br][b]_load function[/b] [i](optional)[/i][br]
+		[b]_load function[/b] [i](optional)[/i][br][br]
 		After the plugin has be loaded, KVIrc will call the _load-function. Here you can prepare your plugin stuff.
 		[example]
-		int _load()[br]
-		{[br]
-			return 0;[br]
-		}[br]
+			int _load()
+			{
+				return 0;
+			}
 		[/example]
-
-		[br][b]_unload function[/b] [i]((optional)[/i][br]
+		[b]_unload function[/b] [i]((optional)[/i][br][br]
 		This function will be called before the plugins is unloaded. In this function you can clean up memory or other things.
 		After this call there is no guarantee that the plugin will be kept in memory.[br]
 		[example]
-		int _unload()[br]
-		{[br]
-			return 0;[br]
-		}[br]
+			int _unload()
+			{
+				return 0;
+			}
 		[/example]
-
 		[br][b]_canunload function[/b] [i](optional)[/i][br]
 		The _canunload-function will be called by KVIrc to check if it may unload the plugin.
 		If return value is true KVIrc will unload the plugin, false means he will try unloading it at the next check.[br]
 		Important: KVIrc will ignore this if unload of plugins will be forced! So you have to be sure that the _unload function of your plugins cleans up![br]
 		[example]
-		int _canunload()[br]
-		{[br]
-			return 0; [br]
-		}[br]
+			int _canunload()
+			{
+				return 0;
+			}
 		[/example]
-
 		[br][b]user function[/b][br]
 		This is the general structure of a user function call.[br]
 		The important thing here is the handling of return values. To return a value to KVIrc you have to allocate memory and write the pointer to it into pBuffer.[br]
 		Have a look at the example for more details.[br]
 		[example]
-		int about(int argc, char * argv[], char ** pBuffer)[br]
-		{[br]
-		    *pBuffer = (char*)malloc(1024);[br]
-		    sprintf((char*)*pBuffer, "Hello World"); [br]
-		    return 1;[br]
-		}[br]
+			int about(int argc, char * argv[], char ** pBuffer)
+			{
+				*pBuffer = (char*)malloc(1024);
+				sprintf((char*)*pBuffer, "Hello World");
+				return 1;
+			}
 		[/example]
 */
 

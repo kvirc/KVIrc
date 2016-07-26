@@ -1885,19 +1885,17 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		[br]
 		[note]
-		[br]
-			[big]Food for thought:[/big]
-			KVIrc allocates a pointer for each item in the array. The pointer is
-			empty when the item is unset and points to an additional block
-			of memory when the item is set. The size of a pointer is platform
-			dependent: on the platforms supported by KVIrc it's either 32 or 64-bit.
-			The size of the additional block depends both on the platform
-			and on the contents of the item... it's average value may
-			be around 16 bytes. The array size is determined by the last SET element index.
-			All this this means that in the worst case (64 bit assumption) an array in
-			that the highest indexed item set is N eats up at least N*8+16 bytes of memory.
+		[big]Food for thought:[/big]
+		KVIrc allocates a pointer for each item in the array. The pointer is
+		empty when the item is unset and points to an additional block
+		of memory when the item is set. The size of a pointer is platform
+		dependent: on the platforms supported by KVIrc it's either 32 or 64-bit.
+		The size of the additional block depends both on the platform
+		and on the contents of the item... it's average value may
+		be around 16 bytes. The array size is determined by the last SET element index.
+		All this this means that in the worst case (64 bit assumption) an array in
+		that the highest indexed item set is N eats up at least N*8+16 bytes of memory.
 		[/note]
-		[br]
 		Besides the traditional indexed looping method you
 		can also use the [cmd]foreach[/cmd] command to iterate the items of an array.
 		Be aware that [cmd]foreach[/cmd] will [b]not[/b] iterate over unset items in the

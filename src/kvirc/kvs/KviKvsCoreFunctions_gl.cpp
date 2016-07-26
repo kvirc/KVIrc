@@ -46,7 +46,7 @@ namespace KviKvsCoreFunctions
 	/*
 		@doc:	gender
 		@type:
-		function
+			function
 		@title:
 			$gender
 		@short:
@@ -122,10 +122,11 @@ namespace KviKvsCoreFunctions
 			Returns an hashtable of all global variables set.
 		@examples:
 			[example]
-				echo $globals()
-			[example]
+				echo $globals
+			[/example]
 		@seealso:
 			[cmd]global[/cmd]
+			[cmd]unset[/cmd]
 			[fnc]$hash[/fnc]
 	*/
 

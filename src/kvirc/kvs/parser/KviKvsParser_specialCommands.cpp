@@ -292,15 +292,24 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandGlobal()
 		@description:
 			Declares a list of global variables.
 			Once a variable has been declared as global
-			it refers to the global KVIrc instance for the scope of the script.
+			it refers to the global KVIrc instance for the scope of the script.[br]
 			Global variables are shared between scripts and keep their
-			value until they are explicitly unset or KVIrc quits.
+			value until they are explicitly [cmd]unset[/cmd] or KVIrc quits.[br]
 			This command can be used to override the default behaviour of
 			declaring global variables by starting them with an uppercase letter
-			and declaring local variables by starting them with a lowercase one.
+			and declaring local variables by starting them with a lowercase one.[br][br]
+			In any particular instance instance where a global variable may interfere with desired operation,
+			you can specifically [b][cmd]unset[/cmd][/b] the desired variable.
 		@examples:
-			global %a, %b, %c;
+			[example]
+				global %a, %b, %c;
+			[/example]
+		@seealso:
+			[fnc]$global[/fnc]
+			[cmd]unset[/cmd]
+			[fnc]$hash[/fnc]
 	*/
+
 	while(KVSP_curCharUnicode == '%')
 	{
 		KVSP_skipChar;
@@ -672,14 +681,14 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandWhile()
 			causes the <condition> to be true, an empty hash causes it to be false.[br]
 		@examples:
 			[example]
-			%i = 0;
-			while(%i < 100)%i++
-			while(%i > 0)
-			{
-				%i -= 10
-				if(%i < 20)break;
-			}
-			echo %i
+				%i = 0;
+				while(%i < 100)%i++
+				while(%i > 0)
+				{
+					%i -= 10
+					if(%i < 20)break;
+				}
+				echo %i
 			[/example]
 	*/
 
@@ -870,23 +879,25 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
 		@short:
 			Flow control command
 		@description:
-			Executes <command1> if the <condition> evaluates
-			to true (non zero result).
-			If the [i]else part[/i] is given, <command2> is executed
-			if the <condition> evaluates to false (result == '0').[br]
-			<condition> is an expression evaluated in the same way as [doc:expressioneval]$(*)[/doc]
+			Executes <command1> if the <condition> evaluates to true (non zero result).[br]
+			If the [i]else part[/i] is given, <command2> is executed.[br]
+			If the <condition> evaluates to false (result == '0').[br]
+			the [b]<condition>[/b] is an expression evaluated in the same way as [doc:expressioneval]$(*)[/doc]
 			with the following extensions:[br]
-			If <condition> is a string, its length is evaluated - in this way a non-empty string
+			If the [b]<condition>[/b] is a string, its length is evaluated - in this way a non-empty string
 			causes the <condition> to be true, and an empty string causes it to be false.[br]
-			If <condition> is an array, its size is evaluated - a non-empty array
-			is true, an empty array is false.[br]
-			If <condition> is a hash, the number of its entries is evaluated - a non-empty hash
-			is true, an empty hash is false.[br]
+			If the [b]<condition>[/b] is an array, its size is evaluated - a non-empty array is true, an empty array is false.[br]
+			If the [b]<condition>[/b] is a hash, the number of its entries is evaluated - a non-empty hash is true, an empty hash is false.[br]
 		@examples:
 			[example]
-				if(%a != 10)[cmd]echo[/cmd] \%a was != 10
-				else [cmd]echo[/cmd] \%a was 10!
+				if(%a != 10)
+					[cmd]echo[/cmd] \%a was != 10
+				else
+					[cmd]echo[/cmd] \%a was 10!
 			[/example]
+		@seealso:
+			[doc:expressioneval]Expression evaluation identifier[/doc]
+		
 	*/
 
 	if(KVSP_curCharUnicode != '(')
@@ -1082,7 +1093,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 			causes the <condition> to be true, an empty hash causes it to be false.[br]
 		@examples:
 			[example]
-				for(%a = 0;%a < 100;%a++)echo %a
+				for(%a = 0;%a < 100;%a++)
+					echo %a
 			[/example]
 	*/
 
