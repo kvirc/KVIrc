@@ -86,19 +86,19 @@ alias(as)
 alias(ns)
 {
 	# Silent
-	raw -q nickserv $0-
+	raw -q NickServ $0-
 }
 
 alias(cs)
 {
 	# Silent
-	raw -q chanserv $0-
+	raw -q ChanServ $0-
 }
 
 alias(ms)
 {
 	# Silent
-	raw -q memoserv $0-
+	raw -q MemoServ $0-
 }
 
 alias(gnotice)
