@@ -197,7 +197,7 @@ bool NickServRuleEditor::editRule(KviNickServRule * r)
 	m_pRegisteredNickEdit->setText(r->registeredNick());
 	m_pNickServMaskEdit->setText(r->nickServMask().isEmpty() ? QString("NickServ!*@*") : r->nickServMask());
 	m_pMessageRegexpEdit->setText(r->messageRegexp().isEmpty() ? QString("*IDENTIFY*") : r->messageRegexp());
-	m_pIdentifyCommandEdit->setText(r->identifyCommand().isEmpty() ? QString("msg -q NickServ IDENTIFY <password>") : r->identifyCommand());
+	m_pIdentifyCommandEdit->setText(r->identifyCommand().isEmpty() ? QString("raw -q NickServ IDENTIFY <password>") : r->identifyCommand());
 	if(m_pServerMaskEdit)
 		m_pServerMaskEdit->setText(r->serverMask().isEmpty() ? QString("irc.yourserver.org") : r->serverMask());
 	m_pRegisteredNickEdit->selectAll();
