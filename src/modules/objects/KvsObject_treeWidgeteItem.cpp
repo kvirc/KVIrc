@@ -120,7 +120,7 @@ const char * const itemflags_tbl[] = {
 			- dragEnabled : item can dragged;[br]
 			- dropEnabled : item can used as drop target;[br]
 			- userCheckable : item is checkable;[br]
-			- enabled :item is enabled;[br]
+			- enabled : item is enabled;[br]
 			- tristate : item is checkable with three separate states.
 		[/example]
 */

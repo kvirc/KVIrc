@@ -241,7 +241,7 @@ namespace KviKvsCoreSimpleCommands
 		@type:
 			generic
 		@short:
-			Wrappers for rfc2812 commands
+			Wrappers for RFC2812 commands
 		@body:
 			Some less used KVIrc commands are implemented as simple wrappers
 			around the standard [doc]rfc2812[/doc] commands.[br]

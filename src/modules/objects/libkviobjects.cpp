@@ -175,7 +175,7 @@ static bool objects_kvs_cmd_killClass(KviKvsModuleCommandCall * c)
 			and instances in this case are [b]not[/b] killed).[br]
 		@seealso:
 			[cmd]class[/cmd], [cmd]objects.clear[/cmd], [fnc]$classDefined[/fnc](),
-			[doc:objects]Objects documentation[/doc]
+			[doc:objects]Object scripting[/doc]
 	*/
 
 	QString szClass;
@@ -221,7 +221,7 @@ static bool objects_kvs_cmd_clearObjects(KviKvsModuleCommandCall * c)
 			function handler (leads to SIGSEGV :).[br]
 		@seealso:
 			[cmd]class[/cmd], [cmd]objects.killclass[/cmd],
-			[doc:objects]Objects documentation[/doc]
+			[doc:objects]Object scripting[/doc]
 	*/
 
 	KviKvsKernel::instance()->objectController()->clearInstances();
@@ -232,7 +232,6 @@ static bool objects_kvs_cmd_clearObjects(KviKvsModuleCommandCall * c)
 
 static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 {
-
 	/*
 		@doc: objects.connect
 		@title:
@@ -248,11 +247,11 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 			<target_object>'s slot <slot_name>.
 			When one of the two objects is destroyed, the signal/slot
 			connection is automatically removed.[br]
-			WARNING: this command name collides with the [doc:rfc2812]RFC2812[/doc]
+			WARNING: this command name collides with the [doc:RFC2812]RFC2812[/doc]
 			CONNECT IRC Op command: this IRC command is available to operators only
 			and is rather rarely used: you can use it by the means of [doc:raw]raw[/doc].
 		@seealso:
-			[cmd]class[/cmd], [cmd]object.disconnect[/cmd], [doc:objects]objects documentation[/doc]
+			[cmd]class[/cmd], [cmd]object.disconnect[/cmd], [doc:objects]Object scripting[/doc]
 	*/
 
 	KviKvsObject * obSrc;
@@ -300,7 +299,7 @@ static bool objects_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 		@description:
 			Check if an objects exists and return a boolean value.
 		@seealso:
-			[doc:objects]objects documentation[/doc]
+			[doc:objects]Object scripting[/doc]
 	*/
 
 	kvs_hobject_t hObj;
@@ -346,7 +345,7 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 			}
 			[/example]
 		@seealso:
-			[doc:objects]objects documentation[/doc]
+			[doc:objects]Object scripting[/doc]
 	*/
 
 	QString szClassName;
@@ -412,7 +411,7 @@ static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 		@description:
 			Returns an hash with the object's variables(useful only for debugging).
 		@seealso:
-			[doc:objects]objects documentation[/doc]
+			[doc:objects]Object scripting[/doc]
 	*/
 
 	kvs_hobject_t hObj;
@@ -451,7 +450,7 @@ static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 		@description:
 			Returns an hash with the class's functions(useful only for debugging).
 		@seealso:
-			[doc:objects]objects documentation[/doc]
+			[doc:objects]Object scripting[/doc]
 	*/
 
 	QString szClassName;
@@ -495,7 +494,7 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 		@description:
 			Returns an array with the user defined classes.
 		@seealso:
-			[doc:objects]objects documentation[/doc]
+			[doc:objects]Object scripting[/doc]
 	*/
 
 	KviKvsArray * pArry = new KviKvsArray();
@@ -551,7 +550,7 @@ static bool objects_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 		@description:
 			Returns a string with the name of the class.
 		@seealso:
-			[doc:objects]objects documentation[/doc]
+			[doc:objects]Object scripting[/doc]
 	*/
 
 	KviKvsObject * obSrcClass;
@@ -589,7 +588,7 @@ static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 			When one of the two objects is destroyed, the signal/slot
 			connection is automatically removed.
 		@seealso:
-			[cmd]class[/cmd], [cmd]objects.connect[/cmd], [doc:objects]objects documentation[/doc]
+			[cmd]class[/cmd], [cmd]objects.connect[/cmd], [doc:objects]Object scripting[/doc]
 	*/
 
 	KviKvsObject * obSrc;

@@ -391,7 +391,9 @@
 					{
 						[fnc:$this]$$[/fnc]-&gt;%lang = $0
 						[cmd]return[/cmd] 1
-					} else {
+					} 
+					else 
+					{
 						[cmd]echo[/cmd] I don't know that language ($0)
 						[cmd]echo[/cmd] defaulting to English
 						[fnc:$this]$$[/fnc]-&gt;%lang = english
@@ -401,8 +403,10 @@
 
 				sayhello()
 				{
-					[cmd]if[/cmd]([fnc:$this]$$[/fnc]-&gt;%lang == italian)[cmd]echo[/cmd] Ciao mondo!
-					else [fnc:$this]$$[/fnc]-&gt;$helloworld:sayhello()
+					[cmd]if[/cmd]([fnc:$this]$$[/fnc]-&gt;%lang == italian)
+						[cmd]echo[/cmd] Ciao mondo!
+					else 
+						[fnc:$this]$$[/fnc]-&gt;$helloworld:sayhello()
 				}
 			}
 			[/example]
