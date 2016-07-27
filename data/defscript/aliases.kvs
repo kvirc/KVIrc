@@ -53,6 +53,12 @@ alias(clearobjects)
 	objects.clear $0
 }
 
+alias(authserv)
+{
+	# Silent
+	raw -q AuthServ $0-
+}
+
 alias(nickserv)
 {
 	# Silent
@@ -69,6 +75,12 @@ alias(memoserv)
 {
 	# Silent
 	raw -q MemoServ $0-
+}
+
+alias(as)
+{
+	# Silent
+	raw -q AuthServ $0-
 }
 
 alias(ns)
