@@ -844,14 +844,17 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 {
 	// PRIVMSG
 	// :source PRIVMSG <target> :<message>
-	QString szNick, szUser, szHost;
-	msg->decodeAndSplitPrefix(szNick, szUser, szHost);
+	QString szSourceNick, szSourceUser, szSourceHost;
+	msg->decodeAndSplitPrefix(szSourceNick, szSourceUser, szSourceHost);
 
 	QString szTarget = msg->connection()->decodeText(msg->safeParam(0));
 	QString szMsg = msg->connection()->decodeText(msg->safeTrailing());
 
+	QString szTargetNick, szTargetUser, szTargetHost;
+	msg->decodeAndSplitMask(szTarget.toLatin1().data(), szTargetNick, szTargetUser, szTargetHost);
+
 	KviConsoleWindow * console = msg->console();
-	KviRegisteredUser * u = msg->connection()->userDataBase()->registeredUser(szNick, szUser, szHost);
+	KviRegisteredUser * uSource = msg->connection()->userDataBase()->registeredUser(szSourceNick, szSourceUser, szSourceHost);
 	//Highlight it?
 
 	PrivmsgIdentifyMsgCapState eCapState = IdentifyMsgCapNotUsed;
@@ -889,8 +892,8 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 				KviCtcpMessage ctcp;
 				ctcp.msg = msg;
 				ctcp.pData = pTrailing->ptr();
-				KviIrcMask talker(szNick, szUser, szHost); // FIXME!
-				ctcp.pSource = &talker;
+				KviIrcMask mSource(szSourceNick, szSourceUser, szSourceHost); // FIXME!
+				ctcp.pSource = &mSource;
 				ctcp.szTarget = szTarget;
 				ctcp.bIgnored = false;
 				ctcp.bIsFlood = false;
@@ -905,15 +908,15 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 	if(msg->connection()->serverInfo()->supportedChannelTypes().indexOf(szTarget[0]) == -1)
 	{
 		//Ignore it?
-		if(u)
+		if(uSource)
 		{
-			if(u->isIgnoreEnabledFor(KviRegisteredUser::Query))
+			if(uSource->isIgnoreEnabledFor(KviRegisteredUser::Query))
 			{
-				if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnIgnoredMessage, msg->console(), szNick, szUser, szHost, szTarget, szMsg, msg->messageTagsKvsHash()))
+				if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnIgnoredMessage, msg->console(), szSourceNick, szSourceUser, szSourceHost, szTarget, szMsg, msg->messageTagsKvsHash()))
 					return;
 
 				if(KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
-					console->output(KVI_OUT_IGNORE, msg->serverTime(), __tr2qs("Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"), &szNick, &szUser, &szHost, &szMsg);
+					console->output(KVI_OUT_IGNORE, msg->serverTime(), __tr2qs("Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"), &szSourceNick, &szSourceUser, &szSourceHost, &szMsg);
 				return;
 			}
 		}
@@ -955,12 +958,14 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 		//		}
 
 		// "znc.in/self-message" capability: Handle a replayed message from ourselves to someone else.
-		bool bSelfMessage = IS_ME(msg, szNick);
-		QString szWindow = bSelfMessage ? szTarget : szNick;
+		bool bSelfMessage = IS_ME(msg, szSourceNick);
+		const QString &szOtherNick = bSelfMessage ? szTargetNick : szSourceNick;
+		const QString &szOtherUser = bSelfMessage ? szTargetUser : szSourceUser;
+		const QString &szOtherHost = bSelfMessage ? szTargetHost : szSourceHost;
 
 		// A query request
 		// do we have a matching window ?
-		KviQueryWindow * query = msg->connection()->findQuery(szWindow);
+		KviQueryWindow * query = msg->connection()->findQuery(szOtherNick);
 
 		if(!query)
 		{
@@ -984,7 +989,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 							QString szMsg = msg->connection()->decodeText(msg->safeTrailing());
 							console->output(KVI_OUT_SPAM, msg->serverTime(),
 							    __tr2qs("Spam PRIVMSG from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"),
-							    &szNick, &szUser, &szHost, &szMsg, spamWord.ptr());
+							    &szSourceNick, &szSourceUser, &szSourceHost, &szMsg, spamWord.ptr());
 						}
 						return;
 					}
@@ -1003,19 +1008,18 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 				// We still want to create it
 				// Give the scripter a chance to filter it out again
 				if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnQueryWindowRequest,
-				       console, szNick, szUser, szHost, szMsg, msg->messageTagsKvsHash()))
+				       console, szSourceNick, szSourceUser, szSourceHost, szMsg, msg->messageTagsKvsHash()))
 				{
 					// check if the scripter hasn't created it
-					query = msg->connection()->findQuery(szWindow);
+					query = msg->connection()->findQuery(szOtherNick);
 				}
 				else
 				{
 					// no query yet, create it!
 					// this will trigger OnQueryWindowCreated
-					query = console->connection()->createQuery(szWindow);
+					query = console->connection()->createQuery(szOtherNick);
 					// and this will trigger OnQueryTargetAdded
-					if (!bSelfMessage)
-						query->setTarget(szNick, szUser, szHost);
+					query->setTarget(szOtherNick, szOtherUser, szOtherHost);
 				}
 
 				//check for query, since the user could have halt'ed its creation
@@ -1031,7 +1035,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 		if(query)
 		{
 			// ok, we have the query. Trigger the user action anyway
-			query->userAction(szNick, szUser, szHost, KVI_USERACTION_PRIVMSG);
+			query->userAction(szSourceNick, szSourceUser, szSourceHost, KVI_USERACTION_PRIVMSG);
 
 			// decrypt the message if needed
 			KviCString szBuffer;
@@ -1042,7 +1046,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 
 			// trigger the script event and eventually kill the output
 			QString szMsgText = query->decodeText(txtptr);
-			if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnQueryMessage, query, szNick, szUser, szHost, szMsgText, (kvs_int_t)(msgtype == KVI_OUT_QUERYPRIVMSGCRYPTED), msg->messageTagsKvsHash()))
+			if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnQueryMessage, query, szSourceNick, szSourceUser, szSourceHost, szMsgText, (kvs_int_t)(msgtype == KVI_OUT_QUERYPRIVMSGCRYPTED), msg->messageTagsKvsHash()))
 				msg->setHaltOutput();
 
 			if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && !query->hasAttention())
@@ -1079,7 +1083,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 				if(eCapState != IdentifyMsgCapNotUsed)
 					szMsgText = QString::fromLatin1("%1%2").arg(eCapState == IdentifyMsgCapUsedIdentified ? "+" : "-").arg(szMsgText);
 
-				console->outputPrivmsg(query, msgtype, szNick, szUser, szHost, szMsgText, iFlags, "", "", msg->serverTime());
+				console->outputPrivmsg(query, msgtype, szSourceNick, szSourceUser, szSourceHost, szMsgText, iFlags, "", "", msg->serverTime());
 			}
 		}
 		else
@@ -1087,7 +1091,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 			// no query creation: no decryption possible
 			// trigger the query message event in the console
 			QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
-			if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnQueryMessage, console, szNick, szUser, szHost, szMsgText, (kvs_int_t)0, msg->messageTagsKvsHash()))
+			if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnQueryMessage, console, szSourceNick, szSourceUser, szSourceHost, szMsgText, (kvs_int_t)0, msg->messageTagsKvsHash()))
 				msg->setHaltOutput();
 
 			// we don't have a query here!
@@ -1110,12 +1114,12 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 				if(KviIrcConnection * pConnection = console->connection())
 				{
 					KviWindow * aWin = console->activeWindow();
-					if((aWin->type() == KviWindow::Channel) && ((KviChannelWindow *)aWin)->isOn(szNick))
+					if((aWin->type() == KviWindow::Channel) && ((KviChannelWindow *)aWin)->isOn(szOtherNick))
 						pOut = aWin;
 					else
 					{
 						for(KviChannelWindow * c = pConnection->channelList()->first(); c; c = pConnection->channelList()->next())
-							if(c->isOn(szNick))
+							if(c->isOn(szOtherNick))
 							{
 								pOut = (KviWindow *)c;
 								break;
@@ -1123,7 +1127,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 					}
 				}
 
-				pOut->output(KVI_OUT_QUERYPRIVMSG, msg->serverTime(), "[PRIVMSG \r!nc\r%Q\r]: %Q", &szNick, &szMsgText);
+				pOut->output(KVI_OUT_QUERYPRIVMSG, msg->serverTime(), "[PRIVMSG \r!nc\r%Q\r]: %Q", &szSourceNick, &szMsgText);
 			}
 		}
 	}
@@ -1136,16 +1140,16 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 		QString szPrefixes;
 
 		//Ignore it?
-		if(u)
+		if(uSource)
 		{
-			if(u->isIgnoreEnabledFor(KviRegisteredUser::Channel))
+			if(uSource->isIgnoreEnabledFor(KviRegisteredUser::Channel))
 			{
-				if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnIgnoredMessage, msg->console(), szNick, szUser, szHost, szTarget, szMsg, msg->messageTagsKvsHash()))
+				if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnIgnoredMessage, msg->console(), szSourceNick, szSourceUser, szSourceHost, szTarget, szMsg, msg->messageTagsKvsHash()))
 					return;
 
 				if(KVI_OPTION_BOOL(KviOption_boolVerboseIgnore))
 				{
-					console->output(KVI_OUT_IGNORE, msg->serverTime(), __tr2qs("Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"), &szNick, &szUser, &szHost, &szMsg);
+					console->output(KVI_OUT_IGNORE, msg->serverTime(), __tr2qs("Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"), &szSourceNick, &szSourceUser, &szSourceHost, &szMsg);
 				}
 				return;
 			}
@@ -1174,12 +1178,12 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 
 				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolOperatorMessagesToActiveWindow) ? console->activeWindow() : (KviWindow *)(console);
 				QString szBroad = QString("[>> %1] %2").arg(szOriginalTarget, szMsgText);
-				console->outputPrivmsg(pOut, KVI_OUT_BROADCASTPRIVMSG, szNick, szUser, szHost, szBroad, 0, "", "", msg->serverTime());
+				console->outputPrivmsg(pOut, KVI_OUT_BROADCASTPRIVMSG, szSourceNick, szSourceUser, szSourceHost, szBroad, 0, "", "", msg->serverTime());
 			}
 		}
 		else
 		{
-			chan->userAction(szNick, szUser, szHost, KVI_USERACTION_PRIVMSG);
+			chan->userAction(szSourceNick, szSourceUser, szSourceHost, KVI_USERACTION_PRIVMSG);
 
 			KviCString szBuffer;
 			const char * txtptr;
@@ -1188,7 +1192,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 
 			QString szMsgText = chan->decodeText(txtptr);
 
-			if(KVS_TRIGGER_EVENT_7_HALTED(KviEvent_OnChannelMessage, chan, szNick, szUser, szHost, szMsgText, szPrefixes, (kvs_int_t)(msgtype == KVI_OUT_CHANPRIVMSGCRYPTED), msg->messageTagsKvsHash()))
+			if(KVS_TRIGGER_EVENT_7_HALTED(KviEvent_OnChannelMessage, chan, szSourceNick, szSourceUser, szSourceHost, szMsgText, szPrefixes, (kvs_int_t)(msgtype == KVI_OUT_CHANPRIVMSGCRYPTED), msg->messageTagsKvsHash()))
 				msg->setHaltOutput();
 
 			// if the message is identified (identify-msg CAP) then re-add the +/- char at the beginning
@@ -1200,11 +1204,11 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 				if(szPrefixes.length() > 0)
 				{
 					QString szBroad = QString("[>> %1\r!c\r%2\r] %3").arg(szPrefixes, szTarget, szMsgText);
-					console->outputPrivmsg(chan, msgtype, szNick, szUser, szHost, szBroad, 0, "", "", msg->serverTime());
+					console->outputPrivmsg(chan, msgtype, szSourceNick, szSourceUser, szSourceHost, szBroad, 0, "", "", msg->serverTime());
 				}
 				else
 				{
-					console->outputPrivmsg(chan, msgtype, szNick, szUser, szHost, szMsgText, 0, "", "", msg->serverTime());
+					console->outputPrivmsg(chan, msgtype, szSourceNick, szSourceUser, szSourceHost, szMsgText, 0, "", "", msg->serverTime());
 				}
 			}
 		}

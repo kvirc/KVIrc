@@ -1437,7 +1437,12 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 	bool bIsChannel = msg->msg->connection()->serverInfo()->supportedChannelTypes().indexOf(msg->szTarget[0]) != -1;
 	// "znc.in/self-message" capability: Handle a replayed message from ourselves to someone else.
 	bool bSelfMessage = IS_ME(msg->msg, msg->pSource->nick());
-	QString szWindow = bIsChannel || bSelfMessage ? msg->szTarget : msg->pSource->nick();
+	QString szTargetNick, szTargetUser, szTargetHost;
+	msg->msg->decodeAndSplitMask(msg->szTarget.toLatin1().data(), szTargetNick, szTargetUser, szTargetHost);
+	QString szWindow = bIsChannel || bSelfMessage ? szTargetNick : msg->pSource->nick();
+	const QString &szOtherNick = bSelfMessage ? szTargetNick : msg->pSource->nick();
+	const QString &szOtherUser = bSelfMessage ? szTargetUser : msg->pSource->user();
+	const QString &szOtherHost = bSelfMessage ? szTargetHost : msg->pSource->host();
 
 	QString szData;
 
@@ -1475,8 +1480,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 					// no query yet, create it!
 					// this will trigger OnQueryWindowCreated
 					query = msg->msg->console()->connection()->createQuery(szWindow);
-					if (!bSelfMessage)
-						query->setTarget(msg->pSource->nick(), msg->pSource->user(), msg->pSource->host());
+					query->setTarget(szOtherNick, szOtherUser, szOtherHost);
 				}
 				if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
 					KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
