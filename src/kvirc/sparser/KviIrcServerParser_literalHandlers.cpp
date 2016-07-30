@@ -586,7 +586,9 @@ void KviIrcServerParser::parseLiteralQuit(KviIrcMessage * msg)
 			}
 		}
 		else
+		{
 			*p = ' ';
+		}
 	}
 
 	// FIXME: #warning "Add a netsplit parameter ?"
