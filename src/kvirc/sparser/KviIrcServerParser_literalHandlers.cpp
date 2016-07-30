@@ -2011,8 +2011,6 @@ void KviIrcServerParser::parseChannelMode(const QString & szNick, const QString 
 		szHostBuffer = szHost;
 	}
 
-	KviIrcMask * auxMask;
-
 	int curParamSave = curParam;
 
 	bool bIsMe;
@@ -2199,12 +2197,13 @@ void KviIrcServerParser::parseChannelMode(const QString & szNick, const QString 
 					if(aParam.contains('!'))
 					{
 						// it's a mask
-						auxMask = new KviIrcMask(aParam);
-						bIsMe = auxMask->matchesFixed(
+						{
+						KviIrcMask auxMask(aParam);
+						bIsMe = auxMask.matchesFixed(
 						    msg->connection()->userInfo()->nickName(),
 						    msg->connection()->userInfo()->userName(),
 						    msg->connection()->userInfo()->hostName());
-						delete auxMask;
+						}
 						if(bIsMe)
 						{
 							if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? KviEvent_OnMeQuietBan : KviEvent_OnMeQuietUnban, chan, szNick, szUser, szHost, aParam))
@@ -2332,12 +2331,13 @@ void KviIrcServerParser::parseChannelMode(const QString & szNick, const QString 
 	case modefl:                                                                                                                            \
 		aParam = msg->connection()->decodeText(msg->safeParam(curParam++));                                                                 \
 		chan->setModeInList(*aux, aParam, bSet, msg->connection()->decodeText(msg->safePrefix()), QDateTime::currentDateTime().toTime_t()); \
-		auxMask = new KviIrcMask(aParam);                                                                                                   \
-		bIsMe = auxMask->matchesFixed(                                                                                                      \
+		{                                                                                                                                   \
+		KviIrcMask auxMask(aParam);                                                                                                         \
+		bIsMe = auxMask.matchesFixed(                                                                                                       \
 		    msg->connection()->userInfo()->nickName(),                                                                                      \
 		    msg->connection()->userInfo()->userName(),                                                                                      \
 		    msg->connection()->userInfo()->hostName());                                                                                     \
-		delete auxMask;                                                                                                                     \
+		}                                                                                                                                   \
 		if(bIsMe)                                                                                                                           \
 		{                                                                                                                                   \
 			if(KVS_TRIGGER_EVENT_4_HALTED(bSet ? evmeset : evmeunset, chan, szNick, szUser, szHost, aParam))                                \
