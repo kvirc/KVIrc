@@ -42,6 +42,6 @@ Compiling KVIrc on your chosen platform is an alternative way to enjoy KVIrc, se
 
 ### Licensed under
 
-[![KVIrc GPLv2+](https://img.shields.io/badge/KVIrc-GPLv2+-blue.svg)](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV2)
-[![Qt GPLv3](https://img.shields.io/badge/Qt-GPLv3-blue.svg)](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-GPLV3)
-[![OpenSSL](https://img.shields.io/badge/OpenSSL-Exception-orange.svg)](https://github.com/kvirc/KVIrc/blob/master/doc/LICENSE-OPENSSL)
+[![KVIrc GPLv2+](https://img.shields.io/badge/KVIrc-GPLv2+-blue.svg)](./doc/LICENSE-GPLV2)
+[![OpenSSL](https://img.shields.io/badge/OpenSSL-Licence-orange.svg)](./doc/LICENSE-OPENSSL)
+[![OpenSSL exception](https://img.shields.io/badge/OpenSSL-Exception-orange.svg)](./doc/COPYING)
