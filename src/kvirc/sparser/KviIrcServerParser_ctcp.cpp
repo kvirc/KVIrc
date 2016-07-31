@@ -54,6 +54,7 @@
 #include "kvi_sourcesdate.h"
 #include "KviRegisteredUserDataBase.h"
 #include "KviBuildInfo.h"
+#include "KviIrcConnectionServerInfo.h"
 
 #include <stdlib.h>
 
@@ -1433,13 +1434,21 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 	szData8 = msg->pData;
 
 	KviWindow * pOut = nullptr;
-	bool bIsChannel = !IS_ME(msg->msg, msg->szTarget);
+	bool bIsChannel = msg->msg->connection()->serverInfo()->supportedChannelTypes().indexOf(msg->szTarget[0]) != -1;
+	// "znc.in/self-message" capability: Handle a replayed message from ourselves to someone else.
+	bool bSelfMessage = IS_ME(msg->msg, msg->pSource->nick());
+	QString szTargetNick, szTargetUser, szTargetHost;
+	msg->msg->decodeAndSplitMask(msg->szTarget.toLatin1().data(), szTargetNick, szTargetUser, szTargetHost);
+	QString szWindow = bIsChannel || bSelfMessage ? szTargetNick : msg->pSource->nick();
+	const QString &szOtherNick = bSelfMessage ? szTargetNick : msg->pSource->nick();
+	const QString &szOtherUser = bSelfMessage ? szTargetUser : msg->pSource->user();
+	const QString &szOtherHost = bSelfMessage ? szTargetHost : msg->pSource->host();
 
 	QString szData;
 
 	if(bIsChannel)
 	{
-		pOut = (KviWindow *)msg->msg->connection()->findChannel(msg->szTarget);
+		pOut = (KviWindow *)msg->msg->connection()->findChannel(szWindow);
 		if(pOut)
 			szData = pOut->decodeText(szData8.ptr());
 		else
@@ -1447,7 +1456,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 	}
 	else
 	{
-		KviQueryWindow * query = msg->msg->connection()->findQuery(msg->pSource->nick());
+		KviQueryWindow * query = msg->msg->connection()->findQuery(szWindow);
 		if(!query)
 		{
 			szData = msg->msg->connection()->decodeText(szData8.ptr());
@@ -1464,14 +1473,14 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 				       szData))
 				{
 					// check if the scripter hasn't created it
-					query = msg->msg->connection()->findQuery(msg->pSource->nick());
+					query = msg->msg->connection()->findQuery(szWindow);
 				}
 				else
 				{
 					// no query yet, create it!
 					// this will trigger OnQueryWindowCreated
-					query = msg->msg->console()->connection()->createQuery(msg->pSource->nick());
-					query->setTarget(msg->pSource->nick(), msg->pSource->user(), msg->pSource->host());
+					query = msg->msg->console()->connection()->createQuery(szWindow);
+					query->setTarget(szOtherNick, szOtherUser, szOtherHost);
 				}
 				if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
 					KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
