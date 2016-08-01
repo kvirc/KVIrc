@@ -50,7 +50,6 @@
 #include <QString>
 #include <QWidget>
 
-#include <unordered_set>
 #include <vector>
 
 class QKeyEvent;
@@ -970,8 +969,8 @@ protected:
 	virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const;
 	virtual void paintEvent(QPaintEvent * e);
 	bool checkWordSpelling(const QString & szWord);
-	void splitTextIntoSpellCheckerBlocks(const QString & szText, std::unordered_set<KviInputEditorSpellCheckerBlock *> & lBuffer);
-	KviInputEditorSpellCheckerBlock * findSpellCheckerBlockAtCursor(std::unordered_set<KviInputEditorSpellCheckerBlock *> & lBlocks);
+	void splitTextIntoSpellCheckerBlocks(const QString & szText, std::vector<KviInputEditorSpellCheckerBlock *> & lBuffer);
+	KviInputEditorSpellCheckerBlock * findSpellCheckerBlockAtCursor(std::vector<KviInputEditorSpellCheckerBlock *> & lBlocks);
 	void fillSpellCheckerCorrectionsPopup();
 
 	void rebuildTextBlocks();
