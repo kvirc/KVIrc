@@ -2426,7 +2426,7 @@ void KviIrcServerParser::parseNumericStats(KviIrcMessage * msg)
 			{
 				if(szParms.hasData())
 					szParms.append(' ');
-				szParms.append(*p);
+				szParms.append(p);
 			}
 			pOut->outputNoFmt(KVI_OUT_STATS, msg->connection()->decodeText(szParms).toUtf8().data());
 		}
