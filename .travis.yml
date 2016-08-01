@@ -51,6 +51,7 @@ install:
           # want cmake newer than by default in travis osx
           brew upgrade cmake
           export CMAKE_FRAMEWORK_PATH="$CMAKE_FRAMEWORK_PATH:$(brew --prefix qt5)"
+          ADDITIONAL_LINK_ARGS="-stdlib=libc++ -mmacosx-version-min=10.7"
         fi
 script:
     - |
@@ -58,7 +59,7 @@ script:
             then
             mkdir build
             cd build
-            cmake $CMAKE_ARGS .. || exit 1
+            cmake $CMAKE_ARGS -DADDITIONAL_LINK_FLAGS="$ADDITIONAL_LINK_ARGS" .. || exit 1
             make -j3  || exit 1
             if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo make install; fi
             if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make install; fi
