@@ -1347,7 +1347,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 			theWdth = width() - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER + scrollbarWidth);                                                                                       \
 		pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_SELECT).back())); \
 	}                                                                                                                                                                                  \
-	pPenFont.setStyle(curItalic ^ normalFontStyle != QFont::StyleNormal ? QFont::StyleItalic : QFont::StyleNormal);                                                 \
+	pPenFont.setStyle(curItalic ^ (normalFontStyle != QFont::StyleNormal) ? QFont::StyleItalic : QFont::StyleNormal);                                                 \
 	if (m_bUseRealBold)                                                                                                                                             \
 		pPenFont.setBold(curBold);                                                                                                                                  \
 	pa.setFont(pPenFont);                                                                                                                                           \
@@ -1365,7 +1365,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 			theWdth = width() - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER + scrollbarWidth);                                                                    \
 		pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR((unsigned char)curBack)); \
 	}                                                                                                                                                               \
-	pPenFont.setStyle(curItalic ^ normalFontStyle != QFont::StyleNormal ? QFont::StyleItalic : QFont::StyleNormal);                                                 \
+	pPenFont.setStyle(curItalic ^ (normalFontStyle != QFont::StyleNormal) ? QFont::StyleItalic : QFont::StyleNormal);                                                 \
 	if (m_bUseRealBold)                                                                                                                                             \
 	    pPenFont.setBold(curBold);                                                                                                                                  \
 	pa.setFont(pPenFont);                                                                                                                                           \
@@ -1516,7 +1516,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 					bool bBold = curBold || curLink;
 
 					newFont = pa.font();
-					newFont.setStyle(curItalic ^ normalFontStyle != QFont::StyleNormal ? QFont::StyleItalic : QFont::StyleNormal);
+					newFont.setStyle(curItalic ^ (normalFontStyle != QFont::StyleNormal) ? QFont::StyleItalic : QFont::StyleNormal);
 					if (m_bUseRealBold)
 						newFont.setBold(bBold);
 					pa.setFont(newFont);
