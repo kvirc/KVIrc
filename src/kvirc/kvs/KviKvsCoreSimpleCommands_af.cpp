@@ -39,6 +39,8 @@
 #include "KviKvsKernel.h"
 #include "KviKvsObjectController.h"
 
+#include <map>
+
 #if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 #ifndef COMPILE_NO_X_BELL
 #include "KviXlib.h" // XBell : THIS SHOULD BE INCLUDED AS LAST!
@@ -55,7 +57,7 @@
 #include "KviTalToolTip.h"
 
 // KviApplication.cpp
-extern KviPointerHashTable<QString, KviWindow> * g_pGlobalWindowDict;
+extern std::map<QString, KviWindow *> g_pGlobalWindowDict;
 
 namespace KviKvsCoreSimpleCommands
 {
@@ -130,16 +132,14 @@ namespace KviKvsCoreSimpleCommands
 				//user want to /back
 				if(KVSCSC_pSwitches->find('a', "all-networks"))
 				{
-					KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-					while(KviWindow * wnd = it.current())
+					for(auto & wnd : g_pGlobalWindowDict)
 					{
-						if(wnd->type() == KviWindow::Console)
+						if(wnd.second->type() == KviWindow::Console)
 						{
-							KviConsoleWindow * pConsole = (KviConsoleWindow *)wnd;
+							KviConsoleWindow * pConsole = (KviConsoleWindow *)wnd.second;
 							if(pConsole->isConnected())
 								pConsole->connection()->sendFmtData("AWAY");
 						}
-						++it;
 					}
 				}
 				else
@@ -155,17 +155,15 @@ namespace KviKvsCoreSimpleCommands
 
 		if(KVSCSC_pSwitches->find('a', "all-networks"))
 		{
-			KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-			while(KviWindow * wnd = it.current())
+			for(auto & wnd : g_pGlobalWindowDict)
 			{
-				if(wnd->type() == KviWindow::Console)
+				if(wnd.second->type() == KviWindow::Console)
 				{
-					KviConsoleWindow * pConsole = (KviConsoleWindow *)wnd;
+					KviConsoleWindow * pConsole = (KviConsoleWindow *)wnd.second;
 					if(pConsole->isConnected())
 						pConsole->connection()->sendFmtData("AWAY :%s",
 						    pConsole->connection()->encodeText(szReason).data());
 				}
-				++it;
 			}
 		}
 		else
@@ -209,16 +207,14 @@ namespace KviKvsCoreSimpleCommands
 
 		if(KVSCSC_pSwitches->find('a', "all-networks"))
 		{
-			KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-			while(KviWindow * wnd = it.current())
+			for(auto & wnd : g_pGlobalWindowDict)
 			{
-				if(wnd->type() == KviWindow::Console)
+				if(wnd.second->type() == KviWindow::Console)
 				{
-					KviConsoleWindow * pConsole = (KviConsoleWindow *)wnd;
+					KviConsoleWindow * pConsole = (KviConsoleWindow *)wnd.second;
 					if(pConsole->isConnected())
 						pConsole->connection()->sendFmtData("AWAY");
 				}
-				++it;
 			}
 		}
 		else

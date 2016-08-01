@@ -65,7 +65,7 @@
 		[/example]
 */
 
-bool kvi_mayBeSpam(KviCString * msg, KviCString & spamWord)
+bool kvi_mayBeSpam(KviCString msg, KviCString & spamWord)
 {
 	for(auto & it : KVI_OPTION_STRINGLIST(KviOption_stringlistSpamWords))
 	{
@@ -73,7 +73,7 @@ bool kvi_mayBeSpam(KviCString * msg, KviCString & spamWord)
 		const char * aux = it.toLatin1();
 		if(aux)
 		{
-			if(msg->findFirstIdx(aux, false) != -1)
+			if(msg.findFirstIdx(aux, false) != -1)
 			{
 				spamWord = aux;
 				return true;

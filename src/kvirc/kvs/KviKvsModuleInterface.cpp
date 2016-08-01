@@ -64,25 +64,25 @@ KviKvsModuleInterface::~KviKvsModuleInterface()
 	delete m_pModuleCallbackCommandExecRoutineDict;
 }
 
-#define COMPLETE_WORD_BY_DICT(__word, __list, __type, __dict)     \
-	{                                                             \
-		KviPointerHashTableIterator<QString, __type> it(*__dict); \
-		int l = __word.length();                                  \
+#define COMPLETE_WORD_BY_DICT(word, list, type, dict)         \
+	{                                                           \
+		KviPointerHashTableIterator<QString, type> it(*dict);     \
+		int l = word.length();                                    \
 		while(it.current())                                       \
 		{                                                         \
-			if(KviQString::equalCIN(__word, it.currentKey(), l))  \
-				__list->append(new QString(it.currentKey()));     \
-			++it;                                                 \
+			if(KviQString::equalCIN(word, it.currentKey(), l))      \
+				list.push_back(it.currentKey());                      \
+			++it;                                                   \
 		}                                                         \
 	}
 
-void KviKvsModuleInterface::completeCommand(const QString & szCommandBegin, KviPointerList<QString> * pMatches)
+void KviKvsModuleInterface::completeCommand(const QString & szCommandBegin, std::vector<QString> & pMatches)
 {
 	COMPLETE_WORD_BY_DICT(szCommandBegin, pMatches, KviKvsModuleSimpleCommandExecRoutine, m_pModuleSimpleCommandExecRoutineDict)
 	COMPLETE_WORD_BY_DICT(szCommandBegin, pMatches, KviKvsModuleCallbackCommandExecRoutine, m_pModuleCallbackCommandExecRoutineDict)
 }
 
-void KviKvsModuleInterface::completeFunction(const QString & szFunctionBegin, KviPointerList<QString> * pMatches)
+void KviKvsModuleInterface::completeFunction(const QString & szFunctionBegin, std::vector<QString> & pMatches)
 {
 	COMPLETE_WORD_BY_DICT(szFunctionBegin, pMatches, KviKvsModuleFunctionExecRoutine, m_pModuleFunctionExecRoutineDict)
 }

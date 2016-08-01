@@ -27,7 +27,6 @@
 #include "kvi_settings.h"
 #include "KviAction.h"
 #include "KviKvsAction.h"
-#include "KviPointerList.h"
 
 class KviConnectAction : public KviAction
 {

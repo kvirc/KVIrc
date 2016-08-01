@@ -25,14 +25,13 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
 #include "KviCString.h"
 #include "KviQString.h"
 #include "KviConsoleWindow.h"
 #include "KviKvsHash.h"
 
-#include <QMap>
 #include <QDateTime>
+#include <vector>
 
 class KviIrcConnection;
 class KviIrcContext;
@@ -51,7 +50,8 @@ class KVIRC_API KviIrcMessage
 {
 public:
 	KviIrcMessage(const char * message, KviIrcConnection * pConnection);
-
+	KviIrcMessage(const KviIrcMessage &) = delete;
+	KviIrcMessage & operator=(const KviIrcMessage & other) = delete;
 	~KviIrcMessage();
 
 public:
@@ -76,7 +76,7 @@ private:
 	KviCString m_szPrefix;                       // the extracted prefix string
 	KviCString m_szMessageTags;                  // the extracted message tags
 	KviCString m_szCommand;                      // the extracted command (may be numeric)
-	KviPointerList<KviCString> * m_pParams;      // the list of parameters
+	std::vector<KviCString> m_pParams;           // the list of parameters
 	QHash<QString, QString> m_ParsedMessageTags; // parsed messaged tags
 	KviConsoleWindow * m_pConsole;               // the console we're attacched to
 	KviIrcConnection * m_pConnection;            // the connection we're attacched to
@@ -108,37 +108,40 @@ public:
 
 	QDateTime serverTime() { return m_time; }
 
-	bool isEmpty() { return (m_szPrefix.isEmpty() && m_szCommand.isEmpty() && m_pParams->isEmpty()); };
+	bool isEmpty() { return (m_szPrefix.isEmpty() && m_szCommand.isEmpty() && m_pParams.empty()); };
 
-	int paramCount() { return m_pParams->count(); };
+	int paramCount() { return m_pParams.size(); };
 
-	const char * param(unsigned int idx) { return (idx < m_pParams->count()) ? m_pParams->at(idx)->ptr() : 0; };
+	const char * param(unsigned int idx) { return (idx < m_pParams.size()) ? m_pParams[idx].ptr() : 0; };
 
-	const char * safeParam(unsigned int idx) { return (idx < m_pParams->count()) ? m_pParams->at(idx)->ptr() : KviCString::emptyString().ptr(); };
+	const char * safeParam(unsigned int idx) { return (idx < m_pParams.size()) ? m_pParams[idx].ptr() : KviCString::emptyString().ptr(); };
 
-	KviCString * paramString(unsigned int idx) { return m_pParams->at(idx); };
+	KviCString paramString(unsigned int idx) { return m_pParams[idx]; };
 
 	const char * trailing()
 	{
-		KviCString * tr = m_pParams->last();
-		return tr ? tr->ptr() : 0;
+		if(m_pParams.empty())
+			return nullptr;
+		return m_pParams.back();
 	};
-	KviCString * trailingString() { return m_pParams->last(); };
+	KviCString trailingString() { return m_pParams.back(); };
 	KviCString & safeTrailingString()
 	{
-		KviCString * tr = m_pParams->last();
-		return tr ? *tr : KviCString::emptyString();
+		if(m_pParams.empty())
+			return KviCString::emptyString();
+		return m_pParams.back();
 	};
 	const char * safeTrailing()
 	{
-		KviCString * tr = m_pParams->last();
-		return tr ? tr->ptr() : KviCString::emptyString().ptr();
+		if(m_pParams.empty())
+			return KviCString::emptyString().ptr();
+		return m_pParams.back().ptr();
 	};
 
 	const char * allParams() { return m_ptr; };
 
-	KviCString * firstParam() { return m_pParams->first(); };
-	KviCString * nextParam() { return m_pParams->next(); };
+	KviCString firstParam() { return m_pParams.front(); };
+	std::vector<KviCString> const & params() const { return m_pParams; };
 
 	void setHaltOutput() { m_iFlags |= HaltOutput; };
 	bool haltOutput() { return (m_iFlags & HaltOutput); };

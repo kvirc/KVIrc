@@ -27,7 +27,6 @@
 #include "KviTextIconManager.h"
 #include "KviFileUtils.h"
 #include "KviCString.h"
-#include "KviPointerList.h"
 #include "KviConfigurationFile.h"
 #include "KviApplication.h"
 #include "kvi_confignames.h"
@@ -36,6 +35,7 @@
 
 #include <QPixmap>
 #include <QFile>
+#include <vector>
 
 static KviTextIconAssocEntry default_associations[] = {
 	{ ":)", KviIconManager::Smile },
@@ -243,20 +243,19 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 	{
 		KviConfigurationFileGroupIterator it(*pDict);
 
-		KviPointerList<QString> names;
-		names.setAutoDelete(true);
+		std::vector<QString> names;
 
 		while(it.current())
 		{
-			names.append(new QString(it.currentKey()));
+			names.push_back(it.currentKey());
 			++it;
 		}
 
 		cfg.setGroup("TextIcons");
 
-		for(QString * s = names.first(); s; s = names.next())
+		for(auto & s : names)
 		{
-			int iId = cfg.readIntEntry(*s, -1);
+			int iId = cfg.readIntEntry(s, -1);
 			QString szTmp;
 			QPixmap * pix = nullptr;
 			//qDebug("%s %s %i %i",__FILE__,__FUNCTION__,__LINE__,id);
@@ -266,7 +265,7 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 			}
 			else
 			{
-				szTmp = cfg.readEntry(*s);
+				szTmp = cfg.readEntry(s);
 				pix = g_pIconManager->getPixmap(szTmp);
 				if(!pix)
 				{
@@ -279,15 +278,15 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 			{
 				if(bMerge)
 				{
-					if(!m_pTextIconDict->find(*s))
+					if(!m_pTextIconDict->find(s))
 					{
 						if(iId != -1)
 						{
-							m_pTextIconDict->replace(*s, new KviTextIcon(g_pIconManager->iconName(iId)));
+							m_pTextIconDict->replace(s, new KviTextIcon(g_pIconManager->iconName(iId)));
 						}
 						else
 						{
-							m_pTextIconDict->replace(*s, new KviTextIcon(szTmp));
+							m_pTextIconDict->replace(s, new KviTextIcon(szTmp));
 						}
 					}
 				}
@@ -295,11 +294,11 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 				{
 					if(iId > 0)
 					{
-						m_pTextIconDict->replace(*s, new KviTextIcon(g_pIconManager->iconName(iId)));
+						m_pTextIconDict->replace(s, new KviTextIcon(g_pIconManager->iconName(iId)));
 					}
 					else
 					{
-						m_pTextIconDict->replace(*s, new KviTextIcon(szTmp));
+						m_pTextIconDict->replace(s, new KviTextIcon(szTmp));
 					}
 				}
 			}

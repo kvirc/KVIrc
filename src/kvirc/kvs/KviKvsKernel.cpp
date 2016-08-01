@@ -101,19 +101,19 @@ void KviKvsKernel::done()
 	}
 }
 
-#define COMPLETE_COMMAND_BY_DICT(__type, __dict)                         \
-	{                                                                    \
+#define COMPLETE_COMMAND_BY_DICT(__type, __dict)                     \
+	{                                                                  \
 		KviPointerHashTableIterator<QString, __type> it(*__dict);        \
 		int l = szCommandBegin.length();                                 \
 		while(it.current())                                              \
 		{                                                                \
-			if(KviQString::equalCIN(szCommandBegin, it.currentKey(), l)) \
-				pMatches->append(new QString(it.currentKey()));          \
-			++it;                                                        \
+			if(KviQString::equalCIN(szCommandBegin, it.currentKey(), l))   \
+				pMatches.push_back(it.currentKey());                         \
+			++it;                                                          \
 		}                                                                \
 	}
 
-void KviKvsKernel::completeCommand(const QString & szCommandBegin, KviPointerList<QString> * pMatches)
+void KviKvsKernel::completeCommand(const QString & szCommandBegin, std::vector<QString> & pMatches)
 {
 	int idx = szCommandBegin.indexOf(QChar('.'));
 	if(idx == -1)
@@ -136,25 +136,24 @@ void KviKvsKernel::completeCommand(const QString & szCommandBegin, KviPointerLis
 	}
 }
 
-void KviKvsKernel::completeModuleCommand(const QString & szModuleName, const QString & szCommandBegin, KviPointerList<QString> * pMatches)
+void KviKvsKernel::completeModuleCommand(const QString & szModuleName, const QString & szCommandBegin, std::vector<QString> & pMatches)
 {
 	KviModule * pModule = g_pModuleManager->getModule(szModuleName);
 	if(!pModule)
 		return;
 
-	KviPointerList<QString> lModuleMatches;
-	lModuleMatches.setAutoDelete(true);
-	pModule->completeCommand(szCommandBegin, &lModuleMatches);
-	for(QString * pszModuleMatch = lModuleMatches.first(); pszModuleMatch; pszModuleMatch = lModuleMatches.next())
+	std::vector<QString> lModuleMatches;
+
+	pModule->completeCommand(szCommandBegin, lModuleMatches);
+	for(auto & pszModuleMatch : lModuleMatches)
 	{
-		QString * pszMatch = new QString(*pszModuleMatch);
-		pszMatch->prepend(".");
-		pszMatch->prepend(szModuleName);
-		pMatches->append(pszMatch);
+		pszModuleMatch.prepend(".");
+		pszModuleMatch.prepend(szModuleName);
+		pMatches.push_back(std::move(pszModuleMatch));
 	}
 }
 
-void KviKvsKernel::completeFunction(const QString & szFunctionBegin, KviPointerList<QString> * pMatches)
+void KviKvsKernel::completeFunction(const QString & szFunctionBegin, std::vector<QString> & pMatches)
 {
 	int idx = szFunctionBegin.indexOf(QChar('.'));
 	if(idx == -1)
@@ -166,26 +165,17 @@ void KviKvsKernel::completeFunction(const QString & szFunctionBegin, KviPointerL
 		while(it.current())
 		{
 			if(KviQString::equalCIN(szFunctionBegin, it.currentKey(), l))
-			{
-				QString * pMatch = new QString(it.currentKey());
-				//pMatch->prepend("$");
-				pMatches->append(pMatch);
-			}
+				pMatches.push_back(it.currentKey());
 			++it;
 		}
 
 		g_pModuleManager->completeModuleNames(szFunctionBegin, pMatches);
 
-		KviPointerList<QString> lAliases;
-		lAliases.setAutoDelete(true);
+		std::vector<QString> lAliases;
 
-		KviKvsAliasManager::instance()->completeCommand(szFunctionBegin, &lAliases);
-		for(QString * pszAlias = lAliases.first(); pszAlias; pszAlias = lAliases.next())
-		{
-			QString * pszAliasMatch = new QString(*pszAlias);
-			//pszAliasMatch->prepend("$");
-			pMatches->append(pszAliasMatch);
-		}
+		KviKvsAliasManager::instance()->completeCommand(szFunctionBegin, lAliases);
+		for(auto & pszAlias : lAliases)
+			pMatches.push_back(std::move(pszAlias));
 	}
 	else
 	{
@@ -196,24 +186,24 @@ void KviKvsKernel::completeFunction(const QString & szFunctionBegin, KviPointerL
 	}
 }
 
-void KviKvsKernel::completeModuleFunction(const QString & szModuleName, const QString & szCommandBegin, KviPointerList<QString> * pMatches)
+void KviKvsKernel::completeModuleFunction(const QString & szModuleName, const QString & szCommandBegin, std::vector<QString> & pMatches)
 {
 	KviModule * pModule = g_pModuleManager->getModule(szModuleName);
 	if(!pModule)
 		return;
 
-	KviPointerList<QString> lModuleMatches;
-	lModuleMatches.setAutoDelete(true);
-	pModule->completeFunction(szCommandBegin, &lModuleMatches);
-	for(QString * pszModuleMatch = lModuleMatches.first(); pszModuleMatch; pszModuleMatch = lModuleMatches.next())
+	std::vector<QString> lModuleMatches;
+
+	pModule->completeFunction(szCommandBegin, lModuleMatches);
+	for(auto & pszModuleMatch : lModuleMatches)
 	{
-		QString * pszMatch = new QString(*pszModuleMatch);
-		pszMatch->prepend(".");
-		pszMatch->prepend(szModuleName);
-		pszMatch->prepend("$");
-		pMatches->append(pszMatch);
+		pszModuleMatch.prepend(".");
+		pszModuleMatch.prepend(szModuleName);
+		pszModuleMatch.prepend("$");
+		pMatches.push_back(std::move(pszModuleMatch));
 	}
 }
+
 void KviKvsKernel::getAllFunctionsCommandsCore(QStringList * list)
 {
 	KviPointerHashTableIterator<QString, KviKvsCoreFunctionExecRoutine> it(*m_pCoreFunctionExecRoutineDict);

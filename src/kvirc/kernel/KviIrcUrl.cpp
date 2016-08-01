@@ -37,11 +37,13 @@
 #include "KviConsoleWindow.h"
 #include "KviMainWindow.h"
 
+#include <map>
+
 #define _KVI_IRCURL_CPP_
 #include "KviIrcUrl.h"
 
 // KviApplication.cpp
-extern KVIRC_API KviPointerHashTable<QString, KviWindow> * g_pGlobalWindowDict;
+extern KVIRC_API std::map<QString, KviWindow *> g_pGlobalWindowDict;
 
 bool KviIrcUrl::parse(const char * url, KviCString & cmdBuffer, int contextSpec)
 {
@@ -260,15 +262,14 @@ int KviIrcUrl::run(const QString & text, int contextSpec, KviConsoleWindow * pCo
 
 	if(contextSpec & TryEveryContext)
 	{
-		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 		KviConsoleWindow * pTmpConsole = nullptr;
 		pConsole = nullptr;
 
-		while(KviWindow * wnd = it.current())
+		for(auto & wnd : g_pGlobalWindowDict)
 		{
-			if(wnd->type() == KviWindow::Console)
+			if(wnd.second->type() == KviWindow::Console)
 			{
-				pTmpConsole = (KviConsoleWindow *)wnd;
+				pTmpConsole = (KviConsoleWindow *)wnd.second;
 
 				if(pTmpConsole->connection())
 				{
@@ -282,8 +283,6 @@ int KviIrcUrl::run(const QString & text, int contextSpec, KviConsoleWindow * pCo
 					}
 				}
 			}
-
-			++it;
 		}
 
 		if(!pConsole)
@@ -319,7 +318,7 @@ int KviIrcUrl::run(const QString & text, int contextSpec, KviConsoleWindow * pCo
 		// just check if thr user want us to join or part any channel
 		QString tmp;
 		QString toPart;
-		for(KviChannelWindow * c = pConsole->connection()->channelList()->first(); c; c = pConsole->connection()->channelList()->next())
+		for(auto & c : pConsole->connection()->channelList())
 		{
 			tmp = c->target();
 			if(c->hasChannelMode('k'))

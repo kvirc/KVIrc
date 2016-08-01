@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
 #include "KviCString.h"
 #include "KviWindowToolWidget.h"
 #include "KviIconManager.h"
@@ -35,6 +34,8 @@
 #include <QDialog>
 #include <QLineEdit>
 #include <QWidget>
+
+#include <vector>
 
 class KviMaskEditor;
 class KviChannelWindow;
@@ -96,7 +97,7 @@ class KVIRC_API KviMaskEditor : public KviWindowToolWidget
 {
 	Q_OBJECT
 public:
-	KviMaskEditor(QWidget * par, KviChannelWindow * pChannel, KviWindowToolPageButton * button, KviPointerList<KviMaskEntry> * maskList,
+	KviMaskEditor(QWidget * par, KviChannelWindow * pChannel, KviWindowToolPageButton * button, std::vector<KviMaskEntry *> maskList,
 	    char cMode, const char * name);
 	~KviMaskEditor();
 
@@ -121,7 +122,7 @@ protected slots:
 	void searchTextChanged(const QString &);
 	void updateOpStatus();
 signals:
-	void removeMasks(KviMaskEditor *, KviPointerList<KviMaskEntry> *);
+	void removeMasks(KviMaskEditor *, std::vector<KviMaskEntry *>);
 };
 
 #endif //_KVI_MASKEDITOR_H_

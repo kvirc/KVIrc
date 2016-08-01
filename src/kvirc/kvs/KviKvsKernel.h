@@ -27,10 +27,11 @@
 #include "kvi_settings.h"
 
 #include "KviKvsParser.h"
-#include "KviPointerList.h"
 #include "KviQString.h"
 
 #include "KviPointerHashTable.h"
+
+#include <vector>
 
 class KviKvsTreeNodeSpecialCommand;
 class KviKvsObjectController;
@@ -104,6 +105,7 @@ public:
 	{
 		m_pSpecialCommandParsingRoutineDict->replace(szCmdName, r);
 	};
+
 	KviKvsSpecialCommandParsingRoutine * findSpecialCommandParsingRoutine(const QString & szCmdName)
 	{
 		return m_pSpecialCommandParsingRoutineDict->find(szCmdName);
@@ -113,6 +115,7 @@ public:
 	{
 		m_pCoreSimpleCommandExecRoutineDict->replace(szCmdName, r);
 	};
+
 	KviKvsCoreSimpleCommandExecRoutine * findCoreSimpleCommandExecRoutine(const QString & szCmdName)
 	{
 		return m_pCoreSimpleCommandExecRoutineDict->find(szCmdName);
@@ -122,6 +125,7 @@ public:
 	{
 		m_pCoreFunctionExecRoutineDict->replace(szFncName, r);
 	};
+
 	KviKvsCoreFunctionExecRoutine * findCoreFunctionExecRoutine(const QString & szFncName)
 	{
 		return m_pCoreFunctionExecRoutineDict->find(szFncName);
@@ -131,43 +135,17 @@ public:
 	{
 		m_pCoreCallbackCommandExecRoutineDict->replace(szCmdName, r);
 	};
+
 	KviKvsCoreCallbackCommandExecRoutine * findCoreCallbackCommandExecRoutine(const QString & szCmdName)
 	{
 		return m_pCoreCallbackCommandExecRoutineDict->find(szCmdName);
 	};
 
-	void completeCommand(const QString & szCommandBegin, KviPointerList<QString> * pMatches);
-	void completeFunction(const QString & szFunctionBegin, KviPointerList<QString> * pMatches);
-	void completeModuleCommand(const QString & szModuleName, const QString & szCommandBegin, KviPointerList<QString> * matches);
-	void completeModuleFunction(const QString & szModuleName, const QString & szFunctionBegin, KviPointerList<QString> * matches);
+	void completeCommand(const QString & szCommandBegin, std::vector<QString> & pMatches);
+	void completeFunction(const QString & szFunctionBegin, std::vector<QString> & pMatches);
+	void completeModuleCommand(const QString & szModuleName, const QString & szCommandBegin, std::vector<QString> & matches);
+	void completeModuleFunction(const QString & szModuleName, const QString & szFunctionBegin, std::vector<QString> & matches);
 
-	KviPointerList<QString> * completeCommandAllocateResult(const QString & szCommandBegin)
-	{
-		KviPointerList<QString> * p = new KviPointerList<QString>;
-		p->setAutoDelete(true);
-		completeCommand(szCommandBegin, p);
-		return p;
-	}
-
-	KviPointerList<QString> * completeFunctionAllocateResult(const QString & szFunctionBegin)
-	{
-		KviPointerList<QString> * p = new KviPointerList<QString>;
-		p->setAutoDelete(true);
-		completeFunction(szFunctionBegin, p);
-		return p;
-	}
-	void freeCompletionResult(KviPointerList<QString> * l)
-	{
-		/*	if (!l) return;
-		for (int i=0;i<l->count();i++)
-		{
-			delete l->at(i);
-		}
-	*/
-		if(!l)
-			return;
-		delete l;
-	}
 	void getAllFunctionsCommandsCore(QStringList * list);
 };
 

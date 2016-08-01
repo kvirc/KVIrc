@@ -37,12 +37,12 @@
 #include "kvi_out.h"
 #include "KviLocale.h"
 
+#include <algorithm>
+
 KviLagMeter::KviLagMeter(KviIrcConnection * c)
     : QObject()
 {
 	m_pConnection = c;
-	m_pCheckList = new KviPointerList<KviLagCheck>;
-	m_pCheckList->setAutoDelete(true);
 	m_uLag = 0;
 	m_uLastEmittedLag = 0;
 	m_uLastReliability = 0;
@@ -66,7 +66,6 @@ KviLagMeter::~KviLagMeter()
 {
 	if(m_pDeletionSignal)
 		*m_pDeletionSignal = true;
-	delete m_pCheckList;
 }
 
 unsigned int KviLagMeter::secondsSinceLastCompleted()
@@ -133,11 +132,11 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 
 	// the last completed check has been completed a lot of time ago
 	// do we have some checks on the queue ?
-	if(m_pCheckList->count() > 0)
+	if(m_CheckList.size() > 0)
 	{
 		// if the first registered check is not too outdated
 		// we wait a little more for it to return
-		KviLagCheck * c = m_pCheckList->first();
+		KviLagCheck * c = m_CheckList.front();
 		if(c)
 		{
 			if((tv.tv_sec - c->lSecs) <= 10)
@@ -204,30 +203,33 @@ void KviLagMeter::lagCheckRegister(const char * key, unsigned int uReliability)
 	c->lSecs = tv.tv_sec;
 	c->lUSecs = tv.tv_usec;
 	c->uReliability = uReliability <= 100 ? uReliability : 100;
-	m_pCheckList->append(c);
-	while(m_pCheckList->count() > 30)
+	m_CheckList.push_back(c);
+	while(m_CheckList.size() > 30)
 	{
 		// we're fried :/
 		// either our ping mechanism is not working
 		// or the server is stoned...
-		m_pCheckList->removeFirst();
+		m_CheckList.erase(m_CheckList.begin());
 	}
 }
 
 bool KviLagMeter::lagCheckComplete(const char * key)
 {
 	// find this lag check
-	KviLagCheck * c;
-	for(c = m_pCheckList->first(); c; c = m_pCheckList->next())
+	KviLagCheck * c = nullptr;
+	for(auto cc : m_CheckList)
 	{
-		if(kvi_strEqualCS(c->szKey.ptr(), key))
+		if(kvi_strEqualCS(cc->szKey.ptr(), key))
+		{
+			c = cc;
 			break;
+		}
 	}
 	if(!c)
 		return false; // not found
 	// kill any earlier lag checks (IRC is a sequential proto)
-	while(m_pCheckList->first() != c)
-		m_pCheckList->removeFirst();
+	while(m_CheckList.front() != c)
+		m_CheckList.erase(m_CheckList.begin());
 
 	if(_OUTPUT_PARANOIC)
 		m_pConnection->console()->output(KVI_OUT_VERBOSE, __tr2qs("Lag check completed (%s)"), key);
@@ -261,23 +263,17 @@ bool KviLagMeter::lagCheckComplete(const char * key)
 	m_tFirstOwnCheck = 0;
 	m_uLastReliability = c->uReliability;
 
-	m_pCheckList->removeFirst();
+	m_CheckList.erase(m_CheckList.begin());
 
 	return true;
 }
 
 void KviLagMeter::lagCheckAbort(const char * key)
 {
-	KviPointerList<KviLagCheck> l;
-	l.setAutoDelete(false);
-	KviLagCheck * c;
-
 	if(_OUTPUT_PARANOIC)
 		m_pConnection->console()->output(KVI_OUT_VERBOSE, __tr2qs("Lag check aborted (%s)"), key);
 
-	for(c = m_pCheckList->first(); c; c = m_pCheckList->next())
+	for(auto c : m_CheckList)
 		if(kvi_strEqualCS(c->szKey.ptr(), key))
-			l.append(c);
-	for(c = l.first(); c; c = l.next())
-		m_pCheckList->removeRef(c);
+			m_CheckList.erase(std::remove(m_CheckList.begin(), m_CheckList.end(), c), m_CheckList.end());
 }

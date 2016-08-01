@@ -201,7 +201,7 @@ void KviIrcServerParser::parseLiteralChghost(KviIrcMessage * msg)
 	if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnHostChange, console, szNick, szUser, szHost, szNewUser, szNewHost))
 		msg->setHaltOutput();
 
-	for(KviChannelWindow * c = console->connection()->channelList()->first(); c; c = console->connection()->channelList()->next())
+	for(auto & c : console->connection()->channelList())
 	{
 		if(!msg->haltOutput())
 		{
@@ -600,19 +600,16 @@ void KviIrcServerParser::parseLiteralQuit(KviIrcMessage * msg)
 
 		if(console->connection())
 		{
-			for(
-			    KviChannelWindow * daChan = console->connection()->channelList()->first();
-			    daChan;
-			    daChan = console->connection()->channelList()->next())
+			for(auto & c : console->connection()->channelList())
 			{
-				if(daChan->isOn(szNick))
+				if(c->isOn(szNick))
 				{
 					if(chanlist.isEmpty())
-						chanlist = daChan->windowName();
+						chanlist = c->windowName();
 					else
 					{
 						chanlist.append(',');
-						chanlist.append(daChan->windowName());
+						chanlist.append(c->windowName());
 					}
 				}
 			}
@@ -629,7 +626,7 @@ void KviIrcServerParser::parseLiteralQuit(KviIrcMessage * msg)
 			msg->setHaltOutput();
 	}
 
-	for(KviChannelWindow * c = console->connection()->channelList()->first(); c; c = console->connection()->channelList()->next())
+	for(auto & c : console->connection()->channelList())
 	{
 		if(c->part(szNick))
 		{
@@ -861,21 +858,21 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 
 	PrivmsgIdentifyMsgCapState eCapState = IdentifyMsgCapNotUsed;
 
-	KviCString * pTrailing = msg->trailingString();
+	KviCString pTrailing = msg->trailingString();
 	if(pTrailing)
 	{
 		if(msg->connection()->stateData()->identifyMsgCapabilityEnabled())
 		{
-			switch(*(pTrailing->ptr()))
+			switch(*(pTrailing.ptr()))
 			{
 				case '+':
 					// message from identified user
 					eCapState = IdentifyMsgCapUsedIdentified;
-					pTrailing->cutLeft(1); // kill the first char
+					pTrailing.cutLeft(1); // kill the first char
 					break;
 				case '-':
 					eCapState = IdentifyMsgCapUsedNotIdentified;
-					pTrailing->cutLeft(1); // kill the first char
+					pTrailing.cutLeft(1); // kill the first char
 					break;
 				default:
 					// nothing interesting
@@ -883,17 +880,17 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 			}
 		}
 
-		if(*(pTrailing->ptr()) == 0x01)
+		if(*(pTrailing.ptr()) == 0x01)
 		{
 			// FIXME: 	#warning "DEDICATED CTCP WINDOW ?"
-			if(pTrailing->len() > 1)
+			if(pTrailing.len() > 1)
 			{
-				if(pTrailing->lastCharIs(0x01))
-					pTrailing->cutRight(1);
-				pTrailing->cutLeft(1);
+				if(pTrailing.lastCharIs(0x01))
+					pTrailing.cutRight(1);
+				pTrailing.cutLeft(1);
 				KviCtcpMessage ctcp;
 				ctcp.msg = msg;
-				ctcp.pData = pTrailing->ptr();
+				ctcp.pData = pTrailing.ptr();
 				KviIrcMask mSource(szSourceNick, szSourceUser, szSourceHost); // FIXME!
 				ctcp.pSource = &mSource;
 				ctcp.szTarget = szTarget;
@@ -979,7 +976,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 			// spam message...
 			if(KVI_OPTION_BOOL(KviOption_boolUseAntiSpamOnPrivmsg))
 			{
-				KviCString * theMsg = msg->trailingString();
+				KviCString theMsg = msg->trailingString();
 				if(theMsg)
 				{
 					KviCString spamWord;
@@ -1120,12 +1117,14 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 						pOut = aWin;
 					else
 					{
-						for(KviChannelWindow * c = pConnection->channelList()->first(); c; c = pConnection->channelList()->next())
+						for(auto & c : pConnection->channelList())
+						{
 							if(c->isOn(szOtherNick))
 							{
-								pOut = (KviWindow *)c;
+								pOut = c;
 								break;
 							}
+						}
 					}
 				}
 
@@ -1233,19 +1232,19 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 
 	// FIXME: "DEDICATED CTCP WINDOW ?"
 
-	KviCString * pTrailing = msg->trailingString();
+	KviCString pTrailing = msg->trailingString();
 	if(pTrailing)
 	{
-		if(*(pTrailing->ptr()) == 0x01)
+		if(*(pTrailing.ptr()) == 0x01)
 		{
-			if(pTrailing->len() > 1)
+			if(pTrailing.len() > 1)
 			{
-				if(pTrailing->lastCharIs(0x01))
-					pTrailing->cutRight(1);
-				pTrailing->cutLeft(1);
+				if(pTrailing.lastCharIs(0x01))
+					pTrailing.cutRight(1);
+				pTrailing.cutLeft(1);
 				KviCtcpMessage ctcp;
 				ctcp.msg = msg;
-				ctcp.pData = pTrailing->ptr();
+				ctcp.pData = pTrailing.ptr();
 				KviIrcMask talker(szNick, szUser, szHost); // FIXME
 				ctcp.pSource = &talker;
 				ctcp.szTarget = msg->connection()->decodeText(msg->safeParam(0));
@@ -1425,7 +1424,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 			// spam message...
 			if(KVI_OPTION_BOOL(KviOption_boolUseAntiSpamOnNotice))
 			{
-				KviCString * theMsg = msg->trailingString(); // FIXME
+				KviCString theMsg = msg->trailingString(); // FIXME
 				if(theMsg)
 				{
 					KviCString spamWord;
@@ -1540,10 +1539,10 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 						pOut = aWin;
 					else
 					{
-						for(KviChannelWindow * c = pConnection->channelList()->first(); c; c = pConnection->channelList()->next())
+						for(auto & c : pConnection->channelList())
 							if(c->isOn(szNick))
 							{
-								pOut = (KviWindow *)c;
+								pOut = c;
 								break;
 							}
 					}
@@ -1750,7 +1749,7 @@ void KviIrcServerParser::parseLiteralNick(KviIrcMessage * msg)
 	if(pUserEntry)
 		pUserEntry->setSmartNickColor(-1);
 
-	for(KviChannelWindow * c = console->connection()->channelList()->first(); c; c = console->connection()->channelList()->next())
+	for(auto & c : console->connection()->channelList())
 	{
 		if(c->nickChange(szNick, szNewNick))
 		{
@@ -1773,10 +1772,7 @@ void KviIrcServerParser::parseLiteralNick(KviIrcMessage * msg)
 				console->output(KVI_OUT_NICK, __tr2qs("You have changed your nickname to %Q"), &szNewNick);
 
 			// just update all the captions : we have changed OUR nick
-			for(
-			    KviQueryWindow * q = console->connection()->queryList()->first();
-			    q;
-			    q = console->connection()->queryList()->next())
+			for(auto & q : console->connection()->queryList())
 			{
 				if(!msg->haltOutput())
 					q->output(KVI_OUT_NICK, __tr2qs("You have changed your nickname to %Q"), &szNewNick);

@@ -30,13 +30,14 @@
 #include "KviApplication.h"
 
 #include <QMenu>
+#include <algorithm>
+#include <vector>
 
 static KviFileTransferManager * g_pFileTransferManager = nullptr;
 
 KviFileTransferManager::KviFileTransferManager()
     : QObject()
 {
-	m_pTransferList = nullptr;
 	m_pTransferWindow = nullptr;
 }
 
@@ -65,30 +66,16 @@ void KviFileTransferManager::cleanup()
 
 void KviFileTransferManager::killAllTransfers()
 {
-	while(m_pTransferList)
-	{
-		KviFileTransfer * t = m_pTransferList->first();
+	for(auto & t : m_pTransferList)
 		t->die();
-	}
 }
 
 void KviFileTransferManager::killTerminatedTransfers()
 {
-	if(m_pTransferList)
+	for(auto & f : m_pTransferList)
 	{
-		KviPointerList<KviFileTransfer> l;
-		l.setAutoDelete(false);
-
-		for(KviFileTransfer * f = m_pTransferList->first(); f; f = m_pTransferList->next())
-		{
-			if(f->terminated())
-			{
-				l.append(f);
-			}
-		}
-
-		for(KviFileTransfer * d = l.first(); d; d = l.next())
-			d->die();
+		if(f->terminated())
+			f->die();
 	}
 }
 
@@ -107,33 +94,22 @@ void KviFileTransferManager::invokeTransferWindow(bool bCreateMinimized, bool bN
 
 void KviFileTransferManager::registerTransfer(KviFileTransfer * t)
 {
-	if(!m_pTransferList)
-	{
-		m_pTransferList = new KviPointerList<KviFileTransfer>;
-		m_pTransferList->setAutoDelete(false);
-	}
-
-	m_pTransferList->append(t);
+	m_pTransferList.push_back(t);
 
 	emit transferRegistered(t);
 }
 
 void KviFileTransferManager::unregisterTransfer(KviFileTransfer * t)
 {
-	if(!m_pTransferList)
+	if(m_pTransferList.empty())
 	{
-		qDebug("Ops: unregistering transfer with no transfer list!");
+		qDebug("Oops: unregistering transfer with no transfer list!");
 		return;
 	}
 
 	emit transferUnregistering(t);
 
-	m_pTransferList->removeRef(t);
-	if(m_pTransferList->isEmpty())
-	{
-		delete m_pTransferList;
-		m_pTransferList = nullptr;
-	}
+	m_pTransferList.erase(std::remove(m_pTransferList.begin(), m_pTransferList.end(), t), m_pTransferList.end());
 }
 
 KviFileTransfer::KviFileTransfer()

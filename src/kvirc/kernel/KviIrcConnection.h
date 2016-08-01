@@ -32,7 +32,6 @@
 
 #include "kvi_settings.h"
 #include "KviQString.h"
-#include "KviPointerList.h"
 #include "KviTimeUtils.h"
 
 #include <QObject>
@@ -40,6 +39,8 @@
 #include <QStringList>
 #include <QList>
 #include <QPair>
+
+#include <vector>
 
 class QTimer;
 class QTextCodec;
@@ -160,8 +161,8 @@ private:
 
 	KviIrcConnectionStateData * m_pStateData; // owned, never null
 
-	KviPointerList<KviChannelWindow> * m_pChannelList; // owned, never null, elements shallow
-	KviPointerList<KviQueryWindow> * m_pQueryList;     // owned, never null, elements shallow
+	std::vector<KviChannelWindow *> m_pChannelList; // owned, never null, elements shallow
+	std::vector<KviQueryWindow *> m_pQueryList;     // owned, never null, elements shallow
 
 	KviIrcUserDataBase * m_pUserDataBase; // owned, never null
 
@@ -188,7 +189,7 @@ public:
 	* The pointer is never NULL
 	* \return KviConsoleWindow *
 	*/
-	inline KviConsoleWindow * console() { return m_pConsole; };
+	KviConsoleWindow * console() { return m_pConsole; };
 
 	/**
 	* \brief Returns a pointer to the owning KviIrcContext.
@@ -196,7 +197,7 @@ public:
 	* The returned value is never NULL
 	* \return KviIrcContext *
 	*/
-	inline KviIrcContext * context() { return m_pContext; };
+	KviIrcContext * context() { return m_pContext; };
 
 	/**
 	* \brief Returns the target of this connection.
@@ -206,7 +207,7 @@ public:
 	* The returned pointer is never NULL.
 	* \return KviIrcConnectionTarget *
 	*/
-	inline KviIrcConnectionTarget * target() { return m_pTarget; };
+	KviIrcConnectionTarget * target() { return m_pTarget; };
 
 	/**
 	* \brief Returns the underlying KviIrcLink object
@@ -214,13 +215,13 @@ public:
 	* The returned pointer is never NULL.
 	* \return KviIrcLink *
 	*/
-	inline KviIrcLink * link() { return m_pLink; };
+	KviIrcLink * link() { return m_pLink; };
 
 	/**
 	* \brief Returns the current state of the connection
 	* \return State
 	*/
-	inline State state() { return m_eState; };
+	State state() { return m_eState; };
 
 	/**
 	* \brief Returns a pointer to the big connection user database.
@@ -229,7 +230,7 @@ public:
 	* The returned pointer is never NULL.
 	* \return KviIrcUserDataBase *
 	*/
-	inline KviIrcUserDataBase * userDataBase() { return m_pUserDataBase; };
+	KviIrcUserDataBase * userDataBase() { return m_pUserDataBase; };
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionUserInfo object
@@ -242,7 +243,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionUserInfo *
 	*/
-	inline KviIrcConnectionUserInfo * userInfo() { return m_pUserInfo; };
+	KviIrcConnectionUserInfo * userInfo() { return m_pUserInfo; };
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionServerInfo object
@@ -256,7 +257,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionServerInfo *
 	*/
-	inline KviIrcConnectionServerInfo * serverInfo() { return m_pServerInfo; };
+	KviIrcConnectionServerInfo * serverInfo() { return m_pServerInfo; };
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionStateData object
@@ -270,7 +271,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionStateData *
 	*/
-	inline KviIrcConnectionStateData * stateData() { return m_pStateData; };
+	KviIrcConnectionStateData * stateData() { return m_pStateData; };
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionAntiCtcpFloodData object
@@ -282,7 +283,7 @@ public:
 	* only forwarded here.
 	* \return KviIrcConnectionAntiCtcpFloodData *
 	*/
-	inline KviIrcConnectionAntiCtcpFloodData * antiCtcpFloodData()
+	KviIrcConnectionAntiCtcpFloodData * antiCtcpFloodData()
 	{
 		return m_pAntiCtcpFloodData;
 	};
@@ -297,7 +298,7 @@ public:
 	* only forwarded here.
 	* \return KviIrcConnectionNetsplitDetectorData *
 	*/
-	inline KviIrcConnectionNetsplitDetectorData * netsplitDetectorData()
+	KviIrcConnectionNetsplitDetectorData * netsplitDetectorData()
 	{
 		return m_pNetsplitDetectorData;
 	};
@@ -312,7 +313,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionAsyncWhoisData *
 	*/
-	inline KviIrcConnectionAsyncWhoisData * asyncWhoisData()
+	KviIrcConnectionAsyncWhoisData * asyncWhoisData()
 	{
 		return m_pAsyncWhoisData;
 	};
@@ -327,7 +328,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionStatistics *
 	*/
-	inline KviIrcConnectionStatistics * statistics() { return m_pStatistics; };
+	KviIrcConnectionStatistics * statistics() { return m_pStatistics; };
 
 	/**
 	* \brief Returns a pointer to the current KviNotifyListManager.
@@ -336,7 +337,7 @@ public:
 	* the current connection.
 	* \return KviNotifyListManager *
 	*/
-	inline KviNotifyListManager * notifyListManager()
+	KviNotifyListManager * notifyListManager()
 	{
 		return m_pNotifyListManager;
 	};
@@ -348,21 +349,21 @@ public:
 	* current connection.
 	* \return KviLagMeter *
 	*/
-	inline KviLagMeter * lagMeter() { return m_pLagMeter; };
+	KviLagMeter * lagMeter() { return m_pLagMeter; };
 
 	/**
 	* \brief Returns a pointer to the current KviIrcConnectionRequestQueue.
 	* \return KviIrcConnectionRequestQueue *
 	*/
-	inline KviIrcConnectionRequestQueue * requestQueue() { return m_pRequestQueue; };
+	KviIrcConnectionRequestQueue * requestQueue() { return m_pRequestQueue; };
 
 	/**
 	* \brief Returns the list of the channels bound to the current connection.
 	*
 	* The pointer itself is never null (though the list may be empty).
-	* \return KviPointerList<KviChannelWindow> *
+	* \return & std::vector<KviChannelWindow *>
 	*/
-	inline KviPointerList<KviChannelWindow> * channelList() { return m_pChannelList; };
+	std::vector<KviChannelWindow *> & channelList() { return m_pChannelList; };
 
 	/**
 	* \brief Helper that provides a shortcut for really common access to serverInfo()->networkName()
@@ -491,9 +492,9 @@ public:
 	* \brief Returns the list of the currently open queries.
 	*
 	* The returned pointer is never NULL (the list may be empty though).
-	* \return KviPointerList<KviQueryWindow> *
+	* \return std::vector<KviQueryWindow *> &
 	*/
-	inline KviPointerList<KviQueryWindow> * queryList() { return m_pQueryList; };
+	std::vector<KviQueryWindow *> & queryList() { return m_pQueryList; };
 
 	///
 	/// Visibility mode for createQuery()
@@ -666,7 +667,7 @@ public:
 	* windows. The returned pointer may be null if things really went wrong.
 	* \return QTextCodec *
 	*/
-	inline QTextCodec * textCodec() { return m_pTextCodec; };
+	QTextCodec * textCodec() { return m_pTextCodec; };
 
 	/**
 	* \brief Returns a pointer to the current global codec for inbound data.
@@ -675,7 +676,7 @@ public:
 	* windows. The returned pointer may be null if things really went wrong.
 	* \return QTextCodec *
 	*/
-	inline QTextCodec * serverCodec() { return m_pSrvCodec; };
+	QTextCodec * serverCodec() { return m_pSrvCodec; };
 
 	/**
 	* \brief Sets the global encoding for this connection.

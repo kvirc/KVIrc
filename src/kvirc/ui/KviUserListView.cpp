@@ -461,7 +461,7 @@ void KviUserListView::animatedAvatarUpdated(KviUserListEntry * e)
 	}
 }
 
-void KviUserListView::completeNickBashLike(const QString & szBegin, KviPointerList<QString> * pList, bool bAppendMask)
+void KviUserListView::completeNickBashLike(const QString & szBegin, std::vector<QString> & pList, bool bAppendMask)
 {
 	KviUserListEntry * pEntry = m_pHeadItem;
 
@@ -470,12 +470,9 @@ void KviUserListView::completeNickBashLike(const QString & szBegin, KviPointerLi
 		if(KviQString::equalCIN(szBegin, pEntry->m_szNick, szBegin.length()))
 		{
 			if(bAppendMask)
-			{
-				QString * szTmp = new QString(QString("%1!%2@%3").arg(pEntry->m_szNick, pEntry->m_pGlobalData->user(), pEntry->m_pGlobalData->host()));
-				pList->append(szTmp);
-			}
+				pList.push_back(QString("%1!%2@%3").arg(pEntry->m_szNick, pEntry->m_pGlobalData->user(), pEntry->m_pGlobalData->host()));
 			else
-				pList->append(new QString(pEntry->m_szNick));
+				pList.push_back(pEntry->m_szNick);
 		}
 		pEntry = pEntry->m_pNext;
 	}

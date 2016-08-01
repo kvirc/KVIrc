@@ -38,7 +38,6 @@
 */
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
 #include "KviPointerHashTable.h"
 #include "KviWindowToolWidget.h"
 #include "KviCString.h"
@@ -48,6 +47,7 @@
 #include "KviTalToolTip.h"
 
 #include <time.h>
+#include <vector>
 
 #include <QWidget>
 
@@ -738,7 +738,7 @@ public:
 	* \param bAppendMask Whether to append the complete mask
 	* \return void
 	*/
-	void completeNickBashLike(const QString & szBegin, KviPointerList<QString> * pList, bool bAppendMask);
+	void completeNickBashLike(const QString & szBegin, std::vector<QString> & pList, bool bAppendMask);
 
 protected:
 	/**

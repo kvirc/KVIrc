@@ -28,12 +28,15 @@
 #include "KviMainWindow.h"
 #include "KviConsoleWindow.h"
 
-extern KviPointerList<UserWindow> * g_pUserWindowList;
+#include <algorithm>
+#include <map>
+
+extern std::vector<UserWindow *> g_pUserWindowList;
 
 UserWindow::UserWindow(const char * pcName, QString & szIcon, KviConsoleWindow * pConsole, int iCreationFlags)
     : KviWindow(KviWindow::UserWindow, pcName, pConsole)
 {
-	g_pUserWindowList->append(this);
+	g_pUserWindowList.push_back(this);
 
 	m_szIcon = szIcon;
 
@@ -55,7 +58,7 @@ UserWindow::~UserWindow()
 {
 	if(context())
 		context()->unregisterContextWindow(this);
-	g_pUserWindowList->removeRef(this);
+	g_pUserWindowList.erase(std::remove(g_pUserWindowList.begin(), g_pUserWindowList.end(), this), g_pUserWindowList.end());
 }
 
 QPixmap * UserWindow::myIconPtr()

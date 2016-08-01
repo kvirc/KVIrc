@@ -81,10 +81,6 @@ KviIrcConnection::KviIrcConnection(KviIrcContext * pContext, KviIrcConnectionTar
 	m_pConsole = pContext->console();
 	m_pTarget = pTarget;
 	m_pUserIdentity = pIdentity;
-	m_pChannelList = new KviPointerList<KviChannelWindow>;
-	m_pChannelList->setAutoDelete(false);
-	m_pQueryList = new KviPointerList<KviQueryWindow>;
-	m_pQueryList->setAutoDelete(false);
 	m_pLink = new KviIrcLink(this);
 	m_pUserDataBase = new KviIrcUserDataBase();
 	m_pUserInfo = new KviIrcConnectionUserInfo();
@@ -129,8 +125,6 @@ KviIrcConnection::~KviIrcConnection()
 	m_pLagMeter = nullptr;
 
 	delete m_pLink; // <-- this MAY trigger a linkTerminated() or something like this!
-	delete m_pChannelList;
-	delete m_pQueryList;
 	delete m_pTarget;
 	delete m_pUserDataBase;
 	delete m_pUserInfo;
@@ -166,7 +160,7 @@ void KviIrcConnection::setEncoding(const QString & szEncoding)
 	}
 
 	QString szTmp = c->name();
-	for(KviChannelWindow * ch = m_pChannelList->first(); ch; ch = m_pChannelList->next())
+	for(auto & ch : m_pChannelList)
 	{
 		if((ch->textCodec() != c) && (ch->textCodec() != ch->defaultTextCodec())) // actually not using the default!
 		{
@@ -176,7 +170,7 @@ void KviIrcConnection::setEncoding(const QString & szEncoding)
 		}
 	}
 
-	for(KviQueryWindow * q = m_pQueryList->first(); q; q = m_pQueryList->next())
+	for(auto & q : m_pQueryList)
 	{
 		if((q->textCodec() != c) && (q->textCodec() != q->defaultTextCodec())) // actually not using the default!
 		{
@@ -305,11 +299,8 @@ void KviIrcConnection::linkEstablished()
 	m_pServerInfo->setNetworkName(target()->network()->name());
 
 	// FIXME: With STARTTLS this is called TWICE!
-	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
-	{
-		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())
-			m->connectionInitiated();
-	}
+	for(auto & m : context()->monitorList())
+		m->connectionInitiated();
 
 	// FIXME: With STARTTLS this is called TWICE!
 	context()->connectionEstablished();
@@ -544,11 +535,8 @@ void KviIrcConnection::linkTerminated()
 	delete m_pLagMeter;
 	m_pLagMeter = nullptr;
 
-	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
-	{
-		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())
-			m->connectionTerminated();
-	}
+	for(auto & m : context()->monitorList())
+		m->connectionTerminated();
 
 	// Prepare data for an eventual reconnect
 	context()->connectionTerminated();
@@ -567,7 +555,7 @@ void KviIrcConnection::linkAttemptFailed(int iError)
 
 KviChannelWindow * KviIrcConnection::findChannel(const QString & szName)
 {
-	for(KviChannelWindow * c = m_pChannelList->first(); c; c = m_pChannelList->next())
+	for(auto & c : m_pChannelList)
 	{
 		if(KviQString::equalCI(szName, c->windowName()))
 			return c;
@@ -578,7 +566,7 @@ KviChannelWindow * KviIrcConnection::findChannel(const QString & szName)
 int KviIrcConnection::getCommonChannels(const QString & szNick, QString & szChansBuffer, bool bAddEscapeSequences)
 {
 	int iCount = 0;
-	for(KviChannelWindow * c = m_pChannelList->first(); c; c = m_pChannelList->next())
+	for(auto & c : m_pChannelList)
 	{
 		if(c->isOn(szNick))
 		{
@@ -605,30 +593,30 @@ int KviIrcConnection::getCommonChannels(const QString & szNick, QString & szChan
 
 void KviIrcConnection::unhighlightAllChannels()
 {
-	for(KviChannelWindow * c = m_pChannelList->first(); c; c = m_pChannelList->next())
+	for(auto & c : m_pChannelList)
 		c->unhighlight();
 }
 
 void KviIrcConnection::unhighlightAllQueries()
 {
-	for(KviQueryWindow * c = m_pQueryList->first(); c; c = m_pQueryList->next())
+	for(auto & c : m_pQueryList)
 		c->unhighlight();
 }
 
 void KviIrcConnection::closeAllChannels()
 {
-	while(m_pChannelList->first())
+	for(auto & c : m_pChannelList)
 	{
-		m_pChannelList->first()->close();
+		c->close();
 		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers | QEventLoop::ExcludeUserInputEvents);
 	}
 }
 
 void KviIrcConnection::closeAllQueries()
 {
-	while(m_pQueryList->first())
+	for(auto & q : m_pQueryList)
 	{
-		m_pQueryList->first()->close();
+		q->close();
 		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers | QEventLoop::ExcludeUserInputEvents);
 	}
 }
@@ -697,17 +685,17 @@ KviQueryWindow * KviIrcConnection::createQuery(const QString & szNick, CreateQue
 
 KviQueryWindow * KviIrcConnection::findQuery(const QString & szName)
 {
-	for(KviQueryWindow * c = m_pQueryList->first(); c; c = m_pQueryList->next())
+	for(auto & q : m_pQueryList)
 	{
-		if(KviQString::equalCI(szName, c->windowName()))
-			return c;
+		if(KviQString::equalCI(szName, q->windowName()))
+			return q;
 	}
 	return nullptr;
 }
 
 void KviIrcConnection::registerChannel(KviChannelWindow * c)
 {
-	m_pChannelList->append(c);
+	m_pChannelList.push_back(c);
 	if(KVI_OPTION_BOOL(KviOption_boolLogChannelHistory))
 		g_pApp->addRecentChannel(c->windowName(), m_pServerInfo->networkName());
 	emit(channelRegistered(c));
@@ -716,7 +704,7 @@ void KviIrcConnection::registerChannel(KviChannelWindow * c)
 
 void KviIrcConnection::unregisterChannel(KviChannelWindow * c)
 {
-	m_pChannelList->removeRef(c);
+	m_pChannelList.erase(std::remove(m_pChannelList.begin(), m_pChannelList.end(), c), m_pChannelList.end());
 	requestQueue()->dequeueChannel(c);
 	emit(channelUnregistered(c));
 	emit(chanListChanged());
@@ -724,19 +712,19 @@ void KviIrcConnection::unregisterChannel(KviChannelWindow * c)
 
 void KviIrcConnection::registerQuery(KviQueryWindow * q)
 {
-	m_pQueryList->append(q);
+	m_pQueryList.push_back(q);
 }
 
 void KviIrcConnection::unregisterQuery(KviQueryWindow * q)
 {
-	if(m_pQueryList->removeRef(q))
-		return;
+	m_pQueryList.erase(std::remove(m_pQueryList.begin(), m_pQueryList.end(), q), m_pQueryList.end());
 }
 
 void KviIrcConnection::keepChannelsOpenAfterDisconnect()
 {
-	while(KviChannelWindow * c = m_pChannelList->first())
+	while(!m_pChannelList.empty())
 	{
+		KviChannelWindow * c = m_pChannelList.front();
 		c->outputNoFmt(KVI_OUT_SOCKETERROR, __tr2qs("Connection to server lost"));
 		c->setDeadChan();
 	}
@@ -744,8 +732,9 @@ void KviIrcConnection::keepChannelsOpenAfterDisconnect()
 
 void KviIrcConnection::keepQueriesOpenAfterDisconnect()
 {
-	while(KviQueryWindow * q = m_pQueryList->first())
+	while(!m_pQueryList.empty())
 	{
+		KviQueryWindow * q = m_pQueryList.front();
 		q->outputNoFmt(KVI_OUT_SOCKETERROR, __tr2qs("Connection to server lost"));
 		q->setDeadQuery();
 	}
@@ -804,13 +793,10 @@ bool KviIrcConnection::sendFmtData(const char * pcFmt, ...)
 	QString szMsg = QString::fromLatin1((const char *)(pData->data()), iLen - 2);
 
 	// notify the monitors
-	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
+	for(auto & m : context()->monitorList())
 	{
-		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())
-		{
-			if(m->outgoingMessage(szMsg.toLatin1().data()))
-				return true;
-		}
+		if(m->outgoingMessage(szMsg.toLatin1().data()))
+			return true;
 	}
 
 	// Trigger OnOutboundTraffic event
@@ -839,13 +825,10 @@ bool KviIrcConnection::sendData(const char * pcBuffer, int iBuflen)
 	szMsg.truncate(iBuflen);
 
 	// notify the monitors
-	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
+	for(auto & m : context()->monitorList())
 	{
-		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())
-		{
-			if(m->outgoingMessage(szMsg.toUtf8().data()))
-				return true;
-		}
+		if(m->outgoingMessage(szMsg.toUtf8().data()))
+			return true;
 	}
 
 	// Trigger OnOutboundTraffic event
@@ -1683,7 +1666,7 @@ bool KviIrcConnection::changeUserMode(char cMode, bool bSet)
 
 void KviIrcConnection::gatherChannelAndPasswordPairs(QList<QPair<QString, QString>> & lChannelsAndPasses)
 {
-	for(KviChannelWindow * c = m_pChannelList->first(); c; c = m_pChannelList->next())
+	for(auto & c : m_pChannelList)
 		lChannelsAndPasses.append(
 		    QPair<QString, QString>(
 		        c->windowName(),
@@ -1692,7 +1675,7 @@ void KviIrcConnection::gatherChannelAndPasswordPairs(QList<QPair<QString, QStrin
 
 void KviIrcConnection::gatherQueryNames(QStringList & lQueryNames)
 {
-	for(KviQueryWindow * q = m_pQueryList->first(); q; q = m_pQueryList->next())
+	for(auto & q : m_pQueryList)
 		lQueryNames.append(q->target());
 }
 
@@ -1942,13 +1925,10 @@ void KviIrcConnection::incomingMessage(const char * pcMessage)
 {
 	// A message has arrived from the current server
 	// First of all, notify the monitors
-	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
+	for(auto & m : context()->monitorList())
 	{
-		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())
-		{
-			if(m->incomingMessage(pcMessage))
-				return;
-		}
+		if(m->incomingMessage(pcMessage))
+			return;
 	}
 	// set the last message time
 	m_pStatistics->setLastMessageTime(kvi_unixTime());
@@ -1986,7 +1966,7 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 					// find the channel that has the older list now
 					kvi_time_t tOldest = tNow;
 					KviChannelWindow * pOldest = nullptr;
-					for(KviChannelWindow * pChan = m_pChannelList->first(); pChan; pChan = m_pChannelList->next())
+					for(auto & pChan : m_pChannelList)
 					{
 						if(pChan->lastReceivedWhoReply() < tOldest)
 						{

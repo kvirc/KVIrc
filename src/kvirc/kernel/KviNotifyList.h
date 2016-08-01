@@ -26,11 +26,13 @@
 
 #include "kvi_settings.h"
 #include "KviQString.h"
-#include "KviPointerList.h"
-#include "KviPointerHashTable.h"
 
 #include <QObject>
 #include <QTimer>
+
+#include <map>
+#include <memory>
+#include <vector>
 
 class KviConsoleWindow;
 class KviIrcMessage;
@@ -76,18 +78,18 @@ protected:
 	~KviIsOnNotifyListManager();
 
 private:
-	KviPointerHashTable<QString, QString> * m_pRegUserDict; // dict notifystring->reguser name
-	KviPointerList<QString> * m_pNotifyList;                // list of notifystring (total)
-	KviPointerList<QString> * m_pIsOnList;                  // list of notifystring (one session)
+	std::map<QString, std::unique_ptr<QString>> m_pRegUserDict; // dict notifystring->reguser name
+	std::vector<std::unique_ptr<QString>> m_NotifyList;     // list of notifystring (total)
+	std::vector<std::unique_ptr<QString>> m_IsOnList;       // list of notifystring (one session)
 	QString m_szIsOnString;                                 // m_pIsOnList in form of a string
-	KviPointerList<QString> * m_pOnlineList;                //
-	KviPointerList<QString> * m_pUserhostList;
+	std::vector<std::unique_ptr<QString>> m_OnlineList;
+	std::vector<std::unique_ptr<QString>> m_UserhostList;
 	QString m_szUserhostString;
 	bool m_bExpectingIsOn;
 	bool m_bExpectingUserhost;
-	QTimer * m_pDelayedIsOnTimer;
-	QTimer * m_pDelayedNotifyTimer;
-	QTimer * m_pDelayedUserhostTimer;
+	QTimer m_pDelayedIsOnTimer;
+	QTimer m_pDelayedNotifyTimer;
+	QTimer m_pDelayedUserhostTimer;
 	bool m_bRunning;
 
 protected:
@@ -125,9 +127,9 @@ protected:
 	~KviStupidNotifyListManager();
 
 protected:
-	KviPointerList<QString> * m_pNickList;
+	std::vector<std::unique_ptr<QString>> m_pNickList;
 	QString m_szLastIsOnMsg;
-	int m_iNextNickToCheck;
+	std::size_t m_iNextNickToCheck;
 	int m_iRestartTimer;
 
 protected:
@@ -151,10 +153,9 @@ class KVIRC_API KviWatchNotifyListManager : public KviNotifyListManager
 	Q_OBJECT
 public:
 	KviWatchNotifyListManager(KviIrcConnection * pConnection);
-	~KviWatchNotifyListManager();
 
 protected:
-	KviPointerHashTable<QString, QString> * m_pRegUserDict; // dict notifystring->reguser name
+	std::map<QString, std::unique_ptr<QString>> m_pRegUserDict; // dict notifystring->reguser name
 protected:
 	void buildRegUserDict();
 	virtual void start();

@@ -36,6 +36,8 @@
 #include "KviIrcConnectionTarget.h"
 #include "KviIrcConnection.h"
 
+#include <vector>
+
 static KviChannelWindow * chan_kvs_find_channel(KviKvsModuleFunctionCall * c, QString & szChan, bool bNoWarnings = false)
 {
 	if(szChan.isEmpty())
@@ -1333,13 +1335,12 @@ static bool chan_kvs_fnc_banlist(KviKvsModuleFunctionCall * c)
 	if(!ch)
 		return true;
 
-	int idx = 0;
-
-	KviPointerList<KviMaskEntry> * l = ch->modeMasks('b');
-	if(!l)
+	const std::vector<KviMaskEntry *> & l = ch->modeMasks('b');
+	if(l.empty())
 		return true;
 
-	for(KviMaskEntry * e = l->first(); e; e = l->next())
+	int idx = 0;
+	for(auto e : l)
 	{
 		pArray->set(idx, new KviKvsVariant(e->szMask));
 		idx++;
@@ -1383,13 +1384,12 @@ static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
 	if(!ch)
 		return true;
 
-	int idx = 0;
-
-	KviPointerList<KviMaskEntry> * l = ch->modeMasks('e');
-	if(!l)
+	const std::vector<KviMaskEntry *> & l = ch->modeMasks('e');
+	if(l.empty())
 		return true;
 
-	for(KviMaskEntry * e = l->first(); e; e = l->next())
+	int idx = 0;
+	for(auto e : l)
 	{
 		pArray->set(idx, new KviKvsVariant(e->szMask));
 		idx++;
@@ -1433,13 +1433,12 @@ static bool chan_kvs_fnc_invitelist(KviKvsModuleFunctionCall * c)
 	if(!ch)
 		return true;
 
-	int idx = 0;
-
-	KviPointerList<KviMaskEntry> * l = ch->modeMasks('I');
-	if(!l)
+	const std::vector<KviMaskEntry *> & l = ch->modeMasks('I');
+	if(l.empty())
 		return true;
 
-	for(KviMaskEntry * e = l->first(); e; e = l->next())
+	int idx = 0;
+	for(auto e : l)
 	{
 		pArray->set(idx, new KviKvsVariant(e->szMask));
 		idx++;
@@ -1486,13 +1485,12 @@ static bool chan_kvs_fnc_masklist(KviKvsModuleFunctionCall * c)
 	if(!ch)
 		return true;
 
-	int idx = 0;
-
-	KviPointerList<KviMaskEntry> * l = ch->modeMasks(cMode);
-	if(!l)
+	const std::vector<KviMaskEntry *> & l = ch->modeMasks(cMode);
+	if(l.empty())
 		return true;
 
-	for(KviMaskEntry * e = l->first(); e; e = l->next())
+	int idx = 0;
+	for(auto e : l)
 	{
 		pArray->set(idx, new KviKvsVariant(e->szMask));
 		idx++;
@@ -1535,14 +1533,14 @@ static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	KviPointerList<KviMaskEntry> * l = ch->modeMasks('b');
-	if(!l)
+	const std::vector<KviMaskEntry *> & l = ch->modeMasks('b');
+	if(l.empty())
 	{
 		c->returnValue()->setNothing();
 		return true;
 	}
 
-	for(KviMaskEntry * e = l->first(); e; e = l->next())
+	for(auto e : l)
 	{
 		if(KviQString::matchString(e->szMask, szMask))
 		{
@@ -1589,14 +1587,14 @@ static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	KviPointerList<KviMaskEntry> * l = ch->modeMasks('e');
-	if(!l)
+	const std::vector<KviMaskEntry *> & l = ch->modeMasks('e');
+	if(l.empty())
 	{
 		c->returnValue()->setNothing();
 		return true;
 	}
 
-	for(KviMaskEntry * e = l->first(); e; e = l->next())
+	for(auto e : l)
 	{
 		if(KviQString::matchString(e->szMask, szMask))
 		{
@@ -1643,14 +1641,14 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	KviPointerList<KviMaskEntry> * l = ch->modeMasks('I');
-	if(!l)
+	const std::vector<KviMaskEntry *> & l = ch->modeMasks('I');
+	if(l.empty())
 	{
 		c->returnValue()->setNothing();
 		return true;
 	}
 
-	for(KviMaskEntry * e = l->first(); e; e = l->next())
+	for(auto e : l)
 	{
 		if(KviQString::matchString(e->szMask, szMask))
 		{
@@ -1704,14 +1702,14 @@ static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	KviPointerList<KviMaskEntry> * l = ch->modeMasks('b');
-	if(!l)
+	const std::vector<KviMaskEntry *> & l = ch->modeMasks('b');
+	if(l.empty())
 	{
 		c->returnValue()->setNothing();
 		return true;
 	}
 
-	for(KviMaskEntry * e = l->first(); e; e = l->next())
+	for(auto e : l)
 	{
 		if(KviQString::matchString(e->szMask, szMask))
 		{
@@ -1762,14 +1760,14 @@ static bool chan_kvs_fnc_matchmask(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	KviPointerList<KviMaskEntry> * l = ch->modeMasks(cMode);
-	if(!l)
+	const std::vector<KviMaskEntry *> & l = ch->modeMasks(cMode);
+	if(l.empty())
 	{
 		c->returnValue()->setNothing();
 		return true;
 	}
 
-	for(KviMaskEntry * e = l->first(); e; e = l->next())
+	for(auto e : l)
 	{
 		if(KviQString::matchString(e->szMask, szMask))
 		{

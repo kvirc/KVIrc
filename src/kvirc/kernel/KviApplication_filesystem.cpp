@@ -324,7 +324,7 @@ void KviApplication::getTmpFileName(QString & szBuffer, const QString & szEnding
 	} while(KviFileUtils::fileExists(szBuffer));
 }
 
-void KviApplication::completeDirectory(const QString & word, KviPointerList<QString> * matches)
+void KviApplication::completeDirectory(const QString & word, std::vector<QString> & matches)
 {
 	QString szDir = word;
 	QString szFile = word;
@@ -338,49 +338,35 @@ void KviApplication::completeDirectory(const QString & word, KviPointerList<QStr
 	QStringList sl = d.entryList(QDir::Dirs);
 	QStringList::Iterator it;
 
-	for(it = sl.begin(); it != sl.end(); ++it)
+	for(auto & t : sl)
 	{
-		QString * t = new QString(*it);
-		if(KviQString::equalCS(*t, ".") || KviQString::equalCS(*t, ".."))
-		{
-			delete t;
-		}
-		else
+		if(!KviQString::equalCS(t, ".") && !KviQString::equalCS(t, ".."))
 		{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-			if(KviQString::equalCIN(szFile, *t, szFile.length()))
+			if(KviQString::equalCIN(szFile, t, szFile.length()))
 #else
-			if(KviQString::equalCSN(szFile, *t, szFile.length()))
+			if(KviQString::equalCSN(szFile, t, szFile.length()))
 #endif
 			{
-				t->prepend(szDir);
-				t->append(KVI_PATH_SEPARATOR_CHAR);
-				matches->append(t);
-			}
-			else
-			{
-				delete t;
+				t.prepend(szDir);
+				t.append(KVI_PATH_SEPARATOR_CHAR);
+				matches.push_back(std::move(t));
 			}
 		}
 	}
 
 	sl = d.entryList(QDir::Files);
 
-	for(it = sl.begin(); it != sl.end(); ++it)
+	for(auto & t : sl)
 	{
-		QString * t = new QString(*it);
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		if(KviQString::equalCIN(szFile, *t, szFile.length()))
+		if(KviQString::equalCIN(szFile, t, szFile.length()))
 #else
-		if(KviQString::equalCSN(szFile, *t, szFile.length()))
+		if(KviQString::equalCSN(szFile, t, szFile.length()))
 #endif
 		{
-			t->prepend(szDir);
-			matches->append(t);
-		}
-		else
-		{
-			delete t;
+			t.prepend(szDir);
+			matches.push_back(std::move(t));
 		}
 	}
 }

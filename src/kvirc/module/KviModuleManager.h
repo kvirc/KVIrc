@@ -25,12 +25,12 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
 #include "KviModule.h"
 #include "KviPointerHashTable.h"
 
 #include <QTimer>
 #include <QObject>
+#include <vector>
 
 class KVIRC_API KviModuleManager : public QObject
 {
@@ -56,10 +56,10 @@ public:
 	void loadModulesByCaps(const QString & caps, const QString & dir);
 	void loadModulesByCaps(const QString & caps);
 	bool hasLockedModules();
-	void completeModuleNames(const QString & word, KviPointerList<QString> * matches);
+	void completeModuleNames(const QString & word, std::vector<QString> & matches);
 
 protected:
-	void completeModuleNames(const QString & path, const QString & work, KviPointerList<QString> * matches);
+	void completeModuleNames(const QString & path, const QString & work, std::vector<QString> & matches);
 public slots:
 	void cleanupUnusedModules();
 signals:

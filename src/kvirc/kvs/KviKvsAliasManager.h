@@ -27,10 +27,11 @@
 #include "kvi_settings.h"
 #include "KviPointerHashTable.h"
 
-#include "KviPointerList.h"
 #include "KviQString.h"
 
 #include "KviKvsScript.h"
+
+#include <vector>
 
 class KVIRC_API KviKvsAliasManager : public QObject
 {
@@ -70,7 +71,7 @@ public:
 	void save(const QString & filename);
 	void load(const QString & filename);
 
-	void completeCommand(const QString & word, KviPointerList<QString> * matches);
+	void completeCommand(const QString & word, std::vector<QString> & matches);
 signals:
 	void aliasRefresh(const QString &);
 };

@@ -25,10 +25,10 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
 #include "KviTalTableWidget.h"
 
 #include <QObject>
+#include <vector>
 
 class KviFileTransfer;
 class KviWindow;
@@ -49,7 +49,7 @@ public:
 	~KviFileTransferManager();
 
 protected:
-	KviPointerList<KviFileTransfer> * m_pTransferList;
+	std::vector<KviFileTransfer *> m_pTransferList;
 	KviWindow * m_pTransferWindow;
 
 protected:
@@ -61,7 +61,7 @@ public:
 	// might be zero!
 	KviWindow * transferWindow() { return m_pTransferWindow; };
 	static KviFileTransferManager * instance();
-	KviPointerList<KviFileTransfer> * transferList() { return m_pTransferList; };
+	std::vector<KviFileTransfer *> transferList() { return m_pTransferList; };
 	void invokeTransferWindow(bool bCreateMinimized = false, bool bNoRaise = false);
 	void killAllTransfers();
 	void killTerminatedTransfers();

@@ -32,8 +32,9 @@
 #include "KviKvsParameterProcessor.h"
 #include "KviKvsSwitchList.h"
 #include "KviKvsScript.h"
-#include "KviPointerList.h"
 #include "KviQString.h"
+
+#include <vector>
 
 class KviModule;
 class KviKvsTreeNodeDataList;
@@ -195,8 +196,8 @@ public:
 		return m_pModuleFunctionExecRoutineDict->find(szFunction);
 	};
 
-	void completeCommand(const QString & cmd, KviPointerList<QString> * matches);
-	void completeFunction(const QString & cmd, KviPointerList<QString> * matches);
+	void completeCommand(const QString & cmd, std::vector<QString> & matches);
+	void completeFunction(const QString & cmd, std::vector<QString> & matches);
 	void getAllFunctionsCommandsModule(QStringList * list, QString & szModuleName);
 
 protected:

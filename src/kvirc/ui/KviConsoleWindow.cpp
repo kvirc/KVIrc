@@ -213,14 +213,14 @@ void KviConsoleWindow::triggerCreationEvents()
 	KVS_TRIGGER_EVENT_0(KviEvent_OnIrcContextCreated, this);
 }
 
-void KviConsoleWindow::completeChannel(const QString & word, KviPointerList<QString> * matches)
+void KviConsoleWindow::completeChannel(const QString & word, std::vector<QString> & matches)
 {
 	// FIXME: first look in our context ?
 	/*
 	if(!connection())return;
-	for(KviChannelWindow * c = connection()->channelList()->first();c;c = connection()->channelList()->next())
+	for(auto & c : connection()->channelList())
 	{
-		if(kvi_strEqualCIN(c->windowName(),word.ptr(),word.len()))matches->append(new KviCString((*it)
+		if(kvi_strEqualCIN(c.windowName(),word.ptr(),word.len()))matches->append(new KviCString((*it)
 	}
 	*/
 	QStringList * pList = g_pApp->recentChannelsForNetwork(currentNetworkName());
@@ -229,12 +229,12 @@ void KviConsoleWindow::completeChannel(const QString & word, KviPointerList<QStr
 		for(auto & it : *pList)
 		{
 			if(KviQString::equalCIN(it, word, word.length()))
-				matches->append(new QString(it));
+				matches.push_back(it);
 		}
 	}
 }
 
-void KviConsoleWindow::completeServer(const QString & word, KviPointerList<QString> * matches)
+void KviConsoleWindow::completeServer(const QString & word, std::vector<QString> & matches)
 {
 	for(auto srv : KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers))
 	{
@@ -244,9 +244,7 @@ void KviConsoleWindow::completeServer(const QString & word, KviPointerList<QStri
 		KviQString::cutFromLast(srv, ':');
 		//We should have a full server name here, without the irc:// and without the port
 		if(KviQString::equalCIN(srv, word, word.length()))
-		{
-			matches->append(new QString(srv));
-		}
+			matches.push_back(srv);
 	}
 }
 
@@ -467,17 +465,20 @@ void KviConsoleWindow::updateUri()
 		if(server)
 		{
 			KviIrcUrl::join(uri, server);
-			KviChannelWindow * last = connection()->channelList()->last();
-			for(KviChannelWindow * c = connection()->channelList()->first(); c; c = connection()->channelList()->next())
+			if(connection()->channelList().size())
 			{
-				uri.append(c->target());
-				if(c->hasChannelMode('k'))
+				KviChannelWindow * last = connection()->channelList().back();
+				for(auto & c : connection()->channelList())
 				{
-					uri.append("?");
-					uri.append(c->channelModeParam('k'));
+					uri.append(c->target());
+					if(c->hasChannelMode('k'))
+					{
+						uri.append("?");
+						uri.append(c->channelModeParam('k'));
+					}
+					if(c != last)
+						uri.append(",");
 				}
-				if(c != last)
-					uri.append(",");
 			}
 		}
 	}
@@ -881,7 +882,7 @@ void KviConsoleWindow::avatarChangedUpdateWindows(const QString & nick, const QS
 	// in quiet mode avoid bugging the user about avatar changes
 	bool bOut = ((!textLine.isEmpty()) && (!(_OUTPUT_QUIET)));
 
-	for(KviChannelWindow * c = connection()->channelList()->first(); c; c = connection()->channelList()->next())
+	for(auto & c : connection()->channelList())
 	{
 		if(c->avatarChanged(nick))
 		{
@@ -889,7 +890,7 @@ void KviConsoleWindow::avatarChangedUpdateWindows(const QString & nick, const QS
 				c->outputNoFmt(KVI_OUT_AVATAR, textLine);
 		}
 	}
-	for(KviQueryWindow * q = connection()->queryList()->first(); q; q = connection()->queryList()->next())
+	for(auto & q : connection()->queryList())
 	{
 		if(q->avatarChanged(nick))
 		{
@@ -1232,12 +1233,10 @@ void KviConsoleWindow::getWindowListTipText(QString & buffer)
 	if((context()->state() == KviIrcContext::Connected) && connection())
 	{
 		QString num;
+		unsigned int uD, uH;
 
-		unsigned int uD;
-		unsigned int uH;
-
-		uD = connection()->channelList()->count();
-		uH = connection()->queryList()->count();
+		uD = connection()->channelList().size();
+		uH = connection()->queryList().size();
 
 		if(uD || uH > 0)
 		{

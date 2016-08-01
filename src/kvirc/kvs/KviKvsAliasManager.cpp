@@ -116,13 +116,13 @@ void KviKvsAliasManager::add(const QString & szName, KviKvsScript * pAlias)
 	emit aliasRefresh(szName);
 }
 
-void KviKvsAliasManager::completeCommand(const QString & word, KviPointerList<QString> * matches)
+void KviKvsAliasManager::completeCommand(const QString & word, std::vector<QString> & matches)
 {
 	KviPointerHashTableIterator<QString, KviKvsScript> it(*m_pAliasDict);
 	while(it.current())
 	{
 		if(KviQString::equalCIN(word, it.current()->name(), word.length()))
-			matches->append(new QString(it.current()->name()));
+			matches.push_back(it.current()->name());
 		++it;
 	}
 }

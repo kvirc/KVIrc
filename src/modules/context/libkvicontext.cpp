@@ -469,9 +469,8 @@ static bool context_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 {
 	KviKvsArray * pArray = new KviKvsArray();
 
-	KviPointerList<KviWindow> * pWinList = g_pMainWindow->windowList();
 	int idx = 0;
-	for(KviWindow * pWnd = pWinList->first(); pWnd; pWnd = pWinList->next())
+	for(auto pWnd : g_pMainWindow->windowList())
 	{
 		if(pWnd->type() == KviWindow::Console)
 		{

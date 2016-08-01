@@ -167,12 +167,7 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	m_bUpdatesEnabled = true;
 	m_pKviWindow = pWnd;
 	m_pUserListView = pView;
-	m_pHistory = new KviPointerList<QString>;
-	m_pHistory->setAutoDelete(true);
 	m_bReadOnly = false;
-
-	m_pUndoStack = nullptr;
-	m_pRedoStack = nullptr;
 
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 
@@ -205,16 +200,7 @@ KviInputEditor::~KviInputEditor()
 		g_pLastFontMetrics = nullptr;
 	}
 
-	if(m_pIconMenu)
-		delete m_pIconMenu;
-
-	delete m_pHistory;
-
-	if(m_pUndoStack)
-		delete m_pUndoStack;
-
-	if(m_pRedoStack)
-		delete m_pRedoStack;
+	delete m_pIconMenu;
 
 	if(m_iCursorTimer)
 		killTimer(m_iCursorTimer);
@@ -365,10 +351,10 @@ bool KviInputEditor::checkWordSpelling(const QString & szWord)
 		pBlock->iLength = pBlock->szText.length();                                        \
 		pBlock->bSpellCheckable = _bSpellCheckable;                                       \
 		pBlock->bCorrect = _bCorrect;                                                     \
-		_lBuffer.append(pBlock);                                                          \
+		_lBuffer.insert(pBlock);                                                          \
 	} while(0)
 
-void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, KviPointerList<KviInputEditorSpellCheckerBlock> & lBuffer)
+void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, std::unordered_set<KviInputEditorSpellCheckerBlock *> & lBuffer)
 {
 #ifdef COMPILE_ENCHANT_SUPPORT
 	if(szText.isEmpty())
@@ -525,8 +511,7 @@ void KviInputEditor::rebuildTextBlocks()
 	qDeleteAll(m_p->lTextBlocks);
 	m_p->lTextBlocks.clear();
 
-	KviPointerList<KviInputEditorSpellCheckerBlock> lSpellCheckerBlocks;
-	lSpellCheckerBlocks.setAutoDelete(true);
+	std::unordered_set<KviInputEditorSpellCheckerBlock *> lSpellCheckerBlocks;
 
 #ifdef COMPILE_ENCHANT_SUPPORT
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lSpellCheckerBlocks);
@@ -536,7 +521,7 @@ void KviInputEditor::rebuildTextBlocks()
 
 	m_p->bTextBlocksDirty = false;
 
-	if(lSpellCheckerBlocks.isEmpty()) // should never happen, but well...
+	if(lSpellCheckerBlocks.empty()) // should never happen, but well...
 		return;                   // nothing to do
 
 #define NOT_CONTROL_CHAR() \
@@ -552,7 +537,7 @@ void KviInputEditor::rebuildTextBlocks()
 
 	KviInputEditorTextBlock * pBlock;
 
-	for(KviInputEditorSpellCheckerBlock * spb = lSpellCheckerBlocks.first(); spb; spb = lSpellCheckerBlocks.next())
+	for(auto spb : lSpellCheckerBlocks)
 	{
 		if(spb->bSpellCheckable && !spb->bCorrect)
 			uFlags |= KviInputEditorTextBlock::IsSpellingMistake;
@@ -1140,7 +1125,7 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 #ifdef COMPILE_ENCHANT_SUPPORT
 	// check if the cursor is in a spell-checkable block
 
-	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
+	std::unordered_set<KviInputEditorSpellCheckerBlock *> lBuffer;
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lBuffer);
 
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = findSpellCheckerBlockAtCursor(lBuffer);
@@ -1186,11 +1171,11 @@ void KviInputEditor::showContextPopupHere()
 	showContextPopup(mapToGlobal(QPoint(fXPos, iBottom)));
 }
 
-KviInputEditorSpellCheckerBlock * KviInputEditor::findSpellCheckerBlockAtCursor(KviPointerList<KviInputEditorSpellCheckerBlock> & lBlocks)
+KviInputEditorSpellCheckerBlock * KviInputEditor::findSpellCheckerBlockAtCursor(std::unordered_set<KviInputEditorSpellCheckerBlock *> & lBlocks)
 {
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = nullptr;
 
-	for(KviInputEditorSpellCheckerBlock * pBlock = lBlocks.first(); pBlock; pBlock = lBlocks.next())
+	for(auto pBlock : lBlocks)
 	{
 		if(m_iCursorPosition <= (pBlock->iStart + pBlock->iLength))
 		{
@@ -1217,7 +1202,7 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 #ifdef COMPILE_ENCHANT_SUPPORT
 	// check if the cursor is in a spellcheckable block
 
-	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
+	std::unordered_set<KviInputEditorSpellCheckerBlock *> lBuffer;
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lBuffer);
 
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = findSpellCheckerBlockAtCursor(lBuffer);
@@ -1299,7 +1284,7 @@ void KviInputEditor::spellCheckerPopupCorrectionActionTriggered()
 	if(szWord.isEmpty())
 		return;
 
-	KviPointerList<KviInputEditorSpellCheckerBlock> lBuffer;
+	std::unordered_set<KviInputEditorSpellCheckerBlock *> lBuffer;
 	splitTextIntoSpellCheckerBlocks(m_szTextBuffer, lBuffer);
 
 	KviInputEditorSpellCheckerBlock * pCurrentBlock = findSpellCheckerBlockAtCursor(lBuffer);
@@ -1694,12 +1679,12 @@ void KviInputEditor::handleDragSelection()
 
 void KviInputEditor::finishInput()
 {
-	if(!m_szTextBuffer.isEmpty() /* && (!m_pHistory->current() || m_szTextBuffer.compare(*(m_pHistory->current())))*/)
+	if(!m_szTextBuffer.isEmpty() /* && (!m_History->current() || m_szTextBuffer.compare(*(m_History->current())))*/)
 	{
 		if(m_pInputParent->inherits("KviInput"))
-			KviInputHistory::instance()->add(new QString(m_szTextBuffer));
+			KviInputHistory::instance()->add(m_szTextBuffer);
 
-		m_pHistory->insert(0, new QString(m_szTextBuffer));
+		m_History.insert(m_History.begin(), m_szTextBuffer);
 	}
 
 	//ensure the color window is hidden (bug #835)
@@ -1708,8 +1693,8 @@ void KviInputEditor::finishInput()
 			g_pColorWindow->hide();
 
 	KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
-	if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)
-		m_pHistory->removeLast();
+	if(m_History.size() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)
+		m_History.pop_back();
 
 	m_iCurHistoryIdx = -1;
 }
@@ -1723,17 +1708,8 @@ void KviInputEditor::returnPressed(bool)
 
 void KviInputEditor::clearUndoStack()
 {
-	if(m_pUndoStack)
-	{
-		delete m_pUndoStack;
-		m_pUndoStack = nullptr;
-	}
-
-	if(m_pRedoStack)
-	{
-		delete m_pRedoStack;
-		m_pRedoStack = nullptr;
-	}
+	m_UndoStack.clear();
+	m_RedoStack.clear();
 }
 
 void KviInputEditor::focusInEvent(QFocusEvent * e)
@@ -2178,8 +2154,7 @@ void KviInputEditor::completion(bool bShift)
 	else
 		iOffset = 0;
 
-	KviPointerList<QString> tmp;
-	tmp.setAutoDelete(true);
+	std::vector<QString> tmp;
 
 	bool bIsCommand = false;
 	bool bIsFunction = false;
@@ -2196,7 +2171,7 @@ void KviInputEditor::completion(bool bShift)
 			szWord.remove(0, 2 - iOffset);
 			if(szWord.isEmpty())
 				return;
-			KviKvsKernel::instance()->completeFunction(szWord, &tmp);
+			KviKvsKernel::instance()->completeFunction(szWord, tmp);
 			// function names don't need to be escaped
 			bIsFunction = true;
 		}
@@ -2206,14 +2181,14 @@ void KviInputEditor::completion(bool bShift)
 			szWord.remove(0, 1 - iOffset);
 			if(szWord.isEmpty())
 				return;
-			KviKvsKernel::instance()->completeCommand(szWord, &tmp);
+			KviKvsKernel::instance()->completeCommand(szWord, tmp);
 			// commands don't need to be escaped
 			bIsCommand = true;
 		}
 		else
 		{
 			// directory completion attempt
-			g_pApp->completeDirectory(szWord, &tmp);
+			g_pApp->completeDirectory(szWord, tmp);
 			bIsDir = true;
 		}
 	}
@@ -2223,7 +2198,7 @@ void KviInputEditor::completion(bool bShift)
 		szWord.remove(0, 1);
 		if(szWord.isEmpty())
 			return;
-		KviKvsKernel::instance()->completeFunction(szWord, &tmp);
+		KviKvsKernel::instance()->completeFunction(szWord, tmp);
 		bIsFunction = true;
 	}
 	else if(uc == '#' || uc == '&' || uc == '!')
@@ -2240,7 +2215,7 @@ void KviInputEditor::completion(bool bShift)
 				return;
 			}
 			if(m_pKviWindow->console())
-				m_pKviWindow->console()->completeChannel(szWord, &tmp);
+				m_pKviWindow->console()->completeChannel(szWord, tmp);
 		}
 
 		//FIXME: Complete also on irc:// starting strings, not only irc.?
@@ -2250,7 +2225,7 @@ void KviInputEditor::completion(bool bShift)
 		// irc server name
 		if(m_pKviWindow)
 			if(m_pKviWindow->console())
-				m_pKviWindow->console()->completeServer(szWord, &tmp);
+				m_pKviWindow->console()->completeServer(szWord, tmp);
 	}
 	else
 	{
@@ -2262,7 +2237,7 @@ void KviInputEditor::completion(bool bShift)
 				if(m_szLastCompletedNick.isEmpty())
 				{
 					//first round of zsh completion
-					m_pUserListView->completeNickBashLike(szWord, &tmp, bShift);
+					m_pUserListView->completeNickBashLike(szWord, tmp, bShift);
 					bIsNick = true;
 					m_szLastCompletedNick = szWord;
 				}
@@ -2275,7 +2250,7 @@ void KviInputEditor::completion(bool bShift)
 			}
 			else if(KVI_OPTION_BOOL(KviOption_boolBashLikeNickCompletion))
 			{
-				m_pUserListView->completeNickBashLike(szWord, &tmp, bShift);
+				m_pUserListView->completeNickBashLike(szWord, tmp, bShift);
 				bIsNick = true;
 			}
 			else
@@ -2288,11 +2263,11 @@ void KviInputEditor::completion(bool bShift)
 	}
 
 	// Lookup the longest exact match
-	if(tmp.count() > 0)
+	if(tmp.size() > 0)
 	{
-		if(tmp.count() == 1)
+		if(tmp.size() == 1)
 		{
-			szMatch = *(tmp.first());
+			szMatch = tmp.front();
 			if(szMatch.left(1) == '$')
 				szMatch.remove(0, 1);
 			if(bIsCommand && szMatch.right(1) != '.')
@@ -2316,17 +2291,16 @@ void KviInputEditor::completion(bool bShift)
 		else
 		{
 			QString szAll;
-			QString * szTmp = tmp.first();
-			szMatch = *szTmp;
+			QString szMatch = tmp.front();
 			int iWLen = szWord.length();
 			if(szMatch.left(1) == '$')
 				szMatch.remove(0, 1);
-			for(; szTmp; szTmp = tmp.next())
+			for(auto szTmpIter : tmp)
 			{
-				if(szTmp->length() < szMatch.length())
-					szMatch.remove(szTmp->length(), szMatch.length() - szTmp->length());
+				if(szTmpIter.length() < szMatch.length())
+					szMatch.remove(szTmpIter.length(), szMatch.length() - szTmpIter.length());
 				// All the matches here have length >= word.len()!!!
-				const QChar * b1 = (*szTmp).constData() + iWLen;
+				const QChar * b1 = szTmpIter.constData() + iWLen;
 				const QChar * b2 = szMatch.constData() + iWLen;
 				const QChar * c1 = b1;
 				const QChar * c2 = b2;
@@ -2341,10 +2315,10 @@ void KviInputEditor::completion(bool bShift)
 					szMatch.remove(iLen, szMatch.length() - iLen);
 				if(!szAll.isEmpty())
 					szAll.append(", ");
-				szAll.append(*szTmp);
+				szAll.append(szTmpIter);
 			}
 			if(m_pKviWindow)
-				m_pKviWindow->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("%d matches: %Q"), tmp.count(), &szAll);
+				m_pKviWindow->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("%d matches: %Q"), tmp.size(), &szAll);
 		}
 	}
 	else if(m_pKviWindow)
@@ -2666,18 +2640,13 @@ void KviInputEditor::undo()
 	if(!isUndoAvailable())
 		return;
 
-	if(!m_pUndoStack)
+	if(m_UndoStack.empty())
 		return; // this should be ensured by isUndoAvailable() but well...
 
-	EditCommand * pCommand = m_pUndoStack->takeLast();
+	EditCommand * pCommand = m_UndoStack.back();
+	m_UndoStack.pop_back();
 
 	Q_ASSERT(pCommand); // should be true: we delete the empty undo stack
-
-	if(m_pUndoStack->isEmpty())
-	{
-		delete m_pUndoStack;
-		m_pUndoStack = nullptr;
-	}
 
 	m_iSelectionBegin = -1;
 	m_iSelectionEnd = -1;
@@ -2701,15 +2670,9 @@ void KviInputEditor::undo()
 			break;
 	}
 
-	if(!m_pRedoStack)
-	{
-		m_pRedoStack = new KviPointerList<EditCommand>;
-		m_pRedoStack->setAutoDelete(true);
-	}
-
-	m_pRedoStack->append(pCommand);
-	if(m_pRedoStack->count() > KVI_INPUT_MAX_UNDO_SIZE)
-		m_pRedoStack->removeFirst(); // will delete it
+	m_RedoStack.push_back(pCommand);
+	if(m_RedoStack.size() > KVI_INPUT_MAX_UNDO_SIZE)
+		m_RedoStack.erase(m_RedoStack.begin(), m_RedoStack.begin() + 1); // will delete it
 }
 
 void KviInputEditor::redo()
@@ -2717,18 +2680,13 @@ void KviInputEditor::redo()
 	if(!isRedoAvailable())
 		return;
 
-	if(!m_pRedoStack)
+	if(m_RedoStack.empty())
 		return; // this should be ensured by isUndoAvailable() but well...
 
-	EditCommand * pCommand = m_pRedoStack->takeLast();
+	EditCommand * pCommand = m_RedoStack.back();
+	m_RedoStack.pop_back();
 
 	Q_ASSERT(pCommand); // should be true: we delete the empty redo stack
-
-	if(m_pRedoStack->isEmpty())
-	{
-		delete m_pRedoStack;
-		m_pRedoStack = nullptr;
-	}
 
 	m_iSelectionBegin = -1;
 	m_iSelectionEnd = -1;
@@ -2752,28 +2710,17 @@ void KviInputEditor::redo()
 			break;
 	}
 
-	if(!m_pUndoStack)
-	{
-		m_pUndoStack = new KviPointerList<EditCommand>;
-		m_pUndoStack->setAutoDelete(true);
-	}
-
-	m_pUndoStack->append(pCommand);
-	if(m_pUndoStack->count() > KVI_INPUT_MAX_UNDO_SIZE)
-		m_pUndoStack->removeFirst(); // will delete it
+	m_UndoStack.push_back(pCommand);
+	if(m_UndoStack.size() > KVI_INPUT_MAX_UNDO_SIZE)
+		m_UndoStack.erase(m_UndoStack.begin(), m_UndoStack.begin() + 1); // will delete it
 }
 
 void KviInputEditor::addUndo(EditCommand * pCommand)
 {
-	if(!m_pUndoStack)
-	{
-		m_pUndoStack = new KviPointerList<EditCommand>;
-		m_pUndoStack->setAutoDelete(true);
-	}
-	m_pUndoStack->append(pCommand);
+	m_UndoStack.push_back(pCommand);
 
-	if(m_pUndoStack->count() > KVI_INPUT_MAX_UNDO_SIZE)
-		m_pUndoStack->removeFirst(); // will delete it
+	if(m_UndoStack.size() > KVI_INPUT_MAX_UNDO_SIZE)
+		m_UndoStack.erase(m_UndoStack.begin(), m_UndoStack.begin() + 1); // will delete it
 }
 
 void KviInputEditor::openHistory()
@@ -3205,14 +3152,14 @@ void KviInputEditor::sendPlain()
 	KviUserInput::parseNonCommand(szBuffer, m_pKviWindow);
 	if(!szBuffer.isEmpty())
 	{
-		KviInputHistory::instance()->add(new QString(szBuffer));
-		m_pHistory->insert(0, new QString(szBuffer));
+		KviInputHistory::instance()->add(szBuffer);
+		m_History.insert(m_History.begin(), szBuffer);
 	}
 
 	KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
 
-	if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)
-		m_pHistory->removeLast();
+	if(m_History.size() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)
+		m_History.pop_back();
 
 	m_iCurHistoryIdx = -1;
 }
@@ -3241,14 +3188,14 @@ void KviInputEditor::sendKvs()
 
 	if(!szBuffer.isEmpty())
 	{
-		KviInputHistory::instance()->add(new QString(szBuffer));
-		m_pHistory->insert(0, new QString(szBuffer));
+		KviInputHistory::instance()->add(szBuffer);
+		m_History.insert(m_History.begin(), szBuffer);
 	}
 
 	KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
 
-	if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)
-		m_pHistory->removeLast();
+	if(m_History.size() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)
+		m_History.pop_back();
 
 	m_iCurHistoryIdx = -1;
 }
@@ -3323,17 +3270,17 @@ void KviInputEditor::historyPrev()
 	if(m_bReadOnly)
 		return;
 
-	if(m_pHistory->count() < 1)
+	if(m_History.size() < 1)
 		return;
 
 	if(m_iCurHistoryIdx < 0)
 	{
 		m_szSaveTextBuffer = m_szTextBuffer;
-		m_szTextBuffer = *(m_pHistory->at(0));
+		m_szTextBuffer = m_History[0];
 		m_p->bTextBlocksDirty = true;
 		m_iCurHistoryIdx = 0;
 	}
-	else if(m_iCurHistoryIdx >= (int)(m_pHistory->count() - 1))
+	else if(m_iCurHistoryIdx >= (int)(m_History.size() - 1))
 	{
 		m_szTextBuffer = m_szSaveTextBuffer;
 		m_p->bTextBlocksDirty = true;
@@ -3342,7 +3289,7 @@ void KviInputEditor::historyPrev()
 	else
 	{
 		m_iCurHistoryIdx++;
-		m_szTextBuffer = *(m_pHistory->at(m_iCurHistoryIdx));
+		m_szTextBuffer = m_History[m_iCurHistoryIdx];
 		m_p->bTextBlocksDirty = true;
 	}
 	clearSelection();
@@ -3357,14 +3304,14 @@ void KviInputEditor::historyNext()
 	if(m_bReadOnly)
 		return;
 
-	if(m_pHistory->count() < 1)
+	if(m_History.size() < 1)
 		return;
 
 	if(m_iCurHistoryIdx < 0)
 	{
 		m_szSaveTextBuffer = m_szTextBuffer;
-		m_szTextBuffer = *(m_pHistory->at(m_pHistory->count() - 1));
-		m_iCurHistoryIdx = m_pHistory->count() - 1;
+		m_szTextBuffer = m_History[m_History.size() - 1];
+		m_iCurHistoryIdx = m_History.size() - 1;
 	}
 	else if(m_iCurHistoryIdx == 0)
 	{
@@ -3374,7 +3321,7 @@ void KviInputEditor::historyNext()
 	else
 	{
 		m_iCurHistoryIdx--;
-		m_szTextBuffer = *(m_pHistory->at(m_iCurHistoryIdx));
+		m_szTextBuffer = m_History[m_iCurHistoryIdx];
 	}
 	m_p->bTextBlocksDirty = true;
 	clearSelection();

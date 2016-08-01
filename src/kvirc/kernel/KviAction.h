@@ -31,12 +31,15 @@
 */
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
 #include "KviIconManager.h"
 
 #include <QObject>
 #include <QPointer>
 #include <QShortcut>
+
+#include <memory>
+#include <unordered_map>
+#include <vector>
 
 class QShortcut;
 class QPixmap;
@@ -78,19 +81,19 @@ public:
 	* \brief Returns the name of the category
 	* \return const QString &
 	*/
-	const QString & name() { return m_szName; };
+	const QString & name() const { return m_szName; };
 
 	/**
 	* \brief Returns the visible name of the category
 	* \return const QString &
 	*/
-	const QString & visibleName() { return m_szVisibleName; };
+	const QString & visibleName() const { return m_szVisibleName; };
 
 	/**
 	* \brief Returns the description of the category
 	* \return const QString &
 	*/
-	const QString & description() { return m_szDescription; };
+	const QString & description() const { return m_szDescription; };
 };
 
 /**
@@ -200,7 +203,7 @@ protected:
 	QString m_szBigIconId;
 	QString m_szSmallIconId; // this is alternative to m_eSmallIcon
 	KviIconManager::SmallIcon m_eSmallIcon;
-	KviPointerList<QAction> * m_pActionList;
+	std::unordered_map<QAction *, std::unique_ptr<QAction>> m_pActionList;
 	unsigned short int m_uInternalFlags;
 	unsigned int m_uFlags;
 	QString m_szKeySequence;
@@ -329,9 +332,9 @@ protected:
 
 	/**
 	* \brief Returns the list of actions associated to the action
-	* \return KviPointerList<QAction> *
+	* \return std::unordered_map<QAction *, std::unique_ptr<QAction>>
 	*/
-	KviPointerList<QAction> * actionList() { return m_pActionList; };
+	std::unordered_map<QAction *, std::unique_ptr<QAction>> const & actionList() const { return m_pActionList; };
 
 	/**
 	* \brief Registers the action shortcut in the application

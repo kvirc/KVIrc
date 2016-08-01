@@ -59,8 +59,8 @@ void KviIrcServerParser::parseMessage(const char * message, KviIrcConnection * p
 				parms.append(pConnection->decodeText(msg.safePrefix()));
 				parms.append(pConnection->decodeText(msg.command()));
 
-				for(KviCString * str = msg.firstParam(); str; str = msg.nextParam())
-					parms.append(pConnection->console()->decodeText(str->ptr()));
+				for(auto & str : msg.params())
+					parms.append(pConnection->console()->decodeText(str.ptr()));
 
 				if(KviKvsEventManager::instance()->triggerRaw(msg.numeric(), pConnection->console(), &parms))
 					msg.setHaltOutput();
@@ -119,8 +119,8 @@ void KviIrcServerParser::parseMessage(const char * message, KviIrcConnection * p
 				parms.append(pConnection->decodeText(msg.safePrefix()));
 				parms.append(pConnection->decodeText(msg.command()));
 
-				for(KviCString * str = msg.firstParam(); str; str = msg.nextParam())
-					parms.append(pConnection->console()->decodeText(str->ptr()));
+				for(auto & str : msg.params())
+					parms.append(pConnection->console()->decodeText(str.ptr()));
 
 				if(KviKvsEventManager::instance()->trigger(KviEvent_OnUnhandledLiteral, pConnection->console(), &parms))
 					msg.setHaltOutput();

@@ -39,12 +39,14 @@
 #include "KviUserListView.h"
 #include "KviTimeUtils.h"
 #include "KviModeWidget.h"
-#include "KviPointerHashTable.h"
 
 #include <QList>
 #include <QDateTime>
 #include <QStringList>
 #include <QToolButton>
+
+#include <map>
+#include <vector>
 
 class KviConsoleWindow;
 class KviTopicWidget;
@@ -163,8 +165,8 @@ protected:
 	QToolButton * m_pDoubleViewButton;
 	KviWindowToolPageButton * m_pListViewButton;
 	KviWindowToolPageButton * m_pModeEditorButton;
-	QMap<char, KviWindowToolPageButton *> m_pListEditorButtons;
-	QMap<char, KviMaskEditor *> m_pListEditors;
+	std::map<char, KviWindowToolPageButton *> m_ListEditorButtons;
+	std::map<char, KviMaskEditor *> m_ListEditors;
 	KviModeEditor * m_pModeEditor;
 	KviIrcView * m_pMessageView;
 	KviTopicWidget * m_pTopicWidget;
@@ -173,14 +175,14 @@ protected:
 	int m_iStateFlags;
 	QString m_szSentModeRequests;
 	QString m_szChannelMode;
-	QMap<char, QString> m_szChannelParameterModes;
-	QMap<char, KviPointerList<KviMaskEntry> *> m_pModeLists;
+	std::map<char, QString> m_szChannelParameterModes;
+	std::map<char, std::vector<KviMaskEntry *>> m_ModeLists;
 	KviPixmap m_privateBackground;
 	QDateTime m_joinTime;
 	QString m_szNameWithUserFlag;
 	QStringList * m_pTmpHighLighted;
 	unsigned int m_uActionHistoryHotActionCount;
-	KviPointerList<KviChannelAction> * m_pActionHistory;
+	std::vector<KviChannelAction *> m_ActionHistory;
 	kvi_time_t m_tLastReceivedWhoReply;
 	QList<int> m_VertSplitterSizesList;
 	QList<int> m_SplitterSizesList;
@@ -213,13 +215,15 @@ public:
 
 	/**
 	* \brief Returns a list of masks for a specific mode
-	* \return KviPointerList<KviMaskEntry> *
+	* \return const std::vector<KviMaskEntry *> &
 	*/
-	inline KviPointerList<KviMaskEntry> * modeMasks(char cMode)
+	const std::vector<KviMaskEntry *> & modeMasks(char cMode) const
 	{
-		if(m_pModeLists.contains(cMode))
-			return m_pModeLists.value(cMode);
-		return 0;
+		static const std::vector<KviMaskEntry *> EMPTY_VECTOR;
+		const auto it = m_ModeLists.find(cMode);
+		if(it != m_ModeLists.end())
+			return it->second;
+		return EMPTY_VECTOR;
 	};
 
 	/**
@@ -305,12 +309,7 @@ public:
 	* \brief Returns the number of masks is a channel mode list
 	* \return unsigned int
 	*/
-	unsigned int maskCount(char cMode)
-	{
-		if(m_pModeLists.contains(cMode))
-			return m_pModeLists.value(cMode)->count();
-		return 0;
-	};
+	unsigned int maskCount(char cMode) const { return this->modeMasks(cMode).size(); };
 
 	/**
 	* \brief Called when someone sets a channel mode that is stored in a list; these modes require a parameter that is tipically a mask
@@ -416,7 +415,7 @@ public:
 	* \brief Returns true if the channel has an invite list
 	* \return bool
 	*/
-	bool hasInviteList() { return m_pModeLists.contains('I'); };
+	bool hasInviteList() { return m_ModeLists.count('I'); };
 
 	/**
 	* \brief Returns true if the channel has a WHO list
@@ -438,19 +437,19 @@ public:
 	* \brief Returns true if the channel has a ban list
 	* \return bool
 	*/
-	bool hasBanList() { return m_pModeLists.contains('b'); };
+	bool hasBanList() { return m_ModeLists.count('b'); };
 
 	/**
 	* \brief Returns true if the channel has a ban exception list
 	* \return bool
 	*/
-	bool hasBanExceptionList() { return m_pModeLists.contains('e'); };
+	bool hasBanExceptionList() { return m_ModeLists.count('e'); };
 
 	/**
 	* \brief Returns true if the channel has a quiet ban list
 	* \return bool
 	*/
-	bool hasQuietBanList() { return m_pModeLists.contains('q'); };
+	bool hasQuietBanList() { return m_ModeLists.count('q'); };
 
 	/**
 	* \brief Returns true if the channel has to be closed on part
@@ -823,14 +822,20 @@ public:
 	* \param cMode The mode
 	* \return bool
 	*/
-	bool hasChannelMode(char cMode) { return m_szChannelParameterModes.contains(cMode); };
+	bool hasChannelMode(char cMode) { return m_szChannelParameterModes.count(cMode); };
 
 	/**
 	* \brief Returns the value (parameter) for a channel mode (eg. the password for mode k)
 	* \param cMode The mode
 	* \return QString
 	*/
-	QString channelModeParam(char cMode) const { return m_szChannelParameterModes.value(cMode); };
+	QString channelModeParam(char cMode) const
+	{
+		const auto it = m_szChannelParameterModes.find(cMode);
+		if(it != m_szChannelParameterModes.end())
+			return it->second;
+		return QString();
+	};
 
 	/**
 	* \brief Adds a user to the highlight list
@@ -956,7 +961,7 @@ protected:
 	* \param szChangeMask If bAdd is false and this string is set, the mask will be updated instead that removed
 	* \return void
 	*/
-	void internalMask(const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, KviPointerList<KviMaskEntry> * l, KviMaskEditor ** ppEd, QString & szChangeMask);
+	void internalMask(const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, std::vector<KviMaskEntry *> & l, KviMaskEditor ** ppEd, QString & szChangeMask);
 
 	/**
 	* \brief Splits the channel view into two views
@@ -1051,7 +1056,7 @@ private slots:
 	* \param pList The list of masks to remove
 	* \return void
 	*/
-	void removeMasks(KviMaskEditor * pEd, KviPointerList<KviMaskEntry> * pList);
+	void removeMasks(KviMaskEditor * pEd, const std::vector<KviMaskEntry *> & pList);
 
 	/**
 	* \brief Toggles tool buttons widget over the listview

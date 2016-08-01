@@ -2422,8 +2422,7 @@ void KviIrcServerParser::parseNumericStats(KviIrcMessage * msg)
 		if(msg->paramCount() > 2)
 		{
 			KviCString szParms;
-			KviCString * p = msg->firstParam();
-			for(p = msg->nextParam(); p; p = msg->nextParam())
+			for(auto & p : msg->params())
 			{
 				if(szParms.hasData())
 					szParms.append(' ');

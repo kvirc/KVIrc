@@ -43,13 +43,15 @@
 */
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
 #include "KviCString.h"
 #include "KviWindow.h"
 
 #include <QMenu>
 #include <QString>
 #include <QWidget>
+
+#include <unordered_set>
+#include <vector>
 
 class QKeyEvent;
 class QDragEnterEvent;
@@ -135,7 +137,7 @@ protected:
 	int m_iSelectionAnchorChar;
 
 	// History stuff
-	KviPointerList<QString> * m_pHistory;
+	std::vector<QString> m_History;
 	int m_iCurHistoryIdx;
 
 	KviCString m_szSaveTextBuffer;
@@ -244,22 +246,22 @@ protected:
 	};
 
 	/**
-	* \var m_pUndoStack
+	* \var m_UndoStack
 	* \brief The undo stack.
 	*
 	* Contains owned pointers and has autodelete set to true. The most recent command
 	* is at the end. Null when no undo is available.
 	*/
-	KviPointerList<EditCommand> * m_pUndoStack;
+	std::vector<EditCommand *> m_UndoStack;
 
 	/**
-	* \var m_pRedoStack
+	* \var m_RedoStack
 	* \brief The redo stack.
 	*
 	* Contains owned pointers and has autodelete set to true. The most recently undone
 	* command is at the end. Null when no redo is available.
 	*/
-	KviPointerList<EditCommand> * m_pRedoStack;
+	std::vector<EditCommand *> m_RedoStack;
 
 	KviInputEditorPrivate * m_p;
 
@@ -502,13 +504,13 @@ private:
 	* \brief Returns true is there are some action in the undo stack
 	* \return bool
 	*/
-	inline bool isUndoAvailable() const { return !m_bReadOnly && m_pUndoStack; }
+	inline bool isUndoAvailable() const { return !m_bReadOnly && !m_UndoStack.empty(); }
 
 	/**
 	* \brief Returns true is there are some action in the redo stack
 	* \return bool
 	*/
-	inline bool isRedoAvailable() const { return !m_bReadOnly && m_pRedoStack; }
+	inline bool isRedoAvailable() const { return !m_bReadOnly && !m_RedoStack.empty(); }
 
 	/**
 	* \brief Inserts one action in the undo stack
@@ -968,8 +970,8 @@ protected:
 	virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const;
 	virtual void paintEvent(QPaintEvent * e);
 	bool checkWordSpelling(const QString & szWord);
-	void splitTextIntoSpellCheckerBlocks(const QString & szText, KviPointerList<KviInputEditorSpellCheckerBlock> & lBuffer);
-	KviInputEditorSpellCheckerBlock * findSpellCheckerBlockAtCursor(KviPointerList<KviInputEditorSpellCheckerBlock> & lBlocks);
+	void splitTextIntoSpellCheckerBlocks(const QString & szText, std::unordered_set<KviInputEditorSpellCheckerBlock *> & lBuffer);
+	KviInputEditorSpellCheckerBlock * findSpellCheckerBlockAtCursor(std::unordered_set<KviInputEditorSpellCheckerBlock *> & lBlocks);
 	void fillSpellCheckerCorrectionsPopup();
 
 	void rebuildTextBlocks();

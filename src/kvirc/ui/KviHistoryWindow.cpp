@@ -62,10 +62,8 @@ void KviHistoryWindow::fill()
 {
 	clear();
 
-	for(QString * szTmp = KviInputHistory::instance()->list()->last(); szTmp; szTmp = KviInputHistory::instance()->list()->prev())
-	{
-		addItem(*szTmp);
-	}
+	for(auto & szTmp : KviInputHistory::instance()->list())
+		addItem(szTmp);
 
 	if(count() > 0)
 		setCurrentItem(item(count() - 1));

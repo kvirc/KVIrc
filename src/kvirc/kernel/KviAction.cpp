@@ -52,7 +52,6 @@ KviAction::KviAction(QObject * pParent, const QString & szName, const QString & 
       m_szBigIconId(szBigIconId),
       m_szSmallIconId(szSmallIconId),
       m_eSmallIcon(KviIconManager::None),
-      m_pActionList(nullptr),
       m_uInternalFlags(KviAction::Enabled),
       m_uFlags(uFlags),
       m_szKeySequence(szKeySequence),
@@ -68,7 +67,6 @@ KviAction::KviAction(QObject * pParent, const QString & szName, const QString & 
       m_pCategory(pCategory),
       m_szBigIconId(szBigIconId),
       m_eSmallIcon(eSmallIcon),
-      m_pActionList(nullptr),
       m_uInternalFlags(KviAction::Enabled),
       m_uFlags(uFlags),
       m_szKeySequence(szKeySequence),
@@ -78,13 +76,8 @@ KviAction::KviAction(QObject * pParent, const QString & szName, const QString & 
 
 KviAction::~KviAction()
 {
-	if(m_pActionList)
-	{
-		for(QAction * pAction = m_pActionList->first(); pAction; pAction = m_pActionList->next())
-			disconnect(pAction, SIGNAL(destroyed()), this, SLOT(actionDestroyed()));
-		m_pActionList->setAutoDelete(true);
-		delete m_pActionList;
-	}
+	for(auto & pActionPair : m_pActionList)
+		disconnect(pActionPair.second.get(), SIGNAL(destroyed()), this, SLOT(actionDestroyed()));
 
 	if(m_pAccel)
 		unregisterAccelerator();
@@ -142,25 +135,13 @@ void KviAction::setEnabled(bool bEnabled)
 	else
 		m_uInternalFlags &= ~KviAction::Enabled;
 
-	if(m_pActionList)
+	for(auto & pActionPair : m_pActionList)
 	{
-		if(bEnabled)
-		{
-			for(QAction * pAction = m_pActionList->first(); pAction; pAction = m_pActionList->next())
-			{
-				if(!pAction->isEnabled())
-					pAction->setEnabled(true);
-			}
-		}
-		else
-		{
-			for(QAction * pAction = m_pActionList->first(); pAction; pAction = m_pActionList->next())
-			{
-				if(pAction->isEnabled())
-					pAction->setEnabled(false);
-			}
-		}
+		auto & pAction = pActionPair.second;
+		if (pAction->isEnabled() != bEnabled)
+			pAction->setEnabled(bEnabled);
 	}
+
 }
 
 int KviAction::validateFlags(int iFlagsToValidate)
@@ -250,7 +231,7 @@ void KviAction::setup()
 
 void KviAction::reloadImages()
 {
-	if(!m_pActionList)
+	if(m_pActionList.empty())
 		return;
 
 	QPixmap * pBigPix = bigIcon();
@@ -264,8 +245,9 @@ void KviAction::reloadImages()
 
 	bool bIconVisibleInMenu = KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus);
 
-	for(QAction * pAction = m_pActionList->first(); pAction; pAction = m_pActionList->next())
+	for(auto & pActionPair : m_pActionList)
 	{
+		auto & pAction = pActionPair.second;
 		pAction->setIcon(icon);
 		pAction->setIconVisibleInMenu(bIconVisibleInMenu);
 	}
@@ -552,21 +534,21 @@ bool KviAction::addToPopupMenu(QMenu * pMenu)
 
 void KviAction::actionDestroyed()
 {
-	if(!m_pActionList)
-		return;
 	QAction * pAction = (QAction *)sender();
-	m_pActionList->removeRef(pAction);
+
+	auto upAction = m_pActionList.find(pAction);
+
+	// Qt will clean this up (presumably)
+	if (upAction != m_pActionList.end())
+		upAction->second.release();
+
+	m_pActionList.erase(pAction);
 }
 
 void KviAction::registerAction(QAction * pAction)
 {
 	connect(pAction, SIGNAL(destroyed()), this, SLOT(actionDestroyed()));
-	if(!m_pActionList)
-	{
-		m_pActionList = new KviPointerList<QAction>;
-		m_pActionList->setAutoDelete(false);
-	}
-	m_pActionList->append(pAction);
+	m_pActionList.emplace(pAction, std::unique_ptr<QAction>(pAction));
 }
 
 QAction * KviAction::addToCustomToolBar(KviCustomToolBar * pParentToolBar)

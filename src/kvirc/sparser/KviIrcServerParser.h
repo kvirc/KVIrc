@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
 #include "KviQString.h"
 #include "KviConsoleWindow.h"
 #include "KviIrcMessage.h"

@@ -45,6 +45,9 @@
 #include <QCheckBox>
 #include <QListWidget>
 
+#include <unordered_set>
+#include <vector>
+
 typedef struct _KviUrl
 {
 	QString url;
@@ -72,7 +75,7 @@ class UrlDialog : public KviWindow
 {
 	Q_OBJECT
 public:
-	UrlDialog(KviPointerList<KviUrl> * g_pList);
+	UrlDialog(std::unordered_set<KviUrl *> g_List);
 	~UrlDialog();
 
 private:

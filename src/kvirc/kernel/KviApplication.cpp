@@ -85,8 +85,10 @@
 #include "KviQueryWindow.h"
 #include "KviCaster.h"
 #include "KviSignalHandler.h"
+#include "KviPtrListIterator.h"
 
 #include <QMenu>
+#include <algorithm>
 
 #ifndef COMPILE_NO_IPC
 #include "KviIpcSentinel.h"
@@ -147,6 +149,7 @@ DO NOT REMOVE THEM EVEN IF THEY ARE DEFINED ALSO IN KviApplication.h
 
 #include <stdlib.h> // rand & srand
 #include <time.h>   // time() in srand()
+#include <map>      // std::map<>
 
 // Global application pointer
 KVIRC_API KviApplication * g_pApp = nullptr;
@@ -160,7 +163,7 @@ KVIRC_API KviColorWindow * g_pColorWindow = nullptr;
 KVIRC_API KviTextIconWindow * g_pTextIconWindow = nullptr;
 KVIRC_API QMenu * g_pInputPopup = nullptr;
 KVIRC_API QStringList * g_pRecentTopicList = nullptr;
-KVIRC_API KviPointerHashTable<QString, KviWindow> * g_pGlobalWindowDict = nullptr;
+KVIRC_API std::map<QString, KviWindow *> g_pGlobalWindowDict;
 KVIRC_API KviMediaManager * g_pMediaManager = nullptr;
 KVIRC_API KviSharedFilesManager * g_pSharedFilesManager = nullptr;
 KVIRC_API KviNickServRuleSet * g_pNickServRuleSet = nullptr;
@@ -208,7 +211,6 @@ KviApplication::KviApplication(int & argc, char ** argv)
 	m_szConfigFile = QString();
 	m_bCreateConfig = false;
 	m_bUpdateGuiPending = false;
-	m_pPendingAvatarChanges = nullptr;
 	m_pRecentChannelDict = nullptr;
 #ifndef COMPILE_NO_IPC
 	m_pIpcSentinel = nullptr;
@@ -442,9 +444,6 @@ void KviApplication::setup()
 	// create the server parser
 	g_pServerParser = new KviIrcServerParser();
 
-	// Global window dictionary
-	g_pGlobalWindowDict = new KviPointerHashTable<QString, KviWindow>(41);
-	g_pGlobalWindowDict->setAutoDelete(false);
 	// Script object controller
 	//g_pScriptObjectController = new KviScriptObjectController(); gone
 
@@ -580,7 +579,7 @@ KviApplication::~KviApplication()
 	KviCustomToolBarManager::done();
 	savePopups();
 	saveAliases();
-	delete g_pGlobalWindowDict;
+	g_pGlobalWindowDict.clear();
 	saveScriptAddons();
 	// kill the remaining resources
 	delete g_pColorWindow;
@@ -596,8 +595,7 @@ KviApplication::~KviApplication()
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	destroyPseudoTransparency();
 #endif
-	if(m_pPendingAvatarChanges)
-		delete m_pPendingAvatarChanges;
+	m_PendingAvatarChanges.clear();
 	KviAnimatedPixmapCache::done();
 // Kill the thread manager.... all the slave threads should have been already terminated ...
 #ifdef COMPILE_SSL_SUPPORT
@@ -1084,15 +1082,11 @@ void KviApplication::ipcMessage(char * pcMessage)
 
 void KviApplication::setAvatarFromOptions()
 {
-	KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-
-	while(it.current())
+	for(auto & it : g_pGlobalWindowDict)
 	{
-		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
+		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.second);
 		if(pWindow)
 			pWindow->setAvatarFromOptions();
-
-		++it;
 	}
 }
 
@@ -1103,25 +1097,19 @@ void KviApplication::setAvatarOnFileReceived(
     const QString & szUser,
     const QString & szHost)
 {
-	if(!m_pPendingAvatarChanges)
+	if(m_PendingAvatarChanges.size() >= KVI_MAX_PENDING_AVATARS) // can't be...
 	{
-		m_pPendingAvatarChanges = new KviPointerList<KviPendingAvatarChange>;
-		m_pPendingAvatarChanges->setAutoDelete(true);
+		m_PendingAvatarChanges.erase(m_PendingAvatarChanges.begin()); // kill the first entry
 	}
 
-	if(m_pPendingAvatarChanges->count() >= KVI_MAX_PENDING_AVATARS) // can't be...
-	{
-		m_pPendingAvatarChanges->removeFirst(); // kill the first entry
-	}
-
-	KviPendingAvatarChange * pAvatar = new KviPendingAvatarChange;
+	std::unique_ptr<KviPendingAvatarChange> pAvatar(new KviPendingAvatarChange());
 	pAvatar->pConsole = pConsole;
 	pAvatar->szRemoteUrl = szRemoteUrl;
 	pAvatar->szNick = szNick;
 	pAvatar->szUser = szUser;
 	pAvatar->szHost = szHost;
 
-	m_pPendingAvatarChanges->append(pAvatar);
+	m_PendingAvatarChanges.emplace(pAvatar.get(), std::move(pAvatar));
 }
 
 KviPendingAvatarChange * KviApplication::findPendingAvatarChange(
@@ -1129,13 +1117,9 @@ KviPendingAvatarChange * KviApplication::findPendingAvatarChange(
     const QString & szNick,
     const QString & szRemoteUrl)
 {
-	if(!m_pPendingAvatarChanges)
-		return nullptr;
-
-	KviPendingAvatarChange * pAvatar;
-
-	for(pAvatar = m_pPendingAvatarChanges->first(); pAvatar; pAvatar = m_pPendingAvatarChanges->next())
+	for(auto & upAvatarPair : m_PendingAvatarChanges)
 	{
+		KviPendingAvatarChange * pAvatar = upAvatarPair.second.get();
 		if(!pConsole || (pAvatar->pConsole == pConsole))
 		{
 			if(szNick.isNull() || (szNick == pAvatar->szNick))
@@ -1157,14 +1141,10 @@ void KviApplication::fileDownloadTerminated(
     const QString & szError,
     bool bQuiet)
 {
-	KviPendingAvatarChange * pAvatar;
 
-	if(m_pPendingAvatarChanges)
-		pAvatar = findPendingAvatarChange(nullptr, szNick, szRemoteUrl);
-	else
-		pAvatar = nullptr;
+	KviPendingAvatarChange * pAvatar = findPendingAvatarChange(nullptr, szNick, szRemoteUrl);
 
-	if(!pAvatar)
+	if(pAvatar == nullptr)
 	{
 		// signal dcc completion only for NON-avatars
 		// FIXME: This option is misnamed and misplaced in the options dialog :(
@@ -1227,13 +1207,7 @@ void KviApplication::fileDownloadTerminated(
 		}
 	}
 
-	m_pPendingAvatarChanges->removeRef(pAvatar);
-
-	if(m_pPendingAvatarChanges->count() == 0)
-	{
-		delete m_pPendingAvatarChanges;
-		m_pPendingAvatarChanges = nullptr;
-	}
+	m_PendingAvatarChanges.erase(pAvatar);
 }
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -1585,12 +1559,12 @@ void KviApplication::autoConnectToServers()
 	KviPointerList<KviIrcServer> * pList = g_pServerDataBase->autoConnectOnStartupServers();
 	if(pList)
 	{
-		for(KviIrcServer * pServer = pList->first(); pServer; pServer = pList->next())
+		for(auto & pServer : pList)
 		{
 			QString szCommand = "server -u \"id:";
-			if(pServer->id().isEmpty())
-				pServer->generateUniqueId();
-			szCommand += pServer->id();
+			if(pServer.id().isEmpty())
+				pServer.generateUniqueId();
+			szCommand += pServer.id();
 			szCommand += "\"";
 			KviKvsScript::run(szCommand, activeConsole());
 		}
@@ -1600,10 +1574,10 @@ void KviApplication::autoConnectToServers()
 	KviPointerList<KviIrcNetwork> * pListNet = g_pServerDataBase->autoConnectOnStartupNetworks();
 	if(pListNet)
 	{
-		for(KviIrcNetwork * pNetwork = pListNet->first(); pNetwork; pNetwork = pListNet->next())
+		for(auto & pNetwork : pListNet)
 		{
 			QString szCommandx = "server -u \"net:";
-			szCommandx += pNetwork->name();
+			szCommandx += pNetwork.name();
 			szCommandx += "\"";
 			KviKvsScript::run(szCommandx, activeConsole());
 		}
@@ -1649,47 +1623,36 @@ void KviApplication::createFrame()
 
 bool KviApplication::connectionExists(KviIrcConnection * pConn)
 {
-	KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-
-	while(it.current())
+	for(auto & it : g_pGlobalWindowDict)
 	{
-		if(it.current()->connection() == pConn)
+		if(it.second->connection() == pConn)
 			return true;
-		++it;
 	}
 	return false;
 }
 
 bool KviApplication::windowExists(KviWindow * pWnd)
 {
-	KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-
-	while(it.current())
+	for(auto & it : g_pGlobalWindowDict)
 	{
-		if(it.current() == pWnd)
+		if(it.second == pWnd)
 			return true;
-		++it;
 	}
 	return false;
 }
 
 unsigned int KviApplication::windowCount()
 {
-	return g_pGlobalWindowDict->count();
+	return g_pGlobalWindowDict.size();
 }
 
 KviConsoleWindow * KviApplication::findConsole(QString & szServer, QString & szNick)
 {
-	KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-
-	while(it.current())
+	for(auto & it : g_pGlobalWindowDict)
 	{
-		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
+		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.second);
 		if(!(pWindow && pWindow->type() == KviWindow::Console && pWindow->isConnected()))
-		{
-			++it;
 			continue;
-		}
 
 		if(!szServer.isEmpty())
 		{
@@ -1710,61 +1673,47 @@ KviConsoleWindow * KviApplication::findConsole(QString & szServer, QString & szN
 					return pWindow;
 			}
 		}
-
-		++it;
 	}
 	return nullptr;
 }
 
 void KviApplication::restartLagMeters()
 {
-	KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-
-	while(it.current())
+	for(auto & it : g_pGlobalWindowDict)
 	{
-		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
+		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.second);
 		if(pWindow && pWindow->type() == KviWindow::Console && pWindow->connection())
 			pWindow->connection()->restartLagMeter();
-		++it;
 	}
 }
 
 void KviApplication::restartNotifyLists()
 {
-	KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-
-	while(it.current())
+	for(auto & it : g_pGlobalWindowDict)
 	{
-		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
+		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.second);
 		if(pWindow && pWindow->type() == KviWindow::Console && pWindow->connection())
 			pWindow->connection()->restartNotifyList();
-		++it;
 	}
 }
 
 void KviApplication::resetAvatarForMatchingUsers(KviRegisteredUser * pUser)
 {
-	KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-
-	while(it.current())
+	for(auto & it : g_pGlobalWindowDict)
 	{
-		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
+		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.second);
 		if(pWindow && pWindow->type() == KviWindow::Console)
 			pWindow->resetAvatarForMatchingUsers(pUser);
-		++it;
 	}
 }
 
 KviConsoleWindow * KviApplication::findConsole(unsigned int uIrcContextId)
 {
-	KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-
-	while(it.current())
+	for(auto & it : g_pGlobalWindowDict)
 	{
-		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
+		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.second);
 		if(pWindow && pWindow->context()->id() == uIrcContextId)
 			return pWindow;
-		++it;
 	}
 	return nullptr;
 }
@@ -1781,14 +1730,11 @@ KviConsoleWindow * KviApplication::topmostConnectedConsole()
 
 	// try ANY connected console
 
-	KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-
-	while(it.current())
+	for(auto & it : g_pGlobalWindowDict)
 	{
-		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.current());
+		KviConsoleWindow * pWindow = dynamic_cast<KviConsoleWindow *>(it.second);
 		if(pWindow && pWindow->type() == KviWindow::Console && pWindow->isConnected())
 			return pWindow;
-		++it;
 	}
 
 	return nullptr;
@@ -1796,30 +1742,28 @@ KviConsoleWindow * KviApplication::topmostConnectedConsole()
 
 KviWindow * KviApplication::findWindow(const QString & szWindowId)
 {
-	return g_pGlobalWindowDict->find(szWindowId);
+	return g_pGlobalWindowDict.find(szWindowId)->second;
 }
 
 KviWindow * KviApplication::findWindowByCaption(const QString & szWindowCaption, int iContextId)
 {
-	KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-
-	while(it.current())
+	for(auto & it : g_pGlobalWindowDict)
 	{
-		if(KviQString::equalCI(szWindowCaption, it.current()->plainTextCaption()) && (iContextId == -1 || it.current()->context()->id() == static_cast<uint>(iContextId)))
-			return it.current();
-		++it;
+		if(KviQString::equalCI(szWindowCaption, it.second->plainTextCaption()) && (iContextId == -1 || it.second->context()->id() == static_cast<uint>(iContextId)))
+			return it.second;
 	}
+
 	return nullptr;
 }
 
 void KviApplication::registerWindow(KviWindow * pWnd)
 {
-	g_pGlobalWindowDict->insert(pWnd->id(), pWnd);
+	g_pGlobalWindowDict.emplace(pWnd->id(), pWnd);
 }
 
 void KviApplication::unregisterWindow(KviWindow * pWnd)
 {
-	g_pGlobalWindowDict->remove(pWnd->id());
+	g_pGlobalWindowDict.erase(pWnd->id());
 }
 
 KviConsoleWindow * KviApplication::activeConsole()
@@ -2029,12 +1973,10 @@ void KviApplication::heartbeat(kvi_time_t tNow)
 
 	if(pTm && !pTm->tm_hour && !pTm->tm_min && !pTm->tm_sec)
 	{
-		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-		while(it.current())
+		for(auto & it : g_pGlobalWindowDict)
 		{
-			if(it.current()->view() && it.current()->view()->isLogging())
-				it.current()->view()->startLogging(nullptr);
-			++it;
+			if(it.second->view() && it.second->view()->isLogging())
+				it.second->view()->startLogging(nullptr);
 		}
 	}
 }

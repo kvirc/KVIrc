@@ -28,6 +28,9 @@
 #include "KviModule.h"
 #include "KviModuleManager.h"
 #include "KviApplication.h"
+#include "KviPtrListIterator.h"
+
+#include <vector>
 
 // created and destroyed in KviApplication.cpp
 KVIRC_API KviModuleExtensionManager * g_pModuleExtensionManager = nullptr;
@@ -122,29 +125,28 @@ KviModuleExtensionDescriptor * KviModuleExtensionManager::registerExtension(KviM
 void KviModuleExtensionManager::unregisterExtensionsByModule(KviModule * m)
 {
 	KviPointerHashTableIterator<const char *, KviModuleExtensionDescriptorList> it(*m_pExtensionDict);
-	KviPointerList<KviCString> dying;
-	dying.setAutoDelete(true);
+	std::vector<KviCString *> dying;
+
 	while(KviModuleExtensionDescriptorList * l = it.current())
 	{
-		KviPointerList<KviModuleExtensionDescriptor> dying2;
-		dying2.setAutoDelete(true);
+		std::vector<KviModuleExtensionDescriptor *> dying2;
 
-		for(KviModuleExtensionDescriptor * d = l->first(); d; d = l->next())
+		for(auto & d : l)
 		{
-			if(d->module() == m)
-				dying2.append(d);
+			if(d.module() == m)
+				dying2.push_back(&d);
 		}
 
-		for(KviModuleExtensionDescriptor * de = dying2.first(); de; de = dying2.next())
+		for(auto de : dying2)
 		{
 			l->removeRef(de);
 		}
 
 		if(l->isEmpty())
-			dying.append(new KviCString(it.currentKey()));
+			dying.push_back(new KviCString(it.currentKey()));
 		++it;
 	}
-	for(KviCString * li = dying.first(); li; li = dying.next())
+	for(auto li : dying)
 	{
 		m_pExtensionDict->remove(li->ptr());
 	}
@@ -190,22 +192,20 @@ KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviCStri
 	if(!l)
 		return nullptr;
 
-	KviModuleExtensionDescriptor * d;
-
-	for(d = l->first(); d; d = l->next())
+	for(auto & d : l)
 	{
-		if(d->name().equalsCI(szName))
-			return d->allocate(pWnd, pParams, pSpecial);
+		if(d.name().equalsCI(szName))
+			return d.allocate(pWnd, pParams, pSpecial);
 	}
 
 	// uhm... not there ?
 	g_pModuleManager->loadModulesByCaps(szType.ptr());
 	// try again after loading the modules
 	// l = m_pExtensionDict->find(szType.ptr()); <--- this shouldn't change!
-	for(d = l->first(); d; d = l->next())
+	for(auto & d : l)
 	{
-		if(d->name().equalsCI(szName))
-			return d->allocate(pWnd, pParams, pSpecial);
+		if(d.name().equalsCI(szName))
+			return d.allocate(pWnd, pParams, pSpecial);
 	}
 
 	// no way : no such extension
@@ -219,21 +219,20 @@ KviModuleExtension * KviModuleExtensionManager::allocateExtension(const KviCStri
 	if(!l)
 		return nullptr;
 
-	KviModuleExtensionDescriptor * d;
-	for(d = l->first(); d; d = l->next())
+	for(auto & d : l)
 	{
-		if(d->id() == id)
-			return d->allocate(pWnd, pParams, pSpecial);
+		if(d.id() == id)
+			return d.allocate(pWnd, pParams, pSpecial);
 	}
 
 	// uhm... not there ?
 	g_pModuleManager->loadModulesByCaps(szType.ptr());
 	// try again after loading the modules
 	// l = m_pExtensionDict->find(szType.ptr()); <--- this shouldn't change!
-	for(d = l->first(); d; d = l->next())
+	for(auto & d : l)
 	{
-		if(d->id() == id)
-			return d->allocate(pWnd, pParams, pSpecial);
+		if(d.id() == id)
+			return d.allocate(pWnd, pParams, pSpecial);
 	}
 	// no way : no such extension
 

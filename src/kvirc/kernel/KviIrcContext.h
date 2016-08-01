@@ -25,8 +25,9 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
+
 #include <QObject>
+#include <vector>
 
 class KviChannelWindow;
 class KviQueryWindow;
@@ -98,13 +99,13 @@ protected:
 	unsigned int m_uConnectAttemptCount;
 	QTimer * m_pReconnectTimer;
 
-	KviPointerList<KviIrcDataStreamMonitor> * m_pMonitorList; // owned, may be null
+	std::vector<KviIrcDataStreamMonitor *> m_pMonitorList; // owned, may be empty
 
 	// dead channels and queries
-	KviPointerList<KviChannelWindow> * m_pDeadChannels;
-	KviPointerList<KviQueryWindow> * m_pDeadQueries;
+	std::vector<KviChannelWindow *> m_DeadChannels;
+	std::vector<KviQueryWindow *> m_DeadQueries;
 	// other context bound windows
-	KviPointerList<KviWindow> * m_pContextWindows;
+	std::vector<KviWindow *> m_ContextWindows;
 
 	int m_iHeartbeatTimerId;
 
@@ -132,7 +133,7 @@ public:
 	void registerContextWindow(KviWindow * pWnd);
 	bool unregisterContextWindow(KviWindow * pWnd);
 
-	inline KviPointerList<KviIrcDataStreamMonitor> * monitorList() { return m_pMonitorList; };
+	inline std::vector<KviIrcDataStreamMonitor *> & monitorList() { return m_pMonitorList; };
 
 	// links window
 	void createLinksWindow();

@@ -51,7 +51,6 @@
 #include "KviIrcConnectionRequestQueue.h"
 #include "KviIrcServerParser.h"
 #include "KviModeWidget.h"
-#include "KviPointerHashTable.h"
 #include "KviKvsScript.h"
 #include "KviKvsEventTriggers.h"
 
@@ -60,6 +59,7 @@
 #include "KviCryptController.h"
 #endif
 
+#include <set>
 #include <time.h>
 
 #include <QDate>
@@ -80,8 +80,6 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	// Init some member variables
 	m_pInput = nullptr;
 	m_iStateFlags = 0;
-	m_pActionHistory = new KviPointerList<KviChannelAction>;
-	m_pActionHistory->setAutoDelete(true);
 	m_uActionHistoryHotActionCount = 0;
 
 	m_pTmpHighLighted = new QStringList();
@@ -159,7 +157,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	pButton = new KviWindowToolPageButton(KviIconManager::UnBan, KviIconManager::Ban, szDescription, buttonContainer(), false);
 	pButton->setObjectName("ban_editor_button");
 	connect(pButton, SIGNAL(clicked()), this, SLOT(toggleListModeEditor()));
-	m_pListEditorButtons.insert(cMode, pButton);
+	m_ListEditorButtons.emplace(cMode, pButton);
 
 	//other list modes (dynamic)
 	QString szListModes = "";
@@ -206,7 +204,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 			pButton = new KviWindowToolPageButton(eIconOn, eIconOff, szDescription, buttonContainer(), false);
 			pButton->setObjectName("list_mode_editor_button");
 			connect(pButton, SIGNAL(clicked()), this, SLOT(toggleListModeEditor()));
-			m_pListEditorButtons.insert(cMode, pButton);
+			m_ListEditorButtons.emplace(cMode, pButton);
 		}
 	}
 
@@ -263,15 +261,17 @@ KviChannelWindow::~KviChannelWindow()
 	m_pUserListView->enableUpdates(false);
 	m_pUserListView->partAll();
 
-	delete m_pActionHistory;
 	delete m_pTmpHighLighted;
 
-	qDeleteAll(m_pListEditors);
-	m_pListEditors.clear();
-	qDeleteAll(m_pListEditorButtons);
-	m_pListEditorButtons.clear();
-	qDeleteAll(m_pModeLists);
-	m_pModeLists.clear();
+	for(auto i : m_ListEditors)
+		delete i.second;
+
+	for(auto i : m_ListEditorButtons)
+		delete i.second;
+
+	for(auto i : m_ModeLists)
+		for(auto ii : i.second)
+			delete ii;
 }
 
 void KviChannelWindow::toggleToolButtons()
@@ -535,36 +535,33 @@ void KviChannelWindow::toggleListModeEditor()
 		return; //wtf?
 
 	char cMode = 0;
-	QMap<char, KviWindowToolPageButton *>::const_iterator iter = m_pListEditorButtons.constBegin();
 
-	while(iter != m_pListEditorButtons.constEnd())
+	for(auto iter : m_ListEditorButtons)
 	{
-		if(iter.value() == pButton)
+		if(iter.second == pButton)
 		{
-			cMode = iter.key();
+			cMode = iter.first;
 			break;
 		}
-		++iter;
 	}
 
 	if(!cMode)
-		return; //wtf?
+		return; // wtf?
 
-	if(m_pListEditors.contains(cMode))
+	const auto iEditor = m_ListEditors.find(cMode);
+	if(iEditor != m_ListEditors.end())
 	{
-		KviMaskEditor * pEditor = m_pListEditors.value(cMode);
-		m_pListEditors.remove(cMode);
+		KviMaskEditor * pEditor = iEditor->second;
+		m_ListEditors.erase(iEditor);
 		pEditor->deleteLater();
 
 		pButton->setChecked(false);
 	}
 	else
 	{
-		if(!m_pModeLists.contains(cMode))
+		if(!m_ModeLists.count(cMode))
 		{
-			KviPointerList<KviMaskEntry> * pModeList = new KviPointerList<KviMaskEntry>;
-			pModeList->setAutoDelete(true);
-			m_pModeLists.insert(cMode, pModeList);
+			m_ModeLists[cMode];
 
 			m_szSentModeRequests.append(cMode);
 
@@ -575,16 +572,16 @@ void KviChannelWindow::toggleListModeEditor()
 			}
 		}
 
-		KviPointerList<KviMaskEntry> * pMaskList = m_pModeLists.value(cMode);
+		std::vector<KviMaskEntry *> pMaskList = m_ModeLists[cMode];
 		KviMaskEditor * pEditor = new KviMaskEditor(m_pSplitter, this, pButton, pMaskList, cMode, "list_mode_editor");
-		connect(pEditor, SIGNAL(removeMasks(KviMaskEditor *, KviPointerList<KviMaskEntry> *)), this, SLOT(removeMasks(KviMaskEditor *, KviPointerList<KviMaskEntry> *)));
-		m_pListEditors.insert(cMode, pEditor);
+		connect(pEditor, SIGNAL(removeMasks(KviMaskEditor *, std::vector<KviMaskEntry *>)), this, SLOT(removeMasks(KviMaskEditor *, std::vector<KviMaskEntry *>)));
+		m_ListEditors.emplace(cMode, pEditor);
 		pEditor->show();
 		pButton->setChecked(true);
 	}
 }
 
-void KviChannelWindow::removeMasks(KviMaskEditor * pEditor, KviPointerList<KviMaskEntry> * pList)
+void KviChannelWindow::removeMasks(KviMaskEditor * pEditor, const std::vector<KviMaskEntry *> & pList)
 {
 	if(!connection())
 		return;
@@ -611,8 +608,9 @@ void KviChannelWindow::removeMasks(KviMaskEditor * pEditor, KviPointerList<KviMa
 	const int iMaxCharsPerLine = 502 - szTarget.size();
 	int iCurCharsPerLine = iMaxCharsPerLine;
 
-	for(KviMaskEntry * pEntry = pList->first(); pEntry; pEntry = pList->next())
+	for(auto i = pList.begin(); i != pList.end();)
 	{
+		KviMaskEntry * pEntry = *i;
 		szFlags += pEditor->flag();
 		iCurCharsPerLine--;
 
@@ -633,13 +631,17 @@ void KviChannelWindow::removeMasks(KviMaskEditor * pEditor, KviPointerList<KviMa
 			// move back the iterator by one position
 			// WARNING: this could lead to an infinite loop if a single specified mode
 			// change is longer than iMaxCharsPerLine
-			pEntry = pList->prev();
+			pEntry = *--i;
 
 			// reset cycle variables
 			iCurCharsPerLine = iMaxCharsPerLine;
 			iCurModeChangesPerLine = iMaxModeChangesPerLine;
 			szFlags = "";
 			szMasks = "";
+		}
+		else
+		{
+			++i;
 		}
 	}
 
@@ -687,9 +689,9 @@ void KviChannelWindow::setChannelMode(char cMode, bool bAdd)
 void KviChannelWindow::setChannelModeWithParam(char cMode, QString & szParam)
 {
 	if(szParam.isEmpty())
-		m_szChannelParameterModes.remove(cMode);
+		m_szChannelParameterModes.erase(cMode);
 	else
-		m_szChannelParameterModes.insert(cMode, szParam);
+		m_szChannelParameterModes.emplace(cMode, szParam);
 	updateModeLabel();
 	updateCaption();
 }
@@ -710,25 +712,19 @@ void KviChannelWindow::removeHighlightedUser(const QString & szNick)
 void KviChannelWindow::getChannelModeString(QString & szBuffer)
 {
 	szBuffer = m_szChannelMode;
+
 	//add modes that use a parameter
-	QMap<char, QString>::const_iterator iter = m_szChannelParameterModes.constBegin();
-	while(iter != m_szChannelParameterModes.constEnd())
-	{
-		szBuffer.append(QChar(iter.key()));
-		++iter;
-	}
+	for(auto iter : m_szChannelParameterModes)
+		szBuffer.append(QChar(iter.first));
 }
 
 void KviChannelWindow::getChannelModeStringWithEmbeddedParams(QString & szBuffer)
 {
 	szBuffer = m_szChannelMode;
+
 	//add modes that use a parameter
-	QMap<char, QString>::const_iterator iter = m_szChannelParameterModes.constBegin();
-	while(iter != m_szChannelParameterModes.constEnd())
-	{
-		szBuffer.append(QString(" %1:%2").arg(QChar(iter.key())).arg(iter.value()));
-		++iter;
-	}
+	for(auto iter : m_szChannelParameterModes)
+		szBuffer.append(QString(" %1:%2").arg(QChar(iter.first)).arg(iter.second));
 }
 
 bool KviChannelWindow::setOp(const QString & szNick, bool bOp, bool bIsMe)
@@ -750,26 +746,19 @@ void KviChannelWindow::setDeadChan()
 	m_pUserListView->setUserDataBase(nullptr);
 
 	//clear all mask editors
-	QMap<char, KviMaskEditor *>::const_iterator iter2 = m_pListEditors.constBegin();
-	while(iter2 != m_pListEditors.constEnd())
-	{
-		iter2.value()->clear();
-		++iter2;
-	}
+	for(auto & iter : m_ListEditors)
+		iter.second->clear();
 
 	//clear all mask lists (eg bans)
-	QMap<char, KviPointerList<KviMaskEntry> *>::const_iterator iter = m_pModeLists.constBegin();
-	while(iter != m_pModeLists.constEnd())
-	{
-		iter.value()->clear();
-		++iter;
-	}
-	m_pModeLists.clear();
+	for(auto & iter : m_ModeLists)
+		iter.second.clear();
+
+	m_ModeLists.clear();
 	m_szSentModeRequests.clear();
 
 	m_pTopicWidget->reset();
 
-	m_pActionHistory->clear();
+	m_ActionHistory.clear();
 	m_uActionHistoryHotActionCount = 0;
 
 	m_szChannelMode = "";
@@ -807,11 +796,10 @@ void KviChannelWindow::setAliveChan()
 	updateCaption();
 	m_pTopicWidget->reset(); // reset the topic (fixes bug #20 signaled by Klaus Weidenbach)
 
-	//refresh all open mask editors
-	QMap<char, KviMaskEditor *>::const_iterator iter2 = m_pListEditors.constBegin();
-	while(iter2 != m_pListEditors.constEnd())
+	// refresh all open mask editors
+	for(auto & iter : m_ListEditors)
 	{
-		char cMode = iter2.value()->flag();
+		char cMode = iter.second->flag();
 		m_szSentModeRequests.append(cMode);
 
 		if(connection())
@@ -819,7 +807,6 @@ void KviChannelWindow::setAliveChan()
 			QByteArray szName = connection()->encodeText(m_szName);
 			connection()->sendFmtData("MODE %s %c", szName.data(), cMode);
 		}
-		++iter2;
 	}
 }
 
@@ -1481,9 +1468,9 @@ bool KviChannelWindow::nickChange(const QString & szOldNick, const QString & szN
 	{
 		channelAction(szNewNick, KVI_USERACTION_NICK, kvi_getUserActionTemperature(KVI_USERACTION_NICK));
 		// update any nick/mask editor; by now we limit to the q and a mode
-		if(m_pModeLists.contains('q'))
+		if(m_ModeLists.count('q'))
 			setModeInList('q', szOldNick, false, QString(), 0, szNewNick);
-		if(m_pModeLists.contains('a'))
+		if(m_ModeLists.count('a'))
 			setModeInList('a', szOldNick, false, QString(), 0, szNewNick);
 	}
 	return bWasHere;
@@ -1496,9 +1483,9 @@ bool KviChannelWindow::part(const QString & szNick)
 	{
 		channelAction(szNick, KVI_USERACTION_PART, kvi_getUserActionTemperature(KVI_USERACTION_PART));
 		// update any nick/mask editor; by now we limit to the q and a mode
-		if(m_pModeLists.contains('q'))
+		if(m_ModeLists.count('q'))
 			setModeInList('q', szNick, false, QString(), 0);
-		if(m_pModeLists.contains('a'))
+		if(m_ModeLists.count('a'))
 			setModeInList('a', szNick, false, QString(), 0);
 	}
 	return bWasHere;
@@ -1511,7 +1498,7 @@ bool KviChannelWindow::activityMeter(unsigned int * puActivityValue, unsigned in
 	unsigned int uHotActionPercent;
 	double dActionsPerMinute;
 
-	if(m_pActionHistory->count() < 1)
+	if(m_ActionHistory.size() < 1)
 	{
 		// nothing is happening
 		uHotActionPercent = 0;
@@ -1521,11 +1508,11 @@ bool KviChannelWindow::activityMeter(unsigned int * puActivityValue, unsigned in
 	{
 		kvi_time_t tNow = kvi_unixTime();
 
-		KviChannelAction * pAction = m_pActionHistory->last();
+		KviChannelAction * pAction = m_ActionHistory.back();
 
 		double dSpan = (double)(tNow - pAction->tTime);
 
-		if(m_pActionHistory->count() < KVI_CHANNEL_ACTION_HISTORY_MAX_COUNT)
+		if(m_ActionHistory.size() < KVI_CHANNEL_ACTION_HISTORY_MAX_COUNT)
 		{
 			if(m_joinTime.secsTo(QDateTime::currentDateTime()) < KVI_CHANNEL_ACTION_HISTORY_MAX_TIMESPAN)
 			{
@@ -1541,11 +1528,11 @@ bool KviChannelWindow::activityMeter(unsigned int * puActivityValue, unsigned in
 		} // else the actions have been pushed out of the history because they were too much
 
 		if(dSpan > 0.0)
-			dActionsPerMinute = (((double)(m_pActionHistory->count())) / (dSpan)) * 60.0;
+			dActionsPerMinute = (((double)(m_ActionHistory.size())) / (dSpan)) * 60.0;
 		else
-			dActionsPerMinute = (double)(m_pActionHistory->count()); // ???
+			dActionsPerMinute = (double)(m_ActionHistory.size()); // ???
 
-		uHotActionPercent = (m_uActionHistoryHotActionCount * 100) / (m_pActionHistory->count());
+		uHotActionPercent = (m_uActionHistoryHotActionCount * 100) / (m_ActionHistory.size());
 	}
 
 	if(dActionsPerMinute < 0.3)
@@ -1590,28 +1577,28 @@ void KviChannelWindow::channelAction(const QString & szNick, unsigned int uActio
 	if(iTemperature > 0)
 		m_uActionHistoryHotActionCount++;
 
-	m_pActionHistory->append(pAction);
+	m_ActionHistory.push_back(pAction);
 	fixActionHistory();
 }
 
 void KviChannelWindow::fixActionHistory()
 {
-	while(m_pActionHistory->count() > KVI_CHANNEL_ACTION_HISTORY_MAX_COUNT)
-		m_pActionHistory->removeFirst();
+	while(m_ActionHistory.size() > KVI_CHANNEL_ACTION_HISTORY_MAX_COUNT)
+		m_ActionHistory.erase(m_ActionHistory.begin(), m_ActionHistory.begin() + 1);
 
-	KviChannelAction * pAction = m_pActionHistory->last();
-	if(!pAction)
+	if(m_ActionHistory.empty())
 		return;
 
+	KviChannelAction * pAction = m_ActionHistory.back();
 	kvi_time_t tMinimum = pAction->tTime - KVI_CHANNEL_ACTION_HISTORY_MAX_TIMESPAN;
 
-	KviChannelAction * pAct = m_pActionHistory->first();
+	KviChannelAction * pAct = m_ActionHistory.front();
 	while(pAct && (pAct->tTime < tMinimum))
 	{
 		if(pAct->iTemperature > 0)
 			m_uActionHistoryHotActionCount--;
-		m_pActionHistory->removeFirst();
-		pAct = m_pActionHistory->first();
+		m_ActionHistory.erase(m_ActionHistory.begin(), m_ActionHistory.begin() + 1);
+		pAct = m_ActionHistory.front();
 	}
 }
 
@@ -1628,7 +1615,7 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 {
 	fixActionHistory();
 
-	pStats->uActionCount = m_pActionHistory->count();
+	pStats->uActionCount = m_ActionHistory.size();
 	pStats->iAverageActionTemperature = 0;
 	pStats->uActionsInTheLastMinute = 0;
 	pStats->uHotActionCount = 0;
@@ -1647,10 +1634,10 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 
 	kvi_time_t tNow = kvi_unixTime();
 
-	KviChannelAction * pAction = m_pActionHistory->last();
+	KviChannelAction * pAction = m_ActionHistory.back();
 	pStats->uLastActionTimeSpan = tNow - pAction->tTime;
 
-	pAction = m_pActionHistory->first();
+	pAction = m_ActionHistory.front();
 	pStats->uFirstActionTimeSpan = tNow - pAction->tTime;
 
 	double dSpan = (double)pStats->uFirstActionTimeSpan;
@@ -1680,15 +1667,15 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 	tTwoMinsAgo -= 120;
 	tNow -= 60;
 
-	KviPointerHashTable<QString, int> userDict;
-	userDict.setAutoDelete(false);
+	std::set<QString> userDict;
 
-	int iFake;
 	pStats->lTalkingUsers.clear();
 	pStats->lWereTalkingUsers.clear();
 
-	for(pAction = m_pActionHistory->last(); pAction; pAction = m_pActionHistory->prev())
+	for(unsigned i = m_ActionHistory.size(); i-- > 0; )
 	{
+		pAction = m_ActionHistory[i];
+
 		if(pAction->tTime >= tNow)
 			pStats->uActionsInTheLastMinute++;
 
@@ -1699,7 +1686,7 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 
 		if((pAction->uActionType == KVI_USERACTION_PRIVMSG) || (pAction->uActionType == KVI_USERACTION_NOTICE) || (pAction->uActionType == KVI_USERACTION_ACTION))
 		{
-			if(!userDict.find(pAction->szNick))
+			if(userDict.count(pAction->szNick) == 0)
 			{
 				if(isOn(pAction->szNick.toLatin1()))
 				{
@@ -1708,7 +1695,7 @@ void KviChannelWindow::getChannelActivityStats(KviChannelActivityStats * pStats)
 					else
 						pStats->lWereTalkingUsers.append(pAction->szNick);
 
-					userDict.insert(pAction->szNick, &iFake);
+					userDict.insert(pAction->szNick);
 				}
 			}
 		}
@@ -1868,69 +1855,64 @@ void KviChannelWindow::setModeInList(char cMode, const QString & szMask, bool bA
 	if(!connection())
 		return;
 
-	if(!m_pModeLists.contains(cMode))
+	if(!m_ModeLists.count(cMode))
 	{
 		// we want to remove an item but we don't have any list?
 		if(!bAdd)
 			return;
 		// lazily insert it
-		KviPointerList<KviMaskEntry> * pModeList = new KviPointerList<KviMaskEntry>;
-		pModeList->setAutoDelete(true);
-		m_pModeLists.insert(cMode, pModeList);
+		m_ModeLists[cMode];
 	}
 
-	KviPointerList<KviMaskEntry> * pList = m_pModeLists.value(cMode);
+	std::vector<KviMaskEntry *> & pList = m_ModeLists[cMode];
 	KviMaskEditor * pEditor = nullptr;
-	if(m_pListEditors.contains(cMode))
-		pEditor = m_pListEditors.value(cMode);
+	if(m_ListEditors.count(cMode))
+		pEditor = m_ListEditors[cMode];
 
 	internalMask(szMask, bAdd, szSetBy, uSetAt, pList, &pEditor, szChangeMask);
-	m_pUserListView->setMaskEntries(cMode, (int)pList->count());
+	m_pUserListView->setMaskEntries(cMode, pList.size());
 }
 
-void KviChannelWindow::internalMask(const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, KviPointerList<KviMaskEntry> * pList, KviMaskEditor ** ppEd, QString & szChangeMask)
+void KviChannelWindow::internalMask(const QString & szMask, bool bAdd, const QString & szSetBy, unsigned int uSetAt, std::vector<KviMaskEntry *> & pList, KviMaskEditor ** ppEd, QString & szChangeMask)
 {
 	KviMaskEntry * pEntry = nullptr;
 	if(bAdd)
 	{
-		for(pEntry = pList->first(); pEntry; pEntry = pList->next())
+		for(auto & e : pList)
 		{
-			if(KviQString::equalCI(pEntry->szMask, szMask))
+			if(KviQString::equalCI(e->szMask, szMask))
 				return; //already there
 		}
 		pEntry = new KviMaskEntry;
 		pEntry->szMask = szMask;
 		pEntry->szSetBy = (!szSetBy.isEmpty()) ? szSetBy : __tr2qs("(Unknown)");
 		pEntry->uSetAt = uSetAt;
-		pList->append(pEntry);
+		pList.push_back(pEntry);
 		if(*ppEd)
 			(*ppEd)->addMask(pEntry);
 	}
 	else
 	{
-		for(pEntry = pList->first(); pEntry; pEntry = pList->next())
-		{
-			if(KviQString::equalCI(pEntry->szMask, szMask))
-				break;
-		}
+		auto iter = pList.begin();
+		for(; iter != pList.end() && !KviQString::equalCI((*iter)->szMask, szMask); ++iter);
 
-		if(pEntry)
+		if(iter != pList.end())
 		{
 			//delete mask from the editor
 			if(*ppEd)
-				(*ppEd)->removeMask(pEntry);
+				(*ppEd)->removeMask(*iter);
 
 			if(szChangeMask.isNull())
 			{
 				//delete mask
-				pList->removeRef(pEntry);
+				pList.erase(iter);
 			}
 			else
 			{
 				//update mask
-				pEntry->szMask = szChangeMask;
+				(*iter)->szMask = szChangeMask;
 				if(*ppEd)
-					(*ppEd)->addMask(pEntry);
+					(*ppEd)->addMask(*iter);
 			}
 		}
 	}
@@ -1960,13 +1942,11 @@ void KviChannelWindow::updateModeLabel()
 		++pcAux;
 	}
 
-	QMap<char, QString>::const_iterator iter = m_szChannelParameterModes.constBegin();
-	while(iter != m_szChannelParameterModes.constEnd())
+	for(auto & iter : m_szChannelParameterModes)
 	{
-		QString szDescription = KviQString::toHtmlEscaped(m_pConsole->connection()->serverInfo()->getChannelModeDescription(iter.key()));
-		QString szValue = KviQString::toHtmlEscaped(iter.value());
-		KviQString::appendFormatted(szTip, br + "<b>%c</b>: %Q: <b>%Q</b>", iter.key(), &szDescription, &szValue);
-		++iter;
+		QString szDescription = KviQString::toHtmlEscaped(m_pConsole->connection()->serverInfo()->getChannelModeDescription(iter.first));
+		QString szValue = KviQString::toHtmlEscaped(iter.second);
+		KviQString::appendFormatted(szTip, br + "<b>%c</b>: %Q: <b>%Q</b>", iter.first, &szDescription, &szValue);
 	}
 
 	szTip += enr + snr + "<hr>";

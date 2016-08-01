@@ -53,11 +53,13 @@
 #include "KviIrcUrl.h"
 #include "KviUserIdentity.h"
 #include "KviUserIdentityManager.h"
+#include "KviPtrListIterator.h"
 
 #include "kvi_debug.h"
 
 #include <QTimer>
 #include <QByteArray>
+#include <algorithm>
 
 // the irc context identifiers start from 1
 static unsigned int g_uNextIrcContextId = 1;
@@ -75,10 +77,6 @@ KviIrcContext::KviIrcContext(KviConsoleWindow * pConsole)
 
 	m_pConnection = nullptr;
 
-	m_pDeadChannels = nullptr;
-	m_pDeadQueries = nullptr;
-	m_pContextWindows = nullptr;
-
 	m_pLinksWindow = nullptr;
 	m_pListWindow = nullptr;
 
@@ -87,7 +85,6 @@ KviIrcContext::KviIrcContext(KviConsoleWindow * pConsole)
 	m_pAsynchronousConnectionData = nullptr;
 	m_pSavedAsynchronousConnectionData = nullptr;
 	m_uConnectAttemptCount = 0;
-	m_pMonitorList = nullptr;
 	m_pReconnectTimer = nullptr;
 
 	m_uConnectAttemptCount = 1;
@@ -99,16 +96,10 @@ KviIrcContext::~KviIrcContext()
 {
 	killTimer(m_iHeartbeatTimerId);
 
-	while(m_pMonitorList)
+	for(auto & m : m_pMonitorList)
 	{
-		KviIrcDataStreamMonitor * m = m_pMonitorList->first();
 		if(m)
 			m->die();
-		else
-		{
-			delete m_pMonitorList;
-			m_pMonitorList = nullptr;
-		}
 	}
 
 	if(m_pReconnectTimer)
@@ -132,197 +123,151 @@ KviIrcContext::~KviIrcContext()
 
 void KviIrcContext::registerDataStreamMonitor(KviIrcDataStreamMonitor * m)
 {
-	if(!m_pMonitorList)
-	{
-		m_pMonitorList = new KviPointerList<KviIrcDataStreamMonitor>;
-		m_pMonitorList->setAutoDelete(false);
-	}
-	m_pMonitorList->append(m);
+	m_pMonitorList.push_back(m);
 }
 
 void KviIrcContext::unregisterDataStreamMonitor(KviIrcDataStreamMonitor * m)
 {
-	if(!m_pMonitorList)
+	if(m_pMonitorList.empty())
 		return;
-	m_pMonitorList->removeRef(m);
-	if(m_pMonitorList->isEmpty())
-	{
-		delete m_pMonitorList;
-		m_pMonitorList = nullptr;
-	}
+
+	m_pMonitorList.erase(std::remove(m_pMonitorList.begin(), m_pMonitorList.end(), m), m_pMonitorList.end());
 }
 
 void KviIrcContext::closeAllDeadChannels()
 {
-	while(m_pDeadChannels)
+	for(auto & c : m_DeadChannels)
 	{
-		KviChannelWindow * c = m_pDeadChannels->first();
-		if(c)
-		{
-			g_pMainWindow->closeWindow(c);
-		}
-		else
-		{
-			// ops....
-			delete m_pDeadChannels;
-			m_pDeadChannels = nullptr;
-		}
+		KviChannelWindow * chan = static_cast<KviChannelWindow *>(c);
+		g_pMainWindow->closeWindow(chan);
 	}
 }
 
 void KviIrcContext::closeAllDeadQueries()
 {
-	while(m_pDeadQueries)
+	for(auto & q : m_DeadQueries)
 	{
-		KviQueryWindow * q = m_pDeadQueries->first();
-		if(q)
-		{
-			g_pMainWindow->closeWindow(q);
-		}
-		else
-		{
-			// ops....
-			delete m_pDeadQueries;
-			m_pDeadQueries = nullptr;
-		}
+		KviQueryWindow * qWin = static_cast<KviQueryWindow *>(q);
+		g_pMainWindow->closeWindow(qWin);
 	}
 }
 
 void KviIrcContext::closeAllContextWindows()
 {
-	while(m_pContextWindows)
+	for(auto & w : m_ContextWindows)
 	{
-		KviWindow * w = m_pContextWindows->first();
-		if(w)
-		{
-			g_pMainWindow->closeWindow(w);
-		}
-		else
-		{
-			// ops...
-			delete m_pContextWindows;
-			m_pContextWindows = nullptr;
-		}
+		KviWindow * wWin = static_cast<KviWindow *>(w);
+		g_pMainWindow->closeWindow(wWin);
 	}
 }
 
 KviChannelWindow * KviIrcContext::findDeadChannel(const QString & name)
 {
-	if(!m_pDeadChannels)
+	if(m_DeadChannels.empty())
 		return nullptr;
-	for(KviChannelWindow * c = m_pDeadChannels->first(); c; c = m_pDeadChannels->next())
+
+	for(auto & c : m_DeadChannels)
 	{
 		KVI_ASSERT(c->isDeadChan());
 		if(KviQString::equalCI(name, c->windowName()))
 			return c;
 	}
+
 	return nullptr;
 }
 
 KviQueryWindow * KviIrcContext::findDeadQuery(const QString & name)
 {
-	if(!m_pDeadQueries)
+	if(m_DeadQueries.empty())
 		return nullptr;
-	for(KviQueryWindow * c = m_pDeadQueries->first(); c; c = m_pDeadQueries->next())
+
+	for(auto & q : m_DeadQueries)
 	{
-		KVI_ASSERT(c->isDeadQuery());
-		if(KviQString::equalCI(name, c->windowName()))
-			return c;
+		KVI_ASSERT(q->isDeadQuery());
+		if(KviQString::equalCI(name, q->windowName()))
+			return q;
 	}
 	return nullptr;
 }
 
-KviQueryWindow * KviIrcContext::firstDeadQuery()
-{
-	if(!m_pDeadQueries)
-		return nullptr;
-	return m_pDeadQueries->first();
-}
-
 KviChannelWindow * KviIrcContext::firstDeadChannel()
 {
-	if(!m_pDeadChannels)
+	if(m_DeadChannels.empty())
 		return nullptr;
-	return m_pDeadChannels->first();
+
+	return m_DeadChannels.front();
+}
+
+KviQueryWindow * KviIrcContext::firstDeadQuery()
+{
+	if(m_DeadQueries.empty())
+		return nullptr;
+
+	return m_DeadQueries.front();
 }
 
 void KviIrcContext::registerContextWindow(KviWindow * pWnd)
 {
-	if(!m_pContextWindows)
-	{
-		m_pContextWindows = new KviPointerList<KviWindow>;
-		m_pContextWindows->setAutoDelete(false);
-	}
-	m_pContextWindows->append(pWnd);
+	m_ContextWindows.push_back(pWnd);
 }
 
 void KviIrcContext::registerDeadChannel(KviChannelWindow * c)
 {
-	if(!m_pDeadChannels)
-	{
-		m_pDeadChannels = new KviPointerList<KviChannelWindow>;
-		m_pDeadChannels->setAutoDelete(false);
-	}
-	m_pDeadChannels->append(c);
+	m_DeadChannels.push_back(c);
 }
 
 void KviIrcContext::registerDeadQuery(KviQueryWindow * q)
 {
-	if(!m_pDeadQueries)
-	{
-		m_pDeadQueries = new KviPointerList<KviQueryWindow>;
-		m_pDeadQueries->setAutoDelete(false);
-	}
-	m_pDeadQueries->append(q);
+	m_DeadQueries.push_back(q);
 }
 
 bool KviIrcContext::unregisterDeadChannel(KviChannelWindow * c)
 {
 	// was a dead channel ?
-	if(!m_pDeadChannels)
+	if(m_DeadChannels.empty())
 		return false;
-	if(!m_pDeadChannels->removeRef(c))
+
+	int pos = std::find(m_DeadChannels.begin(), m_DeadChannels.end(), c) - m_DeadChannels.begin();
+
+	if(pos < m_DeadChannels.size())
 	{
-		return false;
+		m_DeadChannels.erase(m_DeadChannels.begin() + pos);
+		return true;
 	}
-	if(m_pDeadChannels->isEmpty())
-	{
-		delete m_pDeadChannels;
-		m_pDeadChannels = nullptr;
-	}
-	return true;
+
+	return false;
 }
 
 bool KviIrcContext::unregisterContextWindow(KviWindow * pWnd)
 {
-	if(!m_pContextWindows)
+	if(m_ContextWindows.empty())
 		return false;
-	if(!m_pContextWindows->removeRef(pWnd))
+
+	int pos = std::find(m_ContextWindows.begin(), m_ContextWindows.end(), pWnd) - m_ContextWindows.begin();
+
+	if(pos < m_ContextWindows.size())
 	{
-		return false;
+		m_ContextWindows.erase(m_ContextWindows.begin() + pos);
+		return true;
 	}
-	if(m_pContextWindows->isEmpty())
-	{
-		delete m_pContextWindows;
-		m_pContextWindows = nullptr;
-	}
-	return true;
+
+	return false;
 }
 
 bool KviIrcContext::unregisterDeadQuery(KviQueryWindow * q)
 {
-	if(!m_pDeadQueries)
+	if(m_DeadQueries.empty())
 		return false;
-	if(!m_pDeadQueries->removeRef(q))
+
+	int pos = std::find(m_DeadQueries.begin(), m_DeadQueries.end(), q) - m_DeadQueries.begin();
+
+	if(pos < m_DeadQueries.size())
 	{
-		return false;
+		m_DeadQueries.erase(m_DeadQueries.begin() + pos);
+		return true;
 	}
-	if(m_pDeadQueries->isEmpty())
-	{
-		delete m_pDeadQueries;
-		m_pDeadQueries = nullptr;
-	}
-	return true;
+
+	return false;
 }
 
 void KviIrcContext::createLinksWindow()

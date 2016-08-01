@@ -35,6 +35,7 @@
 
 #include <QDir>
 #include <QLibrary>
+#include <vector>
 
 KviModuleManager * g_pModuleManager = nullptr;
 
@@ -84,7 +85,7 @@ void KviModuleManager::loadModulesByCaps(const QString & caps)
 	loadModulesByCaps(caps, szDir);
 }
 
-void KviModuleManager::completeModuleNames(const QString & path, const QString & word, KviPointerList<QString> * matches)
+void KviModuleManager::completeModuleNames(const QString & path, const QString & word, std::vector<QString> & matches)
 {
 	QDir d(path);
 #if defined(COMPILE_ON_WINDOWS)
@@ -97,32 +98,27 @@ void KviModuleManager::completeModuleNames(const QString & path, const QString &
 	// FIXME: maybe check timestamps ? (old modules)
 
 	QStringList sl = d.entryList(QDir::Files | QDir::Readable | QDir::NoSymLinks);
-	for(auto & it : sl)
+	for(auto & modname : sl)
 	{
-		QString * modname = new QString(it);
-		KviQString::cutToLast(*modname, KVI_PATH_SEPARATOR_CHAR);
-		KviQString::cutToFirst(*modname, "kvi");
-		if(KviQString::equalCIN(word, *modname, word.length()))
+		KviQString::cutToLast(modname, KVI_PATH_SEPARATOR_CHAR);
+		KviQString::cutToFirst(modname, "kvi");
+		if(KviQString::equalCIN(word, modname, word.length()))
 		{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-			KviQString::cutFromLast(*modname, ".dll");
+			KviQString::cutFromLast(modname, ".dll");
 #else
-			KviQString::cutFromLast(*modname, ".so");
+			KviQString::cutFromLast(modname, ".so");
 #endif
-			if(!modname->isEmpty())
+			if(!modname.isEmpty())
 			{
-				modname->append('.');
-				matches->append(modname);
+				modname.append('.');
+				matches.push_back(std::move(modname));
 			}
-			else
-				delete modname;
 		}
-		else
-			delete modname;
 	}
 }
 
-void KviModuleManager::completeModuleNames(const QString & word, KviPointerList<QString> * matches)
+void KviModuleManager::completeModuleNames(const QString & word, std::vector<QString> & matches)
 {
 	QString szDir;
 	// FIXME: Should check for duplicate names here!
@@ -336,8 +332,7 @@ void KviModuleManager::cleanupUnusedModules()
 {
 	KviPointerHashTableIterator<QString, KviModule> it(*m_pModuleDict);
 
-	KviPointerList<KviModule> lModulesToUnload;
-	lModulesToUnload.setAutoDelete(false);
+	std::vector<KviModule *> lModulesToUnload;
 
 	while(it.current())
 	{
@@ -346,7 +341,7 @@ void KviModuleManager::cleanupUnusedModules()
 			if(it.current()->moduleInfo()->can_unload)
 			{
 				if((it.current()->moduleInfo()->can_unload)(it.current()))
-					lModulesToUnload.append(it.current());
+					lModulesToUnload.push_back(it.current());
 				else
 				{
 					// the module don't want to be unloaded
@@ -357,13 +352,13 @@ void KviModuleManager::cleanupUnusedModules()
 			else
 			{
 				if(!(it.current()->isLocked()))
-					lModulesToUnload.append(it.current());
+					lModulesToUnload.push_back(it.current());
 			}
 		}
 		++it;
 	}
 
-	for(KviModule * pModule = lModulesToUnload.first(); pModule; pModule = lModulesToUnload.next())
+	for(auto pModule : lModulesToUnload)
 		unloadModule(pModule);
 }
 
@@ -371,14 +366,14 @@ void KviModuleManager::unloadAllModules()
 {
 	KviPointerHashTableIterator<QString, KviModule> it(*m_pModuleDict);
 
-	KviPointerList<KviModule> lModulesToUnload;
-	lModulesToUnload.setAutoDelete(false);
+	std::vector<KviModule *> lModulesToUnload;
+
 	while(KviModule * pModule = it.current())
 	{
-		lModulesToUnload.append(pModule);
+		lModulesToUnload.push_back(pModule);
 		++it;
 	}
 
-	for(KviModule * pModule = lModulesToUnload.first(); pModule; pModule = lModulesToUnload.next())
+	for(auto pModule : lModulesToUnload)
 		unloadModule(pModule);
 }

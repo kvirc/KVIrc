@@ -35,6 +35,10 @@
 #include <QFont>
 #include <QStringList>
 
+#include <memory>
+#include <unordered_map>
+#include <vector>
+
 #ifdef COMPILE_KDE_SUPPORT
 #include <KAboutData>
 #endif
@@ -161,7 +165,7 @@ protected:
 #endif
 	KviWindow * m_pActiveWindow;
 	bool m_bUpdateGuiPending;
-	KviPointerList<KviPendingAvatarChange> * m_pPendingAvatarChanges;
+	std::unordered_map<KviPendingAvatarChange *, std::unique_ptr<KviPendingAvatarChange>> m_PendingAvatarChanges;
 	bool m_bSetupDone;
 	KviPointerHashTable<QString, QStringList> * m_pRecentChannelDict;
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -258,7 +262,7 @@ public:
 	bool mapImageFile(QString & szRetPath, const QString & filename);
 
 	//void getDefaultDccSaveFilePath(KviCString &path,const char *filename);
-	void completeDirectory(const QString & word, KviPointerList<QString> * matches);
+	void completeDirectory(const QString & word, std::vector<QString> & matches);
 	//
 	// Returns a config path suitable for reading (at least)
 	// First lookups the user local config directory,

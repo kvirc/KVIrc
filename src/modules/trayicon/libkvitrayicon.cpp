@@ -52,6 +52,7 @@
 
 #include <stdlib.h>
 #include <time.h>
+#include <map>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #define ICON_SIZE 16
@@ -60,7 +61,7 @@
 #define ICON_SIZE 48
 #endif
 
-extern KVIRC_API KviPointerHashTable<QString, KviWindow> * g_pGlobalWindowDict;
+extern KVIRC_API std::map<QString, KviWindow *> g_pGlobalWindowDict;
 static KviTrayIconWidget * g_pTrayIcon = nullptr;
 
 static QPixmap * g_pDock1 = nullptr;
@@ -270,10 +271,9 @@ void KviTrayIconWidget::doAway(bool)
 
 	if(id < 0)
 	{
-		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
-		while(KviWindow * wnd = it.current())
+		for(auto & wnd : g_pGlobalWindowDict)
 		{
-			KviConsoleWindow * pConsole = dynamic_cast<KviConsoleWindow *>(wnd);
+			KviConsoleWindow * pConsole = dynamic_cast<KviConsoleWindow *>(wnd.second);
 			if(pConsole && pConsole->isConnected())
 			{
 				if(id == -2)
@@ -286,7 +286,6 @@ void KviTrayIconWidget::doAway(bool)
 					    pConsole->connection()->encodeText(KVI_OPTION_STRING(KviOption_stringAwayMessage)).data());
 				}
 			}
-			++it;
 		}
 	}
 	else
@@ -326,13 +325,12 @@ void KviTrayIconWidget::fillContextPopup()
 
 		QAction * pSeparator = m_pAwayPopup->addSeparator();
 
-		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 		bool bAllAway = true;
 		bool bAllUnaway = true;
 		int iNetCount = 0;
-		while(KviWindow * wnd = it.current())
+		for(auto & wnd : g_pGlobalWindowDict)
 		{
-			KviConsoleWindow * pConsole = dynamic_cast<KviConsoleWindow *>(wnd);
+			KviConsoleWindow * pConsole = dynamic_cast<KviConsoleWindow *>(wnd.second);
 			if(pConsole && pConsole->isConnected())
 			{
 				QAction * id;
@@ -351,7 +349,6 @@ void KviTrayIconWidget::fillContextPopup()
 				id->setData(pConsole->context()->id());
 				iNetCount++;
 			}
-			++it;
 		}
 		if(iNetCount == 1)
 		{

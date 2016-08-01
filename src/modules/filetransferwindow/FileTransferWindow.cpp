@@ -49,6 +49,7 @@
 #include <QKeyEvent>
 #include <QWidgetAction>
 #include <QHeaderView>
+#include <vector>
 
 #ifdef COMPILE_KDE4_SUPPORT
 #include <kurl.h>
@@ -349,11 +350,12 @@ void FileTransferWindow::tipRequest(KviDynamicToolTip * tip, const QPoint & pnt)
 
 void FileTransferWindow::fillTransferView()
 {
-	KviPointerList<KviFileTransfer> * l = KviFileTransferManager::instance()->transferList();
-	if(!l)
+	std::vector<KviFileTransfer *> l = KviFileTransferManager::instance()->transferList();
+	if(l.empty())
 		return;
+
 	FileTransferItem * it;
-	for(KviFileTransfer * t = l->first(); t; t = l->next())
+	for(auto t : l)
 	{
 		it = new FileTransferItem(m_pTableWidget, t);
 		t->setDisplayItem(it);

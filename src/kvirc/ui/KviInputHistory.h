@@ -38,7 +38,8 @@
 */
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
+
+#include <vector>
 
 #define KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES 500
 #define KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES 50
@@ -54,19 +55,9 @@ private:
 	static unsigned int m_uCount;
 
 protected:
-	KviPointerList<QString> * m_pStringList;
+	std::vector<QString> m_StringList;
 
 public:
-	/**
-	* \brief Constructs the input history object
-	* \return KviInputHistory
-	*/
-	KviInputHistory();
-	/**
-	* \brief Destroys the input history object
-	*/
-	~KviInputHistory();
-
 	/**
 	* \brief Initializes the class instance
 	* \return void
@@ -108,13 +99,13 @@ public:
 	* \param szString The string to add
 	* \return void
 	*/
-	void add(QString * szString);
+	void add(QString szString);
 
 	/**
 	* \brief Returns the list of string in the history
 	* \return KviPointerList<QString> *
 	*/
-	KviPointerList<QString> * list() { return m_pStringList; };
+	std::vector<QString> list() { return m_StringList; };
 
 	/**
 	* \brief Saves the history

@@ -38,9 +38,10 @@
 #include "KviModuleManager.h"
 #include "KviMemory.h"
 #include "KviChannelWindow.h"
-#include "KviPointerHashTable.h"
 
 #include <QTimer>
+#include <map>
+#include <vector>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"
@@ -50,8 +51,8 @@ extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 #endif
 
 // KviApplication.cpp
-extern KVIRC_API KviPointerHashTable<QString, KviWindow> * g_pGlobalWindowDict;
-KviPointerList<UserWindow> * g_pUserWindowList = nullptr;
+extern KVIRC_API std::map<QString, KviWindow *> g_pGlobalWindowDict;
+std::vector<UserWindow *> g_pUserWindowList;
 
 // $window.caption $window.x $window.y $window.width $window.height $window.isActive $window.type
 // $window.input.text $window.input.cursorpos $window.input.textlen
@@ -841,78 +842,72 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	{
 		// all contexts but no "no_context" windows
 		bool bAllWindows = KviQString::equalCI(szType, "all");
-		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 
-		while(KviWindow * wnd = it.current())
+		for(auto & wnd : g_pGlobalWindowDict)
 		{
-			if(wnd->context())
+			if(wnd.second->context())
 			{
 				if(bAllWindows)
 				{
-					pArray->set(id, new KviKvsVariant(QString(wnd->id())));
+					pArray->set(id, new KviKvsVariant(QString(wnd.second->id())));
 					id++;
 				}
 				else
 				{
-					if(szType.toLower() == wnd->typeString())
+					if(szType.toLower() == wnd.second->typeString())
 					{
-						pArray->set(id, new KviKvsVariant(QString(wnd->id())));
+						pArray->set(id, new KviKvsVariant(QString(wnd.second->id())));
 						id++;
 					}
 				}
 			}
-			++it;
 		}
 	}
 	else if(KviQString::equalCI(szContext, "any"))
 	{
 		// all contexts and also "no_context" windows
 		bool bAllWindows = KviQString::equalCI(szType.toLower(), "all");
-		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 
-		while(KviWindow * wnd = it.current())
+		for(auto & wnd : g_pGlobalWindowDict)
 		{
 			if(bAllWindows)
 			{
-				pArray->set(id, new KviKvsVariant(QString(wnd->id())));
+				pArray->set(id, new KviKvsVariant(QString(wnd.second->id())));
 				id++;
 			}
 			else
 			{
-				if(szType.toLower() == wnd->typeString())
+				if(szType.toLower() == wnd.second->typeString())
 				{
-					pArray->set(id, new KviKvsVariant(QString(wnd->id())));
+					pArray->set(id, new KviKvsVariant(QString(wnd.second->id())));
 					id++;
 				}
 			}
-			++it;
 		}
 	}
 	else if(KviQString::equalCI(szContext, "none"))
 	{
 		// only "no_context" windows
 		bool bAllWindows = KviQString::equalCI(szType.toLower(), "all");
-		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 
-		while(KviWindow * wnd = it.current())
+		for(auto & wnd : g_pGlobalWindowDict)
 		{
-			if(!wnd->context())
+			if(!wnd.second->context())
 			{
 				if(bAllWindows)
 				{
-					pArray->set(id, new KviKvsVariant(QString(wnd->id())));
+					pArray->set(id, new KviKvsVariant(QString(wnd.second->id())));
 					id++;
 				}
 				else
 				{
-					if(szType.toLower() == wnd->typeString())
+					if(szType.toLower() == wnd.second->typeString())
 					{
-						pArray->set(id, new KviKvsVariant(QString(wnd->id())));
+						pArray->set(id, new KviKvsVariant(QString(wnd.second->id())));
 						id++;
 					}
 				}
 			}
-			++it;
 		}
 	}
 	else
@@ -942,30 +937,28 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 		}
 
 		bool bAllWindows = KviQString::equalCI(szType.toLower(), "all");
-		KviPointerHashTableIterator<QString, KviWindow> it(*g_pGlobalWindowDict);
 
-		while(KviWindow * wnd = it.current())
+		for(auto & wnd : g_pGlobalWindowDict)
 		{
-			if(wnd->context())
+			if(wnd.second->context())
 			{
-				if(wnd->context()->id() == uId)
+				if(wnd.second->context()->id() == uId)
 				{
 					if(bAllWindows)
 					{
-						pArray->set(id, new KviKvsVariant(QString(wnd->id())));
+						pArray->set(id, new KviKvsVariant(QString(wnd.second->id())));
 						id++;
 					}
 					else
 					{
-						if(szType.toLower() == wnd->typeString())
+						if(szType.toLower() == wnd.second->typeString())
 						{
-							pArray->set(id, new KviKvsVariant(QString(wnd->id())));
+							pArray->set(id, new KviKvsVariant(QString(wnd.second->id())));
 							id++;
 						}
 					}
 				}
 			}
-			++it;
 		}
 	}
 	return true;
@@ -1505,9 +1498,6 @@ static bool window_kvs_cmd_fake(KviKvsModuleCommandCall * c)
 
 static bool window_module_init(KviModule * m)
 {
-	g_pUserWindowList = new KviPointerList<UserWindow>();
-	g_pUserWindowList->setAutoDelete(false);
-
 	KVSM_REGISTER_FUNCTION(m, "activityTemperature", window_kvs_fnc_activityTemperature);
 	KVSM_REGISTER_FUNCTION(m, "activityLevel", window_kvs_fnc_activityLevel);
 	KVSM_REGISTER_FUNCTION(m, "highlightLevel", window_kvs_fnc_highlightLevel);
@@ -1550,15 +1540,15 @@ static bool window_module_init(KviModule * m)
 
 static bool window_module_cleanup(KviModule *)
 {
-	while(UserWindow * w = g_pUserWindowList->first())
+	for(auto & w : g_pUserWindowList)
 		w->close();
-	delete g_pUserWindowList;
+	g_pUserWindowList.clear();
 	return true;
 }
 
 static bool window_module_can_unload(KviModule *)
 {
-	return g_pUserWindowList->isEmpty();
+	return g_pUserWindowList.empty();
 }
 
 KVIRC_MODULE(

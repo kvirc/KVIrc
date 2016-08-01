@@ -117,7 +117,7 @@ void KviMaskInputDialog::accept()
 	QDialog::accept();
 }
 
-KviMaskEditor::KviMaskEditor(QWidget * par, KviChannelWindow * pChannel, KviWindowToolPageButton * button, KviPointerList<KviMaskEntry> * maskList, char cMode, const char * name)
+KviMaskEditor::KviMaskEditor(QWidget * par, KviChannelWindow * pChannel, KviWindowToolPageButton * button, std::vector<KviMaskEntry *> maskList, char cMode, const char * name)
     : KviWindowToolWidget(par, button)
 {
 	setObjectName(name);
@@ -223,7 +223,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par, KviChannelWindow * pChannel, KviWind
 		return;
 	}
 
-	for(KviMaskEntry * e = maskList->first(); e; e = maskList->next())
+	for(auto & e : maskList)
 		addMask(e);
 
 	updateOpStatus();
@@ -273,8 +273,8 @@ void KviMaskEditor::searchTextChanged(const QString & text)
 
 void KviMaskEditor::removeClicked()
 {
-	KviPointerList<KviMaskEntry> * l = new KviPointerList<KviMaskEntry>;
-	l->setAutoDelete(true);
+	std::vector<KviMaskEntry *> l;
+
 	KviMaskItem * it;
 	for(int i = 0; i < m_pMaskBox->topLevelItemCount(); i++)
 	{
@@ -285,12 +285,11 @@ void KviMaskEditor::removeClicked()
 			e->szMask = it->mask()->szMask;
 			e->szSetBy = it->mask()->szSetBy;
 			e->uSetAt = it->mask()->uSetAt;
-			l->append(e);
+			l.push_back(e);
 		}
 	}
-	if(l->count() > 0)
+	if(l.size() > 0)
 		emit removeMasks(this, l);
-	delete l;
 }
 
 void KviMaskEditor::addClicked()

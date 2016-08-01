@@ -33,17 +33,6 @@
 KviInputHistory * KviInputHistory::m_pSelf = nullptr;
 unsigned int KviInputHistory::m_uCount = 0;
 
-KviInputHistory::KviInputHistory()
-{
-	m_pStringList = new KviPointerList<QString>;
-	m_pStringList->setAutoDelete(true);
-}
-
-KviInputHistory::~KviInputHistory()
-{
-	delete m_pStringList;
-}
-
 void KviInputHistory::init()
 {
 	if((!m_pSelf) && (m_pSelf->count() == 0))
@@ -70,11 +59,11 @@ void KviInputHistory::delRef()
 	m_uCount--;
 }
 
-void KviInputHistory::add(QString * szString)
+void KviInputHistory::add(QString szString)
 {
-	m_pStringList->insert(0, szString);
-	if(m_pStringList->count() > KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES)
-		m_pStringList->removeLast();
+	m_StringList.insert(m_StringList.begin(), std::move(szString));
+	if(m_StringList.size() > KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES)
+		m_StringList.pop_back();
 }
 
 void KviInputHistory::load(const QString & szFileName)
@@ -93,7 +82,7 @@ void KviInputHistory::load(const QString & szFileName)
 		szTmp.sprintf("S%d", i);
 		QString szEntry = c.readEntry(szTmp.ptr(), "");
 		if(!szEntry.isEmpty())
-			add(new QString(szEntry));
+			add(szEntry);
 	}
 }
 
@@ -102,17 +91,17 @@ void KviInputHistory::save(const QString & szFileName)
 	KviConfigurationFile c(szFileName, KviConfigurationFile::Write);
 	c.clear();
 
-	c.writeEntry("Count", m_pStringList->count());
+	c.writeEntry("Count", static_cast<unsigned>(m_StringList.size()));
 
 	KviCString szTmp;
 	int iIdx = 0;
 
-	for(QString * szString = m_pStringList->first(); szString; szString = m_pStringList->next())
+	for(auto & szString : m_StringList)
 	{
-		if(!szString->isEmpty())
+		if(!szString.isEmpty())
 		{
 			szTmp.sprintf("S%d", iIdx);
-			c.writeEntry(szTmp.ptr(), *szString);
+			c.writeEntry(szTmp.ptr(), szString);
 			iIdx++;
 		}
 	}

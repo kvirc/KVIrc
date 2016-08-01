@@ -32,11 +32,11 @@
 #include "KviIrcServer.h"
 #include "KviCString.h"
 #include "KviIrcContext.h"
-#include "KviPointerList.h"
 #include "KviUserListView.h"
 #include "KviThemedComboBox.h"
 
 #include <time.h>
+#include <vector>
 
 #include <QToolButton>
 
@@ -186,8 +186,8 @@ public:
 
 	KviWindow * activeWindow();
 	// User db, connection related
-	void completeChannel(const QString & word, KviPointerList<QString> * matches);
-	void completeServer(const QString & word, KviPointerList<QString> * matches);
+	void completeChannel(const QString & word, std::vector<QString> & matches);
+	void completeServer(const QString & word, std::vector<QString> & matches);
 	void connectionAttached();
 	void connectionDetached();
 
