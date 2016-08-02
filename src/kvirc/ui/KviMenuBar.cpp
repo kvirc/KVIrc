@@ -367,10 +367,12 @@ void KviMenuBar::setupToolsPopup(QMenu * pop)
 	pAction->setData(KVI_INTERNALCOMMAND_TERM_OPEN);
 #endif
 
-	m_pModulesToolsAction = m->addAction(__tr2qs("Modules tools"));
+	m->addSeparator();
+
+	m_pModulesToolsAction = m->addAction(__tr2qs("Module Tools"));
 	m_pModulesToolsAction->setMenu(m_pModulesToolsPopup);
 
-	m_pActionsToolsAction = m->addAction(__tr2qs("Actions tools"));
+	m_pActionsToolsAction = m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Action)), __tr2qs("Action Tools"));
 	m_pActionsToolsAction->setMenu(m_pActionsToolsPopup);
 }
 
