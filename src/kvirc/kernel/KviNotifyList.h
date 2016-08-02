@@ -78,12 +78,12 @@ protected:
 	~KviIsOnNotifyListManager();
 
 private:
-	std::map<QString, std::unique_ptr<QString>> m_pRegUserDict; // dict notifystring->reguser name
-	std::vector<std::unique_ptr<QString>> m_NotifyList;     // list of notifystring (total)
-	std::vector<std::unique_ptr<QString>> m_IsOnList;       // list of notifystring (one session)
+	std::map<QString, QString> m_pRegUserDict; // dict notifystring->reguser name
+	std::vector<QString> m_NotifyList;     // list of notifystring (total)
+	std::vector<QString> m_IsOnList;       // list of notifystring (one session)
 	QString m_szIsOnString;                                 // m_pIsOnList in form of a string
-	std::vector<std::unique_ptr<QString>> m_OnlineList;
-	std::vector<std::unique_ptr<QString>> m_UserhostList;
+	std::vector<QString> m_OnlineList;
+	std::vector<QString> m_UserhostList;
 	QString m_szUserhostString;
 	bool m_bExpectingIsOn;
 	bool m_bExpectingUserhost;
@@ -127,7 +127,7 @@ protected:
 	~KviStupidNotifyListManager();
 
 protected:
-	std::vector<std::unique_ptr<QString>> m_pNickList;
+	std::vector<QString> m_pNickList;
 	QString m_szLastIsOnMsg;
 	std::size_t m_iNextNickToCheck;
 	int m_iRestartTimer;
@@ -155,7 +155,7 @@ public:
 	KviWatchNotifyListManager(KviIrcConnection * pConnection);
 
 protected:
-	std::map<QString, std::unique_ptr<QString>> m_pRegUserDict; // dict notifystring->reguser name
+	std::map<QString, QString> m_pRegUserDict; // dict notifystring->reguser name
 protected:
 	void buildRegUserDict();
 	virtual void start();

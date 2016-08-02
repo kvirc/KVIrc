@@ -377,12 +377,12 @@ void KviIsOnNotifyListManager::buildRegUserDict()
 				if(idx > 0)
 				{
 					QString single = notify.left(idx);
-					m_pRegUserDict.emplace(single, std::unique_ptr<QString>(new QString(u->name())));
+					m_pRegUserDict.emplace(single, u->name());
 					notify.remove(0, idx + 1);
 				}
 				else
 				{
-					m_pRegUserDict.emplace(notify, std::unique_ptr<QString>(new QString(u->name())));
+					m_pRegUserDict.emplace(notify, u->name());
 					notify = "";
 				}
 			}
@@ -428,7 +428,7 @@ void KviIsOnNotifyListManager::buildNotifyList()
 	m_NotifyList.clear();
 	for(auto & it : m_pRegUserDict)
 	{
-		m_NotifyList.push_back(std::unique_ptr<QString>(new QString(it.first)));
+		m_NotifyList.push_back(it.first);
 	}
 }
 
@@ -467,20 +467,16 @@ void KviIsOnNotifyListManager::buildIsOnList()
 	while(!m_NotifyList.empty())
 	{
 		const auto sIter = m_NotifyList.begin();
-		auto & s = *sIter;
+		const auto & s = *sIter;
 
-		if(((m_szIsOnString.length() + s->length()) + 1) < 504)
-		{
-			if(!m_szIsOnString.isEmpty())
-				m_szIsOnString.append(' ');
-			m_szIsOnString.append(*s);
-			m_IsOnList.push_back(std::move(s));
-			m_NotifyList.erase(sIter);
-		}
-		else
-		{
+		if(((m_szIsOnString.length() + s.length()) + 1) >= 504)
 			break;
-		}
+
+		if(!m_szIsOnString.isEmpty())
+			m_szIsOnString.append(' ');
+		m_szIsOnString.append(s);
+		m_IsOnList.push_back(std::move(s));
+		m_NotifyList.erase(sIter);
 	}
 }
 
@@ -520,9 +516,9 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage * msg)
 			QString dnk = m_pConnection->decodeText(nk.ptr());
 
 			std::size_t i = 0;
-			for(auto & s : m_IsOnList)
+			for(const auto & s : m_IsOnList)
 			{
-				if(KviQString::equalCI(*s, dnk))
+				if(KviQString::equalCI(s, dnk))
 				{
 					tmplist.insert(i);
 					bGotIt = true;
@@ -562,11 +558,11 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage * msg)
 
 	// first the easy step: remove the users that have just left irc or have never been online
 	// we're clearling the m_IsOnList
-	for(auto & s : m_IsOnList)
+	for(const auto & s : m_IsOnList)
 	{
 		// has just left IRC... make him part
-		if(m_pConsole->notifyListView()->findEntry(*s))
-			notifyOffLine(*s);
+		if(m_pConsole->notifyListView()->findEntry(s))
+			notifyOffLine(s);
 	}
 
 	m_IsOnList.clear();
@@ -580,9 +576,9 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage * msg)
 
 	std::set<std::size_t> l;
 	std::size_t i = 0;
-	for(auto & ss : m_OnlineList)
+	for(const auto & ss : m_OnlineList)
 	{
-		if(KviUserListEntry * ent = m_pConsole->notifyListView()->findEntry(*ss))
+		if(KviUserListEntry * ent = m_pConsole->notifyListView()->findEntry(ss))
 		{
 			// the user was online from a previous notify session
 			// might the mask have been changed ? (heh... this is tricky, maybe too much even)
@@ -598,11 +594,11 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage * msg)
 					std::vector<KviChannelWindow *> chlist = m_pConsole->connection()->channelList();
 					for(auto ch : chlist)
 					{
-						if(KviUserListEntry * le = ch->findEntry(*ss))
+						if(KviUserListEntry * le = ch->findEntry(ss))
 						{
 							l.insert(i); // ok... found on a channel... we don't need a userhost to match him
-							KviIrcMask mk(*ss, le->globalData()->user(), le->globalData()->host());
-							if(!doMatchUser(*ss, mk))
+							KviIrcMask mk(ss, le->globalData()->user(), le->globalData()->host());
+							if(!doMatchUser(ss, mk))
 								return true; // critical problems = have to restart!!!
 							break;
 						}
@@ -622,15 +618,15 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage * msg)
 			// check if we have a cached mask
 			if(db)
 			{
-				if(KviIrcUserEntry * ue = db->find(*ss))
+				if(KviIrcUserEntry * ue = db->find(ss))
 				{
 					// already in the db... do we have a mask ?
 					if(ue->hasUser() && ue->hasHost())
 					{
 						// yup! we have a complete mask to match on
-						KviIrcMask mk(*ss, ue->user(), ue->host());
+						KviIrcMask mk(ss, ue->user(), ue->host());
 						// lookup the user's name in the m_pRegUserDict
-						if(!doMatchUser(*ss, mk))
+						if(!doMatchUser(ss, mk))
 							return true; // critical problems = have to restart!!!
 						l.insert(i);     // remove anyway
 					}
@@ -666,9 +662,9 @@ bool KviIsOnNotifyListManager::doMatchUser(const QString & notifyString, const K
 	const auto i = m_pRegUserDict.find(notifyString);
 	if(i != m_pRegUserDict.end())
 	{
-		QString * nam = i->second.get();
+		const QString & nam = i->second;
 		// ok... find the user
-		if(KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(*nam))
+		if(KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(nam))
 		{
 			// ok... match the user
 			if(u->matchesFixed(mask))
@@ -760,18 +756,14 @@ void KviIsOnNotifyListManager::buildUserhostList()
 {
 	m_szUserhostString = "";
 	m_UserhostList.clear();
-	std::size_t i = 0;
-	while(!m_OnlineList.empty())
+	for(std::size_t i = 0; i < MAX_USERHOST_ENTRIES && !m_OnlineList.empty(); ++i)
 	{
 		const auto sIter = m_OnlineList.begin();
-		auto & s = *sIter;
-
-		if (i >= MAX_USERHOST_ENTRIES)
-			break;
+		const QString & s = *sIter;
 
 		if(!m_szUserhostString.isEmpty())
 			m_szUserhostString.append(' ');
-		m_szUserhostString.append(*s);
+		m_szUserhostString.append(s);
 		m_UserhostList.push_back(std::move(s));
 		m_OnlineList.erase(sIter);
 	}
@@ -841,9 +833,9 @@ bool KviIsOnNotifyListManager::handleUserhost(KviIrcMessage * msg)
 				QString szHost = m_pConnection->decodeText(host.ptr());
 
 				std::size_t i = 0;
-				for(auto & s : m_UserhostList)
+				for(const auto & s : m_UserhostList)
 				{
-					if(KviQString::equalCI(*s, szNick))
+					if(KviQString::equalCI(s, szNick))
 					{
 						tmplist.emplace(i, std::unique_ptr<KviIrcMask>(new KviIrcMask(szNick, szUser, szHost)));
 						bGotIt = true;
@@ -885,11 +877,11 @@ bool KviIsOnNotifyListManager::handleUserhost(KviIrcMessage * msg)
 	for(auto i = tmplist.rbegin(); i != tmplist.rend(); ++i)
 		m_UserhostList.erase(m_UserhostList.begin() + i->first);
 
-	for(auto & s : m_UserhostList)
+	for(const auto & s : m_UserhostList)
 	{
 		// oops... someone is no longer online ?
 		if(_OUTPUT_VERBOSE)
-			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Notify list: \r!n\r%Q\r appears to have gone offline before USERHOST reply was received, will recheck in the next loop"), s.get());
+			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Notify list: \r!n\r%Q\r appears to have gone offline before USERHOST reply was received, will recheck in the next loop"), &s);
 	}
 
 	m_UserhostList.clear();
@@ -976,14 +968,15 @@ void KviStupidNotifyListManager::start()
 void KviStupidNotifyListManager::sendIsOn()
 {
 	m_szLastIsOnMsg = "";
-	QString * nick = m_pNickList[m_iNextNickToCheck].get();
-	KVI_ASSERT(nick);
+	KVI_ASSERT(m_iNextNickToCheck < m_pNickList.size());
 
-	std::size_t i = 0;
-	while(nick && ((nick->length() + 5 + m_szLastIsOnMsg.length()) < 510))
+	std::size_t i = m_iNextNickToCheck;
+	for(; i < m_pNickList.size(); ++i)
 	{
-		KviQString::appendFormatted(m_szLastIsOnMsg, " %Q", nick);
-		nick = m_pNickList[m_iNextNickToCheck + ++i].get();
+		const auto nick = m_pNickList[i];
+		if((nick.length() + 5 + m_szLastIsOnMsg.length()) >= 510)
+			break;
+		KviQString::appendFormatted(m_szLastIsOnMsg, " %Q", &nick);
 	}
 	if(_OUTPUT_PARANOIC)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Notify list: Checking for: %Q"), &m_szLastIsOnMsg);
@@ -1090,7 +1083,7 @@ void KviStupidNotifyListManager::buildNickList()
 	{
 		QString notify;
 		if(it.current()->getProperty("notify", notify))
-			m_pNickList.push_back(std::unique_ptr<QString>(new QString(notify)));
+			m_pNickList.push_back(notify);
 		++it;
 	}
 }
@@ -1118,7 +1111,7 @@ void KviWatchNotifyListManager::buildRegUserDict()
 			notify = notify.trimmed();
 			QStringList sl = notify.split(' ', QString::SkipEmptyParts);
 			for(auto & slit : sl)
-				m_pRegUserDict.emplace(slit, std::unique_ptr<QString>(new QString(u->name())));
+				m_pRegUserDict.emplace(slit, u->name());
 		}
 		++it;
 	}
@@ -1134,7 +1127,7 @@ void KviWatchNotifyListManager::start()
 
 	for(auto & it : m_pRegUserDict)
 	{
-		QString nk = it.first;
+		const QString & nk = it.first;
 		if(nk.indexOf('*') == -1)
 		{
 			if((watchStr.length() + nk.length() + 2) > 501)
@@ -1169,9 +1162,9 @@ bool KviWatchNotifyListManager::doMatchUser(KviIrcMessage * msg, const QString &
 	const auto m = m_pRegUserDict.find(notifyString);
 	if(m != m_pRegUserDict.end())
 	{
-		QString * nam = m->second.get();
+		const QString & nam = m->second;
 		// ok... find the user
-		if(KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(*nam))
+		if(KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(nam))
 		{
 			// ok... match the user
 			if(u->matchesFixed(mask))
