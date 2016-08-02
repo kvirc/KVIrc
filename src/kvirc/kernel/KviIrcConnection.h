@@ -161,8 +161,8 @@ private:
 
 	KviIrcConnectionStateData * m_pStateData; // owned, never null
 
-	std::vector<KviChannelWindow *> m_pChannelList; // owned, never null, elements shallow
-	std::vector<KviQueryWindow *> m_pQueryList;     // owned, never null, elements shallow
+	std::vector<KviChannelWindow *> m_pChannelList; // elements are borrowed and never null
+	std::vector<KviQueryWindow *> m_pQueryList;     // elements are borrowed and never null
 
 	KviIrcUserDataBase * m_pUserDataBase; // owned, never null
 
