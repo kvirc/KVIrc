@@ -120,11 +120,7 @@ void KviAction::registerAccelerator()
 
 void KviAction::unregisterAccelerator()
 {
-	if(!m_pAccel)
-		return;
-
 	delete m_pAccel;
-
 	m_pAccel = nullptr;
 }
 
