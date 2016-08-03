@@ -38,7 +38,7 @@
 #include <QShortcut>
 
 #include <memory>
-#include <unordered_map>
+#include <unordered_set>
 #include <vector>
 
 class QShortcut;
@@ -203,7 +203,7 @@ protected:
 	QString m_szBigIconId;
 	QString m_szSmallIconId; // this is alternative to m_eSmallIcon
 	KviIconManager::SmallIcon m_eSmallIcon;
-	std::unordered_map<QAction *, std::unique_ptr<QAction>> m_pActionList;
+	std::unordered_set<QAction *> m_pActionList;
 	unsigned short int m_uInternalFlags;
 	unsigned int m_uFlags;
 	QString m_szKeySequence;
@@ -332,9 +332,9 @@ protected:
 
 	/**
 	* \brief Returns the list of actions associated to the action
-	* \return std::unordered_map<QAction *, std::unique_ptr<QAction>>
+	* \return std::unordered_set<QAction *>
 	*/
-	std::unordered_map<QAction *, std::unique_ptr<QAction>> const & actionList() const { return m_pActionList; };
+	std::unordered_set<QAction *> const & actionList() const { return m_pActionList; };
 
 	/**
 	* \brief Registers the action shortcut in the application

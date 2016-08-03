@@ -76,8 +76,8 @@ KviAction::KviAction(QObject * pParent, const QString & szName, const QString & 
 
 KviAction::~KviAction()
 {
-	for(auto & pActionPair : m_pActionList)
-		disconnect(pActionPair.second.get(), SIGNAL(destroyed()), this, SLOT(actionDestroyed()));
+	for(auto & pAction : m_pActionList)
+		disconnect(pAction, SIGNAL(destroyed()), this, SLOT(actionDestroyed()));
 
 	if(m_pAccel)
 		unregisterAccelerator();
@@ -135,9 +135,8 @@ void KviAction::setEnabled(bool bEnabled)
 	else
 		m_uInternalFlags &= ~KviAction::Enabled;
 
-	for(auto & pActionPair : m_pActionList)
+	for(auto & pAction : m_pActionList)
 	{
-		auto & pAction = pActionPair.second;
 		if (pAction->isEnabled() != bEnabled)
 			pAction->setEnabled(bEnabled);
 	}
@@ -245,9 +244,8 @@ void KviAction::reloadImages()
 
 	bool bIconVisibleInMenu = KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus);
 
-	for(auto & pActionPair : m_pActionList)
+	for(auto & pAction : m_pActionList)
 	{
-		auto & pAction = pActionPair.second;
 		pAction->setIcon(icon);
 		pAction->setIconVisibleInMenu(bIconVisibleInMenu);
 	}
@@ -535,20 +533,13 @@ bool KviAction::addToPopupMenu(QMenu * pMenu)
 void KviAction::actionDestroyed()
 {
 	QAction * pAction = (QAction *)sender();
-
-	auto upAction = m_pActionList.find(pAction);
-
-	// Qt will clean this up (presumably)
-	if (upAction != m_pActionList.end())
-		upAction->second.release();
-
 	m_pActionList.erase(pAction);
 }
 
 void KviAction::registerAction(QAction * pAction)
 {
 	connect(pAction, SIGNAL(destroyed()), this, SLOT(actionDestroyed()));
-	m_pActionList.emplace(pAction, std::unique_ptr<QAction>(pAction));
+	m_pActionList.insert(pAction);
 }
 
 QAction * KviAction::addToCustomToolBar(KviCustomToolBar * pParentToolBar)

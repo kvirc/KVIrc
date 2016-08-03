@@ -484,13 +484,12 @@ QAction * KviIrcContextDisplayAction::addToCustomToolBar(KviCustomToolBar * t)
 
 void KviIrcContextDisplayAction::activeContextChanged()
 {
-	for(auto & a : m_pActionList)
+	for(auto & pAction : m_pActionList)
 	{
-		auto & pAction = a.second;
 		QToolBar * t = (QToolBar *)pAction->parentWidget();
 		if(t)
 		{
-			KviIrcContextDisplay * w = (KviIrcContextDisplay *)t->widgetForAction(pAction.get());
+			KviIrcContextDisplay * w = (KviIrcContextDisplay *)t->widgetForAction(pAction);
 			if(w)
 				w->update();
 		}
@@ -499,13 +498,12 @@ void KviIrcContextDisplayAction::activeContextChanged()
 
 void KviIrcContextDisplayAction::activeContextStateChanged()
 {
-	for(auto & a : m_pActionList)
+	for(auto & pAction : m_pActionList)
 	{
-		auto & pAction = a.second;
 		QToolBar * t = (QToolBar *)pAction->parentWidget();
 		if(t)
 		{
-			KviIrcContextDisplay * w = (KviIrcContextDisplay *)t->widgetForAction(pAction.get());
+			KviIrcContextDisplay * w = (KviIrcContextDisplay *)t->widgetForAction(pAction);
 			if(w)
 				w->update();
 		}
@@ -575,7 +573,7 @@ void KviConnectAction::activeContextChanged()
 void KviConnectAction::activeContextStateChanged()
 {
 
-	std::unordered_map<QAction *, std::unique_ptr<QAction>> const & bl = actionList();
+	std::unordered_set<QAction *> const & bl = actionList();
 	if(bl.empty())
 		return;
 
@@ -615,22 +613,20 @@ void KviConnectAction::activeContextStateChanged()
 	{
 		for(auto & b : bl)
 		{
-			auto & pAction = b.second;
-			if(!pAction->isEnabled())
-				pAction->setEnabled(true);
-			pAction->setIcon(QIcon(*p));
-			pAction->setText(txt);
-			pAction->setIconVisibleInMenu(bIconVisibleInMenu);
+			if(!b->isEnabled())
+				b->setEnabled(true);
+			b->setIcon(QIcon(*p));
+			b->setText(txt);
+			b->setIconVisibleInMenu(bIconVisibleInMenu);
 		}
 	}
 	else
 	{
 		for(auto & b : bl)
 		{
-			auto & pAction = b.second;
-			if(pAction->isEnabled())
-				pAction->setEnabled(false);
-			pAction->setIconVisibleInMenu(bIconVisibleInMenu);
+			if(b->isEnabled())
+				b->setEnabled(false);
+			b->setIconVisibleInMenu(bIconVisibleInMenu);
 		}
 	}
 }
@@ -1080,7 +1076,7 @@ void KviGoAwayAction::activeContextChanged()
 
 void KviGoAwayAction::activeContextStateChanged()
 {
-	std::unordered_map<QAction *, std::unique_ptr<QAction>> const & bl = actionList();
+	std::unordered_set<QAction *> const & bl = actionList();
 	if(bl.empty())
 		return;
 
@@ -1117,12 +1113,11 @@ void KviGoAwayAction::activeContextStateChanged()
 	{
 		for(auto & b : bl)
 		{
-			auto & pAction = b.second;
-			if(!pAction->isEnabled())
-				pAction->setEnabled(true);
-			pAction->setIcon(QIcon(*p));
-			pAction->setText(txt);
-			pAction->setIconVisibleInMenu(bIconVisibleInMenu);
+			if(!b->isEnabled())
+				b->setEnabled(true);
+			b->setIcon(QIcon(*p));
+			b->setText(txt);
+			b->setIconVisibleInMenu(bIconVisibleInMenu);
 		}
 		m_uInternalFlags |= KviAction::Enabled;
 	}
@@ -1130,10 +1125,9 @@ void KviGoAwayAction::activeContextStateChanged()
 	{
 		for(auto & b : bl)
 		{
-			auto & pAction = b.second;
-			if(pAction->isEnabled())
-				pAction->setEnabled(false);
-			pAction->setIconVisibleInMenu(bIconVisibleInMenu);
+			if(b->isEnabled())
+				b->setEnabled(false);
+			b->setIconVisibleInMenu(bIconVisibleInMenu);
 		}
 		m_uInternalFlags &= ~KviAction::Enabled;
 	}
