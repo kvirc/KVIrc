@@ -534,6 +534,12 @@ void KviAction::actionDestroyed()
 
 void KviAction::registerAction(QAction * pAction)
 {
+	if(m_pActionList.count(pAction))
+	{
+		qDebug("Attempt to re-register pAction?");
+		return;
+	}
+
 	connect(pAction, SIGNAL(destroyed()), this, SLOT(actionDestroyed()));
 	m_pActionList.insert(pAction);
 }
