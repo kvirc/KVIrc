@@ -136,27 +136,27 @@ void KviIrcContext::unregisterDataStreamMonitor(KviIrcDataStreamMonitor * m)
 
 void KviIrcContext::closeAllDeadChannels()
 {
-	for(auto & c : m_DeadChannels)
+	while(!m_DeadChannels.empty())
 	{
-		KviChannelWindow * chan = static_cast<KviChannelWindow *>(c);
+		KviChannelWindow * chan = static_cast<KviChannelWindow *>(m_DeadChannels.front());
 		g_pMainWindow->closeWindow(chan);
 	}
 }
 
 void KviIrcContext::closeAllDeadQueries()
 {
-	for(auto & q : m_DeadQueries)
+	while(!m_DeadQueries.empty())
 	{
-		KviQueryWindow * qWin = static_cast<KviQueryWindow *>(q);
+		KviQueryWindow * qWin = static_cast<KviQueryWindow *>(m_DeadQueries.front());
 		g_pMainWindow->closeWindow(qWin);
 	}
 }
 
 void KviIrcContext::closeAllContextWindows()
 {
-	for(auto & w : m_ContextWindows)
+	while(!m_ContextWindows.empty())
 	{
-		KviWindow * wWin = static_cast<KviWindow *>(w);
+		KviWindow * wWin = static_cast<KviWindow *>(m_ContextWindows.front());
 		g_pMainWindow->closeWindow(wWin);
 	}
 }
