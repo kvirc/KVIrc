@@ -1098,9 +1098,8 @@ void KviApplication::setAvatarOnFileReceived(
     const QString & szHost)
 {
 	if(m_PendingAvatarChanges.size() >= KVI_MAX_PENDING_AVATARS) // can't be...
-	{
-		m_PendingAvatarChanges.erase(m_PendingAvatarChanges.begin()); // kill the first entry
-	}
+		// kill an entry to make space
+		m_PendingAvatarChanges.erase(m_PendingAvatarChanges.begin());
 
 	std::unique_ptr<KviPendingAvatarChange> pAvatar(new KviPendingAvatarChange());
 	pAvatar->pConsole = pConsole;
