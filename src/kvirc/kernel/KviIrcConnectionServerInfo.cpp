@@ -1710,7 +1710,7 @@ const QString & KviCharybdisServerInfo::getChannelModeDescription(char mode)
 			return __tr2qs("Paranoid (disable KNOCK)");
 			break;
 		case 'q':
-			return __tr2qs("Quiet ban editor");
+			return __tr2qs("Quiet");
 			break;
 		case 'r':
 			return __tr2qs("Need auth to join channel");
