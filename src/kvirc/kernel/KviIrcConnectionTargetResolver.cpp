@@ -408,7 +408,7 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 				    m_pServerDns->ipAddressCount());
 
 			int r = ::rand() % m_pServerDns->ipAddressCount();
-			szIpAddress = *(m_pServerDns->ipAddressList()->at(r));
+			szIpAddress = m_pServerDns->ipAddressList()[r];
 		}
 		else
 		{
@@ -430,7 +430,7 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 		    &szIpAddress);
 	m_pTarget->server()->setIp(szIpAddress);
 
-	QString szFirstHostname = m_pServerDns->hostName();
+	const QString & szFirstHostname = m_pServerDns->hostName();
 
 	if(!KviQString::equalCI(m_pTarget->server()->hostName(), m_pServerDns->hostName()))
 	{

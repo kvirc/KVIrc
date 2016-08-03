@@ -28,7 +28,8 @@
 #include "KviHeapObject.h"
 #include "KviQString.h"
 #include "KviError.h"
-#include "KviPointerList.h"
+
+#include <vector>
 
 class KviDnsResolverThread;
 
@@ -40,13 +41,10 @@ class KVILIB_API KviDnsResolverResult : public KviHeapObject
 protected:
 	KviDnsResolverResult();
 
-public:
-	~KviDnsResolverResult();
-
 protected:
 	KviError::Code m_eError;
-	KviPointerList<QString> * m_pHostnameList;
-	KviPointerList<QString> * m_pIpAddressList;
+	std::vector<QString> m_pHostnameList;
+	std::vector<QString> m_pIpAddressList;
 	QString m_szQuery;
 
 public:
@@ -55,14 +53,12 @@ public:
 		return m_eError;
 	}
 
-	// never store nor delete these pointers!
-	// (these are NEVER 0)
-	KviPointerList<QString> * hostnameList()
+	const std::vector<QString> & hostnameList()
 	{
 		return m_pHostnameList;
 	}
 
-	KviPointerList<QString> * ipAddressList()
+	const std::vector<QString> & ipAddressList()
 	{
 		return m_pIpAddressList;
 	}
@@ -113,7 +109,6 @@ public:
 	};
 
 protected:
-	void * m_pAuxData;
 	KviDnsResolverThread * m_pSlaveThread;
 	KviDnsResolverResult * m_pDnsResult;
 	State m_state;
@@ -132,27 +127,14 @@ public:
 	// Results (return always non null-data..but valid results only if state() == Success or Failure)
 	KviError::Code error();
 	QString errorString();
-	const QString & firstHostname();
-	const QString & hostName()
-	{
-		return firstHostname();
-	}
+	const QString & hostName();
 	const QString & firstIpAddress();
-	int hostnameCount();
-	int ipAddressCount();
-	KviPointerList<QString> * hostnameList();
-	KviPointerList<QString> * ipAddressList();
+	std::size_t hostnameCount();
+	std::size_t ipAddressCount();
+	const std::vector<QString> & hostnameList();
+	const std::vector<QString> & ipAddressList();
 	const QString & query();
 	bool isRunning() const;
-
-	// Auxiliary data store
-	void setAuxData(void * pAuxData) { m_pAuxData = pAuxData; };
-	void * releaseAuxData()
-	{
-		void * pData = m_pAuxData;
-		m_pAuxData = 0;
-		return pData;
-	};
 
 protected:
 	virtual bool event(QEvent * e);
@@ -186,8 +168,7 @@ public:
 
 	virtual ~KviDnsResolverThreadEvent()
 	{
-		if(m_pResult)
-			delete m_pResult;
+		delete m_pResult;
 	}
 
 public:

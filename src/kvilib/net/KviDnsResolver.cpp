@@ -59,26 +59,16 @@
 KviDnsResolverResult::KviDnsResolverResult()
 {
 	m_eError = KviError::Success;
-	m_pHostnameList = new KviPointerList<QString>;
-	m_pHostnameList->setAutoDelete(true);
-	m_pIpAddressList = new KviPointerList<QString>;
-	m_pIpAddressList->setAutoDelete(true);
-}
-
-KviDnsResolverResult::~KviDnsResolverResult()
-{
-	delete m_pHostnameList;
-	delete m_pIpAddressList;
 }
 
 void KviDnsResolverResult::appendHostname(const QString & host)
 {
-	m_pHostnameList->append(new QString(host));
+	m_pHostnameList.push_back(host);
 }
 
 void KviDnsResolverResult::appendAddress(const QString & addr)
 {
-	m_pIpAddressList->append(new QString(addr));
+	m_pIpAddressList.push_back(addr);
 }
 
 KviDnsResolverThread::KviDnsResolverThread(KviDnsResolver * pDns)
@@ -387,7 +377,6 @@ KviDnsResolver::KviDnsResolver()
 {
 	m_pSlaveThread = new KviDnsResolverThread(this);
 	m_pDnsResult = new KviDnsResolverResult();
-	m_pAuxData = nullptr;
 	m_state = Idle;
 }
 
@@ -400,10 +389,7 @@ KviDnsResolver::~KviDnsResolver()
 		delete m_pSlaveThread; // will eventually terminate it (but it will also block us!!!)
 	}
 
-	if(m_pDnsResult)
-		delete m_pDnsResult;
-	if(m_pAuxData)
-		qDebug("You're leaking memory man! m_pAuxData is non 0!");
+	delete m_pDnsResult;
 }
 
 bool KviDnsResolver::isRunning() const
@@ -440,40 +426,36 @@ KviDnsResolverResult * KviDnsResolver::result()
 	return m_pDnsResult;
 }
 
-KviPointerList<QString> * KviDnsResolver::hostnameList()
+const std::vector<QString> & KviDnsResolver::hostnameList()
 {
 	return result()->hostnameList();
 }
 
-KviPointerList<QString> * KviDnsResolver::ipAddressList()
+const std::vector<QString> & KviDnsResolver::ipAddressList()
 {
 	return result()->ipAddressList();
 }
 
-int KviDnsResolver::hostnameCount()
+std::size_t KviDnsResolver::hostnameCount()
 {
-	return result()->hostnameList()->count();
+	return result()->hostnameList().size();
 }
 
-int KviDnsResolver::ipAddressCount()
+std::size_t KviDnsResolver::ipAddressCount()
 {
-	return result()->ipAddressList()->count();
+	return result()->ipAddressList().size();
 }
 
-const QString & KviDnsResolver::firstHostname()
+const QString & KviDnsResolver::hostName()
 {
-	QString * pStr = result()->hostnameList()->first();
-	if(pStr)
-		return *pStr;
-	return KviQString::Empty;
+	const auto & list = result()->hostnameList();
+	return list.empty() ? KviQString::Empty : list.front();
 }
 
 const QString & KviDnsResolver::firstIpAddress()
 {
-	QString * pStr = result()->ipAddressList()->first();
-	if(pStr)
-		return *pStr;
-	return KviQString::Empty;
+	const auto & list = result()->ipAddressList();
+	return list.empty() ? KviQString::Empty : list.front();
 }
 
 const QString & KviDnsResolver::query()
@@ -488,13 +470,12 @@ bool KviDnsResolver::event(QEvent * e)
 		KviDnsResolverThreadEvent * pEvent = dynamic_cast<KviDnsResolverThreadEvent *>(e);
 		if(pEvent)
 		{
-			if(m_pDnsResult)
-				delete m_pDnsResult;
+			delete m_pDnsResult;
 			m_pDnsResult = pEvent->releaseResult();
 			m_state = (m_pDnsResult->error() == KviError::Success) ? Success : Failure;
 			emit lookupDone(this);
 			return true;
-		} // else ops... unknown thread event ?
+		} // else oops... unknown thread event ?
 	}
 	return QObject::event(e);
 }
