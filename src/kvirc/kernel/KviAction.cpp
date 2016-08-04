@@ -35,34 +35,34 @@
 #include <QAction>
 #include <QMenu>
 
-KviAction::KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory, const QString & szBigIconId, const QString & szSmallIconId, unsigned int uFlags, const QString & szKeySequence)
+KviAction::KviAction(QObject * pParent, QString szName, QString szVisibleName, QString szDescription, KviActionCategory * pCategory, QString szBigIconId, QString szSmallIconId, unsigned int uFlags, QString szKeySequence)
     : QObject(pParent),
-      m_szName(szName),
-      m_szVisibleName(szVisibleName),
-      m_szDescription(szDescription),
+      m_szName(std::move(szName)),
+      m_szVisibleName(std::move(szVisibleName)),
+      m_szDescription(std::move(szDescription)),
       m_pCategory(pCategory),
-      m_szBigIconId(szBigIconId),
-      m_szSmallIconId(szSmallIconId),
+      m_szBigIconId(std::move(szBigIconId)),
+      m_szSmallIconId(std::move(szSmallIconId)),
       m_eSmallIcon(KviIconManager::None),
       m_uInternalFlags(KviAction::Enabled),
       m_uFlags(uFlags),
-      m_szKeySequence(szKeySequence),
-      m_pAccel(nullptr)
+      m_szKeySequence(std::move(szKeySequence)),
+      m_pAccel()
 {
 }
 
-KviAction::KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory, const QString & szBigIconId, KviIconManager::SmallIcon eSmallIcon, unsigned int uFlags, const QString & szKeySequence)
+KviAction::KviAction(QObject * pParent, QString szName, QString szVisibleName, QString szDescription, KviActionCategory * pCategory, QString szBigIconId, KviIconManager::SmallIcon eSmallIcon, unsigned int uFlags, QString szKeySequence)
     : QObject(pParent),
-      m_szName(szName),
-      m_szVisibleName(szVisibleName),
-      m_szDescription(szDescription),
+      m_szName(std::move(szName)),
+      m_szVisibleName(std::move(szVisibleName)),
+      m_szDescription(std::move(szDescription)),
       m_pCategory(pCategory),
-      m_szBigIconId(szBigIconId),
-      m_eSmallIcon(eSmallIcon),
+      m_szBigIconId(std::move(szBigIconId)),
+      m_eSmallIcon(std::move(eSmallIcon)),
       m_uInternalFlags(KviAction::Enabled),
       m_uFlags(uFlags),
-      m_szKeySequence(szKeySequence),
-      m_pAccel(nullptr)
+      m_szKeySequence(std::move(szKeySequence)),
+      m_pAccel()
 {
 }
 
