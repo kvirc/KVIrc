@@ -1564,12 +1564,6 @@ const QString & KviBasicIrcServerInfo::getChannelModeDescription(char mode)
 		case 'I':
 			return __tr2qs("Invite exceptions");
 			break;
-		case 'R':
-			return __tr2qs("Reop masks");
-			break;
-		case 'a':
-			return __tr2qs("Anonymous messages");
-			break;
 		case 'b':
 			return __tr2qs("Ban masks");
 			break;
@@ -1596,12 +1590,6 @@ const QString & KviBasicIrcServerInfo::getChannelModeDescription(char mode)
 			break;
 		case 'p':
 			return __tr2qs("Private");
-			break;
-		case 'q':
-			return __tr2qs("Quiet");
-			break;
-		case 'r':
-			return __tr2qs("Reop");
 			break;
 		case 's':
 			return __tr2qs("Secret");
