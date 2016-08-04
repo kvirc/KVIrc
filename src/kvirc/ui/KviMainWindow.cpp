@@ -465,7 +465,9 @@ void KviMainWindow::closeWindow(KviWindow * wnd)
 	}
 
 	// forget it...
-	m_WinList.erase(wnd);
+	const auto iter = std::find(m_WinList.begin(), m_WinList.end(), wnd);
+	if (iter != m_WinList.end())
+		m_WinList.erase(iter);
 
 #if 0
 	// hide it
@@ -523,7 +525,7 @@ void KviMainWindow::closeWindow(KviWindow * wnd)
 
 void KviMainWindow::addWindow(KviWindow * wnd, bool bShow)
 {
-	m_WinList.insert(wnd);
+	m_WinList.push_back(wnd);
 	wnd->createWindowListItem(); // create the window WindowList item AFTER it has been constructed
 
 	QString group;

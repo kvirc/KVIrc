@@ -34,6 +34,8 @@
 #include "KviTalMainWindow.h"
 #include "KviQString.h"
 
+#include <algorithm>
+#include <list>
 #include <unordered_set>
 #include <vector>
 
@@ -79,7 +81,7 @@ protected:
 	KviWindowListBase * m_pWindowList;                             // the WindowList
 	KviStatusBar * m_pStatusBar;
 	// the mdi workspace child windows
-	std::unordered_set<KviWindow *> m_WinList;   // the main list of windows
+	std::list<KviWindow *> m_WinList;             // the main list of windows
 	KviIrcContext * m_pActiveContext;             // the context of the m_pActiveWindow
 	// other
 	KviTrayIcon * m_pTrayIcon;                    // the frame's dock extension: this should be prolly moved ?
@@ -100,7 +102,7 @@ public:
 	KviIrcConnection * activeConnection();
 	// The list of the windows belonging to this frame
 	// Note that the windows may be also undocked, but they are still owned by the frame
-	std::unordered_set<KviWindow *> & windowList() { return m_WinList; };
+	std::list<KviWindow *> & windowList() { return m_WinList; };
 	// Sets the specified window to be the active one
 	// Raises it and focuses it
 	void setActiveWindow(KviWindow * wnd);
@@ -114,7 +116,7 @@ public:
 	// window list. This is useful for asynchronous functions
 	// that keep a window pointer and need to ensure that it is still
 	// valid after an uncontrolled delay. (Think of a /timer implementation)
-	bool windowExists(KviWindow * wnd) { return (m_WinList.count(wnd)); };
+	bool windowExists(KviWindow * wnd) { return (std::find(m_WinList.begin(), m_WinList.end(), wnd) != m_WinList.end()); };
 	// The number of consoles in this frame
 	unsigned int consoleCount();
 	// Creates a new console window. DON'T use the KviConsoleWindow constructor directly.
