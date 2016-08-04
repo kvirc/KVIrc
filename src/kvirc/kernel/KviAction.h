@@ -39,6 +39,7 @@
 
 #include <memory>
 #include <unordered_set>
+#include <utility>
 #include <vector>
 
 class QShortcut;
@@ -69,12 +70,12 @@ public:
 	* \param szDescription Description of the category
 	* \return KviActionCategory
 	*/
-	KviActionCategory(const QString & szName, const QString & szVisibleName, const QString & szDescription);
-
-	/**
-	* \brief Destroys an action category object
-	*/
-	~KviActionCategory();
+	KviActionCategory(QString szName, QString szVisibleName, QString szDescription)
+	    : m_szName(std::move(szName)),
+	      m_szVisibleName(std::move(szVisibleName)),
+	      m_szDescription(std::move(szDescription))
+	{
+	}
 
 public:
 	/**
@@ -152,14 +153,14 @@ public:
 	*/
 	KviAction(
 	    QObject * pParent,
-	    const QString & szName,
-	    const QString & szVisibleName,
-	    const QString & szDescription,
-	    KviActionCategory * pCategory = NULL,
-	    const QString & szBigIconId = QString(),
-	    const QString & szSmallIconId = QString(),
+	    QString szName,
+	    QString szVisibleName,
+	    QString szDescription,
+	    KviActionCategory * pCategory = nullptr,
+	    QString szBigIconId = QString(),
+	    QString szSmallIconId = QString(),
 	    unsigned int uFlags = 0,
-	    const QString & szKeySequence = QString());
+	    QString szKeySequence = QString());
 
 	/**
 	* \brief Constructs the action object
@@ -181,14 +182,14 @@ public:
 	*/
 	KviAction(
 	    QObject * pParent,
-	    const QString & szName,
-	    const QString & szVisibleName,
-	    const QString & szDescription,
-	    KviActionCategory * pCategory = NULL,
-	    const QString & szBigIconId = QString(),
+	    QString szName,
+	    QString szVisibleName,
+	    QString szDescription,
+	    KviActionCategory * pCategory = nullptr,
+	    QString szBigIconId = QString(),
 	    KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
 	    unsigned int uFlags = 0,
-	    const QString & szKeySequence = QString());
+	    QString szKeySequence = QString());
 
 	/**
 	* \brief Destroys the action object
