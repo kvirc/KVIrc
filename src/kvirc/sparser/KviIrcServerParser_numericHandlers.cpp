@@ -189,7 +189,17 @@ void KviIrcServerParser::parseNumeric004(KviIrcMessage * msg)
 
 		while(*aux)
 		{
-			tmp = QString("%1: %2").arg(*aux).arg(msg->connection()->serverInfo()->getChannelModeDescription(*aux));
+			tmp = msg->connection()->serverInfo()->getChannelModeDescription(*aux);
+			if(tmp.isEmpty())
+			{
+				QString tmp2 = __tr2qs(": Unknown channel mode");
+				tmp = QString("%1: %2").arg(*aux).arg(tmp2);
+			}
+			else
+			{
+				tmp = QString("%1: %2").arg(*aux).arg(tmp);
+			}
+
 			msg->console()->outputNoFmt(KVI_OUT_SERVERINFO, tmp);
 			aux++;
 		}
