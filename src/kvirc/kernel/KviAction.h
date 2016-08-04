@@ -39,6 +39,7 @@
 
 #include <memory>
 #include <unordered_set>
+#include <utility>
 #include <vector>
 
 class QShortcut;
@@ -69,10 +70,12 @@ public:
 	* \param szDescription Description of the category
 	* \return KviActionCategory
 	*/
-	KviActionCategory(const QString & szName, const QString & szVisibleName, const QString & szDescription)
-        : m_szName(szName), m_szVisibleName(szVisibleName), m_szDescription(szDescription)
-        {
-        }
+	KviActionCategory(QString szName, QString szVisibleName, QString szDescription)
+	    : m_szName(std::move(szName)),
+	      m_szVisibleName(std::move(szVisibleName)),
+	      m_szDescription(std::move(szDescription))
+	{
+	}
 
 public:
 	/**
