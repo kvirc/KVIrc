@@ -71,8 +71,7 @@ KviAction::~KviAction()
 	for(auto & pAction : m_pActionList)
 		disconnect(pAction, SIGNAL(destroyed()), this, SLOT(actionDestroyed()));
 
-	if(m_pAccel)
-		unregisterAccelerator();
+	this->unregisterAccelerator();
 }
 
 const QString & KviAction::visibleName()
@@ -92,9 +91,7 @@ bool KviAction::isKviUserActionNeverOverrideThis()
 
 void KviAction::registerAccelerator()
 {
-	if(m_pAccel)
-		delete m_pAccel;
-
+	this->unregisterAccelerator();
 	if(!m_szKeySequence.isEmpty())
 	{
 		g_pMainWindow->freeAccelleratorKeySequence(m_szKeySequence);
@@ -103,10 +100,6 @@ void KviAction::registerAccelerator()
 		connect(m_pAccel, SIGNAL(activated()), this, SLOT(activate()));
 		//no way to have Ctrl+Alt+Key events fired as no-ambiguous, probably qt bug
 		connect(m_pAccel, SIGNAL(activatedAmbiguously()), this, SLOT(activate()));
-	}
-	else
-	{
-		m_pAccel = nullptr;
 	}
 }
 
