@@ -69,12 +69,10 @@ public:
 	* \param szDescription Description of the category
 	* \return KviActionCategory
 	*/
-	KviActionCategory(const QString & szName, const QString & szVisibleName, const QString & szDescription);
-
-	/**
-	* \brief Destroys an action category object
-	*/
-	~KviActionCategory();
+	KviActionCategory(const QString & szName, const QString & szVisibleName, const QString & szDescription)
+        : m_szName(szName), m_szVisibleName(szVisibleName), m_szDescription(szDescription)
+        {
+        }
 
 public:
 	/**

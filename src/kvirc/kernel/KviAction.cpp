@@ -35,14 +35,6 @@
 #include <QAction>
 #include <QMenu>
 
-KviActionCategory::KviActionCategory(const QString & szName, const QString & szVisibleName, const QString & szDescription)
-    : m_szName(szName), m_szVisibleName(szVisibleName), m_szDescription(szDescription)
-{
-}
-
-KviActionCategory::~KviActionCategory()
-    = default;
-
 KviAction::KviAction(QObject * pParent, const QString & szName, const QString & szVisibleName, const QString & szDescription, KviActionCategory * pCategory, const QString & szBigIconId, const QString & szSmallIconId, unsigned int uFlags, const QString & szKeySequence)
     : QObject(pParent),
       m_szName(szName),
