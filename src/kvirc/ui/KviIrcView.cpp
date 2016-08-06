@@ -96,15 +96,12 @@
 #include "KviPixmapUtils.h"
 #include "KviTrayIcon.h"
 
-#include <QBitmap>
 #include <QPainter>
 #include <QRegExp>
 #include <QFontMetrics>
-#include <QApplication>
 #include <QMessageBox>
 #include <QPaintEvent>
 #include <QDateTime>
-#include <QCursor>
 #include <QScrollBar>
 #include <QFontDialog>
 #include <QByteArray>
