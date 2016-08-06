@@ -29,6 +29,8 @@
 // KviIrcConnectionAsyncWhowasData for creating an awhowas command
 // It is now also used by KviIrcConnectionAsyncWhoisData
 
+#include <set>
+
 #ifndef __GNUC__
 #define __attribute__(X)
 #endif
@@ -36,54 +38,26 @@
 template <class T>
 class KVIRC_API KviIrcConnectionAsyncData
 {
-public:
-	KviIrcConnectionAsyncData()
-	{
-		m_pInfoList = 0;
-	}
-
-	~KviIrcConnectionAsyncData()
-	{
-		if(m_pInfoList)
-			delete m_pInfoList;
-	}
-
 protected:
-	KviPointerList<T> * m_pInfoList; // awhois pending stuff
+	std::set<T *> m_pInfoList; // awhois pending stuff
 public:
-	void add(T * i)
-	{
-		if(!m_pInfoList)
-		{
-			m_pInfoList = new KviPointerList<T>;
-			m_pInfoList->setAutoDelete(true);
-		}
-		m_pInfoList->append(i);
-	}
+	void add(T * i) { m_pInfoList.insert(i); }
 
 	T * lookup(const QString & nick)
 	{
-		if(!m_pInfoList)
-			return 0;
-		for(T * i = m_pInfoList->first(); i; i = m_pInfoList->next())
+		if(m_pInfoList.empty())
+			return nullptr;
+
+		for(auto & i : m_pInfoList)
 		{
 			if(KviQString::equalCI(nick, i->szNick))
 				return i;
 		}
-		return 0;
+
+		return nullptr;
 	}
 
-	void remove(T * i)
-	{
-		if(!m_pInfoList)
-			return;
-		m_pInfoList->removeRef(i);
-		if(m_pInfoList->isEmpty())
-		{
-			delete m_pInfoList;
-			m_pInfoList = 0;
-		}
-	}
+	void remove(T * i) { m_pInfoList.erase(i); }
 };
 
 #endif
