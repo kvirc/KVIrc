@@ -49,12 +49,9 @@ KviKvsAsyncDnsOperation::KviKvsAsyncDnsOperation(KviWindow * pWnd, QString & szQ
 
 KviKvsAsyncDnsOperation::~KviKvsAsyncDnsOperation()
 {
-	if(m_pDns)
-		delete m_pDns;
-	if(m_pMagic)
-		delete m_pMagic;
-	if(m_pCallback)
-		delete m_pCallback;
+	delete m_pDns;
+	delete m_pMagic;
+	delete m_pCallback;
 }
 
 void KviKvsAsyncDnsOperation::dnsStartFailed()
