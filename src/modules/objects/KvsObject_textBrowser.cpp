@@ -104,7 +104,7 @@ KVSO_CLASS_FUNCTION(textBrowser, setSource)
 	}
 	QUrl url;
 	url.setPath(szFile);
-	((QTextBrowser *)widget())->setSource(url);
+	((QTextBrowser *)widget())->setSource(QUrl::fromLocalFile(szFile));
 	return true;
 }
 
