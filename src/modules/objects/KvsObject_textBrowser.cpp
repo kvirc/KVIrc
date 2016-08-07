@@ -102,8 +102,6 @@ KVSO_CLASS_FUNCTION(textBrowser, setSource)
 		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.", "objects"), &szFile);
 		return true;
 	}
-	QUrl url;
-	url.setPath(szFile);
 	((QTextBrowser *)widget())->setSource(QUrl::fromLocalFile(szFile));
 	return true;
 }
