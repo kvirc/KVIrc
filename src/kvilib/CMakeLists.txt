@@ -62,7 +62,6 @@ set(kvilib_SRCS
 	irc/KviIrcNetwork.cpp
 	irc/KviIrcServer.cpp
 	irc/KviIrcServerDataBase.cpp
-	irc/KviIrcServerReconnectInfo.cpp
 	irc/KviIrcUserDataBase.cpp
 	irc/KviIrcUserEntry.cpp
 	irc/KviNickServRule.cpp

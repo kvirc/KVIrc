@@ -70,6 +70,8 @@
 #include <QTextCodec>
 #include <QtGlobal>
 
+#include <algorithm>
+
 extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
@@ -1664,13 +1666,12 @@ bool KviIrcConnection::changeUserMode(char cMode, bool bSet)
 	return true;
 }
 
-void KviIrcConnection::gatherChannelAndPasswordPairs(QList<QPair<QString, QString>> & lChannelsAndPasses)
+void KviIrcConnection::gatherChannelAndPasswordPairs(std::vector<std::pair<QString, QString>> & lChannelsAndPasses)
 {
 	for(auto & c : m_pChannelList)
-		lChannelsAndPasses.append(
-		    QPair<QString, QString>(
-		        c->windowName(),
-		        c->hasChannelMode('k') ? c->channelModeParam('k') : QString()));
+		lChannelsAndPasses.emplace_back(
+		    c->windowName(),
+		    c->hasChannelMode('k') ? c->channelModeParam('k') : QString());
 }
 
 void KviIrcConnection::gatherQueryNames(QStringList & lQueryNames)
@@ -1679,30 +1680,27 @@ void KviIrcConnection::gatherQueryNames(QStringList & lQueryNames)
 		lQueryNames.append(q->target());
 }
 
-void KviIrcConnection::joinChannels(const QList<QPair<QString, QString>> & lChannelsAndPasses)
+void KviIrcConnection::joinChannels(const std::vector<std::pair<QString, QString>> & lChannelsAndPasses)
 {
-	if(lChannelsAndPasses.count() < 1)
+	if(lChannelsAndPasses.empty())
 		return;
 
 	// Sort the list so the channels with passwords come first
-	QList<QPair<QString, QString>> lSorted;
+	std::vector<std::pair<QString, QString>> lSorted = lChannelsAndPasses;
 
-	QPair<QString, QString> oChanAndPass;
-	Q_FOREACH(oChanAndPass, lChannelsAndPasses)
+	std::sort(lSorted.begin(), lSorted.end(),
+		[](const std::pair<QString, QString> & left,
+		   const std::pair<QString, QString> & right)
 	{
-		if(oChanAndPass.second.isEmpty())
-			lSorted.append(oChanAndPass);
-		else
-			lSorted.prepend(oChanAndPass);
-	}
+		return left.second.count() > right.second.count();
+	});
 
 	// We send the channel list in chunks to avoid overflowing the 510 character limit on the message.
 	QString szChans, szPasses;
 	QString szCommand;
 
-	while(lSorted.count() > 0)
+	for(auto & oChanAndPass : lSorted)
 	{
-		QPair<QString, QString> oChanAndPass = lSorted.takeFirst();
 
 		if(!szChans.isEmpty())
 			szChans.append(',');
@@ -1843,7 +1841,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 
 	if(target()->server()->reconnectInfo())
 	{
-		if(!target()->server()->reconnectInfo()->m_lJoinChannels.isEmpty())
+		if(!target()->server()->reconnectInfo()->m_lJoinChannels.empty())
 		{
 			bJoinStdChannels = false;
 			joinChannels(target()->server()->reconnectInfo()->m_lJoinChannels);
@@ -1879,7 +1877,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 
 	if(bJoinStdChannels)
 	{
-		QList<QPair<QString, QString>> lChansAndPass;
+		std::vector<std::pair<QString, QString>> lChansAndPass;
 
 		if(target()->network()->autoJoinChannelList())
 		{
@@ -1895,7 +1893,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 					continue;
 				if(!m_pServerInfo->isSupportedChannelType(szCurChan[0]))
 					szCurChan.prepend('#');
-				lChansAndPass.append(QPair<QString, QString>(szCurChan, szCurPass));
+				lChansAndPass.emplace_back(szCurChan, szCurPass);
 			}
 		}
 
@@ -1913,7 +1911,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 					continue;
 				if(!m_pServerInfo->isSupportedChannelType(szCurChan[0]))
 					szCurChan.prepend('#');
-				lChansAndPass.append(QPair<QString, QString>(szCurChan, szCurPass));
+				lChansAndPass.emplace_back(szCurChan, szCurPass);
 			}
 		}
 

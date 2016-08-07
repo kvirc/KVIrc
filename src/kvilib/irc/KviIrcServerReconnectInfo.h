@@ -36,8 +36,8 @@
 
 #include <QString>
 #include <QStringList>
-#include <QList>
-#include <QPair>
+#include <utility>
+#include <vector>
 
 /**
 * \class KviIrcServerReconnectInfo
@@ -50,19 +50,7 @@ public:
 	* \brief Constructs the server reconnect info object
 	* \return KviIrcServerReconnectInfo
 	*/
-	KviIrcServerReconnectInfo();
-
-	/**
-	* \brief Carbon copy
-	* \param info The object to copy the info from
-	* \return KviIrcServerReconnectInfo
-	*/
-	KviIrcServerReconnectInfo(const KviIrcServerReconnectInfo & info);
-
-	/**
-	* \brief Destroys the server reconnect info object
-	*/
-	~KviIrcServerReconnectInfo();
+	KviIrcServerReconnectInfo() : m_bIsAway(false) {};
 
 public:
 	QString m_szNick;
@@ -72,7 +60,7 @@ public:
 	bool m_bIsAway;
 
 	// The list of channels to join (first = channel name, second = password)
-	QList<QPair<QString, QString>> m_lJoinChannels;
+	std::vector<std::pair<QString, QString>> m_lJoinChannels;
 };
 
 #endif //_KVI_IRCSERVER_INFO_H_

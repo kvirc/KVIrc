@@ -37,9 +37,8 @@
 #include <QObject>
 #include <QByteArray>
 #include <QStringList>
-#include <QList>
-#include <QPair>
 
+#include <utility>
 #include <vector>
 
 class QTimer;
@@ -771,12 +770,12 @@ protected:
 	* The first element of the pair is the channel name, the second element of the pair is the eventual password.
 	* May send multiple JOIN messages.
 	*/
-	void joinChannels(const QList<QPair<QString, QString>> & lChannelsAndPasses);
+	void joinChannels(const std::vector<std::pair<QString, QString>> & lChannelsAndPasses);
 
 	/**
 	* Gather the list of currently joined channels with the relative passwords.
 	*/
-	void gatherChannelAndPasswordPairs(QList<QPair<QString, QString>> & lChannelsAndPasses);
+	void gatherChannelAndPasswordPairs(std::vector<std::pair<QString, QString>> & lChannelsAndPasses);
 
 	/**
 	* Gather the list of currently open query names.
