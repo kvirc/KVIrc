@@ -31,12 +31,14 @@
 #include "KviLocale.h"
 #include "KviConsoleWindow.h"
 
-extern KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList;
+#include <unordered_set>
+
+extern std::unordered_set<SocketSpyWindow *> g_pSocketSpyWindowList;
 
 SocketSpyWindow::SocketSpyWindow(KviConsoleWindow * lpConsole)
     : KviWindow(KviWindow::SocketSpy, "socket_spy", lpConsole), KviIrcDataStreamMonitor(lpConsole->context())
 {
-	g_pSocketSpyWindowList->append(this);
+	g_pSocketSpyWindowList.insert(this);
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
 	setObjectName("spysocket_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter, this);
@@ -46,7 +48,7 @@ SocketSpyWindow::SocketSpyWindow(KviConsoleWindow * lpConsole)
 
 SocketSpyWindow::~SocketSpyWindow()
 {
-	g_pSocketSpyWindowList->removeRef(this);
+	g_pSocketSpyWindowList.erase(this);
 }
 
 void SocketSpyWindow::die()

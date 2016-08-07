@@ -29,8 +29,9 @@
 #include "KviLocale.h"
 
 #include <QSplitter>
+#include <unordered_set>
 
-KviPointerList<SocketSpyWindow> * g_pSocketSpyWindowList = nullptr;
+std::unordered_set<SocketSpyWindow *> g_pSocketSpyWindowList;
 
 /*
 	@doc: socketspy.open
@@ -59,25 +60,20 @@ static bool socketspy_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 static bool socketspy_module_init(KviModule * m)
 {
-	g_pSocketSpyWindowList = new KviPointerList<SocketSpyWindow>;
-	g_pSocketSpyWindowList->setAutoDelete(false);
-
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", socketspy_kvs_cmd_open);
 	return true;
 }
 
 static bool socketspy_module_cleanup(KviModule *)
 {
-	while(g_pSocketSpyWindowList->first())
-		g_pSocketSpyWindowList->first()->die();
-	delete g_pSocketSpyWindowList;
-	g_pSocketSpyWindowList = nullptr;
+	for(auto & s : g_pSocketSpyWindowList)
+		s->die();
 	return true;
 }
 
 static bool socketspy_module_can_unload(KviModule *)
 {
-	return (g_pSocketSpyWindowList->isEmpty());
+	return (g_pSocketSpyWindowList.empty());
 }
 
 KVIRC_MODULE(
