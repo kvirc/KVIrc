@@ -30,8 +30,9 @@
 #include "KviLocale.h"
 
 #include <QSplitter>
+#include <unordered_set>
 
-KviPointerList<LinksWindow> * g_pLinksWindowList = nullptr;
+std::unordered_set<LinksWindow *> g_pLinksWindowList;
 
 /*
 	@doc: links.open
@@ -80,26 +81,20 @@ static bool links_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 static bool links_module_init(KviModule * m)
 {
-	g_pLinksWindowList = new KviPointerList<LinksWindow>;
-	g_pLinksWindowList->setAutoDelete(false);
-
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", links_kvs_cmd_open);
-
 	return true;
 }
 
 static bool links_module_cleanup(KviModule *)
 {
-	while(g_pLinksWindowList->first())
-		g_pLinksWindowList->first()->die();
-	delete g_pLinksWindowList;
-	g_pLinksWindowList = nullptr;
+	for(auto & l : g_pLinksWindowList)
+		l->die();
 	return true;
 }
 
 static bool links_module_can_unload(KviModule *)
 {
-	return (g_pLinksWindowList->isEmpty());
+	return (g_pLinksWindowList.empty());
 }
 
 KVIRC_MODULE(

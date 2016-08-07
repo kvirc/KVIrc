@@ -41,12 +41,15 @@
 #include <QMouseEvent>
 #include <QHeaderView>
 
-extern KviPointerList<LinksWindow> * g_pLinksWindowList;
+#include <unordered_set>
+#include <utility>
+
+extern std::unordered_set<LinksWindow *> g_pLinksWindowList;
 
 LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
     : KviWindow(KviWindow::Links, "links", lpConsole), KviExternalServerDataParser()
 {
-	g_pLinksWindowList->append(this);
+	g_pLinksWindowList.insert(this);
 
 	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal, this);
 	m_pTopSplitter->setObjectName("top_splitter");
@@ -84,9 +87,6 @@ LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter, this);
 
-	m_pLinkList = new KviPointerList<KviLink>;
-	m_pLinkList->setAutoDelete(true);
-
 	m_pHostPopup = new QMenu();
 	connect(m_pHostPopup, SIGNAL(triggered(QAction *)), this, SLOT(hostPopupClicked(QAction *)));
 
@@ -99,9 +99,8 @@ LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
 
 LinksWindow::~LinksWindow()
 {
-	g_pLinksWindowList->removeRef(this);
+	g_pLinksWindowList.erase(this);
 	m_pConsole->context()->setLinksWindowPointer(nullptr);
-	delete m_pLinkList;
 	delete m_pHostPopup;
 }
 
@@ -209,7 +208,7 @@ void LinksWindow::endOfLinks()
 	KviCString szMaxHop, szMaxLinks;
 
 	m_pListView->setUpdatesEnabled(false);
-	for(KviLink * l = m_pLinkList->first(); l; l = m_pLinkList->next())
+	for(auto & l : m_pLinkList)
 	{
 		totalHosts++;
 		if(l->hops == 0)
@@ -245,7 +244,7 @@ void LinksWindow::endOfLinks()
 			}
 			if(l->host.contains('*'))
 				wildServers++;
-			it = insertLink(l);
+			it = insertLink(l.get());
 			if(!it)
 			{
 				output(KVI_OUT_SYSTEMERROR, __tr2qs("Broken link: missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"),
@@ -330,8 +329,7 @@ void LinksWindow::endOfLinks()
 
 	updateCaption();
 
-	while(!m_pLinkList->isEmpty())
-		m_pLinkList->removeFirst();
+	m_pLinkList.clear();
 
 	m_pListView->resizeColumnToContents(0);
 	m_pListView->setUpdatesEnabled(true);
@@ -456,14 +454,13 @@ void LinksWindow::hostPopupClicked(QAction * pAction)
 void LinksWindow::reset()
 {
 	outputNoFmt(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Reset"));
-	while(!m_pLinkList->isEmpty())
-		m_pLinkList->removeFirst();
+	m_pLinkList.clear();
 }
 
 void LinksWindow::processData(KviIrcMessage * msg)
 {
 	output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Processing link: %s"), msg->allParams());
-	KviLink * l = new KviLink;
+	std::unique_ptr<KviLink> l(new KviLink);
 
 	l->host = msg->safeParam(1);
 	l->parent = msg->safeParam(2);
@@ -486,17 +483,17 @@ void LinksWindow::processData(KviIrcMessage * msg)
 	while(*tr && (*tr == ' '))
 		tr++;
 	l->description = tr;
-	uint idx = 0;
-	for(KviLink * m = m_pLinkList->first(); m; m = m_pLinkList->next())
+	std::size_t idx = 0;
+	for(auto & m : m_pLinkList)
 	{
 		if(m->hops >= l->hops)
 		{
-			m_pLinkList->insert(idx, l);
+			m_pLinkList.insert(m_pLinkList.begin() + idx, std::move(l));
 			return;
 		}
 		idx++;
 	}
-	m_pLinkList->append(l);
+	m_pLinkList.push_back(std::move(l));
 }
 
 void LinksWindow::applyOptions()

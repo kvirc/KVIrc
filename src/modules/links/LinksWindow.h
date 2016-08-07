@@ -35,6 +35,9 @@
 #include <QToolButton>
 #include <QMenu>
 
+#include <memory>
+#include <vector>
+
 class KviThemedLabel;
 
 typedef struct _KviLink
@@ -69,7 +72,7 @@ protected:
 	QSplitter * m_pVertSplitter;
 	QSplitter * m_pTopSplitter;
 	LinksListView * m_pListView;
-	KviPointerList<KviLink> * m_pLinkList;
+	std::vector<std::unique_ptr<KviLink>> m_pLinkList;
 	QMenu * m_pHostPopup;
 	QString m_szRootServer;
 	QToolButton * m_pRequestButton;
