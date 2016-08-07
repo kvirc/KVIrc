@@ -1246,10 +1246,8 @@ IrcServerOptionsTreeWidgetItem::IrcServerOptionsTreeWidgetItem(QTreeWidgetItem *
 
 IrcServerOptionsTreeWidgetItem::~IrcServerOptionsTreeWidgetItem()
 {
-	if(m_pServerData)
-		delete m_pServerData;
-	if(m_pNetworkData)
-		delete m_pNetworkData;
+	delete m_pServerData;
+	delete m_pNetworkData;
 }
 
 void IrcServerOptionsTreeWidgetItem::updateVisibleStrings()
@@ -1502,14 +1500,9 @@ OptionsWidget_servers::~OptionsWidget_servers()
 		m_pImportFilter = nullptr;
 	}
 
-	if(m_pClipboard)
-		delete m_pClipboard;
-
-	if(m_pServerDetailsDialog)
-		delete m_pServerDetailsDialog;
-
-	if(m_pNetworkDetailsDialog)
-		delete m_pNetworkDetailsDialog;
+	delete m_pClipboard;
+	delete m_pServerDetailsDialog;
+	delete m_pNetworkDetailsDialog;
 }
 
 void OptionsWidget_servers::slotShowThisDialogAtStartupSelectorDestroyed()
