@@ -25,9 +25,9 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
 
 #include <QObject>
+#include <unordered_set>
 
 class KviWindow;
 
@@ -50,11 +50,10 @@ class KVIRC_API KviKvsAsyncOperationManager
 	friend class KviKvsAsyncOperation;
 
 public:
-	KviKvsAsyncOperationManager();
 	~KviKvsAsyncOperationManager();
 
 protected:
-	KviPointerList<KviKvsAsyncOperation> * m_pOperationList;
+	std::unordered_set<KviKvsAsyncOperation *> m_pOperationList;
 
 protected:
 	void registerOperation(KviKvsAsyncOperation * o);

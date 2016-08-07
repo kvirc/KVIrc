@@ -38,25 +38,18 @@ KviKvsAsyncOperation::~KviKvsAsyncOperation()
 	KviKvsKernel::instance()->asyncOperationManager()->unregisterOperation(this);
 }
 
-KviKvsAsyncOperationManager::KviKvsAsyncOperationManager()
-{
-	m_pOperationList = new KviPointerList<KviKvsAsyncOperation>;
-	m_pOperationList->setAutoDelete(false);
-}
-
 KviKvsAsyncOperationManager::~KviKvsAsyncOperationManager()
 {
-	while(m_pOperationList->first())
-		delete m_pOperationList->first();
-	delete m_pOperationList;
+	for(auto & o : m_pOperationList)
+		delete o;
 }
 
 void KviKvsAsyncOperationManager::registerOperation(KviKvsAsyncOperation * o)
 {
-	m_pOperationList->append(o);
+	m_pOperationList.insert(o);
 }
 
 void KviKvsAsyncOperationManager::unregisterOperation(KviKvsAsyncOperation * o)
 {
-	m_pOperationList->removeRef(o);
+	m_pOperationList.erase(o);
 }
