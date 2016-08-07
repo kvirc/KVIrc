@@ -62,7 +62,6 @@ class OptionsWidget_proxy : public KviOptionsWidget
 	Q_OBJECT
 public:
 	OptionsWidget_proxy(QWidget * parent);
-	~OptionsWidget_proxy();
 
 protected:
 	QTreeWidget * m_pTreeWidget;

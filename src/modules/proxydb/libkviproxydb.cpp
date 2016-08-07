@@ -31,6 +31,9 @@
 #include <QString>
 #include <QHostAddress>
 
+#include <memory>
+#include <utility>
+
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 /*

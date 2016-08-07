@@ -44,6 +44,7 @@
 #include <QMenu>
 
 #include <memory>
+#include <utility>
 #include <vector>
 
 ProxyOptionsTreeWidgetItem::ProxyOptionsTreeWidgetItem(QTreeWidget * parent, const QPixmap & pm, KviProxy * prx)
@@ -144,9 +145,6 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 
 	m_pContextPopup = new QMenu(this);
 }
-
-OptionsWidget_proxy::~OptionsWidget_proxy()
-    = default;
 
 void OptionsWidget_proxy::enableDisableUseProxySelector()
 {
@@ -320,10 +318,11 @@ void OptionsWidget_proxy::commit()
 		if(!tmp.isEmpty())
 		{
 			std::unique_ptr<KviProxy> prx(new KviProxy(*(it->m_pProxyData)));
-			g_pProxyDataBase->insertProxy(std::move(prx));
 
 			if(it == m_pLastEditedItem)
 				g_pProxyDataBase->setCurrentProxy(prx.get());
+
+			g_pProxyDataBase->insertProxy(std::move(prx));
 		}
 	}
 
