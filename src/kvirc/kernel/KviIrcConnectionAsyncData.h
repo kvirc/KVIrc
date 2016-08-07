@@ -29,7 +29,7 @@
 // KviIrcConnectionAsyncWhowasData for creating an awhowas command
 // It is now also used by KviIrcConnectionAsyncWhoisData
 
-#include <set>
+#include <unordered_set>
 
 #ifndef __GNUC__
 #define __attribute__(X)
@@ -39,7 +39,7 @@ template <class T>
 class KVIRC_API KviIrcConnectionAsyncData
 {
 protected:
-	std::set<T *> m_pInfoList; // awhois pending stuff
+	std::unordered_set<T *> m_pInfoList; // awhois pending stuff
 public:
 	void add(T * i) { m_pInfoList.insert(i); }
 
