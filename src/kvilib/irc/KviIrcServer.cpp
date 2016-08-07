@@ -30,6 +30,8 @@
 #include "KviTimeUtils.h"
 #include "KviProxyDataBase.h"
 
+#include <memory>
+#include <vector>
 #include <stdlib.h>
 
 // This is not allowed on windows unless we force the symbol to be undefined
@@ -58,11 +60,11 @@ KviProxy * KviIrcServer::proxyServer(KviProxyDataBase * pDb)
 	int i = 0;
 	if(proxy() < 0)
 		return nullptr;
-	KviPointerList<KviProxy> * proxylist = pDb->proxyList();
-	for(KviProxy * pProxy = proxylist->first(); pProxy; pProxy = proxylist->next())
+	std::vector<std::unique_ptr<KviProxy>> & proxylist = pDb->proxyList();
+	for(auto & pProxy : proxylist)
 	{
 		if(i == proxy())
-			return pProxy;
+			return pProxy.get();
 		i++;
 	}
 	return nullptr;

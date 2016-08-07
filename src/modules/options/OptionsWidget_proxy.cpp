@@ -43,6 +43,9 @@
 #include <QToolButton>
 #include <QMenu>
 
+#include <memory>
+#include <vector>
+
 ProxyOptionsTreeWidgetItem::ProxyOptionsTreeWidgetItem(QTreeWidget * parent, const QPixmap & pm, KviProxy * prx)
     : QTreeWidgetItem(parent)
 {
@@ -161,12 +164,12 @@ void OptionsWidget_proxy::fillProxyList()
 {
 	ProxyOptionsTreeWidgetItem * prx;
 
-	KviPointerList<KviProxy> * l = g_pProxyDataBase->proxyList();
+	std::vector<std::unique_ptr<KviProxy>> & l = g_pProxyDataBase->proxyList();
 
-	for(KviProxy * p = l->first(); p; p = l->next())
+	for(auto & p : l)
 	{
-		prx = new ProxyOptionsTreeWidgetItem(m_pTreeWidget, *(g_pIconManager->getSmallIcon(KviIconManager::Proxy)), p);
-		if(p == g_pProxyDataBase->currentProxy())
+		prx = new ProxyOptionsTreeWidgetItem(m_pTreeWidget, *(g_pIconManager->getSmallIcon(KviIconManager::Proxy)), p.get());
+		if(p.get() == g_pProxyDataBase->currentProxy())
 		{
 			prx->setSelected(true);
 			m_pTreeWidget->setCurrentItem(prx);
@@ -316,16 +319,16 @@ void OptionsWidget_proxy::commit()
 		QString tmp = it->text(0);
 		if(!tmp.isEmpty())
 		{
-			KviProxy * prx = new KviProxy(*(it->m_pProxyData));
-			g_pProxyDataBase->insertProxy(prx);
+			std::unique_ptr<KviProxy> prx(new KviProxy(*(it->m_pProxyData)));
+			g_pProxyDataBase->insertProxy(std::move(prx));
 
 			if(it == m_pLastEditedItem)
-				g_pProxyDataBase->setCurrentProxy(prx);
+				g_pProxyDataBase->setCurrentProxy(prx.get());
 		}
 	}
 
-	if(!g_pProxyDataBase->currentProxy())
-		g_pProxyDataBase->setCurrentProxy(g_pProxyDataBase->proxyList()->first());
+	if(!g_pProxyDataBase->currentProxy() && !g_pProxyDataBase->proxyList().empty())
+		g_pProxyDataBase->setCurrentProxy(g_pProxyDataBase->proxyList().front().get());
 
 	KviOptionsWidget::commit();
 }

@@ -26,21 +26,9 @@
 #include "KviConfigurationFile.h"
 #include "KviProxy.h"
 
-KviProxyDataBase::KviProxyDataBase()
-{
-	m_pProxyList = new KviPointerList<KviProxy>;
-	m_pProxyList->setAutoDelete(true);
-	m_pCurrentProxy = nullptr;
-}
-
-KviProxyDataBase::~KviProxyDataBase()
-{
-	delete m_pProxyList;
-}
-
 void KviProxyDataBase::updateProxyIp(const char * proxy, const char * ip)
 {
-	for(KviProxy * prx = m_pProxyList->first(); prx; prx = m_pProxyList->next())
+	for(auto & prx : m_pProxyList)
 	{
 		if(QString::compare(proxy, prx->m_szHostname, Qt::CaseInsensitive))
 		{
@@ -52,17 +40,17 @@ void KviProxyDataBase::updateProxyIp(const char * proxy, const char * ip)
 
 KviProxy * KviProxyDataBase::findProxy(const KviProxy * pProxy, bool bName)
 {
-	for(KviProxy * p = m_pProxyList->first(); p; p = m_pProxyList->next())
+	for(auto & p : m_pProxyList)
 	{
 		if(bName)
 		{
 			if(QString::compare(p->m_szHostname, pProxy->m_szHostname, Qt::CaseInsensitive))
-				return p;
+				return p.get();
 		}
 		else
 		{
 			if(QString::compare(p->m_szHostname, pProxy->m_szHostname, Qt::CaseInsensitive) && (p->m_uPort == pProxy->m_uPort) && (p->protocol() == pProxy->protocol()) && (p->isIPv6() == pProxy->isIPv6()))
-				return p;
+				return p.get();
 		}
 	}
 	return nullptr;
@@ -70,9 +58,7 @@ KviProxy * KviProxyDataBase::findProxy(const KviProxy * pProxy, bool bName)
 
 void KviProxyDataBase::clear()
 {
-	delete m_pProxyList;
-	m_pProxyList = new KviPointerList<KviProxy>;
-	m_pProxyList->setAutoDelete(true);
+	m_pProxyList.clear();
 	m_pCurrentProxy = nullptr;
 }
 
@@ -85,7 +71,7 @@ void KviProxyDataBase::load(const QString & filename)
 
 	for(unsigned int i = 0; i < nEntries; i++)
 	{
-		KviProxy * p = new KviProxy();
+		std::unique_ptr<KviProxy> p(new KviProxy());
 		KviCString tmp(KviCString::Format, "%u_Hostname", i);
 		p->m_szHostname = cfg.readEntry(tmp.ptr(), "proxy.example.net");
 		tmp.sprintf("%u_Port", i);
@@ -105,12 +91,12 @@ void KviProxyDataBase::load(const QString & filename)
 		p->m_bIsIPv6 = cfg.readBoolEntry(tmp.ptr(), false);
 		tmp.sprintf("%u_Current", i);
 		if(cfg.readBoolEntry(tmp.ptr(), false))
-			m_pCurrentProxy = p;
-		m_pProxyList->append(p);
+			m_pCurrentProxy = p.get();
+		m_pProxyList.push_back(std::move(p));
 	}
 
-	if(!m_pCurrentProxy)
-		m_pCurrentProxy = m_pProxyList->first();
+	if(!m_pCurrentProxy && !m_pProxyList.empty())
+		m_pCurrentProxy = m_pProxyList.front().get();
 }
 
 void KviProxyDataBase::save(const QString & filename)
@@ -119,11 +105,11 @@ void KviProxyDataBase::save(const QString & filename)
 
 	cfg.clear();
 
-	cfg.writeEntry("Entries", m_pProxyList->count());
+	cfg.writeEntry("Entries", static_cast<unsigned>(m_pProxyList.size()));
 
 	int i = 0;
 
-	for(KviProxy * p = m_pProxyList->first(); p; p = m_pProxyList->next())
+	for(auto & p : m_pProxyList)
 	{
 		KviCString tmp(KviCString::Format, "%u_Hostname", i);
 		cfg.writeEntry(tmp.ptr(), p->m_szHostname);
@@ -155,7 +141,7 @@ void KviProxyDataBase::save(const QString & filename)
 		tmp.sprintf("%u_IsIPv6", i);
 		cfg.writeEntry(tmp.ptr(), p->m_bIsIPv6);
 		tmp.sprintf("%u_Current", i);
-		if(m_pCurrentProxy == p)
+		if(m_pCurrentProxy == p.get())
 			cfg.writeEntry(tmp.ptr(), true);
 		i++;
 	}

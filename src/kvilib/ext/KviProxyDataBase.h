@@ -24,29 +24,30 @@
 //
 //=============================================================================
 
+#include "KviProxy.h"
 #include "kvi_settings.h"
-#include "KviPointerList.h"
 
-class KviProxy;
+#include <memory>
+#include <utility>
+#include <vector>
 
 class KVILIB_API KviProxyDataBase
 {
 public:
-	KviProxyDataBase();
-	~KviProxyDataBase();
+	KviProxyDataBase() : m_pCurrentProxy() {};
 
 private:
-	KviPointerList<KviProxy> * m_pProxyList;
+	std::vector<std::unique_ptr<KviProxy>> m_pProxyList;
 	KviProxy * m_pCurrentProxy;
 
 public:
 	void clear();
-	KviPointerList<KviProxy> * proxyList() { return m_pProxyList; };
+	std::vector<std::unique_ptr<KviProxy>> & proxyList() { return m_pProxyList; };
 	KviProxy * currentProxy() { return m_pCurrentProxy; };
 	KviProxy * findProxy(const KviProxy * pProxy, bool bName);
 	void updateProxyIp(const char * proxy, const char * ip);
 	void setCurrentProxy(KviProxy * prx) { m_pCurrentProxy = prx; };
-	void insertProxy(KviProxy * prx) { m_pProxyList->append(prx); };
+	void insertProxy(std::unique_ptr<KviProxy> prx) { m_pProxyList.push_back(std::move(prx)); };
 	void load(const QString & filename);
 	void save(const QString & filename);
 };

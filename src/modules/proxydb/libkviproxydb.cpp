@@ -295,19 +295,16 @@ static bool proxydb_kvs_cmd_addProxy(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	KviProxy * pProxy = new KviProxy();
+	std::unique_ptr<KviProxy> pProxy(new KviProxy());
 	pProxy->setHostname(szProxy);
 
-	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy, true);
+	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy.get(), true);
 	if(pRecord)
 	{
 		if(c->switches()->find('q', "quiet"))
-		{
-			delete pProxy;
 			return true;
-		}
+
 		c->error(__tr2qs_ctx("The specified proxy already exists", "serverdb"));
-		delete pProxy;
 		return false;
 	}
 
@@ -342,12 +339,11 @@ static bool proxydb_kvs_cmd_addProxy(KviKvsModuleCommandCall * c)
 		else
 		{
 			c->error(__tr2qs_ctx("The specified protocol doesn't exist", "serverdb"));
-			delete pProxy;
 			return false;
 		}
 	}
 
-	g_pProxyDataBase->insertProxy(pProxy);
+	g_pProxyDataBase->insertProxy(std::move(pProxy));
 
 	return true;
 }

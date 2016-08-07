@@ -67,6 +67,9 @@
 #include <QShortcut>
 #include <QMenu>
 
+#include <memory>
+#include <vector>
+
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW) || defined(COMPILE_ON_MAC)
 #include <QStyleFactory>
 #endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
@@ -791,9 +794,9 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par, KviIrcServer * s)
 	m_pProxyEditor->addItem(__tr2qs_ctx("Default", "options"));
 	m_pProxyEditor->addItem(__tr2qs_ctx("Direct Connection", "options"));
 
-	KviPointerList<KviProxy> * proxylist = g_pProxyDataBase->proxyList();
+	std::vector<std::unique_ptr<KviProxy>> & proxylist = g_pProxyDataBase->proxyList();
 
-	for(KviProxy * p = proxylist->first(); p; p = proxylist->next())
+	for(auto & p : proxylist)
 	{
 		m_pProxyEditor->insertItem(m_pProxyEditor->count(), QString("%1:%2").arg(p->hostName()).arg(p->port()));
 	}
