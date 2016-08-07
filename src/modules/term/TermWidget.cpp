@@ -29,7 +29,6 @@
 #include "KviMainWindow.h"
 #include "KviIconManager.h"
 #include "KviLocale.h"
-#include "KviPointerList.h"
 
 #include <QLabel>
 #include <QToolTip>
@@ -42,16 +41,18 @@
 #include "kparts/factory.h"
 #include <kde_terminal_interface.h>
 
+#include <unordered_set>
+
 extern KviModule * g_pTermModule;
-extern KviPointerList<TermWidget> * g_pTermWidgetList;
-extern KviPointerList<TermWindow> * g_pTermWindowList;
+extern std::unordered_set<TermWidget *> g_pTermWidgetList;
+extern std::unordered_set<TermWindow *> g_pTermWindowList;
 
 TermWidget::TermWidget(QWidget * par, bool bIsStandalone)
     : QFrame(par)
 {
 	setObjectName("term_widget");
 	if(bIsStandalone)
-		g_pTermWidgetList->append(this);
+		g_pTermWidgetList.insert(this);
 	m_bIsStandalone = bIsStandalone;
 
 	m_pKonsolePart = 0;
@@ -112,8 +113,8 @@ TermWidget::~TermWidget()
 		disconnect(m_pKonsoleWidget, SIGNAL(destroyed()), this, SLOT(konsoleDestroyed()));
 
 	if(m_bIsStandalone)
-		g_pTermWidgetList->removeRef(this);
-	if(g_pTermWindowList->isEmpty() && g_pTermWidgetList->isEmpty())
+		g_pTermWidgetList.erase(this);
+	if(g_pTermWindowList.erase() && g_pTermWidgetList.empty())
 		g_pTermModule->unlock();
 }
 

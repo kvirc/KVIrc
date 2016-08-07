@@ -26,7 +26,6 @@
 #include "KviModule.h"
 #include "KviWindow.h"
 #include "KviMainWindow.h"
-#include "KviPointerList.h"
 
 #include <QSplitter>
 
@@ -34,8 +33,10 @@
 #include "TermWidget.h"
 #include "TermWindow.h"
 
-KviPointerList<TermWidget> * g_pTermWidgetList = 0;
-KviPointerList<TermWindow> * g_pTermWindowList = 0;
+#include <unordered_set>
+
+std::unordered_set<TermWidget *> g_pTermWidgetList;
+std::unordered_set<TermWindow *> g_pTermWindowList;
 #endif
 
 KviModule * g_pTermModule = nullptr;
@@ -89,13 +90,6 @@ static bool term_module_init(KviModule * m)
 {
 	g_pTermModule = m;
 
-#ifdef COMPILE_KDE4_SUPPORT
-	g_pTermWidgetList = new KviPointerList<TermWidget>;
-	g_pTermWidgetList->setAutoDelete(false);
-	g_pTermWindowList = new KviPointerList<TermWindow>;
-	g_pTermWindowList->setAutoDelete(false);
-#endif
-
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", term_kvs_cmd_open);
 	return true;
 }
@@ -103,14 +97,10 @@ static bool term_module_init(KviModule * m)
 static bool term_module_cleanup(KviModule *)
 {
 #ifdef COMPILE_KDE4_SUPPORT
-	while(g_pTermWidgetList->first())
-		delete g_pTermWidgetList->first();
-	delete g_pTermWidgetList;
-	g_pTermWidgetList = 0;
-	while(g_pTermWindowList->first())
-		g_pTermWindowList->first()->close();
-	delete g_pTermWindowList;
-	g_pTermWindowList = 0;
+	for(auto & t : g_pTermWidgetList)
+		delete t;
+	for(auto & t : g_pTermWindowList)
+		t->close();
 #endif
 	return true;
 }

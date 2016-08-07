@@ -31,23 +31,25 @@
 #include "KviLocale.h"
 #include "KviModule.h"
 
+#include <unordered_set>
+
 extern KviModule * g_pTermModule;
-extern KviPointerList<TermWindow> * g_pTermWindowList;
-extern KviPointerList<TermWidget> * g_pTermWidgetList;
+extern std::unordered_set<TermWindow *> g_pTermWindowList;
+extern std::unordered_set<TermWidget *> g_pTermWidgetList;
 extern KviIconManager * g_pIconManager;
 
 TermWindow::TermWindow(const char * name)
     : KviWindow(KviWindow::Terminal, name)
 {
-	g_pTermWindowList->append(this);
+	g_pTermWindowList.insert(this);
 	m_pTermWidget = 0;
 	m_pTermWidget = new TermWidget(this);
 }
 
 TermWindow::~TermWindow()
 {
-	g_pTermWindowList->removeRef(this);
-	if(g_pTermWindowList->isEmpty() && g_pTermWidgetList->isEmpty())
+	g_pTermWindowList.erase(this);
+	if(g_pTermWindowList.empty() && g_pTermWidgetList.empty())
 		g_pTermModule->unlock();
 }
 
