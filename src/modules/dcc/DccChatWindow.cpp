@@ -602,14 +602,6 @@ void DccChatWindow::connected()
 DccChatThread::DccChatThread(KviWindow * wnd, kvi_socket_t fd)
     : DccThread(wnd, fd)
 {
-	m_pOutBuffers = new KviPointerList<KviDataBuffer>;
-	m_pOutBuffers->setAutoDelete(true);
-}
-
-DccChatThread::~DccChatThread()
-{
-	if(m_pOutBuffers)
-		delete m_pOutBuffers;
 }
 
 void DccChatThread::run()
@@ -821,7 +813,7 @@ bool DccChatThread::handleIncomingData(KviDccThreadIncomingData * data, bool bCr
 void DccChatThread::sendRawData(const void * buffer, int len)
 {
 	m_pMutex->lock();
-	m_pOutBuffers->append(new KviDataBuffer((unsigned int)len, (const unsigned char *)buffer));
+	m_pOutBuffers.emplace_back(new KviDataBuffer((unsigned int)len, (const unsigned char *)buffer));
 	m_pMutex->unlock();
 }
 
@@ -829,7 +821,7 @@ bool DccChatThread::tryFlushOutBuffers()
 {
 	bool bRet = true;
 	m_pMutex->lock();
-	while(KviDataBuffer * b = m_pOutBuffers->first())
+	for(auto & b : m_pOutBuffers)
 	{
 		int sentLen;
 #ifdef COMPILE_SSL_SUPPORT
@@ -847,7 +839,7 @@ bool DccChatThread::tryFlushOutBuffers()
 		if(sentLen > 0)
 		{
 			if(sentLen == b->size())
-				m_pOutBuffers->removeFirst();
+				m_pOutBuffers.pop_front();
 			else
 			{
 				// just a part

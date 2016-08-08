@@ -29,11 +29,13 @@
 #include "DccWindow.h"
 
 #include "KviDataBuffer.h"
-#include "KviPointerList.h"
 #include "KviThemedLabel.h"
 #include "KviCString.h"
 #include "KviWindow.h"
 #include "KviError.h"
+
+#include <deque>
+#include <memory>
 
 #ifdef COMPILE_SSL_SUPPORT
 class KviSSL;
@@ -46,10 +48,9 @@ class DccChatThread : public DccThread
 {
 public:
 	DccChatThread(KviWindow * wnd, kvi_socket_t fd);
-	~DccChatThread();
 
 protected:
-	KviPointerList<KviDataBuffer> * m_pOutBuffers;
+	std::deque<std::unique_ptr<KviDataBuffer>> m_pOutBuffers;
 
 protected:
 	virtual void run();
