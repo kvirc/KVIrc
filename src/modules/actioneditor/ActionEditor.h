@@ -149,7 +149,9 @@ protected slots:
 	void needsContextCheckToggled(bool);
 	void needsConnectionCheckToggled(bool);
 	void specificWindowsCheckToggled(bool);
-	void channelQueryOrConsoleWindowCheckToggled(bool);
+	void channelWindowsCheckToggled(bool);
+	void consoleWindowsCheckToggled(bool);
+	void queryWindowsCheckToggled(bool);
 };
 
 class ActionEditor : public QWidget

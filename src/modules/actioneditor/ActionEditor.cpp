@@ -229,7 +229,7 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
 	m_pWindowConsoleCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when "
 	                                              "the active window is a console", "editor"));
 
-	connect(m_pWindowConsoleCheck, SIGNAL(toggled(bool)), this, SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
+	connect(m_pWindowConsoleCheck, SIGNAL(toggled(bool)), this, SLOT(consoleWindowsCheckToggled(bool)));
 	gl->addWidget(m_pWindowConsoleCheck, 4, 1, 1, 4);
 
 	m_pConsoleOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs_ctx("Only if there are selected users", "editor"), tab);
@@ -242,7 +242,7 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
 	m_pWindowChannelCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when "
 	                                              "the active window is a channel", "editor"));
 
-	connect(m_pWindowChannelCheck, SIGNAL(toggled(bool)), this, SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
+	connect(m_pWindowChannelCheck, SIGNAL(toggled(bool)), this, SLOT(channelWindowsCheckToggled(bool)));
 	gl->addWidget(m_pWindowChannelCheck, 6, 1, 1, 4);
 
 	m_pChannelOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs_ctx("Only if there are selected users", "editor"), tab);
@@ -255,7 +255,7 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
 	m_pWindowQueryCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when "
 	                                            "the active window is a query", "editor"));
 
-	connect(m_pWindowQueryCheck, SIGNAL(toggled(bool)), this, SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
+	connect(m_pWindowQueryCheck, SIGNAL(toggled(bool)), this, SLOT(queryWindowsCheckToggled(bool)));
 	gl->addWidget(m_pWindowQueryCheck, 8, 1, 1, 4);
 
 	m_pQueryOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs_ctx("Only if there are selected users", "editor"), tab);
@@ -292,14 +292,22 @@ SingleActionEditor::SingleActionEditor(QWidget * par, ActionEditor * ed)
 SingleActionEditor::~SingleActionEditor()
     = default;
 
-void SingleActionEditor::channelQueryOrConsoleWindowCheckToggled(bool)
+void SingleActionEditor::channelWindowsCheckToggled(bool)
 {
 	m_pChannelOnlyIfUsersSelectedCheck->setEnabled(m_pWindowChannelCheck->isChecked());
 	m_pChannelOnlyIfUsersSelectedCheck->setChecked(false);
-	m_pQueryOnlyIfUsersSelectedCheck->setEnabled(m_pWindowQueryCheck->isChecked());
-	m_pQueryOnlyIfUsersSelectedCheck->setChecked(false);
+}
+
+void SingleActionEditor::consoleWindowsCheckToggled(bool)
+{
 	m_pConsoleOnlyIfUsersSelectedCheck->setEnabled(m_pWindowConsoleCheck->isChecked());
 	m_pConsoleOnlyIfUsersSelectedCheck->setChecked(false);
+}
+
+void SingleActionEditor::queryWindowsCheckToggled(bool)
+{
+	m_pQueryOnlyIfUsersSelectedCheck->setEnabled(m_pWindowQueryCheck->isChecked());
+	m_pQueryOnlyIfUsersSelectedCheck->setChecked(false);
 }
 
 void SingleActionEditor::needsContextCheckToggled(bool)
