@@ -820,9 +820,11 @@ bool DccChatThread::tryFlushOutBuffers()
 {
 	bool bRet = true;
 	m_pMutex->lock();
-	for(auto & b : m_pOutBuffers)
+	while(!m_pOutBuffers.empty())
 	{
+		auto & b = m_pOutBuffers.front();
 		int sentLen;
+
 #ifdef COMPILE_SSL_SUPPORT
 		if(m_pSSL)
 		{
