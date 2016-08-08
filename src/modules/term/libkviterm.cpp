@@ -99,8 +99,11 @@ static bool term_module_cleanup(KviModule *)
 #ifdef COMPILE_KDE4_SUPPORT
 	for(auto & t : g_pTermWidgetList)
 		delete t;
+	g_pTermWidgetList.clear();
+
 	for(auto & t : g_pTermWindowList)
 		t->close();
+	g_pTermWindowList.clear();
 #endif
 	return true;
 }
