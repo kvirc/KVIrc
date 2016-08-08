@@ -131,7 +131,6 @@ namespace KviUserInput
 						if(((KviConsoleWindow *)pWindow)->connection()->sendData(data.data()))
 						{
 							pWindow->output(KVI_OUT_RAW, "[RAW]: %Q", &buf);
-							return;
 						}
 					}
 					pWindow->output(KVI_OUT_PARSERERROR, __tr2qs("You're not connected to a server"));
