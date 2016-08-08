@@ -32,7 +32,6 @@
 #include "kvi_defaults.h"
 #include "KviIconManager.h"
 #include "KviRegisteredUserDataBase.h"
-#include "KviParameterList.h"
 #include "KviWindow.h"
 #include "KviConsoleWindow.h"
 #include "KviApplication.h"

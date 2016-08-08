@@ -47,7 +47,6 @@
 #include "kvi_settings.h"
 #include "kvi_socket.h"
 #include "KviApplication.h"
-#include "KviParameterList.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionUserInfo.h"
 #include "KviKvsEventTriggers.h"

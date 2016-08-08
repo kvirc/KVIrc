@@ -26,7 +26,6 @@
 
 #include "KviWindow.h"
 #include "KviCString.h"
-#include "KviParameterList.h"
 #include "KviFileDialog.h"
 #include "KviImageDialog.h"
 #include "KviKvsCallbackObject.h"

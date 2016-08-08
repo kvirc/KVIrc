@@ -36,7 +36,6 @@
 #include "KviIrcServerParser.h"
 #include "KviIrcMask.h"
 #include "KviIrcNumericCodes.h"
-#include "KviParameterList.h"
 #include "KviIrcConnection.h"
 #include "KviApplication.h"
 #include "KviQString.h"

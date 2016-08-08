@@ -37,7 +37,6 @@
 #include "kvi_defaults.h"
 #include "KviControlCodes.h"
 #include "KviMainWindow.h"
-#include "KviParameterList.h"
 #include "KviApplication.h"
 #include "KviNotifyList.h"
 #include "KviIrcNumericCodes.h"

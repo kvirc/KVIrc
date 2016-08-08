@@ -26,7 +26,6 @@
 #include "KviWindow.h"
 #include "kvi_out.h"
 #include "KviLocale.h"
-#include "KviParameterList.h"
 #include "KviApplication.h"
 #include "KviConsoleWindow.h"
 #include "KviKvsScript.h"

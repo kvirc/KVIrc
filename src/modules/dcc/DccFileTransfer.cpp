@@ -46,7 +46,6 @@
 #include "KviMediaManager.h"
 #include "kvi_socket.h"
 #include "KviKvsEventTriggers.h"
-#include "KviParameterList.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionUserInfo.h"
 #include "KviIrcServerParser.h"

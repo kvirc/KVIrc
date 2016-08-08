@@ -82,7 +82,6 @@
 #include "KviMemory.h"
 #include "KviIconManager.h"
 #include "kvi_out.h"
-#include "KviParameterList.h"
 #include "KviConsoleWindow.h"
 #include "KviIrcUserDataBase.h"
 #include "KviChannelWindow.h"

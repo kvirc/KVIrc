@@ -40,7 +40,6 @@
 #include "KviTrayIcon.h"
 #include "KviIrcToolBar.h"
 #include "kvi_confignames.h"
-#include "KviParameterList.h"
 #include "KviModule.h"
 #include "KviMexToolBar.h"
 #include "KviLocale.h"

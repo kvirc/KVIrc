@@ -29,7 +29,6 @@
 #include "KviMessageBox.h"
 #include "KviModule.h"
 #include "KviLocale.h"
-#include "KviParameterList.h"
 #include "KviCommandFormatter.h"
 #include "KviError.h"
 #include "kvi_out.h"

@@ -31,7 +31,6 @@
 #include "KviLocale.h"
 #include "KviConfigurationFile.h"
 
-#include "KviParameterList.h"
 #include "KviMainWindow.h"
 
 #include <QList>

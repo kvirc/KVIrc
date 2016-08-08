@@ -27,7 +27,6 @@
 #include "KviWindow.h"
 #include "KviConsoleWindow.h"
 #include "KviApplication.h"
-#include "KviParameterList.h"
 #include "KviKvsVariantList.h"
 #include "KviKvsScript.h"
 

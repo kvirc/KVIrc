@@ -36,7 +36,6 @@
 #include "KviControlCodes.h"
 #include "KviThemedLabel.h"
 #include "KviUserAction.h"
-#include "KviParameterList.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionUserInfo.h"
 #include "KviIrcServerParser.h"

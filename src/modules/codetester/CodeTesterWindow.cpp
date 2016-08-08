@@ -32,7 +32,6 @@
 #include "KviScriptEditor.h"
 #include "KviApplication.h"
 #include "KviConsoleWindow.h"
-#include "KviParameterList.h"
 #include "KviKvsScript.h"
 #include "KviKvsVariantList.h"
 

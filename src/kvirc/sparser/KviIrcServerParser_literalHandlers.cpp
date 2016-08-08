@@ -39,7 +39,6 @@
 #include "KviUserListView.h"
 #include "KviAntiSpam.h"
 #include "KviNickServRuleSet.h"
-#include "KviParameterList.h"
 #include "KviIrcUserDataBase.h"
 #include "KviApplication.h"
 #include "KviRegisteredUserDataBase.h"

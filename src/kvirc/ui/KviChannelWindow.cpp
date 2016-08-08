@@ -40,7 +40,6 @@
 #include "KviConfigurationFile.h"
 #include "KviMaskEditor.h"
 #include "KviControlCodes.h"
-#include "KviParameterList.h"
 #include "KviModeEditor.h"
 #include "KviApplication.h"
 #include "KviUserAction.h"

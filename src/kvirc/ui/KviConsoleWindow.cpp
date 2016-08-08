@@ -43,7 +43,6 @@
 #include "KviIrcUserDataBase.h"
 #include "KviChannelWindow.h"
 #include "KviQueryWindow.h"
-#include "KviParameterList.h"
 #include "KviRegisteredUserDataBase.h"
 #include "KviUserListView.h"
 #include "KviConfigurationFile.h"

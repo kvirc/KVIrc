@@ -27,7 +27,6 @@
 #include "KviActionManager.h"
 #include "KviLocale.h"
 #include "KviQString.h"
-#include "KviParameterList.h"
 #include "KviCommandFormatter.h"
 #include "KviQString.h"
 #include "KviError.h"

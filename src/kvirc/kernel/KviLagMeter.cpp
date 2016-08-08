@@ -26,7 +26,6 @@
 #include "KviLagMeter.h"
 #include "KviOptions.h"
 #include "KviKvsEventTriggers.h"
-#include "KviParameterList.h"
 #include "KviIrcConnection.h"
 #include "KviIrcContext.h"
 #include "KviMainWindow.h"
