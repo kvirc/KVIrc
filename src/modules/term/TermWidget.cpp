@@ -114,7 +114,7 @@ TermWidget::~TermWidget()
 
 	if(m_bIsStandalone)
 		g_pTermWidgetList.erase(this);
-	if(g_pTermWindowList.erase() && g_pTermWidgetList.empty())
+	if(g_pTermWindowList.empty() && g_pTermWidgetList.empty())
 		g_pTermModule->unlock();
 }
 
