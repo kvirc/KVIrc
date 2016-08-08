@@ -40,8 +40,8 @@ KviKvsAsyncOperation::~KviKvsAsyncOperation()
 
 KviKvsAsyncOperationManager::~KviKvsAsyncOperationManager()
 {
-	for(auto & o : m_pOperationList)
-		delete o;
+	while(!m_pOperationList.empty())
+		delete *m_pOperationList.begin();
 }
 
 void KviKvsAsyncOperationManager::registerOperation(KviKvsAsyncOperation * o)

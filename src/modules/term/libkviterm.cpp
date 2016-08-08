@@ -97,13 +97,11 @@ static bool term_module_init(KviModule * m)
 static bool term_module_cleanup(KviModule *)
 {
 #ifdef COMPILE_KDE4_SUPPORT
-	for(auto & t : g_pTermWidgetList)
-		delete t;
-	g_pTermWidgetList.clear();
+	while(!g_pTermWidgetList.empty())
+		delete *g_pSocketSpyWindowList.begin();
 
-	for(auto & t : g_pTermWindowList)
-		t->close();
-	g_pTermWindowList.clear();
+	while(!g_pTermWindowList.empty())
+		(*g_pTermWindowList.begin())->close();
 #endif
 	return true;
 }

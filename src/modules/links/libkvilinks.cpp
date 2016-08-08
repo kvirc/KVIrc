@@ -87,9 +87,8 @@ static bool links_module_init(KviModule * m)
 
 static bool links_module_cleanup(KviModule *)
 {
-	for(auto & l : g_pLinksWindowList)
-		l->die();
-	g_pLinksWindowList.clear();
+	while (!g_pLinksWindowList.empty())
+		(*g_pLinksWindowList.begin())->die();
 	return true;
 }
 

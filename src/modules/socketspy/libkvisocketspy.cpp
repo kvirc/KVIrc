@@ -66,9 +66,8 @@ static bool socketspy_module_init(KviModule * m)
 
 static bool socketspy_module_cleanup(KviModule *)
 {
-	for(auto & s : g_pSocketSpyWindowList)
-		s->die();
-	g_pSocketSpyWindowList.clear();
+	while(!g_pSocketSpyWindowList.empty())
+		(*g_pSocketSpyWindowList.begin())->die();
 	return true;
 }
 
