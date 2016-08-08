@@ -66,14 +66,24 @@ void KviFileTransferManager::cleanup()
 
 void KviFileTransferManager::killAllTransfers()
 {
-	for(auto & t : m_pTransferList)
+	while (true)
+	{
+		const auto tIt = m_pTransferList.rbegin();
+		if (tIt == m_pTransferList.rend())
+			break;
+		const auto t = *tIt;
 		t->die();
+	}
 }
 
 void KviFileTransferManager::killTerminatedTransfers()
 {
-	for(auto & f : m_pTransferList)
+	while (true)
 	{
+		const auto fIt = m_pTransferList.rbegin();
+		if (fIt == m_pTransferList.rend())
+			break;
+		const auto f = *fIt;
 		if(f->terminated())
 			f->die();
 	}
