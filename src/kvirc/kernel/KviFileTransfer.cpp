@@ -78,15 +78,13 @@ void KviFileTransferManager::killAllTransfers()
 
 void KviFileTransferManager::killTerminatedTransfers()
 {
-	while (true)
-	{
-		const auto fIt = m_pTransferList.rbegin();
-		if (fIt == m_pTransferList.rend())
-			break;
-		const auto f = *fIt;
-		if(f->terminated())
-			f->die();
-	}
+	std::vector<KviFileTransfer *> copyterm;
+	for (auto & f : m_pTransferList)
+		if (f->terminated())
+			copyterm.push_back(f);
+
+	for (auto & f : copyterm)
+		f->die();
 }
 
 void KviFileTransferManager::invokeTransferWindow(bool bCreateMinimized, bool bNoRaise)
