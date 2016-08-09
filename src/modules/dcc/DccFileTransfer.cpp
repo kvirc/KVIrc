@@ -1810,7 +1810,7 @@ void DccFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 
 			if(!bIsTerminated)
 			{
-				txt = __tr2qs_ctx("Spd:", "dcc");
+				txt = __tr2qs_ctx("Speed:", "dcc");
 				txt += " ";
 
 				QString tmpisp;
@@ -1823,7 +1823,7 @@ void DccFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 				txt = "";
 			}
 
-			txt += __tr2qs_ctx("Avg:", "dcc");
+			txt += __tr2qs_ctx("Average:", "dcc");
 			txt += " ";
 			QString tmpspd;
 			KviNetUtils::formatNetworkBandwidthString(tmpspd, uAvgBandwidth);
@@ -1847,7 +1847,7 @@ void DccFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 				if((m_tTransferStartTime != 0) && (m_tTransferEndTime != 0))
 				{
 					QString tot = KviTimeUtils::formatTimeInterval(kvi_timeSpan(m_tTransferEndTime, m_tTransferStartTime), KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
-					txt = "TOT: ";
+					txt = "Total: ";
 					txt += tot;
 				}
 				else
