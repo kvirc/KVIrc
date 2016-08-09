@@ -232,7 +232,7 @@ void HttpFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 			int iRightHalf = iW - (iLeftHalf + 1);
 			int iLineSpacing = fm.lineSpacing() + 2;
 
-			txt = __tr2qs_ctx("Avg:", "dcc");
+			txt = __tr2qs_ctx("Average:", "dcc");
 			txt += " ";
 			if(iAvgSpeed >= 0)
 			{
@@ -258,7 +258,7 @@ void HttpFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 			if(bIsTerminated)
 			{
 				KviTimeUtils::secondsToDaysHoursMinsSecs(kvi_timeSpan(m_tTransferEndTime, m_tTransferStartTime), &uD, &uH, &uM, &uS);
-				txt = "TOT: ";
+				txt = "Total: ";
 				if(uD > 0)
 					txt += __tr2qs_ctx("%1d %2h %3m %4s", "http").arg(uD).arg(uH).arg(uM).arg(uS);
 				else if(uH > 0)
