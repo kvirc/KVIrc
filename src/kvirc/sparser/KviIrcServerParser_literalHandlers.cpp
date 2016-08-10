@@ -2528,6 +2528,9 @@ void KviIrcServerParser::parseLiteralCap(KviIrcMessage * msg)
 	QString szCmd = msg->connection()->decodeText(msg->safeParam(1));
 	QString szProtocols = msg->connection()->decodeText(msg->safeTrailing());
 
+	if(KVS_TRIGGER_EVENT_3_HALTED(KviEvent_OnCap, msg->console(), szPrefix, szCmd, szProtocols))
+		msg->setHaltOutput();
+
 	if(szCmd == "LS")
 	{
 		// :prefix CAP <nickname> LS [*] :<cap1> <cap2> <cap3> ....

@@ -4267,4 +4267,27 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Away message"),
+
+	/*
+		@doc: oncap
+		@type:
+			event
+		@title:
+			OnCap
+		@short:
+			Received a capability update from the IRCd
+		@parameters:
+			$0 = server
+			$1 = command
+			$2 = protocols
+		@window:
+			Console window
+		@description:
+			Triggered when a CAP message was received from the server
+	*/
+
+	EVENT("OnCap",
+	    "$0 = server\n"
+	    "$1 = command\n"
+	    "$2 = protocols"),
 };
