@@ -305,7 +305,7 @@ void RawEditorWidget::commit()
 				qDebug("Commit handler %s", ((RawHandlerTreeWidgetItem *)ch)->text(0).toUtf8().data());
 				//int a=(RawTreeWidgetItem *)it)->m_iIdx;
 				szContext = QString("RawEvent%1::%2").arg(((RawTreeWidgetItem *)it)->m_iIdx).arg(((RawHandlerTreeWidgetItem *)ch)->text(0));
-				KviKvsScriptEventHandler * s = new KviKvsScriptEventHandler(
+				KviKvsScriptEventHandler s(
 				    ((RawHandlerTreeWidgetItem *)ch)->text(0),
 				    szContext,
 				    ((RawHandlerTreeWidgetItem *)ch)->m_szBuffer,

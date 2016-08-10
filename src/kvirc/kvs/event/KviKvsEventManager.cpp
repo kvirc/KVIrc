@@ -167,6 +167,12 @@ bool KviKvsEventManager::addRawHandler(unsigned int uRawIdx, KviKvsEventHandler 
 	return true;
 }
 
+bool KviKvsEventManager::addRawHandler(unsigned int uRawIdx, const KviKvsEventHandler & h)
+{
+	KviKvsEventHandler * copy = new KviKvsEventHandler(h);
+	return addRawHandler(uRawIdx, copy);
+}
+
 bool KviKvsEventManager::removeScriptAppHandler(unsigned int uEvIdx, const QString & szName)
 {
 	if(uEvIdx >= KVI_KVS_NUM_APP_EVENTS)

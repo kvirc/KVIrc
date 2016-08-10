@@ -72,6 +72,13 @@ public:
 	bool addAppHandler(unsigned int uEvIdx, KviKvsEventHandler * h);
 	bool addRawHandler(unsigned int uRawIdx, KviKvsEventHandler * h);
 
+	// To prevent the virtual table from no longer
+	// existing after we unload the DLL, we make a
+	// copy of the event handler within the manager
+	// and allocate the pointer directly within the
+	// exe.
+	bool addRawHandler(unsigned int uRawIdx, const KviKvsEventHandler & h);
+
 	bool removeScriptAppHandler(unsigned int uEvIdx, const QString & szName);
 	bool removeScriptRawHandler(unsigned int uEvIdx, const QString & szName);
 
