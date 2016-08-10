@@ -37,14 +37,7 @@
 
 static HWND kvi_win_findIpcSentinel()
 {
-	HWND hWnd = ::FindWindow("Qt5QWindowIcon", "[Non-Commercial] - kvirc4_ipc_sentinel");
-	if(hWnd)
-		return hWnd;
-	hWnd = ::FindWindow("Qt5QWindowIcon", "[Freeware] - kvirc4_ipc_sentinel");
-	if(hWnd)
-		return hWnd;
-	hWnd = ::FindWindow("Qt5QWindowIcon", "kvirc4_ipc_sentinel");
-	return hWnd;
+	return ::FindWindow("Qt5QWindowIcon", "kvirc4_ipc_sentinel");
 }
 
 #else
