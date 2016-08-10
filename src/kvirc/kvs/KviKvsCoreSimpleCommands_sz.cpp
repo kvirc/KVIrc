@@ -1051,6 +1051,8 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_PARAMETER("nickname", KVS_PT_NONEMPTYSTRING, KVS_PF_APPENDREMAINING, szNick)
 		KVSCSC_PARAMETERS_END
 
+		KVSCSC_REQUIRE_CONNECTION
+
 		QByteArray szData = KVSCSC_pContext->connection()->encodeText(szNick);
 
 		if(!KVSCSC_pContext->connection()->sendFmtData("WHOIS %s", szData.data()))
