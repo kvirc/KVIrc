@@ -104,6 +104,7 @@ namespace KviKvsCoreSimpleCommands
 		_REGCMD("op", op)
 		_REGCMD("openurl", openurl)
 		_REGCMD("oper", rfc2812wrapper)
+		_REGCMD("operwall", operwall)
 		_REGCMD("option", option)
 		_REGCMD("parse", parse)
 		_REGCMD("part", part)

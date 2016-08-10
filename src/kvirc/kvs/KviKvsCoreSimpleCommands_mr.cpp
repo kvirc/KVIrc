@@ -497,6 +497,42 @@ namespace KviKvsCoreSimpleCommands
 	// RFC2812 wrapper
 
 	/*
+		@doc: operwall
+		@type:
+			command
+		@title:
+			operwall
+		@syntax:
+			operwall <message:text>
+		@short:
+			Broadcasts an OPERWALL message
+		@description:
+			Broadcasts an OPERWALL message to all users whom are set
+			to receive WALLOPS messages.
+		@seealso:
+			[cmd]wallops[/cmd]
+	*/
+
+	KVSCSC(operwall)
+	{
+		Q_UNUSED(__pSwitches);
+
+		QString szMessage;
+		KVSCSC_PARAMETERS_BEGIN
+		KVSCSC_PARAMETER("message", KVS_PT_NONEMPTYSTRING, KVS_PF_APPENDREMAINING, szMessage)
+		KVSCSC_PARAMETERS_END
+
+		KVSCSC_REQUIRE_CONNECTION
+
+		QByteArray szData = KVSCSC_pContext->connection()->encodeText(szMessage);
+
+		if(!KVSCSC_pContext->connection()->sendFmtData("OPERWALL :%s", szData.data()))
+			return KVSCSC_pContext->warningNoIrcConnection();
+
+		return true;
+	}
+
+	/*
 		@doc: option
 		@type:
 			command

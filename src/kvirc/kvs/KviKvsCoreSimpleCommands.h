@@ -102,6 +102,7 @@ namespace KviKvsCoreSimpleCommands
 	KVSCSC(notice);
 	KVSCSC(op);
 	KVSCSC(openurl);
+	KVSCSC(operwall);
 	KVSCSC(option);
 	KVSCSC(parse);
 	KVSCSC(part);
