@@ -1032,7 +1032,7 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 	QString szClip;
 
 	static QString ths = "<html><body><table width=\"100%\">" START_TABLE_BOLD_ROW;
-	static QString the = "</table></body></html>" END_TABLE_BOLD_ROW;
+	static QString the = END_TABLE_BOLD_ROW "</table></body></html>";
 
 	QClipboard * pClip = QApplication::clipboard();
 	if(pClip)
