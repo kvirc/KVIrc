@@ -1057,7 +1057,7 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 			QString szLabel = ths;
 			szLabel += "<center><b>";
 			szLabel += __tr2qs("Clipboard");
-			szLabel += "</b></center>";			
+			szLabel += "</b></center>";
 			szLabel += the;
 			szLabel += szClip;
 			szLabel += "<br><b><center>";
