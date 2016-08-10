@@ -37,13 +37,13 @@
 
 static HWND kvi_win_findIpcSentinel()
 {
-	HWND hWnd = ::FindWindow("QWidget", "[Non-Commercial] - kvirc4_ipc_sentinel");
+	HWND hWnd = ::FindWindow("Qt5QWindowIcon", "[Non-Commercial] - kvirc4_ipc_sentinel");
 	if(hWnd)
 		return hWnd;
-	hWnd = ::FindWindow("QWidget", "[Freeware] - kvirc4_ipc_sentinel");
+	hWnd = ::FindWindow("Qt5QWindowIcon", "[Freeware] - kvirc4_ipc_sentinel");
 	if(hWnd)
 		return hWnd;
-	hWnd = ::FindWindow("QWidget", "kvirc4_ipc_sentinel");
+	hWnd = ::FindWindow("Qt5QWindowIcon", "kvirc4_ipc_sentinel");
 	return hWnd;
 }
 
@@ -218,6 +218,7 @@ KviIpcSentinel::KviIpcSentinel()
 	setObjectName("kvirc4_ipc_sentinel");
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	setWindowFlags(Qt::FramelessWindowHint);
+	setWindowTitle("kvirc4_ipc_sentinel");
 #else
 #if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 	kvi_ipcLoadAtoms();
