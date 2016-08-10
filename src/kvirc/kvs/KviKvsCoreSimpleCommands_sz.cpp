@@ -947,6 +947,42 @@ namespace KviKvsCoreSimpleCommands
 	}
 
 	/*
+		@doc: wallops
+		@type:
+			command
+		@title:
+			wallops
+		@syntax:
+			wallops <message:text>
+		@short:
+			Broadcasts a WALLOPS message
+		@description:
+			Broadcasts a WALLOPS message to all users whom are set
+			to receive WALLOPS messages.
+		@seealso:
+			[cmd]operwall[/cmd]
+	*/
+
+	KVSCSC(wallops)
+	{
+		Q_UNUSED(__pSwitches);
+
+		QString szMessage;
+		KVSCSC_PARAMETERS_BEGIN
+		KVSCSC_PARAMETER("message", KVS_PT_NONEMPTYSTRING, KVS_PF_APPENDREMAINING, szMessage)
+		KVSCSC_PARAMETERS_END
+
+		KVSCSC_REQUIRE_CONNECTION
+
+		QByteArray szData = KVSCSC_pContext->connection()->encodeText(szMessage);
+
+		if(!KVSCSC_pContext->connection()->sendFmtData("WALLOPS :%s", szData.data()))
+			return KVSCSC_pContext->warningNoIrcConnection();
+
+		return true;
+	}
+
+	/*
 		@doc: who
 		@type:
 			command

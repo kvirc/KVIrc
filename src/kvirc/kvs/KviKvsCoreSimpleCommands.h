@@ -130,6 +130,7 @@ namespace KviKvsCoreSimpleCommands
 	KVSCSC(userop);
 	KVSCSC(voice);
 	KVSCSC(warning);
+	KVSCSC(wallops);
 	KVSCSC(who);
 	KVSCSC(whois);
 	KVSCSC(whowas);
