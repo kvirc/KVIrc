@@ -3183,12 +3183,12 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@title:
 			OnNickServAuth
 		@short:
-			Triggered when ircd sets a registered user mode.
+			IRCd set a registered user mode
 		@parameters:
 		@window:
 			any
 		@description:
-			Triggered when ircd sets a registered user mode.
+			Triggered when the IRCd sets a registered user mode.
 	*/
 
 	EVENT("OnNickServAuth", ""),
