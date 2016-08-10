@@ -106,7 +106,7 @@
 	@seealso:
 		[fnc]$fmtlink[/fnc]
 		[fnc]$cr[/fnc]
-		
+
 */
 
 // FIXME: #warning "Finish the doc above!! Maybe some examples ?!"
