@@ -1540,9 +1540,11 @@ static bool window_module_init(KviModule * m)
 
 static bool window_module_cleanup(KviModule *)
 {
-	for(auto & w : g_pUserWindowList)
+	while(!g_pUserWindowList.empty())
+	{
+		auto & w = g_pUserWindowList.front();
 		w->close();
-	g_pUserWindowList.clear();
+	}
 	return true;
 }
 
