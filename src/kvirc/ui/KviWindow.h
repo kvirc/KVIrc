@@ -166,7 +166,7 @@ public:
 	* \param pConsole The parent console
 	* \return KviWindow
 	*/
-	KviWindow(Type eType, const QString & szName, KviConsoleWindow * pConsole = 0);
+	KviWindow(Type eType, const QString & szName, KviConsoleWindow * pConsole = nullptr);
 
 	/**
 	* \brief Destroys the window object
@@ -394,7 +394,7 @@ public:
 	virtual void outputNoFmt(int iMsgType, const kvi_wchar_t * pwText, int iFlags = 0, const QDateTime & datetime = QDateTime()) { internalOutput(m_pIrcView, iMsgType, pwText, iFlags, datetime); };
 	virtual void outputNoFmt(int iMsgType, const QString & szText, int iFlags = 0, const QDateTime & datetime = QDateTime()); // <-- iFlags are KviIrcView::AppendTextFlags
 	// Just helpers.. FIXME: might be redesigned in some other way
-	void updateBackgrounds(QObject * pObj = 0);
+	void updateBackgrounds(QObject * pObj = nullptr);
 
 	/**
 	* \brief Notify the window manager that this window demands attention
