@@ -140,7 +140,7 @@ else
     PPANAME=kvirc-dbg
     dch -a "DCMAKE_BUILD_TYPE=Debug"
     sed "s/Release/Debug/g" -i debian/rules
-cat > debian/rules << EOF
+cat >> debian/rules << EOF
 override_dh_strip:
 
 EOF
