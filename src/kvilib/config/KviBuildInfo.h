@@ -124,6 +124,12 @@ namespace KviBuildInfo
 	extern KVILIB_API QString buildCompilerFlags();
 
 	/**
+	* \brief Returns the type of build
+	* \return const char *
+	*/
+	extern KVILIB_API const char * buildType();
+
+	/**
 	* \brief Returns the Git revision number of the local repository
 	* \return QString
 	*/

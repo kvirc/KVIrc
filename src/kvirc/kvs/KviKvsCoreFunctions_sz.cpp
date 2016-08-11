@@ -1055,6 +1055,8 @@ namespace KviKvsCoreFunctions
 		szVersion += " " KVI_RELEASE_NAME " " KVI_VERSION;
 		szVersion += ", revision: ";
 		szVersion += KviBuildInfo::buildRevision();
+		szVersion += ", build type: ";
+		szVersion += KviBuildInfo::buildType();
 		szVersion += ", sources date: ";
 		szVersion += KviBuildInfo::buildSourcesDate();
 		szVersion += ", built on: ";
@@ -1087,6 +1089,8 @@ namespace KviKvsCoreFunctions
 				szRetValue = KviBuildInfo::buildRevision();
 			else if(szType.indexOf('s') != -1)
 				szRetValue = KviBuildInfo::buildSourcesDate();
+			else if(szType.indexOf('t') != -1)
+				szRetValue = KviBuildInfo::buildType();
 			else if(szType.indexOf('v') != -1)
 				szRetValue = KVI_VERSION;
 			else

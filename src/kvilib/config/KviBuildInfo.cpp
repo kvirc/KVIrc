@@ -157,6 +157,15 @@ namespace KviBuildInfo
 			return flags;
 	}
 
+	const char * buildType()
+	{
+#ifdef COMPILE_DEBUG_MODE
+		return "debug";
+#else
+		return "release";
+#endif
+	}
+
 	QString buildRevision()
 	{
 		QString rev;
