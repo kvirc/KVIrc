@@ -198,8 +198,11 @@ KviMainWindow::~KviMainWindow()
 	// Now start killing stuff
 
 	// Explicitly kill all the module extension toolbars: qt has NOT to delete them: we must call their "die" method
-	for(auto & t : m_pModuleExtensionToolBarList)
+	while(!m_pModuleExtensionToolBarList.empty())
+	{
+		auto & t = *m_pModuleExtensionToolBarList.begin();
 		t->die();
+	}
 
 	KVI_OPTION_BOOL(KviOption_boolShowDockExtension) = m_pTrayIcon != nullptr;
 
