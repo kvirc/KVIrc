@@ -317,12 +317,12 @@ void OptionsWidget_proxy::commit()
 		QString tmp = it->text(0);
 		if(!tmp.isEmpty())
 		{
-			std::unique_ptr<KviProxy> prx(new KviProxy(*(it->m_pProxyData)));
+			KviProxy *const proxy = new KviProxy(*(it->m_pProxyData));
+
+			g_pProxyDataBase->insertProxy(std::unique_ptr<KviProxy>(proxy));
 
 			if(it == m_pLastEditedItem)
-				g_pProxyDataBase->setCurrentProxy(prx.get());
-
-			g_pProxyDataBase->insertProxy(std::move(prx));
+				g_pProxyDataBase->setCurrentProxy(proxy);
 		}
 	}
 
