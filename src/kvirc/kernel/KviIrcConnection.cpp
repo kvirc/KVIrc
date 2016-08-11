@@ -607,8 +607,9 @@ void KviIrcConnection::unhighlightAllQueries()
 
 void KviIrcConnection::closeAllChannels()
 {
-	for(auto & c : m_pChannelList)
+	while(!m_pChannelList.empty())
 	{
+		auto & c = m_pChannelList.front();
 		c->close();
 		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers | QEventLoop::ExcludeUserInputEvents);
 	}
@@ -616,8 +617,9 @@ void KviIrcConnection::closeAllChannels()
 
 void KviIrcConnection::closeAllQueries()
 {
-	for(auto & q : m_pQueryList)
+	while(!m_pQueryList.empty())
 	{
+		auto & q = m_pChannelList.front();
 		q->close();
 		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers | QEventLoop::ExcludeUserInputEvents);
 	}
