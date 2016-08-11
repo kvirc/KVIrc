@@ -144,7 +144,6 @@ cat > debian/rules << EOF
 override_dh_strip:
 
 EOF
-}
     dchppa_pkg
 fi
 
