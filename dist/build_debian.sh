@@ -130,21 +130,21 @@ else
     gpgkey
     tmpgpg
     test -f ~/.dput.cf || dputcf
+    sed "s/Release/Debug/g" -i debian/rules
     dchppa_pkg
     rm -f ../*ppa*
     DIST_PPA="trusty wily"
     PPANAME=kvirc-qt5.5
     dchppa_pkg
-    DIST_PPA="trusty wily xenial"
-    rm -f ../*ppa*
-    PPANAME=kvirc-dbg
-    dch -a "DCMAKE_BUILD_TYPE=Debug"
-    sed "s/Release/Debug/g" -i debian/rules
-cat >> debian/rules << EOF
-override_dh_strip:
-
-EOF
-    dchppa_pkg
+    #DIST_PPA="trusty wily xenial"
+    #rm -f ../*ppa*
+    #PPANAME=kvirc-dbg
+    #dch -a "DCMAKE_BUILD_TYPE=Debug"
+    #cat >> debian/rules << EOF
+#override_dh_strip:
+#
+#EOF
+#    dchppa_pkg
 fi
 
 
