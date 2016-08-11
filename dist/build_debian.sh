@@ -72,6 +72,14 @@ method = ftp
 incoming = ~kvirc/kvirc-qt5.5/ubuntu/
 login = anonymous
 allow_unsigned_uploads = 0
+
+[kvirc-dbg]
+fqdn = ppa.launchpad.net
+method = ftp
+incoming = ~kvirc/kvirc-dbg/ubuntu/
+login = anonymous
+allow_unsigned_uploads = 0
+
 EOF
 }
 
@@ -126,6 +134,17 @@ else
     rm -f ../*ppa*
     DIST_PPA="trusty wily"
     PPANAME=kvirc-qt5.5
+    dchppa_pkg
+    DIST_PPA="trusty wily xenial"
+    rm -f ../*ppa*
+    PPANAME=kvirc-dbg
+    dch -a "DCMAKE_BUILD_TYPE=Debug"
+    sed "s/Release/Debug/g" -i debian/rules
+cat > debian/rules << EOF
+override_dh_strip:
+
+EOF
+}
     dchppa_pkg
 fi
 

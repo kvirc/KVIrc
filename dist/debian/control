@@ -15,7 +15,7 @@ Build-Depends: debhelper (>= 9),
  libxss-dev,
  python-dev,
  libqtwebkit-dev, libenchant-dev
-Standards-Version: 3.9.7
+Standards-Version: 3.9.8
 Homepage: http://www.kvirc.de/
 
 Package: kvirc
@@ -32,7 +32,7 @@ Description: Next generation IRC client with module support
  A highly configurable graphical IRC client,with powerful and flexible
  built-in scripting language, supports IRC DCC, DCC over SSL, Spell-checking,
  drag & drop, file browsing, and much more.
- KVIrc can can be extended using its own scripting language, integrate with KDE,
+ KVIrc can be extended using its own scripting language, integrate with KDE,
  and supports custom add-ons/scripts and themes.
  .
  If you're looking for powerful highly customizable client, you have found it.
@@ -50,7 +50,7 @@ Description: KVIrc (IRC client) base library
  A highly configurable graphical IRC client,with powerful and flexible
  built-in scripting language, supports IRC DCC, DCC over SSL, Spell-checking,
  drag & drop, file browsing, and much more.
- KVIrc can can be extended using its own scripting language, integrate with KDE,
+ KVIrc can be extended using its own scripting language, integrate with KDE,
  and supports custom add-ons/scripts and themes.
  .
  This package contains the main library of KVIrc.
@@ -69,7 +69,7 @@ Description: KVIrc (IRC client) modules
  A highly configurable graphical IRC client,with powerful and flexible
  built-in scripting language, supports IRC DCC, DCC over SSL, Spell-checking,
  drag & drop, file browsing, and much more.
- KVIrc can can be extended using its own scripting language, integrate with KDE,
+ KVIrc can be extended using its own scripting language, integrate with KDE,
  and supports custom add-ons/scripts and themes.
  .
  This package contains all modules for KVIrc.
@@ -97,7 +97,7 @@ Description: KVIrc (IRC client) debugging symbols
  A highly configurable graphical IRC client,with powerful and flexible
  built-in scripting language, supports IRC DCC, DCC over SSL, Spell-checking,
  drag & drop, file browsing, and much more.
- KVIrc can can be extended using its own scripting language, integrate with KDE,
+ KVIrc can be extended using its own scripting language, integrate with KDE,
  and supports custom add-ons/scripts and themes.
  .
  This package is intended to help debugging possible problems with KVIrc.

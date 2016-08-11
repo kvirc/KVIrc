@@ -7,7 +7,8 @@ DATE_UNIX=$(shell cat debian/changelog |grep '* Date' | sed 1q |awk -F ': ' '{pr
 DATE=$(shell date -d@$(DATE_UNIX) +%F | sed 's/-//g')
 
 override_dh_auto_configure:
-	dh_auto_configure --parallel -- -DWANT_COEXISTENCE=OFF \
+	dh_auto_configure --parallel -- -DCMAKE_BUILD_TYPE=Release \
+			-DWANT_COEXISTENCE=OFF \
 			-DWANT_ESD=OFF -DWANT_OSS=OFF \
 			-DWANT_STRIP=OFF \
 			-DMANUAL_REVISION="$(REV)" -DMANUAL_SOURCES_DATE=$(DATE)\
