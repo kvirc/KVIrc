@@ -145,16 +145,11 @@ KviWindow::~KviWindow()
 	if(g_pApp->windowCount() == 0)
 	{
 		// this is the last window!
-		if(g_pMdiWindowSystemMainPopup)
-			delete g_pMdiWindowSystemMainPopup;
-		if(g_pMdiWindowSystemTextEncodingPopup)
-			delete g_pMdiWindowSystemTextEncodingPopup;
-		if(g_pMdiWindowSystemTextEncodingPopupStandard)
-			delete g_pMdiWindowSystemTextEncodingPopupStandard;
-		if(g_pMdiWindowSystemTextEncodingPopupSmart)
-			delete g_pMdiWindowSystemTextEncodingPopupSmart;
-		if(g_pMdiWindowSystemTextEncodingPopupSmartUtf8)
-			delete g_pMdiWindowSystemTextEncodingPopupSmartUtf8;
+		delete g_pMdiWindowSystemMainPopup;
+		delete g_pMdiWindowSystemTextEncodingPopup;
+		delete g_pMdiWindowSystemTextEncodingPopupStandard;
+		delete g_pMdiWindowSystemTextEncodingPopupSmart;
+		delete g_pMdiWindowSystemTextEncodingPopupSmartUtf8;
 	}
 #ifdef COMPILE_CRYPT_SUPPORT
 	if(m_pCryptSessionInfo)
@@ -381,8 +376,7 @@ void KviWindow::createCryptControllerButton(QWidget *)
 
 void KviWindow::createTextEncodingButton(QWidget * pPar)
 {
-	if(m_pTextEncodingButton)
-		delete m_pTextEncodingButton;
+	delete m_pTextEncodingButton;
 	m_pTextEncodingButton = createToolButton(pPar, "text_encoding_button", KviIconManager::TextEncoding, __tr2qs("Text encoding"), false);
 	connect(m_pTextEncodingButton, SIGNAL(clicked()), this, SLOT(textEncodingButtonClicked()));
 }
