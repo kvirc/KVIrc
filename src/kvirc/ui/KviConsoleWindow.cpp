@@ -86,14 +86,8 @@
 extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
-KviConsoleWindow::KviConsoleWindow(int iFlags)
-#ifdef COMPILE_ON_WINDOWS
-    : KviWindow(KviWindow::Console, __tr2qs("CONSOLE"), 0)
-#else
-    : KviWindow(KviWindow::Console, __tr2qs("CONSOLE"), this)
-#endif
+KviConsoleWindow::KviConsoleWindow(int iFlags) : KviWindow(KviWindow::Console, __tr2qs("CONSOLE"), this)
 {
-	m_pConsole = this;
 	m_pContext = new KviIrcContext(this);
 
 	m_iFlags = iFlags;
