@@ -96,11 +96,8 @@ KviIrcContext::~KviIrcContext()
 {
 	killTimer(m_iHeartbeatTimerId);
 
-	for(auto & m : m_pMonitorList)
-	{
-		if(m)
-			m->die();
-	}
+	while(!m_pMonitorList.empty())
+		delete m_pMonitorList.front();
 
 	if(m_pReconnectTimer)
 		delete m_pReconnectTimer;

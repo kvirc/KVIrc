@@ -44,7 +44,6 @@ public:
 	virtual bool outgoingMessage(const char *) = 0;
 	virtual void connectionInitiated(){};
 	virtual void connectionTerminated(){};
-	virtual void die() { delete this; };
 };
 
 #endif //!_KVI_IRCDATASTREAMMONITOR_H_
