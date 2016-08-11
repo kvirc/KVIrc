@@ -157,9 +157,6 @@ void KviIrcContext::closeAllContextWindows()
 
 KviChannelWindow * KviIrcContext::findDeadChannel(const QString & name)
 {
-	if(m_DeadChannels.empty())
-		return nullptr;
-
 	for(auto & c : m_DeadChannels)
 	{
 		KVI_ASSERT(c->isDeadChan());
@@ -172,9 +169,6 @@ KviChannelWindow * KviIrcContext::findDeadChannel(const QString & name)
 
 KviQueryWindow * KviIrcContext::findDeadQuery(const QString & name)
 {
-	if(m_DeadQueries.empty())
-		return nullptr;
-
 	for(auto & q : m_DeadQueries)
 	{
 		KVI_ASSERT(q->isDeadQuery());
