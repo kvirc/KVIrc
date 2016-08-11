@@ -99,8 +99,7 @@ KviIrcContext::~KviIrcContext()
 	while(!m_pMonitorList.empty())
 		delete m_pMonitorList.front();
 
-	if(m_pReconnectTimer)
-		delete m_pReconnectTimer;
+	delete m_pReconnectTimer;
 
 	if(m_pLinksWindow)
 		m_pLinksWindow->die();
@@ -112,10 +111,8 @@ KviIrcContext::~KviIrcContext()
 	closeAllContextWindows();
 
 	destroyConnection();
-	if(m_pAsynchronousConnectionData)
-		delete m_pAsynchronousConnectionData;
-	if(m_pSavedAsynchronousConnectionData)
-		delete m_pSavedAsynchronousConnectionData;
+	delete m_pAsynchronousConnectionData;
+	delete m_pSavedAsynchronousConnectionData;
 }
 
 void KviIrcContext::registerDataStreamMonitor(KviIrcDataStreamMonitor * m)
