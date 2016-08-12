@@ -1502,6 +1502,9 @@ enough:
 			szLine.chop(1);
 		}
 
+		if (szLine.isEmpty())
+			continue;
+
 		// Print the line in the channel buffer
 		output(msgType, date, szLine);
 	}
