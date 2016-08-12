@@ -1506,7 +1506,7 @@ enough:
 			continue;
 
 		// Print the line in the channel buffer
-		output(msgType, date, "%Q", szLine);
+		output(msgType, date, "%Q", &szLine);
 	}
 
 	szDummy = __tr2qs("End of log");
