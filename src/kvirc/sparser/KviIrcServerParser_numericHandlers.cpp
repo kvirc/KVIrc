@@ -2431,11 +2431,11 @@ void KviIrcServerParser::parseNumericStats(KviIrcMessage * msg)
 		if(msg->paramCount() > 2)
 		{
 			KviCString szParms;
-			for(auto & p : msg->params())
+			for(std::size_t i = 1; i < msg->paramCount(); ++i)
 			{
 				if(szParms.hasData())
 					szParms.append(' ');
-				szParms.append(p);
+				szParms.append(msg->params()[i]);
 			}
 			pOut->outputNoFmt(KVI_OUT_STATS, msg->connection()->decodeText(szParms).toUtf8().data());
 		}
