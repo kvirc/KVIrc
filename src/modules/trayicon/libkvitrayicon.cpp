@@ -50,8 +50,8 @@
 #include <QWidgetAction>
 #include <QMenu>
 
-#include <stdlib.h>
-#include <time.h>
+#include <cstdlib>
+#include <ctime>
 #include <map>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -226,12 +226,10 @@ bool KviTrayIconWidget::event(QEvent * e)
 			}
 		}
 
-		srand(time(nullptr));
-
 		// We use the bad way to generate random numbers :)))))
-
+		std::srand(std::time(nullptr));
 		if(tmp.isEmpty())
-			tmp = __tr2qs_no_xgettext(idlemsgs[(int)(rand() % NIDLEMSGS)]);
+			tmp = __tr2qs_no_xgettext(idlemsgs[(int)(std::rand() % NIDLEMSGS)]);
 
 		m_Tip.tip(QRect(pos, QSize(0, 0)), tmp);
 		return true;
