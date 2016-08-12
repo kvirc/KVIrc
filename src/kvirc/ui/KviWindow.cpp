@@ -74,6 +74,9 @@
 #include <QInputMethodEvent>
 #include <QFileInfo>
 
+#include <tuple>
+#include <vector>
+
 #ifdef COMPILE_ZLIB_SUPPORT
 #include <zlib.h>
 #endif
@@ -1395,16 +1398,8 @@ void KviWindow::pasteLastLog()
 	unsigned int uMaxLines = KVI_OPTION_UINT(bChannel ? KviOption_uintLinesToPasteOnChannelJoin : KviOption_uintLinesToPasteOnQueryJoin);
 	if (!uMaxLines)
 		return;
-	unsigned int uCurLines = 0;
 
-	struct LogLine
-	{
-		QString line;
-		QDate date;
-		int uDatetimeFormat;
-	};
-
-	QVector<LogLine> vLines = QVector<LogLine>(uMaxLines);
+	std::vector<std::tuple<QString, QDate, int>> vLines;
 
 	for (; date >= checkDate; date = date.addDays(-1))
 		for (int iGzip = 0; iGzip <= 1; iGzip++)
@@ -1430,28 +1425,25 @@ void KviWindow::pasteLastLog()
 
 				while (uCount)
 				{
-					LogLine logLine;
-					logLine.line = QString(list.at(--uCount));
-					logLine.date = date;
-					logLine.uDatetimeFormat = uDatetimeFormat;
-					vLines[uCurLines++] = logLine;
+					vLines.emplace_back(QString(list.at(--uCount)), date, uDatetimeFormat);
 
-					if (uCurLines == uMaxLines)
+					if (vLines.size() == uMaxLines)
 						goto enough;
 				}
 			}
 
-	if (!uCurLines)
+	if (vLines.empty())
 		return;
 
 enough:
 	QString szDummy = __tr2qs("Starting last log");
 	output(KVI_OUT_LOG, szDummy);
 
-	for (size_t u = uCurLines; u > 0; u--)
+	for (auto logIter = vLines.rbegin(); logIter != vLines.rend(); ++logIter)
 	{
-		const LogLine& logLine = vLines.at(u-1);
-		QString szLine = logLine.line;
+		QString & szLine      = std::get<0>(*logIter);
+		const QDate & logDate = std::get<1>(*logIter);
+		int uDatetimeFormat   = std::get<2>(*logIter);
 
 		bool ok;
 		int msgType = szLine.section(' ', 0, 0).toInt(&ok);
@@ -1461,14 +1453,14 @@ enough:
 			msgType = KVI_OUT_LOG;
 
 		QDateTime date;
-		switch(logLine.uDatetimeFormat)
+		switch(uDatetimeFormat)
 		{
 			case 0:
 			{
 				QTime time = QTime::fromString(szLine.section(' ', 0, 0), "[hh:mm:ss]");
 				if (time.isValid())
 				{
-					date = QDateTime(logLine.date, time);
+					date = QDateTime(logDate, time);
 					szLine = szLine.section(' ', 1);
 				}
 				break;
@@ -1497,7 +1489,7 @@ enough:
 					// Work around Qt bug:
 					// if the date string contains a two-digit year, it may be
 					// parsed in the wrong century (i.e. 1916 instead of 2016).
-					if (logLine.date.year() == date.date().year() + 100)
+					if (logDate.year() == date.date().year() + 100)
 						date = date.addYears(100);
 				}
 				break;
