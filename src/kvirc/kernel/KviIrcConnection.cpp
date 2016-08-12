@@ -1325,27 +1325,23 @@ QString KviIrcConnection::pickNextLoginNickName(bool bForceDefaultIfPrimaryNickn
 	}
 
 	// fallback to 4 random alternatives
-
 	if((int)(m_pStateData->loginNickNameState()) < (int)(KviIrcConnectionStateData::UsedRandomNickName4))
 	{
-		szNick = szBaseNickForRandomChoices.trimmed();
-		if(szNick.isEmpty())
+		const QString nickList[] = {
+			szBaseNickForRandomChoices,
+			KVI_OPTION_STRING(KviOption_stringNickname1),
+			KVI_OPTION_STRING(KviOption_stringNickname2),
+			KVI_OPTION_STRING(KviOption_stringNickname3),
+			KVI_OPTION_STRING(KviOption_stringNickname4),
+			QString::fromUtf8(KVI_DEFAULT_NICKNAME1)
+		};
+
+		for(const auto & ii : nickList)
 		{
-			szNick = KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
-			if(szNick.isEmpty())
-			{
-				szNick = KVI_OPTION_STRING(KviOption_stringNickname2).trimmed();
-				if(szNick.isEmpty())
-				{
-					szNick = KVI_OPTION_STRING(KviOption_stringNickname3).trimmed();
-					if(szNick.isEmpty())
-					{
-						szNick = KVI_OPTION_STRING(KviOption_stringNickname4).trimmed();
-						if(szNick.isEmpty())
-							szNick = QString::fromUtf8(KVI_DEFAULT_NICKNAME1);
-					}
-				}
-			}
+			szNick = ii.trimmed();
+
+			if(!szNick.isEmpty())
+				break;
 		}
 
 		szNick = szNick.left(7);
