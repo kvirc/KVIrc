@@ -26,8 +26,6 @@
 
 #include "kvi_settings.h"
 
-#include <QWidget>
-
 ///
 /// \class KviTrayIcon
 /// \brief The KviTrayIcon class
@@ -36,35 +34,13 @@
 ///
 class KVIRC_API KviTrayIcon
 {
-private:
-	Qt::WindowStates m_oStoredWindowStates;
-
 public:
-	///
-	/// Creates an instance of KviTrayIcon
-	///
-	KviTrayIcon()
-	    : m_oStoredWindowStates(0)
-	{
-	}
-
 	///
 	/// Destroys the instance of KviTrayIcon
 	/// and frees all the relevant resources
 	///
 	virtual ~KviTrayIcon()
 	{
-	}
-
-public:
-	void setPrevWindowState(Qt::WindowStates state)
-	{
-		m_oStoredWindowStates = state;
-	}
-
-	Qt::WindowStates getPrevWindowState()
-	{
-		return m_oStoredWindowStates;
 	}
 
 	virtual void refresh()
