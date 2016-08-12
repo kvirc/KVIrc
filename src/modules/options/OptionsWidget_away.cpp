@@ -55,9 +55,6 @@ OptionsWidget_away::OptionsWidget_away(QWidget * parent)
 	addRowSpacer(0, 4, 0, 4);
 }
 
-OptionsWidget_away::~OptionsWidget_away()
-    = default;
-
 void OptionsWidget_away::enableCustomAwayText(bool)
 {
 	m_pCustomAwayNick->setEnabled(m_pEnableAwayNick->isChecked() && !(m_pEnableCustomAwayNick->isChecked()));

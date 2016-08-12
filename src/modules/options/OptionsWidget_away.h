@@ -30,12 +30,11 @@
 #define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_away __tr2qs_no_lookup("Away")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_away OptionsWidget_tools
 
-class OptionsWidget_away : public KviOptionsWidget
+class OptionsWidget_away final : public KviOptionsWidget
 {
 	Q_OBJECT
 public:
 	OptionsWidget_away(QWidget * parent);
-	~OptionsWidget_away();
 
 protected:
 	KviBoolSelector * m_pEnableAwayMessage;
