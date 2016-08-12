@@ -226,8 +226,6 @@ bool KviTrayIconWidget::event(QEvent * e)
 			}
 		}
 
-		// We use the bad way to generate random numbers :)))))
-		std::srand(std::time(nullptr));
 		if(tmp.isEmpty())
 			tmp = __tr2qs_no_xgettext(idlemsgs[std::rand() % NIDLEMSGS]);
 
@@ -746,6 +744,7 @@ static bool trayicon_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "show", trayicon_kvs_cmd_show);
 	KVSM_REGISTER_FUNCTION(m, "isVisible", trayicon_kvs_fnc_isvisible);
 
+	std::srand(std::time(nullptr));
 	return true;
 }
 
