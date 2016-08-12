@@ -44,9 +44,6 @@ KviActionDrawer::KviActionDrawer(QWidget * pParent)
 {
 }
 
-KviActionDrawer::~KviActionDrawer()
-    = default;
-
 void KviActionDrawer::fill()
 {
 	KviActionManager::loadAllAvailableActions();
@@ -71,7 +68,6 @@ void KviActionDrawer::fill()
 			pPage = new KviActionDrawerPage(this, pCat->description());
 			pages.replace(pCat->visibleName(), pPage);
 			addTab(pPage, pCat->visibleName());
-			//p->show();
 		}
 		pPage->add(pAction);
 		++it;
@@ -102,9 +98,6 @@ KviActionDrawerPage::KviActionDrawerPage(QWidget * pParent, const QString & szDe
 	pLayout->setRowStretch(1, 1);
 }
 
-KviActionDrawerPage::~KviActionDrawerPage()
-    = default;
-
 void KviActionDrawerPage::add(KviAction * pAction)
 {
 	(void)new KviActionDrawerPageListWidgetItem(m_pListWidget, pAction);
@@ -119,9 +112,6 @@ KviActionDrawerPageListWidget::KviActionDrawerPageListWidget(KviActionDrawerPage
 	setDragEnabled(true);
 	setSortingEnabled(true);
 }
-
-KviActionDrawerPageListWidget::~KviActionDrawerPageListWidget()
-    = default;
 
 void KviActionDrawerPageListWidget::mousePressEvent(QMouseEvent * e)
 {
@@ -155,25 +145,19 @@ void KviActionDrawerPageListWidget::resizeEvent(QResizeEvent * e)
 	int iWidth = viewport()->width();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)
 		iWidth = LVI_MINIMUM_CELL_WIDTH;
-	//setColumnWidth(0,iWidth);
 }
 
 KviActionDrawerPageListWidgetItem::KviActionDrawerPageListWidgetItem(KviTalListWidget * pList, KviAction * pAction)
-    : KviTalListWidgetItem(pList)
+    : KviTalListWidgetItem(pList),
+      m_szName(pAction->name())
 {
-	m_pListWidget = pList;
-	m_szName = pAction->name();
 	QString szText = "<b>" + pAction->visibleName() + "</b>";
 	if(pAction->isKviUserActionNeverOverrideThis())
 		szText += " <font color=\"#a0a0a0\">[" + __tr2qs("Script") + "]</font>";
 	szText += "<br><font size=\"-1\">" + pAction->description() + "</font>";
-	m_szKey = pAction->visibleName().toUpper();
 
 	QPixmap * p = pAction->bigIcon();
 	if(p)
 		setIcon(QIcon(*p));
 	setText(szText);
 }
-
-KviActionDrawerPageListWidgetItem::~KviActionDrawerPageListWidgetItem()
-    = default;

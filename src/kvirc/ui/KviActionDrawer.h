@@ -45,7 +45,7 @@ class KviActionDrawerPageListWidget;
 * \class KviActionDrawer
 * \brief Action drawer class
 */
-class KVIRC_API KviActionDrawer : public QTabWidget
+class KVIRC_API KviActionDrawer final : public QTabWidget
 {
 	Q_OBJECT
 public:
@@ -55,11 +55,6 @@ public:
 	* \return KviActionDrawer
 	*/
 	KviActionDrawer(QWidget * pParent);
-
-	/**
-	* \brief Destroys an action drawer object
-	*/
-	~KviActionDrawer();
 
 public:
 	/**
@@ -73,11 +68,11 @@ public:
 * \class KviActionDrawer
 * \brief Action drawer page class
 */
-class KVIRC_API KviActionDrawerPage : public QWidget
+class KVIRC_API KviActionDrawerPage final : public QWidget
 {
 	friend class KviActionDrawer;
 	Q_OBJECT
-protected:
+private:
 	/**
 	* \brief Constructs an action drawer page object
 	* \param pParent The parent widget
@@ -86,16 +81,10 @@ protected:
 	*/
 	KviActionDrawerPage(QWidget * pParent, const QString & szDescription);
 
-public:
-	/**
-	* \brief Destroys an action drawer page object
-	*/
-	~KviActionDrawerPage();
-
-protected:
+private:
 	KviActionDrawerPageListWidget * m_pListWidget;
 
-protected:
+private:
 	/**
 	* \brief Adds an action
 	* \param pAction The pointer to the action to add
@@ -108,11 +97,11 @@ protected:
 * \class KviActionDrawer
 * \brief Action drawer page list class
 */
-class KVIRC_API KviActionDrawerPageListWidget : public KviTalListWidget
+class KVIRC_API KviActionDrawerPageListWidget final : public KviTalListWidget
 {
 	friend class KviActionDrawerPage;
 	Q_OBJECT
-protected:
+private:
 	/**
 	* \brief Constructs an action drawer page list object
 	* \param pParent The parent widget
@@ -120,22 +109,16 @@ protected:
 	*/
 	KviActionDrawerPageListWidget(KviActionDrawerPage * pParent);
 
-public:
-	/**
-	* \brief Destroys an action drawer page list object
-	*/
-	~KviActionDrawerPageListWidget();
-
-protected:
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void mousePressEvent(QMouseEvent * e);
+private:
+	void resizeEvent(QResizeEvent * e) override;
+	void mousePressEvent(QMouseEvent * e) override;
 };
 
 /**
 * \class KviActionDrawer
 * \brief Action drawer page list item class
 */
-class KVIRC_API KviActionDrawerPageListWidgetItem : public KviTalListWidgetItem
+class KVIRC_API KviActionDrawerPageListWidgetItem final : public KviTalListWidgetItem
 {
 public:
 	/**
@@ -146,26 +129,11 @@ public:
 	*/
 	KviActionDrawerPageListWidgetItem(KviTalListWidget * pList, KviAction * pAction);
 
-	/**
-	* \brief Destroys an action drawer page list item object
-	*/
-	~KviActionDrawerPageListWidgetItem();
-
-protected:
+private:
 	QString m_szName;
-	QPixmap * m_pIcon;
-	KviTalListWidget * m_pListWidget;
-	QString m_szKey;
 
 public:
-	QPixmap * icon() { return m_pIcon; };
-	const QString & name() { return m_szName; };
-	/*
-protected:
-	virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
-	virtual void setup();
-	virtual QString key(int,bool) const;
-*/
+	const QString & name() const { return m_szName; }
 };
 
 #endif //_KVI_ACTIONDRAWER_H_
