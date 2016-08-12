@@ -33,10 +33,10 @@
 
 #include <QSystemTrayIcon>
 #include <QLabel>
+#include <QMenu>
+#include <QTimer>
 
 class QPixmap;
-class QTimer;
-class QMenu;
 
 class KviTrayIconWidget final : public QSystemTrayIcon, public KviTrayIcon
 {
@@ -45,10 +45,10 @@ public:
 	KviTrayIconWidget();
 	~KviTrayIconWidget() override;
 
-protected:
+private:
 	KviDynamicToolTip m_Tip;
 	QMenu * m_pContextPopup;
-	QMenu * m_pAwayPopup;
+	QMenu m_awayPopup;
 #ifndef COMPILE_ON_MAC
 	QLabel * m_pTitleLabel;
 #endif
@@ -61,7 +61,7 @@ protected:
 
 	QPixmap m_CurrentPixmap;
 
-	QTimer * m_pFlashingTimer;
+	QTimer m_flashingTimer;
 	unsigned int m_iConsoles;
 	unsigned int m_iChannels;
 	unsigned int m_iQueries;
@@ -71,10 +71,10 @@ public:
 	void refresh() override;
 	void updateIcon();
 
-protected:
+private:
 	void grabActivityInfo();
 	bool event(QEvent * e) override;
-protected slots:
+private slots:
 	void fillContextPopup();
 	void toggleParentFrame();
 	void doAway(bool);

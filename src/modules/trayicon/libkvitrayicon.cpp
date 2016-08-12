@@ -69,7 +69,7 @@ static QPixmap * g_pDock2 = nullptr;
 static QPixmap * g_pDock3 = nullptr;
 
 KviTrayIconWidget::KviTrayIconWidget()
-    : QSystemTrayIcon(g_pMainWindow), m_CurrentPixmap(ICON_SIZE, ICON_SIZE), m_Tip(g_pMainWindow, "dock_tooltip")
+    : QSystemTrayIcon(g_pMainWindow), m_Tip(g_pMainWindow, "dock_tooltip"), m_CurrentPixmap(ICON_SIZE, ICON_SIZE)
 {
 	g_pTrayIcon = this;
 	m_pContextPopup = new QMenu(nullptr);
@@ -81,14 +81,11 @@ KviTrayIconWidget::KviTrayIconWidget()
 	m_iOther = 0;
 	m_bHidden = false;
 
-	m_pFlashingTimer = new QTimer(this);
-	m_pFlashingTimer->setObjectName("flashing_timer");
-	connect(m_pFlashingTimer, SIGNAL(timeout()), this, SLOT(flashingTimerShot()));
+	m_flashingTimer.setObjectName("flashing_timer");
+	connect(&m_flashingTimer, SIGNAL(timeout()), this, SLOT(flashingTimerShot()));
 	m_bFlashed = false;
 
 	g_pMainWindow->setTrayIcon(this);
-
-	m_pAwayPopup = new QMenu(nullptr);
 
 #ifndef COMPILE_ON_MAC
 	m_pTitleLabel = new QLabel(__tr2qs("<b><center>KVIrc Tray Options</center></b>"), m_pContextPopup);
@@ -100,7 +97,7 @@ KviTrayIconWidget::KviTrayIconWidget()
 #endif
 
 	m_pContextPopup->setWindowTitle(__tr2qs("Context"));
-	m_pAwayMenuId = m_pContextPopup->addMenu(m_pAwayPopup);
+	m_pAwayMenuId = m_pContextPopup->addMenu(&m_awayPopup);
 	m_pAwayMenuId->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Away)));
 	m_pAwayMenuId->setText(__tr2qs("Away"));
 
@@ -130,11 +127,6 @@ KviTrayIconWidget::~KviTrayIconWidget()
 {
 	g_pTrayIcon = nullptr;
 	g_pMainWindow->setTrayIcon(nullptr);
-	delete m_pAwayPopup;
-#ifndef COMPILE_ON_MAC
-	delete m_pTitleLabel;
-#endif
-	delete m_pFlashingTimer;
 	if(m_bHidden)
 		m_pContextPopup->deleteLater();
 	else
@@ -172,9 +164,7 @@ void KviTrayIconWidget::disableTrayIcon()
 	g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_HIDE);
 }
 
-#define NIDLEMSGS 18
-
-static const char * idlemsgs[NIDLEMSGS] = {
+static const char * idlemsgs[] = {
 	__tr("Nothing is happening..."),
 	__tr("Just idling..."),
 	__tr("Dum de dum de dum..."),
@@ -194,6 +184,8 @@ static const char * idlemsgs[NIDLEMSGS] = {
 	__tr("Mieeeeeowww!"),
 	__tr("idle idle idle idle!")
 };
+
+static const std::size_t NIDLEMSGS = sizeof(idlemsgs) / sizeof(*idlemsgs);
 
 bool KviTrayIconWidget::event(QEvent * e)
 {
@@ -310,15 +302,15 @@ void KviTrayIconWidget::fillContextPopup()
 	if(g_pApp->topmostConnectedConsole())
 	{
 		m_pAwayMenuId->setVisible(true);
-		m_pAwayPopup->clear();
+		m_awayPopup.clear();
 
-		QAction * pAllAway = m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Away)), __tr2qs("Away on All"), this, SLOT(doAway(bool)));
+		QAction * pAllAway = m_awayPopup.addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Away)), __tr2qs("Away on All"), this, SLOT(doAway(bool)));
 		pAllAway->setData(-1);
 
-		QAction * pAllUnaway = m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)), __tr2qs("Back on All"), this, SLOT(doAway(bool)));
+		QAction * pAllUnaway = m_awayPopup.addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)), __tr2qs("Back on All"), this, SLOT(doAway(bool)));
 		pAllUnaway->setData(-2);
 
-		QAction * pSeparator = m_pAwayPopup->addSeparator();
+		QAction * pSeparator = m_awayPopup.addSeparator();
 
 		bool bAllAway = true;
 		bool bAllUnaway = true;
@@ -331,13 +323,13 @@ void KviTrayIconWidget::fillContextPopup()
 				QAction * id;
 				if(pConsole->connection()->userInfo()->isAway())
 				{
-					id = m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)), __tr2qs("Back on %1").arg(pConsole->currentNetworkName()), this, SLOT(doAway(bool)));
+					id = m_awayPopup.addAction(*(g_pIconManager->getSmallIcon(KviIconManager::NotAway)), __tr2qs("Back on %1").arg(pConsole->currentNetworkName()), this, SLOT(doAway(bool)));
 					id->setData(pConsole->context()->id());
 					bAllUnaway = false;
 				}
 				else
 				{
-					id = m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Away)), __tr2qs("Away on %1").arg(pConsole->currentNetworkName()), this, SLOT(doAway(bool)));
+					id = m_awayPopup.addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Away)), __tr2qs("Away on %1").arg(pConsole->currentNetworkName()), this, SLOT(doAway(bool)));
 					id->setData(pConsole->context()->id());
 					bAllAway = false;
 				}
@@ -421,13 +413,13 @@ void KviTrayIconWidget::refresh()
 
 	if((m_iChannels == 2) || (m_iQueries == 2))
 	{
-		if(!m_pFlashingTimer->isActive() && KVI_OPTION_BOOL(KviOption_boolEnableTrayIconFlashing))
-			m_pFlashingTimer->start(1000);
+		if(!m_flashingTimer.isActive() && KVI_OPTION_BOOL(KviOption_boolEnableTrayIconFlashing))
+			m_flashingTimer.start(1000);
 	}
 	else
 	{
-		if(m_pFlashingTimer->isActive())
-			m_pFlashingTimer->stop();
+		if(m_flashingTimer.isActive())
+			m_flashingTimer.stop();
 		m_bFlashed = false;
 	}
 
