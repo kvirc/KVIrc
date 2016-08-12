@@ -229,7 +229,7 @@ bool KviTrayIconWidget::event(QEvent * e)
 		// We use the bad way to generate random numbers :)))))
 		std::srand(std::time(nullptr));
 		if(tmp.isEmpty())
-			tmp = __tr2qs_no_xgettext(idlemsgs[(int)(std::rand() % NIDLEMSGS)]);
+			tmp = __tr2qs_no_xgettext(idlemsgs[std::rand() % NIDLEMSGS]);
 
 		m_Tip.tip(QRect(pos, QSize(0, 0)), tmp);
 		return true;
