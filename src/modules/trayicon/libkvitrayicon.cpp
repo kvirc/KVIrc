@@ -159,11 +159,6 @@ void KviTrayIconWidget::executeInternalCommand(bool)
 		g_pMainWindow->executeInternalCommand(iCmd);
 }
 
-void KviTrayIconWidget::die()
-{
-	delete this;
-}
-
 void KviTrayIconWidget::flashingTimerShot()
 {
 	m_bFlashed = !m_bFlashed;

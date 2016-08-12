@@ -71,11 +71,6 @@ public:
 	{
 	}
 
-	virtual void die()
-	{
-		delete this;
-	}
-
 }; // class KviTrayIcon
 
 #endif //!_KviTrayIcon_h_

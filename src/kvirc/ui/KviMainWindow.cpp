@@ -206,12 +206,8 @@ KviMainWindow::~KviMainWindow()
 
 	KVI_OPTION_BOOL(KviOption_boolShowDockExtension) = m_pTrayIcon != nullptr;
 
-	if(m_pTrayIcon)
-	{
-		m_pTrayIcon->die();
-		m_pTrayIcon = nullptr;
-	}
-
+	delete m_pTrayIcon;
+	m_pTrayIcon = nullptr;
 
 	delete m_pStatusBar;
 	m_pStatusBar = nullptr;

@@ -38,12 +38,12 @@ class QPixmap;
 class QTimer;
 class QMenu;
 
-class KviTrayIconWidget : public QSystemTrayIcon, public KviTrayIcon
+class KviTrayIconWidget final : public QSystemTrayIcon, public KviTrayIcon
 {
 	Q_OBJECT
 public:
 	KviTrayIconWidget();
-	~KviTrayIconWidget();
+	~KviTrayIconWidget() override;
 
 protected:
 	KviDynamicToolTip m_Tip;
@@ -68,13 +68,12 @@ protected:
 	unsigned int m_iOther;
 
 public:
-	virtual void refresh();
-	virtual void die();
+	void refresh() override;
 	void updateIcon();
 
 protected:
 	void grabActivityInfo();
-	virtual bool event(QEvent * e);
+	bool event(QEvent * e) override;
 protected slots:
 	void fillContextPopup();
 	void toggleParentFrame();
