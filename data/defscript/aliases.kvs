@@ -361,6 +361,12 @@ alias(awayall)
 		away -r=%w $0-;
 }
 
+alias(backall)
+{
+	foreach(%w,$window.list(console,all))
+		back -r=%w;
+}
+
 # notify: this is a bit more complex
 # We want to add an user to the notify list with a single command
 # The notify lists are handled through the registered users database
