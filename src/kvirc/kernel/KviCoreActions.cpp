@@ -1053,7 +1053,7 @@ KviGoAwayAction::KviGoAwayAction(QObject * pParent)
     : KviKvsAction(
           pParent,
           QString(KVI_COREACTION_AWAYBACK),
-          QString("if($away())back; else away;"),
+          QString("if($away())back; else away -d;"),
           __tr2qs("Away/Back"),
           __tr2qs("Allows entering and leaving away state"),
           KviActionManager::categoryIrc(),

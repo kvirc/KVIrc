@@ -206,9 +206,9 @@ void KviStatusBarAwayIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 		return;
 	QString command;
 	if(m_bAwayOnAllContexts)
-		command = "if($away)back -a; else away -a";
+		command = "if($away)back -a; else away -a -d";
 	else
-		command = "if($away)back; else away";
+		command = "if($away)back; else away -d";
 	KviKvsScript::run(command, c->console());
 }
 

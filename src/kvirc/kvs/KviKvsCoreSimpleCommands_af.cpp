@@ -84,12 +84,15 @@ namespace KviKvsCoreSimpleCommands
 		@title:
 			away
 		@syntax:
-			away [-a | --all-networks] [<reason:string>]
+			away [-a | --all-networks] [-d | --default-message] [<reason:string>]
 		@short:
 			Puts you into 'away' state
 		@switches:
 			!sw: -a | --all-networks
 			Set away on all networks
+			!sw: -d | --default-message
+			If you do not specify a message, this switch overrides the boolUseAwayMessage option
+			and sets you away with the default message.
 		@description:
 			Puts you into 'away' state in the connection associated to the
 			current [b]IRC context[/b].[br] This command is "server based";
@@ -120,7 +123,7 @@ namespace KviKvsCoreSimpleCommands
 
 		if(szReason.isEmpty())
 		{
-			if(KVI_OPTION_BOOL(KviOption_boolUseAwayMessage))
+			if(KVI_OPTION_BOOL(KviOption_boolUseAwayMessage) || KVSCSC_pSwitches->find('d', "default-message"))
 			{
 				//user want to use its default away message
 				szReason = KVI_OPTION_STRING(KviOption_stringAwayMessage);
