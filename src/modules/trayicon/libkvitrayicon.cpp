@@ -239,6 +239,7 @@ void KviTrayIconWidget::doAway(bool)
 {
 	int id;
 	bool ok;
+	QString szReason;
 	QAction * act = dynamic_cast<QAction *>(QObject::sender());
 
 	if(act != nullptr)
@@ -265,8 +266,11 @@ void KviTrayIconWidget::doAway(bool)
 				}
 				else
 				{
+					szReason = KVI_OPTION_STRING(KviOption_stringAwayMessage);
+					if(szReason.isEmpty())
+						szReason = __tr2qs("Away from keyboard.");
 					pConsole->connection()->sendFmtData("AWAY :%s",
-					    pConsole->connection()->encodeText(KVI_OPTION_STRING(KviOption_stringAwayMessage)).data());
+					    pConsole->connection()->encodeText(szReason).data());
 				}
 			}
 		}
@@ -284,8 +288,11 @@ void KviTrayIconWidget::doAway(bool)
 				}
 				else
 				{
+					szReason = KVI_OPTION_STRING(KviOption_stringAwayMessage);
+					if(szReason.isEmpty())
+						szReason = __tr2qs("Away from keyboard.");
 					pConsole->connection()->sendFmtData("AWAY :%s",
-					    pConsole->connection()->encodeText(KVI_OPTION_STRING(KviOption_stringAwayMessage)).data());
+					    pConsole->connection()->encodeText(szReason).data());
 				}
 			}
 		}
