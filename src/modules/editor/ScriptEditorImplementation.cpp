@@ -64,7 +64,7 @@
 #endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
 extern KVIRC_API KviModuleManager * g_pModuleManager;
-extern KviPointerList<ScriptEditorImplementation> * g_pScriptEditorWindowList;
+extern std::set<ScriptEditorImplementation *> g_pScriptEditorWindowList;
 extern KviModule * g_pEditorModulePointer;
 
 static QColor g_clrBackground(0, 0, 0);
@@ -461,8 +461,6 @@ bool ScriptEditorWidget::contextSensitiveHelp() const
 ScriptEditorWidgetColorOptions::ScriptEditorWidgetColorOptions(QWidget * pParent)
     : QDialog(pParent)
 {
-	m_pSelectorInterfaceList = new KviPointerList<KviSelectorInterface>;
-	m_pSelectorInterfaceList->setAutoDelete(false);
 	setWindowTitle(__tr2qs_ctx("Editor Configuration - KVIrc", "editor"));
 
 	QGridLayout * g = new QGridLayout(this);
@@ -473,7 +471,7 @@ ScriptEditorWidgetColorOptions::ScriptEditorWidgetColorOptions(QWidget * pParent
 	box->setMinimumWidth(280);
 
 	KviFontSelector * f = new KviFontSelector(box, __tr2qs_ctx("Font:", "editor"), &g_fntNormal, true);
-	m_pSelectorInterfaceList->append(f);
+	m_pSelectorInterfaceList.push_back(f);
 	KviTalGroupBox * gbox = new KviTalGroupBox(Qt::Horizontal, __tr2qs_ctx("Colors", "editor"), box);
 	gbox->setInsideSpacing(0);
 
@@ -497,24 +495,18 @@ ScriptEditorWidgetColorOptions::ScriptEditorWidgetColorOptions(QWidget * pParent
 	connect(b, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
-ScriptEditorWidgetColorOptions::~ScriptEditorWidgetColorOptions()
-{
-	delete m_pSelectorInterfaceList;
-}
-
 KviColorSelector * ScriptEditorWidgetColorOptions::addColorSelector(QWidget * pParent, const QString & txt, QColor * pOption, bool bEnabled)
 {
 	KviColorSelector * s = new KviColorSelector(pParent, txt, pOption, bEnabled);
-	m_pSelectorInterfaceList->append(s);
+	m_pSelectorInterfaceList.push_back(s);
 	return s;
 }
 
 void ScriptEditorWidgetColorOptions::okClicked()
 {
-	for(KviSelectorInterface * i = m_pSelectorInterfaceList->first(); i; i = m_pSelectorInterfaceList->next())
-	{
+	for(const auto & i : m_pSelectorInterfaceList)
 		i->commit();
-	}
+
 	accept();
 }
 
@@ -718,9 +710,9 @@ ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
     : KviScriptEditor(par)
 {
 	m_pOptionsDialog = nullptr;
-	if(g_pScriptEditorWindowList->isEmpty())
+	if(g_pScriptEditorWindowList.empty())
 		loadOptions();
-	g_pScriptEditorWindowList->append(this);
+	g_pScriptEditorWindowList.insert(this);
 	m_lastCursorPos = 0;
 	QGridLayout * g = new QGridLayout(this);
 
@@ -781,8 +773,8 @@ ScriptEditorImplementation::~ScriptEditorImplementation()
 		m_pOptionsDialog->deleteLater();
 		m_pOptionsDialog = nullptr;
 	}
-	g_pScriptEditorWindowList->removeRef(this);
-	if(g_pScriptEditorWindowList->isEmpty())
+	g_pScriptEditorWindowList.erase(this);
+	if(g_pScriptEditorWindowList.empty())
 		saveOptions();
 }
 
@@ -937,7 +929,7 @@ void ScriptEditorImplementation::updateRowColLabel()
 {
 	if(m_lastCursorPos == m_pEditor->textCursor().position())
 		return;
-	int iRow = m_pEditor->textCursor().blockNumber() + 1; 
+	int iRow = m_pEditor->textCursor().blockNumber() + 1;
 	int iCol = m_pEditor->textCursor().columnNumber() + 1;
 	QString szTmp = QString(__tr2qs_ctx("Line: %1 Col: %2", "editor")).arg(iRow).arg(iCol);
 	m_pRowColLabel->setText(szTmp);
@@ -1053,9 +1045,6 @@ ScriptEditorReplaceDialog::ScriptEditorReplaceDialog(QWidget * pParent, const QS
 	connect(pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 	connect(m_pFindLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(textChanged(const QString &)));
 }
-
-ScriptEditorReplaceDialog::~ScriptEditorReplaceDialog()
-    = default;
 
 void ScriptEditorReplaceDialog::textChanged(const QString & szText)
 {

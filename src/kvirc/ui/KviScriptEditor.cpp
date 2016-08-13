@@ -29,71 +29,16 @@
 #include "KviScriptEditor.h"
 #include "KviModuleManager.h"
 
-KviScriptEditor::KviScriptEditor(QWidget * par)
-    : QWidget(par)
-{
-}
-
-KviScriptEditor::~KviScriptEditor()
-    = default;
-
-void KviScriptEditor::setText(const char * txt)
-{
-	setText(QByteArray(txt));
-}
-
-void KviScriptEditor::setText(const QByteArray &)
-{
-}
-
 void KviScriptEditor::setText(const QString & txt)
 {
 	setText(QByteArray(txt.toUtf8()));
 }
 
-void KviScriptEditor::setFindText(const QString &)
-{
-}
-void KviScriptEditor::setInfoText(const QString &)
-{
-}
-
-void KviScriptEditor::setFindLineeditReadOnly(bool)
-{
-}
-void KviScriptEditor::setReadOnly(bool)
-{
-}
-void KviScriptEditor::setUnHighlightedText(const QString &)
-{
-}
-void KviScriptEditor::getText(QByteArray &)
-{
-}
-
-void KviScriptEditor::setCursorPosition(int)
-{
-}
-
-bool KviScriptEditor::isModified()
-{
-	return false;
-}
-
-int KviScriptEditor::getCursor()
-{
-	return 0;
-}
 void KviScriptEditor::getText(QString & txt)
 {
 	QByteArray tmp;
 	getText(tmp);
 	txt = QString::fromUtf8(tmp.data());
-}
-
-KviScriptEditor * KviScriptEditor::getDummyEditor(QWidget * par)
-{
-	return new KviScriptEditor(par);
 }
 
 static KviScriptEditor * (*editorModuleCreateScriptEditor)(QWidget *);

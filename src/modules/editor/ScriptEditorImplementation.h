@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "KviScriptEditor.h"
-#include "KviPointerList.h"
 #include "KviSelectors.h"
 
 #include <QCompleter>
@@ -38,12 +37,13 @@
 #include <QSyntaxHighlighter>
 #include <QByteArray>
 #include <QMenu>
+#include <QTimer>
 
-class QTimer;
+#include <set>
+#include <vector>
 
-//typedef KviPointerList<int> ColumnList;
 class ScriptEditorSyntaxHighlighter;
-class ScriptEditorWidget : public QTextEdit
+class ScriptEditorWidget final : public QTextEdit
 {
 	Q_OBJECT
 	Q_PROPERTY(bool contextSensitiveHelp READ contextSensitiveHelp)
@@ -75,7 +75,6 @@ public:
 	QCompleter * completer() const { return m_pCompleter; };
 	QString textUnderCursor() const;
 	void updateOptions();
-	//void find1();
 	bool contextSensitiveHelp() const;
 public slots:
 	void checkReadyCompleter();
@@ -88,30 +87,26 @@ protected slots:
 signals:
 	void keyPressed();
 
-protected:
-	void contextMenuEvent(QContextMenuEvent * e);
-	virtual void keyPressEvent(QKeyEvent * e);
-	// 	void mouseReleaseEvent(QMouseEvent * e);
+private:
+	void contextMenuEvent(QContextMenuEvent * e) override;
+	void keyPressEvent(QKeyEvent * e) override;
 };
 
-class ScriptEditorWidgetColorOptions : public QDialog
+class ScriptEditorWidgetColorOptions final : public QDialog
 {
 	Q_OBJECT
 public:
 	ScriptEditorWidgetColorOptions(QWidget * pParent);
-	~ScriptEditorWidgetColorOptions();
 
 private:
-	KviPointerList<KviSelectorInterface> * m_pSelectorInterfaceList;
-
-protected:
+	std::vector<KviSelectorInterface *> m_pSelectorInterfaceList;
 	KviColorSelector * addColorSelector(QWidget * pParent, const QString & txt, QColor * pOption, bool bEnabled);
 
 protected slots:
 	void okClicked();
 };
 
-class ScriptEditorSyntaxHighlighter : public QSyntaxHighlighter
+class ScriptEditorSyntaxHighlighter final : public QSyntaxHighlighter
 {
 public:
 	ScriptEditorSyntaxHighlighter(ScriptEditorWidget * pWidget);
@@ -146,12 +141,12 @@ private:
 	QTextCharFormat commentFormat;
 };
 
-class ScriptEditorImplementation : public KviScriptEditor
+class ScriptEditorImplementation final : public KviScriptEditor
 {
 	Q_OBJECT
 public:
 	ScriptEditorImplementation(QWidget * par);
-	virtual ~ScriptEditorImplementation();
+	~ScriptEditorImplementation() override;
 
 public:
 	QLineEdit * m_pFindLineEdit;
@@ -163,26 +158,26 @@ protected:
 	int m_lastCursorPos;
 
 public:
-	virtual void setText(const char * txt);
-	virtual void setText(const QString & szText);
-	virtual void setText(const QByteArray & szText);
-	virtual void getText(QString & szText);
-	virtual void getText(QByteArray & szText);
-	virtual void setFindText(const QString & szText);
+	void setText(const char * txt) override;
+	void setText(const QString & szText) override;
+	void setText(const QByteArray & szText) override;
+	void getText(QString & szText) override;
+	void getText(QByteArray & szText) override;
+	void setFindText(const QString & szText) override;
 	virtual void setEnabled(bool bEnabled);
-	virtual void setReadOnly(bool bReadOnly);
-	void setUnHighlightedText(const QString & szText);
+	void setReadOnly(bool bReadOnly) override;
+	void setUnHighlightedText(const QString & szText) override;
 
 	virtual void setFocus();
-	virtual bool isModified();
-	virtual void setModified(bool);
+	bool isModified() override;
+	void setModified(bool) override;
 
-	int getCursor() { return m_pEditor->textCursor().position(); };
-	void setCursorPosition(int iPos);
+	int getCursor() override { return m_pEditor->textCursor().position(); };
+	void setCursorPosition(int iPos) override;
 	int cursor() { return m_lastCursorPos; };
 	QLineEdit * findLineEdit() { return m_pFindLineEdit; };
-protected:
-	virtual void focusInEvent(QFocusEvent * e);
+private:
+	void focusInEvent(QFocusEvent * e) override;
 	void loadOptions();
 	void saveOptions();
 protected slots:
@@ -202,22 +197,21 @@ signals:
 	void nextFind(const QString & szText);
 };
 
-class ScriptEditorReplaceDialog : public QDialog
+class ScriptEditorReplaceDialog final : public QDialog
 {
 	Q_OBJECT
 public:
 	ScriptEditorReplaceDialog(QWidget * parent = 0, const QString & szName = QString());
-	~ScriptEditorReplaceDialog();
 
 public:
 	QLineEdit * m_pFindLineEdit;
 	QLineEdit * m_pReplaceLineEdit;
 
-protected:
+private:
 	QPushButton * m_pReplaceButton;
 	QCheckBox * m_pCheckReplaceAll;
 	QWidget * m_pParent;
-protected slots:
+private slots:
 	void textChanged(const QString &);
 	void slotReplace();
 	void slotNextFind();

@@ -29,15 +29,11 @@
 
 KviModule * g_pEditorModulePointer = nullptr;
 
-KviPointerList<ScriptEditorImplementation> * g_pScriptEditorWindowList = nullptr;
+std::set<ScriptEditorImplementation *> g_pScriptEditorWindowList;
 
 static bool editor_module_init(KviModule * m)
 {
-	g_pScriptEditorWindowList = new KviPointerList<ScriptEditorImplementation>;
-	g_pScriptEditorWindowList->setAutoDelete(false);
-
 	g_pEditorModulePointer = m;
-
 	return true;
 }
 
@@ -50,9 +46,10 @@ static bool editor_module_cleanup(KviModule *)
 	 * So it's commented out by now..
 	 */
 
-	while(g_pScriptEditorWindowList->first())
+	while(!g_pScriptEditorWindowList.empty())
 	{
-		QObject * w = g_pScriptEditorWindowList->first()->parent();
+		auto & t = *g_pScriptEditorWindowList.begin();
+		QObject * w = t->parent();
 		while(w)
 		{
 			//qDebug("%s %s %i %s",__FILE__,__FUNCTION__,__LINE__,w->className());
@@ -65,18 +62,15 @@ static bool editor_module_cleanup(KviModule *)
 			}
 			w = w->parent();
 		}
-		delete g_pScriptEditorWindowList->first();
+		delete t;
 	}
-
-	delete g_pScriptEditorWindowList;
-	g_pScriptEditorWindowList = nullptr;
 
 	return true;
 }
 
 static bool editor_module_can_unload(KviModule *)
 {
-	return ((g_pScriptEditorWindowList == nullptr) || (g_pScriptEditorWindowList->count() == 0));
+	return g_pScriptEditorWindowList.empty();
 }
 
 KVIRC_MODULE(
