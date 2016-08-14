@@ -55,16 +55,14 @@ extern PopupEditorWindow * g_pPopupEditorWindow;
 
 //KviPopupEntryItem
 PopupTreeWidgetItem::PopupTreeWidgetItem(QTreeWidget * pTreeWidget, PopupTreeWidgetItem * after, Type t)
-    : QTreeWidgetItem(pTreeWidget, after)
+    : QTreeWidgetItem(pTreeWidget, after), m_type(t)
 {
-	m_type = t;
 	init();
 }
 
 PopupTreeWidgetItem::PopupTreeWidgetItem(PopupTreeWidgetItem * parent, PopupTreeWidgetItem * after, Type t)
-    : QTreeWidgetItem(parent, after)
+    : QTreeWidgetItem(parent, after), m_type(t)
 {
-	m_type = t;
 	init();
 }
 
@@ -580,13 +578,8 @@ PopupTreeWidgetItem * SinglePopupEditor::newItemAbove(PopupTreeWidgetItem * it, 
 
 PopupTreeWidgetItem * SinglePopupEditor::newItemInside(PopupTreeWidgetItem * it, PopupTreeWidgetItem::Type t)
 {
-	if(it)
-	{
-		if(it->m_type != PopupTreeWidgetItem::Menu)
-		{
-			return newItemBelow(it, t);
-		}
-	}
+	if(it && it->m_type != PopupTreeWidgetItem::Menu)
+		return newItemBelow(it, t);
 	return newItem(it, it, t);
 }
 
@@ -619,8 +612,7 @@ void SinglePopupEditor::contextCopy()
 {
 	if(!m_pLastSelectedItem)
 		return;
-	if(m_pClipboard)
-		delete m_pClipboard;
+	delete m_pClipboard;
 	m_pClipboard = new KviKvsPopupMenu("clipboard");
 	addItemToMenu(m_pClipboard, m_pLastSelectedItem);
 }
@@ -629,11 +621,15 @@ void SinglePopupEditor::contextCut()
 {
 	if(!m_pLastSelectedItem)
 		return;
+
+	saveLastSelectedItem();
 	contextCopy();
 
-	delete m_pLastSelectedItem;
-	m_pLastSelectedItem = nullptr;
+	auto * lastSelectedCache = m_pLastSelectedItem;
+
+	m_pTreeWidget->selectionModel()->clearSelection();
 	selectionChanged();
+	delete lastSelectedCache;
 }
 
 void SinglePopupEditor::contextRemove()
@@ -641,15 +637,18 @@ void SinglePopupEditor::contextRemove()
 	if(!m_pLastSelectedItem)
 		return;
 
-	delete m_pLastSelectedItem;
-	m_pLastSelectedItem = nullptr;
+	auto * lastSelectedCache = m_pLastSelectedItem;
+
+	m_pTreeWidget->selectionModel()->clearSelection();
 	selectionChanged();
+	delete lastSelectedCache;
 }
 
 void SinglePopupEditor::contextPasteBelow()
 {
 	if(!m_pClipboard)
 		return;
+
 	PopupTreeWidgetItem * par = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pLastSelectedItem->parent() : nullptr;
 	populateMenu(m_pClipboard, par, m_pLastSelectedItem);
 }
@@ -658,6 +657,7 @@ void SinglePopupEditor::contextPasteAbove()
 {
 	if(!m_pClipboard)
 		return;
+
 	PopupTreeWidgetItem * par = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pLastSelectedItem->parent() : nullptr;
 	PopupTreeWidgetItem * above = m_pLastSelectedItem ? (PopupTreeWidgetItem *)m_pTreeWidget->itemAbove(m_pLastSelectedItem) : nullptr;
 	populateMenu(m_pClipboard, par, above);
@@ -667,6 +667,7 @@ void SinglePopupEditor::contextPasteInside()
 {
 	if(!m_pClipboard)
 		return;
+
 	if(m_pLastSelectedItem)
 	{
 		if(m_pLastSelectedItem->m_type != PopupTreeWidgetItem::Menu)
@@ -1102,9 +1103,6 @@ PopupEditorWidget::PopupEditorWidget(QWidget * par)
 	currentItemChanged(nullptr, nullptr);
 }
 
-PopupEditorWidget::~PopupEditorWidget()
-    = default;
-
 void PopupEditorWidget::oneTimeSetup()
 {
 	if(m_bOneTimeSetupDone)
@@ -1163,7 +1161,7 @@ void PopupEditorWidget::popupRefresh(const QString & szName)
 			pCopy->copyFrom(pPopup);
 			ch->replacePopup(pCopy);
 
-			//refresh current item
+			// refresh current item
 			if(ch == m_pLastEditedItem)
 				m_pEditor->edit(m_pLastEditedItem);
 			return;
@@ -1448,16 +1446,6 @@ void PopupEditorWindow::okClicked()
 	close();
 }
 
-void PopupEditorWindow::applyClicked()
-{
-	m_pEditor->commit();
-}
-
-void PopupEditorWindow::cancelClicked()
-{
-	close();
-}
-
 QPixmap * PopupEditorWindow::myIconPtr()
 {
 	return g_pIconManager->getSmallIcon(KviIconManager::PopupEditor);
@@ -1466,17 +1454,4 @@ QPixmap * PopupEditorWindow::myIconPtr()
 void PopupEditorWindow::fillCaptionBuffers()
 {
 	m_szPlainTextCaption = __tr2qs_ctx("Popup Editor", "editor");
-}
-
-void PopupEditorWindow::getConfigGroupName(QString & szName)
-{
-	szName = "popupeditor";
-}
-
-void PopupEditorWindow::saveProperties(KviConfigurationFile *) //cfg
-{
-}
-
-void PopupEditorWindow::loadProperties(KviConfigurationFile *) // cfg
-{
 }

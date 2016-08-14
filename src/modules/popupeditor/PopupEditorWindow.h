@@ -76,7 +76,7 @@ public:
 	void setId(const QString & szId);
 };
 
-class SinglePopupEditor : public QWidget
+class SinglePopupEditor final : public QWidget
 {
 	Q_OBJECT
 public:
@@ -145,7 +145,7 @@ protected slots:
 	void testModeMenuItemClicked(KviKvsPopupMenuItem * it);
 };
 
-class MenuTreeWidgetItem : public QTreeWidgetItem
+class MenuTreeWidgetItem final : public QTreeWidgetItem
 {
 public:
 	MenuTreeWidgetItem(QTreeWidget * par, KviKvsPopupMenu * popup);
@@ -160,12 +160,11 @@ public:
 	void replacePopup(KviKvsPopupMenu * popup);
 };
 
-class PopupEditorWidget : public QWidget
+class PopupEditorWidget final : public QWidget
 {
 	Q_OBJECT
 public:
 	PopupEditorWidget(QWidget * par);
-	~PopupEditorWidget();
 
 public:
 	SinglePopupEditor * m_pEditor;
@@ -199,26 +198,24 @@ private:
 	void getUniquePopupName(MenuTreeWidgetItem * it, QString & buffer);
 };
 
-class PopupEditorWindow : public KviWindow
+class PopupEditorWindow final : public KviWindow
 {
 	Q_OBJECT
 public:
 	PopupEditorWindow();
 	~PopupEditorWindow();
 
-protected:
+private:
 	PopupEditorWidget * m_pEditor;
-
-protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void getConfigGroupName(QString & szName);
-	virtual void saveProperties(KviConfigurationFile *);
-	virtual void loadProperties(KviConfigurationFile *);
-protected slots:
-	void cancelClicked();
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void getConfigGroupName(QString & szName) override { szName = "popupeditor"; };
+	void saveProperties(KviConfigurationFile *) override {};
+	void loadProperties(KviConfigurationFile *) override {};
+private slots:
+	void cancelClicked() { close(); };
 	void okClicked();
-	void applyClicked();
+	void applyClicked() { m_pEditor->commit(); };
 };
 
 #endif //_POPUPEDITOR_H_
