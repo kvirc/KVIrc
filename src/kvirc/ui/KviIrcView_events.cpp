@@ -1121,6 +1121,8 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 
 				tip += "</table></body></html>";
 			}
+			else
+				tip = __tr2qs("You're not connected to a server");
 		}
 		break;
 		default:
