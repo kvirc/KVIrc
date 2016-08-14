@@ -646,6 +646,12 @@ defpopup(windowpopup)
 			eval "part $escape($chan.name) $option(stringPartMessage)";
 	}
 
+	item($tr("&Join","defscript") $0,$icon("join")) ($window.type == deadchannel)
+	{
+		if($chan.isDead)
+			eval "join $escape($chan.name)";
+	}
+
 	separator
 
 	extpopup($tr("Logging","defscript"),logging,$icon("log"))
