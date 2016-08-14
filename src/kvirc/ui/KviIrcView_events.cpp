@@ -692,12 +692,13 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent * e)
 		m_bShiftPressed = false;
 		m_bCtrlPressed = false;
 		// Insert the lines blocked while selecting
-		while(KviIrcViewLine * l = m_pMessagesStoppedWhileSelecting->first())
+		for(const auto & l : m_pMessagesStoppedWhileSelecting)
 		{
-			m_pMessagesStoppedWhileSelecting->removeFirst();
 			QDateTime date = QDateTime::currentDateTime(); // TODO
 			appendLine(l, date, false);
 		}
+
+		m_pMessagesStoppedWhileSelecting.clear();
 		repaint();
 	}
 }

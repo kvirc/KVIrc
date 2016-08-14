@@ -26,13 +26,14 @@
 
 #include "kvi_settings.h"
 #include "KviCString.h"
-#include "KviPointerList.h"
 
 #include <QToolButton>
 #include <QWidget>
 #include <QPixmap> // needed
 #include <QMultiHash>
 #include <QDateTime>
+
+#include <vector>
 
 class QScrollBar;
 class QLineEdit;
@@ -134,7 +135,7 @@ private:
 	bool m_bAcceptDrops;
 	int m_iUnprocessedPaintEventRequests;
 	bool m_bPostedPaintEventPending;
-	KviPointerList<KviIrcViewLine> * m_pMessagesStoppedWhileSelecting;
+	std::vector<KviIrcViewLine *> m_pMessagesStoppedWhileSelecting;
 	KviIrcView * m_pMasterView;
 	QFontMetrics * m_pFm; // assume this valid only inside a paint event (may be 0 in other circumstances)
 

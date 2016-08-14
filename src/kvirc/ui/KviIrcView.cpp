@@ -251,9 +251,6 @@ KviIrcView::KviIrcView(QWidget * parent, KviWindow * pWnd)
 
 	m_pWrappedBlockSelectionInfo = new KviIrcViewWrappedBlockSelectionInfo;
 
-	m_pMessagesStoppedWhileSelecting = new KviPointerList<KviIrcViewLine>;
-	m_pMessagesStoppedWhileSelecting->setAutoDelete(false);
-
 	// say qt to avoid erasing on repaint
 	setAutoFillBackground(false);
 
@@ -359,13 +356,10 @@ KviIrcView::~KviIrcView()
 	emptyBuffer(false);
 
 	// the pending ones too!
-	while(KviIrcViewLine * l = m_pMessagesStoppedWhileSelecting->first())
-	{
-		m_pMessagesStoppedWhileSelecting->removeFirst();
+	for(const auto & l : m_pMessagesStoppedWhileSelecting)
 		delete_text_line(l, &m_hAnimatedSmiles);
-	}
 
-	delete m_pMessagesStoppedWhileSelecting;
+	m_pMessagesStoppedWhileSelecting.clear();
 
 	if(m_pFm)
 		delete m_pFm;
@@ -609,7 +603,7 @@ void KviIrcView::appendLine(KviIrcViewLine * ptr, const QDateTime & date, bool b
 		// Do not move the view!
 		// So we append the text line to a temp queue
 		// and then we'll add it when the mouse button is released
-		m_pMessagesStoppedWhileSelecting->append(ptr);
+		m_pMessagesStoppedWhileSelecting.push_back(ptr);
 		return;
 	}
 
