@@ -346,8 +346,9 @@ not_this_one:
 	int count = item->childCount();
 	for(int i = 0; i < count; i++)
 	{
-		item = (PopupTreeWidgetItem *)item->child(i);
-		PopupTreeWidgetItem * found = findMatchingItem(it, item);
+		PopupTreeWidgetItem * testItem = (PopupTreeWidgetItem *)item->child(i);
+		KVI_ASSERT(testItem);
+		PopupTreeWidgetItem * found = findMatchingItem(it, testItem);
 		if(found)
 			return found;
 	}
