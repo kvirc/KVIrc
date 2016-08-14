@@ -33,7 +33,6 @@
 #include "KviQString.h"
 #include "KviConfigurationFile.h"
 #include "KviModule.h"
-#include "KviPointerList.h"
 #include "KviApplication.h"
 #include "KviConsoleWindow.h"
 #include "KviWindow.h"
