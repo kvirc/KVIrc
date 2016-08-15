@@ -124,8 +124,8 @@ KVSO_END_CONSTRUCTOR(KvsObject_layout)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_layout)
 
-KVSO_END_CONSTRUCTOR(KvsObject_layout)
-
+KVSO_END_DESTRUCTOR(KvsObject_layout)
+#include <QDebug>
 bool KvsObject_layout::init(KviKvsRunTimeContext * pContext, KviKvsVariantList *)
 {
 	QWidget * w = parentScriptWidget();
