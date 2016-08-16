@@ -27,6 +27,7 @@
 #include "kvi_settings.h"
 #include "KviOptions.h"
 #include "KviLocale.h"
+#include "KviSelectors.h"
 #include "KviTalToolTip.h"
 
 #include <QLayout>
@@ -76,9 +77,15 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 	addBoolSelector(pGroup, __tr2qs_ctx("Server notices", "options"), KviOption_boolServerNoticesToActiveWindow);
 	addBoolSelector(pGroup, __tr2qs_ctx("Broadcast and WALLOPS messages", "options"), KviOption_boolOperatorMessagesToActiveWindow);
 
+	KviBoolSelector * b;
+
 	addBoolSelector(0, 3, 1, 3, __tr2qs_ctx("Show extended server information", "options"), KviOption_boolShowExtendedServerInfo);
 	addBoolSelector(0, 4, 1, 4, __tr2qs_ctx("Show server pings", "options"), KviOption_boolShowPingPong);
-	addBoolSelector(0, 5, 1, 5, __tr2qs_ctx("Show own parts in the console", "options"), KviOption_boolShowOwnParts);
+	
+	b = addBoolSelector(0, 5, 1, 5, __tr2qs_ctx("Show own part messages", "options"), KviOption_boolShowOwnParts);
+	mergeTip(b, __tr2qs_ctx("When enabled, the current user's part messages will be shown in the console.<br>"
+	                        "When <b>Keep Channel Open</b> is enabled on part, this message will be shown in the dead channel instead.", "options"));
+
 	addBoolSelector(0, 6, 1, 6, __tr2qs_ctx("Show compact mode changes", "options"), KviOption_boolShowCompactModeChanges);
 
 	addRowSpacer(0, 7, 1, 7);
