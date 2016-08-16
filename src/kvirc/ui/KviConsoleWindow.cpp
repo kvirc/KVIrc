@@ -359,7 +359,7 @@ void KviConsoleWindow::getUserTipText(const QString & nick, KviIrcUserEntry * e,
 
 	if(e->isAway())
 	{
-		buffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
+		buffer += "<tr><td width=\"100%\" bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 		buffer += __tr2qs("Probably away");
 		buffer += "</font>" + enr;
 	}
