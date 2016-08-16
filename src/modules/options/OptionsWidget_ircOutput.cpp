@@ -75,17 +75,13 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 	addBoolSelector(pGroup, __tr2qs_ctx("Server replies", "options"), KviOption_boolServerRepliesToActiveWindow);
 	addBoolSelector(pGroup, __tr2qs_ctx("Server notices", "options"), KviOption_boolServerNoticesToActiveWindow);
 	addBoolSelector(pGroup, __tr2qs_ctx("Broadcast and WALLOPS messages", "options"), KviOption_boolOperatorMessagesToActiveWindow);
-	//	if(KVI_OPTION_UINT(KviOption_uintUserExperienceLevel)>=2)
-	//	{
+
 	addBoolSelector(0, 3, 1, 3, __tr2qs_ctx("Show extended server information", "options"), KviOption_boolShowExtendedServerInfo);
 	addBoolSelector(0, 4, 1, 4, __tr2qs_ctx("Show server pings", "options"), KviOption_boolShowPingPong);
 	addBoolSelector(0, 5, 1, 5, __tr2qs_ctx("Show own parts in the console", "options"), KviOption_boolShowOwnParts);
 	addBoolSelector(0, 6, 1, 6, __tr2qs_ctx("Show compact mode changes", "options"), KviOption_boolShowCompactModeChanges);
 
 	addRowSpacer(0, 7, 1, 7);
-	//	} else {
-	//		addRowSpacer(0,2,1,2);
-	//	}
 }
 
 OptionsWidget_ircOutput::~OptionsWidget_ircOutput()
