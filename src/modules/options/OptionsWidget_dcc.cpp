@@ -241,7 +241,7 @@ OptionsWidget_dccSendAdvanced::OptionsWidget_dccSendAdvanced(QWidget * parent)
 	                        "for all the outgoing file transfers. This will fix filename handling with some buggy clients (e.g. some versions of mIRC).", "options"));
 
 	b = addBoolSelector(g, __tr2qs_ctx("Send 64-bit ACKs for files larger than 4GiB", "options"), KviOption_boolSend64BitAckInDccRecv);
-	mergeTip(b, __tr2qs_ctx("This option causes KVIrc to send ACKs as 64-bit integers instead of 32-bit integers<br>"
+	mergeTip(b, __tr2qs_ctx("This option causes KVIrc to send ACKs as 64-bit integers instead of 32-bit integers.<br>"
 	                        "Use this to fix DCC RECEIVE transfers where the other client is using the mIRC ACK standard.", "options"));
 
 	g = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("Limits", "options"));
