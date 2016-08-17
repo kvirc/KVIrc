@@ -251,11 +251,13 @@ if(MINGW)
 	set(CMAKE_RC_COMPILE_OBJECT "<CMAKE_RC_COMPILER> -O coff <DEFINES> -i <SOURCE> -o <OBJECT>")
 
 	list(APPEND kvirc_SRCS ${CMAKE_SOURCE_DIR}/data/resources_win32/kvirc.rc)
+	list(APPEND kvirc_SRCS ${CMAKE_SOURCE_DIR}/data/resources_win32/kvirc.exe.manifest)
 endif()
 
 if(MSVC)
 	list(APPEND LIBS shlwapi.lib)
 	list(APPEND kvirc_SRCS ${CMAKE_SOURCE_DIR}/data/resources_win32/kvirc.rc)
+	list(APPEND kvirc_SRCS ${CMAKE_SOURCE_DIR}/data/resources_win32/kvirc.exe.manifest)
 endif()
 
 # Link libraries

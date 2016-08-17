@@ -33,15 +33,6 @@
 #include "KviApplication.h"
 #include "KviQString.h"
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-
-static HWND kvi_win_findIpcSentinel()
-{
-	return ::FindWindow("Qt5QWindowIcon", "kvirc4_ipc_sentinel");
-}
-
-#else
-
 #if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 
 #include <X11/Xatom.h>
@@ -143,16 +134,14 @@ static Window kvi_x11_findIpcSentinel(Window win)
 }
 #endif //!COMPILE_NO_X
 
-#endif
 
 #define KVI_WINDOWS_IPC_MESSAGE 0x2FACE5
 
 bool kvi_sendIpcMessage(const char * message)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-
-	HWND hSentinel = kvi_win_findIpcSentinel();
-	if(hSentinel != NULL)
+	HWND hSentinel = ::FindWindow("Qt5QWindowIcon", "kvirc4_ipc_sentinel");
+	if(hSentinel != nullptr)
 	{
 		COPYDATASTRUCT cpd;
 		cpd.cbData = strlen(message) + 1;
@@ -160,9 +149,25 @@ bool kvi_sendIpcMessage(const char * message)
 		cpd.lpData = (void *)message;
 		DWORD_PTR dwResult;
 
-		if(!::SendMessageTimeout(hSentinel, WM_COPYDATA, (WPARAM)NULL, (LPARAM)&cpd, SMTO_BLOCK, 1000, &dwResult))
+		if(!::SendMessageTimeout(hSentinel, WM_COPYDATA, (WPARAM)nullptr, (LPARAM)&cpd, SMTO_BLOCK, 1000, &dwResult))
 		{
-			qDebug("Failed to send IPC message: error code 0x%x", ::GetLastError());
+			DWORD errorMessageID = ::GetLastError();
+			if (errorMessageID)
+			{
+				LPSTR messageBuffer = nullptr;
+				size_t size = FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
+											 nullptr, errorMessageID, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)&messageBuffer, 0, nullptr);
+
+				std::string message(messageBuffer, size);
+
+				//Free the buffer.
+				LocalFree(messageBuffer);
+				qDebug("Failed to send IPC message: %s", message.c_str());
+			}
+			else
+			{
+				qDebug("Failed to send IPC message.");
+			}
 		}
 		return true;
 	}

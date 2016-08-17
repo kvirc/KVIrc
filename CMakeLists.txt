@@ -996,7 +996,8 @@ endif()
 ############################################################################
 
 if(WIN32)
-	add_definitions(-D_WIN32_WINNT=0x501 -DWINVER=0x501 -DWIN32_LEAN_AND_MEAN)
+	# 0x0600 = Windows Vista
+	add_definitions(-D_WIN32_WINNT=0x0600 -DWINVER=0x0600 -DWIN32_LEAN_AND_MEAN)
 endif()
 
 if(MINGW)
