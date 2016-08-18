@@ -656,15 +656,13 @@ namespace KviRuntimeInfo
 	{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		return "Windows";
-#else
-#ifdef COMPILE_ON_MAC
-		return "MacOS X";
+#elif defined(COMPILE_ON_MAC)
+		return "Mac OS X";
 #else
 		struct utsname uts;
 		if(uname(&uts) == 0)
 			return QString::fromLocal8Bit(uts.sysname);
 		return KviQString::Empty;
-#endif
 #endif
 	}
 
