@@ -37,7 +37,7 @@
 
 #include <X11/Xatom.h>
 
-#include "KviXlib.h" // for XEvent
+#include "KviXlib.h"   // for XEvent
 
 #include <unistd.h>    // for getuid, getpid
 #include <sys/types.h> // for getuid, getpid
@@ -94,9 +94,8 @@ static Window kvi_x11_findIpcSentinel(Window win)
 	int format;
 	unsigned long nItems, after;
 	unsigned char * data = nullptr;
-	if(XGetWindowProperty(kvi_ipc_get_xdisplay(), win, kvi_atom_ipc_sentinel_window, 0, 32, false, XA_STRING,
-	       &type, &format, &nItems, &after, &data)
-	    == Success)
+	if(XGetWindowProperty(kvi_ipc_get_xdisplay(), win, kvi_atom_ipc_sentinel_window,
+		   0, 32, false, XA_STRING, &type, &format, &nItems, &after, &data) == Success)
 	{
 		if((type == XA_STRING) && (format == 8))
 		{
@@ -158,11 +157,11 @@ bool kvi_sendIpcMessage(const char * message)
 				size_t size = FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
 											 nullptr, errorMessageID, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)&messageBuffer, 0, nullptr);
 
-				std::string message(messageBuffer, size);
+				std::string winMessage(messageBuffer, size);
 
 				//Free the buffer.
 				LocalFree(messageBuffer);
-				qDebug("Failed to send IPC message: %s", message.c_str());
+				qDebug("Failed to send IPC message: %s", winMessage.c_str());
 			}
 			else
 			{
@@ -171,37 +170,17 @@ bool kvi_sendIpcMessage(const char * message)
 		}
 		return true;
 	}
-#else
-#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
+#elif defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 
 	kvi_ipcLoadAtoms();
 
 	Window sentinel = kvi_x11_findIpcSentinel(kvi_ipc_get_xrootwin());
 	if(sentinel != 0)
 	{
-		//			XChangeProperty(kvi_ipc_get_xdisplay(),sentinel,kvi_atom_ipc_remote_command,XA_STRING,8,
-		//				PropModeReplace,(const unsigned char *)message,kvi_strLen(message));
 		kvi_ipcSetRemoteCommand(sentinel, message);
-
-#if(QT_VERSION < 0x050000)
-
-		XEvent e;
-		KviMemory::set(&e, 0, sizeof(XEvent));
-		e.type = ClientMessage;
-		e.xclient.display = kvi_ipc_get_xdisplay();
-		e.xclient.window = sentinel;
-		e.xclient.message_type = kvi_atom_ipc_remote_message;
-		e.xclient.format = 8;
-
-		Status ret = XSendEvent(kvi_ipc_get_xdisplay(), sentinel, False, 0, &e);
-#else
-// On Qt5 the ClientMessage events aren't propagated at all.. we have to rely on the property change only
-#endif
-
 		return true;
 	}
-#endif //!COMPILE_NO_X
-#endif
+#endif //!COMPILE_NO_X && COMPILE_ON_WINDOWS
 	return false;
 }
 
@@ -210,23 +189,20 @@ bool kvi_sendIpcMessage(const char * message)
 //    hidden sentinel of IPC messages
 //
 
-KviIpcSentinel::KviIpcSentinel()
-    : QWidget(nullptr)
+KviIpcSentinel::KviIpcSentinel() : QWidget(nullptr)
 {
 	setObjectName("kvirc4_ipc_sentinel");
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	setWindowFlags(Qt::FramelessWindowHint);
 	setWindowTitle("kvirc4_ipc_sentinel");
-#else
-#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
+#elif defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 	kvi_ipcLoadAtoms();
 
 	XChangeProperty(kvi_ipc_get_xdisplay(), winId(), kvi_atom_ipc_sentinel_window, XA_STRING, 8,
 	    PropModeReplace, (const unsigned char *)kvi_sentinel_id.ptr(), kvi_sentinel_id.len());
 
 	kvi_ipcSetRemoteCommand(winId(), "");
-#endif //!COMPILE_NO_X
-#endif
+#endif //!COMPILE_NO_X && !COMPILE_ON_WINDOWS
 
 	move(-50, -50);
 	resize(1, 1);
@@ -237,9 +213,6 @@ KviIpcSentinel::KviIpcSentinel()
 #endif
 	hide();
 }
-
-KviIpcSentinel::~KviIpcSentinel()
-    = default;
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
@@ -263,8 +236,7 @@ bool KviIpcSentinel::winEvent(MSG * msg, long * result)
 	return false;
 }
 
-#else
-#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
+#elif defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 
 bool KviIpcSentinel::x11GetRemoteMessage()
 {
@@ -274,9 +246,8 @@ bool KviIpcSentinel::x11GetRemoteMessage()
 	unsigned char * data = nullptr;
 	KviCString szData;
 
-	if(XGetWindowProperty(kvi_ipc_get_xdisplay(), winId(), kvi_atom_ipc_remote_command, 0, 1024, false, XA_STRING,
-	       &type, &format, &nItems, &after, &data)
-	    == Success)
+	if(XGetWindowProperty(kvi_ipc_get_xdisplay(), winId(), kvi_atom_ipc_remote_command,
+		   0, 1024, false, XA_STRING, &type, &format, &nItems, &after, &data) == Success)
 	{
 		if((type == XA_STRING) && (format == 8) && (nItems > 8) && data)
 		{
@@ -306,13 +277,8 @@ bool KviIpcSentinel::x11Event(XEvent * e)
 	}
 	return false;
 }
-#endif //!COMPILE_NO_X
-#endif
+#endif //!COMPILE_NO_X && !COMPILE_ON_WINDOWS
 
-#if(QT_VERSION >= 0x050000)
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-
-#else
 #if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 // This is not an XEvent anymore.... it's a xcb_generic_event_t actually.
 // But we don't want to add yet another dependency.
@@ -343,14 +309,12 @@ typedef struct xcb_property_notify_event_t
 #define FAKE_XCB_PROPERTY_NOTIFY 28
 }
 #endif
-#endif
 
 bool KviIpcSentinel::nativeEvent(const QByteArray & id, void * msg, long * res)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	return winEvent((MSG *)msg, res);
-#else
-#if defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
+#elif defined(COMPILE_X11_SUPPORT) && defined(COMPILE_QX11INFO_SUPPORT)
 
 	fake_xcb_generic_event_t * event = static_cast<fake_xcb_generic_event_t *>(msg);
 
@@ -363,8 +327,6 @@ bool KviIpcSentinel::nativeEvent(const QByteArray & id, void * msg, long * res)
 	}
 #endif
 	return false;
-#endif
 }
-#endif
 
-#endif
+#endif // nativeEvent
