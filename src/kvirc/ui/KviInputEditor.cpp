@@ -1146,21 +1146,22 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 	}
 #endif
 
-#if(QT_VERSION >= 0x050000)
 /*
  * With Qt5 the use of input method composing works, but we are unable to query the list of
  * available ims and change the active one. By now Qt5's QInputMethod lacks several methods,
  * check it again on newer qt versions!
  */
-#else
-	QInputContext * qic = g_pApp->inputContext();
-	if(qic)
-	{
-		QList<QAction *> imActions = qic->actions();
-		for(int i = 0; i < imActions.size(); ++i)
-			g_pInputPopup->addAction(imActions.at(i));
-	}
-#endif
+	// Qt4 code, needs to be re-implemented in >= Qt5
+	// See above for more info.
+	//
+	// QInputContext * qic = g_pApp->inputContext();
+	// if(qic)
+	// {
+	// 	QList<QAction *> imActions = qic->actions();
+	// 	for(int i = 0; i < imActions.size(); ++i)
+	// 		g_pInputPopup->addAction(imActions.at(i));
+	// }
+
 	g_pInputPopup->popup(pos);
 }
 
@@ -1814,7 +1815,6 @@ void KviInputEditor::internalCursorLeft(bool bShift)
 	ensureCursorVisible();
 }
 
-#if(QT_VERSION >= 0x050000)
 QVariant KviInputEditor::inputMethodQuery(Qt::InputMethodQuery query) const
 {
 	switch(query)
@@ -1832,7 +1832,6 @@ QVariant KviInputEditor::inputMethodQuery(Qt::InputMethodQuery query) const
 
 	return QWidget::inputMethodQuery(query);
 }
-#endif
 
 void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 {
