@@ -64,8 +64,8 @@ protected:
 	virtual void fillCaptionBuffers();
 	virtual void resizeEvent(QResizeEvent * e);
 	virtual void getConfigGroupName(QString & szName);
-	virtual void saveProperties(KviConfigurationFile *);
-	virtual void loadProperties(KviConfigurationFile *);
+	virtual void saveProperties(KviConfigurationFile *){};
+	virtual void loadProperties(KviConfigurationFile *){};
 };
 
 #endif //_CODETESTER_H_

@@ -256,9 +256,6 @@ KviStatusBarLagIndicator::KviStatusBarLagIndicator(KviStatusBar * pParent, KviSt
 	updateDisplay();
 }
 
-KviStatusBarLagIndicator::~KviStatusBarLagIndicator()
-    = default;
-
 void KviStatusBarLagIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 {
 	if(!(e->button() & Qt::LeftButton))

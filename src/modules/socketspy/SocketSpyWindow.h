@@ -30,28 +30,28 @@
 
 class KviConsoleWindow;
 
-class SocketSpyWindow : public KviWindow, public KviIrcDataStreamMonitor
+class SocketSpyWindow final : public KviWindow, public KviIrcDataStreamMonitor
 {
 	Q_OBJECT
 public:
 	SocketSpyWindow(KviConsoleWindow * lpConsole);
 	~SocketSpyWindow();
 
-protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void getBaseLogFileName(QString & buffer);
-	virtual void applyOptions();
+private:
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void resizeEvent(QResizeEvent * e) override;
+	void getBaseLogFileName(QString & buffer) override;
+	void applyOptions() override;
 
 public:
-	virtual QSize sizeHint() const;
-	virtual bool incomingMessage(const char * message);
+	QSize sizeHint() const override;
+	bool incomingMessage(const char * message) override;
 	//For proxy connections it might spit out binary data!
-	virtual bool outgoingMessage(const char * message);
-	virtual void connectionInitiated();
-	virtual void connectionTerminated();
-	virtual void die();
+	bool outgoingMessage(const char * message) override;
+	void connectionInitiated() override;
+	void connectionTerminated() override;
+	void die() override;
 };
 
 #endif //_KVI_SOCKETSPYWINDOW_H_

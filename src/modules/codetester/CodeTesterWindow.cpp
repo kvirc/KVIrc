@@ -110,11 +110,3 @@ void CodeTesterWindow::getConfigGroupName(QString & szName)
 {
 	szName = "codetester";
 }
-
-void CodeTesterWindow::saveProperties(KviConfigurationFile *) //cfg
-{
-}
-
-void CodeTesterWindow::loadProperties(KviConfigurationFile *) //cfg
-{
-}

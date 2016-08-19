@@ -210,7 +210,7 @@ class KviStatusBarLagIndicator : public KviStatusBarApplet
 	Q_OBJECT
 public:
 	KviStatusBarLagIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
-	virtual ~KviStatusBarLagIndicator();
+	virtual ~KviStatusBarLagIndicator(){};
 
 public:
 	static void selfRegister(KviStatusBar * pBar);
