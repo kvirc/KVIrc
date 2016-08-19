@@ -40,7 +40,9 @@
 #include <QLabel>
 #include <QMenu>
 
-extern KviPointerList<CodeTesterWindow> * g_pCodeTesterWindowList;
+#include <unordered_set>
+
+extern std::unordered_set<CodeTesterWindow *> g_pCodeTesterWindowList;
 
 CodeTesterWidget::CodeTesterWidget(QWidget * par)
     : QWidget(par)
@@ -81,14 +83,14 @@ void CodeTesterWidget::execute()
 CodeTesterWindow::CodeTesterWindow()
     : KviWindow(KviWindow::ScriptEditor, "codetester", nullptr)
 {
-	g_pCodeTesterWindowList->append(this);
+	g_pCodeTesterWindowList.insert(this);
 
 	m_pTester = new CodeTesterWidget(this);
 }
 
 CodeTesterWindow::~CodeTesterWindow()
 {
-	g_pCodeTesterWindowList->removeRef(this);
+	g_pCodeTesterWindowList.erase(this);
 }
 
 QPixmap * CodeTesterWindow::myIconPtr()

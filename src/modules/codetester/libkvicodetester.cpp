@@ -28,8 +28,9 @@
 #include "KviLocale.h"
 #include "KviMainWindow.h"
 #include "KviPointerList.h"
+#include <unordered_set>
 
-KviPointerList<CodeTesterWindow> * g_pCodeTesterWindowList = nullptr;
+std::unordered_set<CodeTesterWindow *> g_pCodeTesterWindowList;
 
 /*
 	@doc: codetester.open
@@ -56,22 +57,24 @@ static bool codetester_kvs_cmd_open(KviKvsModuleCommandCall *)
 static bool codetester_module_init(KviModule * m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "open", codetester_kvs_cmd_open);
-
-	g_pCodeTesterWindowList = new KviPointerList<CodeTesterWindow>();
-	g_pCodeTesterWindowList->setAutoDelete(false);
 	return true;
 }
 
 static bool codetester_module_can_unload(KviModule *)
 {
-	return (g_pCodeTesterWindowList->count() == 0);
+	return g_pCodeTesterWindowList.empty();
 }
 
 static bool codetester_module_cleanup(KviModule *)
 {
-	while(CodeTesterWindow * w = g_pCodeTesterWindowList->first())
+	while(!g_pCodeTesterWindowList.empty())
 	{
-		w->close(); // deleted path!
+		auto w = g_pCodeTesterWindowList.begin();
+
+		if (w == g_pCodeTesterWindowList.end())
+			break;
+
+		(*w)->close(); // deleted path!
 	}
 	return true;
 }
