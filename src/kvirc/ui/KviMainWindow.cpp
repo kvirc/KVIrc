@@ -332,16 +332,11 @@ void KviMainWindow::installAccelerators()
 		Qt::Key_F9 + Qt::ShiftModifier,
 		Qt::Key_F10 + Qt::ShiftModifier,
 		Qt::Key_F11 + Qt::ShiftModifier,
-		Qt::Key_F12 + Qt::ShiftModifier,
-		0
+		Qt::Key_F12 + Qt::ShiftModifier
 	};
 
-	int i = 0, keys = 0;
-	while((keys = accel_table[i]))
-	{
-		m_pAccellerators.push_back(KviShortcut::create(keys, this, SLOT(accelActivated()), SLOT(accelActivated()), Qt::ApplicationShortcut));
-		i++;
-	}
+	for(auto key : accel_table)
+		m_pAccellerators.push_back(KviShortcut::create(key, this, SLOT(accelActivated()), SLOT(accelActivated()), Qt::ApplicationShortcut));
 }
 
 void KviMainWindow::freeAccelleratorKeySequence(QString & key)
