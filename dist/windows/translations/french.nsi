@@ -15,4 +15,4 @@ LangString MsgUninstallOldInstaller ${LANG_FRENCH} "La version précédente de KVI
 LangString KVIrcIsRunning ${LANG_FRENCH} "Le client KVIrc est actuellement démarré. Quitter KVIrc et essayer à nouveau."
 LangString WinampSection ${LANG_FRENCH} "Winamp plugin"
 LangString WinampSectionDescr ${LANG_FRENCH} "Installer le plugin de Winamp"
-LangString WinVerUnsupported ${LANG_FRENCH} "KVIrc does not support the currently running Windows Version.$\r$\nWindows XP or higher is required."
+LangString WinVerUnsupported ${LANG_FRENCH} "KVIrc does not support the currently running Windows version.$\r$\nWindows Vista or higher is required."

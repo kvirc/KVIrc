@@ -73,7 +73,7 @@ LangString MsgUninstallOldInstaller ${LANG_ENGLISH} "Previous versions of KVIrc 
 LangString KVIrcIsRunning ${LANG_ENGLISH} "An instance of KVIrc is currently running. Exit KVIrc and then try again."
 LangString WinampSection ${LANG_ENGLISH} "Winamp plugin"
 LangString WinampSectionDescr ${LANG_ENGLISH} "Install Winamp plugin"
-LangString WinVerUnsupported ${LANG_ENGLISH} "KVIrc does not support the currently running Windows version.$\r$\nWindows XP or higher is required."
+LangString WinVerUnsupported ${LANG_ENGLISH} "KVIrc does not support the currently running Windows version.$\r$\nWindows Vista or higher is required."
 
 !include ".\translations\*.nsi"
 
@@ -163,7 +163,7 @@ SectionEnd
 
 
 Function .onInit
-    ${IfNot} ${AtLeastWinXP}
+    ${IfNot} ${AtLeastWinVista}
       MessageBox MB_OK|MB_ICONSTOP "$(WinVerUnsupported)"
       Quit
     ${EndIf}

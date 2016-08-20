@@ -1012,7 +1012,7 @@ if(MSVC)
 	add_definitions(-D_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES -DNOMINMAX)
 	add_definitions(-DMSVC)
 	# Support from Windows XP
-	SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} /SUBSYSTEM:WINDOWS,5.01")
+	SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}")
 endif()
 
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "SunPro")
@@ -1389,12 +1389,5 @@ message(STATUS "Build revision                 : ${CMAKE_KVIRC_BUILD_REVISION}")
 message(STATUS "Sources date                   : ${CMAKE_KVIRC_SOURCES_DATE}")
 
 message(STATUS " ")
-if(MSVC)
-	message(STATUS "I'm ready to build KVIrc for you: please type 'nmake' now...")
-elseif(MINGW)
-	message(STATUS "I'm ready to build KVIrc for you: please type 'mingw32-make' now...")
-else()
-	message(STATUS "I'm ready to build KVIrc for you: please type 'make' now...")
-endif()
-
+message(STATUS "I'm ready to build KVIrc for you: please type ${CMAKE_MAKE_PROGRAM} now...")
 message(STATUS " ")

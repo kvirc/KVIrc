@@ -15,4 +15,4 @@ LangString MsgUninstallOldInstaller ${LANG_UKRAINIAN} "Потрібно видалити поперед
 LangString KVIrcIsRunning ${LANG_UKRAINIAN} "Виявлена працююча копія KVIrc. Закрийте KVIrc і спробуйте знову."
 LangString WinampSection ${LANG_UKRAINIAN} "Плагін для Winamp"
 LangString WinampSectionDescr ${LANG_UKRAINIAN} "Встановити втулку для Winamp"
-LangString WinVerUnsupported ${LANG_UKRAINIAN} "KVIrc не підтримує вашу версію Windows.$\r$\nНеобхідний Windows XP чи новіший."
+LangString WinVerUnsupported ${LANG_UKRAINIAN} "KVIrc не підтримує вашу версію Windows.$\r$\nНеобхідний Windows Vista чи новіший."

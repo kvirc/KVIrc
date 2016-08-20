@@ -15,4 +15,4 @@ LangString MsgUninstallOldInstaller ${LANG_JAPANESE} "KVIrc の前のバージ�
 LangString KVIrcIsRunning ${LANG_JAPANESE} "KVIrc を現在実行しています。再度実行するには KVIrc を終了してください。"
 LangString WinampSection ${LANG_JAPANESE} "Winamp プラグイン"
 LangString WinampSectionDescr ${LANG_JAPANESE} "Winamp のプラグインをインストールするｗ"
-LangString WinVerUnsupported ${LANG_JAPANESE} "KVIrc does not support the currently running Windows Version.$\r$\nWindows XP or higher is required."
+LangString WinVerUnsupported ${LANG_JAPANESE} "KVIrc does not support the currently running Windows version.$\r$\nWindows Vista or higher is required."

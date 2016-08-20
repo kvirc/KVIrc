@@ -15,4 +15,4 @@ LangString MsgUninstallOldInstaller ${LANG_RUSSIAN} "Необходимо деинсталлировать
 LangString KVIrcIsRunning ${LANG_RUSSIAN} "Обнаружена работающая копия KVIrc. Завершите работу KVIrc и попробуйте снова."
 LangString WinampSection ${LANG_RUSSIAN} "Плагин для Winamp"
 LangString WinampSectionDescr ${LANG_RUSSIAN} "Установить плагин для Winamp"
-LangString WinVerUnsupported ${LANG_RUSSIAN} "KVIrc does not support the currently running Windows Version.$\r$\nWindows XP or higher is required."
+LangString WinVerUnsupported ${LANG_RUSSIAN} "KVIrc does not support the currently running Windows version.$\r$\nWindows Vista or higher is required."
