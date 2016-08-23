@@ -411,7 +411,7 @@ void KviStatusBarClock::timerEvent(QTimerEvent *)
 	if(!m_b24h)
 	{
 		// 12 hours format
-		if(t->tm_hour > 12)
+		if(t->tm_hour >= 12)
 		{
 			t->tm_hour -= 12;
 			szDay = "PM";
