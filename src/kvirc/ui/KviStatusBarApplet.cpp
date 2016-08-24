@@ -59,6 +59,7 @@
 #include <QEvent>
 #include <QMouseEvent>
 #include <QMenu>
+#include <QDateTime>
 
 KviStatusBarAppletDescriptor::KviStatusBarAppletDescriptor(const QString & szVisibleName, const QString & szInternalName, CreateAppletCallback pProc, const QString & szPreloadModule, const QPixmap & pixIcon)
     : KviHeapObject()
@@ -403,46 +404,19 @@ void KviStatusBarClock::adjustMinWidth()
 
 void KviStatusBarClock::timerEvent(QTimerEvent *)
 {
-	kvi_time_t tt = kvi_unixTime();
-	struct tm * t = m_bUtc ? gmtime(&tt) : localtime(&tt);
+	QDateTime time = m_bUtc ? QDateTime::currentDateTimeUtc() : QDateTime::currentDateTime();
 	QString szTmp;
-	QString szDay = "AM";
 
-	if(!m_b24h)
+	switch(m_iType)
 	{
-		// 12 hours format
-		if(t->tm_hour >= 12)
-		{
-			t->tm_hour -= 12;
-			szDay = "PM";
-		}
-
-		if(t->tm_hour == 0)
-			t->tm_hour = 12;
-
-		switch(m_iType)
-		{
-			case KviStatusBarClock::HMS:
-				szTmp = QString("%1%2:%3%4:%5%6 %7").arg(t->tm_hour / 10).arg(t->tm_hour % 10).arg(t->tm_min / 10).arg(t->tm_min % 10).arg(t->tm_sec / 10).arg(t->tm_sec % 10).arg(szDay);
-				break;
-			case KviStatusBarClock::HM:
-				szTmp = QString("%1%2:%3%4 %5").arg(t->tm_hour / 10).arg(t->tm_hour % 10).arg(t->tm_min / 10).arg(t->tm_min % 10).arg(szDay);
-				break;
-		}
+		case KviStatusBarClock::HMS:
+			szTmp = m_b24h ? time.toString("HH:mm:ss") : time.toString("hh:mm:ss AP");
+			break;
+		case KviStatusBarClock::HM:
+			szTmp = m_b24h ? time.toString("HH:mm") : time.toString("hh:mm AP");
+			break;
 	}
-	else
-	{
-		// 24 hours format
-		switch(m_iType)
-		{
-			case KviStatusBarClock::HMS:
-				szTmp = QString("%1%2:%3%4:%5%6").arg(t->tm_hour / 10).arg(t->tm_hour % 10).arg(t->tm_min / 10).arg(t->tm_min % 10).arg(t->tm_sec / 10).arg(t->tm_sec % 10);
-				break;
-			case KviStatusBarClock::HM:
-				szTmp = QString("%1%2:%3%4").arg(t->tm_hour / 10).arg(t->tm_hour % 10).arg(t->tm_min / 10).arg(t->tm_min % 10);
-				break;
-		}
-	}
+
 	setText(szTmp);
 }
 
