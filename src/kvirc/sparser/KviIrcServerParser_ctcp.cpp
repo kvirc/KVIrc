@@ -1448,7 +1448,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 
 	if(bIsChannel)
 	{
-		pOut = (KviWindow *)msg->msg->connection()->findChannel(szWindow);
+		pOut = (KviWindow *)msg->msg->connection()->findChannel(msg->szTarget);
 		if(pOut)
 			szData = pOut->decodeText(szData8.ptr());
 		else
