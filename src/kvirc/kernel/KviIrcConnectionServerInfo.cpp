@@ -1986,7 +1986,7 @@ const QString & KviCritenIrcServerInfo::getChannelModeDescription(char mode)
 			return __tr2qs("Flood limit");
 			break;
 		case 'r':
-			return __tr2qs("Registered Channel");
+			return __tr2qs("Registered channel");
 			break;
 	}
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
