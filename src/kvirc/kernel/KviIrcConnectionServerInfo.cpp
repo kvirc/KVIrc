@@ -1982,6 +1982,12 @@ const QString & KviCritenIrcServerInfo::getChannelModeDescription(char mode)
 		case 'c':
 			return __tr2qs("No control codes (colors, bold, ..)");
 			break;
+		case 'f':
+			return __tr2qs("Flood limit");
+			break;
+		case 'r':
+			return __tr2qs("Registered Channel");
+			break;
 	}
 	return KviBasicIrcServerInfo::getChannelModeDescription(mode);
 }
