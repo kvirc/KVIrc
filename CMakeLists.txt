@@ -1248,7 +1248,6 @@ endif()
 include_directories(${PROJECT_BINARY_DIR})
 
 
-
 if(WANT_COEXISTENCE)
 	configure_file(${kvirc_SOURCE_DIR}/cmake/kvirc-config.cmake ${CMAKE_CURRENT_BINARY_DIR}/scripts/config/kvirc${VERSION_MAJOR}-config @ONLY)
 else()
@@ -1375,9 +1374,9 @@ message(STATUS "Scripting:")
 message(STATUS "   Perl support                : ${CMAKE_STATUS_PERL_SUPPORT}")
 message(STATUS "   Python support              : ${CMAKE_STATUS_PYTHON_SUPPORT}")
 message(STATUS "DCC Features:")
+message(STATUS "   GSM support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
 #message(STATUS "   DCC Canvas Support          : ${CMAKE_STATUS_DCC_CANVAS_SUPPORT}")
 message(STATUS "   DCC voice support           : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")
-message(STATUS "   GSM support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
 message(STATUS "   DCC video support           : ${CMAKE_STATUS_DCC_VIDEO_SUPPORT}")
 message(STATUS "   Ogg/Theora support          : ${CMAKE_STATUS_OGG_THEORA_SUPPORT}")
 message(STATUS "Documentation:")
