@@ -88,6 +88,9 @@ const char * feature_array[] = {
 #ifdef COMPILE_ENCHANT_SUPPORT
 	"Enchant",
 #endif
+#ifdef COMPILE_ENABLE_GTKSTYLE
+	"GTK",
+#endif
 	"Qt5",
 	"KVS",
 	nullptr
