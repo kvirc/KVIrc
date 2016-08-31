@@ -2290,7 +2290,7 @@ void KviInputEditor::completion(bool bShift)
 		else
 		{
 			QString szAll;
-			QString szMatch = tmp.front();
+			szMatch = tmp.front();
 			int iWLen = szWord.length();
 			if(szMatch.left(1) == '$')
 				szMatch.remove(0, 1);
