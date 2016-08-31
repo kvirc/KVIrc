@@ -71,6 +71,8 @@
 
 #include <qdrawutil.h> // qDrawShadePanel
 
+#include <algorithm>
+
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <windows.h>
 #endif //COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
@@ -2291,31 +2293,18 @@ void KviInputEditor::completion(bool bShift)
 		{
 			QString szAll;
 			szMatch = tmp.front();
-			int iWLen = szWord.length();
-			if(szMatch.left(1) == '$')
-				szMatch.remove(0, 1);
-			for(auto szTmpIter : tmp)
+			auto predicate = bIsDir ? [](const QChar& a, const QChar& b) { return a.unicode() == b.unicode(); }
+				: [](const QChar& a, const QChar& b) { return a.toLower().unicode() == b.toLower().unicode(); };
+
+			for(auto szTmp : tmp)
 			{
-				if(szTmpIter.length() < szMatch.length())
-					szMatch.remove(szTmpIter.length(), szMatch.length() - szTmpIter.length());
-				// All the matches here have length >= word.len()!!!
-				const QChar * b1 = szTmpIter.constData() + iWLen;
-				const QChar * b2 = szMatch.constData() + iWLen;
-				const QChar * c1 = b1;
-				const QChar * c2 = b2;
-				if(bIsDir)
-					while(c1->unicode() && (c1->unicode() == c2->unicode()))
-						c1++, c2++;
-				else
-					while(c1->unicode() && (c1->toLower().unicode() == c2->toLower().unicode()))
-						c1++, c2++;
-				int iLen = iWLen + (c1 - b1);
-				if(iLen < ((int)(szMatch.length())))
-					szMatch.remove(iLen, szMatch.length() - iLen);
+				szMatch.truncate(std::mismatch(szMatch.data(), szMatch.data() + std::min(szMatch.size(), szTmp.size()), szTmp.data(), predicate).first - szMatch.data());
+
 				if(!szAll.isEmpty())
 					szAll.append(", ");
-				szAll.append(szTmpIter);
+				szAll.append(szTmp);
 			}
+
 			if(m_pKviWindow)
 				m_pKviWindow->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("%d matches: %Q"), tmp.size(), &szAll);
 		}
