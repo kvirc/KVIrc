@@ -1691,9 +1691,8 @@ void KviInputEditor::finishInput()
 	}
 
 	//ensure the color window is hidden (bug #835)
-	if(g_pColorWindow)
-		if(g_pColorWindow->isVisible())
-			g_pColorWindow->hide();
+	if(g_pColorWindow && g_pColorWindow->isVisible())
+		g_pColorWindow->hide();
 
 	KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
 	if(m_History.size() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)
@@ -2150,7 +2149,7 @@ void KviInputEditor::completion(bool bShift)
 	}
 
 	int iOffset;
-	if(KviQString::equalCI(m_szTextBuffer.left(5), "/help") || KviQString::equalCI(m_szTextBuffer.left(5), "/help.open"))
+	if(KviQString::equalCI(m_szTextBuffer.left(5), "/help"))
 		iOffset = 1;
 	else
 		iOffset = 0;
@@ -2218,11 +2217,11 @@ void KviInputEditor::completion(bool bShift)
 			if(m_pKviWindow->console())
 				m_pKviWindow->console()->completeChannel(szWord, tmp);
 		}
-
-		//FIXME: Complete also on irc:// starting strings, not only irc.?
 	}
 	else if(KviQString::equalCIN(szWord, "irc.", 4))
 	{
+		//FIXME: Complete also on irc:// starting strings, not only irc.?
+
 		// irc server name
 		if(m_pKviWindow)
 			if(m_pKviWindow->console())
@@ -2285,9 +2284,7 @@ void KviInputEditor::completion(bool bShift)
 			}
 
 			if(bInCommand && !bIsCommand)
-			{
 				completionEscapeUnsafeToken(szMatch); // escape crazy things like Nick\nquit
-			}
 		}
 		else
 		{
@@ -2313,12 +2310,7 @@ void KviInputEditor::completion(bool bShift)
 		m_pKviWindow->outputNoFmt(KVI_OUT_SYSTEMMESSAGE, __tr2qs("No matches"));
 
 	if(!szMatch.isEmpty())
-	{
-		//if(!bIsDir && !bIsNick)match = match.toLower(); <-- why? It is nice to have
-		//						 $module.someFunctionName instad
-		//						 of unreadable $module.somefunctionfame
 		replaceWordBeforeCursor(szWord, szMatch, false);
-	}
 
 	repaintWithCursorOn();
 }
@@ -2478,7 +2470,6 @@ void KviInputEditor::insertChar(QChar c)
 
 void KviInputEditor::repaintWithCursorOn()
 {
-	// :)
 	if(!m_bUpdatesEnabled)
 		return;
 
@@ -2516,7 +2507,7 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 	if(!pBlock)
 		return iCurChar;
 
-	// This is very tricky. Qt does not provide a simple mean to figure out the cursor position
+	// This is very tricky. Qt does not provide a simple means to figure out the cursor position
 	// from an x position on the text. We use QFontMetrics::elidedText() to guess it.
 
 	// Additionally Qt::ElideNone does not work as expected (see QTBUG-40315): it just ignores clipping altogether.
