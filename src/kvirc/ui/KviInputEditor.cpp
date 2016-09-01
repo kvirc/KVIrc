@@ -171,6 +171,7 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	m_pKviWindow = pWnd;
 	m_pUserListView = pView;
 	m_bReadOnly = false;
+	m_bSpSlowFlag = false;       //Slow paste status flag
 
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 

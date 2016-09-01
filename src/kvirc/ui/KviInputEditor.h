@@ -117,7 +117,7 @@ protected:
 	int m_iSelectionBegin;
 	int m_iSelectionEnd;
 	int m_iMaxBufferSize;
-	bool m_bSpSlowFlag; // <-- what is this ?
+	bool m_bSpSlowFlag; // Slow paste status flag
 	int m_iCursorWidth;
 
 	// members for supporting input methods
