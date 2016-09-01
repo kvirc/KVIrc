@@ -68,6 +68,7 @@
 #include <QMenu>
 #include <QWidgetAction>
 #include <QTextBoundaryFinder>
+#include <QRegExp>
 
 #include <qdrawutil.h> // qDrawShadePanel
 
@@ -1042,6 +1043,9 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 
 		if(!szClip.isEmpty())
 		{
+			// Prevent too many newlines from spamming the context menu
+			szClip.replace(QRegExp("^((?:[^\n]*\n){6}).*"), "\\1...");
+
 			if(szClip.length() > 60)
 			{
 				szClip.truncate(60);
