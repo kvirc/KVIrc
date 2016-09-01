@@ -1033,9 +1033,6 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 
 	QString szClip;
 
-	static QString ths = "<html><body><table width=\"100%\">" START_TABLE_BOLD_ROW;
-	static QString the = END_TABLE_BOLD_ROW "</table></body></html>";
-
 	QClipboard * pClip = QApplication::clipboard();
 	if(pClip)
 	{
@@ -1056,21 +1053,28 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 			szClip.replace(QChar('>'), "&gt;");
 			szClip.replace(QChar('\n'), "<br>");
 
-			QString szLabel = ths;
+			QString szLabel = "<html><body>";
+
+			// Title
+			szLabel += "<table width=\"100%\">";
+			szLabel += START_TABLE_BOLD_ROW;
 			szLabel += "<center><b>";
 			szLabel += __tr2qs("Clipboard");
 			szLabel += "</b></center>";
-			szLabel += the;
+			szLabel += END_TABLE_BOLD_ROW;
+			szLabel += "</table>";
+
+			// Clipboard contents (truncated for display)
 			szLabel += szClip;
+
+			// Line breaks count
 			szLabel += "<br><b><center>";
-
-			QString szNum;
-			szNum.setNum(iOcc);
-
-			szLabel += szNum;
+			szLabel += QString::number(iOcc);
 			szLabel += QChar(' ');
 			szLabel += (iOcc == 1) ? __tr2qs("line break") : __tr2qs("line breaks");
 			szLabel += "</b></center>";
+
+			szLabel += "</body></html>";
 
 			QLabel * pLabel = new QLabel(szLabel, g_pInputPopup);
 			pLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
