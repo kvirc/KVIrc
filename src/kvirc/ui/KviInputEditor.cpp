@@ -2280,9 +2280,9 @@ void KviInputEditor::completion(bool bShift)
 			szMatch = tmp.front();
 			if(szMatch.left(1) == '$')
 				szMatch.remove(0, 1);
-			if(bIsCommand && szMatch.right(1) != '.')
+			if(bIsCommand && !iOffset && szMatch.right(1) != '.')
 				szMatch.append(' ');
-			else if(bIsFunction && szMatch.right(1) != '.')
+			else if(bIsFunction && !iOffset && szMatch.right(1) != '.')
 				szMatch.append('(');
 			else if(bIsNick)
 			{
