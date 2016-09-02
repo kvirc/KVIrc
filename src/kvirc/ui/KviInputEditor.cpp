@@ -2278,7 +2278,7 @@ void KviInputEditor::completion(bool bShift)
 		if(tmp.size() == 1)
 		{
 			szMatch = tmp.front();
-			if(szMatch.left(1) == '$')
+			if(szMatch.left(1) == '$' && szMatch != '$')
 				szMatch.remove(0, 1);
 			if(bIsCommand && !iOffset && szMatch.right(1) != '.')
 				szMatch.append(' ');
@@ -2293,7 +2293,7 @@ void KviInputEditor::completion(bool bShift)
 				}
 			}
 
-			if(bInCommand && !bIsCommand)
+			if(bInCommand && !bIsCommand && !bIsFunction)
 				completionEscapeUnsafeToken(szMatch); // escape crazy things like Nick\nquit
 		}
 		else
