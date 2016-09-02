@@ -2315,6 +2315,9 @@ void KviInputEditor::completion(bool bShift)
 
 			if(m_pKviWindow)
 				m_pKviWindow->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("%d matches: %Q"), tmp.size(), &szAll);
+
+			if(szMatch.left(1) == '$')
+				szMatch.remove(0, 1);
 		}
 	}
 	else if(m_pKviWindow)
