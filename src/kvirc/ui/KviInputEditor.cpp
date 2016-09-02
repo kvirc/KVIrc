@@ -73,6 +73,7 @@
 #include <qdrawutil.h> // qDrawShadePanel
 
 #include <algorithm>
+#include <functional>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <windows.h>
