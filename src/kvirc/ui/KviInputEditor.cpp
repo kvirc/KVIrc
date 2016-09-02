@@ -2299,8 +2299,9 @@ void KviInputEditor::completion(bool bShift)
 		{
 			QString szAll;
 			szMatch = tmp.front();
-			auto predicate = bIsDir ? [](const QChar& a, const QChar& b) { return a.unicode() == b.unicode(); }
-				: [](const QChar& a, const QChar& b) { return a.toLower().unicode() == b.toLower().unicode(); };
+			auto predicate = bIsDir
+				? std::function<bool(const QChar &, const QChar &)>([](const QChar & a, const QChar & b) { return a.unicode() == b.unicode(); })
+				: std::function<bool(const QChar &, const QChar &)>([](const QChar & a, const QChar & b) { return a.toLower().unicode() == b.toLower().unicode(); });
 
 			for(auto szTmp : tmp)
 			{
