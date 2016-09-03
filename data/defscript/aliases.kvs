@@ -219,7 +219,7 @@ alias(j)
 	}
 	else
 	{
-		join $0-
+		join $0 $1
 	}
 }
 
