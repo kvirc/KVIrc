@@ -282,6 +282,15 @@ public:
 	inline KviIrcView * view() const { return m_pIrcView; };
 
 	/**
+	* \brief Returns the KviIrcView that was last clicked in this window
+	*
+	* Acts as view() except for split view windows
+	* See also: view()
+	* \return KviIrcView *
+	*/
+	virtual KviIrcView * lastClickedView() const { return m_pIrcView; };
+
+	/**
 	* \brief Returns the console that this window belongs to
 	*
 	* May be null for windows that aren't bound to irc contexts
