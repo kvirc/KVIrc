@@ -1955,23 +1955,20 @@ void KviInputEditor::installShortcuts()
 
 void KviInputEditor::zoomIn()
 {
-	if(m_pKviWindow)
-		if(m_pKviWindow->view())
-			m_pKviWindow->view()->increaseFontSize();
+	if(m_pKviWindow && m_pKviWindow->lastClickedView())
+		m_pKviWindow->lastClickedView()->increaseFontSize();
 }
 
 void KviInputEditor::zoomOut()
 {
-	if(m_pKviWindow)
-		if(m_pKviWindow->view())
-			m_pKviWindow->view()->decreaseFontSize();
+	if(m_pKviWindow && m_pKviWindow->lastClickedView())
+		m_pKviWindow->lastClickedView()->decreaseFontSize();
 }
 
 void KviInputEditor::zoomDefault()
 {
-	if(m_pKviWindow)
-		if(m_pKviWindow->view())
-			m_pKviWindow->view()->resetDefaultFont();
+	if(m_pKviWindow && m_pKviWindow->lastClickedView())
+		m_pKviWindow->lastClickedView()->resetDefaultFont();
 }
 
 void KviInputEditor::keyPressEvent(QKeyEvent * e)
@@ -3083,52 +3080,52 @@ void KviInputEditor::deleteNextWord()
 
 void KviInputEditor::previousLine()
 {
-	if(m_pKviWindow && m_pKviWindow->view())
-		m_pKviWindow->view()->prevLine();
+	if(m_pKviWindow && m_pKviWindow->lastClickedView())
+		m_pKviWindow->lastClickedView()->prevLine();
 	return;
 }
 
 void KviInputEditor::nextLine()
 {
-	if(m_pKviWindow && m_pKviWindow->view())
-		m_pKviWindow->view()->nextLine();
+	if(m_pKviWindow && m_pKviWindow->lastClickedView())
+		m_pKviWindow->lastClickedView()->nextLine();
 	return;
 }
 
 void KviInputEditor::previousPage()
 {
-	if(m_pKviWindow && m_pKviWindow->view())
-		m_pKviWindow->view()->prevPage();
+	if(m_pKviWindow && m_pKviWindow->lastClickedView())
+		m_pKviWindow->lastClickedView()->prevPage();
 }
 
 void KviInputEditor::nextPage()
 {
-	if(m_pKviWindow && m_pKviWindow->view())
-		m_pKviWindow->view()->nextPage();
+	if(m_pKviWindow && m_pKviWindow->lastClickedView())
+		m_pKviWindow->lastClickedView()->nextPage();
 }
 
 void KviInputEditor::scrollTop()
 {
-	if(m_pKviWindow && m_pKviWindow->view())
-		m_pKviWindow->view()->scrollTop();
+	if(m_pKviWindow && m_pKviWindow->lastClickedView())
+		m_pKviWindow->lastClickedView()->scrollTop();
 }
 
 void KviInputEditor::scrollBottom()
 {
-	if(m_pKviWindow && m_pKviWindow->view())
-		m_pKviWindow->view()->scrollBottom();
+	if(m_pKviWindow && m_pKviWindow->lastClickedView())
+		m_pKviWindow->lastClickedView()->scrollBottom();
 }
 
 void KviInputEditor::search()
 {
-	if(m_pKviWindow && m_pKviWindow->view())
-		m_pKviWindow->view()->toggleToolWidget();
+	if(m_pKviWindow && m_pKviWindow->lastClickedView())
+		m_pKviWindow->lastClickedView()->toggleToolWidget();
 }
 
 void KviInputEditor::scrollToLastReadLine()
 {
-	if(m_pKviWindow && m_pKviWindow->view() && m_pKviWindow->view()->hasLineMark())
-		m_pKviWindow->view()->scrollToMarker();
+	if(m_pKviWindow && m_pKviWindow->lastClickedView() && m_pKviWindow->lastClickedView()->hasLineMark())
+		m_pKviWindow->lastClickedView()->scrollToMarker();
 }
 
 void KviInputEditor::sendPlain()

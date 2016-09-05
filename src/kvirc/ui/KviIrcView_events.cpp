@@ -245,6 +245,8 @@ void KviIrcView::mousePressEvent(QMouseEvent * e)
 	if(m_pKviWindow->input())
 		m_pKviWindow->input()->setFocus();
 
+	m_iLastMouseClickTime = QDateTime::currentMSecsSinceEpoch();
+
 	if(!(e->button() & Qt::LeftButton))
 	{
 		triggerMouseRelatedKvsEvents(e);

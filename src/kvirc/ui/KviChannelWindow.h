@@ -889,6 +889,15 @@ public:
 	*/
 	void checkChannelSync();
 
+	/**
+	* \brief Returns the KviIrcView that was last clicked in this window
+	*
+	* Acts as view() except for split view windows
+	* See also: view()
+	* \return KviIrcView *
+	*/
+	virtual KviIrcView * lastClickedView() const;
+
 protected:
 	/**
 	* \brief Filters the events
