@@ -28,7 +28,7 @@ KVIrc is written by Szymon Stefanek and the KVIrc development team, with the con
 
 ---
 Try one of our fresh off-the-press nightly development 32-bit or 64-bit builds for Windows, Ubuntu and Debian.
-### [Downloads](https://github.com/kvirc/KVIrc/wiki/Downloading-KVIrc's-nightly-source-or-binaries)
+### [Downloads](https://github.com/kvirc/KVIrc/wiki/Downloading-KVIrcs-nightly-source-or-binaries)
 
 We're also looking for volunteer packagers and maintainers to other Linux distributions, that can help us extend KVIrc's availability in other OS's.
 
