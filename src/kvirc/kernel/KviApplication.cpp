@@ -1741,7 +1741,8 @@ KviConsoleWindow * KviApplication::topmostConnectedConsole()
 
 KviWindow * KviApplication::findWindow(const QString & szWindowId)
 {
-	return g_pGlobalWindowDict.find(szWindowId)->second;
+	auto search = g_pGlobalWindowDict.find(szWindowId);
+	return search != g_pGlobalWindowDict.end() ? search->second : nullptr;
 }
 
 KviWindow * KviApplication::findWindowByCaption(const QString & szWindowCaption, int iContextId)
