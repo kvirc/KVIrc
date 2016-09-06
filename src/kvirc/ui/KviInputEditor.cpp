@@ -68,8 +68,12 @@
 #include <QMenu>
 #include <QWidgetAction>
 #include <QTextBoundaryFinder>
+#include <QRegExp>
 
 #include <qdrawutil.h> // qDrawShadePanel
+
+#include <algorithm>
+#include <functional>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <windows.h>
@@ -168,6 +172,7 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	m_pKviWindow = pWnd;
 	m_pUserListView = pView;
 	m_bReadOnly = false;
+	m_bSpSlowFlag = false;       //Slow paste status flag
 
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 
@@ -1031,9 +1036,6 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 
 	QString szClip;
 
-	static QString ths = "<html><body><table width=\"100%\">" START_TABLE_BOLD_ROW;
-	static QString the = END_TABLE_BOLD_ROW "</table></body></html>";
-
 	QClipboard * pClip = QApplication::clipboard();
 	if(pClip)
 	{
@@ -1043,6 +1045,9 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 
 		if(!szClip.isEmpty())
 		{
+			// Prevent too many newlines from spamming the context menu
+			szClip.replace(QRegExp("^((?:[^\n]*\n){6}).*"), "\\1...");
+
 			if(szClip.length() > 60)
 			{
 				szClip.truncate(60);
@@ -1054,21 +1059,28 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 			szClip.replace(QChar('>'), "&gt;");
 			szClip.replace(QChar('\n'), "<br>");
 
-			QString szLabel = ths;
+			QString szLabel = "<html><body>";
+
+			// Title
+			szLabel += "<table width=\"100%\">";
+			szLabel += START_TABLE_BOLD_ROW;
 			szLabel += "<center><b>";
 			szLabel += __tr2qs("Clipboard");
 			szLabel += "</b></center>";
-			szLabel += the;
+			szLabel += END_TABLE_BOLD_ROW;
+			szLabel += "</table>";
+
+			// Clipboard contents (truncated for display)
 			szLabel += szClip;
+
+			// Line breaks count
 			szLabel += "<br><b><center>";
-
-			QString szNum;
-			szNum.setNum(iOcc);
-
-			szLabel += szNum;
+			szLabel += QString::number(iOcc);
 			szLabel += QChar(' ');
 			szLabel += (iOcc == 1) ? __tr2qs("line break") : __tr2qs("line breaks");
 			szLabel += "</b></center>";
+
+			szLabel += "</body></html>";
 
 			QLabel * pLabel = new QLabel(szLabel, g_pInputPopup);
 			pLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
@@ -1305,7 +1317,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 {
 	if(e->button() & Qt::LeftButton)
 	{
-		m_iCursorPosition = charIndexFromXPosition(e->pos().x());
+		m_iCursorPosition = std::min(charIndexFromXPosition(e->pos().x()), m_szTextBuffer.length());
 		m_iSelectionAnchorChar = m_iCursorPosition;
 		clearSelection();
 		repaintWithCursorOn();
@@ -1689,9 +1701,8 @@ void KviInputEditor::finishInput()
 	}
 
 	//ensure the color window is hidden (bug #835)
-	if(g_pColorWindow)
-		if(g_pColorWindow->isVisible())
-			g_pColorWindow->hide();
+	if(g_pColorWindow && g_pColorWindow->isVisible())
+		g_pColorWindow->hide();
 
 	KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
 	if(m_History.size() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)
@@ -2145,7 +2156,7 @@ void KviInputEditor::completion(bool bShift)
 	}
 
 	int iOffset;
-	if(KviQString::equalCI(m_szTextBuffer.left(5), "/help") || KviQString::equalCI(m_szTextBuffer.left(5), "/help.open"))
+	if(KviQString::equalCI(m_szTextBuffer.left(5), "/help"))
 		iOffset = 1;
 	else
 		iOffset = 0;
@@ -2213,11 +2224,11 @@ void KviInputEditor::completion(bool bShift)
 			if(m_pKviWindow->console())
 				m_pKviWindow->console()->completeChannel(szWord, tmp);
 		}
-
-		//FIXME: Complete also on irc:// starting strings, not only irc.?
 	}
 	else if(KviQString::equalCIN(szWord, "irc.", 4))
 	{
+		//FIXME: Complete also on irc:// starting strings, not only irc.?
+
 		// irc server name
 		if(m_pKviWindow)
 			if(m_pKviWindow->console())
@@ -2264,11 +2275,11 @@ void KviInputEditor::completion(bool bShift)
 		if(tmp.size() == 1)
 		{
 			szMatch = tmp.front();
-			if(szMatch.left(1) == '$')
+			if(szMatch.left(1) == '$' && szMatch != '$')
 				szMatch.remove(0, 1);
-			if(bIsCommand && szMatch.right(1) != '.')
+			if(bIsCommand && !iOffset && szMatch.right(1) != '.')
 				szMatch.append(' ');
-			else if(bIsFunction && szMatch.right(1) != '.')
+			else if(bIsFunction && !iOffset && szMatch.right(1) != '.')
 				szMatch.append('(');
 			else if(bIsNick)
 			{
@@ -2279,54 +2290,40 @@ void KviInputEditor::completion(bool bShift)
 				}
 			}
 
-			if(bInCommand && !bIsCommand)
-			{
+			if(bInCommand && !bIsCommand && !bIsFunction)
 				completionEscapeUnsafeToken(szMatch); // escape crazy things like Nick\nquit
-			}
 		}
 		else
 		{
 			QString szAll;
 			szMatch = tmp.front();
-			int iWLen = szWord.length();
-			if(szMatch.left(1) == '$')
-				szMatch.remove(0, 1);
-			for(auto szTmpIter : tmp)
+			auto predicate =
+				[bIsDir](const QChar & a, const QChar & b)
+				{
+					return bIsDir ? (a.unicode() == b.unicode()) : (a.toLower().unicode() == b.toLower().unicode());
+				};
+
+			for(auto szTmp : tmp)
 			{
-				if(szTmpIter.length() < szMatch.length())
-					szMatch.remove(szTmpIter.length(), szMatch.length() - szTmpIter.length());
-				// All the matches here have length >= word.len()!!!
-				const QChar * b1 = szTmpIter.constData() + iWLen;
-				const QChar * b2 = szMatch.constData() + iWLen;
-				const QChar * c1 = b1;
-				const QChar * c2 = b2;
-				if(bIsDir)
-					while(c1->unicode() && (c1->unicode() == c2->unicode()))
-						c1++, c2++;
-				else
-					while(c1->unicode() && (c1->toLower().unicode() == c2->toLower().unicode()))
-						c1++, c2++;
-				int iLen = iWLen + (c1 - b1);
-				if(iLen < ((int)(szMatch.length())))
-					szMatch.remove(iLen, szMatch.length() - iLen);
+				szMatch.truncate(std::mismatch(szMatch.data(), szMatch.data() + std::min(szMatch.size(), szTmp.size()), szTmp.data(), predicate).first - szMatch.data());
+
 				if(!szAll.isEmpty())
 					szAll.append(", ");
-				szAll.append(szTmpIter);
+				szAll.append(szTmp);
 			}
+
 			if(m_pKviWindow)
 				m_pKviWindow->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("%d matches: %Q"), tmp.size(), &szAll);
+
+			if(szMatch.left(1) == '$')
+				szMatch.remove(0, 1);
 		}
 	}
 	else if(m_pKviWindow)
 		m_pKviWindow->outputNoFmt(KVI_OUT_SYSTEMMESSAGE, __tr2qs("No matches"));
 
 	if(!szMatch.isEmpty())
-	{
-		//if(!bIsDir && !bIsNick)match = match.toLower(); <-- why? It is nice to have
-		//						 $module.someFunctionName instad
-		//						 of unreadable $module.somefunctionfame
 		replaceWordBeforeCursor(szWord, szMatch, false);
-	}
 
 	repaintWithCursorOn();
 }
@@ -2486,7 +2483,6 @@ void KviInputEditor::insertChar(QChar c)
 
 void KviInputEditor::repaintWithCursorOn()
 {
-	// :)
 	if(!m_bUpdatesEnabled)
 		return;
 
@@ -2524,7 +2520,7 @@ int KviInputEditor::charIndexFromXPosition(qreal fXPos)
 	if(!pBlock)
 		return iCurChar;
 
-	// This is very tricky. Qt does not provide a simple mean to figure out the cursor position
+	// This is very tricky. Qt does not provide a simple means to figure out the cursor position
 	// from an x position on the text. We use QFontMetrics::elidedText() to guess it.
 
 	// Additionally Qt::ElideNone does not work as expected (see QTBUG-40315): it just ignores clipping altogether.
