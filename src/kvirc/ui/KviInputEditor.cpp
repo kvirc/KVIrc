@@ -1317,7 +1317,7 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 {
 	if(e->button() & Qt::LeftButton)
 	{
-		m_iCursorPosition = charIndexFromXPosition(e->pos().x());
+		m_iCursorPosition = std::min(charIndexFromXPosition(e->pos().x()), m_szTextBuffer.length());
 		m_iSelectionAnchorChar = m_iCursorPosition;
 		clearSelection();
 		repaintWithCursorOn();
