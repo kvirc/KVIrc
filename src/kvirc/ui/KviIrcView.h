@@ -140,6 +140,7 @@ private:
 	QFontMetrics * m_pFm; // assume this valid only inside a paint event (may be 0 in other circumstances)
 
 	QMouseEvent * m_pLastEvent;
+	qint64 m_iLastMouseClickTime;
 
 	KviIrcViewToolTip * m_pToolTip;
 	bool m_bHaveUnreadedHighlightedMessages;
@@ -190,6 +191,8 @@ public:
 	void splitMessagesTo(KviIrcView * v);
 	void joinMessagesFrom(KviIrcView * v);
 	void appendMessagesFrom(KviIrcView * v);
+
+	qint64 lastMouseClickTime() const { return m_iLastMouseClickTime; }
 
 	// Return true if the specified message type should be "split" to the user message specific view.
 	bool messageShouldGoToMessageView(int iMsgType);

@@ -2008,6 +2008,14 @@ void KviChannelWindow::checkChannelSync()
 	}
 }
 
+KviIrcView * KviChannelWindow::lastClickedView() const
+{
+	if(m_pMessageView && m_pIrcView && m_pMessageView->lastMouseClickTime() >= m_pIrcView->lastMouseClickTime())
+			return m_pMessageView;
+
+	return m_pIrcView;
+}
+
 bool KviChannelWindow::eventFilter(QObject * pObject, QEvent * pEvent)
 {
 	if(pEvent->type() == QEvent::FocusOut && pObject == m_pTopicWidget && m_pTopicWidget->isVisible())

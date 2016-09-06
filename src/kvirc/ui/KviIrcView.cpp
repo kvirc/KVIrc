@@ -231,6 +231,8 @@ KviIrcView::KviIrcView(QWidget * parent, KviWindow * pWnd)
 	//m_bShowImages            = KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages);
 
 	m_iMouseTimer = 0;
+	m_pLastEvent = nullptr;
+	m_iLastMouseClickTime = QDateTime::currentMSecsSinceEpoch();
 
 	m_bAcceptDrops = false;
 	m_pPrivateBackgroundPixmap = nullptr;
