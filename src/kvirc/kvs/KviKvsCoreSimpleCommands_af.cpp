@@ -34,6 +34,8 @@
 #include "KviConsoleWindow.h"
 #include "KviScriptButton.h"
 #include "KviIconManager.h"
+#include "KviChannelWindow.h"
+#include "KviQueryWindow.h"
 
 #include "KviKvsEventManager.h"
 #include "KviKvsKernel.h"
@@ -655,23 +657,41 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(ctcp)
 	{
-		QString szTarget, szCtcpData;
+		QString szTarget, szCtcpCmd, szCtcpData;
 		KVSCSC_PARAMETERS_BEGIN
 		KVSCSC_PARAMETER("target", KVS_PT_NONEMPTYSTRING, 0, szTarget)
+		KVSCSC_PARAMETER("ctcp_cmd", KVS_PT_STRING, KVS_PF_OPTIONAL, szCtcpCmd)
 		KVSCSC_PARAMETER("ctcp_data", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szCtcpData)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		if(KviQString::equalCI(szCtcpData, "PING"))
+		QString szData = szCtcpCmd;
+
+		if(szCtcpCmd.compare("PING", Qt::CaseInsensitive) == 0 && szCtcpData.isEmpty())
 		{
 			struct timeval tv;
 			kvi_gettimeofday(&tv, nullptr);
-			KviQString::appendFormatted(szCtcpData, " %d.%d", tv.tv_sec, tv.tv_usec);
+			KviQString::appendFormatted(szCtcpData, "%d.%d", tv.tv_sec, tv.tv_usec);
+		}
+		else if (szCtcpCmd.compare("ACTION", Qt::CaseInsensitive) == 0 && !KVSCSC_pSwitches->find('n', "notice"))
+		{
+			KviWindow * w = KVSCSC_pConnection->findChannel(szTarget);
+			if(!w)
+				w = KVSCSC_pConnection->findQuery(szTarget);
+			if(w)
+			{
+				w->ownAction(szCtcpData);
+				return true;
+			}
 		}
 
+
+		if(!szCtcpData.isEmpty())
+			szData += " " + szCtcpData;
+
 		QByteArray szT = KVSCSC_pConnection->encodeText(szTarget);
-		QByteArray szD = KVSCSC_pConnection->encodeText(szCtcpData);
+		QByteArray szD = KVSCSC_pConnection->encodeText(szData);
 
 		if(!(KVSCSC_pConnection->sendFmtData("%s %s :%c%s%c",
 		       KVSCSC_pSwitches->find('n', "notice") ? "NOTICE" : "PRIVMSG", szT.data(), 0x01, szD.data(), 0x01)))
