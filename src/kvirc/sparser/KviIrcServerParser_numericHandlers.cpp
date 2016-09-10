@@ -209,13 +209,10 @@ void KviIrcServerParser::parseNumeric004(KviIrcMessage * msg)
 	msg->connection()->serverInfoReceived(szServer, umodes.ptr(), chanmodes.ptr());
 
 	// FIXME: #warning "TO ACTIVE ? OR TO CONSOLE ?"
-	if(!_OUTPUT_MUTE)
-	{
-		if(!msg->haltOutput())
-			msg->console()->output(KVI_OUT_SERVERINFO,
-			    __tr2qs("Server %Q version %S supporting user modes '%S' and channel modes '%S'"),
-			    &szServer, &version, &umodes, &chanmodes);
-	}
+	if(!_OUTPUT_MUTE && !msg->haltOutput())
+		msg->console()->output(KVI_OUT_SERVERINFO,
+		    __tr2qs("Server %Q version %S supporting user modes '%S' and channel modes '%S'"),
+		    &szServer, &version, &umodes, &chanmodes);
 }
 
 void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
@@ -284,26 +281,20 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 					p++;
 				KviCString szModePrefixes = p;
 				if(szModePrefixes.hasData() && (szModePrefixes.len() == szModeFlags.len()))
-				{
 					msg->connection()->serverInfo()->setSupportedModePrefixes(szModePrefixes.ptr(), szModeFlags.ptr());
-				}
 			}
 			else if(kvi_strEqualCIN("CHANTYPES=", p, 10))
 			{
 				p += 10;
 				KviCString tmp = p;
 				if(tmp.hasData())
-				{
 					msg->connection()->serverInfo()->setSupportedChannelTypes(tmp.ptr());
-				}
 			}
 			else if(kvi_strEqualCI("WATCH", p) || kvi_strEqualCIN("WATCH=", p, 6))
 			{
 				msg->connection()->serverInfo()->setSupportsWatchList(true);
 				if((!_OUTPUT_MUTE) && (!msg->haltOutput()) && KVI_OPTION_BOOL(KviOption_boolShowExtendedServerInfo))
-				{
 					msg->console()->outputNoFmt(KVI_OUT_SERVERINFO, __tr2qs("This server supports the WATCH notify list method, it will be used"));
-				}
 			}
 			else if(kvi_strEqualCIN("TOPICLEN=", p, 9))
 			{
@@ -326,17 +317,13 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 					msg->console()->connection()->serverInfo()->setNetworkName(tmp);
 
 				if((!_OUTPUT_MUTE) && (!msg->haltOutput()) && KVI_OPTION_BOOL(KviOption_boolShowExtendedServerInfo))
-				{
 					msg->console()->output(KVI_OUT_SERVERINFO, __tr2qs("The current network is %Q"), &tmp);
-				}
 			}
 			else if(kvi_strEqualCI("CODEPAGES", p))
 			{
 				msg->connection()->serverInfo()->setSupportsCodePages(true);
 				if((!_OUTPUT_MUTE) && (!msg->haltOutput()) && KVI_OPTION_BOOL(KviOption_boolShowExtendedServerInfo))
-				{
 					msg->console()->outputNoFmt(KVI_OUT_SERVERINFO, __tr2qs("This server supports the CODEPAGE command, it will be used"));
-				}
 
 			}
 			else if(kvi_strEqualCIN("CHANMODES=", p, 10))
@@ -372,18 +359,14 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 				msg->connection()->serverInfo()->setSupportsCodePages(true);
 
 				if((!_OUTPUT_MUTE) && (!msg->haltOutput()) && KVI_OPTION_BOOL(KviOption_boolShowExtendedServerInfo))
-				{
 					msg->console()->outputNoFmt(KVI_OUT_SERVERINFO, __tr2qs("This server supports the CODEPAGE command, it will be used"));
-				}
 
 			}
 			else if(kvi_strEqualCIN("WHOX", p, 4))
 			{
 				msg->connection()->serverInfo()->setSupportsWhox(true);
 				if((!_OUTPUT_MUTE) && (!msg->haltOutput()) && KVI_OPTION_BOOL(KviOption_boolShowExtendedServerInfo))
-				{
 					msg->console()->outputNoFmt(KVI_OUT_SERVERINFO, __tr2qs("This server supports the WHOX, extra information will be retrieved"));
-				}
 			}
 		}
 		if((!_OUTPUT_MUTE) && (!msg->haltOutput()))
@@ -400,9 +383,7 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 			if(!msg->haltOutput())
 				msg->console()->output(KVI_OUT_SERVERINFO, __tr2qs("This server supports: %s"), msg->connection()->decodeText(aux).toUtf8().data());
 			if(bNamesx || bUhNames)
-			{
 				msg->connection()->sendFmtData("PROTOCTL %s %s", bNamesx ? "NAMESX" : "", bUhNames ? "UHNAMES" : "");
-			}
 		}
 	}
 	else
@@ -452,9 +433,7 @@ void KviIrcServerParser::parseNumericMotd(KviIrcMessage * msg)
 		msg->console()->outputNoFmt(KVI_OUT_MOTD, msg->connection()->decodeText(msg->safeTrailing()), 0, msg->serverTime());
 
 	if(msg->numeric() == RPL_ENDOFMOTD)
-	{
 		msg->connection()->endOfMotdReceived();
-	}
 }
 
 void KviIrcServerParser::parseNumericEndOfNames(KviIrcMessage * msg)
@@ -463,13 +442,10 @@ void KviIrcServerParser::parseNumericEndOfNames(KviIrcMessage * msg)
 	// :prefix 366 target <channel> :End of /NAMES list.
 	QString szChan = msg->connection()->decodeText(msg->safeParam(1));
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
-	if(chan)
+	if(chan && !chan->hasAllNames())
 	{
-		if(!chan->hasAllNames())
-		{
-			chan->setHasAllNames();
-			return;
-		}
+		chan->setHasAllNames();
+		return;
 	}
 
 	if(!msg->haltOutput() && !_OUTPUT_MUTE)
@@ -636,11 +612,8 @@ void KviIrcServerParser::parseNumericTopic(KviIrcMessage * msg)
 
 		chan->topicWidget()->setTopic(szTopic);
 		chan->topicWidget()->setTopicSetBy(__tr2qs("(unknown)"));
-		if(KVI_OPTION_BOOL(KviOption_boolEchoNumericTopic))
-		{
-			if(!msg->haltOutput())
-				chan->output(KVI_OUT_TOPIC, __tr2qs("Channel topic is: %Q"), &szTopic);
-		}
+		if(KVI_OPTION_BOOL(KviOption_boolEchoNumericTopic) && !msg->haltOutput())
+			chan->output(KVI_OUT_TOPIC, __tr2qs("Channel topic is: %Q"), &szTopic);
 	}
 	else
 	{
@@ -661,11 +634,8 @@ void KviIrcServerParser::parseNumericNoTopic(KviIrcMessage * msg)
 	if(chan)
 	{
 		chan->topicWidget()->setTopic("");
-		if(KVI_OPTION_BOOL(KviOption_boolEchoNumericTopic))
-		{
-			if(!msg->haltOutput())
-				chan->outputNoFmt(KVI_OUT_TOPIC, __tr2qs("No channel topic is set"));
-		}
+		if(KVI_OPTION_BOOL(KviOption_boolEchoNumericTopic) && !msg->haltOutput())
+			chan->outputNoFmt(KVI_OUT_TOPIC, __tr2qs("No channel topic is set"));
 	}
 	else
 	{
@@ -712,13 +682,10 @@ void KviIrcServerParser::parseNumericTopicWhoTime(KviIrcMessage * msg)
 	KviIrcMask who(szWho);
 	QString szDisplayableWho;
 	if(!(who.hasUser() && who.hasHost()))
-	{
 		szDisplayableWho = "\r!n\r" + szWho + "\r";
-	}
 	else
-	{
 		szDisplayableWho = QString("\r!n\r%1\r!%2@\r!h\r%3\r").arg(who.nick(), who.user(), who.host());
-	}
+
 	if(chan)
 	{
 		chan->topicWidget()->setTopicSetBy(szWho);
@@ -1605,14 +1572,11 @@ void KviIrcServerParser::parseNumericWhoisUser(KviIrcMessage * msg)
 
 		// Check for the avatar unless the entry refers to the local user (in which case
 		// the avatar should never be cached nor requested).
-		if(!IS_ME(msg, szNick))
+		if(!IS_ME(msg, szNick) && !e->avatar())
 		{
-			if(!e->avatar())
-			{
-				// FIXME: #warning "THE AVATAR SHOULD BE RESIZED TO MATCH THE MAX WIDTH/HEIGHT"
-				// maybe now we can match this user ?
-				msg->console()->checkDefaultAvatar(e, szNick, szUser, szHost);
-			}
+			// FIXME: #warning "THE AVATAR SHOULD BE RESIZED TO MATCH THE MAX WIDTH/HEIGHT"
+			// maybe now we can match this user ?
+			msg->console()->checkDefaultAvatar(e, szNick, szUser, szHost);
 		}
 	}
 
