@@ -334,14 +334,14 @@ BlowFish::BlowFish(unsigned char * ucKey, unsigned int keysize, const SBlock & r
 	// avoid insane max key lengths
 	if(maxKeysize < 4)
 		maxKeysize = 4;
-	else if(maxKeysize > 80)
-		maxKeysize = 80;
+	else if(maxKeysize > 72)
+		maxKeysize = 72;
 
 	if(keysize > maxKeysize)
 		keysize = maxKeysize;
 
 	// Allocate dynamically as we need a constant expression for the array size in c++
-	unsigned char * aucLocalKey = new unsigned char[maxKeysize];
+	unsigned char aucLocalKey[72];
 	unsigned int i, j;
 
 	KviMemory::copy(aucLocalKey, ucKey, keysize);
@@ -379,8 +379,6 @@ BlowFish::BlowFish(unsigned char * ucKey, unsigned int keysize, const SBlock & r
 	for(j = 0; j < 4; j++)
 		for(int k = 0; k < 256;)
 			Encrypt(block), m_auiS[j][k++] = block.m_uil, m_auiS[j][k++] = block.m_uir;
-
-	delete[] aucLocalKey;
 }
 
 //Sixteen Round Encipher of Block

@@ -756,7 +756,9 @@ static bool rijndael_module_init(KviModule * m)
 	d->m_szDescription = __tr2qs("Popular cryptographic engine based on the Blowfish encryption algorithm. "
 	                             "<br/>The text is first encrypted with Blowfish and then converted to base64 notation. "
 	                             "The keys used have variable length and are specified as character strings. "
-	                             "You can specify keys long up to 56 bytes (448 bits) by default or change this with /option uintMaximumBlowFishKeySize UINT. "
+	                             "You can specify keys with length up to 56 bytes (448 bits) by default or change this with /option uintMaximumBlowFishKeySize UINT. "
+	                             "Blowfish allows for up to 72 bytes for keys, but it is not advised to use more than 56 bytes for security reasons. "
+	                             "Only increase this value if you need compatibility with another client's Blowfish implementation. "
 	                             "If only one key is provided, this engine will use it for both encrypting and decrypting. "
 	                             "<br/>This engine works in CBC mode by default: if you want to use the old and INSECURE ECB mode you must prefix your key(s) with \"ecb:\" or \"old:\".");
 	d->m_iFlags = KviCryptEngine::CanEncrypt | KviCryptEngine::CanDecrypt | KviCryptEngine::WantEncryptKey | KviCryptEngine::WantDecryptKey;
