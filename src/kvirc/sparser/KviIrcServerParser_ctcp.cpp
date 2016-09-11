@@ -56,6 +56,11 @@
 #include "KviBuildInfo.h"
 #include "KviIrcConnectionServerInfo.h"
 
+#ifdef COMPILE_CRYPT_SUPPORT
+#include "KviCryptEngine.h"
+#include "KviCryptController.h"
+#endif //COMPILE_CRYPT_SUPPORT
+
 #include <stdlib.h>
 
 #include <QDateTime>
@@ -1425,15 +1430,56 @@ void KviIrcServerParser::parseCtcpRequestPage(KviCtcpMessage * msg)
 	echoCtcpRequest(msg);
 }
 
+#ifdef COMPILE_CRYPT_SUPPORT
+#define DECRYPT_IF_NEEDED(target, txt, type, type2, buffer, retptr, retmsgtype)        \
+	if(KviCryptSessionInfo * cinf = target->cryptSessionInfo())                    \
+	{                                                                              \
+		if(cinf->m_bDoDecrypt)                                                 \
+		{                                                                      \
+			switch(cinf->m_pEngine->decrypt(txt, buffer))                  \
+			{                                                              \
+				case KviCryptEngine::DecryptOkWasEncrypted:            \
+					retptr = buffer.ptr();                         \
+					retmsgtype = type2;                            \
+					break;                                         \
+				case KviCryptEngine::DecryptOkWasPlainText:            \
+				case KviCryptEngine::DecryptOkWasEncoded:              \
+					retptr = buffer.ptr();                         \
+					retmsgtype = type;                             \
+					break;                                         \
+				default: /* also case KviCryptEngine::DecryptError: */ \
+				{                                                      \
+					QString szEngineError = cinf->m_pEngine->lastError(); \
+					target->output(KVI_OUT_SYSTEMERROR,            \
+					    __tr2qs("The following message appears to be encrypted but the encryption engine failed to decode it: %Q"), \
+					    &szEngineError);                           \
+					retptr = txt + 1;                              \
+					retmsgtype = type;                             \
+				}                                                      \
+				break;                                                 \
+			}                                                              \
+		}                                                                      \
+		else                                                                   \
+			retptr = txt, retmsgtype = type;                               \
+	}                                                                              \
+	else                                                                           \
+		retptr = txt, retmsgtype = type;
+#else //COMPILE_CRYPT_SUPPORT
+#define DECRYPT_IF_NEEDED(target, txt, type, type2, buffer, retptr, retmsgtype) \
+	retptr = txt;                                                           \
+	retmsgtype = type;
+#endif //COMPILE_CRYPT_SUPPORT
+
 void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 {
-	KviCString szData8;
+	KviCString szData8(msg->pData);
 	// CTCP ACTION is a special exception... most clients do not encode/decode it.
 	//msg->pData = extractCtcpParameter(msg->pData,szData8,false);
-	szData8 = msg->pData;
 
 	KviWindow * pOut = nullptr;
 	bool bIsChannel = msg->msg->connection()->serverInfo()->supportedChannelTypes().indexOf(msg->szTarget[0]) != -1;
+	int msgtype = KVI_OUT_ACTION;
+
 	// "znc.in/self-message" capability: Handle a replayed message from ourselves to someone else.
 	bool bSelfMessage = IS_ME(msg->msg, msg->pSource->nick());
 	QString szTargetNick, szTargetUser, szTargetHost;
@@ -1447,9 +1493,18 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 
 	if(bIsChannel)
 	{
-		pOut = (KviWindow *)msg->msg->connection()->findChannel(msg->szTarget);
-		if(pOut)
-			szData = pOut->decodeText(szData8.ptr());
+		KviChannelWindow * chan = msg->msg->connection()->findChannel(msg->szTarget);
+		if(chan)
+		{
+			KviCString szBuffer;
+			const char * txtptr;
+
+			DECRYPT_IF_NEEDED(chan, szData8, KVI_OUT_CHANPRIVMSG, KVI_OUT_CHANPRIVMSGCRYPTED, szBuffer, txtptr, msgtype)
+
+			szData = chan->decodeText(txtptr);
+
+			pOut = static_cast<KviWindow *>(chan);
+		}
 		else
 			szData = msg->msg->connection()->decodeText(szData8.ptr());
 	}
@@ -1458,7 +1513,6 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 		KviQueryWindow * query = msg->msg->connection()->findQuery(szWindow);
 		if(!query)
 		{
-			szData = msg->msg->connection()->decodeText(szData8.ptr());
 			// New query requested ?
 			// FIXME: 			#warning "CHECK FOR SPAM!"
 			if(KVI_OPTION_BOOL(KviOption_boolCreateQueryOnPrivmsg))
@@ -1494,11 +1548,20 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 				KviKvsScript::run("snd.play $0", query, &soundParams);
 			}
 		}
-		pOut = static_cast<KviWindow *>(query);
-		if(pOut)
-			szData = pOut->decodeText(szData8.ptr());
+
+		if(query)
+		{
+			KviCString szBuffer;
+			const char * txtptr;
+
+			DECRYPT_IF_NEEDED(query, szData8, KVI_OUT_QUERYPRIVMSG, KVI_OUT_QUERYPRIVMSGCRYPTED, szBuffer, txtptr, msgtype)
+
+			szData = query->decodeText(txtptr);
+		}
 		else
 			szData = msg->msg->connection()->decodeText(szData8.ptr());
+
+		pOut = static_cast<KviWindow *>(query);
 	}
 
 	bool bTargetFound = pOut;
@@ -1523,7 +1586,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 		return;
 	}
 
-	int type = msg->msg->console()->applyHighlighting(pOut, KVI_OUT_ACTION, msg->pSource->nick(), msg->pSource->user(), msg->pSource->host(), szData);
+	int type = msg->msg->console()->applyHighlighting(pOut, msgtype, msg->pSource->nick(), msg->pSource->user(), msg->pSource->host(), szData);
 
 	if(type < 0)
 		return; // event stopped the message!
@@ -1541,7 +1604,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 				szMsg += "</b> ";
 				szMsg += KviQString::toHtmlEscaped(szData);
 				//qDebug("KviIrcServerParser_ctcp.cpp:975 debug: %s",szMsg.data());
-				g_pApp->notifierMessage(pOut, KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(), szMsg, KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+				g_pApp->notifierMessage(pOut, KVI_OPTION_MSGTYPE(msgtype).pixId(), szMsg, KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 			}
 		}
 	}
