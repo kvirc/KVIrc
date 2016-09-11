@@ -3209,6 +3209,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 			$3 = Message target
 			$4 = Action message text
 			$5 = Message tags
+			$6 = Was encrypted
 		@window:
 			Channels and query windows
 		@description:
@@ -3222,6 +3223,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 				to a subset of clients) or a sign of the server brain damage :D In this
 				case the event is triggered in the console window.[br]
 			$5 is a hash of the current message tags, if available.[br]
+			$6 will be [b]1[/b] if the message was encrypted and [b]0[/b] otherwise.[br]
 			Calling [cmd]halt[/cmd] in this event stops the message output.[br]
 	*/
 
@@ -3231,7 +3233,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	    "$2 = Source hostname\n"
 	    "$3 = Message target\n"
 	    "$4 = Action message text\n"
-	    "$5 = Message tags"),
+	    "$5 = Message tags\n"
+	    "$6 = Was encrypted"),
 
 	/*
 		@doc: onmeaction

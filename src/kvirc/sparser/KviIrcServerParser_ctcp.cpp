@@ -1574,13 +1574,14 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
 		szData = KviControlCodes::stripControlBytes(szData);
 
-	if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnAction, pOut,
+	if(KVS_TRIGGER_EVENT_7_HALTED(KviEvent_OnAction, pOut,
 	       msg->pSource->nick(),
 	       msg->pSource->user(),
 	       msg->pSource->host(),
 	       msg->szTarget,
 	       szData,
-	       msg->msg->messageTagsKvsHash()))
+	       msg->msg->messageTagsKvsHash(),
+	       (kvs_int_t)(msgtype == KVI_OUT_ACTIONCRYPTED)))
 	{
 		msg->msg->setHaltOutput();
 		return;
