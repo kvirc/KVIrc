@@ -600,7 +600,7 @@ int KviConsoleWindow::triggerOnHighlight(KviWindow * pWnd, int iType, const QStr
 	if(KVS_TRIGGER_EVENT_7_HALTED(KviEvent_OnHighlight,
 	    pWnd, szNick, szUser, szHost,
 	    szMsg, szTrigger,
-	    szMessageType, (iType == KVI_OUT_ACTION)))
+	    szMessageType, (iType == KVI_OUT_ACTION || iType == KVI_OUT_ACTIONCRYPTED)))
 		return -1;
 	return KVI_OUT_HIGHLIGHT;
 }

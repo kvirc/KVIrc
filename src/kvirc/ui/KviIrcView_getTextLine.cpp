@@ -1075,6 +1075,7 @@ check_emoticon_char:
 		{
 			case KVI_OUT_CHANPRIVMSG:
 			case KVI_OUT_ACTION:
+			case KVI_OUT_ACTIONCRYPTED:
 			case KVI_OUT_OWNPRIVMSG:
 			case KVI_OUT_QUERYPRIVMSG:
 			case KVI_OUT_QUERYPRIVMSGCRYPTED:
@@ -1287,7 +1288,7 @@ void KviIrcView::appendText(int iMsgType, const kvi_wchar_t * data_ptr, int iFla
 		{
 			if(!m_bHaveUnreadedHighlightedMessages && iMsgType == KVI_OUT_HIGHLIGHT)
 				m_bHaveUnreadedHighlightedMessages = true;
-			if(!m_bHaveUnreadedMessages && (iMsgType == KVI_OUT_CHANPRIVMSG || iMsgType == KVI_OUT_CHANPRIVMSGCRYPTED || iMsgType == KVI_OUT_CHANNELNOTICE || iMsgType == KVI_OUT_CHANNELNOTICECRYPTED || iMsgType == KVI_OUT_ACTION || iMsgType == KVI_OUT_QUERYPRIVMSG || iMsgType == KVI_OUT_QUERYPRIVMSGCRYPTED || iMsgType == KVI_OUT_DCCCHATMSG || iMsgType == KVI_OUT_DCCCHATMSGCRYPTED || iMsgType == KVI_OUT_HIGHLIGHT))
+			if(!m_bHaveUnreadedMessages && (iMsgType == KVI_OUT_CHANPRIVMSG || iMsgType == KVI_OUT_CHANPRIVMSGCRYPTED || iMsgType == KVI_OUT_CHANNELNOTICE || iMsgType == KVI_OUT_CHANNELNOTICECRYPTED || iMsgType == KVI_OUT_ACTION || iMsgType == KVI_OUT_ACTIONCRYPTED || iMsgType == KVI_OUT_QUERYPRIVMSG || iMsgType == KVI_OUT_QUERYPRIVMSGCRYPTED || iMsgType == KVI_OUT_DCCCHATMSG || iMsgType == KVI_OUT_DCCCHATMSGCRYPTED || iMsgType == KVI_OUT_HIGHLIGHT))
 				m_bHaveUnreadedMessages = true;
 		}
 	}

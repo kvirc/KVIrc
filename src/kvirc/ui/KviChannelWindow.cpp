@@ -56,7 +56,7 @@
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"
 #include "KviCryptController.h"
-#endif
+#endif //COMPILE_CRYPT_SUPPORT
 
 #include <set>
 #include <time.h>
@@ -1328,12 +1328,20 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 	if(!connection())
 		return;
 
+	QString szTmpBuffer;
+
+	//see bug ticket #220
+	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
+		szTmpBuffer = KviControlCodes::stripControlBytes(szBuffer);
+	else
+		szTmpBuffer = szBuffer;
+
 	//my full mask as seen by other users
-	QString szMyFullMask = connection()->userInfo()->nickName() + "!" + connection()->userInfo()->userName() + "@" + connection()->userInfo()->hostName();
+	QString szMyName = connection()->userInfo()->nickName();
+	QString szMyFullMask = szMyName + "!" + connection()->userInfo()->userName() + "@" + connection()->userInfo()->hostName();
 	QByteArray myFullMask = connection()->encodeText(szMyFullMask); //target name
 	QByteArray name = connection()->encodeText(windowName());       //message
 	QByteArray data = encodeText(szBuffer);
-	const char * pData = data.data();
 	/* max length of a PRIVMSG text. Max buffer length for our send is 512 byte, but we have to
 	* remember that the server will prepend to the message our full mask and truncate the resulting
 	* at 512 bytes again..
@@ -1345,21 +1353,56 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 	*/
 	int iMaxMsgLen = 490 - name.length() - myFullMask.length();
 
-	// our copy of the message
-	QString szTmpBuffer;
-
-	//see bug ticket #220
-	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
-		szTmpBuffer = KviControlCodes::stripControlBytes(szBuffer);
-	else
-		szTmpBuffer = szBuffer;
-
-	QString szName = m_szName;
-
-	if(!pData)
+	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction, this, szTmpBuffer, windowName()))
 		return;
-	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction, this, szTmpBuffer, szName))
-		return;
+
+#ifdef COMPILE_CRYPT_SUPPORT
+	if(cryptSessionInfo() && cryptSessionInfo()->m_bDoEncrypt)
+	{
+		if(szTmpBuffer[0] != KviControlCodes::CryptEscape)
+		{
+			KviCString szEncrypted;
+			cryptSessionInfo()->m_pEngine->setMaxEncryptLen(iMaxMsgLen);
+			switch(cryptSessionInfo()->m_pEngine->encrypt(data.data(), szEncrypted))
+			{
+				case KviCryptEngine::Encrypted:
+				{
+					if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szEncrypted.ptr(), 0x01))
+						return;
+
+					output(KVI_OUT_ACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
+				}
+				break;
+				case KviCryptEngine::Encoded:
+				{
+					if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szEncrypted.ptr(), 0x01))
+						return;
+
+					// ugly, but we must redecode here
+					QString szRedecoded = decodeText(szEncrypted.ptr());
+
+					output(KVI_OUT_ACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szRedecoded);
+				}
+				break;
+				default:
+				{
+					QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
+					output(KVI_OUT_SYSTEMERROR,
+					    __tr2qs("The encryption engine was unable to encrypt the current message (%Q): %Q, no data sent to the server"),
+					    &szBuffer, &szEngineError);
+				}
+			}
+			userAction(szMyName, KVI_USERACTION_ACTION);
+			return;
+		}
+		else
+		{
+			//eat the escape code
+			szTmpBuffer.remove(0, 1);
+			data = encodeText(szTmpBuffer);
+		}
+	}
+#endif
 
 	if(data.length() > iMaxMsgLen)
 	{
@@ -1448,7 +1491,7 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 	}
 	else
 	{
-		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", connection()->encodeText(szName).data(), 0x01, pData, 0x01))
+		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, data.data(), 0x01))
 			return;
 
 		QString szBuf = "\r!nc\r";

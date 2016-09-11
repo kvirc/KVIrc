@@ -47,7 +47,7 @@
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"
 #include "KviCryptController.h"
-#endif
+#endif //COMPILE_CRYPT_SUPPORT
 
 #include <QDir>
 #include <QFileInfo>
@@ -706,36 +706,87 @@ void KviQueryWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 void KviQueryWindow::ownAction(const QString & szBuffer)
 {
 	if(!connection())
-	{
-		outputNoFmt(KVI_OUT_SYSTEMWARNING, __tr2qs("This query has no active targets, no message sent"));
-	}
+		return;
+
+	QString szTmpBuffer;
+
+	//see bug ticket #220
+	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
+		szTmpBuffer = KviControlCodes::stripControlBytes(szBuffer);
 	else
+		szTmpBuffer = szBuffer;
+
+	//my full mask as seen by other users
+	QString szMyName = connection()->userInfo()->nickName();
+	QString szMyFullMask = szMyName + "!" + connection()->userInfo()->userName() + "@" + connection()->userInfo()->hostName();
+	QByteArray myFullMask = connection()->encodeText(szMyFullMask);
+	QByteArray name = connection()->encodeText(windowName());
+	QByteArray data = encodeText(szTmpBuffer);
+	/* max length of a PRIVMSG text. Max buffer length for our send is 512 byte, but we have to
+	* remember that the server will prepend to the message our full mask and truncate the resulting
+	* at 512 bytes again..
+	* So we have:
+	* :NickName!~ident@hostname.tld PRIVMSG #channel :text of message(CrLf)
+	* NickName!~ident@hostname.tld#channeltext of message
+	* 512(rfc) -2(CrLf) -2(:) -3(spaces) -7(PRIVMSG) -8(\x01ACTION\x01) = 490
+	* usable bytes, excluding our full mask and the target name.
+	*/
+	int iMaxMsgLen = 490 - name.length() - myFullMask.length();
+
+	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction, this, szTmpBuffer, windowName()))
+		return;
+
+#ifdef COMPILE_CRYPT_SUPPORT
+	if(cryptSessionInfo() && cryptSessionInfo()->m_bDoEncrypt)
 	{
+		if(szTmpBuffer[0] != KviControlCodes::CryptEscape)
+		{
+			KviCString szEncrypted;
+			cryptSessionInfo()->m_pEngine->setMaxEncryptLen(iMaxMsgLen);
+			switch(cryptSessionInfo()->m_pEngine->encrypt(data.data(), szEncrypted))
+			{
+				case KviCryptEngine::Encrypted:
+				{
+					if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szEncrypted.ptr(), 0x01))
+						return;
 
-		if(szBuffer.isEmpty())
+					output(KVI_OUT_ACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
+				}
+				break;
+				case KviCryptEngine::Encoded:
+				{
+					if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szEncrypted.ptr(), 0x01))
+						return;
+
+					// ugly, but we must redecode here
+					QString szRedecoded = decodeText(szEncrypted.ptr());
+
+					output(KVI_OUT_ACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szRedecoded);
+				}
+				break;
+				default: // also case KviCryptEngine::EncryptError
+				{
+					QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
+					output(KVI_OUT_SYSTEMERROR,
+					    __tr2qs("The encryption engine was unable to encrypt the current message (%Q): %Q, no data sent to the server"),
+					    &szBuffer, &szEngineError);
+				}
+			}
+			userAction(szMyName, KVI_USERACTION_ACTION);
 			return;
-
-		QString szTmpBuffer;
-		//see bug ticket #220
-		if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
-			szTmpBuffer = KviControlCodes::stripControlBytes(szBuffer);
+		}
 		else
-			szTmpBuffer = szBuffer;
-
-		QByteArray szBuffer = encodeText(szTmpBuffer);
-
-		QString sz = windowName();
-		if(sz.isEmpty())
-			return;
-
-		if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction, this, szTmpBuffer, sz))
-			return;
-
-		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",
-		       connection()->encodeText(sz).data(), 0x01, szBuffer.data(), 0x01))
-			return;
-
-		output(KVI_OUT_ACTION, "\r!nc\r%Q\r %Q", &(connection()->currentNickName()), &szTmpBuffer);
-		m_pUserListView->userAction(connection()->currentNickName(), KVI_USERACTION_ACTION);
+		{
+			//eat the escape code
+			szTmpBuffer.remove(0, 1);
+			data = encodeText(szTmpBuffer);
+		}
 	}
+#endif //COMPILE_CRYPT_SUPPORT
+
+	if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, data.data(), 0x01))
+		return;
+
+	output(KVI_OUT_ACTION, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
+	m_pUserListView->userAction(szMyName, KVI_USERACTION_ACTION);
 }

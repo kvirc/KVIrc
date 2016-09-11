@@ -1499,7 +1499,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 			KviCString szBuffer;
 			const char * txtptr;
 
-			DECRYPT_IF_NEEDED(chan, szData8, KVI_OUT_CHANPRIVMSG, KVI_OUT_CHANPRIVMSGCRYPTED, szBuffer, txtptr, msgtype)
+			DECRYPT_IF_NEEDED(chan, szData8, KVI_OUT_ACTION, KVI_OUT_ACTIONCRYPTED, szBuffer, txtptr, msgtype)
 
 			szData = chan->decodeText(txtptr);
 
@@ -1554,7 +1554,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 			KviCString szBuffer;
 			const char * txtptr;
 
-			DECRYPT_IF_NEEDED(query, szData8, KVI_OUT_QUERYPRIVMSG, KVI_OUT_QUERYPRIVMSGCRYPTED, szBuffer, txtptr, msgtype)
+			DECRYPT_IF_NEEDED(query, szData8, KVI_OUT_ACTION, KVI_OUT_ACTIONCRYPTED, szBuffer, txtptr, msgtype)
 
 			szData = query->decodeText(txtptr);
 		}
