@@ -503,7 +503,10 @@ public:
 		Tools = 334,
 		FavoriteOff = 335,
 		NewProxy = 336,
-		IconCount = 337
+		ActionCrypted = 337,
+		TopicCrypted = 338,
+		CtcpCrypted = 339,
+		IconCount = 340
 	};
 
 	/**

@@ -417,8 +417,10 @@ static const char * g_szIconNames[KviIconManager::IconCount] = {
 	"nickpopup",            // 333
 	"tools",                // 334
 	"favoriteoff",          // 335
-	"newproxy"              // 336
-
+	"newproxy",             // 336
+	"actioncrypted",        // 337
+	"topiccrypted",         // 338
+	"ctcpcrypted"           // 339
 };
 
 KviIconWidget::KviIconWidget()
@@ -1618,6 +1620,15 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 			break;
 		case 336:
 			return KviIconManager::NewProxy;
+			break;
+		case 337:
+			return KviIconManager::ActionCrypted;
+			break;
+		case 338:
+			return KviIconManager::TopicCrypted;
+			break;
+		case 339:
+			return KviIconManager::CtcpCrypted;
 			break;
 		case 0:
 		case KviIconManager::IconCount:
