@@ -24,6 +24,7 @@
 
 #include "KviSSL.h"
 #include "KviLocale.h"
+#include "kvi_socket.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 
@@ -534,10 +535,13 @@ KviSSL::Result KviSSL::connectOrAcceptError(int ret)
 
 int KviSSL::read(char * buffer, int len)
 {
-	return SSL_read(m_pSSL, buffer, len);
+	int iReceived = SSL_read(m_pSSL, buffer, len);
+	g_uIncomingTraffic += iReceived;
+	return iReceived;
 }
 int KviSSL::write(const char * buffer, int len)
 {
+	g_uOutgoingTraffic += len;
 	return SSL_write(m_pSSL, buffer, len);
 }
 
