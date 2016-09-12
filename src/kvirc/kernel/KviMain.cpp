@@ -140,7 +140,7 @@ int parseArgs(ParseArgs * a)
 			KviQString::appendFormatted(szMessage, "  [server]     : Connect to this server after startup\n");
 			KviQString::appendFormatted(szMessage, "  [port]       : Use this port for connection\n");
 			KviQString::appendFormatted(szMessage, "  [ircurl]     : URL in the following form:\n");
-			KviQString::appendFormatted(szMessage, "                 irc[6]://<server>[:<port>][/<channel>[?<pass>]]\n");
+			KviQString::appendFormatted(szMessage, "                 irc[s][6]://<server>[:<port>][/<channel>[?<pass>]]\n");
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			MessageBox(0, szMessage.toLocal8Bit().data(), "KVIrc", 0);
