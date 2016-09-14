@@ -332,7 +332,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("ShowTreeWindowListHandle", true, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("MenuBarVisible", true, KviOption_sectFlagFrame | KviOption_resetUpdateGui),
 	BOOL_OPTION("WarnAboutHidingMenuBar", true, KviOption_sectFlagFrame),
-	BOOL_OPTION("WhoRepliesToActiveWindow", false, KviOption_sectFlagConnection)
+	BOOL_OPTION("WhoRepliesToActiveWindow", false, KviOption_sectFlagConnection),
+	BOOL_OPTION("IgnoreSpecialCharactersInNickCompletion", false, KviOption_sectFlagInput)
 };
 
 // NOTICE: REUSE EQUIVALENT UNUSED KviOption_bool in KviOptions.h ENTRIES BEFORE ADDING NEW ENTRIES ABOVE

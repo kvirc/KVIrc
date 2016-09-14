@@ -55,6 +55,7 @@
 #include <QEvent>
 #include <QPaintEvent>
 #include <QScrollBar>
+#include <QRegExp>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -463,10 +464,17 @@ void KviUserListView::animatedAvatarUpdated(KviUserListEntry * e)
 void KviUserListView::completeNickBashLike(const QString & szBegin, std::vector<QString> & pList, bool bAppendMask)
 {
 	KviUserListEntry * pEntry = m_pHeadItem;
-
 	while(pEntry)
 	{
-		if(KviQString::equalCIN(szBegin, pEntry->m_szNick, szBegin.length()))
+		bool bEqual = KviQString::equalCIN(szBegin, pEntry->m_szNick, szBegin.length());
+		if(!bEqual && KVI_OPTION_BOOL(KviOption_boolIgnoreSpecialCharactersInNickCompletion))
+		{
+			QString szTmp = pEntry->m_szNick;
+			szTmp.remove(QRegExp("[^a-zA-Z0-9]"));
+			bEqual = KviQString::equalCIN(szBegin, szTmp, szBegin.length());
+		}
+
+		if(bEqual)
 		{
 			if(bAppendMask)
 				pList.push_back(QString("%1!%2@%3").arg(pEntry->m_szNick, pEntry->m_pGlobalData->user(), pEntry->m_pGlobalData->host()));
@@ -506,8 +514,15 @@ bool KviUserListView::completeNickStandard(const QString & szBegin, const QStrin
 	{
 		if(pEntry->m_szNick.length() >= szBegin.length())
 		{
-			int iResult = KviQString::cmpCIN(szBegin, pEntry->m_szNick, szBegin.length());
-			if(iResult == 0)
+			bool bEqual = KviQString::equalCIN(szBegin, pEntry->m_szNick, szBegin.length());
+			if(!bEqual && KVI_OPTION_BOOL(KviOption_boolIgnoreSpecialCharactersInNickCompletion))
+			{
+				QString szTmp = pEntry->m_szNick;
+				szTmp.remove(QRegExp("[^a-zA-Z0-9]"));
+				bEqual = KviQString::equalCIN(szBegin, szTmp, szBegin.length());
+			}
+
+			if(bEqual)
 			{
 				// This is ok.
 				szBuffer = pEntry->m_szNick;

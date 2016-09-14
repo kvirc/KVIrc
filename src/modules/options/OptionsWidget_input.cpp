@@ -157,6 +157,8 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 	addStringSelector(g, __tr2qs_ctx("Nick completion postfix string:", "options"), KviOption_stringNickCompletionPostfix);
 	addBoolSelector(g, __tr2qs_ctx("Use the completion postfix string for the first word only", "options"), KviOption_boolUseNickCompletionPostfixForFirstWordOnly);
 
+	addBoolSelector(g, __tr2qs_ctx("Ignore special characters in nick completion", "options"), KviOption_boolIgnoreSpecialCharactersInNickCompletion);
+
 	KviBoolSelector * d = addBoolSelector(0, 7, 0, 7, __tr2qs_ctx("Use a custom cursor width", "options"), KviOption_boolEnableCustomCursorWidth);
 	KviUIntSelector * f = addUIntSelector(0, 8, 0, 8, __tr2qs_ctx("Custom cursor width:", "options"), KviOption_uintCustomCursorWidth, 1, 24, 8, KVI_OPTION_BOOL(KviOption_boolEnableCustomCursorWidth));
 	f->setSuffix(__tr2qs_ctx(" pixels", "options"));
