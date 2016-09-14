@@ -97,7 +97,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolInputHistoryCursorAtEnd 5                                /* interface::features::components::input */
 #define KviOption_boolAvoidParserWarnings 6                                    /* ircengine::uparser */
 #define KviOption_boolUseProxyHost 7                                           /* transport */
-//#define KviOption_boolShowGeneralOptionsDialogAsToplevel 8                     /* interface::features::global */ // UNUSED
+#define KviOption_boolIgnoreSpecialCharactersInNickCompletion 8                /* input */
 #define KviOption_boolForceBrutalQuit 9                                        /* irc */
 #define KviOption_boolShowPingPong 10                                          /* ircoutput */
 #define KviOption_boolPopupNotifierOnNewQueryMessages 11                       /* query */
@@ -353,11 +353,10 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolMenuBarVisible 261
 #define KviOption_boolWarnAboutHidingMenuBar 262
 #define KviOption_boolWhoRepliesToActiveWindow 263                             /* irc::output */
-#define KviOption_boolIgnoreSpecialCharactersInNickCompletion 264              /* input */
 
 // NOTICE: REUSE EQUIVALENT UNUSED BOOL_OPTION in KviOptions.cpp ENTRIES BEFORE ADDING NEW ENTRIES ABOVE
 
-#define KVI_NUM_BOOL_OPTIONS 265
+#define KVI_NUM_BOOL_OPTIONS 264
 
 #define KVI_STRING_OPTIONS_PREFIX "string"
 #define KVI_STRING_OPTIONS_PREFIX_LEN 6
