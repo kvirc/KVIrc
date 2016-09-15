@@ -27,82 +27,42 @@
 #include "KviQString.h"
 
 KviPixmap::KviPixmap()
-{
-	m_pPix = nullptr;
-}
+    = default;
 
 KviPixmap::KviPixmap(const char * path)
 {
-	m_pPix = nullptr;
 	load(path);
 }
 
 KviPixmap::KviPixmap(const KviPixmap & pix)
 {
-	m_pPix = nullptr;
-	m_szPath = pix.path();
-
-	if(!m_szPath.isEmpty())
-	{
-		if(pix.pixmap())
-		{
-			m_pPix = new QPixmap(*(pix.pixmap()));
-		}
-	}
-}
-
-KviPixmap::~KviPixmap()
-{
-	if(m_pPix)
-	{
-		delete m_pPix;
-		m_pPix = nullptr; // just to be sure :)
-	}
+	if(!pix.path().isEmpty() && !pix.isNull())
+		set(*(pix.pixmap()), pix.path());
 }
 
 bool KviPixmap::load(const char * path)
 {
-	if(m_pPix)
-	{
-		delete m_pPix;
-		m_pPix = nullptr;
-	}
-	m_szPath = path;
-	if(m_szPath.isEmpty())
-		return false;
-
-	m_pPix = new QPixmap(m_szPath);
-
-	if(m_pPix->isNull())
-	{
-		delete m_pPix;
-		m_pPix = nullptr;
-		m_szPath = "";
-		return false;
-	}
-	return true;
+	return load(QString(path));
 }
 
 bool KviPixmap::load(const QString & path)
 {
-	if(m_pPix)
+	if(path.isEmpty())
 	{
-		delete m_pPix;
-		m_pPix = nullptr;
-	}
-	m_szPath = path;
-	if(m_szPath.isEmpty())
+		setNull();
 		return false;
+	}
 
-	m_pPix = new QPixmap(m_szPath);
+	m_pPix.reset(new QPixmap(path));
 
 	if(m_pPix->isNull())
 	{
-		delete m_pPix;
-		m_pPix = nullptr;
-		m_szPath = "";
+		setNull();
 		return false;
 	}
+
+	m_szPath = path;
+
 	return true;
 }
 
@@ -114,42 +74,30 @@ void KviPixmap::set(const QPixmap & pix, const QString & szPath)
 		return;
 	}
 
-	if(m_pPix)
-		delete m_pPix;
-	m_pPix = new QPixmap(pix);
+	m_pPix.reset(new QPixmap(pix));
 	m_szPath = szPath;
 }
 
 void KviPixmap::setNull()
 {
-	if(m_pPix)
-	{
-		delete m_pPix;
-		m_pPix = nullptr;
-	}
+	m_pPix.reset();
 	m_szPath = "";
 }
 
 KviPixmap & KviPixmap::operator=(const KviPixmap & pix)
 {
-	if(m_pPix == pix.m_pPix)
-		return (*this); // self assignment (!!!)
+	if(this == &pix)
+		return *this; // self assignment
 	if(KviQString::equalCI(m_szPath, pix.path()))
-		return (*this); // same pix
+		return *this; // same pix
 
-	if(m_pPix)
+	if(!pix.path().isEmpty() && !pix.isNull())
 	{
-		delete m_pPix;
-		m_pPix = nullptr;
+		m_szPath = pix.path();
+		m_pPix.reset(new QPixmap(*(pix.pixmap())));
 	}
-	m_szPath = pix.path();
+	else
+		setNull();
 
-	if(!m_szPath.isEmpty())
-	{
-		if(pix.pixmap())
-		{
-			m_pPix = new QPixmap(*(pix.pixmap()));
-		}
-	}
-	return (*this);
+	return *this;
 }
