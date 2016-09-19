@@ -866,6 +866,10 @@ defpopup(hostpopup)
 {
 	label($tr("You're not connected to a server","defscript")) (!$server)
 
+	extpopup($tr("&User Control","defscript"),usercontrol,$icon("options"))
+
+	separator
+
 	item($tr("Look Up","defscript") $0,$icon("server")) ($server)
 	{
 		host -a $0
@@ -1047,6 +1051,161 @@ defpopup(dcc)
 		{
 			dcc.voice -g=null -h=11025 $0
 		}
+	}
+}
+
+defpopup(usercontrol)
+{
+	prologue
+	{
+		# we use the extended scope variables: they are visible in the entire defpopup scope
+		# %:visible is the string that we will "show to the user" in the popup widget
+		# for multiple users the string might become long so we are going to change it in "multiple users"
+		%:visible = $0
+		# %:multiple is an internal flag: set to 1 if the parameter passed to the popup contains a list
+		# of multiple nicknames rather than a single nick
+		%:multiple = 0
+		# finally , set these variables
+		%:itemBanName = $tr("Ban")
+		if($str.findfirst(%:visible,",") != -1)
+		{
+			# found a comma in the $0 parameter...we have multiple nicknames
+			%:visible = "("$tr("Multiple Users","defscript")")"
+			%:multiple = 1
+			%:itemBanMask = "*!user@*.host.tld"
+			%:itemBanNick = "nick"
+		}
+		else
+		{
+			%:itemBanMask = $mask(%:visible,$option(uintDefaultBanType))
+			if("%:itemBanMask" == "*!*@*")
+				%:itemBanName = $tr("&Ban")
+			%:itemBanNick = %:visible
+		}
+		# speed it up
+
+		%:isMeHalfOp = $chan.isMeHalfOp()
+		%:isMeOp = $chan.isMeOp()
+		%:isMeOwner = $chan.isMeOwner()
+		%:isMeAdmin = $chan.isMeAdmin()
+		%:bCanKB = 0;
+
+		if(%:isMeHalfOp)
+		{
+			foreach(%nick,$str.split(",",$0))
+			{
+				if($chan.usermodelevel(%nick) <= $chan.usermodelevel($me))
+				{
+					%:bCanKB = 1;
+					break;
+				}
+			}
+		}
+	}
+
+	label($usermodename($me()))
+
+	item($tr("O&wner","defscript") %:visible,$icon("chanowner")) (%:isMeOwner)
+	{
+		chanowner $0
+	}
+
+	item($tr("&Deowner","defscript") %:visible,$icon("chanunowner")) (%:isMeOwner)
+	{
+		dechanowner $0
+	}
+
+	item($tr("&Administrator","defscript") %:visible,$icon("chanadmin")) (%:isMeAdmin)
+	{
+		chanadmin $0
+	}
+
+	item($tr("&Deadministrator","defscript") %:visible,$icon("chanunadmin")) (%:isMeAdmin)
+	{
+		dechanadmin $0
+	}
+
+	item($tr("&Op","defscript") %:visible,$icon("op")) (%:isMeOp)
+	{
+		op $0
+	}
+
+	item($tr("&Deop","defscript") %:visible,$icon("deop")) (%:isMeOp)
+	{
+		deop $0
+	}
+
+	item($tr("&Halfop","defscript") %:visible,$icon("halfop")) (%:isMeOp)
+	{
+		halfop $0
+	}
+
+	item($tr("&Dehalfop","defscript") %:visible,$icon("halfdeop")) (%:isMeOp)
+	{
+		dehalfop $0
+	}
+
+	item($tr("&Voice","defscript") %:visible,$icon("voice")) (%:isMeHalfOp)
+	{
+		voice $0
+	}
+
+	item($tr("D&evoice","defscript") %:visible,$icon("devoice")) (%:isMeHalfOp)
+	{
+		devoice $0
+	}
+
+	separator
+
+	item($tr("&Kick","defscript") %:visible,$icon("kick")) (%:bCanKB)
+	{
+		foreach(%i,$str.split(",",$0))
+			kick %i
+	}
+
+	item($tr("K&ick","defscript") %:visible $tr("With...","defscript"),$icon("kick")) (%:bCanKB)
+	{
+		dialog.textinput -d="$me" -i=110 ($tr("Kick Reason","defscript"),$tr("Enter a kick reason","defscript"),$tr("&Kick","defscript"),$tr("Cancel","defscript"),,$0)
+		{
+			if($0 == 0)
+			{
+				foreach(%i,$str.split(",",$2))
+					kick %i $1
+			}
+		}
+	}
+
+	item($tr("&Ban","defscript") %:visible "("%:itemBanMask")",$icon("kick")) (("%:itemBanMask" != "*!*@*") && %:bCanKB)
+	{
+		ban $mask($0,$option(uintDefaultBanType))
+	}
+
+	item(%:itemBanName %:visible "("%:itemBanNick!*@*")",$icon("kick")) (%:bCanKB)
+	{
+		ban $0
+	}
+
+	item($tr("Kick/Ban","defscript") %:visible,$icon("kick")) (%:bCanKB)
+	{
+		kb $0
+	}
+
+	item($tr("Kick/Ban","defscript") %:visible $tr("with...","defscript"),$icon("kick")) (%:bCanKB)
+	{
+		dialog.textinput -d="$me" -i=110 ($tr("Kick/Ban Reason","defscript"),$tr("Enter a kick/ban reason","defscript"),$tr("&Kick/Ban","defscript"),$tr("Cancel","defscript"),,$0)
+		{
+			if($0 == 0)
+			{
+				kb $2 $1
+			}
+		}
+	}
+
+	separator
+
+	item($tr("Configure Ban Mask...","defscript"),$icon("options"))
+	{
+		options.edit OptionsWidget_channelAdvanced
 	}
 }
 
@@ -1613,53 +1772,6 @@ defpopup(registration)
 
 defpopup(channel)
 {
-	prologue
-	{
-		# we use the extended scope variables: they are visible in the entire defpopup scope
-		# %:visible is the string that we will "show to the user" in the popup widget
-		# for multiple users the string might become long so we are going to change it in "multiple users"
-		%:visible = $0
-		# %:multiple is an internal flag: set to 1 if the parameter passed to the popup contains a list
-		# of multiple nicknames rather than a single nick
-		%:multiple = 0
-		# finally , set these variables
-		%:itemBanName = $tr("Ban")
-		if($str.findfirst(%:visible,",") != -1)
-		{
-			# found a comma in the $0 parameter...we have multiple nicknames
-			%:visible = "("$tr("Multiple Users","defscript")")"
-			%:multiple = 1
-			%:itemBanMask = "*!user@*.host.tld"
-			%:itemBanNick = "nick"
-		}
-		else
-		{
-			%:itemBanMask = $mask(%:visible,$option(uintDefaultBanType))
-			if("%:itemBanMask" == "*!*@*")
-				%:itemBanName = $tr("&Ban")
-			%:itemBanNick = %:visible
-		}
-		# speed it up
-
-		%:isMeHalfOp = $chan.isMeHalfOp()
-		%:isMeOp = $chan.isMeOp()
-		%:isMeOwner = $chan.isMeOwner()
-		%:isMeAdmin = $chan.isMeAdmin()
-		%:bCanKB = 0;
-
-		if(%:isMeHalfOp)
-		{
-			foreach(%nick,$str.split(",",$0))
-			{
-				if($chan.usermodelevel(%nick) <= $chan.usermodelevel($me))
-				{
-					%:bCanKB = 1;
-					break;
-				}
-			}
-		}
-	}
-
 	item($str.printf($tr("/WHOIS ?s (idle time)","defscript"),%:visible),$icon("whoisuser")) (!%:multiple && $server)
 	{
 		foreach(%i,$str.split(",",$0))
@@ -1699,113 +1811,7 @@ defpopup(channel)
 		}
 	}
 
-	popup($tr("&Control","defscript"),$icon("options")) (%:isMeHalfOp)
-	{
-		label($usermodename($me()))
-
-		item($tr("O&wner","defscript") %:visible,$icon("chanowner")) (%:isMeOwner)
-		{
-			chanowner $0
-		}
-
-		item($tr("&Deowner","defscript") %:visible,$icon("chanunowner")) (%:isMeOwner)
-		{
-			dechanowner $0
-		}
-
-		item($tr("&Administrator","defscript") %:visible,$icon("chanadmin")) (%:isMeAdmin)
-		{
-			chanadmin $0
-		}
-
-		item($tr("&Deadministrator","defscript") %:visible,$icon("chanunadmin")) (%:isMeAdmin)
-		{
-			dechanadmin $0
-		}
-
-		item($tr("&Op","defscript") %:visible,$icon("op")) (%:isMeOp)
-		{
-			op $0
-		}
-
-		item($tr("&Deop","defscript") %:visible,$icon("deop")) (%:isMeOp)
-		{
-			deop $0
-		}
-
-		item($tr("&Halfop","defscript") %:visible,$icon("halfop")) (%:isMeOp)
-		{
-			halfop $0
-		}
-
-		item($tr("&Dehalfop","defscript") %:visible,$icon("halfdeop")) (%:isMeOp)
-		{
-			dehalfop $0
-		}
-
-		item($tr("&Voice","defscript") %:visible,$icon("voice")) (%:isMeHalfOp)
-		{
-			voice $0
-		}
-
-		item($tr("D&evoice","defscript") %:visible,$icon("devoice")) (%:isMeHalfOp)
-		{
-			devoice $0
-		}
-
-		separator
-
-		item($tr("&Kick","defscript") %:visible,$icon("kick")) (%:bCanKB)
-		{
-			foreach(%i,$str.split(",",$0))
-				kick %i
-		}
-
-		item($tr("K&ick","defscript") %:visible $tr("With...","defscript"),$icon("kick")) (%:bCanKB)
-		{
-			dialog.textinput -d="$me" -i=110 ($tr("Kick Reason","defscript"),$tr("Enter a kick reason","defscript"),$tr("&Kick","defscript"),$tr("Cancel","defscript"),,$0)
-			{
-				if($0 == 0)
-				{
-					foreach(%i,$str.split(",",$2))
-						kick %i $1
-				}
-			}
-		}
-
-		item($tr("&Ban","defscript") %:visible "("%:itemBanMask")",$icon("kick")) (("%:itemBanMask" != "*!*@*") && %:bCanKB)
-		{
-			ban $mask($0,$option(uintDefaultBanType))
-		}
-
-		item(%:itemBanName %:visible "("%:itemBanNick!*@*")",$icon("kick")) (%:bCanKB)
-		{
-			ban $0
-		}
-
-		item($tr("Kick/Ban","defscript") %:visible,$icon("kick")) (%:bCanKB)
-		{
-			kb $0
-		}
-
-		item($tr("Kick/Ban","defscript") %:visible $tr("with...","defscript"),$icon("kick")) (%:bCanKB)
-		{
-			dialog.textinput -d="$me" -i=110 ($tr("Kick/Ban Reason","defscript"),$tr("Enter a kick/ban reason","defscript"),$tr("&Kick/Ban","defscript"),$tr("Cancel","defscript"),,$0)
-			{
-				if($0 == 0)
-				{
-					kb $2 $1
-				}
-			}
-		}
-
-		separator
-
-		item($tr("Configure Ban Mask...","defscript"),$icon("options"))
-		{
-			options.edit OptionsWidget_channelAdvanced
-		}
-	}
+	extpopup($tr("&User Control","defscript"),usercontrol,$icon("options"))
 
 	separator
 
@@ -1833,4 +1839,3 @@ defpopup(channel)
 		avatar.notify $0
 	}
 }
-
