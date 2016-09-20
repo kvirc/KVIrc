@@ -210,6 +210,8 @@ QString KviQueryWindow::getInfoLabelText()
 				szTmp = __tr2qs("[Dead query]");
 			}
 		}
+		else
+			szTmp += "\n";
 	}
 	return szTmp;
 }
