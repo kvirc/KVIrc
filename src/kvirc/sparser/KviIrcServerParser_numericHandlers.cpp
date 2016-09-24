@@ -1609,6 +1609,8 @@ void KviIrcServerParser::parseNumericWhowasUser(KviIrcMessage * msg)
 	// 314: RPL_WHOWASUSER [I,E,U,D]
 	// :prefix 314 <target> <nick> <user> <host> * :<real_name>
 
+	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
+
 	if(!msg->haltOutput())
 	{
 		QString szNick = msg->connection()->decodeText(msg->safeParam(1));
@@ -1981,6 +1983,9 @@ void KviIrcServerParser::parseNumericEndOfWhowas(KviIrcMessage * msg)
 {
 	// 369: RPL_ENDOFWHOWAS [I,E,U,D]
 	// :prefix 369 <target> <nick> :End of /WHOWAS list
+
+	msg->connection()->stateData()->setLastReceivedWhoisReply(0);
+
 	if(!msg->haltOutput())
 	{
 		QString szNick = msg->connection()->decodeText(msg->safeParam(1));
