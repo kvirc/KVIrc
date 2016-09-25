@@ -1143,7 +1143,6 @@ void KviChannelWindow::fillCaptionBuffers()
 
 	m_szPlainTextCaption += QChar(' ');
 	m_szPlainTextCaption += szNickOnServer;
-	m_szPlainTextCaption += " ";
 }
 
 void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
