@@ -40,6 +40,9 @@
 #include <QAbstractItemView>
 #include <QMenu>
 
+#include <algorithm>
+#include <limits>
+
 KviBoolSelector::KviBoolSelector(QWidget * par, const QString & txt, bool * pOption, bool bEnabled)
     : QCheckBox(txt, par), KviSelectorInterface()
 {
@@ -76,8 +79,18 @@ KviUIntSelector::KviUIntSelector(QWidget * par, const QString & txt, unsigned in
 
 	m_pOption = pOption;
 
-	m_uLowBound = uLowBound;
-	m_uHighBound = uHighBound;
+	// QSpinBox only holds integers and we want unsinged integers, so make sure the limits are correct
+	if(m_bIsShortInt)
+	{
+		m_uLowBound = std::min({ uLowBound, static_cast<unsigned int>(std::numeric_limits<unsigned short int>::max()), static_cast<unsigned int>(std::numeric_limits<int>::max()) });
+		m_uHighBound = std::min({ uHighBound, static_cast<unsigned int>(std::numeric_limits<unsigned short int>::max()), static_cast<unsigned int>(std::numeric_limits<int>::max()) });
+	}
+	else
+	{
+		m_uLowBound = std::min(uLowBound, static_cast<unsigned int>(std::numeric_limits<int>::max()));
+		m_uHighBound = std::min(uHighBound, static_cast<unsigned int>(std::numeric_limits<int>::max()));
+	}
+
 	m_uDefault = uDefault;
 
 	m_pSpinBox->setMinimum(m_uLowBound);
@@ -101,18 +114,7 @@ void KviUIntSelector::setSuffix(const QString & txt)
 
 void KviUIntSelector::commit()
 {
-	KviCString tmp = m_pSpinBox->cleanText();
-	bool bOk;
-	unsigned int val = tmp.toUInt(&bOk);
-	if(!bOk)
-		val = m_uDefault;
-	if(m_uHighBound > m_uLowBound)
-	{
-		if(val < m_uLowBound)
-			val = m_uLowBound;
-		else if(val > m_uHighBound)
-			val = m_uHighBound;
-	}
+	unsigned int val = (unsigned int)m_pSpinBox->value();
 
 	if(m_bIsShortInt)
 		*((unsigned short int *)m_pOption) = (unsigned short int)val;
