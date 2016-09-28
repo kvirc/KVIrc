@@ -32,6 +32,7 @@
 class KviMainWindow;
 class QMenu;
 class KviKvsPopupMenu;
+class QPushButton;
 
 typedef struct _KviScriptMenuBarItem
 {
@@ -54,6 +55,7 @@ protected:
 	QMenu * m_pModulesToolsPopup;
 	QMenu * m_pActionsToolsPopup;
 	KviPointerList<KviScriptMenuBarItem> * m_pScriptItemList;
+	QPushButton * m_pCloseActiveWindowButton;
 	// Dynamic actions
 	QAction * m_pMenuBarAction;
 	QAction * m_pStatusBarAction;

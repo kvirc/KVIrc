@@ -43,6 +43,7 @@
 #include "KviOptions.h"
 
 #include <QKeySequence>
+#include <QPushButton>
 #include <QMenu>
 
 KviMenuBar::KviMenuBar(KviMainWindow * par, const char * name)
@@ -97,7 +98,15 @@ KviMenuBar::KviMenuBar(KviMainWindow * par, const char * name)
 	setupHelpPopup(pop);
 	connect(pop, SIGNAL(triggered(QAction *)), this, SLOT(actionTriggered(QAction *)));
 	addDefaultItem(__tr2qs("&Help"), pop);
+
+	m_pCloseActiveWindowButton = new QPushButton(this);
+	m_pCloseActiveWindowButton->setIcon(QIcon(*g_pIconManager->getSmallIcon(KviIconManager::Close)));
+	m_pCloseActiveWindowButton->setFlat(true);
+	m_pCloseActiveWindowButton->setToolTip(__tr2qs("Close"));
+	connect(m_pCloseActiveWindowButton, SIGNAL(clicked()), g_pMainWindow, SLOT(closeActiveWindow()));
+	setCornerWidget(m_pCloseActiveWindowButton);
 }
+
 
 KviMenuBar::~KviMenuBar()
 {
