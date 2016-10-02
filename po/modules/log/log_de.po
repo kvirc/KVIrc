@@ -9,197 +9,243 @@ msgid ""
 msgstr ""
 "Project-Id-Version: logview_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2012-06-12 23:59+0200\n"
+"POT-Creation-Date: 2016-10-02 15:06+0200\n"
+"PO-Revision-Date: 2016-10-02 15:06+0200\n"
 "Last-Translator: Markus Rennings <markus@rennings.net>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.4\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.9\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/logview/LogViewWindow.cpp:364
-msgid "%1 on %2"
-msgstr "%1 auf %2"
+#: src/modules/log/libkvilog.cpp:103 src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:213
+msgid "Window '%1' not found"
+msgstr "Fenster ›%1‹ nicht gefunden"
 
-#: src/modules/logview/LogViewWindow.cpp:174
-msgid "Apply filter"
-msgstr "Filter anwenden"
+#: src/modules/log/libkvilog.cpp:109 src/modules/log/libkvilog.cpp:167
+#: src/modules/log/libkvilog.cpp:219
+msgid "Missing window ID after the 'w' switch"
+msgstr ""
 
-#: src/modules/log/libkvilog.cpp:118
+#: src/modules/log/libkvilog.cpp:120
 msgid "Can't log to file '%1'"
 msgstr "Kann nicht in Datei ›%1‹ protokollieren"
 
-#: src/modules/logview/LogViewWindow.cpp:105
-msgid "Cancel"
-msgstr "Abbrechen"
+#: src/modules/log/libkvilog.cpp:124
+msgid "This window has no logging capabilities"
+msgstr "Dieses Fenster hat keine Protokoll-Fähigkeiten"
+
+#: src/modules/log/libkvilog.cpp:273
+msgid "Window with ID '%1' not found, returning empty string"
+msgstr ""
+
+#: src/modules/log/libkvilog.cpp:321
+msgid "Failed to load logview module, aborting"
+msgstr "Laden des Protokollbetrachtermoduls fehlgeschlagen, breche ab"
+
+#: src/modules/log/libkvilog.cpp:331
+msgid "Failed to export the log '%1'"
+msgstr "Export des Protokolls nach ›%1‹ fehlgeschlagen"
 
 #: src/modules/logview/LogViewWidget.cpp:69
 msgid "Channel"
 msgstr "Channel"
 
-#: src/modules/logview/LogViewWindow.cpp:669
-msgid "Channel %1 on %2"
-msgstr "Channel %1 auf %2"
-
-#: src/modules/logview/LogViewWindow.cpp:469
-msgid "Confirm current user log deletion"
-msgstr "Löschen des aktuellen Benutzerprotokolls bestätigen"
-
-#: src/modules/logview/LogViewWindow.cpp:485
-msgid "Confirm current user logs deletion"
-msgstr "Löschen der aktuellen Benutzerprotokolle bestätigen"
-
-#: src/modules/logview/LogViewWidget.cpp:81
-msgid "Console"
-msgstr "Konsole"
-
-#: src/modules/logview/LogViewWindow.cpp:672
-msgid "Console on %1"
-msgstr "Konsole auf %1"
-
-#: src/modules/logview/LogViewWindow.cpp:143
-msgid "Contents filter"
-msgstr "Inhaltsfilter"
+#: src/modules/logview/LogViewWidget.cpp:73
+msgid "Query"
+msgstr "Anfrage (Query)"
 
 #: src/modules/logview/LogViewWidget.cpp:77
 msgid "DCC Chat"
 msgstr "DCC Chat"
 
-#: src/modules/logview/LogViewWindow.cpp:678
-msgid "DCC Chat with %1"
-msgstr "DCC-Chat mir %1"
-
-#: src/modules/logview/LogViewWindow.cpp:486
-msgid "Do you really wish to delete all these logs?"
-msgstr "All diese Protokolle entfernen?"
-
-#: src/modules/logview/LogViewWindow.cpp:470
-msgid "Do you really wish to delete this log?"
-msgstr "Dieses Protokoll löschen?"
-
-#: src/modules/logview/LogViewWindow.cpp:595
-msgid "Export Log - KVIrc"
-msgstr "Protokoll exportieren – KVIrc"
-
-#: src/modules/logview/LogViewWindow.cpp:450
-msgid "Export log file to"
-msgstr "Protokoll exportieren nach"
-
-#: src/modules/log/libkvilog.cpp:323
-msgid "Failed to export the log '%1'"
-msgstr "Export des Protokolls nach ›%1‹ fehlgeschlagen"
-
-#: src/modules/log/libkvilog.cpp:313
-msgid "Failed to load logview module, aborting"
-msgstr "Laden des Protokollbetrachtermoduls fehlgeschlagen, breche ab"
-
-#: src/modules/logview/LogViewWindow.cpp:118
-msgid "Filter"
-msgstr "Filter"
-
-#: src/modules/logview/LogViewWindow.cpp:195
-msgid "HTML archive"
-msgstr "HTML-Archiv"
-
-#: src/modules/logview/LogViewWindow.cpp:110
-msgid "Index"
-msgstr "Index"
-
-#: src/modules/logview/LogViewWindow.cpp:70
-msgid "Log File"
-msgstr "Logdatei"
-
-#: src/modules/logview/LogViewWindow.cpp:243
-msgid "Log Viewer"
-msgstr "Loganzeiger"
-
-#: src/modules/logview/LogViewWindow.cpp:152
-msgid "Log contents mask:"
-msgstr "Logdateien-Inhaltsmaske:"
-
-#: src/modules/logview/LogViewWindow.cpp:146
-msgid "Log name mask:"
-msgstr "Logdateienmaske:"
-
-#: src/modules/log/libkvilog.cpp:107
-#: src/modules/log/libkvilog.cpp:161
-#: src/modules/log/libkvilog.cpp:211
-msgid "Missing window id after the 'w' switch"
-msgstr "Fehlende Fenster-Id nach dem ›w‹-Schalter"
-
-#: src/modules/logview/LogViewWindow.cpp:166
-msgid "Only newer than"
-msgstr "Nur neuer als"
-
-#: src/modules/logview/LogViewWindow.cpp:158
-msgid "Only older than"
-msgstr "Nur älter als"
+#: src/modules/logview/LogViewWidget.cpp:81
+msgid "Console"
+msgstr "Konsole"
 
 #: src/modules/logview/LogViewWidget.cpp:85
 msgid "Other"
 msgstr "Andere"
 
-#: src/modules/logview/LogViewWindow.cpp:193
-#, fuzzy
-msgid "Plain text file"
-msgstr "Einfache Textdatei"
+#: src/modules/logview/LogViewWindow.cpp:70
+msgid "Log File"
+msgstr "Logdatei"
 
-#: src/modules/logview/LogViewWidget.cpp:73
-msgid "Query"
-msgstr "Anfrage (Query)"
+#: src/modules/logview/LogViewWindow.cpp:104
+msgid "Cancel"
+msgstr "Abbrechen"
 
-#: src/modules/logview/LogViewWindow.cpp:675
-msgid "Query with %1 on %2"
-msgstr "Query mit %1 auf %2"
+#: src/modules/logview/LogViewWindow.cpp:109
+msgid "Index"
+msgstr "Index"
 
-#: src/modules/logview/LogViewWindow.cpp:448
-msgid "Remove all log files within this folder"
-msgstr "Alle Dateien in diesem Verzeichnis löschen"
+#: src/modules/logview/LogViewWindow.cpp:117
+msgid "Filter"
+msgstr "Filter"
 
-#: src/modules/logview/LogViewWindow.cpp:451
-msgid "Remove log file"
-msgstr "Protokolldatei löschen"
-
-#: src/modules/logview/LogViewWindow.cpp:134
-msgid "Show DCC chat logs"
-msgstr "DCC-Chat-Logdateien anzeigen"
-
-#: src/modules/logview/LogViewWindow.cpp:122
+#: src/modules/logview/LogViewWindow.cpp:121
 msgid "Show channel logs"
 msgstr "Channel-Logdateien anzeigen"
 
-#: src/modules/logview/LogViewWindow.cpp:130
-msgid "Show console logs"
-msgstr "Konsolenlogdateien anzeigen"
-
-#: src/modules/logview/LogViewWindow.cpp:138
-msgid "Show other logs"
-msgstr "Andere Logdateien anzeigen"
-
-#: src/modules/logview/LogViewWindow.cpp:126
+#: src/modules/logview/LogViewWindow.cpp:125
 msgid "Show query logs"
 msgstr "Anfrage- (Query) Logdateien anzeigen"
 
-#: src/modules/logview/LogViewWindow.cpp:681
-msgid "Something on %1"
-msgstr "Etwas auf %1"
+#: src/modules/logview/LogViewWindow.cpp:129
+msgid "Show console logs"
+msgstr "Konsolenlogdateien anzeigen"
 
-#: src/modules/log/libkvilog.cpp:120
-msgid "This window has no logging capabilities"
-msgstr "Dieses Fenster hat keine Protokoll-Fähigkeiten"
+#: src/modules/logview/LogViewWindow.cpp:133
+msgid "Show DCC chat logs"
+msgstr "DCC-Chat-Logdateien anzeigen"
 
-#: src/modules/log/libkvilog.cpp:103
-#: src/modules/log/libkvilog.cpp:157
-#: src/modules/log/libkvilog.cpp:207
-msgid "Window '%1' not found"
-msgstr "Fenster ›%1‹ nicht gefunden"
+#: src/modules/logview/LogViewWindow.cpp:137
+msgid "Show other logs"
+msgstr "Andere Logdateien anzeigen"
 
-#: src/modules/log/libkvilog.cpp:265
-msgid "Window with id '%1' not found, returning empty string"
-msgstr "Fenster mit Id ›%1‹ nicht gefunden, gebe leere Zeichenkette zurück"
+#: src/modules/logview/LogViewWindow.cpp:142
+msgid "Contents Filter"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:145
+msgid "Log name mask:"
+msgstr "Logdateienmaske:"
+
+#: src/modules/logview/LogViewWindow.cpp:151
+msgid "Log contents mask:"
+msgstr "Logdateien-Inhaltsmaske:"
+
+#: src/modules/logview/LogViewWindow.cpp:157
+msgid "Only older than:"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:165
+msgid "Only newer than:"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:173
+msgid "Apply Filter"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:192
+msgid "Plain Text File"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:194
+msgid "HTML Archive"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:242
+msgid "Log Viewer"
+msgstr "Loganzeiger"
+
+#: src/modules/logview/LogViewWindow.cpp:366
+msgid "%1 on %2"
+msgstr "%1 auf %2"
+
+#: src/modules/logview/LogViewWindow.cpp:452
+msgid "Remove All Log Files Within This Folder"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:456
+msgid "Export Log File to"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:457
+msgid "Remove Log File"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:475
+msgid "Confirm Current User Log Deletion"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:476
+msgid "Do you really wish to delete this log?"
+msgstr "Dieses Protokoll löschen?"
+
+#: src/modules/logview/LogViewWindow.cpp:493
+msgid "Confirm Current User Logs Deletion"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:494
+msgid "Do you really wish to delete all these logs?"
+msgstr "All diese Protokolle entfernen?"
+
+#: src/modules/logview/LogViewWindow.cpp:606
+msgid "Export Log - KVIrc"
+msgstr "Protokoll exportieren – KVIrc"
+
+#: src/modules/logview/LogViewWindow.cpp:686
+msgid "Channel %1 on %2"
+msgstr "Channel %1 auf %2"
+
+#: src/modules/logview/LogViewWindow.cpp:689
+msgid "Console on %1"
+msgstr "Konsole auf %1"
+
+#: src/modules/logview/LogViewWindow.cpp:692
+msgid "Query with: %1 on %2"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:695
+msgid "DCC Chat with: %1"
+msgstr ""
+
+#: src/modules/logview/LogViewWindow.cpp:698
+msgid "Something on: %1"
+msgstr ""
+
+#~ msgid "Apply filter"
+#~ msgstr "Filter anwenden"
+
+#~ msgid "Confirm current user log deletion"
+#~ msgstr "Löschen des aktuellen Benutzerprotokolls bestätigen"
+
+#~ msgid "Confirm current user logs deletion"
+#~ msgstr "Löschen der aktuellen Benutzerprotokolle bestätigen"
+
+#~ msgid "Contents filter"
+#~ msgstr "Inhaltsfilter"
+
+#~ msgid "DCC Chat with %1"
+#~ msgstr "DCC-Chat mir %1"
+
+#~ msgid "Export log file to"
+#~ msgstr "Protokoll exportieren nach"
+
+#~ msgid "HTML archive"
+#~ msgstr "HTML-Archiv"
+
+#~ msgid "Missing window id after the 'w' switch"
+#~ msgstr "Fehlende Fenster-Id nach dem ›w‹-Schalter"
+
+#~ msgid "Only newer than"
+#~ msgstr "Nur neuer als"
+
+#~ msgid "Only older than"
+#~ msgstr "Nur älter als"
+
+#, fuzzy
+#~ msgid "Plain text file"
+#~ msgstr "Einfache Textdatei"
+
+#~ msgid "Query with %1 on %2"
+#~ msgstr "Query mit %1 auf %2"
+
+#~ msgid "Remove all log files within this folder"
+#~ msgstr "Alle Dateien in diesem Verzeichnis löschen"
+
+#~ msgid "Remove log file"
+#~ msgstr "Protokolldatei löschen"
+
+#~ msgid "Something on %1"
+#~ msgstr "Etwas auf %1"
+
+#~ msgid "Window with id '%1' not found, returning empty string"
+#~ msgstr "Fenster mit Id ›%1‹ nicht gefunden, gebe leere Zeichenkette zurück"
 
 #~ msgid "Abort filtering"
 #~ msgstr "Filtern abbrechen"

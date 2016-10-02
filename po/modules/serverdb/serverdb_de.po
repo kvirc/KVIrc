@@ -7,104 +7,116 @@ msgid ""
 msgstr ""
 "Project-Id-Version: serverdb_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2009-02-10 20:15+0100\n"
+"POT-Creation-Date: 2016-10-02 15:08+0200\n"
+"PO-Revision-Date: 2016-10-02 15:08+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 0.3\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.9\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/serverdb/libkviserverdb.cpp:833
-msgid "The network specified already exists"
-msgstr "Das angegebene Netzwerk existiert bereits"
-
-#: src/modules/proxydb/libkviproxydb.cpp:453
-msgid "The specified IP is not valid"
-msgstr "Die angegebene IP ist nicht gültig"
-
-#: src/modules/serverdb/libkviserverdb.cpp:233
-#: src/modules/serverdb/libkviserverdb.cpp:274
-#: src/modules/serverdb/libkviserverdb.cpp:910
-#: src/modules/serverdb/libkviserverdb.cpp:967
-#: src/modules/serverdb/libkviserverdb.cpp:1003
-msgid "The specified network does not exist"
-msgstr "Das angegebene Netzwerk existiert nicht"
-
-#: src/modules/proxydb/libkviproxydb.cpp:311
-#: src/modules/proxydb/libkviproxydb.cpp:577
-msgid "The specified protocol does not exist"
-msgstr "Das angegebene Protokoll existiert nicht"
-
-#: src/modules/proxydb/libkviproxydb.cpp:285
-msgid "The specified proxy already exists"
-msgstr "Der angegebene Proxy existiert bereits"
-
-#: src/modules/proxydb/libkviproxydb.cpp:71
-#: src/modules/proxydb/libkviproxydb.cpp:114
-#: src/modules/proxydb/libkviproxydb.cpp:374
-#: src/modules/proxydb/libkviproxydb.cpp:445
-#: src/modules/proxydb/libkviproxydb.cpp:508
-#: src/modules/proxydb/libkviproxydb.cpp:569
-#: src/modules/proxydb/libkviproxydb.cpp:613
-msgid "The specified proxy does not exist"
-msgstr "Der angegebene Proxy existiert nicht"
-
-#: src/modules/serverdb/libkviserverdb.cpp:921
-msgid "The specified server already exists"
-msgstr "Der angegebene Server existiert bereits"
-
-#: src/modules/serverdb/libkviserverdb.cpp:281
-#: src/modules/serverdb/libkviserverdb.cpp:1011
-msgid "The specified server does not exist"
-msgstr "Der angegebene Server existiert nicht"
-
-#: src/modules/proxydb/libkviproxydb.cpp:434
-msgid "You must provide the IP as parameter"
-msgstr "Die IP muss als Parameter angegeben werden"
-
-#: src/modules/serverdb/libkviserverdb.cpp:125
-#: src/modules/serverdb/libkviserverdb.cpp:226
-#: src/modules/serverdb/libkviserverdb.cpp:261
-#: src/modules/serverdb/libkviserverdb.cpp:825
-#: src/modules/serverdb/libkviserverdb.cpp:896
-#: src/modules/serverdb/libkviserverdb.cpp:959
-#: src/modules/serverdb/libkviserverdb.cpp:989
-msgid "You must provide the network name as parameter"
-msgstr "Der Netzwerkname muss als Parameter angegeben werden"
-
-#: src/modules/proxydb/libkviproxydb.cpp:363
-msgid "You must provide the port number as parameter"
-msgstr "Die Portnummer muss als Parameter angegeben werden"
-
-#: src/modules/proxydb/libkviproxydb.cpp:558
-msgid "You must provide the protocol as parameter"
-msgstr "Das Protokoll muss als Parameter angegeben werden"
-
-#: src/modules/proxydb/libkviproxydb.cpp:61
-#: src/modules/proxydb/libkviproxydb.cpp:104
-#: src/modules/proxydb/libkviproxydb.cpp:357
-#: src/modules/proxydb/libkviproxydb.cpp:428
-#: src/modules/proxydb/libkviproxydb.cpp:497
-#: src/modules/proxydb/libkviproxydb.cpp:552
-#: src/modules/proxydb/libkviproxydb.cpp:596
+#: src/modules/proxydb/libkviproxydb.cpp:62
+#: src/modules/proxydb/libkviproxydb.cpp:115
+#: src/modules/proxydb/libkviproxydb.cpp:392
+#: src/modules/proxydb/libkviproxydb.cpp:465
+#: src/modules/proxydb/libkviproxydb.cpp:537
+#: src/modules/proxydb/libkviproxydb.cpp:594
+#: src/modules/proxydb/libkviproxydb.cpp:643
 msgid "You must provide the proxy hostname as parameter"
 msgstr "Der Proxy-Name muss als Parameter angegeben werden"
 
-#: src/modules/proxydb/libkviproxydb.cpp:274
+#: src/modules/proxydb/libkviproxydb.cpp:72
+#: src/modules/proxydb/libkviproxydb.cpp:125
+#: src/modules/proxydb/libkviproxydb.cpp:410
+#: src/modules/proxydb/libkviproxydb.cpp:483
+#: src/modules/proxydb/libkviproxydb.cpp:549
+#: src/modules/proxydb/libkviproxydb.cpp:612
+#: src/modules/proxydb/libkviproxydb.cpp:661
+msgid "The specified proxy doesn't exist"
+msgstr ""
+
+#: src/modules/proxydb/libkviproxydb.cpp:294
 msgid "You must provide the proxy name as parameter"
 msgstr "Der Proxy-Name muss als Parameter angegeben werden"
 
-#: src/modules/serverdb/libkviserverdb.cpp:168
-#: src/modules/serverdb/libkviserverdb.cpp:267
-#: src/modules/serverdb/libkviserverdb.cpp:902
-#: src/modules/serverdb/libkviserverdb.cpp:995
+#: src/modules/proxydb/libkviproxydb.cpp:309
+msgid "The specified proxy already exists"
+msgstr "Der angegebene Proxy existiert bereits"
+
+#: src/modules/proxydb/libkviproxydb.cpp:344
+#: src/modules/proxydb/libkviproxydb.cpp:624
+msgid "The specified protocol doesn't exist"
+msgstr ""
+
+#: src/modules/proxydb/libkviproxydb.cpp:398
+msgid "You must provide the port number as parameter"
+msgstr "Die Portnummer muss als Parameter angegeben werden"
+
+#: src/modules/proxydb/libkviproxydb.cpp:471
+msgid "You must provide the IP as parameter"
+msgstr "Die IP muss als Parameter angegeben werden"
+
+#: src/modules/proxydb/libkviproxydb.cpp:492
+msgid "The specified IP is not valid"
+msgstr "Die angegebene IP ist nicht gültig"
+
+#: src/modules/proxydb/libkviproxydb.cpp:600
+msgid "You must provide the protocol as parameter"
+msgstr "Das Protokoll muss als Parameter angegeben werden"
+
+#: src/modules/proxydb/libkviproxydb.cpp:649
+msgid "You must provide the value as parameter"
+msgstr "Der Wert muss als Parameter angegeben werden"
+
+#: src/modules/serverdb/libkviserverdb.cpp:126
+#: src/modules/serverdb/libkviserverdb.cpp:229
+#: src/modules/serverdb/libkviserverdb.cpp:263
+#: src/modules/serverdb/libkviserverdb.cpp:866
+#: src/modules/serverdb/libkviserverdb.cpp:943
+#: src/modules/serverdb/libkviserverdb.cpp:1015
+#: src/modules/serverdb/libkviserverdb.cpp:1046
+msgid "You must provide the network name as parameter"
+msgstr "Der Netzwerkname muss als Parameter angegeben werden"
+
+#: src/modules/serverdb/libkviserverdb.cpp:169
+#: src/modules/serverdb/libkviserverdb.cpp:269
+#: src/modules/serverdb/libkviserverdb.cpp:949
+#: src/modules/serverdb/libkviserverdb.cpp:1052
 msgid "You must provide the server name as parameter"
 msgstr "Der Servername muss als Parameter angegeben werden"
 
-#: src/modules/proxydb/libkviproxydb.cpp:602
-msgid "You must provide the value as parameter"
-msgstr "Der Wert muss als Parameter angegeben werden"
+#: src/modules/serverdb/libkviserverdb.cpp:236
+#: src/modules/serverdb/libkviserverdb.cpp:276
+#: src/modules/serverdb/libkviserverdb.cpp:957
+#: src/modules/serverdb/libkviserverdb.cpp:1024
+#: src/modules/serverdb/libkviserverdb.cpp:1061
+msgid "The specified network doesn't exist"
+msgstr ""
+
+#: src/modules/serverdb/libkviserverdb.cpp:283
+#: src/modules/serverdb/libkviserverdb.cpp:1070
+msgid "The specified server doesn't exist"
+msgstr ""
+
+#: src/modules/serverdb/libkviserverdb.cpp:875
+msgid "The network specified already exists"
+msgstr "Das angegebene Netzwerk existiert bereits"
+
+#: src/modules/serverdb/libkviserverdb.cpp:969
+msgid "The specified server already exists"
+msgstr "Der angegebene Server existiert bereits"
+
+#~ msgid "The specified network does not exist"
+#~ msgstr "Das angegebene Netzwerk existiert nicht"
+
+#~ msgid "The specified protocol does not exist"
+#~ msgstr "Das angegebene Protokoll existiert nicht"
+
+#~ msgid "The specified proxy does not exist"
+#~ msgstr "Der angegebene Proxy existiert nicht"
+
+#~ msgid "The specified server does not exist"
+#~ msgstr "Der angegebene Server existiert nicht"
