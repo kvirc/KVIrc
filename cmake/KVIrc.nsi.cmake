@@ -39,7 +39,11 @@ Var LocalDir
 !define MUI_LANGDLL_REGISTRY_KEY "Software\KVIrc"
 !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 !define MUI_LANGDLL_ALWAYSSHOW
-!define MUI_FINISHPAGE_RUN "$INSTDIR\@KVIRC_BINARYNAME@.exe"
+
+!define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_RUN_TEXT "Start KVIrc"
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchKVIrc"
+!insertmacro MUI_PAGE_FINISH
 
 ; Pages
 !insertmacro MUI_PAGE_LICENSE "release\License\COPYING"
@@ -110,12 +114,12 @@ Section !$(KVIrc) KVIrc_IDX
 
 	IfFileExists "$INSTDIR\vcredist_x86.exe" VcRedist86Exists PastVcRedist86Check
 	VcRedist86Exists:
-		ExecWait '"$INSTDIR\vcredist_x86.exe"  /passive /norestart'
+		ExecWait '"$INSTDIR\vcredist_x86.exe"  /quiet /norestart'
 	PastVcRedist86Check:
 
 	IfFileExists "$INSTDIR\vcredist_x64.exe" VcRedist64Exists PastVcRedist64Check
 	VcRedist64Exists:
-		ExecWait '"$INSTDIR\vcredist_x64.exe"  /passive /norestart'
+		ExecWait '"$INSTDIR\vcredist_x64.exe"  /quiet /norestart'
 	PastVcRedist64Check:
 
 SectionEnd
@@ -292,6 +296,11 @@ FunctionEnd
 
 ;--------------------------------
 ; Functions
+
+Function LaunchKVIrc
+   SetOutPath $INSTDIR
+   ShellExecAsUser::ShellExecAsUser "" "$INSTDIR\@KVIRC_BINARYNAME@.exe" ""
+FunctionEnd
 
 Function RemoveAutostartShortcuts
   ; Remove user created startup shortcuts
