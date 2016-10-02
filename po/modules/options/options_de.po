@@ -7,12 +7,13 @@
 # Christoph Thielecke <u15119@hs-harz.de>, 2005
 # Markus Rennings <markus@rennings.net>, 2007-2012
 # Robert Förster <Dessa@gmake.de>, 2015
+# Philipp Kloke <philipp.kloke@web.de>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-02 15:07+0200\n"
-"PO-Revision-Date: 2016-10-02 15:07+0200\n"
+"PO-Revision-Date: 2016-10-10 14:05+0200\n"
 "Last-Translator: Robert Förster <Dessa@gmake.de>\n"
 "Language-Team: German (http://www.transifex.com/kvirc/KVIrc/language/de/)\n"
 "Language: de\n"
@@ -120,7 +121,7 @@ msgstr "Wort-Hervorhebung aktivieren"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:53
 msgid "Words to Highlight"
-msgstr ""
+msgstr "Hervorzuhebende Worte"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:59
 msgid "Highlight messages containing my nickname"
@@ -131,16 +132,21 @@ msgid ""
 "If this option is enabled, KVIrc will highlight any user message containing "
 "your current nickname."
 msgstr ""
+"Wenn diese Option aktiviert ist, wird KVirc alle Benutzernachrichten "
+"hervorheben, die Ihren aktuellen Nicknamen enthalten."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:62
 msgid "Words/Nick matching is case sensitive"
-msgstr ""
+msgstr "Wort-/Nick-Vergleich beachtet Groß-/Kleinschreibung"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:63
 msgid ""
 "If this option is enabled, KVIrc will match your nick and/or the words you "
 "specified in a case sensitive manner."
 msgstr ""
+"Wenn diese Option aktiviert ist, wird KVIrc Ihren Nicknamen und/oder die "
+"angegebenen Worte unter Berücksichtigung von Groß- und Kleinschreibung "
+"vergleichen."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:65
 msgid "Highlighting Method"
@@ -148,7 +154,7 @@ msgstr "Hervorhebungsmethode"
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:72
 msgid "Highlight every occurrence of a word inside text"
-msgstr ""
+msgstr "Jedes Vorkommen eines Worts im Text hervorheben."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:75
 msgid ""
@@ -156,6 +162,9 @@ msgid ""
 "nicknames inside the whole text. This will also highlight parts of words."
 "<br>(e.g. if your nickname is Mark then Markus will be highlighted too)."
 msgstr ""
+"Diese Auswahl wird KVIrc veranlassen, nach den hervorzuhebenden Worten im "
+"ganzen Text zu suchen. Dies wird auch Wort-Teile hervorheben.<br>(d.h. wenn "
+"Ihr Nickname Mark ist, wird Markus ebenfalls hervorgehoben)."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:79
 msgid "Highlight only whole words splitting on space and on:"
@@ -169,6 +178,9 @@ msgid ""
 "boundaries<br>(including space) and then will compare all the parts with the "
 "highlighted words."
 msgstr ""
+"Diese Auswahl wird zunächst den String an den angegebenen Grenzen "
+"aufspalten<br>(inklusive Leerzeichen) und wird dann alle Teile mit den "
+"hervorgehobenen Worten vergleichen."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:92
 msgid "Alert Options"
@@ -184,6 +196,9 @@ msgid ""
 "entry when a highlighted message is printed and KVIrc is not the active "
 "window."
 msgstr ""
+"Wenn diese Option aktiviert ist, wird KVIrc (versuchen) den Taskleisten-"
+"Eintrag aufleuchten zu lassen, sobald eine hervorgehobene Nachricht "
+"ausgegeben wird und KVIrc nicht den Fokus hat."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:99
 msgid "Popup the notifier window on highlighted messages"
@@ -195,6 +210,9 @@ msgid ""
 "low right corner of your desktop when a highlighted message is printed and "
 "KVIrc is not the active window."
 msgstr ""
+"Wenn diese Option aktiviert ist, wird KVIrc ein Benachrichtigungsfenster in "
+"der unteren rechten Ecke erscheinen lassen, wenn eine hervorgehobene "
+"Nachricht ausgegeben wird und KVIrc nicht den Fokus hat."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:123
 msgid "Alert Restrictions"
@@ -212,6 +230,11 @@ msgid ""
 "high rate of traffic and only want to be alerted for messages that are "
 "interesting to you."
 msgstr ""
+"Wenn diese Option aktiviert ist, wird KVIrc nur bei normalen Nachrichten "
+"sich in der Fensterliste bemerkbar machen. Aktionen wie Joins, Parts und "
+"Modusänderungen werden ignoriert.<br>Dies ist nützlich, wenn Sie in Channels "
+"mit hohem Datenverkehr sind und nur benachrichtigt werden möchten, wenn "
+"interessante Nachrichten vorliegen."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:129
 msgid "Alert for highlighted words"
@@ -222,6 +245,9 @@ msgid ""
 "If this option is enabled, the window list will also alert for messages "
 "which contain a word from the highlighted words list above."
 msgstr ""
+"Wenn diese Option aktiviert ist, wird sich KVIrc auch in der Fensterliste "
+"bemerkbar machen, wenn eine Nachricht mit den hervorgehobenen Worten der "
+"obigen Liste erscheint."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:133
 msgid "Alert for query messages"
@@ -232,6 +258,8 @@ msgid ""
 "If this option is enabled, the window list will also alert for messages "
 "which are shown in queries."
 msgstr ""
+"Wenn diese Option aktiviert ist, wird sich KVIrc auch bei Query-Nachrichten "
+"in der Fensterliste bemerkbar machen."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:139
 msgid "Use custom alert level"
@@ -242,6 +270,8 @@ msgid ""
 "If this option is enabled, KVIrc will alert in the window list only if the "
 "specified alert level is reached."
 msgstr ""
+"Wenn diese Option aktiviert ist, wird sich KVIrc nur in der Fensterliste "
+"bemerkbar machen, wenn ein bestimmtes Benachrichtigungslevel erreicht ist."
 
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:142
 msgid "Minimum alert level:"
@@ -250,10 +280,11 @@ msgstr "Minimale Alarmstufe:"
 #: src/modules/options/OptionsWidget_alertsAndHighlighting.cpp:145
 msgid "This option sets the minimum alert level for the window list."
 msgstr ""
+"Diese Option setzt das minimale Benachrichtigungslevel für die Fensterliste"
 
 #: src/modules/options/OptionsWidget_antiSpam.cpp:39
 msgid "Enable Anti-spam for"
-msgstr ""
+msgstr "Aktiviere Anti-Spam für"
 
 #: src/modules/options/OptionsWidget_antiSpam.cpp:40
 #: src/modules/options/OptionsWidget_query.cpp:43
@@ -275,7 +306,7 @@ msgstr "Spam-Wörter:"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:41
 msgid "Scaling in Userlist"
-msgstr ""
+msgstr "Skalierung in Nutzerliste"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:42
 msgid "Scale avatar images in userlist (recommended)"
@@ -287,6 +318,9 @@ msgid ""
 "<br>Avatars will be scaled to fit the constraints set below. Better keep "
 "this option on."
 msgstr ""
+"Diese Option zwingt KVIrc, die Avatare in der Nutzerliste zu skalieren."
+"<br>Avatare werden skaliert, sodass sie die unten eingestellten Grenzen "
+"einhalten. Diese Option sollte aktiviert bleiben."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:49
 msgid "Do not scale avatar if it is less than required size"
@@ -316,7 +350,7 @@ msgstr "Bildhöhe:"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:58
 msgid "Scaling on Load and in User Tooltips"
-msgstr ""
+msgstr "Skalierung beim Laden und in Nutzer-Tooltips"
 
 #: src/modules/options/OptionsWidget_avatar.cpp:59
 msgid "Scale avatar images on image load"
@@ -335,6 +369,8 @@ msgid ""
 "This option will cause KVIrc to send a DCC GET request when someone sets an "
 "avatar and there is no cached copy available."
 msgstr ""
+"Diese Option lässt KVIrc eine DCC-GET-Anfrage senden, wenn jemand ein Avatar "
+"einrichtet und keine Kopie im Cache vorhanden ist."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:74
 msgid "Maximum requested file size:"
@@ -350,6 +386,8 @@ msgid ""
 "This is the maximum size for avatar images that will be automatically "
 "requested.<br>A reasonable value might be 102400 bytes (100 K)."
 msgstr ""
+"Dies ist die Maximalgröße für Avatarbilder, die automatisch angefordert "
+"werden.<br>Eine vernünftige Einstellung kann 102400 Bytes (100 K) sein."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:84
 msgid "Automatically accept incoming avatars"
@@ -362,6 +400,10 @@ msgid ""
 "enabling this may by useful.<br>Avatars will be saved in the local KVIrc "
 "directory."
 msgstr ""
+"Diese Option lässt KVIrc automatisch DCC-SEND-Anfragen eingehender Avatare "
+"akzeptieren.<r>Wenn Sie die \"Fehlende Avatare anfordern\"-Option nutzen, "
+"kann die Aktivierung dieser Einstellung nützlich sein.<br>Avatare werden im "
+"lokalen KVIrc-Verzeichnis gespeichert."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:92
 msgid "Remember avatars for registered users"
@@ -372,6 +414,8 @@ msgid ""
 "Use a user's last known avatar by default (only for users that are "
 "registered)."
 msgstr ""
+"Nutze standardmäßig das letzte bekannte Avatar eines Nutzers (nur bei "
+"registrierten Nutzern)."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:97
 msgid "Avatar offer timeout:"
@@ -397,6 +441,11 @@ msgid ""
 "<br>A time-limited file offer is added for the image file to the requesting "
 "user."
 msgstr ""
+"Dies ist die Zeitspanne, innerhalb derer ein Avatar für einen Transfer auf "
+"Anfrage zur Verfügung steht.<br>Wenn jemand eine CTCP-AVATAR-Anfrage sendet, "
+"wird KVIRC mit einer CTCP-AVATAR-Nachricht antworten, die Name und Bild des "
+"Avatars enthält.<br>Ein zeitlimitiertes Dateiangebot für das Bild ist dem "
+"anfragenden Nutzer beigefügt."
 
 #: src/modules/options/OptionsWidget_avatar.cpp:107
 msgid "Ignore requests if no avatar is set"
@@ -440,7 +489,7 @@ msgstr "Automatisch gernerierten »Abwesend«-Nick benutzen ([5 Buchstaben]AWAY)
 #: src/modules/options/OptionsWidget_away.cpp:53
 #, c-format
 msgid "Custom nickname (%%nick%% means a current nick):"
-msgstr ""
+msgstr "Benutzerdefinierter Nickname (%%nick%% heißt: aktueller Nick):"
 
 #: src/modules/options/OptionsWidget_channel.cpp:54
 msgid "On Channel Kick"
@@ -455,6 +504,8 @@ msgid ""
 "This option will cause KVIrc to attempt to rejoin a channel after being "
 "kicked."
 msgstr ""
+"Diese Option lässt KVIrc einen Channel nach einem Kick automatisch erneut "
+"betreten."
 
 #: src/modules/options/OptionsWidget_channel.cpp:60
 #: src/modules/options/OptionsWidget_channel.cpp:68
@@ -466,6 +517,8 @@ msgid ""
 "This option will cause KVIrc to keep the channel window open after being "
 "kicked. It might be a good idea to also enable the \"Rejoin channel\" option."
 msgstr ""
+"Diese Option hält das Channel-Fenster nach einem Kick offen. Es mag eine "
+"gute Idee sein, auch die \"Channel erneut betreten\"-Option zu aktivieren."
 
 #: src/modules/options/OptionsWidget_channel.cpp:66
 msgid "On Channel Part"
@@ -475,7 +528,7 @@ msgstr "Beim Channel-Verlassen"
 msgid ""
 "This option will cause KVIrc to keep the channel window open after leaving "
 "it."
-msgstr ""
+msgstr "Diese Option hält das Channel-Fenster nach Verlassen jenes offen."
 
 #: src/modules/options/OptionsWidget_channel.cpp:72
 msgid "Automatically join channel on invite"
@@ -487,10 +540,13 @@ msgid ""
 "message for that channel is received.<br><b>Warning:</b> this may help "
 "spammers harass you."
 msgstr ""
+"Diese Option lässt KVIrc automatisch einen Channel betreten, wenn eine "
+"INVITE-Nachricht für diesen Channel empfangen wird.<br><b>Warnung:</b> Dies "
+"kann Spammern helfen, Sie zu belästigen."
 
 #: src/modules/options/OptionsWidget_channel.cpp:77
 msgid "Open channel windows without focus"
-msgstr ""
+msgstr "Öffnet Channel-Fenster ohne Fokus"
 
 #: src/modules/options/OptionsWidget_channel.cpp:78
 msgid ""
@@ -498,6 +554,10 @@ msgid ""
 "application focus.<br>Enable this if you don't like channel windows popping "
 "up while you're typing something in a channel."
 msgstr ""
+"Diese Option verhindert, dass neu erzeugte Channel-Fenster Anderen den Fokus "
+"stehlen.<br>Aktiveren Sie diese Option, wenn Sie nicht möchten, dass andere "
+"Channel-Fenster in den Vordergrund rücken, währen Sie etwas in einen Channel "
+"schreiben."
 
 #: src/modules/options/OptionsWidget_channel.cpp:98
 msgid "Log joined channels history"
@@ -522,6 +582,10 @@ msgid ""
 "channels at once.<br>Minimum value: <b>0 secs</b><br>Maximum value: <b>10 "
 "secs</b>"
 msgstr ""
+"Dies ist eine künstliche Verzögerung für die Channel-Anfrage beim Betreten."
+"<br>Sie können sie verlängern, wenn Ihr Server sich über Flooding beim "
+"Betreten mehrerer Channels zugleich beschwert.<br>Minimalwert: <b>0 Sek.</"
+"b><br>Maximalwert: <b>10 Sek.</b>"
 
 #: src/modules/options/OptionsWidget_channel.cpp:127
 msgid "Do not send /WHO request"
@@ -569,7 +633,7 @@ msgstr " Zeilen"
 #: src/modules/options/OptionsWidget_channel.cpp:141
 #: src/modules/options/OptionsWidget_query.cpp:96
 msgid "Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b>"
-msgstr ""
+msgstr "Minimalwert: <b>0 Zeilen</b><br>Maximalwert: <b>50 Zeilen</b>"
 
 #: src/modules/options/OptionsWidget_channel.cpp:145
 #: src/modules/options/OptionsWidget_query.cpp:100
@@ -584,7 +648,7 @@ msgstr " Tage"
 #: src/modules/options/OptionsWidget_channel.cpp:147
 #: src/modules/options/OptionsWidget_query.cpp:103
 msgid "Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b>"
-msgstr ""
+msgstr "Minimalwert: <b>0 Tage</b><br>Maximalwert: <b>10 Tage</b>"
 
 #: src/modules/options/OptionsWidget_channel.cpp:151
 msgid "Keep away list updated"
@@ -597,6 +661,11 @@ msgid ""
 "save your IRC bandwidth).<br>If the server supports IRCv3.1's away-notify "
 "extension, it will be used instead of WHO requests."
 msgstr ""
+"KVIrc sendet von Zeit zu Zeit eine Channel-/WHO-Nachricht, um die "
+"Abwesenheitsliste zu synchronisieren. Nutzen Sie dese Option, um die "
+"Funktion zu deaktivieren (und IRC-Bandbreite zu sparen)<br>Wenn der Server "
+"die IRCv3.1-Abwesenheitsbenachrichtigungs-Erweiterung unterstützt, wird sie "
+"anstelle von WHO-Anfragen genutzt."
 
 #: src/modules/options/OptionsWidget_connection.cpp:44
 msgid "On Disconnect"
@@ -609,16 +678,16 @@ msgstr "Channels offenhalten"
 
 #: src/modules/options/OptionsWidget_connection.cpp:47
 msgid "This option will cause KVIrc to keep channels open after disconnect."
-msgstr ""
+msgstr "Diese Option lässt KVIrc Channels offen halten nach einer Trennung."
 
 #: src/modules/options/OptionsWidget_connection.cpp:49
 #: src/modules/options/OptionsWidget_connection.cpp:57
 msgid "Keep queries open"
-msgstr "Anfragen offenhalten"
+msgstr "Queries offenhalten"
 
 #: src/modules/options/OptionsWidget_connection.cpp:50
 msgid "This option will cause KVIrc to keep queries open after disconnect."
-msgstr ""
+msgstr "Diese Option lässt KVIrc Queries offen halten nach einer Trennung."
 
 #: src/modules/options/OptionsWidget_connection.cpp:52
 msgid "On Unexpected Disconnect"
@@ -629,12 +698,16 @@ msgid ""
 "This option will cause KVIrc to keep channels open after an unexpected "
 "disconnect."
 msgstr ""
+"Diese Option lässt KVIrc Channels offen halten nach einer unerwarteten "
+"Trennung."
 
 #: src/modules/options/OptionsWidget_connection.cpp:58
 msgid ""
 "This option will cause KVIrc to keep queries open after an unexpected "
 "disconnect."
 msgstr ""
+"Diese Option lässt KVIrc Queries offen halten nach einer unerwarteten "
+"Trennung."
 
 #: src/modules/options/OptionsWidget_connection.cpp:60
 msgid "Rejoin channels after reconnect"
@@ -645,6 +718,8 @@ msgid ""
 "This option will cause KVIrc to rejoin channels after a successful reconnect "
 "attempt."
 msgstr ""
+"Diese Option lässt KVIrc Channels nach erfolgreicher Neuverbindung erneut "
+"betreten"
 
 #: src/modules/options/OptionsWidget_connection.cpp:63
 msgid "Reopen queries after reconnect"
@@ -655,6 +730,8 @@ msgid ""
 "This option will cause KVIrc to reopen query windows after a successful "
 "reconnect attempt."
 msgstr ""
+"Diese Option lässt KVIrc Query-Fenster nach erfolgreicher Neuverbindung "
+"erneut öffnen."
 
 #: src/modules/options/OptionsWidget_connection.cpp:66
 msgid "Automatically reconnect"
@@ -675,10 +752,23 @@ msgid ""
 "\"quit\" command.<br><tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></"
 "p>"
 msgstr ""
+"Diese Option aktiviert automatisches Neuverbinden nach einer unerwarteten "
+"Trennung. Eine unerwartete Trennung ist der <b>Abbruch</b> einer "
+"<b>vollständig verbundenen IRC-Sitzung</b>, die <b>nicht vom Nutzer</b> "
+"mittels QUIT-Nachricht <b>angefordert wurde</b>.<p><b>Warnung:</b> Wenn Sie /"
+"RAW für die QUIT-Nachricht an den Server nutzen, wird diese Option nicht "
+"korrekt funktionieren, da die ausgehende QUIT-Meldung nicht korrekt erkannt "
+"wurde, und wird versuchen, eine neue Verbindung zum Server herzustellen. "
+"Nutzen Sie aus diesem Grund stets das /QUIT-Kommando, um Verbindungen zu "
+"schließen. Diese Option kann auch falsch mit Bouncern, die Ablösen "
+"unterstützen, zusammenarbeiten. In diesem Fall besteht die Lösung darin, "
+"einen Alias vorzubereiten, der das Bouncer-Ablösekommando direkt vor dem "
+"Verlassen-Kommando sendet.<br><tt>alias(bncdetach){ raw bouncer detach; "
+"quit; }</tt></p>"
 
 #: src/modules/options/OptionsWidget_connection.cpp:80
 msgid "Maximum attempts (0 = unlimited):"
-msgstr ""
+msgstr "Maximale Versuchszahl (0 = unbegrenzt)"
 
 #: src/modules/options/OptionsWidget_connection.cpp:84
 msgid "Delay between attempts:"
@@ -686,7 +776,7 @@ msgstr "Verzögerung zwischen den Versuchen:"
 
 #: src/modules/options/OptionsWidget_connection.cpp:89
 msgid "Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b>"
-msgstr ""
+msgstr "Minimalwert: <b>0 Sek.</b><br>Maximalwert: <b>86400 Sek.</b>"
 
 #: src/modules/options/OptionsWidget_connection.cpp:109
 msgid "Certificate"
@@ -747,7 +837,7 @@ msgstr " ms"
 
 #: src/modules/options/OptionsWidget_connection.cpp:158
 msgid "Limit outgoing traffic per connection"
-msgstr ""
+msgstr "Ausgehenden Datenverkehr pro Verbindung begrenzen"
 
 #: src/modules/options/OptionsWidget_connection.cpp:159
 msgid "Limit to 1 message every:"
@@ -759,7 +849,7 @@ msgstr " µs"
 
 #: src/modules/options/OptionsWidget_connection.cpp:162
 msgid "Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</b>"
-msgstr ""
+msgstr "Minimalwert: <b>10000 µs</b><br>Maximalwert: <b>10000000  µs</b>"
 
 #: src/modules/options/OptionsWidget_connection.cpp:165
 msgid "Network Interfaces"
@@ -883,6 +973,8 @@ msgid ""
 "This text will be appended to the CTCP VERSION reply.<br>For example, you "
 "can place a script name here."
 msgstr ""
+"Dieser Text wird an eine CTCP-VERSION-Antwort angehängt.<br>Sie können zum "
+"Beispiel einen Skriptnamen hier platzieren."
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:49
 msgid "Append to SOURCE reply:"
@@ -893,6 +985,8 @@ msgid ""
 "This text will be appended to the CTCP SOURCE reply.<br>For example, you can "
 "place the source URL for a script here."
 msgstr ""
+"Dieser Text wird an eine CTCP-SOURCE-Antwort angehängt.<br>Sie können zum "
+"Beispiel die Quell-URL eines Skripts anhängen."
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:55
 msgid "PAGE reply:"
@@ -903,6 +997,8 @@ msgid ""
 "This is the CTCP PAGE reply.<br>It should contain some sort of "
 "acknowledgment for CTCP PAGE messages."
 msgstr ""
+"Dies ist die CTCP-PAGE-Antwort.<br>Sie sollte irgendeine Bestätigung für "
+"CTCP-PAGE-Nachrichten enthalten."
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:61
 msgid "Show the CTCP replies in the active window"
@@ -914,7 +1010,7 @@ msgstr "Dialog für CTCP Page-Anfragen anzeigen"
 
 #: src/modules/options/OptionsWidget_ctcp.cpp:64
 msgid "Show dialog for channel CTCP page requests"
-msgstr ""
+msgstr "Zeige Dialog für Channel-CTCP-PAGE-Anfragen"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:81
 msgid "Use flood protection for CTCP requests (recommended)"
@@ -925,6 +1021,9 @@ msgid ""
 "This option makes KVIrc only respond to a limited number of CTCP requests "
 "within a specified time interval, to prevent \"flooding\" CTCP messages."
 msgstr ""
+"Diese Option lässt KVIrc nur auf eine begrenzte Zahl innerhalb einer "
+"angegebenen Zeitspanne von CTCP-Anfragen antworten, um eine »Überflutung« "
+"mit CTCP-Nachrichten zu verhindern."
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:84
 msgid "Allow up to:"
@@ -937,7 +1036,7 @@ msgstr " Anfragen"
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:86
 msgid ""
 "Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 requests</b>"
-msgstr ""
+msgstr "Minimalwert: <b>0 Anfragen</b><br>Maximalwert: <b>10000 Anfragen</b>"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:89
 msgid "within:"
@@ -945,11 +1044,11 @@ msgstr "in:"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:91
 msgid "Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b>"
-msgstr ""
+msgstr "Minimalwert: <b>1 Sek.</b><br>Maximalwert: <b>3600 Sek.</b>"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:94
 msgid "Ignored CTCP Requests"
-msgstr ""
+msgstr "Ignorierte CTCP-Anfragen"
 
 #: src/modules/options/OptionsWidget_ctcpFloodProtection.cpp:95
 msgid "PING"
@@ -1001,6 +1100,11 @@ msgid ""
 "try to use different methods to send and receive files.<br>Please note that "
 "these methods may NOT work when communicating with a non-KVIrc client."
 msgstr ""
+"Aktivieren Sie diese Option, wenn sie keine eingehenden Verbindungen "
+"akzeptieren können.<br>KVIrc wird versuchen, andere Methoden zum Senden und "
+"Empfangen von Dateien einzusetzen.<br>Bitte beachten Sie, dass diese "
+"Methoden möglicherweise nicht funktionieren, wenn sie mit einem nicht-KVIrc-"
+"Client kommunizieren."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:69
 msgid "Network Properties"
@@ -1017,6 +1121,10 @@ msgid ""
 "especially useful when you use IPv6 and IPv4 addresses. You can force KVIrc "
 "to always choose the IPv4 interface."
 msgstr ""
+"Aktivieren Sie diese Option, wenn Sie an einer Multi-Host-Maschine arbeiten "
+"und die Nutzung einer bestimmten IP-Adresse für ausgehnde DCCs erzwingen "
+"möchten.<br>Dies ist insbesondere nützlich, wenn Sie IPv6- und IPv4-Adressen "
+"nutzen. Sie können KVIrc zwingen, stets die IPv4-Schnittstelle zu nehmen."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:76
 msgid "Listen on address/interface:"
@@ -3515,7 +3623,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:896
 msgid "SASL nickname:"
-msgstr ""
+msgstr "SASL-Nickname:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:900
 msgid "If you want to enable SASL authentication, insert your nickname here."
@@ -3523,7 +3631,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:903
 msgid "SASL password:"
-msgstr ""
+msgstr "SASL-Passwort:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:907
 msgid "If you want to enable SASL authentication, insert your password here."
@@ -3542,7 +3650,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:954
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #: src/modules/options/OptionsWidget_servers.cpp:962
 msgid ""
@@ -3602,31 +3710,31 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:1331
 msgid "New network"
-msgstr ""
+msgstr "Neues Netzwerk"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1340
 msgid "New server"
-msgstr ""
+msgstr "Neuer Server"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1346
 msgid "Favorite / Unfavorite server"
-msgstr ""
+msgstr "Server De-/favorisieren"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1353
 msgid "Remove network / server"
-msgstr ""
+msgstr "Netzwerk/Server entfernen"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1360
 msgid "Copy server"
-msgstr ""
+msgstr "Server kopieren"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1367
 msgid "Paste server"
-msgstr ""
+msgstr "Server einfügen"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1378
 msgid "Import server list"
-msgstr ""
+msgstr "Serverliste importieren"
 
 #: src/modules/options/OptionsWidget_servers.cpp:1383
 msgid "Active Configuration"
@@ -3746,15 +3854,15 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:2184
 msgid "Confirm Clearing Server List - KVIrc"
-msgstr ""
+msgstr "Leeren der Serverliste bestätigen - KVIrc"
 
 #: src/modules/options/OptionsWidget_servers.cpp:2185
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: src/modules/options/OptionsWidget_servers.cpp:2185
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 #: src/modules/options/OptionsWidget_sound.cpp:58
 #: src/modules/options/OptionsWidget_sound.h:46
@@ -3853,6 +3961,8 @@ msgstr "Erzwinge Sprache:"
 #: src/modules/options/OptionsWidget_textEncoding.cpp:97
 msgid "<b>Note:</b> You must restart KVIrc to apply any language changes"
 msgstr ""
+"<b>Hinweis:</b> Sie müssen KVIrc neustarten, damit Sprachänderungen wirksam "
+"werden"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:99
 msgid "Automatic detection"
@@ -3864,11 +3974,11 @@ msgstr "en"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:138
 msgid "Spell Checker Dictionaries"
-msgstr ""
+msgstr "Rechtschreibwörterbuh"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:156
 msgid "Language Code"
-msgstr ""
+msgstr "Sprachcode"
 
 #: src/modules/options/OptionsWidget_textEncoding.cpp:157
 msgid "Provided by"
@@ -3976,11 +4086,11 @@ msgstr "Arbeitsflächenhintergrund für Transparenz benutzen"
 
 #: src/modules/options/OptionsWidget_theme.cpp:165
 msgid "Border color:"
-msgstr ""
+msgstr "Rahmenfarbe:"
 
 #: src/modules/options/OptionsWidget_theme.cpp:166
 msgid "Font color:"
-msgstr ""
+msgstr "Schriftfarbe:"
 
 #: src/modules/options/OptionsWidget_tools.cpp:39
 msgid ""
@@ -4069,7 +4179,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_uparser.cpp:60
 msgid "Create debug window without focus"
-msgstr ""
+msgstr "Erzeuge Debugfenster ohne Fokus"
 
 #: src/modules/options/OptionsWidget_uparser.cpp:61
 msgid ""
@@ -4077,26 +4187,30 @@ msgid ""
 "focus.<br>Enable this if you don't like the debug window popping up while "
 "you're typing something in a channel."
 msgstr ""
+"Diese Option verhindert, dass sich das Debugfenster öffnet und den "
+"Eingabefokus übernimmt.<br>Aktivieren Sie diese Option, wenn Sie verhindern "
+"möchten, dass das Debugfenster erscheint, wenn Sie gerade etwas in einen "
+"Channel schreiben."
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:48
 msgid "Mouse Handler"
-msgstr ""
+msgstr "Maushandler"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:50
 msgid "How many clicks to open links?"
-msgstr ""
+msgstr "Wieviele Klicks, um einen Link zu öffnen?"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:52
 msgid "Single-click"
-msgstr ""
+msgstr "Einfachklick"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:53
 msgid "Double-click"
-msgstr ""
+msgstr "Doppelklick"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:65
 msgid "Protocol Handler"
-msgstr ""
+msgstr "Protokollhandler"
 
 #: src/modules/options/OptionsWidget_urlHandlers.cpp:68
 msgid "Use system URL handlers"
@@ -4216,11 +4330,11 @@ msgstr "Hintergrundfarben"
 
 #: src/modules/options/OptionsWidget_userList.cpp:133
 msgid "Horizontal alignment:"
-msgstr ""
+msgstr "Horizontale Ausrichtung:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:137
 msgid "Vertical alignment:"
-msgstr ""
+msgstr "Vertikale Ausrichtung:"
 
 #: src/modules/options/OptionsWidget_userList.cpp:224
 msgid "Show gender icons"
@@ -4240,7 +4354,7 @@ msgstr "Label mit Benutzerlistenstatistik anzeigen"
 
 #: src/modules/options/OptionsWidget_userList.cpp:228
 msgid "Enable user tooltip"
-msgstr ""
+msgstr "Nutzer-Tooltips aktivieren"
 
 #: src/modules/options/OptionsWidget_userList.cpp:229
 msgid "Show avatars in userlist"
@@ -4297,7 +4411,7 @@ msgstr "IRC-Kontextindikator in Fensterliste anzeigen"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:51
 msgid "Show close button on window list items"
-msgstr ""
+msgstr "Zeige Schließen-Button für Fensterlisten-Einträge"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:52
 msgid "Enable window tooltips"
@@ -4305,11 +4419,11 @@ msgstr "Fensterkurzinfos aktivieren"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:53
 msgid "Allow the window list to be moved"
-msgstr ""
+msgstr "Verschieben der Fensterliste erlauben"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:54
 msgid "Show user flag for channels"
-msgstr ""
+msgstr "Zeige Nutzer-Flags für Channels"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:79
 #: src/modules/options/OptionsWidget_windowList.cpp:224
@@ -4319,27 +4433,27 @@ msgstr "Text-/Alarmfarben"
 #: src/modules/options/OptionsWidget_windowList.cpp:83
 #: src/modules/options/OptionsWidget_windowList.cpp:227
 msgid "Alert level 1:"
-msgstr ""
+msgstr "Alarmstufe 1:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:84
 #: src/modules/options/OptionsWidget_windowList.cpp:228
 msgid "Alert level 2:"
-msgstr ""
+msgstr "Alarmstufe 2:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:85
 #: src/modules/options/OptionsWidget_windowList.cpp:229
 msgid "Alert level 3:"
-msgstr ""
+msgstr "Alarmstufe 3:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:86
 #: src/modules/options/OptionsWidget_windowList.cpp:230
 msgid "Alert level 4:"
-msgstr ""
+msgstr "Alarmstufe 4:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:87
 #: src/modules/options/OptionsWidget_windowList.cpp:231
 msgid "Alert level 5:"
-msgstr ""
+msgstr "Alarmstufe 5:"
 
 #: src/modules/options/OptionsWidget_windowList.cpp:89
 #: src/modules/options/OptionsWidget_windowList.cpp:233
@@ -4378,7 +4492,7 @@ msgstr "Flache Schaltflächen benutzen"
 
 #: src/modules/options/libkvioptions.cpp:104
 msgid "No such options_group %Q"
-msgstr ""
+msgstr "Keine options_group %Q"
 
 #: src/modules/options/libkvioptions.cpp:214
 msgid "No such options page class name %Q"
@@ -4386,7 +4500,7 @@ msgstr "Keine Optionsseiten-Klassenname %Q"
 
 #: src/modules/options/OptionsWidget_general.h:30
 msgid "General Options"
-msgstr ""
+msgstr "Allgemeine Einstellungen"
 
 #: src/modules/options/OptionsWidget_interfaceFeatures.h:33
 msgid "Interface"
@@ -4601,7 +4715,7 @@ msgstr "Verbindung,Server"
 
 #: src/modules/options/OptionsWidget_servers.h:172
 msgid "Servers and Configuration"
-msgstr ""
+msgstr "Server und Konfiguration"
 
 #: src/modules/options/OptionsWidget_servers.h:173
 msgid "connection"
@@ -4629,7 +4743,7 @@ msgstr "Sprache, Kodierung, Charset, Codepage"
 
 #: src/modules/options/OptionsWidget_textIcons.h:37
 msgid "Text Icons"
-msgstr ""
+msgstr "Text-Symbole"
 
 #: src/modules/options/OptionsWidget_textIcons.h:39
 msgid "smileys,emoticons"
@@ -4655,7 +4769,7 @@ msgstr "Thema,Hintergrund"
 
 #: src/modules/options/OptionsWidget_theme.h:71
 msgid "Toolbar Applets"
-msgstr ""
+msgstr "Werkzeugleisten-Minianwendungen"
 
 #: src/modules/options/OptionsWidget_theme.h:72
 msgid "theme,toolbar"
@@ -4671,7 +4785,7 @@ msgstr "Thema,Diskusionsthema"
 
 #: src/modules/options/OptionsWidget_tray.h:32
 msgid "Tray Icon"
-msgstr ""
+msgstr "Benachrichtigungssymbol"
 
 #: src/modules/options/OptionsWidget_tray.h:34
 msgid "tray,TRAYICON"
@@ -4679,7 +4793,7 @@ msgstr "tray,TRAYICON"
 
 #: src/modules/options/OptionsWidget_urlHandlers.h:32
 msgid "URL Handlers"
-msgstr ""
+msgstr "URL-Handler"
 
 #: src/modules/options/OptionsWidget_urlHandlers.h:35
 msgid "URL,programs"

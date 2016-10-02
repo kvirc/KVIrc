@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: serverdb_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-02 15:08+0200\n"
-"PO-Revision-Date: 2016-10-02 15:08+0200\n"
+"PO-Revision-Date: 2016-10-02 17:25+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -36,7 +36,7 @@ msgstr "Der Proxy-Name muss als Parameter angegeben werden"
 #: src/modules/proxydb/libkviproxydb.cpp:612
 #: src/modules/proxydb/libkviproxydb.cpp:661
 msgid "The specified proxy doesn't exist"
-msgstr ""
+msgstr "Der angegebene Proxy existiert nicht"
 
 #: src/modules/proxydb/libkviproxydb.cpp:294
 msgid "You must provide the proxy name as parameter"
@@ -49,7 +49,7 @@ msgstr "Der angegebene Proxy existiert bereits"
 #: src/modules/proxydb/libkviproxydb.cpp:344
 #: src/modules/proxydb/libkviproxydb.cpp:624
 msgid "The specified protocol doesn't exist"
-msgstr ""
+msgstr "Das angegebene Protokoll existiert nicht"
 
 #: src/modules/proxydb/libkviproxydb.cpp:398
 msgid "You must provide the port number as parameter"
@@ -94,12 +94,12 @@ msgstr "Der Servername muss als Parameter angegeben werden"
 #: src/modules/serverdb/libkviserverdb.cpp:1024
 #: src/modules/serverdb/libkviserverdb.cpp:1061
 msgid "The specified network doesn't exist"
-msgstr ""
+msgstr "Das angegebene Netzwerk existiert nicht"
 
 #: src/modules/serverdb/libkviserverdb.cpp:283
 #: src/modules/serverdb/libkviserverdb.cpp:1070
 msgid "The specified server doesn't exist"
-msgstr ""
+msgstr "Der angegebene Server existiert nicht"
 
 #: src/modules/serverdb/libkviserverdb.cpp:875
 msgid "The network specified already exists"
@@ -108,15 +108,3 @@ msgstr "Das angegebene Netzwerk existiert bereits"
 #: src/modules/serverdb/libkviserverdb.cpp:969
 msgid "The specified server already exists"
 msgstr "Der angegebene Server existiert bereits"
-
-#~ msgid "The specified network does not exist"
-#~ msgstr "Das angegebene Netzwerk existiert nicht"
-
-#~ msgid "The specified protocol does not exist"
-#~ msgstr "Das angegebene Protokoll existiert nicht"
-
-#~ msgid "The specified proxy does not exist"
-#~ msgstr "Der angegebene Proxy existiert nicht"
-
-#~ msgid "The specified server does not exist"
-#~ msgstr "Der angegebene Server existiert nicht"

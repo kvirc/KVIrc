@@ -2,12 +2,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Markus Rennings <markus@rennings.net>, 2010, 2011, 2012.
+# Philipp Kloke <philipp.kloke@web.de>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-02 15:05+0200\n"
-"PO-Revision-Date: 2016-10-02 15:06+0200\n"
+"PO-Revision-Date: 2016-10-02 17:28+0200\n"
 "Last-Translator: Markus Rennings <markus@rennings.net>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -19,7 +20,7 @@ msgstr ""
 
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
-msgstr "Fehlendes Zeil, keine Aktion ausgeführt"
+msgstr "Fehlendes Ziel, keine Aktion ausgeführt"
 
 #: data/defscript/aliases.kvs:100 data/defscript/aliases.kvs:145
 msgid "Usage"
@@ -190,7 +191,7 @@ msgstr "Immer hervorheben"
 #: data/defscript/popups.kvs:43 data/defscript/popups.kvs:48
 #: data/defscript/popups.kvs:53 data/defscript/popups.kvs:58
 msgid "Highlight As"
-msgstr ""
+msgstr "Hervorheben als"
 
 #: data/defscript/popups.kvs:69
 msgid "Stop Highlighting"
@@ -308,7 +309,7 @@ msgstr "Abbrechen"
 
 #: data/defscript/popups.kvs:320
 msgid "CTCP Protection"
-msgstr ""
+msgstr "CTCP-Schutz"
 
 #: data/defscript/popups.kvs:322 data/defscript/popups.kvs:332
 #: data/defscript/popups.kvs:342 data/defscript/popups.kvs:352
@@ -316,7 +317,7 @@ msgstr ""
 #: data/defscript/popups.kvs:382 data/defscript/popups.kvs:392
 #: data/defscript/popups.kvs:402 data/defscript/popups.kvs:412
 msgid "Disable Ignore"
-msgstr ""
+msgstr "Ignorieren deaktivieren"
 
 #: data/defscript/popups.kvs:327 data/defscript/popups.kvs:337
 #: data/defscript/popups.kvs:347 data/defscript/popups.kvs:357
@@ -329,7 +330,7 @@ msgstr "Ignorieren aktivieren"
 
 #: data/defscript/popups.kvs:435 data/defscript/popups.kvs:1136
 msgid "Default Channels"
-msgstr ""
+msgstr "Standard-Channels"
 
 #: data/defscript/popups.kvs:446 data/defscript/popups.kvs:1138
 msgid "&Join Channels..."
@@ -337,7 +338,7 @@ msgstr "Channels betreten …"
 
 #: data/defscript/popups.kvs:470 data/defscript/popups.kvs:569
 msgid "d (Debug/DNS?)"
-msgstr ""
+msgstr "d (Debug/DNS?)"
 
 #: data/defscript/popups.kvs:475 data/defscript/popups.kvs:574
 msgid "l (Connections)"
@@ -353,7 +354,7 @@ msgstr "o (Operatoren)"
 
 #: data/defscript/popups.kvs:490 data/defscript/popups.kvs:589
 msgid "t (Connection Stats?)"
-msgstr ""
+msgstr "t (Verbindungsstatistik?)"
 
 #: data/defscript/popups.kvs:495 data/defscript/popups.kvs:594
 msgid "u (Uptime)"
@@ -361,7 +362,7 @@ msgstr "u (Uptime)"
 
 #: data/defscript/popups.kvs:500 data/defscript/popups.kvs:599
 msgid "y (Y-Lines)"
-msgstr ""
+msgstr "y (Y-Lines)"
 
 #: data/defscript/popups.kvs:505 data/defscript/popups.kvs:604
 msgid "z (Debug Stats?)"
@@ -369,15 +370,15 @@ msgstr "z (Debug-Statistiken?)"
 
 #: data/defscript/popups.kvs:542
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "In Zwischenablage kopieren"
 
 #: data/defscript/popups.kvs:633 data/defscript/popups.kvs:970
 msgid "Traceroute to"
-msgstr ""
+msgstr "Traceroute nach"
 
 #: data/defscript/popups.kvs:639 data/defscript/popups.kvs:976
 msgid "Traceroute6 to"
-msgstr ""
+msgstr "Traceroute6 nach"
 
 #: data/defscript/popups.kvs:721
 msgid "Undock"
@@ -385,7 +386,7 @@ msgstr "Abdocken"
 
 #: data/defscript/popups.kvs:749
 msgid "Set Window Properties As Default"
-msgstr ""
+msgstr "Setze Fenstereigenschaften als Standard"
 
 #: data/defscript/popups.kvs:756
 msgid "Automatically Join Channel"
@@ -401,11 +402,11 @@ msgstr "Beim Verbinden zu Netzwerk ›?s‹"
 
 #: data/defscript/popups.kvs:773
 msgid "Stop Auto-joining Channel on Server '?s'"
-msgstr ""
+msgstr "Beende automatischen Channelbeitritt auf Server ›?s‹"
 
 #: data/defscript/popups.kvs:786
 msgid "Stop Auto-joining Channel on Network '?s'"
-msgstr ""
+msgstr "Beende automatischen Channelbeitritt auf Netzwerk ›?s‹"
 
 #: data/defscript/popups.kvs:801
 msgid "Part All Channels"
@@ -416,9 +417,8 @@ msgid "Close All Queries"
 msgstr "alle Queries schließen"
 
 #: data/defscript/popups.kvs:814
-#, fuzzy
 msgid "Rejoin All Dead Channels"
-msgstr "alle toten Channel schließen"
+msgstr "Allen toten Channel erneut beitreten"
 
 #: data/defscript/popups.kvs:821
 msgid "Close All Dead Channels"
@@ -459,15 +459,15 @@ msgstr "Benutzerbild bekannt machen"
 
 #: data/defscript/popups.kvs:951
 msgid "Look Up"
-msgstr ""
+msgstr "Auflösen"
 
 #: data/defscript/popups.kvs:958
 msgid "Open"
-msgstr ""
+msgstr "Öffnen"
 
 #: data/defscript/popups.kvs:963
 msgid "Telnet to"
-msgstr ""
+msgstr "Telnet nach"
 
 #: data/defscript/popups.kvs:1013
 msgid "Chat with"
@@ -487,7 +487,7 @@ msgstr "Senden an"
 
 #: data/defscript/popups.kvs:1035
 msgid "Secure Send to"
-msgstr ""
+msgstr "Sicheres Senden an"
 
 #: data/defscript/popups.kvs:1040
 msgid "Reverse Send to"
@@ -535,7 +535,7 @@ msgstr "Logge nicht"
 
 #: data/defscript/popups.kvs:1249 data/defscript/popups.kvs:1254
 msgid "Log to Default File"
-msgstr ""
+msgstr "Logge in Standarddatei"
 
 #: data/defscript/popups.kvs:1254 data/defscript/popups.kvs:1267
 msgid "Include Existing Buffer"
@@ -543,7 +543,7 @@ msgstr "Existierenden Puffer einschließen"
 
 #: data/defscript/popups.kvs:1259 data/defscript/popups.kvs:1267
 msgid "Log to..."
-msgstr ""
+msgstr "Logge nach..."
 
 #: data/defscript/popups.kvs:1261 data/defscript/popups.kvs:1269
 msgid "Choose Log Filename"
@@ -559,7 +559,7 @@ msgstr "wird nicht ignoriert"
 
 #: data/defscript/popups.kvs:1323
 msgid "Ignore As..."
-msgstr ""
+msgstr "Ignoriere als..."
 
 #: data/defscript/popups.kvs:1325 data/defscript/popups.kvs:1332
 #: data/defscript/popups.kvs:1339 data/defscript/popups.kvs:1346
@@ -576,7 +576,7 @@ msgstr ""
 #: data/defscript/popups.kvs:1493 data/defscript/popups.kvs:1500
 #: data/defscript/popups.kvs:1507
 msgid "Ignore As"
-msgstr ""
+msgstr "Ignoriere als"
 
 #: data/defscript/popups.kvs:1515
 msgid "Unignore"
@@ -610,7 +610,7 @@ msgstr "Schnelle Registrierung"
 #: data/defscript/popups.kvs:1564 data/defscript/popups.kvs:1569
 #: data/defscript/popups.kvs:1574 data/defscript/popups.kvs:1579
 msgid "Register As"
-msgstr ""
+msgstr "Registriere als"
 
 #: data/defscript/popups.kvs:1585
 msgid "Edit Registration..."
@@ -642,7 +642,7 @@ msgstr "Ein Benutzerbild auswählen"
 
 #: data/defscript/popups.kvs:1620
 msgid "Set As Default"
-msgstr ""
+msgstr "Setze als Standard"
 
 #: data/defscript/popups.kvs:1625
 msgid "Clear Default"
@@ -726,7 +726,7 @@ msgstr "Kicken/Bannen"
 
 #: data/defscript/popups.kvs:1805
 msgid "with..."
-msgstr ""
+msgstr "mit..."
 
 #: data/defscript/popups.kvs:1807
 msgid "Kick/Ban Reason"
@@ -742,7 +742,7 @@ msgstr "&Kick/Ban"
 
 #: data/defscript/popups.kvs:1818
 msgid "Configure Ban Mask..."
-msgstr ""
+msgstr "Bannmaske konfigurieren..."
 
 #: data/defscript/toolbars.kvs:3
 msgid "IRC Context"
@@ -759,81 +759,3 @@ msgstr "Hilfe"
 #: data/defscript/toolbars.kvs:35
 msgid "Scripting"
 msgstr "Skripte"
-
-#~ msgid "Channels"
-#~ msgstr "Channels"
-
-#~ msgid "Configure ban mask..."
-#~ msgstr "Ban-Maske einrichten …"
-
-#~ msgid "Copy To Clipboard"
-#~ msgstr "Zur Zwischenablage kopieren"
-
-#~ msgid "Highlight as"
-#~ msgstr "Hervorheben als"
-
-#~ msgid "Ignore as"
-#~ msgstr "Ignoriere als"
-
-#~ msgid "Ignore as..."
-#~ msgstr "Ignoriere als …"
-
-#~ msgid "Log To Default File"
-#~ msgstr "Loggen zur Standarddatei"
-
-#~ msgid "Log To..."
-#~ msgstr "Logge nach …"
-
-#~ msgid "Look Up "
-#~ msgstr "Nachschlagen "
-
-#~ msgid "Maximize"
-#~ msgstr "Maximieren"
-
-#~ msgid "Minimize"
-#~ msgstr "Minimieren"
-
-#~ msgid "Open "
-#~ msgstr "Öffnen "
-
-#~ msgid "Register as"
-#~ msgstr "Registriere als"
-
-#~ msgid "Restore"
-#~ msgstr "Wiederherstellen"
-
-#~ msgid "Secure send to"
-#~ msgstr "Sicheres Senden an"
-
-#~ msgid "Set as Default"
-#~ msgstr "Als Standard setzen"
-
-#~ msgid "Set window props as default"
-#~ msgstr "Fenstereigenschaften als Standard setzen"
-
-#~ msgid "Stop Auto-Joining Channel on Network '?s'"
-#~ msgstr "Auf Netzwerk ›?s‹ Channel nicht mehr automatisch betreten"
-
-#~ msgid "Stop Auto-Joining Channel on Server '?s'"
-#~ msgstr "Auf Server ›?s‹ Channel nicht mehr automatisch betreten"
-
-#~ msgid "Telnet to "
-#~ msgstr "Telnet zu "
-
-#~ msgid "Traceroute to "
-#~ msgstr "Traceroute zu "
-
-#~ msgid "Traceroute6 to "
-#~ msgstr "Traceroute6 zu "
-
-#~ msgid "Window operations"
-#~ msgstr "Fensteroperationen"
-
-#~ msgid "t (Connection stats?)"
-#~ msgstr "t (Verbindungsstatistiken?)"
-
-#~ msgid "y (y-Lines)"
-#~ msgstr "y (y-Lines)"
-
-#~ msgid "Log To Default File,"
-#~ msgstr "Loggen zur Standarddatei,"

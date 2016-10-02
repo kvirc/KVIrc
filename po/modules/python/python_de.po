@@ -2,12 +2,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Markus Rennings <kvirc@mrmx.de>, 2010.
+# Philipp Kloke <philipp.kloke@web.de>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-02 15:08+0200\n"
-"PO-Revision-Date: 2016-10-02 15:08+0200\n"
+"PO-Revision-Date: 2016-10-02 18:30+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -20,6 +21,8 @@ msgstr ""
 #: src/modules/python/libkvipython.cpp:42
 msgid "The pythoncore module can't be loaded: Python support not available"
 msgstr ""
+"Das Pythoncore-Modul kann nicht geladen werden: Python-Unterstützung nicht "
+"verfügbar"
 
 #: src/modules/python/libkvipython.cpp:43
 msgid "To see more details about loading failure try /pythoncore.load"
@@ -28,7 +31,7 @@ msgstr "Für mehr Details über den Lade-Fehler siehe /pythoncore.load"
 #: src/modules/python/libkvipython.cpp:56
 msgid ""
 "This KVIrc executable has been compiled without Python scripting support"
-msgstr ""
+msgstr "Dieser KVIrc-Build wurde ohne Python-Scripting-Unterstützung erstellt"
 
 #: src/modules/python/libkvipython.cpp:417
 #: src/modules/python/libkvipython.cpp:483
@@ -36,6 +39,8 @@ msgid ""
 "The pythoncore module failed to execute the code: something is wrong with "
 "the Python support"
 msgstr ""
+"Das Pythoncore-Modul konnte den Code nicht ausführen: Irgendwas ist falsch "
+"mit der Python-Unterstützung"
 
 #: src/modules/python/libkvipython.cpp:429
 msgid "Python execution error:"
@@ -43,24 +48,4 @@ msgstr "Python-Ausführungsfehler:"
 
 #: src/modules/pythoncore/libkvipythoncore.cpp:113
 msgid "Internal error: Python interpreter not initialized"
-msgstr ""
-
-#~ msgid "Internal error: python interpreter not initialized"
-#~ msgstr "Interner Fehler: Python-Interpreter nicht initialisiert"
-
-#~ msgid "The pythoncore module can't be loaded: python support not available"
-#~ msgstr ""
-#~ "Das Modul pythoncore kann nicht geladen werden: Python-Unterstützung "
-#~ "nicht verfügbar"
-
-#~ msgid ""
-#~ "The pythoncore module failed to execute the code: something is wrong with "
-#~ "the python support"
-#~ msgstr ""
-#~ "Das pythoncore-Modul konnte den Code nicht ausführen: Irgendwas ging "
-#~ "schief mit der Python-Unterstützung"
-
-#~ msgid ""
-#~ "This KVIrc executable has been compiled without python scripting support"
-#~ msgstr ""
-#~ "Diese KVIrc-Version wurde ohne Python-Scripting-Unterstützung kompiliert"
+msgstr "Interner Fehler: Python-Interpreter nicht initialisiert"

@@ -5,12 +5,13 @@
 #
 # Dušan Hokův <dusan@mirc.cz>, 2005.
 # Markus Rennings <kvirc@mrmx.de>, 2007, 2008.
+# Philipp Kloke <philipp.kloke@web.de>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: torrent_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-02 15:08+0200\n"
-"PO-Revision-Date: 2016-10-02 15:08+0200\n"
+"PO-Revision-Date: 2016-10-02 17:40+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
 "Language: de\n"
@@ -25,6 +26,8 @@ msgid ""
 "An interface for KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
 msgstr ""
+"Eine Schnittstelle für KDEs hervorragenden KTorrent-Client.\n"
+"Sie können ihn auf http://www.ktorrent.org herunterladen.\n"
 
 #: src/modules/torrent/StatusBarApplet.cpp:44
 #: src/modules/torrent/StatusBarApplet.cpp:60
@@ -74,13 +77,3 @@ msgstr "Benutze Client Schnittstelle »%Q«."
 #: src/modules/torrent/libkvitorrent.cpp:709
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Ungültige Client-Schnittstelle »%Q«!"
-
-#~ msgid ""
-#~ "An interface to KDE's excellent KTorrent client.\n"
-#~ "Download it from http://www.ktorrent.org\n"
-#~ msgstr ""
-#~ "Eine Schnittstelle für KTorrent.\n"
-#~ "Sie können es von http://www.ktorrent.org herunterladen.\n"
-
-#~ msgid "Index out of range: %d [0-%d]!"
-#~ msgstr "Index ausserhalb des gültigen Bereichs: %d [0-%d]!"

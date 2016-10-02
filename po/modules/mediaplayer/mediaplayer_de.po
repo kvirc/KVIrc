@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the KVIrc package.
 #
 # Markus Rennings <markus@rennings.net>, 2007, 2008, 2009, 2010, 2011, 2012.
+# Philipp Kloke <philipp.kloke@web.de>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-02 15:06+0200\n"
-"PO-Revision-Date: 2016-10-02 15:06+0200\n"
+"PO-Revision-Date: 2016-10-03 09:17+0200\n"
 "Last-Translator: Markus Rennings <markus@rennings.net>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -24,6 +25,10 @@ msgid ""
 "You can download it from http://amip.tools-for.net\n"
 "To use this interface you must install AMIP plugin for your player."
 msgstr ""
+"Eine Schnittstelle für das AMIP-Plugin.\n"
+"Sie können es von http://amip.tools-for.net herunterladen.\n"
+"Um diese Schnittstelle zu nutzen, muss das AMIP-Plugin für Ihren Media-"
+"Player installiert werden."
 
 #: src/modules/mediaplayer/MpInterface.cpp:43
 msgid "Function not implemented"
@@ -31,7 +36,7 @@ msgstr "Funktion nicht implementiert"
 
 #: src/modules/mediaplayer/MpWinampInterface.cpp:182
 msgid "Can't find a running Winamp window"
-msgstr ""
+msgstr "Kann kein laufendes Winamp-Fenster finden"
 
 #: src/modules/mediaplayer/MpWinampInterface.cpp:191
 msgid ""
@@ -41,6 +46,11 @@ msgid ""
 "plugin found in the KVIrc distribution directory to the Winamp plugins "
 "folder and restart winamp."
 msgstr ""
+"Eine Schnittstelle für den Winamp Media-Player.\n"
+"Laden Sie es von http://www.winamp.com herunter.\n"
+"Um alle Funktionen dieser Schnittstelle zu nutzen, müssen Sie das gen_kvirc."
+"dll-Plugin aus ihrer KVIrc-Distribution in den Winamp-Plugin-Ordner kopieren "
+"und Winamp neu starten."
 
 #: src/modules/mediaplayer/MpWinampInterface.cpp:315
 #: src/modules/mediaplayer/MpWinampInterface.cpp:351
@@ -48,36 +58,48 @@ msgid ""
 "The Winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"
 msgstr ""
+"Das Winamp-Plugin wurde nicht korrekt installiert. Lesen Sie /help "
+"mediaplayer.nowplaying"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:339
 msgid ""
 "An interface for the Audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
 msgstr ""
+"Eine Schnittstelle für den Audacious Media-Player.\n"
+"Laden Sie es von http://audacious-media-player.org herunter.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:473
 msgid ""
 "An interface for BMPx.\n"
 "Download it from http://sourceforge.net/projects/beepmp\n"
 msgstr ""
+"Eine Schnittstelle für BMPx.\n"
+"Laden Sie es von http://sourceforge.net/projects/beepmp herunter.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:494
 msgid ""
 "An interface for Amarok2.\n"
 "Download it from http://amarok.kde.org\n"
 msgstr ""
+"Eine Schnittstelle für Amarok2.\n"
+"Laden Sie es von http://amarok.kde.org herunter.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:509
 msgid ""
 "An interface for Qmmp.\n"
 "Download it from http://qmmp.ylsoftware.com\n"
 msgstr ""
+"Eine Schnittstelle für Qmmp.\n"
+"Laden Sie es von http://qmmp.ylsoftware.com herunter.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:524
 msgid ""
 "An interface for the XMMS2 media player.\n"
 "Download it from http://xmms2.org\n"
 msgstr ""
+"Eine Schnittstelle für den XMMS2 Media-Player.\n"
+"Laden Sie es von http://xmms2.org herunter.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:539
 msgid ""
@@ -86,12 +108,19 @@ msgid ""
 "To use it you have to install also the MPRIS addon available at http://"
 "addons.songbirdnest.com/addon/1626.\n"
 msgstr ""
+"Eine Schnittstelle für den Mozilla Songbird Media-Player.\n"
+"Laden Sie es von http://www.getsongbird.com herunter.\n"
+"Um sie zu nutzen, müssen Sie auch das MPRIS-Addon von http://addons."
+"songbirdnest.com/addon/1626 installieren.\n"
+"\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:561
 msgid ""
 "An interface for Totem.\n"
 "Download it from http://projects.gnome.org/totem/\n"
 msgstr ""
+"Eine Schnittstelle für Totem.\n"
+"Laden Sie es von http://projects.gnome.org/totem/ herunter.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:576
 msgid ""
@@ -100,24 +129,34 @@ msgid ""
 "You need to manually enable the D-Bus control\n"
 "interface in the VLC preferences\n"
 msgstr ""
+"Eine Schnittstelle für VLC.\n"
+"Laden Sie es von http://www.videolan.org/ herunter.\n"
+"Sie müssen die D-Bus-Schnittstelle manuell in den\n"
+"VLC-Einstellungen aktivieren.\n"
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:593
 msgid ""
 "An interface for Clementine.\n"
 "Download it from http://www.clementine-player.org/\n"
 msgstr ""
+"Eine Schnittstelle für Clementine.\n"
+"Laden Sie es von http://www.clementine-player.org/ herunter.\n"
 
 #: src/modules/mediaplayer/MpXmmsInterface.cpp:38
 msgid ""
 "An interface for the UNIX XMMS media player.\n"
 "Download it from http://legacy.xmms2.org\n"
 msgstr ""
+"Eine Schnittstelle für den UNIX XMMS Media-Player.\n"
+"Laden Sie es von http://legacy.xmms2.org herunter.\n"
 
 #: src/modules/mediaplayer/MpXmmsInterface.cpp:46
 msgid ""
 "An interface for the UNIX Audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
 msgstr ""
+"Eine Schnittstelle für den UNIX Audacious Media-Player.\n"
+"Laden Sie es von http://audacious-media-player.org herunter.\n"
 
 #: src/modules/mediaplayer/MpXmmsInterface.cpp:125
 msgid "Can't load the player library (%1)"
@@ -136,6 +175,7 @@ msgstr "Probiere Schnittstelle »%1«: %2 Punkte."
 msgid ""
 "Not sure about the results, trying a second, more aggressive detection pass"
 msgstr ""
+"Ergebnisse unklar; Versuche einen zweiten, agressiveren Erkennungsdurchauf"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:101
 msgid "Choosing media player interface \"%Q\""
@@ -179,154 +219,3 @@ msgstr ""
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1601
 msgid "Last interface error: "
 msgstr "Letzter Schnittstellenfehler: "
-
-#~ msgid ""
-#~ "An interface to Amarok2.\n"
-#~ "Download it from http://amarok.kde.org\n"
-#~ msgstr ""
-#~ "Eine Schnittstelle zu Amarok2.\n"
-#~ "Sie können ihn unter http://amarok.kde.org herunterladen.\n"
-
-#~ msgid ""
-#~ "An interface to BMPx.\n"
-#~ "Download it from http://sourceforge.net/projects/beepmp\n"
-#~ msgstr ""
-#~ "Eine Schnittstelle für BMPx.\n"
-#~ "Sie können ihn unter http://sourceforge.net/projects/beepmp "
-#~ "herunterladen.\n"
-
-#~ msgid ""
-#~ "An interface to Clementine.\n"
-#~ "Download it from http://www.clementine-player.org/\n"
-#~ msgstr ""
-#~ "Eine Schnittstelle zu Clementine.\n"
-#~ "Sie können es unter http://www.cementine-player.org/ herunterladen.\n"
-
-#~ msgid ""
-#~ "An interface to Qmmp.\n"
-#~ "Download it from http://qmmp.ylsoftware.com\n"
-#~ msgstr ""
-#~ "Eine Schnittstelle für Qmmp.\n"
-#~ "Sie können es unter http://qmmp.ylsoftware.com/ herunterladen.\n"
-
-#~ msgid ""
-#~ "An interface to Totem.\n"
-#~ "Download it from http://projects.gnome.org/totem/\n"
-#~ msgstr ""
-#~ "Eine Schnittstelle zu Totem.\n"
-#~ "Sie können es unter http://projects.gnome.org/totem/ herunterladen.\n"
-
-#~ msgid ""
-#~ "An interface to Vlc.\n"
-#~ "Download it from http://www.videolan.org/\n"
-#~ "You need to manually enable the DBus control\n"
-#~ "interface in the Vlc preferences\n"
-#~ msgstr ""
-#~ "Eine Schnittstelle zu Vlc.\n"
-#~ "Sie können es unter http://www.videolan.org/ herunterladen\n"
-#~ "Die DBus-Kontroll-Schnittstelle muss manuell in den Vlc-Einstellungen "
-#~ "aktiviert werden.\n"
-
-#~ msgid ""
-#~ "An interface to the AMIP plug-in.\n"
-#~ "You can download it from http://amip.tools-for.net\n"
-#~ "To use this interface you must install AMIP plug-in for your player."
-#~ msgstr ""
-#~ "Eine Schnittstelle zum AMIP-Zusatzmodul (plugin).\n"
-#~ "Es kann unter http://amip.tools-for.net heruntergeladen werden.\n"
-#~ " Um diese Schnittstelle zu nutzen, muss dass AMIP-Zusatzmodul für Ihren "
-#~ "Player installiert werden."
-
-#~ msgid ""
-#~ "An interface to the Mozilla Songbird media player.\n"
-#~ "Download it from http://www.getsongbird.com.\n"
-#~ "To use it you have to install also the MPRIS addon available at http://"
-#~ "addons.songbirdnest.com/addon/1626.\n"
-#~ msgstr ""
-#~ "Eine Schnittstelle für den Mozilla Songbird Media Player,\n"
-#~ "der von http://www.getsongbird.com heruntergeladen werden kann.\n"
-#~ "Um es nutzen zu können, muss auch die MPRIS-Erweiterung installiert sein "
-#~ "(http://addons.songbirdnest.com/addon/1626).\n"
-
-#~ msgid ""
-#~ "An interface to the Spotify music streaming service.\n"
-#~ "It is only available for certain countries in Europe.\n"
-#~ "You can download it from http://www.spotify.com.\n"
-#~ msgstr ""
-#~ "Ein Interface zum Spotify Musikstream-Service.\n"
-#~ "Es ist nur in einiges europäischen Ländern verfügbar.\n"
-#~ "Es kann unter http://www.spotify.com heruntergeladen werden.\n"
-
-#~ msgid ""
-#~ "An interface to the Xmms2 media player.\n"
-#~ "Download it from http://xmms2.org\n"
-#~ msgstr ""
-#~ "Eine Schnittstelle für den Xmms2-Media-Player.\n"
-#~ "Sie können ihn unter http://xmms2.org herunterladen.\n"
-
-#~ msgid ""
-#~ "An interface to the popular UNIX audacious media player.\n"
-#~ "Download it from http://audacious-media-player.org\n"
-#~ msgstr ""
-#~ "Eine Schnittstelle für den beliebten UNIX audacious media player.\n"
-#~ "Sie können ihn unter http://audacious-media-player.org herunterladen.\n"
-
-#~ msgid ""
-#~ "An interface to the popular UNIX xmms media player.\n"
-#~ "Download it from http://legacy.xmms2.org\n"
-#~ msgstr ""
-#~ "Eine Schnittstelle für den beliebten UNIX Player xmms.\n"
-#~ "Sie können ihn unter http://legacy.xmms2.org herunterladen.\n"
-
-#~ msgid ""
-#~ "An interface to the popular Winamp media player.\n"
-#~ "You can download it from http://www.winamp.com.\n"
-#~ "To use all the features of this interface you must copy the gen_kvirc.dll "
-#~ "plugin found in the KVIrc distribution directory to the Winamp plugins "
-#~ "folder and restart winamp."
-#~ msgstr ""
-#~ "Eine Schnittstelle für den beliebten Winamp Player.\n"
-#~ "Sie können ihn unter http://www.winamp.com herunterladen.\n"
-#~ "Um alle Funktionen zu nutzen, müssen Sie die Datei gen_kvirc.dll aus dem "
-#~ "KVirc Ordner in den Plugin-Ordner von Winamp kopieren und Winamp neu "
-#~ "starten."
-
-#~ msgid ""
-#~ "An interface to the popular audacious media player.\n"
-#~ "Download it from http://audacious-media-player.org\n"
-#~ msgstr ""
-#~ "Eine Schnittstelle für den beliebten audacious media player.\n"
-#~ "Sie können ihn unter http://audacious-media-player.org herunterladen.\n"
-
-#~ msgid "Can't find a running winamp window"
-#~ msgstr "Keine Winamp-Instanz gefunden."
-
-#~ msgid ""
-#~ "Not sure about the results, trying a second, more agressive detection pass"
-#~ msgstr ""
-#~ "Ergebnis war nicht eindeutig. Versuche einen zweiten, aggressiveren "
-#~ "Durchlauf."
-
-#~ msgid "Spotify is not running"
-#~ msgstr "Spotify läuft nicht"
-
-#~ msgid ""
-#~ "The winamp plugin has not been installed properly. Check /help "
-#~ "mediaplayer.nowplaying"
-#~ msgstr ""
-#~ "Das Winamp Plugin wurde nicht richtig installiert. Bitte schauen Sie "
-#~ "sich /help mediaplayer an.nowplaying"
-
-#~ msgid "An interface to the AmaroK KDE media player."
-#~ msgstr "Schnittstelle für AmaroK."
-
-#~ msgid "An interface to the Juk KDE media player."
-#~ msgstr "Schnittstelle für Juk."
-
-#~ msgid ""
-#~ "An interface to the Xmms2 media player.\n"
-#~ "Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
-#~ msgstr ""
-#~ "Eine Schnittstelle für den Xmms2 Media Player.\n"
-#~ "Sie können ihn unter http://wiki.xmms2.xmms.se/index.php/Main_Page "
-#~ "herunterladen.\n"

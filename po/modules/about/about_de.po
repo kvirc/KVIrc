@@ -1,12 +1,13 @@
 # translation of about_de.po to german
 # Christoph Thielecke <crissi99@gmx.de>, 2003, 2004.
 # Markus Rennings <kvirc@mrmx.de>, 2007, 2008, 2009.
+# Philipp Kloke <philipp.kloke@web.de>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: about_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-02 15:05+0200\n"
-"PO-Revision-Date: 2016-10-02 15:05+0200\n"
+"PO-Revision-Date: 2016-10-02 17:27+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -18,7 +19,7 @@ msgstr ""
 
 #: src/modules/about/AboutDialog.cpp:79
 msgid "About KVIrc"
-msgstr ""
+msgstr "Über KVIrc"
 
 #: src/modules/about/AboutDialog.cpp:80
 msgid "Close"
@@ -38,11 +39,11 @@ msgstr "Laufzeitinformationen"
 
 #: src/modules/about/AboutDialog.cpp:123 src/modules/about/AboutDialog.cpp:162
 msgid "System name"
-msgstr ""
+msgstr "System-Name"
 
 #: src/modules/about/AboutDialog.cpp:131
 msgid "System version"
-msgstr ""
+msgstr "System-Version"
 
 #: src/modules/about/AboutDialog.cpp:135
 msgid "Architecture"
@@ -50,11 +51,11 @@ msgstr "Architektur"
 
 #: src/modules/about/AboutDialog.cpp:139 src/modules/about/AboutDialog.cpp:187
 msgid "Qt version"
-msgstr ""
+msgstr "Qt-Version"
 
 #: src/modules/about/AboutDialog.cpp:143
 msgid "Qt theme"
-msgstr ""
+msgstr "Qt-Theme"
 
 #: src/modules/about/AboutDialog.cpp:148
 msgid "Build Info"
@@ -62,39 +63,39 @@ msgstr "Erstellungsinfo"
 
 #: src/modules/about/AboutDialog.cpp:150
 msgid "Build date"
-msgstr ""
+msgstr "Build-Datum"
 
 #: src/modules/about/AboutDialog.cpp:154
 msgid "Sources date"
-msgstr ""
+msgstr "Quellcode-Datum"
 
 #: src/modules/about/AboutDialog.cpp:158
 msgid "Revision number"
-msgstr ""
+msgstr "Revisionsnummer"
 
 #: src/modules/about/AboutDialog.cpp:166
 msgid "CPU name"
-msgstr ""
+msgstr "CPU-Name"
 
 #: src/modules/about/AboutDialog.cpp:170
 msgid "Build command"
-msgstr ""
+msgstr "Build-Kommando"
 
 #: src/modules/about/AboutDialog.cpp:174
 msgid "Build flags"
-msgstr ""
+msgstr "Buildflags"
 
 #: src/modules/about/AboutDialog.cpp:179
 msgid "Compiler name"
-msgstr ""
+msgstr "Compiler-Name"
 
 #: src/modules/about/AboutDialog.cpp:183
 msgid "Compiler flags"
-msgstr ""
+msgstr "Compilerflags"
 
 #: src/modules/about/AboutDialog.cpp:191
 msgid "Features"
-msgstr ""
+msgstr "Funktionen"
 
 #: src/modules/about/AboutDialog.cpp:197
 msgid "Executable Information"
@@ -110,49 +111,10 @@ msgid ""
 "It MUST be included in the distribution...\n"
 "Please report to <pragma at kvirc dot net>"
 msgstr ""
+"Ups! Die Lizenzdatei kann nicht gefunden werden.\n"
+"Sie MUSS in der Distribution enthalten sein...\n"
+"Bitte melden Sie dies an <pragma at kvirc dot net>"
 
 #: src/modules/about/AboutDialog.cpp:235
 msgid "License"
 msgstr "Lizenz"
-
-#~ msgid "About KVIrc..."
-#~ msgstr "Über KVirc..."
-
-#~ msgid "Build Command"
-#~ msgstr "Erstellungsbefehl"
-
-#~ msgid "Build Date"
-#~ msgstr "Erstellungsdatum"
-
-#~ msgid "Build Flags"
-#~ msgstr "Erstellungs-Flags"
-
-#~ msgid "CPU Name"
-#~ msgstr "CPU-Name"
-
-#~ msgid "Compiler Flags"
-#~ msgstr "Compiler-Flags"
-
-#~ msgid "Compiler Name"
-#~ msgstr "Compiler-Name"
-
-#~ msgid ""
-#~ "Oops... Can't find the license file...\n"
-#~ "It MUST be included in the distribution...\n"
-#~ "Please report to <pragma at kvirc dot net>"
-#~ msgstr ""
-#~ "Ups... Die Lizenzdatei kann nicht gefunden werden...\n"
-#~ "Diese MUSS in der Distribution enthalten sein...\n"
-#~ "Bitte melden Sie dies an <pragma at kvirc dot net>."
-
-#~ msgid "Revision Number"
-#~ msgstr "Revisionsnummer"
-
-#~ msgid "Sources Date"
-#~ msgstr "Datum der Quelldateien"
-
-#~ msgid "System Name"
-#~ msgstr "Systemname"
-
-#~ msgid "System Version"
-#~ msgstr "Systemversion"

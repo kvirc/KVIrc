@@ -5,12 +5,13 @@
 # Christoph Thielecke <crissi99@gmx.de>, 2002,2003, 2004, 2005.
 # Christoph Thielecke <u15119@hs-harz.de>, 2003.
 # Markus Rennings <markus@rennings.net>, 2007, 2009, 2010, 2011, 2012.
+# Philipp Kloke <philipp.kloke@web.de>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: dcc_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-02 15:05+0200\n"
-"PO-Revision-Date: 2016-10-02 15:05+0200\n"
+"PO-Revision-Date: 2016-10-05 20:54+0200\n"
 "Last-Translator: Markus Rennings <markus@rennings.net>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -22,7 +23,7 @@ msgstr ""
 
 #: src/modules/dcc/DccUtils.cpp:125
 msgid "Can't retrieve a suitable local IPv4 address"
-msgstr ""
+msgstr "Passende lokale IPv4-Adresse kann nicht abgefragt werden"
 
 #: src/modules/dcc/DccUtils.cpp:148
 #, c-format
@@ -30,6 +31,9 @@ msgid ""
 "Can't listen on default interface '%s': fix it in the options dialog, "
 "disabling the option (so the next DCC will work)"
 msgstr ""
+"Es kann nicht an Standardschnittstelle ›%s‹ auf eine Verbindung gewartet "
+"werden: Bitte im Optionen-Dialog ändern; Option wird deaktiviert (so dass "
+"nächster DCC funktionieren wird)"
 
 #: src/modules/dcc/DccBroker.cpp:173 src/modules/dcc/DccBroker.cpp:923
 msgid "Choose Files to Send - KVIrc"
@@ -138,6 +142,14 @@ msgid ""
 "avatars automatically by setting the option "
 "<tt>boolAutoAcceptIncomingAvatars</tt> to true.<br>"
 msgstr ""
+"<b>Hinweis:</b>Die Datei scheint ein Avatar zu sein, das Sie angefordert "
+"haben. Sie sollten ihren Namen nicht ändern. Speichern Sie sie an einem Ort, "
+"wo KVIrc sie finden kann, z.B. im ›avatars‹-, ›incoming‹- oder ›pics‹-"
+"Verzeichnis, ihrem home-Verzeichnis oder im Speicherverzeichnis für den "
+"eingehenden Dateityp. Der Standardspeicherort wird vermutlich funktionieren. "
+"Sie können KVIrc anweisen, eingehende Avatare automatisch zu akzeptieren, "
+"indem Sie die Option <tt>boolAutoAcceptIncomingAvatars</tt> auf true setzen."
+"<br>\v"
 
 #: src/modules/dcc/DccBroker.cpp:658
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
@@ -168,6 +180,9 @@ msgid ""
 "<br>Do you wish to<br><b>auto-rename</b> the new file, or<br><b>overwrite</"
 "b> the existing file?"
 msgstr ""
+"Die Datei ›<b>%1</b>‹ existiert bereits und ist größer als die angebotene "
+"Datei.<br>Soll die Datei<br><b>automatisch umbenannt</b> oder<br>die "
+"bestehende Datei <b>überschrieben</b> werden?"
 
 #: src/modules/dcc/DccBroker.cpp:890
 msgid "File %s exists, auto-renaming to %Q"
@@ -207,7 +222,7 @@ msgstr "Host %Q wird an Port %Q kontaktiert"
 #: src/modules/dcc/DccCanvasWindow.cpp:285
 #: src/modules/dcc/DccVoiceWindow.cpp:952
 msgid "DCC failed: %Q"
-msgstr ""
+msgstr "DCC fehlgeschlagen: %Q"
 
 #: src/modules/dcc/DccCanvasWindow.cpp:290
 #: src/modules/dcc/DccChatWindow.cpp:585 src/modules/dcc/DccVideoWindow.cpp:959
@@ -282,13 +297,15 @@ msgstr "[SSL-FEHLER]: %s"
 #: src/modules/dcc/DccVideoWindow.cpp:688
 #: src/modules/dcc/DccVideoWindow.cpp:799
 msgid "Can't send data: no active connection"
-msgstr ""
+msgstr "Daten können nicht gesendet werden: Keine aktive Verbindung"
 
 #: src/modules/dcc/DccChatWindow.cpp:351 src/modules/dcc/DccVideoWindow.cpp:735
 msgid ""
 "The encryption engine was not able to encrypt the current message (%Q): %Q, "
 "no data was sent to the remote end"
 msgstr ""
+"Die Verschlüsselungs-Engine war nicht imstande, die aktuelle Meldung (%Q) zu "
+"verschlüsseln: %Q, keine Daten wurden gesendet"
 
 #: src/modules/dcc/DccChatWindow.cpp:430 src/modules/dcc/DccVideoWindow.cpp:813
 #: src/modules/dcc/DccVoiceWindow.cpp:870
@@ -300,6 +317,8 @@ msgid ""
 "The following message appears to be encrypted, but the encryption engine "
 "failed to decode it: %Q"
 msgstr ""
+"Die folgende Meldung scheint verschlüsselt zu sein, aber die "
+"Entschlüsselungs-Engine konnte sie nicht entziffern: %Q"
 
 #: src/modules/dcc/DccChatWindow.cpp:556
 msgid "DCC %Q failed: %Q"
@@ -347,13 +366,15 @@ msgstr "Datei existiert bereits - KVIrc"
 
 #: src/modules/dcc/DccFileTransfer.cpp:377
 msgid "WARNING: the peer is sending garbage data past the end of the file"
-msgstr ""
+msgstr "WARNUNG: Die Gegenstelle sendet Mülldaten nach dem Ende der Datei"
 
 #: src/modules/dcc/DccFileTransfer.cpp:378
 msgid ""
 "WARNING: ignoring data past the declared end of file and closing the "
 "connection"
 msgstr ""
+"WARNUNG: Daten hinter dem erklärten Dateiende werden ignoriert und die "
+"Verbindung geschlossen"
 
 #: src/modules/dcc/DccFileTransfer.cpp:542
 msgid ""
@@ -371,6 +392,7 @@ msgstr ""
 #: src/modules/dcc/DccFileTransfer.cpp:965
 msgid "WARNING: received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
+"WARNUNG: Empfangende Daten in DCC TSEND, es sollte keine Bestätigungen geben"
 
 #: src/modules/dcc/DccFileTransfer.cpp:1198
 msgid "TRANSFER %1"
@@ -509,6 +531,8 @@ msgstr "»RESUME«-Anfrage mit nicht angepasstem Port (%1) wird verarbeitet"
 #: src/modules/dcc/DccFileTransfer.cpp:2400
 msgid "Invalid RESUME request: invalid file name (got '%1' but should be '%2')"
 msgstr ""
+"Ungültige RESUME-Anfrage: Ungültiger Dateiname (got ›%1‹, aber sollte ›%2‹ "
+"sein)"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2407
 msgid "Processing RESUME request with broken filename (%1)"
@@ -520,7 +544,7 @@ msgstr "Interner Fehler in der RESUME-Anfrage"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2422
 msgid "Invalid RESUME request: position %1 is larger than file size"
-msgstr ""
+msgstr "Ungültige RESUME-Anfrage: Position %1 ist größer als die Dateigröße"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2426
 msgid "Accepting RESUME request, transfer will begin at position %1"
@@ -529,15 +553,15 @@ msgstr ""
 
 #: src/modules/dcc/DccFileTransfer.cpp:2464
 msgid "Configure Bandwidth for DCC Transfer %1"
-msgstr ""
+msgstr "Konfiguriere Bandbreite für DCC-Transfer %1"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2467
 msgid "Limit upload bandwidth to:"
-msgstr ""
+msgstr "Beschränke Upload-Bandbreite auf:"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2467
 msgid "Limit download bandwidth to:"
-msgstr ""
+msgstr "Beschränke Download-Bandbreite auf:"
 
 #: src/modules/dcc/DccFileTransfer.cpp:2484
 msgid "bytes/sec"
@@ -604,6 +628,8 @@ msgid ""
 "Half-duplex soundcard detected, you will not be able to talk and listen at "
 "the same time"
 msgstr ""
+"Half-Duplex-Soundkarte erkannt; Sie werden nicht imstande sein, gleichzeitig "
+"zu senden und zu empfangen"
 
 #: src/modules/dcc/DccVoiceWindow.cpp:219
 #, c-format
@@ -617,6 +643,8 @@ msgstr ""
 #: src/modules/dcc/DccVoiceWindow.cpp:280
 msgid "Oops! Failed to test the soundcard capabilities, expect problems..."
 msgstr ""
+"Ups! Test der Soundkarten-Fähigkeiten fehlgeschlagen. Sie müssen mit "
+"Problemen rechnen..."
 
 #: src/modules/dcc/DccVoiceWindow.cpp:705
 msgid "Input buffer"
@@ -775,7 +803,7 @@ msgstr "Ungültige Samplerate angegeben: Voreinstellung 8000 wird verwendet"
 
 #: src/modules/dcc/libkvidcc.cpp:1135
 msgid "Invalid codec specified, defaulting to 'ADPCM'"
-msgstr ""
+msgstr "Ungültiger Codec angegeben, falle zurück auf ›ADPCM‹"
 
 #: src/modules/dcc/libkvidcc.cpp:1180
 msgid "DCC VIDEO support not enabled at compilation time"
@@ -800,7 +828,7 @@ msgstr "Diese DCC-Sitzung ist keine DCC-Übertragungs- (transfer)-Sitzung"
 
 #: src/modules/dcc/libkvidcc.cpp:2433
 msgid "The IRC context that originated the DCC doesn't exists anymore."
-msgstr ""
+msgstr "Der IRC-Kontext, aus dem dieser DCC hervorging, existiert nicht mehr."
 
 #: src/modules/dcc/libkvidcc.cpp:2669
 msgid "The specified window identifier is not valid"
@@ -835,6 +863,8 @@ msgstr ""
 #: src/modules/dcc/libkvidcc.cpp:2881
 msgid "Unable to get SSL information: no peer certificate available"
 msgstr ""
+"Beziehen der SSL-Informationen nicht möglich: Kein Zertifikat der "
+"Gegenstelle verfügbar"
 
 #: src/modules/dcc/libkvidcc.cpp:2889
 msgid "Unable to get SSL information: query not recognized"
@@ -884,6 +914,8 @@ msgid ""
 "The above request is broken: the second parameter is '%s' and should be "
 "'chat', trying to continue"
 msgstr ""
+"Die obige Anfrage ist falsch: Der zweite Parameter ist ›%s‹ und sollte "
+"›chat‹ sein; Versuche, fortzufahren"
 
 #: src/modules/dcc/requests.cpp:280
 msgid ""
@@ -904,13 +936,15 @@ msgstr ""
 
 #: src/modules/dcc/requests.cpp:336
 msgid "It seems that I haven't requested this DCC chat"
-msgstr ""
+msgstr "Es scheint, dass ich diesen DCC-Chat nicht angefordert habe"
 
 #: src/modules/dcc/requests.cpp:464 src/modules/dcc/requests.cpp:766
 msgid ""
 "The above request is broken: the fourth parameter should be the file size "
 "but doesn't appear to be an unsigned number; trying to continue"
 msgstr ""
+"Die obige Anfrage ist falsch: Der vierte Parameter sollte die Dateigröße "
+"sein, aber ist keine vorzeichenlose Zahl; Versuche, fortzufahren"
 
 #: src/modules/dcc/requests.cpp:474 src/modules/dcc/requests.cpp:484
 #: src/modules/dcc/requests.cpp:636 src/modules/dcc/requests.cpp:776
@@ -918,6 +952,8 @@ msgid ""
 "The above request is broken: the filename contains path components, "
 "stripping the leading path and trying to continue"
 msgstr ""
+"Die obige Anfrage ist falsch: Der Dateiname enthält Pfadkomponenten; "
+"Versuche, den voranstehenden Pfad zu entfernen und fortzufahren"
 
 #: src/modules/dcc/requests.cpp:498
 msgid ""
@@ -931,6 +967,8 @@ msgstr ""
 msgid ""
 "Can't proceed with DCC RECV: transfer not initiated for file %1 on port %2"
 msgstr ""
+"Kann mit DCC-RECV nicht fortfahren: Transfer von Datei %1 an Port %2 nicht "
+"initiiert"
 
 #: src/modules/dcc/requests.cpp:589
 msgid "Invalid resume position argument '%1'"
@@ -941,6 +979,8 @@ msgid ""
 "Can't proceed with DCC SEND: transfer not initiated for file %1 on port %2, "
 "or invalid resume size"
 msgstr ""
+"Kann mit DCC-SEND nicht fortfahren: Transfer von Datei %1 an Port %2 nicht "
+"initiiert, oder ungültige Fortsetzungs-Größe"
 
 #: src/modules/dcc/requests.cpp:626
 msgid ""
@@ -960,7 +1000,7 @@ msgstr ""
 
 #: src/modules/dcc/requests.cpp:664
 msgid "Invalid RECV request: position %1 is larger than file size"
-msgstr ""
+msgstr "Ungültige RECV-Anfrage: Position %1 ist größer als die Dateigröße"
 
 #: src/modules/dcc/requests.cpp:717
 msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
@@ -1038,11 +1078,14 @@ msgid ""
 "The above request can't be accepted: DCC VOICE support not enabled at "
 "compilation time "
 msgstr ""
+"Die obige Anfrage kann nicht akzeptiert werden: DCC-VOICE-Unterstützung "
+"nicht aktiviert zur Compilezeit"
 
 #: src/modules/dcc/requests.cpp:1032 src/modules/dcc/requests.cpp:1105
 #, c-format
 msgid "The above request can't be accepted: unsupported codec '%s'"
 msgstr ""
+"Die obige Anfrage kann nicht akzeptiert werden: Nicht unterstützer Codec ›%s‹"
 
 #: src/modules/dcc/requests.cpp:1045
 #, c-format
@@ -1050,205 +1093,17 @@ msgid ""
 "The above request appears to be broken: invalid sample-rate '%s', defaulting "
 "to 8000"
 msgstr ""
+"Die obige Anfrage scheint beschädigt zu sein: Ungültige Samplerate ›%s‹; "
+"Nutze Standardwert 8000"
 
 #: src/modules/dcc/requests.cpp:1095
 msgid ""
 "The above request can't be accepted: DCC VIDEO support not enabled at "
 "compilation time "
 msgstr ""
+"Die obige Anfrage kann nicht akzeptiert werden: DCC-VIDEO-Unterstützung "
+"nicht aktiviert zur Compilezeit"
 
 #: src/modules/dcc/requests.cpp:1237
 msgid "Unknown DCC type '%1'"
 msgstr "Unbekannter DCC-Typ ›%1‹"
-
-#~ msgid ""
-#~ "<center><b>Note:</b></center>The file appears to be an avatar that you "
-#~ "have requested. You should not change its filename. Save it in a location "
-#~ "where KVIrc can find it, such as the 'avatars', 'incoming', or 'pics' "
-#~ "directories, your home directory, or the save directory for the incoming "
-#~ "file type. The default save path will probably work. You can instruct "
-#~ "KVIrc to accept incoming avatars automatically by setting the option "
-#~ "<tt>boolAutoAcceptIncomingAvatars</tt> to true.<br>"
-#~ msgstr ""
-#~ "<center><b>Hinweis:</b><center>Die Datei scheint ein Avatar zu sein, den "
-#~ "Sie angefordert haben. Der Dateiname sollte nicht geändert werden. Die "
-#~ "Datei sollte an einem Ort gespeichert werden, wo KVIrc sie finden kann, z."
-#~ "B. im ›avatars‹-, ›incoming‹- oder ›pics‹-Verzeichnis, im "
-#~ "Heimatverzeichnis oder am Speicherort für den ankommenden Dateityp. Der "
-#~ "Standard-Speicherpfad wird wahrscheinlich funktionieren. KVIrc kann auch "
-#~ "angewiesen werden, ankommende Avatare automatisch zu akzeptieren, in dem "
-#~ "die Option <tt>boolAutoAcceptIncomingAvatars</tt> auf true gesetzt wird."
-#~ "<br>"
-
-#~ msgid ""
-#~ "Can't listen on default interface '%s': fix it in the options dialog, "
-#~ "disabling the option (so the next dcc will work)"
-#~ msgstr ""
-#~ "Es kann nicht an Schnittstelle ›%s‹ auf eine Verbindung gewartet werden: "
-#~ "bitte im Optionen-Dialog ändern, Option wird deaktiviert (so dass "
-#~ "nächster DCC funktionieren wird)"
-
-#~ msgid ""
-#~ "Can't proceed with DCC RECV: Transfer not initiated for file %1 on port %2"
-#~ msgstr ""
-#~ "DCC-RECV kann nicht ausgeführt werden: Übertragung für Datei %1 an Port "
-#~ "%2 nicht initiiert"
-
-#~ msgid ""
-#~ "Can't proceed with DCC SEND: Transfer not initiated for file %1 on port "
-#~ "%2, or invalid resume size"
-#~ msgstr ""
-#~ "DCC-SEND kann nicht ausgeführt werden: Übertragung für Datei %1 an Port "
-#~ "%2 nicht initiiert oder Größe zum Fortsetzen ungültig"
-
-#~ msgid "Can't retrieve a suitable local IPV4 address"
-#~ msgstr "Erhalten einer passenden IPv4-Adresse fehlgeschlagen"
-
-#~ msgid "Cannot send data: No active connection"
-#~ msgstr "Daten können nicht gesendet werden: keine aktive Verbindung"
-
-#~ msgid "Configure bandwidth for DCC transfer %1"
-#~ msgstr "Bandbreite für DCC-Übertragung %1 konfigurieren"
-
-#~ msgid ""
-#~ "Half duplex soundcard detected, you will not be able to talk and listen "
-#~ "at the same time"
-#~ msgstr ""
-#~ "Halb-duplex Soundkarte erkannt, es wird nicht möglich sein, gleichzeitig "
-#~ "zu sprechen und zu hören"
-
-#~ msgid "Invalid RECV request: Position %1 is larger than file size"
-#~ msgstr "Ungültige RECV-Anfrage: Position %1 ist größer als Dateigröße"
-
-#~ msgid ""
-#~ "Invalid RESUME request: Invalid file name (got '%1' but should be '%2')"
-#~ msgstr ""
-#~ "Ungültige »RESUME«-Anfrage: Ungültiger Dateiname (›%1‹ erhalten, sollte "
-#~ "aber ›%2‹ sein)"
-
-#~ msgid "Invalid RESUME request: Position %1 is larger than file size"
-#~ msgstr "Ungültige RESUME-Anfrage: Position %1 ist größer als Dateigröße"
-
-#~ msgid "Invalid codec specified, defaulting to 'adpcm'"
-#~ msgstr "Ungültiger Codec angegeben: Wird auf Voreinstellung ›adpcm‹ gesetzt"
-
-#~ msgid "It seems that I haven't requested this dcc chat"
-#~ msgstr "Scheinbar ist dieser DCC-Chat nicht von hier angefordert worden"
-
-#~ msgid "Limit download bandwidth to"
-#~ msgstr "Bandbreite zum Herunterladen beschränken auf"
-
-#~ msgid "Limit upload bandwidth to"
-#~ msgstr "Bandbreite zum Hochladen beschränken auf"
-
-#~ msgid "Ops...failed to test the soundcard capabilities...expect problems..."
-#~ msgstr ""
-#~ "Ups...Test der Soundkartenfähigkeiten fehlgeschlagen... Probleme werden "
-#~ "erwartet..."
-
-#~ msgid ""
-#~ "The above request appears to be broken: Invalid sample-rate '%s', "
-#~ "defaulting to 8000"
-#~ msgstr ""
-#~ "Die obige Anfrage scheint fehlerhaft zu sein: Ungültige Sample-Rate ›%s‹: "
-#~ "wird auf Voreinstellung 8000 gesetzt"
-
-#~ msgid ""
-#~ "The above request cannot be accepted: DCC VIDEO support not enabled at "
-#~ "compilation time "
-#~ msgstr ""
-#~ "Die obige Anfrage kann nicht akzeptiert werden: DCC VIDEO-Unterstützung "
-#~ "bei Kompilierung nicht aktiviert "
-
-#~ msgid ""
-#~ "The above request cannot be accepted: DCC VOICE support not enabled at "
-#~ "compilation time "
-#~ msgstr ""
-#~ "Die obige Anfrage kann nicht akzeptiert werden: DCC VOICE-Unterstützung "
-#~ "bei Kompilierung nicht aktiviert"
-
-#~ msgid "The above request cannot be accepted: Unsupported codec '%s'"
-#~ msgstr ""
-#~ "Die obige Anfrage kann nicht akzeptiert werden: Nicht unterstützter Codec "
-#~ "›%s‹"
-
-#~ msgid ""
-#~ "The above request is broken: The filename contains path components, "
-#~ "stripping the leading path and trying to continue"
-#~ msgstr ""
-#~ "Die obige Anfrage ist fehlerhaft: Der Dateiname enthält Pfadkomponenten, "
-#~ "führender Pfad wird entfernt und es wird versucht, die Anfrage "
-#~ "fortzusetzen"
-
-#~ msgid ""
-#~ "The above request is broken: The fourth parameter should be the file size "
-#~ "but does not appear to be an unsigned number; trying to continue"
-#~ msgstr ""
-#~ "Die obige Anfrage ist fehlerhaft: Der vierte Parameter sollte die "
-#~ "Dateigröße sein, aber dieser sieht nicht wie eine vorzeichenlose Zahl "
-#~ "aus; es wird versucht, die Anfrage fortzusetzen"
-
-#~ msgid ""
-#~ "The above request is broken: The second parameter is '%s' and should be "
-#~ "'chat', trying to continue"
-#~ msgstr ""
-#~ "Die obige Anfrage ist fehlerhaft: Der zweite Parameter ist ›%s‹ und "
-#~ "sollte ›chat‹ sein; es wird versucht, die Anfrage fortzusetzen"
-
-#~ msgid ""
-#~ "The crypto engine was not able to encrypt the current message (%Q): %Q, "
-#~ "no data was sent to the remote end"
-#~ msgstr ""
-#~ "Die Verschlüsselungsroutine war nicht in der Lage, die aktuelle Nachricht "
-#~ "(%Q) zu verschlüsseln: %Q, keine Daten an das entfernte Ende gesendet"
-
-#~ msgid ""
-#~ "The file '<b>%1</b>' already exists and is larger than the offered one."
-#~ "<br>Do you wish to<br><b>auto-rename</b> the new file, "
-#~ "or<br><b>overwrite</b> the existing file ?"
-#~ msgstr ""
-#~ "Die Datei ›<b>%1</b>‹ existiert bereits und ist größer als die angebotene."
-#~ "<br>Soll <br>die neue Datei <b>automatisch umbenannt</b> oder <br>die "
-#~ "existierende Datei<br><b>überschrieben</b> werden?"
-
-#~ msgid ""
-#~ "The following message appears to be encrypted, but the crypto engine "
-#~ "failed to decode it: %Q"
-#~ msgstr ""
-#~ "Die folgende Nachricht scheint verschlüsselt zu sein, aber sie konnte "
-#~ "durch die Verschlüsselungsroutine nicht dekodiert werden: %Q"
-
-#~ msgid "The irc context that originated the dcc doesn't exists anymore."
-#~ msgstr "Der Kontext, der den DCC startete, existiert nicht mehr."
-
-#~ msgid "Unable to get SSL information: No peer certificate available"
-#~ msgstr ""
-#~ "Beziehen der SSL-Informationen nicht möglich: Kein Zertifikat der "
-#~ "Gegenseite verfügbar"
-
-#~ msgid ""
-#~ "WARNING: Ignoring data past the declared end of file and closing the "
-#~ "connection"
-#~ msgstr ""
-#~ "WARNUNG: Daten nach der deklarierten Länge werden ignoriert und die "
-#~ "Verbindung wird geschlossen"
-
-#~ msgid ""
-#~ "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
-#~ msgstr ""
-#~ "WARNUNG: Daten in einem DCC-TSEND empfangen, dort sollten keine "
-#~ "Bestätigungen enthalten sein"
-
-#~ msgid "WARNING: The peer is sending garbage data past the end of the file"
-#~ msgstr "WARNUNG: Die Gegenstelle sendet Mülldaten nach dem Ende der Datei"
-
-#~ msgid "Invalid codec specified, defaulting to 'sjpeg'"
-#~ msgstr "Ungültiger Codec angegeben: Wird auf Voreinstellung ›sjpeg‹ gesetzt"
-
-#~ msgid ""
-#~ "The above request is broken: The fourth parameter should be the file size "
-#~ "but does not appear to be an unsigned number, trying to continue"
-#~ msgstr ""
-#~ "Die obige Anfrage ist fehlerhaft: Der vierte Parameter sollte die "
-#~ "Dateigröße sein, aber dieser sieht nicht wie eine vorzeichenlose Zahl "
-#~ "aus; es wird versucht, die Anfrage fortzusetzen"

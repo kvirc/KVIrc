@@ -5,12 +5,13 @@
 # Eva Schaller <eva at cyberbeat dot it>, 2003.
 # Christoph Thielecke <crissi99@gmx.de>, 2003, 2004.
 # Markus Rennings <markus@rennings.net>, 2007, 2010, 2011, 2012.
+# Philipp Kloke <philipp.kloke@web.de>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: logview_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-02 15:06+0200\n"
-"PO-Revision-Date: 2016-10-02 15:06+0200\n"
+"PO-Revision-Date: 2016-10-05 20:53+0200\n"
 "Last-Translator: Markus Rennings <markus@rennings.net>\n"
 "Language-Team: German <>\n"
 "Language: de\n"
@@ -28,7 +29,7 @@ msgstr "Fenster ›%1‹ nicht gefunden"
 #: src/modules/log/libkvilog.cpp:109 src/modules/log/libkvilog.cpp:167
 #: src/modules/log/libkvilog.cpp:219
 msgid "Missing window ID after the 'w' switch"
-msgstr ""
+msgstr "Fehlende Fenster-ID hinter dem ›w‹-Schalter"
 
 #: src/modules/log/libkvilog.cpp:120
 msgid "Can't log to file '%1'"
@@ -40,7 +41,7 @@ msgstr "Dieses Fenster hat keine Protokoll-Fähigkeiten"
 
 #: src/modules/log/libkvilog.cpp:273
 msgid "Window with ID '%1' not found, returning empty string"
-msgstr ""
+msgstr "Fenster mit ID ›%1‹ nicht gefunden, gebe leeren String zurück"
 
 #: src/modules/log/libkvilog.cpp:321
 msgid "Failed to load logview module, aborting"
@@ -108,7 +109,7 @@ msgstr "Andere Logdateien anzeigen"
 
 #: src/modules/logview/LogViewWindow.cpp:142
 msgid "Contents Filter"
-msgstr ""
+msgstr "Inhaltsfilter"
 
 #: src/modules/logview/LogViewWindow.cpp:145
 msgid "Log name mask:"
@@ -120,23 +121,23 @@ msgstr "Logdateien-Inhaltsmaske:"
 
 #: src/modules/logview/LogViewWindow.cpp:157
 msgid "Only older than:"
-msgstr ""
+msgstr "Nur älter als:"
 
 #: src/modules/logview/LogViewWindow.cpp:165
 msgid "Only newer than:"
-msgstr ""
+msgstr "Nur neuer als:"
 
 #: src/modules/logview/LogViewWindow.cpp:173
 msgid "Apply Filter"
-msgstr ""
+msgstr "Filter anwenden"
 
 #: src/modules/logview/LogViewWindow.cpp:192
 msgid "Plain Text File"
-msgstr ""
+msgstr "Einfache Textdatei"
 
 #: src/modules/logview/LogViewWindow.cpp:194
 msgid "HTML Archive"
-msgstr ""
+msgstr "HTML-Archiv"
 
 #: src/modules/logview/LogViewWindow.cpp:242
 msgid "Log Viewer"
@@ -148,19 +149,19 @@ msgstr "%1 auf %2"
 
 #: src/modules/logview/LogViewWindow.cpp:452
 msgid "Remove All Log Files Within This Folder"
-msgstr ""
+msgstr "Lösche alle Logdateien innerhalb dieses Ordners"
 
 #: src/modules/logview/LogViewWindow.cpp:456
 msgid "Export Log File to"
-msgstr ""
+msgstr "Exportiere Logdatei nach"
 
 #: src/modules/logview/LogViewWindow.cpp:457
 msgid "Remove Log File"
-msgstr ""
+msgstr "Lösche Logdatei"
 
 #: src/modules/logview/LogViewWindow.cpp:475
 msgid "Confirm Current User Log Deletion"
-msgstr ""
+msgstr "Bestätige Log-Löschung"
 
 #: src/modules/logview/LogViewWindow.cpp:476
 msgid "Do you really wish to delete this log?"
@@ -168,7 +169,7 @@ msgstr "Dieses Protokoll löschen?"
 
 #: src/modules/logview/LogViewWindow.cpp:493
 msgid "Confirm Current User Logs Deletion"
-msgstr ""
+msgstr "Bestätige Log-Löschung"
 
 #: src/modules/logview/LogViewWindow.cpp:494
 msgid "Do you really wish to delete all these logs?"
@@ -188,77 +189,12 @@ msgstr "Konsole auf %1"
 
 #: src/modules/logview/LogViewWindow.cpp:692
 msgid "Query with: %1 on %2"
-msgstr ""
+msgstr "Query mit: %1 auf %2"
 
 #: src/modules/logview/LogViewWindow.cpp:695
 msgid "DCC Chat with: %1"
-msgstr ""
+msgstr "DCC-Chat mit: %1"
 
 #: src/modules/logview/LogViewWindow.cpp:698
 msgid "Something on: %1"
-msgstr ""
-
-#~ msgid "Apply filter"
-#~ msgstr "Filter anwenden"
-
-#~ msgid "Confirm current user log deletion"
-#~ msgstr "Löschen des aktuellen Benutzerprotokolls bestätigen"
-
-#~ msgid "Confirm current user logs deletion"
-#~ msgstr "Löschen der aktuellen Benutzerprotokolle bestätigen"
-
-#~ msgid "Contents filter"
-#~ msgstr "Inhaltsfilter"
-
-#~ msgid "DCC Chat with %1"
-#~ msgstr "DCC-Chat mir %1"
-
-#~ msgid "Export log file to"
-#~ msgstr "Protokoll exportieren nach"
-
-#~ msgid "HTML archive"
-#~ msgstr "HTML-Archiv"
-
-#~ msgid "Missing window id after the 'w' switch"
-#~ msgstr "Fehlende Fenster-Id nach dem ›w‹-Schalter"
-
-#~ msgid "Only newer than"
-#~ msgstr "Nur neuer als"
-
-#~ msgid "Only older than"
-#~ msgstr "Nur älter als"
-
-#, fuzzy
-#~ msgid "Plain text file"
-#~ msgstr "Einfache Textdatei"
-
-#~ msgid "Query with %1 on %2"
-#~ msgstr "Query mit %1 auf %2"
-
-#~ msgid "Remove all log files within this folder"
-#~ msgstr "Alle Dateien in diesem Verzeichnis löschen"
-
-#~ msgid "Remove log file"
-#~ msgstr "Protokolldatei löschen"
-
-#~ msgid "Something on %1"
-#~ msgstr "Etwas auf %1"
-
-#~ msgid "Window with id '%1' not found, returning empty string"
-#~ msgstr "Fenster mit Id ›%1‹ nicht gefunden, gebe leere Zeichenkette zurück"
-
-#~ msgid "Abort filtering"
-#~ msgstr "Filtern abbrechen"
-
-#, fuzzy
-#~ msgid "Browse Log Files"
-#~ msgstr "&Logdateien durchsuchen"
-
-#~ msgid "File '%1' already exists. Do you want to overwrite it?"
-#~ msgstr "Datei ›%1‹ existiert bereits. Überschreiben?"
-
-#~ msgid "Filtering files..."
-#~ msgstr "Filtere Dateien..."
-
-#~ msgid "Remove all these channel/query log files"
-#~ msgstr "All diese Channel-/Query-Logs entfernen"
+msgstr "Etwas auf: %1"
