@@ -42,14 +42,14 @@ install:
     - nuget install Gettext.Tools -OutputDirectory c:\deps
     - c:\cygwin\bin\find /cygdrive/c/deps "-type" f
     - ps: |
-        if (-Not (Test-Path "c:\OpenSSL-$env:ssl_arch")) {
-            echo "preinstalled openssl not found, this is pretty sad."
+        if (Test-Path "c:\OpenSSL-$env:ssl_arch" -And (Get-Item c:\OpenSSL-$env:ssl_arch\bin\ssleay32.dll).VersionInfo.ProductVersion -eq '1.0.2j') {
+            echo "using preinstalled openssl"
+        } else {
+            echo "preinstalled openssl not found or not present in requested version, this is pretty sad."
             echo "downloading openssl 1.0.2j package, don't worry, be happy!"
             Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2j.exe" -OutFile c:\openssl-setup.exe
             echo "installing openssl"
             Start-Process -Wait -FilePath c:\openssl-setup.exe -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes"
-        } else {
-            echo "using preinstalled openssl"
         }
     - c:\cygwin\bin\find /cygdrive/c/OpenSSL-%ssl_arch% "-type" f
     - ps: |
@@ -84,9 +84,9 @@ install:
         if (Test-Path "c:/spellcheck-dicts/zip/en_US.zip") {
             echo "using en dict from cache"
         } else {
-            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2016.01.19/hunspell-en_US-2016.01.19.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
-            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2016.01.19/hunspell-en_GB-ize-2016.01.19.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
-            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2016.01.19/hunspell-en_GB-ise-2016.01.19.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
+            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2016.06.26/hunspell-en_US-2016.01.19.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
+            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2016.06.26/hunspell-en_GB-ize-2016.01.19.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
+            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2016.06.26/hunspell-en_GB-ise-2016.01.19.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
             c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/unzip; 7z x -y ../zip/en_US.zip; 7z x -y ../zip/en_GB-ize.zip; 7z x -y ../zip/en_GB-ise.zip"
         }
     - c:\cygwin\bin\ls -lR /cygdrive/c/spellcheck-dicts
