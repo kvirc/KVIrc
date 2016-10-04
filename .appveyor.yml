@@ -42,7 +42,7 @@ install:
     - nuget install Gettext.Tools -OutputDirectory c:\deps
     - c:\cygwin\bin\find /cygdrive/c/deps "-type" f
     - ps: |
-        if (Test-Path "c:\OpenSSL-$env:ssl_arch" -And (Get-Item c:\OpenSSL-$env:ssl_arch\bin\ssleay32.dll).VersionInfo.ProductVersion -eq '1.0.2j') {
+        if ((Test-Path "c:\OpenSSL-$env:ssl_arch" -And ((Get-Item c:\OpenSSL-$env:ssl_arch\bin\ssleay32.dll).VersionInfo.ProductVersion -eq '1.0.2j')) {
             echo "using preinstalled openssl"
         } else {
             echo "preinstalled openssl not found or not present in requested version, this is pretty sad."
