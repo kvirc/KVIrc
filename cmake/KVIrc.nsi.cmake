@@ -21,7 +21,7 @@ OutFile KVIrc-${VERSION}-dev-${GIT_VERSION}.exe
 ; Stable version, e.g. KVIrc-4.2.0-Equilibrium.exe
 ;OutFile KVIrc-${VERSION}-${RELEASE_NAME}.exe
 
-Unicode on
+Unicode true
 SetCompressor /SOLID lzma
 XPStyle on
 InstallDir $PROGRAMFILES\KVIrc
