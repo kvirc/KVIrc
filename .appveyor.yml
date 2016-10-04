@@ -44,8 +44,8 @@ install:
     - ps: |
         if (-Not (Test-Path "c:\OpenSSL-$env:ssl_arch")) {
             echo "preinstalled openssl not found, this is pretty sad."
-            echo "downloading openssl 1.0.2h package, don't worry, be happy!"
-            Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2h.exe" -OutFile c:\openssl-setup.exe
+            echo "downloading openssl 1.0.2j package, don't worry, be happy!"
+            Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2j.exe" -OutFile c:\openssl-setup.exe
             echo "installing openssl"
             Start-Process -Wait -FilePath c:\openssl-setup.exe -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes"
         } else {
