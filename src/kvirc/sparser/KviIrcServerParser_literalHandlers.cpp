@@ -202,22 +202,25 @@ void KviIrcServerParser::parseLiteralChghost(KviIrcMessage * msg)
 
 	for(auto & c : console->connection()->channelList())
 	{
-		if(!msg->haltOutput())
+		if(c->isOn(szNick))
 		{
-			if(szHost == szNewHost)
+			if(!msg->haltOutput())
 			{
-				c->output(KVI_OUT_NICK, __tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has user %Q"),
-				    &szNick, &szUser, &szHost, &szNewUser);
-			}
-			else if(szUser == szNewUser)
-			{
-				c->output(KVI_OUT_NICK, __tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has host \r!h\r%Q\r"),
-				    &szNick, &szUser, &szHost, &szNewHost);
-			}
-			else
-			{
-				c->output(KVI_OUT_NICK, __tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has user@host %Q@\r!h\r%Q\r"),
-				    &szNick, &szUser, &szHost, &szNewUser, &szNewHost);
+				if(szHost == szNewHost)
+				{
+					c->output(KVI_OUT_NICK, __tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has user %Q"),
+					    &szNick, &szUser, &szHost, &szNewUser);
+				}
+				else if(szUser == szNewUser)
+				{
+					c->output(KVI_OUT_NICK, __tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has host \r!h\r%Q\r"),
+					    &szNick, &szUser, &szHost, &szNewHost);
+				}
+				else
+				{
+					c->output(KVI_OUT_NICK, __tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] now has user@host %Q@\r!h\r%Q\r"),
+					    &szNick, &szUser, &szHost, &szNewUser, &szNewHost);
+				}
 			}
 		}
 	}
