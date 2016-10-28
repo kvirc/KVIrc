@@ -27,6 +27,7 @@
 #include "kvi_sourcesdate.h"
 #include "kvi_sysbuildinfo.h"
 
+#include <QString>
 #include <QStringList>
 
 const char * feature_array[] = {
@@ -155,7 +156,7 @@ namespace KviBuildInfo
 	{
 		QString flags = QString(KVIRC_BUILD_COMPILER_FLAGS);
 		if(flags.isEmpty())
-			return "N/A";
+			return QString("N/A");
 		else
 			return flags;
 	}

@@ -31,15 +31,15 @@
 */
 
 #include "kvi_settings.h"
-#include "KviQString.h"
 #include "KviTalListWidget.h"
 
-#include <QWidget>
+#include <QString>
 #include <QTabWidget>
+#include <QWidget>
 
-class QPixmap;
 class KviAction;
 class KviActionDrawerPageListWidget;
+class QPixmap;
 
 /**
 * \class KviActionDrawer

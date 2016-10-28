@@ -29,7 +29,6 @@
 #include "KviWindowStack.h"
 #include "KviIconManager.h"
 #include "KviInternalCommand.h"
-#include "kvi_settings.h"
 #include "KviIrcUrl.h"
 #include "KviConsoleWindow.h"
 #include "KviKvsPopupMenu.h"
@@ -362,7 +361,7 @@ void KviMenuBar::setupToolsPopup(QMenu * pop)
 	// moved the old tools here
 	m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::IconManager)), __tr2qs("Show &Icon Table"), g_pIconManager, SLOT(showIconWidget()));
 #ifdef COMPILE_KDE4_SUPPORT
-	QAction * pAction = 0;
+	QAction * pAction = nullptr;
 	pAction = m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)), __tr2qs("Open &Terminal"), this, SLOT(actionTriggered(bool)));
 	pAction->setData(KVI_INTERNALCOMMAND_TERM_OPEN);
 #endif

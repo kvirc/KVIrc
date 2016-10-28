@@ -33,8 +33,8 @@
 
 #include "kvi_settings.h"
 
-#include <QWidget>
 #include <QHBoxLayout>
+#include <QWidget>
 
 /**
 * \class KviTalHBox

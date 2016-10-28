@@ -40,7 +40,7 @@
 
 #ifdef COMPILE_SSL_SUPPORT
 // The current implementation
-#include <KviSSL.h>
+#include "KviSSL.h"
 #include <openssl/evp.h>
 #include <openssl/pem.h>
 #else

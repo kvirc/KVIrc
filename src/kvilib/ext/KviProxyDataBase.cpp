@@ -24,7 +24,10 @@
 
 #include "KviProxyDataBase.h"
 #include "KviConfigurationFile.h"
+#include "KviCString.h"
 #include "KviProxy.h"
+
+#include <QString>
 
 void KviProxyDataBase::updateProxyIp(const char * proxy, const char * ip)
 {

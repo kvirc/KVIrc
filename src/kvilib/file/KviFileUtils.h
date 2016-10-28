@@ -34,12 +34,12 @@
 */
 
 #include "kvi_settings.h"
-#include "KviCString.h"
 
 #include <QFile>
-#include <QStringList>
 
-#include <time.h>
+class QByteArray;
+class QString;
+class QStringList;
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #define KVI_PATH_SEPARATOR "\\"

@@ -31,10 +31,11 @@
 */
 
 #include "kvi_settings.h"
+#include "kvi_inttypes.h"
 #include "KviHeapObject.h"
-#include "KviQString.h"
 #include "KviPointerList.h"
 
+#include <QString>
 #include <QStringList>
 
 class KviConfigurationFile;

@@ -25,6 +25,8 @@
 #include "kvi_debug.h"
 #include "KviRegisteredChannel.h"
 
+#include <QString>
+
 KviRegisteredChannel::KviRegisteredChannel(const QString & szName, const QString & szNetMask)
 {
 	m_szName = szName;

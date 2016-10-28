@@ -40,6 +40,7 @@
 #include "KviTalHBox.h"
 #include "KviHtmlGenerator.h"
 #include "KviThemedLineEdit.h"
+#include "KviIrcMessage.h"
 
 #include <QTimer>
 #include <QHeaderView>

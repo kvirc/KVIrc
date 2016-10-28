@@ -31,6 +31,8 @@
 
 #include <QDir>
 #include <QFileInfo>
+#include <QString>
+#include <QStringList>
 #include <QtGlobal>
 #include <QTextCodec>
 #include <QTextStream>

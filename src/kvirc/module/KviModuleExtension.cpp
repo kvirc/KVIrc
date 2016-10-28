@@ -30,6 +30,7 @@
 #include "KviApplication.h"
 #include "KviPtrListIterator.h"
 
+#include <QPixmap>
 #include <vector>
 
 // created and destroyed in KviApplication.cpp

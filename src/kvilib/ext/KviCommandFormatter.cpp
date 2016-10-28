@@ -23,7 +23,10 @@
 //=============================================================================
 
 #include "KviCommandFormatter.h"
+#include "KviCString.h"
 #include "KviQString.h"
+
+#include <QStringList>
 
 namespace KviCommandFormatter
 {

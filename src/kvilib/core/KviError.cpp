@@ -24,10 +24,11 @@
 
 #define _KVI_ERROR_CPP_
 
-#include "KviLocale.h"
 #include "KviError.h"
+#include "KviLocale.h"
 #include "kvi_settings.h"
-#include "KviQString.h"
+
+#include <QString>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <winsock2.h> // for the WSAE* error codes

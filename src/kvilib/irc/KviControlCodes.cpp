@@ -26,6 +26,8 @@
 
 #include "KviControlCodes.h"
 
+#include <QString>
+
 namespace KviControlCodes
 {
 	QString stripControlBytes(const QString & szData)

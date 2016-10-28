@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviUserIdentityManager.h
+//   File : KviUserIdentityManager.cpp
 //   Creation date : Thu Dec Jan 2007 05:03:47 by Elvio Basello
 //
 //   This file is part of the KVIrc IRC Client distribution
@@ -23,8 +23,9 @@
 //=============================================================================
 
 #include "KviUserIdentityManager.h"
-#include "KviUserIdentity.h"
+#include "KviConfigurationFile.h"
 #include "KviLocale.h"
+#include "KviUserIdentity.h"
 #include "kvi_defaults.h"
 
 KviUserIdentityManager * KviUserIdentityManager::m_pInstance = nullptr;

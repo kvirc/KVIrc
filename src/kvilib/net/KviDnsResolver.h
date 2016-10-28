@@ -25,10 +25,11 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
-#include "KviQString.h"
 #include "KviError.h"
+#include "KviHeapObject.h"
 
+#include <QObject>
+#include <QString>
 #include <vector>
 
 class KviDnsResolverThread;
@@ -149,8 +150,8 @@ signals:
 // INTERNAL CLASSES
 //
 
-#include <QThread>
 #include <QEvent>
+#include <QThread>
 
 #include "kvi_debug.h"
 
@@ -175,7 +176,7 @@ public:
 	KviDnsResolverResult * releaseResult()
 	{
 		KviDnsResolverResult * pResult = m_pResult;
-		m_pResult = NULL;
+		m_pResult = nullptr;
 		return pResult;
 	}
 };

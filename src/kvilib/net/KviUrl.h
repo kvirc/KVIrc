@@ -24,9 +24,10 @@
 //
 //=============================================================================
 
-#include "KviCString.h"
 #include "KviHeapObject.h"
 #include "kvi_inttypes.h"
+
+#include <QString>
 
 class KVILIB_API KviUrl : public KviHeapObject
 {

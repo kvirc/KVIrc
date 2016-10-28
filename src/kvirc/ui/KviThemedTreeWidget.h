@@ -2,7 +2,7 @@
 #define _KVI_THEMEDTREEWIDGET_H_
 //=============================================================================
 //
-//   File : KviThemedLineEdit.h
+//   File : KviThemedTreeWidget.h
 //   Creation date : Sun Jan 10 2010 12:17:00 by Fabio Bas
 //
 //   This file is part of the KVIrc IRC client distribution

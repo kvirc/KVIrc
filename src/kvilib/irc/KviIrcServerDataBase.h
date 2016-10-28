@@ -31,10 +31,13 @@
 */
 
 #include "kvi_settings.h"
-#include "KviQString.h"
-#include "KviIrcServer.h"
-#include "KviIrcNetwork.h"
+#include "kvi_inttypes.h"
 #include "KviPointerHashTable.h"
+
+#include <QString>
+
+class KviIrcNetwork;
+class KviIrcServer;
 
 /**
 * \typedef KviIrcServerDefinition

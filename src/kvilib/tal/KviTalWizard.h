@@ -28,10 +28,10 @@
 
 #include <QDialog>
 
-class QShowEvent;
-class QPushButton;
-class KviTalWizardPrivate;
 class KviTalWizardPageData;
+class KviTalWizardPrivate;
+class QPushButton;
+class QShowEvent;
 
 ///
 /// \class KviTalWizard

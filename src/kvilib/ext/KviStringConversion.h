@@ -25,15 +25,14 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviCString.h"
-#include "KviPixmap.h"
-#include "KviMessageTypeSettings.h"
 
-#include <QRect>
-#include <QColor>
-#include <QFont>
-#include <QStringList>
-#include <QString>
+class KviMessageTypeSettings;
+class KviPixmap;
+class QColor;
+class QFont;
+class QRect;
+class QString;
+class QStringList;
 
 namespace KviStringConversion
 {

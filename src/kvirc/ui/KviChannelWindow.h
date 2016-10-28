@@ -33,15 +33,15 @@
 #include "kvi_settings.h"
 #include "KviConsoleWindow.h"
 #include "KviWindow.h"
-#include "KviCString.h"
 #include "KviIrcUserDataBase.h"
 #include "KviPixmap.h"
 #include "KviUserListView.h"
 #include "KviTimeUtils.h"
 #include "KviModeWidget.h"
 
-#include <QList>
 #include <QDateTime>
+#include <QList>
+#include <QString>
 #include <QStringList>
 #include <QToolButton>
 
@@ -49,12 +49,12 @@
 #include <vector>
 
 class KviConsoleWindow;
-class KviTopicWidget;
 class KviIrcMask;
-class KviThemedLabel;
-class KviTalHBox;
 class KviMaskEditor;
 class KviModeEditor;
+class KviTalHBox;
+class KviThemedLabel;
+class KviTopicWidget;
 
 #ifdef COMPILE_ON_WINDOWS
 // windows compiler wants this instead of the forward decl

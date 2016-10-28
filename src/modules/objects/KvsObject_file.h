@@ -2,7 +2,7 @@
 #define _CLASS_FILE_H_
 //=============================================================================
 //
-//   File : KvsObject_memoryBuffer.h
+//   File : KvsObject_file.h
 //   Creation date : Fri Mar 18 21:30:48 CEST 2005
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //

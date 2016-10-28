@@ -36,16 +36,16 @@
 #include <QObject>
 #include <QPointer>
 #include <QShortcut>
+#include <QString>
 
 #include <memory>
 #include <unordered_set>
 #include <utility>
 #include <vector>
 
-class QShortcut;
-class QPixmap;
-class QMenu;
 class KviCustomToolBar;
+class QMenu;
+class QPixmap;
 
 #undef None
 

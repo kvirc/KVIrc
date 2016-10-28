@@ -55,7 +55,7 @@ extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 
 #if defined(COMPILE_SSL_SUPPORT)
 
-#include <KviSSL.h>
+#include "KviSSL.h"
 #include <openssl/blowfish.h>
 #include <openssl/bn.h>
 #include <openssl/dh.h>

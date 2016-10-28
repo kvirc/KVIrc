@@ -26,12 +26,12 @@
 
 #include "kvi_settings.h"
 
-#include <QWidget>
-#include <QString>
 #include <QFrame>
+#include <QString>
+#include <QWidget>
 
-class QLineEdit;
 class QLabel;
+class QLineEdit;
 
 class KVIRC_API KviIpEditor : public QFrame
 {

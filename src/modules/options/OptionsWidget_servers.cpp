@@ -54,6 +54,7 @@
 #include "KviKvsScript.h"
 #include "KviPointerHashTable.h"
 #include "KviTalToolTip.h"
+#include "KviIrcNetwork.h"
 
 #include <QLineEdit>
 #include <QCursor>

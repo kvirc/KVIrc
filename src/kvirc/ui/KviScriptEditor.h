@@ -27,8 +27,9 @@
 #include "kvi_settings.h"
 
 #include <QWidget>
-#include <QLineEdit>
 #include <QByteArray>
+
+class QLineEdit;
 
 //
 // This is the basic interface of a script editor widget

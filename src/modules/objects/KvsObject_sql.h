@@ -2,7 +2,7 @@
 #define _CLASS_SQLITE_H_
 //=============================================================================
 //
-//   File : class_sqlite.h
+//   File : KvsObject_sql.h
 //   Creation date : Wed Gen 28 2009 21:07:55 by Alessandro Carbone
 //
 //   This file is part of the KVIrc IRC client distribution

@@ -86,6 +86,7 @@
 #include "KviCaster.h"
 #include "KviSignalHandler.h"
 #include "KviPtrListIterator.h"
+#include "KviIrcNetwork.h"
 
 #include <QMenu>
 #include <algorithm>

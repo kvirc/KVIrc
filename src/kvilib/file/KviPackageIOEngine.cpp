@@ -26,8 +26,9 @@
 #include "KviLocale.h"
 
 #include <QApplication>
-#include <QProgressDialog>
+#include <QByteArray>
 #include <QLabel>
+#include <QProgressDialog>
 
 //
 // A KVIrc Package File is basically a simple zip file with some additional meta-data.

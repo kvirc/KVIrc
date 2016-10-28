@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviNetworkAccessManager.h
+//   File : KviNetworkAccessManager.cpp
 //   Creation date : Sat Sep 29 2012 17:15:12 CEST by Fabio Bas
 //
 //   This file is part of the KVIrc IRC client distribution

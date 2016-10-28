@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 
-#include <QString>
+class QString;
 
 namespace KviNickColors
 {

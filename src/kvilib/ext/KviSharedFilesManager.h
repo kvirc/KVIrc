@@ -28,9 +28,11 @@
 #include "KviPointerHashTable.h"
 #include "KviSharedFile.h"
 
-#include <QTimer>
+#include <QObject>
 
 class KviIrcMask;
+class QString;
+class QTimer;
 
 class KVILIB_API KviSharedFilesManager : public QObject
 {

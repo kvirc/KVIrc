@@ -32,10 +32,12 @@
 
 #include "kvi_settings.h"
 
-#include <QStyledItemDelegate>
 #include <QListWidget>
-#include <QTreeWidget>
-#include <QAbstractItemView>
+#include <QPixmap>
+#include <QSize>
+#include <QStyledItemDelegate>
+
+class QAbstractItemView;
 
 #define LVI_ICON_SIZE 32
 #define LVI_BORDER 4

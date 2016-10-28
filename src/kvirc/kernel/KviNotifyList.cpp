@@ -41,6 +41,7 @@
 #include "KviQString.h"
 #include "KviLagMeter.h"
 #include "KviKvsEventTriggers.h"
+#include "KviIrcMessage.h"
 
 #include <QStringList>
 #include <QByteArray>

@@ -65,6 +65,7 @@
 #include "KviIdentityProfileSet.h"
 #include "KviSASL.h"
 #include "KviNickColors.h"
+#include "KviIrcNetwork.h"
 
 #include <QTimer>
 #include <QTextCodec>

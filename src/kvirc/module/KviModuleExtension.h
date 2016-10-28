@@ -30,13 +30,13 @@
 #include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
 
-#include <QPixmap>
 #include <QVariant>
 
-class KviWindow;
 class KviModule;
 class KviModuleExtension;
 class KviModuleExtensionDescriptor;
+class KviWindow;
+class QPixmap;
 
 typedef struct _KviModuleExtensionAllocStructTag
 {

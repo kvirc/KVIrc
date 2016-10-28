@@ -34,14 +34,13 @@
 #include <QTextStream> // with automoc we need this to be included before the other files
 
 #include "KviHeapObject.h"
-#include "KviCString.h"
-#include "KviUrl.h"
 #include "KviPointerHashTable.h"
+#include "KviUrl.h"
 
+#include <QAbstractSocket>
 #include <QObject>
 
-#include <QtNetwork/QAbstractSocket>
-
+class KviCString;
 class KviDnsResolver;
 class KviDataBuffer;
 

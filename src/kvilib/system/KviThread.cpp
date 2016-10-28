@@ -39,7 +39,6 @@
 #include <errno.h>
 
 #include "kvi_settings.h"
-#include "KviCString.h"
 #include "KviError.h"
 
 #include <QSocketNotifier>

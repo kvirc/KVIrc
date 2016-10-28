@@ -27,7 +27,6 @@
 #include "kvi_settings.h"
 #include "KviDynamicToolTip.h"
 #include "KviTalListWidget.h"
-#include "KviIconManager.h"
 
 #include <QDialog>
 #include <QComboBox>

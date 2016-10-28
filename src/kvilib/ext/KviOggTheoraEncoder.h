@@ -39,9 +39,8 @@
 
 #include "theora/theoraenc.h"
 
-#include <QColor>
-
 class KviDataBuffer;
+class QRgb;
 
 /**
 * \def YUV444_BPP Bytes per pixel in a YUV444 image

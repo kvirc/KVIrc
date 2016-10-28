@@ -24,6 +24,7 @@
 
 #include "kvi_debug.h"
 #include "KviIrcMask.h"
+#include "KviQString.h"
 
 #include <QRegExp>
 

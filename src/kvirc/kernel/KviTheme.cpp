@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : kvi_themeinfo.cpp
+//   File : KviTheme.cpp
 //   Creation date : Mon Jan 08 2007 03:23:00 CEST by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

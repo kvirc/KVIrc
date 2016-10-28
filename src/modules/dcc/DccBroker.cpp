@@ -49,6 +49,7 @@
 #include "KviMediaManager.h"
 #include "KviIrcConnection.h"
 #include "KviSharedFilesManager.h"
+#include "KviIrcMessage.h"
 
 #include <QFileInfo>
 #include <QString>

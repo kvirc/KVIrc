@@ -2,7 +2,7 @@
 #define _LIBKVITIP_H_
 //=============================================================================
 //
-//   File : kvi_tip.cpp
+//   File : libkvitip.h
 //   Creation date : Thu May 10 2001 13:49:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

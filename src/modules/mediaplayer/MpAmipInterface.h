@@ -2,7 +2,7 @@
 #define _MP_AMIPINTERFACE_H_
 //=============================================================================
 //
-//   File : MpAmipInterface.cpp
+//   File : MpAmipInterface.h
 //   Creation date : Sun 27 Mar 2005 16:55:09 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

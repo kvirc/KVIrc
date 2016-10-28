@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviCString.h"
 
 #define KVI_MSGTYPE_MINLEVEL 0
 #define KVI_MSGTYPE_LEVEL_0 0

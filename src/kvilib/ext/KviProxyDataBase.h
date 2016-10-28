@@ -24,12 +24,14 @@
 //
 //=============================================================================
 
-#include "KviProxy.h"
 #include "kvi_settings.h"
+#include "KviProxy.h"
 
 #include <memory>
 #include <utility>
 #include <vector>
+
+class QString;
 
 class KVILIB_API KviProxyDataBase
 {

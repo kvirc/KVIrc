@@ -30,6 +30,8 @@
 #include "KviConfigurationFile.h"
 #include "KviCString.h"
 
+#include <QString>
+
 KviInputHistory * KviInputHistory::m_pSelf = nullptr;
 unsigned int KviInputHistory::m_uCount = 0;
 

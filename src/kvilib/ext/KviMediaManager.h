@@ -26,10 +26,10 @@
 
 // This file was originally part of KviMediaType.h
 
-#include "KviMediaType.h"
 #include "kvi_settings.h"
-#include "KviThread.h"
+#include "KviMediaType.h"
 #include "KviPointerList.h"
+#include "KviThread.h"
 
 class KVILIB_API KviMediaManager : public KviMutex
 {

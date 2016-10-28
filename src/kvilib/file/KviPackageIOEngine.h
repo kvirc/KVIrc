@@ -32,12 +32,11 @@
 
 #include "kvi_settings.h"
 
-#include "KviQString.h"
 #include "KviPointerHashTable.h"
 
-#include <QObject>
-#include <QByteArray>
+#include <QString>
 
+class QByteArray;
 class QProgressDialog;
 class QLabel;
 

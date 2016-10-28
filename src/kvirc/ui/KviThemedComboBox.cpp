@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviThemedLineEdit.cpp
+//   File : KviThemedComboBox.cpp
 //   Creation date : Sun Jan 10 2010 12:17:00 by Fabio Bas
 //
 //   This file is part of the KVIrc IRC client distribution

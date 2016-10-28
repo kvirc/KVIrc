@@ -27,7 +27,6 @@
 #include "KviControlCodes.h"
 #include "KviLocale.h"
 #include "kvi_defaults.h"
-#include "kvi_settings.h"
 #include "KviIconManager.h"
 #include "KviTextIconManager.h"
 #include "KviApplication.h"
@@ -42,14 +41,15 @@
 #include "KviTalToolTip.h"
 #include "KviThemedLabel.h"
 
-#include <QLineEdit>
-#include <QPainter>
-#include <QFontMetrics>
-#include <QRegExp>
 #include <QClipboard>
 #include <QEvent>
-#include <QMouseEvent>
+#include <QFontMetrics>
+#include <QLineEdit>
 #include <QMenu>
+#include <QMouseEvent>
+#include <QPainter>
+#include <QPushButton>
+#include <QRegExp>
 
 extern KviColorWindow * g_pColorWindow;
 

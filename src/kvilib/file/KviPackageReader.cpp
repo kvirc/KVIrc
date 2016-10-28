@@ -23,12 +23,12 @@
 //=============================================================================
 
 #include "KviPackageReader.h"
-
 #include "KviFile.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
-
 #include "kvi_inttypes.h"
+
+#include <QString>
 
 #ifdef COMPILE_ZLIB_SUPPORT
 #include <zlib.h>

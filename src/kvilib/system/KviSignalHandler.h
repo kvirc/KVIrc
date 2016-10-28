@@ -29,7 +29,8 @@
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 
 #include <QObject>
-#include <QSocketNotifier>
+
+class QSocketNotifier;
 
 // Adapted from http://doc.qt.io/qt-5/unix-signals.html
 

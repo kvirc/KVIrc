@@ -54,6 +54,7 @@
 #include "KviApplication.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionUserInfo.h"
+#include "KviIrcMessage.h"
 
 #include <QFileInfo>
 

@@ -37,7 +37,8 @@
 #include "kvi_settings.h"
 
 #include <QTranslator>
-#include <QString>
+
+class QString;
 
 /**
 * \class KviTranslator

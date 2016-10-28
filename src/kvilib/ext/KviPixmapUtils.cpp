@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviPixmapUtils.h
+//   File : KviPixmapUtils.cpp
 //   Creation date : Wed Dec 29 2010 01:10:05 CEST by Elvio Basello
 //
 //   This file is part of the KVIrc IRC client distribution

@@ -31,6 +31,8 @@
 
 #include <QHash>
 
+class QString;
+
 class KVILIB_API KviRegisteredChannelDataBase
 {
 public:

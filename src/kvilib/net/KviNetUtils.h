@@ -51,7 +51,7 @@
 #include <arpa/inet.h>  //inet_ntoa inet_ntop and inet_pton depend on this one.
 #endif
 
-#include "KviCString.h"
+class QString;
 
 class KVILIB_API KviSockaddr
 {

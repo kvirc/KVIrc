@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : AliasEditorWindow.cpp
+//   File : ActionEditor.cpp
 //   Creation date : Tue 29 Dec 2004 02:45:59 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -39,7 +39,7 @@
 #include "KviKvsUserAction.h"
 #include "KviCustomToolBarManager.h"
 #include "KviTalVBox.h"
-#include <KviTalGroupBox.h>
+#include "KviTalGroupBox.h"
 #include "KviTalIconAndRichTextItemDelegate.h"
 #include "kvi_fileextensions.h"
 

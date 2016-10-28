@@ -36,23 +36,23 @@
 */
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
 #include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
+#include "KviPointerList.h"
 #include "KviTalHBox.h"
 
-#include <QString>
 #include <QStatusBar>
-#include <QHelpEvent>
+#include <QString>
 
-class QTimer;
-class QLabel;
+class KviDynamicToolTip;
+class KviIrcContext;
 class KviMainWindow;
-class QMenu;
 class KviStatusBarApplet;
 class KviStatusBarAppletDescriptor;
-class KviIrcContext;
-class KviDynamicToolTip;
+class QHelpEvent;
+class QLabel;
+class QMenu;
+class QTimer;
 
 #define VMARGIN 3
 //#define HMARGIN 4

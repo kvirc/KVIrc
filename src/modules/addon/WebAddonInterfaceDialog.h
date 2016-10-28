@@ -44,7 +44,7 @@ public:
 	///
 	/// Creates an instance of WebAddonInterfaceDialog
 	///
-	WebAddonInterfaceDialog(QWidget * pParent = NULL);
+	WebAddonInterfaceDialog(QWidget * pParent = nullptr);
 
 	///
 	/// Destroys the instance of WebAddonInterfaceDialog

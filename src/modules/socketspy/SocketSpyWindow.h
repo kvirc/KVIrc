@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "KviWindow.h"
-#include "KviCString.h"
 #include "KviIrcDataStreamMonitor.h"
 
 class KviConsoleWindow;

@@ -22,9 +22,9 @@
 //
 //=============================================================================
 
-#include "KviNickServRule.h"
 #include "KviConfigurationFile.h"
 #include "KviIrcMask.h"
+#include "KviNickServRule.h"
 
 void KviNickServRule::copyFrom(const KviNickServRule & src)
 {

@@ -24,30 +24,30 @@
 
 #include "ChannelsJoinDialog.h"
 
-#include "KviLocale.h"
-#include "KviOptions.h"
-#include "KviSelectors.h"
 #include "KviApplication.h"
-#include "KviCString.h"
-#include "KviQString.h"
-#include "KviIconManager.h"
-#include "KviMainWindow.h"
 #include "KviConsoleWindow.h"
+#include "KviIconManager.h"
+#include "KviKvsScript.h"
+#include "KviLocale.h"
+#include "KviMainWindow.h"
+#include "KviOptions.h"
+#include "KviQString.h"
 #include "KviRegisteredChannel.h"
 #include "KviRegisteredChannelDataBase.h"
-#include "KviKvsScript.h"
+#include "KviSelectors.h"
 #include "KviTalGroupBox.h"
 
-#include <QLabel>
-#include <QLineEdit>
-#include <QLayout>
-#include <QPushButton>
-#include <QEvent>
-#include <QCloseEvent>
-#include <QMouseEvent>
-#include <QHeaderView>
 #include <QCheckBox>
+#include <QCloseEvent>
 #include <QDesktopWidget>
+#include <QEvent>
+#include <QHeaderView>
+#include <QLabel>
+#include <QLayout>
+#include <QLineEdit>
+#include <QMouseEvent>
+#include <QPushButton>
+#include <QString>
 
 extern ChannelsJoinDialog * g_pChannelsWindow;
 extern QRect g_rectChannelsJoinGeometry;

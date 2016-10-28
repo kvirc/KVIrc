@@ -34,7 +34,7 @@
 #include "kvi_settings.h"
 #include "kvi_sourcesdate.h"
 
-#include <QString>
+class QString;
 
 extern KVILIB_API const char * feature_array[];
 

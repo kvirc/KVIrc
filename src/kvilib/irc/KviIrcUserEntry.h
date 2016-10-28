@@ -32,10 +32,10 @@
 * This file was originally part of KviIrcUserDataBase.h
 */
 
-#include <memory>
-
 #include "kvi_settings.h"
 #include "KviAvatar.h"
+
+#include <memory>
 
 /**
 * \class KviIrcUserEntry

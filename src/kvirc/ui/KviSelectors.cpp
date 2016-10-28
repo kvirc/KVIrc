@@ -31,7 +31,6 @@
 #include "KviFileDialog.h"
 #include "KviKvsScript.h"
 
-#include <QLabel>
 #include <QPainter>
 #include <QLayout>
 #include <QColorDialog>

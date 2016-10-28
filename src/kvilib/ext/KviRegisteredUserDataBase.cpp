@@ -27,7 +27,10 @@
 #include "kvi_debug.h"
 #include "KviRegisteredUserDataBase.h"
 #include "KviConfigurationFile.h"
+#include "KviIrcMask.h"
 #include "KviLocale.h"
+
+#include <QString>
 
 /*
 	@doc: registered_users

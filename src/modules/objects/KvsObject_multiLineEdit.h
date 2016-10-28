@@ -2,7 +2,7 @@
 #define _CLASS_MULTILINEEDIT_H_
 //=============================================================================
 //
-//   File : KvsObject_multiLineEdit.cpp
+//   File : KvsObject_multiLineEdit.h
 //   Creation date : Mon Feb 19 2000 00:45:34 CET by Krzysztof Godlewski
 //
 //   This file is part of the KVIrc IRC client distribution

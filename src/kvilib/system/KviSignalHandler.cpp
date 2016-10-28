@@ -38,6 +38,7 @@
 #include <unistd.h>
 
 #include <QApplication>
+#include <QSocketNotifier>
 
 // Adapted from http://doc.qt.io/qt-5/unix-signals.html
 

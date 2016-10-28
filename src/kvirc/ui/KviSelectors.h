@@ -25,22 +25,22 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviCString.h"
 #include "KviPixmap.h"
 #include "KviTalHBox.h"
-#include "KviTalVBox.h"
 #include "KviTalListWidget.h"
+#include "KviTalVBox.h"
 
-#include <QTreeWidget>
-#include <QScrollArea>
 #include <QCheckBox>
-#include <QLineEdit>
-#include <QLabel>
-#include <QPushButton>
 #include <QColor>
 #include <QFont>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QScrollArea>
 #include <QSpinBox>
+#include <QString>
 #include <QStringList>
+#include <QTreeWidget>
 #include <QValidator>
 
 class KVIRC_API KviSelectorInterface

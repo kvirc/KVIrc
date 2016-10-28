@@ -25,6 +25,7 @@
 #include "KviIrcNetwork.h"
 #include "KviIrcServer.h"
 #include "KviNickServRuleSet.h"
+#include "KviQString.h"
 
 KviIrcNetwork::KviIrcNetwork(const KviIrcNetwork & src)
 {

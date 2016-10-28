@@ -33,6 +33,7 @@
 #include "KviKvsEventManager.h"
 #include "KviKvsEventTriggers.h"
 #include "KviIrcConnectionStateData.h"
+#include "KviIrcMessage.h"
 
 KviIrcServerParser * g_pServerParser = nullptr;
 

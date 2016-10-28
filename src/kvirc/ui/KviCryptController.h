@@ -2,7 +2,7 @@
 #define _KVI_CRYPTCONTROLLER_H_
 //=============================================================================
 //
-//   File : KviCryptEngine.h
+//   File : KviCryptController.h
 //   Creation date : Fri Nov 03 2000 14:11:03 CEST by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -27,22 +27,22 @@
 #include "kvi_settings.h"
 
 #if defined(COMPILE_CRYPT_SUPPORT)
-#include "KviCryptEngine.h"
 #include "KviCryptEngineDescription.h"
 #include "KviCryptEngineManager.h"
 #include "KviHeapObject.h"
-#include "KviWindowToolWidget.h"
 #include "KviTalListWidget.h"
+#include "KviWindowToolWidget.h"
 
-#include <QWidget>
-#include <QPushButton>
-#include <QToolButton>
-#include <QLabel>
-#include <QLineEdit>
-#include <QCheckBox>
-#include <QTextEdit>
+#include <QString>
 
+class KviCryptEngine;
 class KviWindow;
+class QCheckBox;
+class QLabel;
+class QLineEdit;
+class QPushButton;
+class QTextEdit;
+class QWidget;
 
 class KVIRC_API KviCryptSessionInfo : public KviHeapObject
 {

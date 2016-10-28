@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : DccVoiceAdpcmCodec.h
+//   File : DccVoiceAdpcmCodec.cpp
 //   Creation date : Wed Aug 22 19:12:46 2001 GMT by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

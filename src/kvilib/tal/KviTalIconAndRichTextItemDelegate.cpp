@@ -24,10 +24,11 @@
 
 #include "KviTalIconAndRichTextItemDelegate.h"
 
+#include <QAbstractItemView>
+#include <QAbstractTextDocumentLayout>
+#include <QApplication>
 #include <QListWidget>
 #include <QPainter>
-#include <QApplication>
-#include <QAbstractTextDocumentLayout>
 
 #define LVI_AFTER_ICON (LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING)
 

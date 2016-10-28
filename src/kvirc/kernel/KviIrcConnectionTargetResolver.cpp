@@ -41,6 +41,7 @@
 #include "kvi_debug.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionTarget.h"
+#include "KviIrcNetwork.h"
 
 #include <stdlib.h>
 

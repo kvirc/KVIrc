@@ -25,6 +25,7 @@
 #define _KVI_ANTISPAM_CPP_
 
 #include "KviAntiSpam.h"
+#include "KviCString.h"
 #include "KviOptions.h"
 
 // - A spam message is generally a single PRIVMSG <mynick> :<text>

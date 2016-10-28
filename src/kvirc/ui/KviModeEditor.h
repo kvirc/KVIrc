@@ -25,8 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviCString.h"
-#include "KviPointerList.h"
 #include "KviWindowToolWidget.h"
 
 #include <QMap>
@@ -34,6 +32,7 @@
 class QCheckBox;
 class QLineEdit;
 class QPushButton;
+class QString;
 class KviIrcConnectionServerInfo;
 class KviChannelWindow;
 

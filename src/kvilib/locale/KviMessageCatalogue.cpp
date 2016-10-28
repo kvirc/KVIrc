@@ -58,6 +58,7 @@
 #include "KviPointerHashTable.h"
 #include "KviTranslationEntry.h"
 
+#include <QString>
 #include <QTextCodec>
 
 #include <stdio.h>

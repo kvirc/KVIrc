@@ -35,10 +35,10 @@
 */
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 #include "KviCString.h"
+#include "KviHeapObject.h"
 
-#include <QString>
+class QString;
 
 /**
 * \class KviTranslationEntry

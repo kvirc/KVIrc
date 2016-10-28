@@ -52,6 +52,7 @@
 #include "KviKvsScript.h"
 #include "KviKvsVariantList.h"
 #include "KviIdentityProfileSet.h"
+#include "KviIrcMessage.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"

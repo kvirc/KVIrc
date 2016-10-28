@@ -2,7 +2,7 @@
 #define _OPTW_TRAY_H_
 //=============================================================================
 //
-//   File : OptionsWidget_tray.cpp
+//   File : OptionsWidget_tray.h
 //   Creation date : Mon 14 Aug 2006 by Alexey Uzhva
 //
 //   This file is part of the KVIrc IRC client distribution

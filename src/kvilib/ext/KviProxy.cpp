@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviProxy.h
+//   File : KviProxy.cpp
 //   Creation date : Wed Dec 29 2010 01:58:01 by Elvio Basello
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -23,7 +23,6 @@
 //=============================================================================
 
 #include "KviProxy.h"
-#include "KviQString.h"
 #include "KviCString.h"
 
 #include <QStringList>

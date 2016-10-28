@@ -27,18 +27,18 @@
 #include "kvi_settings.h"
 #include "KviQString.h"
 #include "KviConsoleWindow.h"
-#include "KviIrcMessage.h"
 
 #include <QObject>
-#include <QByteArray>
 
 #include <time.h>
 
-class KviWindow;
 class KviChannelWindow;
+class KviIrcConnection;
+class KviIrcMessage;
 class KviIrcServerParser;
 class KviMainWindow;
-class KviIrcConnection;
+class KviWindow;
+class QByteArray;
 
 #define UNRECOGNIZED_MESSAGE(_msg, _err) \
 	_msg->setUnrecognized();             \

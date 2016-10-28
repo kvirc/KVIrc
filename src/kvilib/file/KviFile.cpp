@@ -25,6 +25,7 @@
 
 #include "KviFile.h"
 #include "KviByteOrder.h"
+#include "KviCString.h"
 
 #include <QByteArray>
 

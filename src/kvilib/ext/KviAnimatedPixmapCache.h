@@ -27,10 +27,11 @@
 #include "kvi_settings.h"
 #include "KviAnimatedPixmapInterface.h"
 
-#include <QMutex>
-#include <QPixmap>
 #include <QMultiHash>
 #include <QMultiMap>
+#include <QMutex>
+#include <QObject>
+#include <QPixmap>
 #include <QTimer>
 
 class KVILIB_API KviAnimatedPixmapCache : public QObject

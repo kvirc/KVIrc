@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : SlowPasteController.h
+//   File : SlowPasteController.cpp
 //   Creation date : Thu Apr 30 2002 17:13:12 GMT by Juanjo Álvarez
 //
 //   This file is part of the KVIrc IRC client distribution

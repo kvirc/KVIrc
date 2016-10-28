@@ -2,7 +2,7 @@
 #define KVI_NETWORK_H_
 //=============================================================================
 //
-//   File : KviIrcNetwork.cpp
+//   File : KviIrcNetwork.h
 //   Creation date : Wed Aug 27 2008 17:44:56 by Alexey Uzhva
 //
 //   This file is part of the KVIrc IRC client distribution

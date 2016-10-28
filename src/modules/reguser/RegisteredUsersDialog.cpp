@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : RegisteredUserEntryDialog.cpp
+//   File : RegisteredUsersDialog.cpp
 //   Creation date : Tue Dec 26 2000 12:24:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

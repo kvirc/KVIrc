@@ -24,6 +24,8 @@
 
 #include "KviIrcServerDataBase.h"
 #include "KviConfigurationFile.h"
+#include "KviIrcNetwork.h"
+#include "KviIrcServer.h"
 #include "KviLocale.h"
 #include "KviNetUtils.h"
 #include "KviNickServRuleSet.h"

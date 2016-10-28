@@ -28,6 +28,7 @@
 #include "KviIrcMask.h"
 
 #include <QFileInfo>
+#include <QTimer>
 
 // TODO: Match servers that the file requests come from
 // TODO: Max number of downloads ?

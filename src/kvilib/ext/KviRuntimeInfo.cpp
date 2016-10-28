@@ -27,6 +27,7 @@
 #include "KviQString.h"
 
 #include <QApplication>
+#include <QString>
 #include <QStyle>
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)

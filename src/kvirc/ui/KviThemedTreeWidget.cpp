@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviThemedLabel.cpp
+//   File : KviThemedTreeWidget.cpp
 //   Creation date : Tue Aug 29 2000 21:17:01 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

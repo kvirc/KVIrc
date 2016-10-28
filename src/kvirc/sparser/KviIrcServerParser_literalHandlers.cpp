@@ -58,6 +58,7 @@
 #include "KviKvsEventTriggers.h"
 #include "KviIrcNetwork.h"
 #include "kvi_settings.h"
+#include "KviIrcMessage.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"

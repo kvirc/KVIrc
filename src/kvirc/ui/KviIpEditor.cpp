@@ -25,12 +25,12 @@
 #include "KviIpEditor.h"
 
 #include <QApplication>
-#include <QLineEdit>
-#include <QLabel>
-#include <QFrame>
-#include <QEvent>
-#include <QKeyEvent>
 #include <QByteArray>
+#include <QEvent>
+#include <QFrame>
+#include <QKeyEvent>
+#include <QLabel>
+#include <QLineEdit>
 
 #include <ctype.h>
 
@@ -89,16 +89,10 @@ KviIpEditor::AddressType KviIpEditor::addressType() const
 
 bool KviIpEditor::hasEmptyFields() const
 {
-	bool bHasEF = false;
 	for(auto i : m_pEdit)
-	{
-		if(i)
-		{
-			if(i->text().isEmpty())
-				bHasEF = true;
-		}
-	}
-	return bHasEF;
+		if(i && i->text().isEmpty())
+			return true;
+	return false;
 }
 
 void KviIpEditor::clear()
@@ -107,9 +101,7 @@ void KviIpEditor::clear()
 		return;
 	int maxW = (m_addrType == IPv4) ? 4 : 8;
 	for(int i = 0; i < maxW; i++)
-	{
 		m_pEdit[i]->setText("");
-	}
 }
 
 bool KviIpEditor::setAddress(const QString & ipAddr)

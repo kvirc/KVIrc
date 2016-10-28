@@ -38,6 +38,7 @@
 #include "KviWindow.h"
 #include "KviMainWindow.h"
 #include "KviPointerList.h"
+#include "KviIrcMask.h"
 
 #include <QSplitter> // FIXME: REmove this!
 

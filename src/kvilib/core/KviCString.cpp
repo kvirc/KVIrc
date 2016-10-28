@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : kvi_string.cpp
+//   File : KviCString.cpp
 //   Creation date : Fri Mar 19 1999 03:20:45 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -28,6 +28,8 @@
 
 #include "KviCString.h"
 #include "KviMemory.h"
+
+#include <QString>
 
 static char hexdigits[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 

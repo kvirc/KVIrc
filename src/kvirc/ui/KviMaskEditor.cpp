@@ -23,17 +23,19 @@
 //=============================================================================
 
 #include "KviMaskEditor.h"
-#include "KviLocale.h"
-#include "KviQString.h"
 #include "KviChannelWindow.h"
 #include "KviIrcConnectionServerInfo.h"
 #include "KviIrcConnectionUserInfo.h"
-#include "KviWindowToolWidget.h"
-#include "KviChannelWindow.h"
+#include "KviLocale.h"
 #include "KviOptions.h"
+#include "KviQString.h"
+#include "KviWindowToolWidget.h"
 
-#include <QLayout>
+#include <QDateTime>
 #include <QLabel>
+#include <QLayout>
+#include <QLineEdit>
+#include <QPushButton>
 #include <QValidator>
 
 KviMaskItem::KviMaskItem(QTreeWidget * pParent, KviMaskEntry * pEntry)

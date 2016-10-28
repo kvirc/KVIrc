@@ -33,12 +33,15 @@
 #include "kvi_settings.h"
 #include "kvi_debug.h"
 
-#include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
 #include "KviRegisteredUserGroup.h"
 #include "KviRegisteredUserMask.h"
+#include "KviRegisteredUser.h"
 
 #include <QObject>
+
+class KviIrcMask;
+class QString;
 
 //
 // KviRegisteredUserDataBase

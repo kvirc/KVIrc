@@ -41,6 +41,8 @@
 
 #include <vector>
 
+class QString;
+
 #define KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES 500
 #define KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES 50
 

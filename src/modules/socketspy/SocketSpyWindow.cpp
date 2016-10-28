@@ -31,6 +31,7 @@
 #include "KviLocale.h"
 #include "KviConsoleWindow.h"
 
+#include <QString>
 #include <unordered_set>
 
 extern std::unordered_set<SocketSpyWindow *> g_pSocketSpyWindowList;

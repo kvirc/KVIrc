@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "KviModule.h"
-#include "KviCString.h"
 #include "KviApplication.h"
 #include "KviChannelWindow.h"
 #include "KviLocale.h"
@@ -33,9 +32,10 @@
 #include "KviIrcMask.h"
 #include "KviMaskEditor.h"
 #include "KviIrcUrl.h"
-#include "KviIrcConnectionTarget.h"
 #include "KviIrcConnection.h"
+#include "KviIrcConnectionTarget.h"
 
+#include <QString>
 #include <vector>
 
 static KviChannelWindow * chan_kvs_find_channel(KviKvsModuleFunctionCall * c, QString & szChan, bool bNoWarnings = false)

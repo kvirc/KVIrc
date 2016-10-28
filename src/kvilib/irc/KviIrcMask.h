@@ -37,7 +37,8 @@
 
 #include "kvi_settings.h"
 #include "KviHeapObject.h"
-#include "KviQString.h"
+
+#include <QString>
 
 /**
 * \class KviIrcMask

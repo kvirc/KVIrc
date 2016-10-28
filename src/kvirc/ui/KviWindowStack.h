@@ -2,7 +2,7 @@
 #define _KviWindowStack_h_
 //=============================================================================
 //
-//   File : kvi+_mdimanager.h
+//   File : KviWindowStack.h
 //   Creation date : Wed Jun 21 2000 17:28:04 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

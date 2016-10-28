@@ -108,7 +108,7 @@ public:
 	* \param pParent The parent object
 	* \return QString
 	*/
-	static QString getExistingDirectoryPath(const QString & szDir = QString(), const QString & szCaption = QString(), QWidget * pParent = 0)
+	static QString getExistingDirectoryPath(const QString & szDir = QString(), const QString & szCaption = QString(), QWidget * pParent = nullptr)
 	{
 #if defined(COMPILE_KDE4_SUPPORT)
 		// QFileDialog allows making new directories...kfiledialog not :/

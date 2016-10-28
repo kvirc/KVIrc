@@ -22,13 +22,13 @@
 //   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
 //=============================================================================
-#include "ChannelsJoinDialog.h"
 
 #include "KviModule.h"
-#include "KviWindow.h"
-#include "KviMainWindow.h"
-#include "KviLocale.h"
+#include "ChannelsJoinDialog.h"
 #include "KviConfigurationFile.h"
+#include "KviLocale.h"
+#include "KviMainWindow.h"
+#include "KviWindow.h"
 
 #include <QSplitter>
 

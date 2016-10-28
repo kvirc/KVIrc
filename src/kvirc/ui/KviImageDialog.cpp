@@ -23,18 +23,18 @@
 //=============================================================================
 
 #include "KviImageDialog.h"
-#include "KviFileUtils.h"
-#include "KviLocale.h"
-#include "KviIconManager.h"
-#include "KviOptions.h"
 #include "KviApplication.h"
+#include "KviFileUtils.h"
+#include "KviIconManager.h"
+#include "KviLocale.h"
+#include "KviOptions.h"
 
-#include <QLayout>
-#include <QPushButton>
-#include <QPainter>
-#include <QImage>
-#include <QFileInfo>
 #include <QDir>
+#include <QFileInfo>
+#include <QImage>
+#include <QLayout>
+#include <QPainter>
+#include <QPushButton>
 
 int KviImageDialogItem::height(const KviTalListWidget * lb) const
 {
@@ -43,13 +43,10 @@ int KviImageDialogItem::height(const KviTalListWidget * lb) const
 
 int KviImageDialogItem::width(const KviTalListWidget * lb) const
 {
-	int w;
-	if(text().isEmpty())
-		w = 24;
-	w = lb->fontMetrics().width(text()) + 4;
+	int w = lb->fontMetrics().width(text()) + 4;
 	if(w > 100)
 		w = 100;
-	if(w < 24)
+	else if(w < 24)
 		w = 24;
 	return qMax(pixmap()->width() + 10, w);
 }

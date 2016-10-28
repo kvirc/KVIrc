@@ -24,10 +24,11 @@
 //
 //=============================================================================
 
-#include "KviCString.h"
 #include "kvi_settings.h"
 
-#include <QStringList>
+class KviCString;
+class QChar;
+class QStringList;
 
 namespace KviCommandFormatter
 {

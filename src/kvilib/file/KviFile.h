@@ -32,14 +32,12 @@
 
 #include "kvi_settings.h"
 #include "KviHeapObject.h"
-#include "KviCString.h"
 #include "KviPointerList.h"
 #include "kvi_inttypes.h"
 
 #include <QFile>
 
-#include <time.h>
-
+class KviCString;
 class QByteArray;
 
 #define kvi_file_offset_t qlonglong
