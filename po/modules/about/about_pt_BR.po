@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-29 12:14+0100\n"
-"PO-Revision-Date: 2016-03-02 10:44+0000\n"
+"POT-Creation-Date: 2016-05-26 15:10+0200\n"
+"PO-Revision-Date: 2016-05-26 17:17+0000\n"
 "Last-Translator: Daniel Neves\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/kvirc/KVIrc/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -37,81 +37,85 @@ msgstr "Criado pela <b>Equipe de Desenvolvimento KVIrc</b>"
 msgid "About"
 msgstr "Sobre"
 
-#: src/modules/about/AboutDialog.cpp:122
+#: src/modules/about/AboutDialog.cpp:121
 msgid "Runtime Info"
 msgstr "Informação de execução"
 
-#: src/modules/about/AboutDialog.cpp:124 src/modules/about/AboutDialog.cpp:163
+#: src/modules/about/AboutDialog.cpp:123 src/modules/about/AboutDialog.cpp:162
 msgid "System name"
 msgstr "Nome do sistema"
 
-#: src/modules/about/AboutDialog.cpp:132
+#: src/modules/about/AboutDialog.cpp:131
 msgid "System version"
 msgstr "Versão do sistema"
 
-#: src/modules/about/AboutDialog.cpp:136
+#: src/modules/about/AboutDialog.cpp:135
 msgid "Architecture"
 msgstr "Arquitectura"
 
-#: src/modules/about/AboutDialog.cpp:140 src/modules/about/AboutDialog.cpp:188
+#: src/modules/about/AboutDialog.cpp:139 src/modules/about/AboutDialog.cpp:187
 msgid "Qt version"
 msgstr "Versão do QT"
 
-#: src/modules/about/AboutDialog.cpp:144
+#: src/modules/about/AboutDialog.cpp:143
 msgid "Qt theme"
 msgstr "Tema QT"
 
-#: src/modules/about/AboutDialog.cpp:149
+#: src/modules/about/AboutDialog.cpp:148
 msgid "Build Info"
 msgstr "Informação de Compilação"
 
-#: src/modules/about/AboutDialog.cpp:151
+#: src/modules/about/AboutDialog.cpp:150
 msgid "Build date"
 msgstr "Data da criação"
 
-#: src/modules/about/AboutDialog.cpp:155
+#: src/modules/about/AboutDialog.cpp:154
 msgid "Sources date"
 msgstr "Data das fontes"
 
-#: src/modules/about/AboutDialog.cpp:159
+#: src/modules/about/AboutDialog.cpp:158
 msgid "Revision number"
 msgstr "Número da revisão"
 
-#: src/modules/about/AboutDialog.cpp:167
+#: src/modules/about/AboutDialog.cpp:166
 msgid "CPU name"
 msgstr "Nome da CPU"
 
-#: src/modules/about/AboutDialog.cpp:171
+#: src/modules/about/AboutDialog.cpp:170
 msgid "Build command"
 msgstr "Comando de criação"
 
-#: src/modules/about/AboutDialog.cpp:175
+#: src/modules/about/AboutDialog.cpp:174
 msgid "Build flags"
 msgstr "Bandeiras da criação"
 
-#: src/modules/about/AboutDialog.cpp:180
+#: src/modules/about/AboutDialog.cpp:179
 msgid "Compiler name"
 msgstr "Nome do compilador"
 
-#: src/modules/about/AboutDialog.cpp:184
+#: src/modules/about/AboutDialog.cpp:183
 msgid "Compiler flags"
 msgstr "Bandeiras do compilador"
 
-#: src/modules/about/AboutDialog.cpp:194
+#: src/modules/about/AboutDialog.cpp:191
+msgid "Features"
+msgstr "Recursos"
+
+#: src/modules/about/AboutDialog.cpp:197
 msgid "Executable Information"
 msgstr "Informação do Executável"
 
-#: src/modules/about/AboutDialog.cpp:207
+#: src/modules/about/AboutDialog.cpp:209
 msgid "Honor && Glory"
 msgstr "Honra e Glória"
 
-#: src/modules/about/AboutDialog.cpp:226
+#: src/modules/about/AboutDialog.cpp:227
 msgid ""
 "Oops! Can't find the license file.\n"
 "It MUST be included in the distribution...\n"
 "Please report to <pragma at kvirc dot net>"
 msgstr "Oops! Não foi encontrado o arquivo de licença.\nIsso DEVE ser incluído na distribuição...\nPor favor, reportar para <pragma at kvirc dot net>"
 
-#: src/modules/about/AboutDialog.cpp:233
+#: src/modules/about/AboutDialog.cpp:235
 msgid "License"
 msgstr "Licença"
