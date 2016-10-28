@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: filetransferwindow_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2016-10-28 21:04+0200\n"
 "PO-Revision-Date: 2012-07-08 13:12+0100\n"
 "Last-Translator: Fibinger Ádám <vfiber[at]gmail dot com>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -17,111 +17,117 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:524
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:531
 msgid "&Clear Terminated"
 msgstr "Megszakított eltávolítása"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:493
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:500
 msgid "&Copy Path to Clipboard"
 msgstr "Útvonal másolása vágólapra"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:495
-msgid "&Delete file"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:502
+#, fuzzy
+msgid "&Delete File"
 msgstr "Fájl Törlése"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:450
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:482
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:459
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:490
 msgid "&Open"
 msgstr "Megnyitás"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:470
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:478
 msgid "&Other..."
 msgstr "Egyéb"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:531
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:538
 msgid "Clear &All"
 msgstr "Minden eltávolítása"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
-msgid "Clear All Transfers? - KVIrc"
-msgstr "Minden Adatátvitel eltávolítása? - KVIrc"
-
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:789
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:820
 msgid "Clear all transfers, including any in progress?"
 msgstr ""
 "Minden adatátvitel eltávolítása, beleértve a még folyamatban lévőket is?"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:626
-msgid "Confirm delete"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:824
+#, fuzzy
+msgid "Confirm Clearing All Transfers - KVIrc"
+msgstr "Minden Adatátvitel eltávolítása? - KVIrc"
+
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:640
+#, fuzzy
+msgid "Confirm File Delete - KVIrc"
 msgstr "Törlés Megerőssítése"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:631
-msgid "Delete failed"
-msgstr "Törlés sikertelen"
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:646
+msgid "Deleting File Failed - KVIrc"
+msgstr ""
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:624
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:638
 msgid "Do you really want to delete the file %1?"
 msgstr "Tényleg törölni szeretnéd a fájlt: %1?"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:632
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:647
 msgid "Failed to remove the file"
 msgstr "A fájl eltávolítása sikertelen"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:826
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:857
 msgid "File Transfers"
 msgstr "Fájl Átvitelek"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:139
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:143
 msgid "Information"
 msgstr "Információ"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:497
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:504
 msgid "Local &File"
 msgstr "Helyi Fájl"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:488
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:496
 msgid "MS-DOS Prompt at Location"
 msgstr "MS-DOS Promt az adott helyen"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:627
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:641
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:824
 msgid "No"
 msgstr "Nem"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:633
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:648
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:475
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:487
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:483
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:495
 msgid "Open &Location"
 msgstr "Hely megnyitása"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:473
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:485
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:481
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:493
 msgid "Open &With"
 msgstr "Megnyitás ezzel..."
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:140
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:144
 msgid "Progress"
 msgstr "Folyamat"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:429
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:438
 msgid "Size: %1"
 msgstr "Méret: %1"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:476
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:484
 msgid "Terminal at Location"
 msgstr "Terminál az adott helyen"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:138
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:142
 msgid "Type"
 msgstr "Típus"
 
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:627
-#: src/modules/filetransferwindow/FileTransferWindow.cpp:793
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:641
+#: src/modules/filetransferwindow/FileTransferWindow.cpp:824
 msgid "Yes"
 msgstr "Igen"
+
+#~ msgid "Delete failed"
+#~ msgstr "Törlés sikertelen"
 
 #, fuzzy
 #~ msgid "Manage File &Transfers"

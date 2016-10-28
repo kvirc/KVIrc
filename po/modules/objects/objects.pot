@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the KVIrc package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: KVIrc 4.9.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-26 15:10+0200\n"
+"POT-Creation-Date: 2016-10-28 21:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,108 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/modules/objects/KvsObject_buttonGroup.cpp:91
-msgid "Buttongroup supports only checkbox and radiobox object"
-msgstr ""
-
-#: src/modules/objects/KvsObject_comboBox.cpp:172
-#: src/modules/objects/KvsObject_comboBox.cpp:283
-#: src/modules/objects/KvsObject_listWidget.cpp:465
-msgid "No string parameter given - using empty string"
-msgstr ""
-
-#: src/modules/objects/KvsObject_comboBox.cpp:175
-#: src/modules/objects/KvsObject_comboBox.cpp:193
-#: src/modules/objects/KvsObject_listWidget.cpp:468
-#: src/modules/objects/KvsObject_listWidget.cpp:487
-#, c-format
-msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
-msgstr ""
-
-#: src/modules/objects/KvsObject_comboBox.cpp:335
-msgid "Invalid insertion policy '%Q'"
-msgstr ""
-
-#: src/modules/objects/KvsObject_layout.cpp:135
-msgid "The parent of a layout must be a widget!"
-msgstr ""
-
-#: src/modules/objects/KvsObject_layout.cpp:141
-msgid "Qt does not support setting layouts on toolbar objects"
-msgstr ""
-
-#: src/modules/objects/KvsObject_layout.cpp:275
-msgid "Invalid resize mode defaulting to Auto"
-msgstr ""
-
-#: src/modules/objects/KvsObject_layout.cpp:296
-msgid "The widget must be a child of this layout"
-msgstr ""
-
-#: src/modules/objects/KvsObject_layout.cpp:315
-#: src/modules/objects/KvsObject_vBox.cpp:210
-msgid "Unknown alignment: '%Q'"
-msgstr ""
-
-#: src/modules/objects/KvsObject_lcd.cpp:146
-msgid "Unknown mode '%Q'"
-msgstr ""
-
-#: src/modules/objects/KvsObject_lcd.cpp:164
-msgid "Unknown segment style '%Q'"
-msgstr ""
-
-#: src/modules/objects/KvsObject_mainWindow.cpp:83
-#: src/modules/objects/KvsObject_toolButton.cpp:263
-#: src/modules/objects/KvsObject_trayIcon.cpp:196
-#: src/modules/objects/KvsObject_webView.cpp:1142
-#: src/modules/objects/KvsObject_widget.cpp:1799
-#: src/modules/objects/KvsObject_widget.cpp:2044
-#: src/modules/objects/object_macros.h:106
-msgid "Widget parameter is not an object"
-msgstr ""
-
-#: src/modules/objects/KvsObject_mainWindow.cpp:88
-#: src/modules/objects/KvsObject_toolButton.cpp:268
-#: src/modules/objects/KvsObject_trayIcon.cpp:201
-#: src/modules/objects/KvsObject_webView.cpp:1147
-#: src/modules/objects/KvsObject_widget.cpp:1804
-#: src/modules/objects/object_macros.h:111
-msgid "Widget parameter is not a valid object"
-msgstr ""
-
-#: src/modules/objects/KvsObject_mainWindow.cpp:93
-#: src/modules/objects/KvsObject_widget.cpp:2050
-#: src/modules/objects/KvsObject_wizard.cpp:186
-#: src/modules/objects/KvsObject_wizard.cpp:205
-#: src/modules/objects/KvsObject_wizard.cpp:226
-#: src/modules/objects/KvsObject_wizard.cpp:246
-#: src/modules/objects/KvsObject_wizard.cpp:266
-#: src/modules/objects/object_macros.h:116
-msgid "Widget object required"
-msgstr ""
-
-#: src/modules/objects/KvsObject_memoryBuffer.cpp:112
-msgid "The file '%Q' doesn't exist"
-msgstr ""
-
-#: src/modules/objects/KvsObject_memoryBuffer.cpp:131
-msgid "Index '%I' out of the buffer size"
-msgstr ""
-
-#: src/modules/objects/KvsObject_memoryBuffer.cpp:153
-msgid "Can't open file '%Q' for writing"
-msgstr ""
-
-#: src/modules/objects/KvsObject_slider.cpp:263
-msgid "Unknown tickmark '%Q'"
-msgstr ""
-
-#: src/modules/objects/KvsObject_slider.cpp:278
-#: src/modules/objects/KvsObject_groupBox.cpp:326
-msgid "Unknown orientation '%Q'"
-msgstr ""
 
 #: src/modules/objects/KvsObject_button.cpp:123
 msgid "Image parameter missing"
@@ -130,6 +28,10 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_button.cpp:139
 msgid "Object pixmap required!"
+msgstr ""
+
+#: src/modules/objects/KvsObject_buttonGroup.cpp:91
+msgid "Buttongroup supports only checkbox and radiobox object"
 msgstr ""
 
 #: src/modules/objects/KvsObject_colorDialog.cpp:124
@@ -166,6 +68,24 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_colorDialog.cpp:185
 msgid "Unknown szOptions '%Q'"
+msgstr ""
+
+#: src/modules/objects/KvsObject_comboBox.cpp:172
+#: src/modules/objects/KvsObject_comboBox.cpp:283
+#: src/modules/objects/KvsObject_listWidget.cpp:465
+msgid "No string parameter given - using empty string"
+msgstr ""
+
+#: src/modules/objects/KvsObject_comboBox.cpp:175
+#: src/modules/objects/KvsObject_comboBox.cpp:193
+#: src/modules/objects/KvsObject_listWidget.cpp:468
+#: src/modules/objects/KvsObject_listWidget.cpp:487
+#, c-format
+msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
+msgstr ""
+
+#: src/modules/objects/KvsObject_comboBox.cpp:335
+msgid "Invalid insertion policy '%Q'"
 msgstr ""
 
 #: src/modules/objects/KvsObject_dockWindow.cpp:94
@@ -268,12 +188,17 @@ msgstr ""
 msgid "The hex string is not correct!"
 msgstr ""
 
-#: src/modules/objects/KvsObject_groupBox.cpp:293
+#: src/modules/objects/KvsObject_groupBox.cpp:297
 #: src/modules/objects/KvsObject_hBox.cpp:194
 #: src/modules/objects/KvsObject_label.cpp:263
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:864
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:860
 #: src/modules/objects/KvsObject_painter.cpp:1339
 msgid "Unknown alignment '%Q'"
+msgstr ""
+
+#: src/modules/objects/KvsObject_groupBox.cpp:330
+#: src/modules/objects/KvsObject_slider.cpp:278
+msgid "Unknown orientation '%Q'"
 msgstr ""
 
 #: src/modules/objects/KvsObject_hBox.cpp:143
@@ -295,6 +220,35 @@ msgstr ""
 #: src/modules/objects/KvsObject_painter.cpp:788
 #: src/modules/objects/KvsObject_widget.cpp:1780
 msgid "Unknown style '%Q'"
+msgstr ""
+
+#: src/modules/objects/KvsObject_layout.cpp:135
+msgid "The parent of a layout must be a widget!"
+msgstr ""
+
+#: src/modules/objects/KvsObject_layout.cpp:141
+msgid "Qt does not support setting layouts on toolbar objects"
+msgstr ""
+
+#: src/modules/objects/KvsObject_layout.cpp:275
+msgid "Invalid resize mode defaulting to Auto"
+msgstr ""
+
+#: src/modules/objects/KvsObject_layout.cpp:296
+msgid "The widget must be a child of this layout"
+msgstr ""
+
+#: src/modules/objects/KvsObject_layout.cpp:315
+#: src/modules/objects/KvsObject_vBox.cpp:210
+msgid "Unknown alignment: '%Q'"
+msgstr ""
+
+#: src/modules/objects/KvsObject_lcd.cpp:146
+msgid "Unknown mode '%Q'"
+msgstr ""
+
+#: src/modules/objects/KvsObject_lcd.cpp:164
+msgid "Unknown segment style '%Q'"
 msgstr ""
 
 #: src/modules/objects/KvsObject_lineEdit.cpp:402
@@ -335,6 +289,48 @@ msgstr ""
 msgid "Can't insert a non-widget object"
 msgstr ""
 
+#: src/modules/objects/KvsObject_mainWindow.cpp:83
+#: src/modules/objects/KvsObject_toolButton.cpp:263
+#: src/modules/objects/KvsObject_trayIcon.cpp:196
+#: src/modules/objects/KvsObject_webView.cpp:1142
+#: src/modules/objects/KvsObject_widget.cpp:1799
+#: src/modules/objects/KvsObject_widget.cpp:2044
+#: src/modules/objects/object_macros.h:106
+msgid "Widget parameter is not an object"
+msgstr ""
+
+#: src/modules/objects/KvsObject_mainWindow.cpp:88
+#: src/modules/objects/KvsObject_toolButton.cpp:268
+#: src/modules/objects/KvsObject_trayIcon.cpp:201
+#: src/modules/objects/KvsObject_webView.cpp:1147
+#: src/modules/objects/KvsObject_widget.cpp:1804
+#: src/modules/objects/object_macros.h:111
+msgid "Widget parameter is not a valid object"
+msgstr ""
+
+#: src/modules/objects/KvsObject_mainWindow.cpp:93
+#: src/modules/objects/KvsObject_widget.cpp:2050
+#: src/modules/objects/KvsObject_wizard.cpp:186
+#: src/modules/objects/KvsObject_wizard.cpp:205
+#: src/modules/objects/KvsObject_wizard.cpp:226
+#: src/modules/objects/KvsObject_wizard.cpp:246
+#: src/modules/objects/KvsObject_wizard.cpp:266
+#: src/modules/objects/object_macros.h:116
+msgid "Widget object required"
+msgstr ""
+
+#: src/modules/objects/KvsObject_memoryBuffer.cpp:112
+msgid "The file '%Q' doesn't exist"
+msgstr ""
+
+#: src/modules/objects/KvsObject_memoryBuffer.cpp:131
+msgid "Index '%I' out of the buffer size"
+msgstr ""
+
+#: src/modules/objects/KvsObject_memoryBuffer.cpp:153
+msgid "Can't open file '%Q' for writing"
+msgstr ""
+
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:293
 #, c-format
 msgid "No such line '%d'"
@@ -344,7 +340,7 @@ msgstr ""
 msgid "Unknown word wrap '%Q'"
 msgstr ""
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:652
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:649
 #: src/modules/objects/KvsObject_painter.cpp:716
 #: src/modules/objects/KvsObject_tableWidget.cpp:310
 #: src/modules/objects/KvsObject_widget.cpp:1245
@@ -352,33 +348,33 @@ msgstr ""
 msgid "The array passed as parameter must contain at least 3 elements"
 msgstr ""
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:661
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:658
 #: src/modules/objects/KvsObject_tableWidget.cpp:319
 #: src/modules/objects/KvsObject_widget.cpp:1254
 #: src/modules/objects/KvsObject_widget.cpp:1337
 msgid "One of the colors array parameters is empty"
 msgstr ""
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:666
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:663
 #: src/modules/objects/KvsObject_tableWidget.cpp:325
 #: src/modules/objects/KvsObject_widget.cpp:1260
 #: src/modules/objects/KvsObject_widget.cpp:1343
 msgid "One of the colors array parameters didn't evaluate to an integer"
 msgstr ""
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:679
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:676
 msgid "A string of 6 hex digits is required"
 msgstr ""
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:690
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:687
 msgid "Not an hex digit"
 msgstr ""
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:699
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:696
 msgid "$setColor requires either an array as first parameter or three integers"
 msgstr ""
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:704
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:701
 #: src/modules/objects/KvsObject_painter.cpp:670
 #: src/modules/objects/KvsObject_painter.cpp:706
 #: src/modules/objects/KvsObject_painter.cpp:752
@@ -391,26 +387,26 @@ msgstr ""
 msgid "The first parameter didn't evaluate to an array nor an integer"
 msgstr ""
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:777
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:774
 msgid "Unknown text format '%Q'"
 msgstr ""
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:790
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:787
 #: src/modules/objects/KvsObject_pixmap.cpp:518
 #: src/modules/objects/KvsObject_pixmap.cpp:561
 #: src/modules/objects/KvsObject_textBrowser.cpp:102
 msgid "I can't find the specified file '%Q'."
 msgstr ""
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:797
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:794
 msgid "I can't read the file '%Q'."
 msgstr ""
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:812
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:809
 msgid "Unknown text document format '%Q'"
 msgstr ""
 
-#: src/modules/objects/KvsObject_multiLineEdit.cpp:832
+#: src/modules/objects/KvsObject_multiLineEdit.cpp:829
 msgid "Unknown text document format '%Q'. Writing the document as plain text."
 msgstr ""
 
@@ -572,6 +568,10 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_process.cpp:221
 msgid "Process could not be started."
+msgstr ""
+
+#: src/modules/objects/KvsObject_slider.cpp:263
+msgid "Unknown tickmark '%Q'"
 msgstr ""
 
 #: src/modules/objects/KvsObject_socket.cpp:464
@@ -906,36 +906,36 @@ msgstr ""
 msgid "Class '%Q' is not defined"
 msgstr ""
 
-#: src/modules/objects/libkviobjects.cpp:272
+#: src/modules/objects/libkviobjects.cpp:271
 msgid "non-existent target object for objects.connect"
 msgstr ""
 
-#: src/modules/objects/libkviobjects.cpp:277
+#: src/modules/objects/libkviobjects.cpp:276
 msgid "non-existent source object for objects.connect"
 msgstr ""
 
-#: src/modules/objects/libkviobjects.cpp:282
+#: src/modules/objects/libkviobjects.cpp:281
 msgid "non-existent target slot '%Q' for objects.connect"
 msgstr ""
 
-#: src/modules/objects/libkviobjects.cpp:366
-#: src/modules/objects/libkviobjects.cpp:464
+#: src/modules/objects/libkviobjects.cpp:365
+#: src/modules/objects/libkviobjects.cpp:463
 msgid "The class '%Q' doesn't exist"
 msgstr ""
 
-#: src/modules/objects/libkviobjects.cpp:425
+#: src/modules/objects/libkviobjects.cpp:424
 msgid "Object doesn't exist"
 msgstr ""
 
-#: src/modules/objects/libkviobjects.cpp:566
+#: src/modules/objects/libkviobjects.cpp:565
 msgid "non-existent class object for objects.name"
 msgstr ""
 
-#: src/modules/objects/libkviobjects.cpp:609
+#: src/modules/objects/libkviobjects.cpp:608
 msgid "non-existent target object for objects.disconnect"
 msgstr ""
 
-#: src/modules/objects/libkviobjects.cpp:614
+#: src/modules/objects/libkviobjects.cpp:613
 msgid "non-existent source object for objects.disconnect"
 msgstr ""
 

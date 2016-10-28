@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_perl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2016-10-28 21:04+0200\n"
 "PO-Revision-Date: 2011-06-14 15:34-0300\n"
 "Last-Translator: Rafael <rafaelvizioni@ig.com.br>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -20,30 +20,32 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/perlcore/libkviperlcore.cpp:240
-msgid "Internal error: perl interpreter not initialized"
+#: src/modules/perlcore/libkviperlcore.cpp:248
+#, fuzzy
+msgid "Internal error: Perl interpreter not initialized"
 msgstr "Erro interno: interpretador perl não inicializado"
 
-#: src/modules/perl/libkviperl.cpp:482
-#: src/modules/perl/libkviperl.cpp:486
+#: src/modules/perl/libkviperl.cpp:471 src/modules/perl/libkviperl.cpp:477
 msgid "Perl execution error:"
 msgstr "Erro de execução perl:"
 
 #: src/modules/perl/libkviperl.cpp:47
-msgid "The perlcore module can't be loaded: perl support not available"
+#, fuzzy
+msgid "The perlcore module can't be loaded: Perl support not available"
 msgstr "O módulo perlcore não pode ser carregado: suporte perl não disponível"
 
-#: src/modules/perl/libkviperl.cpp:465
-#: src/modules/perl/libkviperl.cpp:539
+#: src/modules/perl/libkviperl.cpp:454 src/modules/perl/libkviperl.cpp:530
+#, fuzzy
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
-"perl support"
+"Perl support"
 msgstr ""
 "O módulo perlcore falhou ao executar o código: algo está errado com o "
 "suporte perl"
 
 #: src/modules/perl/libkviperl.cpp:61
-msgid "This KVIrc executable has been compiled without perl scripting support"
+#, fuzzy
+msgid "This KVIrc executable has been compiled without Perl scripting support"
 msgstr "Este executável KVIrc foi compilado sem suporte de 'scripts' perl"
 
 #: src/modules/perl/libkviperl.cpp:48

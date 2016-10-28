@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_tr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2016-10-28 21:04+0200\n"
 "PO-Revision-Date: 2011-01-26 23:56+0200\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
@@ -21,38 +21,39 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: src/modules/torrent/KTorrentDbusInterface.cpp:40
+#, fuzzy
 msgid ""
-"An interface to KDE's excellent KTorrent client.\n"
+"An interface for KDE's KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
 msgstr ""
 "KDE için güzel bir KTorrent istemci arayüzü.\n"
 "İndirmek için http://www.ktorrent.org\n"
 
-#: src/modules/torrent/libkvitorrent.cpp:102
+#: src/modules/torrent/libkvitorrent.cpp:73
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Torrent istemcisi arayüz seçimi \"%Q\""
 
-#: src/modules/torrent/libkvitorrent.cpp:722
+#: src/modules/torrent/libkvitorrent.cpp:709
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Geçersiz istemci arayüzü \"%Q\"!"
 
-#: src/modules/torrent/libkvitorrent.cpp:129
+#: src/modules/torrent/libkvitorrent.cpp:100
 msgid "Last interface error: "
 msgstr "Son arabirimi hatası:"
 
-#: src/modules/torrent/StatusBarApplet.cpp:92
+#: src/modules/torrent/StatusBarApplet.cpp:93
 msgid "No client selected!"
 msgstr "Hiçbir istemci seçilmemiş!"
 
-#: src/modules/torrent/libkvitorrent.cpp:118
+#: src/modules/torrent/libkvitorrent.cpp:89
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr "Hiçbir torrent istemcisi arayüzü seçmedik. Deneyiniz; /torrent.detect"
 
-#: src/modules/torrent/libkvitorrent.cpp:109
+#: src/modules/torrent/libkvitorrent.cpp:80
 msgid "Seems that there is no usable torrent client on this machine"
 msgstr "Hiç kullanışlı torrent istemcisi bu makinede görünmüyor."
 
-#: src/modules/torrent/libkvitorrent.cpp:128
+#: src/modules/torrent/libkvitorrent.cpp:99
 msgid ""
 "The selected torrent client interface failed to execute the requested "
 "function"
@@ -60,14 +61,14 @@ msgstr ""
 "Seçilen torrent istemci arayüzü istenen fonksiyonu gerçekleştirmede başarısız"
 
 #: src/modules/torrent/StatusBarApplet.cpp:44
-#: src/modules/torrent/StatusBarApplet.cpp:61
+#: src/modules/torrent/StatusBarApplet.cpp:60
 msgid "Torrent Client"
 msgstr "Torrent İstemci"
 
-#: src/modules/torrent/libkvitorrent.cpp:62
+#: src/modules/torrent/libkvitorrent.cpp:61
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr ""
 
-#: src/modules/torrent/libkvitorrent.cpp:714
+#: src/modules/torrent/libkvitorrent.cpp:701
 msgid "Using client interface \"%Q\"."
 msgstr "Kullanılan istemci arayüzü \"%Q\"."

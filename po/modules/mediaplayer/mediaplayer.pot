@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the KVIrc package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: KVIrc 4.9.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-26 15:10+0200\n"
+"POT-Creation-Date: 2016-10-28 21:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,26 +26,6 @@ msgstr ""
 
 #: src/modules/mediaplayer/MpInterface.cpp:43
 msgid "Function not implemented"
-msgstr ""
-
-#: src/modules/mediaplayer/MpWinampInterface.cpp:182
-msgid "Can't find a running Winamp window"
-msgstr ""
-
-#: src/modules/mediaplayer/MpWinampInterface.cpp:191
-msgid ""
-"An interface for the Winamp media player.\n"
-"You can download it from http://www.winamp.com.\n"
-"To use all the features of this interface you must copy the gen_kvirc.dll "
-"plugin found in the KVIrc distribution directory to the Winamp plugins "
-"folder and restart winamp."
-msgstr ""
-
-#: src/modules/mediaplayer/MpWinampInterface.cpp:315
-#: src/modules/mediaplayer/MpWinampInterface.cpp:351
-msgid ""
-"The Winamp plugin has not been installed properly. Check /help mediaplayer."
-"nowplaying"
 msgstr ""
 
 #: src/modules/mediaplayer/MpMprisInterface.cpp:339
@@ -104,6 +84,26 @@ msgstr ""
 msgid ""
 "An interface for Clementine.\n"
 "Download it from http://www.clementine-player.org/\n"
+msgstr ""
+
+#: src/modules/mediaplayer/MpWinampInterface.cpp:182
+msgid "Can't find a running Winamp window"
+msgstr ""
+
+#: src/modules/mediaplayer/MpWinampInterface.cpp:191
+msgid ""
+"An interface for the Winamp media player.\n"
+"You can download it from http://www.winamp.com.\n"
+"To use all the features of this interface you must copy the gen_kvirc.dll "
+"plugin found in the KVIrc distribution directory to the Winamp plugins "
+"folder and restart winamp."
+msgstr ""
+
+#: src/modules/mediaplayer/MpWinampInterface.cpp:315
+#: src/modules/mediaplayer/MpWinampInterface.cpp:351
+msgid ""
+"The Winamp plugin has not been installed properly. Check /help mediaplayer."
+"nowplaying"
 msgstr ""
 
 #: src/modules/mediaplayer/MpXmmsInterface.cpp:38

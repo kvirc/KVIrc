@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2016-10-28 21:04+0200\n"
 "PO-Revision-Date: 2010-01-30 19:45+0300\n"
 "Last-Translator: Alexander Antsev <kagami@crossplatform.ru>\n"
 "Language-Team: Russian <>\n"
@@ -18,31 +18,34 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/modules/pythoncore/libkvipythoncore.cpp:129
-msgid "Internal error: python interpreter not initialized"
+#: src/modules/pythoncore/libkvipythoncore.cpp:113
+#, fuzzy
+msgid "Internal error: Python interpreter not initialized"
 msgstr "Внутренняя ошибка: интерпретатор python не инициализирован"
 
-#: src/modules/python/libkvipython.cpp:448
-#: src/modules/python/libkvipython.cpp:452
+#: src/modules/python/libkvipython.cpp:429
 msgid "Python execution error:"
 msgstr "Ошибка выполнения python:"
 
-#: src/modules/python/libkvipython.cpp:46
-msgid "The pythoncore module can't be loaded: python support not available"
+#: src/modules/python/libkvipython.cpp:42
+#, fuzzy
+msgid "The pythoncore module can't be loaded: Python support not available"
 msgstr "Не возможно загрузить модуль pythoncore: поддержка python не доступна"
 
-#: src/modules/python/libkvipython.cpp:431
-#: src/modules/python/libkvipython.cpp:506
+#: src/modules/python/libkvipython.cpp:417
+#: src/modules/python/libkvipython.cpp:483
+#, fuzzy
 msgid ""
 "The pythoncore module failed to execute the code: something is wrong with "
-"the python support"
+"the Python support"
 msgstr "Модуль pythoncore не может выполнить код: проблема с поддержкой python"
 
-#: src/modules/python/libkvipython.cpp:60
+#: src/modules/python/libkvipython.cpp:56
+#, fuzzy
 msgid ""
-"This KVIrc executable has been compiled without python scripting support"
+"This KVIrc executable has been compiled without Python scripting support"
 msgstr "Эта сборка KVIrc не имеет поддержки python"
 
-#: src/modules/python/libkvipython.cpp:47
+#: src/modules/python/libkvipython.cpp:43
 msgid "To see more details about loading failure try /pythoncore.load"
 msgstr "Более подробная информация об ошибке загрузки модуля /pythoncore.load"

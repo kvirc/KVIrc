@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2016-10-28 21:04+0200\n"
 "PO-Revision-Date: 2012-07-08 17:30+0100\n"
 "Last-Translator: Sian Mountbatten <poenikatu@fastmail.co.uk>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -18,38 +18,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: src/modules/torrent/KTorrentDbusInterface.cpp:40
+#, fuzzy
 msgid ""
-"An interface to KDE's excellent KTorrent client.\n"
+"An interface for KDE's KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
 msgstr ""
 "Interfaco al la bonega KTorrent kliento de KDE.\n"
 "Elŝutu ĝin de http://www.ktorrent.org\n"
 
-#: src/modules/torrent/libkvitorrent.cpp:102
+#: src/modules/torrent/libkvitorrent.cpp:73
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Elektas torentan klientan interfacon \"%Q\""
 
-#: src/modules/torrent/libkvitorrent.cpp:722
+#: src/modules/torrent/libkvitorrent.cpp:709
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Nevalida klienta interfaco \"%Q\"!"
 
-#: src/modules/torrent/libkvitorrent.cpp:129
+#: src/modules/torrent/libkvitorrent.cpp:100
 msgid "Last interface error: "
 msgstr "Lasta interfaca eraro: "
 
-#: src/modules/torrent/StatusBarApplet.cpp:92
+#: src/modules/torrent/StatusBarApplet.cpp:93
 msgid "No client selected!"
 msgstr "Neniu kliento elektita!"
 
-#: src/modules/torrent/libkvitorrent.cpp:118
+#: src/modules/torrent/libkvitorrent.cpp:89
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr "Neniu torenta klienta interfaco elektita. Provu /torrent.detect"
 
-#: src/modules/torrent/libkvitorrent.cpp:109
+#: src/modules/torrent/libkvitorrent.cpp:80
 msgid "Seems that there is no usable torrent client on this machine"
 msgstr "Ŝajnas ke ne estas uzebla torenta kliento ĉe ĉi tiu maŝino"
 
-#: src/modules/torrent/libkvitorrent.cpp:128
+#: src/modules/torrent/libkvitorrent.cpp:99
 msgid ""
 "The selected torrent client interface failed to execute the requested "
 "function"
@@ -58,14 +59,14 @@ msgstr ""
 "funkcion"
 
 #: src/modules/torrent/StatusBarApplet.cpp:44
-#: src/modules/torrent/StatusBarApplet.cpp:61
+#: src/modules/torrent/StatusBarApplet.cpp:60
 msgid "Torrent Client"
 msgstr "Torenta Kliento"
 
-#: src/modules/torrent/libkvitorrent.cpp:62
+#: src/modules/torrent/libkvitorrent.cpp:61
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr "Provas torentan klientan interfacon \"%Q\": poentoj %d"
 
-#: src/modules/torrent/libkvitorrent.cpp:714
+#: src/modules/torrent/libkvitorrent.cpp:701
 msgid "Using client interface \"%Q\"."
 msgstr "Uzas klientan interfacon \"%Q\"."

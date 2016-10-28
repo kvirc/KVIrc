@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_python \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2016-10-28 21:04+0200\n"
 "PO-Revision-Date: 2010-03-10 04:04+0000\n"
 "Last-Translator: Zé <mmodem00@gmail.com>\n"
 "Language-Team: Portuguese <kde-i18n-doc@kde.org>\n"
@@ -18,35 +18,38 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/pythoncore/libkvipythoncore.cpp:129
-msgid "Internal error: python interpreter not initialized"
+#: src/modules/pythoncore/libkvipythoncore.cpp:113
+#, fuzzy
+msgid "Internal error: Python interpreter not initialized"
 msgstr "Erro interno: interpretador python não inicializado"
 
-#: src/modules/python/libkvipython.cpp:448
-#: src/modules/python/libkvipython.cpp:452
+#: src/modules/python/libkvipython.cpp:429
 msgid "Python execution error:"
 msgstr "Erro de execução python:"
 
-#: src/modules/python/libkvipython.cpp:46
-msgid "The pythoncore module can't be loaded: python support not available"
+#: src/modules/python/libkvipython.cpp:42
+#, fuzzy
+msgid "The pythoncore module can't be loaded: Python support not available"
 msgstr ""
 "O módulo pythoncore não pode ser carregado: suporte python não disponível"
 
-#: src/modules/python/libkvipython.cpp:431
-#: src/modules/python/libkvipython.cpp:506
+#: src/modules/python/libkvipython.cpp:417
+#: src/modules/python/libkvipython.cpp:483
+#, fuzzy
 msgid ""
 "The pythoncore module failed to execute the code: something is wrong with "
-"the python support"
+"the Python support"
 msgstr ""
 "O módulo pythoncore falhou ao executar o código: algo está errado com o "
 "suporte python"
 
-#: src/modules/python/libkvipython.cpp:60
+#: src/modules/python/libkvipython.cpp:56
+#, fuzzy
 msgid ""
-"This KVIrc executable has been compiled without python scripting support"
+"This KVIrc executable has been compiled without Python scripting support"
 msgstr "Este executável KVIrc foi compilado sem suporte de 'scripts' python"
 
-#: src/modules/python/libkvipython.cpp:47
+#: src/modules/python/libkvipython.cpp:43
 msgid "To see more details about loading failure try /pythoncore.load"
 msgstr ""
 "Para ver mais detalhes acerca da falha do carregamento, tente /pythoncore."
