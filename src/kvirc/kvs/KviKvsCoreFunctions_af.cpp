@@ -44,10 +44,10 @@
 #include "KviKvsScript.h"
 #include "KviBuildInfo.h"
 
-// date includes
+#include <QChar>
 #include <QDateTime>
 #include <QString>
-#include <QChar>
+#include <QStringList>
 
 namespace KviKvsCoreFunctions
 {
@@ -1256,21 +1256,13 @@ namespace KviKvsCoreFunctions
 
 		if(!szFeature.isEmpty())
 		{
-			for(int i = 0; feature_array[i]; i++)
-			{
-				if(KviQString::equalCI(feature_array[i], szFeature))
-				{
-					KVSCF_pRetBuffer->setBoolean(true);
-					return true;
-				}
-			}
-			KVSCF_pRetBuffer->setBoolean(false);
+			KVSCF_pRetBuffer->setBoolean(feature_list.contains(szFeature, Qt::CaseInsensitive));
 		}
 		else
 		{
 			KviKvsArray * a = new KviKvsArray();
-			for(int i = 0; feature_array[i]; i++)
-				a->set(i, new KviKvsVariant(QString(feature_array[i])));
+			for(auto&& f : feature_list)
+				a->append(new KviKvsVariant(f));
 			KVSCF_pRetBuffer->setArray(a);
 		}
 
