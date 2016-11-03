@@ -87,15 +87,12 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
 		KVSCF_PARAMETERS_END
 
-		KviWindow * wnd;
-		KviConsoleWindow * cons;
+		KviWindow * wnd = nullptr;
 		if(KVSCF_pParams->count() > 0)
 		{
-			cons = g_pApp->findConsole(uContextId);
+			KviConsoleWindow * cons = g_pApp->findConsole(uContextId);
 			if(cons)
 				wnd = cons->activeWindow();
-			else
-				wnd = nullptr;
 		}
 		else
 		{
@@ -272,13 +269,9 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pContext);
 
 		KviKvsArray * a = new KviKvsArray();
-		kvs_int_t idx = 0;
 
 		for(KviKvsVariant * v = KVSCF_pParams->first(); v; v = KVSCF_pParams->next())
-		{
-			a->set(idx, new KviKvsVariant(*v));
-			idx++;
-		}
+			a->append(new KviKvsVariant(*v));
 
 		KVSCF_pRetBuffer->setArray(a);
 		return true;
@@ -307,28 +300,21 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETER("irc_context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uCntx)
 		KVSCF_PARAMETERS_END
 
-		KviConsoleWindow * cns;
+		KviConsoleWindow * cns = nullptr;
 
 		if(KVSCF_pParams->count() > 0)
 		{
 			cns = g_pApp->findConsole(uCntx);
-			if(cns)
-			{
-				if(cns->context()->isConnected())
-					KVSCF_pRetBuffer->setBoolean(cns->connection()->userInfo()->isAway());
-				else
-					KVSCF_pRetBuffer->setNothing();
-			}
+			if(cns && cns->context()->isConnected())
+				KVSCF_pRetBuffer->setBoolean(cns->connection()->userInfo()->isAway());
 			else
-			{
 				KVSCF_pRetBuffer->setNothing();
-			}
 		}
 		else
 		{
-			if(KVSCF_pContext->window()->console())
+			cns = KVSCF_pContext->window()->console();
+			if(cns)
 			{
-				cns = KVSCF_pContext->window()->console();
 				if(cns->context()->isConnected())
 					KVSCF_pRetBuffer->setBoolean(cns->connection()->userInfo()->isAway());
 				else
@@ -600,31 +586,22 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETERS_END
 
 		KviWindow * wnd = nullptr;
-		if(KVSCF_pParams->count() > 0)
+		if(KVSCF_pParams->count() > 1)
 		{
-			if(KVSCF_pParams->count() > 1)
-			{
-				KviConsoleWindow * cons = g_pApp->findConsole(uContextId);
-				if(!cons)
-					KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)", "kvs"), uContextId);
-				else
-				{
-					if(cons->connection())
-						wnd = cons->connection()->findChannel(szName);
-					else
-						wnd = nullptr;
-				}
-			}
+			KviConsoleWindow * cns = g_pApp->findConsole(uContextId);
+			if(cns && cns->connection())
+				wnd = cns->connection()->findChannel(szName);
+			else if (!cns)
+				KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)", "kvs"), uContextId);
+		}
+		else if(KVSCF_pParams->count() == 1)
+		{
+			if(KVSCF_pContext->window()->connection())
+				wnd = KVSCF_pContext->window()->connection()->findChannel(szName);
 			else
 			{
-				if(KVSCF_pContext->window()->connection())
-					wnd = KVSCF_pContext->window()->connection()->findChannel(szName);
-				else
-				{
-					if(!KVSCF_pContext->window()->console())
-						KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context", "kvs"));
-					wnd = nullptr;
-				}
+				if(!KVSCF_pContext->window()->console())
+					KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context", "kvs"));
 			}
 		}
 		else
@@ -785,14 +762,10 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETERS_END
 
 		KviConsoleWindow * cons;
-		if(!(szServer.isEmpty() && szNick.isEmpty()))
-		{
+		if(!szServer.isEmpty() || !szNick.isEmpty())
 			cons = g_pApp->findConsole(szServer, szNick);
-		}
 		else
-		{
 			cons = KVSCF_pContext->window()->console();
-		}
 
 		KVSCF_pRetBuffer->setInteger(cons ? cons->context()->id() : 0);
 		return true;
@@ -1290,8 +1263,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pParams);
 
 		KviConsoleWindow * c = g_pApp->topmostConnectedConsole();
-		// FIXME: The window id's should be numeric!!!
-		KVSCF_pRetBuffer->setString(c ? c->id() : "0");
+		KVSCF_pRetBuffer->setInteger(c ? c->numericId() : 0);
 		return true;
 	}
 

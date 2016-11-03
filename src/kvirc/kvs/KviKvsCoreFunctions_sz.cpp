@@ -41,8 +41,6 @@
 #include "KviControlCodes.h"
 #include "KviBuildInfo.h"
 
-#include <stdlib.h> // rand & srand
-
 /*
 	Data types:
 
@@ -88,8 +86,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(scriptContextName)
 	{
 		Q_UNUSED(__pParams);
-		QString szName = KVSCF_pContext->script()->name();
-		KVSCF_pRetBuffer->setString(szName);
+		KVSCF_pRetBuffer->setString(KVSCF_pContext->script()->name());
 		return true;
 	}
 
@@ -206,23 +203,16 @@ namespace KviKvsCoreFunctions
 		if(KVSCF_pParams->count() > 0)
 		{
 			cns = g_pApp->findConsole(uCntx);
-			if(cns)
-			{
-				if(cns->context()->isConnected() || cns->context()->isLoggingIn())
-					KVSCF_pRetBuffer->setString(cns->connection()->currentServerName());
-				else
-					KVSCF_pRetBuffer->setNothing();
-			}
+			if(cns && (cns->context()->isConnected() || cns->context()->isLoggingIn()))
+				KVSCF_pRetBuffer->setString(cns->connection()->currentServerName());
 			else
-			{
 				KVSCF_pRetBuffer->setNothing();
-			}
 		}
 		else
 		{
-			if(KVSCF_pContext->window()->console())
+			cns = KVSCF_pContext->window()->console();
+			if(cns)
 			{
-				cns = KVSCF_pContext->window()->console();
 				if(cns->context()->isConnected() || cns->context()->isLoggingIn())
 					KVSCF_pRetBuffer->setString(cns->connection()->currentServerName());
 				else
@@ -434,7 +424,7 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETER("winId", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, winId)
 		KVSCF_PARAMETERS_END
 
-		KviWindow * wnd;
+		KviWindow * wnd = nullptr;
 		if(KVSCF_pParams->count() > 0)
 		{
 			wnd = g_pApp->findWindow(winId.toUtf8().data());
@@ -830,7 +820,7 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
 		KVSCF_PARAMETERS_END
 
-		KviConsoleWindow * cons;
+		KviConsoleWindow * cons = nullptr;
 		if(KVSCF_pParams->count() > 1)
 		{
 			cons = g_pApp->findConsole(uContextId);
@@ -865,7 +855,7 @@ namespace KviKvsCoreFunctions
 		@title:
 			$unicode
 		@short:
-			Returns the Unicode code of a sets of characters
+			Returns the Unicode code of a set of characters
 		@syntax:
 			<variant> $unicode(<char:string>)
 		@description:
@@ -887,8 +877,8 @@ namespace KviKvsCoreFunctions
 		if(sz.length() > 1)
 		{
 			KviKvsArray * a = new KviKvsArray();
-			for(kvs_int_t i = 0; i < sz.length(); i++)
-				a->set(i, new KviKvsVariant((kvs_int_t)(sz[(int)i].unicode())));
+			for(auto&& c : sz)
+				a->append(new KviKvsVariant((kvs_int_t)(c.unicode())));
 			KVSCF_pRetBuffer->setArray(a);
 		}
 		else
@@ -998,16 +988,14 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
 		KVSCF_PARAMETERS_END
 
-		if(KVSCF_pContext->window()->console())
+		KviConsoleWindow * c = KVSCF_pContext->window()->console();
+		if(c && c->isConnected())
 		{
-			if(KVSCF_pContext->window()->console()->isConnected())
+			KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick);
+			if(e)
 			{
-				KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick);
-				if(e)
-				{
-					KVSCF_pRetBuffer->setString(e->user());
-					return true;
-				}
+				KVSCF_pRetBuffer->setString(e->user());
+				return true;
 			}
 		}
 
@@ -1068,7 +1056,6 @@ namespace KviKvsCoreFunctions
 	KVSCF(version)
 	{
 		QString szType;
-		QString szRetValue;
 
 		KVSCF_PARAMETERS_BEGIN
 		KVSCF_PARAMETER("type", KVS_PT_STRING, KVS_PF_OPTIONAL, szType)
@@ -1078,20 +1065,20 @@ namespace KviKvsCoreFunctions
 			KVSCF_pRetBuffer->setString(full_version_helper());
 		else
 		{
-
-			if(szType.indexOf('b') != -1)
+			QString szRetValue;
+			if(szType.contains('b'))
 				szRetValue = KviBuildInfo::buildDate();
-			else if(szType.indexOf('a') != -1)
+			else if(szType.contains('a'))
 				szRetValue = "KVIrc";
-			else if(szType.indexOf('n') != -1)
+			else if(szType.contains('n'))
 				szRetValue = KVI_RELEASE_NAME;
-			else if(szType.indexOf('r') != -1)
+			else if(szType.contains('r'))
 				szRetValue = KviBuildInfo::buildRevision();
-			else if(szType.indexOf('s') != -1)
+			else if(szType.contains('s'))
 				szRetValue = KviBuildInfo::buildSourcesDate();
-			else if(szType.indexOf('t') != -1)
+			else if(szType.contains('t'))
 				szRetValue = KviBuildInfo::buildType();
-			else if(szType.indexOf('v') != -1)
+			else if(szType.contains('v'))
 				szRetValue = KVI_VERSION;
 			else
 				szRetValue = full_version_helper();
@@ -1115,7 +1102,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			Returns the [b]window ID[/b] of the first window that
 			has the specified <caption text>.[br]
-			If no window matches the specified <caption text>, and invalid
+			If no window matches the specified <caption text>, an invalid
 			window ID is returned (0).[br]
 			If no <caption text> is specified, this function returns the ID
 			of the current window.[br]
@@ -1142,25 +1129,19 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETER("context_id", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iContextId)
 		KVSCF_PARAMETERS_END
 
-		if(KVSCF_pParams->count() < 2)
-			iContextId = -1;
-
-		KviWindow * pWnd;
+		KviWindow * pWnd = nullptr;
 		if(szCaption.isEmpty())
 		{
 			pWnd = KVSCF_pContext->window();
 		}
 		else
 		{
+			if(KVSCF_pParams->count() < 2)
+				iContextId = -1;
+
 			pWnd = g_pApp->findWindowByCaption(szCaption, iContextId);
-			if(!pWnd)
-			{
-				//follow the documented behaviour
-				KVSCF_pRetBuffer->setInteger(0);
-				return true;
-			}
 		}
-		KVSCF_pRetBuffer->setInteger(pWnd->numericId());
+		KVSCF_pRetBuffer->setInteger(pWnd ? pWnd->numericId() : 0);
 		return true;
 	}
 };

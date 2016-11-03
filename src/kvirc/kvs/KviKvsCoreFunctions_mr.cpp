@@ -109,23 +109,21 @@ namespace KviKvsCoreFunctions
 		if(maskType > 26)
 			maskType = 0;
 
-		if(KVSCF_pContext->window()->console())
+		KviConsoleWindow * c = KVSCF_pContext->window()->console();
+		if(c && c->isConnected())
 		{
-			if(KVSCF_pContext->window()->console()->isConnected())
+			KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick.isEmpty() ? KVSCF_pContext->window()->connection()->currentNickName() : szNick);
+			if(e)
 			{
-				KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick.isEmpty() ? KVSCF_pContext->window()->connection()->currentNickName() : szNick);
-				if(e)
-				{
-					KviIrcMask u;
-					u.setNick(szNick);
-					u.setUsername(e->user());
-					u.setHost(e->host());
+				KviIrcMask u;
+				u.setNick(szNick);
+				u.setUsername(e->user());
+				u.setHost(e->host());
 
-					QString tmp;
-					u.mask(tmp, (KviIrcMask::MaskType)maskType);
-					KVSCF_pRetBuffer->setString(tmp);
-					return true;
-				}
+				QString tmp;
+				u.mask(tmp, (KviIrcMask::MaskType)maskType);
+				KVSCF_pRetBuffer->setString(tmp);
+				return true;
 			}
 		}
 		KVSCF_pRetBuffer->setNothing();
@@ -160,7 +158,7 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETER("irc_context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uCntx)
 		KVSCF_PARAMETERS_END
 
-		KviConsoleWindow * cns;
+		KviConsoleWindow * cns = nullptr;
 
 		if(KVSCF_pParams->count() > 0)
 		{
@@ -179,9 +177,9 @@ namespace KviKvsCoreFunctions
 		}
 		else
 		{
-			if(KVSCF_pContext->window()->console())
+			cns = KVSCF_pContext->window()->console();
+			if(cns)
 			{
-				cns = KVSCF_pContext->window()->console();
 				if(cns->isConnected())
 					KVSCF_pRetBuffer->setString(cns->connection()->currentNickName());
 				else
@@ -293,7 +291,7 @@ namespace KviKvsCoreFunctions
 			return false;
 		}
 
-		KviKvsObject * pParent;
+		KviKvsObject * pParent = nullptr;
 		if(hParent != (kvs_hobject_t) nullptr)
 		{
 			pParent = KviKvsKernel::instance()->objectController()->lookupObject(hParent);
@@ -302,10 +300,6 @@ namespace KviKvsCoreFunctions
 				KVSCF_pContext->error(__tr2qs_ctx("The specified parent object does not exist", "kvs"));
 				return false;
 			}
-		}
-		else
-		{
-			pParent = nullptr;
 		}
 
 		KviKvsObject * pObject = pClass->allocateInstance(pParent, szName, KVSCF_pContext, &vList);
@@ -476,31 +470,22 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETERS_END
 
 		KviWindow * wnd = nullptr;
-		if(KVSCF_pParams->count() > 0)
+		if(KVSCF_pParams->count() > 1)
 		{
-			if(KVSCF_pParams->count() > 1)
-			{
-				KviConsoleWindow * cons = g_pApp->findConsole(uContextId);
-				if(!cons)
-					KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)", "kvs"), uContextId);
-				else
-				{
-					if(cons->connection())
-						wnd = cons->connection()->findQuery(szName);
-					else
-						wnd = nullptr;
-				}
-			}
+			KviConsoleWindow * cns = g_pApp->findConsole(uContextId);
+			if(cns && cns->connection())
+				wnd = cns->connection()->findQuery(szName);
+			else if (!cns)
+				KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)", "kvs"), uContextId);
+		}
+		else if (KVSCF_pParams->count() == 1)
+		{
+			if(KVSCF_pContext->window()->connection())
+				wnd = KVSCF_pContext->window()->connection()->findQuery(szName);
 			else
 			{
-				if(KVSCF_pContext->window()->connection())
-					wnd = KVSCF_pContext->window()->connection()->findQuery(szName);
-				else
-				{
-					if(!KVSCF_pContext->window()->console())
-						KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context", "kvs"));
-					wnd = nullptr;
-				}
+				if(!KVSCF_pContext->window()->console())
+					KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context", "kvs"));
 			}
 		}
 		else
@@ -571,13 +556,9 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETER("max", KVS_PT_UINT, KVS_PF_OPTIONAL, uMax)
 		KVSCF_PARAMETERS_END
 		if(KVSCF_pParams->count() > 0)
-		{
 			KVSCF_pRetBuffer->setInteger(::rand() % (uMax + 1));
-		}
 		else
-		{
 			KVSCF_pRetBuffer->setInteger(::rand());
-		}
 		return true;
 	}
 
@@ -670,16 +651,14 @@ namespace KviKvsCoreFunctions
 		KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
 		KVSCF_PARAMETERS_END
 
-		if(KVSCF_pContext->window()->console())
+		KviConsoleWindow * c = KVSCF_pContext->window()->console();
+		if(c && c->isConnected())
 		{
-			if(KVSCF_pContext->window()->console()->isConnected())
+			KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick);
+			if(e)
 			{
-				KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick);
-				if(e)
-				{
-					KVSCF_pRetBuffer->setString(e->realName());
-					return true;
-				}
+				KVSCF_pRetBuffer->setString(e->realName());
+				return true;
 			}
 		}
 
