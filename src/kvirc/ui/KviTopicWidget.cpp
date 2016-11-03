@@ -156,7 +156,7 @@ void KviTopicWidget::reset()
 
 	m_szTopic = "";
 	m_pLabel->setText(KviHtmlGenerator::convertToHtml(__tr2qs("Unknown channel topic")));
-	
+
 	szTip += tdh;
 	szTip += __tr2qs("Channel Topic");
 	szTip += enr + nrs;
@@ -165,7 +165,7 @@ void KviTopicWidget::reset()
 
 	m_szSetAt = "";
 	m_szSetBy = "";
-	
+
 	szTip += "</table>";
 
 	KviTalToolTip::add(this, szTip);
@@ -183,7 +183,7 @@ void KviTopicWidget::applyOptions()
 		m_pCompletionBox->setFont(newFont);
 
 	// reset topic html too (in case colors have been changed)
-	m_pLabel->setText(KviHtmlGenerator::convertToHtml(KviQString::toHtmlEscaped(m_szTopic)));
+	m_pLabel->setText(KviHtmlGenerator::convertToHtml(m_szTopic, true));
 }
 
 void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette & cg, const QRect & rect)
@@ -349,23 +349,19 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 void KviTopicWidget::setTopic(const QString & topic)
 {
 	m_szTopic = topic;
-	m_pLabel->setText(KviHtmlGenerator::convertToHtml(KviQString::toHtmlEscaped(m_szTopic)));
+	m_pLabel->setText(KviHtmlGenerator::convertToHtml(m_szTopic, true));
 
-	bool bFound = false;
-	for(auto & it : *g_pRecentTopicList)
+	int pos = g_pRecentTopicList->indexOf(m_szTopic);
+
+	if(pos >= 0)
 	{
-		if(it == m_szTopic)
-		{
-			bFound = true;
-			break;
-		}
+		if(g_pRecentTopicList->count() > 1)
+			g_pRecentTopicList->move(pos, g_pRecentTopicList->count() - 1);
 	}
-	if(!bFound && (!m_szTopic.isEmpty()))
+	else if(!m_szTopic.isEmpty())
 	{
 		if(g_pRecentTopicList->count() >= KVI_MAX_RECENT_TOPICS)
-		{
-			g_pRecentTopicList->erase(g_pRecentTopicList->begin());
-		}
+			g_pRecentTopicList->removeFirst();
 		g_pRecentTopicList->append(m_szTopic);
 	}
 	updateToolTip();
@@ -398,13 +394,13 @@ void KviTopicWidget::updateToolTip()
 	static QString enr = "</td></tr>";
 
 	QString txt = "<html><body><table>";
-	
+
 	if(!m_szTopic.isEmpty())
 	{
 		txt += tds;
 		txt += __tr2qs("Channel Topic");
 		txt += enr + nrs;
-		txt += KviHtmlGenerator::convertToHtml(KviControlCodes::stripControlBytes(KviQString::toHtmlEscaped(m_szTopic)));
+		txt += KviHtmlGenerator::convertToHtml(KviControlCodes::stripControlBytes(m_szTopic), true);
 		txt += enr;
 
 		if(!m_szSetBy.isEmpty())
