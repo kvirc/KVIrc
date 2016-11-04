@@ -57,6 +57,8 @@
 #include <kmimetype.h>
 #include <kmimetypetrader.h>
 #include <kiconloader.h>
+#else
+#include <QMimeDatabase>
 #endif //COMPILE_KDE4_SUPPORT
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -442,6 +444,10 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 				tmp += "<br>";
 				tmp += "Mime: ";
 				tmp += KMimeType::findByPath(szFile)->name();
+#else
+				tmp += "<br>";
+				tmp += "Mime: ";
+				tmp += QMimeDatabase().mimeTypeForFile(szFile).name();
 #endif //COMPILE_KDE4_SUPPORT
 
 				QWidgetAction * pWaction = new QWidgetAction(m_pLocalFilePopup);
