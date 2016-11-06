@@ -101,9 +101,9 @@ void KviCustomToolBar::filteredChildDestroyed()
 
 void KviCustomToolBar::filterChild(QObject * o)
 {
-	bool * pBool = new bool(((QWidget *)o)->isEnabled());
 	if(m_pFilteredChildren)
-		m_pFilteredChildren->insert(o, pBool);
+		m_pFilteredChildren->insert(o, new bool(((QWidget *)o)->isEnabled()));
+
 	o->installEventFilter(this);
 	connect(o, SIGNAL(destroyed()), this, SLOT(filteredChildDestroyed()));
 }
