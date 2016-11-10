@@ -101,7 +101,7 @@ public:
 	* \param szString The string to add
 	* \return void
 	*/
-	void add(QString szString);
+	void add(const QString & szString);
 
 	/**
 	* \brief Returns the list of string in the history

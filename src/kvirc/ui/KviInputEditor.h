@@ -949,6 +949,11 @@ private slots:
 	*/
 	void spellCheckerPopupCorrectionActionTriggered();
 
+	/**
+	* Adds line to input history
+	*/
+	void addToHistory(const QString & szString);
+
 protected:
 	void insertIconCode(const QString & szCode);
 	void completionEscapeUnsafeToken(QString & szToken);

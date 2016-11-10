@@ -1692,21 +1692,17 @@ void KviInputEditor::handleDragSelection()
 
 void KviInputEditor::finishInput()
 {
-	if(!m_szTextBuffer.isEmpty() /* && (!m_History->current() || m_szTextBuffer.compare(*(m_History->current())))*/)
+	if(!m_szTextBuffer.isEmpty())
 	{
 		if(m_pInputParent->inherits("KviInput"))
 			KviInputHistory::instance()->add(m_szTextBuffer);
 
-		m_History.insert(m_History.begin(), m_szTextBuffer);
+		addToHistory(m_szTextBuffer);
 	}
 
 	//ensure the color window is hidden (bug #835)
 	if(g_pColorWindow && g_pColorWindow->isVisible())
 		g_pColorWindow->hide();
-
-	KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
-	if(m_History.size() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)
-		m_History.pop_back();
 
 	m_iCurHistoryIdx = -1;
 }
@@ -3145,13 +3141,8 @@ void KviInputEditor::sendPlain()
 	if(!szBuffer.isEmpty())
 	{
 		KviInputHistory::instance()->add(szBuffer);
-		m_History.insert(m_History.begin(), szBuffer);
+		addToHistory(szBuffer);
 	}
-
-	KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
-
-	if(m_History.size() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)
-		m_History.pop_back();
 
 	m_iCurHistoryIdx = -1;
 }
@@ -3181,13 +3172,8 @@ void KviInputEditor::sendKvs()
 	if(!szBuffer.isEmpty())
 	{
 		KviInputHistory::instance()->add(szBuffer);
-		m_History.insert(m_History.begin(), szBuffer);
+		addToHistory(szBuffer);
 	}
-
-	KVI_ASSERT(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
-
-	if(m_History.size() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)
-		m_History.pop_back();
 
 	m_iCurHistoryIdx = -1;
 }
@@ -3392,3 +3378,13 @@ void KviInputEditor::dummy()
 {
 } // this function does nothing. check the header file for explanation
 
+void KviInputEditor::addToHistory(const QString &szString)
+{
+	if(!m_History.empty() && m_History.front() == szString)
+		return;
+
+	m_History.insert(m_History.begin(), szString);
+
+	if(m_History.size() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)
+		m_History.pop_back();
+}
