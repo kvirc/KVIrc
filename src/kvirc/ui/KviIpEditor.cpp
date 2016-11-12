@@ -70,17 +70,9 @@ bool KviIpEditor::setAddress(const QString & ipAddr)
 		return false;
 
 	if(m_addrType == IPv4)
-	{
-		bool bOk = true;
-		(void)addr.toIPv4Address(&bOk);
-		if(!bOk)
-			return false;
 		setText(QHostAddress{addr.toIPv4Address()}.toString());
-	}
 	else
-	{
 		setText(QHostAddress{addr.toIPv6Address()}.toString());
-	}
 
 	return true;
 }
