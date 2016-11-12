@@ -1161,7 +1161,7 @@ void IrcServerDetailsWidget::fillData(KviIrcServer * s)
 #ifdef COMPILE_IPV6_SUPPORT
 			if(s->isIPv6())
 			{
-				if(tmpAddr != "::" && KviNetUtils::isValidStringIp(tmpAddr))
+				if(tmpAddr != "::" && KviNetUtils::isValidStringIPv6(tmpAddr))
 				{
 					s->setIp(tmpAddr);
 				}
