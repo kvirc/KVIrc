@@ -703,6 +703,8 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par, KviIrcServer * s)
 	                                                "unreachable or you want to avoid the round-robin lookups.", "options"));
 
 	m_pCacheIpCheck->setChecked(s->cacheIp());
+	m_pIpEditor->setEnabled(m_pCacheIpCheck->isChecked());
+	connect(m_pCacheIpCheck, SIGNAL(toggled(bool)), this, SLOT(useCacheIpCheckToggled(bool)));
 
 	m_pUseAutoConnect = new QCheckBox(__tr2qs_ctx("Connect to this server at startup", "options"), tab);
 	m_pUseAutoConnect->setChecked(s->autoConnect());
@@ -1014,6 +1016,11 @@ IrcServerDetailsWidget::~IrcServerDetailsWidget()
 		KviScriptEditor::destroyInstance(m_pOnLoginEditor);
 }
 
+void IrcServerDetailsWidget::useCacheIpCheckToggled(bool)
+{
+	m_pIpEditor->setEnabled(m_pCacheIpCheck->isChecked());
+}
+
 void IrcServerDetailsWidget::useIPV6CheckToggled(bool)
 {
 #ifdef COMPILE_IPV6_SUPPORT
@@ -1148,14 +1155,13 @@ void IrcServerDetailsWidget::fillData(KviIrcServer * s)
 
 	if(m_pIpEditor)
 	{
-		QString tmpAddr = m_pIpEditor->address();
-
-		if(!m_pIpEditor->hasEmptyFields())
+		if(m_pIpEditor->isValid())
 		{
+			QString tmpAddr = m_pIpEditor->address();
 #ifdef COMPILE_IPV6_SUPPORT
 			if(s->isIPv6())
 			{
-				if((!KviQString::equalCI(tmpAddr, "0:0:0:0:0:0:0:0")) && KviNetUtils::isValidStringIp(tmpAddr))
+				if(tmpAddr != "::" && KviNetUtils::isValidStringIp(tmpAddr))
 				{
 					s->setIp(tmpAddr);
 				}
@@ -1168,7 +1174,7 @@ void IrcServerDetailsWidget::fillData(KviIrcServer * s)
 			else
 			{
 #endif
-				if((!KviQString::equalCI(tmpAddr, "0.0.0.0")) && KviNetUtils::isValidStringIp(tmpAddr))
+				if(tmpAddr != "0.0.0.0" && KviNetUtils::isValidStringIp(tmpAddr))
 				{
 					s->setIp(tmpAddr);
 				}

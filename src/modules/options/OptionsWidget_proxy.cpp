@@ -268,25 +268,20 @@ void OptionsWidget_proxy::saveLastItem()
 #endif
 		m_pLastEditedItem->m_pProxyData->m_szIp = "";
 
-		QString tmpAddr = m_pIpEditor->address();
-
-		if(!m_pIpEditor->hasEmptyFields())
+		if(m_pIpEditor->isValid())
 		{
+			QString tmpAddr = m_pIpEditor->address();
 #ifdef COMPILE_IPV6_SUPPORT
 			if(m_pIPv6Check->isChecked())
 			{
-				if((!KviQString::equalCI(tmpAddr, "0:0:0:0:0:0:0:0")) && KviNetUtils::isValidStringIPv6(tmpAddr))
-				{
+				if(tmpAddr != "::" && KviNetUtils::isValidStringIPv6(tmpAddr))
 					m_pLastEditedItem->m_pProxyData->m_szIp = tmpAddr;
-				}
 			}
 			else
 			{
 #endif
-				if((!KviQString::equalCI(tmpAddr, "0.0.0.0")) && KviNetUtils::isValidStringIp(tmpAddr))
-				{
+				if(tmpAddr != "0.0.0.0" && KviNetUtils::isValidStringIp(tmpAddr))
 					m_pLastEditedItem->m_pProxyData->m_szIp = tmpAddr;
-				}
 #ifdef COMPILE_IPV6_SUPPORT
 			}
 #endif
