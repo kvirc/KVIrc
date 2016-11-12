@@ -44,6 +44,8 @@ void KviIpEditor::setAddressType(AddressType addrType)
 	{
 		m_addrType = addrType;
 		QString tmp = text();
+		QRegExp rx("(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])");
+		setValidator(new QRegExpValidator(rx, this));
 		setText(QHostAddress{QHostAddress::AnyIPv4}.toString());
 		if (!tmp.isEmpty())
 			setAddress(tmp);
@@ -52,6 +54,8 @@ void KviIpEditor::setAddressType(AddressType addrType)
 	{
 		m_addrType = addrType;
 		QString tmp = text();
+		QRegExp rx("[0-9a-fA-F:]*|::[fF]{4}:(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])");
+		setValidator(new QRegExpValidator(rx, this));
 		setText(QHostAddress{QHostAddress::AnyIPv6}.toString());
 		if (!tmp.isEmpty())
 			setAddress(tmp);
