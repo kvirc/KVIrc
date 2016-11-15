@@ -730,7 +730,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_away.cpp:53
 #, c-format
-msgid "Custom nickname (%%nick%% means a current nick):"
+msgid "Custom nickname (%nick% means a current nick):"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_dcc.h:31
@@ -3511,14 +3511,14 @@ msgid ""
 "This is the mask that NickServ must match to be correctly identified as the "
 "NickServ service. This usually will be something like <b>NickServ!"
 "service@services.dalnet</b>.<br>You can use wildcards for this field, but "
-"generally it is a security flaw. If you're 100%% sure that NO user on the "
+"generally it is a security flaw. If you're 100% sure that NO user on the "
 "network can use the nickname \"NickServ\", the mask <b>NickServ!*@*</b> may "
 "be safe to use in this field."
 msgstr ""
 "Ця маска NickServ повинна відповідати правильній масці сервісу ідентифікації "
 "NickServ. Звичайно це щось типу <b>NickServ!service@services.dalnet</b>."
 "<br>Ви можете використати тут шаблони, але як правило це буде хибою у "
-"захисті. Якщо ви на 100%% впевнені що ніякий користувач в мережі не може "
+"захисті. Якщо ви на 100% впевнені що ніякий користувач в мережі не може "
 "використати Нік \"NickServ\", маска <b>NickServ!*@*</b> буде безпечною."
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:103
