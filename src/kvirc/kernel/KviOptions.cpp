@@ -371,7 +371,7 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS] = {
 	STRING_OPTION("UrlHttpsCommand", RUN_THE_BROWSER, KviOption_sectFlagUrl),
 	STRING_OPTION("UrlMailtoCommand", RUN_THE_BROWSER, KviOption_sectFlagUrl),
 	STRING_OPTION("PreferredMediaPlayer", "auto", KviOption_sectFlagFrame),
-	STRING_OPTION("UrlFileCommand", "play $0", KviOption_sectFlagUrl),
+	STRING_OPTION("UrlFileCommand", RUN_THE_BROWSER, KviOption_sectFlagUrl),
 	STRING_OPTION("NickCompletionPostfix", ": ", KviOption_sectFlagInput),
 	STRING_OPTION("UrlUnknownCommand", RUN_THE_BROWSER, KviOption_sectFlagUrl),
 	STRING_OPTION("IPv4ConnectionBindAddress", "", KviOption_sectFlagConnection),
