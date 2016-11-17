@@ -429,8 +429,8 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 			{
 				m_pLocalFilePopup->clear();
 
-				QString tmp = "<b>";
-				tmp += "file:/";
+				QString tmp = "File: ";
+				tmp += "<b>";
 				tmp += szFile;
 				tmp += "</b><br>";
 
