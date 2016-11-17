@@ -2202,7 +2202,7 @@ bool DccFileTransfer::event(QEvent * e)
 					c->output(KVI_OUT_DCCMSG, __tr2qs_ctx("DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]%Q\r%Q\r", "dcc"),
 					    m_pDescriptor->bIsTdcc ? (m_pDescriptor->bRecvFile ? "TRECV" : "TSEND") : (m_pDescriptor->bRecvFile ? "RECV" : "SEND"),
 					    &(m_pDescriptor->szNick), &(m_pDescriptor->szIp), &(m_pDescriptor->szPort),
-					    KVI_OPTION_STRING(KviOption_stringUrlFileCommand),
+					    &(KVI_OPTION_STRING(KviOption_stringUrlFileCommand)),
 					    &(m_pDescriptor->szLocalFileName));
 				}
 
