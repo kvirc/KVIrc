@@ -251,7 +251,7 @@ static bool window_kvs_cmd_splitView(KviKvsModuleCommandCall * c)
 	else
 	{
 		if(!c->hasSwitch('q', "quiet"))
-			c->warning(__tr2qs("The window with ID '%s' ins't a channel window."), szWnd.toUtf8().data());
+			c->warning(__tr2qs("The window with ID '%s' isn't a channel window."), szWnd.toUtf8().data());
 	}
 	return true;
 }
@@ -287,7 +287,7 @@ static bool window_kvs_cmd_unsplitView(KviKvsModuleCommandCall * c)
 	else
 	{
 		if(!c->hasSwitch('q', "quiet"))
-			c->warning(__tr2qs("The window with ID '%s' ins't a channel window."), szWnd.toUtf8().data());
+			c->warning(__tr2qs("The window with ID '%s' isn't a channel window."), szWnd.toUtf8().data());
 	}
 	return true;
 }
