@@ -1,33 +1,40 @@
-# translation of notifier_de.po to Deutsch
-# translation of notifier_it.po to Deutsch
-# This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-#
-# Christoph Thielecke <crissi99@gmx.de>, 2004.
-# Markus Rennings <kvirc@mrmx.de>, 2009.
-# Philipp Kloke <philipp.kloke@web.de>, 2016.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# 
+# Translators:
+# Christoph Thielecke <crissi99@gmx.de>, 2004
+# Markus Rennings <kvirc@mrmx.de>, 2009
+# PKEuS <philipp.kloke@web.de>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: notifier_de\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2016-10-02 16:39+0200\n"
-"Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
-"Language-Team: German <>\n"
-"Language: de\n"
+"POT-Creation-Date: 2016-11-28 13:11+0100\n"
+"PO-Revision-Date: 2016-10-28 19:29+0000\n"
+"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
+"Language-Team: German (http://www.transifex.com/kvirc/KVIrc/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.9\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/notifier/NotifierWindow.cpp:995
-msgid "1 Hour"
-msgstr "1 Stunde"
+#: src/modules/notifier/NotifierWindow.cpp:987
+msgid "Show/Hide input line"
+msgstr "Zeige/Verberge Eingabezeile"
+
+#: src/modules/notifier/NotifierWindow.cpp:988
+msgid "Hide"
+msgstr "Ausblenden"
 
 #: src/modules/notifier/NotifierWindow.cpp:991
 msgid "1 Minute"
 msgstr "1 Minute"
+
+#: src/modules/notifier/NotifierWindow.cpp:992
+msgid "5 Minutes"
+msgstr "5 Minuten"
 
 #: src/modules/notifier/NotifierWindow.cpp:993
 msgid "15 Minutes"
@@ -37,42 +44,34 @@ msgstr "15 Minuten"
 msgid "30 Minutes"
 msgstr "30 Minuten"
 
-#: src/modules/notifier/NotifierWindow.cpp:992
-msgid "5 Minutes"
-msgstr "5 Minuten"
-
-#: src/modules/notifier/NotifierWindow.cpp:1000
-msgid "Disable"
-msgstr "Deaktivieren"
-
-#: src/modules/notifier/NotifierWindow.cpp:988
-msgid "Hide"
-msgstr "Ausblenden"
-
-#: src/modules/notifier/NotifierWindow.cpp:998
-msgid "Permanently (Until Explicitly Enabled)"
-msgstr "Permanent (Bis explizit aktiviert)"
-
-#: src/modules/notifier/NotifierWindow.cpp:987
-msgid "Show/Hide input line"
-msgstr "Zeige/Verberge Eingabezeile"
-
-#: src/modules/notifier/libkvinotifier.cpp:156
-msgid "The -t switch expects a timeout in seconds"
-msgstr "Der -t-Schalter erwartet einen Zeitablauf in Sekunden"
-
-#: src/modules/notifier/libkvinotifier.cpp:151
-msgid "The specified timeout is not valid, assuming 0"
-msgstr "Der angegebene Zeitablauf ist ungültig, 0 wird angenommen"
-
-#: src/modules/notifier/libkvinotifier.cpp:137
-msgid "The specified window does not exist"
-msgstr "Das angegebene Fenster existiert nicht"
+#: src/modules/notifier/NotifierWindow.cpp:995
+msgid "1 Hour"
+msgstr "1 Stunde"
 
 #: src/modules/notifier/NotifierWindow.cpp:997
 msgid "Until KVIrc is Restarted"
 msgstr "Bis KVIrc neugestartet ist"
 
+#: src/modules/notifier/NotifierWindow.cpp:998
+msgid "Permanently (Until Explicitly Enabled)"
+msgstr "Permanent (Bis explizit aktiviert)"
+
+#: src/modules/notifier/NotifierWindow.cpp:1000
+msgid "Disable"
+msgstr "Deaktivieren"
+
 #: src/modules/notifier/NotifierWindow.cpp:1074
 msgid "Write text or commands to window"
 msgstr "Text oder Kommandos zu Fenster senden"
+
+#: src/modules/notifier/libkvinotifier.cpp:137
+msgid "The specified window does not exist"
+msgstr "Das angegebene Fenster existiert nicht"
+
+#: src/modules/notifier/libkvinotifier.cpp:151
+msgid "The specified timeout is not valid, assuming 0"
+msgstr "Der angegebene Zeitablauf ist ungültig, 0 wird angenommen"
+
+#: src/modules/notifier/libkvinotifier.cpp:156
+msgid "The -t switch expects a timeout in seconds"
+msgstr "Der -t-Schalter erwartet einen Zeitablauf in Sekunden"

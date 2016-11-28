@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.9.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
+"POT-Creation-Date: 2016-11-28 20:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,9 +37,9 @@ msgstr ""
 #: src/modules/objects/KvsObject_colorDialog.cpp:124
 #: src/modules/objects/KvsObject_listWidget.cpp:417
 #: src/modules/objects/KvsObject_painter.cpp:970
-#: src/modules/objects/KvsObject_painter.cpp:1056
-#: src/modules/objects/KvsObject_painter.cpp:1916
-#: src/modules/objects/KvsObject_painter.cpp:2011
+#: src/modules/objects/KvsObject_painter.cpp:1054
+#: src/modules/objects/KvsObject_painter.cpp:1914
+#: src/modules/objects/KvsObject_painter.cpp:2009
 #: src/modules/objects/KvsObject_pixmap.cpp:149
 #: src/modules/objects/KvsObject_pixmap.cpp:264
 msgid "The opacity parameter didn't evaluate to integer"
@@ -48,8 +48,8 @@ msgstr ""
 #: src/modules/objects/KvsObject_colorDialog.cpp:135
 #: src/modules/objects/KvsObject_listWidget.cpp:428
 #: src/modules/objects/KvsObject_painter.cpp:982
-#: src/modules/objects/KvsObject_painter.cpp:1068
-#: src/modules/objects/KvsObject_painter.cpp:2022
+#: src/modules/objects/KvsObject_painter.cpp:1066
+#: src/modules/objects/KvsObject_painter.cpp:2020
 #: src/modules/objects/KvsObject_pixmap.cpp:160
 #: src/modules/objects/KvsObject_pixmap.cpp:275
 msgid "Color name or triplet RGB/HSV value required"
@@ -58,9 +58,9 @@ msgstr ""
 #: src/modules/objects/KvsObject_colorDialog.cpp:140
 #: src/modules/objects/KvsObject_listWidget.cpp:433
 #: src/modules/objects/KvsObject_painter.cpp:987
-#: src/modules/objects/KvsObject_painter.cpp:1073
-#: src/modules/objects/KvsObject_painter.cpp:1935
-#: src/modules/objects/KvsObject_painter.cpp:2027
+#: src/modules/objects/KvsObject_painter.cpp:1071
+#: src/modules/objects/KvsObject_painter.cpp:1933
+#: src/modules/objects/KvsObject_painter.cpp:2025
 #: src/modules/objects/KvsObject_pixmap.cpp:165
 #: src/modules/objects/KvsObject_pixmap.cpp:280
 msgid "One of the triplet parameters didn't evaluate to an integer"
@@ -147,7 +147,7 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_file.cpp:401
 #: src/modules/objects/KvsObject_file.cpp:523
-#: src/modules/objects/KvsObject_pixmap.cpp:638
+#: src/modules/objects/KvsObject_pixmap.cpp:636
 #: src/modules/objects/KvsObject_socket.cpp:379
 #: src/modules/objects/KvsObject_socket.cpp:439
 msgid "Buffer parameter is not an object"
@@ -155,7 +155,7 @@ msgstr ""
 
 #: src/modules/objects/KvsObject_file.cpp:406
 #: src/modules/objects/KvsObject_file.cpp:544
-#: src/modules/objects/KvsObject_pixmap.cpp:643
+#: src/modules/objects/KvsObject_pixmap.cpp:641
 #: src/modules/objects/KvsObject_socket.cpp:401
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr ""
@@ -192,7 +192,7 @@ msgstr ""
 #: src/modules/objects/KvsObject_hBox.cpp:194
 #: src/modules/objects/KvsObject_label.cpp:263
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:860
-#: src/modules/objects/KvsObject_painter.cpp:1339
+#: src/modules/objects/KvsObject_painter.cpp:1337
 msgid "Unknown alignment '%Q'"
 msgstr ""
 
@@ -392,8 +392,8 @@ msgid "Unknown text format '%Q'"
 msgstr ""
 
 #: src/modules/objects/KvsObject_multiLineEdit.cpp:787
-#: src/modules/objects/KvsObject_pixmap.cpp:518
-#: src/modules/objects/KvsObject_pixmap.cpp:561
+#: src/modules/objects/KvsObject_pixmap.cpp:516
+#: src/modules/objects/KvsObject_pixmap.cpp:559
 #: src/modules/objects/KvsObject_textBrowser.cpp:102
 msgid "I can't find the specified file '%Q'."
 msgstr ""
@@ -465,87 +465,87 @@ msgstr ""
 msgid "Object Pixmap required!"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1147
+#: src/modules/objects/KvsObject_painter.cpp:1145
 msgid "$fontMetricsWidth: the painter is not active!"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1157
+#: src/modules/objects/KvsObject_painter.cpp:1155
 msgid "$fontMetricsHeight: the painter is not active!"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1187
+#: src/modules/objects/KvsObject_painter.cpp:1185
 msgid "Missing filename"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1213
-#: src/modules/objects/KvsObject_painter.cpp:1240
+#: src/modules/objects/KvsObject_painter.cpp:1211
+#: src/modules/objects/KvsObject_painter.cpp:1238
 msgid "No valid paint device"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1225
+#: src/modules/objects/KvsObject_painter.cpp:1223
 msgid "Pixmap or Widget parameter is not an object"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1234
+#: src/modules/objects/KvsObject_painter.cpp:1232
 msgid "Widget or pixmap required "
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1376
-#: src/modules/objects/KvsObject_painter.cpp:1429
-#: src/modules/objects/KvsObject_painter.cpp:1540
+#: src/modules/objects/KvsObject_painter.cpp:1374
+#: src/modules/objects/KvsObject_painter.cpp:1427
+#: src/modules/objects/KvsObject_painter.cpp:1538
 #: src/modules/objects/KvsObject_widget.cpp:1908
 msgid "Pixmap parameter is not an object"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1381
-#: src/modules/objects/KvsObject_painter.cpp:1434
-#: src/modules/objects/KvsObject_painter.cpp:1545
+#: src/modules/objects/KvsObject_painter.cpp:1379
+#: src/modules/objects/KvsObject_painter.cpp:1432
+#: src/modules/objects/KvsObject_painter.cpp:1543
 #: src/modules/objects/KvsObject_widget.cpp:1913
 msgid "Pixmap object required"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1584
-#: src/modules/objects/KvsObject_pixmap.cpp:391
+#: src/modules/objects/KvsObject_painter.cpp:1582
+#: src/modules/objects/KvsObject_pixmap.cpp:389
 msgid "Unknown axis '%Q' switching to default ZAxis"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1832
+#: src/modules/objects/KvsObject_painter.cpp:1830
 msgid "Unknown pen style '%Q'"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1860
+#: src/modules/objects/KvsObject_painter.cpp:1858
 msgid "Unknown brush style '%Q'"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:1930
+#: src/modules/objects/KvsObject_painter.cpp:1928
 msgid "Color name or triplet RGB/HSV values required"
 msgstr ""
 
-#: src/modules/objects/KvsObject_painter.cpp:2144
+#: src/modules/objects/KvsObject_painter.cpp:2142
 msgid "Unknown composition mode '%Q'"
 msgstr ""
 
 #: src/modules/objects/KvsObject_pixmap.cpp:294
 #: src/modules/objects/KvsObject_pixmap.cpp:326
-#: src/modules/objects/KvsObject_pixmap.cpp:410
-#: src/modules/objects/KvsObject_pixmap.cpp:450
+#: src/modules/objects/KvsObject_pixmap.cpp:408
+#: src/modules/objects/KvsObject_pixmap.cpp:448
 msgid "AnimatedPixmap not supported"
 msgstr ""
 
 #: src/modules/objects/KvsObject_pixmap.cpp:299
 #: src/modules/objects/KvsObject_pixmap.cpp:331
-#: src/modules/objects/KvsObject_pixmap.cpp:404
-#: src/modules/objects/KvsObject_pixmap.cpp:416
-#: src/modules/objects/KvsObject_pixmap.cpp:444
-#: src/modules/objects/KvsObject_pixmap.cpp:456
-#: src/modules/objects/KvsObject_pixmap.cpp:491
-#: src/modules/objects/KvsObject_pixmap.cpp:501
-#: src/modules/objects/KvsObject_pixmap.cpp:586
-#: src/modules/objects/KvsObject_pixmap.cpp:598
+#: src/modules/objects/KvsObject_pixmap.cpp:402
+#: src/modules/objects/KvsObject_pixmap.cpp:414
+#: src/modules/objects/KvsObject_pixmap.cpp:442
+#: src/modules/objects/KvsObject_pixmap.cpp:454
+#: src/modules/objects/KvsObject_pixmap.cpp:489
+#: src/modules/objects/KvsObject_pixmap.cpp:499
+#: src/modules/objects/KvsObject_pixmap.cpp:584
+#: src/modules/objects/KvsObject_pixmap.cpp:596
 msgid "The pixmap is null"
 msgstr ""
 
-#: src/modules/objects/KvsObject_pixmap.cpp:483
+#: src/modules/objects/KvsObject_pixmap.cpp:481
 msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
 msgstr ""
 

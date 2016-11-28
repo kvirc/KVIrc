@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.9.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
+"POT-Creation-Date: 2016-11-28 20:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -443,76 +443,76 @@ msgstr ""
 msgid "Registration Complete"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:194
-#: src/modules/reguser/libkvireguser.cpp:278
-#: src/modules/reguser/libkvireguser.cpp:344
-#: src/modules/reguser/libkvireguser.cpp:467
-#: src/modules/reguser/libkvireguser.cpp:537
-#: src/modules/reguser/libkvireguser.cpp:718
+#: src/modules/reguser/libkvireguser.cpp:195
+#: src/modules/reguser/libkvireguser.cpp:279
+#: src/modules/reguser/libkvireguser.cpp:345
+#: src/modules/reguser/libkvireguser.cpp:468
+#: src/modules/reguser/libkvireguser.cpp:538
+#: src/modules/reguser/libkvireguser.cpp:719
 msgid "No name specified"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:217
+#: src/modules/reguser/libkvireguser.cpp:218
 msgid "User already registered: found exact name match"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:230
+#: src/modules/reguser/libkvireguser.cpp:231
 msgid "Mask %Q is already used to identify user %s"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:284
+#: src/modules/reguser/libkvireguser.cpp:285
 msgid "User not found (%Q)"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:350
-#: src/modules/reguser/libkvireguser.cpp:417
+#: src/modules/reguser/libkvireguser.cpp:351
+#: src/modules/reguser/libkvireguser.cpp:418
 msgid "No mask specified"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:357
-#: src/modules/reguser/libkvireguser.cpp:475
-#: src/modules/reguser/libkvireguser.cpp:545
-#: src/modules/reguser/libkvireguser.cpp:733
+#: src/modules/reguser/libkvireguser.cpp:358
+#: src/modules/reguser/libkvireguser.cpp:476
+#: src/modules/reguser/libkvireguser.cpp:546
+#: src/modules/reguser/libkvireguser.cpp:734
 msgid "User %Q not found"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:369
+#: src/modules/reguser/libkvireguser.cpp:370
 msgid "Mask %Q already used to identify user %Q"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:424
+#: src/modules/reguser/libkvireguser.cpp:425
 msgid "Mask %Q not found"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:725
+#: src/modules/reguser/libkvireguser.cpp:726
 msgid "No property specified"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:835
+#: src/modules/reguser/libkvireguser.cpp:836
 msgid "Registered users database dump:"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:846
+#: src/modules/reguser/libkvireguser.cpp:847
 msgid "User: %c%Q"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:850
+#: src/modules/reguser/libkvireguser.cpp:851
 msgid "Warning: this user has no registration masks"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:856
+#: src/modules/reguser/libkvireguser.cpp:857
 msgid "Mask: %Q!%Q@%Q"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:867
+#: src/modules/reguser/libkvireguser.cpp:868
 msgid "Property: %Q=%Q"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:872
+#: src/modules/reguser/libkvireguser.cpp:873
 msgid "No properties"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:878
+#: src/modules/reguser/libkvireguser.cpp:879
 #, c-format
 msgid "Total: %d matching users (of %d in the database)"
 msgstr ""

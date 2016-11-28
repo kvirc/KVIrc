@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.9.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
+"POT-Creation-Date: 2016-11-28 20:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:101
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:165
-msgid "DNS Lookup result for query \"%Q\""
+msgid "DNS lookup result for query \"%Q\""
 msgstr ""
 
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:106
@@ -83,8 +83,8 @@ msgstr ""
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:555
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:565
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:720
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:732
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:717
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:725
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1493
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1503
 msgid "No such event (%Q)"
@@ -135,66 +135,66 @@ msgstr ""
 msgid "Unable to add the timer: insufficient system resources"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:339
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:233
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:325
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:223
 msgid "This window has no associated IRC context"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:552
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:538
 msgid "Error retrieving information from the local certificate"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:560
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:546
 msgid "Unable to get certificate information: query not recognized"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:609
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:485
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:838
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:595
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:479
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:828
 #, c-format
 msgid "No such IRC context (%u)"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:625
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:740
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:501
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:844
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:604
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:717
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:488
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:834
 msgid "This window is not associated to an IRC context"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:946
+#: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:919
 msgid "Couldn't construct QDateTime object."
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:308
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:310
 msgid "Lag meter was not enabled"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:742
+#: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:731
 msgid "No such event handler (%Q) for event %Q"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:198
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:196
 msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:292
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:290
 msgid "Class '%Q' is not defined"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:302
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:300
 msgid "The specified parent object does not exist"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:433
+#: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:427
 msgid "There is no option named '%Q'"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:370
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:360
 msgid "The $sw() function can be used only in aliases"
 msgstr ""
 
-#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:443
+#: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:433
 #, c-format
 msgid "Window with ID '%s' not found, returning empty string"
 msgstr ""
@@ -541,7 +541,7 @@ msgstr ""
 msgid "Timer '%Q' has a broken callback handler: killing the timer"
 msgstr ""
 
-#: src/kvirc/kvs/event/KviKvsEventManager.cpp:474
+#: src/kvirc/kvs/event/KviKvsEventManager.cpp:476
 msgid "Event handler %Q is broken: disabling"
 msgstr ""
 
