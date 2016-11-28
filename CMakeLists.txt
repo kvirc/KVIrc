@@ -240,8 +240,8 @@ else()
 			if(MSVC)
 				# this is the equivalent of -O0 -g according to MSDN
 				# QT4 has /Zc:wchar_t-, QT5 has /Zc:wchar_t
-				set(CMAKE_CXX_FLAGS "/Od /Zi /Zc:wchar_t /EHsc")
-				set(CMAKE_C_FLAGS "/Od /Zi /Zc:wchar_t /EHsc")
+				set(CMAKE_CXX_FLAGS "/Zi /Zc:wchar_t /EHsc")
+				set(CMAKE_C_FLAGS "/Zi /Zc:wchar_t /EHsc")
 			else()
 				set(CMAKE_CXX_FLAGS "-O0 -g")
 				set(CMAKE_C_FLAGS "-O0 -g")
