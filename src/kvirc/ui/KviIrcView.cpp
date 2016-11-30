@@ -2118,7 +2118,9 @@ void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 		m_iWrapMargin = m_pFm->width("wwww");
 	}
 
-	m_iMinimumPaintWidth = (((int)(m_pFm->width('w'))) << 1) + m_iWrapMargin;
+	m_iMinimumPaintWidth = (((int)(m_pFm->width('w'))) << 1);
+	if(KVI_OPTION_BOOL(KviOption_boolIrcViewWrapMargin))
+		m_iMinimumPaintWidth += m_iWrapMargin;
 
 	m_iRelativePixmapY = (int)(m_iFontLineSpacing + KVI_IRCVIEW_PIXMAP_SIZE) >> 1;
 
