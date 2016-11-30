@@ -232,6 +232,20 @@ const char * const widgettypes_tbl[] = {
 		Sets the maximum height of this widget to <value>.
 		The user will not be able to resize the widget to a bigger
 		value. This value is also used by the [class:layout]layout class[/class].
+		!fn: $setFixedWidth(<value>)
+		Sets the fixed width of this widget to <value>.
+		The user will not be able to resize the widget to a smaller or a bigger
+		value.
+		!fn: $setFixedHeight(<value>)
+		Sets the fixed height of this widget to <value>.
+		The user will not be able to resize the widget to a smaller or a bigger
+		value.
+		!fn: $setFixedSize(<width>,<height>)
+		Sets the fixed width and height of this widget to <width> and <height>.
+		The user will not be able to resize the widget to a smaller or a bigger
+		value.
+		!fn: $setSizePolicy(<width_policy>,<height_policy>)
+		Sets the size policy of this widget.
 		!fn: $move(<x_or_array>[,<y>])
 		Moves this widget to the coordinate <x> and <y> relative to its
 		parent widget (or the desktop if this widget is a toplevel one).
@@ -647,6 +661,10 @@ KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget, setMinimumWidth)
 KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget, setMinimumHeight)
 KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget, setMaximumWidth)
 KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget, setMaximumHeight)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget, setFixedWidth)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget, setFixedHeight)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget, setFixedSize)
+KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget, setSizePolicy)
 KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget, move)
 KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget, sizeHint)
 KVSO_REGISTER_HANDLER_BY_NAME(KvsObject_widget, resize)
@@ -1586,6 +1604,90 @@ KVSO_CLASS_FUNCTION(widget, setMaximumHeight)
 	KVSO_PARAMETER("h", KVS_PT_INT, 0, iH)
 	KVSO_PARAMETERS_END(c)
 	widget()->setMaximumHeight(iH);
+	return true;
+}
+
+KVSO_CLASS_FUNCTION(widget, setFixedWidth)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_int_t iW;
+	KVSO_PARAMETERS_BEGIN(c)
+	KVSO_PARAMETER("w", KVS_PT_INT, 0, iW)
+	KVSO_PARAMETERS_END(c)
+	widget()->setFixedWidth(iW);
+	return true;
+}
+
+KVSO_CLASS_FUNCTION(widget, setFixedHeight)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_int_t iH;
+	KVSO_PARAMETERS_BEGIN(c)
+	KVSO_PARAMETER("h", KVS_PT_INT, 0, iH)
+	KVSO_PARAMETERS_END(c)
+	widget()->setFixedHeight(iH);
+	return true;
+}
+
+KVSO_CLASS_FUNCTION(widget, setFixedSize)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	kvs_int_t iW, iH;
+	KVSO_PARAMETERS_BEGIN(c)
+	KVSO_PARAMETER("w", KVS_PT_INT, 0, iW)
+	KVSO_PARAMETER("h", KVS_PT_INT, 0, iH)
+	KVSO_PARAMETERS_END(c)
+	widget()->setFixedSize(iW, iH);
+	return true;
+}
+
+KVSO_CLASS_FUNCTION(widget, setSizePolicy)
+{
+	CHECK_INTERNAL_POINTER(widget())
+	QString szHorizontal, szVertical;
+	KVSO_PARAMETERS_BEGIN(c)
+	KVSO_PARAMETER("h", KVS_PT_STRING, 0, szHorizontal)
+	KVSO_PARAMETER("v", KVS_PT_STRING, 0, szVertical)
+	KVSO_PARAMETERS_END(c)
+
+	QSizePolicy::Policy hPolicy = QSizePolicy::Preferred;
+	if(KviQString::equalCI(szHorizontal, "Fixed"))
+		hPolicy = QSizePolicy::Fixed;
+	else if(KviQString::equalCI(szHorizontal, "Minimum"))
+		hPolicy = QSizePolicy::Minimum;
+	else if(KviQString::equalCI(szHorizontal, "Maximum"))
+		hPolicy = QSizePolicy::Maximum;
+	else if(KviQString::equalCI(szHorizontal, "Preferred"))
+		hPolicy = QSizePolicy::Preferred;
+	else if(KviQString::equalCI(szHorizontal, "Expanding"))
+		hPolicy = QSizePolicy::Expanding;
+	else if(KviQString::equalCI(szHorizontal, "MinimumExpanding"))
+		hPolicy = QSizePolicy::MinimumExpanding;
+	else if(KviQString::equalCI(szHorizontal, "Ignored"))
+		hPolicy = QSizePolicy::Ignored;
+	else
+		c->warning(__tr2qs_ctx("Unknown policy '%Q'", "objects"), &szHorizontal);
+
+	QSizePolicy::Policy vPolicy = QSizePolicy::Preferred;
+	if(KviQString::equalCI(szVertical, "Fixed"))
+		vPolicy = QSizePolicy::Fixed;
+	else if(KviQString::equalCI(szVertical, "Minimum"))
+		vPolicy = QSizePolicy::Minimum;
+	else if(KviQString::equalCI(szVertical, "Maximum"))
+		vPolicy = QSizePolicy::Maximum;
+	else if(KviQString::equalCI(szVertical, "Preferred"))
+		vPolicy = QSizePolicy::Preferred;
+	else if(KviQString::equalCI(szVertical, "Expanding"))
+		vPolicy = QSizePolicy::Expanding;
+	else if(KviQString::equalCI(szVertical, "MinimumExpanding"))
+		vPolicy = QSizePolicy::MinimumExpanding;
+	else if(KviQString::equalCI(szVertical, "Ignored"))
+		vPolicy = QSizePolicy::Ignored;
+	else
+		c->warning(__tr2qs_ctx("Unknown policy '%Q'", "objects"), &szVertical);
+
+	widget()->setSizePolicy(hPolicy, vPolicy);
+
 	return true;
 }
 
