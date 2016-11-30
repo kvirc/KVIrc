@@ -749,8 +749,6 @@ void KviInputEditor::rebuildTextBlocks()
 
 void KviInputEditor::ensureCursorVisible()
 {
-	QFontMetricsF * fm = getLastFontMetrics(font());
-
 	if(m_iCursorPosition < 0)
 		m_iCursorPosition = 0;
 	else if(m_iCursorPosition > m_szTextBuffer.length())
@@ -758,12 +756,20 @@ void KviInputEditor::ensureCursorVisible()
 
 	qreal fCursorXAbsolute = xPositionFromCharIndex(m_iCursorPosition) - KVI_INPUT_MARGIN;
 	qreal fCursorXInText = fCursorXAbsolute + m_p->fXOffset;
+	qreal fEndXAbsolute = xPositionFromCharIndex(m_szTextBuffer.length()) - KVI_INPUT_MARGIN;
 
 	bool bNeedRepaint = false;
 
 	qreal fAvailableWidth = width() - KVI_INPUT_MARGIN - KVI_INPUT_MARGIN;
 
-	if(fCursorXAbsolute < 0.0)
+	if(fAvailableWidth > fEndXAbsolute)
+	{
+		m_p->fXOffset += fEndXAbsolute - fAvailableWidth;
+		if(m_p->fXOffset < 0.0)
+			m_p->fXOffset = 0.0;
+		bNeedRepaint = true;
+	}
+	else if(fCursorXAbsolute < 0.0)
 	{
 		m_p->fXOffset = fCursorXInText;
 		bNeedRepaint = true;
