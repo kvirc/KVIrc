@@ -44,11 +44,6 @@ action.create -w=xcqd -t=tools ("optionctrlr", $tr("Option Controllers"), $tr("O
 	# Prevent dialog from looking nasty when resized!
 	# Maximum width accounts for translations
 	%widget->$setWFlags(dialog)
-	%widget->$setMinimumHeight(450)
-	%widget->$setMaximumHeight(450)
-	%widget->$setMinimumWidth(330)
-	%widget->$setMaximumWidth(555)
-	%widget->$resize(330,450)
 	# Make sure dialog is ontop and can be navigated by keyboard
 	%widget->$raise()
 	%widget->$setfocus()
@@ -388,5 +383,7 @@ action.create -w=xcqd -t=tools ("optionctrlr", $tr("Option Controllers"), $tr("O
 
 	# Let's show this sexy dialog
 	%widget->$show()
+
+	%widget->$setFixedSize(%widget->$width(), %widget->$height())
 }
 
