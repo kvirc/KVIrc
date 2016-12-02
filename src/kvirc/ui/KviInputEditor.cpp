@@ -301,14 +301,14 @@ QFontMetricsF * KviInputEditor::getLastFontMetrics(const QFont & font)
 
 	int h = qMax(g_pLastFontMetrics->height(), 14.0) + 2 * (KVI_INPUT_MARGIN + KVI_INPUT_XTRAPADDING);
 	int w = 100;
-	QStyleOptionFrameV2 option;
+	QStyleOptionFrame option;
 	option.initFrom(this);
 	option.rect = rect();
 	option.lineWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &option, this);
 	option.midLineWidth = 0;
 
 	option.state |= QStyle::State_Sunken;
-	option.features = QStyleOptionFrameV2::None;
+	option.features = QStyleOptionFrame::None;
 
 	QSize dummySize = style()->sizeFromContents(QStyle::CT_LineEdit, &option, QSize(w, h).expandedTo(QApplication::globalStrut()), this);
 

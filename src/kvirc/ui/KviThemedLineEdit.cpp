@@ -32,7 +32,7 @@
 #include "KviWindowStack.h"
 
 #include <QPainter>
-#include <QStyleOptionFrameV2>
+#include <QStyleOptionFrame>
 #include <QPaintEvent>
 
 #include <qdrawutil.h> // qDrawShadePanel

@@ -166,7 +166,7 @@ void RegisteredUsersDialogItemDelegate::paint(QPainter * p, const QStyleOptionVi
 	}
 	else
 	{
-		QStyleOptionViewItemV4 opt = option;
+		QStyleOptionViewItem opt = option;
 		initStyleOption(&opt, index);
 
 		if(opt.state & QStyle::State_Selected)
@@ -529,26 +529,24 @@ void RegisteredUsersDialog::fillList()
 	}
 
 	KviPointerHashTable<QString, KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();
-	RegisteredUsersDialogItem * item;
-	Q_UNUSED(item);
 	for(KviRegisteredUser * u = d->first(); u; u = d->next())
 	{
 		if(u->group().isEmpty())
 			u->setGroup(__tr2qs_ctx("Default", "register"));
 		if(groupItems.find(u->group()))
 		{
-			item = new RegisteredUsersDialogItem(groupItems.find(u->group()), u);
+			(void)new RegisteredUsersDialogItem(groupItems.find(u->group()), u);
 		}
 		else if(groupItems.find(__tr2qs_ctx("Default", "register")))
 		{
-			item = new RegisteredUsersDialogItem(groupItems.find(__tr2qs_ctx("Default", "register")), u);
+			(void)new RegisteredUsersDialogItem(groupItems.find(__tr2qs_ctx("Default", "register")), u);
 		}
 		else
 		{ //should never be called
 			KviRegisteredUserGroup * pGroup = g_pLocalRegisteredUserDataBase->addGroup(__tr2qs_ctx("Default", "register"));
 			RegisteredUsersGroupItem * pCur = new RegisteredUsersGroupItem(m_pListView, pGroup);
 			groupItems.insert(__tr2qs_ctx("Default", "register"), pCur);
-			item = new RegisteredUsersDialogItem(pCur, u);
+			(void)new RegisteredUsersDialogItem(pCur, u);
 		}
 	}
 	if(m_pListView->topLevelItem(0))

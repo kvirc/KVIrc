@@ -43,7 +43,7 @@ KviTalIconAndRichTextItemDelegate::~KviTalIconAndRichTextItemDelegate()
 void KviTalIconAndRichTextItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {
 	pPainter->save();
-	QStyleOptionViewItemV4 opt = option;
+	QStyleOptionViewItem opt = option;
 	initStyleOption(&opt, index);
 
 	if(opt.state & QStyle::State_Selected)
