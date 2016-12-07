@@ -43,12 +43,13 @@
 #include <QApplication>
 #include <QByteArray>
 #include <QTextStream>
-#include <QtAlgorithms>
 #include <QUrl>
 #include <QTextCodec>
 #include <ctype.h>
 #include <QTextDocument>
 #include <QTimer>
+
+#include <algorithm>
 
 QT_BEGIN_NAMESPACE
 
@@ -369,7 +370,7 @@ QStringList HelpIndex::query(const QStringList & terms, const QStringList & term
 	}
 	if(!termList.count())
 		return QStringList();
-	qSort(termList);
+	std::sort(termList.begin(), termList.end());
 
 	QVector<Document> minDocs = termList.takeFirst().documents;
 	for(auto & it : termList)
@@ -396,7 +397,7 @@ QStringList HelpIndex::query(const QStringList & terms, const QStringList & term
 	}
 
 	QStringList results;
-	qSort(minDocs);
+	std::sort(minDocs.begin(), minDocs.end());
 	if(termSeq.isEmpty())
 	{
 		for(auto & minDoc : minDocs)
@@ -543,7 +544,7 @@ QVector<Document> HelpIndex::setupDummyTerm(const QStringList & terms)
 	QVector<Document> maxList(0);
 	if(!termList.count())
 		return maxList;
-	qSort(termList);
+	std::sort(termList.begin(), termList.end());
 
 	maxList = termList.takeLast().documents;
 	for(auto & it : termList)
