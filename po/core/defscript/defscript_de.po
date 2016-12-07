@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 13:11+0100\n"
-"PO-Revision-Date: 2016-10-28 19:19+0000\n"
+"PO-Revision-Date: 2016-12-07 16:01+0000\n"
 "Last-Translator: Robert Förster <Dessa@gmake.de>\n"
 "Language-Team: German (http://www.transifex.com/kvirc/KVIrc/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -253,7 +253,7 @@ msgstr "Schließen"
 
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
-msgstr "Fehlendes Zeil, keine Aktion ausgeführt"
+msgstr "Fehlendes Ziel, keine Aktion ausgeführt"
 
 #: data/defscript/aliases.kvs:111 data/defscript/aliases.kvs:165
 msgid "Usage"
@@ -422,7 +422,7 @@ msgstr "Immer hervorheben"
 #: data/defscript/popups.kvs:46 data/defscript/popups.kvs:52
 #: data/defscript/popups.kvs:58 data/defscript/popups.kvs:64
 msgid "Highlight As"
-msgstr ""
+msgstr "Hervorheben als"
 
 #: data/defscript/popups.kvs:76
 msgid "Stop Highlighting"
@@ -536,7 +536,7 @@ msgstr "Abbrechen"
 
 #: data/defscript/popups.kvs:326 data/defscript/popups.kvs:1219
 msgid "Default Channels"
-msgstr ""
+msgstr "Standard-Channels"
 
 #: data/defscript/popups.kvs:337 data/defscript/popups.kvs:1221
 msgid "&Join Channels..."
@@ -544,7 +544,7 @@ msgstr "Channels betreten …"
 
 #: data/defscript/popups.kvs:361 data/defscript/popups.kvs:460
 msgid "d (Debug/DNS?)"
-msgstr ""
+msgstr "d (Debug/DNS?)"
 
 #: data/defscript/popups.kvs:366 data/defscript/popups.kvs:465
 msgid "l (Connections)"
@@ -560,7 +560,7 @@ msgstr "o (Operatoren)"
 
 #: data/defscript/popups.kvs:381 data/defscript/popups.kvs:480
 msgid "t (Connection Stats?)"
-msgstr ""
+msgstr "t (Verbindungsstatistik?)"
 
 #: data/defscript/popups.kvs:386 data/defscript/popups.kvs:485
 msgid "u (Uptime)"
@@ -568,7 +568,7 @@ msgstr "u (Uptime)"
 
 #: data/defscript/popups.kvs:391 data/defscript/popups.kvs:490
 msgid "y (Y-Lines)"
-msgstr ""
+msgstr "y (Y-Lines)"
 
 #: data/defscript/popups.kvs:396 data/defscript/popups.kvs:495
 msgid "z (Debug Stats?)"
@@ -576,15 +576,15 @@ msgstr "z (Debug-Statistiken?)"
 
 #: data/defscript/popups.kvs:433
 msgid "Copy to Clipboard"
-msgstr ""
+msgstr "In Zwischenablage kopieren"
 
 #: data/defscript/popups.kvs:524 data/defscript/popups.kvs:888
 msgid "Traceroute to"
-msgstr ""
+msgstr "Traceroute nach"
 
 #: data/defscript/popups.kvs:532 data/defscript/popups.kvs:896
 msgid "Traceroute6 to"
-msgstr ""
+msgstr "Traceroute6 nach"
 
 #: data/defscript/popups.kvs:624
 msgid "Undock"
@@ -592,7 +592,7 @@ msgstr "Abdocken"
 
 #: data/defscript/popups.kvs:659
 msgid "Set Window Properties As Default"
-msgstr ""
+msgstr "Setze Fenstereigenschaften als Standard"
 
 #: data/defscript/popups.kvs:666
 msgid "Automatically Join Channel"
@@ -608,11 +608,11 @@ msgstr "Beim Verbinden zu Netzwerk ›?s‹"
 
 #: data/defscript/popups.kvs:683
 msgid "Stop Auto-joining Channel on Server '?s'"
-msgstr ""
+msgstr "Beende automatischen Channelbeitritt auf Server ›?s‹"
 
 #: data/defscript/popups.kvs:696
 msgid "Stop Auto-joining Channel on Network '?s'"
-msgstr ""
+msgstr "Beende automatischen Channelbeitritt auf Netzwerk ›?s‹"
 
 #: data/defscript/popups.kvs:711
 msgid "Part All Channels"
@@ -624,7 +624,7 @@ msgstr "alle Queries schließen"
 
 #: data/defscript/popups.kvs:724
 msgid "Rejoin All Dead Channels"
-msgstr "alle toten Channel erneut betreten"
+msgstr "Allen toten Channel erneut beitreten"
 
 #: data/defscript/popups.kvs:731
 msgid "Close All Dead Channels"
@@ -669,15 +669,15 @@ msgstr "Benutzerbild bekannt machen"
 
 #: data/defscript/popups.kvs:869
 msgid "Look Up"
-msgstr ""
+msgstr "Auflösen"
 
 #: data/defscript/popups.kvs:876
 msgid "Open"
-msgstr ""
+msgstr "Öffnen"
 
 #: data/defscript/popups.kvs:881
 msgid "Telnet to"
-msgstr ""
+msgstr "Telnet nach"
 
 #: data/defscript/popups.kvs:941
 msgid "Chat with"
@@ -697,7 +697,7 @@ msgstr "Senden an"
 
 #: data/defscript/popups.kvs:963
 msgid "Secure Send to"
-msgstr ""
+msgstr "Sicheres Senden an"
 
 #: data/defscript/popups.kvs:968
 msgid "Reverse Send to"
@@ -797,7 +797,7 @@ msgstr "Kicken/Bannen"
 
 #: data/defscript/popups.kvs:1189
 msgid "with..."
-msgstr ""
+msgstr "mit..."
 
 #: data/defscript/popups.kvs:1191
 msgid "Kick/Ban Reason"
@@ -813,7 +813,7 @@ msgstr "&Kick/Ban"
 
 #: data/defscript/popups.kvs:1202
 msgid "Configure Ban Mask..."
-msgstr ""
+msgstr "Bannmaske konfigurieren..."
 
 #: data/defscript/popups.kvs:1276
 msgid "Copy Channel URL to Clipboard"
@@ -843,7 +843,7 @@ msgstr "Logge nicht"
 
 #: data/defscript/popups.kvs:1348 data/defscript/popups.kvs:1353
 msgid "Log to Default File"
-msgstr ""
+msgstr "Logge in Standarddatei"
 
 #: data/defscript/popups.kvs:1353 data/defscript/popups.kvs:1366
 msgid "Include Existing Buffer"
@@ -851,7 +851,7 @@ msgstr "Existierenden Puffer einschließen"
 
 #: data/defscript/popups.kvs:1358 data/defscript/popups.kvs:1366
 msgid "Log to..."
-msgstr ""
+msgstr "Logge nach..."
 
 #: data/defscript/popups.kvs:1360 data/defscript/popups.kvs:1368
 msgid "Choose Log Filename"
@@ -871,7 +871,7 @@ msgstr "Ignorieren aktivieren"
 
 #: data/defscript/popups.kvs:1426
 msgid "Ignore As..."
-msgstr ""
+msgstr "Ignoriere als..."
 
 #: data/defscript/popups.kvs:1428 data/defscript/popups.kvs:1436
 #: data/defscript/popups.kvs:1444 data/defscript/popups.kvs:1452
@@ -888,7 +888,7 @@ msgstr ""
 #: data/defscript/popups.kvs:1620 data/defscript/popups.kvs:1628
 #: data/defscript/popups.kvs:1636
 msgid "Ignore As"
-msgstr ""
+msgstr "Ignoriere als"
 
 #: data/defscript/popups.kvs:1645
 msgid "Unignore"
@@ -922,7 +922,7 @@ msgstr "Schnelle Registrierung"
 #: data/defscript/popups.kvs:1698 data/defscript/popups.kvs:1703
 #: data/defscript/popups.kvs:1708 data/defscript/popups.kvs:1713
 msgid "Register As"
-msgstr ""
+msgstr "Registriere als"
 
 #: data/defscript/popups.kvs:1719
 msgid "Edit Registration..."
@@ -954,7 +954,7 @@ msgstr "Ein Benutzerbild auswählen"
 
 #: data/defscript/popups.kvs:1754
 msgid "Set As Default"
-msgstr ""
+msgstr "Setze als Standard"
 
 #: data/defscript/popups.kvs:1759
 msgid "Clear Default"
