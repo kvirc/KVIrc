@@ -100,8 +100,7 @@ HelpIndex::HelpIndex(const QStringList & dl, const QString & hp)
 	docList = dl;
 	alreadyHaveDocList = true;
 	lastWindowClosed = false;
-	connect(qApp, SIGNAL(lastWindowClosed()),
-	    this, SLOT(setLastWinClosed()));
+	connect(qApp, SIGNAL(lastWindowClosed()), this, SLOT(setLastWinClosed()));
 }
 
 void HelpIndex::setLastWinClosed()
@@ -157,13 +156,11 @@ void HelpIndex::setupDocumentList()
 	docList.clear();
 	titleList.clear();
 	QDir d(docPath);
-	QStringList filters;
-	filters.append(QLatin1String("*.html"));
+	QStringList filters{QLatin1String("*.html")};
 	QStringList lst = d.entryList(filters);
-	QStringList::ConstIterator it = lst.constBegin();
-	for(; it != lst.constEnd(); ++it)
+	for(auto&& item : lst)
 	{
-		QString filename = QLatin1String("file:///") + docPath + QLatin1String("/") + *it;
+		QString filename = QLatin1String("file:///") + docPath + QLatin1String("/") + item;
 		docList.append(filename);
 		titleList.append(getDocumentTitle(filename));
 	}
@@ -204,9 +201,7 @@ QString HelpIndex::getCharsetForDocument(QFile * file)
 		meta = meta.toLower();
 		QRegExp r(QLatin1String("charset=([^\"\\s]+)"));
 		if(r.indexIn(meta) != -1)
-		{
 			encoding = r.cap(1);
-		}
 	}
 
 	file->seek(0);
@@ -285,7 +280,7 @@ void HelpIndex::writeDict()
 	if(!f.open(QFile::WriteOnly))
 		return;
 	QDataStream s(&f);
-	for(QHash<QString, Entry *>::Iterator it = dict.begin(); it != dict.end(); ++it)
+	for(auto it = dict.cbegin(); it != dict.cend(); ++it)
 	{
 		s << it.key();
 		s << it.value()->documents.count();
@@ -352,7 +347,6 @@ QStringList HelpIndex::query(const QStringList & terms, const QStringList & term
 	QList<Term> termList;
 	for(const auto & term : terms)
 	{
-		Entry * e = nullptr;
 		if(term.contains(QLatin1Char('*')))
 		{
 			QVector<Document> wcts = setupDummyTerm(getWildcardTerms(term));
@@ -360,7 +354,7 @@ QStringList HelpIndex::query(const QStringList & terms, const QStringList & term
 		}
 		else if(dict[term])
 		{
-			e = dict[term];
+			auto e = dict[term];
 			termList.append(Term(term, e->documents.count(), e->documents));
 		}
 		else
@@ -373,18 +367,17 @@ QStringList HelpIndex::query(const QStringList & terms, const QStringList & term
 	std::sort(termList.begin(), termList.end());
 
 	QVector<Document> minDocs = termList.takeFirst().documents;
-	for(auto & it : termList)
+	for(const auto & term : termList)
 	{
-		Term * t = &it;
-		QVector<Document> docs = t->documents;
-		for(QVector<Document>::Iterator minDoc_it = minDocs.begin(); minDoc_it != minDocs.end();)
+		QVector<Document> docs = term.documents;
+		for(auto minDoc_it = minDocs.begin(); minDoc_it != minDocs.end();)
 		{
 			bool found = false;
-			for(QVector<Document>::ConstIterator doc_it = docs.constBegin(); doc_it != docs.constEnd(); ++doc_it)
+			for(auto&& doc : docs)
 			{
-				if((*minDoc_it).docNumber == (*doc_it).docNumber)
+				if(minDoc_it->docNumber == doc.docNumber)
 				{
-					(*minDoc_it).frequency += (*doc_it).frequency;
+					minDoc_it->frequency += doc.frequency;
 					found = true;
 					break;
 				}
@@ -405,10 +398,9 @@ QStringList HelpIndex::query(const QStringList & terms, const QStringList & term
 		return results;
 	}
 
-	QString fileName;
-	for(auto & minDoc : minDocs)
+	for(const auto & minDoc : minDocs)
 	{
-		fileName = docList[(int)minDoc.docNumber];
+		auto fileName = docList[(int)minDoc.docNumber];
 		if(searchForPattern(termSeq, seqWords, fileName))
 			results << fileName;
 	}
@@ -433,10 +425,10 @@ QString HelpIndex::getDocumentTitle(const QString & fullFileName)
 	QString text = s.readAll();
 
 	int start = text.indexOf(QLatin1String("<title>"), 0, Qt::CaseInsensitive) + 7;
-	int end = text.indexOf(QLatin1String("</title>"), 0, Qt::CaseInsensitive);
+	int end = text.indexOf(QLatin1String("</title>"), start, Qt::CaseInsensitive);
 
 	QString title = tr("Untitled");
-	if(end - start > 0)
+	if(end > start)
 	{
 		title = text.mid(start, end - start);
 		if(Qt::mightBeRichText(title))
@@ -454,30 +446,29 @@ QStringList HelpIndex::getWildcardTerms(const QString & term)
 {
 	QStringList lst;
 	QStringList terms = split(term);
-	QStringList::Iterator iter;
 
-	for(QHash<QString, Entry *>::Iterator it = dict.begin(); it != dict.end(); ++it)
+	for(auto it = dict.begin(); it != dict.end(); ++it)
 	{
 		int index = 0;
 		bool found = false;
 		QString text(it.key());
-		for(iter = terms.begin(); iter != terms.end(); ++iter)
+		for(auto iter = terms.cbegin(); iter != terms.cend(); ++iter)
 		{
 			if(*iter == QLatin1String("*"))
 			{
 				found = true;
 				continue;
 			}
-			if(iter == terms.begin() && (*iter)[0] != text[0])
+			if(iter == terms.cbegin() && (*iter)[0] != text[0])
 			{
 				found = false;
 				break;
 			}
 			index = text.indexOf(*iter, index);
-			if(*iter == terms.last() && index != (int)text.length() - 1)
+			if(*iter == terms.last() && index != text.length() - 1)
 			{
 				index = text.lastIndexOf(*iter);
-				if(index != (int)text.length() - (int)(*iter).length())
+				if(index != text.length() - iter->length())
 				{
 					found = false;
 					break;
@@ -486,7 +477,7 @@ QStringList HelpIndex::getWildcardTerms(const QString & term)
 			if(index != -1)
 			{
 				found = true;
-				index += (*iter).length();
+				index += iter->length();
 				continue;
 			}
 			else
@@ -534,29 +525,22 @@ QVector<Document> HelpIndex::setupDummyTerm(const QStringList & terms)
 	QList<Term> termList;
 	for(const auto & term : terms)
 	{
-		Entry * e = nullptr;
 		if(dict[term])
 		{
-			e = dict[term];
+			auto e = dict[term];
 			termList.append(Term(term, e->documents.count(), e->documents));
 		}
 	}
-	QVector<Document> maxList(0);
 	if(!termList.count())
-		return maxList;
+		return QVector<Document>();
 	std::sort(termList.begin(), termList.end());
 
-	maxList = termList.takeLast().documents;
-	for(auto & it : termList)
-	{
-		Term * t = &it;
-		QVector<Document> docs = t->documents;
-		for(auto & doc : docs)
-		{
+	auto maxList = termList.takeLast().documents;
+	for(const auto & term : termList)
+		for(const auto & doc : term.documents)
 			if(maxList.indexOf(doc) == -1)
 				maxList.append(doc);
-		}
-	}
+
 	return maxList;
 }
 
@@ -580,9 +564,8 @@ bool HelpIndex::searchForPattern(const QStringList & patterns, const QStringList
 
 	wordNum = 3;
 	miniDict.clear();
-	QStringList::ConstIterator cIt = words.begin();
-	for(; cIt != words.end(); ++cIt)
-		miniDict.insert(*cIt, new PosEntry(0));
+	for(auto&& word : words)
+		miniDict.insert(word, new PosEntry(0));
 
 	QTextStream s(&file);
 	QString text = s.readAll();
@@ -631,18 +614,16 @@ bool HelpIndex::searchForPattern(const QStringList & patterns, const QStringList
 		buildMiniDict(QString(str, i));
 	file.close();
 
-	QStringList::ConstIterator patIt = patterns.begin();
 	QStringList wordLst;
-	QList<uint> a, b;
-	QList<uint>::iterator aIt;
-	for(; patIt != patterns.end(); ++patIt)
+	QList<uint> a;
+	for(auto&& pattern : patterns)
 	{
-		wordLst = (*patIt).split(QLatin1Char(' '));
+		wordLst = pattern.split(QLatin1Char(' '));
 		a = miniDict[wordLst[0]]->positions;
 		for(int j = 1; j < (int)wordLst.count(); ++j)
 		{
-			b = miniDict[wordLst[j]]->positions;
-			aIt = a.begin();
+			auto b = miniDict[wordLst[j]]->positions;
+			auto aIt = a.begin();
 			while(aIt != a.end())
 			{
 				if(b.contains(*aIt + 1))
