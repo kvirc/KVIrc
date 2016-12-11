@@ -160,9 +160,15 @@ bool fish_event_onQueryNotice(KviKvsModuleEventCall * c)
 		}
 		else
 		{
-			c->window()->console()->connection()->sendFmtData("NOTICE %s :DH1080_FINISH %sA",
-			    c->window()->console()->connection()->encodeText(szNick).data(),
-			    szTmp.data());
+			// for compatibility with fish10
+			if(szMessage.endsWith(" CBC", Qt::CaseSensitive))
+				c->window()->console()->connection()->sendFmtData("NOTICE %s :DH1080_FINISH %sA CBC",
+					c->window()->console()->connection()->encodeText(szNick).data(),
+					szTmp.data());
+			else
+				c->window()->console()->connection()->sendFmtData("NOTICE %s :DH1080_FINISH %sA",
+					c->window()->console()->connection()->encodeText(szNick).data(),
+					szTmp.data());
 		}
 	}
 
