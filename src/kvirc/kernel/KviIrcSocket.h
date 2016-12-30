@@ -37,6 +37,7 @@
 #include "KviPointerList.h"
 #include "KviError.h"
 
+#include <memory>
 #include <QObject>
 
 class QTimer;
@@ -120,7 +121,7 @@ protected:
 	unsigned int m_uSentPackets;
 	KviIrcSocketMsgEntry * m_pSendQueueHead;
 	KviIrcSocketMsgEntry * m_pSendQueueTail;
-	QTimer * m_pFlushTimer;
+	std::unique_ptr<QTimer> m_pFlushTimer;
 	struct timeval m_tAntiFloodLastMessageTime;
 	bool m_bInProcessData;
 #ifdef COMPILE_SSL_SUPPORT
