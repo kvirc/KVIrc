@@ -1407,7 +1407,7 @@ static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns an array of channel invite masks
 	@syntax:
-		<array> $chan.banexceptionlist([window_id])
+		<array> $chan.invitelist([window_id])
 	@description:
 		Returns an array of invite masks set on the channel identified by [window_id].[br]
 		If [window_id] is empty, the current window is used.[br]
