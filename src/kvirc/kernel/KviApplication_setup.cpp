@@ -645,12 +645,12 @@ bool KviApplication::findLocalKvircDirectory()
 	if(m_szConfigFile.isEmpty())
 	{
 		// don't do that if user supplied a config file :)
-		KConfig oKCfg("kvirc");
-		KConfigGroup oKCfgMainGroup(&oKCfg, "Main");
+		KConfig kCfg("kvircrc");
+		KConfigGroup kCfgGroup(&kCfg, "General");
 
-		m_szLocalKvircDir = oKCfgMainGroup.readEntry("LocalKvircDirectory");
+		m_szLocalKvircDir = kCfgGroup.readEntry("LocalKvircDirectory");
 
-		unsigned int uSourcesDate = oKCfgMainGroup.readEntry("SourcesDate").toInt();
+		unsigned int uSourcesDate = kCfgGroup.readEntry("SourcesDate").toInt();
 		if(uSourcesDate < KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP)
 			return false; // we force a setup anyway
 
@@ -838,19 +838,14 @@ void KviApplication::saveKvircDirectory()
 	if(m_szConfigFile.isEmpty())
 	{
 		// not if user supplied a config file
-		KConfig * pCfg = new KConfig("kvirc");
-		KConfigGroup * pCfgMainGroup = new KConfigGroup(pCfg, "Main");
-		if(pCfg)
+		KConfig kCfg("kvircrc");
+		if (kCfg.isConfigWritable(true))
 		{
-			if(pCfg->accessMode() == KConfig::ReadWrite)
-			{
-				pCfgMainGroup->writeEntry("LocalKvircDirectory", m_szLocalKvircDir);
-				pCfgMainGroup->writeEntry("SourcesDate", KVI_SOURCES_DATE_NUMERIC);
-				pCfg->sync();
-				delete pCfgMainGroup;
-				pCfgMainGroup = nullptr;
-				return;
-			}
+			KConfigGroup kCfgGroup(&kCfg, "General");
+			kCfgGroup.writeEntry("LocalKvircDirectory", m_szLocalKvircDir);
+			kCfgGroup.writeEntry("SourcesDate", KVI_SOURCES_DATE_NUMERIC);
+			kCfgGroup.sync();
+			return;
 		}
 	}
 #endif //COMPILE_KDE_SUPPORT
