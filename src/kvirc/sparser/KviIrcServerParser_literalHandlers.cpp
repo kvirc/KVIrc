@@ -461,7 +461,7 @@ void KviIrcServerParser::parseLiteralPart(KviIrcMessage * msg)
 		KviWindow * pOut = console;
 
 		// It's me!
-		if(chan->closeOnPart() && !KVI_OPTION_BOOL(KviOption_boolKeepChannelOpenOnPart))
+		if(chan->closeOnPart() || !KVI_OPTION_BOOL(KviOption_boolKeepChannelOpenOnPart))
 		{
 			g_pMainWindow->closeWindow(chan); // <-- deleted path
 		}

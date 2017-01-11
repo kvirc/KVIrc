@@ -859,7 +859,8 @@ namespace KviKvsCoreSimpleCommands
 			KviChannelWindow * ch = KVSCSC_pConnection->findChannel(it);
 			if(ch)
 			{
-				ch->partMessageSent(!KVSCSC_pSwitches->find('k', "keep"), !KVSCSC_pSwitches->find('s', "silent"));
+				bool bNoCloseOnPart = KVI_OPTION_BOOL(KviOption_boolKeepChannelOpenOnPart) | !!KVSCSC_pSwitches->find('k', "keep");
+				ch->partMessageSent(!bNoCloseOnPart, !KVSCSC_pSwitches->find('s', "silent"));
 			}
 			else
 			{
