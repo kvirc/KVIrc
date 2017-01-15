@@ -1345,7 +1345,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		people that want to use your addon).
 		[br]
 		Hint: Remember that your addon is going to be installed on different platforms
-		(at least Linux, OS X and Windows based).
+		(at least Linux, macOS and Windows based).
 		The poor windows' notepad has serious problems with reading text
 		files that contain only linefeeds as line separators. Keep it in mind...
 		[br]

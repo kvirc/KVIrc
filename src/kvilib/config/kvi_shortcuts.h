@@ -250,7 +250,7 @@
 		This list contains the key sequences associated to some common actions (e.g. selecting text). Since KVIrc 4.2 the shortcuts are dynamic:
 		[ul]
 		[li]more shortcuts can trigger the same actions: Cut is both Ctrl+X and Shift+Del[/li]
-		[li]shortcuts can be adapted to the OS: Help is F1 under Windows and Linux, ⌘? on OS X[/li]
+		[li]shortcuts can be adapted to the OS: Help is F1 under Windows and Linux, ⌘? on macOS[/li]
 		[/ul]
 		A full list of available combinations is available at the [anchorlink:http://doc.qt.nokia.com/latest/qkeysequence.html#standard-shortcuts] Qt documentation[/anchorlink]
 		[br]

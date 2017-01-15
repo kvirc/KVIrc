@@ -592,7 +592,7 @@ void KviApplication::findGlobalKvircDirectory()
 	    &m_szGlobalKvircDir);
 #else
 
-// Check for MacOS X Bundle compilation
+// Check for macOS Bundle compilation
 #ifdef COMPILE_ON_MAC
 	m_szGlobalKvircDir = applicationDirPath();
 	m_szGlobalKvircDir += "/../Resources/";

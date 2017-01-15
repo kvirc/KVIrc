@@ -3,7 +3,7 @@ Last updated by Fabio Bas, 2012.04.07
 #########################
 
 This document contains step-by-step instructions for compiling KVIrc4 from Git
-sources on a Mac OS X system. Due to changed prerequisites and compilation
+sources on a macOS system. Due to changed prerequisites and compilation
 system, this compilation howto does not apply to older versions of KVirc.
 
 
@@ -18,7 +18,7 @@ them. You should always understand what you are doing!
 IMPORTANT: Installing KVIrc "the usual way" like on other popular Unix-like
 OSes with files spread across several directories does not work and is
 unsupported. The provided compilation system builds a typical "Bundle" for
-Mac OS X. A bundle is "just" a special directory structure on Mac systems which
+macOS. A bundle is "just" a special directory structure on Mac systems which
 contains the application binary, dependent libraries, plugins, modules and
 other resources.
 
@@ -107,7 +107,7 @@ Notes for ppc/386 arch:
 * If you want to use Perl (Documentation and Modules) you have to build a
 universal binary. This is due to Cmake overriding your architecture values
 by the ones found in 'ldflags' returned by calling "perl -V".
-* If you want python support than you cannot build for an older Mac OS X
+* If you want python support than you cannot build for an older macOS
 version, i.e. the value of $MACOSX_DEPLOYMENT_TARGET has to match the value
 used by Apple when they built the python package.
 ---
