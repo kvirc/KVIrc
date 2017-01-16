@@ -1239,26 +1239,25 @@ int KviCString::hexToBuffer(char ** buffer, bool bNullToNewlines)
 	char * ptr = *buffer;
 	char * aux = m_ptr;
 
-	char aux2;
-
 	while(*aux)
 	{
-		*ptr = get_decimal_from_hex_digit_char(*aux) * 16;
-		if(*ptr == -1)
+		char temp = get_decimal_from_hex_digit_char(*aux);
+		if(temp == -1)
 		{
 			KviMemory::free(*buffer);
 			*buffer = nullptr;
 			return -1;
 		}
+		*ptr = temp * 16;
 		aux++;
-		aux2 = get_decimal_from_hex_digit_char(*aux);
-		if(aux2 == -1)
+		temp = get_decimal_from_hex_digit_char(*aux);
+		if(temp == -1)
 		{
 			KviMemory::free(*buffer);
 			*buffer = nullptr;
 			return -1;
 		}
-		*ptr += aux2;
+		*ptr += temp;
 		aux++;
 		if(bNullToNewlines)
 			if(!(*ptr))
