@@ -40,8 +40,7 @@ free), download XCode and follow the install instructions in the documentation.
 2. QT-MAC
 
 I suggest to download and install the latest binary package from
-http://http://qt.nokia.com/downloads .
-You want the "Mac OS X 10.6 or later 64-bit:" package.
+https://www.qt.io/download/ and go through the steps to download.
 
 3. GNU gettext
 
@@ -88,7 +87,7 @@ Two IMPORTANT hints before you start:
 Notes for x86_64 arch:
 ---
 Currently I found no way to successfully add scripting support for Perl and
-Python on Intel 64-bit macs. When compiled in, they both mess up with the
+Python on Intel 64-bit Macs. When compiled in, they both mess up with the
 target architecture and leads to linking failures. Perl can be safely use
 to generate the documentation, anyway.
 
@@ -98,7 +97,7 @@ no dbus daemon running, so I advice you to disable it.
 Additionally, if you installed any kde-based software, you could end up with
 a kde-enabled KVIrc installation: you probably want to avoid that.
 
-To sum these suggestion up, this  is my current cmake invocation:
+To sum these suggestion up, this is my current cmake invocation:
 cmake .. -DWANT_KDE4=0 -DWANT_DEBUG=1 -DWANT_QTDBUS=0 -DWANT_PYTHON=0 -DWANT_PERL=0
 ---
 
