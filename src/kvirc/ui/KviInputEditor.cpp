@@ -1595,7 +1595,7 @@ void KviInputEditor::selectAll()
 	if(m_szTextBuffer.length() > 0)
 	{
 		m_iSelectionBegin = 0;
-		m_iSelectionEnd = m_szTextBuffer.length() - 1;
+		m_iSelectionEnd = m_szTextBuffer.length();
 		m_p->bTextBlocksDirty = true;
 	}
 	end();
