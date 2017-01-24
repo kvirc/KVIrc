@@ -422,7 +422,6 @@ else()
 	option(WANT_QTDBUS "Whether to compile Qt D-Bus support" ON)
 endif()
 
-option(WANT_QTWEBKIT "Whether to compile Qt WebKit support" ON)
 option(WANT_QTSVG "Whether to compile Qt SVG support" ON)
 
 # May be re-set below, if the proper libs are found.
@@ -473,16 +472,6 @@ if(WANT_QTDBUS)
 		list(APPEND qt5_kvirc_modules DBus)
 		include_directories(${Qt5DBus_INCLUDE_DIRS})
 		set(COMPILE_DBUS_SUPPORT 1)
-	endif()
-endif()
-
-# Qt WebKit support
-if(WANT_QTWEBKIT)
-	find_package(Qt5WebKitWidgets)
-	if(Qt5WebKitWidgets_FOUND)
-		list(APPEND qt5_kvirc_modules WebKitWidgets)
-		include_directories(${Qt5WebKitWidgets_INCLUDE_DIRS})
-		set(COMPILE_WEBKIT_SUPPORT 1)
 	endif()
 endif()
 

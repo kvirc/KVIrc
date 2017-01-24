@@ -68,9 +68,6 @@ const QStringList feature_list{
 #ifdef COMPILE_PHONON_SUPPORT
 	"Phonon",
 #endif
-#ifdef COMPILE_WEBKIT_SUPPORT
-	"Webkit",
-#endif
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	"DCCVideo",
 #endif

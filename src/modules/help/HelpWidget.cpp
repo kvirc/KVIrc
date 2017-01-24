@@ -44,148 +44,6 @@ extern HelpIndex * g_pDocIndex;
 extern KviPointerList<HelpWindow> * g_pHelpWindowList;
 extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
 
-#ifdef COMPILE_WEBKIT_SUPPORT
-#include <QShortcut>
-#include <QAction>
-
-#define HIGHLIGHT_FLAGS QWebPage::HighlightAllOccurrences
-
-HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
-    : QWidget(par)
-{
-	setObjectName("help_widget");
-	setMinimumWidth(80);
-	if(bIsStandalone)
-		g_pHelpWidgetList->append(this);
-	m_bIsStandalone = bIsStandalone;
-
-	new QShortcut(QKeySequence::Copy, this, SLOT(slotCopy()), nullptr, Qt::WidgetWithChildrenShortcut);
-	new QShortcut(QKeySequence::Find, this, SLOT(slotShowHideFind()), nullptr, bIsStandalone ? Qt::WidgetWithChildrenShortcut : Qt::WindowShortcut);
-
-	// layout
-	m_pLayout = new QVBoxLayout(this);
-	m_pLayout->setMargin(0);
-	m_pLayout->setSpacing(0);
-	setLayout(m_pLayout);
-
-	// upper toolbar
-	m_pToolBar = new QToolBar(this);
-	m_pLayout->addWidget(m_pToolBar);
-
-	// webview
-	m_pTextBrowser = new QWebView(this);
-	m_pTextBrowser->setObjectName("text_browser");
-	m_pTextBrowser->setStyleSheet("QTextBrowser { background-color:white; color:black; }");
-	m_pLayout->addWidget(m_pTextBrowser);
-	connect(m_pTextBrowser, SIGNAL(loadFinished(bool)), this, SLOT(slotLoadFinished(bool)));
-
-	// lower toolbar
-	m_pToolBarHighlight = new QToolBar(this);
-	m_pLayout->addWidget(m_pToolBarHighlight);
-	m_pToolBarHighlight->hide();
-
-	QLabel * pHighlightLabel = new QLabel();
-	pHighlightLabel->setText(__tr2qs("Highlight: "));
-	m_pToolBarHighlight->addWidget(pHighlightLabel);
-
-	m_pFindText = new QLineEdit();
-	m_pToolBarHighlight->addWidget(m_pFindText);
-	connect(m_pFindText, SIGNAL(textChanged(const QString)), this, SLOT(slotTextChanged(const QString)));
-
-	m_pToolBarHighlight->addAction(*g_pIconManager->getSmallIcon(KviIconManager::Discard), __tr2qs("Reset"), this, SLOT(slotResetFind()));
-	m_pToolBarHighlight->addAction(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPBACK), __tr2qs("Find previous"), this, SLOT(slotFindPrev()));
-	m_pToolBarHighlight->addAction(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPFORWARD), __tr2qs("Find next"), this, SLOT(slotFindNext()));
-
-	// upper toolbar contents (depends on webview)
-	QLabel * pBrowsingLabel = new QLabel();
-	pBrowsingLabel->setText(__tr2qs("Browsing: "));
-	m_pToolBar->addWidget(pBrowsingLabel);
-
-	m_pToolBar->addAction(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPINDEX), __tr2qs("Show index"), this, SLOT(showIndex()));
-
-	QAction * pAction;
-	pAction = m_pTextBrowser->pageAction(QWebPage::Back);
-	pAction->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPBACK));
-	m_pToolBar->addAction(pAction);
-	pAction = m_pTextBrowser->pageAction(QWebPage::Forward);
-	pAction->setIcon(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPFORWARD));
-	m_pToolBar->addAction(pAction);
-
-	m_pToolBar->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Plus)), __tr2qs("Zoom in"), this, SLOT(slotZoomIn()));
-	m_pToolBar->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Minus)), __tr2qs("Zoom out"), this, SLOT(slotZoomOut()));
-
-	if(bIsStandalone)
-	{
-		setAttribute(Qt::WA_DeleteOnClose);
-		m_pToolBar->addAction(*g_pIconManager->getBigIcon(KVI_BIGICON_HELPCLOSE), __tr2qs("Close"), this, SLOT(close()));
-	}
-}
-
-void HelpWidget::slotCopy()
-{
-	m_pTextBrowser->triggerPageAction(QWebPage::Copy);
-}
-
-void HelpWidget::slotShowHideFind()
-{
-	if(m_pToolBarHighlight->isVisible())
-	{
-		m_pToolBarHighlight->hide();
-	}
-	else
-	{
-		m_pToolBarHighlight->show();
-		m_pFindText->setFocus();
-	}
-}
-
-void HelpWidget::slotLoadFinished(bool)
-{
-	m_pTextBrowser->findText(m_pFindText->text(), HIGHLIGHT_FLAGS);
-}
-
-void HelpWidget::slotTextChanged(const QString szFind)
-{
-	m_pTextBrowser->findText("", HIGHLIGHT_FLAGS);
-	m_pTextBrowser->findText(szFind, HIGHLIGHT_FLAGS);
-}
-
-void HelpWidget::slotResetFind()
-{
-	m_pFindText->setText("");
-	m_pTextBrowser->findText("", HIGHLIGHT_FLAGS);
-}
-
-void HelpWidget::slotFindPrev()
-{
-	m_pTextBrowser->findText(m_pFindText->text(), QWebPage::FindBackward);
-}
-
-void HelpWidget::slotFindNext()
-{
-	m_pTextBrowser->findText(m_pFindText->text());
-}
-
-void HelpWidget::slotZoomIn()
-{
-	kvs_real_t dZoom = m_pTextBrowser->zoomFactor();
-	if(dZoom >= 2)
-		return;
-	dZoom += 0.05;
-	m_pTextBrowser->setZoomFactor(dZoom);
-}
-
-void HelpWidget::slotZoomOut()
-{
-	kvs_real_t dZoom = m_pTextBrowser->zoomFactor();
-	if(dZoom <= 0.5)
-		return;
-	dZoom -= 0.05;
-	m_pTextBrowser->setZoomFactor(dZoom);
-}
-
-#else
-
 HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
     : QWidget(par)
 {
@@ -230,8 +88,6 @@ HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
 	m_pToolBar->setStretchFactor(pSpacer, 1);
 }
 
-#endif
-
 HelpWidget::~HelpWidget()
 {
 	if(m_bIsStandalone)
@@ -245,11 +101,7 @@ void HelpWidget::showIndex()
 
 	g_pApp->getGlobalKvircDirectory(szHelpDir, KviApplication::Help);
 	dirHelp = QDir(szHelpDir);
-#ifdef COMPILE_WEBKIT_SUPPORT
-	m_pTextBrowser->load(QUrl::fromLocalFile(dirHelp.absoluteFilePath("index.html")));
-#else
 	m_pTextBrowser->setSource(QUrl::fromLocalFile(dirHelp.absoluteFilePath("index.html")));
-#endif
 }
 
 void HelpWidget::resizeEvent(QResizeEvent *)

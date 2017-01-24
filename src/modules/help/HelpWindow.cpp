@@ -267,11 +267,7 @@ void HelpWindow::startSearch()
 	setCursor(Qt::ArrowCursor);
 }
 
-#ifdef COMPILE_WEBKIT_SUPPORT
-QWebView * HelpWindow::textBrowser()
-#else
 QTextBrowser * HelpWindow::textBrowser()
-#endif
 {
 	return m_pHelpWidget->textBrowser();
 }
@@ -281,11 +277,7 @@ void HelpWindow::showIndexTopic()
 	if(m_pIndexSearch->text().isEmpty() || !m_pIndexListWidget->selectedItems().count())
 		return;
 	int i = g_pDocIndex->titlesList().indexOf(m_pIndexListWidget->selectedItems().at(0)->text());
-#ifdef COMPILE_WEBKIT_SUPPORT
-	textBrowser()->load(QUrl(g_pDocIndex->documentList()[i]));
-#else
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[i]));
-#endif
 }
 
 void HelpWindow::searchInIndex(const QString & s)
@@ -310,11 +302,7 @@ void HelpWindow::indexSelected(QListWidgetItem * item)
 	if(!item)
 		return;
 	int i = g_pDocIndex->titlesList().indexOf(item->text());
-#ifdef COMPILE_WEBKIT_SUPPORT
-	textBrowser()->load(QUrl(g_pDocIndex->documentList()[i]));
-#else
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[i]));
-#endif
 }
 
 void HelpWindow::searchSelected(QListWidgetItem * item)
@@ -322,11 +310,7 @@ void HelpWindow::searchSelected(QListWidgetItem * item)
 	if(!item)
 		return;
 	int i = g_pDocIndex->titlesList().indexOf(item->text());
-#ifdef COMPILE_WEBKIT_SUPPORT
-	textBrowser()->load(QUrl(g_pDocIndex->documentList()[i]));
-#else
 	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[i]));
-#endif
 }
 
 QPixmap * HelpWindow::myIconPtr()
