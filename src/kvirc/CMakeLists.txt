@@ -64,7 +64,6 @@ set(kvirc_SRCS
 	ui/KviThemedLineEdit.cpp
 	ui/KviThemedTreeWidget.cpp
 	ui/KviToolBar.cpp
-	ui/KviWebPackageManagementDialog.cpp
 	ui/KviWindowToolWidget.cpp
 	ui/KviTopicWidget.cpp
 	ui/KviUserListView.cpp

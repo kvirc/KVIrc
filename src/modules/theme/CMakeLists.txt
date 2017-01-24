@@ -2,7 +2,6 @@
 
 set(kvitheme_SRCS
 	libkvitheme.cpp
-	WebThemeInterfaceDialog.cpp
 	ThemeManagementDialog.cpp
 	PackThemeDialog.cpp
 	SaveThemeDialog.cpp
