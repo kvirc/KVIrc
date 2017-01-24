@@ -405,9 +405,6 @@
   -DWANT_QTDBUS=  (default: ON)
     Enables or disables Qt D-Bus support.
 
-  -DWANT_QTWEBKIT=  (default: ON)
-    Enables or disables Qt WebKit support.
-
   -DWANT_KDE=  (default: ON)
     Enables or disables KDE support. The KDE version used
     depends on the Qt version used. Qt4 implies KDE4, Qt5 implies KDE5.
