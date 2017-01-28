@@ -1469,7 +1469,7 @@ namespace KviKvsCoreSimpleCommands
 			The <event_name> may be one of the kvirc-builtin event names
 			or a numeric code (from 0 to 999) of a raw server message.[br]
 		@seealso:
-			[cmd]event[/cmd]
+			[cmd]event[/cmd] [fnc]$iseventenabled[/fnc]
 	*/
 	KVSCSC(eventctl)
 	{
