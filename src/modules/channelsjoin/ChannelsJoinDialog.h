@@ -37,7 +37,7 @@
 #include <QTreeWidget>
 
 class KviConsoleWindow;
-class KviTalGroupBox;
+class QGroupBox;
 class QCheckBox;
 class QLineEdit;
 class QPushButton;
@@ -102,7 +102,7 @@ protected:
 	};
 	QLineEdit * m_pChannelEdit;
 	ChannelsJoinDialogTreeWidget * m_pTreeWidget;
-	KviTalGroupBox * m_pGroupBox;
+	QGroupBox * m_pGroupBox;
 	QLineEdit * m_pPass;
 	QCheckBox * m_pShowAtStartupCheck;
 	QCheckBox * m_pCloseAfterJoinCheck;

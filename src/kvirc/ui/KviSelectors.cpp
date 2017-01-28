@@ -34,6 +34,7 @@
 #include <QPainter>
 #include <QLayout>
 #include <QColorDialog>
+#include <QGroupBox>
 #include <QPalette>
 #include <QFontDialog>
 #include <QAbstractItemView>
@@ -845,18 +846,31 @@ KviChannelListSelector::KviChannelListSelector(QWidget * par, const QString & tx
 	m_pTreeWidget->setHeaderLabels(columnLabels);
 	m_pTreeWidget->setColumnWidth(0, 200);
 	m_pTreeWidget->setColumnWidth(1, 200);
-	KviTalHBox * pEditsHBox = new KviTalHBox(this);
 
-	m_pChanLineEdit = new QLineEdit(pEditsHBox);
-	m_pChanLineEdit->setPlaceholderText(__tr2qs("Channel name")); // setPlaceHolderText() is not the correct and consistent way to fix this, this is the easy way out adding more inconsistency across dialogs.
+	QGroupBox * pEditsGroupBox = new QGroupBox(__tr2qs("Add channel"), this);
+	QGridLayout * pChannelLayout = new QGridLayout(pEditsGroupBox);
+
+	QString szMsg = __tr2qs("Name");
+	szMsg.append(":");
+
+	QLabel * pNameLabel = new QLabel(szMsg, pEditsGroupBox);
+	pChannelLayout->addWidget(pNameLabel, 1, 0);
+
+	m_pChanLineEdit = new QLineEdit(pEditsGroupBox);
 	connect(m_pChanLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(textChanged(const QString &)));
 	connect(m_pChanLineEdit, SIGNAL(returnPressed()), this, SLOT(addClicked()));
+	pChannelLayout->addWidget(m_pChanLineEdit, 1, 1);
 
-	m_pPassLineEdit = new QLineEdit(pEditsHBox);
+	szMsg = __tr2qs("Password");
+	szMsg.append(":");
+
+	QLabel * pPasswordLabel = new QLabel(szMsg, pEditsGroupBox);
+	pChannelLayout->addWidget(pPasswordLabel, 2, 0);
+
+	m_pPassLineEdit = new QLineEdit(pEditsGroupBox);
 	m_pPassLineEdit->setEchoMode(QLineEdit::Password);
-	m_pPassLineEdit->setPlaceholderText(__tr2qs("Channel password")); //setPlaceHolderText() is not the correct and consistent way to fix this, this is the easy way out adding more inconsistency across dialogs.
-	connect(m_pPassLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(textChanged(const QString &)));
 	connect(m_pPassLineEdit, SIGNAL(returnPressed()), this, SLOT(addClicked()));
+	pChannelLayout->addWidget(m_pPassLineEdit, 2, 1);
 
 	KviTalHBox * hBox = new KviTalHBox(this);
 
@@ -875,6 +889,10 @@ KviChannelListSelector::KviChannelListSelector(QWidget * par, const QString & tx
 	setSpacing(4);
 	setStretchFactor(m_pTreeWidget, 1);
 	setEnabled(bEnabled);
+
+	// Default disable the add and remove buttons
+	m_pAddButton->setEnabled(false);
+	m_pRemoveButton->setEnabled(false);
 }
 
 KviChannelListSelector::~KviChannelListSelector()
@@ -908,6 +926,7 @@ void KviChannelListSelector::textChanged(const QString &)
 
 void KviChannelListSelector::itemSelectionChanged()
 {
+	m_pRemoveButton->setEnabled(m_pTreeWidget->selectedItems().size() > 0);
 }
 
 void KviChannelListSelector::addClicked()
