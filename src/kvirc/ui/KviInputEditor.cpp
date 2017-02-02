@@ -2109,9 +2109,11 @@ void KviInputEditor::getWordBeforeCursor(QString & szBuffer, bool * bIsFirstWord
 	szBuffer = m_szTextBuffer.left(m_iCursorPosition);
 
 	int iIdx = szBuffer.lastIndexOf(' ');
-	iIdx = szBuffer.lastIndexOf(',', iIdx); // This is for comma separated lists...
-	iIdx = szBuffer.lastIndexOf('(', iIdx);
-	iIdx = szBuffer.lastIndexOf('"', iIdx);
+	int iIdx2 = szBuffer.lastIndexOf(','); // This is for comma separated lists...
+	int iIdx3 = szBuffer.lastIndexOf('(');
+	int iIdx4 = szBuffer.lastIndexOf('"');
+
+	iIdx = std::max({ iIdx, iIdx2, iIdx3, iIdx4 });
 
 	*bIsFirstWordInLine = false;
 	if(iIdx > -1)
