@@ -36,15 +36,15 @@ class KviLamerizerEngine : public KviCryptEngine
 	Q_OBJECT
 public:
 	KviLamerizerEngine(bool bLight);
-	~KviLamerizerEngine();
+	virtual ~KviLamerizerEngine();
 
 protected:
 	bool m_bLight;
 
 public:
-	virtual bool init(const char * encKey, int encKeyLen, const char * decKey, int decKeyLen);
-	virtual KviCryptEngine::EncryptResult encrypt(const char * plainText, KviCString & outBuffer);
-	virtual KviCryptEngine::DecryptResult decrypt(const char * inBuffer, KviCString & plainText);
+	bool init(const char * encKey, int encKeyLen, const char * decKey, int decKeyLen) override;
+	KviCryptEngine::EncryptResult encrypt(const char * plainText, KviCString & outBuffer) override;
+	KviCryptEngine::DecryptResult decrypt(const char * inBuffer, KviCString & plainText) override;
 };
 
 #endif // COMPILE_CRYPT_SUPPORT

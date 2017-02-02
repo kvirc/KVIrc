@@ -89,8 +89,8 @@ private:
 	int m_iMaxEncryptLen;
 
 public:
-	void setMaxEncryptLen(int m) { m_iMaxEncryptLen = m; };
-	int maxEncryptLen() { return m_iMaxEncryptLen; };
+	void setMaxEncryptLen(int m) { m_iMaxEncryptLen = m; }
+	int maxEncryptLen() const { return m_iMaxEncryptLen; }
 	virtual bool init(const char * encKey, int encKeyLen, const char * decKey, int decKeyLen);
 	//
 	// Encrypts utf8 plainText and returns the encrypted
@@ -120,13 +120,13 @@ public:
 	// of the last error or an empty string if there
 	// was no error after the last init() call.
 	//
-	const QString & lastError() { return m_szLastError; };
+	const QString & lastError() const { return m_szLastError; }
 protected:
 	//
 	// The following two should have clear meaning
 	//
-	void clearLastError() { m_szLastError = ""; };
-	void setLastError(const QString & err) { m_szLastError = err; };
+	void clearLastError() { m_szLastError = ""; }
+	void setLastError(const QString & err) { m_szLastError = err; }
 #endif //COMPILE_CRYPT_SUPPORT
 };
 
