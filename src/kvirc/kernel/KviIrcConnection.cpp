@@ -801,7 +801,10 @@ bool KviIrcConnection::sendFmtData(const char * pcFmt, ...)
 	for(auto & m : context()->monitorList())
 	{
 		if(m->outgoingMessage(szMsg.toLatin1().data()))
+		{
+			delete pData;
 			return true;
+		}
 	}
 
 	// Trigger OnOutboundTraffic event
@@ -833,7 +836,10 @@ bool KviIrcConnection::sendData(const char * pcBuffer, int iBuflen)
 	for(auto & m : context()->monitorList())
 	{
 		if(m->outgoingMessage(szMsg.toUtf8().data()))
+		{
+			delete pData;
 			return true;
+		}
 	}
 
 	// Trigger OnOutboundTraffic event
