@@ -111,12 +111,12 @@ Section !$(KVIrc) KVIrc_IDX
 
 	IfFileExists "$INSTDIR\vcredist_x86.exe" VcRedist86Exists PastVcRedist86Check
 	VcRedist86Exists:
-		ExecWait '"$INSTDIR\vcredist_x86.exe"  /passive /norestart'
+		ExecWait '"$INSTDIR\vcredist_x86.exe"  /quiet /norestart'
 	PastVcRedist86Check:
 
 	IfFileExists "$INSTDIR\vcredist_x64.exe" VcRedist64Exists PastVcRedist64Check
 	VcRedist64Exists:
-		ExecWait '"$INSTDIR\vcredist_x64.exe"  /passive /norestart'
+		ExecWait '"$INSTDIR\vcredist_x64.exe"  /quiet /norestart'
 	PastVcRedist64Check:
 
 SectionEnd
