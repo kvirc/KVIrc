@@ -800,9 +800,7 @@ IrcServerDetailsWidget::IrcServerDetailsWidget(QWidget * par, KviIrcServer * s)
 	std::vector<std::unique_ptr<KviProxy>> & proxylist = g_pProxyDataBase->proxyList();
 
 	for(auto & p : proxylist)
-	{
-		m_pProxyEditor->insertItem(m_pProxyEditor->count(), QString("%1:%2").arg(p->hostName()).arg(p->port()));
-	}
+		m_pProxyEditor->insertItem(m_pProxyEditor->count(), QString("%1:%2").arg(p->hostname()).arg(p->port()));
 
 	if(m_pProxyEditor->count() > (s->proxy() + 2))
 		m_pProxyEditor->setCurrentIndex(s->proxy() + 2);

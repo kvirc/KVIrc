@@ -33,9 +33,9 @@ void KviProxyDataBase::updateProxyIp(const char * proxy, const char * ip)
 {
 	for(auto & prx : m_pProxyList)
 	{
-		if(QString::compare(proxy, prx->m_szHostname, Qt::CaseInsensitive))
+		if(QString::compare(proxy, prx->hostname(), Qt::CaseInsensitive))
 		{
-			prx->m_szIp = ip;
+			prx->setIp(ip);
 			return;
 		}
 	}
@@ -47,12 +47,12 @@ KviProxy * KviProxyDataBase::findProxy(const KviProxy * pProxy, bool bName)
 	{
 		if(bName)
 		{
-			if(QString::compare(p->m_szHostname, pProxy->m_szHostname, Qt::CaseInsensitive))
+			if(QString::compare(p->hostname(), pProxy->hostname(), Qt::CaseInsensitive))
 				return p.get();
 		}
 		else
 		{
-			if(QString::compare(p->m_szHostname, pProxy->m_szHostname, Qt::CaseInsensitive) && (p->m_uPort == pProxy->m_uPort) && (p->protocol() == pProxy->protocol()) && (p->isIPv6() == pProxy->isIPv6()))
+			if(QString::compare(p->hostname(), pProxy->hostname(), Qt::CaseInsensitive) && (p->port() == pProxy->port()) && (p->protocol() == pProxy->protocol()) && (p->isIPv6() == pProxy->isIPv6()))
 				return p.get();
 		}
 	}
@@ -76,22 +76,22 @@ void KviProxyDataBase::load(const QString & filename)
 	{
 		std::unique_ptr<KviProxy> p(new KviProxy());
 		KviCString tmp(KviCString::Format, "%u_Hostname", i);
-		p->m_szHostname = cfg.readEntry(tmp.ptr(), "proxy.example.net");
+		p->setHostname(cfg.readEntry(tmp.ptr(), "proxy.example.net"));
 		tmp.sprintf("%u_Port", i);
-		p->m_uPort = cfg.readUIntEntry(tmp.ptr(), 7000);
+		p->setPort(cfg.readUIntEntry(tmp.ptr(), 7000));
 		tmp.sprintf("%u_Ip", i);
-		p->m_szIp = cfg.readEntry(tmp.ptr(), "");
+		p->setIp(cfg.readEntry(tmp.ptr(), ""));
 		tmp.sprintf("%u_User", i);
-		p->m_szUser = cfg.readEntry(tmp.ptr(), "");
+		p->setUser(cfg.readEntry(tmp.ptr(), ""));
 		tmp.sprintf("%u_Pass", i);
-		p->m_szPass = cfg.readEntry(tmp.ptr(), "");
+		p->setPass(cfg.readEntry(tmp.ptr(), ""));
 
 		tmp.sprintf("%u_Protocol", i);
 		KviCString type = cfg.readEntry(tmp.ptr(), "SOCKSv4");
 		p->setNamedProtocol(type.ptr());
 
 		tmp.sprintf("%u_IsIPv6", i);
-		p->m_bIsIPv6 = cfg.readBoolEntry(tmp.ptr(), false);
+		p->setIPv6(cfg.readBoolEntry(tmp.ptr(), false));
 		tmp.sprintf("%u_Current", i);
 		if(cfg.readBoolEntry(tmp.ptr(), false))
 			m_pCurrentProxy = p.get();
@@ -115,34 +115,21 @@ void KviProxyDataBase::save(const QString & filename)
 	for(auto & p : m_pProxyList)
 	{
 		KviCString tmp(KviCString::Format, "%u_Hostname", i);
-		cfg.writeEntry(tmp.ptr(), p->m_szHostname);
+		cfg.writeEntry(tmp.ptr(), p->hostname());
 		tmp.sprintf("%u_Port", i);
-		cfg.writeEntry(tmp.ptr(), p->m_uPort);
+		cfg.writeEntry(tmp.ptr(), p->port());
 		tmp.sprintf("%u_Ip", i);
-		cfg.writeEntry(tmp.ptr(), p->m_szIp);
+		cfg.writeEntry(tmp.ptr(), p->ip());
 		tmp.sprintf("%u_User", i);
-		cfg.writeEntry(tmp.ptr(), p->m_szUser);
+		cfg.writeEntry(tmp.ptr(), p->user());
 		tmp.sprintf("%u_Pass", i);
-		cfg.writeEntry(tmp.ptr(), p->m_szPass);
+		cfg.writeEntry(tmp.ptr(), p->pass());
 
 		tmp.sprintf("%u_Protocol", i);
-		KviCString type;
-		switch(p->m_protocol)
-		{
-			case KviProxy::Socks5:
-				type = "SOCKSv5";
-				break;
-			case KviProxy::Http:
-				type = "HTTP";
-				break;
-			default:
-				type = "SOCKSv4";
-				break;
-		}
-		cfg.writeEntry(tmp.ptr(), type.ptr());
+		cfg.writeEntry(tmp.ptr(), p->protocolName());
 
 		tmp.sprintf("%u_IsIPv6", i);
-		cfg.writeEntry(tmp.ptr(), p->m_bIsIPv6);
+		cfg.writeEntry(tmp.ptr(), p->isIPv6());
 		tmp.sprintf("%u_Current", i);
 		if(m_pCurrentProxy == p.get())
 			cfg.writeEntry(tmp.ptr(), true);

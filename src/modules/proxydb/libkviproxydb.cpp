@@ -54,7 +54,7 @@ extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 {
-	QString szProxy, szProtocol;
+	QString szProxy;
 
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETER("proxy", KVS_PT_STRING, 0, szProxy)
@@ -75,6 +75,8 @@ static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 		c->error(__tr2qs_ctx("The specified proxy doesn't exist", "serverdb"));
 		return false;
 	}
+
+	QString szProtocol;
 
 	switch(pRecord->protocol())
 	{
@@ -158,7 +160,7 @@ static KviProxy * proxydb_get_helper(KviKvsModuleFunctionCall * c)
 		[module:serverdb]ServerDB module documentation[/module]
 */
 
-PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_hostname, hostName, setString)
+PROXYDB_GET_PROPERTY(proxydb_kvs_fnc_hostname, hostname, setString)
 
 /*
 	@doc: proxydb.ip
