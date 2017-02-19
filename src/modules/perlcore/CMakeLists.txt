@@ -35,6 +35,8 @@ endif()
 if(MSVC)
 	# breaks with -nodefaultlib
 	string(REPLACE " -nodefaultlib" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
+	# conflicts with opt level set by user, especially in debug mode
+	string(REPLACE " -O2" "" PERL_COMPILE_FLAGS "${PERL_COMPILE_FLAGS}")
 endif()
 
 if(APPLE)
