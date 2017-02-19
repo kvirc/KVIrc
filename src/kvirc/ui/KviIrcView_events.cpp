@@ -50,7 +50,7 @@
 #include <QScrollBar>
 #include <QUrl>
 
-#define KVI_IRCVIEW_SELECT_REPAINT_INTERVAL 10
+#define KVI_IRCVIEW_SELECT_REPAINT_INTERVAL 30
 
 /*
 	@doc: escape_sequences
