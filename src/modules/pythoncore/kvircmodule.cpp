@@ -26,7 +26,7 @@
 
 #ifdef COMPILE_PYTHON_SUPPORT
 
-#include <Python.h>
+#include "pythonheaderwrapper.h"
 
 #define KVIRC_MODULE
 

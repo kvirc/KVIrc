@@ -34,7 +34,7 @@
 #ifdef COMPILE_PYTHON_SUPPORT
 #include "pythoncoreinterface.h"
 
-#include <Python.h>
+#include "pythonheaderwrapper.h"
 
 KviKvsRunTimeContext * g_pCurrentKvsContext = nullptr;
 bool g_bExecuteQuiet = false;
