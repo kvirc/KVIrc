@@ -7,6 +7,7 @@ cache:
 environment:
     matrix:
         - ssl_arch: Win64
+          cmake_build_type: Debug
           nuget_arch: x64
           vc_arch: amd64
           choco_arch:
@@ -17,6 +18,29 @@ environment:
           mingw_root: c:/msys64/mingw64
           mingw_libgcc: libgcc_s_seh-1.dll
         - ssl_arch: Win32
+          cmake_build_type: Debug
+          nuget_arch: Win32
+          vc_arch: amd64_x86  # cross-compile from amd64 to x86
+          choco_arch: --x86
+          target_arch: x86
+          qt_ver: 5.5\msvc2013
+          MSYSTEM: MINGW32
+          mingw_fourple: mingw32/mingw-w64-i686
+          mingw_root: c:/msys64/mingw32
+          mingw_libgcc: libgcc_s_dw2-1.dll
+        - ssl_arch: Win64
+          cmake_build_type: Release
+          nuget_arch: x64
+          vc_arch: amd64
+          choco_arch:
+          target_arch: x86_64
+          qt_ver: 5.5\msvc2013_64
+          MSYSTEM: MINGW64
+          mingw_fourple: mingw64/mingw-w64-x86_64
+          mingw_root: c:/msys64/mingw64
+          mingw_libgcc: libgcc_s_seh-1.dll
+        - ssl_arch: Win32
+          cmake_build_type: Release
           nuget_arch: Win32
           vc_arch: amd64_x86  # cross-compile from amd64 to x86
           choco_arch: --x86
@@ -106,7 +130,7 @@ build_script:
         $gettext = c:\cygwin\bin\cygpath -m $gettext
         $env:Path += ";" + $gettext
         c:\cygwin\bin\find $env:ChocolateyInstall
-        cmake .. "-GNMake Makefiles" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DOPENSSL_ROOT_DIR=c:/OpenSSL-$env:ssl_arch" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO" "-DWANT_PYTHON=YES"
+        cmake .. "-GNMake Makefiles" "-DCMAKE_BUILD_TYPE=$env:cmake_build_type" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DOPENSSL_ROOT_DIR=c:/OpenSSL-$env:ssl_arch" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO" "-DWANT_PYTHON=YES"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - nmake install VERBOSE=1
     - c:\cygwin\bin\ls -l release/
@@ -164,3 +188,5 @@ deploy:
       secure: 4S03mCVua0ENN3fmxF07XOvDfuN9AgPsUB4jyLS2RD0=
     folder: /
     artifact: /.*\.exe$|.*\.cmake\.txt$|^latest-.*/
+    on:
+      cmake_build_type: Release
