@@ -2,7 +2,7 @@
 #define _KviDnsResolver_h_
 //=============================================================================
 //
-//   File : KviDnsResolver.h
+//   File : KviDnsResolverNew.h
 //   Creation date : Sat Jul 21 2000 13:59:11 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -36,15 +36,14 @@
 // Check it again with newer Qt versions and verify.
 
 #include "kvi_settings.h"
-
-#include <KviError.h> // FIXME: Get rid of this at all..
-#include <KviPointerList.h>
+#include "KviError.h" // FIXME: Get rid of this at all..
+#include "KviPointerList.h"
 
 #include <QObject>
 
 class KviDnsResolverPrivate;
-
 class QHostInfo;
+class QString;
 
 ///
 /// \class KviDnsResolver
@@ -55,12 +54,11 @@ class QHostInfo;
 class KVILIB_API KviDnsResolver : public QObject
 {
 	Q_OBJECT
-
 public:
 	///
 	/// Creates an instance of KviDnsResolver
 	///
-	KviDnsResolver(QObject * pParent = NULL);
+	KviDnsResolver(QObject * pParent = nullptr);
 
 	///
 	/// Destroys the instance of KviDnsResolver

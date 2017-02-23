@@ -25,20 +25,20 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviCString.h"
 #include "KviWindowToolWidget.h"
 #include "KviIconManager.h"
 
-#include <QTreeWidget>
-#include <QPushButton>
 #include <QDialog>
-#include <QLineEdit>
+#include <QString>
+#include <QTreeWidget>
 #include <QWidget>
 
 #include <vector>
 
-class KviMaskEditor;
 class KviChannelWindow;
+class KviMaskEditor;
+class QLineEdit;
+class QPushButton;
 
 typedef struct _KviMaskEntry
 {

@@ -34,6 +34,8 @@ class KviCryptEngineDescription;
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
+class QString;
+
 class KVILIB_API KviCryptEngineManager
 {
 public:

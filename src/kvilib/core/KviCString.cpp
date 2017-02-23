@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : kvi_string.cpp
+//   File : KviCString.cpp
 //   Creation date : Fri Mar 19 1999 03:20:45 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -28,6 +28,8 @@
 
 #include "KviCString.h"
 #include "KviMemory.h"
+
+#include <QString>
 
 static char hexdigits[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
 
@@ -1237,26 +1239,25 @@ int KviCString::hexToBuffer(char ** buffer, bool bNullToNewlines)
 	char * ptr = *buffer;
 	char * aux = m_ptr;
 
-	char aux2;
-
 	while(*aux)
 	{
-		*ptr = get_decimal_from_hex_digit_char(*aux) * 16;
-		if(*ptr == -1)
+		char temp = get_decimal_from_hex_digit_char(*aux);
+		if(temp == -1)
 		{
 			KviMemory::free(*buffer);
 			*buffer = nullptr;
 			return -1;
 		}
+		*ptr = temp * 16;
 		aux++;
-		aux2 = get_decimal_from_hex_digit_char(*aux);
-		if(aux2 == -1)
+		temp = get_decimal_from_hex_digit_char(*aux);
+		if(temp == -1)
 		{
 			KviMemory::free(*buffer);
 			*buffer = nullptr;
 			return -1;
 		}
-		*ptr += aux2;
+		*ptr += temp;
 		aux++;
 		if(bNullToNewlines)
 			if(!(*ptr))

@@ -2,7 +2,7 @@
 #define _KVI_KVS_OBJECTCLASS_H_
 //=============================================================================
 //
-//   File : kvi_kvs_objectclass.h
+//   File : KviKvsObjectClass.h
 //   Creation date : Sat 23 Apr 2005 20:31:32 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

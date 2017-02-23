@@ -24,7 +24,7 @@
 
 #include "KviIrcMessage.h"
 #include "KviIrcConnection.h"
-#include "KviConsoleWindow.h"
+#include "KviKvsHash.h"
 
 KviIrcMessage::KviIrcMessage(const char * message, KviIrcConnection * pConnection)
 {

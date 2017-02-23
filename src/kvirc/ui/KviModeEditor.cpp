@@ -23,21 +23,20 @@
 //=============================================================================
 
 #include "KviModeEditor.h"
+#include "KviChannelWindow.h"
 #include "KviIconManager.h"
-#include "KviLocale.h"
-#include "KviQString.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionServerInfo.h"
-#include "KviChannelWindow.h"
 #include "KviIrcConnectionUserInfo.h"
-#include "KviWindowToolWidget.h"
+#include "KviLocale.h"
 
-#include <QScrollArea>
-#include <QLayout>
-#include <QLabel>
 #include <QCheckBox>
+#include <QLabel>
+#include <QLayout>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QScrollArea>
+#include <QString>
 
 KviModeEditor::KviModeEditor(QWidget * par, KviWindowToolPageButton * button, const char * name, KviChannelWindow * pChan)
     : KviWindowToolWidget(par, button)

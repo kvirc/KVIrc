@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: notifier_ja\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2016-10-28 21:04+0200\n"
 "PO-Revision-Date: 2010-07-29 00:43+0900\n"
 "Last-Translator: Tadashi Jokagi <e;f@e;f.no-ip.org>\n"
 "Language-Team: Ja@anese <elf@elf.no-ip.org>\n"
@@ -16,58 +16,58 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/notifier/NotifierWindow.cpp:973
+#: src/modules/notifier/NotifierWindow.cpp:995
 msgid "1 Hour"
 msgstr "1 時間"
 
-#: src/modules/notifier/NotifierWindow.cpp:969
+#: src/modules/notifier/NotifierWindow.cpp:991
 msgid "1 Minute"
 msgstr "1 分"
 
-#: src/modules/notifier/NotifierWindow.cpp:971
+#: src/modules/notifier/NotifierWindow.cpp:993
 msgid "15 Minutes"
 msgstr "15 分"
 
-#: src/modules/notifier/NotifierWindow.cpp:972
+#: src/modules/notifier/NotifierWindow.cpp:994
 msgid "30 Minutes"
 msgstr "30 分"
 
-#: src/modules/notifier/NotifierWindow.cpp:970
+#: src/modules/notifier/NotifierWindow.cpp:992
 msgid "5 Minutes"
 msgstr "5 分"
 
-#: src/modules/notifier/NotifierWindow.cpp:978
+#: src/modules/notifier/NotifierWindow.cpp:1000
 msgid "Disable"
 msgstr "無効"
 
-#: src/modules/notifier/NotifierWindow.cpp:966
+#: src/modules/notifier/NotifierWindow.cpp:988
 msgid "Hide"
 msgstr "隠す"
 
-#: src/modules/notifier/NotifierWindow.cpp:976
+#: src/modules/notifier/NotifierWindow.cpp:998
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr ""
 
-#: src/modules/notifier/NotifierWindow.cpp:965
+#: src/modules/notifier/NotifierWindow.cpp:987
 msgid "Show/Hide input line"
 msgstr "入力行を表示する/隠す"
 
-#: src/modules/notifier/libkvinotifier.cpp:153
+#: src/modules/notifier/libkvinotifier.cpp:156
 msgid "The -t switch expects a timeout in seconds"
 msgstr "スイッチ -t はタイムアウト(単位: 秒)を期待しています。"
 
-#: src/modules/notifier/libkvinotifier.cpp:150
+#: src/modules/notifier/libkvinotifier.cpp:151
 msgid "The specified timeout is not valid, assuming 0"
 msgstr "タイムアウトの指定が正しくありません。0 とみなします。"
 
-#: src/modules/notifier/libkvinotifier.cpp:136
+#: src/modules/notifier/libkvinotifier.cpp:137
 msgid "The specified window does not exist"
 msgstr "指定のウィンドウが存在しません"
 
-#: src/modules/notifier/NotifierWindow.cpp:975
+#: src/modules/notifier/NotifierWindow.cpp:997
 msgid "Until KVIrc is Restarted"
 msgstr "KVIrc ユーティリティは再起動しました。"
 
-#: src/modules/notifier/NotifierWindow.cpp:1053
+#: src/modules/notifier/NotifierWindow.cpp:1074
 msgid "Write text or commands to window"
 msgstr "ウィンドウにテキストかコマンドを書き込む"

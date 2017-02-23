@@ -114,6 +114,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	{
 		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::HistoryOff)));
 		m_pHistoryButton->setIcon(is1);
+		m_pHistoryButton->setEnabled(false);
 		KviTalToolTip::add(m_pHistoryButton, __tr2qs("Input history disabled"));
 	}
 
@@ -137,7 +138,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	is0.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::SayKvs)), QIcon::Normal, QIcon::Off);
 	m_pCommandlineModeButton->setIcon(is0);
 	KviTalToolTip::add(m_pCommandlineModeButton, __tr2qs("User friendly command-line mode Ctrl+Y<br>See also /help commandline"));
-	
+
 	if(KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault))
 		m_pCommandlineModeButton->setChecked(true);
 
@@ -405,19 +406,27 @@ void KviInput::applyOptions()
 {
 	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))
 	{
-		QIcon is1;
-		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::History)));
-		m_pHistoryButton->setIcon(is1);
-		KviTalToolTip::add(m_pHistoryButton, __tr2qs("Show history Ctrl+PageUp"));
-		connect(m_pHistoryButton, SIGNAL(clicked()), this, SLOT(historyButtonClicked()));
+		if(!m_pHistoryButton->isEnabled())
+		{
+			QIcon is1;
+			is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::History)));
+			m_pHistoryButton->setIcon(is1);
+			m_pHistoryButton->setEnabled(true);
+			KviTalToolTip::add(m_pHistoryButton, __tr2qs("Show history Ctrl+PageUp"));
+			connect(m_pHistoryButton, SIGNAL(clicked()), this, SLOT(historyButtonClicked()));
+		}
 	}
 	else
 	{
-		QIcon is1;
-		is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::HistoryOff)));
-		m_pHistoryButton->setIcon(is1);
-		KviTalToolTip::add(m_pHistoryButton, __tr2qs("Input history disabled"));
-		m_pHistoryButton->disconnect(SIGNAL(clicked()));
+		if(m_pHistoryButton->isEnabled())
+		{
+			QIcon is1;
+			is1.addPixmap(*(g_pIconManager->getSmallIcon(KviIconManager::HistoryOff)));
+			m_pHistoryButton->setIcon(is1);
+			m_pHistoryButton->setEnabled(false);
+			KviTalToolTip::add(m_pHistoryButton, __tr2qs("Input history disabled"));
+			m_pHistoryButton->disconnect(SIGNAL(clicked()));
+		}
 	}
 
 	m_pInputEditor->applyOptions();

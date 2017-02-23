@@ -27,6 +27,7 @@
 #include "KviQString.h"
 
 #include <QApplication>
+#include <QString>
 #include <QStyle>
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
@@ -657,7 +658,7 @@ namespace KviRuntimeInfo
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		return "Windows";
 #elif defined(COMPILE_ON_MAC)
-		return "Mac OS X";
+		return "macOS";
 #else
 		struct utsname uts;
 		if(uname(&uts) == 0)

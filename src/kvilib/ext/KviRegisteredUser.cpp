@@ -25,6 +25,9 @@
 //=============================================================================
 
 #include "KviRegisteredUser.h"
+#include "KviIrcMask.h"
+
+#include <QString>
 
 KviRegisteredUser::KviRegisteredUser(const QString & name)
 {

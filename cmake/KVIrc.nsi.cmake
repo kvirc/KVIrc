@@ -21,6 +21,7 @@ OutFile KVIrc-${VERSION}-dev-${GIT_VERSION}.exe
 ; Stable version, e.g. KVIrc-4.2.0-Equilibrium.exe
 ;OutFile KVIrc-${VERSION}-${RELEASE_NAME}.exe
 
+Unicode true
 SetCompressor /SOLID lzma
 XPStyle on
 InstallDir $PROGRAMFILES\KVIrc
@@ -110,12 +111,12 @@ Section !$(KVIrc) KVIrc_IDX
 
 	IfFileExists "$INSTDIR\vcredist_x86.exe" VcRedist86Exists PastVcRedist86Check
 	VcRedist86Exists:
-		ExecWait '"$INSTDIR\vcredist_x86.exe"  /passive /norestart'
+		ExecWait '"$INSTDIR\vcredist_x86.exe"  /quiet /norestart'
 	PastVcRedist86Check:
 
 	IfFileExists "$INSTDIR\vcredist_x64.exe" VcRedist64Exists PastVcRedist64Check
 	VcRedist64Exists:
-		ExecWait '"$INSTDIR\vcredist_x64.exe"  /passive /norestart'
+		ExecWait '"$INSTDIR\vcredist_x64.exe"  /quiet /norestart'
 	PastVcRedist64Check:
 
 SectionEnd

@@ -1,75 +1,72 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <FI@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2016-10-28 21:04+0200\n"
+"PO-Revision-Date: 2016-05-26 13:19+0000\n"
+"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
+"Language-Team: Finnish (http://www.transifex.com/kvirc/KVIrc/language/fi/)\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:341
+#: src/modules/theme/ThemeManagementDialog.cpp:333
 msgid "&Apply Theme"
 msgstr "&Ota teema käyttöön"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:339
+#: src/modules/theme/ThemeManagementDialog.cpp:331
 msgid "&Remove Theme"
 msgstr "&Poista teema"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:213
-#: src/modules/theme/ThemeManagementDialog.cpp:374
+#: src/modules/theme/ThemeManagementDialog.cpp:204
 msgid "<b><u>Current Installed Theme:</u> "
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:224
+#: src/modules/theme/ThemeManagementDialog.cpp:368
+msgid "<b><u>Current Installed Theme:</u> %1</b>"
+msgstr ""
+
+#: src/modules/theme/SaveThemeDialog.cpp:250
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Ota kuvakaappaus - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:358
-#: src/modules/theme/ThemeManagementDialog.cpp:370
-#: src/modules/theme/libkvitheme.cpp:103
-#: src/modules/theme/libkvitheme.cpp:112
-msgid "Apply theme - KVIrc"
-msgstr "Ota teema käyttöön - KVIrc"
+#: src/modules/theme/ThemeManagementDialog.cpp:351
+#: src/modules/theme/ThemeManagementDialog.cpp:363
+msgid "Apply Theme - KVIrc"
+msgstr ""
 
-#: src/modules/theme/ThemeFunctions.cpp:135
-#: src/modules/theme/ThemeFunctions.cpp:319
+#: src/modules/theme/ThemeFunctions.cpp:134
+#: src/modules/theme/ThemeFunctions.cpp:317
 msgid "Author"
 msgstr "Tekijä"
 
-#: src/modules/theme/libkvitheme.cpp:221
-msgid "Choose a file to save the screenshot to"
-msgstr "Valitse tiedosto mihin kuvakaappaus tallennetaan"
-
-#: src/modules/theme/ThemeFunctions.cpp:136
-#: src/modules/theme/ThemeFunctions.cpp:320
+#: src/modules/theme/ThemeFunctions.cpp:135
+#: src/modules/theme/ThemeFunctions.cpp:318
 msgid "Created at"
 msgstr "Luotu"
 
-#: src/modules/theme/ThemeFunctions.cpp:137
-#: src/modules/theme/ThemeFunctions.cpp:321
+#: src/modules/theme/ThemeFunctions.cpp:136
+#: src/modules/theme/ThemeFunctions.cpp:319
 msgid "Created with"
 msgstr "Luotu käyttäen ohjelmaa"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:163
-msgid "Delete Selected Themes"
-msgstr "Poista valitut teemat"
+#: src/modules/theme/ThemeManagementDialog.cpp:385
+msgid "Delete Selected Theme - KVIrc"
+msgstr ""
 
-#: src/modules/theme/ThemeManagementDialog.cpp:392
-msgid "Delete Theme - KVIrc"
-msgstr "Poista teema - KVIrc"
+#: src/modules/theme/ThemeManagementDialog.cpp:156
+msgid "Delete selected themes"
+msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:281
-#: src/modules/theme/SaveThemeDialog.cpp:126
+#: src/modules/theme/PackThemeDialog.cpp:272
+#: src/modules/theme/SaveThemeDialog.cpp:123
 msgid "Description:"
 msgstr "Kuvaus:"
 
@@ -77,86 +74,98 @@ msgstr "Kuvaus:"
 msgid "Do Not Install"
 msgstr "Älä asenna"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:393
+#: src/modules/theme/ThemeManagementDialog.cpp:386
 msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
 msgstr "Halutako varmasti poistaa teeman \"%Q\"n (versio %Q)?"
 
 #: src/modules/theme/ThemeFunctions.cpp:277
-msgid "Do you want to proceed with the installation ?"
-msgstr "Haluatko jatkaa asennusta ?"
+msgid "Do you want to proceed with the installation?"
+msgstr ""
 
-#: src/modules/theme/ThemeManagementDialog.cpp:359
-#: src/modules/theme/libkvitheme.cpp:104
+#: src/modules/theme/ThemeManagementDialog.cpp:352
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Haluatko ottaa teeman \"%Q\"n (versio %Q) käyttöön?"
 
-#: src/modules/theme/WebThemeInterfaceDialog.cpp:42
-#, fuzzy
+#: src/modules/theme/WebThemeInterfaceDialog.cpp:40
 msgid "Download Themes - KVIrc"
-msgstr "Järjestä teemat - KVIrc"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:205
+msgid "Enter a Filename - KVIrc"
+msgstr ""
+
+#: src/modules/theme/PackThemeDialog.cpp:155
+msgid "Enter a package description here..."
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:231
+msgid "Error capturing and saving screenshot!"
+msgstr ""
 
 #: src/modules/theme/libkvitheme.cpp:73
 msgid "Error installing theme package: %Q"
 msgstr "Virhe asentaessa teemapakettia: %Q"
 
-#: src/modules/theme/libkvitheme.cpp:236
-msgid "Error making screenshot"
-msgstr "Virhe kuvakaappausta tehdessä"
-
-#: src/modules/theme/ThemeManagementDialog.cpp:157
-msgid "Export Selected Themes to a Distributable Package"
-msgstr "Vie valitut teemat jaettavaan pakettiin"
-
-#: src/modules/theme/PackThemeDialog.cpp:64
-#: src/modules/theme/PackThemeDialog.cpp:369
-#: src/modules/theme/PackThemeDialog.cpp:456
-#: src/modules/theme/PackThemeDialog.cpp:546
-#: src/modules/theme/PackThemeDialog.cpp:561
-#: src/modules/theme/PackThemeDialog.cpp:573
+#: src/modules/theme/PackThemeDialog.cpp:57
+#: src/modules/theme/PackThemeDialog.cpp:357
+#: src/modules/theme/PackThemeDialog.cpp:436
 msgid "Export Theme - KVIrc"
 msgstr "Vie teema - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:369
-#: src/modules/theme/libkvitheme.cpp:111
-#, fuzzy
+#: src/modules/theme/ThemeManagementDialog.cpp:150
+msgid "Export selected themes to a distributable package"
+msgstr ""
+
+#: src/modules/theme/PackThemeDialog.cpp:443
+msgid "Exporting Theme - KVIrc"
+msgstr ""
+
+#: src/modules/theme/ThemeManagementDialog.cpp:362
 msgid "Failed to apply the specified theme: %1"
-msgstr "Ei voitu ottaa teemaa käyttöön: %1"
+msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:369
-#: src/modules/theme/SaveThemeDialog.cpp:205
-msgid "Failed to load the selected image"
-msgstr "Ei voitu ladata valittua kuvaa"
+#: src/modules/theme/libkvitheme.cpp:130
+msgid "Failed to apply theme: %Q"
+msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:457
+#: src/modules/theme/PackThemeDialog.cpp:357
+#: src/modules/theme/SaveThemeDialog.cpp:228
+msgid "Failed to load the selected image!"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:419
 msgid "Failed to load the selected image: please fix it"
 msgstr "Ei voitu ladata valittua kuvaa: ole hyvä ja korjaa se"
 
-#: src/modules/theme/SaveThemeDialog.cpp:299
+#: src/modules/theme/SaveThemeDialog.cpp:307
 msgid "Failed to load the selected screenshot image: please fix it"
 msgstr "Ei voitu ladata kuvakaappaus -kuvaa: ole hyvä ja korjaa se"
 
-#: src/modules/theme/SaveThemeDialog.cpp:224
-msgid "Failed to make screenshot"
-msgstr "Ei voitu ottaa kuvakaappausta"
+#: src/modules/theme/libkvitheme.cpp:331
+msgid "Failed to load theme from directory %Q: %Q"
+msgstr ""
+
+#: src/modules/theme/SaveThemeDialog.cpp:250
+msgid "Failed to make a theme screenshot."
+msgstr ""
 
 #: src/modules/theme/ThemeFunctions.cpp:295
-#, fuzzy
 msgid "Failed to unpack the selected file: %1"
-msgstr "Ei voitu purkaa valittua tiedostoa: %1"
+msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:392
+#: src/modules/theme/PackThemeDialog.cpp:380
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr "Lopulta, paina \"Valmis\" -nappia saadaksesi paketoinnin tehdyksi."
 
-#: src/modules/theme/ThemeManagementDialog.cpp:179
-msgid "Get More Themes..."
-msgstr "Hae lisää teemoja..."
+#: src/modules/theme/ThemeManagementDialog.cpp:172
+msgid "Get more themes..."
+msgstr ""
 
-#: src/modules/theme/ThemeFunctions.cpp:226
+#: src/modules/theme/ThemeFunctions.cpp:224
 msgid "Go Back to Package Data"
 msgstr "Mene takaisin paketoidaksesi dataa"
 
-#: src/modules/theme/PackThemeDialog.cpp:329
+#: src/modules/theme/PackThemeDialog.cpp:318
 msgid ""
 "Here you can choose the image that will appear in the installation dialog "
 "for your theme package. It can be an icon, a logo or a screenshot and it "
@@ -168,7 +177,7 @@ msgstr ""
 "suurempi kuin 300x225. Jos et anna kuvaa, yksinkertainen oletuskuvake "
 "näytetään asennuksen aikana."
 
-#: src/modules/theme/SaveThemeDialog.cpp:157
+#: src/modules/theme/SaveThemeDialog.cpp:179
 msgid ""
 "Here you can either choose a screenshot image from disk or make one now. The "
 "screenshot will be displayed in the tooltips of the theme management dialog "
@@ -179,16 +188,13 @@ msgstr ""
 "Kuvakaappaustanäytetään teemanhallinta-ikkunan työkaluvihjeissä ja "
 "paketinasennusikkunassa jos haluat viedä teeman jaettavaan pakettiin."
 
-#: src/modules/theme/PackThemeDialog.cpp:381
-#, fuzzy
+#: src/modules/theme/PackThemeDialog.cpp:369
 msgid ""
 "Here you must choose the file name for the theme package. It should have a *"
 "%1 extension."
 msgstr ""
-"Täällä sinun täytyy valita tiedostonimi teemapaketille. Sen pitäisi käyttää "
-"*.%1 -päätettä"
 
-#: src/modules/theme/SaveThemeDialog.cpp:100
+#: src/modules/theme/SaveThemeDialog.cpp:97
 msgid ""
 "Here you need to provide information about you (the author) and a short "
 "description of the theme you're creating."
@@ -196,7 +202,7 @@ msgstr ""
 "Tänne sinun täytyy antaa tietoja sinusta (tekijästä) ja lyhyt kuvaus "
 "teemasta jota olet luomassa."
 
-#: src/modules/theme/PackThemeDialog.cpp:257
+#: src/modules/theme/PackThemeDialog.cpp:249
 msgid ""
 "Here you need to provide information about you (the packager) and a short "
 "description of the package you're creating."
@@ -204,12 +210,16 @@ msgstr ""
 "Tänne sinun on annettava tietoja sinusta (paketoija) ja lyhyt kuvaus "
 "paketista jonka luot"
 
-#: src/modules/theme/PackThemeDialog.cpp:108
-#: src/modules/theme/SaveThemeDialog.cpp:81
+#: src/modules/theme/PackThemeDialog.cpp:101
+#: src/modules/theme/SaveThemeDialog.cpp:78
 msgid "Hit the \"Next\" button to begin."
 msgstr "Paina \"Seuraava\" -nappia aloittaaksesi."
 
-#: src/modules/theme/PackThemeDialog.cpp:328
+#: src/modules/theme/SaveThemeDialog.cpp:159
+msgid "Hit the <b>\"Next\"</b> button to continue."
+msgstr ""
+
+#: src/modules/theme/PackThemeDialog.cpp:317
 msgid "Icon/Screenshot"
 msgstr "Kuvake/Kuvakaappaus"
 
@@ -217,125 +227,145 @@ msgstr "Kuvake/Kuvakaappaus"
 msgid "Install Theme Pack - KVIrc"
 msgstr "Asenna teemapaketti - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:173
-msgid "Install Theme Package From Disk"
-msgstr "Asenna teemapaketti levyltä"
+#: src/modules/theme/ThemeManagementDialog.cpp:166
+msgid "Install theme package from disk"
+msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:173
+#: src/modules/theme/ThemeFunctions.cpp:408
+msgid "Invalid empty package name"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:402
+msgid "Invalid empty package path"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:462
+msgid "Invalid theme name"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:467
+msgid "Invalid theme version"
+msgstr ""
+
+#: src/modules/theme/SaveThemeDialog.cpp:195
 msgid "Make Screenshot Now"
 msgstr "Tee kuvakaappaus nyt"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:128
+#: src/modules/theme/ThemeManagementDialog.cpp:121
 msgid "Manage Themes - KVIrc"
 msgstr "Järjestä teemat - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:411
-msgid "Open Theme - KVIrc"
-msgstr "Avaa teema - KVIrc"
+#: src/modules/theme/libkvitheme.cpp:303
+msgid "No themes specified"
+msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:290
-msgid "Package Author:"
-msgstr "Tekijä:"
+#: src/modules/theme/libkvitheme.cpp:341
+msgid "No themes specified: refusing to create an empty theme package"
+msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:256
+#: src/modules/theme/PackThemeDialog.cpp:248
 msgid "Package Information"
 msgstr "Paketin tietoja"
 
-#: src/modules/theme/PackThemeDialog.cpp:263
-msgid "Package Name:"
-msgstr "Paketin nimi:"
-
-#: src/modules/theme/PackThemeDialog.cpp:380
+#: src/modules/theme/PackThemeDialog.cpp:368
 msgid "Package Path"
 msgstr "Paketin polku"
 
-#: src/modules/theme/PackThemeDialog.cpp:542
-#: src/modules/theme/PackThemeDialog.cpp:557
+#: src/modules/theme/PackThemeDialog.cpp:281
+msgid "Package author:"
+msgstr ""
+
+#: src/modules/theme/PackThemeDialog.cpp:254
+msgid "Package name:"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:505
+#: src/modules/theme/ThemeFunctions.cpp:516
 msgid "Packaging failed"
 msgstr "Paketointi epäonnistui"
 
-#: src/modules/theme/PackThemeDialog.cpp:163
-msgid "Put a package description here..."
-msgstr "Laita tähän kuvaus..."
-
-#: src/modules/theme/SaveThemeDialog.cpp:64
-#: src/modules/theme/SaveThemeDialog.cpp:205
-#: src/modules/theme/SaveThemeDialog.cpp:240
-#: src/modules/theme/SaveThemeDialog.cpp:279
-#: src/modules/theme/SaveThemeDialog.cpp:289
-#: src/modules/theme/SaveThemeDialog.cpp:299
+#: src/modules/theme/SaveThemeDialog.cpp:61
+#: src/modules/theme/SaveThemeDialog.cpp:228
+#: src/modules/theme/SaveThemeDialog.cpp:266
+#: src/modules/theme/SaveThemeDialog.cpp:288
+#: src/modules/theme/SaveThemeDialog.cpp:297
+#: src/modules/theme/SaveThemeDialog.cpp:307
+#: src/modules/theme/SaveThemeDialog.cpp:316
 msgid "Save Current Theme - KVIrc"
 msgstr "Tallenna nykyinen teema - KVIrc"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:146
-msgid "Save Current Theme..."
-msgstr "Tallenna nykyinen teema..."
+#: src/modules/theme/ThemeManagementDialog.cpp:139
+msgid "Save current theme..."
+msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:308
-msgid "Save Theme - KVIrc"
-msgstr "Tallenna teema - KVIrc"
+#: src/modules/theme/SaveThemeDialog.cpp:151
+msgid "Save icons and images with theme"
+msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:180
+#: src/modules/theme/SaveThemeDialog.cpp:202
 msgid "Screenshot"
 msgstr "Kuvakaappaus"
 
-#: src/modules/theme/ThemeFunctions.cpp:237
+#: src/modules/theme/ThemeManagementDialog.cpp:404
+msgid "Select a Installation File - KVIrc"
+msgstr ""
+
+#: src/modules/theme/ThemeFunctions.cpp:235
 msgid "Show Details"
 msgstr "Näytä lisätiedot"
 
-#: src/modules/theme/ThemeFunctions.cpp:323
+#: src/modules/theme/ThemeFunctions.cpp:321
 msgid "Subdirectory"
 msgstr "Alikansio"
 
-#: src/modules/theme/ThemeFunctions.cpp:69
-#, fuzzy
-msgid "The selected file does not seem to be a valid KVIrc package: %1"
-msgstr "Valittu tiedosto ei näytä olevan kelvollinen KVIrc -teemapaketti: %1"
-
-#: src/modules/theme/ThemeFunctions.cpp:47
-msgid "The selected file does not seem to be a valid KVIrc theme package"
-msgstr "Valittu tiedosto ei näytä olevan kelvollinen KVIrc -teemapaketti"
-
-#: src/modules/theme/libkvitheme.cpp:118
-#: src/modules/theme/libkvitheme.cpp:157
-msgid "The theme package '%Q' does not exist"
+#: src/modules/theme/ThemeFunctions.cpp:75
+msgid "The selected file doesn't seem to be a valid KVIrc package: %1"
 msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:134
-msgid "Theme Author:"
-msgstr "Teeman tekijä:"
+#: src/modules/theme/ThemeFunctions.cpp:53
+msgid "The selected file doesn't seem to be a valid KVIrc theme package"
+msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:141
+#: src/modules/theme/libkvitheme.cpp:163
+msgid "The theme package '%Q' doesn't exist"
+msgstr ""
+
+#: src/modules/theme/PackThemeDialog.cpp:134
 msgid "Theme Data"
 msgstr "Teeman tietoja"
 
-#: src/modules/theme/ThemeFunctions.cpp:322
-msgid "Theme Engine Version"
-msgstr "Teemakoneiston versio"
-
-#: src/modules/theme/SaveThemeDialog.cpp:145
+#: src/modules/theme/SaveThemeDialog.cpp:141
 msgid "Theme Information"
 msgstr "Teeman tietoja"
 
-#: src/modules/theme/SaveThemeDialog.cpp:106
-msgid "Theme Name:"
-msgstr "Teeman nimi:"
+#: src/modules/theme/SaveThemeDialog.cpp:131
+msgid "Theme author:"
+msgstr ""
 
-#: src/modules/theme/SaveThemeDialog.cpp:306
+#: src/modules/theme/ThemeFunctions.cpp:320
+msgid "Theme engine version"
+msgstr ""
+
+#: src/modules/theme/SaveThemeDialog.cpp:103
+msgid "Theme name:"
+msgstr ""
+
+#: src/modules/theme/SaveThemeDialog.cpp:167
+msgid "Theme options"
+msgstr ""
+
+#: src/modules/theme/SaveThemeDialog.cpp:314
 msgid "Theme saved successfully to %1"
 msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:142
+#: src/modules/theme/PackThemeDialog.cpp:135
 msgid ""
 "This is the information list for the themes you're packaging. If it looks OK "
-"press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
+"press \"Next\" to continue, otherwise press \"Cancel\" and review your "
 "themes first."
 msgstr ""
-"Tämä on tietolista teemoista joita paketoit. Jos se näyttää oikealta, paina "
-"\"Seuraava\" -nappia jatkaaksesi, muutoin paina \"Peruuta\" ja käy läpi "
-"teemasi ensin"
 
-#: src/modules/theme/PackThemeDialog.cpp:104
+#: src/modules/theme/PackThemeDialog.cpp:97
 msgid ""
 "This procedure allows you to export the selected themes to a single package. "
 "It is useful when you want to distribute your themes to the public."
@@ -343,7 +373,7 @@ msgstr ""
 "Tämä proseduuri sallii sinun viedä valitut teemat yhteen pakettiin. Se on "
 "kätevää kun haluat jakaa teemasi."
 
-#: src/modules/theme/SaveThemeDialog.cpp:77
+#: src/modules/theme/SaveThemeDialog.cpp:74
 msgid ""
 "This procedure allows you to save the current theme settings to a single "
 "directory. It is useful if you want to apply other themes or play with the "
@@ -357,35 +387,38 @@ msgstr ""
 "käyttöön yhdella napin painalluksella. Se myös sallii sinun muokata teema-"
 "asetuksia ja myöhemmin viedä ne jaettavaan pakettiin."
 
-#: src/modules/theme/SaveThemeDialog.cpp:279
+#: src/modules/theme/SaveThemeDialog.cpp:157
+msgid ""
+"To use the default and latest icon/image set automatically, uncheck this "
+"option.<br><br>To replace specific icons/images in your theme, include only "
+"those you wish to replace."
+msgstr ""
+
+#: src/modules/theme/SaveThemeDialog.cpp:288
 msgid "Unable to create theme directory."
 msgstr "Ei voitu luoda teemakansiota."
 
-#: src/modules/theme/SaveThemeDialog.cpp:288
-#, fuzzy
+#: src/modules/theme/SaveThemeDialog.cpp:296
 msgid "Unable to save theme: %1"
-msgstr "Ei voitu tallentaa teemaa: %1"
+msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:272
-#: src/modules/theme/SaveThemeDialog.cpp:114
+#: src/modules/theme/PackThemeDialog.cpp:263
+#: src/modules/theme/SaveThemeDialog.cpp:111
 msgid "Version:"
 msgstr "Versio:"
 
-#: src/modules/theme/ThemeFunctions.cpp:233
+#: src/modules/theme/ThemeFunctions.cpp:231
 msgid ""
-"Warning: Some of the theme contained in this package might be either "
-"corrupted or incompatible with this version of KVIrc"
+"Warning: the theme contained in this package might be either corrupted or "
+"incompatible with this version of KVIrc"
 msgstr ""
-"Varoitus: Jotkin teeman sisältämät osat saattavat olla joko kelvottomia tai "
-"ei-yhteensopivia tämän KVIrc -version kanssa"
 
-#: src/modules/theme/ThemeFunctions.cpp:217
-msgid "Warning: The theme might be incompatible with this version of KVIrc"
+#: src/modules/theme/ThemeFunctions.cpp:215
+msgid "Warning: this theme might be incompatible with this version of KVIrc"
 msgstr ""
-"Varoitus: Tämä teema saattaa olla ei-yhteensopiva tämän KVIrc -version kanssa"
 
-#: src/modules/theme/PackThemeDialog.cpp:101
-#: src/modules/theme/SaveThemeDialog.cpp:88
+#: src/modules/theme/PackThemeDialog.cpp:94
+#: src/modules/theme/SaveThemeDialog.cpp:85
 msgid "Welcome"
 msgstr "Tervetuloa"
 
@@ -393,11 +426,11 @@ msgstr "Tervetuloa"
 msgid "Yes, Proceed"
 msgstr "Kyllä, jatka"
 
-#: src/modules/theme/SaveThemeDialog.cpp:240
-msgid "You must choose a theme name!"
-msgstr "Sinun on valittava teeman nimi!"
+#: src/modules/theme/SaveThemeDialog.cpp:266
+msgid "You must choose a theme name."
+msgstr ""
 
-#: src/modules/theme/PackThemeDialog.cpp:106
+#: src/modules/theme/PackThemeDialog.cpp:99
 msgid ""
 "You will be asked to provide a package name, a description and, if you want, "
 "an icon/screenshot."
@@ -405,7 +438,7 @@ msgstr ""
 "Sinua pyydetään antamaan paketin nimi, kuvaus, ja jos haluat, kuvake/"
 "kuvakaappaus."
 
-#: src/modules/theme/SaveThemeDialog.cpp:79
+#: src/modules/theme/SaveThemeDialog.cpp:76
 msgid ""
 "You will be asked to provide a theme name, a description and, if you want, a "
 "screenshot."
@@ -416,14 +449,10 @@ msgstr ""
 msgid "You're about to install the following theme package"
 msgstr "Aiot asentaa seuraavan teemapaketin"
 
-#: src/modules/theme/PackThemeDialog.cpp:161
+#: src/modules/theme/PackThemeDialog.cpp:153
 msgid "Your name here"
 msgstr "Sinun nimi tähän"
 
-#: src/modules/theme/ThemeManagementDialog.cpp:99
+#: src/modules/theme/ThemeManagementDialog.cpp:94
 msgid "by"
 msgstr "tekijänä"
-
-#, fuzzy
-#~ msgid "Package saved successfully"
-#~ msgstr "Teema asennettu kansioon "

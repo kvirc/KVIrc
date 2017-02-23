@@ -27,8 +27,10 @@
 // this file was originally part of KviRegisteredUserDataBase.h
 
 #include "kvi_settings.h"
-#include "KviIrcMask.h"
-#include "KviRegisteredUser.h"
+#include "KviPointerList.h"
+
+class KviIrcMask;
+class KviRegisteredUser;
 
 class KVILIB_API KviRegisteredUserMask
 {

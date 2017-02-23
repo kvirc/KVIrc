@@ -38,8 +38,7 @@
 #include "KviWindow.h"
 #include "KviMainWindow.h"
 #include "KviPointerList.h"
-
-#include <QSplitter> // FIXME: REmove this!
+#include "KviIrcMask.h"
 
 //#warning "$reguser.matches..."
 //#warning "$reguser.clear"
@@ -154,7 +153,7 @@ static bool reguser_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 	@short:
 		Registers a user
 	@syntax:
-		reguser.add [-r] [-f] [-q] [-g=group] <name> [mask]
+		reguser.add [-r] [-f] [-q] [-g=group] <name> <mask>
 	@description:
 		Adds a new entry with the specified <name> to the database.[br]
 		If the database contains an entry with the same <name>, this command just prints
@@ -182,8 +181,7 @@ static bool reguser_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 
 static bool reguser_kvs_cmd_add(KviKvsModuleCommandCall * c)
 {
-	QString szName;
-	QString szMask;
+	QString szName, szMask;
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETER("name", KVS_PT_STRING, 0, szName)
 	KVSM_PARAMETER("mask", KVS_PT_STRING, 0, szMask)
@@ -199,13 +197,8 @@ static bool reguser_kvs_cmd_add(KviKvsModuleCommandCall * c)
 		g_pRegisteredUserDataBase->removeUser(szName);
 
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->addUser(szName);
-	QString group;
-	if(c->hasSwitch('g', "group"))
-	{
-		c->switches()->getAsStringIfExisting('g', "group", group);
-		u->setGroup(group);
-	}
-	if(u == nullptr)
+
+	if(!u)
 	{
 		if(c->hasSwitch('f', "force"))
 		{
@@ -220,11 +213,17 @@ static bool reguser_kvs_cmd_add(KviKvsModuleCommandCall * c)
 
 	if(u)
 	{
+		if(c->hasSwitch('g', "group"))
+		{
+			QString group;
+			c->switches()->getAsStringIfExisting('g', "group", group);
+			u->setGroup(group);
+		}
 		if(!szMask.isEmpty())
 		{
 			KviIrcMask * m = new KviIrcMask(szMask);
 			u = g_pRegisteredUserDataBase->addMask(u, m);
-			if(u != nullptr)
+			if(!u)
 			{
 				if(!c->hasSwitch('q', "quiet"))
 					c->warning(__tr2qs_ctx("Mask %Q is already used to identify user %s", "register"), &szMask, u->name().toUtf8().data());
@@ -998,7 +997,6 @@ static bool reguser_kvs_fnc_mask(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETER("N", KVS_PT_STRING, KVS_PF_OPTIONAL, szN)
 	KVSM_PARAMETERS_END(c)
 
-	KviKvsArray * pArray = new KviKvsArray();
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
 	if(u)
 	{
@@ -1011,6 +1009,7 @@ static bool reguser_kvs_fnc_mask(KviKvsModuleFunctionCall * c)
 		}
 		else
 		{
+			KviKvsArray * pArray = new KviKvsArray();
 			int aid = 0;
 
 			for(KviIrcMask * m = u->maskList()->first(); m; m = u->maskList()->next())

@@ -73,6 +73,7 @@
 #include <QMenu>
 #include <QWindowStateChangeEvent>
 #include <QCheckBox>
+#include <QString>
 
 #include <time.h>
 #include <algorithm>

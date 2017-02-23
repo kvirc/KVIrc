@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviProxy.h
+//   File : KviProxy.cpp
 //   Creation date : Wed Dec 29 2010 01:58:01 by Elvio Basello
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -23,8 +23,6 @@
 //=============================================================================
 
 #include "KviProxy.h"
-#include "KviQString.h"
-#include "KviCString.h"
 
 #include <QStringList>
 
@@ -36,21 +34,10 @@ KviProxy::KviProxy()
 	m_bIsIPv6 = false;
 }
 
-KviProxy::KviProxy(const KviProxy & prx)
-{
-	m_szHostname = prx.m_szHostname;
-	m_szIp = prx.m_szIp;
-	m_szUser = prx.m_szUser;
-	m_szPass = prx.m_szPass;
-	m_uPort = prx.m_uPort;
-	m_protocol = prx.m_protocol;
-	m_bIsIPv6 = prx.m_bIsIPv6;
-}
-
 KviProxy::~KviProxy()
     = default;
 
-static const QString proxy_protocols_table[3] = { "SOCKSv4", "SOCKSv5", "HTTP" };
+static const QStringList proxy_protocols_table{ "SOCKSv4", "SOCKSv5", "HTTP" };
 
 const QString KviProxy::protocolName() const
 {
@@ -64,26 +51,22 @@ const QString KviProxy::protocolName() const
 			break;
 		default:
 			return proxy_protocols_table[0];
-			break;
 	}
-
-	return proxy_protocols_table[0];
 }
 
-void KviProxy::setNamedProtocol(const char * proto)
+void KviProxy::setNamedProtocol(const QString & proto)
 {
-	if(kvi_strEqualCI(proto, "SOCKSv5"))
+	if(proto.compare(proxy_protocols_table[1], Qt::CaseInsensitive) == 0)
 		m_protocol = KviProxy::Socks5;
-	else if(kvi_strEqualCI(proto, "HTTP"))
+	else if(proto.compare(proxy_protocols_table[2], Qt::CaseInsensitive) == 0)
 		m_protocol = KviProxy::Http;
 	else
 		m_protocol = KviProxy::Socks4;
 }
 
-void KviProxy::getSupportedProtocolNames(QStringList & buf)
+QStringList KviProxy::getSupportedProtocolNames()
 {
-	for(const auto & i : proxy_protocols_table)
-		buf.append(QString(i));
+	return proxy_protocols_table;
 }
 
 void KviProxy::normalizeUserAndPass()

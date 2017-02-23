@@ -27,9 +27,10 @@
 #include "kvi_sourcesdate.h"
 #include "kvi_sysbuildinfo.h"
 
+#include <QString>
 #include <QStringList>
 
-const char * feature_array[] = {
+const QStringList feature_list{
 	"IRC",
 #ifdef COMPILE_DEBUG_MODE
 	"Debug",
@@ -92,8 +93,7 @@ const char * feature_array[] = {
 	"GTK",
 #endif
 	"Qt5",
-	"KVS",
-	nullptr
+	"KVS"
 };
 
 namespace KviBuildInfo
@@ -155,7 +155,7 @@ namespace KviBuildInfo
 	{
 		QString flags = QString(KVIRC_BUILD_COMPILER_FLAGS);
 		if(flags.isEmpty())
-			return "N/A";
+			return QString("N/A");
 		else
 			return flags;
 	}
@@ -171,11 +171,11 @@ namespace KviBuildInfo
 
 	QString buildRevision()
 	{
-		QString rev;
 #ifdef KVIRC_BUILD_REVISION
-		rev = QString(KVIRC_BUILD_REVISION);
+		return QString(KVIRC_BUILD_REVISION);
+#else
+		return QString();
 #endif
-		return rev;
 	}
 
 	QString qtVersion()
@@ -185,9 +185,6 @@ namespace KviBuildInfo
 
 	QString features()
 	{
-		QStringList tmp;
-		for(int i = 0; feature_array[i]; i++)
-			tmp << QString(feature_array[i]);
-		return QString(tmp.join(", "));
+		return feature_list.join(", ");
 	}
 }

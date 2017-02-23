@@ -23,12 +23,14 @@
 //=============================================================================
 
 #include "KviScriptButton.h"
-#include "KviIrcToolBar.h"
-#include "KviWindow.h"
-#include "KviConsoleWindow.h"
 #include "KviApplication.h"
-#include "KviKvsVariantList.h"
+#include "KviConsoleWindow.h"
+#include "KviIrcToolBar.h"
 #include "KviKvsScript.h"
+#include "KviKvsVariantList.h"
+#include "KviWindow.h"
+
+#include <QString>
 
 KviScriptUserButton::KviScriptUserButton(QWidget * par, const char * name)
     : QToolButton(par)

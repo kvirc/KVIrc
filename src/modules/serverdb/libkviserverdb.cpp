@@ -27,6 +27,7 @@
 #include "KviLocale.h"
 #include "KviIrcServer.h"
 #include "KviIrcServerDataBase.h"
+#include "KviIrcNetwork.h"
 
 #include <QString>
 

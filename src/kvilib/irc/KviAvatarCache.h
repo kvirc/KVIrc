@@ -31,10 +31,12 @@
 */
 
 #include "kvi_settings.h"
-#include "KviQString.h"
 #include "KviTimeUtils.h"
-#include "KviIrcMask.h"
 #include "KviPointerHashTable.h"
+
+#include <QString>
+
+class KviIrcMask;
 
 /**
 * \typedef KviAvatarCacheEntry

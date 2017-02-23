@@ -32,8 +32,10 @@
 #include "kvi_settings.h"
 #include "KviHeapObject.h"
 #include "KviPixmap.h"
-#include "KviConfigurationFile.h"
-#include "KviPointerHashTable.h"
+
+#include <QString>
+
+class KviConfigurationFile;
 
 /**
 * \class KviUserIdentity

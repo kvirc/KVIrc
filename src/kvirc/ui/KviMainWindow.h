@@ -32,7 +32,6 @@
 #include "kvi_settings.h"
 
 #include "KviTalMainWindow.h"
-#include "KviQString.h"
 
 #include <algorithm>
 #include <list>
@@ -53,6 +52,7 @@ class KviStatusBar;
 class QMenu;
 class KviTrayIcon;
 class QShortcut;
+class QString;
 
 class KVIRC_API KviMainWindow : public KviTalMainWindow //, public KviIrcContextManager
 {

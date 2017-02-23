@@ -24,8 +24,16 @@
 
 #define _KVI_STRINGCONVERSION_CPP_
 #include "KviStringConversion.h"
-
+#include "KviCString.h"
+#include "KviMessageTypeSettings.h"
+#include "KviPixmap.h"
 #include "KviQString.h"
+
+#include <QColor>
+#include <QFont>
+#include <QRect>
+#include <QString>
+#include <QStringList>
 #include <stdio.h>
 
 QString g_szGlobalDir;

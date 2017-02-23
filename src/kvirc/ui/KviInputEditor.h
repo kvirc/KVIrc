@@ -52,16 +52,16 @@
 
 #include <vector>
 
-class QKeyEvent;
-class QDragEnterEvent;
-class QFontMetricsF;
 class KviUserListView;
+class QDragEnterEvent;
+class QKeyEvent;
+class QFontMetricsF;
 
 #define KVI_INPUT_MAX_BUFFER_SIZE 400
 #define KVI_INPUT_XTRAPADDING 1
 #define KVI_INPUT_MARGIN 4
 #define KVI_INPUT_BLINK_TIME 800
-#define KVI_INPUT_DRAG_TIMEOUT 80
+#define KVI_INPUT_DRAG_TIMEOUT 30
 #define KVI_INPUT_DEF_BACK 100
 #define KVI_INPUT_DEF_FORE 101
 
@@ -100,7 +100,7 @@ public:
 	* \param pView The userlist
 	* \return KviInputEditor
 	*/
-	KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView * pView = 0);
+	KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView * pView = nullptr);
 
 	/**
 	* \brief Destroys the Input editor object
@@ -282,12 +282,12 @@ public:
 	* \brief Returns the text in the buffer
 	* \return QString
 	*/
-	QString text() { return m_szTextBuffer; };
+	QString text() const { return m_szTextBuffer; }
 
 	/**
 	* \brief Returns the text before the cursor
 	*/
-	QString textBeforeCursor();
+	QString textBeforeCursor() const;
 
 	/**
 	* \brief Inserts a character at the current position
@@ -314,20 +314,20 @@ public:
 	* \param iSize The size of the buffer to set
 	* \return void
 	*/
-	void setMaxBufferSize(int iSize) { m_iMaxBufferSize = iSize; };
+	void setMaxBufferSize(int iSize) { m_iMaxBufferSize = iSize; }
 
 	/**
 	* \brief Sets the read only state for the input line
 	* \param bReadOnly Whether to set the read only state
 	* \return void
 	*/
-	void setReadOnly(bool bReadOnly) { m_bReadOnly = bReadOnly; };
+	void setReadOnly(bool bReadOnly) { m_bReadOnly = bReadOnly; }
 
 	/**
 	* \brief Returns true if the input line is in read only state
 	* \return bool
 	*/
-	bool isReadOnly() const { return m_bReadOnly; };
+	bool isReadOnly() const { return m_bReadOnly; }
 
 	/**
 	* \brief Clears the undo stack.
@@ -483,7 +483,7 @@ private:
 	* \param bInCommand Whether the completion happens inside a kvs command (and thus the completed word should be kvs-escaped)
 	* \return void
 	*/
-	void standardNickCompletionInsertCompletedText(const QString & szReplacedWord, const QString & szCompletedText, bool bFirstWordInLine, bool bInCommand);
+	void standardNickCompletionInsertCompletedText(const QString & szReplacedWord, QString szCompletedText, bool bFirstWordInLine, bool bInCommand);
 
 	/**
 	* \brief Moves the cursor one character to the right
@@ -949,25 +949,30 @@ private slots:
 	*/
 	void spellCheckerPopupCorrectionActionTriggered();
 
+	/**
+	* Adds line to input history
+	*/
+	void addToHistory(const QString & szString);
+
 protected:
 	void insertIconCode(const QString & szCode);
 	void completionEscapeUnsafeToken(QString & szToken);
 	void installShortcuts();
 	virtual void drawContents(QPainter *);
-	//virtual void resizeEvent(QResizeEvent * e);
-	virtual void timerEvent(QTimerEvent * e);
-	virtual void focusInEvent(QFocusEvent * e);
-	virtual void focusOutEvent(QFocusEvent * e);
-	virtual void keyPressEvent(QKeyEvent * e);
-	virtual void keyReleaseEvent(QKeyEvent * e);
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseReleaseEvent(QMouseEvent * e);
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
-	virtual void dragEnterEvent(QDragEnterEvent * e);
-	virtual void dropEvent(QDropEvent * e);
-	virtual void inputMethodEvent(QInputMethodEvent * e);
-	virtual QVariant inputMethodQuery(Qt::InputMethodQuery query) const;
-	virtual void paintEvent(QPaintEvent * e);
+	//void resizeEvent(QResizeEvent * e) override;
+	void timerEvent(QTimerEvent * e) override;
+	void focusInEvent(QFocusEvent * e) override;
+	void focusOutEvent(QFocusEvent * e) override;
+	void keyPressEvent(QKeyEvent * e) override;
+	void keyReleaseEvent(QKeyEvent * e) override;
+	void mousePressEvent(QMouseEvent * e) override;
+	void mouseReleaseEvent(QMouseEvent * e) override;
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
+	void dragEnterEvent(QDragEnterEvent * e) override;
+	void dropEvent(QDropEvent * e) override;
+	void inputMethodEvent(QInputMethodEvent * e) override;
+	QVariant inputMethodQuery(Qt::InputMethodQuery query) const override;
+	void paintEvent(QPaintEvent * e) override;
 	bool checkWordSpelling(const QString & szWord);
 	void splitTextIntoSpellCheckerBlocks(const QString & szText, std::vector<KviInputEditorSpellCheckerBlock *> & lBuffer);
 	KviInputEditorSpellCheckerBlock * findSpellCheckerBlockAtCursor(std::vector<KviInputEditorSpellCheckerBlock *> & lBlocks);

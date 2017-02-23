@@ -26,13 +26,13 @@
 
 #include "KviHistoryWindow.h"
 #include "KviApplication.h"
-#include "KviOptions.h"
 #include "KviInput.h"
 #include "KviInputHistory.h"
+#include "KviOptions.h"
 
 #include <QEvent>
-#include <QMouseEvent>
 #include <QListWidget>
+#include <QMouseEvent>
 
 #include <ctype.h>
 

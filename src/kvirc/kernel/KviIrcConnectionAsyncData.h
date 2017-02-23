@@ -2,7 +2,7 @@
 #define _KVI_IRCCONNECTIONASYNCTEMPLATEDATA_H_
 //=============================================================================
 //
-//   File : KviIrcConnectionAsyncWhoisData.h
+//   File : KviIrcConnectionAsyncData.h
 //   Creation date : Sat 26 Jun 2004 19:40:20 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

@@ -26,6 +26,8 @@
 #include "KviPixmap.h"
 #include "KviQString.h"
 
+#include <QString>
+
 KviPixmap::KviPixmap()
     = default;
 

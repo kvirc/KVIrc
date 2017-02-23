@@ -23,36 +23,36 @@
 //=============================================================================
 
 #include "KviStatusBar.h"
-#include "KviMainWindow.h"
-#include "KviIconManager.h"
-#include "KviWindow.h"
-#include "KviIrcContext.h"
-#include "KviIrcConnection.h"
-#include "KviIrcConnectionUserInfo.h"
-#include "KviLocale.h"
 #include "KviApplication.h"
 #include "KviConfigurationFile.h"
-#include "KviTimeUtils.h"
-#include "KviQString.h"
+#include "KviDynamicToolTip.h"
+#include "KviIconManager.h"
+#include "KviIrcConnection.h"
+#include "KviIrcConnectionUserInfo.h"
+#include "KviIrcContext.h"
+#include "KviLocale.h"
+#include "KviMainWindow.h"
 #include "KviModuleManager.h"
 #include "KviStatusBarApplet.h"
-#include "KviDynamicToolTip.h"
+#include "KviTimeUtils.h"
+#include "KviWindow.h"
 
-#include <QDrag>
-#include <QPainter>
-#include <QStyle>
-#include <QLayout>
-#include <QTimer>
 #include <QCursor>
-#include <QPixmap>
-#include <QLabel>
-#include <QFont>
+#include <QDrag>
 #include <QEvent>
+#include <QFont>
+#include <QHelpEvent>
+#include <QLabel>
+#include <QLayout>
+#include <QMenu>
+#include <QMessageBox>
 #include <QMimeData>
 #include <QMouseEvent>
-#include <QMessageBox>
+#include <QPainter>
+#include <QPixmap>
+#include <QStyle>
+#include <QTimer>
 #include <QWidgetAction>
-#include <QMenu>
 
 KviStatusBar::KviStatusBar(KviMainWindow * pFrame)
     : QStatusBar(pFrame)

@@ -29,6 +29,8 @@
 #include "KviScriptEditor.h"
 #include "KviModuleManager.h"
 
+#include <QLineEdit>
+
 void KviScriptEditor::setText(const QString & txt)
 {
 	setText(QByteArray(txt.toUtf8()));

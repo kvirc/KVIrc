@@ -2,7 +2,7 @@
 #define _LIBKVIIOGRAPH_H_
 //=============================================================================
 //
-//   File : libkviiograph.cpp
+//   File : libkviiograph.h
 //   Creation date : Tue Oct 31 2000 00:14:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -24,12 +24,12 @@
 //
 //=============================================================================
 
-#include <QQueue>
-
-#include "KviMainWindow.h"
 #include "kvi_inttypes.h"
+#include "KviMainWindow.h"
 #include "KviModuleExtension.h"
 #include "KviWindow.h"
+
+#include <QQueue>
 
 #define KVI_IOGRAPH_NUMBER_POINTS 60
 #define KVI_IOGRAPH_HORIZ_SEGMENTS 10

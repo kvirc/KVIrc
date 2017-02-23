@@ -2,7 +2,7 @@
 #define _RAWEDITOR_H_
 //=============================================================================
 //
-//   File : EventEditorWindow.h
+//   File : RawEditorWindow.h
 //   Creation date : Mon Dec 23 2002 20:24:55 CEST by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

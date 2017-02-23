@@ -23,23 +23,25 @@
 //=============================================================================
 
 #include "KviHttpRequest.h"
-#include "KviLocale.h"
-#include "KviNetUtils.h"
+#include "KviCString.h"
+#include "KviDataBuffer.h"
 #include "KviDnsResolver.h"
 #include "KviError.h"
-#include "kvi_debug.h"
-#include "KviTimeUtils.h"
-#include "KviDataBuffer.h"
 #include "KviFile.h"
+#include "KviLocale.h"
+#include "KviNetUtils.h"
+#include "KviTimeUtils.h"
+#include "kvi_debug.h"
 
 #include <QTcpSocket>
 #ifdef COMPILE_SSL_SUPPORT
 #include <QSslSocket>
 #endif
-#include <QTimer>
 #include <QDir>
 #include <QHostAddress>
+#include <QString>
 #include <QStringList>
+#include <QTimer>
 
 //#include <zlib.h>
 

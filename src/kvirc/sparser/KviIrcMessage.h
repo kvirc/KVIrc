@@ -26,16 +26,16 @@
 
 #include "kvi_settings.h"
 #include "KviCString.h"
-#include "KviQString.h"
 #include "KviConsoleWindow.h"
-#include "KviKvsHash.h"
 
 #include <QDateTime>
+#include <QString>
 #include <vector>
 
+class KviConneciton;
 class KviIrcConnection;
 class KviIrcContext;
-class KviConneciton;
+class KviKvsHash;
 
 //
 // This is a single IRC message received from the server.

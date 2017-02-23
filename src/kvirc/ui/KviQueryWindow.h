@@ -32,15 +32,15 @@
 
 #include "kvi_settings.h"
 #include "KviWindow.h"
-#include "KviCString.h"
 #include "KviIrcUserDataBase.h"
 #include "KviUserListView.h"
 #include "KviThemedLabel.h"
 #include "KviPointerHashTable.h"
 
-class KviConsoleWindow;
 class KviConfigurationFile;
+class KviConsoleWindow;
 class KviWindowToolPageButton;
+class QString;
 
 /**
 * \class KviQueryWindow

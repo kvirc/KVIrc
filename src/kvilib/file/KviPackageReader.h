@@ -31,11 +31,10 @@
 */
 
 #include "kvi_settings.h"
-
-#include "KviQString.h"
 #include "KviPackageIOEngine.h"
 
 class KviFile;
+class QString;
 
 /**
 * \class KviPackageReader

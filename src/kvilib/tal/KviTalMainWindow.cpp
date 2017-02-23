@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviTalMainWindow.coo
+//   File : KviTalMainWindow.cpp
 //   Creation date : Sun Aug 12 2001 04:40:24 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

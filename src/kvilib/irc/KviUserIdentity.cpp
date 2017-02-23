@@ -23,6 +23,7 @@
 //=============================================================================
 
 #include "KviUserIdentity.h"
+#include "KviConfigurationFile.h"
 #include "KviLocale.h"
 #include "kvi_defaults.h"
 

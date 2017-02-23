@@ -36,6 +36,8 @@
 #include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
 
+#include <QString>
+
 class KviUserIdentity;
 
 /**

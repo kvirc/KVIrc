@@ -29,9 +29,8 @@
 #ifdef COMPILE_SSL_SUPPORT
 
 #include "KviCString.h"
-#include "kvi_sockettype.h"
-
 #include "KviPointerHashTable.h"
+#include "kvi_sockettype.h"
 
 // Apple deprecated openssl since osx 10.7:
 

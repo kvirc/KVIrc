@@ -33,7 +33,6 @@
 */
 
 #include "kvi_settings.h"
-#include "KviCString.h"
 
 #include <QListWidget>
 

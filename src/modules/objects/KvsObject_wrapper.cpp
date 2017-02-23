@@ -233,7 +233,7 @@ bool KvsObject_wrapper::init(KviKvsRunTimeContext * pContext, KviKvsVariantList 
 			if(!szName.isEmpty())
 			{
 				bool ok;
-				int iLevels = szName.toInt(&ok);
+				iLevels = szName.toInt(&ok);
 				if(!ok)
 				{
 					pContext->warning(__tr2qs_ctx("Bad number of levels for the '!Parent' specifier", "objects"));

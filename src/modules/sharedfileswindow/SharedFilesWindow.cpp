@@ -25,24 +25,25 @@
 #include "SharedFilesWindow.h"
 
 #include "kvi_debug.h"
-#include "KviIconManager.h"
-#include "KviIrcView.h"
 #include "kvi_out.h"
-#include "KviOptions.h"
-#include "KviLocale.h"
-#include "KviThemedLabel.h"
-#include "KviInput.h"
 #include "KviFileDialog.h"
+#include "KviIconManager.h"
+#include "KviInput.h"
+#include "KviIrcView.h"
+#include "KviLocale.h"
+#include "KviOptions.h"
 #include "KviTalHBox.h"
 #include "KviTalVBox.h"
+#include "KviThemedLabel.h"
 
+#include <QCheckBox>
 #include <QDateTimeEdit>
-#include <QLabel>
-#include <QLineEdit>
-#include <QPushButton>
-#include <QLayout>
-#include <QMessageBox>
 #include <QFileInfo>
+#include <QLabel>
+#include <QLayout>
+#include <QLineEdit>
+#include <QMessageBox>
+#include <QPushButton>
 
 extern SharedFilesWindow * g_pSharedFilesWindow;
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
@@ -132,7 +133,7 @@ void SharedFileEditDialog::browse()
 	m_pFilePathEdit->setText(szBuf);
 }
 
-KviSharedFile * SharedFileEditDialog::getResult()
+KviSharedFile * SharedFileEditDialog::getResult() const
 {
 	QString szName = m_pShareNameEdit->text();
 	QString szPath = m_pFilePathEdit->text();

@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviCryptEngine.cpp
+//   File : KviCryptController.cpp
 //   Creation date : Fri Nov 03 2000 14:16:33 CEST by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -26,6 +26,7 @@
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptController.h"
+#include "KviCryptEngine.h"
 #include "KviWindow.h"
 #include "KviLocale.h"
 #include "kvi_out.h"
@@ -36,7 +37,12 @@
 #include "KviWindowToolWidget.h"
 #include "KviPointerHashTable.h"
 
+#include <QCheckBox>
+#include <QLabel>
 #include <QLayout>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QTextEdit>
 
 // KviApplication.cpp
 extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;

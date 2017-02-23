@@ -25,6 +25,8 @@
 #include "KviTimeUtils.h"
 #include "KviLocale.h"
 
+#include <QString>
+
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
 // Call SystemTimeToFileTime to copy the system time to a FILETIME structure.

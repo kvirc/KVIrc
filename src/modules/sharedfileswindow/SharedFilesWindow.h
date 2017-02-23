@@ -24,19 +24,19 @@
 //
 //=============================================================================
 
-#include "KviWindow.h"
+#include "KviConsoleWindow.h"
 #include "KviCString.h"
 #include "KviIrcServerParser.h"
-#include "KviConsoleWindow.h"
 #include "KviModuleExtension.h"
 #include "KviSharedFilesManager.h"
 #include "KviThemedTreeWidget.h"
+#include "KviWindow.h"
 
 #include <QDialog>
-#include <QCheckBox>
 
-class QGridLayout;
+class QCheckBox;
 class QDateTimeEdit;
+class QGridLayout;
 class QLabel;
 class QLineEdit;
 class QPushButton;
@@ -45,12 +45,12 @@ class SharedFilesTreeWidgetItem : public QTreeWidgetItem
 {
 public:
 	SharedFilesTreeWidgetItem(QTreeWidget * lv, KviSharedFile * f);
-	~SharedFilesTreeWidgetItem();
+	virtual ~SharedFilesTreeWidgetItem();
 
 protected:
 	KviSharedFile * m_pSharedFilePointer; // THIS IS READ ONLY!
 public:
-	KviSharedFile * readOnlySharedFilePointer() { return m_pSharedFilePointer; };
+	KviSharedFile * readOnlySharedFilePointer() const { return m_pSharedFilePointer; }
 };
 
 class SharedFileEditDialog : public QDialog
@@ -58,7 +58,7 @@ class SharedFileEditDialog : public QDialog
 	Q_OBJECT
 public:
 	SharedFileEditDialog(QWidget * par, KviSharedFile * f = 0);
-	~SharedFileEditDialog();
+	virtual ~SharedFileEditDialog();
 
 	QDateTimeEdit * m_pExpireDateTimeEdit;
 	QLineEdit * m_pFilePathEdit;
@@ -68,7 +68,7 @@ public:
 	QCheckBox * m_pExpireCheckBox;
 
 public:
-	KviSharedFile * getResult();
+	KviSharedFile * getResult() const;
 protected slots:
 	void okClicked();
 	void browse();
@@ -80,11 +80,9 @@ class SharedFilesWindow : public KviWindow
 	Q_OBJECT
 public:
 	SharedFilesWindow();
-	~SharedFilesWindow();
+	virtual ~SharedFilesWindow();
 
 protected:
-	QSplitter * m_pVertSplitter;
-
 	KviThemedTreeWidget * m_pTreeWidget;
 
 	QPushButton * m_pRemoveButton;
@@ -95,13 +93,13 @@ public: // Methods
 	virtual void die();
 
 protected:
-	virtual QPixmap * myIconPtr();
-	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void getBaseLogFileName(QString & buffer);
+	QPixmap * myIconPtr() override;
+	void fillCaptionBuffers() override;
+	void resizeEvent(QResizeEvent * e) override;
+	void getBaseLogFileName(QString & buffer) override;
 
 public:
-	virtual QSize sizeHint() const;
+	QSize sizeHint() const override;
 protected slots:
 	void fillFileView();
 	void sharedFileAdded(KviSharedFile * f);

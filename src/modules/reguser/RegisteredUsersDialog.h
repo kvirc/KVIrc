@@ -2,7 +2,7 @@
 #define _DIALOG_H_
 //=============================================================================
 //
-//   File : RegisteredUserEntryDialog.h
+//   File : RegisteredUsersDialog.h
 //   Creation date : Sun Dec 24 2000 15:16:17 CEST by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

@@ -23,8 +23,8 @@
 //=============================================================================
 
 #include "KviCryptEngine.h"
-#include "KviLocale.h"
 #include "KviCString.h"
+#include "KviLocale.h"
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include "KviMemory.h"

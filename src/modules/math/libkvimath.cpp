@@ -29,7 +29,7 @@
 #include <cmath>
 
 // Workaround for lost isnan and isinf definitions after
-// inclusion of iostream.h on some MacOS X systems
+// inclusion of iostream.h on some macOS systems
 #ifdef COMPILE_ON_MAC
 #ifndef isnan
 extern "C" int isnan(double);

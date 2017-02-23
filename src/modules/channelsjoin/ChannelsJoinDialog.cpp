@@ -24,30 +24,30 @@
 
 #include "ChannelsJoinDialog.h"
 
-#include "KviLocale.h"
-#include "KviOptions.h"
-#include "KviSelectors.h"
 #include "KviApplication.h"
-#include "KviCString.h"
-#include "KviQString.h"
-#include "KviIconManager.h"
-#include "KviMainWindow.h"
 #include "KviConsoleWindow.h"
+#include "KviIconManager.h"
+#include "KviKvsScript.h"
+#include "KviLocale.h"
+#include "KviMainWindow.h"
+#include "KviOptions.h"
+#include "KviQString.h"
 #include "KviRegisteredChannel.h"
 #include "KviRegisteredChannelDataBase.h"
-#include "KviKvsScript.h"
-#include "KviTalGroupBox.h"
+#include "KviSelectors.h"
 
-#include <QLabel>
-#include <QLineEdit>
-#include <QLayout>
-#include <QPushButton>
-#include <QEvent>
-#include <QCloseEvent>
-#include <QMouseEvent>
-#include <QHeaderView>
 #include <QCheckBox>
+#include <QCloseEvent>
 #include <QDesktopWidget>
+#include <QEvent>
+#include <QGroupBox>
+#include <QHeaderView>
+#include <QLabel>
+#include <QLayout>
+#include <QLineEdit>
+#include <QMouseEvent>
+#include <QPushButton>
+#include <QString>
 
 extern ChannelsJoinDialog * g_pChannelsWindow;
 extern QRect g_rectChannelsJoinGeometry;
@@ -71,23 +71,29 @@ ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	g->addWidget(m_pTreeWidget, 0, 0, 1, 2);
 
-	m_pGroupBox = new KviTalGroupBox(Qt::Horizontal, __tr2qs("Channel"), this);
+	m_pGroupBox = new QGroupBox(__tr2qs("Channel"), this);
+	QGridLayout * pChannelLayout = new QGridLayout(m_pGroupBox);
+
 	QString szMsg = __tr2qs("Name");
 	szMsg.append(":");
 
-	new QLabel(szMsg, m_pGroupBox);
+	QLabel * pNameLabel = new QLabel(szMsg, m_pGroupBox);
+	pChannelLayout->addWidget(pNameLabel, 1, 0);
 
 	m_pChannelEdit = new QLineEdit(m_pGroupBox);
 	connect(m_pChannelEdit, SIGNAL(returnPressed()), this, SLOT(editReturnPressed()));
 	connect(m_pChannelEdit, SIGNAL(textChanged(const QString &)), this, SLOT(editTextChanged(const QString &)));
+	pChannelLayout->addWidget(m_pChannelEdit, 1, 1);
 
 	szMsg = __tr2qs("Password");
 	szMsg.append(":");
 
-	new QLabel(szMsg, m_pGroupBox);
+	QLabel * pPasswordLabel = new QLabel(szMsg, m_pGroupBox);
+	pChannelLayout->addWidget(pPasswordLabel, 2, 0);
 
 	m_pPass = new QLineEdit(m_pGroupBox);
 	m_pPass->setEchoMode(QLineEdit::Password);
+	pChannelLayout->addWidget(m_pPass, 2, 1);
 
 	g->addWidget(m_pGroupBox, 1, 0, 1, 2);
 

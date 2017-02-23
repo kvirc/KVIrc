@@ -1821,12 +1821,12 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 				}
 				else
 				{
-					QStyleOptionViewItemV4 opt4;
-					opt4.rect = QRect(0, iTheY, width(), pEntry->m_iHeight);
-					opt4.state = opt4.state | QStyle::State_Selected;
-					opt4.showDecorationSelected = true;
-					opt4.palette.setColor(QPalette::Highlight, col);
-					style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt4, &p, this);
+					QStyleOptionViewItem opt;
+					opt.rect = QRect(0, iTheY, width(), pEntry->m_iHeight);
+					opt.state = opt.state | QStyle::State_Selected;
+					opt.showDecorationSelected = true;
+					opt.palette.setColor(QPalette::Highlight, col);
+					style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt, &p, this);
 				}
 				pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionForeground));
 			}

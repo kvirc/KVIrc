@@ -24,7 +24,8 @@
 
 #include "kvi_debug.h"
 #include "KviIrcUserDataBase.h"
-#include "KviQString.h"
+#include "KviRegisteredUser.h"
+#include "KviRegisteredUserDataBase.h"
 #include "KviStringConversion.h"
 
 KviIrcUserDataBase::KviIrcUserDataBase()

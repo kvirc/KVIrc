@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviIrcUserEntry.h
+//   File : KviIrcUserEntry.cpp
 //   Creation date : Tue Jan 04 2010 22:45:12 by Elvio Basello
 //
 //   This file is part of the KVIrc IRC client distribution

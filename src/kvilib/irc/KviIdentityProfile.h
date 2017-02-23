@@ -32,7 +32,6 @@
 
 #include "kvi_settings.h"
 #include "KviHeapObject.h"
-#include "KviPointerList.h"
 
 #include <QString>
 

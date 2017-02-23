@@ -70,7 +70,7 @@ PluginManager * g_pPluginManager;
 	@syntax:
 		<string> $system.ostype()
 	@description:
-		Returns the current type of operating system: UNIX, OS X or Windows.[br]
+		Returns the current type of operating system: UNIX, macOS or Windows.[br]
 */
 
 static bool system_kvs_fnc_ostype(KviKvsModuleFunctionCall * c)

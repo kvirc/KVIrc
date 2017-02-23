@@ -41,6 +41,8 @@
 
 #include <vector>
 
+class QString;
+
 #define KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES 500
 #define KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES 50
 
@@ -99,7 +101,7 @@ public:
 	* \param szString The string to add
 	* \return void
 	*/
-	void add(QString szString);
+	void add(const QString & szString);
 
 	/**
 	* \brief Returns the list of string in the history

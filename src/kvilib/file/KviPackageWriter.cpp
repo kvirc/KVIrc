@@ -23,15 +23,15 @@
 //=============================================================================
 
 #include "KviPackageWriter.h"
-
 #include "KviFile.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
 #include "KviPointerList.h"
-
 #include "kvi_inttypes.h"
 
+#include <QByteArray>
 #include <QDir>
+#include <QString>
 
 #ifdef COMPILE_ZLIB_SUPPORT
 #include <zlib.h>

@@ -123,7 +123,7 @@ namespace KviKvsCoreSimpleCommands
 			!sw: -b=<local address:string> | --bind-address=<local address:string>
 			Bind the outgoing connection to <local address>. The <local address> must be
 			either the IP address of a local interface or a local interface name itself
-			(e.g. eth0 under Linux, en0 under OS X etc.) suitable for contacting the
+			(e.g. eth0 under Linux, en0 under macOS etc.) suitable for contacting the
 			remote <server>:
 			this means that if you're going to use the -i switch, the <local address>
 			[b]must[/b] be an IPv6 address.

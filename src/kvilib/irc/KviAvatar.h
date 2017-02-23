@@ -30,12 +30,14 @@
 * \brief Avatar handling
 */
 
-#include "KviHeapObject.h"
 #include "kvi_settings.h"
 #include "KviAnimatedPixmap.h"
+#include "KviHeapObject.h"
 
-#include <QPixmap>
 #include <QHash>
+#include <QPixmap>
+#include <QSize>
+#include <QString>
 
 /**
 * \brief Returns an hash based on avatar dimensions

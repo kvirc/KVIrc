@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "KviModule.h"
-#include "KviCString.h"
 #include "KviApplication.h"
 #include "KviChannelWindow.h"
 #include "KviLocale.h"
@@ -33,9 +32,10 @@
 #include "KviIrcMask.h"
 #include "KviMaskEditor.h"
 #include "KviIrcUrl.h"
-#include "KviIrcConnectionTarget.h"
 #include "KviIrcConnection.h"
+#include "KviIrcConnectionTarget.h"
 
+#include <QString>
 #include <vector>
 
 static KviChannelWindow * chan_kvs_find_channel(KviKvsModuleFunctionCall * c, QString & szChan, bool bNoWarnings = false)
@@ -1407,7 +1407,7 @@ static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns an array of channel invite masks
 	@syntax:
-		<array> $chan.banexceptionlist([window_id])
+		<array> $chan.invitelist([window_id])
 	@description:
 		Returns an array of invite masks set on the channel identified by [window_id].[br]
 		If [window_id] is empty, the current window is used.[br]

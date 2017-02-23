@@ -10,7 +10,7 @@
    6. Configuring KVIrc
    7. Interactive CMake KVIrc configuration
    8. Compiling KVIrc
-   9. Compiling on OS X
+   9. Compiling on macOS
   10. Compiling on Windows
   11. Creating a KVIrc package
 
@@ -383,11 +383,11 @@
   -DCMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT=  (default: OFF, not cached)
     This will re-initialize the installation path to a good default.
     Following compilations should use the correct path value cached by CMake.
-    This flag is useful to solve MacOS X install problems.
+    This flag is useful to solve macOS install problems.
 
   -DWANT_UNIVERSAL_BINARY=  (default: OFF)
     Enables or disables the compilation of universal binaries
-    for the MacOS X platform.
+    for the macOS platform.
 
   -DWANT_PHONON=  (default: ON)
     Enables or disables Phonon audio backend support.
@@ -601,10 +601,10 @@
   in /etc/ld.so.conf.
 
 -------------------------------------------------------------------------------
-  9. Compiling on OS X
+  9. Compiling on macOS
 -------------------------------------------------------------------------------
 
-  There is a detailed compilation and installation HOW-TO for OS X systems
+  There is a detailed compilation and installation HOW-TO for macOS systems
   located in the doc directory. It's named INSTALL-MacOS.txt.
 
 -------------------------------------------------------------------------------

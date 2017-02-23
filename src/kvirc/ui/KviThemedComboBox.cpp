@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviThemedLineEdit.cpp
+//   File : KviThemedComboBox.cpp
 //   Creation date : Sun Jan 10 2010 12:17:00 by Fabio Bas
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -33,7 +33,7 @@
 
 #include <QPainter>
 #include <QLineEdit>
-#include <QStyleOptionFrameV2>
+#include <QStyleOptionFrame>
 #include <QKeyEvent>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -96,7 +96,7 @@ void KviThemedComboBox::paintEvent(QPaintEvent * event)
 		QRect r = rect();
 		QPalette pal = palette();
 
-		QStyleOptionFrameV2 option;
+		QStyleOptionFrame option;
 
 		option.initFrom(this);
 		option.rect = contentsRect();
@@ -105,7 +105,7 @@ void KviThemedComboBox::paintEvent(QPaintEvent * event)
 		option.state |= QStyle::State_Sunken;
 		if(le->isReadOnly())
 			option.state |= QStyle::State_ReadOnly;
-		option.features = QStyleOptionFrameV2::None;
+		option.features = QStyleOptionFrame::None;
 		style()->drawPrimitive(QStyle::PE_FrameLineEdit, &option, p, this);
 
 		r = style()->subElementRect(QStyle::SE_LineEditContents, &option, le);

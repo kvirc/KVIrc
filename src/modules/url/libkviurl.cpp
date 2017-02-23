@@ -442,9 +442,10 @@ void BanFrame::enableClicked()
 void BanFrame::addBan()
 {
 	bool ok = false;
-	QString * pText = new QString(QInputDialog::getText(this, __tr2qs("URL Ban List - KVIrc"), __tr2qs("Enter a URL to ban."), QLineEdit::Normal, QString(), &ok));
-	if(ok && !pText->isEmpty())
+	QString text = QInputDialog::getText(this, __tr2qs("URL Ban List - KVIrc"), __tr2qs("Enter a URL to ban."), QLineEdit::Normal, QString(), &ok);
+	if(ok && !text.isEmpty())
 	{
+		QString * pText = new QString(std::move(text));
 		g_BanList.insert(pText);
 		m_pBanList->addItem(*pText);
 	}

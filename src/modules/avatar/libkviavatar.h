@@ -2,7 +2,7 @@
 #define _LIBKVIAVATAR_H_
 //=============================================================================
 //
-//   File : libkviavatar.cpp
+//   File : libkviavatar.h
 //   Creation date : Thu Nov 12 02:32:59 2004 GMT by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

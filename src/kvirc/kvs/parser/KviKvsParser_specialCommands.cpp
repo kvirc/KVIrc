@@ -1221,12 +1221,6 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 		if((!i1) && (!e) && (!i2))
 		{
 			error(pForBegin, __tr2qs_ctx("Empty infinite 'for' loop: fix the script", "kvs"));
-			if(i1)
-				delete i1;
-			if(e)
-				delete e;
-			if(i2)
-				delete i2;
 			return nullptr;
 		}
 	} // else just an empty instruction

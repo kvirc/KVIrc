@@ -1,23 +1,23 @@
-# translation of about_es.po to spanish
-# KVIrc about module Spanish translation file
-# Copyright (C) egns
-# This file is distributed under the same license as the KVirc package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 #
-# Juanjo Alvarez <juanjux at yahoo.es>, 2003.
-# Christoph Thielecke <crissi99@gmx.de>, 2003.
-# egns <grannost at gmail.com>, 2009, 2011.
+# Translators:
+# Christoph Thielecke <crissi99@gmx.de>, 2003
+# egns <grannost at gmail.com>, 2009,2011
+# Juanjo Alvarez <juanjux at yahoo.es>, 2003
 msgid ""
 msgstr ""
-"Project-Id-Version: about_es\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2010-05-18 12:12+0200\n"
-"Last-Translator: \n"
-"Language: \n"
+"POT-Creation-Date: 2016-10-28 21:04+0200\n"
+"PO-Revision-Date: 2016-05-26 13:18+0000\n"
+"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
+"Language-Team: Spanish (http://www.transifex.com/kvirc/KVIrc/language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/about/AboutDialog.cpp:108
@@ -25,88 +25,96 @@ msgid "About"
 msgstr "Acerca de"
 
 #: src/modules/about/AboutDialog.cpp:79
-msgid "About KVIrc..."
-msgstr "Acerca de KVIrc..."
+msgid "About KVIrc"
+msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:136
+#: src/modules/about/AboutDialog.cpp:135
 msgid "Architecture"
 msgstr "Arquitectura"
 
-#: src/modules/about/AboutDialog.cpp:163
-msgid "Build Command"
-msgstr "Comando de compilación"
-
-#: src/modules/about/AboutDialog.cpp:143
-msgid "Build Date"
-msgstr "Fecha de compilación"
-
-#: src/modules/about/AboutDialog.cpp:167
-msgid "Build Flags"
-msgstr "Opciones de compilación"
-
-#: src/modules/about/AboutDialog.cpp:141
+#: src/modules/about/AboutDialog.cpp:148
 msgid "Build Info"
 msgstr "Información de compilación"
 
-#: src/modules/about/AboutDialog.cpp:159
-msgid "CPU Name"
-msgstr "Nombre de la CPU"
+#: src/modules/about/AboutDialog.cpp:170
+msgid "Build command"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:150
+msgid "Build date"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:174
+msgid "Build flags"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:166
+msgid "CPU name"
+msgstr ""
 
 #: src/modules/about/AboutDialog.cpp:80
 msgid "Close"
 msgstr "Cerrar"
 
-#: src/modules/about/AboutDialog.cpp:176
-msgid "Compiler Flags"
-msgstr "Opciones del compilador"
+#: src/modules/about/AboutDialog.cpp:183
+msgid "Compiler flags"
+msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:172
-msgid "Compiler Name"
-msgstr "Nombre del compilador"
+#: src/modules/about/AboutDialog.cpp:179
+msgid "Compiler name"
+msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:182
+#: src/modules/about/AboutDialog.cpp:197
 msgid "Executable Information"
 msgstr "Información del ejecutable"
+
+#: src/modules/about/AboutDialog.cpp:191
+msgid "Features"
+msgstr ""
 
 #: src/modules/about/AboutDialog.cpp:102
 msgid "Forged by the <b>KVIrc Development Team</b>"
 msgstr "Traído hasta ti por el <b>Equipo de desarrollo de KVIrc</b>"
 
-#: src/modules/about/AboutDialog.cpp:195
+#: src/modules/about/AboutDialog.cpp:209
 msgid "Honor && Glory"
 msgstr "Honor y gloria"
 
-#: src/modules/about/AboutDialog.cpp:221
+#: src/modules/about/AboutDialog.cpp:235
 msgid "License"
 msgstr "Licencia"
 
-#: src/modules/about/AboutDialog.cpp:214
+#: src/modules/about/AboutDialog.cpp:227
 msgid ""
-"Oops... Can't find the license file...\n"
+"Oops! Can't find the license file.\n"
 "It MUST be included in the distribution...\n"
 "Please report to <pragma at kvirc dot net>"
 msgstr ""
-"Ups... no puedo encontrar el archivo de la licencia...\n"
-"DEBE estar incluido en la distribución...\n"
-"Por favor, informa de este fallo a <pragma at kvirc dot net>"
 
-#: src/modules/about/AboutDialog.cpp:151
-msgid "Revision Number"
-msgstr "Número de revisión"
+#: src/modules/about/AboutDialog.cpp:143
+msgid "Qt theme"
+msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:122
+#: src/modules/about/AboutDialog.cpp:139 src/modules/about/AboutDialog.cpp:187
+msgid "Qt version"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:158
+msgid "Revision number"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:121
 msgid "Runtime Info"
 msgstr "Información en tiempo de ejecución"
 
-#: src/modules/about/AboutDialog.cpp:147
-msgid "Sources Date"
-msgstr "Fecha de las fuentes"
+#: src/modules/about/AboutDialog.cpp:154
+msgid "Sources date"
+msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:124
-#: src/modules/about/AboutDialog.cpp:155
-msgid "System Name"
-msgstr "Nombre del sistema"
+#: src/modules/about/AboutDialog.cpp:123 src/modules/about/AboutDialog.cpp:162
+msgid "System name"
+msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:132
-msgid "System Version"
-msgstr "Versión del sistema"
+#: src/modules/about/AboutDialog.cpp:131
+msgid "System version"
+msgstr ""

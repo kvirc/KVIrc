@@ -1,805 +1,980 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# This file is distributed under the same license as the KVIrc package.
+# 
+# Translators:
+# Sölve Svartskogen <solaizen@gmail.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2011-04-02 01:46+0100\n"
-"Last-Translator: B M <penteljapan@o2.pl>\n"
-"Language-Team: Polska <PL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2016-11-28 13:11+0100\n"
+"PO-Revision-Date: 2016-10-28 19:19+0000\n"
+"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
+"Language-Team: Polish (http://www.transifex.com/kvirc/KVIrc/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: POLAND\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: data/defscript/popups.kvs:545
-msgid "&Administrator"
-msgstr "&Udziel administratora"
-
-#: data/defscript/popups.kvs:468
-#: data/defscript/popups.kvs:603
-msgid "&Ban"
-msgstr "&Zablokuj"
-
-#: data/defscript/popups.kvs:531
-msgid "&Control"
-msgstr "&Kontrola"
-
-#: data/defscript/popups.kvs:550
-msgid "&Deadministrator"
-msgstr "&Zabierz administratora"
-
-#: data/defscript/popups.kvs:570
-msgid "&Dehalfop"
-msgstr "&Zabierz półoperatora"
-
-#: data/defscript/popups.kvs:560
-msgid "&Deop"
-msgstr "&Zabierz operatora"
-
-#: data/defscript/popups.kvs:540
-msgid "&Deowner"
-msgstr "&Zabierz właściciela"
-
-#: data/defscript/popups.kvs:565
-msgid "&Halfop"
-msgstr "&Udziel półoperatora"
-
-#: data/defscript/popups.kvs:653
-#: data/defscript/popups.kvs:759
-#: data/defscript/popups.kvs:1308
-msgid "&Highlight"
-msgstr "&Podświetlanie"
-
-#: data/defscript/popups.kvs:667
-#: data/defscript/popups.kvs:721
-msgid "&Hop"
-msgstr "&Wyjdź i wejdź"
-
-#: data/defscript/popups.kvs:1163
-msgid "&Ignore"
-msgstr "&Ignoruj"
-
-#: data/defscript/popups.kvs:501
-#: data/defscript/popups.kvs:786
-#: data/defscript/popups.kvs:1125
-#: data/defscript/popups.kvs:1266
-msgid "&Information"
-msgstr "&Informacja"
-
-#: data/defscript/popups.kvs:731
-msgid "&Join"
-msgstr "&Dołącz"
-
-#: data/defscript/popups.kvs:714
-#: data/defscript/popups.kvs:781
-msgid "&Join Channels..."
-msgstr "&Dołącz do kanałów..."
-
-#: data/defscript/popups.kvs:587
-#: data/defscript/popups.kvs:594
-msgid "&Kick"
-msgstr "&Wyrzuć"
-
-#: data/defscript/popups.kvs:620
-msgid "&Kick/Ban"
-msgstr "&Wyrzuć/Zablokuj"
-
-#: data/defscript/popups.kvs:555
-msgid "&Op"
-msgstr "&Udziel operatora"
-
-#: data/defscript/popups.kvs:916
-msgid "&Page"
-msgstr "&Przywołanie"
-
-#: data/defscript/popups.kvs:672
-#: data/defscript/popups.kvs:726
-msgid "&Part"
-msgstr "&Opuszczenie"
-
-# nie trzeba odstepu, wszystko jest ok
-#: data/defscript/popups.kvs:638
-#: data/defscript/popups.kvs:1293
-msgid "&Query"
-msgstr "&Rozmowa z"
-
-#: data/defscript/popups.kvs:651
-#: data/defscript/popups.kvs:1165
-#: data/defscript/popups.kvs:1306
-msgid "&Registration"
-msgstr "&Rejestracja"
-
-#: data/defscript/popups.kvs:575
-msgid "&Voice"
-msgstr "&Udziel głosu"
-
-#: data/defscript/aliases.kvs:103
-msgid "-a: send notice to all channel admins"
-msgstr "-a: wysyła ogłoszenie do wszystkich administratorów kanału"
-
-#: data/defscript/aliases.kvs:105
-msgid "-h: send notice to all channel halfops"
-msgstr "-h: wysyła ogłoszenie do wszystkich półoperatorów kanału"
-
-#: data/defscript/aliases.kvs:101
-msgid "-m: send a message instead of a notice"
-msgstr "-m: wysyła wiadomość zamiast ogłoszenia"
-
-#: data/defscript/aliases.kvs:104
-msgid "-o: send notice to all channel ops"
-msgstr "-o: wysyła ogłoszenie do wszystkich operatorów kanału"
-
-#: data/defscript/aliases.kvs:107
-msgid "-q: quiet mode"
-msgstr "-q: tryb cichy"
-
-#: data/defscript/aliases.kvs:106
-msgid "-v: send notice to all channel voices"
-msgstr "-v: wysyła ogłoszenie do wszystkich użytkowników mających prawo głosu"
-
-#: data/defscript/aliases.kvs:102
-msgid "-w: send notice to all channel owners"
-msgstr "-w: wysyła ogłoszenie do wszystkich właścicieli kanału"
-
-#: data/defscript/popups.kvs:513
-#: data/defscript/popups.kvs:1137
-#: data/defscript/popups.kvs:1278
-msgid "/WHO ?s"
+#: data/defscript/actions.kvs:5
+msgid "Option Controllers"
 msgstr ""
 
-#: data/defscript/popups.kvs:503
-#: data/defscript/popups.kvs:1127
-#: data/defscript/popups.kvs:1268
-msgid "/WHOIS ?s"
+#: data/defscript/actions.kvs:5
+msgid ""
+"Opens a control dialog for easy CTCP ignore and joins/parts/quits "
+"management."
 msgstr ""
 
-#: data/defscript/popups.kvs:493
-#: data/defscript/popups.kvs:1118
-#: data/defscript/popups.kvs:1259
-#, fuzzy
-msgid "/WHOIS ?s (idle time)"
-msgstr "czas bezczynności"
-
-#: data/defscript/popups.kvs:508
-#: data/defscript/popups.kvs:1132
-#: data/defscript/popups.kvs:1273
-msgid "/WHOWAS ?s"
+#: data/defscript/actions.kvs:41
+msgid "Option Controllers - KVIrc"
 msgstr ""
 
-#: data/defscript/popups.kvs:398
-msgid "Add to Notify"
-msgstr "Dodaj do powiadomień"
+#: data/defscript/actions.kvs:58
+msgid "CTCP Ignore Controllers"
+msgstr ""
 
-#: data/defscript/popups.kvs:32
-#: data/defscript/popups.kvs:65
-msgid "Always Highlight"
-msgstr "Zawsze podświetlaj"
+#: data/defscript/actions.kvs:68
+msgid "Enable ignore for CTCP PING"
+msgstr ""
 
-#: data/defscript/popups.kvs:1409
-msgid "Automatically Join Channel"
-msgstr "Automatyczne dołączanie do kanału"
+#: data/defscript/actions.kvs:69
+msgid "When checked, all CTCP PING requests are ignored."
+msgstr ""
 
-#: data/defscript/popups.kvs:408
-msgid "Avatar"
-msgstr "Awatar"
+#: data/defscript/actions.kvs:78
+msgid "Disabled ignore for CTCP PING"
+msgstr ""
 
-#: data/defscript/popups.kvs:458
-msgid "Ban"
-msgstr "Zablokuj"
+#: data/defscript/actions.kvs:83
+msgid "Enabled ignore for CTCP PING"
+msgstr ""
 
-#: data/defscript/popups.kvs:594
-#: data/defscript/popups.kvs:620
-#: data/defscript/popups.kvs:916
-msgid "Cancel"
-msgstr "Anuluj"
+#: data/defscript/actions.kvs:90
+msgid "Enable ignore for CTCP FINGER"
+msgstr ""
 
-#: data/defscript/aliases.kvs:445
-msgid "Channel Administrator"
-msgstr "Administrator kanału"
+#: data/defscript/actions.kvs:91
+msgid "When checked, all CTCP FINGER requests are ignored."
+msgstr ""
 
-#: data/defscript/aliases.kvs:447
-msgid "Channel Operator"
-msgstr "Operator kanału"
+#: data/defscript/actions.kvs:100
+msgid "Disabled ignore for CTCP FINGER"
+msgstr ""
 
-#: data/defscript/aliases.kvs:443
-msgid "Channel Owner"
-msgstr "Właściciel kanału"
+#: data/defscript/actions.kvs:105
+msgid "Enabled ignore for CTCP FINGER"
+msgstr ""
 
-#: data/defscript/popups.kvs:712
-#: data/defscript/popups.kvs:777
-msgid "Channels"
-msgstr "Kanały"
+#: data/defscript/actions.kvs:112
+msgid "Enable ignore for CTCP VERSION"
+msgstr ""
 
-#: data/defscript/popups.kvs:937
-msgid "Chat with"
-msgstr "Czat bezpośredni z"
+#: data/defscript/actions.kvs:113
+msgid "When checked, all CTCP VERSION requests are ignored."
+msgstr ""
 
-#: data/defscript/popups.kvs:412
-msgid "Choose Avatar Image File"
-msgstr "Wybierz plik obrazu awataru"
+#: data/defscript/actions.kvs:122
+msgid "Disabled ignore for CTCP VERSION"
+msgstr ""
 
-#: data/defscript/popups.kvs:1223
-#: data/defscript/popups.kvs:1231
-msgid "Choose Log Filename"
-msgstr "Wybierz plik dziennikia"
+#: data/defscript/actions.kvs:127
+msgid "Enabled ignore for CTCP VERSION"
+msgstr ""
 
-#: data/defscript/popups.kvs:410
-msgid "Choose..."
-msgstr "Wybierz..."
+#: data/defscript/actions.kvs:134
+msgid "Enable ignore for CTCP USERINFO"
+msgstr ""
 
-#: data/defscript/popups.kvs:766
-#: data/defscript/popups.kvs:869
-#: data/defscript/popups.kvs:1085
-#: data/defscript/popups.kvs:1174
-#: data/defscript/popups.kvs:1319
-msgid "Clear Buffer"
-msgstr "Wyczyść bufor"
+#: data/defscript/actions.kvs:135
+msgid "When checked, all CTCP USERINFO requests are ignored."
+msgstr ""
 
-#: data/defscript/popups.kvs:426
-msgid "Clear Default"
-msgstr "Wyczyść domyślny"
+#: data/defscript/actions.kvs:144
+msgid "Disabled ignore for CTCP USERINFO"
+msgstr ""
 
-#: data/defscript/popups.kvs:1397
+#: data/defscript/actions.kvs:149
+msgid "Enabled ignore for CTCP USERINFO"
+msgstr ""
+
+#: data/defscript/actions.kvs:156
+msgid "Enable ignore for CTCP CLIENTINFO"
+msgstr ""
+
+#: data/defscript/actions.kvs:157
+msgid "When checked, all CTCP CLIENTINFO requests are ignored."
+msgstr ""
+
+#: data/defscript/actions.kvs:166
+msgid "Disabled ignore for CTCP CLIENTINFO"
+msgstr ""
+
+#: data/defscript/actions.kvs:171
+msgid "Enabled ignore for CTCP CLIENTINFO"
+msgstr ""
+
+#: data/defscript/actions.kvs:178
+msgid "Enable ignore for CTCP SOURCE"
+msgstr ""
+
+#: data/defscript/actions.kvs:179
+msgid "When checked, all CTCP SOURCE requests are ignored."
+msgstr ""
+
+#: data/defscript/actions.kvs:188
+msgid "Disabled ignore for CTCP SOURCE"
+msgstr ""
+
+#: data/defscript/actions.kvs:193
+msgid "Enabled ignore for CTCP SOURCE"
+msgstr ""
+
+#: data/defscript/actions.kvs:200
+msgid "Enable ignore for CTCP TIME"
+msgstr ""
+
+#: data/defscript/actions.kvs:201
+msgid "When checked, all CTCP TIME requests are ignored."
+msgstr ""
+
+#: data/defscript/actions.kvs:210
+msgid "Disabled ignore for CTCP TIME"
+msgstr ""
+
+#: data/defscript/actions.kvs:215
+msgid "Enabled ignore for CTCP TIME"
+msgstr ""
+
+#: data/defscript/actions.kvs:222
+msgid "Enable ignore for CTCP PAGE"
+msgstr ""
+
+#: data/defscript/actions.kvs:223
+msgid "When checked, all CTCP PAGE requests are ignored."
+msgstr ""
+
+#: data/defscript/actions.kvs:232
+msgid "Disabled ignore for CTCP PAGE"
+msgstr ""
+
+#: data/defscript/actions.kvs:237
+msgid "Enabled ignore for CTCP PAGE"
+msgstr ""
+
+#: data/defscript/actions.kvs:244
+msgid "Enable ignore for CTCP AVATAR"
+msgstr ""
+
+#: data/defscript/actions.kvs:245
+msgid "When checked, all CTCP AVATAR requests are ignored."
+msgstr ""
+
+#: data/defscript/actions.kvs:254
+msgid "Disabled ignore for CTCP AVATAR"
+msgstr ""
+
+#: data/defscript/actions.kvs:259
+msgid "Enabled ignore for CTCP AVATAR"
+msgstr ""
+
+#: data/defscript/actions.kvs:266
+msgid "Enable ignore for CTCP DCC"
+msgstr ""
+
+#: data/defscript/actions.kvs:267
+msgid "When checked, all CTCP DCC requests are ignored."
+msgstr ""
+
+#: data/defscript/actions.kvs:276
+msgid "Disabled ignore for CTCP DCC"
+msgstr ""
+
+#: data/defscript/actions.kvs:281
+msgid "Enabled ignore for CTCP DCC"
+msgstr ""
+
+#: data/defscript/actions.kvs:289
+msgid "Message Suppression Controllers"
+msgstr ""
+
+#: data/defscript/actions.kvs:299
+msgid "Enable join message suppression"
+msgstr ""
+
+#: data/defscript/actions.kvs:300
+msgid "When checked, all join messages are hidden."
+msgstr ""
+
+#: data/defscript/actions.kvs:309
+msgid "Disabled join message suppression"
+msgstr ""
+
+#: data/defscript/actions.kvs:314
+msgid "Enabled join message suppression"
+msgstr ""
+
+#: data/defscript/actions.kvs:322
+msgid "Enable part message suppression"
+msgstr ""
+
+#: data/defscript/actions.kvs:323 data/defscript/actions.kvs:344
+msgid "When checked, all part messages are hidden."
+msgstr ""
+
+#: data/defscript/actions.kvs:331
+msgid "Disabled part message suppression"
+msgstr ""
+
+#: data/defscript/actions.kvs:336
+msgid "Enabled part message suppression"
+msgstr ""
+
+#: data/defscript/actions.kvs:343
+msgid "Enable quit message suppression"
+msgstr ""
+
+#: data/defscript/actions.kvs:353
+msgid "Disabled quit message suppression"
+msgstr ""
+
+#: data/defscript/actions.kvs:358
+msgid "Enabled quit message suppression"
+msgstr ""
+
+#: data/defscript/actions.kvs:370 data/defscript/popups.kvs:159
+#: data/defscript/popups.kvs:330 data/defscript/popups.kvs:631
+#: data/defscript/popups.kvs:1228
 msgid "Close"
 msgstr "Zamknij"
 
-#: data/defscript/popups.kvs:1477
-msgid "Close All Dead Channels"
-msgstr "Zamknij wszystkie martwe kanały"
-
-#: data/defscript/popups.kvs:1483
-msgid "Close All Dead Queries"
-msgstr "Zamknij wszystkie martwe rozmowy"
-
-#: data/defscript/popups.kvs:1464
-msgid "Close All Queries"
-msgstr "Zamknij wszystkie rozmowy"
-
-#: data/defscript/popups.kvs:630
-msgid "Configure ban mask..."
-msgstr "Konfiguruj maskę zakazu..."
-
-#: data/defscript/popups.kvs:690
-msgid "Copy Channel Address"
-msgstr "Kopiuj adres kanału"
-
-#: data/defscript/popups.kvs:761
-msgid "Copy Channel URL to Clipboard"
-msgstr "Kopiuj URL kanału do schowka"
-
-#: data/defscript/popups.kvs:437
-msgid "Copy To Clipboard"
-msgstr "Kopiuj do schowka"
-
-#: data/defscript/popups.kvs:580
-msgid "D&evoice"
-msgstr "Z&abierz prawo głosu"
-
-#: data/defscript/popups.kvs:520
-#: data/defscript/popups.kvs:1144
-msgid "DNS for"
-msgstr "DNS dla"
-
-#: data/defscript/popups.kvs:990
-msgid "Default"
-msgstr "Domyślne"
-
-#: data/defscript/popups.kvs:1386
-msgid "Dock"
-msgstr "Doczep okno"
-
-#: data/defscript/popups.kvs:386
-msgid "Edit Registration..."
-msgstr "Edycja rejestracji..."
-
-#: data/defscript/popups.kvs:118
-msgid "Enable Ignore"
-msgstr "Włącz ignorowanie"
-
-#: data/defscript/popups.kvs:594
-msgid "Enter a kick reason"
-msgstr "Wprowadź tutaj powód wyrzucenia"
-
-# zakazu?
-#: data/defscript/popups.kvs:620
-msgid "Enter a kick/ban reason"
-msgstr "Wprowadź tutaj powód wyrzucenia/zablokowania"
-
-#: data/defscript/popups.kvs:916
-msgid "Enter the message text"
-msgstr "Wprowadź tutaj tekst wiadomości"
-
-#: data/defscript/popups.kvs:1197
-msgid "Flush Log File"
-msgstr "Nadpisz plik dziennika"
-
-#: data/defscript/aliases.kvs:449
-msgid "Half Operator"
-msgstr "Półoperator"
-
-#: data/defscript/default.kvs:37
-msgid "Happy ircing :)"
-msgstr "Miłego ircowania :)"
-
-#: data/defscript/toolbars.kvs:22
-msgid "Help"
-msgstr "Pomoc"
-
-#: data/defscript/popups.kvs:34
-#: data/defscript/popups.kvs:39
-#: data/defscript/popups.kvs:44
-#: data/defscript/popups.kvs:49
-#: data/defscript/popups.kvs:54
-#: data/defscript/popups.kvs:59
-msgid "Highlight as"
-msgstr "Podświetlaj jako"
-
-#: data/defscript/toolbars.kvs:3
-msgid "IRC Context"
-msgstr "Kontekst IRC"
-
-#: data/defscript/popups.kvs:655
-#: data/defscript/popups.kvs:1310
-msgid "Ig&nore"
-msgstr "Ig&noruj"
-
-#: data/defscript/popups.kvs:125
-#: data/defscript/popups.kvs:132
-#: data/defscript/popups.kvs:139
-#: data/defscript/popups.kvs:146
-#: data/defscript/popups.kvs:153
-#: data/defscript/popups.kvs:160
-#: data/defscript/popups.kvs:167
-#: data/defscript/popups.kvs:174
-#: data/defscript/popups.kvs:181
-#: data/defscript/popups.kvs:188
-#: data/defscript/popups.kvs:195
-#: data/defscript/popups.kvs:202
-#: data/defscript/popups.kvs:209
-#: data/defscript/popups.kvs:216
-#: data/defscript/popups.kvs:223
-#: data/defscript/popups.kvs:230
-#: data/defscript/popups.kvs:237
-#: data/defscript/popups.kvs:244
-#: data/defscript/popups.kvs:251
-#: data/defscript/popups.kvs:258
-#: data/defscript/popups.kvs:265
-#: data/defscript/popups.kvs:272
-#: data/defscript/popups.kvs:279
-#: data/defscript/popups.kvs:286
-#: data/defscript/popups.kvs:293
-#: data/defscript/popups.kvs:300
-#: data/defscript/popups.kvs:307
-msgid "Ignore as"
-msgstr "Ignoruj jako"
-
-#: data/defscript/popups.kvs:123
-msgid "Ignore as..."
-msgstr "Ignoruj jako..."
-
-#: data/defscript/popups.kvs:1216
-#: data/defscript/popups.kvs:1229
-msgid "Include Existing Buffer"
-msgstr "Dołączając istniejący bufor"
-
-#: data/defscript/popups.kvs:592
-msgid "K&ick"
-msgstr "W&yrzuć"
-
-#: data/defscript/popups.kvs:594
-msgid "Kick Reason"
-msgstr "Powód wyrzucenia"
-
-#: data/defscript/popups.kvs:613
-#: data/defscript/popups.kvs:618
-msgid "Kick/Ban"
-msgstr "Wyrzuć/Zablokuj"
-
-#: data/defscript/popups.kvs:620
-msgid "Kick/Ban Reason"
-msgstr "Wyrzuć/Zablokuj powód"
-
-#: data/defscript/popups.kvs:1211
-#: data/defscript/popups.kvs:1216
-msgid "Log To Default File"
-msgstr "Zapisz dziennik w domyślnym pliku"
-
-#: data/defscript/popups.kvs:1221
-#: data/defscript/popups.kvs:1229
-msgid "Log To..."
-msgstr "Zapisz dziennik w..."
-
-#: data/defscript/events.kvs:68
-#: data/defscript/events.kvs:76
-#: data/defscript/events.kvs:84
-#: data/defscript/popups.kvs:1401
-msgid "Logging"
-msgstr "Dziennik"
-
-#: data/defscript/popups.kvs:1195
-msgid "Logging to"
-msgstr "Zapisywanie dziennika do"
-
-#: data/defscript/popups.kvs:1516
-msgid "Look Up "
-msgstr "Sprawdź "
-
-#: data/defscript/popups.kvs:525
-#: data/defscript/popups.kvs:1149
-msgid "Mask for"
-msgstr "Maska dla"
-
-#: data/defscript/popups.kvs:1392
-msgid "Maximize"
-msgstr "Maksymalizuj"
-
-#: data/defscript/popups.kvs:1391
-msgid "Minimize"
-msgstr "Minimalizuj"
-
 #: data/defscript/aliases.kvs:21
 msgid "Missing target, no action taken"
-msgstr ""
+msgstr "Brak celu, akcja nie została podjęta"
 
-#: data/defscript/popups.kvs:462
-#: data/defscript/popups.kvs:1065
-#: data/defscript/popups.kvs:1112
-#: data/defscript/popups.kvs:1254
-msgid "Multiple Users"
-msgstr "Wielu użytkowników"
-
-#: data/defscript/aliases.kvs:498
-msgid "No such user:"
-msgstr "Nie ma takiego użytkownika:"
-
-#: data/defscript/aliases.kvs:455
-msgid "Normal User"
-msgstr "Normalny użytkownik"
-
-#: data/defscript/popups.kvs:1209
-msgid "Not Logging"
-msgstr "Dziennik zatrzymany"
-
-#: data/defscript/popups.kvs:657
-#: data/defscript/popups.kvs:752
-#: data/defscript/popups.kvs:1078
-#: data/defscript/popups.kvs:1167
-msgid "Notify Avatar"
-msgstr "Ogłoś awatar"
-
-#: data/defscript/popups.kvs:1312
-msgid "Notify avatar"
-msgstr "Ogłoś awatar"
-
-#: data/defscript/popups.kvs:535
-msgid "O&wner"
-msgstr "U&czyń właścicielem"
-
-#: data/defscript/popups.kvs:1523
-msgid "Open "
-msgstr "Otwórz"
-
-#: data/defscript/toolbars.kvs:15
-msgid "Options"
-msgstr "Opcje"
-
-#: data/defscript/aliases.kvs:115
-msgid "Parameter message missing"
-msgstr "Brakujący parametr wiadomości"
-
-#: data/defscript/popups.kvs:1457
-msgid "Part All Channels"
-msgstr "Opuść wszystkie kanały"
-
-#: data/defscript/popups.kvs:353
-msgid "Quick Registration"
-msgstr "Szybka rejestracja"
-
-#: data/defscript/popups.kvs:355
-#: data/defscript/popups.kvs:360
-#: data/defscript/popups.kvs:365
-#: data/defscript/popups.kvs:370
-#: data/defscript/popups.kvs:375
-#: data/defscript/popups.kvs:380
-msgid "Register as"
-msgstr "Rejestruj jako"
-
-#: data/defscript/popups.kvs:348
-msgid "Register..."
-msgstr "Rejestruj..."
-
-#: data/defscript/popups.kvs:1470
-#, fuzzy
-msgid "Rejoin All Dead Channels"
-msgstr "Zamknij wszystkie martwe kanały"
-
-#: data/defscript/popups.kvs:403
-msgid "Remove from Notify"
-msgstr "Usuń z powiadomień"
-
-#: data/defscript/popups.kvs:1393
-msgid "Restore"
-msgstr "Przywróć (okno)"
-
-#: data/defscript/popups.kvs:942
-msgid "Reverse Chat with"
-msgstr "Odwrotny Czat z"
-
-#: data/defscript/popups.kvs:964
-msgid "Reverse Send to"
-msgstr "Odwrotne wysyłanie do"
-
-#: data/defscript/toolbars.kvs:30
-msgid "Scripting"
-msgstr "Skrypty"
-
-#: data/defscript/popups.kvs:947
-msgid "Secure Chat with"
-msgstr "Bezpieczny czat z"
-
-#: data/defscript/popups.kvs:969
-msgid "Secure Reverse Send to"
-msgstr "Bezpieczne odwrotne wysłanie do"
-
-#: data/defscript/popups.kvs:959
-msgid "Secure send to"
-msgstr "Bezpieczne wysyłanie do"
-
-#: data/defscript/popups.kvs:954
-msgid "Send to"
-msgstr "Wyślij do"
-
-#: data/defscript/aliases.kvs:150
-msgid "Sending wallop to"
-msgstr "Wysyłanie wallop do"
-
-#: data/defscript/popups.kvs:421
-msgid "Set as Default"
-msgstr "Ustaw jako domyślne"
-
-#: data/defscript/popups.kvs:1403
-#, fuzzy
-msgid "Set window props as default"
-msgstr "Ustaw jako domyślne"
-
-#: data/defscript/popups.kvs:27
-#: data/defscript/popups.kvs:91
-msgid "Start Highlighting (Local)"
-msgstr "Rozpocznij podświetlanie (lokalne)"
-
-#: data/defscript/popups.kvs:1440
-msgid "Stop Auto-Joining Channel on Network '?s'"
-msgstr "Zatrzymaj automatyczne dołączanie do kanału w sieci '?s'"
-
-#: data/defscript/popups.kvs:1427
-msgid "Stop Auto-Joining Channel on Server '?s'"
-msgstr "Zatrzymaj automatyczne dołączanie do kanału na serwerze '?s'"
-
-#: data/defscript/popups.kvs:70
-msgid "Stop Highlighting"
-msgstr "Zatrzymaj podświetlanie"
-
-#: data/defscript/popups.kvs:22
-#: data/defscript/popups.kvs:86
-msgid "Stop Highlighting (Local)"
-msgstr "Zatrzymaj podświetlanie (lokalne)"
-
-#: data/defscript/popups.kvs:1204
-msgid "Stop Logging"
-msgstr "Zatrzymaj dziennik"
-
-#: data/defscript/popups.kvs:981
-msgid "TDCC Reverse Send to"
-msgstr "Wyślij odwrotnie TDCC do"
-
-#: data/defscript/popups.kvs:976
-msgid "TDCC Send to"
-msgstr "Wyślij TDCC do"
-
-#: data/defscript/popups.kvs:1528
-msgid "Telnet to "
-msgstr "Telnet do "
-
-#: data/defscript/default.kvs:34
-msgid "The default script has been successfully installed."
-msgstr "Domyślny skrypt został pomyślnie zainstalowany."
-
-#: data/defscript/aliases.kvs:245
-#: data/defscript/aliases.kvs:438
-msgid "This is not a channel window"
-msgstr "To nie jest okno kanału"
-
-#: data/defscript/default.kvs:35
-msgid "To connect to a server, type /server <server name>"
-msgstr "Aby połączyć się z serwerem, wpisz /server <nazwa serwera>"
-
-#: data/defscript/popups.kvs:1535
-msgid "Traceroute to "
-msgstr "Traceroute do "
-
-#: data/defscript/popups.kvs:1541
-msgid "Traceroute6 to "
-msgstr "Traceroute6 do "
-
-#: data/defscript/aliases.kvs:116
-msgid "Type /gnotice for help"
-msgstr "Wpisz /gnotice dla uzyskania pomocy"
-
-#: data/defscript/popups.kvs:1387
-msgid "Undock"
-msgstr "Odczep okno"
-
-#: data/defscript/popups.kvs:1497
-msgid "Unhighlight All Channels"
-msgstr "Niepodświetlaj wszystkich kanałów"
-
-#: data/defscript/popups.kvs:1503
-msgid "Unhighlight All Queries"
-msgstr "Niepodświetlaj wszystkich rozmów"
-
-#: data/defscript/popups.kvs:1491
-msgid "Unhighlight All Windows"
-msgstr "Niepodświetlaj wszystkich okien"
-
-#: data/defscript/popups.kvs:315
-msgid "Unignore"
-msgstr "Przestań ignorować"
-
-#: data/defscript/popups.kvs:391
-msgid "Unregister"
-msgstr "Wyrejestruj"
-
-#: data/defscript/aliases.kvs:420
-msgid "Unsupported type:"
-msgstr "Niewspierany typ:"
-
-#: data/defscript/aliases.kvs:100
-#: data/defscript/aliases.kvs:145
+#: data/defscript/aliases.kvs:111 data/defscript/aliases.kvs:165
 msgid "Usage"
 msgstr "Użycie"
 
-#: data/defscript/aliases.kvs:185
-#: data/defscript/aliases.kvs:197
-#: data/defscript/aliases.kvs:209
-#: data/defscript/aliases.kvs:224
-#: data/defscript/aliases.kvs:238
-#: data/defscript/aliases.kvs:320
-#: data/defscript/aliases.kvs:362
-#: data/defscript/aliases.kvs:432
-#: data/defscript/aliases.kvs:487
+#: data/defscript/aliases.kvs:111
+msgid "channel"
+msgstr "kanał"
+
+#: data/defscript/aliases.kvs:111 data/defscript/aliases.kvs:165
+msgid "message"
+msgstr "wiadomość"
+
+#: data/defscript/aliases.kvs:112
+msgid "-m: send a message instead of a notice"
+msgstr "-m: wysyła wiadomość zamiast ogłoszenia"
+
+#: data/defscript/aliases.kvs:113
+msgid "-w: send notice to all channel owners"
+msgstr "-w: wysyła ogłoszenie do wszystkich właścicieli kanału"
+
+#: data/defscript/aliases.kvs:114
+msgid "-a: send notice to all channel admins"
+msgstr "-a: wysyła ogłoszenie do wszystkich administratorów kanału"
+
+#: data/defscript/aliases.kvs:115
+msgid "-o: send notice to all channel ops"
+msgstr "-o: wysyła ogłoszenie do wszystkich operatorów kanału"
+
+#: data/defscript/aliases.kvs:116
+msgid "-h: send notice to all channel halfops"
+msgstr "-h: wysyła ogłoszenie do wszystkich półoperatorów kanału"
+
+#: data/defscript/aliases.kvs:117
+msgid "-v: send notice to all channel voices"
+msgstr "-v: wysyła ogłoszenie do wszystkich użytkowników mających prawo głosu"
+
+#: data/defscript/aliases.kvs:118
+msgid "-q: quiet mode"
+msgstr "-q: tryb cichy"
+
+#: data/defscript/aliases.kvs:126
+msgid "Parameter message missing"
+msgstr "Brakujący parametr wiadomości"
+
+#: data/defscript/aliases.kvs:127
+msgid "Type /gnotice for help"
+msgstr "Wpisz /gnotice, by uzyskać pomoc"
+
+#: data/defscript/aliases.kvs:170
+msgid "Sending wallop to"
+msgstr "Wysyłanie wallop do"
+
+#: data/defscript/aliases.kvs:217 data/defscript/aliases.kvs:231
+#: data/defscript/aliases.kvs:245 data/defscript/aliases.kvs:262
+#: data/defscript/aliases.kvs:280 data/defscript/aliases.kvs:382
+#: data/defscript/aliases.kvs:425 data/defscript/aliases.kvs:506
+#: data/defscript/aliases.kvs:574
 msgid "Usage:"
 msgstr "Użycie:"
 
-#: data/defscript/aliases.kvs:453
-msgid "User Operator"
-msgstr "Użytkownik operator"
+#: data/defscript/aliases.kvs:281
+msgid "reason"
+msgstr "powód"
 
-#: data/defscript/aliases.kvs:451
+#: data/defscript/aliases.kvs:287 data/defscript/aliases.kvs:512
+msgid "This is not a channel window"
+msgstr "To nie jest okno kanału"
+
+#: data/defscript/aliases.kvs:494
+msgid "Unsupported type:"
+msgstr "Niewspierany typ:"
+
+#: data/defscript/aliases.kvs:518
+msgid "Channel Owner"
+msgstr "Właściciel kanału"
+
+#: data/defscript/aliases.kvs:522
+msgid "Channel Administrator"
+msgstr "Administrator kanału"
+
+#: data/defscript/aliases.kvs:526
+msgid "Channel Operator"
+msgstr "Operator kanału"
+
+#: data/defscript/aliases.kvs:530
+msgid "Half Operator"
+msgstr "Półoperator"
+
+#: data/defscript/aliases.kvs:534
 msgid "Voice"
 msgstr "Głos"
 
-#: data/defscript/popups.kvs:988
-msgid "Voice Chat"
-msgstr "Czat głosowy"
+#: data/defscript/aliases.kvs:538
+msgid "User Operator"
+msgstr "Użytkownik operator"
 
-#: data/defscript/popups.kvs:1419
-msgid "When Connecting to Network '?s'"
-msgstr "Podczas łączenia się z siecią '?s'"
+#: data/defscript/aliases.kvs:542
+msgid "Normal User"
+msgstr "Normalny użytkownik"
 
-#: data/defscript/popups.kvs:1412
-msgid "When Connecting to Server '?s'"
-msgstr "Podczas łączenia się z serwerem '?s'"
-
-#: data/defscript/toolbars.kvs:40
-msgid "Window operations"
-msgstr "Operacje na oknach"
-
-#: data/defscript/popups.kvs:592
-#: data/defscript/popups.kvs:618
-msgid "With..."
-msgstr "z ..."
-
-#: data/defscript/aliases.kvs:481
-msgid "You must be connected to a server"
-msgstr "Musisz być połączony z serwerem"
-
-#: data/defscript/aliases.kvs:475
+#: data/defscript/aliases.kvs:562
 msgid "You must use DNS in an IRC context"
 msgstr "Musisz użyć DNS w kontekście IRC"
 
-#: data/defscript/popups.kvs:775
-msgid "You're not connected to a server"
-msgstr "Nie połączono z serwerem"
+#: data/defscript/aliases.kvs:568
+msgid "You must be connected to a server"
+msgstr "Musisz być połączony z serwerem"
+
+#: data/defscript/aliases.kvs:585
+msgid "No such user:"
+msgstr "Nie ma takiego użytkownika:"
 
 #: data/defscript/classes.kvs:18
 msgid ""
-"[Installer] Error: the first argument of copyFiles must be a source directory"
-msgstr ""
+"[Installer] Error: the first argument of copyFiles must be a source "
+"directory"
+msgstr "[Instalator] Błąd: pierwszy argument copyFiles musi być katalogiem źródłowym"
 
 #: data/defscript/classes.kvs:24
 msgid ""
 "[Installer] Error: the second argument of copyFiles must be a file name or "
 "file regexp"
-msgstr ""
+msgstr "[Instalator] Błąd: drugi argument copyFiles musi być nazwą pliku lub wyrażeniem regularnym"
 
 #: data/defscript/classes.kvs:30
 msgid ""
 "[Installer] Error: the third argument of copyFiles must be a destination "
 "directory"
+msgstr "[Instalator] Błąd: trzeci argument copyFiles musi być katalogiem docelowym"
+
+#: data/defscript/default.kvs:35
+msgid "The default script has been successfully installed."
+msgstr "Domyślny skrypt został pomyślnie zainstalowany."
+
+#: data/defscript/default.kvs:36
+msgid "To connect to a server, type /server <server name>"
+msgstr "Aby połączyć się z serwerem, wpisz /server <nazwa serwera>"
+
+#: data/defscript/default.kvs:38
+msgid "Happy ircing :)"
+msgstr "Miłego ircowania :)"
+
+#: data/defscript/events.kvs:87 data/defscript/events.kvs:100
+#: data/defscript/events.kvs:134 data/defscript/popups.kvs:657
+msgid "Logging"
+msgstr "Dziennik"
+
+#: data/defscript/events.kvs:92 data/defscript/events.kvs:105
+msgid "Option controllers"
 msgstr ""
 
-#: data/defscript/aliases.kvs:100
-msgid "channel"
-msgstr "kanał"
+#: data/defscript/popups.kvs:22 data/defscript/popups.kvs:1385
+msgid "Stop Highlighting (Local)"
+msgstr "Zatrzymaj podświetlanie (lokalne)"
 
-#: data/defscript/popups.kvs:339
-msgid "has a default avatar"
-msgstr "ma domyślny awatar"
+#: data/defscript/popups.kvs:27 data/defscript/popups.kvs:1390
+msgid "Start Highlighting (Local)"
+msgstr "Rozpocznij podświetlanie (lokalne)"
 
-#: data/defscript/popups.kvs:107
-msgid "is being ignored"
-msgstr "jest ignorowany"
+#: data/defscript/popups.kvs:32 data/defscript/popups.kvs:71
+msgid "Always Highlight"
+msgstr "Zawsze podświetlaj"
 
-#: data/defscript/popups.kvs:336
-msgid "is in the notify list"
-msgstr "jest na liście powiadomień"
+#: data/defscript/popups.kvs:34 data/defscript/popups.kvs:40
+#: data/defscript/popups.kvs:46 data/defscript/popups.kvs:52
+#: data/defscript/popups.kvs:58 data/defscript/popups.kvs:64
+msgid "Highlight As"
+msgstr "Podświetlaj jako"
 
-#: data/defscript/popups.kvs:108
-#: data/defscript/popups.kvs:112
-msgid "is not being ignored"
-msgstr "NIE jest ignorowany"
+#: data/defscript/popups.kvs:76
+msgid "Stop Highlighting"
+msgstr "Zatrzymaj podświetlanie"
 
-#: data/defscript/popups.kvs:342
-msgid "is not registered"
-msgstr "nie jest zarejestrowany"
+#: data/defscript/popups.kvs:97 data/defscript/popups.kvs:138
+#: data/defscript/popups.kvs:786 data/defscript/popups.kvs:1069
+msgid "Multiple Users"
+msgstr "Wielu użytkowników"
 
-#: data/defscript/popups.kvs:333
-msgid "is registered as"
-msgstr "jest zarejestrowany jako"
+#: data/defscript/popups.kvs:110 data/defscript/popups.kvs:209
+#: data/defscript/popups.kvs:1267 data/defscript/popups.kvs:1833
+msgid "Notify Avatar"
+msgstr "Ogłoś awatar"
 
-#: data/defscript/popups.kvs:810
+#: data/defscript/popups.kvs:117 data/defscript/popups.kvs:216
+#: data/defscript/popups.kvs:425 data/defscript/popups.kvs:557
+#: data/defscript/popups.kvs:859 data/defscript/popups.kvs:919
+#: data/defscript/popups.kvs:1283
+msgid "Clear Buffer"
+msgstr "Wyczyść bufor"
+
+#: data/defscript/popups.kvs:143 data/defscript/popups.kvs:224
+#: data/defscript/popups.kvs:317 data/defscript/popups.kvs:555
+#: data/defscript/popups.kvs:791 data/defscript/popups.kvs:867
+#: data/defscript/popups.kvs:1210
+msgid "You're not connected to a server"
+msgstr "Nie połączono z serwerem"
+
+#: data/defscript/popups.kvs:145 data/defscript/popups.kvs:319
+#: data/defscript/popups.kvs:619 data/defscript/popups.kvs:1212
+msgid "Dock"
+msgstr "Doczep okno"
+
+#: data/defscript/popups.kvs:152 data/defscript/popups.kvs:793
+#: data/defscript/popups.kvs:1771
+msgid "/WHOIS ?s (idle time)"
+msgstr "/WHOIS ? (czas bezczynności)"
+
+#: data/defscript/popups.kvs:166 data/defscript/popups.kvs:342
+#: data/defscript/popups.kvs:441 data/defscript/popups.kvs:800
+#: data/defscript/popups.kvs:1779
+msgid "&Information"
+msgstr "&Informacja"
+
+#: data/defscript/popups.kvs:168 data/defscript/popups.kvs:802
+#: data/defscript/popups.kvs:1781
+msgid "/WHOIS ?s"
+msgstr "/WHOIS ?s"
+
+#: data/defscript/popups.kvs:173 data/defscript/popups.kvs:807
+#: data/defscript/popups.kvs:1786
+msgid "/WHOWAS ?s"
+msgstr "/WHOWAS ?s"
+
+#: data/defscript/popups.kvs:178 data/defscript/popups.kvs:812
+#: data/defscript/popups.kvs:1791
+msgid "/WHO ?s"
+msgstr "/WHO ?s"
+
+#: data/defscript/popups.kvs:185 data/defscript/popups.kvs:819
+#: data/defscript/popups.kvs:1798
+msgid "DNS for"
+msgstr "DNS dla"
+
+#: data/defscript/popups.kvs:191 data/defscript/popups.kvs:825
+#: data/defscript/popups.kvs:1804
+msgid "Mask for"
+msgstr "Maska dla"
+
+#: data/defscript/popups.kvs:205
+msgid "&Ignore"
+msgstr "&Ignoruj"
+
+#: data/defscript/popups.kvs:207 data/defscript/popups.kvs:846
+#: data/defscript/popups.kvs:1827
+msgid "&Registration"
+msgstr "&Rejestracja"
+
+#: data/defscript/popups.kvs:226 data/defscript/popups.kvs:638
+#: data/defscript/popups.kvs:1235
+msgid "&Hop"
+msgstr "&Wyjdź i wejdź"
+
+#: data/defscript/popups.kvs:231 data/defscript/popups.kvs:643
+#: data/defscript/popups.kvs:1240
+msgid "&Part"
+msgstr "&Opuszczenie"
+
+#: data/defscript/popups.kvs:237 data/defscript/popups.kvs:649
+#: data/defscript/popups.kvs:1246
+msgid "&Join"
+msgstr "&Dołącz"
+
+#: data/defscript/popups.kvs:256
+msgid "Copy Channel Address"
+msgstr "Kopiuj adres kanału"
+
+#: data/defscript/popups.kvs:302
+msgid "Enter the message text"
+msgstr "Wprowadź tekst wiadomości"
+
+#: data/defscript/popups.kvs:302
+msgid "&Page"
+msgstr "&Przywołanie"
+
+#: data/defscript/popups.kvs:302 data/defscript/popups.kvs:1164
+#: data/defscript/popups.kvs:1191
+msgid "Cancel"
+msgstr "Anuluj"
+
+#: data/defscript/popups.kvs:326 data/defscript/popups.kvs:1219
+msgid "Default Channels"
+msgstr "Kanały domyślne"
+
+#: data/defscript/popups.kvs:337 data/defscript/popups.kvs:1221
+msgid "&Join Channels..."
+msgstr "&Dołącz do kanałów..."
+
+#: data/defscript/popups.kvs:361 data/defscript/popups.kvs:460
+msgid "d (Debug/DNS?)"
+msgstr "d (Debugowanie/DNS?)"
+
+#: data/defscript/popups.kvs:366 data/defscript/popups.kvs:465
 msgid "l (Connections)"
 msgstr "l (Połączenia)"
 
-#: data/defscript/popups.kvs:815
+#: data/defscript/popups.kvs:371 data/defscript/popups.kvs:470
 msgid "m (Command Usage)"
 msgstr "m (Składnia polecenia)"
 
-#: data/defscript/aliases.kvs:100
-#: data/defscript/aliases.kvs:145
-msgid "message"
-msgstr "wiadomość"
-
-#: data/defscript/popups.kvs:820
+#: data/defscript/popups.kvs:376 data/defscript/popups.kvs:475
 msgid "o (Operators)"
 msgstr "o (Operatorzy)"
 
-#: data/defscript/aliases.kvs:239
-msgid "reason"
-msgstr "powód"
+#: data/defscript/popups.kvs:381 data/defscript/popups.kvs:480
+msgid "t (Connection Stats?)"
+msgstr "t (Statystyki połączenia?)"
 
-#: data/defscript/popups.kvs:825
-msgid "t (Connection stats?)"
-msgstr "t (Statystyki połączenia ?)"
-
-#: data/defscript/popups.kvs:830
+#: data/defscript/popups.kvs:386 data/defscript/popups.kvs:485
 msgid "u (Uptime)"
 msgstr "u (Czas działania)"
 
-#: data/defscript/popups.kvs:835
-msgid "y (y-Lines)"
-msgstr "y (y-Linie)"
+#: data/defscript/popups.kvs:391 data/defscript/popups.kvs:490
+msgid "y (Y-Lines)"
+msgstr "y (Y-Linie)"
 
-#: data/defscript/popups.kvs:840
+#: data/defscript/popups.kvs:396 data/defscript/popups.kvs:495
 msgid "z (Debug Stats?)"
 msgstr "z (Statystyki debugowania?)"
 
-#~ msgid "Log To Default File,"
-#~ msgstr "Zapisz dziennik w domyślnym pliku,"
+#: data/defscript/popups.kvs:433
+msgid "Copy to Clipboard"
+msgstr "Kopiuj do schowka"
+
+#: data/defscript/popups.kvs:524 data/defscript/popups.kvs:888
+msgid "Traceroute to"
+msgstr "Traceroute do "
+
+#: data/defscript/popups.kvs:532 data/defscript/popups.kvs:896
+msgid "Traceroute6 to"
+msgstr "Traceroute6 do "
+
+#: data/defscript/popups.kvs:624
+msgid "Undock"
+msgstr "Odczep okno"
+
+#: data/defscript/popups.kvs:659
+msgid "Set Window Properties As Default"
+msgstr "Ustal właściwości okna jako domyślne"
+
+#: data/defscript/popups.kvs:666
+msgid "Automatically Join Channel"
+msgstr "Automatyczne dołączanie do kanału"
+
+#: data/defscript/popups.kvs:668
+msgid "When Connecting to Server '?s'"
+msgstr "Podczas łączenia się z serwerem '?s'"
+
+#: data/defscript/popups.kvs:675
+msgid "When Connecting to Network '?s'"
+msgstr "Podczas łączenia się z siecią '?s'"
+
+#: data/defscript/popups.kvs:683
+msgid "Stop Auto-joining Channel on Server '?s'"
+msgstr "Zatrzymaj automatyczne dołączanie do kanału na serwerze '?s'"
+
+#: data/defscript/popups.kvs:696
+msgid "Stop Auto-joining Channel on Network '?s'"
+msgstr "Zatrzymaj automatyczne dołączanie do kanału w sieci '?s'"
+
+#: data/defscript/popups.kvs:711
+msgid "Part All Channels"
+msgstr "Opuść wszystkie kanały"
+
+#: data/defscript/popups.kvs:718
+msgid "Close All Queries"
+msgstr "Zamknij wszystkie rozmowy"
+
+#: data/defscript/popups.kvs:724
+msgid "Rejoin All Dead Channels"
+msgstr "Dołącz ponownie do wszystkich martwych kanałów"
+
+#: data/defscript/popups.kvs:731
+msgid "Close All Dead Channels"
+msgstr "Zamknij wszystkie martwe kanały"
+
+#: data/defscript/popups.kvs:737
+msgid "Close All Dead Queries"
+msgstr "Zamknij wszystkie martwe rozmowy"
+
+#: data/defscript/popups.kvs:745
+msgid "&Option Controllers"
+msgstr ""
+
+#: data/defscript/popups.kvs:752
+msgid "Unhighlight All Windows"
+msgstr "Nie podświetlaj wszystkich okien"
+
+#: data/defscript/popups.kvs:758
+msgid "Unhighlight All Channels"
+msgstr "Nie podświetlaj wszystkich kanałów"
+
+#: data/defscript/popups.kvs:764
+msgid "Unhighlight All Queries"
+msgstr "Nie podświetlaj wszystkich rozmów"
+
+#: data/defscript/popups.kvs:833 data/defscript/popups.kvs:1814
+msgid "&Query"
+msgstr "&Rozmowa z"
+
+#: data/defscript/popups.kvs:848 data/defscript/popups.kvs:1274
+#: data/defscript/popups.kvs:1829
+msgid "&Highlight"
+msgstr "&Podświetlanie"
+
+#: data/defscript/popups.kvs:850 data/defscript/popups.kvs:1831
+msgid "Ig&nore"
+msgstr "Ig&noruj"
+
+#: data/defscript/popups.kvs:852
+msgid "Notify avatar"
+msgstr "Ogłoś awatar"
+
+#: data/defscript/popups.kvs:869
+msgid "Look Up"
+msgstr "Sprawdź "
+
+#: data/defscript/popups.kvs:876
+msgid "Open"
+msgstr "Otwórz"
+
+#: data/defscript/popups.kvs:881
+msgid "Telnet to"
+msgstr "Telnet do "
+
+#: data/defscript/popups.kvs:941
+msgid "Chat with"
+msgstr "Czat bezpośredni z"
+
+#: data/defscript/popups.kvs:946
+msgid "Reverse Chat with"
+msgstr "Odwrotny czat z"
+
+#: data/defscript/popups.kvs:951
+msgid "Secure Chat with"
+msgstr "Bezpieczny czat z"
+
+#: data/defscript/popups.kvs:958
+msgid "Send to"
+msgstr "Wyślij do"
+
+#: data/defscript/popups.kvs:963
+msgid "Secure Send to"
+msgstr "Wyślij bezpiecznie do"
+
+#: data/defscript/popups.kvs:968
+msgid "Reverse Send to"
+msgstr "Odwrotne wysyłanie do"
+
+#: data/defscript/popups.kvs:973
+msgid "Secure Reverse Send to"
+msgstr "Bezpieczne odwrotne wysłanie do"
+
+#: data/defscript/popups.kvs:980
+msgid "TDCC Send to"
+msgstr "Wyślij TDCC do"
+
+#: data/defscript/popups.kvs:985
+msgid "TDCC Reverse Send to"
+msgstr "Wyślij odwrotnie TDCC do"
+
+#: data/defscript/popups.kvs:992
+msgid "Voice Chat"
+msgstr "Czat głosowy"
+
+#: data/defscript/popups.kvs:994
+msgid "Default"
+msgstr "Domyślne"
+
+#: data/defscript/popups.kvs:1065
+msgid "Ban"
+msgstr "Zablokuj"
+
+#: data/defscript/popups.kvs:1078 data/defscript/popups.kvs:1174
+msgid "&Ban"
+msgstr "&Zablokuj"
+
+#: data/defscript/popups.kvs:1104
+msgid "O&wner"
+msgstr "U&czyń właścicielem"
+
+#: data/defscript/popups.kvs:1109
+msgid "&Deowner"
+msgstr "&Zabierz właściciela"
+
+#: data/defscript/popups.kvs:1114
+msgid "&Administrator"
+msgstr "&Udziel administratora"
+
+#: data/defscript/popups.kvs:1119
+msgid "&Deadministrator"
+msgstr "&Zabierz administratora"
+
+#: data/defscript/popups.kvs:1124
+msgid "&Op"
+msgstr "&Udziel operatora"
+
+#: data/defscript/popups.kvs:1129
+msgid "&Deop"
+msgstr "&Zabierz operatora"
+
+#: data/defscript/popups.kvs:1134
+msgid "&Halfop"
+msgstr "&Udziel półoperatora"
+
+#: data/defscript/popups.kvs:1139
+msgid "&Dehalfop"
+msgstr "&Zabierz półoperatora"
+
+#: data/defscript/popups.kvs:1144
+msgid "&Voice"
+msgstr "&Udziel głosu"
+
+#: data/defscript/popups.kvs:1149
+msgid "D&evoice"
+msgstr "Z&abierz prawo głosu"
+
+#: data/defscript/popups.kvs:1156 data/defscript/popups.kvs:1164
+msgid "&Kick"
+msgstr "&Wyrzuć"
+
+#: data/defscript/popups.kvs:1162
+msgid "K&ick"
+msgstr "W&yrzuć"
+
+#: data/defscript/popups.kvs:1162
+msgid "With..."
+msgstr "z..."
+
+#: data/defscript/popups.kvs:1164
+msgid "Kick Reason"
+msgstr "Powód wyrzucenia"
+
+#: data/defscript/popups.kvs:1164
+msgid "Enter a kick reason"
+msgstr "Wprowadź powód wyrzucenia"
+
+#: data/defscript/popups.kvs:1184 data/defscript/popups.kvs:1189
+msgid "Kick/Ban"
+msgstr "Wyrzuć/Zablokuj"
+
+#: data/defscript/popups.kvs:1189
+msgid "with..."
+msgstr "z..."
+
+#: data/defscript/popups.kvs:1191
+msgid "Kick/Ban Reason"
+msgstr "Wyrzuć/Zablokuj powód"
+
+#: data/defscript/popups.kvs:1191
+msgid "Enter a kick/ban reason"
+msgstr "Wprowadź powód wyrzucenia/zablokowania"
+
+#: data/defscript/popups.kvs:1191
+msgid "&Kick/Ban"
+msgstr "&Wyrzuć/Zablokuj"
+
+#: data/defscript/popups.kvs:1202
+msgid "Configure Ban Mask..."
+msgstr "Konfiguruj maskę zakazu..."
+
+#: data/defscript/popups.kvs:1276
+msgid "Copy Channel URL to Clipboard"
+msgstr "Kopiuj URL kanału do schowka"
+
+#: data/defscript/popups.kvs:1291 data/defscript/popups.kvs:1296
+#: data/defscript/popups.kvs:1301 data/defscript/popups.kvs:1306
+#: data/defscript/popups.kvs:1311 data/defscript/popups.kvs:1316
+msgid "Join"
+msgstr ""
+
+#: data/defscript/popups.kvs:1332
+msgid "Logging to"
+msgstr "Zapisywanie dziennika do"
+
+#: data/defscript/popups.kvs:1334
+msgid "Flush Log File"
+msgstr "Nadpisz plik dziennika"
+
+#: data/defscript/popups.kvs:1341
+msgid "Stop Logging"
+msgstr "Zatrzymaj dziennik"
+
+#: data/defscript/popups.kvs:1346
+msgid "Not Logging"
+msgstr "Dziennik zatrzymany"
+
+#: data/defscript/popups.kvs:1348 data/defscript/popups.kvs:1353
+msgid "Log to Default File"
+msgstr "Zapisz dziennik w domyślnym pliku"
+
+#: data/defscript/popups.kvs:1353 data/defscript/popups.kvs:1366
+msgid "Include Existing Buffer"
+msgstr "Dołączając istniejący bufor"
+
+#: data/defscript/popups.kvs:1358 data/defscript/popups.kvs:1366
+msgid "Log to..."
+msgstr "Zapisz dziennik w..."
+
+#: data/defscript/popups.kvs:1360 data/defscript/popups.kvs:1368
+msgid "Choose Log Filename"
+msgstr "Wybierz plik dziennikia"
+
+#: data/defscript/popups.kvs:1407
+msgid "is being ignored"
+msgstr "jest ignorowany"
+
+#: data/defscript/popups.kvs:1409 data/defscript/popups.kvs:1415
+msgid "is not being ignored"
+msgstr "nie jest ignorowany"
+
+#: data/defscript/popups.kvs:1421
+msgid "Enable Ignore"
+msgstr "Włącz ignorowanie"
+
+#: data/defscript/popups.kvs:1426
+msgid "Ignore As..."
+msgstr "Ignoruj jako..."
+
+#: data/defscript/popups.kvs:1428 data/defscript/popups.kvs:1436
+#: data/defscript/popups.kvs:1444 data/defscript/popups.kvs:1452
+#: data/defscript/popups.kvs:1460 data/defscript/popups.kvs:1468
+#: data/defscript/popups.kvs:1476 data/defscript/popups.kvs:1484
+#: data/defscript/popups.kvs:1492 data/defscript/popups.kvs:1500
+#: data/defscript/popups.kvs:1508 data/defscript/popups.kvs:1516
+#: data/defscript/popups.kvs:1524 data/defscript/popups.kvs:1532
+#: data/defscript/popups.kvs:1540 data/defscript/popups.kvs:1548
+#: data/defscript/popups.kvs:1556 data/defscript/popups.kvs:1564
+#: data/defscript/popups.kvs:1572 data/defscript/popups.kvs:1580
+#: data/defscript/popups.kvs:1588 data/defscript/popups.kvs:1596
+#: data/defscript/popups.kvs:1604 data/defscript/popups.kvs:1612
+#: data/defscript/popups.kvs:1620 data/defscript/popups.kvs:1628
+#: data/defscript/popups.kvs:1636
+msgid "Ignore As"
+msgstr "Ignoruj jako"
+
+#: data/defscript/popups.kvs:1645
+msgid "Unignore"
+msgstr "Przestań ignorować"
+
+#: data/defscript/popups.kvs:1662
+msgid "is registered as"
+msgstr "jest zarejestrowany jako"
+
+#: data/defscript/popups.kvs:1666
+msgid "is in the notify list"
+msgstr "jest na liście powiadomień"
+
+#: data/defscript/popups.kvs:1670
+msgid "has a default avatar"
+msgstr "ma domyślny awatar"
+
+#: data/defscript/popups.kvs:1675
+msgid "is not registered"
+msgstr "nie jest zarejestrowany"
+
+#: data/defscript/popups.kvs:1681
+msgid "Register..."
+msgstr "Rejestruj..."
+
+#: data/defscript/popups.kvs:1686
+msgid "Quick Registration"
+msgstr "Szybka rejestracja"
+
+#: data/defscript/popups.kvs:1688 data/defscript/popups.kvs:1693
+#: data/defscript/popups.kvs:1698 data/defscript/popups.kvs:1703
+#: data/defscript/popups.kvs:1708 data/defscript/popups.kvs:1713
+msgid "Register As"
+msgstr "Rejestruj jako"
+
+#: data/defscript/popups.kvs:1719
+msgid "Edit Registration..."
+msgstr "Edycja rejestracji..."
+
+#: data/defscript/popups.kvs:1724
+msgid "Unregister"
+msgstr "Wyrejestruj"
+
+#: data/defscript/popups.kvs:1731
+msgid "Add to Notify"
+msgstr "Dodaj do powiadomień"
+
+#: data/defscript/popups.kvs:1736
+msgid "Remove from Notify"
+msgstr "Usuń z powiadomień"
+
+#: data/defscript/popups.kvs:1741
+msgid "Avatar"
+msgstr "Awatar"
+
+#: data/defscript/popups.kvs:1743
+msgid "Choose..."
+msgstr "Wybierz..."
+
+#: data/defscript/popups.kvs:1745
+msgid "Choose Avatar Image File"
+msgstr "Wybierz plik obrazu awataru"
+
+#: data/defscript/popups.kvs:1754
+msgid "Set As Default"
+msgstr "Ustaw jako domyślne"
+
+#: data/defscript/popups.kvs:1759
+msgid "Clear Default"
+msgstr "Wyczyść domyślny"
+
+#: data/defscript/popups.kvs:1810
+msgid "&User Control"
+msgstr ""
+
+#: data/defscript/toolbars.kvs:3
+msgid "IRC Context"
+msgstr "Kontekst IRC"
+
+#: data/defscript/toolbars.kvs:18
+msgid "Options"
+msgstr "Opcje"
+
+#: data/defscript/toolbars.kvs:26
+msgid "Help"
+msgstr "Pomoc"
+
+#: data/defscript/toolbars.kvs:35
+msgid "Scripting"
+msgstr "Skrypty"

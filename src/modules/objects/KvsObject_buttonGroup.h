@@ -2,7 +2,7 @@
 #define _CLASS_BUTTONGROUP_H_
 //=============================================================================
 //
-//   File : KvsObject_buttonGroup.cpp
+//   File : KvsObject_buttonGroup.h
 //   Creation date : Fri Jan 28 14:21:48 CEST 2005
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //

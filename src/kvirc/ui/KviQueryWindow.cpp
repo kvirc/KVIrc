@@ -49,13 +49,13 @@
 #include "KviCryptController.h"
 #endif //COMPILE_CRYPT_SUPPORT
 
+#include <QByteArray>
+#include <QDate>
 #include <QDir>
 #include <QFileInfo>
-#include <QDate>
-#include <QByteArray>
-#include <QPixmap>
 #include <QList>
-#include <QByteArray>
+#include <QPixmap>
+#include <QString>
 
 KviQueryWindow::KviQueryWindow(KviConsoleWindow * lpConsole, const QString & szNick)
     : KviWindow(KviWindow::Query, szNick, lpConsole)

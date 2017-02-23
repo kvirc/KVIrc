@@ -25,21 +25,22 @@
 //
 //=============================================================================
 
-#include "KviCString.h"
 #include "kvi_settings.h"
+#include "KviCString.h"
 #include "KviHeapObject.h"
 #include "KviPointerHashTable.h"
 
 #include <QList>
-#include <QColor>
 #include <QFont>
-#include <QRect>
+#include <QString>
 #include <QStringList>
 
 #define KVI_CONFIG_DEFAULT_GROUP "KVIrc"
 
 class KviPixmap;
 class KviMessageTypeSettings;
+class QColor;
+class QRect;
 
 typedef KviPointerHashTable<QString, QString> KviConfigurationFileGroup;
 typedef KviPointerHashTableIterator<QString, QString> KviConfigurationFileGroupIterator;

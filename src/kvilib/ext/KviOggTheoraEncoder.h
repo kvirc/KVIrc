@@ -39,7 +39,7 @@
 
 #include "theora/theoraenc.h"
 
-#include <QColor>
+#include <QRgb>
 
 class KviDataBuffer;
 

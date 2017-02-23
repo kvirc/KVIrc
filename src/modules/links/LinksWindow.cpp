@@ -35,6 +35,7 @@
 #include "KviIrcContext.h"
 #include "KviIrcConnection.h"
 #include "KviTalHBox.h"
+#include "KviIrcMessage.h"
 
 #include <QToolTip>
 #include <QLabel>

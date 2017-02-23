@@ -25,13 +25,13 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviCString.h"
 
 #include <QToolButton>
 #include <QToolBar>
 
 class KviKvsScript;
 class KviWindow;
+class QString;
 
 class KVIRC_API KviScriptUserButton : public QToolButton
 {

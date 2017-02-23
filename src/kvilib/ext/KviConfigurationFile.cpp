@@ -30,6 +30,9 @@
 #include "KviMemory.h"
 #include "KviFile.h"
 
+#include <QColor>
+#include <QRect>
+
 KviConfigurationFile::KviConfigurationFile(const QString & filename, FileMode f, bool bLocal8Bit)
 {
 	m_bLocal8Bit = bLocal8Bit;

@@ -1,71 +1,68 @@
-# Czech translation of Kvirc.
-# Copyright (C) 2004 THE Kvirc'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the Kvirc package.
-# Dušan Hokův <dusan@mirc.cz>, 2007.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+# 
+# Translators:
+# Dušan Hokův <dusan@mirc.cz>, 2007
 msgid ""
 msgstr ""
-"Project-Id-Version: Kvirc\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2007-12-05 18:20+0100\n"
-"Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
-"Language-Team: Czech <cs@li.org>\n"
-"Language: cs\n"
+"POT-Creation-Date: 2016-11-28 13:11+0100\n"
+"PO-Revision-Date: 2016-10-28 19:20+0000\n"
+"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
+"Language-Team: Czech (http://www.transifex.com/kvirc/KVIrc/language/cs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: cs\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
-"An interface to KDE's excellent KTorrent client.\n"
+"An interface for KDE's KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
 msgstr ""
-"Interface ke skvělému KDE KTorrent klientu.\n"
-"Stahujte na http://www.ktorrent.org\n"
 
-#: src/modules/torrent/libkvitorrent.cpp:102
-msgid "Choosing torrent client interface \"%Q\""
-msgstr "Vybírám interface torrent klienta \"%Q\""
+#: src/modules/torrent/StatusBarApplet.cpp:44
+#: src/modules/torrent/StatusBarApplet.cpp:60
+msgid "Torrent Client"
+msgstr ""
 
-#: src/modules/torrent/libkvitorrent.cpp:722
-msgid "Invalid client interface \"%Q\"!"
-msgstr "Neplatný interface klienta \"%Q\"!"
-
-#: src/modules/torrent/libkvitorrent.cpp:129
-msgid "Last interface error: "
-msgstr "POslední chyba interfacu:"
-
-#: src/modules/torrent/StatusBarApplet.cpp:92
+#: src/modules/torrent/StatusBarApplet.cpp:93
 msgid "No client selected!"
 msgstr "Nebyl zvolen klient!"
 
-#: src/modules/torrent/libkvitorrent.cpp:118
-msgid "No torrent client interface selected. Try /torrent.detect"
-msgstr "Nebyl zvolen interface torrent klienta. Zkuste /torrent.detect"
+#: src/modules/torrent/libkvitorrent.cpp:61
+msgid "Trying torrent client interface \"%Q\": score %d"
+msgstr "Zkouším interface torrent klienta \"%Q\": skóre %d"
 
-#: src/modules/torrent/libkvitorrent.cpp:109
+#: src/modules/torrent/libkvitorrent.cpp:73
+msgid "Choosing torrent client interface \"%Q\""
+msgstr "Vybírám interface torrent klienta \"%Q\""
+
+#: src/modules/torrent/libkvitorrent.cpp:80
 msgid "Seems that there is no usable torrent client on this machine"
 msgstr "Vypadá to, že na tomto počítači není použitelný torrent klient"
 
-#: src/modules/torrent/libkvitorrent.cpp:128
+#: src/modules/torrent/libkvitorrent.cpp:89
+msgid "No torrent client interface selected. Try /torrent.detect"
+msgstr "Nebyl zvolen interface torrent klienta. Zkuste /torrent.detect"
+
+#: src/modules/torrent/libkvitorrent.cpp:99
 msgid ""
 "The selected torrent client interface failed to execute the requested "
 "function"
 msgstr "Zvolený interface torrent klienta selhal ve spuštění požadované funkce"
 
-#: src/modules/torrent/StatusBarApplet.cpp:44
-#: src/modules/torrent/StatusBarApplet.cpp:61
-msgid "Torrent Client"
-msgstr ""
+#: src/modules/torrent/libkvitorrent.cpp:100
+msgid "Last interface error: "
+msgstr "POslední chyba interfacu:"
 
-#: src/modules/torrent/libkvitorrent.cpp:62
-msgid "Trying torrent client interface \"%Q\": score %d"
-msgstr "Zkouším interface torrent klienta \"%Q\": skóre %d"
-
-#: src/modules/torrent/libkvitorrent.cpp:714
+#: src/modules/torrent/libkvitorrent.cpp:701
 msgid "Using client interface \"%Q\"."
 msgstr "Používám interface klienta \"%Q\"."
 
-#~ msgid "Index out of range: %d [0-%d]!"
-#~ msgstr "Index mimo rozsah: %d [0-%d]!"
+#: src/modules/torrent/libkvitorrent.cpp:709
+msgid "Invalid client interface \"%Q\"!"
+msgstr "Neplatný interface klienta \"%Q\"!"

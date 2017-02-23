@@ -47,8 +47,9 @@
 		A window dockable to the KVIrc main frame borders (like a toolbar).
 	@functions:
 		!fn: $addWidget(<widget:hobject>)
-		Adds <widget> to the internal layout of this dock window.[br]
+		Adds <widget> as the main widget inside this dock window.[br]
 		The widget must be a child of this dock window (otherwise strange things may happen).
+		In order to use a layout, apply it to <widget>, as shown in the example.
 		!fn: $setAllowedDockAreas(<docks:string>)
 		Sets the allowed main window dock areas for this dock window.[br]
 		<docks> must be a combination of [i]l[/i], [i]r[/i], [i]t[/i], [i]b[/i], [b]f[/b] and [b]m[/b].[br]
@@ -57,6 +58,36 @@
 		If a flag is present then the related block area is enabled,otherwise it is disabled.
 		!fn: $dock(<dockarea:string>)
 		Docks this dock window to the specified dockarea of the main KVIrc window which can be one of "l" (left dock area), "t" (top dock area), "r" (right dock area), "b" (bottom dock area), "f" (floating) and "m" (minimized).
+	@examples:
+		[example]
+			%dock = $new(dockwindow)
+			%dock->$setWindowTitle("This is the dock window title")
+			%dock->$setAllowedDockAreas("l","f")
+
+			%widget = $new(widget, %dock)
+			%dock->$addWidget(%widget)
+
+			%box=$new(vbox,%widget)
+			%layout=$new(layout,%widget)
+			%layout->$addWidget(%box,0,0)
+
+			%label = $new(label,%box)
+			%label->$setText("This is a text label")
+
+			%lineedit = $new(lineedit,%box)
+			%lineedit->$setText("This is a lineedit")
+
+			%button = $new(button, %box)
+			%button->$setText("Close me")
+
+			privateimpl(%dock,closeMe)
+			{
+				delete $$
+			}
+			objects.connect  %button clicked %dock closeMe
+
+			%dock->$show()
+		[/example]
 */
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_dockWindow, "dockwindow", "widget")

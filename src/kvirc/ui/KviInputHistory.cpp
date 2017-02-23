@@ -30,6 +30,8 @@
 #include "KviConfigurationFile.h"
 #include "KviCString.h"
 
+#include <QString>
+
 KviInputHistory * KviInputHistory::m_pSelf = nullptr;
 unsigned int KviInputHistory::m_uCount = 0;
 
@@ -59,11 +61,14 @@ void KviInputHistory::delRef()
 	m_uCount--;
 }
 
-void KviInputHistory::add(QString szString)
+void KviInputHistory::add(const QString & szString)
 {
-	m_StringList.insert(m_StringList.begin(), std::move(szString));
+	if(!m_StringList.empty() && m_StringList.back() == szString)
+		return;
+
+	m_StringList.push_back(szString);
 	if(m_StringList.size() > KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES)
-		m_StringList.pop_back();
+		m_StringList.erase(m_StringList.begin());
 }
 
 void KviInputHistory::load(const QString & szFileName)
@@ -91,8 +96,6 @@ void KviInputHistory::save(const QString & szFileName)
 	KviConfigurationFile c(szFileName, KviConfigurationFile::Write);
 	c.clear();
 
-	c.writeEntry("Count", static_cast<unsigned>(m_StringList.size()));
-
 	KviCString szTmp;
 	int iIdx = 0;
 
@@ -105,4 +108,6 @@ void KviInputHistory::save(const QString & szFileName)
 			iIdx++;
 		}
 	}
+
+	c.writeEntry("Count", iIdx);
 }

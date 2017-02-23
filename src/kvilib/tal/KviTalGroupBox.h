@@ -35,6 +35,8 @@
 #include <QGroupBox>
 #include <QLayout>
 
+class QChildEvent;
+
 /**
 * \class KviTalGroupBox
 * \brief Toolkit Abstraction Layer: groupbox class

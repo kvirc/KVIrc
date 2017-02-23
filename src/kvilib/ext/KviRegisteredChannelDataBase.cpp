@@ -24,6 +24,9 @@
 
 #include "KviRegisteredChannelDataBase.h"
 #include "KviConfigurationFile.h"
+#include "KviQString.h"
+
+#include <QString>
 
 KviRegisteredChannelDataBase::KviRegisteredChannelDataBase()
 {

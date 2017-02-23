@@ -25,7 +25,6 @@
 #include "KviTalGroupBox.h"
 
 #include <QChildEvent>
-#include <QGroupBox>
 
 KviTalGroupBox::KviTalGroupBox(QWidget * pParent, char * pcName)
     : QGroupBox(pParent)

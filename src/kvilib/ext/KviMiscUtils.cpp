@@ -24,6 +24,7 @@
 
 #include "KviMiscUtils.h"
 
+#include <QString>
 #include <QStringList>
 
 namespace KviMiscUtils

@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviUserListView.cpp
+//   File : KviUserAction.cpp
 //   Creation date : Tue Mar 18 2003 13:36:12 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

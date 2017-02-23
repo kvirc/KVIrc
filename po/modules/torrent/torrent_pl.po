@@ -1,72 +1,68 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# This file is distributed under the same license as the KVIrc package.
+# 
+# Translators:
+# Sölve Svartskogen <solaizen@gmail.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 4.1.1 Equilibrium\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2011-03-03 22:26+0100\n"
-"Last-Translator: B M <penteljapan@o2.pl>\n"
-"Language-Team: Polska <PL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2016-11-28 13:11+0100\n"
+"PO-Revision-Date: 2016-10-28 19:20+0000\n"
+"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
+"Language-Team: Polish (http://www.transifex.com/kvirc/KVIrc/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.2-beta2\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: POLAND\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/modules/torrent/KTorrentDbusInterface.cpp:40
 msgid ""
-"An interface to KDE's excellent KTorrent client.\n"
+"An interface for KDE's KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
 msgstr ""
-"Interfejs dla pochodzącego z KDE wspaniałego klienta Ktorrent.\n"
-"Pobierz go z http://www.ktorrent.org\n"
-
-#: src/modules/torrent/libkvitorrent.cpp:102
-msgid "Choosing torrent client interface \"%Q\""
-msgstr "Wybieranie interfejsu klienta torrent \"%Q\""
-
-#: src/modules/torrent/libkvitorrent.cpp:722
-msgid "Invalid client interface \"%Q\"!"
-msgstr "Niepoprawny interfejs klienta \"%Q\"!"
-
-#: src/modules/torrent/libkvitorrent.cpp:129
-msgid "Last interface error: "
-msgstr "Ostatni błąd interfejsu:"
-
-#: src/modules/torrent/StatusBarApplet.cpp:92
-msgid "No client selected!"
-msgstr "Nie wybrano klienta!"
-
-#: src/modules/torrent/libkvitorrent.cpp:118
-msgid "No torrent client interface selected. Try /torrent.detect"
-msgstr "Nie wybrano interfejsu klienta torrent. Spróbuj /torrent.detect"
-
-# użytecznego/przydatnego/nadającego się do użytku ??
-#: src/modules/torrent/libkvitorrent.cpp:109
-msgid "Seems that there is no usable torrent client on this machine"
-msgstr "Wygląda na to, że nie ma użytecznego klienta torrent na tej maszynie"
-
-#: src/modules/torrent/libkvitorrent.cpp:128
-msgid ""
-"The selected torrent client interface failed to execute the requested "
-"function"
-msgstr ""
-"Wybranemu interfejsowi klienta torrent nie udało się wykonać żądanej funkcji"
 
 #: src/modules/torrent/StatusBarApplet.cpp:44
-#: src/modules/torrent/StatusBarApplet.cpp:61
+#: src/modules/torrent/StatusBarApplet.cpp:60
 msgid "Torrent Client"
 msgstr "Klient torrent"
 
-#: src/modules/torrent/libkvitorrent.cpp:62
+#: src/modules/torrent/StatusBarApplet.cpp:93
+msgid "No client selected!"
+msgstr "Nie wybrano klienta!"
+
+#: src/modules/torrent/libkvitorrent.cpp:61
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr "Próbowanie interfejsu klienta torrent \"%Q\": wynik %d"
 
-#: src/modules/torrent/libkvitorrent.cpp:714
+#: src/modules/torrent/libkvitorrent.cpp:73
+msgid "Choosing torrent client interface \"%Q\""
+msgstr "Wybieranie interfejsu klienta torrent \"%Q\""
+
+#: src/modules/torrent/libkvitorrent.cpp:80
+msgid "Seems that there is no usable torrent client on this machine"
+msgstr "Wygląda na to, że nie ma użytecznego klienta torrent na tej maszynie"
+
+#: src/modules/torrent/libkvitorrent.cpp:89
+msgid "No torrent client interface selected. Try /torrent.detect"
+msgstr "Nie wybrano interfejsu klienta torrent. Spróbuj /torrent.detect"
+
+#: src/modules/torrent/libkvitorrent.cpp:99
+msgid ""
+"The selected torrent client interface failed to execute the requested "
+"function"
+msgstr "Wybranemu interfejsowi klienta torrent nie udało się wykonać żądanej funkcji"
+
+#: src/modules/torrent/libkvitorrent.cpp:100
+msgid "Last interface error: "
+msgstr "Ostatni błąd interfejsu:"
+
+#: src/modules/torrent/libkvitorrent.cpp:701
 msgid "Using client interface \"%Q\"."
 msgstr "Użycie interfejsu klienta \"%Q\"."
+
+#: src/modules/torrent/libkvitorrent.cpp:709
+msgid "Invalid client interface \"%Q\"!"
+msgstr "Nieprawidłowy interfejs klienta \"%Q\"!"

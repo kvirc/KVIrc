@@ -32,7 +32,7 @@ VERSION='4:4.9.2'
 VERSION1='4.9.2'
 TMPFILE=$(mktemp)
 TMPGPG=$(mktemp)
-DIST_PPA="trusty wily xenial"
+DIST_PPA="trusty wily xenial yakkety"
 PPANAME=kvirc
 
 dchppa_pkg(){

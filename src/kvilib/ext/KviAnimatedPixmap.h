@@ -24,12 +24,14 @@
 //
 //=============================================================================
 
-#include <QObject>
-#include <QPixmap>
-#include <QList>
-#include <QTimer>
 #include "kvi_settings.h"
 #include "KviAnimatedPixmapCache.h"
+
+#include <QObject>
+#include <QString>
+#include <QTimer>
+
+class QPixmap;
 
 /**
  * This class should not be here, because we already have QMovie
@@ -67,7 +69,6 @@
 class KVILIB_API KviAnimatedPixmap : public QObject, public KviAnimatedPixmapInterface
 {
 	Q_OBJECT
-
 protected:
 	QString m_szFileName;
 	KviAnimatedPixmapCache::Data * m_pFrameData;

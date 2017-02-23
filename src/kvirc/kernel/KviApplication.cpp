@@ -86,6 +86,7 @@
 #include "KviCaster.h"
 #include "KviSignalHandler.h"
 #include "KviPtrListIterator.h"
+#include "KviIrcNetwork.h"
 
 #include <QMenu>
 #include <algorithm>
@@ -1278,14 +1279,16 @@ void KviApplication::updatePseudoTransparency()
 			// get the Program Manager
 			HWND hWnd = FindWindow("Progman", "Program Manager");
 			// Create and setup bitmap
-			HDC bitmap_dc = CreateCompatibleDC(qt_win_display_dc());
-			HBITMAP bitmap = CreateCompatibleBitmap(qt_win_display_dc(), size.width(), size.height());
+			const HDC displayDc = GetDC(0);
+			HDC bitmap_dc = CreateCompatibleDC(displayDc);
+			HBITMAP bitmap = CreateCompatibleBitmap(displayDc, size.width(), size.height());
 			HGDIOBJ null_bitmap = SelectObject(bitmap_dc, bitmap);
 
 			PrintWindow(hWnd, bitmap_dc, 0);
 
 			SelectObject(bitmap_dc, null_bitmap);
 			DeleteDC(bitmap_dc);
+			ReleaseDC(0, displayDc);
 			QPixmap pix = QtWin::fromHBITMAP(bitmap);
 
 			DeleteObject(bitmap);

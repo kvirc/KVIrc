@@ -98,14 +98,13 @@ KviIrcSocket::KviIrcSocket(KviIrcLink * pLink)
 
 	m_bInProcessData = false;
 
-	m_pFlushTimer = new QTimer(); // queue flush timer
-	connect(m_pFlushTimer, SIGNAL(timeout()), this, SLOT(flushSendQueue()));
+	m_pFlushTimer.reset(new QTimer()); // queue flush timer
+	connect(m_pFlushTimer.get(), SIGNAL(timeout()), this, SLOT(flushSendQueue()));
 }
 
 KviIrcSocket::~KviIrcSocket()
 {
 	reset();
-	delete m_pFlushTimer;
 }
 
 void KviIrcSocket::reset()

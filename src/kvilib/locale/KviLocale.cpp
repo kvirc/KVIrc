@@ -38,12 +38,13 @@
 #include "KviPointerHashTable.h"
 #include "KviTranslator.h"
 
-#include <QtGlobal>
 #include <QApplication>
-#include <QTextCodec>
+#include <QByteArray>
 #include <QDir>
 #include <QLocale>
-#include <QByteArray>
+#include <QString>
+#include <QTextCodec>
+#include <QtGlobal>
 
 KVILIB_API KviMessageCatalogue * g_pMainCatalogue = nullptr;
 

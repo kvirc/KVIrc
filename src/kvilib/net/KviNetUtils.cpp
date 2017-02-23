@@ -25,8 +25,10 @@
 #define _KVI_NETUTILS_CPP_
 
 #include "KviNetUtils.h"
+#include "KviCString.h"
 #include "KviMemory.h"
 
+#include <QString>
 #include <QStringList>
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)

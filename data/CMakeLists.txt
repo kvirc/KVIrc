@@ -4,7 +4,7 @@
 subdirs(applnk audio config defscript deftheme helppics man msgcolors pics)
 
 if(APPLE)
-	# MacOS X
+	# macOS
 	add_subdirectory(resources_mac)
 elseif(WIN32)
 	add_subdirectory(resources_win32)

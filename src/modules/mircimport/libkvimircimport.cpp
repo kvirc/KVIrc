@@ -33,9 +33,12 @@
 #include "KviConfigurationFile.h"
 #include "KviApplication.h"
 #include "KviTalVBox.h"
+#include "KviIrcServer.h"
 
-#include <QMessageBox>
 #include <QDir>
+#include <QLabel>
+#include <QLineEdit>
+#include <QMessageBox>
 #include <QPushButton>
 
 KviMircServersIniImport * g_pMircServersIniImport = nullptr;

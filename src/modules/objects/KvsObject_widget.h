@@ -100,6 +100,9 @@ protected:
 	bool setBackgroundColor(KviKvsObjectFunctionCall * c);
 	bool setBackgroundImage(KviKvsObjectFunctionCall * c);
 	bool setEnabled(KviKvsObjectFunctionCall * c);
+	bool setFixedHeight(KviKvsObjectFunctionCall * c);
+	bool setFixedSize(KviKvsObjectFunctionCall * c);
+	bool setFixedWidth(KviKvsObjectFunctionCall * c);
 	bool setFocus(KviKvsObjectFunctionCall * c);
 	bool setFocusPolicy(KviKvsObjectFunctionCall * c);
 	bool setFont(KviKvsObjectFunctionCall * c);
@@ -112,6 +115,7 @@ protected:
 	bool setMinimumWidth(KviKvsObjectFunctionCall * c);
 	bool setMouseTracking(KviKvsObjectFunctionCall * c);
 	bool setForegroundColor(KviKvsObjectFunctionCall * c);
+	bool setSizePolicy(KviKvsObjectFunctionCall * c);
 	bool setStyleSheet(KviKvsObjectFunctionCall * c);
 	bool setToolTip(KviKvsObjectFunctionCall *);
 	bool setWindowIcon(KviKvsObjectFunctionCall * c);

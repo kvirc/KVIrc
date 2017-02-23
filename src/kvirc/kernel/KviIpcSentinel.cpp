@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviIpcSentinel.hcpp
+//   File : KviIpcSentinel.cpp
 //   Creation date : Tue Apr 10 2001 15:04:45 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

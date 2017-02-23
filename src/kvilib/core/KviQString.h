@@ -34,8 +34,9 @@
 #include "kvi_inttypes.h"
 #include "kvi_stdarg.h"
 
-#include <QString>
 #include <QByteArray>
+#include <QChar>
+#include <QString>
 
 /**
 * \namespace KviQString

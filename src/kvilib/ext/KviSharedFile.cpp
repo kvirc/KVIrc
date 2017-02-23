@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviSharedFile.h
+//   File : KviSharedFile.cpp
 //   Creation date : Wed Dec 29 2010 03:40:05 CEST by Elvio Basello
 //
 //   This file is part of the KVIrc IRC client distribution

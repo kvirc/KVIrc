@@ -54,6 +54,7 @@
 #include "KviUserIdentity.h"
 #include "KviUserIdentityManager.h"
 #include "KviPtrListIterator.h"
+#include "KviIrcNetwork.h"
 
 #include "kvi_debug.h"
 

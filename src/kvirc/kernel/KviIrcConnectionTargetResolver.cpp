@@ -41,6 +41,7 @@
 #include "kvi_debug.h"
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionTarget.h"
+#include "KviIrcNetwork.h"
 
 #include <stdlib.h>
 
@@ -161,7 +162,7 @@ void KviIrcConnectionTargetResolver::asyncStartResolve()
 	{
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 		    __tr2qs("Attempting to 'bounce' on proxy %s on port %u (protocol %s)"),
-		    m_pTarget->proxy()->hostName().toUtf8().data(),
+		    m_pTarget->proxy()->hostname().toUtf8().data(),
 		    m_pTarget->proxy()->port(),
 		    m_pTarget->proxy()->protocolName().toUtf8().data());
 
@@ -206,18 +207,18 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 #ifdef COMPILE_IPV6_SUPPORT
 		if(m_pTarget->proxy()->isIPv6())
 		{
-			bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->proxy()->hostName());
+			bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->proxy()->hostname());
 		}
 		else
 		{
 #endif
-			bValidIp = KviNetUtils::isValidStringIp(m_pTarget->proxy()->hostName());
+			bValidIp = KviNetUtils::isValidStringIp(m_pTarget->proxy()->hostname());
 #ifdef COMPILE_IPV6_SUPPORT
 		}
 #endif
 		if(bValidIp)
 		{
-			m_pTarget->proxy()->setIp(m_pTarget->proxy()->hostName());
+			m_pTarget->proxy()->setIp(m_pTarget->proxy()->hostname());
 			if(m_pTarget->proxy()->protocol() != KviProxy::Http && m_pTarget->proxy()->protocol() != KviProxy::Socks5)
 			{
 				lookupServerHostname();
@@ -240,7 +241,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 			m_pProxyDns = new KviDnsResolver();
 			connect(m_pProxyDns, SIGNAL(lookupDone(KviDnsResolver *)), this, SLOT(proxyLookupTerminated(KviDnsResolver *)));
 
-			if(!m_pProxyDns->lookup(m_pTarget->proxy()->hostName(),
+			if(!m_pProxyDns->lookup(m_pTarget->proxy()->hostname(),
 			       m_pTarget->proxy()->isIPv6() ? KviDnsResolver::IPv6 : KviDnsResolver::IPv4))
 			{
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,
@@ -258,7 +259,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 				if(!_OUTPUT_MUTE)
 					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 					    __tr2qs("Looking up the proxy hostname (%s)..."),
-					    m_pTarget->proxy()->hostName().toUtf8().data());
+					    m_pTarget->proxy()->hostname().toUtf8().data());
 			}
 		}
 	}

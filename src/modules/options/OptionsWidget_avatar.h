@@ -2,7 +2,7 @@
 #define _OPTW_AVATAR_H_
 //=============================================================================
 //
-//   File : OptionsWidget_avatar.cpp
+//   File : OptionsWidget_avatar.h
 //   Creation date : Wed Nov 19 09:25:16 2005 GMT by Grifisx & Noldor
 //
 //   This file is part of the KVIrc IRC client distribution

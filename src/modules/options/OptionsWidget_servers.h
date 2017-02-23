@@ -159,6 +159,7 @@ protected:
 protected slots:
 	void useDefaultInitUModeToggled(bool);
 	void portEditorTextChanged(const QString &);
+	void useCacheIpCheckToggled(bool);
 	void useIPV6CheckToggled(bool);
 	void useSSLCheckToggled(bool);
 

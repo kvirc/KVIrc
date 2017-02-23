@@ -32,8 +32,8 @@
 
 #include "kvi_settings.h"
 #include "KviHeapObject.h"
-#include "KviPointerList.h"
 #include "KviIdentityProfile.h"
+#include "KviPointerList.h"
 
 class KviConfigurationFile;
 

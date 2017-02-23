@@ -23,8 +23,8 @@
 //=============================================================================
 
 #include "UglyBase64.h"
-#include "KviMemory.h"
 #include "KviCString.h"
+#include "KviMemory.h"
 
 namespace UglyBase64
 {

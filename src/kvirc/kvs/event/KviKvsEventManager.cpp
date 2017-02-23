@@ -169,6 +169,8 @@ bool KviKvsEventManager::addRawHandler(unsigned int uRawIdx, KviKvsEventHandler 
 
 bool KviKvsEventManager::addRawHandler(unsigned int uRawIdx, const KviKvsEventHandler & h)
 {
+	if(uRawIdx >= KVI_KVS_NUM_RAW_EVENTS)
+		return false;
 	KviKvsEventHandler * copy = new KviKvsEventHandler(h);
 	return addRawHandler(uRawIdx, copy);
 }

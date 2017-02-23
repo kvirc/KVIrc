@@ -25,14 +25,14 @@
 //=============================================================================
 
 #include "KviMexServerImport.h"
-#include "KviCString.h"
 #include "KviHttpRequest.h"
-#include <KviTalWizard.h>
+#include "KviTalWizard.h"
 
-#include <QLineEdit>
-#include <QLabel>
+#include <QString>
 
 class KviRemoteMircServerImportWizard;
+class QLabel;
+class QLineEdit;
 
 class KviMircServersIniImport : public KviMexServerImport
 {

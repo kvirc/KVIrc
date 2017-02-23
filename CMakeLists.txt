@@ -172,7 +172,7 @@ set(ADDITIONAL_LINK_FLAGS)
 # Install path
 if(UNIX)
 	if(APPLE)
-		# MacOS X
+		# macOS
 		# Due to the special bundle structure ignore
 		# the prefix eventually set by the user.
 		set(CMAKE_INSTALL_PREFIX ${CMAKE_BINARY_DIR}/KVIrc.app)
@@ -661,11 +661,11 @@ if(WIN32)
 endif()
 
 ############################################################################
-# Check for OS X universal binary
+# Check for macOS universal binary
 ############################################################################
 
 if(APPLE)
-	option(WANT_UNIVERSAL_BINARY "Whether to compile a universal binary on OS X" ON)
+	option(WANT_UNIVERSAL_BINARY "Whether to compile a universal binary on macOS" ON)
 	if(WANT_UNIVERSAL_BINARY)
 		set(CMAKE_OSX_ARCHITECTURES x86_64)
 		set(CMAKE_STATUS_BUILD_UNIVERSAL_BINARY "User enabled")
@@ -850,9 +850,11 @@ if(HAVE_INET_ATON_EXISTS)
 endif()
 
 # Check GET_INTERFACE_ADDRESS support
-find_path(GET_INTERFACE_ADDRESS_INCLUDE_DIR net/if.h)
-if(GET_INTERFACE_ADDRESS_INCLUDE_DIR)
-	set(COMPILE_GET_INTERFACE_ADDRESS 1)
+if(NOT WIN32)
+	find_path(GET_INTERFACE_ADDRESS_INCLUDE_DIR net/if.h)
+	if(GET_INTERFACE_ADDRESS_INCLUDE_DIR)
+		set(COMPILE_GET_INTERFACE_ADDRESS 1)
+	endif()
 endif()
 
 ############################################################################
@@ -1127,7 +1129,7 @@ else()
 	set(CMAKE_STATUS_GETTEXT_SUPPORT "No")
 endif()
 
-# Search for subdirectories; under OS X, data _MUST_ be before src (to get Info.plist installed before the main executable's fixup_bundle step)
+# Search for subdirectories; under macOS, data _MUST_ be before src (to get Info.plist installed before the main executable's fixup_bundle step)
 subdirs(data doc po scripts src)
 
 #install additional resources for win32
@@ -1323,7 +1325,7 @@ endif()
 # Man path
 if(UNIX)
 	if(APPLE)
-		# does OS X use man pages? <= yes!
+		# does macOS use man pages? <= yes!
 	else()
 		# Assume GNU/Linux
 		set(KVIRC_MAN_PATH ${CMAKE_INSTALL_PREFIX}/${MANDIR_PREFIX}/)

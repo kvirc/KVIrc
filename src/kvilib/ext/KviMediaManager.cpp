@@ -25,16 +25,14 @@
 //#define _KVI_DEBUG_CHECK_RANGE_
 
 #include "KviMediaManager.h"
-#include "kvi_debug.h"
 #include "KviConfigurationFile.h"
+#include "KviFile.h"
 #include "KviFileUtils.h"
 #include "KviLocale.h"
-#include "KviFile.h"
+#include "kvi_debug.h"
 
-#include "kvi_settings.h"
-
-#include <QRegExp>
 #include <QDir>
+#include <QRegExp>
 
 #include <sys/types.h>
 #include <sys/stat.h>

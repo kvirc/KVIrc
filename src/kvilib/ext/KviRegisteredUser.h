@@ -30,9 +30,11 @@
 
 #include "kvi_settings.h"
 #include "KviHeapObject.h"
-#include "KviIrcMask.h"
-#include "KviPointerList.h"
 #include "KviPointerHashTable.h"
+#include "KviPointerList.h"
+
+class KviIrcMask;
+class QString;
 
 class KVILIB_API KviRegisteredUser : public KviHeapObject
 {

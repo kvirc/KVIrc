@@ -23,8 +23,10 @@
 //=============================================================================
 
 #include "KviAvatarCache.h"
-#include "KviPointerList.h"
 #include "KviConfigurationFile.h"
+#include "KviIrcMask.h"
+#include "KviPointerList.h"
+#include "KviQString.h"
 
 // this level triggers a cleanup
 #define MAX_AVATARS_IN_CACHE 100

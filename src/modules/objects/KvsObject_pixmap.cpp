@@ -349,23 +349,21 @@ KVSO_CLASS_FUNCTION(pixmap, pixel)
 		c->returnValue()->setString(col.name());
 		return true;
 	}
-	KviKvsVariant * pRed = new KviKvsVariant((kvs_int_t)col.red());
-	KviKvsVariant * pGreen = new KviKvsVariant((kvs_int_t)col.green());
-	KviKvsVariant * pBlue = new KviKvsVariant((kvs_int_t)col.blue());
 	if(szFlags.indexOf('a', 0, Qt::CaseInsensitive) != -1)
 	{
 		KviKvsArray * pArray = new KviKvsArray();
-		pArray->set(0, pRed);
-		pArray->set(1, pGreen);
-		pArray->set(2, pBlue);
+		pArray->set(0, new KviKvsVariant((kvs_int_t)col.red()));
+		pArray->set(1, new KviKvsVariant((kvs_int_t)col.green()));
+		pArray->set(2, new KviKvsVariant((kvs_int_t)col.blue()));
 		c->returnValue()->setArray(pArray);
 	}
 	else if(szFlags.indexOf('h', 0, Qt::CaseInsensitive) != -1)
 	{
 		KviKvsHash * pHash = new KviKvsHash();
-		pHash->set("red", pRed);
-		pHash->set("green", pGreen);
-		pHash->set("blue", pBlue);
+		pHash->set("red", new KviKvsVariant((kvs_int_t)col.red()));
+		pHash->set("green", new KviKvsVariant((kvs_int_t)col.green()));
+		pHash->set("blue", new KviKvsVariant((kvs_int_t)col.blue()));
+		c->returnValue()->setHash(pHash);
 	}
 	return true;
 }

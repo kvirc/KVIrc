@@ -25,13 +25,13 @@
 //=============================================================================
 
 #include "KviWindow.h"
-#include "KviCString.h"
 #include "KviFileDialog.h"
 #include "KviImageDialog.h"
 #include "KviKvsCallbackObject.h"
 
-#include <QMessageBox>
 #include <QDialog>
+#include <QMessageBox>
+#include <QString>
 
 class KviKvsCallbackMessageBox : public QMessageBox, public KviKvsCallbackObject
 {

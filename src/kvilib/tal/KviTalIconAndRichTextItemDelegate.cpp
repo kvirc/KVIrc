@@ -24,10 +24,11 @@
 
 #include "KviTalIconAndRichTextItemDelegate.h"
 
+#include <QAbstractItemView>
+#include <QAbstractTextDocumentLayout>
+#include <QApplication>
 #include <QListWidget>
 #include <QPainter>
-#include <QApplication>
-#include <QAbstractTextDocumentLayout>
 
 #define LVI_AFTER_ICON (LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING)
 
@@ -42,7 +43,7 @@ KviTalIconAndRichTextItemDelegate::~KviTalIconAndRichTextItemDelegate()
 void KviTalIconAndRichTextItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {
 	pPainter->save();
-	QStyleOptionViewItemV4 opt = option;
+	QStyleOptionViewItem opt = option;
 	initStyleOption(&opt, index);
 
 	if(opt.state & QStyle::State_Selected)

@@ -25,12 +25,10 @@
 
 #include "KviModule.h"
 #include "KviApplication.h"
+#include "KviIconManager.h"
+#include "KviLocale.h"
 #include "KviMainWindow.h"
 #include "KviWindow.h"
-#include "KviLocale.h"
-#include "KviIconManager.h"
-
-#include <QSplitter>
 
 #define KVI_SHARED_FILES_WINDOW_EXTENSION_NAME "Shared files window extension"
 
@@ -57,19 +55,15 @@ SharedFilesWindow * g_pSharedFilesWindow = nullptr;
 
 static bool sharedfileswindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	QString dummy;
-	bool bCreateMinimized = c->hasSwitch('m', "minimized");
-	bool bNoRaise = c->hasSwitch('n', "noraise");
-
 	if(!g_pSharedFilesWindow)
 	{
+		bool bCreateMinimized = c->hasSwitch('m', "minimized");
 		g_pSharedFilesWindow = new SharedFilesWindow();
 		g_pMainWindow->addWindow(g_pSharedFilesWindow, !bCreateMinimized);
-		//if(bCreateMinimized)g_pSharedFilesWindow->minimize();
 		return true;
 	}
 
-	if(!bNoRaise)
+	if(!c->hasSwitch('n', "noraise"))
 		g_pSharedFilesWindow->delayedAutoRaise();
 	return true;
 }

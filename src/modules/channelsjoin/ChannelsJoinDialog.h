@@ -31,17 +31,17 @@
 */
 
 #include "KviWindow.h"
-#include "KviCString.h"
 
-#include <QTreeWidget>
 #include <QDialog>
 #include <QMenu>
+#include <QTreeWidget>
 
-class QCheckBox;
-class QPushButton;
-class QLineEdit;
 class KviConsoleWindow;
-class KviTalGroupBox;
+class QGroupBox;
+class QCheckBox;
+class QLineEdit;
+class QPushButton;
+class QString;
 
 /**
 * \class ChannelsJoinDialogTreeWidget
@@ -52,7 +52,7 @@ class ChannelsJoinDialogTreeWidget : public QTreeWidget
 	Q_OBJECT
 public:
 	ChannelsJoinDialogTreeWidget(QWidget * par)
-	    : QTreeWidget(par), m_pJoinPopup(0){};
+	    : QTreeWidget(par), m_pJoinPopup(nullptr){};
 
 	~ChannelsJoinDialogTreeWidget()
 	{
@@ -102,7 +102,7 @@ protected:
 	};
 	QLineEdit * m_pChannelEdit;
 	ChannelsJoinDialogTreeWidget * m_pTreeWidget;
-	KviTalGroupBox * m_pGroupBox;
+	QGroupBox * m_pGroupBox;
 	QLineEdit * m_pPass;
 	QCheckBox * m_pShowAtStartupCheck;
 	QCheckBox * m_pCloseAfterJoinCheck;

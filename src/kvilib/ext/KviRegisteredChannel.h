@@ -26,10 +26,10 @@
 
 #include "kvi_settings.h"
 #include "KviHeapObject.h"
-#include "KviCString.h"
 #include "KviPointerList.h"
 
 #include <QHash>
+#include <QString>
 
 class KVILIB_API KviRegisteredChannel : public KviHeapObject
 {

@@ -2,7 +2,7 @@
 #define _KVI_CRYPT_ENGINE_DESC_H_
 //=============================================================================
 //
-//   File : KviCryptEngineManager.h
+//   File : KviCryptEngineDescription.h
 //   Creation date : Wed Dec 29 2010 22:10:05 CEST by Elvio Basello
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -29,15 +29,19 @@
 //
 
 #include "kvi_settings.h"
-#include "KviHeapObject.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
+
+#include "KviCryptEngine.h"
+#include "KviHeapObject.h"
+
+#include <QString>
 
 class KVILIB_API KviCryptEngineDescription : public KviHeapObject
 {
 public:
-	KviCryptEngineDescription(){};
-	virtual ~KviCryptEngineDescription(){};
+        KviCryptEngineDescription(){}
+        virtual ~KviCryptEngineDescription(){}
 
 public:
 	QString m_szName;                            /**< engine name */

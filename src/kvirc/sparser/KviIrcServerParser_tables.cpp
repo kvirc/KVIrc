@@ -48,7 +48,7 @@ KviLiteralMessageParseStruct KviIrcServerParser::m_literalParseProcTable[] = {
 	{ "QUIT"         , PTM(parseLiteralQuit)         },
 	{ "TOPIC"        , PTM(parseLiteralTopic)        },
 	{ "WALLOPS"      , PTM(parseLiteralWallops)      },
-	{ nullptr              , nullptr                             }
+	{ nullptr        , nullptr                       }
 	// clang-format on
 };
 
@@ -62,7 +62,7 @@ KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpParseProcTable[] = {
 	{ "CLIENTINFO" , PTM(REQ(Clientinfo)) , PTM(RPL(Generic))  , 0 },
 	{ "DCC"        , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
 	{ "FINGER"     , PTM(REQ(Finger))     , PTM(RPL(Generic))  , 0 },
-	{ "LAGCHECK"   , nullptr                    , PTM(RPL(Lagcheck)) , KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT },
+	{ "LAGCHECK"   , nullptr              , PTM(RPL(Lagcheck)) , KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT },
 	{ "PAGE"       , PTM(REQ(Page))       , PTM(RPL(Generic))  , 0 },
 	{ "PING"       , PTM(REQ(Ping))       , PTM(RPL(Ping))     , 0 },
 	{ "SOURCE"     , PTM(REQ(Source))     , PTM(RPL(Generic))  , 0 },
@@ -71,7 +71,7 @@ KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpParseProcTable[] = {
 	{ "USERINFO"   , PTM(REQ(Userinfo))   , PTM(RPL(Userinfo)) , 0 },
 	{ "VERSION"    , PTM(REQ(Version))    , PTM(RPL(Generic))  , 0 },
 	{ "XDCC"       , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
-	{ nullptr            , nullptr                    , nullptr                  , 0 }
+	{ nullptr      , nullptr              , nullptr            , 0 }
 	// clang-format on
 };
 

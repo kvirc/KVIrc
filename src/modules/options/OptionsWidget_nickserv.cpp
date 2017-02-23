@@ -59,10 +59,11 @@ NickServRuleEditor::NickServRuleEditor(QWidget * par, bool bUseServerMaskField)
 	gl->addWidget(l, 1, 0);
 
 	m_pNickServMaskEdit = new QLineEdit(this);
+	// xgettext:no-c-format
 	KviTalToolTip::add(m_pNickServMaskEdit, __tr2qs_ctx("This is the mask that NickServ must match to be correctly identified as the NickServ service. "
 	                                                    "This usually will be something like <b>NickServ!service@services.dalnet</b>.<br>"
 	                                                    "You can use wildcards for this field, but generally it is a security flaw. "
-	                                                    "If you're 100%% sure that NO user on the network can use the nickname \"NickServ\", "
+	                                                    "If you're 100% sure that NO user on the network can use the nickname \"NickServ\", "
 	                                                    "the mask <b>NickServ!*@*</b> may be safe to use in this field.", "options"));
 
 	gl->addWidget(m_pNickServMaskEdit, 1, 1, 1, 3);

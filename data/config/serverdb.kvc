@@ -83,6 +83,15 @@ NServers=1
 0_Hostname=irc.chatcafe.net
 0_Description=Chatcafe:%20Random%20server
 NServers=1
+[ChatHispano]
+0_Hostname=irc.chathispano.com
+0_Description=ChatHispano:%20Random%20server
+1_Hostname=irc.chathispano.com
+1_Description=ChatHispano:%20Random%20SSL%20server
+1_Port=6697
+1_SSL=true
+NServers=2
+Description=Spanish%20Network
 [Chatnet]
 0_Hostname=Chicago.IL.US.ChatNet.Org
 0_Description=Chatnet:%20Random%20AU%20server
@@ -421,11 +430,6 @@ Encoding=CP-1251
 1_SSL=true
 NServers=2
 Description=Your%20IRC%20Superhighway
-[IRC-Hispano]
-0_Hostname=irc.irc-hispano.org
-0_Description=IRC-Hispano:%20Random%20server
-NServers=1
-Description=Spanish%20Network
 [IRCItalia]
 0_Hostname=irc.ircitalia.net
 0_Description=IRCItalia%20network

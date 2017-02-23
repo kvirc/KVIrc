@@ -31,6 +31,9 @@
 #include "KviApplication.h"
 #include "KviTalToolTip.h"
 
+#include <QLabel>
+#include <QPushButton>
+
 #define KVI_OPTIONSWIDGET_GRIDLAYOUT_BORDER 4
 #define KVI_OPTIONSWIDGET_GRIDLAYOUT_SPACE 6
 

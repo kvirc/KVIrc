@@ -23,11 +23,8 @@
 //=============================================================================
 
 #include "KviAnimatedPixmap.h"
-#include "kvi_settings.h"
 
 #include <QImageReader>
-#include <QTime>
-#include <QHash>
 
 KviAnimatedPixmap::KviAnimatedPixmap(QString fileName, int iWidth, int iHeight)
     : QObject(),

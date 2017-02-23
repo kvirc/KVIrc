@@ -2,7 +2,7 @@
 #define _MARSHAL_H_
 //=============================================================================
 //
-//   File DccMarshal.h
+//   File : DccMarshal.h
 //   Creation date : Sun Sep 17 2000 10:44:20 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

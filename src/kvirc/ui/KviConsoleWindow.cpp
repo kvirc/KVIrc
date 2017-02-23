@@ -37,6 +37,7 @@
 #include "KviError.h"
 #include "KviProxyDataBase.h"
 #include "KviNetUtils.h"
+#include "KviIrcNetwork.h"
 #include "KviIrcServer.h"
 #include "KviIrcServerDataBase.h"
 #include "KviDnsResolver.h"

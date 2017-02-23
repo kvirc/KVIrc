@@ -31,14 +31,14 @@
 #include "KviTalListWidget.h"
 #include "KviTalIconAndRichTextItemDelegate.h"
 
-#include <QFrame>
-#include <QPushButton>
+#include <QString>
 
-class QComboBox;
 class KviChannelWindow;
-class QMenu;
 class KviIrcConnection;
 class KviThemedLabel;
+class QComboBox;
+class QMenu;
+class QPushButton;
 
 class KVIRC_API KviTopicListBoxItemDelegate : public KviTalIconAndRichTextItemDelegate
 {

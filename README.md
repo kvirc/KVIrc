@@ -37,7 +37,7 @@ We're also looking for volunteer packagers and maintainers to other Linux distri
 Compiling KVIrc on your chosen platform is an alternative way to enjoy KVIrc, see below.
 
 - [Linux install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL.txt)
-- [OS X install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL-MacOS.txt)
+- [macOS install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL-MacOS.txt)
 - Windows [32-bit install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL-Win32.txt) or [64-bit install](https://github.com/kvirc/KVIrc/blob/master/doc/INSTALL-Win64.txt)
 
 ### Licensed under

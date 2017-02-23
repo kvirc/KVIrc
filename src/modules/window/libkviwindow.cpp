@@ -221,6 +221,78 @@ static bool window_kvs_cmd_undock(KviKvsModuleCommandCall * c)
 }
 
 /*
+	@doc: window.splitView
+	@type:
+		command
+	@title:
+		window.splitView
+	@short:
+		Splits the view of a channel window
+	@syntax:
+		window.splitView [-q] [window_id]
+	@description:
+		Splits the view of a channel specified by window_id. If window_id is missing then
+		the current window is split. If the specified window was already split then no
+		operation is performed. If the specified window does not exist or is not a channel
+		window then a warning is printed unless the -q switch is used.
+	@seealso:
+		[cmd]window.unsplitView[/cmd], [fnc]$window.isSplitView[/fnc]
+*/
+
+static bool window_kvs_cmd_splitView(KviKvsModuleCommandCall * c)
+{
+	GET_KVS_WINDOW_ID
+	if(pWnd && pWnd->type() == KviWindow::Channel)
+	{
+		KviChannelWindow * chan = (KviChannelWindow *)pWnd;
+		if(!chan->messageView())
+			chan->toggleDoubleView();
+	}
+	else
+	{
+		if(!c->hasSwitch('q', "quiet"))
+			c->warning(__tr2qs("The window with ID '%s' isn't a channel window."), szWnd.toUtf8().data());
+	}
+	return true;
+}
+
+/*
+	@doc: window.unsplitView
+	@type:
+		command
+	@title:
+		window.unsplitView
+	@short:
+		Unsplits the view of a channel window
+	@syntax:
+		window.splitView [-q] [window_id]
+	@description:
+		Unsplits the view of a channel specified by window_id. If window_id is missing then
+		the current window is unsplit. If the specified window wasn't already split then no
+		operation is performed. If the specified window does not exist or is not a channel
+		window then a warning is printed unless the -q switch is used.
+	@seealso:
+		[cmd]window.unsplitView[/cmd], [fnc]$window.isSplitView[/fnc]
+*/
+
+static bool window_kvs_cmd_unsplitView(KviKvsModuleCommandCall * c)
+{
+	GET_KVS_WINDOW_ID
+	if(pWnd && pWnd->type() == KviWindow::Channel)
+	{
+		KviChannelWindow * chan = (KviChannelWindow *)pWnd;
+		if(chan->messageView())
+			chan->toggleDoubleView();
+	}
+	else
+	{
+		if(!c->hasSwitch('q', "quiet"))
+			c->warning(__tr2qs("The window with ID '%s' isn't a channel window."), szWnd.toUtf8().data());
+	}
+	return true;
+}
+
+/*
 	@doc: window.activate
 	@type:
 		command
@@ -391,6 +463,33 @@ static bool window_kvs_fnc_isDocked(KviKvsModuleFunctionCall * c)
 	{
 		c->returnValue()->setBoolean(pWnd->parentWidget() ? true : false);
 	}
+	return true;
+}
+
+/*
+	@doc: window.isSplitView
+	@type:
+		function
+	@title:
+		$window.isSplitView
+	@short:
+		Checks if a window is currently in split view mode
+	@syntax:
+		$window.isSplitView
+		$window.isSplitView(<window_id>)
+	@description:
+		Returns [b]1[/b] if the window specified by <window_id> is in split view mode and [b]0[/b] otherwise.
+		This is only intended to apply to channel windows. If the specified window doesn't exist
+		or is not a channel window then 0 is returned.
+	@seealso:
+		[cmd]window.splitView[/cmd], [cmd]window.unsplitView[/cmd]
+*/
+static bool window_kvs_fnc_isSplitView(KviKvsModuleFunctionCall * c)
+{
+	c->returnValue()->setBoolean(false);
+	GET_KVS_FNC_WINDOW_ID
+	if(pWnd && pWnd->type() == KviWindow::Channel)
+		c->returnValue()->setBoolean(((KviChannelWindow *)pWnd)->messageView() ? true : false);
 	return true;
 }
 
@@ -1505,6 +1604,7 @@ static bool window_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m, "hasUserFocus", window_kvs_fnc_hasUserFocus);
 	KVSM_REGISTER_FUNCTION(m, "hasOutput", window_kvs_fnc_hasOutput);
 	KVSM_REGISTER_FUNCTION(m, "isDocked", window_kvs_fnc_isDocked);
+	KVSM_REGISTER_FUNCTION(m, "isSplitView", window_kvs_fnc_isSplitView);
 	KVSM_REGISTER_FUNCTION(m, "isMinimized", window_kvs_fnc_fake); // compat only
 	KVSM_REGISTER_FUNCTION(m, "isMaximized", window_kvs_fnc_fake); // compat only
 	KVSM_REGISTER_FUNCTION(m, "caption", window_kvs_fnc_caption);
@@ -1522,6 +1622,8 @@ static bool window_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "clearOutput", window_kvs_cmd_clearOutput);
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "dock", window_kvs_cmd_dock);
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "undock", window_kvs_cmd_undock);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "splitView", window_kvs_cmd_splitView);
+	KVSM_REGISTER_SIMPLE_COMMAND(m, "unsplitView", window_kvs_cmd_unsplitView);
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "minimize", window_kvs_cmd_fake);
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "maximize", window_kvs_cmd_fake);
 	KVSM_REGISTER_SIMPLE_COMMAND(m, "restore", window_kvs_cmd_fake);

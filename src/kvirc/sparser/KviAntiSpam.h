@@ -25,7 +25,8 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviCString.h"
+
+class KviCString;
 
 extern KVIRC_API bool kvi_mayBeSpam(KviCString msg, KviCString & spamWord);
 

@@ -29,12 +29,11 @@
 #include "kvi_settings.h"
 #include "KviHeapObject.h"
 
-#include <QString>
-
 template <typename A, typename B>
 class KviPointerHashTable;
 
 class KviTranslationEntry;
+class QString;
 class QTextCodec;
 
 /**

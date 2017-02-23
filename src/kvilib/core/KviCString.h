@@ -34,13 +34,12 @@
 #include <strings.h> // useless ?
 #endif
 
-#include <QtGlobal>
-#include <QString>
 #include <QByteArray>
+#include <QtGlobal>
 
 #include "kvi_inttypes.h"
-#include "KviHeapObject.h"
 #include "kvi_stdarg.h"
+#include "KviHeapObject.h"
 
 //
 //  IRC is not UNICODE ...(yet) :(

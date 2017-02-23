@@ -23,6 +23,8 @@
 //=============================================================================
 
 #include "KviRegisteredUserMask.h"
+#include "KviIrcMask.h"
+#include "KviRegisteredUser.h"
 
 KviRegisteredUserMask::KviRegisteredUserMask(KviRegisteredUser * pUser, KviIrcMask * pMask)
 {

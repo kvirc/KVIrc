@@ -26,14 +26,9 @@
 
 #include "kvi_settings.h"
 
-#include <QWidget>
-#include <QString>
-#include <QFrame>
+#include <QLineEdit>
 
-class QLineEdit;
-class QLabel;
-
-class KVIRC_API KviIpEditor : public QFrame
+class KVIRC_API KviIpEditor : public QLineEdit
 {
 	Q_OBJECT
 public:
@@ -42,30 +37,18 @@ public:
 		IPv4,
 		IPv6
 	};
-	KviIpEditor(QWidget * parent, AddressType = IPv4, const QString & ipAddr = QString(), const char * name = 0);
-	~KviIpEditor();
+	KviIpEditor(QWidget * parent, AddressType = IPv4, const QString & ipAddr = QString(), const char * name = nullptr);
+	~KviIpEditor() = default;
 
 private:
-	QLabel * m_pLabel[7];
-	QLineEdit * m_pEdit[8];
 	AddressType m_addrType;
 
 public:
 	bool setAddress(const QString & ipAddr);
 	QString address() const;
 	void setAddressType(AddressType addrType);
-	AddressType addressType() const;
-	bool hasEmptyFields() const;
-	void clear();
-	virtual void setEnabled(bool bEnabled);
-
-protected:
-	virtual bool eventFilter(QObject * o, QEvent * e);
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual QSize sizeHint() const;
-
-private:
-	void recreateChildren();
+	inline AddressType addressType() const { return m_addrType; }
+	bool isValid() const;
 };
 
 #endif //_KVI_IPEDITOR_H_

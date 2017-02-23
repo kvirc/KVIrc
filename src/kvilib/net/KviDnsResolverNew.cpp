@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : KviDnsResolver.cpp
+//   File : KviDnsResolverNew.cpp
 //   Creation date : Sat Jul 21 2000 17:19:31 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
@@ -23,12 +23,11 @@
 //=============================================================================
 
 #include "KviDnsResolver.h"
-
 #include "KviLocale.h"
-
 #include "kvi_debug.h"
 
 #include <QHostInfo>
+#include <QString>
 
 class KviDnsResolverPrivate
 {

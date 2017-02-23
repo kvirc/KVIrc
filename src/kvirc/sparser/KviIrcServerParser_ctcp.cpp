@@ -55,6 +55,7 @@
 #include "KviRegisteredUserDataBase.h"
 #include "KviBuildInfo.h"
 #include "KviIrcConnectionServerInfo.h"
+#include "KviIrcMessage.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"

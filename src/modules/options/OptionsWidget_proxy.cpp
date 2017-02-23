@@ -51,7 +51,7 @@ ProxyOptionsTreeWidgetItem::ProxyOptionsTreeWidgetItem(QTreeWidget * parent, con
     : QTreeWidgetItem(parent)
 {
 	qDebug("Creating item");
-	setText(0, prx->m_szHostname);
+	setText(0, prx->hostname());
 	setIcon(0, QIcon(pm));
 	m_pProxyData = new KviProxy(*prx);
 }
@@ -126,8 +126,7 @@ OptionsWidget_proxy::OptionsWidget_proxy(QWidget * parent)
 	m_pProtocolLabel = new QLabel(__tr2qs_ctx("Protocol:", "options"), gbox);
 	m_pProtocolBox = new QComboBox(gbox);
 
-	QStringList l;
-	KviProxy::getSupportedProtocolNames(l);
+	QStringList l = KviProxy::getSupportedProtocolNames();
 
 	m_pProtocolBox->addItems(l);
 
@@ -206,7 +205,7 @@ void OptionsWidget_proxy::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetIt
 #endif
 	if(m_pLastEditedItem)
 	{
-		m_pProxyEdit->setText(m_pLastEditedItem->m_pProxyData->m_szHostname);
+		m_pProxyEdit->setText(m_pLastEditedItem->m_pProxyData->hostname());
 
 		for(int i = 0; i < m_pProtocolBox->count(); i++)
 		{
@@ -225,7 +224,7 @@ void OptionsWidget_proxy::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetIt
 		m_pIPv6Check->setChecked(false);
 		m_pIpEditor->setAddressType(KviIpEditor::IPv4);
 #endif
-		if(!m_pIpEditor->setAddress(m_pLastEditedItem->m_pProxyData->m_szIp))
+		if(!m_pIpEditor->setAddress(m_pLastEditedItem->m_pProxyData->ip()))
 		{
 #ifdef COMPILE_IPV6_SUPPORT
 			m_pIpEditor->setAddress(m_pLastEditedItem->m_pProxyData->isIPv6() ? "0:0:0:0:0:0:0:0" : "0.0.0.0");
@@ -234,9 +233,9 @@ void OptionsWidget_proxy::currentItemChanged(QTreeWidgetItem * it, QTreeWidgetIt
 #endif
 		}
 
-		m_pUserEdit->setText(m_pLastEditedItem->m_pProxyData->m_szUser);
-		m_pPassEdit->setText(m_pLastEditedItem->m_pProxyData->m_szPass);
-		KviCString tmp(KviCString::Format, "%u", m_pLastEditedItem->m_pProxyData->m_uPort);
+		m_pUserEdit->setText(m_pLastEditedItem->m_pProxyData->user());
+		m_pPassEdit->setText(m_pLastEditedItem->m_pProxyData->pass());
+		KviCString tmp(KviCString::Format, "%u", m_pLastEditedItem->m_pProxyData->port());
 		m_pPortEdit->setText(tmp.ptr());
 	}
 	else
@@ -255,52 +254,46 @@ void OptionsWidget_proxy::saveLastItem()
 {
 	if(m_pLastEditedItem)
 	{
-		KviCString tmp = m_pProxyEdit->text();
+		QString tmp = m_pProxyEdit->text();
 		if(tmp.isEmpty())
 			tmp = "irc.unknown.net";
 
-		m_pLastEditedItem->setText(0, tmp.ptr());
-		m_pLastEditedItem->m_pProxyData->m_szHostname = tmp;
+		m_pLastEditedItem->setText(0, tmp);
+		m_pLastEditedItem->m_pProxyData->setHostname(tmp);
 #ifdef COMPILE_IPV6_SUPPORT
-		m_pLastEditedItem->m_pProxyData->m_bIsIPv6 = m_pIPv6Check->isChecked();
+		m_pLastEditedItem->m_pProxyData->setIPv6(m_pIPv6Check->isChecked());
 #else
-		m_pLastEditedItem->m_pProxyData->m_bIsIPv6 = false;
+		m_pLastEditedItem->m_pProxyData->setIPv6(false);
 #endif
-		m_pLastEditedItem->m_pProxyData->m_szIp = "";
+		m_pLastEditedItem->m_pProxyData->setIp("");
 
-		QString tmpAddr = m_pIpEditor->address();
-
-		if(!m_pIpEditor->hasEmptyFields())
+		if(m_pIpEditor->isValid())
 		{
+			QString tmpAddr = m_pIpEditor->address();
 #ifdef COMPILE_IPV6_SUPPORT
 			if(m_pIPv6Check->isChecked())
 			{
-				if((!KviQString::equalCI(tmpAddr, "0:0:0:0:0:0:0:0")) && KviNetUtils::isValidStringIPv6(tmpAddr))
-				{
-					m_pLastEditedItem->m_pProxyData->m_szIp = tmpAddr;
-				}
+				if(tmpAddr != "::" && KviNetUtils::isValidStringIPv6(tmpAddr))
+					m_pLastEditedItem->m_pProxyData->setIp(tmpAddr);
 			}
 			else
 			{
 #endif
-				if((!KviQString::equalCI(tmpAddr, "0.0.0.0")) && KviNetUtils::isValidStringIp(tmpAddr))
-				{
-					m_pLastEditedItem->m_pProxyData->m_szIp = tmpAddr;
-				}
+				if(tmpAddr != "0.0.0.0" && KviNetUtils::isValidStringIp(tmpAddr))
+					m_pLastEditedItem->m_pProxyData->setIp(tmpAddr);
 #ifdef COMPILE_IPV6_SUPPORT
 			}
 #endif
 		}
-		m_pLastEditedItem->m_pProxyData->m_szPass = m_pPassEdit->text();
-		m_pLastEditedItem->m_pProxyData->m_szUser = m_pUserEdit->text();
+		m_pLastEditedItem->m_pProxyData->setPass(m_pPassEdit->text());
+		m_pLastEditedItem->m_pProxyData->setUser(m_pUserEdit->text());
 		tmp = m_pPortEdit->text();
 		bool bOk;
 		kvi_u32_t uPort = tmp.toUInt(&bOk);
 		if(!bOk)
 			uPort = 1080;
-		m_pLastEditedItem->m_pProxyData->m_uPort = uPort;
-		tmp = m_pProtocolBox->currentText();
-		m_pLastEditedItem->m_pProxyData->setNamedProtocol(tmp.ptr());
+		m_pLastEditedItem->m_pProxyData->setPort(uPort);
+		m_pLastEditedItem->m_pProxyData->setNamedProtocol(m_pProtocolBox->currentText());
 	}
 }
 

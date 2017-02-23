@@ -23,12 +23,13 @@
 //=============================================================================
 
 #include "KviModule.h"
-#include "KviCString.h"
 #include "KviConfigurationFile.h"
 #include "KviFileUtils.h"
 #include "KviApplication.h"
 #include "KviLocale.h"
 #include "KviPointerHashTable.h"
+
+#include <QString>
 
 static KviPointerHashTable<QString, KviConfigurationFile> * g_pConfigDict = nullptr;
 static int g_iNextConfigId = 0;

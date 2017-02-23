@@ -1,21 +1,22 @@
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Stijn <stijn.geuens@mobistarmail.be>, 2009.
-# Stijn <Valenstijn@gmail.com>, 2009.
+# Translators:
+# Stijn <stijn.geuens@mobistarmail.be>, 2009
+# Stijn <Valenstijn@gmail.com>, 2009
 msgid ""
 msgstr ""
-"Project-Id-Version: 10746.0.about\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
-"PO-Revision-Date: 2009-05-10 11:22+0200\n"
-"Last-Translator: Stijn <Valenstijn@gmail.com>\n"
-"Language-Team: Dutch <>\n"
+"POT-Creation-Date: 2016-10-28 21:04+0200\n"
+"PO-Revision-Date: 2016-05-26 13:18+0000\n"
+"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
+"Language-Team: Dutch (http://www.transifex.com/kvirc/KVIrc/language/nl/)\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 0.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/about/AboutDialog.cpp:108
@@ -23,88 +24,96 @@ msgid "About"
 msgstr "Over"
 
 #: src/modules/about/AboutDialog.cpp:79
-msgid "About KVIrc..."
-msgstr "OverKVIrc"
+msgid "About KVIrc"
+msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:136
+#: src/modules/about/AboutDialog.cpp:135
 msgid "Architecture"
 msgstr "Achitectuur"
 
-#: src/modules/about/AboutDialog.cpp:163
-msgid "Build Command"
-msgstr "Bouw bevel"
-
-#: src/modules/about/AboutDialog.cpp:143
-msgid "Build Date"
-msgstr "Versie datum"
-
-#: src/modules/about/AboutDialog.cpp:167
-msgid "Build Flags"
-msgstr "Bouw vlaggen"
-
-#: src/modules/about/AboutDialog.cpp:141
+#: src/modules/about/AboutDialog.cpp:148
 msgid "Build Info"
 msgstr "Versie nummer"
 
-#: src/modules/about/AboutDialog.cpp:159
-msgid "CPU Name"
-msgstr "CPU naam"
+#: src/modules/about/AboutDialog.cpp:170
+msgid "Build command"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:150
+msgid "Build date"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:174
+msgid "Build flags"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:166
+msgid "CPU name"
+msgstr ""
 
 #: src/modules/about/AboutDialog.cpp:80
 msgid "Close"
 msgstr "Sluiten"
 
-#: src/modules/about/AboutDialog.cpp:176
-msgid "Compiler Flags"
-msgstr "Compiler vlaggen"
+#: src/modules/about/AboutDialog.cpp:183
+msgid "Compiler flags"
+msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:172
-msgid "Compiler Name"
-msgstr "Compiler naam"
+#: src/modules/about/AboutDialog.cpp:179
+msgid "Compiler name"
+msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:182
+#: src/modules/about/AboutDialog.cpp:197
 msgid "Executable Information"
 msgstr "Uitvoerbare infomatie"
+
+#: src/modules/about/AboutDialog.cpp:191
+msgid "Features"
+msgstr ""
 
 #: src/modules/about/AboutDialog.cpp:102
 msgid "Forged by the <b>KVIrc Development Team</b>"
 msgstr "Vergeten door het <b>KVirc Ontwikkel team<</b>"
 
-#: src/modules/about/AboutDialog.cpp:195
+#: src/modules/about/AboutDialog.cpp:209
 msgid "Honor && Glory"
 msgstr "Verdiensten"
 
-#: src/modules/about/AboutDialog.cpp:221
+#: src/modules/about/AboutDialog.cpp:235
 msgid "License"
 msgstr "Licentie"
 
-#: src/modules/about/AboutDialog.cpp:214
+#: src/modules/about/AboutDialog.cpp:227
 msgid ""
-"Oops... Can't find the license file...\n"
+"Oops! Can't find the license file.\n"
 "It MUST be included in the distribution...\n"
 "Please report to <pragma at kvirc dot net>"
 msgstr ""
-"Oei... Ik kan het licentie bestand niet vinden.\n"
-"het MOET in de distributie vervat zitten...\n"
-"Rapporteer aan <pragma at kvirc dot net>"
 
-#: src/modules/about/AboutDialog.cpp:151
-msgid "Revision Number"
-msgstr "Revisie nummer"
+#: src/modules/about/AboutDialog.cpp:143
+msgid "Qt theme"
+msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:122
+#: src/modules/about/AboutDialog.cpp:139 src/modules/about/AboutDialog.cpp:187
+msgid "Qt version"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:158
+msgid "Revision number"
+msgstr ""
+
+#: src/modules/about/AboutDialog.cpp:121
 msgid "Runtime Info"
 msgstr "Runtime informatie"
 
-#: src/modules/about/AboutDialog.cpp:147
-msgid "Sources Date"
-msgstr "Bronnen datum"
+#: src/modules/about/AboutDialog.cpp:154
+msgid "Sources date"
+msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:124
-#: src/modules/about/AboutDialog.cpp:155
-msgid "System Name"
-msgstr "Systeem naam"
+#: src/modules/about/AboutDialog.cpp:123 src/modules/about/AboutDialog.cpp:162
+msgid "System name"
+msgstr ""
 
-#: src/modules/about/AboutDialog.cpp:132
-msgid "System Version"
-msgstr "Systeem versie"
+#: src/modules/about/AboutDialog.cpp:131
+msgid "System version"
+msgstr ""

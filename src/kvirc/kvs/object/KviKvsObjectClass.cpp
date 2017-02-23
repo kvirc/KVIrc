@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : kvi_kvs_objectclass.cpp
+//   File : KviKvsObjectClass.cpp
 //   Creation date : Sat 23 Apr 2005 20:31:32 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution

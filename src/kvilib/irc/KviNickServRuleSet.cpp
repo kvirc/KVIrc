@@ -25,6 +25,7 @@
 #include "KviNickServRuleSet.h"
 #include "KviConfigurationFile.h"
 #include "KviIrcMask.h"
+#include "KviQString.h"
 
 #include <QRegExp>
 

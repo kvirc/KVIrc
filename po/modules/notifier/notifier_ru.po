@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: notifier_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-02 01:40+0200\n"
+"POT-Creation-Date: 2016-10-28 21:04+0200\n"
 "PO-Revision-Date: 2010-01-24 11:05+0400\n"
 "Last-Translator: Igor Govorov <govorov.igor at gmail.com>\n"
 "Language-Team: russian\n"
@@ -22,58 +22,58 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/modules/notifier/NotifierWindow.cpp:973
+#: src/modules/notifier/NotifierWindow.cpp:995
 msgid "1 Hour"
 msgstr "1 Час"
 
-#: src/modules/notifier/NotifierWindow.cpp:969
+#: src/modules/notifier/NotifierWindow.cpp:991
 msgid "1 Minute"
 msgstr "1 Минута"
 
-#: src/modules/notifier/NotifierWindow.cpp:971
+#: src/modules/notifier/NotifierWindow.cpp:993
 msgid "15 Minutes"
 msgstr "15 Минут"
 
-#: src/modules/notifier/NotifierWindow.cpp:972
+#: src/modules/notifier/NotifierWindow.cpp:994
 msgid "30 Minutes"
 msgstr "30 Минут"
 
-#: src/modules/notifier/NotifierWindow.cpp:970
+#: src/modules/notifier/NotifierWindow.cpp:992
 msgid "5 Minutes"
 msgstr "5 Минут"
 
-#: src/modules/notifier/NotifierWindow.cpp:978
+#: src/modules/notifier/NotifierWindow.cpp:1000
 msgid "Disable"
 msgstr "Выключить"
 
-#: src/modules/notifier/NotifierWindow.cpp:966
+#: src/modules/notifier/NotifierWindow.cpp:988
 msgid "Hide"
 msgstr "Скрыть"
 
-#: src/modules/notifier/NotifierWindow.cpp:976
+#: src/modules/notifier/NotifierWindow.cpp:998
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr "Навсегда (До явного включения)"
 
-#: src/modules/notifier/NotifierWindow.cpp:965
+#: src/modules/notifier/NotifierWindow.cpp:987
 msgid "Show/Hide input line"
 msgstr "Показать/Скрыть поле ввода"
 
-#: src/modules/notifier/libkvinotifier.cpp:153
+#: src/modules/notifier/libkvinotifier.cpp:156
 msgid "The -t switch expects a timeout in seconds"
 msgstr "Используйте ключ -t чтобы задать таймаут в секундах"
 
-#: src/modules/notifier/libkvinotifier.cpp:150
+#: src/modules/notifier/libkvinotifier.cpp:151
 msgid "The specified timeout is not valid, assuming 0"
 msgstr "Заданный таймаут недействителен, принимается 0"
 
-#: src/modules/notifier/libkvinotifier.cpp:136
+#: src/modules/notifier/libkvinotifier.cpp:137
 msgid "The specified window does not exist"
 msgstr "Заданное окно не существует"
 
-#: src/modules/notifier/NotifierWindow.cpp:975
+#: src/modules/notifier/NotifierWindow.cpp:997
 msgid "Until KVIrc is Restarted"
 msgstr "Пока KVIrc не будет перезапущен"
 
-#: src/modules/notifier/NotifierWindow.cpp:1053
+#: src/modules/notifier/NotifierWindow.cpp:1074
 msgid "Write text or commands to window"
 msgstr "Напишите текст или команду в окне"

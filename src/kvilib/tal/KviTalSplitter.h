@@ -2,7 +2,7 @@
 #define _KVI_TAL_SPLITTER_H_
 //=============================================================================
 //
-//   File : KviTalSplitter.cpp
+//   File : KviTalSplitter.h
 //   Creation date : Mon Aug 31 2009 19:47:08 by Fabio Bas
 //
 //   This file is part of the KVIrc IRC client distribution

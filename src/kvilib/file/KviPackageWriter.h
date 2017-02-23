@@ -31,17 +31,14 @@
 */
 
 #include "kvi_settings.h"
-
-#include "KviQString.h"
 #include "KviPackageIOEngine.h"
 
-#include <QByteArray>
-
-class QFileInfo;
 class KviFile;
-
 class KviPackageWriterPrivate;
 class KviPackageWriterDataField;
+class QByteArray;
+class QFileInfo;
+class QString;
 
 /**
 * \class KviPackageWriter

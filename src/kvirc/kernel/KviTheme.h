@@ -25,13 +25,13 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviQString.h"
 #include "KviHeapObject.h"
 #include "kvi_fileextensions.h"
 #include "KviApplication.h"
 #include "KviFileUtils.h"
 
 #include <QPixmap>
+#include <QString>
 
 #define KVI_THEMEINFO_FILE_NAME "themeinfo" KVI_FILEEXTENSION_CONFIG
 #define KVI_THEMEDATA_FILE_NAME "themedata" KVI_FILEEXTENSION_CONFIG

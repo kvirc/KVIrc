@@ -34,9 +34,10 @@
 #include "kvi_settings.h"
 #include "kvi_sourcesdate.h"
 
-#include <QString>
+class QString;
+class QStringList;
 
-extern KVILIB_API const char * feature_array[];
+extern KVILIB_API const QStringList feature_list;
 
 /**
 * \namespace KviBuildInfo

@@ -25,11 +25,13 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
 #include "KviCString.h"
+#include "KviPointerList.h"
 #include "KviTalMenuBar.h"
 
+class KviKvsPopupMenu;
 class KviMainWindow;
+class QAction;
 class QMenu;
 class KviKvsPopupMenu;
 class QToolButton;
@@ -76,11 +78,11 @@ public:
 protected slots:
 	void menuDestroyed();
 
-	void setupMainPopup(QMenu * pop = 0);
-	void setupSettingsPopup(QMenu * pop = 0);
-	void setupHelpPopup(QMenu * pop = 0);
-	void setupScriptingPopup(QMenu * pop = 0);
-	void setupToolsPopup(QMenu * pop = 0);
+	void setupMainPopup(QMenu * pop = nullptr);
+	void setupSettingsPopup(QMenu * pop = nullptr);
+	void setupHelpPopup(QMenu * pop = nullptr);
+	void setupScriptingPopup(QMenu * pop = nullptr);
+	void setupToolsPopup(QMenu * pop = nullptr);
 
 	void updateMainPopup();
 	void updateSettingsPopup();

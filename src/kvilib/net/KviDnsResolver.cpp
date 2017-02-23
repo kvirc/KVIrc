@@ -25,6 +25,7 @@
 #include "KviDnsResolver.h"
 #include "KviError.h"
 #include "KviNetUtils.h"
+#include "KviQString.h"
 
 #include <QApplication>
 

@@ -24,7 +24,10 @@
 
 #include "KviSASL.h"
 
+#include "KviCString.h"
 #include "KviMemory.h"
+
+#include <QByteArray>
 
 namespace KviSASL
 {

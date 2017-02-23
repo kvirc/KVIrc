@@ -25,7 +25,9 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviCString.h"
+
+class KviCString;
+class QByteArray;
 
 /**
 * \namespace KviSASL

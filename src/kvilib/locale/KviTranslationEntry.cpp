@@ -26,6 +26,8 @@
 
 #include "KviTranslationEntry.h"
 
+#include <QString>
+
 KviTranslationEntry::KviTranslationEntry(char * pcKey, int iKeyLen, char * pcTr, int iTrLen)
     : m_szKey(pcKey, iKeyLen), m_szEncodedTranslation(pcTr, iTrLen)
 {
