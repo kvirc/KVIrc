@@ -45,8 +45,8 @@ namespace KviHtmlGenerator
 	*/
 	enum DefaultColor
 	{
-		Background = 100,
-		Foreground = 101
+		Background = 0,
+		Foreground = 1
 	};
 
 	/**
@@ -56,6 +56,6 @@ namespace KviHtmlGenerator
 	* \return QString
 	*/
 	extern KVIRC_API QString convertToHtml(const QString & szText, bool bEscape = false);
-};
+}
 
 #endif //_KVI_HTMLGENERATOR_H_

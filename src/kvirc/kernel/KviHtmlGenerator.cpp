@@ -183,9 +183,7 @@ namespace KviHtmlGenerator
 				}
 				case KviControlCodes::Reverse:
 				{
-					char cAuxBack = uCurBack;
-					uCurBack = uCurFore;
-					uCurFore = cAuxBack;
+					std::swap(uCurFore, uCurBack);
 					++uIdx;
 					break;
 				}
