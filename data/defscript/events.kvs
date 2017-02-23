@@ -163,6 +163,10 @@ event(OnURLLinkClick,default)
 	openurl $0
 }
 
+# Fix bug https://github.com/kvirc/KVIrc/issues/2140
+eventctl -d -q OnURLLinkPopupRequest "URL popup"
+eventctl -d -q OnURLLinkPopupRequest "URLpopup"
+
 event(OnURLLinkPopupRequest,default)
 {
 	popup.show urlpopup $0
