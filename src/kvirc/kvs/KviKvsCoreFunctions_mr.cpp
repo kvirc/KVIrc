@@ -443,16 +443,13 @@ namespace KviKvsCoreFunctions
 		@description:
 			Returns the [b]window ID[/b] of the query that has <target>
 			in the list of targets and is bound to the connection specified by
-			<irc context id>[br]
+			<irc context id>[br][br]
 			If no window matches the specified target or context, and invalid
 			window ID is returned (0).[br]
 			If no <irc context id> is specified, this function looks for
 			the query in the current connection context (if any).[br]
 			If no <target> is specified, this function returns the current
 			query window ID, if executed in a query, and [b]0[/b] otherwise.[br]
-		@examples:
-			[example]
-			[/example]
 		@seealso:
 			[fnc]$window[/fnc],
 			[fnc]$channel[/fnc],
