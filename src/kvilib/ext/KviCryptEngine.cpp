@@ -98,7 +98,7 @@
 		while an engine is working, you can use the Ctrl+P escape: by placing
 		that character as the FIRST CHARACTER of the line you will avoid encrypting.
 		Every engine has different capabilities: some can both encrypt
-		and decrypt, othesr perform only half of the operations. Some engines
+		and decrypt, others perform only half of the operations. Some engines
 		need a key (the crypt engines obviously), or two keys (you can specify
 		one for the outgoing data and one for the incoming). You can specify
 		all these options in the crypt/text transformation dialog.[br][br]
