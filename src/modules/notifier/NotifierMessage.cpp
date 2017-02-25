@@ -88,6 +88,7 @@ void NotifierMessage::updateGui()
 	m_pLabel1->setText(KviHtmlGenerator::convertToHtml(m_szText));
 	m_pLabel1->setWordWrap(true);
 	m_pLabel1->setFont(KVI_OPTION_FONT(KviOption_fontNotifier));
+	m_pLabel1->setTextInteractionFlags(Qt::TextSelectableByMouse);
 	QPalette pal = m_pLabel1->palette();
 	pal.setColor(QPalette::WindowText, KVI_OPTION_COLOR(KviOption_colorNotifierForeground));
 	m_pLabel1->setPalette(pal);
