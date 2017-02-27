@@ -39,10 +39,6 @@
 #include <QMenu>
 #include "kvi_settings.h"
 
-#if defined(COMPILE_WEBKIT_SUPPORT) || defined(Q_MOC_RUN)
-#include "WebThemeInterfaceDialog.h"
-#endif
-
 class QLineEdit;
 class QPushButton;
 class QLabel;
@@ -76,9 +72,6 @@ protected:
 	QMenu * m_pContextPopup;
 	QToolButton * m_pDeleteThemeButton;
 	QToolButton * m_pPackThemeButton;
-#if defined(COMPILE_WEBKIT_SUPPORT) || defined(Q_MOC_RUN)
-	WebThemeInterfaceDialog * m_pWebThemeInterfaceDialog;
-#endif
 public:
 	static ThemeManagementDialog * instance() { return m_pInstance; }
 	static void display(bool bTopLevel);

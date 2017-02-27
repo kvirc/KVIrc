@@ -6,7 +6,6 @@ set(
 	AddonManagementDialog.cpp
 	PackAddonDialog.cpp
 	AddonFunctions.cpp
-	WebAddonInterfaceDialog.cpp
 )
 
 set(kvi_module_name kviaddon)

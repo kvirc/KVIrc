@@ -32,10 +32,6 @@
 
 #include <QGraphicsEffect>
 
-#ifdef COMPILE_WEBKIT_SUPPORT
-#include <QtWebKitWidgets/QWebView>
-#endif
-
 class KvsObject_widget : public KviKvsObject
 {
 	Q_OBJECT
@@ -48,9 +44,6 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
-#ifdef COMPILE_WEBKIT_SUPPORT
-	QWebView * m_pWebview;
-#endif
 	virtual bool eventFilter(QObject * o, QEvent * e);
 	KviKvsRunTimeContext * m_pContext;
 	QGraphicsDropShadowEffect * pGraphicsEffect;
@@ -130,9 +123,6 @@ protected:
 	bool y(KviKvsObjectFunctionCall *);
 
 	bool grab(KviKvsObjectFunctionCall *);
-#ifdef COMPILE_WEBKIT_SUPPORT
-	bool setWebView(KviKvsObjectFunctionCall * c);
-#endif
 
 signals:
 	void aboutToDie();

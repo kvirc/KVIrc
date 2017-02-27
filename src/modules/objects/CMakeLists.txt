@@ -45,7 +45,6 @@ set(
 	KvsObject_treeWidget.cpp
 	KvsObject_treeWidgeteItem.cpp
 	KvsObject_vBox.cpp
-	KvsObject_webView.cpp
 	KvsObject_widget.cpp
 	KvsObject_window.cpp
 	KvsObject_wizard.cpp

@@ -31,11 +31,8 @@
 #include "kvi_settings.h"
 
 #include <QTabWidget>
-#ifdef COMPILE_WEBKIT_SUPPORT
-#include <QtWebKitWidgets/QWebView>
-#else
+
 class QTextBrowser;
-#endif
 
 #include <QLineEdit>
 
@@ -79,11 +76,8 @@ protected:
 	virtual void loadProperties(KviConfigurationFile * cfg);
 
 public:
-#ifdef COMPILE_WEBKIT_SUPPORT
-	QWebView * textBrowser();
-#else
 	QTextBrowser * textBrowser();
-#endif
+
 public slots:
 	void indexSelected(QListWidgetItem *);
 	void searchInIndex(const QString & s);
