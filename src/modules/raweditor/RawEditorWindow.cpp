@@ -37,7 +37,6 @@
 #include "KviApplication.h"
 #include "KviCommandFormatter.h"
 #include "KviKvsEventManager.h"
-#include "KviKvsEventHandler.h"
 #include "KviTalVBox.h"
 
 #include <QMessageBox>
@@ -305,13 +304,14 @@ void RawEditorWidget::commit()
 				qDebug("Commit handler %s", ((RawHandlerTreeWidgetItem *)ch)->text(0).toUtf8().data());
 				//int a=(RawTreeWidgetItem *)it)->m_iIdx;
 				szContext = QString("RawEvent%1::%2").arg(((RawTreeWidgetItem *)it)->m_iIdx).arg(((RawHandlerTreeWidgetItem *)ch)->text(0));
-				KviKvsScriptEventHandler s(
+				auto * s = new KviKvsScriptEventHandler(
 				    ((RawHandlerTreeWidgetItem *)ch)->text(0),
 				    szContext,
 				    ((RawHandlerTreeWidgetItem *)ch)->m_szBuffer,
 				    ((RawHandlerTreeWidgetItem *)ch)->m_bEnabled);
 
-				KviKvsEventManager::instance()->addRawHandler(((RawTreeWidgetItem *)it)->m_iIdx, s);
+				if(!KviKvsEventManager::instance()->addRawHandler(((RawTreeWidgetItem *)it)->m_iIdx, s))
+					delete s;
 			}
 		}
 	}
