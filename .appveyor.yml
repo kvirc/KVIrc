@@ -139,7 +139,11 @@ build_script:
     - c:\cygwin\bin\ls -l release/
     - ps: |
         $env:Path += ";c:/Qt/$env:qt_ver/bin"
-        windeployqt "-xml" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
+        if ($env:cmake_build_type -eq "Debug") {
+            windeployqt "-xml" "--pdb" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
+        } else {
+            windeployqt "-xml" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
+        } 
     - c:\cygwin\bin\ls -l release/
     - ps: |
         $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.dll"
@@ -178,8 +182,6 @@ build_script:
         $json = New-Object PSObject
         (New-Object PSObject | Add-Member -PassThru NoteProperty bin $new_name | Add-Member -PassThru NoteProperty cmake $cmake_name | Add-Member -PassThru NoteProperty commit $env:APPVEYOR_REPO_COMMIT) | ConvertTo-JSON | Out-File -FilePath "latest-$env:target_arch" -Encoding ASCII
         Push-AppveyorArtifact "latest-$env:target_arch"
-    - c:\cygwin\bin\bash -c '/usr/bin/tar -czf pdb.tgz `/usr/bin/find . -name "*.pdb"`'
-    - ps: Push-AppveyorArtifact pdb.tgz
 test: off
 # Upload installer to kvirc.d00p.de
 deploy:
