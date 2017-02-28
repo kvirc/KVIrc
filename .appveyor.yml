@@ -126,7 +126,7 @@ build_script:
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libiconv-2.dll release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/$env:mingw_libgcc release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libstdc++-6.dll release/
-        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libhunspell-1.3-0.dll release/
+        c:\cygwin\bin\cp -pv $env:mingw_root/bin/libhunspell-1.6-0.dll release/
         c:\cygwin\bin\mkdir -p release/lib/enchant/ release/share/enchant/ release/share/myspell/dicts/
         c:\cygwin\bin\touch release/share/locale
         c:\cygwin\bin\cp -pv $env:mingw_root/share/enchant/enchant.ordering release/share/enchant/
