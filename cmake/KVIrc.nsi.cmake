@@ -124,10 +124,7 @@ SectionEnd
 ; Optional section (can be disabled by the user)
 Section $(StartMenuSection) StartMenuSection_IDX
   SetShellVarContext all
-  CreateDirectory "$SMPROGRAMS\KVIrc"
-  CreateShortCut "$SMPROGRAMS\KVIrc\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "$INSTDIR\uninstall.exe" 0
-  CreateShortCut "$SMPROGRAMS\KVIrc\KVIrc.lnk" "$INSTDIR\@KVIRC_BINARYNAME@.exe" "" "$INSTDIR\@KVIRC_BINARYNAME@.exe" 0 "" "" $(ProgramDescription)
-
+  CreateShortCut "$SMPROGRAMS\KVIrc.lnk" "$INSTDIR\@KVIRC_BINARYNAME@.exe" "" "$INSTDIR\@KVIRC_BINARYNAME@.exe" 0 "" "" $(ProgramDescription)
 SectionEnd
 
 Section $(DesktopSection) DesktopSection_IDX
@@ -231,8 +228,7 @@ Section !un.$(UnGeneralFiles)
     DeleteRegKey HKLM SOFTWARE\KVIrc
 
     ; Remove shortcuts, if any
-    Delete "$SMPROGRAMS\KVIrc\*.*"
-    RMDir "$SMPROGRAMS\KVIrc"
+    Delete "$SMPROGRAMS\KVIrc.lnk"
     Delete "$DESKTOP\KVIrc.lnk"
     Delete "$QUICKLAUNCH\KVIrc.lnk"
 
