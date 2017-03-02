@@ -1063,8 +1063,10 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Prints an error message and stops the script
 		@description:
-			Prints an error message and stops the current script
+			Prints an error message and stops the current script.
 			This command is equivalent to [cmd]error[/cmd]
+		@seealso:
+			[cmd]warning[/cmd]
 	*/
 	// Internally aliased to error
 
@@ -1332,7 +1334,7 @@ namespace KviKvsCoreSimpleCommands
 		@short:
 			Prints an error message and stops the script
 		@description:
-			Prints an error message and stops the current script
+			Prints an error message and stops the current script.
 			This command is equivalent to [cmd]die[/cmd]
 		@seealso:
 			[cmd]warning[/cmd]

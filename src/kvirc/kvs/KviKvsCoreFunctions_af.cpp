@@ -168,7 +168,9 @@ namespace KviKvsCoreFunctions
 			will first encode the string in UTF-8 and then base64-encode.
 			This means that it is substantially only 7-bit safe (ASCII codes below 128).
 		@examples:
-			[cmd]echo[/cmd] $asciiToBase64("Hello!")
+			[example]
+				[cmd]echo[/cmd] $asciiToBase64("Hello!")
+			[/example]
 		@seealso:
 			[fnc]$base64toascii[/fnc]
 	*/
@@ -210,7 +212,9 @@ namespace KviKvsCoreFunctions
 			will first encode the string in UTF-8 and then hex-encode.
 			This means that it is substantially only 7bit safe (ASCII codes below 128).
 		@examples:
-			[cmd]echo[/cmd] $asciiToHex("Hello!")
+			[example]
+				[cmd]echo[/cmd] $asciiToHex("Hello!")
+			[/example]
 		@seealso:
 			[fnc]$hextoascii[/fnc]
 	*/

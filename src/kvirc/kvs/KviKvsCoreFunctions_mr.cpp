@@ -537,9 +537,6 @@ namespace KviKvsCoreFunctions
 			$rand is automatically seeded with value of 1.
 			If no <max> is specified, this function returns an integer between
 			0 and RAND_MAX that is system dependent.
-		@examples:
-			[example]
-			[/example]
 		@seealso:
 			[cmd]srand[/cmd]
 	*/
