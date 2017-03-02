@@ -51,7 +51,7 @@ static bool raweditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 		g_pRawEditorWindow = new RawEditorWindow();
 		g_pMainWindow->addWindow(g_pRawEditorWindow);
 	}
-	g_pRawEditorWindow->setFocus();
+	g_pRawEditorWindow->delayedAutoRaise();
 	return true;
 }
 

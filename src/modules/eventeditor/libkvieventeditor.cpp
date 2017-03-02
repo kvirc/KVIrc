@@ -52,7 +52,7 @@ static bool eventeditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 		g_pMainWindow->addWindow(g_pEventEditorWindow);
 	}
 
-	g_pEventEditorWindow->setFocus();
+	g_pEventEditorWindow->delayedAutoRaise();
 	return true;
 }
 

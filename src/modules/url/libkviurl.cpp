@@ -631,8 +631,10 @@ void loadBanList()
 static bool url_kvs_cmd_list(KviKvsModuleCommandCall *)
 {
 	UrlDlgList * tmpitem = findFrame();
-	if(tmpitem->dlg)
+	if(tmpitem->dlg) {
+		tmpitem->dlg->delayedAutoRaise();
 		return false;
+	}
 
 	tmpitem->dlg = new UrlDialog(g_List);
 	g_pMainWindow->addWindow(tmpitem->dlg);

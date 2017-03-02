@@ -52,7 +52,7 @@ static bool actioneditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 		g_pMainWindow->addWindow(g_pActionEditorWindow);
 	}
 
-	g_pActionEditorWindow->setFocus();
+	g_pActionEditorWindow->delayedAutoRaise();
 	return true;
 }
 

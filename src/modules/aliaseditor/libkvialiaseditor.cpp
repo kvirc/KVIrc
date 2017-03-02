@@ -53,7 +53,7 @@ static bool aliaseditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 		g_pMainWindow->addWindow(g_pAliasEditorWindow);
 	}
 
-	g_pAliasEditorWindow->setFocus();
+	g_pAliasEditorWindow->delayedAutoRaise();
 
 	return true;
 }
