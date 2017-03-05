@@ -699,7 +699,10 @@ void KviIrcServerParser::parseLiteralKick(KviIrcMessage * msg)
 		       szNick, szUser, szHost, szKickMsg))
 			msg->setHaltOutput();
 		if(!KVI_OPTION_STRING(KviOption_stringOnMeKickedSound).isEmpty())
-			KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnMeKickedSound))));
+		{
+			KviKvsVariantList soundParams{new KviKvsVariant{KVI_OPTION_STRING(KviOption_stringOnMeKickedSound)}};
+			KviKvsScript::run("snd.play $0", nullptr, &soundParams);
+		}
 
 		QString szPass = chan->hasChannelMode('k') ? chan->channelModeParam('k') : "";
 
@@ -1028,7 +1031,10 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 				if(query)
 				{
 					if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
-						KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
+					{
+						KviKvsVariantList soundParams{new KviKvsVariant{KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound)}};
+						KviKvsScript::run("snd.play $0", nullptr, &soundParams);
+					}
 				}
 			}
 		}
@@ -1053,9 +1059,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 
 			if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && !query->hasAttention())
 			{
-				// KviKvsScript does NOT take parameters ownership
 				KviKvsVariantList soundParams(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound)));
-				//KviKvsScript::run("snd.play $0",0,&soundParams); <-- we also should provide a window for the script: it's always a good idea
 				KviKvsScript::run("snd.play $0", query, &soundParams);
 			}
 
@@ -1099,8 +1103,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 			// we don't have a query here!
 			if(!KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound).isEmpty() && !console->hasAttention())
 			{
-				// same as above
-				KviKvsVariantList soundParams(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound)));
+				KviKvsVariantList soundParams{new KviKvsVariant{KVI_OPTION_STRING(KviOption_stringOnQueryMessageSound)}};
 				KviKvsScript::run("snd.play $0", console, &soundParams);
 			}
 
@@ -1475,7 +1478,10 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 				if(query)
 				{
 					if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
-						KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
+					{
+						KviKvsVariantList soundParams{new KviKvsVariant{KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound)}};
+						KviKvsScript::run("snd.play $0", nullptr, &soundParams);
+					}
 				}
 			}
 		}

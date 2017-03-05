@@ -75,9 +75,9 @@ void CodeTesterWidget::execute()
 	QString buffer;
 	m_pEditor->getText(buffer);
 	KviConsoleWindow * pConsole = g_pApp->activeConsole();
-	QStringList * pSLParams = new QStringList(m_pParams->text().split(';'));
-	KviKvsScript::run(buffer, pConsole, new KviKvsVariantList(pSLParams));
-	delete pSLParams;
+	QStringList slParams = m_pParams->text().split(';');
+	KviKvsVariantList params{&slParams};
+	KviKvsScript::run(buffer, pConsole, &params);
 }
 
 CodeTesterWindow::CodeTesterWindow()

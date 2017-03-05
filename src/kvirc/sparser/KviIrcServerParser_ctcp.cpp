@@ -1537,7 +1537,10 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 					query->setTarget(szOtherNick, szOtherUser, szOtherHost);
 				}
 				if(!KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound).isEmpty())
-					KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound))));
+				{
+					KviKvsVariantList soundParams{new KviKvsVariant{KVI_OPTION_STRING(KviOption_stringOnNewQueryOpenedSound)}};
+					KviKvsScript::run("snd.play $0", nullptr, &soundParams);
+				}
 			}
 		}
 		else
