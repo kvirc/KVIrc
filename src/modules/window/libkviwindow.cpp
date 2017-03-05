@@ -1389,10 +1389,9 @@ static bool window_kvs_cmd_savePropertiesAsDefault(KviKvsModuleCommandCall * c)
 static bool initializeCryptEngine(KviCryptEngine * eng, KviCString & szEncryptKey, KviCString & szDecryptKey, QString & szError)
 {
 	char * encKey = nullptr;
-	int encKeyLen = 0;
 
 	char * tmpKey;
-	encKeyLen = szEncryptKey.hexToBuffer(&tmpKey, false);
+	int encKeyLen = szEncryptKey.hexToBuffer(&tmpKey, false);
 	if(encKeyLen > 0)
 	{
 		encKey = (char *)KviMemory::allocate(encKeyLen);
@@ -1406,9 +1405,8 @@ static bool initializeCryptEngine(KviCryptEngine * eng, KviCString & szEncryptKe
 	}
 
 	char * decKey = nullptr;
-	int decKeyLen = 0;
 
-	decKeyLen = szDecryptKey.hexToBuffer(&tmpKey, false);
+	int decKeyLen = szDecryptKey.hexToBuffer(&tmpKey, false);
 	if(decKeyLen > 0)
 	{
 		decKey = (char *)KviMemory::allocate(decKeyLen);
@@ -1418,6 +1416,8 @@ static bool initializeCryptEngine(KviCryptEngine * eng, KviCString & szEncryptKe
 	else
 	{
 		szError = __tr2qs("The decryption key wasn't a valid hexadecimal string");
+		if(encKey)
+			KviMemory::free(encKey);
 		return false;
 	}
 	bool bRet = eng->init(encKey, encKeyLen, decKey, decKeyLen);
