@@ -1673,15 +1673,12 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		return nullptr;
 	}
 
-	KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * pPopup = new KviKvsTreeNodeSpecialCommandDefpopupLabelPopup(KVSP_curCharPointer);
+	std::unique_ptr<KviKvsTreeNodeSpecialCommandDefpopupLabelPopup> pPopup{new KviKvsTreeNodeSpecialCommandDefpopupLabelPopup(KVSP_curCharPointer)};
 
 	KVSP_skipChar;
 
 	if(!skipSpacesAndNewlines())
-	{
-		delete pPopup;
 		return nullptr;
-	}
 
 	while(KVSP_curCharUnicode != '}')
 	{
@@ -1693,14 +1690,12 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		if(KVSP_curCharIsEndOfBuffer)
 		{
 			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of buffer in defpopup block", "kvs"));
-			delete pPopup;
 			return nullptr;
 		}
 
 		if(KVSP_curCharPointer == pLabelBegin)
 		{
 			error(KVSP_curCharPointer, __tr2qs_ctx("Found character %q (Unicode %x) where a 'prologue', 'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
-			delete pPopup;
 			return nullptr;
 		}
 
@@ -1713,26 +1708,19 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 
 #define EXTRACT_POPUP_LABEL_PARAMETERS                      \
 	if(!skipSpacesAndNewlines())                            \
-	{                                                       \
-		delete pPopup;                                      \
-		return 0;                                           \
-	}                                                       \
+		return nullptr;                                     \
 	if(KVSP_curCharUnicode != '(')                          \
 	{                                                       \
 		errorBadChar(KVSP_curCharPointer, '(', "defpopup"); \
-		delete pPopup;                                      \
-		return 0;                                           \
+		return nullptr;                                     \
 	}                                                       \
 	pParameters = parseCommaSeparatedParameterListNoTree(); \
 	if(!pParameters)                                        \
-		return 0;
+		return nullptr;
 
 #define EXTRACT_POPUP_LABEL_CONDITION                                  \
 	if(!skipSpacesAndNewlines())                                       \
-	{                                                                  \
-		delete pPopup;                                                 \
-		return 0;                                                      \
-	}                                                                  \
+		return nullptr;                                                \
 	if(KVSP_curCharUnicode == '(')                                     \
 	{                                                                  \
 		const QChar * pBegin = KVSP_curCharPointer;                    \
@@ -1742,21 +1730,17 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		{                                                              \
 			if(pParameters)                                            \
 				delete pParameters;                                    \
-			delete pPopup;                                             \
-			return 0;                                                  \
+			return nullptr;                                            \
 		}                                                              \
 		int cLen = (KVSP_curCharPointer - pBegin) - 2;                 \
 		if(cLen > 0)                                                   \
-		{                                                              \
 			szCondition.setUnicode(pBegin + 1, cLen);                  \
-		}                                                              \
 		delete pExpression;                                            \
 		if(!skipSpacesAndNewlines())                                   \
 		{                                                              \
 			if(pParameters)                                            \
 				delete pParameters;                                    \
-			delete pPopup;                                             \
-			return 0;                                                  \
+			return nullptr;                                            \
 		}                                                              \
 	}
 
@@ -1764,10 +1748,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		{
 			bool bPrologue = (szLabelLow == "prologue");
 			if(!skipSpacesAndNewlines())
-			{
-				delete pPopup;
 				return nullptr;
-			}
 
 			if(KVSP_curCharUnicode == '(')
 			{
@@ -1776,7 +1757,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 				{
 					if(pParameters)
 						delete pParameters;
-					delete pPopup;
 					return nullptr;
 				}
 			}
@@ -1795,7 +1775,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 					// error
 					if(pParameters)
 						delete pParameters;
-					delete pPopup;
 					return nullptr;
 				}
 				// empty instruction
@@ -1847,7 +1826,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			{
 				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <text> field in label parameters. See /help defpopup for the syntax", "kvs"));
 				delete pParameters;
-				delete pPopup;
 				return nullptr;
 			}
 			QString * pIcon = pParameters->next();
@@ -1867,7 +1845,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			{
 				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <text> field in extpopup parameters. See /help defpopup for the syntax", "kvs"));
 				delete pParameters;
-				delete pPopup;
 				return nullptr;
 			}
 			QString * pIcon = pParameters->next();
@@ -1877,7 +1854,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			if(!pSubPopup)
 			{
 				delete pParameters;
-				delete pPopup;
 				return nullptr;
 			}
 
@@ -1899,7 +1875,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			{
 				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <text> field in extpopup parameters. See /help defpopup for the syntax", "kvs"));
 				delete pParameters;
-				delete pPopup;
 				return nullptr;
 			}
 			QString * pIcon = pParameters->next();
@@ -1919,7 +1894,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 				{
 					// error
 					delete pParameters;
-					delete pPopup;
 					return nullptr;
 				}
 				// empty instruction
@@ -1951,7 +1925,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			{
 				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <text> field in extpopup parameters. See /help defpopup for the syntax", "kvs"));
 				delete pParameters;
-				delete pPopup;
 				return nullptr;
 			}
 			QString * pName = pParameters->next();
@@ -1959,7 +1932,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			{
 				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <name> field in extpopup parameters. See /help defpopup for the syntax", "kvs"));
 				delete pParameters;
-				delete pPopup;
 				return nullptr;
 			}
 			QString * pIcon = pParameters->next();
@@ -1972,19 +1944,15 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		else
 		{
 			error(pLabelBegin, __tr2qs_ctx("Found token '%Q' where a 'prologue', 'separator', 'separatorid', 'label', 'popup', 'item', 'extpopup' or 'epilogue' label was expected", "kvs"), &szLabel);
-			delete pPopup;
 			return nullptr;
 		}
 
 		if(!skipSpacesAndNewlines())
-		{
-			delete pPopup;
 			return nullptr;
-		}
 	}
 
 	KVSP_skipChar;
-	return pPopup;
+	return pPopup.release();
 }
 
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
