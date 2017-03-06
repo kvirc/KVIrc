@@ -669,6 +669,10 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 		return new KviKvsTreeNodeOperationStringSubstitution(pBegin, pFirst, pSecond, pThird);
 	}
 
+	delete pFirst;
+	delete pSecond;
+	delete pThird;
+
 	error(KVSP_curCharPointer, __tr2qs_ctx("Unknown binding operation '%Q'", "kvs"), &szOp);
 	return nullptr;
 }
