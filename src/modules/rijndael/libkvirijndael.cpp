@@ -360,7 +360,7 @@ bool KviRijndaelHexEngine::asciiToBinary(const char * inBuffer, int * len, char 
 	}
 	else
 	{
-		if(len > nullptr)
+		if(*len > 0)
 		{
 			*outBuffer = (char *)KviMemory::allocate(*len);
 			KviMemory::move(*outBuffer, tmpBuf, *len);
