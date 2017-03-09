@@ -966,6 +966,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 	KviIrcServer * pServerRecord = pRecord->findServer(pServer);
 	if(pServerRecord)
 	{
+		delete pServer;
 		if(c->switches()->find('q', "quiet"))
 			return true;
 		c->error(__tr2qs_ctx("The specified server already exists", "serverdb"));
