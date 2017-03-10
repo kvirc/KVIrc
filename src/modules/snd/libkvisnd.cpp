@@ -567,7 +567,6 @@ void KviOssSoundThread::play()
 	int fd = -1;
 	char buf[OSS_BUFFER_SIZE];
 	int iDataLen = 0;
-	int iSize = 0;
 
 	if(!f.open(QIODevice::ReadOnly))
 	{
@@ -575,7 +574,7 @@ void KviOssSoundThread::play()
 		return;
 	}
 
-	iSize = f.size();
+	int iSize = f.size();
 
 	if(iSize < 24)
 	{
@@ -636,7 +635,7 @@ void KviOssSoundThread::play()
 
 exit_thread:
 	f.close();
-	if(fd > 0)
+	if(fd >= 0)
 		close(fd);
 }
 
