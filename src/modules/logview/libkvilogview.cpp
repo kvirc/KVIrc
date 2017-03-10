@@ -107,12 +107,12 @@ static bool logview_module_ctrl(KviModule *, const char * pcOperation, void * pP
 	if(!pData)
 		return false;
 
-	LogFile * pLog = new LogFile(pData->szName);
+	LogFile log{pData->szName};
 	int iId = LogFile::PlainText;
-	if(pData->szType == "html")
+	if(pData->szType == QLatin1String("html"))
 		iId = LogFile::HTML;
 
-	g_pLogViewWindow->createLog(pLog, iId, &(pData->szFile));
+	g_pLogViewWindow->createLog(&log, iId, &(pData->szFile));
 
 	return true;
 }
