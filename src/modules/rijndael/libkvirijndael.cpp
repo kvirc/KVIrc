@@ -249,6 +249,8 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
 	int retVal = m_pEncryptCipher->padEncrypt((const unsigned char *)plainText, len, (unsigned char *)buf, iv);
 	if(retVal < 0)
 	{
+		if(m_bEncryptMode == CBC)
+			KviMemory::free(iv);
 		KviMemory::free(buf);
 		setLastErrorFromRijndaelErrorCode(retVal);
 		return KviCryptEngine::EncryptError;
@@ -388,7 +390,7 @@ bool KviRijndaelBase64Engine::asciiToBinary(const char * inBuffer, int * len, ch
 	}
 	else
 	{
-		if(len > nullptr)
+		if(*len > 0)
 		{
 			*outBuffer = (char *)KviMemory::allocate(*len);
 			KviMemory::move(*outBuffer, tmpBuf, *len);
