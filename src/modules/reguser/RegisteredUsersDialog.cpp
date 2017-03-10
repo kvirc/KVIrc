@@ -65,6 +65,8 @@
 #include <QAbstractTextDocumentLayout>
 #include <QShortcut>
 
+#include <memory>
+
 #define LVI_ICON_SIZE 32
 #define LVI_BORDER 4
 #define LVI_SPACING 8
@@ -797,7 +799,7 @@ void RegisteredUsersDialog::exportClicked()
 			QString avatar;
 			if(u->getProperty("avatar", avatar))
 			{
-				KviAvatar * av = g_pIconManager->getAvatar(QString(), avatar);
+				std::unique_ptr<KviAvatar> av{g_pIconManager->getAvatar(QString(), avatar)};
 				if(av)
 				{
 					if(!av->pixmap()->isNull())
