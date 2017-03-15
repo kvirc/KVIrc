@@ -448,7 +448,8 @@ void LogViewWindow::rightButtonClicked(QTreeWidgetItem * pItem, const QPoint &)
 	QMenu * pPopup = new QMenu(this);
 	if(((LogListViewItem *)pItem)->childCount())
 	{
-		//pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::UserList)),__tr2qs_ctx("Export all log files to","log"),m_pExportLogPopup);
+		// TODO: probably should allow to specify a directory instead of asking for file path on each log file
+		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Save)), __tr2qs_ctx("Export All Log Files to", "log"))->setMenu(m_pExportLogPopup);
 		pPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)), __tr2qs_ctx("Remove All Log Files Within This Folder", "log"), this, SLOT(deleteCurrent()));
 	}
 	else
