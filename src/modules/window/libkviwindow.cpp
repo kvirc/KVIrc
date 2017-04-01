@@ -1328,13 +1328,13 @@ static bool window_kvs_fnc_inputText(KviKvsModuleFunctionCall * c)
 	@short:
 		Sets the background image of a window
 	@syntax:
-		window.setBackground [-q] <window_id:integer> <image_id:string>
+		window.setBackground [-q] <window_id:integer> [image_id:string]
 	@switches:
 		!sw: -q | --quiet
 		Be quiet
 	@description:
 		Sets the background image of the window specified by <window_id> to <image_id>.[br]
-		If <window_id> is an empty string then the current window is assumed.[br]
+		If <image_id> is not provided, then the background is cleared and reset to global setting.[br]
 		If the specified window or the background image does not exist a warning is printed unless the -q switch is used.
 	@seealso:
 */
@@ -1343,19 +1343,46 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 {
 	QString szWnd;
 	QString szBackground;
-	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
-	KVSM_PARAMETER("plain_text_caption", KVS_PT_STRING, 0, szBackground)
+	KVSM_PARAMETER("background_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szBackground)
 	KVSM_PARAMETERS_END(c)
 
-	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
+	KviWindow * pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q', "quiet"))
 			c->warning(__tr2qs("The window with ID '%s' doesn't exist"), szWnd.toUtf8().data());
 		return true;
 	}
+
+	if(!pWnd->view())
+	{
+		if(!c->hasSwitch('q', "quiet"))
+			c->warning(__tr2qs("The window with ID '%s' does not support background images!"));
+		return true;
+	}
+
+	QPixmap p;
+	if(!szBackground.isEmpty())
+	{
+		p = QPixmap(szBackground);
+		if(p.isNull())
+		{
+			if(!c->hasSwitch('q', "quiet"))
+				c->warning(__tr2qs("Failed to load the selected image!"));
+			return true;
+		}
+	}
+
+	pWnd->view()->setPrivateBackgroundPixmap(p);
+	if(pWnd->isChannel())
+	{
+		KviChannelWindow * pChanWin = (KviChannelWindow *)pWnd;
+		if(pChanWin->messageView())
+			pChanWin->messageView()->setPrivateBackgroundPixmap(p);
+	}
+
 	return true;
 }
 
