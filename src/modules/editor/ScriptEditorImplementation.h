@@ -84,6 +84,7 @@ public slots:
 	void slotReplace();
 protected slots:
 	void asyncCompleterCreation();
+	void highlightCurrentLine();
 signals:
 	void keyPressed();
 
