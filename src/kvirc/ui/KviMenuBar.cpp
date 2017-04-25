@@ -128,7 +128,7 @@ void KviMenuBar::setupHelpPopup(QMenu * pop)
 	help->addSeparator();
 	pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)), __tr2qs("KVIrc Home&page"));
 	pAction->setData(KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE);
-	if(kvi_strEqualCIN(KviLocale::instance()->localeName(), "ru", 2))
+	if(KviLocale::instance()->localeName() == "ru")
 	{
 		pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HomePage)), __tr2qs("KVIrc Russian Home&page"));
 		pAction->setData(KVI_INTERNALCOMMAND_KVIRC_HOMEPAGE_RU);

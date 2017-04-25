@@ -49,7 +49,7 @@ WebThemeInterfaceDialog::WebThemeInterfaceDialog(QWidget * par)
 
 	setPackagePageUrl(
 	    QString::fromLatin1("http://www.kvirc.de/app/themes.php?version=" KVI_VERSION "&lang=%1")
-	        .arg(QString::fromUtf8(KviLocale::instance()->localeName().ptr())));
+	        .arg(KviLocale::instance()->localeName()));
 }
 WebThemeInterfaceDialog::~WebThemeInterfaceDialog()
     = default;

@@ -1478,19 +1478,25 @@ static bool file_kvs_fnc_diskSpace(KviKvsModuleFunctionCall * c)
 	if(szPath.isEmpty())
 		szPath = ".";
 
-	const char * pcPath = szPath.toUtf8().data();
 	long long int fTotal;
 	long long int fFree;
 // this for win
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	ULARGE_INTEGER free, total;
-	GetDiskFreeSpaceExA((LPCTSTR)pcPath, NULL, &total, &free);
+	if (GetDiskFreeSpaceEx(szPath.toStdWString().c_str(), NULL, &total, &free) == 0) {
+		c->warning(__tr2qs("An error occurred retrieving the amount of free space in '%Q'"), &szPath);
+		return true;
+	}
 	fFree = free.QuadPart;
 	fTotal = total.QuadPart;
 #else
 	// this one for linux and macos
+	const char * pcPath = szPath.toUtf8().data();
 	struct statvfs stFileSystem;
-	statvfs(pcPath, &stFileSystem);
+	if (statvfs(pcPath, &stFileSystem) == -1) {
+		c->warning(__tr2qs("An error occurred retrieving the amount of free space in '%Q'"), &szPath);
+		return true;
+	}
 	fFree = stFileSystem.f_bavail * stFileSystem.f_bsize;
 	fTotal = stFileSystem.f_blocks * stFileSystem.f_bsize;
 #endif

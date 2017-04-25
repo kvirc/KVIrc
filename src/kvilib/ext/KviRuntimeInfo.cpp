@@ -613,7 +613,7 @@ static QString queryWinInfo(QueryInfo info)
 					}
 			}
 			// Display service pack (if any) and build number.
-			szVersion += QString("%1 (Build %2)").arg(osvi.szCSDVersion).arg(osvi.dwBuildNumber & 0xFFFF);
+			szVersion += QString("%1 (Build %2)").arg(QString::fromWCharArray(osvi.szCSDVersion)).arg(osvi.dwBuildNumber & 0xFFFF);
 	}
 	if(info == Os_Release)
 	{

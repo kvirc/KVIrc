@@ -33,14 +33,14 @@ namespace KviEnvironment
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 
-#ifdef HAVE_SETENV
-	bool setVariable(const char * name, const char * value)
+	bool setVariable(QString szName, QString szValue)
 	{
+		const char * name = szName.toLocal8Bit().data();
+		const char * value = szValue.toLocal8Bit().data();
+#ifdef HAVE_SETENV
 		return (setenv(name, value, 1) == 0);
 #else
 #ifdef HAVE_PUTENV
-	bool setVariable(const char * name, const char * value)
-	{
 		int iLen1 = kvi_strLen(name);
 		int iLen2 = kvi_strLen(value);
 		char * buf = (char *)KviMemory::allocate(iLen1 + iLen2 + 2);
@@ -56,22 +56,19 @@ namespace KviEnvironment
 		}
 		return true;
 #else
-	bool setVariable(const char *, const char *)
-	{
 		// no setenv, no putenv.. what the hell of system is this ?
 		return false;
 #endif
 #endif
 	}
 
-#ifdef HAVE_UNSETENV
-	void unsetVariable(const char * name)
+	void unsetVariable(QString szName)
 	{
+		const char * name = szName.toLocal8Bit().data();
+#ifdef HAVE_UNSETENV
 		unsetenv(name);
 #else
 #ifdef HAVE_PUTENV
-	void unsetVariable(const char * name)
-	{
 		int iLen1 = kvi_strLen(name);
 		char * buf = (char *)KviMemory::allocate(iLen1 + 1);
 		KviMemory::move(buf, name, iLen1);
@@ -92,8 +89,6 @@ namespace KviEnvironment
 			} // else this system sux
 		}
 #else
-	void unsetVariable(const char *)
-	{
 // no setenv, no putenv.. what the hell of system is this ?
 #endif
 #endif

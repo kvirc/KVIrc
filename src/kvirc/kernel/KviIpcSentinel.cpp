@@ -139,7 +139,7 @@ static Window kvi_x11_findIpcSentinel(Window win)
 bool kvi_sendIpcMessage(const char * message)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	HWND hSentinel = ::FindWindow("Qt5QWindowIcon", "kvirc4_ipc_sentinel");
+	HWND hSentinel = ::FindWindow(TEXT("Qt5QWindowIcon"), TEXT("kvirc4_ipc_sentinel"));
 	if(hSentinel != nullptr)
 	{
 		COPYDATASTRUCT cpd;

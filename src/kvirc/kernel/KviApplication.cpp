@@ -1277,7 +1277,7 @@ void KviApplication::updatePseudoTransparency()
 		{
 			QSize size = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen()).size();
 			// get the Program Manager
-			HWND hWnd = FindWindow("Progman", "Program Manager");
+			HWND hWnd = FindWindow(TEXT("Progman"), TEXT("Program Manager"));
 			// Create and setup bitmap
 			const HDC displayDc = GetDC(0);
 			HDC bitmap_dc = CreateCompatibleDC(displayDc);

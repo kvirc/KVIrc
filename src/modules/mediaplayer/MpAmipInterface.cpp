@@ -77,7 +77,7 @@ MP_AC_DYNPTR(int, ac_eval, const char * cmd COMMA() char * result);
 
 static bool loadAmipDll()
 {
-	amip_dll = LoadLibrary("ac.dll");
+	amip_dll = LoadLibrary(TEXT("ac.dll"));
 	if(!amip_dll)
 		return false;
 

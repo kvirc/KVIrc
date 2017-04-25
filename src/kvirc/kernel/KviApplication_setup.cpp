@@ -117,7 +117,7 @@ bool KviApplication::checkFileAssociations()
 	pcBuffer = (char *)malloc(len * sizeof(char));
 	HKEY hKey;
 
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, ".kvs", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, TEXT(".kvs"), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -138,7 +138,7 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcScript"), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -159,7 +159,7 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript\\DefaultIcon", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcScript\\DefaultIcon"), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -182,7 +182,7 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript\\Shell\\Parse", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcScript\\Shell\\Parse"), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -203,7 +203,7 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript\\Shell\\Parse\\command", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcScript\\Shell\\Parse\\command"), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -226,7 +226,7 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	//Config
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, ".kvc", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, TEXT(".kvc"), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -247,14 +247,14 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcConfig", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcConfig"), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
 	//Addon
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, ".kva", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, TEXT(".kva"), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -275,14 +275,14 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcAddon", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcAddon"), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
 	}
 
 	//Theme
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, ".kvt", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, TEXT(".kvt"), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -303,7 +303,7 @@ bool KviApplication::checkFileAssociations()
 	}
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "KVIrcTheme", 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcTheme"), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -324,11 +324,11 @@ bool KviApplication::checkUriAssociations(const char * pcProto)
 	pcBuffer = (char *)malloc(len * sizeof(char));
 	HKEY hKey;
 
-	KviCString szStoredKey = pcProto;
-	KviCString szKey = szStoredKey;
+	QString szStoredKey = pcProto;
+	QString szKey = szStoredKey;
 
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, szKey, 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, szKey.toStdWString().c_str(), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -349,7 +349,7 @@ bool KviApplication::checkUriAssociations(const char * pcProto)
 	}
 
 	len = QUERY_BUFFER;
-	if((err = RegQueryValueEx(hKey, "URL Protocol", 0, 0, (LPBYTE)pcBuffer, &len)) != ERROR_SUCCESS)
+	if((err = RegQueryValueEx(hKey, TEXT("URL Protocol"), 0, 0, (LPBYTE)pcBuffer, &len)) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -357,7 +357,7 @@ bool KviApplication::checkUriAssociations(const char * pcProto)
 
 	szKey = szStoredKey + "\\DefaultIcon";
 	len = QUERY_BUFFER;
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, szKey, 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, szKey.toStdWString().c_str(), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -381,7 +381,7 @@ bool KviApplication::checkUriAssociations(const char * pcProto)
 
 	len = QUERY_BUFFER;
 	szKey = szStoredKey + "\\Shell\\open";
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, szKey, 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, szKey.toStdWString().c_str(), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -403,7 +403,7 @@ bool KviApplication::checkUriAssociations(const char * pcProto)
 
 	len = QUERY_BUFFER;
 	szKey = szStoredKey + "\\Shell\\open\\command";
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, szKey, 0, KEY_READ, &hKey) != ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, szKey.toStdWString().c_str(), 0, KEY_READ, &hKey) != ERROR_SUCCESS)
 	{
 		free(pcBuffer);
 		return false;
@@ -439,31 +439,31 @@ void KviApplication::setupUriAssociations(const char * pcProto)
 	HKEY hKey;
 	DWORD err;
 
-	KviCString szStoredKey = pcProto;
-	KviCString szKey = szStoredKey;
+	QString szStoredKey = pcProto;
+	QString szKey = szStoredKey;
 
 	QByteArray tmp;
 	QString szAppPath = applicationFilePath();
 	szAppPath.replace('/', "\\");
 
-	SHDeleteKey(HKEY_CLASSES_ROOT, szKey);
+	SHDeleteKey(HKEY_CLASSES_ROOT, szKey.toStdWString().c_str());
 
-	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, szKey, 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, szKey.toStdWString().c_str(), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE) "URL:IRC Protocol", 16);
-	RegSetValueEx(hKey, "URL Protocol", 0, REG_SZ, (LPBYTE) "", 0);
+	RegSetValueEx(hKey, TEXT("URL Protocol"), 0, REG_SZ, (LPBYTE) "", 0);
 
 	szKey = szStoredKey + "\\DefaultIcon";
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, szKey, 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, szKey.toStdWString().c_str(), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + ",0").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
 	szKey = szStoredKey + "\\Shell\\open";
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, szKey, 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, szKey.toStdWString().c_str(), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("Open with KVIrc").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
 	szKey = szStoredKey + "\\Shell\\open\\command";
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, szKey, 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, szKey.toStdWString().c_str(), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + " --external \"%1\"").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 #else
@@ -482,86 +482,86 @@ void KviApplication::setupFileAssociations()
 	QString szAppPath = applicationFilePath();
 	szAppPath.replace('/', "\\");
 
-	SHDeleteKey(HKEY_CLASSES_ROOT, ".kvs");
+	SHDeleteKey(HKEY_CLASSES_ROOT, TEXT(".kvs"));
 
-	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, ".kvs", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT(".kvs"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE) "KVIrcScript", 11);
 
-	SHDeleteKey(HKEY_CLASSES_ROOT, "KVIrcScript");
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	SHDeleteKey(HKEY_CLASSES_ROOT, TEXT("KVIrcScript"));
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcScript"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("KVIrc KVS Script").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript\\DefaultIcon", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcScript\\DefaultIcon"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + ",1").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript\\Shell\\Parse", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcScript\\Shell\\Parse"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("Run KVS Script").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcScript\\Shell\\Parse\\command", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcScript\\Shell\\Parse\\command"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + " \"%1\"").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
 	//Configs
-	SHDeleteKey(HKEY_CLASSES_ROOT, ".kvc");
+	SHDeleteKey(HKEY_CLASSES_ROOT, TEXT(".kvc"));
 
-	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, ".kvc", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT(".kvc"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE) "KVIrcConfig", 11);
 
-	SHDeleteKey(HKEY_CLASSES_ROOT, "KVIrcConfig");
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcConfig", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	SHDeleteKey(HKEY_CLASSES_ROOT, TEXT("KVIrcConfig"));
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcConfig"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("KVIrc Configuration File").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcConfig\\DefaultIcon", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcConfig\\DefaultIcon"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + ",2").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
 	// Themes
-	SHDeleteKey(HKEY_CLASSES_ROOT, ".kvt");
+	SHDeleteKey(HKEY_CLASSES_ROOT, TEXT(".kvt"));
 
-	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, ".kvt", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT(".kvt"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE) "KVIrcTheme", 11);
 
-	SHDeleteKey(HKEY_CLASSES_ROOT, "KVIrcTheme");
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcTheme", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	SHDeleteKey(HKEY_CLASSES_ROOT, TEXT("KVIrcTheme"));
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcTheme"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("KVIrc Theme Package").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcTheme\\DefaultIcon", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcTheme\\DefaultIcon"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + ",3").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcTheme\\Shell\\Install", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcTheme\\Shell\\Install"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("Install Theme Package").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcTheme\\Shell\\Install\\command", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcTheme\\Shell\\Install\\command"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + " \"%1\"").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
 	//Addons
-	SHDeleteKey(HKEY_CLASSES_ROOT, ".kva");
+	SHDeleteKey(HKEY_CLASSES_ROOT, TEXT(".kva"));
 
-	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, ".kva", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	err = RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT(".kva"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE) "KVIrcAddon", 11);
 
-	SHDeleteKey(HKEY_CLASSES_ROOT, "KVIrcAddon");
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcAddon", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	SHDeleteKey(HKEY_CLASSES_ROOT, TEXT("KVIrcAddon"));
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcAddon"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("KVIrc Addon Package").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcAddon\\DefaultIcon", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcAddon\\DefaultIcon"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + ",4").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcAddon\\Shell\\Install", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcAddon\\Shell\\Install"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = __tr2qs("Install Package").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 
-	RegCreateKeyEx(HKEY_CLASSES_ROOT, "KVIrcAddon\\Shell\\Install\\command", 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
+	RegCreateKeyEx(HKEY_CLASSES_ROOT, TEXT("KVIrcAddon\\Shell\\Install\\command"), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
 	tmp = QString(szAppPath + " \"%1\"").toLocal8Bit();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.data(), tmp.length());
 

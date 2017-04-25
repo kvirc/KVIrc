@@ -288,7 +288,7 @@ void KviSoundPlayer::cleanupPhonon()
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 bool KviSoundPlayer::playWinmm(const QString & szFileName)
 {
-	sndPlaySound(szFileName.toLocal8Bit().data(), SND_ASYNC | SND_NODEFAULT);
+	sndPlaySound(szFileName.toStdWString().c_str(), SND_ASYNC | SND_NODEFAULT);
 	return true;
 }
 

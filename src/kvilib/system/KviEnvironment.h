@@ -32,51 +32,67 @@
 
 #include "kvi_settings.h"
 
+#include <QString>
+
 #include <stdlib.h>
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #include <windows.h>
+#define MAX_ENV_SIZE 32767
 #endif
 
 namespace KviEnvironment
 {
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	inline QString getVariable(QString szName)
+	{
+		LPTSTR szRet = (LPTSTR)::malloc(MAX_ENV_SIZE * sizeof(TCHAR));
+		QString szValue;
+		if (GetEnvironmentVariable(szName.toStdWString().c_str(), szRet, MAX_ENV_SIZE))
+			szValue = QString::fromStdWString(szRet);
+		else
+			szValue = QString();
+		::free(szRet);
+		return szValue;
+	}
+
+	inline void setVariable(QString szName, QString szValue)
+	{
+		SetEnvironmentVariable(szName.toStdWString().c_str(),
+			szValue.toStdWString().c_str());
+	}
+
+	inline void unsetVariable(QString szName)
+	{
+		SetEnvironmentVariable(szName.toStdWString().c_str(), NULL);
+	}
+#else
 	/**
 	* \brief Gets environment variable
 	* \param name The name of the variable to get
 	* \return char *
 	*/
-	inline char * getVariable(const char * name)
+	inline QString getVariable(QString szName)
 	{
-		return getenv(name);
+		const char * name = szName.toLocal8Bit().data();
+		return QString::fromLocal8Bit(getenv(name));
 	}
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-
-	inline void setVariable(const char * szName, const char * szValue)
-	{
-		SetEnvironmentVariable(szName, szValue);
-	}
-
-	inline void unsetVariable(const char * name)
-	{
-		SetEnvironmentVariable(name, NULL);
-	}
-#else
 	/**
 	* \brief Sets environment variable
 	* \param name The name of the variable to set
 	* \param value The value of the variable
 	* \return bool
 	*/
-	KVILIB_API bool setVariable(const char * name, const char * value);
+	KVILIB_API bool setVariable(QString szName, QString szValue);
 
 	/**
 	* \brief Unsets environment variable
 	* \param name The name of the variable to set
 	* \return void
 	*/
-	KVILIB_API void unsetVariable(const char * name);
+	KVILIB_API void unsetVariable(QString szName);
 #endif
 }
 
