@@ -122,7 +122,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 		szTmp.replace("kvirc_", "");
 		szTmp.replace(".mo", "");
 		m_pForcedLocaleCombo->insertItem(m_pForcedLocaleCombo->count(), szTmp);
-		if(szTmp == m_szLanguage)
+		if(QString::compare(szTmp, m_szLanguage, Qt::CaseInsensitive))
 			iMatch = i + 2;
 		i++;
 	}
