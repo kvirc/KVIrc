@@ -33,20 +33,20 @@ namespace KviEnvironment
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 
-	bool setVariable(QString szName, QString szValue)
+	bool setVariable(const QString & szName, QString & szValue)
 	{
-		const char * name = szName.toLocal8Bit().data();
-		const char * value = szValue.toLocal8Bit().data();
+		auto name = szName.toLocal8Bit();
+		auto value = szValue.toLocal8Bit();
 #ifdef HAVE_SETENV
 		return (setenv(name, value, 1) == 0);
 #else
 #ifdef HAVE_PUTENV
-		int iLen1 = kvi_strLen(name);
-		int iLen2 = kvi_strLen(value);
+		int iLen1 = kvi_strLen(name.data());
+		int iLen2 = kvi_strLen(value.data());
 		char * buf = (char *)KviMemory::allocate(iLen1 + iLen2 + 2);
-		KviMemory::move(buf, name, iLen1);
+		KviMemory::move(buf, name.data(), iLen1);
 		*(buf + iLen1) = '=';
-		KviMemory::move(buf + iLen1 + 1, value, iLen2);
+		KviMemory::move(buf + iLen1 + 1, value.data(), iLen2);
 		*(buf + iLen1 + iLen2 + 1) = '\0';
 		int iRet = putenv(buf);
 		if(iRet != 0)
@@ -62,16 +62,16 @@ namespace KviEnvironment
 #endif
 	}
 
-	void unsetVariable(QString szName)
+	void unsetVariable(const QString & szName)
 	{
-		const char * name = szName.toLocal8Bit().data();
+		auto name = szName.toLocal8Bit();
 #ifdef HAVE_UNSETENV
 		unsetenv(name);
 #else
 #ifdef HAVE_PUTENV
-		int iLen1 = kvi_strLen(name);
+		int iLen1 = kvi_strLen(name.data());
 		char * buf = (char *)KviMemory::allocate(iLen1 + 1);
-		KviMemory::move(buf, name, iLen1);
+		KviMemory::move(buf, name.data(), iLen1);
 		*(buf + iLen1) = '\0';
 		int iRet = putenv(buf);
 		if(iRet != 0)
@@ -81,7 +81,7 @@ namespace KviEnvironment
 		else
 		{
 			// hmmm
-			if(getVariable(name) == nullptr)
+			if(getVariable(name.data()) == nullptr)
 			{
 				// ok, the string is not in the environment
 				// we can free it

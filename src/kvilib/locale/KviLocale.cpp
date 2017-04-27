@@ -479,15 +479,15 @@ KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QSt
 	if(KviFileUtils::fileExists(szLangFile))
 		KviFileUtils::readFile(szLangFile, g_szLang);
 	if(g_szLang.isEmpty())
-		g_szLang = KviEnvironment::getVariable(QString("KVIRC_LANG"));
+		g_szLang = KviEnvironment::getVariable("KVIRC_LANG");
 #ifdef COMPILE_KDE_SUPPORT
 	if(g_szLang.isEmpty())
-		g_szLang = KviEnvironment::getVariable(QString("KDE_LANG"));
+		g_szLang = KviEnvironment::getVariable("KDE_LANG");
 #endif //COMPILE_KDE_SUPPORT
 	if(g_szLang.isEmpty())
-		g_szLang = KviEnvironment::getVariable(QString("LC_MESSAGES"));
+		g_szLang = KviEnvironment::getVariable("LC_MESSAGES");
 	if(g_szLang.isEmpty())
-		g_szLang = KviEnvironment::getVariable(QString("LANG"));
+		g_szLang = KviEnvironment::getVariable("LANG");
 	if(g_szLang.isEmpty())
 		g_szLang = QLocale::system().name();
 	if(g_szLang.isEmpty())

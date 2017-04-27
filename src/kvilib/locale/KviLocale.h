@@ -148,9 +148,9 @@ public:
 
 	/**
 	* \brief Returns the language code of the localization
-	* \return const KviCString &
+	* \return const QString &
 	*/
-	const QString & localeName() { return g_szLang; }
+	const QString & localeName() const { return g_szLang; }
 
 	/**
 	* \brief Returns the codec associated to the given translation

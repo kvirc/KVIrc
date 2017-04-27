@@ -45,25 +45,23 @@ namespace KviEnvironment
 {
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	inline QString getVariable(QString szName)
+	inline QString getVariable(const QString & szName)
 	{
 		LPTSTR szRet = (LPTSTR)::malloc(MAX_ENV_SIZE * sizeof(TCHAR));
 		QString szValue;
 		if (GetEnvironmentVariable(szName.toStdWString().c_str(), szRet, MAX_ENV_SIZE))
 			szValue = QString::fromStdWString(szRet);
-		else
-			szValue = QString();
 		::free(szRet);
 		return szValue;
 	}
 
-	inline void setVariable(QString szName, QString szValue)
+	inline void setVariable(const QString & szName, const QString & szValue)
 	{
 		SetEnvironmentVariable(szName.toStdWString().c_str(),
 			szValue.toStdWString().c_str());
 	}
 
-	inline void unsetVariable(QString szName)
+	inline void unsetVariable(const QString & szName)
 	{
 		SetEnvironmentVariable(szName.toStdWString().c_str(), NULL);
 	}
@@ -73,7 +71,7 @@ namespace KviEnvironment
 	* \param name The name of the variable to get
 	* \return char *
 	*/
-	inline QString getVariable(QString szName)
+	inline QString getVariable(const QString & szName)
 	{
 		const char * name = szName.toLocal8Bit().data();
 		return QString::fromLocal8Bit(getenv(name));
@@ -85,14 +83,14 @@ namespace KviEnvironment
 	* \param value The value of the variable
 	* \return bool
 	*/
-	KVILIB_API bool setVariable(QString szName, QString szValue);
+	KVILIB_API bool setVariable(const QString & szName, QString & szValue);
 
 	/**
 	* \brief Unsets environment variable
 	* \param name The name of the variable to set
 	* \return void
 	*/
-	KVILIB_API void unsetVariable(QString szName);
+	KVILIB_API void unsetVariable(const QString & szName);
 #endif
 }
 

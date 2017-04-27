@@ -1491,9 +1491,9 @@ static bool file_kvs_fnc_diskSpace(KviKvsModuleFunctionCall * c)
 	fTotal = total.QuadPart;
 #else
 	// this one for linux and macos
-	const char * pcPath = szPath.toUtf8().data();
+	auto pcPath = szPath.toUtf8();
 	struct statvfs stFileSystem;
-	if (statvfs(pcPath, &stFileSystem) == -1) {
+	if (statvfs(pcPath.data(), &stFileSystem) == -1) {
 		c->warning(__tr2qs("An error occurred retrieving the amount of free space in '%Q'"), &szPath);
 		return true;
 	}
