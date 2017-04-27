@@ -73,8 +73,8 @@ namespace KviEnvironment
 	*/
 	inline QString getVariable(const QString & szName)
 	{
-		const char * name = szName.toLocal8Bit().data();
-		return QString::fromLocal8Bit(getenv(name));
+		auto name = szName.toLocal8Bit();
+		return QString::fromLocal8Bit(getenv(name.data()));
 	}
 
 	/**
