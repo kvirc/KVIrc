@@ -38,11 +38,11 @@ namespace KviEnvironment
 		auto name = szName.toLocal8Bit();
 		auto value = szValue.toLocal8Bit();
 #ifdef HAVE_SETENV
-		return (setenv(name, value, 1) == 0);
+		return (setenv(name.data(), value.data(), 1) == 0);
 #else
 #ifdef HAVE_PUTENV
-		int iLen1 = kvi_strLen(name.data());
-		int iLen2 = kvi_strLen(value.data());
+		int iLen1 = name.length()
+		int iLen2 = value.length();
 		char * buf = (char *)KviMemory::allocate(iLen1 + iLen2 + 2);
 		KviMemory::move(buf, name.data(), iLen1);
 		*(buf + iLen1) = '=';
@@ -66,10 +66,10 @@ namespace KviEnvironment
 	{
 		auto name = szName.toLocal8Bit();
 #ifdef HAVE_UNSETENV
-		unsetenv(name);
+		unsetenv(name.data());
 #else
 #ifdef HAVE_PUTENV
-		int iLen1 = kvi_strLen(name.data());
+		int iLen1 = name.length();
 		char * buf = (char *)KviMemory::allocate(iLen1 + 1);
 		KviMemory::move(buf, name.data(), iLen1);
 		*(buf + iLen1) = '\0';
