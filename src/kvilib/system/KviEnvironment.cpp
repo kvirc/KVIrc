@@ -33,7 +33,7 @@ namespace KviEnvironment
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 
-	bool setVariable(const QString & szName, QString & szValue)
+	bool setVariable(const QString & szName, const QString & szValue)
 	{
 		auto name = szName.toLocal8Bit();
 		auto value = szValue.toLocal8Bit();

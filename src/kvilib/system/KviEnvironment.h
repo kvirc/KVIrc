@@ -83,7 +83,7 @@ namespace KviEnvironment
 	* \param value The value of the variable
 	* \return bool
 	*/
-	KVILIB_API bool setVariable(const QString & szName, QString & szValue);
+	KVILIB_API bool setVariable(const QString & szName, const QString & szValue);
 
 	/**
 	* \brief Unsets environment variable
