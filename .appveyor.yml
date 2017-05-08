@@ -11,7 +11,7 @@ environment:
           vc_arch: amd64
           choco_arch:
           target_arch: x86_64
-          qt_ver: 5.5\msvc2013_64
+          qt_ver: 5.8\msvc2015_64
           MSYSTEM: MINGW64
           mingw_fourple: mingw64/mingw-w64-x86_64
           mingw_root: c:/msys64/mingw64
@@ -21,7 +21,7 @@ environment:
           vc_arch: amd64_x86  # cross-compile from amd64 to x86
           choco_arch: --x86
           target_arch: x86
-          qt_ver: 5.5\msvc2013
+          qt_ver: 5.8\msvc2015
           MSYSTEM: MINGW32
           mingw_fourple: mingw32/mingw-w64-i686
           mingw_root: c:/msys64/mingw32
@@ -93,7 +93,7 @@ install:
 build_script:
     - mkdir build
     - cd build
-    - '"c:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/vcvarsall" %vc_arch%'
+    - '"c:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/vcvarsall" %vc_arch%'
     - path
     - ps: |
         $zlibinc = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v120*/zlib.h'
@@ -106,7 +106,7 @@ build_script:
         $gettext = c:\cygwin\bin\cygpath -m $gettext
         $env:Path += ";" + $gettext
         c:\cygwin\bin\find $env:ChocolateyInstall
-        cmake .. "-GNMake Makefiles" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DOPENSSL_ROOT_DIR=c:/OpenSSL-$env:ssl_arch" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO" "-DWANT_PYTHON=YES"
+        cmake .. "-GNMake Makefiles" "-DCMAKE_BUILD_TYPE=Release" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DZLIB_INCLUDE_DIR=$zlibinc" "-DZLIB_LIBRARY=$zliblib" "-DOPENSSL_ROOT_DIR=c:/OpenSSL-$env:ssl_arch" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO" "-DWANT_PYTHON=YES" "-DWANT_QTWEBKIT=NO"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - nmake install VERBOSE=1
     - c:\cygwin\bin\ls -l release/
