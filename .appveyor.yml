@@ -96,10 +96,10 @@ build_script:
     - '"c:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/vcvarsall" %vc_arch%'
     - path
     - ps: |
-        $zlibinc = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v120*/zlib.h'
+        $zlibinc = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v140*/zlib.h'
         $zlibinc = c:\cygwin\bin\dirname $zlibinc
         $zlibinc = c:\cygwin\bin\cygpath -m $zlibinc
-        $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.lib"
+        $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Release/zlib.lib"
         $zliblib = c:\cygwin\bin\cygpath -m $zliblib
         $gettext = c:\cygwin\bin\find /cygdrive/c/deps/ -name xgettext.exe
         $gettext = c:\cygwin\bin\dirname $gettext
@@ -115,7 +115,7 @@ build_script:
         windeployqt "-xml" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
     - c:\cygwin\bin\ls -l release/
     - ps: |
-        $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v120*/$env:nuget_arch/Release/zlib.dll"
+        $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Release/zlib.dll"
         c:\cygwin\bin\cp -pv "$zlib" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libenchant.dll release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libpcre-1.dll release/
