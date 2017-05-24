@@ -37,7 +37,7 @@
 
 #ifdef COMPILE_PYTHON_SUPPORT
 
-#include <Python.h>
+#include "pythonheaderwrapper.h"
 
 // python included like to pollute the global namespace, let's #undef some beef
 #undef isspace

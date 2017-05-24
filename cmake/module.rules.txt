@@ -27,4 +27,7 @@ if(WANT_STRIP)
 	install(CODE "EXEC_PROGRAM(${STRIP_EXECUTABLE} ARGS -s \"${kvi_module_location}\")")
 endif()
 
-INSTALL(TARGETS ${kvi_module_name} LIBRARY DESTINATION "${KVIRC_MOD_PATH}")
+install(TARGETS ${kvi_module_name} LIBRARY DESTINATION "${KVIRC_MOD_PATH}")
+if(WIN32)
+	install(FILES $<TARGET_PDB_FILE:${kvi_module_name}> DESTINATION ${KVIRC_MOD_PATH} OPTIONAL)
+endif()

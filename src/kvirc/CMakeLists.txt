@@ -306,6 +306,9 @@ endif()
 
 # Installation directives
 install(TARGETS ${KVIRC_BINARYNAME} RUNTIME DESTINATION "${KVIRC_BIN_PATH}")
+if(WIN32)
+	install(FILES $<TARGET_PDB_FILE:${KVIRC_BINARYNAME}> DESTINATION ${KVIRC_BIN_PATH} OPTIONAL)
+endif()
 
 if(APPLE)
 	set(plugin_dest_dir ${CMAKE_INSTALL_PREFIX}/Contents/Plugins)
