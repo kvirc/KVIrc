@@ -33,20 +33,20 @@ namespace KviEnvironment
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 
-#ifdef HAVE_SETENV
-	bool setVariable(const char * name, const char * value)
+	bool setVariable(const QString & szName, const QString & szValue)
 	{
-		return (setenv(name, value, 1) == 0);
+		auto name = szName.toLocal8Bit();
+		auto value = szValue.toLocal8Bit();
+#ifdef HAVE_SETENV
+		return (setenv(name.data(), value.data(), 1) == 0);
 #else
 #ifdef HAVE_PUTENV
-	bool setVariable(const char * name, const char * value)
-	{
-		int iLen1 = kvi_strLen(name);
-		int iLen2 = kvi_strLen(value);
+		int iLen1 = name.length()
+		int iLen2 = value.length();
 		char * buf = (char *)KviMemory::allocate(iLen1 + iLen2 + 2);
-		KviMemory::move(buf, name, iLen1);
+		KviMemory::move(buf, name.data(), iLen1);
 		*(buf + iLen1) = '=';
-		KviMemory::move(buf + iLen1 + 1, value, iLen2);
+		KviMemory::move(buf + iLen1 + 1, value.data(), iLen2);
 		*(buf + iLen1 + iLen2 + 1) = '\0';
 		int iRet = putenv(buf);
 		if(iRet != 0)
@@ -56,25 +56,22 @@ namespace KviEnvironment
 		}
 		return true;
 #else
-	bool setVariable(const char *, const char *)
-	{
 		// no setenv, no putenv.. what the hell of system is this ?
 		return false;
 #endif
 #endif
 	}
 
-#ifdef HAVE_UNSETENV
-	void unsetVariable(const char * name)
+	void unsetVariable(const QString & szName)
 	{
-		unsetenv(name);
+		auto name = szName.toLocal8Bit();
+#ifdef HAVE_UNSETENV
+		unsetenv(name.data());
 #else
 #ifdef HAVE_PUTENV
-	void unsetVariable(const char * name)
-	{
-		int iLen1 = kvi_strLen(name);
+		int iLen1 = name.length();
 		char * buf = (char *)KviMemory::allocate(iLen1 + 1);
-		KviMemory::move(buf, name, iLen1);
+		KviMemory::move(buf, name.data(), iLen1);
 		*(buf + iLen1) = '\0';
 		int iRet = putenv(buf);
 		if(iRet != 0)
@@ -84,7 +81,7 @@ namespace KviEnvironment
 		else
 		{
 			// hmmm
-			if(getVariable(name) == nullptr)
+			if(getVariable(name.data()) == nullptr)
 			{
 				// ok, the string is not in the environment
 				// we can free it
@@ -92,8 +89,6 @@ namespace KviEnvironment
 			} // else this system sux
 		}
 #else
-	void unsetVariable(const char *)
-	{
 // no setenv, no putenv.. what the hell of system is this ?
 #endif
 #endif

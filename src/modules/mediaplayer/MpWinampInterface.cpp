@@ -175,7 +175,7 @@ static QTextCodec * mediaplayer_get_codec()
 
 static HWND find_winamp(KviWinampInterface * i)
 {
-	HWND hWnd = FindWindow("Winamp v1.x", NULL);
+	HWND hWnd = FindWindow(TEXT("Winamp v1.x"), NULL);
 	if(!hWnd)
 	{
 		// try to start the process ?
@@ -429,11 +429,11 @@ bool KviWinampInterface::jumpTo(kvs_int_t & iPos)
 bool KviWinampInterface::hide()
 {
 	HWND hWinamp = find_winamp(this);
-	HWND hWinampPE = FindWindow("Winamp PE", NULL);       /*Playlist*/
-	HWND hWinampEQ = FindWindow("Winamp EQ", NULL);       /*Equalizer*/
-	HWND hWinampMB = FindWindow("Winamp MB", NULL);       /*MiniBrowser*/
-	HWND hWinampGen = FindWindow("Winamp Gen", NULL);     /*Library*/
-	HWND hWinampVideo = FindWindow("Winamp Video", NULL); /*Video*/
+	HWND hWinampPE = FindWindow(TEXT("Winamp PE"), NULL);       /*Playlist*/
+	HWND hWinampEQ = FindWindow(TEXT("Winamp EQ"), NULL);       /*Equalizer*/
+	HWND hWinampMB = FindWindow(TEXT("Winamp MB"), NULL);       /*MiniBrowser*/
+	HWND hWinampGen = FindWindow(TEXT("Winamp Gen"), NULL);     /*Library*/
+	HWND hWinampVideo = FindWindow(TEXT("Winamp Video"), NULL); /*Video*/
 	if(hWinamp)
 	{
 		ShowWindow(hWinamp, SW_HIDE);

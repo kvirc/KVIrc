@@ -193,4 +193,9 @@
 #endif
 #endif
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#define UNICODE
+#define _UNICODE
+#endif
+
 #endif //_KVI_SETTINGS_H_

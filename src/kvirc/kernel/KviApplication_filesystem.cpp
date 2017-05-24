@@ -74,7 +74,7 @@ void KviApplication::getGlobalKvircDirectory(QString & szData, KvircSubdir dir, 
 			szData.append("help");
 			{
 				// Localized help
-				QString tmp(KviLocale::instance()->localeName().ptr());
+				QString tmp = KviLocale::instance()->localeName();
 				tmp.prepend(KVI_PATH_SEPARATOR_CHAR);
 				tmp.prepend(szData);
 				if(KviFileUtils::directoryExists(tmp))
@@ -227,7 +227,7 @@ void KviApplication::getLocalKvircDirectory(QString & szData, KvircSubdir dir, c
 			szData.append("help");
 			{
 				// Localized help
-				QString tmp = KviLocale::instance()->localeName().ptr();
+				QString tmp = KviLocale::instance()->localeName();
 				tmp.prepend(KVI_PATH_SEPARATOR_CHAR);
 				tmp.prepend(szData);
 				if(KviFileUtils::directoryExists(tmp))

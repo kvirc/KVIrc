@@ -467,7 +467,7 @@ static KviLocale::EncodingDescription supported_encodings[] = {
 
 KviLocale * KviLocale::m_pSelf = nullptr;
 unsigned int KviLocale::m_uCount = 0;
-KviCString KviLocale::g_szLang = "";
+QString KviLocale::g_szLang = "";
 
 KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QString & szForceLocaleDir)
 {
@@ -477,11 +477,7 @@ KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QSt
 	QString szLangFile = QString("%1/%2").arg(szForceLocaleDir, KVI_FORCE_LOCALE_FILE_NAME);
 
 	if(KviFileUtils::fileExists(szLangFile))
-	{
-		QString szTmp;
-		KviFileUtils::readFile(szLangFile, szTmp);
-		g_szLang = szTmp;
-	}
+		KviFileUtils::readFile(szLangFile, g_szLang);
 	if(g_szLang.isEmpty())
 		g_szLang = KviEnvironment::getVariable("KVIRC_LANG");
 #ifdef COMPILE_KDE_SUPPORT
@@ -496,7 +492,7 @@ KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QSt
 		g_szLang = QLocale::system().name();
 	if(g_szLang.isEmpty())
 		g_szLang = "en";
-	g_szLang.trim();
+	g_szLang = g_szLang.trimmed();
 
 	g_szDefaultLocalePath = szLocaleDir;
 
@@ -512,12 +508,12 @@ KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QSt
 	// the codecs by ourselves...
 	g_pSmartCodecDict->setAutoDelete(false);
 
-	if(g_szLang.hasData())
+	if(!g_szLang.isEmpty())
 	{
 		// ensure Qt will use the right locale when formatting dates, numbers, ..
 		// Note: Qt will use the system() locale anyway, we need to construct an empty QLocale()
 		// to get it use our specified locale.
-		QLocale::setDefault(QLocale(QString::fromLatin1(g_szLang.ptr(), g_szLang.len())));
+		QLocale::setDefault(QLocale(g_szLang));
 
 		QString szBuffer;
 		if(findCatalogue(szBuffer, "kvirc", szLocaleDir))
@@ -536,7 +532,7 @@ KviLocale::KviLocale(QApplication * pApp, const QString & szLocaleDir, const QSt
 			if(!(kvi_strEqualCI(szTmp.ptr(), "en") || kvi_strEqualCI(szTmp.ptr(), "c") || kvi_strEqualCI(szTmp.ptr(), "us") || kvi_strEqualCI(szTmp.ptr(), "gb") || kvi_strEqualCI(szTmp.ptr(), "posix")))
 			{
 				// FIXME: THIS IS NO LONGER VALID!!!
-				qDebug("Can't find the catalogue for locale \"%s\" (%s)", g_szLang.ptr(), szTmp.ptr());
+				qDebug("Can't find the catalogue for locale \"%s\" (%s)", g_szLang.toUtf8().data(), szTmp.ptr());
 				qDebug("There is no such translation or the $LANG variable was incorrectly set");
 				qDebug("You can use $KVIRC_LANG to override the catalogue name");
 				qDebug("For example you can set KVIRC_LANG to it_IT to force usage of the it.mo catalogue");

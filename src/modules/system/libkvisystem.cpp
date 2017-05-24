@@ -208,10 +208,7 @@ static bool system_kvs_fnc_getenv(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETER("variable", KVS_PT_NONEMPTYSTRING, 0, szVariable)
 	KVSM_PARAMETERS_END(c)
 
-	QByteArray szVar = szVariable.toLocal8Bit();
-
-	char * b = KviEnvironment::getVariable(szVar.data());
-	c->returnValue()->setString(b ? QString::fromLocal8Bit(b) : QString());
+	c->returnValue()->setString(KviEnvironment::getVariable(szVariable));
 	return true;
 }
 
@@ -651,23 +648,10 @@ static bool system_kvs_cmd_setenv(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETER("value", KVS_PT_STRING, KVS_PF_OPTIONAL, szValue)
 	KVSM_PARAMETERS_END(c)
 
-	QByteArray szVar = szVariable.toLocal8Bit();
-	QByteArray szVal = szValue.toLocal8Bit();
-
-	if(szVal.isEmpty())
-		KviEnvironment::unsetVariable(szVar.data());
+	if(szValue.isEmpty())
+		KviEnvironment::unsetVariable(szVariable);
 	else
-	{
-		/*#ifdef COMPILE_ON_WINDOWS
-		QString Var,Val,VarAndVal;
-		Val			=	szVar.data();
-		Var			=	szVal.data();
-		VarAndVal	=	Var+"="+Val;
-		putenv(VarAndVal);
-#else*/ // <-- this stuff is implicit in KviEnvironment::setVariable: that's why we have the kvi_ version.
-		KviEnvironment::setVariable(szVar.data(), szVal.data());
-		/*#endif*/
-	}
+		KviEnvironment::setVariable(szVariable, szValue);
 	return true;
 }
 

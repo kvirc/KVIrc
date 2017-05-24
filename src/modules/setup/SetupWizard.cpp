@@ -544,7 +544,7 @@ SetupWizard::SetupWizard()
 	HKEY hKey;
 	QString szMircDir;
 
-	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, "ChatFile\\DefaultIcon", 0, KEY_READ, &hKey) == ERROR_SUCCESS)
+	if(RegOpenKeyEx(HKEY_CLASSES_ROOT, TEXT("ChatFile\\DefaultIcon"), 0, KEY_READ, &hKey) == ERROR_SUCCESS)
 	{
 		if(RegQueryValueEx(hKey, 0, 0, 0, (LPBYTE)buffer, &len) == ERROR_SUCCESS)
 		{
@@ -802,11 +802,11 @@ void SetupWizard::makeLink()
 
 	// Dig in the registry looking up the Desktop path
 	if(RegOpenKeyEx(HKEY_CURRENT_USER,
-	       "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders",
+	       TEXT("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders"),
 	       0, KEY_QUERY_VALUE, &hCU)
 	    == ERROR_SUCCESS)
 	{
-		RegQueryValueEx(hCU, "Desktop", NULL, &lpType,
+		RegQueryValueEx(hCU, TEXT("Desktop"), NULL, &lpType,
 		    (unsigned char *)&szLink, &ulSize);
 		RegCloseKey(hCU);
 	}
@@ -839,9 +839,9 @@ void SetupWizard::makeLink()
 		{
 			WORD wsz[MAX_PATH];
 			// Set the path to the shell link target.
-			psl->SetPath(QTextCodec::codecForLocale()->fromUnicode(szKvircExec).data());
+			psl->SetPath(szKvircExec.toStdWString().c_str());
 			// Set the description of the shell link.
-			psl->SetDescription("kvirc");
+			psl->SetDescription(TEXT("kvirc"));
 			// Ensure string is ANSI.
 			MultiByteToWideChar(CP_ACP, 0, QTextCodec::codecForLocale()->fromUnicode(szLinkTarget).data(), -1, (LPWSTR)wsz, MAX_PATH);
 			// Save the link via the IPersistFile::Save method.
