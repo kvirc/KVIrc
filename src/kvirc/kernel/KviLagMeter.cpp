@@ -161,7 +161,7 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 		if(_OUTPUT_PARANOIC)
 			m_pConnection->console()->output(KVI_OUT_VERBOSE, __tr2qs("Sending out PING based lag probe"));
 
-		// this is the first our own lag check since the last succesfull one: use the ping
+		// this is the first our own lag check since the last successful one: use the ping
 		lagCheckRegister("@ping@", 70); // the ping may be fooled easily
 		m_pConnection->sendFmtData("PING %s %s",
 		    m_pConnection->encodeText(m_pConnection->userInfo()->nickName()).data(),

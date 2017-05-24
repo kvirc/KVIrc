@@ -48,7 +48,7 @@ protected:
 
 public:
 	/**
-	* \brief Contructs the action object
+	* \brief Constructs the action object
 	* \param pParent The parent object
 	* \param szName The name of the action
 	* \param szScriptCode The code of the script contained in the action
@@ -74,7 +74,7 @@ public:
 	    const QString & szKeySequence = QString());
 
 	/**
-	* \brief Contructs the action object
+	* \brief Constructs the action object
 	* \param pParent The parent object
 	* \param szName The name of the action
 	* \param szScriptCode The code of the script contained in the action

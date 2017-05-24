@@ -62,7 +62,7 @@ bool WebAddonInterfaceDialog::packageIsInstalled(const QString & szId, const QSt
 	if(szVersion.isEmpty())
 		return true; // hum.... shouldn't happen ?
 
-	// FIXME: If the version of the installed addon is lower then allow upgrading!
+	// FIXME: If the version of the installed addon is lower than allow upgrading!
 	return KviMiscUtils::compareVersions(pAddon->version(), szVersion) < 0;
 }
 

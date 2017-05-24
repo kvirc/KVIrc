@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# Daniel Neves, 2015-2016
+# Daniel Neves, 2015-2017
 # Zé <mmodem00@gmail.com>, 2006-2008,2010
 # Ze <mmodem00@netvisao.pt>, 2003-2006
 # Zé <mmodem@netcabo.pt>, 2005
@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 13:11+0100\n"
-"PO-Revision-Date: 2016-11-28 12:22+0000\n"
-"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
+"PO-Revision-Date: 2017-01-30 23:12+0000\n"
+"Last-Translator: Daniel Neves\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/kvirc/KVIrc/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -422,7 +422,7 @@ msgstr "Usar Nick gerada automaticamente ([5 letras] AWAY)"
 #: src/modules/options/OptionsWidget_away.cpp:54
 #, no-c-format
 msgid "Custom nickname (%nick% means a current nick):"
-msgstr ""
+msgstr "Apelido personalizado (%nick% significa o apelido atual):"
 
 #: src/modules/options/OptionsWidget_channel.cpp:54
 msgid "On Channel Kick"
@@ -1076,7 +1076,7 @@ msgid ""
 "bouncer, you can use a bug in the bouncer to force KVIrc to bind the DCC "
 "connections to the dialup router's address.<br>It's an ugly hack - use it "
 "only if nothing else works."
-msgstr ""
+msgstr "Quando você está atrás de um roteador de acesso discado e também tunelamento através de um bouncer psyBNC, você pode usar um bug no saltador para forçar KVIrc para vincular a DCC ligações para o endereço do roteador de discagem.<br>É uma hack feio - use somente se nada mais funciona."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:126
 msgid "Notify failed DCC handshakes to the remote end"
@@ -1241,7 +1241,7 @@ msgid ""
 "This option causes KVIrc to send ACKs as 64-bit integers instead of 32-bit "
 "integers.<br>Use this to fix DCC RECEIVE transfers where the other client is"
 " using the mIRC ACK standard."
-msgstr ""
+msgstr "Essa opção faz com que o KVIrc envie ACKs como inteiros de 64 bits em vez de inteiros de 32 bits.<br>Use isso para corrigir as transferências DCC RECEIVE onde o outro cliente está usando o padrão mIRC ACK."
 
 #: src/modules/options/OptionsWidget_dcc.cpp:247
 msgid "Limits"
@@ -2320,7 +2320,7 @@ msgid ""
 " also higher CPU usage and data traffic to the server.<br>Please note that "
 "this is NOT the interval between pings sent to the server: the pings (if "
 "any) will be sent really less often. 5000 is a reasonable value."
-msgstr ""
+msgstr "Esta opção permite que você defina o medidor de lag intervalo de heartbeat.<br>Quanto menor o intervalo de heartbeat maior será a precisão do lag verificar mas também maior utilização de CPU e tráfego de dados para o servidor.<br>Por favor note que este não é o intervalo entre os pings enviados para o servidor: os pings (se houver) será enviado realmente menos frequentemente. 5000 é um valor razoável."
 
 #: src/modules/options/OptionsWidget_lag.cpp:55
 msgid "Trigger event if lag exceeds:"
@@ -2636,7 +2636,7 @@ msgid ""
 "field, but generally it is a security flaw. If you're 100% sure that NO user"
 " on the network can use the nickname \"NickServ\", the mask "
 "<b>NickServ!*@*</b> may be safe to use in this field."
-msgstr ""
+msgstr "Esta é a máscara que NickServ deve encontrar para ser corretamente identificado como serviço NickServ. Isso é usualmente algo como <b>NickServ!service@services.dalnet</b>.<br>Você pode usar coringas para este campo, mas geralmente é uma falha de segurança. Se você está 100% certo que  NÃO é usuário na rede pode usar apelido \"NickServ\", a máscara <b>NickServ!*@*</b> pode ser segura para usar no campo."
 
 #: src/modules/options/OptionsWidget_nickserv.cpp:72
 msgid "Message regexp:"
@@ -4138,7 +4138,7 @@ msgid ""
 "Window List and select Save Window Properties As Default.<br><b>Please "
 "note</b> dragging method may not be as reliable and values set may be lost "
 "randomly, However values will never be less than the width you specified."
-msgstr ""
+msgstr "Aqui você pode selecionar a largura mínima desejada para a lista de usuários, quando visível. Sugerimos valores entre 120 e 170 pixels. O valor aqui definido, aplica-se a todos os canais em todas as redes. Para larguras específicas para canais diferentes, arraste a borda da lista para a largura desejada, clique direito no canal sob Lista em Árvore da Janelas e selecione Salvar Propriedades da Janela como Padrão.<br><b>Por favor, observe</b> o método de arrastar pode não ser preciso e os valores podem ser perdidos aleatoriamente, de qualquer forma, os valores nunca irão ser menores do que você especificou."
 
 #: src/modules/options/OptionsWidget_userList.cpp:236
 msgid "Show gender icons"

@@ -315,7 +315,7 @@ BlowFish::BlowFish(unsigned char * ucKey, unsigned int keysize, const SBlock & r
 	/*
 	 * BRAINDEAD DEVELOPER DISCLAIMER:
 	 * Blowfish can accept keys up to 72 bytes, but the common value is 56:
-	 * Using keylenghts of 72 chars offers a small amount of added security,
+	 * Using keylengths of 72 chars offers a small amount of added security,
 	 * but adds also the possibility of choosing a weak key that resulted in all
 	 * 18 P sub−keys turning into 0 after being XORed with a 576 bit key
 	 * (Short version: someone can trick you into using an empty password, and you won't notice)

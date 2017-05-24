@@ -3,24 +3,25 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
+# Sölve Svartskogen <solaizen@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 13:11+0100\n"
-"PO-Revision-Date: 2016-11-28 12:22+0000\n"
-"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
+"PO-Revision-Date: 2017-03-24 23:19+0000\n"
+"Last-Translator: Sölve Svartskogen <solaizen@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/kvirc/KVIrc/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:101
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:165
 msgid "DNS lookup result for query \"%Q\""
-msgstr ""
+msgstr "Translacja adresu dla zapytania \"%Q\""
 
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:106
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:170
@@ -39,43 +40,43 @@ msgstr "Adres IP %d: %Q"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:242
 msgid "Missing alias name"
-msgstr ""
+msgstr "Brakująca nazwa aliasu"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:253
 msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace"
 " separators"
-msgstr ""
+msgstr "Nazwy aliasów mogą zawierać tylko litery, liczby, podkreślniki i separatory przestrzeni nazw '::'."
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:262
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name>?"
-msgstr ""
+msgstr "Samotny znak ':' w aliasie nazwy: czy miałeś na myśli <namespace>::<name>?"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:268
 msgid "Found an empty namespace in alias name"
-msgstr ""
+msgstr "Znaleziono pustą przestrzeń nazw w aliasie nazwy"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:279
 msgid "The namespace '%Q' does not exist"
-msgstr ""
+msgstr "Przestrzeń nazw \"%Q\" nie istnieje"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:287
 msgid "The alias '%Q' does not exist"
-msgstr ""
+msgstr "Alias \"%Q\" nie istnieje"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:296
 msgid "Found an empty alias name within a namespace"
-msgstr ""
+msgstr "Znaleziono pusty alias w przestrzeni nazw"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:456
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:445
 msgid "The specified window has no button containers"
-msgstr ""
+msgstr "Określone okno nie posiada kontenera przycisków"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:470
 msgid "Window button '%Q' not found"
-msgstr ""
+msgstr "Przycisk \"%Q\" nie istnieje"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:500
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:484
@@ -89,95 +90,95 @@ msgstr "Nie można odnaleźć ikony '%Q'"
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1493
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1503
 msgid "No such event (%Q)"
-msgstr ""
+msgstr "Zdarzenie nie istnieje (%Q)"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:577
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1515
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1531
 msgid "No handler '%Q' for RAW numeric event '%d'"
-msgstr ""
+msgstr "Brak obsługi zdarzeń \"%Q\" dla zdarzenia numerycznego RAW \"%d\""
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:585
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1521
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1537
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1565
 msgid "No handler '%Q' for event '%Q'"
-msgstr ""
+msgstr "Brak obsługi zdarzeń \"%Q\" dla zdarzenia \"%Q\""
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:970
 msgid "The specified ping time is invalid: assuming zero (no ping)"
-msgstr ""
+msgstr "Określony czas pingu jest nieprawidłowy: przyjmowanie 0 (brak pingu)"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:980
 msgid "The specified maximum run time is invalid: assuming zero (infinite)"
-msgstr ""
+msgstr "Określony limit czasu wykonywania nieprawidłowy: przyjmowanie 0 (nieskończoność)"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1000
 msgid "Failed to start the process"
-msgstr ""
+msgstr "Nie udało się uruchomić procesu"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1045
 msgid "The specified object does not exist"
-msgstr ""
+msgstr "Określony obiekt nie istnieje"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1162
 msgid "Missing timer name"
-msgstr ""
+msgstr "Brakująca nazwa licznika"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1171
 msgid "Missing timeout delay"
-msgstr ""
+msgstr "Brakujące opóźnienie licznika"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1178
 msgid "The timeout delay didn't evaluate to an integer"
-msgstr ""
+msgstr "Opóźnienie licznika nie jest liczbą całkowitą"
 
 #: src/kvirc/kvs/KviKvsCoreCallbackCommands.cpp:1204
 msgid "Unable to add the timer: insufficient system resources"
-msgstr ""
+msgstr "Nie udało się dodać licznika: niewystarczające zasoby systemowe"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:325
 #: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:223
 msgid "This window has no associated IRC context"
-msgstr ""
+msgstr "To okno nie ma powiązanego kontekstu IRC"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:538
 msgid "Error retrieving information from the local certificate"
-msgstr ""
+msgstr "Wystąpił błąd podczas pobierania informacji z lokalnego certyfikatu"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:546
 msgid "Unable to get certificate information: query not recognized"
-msgstr ""
+msgstr "Nie udało się pobrać informacji o certyfikacie - nie rozpoznano żądania"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:595
 #: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:479
 #: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:828
 #, c-format
 msgid "No such IRC context (%u)"
-msgstr ""
+msgstr "Nie ma takiego kontekstu IRC (%u)"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:604
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:717
 #: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:488
 #: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:834
 msgid "This window is not associated to an IRC context"
-msgstr ""
+msgstr "To okno nie jest powiązane z kontekstem IRC"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_af.cpp:919
 msgid "Couldn't construct QDateTime object."
-msgstr ""
+msgstr "Nie udało się zbudować obiektu QDateTime"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:310
 msgid "Lag meter was not enabled"
-msgstr ""
+msgstr "Miernik latencji nie był uruchomiony"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_gl.cpp:731
 msgid "No such event handler (%Q) for event %Q"
-msgstr ""
+msgstr "Brak obsługi zdarzeń (%Q) dla zdarzenia %Q"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:196
 msgid "This window has no associated IRC context and is not a DCC chat"
-msgstr ""
+msgstr "To okno nie ma powiązanego kontekstu IRC i nie jest czatem DCC"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:290
 msgid "Class '%Q' is not defined"
@@ -185,67 +186,67 @@ msgstr "Klasa '%Q' nie jest zdefiniowana"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:300
 msgid "The specified parent object does not exist"
-msgstr ""
+msgstr "Określony obiekt nadrzędny nie istnieje"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_mr.cpp:427
 msgid "There is no option named '%Q'"
-msgstr ""
+msgstr "Opcja \"%Q\" nie istnieje"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:360
 msgid "The $sw() function can be used only in aliases"
-msgstr ""
+msgstr "Funkcja $sw() może być używana tylko w aliasach"
 
 #: src/kvirc/kvs/KviKvsCoreFunctions_sz.cpp:433
 #, c-format
 msgid "Window with ID '%s' not found, returning empty string"
-msgstr ""
+msgstr "Nie znaleziono okna z identyfikatorem \"%s\", zostanie zwrócony pusty ciąg znaków"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands.cpp:165
 msgid "This is not a channel"
-msgstr ""
+msgstr "To nie jest kanał"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:335
 msgid "Invalid pitch value: using default"
-msgstr ""
+msgstr "Nieprawidłowa wartość wysokości tonu: użycie domyślnej"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:345
 msgid "Invalid duration value: using default"
-msgstr ""
+msgstr "Nieprawidłowa wartość długości: użycie domyślnej"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:455
 msgid "No button with type %Q named %Q"
-msgstr ""
+msgstr "Przycisk typu %Q o nazwie %Q nie istnieje"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:902
 msgid "Can't delete a null object reference"
-msgstr ""
+msgstr "Nie można usunąć wskaźnika na null"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:910
 msgid "Can't delete a non-existent object"
-msgstr ""
+msgstr "Nie można usunąć nieistniejącego obiektu"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1136
 msgid ""
 "The argument of the -w switch did not evaluate to a valid window ID: using "
 "default"
-msgstr ""
+msgstr "Parametr przełącznika -w nie odnosi się do prawidłowego identyfikatora okna: zostanie użyty domyślny"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1145
 msgid ""
 "The argument of the -i switch did not evaluate to a number: using default"
-msgstr ""
+msgstr "Parametr przełącznika -i nie odnosi się do liczby: zostanie użyty domyślny"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1258
 msgid "Window '%Q' not found, using current one"
-msgstr ""
+msgstr "Okno \"%Q\" nie istnieje, zostanie użyte obecne"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_af.cpp:1273
 msgid "Invalid color-set specification, using default"
-msgstr ""
+msgstr "Nieprawidłowy zestaw kolorów, zostanie użyty domyślny"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:291
 msgid "The current window is not a channel, a query or a console"
-msgstr ""
+msgstr "Bieżące okno nie jest kanałem, rozmową ani konsolą"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_gl.cpp:305
 msgid "The following string was injected by the user:"

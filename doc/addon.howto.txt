@@ -141,12 +141,12 @@ source files are placed in the src/ subdirectory and the install.kvs must invoke
 them in the right order. More about the install.kvs script in section 4.
 
 If your addon is translated in different languages then the "locale" directory should
-contain the *.mo catalogue files for your tranlations. The localization process of a
+contain the *.mo catalogue files for your translations. The localization process of a
 script is explained in the KVIrc documentation. Your *.mo filenames should be prefixed
 by your addon name.
 
 If your addon needs an initial configuration then your config files should be placed
-in the "config" subdirectory and shoud have *.kvs as extension.
+in the "config" subdirectory and should have *.kvs as extension.
 
 The "pics" and "audio" (if relevant) directories should contain your multimedia files.
 It's a good idea to have your pics file in PNG format and sound files in WAV format.

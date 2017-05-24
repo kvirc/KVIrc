@@ -163,7 +163,7 @@ public:
 	// and -1 if OnHighlight called halt
 	// otherwise it returns <type>
 	int applyHighlighting(KviWindow * wnd, int type, const QString & nick, const QString & user, const QString & host, const QString & szMsg);
-	// Avatar helpers (conneciton related)
+	// Avatar helpers (connection related)
 	void resetAvatarForMatchingUsers(KviRegisteredUser * u);
 	// this should be protected at least
 	void avatarChangedUpdateWindows(const QString & nick, const QString & textLine);

@@ -2016,7 +2016,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 			The [i]separator[/i] keyword adds a straight line between items (separator).[br]
 			The 'separatorid' keyword adds a straight line between items, but permits to
 			specify a separator id.[br]
-			The [i]label[/i] keywork adds a descriptive label that acts like a separator.[br]
+			The [i]label[/i] keyword adds a descriptive label that acts like a separator.[br]
 			The [i]prologue[/i] keyword adds a <prologue_command> to be executed
 			just before the popup is filled at [cmd]popup[/cmd] command call.[br]
 			The [i]epilogue[/i] keyword adds an <epilogue_command> to be executed

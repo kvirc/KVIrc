@@ -81,7 +81,7 @@ namespace UPnP
 		// A WAN connection query was finished
 		void slotWanQueryFinished(bool error);
 
-	private: // private attibutes
+	private: // private attributes
 		// Is a gateway available?
 		bool m_bGatewayAvailable;
 		// The host of the gateway

@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# Daniel Neves, 2015-2016
+# Daniel Neves, 2015-2017
 # Zé <mmodem00@gmail.com>, 2010
 # Zé <ze@mandriva.org>, 2010
 msgid ""
@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 13:11+0100\n"
-"PO-Revision-Date: 2016-11-28 12:22+0000\n"
-"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
+"PO-Revision-Date: 2017-01-11 18:36+0000\n"
+"Last-Translator: Daniel Neves\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/kvirc/KVIrc/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,7 +23,7 @@ msgstr ""
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:101
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:165
 msgid "DNS lookup result for query \"%Q\""
-msgstr ""
+msgstr "Resultado de consulta DNS para conversa\"%Q\""
 
 #: src/kvirc/kvs/KviKvsAsyncDnsOperation.cpp:106
 #: src/kvirc/kvs/KviKvsDnsManager.cpp:170
@@ -311,7 +311,7 @@ msgstr "IRC URL inválida (%Q)"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:454
 msgid "The system handler for the URL failed to execute: system error is %1"
-msgstr ""
+msgstr "O gerenciador do sistema para URL falhou ao executar: erro do sistema  é %1"
 
 #: src/kvirc/kvs/KviKvsCoreSimpleCommands_mr.cpp:472
 msgid "The commandline for this URL type seems to be broken (%Q)"
@@ -1017,7 +1017,7 @@ msgstr "O comando 'global' precisa de uma lista de variáveis"
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:442
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:698
 msgid "Found character %q (Unicode %x) where an open parenthesis was expected"
-msgstr ""
+msgstr "Encontrado caractere %q (Unicode %x) onde um parêntesis de abertura era esperado"
 
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:504
 #: src/kvirc/kvs/parser/KviKvsParser_specialCommands.cpp:533

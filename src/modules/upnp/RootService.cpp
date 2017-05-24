@@ -42,7 +42,7 @@
 
 namespace UPnP
 {
-	// The contructor
+	// The constructor
 	RootService::RootService(const QString & hostname, int port, const QString & rootUrl)
 	    : Service(hostname, port, rootUrl), m_szHostname(hostname), m_iPort(port)
 	{

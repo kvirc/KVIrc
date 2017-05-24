@@ -617,7 +617,7 @@ QTextCodec * KviLocale::codecForName(const char * pcName)
 		{
 			// The name of the child codec was invalid: can't create such a smart codec.
 			// We probably screwed up the guess above related to the [ char.
-			// This code path is also triggered by the yircfuzzer by specifying completly invalid codec names.
+			// This code path is also triggered by the yircfuzzer by specifying completely invalid codec names.
 		}
 	}
 

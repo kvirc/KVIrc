@@ -1214,7 +1214,7 @@ endif()
 ###############################################################################
 
 # System configuration is now split into 2 files
-# kvi_sysconfig.h contains the "savable" configuration: stuff that
+# kvi_sysconfig.h contains the "saveable" configuration: stuff that
 # may be preserved between multiple CMake runs (and thus may save compilation time)
 # kvi_sysbuildinfo.h contains the configuration that changes at every
 # CMake run and must be recompiled every time. Extra care is taken

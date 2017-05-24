@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.9.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-28 20:01+0100\n"
+"POT-Creation-Date: 2017-05-24 17:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -345,99 +345,99 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:199
-#: src/modules/addon/libkviaddon.cpp:566
+#: src/modules/addon/libkviaddon.cpp:198
+#: src/modules/addon/libkviaddon.cpp:563
 msgid "Uninstalling existing addon version %Q"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:207
-#: src/modules/addon/libkviaddon.cpp:257
-#: src/modules/addon/libkviaddon.cpp:308
-#: src/modules/addon/libkviaddon.cpp:356
-#: src/modules/addon/libkviaddon.cpp:405
-#: src/modules/addon/libkviaddon.cpp:642
+#: src/modules/addon/libkviaddon.cpp:206
+#: src/modules/addon/libkviaddon.cpp:256
+#: src/modules/addon/libkviaddon.cpp:307
+#: src/modules/addon/libkviaddon.cpp:355
+#: src/modules/addon/libkviaddon.cpp:404
+#: src/modules/addon/libkviaddon.cpp:639
 msgid "The addon \"%1\" doesn't exist"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:247
+#: src/modules/addon/libkviaddon.cpp:246
 msgid "The addon \"%1\" has no configure callback set"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:298
+#: src/modules/addon/libkviaddon.cpp:297
 msgid "The addon \"%1\" has no help callback set"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:522
+#: src/modules/addon/libkviaddon.cpp:519
 msgid "Internal error: call a head-shrinker"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:531
+#: src/modules/addon/libkviaddon.cpp:528
 msgid "The specified version \"%Q\" is not a valid version string"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:537
+#: src/modules/addon/libkviaddon.cpp:534
 msgid "The specified KVIrc version \"%Q\" is not a valid version string"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:543
+#: src/modules/addon/libkviaddon.cpp:540
 msgid ""
 "This KVIrc executable is too old to run this addon (minimum version required "
 "is %Q)"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:548
+#: src/modules/addon/libkviaddon.cpp:545
 msgid "Attempting to register addon \"%Q\" with version %Q"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:560
+#: src/modules/addon/libkviaddon.cpp:557
 msgid "The addon \"%Q\" already exists with version %Q which is higher than %Q"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:576
+#: src/modules/addon/libkviaddon.cpp:573
 msgid "Addon registration failed"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:581
+#: src/modules/addon/libkviaddon.cpp:578
 msgid "Addon successfully registered"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:647
+#: src/modules/addon/libkviaddon.cpp:644
 msgid "The target path can't be empty"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:650
+#: src/modules/addon/libkviaddon.cpp:647
 msgid "The target path can't contain .."
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:655
+#: src/modules/addon/libkviaddon.cpp:652
 msgid "Empty file list"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:686
+#: src/modules/addon/libkviaddon.cpp:683
 msgid "The directory '%1' doesn't exist"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:688
-#: src/modules/addon/libkviaddon.cpp:710
+#: src/modules/addon/libkviaddon.cpp:685
+#: src/modules/addon/libkviaddon.cpp:707
 msgid "Skipping non-existent entry '%1'"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:708
+#: src/modules/addon/libkviaddon.cpp:705
 msgid "The file '%1' doesn't exist"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:717
+#: src/modules/addon/libkviaddon.cpp:714
 msgid "The entry '%1' is not a file"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:719
+#: src/modules/addon/libkviaddon.cpp:716
 msgid "Skipping invalid entry '%1'"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:745
+#: src/modules/addon/libkviaddon.cpp:742
 msgid "Installing file '%1' into '%2'"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:803
+#: src/modules/addon/libkviaddon.cpp:800
 msgid "Error installing addon package: %Q"
 msgstr ""

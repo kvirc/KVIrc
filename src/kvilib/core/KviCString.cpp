@@ -811,7 +811,7 @@ int kvi_irc_vsnprintf(char * buffer, const char * fmt, kvi_va_list list, bool * 
 				continue;
 		}
 	}
-	//succesfull finish
+	//successful finish
 	KVI_ASSERT(len >= 2);
 	*p++ = '\r';
 	*p = '\n';

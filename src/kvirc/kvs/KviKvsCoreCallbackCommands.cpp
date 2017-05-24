@@ -71,7 +71,7 @@ namespace KviKvsCoreCallbackCommands
 			This command also performs reverse lookups (if you pass an IP address as <hostname>).[br]
 			The callback command gets passed five parameters:[br]
 			$0 contains the query string (<dnsquery> in fact)[br]
-			$1 contains the value 1 if the query was succesfull.[br]
+			$1 contains the value 1 if the query was successful.[br]
 			In that case the remaining parameters are set as follows:[br]
 			$2 contains the first IP address associated to the <dnsquery>[br]
 			$3 contains the hostname associated to the <dnsquery>[br]
@@ -650,7 +650,7 @@ namespace KviKvsCoreCallbackCommands
 				the active console window and continues running.
 			!sw: -s=<interpreter command> | --shell=<interpreter command>
 				Use <interpreter command> instead of the default interpreter [i]sh -c[/i].
-				The <interpreter command> should be able to launch the interpeter
+				The <interpreter command> should be able to launch the interpreter
 				and should contain the necessary arguments in order to allow
 				KVIrc to pass the [i]commandline[/i] by appending it as the last parameter.
 			!sw: -d | --direct

@@ -74,7 +74,7 @@ public:
 
 protected:
 	// subwindows
-	QSplitter * m_pSplitter;                                       // the frame is splitted vertically and thus can host widgets
+	QSplitter * m_pSplitter;                                       // the frame is split vertically and thus can host widgets
 	KviMenuBar * m_pMenuBar;                                       // the main menu bar
 	KviWindowStack * m_pWindowStack;                               // the mdi manager widget (child of the splitter)
 	std::unordered_set<KviMexToolBar *> m_pModuleExtensionToolBarList; // the module extension toolbars

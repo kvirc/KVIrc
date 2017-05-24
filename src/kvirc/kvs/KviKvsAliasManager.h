@@ -75,5 +75,5 @@ public:
 signals:
 	void aliasRefresh(const QString &);
 };
-// namespaces are handled completly in the editing!
+// namespaces are handled completely in the editing!
 #endif //!_KVI_KVS_ALIASMANAGER_H_

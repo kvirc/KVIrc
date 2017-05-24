@@ -1087,7 +1087,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		Aliases : user definable command sequences
 	@body:
 		An alias is a user defined command.  It can be used to rename the builtin KVIrc commands or functions,
-		to automatize complex tasks or as structured programming mean.
+		to automate complex tasks or as structured programming mean.
 		Aliases can be created or destroyed by using the scriptcenter (graphic interface)
 		or from the commandline (or script) by using the [cmd]alias[/cmd] command.
 		Once created, an alias remains stored permanently in the KVIrc configuration files

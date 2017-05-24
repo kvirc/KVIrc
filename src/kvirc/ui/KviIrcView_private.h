@@ -112,19 +112,19 @@ typedef struct _KviIrcViewLine
 	QString szText;      // data string without color codes nor escapes...
 	int iMsgType;        // type of the line (defines icon and colors)
 
-	// At line instert time the szData text is splitted in parts which
+	// At line insert time the szData text is split in parts which
 	// signal attribute changes (or icons)
 	unsigned int uChunkCount;      // number of allocated chunks
 	KviIrcViewLineChunk * pChunks; // pointer to the allocated structures
 
-	// At paint time the data is re-splitted in drawable chunks which
+	// At paint time the data is re-split in drawable chunks which
 	// are either real data chunks or line wraps.
 	// The algorightm that does this is lazy and computes it
 	// only once for a given widget width (iMaxLineWidth)
 	unsigned int uLineWraps;          // number of line wraps (lines - 1)
 	int iMaxLineWidth;                // width that the blocks were calculated for (lazy calculation)
 	int iBlockCount;                  // number of allocated paintable blocks
-	KviIrcViewWrappedBlock * pBlocks; // pointer to the re-splitted paintable blocks
+	KviIrcViewWrappedBlock * pBlocks; // pointer to the re-split paintable blocks
 
 	// next and previous line
 	struct _KviIrcViewLine * pPrev;

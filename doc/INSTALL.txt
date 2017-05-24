@@ -358,7 +358,7 @@
     Note: this will be deactivated when using a job setting higher than 1
     with gmake. i.e., make -j2 will *not* show verbose compilation output.
 
-  -DCMAKE_INSTALL_PREFIX=PATH 0 (default: a system-dependant directory)
+  -DCMAKE_INSTALL_PREFIX=PATH 0 (default: a system-dependent directory)
     This will install all stuff under PATH directory.
 
   -DLIB_SUFFIX=SUFFIX=  (default: empty)
@@ -375,7 +375,7 @@
     different KVIrc versions can co-exist on the same system.
 
   -DWANT_ENV_FLAGS=  (default: OFF)
-    When enabled, KVIrc install rules wont try to figure out and set
+    When enabled, KVIrc install rules won't try to figure out and set
     CMAKE_C(XX)_FLAGS. Instead, it will let CMake use the ones taken
     from environment variables.
     Activating this flag will override the value of -DWANT_DEBUG.

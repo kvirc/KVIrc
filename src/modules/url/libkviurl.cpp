@@ -77,7 +77,7 @@ void loadBanList();
 UrlDlgList * findFrame();
 void url_module_help();
 
-#define KVI_URL_EXTENSION_NAME "URL module extenstion"
+#define KVI_URL_EXTENSION_NAME "URL module extension"
 
 UrlDialogTreeWidget::UrlDialogTreeWidget(QWidget * par)
     : QTreeWidget(par)

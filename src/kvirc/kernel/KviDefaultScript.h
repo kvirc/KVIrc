@@ -129,7 +129,7 @@ public:
 	void load(const QString & szConfigFile);
 
 	/**
-	* \brief Initilizes an empty configuration
+	* \brief Initializes an empty configuration
 	*
 	* \return void
 	*/

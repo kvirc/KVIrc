@@ -156,7 +156,7 @@ void KviTreeWindowListItem::setActive(bool bActive)
 QString KviTreeWindowListItem::key() const
 {
 	// This is the sorting function for KviTreeTaskBarItem
-	// 1) window type (console, other window..) 2) unique id [to avoid bug #9] 3) windowname (for alphabetical sorting of childs)
+	// 1) window type (console, other window..) 2) unique id [to avoid bug #9] 3) windowname (for alphabetical sorting of children)
 	QString ret;
 	int iType = m_pWindow->type();
 

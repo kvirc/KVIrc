@@ -45,7 +45,7 @@ public:
 	/**
 	* \brief Creates an instance of KviDebugContext
 	* \param pcContext  The format list argument
-	* \param ... The succeding arguments
+	* \param ... The succeeding arguments
 	* \return KviDebugContext
 	*/
 	KviDebugContext(const char * pcContext, ...);
@@ -62,7 +62,7 @@ public:
 	/**
 	* \brief
 	* \param pcFmt The format list argument
-	* \param ... The succeding arguments
+	* \param ... The succeeding arguments
 	* \return void
 	*/
 	static void trace(const char * pcFmt, ...);

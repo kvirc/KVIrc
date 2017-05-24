@@ -170,7 +170,7 @@ void KviCustomToolBar::childEvent(QChildEvent * e)
 {
 	if(KviActionManager::customizingToolBars())
 	{
-		// this is useful for droppped and dragged-out children
+		// this is useful for dropped and dragged-out children
 		if(e->type() == QEvent::ChildAdded)
 		{
 			if(e->child()->isWidgetType())

@@ -79,7 +79,7 @@ KviUIntSelector::KviUIntSelector(QWidget * par, const QString & txt, unsigned in
 
 	m_pOption = pOption;
 
-	// QSpinBox only holds integers and we want unsinged integers, so make sure the limits are correct
+	// QSpinBox only holds integers and we want unsigned integers, so make sure the limits are correct
 	if(m_bIsShortInt)
 	{
 		m_uLowBound = std::min({ uLowBound, static_cast<unsigned int>(std::numeric_limits<unsigned short int>::max()), static_cast<unsigned int>(std::numeric_limits<int>::max()) });

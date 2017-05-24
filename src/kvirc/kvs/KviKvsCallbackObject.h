@@ -51,11 +51,11 @@ public:
 	};
 	enum CallbackStatus
 	{
-		// succesfull execution
+		// successful execution
 		Success,
 		// error in command
 		Error,
-		// succesfull execution, but halt encountered
+		// successful execution, but halt encountered
 		HaltEncountered,
 		// execution aborted since OnlyIfWindowExists was passed and the target window is dead
 		TargetWindowDead

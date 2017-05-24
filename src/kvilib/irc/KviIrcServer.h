@@ -597,7 +597,7 @@ public:
 
 	/**
 	* \brief Sets the server to a favorite
-	* \param bSet wether the server is a favorite or not
+	* \param bSet whether the server is a favorite or not
 	* \return void
 	*/
 	inline void setFavorite(bool bSet)

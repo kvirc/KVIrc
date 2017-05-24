@@ -2171,7 +2171,7 @@ void KviInputEditor::completion(bool bShift)
 	{
 		if(szWord[1 - iOffset].unicode() == '$')
 		{
-			// function/identifer completion
+			// function/identifier completion
 			szWord.remove(0, 2 - iOffset);
 			if(szWord.isEmpty())
 				return;
@@ -2198,7 +2198,7 @@ void KviInputEditor::completion(bool bShift)
 	}
 	else if(uc == '$')
 	{
-		// function/identifer completion
+		// function/identifier completion
 		szWord.remove(0, 1);
 		if(szWord.isEmpty())
 			return;

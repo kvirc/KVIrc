@@ -4,20 +4,20 @@
 # 
 # Translators:
 # Krzysztof Godlewski <kgod@poczta.onet.pl>, 2001
-# Sölve Svartskogen <solaizen@gmail.com>, 2016
+# Sölve Svartskogen <solaizen@gmail.com>, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 13:11+0100\n"
-"PO-Revision-Date: 2016-11-28 12:22+0000\n"
-"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
+"PO-Revision-Date: 2017-03-11 00:06+0000\n"
+"Last-Translator: Sölve Svartskogen <solaizen@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/kvirc/KVIrc/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: src/kvilib/core/KviError.cpp:49 src/kvilib/net/KviHttpRequest.cpp:258
 msgid "Success"
@@ -202,7 +202,7 @@ msgstr "Przekroczony limit czasu oczekiwania na połączenie"
 
 #: src/kvilib/core/KviError.cpp:94
 msgid "Network is unreachable"
-msgstr ""
+msgstr "Sieć jest nieosiągalna"
 
 #: src/kvilib/core/KviError.cpp:95
 msgid "Broken pipe"
@@ -1320,7 +1320,7 @@ msgstr "Tworzy nowy kontekst konsoli IRC"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:436
 msgid "&Quit KVIrc"
-msgstr ""
+msgstr "&Zakończ KVIrc"
 
 #: src/kvirc/kernel/KviCoreActions.cpp:437
 msgid "Quits KVIrc closing all the current connections"
@@ -1683,7 +1683,7 @@ msgstr "alternatywne opcje statystyk serwera"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1257
 msgid "network specific option"
-msgstr ""
+msgstr "Informacje sieciowe"
 
 #: src/kvirc/kernel/KviIrcConnection.cpp:1271
 msgid "network specific alternative option"

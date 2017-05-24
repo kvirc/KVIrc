@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.9.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-28 20:01+0100\n"
+"POT-Creation-Date: 2017-05-24 17:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -86,7 +86,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_identity.cpp:968
 #: src/modules/options/OptionsWidget_nickserv.cpp:123
 #: src/modules/options/OptionsWidget_servers.cpp:374
-#: src/modules/options/OptionsWidget_servers.cpp:998
+#: src/modules/options/OptionsWidget_servers.cpp:996
 msgid "Cancel"
 msgstr ""
 
@@ -1437,7 +1437,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_identity.cpp:972
 #: src/modules/options/OptionsWidget_nickserv.cpp:128
 #: src/modules/options/OptionsWidget_nickserv.cpp:148
-#: src/modules/options/OptionsWidget_servers.cpp:992
+#: src/modules/options/OptionsWidget_servers.cpp:990
 #: src/modules/options/OptionsWidget_textEncoding.cpp:225
 msgid "OK"
 msgstr ""
@@ -2412,7 +2412,7 @@ msgid "MIME Type"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_mediaTypes.cpp:78
-#: src/modules/options/OptionsWidget_servers.cpp:1313
+#: src/modules/options/OptionsWidget_servers.cpp:1311
 msgid "Description"
 msgstr ""
 
@@ -2935,16 +2935,16 @@ msgstr ""
 msgid "Protocol:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_proxy.cpp:134
+#: src/modules/options/OptionsWidget_proxy.cpp:133
 #: src/modules/options/OptionsWidget_servers.cpp:716
 msgid "Use IPv6 protocol"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_proxy.cpp:334
+#: src/modules/options/OptionsWidget_proxy.cpp:332
 msgid "&New Proxy"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_proxy.cpp:335
+#: src/modules/options/OptionsWidget_proxy.cpp:333
 msgid "Re&move Proxy"
 msgstr ""
 
@@ -3126,7 +3126,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:259
-#: src/modules/options/OptionsWidget_servers.cpp:825
+#: src/modules/options/OptionsWidget_servers.cpp:823
 msgid "Channels to Join Automatically upon Connect"
 msgstr ""
 
@@ -3138,7 +3138,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:267
-#: src/modules/options/OptionsWidget_servers.cpp:832
+#: src/modules/options/OptionsWidget_servers.cpp:830
 msgid "Join Channels"
 msgstr ""
 
@@ -3152,7 +3152,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:282
-#: src/modules/options/OptionsWidget_servers.cpp:846
+#: src/modules/options/OptionsWidget_servers.cpp:844
 msgid "On Connect"
 msgstr ""
 
@@ -3166,7 +3166,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:297
-#: src/modules/options/OptionsWidget_servers.cpp:861
+#: src/modules/options/OptionsWidget_servers.cpp:859
 msgid "On Login"
 msgstr ""
 
@@ -3182,7 +3182,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/OptionsWidget_servers.cpp:366
-#: src/modules/options/OptionsWidget_servers.cpp:990
+#: src/modules/options/OptionsWidget_servers.cpp:988
 #: src/modules/options/OptionsWidget_nickserv.h:39
 msgid "NickServ"
 msgstr ""
@@ -3356,19 +3356,19 @@ msgstr ""
 msgid "Direct Connection"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:817
+#: src/modules/options/OptionsWidget_servers.cpp:815
 #: src/modules/options/OptionsWidget_connection.h:33
 msgid "Connection"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:826
+#: src/modules/options/OptionsWidget_servers.cpp:824
 msgid ""
 "Here you can set a list of channels to be joined automatically after a "
 "connection to this server has been established. To add a channel, type its "
 "name in the text input below and click \"<b>Add</b>\"."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:841
+#: src/modules/options/OptionsWidget_servers.cpp:839
 msgid ""
 "The following commands will be executed after a connection has been "
 "established.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -3378,7 +3378,7 @@ msgid ""
 "for IRC bouncers that require login commands."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:857
+#: src/modules/options/OptionsWidget_servers.cpp:855
 msgid ""
 "The following commands will be executed after a successful login to this "
 "server.<br><b>Important:</b> Enter commands <b>without</b> a preceding slash "
@@ -3386,11 +3386,11 @@ msgid ""
 "<br>This is useful for automatically opening queries, setting variables, etc."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:868
+#: src/modules/options/OptionsWidget_servers.cpp:866
 msgid "Switch to SSL/TLS by using the STARTTLS extension"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:870
+#: src/modules/options/OptionsWidget_servers.cpp:868
 msgid ""
 "This check enables the use of the <b>Transport Layer Security</b> protocol. "
 "If you enable the Extended Capabilities below then the TLS protocol support "
@@ -3399,29 +3399,29 @@ msgid ""
 "connection."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:881
+#: src/modules/options/OptionsWidget_servers.cpp:879
 msgid "Extended Capabilities"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:887
+#: src/modules/options/OptionsWidget_servers.cpp:885
 msgid "Query extended capabilities on connect"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:890
+#: src/modules/options/OptionsWidget_servers.cpp:888
 msgid ""
 "This check will cause the connection to use the <b>Extended Capability</b> "
 "support."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:893
+#: src/modules/options/OptionsWidget_servers.cpp:891
 msgid "SASL Authentication"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:898
+#: src/modules/options/OptionsWidget_servers.cpp:896
 msgid "Authenticate via SASL extension"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:900
+#: src/modules/options/OptionsWidget_servers.cpp:898
 msgid ""
 "This check enables the use of the <b>SASL</b> authentication protocol If you "
 "enable the proper global option in the Connection/SSL tab and fill the SASL "
@@ -3429,38 +3429,38 @@ msgid ""
 "used for this server if available."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:906
+#: src/modules/options/OptionsWidget_servers.cpp:904
 msgid "SASL nickname:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:910
+#: src/modules/options/OptionsWidget_servers.cpp:908
 msgid "If you want to enable SASL authentication, insert your nickname here."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:913
+#: src/modules/options/OptionsWidget_servers.cpp:911
 msgid "SASL password:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:917
+#: src/modules/options/OptionsWidget_servers.cpp:915
 msgid "If you want to enable SASL authentication, insert your password here."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:925
+#: src/modules/options/OptionsWidget_servers.cpp:923
 msgid "Link filter:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:959
+#: src/modules/options/OptionsWidget_servers.cpp:957
 msgid ""
 "This field specifies the name of a module that exports a link filter for "
 "this type of server.<br>For plain IRC connections, you don't need any link "
 "filters; this is used for incompatible protocols."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:964
+#: src/modules/options/OptionsWidget_servers.cpp:962
 msgid "ID:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:972
+#: src/modules/options/OptionsWidget_servers.cpp:970
 msgid ""
 "This field allows you to specify a really unique ID for this server. You "
 "will then be able to use /server -x &lt;this_id&gt; to make the connection. "
@@ -3468,7 +3468,7 @@ msgid ""
 "same hostname and port in different networks (bouncers?)"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:977
+#: src/modules/options/OptionsWidget_servers.cpp:975
 #: src/modules/options/OptionsWidget_channel.h:63
 #: src/modules/options/OptionsWidget_connection.h:45
 #: src/modules/options/OptionsWidget_dcc.h:57
@@ -3478,7 +3478,7 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:984
+#: src/modules/options/OptionsWidget_servers.cpp:982
 msgid ""
 "NickServ settings are available only for the whole IRC network, not for "
 "specific servers.\n"
@@ -3486,185 +3486,185 @@ msgid ""
 "and servers and click Advanced."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1292
+#: src/modules/options/OptionsWidget_servers.cpp:1290
 msgid "Filter:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1297
+#: src/modules/options/OptionsWidget_servers.cpp:1295
 msgid ""
 "If you are searching for a specific server or network, you can insert its "
 "name to filter the servers in the list"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1304
+#: src/modules/options/OptionsWidget_servers.cpp:1302
 msgid ""
 "If this option is enabled, only servers you have favorited will be displayed"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1312
+#: src/modules/options/OptionsWidget_servers.cpp:1310
 msgid "Server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1328
+#: src/modules/options/OptionsWidget_servers.cpp:1326
 msgid ""
 "This is the list of available IRC servers.<br>Right-click on the list to add "
 "or remove servers and perform other actions.<br>Double-click on a item for "
 "advanced options."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1343
+#: src/modules/options/OptionsWidget_servers.cpp:1341
 msgid "New network"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1352
+#: src/modules/options/OptionsWidget_servers.cpp:1350
 msgid "New server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1358
+#: src/modules/options/OptionsWidget_servers.cpp:1356
 msgid "Favorite / Unfavorite server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1365
+#: src/modules/options/OptionsWidget_servers.cpp:1363
 msgid "Remove network / server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1372
+#: src/modules/options/OptionsWidget_servers.cpp:1370
 msgid "Copy server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1379
+#: src/modules/options/OptionsWidget_servers.cpp:1377
 msgid "Paste server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1390
+#: src/modules/options/OptionsWidget_servers.cpp:1388
 msgid "Import server list"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1395
+#: src/modules/options/OptionsWidget_servers.cpp:1393
 msgid "Active Configuration"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1396
-#: src/modules/options/OptionsWidget_servers.cpp:1699
+#: src/modules/options/OptionsWidget_servers.cpp:1394
+#: src/modules/options/OptionsWidget_servers.cpp:1697
 msgid "Server:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1400
+#: src/modules/options/OptionsWidget_servers.cpp:1398
 msgid "This is the name of the currently selected server or network"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1402
+#: src/modules/options/OptionsWidget_servers.cpp:1400
 msgid "Advanced..."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1404
+#: src/modules/options/OptionsWidget_servers.cpp:1402
 msgid "Click here to edit advanced options for this entry"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1416
+#: src/modules/options/OptionsWidget_servers.cpp:1414
 msgid ""
 "This button shows a list of recently used servers.<br>It allows you to "
 "quickly find them in the list."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1423
+#: src/modules/options/OptionsWidget_servers.cpp:1421
 msgid "Connect &Now"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1465
+#: src/modules/options/OptionsWidget_servers.cpp:1463
 msgid "Hit this button to connect to the currently selected server."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1471
+#: src/modules/options/OptionsWidget_servers.cpp:1469
 msgid "Show this dialog at startup"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1476
+#: src/modules/options/OptionsWidget_servers.cpp:1474
 msgid ""
 "If this option is enabled, the servers dialog will appear every time you "
 "start KVIrc"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1704
+#: src/modules/options/OptionsWidget_servers.cpp:1702
 msgid "Network:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1719
+#: src/modules/options/OptionsWidget_servers.cpp:1717
 msgid "No selection"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1798
+#: src/modules/options/OptionsWidget_servers.cpp:1796
 msgid "UnknownNet"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1877
-#: src/modules/options/OptionsWidget_servers.cpp:2015
+#: src/modules/options/OptionsWidget_servers.cpp:1875
+#: src/modules/options/OptionsWidget_servers.cpp:2013
 msgid "New Network"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1878
+#: src/modules/options/OptionsWidget_servers.cpp:1876
 msgid "Remove Network"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1883
+#: src/modules/options/OptionsWidget_servers.cpp:1881
 msgid "&New Server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1885
+#: src/modules/options/OptionsWidget_servers.cpp:1883
 msgid "Unfavorite Server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1887
+#: src/modules/options/OptionsWidget_servers.cpp:1885
 msgid "Re&move Server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1889
+#: src/modules/options/OptionsWidget_servers.cpp:1887
 msgid "&Copy Server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1891
+#: src/modules/options/OptionsWidget_servers.cpp:1889
 msgid "&Paste Server"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1896
+#: src/modules/options/OptionsWidget_servers.cpp:1894
 msgid "Import Server List"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1897
+#: src/modules/options/OptionsWidget_servers.cpp:1895
 msgid "Clear Server List"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1935
+#: src/modules/options/OptionsWidget_servers.cpp:1933
 msgid ""
 "Oops! Something weird happened:<br>Can't find any module capable of "
 "importing servers."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:1955
+#: src/modules/options/OptionsWidget_servers.cpp:1953
 msgid ""
 "Oops! Something weird happened:<br>Can't find the module that was capable of "
 "this import action. :("
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:2039
+#: src/modules/options/OptionsWidget_servers.cpp:2037
 msgid "irc.unknown.net"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:2188
+#: src/modules/options/OptionsWidget_servers.cpp:2186
 msgid ""
 "If you click <b>Yes</b>, all of your saved networks, servers, settings, and "
 "passwords will be lost.<br>Would you like to continue?"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:2191
+#: src/modules/options/OptionsWidget_servers.cpp:2189
 msgid "Confirm Clearing Server List - KVIrc"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:2192
+#: src/modules/options/OptionsWidget_servers.cpp:2190
 msgid "Yes"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_servers.cpp:2192
+#: src/modules/options/OptionsWidget_servers.cpp:2190
 msgid "No"
 msgstr ""
 

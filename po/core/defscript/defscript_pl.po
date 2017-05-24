@@ -3,246 +3,246 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# Sölve Svartskogen <solaizen@gmail.com>, 2016
+# Sölve Svartskogen <solaizen@gmail.com>, 2016-2017
 msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 13:11+0100\n"
-"PO-Revision-Date: 2016-10-28 19:19+0000\n"
-"Last-Translator: Robert Förster <Dessa@gmake.de>\n"
+"PO-Revision-Date: 2017-03-11 00:05+0000\n"
+"Last-Translator: Sölve Svartskogen <solaizen@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/kvirc/KVIrc/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: data/defscript/actions.kvs:5
 msgid "Option Controllers"
-msgstr ""
+msgstr "Kontrolery opcji"
 
 #: data/defscript/actions.kvs:5
 msgid ""
 "Opens a control dialog for easy CTCP ignore and joins/parts/quits "
 "management."
-msgstr ""
+msgstr "Otwiera okno dialogowe, by w prosty sposób zarządzać dołączeniami/rozłączeniami/wyjściami CTCP."
 
 #: data/defscript/actions.kvs:41
 msgid "Option Controllers - KVIrc"
-msgstr ""
+msgstr "Kontrolery opcji - KVIrc"
 
 #: data/defscript/actions.kvs:58
 msgid "CTCP Ignore Controllers"
-msgstr ""
+msgstr "CTCP ignoruje kontrolery"
 
 #: data/defscript/actions.kvs:68
 msgid "Enable ignore for CTCP PING"
-msgstr ""
+msgstr "Włącz ignorowanie CTCP PING"
 
 #: data/defscript/actions.kvs:69
 msgid "When checked, all CTCP PING requests are ignored."
-msgstr ""
+msgstr "Gdy zaznaczone, wszystkie żądania CTCP PING są ignorowane."
 
 #: data/defscript/actions.kvs:78
 msgid "Disabled ignore for CTCP PING"
-msgstr ""
+msgstr "Ignorowanie CTCP PING wyłączone"
 
 #: data/defscript/actions.kvs:83
 msgid "Enabled ignore for CTCP PING"
-msgstr ""
+msgstr "Ignorowanie CTCP PING włączone"
 
 #: data/defscript/actions.kvs:90
 msgid "Enable ignore for CTCP FINGER"
-msgstr ""
+msgstr "Włącz ignorowanie CTCP FINGER"
 
 #: data/defscript/actions.kvs:91
 msgid "When checked, all CTCP FINGER requests are ignored."
-msgstr ""
+msgstr "Gdy zaznaczone, wszystkie żądania CTCP FINGER są ignorowane."
 
 #: data/defscript/actions.kvs:100
 msgid "Disabled ignore for CTCP FINGER"
-msgstr ""
+msgstr "Ignorowanie CTCP FINGER wyłączone"
 
 #: data/defscript/actions.kvs:105
 msgid "Enabled ignore for CTCP FINGER"
-msgstr ""
+msgstr "Ignorowanie CTCP FINGER włączone"
 
 #: data/defscript/actions.kvs:112
 msgid "Enable ignore for CTCP VERSION"
-msgstr ""
+msgstr "Włącz ignorowanie CTCP VERSION"
 
 #: data/defscript/actions.kvs:113
 msgid "When checked, all CTCP VERSION requests are ignored."
-msgstr ""
+msgstr "Gdy zaznaczone, wszystkie żądania CTCP VERSION są ignorowane."
 
 #: data/defscript/actions.kvs:122
 msgid "Disabled ignore for CTCP VERSION"
-msgstr ""
+msgstr "Ignorowanie CTCP VERSION wyłączone"
 
 #: data/defscript/actions.kvs:127
 msgid "Enabled ignore for CTCP VERSION"
-msgstr ""
+msgstr "Ignorowanie CTCP VERSION włączone"
 
 #: data/defscript/actions.kvs:134
 msgid "Enable ignore for CTCP USERINFO"
-msgstr ""
+msgstr "Włącz ignorowanie CTCP USERINFO"
 
 #: data/defscript/actions.kvs:135
 msgid "When checked, all CTCP USERINFO requests are ignored."
-msgstr ""
+msgstr "Gdy zaznaczone, wszystkie żądania CTCP USERINFO są ignorowane."
 
 #: data/defscript/actions.kvs:144
 msgid "Disabled ignore for CTCP USERINFO"
-msgstr ""
+msgstr "Ignorowanie CTCP USERINFO wyłączone"
 
 #: data/defscript/actions.kvs:149
 msgid "Enabled ignore for CTCP USERINFO"
-msgstr ""
+msgstr "Ignorowanie CTCP USERINFO włączone"
 
 #: data/defscript/actions.kvs:156
 msgid "Enable ignore for CTCP CLIENTINFO"
-msgstr ""
+msgstr "Włącz ignorowanie CTCP CLIENTINFO"
 
 #: data/defscript/actions.kvs:157
 msgid "When checked, all CTCP CLIENTINFO requests are ignored."
-msgstr ""
+msgstr "Gdy zaznaczone, wszystkie żądania CTCP CLIENTINFO są ignorowane."
 
 #: data/defscript/actions.kvs:166
 msgid "Disabled ignore for CTCP CLIENTINFO"
-msgstr ""
+msgstr "Ignorowanie CTCP CLIENTINFO wyłączone"
 
 #: data/defscript/actions.kvs:171
 msgid "Enabled ignore for CTCP CLIENTINFO"
-msgstr ""
+msgstr "Ignorowanie CTCP CLIENTINFO włączone"
 
 #: data/defscript/actions.kvs:178
 msgid "Enable ignore for CTCP SOURCE"
-msgstr ""
+msgstr "Włącz ignorowanie CTCP SOURCE"
 
 #: data/defscript/actions.kvs:179
 msgid "When checked, all CTCP SOURCE requests are ignored."
-msgstr ""
+msgstr "Gdy zaznaczone, wszystkie żądania CTCP SOURCE są ignorowane."
 
 #: data/defscript/actions.kvs:188
 msgid "Disabled ignore for CTCP SOURCE"
-msgstr ""
+msgstr "Ignorowanie CTCP SOURCE wyłączone"
 
 #: data/defscript/actions.kvs:193
 msgid "Enabled ignore for CTCP SOURCE"
-msgstr ""
+msgstr "Ignorowanie CTCP SOURCE włączone"
 
 #: data/defscript/actions.kvs:200
 msgid "Enable ignore for CTCP TIME"
-msgstr ""
+msgstr "Włącz ignorowanie CTCP TIME"
 
 #: data/defscript/actions.kvs:201
 msgid "When checked, all CTCP TIME requests are ignored."
-msgstr ""
+msgstr "Gdy zaznaczone, wszystkie żądania CTCP TIME są ignorowane."
 
 #: data/defscript/actions.kvs:210
 msgid "Disabled ignore for CTCP TIME"
-msgstr ""
+msgstr "Ignorowanie CTCP TIME wyłączone"
 
 #: data/defscript/actions.kvs:215
 msgid "Enabled ignore for CTCP TIME"
-msgstr ""
+msgstr "Ignorowanie CTCP TIME włączone"
 
 #: data/defscript/actions.kvs:222
 msgid "Enable ignore for CTCP PAGE"
-msgstr ""
+msgstr "Włącz ignorowanie CTCP PAGE"
 
 #: data/defscript/actions.kvs:223
 msgid "When checked, all CTCP PAGE requests are ignored."
-msgstr ""
+msgstr "Gdy zaznaczone, wszystkie żądania CTCP PAGE są ignorowane."
 
 #: data/defscript/actions.kvs:232
 msgid "Disabled ignore for CTCP PAGE"
-msgstr ""
+msgstr "Ignorowanie CTCP PAGE wyłączone"
 
 #: data/defscript/actions.kvs:237
 msgid "Enabled ignore for CTCP PAGE"
-msgstr ""
+msgstr "Ignorowanie CTCP PAGE włączone"
 
 #: data/defscript/actions.kvs:244
 msgid "Enable ignore for CTCP AVATAR"
-msgstr ""
+msgstr "Włącz ignorowanie CTCP AVATAR"
 
 #: data/defscript/actions.kvs:245
 msgid "When checked, all CTCP AVATAR requests are ignored."
-msgstr ""
+msgstr "Gdy zaznaczone, wszystkie żądania CTCP AVATAR są ignorowane."
 
 #: data/defscript/actions.kvs:254
 msgid "Disabled ignore for CTCP AVATAR"
-msgstr ""
+msgstr "Ignorowanie CTCP AVATAR wyłączone"
 
 #: data/defscript/actions.kvs:259
 msgid "Enabled ignore for CTCP AVATAR"
-msgstr ""
+msgstr "Ignorowanie CTCP AVATAR włączone"
 
 #: data/defscript/actions.kvs:266
 msgid "Enable ignore for CTCP DCC"
-msgstr ""
+msgstr "Włącz ignorowanie CTCP DCC"
 
 #: data/defscript/actions.kvs:267
 msgid "When checked, all CTCP DCC requests are ignored."
-msgstr ""
+msgstr "Gdy zaznaczone, wszystkie żądania CTCP DCC są ignorowane."
 
 #: data/defscript/actions.kvs:276
 msgid "Disabled ignore for CTCP DCC"
-msgstr ""
+msgstr "Ignorowanie CTCP DCC wyłączone"
 
 #: data/defscript/actions.kvs:281
 msgid "Enabled ignore for CTCP DCC"
-msgstr ""
+msgstr "Ignorowanie CTCP DCC włączone"
 
 #: data/defscript/actions.kvs:289
 msgid "Message Suppression Controllers"
-msgstr ""
+msgstr "Kontrolery tłumienia wiadomości"
 
 #: data/defscript/actions.kvs:299
 msgid "Enable join message suppression"
-msgstr ""
+msgstr "Włącz tłumienie powiadomienia o dołączeniu"
 
 #: data/defscript/actions.kvs:300
 msgid "When checked, all join messages are hidden."
-msgstr ""
+msgstr "Gdy zaznaczone, wszystkie wiadomości o dołączeniu są ukrywane."
 
 #: data/defscript/actions.kvs:309
 msgid "Disabled join message suppression"
-msgstr ""
+msgstr "Tłumienie powiadomień o dołączeniu wyłączone"
 
 #: data/defscript/actions.kvs:314
 msgid "Enabled join message suppression"
-msgstr ""
+msgstr "Tłumienie powiadomień o dołączeniu włączone"
 
 #: data/defscript/actions.kvs:322
 msgid "Enable part message suppression"
-msgstr ""
+msgstr "Włącz tłumienie powiadomienia o opuszczeniu kanału"
 
 #: data/defscript/actions.kvs:323 data/defscript/actions.kvs:344
 msgid "When checked, all part messages are hidden."
-msgstr ""
+msgstr "Gdy zaznaczone, wszystkie wiadomości o opuszczeniu kanału są ukrywane."
 
 #: data/defscript/actions.kvs:331
 msgid "Disabled part message suppression"
-msgstr ""
+msgstr "Tłumienie powiadomień o opuszczeniu kanału włączone"
 
 #: data/defscript/actions.kvs:336
 msgid "Enabled part message suppression"
-msgstr ""
+msgstr "Tłumienie powiadomień o opuszczeniu kanału włączone"
 
 #: data/defscript/actions.kvs:343
 msgid "Enable quit message suppression"
-msgstr ""
+msgstr "Włącz tłumienie powiadomienia o rozłączeniu"
 
 #: data/defscript/actions.kvs:353
 msgid "Disabled quit message suppression"
-msgstr ""
+msgstr "Tłumienie powiadomień o rozłączeniu wyłączone"
 
 #: data/defscript/actions.kvs:358
 msgid "Enabled quit message suppression"
-msgstr ""
+msgstr "Tłumienie powiadomień o rozłączeniu włączone"
 
 #: data/defscript/actions.kvs:370 data/defscript/popups.kvs:159
 #: data/defscript/popups.kvs:330 data/defscript/popups.kvs:631
@@ -403,7 +403,7 @@ msgstr "Dziennik"
 
 #: data/defscript/events.kvs:92 data/defscript/events.kvs:105
 msgid "Option controllers"
-msgstr ""
+msgstr "Kontrolery opcji"
 
 #: data/defscript/popups.kvs:22 data/defscript/popups.kvs:1385
 msgid "Stop Highlighting (Local)"
@@ -635,7 +635,7 @@ msgstr "Zamknij wszystkie martwe rozmowy"
 
 #: data/defscript/popups.kvs:745
 msgid "&Option Controllers"
-msgstr ""
+msgstr "&Kontrolery opcji"
 
 #: data/defscript/popups.kvs:752
 msgid "Unhighlight All Windows"
@@ -822,7 +822,7 @@ msgstr "Kopiuj URL kanału do schowka"
 #: data/defscript/popups.kvs:1301 data/defscript/popups.kvs:1306
 #: data/defscript/popups.kvs:1311 data/defscript/popups.kvs:1316
 msgid "Join"
-msgstr ""
+msgstr "Dołącz"
 
 #: data/defscript/popups.kvs:1332
 msgid "Logging to"
@@ -961,7 +961,7 @@ msgstr "Wyczyść domyślny"
 
 #: data/defscript/popups.kvs:1810
 msgid "&User Control"
-msgstr ""
+msgstr "&Kontrola użytkownika"
 
 #: data/defscript/toolbars.kvs:3
 msgid "IRC Context"

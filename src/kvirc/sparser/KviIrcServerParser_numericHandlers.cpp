@@ -253,7 +253,7 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 			 * CHANNELLEN -> Maximum channel name length (e.g. CHANNELLEN=50)
 			 * CHIDLEN -> Channel ID length for !channels (deprecated by IDCHAN, 5 by default, e.g. CHIDLEN=5)
 			 * IDCHAN -> The ID length for channels with an ID (e.g. IDCHAN=!:5)
-			 * SILENCE -> Max entires for the SILENCE command (e.g. SILENCE=15)
+			 * SILENCE -> Max entries for the SILENCE command (e.g. SILENCE=15)
 			 * PENALTY -> Server gives extra penalty to some commands instead of the normal 2 seconds per message and 1 second for every 120 bytes in a message.
 			 * FNC -> Forced nick change: the server could change the client nickname
 			 * SAFELIST -> The LIST reply won't kill the client for excess flood.
@@ -2528,7 +2528,7 @@ void KviIrcServerParser::parseNumericInvited(KviIrcMessage * msg)
 
 void KviIrcServerParser::parseNumeric344(KviIrcMessage * msg)
 {
-	// Determine wether this is inteded for RPL_REOPLIST or
+	// Determine whether this is inteded for RPL_REOPLIST or
 	// RPL_QUIETLIST
 	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
 
@@ -2541,7 +2541,7 @@ void KviIrcServerParser::parseNumeric344(KviIrcMessage * msg)
 
 void KviIrcServerParser::parseNumeric345(KviIrcMessage * msg)
 {
-	// Determine wether this is inteded for RPL_ENDOFREOPLIST,
+	// Determine whether this is inteded for RPL_ENDOFREOPLIST,
 	// RPL_QUIETLISTEND, or RPL_INVITED
 	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
 
@@ -2572,7 +2572,7 @@ void KviIrcServerParser::parseNumeric480(KviIrcMessage * msg)
 
 void KviIrcServerParser::parseNumeric728(KviIrcMessage * msg)
 {
-	// Determine wether this is a freenode style quiet or an
+	// Determine whether this is a freenode style quiet or an
 	// oftc style quiet
 	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
 
@@ -2585,7 +2585,7 @@ void KviIrcServerParser::parseNumeric728(KviIrcMessage * msg)
 
 void KviIrcServerParser::parseNumeric729(KviIrcMessage * msg)
 {
-	// Determine wether this is a freenode style End of Quiet list
+	// Determine whether this is a freenode style End of Quiet list
 	// or an oftc style End Of Quiet list
 	KviIrcConnectionServerInfo * pServerInfo = msg->connection()->serverInfo();
 

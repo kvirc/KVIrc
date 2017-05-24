@@ -194,7 +194,7 @@ protected:
 
 	public:
 		/**
-		* \brief Contructs the command object
+		* \brief Constructs the command object
 		* \param eType The type of the command
 		* \param szText The text of the command
 		* \param iStartPosition The start position of the command

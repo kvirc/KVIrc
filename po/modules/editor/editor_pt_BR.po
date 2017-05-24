@@ -3,7 +3,7 @@
 # This file is distributed under the same license as the KVIrc package.
 # 
 # Translators:
-# Daniel Neves, 2015-2016
+# Daniel Neves, 2015-2017
 # Zé <mmodem00@gmail.com>, 2005
 # José Melo <mmodem00@netvisao.pt>, 2005-2006
 # Zé <mmodem00@gmail.com>, 2010
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-28 13:11+0100\n"
-"PO-Revision-Date: 2016-10-30 19:41+0000\n"
+"PO-Revision-Date: 2017-01-11 00:38+0000\n"
 "Last-Translator: Daniel Neves\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/kvirc/KVIrc/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -539,7 +539,7 @@ msgstr "Nomes de aliases pode conter somente letras, dígitos, sublinhas e '::' 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1075
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name>?"
-msgstr ""
+msgstr "Caractere disperso':' no nome do alias: você quis dizer ...<namespace>::<name>?"
 
 #: src/modules/aliaseditor/AliasEditorWindow.cpp:1086
 msgid "Found an empty namespace in alias name."
@@ -1061,7 +1061,7 @@ msgid ""
 "<b>Boolean condition</b><br>Will be evaluated at popup call time in order to"
 " decide if this entry has to be shown.<br>An empty condition evaluates to "
 "true."
-msgstr ""
+msgstr "<b>Condição booleana</b><br>Será avaliado em tempo de chamada de pop-up, a fim de decidir se esta entrada tem de ser mostrado.<br>Uma condição vazia é avaliada como verdadeira."
 
 #: src/modules/popupeditor/PopupEditorWindow.cpp:238
 msgid "Icon:"

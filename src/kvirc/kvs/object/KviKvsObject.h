@@ -139,7 +139,7 @@ public:
 	bool callFunction(
 	    KviKvsObject * pCaller,          // calling object, can be zero (used for the "internal" access list verification)
 	    const QString & fncName,         // name of the function to call
-	    const QString & classOverride,   // eventual class override for the functon call, may be QString()
+	    const QString & classOverride,   // eventual class override for the function call, may be QString()
 	    KviKvsRunTimeContext * pContext, // calling runtime context (you'll have problems with instantiating this... :P )
 	    KviKvsVariant * pRetVal,         // the return value
 	    KviKvsVariantList * pParams);    // the parameters for the call

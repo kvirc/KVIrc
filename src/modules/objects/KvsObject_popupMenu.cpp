@@ -59,7 +59,7 @@
 		!fn: $setTitle(<text:string>)
 		Sets the popupmenu title to text.
 		!fn: $exec([<widget:objects>,<x:uinteger>,<y:integer>])
-		If called without paramaters show the popup menu at the current pointer position.[br]
+		If called without parameters show the popup menu at the current pointer position.[br]
 		With the optional parameters show the popup menu at the coordinate x,y widget parameter relative.
 		!fn: $removeItem(<popup_id:Uinteger>)
 		Removes the menu item that has the identifier ID.

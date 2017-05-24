@@ -296,7 +296,7 @@ private:
 
 	// returns 0 only in case of error
 	// starts AFTER the leading char of the expression
-	// ends afer the first terminator found
+	// ends after the first terminator found
 	KviKvsTreeNodeExpression * parseExpression(char terminator);
 	KviKvsTreeNodeExpressionBinaryOperator * parseExpressionBinaryOperator();
 	KviKvsTreeNodeExpression * parseExpressionOperand(char terminator);

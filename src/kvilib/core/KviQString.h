@@ -190,7 +190,7 @@ namespace KviQString
 	* return > 0 ---> str1 > str2
 	* \param sz1 The first string
 	* \param sz2 The second string
-	* \param bNonAlphaGreater Wheter to check if strings are not alphabetics
+	* \param bNonAlphaGreater Whether to check if strings are not alphabetics
 	* \return int
 	*/
 	extern KVILIB_API int cmpCI(const QString & sz1, const QString & sz2, bool bNonAlphaGreater = false);
@@ -232,9 +232,9 @@ namespace KviQString
 	* \brief Matches two string containging wildcards (* and ?) or regular expressions
 	* \param szExp The regular expression to match
 	* \param szStr The source string
-	* \param bIsRegExp Wheter to use a wildcard or regexp matching
-	* \param bExact Wheter to match the whole string
-	* \param bCs Wheter to match with case sensitive
+	* \param bIsRegExp Whether to use a wildcard or regexp matching
+	* \param bExact Whether to match the whole string
+	* \param bCs Whether to match with case sensitive
 	* \return bool
 	*/
 	extern KVILIB_API bool matchString(const QString & szExp, const QString & szStr, bool bIsRegExp = false, bool bExact = false, bool bCs = false);
@@ -326,7 +326,7 @@ namespace KviQString
 	* If the char is not found, the string is returned as it is.
 	* \param szSrc The source string
 	* \param c The char to search for
-	* \param bIncluded Wheter to include the given char
+	* \param bIncluded Whether to include the given char
 	* \return void
 	*/
 	extern KVILIB_API void cutFromFirst(QString & szSrc, const QChar & c, bool bIncluded = true);
@@ -337,7 +337,7 @@ namespace KviQString
 	* If the char is not found, the string is returned as it is.
 	* \param szSrc The source string
 	* \param szFind The string to search for
-	* \param bIncluded Wheter to include the given string
+	* \param bIncluded Whether to include the given string
 	* \return void
 	*/
 	extern KVILIB_API void cutFromFirst(QString & szSrc, const QString & szFind, bool bIncluded = true);
@@ -348,7 +348,7 @@ namespace KviQString
 	* If the char is not found, the string is returned as it is.
 	* \param szSrc The source string
 	* \param c The char to search for
-	* \param bIncluded Wheter to include the given char
+	* \param bIncluded Whether to include the given char
 	* \return void
 	*/
 	extern KVILIB_API void cutFromLast(QString & szSrc, const QChar & c, bool bIncluded = true);
@@ -359,7 +359,7 @@ namespace KviQString
 	* If the char is not found, the string is returned as it is.
 	* \param szSrc The source string
 	* \param szFind The string to search for
-	* \param bIncluded Wheter to include the given string
+	* \param bIncluded Whether to include the given string
 	* \return void
 	*/
 	extern KVILIB_API void cutFromLast(QString & szSrc, const QString & szFind, bool bIncluded = true);
@@ -370,8 +370,8 @@ namespace KviQString
 	* If the char is not found, the string is returned as it is.
 	* \param szSrc The source string
 	* \param c The char to search for
-	* \param bIncluded Wheter to include the given char in the cut
-	* \param bClearIfNotFound Wheter to cut the whole string if the char is not found
+	* \param bIncluded Whether to include the given char in the cut
+	* \param bClearIfNotFound Whether to cut the whole string if the char is not found
 	* \return void
 	*/
 	extern KVILIB_API void cutToFirst(QString & szSrc, const QChar & c, bool bIncluded = true, bool bClearIfNotFound = false);
@@ -382,8 +382,8 @@ namespace KviQString
 	* If the char is not found, the string is returned as it is.
 	* \param szSrc The source string
 	* \param szFind The string to search for
-	* \param bIncluded Wheter to include the given string in the cut
-	* \param bClearIfNotFound Wheter to cut the whole string if the string is not found
+	* \param bIncluded Whether to include the given string in the cut
+	* \param bClearIfNotFound Whether to cut the whole string if the string is not found
 	* \return void
 	*/
 	extern KVILIB_API void cutToFirst(QString & szSrc, const QString & szFind, bool bIncluded = true, bool bClearIfNotFound = false);
@@ -394,8 +394,8 @@ namespace KviQString
 	* If the char is not found, the string is returned as it is.
 	* \param szSrc The source string
 	* \param c The char to search for
-	* \param bIncluded Wheter to include the given char in the cut
-	* \param bClearIfNotFound Wheter to cut the whole string if the char is not found
+	* \param bIncluded Whether to include the given char in the cut
+	* \param bClearIfNotFound Whether to cut the whole string if the char is not found
 	* \return void
 	*/
 	extern KVILIB_API void cutToLast(QString & szSrc, const QChar & c, bool bIncluded = true, bool bClearIfNotFound = false);
@@ -406,8 +406,8 @@ namespace KviQString
 	* If the char is not found, the string is returned as it is.
 	* \param szSrc The source string
 	* \param szFind The string to search for
-	* \param bIncluded Wheter to include the given string in the cut
-	* \param bClearIfNotFound Wheter to cut the whole string if the string is not found
+	* \param bIncluded Whether to include the given string in the cut
+	* \param bClearIfNotFound Whether to cut the whole string if the string is not found
 	* \return void
 	*/
 	extern KVILIB_API void cutToLast(QString & szSrc, const QString & szFind, bool bIncluded = true, bool bClearIfNotFound = false);
@@ -418,7 +418,7 @@ namespace KviQString
 	* If the char is not found, the string is returned as it is.
 	* \param szSrc The source string
 	* \param c The char to search for
-	* \param bIncluded Wheter to include the given char in the returned string
+	* \param bIncluded Whether to include the given char in the returned string
 	* \param bReturnFullStringIfNotFound True if we want the function to return the whole
 	* string if the char isn't found and false if we want the function to return an empty
 	* string in this case.
@@ -432,7 +432,7 @@ namespace KviQString
 	* If the char is not found, the string is returned as it is.
 	* \param szSrc The source string
 	* \param szFind The string to search for
-	* \param bIncluded Wheter to include the given string in the returned string
+	* \param bIncluded Whether to include the given string in the returned string
 	* \param bReturnFullStringIfNotFound True if we want the function to return the whole
 	* string if the string isn't found and false if we want the function to return an empty
 	* string in this case.
@@ -446,7 +446,7 @@ namespace KviQString
 	* If the char is not found, the string is returned as it is.
 	* \param szSrc The source string
 	* \param c The char to search for
-	* \param bIncluded Wheter to include the given char in the returned string
+	* \param bIncluded Whether to include the given char in the returned string
 	* \param bReturnFullStringIfNotFound True if we want the function to return the whole
 	* string if the char isn't found and false if we want the function to return an empty
 	* string in this case.
@@ -460,7 +460,7 @@ namespace KviQString
 	* If the char is not found, the string is returned as it is.
 	* \param szSrc The source string
 	* \param szFind The string to search for
-	* \param bIncluded Wheter to include the given string in the returned string
+	* \param bIncluded Whether to include the given string in the returned string
 	* \param bReturnFullStringIfNotFound True if we want the function to return the whole
 	* string if the string isn't found and false if we want the function to return an empty
 	* string in this case.

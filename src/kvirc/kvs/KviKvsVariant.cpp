@@ -1694,7 +1694,7 @@ KviKvsVariant * KviKvsVariant::unserializeHash(const QChar ** ppAux)
 		//skip leading space before ':'
 		while((*ppAux)->isSpace())
 			(*ppAux)++;
-		//waiting for name-value delimeter
+		//waiting for name-value delimiter
 		if((*ppAux)->unicode() != ':')
 		{
 			//strange characters

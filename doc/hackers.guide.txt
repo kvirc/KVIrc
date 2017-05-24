@@ -510,7 +510,7 @@ QString
 		KviQString::sprintf(qstring_buffer,qstring_format,...)
 	allows formatting a QString with a format string that is a QString itself
 	(and thus it is UNICODE).
-	QString uses reference counting. An assigment of a QString to another
+	QString uses reference counting. An assignment of a QString to another
 	QString does NOT make an immediate copy, it just increases the reference
 	count instead. The copy is made at the first modification of one of the
 	two strings (the operation is called "detaching"). While generally this
@@ -518,7 +518,7 @@ QString
 	concurrent threads.
 
 (const) QChar *
-	The array of Qt chars. This is usually obtained by callling
+	The array of Qt chars. This is usually obtained by calling
 	KviQString::nullTerminatedArray() which itself is a hack...
 	This array is used in some functions that were written for
 	const char * strings and haven't been ported completely.

@@ -75,7 +75,7 @@ July 2011
    - SSL certificate fingerprint verification
    - Added "force KVS mode" shortcut modifier
    - Improved KviCString
-   - Splitted Initialization Vector engine to its own file and added real CBC mode to
+   - Split Initialization Vector engine to its own file and added real CBC mode to
      Rijndael engine (wip)
 
 June 2011
@@ -152,7 +152,7 @@ December 2010
    - Reworked the text encoding menu
    - Implemented 3-stage locking in popups
    [HelLViS69]
-   - Splitted classes in their own files
+   - Split classes in their own files
 
 November 2010
    [Pragma]
@@ -442,7 +442,7 @@ October 2009
 
 27 January 2009
    [HelLViS69]
-   - Splitted locale stuff for modules and merged similar stuff
+   - Split locale stuff for modules and merged similar stuff
 
 20 January 2009
    [CtrlAltCa]
@@ -479,10 +479,10 @@ October 2009
 
 12 November 20080
    [Noldor]
-   - Splitted locale stuff for object classes
+   - Split locale stuff for object classes
 
    [HelLViS69]
-   - Splitted locale stuff for KVIrc target
+   - Split locale stuff for KVIrc target
 
 04 November 2008
    [CtrlAltCa]
@@ -497,7 +497,7 @@ October 2009
 
 02 October 2008
    [CtrlAltCa]
-   - Splitted the huge monster KviIrcView
+   - Split the huge monster KviIrcView
 
    [HelLViS69]
    - Added the possibility to load a part of a log into the channel/query buffer
@@ -510,7 +510,7 @@ October 2009
    [HelLViS69]
    - New event: added OnOutboundTraffic which triggers on all data sent to the
      server
-   - Splitted the monster KviInput
+   - Split the monster KviInput
 
 08 September 2008
    [desowin]
@@ -839,7 +839,7 @@ buh :) - 16 August 2008
 14 Nov 2006
    [Pragma]
    - Moved the userlist feature options page to the theme option dialog
-     and splitted all the userlist options in tabs
+     and split all the userlist options in tabs
    - Corrected some typos around
    - Reworked the output options page
    - Updated the directory selection dialog under KDE
@@ -869,7 +869,7 @@ buh :) - 16 August 2008
 6 Nov 2006
    [Pragma]
    - Various minor fixes around
-   - Splitted the core small icons libraries in separate icons.
+   - Split the core small icons libraries in separate icons.
    - Moved the small icons to a subdirectory to speed up the loading (we are already at more than 280 icons...)
 
 1 Nov 2006
@@ -1036,7 +1036,7 @@ Oct 2006
 20 May 2006
    [Alexey]
    - Added automatic codepage select for servers, that doesn't insart "CODAPAGES" in RPL_ISUPPORT message
-   - Now recent channels are network-dependend. For example #kvirc@Freenode and #kvirc@Azzurra are the different channels
+   - Now recent channels are network-dependent. For example #kvirc@Freenode and #kvirc@Azzurra are the different channels
    - Switched to 3.2.3
    - Fixed (finally?) window restoring from tray icon
    - Fixes in mIRC color handling
@@ -1290,7 +1290,7 @@ Oct 2006
    - [Kernel]  Fixed bugs in handling modes. Now it is case sensivity
    - [UI]      Fixed bug with deleting selected text from input line or topic editor
    - [UI]      Pressing a key in userlist now selects the first nick with first letter, equal to the pressed key
-   - [UI]      Now options splitted into 3 categories: for novice,normal and experienced users. Newbies should see really simple configuration dialog
+   - [UI]      Now options split into 3 categories: for novice,normal and experienced users. Newbies should see really simple configuration dialog
 
 07 Dec 2005
    [Alexey]
@@ -1313,7 +1313,7 @@ Oct 2006
 
 26 Nov 2005
    [Alexey]
-   - [UI]      Now it is a programm option to disable splash and no more --disable-splash configure option
+   - [UI]      Now it is a program option to disable splash and no more --disable-splash configure option
 27 Nov 2005
    [Alexey]
    - [Kernel]  Fixed crashes in action and toolbar  modules under windows
@@ -1688,7 +1688,7 @@ Oct 2006
    - New "action" based toolbar and popup menu system.
      Now the user can just drag & drop actions to customize toolbars :)
    - The "big cleanup" has started:
-     - "Scripttoolbar" is gone: the functionality is completely superseeded by
+     - "Scripttoolbar" is gone: the functionality is completely superseded by
        the action based toolbars now. I already know that some people will want to kill
        me for this but from now on the actions are the only method to create toolbars.
        This is a good idea since the old method was a bit ugly (for example because
@@ -1857,7 +1857,7 @@ Oct 2006
 4 Jun 2004:
    [Pragma]
    - Added first bulgarian translation by bugar@developer.bg
-   - Completly reorganized the <KviConsole,KviIrcContext,KviIrcLink,KviIrcConnection,KviIrcSocket>
+   - Completely reorganized the <KviConsole,KviIrcContext,KviIrcLink,KviIrcConnection,KviIrcSocket>
         class set. Now it should become more usable/readable/manteinable/coherent ...
         Really work in progress: expect misbehaviour and compile time warnings about
                                  deprecated functions...
@@ -2556,7 +2556,7 @@ Christmas Eve (Western Hemisphere) 2003:
     [Pragma]
     - Preliminary SSL support (try /server -s)
     - Fix for the messed default.kvs (dialog problem)
-    - A lot of mem-leaks catched with valgdind
+    - A lot of mem-leaks caught with valgdind
     - Various fixes
 
 22 May 2002:
@@ -2779,7 +2779,7 @@ Christmas Eve (Western Hemisphere) 2003:
 8 Nov 2001:
     [Juanjo]
     - Added a 'Join Channels' widget. It still don't have all the
-      funcionality.
+      functionality.
 
 4 Nov 2001:
     [Juanjo]

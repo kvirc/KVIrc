@@ -308,7 +308,7 @@ void KviIrcConnection::linkEstablished()
 	// FIXME: With STARTTLS this is called TWICE!
 	context()->connectionEstablished();
 
-	// Ok...we're loggin in now
+	// Ok...we're logging in now
 	resolveLocalHost();
 
 	if(target()->server()->enabledCAP())

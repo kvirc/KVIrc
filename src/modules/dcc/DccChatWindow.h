@@ -60,7 +60,7 @@ protected:
 	// to the beginning, kvi_realloc data.buffer and update data.iLen
 	// If bCritical is true, it should handle the whole data buffer
 	// since the thread is going to die
-	// It should return true if the handing was succesfull
+	// It should return true if the handing was successful
 	// or false if the thread should be stopped
 	virtual bool handleIncomingData(KviDccThreadIncomingData * data, bool bCritical);
 

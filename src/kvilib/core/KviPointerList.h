@@ -41,7 +41,7 @@
 * That's why we have our own fast pointer list class.
 * This does not depend on Qt AT ALL and has an interface similar
 * to the Qt<=3.x series. The pointer lists with the autodelete
-* feature was great and I don't completly understand why they have
+* feature was great and I don't completely understand why they have
 * been removed from Qt4 in favor of the value based non-autodeleting
 * lists... anyway: here we go :)
 *
@@ -293,7 +293,7 @@ public:
 	}
 
 	/**
-	* \brief Returs the value pointed by the iterator.
+	* \brief Returns the value pointed by the iterator.
 	*
 	* If the iterator is not valid, returns NULL.
 	* \return T *
@@ -304,7 +304,7 @@ public:
 	}
 
 	/**
-	* \brief Returs the value pointed by the iterator.
+	* \brief Returns the value pointed by the iterator.
 	*
 	* If the iterator is not valid, returns NULL.
 	* This is just an alias to current().
@@ -779,7 +779,7 @@ public:
 	*
 	* Sets the iteration pointer to the next item in the list and
 	* returns that item (or 0 if the end of the list has been reached)
-	* A call to this function MUST be preceded by a _succesfull_ call
+	* A call to this function MUST be preceded by a _successfull_ call
 	* to first(),last(),at() or findRef().
 	* \return T *
 	*/
@@ -799,7 +799,7 @@ public:
 	* Sets the iteration pointer to the previous item in the list and
 	* returns that item (or 0 if the beginning of the list has been
 	* reached).
-	* A call to this function MUST be preceded by a _succesfull_ call
+	* A call to this function MUST be preceded by a _successfull_ call
 	* to first(),last(),at() or findRef()
 	* \return T *
 	*/

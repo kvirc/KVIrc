@@ -1156,7 +1156,7 @@ public:
 	}
 
 	/**
-	* \brief Returs the value pointed by the iterator
+	* \brief Returns the value pointed by the iterator
 	*
 	* If the iterator is not valid it returns a default constructed value
 	* This is an alias to operator *() with just a different name.
@@ -1168,7 +1168,7 @@ public:
 	}
 
 	/**
-	* \brief Returs the value pointed by the iterator
+	* \brief Returns the value pointed by the iterator
 	*
 	* If the iterator is not valid it returns a default constructed value
 	* This is an alias to current() with just a different name.
@@ -1180,7 +1180,7 @@ public:
 	}
 
 	/**
-	* \brief Returs the key pointed by the iterator
+	* \brief Returns the key pointed by the iterator
 	*
 	* If the iterator is not valid it returns a default constructed value
 	* \return const Key &

@@ -295,7 +295,7 @@ void ScriptEditorWidget::slotHelp()
 void ScriptEditorWidget::enableSyntaxHighlighter()
 {
 	// we currently delete and re-create the m_pSyntaxHighlighter
-	// as a trick to ensure proper re-highlightning to occur
+	// as a trick to ensure proper re-highlighting to occur
 	if(!m_pSyntaxHighlighter)
 		m_pSyntaxHighlighter = new ScriptEditorSyntaxHighlighter(this);
 }

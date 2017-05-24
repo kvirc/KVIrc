@@ -264,7 +264,7 @@ public:
 
 protected:
 	/**
-	* \brief Returns true after a succesfull parsing, false otherwise
+	* \brief Returns true after a successful parsing, false otherwise
 	*
 	* pOutput is useful only for printing errors; if 0, no errors are printed
 	* \param pOutput The output window for errors

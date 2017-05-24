@@ -93,7 +93,7 @@ public:
 	{
 		Idle,                    /**< Socket idling */
 		Connecting,              /**< Socket connecting */
-		ProxyLogin,              /**< Socket loggin in to a proxy */
+		ProxyLogin,              /**< Socket logging in to a proxy */
 		ProxyHttpError,          /**< Socket error on http proxy */
 		Connected,               /**< Socket connected */
 		ProxyFinalV4,            /**< Socket received the final proxy v4 reply */
