@@ -240,8 +240,8 @@ else()
 			if(MSVC)
 				# this is the equivalent of -O0 -g according to MSDN
 				# QT4 has /Zc:wchar_t-, QT5 has /Zc:wchar_t
-				set(CMAKE_CXX_FLAGS "/Od /Zi /Zc:wchar_t /EHsc")
-				set(CMAKE_C_FLAGS "/Od /Zi /Zc:wchar_t /EHsc")
+				set(CMAKE_CXX_FLAGS "/Od /Zi /Zc:wchar_t /EHsc /W3")
+				set(CMAKE_C_FLAGS "/Od /Zi /Zc:wchar_t /EHsc /W3")
 			else()
 				set(CMAKE_CXX_FLAGS "-O0 -g")
 				set(CMAKE_C_FLAGS "-O0 -g")
@@ -999,7 +999,7 @@ endif()
 
 if(WIN32)
 	# 0x0600 = Windows Vista
-	add_definitions(-D_WIN32_WINNT=0x0600 -DWINVER=0x0600 -DWIN32_LEAN_AND_MEAN)
+	add_definitions(-D_WIN32_WINNT=0x0A00 -DWINVER=0x0A00 -DWIN32_LEAN_AND_MEAN)
 endif()
 
 if(MINGW)

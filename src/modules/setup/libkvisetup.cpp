@@ -38,7 +38,7 @@
 #include <QFile>
 
 // this will be chosen during the setup process
-QString g_szChosenIncomingDirectory;
+QString g_szChoosenIncomingDirectory;
 int g_iThemeToApply = THEME_APPLY_NONE;
 bool bNeedToApplyDefaults;
 unsigned int uPort;
@@ -67,7 +67,7 @@ KVIMODULEEXPORTFUNC void setup_finish()
 {
 	if(bNeedToApplyDefaults)
 	{
-		KVI_OPTION_STRING(KviOption_stringIncomingPath) = g_szChosenIncomingDirectory;
+		KVI_OPTION_STRING(KviOption_stringIncomingPath) = g_szChoosenIncomingDirectory;
 		// Reset the quit message and the real name... if they contain the KVIrc version
 		// then probably the user hasn't even edited them.
 		if(KVI_OPTION_STRING(KviOption_stringQuitMessage).indexOf("KVIrc", 0, Qt::CaseInsensitive) != -1)

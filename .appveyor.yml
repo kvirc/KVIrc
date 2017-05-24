@@ -1,9 +1,7 @@
 version: 0.0.0.0.1-branch-{branch}-build-{build}
 cache:
     - c:\deps -> .appveyor.yml
-    - c:\Strawberry -> .appveyor.yml
     - c:\spellcheck-dicts -> .appveyor.yml
-    - c:\ProgramData\chocolatey -> .appveyor.yml
 environment:
     matrix:
         - cmake_build_type: Debug
