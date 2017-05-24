@@ -814,7 +814,8 @@ KviSoundSelector::~KviSoundSelector()
 
 void KviSoundSelector::playSound()
 {
-	KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(m_pLineEdit->text())));
+	KviKvsVariantList soundParams{new KviKvsVariant{m_pLineEdit->text()}};
+	KviKvsScript::run("snd.play $0", nullptr, &soundParams);
 }
 
 void KviSoundSelector::setEnabled(bool bEnabled)

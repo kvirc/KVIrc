@@ -532,7 +532,7 @@ namespace KviKvsCoreCallbackCommands
 			or a numeric code (from 0 to 999) of a RAW server message.[br]
 			If the -q switch is specified then the command runs in quiet mode.
 		@seealso:
-			[cmd]eventctl[/cmd]
+			[cmd]eventctl[/cmd] [fnc]$iseventenabled[/fnc]
 	*/
 
 	KVSCCC(event)

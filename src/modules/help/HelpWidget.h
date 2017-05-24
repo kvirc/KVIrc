@@ -29,12 +29,11 @@
 
 #ifdef COMPILE_WEBKIT_SUPPORT
 #include <QtWebKitWidgets/QWebView>
-#include <QToolBar>
-#include <QVBoxLayout>
 #else
-#include "KviTalHBox.h"
 #include <QTextBrowser>
 #endif
+#include <QToolBar>
+#include <QVBoxLayout>
 #include <QProgressBar>
 
 class QToolButton;
@@ -50,29 +49,26 @@ public:
 
 private:
 #ifdef COMPILE_WEBKIT_SUPPORT
+	QVBoxLayout * m_pLayout;
 	QToolBar * m_pToolBar;
 	QToolBar * m_pToolBarHighlight;
 	QLineEdit * m_pFindText;
-	QVBoxLayout * m_pLayout;
 	QWebView * m_pTextBrowser;
 #else
-	QToolButton * m_pBtnIndex;
-	QToolButton * m_pBtnBackward;
-	QToolButton * m_pBtnForward;
-	KviTalHBox * m_pToolBar;
+	QVBoxLayout * m_pLayout;
+	QToolBar * m_pToolBar;
+	QAction * m_pBackAction;
+	QAction * m_pForwardAction;
 	QTextBrowser * m_pTextBrowser;
 #endif
 	bool m_bIsStandalone;
 
-protected:
-	virtual void resizeEvent(QResizeEvent * e);
 protected slots:
 	void showIndex();
 #ifdef COMPILE_WEBKIT_SUPPORT
 	void slotLoadFinished(bool ok);
 	void slotFindNext();
 	void slotFindPrev();
-	void slotResetFind();
 	void slotZoomIn();
 	void slotZoomOut();
 	void slotTextChanged(const QString);
@@ -80,7 +76,6 @@ protected slots:
 	void slotShowHideFind();
 #endif
 public:
-	virtual QSize sizeHint() const;
 #ifdef COMPILE_WEBKIT_SUPPORT
 	QWebView * textBrowser()
 	{

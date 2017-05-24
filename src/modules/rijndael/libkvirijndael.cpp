@@ -47,15 +47,15 @@
 		The Rijndael module exports six [doc:crypt_engines]cryptographic engines[/doc] based
 		on the Advanced Encryption Standard algorithm called Rijndael. Rijndael was
 		originally written by Joan Daemen and Vincent Rijmen. The original Rijndael
-		description is available at http://www.esat.kuleuven.ac.be/~rijmen/rijndael/.[br]
+		description is available at http://www.esat.kuleuven.ac.be/~rijmen/rijndael/.[br][br]
 		It is a private key block cipher that has been designed to replace
-		the widely used DES, and it should provide at leas a decent security against
+		the widely used DES, and it should provide at least decent security against
 		common attacks. Theoretically the best attack that one can perform on this cipher
 		is the "brute force" attack that requires a really massive parallel computation:
-		actually out of the possibilities of a common "hacker".[br]
+		outside the capability of the common "hacker".[br][br]
 		My implementation allows the usage of 128, 192 and 256 bit keys
 		on 128 bit data blocks. The encrypted binary data buffer is then converted
-		into an ASCII-string by using the base64 conversion or hex-digit-string representation.
+		into an ASCII-string by using the base64 conversion or hex-digit-string representation.[br][br]
 		The six engines are the six possible combinations of the key lengths and ASCII-string
 		conversions.
 */
@@ -249,6 +249,8 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
 	int retVal = m_pEncryptCipher->padEncrypt((const unsigned char *)plainText, len, (unsigned char *)buf, iv);
 	if(retVal < 0)
 	{
+		if(m_bEncryptMode == CBC)
+			KviMemory::free(iv);
 		KviMemory::free(buf);
 		setLastErrorFromRijndaelErrorCode(retVal);
 		return KviCryptEngine::EncryptError;
@@ -360,7 +362,7 @@ bool KviRijndaelHexEngine::asciiToBinary(const char * inBuffer, int * len, char 
 	}
 	else
 	{
-		if(len > nullptr)
+		if(*len > 0)
 		{
 			*outBuffer = (char *)KviMemory::allocate(*len);
 			KviMemory::move(*outBuffer, tmpBuf, *len);
@@ -388,7 +390,7 @@ bool KviRijndaelBase64Engine::asciiToBinary(const char * inBuffer, int * len, ch
 	}
 	else
 	{
-		if(len > nullptr)
+		if(*len > 0)
 		{
 			*outBuffer = (char *)KviMemory::allocate(*len);
 			KviMemory::move(*outBuffer, tmpBuf, *len);

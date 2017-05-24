@@ -634,3 +634,17 @@ alias(hop)
 	else
 		join %chan %key
 }
+
+# wii: whois with idle
+alias(wii)
+{
+	if(!$0)
+	{
+		echo $tr("Usage:","defscript")
+		echo "	/wii <nick>"
+	}
+	else
+	{
+		whois $0 $0
+	}
+}

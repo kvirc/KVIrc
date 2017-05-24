@@ -440,8 +440,8 @@ void KviChannelWindow::showDoubleView(bool bShow)
 		if(!(m_pDoubleViewButton->isChecked()))
 			m_pDoubleViewButton->setChecked(true);
 
-		if(m_privateBackground.pixmap())
-			m_pMessageView->setPrivateBackgroundPixmap(*(m_privateBackground.pixmap()));
+		if(m_pIrcView->hasPrivateBackgroundPixmap())
+			m_pMessageView->setPrivateBackgroundPixmap(*(m_pIrcView->getPrivateBackgroundPixmap()));
 
 		connect(m_pMessageView, SIGNAL(rightClicked()), this, SLOT(textViewRightClicked()));
 		m_pMessageView->setMasterView(m_pIrcView);

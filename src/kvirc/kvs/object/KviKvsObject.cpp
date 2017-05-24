@@ -1567,7 +1567,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 			if(f.italic())
 				szFlags += "i";
 			a->set(2, new KviKvsVariant(szFlags));
-			c->returnValue()->setString(szFlags);
+			c->returnValue()->setArray(a);
 		}
 		break;
 		default:

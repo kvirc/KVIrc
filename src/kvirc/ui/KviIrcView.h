@@ -176,6 +176,7 @@ public:
 	KviConsoleWindow * console();
 	// A null pixmap passed here unsets the private backgrdound.
 	void setPrivateBackgroundPixmap(const QPixmap & pixmap, bool bRepaint = true);
+	QPixmap * getPrivateBackgroundPixmap() const { return m_pPrivateBackgroundPixmap; };
 	bool hasPrivateBackgroundPixmap() { return (m_pPrivateBackgroundPixmap != 0); };
 
 	// Logging

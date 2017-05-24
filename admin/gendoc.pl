@@ -170,13 +170,12 @@ sub print_header
 	print $g_filehandle " margin-right: 8px;\n";
 	print $g_filehandle " margin-top: 6px;\n";
 	print $g_filehandle " margin-bottom: 6px;\n";
-	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
+	print $g_filehandle " font-family:Verdana,Helvetica,Arial,sans-serif;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle "table, td, tr {\n";
-	print $g_filehandle " font-size: 10pt;\n";
-	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
 	print $g_filehandle " color: #3c3c3c;\n";
+	print $g_filehandle " font-size: 10pt;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle "td {\n";
@@ -211,7 +210,6 @@ sub print_header
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".title-text {\n";
-	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
 	print $g_filehandle " font-size: 18pt;\n";
 	print $g_filehandle " font-weight: bold;\n";
 	print $g_filehandle " padding-bottom: 3px;\n";
@@ -220,7 +218,6 @@ sub print_header
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".title-secondary-text {\n";
-	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
 	print $g_filehandle " font-size: 11pt;\n";
 	print $g_filehandle " padding-top: 3px;\n";
 	print $g_filehandle " color: #474747;\n";
@@ -232,7 +229,6 @@ sub print_header
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".subtitle-text {\n";
-	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
 	print $g_filehandle " font-size: 11pt;\n";
 	print $g_filehandle " color: #000000;\n";
 	print $g_filehandle " text-shadow: 0px 1px 0px rgba(247,247,247,1);\n";
@@ -243,13 +239,12 @@ sub print_header
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".subsubtitle-text {\n";
-	print $g_filehandle " font-family:Verdana,Helvetica,Arial;\n";
 	print $g_filehandle " font-size: 10pt;\n";
 	print $g_filehandle " color: #474747;\n";
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".syntax-text {\n";
-	print $g_filehandle " font-family:\"Lucida Console\", Monaco, monospace, \"Courier New\";\n";
+	print $g_filehandle " font-family:\"Lucida Console\", Monaco, \"Courier New\", monospace;\n";
 	print $g_filehandle " font-size: 10pt;\n";
 	print $g_filehandle " font-weight: bold;\n";
 	print $g_filehandle " white-space: pre;\n";
@@ -257,7 +252,7 @@ sub print_header
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".example-box {\n";
-	print $g_filehandle " font-family:\"Lucida Console\", Monaco, monospace, \"Courier New\";\n";
+	print $g_filehandle " font-family:\"Lucida Console\", Monaco, \"Courier New\", monospace;\n";
 	print $g_filehandle " font-size: 10pt;\n";
 	print $g_filehandle " white-space: pre;\n";
 	print $g_filehandle " background-color: #f5f5f5;\n";
@@ -343,7 +338,7 @@ sub print_header
 	print $g_filehandle "}\n";
 
 	print $g_filehandle ".switch-title-table-cell {\n";
-	print $g_filehandle " font-family:\"Lucida Console\", Monaco, monospace, \"Courier New\";\n";
+	print $g_filehandle " font-family:\"Lucida Console\", Monaco, \"Courier New\", monospace;\n";
 	print $g_filehandle " font-size: 10pt;\n";
 	print $g_filehandle " color: #670000;\n";
 	print $g_filehandle " background-color: #EDEDED;\n";

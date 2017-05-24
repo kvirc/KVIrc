@@ -189,6 +189,9 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 #else
 			w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
 #endif
+			HelpWindow * pHelpWindow = g_pHelpWindowList->first();
+			if (pHelpWindow)
+				pHelpWindow->delayedAutoRaise();
 			return true;
 		}
 	}

@@ -896,14 +896,14 @@ void KviInputEditor::drawContents(QPainter * p)
 			{
 				if(pBlock->uForeground == KVI_INPUT_DEF_FORE)
 					p->setPen(bIsSelected ? KVI_OPTION_COLOR(KviOption_colorInputSelectionForeground) : KVI_OPTION_COLOR(KviOption_colorInputForeground));
-				else if(pBlock->uForeground > 16)
+				else if(pBlock->uForeground >= 16)
 					p->setPen(KVI_OPTION_COLOR(KviOption_colorInputBackground));
 				else
 					p->setPen(KVI_OPTION_MIRCCOLOR(pBlock->uForeground));
 
 				if(pBlock->uBackground != KVI_INPUT_DEF_BACK)
 				{
-					if(pBlock->uBackground > 16)
+					if(pBlock->uBackground >= 16)
 						p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iBottom - iTop), KVI_OPTION_COLOR(KviOption_colorInputForeground));
 					else
 						p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iBottom - iTop), KVI_OPTION_MIRCCOLOR(pBlock->uBackground));

@@ -113,7 +113,7 @@ public:
 	* \param pszFile The buffer to store the exported log name
 	* \return void
 	*/
-	void createLog(LogFile * pLog, int iId, QString * pszFile = 0);
+	void createLog(LogFile * pLog, int iId, QString * pszFile = nullptr);
 
 protected:
 	void exportLog(int iId);

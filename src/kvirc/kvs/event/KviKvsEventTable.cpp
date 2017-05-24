@@ -1810,7 +1810,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 			[event:onmepart]OnMePart[/event]
 		@examples:
 			[example]
-				foreach(%cname,$4)echo -r=$channel(%cname) User $0 is quitting...
+				foreach(%cname, $str.split(",", $4))echo -w=$channel(%cname, $context) User $0 is quitting...
 			[/example]
 	*/
 

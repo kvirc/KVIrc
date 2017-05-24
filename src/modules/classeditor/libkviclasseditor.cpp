@@ -52,7 +52,7 @@ static bool classeditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 		g_pMainWindow->addWindow(g_pClassEditorWindow);
 	}
 
-	g_pClassEditorWindow->setFocus();
+	g_pClassEditorWindow->delayedAutoRaise();
 
 	return true;
 }

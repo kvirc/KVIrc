@@ -94,6 +94,8 @@ QPixmap * KviKvsScriptWindowWindow::myIconPtr()
 		be set with $setCentralWidget().
 		The central widget [b]must[/b] be set before you initially call show()
 	@functions:
+		!fn: $setCentralWidget(<widget:object>)
+		Sets the central widget for the window to <wid>.
 */
 
 KVSO_BEGIN_REGISTERCLASS(KvsObject_window, "window", "widget")

@@ -1152,7 +1152,7 @@ static bool chan_kvs_fnc_modeParam(KviKvsModuleFunctionCall * c)
 		if it matches the [mask].[br]
 		[flags] may contain a subset of the letters [b]aovhnmi[/b]:[br]
 		[b]ovhn[/b] are mode flags: the users are added to the array only if they are channel administrators [b]a[/b], operators [b]o[/b],
-		voiced users [b]v[/b], half-operators [b]h[/b], user-operators [b]u[/b] or unflagged [b]n[b] users. (Unflagged means not operators, not
+		voiced users [b]v[/b], half-operators [b]h[/b], user-operators [b]u[/b] or unflagged [b]n[/b] users. (Unflagged means not operators, not
 		voiced and not half-operators). If none of the [b]ovhun[/b] flags are used, KVIrc behaves like all five were passed.[br]
 		The flag [b]m[/b] causes the entire user masks to be added to the
 		array entries, as known by KVIrc at the moment of this function call.[br]

@@ -301,6 +301,10 @@ void KviWindowListButton::mousePressEvent(QMouseEvent * e)
 				g_pMainWindow->setActiveWindow(m_pWindow);
 		}
 	}
+	else if (e->button() & Qt::MiddleButton)
+	{
+		m_pWindow->delayedClose();
+	}
 }
 
 void KviWindowListButton::contextMenuEvent(QContextMenuEvent * e)

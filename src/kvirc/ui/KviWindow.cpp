@@ -1496,12 +1496,6 @@ enough:
 			}
 		}
 
-		if (szLine.endsWith("\r"))
-		{
-			// Remove the \r char at the szEnd of line
-			szLine.chop(1);
-		}
-
 		if (szLine.isEmpty())
 			continue;
 

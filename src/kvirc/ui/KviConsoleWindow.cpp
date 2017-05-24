@@ -594,7 +594,10 @@ int KviConsoleWindow::triggerOnHighlight(KviWindow * pWnd, int iType, const QStr
 			return iType;
 	}
 	if(!KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound).isEmpty() && pWnd && !pWnd->hasAttention())
-		KviKvsScript::run("snd.play $0", nullptr, new KviKvsVariantList(new KviKvsVariant(KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound))));
+	{
+		KviKvsVariantList soundParams{new KviKvsVariant{KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound)}};
+		KviKvsScript::run("snd.play $0", nullptr, &soundParams);
+	}
 
 	QString szMessageType = QString("%1").arg(iType);
 

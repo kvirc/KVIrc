@@ -52,7 +52,7 @@ static bool popupeditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 		g_pMainWindow->addWindow(g_pPopupEditorWindow);
 	}
 
-	g_pPopupEditorWindow->setFocus();
+	g_pPopupEditorWindow->delayedAutoRaise();
 	return true;
 }
 

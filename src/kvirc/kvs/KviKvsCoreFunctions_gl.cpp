@@ -693,6 +693,8 @@ namespace KviKvsCoreFunctions
 			<boolean> $isEventEnabled(<event_name:string>,<handler_name:string>)
 		@description:
 			Returns [b]1[/b] if the event handler is enabled.
+		@seealso:
+			[cmd]event[/cmd] [cmd]eventctl[/cmd]
 	*/
 
 	KVSCF(isEventEnabled)
