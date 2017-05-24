@@ -43,6 +43,12 @@
 #include "KviSSL.h"
 #include <openssl/evp.h>
 #include <openssl/pem.h>
+
+#if OPENSSL_VERSION_NUMBER < 0x10100005L
+#define EVP_MD_CTX_new EVP_MD_CTX_create
+#define EVP_MD_CTX_free EVP_MD_CTX_destroy
+#endif
+
 #else
 // The fallback we can always use, but with very limited set of
 // functionality.
@@ -1383,7 +1389,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	if(szType.isEmpty())
 		szType = "md5";
 
-	EVP_MD_CTX mdctx;
+	EVP_MD_CTX *mdctx;
 	const EVP_MD * md;
 	unsigned char md_value[EVP_MAX_MD_SIZE];
 	unsigned int md_len, i;
@@ -1397,11 +1403,11 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	EVP_MD_CTX_init(&mdctx);
-	EVP_DigestInit_ex(&mdctx, md, nullptr);
-	EVP_DigestUpdate(&mdctx, szString.toUtf8().data(), szString.toUtf8().length());
-	EVP_DigestFinal_ex(&mdctx, md_value, &md_len);
-	EVP_MD_CTX_cleanup(&mdctx);
+	mdctx = EVP_MD_CTX_new();
+	EVP_DigestInit_ex(mdctx, md, nullptr);
+	EVP_DigestUpdate(mdctx, szString.toUtf8().data(), szString.toUtf8().length());
+	EVP_DigestFinal_ex(mdctx, md_value, &md_len);
+	EVP_MD_CTX_free(mdctx);
 
 	for(i = 0; i < md_len; i++)
 	{
@@ -2315,10 +2321,11 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 #if defined(COMPILE_SSL_SUPPORT)
 
 	KviSSL::globalSSLInit();
-	EVP_MD_CTX md_ctx;
+	EVP_MD_CTX *md_ctx;
 	EVP_PKEY * pKey = nullptr;
 	unsigned int len = 0;
 	unsigned char * sig = nullptr;
+	int err;
 
 	if(szCert.isEmpty())
 	{
@@ -2369,9 +2376,12 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 	len = EVP_PKEY_size(pKey);
 	sig = (unsigned char *)KviMemory::allocate(len * sizeof(char));
 
-	EVP_SignInit(&md_ctx, EVP_sha1());
-	EVP_SignUpdate(&md_ctx, (unsigned char *)szMessage.data(), szMessage.length());
-	if(EVP_SignFinal(&md_ctx, sig, &len, pKey))
+	md_ctx = EVP_MD_CTX_new();
+	EVP_SignInit(md_ctx, EVP_sha1());
+	EVP_SignUpdate(md_ctx, (unsigned char *)szMessage.data(), szMessage.length());
+	err = EVP_SignFinal(md_ctx, sig, &len, pKey);
+	EVP_MD_CTX_free(md_ctx);
+	if(err)
 	{
 		QByteArray szSign((const char *)sig, len);
 		OPENSSL_free(sig);
@@ -2452,7 +2462,7 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 	szSign = QByteArray::fromBase64(szSignB64);
 	const char * message = szMessage.data();
 
-	EVP_MD_CTX md_ctx;
+	EVP_MD_CTX* md_ctx;
 	EVP_PKEY * pKey = nullptr;
 	X509 * cert = nullptr;
 	int err = -1;
@@ -2519,10 +2529,11 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 		}
 	}
 
-	EVP_VerifyInit(&md_ctx, EVP_sha1());
-	EVP_VerifyUpdate(&md_ctx, message, strlen(message));
-	err = EVP_VerifyFinal(&md_ctx, (unsigned char *)szSign.data(), szSign.size(), pKey);
-	EVP_MD_CTX_cleanup(&md_ctx);
+	md_ctx = EVP_MD_CTX_new();
+	EVP_VerifyInit(md_ctx, EVP_sha1());
+	EVP_VerifyUpdate(md_ctx, message, strlen(message));
+	err = EVP_VerifyFinal(md_ctx, (unsigned char *)szSign.data(), szSign.size(), pKey);
+	EVP_MD_CTX_free(md_ctx);
 	EVP_PKEY_free(pKey);
 	switch(err)
 	{

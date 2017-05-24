@@ -81,25 +81,34 @@ static bool fish_DH1080_gen(unsigned char ** szPubKey, int * iLen)
 	if(!g_fish_dh)
 	{
 		BIGNUM * dhp = BN_new();
-		BN_init(dhp);
 		if(!BN_hex2bn(&dhp, g_fish_prime1080_hex))
 			return false;
 
 		BIGNUM * dhg = BN_new();
-		BN_init(dhg);
 		if(!BN_hex2bn(&dhg, g_fish_generator))
 			return false;
 
 		g_fish_dh = DH_new();
+#if OPENSSL_VERSION_NUMBER >= 0x10100005L
+		DH_set0_pqg(g_fish_dh, dhp, nullptr, dhg);
+#else
 		g_fish_dh->p = dhp;
 		g_fish_dh->g = dhg;
+#endif
 
 		DH_generate_key(g_fish_dh);
 	}
 
-	*iLen = BN_num_bytes(g_fish_dh->pub_key);
+	const BIGNUM* pub_key;
+#if OPENSSL_VERSION_NUMBER >= 0x10100005L
+	DH_get0_key(g_fish_dh, &pub_key, nullptr);
+#else
+	pub_key = g_fish_dh->pub_key;
+#endif
+
+	*iLen = BN_num_bytes(pub_key);
 	*szPubKey = (unsigned char *)KviMemory::allocate(*iLen);
-	BN_bn2bin(g_fish_dh->pub_key, *szPubKey);
+	BN_bn2bin(pub_key, *szPubKey);
 
 	return true;
 #else

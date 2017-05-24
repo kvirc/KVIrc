@@ -53,6 +53,12 @@
 #endif
 
 #include <openssl/evp.h>
+
+#if OPENSSL_VERSION_NUMBER < 0x10100005L
+#define EVP_MD_CTX_new EVP_MD_CTX_create
+#define EVP_MD_CTX_free EVP_MD_CTX_destroy
+#endif
+
 #else
 // The fallback we can always use, but with very limited set of
 // functionality.
@@ -1547,7 +1553,7 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	if(szAlgo.isEmpty())
 		szAlgo = "md5";
 
-	EVP_MD_CTX mdctx;
+	EVP_MD_CTX *mdctx;
 	const EVP_MD * pMD;
 	unsigned char ucMDValue[EVP_MAX_MD_SIZE];
 	unsigned int uMDLen, u;
@@ -1561,11 +1567,11 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	EVP_MD_CTX_init(&mdctx);
-	EVP_DigestInit_ex(&mdctx, pMD, nullptr);
-	EVP_DigestUpdate(&mdctx, content.constData(), content.size());
-	EVP_DigestFinal_ex(&mdctx, ucMDValue, &uMDLen);
-	EVP_MD_CTX_cleanup(&mdctx);
+	mdctx = EVP_MD_CTX_new();
+	EVP_DigestInit_ex(mdctx, pMD, nullptr);
+	EVP_DigestUpdate(mdctx, content.constData(), content.size());
+	EVP_DigestFinal_ex(mdctx, ucMDValue, &uMDLen);
+	EVP_MD_CTX_free(mdctx);
 
 	for(u = 0; u < uMDLen; u++)
 	{
