@@ -866,6 +866,10 @@ defpopup(hostpopup)
 {
 	label($tr("You're not connected to a server","defscript")) (!$server)
 
+	extpopup($tr("&User Control","defscript"),usercontrol,$icon("options"))
+
+	separator
+
 	item($tr("Look Up","defscript") $0,$icon("server")) ($server)
 	{
 		host -a $0
@@ -1835,4 +1839,3 @@ defpopup(channel)
 		avatar.notify $0
 	}
 }
-
