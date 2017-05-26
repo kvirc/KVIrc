@@ -138,9 +138,9 @@ build_script:
     - ps: |
         $env:Path += ";c:/Qt/$env:qt_ver/bin"
         if ($env:cmake_build_type -eq "Debug") {
-            windeployqt "-xml" "--pdb" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
+            windeployqt "-xml" "--pdb" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
         } else {
-            windeployqt "-xml" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe"
+            windeployqt "-xml" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
         } 
     - c:\cygwin\bin\ls -l release/
     - ps: |
