@@ -71,8 +71,8 @@ install:
             echo "using preinstalled openssl"
         } else {
             echo "preinstalled openssl not found or not present in requested version, this is pretty sad."
-            echo "downloading openssl 1.0.2j package, don't worry, be happy!"
-            Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2j.exe" -OutFile c:\openssl-setup.exe
+            echo "downloading openssl 1.0.2l package, don't worry, be happy!"
+            Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2l.exe" -OutFile c:\openssl-setup.exe
             echo "installing openssl"
             Start-Process -Wait -FilePath c:\openssl-setup.exe -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes"
         }
@@ -124,7 +124,11 @@ build_script:
         $zlibinc = c:\cygwin\bin\find /cygdrive/c/deps/ -path '*v140*/zlib.h'
         $zlibinc = c:\cygwin\bin\dirname $zlibinc
         $zlibinc = c:\cygwin\bin\cygpath -m $zlibinc
-        $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Release/zlib.lib"
+        if ($env:cmake_build_type -eq "Debug") {
+            $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Debug/zlibd.lib"
+        } else {
+            $zliblib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Release/zlib.lib"
+        }
         $zliblib = c:\cygwin\bin\cygpath -m $zliblib
         $gettext = c:\cygwin\bin\find /cygdrive/c/deps/ -name xgettext.exe
         $gettext = c:\cygwin\bin\dirname $gettext
@@ -138,13 +142,20 @@ build_script:
     - ps: |
         $env:Path += ";c:/Qt/$env:qt_ver/bin"
         if ($env:cmake_build_type -eq "Debug") {
-            windeployqt "-xml" "--pdb" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
+            windeployqt "--pdb" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
         } else {
-            windeployqt "-xml" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
+            windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
         } 
     - c:\cygwin\bin\ls -l release/
     - ps: |
-        $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Release/zlib.dll"
+        if ($env:cmake_build_type -eq "Debug") {
+            $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Debug/zlibd.dll"
+            $zlibpdb = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Debug/zlibd.pdb"
+            c:\cygwin\bin\cp -pv "$zlib" "$zlibpdb" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/bin/msvcr120.dll" release/
+        } else {
+            $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Release/zlib.dll"
+            c:\cygwin\bin\cp -pv "$zlib" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/bin/msvcr120.dll" release/
+        }
         c:\cygwin\bin\cp -pv "$zlib" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libenchant.dll release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libpcre-1.dll release/
