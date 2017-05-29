@@ -21,8 +21,23 @@ preinstalled.kvc
 \#*\#
 .\#*
 .*.swp
+
+# VS Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
 x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Visual Studio cache/options directory
 .vs/
+
+# Visual Studio solutions
 CMakeSettings.json
 KVIrc.sln
 KVIrc.vcxproj
