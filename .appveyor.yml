@@ -156,7 +156,6 @@ build_script:
             $zlib = c:\cygwin\bin\find /cygdrive/c/deps/ -path "*v140*/$env:nuget_arch/Release/zlib.dll"
             c:\cygwin\bin\cp -pv "$zlib" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/bin/msvcr120.dll" release/
         }
-        c:\cygwin\bin\cp -pv "$zlib" "/cygdrive/c/OpenSSL-$env:ssl_arch/libeay32.dll" "/cygdrive/c/OpenSSL-$env:ssl_arch/ssleay32.dll" release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libenchant.dll release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libpcre-1.dll release/
         c:\cygwin\bin\cp -pv $env:mingw_root/bin/libglib-2.0-0.dll release/
