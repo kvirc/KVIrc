@@ -4,9 +4,9 @@
 /*
 ----------------------------------------------------------------------
 
-    ppport.h -- Perl/Pollution/Portability Version 3.35
+    ppport.h -- Perl/Pollution/Portability Version 3.36
 
-    Automatically created by Devel::PPPort running under perl 5.024000.
+    Automatically created by Devel::PPPort running under perl 5.026000.
 
     Version 3.x, Copyright (c) 2004-2013, Marcus Holland-Moritz.
 
@@ -23,8 +23,8 @@ SKIP
 if (@ARGV && $ARGV[0] eq '--unstrip') {
   eval { require Devel::PPPort };
   $@ and die "Cannot require Devel::PPPort, please install.\n";
-  if (eval $Devel::PPPort::VERSION < 3.35) {
-    die "ppport.h was originally generated with Devel::PPPort 3.35.\n"
+  if (eval $Devel::PPPort::VERSION < 3.36) {
+    die "ppport.h was originally generated with Devel::PPPort 3.36.\n"
       . "Your Devel::PPPort is only version $Devel::PPPort::VERSION.\n"
       . "Please install a newer version, or --unstrip will not work.\n";
   }
