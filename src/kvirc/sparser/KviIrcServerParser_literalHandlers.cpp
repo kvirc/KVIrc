@@ -2366,10 +2366,12 @@ void KviIrcServerParser::parseChannelMode(const QString & szNick, const QString 
 		}                                                                                                                                   \
 		if(!(msg->haltOutput() || bShowAsCompact))                                                                                          \
 		{                                                                                                                                   \
+			auto aParamEscaped = aParam;                                                                                                \
+			KviQString::escapeKvs(&aParamEscaped);                                                                                      \
 			chan->output(bSet ? (bIsMe ? icomeset : icoset) : (bIsMe ? icomeunset : icounset),                                              \
 			    __tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c %Q\r%Q\r"),                                                                  \
 			    &szNickBuffer, &szUser, &szHostBuffer,                                                                                      \
-			    bSet ? '+' : '-', modefl, bSet ? '-' : '+', modefl, &aParam, &aParam);                                                      \
+			    bSet ? '+' : '-', modefl, bSet ? '-' : '+', modefl, &aParamEscaped, &aParam);                                               \
 		}                                                                                                                                   \
 		if(bIsMultiSingleMode)                                                                                                              \
 			iIconForCompactMode = (bSet ? (bIsMe ? icomeset : icoset) : (bIsMe ? icomeunset : icounset));                                   \
