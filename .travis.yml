@@ -9,6 +9,45 @@ matrix:
           compiler: gcc
         - os: osx
           compiler: clang
+        - stage: deploy
+          os: linux
+          before_install:
+          after_success:
+          install:
+              - if [[ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" && "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then openssl aes-256-cbc -K $encrypted_da8de0aafbfc_key -iv $encrypted_da8de0aafbfc_iv -in .travis-github.ssh.enc -out ~/kvirc-github-key -d; fi
+              - export encrypted_da8de0aafbfc_key=no
+              - sudo apt-get update
+                # for ./.travis-coverity-scan.py
+              - sudo apt-get install -y python3-yaml
+          script:
+              - |
+                    if [ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
+                        echo "All builds passed!"
+                        mkdir -p ~/.ssh
+                        chmod 0600 ~/kvirc-github-key
+                        cp .travis.ssh ~/.ssh/config
+                        git config --global user.email "kvirc-travis@users.noreply.github.com"
+                        git config --global user.name "kvirc-travis"
+                        ./.travis-coverity-scan.py
+                    else
+                        echo "Not master"
+                    fi
+
+              #- |
+                    #if [ "$TRAVIS_OS_NAME" == "osx" ]; then
+                    #    npm update -g npm
+                    #    npm install -g appdmg
+                    #    appdmg -v dist/osx/osx_dmg.json KVIrc.dmg
+                    #fi
+
+              # Only upload to kvirc.staticfox.net if this is a commit to master
+              #- |
+                    #if [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
+                    #    kvi_version="$(grep -i "^set(VERSION_RELEASE .*)$" CMakeLists.txt | egrep -o '[0-9\.]' | tr -d '\n')";
+                    #    git_desc="$(git describe)";
+                    #    curl --ftp-create-dirs -T KVIrc.dmg -u $FTP_USER:$FTP_PASS ${FTP_HOST}KVIrc-${kvi_version}-dev-${git_desc}.dmg
+                    #fi
+
 sudo: required
 git:
     depth: 9999999
@@ -20,7 +59,6 @@ before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sysctl -a | grep cpu; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then sysctl -a | grep mem; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm get head; fi
-    - if [[ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" && "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then openssl aes-256-cbc -K $encrypted_da8de0aafbfc_key -iv $encrypted_da8de0aafbfc_iv -in .travis-github.ssh.enc -out ~/kvirc-github-key -d; fi
     - export encrypted_da8de0aafbfc_key=no
     - pwd
 install:
@@ -38,9 +76,6 @@ install:
               if [[ "$WANT_KDE" == "YES" ]]; then
                 sudo apt-get install -y kdelibs5-dev
               fi
-
-              # for ./.travis-coverity-scan.py
-              sudo apt-get install -y python3-yaml
             else
               sudo apt-get install -y devscripts debhelper zlib1g-dev libx11-dev libxrender-dev libssl-dev qttools5-dev-tools qttools5-dev pkg-config libxss-dev python-dev dput gnupg
             fi
@@ -74,36 +109,6 @@ script:
             cd ../..
         fi
 after_success:
-    - test -r .travis_after_all.py && python .travis_after_all.py || echo No .travis_after_all.py found
-    - test -r .to_export_back && echo $(cat .to_export_back) || echo No .to_export_back found
-    - export DUMMY_VAR=dummy-value $(cat .to_export_back)
-    - |
-          if [ "$BUILD_LEADER" == "YES" ] && [ "$BUILD_AGGREGATE_STATUS" == "others_succeeded" ] && [ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
-              echo "All builds passed!"
-              mkdir -p ~/.ssh
-              chmod 0600 ~/kvirc-github-key
-              cp .travis.ssh ~/.ssh/config
-              git config --global user.email "kvirc-travis@users.noreply.github.com"
-              git config --global user.name "kvirc-travis"
-              ./.travis-coverity-scan.py
-          else
-              echo "Not leader"
-          fi
-
-    #- |
-          #if [ "$TRAVIS_OS_NAME" == "osx" ]; then
-          #    npm update -g npm
-          #    npm install -g appdmg
-          #    appdmg -v dist/osx/osx_dmg.json KVIrc.dmg
-          #fi
-
-    # Only upload to kvirc.staticfox.net if this is a commit to master
-    #- |
-          #if [ "$TRAVIS_OS_NAME" == "osx" ] && [ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
-          #    kvi_version="$(grep -i "^set(VERSION_RELEASE .*)$" CMakeLists.txt | egrep -o '[0-9\.]' | tr -d '\n')";
-          #    git_desc="$(git describe)";
-          #    curl --ftp-create-dirs -T KVIrc.dmg -u $FTP_USER:$FTP_PASS ${FTP_HOST}KVIrc-${kvi_version}-dev-${git_desc}.dmg
-          #fi
     - |
           if [ ! -z "$DEBUILD" ] && [ "$TRAVIS_REPO_SLUG" == "kvirc/KVIrc" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
               cd dist
