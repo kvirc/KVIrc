@@ -2117,11 +2117,17 @@ const QString & KviInspIRCdIrcServerInfo::getChannelModeDescription(char mode)
 		case 'g':
 			return __tr2qs("Spam filter");
 			break;
+		case 'h':
+			return __tr2qs("Half-operators");
+			break;
 		case 'j':
 			return __tr2qs("Join throttling (<num>:<secs>)");
 			break;
 		case 'q':
 			return __tr2qs("Channel owners");
+			break;
+		case 'r':
+			return __tr2qs("Registered");
 			break;
 		case 'u':
 			return __tr2qs("Auditorium: /NAMES and /WHO show only ops");
