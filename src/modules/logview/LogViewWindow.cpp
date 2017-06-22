@@ -400,6 +400,9 @@ filter_last:
 		m_pListView->sortItems(0, Qt::AscendingOrder);
 		m_pProgressBar->setValue(0);
 		m_pFilterButton->setEnabled(true);
+
+		// Reset m_szLastGroup for next search
+		m_szLastGroup = "";
 	}
 }
 
