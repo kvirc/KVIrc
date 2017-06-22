@@ -2105,11 +2105,17 @@ const QString & KviInspIRCdIrcServerInfo::getChannelModeDescription(char mode)
 		case 'X':
 			return __tr2qs("Channel exemptions");
 			break;
+		case 'Y':
+			return __tr2qs("Channel IRC op");
+			break;
 		case 'a':
 			return __tr2qs("Protected/administrator nicks");
 			break;
 		case 'c':
 			return __tr2qs("No control codes (colors, bold, ..)");
+			break;
+		case 'd':
+			return __tr2qs("Delay first message after join by n seconds");
 			break;
 		case 'f':
 			return __tr2qs("Kick/[*]ban on message flood ([*]<num>:<secs>)");
