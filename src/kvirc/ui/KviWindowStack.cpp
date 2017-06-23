@@ -65,6 +65,8 @@ KviWindowStack::KviWindowStack(QWidget * parent, const char * pcName)
 	connect(m_pWindowPopup, SIGNAL(triggered(QAction *)), this, SLOT(menuActivated(QAction *)));
 	connect(m_pWindowPopup, SIGNAL(aboutToShow()), this, SLOT(fillWindowPopup()));
 
+	m_pWindowPopup->setStyleSheet("QMenu { menu-scrollable: 1; }");
+
 	setAutoFillBackground(false);
 
 	connect(this, SIGNAL(currentChanged(int)), this, SLOT(currentWindowChanged(int)));
