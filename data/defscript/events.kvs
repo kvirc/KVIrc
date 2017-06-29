@@ -89,7 +89,7 @@ event(OnChannelWindowCreated,default)
 		popup.show -p=$0,$1 logging;
 	}
 
-	button(w,Controllers,$icon("options"),$tr("Global Option controllers","defscript"))
+	button(w,Controllers,$icon("options"),$tr("Global option controllers","defscript"))
 	{
 		action.trigger optionctrlr;
 	}
@@ -102,7 +102,7 @@ event(OnQueryWindowCreated,default)
 		popup.show -p=$0,$1 logging;
 	}
 
-	button(w,Controllers,$icon("options"),$tr("Global Option controllers","defscript"))
+	button(w,Controllers,$icon("options"),$tr("Global option controllers","defscript"))
 	{
 		action.trigger optionctrlr;
 	}
