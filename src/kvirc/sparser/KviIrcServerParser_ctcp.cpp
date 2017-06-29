@@ -826,6 +826,17 @@ void KviIrcServerParser::parseCtcpRequest(KviCtcpMessage * msg)
 {
 	msg->pData = extractCtcpParameter(msg->pData, msg->szTag);
 
+	bool bAction = KviQString::equalCI(msg->szTag, "ACTION");
+
+	if (!bAction)
+	{
+		if (IS_ME(msg->msg, msg->pSource->nick()) && !IS_ME(msg->msg, msg->szTarget))
+		{
+			// "znc.in/self-message" capability: Handle a replayed message from ourselves to someone else.
+			return;
+		}
+	}
+
 	if(msg->szTag == "DCC" || msg->szTag == "XDCC" || msg->szTag == "TDCC") // is dcc request
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpDcc))
@@ -845,8 +856,6 @@ void KviIrcServerParser::parseCtcpRequest(KviCtcpMessage * msg)
 		//Ignore it?
 		if(u)
 		{
-			bool bAction = msg->szTag == "ACTION";
-
 			if(
 			    (!bAction && u->isIgnoreEnabledFor(KviRegisteredUser::Ctcp)) || (bAction && u->isIgnoreEnabledFor(IS_ME(msg->msg, msg->szTarget) ? KviRegisteredUser::Query : KviRegisteredUser::Channel)))
 			{
