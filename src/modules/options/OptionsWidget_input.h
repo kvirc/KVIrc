@@ -54,6 +54,9 @@ public:
 class OptionsWidget_inputFeatures : public KviOptionsWidget
 {
 	Q_OBJECT
+private:
+	QComboBox * m_pNickCompletionOrder;
+
 public:
 	OptionsWidget_inputFeatures(QWidget * parent);
 	~OptionsWidget_inputFeatures();
