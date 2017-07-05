@@ -742,7 +742,7 @@ defpopup(windowpopup)
 
 	separator
 
-	item($tr("&Option Controllers","defscript"),$icon("options"))
+	item($tr("Global &Option Controllers","defscript"),$icon("options"))
 	{
 		action.trigger optionctrlr;
 	}

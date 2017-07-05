@@ -2,11 +2,11 @@
 #
 # Coding style/curly brackets: Allman style
 
-action.create -w=xcqd -t=tools ("optionctrlr", $tr("Option Controllers"), $tr("Opens a control dialog for easy CTCP ignore and joins/parts/quits management."), "kvi_bigicon_settings.png", $icon("options"))
+action.create -w=xcqd -t=tools ("optionctrlr", $tr("Global Option Controllers"), $tr("Opens a global control dialog for easy CTCP ignore and joins/parts/quits management."), "kvi_bigicon_settings.png", $icon("options"))
 {
 	#################################################################
 	#                                                               #
-	#   File : actions.kvs (optionctrlr) v4.1.1.6810                #
+	#   File : actions.kvs (optionctrlr) v4.1.1.7125                #
 	#   Creation date : Fri Jul 22 16:57:41 2016 UTC by un1versal   #
 	#                                                               #
 	#################################################################
@@ -38,7 +38,7 @@ action.create -w=xcqd -t=tools ("optionctrlr", $tr("Option Controllers"), $tr("O
 	# Create the main widget as a dialog
 	%widget = $new(dialog)
 	%layout = $new(layout,%widget)
-	%widget->$setWindowTitle($tr("Option Controllers - KVIrc"))
+	%widget->$setWindowTitle($tr("Global Option Controllers - KVIrc"))
 
 	# Add dialog geometry restrictions.
 	# Prevent dialog from looking nasty when resized!
