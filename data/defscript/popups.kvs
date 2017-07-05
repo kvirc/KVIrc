@@ -845,9 +845,9 @@ defpopup(defaulttextview)
 
 	extpopup($tr("&Registration","defscript"),registration,$icon("regusers")) (!%:multiple && $server)
 
-	extpopup($tr("&Highlight","defscript"),highlight,$icon("highlighttext")) (!%:multiple && $server)
-
 	extpopup($tr("Ig&nore","defscript"),ignore,$icon("ignore")) (!%:multiple && $server)
+
+	extpopup($tr("&Highlight","defscript"),highlight,$icon("highlighttext")) (!%:multiple && $server)
 
 	item($tr("Notify avatar","defscript"),$icon("avatar")) ($server)
 	{
