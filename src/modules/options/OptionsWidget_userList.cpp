@@ -90,6 +90,7 @@ OptionsWidget_userListGrid::OptionsWidget_userListGrid(QWidget * parent)
 	connect(b, SIGNAL(toggled(bool)), s, SLOT(setEnabled(bool)));
 
 	KviTalHBox * hb = new KviTalHBox(this);
+	setBasicTip(hb, g_uintOptionsTable[KviOption_uintUserListViewGridType].name);
 	addWidgetToLayout(hb, 0, 2, 0, 2);
 	hb->setSpacing(4);
 
@@ -130,12 +131,16 @@ OptionsWidget_userListBackground::OptionsWidget_userListBackground(QWidget * par
 
 	addPixmapSelector(0, 1, 1, 1, __tr2qs_ctx("Background image:", "options"), KviOption_pixmapUserListViewBackground);
 
-	addLabel(0, 2, 0, 2, __tr2qs_ctx("Horizontal alignment:", "options"));
+	QLabel * pLabel = addLabel(0, 2, 0, 2, __tr2qs_ctx("Horizontal alignment:", "options"));
+	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintUserListPixmapAlign].name);
 	m_pHorizontalAlign = new QComboBox(this);
+	setBasicTip(m_pHorizontalAlign, g_uintOptionsTable[KviOption_uintUserListPixmapAlign].name);
 	addWidgetToLayout(m_pHorizontalAlign, 1, 2, 1, 2);
 
-	addLabel(0, 3, 0, 3, __tr2qs_ctx("Vertical alignment:", "options"));
+	pLabel = addLabel(0, 3, 0, 3, __tr2qs_ctx("Vertical alignment:", "options"));
+	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintUserListPixmapAlign].name);
 	m_pVerticalAlign = new QComboBox(this);
+	setBasicTip(m_pVerticalAlign, g_uintOptionsTable[KviOption_uintUserListPixmapAlign].name);
 	addWidgetToLayout(m_pVerticalAlign, 1, 3, 1, 3);
 
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Tile", "options"));

@@ -97,9 +97,11 @@ OptionsWidget_channelAdvanced::OptionsWidget_channelAdvanced(QWidget * pParent)
 
 	b = addBoolSelector(0, 0, 4, 0, __tr2qs_ctx("Log joined channels history", "options"), KviOption_boolLogChannelHistory);
 
-	addLabel(0, 1, 0, 1, __tr2qs_ctx("Default ban mask:", "options"));
+	QLabel * pLabel = addLabel(0, 1, 0, 1, __tr2qs_ctx("Default ban mask:", "options"));
+	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintDefaultBanType].name);
 
 	m_pBanTypeCombo = new QComboBox(this);
+	setBasicTip(m_pBanTypeCombo, g_uintOptionsTable[KviOption_uintDefaultBanType].name);
 	addWidgetToLayout(m_pBanTypeCombo, 1, 1, 4, 1);
 
 	KviIrcMask hostmask("nick!user@machine.host.top");

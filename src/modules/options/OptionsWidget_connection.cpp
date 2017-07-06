@@ -109,25 +109,27 @@ OptionsWidget_connectionSsl::OptionsWidget_connectionSsl(QWidget * parent)
 	KviTalGroupBox * gbox = addGroupBox(0, 0, 0, 0, Qt::Horizontal, __tr2qs_ctx("Certificate", "options"));
 
 	b = addBoolSelector(gbox, __tr2qs_ctx("Use SSL certificate (PEM format only)", "options"),
-	    &(KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate)), true);
+	    KviOption_boolUseSSLCertificate, true);
 
-	f = addFileSelector(gbox, __tr2qs_ctx("Certificate location:", "options"), &(KVI_OPTION_STRING(KviOption_stringSSLCertificatePath)),
+	f = addFileSelector(gbox, __tr2qs_ctx("Certificate location:", "options"), KviOption_stringSSLCertificatePath,
 	    KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate));
 	connect(b, SIGNAL(toggled(bool)), f, SLOT(setEnabled(bool)));
 
 	p = new KviPasswordSelector(gbox, __tr2qs_ctx("Certificate password:", "options"), &(KVI_OPTION_STRING(KviOption_stringSSLCertificatePass)),
 	    KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate));
+	setBasicTip(p, g_stringOptionsTable[KviOption_stringSSLCertificatePass].name);
 	connect(b, SIGNAL(toggled(bool)), p, SLOT(setEnabled(bool)));
 
 	gbox = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("Private Key", "options"));
 
-	b = addBoolSelector(gbox, __tr2qs_ctx("Use SSL private key", "options"), &(KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey)), true);
-	f = addFileSelector(gbox, __tr2qs_ctx("Private key location:", "options"), &(KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath)),
+	b = addBoolSelector(gbox, __tr2qs_ctx("Use SSL private key", "options"), KviOption_boolUseSSLPrivateKey, true);
+	f = addFileSelector(gbox, __tr2qs_ctx("Private key location:", "options"), KviOption_stringSSLPrivateKeyPath,
 	    KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey));
 	connect(b, SIGNAL(toggled(bool)), f, SLOT(setEnabled(bool)));
 
 	p = addPasswordSelector(gbox, __tr2qs_ctx("Private key password:", "options"), &(KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPass)),
 	    KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey));
+	setBasicTip(p, g_stringOptionsTable[KviOption_stringSSLPrivateKeyPass].name);
 	connect(b, SIGNAL(toggled(bool)), p, SLOT(setEnabled(bool)));
 
 	addRowSpacer(0, 3, 0, 3);
@@ -202,6 +204,7 @@ OptionsWidget_identService::OptionsWidget_identService(QWidget * parent)
 	connect(m_pEnableIdent, SIGNAL(toggled(bool)), this, SLOT(enableIpv4InIpv6(bool)));
 
 	KviTalGroupBox * gbox = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("Output Verbosity", "options"), KVI_OPTION_BOOL(KviOption_boolUseIdentService));
+	setBasicTip(gbox, g_uintOptionsTable[KviOption_uintIdentdOutputMode].name);
 	connect(m_pEnableIdent, SIGNAL(toggled(bool)), gbox, SLOT(setEnabled(bool)));
 
 	addLabel(gbox, __tr2qs_ctx("Output Ident service messages to:", "options"));

@@ -44,12 +44,16 @@ OptionsWidget_notifierLook::OptionsWidget_notifierLook(QWidget * parent)
 
 	addPixmapSelector(0, 5, 1, 5, __tr2qs_ctx("Background image:", "options"), KviOption_pixmapNotifierBackground);
 
-	addLabel(0, 6, 0, 6, __tr2qs_ctx("Horizontal align:", "options"));
+	QLabel * pLabel = addLabel(0, 6, 0, 6, __tr2qs_ctx("Horizontal align:", "options"));
+	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintNotifierPixmapAlign].name);
 	m_pHorizontalAlign = new QComboBox(this);
+	setBasicTip(m_pHorizontalAlign, g_uintOptionsTable[KviOption_uintNotifierPixmapAlign].name);
 	addWidgetToLayout(m_pHorizontalAlign, 1, 6, 1, 6);
 
-	addLabel(0, 7, 0, 7, __tr2qs_ctx("Vertical align:", "options"));
+	pLabel = addLabel(0, 7, 0, 7, __tr2qs_ctx("Vertical align:", "options"));
+	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintNotifierPixmapAlign].name);
 	m_pVerticalAlign = new QComboBox(this);
+	setBasicTip(m_pVerticalAlign, g_uintOptionsTable[KviOption_uintNotifierPixmapAlign].name);
 	addWidgetToLayout(m_pVerticalAlign, 1, 7, 1, 7);
 
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Tile", "options"));
