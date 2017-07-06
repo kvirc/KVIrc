@@ -338,9 +338,8 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	l->setMinimumWidth(120);
 
 	m_pAgeCombo = new QComboBox(hb);
-	QString szTip1 = __tr2qs_ctx("Here you can specify your age.", "options") + szTrailing;
-	KviTalToolTip::add(l, szTip1);
-	KviTalToolTip::add(m_pAgeCombo, szTip1);
+	setBasicTip(hb, g_stringOptionsTable[KviOption_stringCtcpUserInfoAge].name);
+	mergeTip(hb, __tr2qs_ctx("Here you can specify your age.", "options") + szTrailing);
 	m_pAgeCombo->addItem(__tr2qs_ctx("Unspecified", "options"));
 	unsigned int i;
 	for(i = 1; i < 120; i++)
@@ -366,9 +365,8 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	l->setMinimumWidth(120);
 
 	m_pGenderCombo = new QComboBox(hb);
-	QString szTip2 = __tr2qs_ctx("Here you can specify your gender.", "options") + szTrailing;
-	KviTalToolTip::add(l, szTip2);
-	KviTalToolTip::add(m_pGenderCombo, szTip2);
+	setBasicTip(hb, g_stringOptionsTable[KviOption_stringCtcpUserInfoGender].name);
+	mergeTip(hb, __tr2qs_ctx("Here you can specify your gender.", "options") + szTrailing);
 	m_pGenderCombo->addItem(__tr2qs_ctx("Unspecified", "options"));
 	m_pGenderCombo->addItem(__tr2qs_ctx("Female", "options"));
 	m_pGenderCombo->addItem(__tr2qs_ctx("Male", "options"));
@@ -674,6 +672,7 @@ OptionsWidget_identityAdvanced::OptionsWidget_identityAdvanced(QWidget * parent)
 	layout()->setMargin(10);
 
 	KviTalGroupBox * gbox = addGroupBox(0, 0, 0, 0, Qt::Horizontal, __tr2qs_ctx("User Mode", "options"));
+	setBasicTip(gbox, g_stringOptionsTable[KviOption_stringDefaultUserMode].name);
 	m_pISelector = addBoolSelector(gbox, __tr2qs_ctx("Invisible (+i)", "options"), &m_bI);
 	m_pSSelector = addBoolSelector(gbox, __tr2qs_ctx("Server notices (+s)", "options"), &m_bS);
 	m_pWSelector = addBoolSelector(gbox, __tr2qs_ctx("WALLOPS (+w)", "options"), &m_bW);

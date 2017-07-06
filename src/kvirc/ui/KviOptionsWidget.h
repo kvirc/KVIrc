@@ -61,6 +61,7 @@ protected:
 	void commitOptionsReset();
 
 public:
+	void setBasicTip(QWidget * w, const QString & optionName);
 	void mergeTip(QWidget * w, const QString & tip);
 	KviPointerList<KviSelectorInterface> * selectors() { return m_pSelectorInterfaceList; };
 

@@ -60,6 +60,7 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 	KviTalToolTip::add(g, __tr2qs_ctx("This allows you to select the sound system to be used with KVIrc.", "options"));
 
 	KviTalHBox * h = new KviTalHBox(g);
+	setBasicTip(h, g_stringOptionsTable[KviOption_stringSoundSystem].name);
 
 	m_pSoundSystemBox = new QComboBox(h);
 
@@ -76,6 +77,7 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 	                          "options"));
 
 	h = new KviTalHBox(g);
+	setBasicTip(h, g_stringOptionsTable[KviOption_stringPreferredMediaPlayer].name);
 
 	m_pMediaPlayerBox = new QComboBox(h);
 
@@ -94,6 +96,7 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 	h = new KviTalHBox(g);
 
 	m_pTagsEncodingCombo = new QComboBox(h);
+	setBasicTip(m_pTagsEncodingCombo, g_stringOptionsTable[KviOption_stringMp3TagsEncoding].name);
 	m_pTagsEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding", "options"));
 
 	int i = 0;

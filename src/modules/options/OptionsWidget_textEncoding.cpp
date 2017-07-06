@@ -49,17 +49,23 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 	gbox->setLayout(grid);
 
 	//server encoding
-	grid->addWidget(addLabel(gbox, __tr2qs_ctx("Default server encoding:", "options")), 0, 0);
+	QLabel * pLabel = addLabel(gbox, __tr2qs_ctx("Default server encoding:", "options"));
+	setBasicTip(pLabel, g_stringOptionsTable[KviOption_stringDefaultSrvEncoding].name);
+	grid->addWidget(pLabel, 0, 0);
 
 	m_pSrvEncodingCombo = new QComboBox(gbox);
+	setBasicTip(m_pSrvEncodingCombo, g_stringOptionsTable[KviOption_stringDefaultSrvEncoding].name);
 	grid->addWidget(m_pSrvEncodingCombo, 0, 1);
 
 	m_pSrvEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding", "options"));
 
 	//text encoding
-	grid->addWidget(addLabel(gbox, __tr2qs_ctx("Default text encoding:", "options")), 1, 0);
+	pLabel = addLabel(gbox, __tr2qs_ctx("Default text encoding:", "options"));
+	setBasicTip(pLabel, g_stringOptionsTable[KviOption_stringDefaultTextEncoding].name);
+	grid->addWidget(pLabel, 1, 0);
 
 	m_pTextEncodingCombo = new QComboBox(gbox);
+	setBasicTip(m_pTextEncodingCombo, g_stringOptionsTable[KviOption_stringDefaultTextEncoding].name);
 	grid->addWidget(m_pTextEncodingCombo, 1, 1);
 
 	m_pTextEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding", "options"));

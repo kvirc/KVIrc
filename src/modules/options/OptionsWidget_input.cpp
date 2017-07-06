@@ -45,12 +45,16 @@ OptionsWidget_inputLook::OptionsWidget_inputLook(QWidget * parent)
 
 	addPixmapSelector(0, 7, 1, 7, __tr2qs_ctx("Background image:", "options"), KviOption_pixmapInputBackground);
 
-	addLabel(0, 8, 0, 8, __tr2qs_ctx("Horizontal align:", "options"));
+	QLabel * pLabel = addLabel(0, 8, 0, 8, __tr2qs_ctx("Horizontal align:", "options"));
+	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintInputPixmapAlign].name);
 	m_pHorizontalAlign = new QComboBox(this);
+	setBasicTip(m_pHorizontalAlign, g_uintOptionsTable[KviOption_uintInputPixmapAlign].name);
 	addWidgetToLayout(m_pHorizontalAlign, 1, 8, 1, 8);
 
-	addLabel(0, 9, 0, 9, __tr2qs_ctx("Vertical align:", "options"));
+	pLabel = addLabel(0, 9, 0, 9, __tr2qs_ctx("Vertical align:", "options"));
+	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintInputPixmapAlign].name);
 	m_pVerticalAlign = new QComboBox(this);
+	setBasicTip(m_pVerticalAlign, g_uintOptionsTable[KviOption_uintInputPixmapAlign].name);
 	addWidgetToLayout(m_pVerticalAlign, 1, 9, 1, 9);
 
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Tile", "options"));
@@ -160,6 +164,7 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 	addBoolSelector(g, __tr2qs_ctx("Ignore special characters in nick completion", "options"), KviOption_boolIgnoreSpecialCharactersInNickCompletion);
 
 	KviTalHBox * hb = new KviTalHBox(g);
+	setBasicTip(hb, g_uintOptionsTable[KviOption_uintNickCompletionOrder].name);
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Nickname completion order:", "options"), hb);
 	l->setMinimumWidth(120);
@@ -168,8 +173,6 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 	m_pCompletionOrderCombo->addItem(__tr2qs_ctx("As listed", "options"));
 	m_pCompletionOrderCombo->addItem(__tr2qs_ctx("Alphabetical", "options"));
 	m_pCompletionOrderCombo->addItem(__tr2qs_ctx("By last action time", "options"));
-
-	// TODO: add the tooltip
 
 	if (KVI_OPTION_UINT(KviOption_uintNickCompletionOrder) < 3)
 		m_pCompletionOrderCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintNickCompletionOrder));
