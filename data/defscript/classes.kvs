@@ -58,6 +58,10 @@ class(installer,object)
 				%c .= "file.remove \"%file\"$lf";
 			}
 		}
+		else
+		{
+			%c .= ";$lf";
+		}
 		%c .= "}"
 		eval %c
 	}
