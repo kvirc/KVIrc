@@ -1418,7 +1418,7 @@ defpopup(ignore)
 
 	label(%:ignLabelText)
 
-	popup($tr("Ignore As...","defscript"),$icon("ignore")) (!%:inIgnoreList && !%:regName)
+	popup($tr("Ignore As...","defscript"),$icon("ignore")) (!%:inIgnoreList)
 	{
 		item($tr("Ignore As","defscript") $0 "("$mask($0,0)")") ("$reguser.exactMatch($mask($0,0))" == "")
 		{
