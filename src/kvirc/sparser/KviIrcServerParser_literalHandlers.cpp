@@ -2543,7 +2543,7 @@ void KviIrcServerParser::parseLiteralCap(KviIrcMessage * msg)
 	if(KVS_TRIGGER_EVENT_3_HALTED(KviEvent_OnCap, msg->console(), szPrefix, szCmd, szProtocols))
 		msg->setHaltOutput();
 
-	if(szCmd == "LS")
+	if(szCmd.compare("LS", Qt::CaseInsensitive) == 0)
 	{
 		// :prefix CAP <nickname> LS [*] :<cap1> <cap2> <cap3> ....
 		// All but the last LS messages have the asterisk
@@ -2564,11 +2564,8 @@ void KviIrcServerParser::parseLiteralCap(KviIrcMessage * msg)
 		// We didn't send the request (the user did, or the server sent the reply spontaneously)
 		if(!msg->haltOutput())
 			msg->console()->output(KVI_OUT_CAP, __tr2qs("Server capabilities: %Q"), &szProtocols);
-
-		return;
 	}
-
-	if(szCmd == "ACK")
+	else if(szCmd.compare("ACK", Qt::CaseInsensitive) == 0)
 	{
 		// :prefix CAP <nickname> ACK [*] :<cap1> <cap2> <cap3> ....
 		// All but the last ACK messages have the asterisk
@@ -2589,11 +2586,8 @@ void KviIrcServerParser::parseLiteralCap(KviIrcMessage * msg)
 
 		if(!msg->haltOutput())
 			msg->console()->output(KVI_OUT_CAP, __tr2qs("Capability change acknowledged: %Q"), &szProtocols);
-
-		return;
 	}
-
-	if(szCmd == "NAK")
+	else if(szCmd.compare("NAK", Qt::CaseInsensitive) == 0)
 	{
 		// :prefix CAP <nickname> NAK :<cap1> <cap2> <cap3> ....
 
@@ -2605,11 +2599,8 @@ void KviIrcServerParser::parseLiteralCap(KviIrcMessage * msg)
 
 		if(!msg->haltOutput())
 			msg->console()->output(KVI_OUT_CAP, __tr2qs("Capability change denied: %Q"), &szProtocols);
-
-		return;
 	}
-
-	if(szCmd == "LIST")
+	else if(szCmd.compare("LIST", Qt::CaseInsensitive) == 0)
 	{
 		// :prefix CAP <nickname> LIST [*] :<cap1> <cap2> <cap3> ....
 		// All but the last LIST messages have the asterisk
@@ -2618,11 +2609,8 @@ void KviIrcServerParser::parseLiteralCap(KviIrcMessage * msg)
 
 		if(!msg->haltOutput())
 			msg->console()->output(KVI_OUT_CAP, __tr2qs("Currently enabled capabilities: %Q"), &szProtocols);
-
-		return;
 	}
-
-	if(!msg->haltOutput())
+	else if(!msg->haltOutput())
 		msg->console()->output(KVI_OUT_CAP, __tr2qs("Received unknown extended capability message: %Q %Q"), &szCmd, &szProtocols);
 }
 
