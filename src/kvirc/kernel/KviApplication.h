@@ -355,11 +355,12 @@ private:
 	bool checkGlobalKvircDirectory(const QString);
 	bool checkLocalKvircDirectory(const QString & szSpecificPath);
 	bool checkLocalKvircDirectory(); // check the m_szLocalKvircDirectory path
-	bool checkFileAssociations();
 	void setupFileAssociations();
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	void setFileAssociation(const QString & szExtension, const QString & szClassName, const QString & szDescription, const int iIconIndex, const QString & szActionName);
+#endif
 
-	bool checkUriAssociations(const char * proto);
-	void setupUriAssociations(const char * proto);
+	void setupUriAssociations(const QString & szProto);
 
 	void saveKvircDirectory();
 
