@@ -808,7 +808,7 @@ void ClassEditorWidget::currentItemChanged(QTreeWidgetItem * pTree, QTreeWidgetI
 		{
 			QString szReminderText = __tr2qs_ctx("Reminder text.", "editor");
 			szReminderText += ": <b>";
-			szReminderText += m_pLastEditedItem->reminder();
+			szReminderText += m_pLastEditedItem->reminder().toHtmlEscaped();
 			szReminderText += "</b>";
 			m_pReminderLabel->setText(szReminderText);
 			m_pReminderLabel->show();
@@ -1054,12 +1054,15 @@ void ClassEditorWidget::exportClassBuffer(QString & szBuffer, ClassEditorTreeWid
 		ClassEditorTreeWidgetItem * pFunction = (ClassEditorTreeWidgetItem *)pItem->child(i);
 		if(pFunction->isMethod())
 		{
+			QString reminder = pFunction->reminder();
+			KviQString::escapeKvs(&reminder);
+
 			szBuffer += "\t";
 			if(pFunction->isInternalFunction())
 				szBuffer += "internal ";
 			szBuffer += "function ";
 			szBuffer += pFunction->name();
-			szBuffer += "(" + pFunction->reminder() + ")\n";
+			szBuffer += "(\"" + reminder + "\")\n";
 			QString szCode = pFunction->buffer();
 			KviCommandFormatter::blockFromBuffer(szCode);
 			KviCommandFormatter::indent(szCode);
