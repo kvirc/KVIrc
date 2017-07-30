@@ -507,48 +507,39 @@ bool KviUserListView::completeNickStandard(const QString & szBegin, QString & sz
 			//		if(kvi_strEqualCI(entry->m_szNick.ptr(),c->currentNickName())
 			//	}
 
-			if(pEntry->m_szNick.length() >= szBegin.length())
+			if(pEntry->m_szNick.length() < szBegin.length()) continue;
+			// No match if it's shorter than the prefix entered.
+
+			bool bEqual = KviQString::equalCIN(szBegin, pEntry->m_szNick, szBegin.length());
+			if(!bEqual && KVI_OPTION_BOOL(KviOption_boolIgnoreSpecialCharactersInNickCompletion))
 			{
-				bool bEqual = KviQString::equalCIN(szBegin, pEntry->m_szNick, szBegin.length());
-				if(!bEqual && KVI_OPTION_BOOL(KviOption_boolIgnoreSpecialCharactersInNickCompletion))
-				{
-					QString szTmp = pEntry->m_szNick;
-					szTmp.remove(QRegExp("[^a-zA-Z0-9]"));
-					bEqual = KviQString::equalCIN(szBegin, szTmp, szBegin.length());
-				}
+				QString szTmp = pEntry->m_szNick;
+				szTmp.remove(QRegExp("[^a-zA-Z0-9]"));
+				bEqual = KviQString::equalCIN(szBegin, szTmp, szBegin.length());
+			}
 
-				if(bEqual)
+			if(bEqual)
+			{
+				// Matching entry; insert it into the list.
+				std::list<QString>::iterator it;
+				switch(KVI_OPTION_UINT(KviOption_uintNickCompletionOrder))
 				{
-					// Matching entry; insert it into the list.
-					std::list<QString>::iterator it;
-					switch (KVI_OPTION_UINT(KviOption_uintNickCompletionOrder))
-					{
-						case 0:  // As listed
-							m_CompletionList->push_back(pEntry->m_szNick);
-							break;
-						case 1:  // Alphabetical
-							for (it = m_CompletionList->begin(); it != m_CompletionList->end(); ++it)
-							{
-								if ((KviQString::cmpCI(pEntry->m_szNick, *it,
-									KVI_OPTION_BOOL(KviOption_boolPlaceNickWithNonAlphaCharsAtEnd)) < 0))
-								{
-									break;
-								}
-							}
-							m_CompletionList->insert(it, pEntry->m_szNick);
-							break;
-						default:  // Last action time
-							for (it = m_CompletionList->begin(); it != m_CompletionList->end(); ++it)
-							{
-								if (pEntry->m_lastActionTime > (*m_pEntryDict->find(*it)).m_lastActionTime)
-								{
-									break;
-								}
-							}
-							m_CompletionList->insert(it, pEntry->m_szNick);
-							break;
-					}
-
+					case 0:  // As listed
+						m_CompletionList->push_back(pEntry->m_szNick);
+						break;
+					case 1:  // Alphabetical
+						it = std::find_if(m_CompletionList->begin(), m_CompletionList->end(), [pEntry] (QString n) -> bool {
+							return (KviQString::cmpCI(pEntry->m_szNick, n, KVI_OPTION_BOOL(KviOption_boolPlaceNickWithNonAlphaCharsAtEnd)) < 0);
+						});
+						m_CompletionList->insert(it, pEntry->m_szNick);
+						break;
+					default:  // Last action time
+						it = std::find_if(m_CompletionList->begin(), m_CompletionList->end(),
+							[this, &pEntry] (const QString & n) {
+								return pEntry->m_lastActionTime > m_pEntryDict->find(n)->m_lastActionTime;
+							});
+						m_CompletionList->insert(it, pEntry->m_szNick);
+						break;
 				}
 			}
 		}
@@ -559,15 +550,8 @@ bool KviUserListView::completeNickStandard(const QString & szBegin, QString & sz
 
 	if(!szSkipAfter.isEmpty())
 	{
-		while(it != m_CompletionList->end())
-		{
-			if(KviQString::equalCI(szSkipAfter, *it))
-			{
-				++it;
-				break;
-			}
-			++it;
-		}
+		it = std::find_if(it, m_CompletionList->end(), [szSkipAfter] (QString n) -> bool { return KviQString::equalCI(szSkipAfter, n); });
+		if(it != m_CompletionList->end()) ++it;
 	}
 
 	if(it != m_CompletionList->end())
@@ -577,7 +561,7 @@ bool KviUserListView::completeNickStandard(const QString & szBegin, QString & sz
 		if(bAppendMask)
 		{
 			KviUserListEntry * entry = m_pEntryDict->find(*it);
-			if (entry)
+			if(entry)
 			{
 				szBuffer += "!";
 				szBuffer += entry->m_pGlobalData->user();
