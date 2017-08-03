@@ -6,7 +6,18 @@ REV=$(shell dpkg-parsechangelog | awk '/^Version: / {print $$2}' | sed 's/.*~git
 DATE_UNIX=$(shell cat debian/changelog |grep '* Date' | sed 1q |awk -F ': ' '{print $$2}')
 DATE=$(shell date -d@$(DATE_UNIX) +%F | sed 's/-//g')
 
+DEBIAN_CODENAME = $(shell echo $$DIST)
+ifeq "$(DEBIAN_CODENAME)" ""
+	DEBIAN_CODENAME = $(shell dpkg-parsechangelog | awk '/^Distribution: / {print $$2}')
+endif
+ifneq (,$(filter $(DEBIAN_CODENAME), buster sid stretch))
+	CONTROL = control.sid
+else
+	CONTROL = control.jessie
+endif
+
 override_dh_auto_configure:
+	cp debian/$(CONTROL) debian/control
 	dh_auto_configure --parallel -- -DCMAKE_BUILD_TYPE=Release \
 			-DWANT_COEXISTENCE=OFF \
 			-DWANT_ESD=OFF -DWANT_OSS=OFF \
@@ -18,11 +29,15 @@ override_dh_install:
 	rm debian/tmp/usr/share/pixmaps/kvirc.png debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libkvilib.so
 	dh_install
 
-override_dh_builddeb:
-	dh_builddeb -- -Zxz -z9
+#override_dh_builddeb:
+#	dh_builddeb -- -Zxz -z9
 
 override_dh_makeshlibs:
 	dh_makeshlibs -V -plibkvilib4
+
+override_dh_auto_clean:
+	cp debian/$(CONTROL) debian/control
+	dh_auto_clean
 
 %:
 	dh $@ --parallel --dbg-package=kvirc-dbg

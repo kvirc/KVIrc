@@ -32,7 +32,7 @@ VERSION='4:4.9.2'
 VERSION1='4.9.2'
 TMPFILE=$(mktemp)
 TMPGPG=$(mktemp)
-DIST_PPA="trusty wily xenial yakkety"
+DIST_PPA="trusty xenial zesty artful"
 PPANAME=kvirc
 
 dchppa_pkg(){
@@ -70,13 +70,6 @@ allow_unsigned_uploads = 0
 fqdn = ppa.launchpad.net
 method = ftp
 incoming = ~kvirc/kvirc-qt5.5/ubuntu/
-login = anonymous
-allow_unsigned_uploads = 0
-
-[kvirc-dbg]
-fqdn = ppa.launchpad.net
-method = ftp
-incoming = ~kvirc/kvirc-dbg/ubuntu/
 login = anonymous
 allow_unsigned_uploads = 0
 
@@ -133,7 +126,7 @@ else
     sed "s/Release/Debug/g" -i debian/rules
     dchppa_pkg
     rm -f ../*ppa*
-    DIST_PPA="trusty wily"
+    DIST_PPA="trusty"
     PPANAME=kvirc-qt5.5
     dchppa_pkg
     #DIST_PPA="trusty wily xenial"

@@ -1,3 +1,725 @@
+kvirc (4:4.9.2~git-7133-g549d6f1-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 549d6f1a78a66ad3ee31a5d957e26fb06b03f95c
+  * Date: 1501403806
+  * git changelog:
+  *  549d6f1 - Escape things in the class editor. Fixes #2211. (#2243)
+  *  4d9c017 - Update INSTALL.txt (#2244)
+  *  3869426 - fix for #2249
+  *  1d0200e - Fix CAP command checking case sensitivity.
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sun, 30 Jul 2017 19:29:35 +0300
+
+kvirc (4:4.9.2~git-7129-g64f0509-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 64f05096b11eff7a0263e92d17fa353823bf8e71
+  * Date: 1499582706
+  * git changelog:
+  *  64f0509 - Fix creating an empty alias which doesn't do what you
+    want when using generateUninstallAlias
+  *  2e1417e - defscript: add global to option controller titles
+  *  b666258 - AppVeyor: Deployment server has been removed for Windows
+    builds
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 14 Jul 2017 08:27:06 +0300
+
+kvirc (4:4.9.2~git-7126-g7d544e7-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 7d544e7f9d80a150959a924b6fb8ff0e4f59ca23
+  * Date: 1498813397
+  * git changelog:
+  *  7d544e7 - Fix link in CONTRIBUTING.md
+  *  dc7fbd4 - ran "pngcrush -ow -rem allb -reduce"
+  *  d3d9de8 - make nsis check for windows 7
+  *  5e74293 - qt 5.7+ dropped vista support, so raise default target to
+    7
+  *  9f94125 - Fix centering of servers dialog in parent KviMainWindow
+  *  3378ac4 - Add menu-scrollable to the main Window menu
+  *  a2bec2f - Add channel modes d and Y for InspIRCd
+  *  af111d3 - Fix Log Viewer search returning no hits after repeated
+    searches
+  *  6d68da0 - KviIrcConnectionServerInfo: Add 2 missing InspIRCd
+    chanmodes (#2231)
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 30 Jun 2017 12:33:22 +0300
+
+kvirc (4:4.9.2~git-7117-ge60a551-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: e60a551559f400c47e82fb0c1c4e7606c20cc7b7
+  * Date: 1497299937
+  * git changelog:
+  *  e60a551 - Replace travis_after_all with travis stages
+  *  d74941f - Fix KVIrc mode links containing KVS special characters.
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 16 Jun 2017 08:35:52 +0300
+
+kvirc (4:4.9.2~git-7115-g2c89201-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 2c89201e37740afd562333117f00ca53fe871fe3
+  * Date: 1496319570
+  * git changelog:
+  *  2c89201 - regenerate perl stuff from 5.26.0 - xs.inc using
+    ExtUtils::ParseXS 3.34 (compile warning fix) - ppport.h from
+    Devel::PPPort 3.36 (content unchanged, only relevant for people
+    using the default DEFAULT_INC_EXCLUDES_DOT value building this file)
+  *  775c885 - Merge branch 'master' of github.com:kvirc/KVIrc
+  *  6772507 - amend 0dbf448ab659b1967eb795f990735461b2c19fea remove a
+    line which is already handled in the if block before it
+  *  358cd58 - Ignore Visual Studio folders (#2225)
+  *  0dbf448 - [AV] update openssl, (hopefully short-term) hack for
+    handling msvc 12 dependency of it. remove xml from windeployqt as
+    its correctly detected now, use debug zlib on debug builds also
+    revert an erroneously committed change to the targeted windows
+    version in CMakeLists.txt (though it appeared to be still working, i
+    want to be sure)
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 02 Jun 2017 08:10:05 +0300
+
+kvirc (4:4.9.2~git-7110-g88ef901-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 88ef901cfae4e2ec739107566609334f70e93230
+  * Date: 1495842060
+  * git changelog:
+  *  88ef901 - Check modules for Qt dependencies when deploying
+  *  ae97a8f - unbreak my last commit, don't cache perl and choco dirs,
+    too big
+  *  90e1ffe - push and pull po{t}s, typo fixes
+  *  8b81b07 - Make Windows code Unicode-aware (#2219)
+  *  f5d172c - Build also in debug mode for windows (#2192)
+  *  c947b1e - appveyor: fix zlib VS version
+  *  5b14c71 - appveyor: Update MSVC to 2015 and Qt to 5.8.0
+  *  48fd3bc - Remove \r chop when pasting last log
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sun, 28 May 2017 14:46:32 +0300
+
+kvirc (4:4.9.2~git-7102-gdb664a3-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: db664a32e09d0e4c20ce01adae19b10336626e7a
+  * Date: 1491038566
+  * git changelog:
+  *  db664a3 - Remove noexcept from 42aee8a commit
+  *  42aee8a - window module: Finish window.setBackground
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sat, 08 Apr 2017 13:00:07 +0300
+
+kvirc (4:4.9.2~git-7100-g48a2865-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 48a2865c6d050d226537d9926bbdb9049eea8fa0
+  * Date: 1490035591
+  * git changelog:
+  *  48a2865 - fix: hide comments in issues in new posts (#2213)
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 24 Mar 2017 18:10:36 +0300
+
+kvirc (4:4.9.2~git-7099-gca80ee6-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: ca80ee628f491594878c6762a62f38fac3ed4f8c
+  * Date: 1489328960
+  * git changelog:
+  *  ca80ee6 - Event OnQuit: Change example to a working example.
+  *  85761b2 - snd module: Fix file descriptor check
+  *  111cb9c - logview module: Fix memory leak in logview export
+  *  2d5fd9d - rijndael module: Fix potential memory leak and invalid
+    length check
+  *  04a4b61 - RegisteredUsersDialog: Fix memory leak in exportClicked
+  *  16b2892 - serverdb module: Fix memory leak in addserver command
+  *  2481f81 - KviKvsObject: Fix return type for font property and
+    indirectly fix memory leak.
+  *  24f54e0 - KviInputEditor: Fix out-of-bounds access in mirc color
+    lookup
+  *  fcdf169 - KviKvsParser: Fix potential memory leak
+  *  a88762e - Fix potential memory leak.
+  *  1fb80a8 - rijndael module: Fix incorrect size check
+  *  638ef78 - module window: Fix memory leak in crypt engine
+    initializer.
+  *  a347dea - Fix various memory leaks in usages of static
+    KviKvsScript::run
+  *  2e602d0 - add only a direct shortcut to kvirc in the windows start
+    menu (#2207)
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 17 Mar 2017 13:38:19 +0300
+
+kvirc (4:4.9.2~git-7085-gaea2bb2-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: aea2bb27ea3c98a73319cb9fb3a53d7431bb8667
+  * Date: 1488553137
+  * git changelog:
+  *  aea2bb2 - fix a few oddities in the help browser
+  *  1c936ae - misc doc fixes
+  *  4dd690f - switch to the correct window even if it's open already
+  *  2d70f91 - KviWindowListBase: Add ability to close classic window
+    list buttons with middle-click.
+  *  dd5ea64 - [AV] fix hunspell installation after update to 1.6
+  *  7ffd04f - RawEventWindow: Fix crash when saving raw events
+  *  684e730 - Add wii default alias
+  *  d6f325d - notifier module: Make message text selectable.
+  *  d6c66fa - KviCryptEngine: Fix typo
+  *  8237da1 - Revert "KviHtmlGenerator: Fix default foreground and
+    background colors"
+  *  fdb997d - KviHtmlGenerator: Fix default foreground and background
+    colors
+  *  77c1f05 - Miscellaneous documentation fixes
+  *  1dc42d6 - Disable old broken OnURLLinkPopupRequest when restoring
+    default script; fix #2140 (#2183)
+  *  fb6ec13 - make the repaint timers of kviircview and kviinputeditor
+    faster when selecting text to decrease lag
+  *  d4d29a8 - reguser module: Fix crash in reguser.add when user exists
+    and group is set
+  *  8e5483a - rename IRC-Hispano default network
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 03 Mar 2017 18:50:26 +0300
+
+kvirc (4:4.9.2~git-7069-g91a0315-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 91a0315a97bea3019d8430cb88f9322aa292241c
+  * Date: 1487362259
+  * git changelog:
+  *  91a0315 - ran optipng -o9 on all png files
+  *  5629fcc - make the icon for disabled handlers red
+  *  256ee1f - fix #1105
+  *  6646dcc - KviProxy: Make class member data private
+  *  1590ab1 - fix build with qt 5.8 on windows
+  *  6142799 - Make the MS VC++ redist installer run silently, it's just
+    an unnecessary popup.
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sun, 19 Feb 2017 11:19:04 +0300
+
+kvirc (4:4.9.2~git-7063-g9e8a9d9-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 9e8a9d9e0d38993e145dddab64b42114efc4d3f6
+  * Date: 1486229098
+  * git changelog:
+  *  9e8a9d9 - str module fixes/cleanup
+  *  ca157d4 - make channel list dialogs more consistent; fix #1790
+  *  c018b8c - [AV] strawberry perl on choco should now have a checksum,
+    update dicts
+  *  30ee141 - SharedFilesWindow: Remove unused variables and some code
+    cleanup
+  *  0b0edac - KviKvsParser: Remove logically dead code
+  *  553444a - KviSignalHandler: Be explicit when ignoring return values
+    of certain functions
+  *  a497da7 - KviInputEditor: Fix error in usage of
+    QString::lastIndexOf in commit ebdcedc
+  *  ebdcedc - KviInputEditor: General code cleanup and simplification
+  *  b21d504 - KviIrcConnection: Fixes potential memory leak
+  *  205eef2 - Encryption: A fix and some code cleanup
+  *  bfb9194 - Fixes unintentional hiding of local variable in nested
+    scope
+  *  d93ae16 - Fix #2077
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sat, 04 Feb 2017 20:56:40 +0300
+
+kvirc (4:4.9.2~git-7051-gee01c76-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: ee01c76211f464647fdeaea72f1c3c1160a83d1e
+  * Date: 1484954749
+  * git changelog:
+  *  ee01c76 - KviInputEditor: Fix right-click select all not selecting
+    the last character
+  *  88980ba - Fixed #2174 by Kartagis: Fix INSTALL-Macos.txt
+  *  c1f3db3 - fixes #2173 - allow strawberry perl to install with no
+    checksum (at least until 5.24 is approved) - update LO.org link for
+    ru dict - update english dicts to version 2016.11.20
+  *  81efdf0 - KviCString: Fix bug in hexToBuffer
+  *  3ca863a - OS X is dead, long live macOS
+  *  2ef90a1 - Fix typo of incorrect operator usage
+  *  b55570d - Close now always closes despite boolKeepChannelOpenOnPart
+    setting
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sun, 22 Jan 2017 12:22:48 +0300
+
+kvirc (4:4.9.2~git-7044-ga70718f-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: a70718fddd1eb74869e6589db085309a337053c0
+  * Date: 1483271438
+  * git changelog:
+  *  a70718f - libkvichan: Fix typo in documentation
+  *  907dca6 - KviIrcSocket: Use a unique pointer for the timer
+  * DCMAKE_BUILD_TYPE=Debug
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sun, 01 Jan 2017 15:21:32 +0300
+
+kvirc (4:4.9.2~git-7042-g90a846a-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 90a846ad2ef4e5b4163e81f6d507e80422f1b6de
+  * Date: 1481581818
+  * git changelog:
+  *  90a846a - Add compatibilty to fish10 and mircryption keyx cbc mode.
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sat, 24 Dec 2016 10:50:59 +0300
+
+kvirc (4:4.9.2~git-7041-gd300312-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: d30031234136d158e896b9302d4e4cd366b7a3a1
+  * Date: 1481204268
+  * git changelog:
+  *  d300312 - Travis: workaround for travis-ci/travis-ci#6307
+  *  5e49ce1 - optionctlr: Remove hardcoded fixed pixel size and
+    restrict resize
+  *  fe649bb - HelpIndex: Code cleanup
+  *  a59dbc1 - HelpIndex: Change deprecated QtAlgorithms qSort to
+    std::sort
+  *  71d2418 - amend bc81991c477ec6f8b53474bd73d5444fc2552d3c
+  *  fd20b1a - Remove usage of deprecated QStyle* typedefs
+  *  8552b2b - fix build on mingw
+  *  9a2cb9a - KvsObject_widget: Add additional size functions
+  *  d742cce - KviIrcView: Fix oversized minimum paint width when
+    boolIrcViewWrapMargin is off
+  *  2a5e49b - KviInputEditor: Auto-scroll text when characters are
+    deleted to minimize trailing whitespace
+  *  d392253 - KviOggTheoraEncoder: Fix incorrect forward declaration of
+    QRgb
+  *  bc81991 - push pots to tx, pull pos from tx
+  *  dc2d879 - fix sentence capitalization
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 09 Dec 2016 21:31:02 +0300
+
+kvirc (4:4.9.2~git-7028-g392d211-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 392d211772f210b4e691a39e4b37e237ecb13cc8
+  * Date: 1479682563
+  * git changelog:
+  *  392d211 - Fix typo in b556221 in warning messages
+  *  b556221 - Add split view commands window.splitView and
+    window.unsplitView, as well as function $window.isSplitView
+  *  c8bcb86 - normalize File: , Size:  and Mime: formatting
+  *  e1af6ee - Fix quirk in a5932bf on some compilers
+  *  a5932bf - Default DCC Send console confirmation links to use
+    stringUrlFileCommand instead of hardcoded play command
+  *  fa9a5d3 - Fix issue with parsing two strings for Poedit
+  *  3982a2e - Fix unnecessary escaping of % in strings.
+  *  17df6ef - KviIpEditor: Add IPv4 input validator and a basic IPv6
+    input validator
+  *  c8b3294 - OptionsWidget: Fix checking of IPv6 address instead of
+    IPv4 where needed
+  *  6bfafe7 - KviIpEditor: Fix issue where older Qt5 apparently doesn't
+    have QHostAddress::toIPv4Address(bool*)
+  *  6050180 - KviIpEditor: Change to a QLineEdit and update code.
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 25 Nov 2016 20:29:39 +0300
+
+kvirc (4:4.9.2~git-7017-g48dacdb-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 48dacdbf2e6ccf885d1069bb4b3ef78d18d93671
+  * Date: 1478756999
+  * git changelog:
+  *  48dacdb - Input History: Added skipping of input lines if
+    consecutive lines are the same
+  *  f288f36 - KviKvsEventManager: Fix memory leak in addRawHandler
+  *  fdf491a - KvsObject_painter: Fix potential memory leak in class
+    function pen
+  *  651b298 - KvsObject_pixmap: Fix potential memory leak in class
+    function pixel
+  *  5e13532 - KviCustomToolBar: Fix memory leak in
+    KviCustomToolBar::filterChild
+  *  9c6f897 - libkviurl: Fix memory leak in void BanFrame::addBan()
+  *  1f32e67 - libkvireguser: Fix memory leak in $reguser.mask
+  *  db350d6 - FileTransferWindow: Add MIME data to right click menu for
+    non-KDE
+  *  c4b96d4 - KviTopicWidget: Move existing recent topics to the end of
+    the list
+  *  b9af7a0 - KviKvsCoreFunctions: Code cleanup
+  *  2f5e107 - KviBuildInfo: Update code
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sat, 12 Nov 2016 19:36:26 +0300
+
+kvirc (4:4.9.2~git-7006-g96ca5fb-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 96ca5fbe4e047d59e4bcc28d012bfe92e3a2d228
+  * Date: 1477689869
+  * git changelog:
+  *  96ca5fb - Cleanup included files
+  *  232b0d8 - update po{t}s and pos, specify package name and version
+    in po{t}s
+  *  1ef3cc7 - Improved german translation
+  *  7b5bce7 - Updated german .po files and saved them with poedit as
+    preparation for further work on the translation
+  *  0b12787 - pull translation updates from TX (except de_DE)
+  *  e54c217 - ppa: add ubuntu 16.10 (Yakkety)
+  *  8f78ea2 - lit handler: Only send CHGHOST to common channels
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sat, 29 Oct 2016 10:42:02 +0300
+
+kvirc (4:4.9.2~git-6999-gbc0aa5b-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: bc0aa5b07c31d6d95fb184a06cea328141d0bc69
+  * Date: 1475595177
+  * git changelog:
+  *  bc0aa5b - followup to 657a5c4 it turns out that my editor thought
+    the remaining files were already UTF-16 LE where they in fact were
+    not.
+  *  657a5c4 - convert to UTF-16 LE as the others
+  *  20d6588 - Fix Unicode builds, Unicode true|false
+  *  3008162 - it looks like we need more version variables to keep dumb
+    mistakes from happening
+  *  9a40bfa - build unicode aware installers, that would have even
+    worked on xp but was somewhat forgotten back in the day
+  *  16edb89 - quote strings with variables in it maybe? its not that
+    hard, really.
+  *  280cf5c - fix expression for version check
+  *  52ec12b - invert openssl condition on AV again and make it check
+    for the file version, update dicts
+  *  8c0587d - bump openssl 1.0.2j (#2148)
+  *  298ddea - deafult.kvc: bump events and popups versions
+  *  1d336d6 - popups: move user control prologue and options to own
+    popup
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 14 Oct 2016 21:41:36 +0300
+
+kvirc (4:4.9.2~git-6988-g3fd89db-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 3fd89db46d8296239e7849264f69b57d806e8721
+  * Date: 1474839266
+  * git changelog:
+  *  3fd89db - KviSelectors: Allow for alternate locale numbers in a
+    KviUIntSelector
+  *  fce5580 - Remove extra space
+  *  750388a - KviIrcServerParser: Fixes issues with WHOIS/WHOWAS
+    numerics
+  *  ed56eb2 - KviQueryWindow: Fixes label height issue when users
+    aren't in the user database
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 30 Sep 2016 21:15:42 +0300
+
+kvirc (4:4.9.2~git-6984-gf8f50bd-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: f8f50bd6a787fdae7ce03cc36f97068399700d66
+  * Date: 1474062401
+  * git changelog:
+  *  f8f50bd - Don't use space in default event handler.
+  *  f4c8791 - KviPixmap: Code cleanup
+  *  21e4e74 - oops! slipped into comma
+  *  1721d0e - kvioptions: reuse unused before adding new entries
+  *  379f9b8 - Add option to ignore special characters in nick
+    completion.
+  *  eba8776 - workaround: fix NOTICE/PRIVMSG &szTarget link
+  *  afb8269 - KviMain: Fix [ircurl] description to include SSL flag
+  *  86ac8eb - Add SSL socket support to I/O Graph traffic tracking
+  *  c5b2de3 - themes: fix msgtypeActionCrypted icon assignment after
+    #2139
+  *  b648a2d - Blowfish: Remove unnecessary dynamic allocation and
+    clarify implecations of key length option choice to users.
+  *  8182570 - Crypt: Add code for ActionCrypted icon
+  *  31e81ba - add crypto icons
+  *  5f7f38c - KviIrcServerParser: avoid implicit conversion confusion
+  *  415c439 - Theme: Added msgtypeActionCrypted to default themes
+  *  09aa1d4 - OnAction: Add a 'Was encrypted' parameter
+  *  2560ef6 - Crypt: Add support for CTCP ACTION encryption
+  *  765fead - Crypt: Add support for CTCP ACTION decryption
+  *  4d1ddd4 - KviIrcServerParser: General code cleanup
+  *  b3ac85d - Make the /ctcp ACTION command use KviWindow::ownAction
+    when available
+  *  c8a2f6f - KviInputEditor cleanup (#2129)
+  *  a703bff - Fix segfault when trying to find an invalid window id
+    (#2133)
+  *  b7ee225 - readme: update download link
+  *  292c718 - Fixes keyboard shortcuts in split view IRC channel. Fixes
+    #1319 (#2132)
+  *  49deb06 - Fix using multiple keys in one join command with alias j
+    (#2130)
+  *  88294f0 - Add Vim swap files to the .gitignore
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sat, 17 Sep 2016 13:49:55 +0300
+
+kvirc (4:4.9.2~git-6959-g9c4462c-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 9c4462c0c95252e9969051ce9932628851459378
+  * Date: 1472656103
+  * git changelog:
+  *  9c4462c - Fix local variable shadowing. Fixes #2126.
+  *  901914e - KviIrcConnectionServerInfo: avoid Camel Case in labels
+  *  66d150d - Add missing channel mode descriptions for Criten IRCD.
+    (#2124)
+  *  cc31145 - CMakelists / buildinfo: report GTK status  (#2123)
+  *  ef82a95 - INSTALL: update  -DWANT_GTKSTYLE entry (#2118)
+  *  36abb4f - KviMainWindow: Modernize control loop (#2116)
+  *  69006e1 - Use the correct target for channels in ctcp action
+    messages. (#2121)
+  *  33fcef2 - Clean-up the KviStatusBarClock formatting (#2120)
+  *  753a415 - fix incorrect time indicator
+  *  755ea16 - kill some more xp support and bump Devel::PPPort - remove
+    specification of subsystem, now that we dropped XP - update nsis to
+    force Vista+ - get maketool from cmake var, no conditional needed
+    anymore - bump Devel::PPPort to 3.35 (no code change)
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Thu, 01 Sep 2016 19:34:47 +0300
+
+kvirc (4:4.9.2~git-6949-g0f298f6-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 0f298f642250a57dc7d227a48241af4007ad6462
+  * Date: 1471637593
+  * git changelog:
+  *  0f298f6 - CodeTesterWindow: Use unordered_set
+  *  f5a9aa8 - general: Cleanup
+  *  3128cd1 - version.h.cmake: Bump copyright year
+  *  cba71b0 - RuntimeInfo: Use #elif instead
+  *  9930117 - KviInputEditor: Remove Qt >= 5 check
+  *  0f6ff4d - IpcSentinel: Cleanup a bit
+  *  b79e1f0 - Goodbye XP, my old friend
+  *  66bf05d - OptionsWidget_dcc: add full stop at sentence end.
+  *  4685acd - fix broken tooltip section bg width.
+  *  463093d - OptionsWidget_ircOutput: fix show own part message label
+  *  4580f74 - OptionsWidget_ircOutput: remove unused code
+  *  0315c35 - KviQueryWindow: Fix HTML and string concatenation with
+    macro
+  *  bb37fd8 - HttpFileTransfer: no need to  use abreviattions
+  *  44a6a62 - DccFileTransfer: no need to  use abreviations
+  *  0aa874f - KviIrcDataStreamMonitor: Fix #2110
+  *  a2cd9c1 - KvsObjectLayout: Use correct macro
+  *  65f77c7 - PopupEditor: Fix unintentional item reassignmnet
+  *  a72144b - KviIrcView: Move to vector
+  *  71949f9 - popups: fix oopsie warning not joined to server
+  *  a1f3053 - popups: add jconditional oin channel  for joining  dead
+    channels
+  *  bda37ab - fix empty tooltip  glitch when not connected to a server.
+  *  921bcb6 - ScriptEditor: Remove include
+  *  8d214dc - PopupEditor: Maybe fix #2012
+  *  7c4e1d7 - ScriptEditor: Refactor a bit
+  *  7c27ccc - Add /away -d for GUI actions to override the
+    boolUseAwayMessage option. Fixes #2101 and fixes #2102. (#2104)
+  *  6e4811f - default script configuration: bump aliases after 0cbfbf3
+  *  0cbfbf3 - defscript/aliases: Add backall
+  *  b1c0c47 - KviWindow: Fix build
+  *  944f71b - OptionsAwayWidget: Remove pointless destructor
+  *  4a74562 - KviWindow: Real fix for #2103
+  *  8878574 - KviWindow: Skip over blank lines when replaying logs
+  *  5f84c46 - bkvitrayicon: Move srand to module init
+  *  ca1ebd0 - bkvitrayicon: Remove pointless cast
+  *  e330653 - libkvitrayicon: Use C++ headers instead
+  *  de0593a - KviIrcConnection: Topple the leaning tower of if
+    statements
+  *  fd2a3b3 - Clean up KviActionDrawer
+  *  0ef3b63 - Clean up libkvitrayicon
+  *  c58673e - Remove unused m_oStoredWindowStates
+  *  1dd0c55 - numericHandlers: Fix off-by-one in parseNumericStats
+  *  9443391 - KviWindow: QVector -> std::vector
+  *  81510bf - KviTrayIcon: Get rid of the die() method
+  *  522aa3a - KviWindow: Remove if checks on delete
+  *  3f66935 - debian_build: set "DCMAKE_BUILD_TYPE = Debug"
+  *  066e0df - debian_build: debian\rules fix
+  *  3e09b7e - debian_build: fix
+  *  fd750f3 - debian_build: add debug PPA
+  *  05c7d2e - KviBuildInfo: Add build types
+  *  e988cda - OptionsWidget_proxy: Change the ordering when committing
+  *  a358e2e - libkviwindow: Properly enumerate
+  *  3aa10e0 - KviMainWindow: Enumerate through module extension
+    toolbars properly
+  *  03f6e06 - KviIrcContext: More pointless checks
+  *  a23a777 - KviIrcContext: Remove redundant checks when deleting
+  *  4bf5e90 - KviIrcContext: Properly enumerate the vector while
+    iterating
+  *  9b4b2ed - KviIrcContext: Properly enumerate the vector when
+    deleting
+  *  985b5ee - KviWindow: 0 => nullptr
+  *  74ea254 - KviConsoleWindow: Remove pointless ifdef guard and
+    assignment
+  *  e37f31d - KvsEventTable: Update descriptions for OnNickServAuth
+  *  e8024a8 - KVS: Add event handler for CAP
+  *  46b9539 - KviInputEditor: Trailing tab
+  *  664ecb2 - KviInputEditor: Fix HTML
+  *  1e67662 - SimpleCommands: Add wrapper for operwall
+  *  32dc4fb - SimpleCommands: Add wrapper for wallops
+  *  3ef14d7 - SimpleCommands/whois: Fix segfault
+  *  3e10cef - SimpleCommands/whowas: Fix segfault
+  *  6189586 - COPYING: cleanup + update and clarify
+  *  a628679 - refresh GPLv2 lic
+  *  19b367a - remove gplv3, there was never a full transition to gplv3
+  *  5263040 - IpcSentinel: Simplify
+  *  9c9098a - IPCSentinel: Fix launching on windows twice on irc url
+    click
+  *  39a7144 - KviIrcView_events: Trailing tab
+  *  4efbe5f - EventManager: Add overload method to prevent crash
+  *  174ea92 - KviFileTransfer: Fix freeze when killing terminated
+    transfers
+  *  66de677 - void range-for loops when things are being destroyed
+  *  68b8b84 - DccChatWindow: Fix possible issue in tryFlushOutBuffers()
+  *  d4a540c - TermWidget: Fix typo
+  *  2a497c6 - Fixes Issue #2088 (#2091)
+  *  642ec84 - Add forgotten calls to clear()
+  *  b9a7c7f - Remove KviParameterList
+  *  71dff65 - DccChatWindow: Move to deque and unique pointers
+  *  f152371 - proxywidget: More cleanup
+  *  119ba5b - Links: Refactor links window and links widget
+  *  7384474 - SocketSpy: Move to unordered_set
+  *  51b86a6 - KviKvsAsyncOperation: Move to unordered_set
+  *  d02b835 - libkviterm: Move to unordered_set
+  *  3dbb13f - serverwidget: Remove un-needed if checks
+  *  dc5052f - KviIrcConnectionAsyncData: Move to unordered_set
+  *  e3a1ae6 - KviProxyDatabase: Fix MSVC bug
+  *  a0c4c0f - KviIrcServerReconnectInfo: Refactor
+  *  2ceba3c - KviProxyDatabase: Move to vector and unique pointers
+  *  5e0a295 - KviIrcConnectionAsyncData: Move to std::set
+  *  39eaeda - KviKvsAsyncDnsOperation: Remove un-needed if check
+  *  dcd83d5 - KviFileTransfer: Kill filetransfers from back to front
+  *  7fa727e - Fix string concatenation with macro in KviInputEditor
+    (#2094)
+  *  c789459 - remove unused variables
+  *  fa1160e - Textbrowser : fix loading HTML files on Windows
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 19 Aug 2016 23:44:50 +0300
+
+kvirc (4:4.9.2~git-6854-g71bdfcc-1) unstable; urgency=medium
+
+  * Compile
+  * Branch: master
+  * Commit: 71bdfccc4bd2a4c102ffc99392c004670c68e52d
+  * Date: 1470496110
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sun, 07 Aug 2016 11:35:17 +0300
+
+kvirc (4:4.9.2~git-6834-gedec5dc-1) unstable; urgency=medium
+
+  * Compile
+  * Branch: master
+  * Commit: edec5dc218b9f308c354e204bd6dbe6e822f5f99
+  * Date: 1470138838
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Tue, 02 Aug 2016 17:44:04 +0300
+
+kvirc (4:4.9.2~git-6812-gc3471bb-1) unstable; urgency=medium
+
+  * Compile
+  * Branch: master
+  * Commit: c3471bb6e8360fcb92be7e4e22b010b63d21909b
+  * Date: 1469092054
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sat, 23 Jul 2016 13:50:54 +0300
+
+kvirc (4:4.9.2~git-6789-g5ca5d90-1) unstable; urgency=medium
+
+  * Compile
+  * Branch: master
+  * Commit: 5ca5d90461ea4fac326f972cfd11ebaca8f1b75c
+  * Date: 1468055468
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sat, 09 Jul 2016 12:37:27 +0300
+
+kvirc (4:4.9.2~git-6754-ga02363c-1) unstable; urgency=medium
+
+  * Compile
+  * Branch: master
+  * Commit: a02363c9e7ad27e167f3fb879da11d09efc87dbe
+  * Date: 1466849933
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sat, 25 Jun 2016 21:36:03 +0300
+
+kvirc (4:4.9.2~git-6720-gfe182d9-1) unstable; urgency=medium
+
+  * Compile
+  * Branch: master
+  * Commit: fe182d96184503dd15e76751c3d6db49e53b53ae
+  * Date: 1465585920
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sat, 11 Jun 2016 09:23:58 +0300
+
+kvirc (4:4.9.2~git-6682-gdd4c5b9-1) unstable; urgency=medium
+
+  * Compile
+  * Branch: master
+  * Commit: dd4c5b9650acf0e4967397893404024cb4908a23
+  * Date: 1464268929
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 27 May 2016 22:02:23 +0300
+
+kvirc (4:4.9.2~git-6634-g8a99f27-1) unstable; urgency=medium
+
+  * Compile
+  * Branch: master
+  * Commit: 8a99f274ae252d271d5b1bd5c1e82a431b215d6f
+  * Date: 1463291467
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sun, 15 May 2016 11:00:24 +0300
+
+kvirc (4:4.9.2~git-6544-gfa33e18-1) unstable; urgency=medium
+
+  * Compile
+  * Branch: master
+  * Commit: fa33e18f09919ff1da09b7df45eb6c4dfaed4be0
+  * Date: 1461879241
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 29 Apr 2016 21:59:56 +0300
+
+kvirc (4:4.9.2~git-6399-gcd31197-1) unstable; urgency=medium
+
+  * Compile
+  * Branch: master
+  * Commit: cd311971b591300ec57a5c9b039b4ccff8756d11
+  * Date: 1460736343
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 15 Apr 2016 23:03:50 +0300
+
 kvirc (4:4.9.2~git-6345-ga559c50-1) unstable; urgency=medium
 
   * Compile

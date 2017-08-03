@@ -1,0 +1,105 @@
+Source: kvirc
+Section: net
+Priority: optional
+Maintainer: Alexander Pozdnyakov <almipo@mail.ru>
+Build-Depends: debhelper (>= 9),
+ cmake (>= 3.1),
+ libperl-dev,
+ zlib1g-dev,
+ libx11-dev,
+ libxrender-dev,
+ libssl1.0-dev,
+ qtbase5-dev,  qttools5-dev-tools, libqt5x11extras5-dev, libphonon4qt5-dev,
+ qttools5-dev, libqt5svg5-dev, qtmultimedia5-dev, libqt5webkit5-dev, libphonon4qt5experimental-dev,
+ pkg-config,
+ libxss-dev,
+ python-dev,
+ libqtwebkit-dev, libenchant-dev
+Standards-Version: 3.9.8
+Homepage: http://www.kvirc.de/
+
+Package: kvirc
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libkvilib4 (= ${binary:Version}),
+ kvirc-modules (= ${binary:Version}),
+ kvirc-data (= ${source:Version}),
+ ${shlibs:Depends},
+ ${misc:Depends}
+Suggests: kvirc-dbg (= ${binary:Version})
+Multi-Arch: foreign
+Description: Next generation IRC client with module support
+ A highly configurable graphical IRC client,with powerful and flexible
+ built-in scripting language, supports IRC DCC, DCC over SSL, Spell-checking,
+ drag & drop, file browsing, and much more.
+ KVIrc can be extended using its own scripting language, integrate with KDE,
+ and supports custom add-ons/scripts and themes.
+ .
+ If you're looking for powerful highly customizable client, you have found it.
+ You won't regret installing KVIrc.
+
+Package: libkvilib4
+Architecture: any
+Section: libs
+Pre-Depends:  ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: kvirc (= ${binary:Version})
+Suggests: kvirc-dbg (= ${binary:Version})
+Multi-Arch: same
+Description: KVIrc (IRC client) base library
+ A highly configurable graphical IRC client,with powerful and flexible
+ built-in scripting language, supports IRC DCC, DCC over SSL, Spell-checking,
+ drag & drop, file browsing, and much more.
+ KVIrc can be extended using its own scripting language, integrate with KDE,
+ and supports custom add-ons/scripts and themes.
+ .
+ This package contains the main library of KVIrc.
+
+Package: kvirc-modules
+Architecture: any
+Section: libs
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libkvilib4 (= ${binary:Version}),
+ ${shlibs:Depends},
+ ${misc:Depends}
+Recommends: kvirc (= ${binary:Version})
+Suggests: kvirc-dbg (= ${binary:Version})
+Multi-Arch: same
+Description: KVIrc (IRC client) modules
+ A highly configurable graphical IRC client,with powerful and flexible
+ built-in scripting language, supports IRC DCC, DCC over SSL, Spell-checking,
+ drag & drop, file browsing, and much more.
+ KVIrc can be extended using its own scripting language, integrate with KDE,
+ and supports custom add-ons/scripts and themes.
+ .
+ This package contains all modules for KVIrc.
+
+Package: kvirc-data
+Architecture: all
+Depends: ${misc:Depends}
+Recommends: kvirc (>= ${source:Version})
+Multi-Arch: foreign
+Description: Data files for KVIrc
+ This package contains the architecture-independent data needed by KVIrc in
+ order to run, such as icons and images, language files, and shell scripts.
+ It also contains complete reference guides on scripting and functions
+ within KVIrc in its internal help format.
+
+Package: kvirc-dbg
+Architecture: any
+Section: debug
+Priority: extra
+Depends: kvirc (= ${binary:Version}),
+ libkvilib4 (= ${binary:Version}),
+ kvirc-modules (= ${binary:Version}),
+ ${misc:Depends}
+Description: KVIrc (IRC client) debugging symbols
+ A highly configurable graphical IRC client,with powerful and flexible
+ built-in scripting language, supports IRC DCC, DCC over SSL, Spell-checking,
+ drag & drop, file browsing, and much more.
+ KVIrc can be extended using its own scripting language, integrate with KDE,
+ and supports custom add-ons/scripts and themes.
+ .
+ This package is intended to help debugging possible problems with KVIrc.
+
+
