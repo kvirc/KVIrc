@@ -188,7 +188,7 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent * e)
 			szKvsCommand = "host -a $0";
 			break;
 		case 'u':
-			if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 2) // <-- ??????????
+			if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 2)
 			{
 				KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick, m_pKviWindow, &lParams);
 				return;
@@ -196,14 +196,15 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent * e)
 			break;
 		case 'c':
 		{
-			if(!console())
-				return;
-			if(!console()->connection())
+			if(!console() || !console()->connection())
 				return;
 
 			// If there is a channel after the c flag, join that instead (as the text part may contain control codes)
 			if(szLinkCommandPart.length() > 1)
+			{
 				szLinkTextPart = szLinkCommandPart.mid(1);
+				*lParams.at(0) = szLinkTextPart;
+			}
 
 			if(KviChannelWindow * c = console()->connection()->findChannel(szLinkTextPart))
 			{
