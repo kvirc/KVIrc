@@ -2047,6 +2047,7 @@ void KviIrcServerParser::parseNumericChanUrl(KviIrcMessage * msg)
 {
 	// 328: RPL_CHANURL
 	// :prefix 328 target <channel> :<url>
+	if(msg->haltOutput()) return;
 
 	QString szChan = msg->connection()->decodeText(msg->safeParam(1));
 	KviChannelWindow * chan = msg->connection()->findChannel(szChan);
@@ -2056,16 +2057,13 @@ void KviIrcServerParser::parseNumericChanUrl(KviIrcMessage * msg)
 	if(chan)
 	{
 		szUrl = chan->decodeText(msg->safeTrailing());
-		if(!msg->haltOutput())
-		{
-			chan->output(KVI_OUT_CHANURL, __tr2qs("This channel's website is: %Q"), &szUrl);
-		}
+		chan->output(KVI_OUT_CHANURL, __tr2qs("This channel's website is: %Q"), &szUrl);
 	}
 	else
 	{
 		szUrl = msg->console()->decodeText(msg->safeTrailing());
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
-		pOut->output(KVI_OUT_CHANURL, __tr2qs("This channel's website is: %Q"), &szUrl);
+		pOut->output(KVI_OUT_CHANURL, __tr2qs("The website for \r!c\r%Q\r is: %Q"), &szChan, &szUrl);
 	}
 }
 
