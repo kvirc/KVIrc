@@ -535,7 +535,7 @@ namespace KviKvsCoreFunctions
 			[br]
 			Copy the translation file obtained in the following way:[br]
 			[example]
-				cp myscript.pot myscript_XX.pot
+				cp myscript.pot myscript_XX.po
 			[/example][br]
 			Where the XX is your country/language code. For example, for Italian
 			it would be:[br]
