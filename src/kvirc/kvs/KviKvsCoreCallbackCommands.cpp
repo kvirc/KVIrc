@@ -207,7 +207,7 @@ namespace KviKvsCoreCallbackCommands
 					[cmd]echo[/cmd] "j"
 				}
 				[comment]# Kill the whole 'letters' namespace[/comment]
-				alias(autoaway::){}
+				alias(letters::){}
 			[/example]
 		@seealso:
 			[doc:kvs_aliasesandfunctions]Aliases and functions[/doc]
