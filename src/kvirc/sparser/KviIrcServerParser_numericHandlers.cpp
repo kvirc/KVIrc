@@ -1820,7 +1820,7 @@ void KviIrcServerParser::parseNumericWhoisAuth(KviIrcMessage * msg)
 	msg->connection()->stateData()->setLastReceivedWhoisReply(kvi_unixTime());
 
 	QString szNick = msg->connection()->decodeText(msg->safeParam(1));
-	QString szAuth = (msg->numeric() == 307) ? szNick : msg->connection()->decodeText(msg->safeParam(2));
+	QString szAuth = msg->connection()->decodeText(msg->safeParam(2));
 
 	KviAsyncWhoisInfo * pInfo = msg->connection()->asyncWhoisData()->lookup(szNick);
 	if(pInfo)
