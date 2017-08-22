@@ -978,7 +978,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 
 	EVENT("OnURLLinkPopupRequest",
 	    "$0 = Actual name\n"
-	    "$1 = visible name\n"
+	    "$1 = Visible name\n"
 	    "$2 = Command name"),
 
 	/*
@@ -991,7 +991,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 			Server link popup customization
 		@parameters:
 			$0 = Actual name
-			$1 = visible name
+			$1 = Visible name
 			$2 = Command name
 		@window:
 			The window that the user has clicked in
@@ -1024,7 +1024,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 			Channel link popup customization
 		@parameters:
 			$0 = Actual name
-			$1 = visible name
+			$1 = Visible name
 			$2 = Command name
 		@window:
 			The window that the user has clicked in
@@ -4094,7 +4094,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 			$0 = Source nick
 			$1 = Source username
 			$2 = Source hostname
-			$3 = unban mask
+			$3 = Unban mask
 		@window:
 			Channel window
 		@description:
@@ -4254,7 +4254,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 			$0 = Source nickname
 			$1 = Source username
 			$2 = Source hostname
-			$3 = away message
+			$3 = Away message
 		@window:
 			Console window
 		@description:
@@ -4280,9 +4280,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Received a capability update from the IRCd
 		@parameters:
-			$0 = server
-			$1 = command
-			$2 = protocols
+			$0 = Server
+			$1 = Command
+			$2 = Protocols
 		@window:
 			Console window
 		@description:
@@ -4290,7 +4290,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnCap",
-	    "$0 = server\n"
-	    "$1 = command\n"
-	    "$2 = protocols"),
+	    "$0 = Server\n"
+	    "$1 = Command\n"
+	    "$2 = Protocols"),
 };
