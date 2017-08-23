@@ -909,9 +909,21 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 		}
 	}
 
-	// Normal PRIVMSG
+	QString szOriginalTarget = szTarget;
+	QString szPrefixes;
+
+	// check if the channel has some leading mode prefixes
+	while((szTarget.length() > 0) && console->connection()->serverInfo()->isSupportedModePrefix(szTarget[0].unicode()))
+	{
+		szPrefixes += szTarget[0];
+		szTarget.remove(0, 1);
+	}
+
+	// Query PRIVMSG
 	if(msg->connection()->serverInfo()->supportedChannelTypes().indexOf(szTarget[0]) == -1)
 	{
+		szTarget = szOriginalTarget;
+
 		//Ignore it?
 		if(uSource)
 		{
@@ -1143,9 +1155,6 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 		// Channel PRIVMSG
 		KviChannelWindow * chan = msg->connection()->findChannel(szTarget);
 
-		QString szOriginalTarget = szTarget;
-		QString szPrefixes;
-
 		//Ignore it?
 		if(uSource)
 		{
@@ -1160,17 +1169,6 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 				}
 				return;
 			}
-		}
-
-		if(!chan)
-		{
-			// check if the channel has some leading mode prefixes
-			while((szTarget.length() > 0) && console->connection()->serverInfo()->isSupportedModePrefix(szTarget[0].unicode()))
-			{
-				szPrefixes += szTarget[0];
-				szTarget.remove(0, 1);
-			}
-			chan = msg->connection()->findChannel(szTarget);
 		}
 
 		if(!chan)
