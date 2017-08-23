@@ -913,7 +913,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 	QString szPrefixes;
 
 	// check if the channel has some leading mode prefixes
-	while((szTarget.length() > 0) && console->connection()->serverInfo()->isSupportedModePrefix(szTarget[0].unicode()))
+	while((szTarget.length() > 0) && console->connection()->serverInfo()->supportedStatusMsgPrefixes().indexOf(szTarget[0]) >= 0)
 	{
 		szPrefixes += szTarget[0];
 		szTarget.remove(0, 1);
@@ -1570,7 +1570,7 @@ void KviIrcServerParser::parseLiteralNotice(KviIrcMessage * msg)
 	if(!chan)
 	{
 		// check if the channel has some leading mode prefixes
-		while((szTarget.length() > 0) && console->connection()->serverInfo()->isSupportedModePrefix(szTarget[0].unicode()))
+		while((szTarget.length() > 0) && console->connection()->serverInfo()->supportedStatusMsgPrefixes().indexOf(szTarget[0]) >= 0)
 		{
 			szPrefixes += szTarget[0];
 			szTarget.remove(0, 1);

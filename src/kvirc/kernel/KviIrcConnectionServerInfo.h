@@ -305,17 +305,18 @@ protected:
 
 private:
 	KviBasicIrcServerInfo * m_pServInfo;
-	QString m_szNetworkName;           // the most actual network name (may be the one we specify or the one that the server reports)
-	QString m_szName;                  // the most actual server name (may be the one we specify or the one that the server wants to be known as)
-	QString m_szSupportedUserModes;    // the supported user modes
-	QString m_szSupportedChannelModes; // the supported channel modes (all of them)
-	QString m_szSupportedModePrefixes; // the actually used mode prefixes  @+
-	kvi_u32_t * m_pModePrefixTable;    // the mode prefixes above in a table
+	QString m_szNetworkName;                // the most actual network name (may be the one we specify or the one that the server reports)
+	QString m_szName;                       // the most actual server name (may be the one we specify or the one that the server wants to be known as)
+	QString m_szSupportedUserModes;         // the supported user modes
+	QString m_szSupportedChannelModes;      // the supported channel modes (all of them)
+	QString m_szSupportedModePrefixes;      // the actually used mode prefixes  @+
+	QString m_szSupportedStatusMsgPrefixes; // mode prefixes that can be used to target messages (from the STATUSMSG ISUPPORT token)
+	kvi_u32_t * m_pModePrefixTable;         // the mode prefixes above in a table
 	unsigned int m_uPrefixes;
-	QString m_szSupportedModeFlags;    // the actually used mode flags     ov
-	QString m_szSupportedChannelTypes; // the supported channel types
-	bool m_bSupportsWatchList;         // supports the watch list ?
-	bool m_bSupportsCodePages;         // supports the /CODEPAGE command ?
+	QString m_szSupportedModeFlags;         // the actually used mode flags     ov
+	QString m_szSupportedChannelTypes;      // the supported channel types
+	bool m_bSupportsWatchList;              // supports the watch list ?
+	bool m_bSupportsCodePages;              // supports the /CODEPAGE command ?
 	int m_iMaxTopicLen;
 	int m_iMaxModeChanges;
 	// Mode that adds or removes a nick or address to a list. Always has a parameter (eg: "b" as ban)
@@ -340,6 +341,7 @@ public:
 	const QString & supportedChannelModes() { return m_szSupportedChannelModes; };
 	const QString & supportedChannelTypes() { return m_szSupportedChannelTypes; };
 	const QString & supportedModePrefixes() { return m_szSupportedModePrefixes; };
+	const QString & supportedStatusMsgPrefixes() { return m_szSupportedStatusMsgPrefixes; };
 	const QString & supportedModeFlags() { return m_szSupportedModeFlags; };
 	const QString & supportedListModes() { return m_szListModes; };
 	const QString & supportedParameterModes() { return m_szParameterModes; };
@@ -377,6 +379,7 @@ protected:
 	void setSupportedUserModes(const QString & szSupportedUserModes) { m_szSupportedUserModes = szSupportedUserModes; };
 	void setSupportedChannelModes(const QString & szSupportedChannelModes);
 	void setSupportedModePrefixes(const QString & szSupportedModePrefixes, const QString & szSupportedModeFlags);
+	void setSupportedStatusMsgPrefixes(const QString & szSupportedStatusMsgPrefixes) { m_szSupportedStatusMsgPrefixes = szSupportedStatusMsgPrefixes; };
 	void setSupportedChannelTypes(const QString & szSupportedChannelTypes) { m_szSupportedChannelTypes = szSupportedChannelTypes; };
 	void setSupportsWatchList(bool bSupportsWatchList) { m_bSupportsWatchList = bSupportsWatchList; };
 	void setSupportsCodePages(bool bSupportsCodePages) { m_bSupportsCodePages = bSupportsCodePages; };
