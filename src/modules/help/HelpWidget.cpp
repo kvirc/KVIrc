@@ -39,6 +39,7 @@
 #include <QTimer>
 #include <QClipboard>
 #include <QDir>
+#include <QAction>
 
 extern HelpIndex * g_pDocIndex;
 extern KviPointerList<HelpWindow> * g_pHelpWindowList;
