@@ -45,7 +45,7 @@ if(PERL_FOUND)
 		add_custom_command(
 			OUTPUT ${USERDOCS_OUTPUT_FILE}
 			COMMENT "Generating user documentation..."
-			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${USERDOCS_VERSION} '${CMAKE_CURRENT_BINARY_DIR}/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
+			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl --css ${PROJECT_SOURCE_DIR}/admin/doc.css -v ${USERDOCS_VERSION} '${CMAKE_CURRENT_BINARY_DIR}/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
 		)
 		if(APPLE)
 			install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/help)
@@ -56,19 +56,19 @@ if(PERL_FOUND)
 		add_custom_target(
 			docs
 			COMMENT "Generating user documentation..."
-			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${USERDOCS_VERSION} '${CMAKE_CURRENT_BINARY_DIR}/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
+			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl --css ${PROJECT_SOURCE_DIR}/admin/doc.css -v ${USERDOCS_VERSION} '${CMAKE_CURRENT_BINARY_DIR}/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
 		)
 	elseif(WIN32)
 		add_custom_command(
 			OUTPUT ${USERDOCS_OUTPUT_FILE}
 			COMMENT "Generating user documentation..."
-			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${USERDOCS_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/help/en/ ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
+			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl --css ${PROJECT_SOURCE_DIR}/admin/doc.css -v ${USERDOCS_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/help/en/ ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
 		)
 		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/help)
 		add_custom_target(
 			docs
 			COMMENT "Generating user documentation..."
-			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${USERDOCS_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/help/en/ ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
+			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl --css ${PROJECT_SOURCE_DIR}/admin/doc.css -v ${USERDOCS_VERSION} ${CMAKE_CURRENT_BINARY_DIR}/help/en/ ${PROJECT_SOURCE_DIR}/data/doctemplates/ ${PROJECT_SOURCE_DIR}/src/
 		)
 	endif()
 

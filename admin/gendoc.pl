@@ -30,8 +30,6 @@
 
 $g_currenttime=gmtime;
 $g_currentuser = getlogin || getpwuid($<) || "Unknown";
-$g_notetablebgcolor="#F2F2F2";
-$g_notetextcolor="#636363";
 $g_syntaxcolor="#802000";
 
 $g_kvssyntaxcolor="#802000";
@@ -64,6 +62,7 @@ $g_version = "4.0.0";
 $g_filehandle="";
 $g_shortsIdx{"keyterms"}=0;
 $g_directory = "";
+$g_css = "";
 
 #################################################################################################
 # PARSE ARGS
@@ -104,6 +103,16 @@ while($cont)
 			die "Switch -v requires a parameter"
 		}
 		$g_version = $ARGV[$i];
+		$i++;
+	} elsif($ARGV[$i] eq "--css")
+	{
+		$i++;
+		if($ARGV[$i] eq "")
+		{
+			usage();
+			die "Switch --css requires a parameter"
+		}
+		$g_css = $ARGV[$i];
 		$i++;
 	} else {
 		$cont = 0; # stop processing
@@ -161,205 +170,22 @@ sub print_header
 {
 	print $g_filehandle "<html>\n";
 	print $g_filehandle "<head>\n";
+	print $g_filehandle "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" >\n";
 	print $g_filehandle "<title>$_[0]</title>\n";
-
 	print $g_filehandle "<style type=\"text/css\">\n";
-	print $g_filehandle "body {\n";
-	print $g_filehandle " font-size: 10pt;\n";
-	print $g_filehandle " margin-left: 8px;\n";
-	print $g_filehandle " margin-right: 8px;\n";
-	print $g_filehandle " margin-top: 6px;\n";
-	print $g_filehandle " margin-bottom: 6px;\n";
-	print $g_filehandle " font-family:Verdana,Helvetica,Arial,sans-serif;\n";
-	print $g_filehandle "}\n";
 
-	print $g_filehandle "table, td, tr {\n";
-	print $g_filehandle " color: #3c3c3c;\n";
-	print $g_filehandle " font-size: 10pt;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle "td {\n";
-	print $g_filehandle " padding: 6px;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle "a:link {\n";
-	print $g_filehandle " text-decoration: none;\n";
-	print $g_filehandle " color: #2883e2;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle "a:visited {\n";
-	print $g_filehandle " text-decoration: none;\n";
-	print $g_filehandle " color: #6856cc;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle "a:hover {\n";
-	print $g_filehandle " text-decoration: underline;\n";
-	print $g_filehandle " color: #186CC4;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle "a:active {\n";
-	print $g_filehandle " text-decoration: underline;\n";
-	print $g_filehandle " color: #186CC4;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".title-table-cell {\n";
-	print $g_filehandle " border-top-left-radius: 3px;\n";
-	print $g_filehandle " border-top-right-radius: 3px;\n";
-	print $g_filehandle " background-color: #F2DFB1;\n";
-	#print $g_filehandle " background: linear-gradient(#CBE4F2,#4E8ABF);\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".title-text {\n";
-	print $g_filehandle " font-size: 18pt;\n";
-	print $g_filehandle " font-weight: bold;\n";
-	print $g_filehandle " padding-bottom: 3px;\n";
-	print $g_filehandle " color: #404040;\n";
-	print $g_filehandle " text-shadow: 0px 2px 0px rgba(247,247,247,1);\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".title-secondary-text {\n";
-	print $g_filehandle " font-size: 11pt;\n";
-	print $g_filehandle " padding-top: 3px;\n";
-	print $g_filehandle " color: #474747;\n";
-	print $g_filehandle " text-shadow: 0px 2px 0px rgba(247,247,247,1);\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".subtitle-table-cell {\n";
-	print $g_filehandle " background-color: #D6D6D6;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".subtitle-text {\n";
-	print $g_filehandle " font-size: 11pt;\n";
-	print $g_filehandle " color: #000000;\n";
-	print $g_filehandle " text-shadow: 0px 1px 0px rgba(247,247,247,1);\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".subsubtitle-table-cell {\n";
-	print $g_filehandle " background-color: #E3E3E3;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".subsubtitle-text {\n";
-	print $g_filehandle " font-size: 10pt;\n";
-	print $g_filehandle " color: #474747;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".syntax-text {\n";
-	print $g_filehandle " font-family:\"Lucida Console\", Monaco, \"Courier New\", monospace;\n";
-	print $g_filehandle " font-size: 10pt;\n";
-	print $g_filehandle " font-weight: bold;\n";
-	print $g_filehandle " white-space: pre;\n";
-	print $g_filehandle " color: #800000;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".example-box {\n";
-	print $g_filehandle " font-family:\"Lucida Console\", Monaco, \"Courier New\", monospace;\n";
-	print $g_filehandle " font-size: 10pt;\n";
-	print $g_filehandle " white-space: pre;\n";
-	print $g_filehandle " background-color: #f5f5f5;\n";
-	print $g_filehandle " border: 1px solid #d5d5d5;\n";
-	print $g_filehandle " color: #800000;\n";
-	print $g_filehandle " padding: 10px;\n";
-	print $g_filehandle " margin-top: 6px;\n";
-	print $g_filehandle " margin-bottom: 6px;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".example-box a:link {\n";
-	print $g_filehandle " color: #600030;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".example-box a:visited {\n";
-	print $g_filehandle " color: #600030;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".example-box a:hover {\n";
-	print $g_filehandle " color: #FF2B46;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".example-box a:active {\n";
-	print $g_filehandle " color: #FF2B46;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".comment-text {\n";
-	print $g_filehandle " color: #578A57;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".comment-text a:link {\n";
-	print $g_filehandle " color: #578A57;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".comment-text a:visited {\n";
-	print $g_filehandle " color: #578A57;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".comment-text a:hover {\n";
-	print $g_filehandle " color: #35BD58;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".comment-text a:active {\n";
-	print $g_filehandle " color: #35BD58;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".example-paren {\n";
-	print $g_filehandle " color: #8A7000;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".example-bracket {\n";
-	print $g_filehandle " color: #9C7914;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".example-oper {\n";
-	print $g_filehandle " color: #9C7914;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".example-variable {\n";
-	print $g_filehandle " color: #AB6332;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".comment-text .example-variable {\n";
-	print $g_filehandle " color: #578A57;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".comment-text .example-oper {\n";
-	print $g_filehandle " color: #578A57;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".comment-text .example-paren {\n";
-	print $g_filehandle " color: #578A57;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".comment-text .example-bracket {\n";
-	print $g_filehandle " color: #578A57;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".switch-table {\n";
-	print $g_filehandle " width: 100%;\n";
-	print $g_filehandle " border-collapse: collapse;\n";
-	#print $g_filehandle " border: 1px solid #d5d5d5;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".switch-title-table-cell {\n";
-	print $g_filehandle " font-family:\"Lucida Console\", Monaco, \"Courier New\", monospace;\n";
-	print $g_filehandle " font-size: 10pt;\n";
-	print $g_filehandle " color: #670000;\n";
-	print $g_filehandle " background-color: #EDEDED;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".switch-body-table-cell {\n";
-	#print $g_filehandle " background-color: #EDEDED;\n";
-	print $g_filehandle "}\n";
-
-	print $g_filehandle ".footer {\n";
-	print $g_filehandle " border-top: 1px solid #a2a2a2;\n";
-	print $g_filehandle " color: #a2a2a2;\n";
-	print $g_filehandle " margin-top: 8px;\n";
-	print $g_filehandle " padding-top: 4px;\n";
-	print $g_filehandle " font-style: italic;\n";
-	print $g_filehandle " font-size: 8pt;\n";
-	print $g_filehandle "}\n";
-
+	if($g_css ne "")
+	{
+		open(INPUT, $g_css) or die "Error opening $g_css: $!";
+		while(<INPUT>)
+		{
+			chomp;
+			print $g_filehandle "$_ ";
+		}
+		close(INPUT);
+	}
 
 	print $g_filehandle "</style>\n";
-	print $g_filehandle "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" >\n";
 	print $g_filehandle "</head>\n";
 	print $g_filehandle "<body bgcolor=\"$g_bodybgcolor\" text=\"$g_bodytextcolor\">\n";
 
@@ -835,8 +661,8 @@ sub process_body_line
 	$_[0] =~ s/\[\/tr\]/\<\/tr\>/g;
 	$_[0] =~ s/\[td\]/\<td\>/g;
 	$_[0] =~ s/\[\/td\]/\<\/td\>/g;
-	$_[0] =~ s/\[example\][ 	\n]*/<div class="example-box">/g;
-	$_[0] =~ s/\[\/example\]/<\/div>/g;
+	$_[0] =~ s/\[example\][ 	\n]*/\<\/td\>\<\/tr\>\<tr\>\<td class=\"example-box\"\>/g;
+	$_[0] =~ s/\[\/example\]/\<\/td\>\<\/tr\>\<tr\>\<td bgcolor=\"$g_bodytablebgcolor\"\>/g;
 	$_[0] =~ s/\[comment\]/<span class="comment-text">/g;
 	$_[0] =~ s/\[\/comment\]/<\/span>/g;
 
@@ -864,8 +690,8 @@ sub process_body_line
 	$_[0] =~ s/\[\/anchorlink\]/\<\/a\>/g;
 	$_[0] =~ s/\[anchor:([a-zA-Z0-9_]*)\]/\<a name=\"\1"\>/g;
 	$_[0] =~ s/\[\/anchor\]/\<\/a\>/g;
-	$_[0] =~ s/\[note\][ 	\n]*/<p>\<table width=\"100%\"\ cellpadding=\"2\">\<tr\>\<td\ bgcolor=\"$g_notetablebgcolor\">\<font color=\"$g_notetextcolor\" size=\"-1\"\>/g;
-	$_[0] =~ s/\[\/note\]/\<\/font\>\<\/td\>\<\/tr\>\<\/table\><\/p>/g;
+	$_[0] =~ s/\[note\][ 	\n]*/\<\/td\>\<\/tr\>\<tr\>\<td class=\"note-box\"\>/g;
+	$_[0] =~ s/\[\/note\]/\<\/td\>\<\/tr\>\<tr\>\<td bgcolor=\"$g_bodytablebgcolor\"\>/g;
 
 
 }
