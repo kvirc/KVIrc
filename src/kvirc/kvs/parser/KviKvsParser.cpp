@@ -326,7 +326,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		the [i]PrincoScript[/i] or [i]dynamirc[/i] (tough this last one should be categorized as [i]malware[/i] instead).
 		In KVIrc such a collection of items is called [i]addon[/i], but be prepared
 		for both usages of the word in this documentation and around the web.[br]
-		More about addons in this [doc:addons]document[/doc]
+		[doc:kvs_addons]Learn more about KVS addons[/doc].
 		[big]Hello world![/big]
 		This documentation contains a lot of script examples.
 		They will appear like the following block of code:
@@ -479,7 +479,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		so you must include the needed spaces [b]before[/b] the escape character.
 		The previous example will be printed as:[br][br]
 		[i]This text will be printed on a single line[/i][br]
-		Another example:[br]
+		Another example:
 		[example]
 			[cmd]echo[/cmd] "The new KVIrc &nbsp; &nbsp; &nbsp \
 			&nbsp; &nbsp; IS OUT!"
@@ -521,11 +521,11 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		[big]Command blocks[/big]
 		Commands can be 'grouped' in blocks by using the classic C++ braces.
-		Here is a single line example:[br]
+		Here is a single line example:
 		[example]
 			{ [cmd]echo[/cmd] First command; [cmd]echo[/cmd] Second command; } [cmd]echo[/cmd] Third command
 		[/example]
-		Multi line example:[br]
+		Multi line example:
 		[example]
 			{
 			    [cmd]echo[/cmd] First command
@@ -539,7 +539,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/note]
 		In this case the command block has no special meaning
 		other than making the code more readable, but command blocks
-		will be useful later (see [cmd]if[/cmd],[cmd]while[/cmd]...).[br]
+		will be useful later (see [cmd]if[/cmd],[cmd]while[/cmd]...).
 		[note]
 		Unlike in C or C++, the braces do [b]not[/b] automatically define a variable scope
 		(with few exceptions to this rule ... just to complicate the things a bit more).
@@ -584,7 +584,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		Tabs behave better than spaces as indentation characters since other users can
 		adjust the tab size to match their taste. I personally prefer 4 character tabs
 		while most text/code editors usually come with 8 characters as default.
-		[br]
 		[big]And now?[/big]
 		[br]
 		You're now ready to really start experimenting with KVS. You can take
@@ -867,7 +866,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 	@short:
 		KVIrc window structure and the window naming conventions
 	@body:
-		[big]Introduction[/big][br]
+		[big]Introduction[/big]
 		Starting from the release 3.0.0, KVIrc window structure has
 		grown in complexity. Older releases allowed one connection
 		per [i]frame window[/i] and thus had a dedicated command parser
@@ -877,8 +876,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		It was sufficient to have an [i]unique[/i] name for ever window;
 		condition that was granted by the underlying IRC protocol
 		and by the KVIrc core design.[br]
-		In this version, the unique window names are impossible to be granted.[br]
-		[big]Scenario[/big][br]
+		In this version, the unique window names are impossible to be granted.
+		[big]Scenario[/big]
 		The command parser is now [i]global[/i] to the application.
 		There can be two or more consoles in each frame and the user
 		is able to join the same channel with two different nicknames
@@ -948,7 +947,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/li]
 		[/ul]
 		[br]
-		A naming convention has become necessary to resolve ambiguities.[br]
+		A naming convention has become necessary to resolve ambiguities.
 		[big]Basic assumptions[/big]
 		Every KVIrc window has four main properties:[br]
 		-[b]an unique numeric identifier[/b][br]
@@ -967,9 +966,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		the logical name corresponds to the caption text. This will be discussed later.[br]
 		The [b]type identifier[/b] describes the properties of a certain window.
 		For channel windows the type identifier is [i]channel[/i], for query windows is [i]query[/i],
-		for console windows it is [i]console[/i], etc.[br]
-		[br]
-		[big]IRC Contexts[/big][br]
+		for console windows it is [i]console[/i], etc.
+		[big]IRC Contexts[/big]
 		The KVIrc frame windows are numbered starting from 0 and named
 		[i]frame_<number>[/i]. Each frame can contain an unlimited number of consoles.[br]
 		Each console is bound to an [b]IRC context[/b]. (The part [i]is bound to[/i] could
@@ -1001,9 +999,9 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		referred as [b]connection ID[/b] or [b]connection context ID[/b].[br]
 		There are classes of windows that are not bound to any [b]IRC context[/b]:
 		this includes user created windows, DCC windows, browsers etc.[br]
-		KVIrc will try to keep that windows with unique logical names.[br]
-		[big]How to identify a window[/big][br]
-		So what we have until now is:[br]
+		KVIrc will try to keep that windows with unique logical names.
+		[big]How to identify a window[/big]
+		So what we have until now is:
 		[ul]
 		[li]Each window has its own unique [b]window ID[/b]: we
 		will refer windows always using this identifier.[/li]
@@ -1214,13 +1212,13 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		KVIrc has a builtin addon management system that allows the users to create,
 		install, configure and uninstall features with a nice graphical interface.
 		The management system allows the addons to have documentation integrated in
-		the KVIrc help and to be translated in several languages.[br]
-		[big]Addon installation[/big][br]
+		the KVIrc help and to be translated in several languages.
+		[big]Addon installation[/big]
 		The addons are usually shipped in compressed archives (.kva). KVIrc will look
 		for the installer file called [i]install.kvs[/i] and executes it when the user will
 		ask for your addon to be installed. The install.kvs contains the code for the
 		[b]registration[/b] of your addon and will [cmd]include[/cmd] all the other
-		necessary source files.[br]
+		necessary source files.
 		[big]The minimal addon[/big]
 		[br]
 		The smallest addon that you can write is the one that does nothing.
@@ -1271,7 +1269,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 				...
 			}
 		[/example]
-		[br]
 		[big]A typical addon layout[/big]
 		[br]
 		As stated above, the addons are usually shipped in a compressed archive.
@@ -1386,11 +1383,9 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		etc...).
 		Please note that English is the default language and KVIrc will
 		fallback to the [i]en[/i] subdirectory when no other language is found around...
-		[br]
 		[big]Some examples[/big]
 		The code below is just an example of how to write a useful initialization of
 		your own addon. The name of the classes refer to the ones described above.
-		[br]
 		[example]
 			[comment]# Register the classes[/comment]
 			alias(MyAddon::classes::register)
@@ -1453,7 +1448,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 				...
 			}
 		[/example]
-		[br]
 		[big]The help and configuration callbacks[/big]
 		[br]
 		Each addon can have a help and a configuration callback. These are set
@@ -1472,7 +1466,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		mainly for more complex graphical scripts that can show up a dialog
 		that allows configuring all of the addon features. To use this callback
 		you will probably need some object scripting.
-		[br]
 		[big]The real addon work[/big]
 		[br]
 		The real addon work is done by the scripts contained in the src directory.
@@ -1485,7 +1478,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		This means that you must remove the aliases, unregister the event handlers,
 		destroy the actions, kill the timers and the object classes you've created.
 		Be a clean coder :)
-		[br]
 		[big]Where to start[/big]
 		[br]
 		It is a good idea to start in the KVIrc scripts GitHub repository https://github.com/kvirc/kvirc-scripts. There are surely
@@ -1581,7 +1573,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		'entity' indicates a [b]literal entity[/b]: written exactly as it is.[br]
 		<entity1>|<entity2> indicates mutually exclusive choices.[br]
 		The mutually exclusive choices are often separated in two or more
-		rules (productions), to improve readability.[br]
+		rules (productions), to improve readability.
 		[table]
 		[tr]
 		[td]<command buffer>[/td]
@@ -1737,7 +1729,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		A variable identifier is composed by a '%' (percent) sign followed
 		by a sequence of letters, digits or underscores.
 		Examples of valid variable names are:
-		[br]
 		[example]
 			%i
 			%variable
@@ -1750,14 +1741,12 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[br]
 		Variables are created when you assign something to them: there is no need
 		for a declaration (unlike other languages such as C/C++, Java or VB).
-		[br]
 		[example]
 			[comment]# create a variable named %X by assigning the value 10 to it[/comment]
 			%X = 10
 			[comment]# use the variable[/comment]
 			echo "The value of X is" %X
 		[/example]
-		[br]
 		[title]Local and global variables[/title]
 		[br]
 		Variables can be local or global.
@@ -1766,15 +1755,13 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		until they are explicitly unset or until KVIrc quits.
 		[br]
 		Local variables start with a [b]lowercase letter[/b] while the global ones with an [b]uppercase letter[/b].
-		[br]
 		[example]
 			%var = 10; [comment]# this is a local variable[/comment]
 			%Var = 10; [comment]# this is a global variable[/comment]
 		[/example]
 		[br]
 		You can also force a variable that start with a lowercase letter to be global
-		by pre-declaring it with the [cmd]global[/cmd] keyword.[br]
-		[br]
+		by pre-declaring it with the [cmd]global[/cmd] keyword.
 		[example]
 			[comment]# copy this script to a file and run /[cmd]parse[/cmd] <filename>[/comment]
 			global %a
@@ -1786,29 +1773,24 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[br]
 		If you have executed the example above from a file (by the means of [cmd]parse[/cmd])
 		then now you can type
-		[br]
 		[example]
 			[cmd]echo[/cmd] %a
 		[/example]
 		[br]
 		in the commandline to see the contents of the variable %a.
 		If you also try
-		[br]
 		[example]
 			[cmd]echo[/cmd] %b
 		[/example]
 		[br]
 		you will see nothing printed since %b was local to the parsed script.
-		[br]
 		[title]Data types[/title]
 		[br]
 		KVS has three main categories of data types: scalars, arrays and associative
 		arrays (also known as dictionaries or hashes).
-		[br]
 		[subtitle]Scalars[/subtitle]
 		[br]
 		The scalars are simple variables containing a single value (a string or an integer).
-		[br]
 		[example]
 			[comment]# %a is a scalar variable[/comment]
 			%a = "This is a string"
@@ -1816,18 +1798,15 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			%a = 24.5
 			[cmd]echo[/cmd] %a
 		[/example]
-		[br]
 		[subtitle]Arrays[/subtitle]
 		[br]
 		Arrays are collections of items indexed by integers. The array items
 		are selected by placing the index in square brackets just after the array name.
-		[br]
 		[example]
 			%arrayName[index]
 		[/example]
 		[br]
 		An easy way to create an array is to use the [fnc]$array[/fnc] function.
-		[br]
 		[example]
 			%a = $array("element1","element2","element3"); [comment]# Create an array with 3 items[/comment]
 			[cmd]for[/cmd](%i=0;%i<3;%i++)
@@ -1839,14 +1818,12 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		Note that in the example above %a refers to the whole array while %a[%i] refers
 		to one of its elements, in particular the one with index %i.
 		You also create an array by explicitly assigning to one of its elements:
-		[br]
 		[example]
 			%a[9] = "This is an array element";
 		[/example]
 		[br]
 		Array indexes are zero-based so in the example above you have created an array
 		with 10 items. You can find out an array's length with the [fnc]$length[/fnc]() function.
-		[br]
 		[example]
 			%a[9] = "This is an array element";
 			echo $length(%a)
@@ -1855,12 +1832,10 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		Be aware that by making such an assignment you implicitly consume some memory for
 		all the preceding array items (even if they are unset). This means that
 		a simple instruction like the following may eat a huge amount of memory at once:
-		[br]
 		[example]
 			%a[1000000] = "An array element faaaaaar away...";
 			echo $length(%a)
 		[/example]
-		[br]
 		[note]
 		[big]Food for thought:[/big]
 		KVIrc allocates a pointer for each item in the array. The pointer is
@@ -1877,7 +1852,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		can also use the [cmd]foreach[/cmd] command to iterate the items of an array.
 		Be aware that [cmd]foreach[/cmd] will [b]not[/b] iterate over unset items in the
 		array unless you use the -a switch.
-		[br]
 		[example]
 			%Array[0]=Pippo
 			%Array[1]=Pluto
@@ -1887,7 +1861,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		[br]
 		Note that the items 3 and 4 are simply skipped.
-		[br]
 		[subtitle]Hashes[/subtitle]
 		[br]
 		The hashes are collections of items indexed by strings: the word [i]hash[/i]
@@ -1895,7 +1868,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[i]associative arrays[/i], [i]dictionaries[/i] or [i]key-value pair sets[i].
 		The hash items are selected by placing the key in curly brackets
 		just after the hash name.
-		[br]
 		[example]
 			%hashName{key}
 		[/example]
@@ -1913,19 +1885,16 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		Note that in the example above %a refers to the whole hash while %a{%i} refers
 		to one of its elements, in particular the one with the key %key.
 		You also create a hash by explicitly assigning to one of its elements:
-		[br]
 		[example]
 			%a{"MyKey"} = "MyValue"
 		[/example]
 		[br]
 		You may have already noticed that the [fnc]$keys[/fnc]() function returns
 		the array of the hash keys: it is useful to iterate over the hash items.
-		[br]
 		[title]Mutability of variables[/title]
 		[br]
 		KVS is not strictly typed: any variable can assume different type identities at different times,
 		even in the same script.
-		[br]
 		[example]
 			[comment]# %a is a scalar[/comment]
 			%a = "This is a string"
@@ -1942,7 +1911,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		Note that array and hash items are variants too. This means that you can have arrays
 		of arrays, hashes of arrays of hashes and any other multidimensional combination you like.
 		However remember that hash keys are strings and not variants so you can't use an array as hash key.
-		[br]
 		[example]
 			[comment]# here we eat 256 locations of memory at once :)[/comment]
 			%a[16][16] = 10
@@ -1953,7 +1921,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		In most cases the KVS engine manages automatically the conversion between data types.
 		For example, when you put an array in a place where a scalar is requested, KVIrc
 		automatically transforms it to a scalar string by joining all the items with a comma.
-		[br]
 		[example]
 			%a = $array("element1","element2","element3");
 			echo %a; [comment]# echo expects its arguments to be scalar[/comment]
@@ -1968,7 +1935,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[br]
 		KVS handles also the other possible implicit casts: scalar->hash,hash->scalar,array->hash,hash->array.
 		Experiment with it.
-		[br]
 		[title]More about scalars[/title]
 		[br]
 		Internally KVS is implicitly typed: the [i]scalar[/i] data type is in fact
@@ -1993,7 +1959,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		otherwise, a real becomes an integer by truncating it's fractional part...
 		[br]
 		You can find out the type of a specified variable by using the [fnc]$typeof[/fnc]() function.
-		[br]
 		[example]
 			%a = 1
 			echo $typeof(%a)
@@ -2006,7 +1971,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		[br]
 		There is also another subtle type of scalar called [i]nothing[/i]. It stands for an empty (unset) variable.
-		[br]
 		[example]
 			%a = $nothing
 			echo $typeof(%a)
@@ -2020,7 +1984,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[br]
 		Again, when possible, the conversion between nothing and the other data types is
 		performed automatically. Nothing becomes an empty string, a null object handle or an empty array.
-		[br]
 		[title]Explicit casts[/title]
 		[br]
 		You can make explicit conversions between some data types by using the casting functions.
@@ -2036,7 +1999,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		so you usually don't need to care about it. The explicit casts are provided for
 		the very few cases where an automatic conversion would lead to an unexpected value (for your script)
 		and for writer's clarity.
-		[br]
 		[title]More about variables life-cycle[/title]
 		[br]
 		As stated above variables start their existence when you assign something to them.
@@ -2047,7 +2009,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[br]
 		The first method to explicitly destroy a variable is to call [cmd]unset[/cmd] on it.
 		[cmd]unset[/cmd] in fact accepts a list of variables so you can destroy more variables at once.
-		[br]
 		[example]
 			%a = [fnc]$array[/fnc]("data","for","a","really","huge","array","of","items")
 			%b = 10
@@ -2058,7 +2019,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		The KVS engine treats unset variables just like empty strings. The opposite is also valid: empty
 		strings behave like empty (unset) variables. This means that you can assign an empty string
 		to a variable to unset it.
-		[br]
 		[example]
 			%a = "test"; [comment]# %a starts his existence[/comment]
 			%b = "test2";
@@ -2068,7 +2028,6 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[br]
 		Note that because of mutability of variables (explained above) you can use the empty string
 		assignment also to free arrays and hashes.
-		[br]
 		[title]Extended scope variables[/title]
 		[br]
 		Beside local and global variables there is a third family of them.
@@ -2084,21 +2043,18 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		the moment when the user selects an item and the corresponding code is executed).
 		This allows you to pre-calculate some data or conditions in the popup prologue
 		and use this data in the popup item conditions and item handlers.
-		[br]
 		[title]Variable evaluation[/title]
 		[br]
 		A variable can appear in every place where a parameter
 		is expected: so after the command name, after a switch or inside
 		an identifier parameters. The KVS parser will try to extract the longest possible variable
 		name after a literal percent '%' sign everywhere in the parameter string. So the command sequence
-		[br]
 		[example]
 			%number = 1st; echo this is my %number variable test
 		[/example]
 		[br]
 		will first assign [i]1st[/i] to the variable [i]%number[/i] and then execute
 		"echo this is my 1st variable test". The following example will [b]not[/b] work as expected.
-		[br]
 		[example]
 			%number = 1; echo this is my %numberst variable test
 		[/example]
@@ -2107,11 +2063,9 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		name extracted will be [i]%numberst[/i] that is actually empty; so finally
 		"echo this is my variable test" will be executed.
 		To avoid this problem you can use the backslash escape character:
-		[br]
 		[example]
 			%number = 1; echo this is my %number\st variable test
 		[/example]
-		[br]
 		[title]Putting it all together[/title]
 		[br]
 		Variables can be either local, global or have an extended scope. Their start to exist

@@ -49,7 +49,7 @@
 		In any other case the expression evaluation returns a numeric value, either real or integer.[br]
 		The expressions are really close to the C ones and have some minor extensions.[br]
 		The supported operators are [b]+[/b], [b]-[/b], [b]*[/b], [b]/[/b], [b]|[/b], [b]&[/b], [b]^[/b], [b]||[/b], [b]&&[/b], [b]^^[/b], [b]>>[/b], [b]<<[/b], [b]<[/b], [b]>,[/b] [b]<=,[/b] [b]>=,[/b] [b]==,[/b] [b]!=[/b] and [b]<>[/b] (synonym for !=).[br]
-		The following table describes their meaning.[br]
+		The following table describes their meaning.
 		[table]
 			[tr][td][b]Operator[/b][/td][td][b]Description[/b][/td][/tr]
 			[tr][td]a + b[/td][td]Arithmetic sum: valid only for numeric operands[/td][/tr]

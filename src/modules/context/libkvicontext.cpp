@@ -612,7 +612,7 @@ static bool context_kvs_fnc_queueSize(KviKvsModuleFunctionCall * c)
 		has no associated IRC context) then this function prints a warning and returns an empty string.[br]
 		If the IRC context is not using SSL then this function returns an empty string.[br]
 		Some queries can accept an optional parameter <param1>.[br]
-		Available query strings are:[br]
+		Available query strings are:
 		[ul]
 		[li]signatureType[/li]
 		[li]signatureContents[/li]

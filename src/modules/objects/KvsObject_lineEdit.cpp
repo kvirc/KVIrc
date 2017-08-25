@@ -133,14 +133,14 @@ static const int mode_cod[] = {
 		Sets the lineedit to read-only mode.
 		!fn: $setInputMask(<mask:string>)
 		Sets the validation input mask to inputMask.[br]
-		[b]Example:[/b][br]
+		[b]Example:[/b]
 		[example]
 			%ledit_example->$setInputMask( "+99 99 99 99 99;_" );[br]
 			%ledit_example->$setInputMask( "000.000.000.000;_" );[br]
 			%ledit_example->IP Number Mask.[br]
 			%ledit_example->setInputMask( ">AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#" );
 		[/example]
-		The mask format understands these mask characters:[br]
+		The mask format understands these mask characters:
 		[example]
 			[b][comment]Character	Meaning[/comment][/b][br]
 			A	-	ASCII alphabetic character required. A-Z, a-z.[br]

@@ -52,7 +52,7 @@
 		For example, the [event:onirc]OnIRC[/event] is triggered when the login operations have
 		been terminated and you can consider yourself [i]completely[/i] on IRC. For example, you might
 		want to [i]auto-join[/i] some channels. Nothing easier! The following snippet of code
-		adds a handler to the OnIRC event that joins three channels:[br]
+		adds a handler to the OnIRC event that joins three channels:
 		[example]
 		[cmd]event[/cmd](OnIRC,autojoin)
 		{
@@ -64,7 +64,7 @@
 		You might also want to do some other actions just after the connection has been established,
 		for example you might want to look immediately for a friend of yours by issuing a [cmd]whois[/cmd]
 		to the server (you could use the notify list for that).[br]
-		You can add the [cmd]whois[/cmd] request to the handler above or just create a new one:[br]
+		You can add the [cmd]whois[/cmd] request to the handler above or just create a new one:
 		[example]
 		[cmd]event[/cmd](OnIRC,lookforfred)
 		{
@@ -73,7 +73,7 @@
 		}
 		[/example]
 		(An even nicer idea would be to use the [cmd]awhois[/cmd] command, but that's left to the reader as an exercise.[br]
-		To remove an event handler you still use the [cmd]event[/cmd] command, but with an empty code block:[br]
+		To remove an event handler you still use the [cmd]event[/cmd] command, but with an empty code block:
 		[example]
 		[cmd]event[/cmd](OnIRC,lookforfred){}[br]
 		[/example]

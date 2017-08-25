@@ -52,8 +52,7 @@
 		Some operators, like arithmetic ones, are typically used inside the special function
 		[b]$(<expression>)[/b], called the [i][doc:expressioneval]Expression evaluation identifier[/doc][/i];
 		This special function returns the result of the evaluation of the <expression>.
-		In previous versions of KVIrc this function was called $calc().[br]
-		[br]
+		In previous versions of KVIrc this function was called $calc().
 		[table]
 			[tr][td]Operator[/td][td]document[/td][/tr]
 			[tr][td]=[/td][td][doc:assignment]assignment operator[/doc][/td][/tr]

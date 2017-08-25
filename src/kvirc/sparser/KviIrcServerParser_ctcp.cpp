@@ -82,12 +82,12 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		be symbolically printed & burned. It is really too complex
 		(you can go mad with the quoting specifications)
 		and NO IRC CLIENT supports it completely.
-		Here is my personal point of view on the CTCP protocol.[br]
+		Here is my personal point of view on the CTCP protocol.
 		[big]What is CTCP?[/big]
 		CTCP stands for Client-to-Client Protocol. It is designed
 		for exchanging almost arbitrary data between IRC clients;
 		the data is embedded into text messages of the underlying
-		IRC protocol.[br]
+		IRC protocol.
 		[big]Basic concepts[/big]
 		A CTCP message is sent as the <text> part of the PRIVMSG and
 		NOTICE IRC commands.[br]
@@ -115,7 +115,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		be disconnected while sending the replies, after only
 		receiving a single IRC message (no flood for the sender).
 		From my personal point of view, only [b]one CTCP message per IRC message[/b]
-		should be allowed and theoretically the trailing <0x01> delimiter can be optional.[br]
+		should be allowed and theoretically the trailing <0x01> delimiter can be optional.
 		[big]How to extract the CTCP message[/big]
 		The IRC messages do not allow the following characters to be sent:[br]
 		<NUL> (ASCII character 0), <CR> (Carriage return), <LF> (Line feed).[br]
@@ -130,8 +130,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		The trailing (optional) <0x01> can be removed in this phase
 		or later, assuming that it is not a valid char in the <ctcp message>.[br]
 		In this document I will assume that you have stripped the trailing <0x01>
-		and thus from now on we will deal only with the <ctcp message> part.[br]
-		[br]
+		and thus from now on we will deal only with the <ctcp message> part.
 		[big]Parsing a CTCP message: The quoting dilemma[/big]
 		Since there are characters that cannot appear in a <ctcp message>,
 		theoretically we should have to use a quoting mechanism.
@@ -164,8 +163,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		I've chosen the octal representation just to follow a bit the old specification:
 		the authors seemed to like it. This point could be discussed in
 		some mailing list or sth. The '\C' sequence is useful to include the backslash
-		character (escape sequence '\\').[br]
-		[br]
+		character (escape sequence '\\').
 		[big]Let's mess a little more[/big]
 		A CTCP message is made of [b]space separated parameters[/b].[br]
 		The natural way of separating parameters is to use the space character.
@@ -185,7 +183,6 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		let's include the [b]"[/b] quotes in our standard: literal (unescaped) [b]"[/b] quotes
 		define a single token string. To include a literal [b]"[/b] character, escape it.
 		Additionally, the last parameter of a <ctcp message> may be made of multiple tokens.
-		[br]
 		[big]A CTCP parameter extracting example[/big]
 		A trivial example of a C [i]CTCP parameter extracting routine[/i] follows.[br]
 		An IRC message is made of up to 510 usable characters.
@@ -278,7 +275,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 			}
 			return msg_ptr;
 		}
-		[/example][br]
+		[/example]
 		[big]CTCP parameter semantics[/big]
 		The first <ctcp parameter> of a <ctcp message> is the <ctcp tag>: it defines
 		the semantic of the rest of the message.[br]
@@ -287,8 +284,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		case sensitive, I'd prefer to follow the IRC message semantic (just to
 		have less "special cases") and treat the whole message as [b]case insensitive[/b].[br]
 		The remaining tokens depend on the <ctcp tag>. A description of known <ctcp tags>
-		and thus <ctcp messages> follows.[br]
-		[br]
+		and thus <ctcp messages> follows.
 		[big]PING[/big]
 		[b]Syntax: <0x01>PING <data><0x01>[/b][br]
 		The PING request is used to check the round trip time from one client to another.
@@ -297,7 +293,6 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		integer but not necessarily; it is not even mandatory for <data> to be a single token.
 		The receiver should ignore the semantic of <data>.[br]
 		The reply is intended to be processed by IRC clients.
-		[br]
 		[big]VERSION[/big]
 		[b]Syntax: <0x01>VERSION<0x01>[/b][br]
 		The VERSION request asks for information about another user's IRC client program.
@@ -308,14 +303,12 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		clients (and users) send a generic reply describing the client name, version
 		and eventually the used script name. This CTCP reply is intended to be human
 		readable, so any form is accepted.
-		[br]
 		[big]USERINFO[/big]
 		[b]Syntax: <0x01>USERINFO<0x01>[/b][br]
 		The USERINFO request asks for information about another user.
 		The reply should be sent through a NOTICE with the following syntax:[br]
 		<0x01>USERINFO <user_info_data><0x01>[br]
 		The <user_info_data> should be a human readable [i]user defined[/i] string;
-		[br]
 		[big]CLIENTINFO[/big]
 		[b]Syntax: <0x01>CLIENTINFO<0x01>[/b][br]
 		The CLIENTINFO request asks for information about another user's IRC client program.
@@ -325,7 +318,6 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		<0x01>CLIENTINFO <client_info_data><0x01>[br]
 		The <client_info_data> should contain a list of supported CTCP request tags.
 		The CLIENTINFO reply is intended to be human readable.
-		[br]
 		[big]FINGER[/big]
 		[b]Syntax: <0x01>FINGER<0x01>[/b][br]
 		The FINGER request asks for information about another IRC user.
@@ -333,30 +325,25 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		<0x01>FINGER <user_info_data><0x01>[br]
 		The <user_info_data> should be a human readable string containing
 		the system username and possibly the system idle time;
-		[br]
 		[big]SOURCE[/big]
 		[b]Syntax: <0x01>SOURCE<0x01>[/b][br]
 		The SOURCE request asks for the client homepage or ftp site information.
 		The reply should be sent through a NOTICE with the following syntax:[br]
 		<0x01>VERSION <homepage_url_data><0x01>[br]
 		This CTCP reply is intended to be human readable, so any form is accepted.
-		[br]
 		[big]TIME[/big]
 		[b]Syntax: <0x01>TIME<0x01>[/b][br]
 		The TIME request asks for the user local time.
 		The reply should be sent through a NOTICE with the following syntax:[br]
 		<0x01>TIME <time and date string><0x01>[br]
 		This CTCP reply is intended to be human readable, so any form is accepted.
-		[br]
 		[big]ACTION[/big]
 		[b]Syntax: <0x01>ACTION<0x01>[/b][br]
 		The ACTION tag is used to describe an action.[br]
-		It should be sent through a NOTICE message and never generate a reply.[br]
-		[br]
+		It should be sent through a NOTICE message and never generate a reply.
 		[big]AVATAR (equivalent to ICON or FACE)[/big]
 		[b]Syntax: <0x01>AVATAR<0x01>[/b][br]
-		The AVATAR tag is used to query a user's avatar.[br]
-		[br]
+		The AVATAR tag is used to query a user's avatar.
 		[big]MULTIMEDIA (equivalent to MM or SOUND)[/big]
 		[b]Syntax: <0x01>MULTIMEDIA <filename><0x01>[/b][br]
 		The MULTIMEDIA tag is used to play a multimedia file on the receiver's side.[br]
@@ -370,8 +357,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		path. If any part of the <filename> appears to be a path component, it should be discarded.
 		The client may decide to drop the entire message too. Older clients (including
 		older releases of KVIrc) used to request the missing filenames by a particular
-		non-standard private message syntax. This convention should be dropped.[br]
-		[br]
+		non-standard private message syntax. This convention should be dropped.
 		[big]DCC[/big]
 		[b]Syntax: <0x01>DCC <type> <type dependent parameters><0x01>[/b][br]
 		The DCC tag is used to initiate a Direct Client Connection.

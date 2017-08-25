@@ -69,10 +69,10 @@ namespace KviKvsCoreSimpleCommands
 			The switch -x will make say evaluate and execute arbitrary commands, too:
 			if <text> begins with a slash then it will be treated as a command
 			to be evaluated and executed (after parsing the identifiers etc.).[br]
-			If this happens, the executed command will not be send to the active channel.[br]
+			If this happens, the executed command will not be send to the active channel.
 			[example]
 				/say -x /[cmd]echo[/cmd] foo
-			[/example][br]
+			[/example]
 			will just print "foo".[br]
 			Please note that using /say -x with a <text> that isn't a constant
 			in the script but comes from some unidentified external source (e.g. the network)

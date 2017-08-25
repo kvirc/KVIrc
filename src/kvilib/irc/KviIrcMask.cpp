@@ -39,7 +39,7 @@
 	@keyterms:
 		irc masks, nickname, username, hostname, wildcard
 	@body:
-		[big]Simple masks[/big][br]
+		[big]Simple masks[/big]
 		An IRC mask is a string in a special format that identifies a user on IRC.[br]
 		The standard basic format is:[br]
 		[b]<nick>!<username>@<host>[/b][br]
@@ -76,9 +76,8 @@
 		luke!=skywalker@212.213.41.12[br]
 		HAN!^solo@ff0f:a0a0:1011::ea80:1[br]
 		Darth!vader@210.11.12.XXX[br]
-		The irc-masks are [b]case insensitive[/b].[br]
-		[br]
-		[big]Wildcard masks[/big][br]
+		The irc-masks are [b]case insensitive[/b].
+		[big]Wildcard masks[/big]
 		In some contexts the irc-masks can contain [b]*[/b] and [b]?[/b] wildcards.[br]
 		The wild masks are used to [i]match[/i] a user within a set of them.[br]
 		[b]*[/b] matches any sequence (eventually empty) of characters and [b]?[/b] matches a single character.[br]

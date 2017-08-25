@@ -428,7 +428,7 @@ namespace KviKvsCoreFunctions
 			Returns the name of a builtin icon given an <iconid>.
 			The <iconid> is returned by the function [fnc]$icon[/fnc].
 			If the <iconid> is not valid, an empty name is returned.[br]
-			The following code will list all the available icon names:[br]
+			The following code will list all the available icon names:
 			[example]
 				%i = 0
 				[cmd]do[/cmd] {
@@ -500,7 +500,7 @@ namespace KviKvsCoreFunctions
 			<integer> $integer(<data:variant>)
 		@description:
 			Forces <data> to be an integer data type with the following
-			semantics:[br]
+			semantics:
 			[ul]
 				[li]If <data> is an integer, <data> itself is returned.[/li]
 				[li]If <data> is a boolean, its numeric value is returned (either 1 or 0).[/li]
@@ -1065,7 +1065,7 @@ namespace KviKvsCoreFunctions
 			Gets the text you pass as the first parameter and formats it
 			so that KVIrc will display it as a link. You can specify the
 			type of the link as the second parameter. Valid values for the
-			second parameter are:[br]
+			second parameter are:
 			[ul]
 				[li]nick	link to a nickname[/li]
 				[li]channel	link to a channel name[/li]

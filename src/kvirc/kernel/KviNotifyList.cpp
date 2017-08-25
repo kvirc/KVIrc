@@ -68,20 +68,20 @@
 		entry.[br]
 		The property is called [i]notify[/i], and you have to set it to the nickname
 		that you want to look for.[br]
-		So for example, assume to register a friend of yours like Szymon:[br]
+		So for example, assume to register a friend of yours like Szymon:
 		[example]
 			[cmd:reguser.add]reguser.add[/cmd] Szymon
 			[cmd:reguser.addmask]reguser.addmask[/cmd] Szymon Pragma!*@*.it
 		[/example]
 		And then want it in the notify list; nothing easier, just set
-		hist [i]notify[/i] property to the nickname that you want him to be [i]looked for[/i]:[br]
+		hist [i]notify[/i] property to the nickname that you want him to be [i]looked for[/i]:
 		[example]
 			[cmd:reguser.setproperty]reguser.setproperty[/cmd] Szymon notify Pragma
 		[/example]
 		In this way, once in a while, KVIrc will send to the server an ISON message
 		with the nickname Pragma. If Szymon is online, you will be notified with a message:[br]
 		[i]Pragma [someuser@somehost.it] is on IRC[/i].[br]
-		If Szymon uses often [i][Pragma][/i] as his secondary nickname, you can do the following:[br]
+		If Szymon uses often [i][Pragma][/i] as his secondary nickname, you can do the following:
 		[example]
 			[cmd:reguser.addmask]reguser.addmask[/cmd] Szymon [Pragma]*@*.it
 			[cmd:reguser.setproperty]reguser.setproperty[/cmd] Szymon notify [i]Pragma [Pragma][/i]

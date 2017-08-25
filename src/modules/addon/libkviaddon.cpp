@@ -599,7 +599,7 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 		Installs the [files] for the addon identified by the specified <id>.
 		These files will be automatically removed when the addon is uninstalled.[br][br]
 		<target> is the target path inside the local KVIrc directory. The following
-		standard paths should be used:[br]
+		standard paths should be used:
 		[ul]
 		[li]"pics" for image files.[/li]
 		[li]"locale" for translation *.mo files.[/li]

@@ -62,47 +62,47 @@
 		The KVIrc view widgets support clickable links.[br]
 		The links can be created using special escape sequences in the text passed to the [cmd]echo[/cmd] command.[br]
 		KVIrc uses some escape sequences in the text [i]echoed[/i] internally.[br]
-		The simplest way to explain it is to use an example:[br]
+		The simplest way to explain it is to use an example:
 		[example]
 			echo This is a $cr![!dbl]echo You have clicked it! $cr\clickable link$cr !
 		[/example]
 		The example above will show the following text line: "This is a clickable link".
 		If you move the mouse over the words [i]clickable link[/i], you will see the text highlighted.[br]
 		Once you double-click one of that words, the command [i][cmd]echo[/cmd] You have clicked it![/i] will be executed.[br]
-		The format looks complex?... it is not...just read on.[br]
+		The format looks complex?... it is not...just read on.
 		[example]
 			<cr>!<link_type><cr><visible text><cr>[br]
 			<cr>!<escape_command><cr><visible text><cr>
 		[/example]
 		[big]Escape format[/big]
-		The whole escape sequence format is the following:[br][br]
+		The whole escape sequence format is the following:
 		[example]
 			[b]<cr>!<escape_command><cr><visible text><cr>[/b][br]
 		[/example]
 		[note]
 			[b]<cr>[/b] is the carriage return character. You can obtain it by using the [fnc]$cr[/fnc] function.[br]
 			[b]<visible text>[/b] is the text that will appear as [i]link[/i] when you move the mouse over it.[br]
-			[b]<escape_command>[/b] is the description of the actions to be taken when the user interacts with the link.[br]
+			[b]<escape_command>[/b] is the description of the actions to be taken when the user interacts with the link.
 		[/note]
 		[note]
 			The [b]<escape_command>[/b] has the two following syntactic forms:[br]
 			[b]<escape_command> ::= <user_defined_commands>[/b][br]
 			[b]<escape_command> ::= <builtin_link_description>[/b]
 		[/note]
-		[big]User defined links[/big][br]
+		[big]User defined links[/big]
 		The user defined links allow you to perform arbitrary commands when the user interacts with the link.[br]
-		The commands are specified in the <escape_command> part by using the following syntax:[br]
+		The commands are specified in the <escape_command> part by using the following syntax:
 		[note]
 			<escape_command> ::= <user_defined_commands>[br][br]
 			<user_defined_commands> ::= <command_rule> [<user_defined_commands>][br][br]
 			<command_rule> ::= <action_tag><command>[br][br]
 			<action_tag> ::= "[!" <action> "]"[br][br]
 			<action> ::= "rbt" | "mbt" | "dbl" | "txt"[br][br]
-			<command> ::= any KVIrc command (see notes below)[br]
+			<command> ::= any KVIrc command (see notes below)
 		[/note]
 		[big]A shortcut[/big]
 		You may have a look at the [fnc]$fmtlink[/fnc] function: it does automatically some of the job explained
-		in this document.[br]
+		in this document.
 	@seealso:
 		[fnc]$fmtlink[/fnc]
 		[fnc]$cr[/fnc]

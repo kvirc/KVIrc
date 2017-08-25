@@ -1430,7 +1430,7 @@ if(open(DOCINDEX,">$g_directory/index$g_fileextension"))
 	print_twocolumnbody("<a href=\"doc_kvs_aliasesandfunctions$g_fileextension\">Aliases and Functions</a>","How to write aliases/functions");
 	print_twocolumnbody("<a href=\"doc_kvs_datatypes$g_fileextension\">Variables</a>","Which types of variables are available and how to handle them");
 	print_twocolumnbody("<a href=\"doc_operators$g_fileextension\">Operators</a>","Describes simple operations with variables");
-	print_twocolumnbody("<a href=\"doc_events$g_fileextension\">Events</a>","How to handle network events in KVS ?");
+	print_twocolumnbody("<a href=\"doc_events$g_fileextension\">Events</a>","How to handle network events in KVS");
 	print_twocolumnbody("<a href=\"doc_objects$g_fileextension\">Objects</a>","Object oriented scripting");
 	print_twocolumnbody("<a href=\"doc_kvs_addons$g_fileextension\">Addons</a>","How to write nice addons for KVIrc");
 	print_twocolumnbody("<a href=\"doc_kvs_codingtips$g_fileextension\">Coding Tips</a>","Some tips that may help you");
@@ -1444,7 +1444,7 @@ if(open(DOCINDEX,">$g_directory/index$g_fileextension"))
 	print_twocolumnsubtitle("Other Documents");
 	print_twocolumnbody("<a href=\"doc_keyboard$g_fileextension\">Keyboard shortcuts</a>","Map of the global keyboard shortcuts");
 	print_twocolumnbody("<a href=\"doc_module_index_all$g_fileextension\">Modules</a>","Documentation related to specific modules");
-	print_twocolumnbody("<a href=\"doc_widget_index_all$g_fileextension\">Features</a>","&nbsp;");
+	# print_twocolumnbody("<a href=\"doc_widget_index_all$g_fileextension\">Features</a>","Documentation on features of KVIrc");
 	print_twocolumnbody("<a href=\"doc_generic_index_all$g_fileextension\">Miscellaneous</a>","Misc documentation that didn't find any other place");
 	print_twocolumnbody("<a href=\"doc_keyterms_index_all$g_fileextension\">Keyterms</a>","The (long) listing of all the keyterms");
 	print_tableend();

@@ -1370,7 +1370,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 	@keyterms:
 		DCC without IRC
 	@body:
-		[big]What is DCC?[/big][br]
+		[big]What is DCC?[/big]
 		'DCC' stands for Direct Client Connection, it is used to exchange data
 		directly between two IRC clients (with no IRC server in the middle).[br]
 		DCC itself is not a well-defined protocol, but rather a set of
@@ -1381,9 +1381,8 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		The [b]DCC negotiation[/b] part is used to request the [b]DCC transfer[/b] and define its necessary parameters,[br]
 		while the [b]DCC transfer[/b] part is the real data transfer between clients.[br]
 		The [b]DCC negotiation[/b] requires a third entity that routes the negotiation data between clients,
-		this is usually an IRC server.[br]
-		[br]
-		[big]DCC Negotiation[/big][br]
+		this is usually an IRC server.
+		[big]DCC Negotiation[/big]
 		This part of the protocol is the most tricky and difficult one, and is different for almost every DCC sub-protocol.[br]
 		The [i]constant[/i] scenario of the negotiation is more or less the following:[br]
 		There are two IRC clients connected to the same IRC network and they want to exchange some data in
@@ -1436,12 +1435,10 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		You can also manually connect to a specified port and IP address without
 		having been notified of a DCC request.[br][br][br]
 		Is everything clear?...I don't think so... my English is really bad...
-		[br]
-		[big]DCC Transfer[/big][br]
+		[big]DCC Transfer[/big]
 		The DCC transfer part is different for every DCC sub-protocol, but
-		it always happens over a direct client to client TCP connection.[br]
-		[br]
-		[big]DCC Sub-protocols[/big][br]
+		it always happens over a direct client to client TCP connection.
+		[big]DCC Sub-protocols[/big]
 		There are two main standardized DCC sub-protocols that are widely implemented in IRC clients:
 		[b]DCC chat[/b] and [b]DCC SEND[/b].[br]
 		DCC chat is quite simple and the protocol is more or less completely defined.[br]
@@ -1451,9 +1448,8 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		by VIrc, the Send-Ahead enhancement implemented in many clients, the RESUME facility...)[br]
 		Many clients introduced new DCC sub-protocols with non-standard implementations,
 		leading again to client incompatibility.[br]
-		Some of the notable sub-protocols are DCC Voice, DCC Draw, DCC Whiteboard...[br]
-		[br]
-		[big]DCC Chat[/big][br]
+		Some of the notable sub-protocols are DCC Voice, DCC Draw, DCC Whiteboard...
+		[big]DCC Chat[/big]
 		This is the simplest and most standardized DCC sub-protocol. Almost every IRC client implements it.[br]
 		It is used to exchange lines of text between the two clients.[br]
 		The negotiation is quite simple, we assume that [b]client A[/b] wants to establish a DCC chat connection to [b]client B[/b].
@@ -1479,9 +1475,8 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		[b]DCC SCHAT chat <ipaddress> <port>[/b][br]
 		where [i]SCHAT[/i] stands for Secure CHAT.[br] The external protocol is exactly the same but is built on top of a Secure Sockets Layer
 		implementation (specifically OpenSSL). The connection will be encrypted with a private key algorithm after
-		a public key handshake.[br]
-		[br]
-		[big]DCC SEND[/big][br]
+		a public key handshake.
+		[big]DCC SEND[/big]
 		DCC SEND is another standard sub-protocol. Most clients implement this as well, many have tried
 		to enhance it.[br]
 		The basic DCC SEND protocol allows transferring a file from the requesting client to the receiving client.[br]
@@ -1529,9 +1524,8 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		[b]DCC SSEND <filename> <ipaddress> <port> <filesize>[/b][br]
 		where [i]SSEND[/i] stands for Secure SEND.[br]
 		The [i]Turbo[/i] extension can be combined with the SSL extension too. In this case the second parameter
-		of the negotiation string must be [i]TSSEND[/i] or [i]STSEND[/i].[br]
-		[br]
-		[big]DCC RECV[/big][br]
+		of the negotiation string must be [i]TSSEND[/i] or [i]STSEND[/i].
+		[big]DCC RECV[/big]
 		DCC RECV is the counterpart of DCC SEND. This is a KVIrc extension and is not standard yet.[br]
 		The purpose of this sub-protocol will not be immediately clear, but read on for an explanation.[br]
 		It is used to request a file from another client; we assume that [b]client A[/b] knows that [b]client B[/b] has
@@ -1555,9 +1549,8 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		DCC RECV requires the initiating (passive) client to know that the file to be transferred is available on the B's side
 		and probably also know the file size. This sub-protocol does not specify how this information is obtained, but it
 		will become clear soon that it can be obtained either manually (User B can simply tell the info to User A),
-		or automatically (as in the DCC RSEND sub-protocol (keep reading)).[br]
-		[br]
-		[big]DCC RSend[/big][br]
+		or automatically (as in the DCC RSEND sub-protocol (keep reading)).
+		[big]DCC RSend[/big]
 		DCC RSend stands for Reverse Send. This is a KVIrc extension to the SEND protocol to allow firewalled clients
 		to send files.[br] In fact, this is a [i]half[/i] sub-protocol, since it defines only a part of the DCC negotiation;
 		the transfer is defined by another sub-protocol (and specifically bu DCC RECV).[br]
@@ -1573,9 +1566,8 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		[b]DCC TRSEND <filename> <filesize>[/b][br]
 		The [i]SSL[/i] extension is also activated by prepending an [b]S[/b] to the RSEND string. It can be again combined
 		with the [i]Turbo[/i] extension. The negotiation parameter becomes then [i]SRSEND[/i], [i]TSRSEND[/i] or [i]STRSEND[/i].[br]
-		Easy, no? :)[br]
-		[br]
-		[big]DCC Get[/big][br]
+		Easy, no? :)
+		[big]DCC Get[/big]
 		This is again a [i]half[/i] sub-protocol in fact since it defines only a part of the negotiation for file transfers.[br]
 		It is also NON standard, since actually no client except KVIrc implements it (AFAIK).[br]
 		DCC Get is used to request a file from a remote client. Assume that [b]client A[/b] wants to request a file from [b]client B[/b]
@@ -1592,24 +1584,22 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		is found in the sub-protocol that the remote client will choose.[br]
 		The association of <filename> with a real file on the B's machine is not explicitly defined by the sub-protocol;
 		KVIrc uses an internal [i]file-offer[/i] table with a list of files that are available for download.[br]
-		The [i]Turbo[/i] and [i]SSL[/i] extensions are activated as usual, [i]TGET[/i], [i]SGET[/i], [i]TSGET[/i] and [i]STGET[/i] are supported.[br]
-		[br]
-		[big]DCC File Transfer[/big][br]
+		The [i]Turbo[/i] and [i]SSL[/i] extensions are activated as usual, [i]TGET[/i], [i]SGET[/i], [i]TSGET[/i] and [i]STGET[/i] are supported.
+		[big]DCC File Transfer[/big]
 		DCC SEND: Send a file, sender is passive, receiver is active (not good for firewalled senders)[br]
 		DCC RECV: Receive a file, sender is active, receiver is passive (not good for firewalled receivers)[br]
 		DCC RSEND: Send a file, sender is active, receiver is passive (not good for firewalled receivers)[br]
 		DCC GGET: Receive a file, sender is passive if not firewalled, receiver active if sender not firewalled (will fail only if both are firewalled)[br]
 		The [i]Turbo[/i] extension disables the stream of acknowledges and is activated by prepending the 'T' character to the DCC sub-protocol name[br]
-		The [i]SSL[/i] extension causes a Secure Socket Layer to be used and is activated by prepending the 'S' character to the DCC sub-protocol name[br]
-		[br]
-		[big]DCC Voice[/big][br]
+		The [i]SSL[/i] extension causes a Secure Socket Layer to be used and is activated by prepending the 'S' character to the DCC sub-protocol name
+		[big]DCC Voice[/big]
 		DCC Voice is a KVIrc extension (there is a Windows client called VIrc that implements such
 		a protocol, but it is incompatible with KVIrc).[br]
 		DCC Voice allows audio level communication between two clients, the audio stream is compressed
 		with a specified codec.[br]
 		KVIrc currently supports the ADPCM (core support) and the GSM codec (if the libgsm is available on the target system).[br]
 		[b]TODO: Finish the DCC Voice doc :)[/b]
-		[big]More tricks[/big][br]
+		[big]More tricks[/big]
 		KVIrc supports another [i]hack[/i] to the DCC negotiation, it recognizes [i]XDCC[/i] as
 		a DCC negotiation CTCP parameter.[br]
 		This can be used to circumvent limitations of some IRC clients (read mIRC) that will not allow
@@ -2770,7 +2760,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 		has no associated DCC session) then this function prints a warning and returns an empty string.[br]
 		If the DCC session is not using SSL then this function returns an empty string.[br]
 		Some queries can accept an optional parameter <param1>.[br]
-		Available query strings are:[br]
+		Available query strings are:
 		[ul]
 		[li]signatureType[/li]
 		[li]signatureContents[/li]
@@ -2903,14 +2893,13 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 	@title:
 		The DCC module
 	@body:
-		[big]Overview[/big][br]
+		[big]Overview[/big]
 		The DCC module handles the Direct Client Connection
 		protocol layer and all it's sub-protocols.[br]
 		The sub-protocols include the standard CHAT
 		the standard SEND and its variants plus several
-		KVIrc extensions like RECV, RSEND, GET and VOICE.[br]
-		[br]
-		[big]Initiating a DCC negotiation[/big][br]
+		KVIrc extensions like RECV, RSEND, GET and VOICE.
+		[big]Initiating a DCC negotiation[/big]
 		The following commands initiate a specific DCC session
 		with a remote client:[br]
 		[cmd]dcc.chat[/cmd][br]
@@ -2918,9 +2907,8 @@ static bool dcc_kvs_fnc_getSSLCertInfo(KviKvsModuleFunctionCall * c)
 		[cmd]dcc.rsend[/cmd][br]
 		[cmd]dcc.recv[/cmd][br]
 		[cmd]dcc.get[/cmd][br]
-		[cmd]dcc.voice[/cmd][br]
-		[br]
-		[big]Handling the DCC events[/big][br]
+		[cmd]dcc.voice[/cmd]
+		[big]Handling the DCC events[/big]
 		Each DCC session has an associated unique identifier (&lt;dcc_id&gt;).[br]
 		You can interact with the session by using several commands
 		and functions exported by this module and by passing the above session

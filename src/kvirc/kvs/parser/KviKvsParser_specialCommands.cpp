@@ -2030,7 +2030,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 			Please note that using this command inside the prologue, epilogue
 			or item code of the modified popup menu is forbidden.
 			In other words: self modification of popup menus is [b]not[/b] allowed.[br]
-			To remove a popup menu use this command with an empty body:[br]
+			To remove a popup menu use this command with an empty body:
 			[example]
 				defpopup(test){}
 			[/example]

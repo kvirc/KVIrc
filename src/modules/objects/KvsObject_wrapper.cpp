@@ -80,7 +80,7 @@
 		As you can see the objects are identified by their names (for example "mdi_manager") and
 		by their class names (for example KviChannelWindow).[br]
 		To wrap a specific widget you must provide a path in the tree composed of search specifiers.[br]
-		Each search specifier can have one of the following forms:[br]
+		Each search specifier can have one of the following forms:
 		[example]
 			(1) <class>
 			(2) <class>::<name>
@@ -91,17 +91,17 @@
 		The first three forms may be preceded by the prefix [b]*[/b] which will tell KVS to perform
 		a recursive search from this point. Let's see some examples.[br]
 		The form (1) matches the first widget with the specified class name.[br]
-		For instance:[br]
+		For instance:
 		[example]
 			%Frame = $new(wrapper,0,test,KviMainWindow)
 		[/example]
 		This will wrap the first top level object with class KviMainWindow. Now you can use
-		any [class]widget[/class] or [class]object[/class] methods on it.[br]
+		any [class]widget[/class] or [class]object[/class] methods on it.
 		[example]
 			%Frame = $new(wrapper,0,test,KviMainWindow)
 			%Frame->$setGeometry(20,20,400,400);
 		[/example]
-		If you want to wrap the KVIrc status bar you can use a composite path:[br]
+		If you want to wrap the KVIrc status bar you can use a composite path:
 		[example]
 			%StatusBar = $new(wrapper,0,test,KviMainWindow,KviStatusBar)
 			%StatusBar->$setProperty(autoFillBackground,1)
@@ -109,7 +109,7 @@
 		[/example]
 		The form (2) matches both the class and the widget name. In this way you can differentiate
 		between children that have the same class.[br]
-		For instance:[br]
+		For instance:
 		[example]
 			%VerticalScrollBar = $new(wrapper,0,test,KviMainWindow,QSplitter,KviWindowStack,QWidget::qt_scrollarea_vcontainer,QScrollBar)
 			%VerticalScrollBar->$setProperty(invertedAppearance,1);
@@ -124,24 +124,24 @@
 		[/example]
 		If you don't want to specify the full path to the widget you can try to use a recursive search which may skip some levels.
 		Keep in mind that the recursive search is breadth-first and will return the first widget that matches.[br]
-		In our sample tree the following would match the first widget with class KviChannelWindow.[br]
+		In our sample tree the following would match the first widget with class KviChannelWindow.
 		[example]
 			%Chan = $new(wrapper,0,test,*KviChannelWindow)
 			%Chan->$setBackgroundColor(80,0,0);
 		[/example]
-		The following would match the first widget with name #kvirc[br]
+		The following would match the first widget with name #kvirc
 		[example]
 			%Chan = $new(wrapper,0,test,*::#kvirc)
 			%Chan->$setBackgroundColor(80,0,0);
 		[/example]
 		The recursive search can start at any level, so if starting from the root does not work properly you might try
-		specifying a part of the path and then searching recursively.[br]
+		specifying a part of the path and then searching recursively.
 		[example]
 			%Chan = $new(wrapper,0,test,KviMainWindow,*::#kvirc)
 			%Chan->$setBackgroundColor(80,0,0);
 		[/example]
 		The form (4) allows you to jump directly to a specific KVIrc channel/query/console window,
-		without the need of looking it up in the tree.[br]
+		without the need of looking it up in the tree.
 		[example]
 			%Win = $new(wrapper,0,test,!Window::$window)
 			%Win->$setBackgroundColor(80,0,0);

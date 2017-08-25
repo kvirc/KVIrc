@@ -458,7 +458,7 @@ namespace KviKvsCoreFunctions
 		@description:
 			Returns the requested information about local certificate.[br]
 			Some queries can accept an optional parameter <param1>.[br]
-			Available query strings are:[br]
+			Available query strings are:
 			[ul]
 				[li]signatureType[/li]
 				[li]signatureContents[/li]
@@ -847,7 +847,7 @@ namespace KviKvsCoreFunctions
 			Returns the string representation of <unixtime> or
 			of the current time if <unixtime> is not given, based on <format>.[br]
 			The <format string> should contain a set of characters
-			that will be transformed according to the following rules:[br]
+			that will be transformed according to the following rules:
 			[table]
 				[tr][td][b]a[/b][/td][td]The abbreviated weekday name according to the current locale.[/td][/tr]
 				[tr][td][b]A[/b][/td][td]The full weekday name according to the current locale.[/td][/tr]
@@ -1216,7 +1216,7 @@ namespace KviKvsCoreFunctions
 			[example]
 				[cmd]if[/cmd]($features("SSL"))[cmd]echo[/cmd] "Yes! SSL is available";
 			[/example]
-			If used in [i]non-array[/i] context it returns just a comma separated list of entries:[br]
+			If used in [i]non-array[/i] context it returns just a comma separated list of entries:
 			[example]
 				[cmd]echo[/cmd] $features
 			[/example]

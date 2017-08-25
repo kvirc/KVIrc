@@ -44,20 +44,19 @@
 		registered users, registration mask, registered user properties,
 		user properties, notify property, avatar property
 	@body:
-		[big]Introduction[/big][br]
+		[big]Introduction[/big]
 		The registered user database is basically a set of users with associated
 		[doc:irc_masks]irc-masks[/doc] and properties.[br]
 		It is used to recognize users on IRC and associate properties to them.[br]
-		This works more or less like the IRC ban list, K-Line list, or invite list.[br]
-		[big]User entry[/big][br]
+		This works more or less like the IRC ban list, K-Line list, or invite list.
+		[big]User entry[/big]
 		A registered user database entry is identified by a [b]unique[/b] name.[br]
 		It may be the nickname of the user that you want to match, or the real name (if you know it)
 		or any other string (even with spaces). The name is an [i]internal identifier[/i] for the user entry:
 		each name maps to a single entry and each entry has a single name.[br]
 		Each entry has a set of registration [doc:irc_masks]irc-masks[/doc]: these masks
-		are used to recognize the user on IRC.[br]
-		[br]
-		[big]Registration masks[/big][br]
+		are used to recognize the user on IRC.
+		[big]Registration masks[/big]
 		The masks have the common IRC mask format: [b]<nick>!<user>@<host>[/b][br]
 		The masks may contain [b]*[/b] and [b]?[/b] wildcards that match any portion of text.[br]
 		[b]*!*@*[/b][br]
@@ -78,7 +77,7 @@
 		[b]<nick>!*<username>@*.<host>.<top>[/b][br]
 		or[br]
 		[b]<nick>!*<username>@<number>.<number>.<number>.*[/b][br]
-		In this way you can be 95% sure that the mask will really match the correct user.[br]
+		In this way you can be 95% sure that the mask will really match the correct user.
 		[big]Example of registration and lookups[/big]
 		Assume that you want to register a friend of yours: Derek Riggs.[br]
 		Derek often uses [i]Eddie[/i] as his nickname
@@ -100,8 +99,7 @@
 		If you have two masks registered: [b]Pragma!*xor@*.myisp.it[/b] and [b]*!*@*.myisp.it[/b],
 		KVIrc will match [b]Pragma!~xor@233-dyn.myisp.it[/b] with the first one even if the second
 		one also matches; the first one however, is a best match.
-		[br][br]
-		[big]Properties[/big][br]
+		[big]Properties[/big]
 		A registered user has an (eventually empty) set of properties
 		defined by name/value pairs. (In versions prior to 3.0.0 flags were used instead,
 		but revealed to be insufficient).[br]
@@ -112,9 +110,8 @@
 		KVIrc will attempt to track the user presence on IRC.
 		Another one is the [doc:avatar]avatar[/doc] property. Its value should be the
 		name of the [i]default[/i] [doc:avatar]avatar image file[/doc] for the specified user.[br]
-		The [i]ignore[/i] property should be set to [i]1[/i] (or [i]true[/i]) for users that have to be ignored (:D).[br]
-		[br]
-		[big]The interface to the database[/big][br]
+		The [i]ignore[/i] property should be set to [i]1[/i] (or [i]true[/i]) for users that have to be ignored (:D).
+		[big]The interface to the database[/big]
 		The [module:reguser]reguser module[/module] is the interface to the [i]registered users database[/i].[br]
 		It provides a set of commands for adding and removing masks and manipulating properties.[br]
 */

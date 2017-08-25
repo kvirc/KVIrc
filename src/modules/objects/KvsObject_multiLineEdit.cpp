@@ -70,7 +70,7 @@
 		Returns [b]1[/b] (true) if the cursor is placed at the end of the text; otherwise returns [b]0[/b] (false).
 		!fn: $setWordWrap(<wrap_mode:string>)
 		Sets the word wrap mode to mode.[br]
-		Valid Values are:[br]
+		Valid Values are:
 		[example]
 			- NoWrap - Do not wrap the text.[br]
 			- WidgetWidth - Wrap the text at the current width of the widget.[br]

@@ -1697,7 +1697,7 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 			%Test[] = $str.split("Y*H","hihiYeaHhohohoyeahYepYEAHhi",sw)
 			echo %Test[]
 		[/example]
-		If used outside of an array context, a comma-separated list of substrings is returned:[br]
+		If used outside of an array context, a comma-separated list of substrings is returned:
 		[example]
 			[cmd]echo[/cmd] $str.split("[ ]*","Condense spaces and change &nbsp; &nbsp; all &nbsp; &nbsp; &nbsp; it in commas",r)
 		[/example]
@@ -1879,8 +1879,7 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 		and by using the following corresponding variadic parameters.
 		Since the percent sign is used as variable prefix in KVIrc,
 		this function uses the question mark [b]?[/b] instead.[br]
-		The <format> string can contain the following escape sequences:[br]
-		[br]
+		The <format> string can contain the following escape sequences:
 		[table]
 		[tr][td][b]?s[/b][/td][td]The next parameter is evaluated as a string and substituted in place of ?s[/td][/tr]
 		[tr][td][b]?d[/b][/td][td]The next parameter is evaluated as a signed integer and substituted in place of ?d[/td][/tr]
