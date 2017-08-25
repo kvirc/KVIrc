@@ -259,9 +259,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Triggered when a channel or query message is going to be highlighted
 		@parameters:
-			$0 = Talker nick
-			$1 = Target username
-			$2 = Target hostname
+			$0 = Source nickname
+			$1 = Source username
+			$2 = Source hostname
 			$3 = Message
 			$4 = Highlight word
 			$5 = Message type
@@ -288,7 +288,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnHighlight",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Message\n"
@@ -538,9 +538,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Triggered when a WALLOPS message is received from the server
 		@parameters:
-			$0 = Source nick
-			$1 = Source user
-			$2 = Source host
+			$0 = Source nickname
+			$1 = Source username
+			$2 = Source hostname
 			$3 = Message text
 		@window:
 			channel
@@ -551,9 +551,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnWallops",
-	    "$0 = Nick\n"
-	    "$1 = User\n"
-	    "$2 = Host\n"
+	    "$0 = Source nickname\n"
+	    "$1 = Source username\n"
+	    "$2 = Source hostname\n"
 	    "$3 = Message text"),
 
 	/*
@@ -565,9 +565,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Triggered when a message is ignored.
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = Message target
 			$4 = Message
 			$5 = Message tags
@@ -578,9 +578,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnIgnoredMessage",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
-	    "$2 = Source host\n"
+	    "$2 = Source hostname\n"
 	    "$3 = Message target\n"
 	    "$4 = Message\n"
 	    "$5 = Message tags"),
@@ -594,7 +594,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A server NOTICE have been issued.
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Message
 		@window:
 			Console window
@@ -605,7 +605,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnServerNotice",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Message"),
 
 	// Connection
@@ -1134,7 +1134,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelNickPopupRequest",
-	    "$0 = Nick list"),
+	    "$0 = Nickname list"),
 
 	/*
 		@doc: onnotifylistpopuprequest
@@ -1245,11 +1245,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A message has been received from the channel
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = Message
-			$4 = [target mode prefixes]
+			$4 = Target mode prefixes
 			$5 = Was encrypted
 			$6 = Message tags
 		@window:
@@ -1267,7 +1267,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelMessage",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Message\n"
@@ -1284,7 +1284,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A NOTICE have been issued to a channel
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Message
 			$2 = Target
 			$3 = Was encrypted
@@ -1304,7 +1304,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelNotice",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Message\n"
 	    "$2 = Target\n"
 	    "$3 = Was encrypted\n"
@@ -1320,9 +1320,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A message has been received from a query
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = Message
 			$4 = Was encrypted
 			$5 = Message tags
@@ -1331,7 +1331,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@description:
 			Triggered when a query message is received.[br]
 			If you [cmd]return[/cmd] [fnc]$false[/fnc] in this event, the message output will be stopped.[br]
-			This event is triggered in the query window associated to the source nick, or in
+			This event is triggered in the query window associated to the source nickname, or in
 			the IRC context console window if the query window has not been created for some reason.
 			Note that you can't stop the query window creation with this event: you must
 			use [event:onquerywindowrequest]OnQueryWindowRequest[/event] for that purpose.
@@ -1348,7 +1348,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQueryMessage",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Message\n"
@@ -1364,9 +1364,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A private notice has been received
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = Message
 			$4 = Was encrypted
 			$5 = Message tags
@@ -1382,9 +1382,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQueryNotice",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
-	    "$2 = Source host\n"
+	    "$2 = Source hostname\n"
 	    "$3 = Message\n"
 	    "$4 = Was encrypted\n"
 	    "$5 = Message tags"),
@@ -1400,7 +1400,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@parameters:
 			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = Message
 			$4 = Message tags
 		@window:
@@ -1422,9 +1422,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQueryWindowRequest",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source user\n"
-	    "$2 = Source host\n"
+	    "$2 = Source hostname\n"
 	    "$3 = Message\n"
 	    "$4 = Message tags"),
 
@@ -1466,7 +1466,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@parameters:
 			$0 = Nickname
 			$1 = Username (may be *)
-			$2 = Host (may be *)
+			$2 = Hostname (may be *)
 		@window:
 			query window
 		@description:
@@ -1478,7 +1478,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQueryTargetAdded",
-	    "$0 = Nick\n"
+	    "$0 = Nickname\n"
 	    "$1 = Username (may be *)\n"
 	    "$2 = Hostname (may be *)"),
 
@@ -1491,8 +1491,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A file is dropped in a query
 		@parameters:
-			$0 = Source nick
-			$1 = Filedropped
+			$0 = Source nickname
+			$1 = File dropped
 		@window:
 			Query
 		@description:
@@ -1501,8 +1501,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQueryFileDropped",
-	    "$0 = Nick\n"
-	    "$1 = Filedropped"),
+	    "$0 = Source nickname\n"
+	    "$1 = File dropped"),
 
 	// Actions
 	/*
@@ -1638,7 +1638,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	EVENT("OnPart",
 	    "$0 = Nickname\n"
 	    "$1 = Username\n"
-	    "$2 = Host\n"
+	    "$2 = Hostname\n"
 	    "$3 = Part message"),
 
 	/*
@@ -1703,10 +1703,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnKick",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Kicked nick\n"
+	    "$3 = Kicked nickname\n"
 	    "$4 = Reason"),
 
 	/*
@@ -1740,7 +1740,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeKick",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Reason"),
@@ -1831,10 +1831,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			The channel mode has been changed
 		@parameters:
-			$0 = Source nick
-			$1 = Source user
-			$2 = Source host
-			$3 = Modeflags
+			$0 = Source nickname
+			$1 = Source username
+			$2 = Source hostname
+			$3 = Mode flags
 			$4 = Mode parameter string
 		@window:
 			channel
@@ -1845,10 +1845,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelModeChange",
-	    "$0 = Sourcenick\n"
-	    "$1 = Sourceusername\n"
-	    "$2 = Sourcehost\n"
-	    "$3 = Modeflags\n"
+	    "$0 = Source nickname\n"
+	    "$1 = Source username\n"
+	    "$2 = Source hostname\n"
+	    "$3 = Mode flags\n"
 	    "$4 = Mode params"),
 
 	/*
@@ -1882,7 +1882,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has set a +b flag on the channel
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
 			$2 = Source hostname
 			$3 = Ban mask
@@ -1895,7 +1895,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnBan",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Ban mask"),
@@ -1909,10 +1909,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has set a -b flag on the channel
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
 			$2 = Source hostname
-			$3 = Unban mask
+			$3 = Ban mask
 		@window:
 			Channel window
 		@description:
@@ -1922,7 +1922,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnUnBan",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Ban mask"),
@@ -1949,7 +1949,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeBan",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Ban mask"),
@@ -1976,7 +1976,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeUnban",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Ban mask"),
@@ -1990,10 +1990,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has set a +e flag on the channel
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
 			$2 = Source hostname
-			$3 = Banexception mask
+			$3 = Ban exception mask
 		@window:
 			Channel window
 		@description:
@@ -2003,7 +2003,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnBanException",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Ban exception mask"),
@@ -2017,10 +2017,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has set a -e flag on the channel
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
 			$2 = Source hostname
-			$3 = Unban mask
+			$3 = Ban exception mask
 		@window:
 			Channel window
 		@description:
@@ -2030,7 +2030,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnBanExceptionRemove",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Ban exception mask"),
@@ -2044,7 +2044,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has set a +e flag on the local user
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
 			$2 = Source hostname
 			$3 = Mask
@@ -2057,7 +2057,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeBanException",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Mask"),
@@ -2071,7 +2071,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has set a -e flag on the local user
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
 			$2 = Source hostname
 			$3 = Mask
@@ -2084,7 +2084,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeBanExceptionRemove",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Mask"),
@@ -2098,9 +2098,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			The local user has received an invitation
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = Channel
 		@window:
 			Active window/console
@@ -2109,7 +2109,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnInvite",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Channel"),
@@ -2123,9 +2123,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A +I mode has been set
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = Target mask
 		@window:
 			Channels window
@@ -2136,7 +2136,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnInviteException",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Target mask"),
@@ -2150,9 +2150,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Mode -I has been set
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = Target mask
 		@window:
 			Channels window
@@ -2163,7 +2163,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnInviteExceptionRemove",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Target mask"),
@@ -2177,9 +2177,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A +I mode has been set on the local user
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = Mask
 		@window:
 			Channels window
@@ -2191,7 +2191,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeInviteException",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Mask"),
@@ -2205,9 +2205,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Move -I has been set
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = Mask
 		@window:
 			Channels window
@@ -2219,7 +2219,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeInviteExceptionRemove",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Mask"),
@@ -2233,9 +2233,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			The channel users limit has been set
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = Limit
 		@window:
 			Channels window
@@ -2246,7 +2246,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnLimitSet",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Limit"),
@@ -2260,9 +2260,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			The channel users limit has been unset
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -2272,7 +2272,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnLimitUnset",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -2285,9 +2285,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			The channel users key has been set
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = Key
 		@window:
 			Channels window
@@ -2298,7 +2298,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnKeySet",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Key"),
@@ -2312,9 +2312,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			The channel users key has been unset
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -2324,7 +2324,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnKeyUnset",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -2337,9 +2337,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has changed his nickname
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = New nickname
 		@window:
 			Console window
@@ -2351,7 +2351,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnNickChange",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = New nickname"),
@@ -2365,7 +2365,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			The local user has changed his nickname
 		@parameters:
-			$0 = Old nick
+			$0 = Old nickname
 			$1 = New nickname
 		@window:
 			Console window
@@ -2377,8 +2377,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeNickChange",
-	    "$0 = Old nick\n"
-	    "$1 = New nick"),
+	    "$0 = Old nickname\n"
+	    "$1 = New nickname"),
 
 	/*
 		@doc: onchanowner
@@ -2389,10 +2389,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user the +q flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Target nick
+			$2 = Source hostname
+			$3 = Target nickname
 		@window:
 			Channels window
 		@description:
@@ -2402,10 +2402,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChanOwner",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Target nick"),
+	    "$3 = Target nickname"),
 
 	/*
 		@doc: ondechanowner
@@ -2416,10 +2416,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user the -q flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Target nick
+			$2 = Source hostname
+			$3 = Target nickname
 		@window:
 			Channels window
 		@description:
@@ -2429,10 +2429,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeChanOwner",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Target nick"),
+	    "$3 = Target nickname"),
 
 	/*
 		@doc: onmechanowner
@@ -2443,9 +2443,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given the +q flag to the local user
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -2455,7 +2455,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeChanOwner",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -2468,9 +2468,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given the -q flag to the local user
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -2480,7 +2480,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeChanOwner",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -2493,10 +2493,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user the +a flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Target nick
+			$2 = Source hostname
+			$3 = Target nickname
 		@window:
 			Channels window
 		@description:
@@ -2506,10 +2506,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChanAdmin",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Target nick"),
+	    "$3 = Target nickname"),
 
 	/*
 		@doc: ondechanadmin
@@ -2520,10 +2520,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user the -a flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Target nick
+			$2 = Source hostname
+			$3 = Target nickname
 		@window:
 			Channels window
 		@description:
@@ -2533,10 +2533,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeChanAdmin",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Target nick"),
+	    "$3 = Target nickname"),
 
 	/*
 		@doc: onmechanadmin
@@ -2547,9 +2547,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given the +a flag to the local user
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -2559,7 +2559,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeChanAdmin",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -2572,9 +2572,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given the -a flag to the local user
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -2584,7 +2584,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeChanAdmin",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -2597,10 +2597,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user the +o flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Opped nick
+			$2 = Source hostname
+			$3 = Opped nickname
 		@window:
 			Channels window
 		@description:
@@ -2610,10 +2610,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Opped nick"),
+	    "$3 = Opped nickname"),
 
 	/*
 		@doc: ondeop
@@ -2624,10 +2624,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user the -o flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Deopped nick
+			$2 = Source hostname
+			$3 = Deopped nickname
 		@window:
 			Channels window
 		@description:
@@ -2637,10 +2637,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Deopped nick"),
+	    "$3 = Deopped nickname"),
 
 	/*
 		@doc: onmeop
@@ -2651,9 +2651,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given the +o flag to the local user
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -2663,7 +2663,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -2676,9 +2676,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given the -o flag to the local user
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -2688,7 +2688,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -2701,10 +2701,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user the +h flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Halfopped nick
+			$2 = Source hostname
+			$3 = Halfopped nickname
 		@window:
 			Channels window
 		@description:
@@ -2714,10 +2714,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnHalfOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Halfopped nick"),
+	    "$3 = Halfopped nickname"),
 
 	/*
 		@doc: ondehalfop
@@ -2728,10 +2728,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user the -h flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Dehalfopped nick
+			$2 = Source hostname
+			$3 = Dehalfopped nickname
 		@window:
 			Channels window
 		@description:
@@ -2741,10 +2741,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeHalfOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Dehalfopped nick"),
+	    "$3 = Dehalfopped nickname"),
 
 	/*
 		@doc: onmehalfop
@@ -2755,9 +2755,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given the local user the +h flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -2767,7 +2767,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeHalfOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -2780,9 +2780,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given the local user the -h flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -2792,7 +2792,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeHalfOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -2805,10 +2805,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user the +v flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Voiced nick
+			$2 = Source hostname
+			$3 = Voiced nickname
 		@window:
 			Channels window
 		@description:
@@ -2818,10 +2818,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnVoice",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Voiced nick"),
+	    "$3 = Voiced nickname"),
 
 	/*
 		@doc: ondevoice
@@ -2832,10 +2832,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user the -v flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Devoiced nick
+			$2 = Source hostname
+			$3 = Devoiced nickname
 		@window:
 		Channels window
 		@description:
@@ -2845,10 +2845,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeVoice",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Voiced nick"),
+	    "$3 = Devoiced nickname"),
 
 	/*
 		@doc: onmevoice
@@ -2859,9 +2859,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has give the local user a +v flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -2871,7 +2871,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeVoice",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -2884,9 +2884,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has give the local user a -v flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -2896,7 +2896,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeVoice",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -2909,10 +2909,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user the +u flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Useropped nick
+			$2 = Source hostname
+			$3 = Useropped nickname
 		@window:
 			Channels window
 		@description:
@@ -2922,10 +2922,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnUserOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Useropped nick"),
+	    "$3 = Useropped nickname"),
 
 	/*
 		@doc: ondeuserop
@@ -2936,10 +2936,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user a -u flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Deuseropped nick
+			$2 = Source hostname
+			$3 = Deuseropped nickname
 		@window:
 			Channels window
 		@description:
@@ -2949,10 +2949,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeUserOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Deuseropped nick"),
+	    "$3 = Deuseropped nickname"),
 
 	/*
 		@doc: onmeuserop
@@ -2963,9 +2963,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given the local user the +u flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -2975,7 +2975,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeUserOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -2988,9 +2988,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given the local user the -u flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -3000,7 +3000,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeUserOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -3013,10 +3013,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user the +O flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Ircopped nick
+			$2 = Source hostname
+			$3 = Ircopped nickname
 		@window:
 			Channels window
 		@description:
@@ -3026,10 +3026,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnIrcOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Ircopped nick"),
+	    "$3 = Ircopped nickname"),
 
 	/*
 		@doc: ondeircop
@@ -3040,10 +3040,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given a user the -O flag
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
-			$3 = Deircopped nick
+			$2 = Source hostname
+			$3 = Deircopped nickname
 		@window:
 			Channels window
 		@description:
@@ -3053,10 +3053,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeIrcOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
-	    "$3 = Deircopped nick"),
+	    "$3 = Deircopped nickname"),
 
 	/*
 		@doc: onmeircop
@@ -3067,9 +3067,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given the +O flag to the local user
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -3079,7 +3079,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeIrcOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -3092,9 +3092,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has given the -O flag to the local user
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 		@window:
 			Channels window
 		@description:
@@ -3104,7 +3104,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeIrcOp",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname"),
 
@@ -3118,9 +3118,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A notice from ChanServ has been received
 		@parameters:
-			$0 = ChanServ nick
+			$0 = ChanServ nickname
 			$1 = ChanServ username
-			$2 = ChanServ host
+			$2 = ChanServ hostname
 			$3 = Message
 			$4 = Message tags
 		@window:
@@ -3136,9 +3136,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChanServNotice",
-	    "$0 = ChanServ nick\n"
+	    "$0 = ChanServ nickname\n"
 	    "$1 = ChanServ username\n"
-	    "$2 = ChanServ host\n"
+	    "$2 = ChanServ hostname\n"
 	    "$3 = Message\n"
 	    "$4 = Message tags"),
 
@@ -3151,16 +3151,16 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A notice from NickServ has been received
 		@parameters:
-			$0 = NickServ nick
+			$0 = NickServ nickname
 			$1 = NickServ username
-			$2 = NickServ host
+			$2 = NickServ hostname
 			$3 = Message
 			$4 = Message tags
 		@window:
 			console
 		@description:
 			Triggered when a notice is received and the source user is recognized as
-			the NickServ service (the source nick is 'NickServ' or its mask matches
+			the NickServ service (the source nickname is 'NickServ' or its mask matches
 			a mask defined in the Nickserver identify options).[br]
 			Calling [cmd]halt[/cmd] stops the message output.
 		@seealso:
@@ -3170,9 +3170,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnNickServNotice",
-	    "$0 = NickServ nick\n"
+	    "$0 = NickServ nickname\n"
 	    "$1 = NickServ username\n"
-	    "$2 = NickServ host\n"
+	    "$2 = NickServ hostname\n"
 	    "$3 = Message\n"
 	    "$4 = Message tags"),
 
@@ -3203,9 +3203,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone issued a CTCP ACTION
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
-			$2 = Source host
+			$2 = Source hostname
 			$3 = Message target
 			$4 = Action message text
 			$5 = Message tags
@@ -3228,7 +3228,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnAction",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Message target\n"
@@ -3275,9 +3275,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A CTCP request has been received
 		@parameters:
-			$0 = Source nick
-			$1 = Source user
-			$2 = Source host
+			$0 = Source nickname
+			$1 = Source username
+			$2 = Source hostname
 			$3 = Target
 			$4 = CTCP type
 			$5- = CTCP parameters
@@ -3292,9 +3292,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnCTCPRequest",
-	    "$0 = Source nick\n"
-	    "$1 = Source user\n"
-	    "$2 = Source host\n"
+	    "$0 = Source nickname\n"
+	    "$1 = Source username\n"
+	    "$2 = Source hostname\n"
 	    "$3 = Target\n"
 	    "$4 = CTCP type\n"
 	    "$5- = CTCP parameters"),
@@ -3308,9 +3308,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A CTCP reply has been received
 		@parameters:
-			$0 = Source nick
-			$1 = Source user
-			$2 = Source host
+			$0 = Source nickname
+			$1 = Source username
+			$2 = Source hostname
 			$3 = Target
 			$4 = CTCP type
 			$5- = CTCP parameters
@@ -3325,9 +3325,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnCTCPReply",
-	    "$0 = Source nick\n"
-	    "$1 = Source user\n"
-	    "$2 = Source host\n"
+	    "$0 = Source nickname\n"
+	    "$1 = Source username\n"
+	    "$2 = Source hostname\n"
 	    "$3 = Target\n"
 	    "$4 = CTCP type\n"
 	    "$5- = CTCP parameters"),
@@ -3341,7 +3341,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone tried to flood you with CTCP requests
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
 			$2 = Source hostname
 			$3 = Target
@@ -3357,7 +3357,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnCTCPFlood",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Target\n"
@@ -3503,7 +3503,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCChatMessage",
-	    "$0 = Text\n"
+	    "$0 = Message text\n"
 	    "$1 = DCC session ID"),
 
 	/*
@@ -3706,9 +3706,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@title:
 			OnChannelNickLinkClick
 		@short:
-			Clicked on nick in channel
+			Clicked on nickname in channel
 		@parameters:
-			$0 = Nick list
+			$0 = Nickname list
 		@window:
 			channel
 		@description:
@@ -3717,7 +3717,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelNickLinkClick",
-	    "$0 = Nick list"),
+	    "$0 = Nickname list"),
 
 	/*
 		@doc: OnQueryNickLinkClick
@@ -3768,7 +3768,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Triggered when user clicks on any hostname in any window
 		@parameters:
-			$0 = Host name
+			$0 = Hostname
 		@window:
 			any
 		@description:
@@ -3777,7 +3777,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnHostLinkClick",
-	    "$0 = Host name"),
+	    "$0 = Hostname"),
 
 	/*
 		@doc: OnURLLinkClick
@@ -3904,7 +3904,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Allows customization of the double click on nicknames
 		@parameters:
-			$0 = Nick list
+			$0 = Nickname list
 		@window:
 			Channel window
 		@description:
@@ -3913,7 +3913,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelNickDefaultActionRequest",
-	    "$0 = Nick list"),
+	    "$0 = Nickname list"),
 
 	/*
 		@doc: onquerynickdefaultactionrequest
@@ -3953,7 +3953,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Triggered when a window title needs to be set
 		@parameters:
-			None
+			$0 = Window ID
+			$1 = Default window title
 		@window:
 			Any window
 		@description:
@@ -3976,7 +3977,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Triggered when the user paste some text on the inputbar
 		@parameters:
-			None
+			$0 = Window ID
+			$1 = Pasted text
 		@window:
 			Any window
 		@description:
@@ -4000,9 +4002,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A notice from MemoServ has been received
 		@parameters:
-			$0 = MemoServ nick
+			$0 = MemoServ nickname
 			$1 = MemoServ username
-			$2 = MemoServ host
+			$2 = MemoServ hostname
 			$3 = Message
 			$4 = Message tags
 		@window:
@@ -4018,9 +4020,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMemoServNotice",
-	    "$0 = MemoServ nick\n"
+	    "$0 = MemoServ nickname\n"
 	    "$1 = MemoServ username\n"
-	    "$2 = MemoServ host\n"
+	    "$2 = MemoServ hostname\n"
 	    "$3 = Message\n"
 	    "$4 = Message tags"),
 
@@ -4033,9 +4035,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			A broadcast NOTICE has been received.
 		@parameters:
-			$0 = Source nick
-			$1 = Source user
-			$2 = Source host
+			$0 = Source nickname
+			$1 = Source username
+			$2 = Source hostname
 			$3 = Target
 			$4 = Message
 		@window:
@@ -4049,9 +4051,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnBroadcastNotice",
-	    "$0 = Source nick\n"
-	    "$1 = Source user\n"
-	    "$2 = Source host\n"
+	    "$0 = Source nickname\n"
+	    "$1 = Source username\n"
+	    "$2 = Source hostname\n"
 	    "$3 = Target\n"
 	    "$4 = Message"),
 
@@ -4064,7 +4066,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has set a +q flag on the channel
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
 			$2 = Source hostname
 			$3 = Ban mask
@@ -4077,7 +4079,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQuietBan",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Ban mask"),
@@ -4091,10 +4093,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@short:
 			Someone has set a -q flag on the channel
 		@parameters:
-			$0 = Source nick
+			$0 = Source nickname
 			$1 = Source username
 			$2 = Source hostname
-			$3 = Unban mask
+			$3 = Ban mask
 		@window:
 			Channel window
 		@description:
@@ -4104,7 +4106,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQuietUnban",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Ban mask"),
@@ -4131,7 +4133,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeQuietBan",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Ban mask"),
@@ -4158,7 +4160,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeQuietUnban",
-	    "$0 = Source nick\n"
+	    "$0 = Source nickname\n"
 	    "$1 = Source username\n"
 	    "$2 = Source hostname\n"
 	    "$3 = Ban mask"),
@@ -4170,10 +4172,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 		@title:
 			OnMeHostChange
 		@short:
-			Local user's visible host is changed
+			Local user's visible hostname is changed
 		@parameters:
 			$0 = Source server
-			$1 = New host
+			$1 = New hostname
 		@window:
 			Console
 		@description:
@@ -4182,7 +4184,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 
 	EVENT("OnMeHostChange",
 	    "$0 = Source server\n"
-	    "$1 = New host"),
+	    "$1 = New hostname"),
 
 	/*
 		@doc: onhostchange
