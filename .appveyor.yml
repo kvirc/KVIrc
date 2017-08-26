@@ -116,9 +116,9 @@ install:
         if (Test-Path "c:/spellcheck-dicts/zip/en_US.zip") {
             echo "using en dict from cache"
         } else {
-            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2017.01.22/hunspell-en_US-2017.01.22.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
-            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2017.01.22/hunspell-en_GB-ize-2017.01.22.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
-            (New-Object Net.WebClient).DownloadFile('http://sourceforge.net/projects/wordlist/files/speller/2017.01.22/hunspell-en_GB-ise-2017.01.22.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
+            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2017.01.22/hunspell-en_US-2017.01.22.zip', 'c:\spellcheck-dicts\zip\en_US.zip')
+            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2017.01.22/hunspell-en_GB-ize-2017.01.22.zip', 'c:\spellcheck-dicts\zip\en_GB-ize.zip')
+            (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2017.01.22/hunspell-en_GB-ise-2017.01.22.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
             c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/unzip; 7z x -y ../zip/en_US.zip; 7z x -y ../zip/en_GB-ize.zip; 7z x -y ../zip/en_GB-ise.zip"
         }
     - c:\cygwin\bin\ls -lR /cygdrive/c/spellcheck-dicts
