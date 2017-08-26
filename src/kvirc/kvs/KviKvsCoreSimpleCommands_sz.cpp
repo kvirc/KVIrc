@@ -152,6 +152,7 @@ namespace KviKvsCoreSimpleCommands
 			entry too).
 			!sw: -s | --ssl
 			Activates the SSL support for this connection (if OpenSSL support has been compiled in).
+			If SSL is enabled and no port is specified, the connection will be made to port 6697.
 			!sw: -u | --unused-context
 			Forces the connection to be attempted in the first IRC context that has
 			no connection in progress. If all the IRC contexts have connections in progress
@@ -288,6 +289,8 @@ namespace KviKvsCoreSimpleCommands
 			d->bUseSSL = (KVSCSC_pSwitches->find('s', "ssl") != nullptr);
 			d->bSTARTTLS = false;
 			d->szServer = szServer;
+			// if the user wants to connect using ssl but didn't specify a port, default to 6697
+			if (d->bUseSSL && !(uPort > 0))uPort = 6697;
 			d->uPort = (kvi_u32_t)uPort;
 			d->szLinkFilter = szSocketFilter;
 			d->bPortIsOk = (uPort > 0);
