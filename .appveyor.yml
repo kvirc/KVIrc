@@ -147,7 +147,7 @@ build_script:
             windeployqt "--pdb" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
         } else {
             windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
-        }
+        } 
     - c:\cygwin\bin\ls -l release/
     - ps: |
         if ($env:cmake_build_type -eq "Debug") {
