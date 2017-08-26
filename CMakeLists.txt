@@ -69,9 +69,6 @@ set(CMAKE_KVIRC_BUILD_CPU ${CMAKE_SYSTEM_PROCESSOR})
 set(CMAKE_KVIRC_BUILD_COMPILER ${CMAKE_CXX_COMPILER})
 set(CMAKE_KVIRC_BUILD_COMPILER_FLAGS ${CMAKE_CXX_FLAGS})
 
-# Prefer Python 2.7 over 3.x (which is currently incompatible) - GitHub issue #2020
-set(Python_ADDITIONAL_VERSIONS "2.7")
-
 # Allow the use of the LOCATION property
 cmake_policy(SET CMP0026 OLD)
 
@@ -786,10 +783,10 @@ endif()
 # Check for Python support
 option(WANT_PYTHON "Compile Python support" ON)
 if(WANT_PYTHON)
-	find_package(PythonLibs 2.7)
+	find_package(PythonLibs)
 	if(PYTHONLIBS_FOUND)
 		set(COMPILE_PYTHON_SUPPORT 1)
-		set(CMAKE_STATUS_PYTHON_SUPPORT "Yes")
+		set(CMAKE_STATUS_PYTHON_SUPPORT "Yes, Python ${PYTHONLIBS_VERSION_STRING}")
 		list(APPEND LIBS ${PYTHON_LIBRARIES})
 		include_directories(${PYTHON_INCLUDE_DIRS})
 	else()

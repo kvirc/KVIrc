@@ -423,7 +423,7 @@ PyMODINIT_FUNC python_init()
 	else
 	{
 		// Create a CObject containing the API pointer array's address
-		PyObject * pC_API_Object = PyCObject_FromVoidPtr(PyKVIrc_API, nullptr);
+		PyObject * pC_API_Object = PyCapsule_New((void *)PyKVIrc_API, "kvirc._C_API", nullptr);
 		if(pC_API_Object)
 			PyModule_AddObject(pModule, "_C_API", pC_API_Object);
 	}
