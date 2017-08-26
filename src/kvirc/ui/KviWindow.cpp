@@ -139,6 +139,8 @@ KviWindow::KviWindow(Type eType, const QString & szName, KviConsoleWindow * lpCo
 	//setAutoFillBackground(false);
 	setFocusPolicy(Qt::StrongFocus);
 	connect(g_pApp, SIGNAL(reloadImages()), this, SLOT(reloadImages()));
+
+	setAttribute(Qt::WA_InputMethodEnabled, true);
 }
 
 KviWindow::~KviWindow()
