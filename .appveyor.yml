@@ -51,6 +51,7 @@ environment:
           mingw_fourple: mingw32/mingw-w64-i686
           mingw_root: c:/msys64/mingw32
           mingw_libgcc: libgcc_s_dw2-1.dll
+        fast_finish: true
 install:
     - systeminfo
     - c:\cygwin\bin\uname -a
@@ -145,7 +146,7 @@ build_script:
             windeployqt "--pdb" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
         } else {
             windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
-        } 
+        }
     - c:\cygwin\bin\ls -l release/
     - ps: |
         if ($env:cmake_build_type -eq "Debug") {
