@@ -33,6 +33,8 @@
 #include "KviWindow.h"
 #include "KviKvsVariantList.h"
 
+#include <QRegExp>
+
 /*
 	@doc: events
 	@type:
@@ -634,5 +636,14 @@ void KviKvsEventManager::saveAppEvents(const QString & szFileName)
 			if((i == 4) && !bCompat)
 				i--;
 		}
+	}
+}
+
+void KviKvsEventManager::cleanHandlerName(QString & szHandlerName)
+{
+	szHandlerName.replace(invalidHandlerNameCharsRegExp, "");
+	if (szHandlerName.isEmpty())
+	{
+		szHandlerName = "unnamed";
 	}
 }
