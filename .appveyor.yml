@@ -51,6 +51,8 @@ environment:
           mingw_fourple: mingw32/mingw-w64-i686
           mingw_root: c:/msys64/mingw32
           mingw_libgcc: libgcc_s_dw2-1.dll
+matrix:
+    fast_finish: true
 install:
     - systeminfo
     - c:\cygwin\bin\uname -a
