@@ -5,7 +5,7 @@ cache:
     - c:\Strawberry -> .appveyor.yml
 environment:
     matrix:
-        - cmake_build_type: Debug
+        - cmake_build_type: Release
           arch: x64
           target_arch: x86_64
           ssl_arch: Win64
@@ -18,7 +18,7 @@ environment:
           mingw_root: c:/msys64/mingw64
           mingw_libgcc: libgcc_s_seh-1.dll
 
-        - cmake_build_type: Debug
+        - cmake_build_type: Release
           arch: x86
           target_arch: x86
           ssl_arch: Win32
@@ -31,7 +31,7 @@ environment:
           mingw_root: c:/msys64/mingw32
           mingw_libgcc: libgcc_s_dw2-1.dll
 
-        - cmake_build_type: Release
+        - cmake_build_type: Debug
           arch: x64
           target_arch: x86_64
           ssl_arch: Win64
@@ -44,7 +44,7 @@ environment:
           mingw_root: c:/msys64/mingw64
           mingw_libgcc: libgcc_s_seh-1.dll
 
-        - cmake_build_type: Release
+        - cmake_build_type: Debug
           arch: x86
           target_arch: x86
           ssl_arch: Win32
