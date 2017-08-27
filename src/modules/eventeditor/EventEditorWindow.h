@@ -114,7 +114,6 @@ public:
 protected slots:
 	void currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *);
 	void itemPressed(QTreeWidgetItem * it, const QPoint & pnt);
-	void setCurrentHandlerEnabled();
 	void toggleCurrentHandlerEnabled();
 	void removeCurrentHandler();
 	void addHandlerForCurrentEvent();
