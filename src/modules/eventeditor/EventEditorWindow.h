@@ -31,6 +31,7 @@
 #include <QLineEdit>
 #include <QTreeWidget>
 #include <QMenu>
+#include <QCheckBox>
 
 class KviScriptEditor;
 
@@ -73,6 +74,7 @@ public:
 	void setName(const QString & szName);
 	QString name() const { return m_szName; };
 	void setEnabled(const bool bEnabled);
+	bool isEnabled() { return m_bEnabled; };
 };
 
 class EventEditorTreeWidget : public QTreeWidget
@@ -99,6 +101,7 @@ public:
 	KviScriptEditor * m_pEditor;
 	EventEditorTreeWidget * m_pTreeWidget;
 	QLineEdit * m_pNameEditor;
+	QCheckBox * m_pIsEnabled;
 	QMenu * m_pContextPopup;
 	EventEditorHandlerTreeWidgetItem * m_pLastEditedItem;
 	bool m_bOneTimeSetupDone;
@@ -111,6 +114,7 @@ public:
 protected slots:
 	void currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *);
 	void itemPressed(QTreeWidgetItem * it, const QPoint & pnt);
+	void setCurrentHandlerEnabled();
 	void toggleCurrentHandlerEnabled();
 	void removeCurrentHandler();
 	void addHandlerForCurrentEvent();
