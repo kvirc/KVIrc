@@ -155,6 +155,7 @@ protected:
 	ScriptEditorWidgetColorOptions * m_pOptionsDialog;
 	ScriptEditorWidget * m_pEditor;
 	QLabel * m_pRowColLabel;
+	QPushButton * m_pFindButton;
 	int m_lastCursorPos;
 
 public:
