@@ -2,6 +2,7 @@ version: 0.0.0.0.1-branch-{branch}-build-{build}
 cache:
     - c:\deps -> .appveyor.yml
     - c:\spellcheck-dicts -> .appveyor.yml
+    - c:\Strawberry -> .appveyor.yml
 environment:
     matrix:
         - cmake_build_type: Release
@@ -151,7 +152,7 @@ build_script:
             windeployqt "--pdb" "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
         } else {
             windeployqt "--dir" "release/qt-plugins" "--libdir" "release/" "release/kvirc.exe" "release/modules/"
-        } 
+        }
     - c:\cygwin\bin\ls -l release/
     - ps: |
         if ($env:cmake_build_type -eq "Debug") {
