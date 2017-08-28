@@ -9,7 +9,7 @@
 
 Welcome, this is the GitHub development and bug tracker home for the KVIrc project.
 
-KVIrc is a free and portable IRC client leveraging the Qt GUI toolkit.  
+KVIrc is a free and portable IRC client leveraging the Qt GUI toolkit.
 KVIrc is written by Szymon Stefanek and the KVIrc development team, with the contribution and support of many IRC addicted developers around the world.
 
 ### Getting involved
