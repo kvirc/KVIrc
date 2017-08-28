@@ -377,7 +377,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 		nullptr                      ,&&check_e2k_url              ,&&check_file_or_ftp_url      ,nullptr                      ,
 		&&check_http_url             ,&&check_irc_url              ,nullptr                      ,nullptr                      ,
 		nullptr                      ,&&check_mailto_or_magnet_url ,nullptr                      ,nullptr                      , // 064-079  // 070==F 072==H 073==I  077==M
-		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_url          ,
+		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_or_sftp_url  ,
 		nullptr                      ,nullptr                      ,nullptr                      ,&&check_www_url              ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 080-095  // 083==S 087==W
@@ -385,7 +385,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 		nullptr                      ,&&check_e2k_url              ,&&check_file_or_ftp_url      ,nullptr                      ,
 		&&check_http_url             ,&&check_irc_url              ,nullptr                      ,nullptr                      ,
 		nullptr                      ,&&check_mailto_or_magnet_url ,nullptr                      ,nullptr                      , // 096-111  // 101=e 102=f 104=h 105=i 109==m
-		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_url          ,
+		nullptr                      ,nullptr                      ,nullptr                      ,&&check_spotify_or_sftp_url  ,
 		nullptr                      ,nullptr                      ,nullptr                      ,&&check_www_url              ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      ,
 		nullptr                      ,nullptr                      ,nullptr                      ,nullptr                      , // 112-127  // 115==s 119==w
@@ -512,7 +512,7 @@ check_char_loop:
 							goto check_e2k_url;
 							break;
 						case 9:
-							goto check_spotify_url;
+							goto check_spotify_or_sftp_url;
 							break;
 					}
 				}
@@ -837,6 +837,14 @@ check_file_or_ftp_url:
 				goto got_url;
 			}
 
+			static kvi_wchar_t aFtpsUrl[] = { 'f', 't', 'p', 's', ':', '/', '/' };
+
+			if(url_compare_helper(p, aFtpsUrl, 7))
+			{
+				partLen = 7;
+				goto got_url;
+			}
+
 			static kvi_wchar_t aFtp2Url[] = { 'f', 't', 'p', '.' };
 
 			if(url_compare_helper(p, aFtp2Url, 4))
@@ -981,11 +989,24 @@ check_mailto_or_magnet_url:
 	goto check_char_loop;
 #endif // !COMPILE_USE_DYNAMIC_LABELS
 
-check_spotify_url:
+check_spotify_or_sftp_url:
 	p++;
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting))
 	{
-		if((*p == 'p') || (*p == 'P'))
+		if((*p == 'f') || (*p == 'F'))
+		{
+			p--;
+
+			static kvi_wchar_t aSftpUrl[] = { 's', 'f', 't', 'p', ':', '/', '/' };
+
+			if(url_compare_helper(p, aSftpUrl, 7))
+			{
+				partLen = 7;
+				goto got_url;
+			}
+			p++;
+		}
+		else if((*p == 'p') || (*p == 'P'))
 		{
 			p--;
 
