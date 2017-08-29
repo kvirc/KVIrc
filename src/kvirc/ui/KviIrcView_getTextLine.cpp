@@ -845,6 +845,14 @@ check_file_or_ftp_url:
 				goto got_url;
 			}
 
+			static kvi_wchar_t aFtpesUrl[] = { 'f', 't', 'p', 'e', 's', ':', '/', '/' };
+
+			if(url_compare_helper(p, aFtpesUrl, 8))
+			{
+				partLen = 8;
+				goto got_url;
+			}
+
 			static kvi_wchar_t aFtp2Url[] = { 'f', 't', 'p', '.' };
 
 			if(url_compare_helper(p, aFtp2Url, 4))
