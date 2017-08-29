@@ -75,8 +75,7 @@ CodeTesterWindow::CodeTesterWindow()
 
 	m_pIrcView = new KviIrcView(m_pSplitter, this);
 
-	QList<int> li;
-	li << width() / 2 << width() / 2;
+	QList<int> li { width() / 2, width() / 2 };
 	m_pSplitter->setSizes(li);
 }
 
