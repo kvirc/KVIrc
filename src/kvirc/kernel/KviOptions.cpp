@@ -838,7 +838,10 @@ KviMessageTypeSettingsOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS] = {
 	MSGTYPE_OPTION("ChanURL", __tr_no_lookup("Channel URL"), KviIconManager::Url, KVI_MSGTYPE_LEVEL_3),
 	MSGTYPE_OPTION("MemoServ", __tr_no_lookup("MemoServ message"), KviIconManager::MemoServ, KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("Log", __tr_no_lookup("Log message"), KviIconManager::Log, KVI_MSGTYPE_LEVEL_1),
-	MSGTYPE_OPTION("ActionCrypted", __tr_no_lookup("Encrypted user action"), KviIconManager::ActionCrypted, KVI_MSGTYPE_LEVEL_3)
+	MSGTYPE_OPTION("ActionCrypted", __tr_no_lookup("Encrypted user action"), KviIconManager::ActionCrypted, KVI_MSGTYPE_LEVEL_3),
+	MSGTYPE_OPTION("OwnAction", __tr_no_lookup("Own action"), KviIconManager::OwnAction, KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION("OwnActionCrypted", __tr_no_lookup("Own encrypted action"), KviIconManager::OwnActionCrypted, KVI_MSGTYPE_LEVEL_1),
+	MSGTYPE_OPTION("TopicCrypted", __tr_no_lookup("Encrypted topic message"), KviIconManager::TopicCrypted, KVI_MSGTYPE_LEVEL_3),
 };
 
 static const char * options_section_table[KVI_NUM_OPTION_SECT_FLAGS] = {

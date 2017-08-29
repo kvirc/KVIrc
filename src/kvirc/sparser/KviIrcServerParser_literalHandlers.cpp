@@ -1708,7 +1708,7 @@ void KviIrcServerParser::parseLiteralTopic(KviIrcMessage * msg)
 	const char * txtptr;
 	int msgtype;
 
-	DECRYPT_IF_NEEDED(chan, msg->safeTrailing(), KVI_OUT_QUERYPRIVMSG, KVI_OUT_QUERYPRIVMSGCRYPTED, szBuffer, txtptr, msgtype)
+	DECRYPT_IF_NEEDED(chan, msg->safeTrailing(), KVI_OUT_TOPIC, KVI_OUT_TOPICCRYPTED, szBuffer, txtptr, msgtype)
 
 	QString szTopic = chan->decodeText(txtptr);
 
@@ -1740,7 +1740,7 @@ void KviIrcServerParser::parseLiteralTopic(KviIrcMessage * msg)
 
 	if(!msg->haltOutput())
 	{
-		chan->output(KVI_OUT_TOPIC,
+		chan->output(msgtype,
 		    __tr2qs("\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""),
 		    &szNick, &szUser, &szHost, &szTopic, KviControlCodes::Reset);
 	}

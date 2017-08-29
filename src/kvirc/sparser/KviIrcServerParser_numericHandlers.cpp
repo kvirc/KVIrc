@@ -607,14 +607,14 @@ void KviIrcServerParser::parseNumericTopic(KviIrcMessage * msg)
 		const char * txtptr;
 		int msgtype;
 
-		DECRYPT_IF_NEEDED(chan, msg->safeTrailing(), KVI_OUT_QUERYPRIVMSG, KVI_OUT_QUERYPRIVMSGCRYPTED, szBuffer, txtptr, msgtype)
+		DECRYPT_IF_NEEDED(chan, msg->safeTrailing(), KVI_OUT_TOPIC, KVI_OUT_TOPICCRYPTED, szBuffer, txtptr, msgtype)
 
 		QString szTopic = chan->decodeText(txtptr);
 
 		chan->topicWidget()->setTopic(szTopic);
 		chan->topicWidget()->setTopicSetBy(__tr2qs("(unknown)"));
 		if(KVI_OPTION_BOOL(KviOption_boolEchoNumericTopic) && !msg->haltOutput())
-			chan->output(KVI_OUT_TOPIC, __tr2qs("Channel topic is: %Q"), &szTopic);
+			chan->output(msgtype, __tr2qs("Channel topic is: %Q"), &szTopic);
 	}
 	else
 	{

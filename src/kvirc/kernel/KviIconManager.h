@@ -506,7 +506,9 @@ public:
 		ActionCrypted = 337,
 		TopicCrypted = 338,
 		CtcpCrypted = 339,
-		IconCount = 340
+		OwnAction = 340,
+		OwnActionCrypted = 341,
+		IconCount = 342
 	};
 
 	/**

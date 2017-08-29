@@ -752,7 +752,7 @@ void KviQueryWindow::ownAction(const QString & szBuffer)
 					if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szEncrypted.ptr(), 0x01))
 						return;
 
-					output(KVI_OUT_ACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
+					output(KVI_OUT_OWNACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
 				}
 				break;
 				case KviCryptEngine::Encoded:
@@ -763,7 +763,7 @@ void KviQueryWindow::ownAction(const QString & szBuffer)
 					// ugly, but we must redecode here
 					QString szRedecoded = decodeText(szEncrypted.ptr());
 
-					output(KVI_OUT_ACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szRedecoded);
+					output(KVI_OUT_OWNACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szRedecoded);
 				}
 				break;
 				default: // also case KviCryptEngine::EncryptError
@@ -789,6 +789,6 @@ void KviQueryWindow::ownAction(const QString & szBuffer)
 	if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, data.data(), 0x01))
 		return;
 
-	output(KVI_OUT_ACTION, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
+	output(KVI_OUT_OWNACTION, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
 	m_pUserListView->userAction(szMyName, KVI_USERACTION_ACTION);
 }

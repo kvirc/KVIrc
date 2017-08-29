@@ -420,7 +420,9 @@ static const char * g_szIconNames[KviIconManager::IconCount] = {
 	"newproxy",             // 336
 	"actioncrypted",        // 337
 	"topiccrypted",         // 338
-	"ctcpcrypted"           // 339
+	"ctcpcrypted",          // 339
+	"ownaction",            // 340
+	"ownactioncrypted"      // 341
 };
 
 KviIconWidget::KviIconWidget()
@@ -1629,6 +1631,12 @@ KviIconManager::SmallIcon KviIconManager::iconName(int iIcon)
 			break;
 		case 339:
 			return KviIconManager::CtcpCrypted;
+			break;
+		case 340:
+			return KviIconManager::OwnAction;
+			break;
+		case 341:
+			return KviIconManager::OwnActionCrypted;
 			break;
 		case 0:
 		case KviIconManager::IconCount:
