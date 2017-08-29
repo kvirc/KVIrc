@@ -26,6 +26,7 @@
 
 #include "kvi_settings.h"
 #include "KviLocale.h"
+#define _WANT_OPTION_FLAGS_
 #include "KviOptions.h"
 
 OptionsWidget_windowList::OptionsWidget_windowList(QWidget * parent)
@@ -34,7 +35,14 @@ OptionsWidget_windowList::OptionsWidget_windowList(QWidget * parent)
 	setObjectName("windowlist_options_widget");
 	createLayout();
 
-	addBoolSelector(0, 0, 0, 0, __tr2qs_ctx("Show tree window list", "options"), KviOption_boolUseTreeWindowList);
+	KviTalHBox * hbox = new KviTalHBox(this);
+	QLabel * l = new QLabel(__tr2qs_ctx("Window list type:", "options"), hbox);
+	m_pWindowListType = new QComboBox(hbox);
+	m_pWindowListType->addItem(__tr2qs_ctx("Tree", "options"));
+	m_pWindowListType->addItem(__tr2qs_ctx("Classic", "options"));
+	m_pWindowListType->setCurrentIndex(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowList) ? 0 : 1);
+	addWidgetToLayout(hbox, 0, 0, 0, 0);
+
 	addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Sort windows by name", "options"), KviOption_boolSortWindowListItemsByName);
 	addBoolSelector(0, 2, 0, 2, __tr2qs_ctx("Show window icons in window list", "options"), KviOption_boolUseWindowListIcons);
 	KviBoolSelector * b = addBoolSelector(0, 3, 0, 3, __tr2qs_ctx("Show activity meter in window list", "options"), KviOption_boolUseWindowListActivityMeter);
@@ -57,6 +65,16 @@ OptionsWidget_windowList::OptionsWidget_windowList(QWidget * parent)
 
 OptionsWidget_windowList::~OptionsWidget_windowList()
     = default;
+
+void OptionsWidget_windowList::commit()
+{
+	// we need to add this flag manually to the reset list because there's no other
+	// option in this options widget that uses it.
+	mergeResetFlag(KviOption_resetUpdateWindowList);
+	KVI_OPTION_BOOL(KviOption_boolUseTreeWindowList) = (m_pWindowListType->currentIndex() == 0);
+
+	KviOptionsWidget::commit();
+}
 
 OptionsWidget_windowListTree::OptionsWidget_windowListTree(QWidget * parent)
     : KviOptionsWidget(parent)
