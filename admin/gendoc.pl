@@ -321,6 +321,7 @@ sub make_syntax
 			}
 		}
 	}
+	$_[0] =~ s/\n+/<br>\n/gs;
 }
 
 sub extract_keyterms
@@ -626,6 +627,7 @@ sub process_body_line
 			#$_[0] =~ s/(\&gt\;)/\<span class=\"example-oper\">\1\<\/span\>/g;
 			#$_[0] =~ s/(\&lt\;)/\<span class=\"example-oper\">\1\<\/span\>/g;
 		}
+		$_[0] =~ s/\n+/<br>\n/gs;
 	}
 
 	$_[0] =~ s/^				/\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;\&nbsp\;/g;
