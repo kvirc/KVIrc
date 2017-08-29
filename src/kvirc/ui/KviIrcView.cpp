@@ -1136,6 +1136,8 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 	// And loop through lines until we not run over the upper bound of the view
 	while((curBottomCoord >= KVI_IRCVIEW_VERTICAL_BORDER) && pCurTextLine)
 	{
+		pCurTextLine->szText.replace('\t', ' ');
+
 		// Paint pCurTextLine
 		if(maxLineWidth != pCurTextLine->iMaxLineWidth)
 		{
