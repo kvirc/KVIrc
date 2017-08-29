@@ -97,6 +97,7 @@ protected:
 	virtual void keyPressEvent(QKeyEvent * e);
 	virtual void showEvent(QShowEvent * e);
 	bool recursiveSearch(OptionsDialogTreeWidgetItem * pItem, const QStringList & lKeywords);
+	void clearSearch();
 	bool searchInSelectors(KviOptionsWidget * pWidget, const QStringList & lKeywords);
 
 public:

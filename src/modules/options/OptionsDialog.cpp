@@ -191,7 +191,7 @@ OptionsDialog::OptionsDialog(QWidget * par, const QString & szGroup, bool bModal
 	hbox->setMargin(3);
 
 	m_pSearchLineEdit = new QLineEdit(hbox);
-	connect(m_pSearchLineEdit, SIGNAL(returnPressed()), this, SLOT(searchClicked()));
+	connect(m_pSearchLineEdit, SIGNAL(textEdited(const QString &)), this, SLOT(searchClicked()));
 	m_pSearchButton = new QToolButton(hbox);
 	m_pSearchButton->setIconSize(QSize(16, 16));
 	m_pSearchButton->setIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Search)));
@@ -455,11 +455,28 @@ void OptionsDialog::search(const QString & szKeywords)
 	search(lKeywords);
 }
 
+void OptionsDialog::clearSearch()
+{
+	m_pTreeWidget->setUpdatesEnabled(false);
+
+	QTreeWidgetItemIterator it(m_pTreeWidget);
+	while (*it) {
+		(*it)->setForeground(0, Qt::black);
+		(*it)->setBackground(0, Qt::transparent);
+		++it;
+	}
+
+	m_pTreeWidget->setUpdatesEnabled(true);
+	m_pTreeWidget->update();
+}
+
 void OptionsDialog::searchClicked()
 {
 	QString szTxt = m_pSearchLineEdit->text().trimmed();
-	if(!szTxt.isEmpty())
+	if(szTxt.length() > 1)
 		search(szTxt);
+	else
+		clearSearch();
 }
 
 void OptionsDialog::fillTreeWidget(QTreeWidgetItem * p, KviPointerList<OptionsWidgetInstanceEntry> * l, const QString & szGroup, bool bNotContainedOnly)
