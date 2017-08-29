@@ -1648,7 +1648,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 				szBuffer += "</font></td></tr>";
 			}
 
-			pTip->doTip(itRect, szBuffer);
+			pTip->doTip(QRect(pnt, pnt), szBuffer);
 		}
 	}
 }
