@@ -22,7 +22,6 @@
 //
 //=============================================================================
 
-#include "KviOptions.h"
 #include "KviNickColors.h"
 #include "KviMemory.h"
 
@@ -72,9 +71,9 @@ namespace KviNickColors
 		return sum;
 	}
 
-	const char * getSmartColor(int iPos)
+	const char * getSmartColor(int iPos, bool bWithBg)
 	{
-		if(KVI_OPTION_BOOL(KviOption_boolColorNicksWithBackground))
+		if(bWithBg)
 			return g_nickColors[iPos % g_numNickColors];
 		else
 			return g_nickColorsNoBg[iPos % g_numNickColorsNoBg];

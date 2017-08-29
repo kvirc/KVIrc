@@ -799,13 +799,13 @@ void KviConsoleWindow::outputPrivmsg(KviWindow * wnd,
 					if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
 					{
 						//avoid the use of the color specifier for own nickname
-						if(m_szOwnSmartColor == KviNickColors::getSmartColor(sum))
+						if(m_szOwnSmartColor == KviNickColors::getSmartColor(sum, KVI_OPTION_BOOL(KviOption_boolColorNicksWithBackground)))
 							sum++;
 					}
 					pUserEntry->setSmartNickColor(sum);
 				}
 
-				szNick.prepend(KviNickColors::getSmartColor(sum));
+				szNick.prepend(KviNickColors::getSmartColor(sum, KVI_OPTION_BOOL(KviOption_boolColorNicksWithBackground)));
 			}
 			else
 			{
@@ -819,10 +819,10 @@ void KviConsoleWindow::outputPrivmsg(KviWindow * wnd,
 				if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
 				{
 					//avoid the use of the color specifier for own nickname
-					if(m_szOwnSmartColor == KviNickColors::getSmartColor(sum))
+					if(m_szOwnSmartColor == KviNickColors::getSmartColor(sum, KVI_OPTION_BOOL(KviOption_boolColorNicksWithBackground)))
 						sum++;
 				}
-				szNick.prepend(KviNickColors::getSmartColor(sum));
+				szNick.prepend(KviNickColors::getSmartColor(sum, KVI_OPTION_BOOL(KviOption_boolColorNicksWithBackground)));
 			}
 		}
 		szNick.prepend(KviControlCodes::Color);

@@ -6,7 +6,6 @@ include_directories(
 	ext
 	file
 	irc
-	../kvirc/kernel
 	locale
 	net
 	system
