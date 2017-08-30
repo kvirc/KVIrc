@@ -448,15 +448,19 @@ void KviApplication::setup()
 	// Script object controller
 	//g_pScriptObjectController = new KviScriptObjectController(); gone
 
-	QString szStylesheetFile;
-	getGlobalKvircDirectory(szStylesheetFile, Config, "style.css");
-	if(KviFileUtils::fileExists(szStylesheetFile))
+	// use the default stylesheet unless the user has specified one
+	if(styleSheet().isEmpty())
 	{
-		QString szStyleData;
-		KviFileUtils::readFile(szStylesheetFile, szStyleData);
-		szStyleData.replace("global://", m_szGlobalKvircDir);
-		szStyleData.replace("local://", m_szLocalKvircDir);
-		setStyleSheet(szStyleData);
+		QString szStylesheetFile;
+		getGlobalKvircDirectory(szStylesheetFile, Config, "style.css");
+		if(KviFileUtils::fileExists(szStylesheetFile))
+		{
+			QString szStyleData;
+			KviFileUtils::readFile(szStylesheetFile, szStyleData);
+			szStyleData.replace("global://", m_szGlobalKvircDir);
+			szStyleData.replace("local://", m_szLocalKvircDir);
+			setStyleSheet(szStyleData);
+		}
 	}
 
 	// create the frame window, we're almost up and running...
