@@ -363,14 +363,14 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		The DCC tag is used to initiate a Direct Client Connection.
 		The known DCC types are:[br]
 		[pre]
-			CHAT[br]
-			SEND[br]
-			SSEND[br]
-			TSEND[br]
-			GET[br]
-			TGET[br]
-			ACCEPT[br]
-			RESUME[br]
+			CHAT
+			SEND
+			SSEND
+			TSEND
+			GET
+			TGET
+			ACCEPT
+			RESUME
 		[/pre]
 */
 

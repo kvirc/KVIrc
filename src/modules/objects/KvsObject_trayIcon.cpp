@@ -62,10 +62,10 @@
 		Message can be clicked by the user; the messageClickedEvent() will be triggered when this occurs.[br]
 		Valid values for message_icon are:
 		[pre]
-			- NoIcon : No icon is shown.[br]
-			- Information : An information icon is shown.[br]
-			- Warning : A standard warning icon is shown.[br]
-			- Critical : A critical warning icon is shown.[br]
+			- NoIcon : No icon is shown.
+			- Information : An information icon is shown.
+			- Warning : A standard warning icon is shown.
+			- Critical : A critical warning icon is shown.
 		[/pre]
 		!fn: setContextMenu(<popupmenu:hobject>).
 		Associates the given <popupmenu> with the tray icon.
@@ -74,11 +74,11 @@
 		If you reimplement this function the reason parameter will be passed as $0.
 		Values for reason are:[br]
 		[pre]
-			- Unknown : Unknown reason.[br]
-			- Context : The context menu for the tray icon was requested.[br]
-			- DoubleClick : The tray icon was double clicked.[br]
-			- Trigger : The tray icon was clicked.[br]
-			- MiddleClick : The tray icon was clicked with the middle mouse button.[br]
+			- Unknown : Unknown reason.
+			- Context : The context menu for the tray icon was requested.
+			- DoubleClick : The tray icon was double clicked.
+			- Trigger : The tray icon was clicked.
+			- MiddleClick : The tray icon was clicked with the middle mouse button.
 		[/pre]
 		The default implementation emits the [classfnc]$activated[/classfnc]() signal.
 		!fn: messageClickedEvent()

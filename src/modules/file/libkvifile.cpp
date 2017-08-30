@@ -707,20 +707,20 @@ static bool file_kvs_fnc_ps(KviKvsModuleFunctionCall * c)
 		The <directory> should be given as a UNIX style path and is adjusted according to the system that KVIrc is running on.[br][br]
 		<flags> may be a combination of the following characters:[br]
 		[pre]
-			[b]d:[/b] list directories[br]
-			[b]f:[/b] list files[br]
-			[b]l:[/b] list symbolic links[br]
-			[b]r:[/b] list readable files[br]
-			[b]w:[/b] list writable files[br]
-			[b]x:[/b] list executable files[br]
-			[b]h:[/b] list hidden files[br]
-			[b]s:[/b] list system files[br]
-			[b]n:[/b] sort files by name[br]
-			[b]t:[/b] sort files by file time[br]
-			[b]b:[/b] sort files by file size[br]
-			[b]z:[/b] put the directories first, then the files[br]
-			[b]k:[/b] invert sort order[br]
-			[b]i:[/b] case insensitive sort[br]
+			[b]d:[/b] list directories
+			[b]f:[/b] list files
+			[b]l:[/b] list symbolic links
+			[b]r:[/b] list readable files
+			[b]w:[/b] list writable files
+			[b]x:[/b] list executable files
+			[b]h:[/b] list hidden files
+			[b]s:[/b] list system files
+			[b]n:[/b] sort files by name
+			[b]t:[/b] sort files by file time
+			[b]b:[/b] sort files by file size
+			[b]z:[/b] put the directories first, then the files
+			[b]k:[/b] invert sort order
+			[b]i:[/b] case insensitive sort
 		[/pre]
 		If <flags> is empty, then a default of [b]dfrwxhs[/b] is set. If none of the [b]r[/b],[b]w[/b],[b]x[/b] flags are set then KVIrc sets all of them by default.[br][br]
 		If <namefilter> is passed then it is interpreted as a wildcard string

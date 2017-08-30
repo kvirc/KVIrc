@@ -55,12 +55,12 @@
 		this is rather server specific protocol, but the prefixes are somewhat standardized and
 		the common meanings of them are:[br]
 		[pre]
-			noprefix: I line with Ident[br]
-			^: I line with OTHER type Ident[br]
-			~: I line, no Ident[br]
-			+: i line with Ident[br]
-			=: i line with OTHER type Ident[br]
-			-: i line, no Ident[br]
+			noprefix: I line with Ident
+			^: I line with OTHER type Ident
+			~: I line, no Ident
+			+: i line with Ident
+			=: i line with OTHER type Ident
+			-: i line, no Ident
 		[/pre]
 		So finally you can find <username> strings like [i]~pragma[/i] or [i]^pragma[/i], where [i]pragma[/i]
 		is the system username of the irc-user and ~ and ^ are prefixes.[br]

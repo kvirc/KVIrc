@@ -422,15 +422,15 @@ const char * const widgettypes_tbl[] = {
 		This function sets widget flags, given as parameters.
 		Valid flags are:
 		[pre]
-			TopLevel        - indicates that this widget is a top-level widget[br]
-			Dialog          - indicates that this widget is a top-level window that should be decorated as a dialog[br]
-			Desktop         - indicates that this widget is the desktop[br]
-			Popup           - indicates that this widget is a popup top-level window[br]
-			Title           - gives the window a title bar[br]
-			StaysOnTop      - window stays on top [br]
-			SysMenu         - add a windows system menu[br]
-			Minimize        - add a minimize button for the sysmenu style[br]
-			Maximize        - add a maximize button for the sysmenu style[br]
+			TopLevel        - indicates that this widget is a top-level widget
+			Dialog          - indicates that this widget is a top-level window that should be decorated as a dialog
+			Desktop         - indicates that this widget is the desktop
+			Popup           - indicates that this widget is a popup top-level window
+			Title           - gives the window a title bar
+			StaysOnTop      - window stays on top
+			SysMenu         - add a windows system menu
+			Minimize        - add a minimize button for the sysmenu style
+			Maximize        - add a maximize button for the sysmenu style
 		[/pre]
 		!fn: $centerToScreen()
 		Centers the window on the screen (useful only for toplevel widgets).[br]
@@ -439,48 +439,48 @@ const char * const widgettypes_tbl[] = {
 		Sets the way the widget accepts keyboard focus.[br]
 		Valid parameters are:
 		[pre]
-			- TabFocus;	(widget accepts keyboard focus by tabbing)[br]
-			- ClickFocus; (widget accepts keyboard focus by clicking)[br]
-			- StrongFocus; (widget accepts both tabbing/clicking)[br]
-			- No Focus;  (widget does not accept focus at all; this is the default value)[br]
+			- TabFocus;	(widget accepts keyboard focus by tabbing)
+			- ClickFocus; (widget accepts keyboard focus by clicking)
+			- StrongFocus; (widget accepts both tabbing/clicking)
+			- No Focus;  (widget does not accept focus at all; this is the default value)
 		[/pre]
 		!fn: $keyPressEvent(<key>)
 		If widget accepts keyboard focus (see [classfnc]$setFocusPolicy[/classfnc] ) this function handles for keys;
 		In its argument the key pressed.[br]
 		Special keys are:
 		[pre]
-			- Return [br]
-			- Enter	[br]
-			- Down (cursor arrow down) [br]
-			- Up   (cursor arrow up) [br]
-			- Left (cursor arrow left) [br]
-			- Right (cursor arrow right) [br]
-			- Shift [br]
-			- Ctrl [br]
-			- Alt [br]
-			- CapsLock [br]
-			- Backspace [br]
-			- Del [br]
-			- Esc [br]
-			- 0 [br]
-			- 1 [br]
-			- 2 [br]
-			- 3 [br]
-			- 4 [br]
-			- 5 [br]
-			- 6 [br]
-			- 7 [br]
-			- 8 [br]
-			- 9 [br]
-			- + [br]
-			- - [br]
-			- * [br]
-			- / [br]
-			- ( [br]
-			- ) [br]
-			- = [br]
-			- . [br]
-			- ^ [br]
+			- Return
+			- Enter
+			- Down (cursor arrow down)
+			- Up   (cursor arrow up)
+			- Left (cursor arrow left)
+			- Right (cursor arrow right)
+			- Shift
+			- Ctrl
+			- Alt
+			- CapsLock
+			- Backspace
+			- Del
+			- Esc
+			- 0
+			- 1
+			- 2
+			- 3
+			- 4
+			- 5
+			- 6
+			- 7
+			- 8
+			- 9
+			- +
+			- -
+			- *
+			- /
+			- (
+			- )
+			- =
+			- .
+			- ^
 		[/pre]
 		!fn: $mapFromGlobal(<x>,<y>)
 		Translates the global screen coordinate pos to widget coordinates.

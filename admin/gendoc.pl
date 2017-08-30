@@ -790,7 +790,7 @@ sub process_file
 							# Process example code blocks
 							if($iExampleState eq 0)
 							{
-								if(($_ =~ /\[example\]*/) && (!($_ =~ /\[\/example\]*/)))
+								if(($_ =~ /\[(example|pre)\]*/) && (!($_ =~ /\[\/(example|pre)\]*/)))
 								{
 									$iExampleState = 1;
 									$szExampleTabBlock = "";
@@ -802,7 +802,7 @@ sub process_file
 									$_ =~ s/^$szExampleTabBlock//g;
 								}
 
-								if(($_ =~ /\[\/example\]*/))
+								if(($_ =~ /\[\/(example|pre)\]*/))
 								{
 									$iExampleState = 0;
 								} else {

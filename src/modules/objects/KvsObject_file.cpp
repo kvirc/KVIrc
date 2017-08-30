@@ -93,12 +93,12 @@ const QIODevice::OpenMode mod_cod[] = {
 		Attempts to open the file in specified mode or modes [i]sum[/i].
 		Valid modes are:[br]
 		[pre]
-			RAW     - RAW, non-buffered access[br]
-			ReadOnly     - opens the file read-only[br]
-			WriteOnly    - opens the file write-only[br]
-			ReadWrite    - opens the file in read-write mode[br]
-			Append       - opens the file in append mode. The file index is set to the end of the file.[br]
-			Truncate     - truncates the file[br]
+			RAW     - RAW, non-buffered access
+			ReadOnly     - opens the file read-only
+			WriteOnly    - opens the file write-only
+			ReadWrite    - opens the file in read-write mode
+			Append       - opens the file in append mode. The file index is set to the end of the file.
+			Truncate     - truncates the file
 		[/pre]
 		If you call this function without any parameters, the file is
 		opened in read-only mode.[br]
