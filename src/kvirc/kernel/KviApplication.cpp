@@ -87,6 +87,7 @@
 #include "KviSignalHandler.h"
 #include "KviPtrListIterator.h"
 #include "KviIrcNetwork.h"
+#include "KviRuntimeInfo.h"
 
 #include <QMenu>
 #include <algorithm>
@@ -447,6 +448,9 @@ void KviApplication::setup()
 
 	// Script object controller
 	//g_pScriptObjectController = new KviScriptObjectController(); gone
+
+	// Cache the QStyle theme before it's overriden
+	(void)KviRuntimeInfo::qtTheme();
 
 	// use the default stylesheet unless the user has specified one
 	if(styleSheet().isEmpty())

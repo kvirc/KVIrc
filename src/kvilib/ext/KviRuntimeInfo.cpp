@@ -732,6 +732,7 @@ namespace KviRuntimeInfo
 
 	QString qtTheme()
 	{
-		return QString(qApp->style()->objectName());
+		static QString theme{qApp->style()->objectName()};
+		return theme;
 	}
 }
