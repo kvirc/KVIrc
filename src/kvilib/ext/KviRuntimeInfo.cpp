@@ -733,7 +733,7 @@ namespace KviRuntimeInfo
 	QString qtTheme()
 	{
 		static QString theme{qApp->style()->objectName().isEmpty() ?
-		                         __tr2qs("Overriden with a stylesheet") :
+		                         __tr2qs("Overridden with a stylesheet") :
 		                         qApp->style()->objectName()};
 		return theme;
 	}
