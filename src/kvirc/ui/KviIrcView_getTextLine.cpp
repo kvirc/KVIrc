@@ -175,6 +175,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 	int iTextIdx = 0; //we're at the beginning in the buffer
 	int iCurChunk = 0;
 	int blockLen;
+	int iTabCount;
 
 	const kvi_wchar_t * p = data_ptr;
 
@@ -260,10 +261,12 @@ const kvi_wchar_t * KviIrcView::getTextLine(
 /*
  * Profane description: this adds a block of text of known length to a already created chunk inside this line.
  */
-#define APPEND_LAST_TEXT_BLOCK(__data_ptr, __data_len)                               \
-	blockLen = (__data_len);                                                         \
-	line_ptr->pChunks[iCurChunk].iTextLen += blockLen;                               \
-	kvi_appendWCharToQStringWithLength(&(line_ptr->szText), __data_ptr, __data_len); \
+#define APPEND_LAST_TEXT_BLOCK(__data_ptr, __data_len)                                                              \
+	kvi_appendWCharToQStringWithLength(&(line_ptr->szText), __data_ptr, __data_len);                                \
+	iTabCount = line_ptr->szText.count('\t');                                                                       \
+	blockLen = (__data_len) + iTabCount * KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput) - iTabCount; \
+	line_ptr->pChunks[iCurChunk].iTextLen += blockLen;                                                              \
+	line_ptr->szText.replace('\t', QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput), ' '));     \
 	iTextIdx += blockLen;
 
 /*
@@ -271,9 +274,11 @@ const kvi_wchar_t * KviIrcView::getTextLine(
  * text is hidden (e.g. we want to display an emoticon instead of the ":)" text, so we insert it hidden)
  */
 
-#define APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(__data_ptr, __data_len)               \
-	blockLen = (__data_len);                                                         \
-	kvi_appendWCharToQStringWithLength(&(line_ptr->szText), __data_ptr, __data_len); \
+#define APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(__data_ptr, __data_len)                                              \
+	kvi_appendWCharToQStringWithLength(&(line_ptr->szText), __data_ptr, __data_len);                                \
+	iTabCount = line_ptr->szText.count('\t');                                                                       \
+	blockLen = (__data_len) + iTabCount * KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput) - iTabCount; \
+	line_ptr->szText.replace('\t', QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput), ' '));     \
 	iTextIdx += blockLen;
 
 /*
