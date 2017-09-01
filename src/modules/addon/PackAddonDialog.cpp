@@ -182,7 +182,7 @@ bool PackAddonDialog::packAddon()
 		return false;
 	}
 
-	QMessageBox::information(this, __tr2qs_ctx("Exporting Addon Completed - KVIrc", "addon"), __tr2qs_ctx("The Package was saved successfully in %1", "addon").arg(m_szSavePath), QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+	QMessageBox::information(this, __tr2qs_ctx("Exporting Addon Completed - KVIrc", "addon"), __tr2qs_ctx("The package was saved successfully in %1", "addon").arg(info.szSavePath), QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
 
 	return true;
 }
