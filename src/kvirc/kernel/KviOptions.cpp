@@ -126,7 +126,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("CreateMinimizedDccSendWhenAutoAccepted", true, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccChatWhenAutoAccepted", true, KviOption_sectFlagDcc),
 	BOOL_OPTION("DccGuessIpFromServerWhenLocalIsUnroutable", true, KviOption_sectFlagDcc),
-	BOOL_OPTION("ShowRegisteredUsersDialogAsToplevel", true, KviOption_sectFlagFrame),  //UNUSED
+	BOOL_OPTION("ColorNicksWithBackground", false, KviOption_sectFlagIrcView | KviOption_groupTheme),
 	BOOL_OPTION("AutoLogQueries", true, KviOption_sectFlagLogging), /* this options enabled by default in mIRC,XChat and irssi. People are confused while they want to see logs, but see empty dir*/
 	BOOL_OPTION("AutoLogChannels", true, KviOption_sectFlagLogging),
 	BOOL_OPTION("AutoLogDccChat", false, KviOption_sectFlagLogging),

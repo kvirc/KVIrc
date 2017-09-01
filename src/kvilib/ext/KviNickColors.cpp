@@ -30,12 +30,10 @@
 
 namespace KviNickColors
 {
-
-#define KVI_NUM_NICK_COLORS 95
-
 	// FIXME: Maybe make this table settable via options?
 	//        Or maybe a kvc file...
-	static const char * g_nickColors[KVI_NUM_NICK_COLORS] = {
+	static const int g_numNickColors = 95;
+	static const char * g_nickColors[g_numNickColors] = {
 		"0,1", "0,2", "0,3", "0,4", "0,5", "0,6", "0,10", "0,12", "0,14",        //9
 		"1,0", "1,4", "1,7", "1,8", "1,9", "1,11", "1,15",                       //7
 		"2,0", "2,4", "2,7", "2,8", "2,9", "2,11", "2,15",                       //7
@@ -53,6 +51,10 @@ namespace KviNickColors
 		"14,0", "14,8", "14,11", "14,15",                                        //4
 		"15,1", "15,2", "15,3", "15,6", "15,14"                                  //5
 	};
+	static const int g_numNickColorsNoBg = 8;
+	static const char * g_nickColorsNoBg[g_numNickColorsNoBg] = {
+		"2", "3", "4", "5", "6", "7", "10", "12"                                 //8
+	};
 
 	int getSmartColorForNick(QString * szNick)
 	{
@@ -69,9 +71,12 @@ namespace KviNickColors
 		return sum;
 	}
 
-	const char * getSmartColor(int iPos)
+	const char * getSmartColor(int iPos, bool bWithBg)
 	{
-		return g_nickColors[iPos % KVI_NUM_NICK_COLORS];
+		if(bWithBg)
+			return g_nickColors[iPos % g_numNickColors];
+		else
+			return g_nickColorsNoBg[iPos % g_numNickColorsNoBg];
 	}
 
 	int getSmartColorIntByMircColor(unsigned char iFore, unsigned char iBack)
@@ -86,7 +91,7 @@ namespace KviNickColors
 		snprintf(comb, 6, "%d,%d", iFore % 16, iBack % 16);
 #endif
 		// 		qDebug("Nick color %s",comb);
-		for(int i = 0; i < KVI_NUM_NICK_COLORS; ++i)
+		for(int i = 0; i < g_numNickColors; ++i)
 		{
 			int numc = 0;
 			// strcmp

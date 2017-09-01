@@ -66,6 +66,7 @@ public:
 public:
 	KviBoolSelector * m_pUseSmartColorSelector;
 	KviBoolSelector * m_pSpecialSmartColorSelector;
+	KviBoolSelector * m_pUseSmartColorWithBackgroundSelector;
 	KviMircTextColorSelector * m_pSmartColorSelector;
 protected slots:
 	void enableDisableSmartColorSelector(bool);
