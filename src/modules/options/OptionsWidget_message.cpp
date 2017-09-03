@@ -73,7 +73,7 @@ OptionsWidget_privmsg::OptionsWidget_privmsg(QWidget * parent)
 
 	m_pUseSmartColorSelector = addBoolSelector(g, __tr2qs_ctx("Smart nickname colors", "options"), KviOption_boolColorNicks);
 
-	m_pUseSmartColorWithBackgroundSelector = addBoolSelector(g, __tr2qs_ctx("Use a background color for smart nickname colors", "options"), KviOption_boolColorNicksWithBackground);
+	m_pUseSmartColorWithBackgroundSelector = addBoolSelector(g, __tr2qs_ctx("Use a background color for smart nickname colors", "options"), KviOption_boolColorNicksWithBackground, KVI_OPTION_BOOL(KviOption_boolColorNicks));
 
 	KviTalHBox * hb = new KviTalHBox(g);
 	hb->setSpacing(4);
