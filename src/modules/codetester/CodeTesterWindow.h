@@ -33,22 +33,6 @@ class QPushButton;
 class QLabel;
 class KviScriptEditor;
 
-class CodeTesterWidget : public QWidget
-{
-	Q_OBJECT
-public:
-	CodeTesterWidget(QWidget * par);
-	~CodeTesterWidget();
-
-private:
-	KviScriptEditor * m_pEditor;
-	QLineEdit * m_pParams;
-	QPushButton * m_pExecuteButton;
-	QLabel * m_pModeLabel;
-private slots:
-	void execute();
-};
-
 class CodeTesterWindow : public KviWindow
 {
 	Q_OBJECT
@@ -56,8 +40,15 @@ public:
 	CodeTesterWindow();
 	~CodeTesterWindow();
 
-protected:
-	CodeTesterWidget * m_pTester;
+private:
+	KviTalSplitter * m_pSplitter;
+	KviScriptEditor * m_pEditor;
+	QPushButton * m_pExecuteButton;
+	QLabel * m_pModeLabel;
+	QLineEdit * m_pParams;
+
+private slots:
+	void execute();
 
 protected:
 	virtual QPixmap * myIconPtr();
