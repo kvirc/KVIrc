@@ -1236,7 +1236,7 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 		[example]
 			echo KVIrc looks for pictures in $file.localdir(pics)
 			echo panic.png would be translated to $file.localdir(pics/panic.png)
-			echo panic.png would be translated to $escape($file.localdir(pics/panic.png
+			echo panic.png would be translated to $escape($file.localdir(pics/panic.png))
 		[/example]
 	@seealso:
 		[fnc]$escape[/fnc]
