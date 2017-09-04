@@ -77,7 +77,7 @@ OptionsWidget_privmsg::OptionsWidget_privmsg(QWidget * parent)
 
 	KviTalHBox * hb = new KviTalHBox(g);
 	hb->setSpacing(4);
-	m_pSpecialSmartColorSelector = addBoolSelector(hb, __tr2qs_ctx("Use specified colors for own nick:", "options"), KviOption_boolUseSpecifiedSmartColorForOwnNick, KVI_OPTION_BOOL(KviOption_boolColorNicks));
+	m_pSpecialSmartColorSelector = addBoolSelector(hb, __tr2qs_ctx("Use specified smart colors for own nick:", "options"), KviOption_boolUseSpecifiedSmartColorForOwnNick, KVI_OPTION_BOOL(KviOption_boolColorNicks));
 
 	m_pSmartColorSelector = addMircTextColorSelector(hb, "", KviOption_uintUserIrcViewOwnForeground, KviOption_uintUserIrcViewOwnBackground, KVI_OPTION_BOOL(KviOption_boolColorNicks) && KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick));
 
