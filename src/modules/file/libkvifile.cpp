@@ -1219,7 +1219,7 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 		Returns the path to the KVIrc local data directory.
 		The KVIrc local data directory is always writable and contains
 		the various subdirectories that KVIrc uses internally: audio, avatars,
-		config, help, incoming, log, modules, msgcolors and pics.
+		config, help, incoming, log, modules, msgcolors, events, aliases, actions and pics.
 		[br][br]
 		If <relative_path> is passed, then it is appended to the local directory path.
 		The path is adjusted to contain single separators suitable for the platform
@@ -1234,8 +1234,7 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 		Overall [b]$escape($file.localdir(pics/panic.png)) is a more correct approach.
 	@examples:
 		[example]
-			echo KVIrc looks for pictures in $file.localdir(pics)
-			echo panic.png would be translated to $file.localdir(pics/panic.png)
+			echo KVIrc looks for pictures in $escape($file.localdir(pics))
 			echo panic.png would be translated to $escape($file.localdir(pics/panic.png))
 		[/example]
 	@seealso:
