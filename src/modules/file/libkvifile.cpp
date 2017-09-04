@@ -1216,19 +1216,30 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 	@syntax:
 		<string> $file.localdir([relative_path:string])
 	@description:
-		Returns the path to the KVIrc local data directory.[br][br]
+		Returns the path to the KVIrc local data directory.
 		The KVIrc local data directory is always writable and contains
 		the various subdirectories that KVIrc uses internally: audio, avatars,
-		config, help, incoming, log, modules, msgcolors and pics.[br][br]
-		If <relative_path> is passed, then it is appended to the local directory path.[br][br]
+		config, help, incoming, log, modules, msgcolors and pics.
+		[br][br]
+		If <relative_path> is passed, then it is appended to the local directory path.
 		The path is adjusted to contain single separators suitable for the platform
 		that KVIrc is actually running on (thus you do not need to care about path
-		separators in the <relative_path>, KVIrc will adjust them).[br]
+		separators in the <relative_path>, KVIrc will adjust them).
+		[br][br]
+		When adding popup entries especially via script using [b]popup.addExtPopup[/b]
+		you should escape the path [b]$escape($file.localdir(pics/panic.png))[/b]
+		this is multiOS friendly and adds a custom icon path to Windows that is not broken
+		when KVS parses the context menu entry due to Windows paths being backslashed,
+		which are special characters in KVS that require escaping.[br]
+		Overall [b]$escape($file.localdir(pics/panic.png)) is a more correct approach.
 	@examples:
 		[example]
 			echo KVIrc looks for pictures in $file.localdir(pics)
 			echo panic.png would be translated to $file.localdir(pics/panic.png)
+			echo panic.png would be translated to $escape($file.localdir(pics/panic.png
 		[/example]
+	@seealso:
+		[fnc]$escape[/fnc]
 */
 
 static bool file_kvs_fnc_localdir(KviKvsModuleFunctionCall * c)
