@@ -264,51 +264,60 @@ defpopup(ctcp)
 	item(PING,$icon("serverping"))
 	{
 		ctcp $0 PING
+		echo -w=$active -i=$msgtype(GenericStatus) $tr("Sent CTCP PING to","defscript") $b$0$b
 	}
 
 	item(FINGER,$icon("finger"))
 	{
 		ctcp $0 FINGER
+		echo -w=$active -i=$msgtype(GenericStatus) $tr("Sent CTCP FINGER to","defscript") $b$0$b
 	}
 
 	item(VERSION,$icon("kvirc"))
 	{
 		ctcp $0 VERSION
+		echo -w=$active -i=$msgtype(GenericStatus) $tr("Sent CTCP VERSION to","defscript") $b$0$b
 	}
 
 	item(USERINFO,$icon("user"))
 	{
 		ctcp $0 USERINFO
+		echo -w=$active -i=$msgtype(GenericStatus) $tr("Sent CTCP USERINFO to","defscript") $b$0$b
 	}
 
 	item(CLIENTINFO,$icon("serverinfo"))
 	{
 		ctcp $0 CLIENTINFO
+		echo -w=$active -i=$msgtype(GenericStatus) $tr("Sent CTCP CLIENTINFO to","defscript") $b$0$b
 	}
 
 	item(SOURCE,$icon("ctcprequestunknown"))
 	{
 		ctcp $0 SOURCE
+		echo -w=$active -i=$msgtype(GenericStatus) $tr("Sent CTCP SOURCE to","defscript") $b$0$b
 	}
 
 	item(TIME,$icon("time"))
 	{
 		ctcp $0 TIME
+		echo -w=$active -i=$msgtype(GenericStatus) $tr("Sent CTCP TIME to","defscript") $b$0$b
 	}
 
 	item(PAGE...,$icon("messages"))
 	{
 		#dialog.textinput -d=$tr("Wakeup!","defscript") ($tr("CTCP Page to","defscript") $0,$tr("Enter the message text","defscript"),$tr("OK","defscript"),$tr("Cancel","defscript"))
-		dialog.textinput(CTCP Page $0,$tr("Enter the message text","defscript"),$tr("&Page","defscript"),$tr("Cancel","defscript"),"",$0)
+		dialog.textinput(CTCP Page $0,$tr("Enter the message text","defscript"),$tr("&Page","defscript"),$tr("&Cancel","defscript"),"",$0)
 		{
 			if($0 == 0)
 				ctcp $2 PAGE $1
+			echo -w=$active -i=$msgtype(GenericStatus) $tr("Sent CTCP PAGE to","defscript") $b$2$b
 		}
 	}
 
 	item(AVATAR,$icon("avatar"))
 	{
 		ctcp $0 AVATAR
+		echo -w=$active -i=$msgtype(GenericStatus) $tr("Sent CTCP AVATAR to","defscript") $b$0$b
 	}
 }
 
@@ -1836,4 +1845,3 @@ defpopup(channel)
 		avatar.notify $0
 	}
 }
-
