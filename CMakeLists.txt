@@ -73,7 +73,8 @@ set(CMAKE_KVIRC_BUILD_COMPILER_FLAGS ${CMAKE_CXX_FLAGS})
 set(Python_ADDITIONAL_VERSIONS "2.7")
 
 # Allow the use of the LOCATION property
-cmake_policy(SET CMP0026 OLD)
+# This is no longer allowed via appveyor
+# cmake_policy(SET CMP0026 OLD)
 
 # Suffix for GNU/Linux
 set(LIB_SUFFIX
