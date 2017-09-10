@@ -61,19 +61,25 @@ void KviThemedComboBox::applyOptions()
 	bool bIsTrasparent = false;
 #endif
 
+	// As of 10.09.2017 setting a style sheet with 'background' or 'color' on the QComboBox makes
+	// Qt go nuts. The console window does not redraw properly and several BadMatch errors appear:
+	//   QXcbConnection: XCB error: 8 (BadMatch), sequence: 1335, resource id: 81789032, major code: 130 (Unknown), minor code: 3
+
+#if 0
 	if(style()->objectName() == "oxygen" || style()->objectName().startsWith("ia-ora-") || style()->objectName() == "breeze")
 	{
 		// workaround for broken oxygen in kde4.4: use palette() instead that stylesheet
 		// ia-ora- are the mandriva default styles
+#endif
 		setFont(KVI_OPTION_FONT(KviOption_fontLabel));
 		QPalette pal = palette();
 		pal.setBrush(QPalette::Base, bIsTrasparent ? Qt::transparent : KVI_OPTION_COLOR(KviOption_colorLabelBackground));
 		//qcombobox forces QPalette::Text as its forecolor
 		pal.setBrush(QPalette::Text, bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()) : KVI_OPTION_COLOR(KviOption_colorLabelForeground));
 		setPalette(pal);
-	}
-	else
-	{
+#if 0
+	} else {
+		//QString szStyle = QString("QComboBox { background: %1; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
 		QString szStyle = QString("QComboBox { background: %1; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
 		                      .arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
 		                      .arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
@@ -83,6 +89,7 @@ void KviThemedComboBox::applyOptions()
 		                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
 		setStyleSheet(szStyle);
 	}
+#endif
 	update();
 }
 
