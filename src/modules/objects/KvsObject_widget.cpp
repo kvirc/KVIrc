@@ -442,7 +442,7 @@ const char * const widgettypes_tbl[] = {
 			- TabFocus;	(widget accepts keyboard focus by tabbing)
 			- ClickFocus; (widget accepts keyboard focus by clicking)
 			- StrongFocus; (widget accepts both tabbing/clicking)
-			- No Focus;  (widget does not accept focus at all; this is the default value)
+			- NoFocus;  (widget does not accept focus at all; this is the default value)
 		[/pre]
 		!fn: $keyPressEvent(<key>)
 		If widget accepts keyboard focus (see [classfnc]$setFocusPolicy[/classfnc] ) this function handles for keys;
