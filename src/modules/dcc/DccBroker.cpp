@@ -241,8 +241,7 @@ void DccBroker::rsendExecute(DccDescriptor * dcc)
 		szTag = t->m_szTag;
 
 		// DCC [ST]SEND <filename> <fakeipaddress> <zero-port> <filesize> <sessionid>
-		// 127.0.0.1 is not an integer. Maybe 0 or 2130706433 would be better...
-		dcc->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s 0 0 %s %s%c",
+		dcc->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s 2130706433 0 %s %s%c",
 		    dcc->console()->connection()->encodeText(dcc->szNick).data(),
 		    0x01,
 		    dcc->console()->connection()->encodeText(dcc->szType).data(),
