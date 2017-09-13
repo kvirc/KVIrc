@@ -72,10 +72,6 @@ set(CMAKE_KVIRC_BUILD_COMPILER_FLAGS ${CMAKE_CXX_FLAGS})
 # Prefer Python 2.7 over 3.x (which is currently incompatible) - GitHub issue #2020
 set(Python_ADDITIONAL_VERSIONS "2.7")
 
-# Allow the use of the LOCATION property
-# This is no longer allowed via appveyor
-# cmake_policy(SET CMP0026 OLD)
-
 # Suffix for GNU/Linux
 set(LIB_SUFFIX
 	CACHE STRING "Define suffix of directory name (32/64)"
@@ -516,11 +512,6 @@ if(UNIX AND NOT APPLE)
 	endif()
 endif()
 
-get_target_property(QT_LIBRARY_DIR Qt5::Core LOCATION)
-get_filename_component(QT_LIBRARY_DIR ${QT_LIBRARY_DIR} PATH)
-get_filename_component(QT_LIBRARY_DIR "${QT_LIBRARY_DIR}/.." ABSOLUTE)
-
-
 ############################################################################
 # Check for KDE
 ############################################################################
@@ -659,25 +650,6 @@ endif()
 #winmm - win32
 if(WIN32)
 	list(APPEND CMAKE_STATUS_AUDIO_BACKENDS "WinMM")
-endif()
-
-############################################################################
-# Check for macOS universal binary
-############################################################################
-
-if(APPLE)
-	option(WANT_UNIVERSAL_BINARY "Whether to compile a universal binary on macOS" ON)
-	if(WANT_UNIVERSAL_BINARY)
-		set(CMAKE_OSX_ARCHITECTURES x86_64)
-		set(CMAKE_STATUS_BUILD_UNIVERSAL_BINARY "User enabled")
-		#FIXME: This should be handled with CMAKE_OSX_SYSROOT (TOM)
-		set(CMAKE_SHARED_LINKER_FLAGS "-stdlib=libc++ -mmacosx-version-min=10.7")
-		set(CMAKE_EXE_LINKER_FLAGS "-stdlib=libc++ -mmacosx-version-min=10.7")
-	else()
-		set(CMAKE_STATUS_BUILD_UNIVERSAL_BINARY "No")
-	endif()
-else()
-	set(CMAKE_STATUS_BUILD_UNIVERSAL_BINARY "Not available")
 endif()
 
 ############################################################################
@@ -1352,7 +1324,6 @@ message(STATUS "   Debug                       : ${CMAKE_STATUS_DEBUG_SUPPORT}")
 message(STATUS "   Verbose output              : ${CMAKE_STATUS_VERBOSE_SUPPORT}")
 message(STATUS "   Coexistence support         : ${CMAKE_STATUS_COEXISTENCE_VER}")
 message(STATUS "   Threading support           : ${CMAKE_STATUS_THREADS_SUPPORT}")
-message(STATUS "   Apple universal binary      : ${CMAKE_STATUS_BUILD_UNIVERSAL_BINARY}")
 message(STATUS "   Memory profile support      : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")
 message(STATUS "   Memory checks support       : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
 message(STATUS "Features:")

@@ -23,8 +23,19 @@ set_target_properties(${kvi_module_name} PROPERTIES LINK_FLAGS "${MODULE_ADDITIO
 set_target_properties(${kvi_module_name} PROPERTIES COMPILE_FLAGS "${ADDITIONAL_COMPILE_FLAGS}")
 
 if(WANT_STRIP)
-	get_target_property(kvi_module_location ${kvi_module_name} LOCATION)
-	install(CODE "EXEC_PROGRAM(${STRIP_EXECUTABLE} ARGS -s \"${kvi_module_location}\")")
+	IF(APPLE)
+		add_custom_command(
+			TARGET ${kvi_module_name}
+			POST_BUILD
+			COMMAND ${STRIP_EXECUTABLE} -x $<TARGET_FILE:${kvi_module_name}>
+		)
+	ELSE()
+		add_custom_command(
+			TARGET ${kvi_module_name}
+			POST_BUILD
+			COMMAND ${STRIP_EXECUTABLE} -s $<TARGET_FILE:${kvi_module_name}>
+		)
+	ENDIF()
 endif()
 
 install(TARGETS ${kvi_module_name} LIBRARY DESTINATION "${KVIRC_MOD_PATH}")

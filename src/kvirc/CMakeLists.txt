@@ -300,8 +300,11 @@ if(WIN32)
 endif()
 
 if(WANT_STRIP)
-	get_target_property(KVIRC_LOCATION ${KVIRC_BINARYNAME} LOCATION)
-	install(CODE "exec_program(${STRIP_EXECUTABLE} ARGS -s \"${KVIRC_LOCATION}\")")
+	add_custom_command(
+		TARGET ${KVIRC_BINARYNAME}
+		POST_BUILD
+		COMMAND ${STRIP_EXECUTABLE} $<TARGET_FILE:${KVIRC_BINARYNAME}>
+	)
 endif()
 
 # Installation directives
@@ -315,6 +318,9 @@ if(APPLE)
 	set(qtconf_dest_dir ${CMAKE_INSTALL_PREFIX}/Contents/Resources)
 	#fixme dirty hack
 	set(QT_PLUGINS_DIR "${Qt5Widgets_DIR}/../../../plugins")
+	set(QT_LIBRARY_DIR "${Qt5Widgets_DIR}/../../")
+	get_filename_component(QT_LIBRARY_DIR ${QT_LIBRARY_DIR} PATH)
+	get_filename_component(QT_LIBRARY_DIR "${QT_LIBRARY_DIR}/.." ABSOLUTE)
 
     # qt4: codecs, iconengines, imageformats, phonon_backend, sqldrivers
     # qt5: audio, iconengines, imageformats, mediaservice, platforms, sqldrivers
