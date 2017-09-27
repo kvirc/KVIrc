@@ -307,9 +307,9 @@ public:
 
 	/**
 	* \brief Returns the number of masks is a channel mode list
-	* \return unsigned int
+	* \return size_t
 	*/
-	unsigned int maskCount(char cMode) const { return this->modeMasks(cMode).size(); };
+	size_t maskCount(char cMode) const { return this->modeMasks(cMode).size(); };
 
 	/**
 	* \brief Called when someone sets a channel mode that is stored in a list; these modes require a parameter that is tipically a mask
