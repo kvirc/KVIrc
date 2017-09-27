@@ -720,6 +720,20 @@ const QString & KviUnreal32IrcServerInfo::getUserModeDescription(QChar mode)
 	return KviBasicIrcServerInfo::getUserModeDescription(mode);
 }
 
+const QString & KviUnreal40IrcServerInfo::getUserModeDescription(QChar mode)
+{
+	switch(mode.unicode())
+	{
+		case 'D':
+			return __tr2qs("D: Only receive private messages from opers, servers, or services");
+			break;
+		case 'Z':
+			return __tr2qs("Z: Only receive private messages from users with SSL");
+			break;
+	}
+	return KviUnreal32IrcServerInfo::getUserModeDescription(mode);
+}
+
 const QString & KviCritenIrcServerInfo::getUserModeDescription(QChar mode)
 {
 	switch(mode.unicode())

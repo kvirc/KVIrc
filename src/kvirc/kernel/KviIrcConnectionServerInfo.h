@@ -216,6 +216,7 @@ public:
 	KviUnreal40IrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
 	    : KviUnreal32IrcServerInfo(pParent, version) { ; };
 	virtual const QString & getChannelModeDescription(char mode);
+	virtual const QString & getUserModeDescription(QChar mode);
 	virtual const char * getSoftware() { return "Unreal40"; };
 };
 
