@@ -218,6 +218,7 @@ void OptionsWidget_soundGeneral::mediaAutoDetect()
 void OptionsWidget_soundGeneral::soundFillBox()
 {
 	QStringList l;
+	unsigned int cnt, i;
 	KviModule * m = g_pModuleManager->getModule("snd");
 
 	if(!m || !m->ctrl("getAvailableSoundSystems", &l))
@@ -228,9 +229,8 @@ void OptionsWidget_soundGeneral::soundFillBox()
 	for(const auto& it : l)
 		m_pSoundSystemBox->addItem(it);
 
-	unsigned int cnt = m_pSoundSystemBox->count();
-
-	for(unsigned int i = 0; i < cnt; i++)
+	cnt = m_pSoundSystemBox->count();
+	for(i = 0; i < cnt; i++)
 	{
 		QString t = m_pSoundSystemBox->itemText(i);
 		if(KviQString::equalCI(t, KVI_OPTION_STRING(KviOption_stringSoundSystem)))
@@ -251,6 +251,7 @@ disable:
 void OptionsWidget_soundGeneral::mediaFillBox()
 {
 	QStringList l;
+	unsigned int cnt, i;
 	KviModule * m = g_pModuleManager->getModule("mediaplayer");
 
 	if(!m || !m->ctrl("getAvailableMediaPlayers", &l))
@@ -261,8 +262,8 @@ void OptionsWidget_soundGeneral::mediaFillBox()
 	for(const auto& it : l)
 		m_pMediaPlayerBox->addItem(it);
 
-	unsigned int cnt = m_pMediaPlayerBox->count();
-	for(unsigned int i = 0; i < cnt; i++)
+	cnt = m_pMediaPlayerBox->count();
+	for(i = 0; i < cnt; i++)
 	{
 		QString t = m_pMediaPlayerBox->itemText(i);
 		if(KviQString::equalCI(t, KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer)))
