@@ -70,7 +70,7 @@ KviLagMeter::~KviLagMeter()
 unsigned int KviLagMeter::secondsSinceLastCompleted()
 {
 	struct timeval tv;
-	kvi_gettimeofday(&tv, nullptr);
+	kvi_gettimeofday(&tv);
 	return tv.tv_sec - m_tLastCompleted;
 }
 
@@ -117,7 +117,7 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 
 	// get current time
 	struct timeval tv;
-	kvi_gettimeofday(&tv, nullptr);
+	kvi_gettimeofday(&tv);
 	unsigned int uDiff = tv.tv_sec - m_tLastCompleted;
 	unsigned int uHeartbeat = KVI_OPTION_UINT(KviOption_uintLagMeterHeartbeat) / 1000;
 	if(uHeartbeat < 2)
@@ -198,7 +198,7 @@ void KviLagMeter::lagCheckRegister(const char * key, unsigned int uReliability)
 	KviLagCheck * c = new KviLagCheck;
 	c->szKey = key;
 	struct timeval tv;
-	kvi_gettimeofday(&tv, nullptr);
+	kvi_gettimeofday(&tv);
 	c->lSecs = tv.tv_sec;
 	c->lUSecs = tv.tv_usec;
 	c->uReliability = uReliability <= 100 ? uReliability : 100;
@@ -234,7 +234,7 @@ bool KviLagMeter::lagCheckComplete(const char * key)
 		m_pConnection->console()->output(KVI_OUT_VERBOSE, __tr2qs("Lag check completed (%s)"), key);
 
 	struct timeval tv;
-	kvi_gettimeofday(&tv, nullptr);
+	kvi_gettimeofday(&tv);
 
 	unsigned int uLag = ((tv.tv_sec - c->lSecs) * 1000);
 	if(tv.tv_usec < c->lUSecs)

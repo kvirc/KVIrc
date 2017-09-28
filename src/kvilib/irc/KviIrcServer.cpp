@@ -178,7 +178,7 @@ void KviIrcServer::clearReconnectInfo()
 void KviIrcServer::generateUniqueId()
 {
 	struct timeval tv;
-	kvi_gettimeofday(&tv, nullptr);
+	kvi_gettimeofday(&tv);
 	m_szId = QString("myserver%1%2%3").arg(tv.tv_usec).arg(rand() % 1000).arg(rand() % 1000);
 }
 

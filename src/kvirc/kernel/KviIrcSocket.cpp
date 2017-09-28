@@ -1714,7 +1714,7 @@ void KviIrcSocket::flushSendQueue()
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolLimitOutgoingTraffic))
 		{
-			kvi_gettimeofday(&curTime, nullptr);
+			kvi_gettimeofday(&curTime);
 
 			int iTimeDiff = curTime.tv_usec - m_tAntiFloodLastMessageTime.tv_usec;
 			iTimeDiff += (curTime.tv_sec - m_tAntiFloodLastMessageTime.tv_sec) * 1000000;

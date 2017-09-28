@@ -313,7 +313,7 @@ void KviApplication::getTmpFileName(QString & szBuffer, const QString & szEnding
 	KviQString::ensureLastCharIs(tmp, KVI_PATH_SEPARATOR_CHAR);
 
 	struct timeval tmv;
-	kvi_gettimeofday(&tmv, nullptr);
+	kvi_gettimeofday(&tmv);
 
 	QString szFileName = szEndingFileName.isNull() ? QString("file.tmp") : szEndingFileName;
 	do

@@ -348,7 +348,7 @@ namespace KviKvsCoreFunctions
 		Q_UNUSED(__pParams);
 
 		struct timeval tv;
-		kvi_gettimeofday(&tv, nullptr);
+		kvi_gettimeofday(&tv);
 		kvs_real_t dTimestamp = (kvs_real_t)(tv.tv_sec);
 		dTimestamp += (((kvs_real_t)(tv.tv_usec)) / 1000000.0);
 		KVSCF_pRetBuffer->setReal(dTimestamp);

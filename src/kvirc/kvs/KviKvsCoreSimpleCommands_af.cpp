@@ -671,7 +671,7 @@ namespace KviKvsCoreSimpleCommands
 		if(szCtcpCmd.compare("PING", Qt::CaseInsensitive) == 0 && szCtcpData.isEmpty())
 		{
 			struct timeval tv;
-			kvi_gettimeofday(&tv, nullptr);
+			kvi_gettimeofday(&tv);
 			KviQString::appendFormatted(szCtcpData, "%d.%d", tv.tv_sec, tv.tv_usec);
 		}
 		else if (szCtcpCmd.compare("ACTION", Qt::CaseInsensitive) == 0 && !KVSCSC_pSwitches->find('n', "notice"))

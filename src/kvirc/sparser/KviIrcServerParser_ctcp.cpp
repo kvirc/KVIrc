@@ -1112,7 +1112,7 @@ void KviIrcServerParser::parseCtcpReplyPing(KviCtcpMessage * msg)
 		KviCString szTime;
 
 		struct timeval tv;
-		kvi_gettimeofday(&tv, nullptr);
+		kvi_gettimeofday(&tv);
 
 		msg->pData = extractCtcpParameter(msg->pData, szTime, true);
 
