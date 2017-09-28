@@ -112,7 +112,7 @@ static Window kvi_x11_findIpcSentinel(Window win)
 
 	Window root, parent;
 	Window * children;
-	unsigned int nChildren;
+	size_t nChildren;
 
 	if(!XQueryTree(kvi_ipc_get_xdisplay(), win, &root, &parent, &children, &nChildren))
 	{
@@ -123,7 +123,7 @@ static Window kvi_x11_findIpcSentinel(Window win)
 
 	Window found = 0;
 
-	for(int i = nChildren - 1; (!found) && (i >= 0); i--)
+	for(size_t i = nChildren - 1; (!found) && (i >= 0); i--)
 		found = kvi_x11_findIpcSentinel(children[i]);
 
 	if(children)
