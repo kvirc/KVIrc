@@ -174,7 +174,7 @@ static bool objects_kvs_cmd_killClass(KviKvsModuleCommandCall * c)
 			kills only all the instances of that class (derived class definitions
 			and instances in this case are [b]not[/b] killed).[br]
 		@seealso:
-			[cmd]class[/cmd], [cmd]objects.clear[/cmd], [fnc]$classDefined[/fnc](),
+			[cmd]class[/cmd], [cmd]objects.clearObjects[/cmd], [fnc]$classDefined[/fnc](),
 			[doc:objects]Object scripting[/doc]
 	*/
 
@@ -202,15 +202,15 @@ static bool objects_kvs_cmd_killClass(KviKvsModuleCommandCall * c)
 static bool objects_kvs_cmd_clearObjects(KviKvsModuleCommandCall * c)
 {
 	/*
-		@doc: objects.clear
+		@doc: objects.clearObjects
 		@title:
-			objects.clear
+			objects.clearObjects
 		@type:
 			command
 		@short:
 			Removes all the user class definitions
 		@syntax:
-			objects.clear [-i]
+			objects.clearObjects [-i]
 		@description:
 			Removes the definition of all the user classes and kill all the object
 			instances (also instances of the builtin classes).[br]
