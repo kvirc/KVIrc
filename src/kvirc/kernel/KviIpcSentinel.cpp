@@ -123,7 +123,7 @@ static Window kvi_x11_findIpcSentinel(Window win)
 
 	Window found = 0;
 
-	for(size_t i = nChildren - 1; (!found) && (i >= 0); i--)
+	for(size_t i = 0; !found && i < nChildren; ++i)
 		found = kvi_x11_findIpcSentinel(children[i]);
 
 	if(children)
