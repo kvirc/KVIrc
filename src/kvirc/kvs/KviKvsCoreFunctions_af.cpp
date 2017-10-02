@@ -1203,8 +1203,8 @@ namespace KviKvsCoreFunctions
 				%i = %myfeats[]#
 				[cmd]while[/cmd](%i > 0)
 				{
-					[cmd]echo[/cmd] "Supporting feature %myfeats[%i]"
 					%i--;
+					[cmd]echo[/cmd] "Supporting feature %myfeats[%i]"
 				}
 			[/example]
 			Nearly the same loop, just really shorter:
