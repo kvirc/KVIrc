@@ -73,6 +73,8 @@ OptionsWidget_privmsg::OptionsWidget_privmsg(QWidget * parent)
 
 	m_pUseSmartColorSelector = addBoolSelector(g, __tr2qs_ctx("Smart nickname colors", "options"), KviOption_boolColorNicks);
 
+	connect(m_pUseSmartColorSelector, SIGNAL(toggled(bool)), this, SLOT(enableDisableSmartColorSelector(bool)));
+
 	m_pUseSmartColorWithBackgroundSelector = addBoolSelector(g, __tr2qs_ctx("Use a background color for smart nickname colors", "options"), KviOption_boolColorNicksWithBackground, KVI_OPTION_BOOL(KviOption_boolColorNicks));
 
 	KviTalHBox * hb = new KviTalHBox(g);
@@ -84,6 +86,8 @@ OptionsWidget_privmsg::OptionsWidget_privmsg(QWidget * parent)
 	connect(m_pSpecialSmartColorSelector, SIGNAL(toggled(bool)), this, SLOT(enableDisableSmartColorSelector(bool)));
 	connect(m_pUseSmartColorSelector, SIGNAL(toggled(bool)), m_pSpecialSmartColorSelector, SLOT(setEnabled(bool)));
 	connect(m_pUseSmartColorSelector, SIGNAL(toggled(bool)), m_pUseSmartColorWithBackgroundSelector, SLOT(setEnabled(bool)));
+
+	enableDisableSmartColorSelector(true);
 
 	KviBoolSelector * b2 = addBoolSelector(g, __tr2qs_ctx("Use same colors as in the userlist", "options"), KviOption_boolUseUserListColorsAsNickColors, !KVI_OPTION_BOOL(KviOption_boolColorNicks));
 	connect(m_pUseSmartColorSelector, SIGNAL(toggled(bool)), b2, SLOT(setNotEnabled(bool)));
@@ -119,7 +123,7 @@ OptionsWidget_privmsg::OptionsWidget_privmsg(QWidget * parent)
 
 void OptionsWidget_privmsg::enableDisableSmartColorSelector(bool)
 {
-	m_pSmartColorSelector->setEnabled(m_pUseSmartColorSelector->isChecked() && m_pUseSmartColorSelector->isChecked());
+	m_pSmartColorSelector->setEnabled(m_pSpecialSmartColorSelector->isChecked() && m_pUseSmartColorSelector->isChecked());
 }
 
 OptionsWidget_privmsg::~OptionsWidget_privmsg()
