@@ -38,42 +38,33 @@
 #include "KviThemedLineEdit.h"
 
 #include <QApplication>
-#include <QImage>
 #include <QDesktopWidget>
-#include <QToolTip>
 #include <QEvent>
-#include <QPen>
 #include <QFontMetrics>
-#include <QRegExp>
+#include <QImage>
+#include <QMouseEvent>
 #include <QPainter>
 #include <QPaintEvent>
-#include <QMouseEvent>
+#include <QPen>
+#include <QRegExp>
+#include <QToolTip>
 
 extern NotifierWindow * g_pNotifierWindow;
 
 NotifierWindow::NotifierWindow()
-    : QWidget(nullptr,
+    : QWidget(nullptr, Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint |
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-          Qt::FramelessWindowHint | Qt::Tool | Qt::WindowStaysOnTopHint)
+          Qt::Tool)
 #else
-          Qt::FramelessWindowHint |
 #ifndef COMPILE_ON_MAC
-              Qt::Tool | Qt::X11BypassWindowManagerHint |
+              Qt::Tool | Qt::X11BypassWindowManagerHint
 #endif
-              Qt::WindowStaysOnTopHint)
+          )
 #endif
 {
 	setObjectName("kvirc_notifier_window");
 
 	g_pNotifierWindow = this;
-
-	m_eState = Hidden;
-	m_dOpacity = 0.0;
-	m_pShowHideTimer = nullptr;
-	m_pBlinkTimer = nullptr;
-	m_tAutoHideAt = 0;
-	m_tStartedAt = 0;
-	m_pAutoHideTimer = nullptr;
 
 	m_pWndBorder = new NotifierWindowBorder();
 
@@ -82,24 +73,6 @@ NotifierWindow::NotifierWindow()
 	setAutoFillBackground(true);
 
 	hide();
-
-	m_bBlinkOn = false;
-
-	m_bCloseDown = false;
-	m_bPrevDown = false;
-	m_bNextDown = false;
-	m_bWriteDown = false;
-
-	m_bLeftButtonIsPressed = false;
-	m_bDiagonalResizing = false;
-	m_bResizing = false;
-
-	m_pContextPopup = nullptr;
-	m_pDisablePopup = nullptr;
-
-	m_bDragging = false;
-
-	m_bDisableHideOnMainWindowGotAttention = false;
 
 	// Positioning the notifier bottom-right
 	QDesktopWidget * pDesktop = QApplication::desktop();
@@ -162,19 +135,15 @@ void NotifierWindow::updateGui()
 	m_pLineEdit->setFont(KVI_OPTION_FONT(KviOption_fontNotifier));
 
 	for(int i = 0; i < m_pWndTabs->count(); ++i)
-	{
 		((NotifierWindowTab *)m_pWndTabs->widget(i))->updateGui();
-	}
 }
 
 void NotifierWindow::addMessage(KviWindow * pWnd, const QString & szImageId, const QString & szText, unsigned int uMessageTime)
 {
-	QPixmap * pIcon;
+	QPixmap * pIcon = nullptr;
 	QString szMessage = szText;
 	szMessage.replace(QRegExp("\r([^\r])*\r([^\r])+\r"), "\\2");
-	if(szImageId.isEmpty())
-		pIcon = nullptr;
-	else
+	if(!szImageId.isEmpty())
 		pIcon = g_pIconManager->getImage(szImageId);
 
 	NotifierMessage * pMessage = new NotifierMessage(pIcon ? new QPixmap(*pIcon) : nullptr, szMessage);
@@ -192,9 +161,7 @@ void NotifierWindow::addMessage(KviWindow * pWnd, const QString & szImageId, con
 	}
 
 	if(!pTab)
-	{
 		pTab = new NotifierWindowTab(pWnd, m_pWndTabs);
-	}
 
 	//if the notifier is already visible, don't steal the focus from the current tab!
 	//the user could be writing a message on it (bug #678)
@@ -223,11 +190,8 @@ void NotifierWindow::addMessage(KviWindow * pWnd, const QString & szImageId, con
 		m_tAutoHideAt = 0;
 	}
 
-	if(pWnd)
-	{
-		if(pWnd->hasAttention(KviWindow::MainWindowIsVisible))
-			m_bDisableHideOnMainWindowGotAttention = true;
-	}
+	if(pWnd && pWnd->hasAttention(KviWindow::MainWindowIsVisible))
+		m_bDisableHideOnMainWindowGotAttention = true;
 
 	if(isVisible())
 		update();
@@ -385,8 +349,6 @@ bool NotifierWindow::shouldHideIfMainWindowGotAttention()
 
 void NotifierWindow::heartbeat()
 {
-	bool bIncreasing;
-	double targetOpacity = 0;
 	switch(m_eState)
 	{
 		case Hidden:
@@ -410,7 +372,7 @@ void NotifierWindow::heartbeat()
 			else
 			{
 				m_dOpacity += OPACITY_STEP;
-				targetOpacity = isActiveWindow() ? KVI_OPTION_UINT(KviOption_uintNotifierActiveTransparency) : KVI_OPTION_UINT(KviOption_uintNotifierInactiveTransparency);
+				double targetOpacity = isActiveWindow() ? KVI_OPTION_UINT(KviOption_uintNotifierActiveTransparency) : KVI_OPTION_UINT(KviOption_uintNotifierInactiveTransparency);
 
 				targetOpacity /= 100;
 				if(m_dOpacity >= targetOpacity)
@@ -429,9 +391,10 @@ void NotifierWindow::heartbeat()
 			}
 			break;
 		case FocusingOn:
-			targetOpacity = KVI_OPTION_UINT(KviOption_uintNotifierActiveTransparency);
+		{
+			double targetOpacity = KVI_OPTION_UINT(KviOption_uintNotifierActiveTransparency);
 			targetOpacity /= 100;
-			bIncreasing = targetOpacity > m_dOpacity;
+			bool bIncreasing = targetOpacity > m_dOpacity;
 			m_dOpacity += bIncreasing ? OPACITY_STEP : -(OPACITY_STEP);
 			if((bIncreasing && (m_dOpacity >= targetOpacity)) || (!bIncreasing && (m_dOpacity <= targetOpacity)))
 			{
@@ -441,13 +404,15 @@ void NotifierWindow::heartbeat()
 			}
 
 			setWindowOpacity(m_dOpacity);
+		}
 			break;
 		case FocusingOff:
-			targetOpacity = KVI_OPTION_UINT(KviOption_uintNotifierInactiveTransparency);
+		{
+			double targetOpacity = KVI_OPTION_UINT(KviOption_uintNotifierInactiveTransparency);
 			targetOpacity /= 100;
-			bIncreasing = targetOpacity > m_dOpacity;
+			bool bIncreasing = targetOpacity > m_dOpacity;
 			m_dOpacity += bIncreasing ? OPACITY_STEP : -(OPACITY_STEP);
-			//qDebug("%f %f %i %i",m_dOpacity,targetOpacity,bIncreasing,(m_dOpacity >= targetOpacity));
+
 			if((bIncreasing && (m_dOpacity >= targetOpacity)) || (!bIncreasing && (m_dOpacity <= targetOpacity)))
 			{
 				m_dOpacity = targetOpacity;
@@ -456,6 +421,7 @@ void NotifierWindow::heartbeat()
 			}
 
 			setWindowOpacity(m_dOpacity);
+		}
 			break;
 		case Hiding:
 			m_dOpacity -= OPACITY_STEP;
@@ -512,7 +478,6 @@ void NotifierWindow::doHide(bool bDoAnimate)
 			if((!bDoAnimate) || (x() != m_pWndBorder->x()) || (y() != m_pWndBorder->y()))
 			{
 
-				//qDebug("just hide quickly with notifier x() %d and notifier y() % - WBorderx() %d and WBordery() %d and bDoanimate %d",x(),y(),m_pWndBorder->x(),m_pWndBorder->y(),bDoAnimate);
 				// the user asked to not animate or
 				// the window has been moved and the animation would suck anyway
 				// just hide quickly
@@ -520,7 +485,6 @@ void NotifierWindow::doHide(bool bDoAnimate)
 			}
 			else
 			{
-				//qDebug("starting hide animation notifier x() %d and notifier y() % - WBorderx() %d and WBordery() %d and bDoanimate %d",x(),y(),m_pWndBorder->x(),m_pWndBorder->y(),bDoAnimate);
 				m_pShowHideTimer = new QTimer();
 				connect(m_pShowHideTimer, SIGNAL(timeout()), this, SLOT(heartbeat()));
 				m_dOpacity = 1.0 - OPACITY_STEP;
@@ -613,35 +577,18 @@ void NotifierWindow::paintEvent(QPaintEvent * e)
 	if(width() != m_pWndBorder->width() || height() != m_pWndBorder->height())
 		m_pWndBorder->resize(size());
 
-	if(m_bBlinkOn)
-	{
-		m_pWndBorder->draw(pPaint, true);
-	}
-	else
-	{
-		m_pWndBorder->draw(pPaint);
-	}
+	m_pWndBorder->draw(pPaint, m_bBlinkOn);
 
 	pPaint->setPen(KVI_OPTION_COLOR(KviOption_colorNotifierTitleForeground));
 	pPaint->setFont(KVI_OPTION_FONT(KviOption_fontNotifierTitle));
 
 	QString szTitle = "KVIrc - ";
 	NotifierWindowTab * pTab = (NotifierWindowTab *)m_pWndTabs->currentWidget();
-	if(pTab)
-	{
-		if(pTab->wnd())
-		{
-			szTitle += pTab->wnd()->plainTextCaption();
-		}
-		else
-		{
-			szTitle += "notifier";
-		}
-	}
+	if(pTab && pTab->wnd())
+		szTitle += pTab->wnd()->plainTextCaption();
 	else
-	{
 		szTitle += "notifier";
-	}
+
 	pPaint->drawText(m_pWndBorder->titleRect(), Qt::AlignLeft | Qt::AlignVCenter | Qt::TextSingleLine, szTitle);
 
 	delete pPaint;
@@ -652,19 +599,14 @@ void NotifierWindow::mouseMoveEvent(QMouseEvent * e)
 {
 	if(!m_bLeftButtonIsPressed)
 	{
-		if(checkResizing(e->pos()))
-			goto sartelo;
-
-		if(m_pWndBorder->captionRect().contains(e->pos()))
+		if(!checkResizing(e->pos()) && m_pWndBorder->captionRect().contains(e->pos()))
 		{
 			if(m_pWndBorder->closeRect().contains(e->pos()))
 				m_pWndBorder->setCloseIcon(WDG_ICON_OVER);
 			else
 				m_pWndBorder->setCloseIcon(WDG_ICON_OUT);
-			goto sartelo;
 		}
 
-	sartelo:
 		update();
 	}
 

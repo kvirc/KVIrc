@@ -33,17 +33,8 @@
 #include <QResizeEvent>
 
 NotifierMessage::NotifierMessage(QPixmap * pPixmap, const QString & szText)
+    : m_szText{szText}, m_pPixmap{pPixmap}
 {
-	m_pLabel0 = nullptr;
-	m_pLabel1 = nullptr;
-
-	m_szText = szText;
-	m_pPixmap = pPixmap;
-
-	//QByteArray utf8 = szText.toUtf8();
-	//if(utf8.data())
-	//	qDebug("NOTIFIER TEXT MESSAGE: \n%s\n",utf8.data());
-
 	m_pHBox = new QHBoxLayout(this);
 	m_pHBox->setSpacing(SPACING);
 	m_pHBox->setMargin(SPACING);
@@ -63,13 +54,13 @@ NotifierMessage::~NotifierMessage()
 
 void NotifierMessage::updateGui()
 {
-	bool bShowImages = KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages);
-
 	if(m_pLabel0)
 		delete m_pLabel0;
 
 	if(m_pLabel1)
 		delete m_pLabel1;
+
+	bool bShowImages = KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages);
 
 	if(bShowImages)
 	{

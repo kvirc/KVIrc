@@ -36,11 +36,11 @@
 
 #include <QScrollArea>
 
+class KviWindow;
+class QPainter;
+class QTabWidget;
 class QVBoxLayout;
 class QWidget;
-class QTabWidget;
-class QPainter;
-class KviWindow;
 
 /**
 * \class NotifierWindowTab
@@ -65,10 +65,10 @@ public:
 
 private:
 	QString m_szLabel;
-	KviWindow * m_pWnd;
-	QTabWidget * m_pParent;
-	QVBoxLayout * m_pVBox;
-	QWidget * m_pVWidget;
+	KviWindow * m_pWnd = nullptr;
+	QTabWidget * m_pParent = nullptr;
+	QVBoxLayout * m_pVBox = nullptr;
+	QWidget * m_pVWidget = nullptr;
 
 public:
 	/**
@@ -88,17 +88,17 @@ public:
 	* \brief Returns the name of the current window
 	* \return QString
 	*/
-	inline QString label() const { return m_szLabel; };
+	inline QString label() const { return m_szLabel; }
 
 	/**
 	* \brief Returns the pointer of the current window
 	* \return KviWindow *
 	*/
-	inline KviWindow * wnd() const { return m_pWnd; };
+	inline KviWindow * wnd() const { return m_pWnd; }
 protected:
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void paintEvent(QPaintEvent * e);
+	void mouseDoubleClickEvent(QMouseEvent * e) override;
+	void resizeEvent(QResizeEvent * e) override;
+	void paintEvent(QPaintEvent * e) override;
 private slots:
 	/**
 	* \brief Emitted when the scrollbar range is changed
