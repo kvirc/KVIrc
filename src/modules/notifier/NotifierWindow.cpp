@@ -52,12 +52,12 @@
 extern NotifierWindow * g_pNotifierWindow;
 
 NotifierWindow::NotifierWindow()
-    : QWidget(nullptr, Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint |
+    : QWidget(nullptr, Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-          Qt::Tool)
+          | Qt::Tool)
 #else
 #ifndef COMPILE_ON_MAC
-              Qt::Tool | Qt::X11BypassWindowManagerHint
+              | Qt::Tool | Qt::X11BypassWindowManagerHint
 #endif
           )
 #endif
