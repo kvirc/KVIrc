@@ -55,10 +55,10 @@ QT_BEGIN_NAMESPACE
 
 struct Term
 {
-	Term() : frequency(-1) {}
+	Term() = default;
 	Term(const QString & t, int f, QVector<Document> l) : term(t), frequency(f), documents(l) {}
 	QString term;
-	int frequency;
+	int frequency = -1;
 	QVector<Document> documents;
 	bool operator<(const Term & i2) const { return frequency < i2.frequency; }
 };
@@ -83,9 +83,8 @@ HelpIndex::HelpIndex(const QString & dp, const QString & hp)
 	Q_UNUSED(hp);
 
 	alreadyHaveDocList = false;
-	lastWindowClosed = false;
-	connect(qApp, SIGNAL(lastWindowClosed()),
-	    this, SLOT(setLastWinClosed()));
+
+	connect(qApp, SIGNAL(lastWindowClosed()), this, SLOT(setLastWinClosed()));
 
 	m_pTimer = new QTimer(this);
 	m_pTimer->setSingleShot(true);
@@ -94,12 +93,12 @@ HelpIndex::HelpIndex(const QString & dp, const QString & hp)
 }
 
 HelpIndex::HelpIndex(const QStringList & dl, const QString & hp)
-    : QObject(nullptr)
+    : QObject(nullptr), docList{dl}
 {
 	Q_UNUSED(hp);
-	docList = dl;
+
 	alreadyHaveDocList = true;
-	lastWindowClosed = false;
+
 	connect(qApp, SIGNAL(lastWindowClosed()), this, SLOT(setLastWinClosed()));
 }
 

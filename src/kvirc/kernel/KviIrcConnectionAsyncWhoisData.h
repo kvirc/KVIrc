@@ -25,13 +25,14 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviQString.h"
 #include "KviPointerList.h"
 #include "KviIrcConnectionAsyncData.h"
 
-class KviWindow;
+#include <QString>
+
 class KviKvsScript;
 class KviKvsVariant;
+class KviWindow;
 
 class KVIRC_API KviAsyncWhoisInfo
 {
@@ -44,12 +45,12 @@ public:
 	QString szIdle;
 	QString szSignon;
 	QString szChannels;
-	QString szAway; // The szSpecial member is renamed szAway as its sole purpose is to tell whether the user is away or not
+	QString szAway;
 	QString szAuth;
 	QString szAdditional;
-	KviKvsScript * pCallback;
-	KviKvsVariant * pMagic;
-	KviWindow * pWindow;
+	KviKvsScript * pCallback = nullptr;
+	KviKvsVariant * pMagic = nullptr;
+	KviWindow * pWindow = nullptr;
 
 public:
 	KviAsyncWhoisInfo();

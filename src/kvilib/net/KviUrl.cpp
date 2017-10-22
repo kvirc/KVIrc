@@ -27,13 +27,7 @@
 #include <QUrl>
 
 KviUrl::KviUrl()
-{
-}
-
-KviUrl::KviUrl(const KviUrl & u)
-{
-	*this = u;
-}
+    = default;
 
 KviUrl::KviUrl(const char * szUrl)
 {
@@ -46,6 +40,9 @@ KviUrl::KviUrl(const QString & szUrl)
 	m_szUrl = szUrl;
 	parse();
 }
+
+KviUrl::KviUrl(const KviUrl &)
+    = default;
 
 KviUrl::~KviUrl()
     = default;
@@ -76,14 +73,5 @@ KviUrl & KviUrl::operator=(const QString & szUrl)
 	return *this;
 }
 
-KviUrl & KviUrl::operator=(const KviUrl & u)
-{
-	m_szUrl = u.m_szUrl;
-	m_szProtocol = u.m_szProtocol;
-	m_szHost = u.m_szHost;
-	m_szPath = u.m_szPath;
-	m_szUser = u.m_szUser;
-	m_szPass = u.m_szPass;
-	m_uPort = u.m_uPort;
-	return *this;
-}
+KviUrl & KviUrl::operator=(const KviUrl &)
+    = default;

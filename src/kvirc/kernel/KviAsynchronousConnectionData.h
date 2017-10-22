@@ -37,7 +37,7 @@ public:
 
 public:
 	QString szServer;
-	bool bUseLastServerInContext; // this is checked ONLY if szServer is empty
+	bool bUseLastServerInContext = false; // this is checked ONLY if szServer is empty
 	kvi_u32_t uPort;
 	bool bPortIsOk;
 	bool bUseIPv6;
@@ -50,7 +50,7 @@ public:
 	QString szNick;
 	QString szInitUMode;
 	QString szServerId;
-	KviIrcServerReconnectInfo * m_pReconnectInfo;
+	KviIrcServerReconnectInfo * m_pReconnectInfo = nullptr;
 };
 
 #endif //!_KVI_ASYNCHRONOUSCONNECTIONDATA_H_

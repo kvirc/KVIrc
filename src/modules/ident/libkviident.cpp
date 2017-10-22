@@ -46,7 +46,6 @@ extern KVIRC_API int g_iIdentDaemonRunningUsers;
 
 void startIdentService()
 {
-	//	qDebug("Stargin");
 	if(!g_pIdentDaemon)
 		g_pIdentDaemon = new KviIdentDaemon();
 	if(!g_pIdentDaemon->isRunning())
@@ -59,16 +58,13 @@ void startIdentService()
 		usleep(100);
 #endif
 	}
-	//	qDebug("Service started");
 }
 
 void stopIdentService()
 {
-	//	qDebug("Stopping");
 	if(g_pIdentDaemon)
 		delete g_pIdentDaemon;
 	g_pIdentDaemon = nullptr;
-	//	qDebug("Stopped");
 }
 
 KviIdentSentinel::KviIdentSentinel()
@@ -155,7 +151,6 @@ KviIdentRequest::~KviIdentRequest()
 KviIdentDaemon::KviIdentDaemon()
     : KviSensitiveThread()
 {
-	//	qDebug("Thread constructor");
 	m_szUser = KVI_OPTION_STRING(KviOption_stringIdentdUser);
 	if(m_szUser.isEmpty())
 		m_szUser = "kvirc";
@@ -166,17 +161,14 @@ KviIdentDaemon::KviIdentDaemon()
 	m_bEnableIPv6 = false;
 #endif
 	m_bIPv6ContainsIPv4 = KVI_OPTION_BOOL(KviOption_boolIdentdIPv6ContainsIPv4);
-	//	qDebug("Thread constructor done");
 }
 
 KviIdentDaemon::~KviIdentDaemon()
 {
-	//	qDebug("Thread destructor");
 	terminate();
 	g_iIdentDaemonRunningUsers = 0;
 
 	g_pIdentDaemon = nullptr;
-	//	qDebug("Destructor gone");
 }
 
 void KviIdentDaemon::postMessage(const char * message, KviIdentRequest * r, const char * szAux)
@@ -201,7 +193,6 @@ void KviIdentDaemon::postMessage(const char * message, KviIdentRequest * r, cons
 
 void KviIdentDaemon::run()
 {
-	//	qDebug("RUN STARTED");
 	m_sock = KVI_INVALID_SOCKET;
 	m_sock6 = KVI_INVALID_SOCKET;
 	bool bEventPosted = false;
@@ -511,7 +502,6 @@ ipv6_failure:
 				}
 				else
 				{
-					//				qDebug("Data is : (%s)",r->m_szData.ptr());
 					if(r->m_szData.len() > 1024)
 					{
 						// request too long...kill it
@@ -556,7 +546,6 @@ exit_thread:
 	delete m_pRequestList;
 	m_pRequestList = nullptr;
 
-	//	qDebug("RUN EXITING");
 }
 
 /*

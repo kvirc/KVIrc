@@ -634,7 +634,7 @@
 static char * g_hNextObjectHandle = (char *)nullptr;
 
 KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass, KviKvsObject * pParent, const QString & szName)
-    : QObject(pParent)
+    : QObject(pParent), m_pClass{pClass}, m_szName{szName}
 {
 	setObjectName(szName);
 
@@ -643,26 +643,10 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass, KviKvsObject * pParent, c
 	m_hObject = (kvs_hobject_t)g_hNextObjectHandle;
 	g_hNextObjectHandle++;
 
-	m_pObject = nullptr;
-	m_bObjectOwner = true; // true by default
-
-	m_szName = szName;
-
-	m_pClass = pClass;
-
 	m_pChildList = new KviPointerList<KviKvsObject>;
 	m_pChildList->setAutoDelete(false);
 
 	m_pDataContainer = new KviKvsHash();
-
-	m_pFunctionHandlers = nullptr; // no local function handlers yet!
-
-	m_bInDelayedDeath = false;
-	m_bDestructorCalled = false;
-	m_bAboutToDie = false;
-
-	m_pSignalDict = nullptr;     // no signals connected to remote slots
-	m_pConnectionList = nullptr; // no local slots connected to remote signals
 
 	if(pParent)
 		pParent->registerChild(this);

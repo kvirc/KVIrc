@@ -133,20 +133,20 @@ public:
 	void registerContextWindow(KviWindow * pWnd);
 	bool unregisterContextWindow(KviWindow * pWnd);
 
-	inline std::vector<KviIrcDataStreamMonitor *> & monitorList() { return m_pMonitorList; };
+	inline std::vector<KviIrcDataStreamMonitor *> & monitorList() { return m_pMonitorList; }
 
 	// links window
 	void createLinksWindow();
-	inline void setLinksWindowPointer(KviExternalServerDataParser * l) { m_pLinksWindow = l; };
-	inline KviExternalServerDataParser * linksWindow() { return m_pLinksWindow; };
+	inline void setLinksWindowPointer(KviExternalServerDataParser * l) { m_pLinksWindow = l; }
+	inline KviExternalServerDataParser * linksWindow() const { return m_pLinksWindow; }
 
 	// list window
 	void createListWindow();
-	inline void setListWindowPointer(KviExternalServerDataParser * l) { m_pListWindow = l; };
-	inline KviExternalServerDataParser * listWindow() { return m_pListWindow; };
+	inline void setListWindowPointer(KviExternalServerDataParser * l) { m_pListWindow = l; }
+	inline KviExternalServerDataParser * listWindow() const { return m_pListWindow; }
 
 	void setAsynchronousConnectionData(KviAsynchronousConnectionData * d);
-	inline KviAsynchronousConnectionData * asynchronousConnectionData() { return m_pAsynchronousConnectionData; };
+	inline KviAsynchronousConnectionData * asynchronousConnectionData() const { return m_pAsynchronousConnectionData; }
 	void destroyAsynchronousConnectionData();
 	// used by KviConsoleWindow (for now) and KviUserParser
 	void connectToCurrentServer();

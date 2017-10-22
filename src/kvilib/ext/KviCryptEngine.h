@@ -125,7 +125,7 @@ protected:
 	//
 	// The following two should have clear meaning
 	//
-	void clearLastError() { m_szLastError = ""; }
+	void clearLastError() { setLastError(""); }
 	void setLastError(const QString & err) { m_szLastError = err; }
 #endif //COMPILE_CRYPT_SUPPORT
 };
