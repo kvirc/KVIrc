@@ -1672,7 +1672,7 @@ void KviInputEditor::handleDragSelection()
 
 	QPoint pnt = mapFromGlobal(QCursor::pos());
 
-	m_iCursorPosition = charIndexFromXPosition(pnt.x());
+	m_iCursorPosition = std::min(charIndexFromXPosition(pnt.x()), m_szTextBuffer.length());
 
 	if(m_iCursorPosition == m_iSelectionAnchorChar)
 		clearSelection();
