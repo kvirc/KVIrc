@@ -55,7 +55,7 @@ Var LocalDir
 
 ;--------------------------------
 !insertmacro MUI_RESERVEFILE_LANGDLL
-ReserveFile "${NSISDIR}\Plugins\UserInfo.dll"
+ReserveFile "${NSISDIR}\Plugins\x86-unicode\UserInfo.dll"
 
 !insertmacro MUI_LANGUAGE "English"
 LangString UnLocalDataDescr ${LANG_ENGLISH} "This will delete your settings, themes and logs. Keep it unchecked if you plan to reinstall KVIrc later."
