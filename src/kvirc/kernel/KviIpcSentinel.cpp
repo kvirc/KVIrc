@@ -296,7 +296,7 @@ typedef struct
 	kvi_u32_t full_sequence;
 } fake_xcb_generic_event_t;
 
-typedef struct xcb_property_notify_event_t
+typedef struct
 {
 	kvi_u8_t response_type;
 	kvi_u8_t pad0;
