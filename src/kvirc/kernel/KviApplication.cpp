@@ -452,21 +452,6 @@ void KviApplication::setup()
 	// Cache the QStyle theme before it's overriden
 	(void)KviRuntimeInfo::qtTheme();
 
-	// use the default stylesheet unless the user has specified one
-	if(styleSheet().isEmpty())
-	{
-		QString szStylesheetFile;
-		getGlobalKvircDirectory(szStylesheetFile, Config, "style.css");
-		if(KviFileUtils::fileExists(szStylesheetFile))
-		{
-			QString szStyleData;
-			KviFileUtils::readFile(szStylesheetFile, szStyleData);
-			szStyleData.replace("global://", m_szGlobalKvircDir);
-			szStyleData.replace("local://", m_szLocalKvircDir);
-			setStyleSheet(szStyleData);
-		}
-	}
-
 	// create the frame window, we're almost up and running...
 	createFrame();
 

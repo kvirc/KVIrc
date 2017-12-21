@@ -1,5 +1,0 @@
-/* Make text in message boxes selectable. */
-QMessageBox {
-    /* LinksAccessibleByMouse | TextSelectableByMouse */
-    messagebox-text-interaction-flags: 5;
-}
