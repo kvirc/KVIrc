@@ -33,9 +33,12 @@
 #include "KviWindow.h"
 #include "KviTheme.h"
 #include "KviIrcServerDataBase.h"
+#include "KviModuleManager.h"
 
 #include <QString>
 #include <QFile>
+
+extern KVIRC_API KviModuleManager * g_pModuleManager;
 
 // this will be chosen during the setup process
 QString g_szChoosenIncomingDirectory;
@@ -117,6 +120,11 @@ KVIMODULEEXPORTFUNC void setup_finish()
 			delete pParams;
 			KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = true;
 		}
+
+		// detect the most appropriate sound system
+		KviModule * m = g_pModuleManager->getModule("snd");
+		if(m)
+			m->ctrl("detectSoundSystem", nullptr);
 	}
 }
 

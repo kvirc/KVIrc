@@ -210,16 +210,6 @@ bool KviSoundPlayer::event(QEvent * e)
 
 void KviSoundPlayer::detectSoundSystem()
 {
-#ifdef COMPILE_PHONON_SUPPORT
-	// FIXME: Phonon seems to freeze on windows sometimes.. maybe it's better to auto-detect winmm ?
-	if(!m_pPhononPlayer)
-		m_pPhononPlayer = Phonon::createPlayer(Phonon::MusicCategory);
-	if(m_pPhononPlayer->state() != Phonon::ErrorState)
-	{
-		KVI_OPTION_STRING(KviOption_stringSoundSystem) = "phonon";
-		return;
-	}
-#endif
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "winmm";
 #else
