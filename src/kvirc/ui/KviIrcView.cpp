@@ -1285,8 +1285,8 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 						}
 						bacWasTransp = (aux == KviControlCodes::Transparent);
 						break;
-						//case KviControlCodes::Icon:
-						//case KviControlCodes::UnIcon:
+					//case KviControlCodes::Icon:
+					//case KviControlCodes::UnIcon:
 						// does nothing
 						//qDebug("Have a block with ICON/UNICON attr");
 						//break;
