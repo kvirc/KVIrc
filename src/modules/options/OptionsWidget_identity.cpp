@@ -54,7 +54,7 @@
 #include <QFileInfo>
 
 NickAlternativesDialog::NickAlternativesDialog(QWidget * par, const QString & n1, const QString & n2, const QString & n3)
-    : QDialog(par)
+	: QDialog(par)
 {
 	QGridLayout * g = new QGridLayout(this);
 
@@ -62,10 +62,10 @@ NickAlternativesDialog::NickAlternativesDialog(QWidget * par, const QString & n1
 
 	QLabel * l = new QLabel(this);
 	l->setText(__tr2qs_ctx("Here you can choose up to three nickname "
-	                       "alternatives to the primary one. KVIrc will use the alternatives "
-	                       "if the primary nick is already used by someone else on a particular "
-	                       "IRC network.",
-	    "options"));
+		"alternatives to the primary one. KVIrc will use the alternatives "
+		"if the primary nick is already used by someone else on a particular "
+		"IRC network.",
+		"options"));
 	l->setWordWrap(true);
 
 	g->addWidget(l, 0, 0, 1, 3);
@@ -105,7 +105,7 @@ NickAlternativesDialog::NickAlternativesDialog(QWidget * par, const QString & n1
 }
 
 NickAlternativesDialog::~NickAlternativesDialog()
-    = default;
+= default;
 
 void NickAlternativesDialog::fill(QString & n1, QString & n2, QString & n3)
 {
@@ -115,7 +115,7 @@ void NickAlternativesDialog::fill(QString & n1, QString & n2, QString & n3)
 }
 
 AvatarDownloadDialog::AvatarDownloadDialog(QWidget * par, const QString & szUrl)
-    : QDialog(par)
+	: QDialog(par)
 {
 	setWindowTitle(__tr2qs_ctx("Avatar Download - KVIrc", "options"));
 
@@ -198,17 +198,17 @@ void AvatarDownloadDialog::downloadTerminated(bool bSuccess)
 }
 
 AvatarSelectionDialog::AvatarSelectionDialog(QWidget * par, const QString & szInitialPath)
-    : QDialog(par)
+	: QDialog(par)
 {
 	setWindowTitle(__tr2qs_ctx("Choose Avatar - KVIrc", "options"));
 
 	QVBoxLayout * layout = new QVBoxLayout(this);
 
 	QString msg = __tr2qs_ctx("Please select an avatar image.\n\n"
-	                          "The full path to a local file or an image on the Web can be used.\n"
-	                          "If you wish to use a local image file, click the \"Browse\" button to select the desired file.\n\n"
-	                          "The full URL for an image (including http:// or https://) can also be entered manually.",
-	    "options");
+		"The full path to a local file or an image on the Web can be used.\n"
+		"If you wish to use a local image file, click the \"Browse\" button to select the desired file.\n\n"
+		"The full URL for an image (including http:// or https://) can also be entered manually.",
+		"options");
 
 	QLabel * l = new QLabel(msg);
 	l->setMinimumWidth(250);
@@ -249,7 +249,7 @@ AvatarSelectionDialog::AvatarSelectionDialog(QWidget * par, const QString & szIn
 }
 
 AvatarSelectionDialog::~AvatarSelectionDialog()
-    = default;
+= default;
 
 void AvatarSelectionDialog::okClicked()
 {
@@ -278,15 +278,15 @@ void AvatarSelectionDialog::closeEvent(QCloseEvent * e)
 }
 
 OptionsWidget_identity::OptionsWidget_identity(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 }
 
 OptionsWidget_identity::~OptionsWidget_identity()
-    = default;
+= default;
 
 KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	m_szAltNicknames[0] = KVI_OPTION_STRING(KviOption_stringNickname2);
 	m_szAltNicknames[1] = KVI_OPTION_STRING(KviOption_stringNickname3);
@@ -301,10 +301,10 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	KviStringSelector * sel = addStringSelector(hb, __tr2qs_ctx("Nickname:", "options"), KviOption_stringNickname1);
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel, __tr2qs_ctx("Your <b>nickname</b> is your primary form of identification on IRC.<br>"
-	                          "Since servers cannot accept multiple users sharing the same nickname "
-	                          "(case insensitive), you can provide alternative nicknames to be used in case "
-	                          "the server refuses to accept the default one.",
-	                  "options"));
+		"Since servers cannot accept multiple users sharing the same nickname "
+		"(case insensitive), you can provide alternative nicknames to be used in case "
+		"the server refuses to accept the default one.",
+		"options"));
 
 	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"), hb);
 	sel->setValidator(v);
@@ -315,17 +315,17 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	sel = addStringSelector(gbox, __tr2qs_ctx("Username:", "options"), KviOption_stringUsername);
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel, __tr2qs_ctx("This is the <b>username</b> that you will use to connect to the server.<br>"
-	                          "In the past, it was used as a form of authentication, but it normally has no special use now.<br>"
-	                          "In addition to your nickname, you are identified on IRC by your <b>username@hostname</b>.<br>"
-	                          "Basically, you can enter any word you like here.",
-	                  "options"));
+		"In the past, it was used as a form of authentication, but it normally has no special use now.<br>"
+		"In addition to your nickname, you are identified on IRC by your <b>username@hostname</b>.<br>"
+		"Basically, you can enter any word you like here.",
+		"options"));
 
 	sel = addStringSelector(gbox, __tr2qs_ctx("Real name:", "options"), KviOption_stringRealname);
 	sel->setMinimumLabelWidth(120);
 
 	mergeTip(sel, __tr2qs_ctx("This text will appear when someone does a /WHOIS on you.<br>"
-	                          "It is intended to be your real name, but people tend to put random quotes and phrases here too.",
-	                  "options"));
+		"It is intended to be your real name, but people tend to put random quotes and phrases here too.",
+		"options"));
 
 	QString szOptionalCtcpUserInfo = __tr2qs_ctx("This field is optional and will appear as part of the CTCP USERINFO reply.", "options");
 	QString szTrailing = "<br><br>" + szOptionalCtcpUserInfo;
@@ -383,32 +383,32 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 	sel = addStringSelector(gbox, __tr2qs_ctx("Location:", "options"), KviOption_stringCtcpUserInfoLocation);
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel, __tr2qs_ctx("You can describe here your approximate physical location. "
-	                          "Something like \"Region, Country\" will be OK. Please note that this information will be viewable "
-	                          "by anyone so putting more data (like the exact address), generally, <b>is not a good idea</b>.",
-	                  "options")
-	        + szTrailing);
+		"Something like \"Region, Country\" will be OK. Please note that this information will be viewable "
+		"by anyone so putting more data (like the exact address), generally, <b>is not a good idea</b>.",
+		"options")
+		+ szTrailing);
 
 	sel = addStringSelector(gbox, __tr2qs_ctx("Languages:", "options"), KviOption_stringCtcpUserInfoLanguages);
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel, __tr2qs_ctx("You can put here the short names of the languages you can speak. "
-	                          "An example might be \"EN, IT\" that would mean that you speak both Italian and English.",
-	                  "options")
-	        + szTrailing);
+		"An example might be \"EN, IT\" that would mean that you speak both Italian and English.",
+		"options")
+		+ szTrailing);
 
 	sel = addStringSelector(gbox, __tr2qs_ctx("Other:", "options"), KviOption_stringCtcpUserInfoOther);
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel, __tr2qs_ctx("You can put here some additional personal data. "
-	                          "It might be a funny quote or your homepage URL... "
-	                          "Please note that this information will be viewable "
-	                          "by anyone so <b>don't put any sensible data</b> (passwords, telephone or credit card numbers).",
-	                  "options")
-	        + szTrailing);
+		"It might be a funny quote or your homepage URL... "
+		"Please note that this information will be viewable "
+		"by anyone so <b>don't put any sensible data</b> (passwords, telephone or credit card numbers).",
+		"options")
+		+ szTrailing);
 
 	addRowSpacer(0, 2, 0, 2);
 }
 
 KviIdentityGeneralOptionsWidget::~KviIdentityGeneralOptionsWidget()
-    = default;
+= default;
 
 void KviIdentityGeneralOptionsWidget::setNickAlternatives()
 {
@@ -441,26 +441,26 @@ void KviIdentityGeneralOptionsWidget::commit()
 		KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge) = "";
 	else
 		KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge)
-		    .setNum(i);
+		.setNum(i);
 
 	switch(m_pGenderCombo->currentIndex())
 	{
-		case 1:
-			// this should be in English
-			KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "Female";
-			break;
-		case 2:
-			// this should be in English
-			KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "Male";
-			break;
-		default:
-			KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "";
-			break;
+	case 1:
+		// this should be in English
+		KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "Female";
+		break;
+	case 2:
+		// this should be in English
+		KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "Male";
+		break;
+	default:
+		KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "";
+		break;
 	}
 }
 
 OptionsWidget_identityAvatar::OptionsWidget_identityAvatar(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	createLayout();
 	layout()->setMargin(10);
@@ -470,12 +470,12 @@ OptionsWidget_identityAvatar::OptionsWidget_identityAvatar(QWidget * parent)
 	bool bHaveAvatar = (!KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty()) && m_pLocalAvatar->pixmap();
 
 	QString szTip = __tr2qs_ctx("Here you can choose your avatar image.<br>"
-	                            "It will be visible by other people that request it.<br>"
-	                            "Choose a nice image of yourself, possibly avoiding obscenity and offending images.<br>"
-	                            "A good idea is to choose a relatively small file of around 150 Kb max, because "
-	                            "most clients have a limit on the size of avatars being downloaded.<br>"
-	                            "The image also should be smaller than 800x600 pixels since it will have to be viewable in everyone's monitor.",
-	    "options");
+		"It will be visible by other people that request it.<br>"
+		"Choose a nice image of yourself, possibly avoiding obscenity and offending images.<br>"
+		"A good idea is to choose a relatively small file of around 150 Kb max, because "
+		"most clients have a limit on the size of avatars being downloaded.<br>"
+		"The image also should be smaller than 800x600 pixels since it will have to be viewable in everyone's monitor.",
+		"options");
 
 	m_pUseAvatarCheck = new QCheckBox(__tr2qs_ctx("Use avatar:", "options"), this);
 	addWidgetToLayout(m_pUseAvatarCheck, 0, 0, 0, 0);
@@ -560,20 +560,20 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 					// unloadable
 					szCurrent = "";
 					QMessageBox::warning(this, __tr2qs_ctx("Failed to Load Avatar - KVIrc", "options"),
-					    __tr2qs_ctx("Failed to load the avatar image.<br>"
-					                "It may be an inaccessible file or an "
-					                "unsupported image format.",
-					                         "options"),
-					    QMessageBox::Ok, QMessageBox::NoButton);
+						__tr2qs_ctx("Failed to load the avatar image.<br>"
+							"It may be an inaccessible file or an "
+							"unsupported image format.",
+							"options"),
+						QMessageBox::Ok, QMessageBox::NoButton);
 				} // else loaded!
 			}
 			else
 			{
 				// unloadable
 				QString szTmp = QString(__tr2qs_ctx("Failed to download the avatar image.<br>"
-				                                    "<b>%1</b>",
-				                            "options"))
-				                    .arg(dlg.errorMessage());
+					"<b>%1</b>",
+					"options"))
+					.arg(dlg.errorMessage());
 				QMessageBox::warning(this, __tr2qs_ctx("Avatar Download Failed - KVIrc", "options"), szTmp, QMessageBox::Ok, QMessageBox::NoButton);
 				szCurrent = "";
 				m_pLocalAvatar->setNull();
@@ -610,11 +610,11 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 		{
 			// unloadable
 			QMessageBox::warning(this, __tr2qs_ctx("Failed to Load Avatar - KVIrc", "options"),
-			    __tr2qs_ctx("Failed to load the avatar image.<br>"
-			                "It may be an inaccessible file or an "
-			                "unsupported image format.",
-			                         "options"),
-			    QMessageBox::Ok, QMessageBox::NoButton);
+				__tr2qs_ctx("Failed to load the avatar image.<br>"
+					"It may be an inaccessible file or an "
+					"unsupported image format.",
+					"options"),
+				QMessageBox::Ok, QMessageBox::NoButton);
 			szCurrent = "";
 		}
 	}
@@ -624,15 +624,15 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 		if((m_pLocalAvatar->pixmap()->width() > 1024) || (m_pLocalAvatar->pixmap()->height() > 768))
 		{
 			QMessageBox::warning(
-			    this,
-			    __tr2qs_ctx("File Dimensions - KVIrc", "options"),
-			    __tr2qs_ctx(
-			        "The avatar you have chosen is bigger than 1024x768 pixels.<br>"
-			        "Such a big image will not be seen on all the user monitors<br>"
-			        "and will probably be scaled by the remote clients with poor quality<br>"
-			        "algorithms to improve performance. You *should* scale it manually<br>"
-			        "to a sane size (like 800x600) or choose a different image.",
-			        "options"));
+				this,
+				__tr2qs_ctx("File Dimensions - KVIrc", "options"),
+				__tr2qs_ctx(
+					"The avatar you have chosen is bigger than 1024x768 pixels.<br>"
+					"Such a big image will not be seen on all the user monitors<br>"
+					"and will probably be scaled by the remote clients with poor quality<br>"
+					"algorithms to improve performance. You *should* scale it manually<br>"
+					"to a sane size (like 800x600) or choose a different image.",
+					"options"));
 		}
 		else
 		{
@@ -640,14 +640,14 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 			if(inf.size() > 524288)
 			{
 				QMessageBox::warning(
-				    this,
-				    __tr2qs_ctx("File Size - KVIrc", "options"),
-				    __tr2qs_ctx(
-				        "The avatar you have chosen is bigger than 500 KiB<br>"
-				        "and most clients will refuse to download it.<br>"
-				        "You *should* either scale it, use a different storage<br>"
-				        "format or choose a different image.",
-				        "options"));
+					this,
+					__tr2qs_ctx("File Size - KVIrc", "options"),
+					__tr2qs_ctx(
+						"The avatar you have chosen is bigger than 500 KiB<br>"
+						"and most clients will refuse to download it.<br>"
+						"You *should* either scale it, use a different storage<br>"
+						"format or choose a different image.",
+						"options"));
 			}
 		}
 	}
@@ -657,7 +657,7 @@ void OptionsWidget_identityAvatar::chooseAvatar()
 }
 
 OptionsWidget_identityAdvanced::OptionsWidget_identityAdvanced(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	m_pISelector = nullptr;
 	m_pWSelector = nullptr;
@@ -683,20 +683,20 @@ OptionsWidget_identityAdvanced::OptionsWidget_identityAdvanced(QWidget * parent)
 	sel->setMinimumLabelWidth(120);
 
 	mergeTip(sel, __tr2qs_ctx("This is the default part message that will be used when you "
-	                          "leave a channel by closing a channel window.",
-	                  "options"));
+		"leave a channel by closing a channel window.",
+		"options"));
 
 	sel = addStringSelector(gbox, __tr2qs_ctx("Quit message:", "options"), KviOption_stringQuitMessage);
 	sel->setMinimumLabelWidth(120);
 	mergeTip(sel, __tr2qs_ctx("This is the default quit message that will be used when you "
-	                          "quit your IRC session by closing the console window or disconnecting by pressing the disconnect button.",
-	                  "options"));
+		"quit your IRC session by closing the console window or disconnecting by pressing the disconnect button.",
+		"options"));
 
 	addRowSpacer(0, 2, 0, 2);
 }
 
 OptionsWidget_identityAdvanced::~OptionsWidget_identityAdvanced()
-    = default;
+= default;
 
 void OptionsWidget_identityAdvanced::commit()
 {
@@ -712,7 +712,7 @@ void OptionsWidget_identityAdvanced::commit()
 }
 
 OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
-    : KviOptionsWidget(pParent)
+	: KviOptionsWidget(pParent)
 {
 	setObjectName("identity_profiles_option_widget");
 	m_pEditor = nullptr;
@@ -751,12 +751,12 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 	m_pTreeWidget->setColumnWidth(5, 120);
 
 	KviTalToolTip::add(m_pTreeWidget, __tr2qs_ctx("This is a set of rules to use profiles.<br>"
-	                                              "KVIrc will use them to handle the user connection "
-	                                              "data before the data is sent to the IRC server.<br>"
-	                                              "This is useful if a user wants to use different data "
-	                                              "on different networks without changing them at every "
-	                                              "connection attempt.", "options"));
-			
+		"KVIrc will use them to handle the user connection "
+		"data before the data is sent to the IRC server.<br>"
+		"This is useful if a user wants to use different data "
+		"on different networks without changing them at every "
+		"connection attempt.", "options"));
+
 	pLayout->addWidget(m_pTreeWidget, 1, 0, 1, 3);
 	connect(m_pTreeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(toggleControls()));
 
@@ -794,7 +794,7 @@ OptionsWidget_identityProfile::OptionsWidget_identityProfile(QWidget * pParent)
 }
 
 OptionsWidget_identityProfile::~OptionsWidget_identityProfile()
-    = default;
+= default;
 
 void OptionsWidget_identityProfile::toggleControls()
 {
@@ -910,7 +910,7 @@ void OptionsWidget_identityProfile::commit()
 }
 
 IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
-    : QDialog(pParent)
+	: QDialog(pParent)
 {
 	setObjectName("identity_profile_editor");
 	setWindowTitle(__tr2qs_ctx("Profile Editor - KVIrc", "options"));
@@ -980,7 +980,7 @@ IdentityProfileEditor::IdentityProfileEditor(QWidget * pParent)
 }
 
 IdentityProfileEditor::~IdentityProfileEditor()
-    = default;
+= default;
 
 bool IdentityProfileEditor::editProfile(KviIdentityProfile * pProfile)
 {

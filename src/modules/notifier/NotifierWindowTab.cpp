@@ -51,7 +51,7 @@ extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 extern NotifierWindow * g_pNotifierWindow;
 
 NotifierWindowTab::NotifierWindowTab(KviWindow * pWnd, QTabWidget * pParent)
-    : QScrollArea(pParent), m_pWnd{pWnd}, m_pParent{pParent}
+	: QScrollArea(pParent), m_pWnd{ pWnd }, m_pParent{ pParent }
 {
 	if(m_pWnd)
 	{
@@ -185,10 +185,10 @@ void NotifierWindowTab::paintEvent(QPaintEvent * e)
 {
 	QPainter * pPainter = new QPainter(viewport());
 
-//make sure you clean your widget with a transparent
-//  color before doing any rendering
-//  note the usage of a composition mode Source
-//  it's important!
+	//make sure you clean your widget with a transparent
+	//  color before doing any rendering
+	//  note the usage of a composition mode Source
+	//  it's important!
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())

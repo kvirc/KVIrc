@@ -77,7 +77,7 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 KviIrcConnection::KviIrcConnection(KviIrcContext * pContext, KviIrcConnectionTarget * pTarget, KviUserIdentity * pIdentity)
-    : QObject()
+	: QObject()
 {
 	m_bIdentdAttached = false;
 	m_pContext = pContext;
@@ -348,7 +348,7 @@ void KviIrcConnection::linkEstablished()
 		return;
 
 	if(
-	    (!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS())
+		(!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS())
 	{
 #ifdef COMPILE_SSL_SUPPORT
 		// STARTTLS without CAP (forced request)
@@ -418,11 +418,11 @@ void KviIrcConnection::handleInitialCapLs()
 
 	m_pStateData->setInsideInitialCapLs(false);
 
-// STARTTLS support: this has to be checked first because it could imply
-// a full cap renegotiation
+	// STARTTLS support: this has to be checked first because it could imply
+	// a full cap renegotiation
 #ifdef COMPILE_SSL_SUPPORT
 	if(
-	    (!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS() && serverInfo()->supportedCaps().contains("tls", Qt::CaseInsensitive))
+		(!link()->socket()->usingSSL()) && target()->server()->enabledSTARTTLS() && serverInfo()->supportedCaps().contains("tls", Qt::CaseInsensitive))
 	{
 		if(trySTARTTLS(false))
 			return; // STARTTLS negotiation in progress
@@ -474,7 +474,7 @@ void KviIrcConnection::handleInitialCapAck()
 
 	//SASL
 	if(
-	    target()->server()->enabledSASL() && m_pStateData->enabledCaps().contains("sasl", Qt::CaseInsensitive))
+		target()->server()->enabledSASL() && m_pStateData->enabledCaps().contains("sasl", Qt::CaseInsensitive))
 	{
 		m_pStateData->setInsideAuthenticate(true);
 		bUsed = true;
@@ -661,15 +661,15 @@ KviQueryWindow * KviIrcConnection::createQuery(const QString & szNick, CreateQue
 	switch(eVisibilityMode)
 	{
 		//case CreateQueryFollowGlobalVisibilitySetting:
-		case CreateQueryVisibilityMinimized:
-			bShowIt = false;
-			break;
-		case CreateQueryVisibilityVisible:
-			bShowIt = true;
-			break;
-		default:
-			bShowIt = !KVI_OPTION_BOOL(KviOption_boolCreateIncomingQueriesAsMinimized);
-			break;
+	case CreateQueryVisibilityMinimized:
+		bShowIt = false;
+		break;
+	case CreateQueryVisibilityVisible:
+		bShowIt = true;
+		break;
+	default:
+		bShowIt = !KVI_OPTION_BOOL(KviOption_boolCreateIncomingQueriesAsMinimized);
+		break;
 	}
 
 	if(q)
@@ -950,7 +950,7 @@ void KviIrcConnection::resolveLocalHost()
 			m_pUserInfo->setLocalHostIp(KVI_OPTION_STRING(KviOption_stringLocalHostIp));
 			if(!_OUTPUT_MUTE)
 				m_pConsole->output(KVI_OUT_SYSTEMWARNING, __tr2qs("Can't resolve local host address, using user supplied one (%Q)"),
-				    &(m_pUserInfo->localHostIp()));
+					&(m_pUserInfo->localHostIp()));
 		}
 		else
 		{
@@ -958,7 +958,7 @@ void KviIrcConnection::resolveLocalHost()
 			m_pUserInfo->setLocalHostIp("127.0.0.1");
 			if(!_OUTPUT_MUTE)
 				m_pConsole->output(KVI_OUT_SYSTEMWARNING, __tr2qs("Can't resolve local host address, using default 127.0.0.1"),
-				    &(m_pUserInfo->localHostIp()));
+					&(m_pUserInfo->localHostIp()));
 		}
 	}
 	else
@@ -966,7 +966,7 @@ void KviIrcConnection::resolveLocalHost()
 		m_pUserInfo->setLocalHostIp(szIp);
 		if(!_OUTPUT_QUIET)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Local host address is %Q"),
-			    &(m_pUserInfo->localHostIp()));
+				&(m_pUserInfo->localHostIp()));
 	}
 
 	// For now this is the only we know
@@ -1040,7 +1040,7 @@ void KviIrcConnection::userInfoReceived(const QString & szUserName, const QStrin
 
 	bool bChangeIp = true;
 
-// if we don't have any routable IP yet, then it is worth to lookup the new hostname
+	// if we don't have any routable IP yet, then it is worth to lookup the new hostname
 
 #ifdef COMPILE_IPV6_SUPPORT
 	if((KviNetUtils::isValidStringIp(m_pUserInfo->hostIp()) && KviNetUtils::isRoutableIpString(m_pUserInfo->hostIp())) || KviNetUtils::isValidStringIPv6(m_pUserInfo->hostIp()))
@@ -1058,7 +1058,7 @@ void KviIrcConnection::userInfoReceived(const QString & szUserName, const QStrin
 
 	if(bChangeIp)
 	{
-// lookup the new hostname then...
+		// lookup the new hostname then...
 #ifdef COMPILE_IPV6_SUPPORT
 		if(KviNetUtils::isValidStringIp(szHostName) || KviNetUtils::isValidStringIPv6(szHostName))
 #else
@@ -1071,39 +1071,39 @@ void KviIrcConnection::userInfoReceived(const QString & szUserName, const QStrin
 		}
 		else
 #ifdef COMPILE_IPV6_SUPPORT
-		    if(KviNetUtils::isValidStringIp(szUnmaskedHost) || KviNetUtils::isValidStringIPv6(szUnmaskedHost))
+			if(KviNetUtils::isValidStringIp(szUnmaskedHost) || KviNetUtils::isValidStringIPv6(szUnmaskedHost))
 #else
-		    if(KviNetUtils::isValidStringIp(szUnmaskedHost))
+			if(KviNetUtils::isValidStringIp(szUnmaskedHost))
 #endif
-		{
-			if(!_OUTPUT_MUTE)
-				m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("The local IP address as seen by the IRC server is %Q"), &szUnmaskedHost);
-			m_pUserInfo->setHostIp(szUnmaskedHost);
-		}
-		else
-		{
-			// look it up too
-			delete m_pLocalhostDns; // it could be only another local host lookup
-			m_pLocalhostDns = new KviDnsResolver();
-			connect(m_pLocalhostDns, SIGNAL(lookupDone(KviDnsResolver *)), this, SLOT(hostNameLookupTerminated(KviDnsResolver *)));
-
-			if(!m_pLocalhostDns->lookup(szHostName, KviDnsResolver::Any))
 			{
 				if(!_OUTPUT_MUTE)
-				{
-					// don't change the string to aid the translators
-					QString szTmp = __tr2qs("Can't start the DNS slave thread");
-					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Unable to resolve the local hostname as seen by the IRC server: %Q"), &szTmp);
-				}
-				delete m_pLocalhostDns;
-				m_pLocalhostDns = nullptr;
+					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("The local IP address as seen by the IRC server is %Q"), &szUnmaskedHost);
+				m_pUserInfo->setHostIp(szUnmaskedHost);
 			}
 			else
 			{
-				if(!_OUTPUT_MUTE)
-					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Looking up the local hostname as seen by the IRC server (%Q)"), &szHostName);
+				// look it up too
+				delete m_pLocalhostDns; // it could be only another local host lookup
+				m_pLocalhostDns = new KviDnsResolver();
+				connect(m_pLocalhostDns, SIGNAL(lookupDone(KviDnsResolver *)), this, SLOT(hostNameLookupTerminated(KviDnsResolver *)));
+
+				if(!m_pLocalhostDns->lookup(szHostName, KviDnsResolver::Any))
+				{
+					if(!_OUTPUT_MUTE)
+					{
+						// don't change the string to aid the translators
+						QString szTmp = __tr2qs("Can't start the DNS slave thread");
+						m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Unable to resolve the local hostname as seen by the IRC server: %Q"), &szTmp);
+					}
+					delete m_pLocalhostDns;
+					m_pLocalhostDns = nullptr;
+				}
+				else
+				{
+					if(!_OUTPUT_MUTE)
+						m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Looking up the local hostname as seen by the IRC server (%Q)"), &szHostName);
+				}
 			}
-		}
 	}
 }
 
@@ -1120,10 +1120,10 @@ void KviIrcConnection::hostNameLookupTerminated(KviDnsResolver *)
 		QString szErr = KviError::getDescription(m_pLocalhostDns->error());
 		if(!m_pUserInfo->hostIp().isEmpty())
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Unable to resolve the local hostname as seen by the IRC server: %Q, using previously resolved %Q"),
-			    &szErr, &(m_pUserInfo->hostIp()));
+				&szErr, &(m_pUserInfo->hostIp()));
 		else
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Unable to resolve the local hostname as seen by the IRC server: %Q"),
-			    &szErr);
+				&szErr);
 	}
 	else
 	{
@@ -1526,7 +1526,7 @@ void KviIrcConnection::loginToIrcServer()
 
 	if(!_OUTPUT_MUTE)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Logging in as %Q!%Q :%Q"),
-		    &(m_pUserInfo->nickName()), &(m_pUserInfo->userName()), &(m_pUserInfo->realName()));
+			&(m_pUserInfo->nickName()), &(m_pUserInfo->userName()), &(m_pUserInfo->realName()));
 
 	// spity, 27.03.2005: follow the RFC2812 suggested order for connection registration
 	// first the PASS, then NICK and then USER
@@ -1567,10 +1567,10 @@ void KviIrcConnection::loginToIrcServer()
 		if(iBack != KviControlCodes::Transparent)
 		{
 			szTags.sprintf("%c%d,%d%c",
-			    KviControlCodes::Color,
-			    KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground),
-			    iBack,
-			    KviControlCodes::Reset);
+				KviControlCodes::Color,
+				KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground),
+				iBack,
+				KviControlCodes::Reset);
 		}
 		szReal.prepend(szTags.toUtf8());
 	}
@@ -1579,9 +1579,9 @@ void KviIrcConnection::loginToIrcServer()
 	{
 		QString szTags;
 		szTags.sprintf("%c%d%c",
-		    KviControlCodes::Color,
-		    iGenderAvatarTag,
-		    KviControlCodes::Reset);
+			KviControlCodes::Color,
+			iGenderAvatarTag,
+			KviControlCodes::Reset);
 		szReal.prepend(szTags.toUtf8());
 	}
 
@@ -1675,8 +1675,8 @@ void KviIrcConnection::gatherChannelAndPasswordPairs(std::vector<std::pair<QStri
 {
 	for(auto & c : m_pChannelList)
 		lChannelsAndPasses.emplace_back(
-		    c->windowName(),
-		    c->hasChannelMode('k') ? c->channelModeParam('k') : QString());
+			c->windowName(),
+			c->hasChannelMode('k') ? c->channelModeParam('k') : QString());
 }
 
 void KviIrcConnection::gatherQueryNames(QStringList & lQueryNames)
@@ -1695,7 +1695,7 @@ void KviIrcConnection::joinChannels(const std::vector<std::pair<QString, QString
 
 	std::sort(lSorted.begin(), lSorted.end(),
 		[](const std::pair<QString, QString> & left,
-		   const std::pair<QString, QString> & right)
+			const std::pair<QString, QString> & right)
 	{
 		return left.second.count() > right.second.count();
 	});
@@ -1706,7 +1706,6 @@ void KviIrcConnection::joinChannels(const std::vector<std::pair<QString, QString
 
 	for(auto & oChanAndPass : lSorted)
 	{
-
 		if(!szChans.isEmpty())
 			szChans.append(',');
 		szChans.append(oChanAndPass.first);

@@ -58,7 +58,7 @@
 unsigned int g_uNextIrcLinkId = 1;
 
 KviIrcSocket::KviIrcSocket(KviIrcLink * pLink)
-    : QObject()
+	: QObject()
 {
 	m_uId = g_uNextIrcLinkId;
 	g_uNextIrcLinkId++;
@@ -298,7 +298,7 @@ KviError::Code KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * 
 		// check the proxy IP address
 		if(m_pProxy->isIPv6())
 		{
-// IPv6 proxy :) (STILL QUITE UNTESTED ?)
+			// IPv6 proxy :) (STILL QUITE UNTESTED ?)
 #ifdef COMPILE_IPV6_SUPPORT
 			bTargetIPv6 = true;
 			if(!KviNetUtils::isValidStringIPv6(m_pProxy->ip()))
@@ -320,7 +320,7 @@ KviError::Code KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * 
 
 	if(bNeedServerIp)
 	{
-// check the IRC host IP
+		// check the IRC host IP
 #ifdef COMPILE_IPV6_SUPPORT
 		if(m_pIrcServer->isIPv6())
 		{
@@ -346,7 +346,7 @@ KviError::Code KviIrcSocket::startConnection(KviIrcServer * pServer, KviProxy * 
 	if(!sa.socketAddress())
 		return KviError::InvalidIpAddress;
 
-// create the socket
+	// create the socket
 #ifdef COMPILE_IPV6_SUPPORT
 	m_sock = kvi_socket_create(bTargetIPv6 ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET, KVI_SOCKET_TYPE_STREAM, KVI_SOCKET_PROTO_TCP);
 #else
@@ -515,15 +515,15 @@ void KviIrcSocket::connectedToProxy()
 
 	switch(m_pProxy->protocol())
 	{
-		case KviProxy::Http:
-			proxyLoginHttp();
-			break;
-		case KviProxy::Socks5:
-			proxyLoginV5();
-			break;
-		default:
-			proxyLoginV4();
-			break;
+	case KviProxy::Http:
+		proxyLoginHttp();
+		break;
+	case KviProxy::Socks5:
+		proxyLoginV5();
+		break;
+	default:
+		proxyLoginV4();
+		break;
 	}
 }
 
@@ -618,7 +618,6 @@ void KviIrcSocket::readProxyData(int)
 					reset();
 					return;
 				break;
-
 			}
 			handleInvalidSocketRead(readLength);
 			return;
@@ -637,7 +636,7 @@ void KviIrcSocket::readProxyData(int)
 	}
 #endif
 */
-	// we need at least two bytes...
+// we need at least two bytes...
 	if(iReadLength < 2)
 	{
 		// a single byte of reply means:
@@ -654,32 +653,32 @@ void KviIrcSocket::readProxyData(int)
 	// handle the reply
 	switch(m_state)
 	{
-		case ProxyFinalV4:
-			//V4 final reply
-			proxyHandleV4FinalReply((unsigned char)cBuffer[1]);
-			break;
-		case ProxySelectAuthMethodV5:
-			//V5 method selection reply
-			proxyHandleV5MethodReply((unsigned char)cBuffer[1]);
-			break;
-		case ProxyUserPassV5:
-			//V5 user and pass reply
-			proxyHandleV5AuthReply((unsigned char)cBuffer[1]);
-			break;
-		case ProxyFinalV5:
-			//V5 final reply
-			proxyHandleV5FinalReply((unsigned char)cBuffer[1]);
-			break;
-		case ProxyFinalHttp:
-			//Http final reply
-			cBuffer[iReadLength] = '\0';
-			proxyHandleHttpFinalReply(cBuffer, iReadLength);
-			break;
-		default:
-			// what ?
-			raiseError(KviError::UnrecognizedProxyReply);
-			reset();
-			break;
+	case ProxyFinalV4:
+		//V4 final reply
+		proxyHandleV4FinalReply((unsigned char)cBuffer[1]);
+		break;
+	case ProxySelectAuthMethodV5:
+		//V5 method selection reply
+		proxyHandleV5MethodReply((unsigned char)cBuffer[1]);
+		break;
+	case ProxyUserPassV5:
+		//V5 user and pass reply
+		proxyHandleV5AuthReply((unsigned char)cBuffer[1]);
+		break;
+	case ProxyFinalV5:
+		//V5 final reply
+		proxyHandleV5FinalReply((unsigned char)cBuffer[1]);
+		break;
+	case ProxyFinalHttp:
+		//Http final reply
+		cBuffer[iReadLength] = '\0';
+		proxyHandleHttpFinalReply(cBuffer, iReadLength);
+		break;
+	default:
+		// what ?
+		raiseError(KviError::UnrecognizedProxyReply);
+		reset();
+		break;
 	}
 }
 
@@ -967,16 +966,16 @@ void KviIrcSocket::proxySendTargetDataV5()
 	//
 	//   The address is a version-6 IP address, with a length of 16 octets.
 	bool bRemoteDns = !(
-	    (
-	        KviNetUtils::isValidStringIp(m_pIrcServer->ip())
+		(
+			KviNetUtils::isValidStringIp(m_pIrcServer->ip())
 #ifdef COMPILE_IPV6_SUPPORT
-	        || KviNetUtils::isValidStringIPv6(m_pIrcServer->ip())
+			|| KviNetUtils::isValidStringIPv6(m_pIrcServer->ip())
 #endif
-	            )
+			)
 
-	    && m_pIrcServer->cacheIp());
+		&& m_pIrcServer->cacheIp());
 	int iBufLen = bRemoteDns ? 4 + 1 + m_pIrcServer->hostName().toUtf8().length() + 2
-	                         : (m_pIrcServer->isIPv6() ? 22 : 10);
+		: (m_pIrcServer->isIPv6() ? 22 : 10);
 	char * pcBufToSend = (char *)KviMemory::allocate(sizeof(char) * iBufLen);
 	pcBufToSend[0] = (unsigned char)5; //Proto 5
 	pcBufToSend[1] = (unsigned char)1; //CONNECT
@@ -996,8 +995,8 @@ void KviIrcSocket::proxySendTargetDataV5()
 	if(bRemoteDns)
 	{
 		KviMemory::move((void *)(pcBufToSend + 5),
-		    (void *)(m_pIrcServer->hostName().toUtf8().data()),
-		    m_pIrcServer->hostName().toUtf8().length());
+			(void *)(m_pIrcServer->hostName().toUtf8().data()),
+			m_pIrcServer->hostName().toUtf8().length());
 		quint16 port = (quint16)htons(m_pIrcServer->port());
 		KviMemory::move((void *)(pcBufToSend + 4 + 1 + m_pIrcServer->hostName().toUtf8().length()), (void *)&port, 2);
 	}
@@ -1161,36 +1160,36 @@ void KviIrcSocket::proxyHandleV5FinalReply(unsigned char cReply)
 		KviError::Code eError;
 		switch(cReply)
 		{
-			case 1:
-				eError = KviError::ProxyReply01GeneralSOCKSFailure;
-				break;
-			case 2:
-				eError = KviError::ProxyReply02ConnectionNotAllowed;
-				break;
-			case 3:
-				eError = KviError::ProxyReply03NetworkUnreachable;
-				break;
-			case 4:
-				eError = KviError::ProxyReply04HostUnreachable;
-				break;
-			case 5:
-				eError = KviError::ProxyReply05ConnectionRefused;
-				break;
-			case 6:
-				eError = KviError::ProxyReply06TTLExpired;
-				break;
-			case 7:
-				eError = KviError::ProxyReply07CommandNotSupported;
-				break;
-			case 8:
-				eError = KviError::ProxyReply08AddressTypeNotSupported;
-				break;
-			case 9:
-				eError = KviError::ProxyReply09InvalidAddress;
-				break;
-			default:
-				eError = KviError::UnrecognizedProxyReply;
-				break;
+		case 1:
+			eError = KviError::ProxyReply01GeneralSOCKSFailure;
+			break;
+		case 2:
+			eError = KviError::ProxyReply02ConnectionNotAllowed;
+			break;
+		case 3:
+			eError = KviError::ProxyReply03NetworkUnreachable;
+			break;
+		case 4:
+			eError = KviError::ProxyReply04HostUnreachable;
+			break;
+		case 5:
+			eError = KviError::ProxyReply05ConnectionRefused;
+			break;
+		case 6:
+			eError = KviError::ProxyReply06TTLExpired;
+			break;
+		case 7:
+			eError = KviError::ProxyReply07CommandNotSupported;
+			break;
+		case 8:
+			eError = KviError::ProxyReply08AddressTypeNotSupported;
+			break;
+		case 9:
+			eError = KviError::ProxyReply09InvalidAddress;
+			break;
+		default:
+			eError = KviError::UnrecognizedProxyReply;
+			break;
 		}
 		raiseError(eError);
 		reset();
@@ -1240,18 +1239,18 @@ void KviIrcSocket::proxyHandleV4FinalReply(unsigned char cReply)
 		KviError::Code eError;
 		switch(cReply)
 		{
-			case 91:
-				eError = KviError::ProxyReply91RequestFailed;
-				break;
-			case 92:
-				eError = KviError::ProxyReply92IdentFailed;
-				break;
-			case 93:
-				eError = KviError::ProxyReply93IdentNotMatching;
-				break;
-			default:
-				eError = KviError::UnrecognizedProxyReply;
-				break;
+		case 91:
+			eError = KviError::ProxyReply91RequestFailed;
+			break;
+		case 92:
+			eError = KviError::ProxyReply92IdentFailed;
+			break;
+		case 93:
+			eError = KviError::ProxyReply93IdentNotMatching;
+			break;
+		default:
+			eError = KviError::UnrecognizedProxyReply;
+			break;
 		}
 		raiseError(eError);
 		reset();
@@ -1313,7 +1312,6 @@ void KviIrcSocket::proxyHandleHttpFinalReply(const char * pcBuffer, int)
 	m_pRsn->setEnabled(true);
 
 	setState(ProxyHttpError);
-
 }
 
 //
@@ -1389,55 +1387,55 @@ void KviIrcSocket::doSSLHandshake(int)
 
 	switch(m_pSSL->connect())
 	{
-		case KviSSL::Success:
-			// done!
-			printSSLCipherInfo();
-			printSSLPeerCertificate();
-			linkUp();
-			break;
-		case KviSSL::WantRead:
-			m_pRsn = new QSocketNotifier((int)m_sock, QSocketNotifier::Read);
-			QObject::connect(m_pRsn, SIGNAL(activated(int)), this, SLOT(doSSLHandshake(int)));
-			m_pRsn->setEnabled(true);
-			break;
-		case KviSSL::WantWrite:
+	case KviSSL::Success:
+		// done!
+		printSSLCipherInfo();
+		printSSLPeerCertificate();
+		linkUp();
+		break;
+	case KviSSL::WantRead:
+		m_pRsn = new QSocketNotifier((int)m_sock, QSocketNotifier::Read);
+		QObject::connect(m_pRsn, SIGNAL(activated(int)), this, SLOT(doSSLHandshake(int)));
+		m_pRsn->setEnabled(true);
+		break;
+	case KviSSL::WantWrite:
+		m_pWsn = new QSocketNotifier((int)m_sock, QSocketNotifier::Write);
+		QObject::connect(m_pWsn, SIGNAL(activated(int)), this, SLOT(doSSLHandshake(int)));
+		m_pWsn->setEnabled(true);
+		break;
+	case KviSSL::RemoteEndClosedConnection:
+		raiseError(KviError::RemoteEndClosedConnection);
+		reset();
+		break;
+	case KviSSL::SSLError:
+		raiseSSLError();
+		raiseError(KviError::SSLError);
+		reset();
+		break;
+	case KviSSL::SyscallError:
+	{
+		// syscall problem
+		int iErr = kvi_socket_error();
+		if(!kvi_socket_recoverableError(iErr))
+		{
+			// Declare problems :)
+			raiseError((iErr ? KviError::translateSystemError(iErr) : KviError::UnknownError));
+		}
+		else
+		{
+			// can recover ? (EAGAIN, EINTR ?)
 			m_pWsn = new QSocketNotifier((int)m_sock, QSocketNotifier::Write);
 			QObject::connect(m_pWsn, SIGNAL(activated(int)), this, SLOT(doSSLHandshake(int)));
 			m_pWsn->setEnabled(true);
-			break;
-		case KviSSL::RemoteEndClosedConnection:
-			raiseError(KviError::RemoteEndClosedConnection);
-			reset();
-			break;
-		case KviSSL::SSLError:
-			raiseSSLError();
-			raiseError(KviError::SSLError);
-			reset();
-			break;
-		case KviSSL::SyscallError:
-		{
-			// syscall problem
-			int iErr = kvi_socket_error();
-			if(!kvi_socket_recoverableError(iErr))
-			{
-				// Declare problems :)
-				raiseError((iErr ? KviError::translateSystemError(iErr) : KviError::UnknownError));
-			}
-			else
-			{
-				// can recover ? (EAGAIN, EINTR ?)
-				m_pWsn = new QSocketNotifier((int)m_sock, QSocketNotifier::Write);
-				QObject::connect(m_pWsn, SIGNAL(activated(int)), this, SLOT(doSSLHandshake(int)));
-				m_pWsn->setEnabled(true);
-				return;
-			}
-			reset();
+			return;
 		}
+		reset();
+	}
+	break;
+	default:
+		raiseError(KviError::SSLError);
+		reset();
 		break;
-		default:
-			raiseError(KviError::SSLError);
-			reset();
-			break;
 	}
 
 #else  //COMPILE_SSL_SUPPORT
@@ -1490,37 +1488,37 @@ void KviIrcSocket::readData(int)
 			// ssl error....?
 			switch(m_pSSL->getProtocolError(iReadLength))
 			{
-				case KviSSL::ZeroReturn:
-					iReadLength = 0;
-					break;
-				case KviSSL::WantRead:
-				case KviSSL::WantWrite:
-					// hmmm...
-					return;
-					break;
-				case KviSSL::SyscallError:
-				{
-					int iE = m_pSSL->getLastError(true);
-					if(iE != 0)
-					{
-						raiseSSLError();
-						raiseError(KviError::SSLError);
-						reset();
-						return;
-					}
-				}
+			case KviSSL::ZeroReturn:
+				iReadLength = 0;
 				break;
-				case KviSSL::SSLError:
+			case KviSSL::WantRead:
+			case KviSSL::WantWrite:
+				// hmmm...
+				return;
+				break;
+			case KviSSL::SyscallError:
+			{
+				int iE = m_pSSL->getLastError(true);
+				if(iE != 0)
+				{
 					raiseSSLError();
 					raiseError(KviError::SSLError);
 					reset();
 					return;
-					break;
-				default:
-					raiseError(KviError::SSLError);
-					reset();
-					return;
-					break;
+				}
+			}
+			break;
+			case KviSSL::SSLError:
+				raiseSSLError();
+				raiseError(KviError::SSLError);
+				reset();
+				return;
+				break;
+			default:
+				raiseError(KviError::SSLError);
+				reset();
+				return;
+				break;
 			}
 			handleInvalidSocketRead(iReadLength);
 			return;
@@ -1757,7 +1755,7 @@ void KviIrcSocket::flushSendQueue()
 		}
 		else
 		{
-// Something wrong ?
+			// Something wrong ?
 #ifdef COMPILE_SSL_SUPPORT
 			if(iResult <= 0)
 			{
@@ -1766,47 +1764,47 @@ void KviIrcSocket::flushSendQueue()
 					// ops...might be an SSL error
 					switch(m_pSSL->getProtocolError(iResult))
 					{
-						case KviSSL::WantWrite:
-						case KviSSL::WantRead:
-							// Async continue...
-							m_pFlushTimer->start(KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout));
+					case KviSSL::WantWrite:
+					case KviSSL::WantRead:
+						// Async continue...
+						m_pFlushTimer->start(KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout));
+						return;
+						break;
+					case KviSSL::SyscallError:
+						if(iResult == 0)
+						{
+							raiseSSLError();
+							raiseError(KviError::RemoteEndClosedConnection);
+							reset();
 							return;
-							break;
-						case KviSSL::SyscallError:
-							if(iResult == 0)
+						}
+						else
+						{
+							int iSSLErr = m_pSSL->getLastError(true);
+							if(iSSLErr != 0)
 							{
 								raiseSSLError();
-								raiseError(KviError::RemoteEndClosedConnection);
+								raiseError(KviError::SSLError);
 								reset();
 								return;
 							}
 							else
 							{
-								int iSSLErr = m_pSSL->getLastError(true);
-								if(iSSLErr != 0)
-								{
-									raiseSSLError();
-									raiseError(KviError::SSLError);
-									reset();
-									return;
-								}
-								else
-								{
-									goto handle_system_error;
-								}
+								goto handle_system_error;
 							}
-							break;
-						case KviSSL::SSLError:
-							raiseSSLError();
-							raiseError(KviError::SSLError);
-							reset();
-							return;
-							break;
-						default:
-							raiseError(KviError::SSLError);
-							reset();
-							return;
-							break;
+						}
+						break;
+					case KviSSL::SSLError:
+						raiseSSLError();
+						raiseError(KviError::SSLError);
+						reset();
+						return;
+						break;
+					default:
+						raiseError(KviError::SSLError);
+						reset();
+						return;
+						break;
 					}
 				}
 			}
@@ -1819,47 +1817,47 @@ void KviIrcSocket::flushSendQueue()
 				{
 #endif // COMPILE_SSL_SUPPORT
 
-				// Partial send...need to finish it later
-				m_pSendQueueHead->pData->remove(iResult);
+					// Partial send...need to finish it later
+					m_pSendQueueHead->pData->remove(iResult);
 
-				m_uSentBytes += iResult;
+					m_uSentBytes += iResult;
+					if(_OUTPUT_VERBOSE)
+						outputSocketWarning(__tr2qs("Partial socket write: packet broken into smaller pieces."));
+#ifndef COMPILE_SSL_SUPPORT
+				}
+#endif // COMPILE_SSL_SUPPORT
+				// Async continue...
+				m_pFlushTimer->start(KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout));
+				return;
+			}
+
+		handle_system_error:
+			// Oops...error ?
+			int iErr = kvi_socket_error();
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+			if((iErr == EAGAIN) || (iErr == EINTR) || (iErr == WSAEWOULDBLOCK))
+#else
+			if((iErr == EAGAIN) || (iErr == EINTR))
+#endif
+			{
+				// Transient error...partial send as before...
 				if(_OUTPUT_VERBOSE)
 					outputSocketWarning(__tr2qs("Partial socket write: packet broken into smaller pieces."));
-#ifndef COMPILE_SSL_SUPPORT
+				// Async continue...
+				m_pFlushTimer->start(KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout));
+				return;
 			}
-#endif // COMPILE_SSL_SUPPORT
-			// Async continue...
-			m_pFlushTimer->start(KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout));
-			return;
+			else
+			{
+				// Disconnected... :(
+				raiseError((KviError::translateSystemError(iErr)));
+				reset();
+				return;
+			}
+			}
 		}
-
-	handle_system_error:
-		// Oops...error ?
-		int iErr = kvi_socket_error();
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		if((iErr == EAGAIN) || (iErr == EINTR) || (iErr == WSAEWOULDBLOCK))
-#else
-				if((iErr == EAGAIN) || (iErr == EINTR))
-#endif
-		{
-			// Transient error...partial send as before...
-			if(_OUTPUT_VERBOSE)
-				outputSocketWarning(__tr2qs("Partial socket write: packet broken into smaller pieces."));
-			// Async continue...
-			m_pFlushTimer->start(KVI_OPTION_UINT(KviOption_uintSocketQueueFlushTimeout));
-			return;
-		}
-		else
-		{
-			// Disconnected... :(
-			raiseError((KviError::translateSystemError(iErr)));
-			reset();
-			return;
-		}
+	//flushed completely ...
 	}
-}
-//flushed completely ...
-}
 
 bool KviIrcSocket::getLocalHostIp(QString & szIp, bool bIPv6)
 {
@@ -1880,7 +1878,7 @@ bool KviIrcSocket::getLocalHostIp(QString & szIp, bool bIPv6)
 
 		return true;
 #else
-			return false; // no support
+		return false; // no support
 #endif
 	}
 

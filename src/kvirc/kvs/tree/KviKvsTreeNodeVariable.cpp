@@ -25,13 +25,13 @@
 #include "KviKvsTreeNodeVariable.h"
 
 KviKvsTreeNodeVariable::KviKvsTreeNodeVariable(const QChar * pLocation, const QString & szIdentifier)
-    : KviKvsTreeNodeData(pLocation)
+	: KviKvsTreeNodeData(pLocation)
 {
 	m_szIdentifier = szIdentifier;
 }
 
 KviKvsTreeNodeVariable::~KviKvsTreeNodeVariable()
-    = default;
+= default;
 
 bool KviKvsTreeNodeVariable::isReadOnly()
 {

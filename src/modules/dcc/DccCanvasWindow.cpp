@@ -55,7 +55,7 @@
 extern DccBroker * g_pDccBroker;
 
 DccCanvasWindow::DccCanvasWindow(DccDescriptor * dcc, const char * name)
-    : DccWindow(KVI_WINDOW_TYPE_DCCCANVAS, name, dcc)
+	: DccWindow(KVI_WINDOW_TYPE_DCCCANVAS, name, dcc)
 {
 	m_pSplitter = new QSplitter(QSplitter::Vertical, this, "splitter");
 
@@ -79,9 +79,8 @@ DccCanvasWindow::DccCanvasWindow(DccDescriptor * dcc, const char * name)
 			handleMarshalError(ret);
 		else
 		{
-
 			output(KVI_OUT_DCCMSG, __tr2qs_ctx("Listening on interface %Q port %Q", "dcc"),
-			    &(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
+				&(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
 
 			if(dcc->bSendRequest)
 			{
@@ -92,12 +91,12 @@ DccCanvasWindow::DccCanvasWindow(DccDescriptor * dcc, const char * name)
 				if(kvi_stringIpToBinaryIp(ip.toUtf8().data(), &a))
 					ip.setNum(htonl(a.s_addr));
 				dcc->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC CANVAS chat %Q %Q%c",
-				    dcc->console()->connection()->encodeText(dcc->szNick.toUtf8().data()).data(),
-				    0x01, &ip,
-				    &port,
-				    0x01);
+					dcc->console()->connection()->encodeText(dcc->szNick.toUtf8().data()).data(),
+					0x01, &ip,
+					&port,
+					0x01);
 				output(KVI_OUT_DCCMSG, __tr2qs_ctx("Sent DCC CANVAS request to %Q, waiting for the remote client to connect...", "dcc"),
-				    &(dcc->szNick));
+					&(dcc->szNick));
 			}
 			else
 				outputNoFmt(KVI_OUT_DCCMSG, __tr2qs_ctx("DCC CANVAS request not sent: awaiting manual connections", "dcc"));
@@ -135,21 +134,21 @@ const QString & DccCanvasWindow::target()
 {
 	// This may change on the fly...
 	m_szTarget.sprintf("%s@%s:%s",
-	    m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
+		m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
 	return m_szTarget;
 }
 
 void DccCanvasWindow::fillCaptionBuffers()
 {
 	KviCString tmp(KviCString::Format, "DCC Canvas %s@%s:%s",
-	    m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
+		m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
 
 	m_szPlainTextCaption = tmp;
 
 	m_szHtmlActiveCaption.sprintf("<font color=\"%s\"><b>%s</b></font>",
-	    KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().ascii(), tmp.ptr());
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().ascii(), tmp.ptr());
 	m_szHtmlInactiveCaption.sprintf("<font color=\"%s\"><b>%s</b></font>",
-	    KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().ascii(), tmp.ptr());
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().ascii(), tmp.ptr());
 }
 
 QPixmap * DccCanvasWindow::myIconPtr()
@@ -169,8 +168,8 @@ void DccCanvasWindow::ownMessage(const char * text, bool bUserFeedback)
 
 	if(bUserFeedback)
 		m_pFrm->firstConsole()->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG,
-		    m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
-		    m_pDescriptor->szLocalHost.toUtf8().data(), text);
+			m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
+			m_pDescriptor->szLocalHost.toUtf8().data(), text);
 }
 
 void DccCanvasWindow::ownAction(const char * text)
@@ -275,7 +274,7 @@ void DccCanvasWindow::resizeEvent(QResizeEvent * e)
 QSize DccCanvasWindow::sizeHint() const
 {
 	QSize ret(m_pIrcView->sizeHint().width(),
-	    m_pIrcView->sizeHint().height() + m_pInput->heightHint());
+		m_pIrcView->sizeHint().height() + m_pInput->heightHint());
 	return ret;
 }
 
@@ -288,9 +287,9 @@ void DccCanvasWindow::handleMarshalError(int err)
 void DccCanvasWindow::connected()
 {
 	output(KVI_OUT_DCCMSG, __tr2qs_ctx("Connected to %Q:%Q", "dcc"),
-	    &(m_pMarshal->remoteIp()), &(m_pMarshal->remotePort()));
+		&(m_pMarshal->remoteIp()), &(m_pMarshal->remotePort()));
 	output(KVI_OUT_DCCMSG, __tr2qs_ctx("Local end is %Q:%Q", "dcc"),
-	    &(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
+		&(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
 	if(!(m_pDescriptor->bActive))
 	{
 		// PASSIVE CONNECTION...Find out the remote end

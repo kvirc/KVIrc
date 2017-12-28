@@ -35,7 +35,7 @@ public:
 
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-protected slots:
+	protected slots:
 	void closeButtonPressed();
 };
 

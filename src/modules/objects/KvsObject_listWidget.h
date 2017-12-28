@@ -67,7 +67,7 @@ protected:
 	bool itemChangedEvent(KviKvsObjectFunctionCall * c);
 	bool itemEnteredEvent(KviKvsObjectFunctionCall * c);
 
-protected slots:
+	protected slots:
 	void selectionChanged();
 	void currentItemChanged(QListWidgetItem *, QListWidgetItem *);
 	void slotItemEntered(QListWidgetItem * item);

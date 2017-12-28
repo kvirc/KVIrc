@@ -83,10 +83,10 @@ static bool package_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 {
 	QString szPath;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("package_path", KVS_PT_NONEMPTYSTRING, 0, szPath)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("package_path", KVS_PT_NONEMPTYSTRING, 0, szPath)
+		KVSM_PARAMETERS_END(c)
 
-	KviKvsHash * pHash = new KviKvsHash();
+		KviKvsHash * pHash = new KviKvsHash();
 
 	c->returnValue()->setHash(pHash);
 
@@ -182,12 +182,12 @@ static bool package_kvs_cmd_extractField(KviKvsModuleCommandCall * c)
 {
 	QString szPackagePath, szFieldId, szTargetFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("package_path", KVS_PT_NONEMPTYSTRING, 0, szPackagePath)
-	KVSM_PARAMETER("field_id", KVS_PT_NONEMPTYSTRING, 0, szFieldId)
-	KVSM_PARAMETER("target_file_name", KVS_PT_NONEMPTYSTRING, 0, szTargetFileName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("package_path", KVS_PT_NONEMPTYSTRING, 0, szPackagePath)
+		KVSM_PARAMETER("field_id", KVS_PT_NONEMPTYSTRING, 0, szFieldId)
+		KVSM_PARAMETER("target_file_name", KVS_PT_NONEMPTYSTRING, 0, szTargetFileName)
+		KVSM_PARAMETERS_END(c)
 
-	KviPackageReader r;
+		KviPackageReader r;
 
 	// Unpack addon package into the random tmp dir
 	if(!r.readHeader(szPackagePath))
@@ -227,12 +227,12 @@ static bool package_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "package",                                                      // module name
-    "1.0.0",                                                        // module version
-    "Copyright (C) 2015 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Interface to KVIrc package files",
-    package_module_init,
-    0,
-    0,
-    package_module_cleanup,
-    0)
+	"package",                                                      // module name
+	"1.0.0",                                                        // module version
+	"Copyright (C) 2015 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Interface to KVIrc package files",
+	package_module_init,
+	0,
+	0,
+	package_module_cleanup,
+	0)

@@ -24,11 +24,11 @@
 //=============================================================================
 
 /***************************************************************************
-                          RootService.h -  description
-                             -------------------
-    begin                : Mon Jul 25 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  RootService.h -  description
+							 -------------------
+	begin                : Mon Jul 25 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #ifndef UPNP_ROOTSERVICE_H
@@ -38,7 +38,6 @@
 
 namespace UPnP
 {
-
 #define InternetGatewayDeviceType "urn:schemas-upnp-org:device:InternetGatewayDevice:1"
 
 	/**

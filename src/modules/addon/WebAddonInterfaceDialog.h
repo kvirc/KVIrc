@@ -55,7 +55,6 @@ public:
 protected:
 	virtual bool packageIsInstalled(const QString & szId, const QString & szVersion);
 	virtual bool installPackage(const QString & szPath, QString & szError);
-
 }; // class WebAddonInterfaceDialog
 
 #endif //COMPILE_WEBKIT_SUPPORT

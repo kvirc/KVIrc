@@ -249,7 +249,7 @@ QPixmap * KviAnimatedPixmapCache::dummyPixmap()
 }
 
 void KviAnimatedPixmapCache::internalNotifyDelete(
-    KviAnimatedPixmapInterface * receiver)
+	KviAnimatedPixmapInterface * receiver)
 {
 	m_timerMutex.lock();
 

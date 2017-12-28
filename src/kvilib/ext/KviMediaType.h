@@ -49,8 +49,8 @@ typedef struct _KviDefaultMediaType
 class KVILIB_API KviMediaType : public KviHeapObject
 {
 public:
-	KviMediaType(){};
-	~KviMediaType(){};
+	KviMediaType() {};
+	~KviMediaType() {};
 
 public:
 	KviCString szFileMask;

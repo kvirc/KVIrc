@@ -107,7 +107,7 @@ public:
 	* \return void
 	*/
 	void clearAll();
-private slots:
+	private slots:
 	/**
 	* \brief Performs time based requests
 	* \return void

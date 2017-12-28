@@ -27,12 +27,12 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeSpecialCommandContinue::KviKvsTreeNodeSpecialCommandContinue(const QChar * pLocation)
-    : KviKvsTreeNodeSpecialCommand(pLocation, "continue")
+	: KviKvsTreeNodeSpecialCommand(pLocation, "continue")
 {
 }
 
 KviKvsTreeNodeSpecialCommandContinue::~KviKvsTreeNodeSpecialCommandContinue()
-    = default;
+= default;
 
 void KviKvsTreeNodeSpecialCommandContinue::contextDescription(QString & szBuffer)
 {

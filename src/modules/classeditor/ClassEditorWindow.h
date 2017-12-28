@@ -124,7 +124,7 @@ public:
 	/**
 	* \brief Destroys the class editor tree widget item
 	*/
-	~ClassEditorTreeWidgetItem(){};
+	~ClassEditorTreeWidgetItem() {};
 
 protected:
 	Type m_eType;
@@ -424,7 +424,7 @@ protected:
 
 	ClassEditorTreeWidgetItem * findTopLevelItem(const QString & szName);
 	ClassEditorTreeWidgetItem * createFullItemRecursive(QTreeWidgetItem * pCurrent, QStringList & lNameSpaces, int & iLevel, bool bCreateNameSpace = 0);
-protected slots:
+	protected slots:
 	void currentItemChanged(QTreeWidgetItem * pItem, QTreeWidgetItem *);
 	void customContextMenuRequested(QPoint);
 	void newClass();
@@ -519,7 +519,7 @@ protected:
 	* \return void
 	*/
 	virtual void loadProperties(KviConfigurationFile * pCfg);
-protected slots:
+	protected slots:
 	/**
 	* \brief Called when we click the cancel button
 	* \return void
@@ -581,7 +581,7 @@ public:
 	* \return QString
 	*/
 	QString inheritsClassName() { return m_pInheritsClassComboBox->currentText(); };
-protected slots:
+	protected slots:
 	/**
 	* \brief Triggered when the name of the class change
 	* \return void
@@ -639,7 +639,7 @@ public:
 	* \return bool
 	*/
 	bool isInternalFunction() { return m_pInternalCheckBox->isChecked(); };
-protected slots:
+	protected slots:
 	/**
 	* \brief Triggered when the name of the function change
 	* \return void

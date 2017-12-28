@@ -49,7 +49,7 @@ extern SharedFilesWindow * g_pSharedFilesWindow;
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
 
 SharedFileEditDialog::SharedFileEditDialog(QWidget * par, KviSharedFile * f)
-    : QDialog(par) //,"shared_file_editor",true)
+	: QDialog(par) //,"shared_file_editor",true)
 {
 	setModal(true);
 	setObjectName("shared_file_editor");
@@ -122,7 +122,7 @@ SharedFileEditDialog::SharedFileEditDialog(QWidget * par, KviSharedFile * f)
 }
 
 SharedFileEditDialog::~SharedFileEditDialog()
-    = default;
+= default;
 
 void SharedFileEditDialog::browse()
 {
@@ -153,18 +153,18 @@ void SharedFileEditDialog::okClicked()
 	if(bExpires && (dt <= QDateTime::currentDateTime()))
 	{
 		QMessageBox::warning(this, __tr2qs_ctx("Invalid Expiry Time - KVIrc", "sharedfileswindow"),
-		    __tr2qs_ctx("The expiry date/time is in the past: please either remove the \"Expires at\""
-		                "check mark or specify a expiry date/time in the future",
-		                         "sharedfileswindow"),
-		    __tr2qs_ctx("OK", "sharedfileswindow"));
+			__tr2qs_ctx("The expiry date/time is in the past: please either remove the \"Expires at\""
+				"check mark or specify a expiry date/time in the future",
+				"sharedfileswindow"),
+			__tr2qs_ctx("OK", "sharedfileswindow"));
 		return;
 	}
 
 	if(szName.isEmpty())
 	{
 		QMessageBox::warning(this, __tr2qs_ctx("Invalid Share Name - KVIrc", "sharedfileswindow"),
-		    __tr2qs_ctx("The share name can't be empty, please correct it", "sharedfileswindow"),
-		    __tr2qs_ctx("OK", "sharedfileswindow"));
+			__tr2qs_ctx("The share name can't be empty, please correct it", "sharedfileswindow"),
+			__tr2qs_ctx("OK", "sharedfileswindow"));
 		return;
 	}
 
@@ -172,8 +172,8 @@ void SharedFileEditDialog::okClicked()
 	if(!(f.exists() && f.isFile() && f.isReadable()))
 	{
 		QMessageBox::warning(this, __tr2qs_ctx("Error Opening File - KVIrc", "sharedfileswindow"),
-		    __tr2qs_ctx("The file doesn't exist or it is not readable, please check the path", "sharedfileswindow"),
-		    __tr2qs_ctx("OK", "sharedfileswindow"));
+			__tr2qs_ctx("The file doesn't exist or it is not readable, please check the path", "sharedfileswindow"),
+			__tr2qs_ctx("OK", "sharedfileswindow"));
 		return;
 	}
 
@@ -181,7 +181,7 @@ void SharedFileEditDialog::okClicked()
 }
 
 SharedFilesTreeWidgetItem::SharedFilesTreeWidgetItem(QTreeWidget * lv, KviSharedFile * f)
-    : QTreeWidgetItem(lv)
+	: QTreeWidgetItem(lv)
 {
 	setText(0, f->name());
 	setText(1, f->absFilePath());
@@ -200,10 +200,10 @@ SharedFilesTreeWidgetItem::SharedFilesTreeWidgetItem(QTreeWidget * lv, KviShared
 }
 
 SharedFilesTreeWidgetItem::~SharedFilesTreeWidgetItem()
-    = default;
+= default;
 
 SharedFilesWindow::SharedFilesWindow()
-    : KviWindow(KviWindow::Tool, "shared files window", nullptr)
+	: KviWindow(KviWindow::Tool, "shared files window", nullptr)
 {
 	g_pSharedFilesWindow = this;
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);

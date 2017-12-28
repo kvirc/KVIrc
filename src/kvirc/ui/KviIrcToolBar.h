@@ -77,7 +77,7 @@ public:
 
 protected:
 	virtual void drawContents(QPainter * p);
-protected slots:
+	protected slots:
 	void tipRequest(KviDynamicToolTip * tip, const QPoint &);
 };
 

@@ -23,7 +23,7 @@
 #include "Idle.h"
 #include <Carbon/Carbon.h>
 
-// Why does Apple have to make this so complicated?
+ // Why does Apple have to make this so complicated?
 static OSStatus LoadFrameworkBundle(CFStringRef framework, CFBundleRef * bundlePtr)
 {
 	OSStatus err;
@@ -105,16 +105,16 @@ pascal void IdlePlatform::Private::IdleTimerAction(EventLoopTimerRef, EventLoopI
 {
 	switch(inState)
 	{
-		case kEventLoopIdleTimerStarted:
-		case kEventLoopIdleTimerStopped:
-			// Get invoked with this constant at the start of the idle period,
-			// or whenever user activity cancels the idle.
-			((IdlePlatform::Private *)inUserData)->mSecondsIdle = 0;
-			break;
-		case kEventLoopIdleTimerIdling:
-			// Called every time the timer fires (i.e. every second).
-			((IdlePlatform::Private *)inUserData)->mSecondsIdle++;
-			break;
+	case kEventLoopIdleTimerStarted:
+	case kEventLoopIdleTimerStopped:
+		// Get invoked with this constant at the start of the idle period,
+		// or whenever user activity cancels the idle.
+		((IdlePlatform::Private *)inUserData)->mSecondsIdle = 0;
+		break;
+	case kEventLoopIdleTimerIdling:
+		// Called every time the timer fires (i.e. every second).
+		((IdlePlatform::Private *)inUserData)->mSecondsIdle++;
+		break;
 	}
 }
 
@@ -130,12 +130,12 @@ IdlePlatform::~IdlePlatform()
 }
 
 // Typedef for the function we're getting back from CFBundleGetFunctionPointerForName.
-typedef OSStatus (*InstallEventLoopIdleTimerPtr)(EventLoopRef inEventLoop,
-    EventTimerInterval inFireDelay,
-    EventTimerInterval inInterval,
-    EventLoopIdleTimerUPP inTimerProc,
-    void * inTimerData,
-    EventLoopTimerRef * outTimer);
+typedef OSStatus(*InstallEventLoopIdleTimerPtr)(EventLoopRef inEventLoop,
+	EventTimerInterval inFireDelay,
+	EventTimerInterval inInterval,
+	EventLoopIdleTimerUPP inTimerProc,
+	void * inTimerData,
+	EventLoopTimerRef * outTimer);
 
 bool IdlePlatform::init()
 {

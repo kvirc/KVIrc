@@ -28,11 +28,11 @@
 #include "KviPointerHashTable.h"
 #include <QLibrary>
 
-typedef int (*plugin_function)(int argc, char * argv[], char ** buffer);
-typedef int (*plugin_unload)();
-typedef int (*plugin_canunload)();
-typedef int (*plugin_load)();
-typedef int (*plugin_free)(char * pBuffer);
+typedef int(*plugin_function)(int argc, char * argv[], char ** buffer);
+typedef int(*plugin_unload)();
+typedef int(*plugin_canunload)();
+typedef int(*plugin_load)();
+typedef int(*plugin_free)(char * pBuffer);
 
 class Plugin
 {

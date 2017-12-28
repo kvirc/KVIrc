@@ -70,13 +70,13 @@ public:
 	QUrlInfo();
 	QUrlInfo(const QUrlInfo & ui);
 	QUrlInfo(const QString & name, int permissions, const QString & owner,
-	    const QString & group, qint64 size, const QDateTime & lastModified,
-	    const QDateTime & lastRead, bool isDir, bool isFile, bool isSymLink,
-	    bool isWritable, bool isReadable, bool isExecutable);
+		const QString & group, qint64 size, const QDateTime & lastModified,
+		const QDateTime & lastRead, bool isDir, bool isFile, bool isSymLink,
+		bool isWritable, bool isReadable, bool isExecutable);
 	QUrlInfo(const QUrl & url, int permissions, const QString & owner,
-	    const QString & group, qint64 size, const QDateTime & lastModified,
-	    const QDateTime & lastRead, bool isDir, bool isFile, bool isSymLink,
-	    bool isWritable, bool isReadable, bool isExecutable);
+		const QString & group, qint64 size, const QDateTime & lastModified,
+		const QDateTime & lastRead, bool isDir, bool isFile, bool isSymLink,
+		bool isWritable, bool isReadable, bool isExecutable);
 	QUrlInfo & operator=(const QUrlInfo & ui);
 	virtual ~QUrlInfo();
 
@@ -110,11 +110,11 @@ public:
 	bool isExecutable() const;
 
 	static bool greaterThan(const QUrlInfo & i1, const QUrlInfo & i2,
-	    int sortBy);
+		int sortBy);
 	static bool lessThan(const QUrlInfo & i1, const QUrlInfo & i2,
-	    int sortBy);
+		int sortBy);
 	static bool equal(const QUrlInfo & i1, const QUrlInfo & i2,
-	    int sortBy);
+		int sortBy);
 
 	bool operator==(const QUrlInfo & i) const;
 	inline bool operator!=(const QUrlInfo & i) const

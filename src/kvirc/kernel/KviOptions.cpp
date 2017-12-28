@@ -883,22 +883,22 @@ void KviApplication::loadOptions()
 	}
 
 		READ_OPTIONS(KVI_NUM_RECT_OPTIONS, g_rectOptionsTable, readRectEntry)
-		READ_OPTIONS(KVI_NUM_BOOL_OPTIONS, g_boolOptionsTable, readBoolEntry)
-		READ_OPTIONS(KVI_NUM_STRING_OPTIONS, g_stringOptionsTable, readEntry)
-		READ_OPTIONS(KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable, readColorEntry)
-		READ_OPTIONS(KVI_NUM_PIXMAP_OPTIONS, g_pixmapOptionsTable, readPixmapEntry)
-		READ_OPTIONS(KVI_NUM_UINT_OPTIONS, g_uintOptionsTable, readUIntEntry)
-		READ_OPTIONS(KVI_NUM_FONT_OPTIONS, g_fontOptionsTable, readFontEntry)
-		READ_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable, readMsgTypeEntry)
-		READ_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS, g_stringlistOptionsTable, readStringListEntry)
-		READ_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable, readColorEntry)
-		READ_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable, readColorEntry)
+			READ_OPTIONS(KVI_NUM_BOOL_OPTIONS, g_boolOptionsTable, readBoolEntry)
+			READ_OPTIONS(KVI_NUM_STRING_OPTIONS, g_stringOptionsTable, readEntry)
+			READ_OPTIONS(KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable, readColorEntry)
+			READ_OPTIONS(KVI_NUM_PIXMAP_OPTIONS, g_pixmapOptionsTable, readPixmapEntry)
+			READ_OPTIONS(KVI_NUM_UINT_OPTIONS, g_uintOptionsTable, readUIntEntry)
+			READ_OPTIONS(KVI_NUM_FONT_OPTIONS, g_fontOptionsTable, readFontEntry)
+			READ_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable, readMsgTypeEntry)
+			READ_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS, g_stringlistOptionsTable, readStringListEntry)
+			READ_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable, readColorEntry)
+			READ_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable, readColorEntry)
 
-		for(i = 0; i < KVI_NUM_STRING_OPTIONS; i++)
-		{
-			if(g_stringOptionsTable[i].flags & KviOption_encodePath)
-				KviStringConversion::decodePath(g_stringOptionsTable[i].option);
-		}
+			for(i = 0; i < KVI_NUM_STRING_OPTIONS; i++)
+			{
+				if(g_stringOptionsTable[i].flags & KviOption_encodePath)
+					KviStringConversion::decodePath(g_stringOptionsTable[i].option);
+			}
 
 		for(i = 0; i < KVI_NUM_STRINGLIST_OPTIONS; i++)
 		{
@@ -922,9 +922,9 @@ void KviApplication::saveOptions()
 	if(!cfg.ensureWritable())
 	{
 		QMessageBox::warning(nullptr, __tr2qs("Warning While Writing Configuration - KVIrc"),
-		    __tr2qs("I can't write to the main configuration file:\n\t%1\nPlease ensure the directory exists and that you have the proper permissions before continuing, "
-		            "or else any custom configuration will be lost.")
-		        .arg(buffer));
+			__tr2qs("I can't write to the main configuration file:\n\t%1\nPlease ensure the directory exists and that you have the proper permissions before continuing, "
+				"or else any custom configuration will be lost.")
+			.arg(buffer));
 	}
 	int i;
 
@@ -936,42 +936,42 @@ void KviApplication::saveOptions()
 	}
 
 	WRITE_OPTIONS(KVI_NUM_RECT_OPTIONS, g_rectOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_BOOL_OPTIONS, g_boolOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_BOOL_OPTIONS, g_boolOptionsTable)
 
-	for(i = 0; i < KVI_NUM_STRING_OPTIONS; i++)
-	{
-		if(g_stringOptionsTable[i].flags & KviOption_encodePath)
-			KviStringConversion::encodePath(g_stringOptionsTable[i].option);
-	}
+		for(i = 0; i < KVI_NUM_STRING_OPTIONS; i++)
+		{
+			if(g_stringOptionsTable[i].flags & KviOption_encodePath)
+				KviStringConversion::encodePath(g_stringOptionsTable[i].option);
+		}
 
 	WRITE_OPTIONS(KVI_NUM_STRING_OPTIONS, g_stringOptionsTable)
-	for(i = 0; i < KVI_NUM_STRING_OPTIONS; i++)
-	{
-		if(g_stringOptionsTable[i].flags & KviOption_encodePath)
-			KviStringConversion::decodePath(g_stringOptionsTable[i].option);
-	}
+		for(i = 0; i < KVI_NUM_STRING_OPTIONS; i++)
+		{
+			if(g_stringOptionsTable[i].flags & KviOption_encodePath)
+				KviStringConversion::decodePath(g_stringOptionsTable[i].option);
+		}
 
 	WRITE_OPTIONS(KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable)
 
-	WRITE_OPTIONS(KVI_NUM_PIXMAP_OPTIONS, g_pixmapOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_UINT_OPTIONS, g_uintOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_FONT_OPTIONS, g_fontOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_PIXMAP_OPTIONS, g_pixmapOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_UINT_OPTIONS, g_uintOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_FONT_OPTIONS, g_fontOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable)
 
-	for(i = 0; i < KVI_NUM_STRINGLIST_OPTIONS; i++)
-	{
-		if(g_stringlistOptionsTable[i].flags & KviOption_encodePath)
-			KviStringConversion::encodePath(g_stringlistOptionsTable[i].option);
-	}
+		for(i = 0; i < KVI_NUM_STRINGLIST_OPTIONS; i++)
+		{
+			if(g_stringlistOptionsTable[i].flags & KviOption_encodePath)
+				KviStringConversion::encodePath(g_stringlistOptionsTable[i].option);
+		}
 
 	WRITE_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS, g_stringlistOptionsTable)
-	for(i = 0; i < KVI_NUM_STRINGLIST_OPTIONS; i++)
-	{
-		if(g_stringlistOptionsTable[i].flags & KviOption_encodePath)
-			KviStringConversion::decodePath(g_stringlistOptionsTable[i].option);
-	}
+		for(i = 0; i < KVI_NUM_STRINGLIST_OPTIONS; i++)
+		{
+			if(g_stringlistOptionsTable[i].flags & KviOption_encodePath)
+				KviStringConversion::decodePath(g_stringlistOptionsTable[i].option);
+		}
 	WRITE_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable)
-	WRITE_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable)
+		WRITE_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable)
 
 #undef WRITE_OPTIONS
 }
@@ -1020,53 +1020,52 @@ namespace KviTheme
 		int i;
 
 		WRITE_OPTIONS(KVI_NUM_RECT_OPTIONS, g_rectOptionsTable)
-		WRITE_OPTIONS(KVI_NUM_BOOL_OPTIONS, g_boolOptionsTable)
-		WRITE_OPTIONS(KVI_NUM_STRING_OPTIONS, g_stringOptionsTable)
-		WRITE_OPTIONS(KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable)
-		WRITE_OPTIONS(KVI_NUM_UINT_OPTIONS, g_uintOptionsTable)
-		WRITE_OPTIONS(KVI_NUM_FONT_OPTIONS, g_fontOptionsTable)
-		WRITE_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable)
-		WRITE_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS, g_stringlistOptionsTable)
-		WRITE_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable)
-		WRITE_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable)
+			WRITE_OPTIONS(KVI_NUM_BOOL_OPTIONS, g_boolOptionsTable)
+			WRITE_OPTIONS(KVI_NUM_STRING_OPTIONS, g_stringOptionsTable)
+			WRITE_OPTIONS(KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable)
+			WRITE_OPTIONS(KVI_NUM_UINT_OPTIONS, g_uintOptionsTable)
+			WRITE_OPTIONS(KVI_NUM_FONT_OPTIONS, g_fontOptionsTable)
+			WRITE_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable)
+			WRITE_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS, g_stringlistOptionsTable)
+			WRITE_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable)
+			WRITE_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable)
 
 #undef WRITE_OPTIONS
 
-		// the pixmap options need special processing
-		for(i = 0; i < KVI_NUM_PIXMAP_OPTIONS; i++)
-		{
-			if(g_pixmapOptionsTable[i].flags & KviOption_groupTheme)
+			// the pixmap options need special processing
+			for(i = 0; i < KVI_NUM_PIXMAP_OPTIONS; i++)
 			{
-				if(g_pixmapOptionsTable[i].option.pixmap())
+				if(g_pixmapOptionsTable[i].flags & KviOption_groupTheme)
 				{
-					QString szPixPath = szThemeDirPath;
-					QString szPixName = g_pixmapOptionsTable[i].name;
-					szPixName += ".png";
-					szPixPath += szPixName;
-
-					if(g_pixmapOptionsTable[i].option.pixmap()->save(szPixPath, "PNG"))
+					if(g_pixmapOptionsTable[i].option.pixmap())
 					{
-						cfg.writeEntry(g_pixmapOptionsTable[i].name, szPixName);
+						QString szPixPath = szThemeDirPath;
+						QString szPixName = g_pixmapOptionsTable[i].name;
+						szPixName += ".png";
+						szPixPath += szPixName;
+
+						if(g_pixmapOptionsTable[i].option.pixmap()->save(szPixPath, "PNG"))
+						{
+							cfg.writeEntry(g_pixmapOptionsTable[i].name, szPixName);
+						}
+						else
+						{
+							// we ignore this error for now
+							qDebug("failed to save %s", szPixPath.toUtf8().data());
+							cfg.writeEntry(g_pixmapOptionsTable[i].name, "");
+						}
 					}
 					else
 					{
-						// we ignore this error for now
-						qDebug("failed to save %s", szPixPath.toUtf8().data());
 						cfg.writeEntry(g_pixmapOptionsTable[i].name, "");
 					}
 				}
-				else
-				{
-					cfg.writeEntry(g_pixmapOptionsTable[i].name, "");
-				}
 			}
-		}
 
 		cfg.writeEntry("stringIconThemeSubdir", options.subdirectory());
 
 		if(bSaveIcons)
 		{
-
 			// find all the "kvi_bigicon" images that we can find in the main pics directory
 			QString szPicsPath;
 
@@ -1175,27 +1174,27 @@ namespace KviTheme
 	}
 
 		READ_OPTIONS(KVI_NUM_RECT_OPTIONS, g_rectOptionsTable, readRectEntry)
-		READ_OPTIONS(KVI_NUM_BOOL_OPTIONS, g_boolOptionsTable, readBoolEntry)
-		READ_OPTIONS(KVI_NUM_STRING_OPTIONS, g_stringOptionsTable, readEntry)
-		READ_OPTIONS(KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable, readColorEntry)
-		READ_OPTIONS(KVI_NUM_UINT_OPTIONS, g_uintOptionsTable, readUIntEntry)
-		READ_OPTIONS(KVI_NUM_FONT_OPTIONS, g_fontOptionsTable, readFontEntry)
-		READ_ALL_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable, readMsgTypeEntry)
-		READ_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS, g_stringlistOptionsTable, readStringListEntry)
-		READ_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable, readColorEntry)
-		READ_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable, readColorEntry)
+			READ_OPTIONS(KVI_NUM_BOOL_OPTIONS, g_boolOptionsTable, readBoolEntry)
+			READ_OPTIONS(KVI_NUM_STRING_OPTIONS, g_stringOptionsTable, readEntry)
+			READ_OPTIONS(KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable, readColorEntry)
+			READ_OPTIONS(KVI_NUM_UINT_OPTIONS, g_uintOptionsTable, readUIntEntry)
+			READ_OPTIONS(KVI_NUM_FONT_OPTIONS, g_fontOptionsTable, readFontEntry)
+			READ_ALL_OPTIONS(KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable, readMsgTypeEntry)
+			READ_OPTIONS(KVI_NUM_STRINGLIST_OPTIONS, g_stringlistOptionsTable, readStringListEntry)
+			READ_OPTIONS(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable, readColorEntry)
+			READ_OPTIONS(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable, readColorEntry)
 
 #undef READ_OPTIONS
 #undef READ_ALL_OPTIONS
 
 #ifdef COMPILE_ON_MAC
-		/* disregard what the theme says and apply no icons on menus if they
-			   weren't enabled before */
-		if(!bWerePopupMenuIconsEnabled)
-		{
-			KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus) = false;
-			g_boolOptionsTable[KviOption_boolShowIconsInPopupMenus].option = false;
-		}
+			/* disregard what the theme says and apply no icons on menus if they
+				   weren't enabled before */
+			if(!bWerePopupMenuIconsEnabled)
+			{
+				KVI_OPTION_BOOL(KviOption_boolShowIconsInPopupMenus) = false;
+				g_boolOptionsTable[KviOption_boolShowIconsInPopupMenus].option = false;
+			}
 #endif
 
 		KVI_OPTION_STRING(KviOption_stringIconThemeSubdir) = KVI_OPTION_STRING(KviOption_stringIconThemeSubdir).trimmed();
@@ -1242,16 +1241,16 @@ void KviApplication::listAvailableOptions(KviWindow * wnd)
 		wnd->outputNoFmt(KVI_OUT_SYSTEMMESSAGE, __table[i].name);
 
 	LIST_OPTIONS(__tr("Boolean options (1/0)"), KVI_NUM_BOOL_OPTIONS, g_boolOptionsTable)
-	LIST_OPTIONS(__tr("Rectangle options (x,y,width,height)"), KVI_NUM_RECT_OPTIONS, g_rectOptionsTable)
-	LIST_OPTIONS(__tr("String options (string value)"), KVI_NUM_STRING_OPTIONS, g_stringOptionsTable)
-	LIST_OPTIONS(__tr("Color options (#RRGGBB)"), KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable)
-	LIST_OPTIONS(__tr("Mirccolor options (#RRGGBB)"), KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable)
-	LIST_OPTIONS(__tr("IRC context color options (#RRGGBB)"), KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable)
-	LIST_OPTIONS(__tr("Pixmap options (image path)"), KVI_NUM_PIXMAP_OPTIONS, g_pixmapOptionsTable)
-	LIST_OPTIONS(__tr("Unsigned integer options (unsigned integer constant)"), KVI_NUM_UINT_OPTIONS, g_uintOptionsTable)
-	LIST_OPTIONS(__tr("Font options (family,pointsize,style,charset,weight,flags (biusf))"), KVI_NUM_FONT_OPTIONS, g_fontOptionsTable)
-	LIST_OPTIONS(__tr("Message color options (image_id,foreground,background,logFlag (0/1))"), KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable)
-	LIST_OPTIONS(__tr("String list options (comma separated list of strings)"), KVI_NUM_STRINGLIST_OPTIONS, g_stringlistOptionsTable)
+		LIST_OPTIONS(__tr("Rectangle options (x,y,width,height)"), KVI_NUM_RECT_OPTIONS, g_rectOptionsTable)
+		LIST_OPTIONS(__tr("String options (string value)"), KVI_NUM_STRING_OPTIONS, g_stringOptionsTable)
+		LIST_OPTIONS(__tr("Color options (#RRGGBB)"), KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable)
+		LIST_OPTIONS(__tr("Mirccolor options (#RRGGBB)"), KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable)
+		LIST_OPTIONS(__tr("IRC context color options (#RRGGBB)"), KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable)
+		LIST_OPTIONS(__tr("Pixmap options (image path)"), KVI_NUM_PIXMAP_OPTIONS, g_pixmapOptionsTable)
+		LIST_OPTIONS(__tr("Unsigned integer options (unsigned integer constant)"), KVI_NUM_UINT_OPTIONS, g_uintOptionsTable)
+		LIST_OPTIONS(__tr("Font options (family,pointsize,style,charset,weight,flags (biusf))"), KVI_NUM_FONT_OPTIONS, g_fontOptionsTable)
+		LIST_OPTIONS(__tr("Message color options (image_id,foreground,background,logFlag (0/1))"), KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable)
+		LIST_OPTIONS(__tr("String list options (comma separated list of strings)"), KVI_NUM_STRINGLIST_OPTIONS, g_stringlistOptionsTable)
 
 #undef LIST_OPTIONS
 }
@@ -1275,17 +1274,17 @@ bool KviApplication::getOptionString(const QString & optName, QString & buffer)
 
 	// WARNING : stringlist prefix must go BEFORE the string prefix (otherwise it will match)
 	GET_OPTION_STRING(KVI_NUM_BOOL_OPTIONS, g_boolOptionsTable, KVI_BOOL_OPTIONS_PREFIX, KVI_BOOL_OPTIONS_PREFIX_LEN)
-	GET_OPTION_STRING(KVI_NUM_RECT_OPTIONS, g_rectOptionsTable, KVI_BOOL_OPTIONS_PREFIX, KVI_BOOL_OPTIONS_PREFIX_LEN)
-	GET_OPTION_STRING(KVI_NUM_STRINGLIST_OPTIONS, g_stringlistOptionsTable, KVI_STRINGLIST_OPTIONS_PREFIX, KVI_STRINGLIST_OPTIONS_PREFIX_LEN)
-	GET_OPTION_STRING(KVI_NUM_STRING_OPTIONS, g_stringOptionsTable, KVI_STRING_OPTIONS_PREFIX, KVI_STRING_OPTIONS_PREFIX_LEN)
-	GET_OPTION_STRING(KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable, KVI_COLOR_OPTIONS_PREFIX, KVI_COLOR_OPTIONS_PREFIX_LEN)
-	GET_OPTION_STRING(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable, KVI_MIRCCOLOR_OPTIONS_PREFIX, KVI_MIRCCOLOR_OPTIONS_PREFIX_LEN)
-	GET_OPTION_STRING(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable, KVI_ICCOLOR_OPTIONS_PREFIX, KVI_ICCOLOR_OPTIONS_PREFIX_LEN)
-	GET_OPTION_STRING(KVI_NUM_PIXMAP_OPTIONS, g_pixmapOptionsTable, KVI_PIXMAP_OPTIONS_PREFIX, KVI_PIXMAP_OPTIONS_PREFIX_LEN)
-	GET_OPTION_STRING(KVI_NUM_UINT_OPTIONS, g_uintOptionsTable, KVI_UINT_OPTIONS_PREFIX, KVI_UINT_OPTIONS_PREFIX_LEN)
-	GET_OPTION_STRING(KVI_NUM_FONT_OPTIONS, g_fontOptionsTable, KVI_FONT_OPTIONS_PREFIX, KVI_FONT_OPTIONS_PREFIX_LEN)
-	GET_OPTION_STRING(KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable, KVI_MSGTYPE_OPTIONS_PREFIX, KVI_MSGTYPE_OPTIONS_PREFIX_LEN)
-	return false;
+		GET_OPTION_STRING(KVI_NUM_RECT_OPTIONS, g_rectOptionsTable, KVI_BOOL_OPTIONS_PREFIX, KVI_BOOL_OPTIONS_PREFIX_LEN)
+		GET_OPTION_STRING(KVI_NUM_STRINGLIST_OPTIONS, g_stringlistOptionsTable, KVI_STRINGLIST_OPTIONS_PREFIX, KVI_STRINGLIST_OPTIONS_PREFIX_LEN)
+		GET_OPTION_STRING(KVI_NUM_STRING_OPTIONS, g_stringOptionsTable, KVI_STRING_OPTIONS_PREFIX, KVI_STRING_OPTIONS_PREFIX_LEN)
+		GET_OPTION_STRING(KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable, KVI_COLOR_OPTIONS_PREFIX, KVI_COLOR_OPTIONS_PREFIX_LEN)
+		GET_OPTION_STRING(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable, KVI_MIRCCOLOR_OPTIONS_PREFIX, KVI_MIRCCOLOR_OPTIONS_PREFIX_LEN)
+		GET_OPTION_STRING(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable, KVI_ICCOLOR_OPTIONS_PREFIX, KVI_ICCOLOR_OPTIONS_PREFIX_LEN)
+		GET_OPTION_STRING(KVI_NUM_PIXMAP_OPTIONS, g_pixmapOptionsTable, KVI_PIXMAP_OPTIONS_PREFIX, KVI_PIXMAP_OPTIONS_PREFIX_LEN)
+		GET_OPTION_STRING(KVI_NUM_UINT_OPTIONS, g_uintOptionsTable, KVI_UINT_OPTIONS_PREFIX, KVI_UINT_OPTIONS_PREFIX_LEN)
+		GET_OPTION_STRING(KVI_NUM_FONT_OPTIONS, g_fontOptionsTable, KVI_FONT_OPTIONS_PREFIX, KVI_FONT_OPTIONS_PREFIX_LEN)
+		GET_OPTION_STRING(KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable, KVI_MSGTYPE_OPTIONS_PREFIX, KVI_MSGTYPE_OPTIONS_PREFIX_LEN)
+		return false;
 
 #undef GET_OPTION_STRING
 }
@@ -1394,7 +1393,6 @@ bool KviApplication::setOptionValue(const QString & optName, const QString & val
 
 bool KviApplication::setCommonOptionValue(const QString & optName, const QString & value)
 {
-
 #define SET_OPTION_VALUE(__numOpt, __table, __prefix, __prefixLen)             \
 	if(KviQString::equalCIN(optName, __prefix, __prefixLen))                   \
 	{                                                                          \
@@ -1412,16 +1410,16 @@ bool KviApplication::setCommonOptionValue(const QString & optName, const QString
 	}
 
 	SET_OPTION_VALUE(KVI_NUM_BOOL_OPTIONS, g_boolOptionsTable, KVI_BOOL_OPTIONS_PREFIX, KVI_BOOL_OPTIONS_PREFIX_LEN)
-	SET_OPTION_VALUE(KVI_NUM_RECT_OPTIONS, g_rectOptionsTable, KVI_BOOL_OPTIONS_PREFIX, KVI_BOOL_OPTIONS_PREFIX_LEN)
-	SET_OPTION_VALUE(KVI_NUM_STRINGLIST_OPTIONS, g_stringlistOptionsTable, KVI_STRINGLIST_OPTIONS_PREFIX, KVI_STRINGLIST_OPTIONS_PREFIX_LEN)
-	SET_OPTION_VALUE(KVI_NUM_STRING_OPTIONS, g_stringOptionsTable, KVI_STRING_OPTIONS_PREFIX, KVI_STRING_OPTIONS_PREFIX_LEN)
-	SET_OPTION_VALUE(KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable, KVI_COLOR_OPTIONS_PREFIX, KVI_COLOR_OPTIONS_PREFIX_LEN)
-	SET_OPTION_VALUE(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable, KVI_MIRCCOLOR_OPTIONS_PREFIX, KVI_MIRCCOLOR_OPTIONS_PREFIX_LEN)
-	SET_OPTION_VALUE(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable, KVI_ICCOLOR_OPTIONS_PREFIX, KVI_ICCOLOR_OPTIONS_PREFIX_LEN)
-	SET_OPTION_VALUE(KVI_NUM_UINT_OPTIONS, g_uintOptionsTable, KVI_UINT_OPTIONS_PREFIX, KVI_UINT_OPTIONS_PREFIX_LEN)
-	SET_OPTION_VALUE(KVI_NUM_FONT_OPTIONS, g_fontOptionsTable, KVI_FONT_OPTIONS_PREFIX, KVI_FONT_OPTIONS_PREFIX_LEN)
-	SET_OPTION_VALUE(KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable, KVI_MSGTYPE_OPTIONS_PREFIX, KVI_MSGTYPE_OPTIONS_PREFIX_LEN)
+		SET_OPTION_VALUE(KVI_NUM_RECT_OPTIONS, g_rectOptionsTable, KVI_BOOL_OPTIONS_PREFIX, KVI_BOOL_OPTIONS_PREFIX_LEN)
+		SET_OPTION_VALUE(KVI_NUM_STRINGLIST_OPTIONS, g_stringlistOptionsTable, KVI_STRINGLIST_OPTIONS_PREFIX, KVI_STRINGLIST_OPTIONS_PREFIX_LEN)
+		SET_OPTION_VALUE(KVI_NUM_STRING_OPTIONS, g_stringOptionsTable, KVI_STRING_OPTIONS_PREFIX, KVI_STRING_OPTIONS_PREFIX_LEN)
+		SET_OPTION_VALUE(KVI_NUM_COLOR_OPTIONS, g_colorOptionsTable, KVI_COLOR_OPTIONS_PREFIX, KVI_COLOR_OPTIONS_PREFIX_LEN)
+		SET_OPTION_VALUE(KVI_NUM_MIRCCOLOR_OPTIONS, g_mirccolorOptionsTable, KVI_MIRCCOLOR_OPTIONS_PREFIX, KVI_MIRCCOLOR_OPTIONS_PREFIX_LEN)
+		SET_OPTION_VALUE(KVI_NUM_ICCOLOR_OPTIONS, g_iccolorOptionsTable, KVI_ICCOLOR_OPTIONS_PREFIX, KVI_ICCOLOR_OPTIONS_PREFIX_LEN)
+		SET_OPTION_VALUE(KVI_NUM_UINT_OPTIONS, g_uintOptionsTable, KVI_UINT_OPTIONS_PREFIX, KVI_UINT_OPTIONS_PREFIX_LEN)
+		SET_OPTION_VALUE(KVI_NUM_FONT_OPTIONS, g_fontOptionsTable, KVI_FONT_OPTIONS_PREFIX, KVI_FONT_OPTIONS_PREFIX_LEN)
+		SET_OPTION_VALUE(KVI_NUM_MSGTYPE_OPTIONS, g_msgtypeOptionsTable, KVI_MSGTYPE_OPTIONS_PREFIX, KVI_MSGTYPE_OPTIONS_PREFIX_LEN)
 
 #undef SET_OPTION_VALUE
-	return true;
+		return true;
 }

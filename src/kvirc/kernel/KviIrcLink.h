@@ -194,7 +194,7 @@ protected:
 	* \return void
 	*/
 	void socketStateChange();
-protected slots:
+	protected slots:
 	/**
 	* \brief Called when the link filter has been destroyed without permission :D
 	*
@@ -223,7 +223,7 @@ signals:
 	* \return void
 	*/
 	void connectionFailed();
-private slots:
+	private slots:
 	/**
 	* \brief Called when the DNS lookup has terminated
 	* \return void

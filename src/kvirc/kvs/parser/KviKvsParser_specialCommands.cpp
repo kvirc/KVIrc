@@ -897,7 +897,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
 			[/example]
 		@seealso:
 			[doc:expressioneval]Expression evaluation identifier[/doc]
-		
+
 	*/
 
 	if(KVSP_curCharUnicode != '(')
@@ -1028,36 +1028,36 @@ bool KviKvsParser::skipToEndOfForControlBlock()
 	{
 		switch(KVSP_curCharUnicode)
 		{
-			case '"':
-				bInString = !bInString;
-				KVSP_skipChar;
-				break;
-			case '(':
-				if(!bInString)
-					iParLevel++;
-				KVSP_skipChar;
-				break;
-			case ')':
-				if(!bInString)
-				{
-					if(iParLevel == 0)
-						return true;
-					else
-						iParLevel--;
-				}
-				KVSP_skipChar;
-				break;
-			case 0:
-				error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of buffer while looking for the closing ')' in the 'for' command", "kvs"));
-				return false;
-				break;
+		case '"':
+			bInString = !bInString;
+			KVSP_skipChar;
+			break;
+		case '(':
+			if(!bInString)
+				iParLevel++;
+			KVSP_skipChar;
+			break;
+		case ')':
+			if(!bInString)
+			{
+				if(iParLevel == 0)
+					return true;
+				else
+					iParLevel--;
+			}
+			KVSP_skipChar;
+			break;
+		case 0:
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of buffer while looking for the closing ')' in the 'for' command", "kvs"));
+			return false;
+			break;
 			//case '\n':
 			// that's ok.. it may have a parenthesis on the next line
 			//KVSP_skipChar;
 			//break;
-			default:
-				KVSP_skipChar;
-				break;
+		default:
+			KVSP_skipChar;
+			break;
 		}
 	}
 	// not reached
@@ -1673,7 +1673,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		return nullptr;
 	}
 
-	std::unique_ptr<KviKvsTreeNodeSpecialCommandDefpopupLabelPopup> pPopup{new KviKvsTreeNodeSpecialCommandDefpopupLabelPopup(KVSP_curCharPointer)};
+	std::unique_ptr<KviKvsTreeNodeSpecialCommandDefpopupLabelPopup> pPopup{ new KviKvsTreeNodeSpecialCommandDefpopupLabelPopup(KVSP_curCharPointer) };
 
 	KVSP_skipChar;
 
@@ -1753,12 +1753,12 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			if(KVSP_curCharUnicode == '(')
 			{
 				EXTRACT_POPUP_LABEL_PARAMETERS
-				if(!skipSpacesAndNewlines())
-				{
-					if(pParameters)
-						delete pParameters;
-					return nullptr;
-				}
+					if(!skipSpacesAndNewlines())
+					{
+						if(pParameters)
+							delete pParameters;
+						return nullptr;
+					}
 			}
 			const QChar * pBegin = KVSP_curCharPointer;
 			KviKvsTreeNodeInstruction * pInstruction = parseInstruction();
@@ -1801,17 +1801,17 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		else if(szLabelLow == "separator")
 		{
 			EXTRACT_POPUP_LABEL_CONDITION
-			if(KVSP_curCharUnicode == ';')
-				KVSP_skipChar;
+				if(KVSP_curCharUnicode == ';')
+					KVSP_skipChar;
 			QString szItemName = "dummySeparator";
 			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator(pLabelBegin, szCondition, szItemName));
 		}
 		else if(szLabelLow == "separatorid")
 		{
 			EXTRACT_POPUP_LABEL_PARAMETERS
-			EXTRACT_POPUP_LABEL_CONDITION
-			if(KVSP_curCharUnicode == ';')
-				KVSP_skipChar;
+				EXTRACT_POPUP_LABEL_CONDITION
+				if(KVSP_curCharUnicode == ';')
+					KVSP_skipChar;
 			QString * pItemName = pParameters ? pParameters->first() : nullptr;
 			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator(pLabelBegin, szCondition, pItemName ? *pItemName : QString()));
 			delete pParameters;
@@ -1819,9 +1819,9 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		else if(szLabelLow == "label")
 		{
 			EXTRACT_POPUP_LABEL_PARAMETERS
-			EXTRACT_POPUP_LABEL_CONDITION
+				EXTRACT_POPUP_LABEL_CONDITION
 
-			QString * pText = pParameters->first();
+				QString * pText = pParameters->first();
 			if(!pText)
 			{
 				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <text> field in label parameters. See /help defpopup for the syntax", "kvs"));
@@ -1838,9 +1838,9 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		else if(szLabelLow == "popup")
 		{
 			EXTRACT_POPUP_LABEL_PARAMETERS
-			EXTRACT_POPUP_LABEL_CONDITION
+				EXTRACT_POPUP_LABEL_CONDITION
 
-			QString * pText = pParameters->first();
+				QString * pText = pParameters->first();
 			if(!pText)
 			{
 				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <text> field in extpopup parameters. See /help defpopup for the syntax", "kvs"));
@@ -1868,9 +1868,9 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		else if(szLabelLow == "item")
 		{
 			EXTRACT_POPUP_LABEL_PARAMETERS
-			EXTRACT_POPUP_LABEL_CONDITION
+				EXTRACT_POPUP_LABEL_CONDITION
 
-			QString * pText = pParameters->first();
+				QString * pText = pParameters->first();
 			if(!pText)
 			{
 				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <text> field in extpopup parameters. See /help defpopup for the syntax", "kvs"));
@@ -1918,9 +1918,9 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		else if(szLabelLow == "extpopup")
 		{
 			EXTRACT_POPUP_LABEL_PARAMETERS
-			EXTRACT_POPUP_LABEL_CONDITION
+				EXTRACT_POPUP_LABEL_CONDITION
 
-			QString * pText = pParameters->first();
+				QString * pText = pParameters->first();
 			if(!pText)
 			{
 				error(pLabelBegin, __tr2qs_ctx("Unexpected empty <text> field in extpopup parameters. See /help defpopup for the syntax", "kvs"));

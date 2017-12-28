@@ -30,7 +30,7 @@ class KviAnimatedPixmapInterface
 {
 public:
 	virtual void nextFrame(bool) = 0;
-	virtual ~KviAnimatedPixmapInterface(){};
+	virtual ~KviAnimatedPixmapInterface() {};
 };
 
 #endif // _KVIANIPIXINTERFACE_H_

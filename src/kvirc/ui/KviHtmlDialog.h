@@ -91,8 +91,8 @@ class KviTextBrowser : public QTextBrowser
 {
 public:
 	KviTextBrowser(QWidget * par, KviHtmlDialogData * ht)
-	    : QTextBrowser(par), m_pHt(ht){};
-	~KviTextBrowser(){};
+		: QTextBrowser(par), m_pHt(ht) {};
+	~KviTextBrowser() {};
 	virtual QVariant loadResource(int type, const QUrl & name)
 	{
 		QString p = m_pHt->htmlResource.value(name.path());
@@ -125,7 +125,7 @@ protected:
 public:
 	// displays the dialog as modal and returns 1,2 or 3
 	static int display(QWidget * pParent, KviHtmlDialogData * pData);
-protected slots:
+	protected slots:
 	void button1Pressed();
 	void button2Pressed();
 	void button3Pressed();

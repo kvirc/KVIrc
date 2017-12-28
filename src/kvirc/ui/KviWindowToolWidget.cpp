@@ -32,7 +32,7 @@
 #include <QIcon>
 
 KviWindowToolWidget::KviWindowToolWidget(QWidget * pParent, KviWindowToolPageButton * pButton)
-    : QWidget(pParent)
+	: QWidget(pParent)
 {
 	m_pButton = pButton;
 	if(m_pButton)
@@ -40,10 +40,10 @@ KviWindowToolWidget::KviWindowToolWidget(QWidget * pParent, KviWindowToolPageBut
 }
 
 KviWindowToolWidget::~KviWindowToolWidget()
-    = default;
+= default;
 
 KviWindowToolPageButton::KviWindowToolPageButton(KviIconManager::SmallIcon eIconOff, KviIconManager::SmallIcon eIconOn, const QString & szText, QWidget * pParent, bool bOn)
-    : QToolButton(pParent)
+	: QToolButton(pParent)
 {
 	setAutoRaise(true);
 	setToolTip(szText);
@@ -58,4 +58,4 @@ KviWindowToolPageButton::KviWindowToolPageButton(KviIconManager::SmallIcon eIcon
 }
 
 KviWindowToolPageButton::~KviWindowToolPageButton()
-    = default;
+= default;

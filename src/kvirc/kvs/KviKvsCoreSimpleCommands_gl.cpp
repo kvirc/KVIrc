@@ -140,11 +140,11 @@ namespace KviKvsCoreSimpleCommands
 	{
 		QString szParams;
 		KVSCSC_PARAMETERS_BEGIN
-		KVSCSC_PARAMETER("params", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szParams)
-		KVSCSC_PARAMETERS_END
+			KVSCSC_PARAMETER("params", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szParams)
+			KVSCSC_PARAMETERS_END
 
-		// We just alias the help.open function
-		QString szSwitches = "";
+			// We just alias the help.open function
+			QString szSwitches = "";
 		if(KVSCSC_pSwitches->find('m', "mdi"))
 			szSwitches.append("-m ");
 		if(KVSCSC_pSwitches->find('n', "new"))
@@ -201,19 +201,19 @@ namespace KviKvsCoreSimpleCommands
 	{
 		QString szQuery;
 		KVSCSC_PARAMETERS_BEGIN
-		KVSCSC_PARAMETER("dnsquery", KVS_PT_NONEMPTYSTRING, 0, szQuery)
-		KVSCSC_PARAMETERS_END
+			KVSCSC_PARAMETER("dnsquery", KVS_PT_NONEMPTYSTRING, 0, szQuery)
+			KVSCSC_PARAMETERS_END
 
-		KviDnsResolver::QueryType queryType = KviDnsResolver::IPv4;
+			KviDnsResolver::QueryType queryType = KviDnsResolver::IPv4;
 		if(KVSCSC_pSwitches->find('i', "ipv6"))
 			queryType = KviDnsResolver::IPv6;
 		if(KVSCSC_pSwitches->find('a', "any"))
 			queryType = KviDnsResolver::Any;
 
 		new KviKvsAsyncDnsOperation(
-		    KVSCSC_pContext->window(),
-		    szQuery,
-		    queryType);
+			KVSCSC_pContext->window(),
+			szQuery,
+			queryType);
 
 		return true;
 	}
@@ -281,16 +281,16 @@ namespace KviKvsCoreSimpleCommands
 
 		QString szText;
 		KVSCSC_PARAMETERS_BEGIN
-		KVSCSC_PARAMETER("text", KVS_PT_NONEMPTYSTRING, KVS_PF_APPENDREMAINING, szText)
-		KVSCSC_PARAMETERS_END
+			KVSCSC_PARAMETER("text", KVS_PT_NONEMPTYSTRING, KVS_PF_APPENDREMAINING, szText)
+			KVSCSC_PARAMETERS_END
 
-		KVSCSC_REQUIRE_CONNECTION
+			KVSCSC_REQUIRE_CONNECTION
 
-		if(!((KVSCSC_pWindow->type() == KviWindow::Channel) || (KVSCSC_pWindow->type() == KviWindow::Query) || (KVSCSC_pWindow->type() == KviWindow::Console)))
-		{
-			KVSCSC_pContext->warning(__tr2qs_ctx("The current window is not a channel, a query or a console", "kvs"));
-			return false;
-		}
+			if(!((KVSCSC_pWindow->type() == KviWindow::Channel) || (KVSCSC_pWindow->type() == KviWindow::Query) || (KVSCSC_pWindow->type() == KviWindow::Console)))
+			{
+				KVSCSC_pContext->warning(__tr2qs_ctx("The current window is not a channel, a query or a console", "kvs"));
+				return false;
+			}
 
 		// Get the active window where we ran the command
 		KviWindow * pActive = KVSCSC_pWindow->context()->console()->activeWindow();
@@ -381,13 +381,13 @@ namespace KviKvsCoreSimpleCommands
 
 		QString szChans, szKeys;
 		KVSCSC_PARAMETERS_BEGIN
-		KVSCSC_PARAMETER("chans", KVS_PT_NONEMPTYSTRING, 0, szChans)
-		KVSCSC_PARAMETER("keys", KVS_PT_STRING, KVS_PF_OPTIONAL, szKeys)
-		KVSCSC_PARAMETERS_END
+			KVSCSC_PARAMETER("chans", KVS_PT_NONEMPTYSTRING, 0, szChans)
+			KVSCSC_PARAMETER("keys", KVS_PT_STRING, KVS_PF_OPTIONAL, szKeys)
+			KVSCSC_PARAMETERS_END
 
-		KVSCSC_REQUIRE_CONNECTION
+			KVSCSC_REQUIRE_CONNECTION
 
-		QStringList slChans = szChans.split(",", QString::SkipEmptyParts);
+			QStringList slChans = szChans.split(",", QString::SkipEmptyParts);
 
 		QString szChanTypes = KVSCSC_pConnection->serverInfo()->supportedChannelTypes();
 		for(auto & slChan : slChans)
@@ -453,17 +453,17 @@ namespace KviKvsCoreSimpleCommands
 		QString szUser;
 		QString szReason;
 		KVSCSC_PARAMETERS_BEGIN
-		KVSCSC_PARAMETER("user", KVS_PT_NONEMPTYSTRING, 0, szUser)
-		KVSCSC_PARAMETER("reason", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szReason)
-		KVSCSC_PARAMETERS_END
+			KVSCSC_PARAMETER("user", KVS_PT_NONEMPTYSTRING, 0, szUser)
+			KVSCSC_PARAMETER("reason", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szReason)
+			KVSCSC_PARAMETERS_END
 
-		KVSCSC_REQUIRE_CONNECTION
+			KVSCSC_REQUIRE_CONNECTION
 
-		if(KVSCSC_pWindow->type() != KviWindow::Channel)
-		{
-			KVSCSC_pContext->warning(__tr2qs_ctx("The current window is not a channel", "kvs"));
-			return false;
-		}
+			if(KVSCSC_pWindow->type() != KviWindow::Channel)
+			{
+				KVSCSC_pContext->warning(__tr2qs_ctx("The current window is not a channel", "kvs"));
+				return false;
+			}
 
 		QByteArray szC = KVSCSC_pConnection->encodeText(KVSCSC_pWindow->target());
 		QByteArray szU = KVSCSC_pConnection->encodeText(szUser);
@@ -514,14 +514,14 @@ namespace KviKvsCoreSimpleCommands
 	{
 		QString szName;
 		KVSCSC_PARAMETERS_BEGIN
-		KVSCSC_PARAMETER("name", KVS_PT_STRING, KVS_PF_OPTIONAL, szName)
-		KVSCSC_PARAMETERS_END
+			KVSCSC_PARAMETER("name", KVS_PT_STRING, KVS_PF_OPTIONAL, szName)
+			KVSCSC_PARAMETERS_END
 
-		if(KVSCSC_pSwitches->find('a', "active"))
-		{
-			KviKvsTimerManager::instance()->deleteAllTimers();
-			return true;
-		}
+			if(KVSCSC_pSwitches->find('a', "active"))
+			{
+				KviKvsTimerManager::instance()->deleteAllTimers();
+				return true;
+			}
 
 		if(szName.isEmpty())
 		{
@@ -631,18 +631,18 @@ namespace KviKvsCoreSimpleCommands
 			QString szLifetime;
 			switch(pTimer->lifetime())
 			{
-				case KviKvsTimer::Persistent:
-					szLifetime = __tr2qs_ctx("Persistent", "kvs");
-					break;
-				case KviKvsTimer::WindowLifetime:
-					szLifetime = __tr2qs_ctx("Window Lifetime", "kvs");
-					break;
-				case KviKvsTimer::SingleShot:
-					szLifetime = __tr2qs_ctx("Single Shot", "kvs");
-					break;
-				default:
-					szLifetime = __tr2qs_ctx("Unknown", "kvs");
-					break;
+			case KviKvsTimer::Persistent:
+				szLifetime = __tr2qs_ctx("Persistent", "kvs");
+				break;
+			case KviKvsTimer::WindowLifetime:
+				szLifetime = __tr2qs_ctx("Window Lifetime", "kvs");
+				break;
+			case KviKvsTimer::SingleShot:
+				szLifetime = __tr2qs_ctx("Single Shot", "kvs");
+				break;
+			default:
+				szLifetime = __tr2qs_ctx("Unknown", "kvs");
+				break;
 			}
 			QString szDelay;
 			szDelay.setNum(pTimer->delay());
@@ -650,8 +650,8 @@ namespace KviKvsCoreSimpleCommands
 			szWindow = pTimer->window() ? pTimer->window()->id() : __tr2qs_ctx("None", "kvs");
 
 			KVSCSC_pContext->window()->output(KVI_OUT_VERBOSE,
-			    "Timer \"%Q\": Lifetime: %Q, Delay: %Q, Window: %Q",
-			    &szName, &szLifetime, &szDelay, &szWindow);
+				"Timer \"%Q\": Lifetime: %Q, Delay: %Q, Window: %Q",
+				&szName, &szLifetime, &szDelay, &szWindow);
 
 			uCnt++;
 			++it;

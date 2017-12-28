@@ -80,12 +80,12 @@ static bool aliaseditor_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "AliasEditor",                                                       // module name
-    "4.0.0",                                                             // module version
-    "Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Editor for the script aliases",
-    aliaseditor_module_init,
-    aliaseditor_module_can_unload,
-    0,
-    aliaseditor_module_cleanup,
-    "editor")
+	"AliasEditor",                                                       // module name
+	"4.0.0",                                                             // module version
+	"Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Editor for the script aliases",
+	aliaseditor_module_init,
+	aliaseditor_module_can_unload,
+	0,
+	aliaseditor_module_cleanup,
+	"editor")

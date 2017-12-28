@@ -82,7 +82,7 @@ class KVIRC_API KviWindow : public QWidget
 	friend class KviTreeWindowList;
 	friend class KviTreeWindowListItemDelegate;
 	Q_PROPERTY(int KviProperty_ChildFocusOwner READ type)
-	Q_OBJECT
+		Q_OBJECT
 public:
 	/**
 	* \enum ActivityValue
@@ -387,8 +387,8 @@ public:
 	virtual void updateCaption();
 	virtual void applyOptions();
 	virtual void updateIcon();
-	virtual void ownMessage(const QString &, bool = true){};
-	virtual void ownAction(const QString &){};
+	virtual void ownMessage(const QString &, bool = true) {};
+	virtual void ownAction(const QString &) {};
 	virtual const QString & plainTextCaption() { return m_szPlainTextCaption; };
 
 	void internalOutput(KviIrcView * pView, int iMsgType, const kvi_wchar_t * pwText, int iFlags = 0, const QDateTime & datetime = QDateTime());
@@ -465,8 +465,8 @@ protected:
 	virtual void saveProperties(KviConfigurationFile * pCfg);
 	virtual void loadProperties(KviConfigurationFile * pCfg);
 	// Creation and destruction events: overridden in windows that have script events bound to creation and destruction
-	virtual void triggerCreationEvents(){};
-	virtual void triggerDestructionEvents(){};
+	virtual void triggerCreationEvents() {};
+	virtual void triggerDestructionEvents() {};
 	// Internal: do not touch :D (KviMainWindow)
 	virtual void createWindowListItem();
 	virtual void destroyWindowListItem();
@@ -509,13 +509,13 @@ protected:
 	virtual bool focusNextPrevChild(bool bNext);
 
 	virtual void preprocessMessage(QString & szMessage);
-public slots:
+	public slots:
 	void dock();
 	void undock();
 	void autoRaise();
 	void reloadImages();
 	void savePropertiesAsDefault();
-protected slots:
+	protected slots:
 	void toggleCryptController();     // This has to be here even if the crypt support is enabled...moc does not support conditionals
 	void cryptControllerFinished();   // same as above
 	void cryptSessionInfoDestroyed(); //  same as above

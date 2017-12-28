@@ -27,7 +27,7 @@
 #if defined(COMPILE_KDE4_SUPPORT)
 
 KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char *, bool)
-    : KFileDialog(KUrl(szDirName), szFilter, pParent)
+	: KFileDialog(KUrl(szDirName), szFilter, pParent)
 {
 	//clearWFlags(WDestructiveClose);
 }
@@ -35,7 +35,7 @@ KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & sz
 #else //!defined(COMPILE_KDE4_SUPPORT))
 
 KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char *, bool bModal)
-    : QFileDialog(pParent, "", szDirName, szFilter)
+	: QFileDialog(pParent, "", szDirName, szFilter)
 {
 	setModal(bModal);
 }
@@ -43,56 +43,56 @@ KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & sz
 #endif //!defined(COMPILE_KDE4_SUPPORT))
 
 KviTalFileDialog::~KviTalFileDialog()
-    = default;
+= default;
 
 void KviTalFileDialog::setFileMode(FileMode m)
 {
 	switch(m)
 	{
 #if defined(COMPILE_KDE4_SUPPORT)
-		case AnyFile:
-			setMode(KFile::File | KFile::LocalOnly);
-			setOperationMode(Saving);
-			break;
-		case ExistingFile:
-			setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
-			setOperationMode(Opening);
-			break;
-		case ExistingFiles:
-			setMode(KFile::Files | KFile::ExistingOnly | KFile::LocalOnly);
-			setOperationMode(Opening);
-			break;
-		case Directory:
-			setMode(KFile::Directory);
-			break;
-		case DirectoryOnly:
-			setMode(KFile::Directory);
-			break;
-		default:
-			setMode(KFile::File | KFile::LocalOnly);
-			setOperationMode(Saving);
-			break;
+	case AnyFile:
+		setMode(KFile::File | KFile::LocalOnly);
+		setOperationMode(Saving);
+		break;
+	case ExistingFile:
+		setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
+		setOperationMode(Opening);
+		break;
+	case ExistingFiles:
+		setMode(KFile::Files | KFile::ExistingOnly | KFile::LocalOnly);
+		setOperationMode(Opening);
+		break;
+	case Directory:
+		setMode(KFile::Directory);
+		break;
+	case DirectoryOnly:
+		setMode(KFile::Directory);
+		break;
+	default:
+		setMode(KFile::File | KFile::LocalOnly);
+		setOperationMode(Saving);
+		break;
 #else  //!defined(COMPILE_KDE4_SUPPORT)
-		case AnyFile:
-			QFileDialog::setFileMode(QFileDialog::AnyFile);
-			setAcceptMode(QFileDialog::AcceptSave);
-			break;
-		case ExistingFile:
-			QFileDialog::setFileMode(QFileDialog::ExistingFile);
-			break;
-		case ExistingFiles:
-			QFileDialog::setFileMode(QFileDialog::ExistingFiles);
-			break;
-		case Directory:
-			QFileDialog::setFileMode(QFileDialog::Directory);
-			break;
-		case DirectoryOnly:
-			QFileDialog::setFileMode(QFileDialog::DirectoryOnly);
-			break;
-		default:
-			QFileDialog::setFileMode(QFileDialog::AnyFile);
-			setAcceptMode(QFileDialog::AcceptSave);
-			break;
+	case AnyFile:
+		QFileDialog::setFileMode(QFileDialog::AnyFile);
+		setAcceptMode(QFileDialog::AcceptSave);
+		break;
+	case ExistingFile:
+		QFileDialog::setFileMode(QFileDialog::ExistingFile);
+		break;
+	case ExistingFiles:
+		QFileDialog::setFileMode(QFileDialog::ExistingFiles);
+		break;
+	case Directory:
+		QFileDialog::setFileMode(QFileDialog::Directory);
+		break;
+	case DirectoryOnly:
+		QFileDialog::setFileMode(QFileDialog::DirectoryOnly);
+		break;
+	default:
+		QFileDialog::setFileMode(QFileDialog::AnyFile);
+		setAcceptMode(QFileDialog::AcceptSave);
+		break;
 #endif //!defined(COMPILE_KDE4_SUPPORT)
 	}
 }

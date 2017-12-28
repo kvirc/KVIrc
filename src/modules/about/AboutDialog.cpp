@@ -74,7 +74,7 @@ extern AboutDialog * g_pAboutDialog;
 #include "abouttext.inc"
 
 AboutDialog::AboutDialog()
-    : KviTalTabDialog(nullptr)
+	: KviTalTabDialog(nullptr)
 {
 	setWindowTitle(__tr2qs_ctx("About KVIrc", "about"));
 	setOkButton(__tr2qs_ctx("Close", "about"));
@@ -225,9 +225,9 @@ AboutDialog::AboutDialog()
 	if(!KviFileUtils::loadFile(szLicensePath, szLicense))
 	{
 		szLicense = __tr2qs_ctx("Oops! Can't find the license file.\n"
-		                        "It MUST be included in the distribution...\n"
-		                        "Please report to <pragma at kvirc dot net>",
-		    "about");
+			"It MUST be included in the distribution...\n"
+			"Please report to <pragma at kvirc dot net>",
+			"about");
 	}
 
 	v->setText(szLicense);

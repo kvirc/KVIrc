@@ -73,13 +73,13 @@ void KviDnsResolverResult::appendAddress(const QString & addr)
 }
 
 KviDnsResolverThread::KviDnsResolverThread(KviDnsResolver * pDns)
-    : QThread()
+	: QThread()
 {
 	m_pParentDns = pDns;
 }
 
 KviDnsResolverThread::~KviDnsResolverThread()
-    = default;
+= default;
 
 KviError::Code KviDnsResolverThread::translateDnsError(int iErr)
 {
@@ -87,50 +87,50 @@ KviError::Code KviDnsResolverThread::translateDnsError(int iErr)
 
 	switch(iErr)
 	{
-		case EAI_FAMILY:
-			return KviError::UnsupportedAddressFamily;
-			break;
+	case EAI_FAMILY:
+		return KviError::UnsupportedAddressFamily;
+		break;
 #if(!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)) && defined(EAI_ADDRFAMILY) && (EAI_ADDRFAMILY != EAI_FAMILY)
-		case EAI_ADDRFAMILY:
-			return KviError::UnsupportedAddressFamily;
-			break;
+	case EAI_ADDRFAMILY:
+		return KviError::UnsupportedAddressFamily;
+		break;
 #endif
-// NOT FreeBSD ARE WE?
+		// NOT FreeBSD ARE WE?
 #if defined(EAI_NODATA) && (EAI_NODATA != EAI_NONAME)
 		// YARR
-		case EAI_NODATA:
-			return KviError::ValidNameButNoIpAddress;
-			break;
+	case EAI_NODATA:
+		return KviError::ValidNameButNoIpAddress;
+		break;
 #endif
-		case EAI_FAIL:
-			return KviError::UnrecoverableNameserverError;
-			break;
-		case EAI_AGAIN:
-			return KviError::DNSTemporaneousFault;
-			break;
+	case EAI_FAIL:
+		return KviError::UnrecoverableNameserverError;
+		break;
+	case EAI_AGAIN:
+		return KviError::DNSTemporaneousFault;
+		break;
 		// this should never happen
-		case EAI_BADFLAGS:
-			return KviError::DNSInternalErrorBadFlags;
-			break;
-		case EAI_MEMORY:
-			return KviError::DNSInternalErrorOutOfMemory;
-			break;
+	case EAI_BADFLAGS:
+		return KviError::DNSInternalErrorBadFlags;
+		break;
+	case EAI_MEMORY:
+		return KviError::DNSInternalErrorOutOfMemory;
+		break;
 		// got this when experimenting with protocols
-		case EAI_SERVICE:
-			return KviError::DNSInternalErrorServiceNotSupported;
-			break;
+	case EAI_SERVICE:
+		return KviError::DNSInternalErrorServiceNotSupported;
+		break;
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-		case EAI_NONAME:
-			return KviError::DNSNoName;
-			break;
+	case EAI_NONAME:
+		return KviError::DNSNoName;
+		break;
 #endif
 		// got this when experimenting with protocols
-		case EAI_SOCKTYPE:
-			return KviError::DNSInternalErrorUnsupportedSocketType;
-			break;
+	case EAI_SOCKTYPE:
+		return KviError::DNSInternalErrorUnsupportedSocketType;
+		break;
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-		case EAI_SYSTEM:
-			return KviError::DNSQueryFailed;
+	case EAI_SYSTEM:
+		return KviError::DNSQueryFailed;
 #endif
 	}
 
@@ -197,21 +197,21 @@ void KviDnsResolverThread::run()
 	{
 		switch(h_errno)
 		{
-			case HOST_NOT_FOUND:
-				dns->setError(KviError::HostNotFound);
-				break;
-			case NO_ADDRESS:
-				dns->setError(KviError::ValidNameButNoIpAddress);
-				break;
-			case NO_RECOVERY:
-				dns->setError(KviError::UnrecoverableNameserverError);
-				break;
-			case TRY_AGAIN:
-				dns->setError(KviError::DNSTemporaneousFault);
-				break;
-			default:
-				dns->setError(KviError::DNSQueryFailed);
-				break;
+		case HOST_NOT_FOUND:
+			dns->setError(KviError::HostNotFound);
+			break;
+		case NO_ADDRESS:
+			dns->setError(KviError::ValidNameButNoIpAddress);
+			break;
+		case NO_RECOVERY:
+			dns->setError(KviError::UnrecoverableNameserverError);
+			break;
+		case TRY_AGAIN:
+			dns->setError(KviError::DNSTemporaneousFault);
+			break;
+		default:
+			dns->setError(KviError::DNSQueryFailed);
+			break;
 		}
 	}
 	else
@@ -255,7 +255,6 @@ void KviDnsResolverThread::run()
 	if(!bIsIPv4Ip)
 		bIsIPv6Ip = KviNetUtils::stringIpToBinaryIp_V6(m_szQuery, (struct in6_addr *)&(ipv6Addr.sin6_addr));
 #endif
-
 
 #ifdef COMPILE_IPV6_SUPPORT
 	if(bIsIPv4Ip || bIsIPv6Ip)
@@ -371,10 +370,10 @@ void KviDnsResolverThread::run()
 
 	KviDnsResolverThreadEvent * pEvent = new KviDnsResolverThreadEvent(dns);
 	QApplication::postEvent(m_pParentDns, pEvent);
-}
+	}
 
 KviDnsResolver::KviDnsResolver()
-    : QObject()
+	: QObject()
 {
 	m_pSlaveThread = new KviDnsResolverThread(this);
 	m_pDnsResult = new KviDnsResolverResult();

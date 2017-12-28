@@ -61,13 +61,13 @@ const QDBusArgument & operator>>(const QDBusArgument & argument, MPRISPlayerStat
 }
 
 MpMprisInterface::MpMprisInterface()
-    : MpInterface()
+	: MpInterface()
 {
 	qDBusRegisterMetaType<MPRISPlayerStatus>();
 }
 
 MpMprisInterface::~MpMprisInterface()
-    = default;
+= default;
 
 int MpMprisInterface::detect(bool)
 {
@@ -170,7 +170,7 @@ MpInterface::PlayerStatus MpMprisInterface::status()
 {
 	MPRIS_CALL_METHOD("GetStatus", MpInterface::Unknown)
 
-	MPRISPlayerStatus status;
+		MPRISPlayerStatus status;
 
 	if(reply.arguments().isEmpty())
 		return MpInterface::Unknown;
@@ -179,14 +179,14 @@ MpInterface::PlayerStatus MpMprisInterface::status()
 
 	switch(status.Play)
 	{
-		case 0:
-			return MpInterface::Playing;
-		case 1:
-			return MpInterface::Paused;
-		case 2:
-			return MpInterface::Stopped;
-		default:
-			return MpInterface::Unknown;
+	case 0:
+		return MpInterface::Playing;
+	case 1:
+		return MpInterface::Paused;
+	case 2:
+		return MpInterface::Stopped;
+	default:
+		return MpInterface::Unknown;
 	}
 }
 
@@ -197,7 +197,7 @@ QString MpMprisInterface::nowPlaying()
 
 	MPRIS_CALL_METHOD("GetMetadata", "")
 
-	QString artist;
+		QString artist;
 	QString title;
 	foreach(QVariant w, reply.arguments())
 	{
@@ -226,7 +226,7 @@ QString MpMprisInterface::mrl()
 {
 	MPRIS_CALL_METHOD("GetMetadata", "")
 
-	foreach(QVariant w, reply.arguments())
+		foreach(QVariant w, reply.arguments())
 	{
 		QDBusArgument arg = qvariant_cast<QDBusArgument>(w);
 		QVariant v = qdbus_cast<QVariantMap>(arg);
@@ -293,21 +293,21 @@ int MpMprisInterface::getVol()
 {
 	MPRIS_CALL_METHOD("VolumeGet", -1)
 
-	int iVol = reply.arguments().first().toInt();
+		int iVol = reply.arguments().first().toInt();
 	return iVol * 255 / 100;
 }
 
 int MpMprisInterface::position()
 {
 	MPRIS_CALL_METHOD("PositionGet", -1)
-	return reply.arguments().first().toInt();
+		return reply.arguments().first().toInt();
 }
 
 int MpMprisInterface::length()
 {
 	MPRIS_CALL_METHOD("GetMetadata", -1)
 
-	foreach(QVariant w, reply.arguments())
+		foreach(QVariant w, reply.arguments())
 	{
 		QDBusArgument arg = qvariant_cast<QDBusArgument>(w);
 		QVariant v = qdbus_cast<QVariantMap>(arg);
@@ -328,20 +328,20 @@ int MpMprisInterface::length()
 bool MpMprisInterface::jumpTo(kvs_int_t & iPos)
 {
 	MPRIS_CALL_METHOD_WITH_ARG("PositionSet", QVariant((int)iPos), false)
-	return true;
+		return true;
 }
 
 /* audacious interface */
 MP_IMPLEMENT_DESCRIPTOR(
-    MpAudaciousInterface,
-    "audacious",
-    __tr2qs_ctx(
-        "An interface for the Audacious media player.\n"
-        "Download it from http://audacious-media-player.org\n",
-        "mediaplayer"))
+	MpAudaciousInterface,
+	"audacious",
+	__tr2qs_ctx(
+		"An interface for the Audacious media player.\n"
+		"Download it from http://audacious-media-player.org\n",
+		"mediaplayer"))
 
-MpAudaciousInterface::MpAudaciousInterface()
-    : MpMprisInterface()
+	MpAudaciousInterface::MpAudaciousInterface()
+	: MpMprisInterface()
 {
 	m_szServiceName = "org.mpris.audacious";
 }
@@ -349,7 +349,7 @@ MpAudaciousInterface::MpAudaciousInterface()
 int MpAudaciousInterface::getPlayListPos()
 {
 	QDBusInterface dbus_iface("org.mpris.audacious", "/org/atheme/audacious",
-	    "org.atheme.audacious", QDBusConnection::sessionBus());
+		"org.atheme.audacious", QDBusConnection::sessionBus());
 	QDBusReply<uint> pos = dbus_iface.call(QDBus::Block, "Position");
 	return pos;
 }
@@ -367,7 +367,7 @@ QString MpAudaciousInterface::mrl()
 {
 	MPRIS_CALL_METHOD("GetMetadata", "")
 
-	foreach(QVariant w, reply.arguments())
+		foreach(QVariant w, reply.arguments())
 	{
 		QDBusArgument arg = qvariant_cast<QDBusArgument>(w);
 		QVariant v = qdbus_cast<QVariantMap>(arg);
@@ -399,7 +399,7 @@ MpInterface::PlayerStatus MpAudaciousInterface::status()
 
 	/* compatibility with older versions */
 	QDBusInterface dbus_iface(m_szServiceName, "/Player",
-	    "org.freedesktop.MediaPlayer", QDBusConnection::sessionBus());
+		"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus());
 	if(!dbus_iface.isValid())
 		return MpInterface::Unknown;
 
@@ -407,14 +407,14 @@ MpInterface::PlayerStatus MpAudaciousInterface::status()
 
 	switch(reply.arguments().first().toInt())
 	{
-		case 0:
-			return MpInterface::Playing;
-		case 1:
-			return MpInterface::Paused;
-		case 2:
-			return MpInterface::Stopped;
-		default:
-			return MpInterface::Unknown;
+	case 0:
+		return MpInterface::Playing;
+	case 1:
+		return MpInterface::Paused;
+	case 2:
+		return MpInterface::Stopped;
+	default:
+		return MpInterface::Unknown;
 	}
 }
 
@@ -427,7 +427,7 @@ int MpAudaciousInterface::length()
 	/* compatibility with older versions */
 	MPRIS_CALL_METHOD("GetMetadata", -1)
 
-	foreach(QVariant w, reply.arguments())
+		foreach(QVariant w, reply.arguments())
 	{
 		QDBusArgument arg = qvariant_cast<QDBusArgument>(w);
 		QVariant v = qdbus_cast<QVariantMap>(arg);
@@ -467,15 +467,15 @@ QString MpAudaciousInterface::mediaType()
 
 /* BMPx interface */
 MP_IMPLEMENT_DESCRIPTOR(
-    MpBmpxInterface,
-    "bmpx",
-    __tr2qs_ctx(
-        "An interface for BMPx.\n"
-        "Download it from http://sourceforge.net/projects/beepmp\n",
-        "mediaplayer"))
+	MpBmpxInterface,
+	"bmpx",
+	__tr2qs_ctx(
+		"An interface for BMPx.\n"
+		"Download it from http://sourceforge.net/projects/beepmp\n",
+		"mediaplayer"))
 
-MpBmpxInterface::MpBmpxInterface()
-    : MpMprisInterface()
+	MpBmpxInterface::MpBmpxInterface()
+	: MpMprisInterface()
 {
 	m_szServiceName = "org.mpris.bmp";
 }
@@ -488,62 +488,62 @@ MpInterface::PlayerStatus MpBmpxInterface::status()
 
 /* Amarok2 interface */
 MP_IMPLEMENT_DESCRIPTOR(
-    MpAmarok2Interface,
-    "amarok2",
-    __tr2qs_ctx(
-        "An interface for Amarok2.\n"
-        "Download it from http://amarok.kde.org\n",
-        "mediaplayer"))
+	MpAmarok2Interface,
+	"amarok2",
+	__tr2qs_ctx(
+		"An interface for Amarok2.\n"
+		"Download it from http://amarok.kde.org\n",
+		"mediaplayer"))
 
-MpAmarok2Interface::MpAmarok2Interface()
-    : MpMprisInterface()
+	MpAmarok2Interface::MpAmarok2Interface()
+	: MpMprisInterface()
 {
 	m_szServiceName = "org.mpris.amarok";
 }
 
 /* Qmmp interface */
 MP_IMPLEMENT_DESCRIPTOR(
-    MpQmmpInterface,
-    "Qmmp",
-    __tr2qs_ctx(
-        "An interface for Qmmp.\n"
-        "Download it from http://qmmp.ylsoftware.com\n",
-        "mediaplayer"))
+	MpQmmpInterface,
+	"Qmmp",
+	__tr2qs_ctx(
+		"An interface for Qmmp.\n"
+		"Download it from http://qmmp.ylsoftware.com\n",
+		"mediaplayer"))
 
-MpQmmpInterface::MpQmmpInterface()
-    : MpMprisInterface()
+	MpQmmpInterface::MpQmmpInterface()
+	: MpMprisInterface()
 {
 	m_szServiceName = "org.mpris.qmmp";
 }
 
 /* xmms2 interface */
 MP_IMPLEMENT_DESCRIPTOR(
-    MpXmms2Interface,
-    "xmms2",
-    __tr2qs_ctx(
-        "An interface for the XMMS2 media player.\n"
-        "Download it from http://xmms2.org\n",
-        "mediaplayer"))
+	MpXmms2Interface,
+	"xmms2",
+	__tr2qs_ctx(
+		"An interface for the XMMS2 media player.\n"
+		"Download it from http://xmms2.org\n",
+		"mediaplayer"))
 
-MpXmms2Interface::MpXmms2Interface()
-    : MpMprisInterface()
+	MpXmms2Interface::MpXmms2Interface()
+	: MpMprisInterface()
 {
 	m_szServiceName = "org.mpris.xmms2";
 }
 
 /* mozilla songbird interface */
 MP_IMPLEMENT_DESCRIPTOR(
-    MpSongbirdInterface,
-    "songbird",
-    __tr2qs_ctx(
-        "An interface for the Mozilla Songbird media player.\n"
-        "Download it from http://www.getsongbird.com.\n"
-        "To use it you have to install also the MPRIS addon "
-        "available at http://addons.songbirdnest.com/addon/1626.\n",
-        "mediaplayer"))
+	MpSongbirdInterface,
+	"songbird",
+	__tr2qs_ctx(
+		"An interface for the Mozilla Songbird media player.\n"
+		"Download it from http://www.getsongbird.com.\n"
+		"To use it you have to install also the MPRIS addon "
+		"available at http://addons.songbirdnest.com/addon/1626.\n",
+		"mediaplayer"))
 
-MpSongbirdInterface::MpSongbirdInterface()
-    : MpMprisInterface()
+	MpSongbirdInterface::MpSongbirdInterface()
+	: MpMprisInterface()
 {
 	m_szServiceName = "org.mpris.songbird";
 }
@@ -555,47 +555,47 @@ MpInterface::PlayerStatus MpSongbirdInterface::status()
 
 /* Totem interface */
 MP_IMPLEMENT_DESCRIPTOR(
-    MpTotemInterface,
-    "totem",
-    __tr2qs_ctx(
-        "An interface for Totem.\n"
-        "Download it from http://projects.gnome.org/totem/\n",
-        "mediaplayer"))
+	MpTotemInterface,
+	"totem",
+	__tr2qs_ctx(
+		"An interface for Totem.\n"
+		"Download it from http://projects.gnome.org/totem/\n",
+		"mediaplayer"))
 
-MpTotemInterface::MpTotemInterface()
-    : MpMprisInterface()
+	MpTotemInterface::MpTotemInterface()
+	: MpMprisInterface()
 {
 	m_szServiceName = "org.mpris.Totem";
 }
 
 /* Vlc interface */
 MP_IMPLEMENT_DESCRIPTOR(
-    MpVlcInterface,
-    "vlc",
-    __tr2qs_ctx(
-        "An interface for VLC.\n"
-        "Download it from http://www.videolan.org/\n"
-        "You need to manually enable the D-Bus control\n"
-        "interface in the VLC preferences\n",
-        "mediaplayer"))
+	MpVlcInterface,
+	"vlc",
+	__tr2qs_ctx(
+		"An interface for VLC.\n"
+		"Download it from http://www.videolan.org/\n"
+		"You need to manually enable the D-Bus control\n"
+		"interface in the VLC preferences\n",
+		"mediaplayer"))
 
-MpVlcInterface::MpVlcInterface()
-    : MpMprisInterface()
+	MpVlcInterface::MpVlcInterface()
+	: MpMprisInterface()
 {
 	m_szServiceName = "org.mpris.vlc";
 }
 
 /* Clementine interface */
 MP_IMPLEMENT_DESCRIPTOR(
-    MpClementineInterface,
-    "clementine",
-    __tr2qs_ctx(
-        "An interface for Clementine.\n"
-        "Download it from http://www.clementine-player.org/\n",
-        "mediaplayer"))
+	MpClementineInterface,
+	"clementine",
+	__tr2qs_ctx(
+		"An interface for Clementine.\n"
+		"Download it from http://www.clementine-player.org/\n",
+		"mediaplayer"))
 
-MpClementineInterface::MpClementineInterface()
-    : MpMprisInterface()
+	MpClementineInterface::MpClementineInterface()
+	: MpMprisInterface()
 {
 	m_szServiceName = "org.mpris.clementine";
 }

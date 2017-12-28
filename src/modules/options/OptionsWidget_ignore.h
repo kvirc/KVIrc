@@ -44,7 +44,7 @@ public:
 	KviBoolSelector * m_pIgnorePrivmsg;
 	KviBoolSelector * m_pIgnoreNotice;
 	KviBoolSelector * m_pVerboseIgnore;
-protected slots:
+	protected slots:
 	void enableVerbose(bool);
 };
 

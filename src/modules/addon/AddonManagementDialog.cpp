@@ -64,7 +64,7 @@ AddonManagementDialog * AddonManagementDialog::m_pInstance = nullptr;
 extern QRect g_rectManagementDialogGeometry;
 
 AddonListViewItem::AddonListViewItem(KviTalListWidget * v, KviKvsScriptAddon * a)
-    : KviTalListWidgetItem(v)
+	: KviTalListWidgetItem(v)
 {
 	m_pAddon = new KviKvsScriptAddon(*a);
 	m_pListWidget = v;
@@ -92,7 +92,7 @@ AddonListViewItem::~AddonListViewItem()
 }
 
 AddonManagementDialog::AddonManagementDialog(QWidget * p)
-    : QWidget(p)
+	: QWidget(p)
 {
 	setWindowTitle(__tr2qs_ctx("Manage Addons - KVIrc", "addon"));
 	setObjectName("Addon manager");
@@ -190,7 +190,7 @@ AddonManagementDialog::AddonManagementDialog(QWidget * p)
 		g_rectManagementDialogGeometry.setY(5);
 	}
 	resize(g_rectManagementDialogGeometry.width(),
-	    g_rectManagementDialogGeometry.height());
+		g_rectManagementDialogGeometry.height());
 
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
 	move(rect.x() + ((rect.width() - g_rectManagementDialogGeometry.width()) / 2), rect.y() + ((rect.height() - g_rectManagementDialogGeometry.height()) / 2));
@@ -278,10 +278,10 @@ void AddonManagementDialog::uninstallScript()
 	txt += "</p>";
 
 	if(QMessageBox::question(
-	       this,
-	       __tr2qs_ctx("Confirm Addon Uninstallation - KVIrc", "addon"),
-	       txt, __tr2qs_ctx("Yes", "addon"), __tr2qs_ctx("No", "addon"), nullptr, 1)
-	    != 0)
+		this,
+		__tr2qs_ctx("Confirm Addon Uninstallation - KVIrc", "addon"),
+		txt, __tr2qs_ctx("Yes", "addon"), __tr2qs_ctx("No", "addon"), nullptr, 1)
+		!= 0)
 		return;
 
 	KviKvsScriptAddonManager::instance()->unregisterAddon(it->addon()->name(), g_pActiveWindow);
@@ -307,9 +307,9 @@ void AddonManagementDialog::installScript()
 	QString szFileName, szError;
 
 	if(!KviFileDialog::askForOpenFileName(
-	       szFileName,
-	       __tr2qs_ctx("Select a Installation File - KVIrc", "addon"),
-	       QString(), KVI_FILTER_ADDON, false, true, this))
+		szFileName,
+		__tr2qs_ctx("Select a Installation File - KVIrc", "addon"),
+		QString(), KVI_FILTER_ADDON, false, true, this))
 		return;
 
 	szFileName.replace("\\", "\\\\");
@@ -320,12 +320,12 @@ void AddonManagementDialog::installScript()
 		if(!AddonFunctions::installAddonPackage(szFileName, szError, this))
 		{
 			QMessageBox::critical(
-			    this,
-			    __tr2qs_ctx("Install Addon - KVIrc", "addon"),
-			    szError,
-			    QMessageBox::Ok,
-			    QMessageBox::NoButton,
-			    QMessageBox::NoButton);
+				this,
+				__tr2qs_ctx("Install Addon - KVIrc", "addon"),
+				szError,
+				QMessageBox::Ok,
+				QMessageBox::NoButton,
+				QMessageBox::NoButton);
 			return;
 		}
 	}
@@ -335,12 +335,12 @@ void AddonManagementDialog::installScript()
 		qDebug("Entered sanity check");
 		AddonFunctions::notAValidAddonPackage(szError);
 		QMessageBox::critical(
-		    this,
-		    __tr2qs_ctx("Install Addon - KVIrc", "addon"),
-		    szError,
-		    QMessageBox::Ok,
-		    QMessageBox::NoButton,
-		    QMessageBox::NoButton);
+			this,
+			__tr2qs_ctx("Install Addon - KVIrc", "addon"),
+			szError,
+			QMessageBox::Ok,
+			QMessageBox::NoButton,
+			QMessageBox::NoButton);
 	}
 
 	fillListView();

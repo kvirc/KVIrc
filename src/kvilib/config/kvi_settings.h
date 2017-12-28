@@ -43,11 +43,11 @@
  * \def KVILIB_API_TYPEDEF This prefix before a typedef enables the export of its symbol outside kvilib; needed for win32/visual studio, win32/mingw
  */
 
-/**
- * \def KVIRC_API This prefix before a class name or function enables the export of its symbols outside kvirc; needed for win32/visual studio, win32/mingw, linux/gcc.
- * \def KVIRC_API_TYPEDEF This prefix before a typedef enables the export of its symbol outside kvirc; needed for win32/visual studio, win32/mingw
- */
-// note: MINGW is a cmake-set variable
+ /**
+  * \def KVIRC_API This prefix before a class name or function enables the export of its symbols outside kvirc; needed for win32/visual studio, win32/mingw, linux/gcc.
+  * \def KVIRC_API_TYPEDEF This prefix before a typedef enables the export of its symbol outside kvirc; needed for win32/visual studio, win32/mingw
+  */
+  // note: MINGW is a cmake-set variable
 #ifdef MINGW
 
 /**
@@ -71,7 +71,7 @@
 #define KVIRC_API_TYPEDEF __declspec(dllimport)
 #endif
 
-// note: unofficial cmake ports defines OS2
+	 // note: unofficial cmake ports defines OS2
 #elif defined(OS2)
 
 // os2 ports still uses mingw/gcc
@@ -139,15 +139,15 @@
 
 #endif
 
-/**
-* \def KVI_VERSION Defines the current KVIrc version
-* \def KVIRC_VERSION_BRANCH Defines the KVIrc version of the current branch
-* \def KVI_RELEASE_NAME Defines the codename for the current KVIrc release
-* \def _GNU_SOURCE Enables _GNU_SOURCE features
-* \def KVI_PTR2MEMBER Cross-platform macro that returns a member from its pointer
-* \def KVI_DEPRECATED Prefix for deprecated objects inside KVIrc code (currently unused)
-* \def BIG_ENDIAN_MACHINE_BYTE_ORDER If defined, the current target processor is big endian, little endian otherwise
-*/
+		/**
+		* \def KVI_VERSION Defines the current KVIrc version
+		* \def KVIRC_VERSION_BRANCH Defines the KVIrc version of the current branch
+		* \def KVI_RELEASE_NAME Defines the codename for the current KVIrc release
+		* \def _GNU_SOURCE Enables _GNU_SOURCE features
+		* \def KVI_PTR2MEMBER Cross-platform macro that returns a member from its pointer
+		* \def KVI_DEPRECATED Prefix for deprecated objects inside KVIrc code (currently unused)
+		* \def BIG_ENDIAN_MACHINE_BYTE_ORDER If defined, the current target processor is big endian, little endian otherwise
+		*/
 
 #define KVI_VERSION KVIRC_VERSION_RELEASE
 
@@ -159,7 +159,7 @@
 
 #define KVI_RELEASE_NAME KVIRC_VERSION_CODENAME
 
-// We want _GNU_SOURCE features
+		// We want _GNU_SOURCE features
 #ifndef _GNU_SOURCE
 #define _GNU_SOURCE
 #endif

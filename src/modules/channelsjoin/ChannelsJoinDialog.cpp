@@ -55,7 +55,7 @@ extern QRect g_rectChannelsJoinGeometry;
 extern KVIRC_API KviRegisteredChannelDataBase * g_pRegisteredChannelDataBase;
 
 ChannelsJoinDialog::ChannelsJoinDialog(const char * name)
-    : QDialog(g_pMainWindow)
+	: QDialog(g_pMainWindow)
 {
 	setObjectName(name);
 	setWindowTitle(__tr2qs("Join Channels - KVIrc"));
@@ -350,33 +350,33 @@ void ChannelsJoinDialog::deleteClicked()
 	QString szChan = it->text(0);
 	switch(it->type())
 	{
-		case RegisteredChannelItem:
+	case RegisteredChannelItem:
+	{
+		KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan, QString("*"));
+		if(ch)
+			g_pRegisteredChannelDataBase->remove(ch);
+		delete it;
+		break;
+	}
+	case RecentChannelItem:
+	{
+		KviPointerHashTable<QString, QStringList> * pDict = g_pApp->recentChannels();
+		if(!pDict)
+			return;
+		for(QStringList * pChans = pDict->first(); pChans; pChans = pDict->next())
 		{
-			KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan, QString("*"));
-			if(ch)
-				g_pRegisteredChannelDataBase->remove(ch);
-			delete it;
-			break;
-		}
-		case RecentChannelItem:
-		{
-			KviPointerHashTable<QString, QStringList> * pDict = g_pApp->recentChannels();
-			if(!pDict)
-				return;
-			for(QStringList * pChans = pDict->first(); pChans; pChans = pDict->next())
+			for(QStringList::Iterator item = pChans->begin(); item != pChans->end(); ++item)
 			{
-				for(QStringList::Iterator item = pChans->begin(); item != pChans->end(); ++item)
+				if(*item == szChan)
 				{
-					if(*item == szChan)
-					{
-						pChans->removeAll(szChan);
-						delete it;
-						return;
-					}
+					pChans->removeAll(szChan);
+					delete it;
+					return;
 				}
 			}
-			break;
 		}
+		break;
+	}
 	}
 }
 

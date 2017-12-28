@@ -137,12 +137,12 @@ public:
 	// ONLY pCaller can be zero here!
 	// please use one of the wrappers, if possible
 	bool callFunction(
-	    KviKvsObject * pCaller,          // calling object, can be zero (used for the "internal" access list verification)
-	    const QString & fncName,         // name of the function to call
-	    const QString & classOverride,   // eventual class override for the function call, may be QString()
-	    KviKvsRunTimeContext * pContext, // calling runtime context (you'll have problems with instantiating this... :P )
-	    KviKvsVariant * pRetVal,         // the return value
-	    KviKvsVariantList * pParams);    // the parameters for the call
+		KviKvsObject * pCaller,          // calling object, can be zero (used for the "internal" access list verification)
+		const QString & fncName,         // name of the function to call
+		const QString & classOverride,   // eventual class override for the function call, may be QString()
+		KviKvsRunTimeContext * pContext, // calling runtime context (you'll have problems with instantiating this... :P )
+		KviKvsVariant * pRetVal,         // the return value
+		KviKvsVariantList * pParams);    // the parameters for the call
 	// a nice and simple wrapper: it accepts a parameter list only (eventually 0)
 	bool callFunction(KviKvsObject * pCaller, const QString & fncName, KviKvsVariantList * pParams = 0);
 	// this one gets a non null ret val too
@@ -179,7 +179,7 @@ protected:
 	bool function_property(KviKvsObjectFunctionCall * c);
 	bool function_setProperty(KviKvsObjectFunctionCall * c);
 	bool function_listProperties(KviKvsObjectFunctionCall * c);
-protected slots:
+	protected slots:
 	void delayedDie();
 	void objectDestroyed();
 

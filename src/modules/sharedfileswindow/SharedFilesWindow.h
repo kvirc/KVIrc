@@ -69,7 +69,7 @@ public:
 
 public:
 	KviSharedFile * getResult() const;
-protected slots:
+	protected slots:
 	void okClicked();
 	void browse();
 };
@@ -100,7 +100,7 @@ protected:
 
 public:
 	QSize sizeHint() const override;
-protected slots:
+	protected slots:
 	void fillFileView();
 	void sharedFileAdded(KviSharedFile * f);
 	void sharedFileRemoved(KviSharedFile * f);

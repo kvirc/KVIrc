@@ -32,29 +32,29 @@
 #include "KviLocale.h"
 
 MP_IMPLEMENT_DESCRIPTOR(
-    KviXmmsInterface,
-    "xmms",
-    __tr2qs_ctx(
-        "An interface for the UNIX XMMS media player.\n"
-        "Download it from http://legacy.xmms2.org\n",
-        "mediaplayer"))
+	KviXmmsInterface,
+	"xmms",
+	__tr2qs_ctx(
+		"An interface for the UNIX XMMS media player.\n"
+		"Download it from http://legacy.xmms2.org\n",
+		"mediaplayer"))
 
-MP_IMPLEMENT_DESCRIPTOR(
-    KviAudaciousClassicInterface,
-    "audacious classic",
-    __tr2qs_ctx(
-        "An interface for the UNIX Audacious media player.\n"
-        "Download it from http://audacious-media-player.org\n",
-        "mediaplayer"))
+	MP_IMPLEMENT_DESCRIPTOR(
+		KviAudaciousClassicInterface,
+		"audacious classic",
+		__tr2qs_ctx(
+			"An interface for the UNIX Audacious media player.\n"
+			"Download it from http://audacious-media-player.org\n",
+			"mediaplayer"))
 
-static const char * xmms_lib_names[] = {
-	"libxmms.so",
-	"libxmms.so.1",
-	"/usr/lib/libxmms.so",
-	"/usr/lib/libxmms.so.1",
-	"/usr/local/lib/libxmms.so",
-	"/usr/local/lib/libxmms.so.1",
-	nullptr
+	static const char * xmms_lib_names[] = {
+		"libxmms.so",
+		"libxmms.so.1",
+		"/usr/lib/libxmms.so",
+		"/usr/lib/libxmms.so.1",
+		"/usr/local/lib/libxmms.so",
+		"/usr/local/lib/libxmms.so.1",
+		nullptr
 };
 
 static const char * audacious_lib_names[] = {
@@ -68,7 +68,7 @@ static const char * audacious_lib_names[] = {
 };
 
 KviXmmsInterface::KviXmmsInterface()
-    : MpInterface()
+	: MpInterface()
 {
 	m_pPlayerLibrary = nullptr;
 	m_szPlayerLibraryName = "libxmms.so";
@@ -86,14 +86,14 @@ KviXmmsInterface::~KviXmmsInterface()
 }
 
 KviAudaciousClassicInterface::KviAudaciousClassicInterface()
-    : KviXmmsInterface()
+	: KviXmmsInterface()
 {
 	m_szPlayerLibraryName = "libaudacious.so";
 	m_pLibraryPaths = audacious_lib_names;
 }
 
 KviAudaciousClassicInterface::~KviAudaciousClassicInterface()
-    = default;
+= default;
 
 bool KviXmmsInterface::loadPlayerLibrary()
 {
@@ -181,7 +181,7 @@ bool KviXmmsInterface::quit()
 
 bool KviXmmsInterface::jumpTo(kvs_int_t & iPos)
 {
-	void (*sym)(int, int) = (void (*)(int, int))lookupSymbol("xmms_remote_jump_to_time");
+	void(*sym)(int, int) = (void(*)(int, int))lookupSymbol("xmms_remote_jump_to_time");
 	if(!sym)
 		return false;
 	sym(0, iPos);
@@ -190,7 +190,7 @@ bool KviXmmsInterface::jumpTo(kvs_int_t & iPos)
 
 bool KviXmmsInterface::setVol(kvs_int_t & iVol)
 {
-	void (*sym)(int, int) = (void (*)(int, int))lookupSymbol("xmms_remote_set_main_volume");
+	void(*sym)(int, int) = (void(*)(int, int))lookupSymbol("xmms_remote_set_main_volume");
 	if(!sym)
 		return false;
 	sym(0, 100 * iVol / 255);
@@ -199,7 +199,7 @@ bool KviXmmsInterface::setVol(kvs_int_t & iVol)
 
 int KviXmmsInterface::getVol()
 {
-	int (*sym)(int) = (int (*)(int))lookupSymbol("xmms_remote_get_main_volume");
+	int(*sym)(int) = (int(*)(int))lookupSymbol("xmms_remote_get_main_volume");
 	if(!sym)
 		return -1;
 	int iVol = sym(0);
@@ -208,7 +208,7 @@ int KviXmmsInterface::getVol()
 
 bool KviXmmsInterface::getRepeat()
 {
-	bool (*sym)(int) = (bool (*)(int))lookupSymbol("xmms_remote_is_repeat");
+	bool(*sym)(int) = (bool(*)(int))lookupSymbol("xmms_remote_is_repeat");
 	if(!sym)
 		return false;
 	bool ret = sym(0);
@@ -217,13 +217,13 @@ bool KviXmmsInterface::getRepeat()
 
 bool KviXmmsInterface::setRepeat(bool & bVal)
 {
-	bool (*sym1)(int) = (bool (*)(int))lookupSymbol("xmms_remote_is_repeat");
+	bool(*sym1)(int) = (bool(*)(int))lookupSymbol("xmms_remote_is_repeat");
 	if(!sym1)
 		return false;
 	bool bNow = sym1(0);
 	if(bNow != bVal)
 	{
-		void (*sym2)(int) = (void (*)(int))lookupSymbol("xmms_remote_toggle_repeat");
+		void(*sym2)(int) = (void(*)(int))lookupSymbol("xmms_remote_toggle_repeat");
 		if(!sym2)
 			return false;
 		sym2(0);
@@ -233,7 +233,7 @@ bool KviXmmsInterface::setRepeat(bool & bVal)
 
 bool KviXmmsInterface::getShuffle()
 {
-	bool (*sym)(int) = (bool (*)(int))lookupSymbol("xmms_remote_is_shuffle");
+	bool(*sym)(int) = (bool(*)(int))lookupSymbol("xmms_remote_is_shuffle");
 	if(!sym)
 		return false;
 	bool ret = sym(0);
@@ -242,13 +242,13 @@ bool KviXmmsInterface::getShuffle()
 
 bool KviXmmsInterface::setShuffle(bool & bVal)
 {
-	bool (*sym1)(int) = (bool (*)(int))lookupSymbol("xmms_remote_is_shuffle");
+	bool(*sym1)(int) = (bool(*)(int))lookupSymbol("xmms_remote_is_shuffle");
 	if(!sym1)
 		return false;
 	bool bNow = sym1(0);
 	if(bNow != bVal)
 	{
-		void (*sym2)(int) = (void (*)(int))lookupSymbol("xmms_remote_toggle_shuffle");
+		void(*sym2)(int) = (void(*)(int))lookupSymbol("xmms_remote_toggle_shuffle");
 		if(!sym2)
 			return false;
 		sym2(0);
@@ -258,12 +258,12 @@ bool KviXmmsInterface::setShuffle(bool & bVal)
 
 MpInterface::PlayerStatus KviXmmsInterface::status()
 {
-	bool (*sym1)(int) = (bool (*)(int))lookupSymbol("xmms_remote_is_paused");
+	bool(*sym1)(int) = (bool(*)(int))lookupSymbol("xmms_remote_is_paused");
 	if(sym1)
 	{
 		if(sym1(0))
 			return MpInterface::Paused;
-		bool (*sym2)(int) = (bool (*)(int))lookupSymbol("xmms_remote_is_playing");
+		bool(*sym2)(int) = (bool(*)(int))lookupSymbol("xmms_remote_is_playing");
 		if(sym2)
 		{
 			if(sym2(0))
@@ -278,20 +278,20 @@ MpInterface::PlayerStatus KviXmmsInterface::status()
 
 bool KviXmmsInterface::playMrl(const QString & mrl)
 {
-	void (*sym)(int, char *) = (void (*)(int, char *))lookupSymbol("xmms_remote_playlist_add_url_string");
+	void(*sym)(int, char *) = (void(*)(int, char *))lookupSymbol("xmms_remote_playlist_add_url_string");
 	QByteArray tmp = mrl.toLocal8Bit();
 	if(!tmp.isEmpty())
 	{
 		if(sym)
 		{
 			sym(0, tmp.data());
-			int (*sym1)(int) = (int (*)(int))lookupSymbol("xmms_remote_get_playlist_length");
+			int(*sym1)(int) = (int(*)(int))lookupSymbol("xmms_remote_get_playlist_length");
 			if(sym1)
 			{
 				int len = sym1(0);
 				if(len > 0)
 				{
-					void (*sym2)(int, int) = (void (*)(int, int))lookupSymbol("xmms_remote_set_playlist_pos");
+					void(*sym2)(int, int) = (void(*)(int, int))lookupSymbol("xmms_remote_set_playlist_pos");
 					if(sym2)
 					{
 						sym2(0, len - 1);
@@ -313,7 +313,7 @@ bool KviXmmsInterface::playMrl(const QString & mrl)
 
 QString KviXmmsInterface::nowPlaying()
 {
-	int (*sym)(int) = (int (*)(int))lookupSymbol("xmms_remote_get_playlist_pos");
+	int(*sym)(int) = (int(*)(int))lookupSymbol("xmms_remote_get_playlist_pos");
 	if(!sym)
 		return QString();
 	int pos = sym(0);
@@ -325,7 +325,7 @@ QString KviXmmsInterface::nowPlaying()
 
 QString KviXmmsInterface::mrl()
 {
-	int (*sym)(int) = (int (*)(int))lookupSymbol("xmms_remote_get_playlist_pos");
+	int(*sym)(int) = (int(*)(int))lookupSymbol("xmms_remote_get_playlist_pos");
 	if(!sym)
 		return QString();
 	int pos = sym(0);
@@ -341,11 +341,11 @@ QString KviXmmsInterface::mrl()
 
 int KviXmmsInterface::position()
 {
-	int (*sym)(int) = (int (*)(int))lookupSymbol("xmms_remote_get_playlist_pos");
+	int(*sym)(int) = (int(*)(int))lookupSymbol("xmms_remote_get_playlist_pos");
 	if(!sym)
 		return -1;
 	int pos = sym(0);
-	int (*sym2)(int, int) = (int (*)(int, int))lookupSymbol("xmms_remote_get_output_time");
+	int(*sym2)(int, int) = (int(*)(int, int))lookupSymbol("xmms_remote_get_output_time");
 	if(!sym2)
 		return -1;
 	return sym2(0, pos);
@@ -353,11 +353,11 @@ int KviXmmsInterface::position()
 
 int KviXmmsInterface::length()
 {
-	int (*sym)(int) = (int (*)(int))lookupSymbol("xmms_remote_get_playlist_pos");
+	int(*sym)(int) = (int(*)(int))lookupSymbol("xmms_remote_get_playlist_pos");
 	if(!sym)
 		return -1;
 	int pos = sym(0);
-	int (*sym2)(int, int) = (int (*)(int, int))lookupSymbol("xmms_remote_get_playlist_time");
+	int(*sym2)(int, int) = (int(*)(int, int))lookupSymbol("xmms_remote_get_playlist_time");
 	if(!sym2)
 		return -1;
 	return sym2(0, pos);
@@ -365,7 +365,7 @@ int KviXmmsInterface::length()
 
 int KviXmmsInterface::getPlayListPos()
 {
-	int (*sym)(int) = (int (*)(int))lookupSymbol("xmms_remote_get_playlist_pos");
+	int(*sym)(int) = (int(*)(int))lookupSymbol("xmms_remote_get_playlist_pos");
 	if(!sym)
 		return -1;
 	return sym(0);

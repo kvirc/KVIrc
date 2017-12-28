@@ -185,19 +185,19 @@ static HWND find_winamp(KviWinampInterface * i)
 }
 
 MP_IMPLEMENT_DESCRIPTOR(
-    KviWinampInterface,
-    "winamp",
-    __tr2qs_ctx(
-        "An interface for the Winamp media player.\n"
-        "You can download it from http://www.winamp.com.\n"
-        "To use all the features of this interface you must "
-        "copy the gen_kvirc.dll plugin found in the KVIrc "
-        "distribution directory to the Winamp plugins folder "
-        "and restart winamp.",
-        "mediaplayer"))
+	KviWinampInterface,
+	"winamp",
+	__tr2qs_ctx(
+		"An interface for the Winamp media player.\n"
+		"You can download it from http://www.winamp.com.\n"
+		"To use all the features of this interface you must "
+		"copy the gen_kvirc.dll plugin found in the KVIrc "
+		"distribution directory to the Winamp plugins folder "
+		"and restart winamp.",
+		"mediaplayer"))
 
-KviWinampInterface::KviWinampInterface()
-    : MpInterface()
+	KviWinampInterface::KviWinampInterface()
+	: MpInterface()
 {
 }
 
@@ -286,18 +286,18 @@ MpInterface::PlayerStatus KviWinampInterface::status()
 		ret = SendMessage(hWinamp, WM_USER, 0, IPC_ISPLAYING);
 	switch(ret)
 	{
-		case 0:
-			return MpInterface::Stopped;
-			break;
-		case 3:
-			return MpInterface::Paused;
-			break;
-		case 1:
-			return MpInterface::Playing;
-			break;
-		default:
-			return MpInterface::Unknown;
-			break;
+	case 0:
+		return MpInterface::Stopped;
+		break;
+	case 3:
+		return MpInterface::Paused;
+		break;
+	case 1:
+		return MpInterface::Playing;
+		break;
+	default:
+		return MpInterface::Unknown;
+		break;
 	}
 	return MpInterface::Unknown;
 }

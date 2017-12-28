@@ -45,8 +45,8 @@ class DccMarshalOutputContext
 	friend class DccMarshal;
 
 public:
-	DccMarshalOutputContext(){};
-	virtual ~DccMarshalOutputContext(){};
+	DccMarshalOutputContext() {};
+	virtual ~DccMarshalOutputContext() {};
 
 protected:
 	virtual KviWindow * dccMarshalOutputWindow() = 0;
@@ -101,7 +101,7 @@ private:
 	//#ifdef COMPILE_SSL_SUPPORT
 	//	bool trySSLCertificate();
 	//#endif
-private slots:
+	private slots:
 	void doSSLHandshake(int);
 	//	void doListenSSLHandshake();
 	void snActivated(int);

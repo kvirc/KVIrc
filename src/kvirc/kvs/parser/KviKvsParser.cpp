@@ -111,10 +111,10 @@ void KviKvsParser::errorBadChar(const QChar * pLocation, char cExpected, const c
 {
 	if(pLocation->unicode())
 		error(pLocation, __tr2qs_ctx("Found character '%q' (Unicode 0x%x) where '%c' was expected: see \"/help %s\" for the command syntax", "kvs"),
-		    pLocation, pLocation->unicode(), cExpected, szCommandName);
+			pLocation, pLocation->unicode(), cExpected, szCommandName);
 	else
 		error(pLocation, __tr2qs_ctx("Found end of input where character '%c' was expected: see \"/help %s\" for the command syntax", "kvs"),
-		    cExpected, szCommandName);
+			cExpected, szCommandName);
 }
 
 void KviKvsParser::error(const QChar * pLocation, QString szMsgFmt, ...)
@@ -528,7 +528,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		Multi line example:
 		[example]
 			{
-			    [cmd]echo[/cmd] First command
+				[cmd]echo[/cmd] First command
 				[cmd]echo[/cmd] Second command
 			}
 			[cmd]echo[/cmd] Third command
@@ -1301,14 +1301,14 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			 |	+- pic2.png
 			 |	\- ...
 			 +- [b]help[/b]
-			  	+- [b]en[/b]
-			  	|   +- index.html
-			  	|   +- hints.html
-			  	|   \- ...
-			  	+- [b]it[/b]
-			  	    +- index.html
-			  	    +- hints.html
-			  	    \- ...
+				+- [b]en[/b]
+				|   +- index.html
+				|   +- hints.html
+				|   \- ...
+				+- [b]it[/b]
+					+- index.html
+					+- hints.html
+					\- ...
 		[/pre]
 		The entries in [b]bold[/b] are directories while the other are files.
 		Please note that you need all of these directories or the routine that
@@ -2128,40 +2128,40 @@ bool KviKvsParser::skipSpacesAndNewlines()
 
 	switch(KVSP_curCharUnicode)
 	{
-		case '\\':
+	case '\\':
+		KVSP_skipChar;
+		if(KVSP_curCharUnicode == '\n')
+		{
+			KVSP_skipChar;
+			return skipSpacesAndNewlines();
+		}
+		else if(KVSP_curCharUnicode == '\r')
+		{
 			KVSP_skipChar;
 			if(KVSP_curCharUnicode == '\n')
 			{
 				KVSP_skipChar;
 				return skipSpacesAndNewlines();
 			}
-			else if(KVSP_curCharUnicode == '\r')
-			{
-				KVSP_skipChar;
-				if(KVSP_curCharUnicode == '\n')
-				{
-					KVSP_skipChar;
-					return skipSpacesAndNewlines();
-				}
-				else
-				{
-					KVSP_backChar;
-					KVSP_backChar;
-				}
-			}
 			else
 			{
 				KVSP_backChar;
+				KVSP_backChar;
 			}
-			break;
-		case '#':
-		case '/':
-			// we allow comments too!
-			(void)parseComment(); // this will return 0 anyway (and never trigger an error here)
-			if(error())
-				return false;
-			return skipSpacesAndNewlines();
-			break;
+		}
+		else
+		{
+			KVSP_backChar;
+		}
+		break;
+	case '#':
+	case '/':
+		// we allow comments too!
+		(void)parseComment(); // this will return 0 anyway (and never trigger an error here)
+		if(error())
+			return false;
+		return skipSpacesAndNewlines();
+		break;
 	}
 	return true;
 }
@@ -2540,41 +2540,41 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseInstruction()
 {
 	switch(KVSP_curCharUnicode)
 	{
-		case '#':
-		case '/':
-			(void)parseComment(); // this will return 0 anyway
+	case '#':
+	case '/':
+		(void)parseComment(); // this will return 0 anyway
+		return nullptr;
+		break;
+	case 0: // empty instruction
+		return nullptr;
+		break;
+	case '\n':
+	case '\r':
+	case ';': // empty instruction
+		KVSP_skipChar;
+		return nullptr;
+		break;
+	case '{': // command block
+		return parseInstructionBlock();
+		break;
+	case '$':
+	case '%':
+	case '@':
+		return parseVoidFunctionCallOrOperation();
+		break;
+	default:
+		if(KVSP_curCharIsLetter || (KVSP_curCharUnicode == '_'))
+		{
+			// must be a command
+			return parseCommand();
+		}
+		else
+		{
+			// what the heck is this ?
+			error(KVSP_curCharPointer, __tr2qs_ctx("Found character '%q' (Unicode %x) where an instruction was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
 			return nullptr;
-			break;
-		case 0: // empty instruction
-			return nullptr;
-			break;
-		case '\n':
-		case '\r':
-		case ';': // empty instruction
-			KVSP_skipChar;
-			return nullptr;
-			break;
-		case '{': // command block
-			return parseInstructionBlock();
-			break;
-		case '$':
-		case '%':
-		case '@':
-			return parseVoidFunctionCallOrOperation();
-			break;
-		default:
-			if(KVSP_curCharIsLetter || (KVSP_curCharUnicode == '_'))
-			{
-				// must be a command
-				return parseCommand();
-			}
-			else
-			{
-				// what the heck is this ?
-				error(KVSP_curCharPointer, __tr2qs_ctx("Found character '%q' (Unicode %x) where an instruction was expected", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
-				return nullptr;
-			}
-			break;
+		}
+		break;
 	}
 	// never here
 	KVSP_ASSERT(false);
@@ -2601,43 +2601,43 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseInstructionBlock()
 
 		switch(KVSP_curCharUnicode)
 		{
-			case 0:
-				delete b;
-				warning(pBegin, __tr2qs_ctx("Unterminated instruction block", "kvs"));
-				error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in instruction block (missing closing brace)", "kvs"));
-				return nullptr;
-				break;
-			case '}':
-				KVSP_skipChar;
-				if(b->instructionCount() <= 1)
+		case 0:
+			delete b;
+			warning(pBegin, __tr2qs_ctx("Unterminated instruction block", "kvs"));
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in instruction block (missing closing brace)", "kvs"));
+			return nullptr;
+			break;
+		case '}':
+			KVSP_skipChar;
+			if(b->instructionCount() <= 1)
+			{
+				if(b->instructionCount() < 1)
 				{
-					if(b->instructionCount() < 1)
-					{
-						delete b;
-						return nullptr; // just an empty block
-					}
-					// a single instruction
-					KviKvsTreeNodeInstruction * i = b->releaseFirst();
 					delete b;
-					return i;
+					return nullptr; // just an empty block
 				}
-				return b;
-				break;
-			default:
-				// instruction
-				KviKvsTreeNodeInstruction * i = parseInstruction();
-				if(i)
-					b->addInstruction(i);
-				else
+				// a single instruction
+				KviKvsTreeNodeInstruction * i = b->releaseFirst();
+				delete b;
+				return i;
+			}
+			return b;
+			break;
+		default:
+			// instruction
+			KviKvsTreeNodeInstruction * i = parseInstruction();
+			if(i)
+				b->addInstruction(i);
+			else
+			{
+				if(error())
 				{
-					if(error())
-					{
-						// ops...
-						delete b;
-						return nullptr;
-					} // else empty instruction
-				}
-				break;
+					// ops...
+					delete b;
+					return nullptr;
+				} // else empty instruction
+			}
+			break;
 		}
 	}
 	// never reached
@@ -2758,26 +2758,26 @@ KviKvsTreeNodeDataList * KviKvsParser::parseCommandParameterList()
 		skipSpaces();
 		switch(KVSP_curCharUnicode)
 		{
-			case 0:
-				return l;
-				break;
-			case '\r':
-			case '\n':
-			case ';':
-				KVSP_skipChar;
-				return l;
-				break;
-			default:
-				// anything else is a parameter
-				KviKvsTreeNodeData * p = parseCommandParameter();
-				if(!p)
-				{
-					// this is an error
-					delete l;
-					return nullptr;
-				}
-				l->addItem(p);
-				break;
+		case 0:
+			return l;
+			break;
+		case '\r':
+		case '\n':
+		case ';':
+			KVSP_skipChar;
+			return l;
+			break;
+		default:
+			// anything else is a parameter
+			KviKvsTreeNodeData * p = parseCommandParameter();
+			if(!p)
+			{
+				// this is an error
+				delete l;
+				return nullptr;
+			}
+			l->addItem(p);
+			break;
 		}
 	}
 
@@ -2798,17 +2798,17 @@ KviPointerList<QString> * KviKvsParser::parseCommaSeparatedParameterListNoTree()
 		skipSpaces();
 		switch(KVSP_curCharUnicode)
 		{
-			case 0:
-				error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in parameter list", "kvs"));
-				delete l;
-				return nullptr;
-				break;
-			case '\r':
-			case '\n':
-				error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of line in parameter list", "kvs"));
-				delete l;
-				return nullptr;
-				break;
+		case 0:
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in parameter list", "kvs"));
+			delete l;
+			return nullptr;
+			break;
+		case '\r':
+		case '\n':
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of line in parameter list", "kvs"));
+			delete l;
+			return nullptr;
+			break;
 			/*
 			case ',':
 				KVSP_skipChar;
@@ -2818,33 +2818,33 @@ KviPointerList<QString> * KviKvsParser::parseCommaSeparatedParameterListNoTree()
 				return l;
 			break;
 			*/
-			default:
+		default:
+		{
+			// anything else is a parameter
+			const QChar * pBegin = KVSP_curCharPointer;
+			KviKvsTreeNodeData * p = parseCommaSeparatedParameter();
+			if(!p)
 			{
-				// anything else is a parameter
-				const QChar * pBegin = KVSP_curCharPointer;
-				KviKvsTreeNodeData * p = parseCommaSeparatedParameter();
-				if(!p)
-				{
-					// this is an error
-					delete l;
-					return nullptr;
-				}
-				delete p;
-				QString * s = new QString(QString(pBegin, KVSP_curCharPointer - pBegin).trimmed());
-				l->append(s);
-
-				switch(KVSP_curCharUnicode)
-				{
-					case ',':
-						KVSP_skipChar;
-						break;
-					case ')':
-						KVSP_skipChar;
-						return l;
-						break;
-				}
+				// this is an error
+				delete l;
+				return nullptr;
 			}
-			break;
+			delete p;
+			QString * s = new QString(QString(pBegin, KVSP_curCharPointer - pBegin).trimmed());
+			l->append(s);
+
+			switch(KVSP_curCharUnicode)
+			{
+			case ',':
+				KVSP_skipChar;
+				break;
+			case ')':
+				KVSP_skipChar;
+				return l;
+				break;
+			}
+		}
+		break;
 		}
 	}
 
@@ -2864,17 +2864,17 @@ KviKvsTreeNodeDataList * KviKvsParser::parseCommaSeparatedParameterList()
 		skipSpaces();
 		switch(KVSP_curCharUnicode)
 		{
-			case 0:
-				error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in parameter list", "kvs"));
-				delete l;
-				return nullptr;
-				break;
-			case '\r':
-			case '\n':
-				error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of line in parameter list", "kvs"));
-				delete l;
-				return nullptr;
-				break;
+		case 0:
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in parameter list", "kvs"));
+			delete l;
+			return nullptr;
+			break;
+		case '\r':
+		case '\n':
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of line in parameter list", "kvs"));
+			delete l;
+			return nullptr;
+			break;
 			/*
 			case ',':
 				KVSP_skipChar;
@@ -2884,28 +2884,28 @@ KviKvsTreeNodeDataList * KviKvsParser::parseCommaSeparatedParameterList()
 				return l;
 			break;
 			*/
-			default:
-				// anything else is a parameter
-				KviKvsTreeNodeData * p = parseCommaSeparatedParameter();
-				if(!p)
-				{
-					// this is an error
-					delete l;
-					return nullptr;
-				}
-				l->addItem(p);
+		default:
+			// anything else is a parameter
+			KviKvsTreeNodeData * p = parseCommaSeparatedParameter();
+			if(!p)
+			{
+				// this is an error
+				delete l;
+				return nullptr;
+			}
+			l->addItem(p);
 
-				switch(KVSP_curCharUnicode)
-				{
-					case ',':
-						KVSP_skipChar;
-						break;
-					case ')':
-						KVSP_skipChar;
-						return l;
-						break;
-				}
+			switch(KVSP_curCharUnicode)
+			{
+			case ',':
+				KVSP_skipChar;
 				break;
+			case ')':
+				KVSP_skipChar;
+				return l;
+				break;
+			}
+			break;
 		}
 	}
 
@@ -2928,7 +2928,6 @@ KviKvsTreeNodeDataList * KviKvsParser::parseCommaSeparatedParameterList()
 		{                                                   \
 			switch(KVSP_curCharUnicode)                     \
 			{
-
 #define LITERAL_PARAM_PARSING_FUNCTION_WARN_NESTED_TERMINATOR                                                                                                                                                      \
 	if(!_OUTPUT_MUTE)                                                                                                                                                                                              \
 		warning(KVSP_curCharPointer, __tr2qs_ctx("Nested character %q corresponding to expected terminator, this might confuse me a bit: it is a good idea to enclose it in quotes", "kvs"), KVSP_curCharPointer); \
@@ -3035,8 +3034,8 @@ case ' ':
 case '\t':
 	LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
-	LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseStringLiteralParameter)
-	Q_UNUSED(pStart);
+		LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseStringLiteralParameter)
+		Q_UNUSED(pStart);
 	Q_UNUSED(iNestedTerminators);
 
 case 0:
@@ -3048,16 +3047,16 @@ case '\n':
 case '"':
 	LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
-	/*
-LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseArrayIndexLiteralParameter)
-			case '\t':
-			case ' ':
-			case ']':
-LITERAL_PARAM_PARSING_FUNCTION_END
-*/
+		/*
+	LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseArrayIndexLiteralParameter)
+				case '\t':
+				case ' ':
+				case ']':
+	LITERAL_PARAM_PARSING_FUNCTION_END
+	*/
 
-	LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseHashKeyLiteralParameter)
-	Q_UNUSED(pStart);
+		LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseHashKeyLiteralParameter)
+		Q_UNUSED(pStart);
 
 case '{':
 	LITERAL_PARAM_PARSING_FUNCTION_WARN_NESTED_TERMINATOR
@@ -3074,8 +3073,8 @@ case '\t':
 case ' ':
 	LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
-	LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseCommaSeparatedLiteralParameter)
-	Q_UNUSED(pStart);
+		LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseCommaSeparatedLiteralParameter)
+		Q_UNUSED(pStart);
 
 case '(':
 	LITERAL_PARAM_PARSING_FUNCTION_WARN_NESTED_TERMINATOR
@@ -3093,8 +3092,8 @@ case ' ':
 case '\t':
 	LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
-	LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseSingleLiteralParameterInParenthesis)
-	Q_UNUSED(pStart);
+		LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseSingleLiteralParameterInParenthesis)
+		Q_UNUSED(pStart);
 
 case '(':
 	LITERAL_PARAM_PARSING_FUNCTION_WARN_NESTED_TERMINATOR
@@ -3111,8 +3110,8 @@ case ' ':
 case '\t':
 	LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
-	LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseBindingOperationLiteralParameter)
-	Q_UNUSED(pStart);
+		LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseBindingOperationLiteralParameter)
+		Q_UNUSED(pStart);
 	Q_UNUSED(iNestedTerminators);
 
 case 0:
@@ -3125,113 +3124,8 @@ case '"':
 case '/':
 	LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
-	/*
-KviKvsTreeNodeData * KviKvsParser::parseArrayIndex()
-{
-	KviPointerList<KviKvsTreeNodeData> * l = new KviPointerList<KviKvsTreeNodeData>();
-	l->setAutoDelete(true);
-
-	const QChar * pBegin = KVSP_curCharPointer;
-
-	//KVSP_skipChar;
-
-	for(;;)
-	{
-		switch(KVSP_curCharUnicode)
-		{
-			case 0:
-				delete l;
-				warning(pBegin,__tr2qs_ctx("Unterminated array index","kvs"));
-				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in array index (missing ']' character?)","kvs"));
-				return 0;
-			break;
-			case '\n':
-				delete l;
-				warning(pBegin,__tr2qs_ctx("Unterminated array index","kvs"));
-				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of line in array index (missing ']' character or unescaped newline)","kvs"));
-				return 0;
-			break;
-			case ' ':
-			case '\t':
-				skipSpaces();
-				if(KVSP_curCharUnicode != ']')
-				{
-					delete l;
-					warning(pBegin,__tr2qs_ctx("Unterminated array index","kvs"));
-					switch(KVSP_curCharUnicode)
-					{
-						case 0:
-							error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in array index (missing ']' character?)","kvs"));
-						break;
-						case '\n':
-							error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of line in array index (missing ']' character or unescaped newline)","kvs"));
-						break;
-						default:
-							error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (Unicode %x) in array index: it should be already terminated","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
-						break;
-					}
-					return 0;
-				}
-				goto end_of_the_array_index;
-			break;
-			case '$':
-			case '%':
-			{
-				// this may be a data reference
-				KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
-				if(!p)
-				{
-					// this is an error
-					delete l;
-					return 0;
-				}
-				l->append(p);
-			}
-			break;
-			case ']':
-			{
-				// end of the array index
-				goto end_of_the_array_index;
-			}
-			break;
-			case '"':
-			{
-				// string (should we parse strings in array indexes anyway ?).. well "1"$count might be a valid one in the end
-				KviKvsTreeNodeData * p = parseStringParameter();
-				if(!p)
-				{
-					// error
-					delete l;
-					return 0;
-				}
-				l->append(p);
-			}
-			break;
-			default:
-			{
-				// anything else is a literal
-				l->append(parseArrayIndexLiteralParameter());
-			}
-			break;
-		}
-	}
-end_of_the_array_index:
-	if(l->count() > 1)
-	{
-		// complex parameter needed
-		return new KviKvsTreeNodeCompositeData(l);
-	} else {
-		// a single parameter in the list
-		l->setAutoDelete(false);
-		KviKvsTreeNodeData * p = l->first();
-		delete l;
-		return p;
-	}
-
-}
-*/
-
-	KviKvsTreeNodeData * KviKvsParser::parseHashKey()
+		/*
+	KviKvsTreeNodeData * KviKvsParser::parseArrayIndex()
 	{
 		KviPointerList<KviKvsTreeNodeData> * l = new KviPointerList<KviKvsTreeNodeData>();
 		l->setAutoDelete(true);
@@ -3246,33 +3140,41 @@ end_of_the_array_index:
 			{
 				case 0:
 					delete l;
-					warning(pBegin, __tr2qs_ctx("Unterminated hash key", "kvs"));
-					error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in hash key (missing '}' character?)", "kvs"));
-					return nullptr;
-					break;
-				case '\r':
+					warning(pBegin,__tr2qs_ctx("Unterminated array index","kvs"));
+					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in array index (missing ']' character?)","kvs"));
+					return 0;
+				break;
 				case '\n':
 					delete l;
-					warning(pBegin, __tr2qs_ctx("Unterminated hash key", "kvs"));
-					error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of line in hash key (missing '}' character or unescaped newline)", "kvs"));
-					return nullptr;
-					break;
+					warning(pBegin,__tr2qs_ctx("Unterminated array index","kvs"));
+					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of line in array index (missing ']' character or unescaped newline)","kvs"));
+					return 0;
+				break;
 				case ' ':
 				case '\t':
 					skipSpaces();
-					if(KVSP_curCharUnicode != '}')
+					if(KVSP_curCharUnicode != ']')
 					{
-						// separate by single spaces
-						l->append(new KviKvsTreeNodeConstantData(KVSP_curCharPointer, new KviKvsVariant(QString(" "))));
+						delete l;
+						warning(pBegin,__tr2qs_ctx("Unterminated array index","kvs"));
+						switch(KVSP_curCharUnicode)
+						{
+							case 0:
+								error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in array index (missing ']' character?)","kvs"));
+							break;
+							case '\n':
+								error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of line in array index (missing ']' character or unescaped newline)","kvs"));
+							break;
+							default:
+								error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (Unicode %x) in array index: it should be already terminated","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+							break;
+						}
+						return 0;
 					}
-					else
-					{
-						goto end_of_the_hash_key;
-					}
-					break;
+					goto end_of_the_array_index;
+				break;
 				case '$':
 				case '%':
-				case '@':
 				{
 					// this may be a data reference
 					KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
@@ -3280,26 +3182,26 @@ end_of_the_array_index:
 					{
 						// this is an error
 						delete l;
-						return nullptr;
+						return 0;
 					}
 					l->append(p);
 				}
 				break;
-				case '}':
+				case ']':
 				{
 					// end of the array index
-					goto end_of_the_hash_key;
+					goto end_of_the_array_index;
 				}
 				break;
 				case '"':
 				{
-					// string
+					// string (should we parse strings in array indexes anyway ?).. well "1"$count might be a valid one in the end
 					KviKvsTreeNodeData * p = parseStringParameter();
 					if(!p)
 					{
 						// error
 						delete l;
-						return nullptr;
+						return 0;
 					}
 					l->append(p);
 				}
@@ -3307,9 +3209,105 @@ end_of_the_array_index:
 				default:
 				{
 					// anything else is a literal
-					l->append(parseHashKeyLiteralParameter());
+					l->append(parseArrayIndexLiteralParameter());
 				}
 				break;
+			}
+		}
+	end_of_the_array_index:
+		if(l->count() > 1)
+		{
+			// complex parameter needed
+			return new KviKvsTreeNodeCompositeData(l);
+		} else {
+			// a single parameter in the list
+			l->setAutoDelete(false);
+			KviKvsTreeNodeData * p = l->first();
+			delete l;
+			return p;
+		}
+	}
+	*/
+
+		KviKvsTreeNodeData * KviKvsParser::parseHashKey()
+	{
+		KviPointerList<KviKvsTreeNodeData> * l = new KviPointerList<KviKvsTreeNodeData>();
+		l->setAutoDelete(true);
+
+		const QChar * pBegin = KVSP_curCharPointer;
+
+		//KVSP_skipChar;
+
+		for(;;)
+		{
+			switch(KVSP_curCharUnicode)
+			{
+			case 0:
+				delete l;
+				warning(pBegin, __tr2qs_ctx("Unterminated hash key", "kvs"));
+				error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in hash key (missing '}' character?)", "kvs"));
+				return nullptr;
+				break;
+			case '\r':
+			case '\n':
+				delete l;
+				warning(pBegin, __tr2qs_ctx("Unterminated hash key", "kvs"));
+				error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of line in hash key (missing '}' character or unescaped newline)", "kvs"));
+				return nullptr;
+				break;
+			case ' ':
+			case '\t':
+				skipSpaces();
+				if(KVSP_curCharUnicode != '}')
+				{
+					// separate by single spaces
+					l->append(new KviKvsTreeNodeConstantData(KVSP_curCharPointer, new KviKvsVariant(QString(" "))));
+				}
+				else
+				{
+					goto end_of_the_hash_key;
+				}
+				break;
+			case '$':
+			case '%':
+			case '@':
+			{
+				// this may be a data reference
+				KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
+				if(!p)
+				{
+					// this is an error
+					delete l;
+					return nullptr;
+				}
+				l->append(p);
+			}
+			break;
+			case '}':
+			{
+				// end of the array index
+				goto end_of_the_hash_key;
+			}
+			break;
+			case '"':
+			{
+				// string
+				KviKvsTreeNodeData * p = parseStringParameter();
+				if(!p)
+				{
+					// error
+					delete l;
+					return nullptr;
+				}
+				l->append(p);
+			}
+			break;
+			default:
+			{
+				// anything else is a literal
+				l->append(parseHashKeyLiteralParameter());
+			}
+			break;
 			}
 		}
 	end_of_the_hash_key:
@@ -3352,61 +3350,61 @@ PARENTHESIS_PARAMETER_PARSING_FUNCTION_END()
 		{
 			switch(KVSP_curCharUnicode)
 			{
-				case 0:
-				case ',':
-				case ')':
-				case '\r':
-				case '\n':
-					// not a part of a parameter
+			case 0:
+			case ',':
+			case ')':
+			case '\r':
+			case '\n':
+				// not a part of a parameter
+				goto end_of_function_parameter;
+				break;
+			case '$':
+			case '%':
+			case '@':
+			{
+				// this may be a data reference
+				KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
+				if(!p)
+				{
+					// this is an error
+					delete l;
+					return nullptr;
+				}
+				l->append(p);
+			}
+			break;
+			case ' ':
+			case '\t':
+				skipSpaces();
+				if((KVSP_curCharUnicode != ')') && (KVSP_curCharUnicode != ','))
+				{
+					// separate by single spaces
+					l->append(new KviKvsTreeNodeConstantData(KVSP_curCharPointer, new KviKvsVariant(QString(" "))));
+				}
+				else
+				{
 					goto end_of_function_parameter;
-					break;
-				case '$':
-				case '%':
-				case '@':
-				{
-					// this may be a data reference
-					KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
-					if(!p)
-					{
-						// this is an error
-						delete l;
-						return nullptr;
-					}
-					l->append(p);
 				}
 				break;
-				case ' ':
-				case '\t':
-					skipSpaces();
-					if((KVSP_curCharUnicode != ')') && (KVSP_curCharUnicode != ','))
-					{
-						// separate by single spaces
-						l->append(new KviKvsTreeNodeConstantData(KVSP_curCharPointer, new KviKvsVariant(QString(" "))));
-					}
-					else
-					{
-						goto end_of_function_parameter;
-					}
-					break;
-				case '"':
+			case '"':
+			{
+				// this is a string
+				KviKvsTreeNodeData * p = parseStringParameter();
+				if(!p)
 				{
-					// this is a string
-					KviKvsTreeNodeData * p = parseStringParameter();
-					if(!p)
-					{
-						// this is an error
-						delete l;
-						return nullptr;
-					}
-					l->append(p);
+					// this is an error
+					delete l;
+					return nullptr;
 				}
-				break;
-				default:
-				{
-					// anything else is a literal
-					l->append(parseCommaSeparatedLiteralParameter());
-				}
-				break;
+				l->append(p);
+			}
+			break;
+			default:
+			{
+				// anything else is a literal
+				l->append(parseCommaSeparatedLiteralParameter());
+			}
+			break;
 			}
 		}
 	end_of_function_parameter:
@@ -3443,64 +3441,64 @@ PARENTHESIS_PARAMETER_PARSING_FUNCTION_END()
 		{
 			switch(KVSP_curCharUnicode)
 			{
-				case ')':
-					// not a part of a parameter
-					KVSP_skipChar;
+			case ')':
+				// not a part of a parameter
+				KVSP_skipChar;
+				goto end_of_function_parameter;
+				break;
+			case 0:
+			case '\r':
+			case '\n':
+				// not a part of a parameter
+				goto end_of_function_parameter;
+				break;
+			case '$':
+			case '%':
+			case '@':
+			{
+				// this may be a data reference
+				KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
+				if(!p)
+				{
+					// this is an error
+					delete l;
+					return nullptr;
+				}
+				l->append(p);
+			}
+			break;
+			case ' ':
+			case '\t':
+				skipSpaces();
+				if((KVSP_curCharUnicode != ')') && (KVSP_curCharUnicode != ','))
+				{
+					// separate by single spaces
+					l->append(new KviKvsTreeNodeConstantData(KVSP_curCharPointer, new KviKvsVariant(QString(" "))));
+				}
+				else
+				{
 					goto end_of_function_parameter;
-					break;
-				case 0:
-				case '\r':
-				case '\n':
-					// not a part of a parameter
-					goto end_of_function_parameter;
-					break;
-				case '$':
-				case '%':
-				case '@':
-				{
-					// this may be a data reference
-					KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
-					if(!p)
-					{
-						// this is an error
-						delete l;
-						return nullptr;
-					}
-					l->append(p);
 				}
 				break;
-				case ' ':
-				case '\t':
-					skipSpaces();
-					if((KVSP_curCharUnicode != ')') && (KVSP_curCharUnicode != ','))
-					{
-						// separate by single spaces
-						l->append(new KviKvsTreeNodeConstantData(KVSP_curCharPointer, new KviKvsVariant(QString(" "))));
-					}
-					else
-					{
-						goto end_of_function_parameter;
-					}
-					break;
-				case '"':
+			case '"':
+			{
+				// this is a string
+				KviKvsTreeNodeData * p = parseStringParameter();
+				if(!p)
 				{
-					// this is a string
-					KviKvsTreeNodeData * p = parseStringParameter();
-					if(!p)
-					{
-						// this is an error
-						delete l;
-						return nullptr;
-					}
-					l->append(p);
+					// this is an error
+					delete l;
+					return nullptr;
 				}
-				break;
-				default:
-				{
-					// anything else is a literal
-					l->append(parseSingleLiteralParameterInParenthesis());
-				}
-				break;
+				l->append(p);
+			}
+			break;
+			default:
+			{
+				// anything else is a literal
+				l->append(parseSingleLiteralParameterInParenthesis());
+			}
+			break;
 			}
 		}
 	end_of_function_parameter:
@@ -3540,47 +3538,47 @@ PARENTHESIS_PARAMETER_PARSING_FUNCTION_END()
 		{
 			switch(KVSP_curCharUnicode)
 			{
-				case 0:
+			case 0:
+				delete l;
+				warning(pBegin, __tr2qs_ctx("Unterminated string constant", "kvs"));
+				error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in string constant (missing \" character?)", "kvs"));
+				return nullptr;
+				break;
+			case '\r':
+			case '\n':
+				delete l;
+				warning(pBegin, __tr2qs_ctx("Unterminated string constant", "kvs"));
+				error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of line in string constant (missing \" character or unescaped newline)", "kvs"));
+				return nullptr;
+				break;
+			case '$':
+			case '%':
+			case '@':
+			{
+				// this may be a data reference
+				KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
+				if(!p)
+				{
+					// this is an error
 					delete l;
-					warning(pBegin, __tr2qs_ctx("Unterminated string constant", "kvs"));
-					error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in string constant (missing \" character?)", "kvs"));
 					return nullptr;
-					break;
-				case '\r':
-				case '\n':
-					delete l;
-					warning(pBegin, __tr2qs_ctx("Unterminated string constant", "kvs"));
-					error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of line in string constant (missing \" character or unescaped newline)", "kvs"));
-					return nullptr;
-					break;
-				case '$':
-				case '%':
-				case '@':
-				{
-					// this may be a data reference
-					KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
-					if(!p)
-					{
-						// this is an error
-						delete l;
-						return nullptr;
-					}
-					l->append(p);
 				}
-				break;
-				case '"':
-				{
-					// end of the string
-					KVSP_skipChar;
-					goto end_of_the_string;
-				}
-				break;
-				default:
-				{
-					// anything else is a literal
-					l->append(parseStringLiteralParameter());
-				}
-				break;
+				l->append(p);
+			}
+			break;
+			case '"':
+			{
+				// end of the string
+				KVSP_skipChar;
+				goto end_of_the_string;
+			}
+			break;
+			default:
+			{
+				// anything else is a literal
+				l->append(parseStringLiteralParameter());
+			}
+			break;
 			}
 		}
 	end_of_the_string:
@@ -3625,50 +3623,50 @@ PARENTHESIS_PARAMETER_PARSING_FUNCTION_END()
 		{
 			switch(KVSP_curCharUnicode)
 			{
-				case 0:
-				case ' ':
-				case '\t':
-				case '\r':
-				case '\n':
-				case ';':
-					// not a part of a parameter
-					goto jumpout;
-					break;
-				case '$':
-				case '%':
-				case '@':
-				{
-					// this may be a data reference
-					KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
-					if(!p)
-					{
-						// this is an error
-						delete l;
-						return nullptr;
-					}
-					l->append(p);
-				}
+			case 0:
+			case ' ':
+			case '\t':
+			case '\r':
+			case '\n':
+			case ';':
+				// not a part of a parameter
+				goto jumpout;
 				break;
-				case '"':
+			case '$':
+			case '%':
+			case '@':
+			{
+				// this may be a data reference
+				KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
+				if(!p)
 				{
-					// this is a string
-					KviKvsTreeNodeData * p = parseStringParameter();
-					if(!p)
-					{
-						// this is an error
-						delete l;
-						return nullptr;
-					}
-					l->append(p);
+					// this is an error
+					delete l;
+					return nullptr;
 				}
-				break;
-				default:
+				l->append(p);
+			}
+			break;
+			case '"':
+			{
+				// this is a string
+				KviKvsTreeNodeData * p = parseStringParameter();
+				if(!p)
 				{
-					bGotLiteral = true;
-					// anything else is a literal
-					l->append(parseCommandLiteralParameter());
+					// this is an error
+					delete l;
+					return nullptr;
 				}
-				break;
+				l->append(p);
+			}
+			break;
+			default:
+			{
+				bGotLiteral = true;
+				// anything else is a literal
+				l->append(parseCommandLiteralParameter());
+			}
+			break;
 			}
 		}
 	jumpout:

@@ -222,10 +222,10 @@ KVSO_CLASS_FUNCTION(treeWidget, setHeaderLabels)
 {
 	QStringList columns;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("labels", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, columns)
-	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QTreeWidget *)object())->setHeaderLabels(columns);
+		KVSO_PARAMETER("labels", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, columns)
+		KVSO_PARAMETERS_END(c)
+		if(widget())
+			((QTreeWidget *)object())->setHeaderLabels(columns);
 	return true;
 }
 
@@ -236,10 +236,10 @@ KVSO_CLASS_FUNCTION(treeWidget, setColumnText)
 	QString szLabel;
 	kvs_int_t iCol;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("column", KVS_PT_INT, 0, iCol)
-	KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
-	KVSO_PARAMETERS_END(c)
-	QTreeWidgetItem * header = ((QTreeWidget *)widget())->headerItem();
+		KVSO_PARAMETER("column", KVS_PT_INT, 0, iCol)
+		KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
+		KVSO_PARAMETERS_END(c)
+		QTreeWidgetItem * header = ((QTreeWidget *)widget())->headerItem();
 	header->setText(iCol, szLabel);
 	return true;
 }
@@ -250,9 +250,9 @@ KVSO_CLASS_FUNCTION(treeWidget, topLevelItem)
 		return true;
 	kvs_int_t iIdx;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("index", KVS_PT_INT, 0, iIdx)
-	KVSO_PARAMETERS_END(c)
-	QTreeWidgetItem * pItem = ((QTreeWidget *)widget())->topLevelItem(iIdx);
+		KVSO_PARAMETER("index", KVS_PT_INT, 0, iIdx)
+		KVSO_PARAMETERS_END(c)
+		QTreeWidgetItem * pItem = ((QTreeWidget *)widget())->topLevelItem(iIdx);
 	if(!pItem)
 		c->returnValue()->setHObject((kvs_hobject_t) nullptr);
 	else
@@ -265,10 +265,10 @@ KVSO_CLASS_FUNCTION(treeWidget, itemAt)
 		return true;
 	kvs_int_t iXpos, iYpos;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("x_pos", KVS_PT_INT, 0, iXpos)
-	KVSO_PARAMETER("y_pos", KVS_PT_INT, 0, iYpos)
-	KVSO_PARAMETERS_END(c)
-	QPoint pPoint = ((QTreeWidget *)widget())->viewport()->mapFromGlobal(QPoint(iXpos, iYpos));
+		KVSO_PARAMETER("x_pos", KVS_PT_INT, 0, iXpos)
+		KVSO_PARAMETER("y_pos", KVS_PT_INT, 0, iYpos)
+		KVSO_PARAMETERS_END(c)
+		QPoint pPoint = ((QTreeWidget *)widget())->viewport()->mapFromGlobal(QPoint(iXpos, iYpos));
 	QTreeWidgetItem * pItem = ((QTreeWidget *)widget())->itemAt(pPoint);
 	if(!pItem)
 		c->returnValue()->setHObject((kvs_hobject_t) nullptr);
@@ -291,10 +291,10 @@ KVSO_CLASS_FUNCTION(treeWidget, addColumn)
 	QString szLabel;
 	kvs_int_t iW;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
-	KVSO_PARAMETER("width", KVS_PT_INT, KVS_PF_OPTIONAL, iW)
-	KVSO_PARAMETERS_END(c)
-	int col = ((QTreeWidget *)widget())->columnCount();
+		KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
+		KVSO_PARAMETER("width", KVS_PT_INT, KVS_PF_OPTIONAL, iW)
+		KVSO_PARAMETERS_END(c)
+		int col = ((QTreeWidget *)widget())->columnCount();
 	QTreeWidgetItem * header = ((QTreeWidget *)widget())->headerItem();
 	header->setText(col, szLabel);
 	if(iW)
@@ -309,10 +309,10 @@ KVSO_CLASS_FUNCTION(treeWidget, setAcceptDrops)
 {
 	bool bEnable;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnable", KVS_PT_BOOLEAN, 0, bEnable)
-	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QTreeWidget *)object())->setAcceptDrops(bEnable);
+		KVSO_PARAMETER("bEnable", KVS_PT_BOOLEAN, 0, bEnable)
+		KVSO_PARAMETERS_END(c)
+		if(widget())
+			((QTreeWidget *)object())->setAcceptDrops(bEnable);
 	return true;
 }
 
@@ -361,10 +361,10 @@ KVSO_CLASS_FUNCTION(treeWidget, setColumnCount)
 {
 	kvs_uint_t uCol;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
-	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QTreeWidget *)widget())->setColumnCount(uCol);
+		KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
+		KVSO_PARAMETERS_END(c)
+		if(widget())
+			((QTreeWidget *)widget())->setColumnCount(uCol);
 	return true;
 }
 
@@ -372,10 +372,10 @@ KVSO_CLASS_FUNCTION(treeWidget, setSelectionMode)
 {
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("mode", KVS_PT_NONEMPTYSTRING, 0, szMode)
-	KVSO_PARAMETERS_END(c)
-	if(!widget())
-		return true;
+		KVSO_PARAMETER("mode", KVS_PT_NONEMPTYSTRING, 0, szMode)
+		KVSO_PARAMETERS_END(c)
+		if(!widget())
+			return true;
 	if(KviQString::equalCI(szMode, "NoSelection"))
 		((QTreeWidget *)widget())->setSelectionMode(QAbstractItemView::NoSelection);
 	else if(KviQString::equalCI(szMode, "Multi"))
@@ -394,11 +394,11 @@ KVSO_CLASS_FUNCTION(treeWidget, setSorting)
 	kvs_int_t iCol;
 	QString szOrder;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("column", KVS_PT_INT, 0, iCol)
-	KVSO_PARAMETER("sort_order", KVS_PT_STRING, 0, szOrder)
-	KVSO_PARAMETERS_END(c)
-	if(!widget())
-		return true;
+		KVSO_PARAMETER("column", KVS_PT_INT, 0, iCol)
+		KVSO_PARAMETER("sort_order", KVS_PT_STRING, 0, szOrder)
+		KVSO_PARAMETERS_END(c)
+		if(!widget())
+			return true;
 	if(KviQString::equalCI(szOrder, "ascending"))
 		((QTreeWidget *)widget())->sortItems(iCol, Qt::AscendingOrder);
 	else if(KviQString::equalCI(szOrder, "descending"))
@@ -411,10 +411,10 @@ KVSO_CLASS_FUNCTION(treeWidget, setSortingEnabled)
 {
 	bool bEnables;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnables", KVS_PT_BOOLEAN, 0, bEnables)
-	KVSO_PARAMETERS_END(c)
-	if(!widget())
-		return true;
+		KVSO_PARAMETER("bEnables", KVS_PT_BOOLEAN, 0, bEnables)
+		KVSO_PARAMETERS_END(c)
+		if(!widget())
+			return true;
 	((QTreeWidget *)widget())->setSortingEnabled(bEnables);
 	return true;
 }
@@ -423,10 +423,10 @@ KVSO_CLASS_FUNCTION(treeWidget, setRootIsDecorated)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QTreeWidget *)widget())->setRootIsDecorated(bEnabled);
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		if(widget())
+			((QTreeWidget *)widget())->setRootIsDecorated(bEnabled);
 	return true;
 }
 
@@ -434,10 +434,10 @@ KVSO_CLASS_FUNCTION(treeWidget, setAllColumnsShowFocus)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bAllColumnsShowFocus", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QTreeWidget *)widget())->setAllColumnsShowFocus(bEnabled);
+		KVSO_PARAMETER("bAllColumnsShowFocus", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		if(widget())
+			((QTreeWidget *)widget())->setAllColumnsShowFocus(bEnabled);
 	return true;
 }
 
@@ -580,7 +580,7 @@ void KvsObject_treeWidget::fileDropped(QString & szFile, QTreeWidgetItem * item)
 }
 
 KviKvsTreeWidget::KviKvsTreeWidget(QWidget * par, const char *, KvsObject_treeWidget * parent)
-    : QTreeWidget(par)
+	: QTreeWidget(par)
 {
 	m_pParentScript = parent;
 	setAcceptDrops(true);
@@ -591,7 +591,7 @@ KviKvsTreeWidget::KviKvsTreeWidget(QWidget * par, const char *, KvsObject_treeWi
 }
 
 KviKvsTreeWidget::~KviKvsTreeWidget()
-    = default;
+= default;
 
 void KviKvsTreeWidget::dragEnterEvent(QDragEnterEvent * e)
 {

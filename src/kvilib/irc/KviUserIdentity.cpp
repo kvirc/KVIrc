@@ -30,12 +30,12 @@
 // FIXME: Put here also the default away message, default away nick, default ctcp replies etc ?
 
 KviUserIdentity::KviUserIdentity()
-    : KviHeapObject()
+	: KviHeapObject()
 {
 }
 
 KviUserIdentity::~KviUserIdentity()
-    = default;
+= default;
 
 bool KviUserIdentity::load(KviConfigurationFile & cfg)
 {

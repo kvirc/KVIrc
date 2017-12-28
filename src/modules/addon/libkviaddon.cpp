@@ -66,11 +66,11 @@ static bool addon_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 	QString szId;
 	QString szVersion;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
-	KVSM_PARAMETER("version", KVS_PT_STRING, KVS_PF_OPTIONAL, szVersion)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
+		KVSM_PARAMETER("version", KVS_PT_STRING, KVS_PF_OPTIONAL, szVersion)
+		KVSM_PARAMETERS_END(c)
 
-	KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szId);
+		KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szId);
 	if(a)
 	{
 		if(szVersion.isEmpty())
@@ -109,10 +109,10 @@ static bool addon_kvs_fnc_version(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_NONEMPTYSTRING, 0, szId)
+		KVSM_PARAMETERS_END(c)
 
-	KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szId);
+		KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szId);
 	if(a)
 	{
 		c->returnValue()->setString(a->version());
@@ -188,10 +188,10 @@ static bool addon_kvs_cmd_uninstall(KviKvsModuleCommandCall * c)
 {
 	QString szName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETERS_END(c)
 
-	KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szName);
+		KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szName);
 	if(a)
 	{
 		if(!c->switches()->find('q', "quiet"))
@@ -233,10 +233,10 @@ static bool addon_kvs_cmd_configure(KviKvsModuleCommandCall * c)
 {
 	QString szName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETERS_END(c)
 
-	KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szName);
+		KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szName);
 	if(a)
 	{
 		QString ss = a->configureCallbackCode();
@@ -284,10 +284,10 @@ static bool addon_kvs_cmd_help(KviKvsModuleCommandCall * c)
 {
 	QString szName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETERS_END(c)
 
-	KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szName);
+		KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szName);
 	if(a)
 	{
 		QString ss = a->helpCallbackCode();
@@ -341,10 +341,10 @@ static bool addon_kvs_cmd_setconfigurecallback(KviKvsModuleCallbackCommandCall *
 	QString szName;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETERS_END(c)
 
-	KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szName);
+		KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szName);
 	if(a)
 	{
 		a->setConfigureCallback(c->callback()->code());
@@ -390,10 +390,10 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 	QString szName;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETERS_END(c)
 
-	KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szName);
+		KviKvsScriptAddon * a = KviKvsScriptAddonManager::instance()->findAddon(szName);
 	if(a)
 	{
 		a->setHelpCallback(c->callback()->code());
@@ -506,19 +506,19 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 	QString szMinKVIrcVersion;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, (rd.szName))
-	KVSM_PARAMETER("version", KVS_PT_NONEMPTYSTRING, 0, (rd.szVersion))
-	KVSM_PARAMETER_IGNORED("visible_text")
-	KVSM_PARAMETER_IGNORED("description")
-	KVSM_PARAMETER("min_kvirc_version", KVS_PT_NONEMPTYSTRING, 0, szMinKVIrcVersion)
-	KVSM_PARAMETER("icon_id", KVS_PT_STRING, KVS_PF_OPTIONAL, (rd.szIconId))
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, (rd.szName))
+		KVSM_PARAMETER("version", KVS_PT_NONEMPTYSTRING, 0, (rd.szVersion))
+		KVSM_PARAMETER_IGNORED("visible_text")
+		KVSM_PARAMETER_IGNORED("description")
+		KVSM_PARAMETER("min_kvirc_version", KVS_PT_NONEMPTYSTRING, 0, szMinKVIrcVersion)
+		KVSM_PARAMETER("icon_id", KVS_PT_STRING, KVS_PF_OPTIONAL, (rd.szIconId))
+		KVSM_PARAMETERS_END(c)
 
-	if(!(c->getParameterCode(2, rd.szVisibleNameScript) && c->getParameterCode(3, rd.szDescriptionScript)))
-	{
-		c->error(__tr2qs_ctx("Internal error: call a head-shrinker", "addon"));
-		return false;
-	}
+		if(!(c->getParameterCode(2, rd.szVisibleNameScript) && c->getParameterCode(3, rd.szDescriptionScript)))
+		{
+			c->error(__tr2qs_ctx("Internal error: call a head-shrinker", "addon"));
+			return false;
+		}
 
 	if(c->callback())
 		rd.szUninstallCallbackScript = c->callback()->code();
@@ -623,12 +623,12 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 	QStringList lEntries;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETER("target", KVS_PT_NONEMPTYSTRING, 0, szTarget)
-	KVSM_PARAMETER("files", KVS_PT_STRINGLIST, 0, lEntries)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETER("target", KVS_PT_NONEMPTYSTRING, 0, szTarget)
+		KVSM_PARAMETER("files", KVS_PT_STRINGLIST, 0, lEntries)
+		KVSM_PARAMETERS_END(c)
 
-	bool bQuiet = c->switches()->find('q', "quiet");
+		bool bQuiet = c->switches()->find('q', "quiet");
 	// we had a typo here, support the old switch name for backward scripts compatibility
 	bool bSkipNonExistent = c->switches()->find('i', "skip-nonexistent") || c->switches()->find('i', "skip-nonexisting");
 
@@ -687,9 +687,9 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 			}
 
 			QStringList sl = dir.entryList(
-			    QStringList(szFilter),
-			    QDir::Files | QDir::NoSymLinks | QDir::Readable | QDir::Hidden | QDir::System,
-			    QDir::Unsorted);
+				QStringList(szFilter),
+				QDir::Files | QDir::NoSymLinks | QDir::Readable | QDir::Hidden | QDir::System,
+				QDir::Unsorted);
 
 			foreach(QString sz, sl)
 			{
@@ -767,7 +767,6 @@ static bool addon_kvs_cmd_installfiles(KviKvsModuleCommandCall * c)
 
 static bool addon_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 {
-
 	AddonManagementDialog::display(c->hasSwitch('t', "toplevel"));
 	return true;
 }
@@ -791,10 +790,10 @@ static bool addon_kvs_cmd_install(KviKvsModuleCommandCall * c)
 	QString szAddonPackFile;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("package_path", KVS_PT_STRING, 0, szAddonPackFile)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("package_path", KVS_PT_STRING, 0, szAddonPackFile)
+		KVSM_PARAMETERS_END(c)
 
-	QString szError;
+		QString szError;
 	if(!AddonFunctions::installAddonPackage(szAddonPackFile, szError))
 	{
 		c->error(__tr2qs_ctx("Error installing addon package: %Q", "addon"), &szError);
@@ -833,17 +832,17 @@ static bool addon_kvs_cmd_pack(KviKvsModuleCommandCall * c)
 	AddonInfo info;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("package_path", KVS_PT_NONEMPTYSTRING, 0, info.szSavePath)
-	KVSM_PARAMETER("addon_name", KVS_PT_NONEMPTYSTRING, 0, info.szName)
-	KVSM_PARAMETER("addon_version", KVS_PT_NONEMPTYSTRING, 0, info.szVersion)
-	KVSM_PARAMETER("description", KVS_PT_STRING, 0, info.szDescription)
-	KVSM_PARAMETER("author", KVS_PT_NONEMPTYSTRING, 0, info.szAuthor)
-	KVSM_PARAMETER("min_kvirc_version", KVS_PT_STRING, 0, info.szMinVersion)
-	KVSM_PARAMETER("image", KVS_PT_STRING, 0, info.szImage)
-	KVSM_PARAMETER("addon_path", KVS_PT_NONEMPTYSTRING, 0, info.szDirPath)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("package_path", KVS_PT_NONEMPTYSTRING, 0, info.szSavePath)
+		KVSM_PARAMETER("addon_name", KVS_PT_NONEMPTYSTRING, 0, info.szName)
+		KVSM_PARAMETER("addon_version", KVS_PT_NONEMPTYSTRING, 0, info.szVersion)
+		KVSM_PARAMETER("description", KVS_PT_STRING, 0, info.szDescription)
+		KVSM_PARAMETER("author", KVS_PT_NONEMPTYSTRING, 0, info.szAuthor)
+		KVSM_PARAMETER("min_kvirc_version", KVS_PT_STRING, 0, info.szMinVersion)
+		KVSM_PARAMETER("image", KVS_PT_STRING, 0, info.szImage)
+		KVSM_PARAMETER("addon_path", KVS_PT_NONEMPTYSTRING, 0, info.szDirPath)
+		KVSM_PARAMETERS_END(c)
 
-	QString szError;
+		QString szError;
 
 	if(AddonFunctions::pack(info, szError))
 		return true;
@@ -896,13 +895,13 @@ static bool addon_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Addon", // module name
-    "4.0.0", // module version
-    "Copyright (C) 2005 Szymon Stefanek (pragma at kvirc dot net)\n"
-    "              2008 Elvio Basello (hell at hellvis69 dot netsons dot org)", // author & (C)
-    "Addon management functions for the KVS engine",
-    addon_module_init,
-    addon_module_can_unload,
-    0,
-    addon_module_cleanup,
-    "addon")
+	"Addon", // module name
+	"4.0.0", // module version
+	"Copyright (C) 2005 Szymon Stefanek (pragma at kvirc dot net)\n"
+	"              2008 Elvio Basello (hell at hellvis69 dot netsons dot org)", // author & (C)
+	"Addon management functions for the KVS engine",
+	addon_module_init,
+	addon_module_can_unload,
+	0,
+	addon_module_cleanup,
+	"addon")

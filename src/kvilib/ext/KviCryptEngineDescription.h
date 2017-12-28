@@ -40,8 +40,8 @@
 class KVILIB_API KviCryptEngineDescription : public KviHeapObject
 {
 public:
-        KviCryptEngineDescription() = default;
-        virtual ~KviCryptEngineDescription() = default;
+	KviCryptEngineDescription() = default;
+	virtual ~KviCryptEngineDescription() = default;
 
 public:
 	QString m_szName;                                      /**< engine name */

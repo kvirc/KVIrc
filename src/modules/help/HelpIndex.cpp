@@ -78,7 +78,7 @@ QDataStream & operator<<(QDataStream & s, const Document & l)
 }
 
 HelpIndex::HelpIndex(const QString & dp, const QString & hp)
-    : QObject(nullptr), docPath(dp)
+	: QObject(nullptr), docPath(dp)
 {
 	Q_UNUSED(hp);
 
@@ -93,7 +93,7 @@ HelpIndex::HelpIndex(const QString & dp, const QString & hp)
 }
 
 HelpIndex::HelpIndex(const QStringList & dl, const QString & hp)
-    : QObject(nullptr), docList{dl}
+	: QObject(nullptr), docList{ dl }
 {
 	Q_UNUSED(hp);
 
@@ -155,7 +155,7 @@ void HelpIndex::setupDocumentList()
 	docList.clear();
 	titleList.clear();
 	QDir d(docPath);
-	QStringList filters{QLatin1String("*.html")};
+	QStringList filters{ QLatin1String("*.html") };
 	QStringList lst = d.entryList(filters);
 	for(auto&& item : lst)
 	{

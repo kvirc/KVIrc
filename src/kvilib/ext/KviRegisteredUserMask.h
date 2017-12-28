@@ -41,7 +41,7 @@ private:
 
 public:
 	KviRegisteredUserMask(KviRegisteredUser * pUser, KviIrcMask * pMask);
-	~KviRegisteredUserMask(){};
+	~KviRegisteredUserMask() {};
 
 public:
 	int nonWildChars() { return m_iMaskNonWildChars; };

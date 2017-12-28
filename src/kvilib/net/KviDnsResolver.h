@@ -89,7 +89,7 @@ protected:
 class KVILIB_API KviDnsResolver : public QObject, public KviHeapObject
 {
 	Q_OBJECT
-	Q_PROPERTY(bool blockingDelete READ isRunning)
+		Q_PROPERTY(bool blockingDelete READ isRunning)
 public:
 	KviDnsResolver();
 	virtual ~KviDnsResolver();
@@ -162,7 +162,7 @@ private:
 
 public:
 	KviDnsResolverThreadEvent(KviDnsResolverResult * pResult)
-	    : QEvent(QEvent::User), m_pResult(pResult)
+		: QEvent(QEvent::User), m_pResult(pResult)
 	{
 		KVI_ASSERT(pResult);
 	}

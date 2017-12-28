@@ -93,11 +93,11 @@ public:
 	/**
 	* \brief Remove and delete the subwindow
 	* \param pWnd The KviWindow which will be destroyed.
- 	* \return void
- 	*/
+	* \return void
+	*/
 	void destroyWindow(KviWindow * pWnd);
 
-protected slots:
+	protected slots:
 	void currentWindowChanged(int iIdx);
 	void menuActivated(QAction * pAction);
 	void fillWindowPopup();

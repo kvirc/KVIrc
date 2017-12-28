@@ -37,8 +37,8 @@ protected:
 	KviKvsVariantList * m_pParams;     // shallow
 public:
 	KviKvsRunTimeCall(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams)
-	    : m_pContext(pContext), m_pParams(pParams){};
-	virtual ~KviKvsRunTimeCall(){};
+		: m_pContext(pContext), m_pParams(pParams) {};
+	virtual ~KviKvsRunTimeCall() {};
 
 public:
 	// the script runtime context, never zero

@@ -27,7 +27,7 @@
 #ifdef COMPILE_KDE4_SUPPORT
 
 KviTalMenuBar::KviTalMenuBar(QWidget * pParent, const char * pcName)
-    : KMenuBar(pParent)
+	: KMenuBar(pParent)
 {
 	setWindowTitle(pcName);
 }
@@ -36,10 +36,10 @@ KviTalMenuBar::KviTalMenuBar(QWidget * pParent, const char * pcName)
 
 KviTalMenuBar::KviTalMenuBar(QWidget * pParent, const char * pcName)
 #ifdef COMPILE_ON_MAC
-    // global menubar must have 0 as its parent
-    : QMenuBar(0)
+// global menubar must have 0 as its parent
+	: QMenuBar(0)
 #else
-    : QMenuBar(pParent)
+	: QMenuBar(pParent)
 #endif
 {
 }
@@ -47,4 +47,4 @@ KviTalMenuBar::KviTalMenuBar(QWidget * pParent, const char * pcName)
 #endif //!COMPILE_KDE4_SUPPORT
 
 KviTalMenuBar::~KviTalMenuBar()
-    = default;
+= default;

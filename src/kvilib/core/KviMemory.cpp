@@ -39,7 +39,6 @@
 
 namespace KviMemory
 {
-
 #ifdef COMPILE_MEMORY_PROFILE
 
 	//
@@ -238,7 +237,7 @@ namespace KviMemory
 
 	// WE WANT repnz; movsq\n"!!!
 
-	inline void copy(void * dst_ptr,const void *src_ptr,int len)
+	inline void copy(void * dst_ptr, const void *src_ptr, int len)
 	{
 		__asm__ __volatile__(
 			"	cld\n"
@@ -256,7 +255,7 @@ namespace KviMemory
 		);
 	}
 
-	inline void copy(void * dst_ptr,const void *src_ptr,int len)
+	inline void copy(void * dst_ptr, const void *src_ptr, int len)
 	{
 		__asm__ __volatile__(
 			"	cld\n"
@@ -270,7 +269,7 @@ namespace KviMemory
 		);
 	}
 
-	void * move(void * dst_ptr,const void *src_ptr,int len)
+	void * move(void * dst_ptr, const void *src_ptr, int len)
 	{
 		KVI_ASSERT(dst_ptr);
 		KVI_ASSERT(src_ptr);
@@ -331,7 +330,7 @@ namespace KviMemory
 		return dst_ptr; //asm("   movl 8(%ebp),%eax"); <-- gcc will put that (AFTER THE OPTIMISATION PASS!)
 	}
 
-	void * move(void * dst_ptr,const void *src_ptr,int len)
+	void * move(void * dst_ptr, const void *src_ptr, int len)
 	{
 		KVI_ASSERT(dst_ptr);
 		KVI_ASSERT(src_ptr);
@@ -398,18 +397,19 @@ namespace KviMemory
 	//    len >> 1; // again drop the last bit (thus divide by 2)
 	//    while(len--)*((int *)dst)-- = *((int *)src)--; // move four bytes at a time
 
-	void * move(void *dst_ptr,const void *src_ptr,int len)
+	void * move(void *dst_ptr, const void *src_ptr, int len)
 	{
 		KVI_ASSERT(dst_ptr);
 		KVI_ASSERT(src_ptr);
 		KVI_ASSERT(len >= 0);
 		register char *dst;
 		register const char *src;
-		if(dst_ptr > src_ptr){
+		if(dst_ptr > src_ptr) {
 			dst = (char *)dst_ptr + len - 1;
 			src = (const char *)src_ptr + len - 1;
 			while(len--)*dst-- = *src--;
-		} else { //it is valid even if dst_ptr == src_ptr
+		}
+		else { //it is valid even if dst_ptr == src_ptr
 			dst = (char *)dst_ptr;
 			src = (const char *)src_ptr;
 			while(len--)*dst++ = *src++;
@@ -454,7 +454,7 @@ namespace KviMemory
 		// directly with the strings, without pushing and getting it
 		// from the stack...
 		register bool bEax;
-		__asm__ __volatile__ (
+		__asm__ __volatile__(
 			"	cld\n"
 			"1:\n"
 			"	lodsb %%ds:(%%esi),%%al\n"
@@ -468,7 +468,7 @@ namespace KviMemory
 			"	xorl %%eax,%%eax\n"
 			"3:"
 			: "=a" (bEax), "=&S" (pcStr1), "=&D" (pcStr2)
-			:             "1"   (pcStr1), "2"   (pcStr2)
+			: "1"   (pcStr1), "2"   (pcStr2)
 		);
 		return bEax;
 	}
@@ -476,7 +476,7 @@ namespace KviMemory
 	inline bool kvi_strEqualCSN(const char * pcStr1, const char * pcStr2, int iLen)
 	{
 		register bool bEax;
-		__asm__ __volatile__ (
+		__asm__ __volatile__(
 			"1:\n"
 			"	decl %3\n"
 			"	js 2f\n"
@@ -493,8 +493,8 @@ namespace KviMemory
 			"3:\n"
 			"	xorl %%eax,%%eax\n"
 			"4:\n"
-			: "=a" (bEax),  "=r" (pcStr1), "=r" (pcStr2), "=r" (iLen)
-			:              "1"  (pcStr1), "2"  (pcStr2), "3"  (iLen)
+			: "=a" (bEax), "=r" (pcStr1), "=r" (pcStr2), "=r" (iLen)
+			: "1"  (pcStr1), "2"  (pcStr2), "3"  (iLen)
 		);
 		return bEax;
 	}
@@ -515,7 +515,7 @@ namespace KviMemory
 		// Anyway...it will work for IRC :)
 		register int iReg;
 		register bool bEax;
-		__asm__ __volatile__ (
+		__asm__ __volatile__(
 			"1:\n"
 			"	movb (%2),%%al\n"
 			"	cmpb $65,%%al\n"
@@ -543,17 +543,16 @@ namespace KviMemory
 			"	xorl %%eax,%%eax\n"
 			"5:\n"
 			: "=a" (bEax), "=q" (iReg), "=r" (pcStr1), "=r" (pcStr2)
-			:                         "2"  (pcStr1), "3"  (pcStr2)
+			: "2"  (pcStr1), "3"  (pcStr2)
 		);
 		return bEax;
 	}
 
 	inline bool kvi_strEqualNoLocaleCIN(const char * pcStr1, const char * pcStr2, int iLen)
 	{
-
 		register int iReg;
 		register bool bEax;
-		__asm__ __volatile__ (
+		__asm__ __volatile__(
 			"1:\n"
 			"	decl %4\n"
 			"	js 4f\n"
@@ -584,7 +583,7 @@ namespace KviMemory
 			"	xorl %%eax,%%eax\n"
 			"6:\n"
 			: "=a" (bEax), "=q" (iReg), "=r" (pcStr1), "=r" (pcStr2), "=r" (iLen)
-			:                         "2"  (pcStr1), "3"  (pcStr2), "4"  (iLen)
+			: "2"  (pcStr1), "3"  (pcStr2), "4"  (iLen)
 		);
 		return bEax;
 	}
@@ -598,7 +597,7 @@ namespace KviMemory
 			"	scasb\n"
 			"	notl %0\n"
 			"	decl %0"
-			: "=c" (iEcx),        "=&D" (pcStr)
+			: "=c" (iEcx), "=&D" (pcStr)
 			: "0"  (0xffffffff), "1"   (pcStr), "a" (0)
 		);
 		return iEcx;

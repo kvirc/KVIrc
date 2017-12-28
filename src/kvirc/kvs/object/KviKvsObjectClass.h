@@ -53,11 +53,11 @@ class KVIRC_API KviKvsObjectClass
 
 public:
 	KviKvsObjectClass(
-	    KviKvsObjectClass * pParent,           // parent class
-	    const QString & szName,                // class name
-	    KviKvsObjectAllocateInstanceProc proc, // instance allocation proc
-	    bool bBuiltin = true                   // this is a builtin or script based class ?
-	    );
+		KviKvsObjectClass * pParent,           // parent class
+		const QString & szName,                // class name
+		KviKvsObjectAllocateInstanceProc proc, // instance allocation proc
+		bool bBuiltin = true                   // this is a builtin or script based class ?
+	);
 	~KviKvsObjectClass();
 
 protected:

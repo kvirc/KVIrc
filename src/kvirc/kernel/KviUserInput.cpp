@@ -123,38 +123,38 @@ namespace KviUserInput
 
 			switch(pWindow->type())
 			{
-				case KviWindow::Console:
-					if(pWindow->connection())
-					{
-						QByteArray data = pWindow->connection()->encodeText(buf);
+			case KviWindow::Console:
+				if(pWindow->connection())
+				{
+					QByteArray data = pWindow->connection()->encodeText(buf);
 
-						if(((KviConsoleWindow *)pWindow)->connection()->sendData(data.data()))
-						{
-							pWindow->output(KVI_OUT_RAW, "[RAW]: %Q", &buf);
-							return;
-						}
-					}
-					pWindow->output(KVI_OUT_PARSERERROR, __tr2qs("You're not connected to a server"));
-					break;
-				case KviWindow::Channel:
-				case KviWindow::Query:
-					if(pWindow->connection())
+					if(((KviConsoleWindow *)pWindow)->connection()->sendData(data.data()))
 					{
-						if(KVI_OPTION_BOOL(KviOption_boolExitAwayOnInput))
-						{
-							if(pWindow->connection()->userInfo()->isAway())
-								parseCommand("back", pWindow->console());
-						}
+						pWindow->output(KVI_OUT_RAW, "[RAW]: %Q", &buf);
+						return;
 					}
-					pWindow->ownMessage(buf);
-					break;
-				case KviWindow::DccChat:
-				case KviWindow::DccVideo:
-					pWindow->ownMessage(buf);
-					break;
-				default:
-					// FIXME: Should pass the message somewhere ?.. a KviWindow handler ?
-					break;
+				}
+				pWindow->output(KVI_OUT_PARSERERROR, __tr2qs("You're not connected to a server"));
+				break;
+			case KviWindow::Channel:
+			case KviWindow::Query:
+				if(pWindow->connection())
+				{
+					if(KVI_OPTION_BOOL(KviOption_boolExitAwayOnInput))
+					{
+						if(pWindow->connection()->userInfo()->isAway())
+							parseCommand("back", pWindow->console());
+					}
+				}
+				pWindow->ownMessage(buf);
+				break;
+			case KviWindow::DccChat:
+			case KviWindow::DccVideo:
+				pWindow->ownMessage(buf);
+				break;
+			default:
+				// FIXME: Should pass the message somewhere ?.. a KviWindow handler ?
+				break;
 			}
 		}
 	}

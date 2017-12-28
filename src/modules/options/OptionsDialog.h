@@ -82,7 +82,7 @@ private:
 	void fillTreeWidget(QTreeWidgetItem * p, KviPointerList<OptionsWidgetInstanceEntry> * l, const QString & szGroup, bool bNotContainedOnly = false);
 	//OptionsDialogTreeWidgetItem * showHiddenChildren(QTreeWidgetItem * p,KviPointerList<OptionsWidgetInstanceEntry> * l);
 	//OptionsDialogTreeWidgetItem * findItemByPage(OptionsDialogTreeWidgetItem *it,KviOptionsWidget * pPage);
-private slots:
+	private slots:
 	void treeWidgetItemSelectionChanged(QTreeWidgetItem * it, QTreeWidgetItem * prev);
 	void applyClicked();
 	void okClicked();

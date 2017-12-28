@@ -68,7 +68,7 @@
 static KviPointerList<KviCryptEngine> * g_pEngineList = nullptr;
 
 KviRijndaelEngine::KviRijndaelEngine()
-    : KviCryptEngine()
+	: KviCryptEngine()
 {
 	g_pEngineList->append(this);
 	m_pEncryptCipher = nullptr;
@@ -165,10 +165,10 @@ bool KviRijndaelEngine::init(const char * encKey, int encKeyLen, const char * de
 	m_pEncryptCipher = new Rijndael();
 
 	int retVal = m_pEncryptCipher->init(
-	    (m_bEncryptMode == ECB) ? Rijndael::ECB : Rijndael::CBC,
-	    Rijndael::Encrypt,
-	    (unsigned char *)szTmpEncryptKey.ptr(),
-	    getKeyLenId());
+		(m_bEncryptMode == ECB) ? Rijndael::ECB : Rijndael::CBC,
+		Rijndael::Encrypt,
+		(unsigned char *)szTmpEncryptKey.ptr(),
+		getKeyLenId());
 	if(retVal != RIJNDAEL_SUCCESS)
 	{
 		delete m_pEncryptCipher;
@@ -179,10 +179,10 @@ bool KviRijndaelEngine::init(const char * encKey, int encKeyLen, const char * de
 
 	m_pDecryptCipher = new Rijndael();
 	retVal = m_pDecryptCipher->init(
-	    (m_bEncryptMode == ECB) ? Rijndael::ECB : Rijndael::CBC,
-	    Rijndael::Decrypt,
-	    (unsigned char *)szTmpDecryptKey.ptr(),
-	    getKeyLenId());
+		(m_bEncryptMode == ECB) ? Rijndael::ECB : Rijndael::CBC,
+		Rijndael::Decrypt,
+		(unsigned char *)szTmpDecryptKey.ptr(),
+		getKeyLenId());
 	if(retVal != RIJNDAEL_SUCCESS)
 	{
 		delete m_pEncryptCipher;
@@ -200,33 +200,33 @@ void KviRijndaelEngine::setLastErrorFromRijndaelErrorCode(int errCode)
 {
 	switch(errCode)
 	{
-		case RIJNDAEL_SUCCESS:
-			setLastError(__tr2qs("Error 0: success?"));
-			break;
-		case RIJNDAEL_UNSUPPORTED_MODE:
-			setLastError(__tr2qs("Unsupported encryption mode"));
-			break;
-		case RIJNDAEL_UNSUPPORTED_DIRECTION:
-			setLastError(__tr2qs("Unsupported direction"));
-			break;
-		case RIJNDAEL_UNSUPPORTED_KEY_LENGTH:
-			setLastError(__tr2qs("Unsupported key length"));
-			break;
-		case RIJNDAEL_BAD_KEY:
-			setLastError(__tr2qs("Bad key data"));
-			break;
-		case RIJNDAEL_NOT_INITIALIZED:
-			setLastError(__tr2qs("Engine not initialized"));
-			break;
-		case RIJNDAEL_BAD_DIRECTION:
-			setLastError(__tr2qs("Invalid direction for this engine"));
-			break;
-		case RIJNDAEL_CORRUPTED_DATA:
-			setLastError(__tr2qs("Corrupted message data or invalid decryption key"));
-			break;
-		default:
-			setLastError(__tr2qs("Unknown error"));
-			break;
+	case RIJNDAEL_SUCCESS:
+		setLastError(__tr2qs("Error 0: success?"));
+		break;
+	case RIJNDAEL_UNSUPPORTED_MODE:
+		setLastError(__tr2qs("Unsupported encryption mode"));
+		break;
+	case RIJNDAEL_UNSUPPORTED_DIRECTION:
+		setLastError(__tr2qs("Unsupported direction"));
+		break;
+	case RIJNDAEL_UNSUPPORTED_KEY_LENGTH:
+		setLastError(__tr2qs("Unsupported key length"));
+		break;
+	case RIJNDAEL_BAD_KEY:
+		setLastError(__tr2qs("Bad key data"));
+		break;
+	case RIJNDAEL_NOT_INITIALIZED:
+		setLastError(__tr2qs("Engine not initialized"));
+		break;
+	case RIJNDAEL_BAD_DIRECTION:
+		setLastError(__tr2qs("Invalid direction for this engine"));
+		break;
+	case RIJNDAEL_CORRUPTED_DATA:
+		setLastError(__tr2qs("Corrupted message data or invalid decryption key"));
+		break;
+	default:
+		setLastError(__tr2qs("Unknown error"));
+		break;
 	}
 }
 
@@ -440,7 +440,7 @@ static void deallocRijndaelCryptEngine(KviCryptEngine * e)
 #include "BlowFish.h"
 
 KviMircryptionEngine::KviMircryptionEngine()
-    : KviCryptEngine()
+	: KviCryptEngine()
 {
 	g_pEngineList->append(this);
 }
@@ -482,7 +482,7 @@ bool KviMircryptionEngine::init(const char * encKey, int encKeyLen, const char *
 	m_bDecryptCBC = true;
 
 	if((kvi_strEqualCIN("ecb:", m_szEncryptKey.ptr(), 4) || kvi_strEqualCIN("old:", m_szEncryptKey.ptr(), 4))
-	    && (m_szEncryptKey.len() > 4))
+		&& (m_szEncryptKey.len() > 4))
 	{
 		m_bEncryptCBC = false;
 		m_szEncryptKey.cutLeft(4);
@@ -493,7 +493,7 @@ bool KviMircryptionEngine::init(const char * encKey, int encKeyLen, const char *
 	}
 
 	if((kvi_strEqualCIN("ecb:", m_szDecryptKey.ptr(), 4) || kvi_strEqualCIN("old:", m_szDecryptKey.ptr(), 4))
-	    && (m_szDecryptKey.len() > 4))
+		&& (m_szDecryptKey.len() > 4))
 	{
 		m_bDecryptCBC = false;
 		m_szDecryptKey.cutLeft(4);
@@ -688,13 +688,13 @@ static bool rijndael_module_init(KviModule * m)
 	g_pEngineList->setAutoDelete(false);
 
 	QString szFormat = __tr2qs("Cryptographic engine based on the Advanced Encryption Standard (AES) algorithm called Rijndael. "
-	                           "<br/>The text is first encrypted with Rijndael and then converted to %1 notation. "
-	                           "The keys used are %2 bit long and will be padded with zeros if you provide shorter ones. "
-	                           "If only one key is provided, this engine will use it for both encrypting and decrypting. "
-	                           "See the Rijndael module documentation for more info on the algorithm used. "
-	                           "<br/>This engine works in CBC mode by default: other modes are considered INSECURE and should be avoided. "
-	                           "The old pseudo-CBC mode used in KVIrc &lt; 4.2 is still available prefixing your key(s) with \"old:\"; "
-	                           "if you want to use ECB mode you must prefix your key(s) with \"ecb:\".");
+		"<br/>The text is first encrypted with Rijndael and then converted to %1 notation. "
+		"The keys used are %2 bit long and will be padded with zeros if you provide shorter ones. "
+		"If only one key is provided, this engine will use it for both encrypting and decrypting. "
+		"See the Rijndael module documentation for more info on the algorithm used. "
+		"<br/>This engine works in CBC mode by default: other modes are considered INSECURE and should be avoided. "
+		"The old pseudo-CBC mode used in KVIrc &lt; 4.2 is still available prefixing your key(s) with \"old:\"; "
+		"if you want to use ECB mode you must prefix your key(s) with \"ecb:\".");
 
 	// FIXME: Maybe convert this repeated code to a function eh ?
 
@@ -756,13 +756,13 @@ static bool rijndael_module_init(KviModule * m)
 	d->m_szName = "Mircryption";
 	d->m_szAuthor = "Szymon Stefanek";
 	d->m_szDescription = __tr2qs("Popular cryptographic engine based on the Blowfish encryption algorithm. "
-	                             "<br/>The text is first encrypted with Blowfish and then converted to base64 notation. "
-	                             "The keys used have variable length and are specified as character strings. "
-	                             "You can specify keys with length up to 56 bytes (448 bits) by default or change this with /option uintMaximumBlowFishKeySize UINT. "
-	                             "Blowfish allows for up to 72 bytes for keys, but it is not advised to use more than 56 bytes for security reasons. "
-	                             "Only increase this value if you need compatibility with another client's Blowfish implementation. "
-	                             "If only one key is provided, this engine will use it for both encrypting and decrypting. "
-	                             "<br/>This engine works in CBC mode by default: if you want to use the old and INSECURE ECB mode you must prefix your key(s) with \"ecb:\" or \"old:\".");
+		"<br/>The text is first encrypted with Blowfish and then converted to base64 notation. "
+		"The keys used have variable length and are specified as character strings. "
+		"You can specify keys with length up to 56 bytes (448 bits) by default or change this with /option uintMaximumBlowFishKeySize UINT. "
+		"Blowfish allows for up to 72 bytes for keys, but it is not advised to use more than 56 bytes for security reasons. "
+		"Only increase this value if you need compatibility with another client's Blowfish implementation. "
+		"If only one key is provided, this engine will use it for both encrypting and decrypting. "
+		"<br/>This engine works in CBC mode by default: if you want to use the old and INSECURE ECB mode you must prefix your key(s) with \"ecb:\" or \"old:\".");
 	d->m_iFlags = KviCryptEngine::CanEncrypt | KviCryptEngine::CanDecrypt | KviCryptEngine::WantEncryptKey | KviCryptEngine::WantDecryptKey;
 	d->m_allocFunc = allocMircryptionEngine;
 	d->m_deallocFunc = deallocRijndaelCryptEngine;
@@ -798,13 +798,13 @@ static bool rijndael_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Rijndael crypt engine",
-    "4.0.0",
-    "Szymon Stefanek <pragma at kvirc dot net>\n"
-    "Fabio Bas <ctrlaltca at gmail dot com>",
-    "Exports the rijndael crypt engine",
-    rijndael_module_init,
-    rijndael_module_can_unload,
-    0,
-    rijndael_module_cleanup,
-    0)
+	"Rijndael crypt engine",
+	"4.0.0",
+	"Szymon Stefanek <pragma at kvirc dot net>\n"
+	"Fabio Bas <ctrlaltca at gmail dot com>",
+	"Exports the rijndael crypt engine",
+	rijndael_module_init,
+	rijndael_module_can_unload,
+	0,
+	rijndael_module_cleanup,
+	0)

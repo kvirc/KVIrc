@@ -30,7 +30,7 @@
 #include <QLayout>
 
 OptionsWidget_inputLook::OptionsWidget_inputLook(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("inputlook_options_widget");
 	createLayout();
@@ -69,66 +69,66 @@ OptionsWidget_inputLook::OptionsWidget_inputLook(QWidget * parent)
 
 	switch(KVI_OPTION_UINT(KviOption_uintInputPixmapAlign) & Qt::AlignHorizontal_Mask)
 	{
-		case Qt::AlignLeft:
-			m_pHorizontalAlign->setCurrentIndex(1);
-			break;
-		case Qt::AlignRight:
-			m_pHorizontalAlign->setCurrentIndex(2);
-			break;
-		case Qt::AlignHCenter:
-			m_pHorizontalAlign->setCurrentIndex(3);
-			break;
-		default:
-			m_pHorizontalAlign->setCurrentIndex(0);
+	case Qt::AlignLeft:
+		m_pHorizontalAlign->setCurrentIndex(1);
+		break;
+	case Qt::AlignRight:
+		m_pHorizontalAlign->setCurrentIndex(2);
+		break;
+	case Qt::AlignHCenter:
+		m_pHorizontalAlign->setCurrentIndex(3);
+		break;
+	default:
+		m_pHorizontalAlign->setCurrentIndex(0);
 	}
 
 	switch(KVI_OPTION_UINT(KviOption_uintInputPixmapAlign) & Qt::AlignVertical_Mask)
 	{
-		case Qt::AlignTop:
-			m_pVerticalAlign->setCurrentIndex(1);
-			break;
-		case Qt::AlignBottom:
-			m_pVerticalAlign->setCurrentIndex(2);
-			break;
-		case Qt::AlignVCenter:
-			m_pVerticalAlign->setCurrentIndex(3);
-			break;
-		default:
-			m_pVerticalAlign->setCurrentIndex(0);
+	case Qt::AlignTop:
+		m_pVerticalAlign->setCurrentIndex(1);
+		break;
+	case Qt::AlignBottom:
+		m_pVerticalAlign->setCurrentIndex(2);
+		break;
+	case Qt::AlignVCenter:
+		m_pVerticalAlign->setCurrentIndex(3);
+		break;
+	default:
+		m_pVerticalAlign->setCurrentIndex(0);
 	}
 
 	layout()->setRowStretch(7, 1);
 }
 
 OptionsWidget_inputLook::~OptionsWidget_inputLook()
-    = default;
+= default;
 
 void OptionsWidget_inputLook::commit()
 {
 	int iFlags = 0;
 	switch(m_pHorizontalAlign->currentIndex())
 	{
-		case 1:
-			iFlags |= Qt::AlignLeft;
-			break;
-		case 2:
-			iFlags |= Qt::AlignRight;
-			break;
-		case 3:
-			iFlags |= Qt::AlignHCenter;
-			break;
+	case 1:
+		iFlags |= Qt::AlignLeft;
+		break;
+	case 2:
+		iFlags |= Qt::AlignRight;
+		break;
+	case 3:
+		iFlags |= Qt::AlignHCenter;
+		break;
 	}
 	switch(m_pVerticalAlign->currentIndex())
 	{
-		case 1:
-			iFlags |= Qt::AlignTop;
-			break;
-		case 2:
-			iFlags |= Qt::AlignBottom;
-			break;
-		case 3:
-			iFlags |= Qt::AlignVCenter;
-			break;
+	case 1:
+		iFlags |= Qt::AlignTop;
+		break;
+	case 2:
+		iFlags |= Qt::AlignBottom;
+		break;
+	case 3:
+		iFlags |= Qt::AlignVCenter;
+		break;
 	}
 
 	KVI_OPTION_UINT(KviOption_uintInputPixmapAlign) = iFlags;
@@ -136,7 +136,7 @@ void OptionsWidget_inputLook::commit()
 }
 
 OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("ircviewfeatures_options_widget");
 	createLayout();
@@ -174,7 +174,7 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 	m_pCompletionOrderCombo->addItem(__tr2qs_ctx("Alphabetical", "options"));
 	m_pCompletionOrderCombo->addItem(__tr2qs_ctx("By last action time", "options"));
 
-	if (KVI_OPTION_UINT(KviOption_uintNickCompletionOrder) < 3)
+	if(KVI_OPTION_UINT(KviOption_uintNickCompletionOrder) < 3)
 		m_pCompletionOrderCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintNickCompletionOrder));
 	else
 		m_pCompletionOrderCombo->setCurrentIndex(2);
@@ -189,7 +189,7 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 }
 
 OptionsWidget_inputFeatures::~OptionsWidget_inputFeatures()
-    = default;
+= default;
 
 void OptionsWidget_inputFeatures::commit()
 {

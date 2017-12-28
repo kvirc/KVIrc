@@ -60,16 +60,16 @@ KVSO_END_CONSTRUCTOR(KvsObject_menuBar)
 bool KvsObject_menuBar::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QMenuBar)
-	return true;
+		return true;
 }
 
 KVSO_CLASS_FUNCTION(menuBar, insertItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szItem;
+		QString szItem;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("item", KVS_PT_STRING, 0, szItem)
-	KVSO_PARAMETERS_END(c)
-	((QMenuBar *)widget())->addAction(szItem);
+		KVSO_PARAMETER("item", KVS_PT_STRING, 0, szItem)
+		KVSO_PARAMETERS_END(c)
+		((QMenuBar *)widget())->addAction(szItem);
 	return true;
 }

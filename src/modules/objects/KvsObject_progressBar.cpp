@@ -84,60 +84,60 @@ KVSO_END_CONSTRUCTOR(KvsObject_progressBar)
 bool KvsObject_progressBar::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QProgressBar)
-	return true;
+		return true;
 }
 KVSO_CLASS_FUNCTION(progressBar, setProgress)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t iValue;
+		kvs_uint_t iValue;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("step_value", KVS_PT_UNSIGNEDINTEGER, 0, iValue)
-	KVSO_PARAMETERS_END(c)
-	((QProgressBar *)widget())->setValue(iValue);
+		KVSO_PARAMETER("step_value", KVS_PT_UNSIGNEDINTEGER, 0, iValue)
+		KVSO_PARAMETERS_END(c)
+		((QProgressBar *)widget())->setValue(iValue);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(progressBar, setTotalSteps)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t iMax;
+		kvs_uint_t iMax;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("total_steps", KVS_PT_UNSIGNEDINTEGER, 0, iMax)
-	KVSO_PARAMETERS_END(c)
-	((QProgressBar *)widget())->setMaximum(iMax);
+		KVSO_PARAMETER("total_steps", KVS_PT_UNSIGNEDINTEGER, 0, iMax)
+		KVSO_PARAMETERS_END(c)
+		((QProgressBar *)widget())->setMaximum(iMax);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(progressBar, reset)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QProgressBar *)widget())->reset();
+		((QProgressBar *)widget())->reset();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(progressBar, setPercentageVisible)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	((QProgressBar *)widget())->setTextVisible(bEnabled);
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		((QProgressBar *)widget())->setTextVisible(bEnabled);
 	return true;
 }
 KVSO_CLASS_FUNCTION(progressBar, setFormat)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szFormat;
+		QString szFormat;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_STRING, 0, szFormat)
-	KVSO_PARAMETERS_END(c)
-	((QProgressBar *)widget())->setFormat(szFormat);
+		KVSO_PARAMETER("bEnabled", KVS_PT_STRING, 0, szFormat)
+		KVSO_PARAMETERS_END(c)
+		((QProgressBar *)widget())->setFormat(szFormat);
 	return true;
 }
 KVSO_CLASS_FUNCTION(progressBar, percentageVisible)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(((QProgressBar *)widget())->isTextVisible());
+		c->returnValue()->setBoolean(((QProgressBar *)widget())->isTextVisible());
 	return true;
 }

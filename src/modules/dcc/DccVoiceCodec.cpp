@@ -33,7 +33,7 @@ DccVoiceCodec::DccVoiceCodec()
 }
 
 DccVoiceCodec::~DccVoiceCodec()
-    = default;
+= default;
 
 void DccVoiceCodec::encode(KviDataBuffer *, KviDataBuffer *)
 {
@@ -59,13 +59,13 @@ const char * DccVoiceCodec::name()
 }
 
 DccVoiceNullCodec::DccVoiceNullCodec()
-    : DccVoiceCodec()
+	: DccVoiceCodec()
 {
 	m_szName = "null (no compression)";
 }
 
 DccVoiceNullCodec::~DccVoiceNullCodec()
-    = default;
+= default;
 
 void DccVoiceNullCodec::encode(KviDataBuffer * signal, KviDataBuffer * stream)
 {
@@ -99,7 +99,7 @@ DccVideoCodec::DccVideoCodec()
 }
 
 DccVideoCodec::~DccVideoCodec()
-    = default;
+= default;
 
 void DccVideoCodec::encodeVideo(KviDataBuffer *, KviDataBuffer *)
 {
@@ -129,17 +129,16 @@ const char * DccVideoCodec::name()
 }
 
 DccVideoSJpegCodec::DccVideoSJpegCodec()
-    : DccVideoCodec()
+	: DccVideoCodec()
 {
 	m_szName = "sjpeg";
 }
 
 DccVideoSJpegCodec::~DccVideoSJpegCodec()
-    = default;
+= default;
 
 void DccVideoSJpegCodec::encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream)
 {
-
 	if(videoSignal->size() < 1)
 		return;
 
@@ -262,7 +261,7 @@ int DccVideoSJpegCodec::decodedFrameSize()
 
 #ifndef COMPILE_DISABLE_OGG_THEORA
 DccVideoTheoraCodec::DccVideoTheoraCodec()
-    : DccVideoCodec()
+	: DccVideoCodec()
 {
 	m_szName = "theora";
 	m_pEncoder = 0;

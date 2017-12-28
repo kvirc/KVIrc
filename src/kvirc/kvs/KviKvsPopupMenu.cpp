@@ -44,7 +44,7 @@
 //       rootname.labelX : child labels
 
 KviKvsPopupMenuItem::KviKvsPopupMenuItem(Type t, const QString & szItemName, const QString & szCondition)
-    : m_szItemName{szItemName}, m_eType{t}
+	: m_szItemName{ szItemName }, m_eType{ t }
 {
 	if(!szCondition.isEmpty())
 	{
@@ -54,7 +54,7 @@ KviKvsPopupMenuItem::KviKvsPopupMenuItem(Type t, const QString & szItemName, con
 }
 
 KviKvsPopupMenuItem::KviKvsPopupMenuItem(Type t, const QString & szItemName, const KviKvsScript * pCondition)
-    : m_szItemName{szItemName}, m_eType{t}
+	: m_szItemName{ szItemName }, m_eType{ t }
 {
 	if(pCondition)
 		m_pKvsCondition = new KviKvsScript(*pCondition);
@@ -92,10 +92,10 @@ bool KviKvsPopupMenuItem::evaluateCondition(KviKvsPopupMenuTopLevelData * pData)
 	KviKvsVariant vRet;
 
 	if(!m_pKvsCondition->run(pData->window(),
-	       pData->parameters(),
-	       &vRet,
-	       KviKvsScript::PreserveParams,
-	       pData->extendedRunTimeData()))
+		pData->parameters(),
+		&vRet,
+		KviKvsScript::PreserveParams,
+		pData->extendedRunTimeData()))
 	{
 		// broken condition
 		pData->window()->output(KVI_OUT_PARSERWARNING, __tr2qs_ctx("Broken condition in menu setup: assuming false", "kvs"));
@@ -105,17 +105,17 @@ bool KviKvsPopupMenuItem::evaluateCondition(KviKvsPopupMenuTopLevelData * pData)
 }
 
 KviKvsPopupMenuItemSeparator::KviKvsPopupMenuItemSeparator(const QString & szItemName, const QString & szCondition)
-    : KviKvsPopupMenuItem(KviKvsPopupMenuItem::Separator, szItemName, szCondition)
+	: KviKvsPopupMenuItem(KviKvsPopupMenuItem::Separator, szItemName, szCondition)
 {
 }
 
 KviKvsPopupMenuItemSeparator::KviKvsPopupMenuItemSeparator(const QString & szItemName, const KviKvsScript * pCondition)
-    : KviKvsPopupMenuItem(KviKvsPopupMenuItem::Separator, szItemName, pCondition)
+	: KviKvsPopupMenuItem(KviKvsPopupMenuItem::Separator, szItemName, pCondition)
 {
 }
 
 KviKvsPopupMenuItemSeparator::~KviKvsPopupMenuItemSeparator()
-    = default;
+= default;
 
 void KviKvsPopupMenuItemSeparator::fill(KviKvsPopupMenu * pMenu, KviKvsPopupMenuTopLevelData * pData, int)
 {
@@ -130,7 +130,7 @@ KviKvsPopupMenuItem * KviKvsPopupMenuItemSeparator::clone() const
 }
 
 KviKvsPopupMenuItemWithTextAndIcon::KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Type t, const QString & szItemName, const QString & szText, const QString & szIcon, const QString & szCondition)
-    : KviKvsPopupMenuItem(t, szItemName, szCondition)
+	: KviKvsPopupMenuItem(t, szItemName, szCondition)
 {
 	QString szName = QStringLiteral("text callback for ") + szItemName;
 	m_pKvsText = new KviKvsScript(szName, szText, KviKvsScript::Parameter);
@@ -143,7 +143,7 @@ KviKvsPopupMenuItemWithTextAndIcon::KviKvsPopupMenuItemWithTextAndIcon(KviKvsPop
 }
 
 KviKvsPopupMenuItemWithTextAndIcon::KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Type t, const QString & szItemName, const KviKvsScript * pText, const KviKvsScript * pIcon, const KviKvsScript * pCondition)
-    : KviKvsPopupMenuItem(t, szItemName, pCondition)
+	: KviKvsPopupMenuItem(t, szItemName, pCondition)
 {
 	if(pText)
 		m_pKvsText = new KviKvsScript(*pText);
@@ -184,10 +184,10 @@ QPixmap * KviKvsPopupMenuItemWithTextAndIcon::evaluateIcon(KviKvsPopupMenuTopLev
 
 	KviKvsVariant vRet;
 	if(!m_pKvsIcon->run(pData->window(),
-	       pData->parameters(),
-	       &vRet,
-	       KviKvsScript::PreserveParams,
-	       pData->extendedRunTimeData()))
+		pData->parameters(),
+		&vRet,
+		KviKvsScript::PreserveParams,
+		pData->extendedRunTimeData()))
 	{
 		// broken text
 		pData->window()->output(KVI_OUT_PARSERWARNING, __tr2qs_ctx("Broken icon parameter: ignoring", "kvs"));
@@ -209,10 +209,10 @@ QString KviKvsPopupMenuItemWithTextAndIcon::evaluateText(KviKvsPopupMenuTopLevel
 		return {};
 	KviKvsVariant vRet;
 	if(!m_pKvsText->run(pData->window(),
-	       pData->parameters(),
-	       &vRet,
-	       KviKvsScript::PreserveParams,
-	       pData->extendedRunTimeData()))
+		pData->parameters(),
+		&vRet,
+		KviKvsScript::PreserveParams,
+		pData->extendedRunTimeData()))
 	{
 		// broken text
 		pData->window()->output(KVI_OUT_PARSERWARNING, __tr2qs_ctx("Broken text parameter: assuming empty string", "kvs"));
@@ -224,12 +224,12 @@ QString KviKvsPopupMenuItemWithTextAndIcon::evaluateText(KviKvsPopupMenuTopLevel
 }
 
 KviKvsPopupMenuItemLabelHelper::KviKvsPopupMenuItemLabelHelper(KviKvsPopupMenuItemLabel * pItem)
-    : QObject(), m_pItem{pItem}
+	: QObject(), m_pItem{ pItem }
 {
 }
 
 KviKvsPopupMenuItemLabelHelper::~KviKvsPopupMenuItemLabelHelper()
-    = default;
+= default;
 
 void KviKvsPopupMenuItemLabelHelper::labelDestroyed()
 {
@@ -237,13 +237,13 @@ void KviKvsPopupMenuItemLabelHelper::labelDestroyed()
 }
 
 KviKvsPopupMenuItemLabel::KviKvsPopupMenuItemLabel(const QString & szItemName, const QString & szText, const QString & szIcon, const QString & szCondition)
-    : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Label, szItemName, szText, szIcon, szCondition)
+	: KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Label, szItemName, szText, szIcon, szCondition)
 {
 	m_pSignalRelay = new KviKvsPopupMenuItemLabelHelper(this);
 }
 
 KviKvsPopupMenuItemLabel::KviKvsPopupMenuItemLabel(const QString & szItemName, const KviKvsScript * pText, const KviKvsScript * pIcon, const KviKvsScript * pCondition)
-    : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Label, szItemName, pText, pIcon, pCondition)
+	: KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Label, szItemName, pText, pIcon, pCondition)
 {
 	m_pSignalRelay = new KviKvsPopupMenuItemLabelHelper(this);
 }
@@ -308,14 +308,14 @@ void KviKvsPopupMenuItemLabel::fill(KviKvsPopupMenu * pMenu, KviKvsPopupMenuTopL
 }
 
 KviKvsPopupMenuItemItem::KviKvsPopupMenuItemItem(const QString & szItemName, const QString & szCode, const QString & szText, const QString & szIcon, const QString & szCondition)
-    : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Item, szItemName, szText, szIcon, szCondition)
+	: KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Item, szItemName, szText, szIcon, szCondition)
 {
 	QString szName = QStringLiteral("click callback for ") + szItemName;
 	m_pKvsCode = new KviKvsScript(szName, szCode);
 }
 
 KviKvsPopupMenuItemItem::KviKvsPopupMenuItemItem(const QString & szItemName, const KviKvsScript * pCode, const KviKvsScript * pText, const KviKvsScript * pIcon, const KviKvsScript * pCondition)
-    : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Item, szItemName, pText, pIcon, pCondition)
+	: KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Item, szItemName, pText, pIcon, pCondition)
 {
 	m_pKvsCode = new KviKvsScript(*pCode);
 }
@@ -350,12 +350,12 @@ KviKvsScript * KviKvsPopupMenuItemItem::kvsCode() const
 }
 
 KviKvsPopupMenuItemMenu::KviKvsPopupMenuItemMenu(const QString & szItemName, KviKvsPopupMenu * pMenu, const QString & szText, const QString & szIcon, const QString & szCondition)
-    : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Menu, szItemName, szText, szIcon, szCondition), m_pMenu{pMenu}
+	: KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Menu, szItemName, szText, szIcon, szCondition), m_pMenu{ pMenu }
 {
 }
 
 KviKvsPopupMenuItemMenu::KviKvsPopupMenuItemMenu(const QString & szItemName, KviKvsPopupMenu * pMenu, const KviKvsScript * pText, const KviKvsScript * pIcon, const KviKvsScript * pCondition)
-    : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Menu, szItemName, pText, pIcon, pCondition), m_pMenu{pMenu}
+	: KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::Menu, szItemName, pText, pIcon, pCondition), m_pMenu{ pMenu }
 {
 }
 
@@ -393,7 +393,7 @@ void KviKvsPopupMenuItemMenu::clear()
 }
 
 KviKvsPopupMenuItemExtMenu::KviKvsPopupMenuItemExtMenu(const QString & szItemName, const QString & szMenuName, const QString & szText, const QString & szIcon, const QString & szCondition)
-    : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::ExtMenu, szItemName, szText, szIcon, szCondition), m_szMenuName{szMenuName}
+	: KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::ExtMenu, szItemName, szText, szIcon, szCondition), m_szMenuName{ szMenuName }
 {
 	if(m_szMenuName[0] == '"' && m_szMenuName[m_szMenuName.length() - 1] == '"')
 	{
@@ -403,7 +403,7 @@ KviKvsPopupMenuItemExtMenu::KviKvsPopupMenuItemExtMenu(const QString & szItemNam
 }
 
 KviKvsPopupMenuItemExtMenu::KviKvsPopupMenuItemExtMenu(const QString & szItemName, const QString & szMenuName, const KviKvsScript * pText, const KviKvsScript * pIcon, const KviKvsScript * pCondition)
-    : KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::ExtMenu, szItemName, pText, pIcon, pCondition), m_szMenuName{szMenuName}
+	: KviKvsPopupMenuItemWithTextAndIcon(KviKvsPopupMenuItem::ExtMenu, szItemName, pText, pIcon, pCondition), m_szMenuName{ szMenuName }
 {
 	if(m_szMenuName[0] == '"' && m_szMenuName[m_szMenuName.length() - 1] == '"')
 	{
@@ -465,7 +465,7 @@ void KviKvsPopupMenuItemExtMenu::fill(KviKvsPopupMenu * pMenu, KviKvsPopupMenuTo
 }
 
 KviKvsPopupMenuTopLevelData::KviKvsPopupMenuTopLevelData(KviKvsVariantList * pParameters, KviWindow * pWindow)
-    : m_pParameters{pParameters}, m_pWindow{pWindow}
+	: m_pParameters{ pParameters }, m_pWindow{ pWindow }
 {
 	m_pExtendedRunTimeData = new KviKvsExtendedRunTimeData(new KviKvsHash(), true);
 }
@@ -477,7 +477,7 @@ KviKvsPopupMenuTopLevelData::~KviKvsPopupMenuTopLevelData()
 }
 
 KviKvsPopupMenu::KviKvsPopupMenu(const QString & szName)
-    : QMenu(szName, nullptr), m_szName{szName}
+	: QMenu(szName, nullptr), m_szName{ szName }
 {
 	m_pItemList = new KviPointerList<KviKvsPopupMenuItem>;
 	m_pItemList->setAutoDelete(true);
@@ -799,10 +799,10 @@ void KviKvsPopupMenu::executePrologues(KviKvsPopupMenuTopLevelData * pData)
 	for(KviKvsScript * s = m_pPrologues->first(); s; s = m_pPrologues->next())
 	{
 		if(!s->run(pData->window(),
-		       pData->parameters(),
-		       nullptr,
-		       KviKvsScript::PreserveParams,
-		       pData->extendedRunTimeData()))
+			pData->parameters(),
+			nullptr,
+			KviKvsScript::PreserveParams,
+			pData->extendedRunTimeData()))
 		{
 			pData->window()->output(KVI_OUT_PARSERWARNING, __tr2qs_ctx("Broken prologue in popup menu '%Q': ignoring", "kvs"), &m_szName);
 		}
@@ -814,10 +814,10 @@ void KviKvsPopupMenu::executeEpilogues(KviKvsPopupMenuTopLevelData * pData)
 	for(KviKvsScript * s = m_pEpilogues->first(); s; s = m_pEpilogues->next())
 	{
 		if(!s->run(pData->window(),
-		       pData->parameters(),
-		       nullptr,
-		       KviKvsScript::PreserveParams,
-		       pData->extendedRunTimeData()))
+			pData->parameters(),
+			nullptr,
+			KviKvsScript::PreserveParams,
+			pData->extendedRunTimeData()))
 		{
 			pData->window()->output(KVI_OUT_PARSERWARNING, __tr2qs_ctx("Broken epilogue in popup menu '%Q': ignoring", "kvs"), &m_szName);
 		}
@@ -934,69 +934,69 @@ void KviKvsPopupMenu::load(const QString & prefix, KviConfigurationFile * cfg)
 		int type = cfg->readIntEntry(tmp, 3);
 		switch(type)
 		{
-			case 0: // separator
-			{
-				QString expr;
-				tmp = QString("%1_Expr").arg(pre);
-				expr = cfg->readEntry(tmp, "");
-				addSeparator(itemName, expr);
-			}
+		case 0: // separator
+		{
+			QString expr;
+			tmp = QString("%1_Expr").arg(pre);
+			expr = cfg->readEntry(tmp, "");
+			addSeparator(itemName, expr);
+		}
+		break;
+		case 1: // item
+		{
+			QString text, icon, code, expr;
+			tmp = QString("%1_Text").arg(pre);
+			text = cfg->readEntry(tmp, "Unnamed");
+			tmp = QString("%1_Icon").arg(pre);
+			icon = cfg->readEntry(tmp, "");
+			tmp = QString("%1_Code").arg(pre);
+			code = cfg->readEntry(tmp, "");
+			tmp = QString("%1_Expr").arg(pre);
+			expr = cfg->readEntry(tmp, "");
+			addItem(itemName, code, text, icon, expr);
+		}
+		break;
+		case 2: // menu
+		{
+			QString text, icon, expr;
+			tmp = QString("%1_Text").arg(pre);
+			text = cfg->readEntry(tmp, "Unnamed");
+			tmp = QString("%1_Icon").arg(pre);
+			icon = cfg->readEntry(tmp, "");
+			tmp = QString("%1_Expr").arg(pre);
+			expr = cfg->readEntry(tmp, "");
+			KviKvsPopupMenu * pop = addPopup(itemName, text, icon, expr);
+			pop->load(pre, cfg);
+		}
+		break;
+		case 3: // label
+		{
+			QString text, icon, expr;
+			tmp = QString("%1_Text").arg(pre);
+			text = cfg->readEntry(tmp, "Unnamed");
+			tmp = QString("%1_Icon").arg(pre);
+			icon = cfg->readEntry(tmp, "");
+			tmp = QString("%1_Expr").arg(pre);
+			expr = cfg->readEntry(tmp, "");
+			addLabel(itemName, text, icon, expr);
+		}
+		break;
+		case 4: // extmenu
+		{
+			QString text, icon, code, expr;
+			tmp = QString("%1_Text").arg(pre);
+			text = cfg->readEntry(tmp, "Unnamed");
+			tmp = QString("%1_Icon").arg(pre);
+			icon = cfg->readEntry(tmp, "");
+			tmp = QString("%1_ExtName").arg(pre);
+			code = cfg->readEntry(tmp, "");
+			tmp = QString("%1_Expr").arg(pre);
+			expr = cfg->readEntry(tmp, "");
+			addExtPopup(itemName, code, text, icon, expr);
+		}
+		break;
+		default: // ignore
 			break;
-			case 1: // item
-			{
-				QString text, icon, code, expr;
-				tmp = QString("%1_Text").arg(pre);
-				text = cfg->readEntry(tmp, "Unnamed");
-				tmp = QString("%1_Icon").arg(pre);
-				icon = cfg->readEntry(tmp, "");
-				tmp = QString("%1_Code").arg(pre);
-				code = cfg->readEntry(tmp, "");
-				tmp = QString("%1_Expr").arg(pre);
-				expr = cfg->readEntry(tmp, "");
-				addItem(itemName, code, text, icon, expr);
-			}
-			break;
-			case 2: // menu
-			{
-				QString text, icon, expr;
-				tmp = QString("%1_Text").arg(pre);
-				text = cfg->readEntry(tmp, "Unnamed");
-				tmp = QString("%1_Icon").arg(pre);
-				icon = cfg->readEntry(tmp, "");
-				tmp = QString("%1_Expr").arg(pre);
-				expr = cfg->readEntry(tmp, "");
-				KviKvsPopupMenu * pop = addPopup(itemName, text, icon, expr);
-				pop->load(pre, cfg);
-			}
-			break;
-			case 3: // label
-			{
-				QString text, icon, expr;
-				tmp = QString("%1_Text").arg(pre);
-				text = cfg->readEntry(tmp, "Unnamed");
-				tmp = QString("%1_Icon").arg(pre);
-				icon = cfg->readEntry(tmp, "");
-				tmp = QString("%1_Expr").arg(pre);
-				expr = cfg->readEntry(tmp, "");
-				addLabel(itemName, text, icon, expr);
-			}
-			break;
-			case 4: // extmenu
-			{
-				QString text, icon, code, expr;
-				tmp = QString("%1_Text").arg(pre);
-				text = cfg->readEntry(tmp, "Unnamed");
-				tmp = QString("%1_Icon").arg(pre);
-				icon = cfg->readEntry(tmp, "");
-				tmp = QString("%1_ExtName").arg(pre);
-				code = cfg->readEntry(tmp, "");
-				tmp = QString("%1_Expr").arg(pre);
-				expr = cfg->readEntry(tmp, "");
-				addExtPopup(itemName, code, text, icon, expr);
-			}
-			break;
-			default: // ignore
-				break;
 		}
 	}
 }
@@ -1042,21 +1042,21 @@ void KviKvsPopupMenu::save(const QString & prefix, KviConfigurationFile * cfg)
 		int typeCode = 0;
 		switch(it->type())
 		{
-			case KviKvsPopupMenuItem::Label:
-				typeCode = 3;
-				break;
-			case KviKvsPopupMenuItem::Separator:
-				typeCode = 0;
-				break;
-			case KviKvsPopupMenuItem::Menu:
-				typeCode = 2;
-				break;
-			case KviKvsPopupMenuItem::Item:
-				typeCode = 1;
-				break;
-			case KviKvsPopupMenuItem::ExtMenu:
-				typeCode = 4;
-				break;
+		case KviKvsPopupMenuItem::Label:
+			typeCode = 3;
+			break;
+		case KviKvsPopupMenuItem::Separator:
+			typeCode = 0;
+			break;
+		case KviKvsPopupMenuItem::Menu:
+			typeCode = 2;
+			break;
+		case KviKvsPopupMenuItem::Item:
+			typeCode = 1;
+			break;
+		case KviKvsPopupMenuItem::ExtMenu:
+			typeCode = 4;
+			break;
 		}
 
 		cfg->writeEntry(tmp, typeCode);
@@ -1108,7 +1108,6 @@ void KviKvsPopupMenu::save(const QString & prefix, KviConfigurationFile * cfg)
 
 void KviKvsPopupMenu::generateDefPopupCore(QString & buffer)
 {
-
 	QString tmp;
 
 	buffer = "";
@@ -1128,72 +1127,72 @@ void KviKvsPopupMenu::generateDefPopupCore(QString & buffer)
 	{
 		switch(it->type())
 		{
-			case KviKvsPopupMenuItem::Item:
-				if(it->kvsIcon())
-				{
-					QString szIcon = it->kvsIcon()->code();
-					KviQString::escapeKvs(&szIcon, KviQString::EscapeSpace | KviQString::EscapeParenthesis);
-					KviQString::appendFormatted(buffer, "item(%Q,%Q)", &(it->kvsText()->code()), &szIcon);
-				}
-				else
-					KviQString::appendFormatted(buffer, "item(%Q)", &(it->kvsText()->code()));
-				if(it->kvsCondition())
-					KviQString::appendFormatted(buffer, " (%Q)", &(it->kvsCondition()->code()));
-				buffer.append("\n");
-				tmp = it->kvsCode()->code();
-				KviCommandFormatter::blockFromBuffer(tmp);
-				buffer.append(tmp);
-				buffer.append("\n");
-				break;
-			case KviKvsPopupMenuItem::Menu:
-				if(it->kvsIcon())
-				{
-					QString szIcon = it->kvsIcon()->code();
-					KviQString::escapeKvs(&szIcon, KviQString::EscapeSpace | KviQString::EscapeParenthesis);
-					KviQString::appendFormatted(buffer, "popup(%Q,%Q)", &(it->kvsText()->code()), &szIcon);
-				}
-				else
-					KviQString::appendFormatted(buffer, "popup(%Q)", &(it->kvsText()->code()));
-				if(it->kvsCondition())
-					KviQString::appendFormatted(buffer, " (%Q)", &(it->kvsCondition()->code()));
-				buffer.append("\n");
-				((KviKvsPopupMenuItemMenu *)it)->menu()->generateDefPopupCore(tmp);
-				KviCommandFormatter::blockFromBuffer(tmp);
-				buffer.append(tmp);
-				buffer.append("\n");
-				break;
-			case KviKvsPopupMenuItem::Separator:
-				if(it->kvsCondition())
-					KviQString::appendFormatted(buffer, "separator(%Q)\n\n", &(it->kvsCondition()->code()));
-				else
-					buffer.append("separator\n\n");
-				break;
-			case KviKvsPopupMenuItem::Label:
-				if(it->kvsIcon())
-				{
-					QString szIcon = it->kvsIcon()->code();
-					KviQString::escapeKvs(&szIcon, KviQString::EscapeSpace | KviQString::EscapeParenthesis);
-					KviQString::appendFormatted(buffer, "label(%Q,%Q)", &(it->kvsText()->code()), &szIcon);
-				}
-				else
-					KviQString::appendFormatted(buffer, "label(%Q)", &(it->kvsText()->code()));
-				if(it->kvsCondition())
-					KviQString::appendFormatted(buffer, " (%Q)", &(it->kvsCondition()->code()));
-				buffer.append("\n\n");
-				break;
-			case KviKvsPopupMenuItem::ExtMenu:
-				if(it->kvsIcon())
-				{
-					QString szIcon = it->kvsIcon()->code();
-					KviQString::escapeKvs(&szIcon, KviQString::EscapeSpace | KviQString::EscapeParenthesis);
-					KviQString::appendFormatted(buffer, "extpopup(%Q,%Q,%Q)", &(it->kvsText()->code()), &(((KviKvsPopupMenuItemExtMenu *)it)->extName()), &szIcon);
-				}
-				else
-					KviQString::appendFormatted(buffer, "extpopup(%Q)", &(it->kvsText()->code()));
-				if(it->kvsCondition())
-					KviQString::appendFormatted(buffer, " (%Q)", &(it->kvsCondition()->code()));
-				buffer.append("\n\n");
-				break;
+		case KviKvsPopupMenuItem::Item:
+			if(it->kvsIcon())
+			{
+				QString szIcon = it->kvsIcon()->code();
+				KviQString::escapeKvs(&szIcon, KviQString::EscapeSpace | KviQString::EscapeParenthesis);
+				KviQString::appendFormatted(buffer, "item(%Q,%Q)", &(it->kvsText()->code()), &szIcon);
+			}
+			else
+				KviQString::appendFormatted(buffer, "item(%Q)", &(it->kvsText()->code()));
+			if(it->kvsCondition())
+				KviQString::appendFormatted(buffer, " (%Q)", &(it->kvsCondition()->code()));
+			buffer.append("\n");
+			tmp = it->kvsCode()->code();
+			KviCommandFormatter::blockFromBuffer(tmp);
+			buffer.append(tmp);
+			buffer.append("\n");
+			break;
+		case KviKvsPopupMenuItem::Menu:
+			if(it->kvsIcon())
+			{
+				QString szIcon = it->kvsIcon()->code();
+				KviQString::escapeKvs(&szIcon, KviQString::EscapeSpace | KviQString::EscapeParenthesis);
+				KviQString::appendFormatted(buffer, "popup(%Q,%Q)", &(it->kvsText()->code()), &szIcon);
+			}
+			else
+				KviQString::appendFormatted(buffer, "popup(%Q)", &(it->kvsText()->code()));
+			if(it->kvsCondition())
+				KviQString::appendFormatted(buffer, " (%Q)", &(it->kvsCondition()->code()));
+			buffer.append("\n");
+			((KviKvsPopupMenuItemMenu *)it)->menu()->generateDefPopupCore(tmp);
+			KviCommandFormatter::blockFromBuffer(tmp);
+			buffer.append(tmp);
+			buffer.append("\n");
+			break;
+		case KviKvsPopupMenuItem::Separator:
+			if(it->kvsCondition())
+				KviQString::appendFormatted(buffer, "separator(%Q)\n\n", &(it->kvsCondition()->code()));
+			else
+				buffer.append("separator\n\n");
+			break;
+		case KviKvsPopupMenuItem::Label:
+			if(it->kvsIcon())
+			{
+				QString szIcon = it->kvsIcon()->code();
+				KviQString::escapeKvs(&szIcon, KviQString::EscapeSpace | KviQString::EscapeParenthesis);
+				KviQString::appendFormatted(buffer, "label(%Q,%Q)", &(it->kvsText()->code()), &szIcon);
+			}
+			else
+				KviQString::appendFormatted(buffer, "label(%Q)", &(it->kvsText()->code()));
+			if(it->kvsCondition())
+				KviQString::appendFormatted(buffer, " (%Q)", &(it->kvsCondition()->code()));
+			buffer.append("\n\n");
+			break;
+		case KviKvsPopupMenuItem::ExtMenu:
+			if(it->kvsIcon())
+			{
+				QString szIcon = it->kvsIcon()->code();
+				KviQString::escapeKvs(&szIcon, KviQString::EscapeSpace | KviQString::EscapeParenthesis);
+				KviQString::appendFormatted(buffer, "extpopup(%Q,%Q,%Q)", &(it->kvsText()->code()), &(((KviKvsPopupMenuItemExtMenu *)it)->extName()), &szIcon);
+			}
+			else
+				KviQString::appendFormatted(buffer, "extpopup(%Q)", &(it->kvsText()->code()));
+			if(it->kvsCondition())
+				KviQString::appendFormatted(buffer, " (%Q)", &(it->kvsCondition()->code()));
+			buffer.append("\n\n");
+			break;
 		}
 	}
 

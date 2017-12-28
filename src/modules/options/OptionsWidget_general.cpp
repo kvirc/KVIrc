@@ -29,15 +29,15 @@
 #include "KviOptions.h"
 
 OptionsWidget_general::OptionsWidget_general(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("generalopt_options_widget");
 	createLayout();
 
 	addLabel(0, 0, 4, 0, __tr2qs_ctx("This section contains the general client options "
-	                                 "like <b>sound, mediafiles, URL handlers</b> etc... "
-	                                 "",
-	                         "options"));
+		"like <b>sound, mediafiles, URL handlers</b> etc... "
+		"",
+		"options"));
 
 	addRowSpacer(0, 1, 0, 1);
 
@@ -45,4 +45,4 @@ OptionsWidget_general::OptionsWidget_general(QWidget * parent)
 }
 
 OptionsWidget_general::~OptionsWidget_general()
-    = default;
+= default;

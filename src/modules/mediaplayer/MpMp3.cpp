@@ -51,41 +51,40 @@
    has got the following fields, and the offsets given here, are from
    0-127.
 
-     Field      Length    Offsets
-     Tag        3           0-2
-     Songname   30          3-32
-     Artist     30         33-62
-     Album      30         63-92
-     Year       4          93-96
-     Comment    30         97-126
-     Genre      1           127
-
+	 Field      Length    Offsets
+	 Tag        3           0-2
+	 Songname   30          3-32
+	 Artist     30         33-62
+	 Album      30         63-92
+	 Year       4          93-96
+	 Comment    30         97-126
+	 Genre      1           127
 
    The string-fields contain ASCII-data, coded in ISO-Latin 1 codepage.
    Strings which are smaller than the field length are padded with zero-
    bytes.
 
-     Tag: The tag is valid if this field contains the string "TAG". This
-        has to be uppercase!
+	 Tag: The tag is valid if this field contains the string "TAG". This
+		has to be uppercase!
 
-     Songname: This field contains the title of the MP3 (string as
-        above).
+	 Songname: This field contains the title of the MP3 (string as
+		above).
 
-     Artist: This field contains the artist of the MP3 (string as above).
+	 Artist: This field contains the artist of the MP3 (string as above).
 
-     Album: this field contains the album where the MP3 comes from
-        (string as above).
+	 Album: this field contains the album where the MP3 comes from
+		(string as above).
 
-     Year: this field contains the year when this song has originally
-        been released (string as above).
+	 Year: this field contains the year when this song has originally
+		been released (string as above).
 
-     Comment: this field contains a comment for the MP3 (string as
-        above). Revision to this field has been made in ID3v1.1. See
-        A.4.
+	 Comment: this field contains a comment for the MP3 (string as
+		above). Revision to this field has been made in ID3v1.1. See
+		A.4.
 
-     Genre: this byte contains the offset of a genre in a predefined
-        list the byte is treated as an unsigned byte. The offset is
-        starting from 0. See A.3.
+	 Genre: this byte contains the offset of a genre in a predefined
+		list the byte is treated as an unsigned byte. The offset is
+		starting from 0. See A.3.
 */
 
 const char * typegenre[MAXGENRE + 2] = {
@@ -153,16 +152,16 @@ int frequencies[3][4] = {
 
 int bitrate[2][3][14] = {
 	{
-	    /* MPEG 2.0 */
-	    { 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 }, /* layer 1 */
-	    { 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 },      /* layer 2 */
-	    { 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 }       /* layer 3 */
+		/* MPEG 2.0 */
+		{ 32, 48, 56, 64, 80, 96, 112, 128, 144, 160, 176, 192, 224, 256 }, /* layer 1 */
+		{ 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 },      /* layer 2 */
+		{ 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160 }       /* layer 3 */
 	},
 	{
-	    /* MPEG 1.0 */
-	    { 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 }, /* layer 1 */
-	    { 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 },    /* layer 2 */
-	    { 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 }      /* layer 3 */
+		/* MPEG 1.0 */
+		{ 32, 64, 96, 128, 160, 192, 224, 256, 288, 320, 352, 384, 416, 448 }, /* layer 1 */
+		{ 32, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320, 384 },    /* layer 2 */
+		{ 32, 40, 48, 56, 64, 80, 96, 112, 128, 160, 192, 224, 256, 320 }      /* layer 3 */
 	}
 };
 

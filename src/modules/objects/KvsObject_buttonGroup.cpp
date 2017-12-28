@@ -72,31 +72,31 @@ KVSO_END_CONSTRUCTOR(KvsObject_buttonGroup)
 KVSO_CLASS_FUNCTION(buttonGroup, addButton)
 {
 	CHECK_INTERNAL_POINTER(m_pButtonGroup)
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("button", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("button", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	if(pObject->inheritsClass("radiobutton") || pObject->inheritsClass("checkbox"))
-	{
-		m_pButtonGroup->addButton(((QRadioButton *)(pObject->object())), m_iId);
-		c->returnValue()->setInteger(m_iId);
-		btnDict.insert(m_iId, pObject);
-		m_iId++;
-	}
-	else
-	{
-		c->warning(__tr2qs_ctx("Buttongroup supports only checkbox and radiobox object", "objects"));
-		return true;
-	}
+		if(pObject->inheritsClass("radiobutton") || pObject->inheritsClass("checkbox"))
+		{
+			m_pButtonGroup->addButton(((QRadioButton *)(pObject->object())), m_iId);
+			c->returnValue()->setInteger(m_iId);
+			btnDict.insert(m_iId, pObject);
+			m_iId++;
+		}
+		else
+		{
+			c->warning(__tr2qs_ctx("Buttongroup supports only checkbox and radiobox object", "objects"));
+			return true;
+		}
 	return true;
 }
 KVSO_CLASS_FUNCTION(buttonGroup, checkedButton)
 {
 	CHECK_INTERNAL_POINTER(m_pButtonGroup)
-	int id = m_pButtonGroup->checkedId();
+		int id = m_pButtonGroup->checkedId();
 	if(id != -1)
 		c->returnValue()->setHObject(btnDict.find(id)->handle());
 	else

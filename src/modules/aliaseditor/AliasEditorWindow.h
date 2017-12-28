@@ -52,7 +52,7 @@ public:
 public:
 	AliasEditorTreeWidgetItem(QTreeWidget * pTreeWidget, Type eType, const QString & szName);
 	AliasEditorTreeWidgetItem(AliasEditorTreeWidgetItem * pParentItem, Type eType, const QString & szName);
-	~AliasEditorTreeWidgetItem(){};
+	~AliasEditorTreeWidgetItem() {};
 
 protected:
 	Type m_eType;
@@ -113,7 +113,7 @@ public:
 	void saveProperties(KviConfigurationFile *);
 	void loadProperties(KviConfigurationFile *);
 	static void splitFullAliasOrNamespaceName(const QString & szFullName, QStringList & lNamespaces, QString & szName);
-protected slots:
+	protected slots:
 	void currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *);
 	void renameItem();
 	void newAlias();
@@ -186,7 +186,7 @@ protected:
 	virtual void getConfigGroupName(QString & szName);
 	virtual void saveProperties(KviConfigurationFile *);
 	virtual void loadProperties(KviConfigurationFile *);
-protected slots:
+	protected slots:
 	void cancelClicked();
 	void okClicked();
 	void applyClicked();

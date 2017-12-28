@@ -51,7 +51,6 @@ KviPointerList<ListWindow> * g_pListWindowList = nullptr;
 
 static bool list_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-
 	if(!c->window()->console())
 		return c->context()->errorNoIrcContext();
 
@@ -92,12 +91,12 @@ static bool list_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "List",                                                              // module name
-    "4.0.0",                                                             // module version
-    "Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "List window extension",
-    list_module_init,
-    list_module_can_unload,
-    0,
-    list_module_cleanup,
-    0)
+	"List",                                                              // module name
+	"4.0.0",                                                             // module version
+	"Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"List window extension",
+	list_module_init,
+	list_module_can_unload,
+	0,
+	list_module_cleanup,
+	0)

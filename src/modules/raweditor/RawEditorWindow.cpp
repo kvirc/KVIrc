@@ -50,7 +50,7 @@
 extern RawEditorWindow * g_pRawEditorWindow;
 
 RawTreeWidgetItem::RawTreeWidgetItem(QTreeWidget * par, int idx, bool bEnabled)
-    : QTreeWidgetItem(par)
+	: QTreeWidgetItem(par)
 {
 	m_iIdx = idx;
 	QString szName;
@@ -65,7 +65,7 @@ void RawHandlerTreeWidgetItem::setName(const QString & szName)
 }
 
 RawEditorWidget::RawEditorWidget(QWidget * par)
-    : QWidget(par)
+	: QWidget(par)
 {
 	setObjectName("raw_event_editor");
 	QGridLayout * l = new QGridLayout(this);
@@ -128,7 +128,7 @@ void RawEditorWidget::oneTimeSetup()
 				if(s->type() == KviKvsEventHandler::Script)
 				{
 					new RawHandlerTreeWidgetItem(it, ((KviKvsScriptEventHandler *)s)->name(),
-					    ((KviKvsScriptEventHandler *)s)->code(), ((KviKvsScriptEventHandler *)s)->isEnabled());
+						((KviKvsScriptEventHandler *)s)->code(), ((KviKvsScriptEventHandler *)s)->isEnabled());
 				}
 			}
 			it->setExpanded(true);
@@ -148,28 +148,28 @@ void RawEditorWidget::customContextMenuRequested(const QPoint & pos)
 		{
 			if(!(((RawHandlerTreeWidgetItem *)it)->m_bEnabled))
 				m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Handler)),
-				    __tr2qs_ctx("&Enable Handler", "editor"), this, SLOT(toggleCurrentHandlerEnabled()));
+					__tr2qs_ctx("&Enable Handler", "editor"), this, SLOT(toggleCurrentHandlerEnabled()));
 			else
 				m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::HandlerDisabled)),
-				    __tr2qs_ctx("&Disable Handler", "editor"), this, SLOT(toggleCurrentHandlerEnabled()));
+					__tr2qs_ctx("&Disable Handler", "editor"), this, SLOT(toggleCurrentHandlerEnabled()));
 
-				m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
-				    __tr2qs_ctx("Re&move Handler", "editor"), this, SLOT(removeCurrentHandler()));
+			m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
+				__tr2qs_ctx("Re&move Handler", "editor"), this, SLOT(removeCurrentHandler()));
 
-				m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Save)),
-			        __tr2qs_ctx("&Export Handler to...", "editor"), this, SLOT(exportCurrentHandler()));
+			m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Save)),
+				__tr2qs_ctx("&Export Handler to...", "editor"), this, SLOT(exportCurrentHandler()));
 		}
 		else
 		{
 			m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Handler)),
-			    __tr2qs_ctx("&New Handler", "editor"), this, SLOT(addHandlerForCurrentRaw()));
+				__tr2qs_ctx("&New Handler", "editor"), this, SLOT(addHandlerForCurrentRaw()));
 		}
 	}
 
 	m_pContextPopup->addSeparator();
 
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::RawEvent)),
-	    __tr2qs_ctx("&Add RAW Event...", "editor"), this, SLOT(addRaw()));
+		__tr2qs_ctx("&Add RAW Event...", "editor"), this, SLOT(addRaw()));
 	m_pContextPopup->popup(mapToGlobal(QPoint(pos.x() + 15, pos.y())));
 }
 
@@ -305,10 +305,10 @@ void RawEditorWidget::commit()
 				//int a=(RawTreeWidgetItem *)it)->m_iIdx;
 				szContext = QString("RawEvent%1::%2").arg(((RawTreeWidgetItem *)it)->m_iIdx).arg(((RawHandlerTreeWidgetItem *)ch)->text(0));
 				auto * s = new KviKvsScriptEventHandler(
-				    ((RawHandlerTreeWidgetItem *)ch)->text(0),
-				    szContext,
-				    ((RawHandlerTreeWidgetItem *)ch)->m_szBuffer,
-				    ((RawHandlerTreeWidgetItem *)ch)->m_bEnabled);
+					((RawHandlerTreeWidgetItem *)ch)->text(0),
+					szContext,
+					((RawHandlerTreeWidgetItem *)ch)->m_szBuffer,
+					((RawHandlerTreeWidgetItem *)ch)->m_bEnabled);
 
 				if(!KviKvsEventManager::instance()->addRawHandler(((RawTreeWidgetItem *)it)->m_iIdx, s))
 					delete s;
@@ -465,7 +465,7 @@ void RawEditorWidget::exportAllEvents()
 }
 
 RawEditorWindow::RawEditorWindow()
-    : KviWindow(KviWindow::ScriptEditor, "raweditor", nullptr)
+	: KviWindow(KviWindow::ScriptEditor, "raweditor", nullptr)
 {
 	g_pRawEditorWindow = this;
 

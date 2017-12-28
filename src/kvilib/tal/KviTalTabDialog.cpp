@@ -31,7 +31,7 @@
 #include <QPushButton>
 
 KviTalTabDialog::KviTalTabDialog(QWidget * pParent, const char * name, bool bModal)
-    : QDialog(pParent)
+	: QDialog(pParent)
 {
 	setObjectName(name);
 	setModal(bModal);
@@ -45,7 +45,7 @@ KviTalTabDialog::KviTalTabDialog(QWidget * pParent, const char * name, bool bMod
 }
 
 KviTalTabDialog::~KviTalTabDialog()
-    = default;
+= default;
 
 void KviTalTabDialog::addTab(QWidget * widget, const QString & label)
 {

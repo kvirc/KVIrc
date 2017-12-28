@@ -29,7 +29,7 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeSpecialCommandFor::KviKvsTreeNodeSpecialCommandFor(const QChar * pLocation, KviKvsTreeNodeInstruction * pInit, KviKvsTreeNodeExpression * pCond, KviKvsTreeNodeInstruction * pUpd, KviKvsTreeNodeInstruction * pLoop)
-    : KviKvsTreeNodeSpecialCommand(pLocation, "for")
+	: KviKvsTreeNodeSpecialCommand(pLocation, "for")
 {
 	m_pInitialization = pInit;
 	if(m_pInitialization)

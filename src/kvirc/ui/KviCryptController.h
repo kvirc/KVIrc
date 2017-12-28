@@ -93,7 +93,7 @@ protected:
 	QCheckBox * m_pDecryptHexKeyCheck;
 	KviEngineListBoxItem * m_pLastItem;
 	KviCryptSessionInfo * m_pSessionInfo;
-private slots:
+	private slots:
 	void enableCheckToggled(bool bChecked);
 	void engineHighlighted(QListWidgetItem * pItem, QListWidgetItem *);
 	void okClicked();

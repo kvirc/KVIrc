@@ -74,13 +74,13 @@ extern QPixmap * g_pUserChanStatePixmap;
 // FIXME: #warning "We want to be able to navigate the list with the keyboard!"
 
 KviUserListToolTip::KviUserListToolTip(KviUserListView * pView, KviUserListViewArea * pArea)
-    : KviTalToolTip(pArea)
+	: KviTalToolTip(pArea)
 {
 	m_pListView = pView;
 }
 
 KviUserListToolTip::~KviUserListToolTip()
-    = default;
+= default;
 
 void KviUserListToolTip::maybeTip(const QPoint & pnt)
 {
@@ -88,7 +88,7 @@ void KviUserListToolTip::maybeTip(const QPoint & pnt)
 }
 
 KviUserListEntry::KviUserListEntry(KviUserListView * pParent, const QString & szNick, KviIrcUserEntry * pEntry, short int iFlags, bool bJoinTimeUnknown)
-    : QObject()
+	: QObject()
 {
 	m_pListView = pParent;
 	m_szNick = szNick;
@@ -132,11 +132,11 @@ void KviUserListEntry::updateAvatarData()
 		return;
 
 	if(
-	    KVI_OPTION_BOOL(KviOption_boolScaleAvatars) && ((!KVI_OPTION_BOOL(KviOption_boolDoNotUpscaleAvatars)) || ((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) || ((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))))
+		KVI_OPTION_BOOL(KviOption_boolScaleAvatars) && ((!KVI_OPTION_BOOL(KviOption_boolDoNotUpscaleAvatars)) || ((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) || ((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))))
 	{
 		m_pAvatarPixmap = pAv->forSize(
-		    KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
-		    KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight));
+			KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
+			KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight));
 	}
 	else
 	{
@@ -216,7 +216,7 @@ void KviUserListEntry::recalcSize()
 }
 
 KviUserListView::KviUserListView(QWidget * pParent, KviWindowToolPageButton * pButton, KviIrcUserDataBase * pDb, KviWindow * pWnd, int iDictSize, const QString & szTextLabel, const char * pName)
-    : KviWindowToolWidget(pParent, pButton)
+	: KviWindowToolWidget(pParent, pButton)
 {
 	setObjectName(pName);
 
@@ -265,18 +265,18 @@ void KviUserListView::emitRightClick()
 	int iEv = -1;
 	switch(m_pKviWindow->type())
 	{
-		case KviWindow::Channel:
-			iEv = KviEvent_OnChannelNickPopupRequest;
-			break;
-		case KviWindow::Query:
-			iEv = KviEvent_OnQueryNickPopupRequest;
-			break;
-		case KviWindow::Console:
-			iEv = KviEvent_OnNotifyListPopupRequest;
-			break;
-		default:
-			iEv = KviEvent_OnNickLinkPopupRequest;
-			break; // this should actually never happen
+	case KviWindow::Channel:
+		iEv = KviEvent_OnChannelNickPopupRequest;
+		break;
+	case KviWindow::Query:
+		iEv = KviEvent_OnQueryNickPopupRequest;
+		break;
+	case KviWindow::Console:
+		iEv = KviEvent_OnNotifyListPopupRequest;
+		break;
+	default:
+		iEv = KviEvent_OnNickLinkPopupRequest;
+		break; // this should actually never happen
 	}
 
 	if(iEv > -1)
@@ -301,18 +301,18 @@ void KviUserListView::emitDoubleClick()
 	int iEv = -1;
 	switch(m_pKviWindow->type())
 	{
-		case KviWindow::Channel:
-			iEv = KviEvent_OnChannelNickDefaultActionRequest;
-			break;
-		case KviWindow::Query:
-			iEv = KviEvent_OnQueryNickDefaultActionRequest;
-			break;
-		case KviWindow::Console:
-			iEv = KviEvent_OnNotifyListDefaultActionRequest;
-			break;
-		default:
-			iEv = KviEvent_OnNickLinkDefaultActionRequest;
-			break; // this should actually never happen
+	case KviWindow::Channel:
+		iEv = KviEvent_OnChannelNickDefaultActionRequest;
+		break;
+	case KviWindow::Query:
+		iEv = KviEvent_OnQueryNickDefaultActionRequest;
+		break;
+	case KviWindow::Console:
+		iEv = KviEvent_OnNotifyListDefaultActionRequest;
+		break;
+	default:
+		iEv = KviEvent_OnNickLinkDefaultActionRequest;
+		break; // this should actually never happen
 	}
 
 	if(iEv > -1)
@@ -395,15 +395,15 @@ void KviUserListView::setMaskEntries(char cType, int iNum)
 {
 	switch(cType)
 	{
-		case 'b':
-			m_ibEntries = iNum;
-			break;
-		case 'e':
-			m_ieEntries = iNum;
-			break;
-		case 'I':
-			m_iIEntries = iNum;
-			break;
+	case 'b':
+		m_ibEntries = iNum;
+		break;
+	case 'e':
+		m_ieEntries = iNum;
+		break;
+	case 'I':
+		m_iIEntries = iNum;
+		break;
 	}
 	updateUsersLabel();
 }
@@ -434,13 +434,13 @@ void KviUserListView::animatedAvatarUpdated(KviUserListEntry * e)
 	{
 		switch(KVI_OPTION_UINT(KviOption_uintUserListViewGridType))
 		{
-			case KVI_USERLISTVIEW_GRIDTYPE_PLAINGRID:
-			case KVI_USERLISTVIEW_GRIDTYPE_DOTGRID:
-				break;
-			default: // KVI_USERLISTVIEW_GRIDTYPE_3DGRID and KVI_USERLISTVIEW_GRIDTYPE_3DBUTTONS
-				if(pEntry->m_bSelected)
-					iBaseY++;
-				break;
+		case KVI_USERLISTVIEW_GRIDTYPE_PLAINGRID:
+		case KVI_USERLISTVIEW_GRIDTYPE_DOTGRID:
+			break;
+		default: // KVI_USERLISTVIEW_GRIDTYPE_3DGRID and KVI_USERLISTVIEW_GRIDTYPE_3DBUTTONS
+			if(pEntry->m_bSelected)
+				iBaseY++;
+			break;
 		}
 		iBaseX += 3;
 	}
@@ -491,7 +491,7 @@ bool KviUserListView::completeNickStandard(const QString & szBegin, QString & sz
 {
 	// For normal nickname completion, we'll build a list of matching nicknames in order,
 	// then look through it to the next nickname each time Tab is pressed.
-	if (m_CompletionList == nullptr)
+	if(m_CompletionList == nullptr)
 	{
 		// No list; build it.
 		m_CompletionList = new std::list<QString>();
@@ -524,22 +524,22 @@ bool KviUserListView::completeNickStandard(const QString & szBegin, QString & sz
 				std::list<QString>::iterator it;
 				switch(KVI_OPTION_UINT(KviOption_uintNickCompletionOrder))
 				{
-					case 0:  // As listed
-						m_CompletionList->push_back(pEntry->m_szNick);
-						break;
-					case 1:  // Alphabetical
-						it = std::find_if(m_CompletionList->begin(), m_CompletionList->end(), [pEntry] (QString n) -> bool {
-							return (KviQString::cmpCI(pEntry->m_szNick, n, KVI_OPTION_BOOL(KviOption_boolPlaceNickWithNonAlphaCharsAtEnd)) < 0);
-						});
-						m_CompletionList->insert(it, pEntry->m_szNick);
-						break;
-					default:  // Last action time
-						it = std::find_if(m_CompletionList->begin(), m_CompletionList->end(),
-							[this, &pEntry] (const QString & n) {
-								return pEntry->m_lastActionTime > m_pEntryDict->find(n)->m_lastActionTime;
-							});
-						m_CompletionList->insert(it, pEntry->m_szNick);
-						break;
+				case 0:  // As listed
+					m_CompletionList->push_back(pEntry->m_szNick);
+					break;
+				case 1:  // Alphabetical
+					it = std::find_if(m_CompletionList->begin(), m_CompletionList->end(), [pEntry](QString n) -> bool {
+						return (KviQString::cmpCI(pEntry->m_szNick, n, KVI_OPTION_BOOL(KviOption_boolPlaceNickWithNonAlphaCharsAtEnd)) < 0);
+					});
+					m_CompletionList->insert(it, pEntry->m_szNick);
+					break;
+				default:  // Last action time
+					it = std::find_if(m_CompletionList->begin(), m_CompletionList->end(),
+						[this, &pEntry](const QString & n) {
+						return pEntry->m_lastActionTime > m_pEntryDict->find(n)->m_lastActionTime;
+					});
+					m_CompletionList->insert(it, pEntry->m_szNick);
+					break;
 				}
 			}
 		}
@@ -550,7 +550,7 @@ bool KviUserListView::completeNickStandard(const QString & szBegin, QString & sz
 
 	if(!szSkipAfter.isEmpty())
 	{
-		it = std::find_if(it, m_CompletionList->end(), [szSkipAfter] (QString n) -> bool { return KviQString::equalCI(szSkipAfter, n); });
+		it = std::find_if(it, m_CompletionList->end(), [szSkipAfter](QString n) -> bool { return KviQString::equalCI(szSkipAfter, n); });
 		if(it != m_CompletionList->end()) ++it;
 	}
 
@@ -720,9 +720,9 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 
 		// now strcmp within the current user-flag group...
 		while(pEntry && (KviQString::cmpCI(pEntry->m_szNick, pUserEntry->m_szNick,
-		                     KVI_OPTION_BOOL(KviOption_boolPlaceNickWithNonAlphaCharsAtEnd))
-		                    < 0)
-		    && ((pEntry->m_iFlags & iFlag) || (iFlag == 0)))
+			KVI_OPTION_BOOL(KviOption_boolPlaceNickWithNonAlphaCharsAtEnd))
+			< 0)
+			&& ((pEntry->m_iFlags & iFlag) || (iFlag == 0)))
 		{
 			if(pEntry == m_pTopItem)
 				bGotTopItem = true;
@@ -1448,7 +1448,7 @@ void KviUserListView::removeAllEntries()
 	{
 		//it.current()->resetAvatarConnection();
 		m_pIrcUserDataBase->removeUser(it.currentKey(),
-		    ((KviUserListEntry *)it.current())->m_pGlobalData);
+			((KviUserListEntry *)it.current())->m_pGlobalData);
 		++it;
 	}
 
@@ -1652,17 +1652,17 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 
 				switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 				{
-					case 0:
-						// this is the equivalent to an empty date.toString() call, but it's needed
-						// to ensure qt4 will use the default() locale and not the system() one
-						szTmp = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
-						break;
-					case 1:
-						szTmp = date.toString(Qt::ISODate);
-						break;
-					case 2:
-						szTmp = date.toString(Qt::SystemLocaleShortDate);
-						break;
+				case 0:
+					// this is the equivalent to an empty date.toString() call, but it's needed
+					// to ensure qt4 will use the default() locale and not the system() one
+					szTmp = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
+					break;
+				case 1:
+					szTmp = date.toString(Qt::ISODate);
+					break;
+				case 2:
+					szTmp = date.toString(Qt::SystemLocaleShortDate);
+					break;
 				}
 
 				szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
@@ -1695,7 +1695,7 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 }
 
 KviUserListViewArea::KviUserListViewArea(KviUserListView * pPar)
-    : QWidget(pPar)
+	: QWidget(pPar)
 {
 	m_pListView = pPar;
 	setAutoFillBackground(false);
@@ -1714,7 +1714,7 @@ KviUserListViewArea::KviUserListViewArea(KviUserListView * pPar)
 }
 
 KviUserListViewArea::~KviUserListViewArea()
-    = default;
+= default;
 
 void KviUserListViewArea::scrollBarMoved(int iNewVal)
 {
@@ -1922,28 +1922,28 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 				// the grid
 				switch(KVI_OPTION_UINT(KviOption_uintUserListViewGridType))
 				{
-					case KVI_USERLISTVIEW_GRIDTYPE_PLAINGRID:
-					case KVI_USERLISTVIEW_GRIDTYPE_DOTGRID:
-						p.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorUserListViewGrid), 0,
-						    (KVI_OPTION_UINT(KviOption_uintUserListViewGridType) == KVI_USERLISTVIEW_GRIDTYPE_DOTGRID) ? Qt::DotLine : Qt::SolidLine));
-						p.drawLine(0, iBottom - 1, iWidth, iBottom - 1);
-						if(bShowState || bShowIcons)
+				case KVI_USERLISTVIEW_GRIDTYPE_PLAINGRID:
+				case KVI_USERLISTVIEW_GRIDTYPE_DOTGRID:
+					p.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorUserListViewGrid), 0,
+						(KVI_OPTION_UINT(KviOption_uintUserListViewGridType) == KVI_USERLISTVIEW_GRIDTYPE_DOTGRID) ? Qt::DotLine : Qt::SolidLine));
+					p.drawLine(0, iBottom - 1, iWidth, iBottom - 1);
+					if(bShowState || bShowIcons)
+						p.drawLine(iAvatarAndTextX, iBottom - 1, iAvatarAndTextX, iTheY);
+					break;
+				default: // KVI_USERLISTVIEW_GRIDTYPE_3DGRID and KVI_USERLISTVIEW_GRIDTYPE_3DBUTTONS
+					if(!pEntry->m_bSelected)
+					{
+						p.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorUserListViewGrid), 0 /*,QPen::DotLine*/));
+						if((bShowState || bShowIcons) && (KVI_OPTION_UINT(KviOption_uintUserListViewGridType) == KVI_USERLISTVIEW_GRIDTYPE_3DGRID))
 							p.drawLine(iAvatarAndTextX, iBottom - 1, iAvatarAndTextX, iTheY);
-						break;
-					default: // KVI_USERLISTVIEW_GRIDTYPE_3DGRID and KVI_USERLISTVIEW_GRIDTYPE_3DBUTTONS
-						if(!pEntry->m_bSelected)
-						{
-							p.setPen(QPen(KVI_OPTION_COLOR(KviOption_colorUserListViewGrid), 0 /*,QPen::DotLine*/));
-							if((bShowState || bShowIcons) && (KVI_OPTION_UINT(KviOption_uintUserListViewGridType) == KVI_USERLISTVIEW_GRIDTYPE_3DGRID))
-								p.drawLine(iAvatarAndTextX, iBottom - 1, iAvatarAndTextX, iTheY);
-							p.setPen(palette().shadow().color());
-							p.drawLine(0, iBottom - 1, iWidth, iBottom - 1);
-							p.setPen(palette().light().color());
-							p.drawLine(0, iTheY, iWidth, iTheY);
-							iTheY--;
-						}
-						iTheY++;
-						break;
+						p.setPen(palette().shadow().color());
+						p.drawLine(0, iBottom - 1, iWidth, iBottom - 1);
+						p.setPen(palette().light().color());
+						p.drawLine(0, iTheY, iWidth, iTheY);
+						iTheY--;
+					}
+					iTheY++;
+					break;
 				}
 				iAvatarAndTextX += 3;
 			}
@@ -1953,9 +1953,9 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 				QRgb rgb2 = pClrFore->rgb();
 				QRgb rgb1 = KVI_OPTION_COLOR(KviOption_colorUserListViewAwayForeground).rgb();
 				p.setPen(QColor(
-				    ((qRed(rgb1) * 2) + qRed(rgb2)) / 3,
-				    ((qGreen(rgb1) * 2) + qGreen(rgb2)) / 3,
-				    ((qBlue(rgb1) * 2) + qBlue(rgb2)) / 3));
+					((qRed(rgb1) * 2) + qRed(rgb2)) / 3,
+					((qGreen(rgb1) * 2) + qGreen(rgb2)) / 3,
+					((qBlue(rgb1) * 2) + qBlue(rgb2)) / 3));
 			}
 			else
 			{
@@ -2075,10 +2075,10 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 				if(pEntry->m_iFlags != 0)
 				{
 					QPixmap * pIco = g_pIconManager->getSmallIcon(
-					    pEntry->globalData()->isAway() ? (
-					                                         (pEntry->m_iFlags & KviIrcUserEntry::ChanOwner) ? KviIconManager::ChanOwnerAway : ((pEntry->m_iFlags & KviIrcUserEntry::ChanAdmin) ? KviIconManager::ChanAdminAway : ((pEntry->m_iFlags & KviIrcUserEntry::Op) ? KviIconManager::OpAway : ((pEntry->m_iFlags & KviIrcUserEntry::HalfOp) ? KviIconManager::HalfOpAway : ((pEntry->m_iFlags & KviIrcUserEntry::Voice) ? KviIconManager::VoiceAway : KviIconManager::UserOpAway)))))
-					                                   : (
-					                                         (pEntry->m_iFlags & KviIrcUserEntry::ChanOwner) ? KviIconManager::ChanOwner : ((pEntry->m_iFlags & KviIrcUserEntry::ChanAdmin) ? KviIconManager::ChanAdmin : ((pEntry->m_iFlags & KviIrcUserEntry::Op) ? KviIconManager::Op : ((pEntry->m_iFlags & KviIrcUserEntry::HalfOp) ? KviIconManager::HalfOp : ((pEntry->m_iFlags & KviIrcUserEntry::Voice) ? KviIconManager::Voice : KviIconManager::UserOp))))));
+						pEntry->globalData()->isAway() ? (
+						(pEntry->m_iFlags & KviIrcUserEntry::ChanOwner) ? KviIconManager::ChanOwnerAway : ((pEntry->m_iFlags & KviIrcUserEntry::ChanAdmin) ? KviIconManager::ChanAdminAway : ((pEntry->m_iFlags & KviIrcUserEntry::Op) ? KviIconManager::OpAway : ((pEntry->m_iFlags & KviIrcUserEntry::HalfOp) ? KviIconManager::HalfOpAway : ((pEntry->m_iFlags & KviIrcUserEntry::Voice) ? KviIconManager::VoiceAway : KviIconManager::UserOpAway)))))
+						: (
+						(pEntry->m_iFlags & KviIrcUserEntry::ChanOwner) ? KviIconManager::ChanOwner : ((pEntry->m_iFlags & KviIrcUserEntry::ChanAdmin) ? KviIconManager::ChanAdmin : ((pEntry->m_iFlags & KviIrcUserEntry::Op) ? KviIconManager::Op : ((pEntry->m_iFlags & KviIrcUserEntry::HalfOp) ? KviIconManager::HalfOp : ((pEntry->m_iFlags & KviIrcUserEntry::Voice) ? KviIconManager::Voice : KviIconManager::UserOp))))));
 					p.drawPixmap(iTheX, iTheY + (fm.lineSpacing() - 16 /*size of small icon*/) / 2, *pIco);
 				}
 				iTheX += KVI_USERLIST_ICON_WIDTH + KVI_USERLIST_ICON_MARGIN;
@@ -2086,7 +2086,6 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 			}
 			else
 			{
-
 				char cFlag = m_pListView->getUserFlag(pEntry);
 				if(cFlag)
 				{

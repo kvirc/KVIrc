@@ -24,11 +24,11 @@
 //=============================================================================
 
 /***************************************************************************
-                          igdcontrolpoint.cpp -  description
-                             -------------------
-    begin                : Mon Jul 25 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  igdcontrolpoint.cpp -  description
+							 -------------------
+	begin                : Mon Jul 25 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #include <QDebug>
@@ -40,16 +40,15 @@
 
 namespace UPnP
 {
-
 #define WanIpConnectionType "urn:schemas-upnp-org:service:WANIPConnection:1"
 #define WanPPPConnectionType "urn:schemas-upnp-org:service:WANPPPConnection:1"
 
 	// The constructor
 	IgdControlPoint::IgdControlPoint(const QString & hostname, int port, const QString & rootUrl)
-	    : QObject(), m_bGatewayAvailable(false), m_iIgdPort(0), m_pRootService(nullptr), m_pWanConnectionService(nullptr)
+		: QObject(), m_bGatewayAvailable(false), m_iIgdPort(0), m_pRootService(nullptr), m_pWanConnectionService(nullptr)
 	{
 		qDebug() << "CREATED UPnP::IgdControlPoint: created control point"
-		         << " url='" << hostname << ":" << port << "/" << rootUrl << "'." << endl;
+			<< " url='" << hostname << ":" << port << "/" << rootUrl << "'." << endl;
 
 		qDebug() << "UPnP::IgdControlPoint: querying services..." << endl;
 
@@ -109,11 +108,10 @@ namespace UPnP
 
 			if(!params.controlUrl.isNull())
 			{
-
 				m_bGatewayAvailable = true;
 
 				qDebug() << "UPnP::IgdControlPoint: WAN/IP connection service found, "
-				         << "querying service '" << params.serviceId << "' for external IP address..." << endl;
+					<< "querying service '" << params.serviceId << "' for external IP address..." << endl;
 
 				// Call the service
 				m_pWanConnectionService = new WanConnectionService(params);
@@ -160,5 +158,4 @@ namespace UPnP
 			m_pWanConnectionService->deletePortMapping(protocol, remoteHost, externalPort);
 		}
 	}
-
 } // End of namespace

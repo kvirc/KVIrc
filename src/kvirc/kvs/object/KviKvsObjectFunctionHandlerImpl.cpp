@@ -60,19 +60,19 @@ bool KviKvsObjectStandardNothingReturnFunctionHandler::call(KviKvsObject *, KviK
 }
 
 KviKvsObjectCoreCallFunctionHandler::KviKvsObjectCoreCallFunctionHandler(KviKvsObjectFunctionHandlerProc pProc, unsigned int uFlags)
-    : KviKvsObjectFunctionHandler(uFlags)
+	: KviKvsObjectFunctionHandler(uFlags)
 {
 	m_pProc = pProc;
 }
 
 KviKvsObjectCoreCallFunctionHandler::KviKvsObjectCoreCallFunctionHandler(const KviKvsObjectCoreCallFunctionHandler & h)
-    : KviKvsObjectFunctionHandler(h.m_uFlags)
+	: KviKvsObjectFunctionHandler(h.m_uFlags)
 {
 	m_pProc = h.m_pProc;
 }
 
 KviKvsObjectCoreCallFunctionHandler::~KviKvsObjectCoreCallFunctionHandler()
-    = default;
+= default;
 
 KviKvsObjectFunctionHandler * KviKvsObjectCoreCallFunctionHandler::clone()
 {
@@ -86,14 +86,14 @@ bool KviKvsObjectCoreCallFunctionHandler::call(KviKvsObject * pObject, KviKvsObj
 }
 
 KviKvsObjectScriptFunctionHandler::KviKvsObjectScriptFunctionHandler(const QString & szScriptContext, const QString & szCode, const QString & szReminder, unsigned int uFlags)
-    : KviKvsObjectFunctionHandler(uFlags)
+	: KviKvsObjectFunctionHandler(uFlags)
 {
 	m_pHandler = new KviKvsScript(szScriptContext, szCode, KviKvsScript::InstructionList);
 	m_szReminder = szReminder;
 }
 
 KviKvsObjectScriptFunctionHandler::KviKvsObjectScriptFunctionHandler(const KviKvsObjectScriptFunctionHandler & h)
-    : KviKvsObjectFunctionHandler(h.m_uFlags)
+	: KviKvsObjectFunctionHandler(h.m_uFlags)
 {
 	// ref
 	m_pHandler = new KviKvsScript(*(h.m_pHandler));

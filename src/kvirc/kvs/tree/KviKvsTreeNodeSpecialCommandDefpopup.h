@@ -42,8 +42,8 @@ public:
 
 public:
 	KviKvsTreeNodeSpecialCommandDefpopupLabel(const QChar * pLocation, const QString & szItemName)
-	    : KviKvsTreeNode(pLocation), m_szItemName(szItemName){};
-	~KviKvsTreeNodeSpecialCommandDefpopupLabel(){};
+		: KviKvsTreeNode(pLocation), m_szItemName(szItemName) {};
+	~KviKvsTreeNodeSpecialCommandDefpopupLabel() {};
 
 public:
 	void setItemName(const QString & szItemName) { m_szItemName = szItemName; };
@@ -56,8 +56,8 @@ protected:
 	QString m_szCondition; // may be null!
 public:
 	KviKvsTreeNodeSpecialCommandDefpopupConditionalLabel(const QChar * pLocation, const QString & szCondition, const QString & szItemName)
-	    : KviKvsTreeNodeSpecialCommandDefpopupLabel(pLocation, szItemName), m_szCondition(szCondition){};
-	~KviKvsTreeNodeSpecialCommandDefpopupConditionalLabel(){};
+		: KviKvsTreeNodeSpecialCommandDefpopupLabel(pLocation, szItemName), m_szCondition(szCondition) {};
+	~KviKvsTreeNodeSpecialCommandDefpopupConditionalLabel() {};
 
 public:
 	void setCondition(const QString & szCondition) { m_szCondition = szCondition; };
@@ -67,8 +67,8 @@ class KVIRC_API KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator : public KviK
 {
 public:
 	KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator(const QChar * pLocation, const QString & szCondition, const QString & szItemName)
-	    : KviKvsTreeNodeSpecialCommandDefpopupConditionalLabel(pLocation, szCondition, szItemName){};
-	~KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator(){};
+		: KviKvsTreeNodeSpecialCommandDefpopupConditionalLabel(pLocation, szCondition, szItemName) {};
+	~KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator() {};
 
 public:
 	virtual void contextDescription(QString & szBuffer);
@@ -84,8 +84,8 @@ protected:
 
 public:
 	KviKvsTreeNodeSpecialCommandDefpopupConditionalLabelWithTextAndIcon(const QChar * pLocation, const QString & szCondition, const QString & szText, const QString & szIcon, const QString & szItemName)
-	    : KviKvsTreeNodeSpecialCommandDefpopupConditionalLabel(pLocation, szCondition, szItemName), m_szText(szText), m_szIcon(szIcon){};
-	~KviKvsTreeNodeSpecialCommandDefpopupConditionalLabelWithTextAndIcon(){};
+		: KviKvsTreeNodeSpecialCommandDefpopupConditionalLabel(pLocation, szCondition, szItemName), m_szText(szText), m_szIcon(szIcon) {};
+	~KviKvsTreeNodeSpecialCommandDefpopupConditionalLabelWithTextAndIcon() {};
 
 public:
 	void setText(const QString & szText) { m_szText = szText; };
@@ -99,8 +99,8 @@ protected:
 
 public:
 	KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup(const QChar * pLocation, const QString & szCondition, const QString & szText, const QString & szIcon, const QString & szName, const QString & szItemName)
-	    : KviKvsTreeNodeSpecialCommandDefpopupConditionalLabelWithTextAndIcon(pLocation, szCondition, szText, szIcon, szItemName), m_szName(szName){};
-	~KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup(){};
+		: KviKvsTreeNodeSpecialCommandDefpopupConditionalLabelWithTextAndIcon(pLocation, szCondition, szText, szIcon, szItemName), m_szName(szName) {};
+	~KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup() {};
 
 public:
 	virtual void contextDescription(QString & szBuffer);
@@ -115,8 +115,8 @@ protected:
 
 public:
 	KviKvsTreeNodeSpecialCommandDefpopupLabelItem(const QChar * pLocation, const QString & szCondition, const QString & szText, const QString & szIcon, const QString & szInstruction, const QString & szItemName)
-	    : KviKvsTreeNodeSpecialCommandDefpopupConditionalLabelWithTextAndIcon(pLocation, szCondition, szText, szIcon, szItemName), m_szInstruction(szInstruction){};
-	~KviKvsTreeNodeSpecialCommandDefpopupLabelItem(){};
+		: KviKvsTreeNodeSpecialCommandDefpopupConditionalLabelWithTextAndIcon(pLocation, szCondition, szText, szIcon, szItemName), m_szInstruction(szInstruction) {};
+	~KviKvsTreeNodeSpecialCommandDefpopupLabelItem() {};
 
 public:
 	virtual void contextDescription(QString & szBuffer);
@@ -128,8 +128,8 @@ class KVIRC_API KviKvsTreeNodeSpecialCommandDefpopupLabelLabel : public KviKvsTr
 {
 public:
 	KviKvsTreeNodeSpecialCommandDefpopupLabelLabel(const QChar * pLocation, const QString & szCondition, const QString & szText, const QString & szIcon, const QString & szItemName)
-	    : KviKvsTreeNodeSpecialCommandDefpopupConditionalLabelWithTextAndIcon(pLocation, szCondition, szText, szIcon, szItemName){};
-	~KviKvsTreeNodeSpecialCommandDefpopupLabelLabel(){};
+		: KviKvsTreeNodeSpecialCommandDefpopupConditionalLabelWithTextAndIcon(pLocation, szCondition, szText, szIcon, szItemName) {};
+	~KviKvsTreeNodeSpecialCommandDefpopupLabelLabel() {};
 
 public:
 	virtual void contextDescription(QString & szBuffer);
@@ -144,8 +144,8 @@ protected:
 
 public:
 	KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue(const QChar * pLocation, const QString & szInstruction, const QString & szItemName)
-	    : KviKvsTreeNodeSpecialCommandDefpopupLabel(pLocation, szItemName), m_szInstruction(szInstruction){};
-	~KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue(){};
+		: KviKvsTreeNodeSpecialCommandDefpopupLabel(pLocation, szItemName), m_szInstruction(szInstruction) {};
+	~KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue() {};
 
 public:
 	virtual void contextDescription(QString & szBuffer);
@@ -160,8 +160,8 @@ protected:
 
 public:
 	KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue(const QChar * pLocation, const QString & szInstruction, const QString & szItemName)
-	    : KviKvsTreeNodeSpecialCommandDefpopupLabel(pLocation, szItemName), m_szInstruction(szInstruction){};
-	~KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue(){};
+		: KviKvsTreeNodeSpecialCommandDefpopupLabel(pLocation, szItemName), m_szInstruction(szInstruction) {};
+	~KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue() {};
 
 public:
 	virtual void contextDescription(QString & szBuffer);

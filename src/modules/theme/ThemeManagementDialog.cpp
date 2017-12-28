@@ -72,7 +72,7 @@
 extern QRect g_rectManagementDialogGeometry;
 
 ThemeListWidgetItem::ThemeListWidgetItem(KviTalListWidget * pBox, KviThemeInfo * pInfo)
-    : KviTalListWidgetItem(pBox)
+	: KviTalListWidgetItem(pBox)
 {
 	m_pThemeInfo = pInfo;
 
@@ -111,7 +111,7 @@ ThemeListWidgetItem::~ThemeListWidgetItem()
 ThemeManagementDialog * ThemeManagementDialog::m_pInstance = nullptr;
 
 ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
-    : QWidget(parent)
+	: QWidget(parent)
 {
 	m_pItemDelegate = nullptr;
 #ifdef COMPILE_WEBKIT_SUPPORT
@@ -191,7 +191,7 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 
 	//FIXME tooltip
 	connect(m_pListWidget, SIGNAL(customContextMenuRequested(const QPoint &)),
-	    this, SLOT(contextMenuRequested(const QPoint &)));
+		this, SLOT(contextMenuRequested(const QPoint &)));
 	connect(m_pListWidget, SIGNAL(itemSelectionChanged()), this, SLOT(enableDisableButtons()));
 
 	pSep = new QFrame(this);
@@ -228,7 +228,7 @@ ThemeManagementDialog::ThemeManagementDialog(QWidget * parent)
 		g_rectManagementDialogGeometry.setY(5);
 	}
 	resize(g_rectManagementDialogGeometry.width(),
-	    g_rectManagementDialogGeometry.height());
+		g_rectManagementDialogGeometry.height());
 
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
 	move(rect.x() + ((rect.width() - g_rectManagementDialogGeometry.width()) / 2), rect.y() + ((rect.height() - g_rectManagementDialogGeometry.height()) / 2));
@@ -349,8 +349,8 @@ void ThemeManagementDialog::applyCurrentTheme()
 		return;
 
 	if(!KviMessageBox::yesNo(__tr2qs_ctx("Apply Theme - KVIrc", "theme"),
-	       __tr2qs_ctx("Do you wish to apply theme \"%Q\" (version %Q)?", "theme"),
-	       &(it->themeInfo()->name()), &(it->themeInfo()->version())))
+		__tr2qs_ctx("Do you wish to apply theme \"%Q\" (version %Q)?", "theme"),
+		&(it->themeInfo()->name()), &(it->themeInfo()->version())))
 		return;
 
 	KviThemeInfo out;
@@ -361,7 +361,7 @@ void ThemeManagementDialog::applyCurrentTheme()
 		QString szErr = out.lastError();
 		QString szMsg = QString(__tr2qs_ctx("Failed to apply the specified theme: %1", "theme")).arg(szErr);
 		QMessageBox::critical(this, __tr2qs_ctx("Apply Theme - KVIrc", "theme"), szMsg,
-		    QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+			QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
 		return;
 	}
 
@@ -382,9 +382,9 @@ void ThemeManagementDialog::deleteTheme()
 			continue;
 
 		if(!KviMessageBox::yesNo(
-		       __tr2qs_ctx("Delete Selected Theme - KVIrc", "theme"),
-		       __tr2qs_ctx("Do you really wish to delete theme \"%Q\" (version %Q)?", "theme"),
-		       &(pInfo->name()), &(pInfo->version())))
+			__tr2qs_ctx("Delete Selected Theme - KVIrc", "theme"),
+			__tr2qs_ctx("Do you really wish to delete theme \"%Q\" (version %Q)?", "theme"),
+			&(pInfo->name()), &(pInfo->version())))
 			goto jump_out;
 
 		QString szThemePath = ((ThemeListWidgetItem *)itemsSelected.at(i))->themeInfo()->directory();
@@ -400,13 +400,13 @@ void ThemeManagementDialog::installFromFile()
 	QString szError;
 
 	if(!KviFileDialog::askForOpenFileName(
-	       szFileName,
-	       __tr2qs_ctx("Select a Installation File - KVIrc", "theme"),
-	       QString(),
-	       KVI_FILTER_THEME,
-	       false,
-	       true,
-	       this))
+		szFileName,
+		__tr2qs_ctx("Select a Installation File - KVIrc", "theme"),
+		QString(),
+		KVI_FILTER_THEME,
+		false,
+		true,
+		this))
 		return;
 
 	if(!ThemeFunctions::installThemePackage(szFileName, szError, this))

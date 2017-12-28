@@ -80,7 +80,7 @@ void url_module_help();
 #define KVI_URL_EXTENSION_NAME "URL module extension"
 
 UrlDialogTreeWidget::UrlDialogTreeWidget(QWidget * par)
-    : QTreeWidget(par)
+	: QTreeWidget(par)
 {
 }
 
@@ -136,7 +136,7 @@ void UrlDialogTreeWidget::paintEvent(QPaintEvent * event)
 // ---------------------------- CLASS URLDIALOG ------------------------begin //
 
 UrlDialog::UrlDialog(std::unordered_set<KviUrl *>)
-    : KviWindow(KviWindow::Tool, "URL List")
+	: KviWindow(KviWindow::Tool, "URL List")
 {
 	setAutoFillBackground(false);
 
@@ -308,7 +308,6 @@ void UrlDialog::resizeEvent(QResizeEvent *)
 
 UrlDialog::~UrlDialog()
 {
-
 	delete m_pUrlList;
 	UrlDlgList * tmpitem = findFrame();
 	tmpitem->dlg = nullptr;
@@ -319,7 +318,7 @@ UrlDialog::~UrlDialog()
 // --------------------------- CLASS CONFIGDIALOG ----------------------begin //
 
 ConfigDialog::ConfigDialog()
-    : QDialog()
+	: QDialog()
 {
 	setWindowTitle(__tr2qs("URL Module Configuration - KVIrc"));
 
@@ -396,7 +395,7 @@ ConfigDialog::~ConfigDialog()
 // ---------------------------- CLASS BANFRAME ------------------------begin //
 
 BanFrame::BanFrame(QWidget * parent, const char * name, bool banEnabled)
-    : QFrame(parent)
+	: QFrame(parent)
 {
 	setFrameStyle(QFrame::Panel | QFrame::Raised);
 	setObjectName(name);
@@ -483,7 +482,7 @@ void BanFrame::saveBans(KviConfigurationFile * cfg)
 }
 
 BanFrame::~BanFrame()
-    = default;
+= default;
 
 // ---------------------------- CLASS URLTOOLBAR -------------------------end //
 
@@ -603,7 +602,7 @@ void loadBanList()
 }
 
 /*
- 	@doc: url.list
+	@doc: url.list
 	@type:
 		command
 	@title:
@@ -663,7 +662,7 @@ UrlDlgList * findFrame()
 }
 
 /*
- 	@doc: url.config
+	@doc: url.config
 	@type:
 		command
 	@title:
@@ -743,7 +742,6 @@ bool urllist_module_event_onUrl(KviKvsModuleEventCall * c)
 
 	if(check_url(c->window(), szUrl) == 0)
 	{
-
 		KviUrl * tmp = new KviUrl;
 		QString tmpTimestamp;
 		QDate d = QDate::currentDate();
@@ -867,12 +865,12 @@ void url_module_config()
 */
 
 KVIRC_MODULE(
-    "URL",
-    "4.0.0",
-    "Copyright (C) 2002 Andrea Parrella <yap@yapsoft.it>",
-    "URL list module for KVIrc",
-    url_module_init,
-    url_module_can_unload,
-    0,
-    url_module_cleanup,
-    0)
+	"URL",
+	"4.0.0",
+	"Copyright (C) 2002 Andrea Parrella <yap@yapsoft.it>",
+	"URL list module for KVIrc",
+	url_module_init,
+	url_module_can_unload,
+	0,
+	url_module_cleanup,
+	0)

@@ -86,19 +86,19 @@ KVIMODULEEXPORTFUNC void setup_finish()
 		KviThemeInfo out;
 		switch(g_iThemeToApply)
 		{
-			case THEME_APPLY_HIRES:
-				KviTheme::apply("Aria-2.0.0", KviThemeInfo::Builtin, out);
-				break;
-			case THEME_APPLY_LORES:
-				KviTheme::apply("MinimalDark-2.0.0", KviThemeInfo::Builtin, out);
-				break;
-				// default: no theme
+		case THEME_APPLY_HIRES:
+			KviTheme::apply("Aria-2.0.0", KviThemeInfo::Builtin, out);
+			break;
+		case THEME_APPLY_LORES:
+			KviTheme::apply("MinimalDark-2.0.0", KviThemeInfo::Builtin, out);
+			break;
+			// default: no theme
 		}
 
 		if(!szMircServers.isEmpty())
 		{
 			g_pServerDataBase->importFromMircIni(szMircServers, szMircIni,
-			    KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers));
+				KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers));
 			g_pApp->saveIrcServerDataBase();
 		}
 
@@ -145,12 +145,12 @@ static bool setup_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Setup Wizard",
-    "4.0.0",
-    "Szymon Stefanek <pragma at kvirc dot net>",
-    "First-time-run setup wizard",
-    setup_module_init,
-    setup_module_can_unload,
-    0,
-    setup_module_cleanup,
-    0)
+	"Setup Wizard",
+	"4.0.0",
+	"Szymon Stefanek <pragma at kvirc dot net>",
+	"First-time-run setup wizard",
+	setup_module_init,
+	setup_module_can_unload,
+	0,
+	setup_module_cleanup,
+	0)

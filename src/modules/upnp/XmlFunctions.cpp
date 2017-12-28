@@ -24,21 +24,20 @@
 //=============================================================================
 
 /***************************************************************************
-                          XmlFunctions.cpp -  description
-                             -------------------
-    begin                : Sun Jul 24 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  XmlFunctions.cpp -  description
+							 -------------------
+	begin                : Sun Jul 24 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #include "XmlFunctions.h"
 
 #include <QStringList>
 
-// Helper function, get a specific node
+ // Helper function, get a specific node
 QDomNode XmlFunctions::getNode(const QDomNode & rootNode, const QString & path)
 {
-
 	QStringList pathItems = path.split("/", QString::SkipEmptyParts);
 	QDomNode childNode = rootNode.namedItem(pathItems[0]); // can be a null node
 
@@ -57,7 +56,7 @@ QDomNode XmlFunctions::getNode(const QDomNode & rootNode, const QString & path)
 	if(childNode.isNull())
 	{
 		qDebug() << "XmlFunctions::getNode() - Notice: node '" << pathItems[i - 1] << "'"
-		         << " does not exist (root=" << rootNode.nodeName() << " path=" << path << ")." << endl;
+			<< " does not exist (root=" << rootNode.nodeName() << " path=" << path << ")." << endl;
 	}
 
 	return childNode;
@@ -66,7 +65,6 @@ QDomNode XmlFunctions::getNode(const QDomNode & rootNode, const QString & path)
 // Helper function, get the attribute text of a node
 QString XmlFunctions::getNodeAttribute(const QDomNode & node, const QString & attribute)
 {
-
 	// Writing this is not funny
 	return node.attributes().namedItem(attribute).toAttr().value();
 	// node.toElement().attribute( attribute );  does not work for const nodes.
@@ -75,7 +73,6 @@ QString XmlFunctions::getNodeAttribute(const QDomNode & node, const QString & at
 // Helper function, get a specific child node
 QDomNode XmlFunctions::getNodeChildByKey(const QDomNodeList & childNodes, const QString & keyTagName, const QString & keyValue)
 {
-
 	for(int i = 0; i < childNodes.count(); i++)
 	{
 		//    kdDebug() << "node " << childNodes.item(i).nodeName() << "/" << keyTagName
@@ -96,7 +93,6 @@ QDomNode XmlFunctions::getNodeChildByKey(const QDomNodeList & childNodes, const 
 // Helper function, get the text value of a node
 QString XmlFunctions::getNodeValue(const QDomNode & rootNode, const QString & path)
 {
-
 	// Added code to avoid more assertion errors, and trace the cause.
 	if(rootNode.isNull())
 	{

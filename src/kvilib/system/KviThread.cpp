@@ -46,7 +46,7 @@
 
 static void kvi_threadIgnoreSigalarm()
 {
-// On Windows this stuff is useless anyway
+	// On Windows this stuff is useless anyway
 #ifdef COMPILE_IGNORE_SIGALARM
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	// Funky hack for some Solaris machines (maybe others ?)
@@ -110,14 +110,14 @@ static void kvi_threadSigpipeHandler(int)
 
 static void kvi_threadCatchSigpipe()
 {
-// On windows this stuff is useless
+	// On windows this stuff is useless
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	struct sigaction act;
 	act.sa_handler = &kvi_threadSigpipeHandler;
 	sigemptyset(&(act.sa_mask));
 	sigaddset(&(act.sa_mask), SIGPIPE);
-// CC: take care of SunOS which automatically restarts interrupted system
-// calls (and thus does not have SA_RESTART)
+	// CC: take care of SunOS which automatically restarts interrupted system
+	// calls (and thus does not have SA_RESTART)
 #ifdef SA_NOMASK
 	act.sa_flags = SA_NOMASK;
 #else
@@ -163,7 +163,7 @@ void KviThreadManager::globalDestroy()
 }
 
 KviThreadManager::KviThreadManager()
-    : QObject()
+	: QObject()
 {
 	if(g_pThreadManager)
 		qDebug("Hey... what are ya doing?");
@@ -213,9 +213,9 @@ KviThreadManager::~KviThreadManager()
 		m_pMutex->lock();
 	}
 
-// there are no more child threads
-// thus no more slave events are sent.
-// Disable the socket notifier, we no longer need it
+	// there are no more child threads
+	// thus no more slave events are sent.
+	// Disable the socket notifier, we no longer need it
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	m_pSn->setEnabled(false);
 	delete m_pSn;
@@ -320,9 +320,9 @@ void KviThreadManager::postSlaveEvent(QObject * o, QEvent * e)
 
 		m_pMutex->unlock();
 
-// WARNING : This will fail if for some reason
-// the master thread gets here! It will wait indefinitely for itself
-// if(pthread_self() != m_hMasterThread) ... ????
+		// WARNING : This will fail if for some reason
+		// the master thread gets here! It will wait indefinitely for itself
+		// if(pthread_self() != m_hMasterThread) ... ????
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		::Sleep(1); // 1ms
@@ -517,7 +517,7 @@ void KviThread::wait()
 	//qDebug(">> KviThread::wait() (this=%d)",this);
 	while(isStartingUp())
 		usleep(500); // sleep 500 microseconds
-	                 //	qDebug("!! KviThread::wait() (this=%d)",this);
+					 //	qDebug("!! KviThread::wait() (this=%d)",this);
 	g_pThreadManager->threadEnteredWaitState();
 	while(isRunning())
 	{
@@ -585,7 +585,7 @@ void KviThread::postEvent(QObject * o, QEvent * e)
 }
 
 KviSensitiveThread::KviSensitiveThread()
-    : KviThread()
+	: KviThread()
 {
 	m_pLocalEventQueueMutex = new KviMutex();
 	m_pLocalEventQueue = new KviPointerList<KviThreadEvent>;

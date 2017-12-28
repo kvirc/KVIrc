@@ -47,13 +47,13 @@ static void copyMediaType(KviMediaType * dst, const KviMediaType * src)
 }
 
 MediaTypeTreeWidgetItem::MediaTypeTreeWidgetItem(QTreeWidget * w, KviMediaType * t)
-    : QTreeWidgetItem(w)
+	: QTreeWidgetItem(w)
 {
 	copyData(t);
 }
 
 MediaTypeTreeWidgetItem::~MediaTypeTreeWidgetItem()
-    = default;
+= default;
 
 void MediaTypeTreeWidgetItem::copyData(KviMediaType * t)
 {
@@ -64,7 +64,7 @@ void MediaTypeTreeWidgetItem::copyData(KviMediaType * t)
 }
 
 OptionsWidget_mediaTypes::OptionsWidget_mediaTypes(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("mediatypes_options_widget");
 
@@ -116,16 +116,16 @@ OptionsWidget_mediaTypes::OptionsWidget_mediaTypes(QWidget * parent)
 	m_pCommandline = new QLineEdit(this);
 	layout()->addWidget(m_pCommandline, 6, 1, 1, 2);
 	mergeTip(m_pCommandline, __tr2qs_ctx("This field contains the command to execute to open a local file.<br>"
-	                                     "<tt>$0</tt> is used in place of the filename",
-	                             "options"));
+		"<tt>$0</tt> is used in place of the filename",
+		"options"));
 
 	l = new QLabel(__tr2qs_ctx("Remote open command:", "options"), this);
 	layout()->addWidget(l, 7, 0);
 	m_pRemoteExecCommandline = new QLineEdit(this);
 	layout()->addWidget(m_pRemoteExecCommandline, 7, 1, 1, 2);
 	mergeTip(m_pRemoteExecCommandline, __tr2qs_ctx("This field contains the command to execute when automatically opening a received file.<br>"
-	                                               "<tt>$0</tt> is used in place of the filename",
-	                                       "options"));
+		"<tt>$0</tt> is used in place of the filename",
+		"options"));
 
 	l = new QLabel(__tr2qs_ctx("Icon:", "options"), this);
 	layout()->addWidget(l, 8, 0);
@@ -154,7 +154,7 @@ OptionsWidget_mediaTypes::OptionsWidget_mediaTypes(QWidget * parent)
 }
 
 OptionsWidget_mediaTypes::~OptionsWidget_mediaTypes()
-    = default;
+= default;
 
 void OptionsWidget_mediaTypes::fillTreeWidget()
 {

@@ -46,7 +46,6 @@ public:
 	virtual void refresh()
 	{
 	}
-
 }; // class KviTrayIcon
 
 #endif //!_KviTrayIcon_h_

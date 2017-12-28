@@ -82,12 +82,12 @@ static bool str_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 	QString szString, szSeparator;
 	kvs_int_t iPosFrom, iPosTo;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string_to_split", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("separator", KVS_PT_NONEMPTYSTRING, 0, szSeparator)
-	KVSM_PARAMETER("pos_from", KVS_PT_INT, 0, iPosFrom)
-	KVSM_PARAMETER("pos_to", KVS_PT_INT, 0, iPosTo)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.section(szSeparator, iPosFrom, iPosTo));
+		KVSM_PARAMETER("string_to_split", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("separator", KVS_PT_NONEMPTYSTRING, 0, szSeparator)
+		KVSM_PARAMETER("pos_from", KVS_PT_INT, 0, iPosFrom)
+		KVSM_PARAMETER("pos_to", KVS_PT_INT, 0, iPosTo)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(szString.section(szSeparator, iPosFrom, iPosTo));
 	return true;
 }
 
@@ -114,8 +114,8 @@ static bool str_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 static bool str_kvs_fnc_fromclipboard(KviKvsModuleFunctionCall * c)
 {
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETERS_END(c)
-	QString szString = QApplication::clipboard()->text(QClipboard::Clipboard);
+		KVSM_PARAMETERS_END(c)
+		QString szString = QApplication::clipboard()->text(QClipboard::Clipboard);
 	c->returnValue()->setString(szString);
 	return true;
 }
@@ -142,9 +142,9 @@ static bool str_kvs_cmd_toClipboard(KviKvsModuleCommandCall * c)
 {
 	QString szValue;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("value", KVS_PT_STRING, KVS_PF_OPTIONAL, szValue)
-	KVSM_PARAMETERS_END(c)
-	QApplication::clipboard()->setText(szValue, QClipboard::Clipboard);
+		KVSM_PARAMETER("value", KVS_PT_STRING, KVS_PF_OPTIONAL, szValue)
+		KVSM_PARAMETERS_END(c)
+		QApplication::clipboard()->setText(szValue, QClipboard::Clipboard);
 	return true;
 }
 
@@ -181,9 +181,9 @@ static bool str_kvs_fnc_len(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("data", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setInteger(szString.length());
+		KVSM_PARAMETER("data", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setInteger(szString.length());
 	return true;
 }
 
@@ -208,9 +208,9 @@ static bool str_kvs_fnc_lowcase(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string_to_convert", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(KviQString::lowerISO88591(szString));
+		KVSM_PARAMETER("string_to_convert", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(KviQString::lowerISO88591(szString));
 	return true;
 }
 
@@ -235,9 +235,9 @@ static bool str_kvs_fnc_upcase(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string_to_convert", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(KviQString::upperISO88591(szString));
+		KVSM_PARAMETER("string_to_convert", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(KviQString::upperISO88591(szString));
 	return true;
 }
 
@@ -262,9 +262,9 @@ static bool str_kvs_fnc_localelowcase(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string_to_convert", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.toLower());
+		KVSM_PARAMETER("string_to_convert", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(szString.toLower());
 	return true;
 }
 
@@ -289,9 +289,9 @@ static bool str_kvs_fnc_localeupcase(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string_to_convert", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.toUpper());
+		KVSM_PARAMETER("string_to_convert", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(szString.toUpper());
 	return true;
 }
 
@@ -314,9 +314,9 @@ static bool str_kvs_fnc_isnumber(KviKvsModuleFunctionCall * c)
 	KviKvsVariant * v;
 	KviKvsNumber num;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("givenstring", KVS_PT_VARIANT, 0, v)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setBoolean(v->asNumber(num));
+		KVSM_PARAMETER("givenstring", KVS_PT_VARIANT, 0, v)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setBoolean(v->asNumber(num));
 	return true;
 }
 
@@ -340,17 +340,17 @@ static bool str_kvs_fnc_isunsignednumber(KviKvsModuleFunctionCall * c)
 	KviKvsNumber nNum;
 	bool bRet;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("givenstring", KVS_PT_VARIANT, 0, v)
-	KVSM_PARAMETERS_END(c)
-	if(!v->asNumber(nNum))
-		bRet = false;
-	else
-	{
-		if(nNum.isInteger())
-			bRet = nNum.integer() >= 0;
+		KVSM_PARAMETER("givenstring", KVS_PT_VARIANT, 0, v)
+		KVSM_PARAMETERS_END(c)
+		if(!v->asNumber(nNum))
+			bRet = false;
 		else
-			bRet = nNum.real() >= 0.0;
-	}
+		{
+			if(nNum.isInteger())
+				bRet = nNum.integer() >= 0;
+			else
+				bRet = nNum.real() >= 0.0;
+		}
 	c->returnValue()->setBoolean(bRet);
 	return true;
 }
@@ -375,9 +375,9 @@ static bool str_kvs_fnc_isempty(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("datastring", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setBoolean(szString.isEmpty());
+		KVSM_PARAMETER("datastring", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setBoolean(szString.isEmpty());
 	return true;
 }
 
@@ -403,11 +403,11 @@ static bool str_kvs_fnc_contains(KviKvsModuleFunctionCall * c)
 	QString szString, szSubString;
 	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("container", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("tofind", KVS_PT_STRING, 0, szSubString)
-	KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
-	KVSM_PARAMETERS_END(c)
-	bool bIs = szString.contains(szSubString, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		KVSM_PARAMETER("container", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("tofind", KVS_PT_STRING, 0, szSubString)
+		KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
+		KVSM_PARAMETERS_END(c)
+		bool bIs = szString.contains(szSubString, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	c->returnValue()->setBoolean(bIs);
 	return true;
 }
@@ -434,11 +434,11 @@ static bool str_kvs_fnc_equal(KviKvsModuleFunctionCall * c)
 	QString szString, szString2;
 	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("fromcompare", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("tocompare", KVS_PT_STRING, 0, szString2)
-	KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
-	KVSM_PARAMETERS_END(c)
-	bool bIs = szString.compare(szString2, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive) == 0;
+		KVSM_PARAMETER("fromcompare", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("tocompare", KVS_PT_STRING, 0, szString2)
+		KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
+		KVSM_PARAMETERS_END(c)
+		bool bIs = szString.compare(szString2, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive) == 0;
 	c->returnValue()->setBoolean(bIs);
 	return true;
 }
@@ -465,11 +465,11 @@ static bool str_kvs_fnc_cmp(KviKvsModuleFunctionCall * c)
 	QString szString, szString2;
 	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("fromcompare", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("tocompare", KVS_PT_STRING, 0, szString2)
-	KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
-	KVSM_PARAMETERS_END(c)
-	int iCmp = szString.compare(szString2, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		KVSM_PARAMETER("fromcompare", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("tocompare", KVS_PT_STRING, 0, szString2)
+		KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
+		KVSM_PARAMETERS_END(c)
+		int iCmp = szString.compare(szString2, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	c->returnValue()->setInteger(iCmp);
 	return true;
 }
@@ -497,12 +497,12 @@ static bool str_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 	QString szFindIn, szToFind;
 	kvs_int_t iOccurrence;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("findIn", KVS_PT_STRING, 0, szFindIn)
-	KVSM_PARAMETER("tofind", KVS_PT_STRING, 0, szToFind)
-	KVSM_PARAMETER("occurrence", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iOccurrence)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("findIn", KVS_PT_STRING, 0, szFindIn)
+		KVSM_PARAMETER("tofind", KVS_PT_STRING, 0, szToFind)
+		KVSM_PARAMETER("occurrence", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iOccurrence)
+		KVSM_PARAMETERS_END(c)
 
-	int iIdx = -1;
+		int iIdx = -1;
 	if(iOccurrence >= 0 && !szFindIn.isEmpty() && !szToFind.isEmpty())
 	{
 		do
@@ -536,12 +536,12 @@ static bool str_kvs_fnc_findfirst(KviKvsModuleFunctionCall * c)
 	bool bCase;
 	kvs_int_t iFromIndex;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("findIn", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("toFind", KVS_PT_STRING, 0, szString2)
-	KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
-	KVSM_PARAMETER("from_index", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iFromIndex)
-	KVSM_PARAMETERS_END(c)
-	int iIdx = szString.indexOf(szString2, iFromIndex, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		KVSM_PARAMETER("findIn", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("toFind", KVS_PT_STRING, 0, szString2)
+		KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
+		KVSM_PARAMETER("from_index", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iFromIndex)
+		KVSM_PARAMETERS_END(c)
+		int iIdx = szString.indexOf(szString2, iFromIndex, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	c->returnValue()->setInteger(iIdx);
 	return true;
 }
@@ -567,11 +567,11 @@ static bool str_kvs_fnc_findlast(KviKvsModuleFunctionCall * c)
 	QString szString, szString2;
 	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("findIn", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("toFind", KVS_PT_STRING, 0, szString2)
-	KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
-	KVSM_PARAMETERS_END(c)
-	int iIdx = szString.lastIndexOf(szString2, -1, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		KVSM_PARAMETER("findIn", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("toFind", KVS_PT_STRING, 0, szString2)
+		KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
+		KVSM_PARAMETERS_END(c)
+		int iIdx = szString.lastIndexOf(szString2, -1, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	c->returnValue()->setInteger(iIdx);
 	return true;
 }
@@ -596,10 +596,10 @@ static bool str_kvs_fnc_left(KviKvsModuleFunctionCall * c)
 	QString szString;
 	kvs_int_t iIdx;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("data", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("index", KVS_PT_INTEGER, 0, iIdx)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.left(iIdx));
+		KVSM_PARAMETER("data", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("index", KVS_PT_INTEGER, 0, iIdx)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(szString.left(iIdx));
 	return true;
 }
 
@@ -624,10 +624,10 @@ static bool str_kvs_fnc_right(KviKvsModuleFunctionCall * c)
 	QString szString;
 	kvs_int_t iIdx;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("data", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("index", KVS_PT_INTEGER, 0, iIdx)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.right(iIdx));
+		KVSM_PARAMETER("data", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("index", KVS_PT_INTEGER, 0, iIdx)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(szString.right(iIdx));
 	return true;
 }
 
@@ -653,11 +653,11 @@ static bool str_kvs_fnc_mid(KviKvsModuleFunctionCall * c)
 	QString szString;
 	kvs_int_t iIdx, iNchars;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("data", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("startidx", KVS_PT_INTEGER, 0, iIdx)
-	KVSM_PARAMETER("nchars", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iNchars)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.mid(iIdx, (iNchars > 0 ? iNchars : -1)));
+		KVSM_PARAMETER("data", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("startidx", KVS_PT_INTEGER, 0, iIdx)
+		KVSM_PARAMETER("nchars", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iNchars)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(szString.mid(iIdx, (iNchars > 0 ? iNchars : -1)));
 	return true;
 }
 
@@ -680,10 +680,10 @@ static bool str_kvs_fnc_append(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szString2;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("toappend", KVS_PT_STRING, 0, szString2)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.append(szString2));
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("toappend", KVS_PT_STRING, 0, szString2)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(szString.append(szString2));
 	return true;
 }
 
@@ -706,10 +706,10 @@ static bool str_kvs_fnc_prepend(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szString2;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("toprepend", KVS_PT_STRING, 0, szString2)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.prepend(szString2));
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("toprepend", KVS_PT_STRING, 0, szString2)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(szString.prepend(szString2));
 	return true;
 }
 
@@ -734,11 +734,11 @@ static bool str_kvs_fnc_insert(KviKvsModuleFunctionCall * c)
 	QString szString, szString2;
 	kvs_int_t iIdx;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("substring", KVS_PT_STRING, 0, szString2)
-	KVSM_PARAMETER("nchars", KVS_PT_INTEGER, 0, iIdx)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.insert(iIdx, szString2));
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("substring", KVS_PT_STRING, 0, szString2)
+		KVSM_PARAMETER("nchars", KVS_PT_INTEGER, 0, iIdx)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(szString.insert(iIdx, szString2));
 	return true;
 }
 
@@ -761,9 +761,9 @@ static bool str_kvs_fnc_strip(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(szString.trimmed());
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(szString.trimmed());
 	return true;
 }
 
@@ -786,9 +786,9 @@ static bool str_kvs_fnc_stripleft(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETERS_END(c)
-	int idx = 0;
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETERS_END(c)
+		int idx = 0;
 	while(idx < szString.length() && szString[idx].isSpace())
 		++idx;
 	if(idx > 0)
@@ -816,9 +816,9 @@ static bool str_kvs_fnc_stripright(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETERS_END(c)
-	int iIdx = szString.length();
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETERS_END(c)
+		int iIdx = szString.length();
 	while(iIdx > 0 && szString[iIdx - 1].isSpace())
 		--iIdx;
 	if(iIdx < szString.length())
@@ -846,9 +846,9 @@ static bool str_kvs_fnc_stripcolors(KviKvsModuleFunctionCall * c)
 {
 	QString szString;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(KviControlCodes::stripControlBytes(szString));
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(KviControlCodes::stripControlBytes(szString));
 	return true;
 }
 
@@ -878,12 +878,12 @@ static bool str_kvs_fnc_replace(KviKvsModuleFunctionCall * c)
 	QString szString, szNewStr, szToReplace;
 	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("toreplace", KVS_PT_STRING, 0, szToReplace)
-	KVSM_PARAMETER("newstr", KVS_PT_STRING, 0, szNewStr)
-	KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
-	KVSM_PARAMETERS_END(c)
-	szString.replace(szToReplace, szNewStr, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("toreplace", KVS_PT_STRING, 0, szToReplace)
+		KVSM_PARAMETER("newstr", KVS_PT_STRING, 0, szNewStr)
+		KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
+		KVSM_PARAMETERS_END(c)
+		szString.replace(szToReplace, szNewStr, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	c->returnValue()->setString(szString);
 	return true;
 }
@@ -908,14 +908,14 @@ static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 	QString szString;
 	unsigned int idx = 0;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETERS_END(c)
 
-	const char * const toReplace[] = {
-		" ", "#", "$", "/", ":",
-		"<", "=", ">", "?", "@",
-		"[", "\\", "]", "^", "`",
-		"{", "|", "}", nullptr
+		const char * const toReplace[] = {
+			" ", "#", "$", "/", ":",
+			"<", "=", ">", "?", "@",
+			"[", "\\", "]", "^", "`",
+			"{", "|", "}", nullptr
 	};
 
 	const char * const newStr[] = {
@@ -965,11 +965,11 @@ static bool str_kvs_fnc_lefttofirst(KviKvsModuleFunctionCall * c)
 	QString szString, szNewstr;
 	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("substring", KVS_PT_STRING, 0, szNewstr)
-	KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
-	KVSM_PARAMETERS_END(c)
-	int idx = szString.indexOf(szNewstr, 0, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("substring", KVS_PT_STRING, 0, szNewstr)
+		KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
+		KVSM_PARAMETERS_END(c)
+		int idx = szString.indexOf(szNewstr, 0, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	if(idx != -1)
 		c->returnValue()->setString(szString.left(idx));
 	else
@@ -1007,11 +1007,11 @@ static bool str_kvs_fnc_lefttolast(KviKvsModuleFunctionCall * c)
 	QString szString, szNewstr;
 	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("substring", KVS_PT_STRING, 0, szNewstr)
-	KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
-	KVSM_PARAMETERS_END(c)
-	int idx = szString.lastIndexOf(szNewstr, -1, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("substring", KVS_PT_STRING, 0, szNewstr)
+		KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
+		KVSM_PARAMETERS_END(c)
+		int idx = szString.lastIndexOf(szNewstr, -1, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	if(idx != -1)
 		c->returnValue()->setString(szString.left(idx));
 	else
@@ -1049,11 +1049,11 @@ static bool str_kvs_fnc_rightfromfirst(KviKvsModuleFunctionCall * c)
 	QString szString, szNewstr;
 	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("substring", KVS_PT_STRING, 0, szNewstr)
-	KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
-	KVSM_PARAMETERS_END(c)
-	int idx = szString.indexOf(szNewstr, 0, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("substring", KVS_PT_STRING, 0, szNewstr)
+		KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
+		KVSM_PARAMETERS_END(c)
+		int idx = szString.indexOf(szNewstr, 0, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	if(idx != -1)
 		c->returnValue()->setString(szString.right(szString.length() - (idx + szNewstr.length())));
 	else
@@ -1091,11 +1091,11 @@ static bool str_kvs_fnc_rightfromlast(KviKvsModuleFunctionCall * c)
 	QString szString, szNewstr;
 	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("substring", KVS_PT_STRING, 0, szNewstr)
-	KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
-	KVSM_PARAMETERS_END(c)
-	int idx = szString.lastIndexOf(szNewstr, -1, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("substring", KVS_PT_STRING, 0, szNewstr)
+		KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
+		KVSM_PARAMETERS_END(c)
+		int idx = szString.lastIndexOf(szNewstr, -1, bCase ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	if(idx != -1)
 		c->returnValue()->setString(szString.right(szString.length() - (idx + szNewstr.length())));
 	else
@@ -1139,13 +1139,13 @@ static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 	QString szWildcard, szString, szFlags;
 	bool bCase;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("wildcard", KVS_PT_NONEMPTYSTRING, 0, szWildcard)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
-	KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
-	KVSM_PARAMETERS_END(c)
-	bool bRegExp = szFlags.indexOf('r', 0, Qt::CaseInsensitive) != -1;
-	bool bExact  = szFlags.indexOf('e', 0, Qt::CaseInsensitive) != -1;
+		KVSM_PARAMETER("wildcard", KVS_PT_NONEMPTYSTRING, 0, szWildcard)
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
+		KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
+		KVSM_PARAMETERS_END(c)
+		bool bRegExp = szFlags.indexOf('r', 0, Qt::CaseInsensitive) != -1;
+	bool bExact = szFlags.indexOf('e', 0, Qt::CaseInsensitive) != -1;
 	bool bIs = KviQString::matchString(szWildcard, szString, bRegExp, bExact, bCase ? true : false);
 	c->returnValue()->setBoolean(bIs);
 	return true;
@@ -1184,10 +1184,10 @@ static bool str_kvs_fnc_word(KviKvsModuleFunctionCall * c)
 	QString szString;
 	kvs_int_t iOccurence;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("occurrence", KVS_PT_INT, 0, iOccurence)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETERS_END(c)
-	int idx = 0;
+		KVSM_PARAMETER("occurrence", KVS_PT_INT, 0, iOccurence)
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETERS_END(c)
+		int idx = 0;
 	int cnt = 0;
 	int len = szString.length();
 	while(idx < len)
@@ -1249,15 +1249,15 @@ static bool str_kvs_fnc_token(KviKvsModuleFunctionCall * c)
 	QString szString, sep;
 	kvs_uint_t n;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("n", KVS_PT_UINT, 0, n)
-	KVSM_PARAMETER("separator", KVS_PT_STRING, 0, sep)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETERS_END(c)
-	if(sep.isEmpty())
-	{
-		c->returnValue()->setString(szString);
-		return true;
-	}
+		KVSM_PARAMETER("n", KVS_PT_UINT, 0, n)
+		KVSM_PARAMETER("separator", KVS_PT_STRING, 0, sep)
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETERS_END(c)
+		if(sep.isEmpty())
+		{
+			c->returnValue()->setString(szString);
+			return true;
+		}
 
 	int idx = 0;
 	unsigned int cnt = 0;
@@ -1308,10 +1308,10 @@ static bool str_kvs_fnc_charsum(KviKvsModuleFunctionCall * c)
 	QString szString;
 	bool bCaseInsensitive;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("data", KVS_PT_STRING, 0, szString)
-	KVSM_PARAMETER("bCaseInsensitive", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCaseInsensitive)
-	KVSM_PARAMETERS_END(c)
-	unsigned int sum = 0;
+		KVSM_PARAMETER("data", KVS_PT_STRING, 0, szString)
+		KVSM_PARAMETER("bCaseInsensitive", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCaseInsensitive)
+		KVSM_PARAMETERS_END(c)
+		unsigned int sum = 0;
 	int idx = 0;
 	int len = szString.length();
 	if(bCaseInsensitive)
@@ -1353,10 +1353,10 @@ static bool str_kvs_fnc_chop(KviKvsModuleFunctionCall * c)
 	QString szString, sep;
 	kvs_uint_t n;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("data", KVS_PT_NONEMPTYSTRING, 0, szString)
-	KVSM_PARAMETER("n", KVS_PT_UINT, 0, n)
-	KVSM_PARAMETERS_END(c)
-	szString.chop(n);
+		KVSM_PARAMETER("data", KVS_PT_NONEMPTYSTRING, 0, szString)
+		KVSM_PARAMETER("n", KVS_PT_UINT, 0, n)
+		KVSM_PARAMETERS_END(c)
+		szString.chop(n);
 	c->returnValue()->setString(szString);
 	return true;
 }
@@ -1381,13 +1381,13 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 {
 	QString szString, szType, szResult;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("data", KVS_PT_NONEMPTYSTRING, 0, szString)
-	KVSM_PARAMETER("algorithm", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szType)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("data", KVS_PT_NONEMPTYSTRING, 0, szString)
+		KVSM_PARAMETER("algorithm", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szType)
+		KVSM_PARAMETERS_END(c)
 
 #if defined(COMPILE_SSL_SUPPORT)
-	if(szType.isEmpty())
-		szType = "md5";
+		if(szType.isEmpty())
+			szType = "md5";
 
 	EVP_MD_CTX *mdctx;
 	const EVP_MD * md;
@@ -1421,7 +1421,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 
 	c->returnValue()->setString(szResult);
 #else // fall back to QCryptographicHash
-	QCryptographicHash::Algorithm qAlgo;
+		QCryptographicHash::Algorithm qAlgo;
 	if(szType.toLower() == "sha1")
 	{
 		qAlgo = QCryptographicHash::Sha1;
@@ -1470,12 +1470,12 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 	KviKvsArrayCast ac;
 	QString szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("separator", KVS_PT_STRING, 0, szSep)
-	KVSM_PARAMETER("data", KVS_PT_ARRAYCAST, 0, ac)
-	KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("separator", KVS_PT_STRING, 0, szSep)
+		KVSM_PARAMETER("data", KVS_PT_ARRAYCAST, 0, ac)
+		KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
+		KVSM_PARAMETERS_END(c)
 
-	QString szRet;
+		QString szRet;
 	bool bSkipEmpty = szFlags.indexOf('n', 0, Qt::CaseInsensitive) != -1;
 
 	bool bFirst = true;
@@ -1567,13 +1567,13 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 	QString szMatch, szFlags;
 	kvs_int_t iOffset;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("match", KVS_PT_STRING, 0, szMatch)
-	KVSM_PARAMETER("strings", KVS_PT_ARRAYCAST, 0, ac)
-	KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
-	KVSM_PARAMETER("offset", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iOffset)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("match", KVS_PT_STRING, 0, szMatch)
+		KVSM_PARAMETER("strings", KVS_PT_ARRAYCAST, 0, ac)
+		KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
+		KVSM_PARAMETER("offset", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iOffset)
+		KVSM_PARAMETERS_END(c)
 
-	KviKvsArray * n = new KviKvsArray();
+		KviKvsArray * n = new KviKvsArray();
 	c->returnValue()->setArray(n);
 
 	KviKvsArray * a = ac.array();
@@ -1714,15 +1714,15 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 	QString szSep, szStr, szFla;
 	kvs_int_t iMaxItems;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("separator", KVS_PT_STRING, 0, szSep)
-	KVSM_PARAMETER("string", KVS_PT_STRING, 0, szStr)
-	KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFla)
-	KVSM_PARAMETER("maxitems", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iMaxItems)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("separator", KVS_PT_STRING, 0, szSep)
+		KVSM_PARAMETER("string", KVS_PT_STRING, 0, szStr)
+		KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFla)
+		KVSM_PARAMETER("maxitems", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iMaxItems)
+		KVSM_PARAMETERS_END(c)
 
 #if QT_VERSION >= QT_VERSION_CHECK(5, 4, 0)
-	if(c->params()->count() < 4)
-	    iMaxItems = -1;
+		if(c->params()->count() < 4)
+			iMaxItems = -1;
 
 	KviKvsArray * a = new KviKvsArray();
 	c->returnValue()->setArray(a);
@@ -1731,7 +1731,7 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 		return true;
 	if(iMaxItems == 1)
 	{
-		a->append(new KviKvsVariant{szStr});
+		a->append(new KviKvsVariant{ szStr });
 		return true;
 	}
 
@@ -1743,24 +1743,24 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 
 	QVector<QStringRef> list;
 	if(bWild || bContainsR)
-		list = szStr.splitRef(QRegExp{szSep, sensitivity, bWild ? QRegExp::Wildcard : QRegExp::RegExp}, splitBehavior);
+		list = szStr.splitRef(QRegExp{ szSep, sensitivity, bWild ? QRegExp::Wildcard : QRegExp::RegExp }, splitBehavior);
 	else
 		list = szStr.splitRef(szSep, splitBehavior, sensitivity);
 
 	if(iMaxItems < 0 || iMaxItems >= list.size())
 	{
 		for(auto&& str : list)
-			a->append(new KviKvsVariant{str.toString()});
+			a->append(new KviKvsVariant{ str.toString() });
 	}
 	else
 	{
-		for(int i{0}; i < iMaxItems - 1; ++i)
-			a->append(new KviKvsVariant{list[i].toString()});
-		a->append(new KviKvsVariant{szStr.mid(list[iMaxItems - 1].position())});
+		for(int i{ 0 }; i < iMaxItems - 1; ++i)
+			a->append(new KviKvsVariant{ list[i].toString() });
+		a->append(new KviKvsVariant{ szStr.mid(list[iMaxItems - 1].position()) });
 	}
 #else //QT_VERSION
-	if(c->params()->count() < 4)
-		iMaxItems = -1;
+		if(c->params()->count() < 4)
+			iMaxItems = -1;
 
 	KviKvsArray * a = new KviKvsArray();
 	c->returnValue()->setArray(a);
@@ -1917,11 +1917,11 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 	QString szFormat;
 	KviKvsVariantList vArgs;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
-	KVSM_PARAMETER("vArgs", KVS_PT_VARIANTLIST, 0, vArgs)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
+		KVSM_PARAMETER("vArgs", KVS_PT_VARIANTLIST, 0, vArgs)
+		KVSM_PARAMETERS_END(c)
 
-	QString s;
+		QString s;
 
 #define MEMINCREMENT 32
 
@@ -1966,70 +1966,70 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 			if(reallen == allocsize)
 				INCREMENT_MEM
 
-			//copy up to a '?'
-			if(fmt->unicode() != '?')
-			{
-				*p++ = *fmt;
-				reallen++;
-				continue;
-			}
+				//copy up to a '?'
+				if(fmt->unicode() != '?')
+				{
+					*p++ = *fmt;
+					reallen++;
+					continue;
+				}
 
 			++fmt; //skip this '?'
 			switch(fmt->unicode())
 			{
-				case 's':
-				{
-					QString sz;
-					if(pVar)
-						pVar->asString(sz);
-					if(sz.isEmpty())
-						continue;
-					int len = sz.length();
-					if((allocsize - reallen) < len)
-						INCREMENT_MEM_BY(len)
-					const QChar * ch = sz.unicode();
-					while(len--)
-						*p++ = *ch++;
-					reallen += sz.length();
-					pVar = vArgs.next();
+			case 's':
+			{
+				QString sz;
+				if(pVar)
+					pVar->asString(sz);
+				if(sz.isEmpty())
 					continue;
-				}
-				case 'd': //signed integer
+				int len = sz.length();
+				if((allocsize - reallen) < len)
+					INCREMENT_MEM_BY(len)
+					const QChar * ch = sz.unicode();
+				while(len--)
+					*p++ = *ch++;
+				reallen += sz.length();
+				pVar = vArgs.next();
+				continue;
+			}
+			case 'd': //signed integer
+			{
+				if(pVar)
 				{
-					if(pVar)
+					if(!pVar->asInteger(argValue))
 					{
-						if(!pVar->asInteger(argValue))
-						{
-							c->warning(__tr2qs("Invalid argument for ?d escape sequence, 0 assumed"));
-							argValue = 0;
-						}
-					}
-					else
-					{
-						c->warning(__tr2qs("Missing argument for ?d escape sequence, 0 assumed"));
+						c->warning(__tr2qs("Invalid argument for ?d escape sequence, 0 assumed"));
 						argValue = 0;
 					}
+				}
+				else
+				{
+					c->warning(__tr2qs("Missing argument for ?d escape sequence, 0 assumed"));
+					argValue = 0;
+				}
 
+				if(argValue < 0)
+				{ //negative integer
+					*p++ = '-';
+					reallen++;
+					argValue = -argValue; //need to have it positive
+					// most negative integer exception (avoid completely senseless (non digit) responses)
 					if(argValue < 0)
-					{ //negative integer
-						*p++ = '-';
-						reallen++;
-						argValue = -argValue; //need to have it positive
-						// most negative integer exception (avoid completely senseless (non digit) responses)
-						if(argValue < 0)
-							argValue = 0; //we get -0 here
-					}
-					//write the number in a temporary buffer
-					pNumBuf = numberBuffer;
-					do
-					{
-						tmp = argValue / 10;
-						*pNumBuf++ = argValue - (tmp * 10) + '0';
-					} while((argValue = tmp));
-					//copy now....
-					argUValue = pNumBuf - numberBuffer; //length of the number string
-					if((allocsize - reallen) < (int)argUValue)
-						INCREMENT_MEM_BY(argUValue)
+						argValue = 0; //we get -0 here
+				}
+				//write the number in a temporary buffer
+				pNumBuf = numberBuffer;
+				do
+				{
+					tmp = argValue / 10;
+					*pNumBuf++ = argValue - (tmp * 10) + '0';
+				} while((argValue = tmp));
+				//copy now....
+				argUValue = pNumBuf - numberBuffer; //length of the number string
+				if((allocsize - reallen) < (int)argUValue)
+					INCREMENT_MEM_BY(argUValue)
 					do
 					{
 						*p++ = QChar(*--pNumBuf);
@@ -2037,34 +2037,34 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 					reallen += argUValue;
 					pVar = vArgs.next();
 					continue;
-				}
-				case 'u': //unsigned integer
+			}
+			case 'u': //unsigned integer
+			{
+				if(pVar)
 				{
-					if(pVar)
+					if(!pVar->asInteger(argValue))
 					{
-						if(!pVar->asInteger(argValue))
-						{
-							c->warning(__tr2qs("Invalid argument for ?u escape sequence, 0 assumed"));
-							argValue = 0;
-						}
-					}
-					else
-					{
-						c->warning(__tr2qs("Missing argument for ?u escape sequence, 0 assumed"));
+						c->warning(__tr2qs("Invalid argument for ?u escape sequence, 0 assumed"));
 						argValue = 0;
 					}
-					argUValue = (kvs_uint_t)argValue;
-					//write the number in a temporary buffer
-					pNumBuf = numberBuffer;
-					do
-					{
-						tmp = argUValue / 10;
-						*pNumBuf++ = argUValue - (tmp * 10) + '0';
-					} while((argUValue = tmp));
-					//copy now....
-					argValue = pNumBuf - numberBuffer; //length of the number string
-					if((allocsize - reallen) < argValue)
-						INCREMENT_MEM_BY(argValue)
+				}
+				else
+				{
+					c->warning(__tr2qs("Missing argument for ?u escape sequence, 0 assumed"));
+					argValue = 0;
+				}
+				argUValue = (kvs_uint_t)argValue;
+				//write the number in a temporary buffer
+				pNumBuf = numberBuffer;
+				do
+				{
+					tmp = argUValue / 10;
+					*pNumBuf++ = argUValue - (tmp * 10) + '0';
+				} while((argUValue = tmp));
+				//copy now....
+				argValue = pNumBuf - numberBuffer; //length of the number string
+				if((allocsize - reallen) < argValue)
+					INCREMENT_MEM_BY(argValue)
 					do
 					{
 						*p++ = *--pNumBuf;
@@ -2072,38 +2072,38 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 					reallen += argValue;
 					pVar = vArgs.next();
 					continue;
-				}
-				case 'h':
-				case 'x': // hexadecimal unsigned integer
-				{
-					static char hexsmalldigits[] = "0123456789abcdef";
+			}
+			case 'h':
+			case 'x': // hexadecimal unsigned integer
+			{
+				static char hexsmalldigits[] = "0123456789abcdef";
 
-					if(pVar)
+				if(pVar)
+				{
+					if(!pVar->asInteger(argValue))
 					{
-						if(!pVar->asInteger(argValue))
-						{
-							c->warning(__tr2qs("Invalid argument for ?x escape sequence, 0 assumed"));
-							argValue = 0;
-						}
-					}
-					else
-					{
-						c->warning(__tr2qs("Missing argument for ?x escape sequence, 0 assumed"));
+						c->warning(__tr2qs("Invalid argument for ?x escape sequence, 0 assumed"));
 						argValue = 0;
 					}
-					argUValue = (kvs_uint_t)argValue;
+				}
+				else
+				{
+					c->warning(__tr2qs("Missing argument for ?x escape sequence, 0 assumed"));
+					argValue = 0;
+				}
+				argUValue = (kvs_uint_t)argValue;
 
-					//write the number in a temporary buffer
-					pNumBuf = numberBuffer;
-					do
-					{
-						tmp = argUValue / 16;
-						*pNumBuf++ = hexsmalldigits[argUValue - (tmp * 16)];
-					} while((argUValue = tmp));
-					//copy now....
-					argValue = pNumBuf - numberBuffer; //length of the number string
-					if((allocsize - reallen) < argValue)
-						INCREMENT_MEM_BY(argValue)
+				//write the number in a temporary buffer
+				pNumBuf = numberBuffer;
+				do
+				{
+					tmp = argUValue / 16;
+					*pNumBuf++ = hexsmalldigits[argUValue - (tmp * 16)];
+				} while((argUValue = tmp));
+				//copy now....
+				argValue = pNumBuf - numberBuffer; //length of the number string
+				if((allocsize - reallen) < argValue)
+					INCREMENT_MEM_BY(argValue)
 					do
 					{
 						*p++ = *--pNumBuf;
@@ -2111,36 +2111,36 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 					reallen += argValue;
 					pVar = vArgs.next();
 					continue;
-				}
-				case 'H':
-				case 'X': // hexadecimal unsigned integer
+			}
+			case 'H':
+			case 'X': // hexadecimal unsigned integer
+			{
+				static char hexbigdigits[] = "0123456789ABCDEF";
+				if(pVar)
 				{
-					static char hexbigdigits[] = "0123456789ABCDEF";
-					if(pVar)
+					if(!pVar->asInteger(argValue))
 					{
-						if(!pVar->asInteger(argValue))
-						{
-							c->warning(__tr2qs("Invalid argument for ?X escape sequence, 0 assumed"));
-							argValue = 0;
-						}
-					}
-					else
-					{
-						c->warning(__tr2qs("Missing argument for ?X escape sequence, 0 assumed"));
+						c->warning(__tr2qs("Invalid argument for ?X escape sequence, 0 assumed"));
 						argValue = 0;
 					}
-					argUValue = (kvs_uint_t)argValue;
-					//write the number in a temporary buffer
-					pNumBuf = numberBuffer;
-					do
-					{
-						tmp = argUValue / 16;
-						*pNumBuf++ = hexbigdigits[argUValue - (tmp * 16)];
-					} while((argUValue = tmp));
-					//copy now....
-					argValue = pNumBuf - numberBuffer; //length of the number string
-					if((allocsize - reallen) < argValue)
-						INCREMENT_MEM_BY(argValue)
+				}
+				else
+				{
+					c->warning(__tr2qs("Missing argument for ?X escape sequence, 0 assumed"));
+					argValue = 0;
+				}
+				argUValue = (kvs_uint_t)argValue;
+				//write the number in a temporary buffer
+				pNumBuf = numberBuffer;
+				do
+				{
+					tmp = argUValue / 16;
+					*pNumBuf++ = hexbigdigits[argUValue - (tmp * 16)];
+				} while((argUValue = tmp));
+				//copy now....
+				argValue = pNumBuf - numberBuffer; //length of the number string
+				if((allocsize - reallen) < argValue)
+					INCREMENT_MEM_BY(argValue)
 					do
 					{
 						*p++ = *--pNumBuf;
@@ -2148,113 +2148,113 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 					reallen += argValue;
 					pVar = vArgs.next();
 					continue;
-				}
-				case '?':
+			}
+			case '?':
+			{
+				if(fmt->unicode())
 				{
-					if(fmt->unicode())
-					{
-						if(reallen == allocsize)
-							INCREMENT_MEM
+					if(reallen == allocsize)
+						INCREMENT_MEM
 						*p++ = *fmt;
-						reallen++;
-					}
-					continue;
+					reallen++;
 				}
-				break;
+				continue;
+			}
+			break;
+			case 'e':
+			case 'E':
+			case 'F':
+			case 'f':
+			case '.':
+			{
+				// precision mark
+				const QChar * save = fmt;
+				char fmtbuffer[8];
+				fmtbuffer[0] = '%';
+				fmtbuffer[1] = '.';
+				int idx = 2;
+
+				if(fmt->unicode() == '.')
+				{
+					// handle the optional precision parameter
+					fmt++;
+					while((fmt->unicode() >= '0') && (fmt->unicode() <= '9') && (idx < 6))
+					{
+						fmtbuffer[idx] = fmt->unicode();
+						fmt++;
+						idx++;
+					}
+				}
+
+				fmtbuffer[idx] = fmt->unicode();
+				fmtbuffer[idx + 1] = 0;
+
+				if(pVar)
+				{
+					if(!pVar->asReal(argRValue))
+					{
+						c->warning(__tr2qs("Invalid argument for a floating point escape sequence, 0.0 assumed"));
+						argRValue = 0.0;
+					}
+				}
+				else
+				{
+					c->warning(__tr2qs("Missing argument for a floating point escape sequence, 0.0 assumed"));
+					argRValue = 0;
+				}
+				switch(fmt->unicode())
+				{
 				case 'e':
 				case 'E':
 				case 'F':
 				case 'f':
-				case '.':
-				{
-					// precision mark
-					const QChar * save = fmt;
-					char fmtbuffer[8];
-					fmtbuffer[0] = '%';
-					fmtbuffer[1] = '.';
-					int idx = 2;
-
-					if(fmt->unicode() == '.')
-					{
-						// handle the optional precision parameter
-						fmt++;
-						while((fmt->unicode() >= '0') && (fmt->unicode() <= '9') && (idx < 6))
-						{
-							fmtbuffer[idx] = fmt->unicode();
-							fmt++;
-							idx++;
-						}
-					}
-
-					fmtbuffer[idx] = fmt->unicode();
-					fmtbuffer[idx + 1] = 0;
-
-					if(pVar)
-					{
-						if(!pVar->asReal(argRValue))
-						{
-							c->warning(__tr2qs("Invalid argument for a floating point escape sequence, 0.0 assumed"));
-							argRValue = 0.0;
-						}
-					}
-					else
-					{
-						c->warning(__tr2qs("Missing argument for a floating point escape sequence, 0.0 assumed"));
-						argRValue = 0;
-					}
-					switch(fmt->unicode())
-					{
-						case 'e':
-						case 'E':
-						case 'F':
-						case 'f':
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-							_snprintf(numberBuffer, sizeof(numberBuffer), fmtbuffer, argRValue);
+					_snprintf(numberBuffer, sizeof(numberBuffer), fmtbuffer, argRValue);
 #else
-							::sprintf(numberBuffer, fmtbuffer, argRValue);
+					::sprintf(numberBuffer, fmtbuffer, argRValue);
 #endif
-							//copy now....
-							argValue = kvi_strLen(numberBuffer);
-							if((allocsize - reallen) < argValue)
-								INCREMENT_MEM_BY(argValue)
-							pNumBuf = numberBuffer;
-							while(*pNumBuf)
-							{
-								*p++ = *pNumBuf++;
-							}
-							reallen += argValue;
-							break;
-						default:
-							// anything else is crap.. invalid format
-							fmt = save;
-							*p++ = '?'; //write it
-							reallen++;
-							if(fmt->unicode())
-							{
-								if(reallen == allocsize)
-									INCREMENT_MEM
-								*p++ = *fmt;
-								reallen++;
-							}
-							break;
+					//copy now....
+					argValue = kvi_strLen(numberBuffer);
+					if((allocsize - reallen) < argValue)
+						INCREMENT_MEM_BY(argValue)
+						pNumBuf = numberBuffer;
+					while(*pNumBuf)
+					{
+						*p++ = *pNumBuf++;
 					}
-					pVar = vArgs.next();
-					continue;
-				}
-				break;
-				default: //a normal ? followed by some char
-				{
+					reallen += argValue;
+					break;
+				default:
+					// anything else is crap.. invalid format
+					fmt = save;
 					*p++ = '?'; //write it
 					reallen++;
 					if(fmt->unicode())
 					{
 						if(reallen == allocsize)
 							INCREMENT_MEM
-						*p++ = *fmt;
+							*p++ = *fmt;
 						reallen++;
 					}
-					continue;
+					break;
 				}
+				pVar = vArgs.next();
+				continue;
+			}
+			break;
+			default: //a normal ? followed by some char
+			{
+				*p++ = '?'; //write it
+				reallen++;
+				if(fmt->unicode())
+				{
+					if(reallen == allocsize)
+						INCREMENT_MEM
+						*p++ = *fmt;
+					reallen++;
+				}
+				continue;
+			}
 			}
 		}
 
@@ -2312,14 +2312,14 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 	QByteArray szCert;
 	QByteArray szPass;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("message", KVS_PT_NONEMPTYCSTRING, 0, szMessage)
-	KVSM_PARAMETER("certificate", KVS_PT_NONEMPTYCSTRING, KVS_PF_OPTIONAL, szCert)
-	KVSM_PARAMETER("password", KVS_PT_NONEMPTYCSTRING, KVS_PF_OPTIONAL, szPass)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("message", KVS_PT_NONEMPTYCSTRING, 0, szMessage)
+		KVSM_PARAMETER("certificate", KVS_PT_NONEMPTYCSTRING, KVS_PF_OPTIONAL, szCert)
+		KVSM_PARAMETER("password", KVS_PT_NONEMPTYCSTRING, KVS_PF_OPTIONAL, szPass)
+		KVSM_PARAMETERS_END(c)
 
 #if defined(COMPILE_SSL_SUPPORT)
 
-	KviSSL::globalSSLInit();
+		KviSSL::globalSSLInit();
 	EVP_MD_CTX *md_ctx;
 	EVP_PKEY * pKey = nullptr;
 	unsigned int len = 0;
@@ -2393,7 +2393,7 @@ static bool str_kvs_fnc_evpSign(KviKvsModuleFunctionCall * c)
 	return true;
 
 #else
-	c->warning(__tr2qs("KVIrc is compiled without OpenSSL support."));
+		c->warning(__tr2qs("KVIrc is compiled without OpenSSL support."));
 	c->returnValue()->setString("");
 	return true;
 #endif
@@ -2449,15 +2449,15 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 	QByteArray szPass;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("message", KVS_PT_NONEMPTYCSTRING, 0, szMessage)
-	KVSM_PARAMETER("signature", KVS_PT_NONEMPTYCSTRING, 0, szSignB64)
-	KVSM_PARAMETER("certificate", KVS_PT_NONEMPTYCSTRING, KVS_PF_OPTIONAL, szCert)
-	KVSM_PARAMETER("password", KVS_PT_NONEMPTYCSTRING, KVS_PF_OPTIONAL, szPass)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("message", KVS_PT_NONEMPTYCSTRING, 0, szMessage)
+		KVSM_PARAMETER("signature", KVS_PT_NONEMPTYCSTRING, 0, szSignB64)
+		KVSM_PARAMETER("certificate", KVS_PT_NONEMPTYCSTRING, KVS_PF_OPTIONAL, szCert)
+		KVSM_PARAMETER("password", KVS_PT_NONEMPTYCSTRING, KVS_PF_OPTIONAL, szPass)
+		KVSM_PARAMETERS_END(c)
 
 #if defined(COMPILE_SSL_SUPPORT)
 
-	KviSSL::globalSSLInit();
+		KviSSL::globalSSLInit();
 	szSign = QByteArray::fromBase64(szSignB64);
 	const char * message = szMessage.data();
 
@@ -2536,19 +2536,19 @@ static bool str_kvs_fnc_evpVerify(KviKvsModuleFunctionCall * c)
 	EVP_PKEY_free(pKey);
 	switch(err)
 	{
-		case 0:
-			c->returnValue()->setBoolean(false);
-			return true;
-		case 1:
-			c->returnValue()->setBoolean(true);
-			return true;
-		default:
-			c->warning(__tr2qs("An error occurred during signature verification."));
-			c->returnValue()->setBoolean(false);
-			return true;
+	case 0:
+		c->returnValue()->setBoolean(false);
+		return true;
+	case 1:
+		c->returnValue()->setBoolean(true);
+		return true;
+	default:
+		c->warning(__tr2qs("An error occurred during signature verification."));
+		c->returnValue()->setBoolean(false);
+		return true;
 	}
 #else
-	c->warning(__tr2qs("KVIrc is compiled without OpenSSL support."));
+		c->warning(__tr2qs("KVIrc is compiled without OpenSSL support."));
 	c->returnValue()->setBoolean(false);
 	return true;
 #endif
@@ -2616,17 +2616,17 @@ static bool str_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Str",   // module name
-    "4.0.0", // module version
-    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)"
-    "          (C) 2002 Juanjo Alvarez (juanjux at yahoo dot es)"
-    "          (C) 2005 Tonino Imbesi (grifisx at barmes dot org)"
-    "          (C) 2005 Alessandro Carbone (elfonol at gmail dot com)"
-    "          (C) 2009 Kai Wasserbäch (debian at carbon-project dot org)"
-    "          (C) 2010 Elvio Basello (hell at hellvis69 dot netsons dot org)", // author & (C)
-    "Interface to the str system",
-    str_module_init,
-    0,
-    0,
-    str_module_cleanup,
-    0)
+	"Str",   // module name
+	"4.0.0", // module version
+	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)"
+	"          (C) 2002 Juanjo Alvarez (juanjux at yahoo dot es)"
+	"          (C) 2005 Tonino Imbesi (grifisx at barmes dot org)"
+	"          (C) 2005 Alessandro Carbone (elfonol at gmail dot com)"
+	"          (C) 2009 Kai Wasserbäch (debian at carbon-project dot org)"
+	"          (C) 2010 Elvio Basello (hell at hellvis69 dot netsons dot org)", // author & (C)
+	"Interface to the str system",
+	str_module_init,
+	0,
+	0,
+	str_module_cleanup,
+	0)

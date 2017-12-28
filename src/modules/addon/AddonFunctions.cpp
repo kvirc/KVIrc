@@ -159,29 +159,29 @@ namespace AddonFunctions
 		// clang-format off
 		hd.szHtmlText = QString(
 			"<html bgcolor=\"#ffffff\">" \
-				"<body bgcolor=\"#ffffff\">" \
-					"<p><center>" \
-						"<h2>%1 %2</h2>" \
-					"</center></p>" \
-					"<p><center>" \
-						"<img src=\"addon_dialog_pack_image\">" \
-					"</center></p>" \
-					"<p><center>" \
-						"<i>%3</i>" \
-					"</center></p>" \
-					"<p><center>" \
-						"%4: <b>%5</b><br>" \
-						"%6: <b>%7</b><br>" \
-					"</center></p>" \
-					"<p><center>" \
-						"<font color=\"#808080\">" \
-							"%8: %9<br>" \
-						"</font>" \
-					"</center></p>" \
-					"%10" \
-					"<br>" \
-				"</body>" \
-			"</html>").arg(szPackageName,szPackageVersion,szPackageDescription,szAuthor,szPackageAuthor,szCreatedAt,szPackageDate,szCreatedWith,szPackageApplication).arg(szWarnings);
+			"<body bgcolor=\"#ffffff\">" \
+			"<p><center>" \
+			"<h2>%1 %2</h2>" \
+			"</center></p>" \
+			"<p><center>" \
+			"<img src=\"addon_dialog_pack_image\">" \
+			"</center></p>" \
+			"<p><center>" \
+			"<i>%3</i>" \
+			"</center></p>" \
+			"<p><center>" \
+			"%4: <b>%5</b><br>" \
+			"%6: <b>%7</b><br>" \
+			"</center></p>" \
+			"<p><center>" \
+			"<font color=\"#808080\">" \
+			"%8: %9<br>" \
+			"</font>" \
+			"</center></p>" \
+			"%10" \
+			"<br>" \
+			"</body>" \
+			"</html>").arg(szPackageName, szPackageVersion, szPackageDescription, szAuthor, szPackageAuthor, szCreatedAt, szPackageDate, szCreatedWith, szPackageApplication).arg(szWarnings);
 		// clang-format on
 
 		hd.addImageResource("addon_dialog_pack_image", pix);

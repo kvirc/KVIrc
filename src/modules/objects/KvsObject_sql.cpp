@@ -138,7 +138,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_sql)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_sql)
 if(m_pCurrentSQlQuery)
-	delete m_pCurrentSQlQuery;
+delete m_pCurrentSQlQuery;
 m_pCurrentSQlQuery = nullptr;
 KVSO_END_DESTRUCTOR(KvsObject_sql)
 
@@ -146,24 +146,24 @@ KVSO_CLASS_FUNCTION(sql, setConnection)
 {
 	QString szConnectionName, szDbName, szDbDriver, szUserName, szHostName, szPassword;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("database_name", KVS_PT_STRING, 0, szDbName)
-	KVSO_PARAMETER("connection_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szConnectionName)
-	KVSO_PARAMETER("user_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szUserName)
-	KVSO_PARAMETER("host_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szHostName)
-	KVSO_PARAMETER("password", KVS_PT_STRING, KVS_PF_OPTIONAL, szPassword)
-	KVSO_PARAMETER("database_type", KVS_PT_STRING, KVS_PF_OPTIONAL, szDbDriver)
-	KVSO_PARAMETERS_END(c)
-	if(!szDbDriver.isEmpty())
-	{
-		QStringList drivers = QSqlDatabase::drivers();
-		if(!drivers.contains(szDbDriver))
+		KVSO_PARAMETER("database_name", KVS_PT_STRING, 0, szDbName)
+		KVSO_PARAMETER("connection_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szConnectionName)
+		KVSO_PARAMETER("user_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szUserName)
+		KVSO_PARAMETER("host_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szHostName)
+		KVSO_PARAMETER("password", KVS_PT_STRING, KVS_PF_OPTIONAL, szPassword)
+		KVSO_PARAMETER("database_type", KVS_PT_STRING, KVS_PF_OPTIONAL, szDbDriver)
+		KVSO_PARAMETERS_END(c)
+		if(!szDbDriver.isEmpty())
 		{
-			c->error(__tr2qs_ctx("Missing Qt plugin for database %Q", "objects"), &szDbDriver);
-			return false;
+			QStringList drivers = QSqlDatabase::drivers();
+			if(!drivers.contains(szDbDriver))
+			{
+				c->error(__tr2qs_ctx("Missing Qt plugin for database %Q", "objects"), &szDbDriver);
+				return false;
+			}
 		}
-	}
-	else
-		szDbDriver = "QSQLITE";
+		else
+			szDbDriver = "QSQLITE";
 	QSqlDatabase db;
 	db = QSqlDatabase::addDatabase(szDbDriver, szConnectionName);
 	mSzConnectionName = szConnectionName;
@@ -188,9 +188,9 @@ KVSO_CLASS_FUNCTION(sql, connectionNames)
 {
 	QString szFlag;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("stringreturnflag", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlag)
-	KVSO_PARAMETERS_END(c)
-	QStringList szConnectionsList = QSqlDatabase::connectionNames();
+		KVSO_PARAMETER("stringreturnflag", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlag)
+		KVSO_PARAMETERS_END(c)
+		QStringList szConnectionsList = QSqlDatabase::connectionNames();
 	if(szFlag.indexOf('s', 0, Qt::CaseInsensitive) != -1)
 	{
 		QString szConnections = szConnectionsList.join(",");
@@ -211,7 +211,7 @@ KVSO_CLASS_FUNCTION(sql, connectionNames)
 KVSO_CLASS_FUNCTION(sql, queryLastInsertId)
 {
 	CHECK_QUERY_IS_INIT
-	QVariant value = m_pCurrentSQlQuery->lastInsertId();
+		QVariant value = m_pCurrentSQlQuery->lastInsertId();
 	if(value.type() == QVariant::LongLong)
 		c->returnValue()->setInteger((kvs_int_t)value.toLongLong());
 	qDebug("type %i", value.type());
@@ -221,10 +221,10 @@ KVSO_CLASS_FUNCTION(sql, features)
 {
 	QString szConnectionName;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("connectionName", KVS_PT_STRING, 0, szConnectionName)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("connectionName", KVS_PT_STRING, 0, szConnectionName)
+		KVSO_PARAMETERS_END(c)
 
-	QStringList connections = QSqlDatabase::connectionNames();
+		QStringList connections = QSqlDatabase::connectionNames();
 	if(!connections.contains(szConnectionName))
 	{
 		c->warning(__tr2qs_ctx("Connection %Q doesn't exist", "objects"), &szConnectionName);
@@ -289,25 +289,25 @@ KVSO_CLASS_FUNCTION(sql, closeConnection)
 {
 	QString szConnectionName;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("connection_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szConnectionName)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("connection_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szConnectionName)
+		KVSO_PARAMETERS_END(c)
 
-	if(!szConnectionName.isEmpty())
-	{
-		QStringList connections = QSqlDatabase::connectionNames();
-		if(!connections.contains(szConnectionName))
+		if(!szConnectionName.isEmpty())
 		{
-			c->warning(__tr2qs_ctx("Connection %Q doesn't exist", "objects"), &szConnectionName);
+			QStringList connections = QSqlDatabase::connectionNames();
+			if(!connections.contains(szConnectionName))
+			{
+				c->warning(__tr2qs_ctx("Connection %Q doesn't exist", "objects"), &szConnectionName);
+				return true;
+			}
+			if(m_pCurrentSQlQuery)
+			{
+				delete m_pCurrentSQlQuery;
+				m_pCurrentSQlQuery = nullptr;
+			}
+			QSqlDatabase::removeDatabase(szConnectionName);
 			return true;
 		}
-		if(m_pCurrentSQlQuery)
-		{
-			delete m_pCurrentSQlQuery;
-			m_pCurrentSQlQuery = nullptr;
-		}
-		QSqlDatabase::removeDatabase(szConnectionName);
-		return true;
-	}
 	if(m_pCurrentSQlQuery)
 	{
 		delete m_pCurrentSQlQuery;
@@ -337,30 +337,30 @@ KVSO_CLASS_FUNCTION(sql, tablesList)
 KVSO_CLASS_FUNCTION(sql, queryFinish)
 {
 	CHECK_QUERY_IS_INIT
-	m_pCurrentSQlQuery->finish();
+		m_pCurrentSQlQuery->finish();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(sql, queryPrepare)
 {
 	CHECK_QUERY_IS_INIT
-	QString szQuery;
+		QString szQuery;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("query", KVS_PT_STRING, 0, szQuery)
-	KVSO_PARAMETERS_END(c)
-	c->returnValue()->setBoolean(m_pCurrentSQlQuery->prepare(szQuery));
+		KVSO_PARAMETER("query", KVS_PT_STRING, 0, szQuery)
+		KVSO_PARAMETERS_END(c)
+		c->returnValue()->setBoolean(m_pCurrentSQlQuery->prepare(szQuery));
 	return true;
 }
 KVSO_CLASS_FUNCTION(sql, queryBindValue)
 {
 	CHECK_QUERY_IS_INIT
-	QString szFieldName;
+		QString szFieldName;
 	KviKvsVariant * v;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bindName", KVS_PT_STRING, 0, szFieldName)
-	KVSO_PARAMETER("value", KVS_PT_VARIANT, 0, v)
-	KVSO_PARAMETERS_END(c)
-	QString szType;
+		KVSO_PARAMETER("bindName", KVS_PT_STRING, 0, szFieldName)
+		KVSO_PARAMETER("value", KVS_PT_VARIANT, 0, v)
+		KVSO_PARAMETERS_END(c)
+		QString szType;
 	v->getTypeName(szType);
 	if(v->isString() || v->isNothing())
 	{
@@ -408,11 +408,11 @@ KVSO_CLASS_FUNCTION(sql, queryBindValue)
 KVSO_CLASS_FUNCTION(sql, queryExec)
 {
 	CHECK_QUERY_IS_INIT
-	QString szQuery;
+		QString szQuery;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("query", KVS_PT_STRING, KVS_PF_OPTIONAL, szQuery)
-	KVSO_PARAMETERS_END(c)
-	bool bOk;
+		KVSO_PARAMETER("query", KVS_PT_STRING, KVS_PF_OPTIONAL, szQuery)
+		KVSO_PARAMETERS_END(c)
+		bool bOk;
 	if(szQuery.isEmpty())
 		bOk = m_pCurrentSQlQuery->exec();
 	else
@@ -423,45 +423,45 @@ KVSO_CLASS_FUNCTION(sql, queryExec)
 KVSO_CLASS_FUNCTION(sql, queryNext)
 {
 	CHECK_QUERY_IS_INIT
-	if(m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect())
-		c->returnValue()->setBoolean(m_pCurrentSQlQuery->next());
-	else
-		c->returnValue()->setNothing();
+		if(m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect())
+			c->returnValue()->setBoolean(m_pCurrentSQlQuery->next());
+		else
+			c->returnValue()->setNothing();
 	return true;
 }
 KVSO_CLASS_FUNCTION(sql, queryPrevious)
 {
 	CHECK_QUERY_IS_INIT
-	if(m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect())
-		c->returnValue()->setBoolean(m_pCurrentSQlQuery->previous());
-	else
-		c->returnValue()->setNothing();
+		if(m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect())
+			c->returnValue()->setBoolean(m_pCurrentSQlQuery->previous());
+		else
+			c->returnValue()->setNothing();
 	return true;
 }
 KVSO_CLASS_FUNCTION(sql, queryResultsSize)
 {
 	CHECK_QUERY_IS_INIT
-	c->returnValue()->setInteger(m_pCurrentSQlQuery->size());
+		c->returnValue()->setInteger(m_pCurrentSQlQuery->size());
 	return true;
 }
 KVSO_CLASS_FUNCTION(sql, queryFirst)
 {
 	CHECK_QUERY_IS_INIT
-	if(m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect())
-		c->returnValue()->setBoolean(m_pCurrentSQlQuery->first());
+		if(m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect())
+			c->returnValue()->setBoolean(m_pCurrentSQlQuery->first());
 	return true;
 }
 KVSO_CLASS_FUNCTION(sql, queryLast)
 {
 	CHECK_QUERY_IS_INIT
-	if(m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect())
-		c->returnValue()->setBoolean(m_pCurrentSQlQuery->last());
+		if(m_pCurrentSQlQuery->isActive() && m_pCurrentSQlQuery->isSelect())
+			c->returnValue()->setBoolean(m_pCurrentSQlQuery->last());
 	return true;
 }
 KVSO_CLASS_FUNCTION(sql, queryRecord)
 {
 	CHECK_QUERY_IS_INIT
-	KviKvsHash * pHash = new KviKvsHash();
+		KviKvsHash * pHash = new KviKvsHash();
 	QSqlRecord record = m_pCurrentSQlQuery->record();
 	for(int i = 0; i < record.count(); i++)
 	{
@@ -492,11 +492,11 @@ KVSO_CLASS_FUNCTION(sql, queryRecord)
 KVSO_CLASS_FUNCTION(sql, lastError)
 {
 	CHECK_QUERY_IS_INIT
-	bool bMoreErrorDetails;
+		bool bMoreErrorDetails;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("more", KVS_PT_BOOLEAN, KVS_PF_OPTIONAL, bMoreErrorDetails)
-	KVSO_PARAMETERS_END(c)
-	QString szError;
+		KVSO_PARAMETER("more", KVS_PT_BOOLEAN, KVS_PF_OPTIONAL, bMoreErrorDetails)
+		KVSO_PARAMETERS_END(c)
+		QString szError;
 	QSqlError error = m_pCurrentSQlQuery->lastError();
 	if(bMoreErrorDetails)
 		szError = error.text();

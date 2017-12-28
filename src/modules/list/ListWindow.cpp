@@ -61,10 +61,10 @@ ChannelTreeWidgetItemData::ChannelTreeWidgetItemData(const QString & szChan, con
 }
 
 ChannelTreeWidgetItemData::~ChannelTreeWidgetItemData()
-    = default;
+= default;
 
 ChannelTreeWidgetItem::ChannelTreeWidgetItem(ChannelTreeWidgetItemData * pData)
-    : QTreeWidgetItem(), m_pData(pData)
+	: QTreeWidgetItem(), m_pData(pData)
 {
 	setToolTip(0, KviQString::toHtmlEscaped(m_pData->m_szChan));
 	setToolTip(1, KviQString::toHtmlEscaped(m_pData->m_szUsers));
@@ -72,35 +72,35 @@ ChannelTreeWidgetItem::ChannelTreeWidgetItem(ChannelTreeWidgetItemData * pData)
 }
 
 ChannelTreeWidgetItem::~ChannelTreeWidgetItem()
-    = default;
+= default;
 
 bool ChannelTreeWidgetItem::operator<(const QTreeWidgetItem & other) const
 {
 	switch(treeWidget()->sortColumn())
 	{
-		case 0:
-			//channel
-			return m_pData->m_szChan.toUpper() < ((ChannelTreeWidgetItem *)&other)->itemData()->m_szChan.toUpper();
-			break;
-		case 1:
-			//users
-			return m_pData->m_szUsers.toInt() < ((ChannelTreeWidgetItem *)&other)->itemData()->m_szUsers.toInt();
-			break;
-		case 2:
-		default:
-			//topic
-			return KviControlCodes::stripControlBytes(m_pData->m_szTopic.toUpper()) < KviControlCodes::stripControlBytes(((ChannelTreeWidgetItem *)&other)->itemData()->m_szTopic.toUpper());
-			break;
+	case 0:
+		//channel
+		return m_pData->m_szChan.toUpper() < ((ChannelTreeWidgetItem *)&other)->itemData()->m_szChan.toUpper();
+		break;
+	case 1:
+		//users
+		return m_pData->m_szUsers.toInt() < ((ChannelTreeWidgetItem *)&other)->itemData()->m_szUsers.toInt();
+		break;
+	case 2:
+	default:
+		//topic
+		return KviControlCodes::stripControlBytes(m_pData->m_szTopic.toUpper()) < KviControlCodes::stripControlBytes(((ChannelTreeWidgetItem *)&other)->itemData()->m_szTopic.toUpper());
+		break;
 	}
 }
 
 ChannelTreeWidgetItemDelegate::ChannelTreeWidgetItemDelegate(QTreeWidget * pWidget)
-    : QItemDelegate(pWidget)
+	: QItemDelegate(pWidget)
 {
 }
 
 ChannelTreeWidgetItemDelegate::~ChannelTreeWidgetItemDelegate()
-    = default;
+= default;
 
 #define BORDER 2
 
@@ -118,21 +118,21 @@ QSize ChannelTreeWidgetItemDelegate::sizeHint(const QStyleOptionViewItem & sovIt
 	QFontMetrics fm(sovItem.font);
 	switch(index.column())
 	{
-		case 0:
-			//channel
-			return QSize(fm.width(item->itemData()->m_szChan), iHeight);
-			break;
-		case 1:
-			//users
-			return QSize(fm.width(item->itemData()->m_szUsers.toInt()), iHeight);
-			break;
-		case 2:
-		default:
-			//topic
-			if(item->itemData()->m_szStrippedTopic.isEmpty())
-				item->itemData()->m_szStrippedTopic = KviControlCodes::stripControlBytes(item->itemData()->m_szTopic);
-			return QSize(fm.width(item->itemData()->m_szStrippedTopic), iHeight);
-			break;
+	case 0:
+		//channel
+		return QSize(fm.width(item->itemData()->m_szChan), iHeight);
+		break;
+	case 1:
+		//users
+		return QSize(fm.width(item->itemData()->m_szUsers.toInt()), iHeight);
+		break;
+	case 2:
+	default:
+		//topic
+		if(item->itemData()->m_szStrippedTopic.isEmpty())
+			item->itemData()->m_szStrippedTopic = KviControlCodes::stripControlBytes(item->itemData()->m_szTopic);
+		return QSize(fm.width(item->itemData()->m_szStrippedTopic), iHeight);
+		break;
 	}
 	//make gcc happy
 	return QSize();
@@ -150,24 +150,24 @@ void ChannelTreeWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 
 	switch(index.column())
 	{
-		case 0:
-			//channel
-			p->drawText(option.rect, obj->itemData()->m_szChan);
-			break;
-		case 1:
-			//users
-			p->drawText(option.rect, Qt::AlignHCenter, obj->itemData()->m_szUsers);
-			break;
-		case 2:
-		default:
-			//topic
-			KviTopicWidget::paintColoredText(p, obj->itemData()->m_szTopic, option.palette, option.rect);
-			break;
+	case 0:
+		//channel
+		p->drawText(option.rect, obj->itemData()->m_szChan);
+		break;
+	case 1:
+		//users
+		p->drawText(option.rect, Qt::AlignHCenter, obj->itemData()->m_szUsers);
+		break;
+	case 2:
+	default:
+		//topic
+		KviTopicWidget::paintColoredText(p, obj->itemData()->m_szTopic, option.palette, option.rect);
+		break;
 	}
 }
 
 ListWindow::ListWindow(KviConsoleWindow * lpConsole)
-    : KviWindow(KviWindow::List, "list", lpConsole), KviExternalServerDataParser()
+	: KviWindow(KviWindow::List, "list", lpConsole), KviExternalServerDataParser()
 {
 	g_pListWindowList->append(this);
 
@@ -221,9 +221,9 @@ ListWindow::ListWindow(KviConsoleWindow * lpConsole)
 	m_pParamsEdit = new KviThemedLineEdit(pBox, this, "lineedit");
 	pBox->setStretchFactor(m_pParamsEdit, 1);
 	KviTalToolTip::add(m_pParamsEdit, __tr2qs("<b>/LIST command parameters:</b><br>Many servers accept special parameters that "
-	                                          "allow you to filter the returned entries.<br>"
-	                                          "Commonly, masked channel names (*kvirc*) are accepted as parameters, as well as strings "
-	                                          "like <b>c&lt;n</b> or <b>c&gt;n</b> where <b>n</b> is the minimum or maximum of users on the channel."));
+		"allow you to filter the returned entries.<br>"
+		"Commonly, masked channel names (*kvirc*) are accepted as parameters, as well as strings "
+		"like <b>c&lt;n</b> or <b>c&gt;n</b> where <b>n</b> is the minimum or maximum of users on the channel."));
 
 	connect(m_pParamsEdit, SIGNAL(textEdited(const QString &)), this, SLOT(liveSearch(const QString &)));
 
@@ -373,17 +373,17 @@ void ListWindow::exportList()
 
 		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 		{
-			case 0:
-				// this is the equivalent to an empty date.toString() call, but it's needed
-				// to ensure qt4 will use the default() locale and not the system() one
-				szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
-				break;
-			case 1:
-				szDate = date.toString(Qt::ISODate);
-				break;
-			case 2:
-				szDate = date.toString(Qt::SystemLocaleShortDate);
-				break;
+		case 0:
+			// this is the equivalent to an empty date.toString() call, but it's needed
+			// to ensure qt4 will use the default() locale and not the system() one
+			szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
+			break;
+		case 1:
+			szDate = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szDate = date.toString(Qt::SystemLocaleShortDate);
+			break;
 		}
 		szFile = QString(__tr2qs("Channel list for %1 - %2")).arg(connection()->currentNetworkName(), szDate);
 	}
@@ -418,7 +418,6 @@ void ListWindow::importList()
 
 	if(KviFileDialog::askForOpenFileName(szFile, __tr2qs("Select a File - KVIrc"), QString(), KVI_FILTER_CONFIG, false, false, this))
 	{
-
 		m_pItemList->setAutoDelete(true);
 		m_pItemList->clear();
 		m_pItemList->setAutoDelete(false);
@@ -431,10 +430,10 @@ void ListWindow::importList()
 		{
 			cfg.setGroup(it.currentKey());
 			m_pItemList->append(
-			    new ChannelTreeWidgetItemData(
-			        it.currentKey(),
-			        cfg.readEntry("users", "0"),
-			        cfg.readEntry("topic", "")));
+				new ChannelTreeWidgetItemData(
+					it.currentKey(),
+					cfg.readEntry("users", "0"),
+					cfg.readEntry("topic", "")));
 			++it;
 		}
 		flush();
@@ -445,15 +444,15 @@ void ListWindow::control(int iMsg)
 {
 	switch(iMsg)
 	{
-		case EXTERNAL_SERVER_DATA_PARSER_CONTROL_RESET:
-			reset();
-			break;
-		case EXTERNAL_SERVER_DATA_PARSER_CONTROL_STARTOFDATA:
-			startOfList();
-			break;
-		case EXTERNAL_SERVER_DATA_PARSER_CONTROL_ENDOFDATA:
-			endOfList();
-			break;
+	case EXTERNAL_SERVER_DATA_PARSER_CONTROL_RESET:
+		reset();
+		break;
+	case EXTERNAL_SERVER_DATA_PARSER_CONTROL_STARTOFDATA:
+		startOfList();
+		break;
+	case EXTERNAL_SERVER_DATA_PARSER_CONTROL_ENDOFDATA:
+		endOfList();
+		break;
 	}
 }
 
@@ -517,23 +516,23 @@ void ListWindow::processData(KviIrcMessage * pMsg)
 	if(m_pParamsEdit->text().isEmpty())
 	{
 		m_pItemList->append(
-		    new ChannelTreeWidgetItemData(
-		        pMsg->connection()->decodeText(pMsg->safeParam(1)),
-		        pMsg->connection()->decodeText(pMsg->safeParam(2)),
-		        pMsg->connection()->decodeText(pMsg->safeTrailing())));
+			new ChannelTreeWidgetItemData(
+				pMsg->connection()->decodeText(pMsg->safeParam(1)),
+				pMsg->connection()->decodeText(pMsg->safeParam(2)),
+				pMsg->connection()->decodeText(pMsg->safeTrailing())));
 	}
 	else
 	{
 		//rfc2812 permits wildcards here (section 3.2.6)
 		QRegExp res(m_pParamsEdit->text(), Qt::CaseInsensitive, QRegExp::Wildcard);
 		if(
-		    res.exactMatch(pMsg->connection()->decodeText(pMsg->safeParam(1))) || res.exactMatch(pMsg->connection()->decodeText(pMsg->safeTrailing())))
+			res.exactMatch(pMsg->connection()->decodeText(pMsg->safeParam(1))) || res.exactMatch(pMsg->connection()->decodeText(pMsg->safeTrailing())))
 		{
 			m_pItemList->append(
-			    new ChannelTreeWidgetItemData(
-			        pMsg->connection()->decodeText(pMsg->safeParam(1)),
-			        pMsg->connection()->decodeText(pMsg->safeParam(2)),
-			        pMsg->connection()->decodeText(pMsg->safeTrailing())));
+				new ChannelTreeWidgetItemData(
+					pMsg->connection()->decodeText(pMsg->safeParam(1)),
+					pMsg->connection()->decodeText(pMsg->safeParam(2)),
+					pMsg->connection()->decodeText(pMsg->safeTrailing())));
 		}
 	}
 

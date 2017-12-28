@@ -55,40 +55,40 @@ protected:
 public:
 	// all shallow data, all may be 0
 	KviKvsExtendedRunTimeData()
-	    : m_pExtendedScopeVariables(0),
-	      m_pAliasSwitchList(0),
-	      m_pThisObject(0),
-	      m_pScriptFilePath(0),
-	      m_bAutoDelete(false),
-	      m_pPopupId(0){};
+		: m_pExtendedScopeVariables(0),
+		m_pAliasSwitchList(0),
+		m_pThisObject(0),
+		m_pScriptFilePath(0),
+		m_bAutoDelete(false),
+		m_pPopupId(0) {};
 	KviKvsExtendedRunTimeData(KviKvsHash * pExtScopeVariables, bool autoDelete = false)
-	    : m_pExtendedScopeVariables(pExtScopeVariables),
-	      m_pAliasSwitchList(0),
-	      m_pThisObject(0),
-	      m_pScriptFilePath(0),
-	      m_bAutoDelete(autoDelete),
-	      m_pPopupId(0){};
+		: m_pExtendedScopeVariables(pExtScopeVariables),
+		m_pAliasSwitchList(0),
+		m_pThisObject(0),
+		m_pScriptFilePath(0),
+		m_bAutoDelete(autoDelete),
+		m_pPopupId(0) {};
 	KviKvsExtendedRunTimeData(KviKvsSwitchList * pAliasSwitchList, bool autoDelete = false)
-	    : m_pExtendedScopeVariables(0),
-	      m_pAliasSwitchList(pAliasSwitchList),
-	      m_pThisObject(0),
-	      m_pScriptFilePath(0),
-	      m_bAutoDelete(autoDelete),
-	      m_pPopupId(0){};
+		: m_pExtendedScopeVariables(0),
+		m_pAliasSwitchList(pAliasSwitchList),
+		m_pThisObject(0),
+		m_pScriptFilePath(0),
+		m_bAutoDelete(autoDelete),
+		m_pPopupId(0) {};
 	KviKvsExtendedRunTimeData(KviKvsObject * pThisObject, bool autoDelete = false)
-	    : m_pExtendedScopeVariables(0),
-	      m_pAliasSwitchList(0),
-	      m_pThisObject(pThisObject),
-	      m_pScriptFilePath(0),
-	      m_bAutoDelete(autoDelete),
-	      m_pPopupId(0){};
+		: m_pExtendedScopeVariables(0),
+		m_pAliasSwitchList(0),
+		m_pThisObject(pThisObject),
+		m_pScriptFilePath(0),
+		m_bAutoDelete(autoDelete),
+		m_pPopupId(0) {};
 	KviKvsExtendedRunTimeData(QString * pScriptFilePath, bool autoDelete = false)
-	    : m_pExtendedScopeVariables(0),
-	      m_pAliasSwitchList(0),
-	      m_pThisObject(0),
-	      m_pScriptFilePath(pScriptFilePath),
-	      m_bAutoDelete(autoDelete),
-	      m_pPopupId(0){};
+		: m_pExtendedScopeVariables(0),
+		m_pAliasSwitchList(0),
+		m_pThisObject(0),
+		m_pScriptFilePath(pScriptFilePath),
+		m_bAutoDelete(autoDelete),
+		m_pPopupId(0) {};
 	~KviKvsExtendedRunTimeData();
 
 public:
@@ -110,10 +110,10 @@ class KVIRC_API KviKvsRunTimeContext
 protected:
 	// only KviKvsScript, KviKvsEventManager and KviKvsObject can instantiate this class
 	KviKvsRunTimeContext(KviKvsScript * pScript,
-	    KviWindow * pWnd,
-	    KviKvsVariantList * pParams,
-	    KviKvsVariant * pRetVal,
-	    KviKvsExtendedRunTimeData * pExtData = 0);
+		KviWindow * pWnd,
+		KviKvsVariantList * pParams,
+		KviKvsVariant * pRetVal,
+		KviKvsExtendedRunTimeData * pExtData = 0);
 
 public:
 	~KviKvsRunTimeContext();

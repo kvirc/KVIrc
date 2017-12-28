@@ -43,7 +43,7 @@ extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 KviIOGraphWindow * g_pIOGraphWindow = nullptr;
 
 KviIOGraphWindow::KviIOGraphWindow(const char * name)
-    : KviWindow(KviWindow::IOGraph, name)
+	: KviWindow(KviWindow::IOGraph, name)
 {
 	m_pIOGraph = new KviIOGraphWidget(this);
 	setAutoFillBackground(false);
@@ -123,7 +123,7 @@ void KviIOGraphWindow::paintEvent(QPaintEvent * e)
 }
 
 KviIOGraphWidget::KviIOGraphWidget(QWidget * par)
-    : QWidget(par)
+	: QWidget(par)
 {
 	m_uLastSentBytes = g_uOutgoingTraffic;
 	m_uLastRecvBytes = g_uIncomingTraffic;
@@ -305,12 +305,12 @@ static bool iograph_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "IOGraph",                                                      // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "IRC socket traffic monitor",
-    iograph_module_init,
-    iograph_module_can_unload,
-    0,
-    iograph_module_cleanup,
-    0)
+	"IOGraph",                                                      // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"IRC socket traffic monitor",
+	iograph_module_init,
+	iograph_module_can_unload,
+	0,
+	iograph_module_cleanup,
+	0)

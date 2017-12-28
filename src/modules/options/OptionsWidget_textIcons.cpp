@@ -43,7 +43,7 @@
 #include <QMenu>
 
 TextIconTableItem::TextIconTableItem(QTableWidget *, KviTextIcon * icon)
-    : QTableWidgetItem(QString(), Qt::ItemIsEditable)
+	: QTableWidgetItem(QString(), Qt::ItemIsEditable)
 {
 	if(icon)
 		m_pIcon = icon;
@@ -68,7 +68,7 @@ void TextIconTableItem::setId(int id)
 }
 
 OptionsWidget_textIcons::OptionsWidget_textIcons(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	m_pPopup = nullptr;
 	m_iLastEditedRow = -1;
@@ -87,8 +87,8 @@ OptionsWidget_textIcons::OptionsWidget_textIcons(QWidget * parent)
 	m_pTable->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 	mergeTip(m_pTable->viewport(), __tr2qs_ctx("This table contains the text icon associations.<br>"
-	                                           "KVIrc will use them to display the Alt+E escape sequences "
-	                                           "and eventually the emoticons.", "options"));
+		"KVIrc will use them to display the Alt+E escape sequences "
+		"and eventually the emoticons.", "options"));
 
 	layout()->addWidget(m_pTable, 0, 0, 1, 3);
 
@@ -111,7 +111,7 @@ OptionsWidget_textIcons::OptionsWidget_textIcons(QWidget * parent)
 }
 
 OptionsWidget_textIcons::~OptionsWidget_textIcons()
-    = default;
+= default;
 
 void OptionsWidget_textIcons::fillTable()
 {

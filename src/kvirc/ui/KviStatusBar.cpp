@@ -55,7 +55,7 @@
 #include <QWidgetAction>
 
 KviStatusBar::KviStatusBar(KviMainWindow * pFrame)
-    : QStatusBar(pFrame)
+	: QStatusBar(pFrame)
 {
 	setAutoFillBackground(false);
 
@@ -95,7 +95,7 @@ KviStatusBar::KviStatusBar(KviMainWindow * pFrame)
 	m_bStopLayoutOnAddRemove = true;
 	setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(this, SIGNAL(customContextMenuRequested(const QPoint &)),
-	    this, SLOT(contextMenuRequested(const QPoint &)));
+		this, SLOT(contextMenuRequested(const QPoint &)));
 
 	connect(m_pFrame, SIGNAL(activeContextChanged()), this, SLOT(setPermanentMessage()));
 	connect(m_pFrame, SIGNAL(activeContextStateChanged()), this, SLOT(setPermanentMessage()));
@@ -202,7 +202,7 @@ void KviStatusBar::load()
 				pApplet->loadState(prefix.ptr(), &cfg);
 			else
 				qDebug("WARNING: failed to create applet %s (preload: %s)!",
-				    szInternalName.toUtf8().data(), szPreloadModule.toUtf8().data());
+					szInternalName.toUtf8().data(), szPreloadModule.toUtf8().data());
 		}
 	}
 }
@@ -682,38 +682,38 @@ void KviStatusBar::setPermanentMessage()
 	{
 		switch(c->state())
 		{
-			case KviIrcContext::Connected:
-				if(!c->connection()->userInfo()->userMode().isEmpty())
-				{
-					szTxt += c->connection()->currentNickName();
-					szTxt += " ";
-					szTxt += "<b>+";
-					szTxt += c->connection()->userInfo()->userMode();
-					szTxt += "</b>";
-				}
-				else if(c->connection()->userInfo()->userMode().isEmpty())
-					szTxt += c->connection()->currentNickName();
+		case KviIrcContext::Connected:
+			if(!c->connection()->userInfo()->userMode().isEmpty())
+			{
+				szTxt += c->connection()->currentNickName();
+				szTxt += " ";
+				szTxt += "<b>+";
+				szTxt += c->connection()->userInfo()->userMode();
+				szTxt += "</b>";
+			}
+			else if(c->connection()->userInfo()->userMode().isEmpty())
+				szTxt += c->connection()->currentNickName();
 
-				szTxt += __tr2qs(" on ") + "<b>";
-				szTxt += c->connection()->currentServerName();
-				szTxt += "</b>";
-				break;
-			case KviIrcContext::Connecting:
-				szTxt += "<b>";
-				szTxt += __tr2qs("Connection in progress...");
-				szTxt += "</b>";
-				break;
-			case KviIrcContext::LoggingIn:
-				szTxt += "<b>";
-				szTxt += c->connection()->currentServerName();
-				szTxt += "</b> - ";
-				szTxt += __tr2qs("Login in progress...");
-				break;
-			default:
-				szTxt += "<b>";
-				szTxt += __tr2qs("Not connected");
-				szTxt += "</b>";
-				break;
+			szTxt += __tr2qs(" on ") + "<b>";
+			szTxt += c->connection()->currentServerName();
+			szTxt += "</b>";
+			break;
+		case KviIrcContext::Connecting:
+			szTxt += "<b>";
+			szTxt += __tr2qs("Connection in progress...");
+			szTxt += "</b>";
+			break;
+		case KviIrcContext::LoggingIn:
+			szTxt += "<b>";
+			szTxt += c->connection()->currentServerName();
+			szTxt += "</b> - ";
+			szTxt += __tr2qs("Login in progress...");
+			break;
+		default:
+			szTxt += "<b>";
+			szTxt += __tr2qs("Not connected");
+			szTxt += "</b>";
+			break;
 		}
 	}
 	else

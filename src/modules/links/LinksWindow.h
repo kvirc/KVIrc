@@ -53,7 +53,7 @@ class LinksListView : public KviThemedTreeWidget
 	Q_OBJECT
 public:
 	LinksListView(QWidget * par, KviWindow * wnd, const char * txt);
-	~LinksListView(){};
+	~LinksListView() {};
 
 protected:
 	void mousePressEvent(QMouseEvent * e);
@@ -89,7 +89,7 @@ protected:
 	virtual void applyOptions();
 	virtual void resizeEvent(QResizeEvent * e);
 	virtual void getBaseLogFileName(QString & buffer);
-protected slots:
+	protected slots:
 	void showHostPopup(QTreeWidgetItem * i, const QPoint & p);
 	void hostPopupClicked(QAction * pAction);
 	void requestLinks();

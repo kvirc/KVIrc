@@ -64,10 +64,10 @@ static bool theme_kvs_cmd_install(KviKvsModuleCommandCall * c)
 	QString szThemePackFile;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("package_path", KVS_PT_STRING, 0, szThemePackFile)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("package_path", KVS_PT_STRING, 0, szThemePackFile)
+		KVSM_PARAMETERS_END(c)
 
-	QString szError;
+		QString szError;
 	if(!ThemeFunctions::installThemePackage(szThemePackFile, szError))
 	{
 		c->error(__tr2qs_ctx("Error installing theme package: %Q", "theme"), &szError);
@@ -111,10 +111,10 @@ static bool theme_kvs_cmd_apply(KviKvsModuleCommandCall * c)
 	QString szTheme;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("theme", KVS_PT_STRING, 0, szTheme)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("theme", KVS_PT_STRING, 0, szTheme)
+		KVSM_PARAMETERS_END(c)
 
-	KviThemeInfo out;
+		KviThemeInfo out;
 	KviThemeInfo::Location eLocation = KviThemeInfo::Auto;
 
 	if(c->switches()->find('b', "builtin"))
@@ -151,10 +151,10 @@ static bool theme_kvs_fnc_info(KviKvsModuleFunctionCall * c)
 	QString szTheme;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("theme", KVS_PT_STRING, 0, szTheme)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("theme", KVS_PT_STRING, 0, szTheme)
+		KVSM_PARAMETERS_END(c)
 
-	KviKvsHash * pHash = new KviKvsHash();
+		KviKvsHash * pHash = new KviKvsHash();
 	c->returnValue()->setHash(pHash);
 
 	KviThemeInfo theme;
@@ -192,23 +192,23 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 	QString szFileName;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("file_name_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("file_name_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
+		KVSM_PARAMETERS_END(c)
 
-	KviFileUtils::adjustFilePath(szFileName);
+		KviFileUtils::adjustFilePath(szFileName);
 
 	QString szTmp;
 	c->enterBlockingSection();
 
 	bool bResult = KviFileDialog::askForSaveFileName(
-	    szTmp,
-	    __tr2qs_ctx("Enter a Filename - KVIrc", "theme"), //dialog header title
-	    szFileName,
-	    "*.png",
-	    false,
-	    false,
-	    true,
-	    g_pMainWindow);
+		szTmp,
+		__tr2qs_ctx("Enter a Filename - KVIrc", "theme"), //dialog header title
+		szFileName,
+		"*.png",
+		false,
+		false,
+		true,
+		g_pMainWindow);
 
 	if(!c->leaveBlockingSection())
 		return false; // need to stop immediately
@@ -288,16 +288,16 @@ static bool theme_kvs_cmd_pack(KviKvsModuleCommandCall * c)
 	KviKvsArrayCast aCast;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("package_path", KVS_PT_NONEMPTYSTRING, 0, szPath)
-	KVSM_PARAMETER("package_name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETER("package_version", KVS_PT_NONEMPTYSTRING, 0, szVersion)
-	KVSM_PARAMETER("package_description", KVS_PT_STRING, 0, szDescription)
-	KVSM_PARAMETER("package_author", KVS_PT_NONEMPTYSTRING, 0, szAuthor)
-	KVSM_PARAMETER("package_image", KVS_PT_STRING, 0, szImage)
-	KVSM_PARAMETER("theme", KVS_PT_ARRAYCAST, 0, aCast)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("package_path", KVS_PT_NONEMPTYSTRING, 0, szPath)
+		KVSM_PARAMETER("package_name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETER("package_version", KVS_PT_NONEMPTYSTRING, 0, szVersion)
+		KVSM_PARAMETER("package_description", KVS_PT_STRING, 0, szDescription)
+		KVSM_PARAMETER("package_author", KVS_PT_NONEMPTYSTRING, 0, szAuthor)
+		KVSM_PARAMETER("package_image", KVS_PT_STRING, 0, szImage)
+		KVSM_PARAMETER("theme", KVS_PT_ARRAYCAST, 0, aCast)
+		KVSM_PARAMETERS_END(c)
 
-	KviKvsArray * pArray = aCast.array();
+		KviKvsArray * pArray = aCast.array();
 	if((!pArray) || (pArray->size() < 1))
 	{
 		c->error(__tr2qs_ctx("No themes specified", "theme"));
@@ -345,15 +345,15 @@ static bool theme_kvs_cmd_pack(KviKvsModuleCommandCall * c)
 	QString szError;
 
 	if(
-	    ThemeFunctions::packageThemes(
-	        szPath,
-	        szName,
-	        szVersion,
-	        szDescription,
-	        szAuthor,
-	        szImage,
-	        lThemeInfoList,
-	        szError))
+		ThemeFunctions::packageThemes(
+			szPath,
+			szName,
+			szVersion,
+			szDescription,
+			szAuthor,
+			szImage,
+			lThemeInfoList,
+			szError))
 		return true;
 
 	c->error(szError);
@@ -396,12 +396,12 @@ static bool theme_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Theme",                                                        // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Theme management functions",
-    theme_module_init,
-    theme_module_can_unload,
-    0,
-    theme_module_cleanup,
-    "theme")
+	"Theme",                                                        // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Theme management functions",
+	theme_module_init,
+	theme_module_can_unload,
+	0,
+	theme_module_cleanup,
+	"theme")

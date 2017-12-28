@@ -34,7 +34,7 @@ class KviWindow;
 class KVIRC_API KviThemedTreeWidget : public QTreeWidget
 {
 	Q_OBJECT
-	Q_PROPERTY(int TransparencyCapable READ dummyRead)
+		Q_PROPERTY(int TransparencyCapable READ dummyRead)
 public:
 	KviThemedTreeWidget(QWidget * par, KviWindow * pWindow, const char * name);
 	~KviThemedTreeWidget();

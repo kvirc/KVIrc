@@ -260,10 +260,10 @@ bool KviMessageCatalogue::load(const QString & szName)
 		//	KVI_SWAP_IF_NEEDED(bMustSwap,pTransDescriptor[i].length));
 
 		KviTranslationEntry * e = new KviTranslationEntry(
-		    (char *)(pcBuffer + KVI_SWAP_IF_NEEDED(bMustSwap, pOrigDescriptor[i].offset)),
-		    KVI_SWAP_IF_NEEDED(bMustSwap, pOrigDescriptor[i].length),
-		    (char *)(pcBuffer + KVI_SWAP_IF_NEEDED(bMustSwap, pTransDescriptor[i].offset)),
-		    KVI_SWAP_IF_NEEDED(bMustSwap, pTransDescriptor[i].length));
+			(char *)(pcBuffer + KVI_SWAP_IF_NEEDED(bMustSwap, pOrigDescriptor[i].offset)),
+			KVI_SWAP_IF_NEEDED(bMustSwap, pOrigDescriptor[i].length),
+			(char *)(pcBuffer + KVI_SWAP_IF_NEEDED(bMustSwap, pTransDescriptor[i].offset)),
+			KVI_SWAP_IF_NEEDED(bMustSwap, pTransDescriptor[i].length));
 
 		// In some (or all?) *.mo files the first string
 		// is zero bytes long and the translated one contains

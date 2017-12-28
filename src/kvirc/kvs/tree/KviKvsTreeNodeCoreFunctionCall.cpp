@@ -26,13 +26,13 @@
 #include "KviKvsRunTimeContext.h"
 
 KviKvsTreeNodeCoreFunctionCall::KviKvsTreeNodeCoreFunctionCall(const QChar * pLocation, const QString & szFncName, KviKvsCoreFunctionExecRoutine * r, KviKvsTreeNodeDataList * pParams)
-    : KviKvsTreeNodeFunctionCall(pLocation, szFncName, pParams)
+	: KviKvsTreeNodeFunctionCall(pLocation, szFncName, pParams)
 {
 	m_pExecRoutine = r;
 }
 
 KviKvsTreeNodeCoreFunctionCall::~KviKvsTreeNodeCoreFunctionCall()
-    = default;
+= default;
 
 void KviKvsTreeNodeCoreFunctionCall::contextDescription(QString & szBuffer)
 {

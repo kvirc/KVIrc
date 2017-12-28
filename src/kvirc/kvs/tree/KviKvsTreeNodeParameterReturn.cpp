@@ -29,7 +29,7 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeParameterReturn::KviKvsTreeNodeParameterReturn(const QChar * pLocation, KviKvsTreeNodeDataList * pDataList)
-    : KviKvsTreeNodeInstruction(pLocation)
+	: KviKvsTreeNodeInstruction(pLocation)
 {
 	m_pDataList = pDataList;
 	m_pDataList->setParent(this);

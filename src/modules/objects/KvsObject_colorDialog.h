@@ -41,7 +41,7 @@ protected:
 	bool currentColorChangedEvent(KviKvsObjectFunctionCall * c);
 	bool colorSelectedEvent(KviKvsObjectFunctionCall * c);
 	bool setOptions(KviKvsObjectFunctionCall * c);
-protected slots:
+	protected slots:
 	void slotCurrentColorChanged(const QColor & col);
 	void slotColorSelected(const QColor & col);
 };

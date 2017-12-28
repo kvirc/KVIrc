@@ -65,10 +65,10 @@ protected:
 
 public:
 	KviStatusBarAppletDescriptor(const QString & szVisibleName,
-	    const QString & szInternalName,
-	    CreateAppletCallback pProc,
-	    const QString & szPreloadModule = QString(),
-	    const QPixmap & pixIcon = QPixmap());
+		const QString & szInternalName,
+		CreateAppletCallback pProc,
+		const QString & szPreloadModule = QString(),
+		const QPixmap & pixIcon = QPixmap());
 	virtual ~KviStatusBarAppletDescriptor();
 
 public:
@@ -103,9 +103,9 @@ public:
 	inline void setIndex(int i) { mIndex = i; };
 	inline int index() const { return mIndex; };
 protected:
-	virtual void fillContextPopup(QMenu *){};
-	virtual void loadState(const char *, KviConfigurationFile *){};
-	virtual void saveState(const char *, KviConfigurationFile *){};
+	virtual void fillContextPopup(QMenu *) {};
+	virtual void loadState(const char *, KviConfigurationFile *) {};
+	virtual void saveState(const char *, KviConfigurationFile *) {};
 	virtual QString tipText(const QPoint &);
 };
 
@@ -142,7 +142,7 @@ protected:
 	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
 	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
 	void adjustMinWidth();
-protected slots:
+	protected slots:
 	void toggleUtc();
 	void toggle24h();
 	void changeFormat(QAction *);
@@ -166,7 +166,7 @@ protected:
 
 public:
 	static void selfRegister(KviStatusBar * pBar);
-protected slots:
+	protected slots:
 	void toggleTotal();
 };
 
@@ -200,7 +200,7 @@ protected:
 	virtual void fillContextPopup(QMenu * p);
 	virtual void loadState(const char * pcPrefix, KviConfigurationFile * pCfg);
 	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
-protected slots:
+	protected slots:
 	void updateDisplay();
 	void toggleContext();
 };
@@ -210,7 +210,7 @@ class KviStatusBarLagIndicator : public KviStatusBarApplet
 	Q_OBJECT
 public:
 	KviStatusBarLagIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
-	virtual ~KviStatusBarLagIndicator(){};
+	virtual ~KviStatusBarLagIndicator() {};
 
 public:
 	static void selfRegister(KviStatusBar * pBar);
@@ -218,7 +218,7 @@ public:
 protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual QString tipText(const QPoint &);
-protected slots:
+	protected slots:
 	void updateDisplay();
 };
 
@@ -238,7 +238,7 @@ protected:
 	virtual void saveState(const char * pcPrefix, KviConfigurationFile * pCfg);
 	void checkVersion();
 	void getNewVersion();
-protected slots:
+	protected slots:
 	void updateDisplay();
 	void toggleStartup();
 	void toggleRevision();

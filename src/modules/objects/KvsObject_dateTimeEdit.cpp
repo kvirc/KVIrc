@@ -111,54 +111,50 @@ bool KvsObject_dateTimeEdit::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 
 KVSO_CLASS_FUNCTION(dateTimeEdit, date)
 {
-
 	CHECK_INTERNAL_POINTER(widget())
-	QString szFormat;
+		QString szFormat;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
+		KVSO_PARAMETERS_END(c)
 
-	c->returnValue()->setString(((QDateTimeEdit *)widget())->date().toString(szFormat));
+		c->returnValue()->setString(((QDateTimeEdit *)widget())->date().toString(szFormat));
 
 	return true;
 }
 KVSO_CLASS_FUNCTION(dateTimeEdit, setDate)
 {
-
 	CHECK_INTERNAL_POINTER(widget())
-	QString szFormat, szDate;
+		QString szFormat, szDate;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
-	KVSO_PARAMETER("date", KVS_PT_STRING, 0, szDate)
-	KVSO_PARAMETERS_END(c)
-	QDate date;
+		KVSO_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
+		KVSO_PARAMETER("date", KVS_PT_STRING, 0, szDate)
+		KVSO_PARAMETERS_END(c)
+		QDate date;
 	date = date.fromString(szDate, szFormat);
 	((QDateTimeEdit *)widget())->setDate(date);
 	return true;
 }
 KVSO_CLASS_FUNCTION(dateTimeEdit, time)
 {
-
 	CHECK_INTERNAL_POINTER(widget())
-	QString szFormat;
+		QString szFormat;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
+		KVSO_PARAMETERS_END(c)
 
-	c->returnValue()->setString(((QDateTimeEdit *)widget())->time().toString(szFormat));
+		c->returnValue()->setString(((QDateTimeEdit *)widget())->time().toString(szFormat));
 
 	return true;
 }
 KVSO_CLASS_FUNCTION(dateTimeEdit, setTime)
 {
-
 	CHECK_INTERNAL_POINTER(widget())
-	QString szFormat, szTime;
+		QString szFormat, szTime;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
-	KVSO_PARAMETER("date", KVS_PT_STRING, 0, szTime)
-	KVSO_PARAMETERS_END(c)
-	QTime time;
+		KVSO_PARAMETER("format", KVS_PT_STRING, 0, szFormat)
+		KVSO_PARAMETER("date", KVS_PT_STRING, 0, szTime)
+		KVSO_PARAMETERS_END(c)
+		QTime time;
 	time = time.fromString(szTime, szFormat);
 	((QDateTimeEdit *)widget())->setTime(time);
 	return true;

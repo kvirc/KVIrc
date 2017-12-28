@@ -70,11 +70,11 @@ static bool language_kvs_cmd_detect(KviKvsModuleFunctionCall * c)
 	int matchcount = DLE_NUM_BEST_MATCHES;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("text", KVS_PT_STRING, KVS_PF_OPTIONAL, text)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("text", KVS_PT_STRING, KVS_PF_OPTIONAL, text)
+		KVSM_PARAMETERS_END(c)
 
-	//on error we return an empty array
-	matches = new KviKvsArray();
+		//on error we return an empty array
+		matches = new KviKvsArray();
 
 	if(text.isEmpty())
 	{
@@ -118,12 +118,12 @@ static bool language_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Language",                                                     // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "A simple statistical language/encoding detector",
-    language_module_init,
-    0,
-    0,
-    language_module_cleanup,
-    0)
+	"Language",                                                     // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"A simple statistical language/encoding detector",
+	language_module_init,
+	0,
+	0,
+	language_module_cleanup,
+	0)

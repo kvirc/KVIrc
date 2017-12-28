@@ -25,13 +25,13 @@
 #include "KviKvsObjectFunctionHandler.h"
 
 KviKvsObjectFunctionHandler::KviKvsObjectFunctionHandler(unsigned int uFlags)
-    : m_uFlags(uFlags)
+	: m_uFlags(uFlags)
 {
 	m_bClone = false;
 }
 
 KviKvsObjectFunctionHandler::~KviKvsObjectFunctionHandler()
-    = default;
+= default;
 
 bool KviKvsObjectFunctionHandler::isScriptHandler()
 {

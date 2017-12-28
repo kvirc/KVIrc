@@ -313,7 +313,7 @@ if(m_pSocket && !bIsSetFromExternal)
 }
 m_pSocket = nullptr;
 if(m_pServer)
-	delete m_pServer;
+delete m_pServer;
 m_pServer = nullptr;
 KVSO_END_DESTRUCTOR(KvsObject_socket)
 
@@ -366,11 +366,11 @@ KVSO_CLASS_FUNCTION(socket, read)
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("length", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iLen)
-	KVSO_PARAMETER("hobject", KVS_PT_HOBJECT, KVS_PF_OPTIONAL, hObject)
-	KVSO_PARAMETERS_END(c)
-	if(iLen > m_pSocket->bytesAvailable() || !iLen)
-		iLen = m_pSocket->bytesAvailable();
+		KVSO_PARAMETER("length", KVS_PT_INTEGER, KVS_PF_OPTIONAL, iLen)
+		KVSO_PARAMETER("hobject", KVS_PT_HOBJECT, KVS_PF_OPTIONAL, hObject)
+		KVSO_PARAMETERS_END(c)
+		if(iLen > m_pSocket->bytesAvailable() || !iLen)
+			iLen = m_pSocket->bytesAvailable();
 	if(hObject)
 	{
 		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
@@ -427,115 +427,115 @@ KVSO_CLASS_FUNCTION(socket, write)
 	KviKvsVariant * pVariantData;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("data_or_file_or_memorybuffer", KVS_PT_VARIANT, 0, pVariantData)
-	KVSO_PARAMETER("length", KVS_PT_UNSIGNEDINTEGER, KVS_PF_OPTIONAL, uLen)
-	KVSO_PARAMETERS_END(c)
-	if(pVariantData->isHObject())
-	{
-		pVariantData->asHObject(hObject);
-		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-		if(!pObject)
+		KVSO_PARAMETER("data_or_file_or_memorybuffer", KVS_PT_VARIANT, 0, pVariantData)
+		KVSO_PARAMETER("length", KVS_PT_UNSIGNEDINTEGER, KVS_PF_OPTIONAL, uLen)
+		KVSO_PARAMETERS_END(c)
+		if(pVariantData->isHObject())
 		{
-			c->warning(__tr2qs_ctx("Buffer parameter is not an object", "objects"));
-			return true;
-		}
-		if(pObject->inheritsClass("memorybuffer"))
-		{
-			QByteArray * p = ((KvsObject_memoryBuffer *)pObject)->pBuffer();
-			m_pSocket->write(*p);
-		}
-		else if(pObject->inheritsClass("file"))
-		{
-			KviFile * pFile = ((KvsObject_file *)pObject)->file();
-			if(!pFile->isOpen())
+			pVariantData->asHObject(hObject);
+			pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+			if(!pObject)
 			{
-				c->warning(__tr2qs_ctx("File is not open!", "objects"));
+				c->warning(__tr2qs_ctx("Buffer parameter is not an object", "objects"));
 				return true;
 			}
-			if(!uLen)
-				uLen = pFile->size();
-			kvs_int_t size = pFile->size();
-			pFile->flush();
-			m_pSocket->write((const char *)pFile->read(uLen).data(), uLen);
-			c->returnValue()->setBoolean((size - pFile->pos() == 0));
-		}
-		else
-		{
-			c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer or file object", "objects"));
-			return true;
-		}
-	}
-	else
-	{
-		if(pVariantData->isArray())
-		{
-			KviKvsArray * pArray = pVariantData->array();
-			for(unsigned int i = 0; i < pArray->size(); i++)
+			if(pObject->inheritsClass("memorybuffer"))
 			{
-				KviKvsVariant * pVar = pArray->at(i);
-				kvs_int_t iValue;
-				if(pVar->asInteger(iValue))
-				{
-					if(iValue < 256 && iValue >= 0)
-					{
-						m_pSocket->putChar(iValue);
-						continue;
-					}
-					else
-					{
-						c->warning(__tr2qs_ctx("Only values in the range of 0-255 are allowed: integer %d is out of range", "objects"), iValue);
-						return true;
-					}
-				}
-				else
-				{
-					if(pVar->isString())
-					{
-						QString szData;
-						pVar->asString(szData);
-						QByteArray szData8 = szData.toUtf8();
-						m_pSocket->write((const char *)szData8.data(), szData8.length());
-					}
-					else
-					{
-						c->warning(__tr2qs_ctx("Datatype not supported", "objects"));
-						return true;
-					}
-				}
+				QByteArray * p = ((KvsObject_memoryBuffer *)pObject)->pBuffer();
+				m_pSocket->write(*p);
 			}
-			return true;
-		}
-		QString szData;
-		pVariantData->asString(szData);
-		if(!KviFileUtils::fileExists(szData))
-		{
-			QByteArray szData8 = szData.toUtf8();
-			if(szData8.length() > 0)
+			else if(pObject->inheritsClass("file"))
 			{
-				qDebug("write on socket %s", szData8.data());
-				kvs_int_t bytes = m_pSocket->write((const char *)szData8.data(), szData8.length());
-				c->returnValue()->setInteger(bytes);
+				KviFile * pFile = ((KvsObject_file *)pObject)->file();
+				if(!pFile->isOpen())
+				{
+					c->warning(__tr2qs_ctx("File is not open!", "objects"));
+					return true;
+				}
+				if(!uLen)
+					uLen = pFile->size();
+				kvs_int_t size = pFile->size();
+				pFile->flush();
+				m_pSocket->write((const char *)pFile->read(uLen).data(), uLen);
+				c->returnValue()->setBoolean((size - pFile->pos() == 0));
+			}
+			else
+			{
+				c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer or file object", "objects"));
+				return true;
 			}
 		}
 		else
 		{
-			KviFile f(szData);
-			f.open(QIODevice::ReadOnly);
-			QByteArray ar = f.readAll();
-			m_pSocket->write((const char *)ar.data(), ar.size());
-			f.close();
+			if(pVariantData->isArray())
+			{
+				KviKvsArray * pArray = pVariantData->array();
+				for(unsigned int i = 0; i < pArray->size(); i++)
+				{
+					KviKvsVariant * pVar = pArray->at(i);
+					kvs_int_t iValue;
+					if(pVar->asInteger(iValue))
+					{
+						if(iValue < 256 && iValue >= 0)
+						{
+							m_pSocket->putChar(iValue);
+							continue;
+						}
+						else
+						{
+							c->warning(__tr2qs_ctx("Only values in the range of 0-255 are allowed: integer %d is out of range", "objects"), iValue);
+							return true;
+						}
+					}
+					else
+					{
+						if(pVar->isString())
+						{
+							QString szData;
+							pVar->asString(szData);
+							QByteArray szData8 = szData.toUtf8();
+							m_pSocket->write((const char *)szData8.data(), szData8.length());
+						}
+						else
+						{
+							c->warning(__tr2qs_ctx("Datatype not supported", "objects"));
+							return true;
+						}
+					}
+				}
+				return true;
+			}
+			QString szData;
+			pVariantData->asString(szData);
+			if(!KviFileUtils::fileExists(szData))
+			{
+				QByteArray szData8 = szData.toUtf8();
+				if(szData8.length() > 0)
+				{
+					qDebug("write on socket %s", szData8.data());
+					kvs_int_t bytes = m_pSocket->write((const char *)szData8.data(), szData8.length());
+					c->returnValue()->setInteger(bytes);
+				}
+			}
+			else
+			{
+				KviFile f(szData);
+				f.open(QIODevice::ReadOnly);
+				QByteArray ar = f.readAll();
+				m_pSocket->write((const char *)ar.data(), ar.size());
+				f.close();
+			}
 		}
-	}
 	return true;
 }
 KVSO_CLASS_FUNCTION(socket, setProtocol)
 {
 	QString szProto;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("protocol", KVS_PT_STRING, 0, szProto)
-	KVSO_PARAMETERS_END(c)
-	if(m_pSocket)
-		delete m_pSocket;
+		KVSO_PARAMETER("protocol", KVS_PT_STRING, 0, szProto)
+		KVSO_PARAMETERS_END(c)
+		if(m_pSocket)
+			delete m_pSocket;
 	if(KviQString::equalCI(szProto, "udp"))
 		m_pSocket = new QUdpSocket();
 	else
@@ -548,14 +548,14 @@ KVSO_CLASS_FUNCTION(socket, functionConnect)
 	kvs_uint_t uRemotePort;
 	QString szRemoteIp;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("remote_ip", KVS_PT_STRING, 0, szRemoteIp)
-	KVSO_PARAMETER("remote_port", KVS_PT_UNSIGNEDINTEGER, 0, uRemotePort)
-	KVSO_PARAMETERS_END(c)
-	if(uRemotePort > 65535)
-	{
-		c->warning(__tr2qs_ctx("Value %d for port is out of range (values allowed are from 0 to 65535)", "objects"), uRemotePort);
-		return true;
-	}
+		KVSO_PARAMETER("remote_ip", KVS_PT_STRING, 0, szRemoteIp)
+		KVSO_PARAMETER("remote_port", KVS_PT_UNSIGNEDINTEGER, 0, uRemotePort)
+		KVSO_PARAMETERS_END(c)
+		if(uRemotePort > 65535)
+		{
+			c->warning(__tr2qs_ctx("Value %d for port is out of range (values allowed are from 0 to 65535)", "objects"), uRemotePort);
+			return true;
+		}
 	m_pSocket->connectToHost(szRemoteIp, uRemotePort);
 	c->returnValue()->setBoolean(true);
 	return true;
@@ -566,14 +566,14 @@ KVSO_CLASS_FUNCTION(socket, listen)
 	kvs_uint_t uLocalPort;
 	QString m_szLocalIp;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("local_port", KVS_PT_UNSIGNEDINTEGER, 0, uLocalPort)
-	KVSO_PARAMETER("interface", KVS_PT_STRING, KVS_PF_OPTIONAL, m_szLocalIp)
-	KVSO_PARAMETERS_END(c)
-	if(uLocalPort > 65535)
-	{
-		c->warning(__tr2qs_ctx("Value %d for port is out of range (values allowed are from 0 to 65535): switch to random value", "objects"), uLocalPort);
-		uLocalPort = 0;
-	}
+		KVSO_PARAMETER("local_port", KVS_PT_UNSIGNEDINTEGER, 0, uLocalPort)
+		KVSO_PARAMETER("interface", KVS_PT_STRING, KVS_PF_OPTIONAL, m_szLocalIp)
+		KVSO_PARAMETERS_END(c)
+		if(uLocalPort > 65535)
+		{
+			c->warning(__tr2qs_ctx("Value %d for port is out of range (values allowed are from 0 to 65535): switch to random value", "objects"), uLocalPort);
+			uLocalPort = 0;
+		}
 	if(m_pServer)
 		delete m_pServer;
 	m_pServer = new QTcpServer();
@@ -598,45 +598,45 @@ const char * KvsObject_socket::getStateString(QAbstractSocket::SocketState state
 	int idx = 0;
 	switch(state)
 	{
-		case QAbstractSocket::UnconnectedState:
-		{
-			idx = 0;
-			break;
-		}
-		case QAbstractSocket::HostLookupState:
-		{
-			idx = 1;
-			break;
-		}
-		case QAbstractSocket::ConnectingState:
-		{
-			idx = 2;
-			break;
-		}
-		case QAbstractSocket::ConnectedState:
-		{
-			idx = 3;
-			break;
-		}
-		case QAbstractSocket::BoundState:
-		{
-			idx = 4;
-			break;
-		}
-		case QAbstractSocket::ListeningState:
-		{
-			idx = 5;
-			break;
-		}
-		case QAbstractSocket::ClosingState:
-		{
-			idx = 6;
-			break;
-		}
-		default:
-		{
-			// internal state?
-		}
+	case QAbstractSocket::UnconnectedState:
+	{
+		idx = 0;
+		break;
+	}
+	case QAbstractSocket::HostLookupState:
+	{
+		idx = 1;
+		break;
+	}
+	case QAbstractSocket::ConnectingState:
+	{
+		idx = 2;
+		break;
+	}
+	case QAbstractSocket::ConnectedState:
+	{
+		idx = 3;
+		break;
+	}
+	case QAbstractSocket::BoundState:
+	{
+		idx = 4;
+		break;
+	}
+	case QAbstractSocket::ListeningState:
+	{
+		idx = 5;
+		break;
+	}
+	case QAbstractSocket::ClosingState:
+	{
+		idx = 6;
+		break;
+	}
+	default:
+	{
+		// internal state?
+	}
 	}
 	return sockstate_tbl[idx];
 }

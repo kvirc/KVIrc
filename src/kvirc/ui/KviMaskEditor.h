@@ -61,15 +61,15 @@ protected:
 		// This is the sorting function for KviMaskItem
 		switch(treeWidget()->sortColumn())
 		{
-			case 0:
-				return m_Mask.szMask < ((KviMaskItem *)&other)->mask()->szMask;
-				break;
-			case 1:
-				return m_Mask.szSetBy < ((KviMaskItem *)&other)->mask()->szSetBy;
-				break;
-			case 2:
-				return m_Mask.uSetAt < ((KviMaskItem *)&other)->mask()->uSetAt;
-				break;
+		case 0:
+			return m_Mask.szMask < ((KviMaskItem *)&other)->mask()->szMask;
+			break;
+		case 1:
+			return m_Mask.szSetBy < ((KviMaskItem *)&other)->mask()->szSetBy;
+			break;
+		case 2:
+			return m_Mask.uSetAt < ((KviMaskItem *)&other)->mask()->uSetAt;
+			break;
 		}
 		return 0; //make compiler happy
 	}
@@ -89,7 +89,7 @@ protected:
 	QString m_szOldMask;
 	KviChannelWindow * m_pChannel;
 	KviMaskEditor * m_pEditor;
-protected slots:
+	protected slots:
 	virtual void accept();
 };
 
@@ -98,7 +98,7 @@ class KVIRC_API KviMaskEditor : public KviWindowToolWidget
 	Q_OBJECT
 public:
 	KviMaskEditor(QWidget * par, KviChannelWindow * pChannel, KviWindowToolPageButton * button, std::vector<KviMaskEntry *> maskList,
-	    char cMode, const char * name);
+		char cMode, const char * name);
 	~KviMaskEditor();
 
 protected:
@@ -115,7 +115,7 @@ public:
 	void addMask(KviMaskEntry * e);
 	void removeMask(KviMaskEntry * e);
 	void clear();
-protected slots:
+	protected slots:
 	void removeClicked();
 	void addClicked();
 	void itemDoubleClicked(QTreeWidgetItem *, int);

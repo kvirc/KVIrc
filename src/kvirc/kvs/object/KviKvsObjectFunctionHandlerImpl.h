@@ -87,10 +87,10 @@ class KVIRC_API KviKvsObjectStandardTrueReturnFunctionHandler : public KviKvsObj
 
 protected:
 	KviKvsObjectStandardTrueReturnFunctionHandler()
-	    : KviKvsObjectFunctionHandler(){};
+		: KviKvsObjectFunctionHandler() {};
 
 public:
-	virtual ~KviKvsObjectStandardTrueReturnFunctionHandler(){};
+	virtual ~KviKvsObjectStandardTrueReturnFunctionHandler() {};
 
 protected:
 	virtual KviKvsObjectFunctionHandler * clone();
@@ -104,10 +104,10 @@ class KVIRC_API KviKvsObjectStandardFalseReturnFunctionHandler : public KviKvsOb
 
 protected:
 	KviKvsObjectStandardFalseReturnFunctionHandler()
-	    : KviKvsObjectFunctionHandler(){};
+		: KviKvsObjectFunctionHandler() {};
 
 public:
-	virtual ~KviKvsObjectStandardFalseReturnFunctionHandler(){};
+	virtual ~KviKvsObjectStandardFalseReturnFunctionHandler() {};
 
 protected:
 	virtual KviKvsObjectFunctionHandler * clone();
@@ -121,10 +121,10 @@ class KVIRC_API KviKvsObjectStandardNothingReturnFunctionHandler : public KviKvs
 
 protected:
 	KviKvsObjectStandardNothingReturnFunctionHandler()
-	    : KviKvsObjectFunctionHandler(){};
+		: KviKvsObjectFunctionHandler() {};
 
 public:
-	virtual ~KviKvsObjectStandardNothingReturnFunctionHandler(){};
+	virtual ~KviKvsObjectStandardNothingReturnFunctionHandler() {};
 
 protected:
 	virtual KviKvsObjectFunctionHandler * clone();

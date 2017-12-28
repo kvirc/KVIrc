@@ -228,16 +228,16 @@ bool PluginManager::pluginCall(KviKvsModuleFunctionCall * c)
 	QString szFunctionName;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("plugin_path", KVS_PT_NONEMPTYSTRING, 0, szPluginPath)
-	KVSM_PARAMETER("function", KVS_PT_NONEMPTYSTRING, 0, szFunctionName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("plugin_path", KVS_PT_NONEMPTYSTRING, 0, szPluginPath)
+		KVSM_PARAMETER("function", KVS_PT_NONEMPTYSTRING, 0, szFunctionName)
+		KVSM_PARAMETERS_END(c)
 
-	//Check if there is such a plugin
-	if(!findPlugin(szPluginPath))
-	{
-		c->error(__tr2qs("Plugin not found. Please check the plugin-name and path."));
-		return true;
-	}
+		//Check if there is such a plugin
+		if(!findPlugin(szPluginPath))
+		{
+			c->error(__tr2qs("Plugin not found. Please check the plugin-name and path."));
+			return true;
+		}
 
 	//Load plugin or check it in cache
 	if(!loadPlugin(szPluginPath))

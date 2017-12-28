@@ -221,7 +221,7 @@ protected:
 	// HANDLE WITH CARE TOO!
 
 	// Reimplement this with your job
-	virtual void run(){};
+	virtual void run() {};
 	// Terminates the execution of the calling thread
 	void exit();
 	// The tricky part: threadsafe event dispatching
@@ -281,8 +281,8 @@ protected:
 
 public:
 	KviThreadEvent(int evId, KviThread * sender = 0)
-	    : QEvent((QEvent::Type)KVI_THREAD_EVENT), m_eventId(evId), m_pSender(sender){};
-	virtual ~KviThreadEvent(){};
+		: QEvent((QEvent::Type)KVI_THREAD_EVENT), m_eventId(evId), m_pSender(sender) {};
+	virtual ~KviThreadEvent() {};
 
 public:
 	// This is the sender of the event
@@ -299,7 +299,9 @@ protected:
 
 public:
 	KviThreadDataEvent(int evId, TData * pData = 0, KviThread * sender = 0)
-	    : KviThreadEvent(evId, sender) { m_pData = pData; };
+		: KviThreadEvent(evId, sender) {
+		m_pData = pData;
+	};
 	virtual ~KviThreadDataEvent()
 	{
 		if(m_pData)
@@ -405,7 +407,7 @@ protected:
 	// Public to KviApplication only
 	static void globalInit();
 	static void globalDestroy();
-private slots:
+	private slots:
 	void eventsPending(int fd);
 };
 

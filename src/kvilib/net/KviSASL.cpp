@@ -31,7 +31,6 @@
 
 namespace KviSASL
 {
-
 	bool plainMethod(KviCString & szIn, KviCString & szOut, QByteArray & baNick, QByteArray & baPass)
 	{
 		if(szIn == "+")

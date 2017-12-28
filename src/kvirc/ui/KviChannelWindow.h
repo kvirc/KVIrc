@@ -1007,14 +1007,14 @@ protected:
 
 	virtual void resizeEvent(QResizeEvent *);
 	virtual void closeEvent(QCloseEvent * pEvent);
-public slots:
+	public slots:
 	/**
 	* \brief Toggles the double view mode
 	* \return void
 	*/
 	void toggleDoubleView();
 
-private slots:
+	private slots:
 	/**
 	* \brief Toggles the userlist view
 	* \return void

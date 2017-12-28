@@ -68,11 +68,11 @@ static bool regchan_kvs_cmd_add(KviKvsModuleCommandCall * c)
 {
 	QString szChan, szNetmask;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("channel name", KVS_PT_NONEMPTYSTRING, 0, szChan)
-	KVSM_PARAMETER("netmask", KVS_PT_STRING, KVS_PF_OPTIONAL, szNetmask)
-	KVSM_PARAMETERS_END(c)
-	if(szNetmask.isEmpty())
-		szNetmask = "*";
+		KVSM_PARAMETER("channel name", KVS_PT_NONEMPTYSTRING, 0, szChan)
+		KVSM_PARAMETER("netmask", KVS_PT_STRING, KVS_PF_OPTIONAL, szNetmask)
+		KVSM_PARAMETERS_END(c)
+		if(szNetmask.isEmpty())
+			szNetmask = "*";
 	g_pRegisteredChannelDataBase->add(new KviRegisteredChannel(szChan, szNetmask));
 	return true;
 }
@@ -108,10 +108,10 @@ static bool regchan_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 {
 	QString szChan, szNetwork;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("channel name", KVS_PT_NONEMPTYSTRING, 0, szChan)
-	KVSM_PARAMETER("network", KVS_PT_NONEMPTYSTRING, 0, szNetwork)
-	KVSM_PARAMETERS_END(c)
-	KviRegisteredChannel * ch;
+		KVSM_PARAMETER("channel name", KVS_PT_NONEMPTYSTRING, 0, szChan)
+		KVSM_PARAMETER("network", KVS_PT_NONEMPTYSTRING, 0, szNetwork)
+		KVSM_PARAMETERS_END(c)
+		KviRegisteredChannel * ch;
 	if(c->hasSwitch('e', "exactly"))
 		ch = g_pRegisteredChannelDataBase->findExact(szChan, szNetwork);
 	else
@@ -163,12 +163,12 @@ static bool regchan_kvs_cmd_setProperty(KviKvsModuleCommandCall * c)
 {
 	QString szChan, szNetwork, szProperty, szValue;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("channel name", KVS_PT_NONEMPTYSTRING, 0, szChan)
-	KVSM_PARAMETER("network", KVS_PT_NONEMPTYSTRING, 0, szNetwork)
-	KVSM_PARAMETER("property name", KVS_PT_NONEMPTYSTRING, 0, szProperty)
-	KVSM_PARAMETER("value", KVS_PT_STRING, 0, szValue)
-	KVSM_PARAMETERS_END(c)
-	KviRegisteredChannel * ch;
+		KVSM_PARAMETER("channel name", KVS_PT_NONEMPTYSTRING, 0, szChan)
+		KVSM_PARAMETER("network", KVS_PT_NONEMPTYSTRING, 0, szNetwork)
+		KVSM_PARAMETER("property name", KVS_PT_NONEMPTYSTRING, 0, szProperty)
+		KVSM_PARAMETER("value", KVS_PT_STRING, 0, szValue)
+		KVSM_PARAMETERS_END(c)
+		KviRegisteredChannel * ch;
 	if(c->hasSwitch('e', "exactly"))
 		ch = g_pRegisteredChannelDataBase->findExact(szChan, szNetwork);
 	else
@@ -221,19 +221,19 @@ static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 		{
 			tot++;
 			c->window()->outputNoFmt(
-			    KVI_OUT_SYSTEMMESSAGE,
-			    __tr2qs_ctx("Channel: %1%2@%3", "register")
-			        .arg(QChar(KviControlCodes::Bold))
-			        .arg(ch->name())
-			        .arg(ch->netMask()));
+				KVI_OUT_SYSTEMMESSAGE,
+				__tr2qs_ctx("Channel: %1%2@%3", "register")
+				.arg(QChar(KviControlCodes::Bold))
+				.arg(ch->name())
+				.arg(ch->netMask()));
 
 			for(QHash<QString, QString>::Iterator it2 = ch->propertyDict()->begin(); it2 != ch->propertyDict()->end(); ++it2)
 			{
 				c->window()->outputNoFmt(
-				    KVI_OUT_SYSTEMMESSAGE,
-				    __tr2qs_ctx("    Property: %1=%2", "register")
-				        .arg(it2.key())
-				        .arg(it2.value()));
+					KVI_OUT_SYSTEMMESSAGE,
+					__tr2qs_ctx("    Property: %1=%2", "register")
+					.arg(it2.key())
+					.arg(it2.value()));
 			}
 		}
 	}
@@ -267,11 +267,11 @@ static bool regchan_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 {
 	QString szChan, szNetmask;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("channel name", KVS_PT_STRING, KVS_PF_OPTIONAL, szChan)
-	KVSM_PARAMETER("netmask", KVS_PT_STRING, KVS_PF_OPTIONAL, szNetmask)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("channel name", KVS_PT_STRING, KVS_PF_OPTIONAL, szChan)
+		KVSM_PARAMETER("netmask", KVS_PT_STRING, KVS_PF_OPTIONAL, szNetmask)
+		KVSM_PARAMETERS_END(c)
 
-	KviKvsArray * pArray = new KviKvsArray();
+		KviKvsArray * pArray = new KviKvsArray();
 
 	int aid = 0;
 
@@ -324,11 +324,11 @@ static bool regchan_kvs_fnc_property(KviKvsModuleFunctionCall * c)
 {
 	QString szChan, szNetwork, szPropertyName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("channel name", KVS_PT_STRING, 0, szChan)
-	KVSM_PARAMETER("network", KVS_PT_STRING, 0, szNetwork)
-	KVSM_PARAMETER("property name", KVS_PT_NONEMPTYSTRING, 0, szPropertyName)
-	KVSM_PARAMETERS_END(c)
-	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan, szNetwork);
+		KVSM_PARAMETER("channel name", KVS_PT_STRING, 0, szChan)
+		KVSM_PARAMETER("network", KVS_PT_STRING, 0, szNetwork)
+		KVSM_PARAMETER("property name", KVS_PT_NONEMPTYSTRING, 0, szPropertyName)
+		KVSM_PARAMETERS_END(c)
+		KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan, szNetwork);
 	if(ch)
 	{
 		QString szProp = ch->property(szPropertyName);
@@ -363,10 +363,10 @@ static bool regchan_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 {
 	QString szChan, szNetwork;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("channel name", KVS_PT_STRING, 0, szChan)
-	KVSM_PARAMETER("network", KVS_PT_STRING, 0, szNetwork)
-	KVSM_PARAMETERS_END(c)
-	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan, szNetwork);
+		KVSM_PARAMETER("channel name", KVS_PT_STRING, 0, szChan)
+		KVSM_PARAMETER("network", KVS_PT_STRING, 0, szNetwork)
+		KVSM_PARAMETERS_END(c)
+		KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan, szNetwork);
 	c->returnValue()->setBoolean(ch);
 	return true;
 }
@@ -399,10 +399,10 @@ static bool regchan_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 {
 	QString szChan, szNetmask;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("channel name", KVS_PT_STRING, 0, szChan)
-	KVSM_PARAMETER("netmask", KVS_PT_STRING, 0, szNetmask)
-	KVSM_PARAMETERS_END(c)
-	KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan, szNetmask);
+		KVSM_PARAMETER("channel name", KVS_PT_STRING, 0, szChan)
+		KVSM_PARAMETER("netmask", KVS_PT_STRING, 0, szNetmask)
+		KVSM_PARAMETERS_END(c)
+		KviRegisteredChannel * ch = g_pRegisteredChannelDataBase->find(szChan, szNetmask);
 	c->returnValue()->setBoolean(ch);
 	return true;
 }
@@ -432,12 +432,12 @@ static bool regchan_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "RegChan",                                                      // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Script interface to the registered channels database",
-    regchan_module_init,
-    regchan_module_can_unload,
-    0,
-    regchan_module_cleanup,
-    "register")
+	"RegChan",                                                      // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Script interface to the registered channels database",
+	regchan_module_init,
+	regchan_module_can_unload,
+	0,
+	regchan_module_cleanup,
+	"register")

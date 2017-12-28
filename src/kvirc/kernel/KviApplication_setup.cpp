@@ -165,7 +165,7 @@ void KviApplication::setFileAssociation(const QString & szExtension, const QStri
 	tmp = QString(szAppPath + ",%1").arg(iIconIndex).toStdWString();
 	RegSetValueEx(hKey, 0, 0, REG_SZ, (LPBYTE)tmp.c_str(), tmp.length() * 2 + 1);
 
-	if (!szActionName.isEmpty())
+	if(!szActionName.isEmpty())
 	{
 		tmp = QString("Software\\Classes\\" + szClassName + "\\Shell\\Parse").toStdWString();
 		RegCreateKeyEx(HKEY_CURRENT_USER, (LPCWSTR)tmp.c_str(), 0, 0, 0, KEY_WRITE, 0, &hKey, 0);
@@ -192,8 +192,8 @@ void KviApplication::setupFileAssociations()
 
 void KviApplication::findGlobalKvircDirectory()
 {
-// Look for the installation directory
-// with the image and help files inside
+	// Look for the installation directory
+	// with the image and help files inside
 #ifdef GLOBAL_KVIRC_DIR
 	m_szGlobalKvircDir = GLOBAL_KVIRC_DIR;
 	KviFileUtils::adjustFilePath(m_szGlobalKvircDir);
@@ -209,12 +209,12 @@ void KviApplication::findGlobalKvircDirectory()
 		return;
 
 	KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"
-	                       "I have tried %Q, but it seemed to fail\n"
-	                       "Trying to run anyway...\n",
-	    &m_szGlobalKvircDir);
+		"I have tried %Q, but it seemed to fail\n"
+		"Trying to run anyway...\n",
+		&m_szGlobalKvircDir);
 #else
 
-// Check for macOS Bundle compilation
+	// Check for macOS Bundle compilation
 #ifdef COMPILE_ON_MAC
 	m_szGlobalKvircDir = applicationDirPath();
 	m_szGlobalKvircDir += "/../Resources/";
@@ -227,42 +227,42 @@ void KviApplication::findGlobalKvircDirectory()
 
 	m_szGlobalKvircDir = "";
 
-// DO NOT TRANSLATE THIS
-// THE TRANSLATION DIRECTORY WAS NOT FOUND YET
-// AND THE LOCALE IS NOT INITIALIZED AT ALL
+	// DO NOT TRANSLATE THIS
+	// THE TRANSLATION DIRECTORY WAS NOT FOUND YET
+	// AND THE LOCALE IS NOT INITIALIZED AT ALL
 
 #ifdef COMPILE_KDE_SUPPORT
 	KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"
-	                       "The usual path for this directory is $KDEDIR/share/apps/kvirc.\n"
-	                       "Are you sure that 'make install' worked correctly?\n"
-	                       "Please make sure that you have the read permission to that directory\n"
-	                       "and you have set KDEDIR correctly. You may also try to rerun 'make install'.\n"
-	                       "A detailed explanation of the KVIrc directory system is in the INSTALL document\n"
-	                       "shipped with the KVIrc source distribution.\n"
-	                       "Trying to run anyway...");
+		"The usual path for this directory is $KDEDIR/share/apps/kvirc.\n"
+		"Are you sure that 'make install' worked correctly?\n"
+		"Please make sure that you have the read permission to that directory\n"
+		"and you have set KDEDIR correctly. You may also try to rerun 'make install'.\n"
+		"A detailed explanation of the KVIrc directory system is in the INSTALL document\n"
+		"shipped with the KVIrc source distribution.\n"
+		"Trying to run anyway...");
 #elif defined(COMPILE_ON_MAC)
 	KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"
-	                       "The usual path for this directory is ./Contents/Resources/kvirc within your application bundle.\n"
-	                       "Something went wrong during the bundle creation.\n"
-	                       "Please read the documentation and make sure to set proper paths for --prefix, -bindir, -libdir and --datadir during the configure run.\n"
-	                       "Trying to run anyway...\n");
+		"The usual path for this directory is ./Contents/Resources/kvirc within your application bundle.\n"
+		"Something went wrong during the bundle creation.\n"
+		"Please read the documentation and make sure to set proper paths for --prefix, -bindir, -libdir and --datadir during the configure run.\n"
+		"Trying to run anyway...\n");
 #else  //!defined(COMPILE_KDE_SUPPORT) && !defined(COMPILE_ON_MAC)
 	KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"
-	                       "The usual path for this directory is /usr/local/share/kvirc.\n"
-	                       "Are you sure that 'make install' worked correctly?\n"
-	                       "Please make sure that you have the read permission to that directory.\n"
-	                       "You may also need to rerun 'make install'.\n"
-	                       "A detailed explanation of the KVIrc directory system is in the INSTALL document\n"
-	                       "shipped with the KVIrc source distribution.\n"
-	                       "Trying to run anyway...\n");
+		"The usual path for this directory is /usr/local/share/kvirc.\n"
+		"Are you sure that 'make install' worked correctly?\n"
+		"Please make sure that you have the read permission to that directory.\n"
+		"You may also need to rerun 'make install'.\n"
+		"A detailed explanation of the KVIrc directory system is in the INSTALL document\n"
+		"shipped with the KVIrc source distribution.\n"
+		"Trying to run anyway...\n");
 #endif //!COMPILE_ON_MAC
 #endif
 }
 
 bool KviApplication::findLocalKvircDirectory()
 {
-// Here we check if we already did the setup
-// and we have the kvirc local directory saved somewhere
+	// Here we check if we already did the setup
+	// and we have the kvirc local directory saved somewhere
 #ifdef COMPILE_KDE_SUPPORT
 	if(m_szConfigFile.isEmpty())
 	{
@@ -382,9 +382,9 @@ void KviApplication::setupBegin()
 	if(!g_pSetupLibrary->load())
 	{
 		KviMessageBox::warning(__tr2qs("Oops! It looks like I can't load modules on this system.\n"
-		                               "I have been looking for the %s library but I haven't been able to load it\n"
-		                               "due to the following error: \"%s\"\nAborting."),
-		    szSetupLib.toUtf8().data(), g_pSetupLibrary->errorString().toUtf8().data());
+			"I have been looking for the %s library but I haven't been able to load it\n"
+			"due to the following error: \"%s\"\nAborting."),
+			szSetupLib.toUtf8().data(), g_pSetupLibrary->errorString().toUtf8().data());
 #if defined(COMPILE_ON_WINDOWS)
 		ExitProcess(-1);
 #elif defined(COMPILE_ON_MINGW)
@@ -394,12 +394,12 @@ void KviApplication::setupBegin()
 #endif
 	}
 
-	bool (*sfunc)() = (bool (*)())g_pSetupLibrary->resolve("setup_begin");
+	bool(*sfunc)() = (bool(*)())g_pSetupLibrary->resolve("setup_begin");
 	if(!sfunc)
 	{
 		KviMessageBox::warning(__tr2qs("Oops! It looks like you have a broken distribution.\n"
-		                               "The setup module does not export the \"setup_begin\" function.\n"
-		                               "Aborting!"));
+			"The setup module does not export the \"setup_begin\" function.\n"
+			"Aborting!"));
 #if defined(COMPILE_ON_WINDOWS)
 		ExitProcess(-1);
 #elif defined(COMPILE_ON_MINGW)
@@ -421,7 +421,6 @@ void KviApplication::setupBegin()
 		::exit(-1);
 #endif
 	}
-
 }
 
 void KviApplication::setupFinish()
@@ -432,12 +431,12 @@ void KviApplication::setupFinish()
 		return;
 	}
 
-	void (*sfunc)() = (void (*)())g_pSetupLibrary->resolve("setup_finish");
+	void(*sfunc)() = (void(*)())g_pSetupLibrary->resolve("setup_finish");
 	if(!sfunc)
 	{
 		KviMessageBox::warning(__tr2qs("Oops! It looks like you have a broken distribution.\n"
-		                               "The setup module does not export the \"setup_finish\" function.\n"
-		                               "Trying to continue anyway..."));
+			"The setup module does not export the \"setup_finish\" function.\n"
+			"Trying to continue anyway..."));
 	}
 
 	sfunc();
@@ -449,7 +448,7 @@ void KviApplication::setupFinish()
 
 void KviApplication::saveKvircDirectory()
 {
-// Here we save the local directory path
+	// Here we save the local directory path
 #ifdef COMPILE_KDE_SUPPORT
 	// In KDE we use the application config file
 	if(m_szConfigFile.isEmpty())

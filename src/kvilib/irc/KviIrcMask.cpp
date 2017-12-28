@@ -238,93 +238,93 @@ void KviIrcMask::mask(QString & szMask, MaskType eMaskType) const
 	szMask.append("!");
 	switch(ucMaskTable[((int)eMaskType)][1])
 	{
-		case 0:
-			szMask.append(m_szUser);
-			break;
-		case 1:
-			szMask.append(m_szWild);
-			break;
-		default:
-			if(m_szUser.length() > 0)
-			{
-				if(m_szUser[0].unicode() != '*')
-					szMask.append(m_szWild);
-				if((m_szUser[0].unicode() == '~') || (m_szUser[0].unicode() == '^') || (m_szUser[0].unicode() == '+') || (m_szUser[0].unicode() == '-') || (m_szUser[0].unicode() == '='))
-					szMask.append(m_szUser.right(m_szUser.length() - 1));
-				else
-					szMask.append(m_szUser);
-			}
-			break;
+	case 0:
+		szMask.append(m_szUser);
+		break;
+	case 1:
+		szMask.append(m_szWild);
+		break;
+	default:
+		if(m_szUser.length() > 0)
+		{
+			if(m_szUser[0].unicode() != '*')
+				szMask.append(m_szWild);
+			if((m_szUser[0].unicode() == '~') || (m_szUser[0].unicode() == '^') || (m_szUser[0].unicode() == '+') || (m_szUser[0].unicode() == '-') || (m_szUser[0].unicode() == '='))
+				szMask.append(m_szUser.right(m_szUser.length() - 1));
+			else
+				szMask.append(m_szUser);
+		}
+		break;
 	}
 	szMask.append('@');
 	switch(ucMaskTable[((int)eMaskType)][2])
 	{
-		case 0:
-			szMask.append(m_szHost);
-			break;
-		case 1:
+	case 0:
+		szMask.append(m_szHost);
+		break;
+	case 1:
+		szMask.append(m_szWild);
+		break;
+	case 2:
+		if(m_szHost != m_szWild)
+		{
+			if(hasNumericHost())
+			{
+				QString szHost(m_szHost.left(getIpDomainMaskLen()));
+				szMask.append(szHost);
+				szMask.append(m_szWild);
+			}
+			else
+			{
+				szMask.append(m_szWild);
+				szMask.append(getHostDomainMask());
+			}
+		}
+		else
+		{
 			szMask.append(m_szWild);
-			break;
-		case 2:
-			if(m_szHost != m_szWild)
+		}
+		break;
+	case 3:
+		if(m_szHost != m_szWild)
+		{
+			if(hasNumericHost())
 			{
-				if(hasNumericHost())
-				{
-					QString szHost(m_szHost.left(getIpDomainMaskLen()));
-					szMask.append(szHost);
-					szMask.append(m_szWild);
-				}
-				else
-				{
-					szMask.append(m_szWild);
-					szMask.append(getHostDomainMask());
-				}
+				QString szHost(m_szHost.left(getLargeIpDomainMaskLen()));
+				szMask.append(szHost);
+				szMask.append(m_szWild);
 			}
 			else
 			{
 				szMask.append(m_szWild);
+				szMask.append(getLargeHostDomainMask());
 			}
-			break;
-		case 3:
-			if(m_szHost != m_szWild)
+		}
+		else
+		{
+			szMask.append(m_szWild);
+		}
+		break;
+	default: // case 4 and others
+		if(m_szHost != m_szWild)
+		{
+			if(hasNumericHost() || hasMaskedIp())
 			{
-				if(hasNumericHost())
-				{
-					QString szHost(m_szHost.left(getLargeIpDomainMaskLen()));
-					szMask.append(szHost);
-					szMask.append(m_szWild);
-				}
-				else
-				{
-					szMask.append(m_szWild);
-					szMask.append(getLargeHostDomainMask());
-				}
+				QString szHost(m_szHost.left(getLargeIpDomainMaskLen()));
+				szMask.append(szHost);
+				szMask.append(m_szWild);
 			}
 			else
 			{
 				szMask.append(m_szWild);
+				szMask.append(getLargeHostDomainMask());
 			}
-			break;
-		default: // case 4 and others
-			if(m_szHost != m_szWild)
-			{
-				if(hasNumericHost() || hasMaskedIp())
-				{
-					QString szHost(m_szHost.left(getLargeIpDomainMaskLen()));
-					szMask.append(szHost);
-					szMask.append(m_szWild);
-				}
-				else
-				{
-					szMask.append(m_szWild);
-					szMask.append(getLargeHostDomainMask());
-				}
-			}
-			else
-			{
-				szMask.append(m_szWild);
-			}
-			break;
+		}
+		else
+		{
+			szMask.append(m_szWild);
+		}
+		break;
 	}
 }
 

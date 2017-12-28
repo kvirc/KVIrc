@@ -83,7 +83,7 @@ protected:
 	virtual void showEvent(QShowEvent * e);
 	virtual void accept();
 	virtual void reject();
-protected slots:
+	protected slots:
 	void realNameChanged(const QString & str);
 	void maskChanged(const QString & str);
 	void notifyNickChanged(const QString &);

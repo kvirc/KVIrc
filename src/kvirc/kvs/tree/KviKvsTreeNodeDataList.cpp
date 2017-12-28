@@ -28,7 +28,7 @@
 #include "KviQString.h"
 
 KviKvsTreeNodeDataList::KviKvsTreeNodeDataList(const QChar * pLocation)
-    : KviKvsTreeNode(pLocation)
+	: KviKvsTreeNode(pLocation)
 {
 	m_pDataList = new KviPointerList<KviKvsTreeNodeData>();
 	m_pDataList->setAutoDelete(true);

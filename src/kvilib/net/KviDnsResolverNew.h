@@ -108,12 +108,11 @@ public:
 	const QString & query() const;
 	bool isRunning() const;
 
-private slots:
+	private slots:
 	void slotHostLookupTerminated(const QHostInfo & oHostInfo);
 
 signals:
 	void lookupDone(KviDnsResolver *);
-
 }; // class KviDnsResolver
 
 #endif //!_KviDnsResolver_h_

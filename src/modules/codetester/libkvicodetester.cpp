@@ -71,7 +71,7 @@ static bool codetester_module_cleanup(KviModule *)
 	{
 		auto w = g_pCodeTesterWindowList.begin();
 
-		if (w == g_pCodeTesterWindowList.end())
+		if(w == g_pCodeTesterWindowList.end())
 			break;
 
 		(*w)->close(); // deleted path!
@@ -80,12 +80,12 @@ static bool codetester_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "CodeTester",                                                   // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Code tester window",
-    codetester_module_init,
-    codetester_module_can_unload,
-    0,
-    codetester_module_cleanup,
-    "editor")
+	"CodeTester",                                                   // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Code tester window",
+	codetester_module_init,
+	codetester_module_can_unload,
+	0,
+	codetester_module_cleanup,
+	"editor")

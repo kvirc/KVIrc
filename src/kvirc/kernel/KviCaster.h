@@ -51,7 +51,7 @@ namespace KviCast
 		if(newPointer == nullptr)
 		{
 			qDebug("KviCast::dynamic: Conversion from %s to %s failed: %s in %s (%s).",
-			    typeid(P).name(), typeid(T).name(), func, file, expr);
+				typeid(P).name(), typeid(T).name(), func, file, expr);
 		}
 
 		return newPointer;

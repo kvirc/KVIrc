@@ -86,7 +86,7 @@ private:
 	void fillProxyList();
 	void saveLastItem();
 	void enableDisableUseProxySelector();
-protected slots:
+	protected slots:
 	void currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem * prev);
 	void customContextMenuRequested(const QPoint & pnt);
 	void newProxy();

@@ -96,33 +96,33 @@ bool KvsObject_button::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 KVSO_CLASS_FUNCTION(button, text)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setString(((QPushButton *)widget())->text());
+		c->returnValue()->setString(((QPushButton *)widget())->text());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(button, setText)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szText;
+		QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
-	KVSO_PARAMETERS_END(c)
-	((QPushButton *)widget())->setText(szText);
+		KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
+		KVSO_PARAMETERS_END(c)
+		((QPushButton *)widget())->setText(szText);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(button, setImage)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsVariant * pIcon;
+		KviKvsVariant * pIcon;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("icon_or_hobject", KVS_PT_VARIANT, 0, pIcon)
-	KVSO_PARAMETERS_END(c)
-	if(!pIcon)
-	{
-		c->warning(__tr2qs_ctx("Image parameter missing", "object"));
-		return true;
-	}
+		KVSO_PARAMETER("icon_or_hobject", KVS_PT_VARIANT, 0, pIcon)
+		KVSO_PARAMETERS_END(c)
+		if(!pIcon)
+		{
+			c->warning(__tr2qs_ctx("Image parameter missing", "object"));
+			return true;
+		}
 	if(pIcon->isHObject())
 	{
 		kvs_hobject_t hObj;

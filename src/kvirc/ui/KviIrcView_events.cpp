@@ -139,97 +139,97 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent * e)
 
 	switch(szLinkCommandPart[0].unicode())
 	{
-		case 'n':
+	case 'n':
+	{
+		switch(m_pKviWindow->type())
 		{
-			switch(m_pKviWindow->type())
+		case KviWindow::Channel:
+			if(((KviChannelWindow *)m_pKviWindow)->isOn(szLinkTextPart))
 			{
-				case KviWindow::Channel:
-					if(((KviChannelWindow *)m_pKviWindow)->isOn(szLinkTextPart))
-					{
-						KVS_TRIGGER_EVENT(KviEvent_OnChannelNickDefaultActionRequest, m_pKviWindow, &lParams);
-						return;
-					}
-					break;
-				case KviWindow::Query:
-					if(KviQString::equalCI(((KviQueryWindow *)m_pKviWindow)->windowName(), szLinkTextPart))
-					{
-						KVS_TRIGGER_EVENT(KviEvent_OnQueryNickDefaultActionRequest, m_pKviWindow, &lParams);
-						return;
-					}
-					break;
-				default:
-					return; // unhandled window type (FIXME: Let it go anyway ?)
-					break;
+				KVS_TRIGGER_EVENT(KviEvent_OnChannelNickDefaultActionRequest, m_pKviWindow, &lParams);
+				return;
 			}
-			if(console())
-				KVS_TRIGGER_EVENT(KviEvent_OnNickLinkDefaultActionRequest, m_pKviWindow, &lParams);
+			break;
+		case KviWindow::Query:
+			if(KviQString::equalCI(((KviQueryWindow *)m_pKviWindow)->windowName(), szLinkTextPart))
+			{
+				KVS_TRIGGER_EVENT(KviEvent_OnQueryNickDefaultActionRequest, m_pKviWindow, &lParams);
+				return;
+			}
+			break;
+		default:
+			return; // unhandled window type (FIXME: Let it go anyway ?)
+			break;
+		}
+		if(console())
+			KVS_TRIGGER_EVENT(KviEvent_OnNickLinkDefaultActionRequest, m_pKviWindow, &lParams);
+		return;
+	}
+	break;
+	case 'm': // m+X[ param] / m-X[ param] (used to quickly undo mode changes)
+	{
+		// Syntax is
+		//   m<plus_or_minus><mode_char>[ <parameter>]
+
+		if(szLinkCommandPart.length() < 3)
+			return; // malformed
+		if(m_pKviWindow->type() != KviWindow::Channel)
+			return; // must be on a channel to apply it
+		if(!(((KviChannelWindow *)m_pKviWindow)->isMeHalfOp(true)))
+			return; // i'm not op, can't do mode changes
+
+		QString szPart = szLinkCommandPart.mid(1);
+
+		szKvsCommand = QString("mode $chan.name %1").arg(szPart);
+	}
+	break;
+	case 'h':
+		m_pKviWindow->output(KVI_OUT_HOSTLOOKUP, __tr2qs("Looking up host %Q..."), &szLinkTextPart);
+		szKvsCommand = "host -a $0";
+		break;
+	case 'u':
+		if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 2)
+		{
+			KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick, m_pKviWindow, &lParams);
 			return;
 		}
 		break;
-		case 'm': // m+X[ param] / m-X[ param] (used to quickly undo mode changes)
+	case 'c':
+	{
+		if(!console() || !console()->connection())
+			return;
+
+		// If there is a channel after the c flag, join that instead (as the text part may contain control codes)
+		if(szLinkCommandPart.length() > 1)
 		{
-			// Syntax is
-			//   m<plus_or_minus><mode_char>[ <parameter>]
-
-			if(szLinkCommandPart.length() < 3)
-				return; // malformed
-			if(m_pKviWindow->type() != KviWindow::Channel)
-				return; // must be on a channel to apply it
-			if(!(((KviChannelWindow *)m_pKviWindow)->isMeHalfOp(true)))
-				return; // i'm not op, can't do mode changes
-
-			QString szPart = szLinkCommandPart.mid(1);
-
-			szKvsCommand = QString("mode $chan.name %1").arg(szPart);
+			szLinkTextPart = szLinkCommandPart.mid(1);
+			*lParams.at(0) = szLinkTextPart;
 		}
-		break;
-		case 'h':
-			m_pKviWindow->output(KVI_OUT_HOSTLOOKUP, __tr2qs("Looking up host %Q..."), &szLinkTextPart);
-			szKvsCommand = "host -a $0";
-			break;
-		case 'u':
-			if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 2)
-			{
-				KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick, m_pKviWindow, &lParams);
-				return;
-			}
-			break;
-		case 'c':
+
+		if(KviChannelWindow * c = console()->connection()->findChannel(szLinkTextPart))
 		{
-			if(!console() || !console()->connection())
-				return;
-
-			// If there is a channel after the c flag, join that instead (as the text part may contain control codes)
-			if(szLinkCommandPart.length() > 1)
-			{
-				szLinkTextPart = szLinkCommandPart.mid(1);
-				*lParams.at(0) = szLinkTextPart;
-			}
-
-			if(KviChannelWindow * c = console()->connection()->findChannel(szLinkTextPart))
-			{
-				// already there
-				g_pMainWindow->setActiveWindow(c);
-				return;
-			}
-
-			szKvsCommand = "join $0";
+			// already there
+			g_pMainWindow->setActiveWindow(c);
+			return;
 		}
+
+		szKvsCommand = "join $0";
+	}
+	break;
+	case 's':
+		szKvsCommand = "motd $0";
 		break;
-		case 's':
-			szKvsCommand = "motd $0";
-			break;
-		default:
+	default:
+	{
+		// extract the user-supplied double click command
+		getLinkEscapeCommand(szKvsCommand, szLinkCommandPart, "[!dbl]");
+		if(szKvsCommand.isEmpty())
 		{
-			// extract the user-supplied double click command
-			getLinkEscapeCommand(szKvsCommand, szLinkCommandPart, "[!dbl]");
-			if(szKvsCommand.isEmpty())
-			{
-				KVS_TRIGGER_EVENT_0(KviEvent_OnTextViewDoubleClicked, m_pKviWindow);
-				return;
-			}
+			KVS_TRIGGER_EVENT_0(KviEvent_OnTextViewDoubleClicked, m_pKviWindow);
+			return;
 		}
-		break;
+	}
+	break;
 	}
 
 	if(!szKvsCommand.isEmpty())
@@ -328,92 +328,92 @@ void KviIrcView::triggerMouseRelatedKvsEvents(QMouseEvent * e)
 		{
 			switch(linkCmd[0].unicode())
 			{
-				case 'n':
+			case 'n':
+			{
+				bool bTrigger = false;
+				switch(m_pKviWindow->type())
 				{
-					bool bTrigger = false;
-					switch(m_pKviWindow->type())
+				case KviWindow::Channel:
+					if(((KviChannelWindow *)m_pKviWindow)->isOn(linkText))
 					{
-						case KviWindow::Channel:
-							if(((KviChannelWindow *)m_pKviWindow)->isOn(linkText))
-							{
-								if(e->button() & Qt::RightButton)
-									KVS_TRIGGER_EVENT(KviEvent_OnChannelNickPopupRequest, m_pKviWindow, pParams);
-								if(e->button() & Qt::LeftButton)
-								{
-									KVS_TRIGGER_EVENT(KviEvent_OnChannelNickLinkClick, m_pKviWindow, pParams);
-								}
-							}
-							else
-								bTrigger = true;
-							break;
-						case KviWindow::Query:
-							if(KviQString::equalCI(((KviQueryWindow *)m_pKviWindow)->windowName(), linkText))
-							{
-								if(e->button() & Qt::RightButton)
-									KVS_TRIGGER_EVENT(KviEvent_OnQueryNickPopupRequest, m_pKviWindow, pParams);
-								if(e->button() & Qt::LeftButton)
-									KVS_TRIGGER_EVENT(KviEvent_OnQueryNickLinkClick, m_pKviWindow, pParams);
-							}
-							else
-								bTrigger = true;
-							break;
-						default:
-							bTrigger = true;
-							break;
-					}
-					if(bTrigger)
-					{
-						if(console())
+						if(e->button() & Qt::RightButton)
+							KVS_TRIGGER_EVENT(KviEvent_OnChannelNickPopupRequest, m_pKviWindow, pParams);
+						if(e->button() & Qt::LeftButton)
 						{
-							if(e->button() & Qt::RightButton)
-								KVS_TRIGGER_EVENT(KviEvent_OnNickLinkPopupRequest, m_pKviWindow, pParams);
-							if(e->button() & Qt::LeftButton)
-								KVS_TRIGGER_EVENT(KviEvent_OnConsoleNickLinkClick, m_pKviWindow, pParams);
+							KVS_TRIGGER_EVENT(KviEvent_OnChannelNickLinkClick, m_pKviWindow, pParams);
 						}
-						else
-							emit rightClicked();
 					}
-				}
-				break;
-				case 'h':
-					if(e->button() & Qt::RightButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnHostLinkPopupRequest, m_pKviWindow, pParams);
-					if(e->button() & Qt::LeftButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnHostLinkClick, m_pKviWindow, pParams);
+					else
+						bTrigger = true;
 					break;
-				case 'u':
-					if(e->button() & Qt::RightButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnURLLinkPopupRequest, m_pKviWindow, pParams);
-					if(e->button() & Qt::LeftButton && KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 1)
-						KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick, m_pKviWindow, pParams);
-					break;
-				case 'c':
-					if(e->button() & Qt::RightButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnChannelLinkPopupRequest, m_pKviWindow, pParams);
-					if(e->button() & Qt::LeftButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnChannelLinkClick, m_pKviWindow, pParams);
-					break;
-				case 's':
-					if(e->button() & Qt::RightButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnServerLinkPopupRequest, m_pKviWindow, pParams);
-					if(e->button() & Qt::LeftButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnServerLinkClick, m_pKviWindow, pParams);
+				case KviWindow::Query:
+					if(KviQString::equalCI(((KviQueryWindow *)m_pKviWindow)->windowName(), linkText))
+					{
+						if(e->button() & Qt::RightButton)
+							KVS_TRIGGER_EVENT(KviEvent_OnQueryNickPopupRequest, m_pKviWindow, pParams);
+						if(e->button() & Qt::LeftButton)
+							KVS_TRIGGER_EVENT(KviEvent_OnQueryNickLinkClick, m_pKviWindow, pParams);
+					}
+					else
+						bTrigger = true;
 					break;
 				default:
-				{
-					if(e->button() & Qt::RightButton)
-					{
-						QString tmp;
-						getLinkEscapeCommand(tmp, linkCmd, "[!rbt]");
-						if(!tmp.isEmpty())
-						{
-							KviKvsScript::run(tmp, m_pKviWindow, pParams);
-						}
-						else
-							emit rightClicked();
-					}
+					bTrigger = true;
+					break;
 				}
+				if(bTrigger)
+				{
+					if(console())
+					{
+						if(e->button() & Qt::RightButton)
+							KVS_TRIGGER_EVENT(KviEvent_OnNickLinkPopupRequest, m_pKviWindow, pParams);
+						if(e->button() & Qt::LeftButton)
+							KVS_TRIGGER_EVENT(KviEvent_OnConsoleNickLinkClick, m_pKviWindow, pParams);
+					}
+					else
+						emit rightClicked();
+				}
+			}
+			break;
+			case 'h':
+				if(e->button() & Qt::RightButton)
+					KVS_TRIGGER_EVENT(KviEvent_OnHostLinkPopupRequest, m_pKviWindow, pParams);
+				if(e->button() & Qt::LeftButton)
+					KVS_TRIGGER_EVENT(KviEvent_OnHostLinkClick, m_pKviWindow, pParams);
 				break;
+			case 'u':
+				if(e->button() & Qt::RightButton)
+					KVS_TRIGGER_EVENT(KviEvent_OnURLLinkPopupRequest, m_pKviWindow, pParams);
+				if(e->button() & Qt::LeftButton && KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 1)
+					KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick, m_pKviWindow, pParams);
+				break;
+			case 'c':
+				if(e->button() & Qt::RightButton)
+					KVS_TRIGGER_EVENT(KviEvent_OnChannelLinkPopupRequest, m_pKviWindow, pParams);
+				if(e->button() & Qt::LeftButton)
+					KVS_TRIGGER_EVENT(KviEvent_OnChannelLinkClick, m_pKviWindow, pParams);
+				break;
+			case 's':
+				if(e->button() & Qt::RightButton)
+					KVS_TRIGGER_EVENT(KviEvent_OnServerLinkPopupRequest, m_pKviWindow, pParams);
+				if(e->button() & Qt::LeftButton)
+					KVS_TRIGGER_EVENT(KviEvent_OnServerLinkClick, m_pKviWindow, pParams);
+				break;
+			default:
+			{
+				if(e->button() & Qt::RightButton)
+				{
+					QString tmp;
+					getLinkEscapeCommand(tmp, linkCmd, "[!rbt]");
+					if(!tmp.isEmpty())
+					{
+						KviKvsScript::run(tmp, m_pKviWindow, pParams);
+					}
+					else
+						emit rightClicked();
+				}
+			}
+			break;
 			}
 		}
 		else if(e->button() & Qt::RightButton)
@@ -439,33 +439,33 @@ void KviIrcView::addControlCharacter(KviIrcViewLineChunk * pC, QString & szSelec
 {
 	switch(pC->type)
 	{
-		case KviControlCodes::Bold:
-		case KviControlCodes::Italic:
-		case KviControlCodes::Underline:
-		case KviControlCodes::Reverse:
-		case KviControlCodes::Reset:
-			szSelectionText.append(QChar(pC->type));
-			break;
-		case KviControlCodes::Color:
-			szSelectionText.append(QChar(pC->type));
-			if((pC->colors.fore != KviControlCodes::NoChange) && (pC->colors.fore != KviControlCodes::Transparent))
-			{
-				if(pC->colors.fore > 9)
-					szSelectionText.append(QChar('1'));
-				else
-					szSelectionText.append(QChar('0'));
-				szSelectionText.append(QChar((pC->colors.fore % 10) + '0'));
-			}
-			if((pC->colors.back != KviControlCodes::NoChange) && (pC->colors.back != KviControlCodes::Transparent))
-			{
-				szSelectionText.append(QChar(','));
-				if(pC->colors.back > 9)
-					szSelectionText.append(QChar('1'));
-				else
-					szSelectionText.append(QChar('0'));
-				szSelectionText.append(QChar((pC->colors.back % 10) + '0'));
-			}
-			break;
+	case KviControlCodes::Bold:
+	case KviControlCodes::Italic:
+	case KviControlCodes::Underline:
+	case KviControlCodes::Reverse:
+	case KviControlCodes::Reset:
+		szSelectionText.append(QChar(pC->type));
+		break;
+	case KviControlCodes::Color:
+		szSelectionText.append(QChar(pC->type));
+		if((pC->colors.fore != KviControlCodes::NoChange) && (pC->colors.fore != KviControlCodes::Transparent))
+		{
+			if(pC->colors.fore > 9)
+				szSelectionText.append(QChar('1'));
+			else
+				szSelectionText.append(QChar('0'));
+			szSelectionText.append(QChar((pC->colors.fore % 10) + '0'));
+		}
+		if((pC->colors.back != KviControlCodes::NoChange) && (pC->colors.back != KviControlCodes::Transparent))
+		{
+			szSelectionText.append(QChar(','));
+			if(pC->colors.back > 9)
+				szSelectionText.append(QChar('1'));
+			else
+				szSelectionText.append(QChar('0'));
+			szSelectionText.append(QChar((pC->colors.back % 10) + '0'));
+		}
+		break;
 	}
 }
 
@@ -892,275 +892,278 @@ void KviIrcView::doLinkToolTip(const QRect & rct, QString & linkCmd, QString & l
 
 	switch(linkCmd[0].unicode())
 	{
-		case 'u': // url link
+	case 'u': // url link
+	{
+		tip += "<html><body><table>";
+
+		if(!KVI_OPTION_BOOL(KviOption_boolEnableUrlLinkToolTip))
+			return;
+
+		if(linkText.length() > 50)
 		{
-			tip += "<html><body><table>";
-
-			if(!KVI_OPTION_BOOL(KviOption_boolEnableUrlLinkToolTip))
-				return;
-
-			if(linkText.length() > 50)
-			{
-				tip += tdp;
-				tip += __tr2qs("URL") + cln + nbspc;
-				tip += "<font color=\"#0022FF\">" + ub;
-				tip += linkText.left(47);
-				tip += ue + "...";
-			}
-			else
-			{	tip += tdp;
-				tip += __tr2qs("URL") + cln + nbspc;
-				tip += "<font color=\"#0022FF\">" + ub;
-				tip += linkText + ue;
-			}
-
-			tip += "</font>" + pre;
-
-			if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 1)  // Check click count
-				tip += __tr2qs("Click to open this link");
-			else
-			{
-				tip += __tr2qs("Double-click to open this link");
-				tip += br;
-				tip += __tr2qs("Right-click to view other options");
-			}
-			tip += enr;
-			tip += "</table></body></html>";
+			tip += tdp;
+			tip += __tr2qs("URL") + cln + nbspc;
+			tip += "<font color=\"#0022FF\">" + ub;
+			tip += linkText.left(47);
+			tip += ue + "...";
 		}
-		break;
-		case 'h': // host link
+		else
 		{
-			tip += "<html><body><table>";
-
-			if(!KVI_OPTION_BOOL(KviOption_boolEnableHostLinkToolTip))
-				return;
-
-			if(linkText.length() > 50)
-			{
-				tip += tdp;
-				tip += __tr2qs("Hostname") + cln + nbspc;
-				tip += "<font color=\"#0022FF\">" + ub;
-				tip += linkText.left(47);
-				tip += ue + "...";
-			}
-			else
-			{	tip += tdp;
-				tip += __tr2qs("Hostname") + cln + nbspc;
-				tip += "<font color=\"#0022FF\">" + ub;
-				tip += linkText + ue;
-			}
-
-			tip += "</font>";
-
-			if(linkText.indexOf('*') != -1)
-			{
-				tip += pre;
-
-				if(linkText.length() > 1)
-					tip += __tr2qs("Unable to look up hostname: hostname appears to be masked");
-				else
-					tip += __tr2qs("Unable to look up hostname: unknown host");
-
-				tip += enr;
-			}
-			else
-			{
-				tip += pre;
-				tip += __tr2qs("Double-click to look up this hostname");
-				tip += br;
-				tip += __tr2qs("Right-click to view other options");
-			}
-
-			tip += enr;
-			tip += "</table></body></html>";
+			tip += tdp;
+			tip += __tr2qs("URL") + cln + nbspc;
+			tip += "<font color=\"#0022FF\">" + ub;
+			tip += linkText + ue;
 		}
-		break;
-		case 's': // server link
+
+		tip += "</font>" + pre;
+
+		if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 1)  // Check click count
+			tip += __tr2qs("Click to open this link");
+		else
 		{
-			tip += "<html><body><table>";
-
-			if(!KVI_OPTION_BOOL(KviOption_boolEnableServerLinkToolTip))
-				return;
-
-			// FIXME: #warning "Spit out some server info...hub ?...registered ?"
-
-			if(linkText.length() > 50)
-			{
-				tip += tdp;
-				tip += __tr2qs("Server URL") + cln + nbspc;
-				tip += "<font color=\"#0022FF\">" + ub;
-				tip += linkText.left(47);
-				tip += ue + "...";
-			}
-			else
-			{	tip += tdp;
-				tip += __tr2qs("Server URL") + cln + nbspc;
-				tip += "<font color=\"#0022FF\">" + ub;
-				tip += linkText + ue;
-			}
-
-			tip += "</font>";
-
-			if(linkText.indexOf('*') != -1)
-			{
-				tip += pre;
-
-				if(linkText.length() > 1)
-					tip += __tr2qs("Server appears to be a network hub");
-				else
-					tip += __tr2qs("Unknown server"); // might happen...
-
-				tip += enr;
-			}
-
-			tip += pre;
-			tip += __tr2qs("Double-click to read the MOTD");
+			tip += __tr2qs("Double-click to open this link");
 			tip += br;
 			tip += __tr2qs("Right-click to view other options");
-			tip += enr ;
-			tip += "</table></body></html>";
 		}
-		break;
-		case 'm': // mode link
+		tip += enr;
+		tip += "</table></body></html>";
+	}
+	break;
+	case 'h': // host link
+	{
+		tip += "<html><body><table>";
+
+		if(!KVI_OPTION_BOOL(KviOption_boolEnableHostLinkToolTip))
+			return;
+
+		if(linkText.length() > 50)
 		{
-			if(!KVI_OPTION_BOOL(KviOption_boolEnableModeLinkToolTip))
-				return;
-			if((linkCmd.length() > 2) && (m_pKviWindow->type() == KviWindow::Channel))
-			{
-				if(((KviChannelWindow *)m_pKviWindow)->isMeHalfOp(true))
-				{
-					QString part = linkCmd.mid(1);
-					KviQString::appendFormatted(tip, QString("<b>mode %Q %Q</b>"), &(m_pKviWindow->windowName()), &part);
-				}
-				else
-				{
-					// I'm not op... no way
-					tip = __tr2qs("You're not an operator: you may not change channel modes");
-				}
-			}
+			tip += tdp;
+			tip += __tr2qs("Hostname") + cln + nbspc;
+			tip += "<font color=\"#0022FF\">" + ub;
+			tip += linkText.left(47);
+			tip += ue + "...";
 		}
-		break;
-		case 'n': // nick link
+		else
 		{
-			if(!KVI_OPTION_BOOL(KviOption_boolEnableNickLinkToolTip))
-				return;
-			if(console())
-			{
-				if(console()->connection())
-				{
-					KviIrcUserEntry * e = console()->connection()->userDataBase()->find(linkText);
-					if(e)
-					{
-						QString buffer;
-						console()->getUserTipText(linkText, e, buffer);
-						tip = buffer;
-					}
-					else
-						tip = QString(__tr2qs("Nothing is known about %1")).arg(linkText);
-				}
-				else
-					tip = QString(__tr2qs("Nothing is known about %1 (no connection)")).arg(linkText);
-			}
+			tip += tdp;
+			tip += __tr2qs("Hostname") + cln + nbspc;
+			tip += "<font color=\"#0022FF\">" + ub;
+			tip += linkText + ue;
 		}
-		break;
-		case 'c': // channel link
+
+		tip += "</font>";
+
+		if(linkText.indexOf('*') != -1)
 		{
-			tip += "<html><body><table>";
+			tip += pre;
 
-			static QString tdh = "<tr><td style=\"background-color: rgb(48,48,48); white-space: pre; font-weight: bold; color: rgb(255,255,255); text-align:center; padding-left: 5px; padding-right: 5px;\">";
-			static QString nrs = "<tr><td style=\"padding-left: 5px; padding-right: 5px;\">";
+			if(linkText.length() > 1)
+				tip += __tr2qs("Unable to look up hostname: hostname appears to be masked");
+			else
+				tip += __tr2qs("Unable to look up hostname: unknown host");
 
-			if(!KVI_OPTION_BOOL(KviOption_boolEnableChannelLinkToolTip))
-				return;
-			if(console() && console()->connection())
+			tip += enr;
+		}
+		else
+		{
+			tip += pre;
+			tip += __tr2qs("Double-click to look up this hostname");
+			tip += br;
+			tip += __tr2qs("Right-click to view other options");
+		}
+
+		tip += enr;
+		tip += "</table></body></html>";
+	}
+	break;
+	case 's': // server link
+	{
+		tip += "<html><body><table>";
+
+		if(!KVI_OPTION_BOOL(KviOption_boolEnableServerLinkToolTip))
+			return;
+
+		// FIXME: #warning "Spit out some server info...hub ?...registered ?"
+
+		if(linkText.length() > 50)
+		{
+			tip += tdp;
+			tip += __tr2qs("Server URL") + cln + nbspc;
+			tip += "<font color=\"#0022FF\">" + ub;
+			tip += linkText.left(47);
+			tip += ue + "...";
+		}
+		else
+		{
+			tip += tdp;
+			tip += __tr2qs("Server URL") + cln + nbspc;
+			tip += "<font color=\"#0022FF\">" + ub;
+			tip += linkText + ue;
+		}
+
+		tip += "</font>";
+
+		if(linkText.indexOf('*') != -1)
+		{
+			tip += pre;
+
+			if(linkText.length() > 1)
+				tip += __tr2qs("Server appears to be a network hub");
+			else
+				tip += __tr2qs("Unknown server"); // might happen...
+
+			tip += enr;
+		}
+
+		tip += pre;
+		tip += __tr2qs("Double-click to read the MOTD");
+		tip += br;
+		tip += __tr2qs("Right-click to view other options");
+		tip += enr;
+		tip += "</table></body></html>";
+	}
+	break;
+	case 'm': // mode link
+	{
+		if(!KVI_OPTION_BOOL(KviOption_boolEnableModeLinkToolTip))
+			return;
+		if((linkCmd.length() > 2) && (m_pKviWindow->type() == KviWindow::Channel))
+		{
+			if(((KviChannelWindow *)m_pKviWindow)->isMeHalfOp(true))
 			{
-				QString szChan = linkText;
-				QString szUrl;
-
-				if(szCmd.length() > 0)
-					szChan = szCmd;
-				KviChannelWindow * c = console()->connection()->findChannel(szChan);
-				if(c)
-				{
-					QString chanMode;
-
-					c->getChannelModeString(chanMode);
-					QString topic = KviControlCodes::stripControlBytes(c->topicWidget()->topic());
-					KviIrcUrl::join(szUrl, console()->connection()->target()->server());
-					szUrl.append(szChan);
-
-					if(!topic.isEmpty())
-					{
-						tip += tdh;
-						tip += __tr2qs("Channel Topic") + enr + nrs;
-						tip += KviQString::toHtmlEscaped(topic) + enr + tdp;
-					}
-					else
-					{
-						tip += tdh;
-						tip += __tr2qs("Channel Topic") + enr + nrs;
-						tip += __tr2qs("No topic message has been received from the server yet") + enr + tdp;
-					}
-
-					tip += __tr2qs("Channel modes: <b>+%1</b>").arg(KviQString::toHtmlEscaped(chanMode)) + enr + tdp;
-					tip += __tr2qs("Total users: <b>%1</b>").arg(c->count()) + enr + tdp;
-					tip += __tr2qs("IRC URI") + cln + nbspc;
-					tip += "<font color=\"#0022FF\">" + ub + KviQString::toHtmlEscaped(szUrl) + ue + "</font>" + enr + pre;
-					tip += __tr2qs("Right-click to view other options");
-					tip += enr;
-				}
-				else
-				{
-					KviIrcUrl::join(szUrl, console()->connection()->target()->server());
-					szUrl.append(szChan);
-
-					tip += tdp + __tr2qs("IRC URI") + cln + nbspc;
-					tip += "<font color=\"#0022FF\">" + ub + KviQString::toHtmlEscaped(szUrl) + ue + "</font>" + enr;
-
-					tip += pre;
-					tip += __tr2qs("Double-click to join <b>%1</b>").arg(KviQString::toHtmlEscaped(szChan)) + br;
-					tip += __tr2qs("Right-click to view other options");
-					tip += enr;
-				}
-
-				tip += "</table></body></html>";
+				QString part = linkCmd.mid(1);
+				KviQString::appendFormatted(tip, QString("<b>mode %Q %Q</b>"), &(m_pKviWindow->windowName()), &part);
 			}
 			else
-				tip = __tr2qs("You're not connected to a server");
+			{
+				// I'm not op... no way
+				tip = __tr2qs("You're not an operator: you may not change channel modes");
+			}
 		}
-		break;
-		default:
+	}
+	break;
+	case 'n': // nick link
+	{
+		if(!KVI_OPTION_BOOL(KviOption_boolEnableNickLinkToolTip))
+			return;
+		if(console())
 		{
-			if(!KVI_OPTION_BOOL(KviOption_boolEnableEscapeLinkToolTip))
-				return;
-			QString dbl, rbt, txt, mbt;
-			getLinkEscapeCommand(dbl, linkCmd, "[!dbl]");
-			getLinkEscapeCommand(rbt, linkCmd, "[!rbt]");
-			getLinkEscapeCommand(txt, linkCmd, "[!txt]");
-			getLinkEscapeCommand(mbt, linkCmd, "[!mbt]");
-
-			if(!txt.isEmpty())
-				tip = txt;
-			if(tip.isEmpty() && (!dbl.isEmpty()))
+			if(console()->connection())
 			{
-				if(!tip.isEmpty())
-					tip.append("<hr>");
-				KviQString::appendFormatted(tip, __tr2qs("Double-click: %Q"), &dbl);
+				KviIrcUserEntry * e = console()->connection()->userDataBase()->find(linkText);
+				if(e)
+				{
+					QString buffer;
+					console()->getUserTipText(linkText, e, buffer);
+					tip = buffer;
+				}
+				else
+					tip = QString(__tr2qs("Nothing is known about %1")).arg(linkText);
 			}
-			if(tip.isEmpty() && (!mbt.isEmpty()))
-			{
-				if(!tip.isEmpty())
-					tip.append("<hr>");
-				KviQString::appendFormatted(tip, __tr2qs("Middle-click: %Q"), &mbt);
-			}
-			if(tip.isEmpty() && (!rbt.isEmpty()))
-			{
-				if(!tip.isEmpty())
-					tip.append("<hr>");
-				KviQString::appendFormatted(tip, __tr2qs("Right-click: %Q"), &rbt);
-			}
+			else
+				tip = QString(__tr2qs("Nothing is known about %1 (no connection)")).arg(linkText);
 		}
-		break;
+	}
+	break;
+	case 'c': // channel link
+	{
+		tip += "<html><body><table>";
+
+		static QString tdh = "<tr><td style=\"background-color: rgb(48,48,48); white-space: pre; font-weight: bold; color: rgb(255,255,255); text-align:center; padding-left: 5px; padding-right: 5px;\">";
+		static QString nrs = "<tr><td style=\"padding-left: 5px; padding-right: 5px;\">";
+
+		if(!KVI_OPTION_BOOL(KviOption_boolEnableChannelLinkToolTip))
+			return;
+		if(console() && console()->connection())
+		{
+			QString szChan = linkText;
+			QString szUrl;
+
+			if(szCmd.length() > 0)
+				szChan = szCmd;
+			KviChannelWindow * c = console()->connection()->findChannel(szChan);
+			if(c)
+			{
+				QString chanMode;
+
+				c->getChannelModeString(chanMode);
+				QString topic = KviControlCodes::stripControlBytes(c->topicWidget()->topic());
+				KviIrcUrl::join(szUrl, console()->connection()->target()->server());
+				szUrl.append(szChan);
+
+				if(!topic.isEmpty())
+				{
+					tip += tdh;
+					tip += __tr2qs("Channel Topic") + enr + nrs;
+					tip += KviQString::toHtmlEscaped(topic) + enr + tdp;
+				}
+				else
+				{
+					tip += tdh;
+					tip += __tr2qs("Channel Topic") + enr + nrs;
+					tip += __tr2qs("No topic message has been received from the server yet") + enr + tdp;
+				}
+
+				tip += __tr2qs("Channel modes: <b>+%1</b>").arg(KviQString::toHtmlEscaped(chanMode)) + enr + tdp;
+				tip += __tr2qs("Total users: <b>%1</b>").arg(c->count()) + enr + tdp;
+				tip += __tr2qs("IRC URI") + cln + nbspc;
+				tip += "<font color=\"#0022FF\">" + ub + KviQString::toHtmlEscaped(szUrl) + ue + "</font>" + enr + pre;
+				tip += __tr2qs("Right-click to view other options");
+				tip += enr;
+			}
+			else
+			{
+				KviIrcUrl::join(szUrl, console()->connection()->target()->server());
+				szUrl.append(szChan);
+
+				tip += tdp + __tr2qs("IRC URI") + cln + nbspc;
+				tip += "<font color=\"#0022FF\">" + ub + KviQString::toHtmlEscaped(szUrl) + ue + "</font>" + enr;
+
+				tip += pre;
+				tip += __tr2qs("Double-click to join <b>%1</b>").arg(KviQString::toHtmlEscaped(szChan)) + br;
+				tip += __tr2qs("Right-click to view other options");
+				tip += enr;
+			}
+
+			tip += "</table></body></html>";
+		}
+		else
+			tip = __tr2qs("You're not connected to a server");
+	}
+	break;
+	default:
+	{
+		if(!KVI_OPTION_BOOL(KviOption_boolEnableEscapeLinkToolTip))
+			return;
+		QString dbl, rbt, txt, mbt;
+		getLinkEscapeCommand(dbl, linkCmd, "[!dbl]");
+		getLinkEscapeCommand(rbt, linkCmd, "[!rbt]");
+		getLinkEscapeCommand(txt, linkCmd, "[!txt]");
+		getLinkEscapeCommand(mbt, linkCmd, "[!mbt]");
+
+		if(!txt.isEmpty())
+			tip = txt;
+		if(tip.isEmpty() && (!dbl.isEmpty()))
+		{
+			if(!tip.isEmpty())
+				tip.append("<hr>");
+			KviQString::appendFormatted(tip, __tr2qs("Double-click: %Q"), &dbl);
+		}
+		if(tip.isEmpty() && (!mbt.isEmpty()))
+		{
+			if(!tip.isEmpty())
+				tip.append("<hr>");
+			KviQString::appendFormatted(tip, __tr2qs("Middle-click: %Q"), &mbt);
+		}
+		if(tip.isEmpty() && (!rbt.isEmpty()))
+		{
+			if(!tip.isEmpty())
+				tip.append("<hr>");
+			KviQString::appendFormatted(tip, __tr2qs("Right-click: %Q"), &rbt);
+		}
+	}
+	break;
 	}
 
 	if(tip.isEmpty())
@@ -1174,16 +1177,16 @@ void KviIrcView::keyPressEvent(QKeyEvent * e)
 {
 	switch(e->key())
 	{
-		case Qt::Key_PageUp:
-			prevPage();
-			e->accept();
-			break;
-		case Qt::Key_PageDown:
-			nextPage();
-			e->accept();
-			break;
-		default:
-			e->ignore();
+	case Qt::Key_PageUp:
+		prevPage();
+		e->accept();
+		break;
+	case Qt::Key_PageDown:
+		nextPage();
+		e->accept();
+		break;
+	default:
+		e->ignore();
 	}
 }
 

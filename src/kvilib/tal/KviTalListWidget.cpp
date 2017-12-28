@@ -31,7 +31,7 @@
 #include <QApplication>
 
 KviTalListWidget::KviTalListWidget(QWidget * pParent, QString name, Qt::WindowType f)
-    : QListWidget(pParent)
+	: QListWidget(pParent)
 {
 	setObjectName(name);
 	setWindowFlags(f);
@@ -80,19 +80,19 @@ bool KviTalListWidget::event(QEvent * e)
 }
 
 KviTalListWidgetText::KviTalListWidgetText(KviTalListWidget * listbox, const QString & text)
-    : KviTalListWidgetItem(listbox)
+	: KviTalListWidgetItem(listbox)
 {
 	setText(text);
 }
 
 KviTalListWidgetText::KviTalListWidgetText(const QString & text)
-    : KviTalListWidgetItem()
+	: KviTalListWidgetItem()
 {
 	setText(text);
 }
 
 KviTalListWidgetText::~KviTalListWidgetText()
-    = default;
+= default;
 
 void KviTalListWidgetText::paint(QPainter * painter)
 {
@@ -120,22 +120,22 @@ int KviTalListWidgetText::rtti() const
 }
 
 KviTalListWidgetPixmap::KviTalListWidgetPixmap(KviTalListWidget * listbox, const QPixmap & pixmap)
-    : KviTalListWidgetItem(listbox)
+	: KviTalListWidgetItem(listbox)
 {
 	pm = pixmap;
 }
 
 KviTalListWidgetPixmap::KviTalListWidgetPixmap(const QPixmap & pixmap)
-    : KviTalListWidgetItem()
+	: KviTalListWidgetItem()
 {
 	pm = pixmap;
 }
 
 KviTalListWidgetPixmap::~KviTalListWidgetPixmap()
-    = default;
+= default;
 
 KviTalListWidgetPixmap::KviTalListWidgetPixmap(KviTalListWidget * listbox, const QPixmap & pix, const QString & text)
-    : KviTalListWidgetItem(listbox)
+	: KviTalListWidgetItem(listbox)
 {
 	pm = pix;
 	setText(text);
@@ -143,7 +143,7 @@ KviTalListWidgetPixmap::KviTalListWidgetPixmap(KviTalListWidget * listbox, const
 }
 
 KviTalListWidgetPixmap::KviTalListWidgetPixmap(const QPixmap & pix, const QString & text)
-    : KviTalListWidgetItem()
+	: KviTalListWidgetItem()
 {
 	pm = pix;
 	setText(text);
@@ -184,7 +184,7 @@ int KviTalListWidgetPixmap::width(const KviTalListWidget * lb) const
 	if(text().isEmpty())
 		return qMax(pm.width() + 6, QApplication::globalStrut().width());
 	return qMax(pm.width() + lb->fontMetrics().width(text()) + 6,
-	    QApplication::globalStrut().width());
+		QApplication::globalStrut().width());
 }
 
 int KviTalListWidgetPixmap::rtti() const

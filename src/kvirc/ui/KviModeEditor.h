@@ -59,7 +59,7 @@ protected:
 signals:
 	void setMode(QString & szMode);
 	void done();
-protected slots:
+	protected slots:
 	void checkBoxToggled(bool bChecked);
 	void commit();
 	void updateOpStatus();

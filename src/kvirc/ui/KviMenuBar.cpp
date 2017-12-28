@@ -45,7 +45,7 @@
 #include <QMenu>
 
 KviMenuBar::KviMenuBar(KviMainWindow * par, const char * name)
-    : KviTalMenuBar(par, name)
+	: KviTalMenuBar(par, name)
 {
 	setAutoFillBackground(false);
 	m_pFrm = par;
@@ -117,7 +117,7 @@ void KviMenuBar::setupHelpPopup(QMenu * pop)
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_HELPINDEX, help)
 
-	QAction * pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)), __tr2qs("&Tip of the Day"));
+		QAction * pAction = help->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Idea)), __tr2qs("&Tip of the Day"));
 	pAction->setData(KVI_INTERNALCOMMAND_TIP_OPEN);
 	help->addSeparator();
 
@@ -196,14 +196,14 @@ void KviMenuBar::setupSettingsPopup(QMenu * pop)
 	opt->addSeparator();
 	// FIXME: #warning "Toggle these items on the fly ?"
 	ACTION_POPUP_ITEM(KVI_COREACTION_GENERALOPTIONS, opt)
-	ACTION_POPUP_ITEM(KVI_COREACTION_THEMEOPTIONS, opt)
-	ACTION_POPUP_ITEM(KVI_COREACTION_EDITREGUSERS, opt)
-	ACTION_POPUP_ITEM(KVI_COREACTION_TOOLBAREDITOR, opt)
-	opt->addSeparator();
+		ACTION_POPUP_ITEM(KVI_COREACTION_THEMEOPTIONS, opt)
+		ACTION_POPUP_ITEM(KVI_COREACTION_EDITREGUSERS, opt)
+		ACTION_POPUP_ITEM(KVI_COREACTION_TOOLBAREDITOR, opt)
+		opt->addSeparator();
 	ACTION_POPUP_ITEM(KVI_COREACTION_SERVEROPTIONS, opt)
-	opt->addSeparator();
+		opt->addSeparator();
 	ACTION_POPUP_ITEM(KVI_COREACTION_MANAGETHEMES, opt)
-	ACTION_POPUP_ITEM(KVI_COREACTION_MANAGEADDONS, opt)
+		ACTION_POPUP_ITEM(KVI_COREACTION_MANAGEADDONS, opt)
 }
 
 void KviMenuBar::setupScriptingPopup(QMenu * pop)
@@ -212,24 +212,24 @@ void KviMenuBar::setupScriptingPopup(QMenu * pop)
 	script->clear();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_ACTIONEDITOR, script)
-	ACTION_POPUP_ITEM(KVI_COREACTION_ALIASEDITOR, script)
-	ACTION_POPUP_ITEM(KVI_COREACTION_CLASSEDITOR, script)
-	ACTION_POPUP_ITEM(KVI_COREACTION_EVENTEDITOR, script)
-	ACTION_POPUP_ITEM(KVI_COREACTION_POPUPEDITOR, script)
-	ACTION_POPUP_ITEM(KVI_COREACTION_RAWEDITOR, script)
-	script->addSeparator();
+		ACTION_POPUP_ITEM(KVI_COREACTION_ALIASEDITOR, script)
+		ACTION_POPUP_ITEM(KVI_COREACTION_CLASSEDITOR, script)
+		ACTION_POPUP_ITEM(KVI_COREACTION_EVENTEDITOR, script)
+		ACTION_POPUP_ITEM(KVI_COREACTION_POPUPEDITOR, script)
+		ACTION_POPUP_ITEM(KVI_COREACTION_RAWEDITOR, script)
+		script->addSeparator();
 	ACTION_POPUP_ITEM(KVI_COREACTION_CODETESTER, script)
-	script->addSeparator();
+		script->addSeparator();
 	ACTION_POPUP_ITEM(KVI_COREACTION_EXECUTEKVS, script)
 
-	script->addSeparator();
+		script->addSeparator();
 	script->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Warning)), __tr2qs("Restore &Default Script..."), g_pApp, SLOT(restoreDefaultScript()));
 }
 
 void KviMenuBar::updateMainPopup()
 {
 	m_pDisconnectAction->setEnabled(
-	    m_pFrm->activeContext() && m_pFrm->activeContext()->state() == KviIrcContext::Connected);
+		m_pFrm->activeContext() && m_pFrm->activeContext()->state() == KviIrcContext::Connected);
 }
 
 void KviMenuBar::setupMainPopup(QMenu * pop)
@@ -239,15 +239,15 @@ void KviMenuBar::setupMainPopup(QMenu * pop)
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_NEWIRCCONTEXT, main)
 
-	QAction * pAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)), __tr2qs("New &Connection to"));
+		QAction * pAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::World)), __tr2qs("New &Connection to"));
 	pAction->setMenu(m_pRecentServersPopup);
 
 	m_pDisconnectAction = main->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Quit)), __tr2qs("Disconnect"), this, SLOT(actionTriggered(bool)));
 	m_pDisconnectAction->setData(KVI_INTERNALCOMMAND_QUIT);
 
-// FIXME: Add a "Dock to tray" icon if the tray is not visible (or show tray icon or whatever)
+	// FIXME: Add a "Dock to tray" icon if the tray is not visible (or show tray icon or whatever)
 
-// Qt/Mac creates a Quit item on its own <= this is bad
+	// Qt/Mac creates a Quit item on its own <= this is bad
 #ifndef COMPILE_ON_MAC
 	main->addSeparator();
 
@@ -340,26 +340,26 @@ void KviMenuBar::setupToolsPopup(QMenu * pop)
 	m->clear();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_FILETRANSFER, m)
-	ACTION_POPUP_ITEM(KVI_COREACTION_IOGRAPH, m)
-	ACTION_POPUP_ITEM(KVI_COREACTION_LOGVIEWER, m)
-	ACTION_POPUP_ITEM(KVI_COREACTION_SHAREDFILES, m)
-	ACTION_POPUP_ITEM(KVI_COREACTION_URLLIST, m)
+		ACTION_POPUP_ITEM(KVI_COREACTION_IOGRAPH, m)
+		ACTION_POPUP_ITEM(KVI_COREACTION_LOGVIEWER, m)
+		ACTION_POPUP_ITEM(KVI_COREACTION_SHAREDFILES, m)
+		ACTION_POPUP_ITEM(KVI_COREACTION_URLLIST, m)
 
-	m->addSeparator();
+		m->addSeparator();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_SOCKETSPY, m)
-	ACTION_POPUP_ITEM(KVI_COREACTION_NETWORKLINKS, m)
-	ACTION_POPUP_ITEM(KVI_COREACTION_CHANNELLIST, m)
-	m->addSeparator();
+		ACTION_POPUP_ITEM(KVI_COREACTION_NETWORKLINKS, m)
+		ACTION_POPUP_ITEM(KVI_COREACTION_CHANNELLIST, m)
+		m->addSeparator();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_JOINCHANNELS, m)
 
-	m->addSeparator();
+		m->addSeparator();
 
 	ACTION_POPUP_ITEM(KVI_COREACTION_SCREENSHOT, m)
 
-	// moved the old tools here
-	m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::IconManager)), __tr2qs("Show &Icon Table"), g_pIconManager, SLOT(showIconWidget()));
+		// moved the old tools here
+		m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::IconManager)), __tr2qs("Show &Icon Table"), g_pIconManager, SLOT(showIconWidget()));
 #ifdef COMPILE_KDE4_SUPPORT
 	QAction * pAction = nullptr;
 	pAction = m->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Terminal)), __tr2qs("Open &Terminal"), this, SLOT(actionTriggered(bool)));

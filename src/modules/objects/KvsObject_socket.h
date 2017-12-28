@@ -74,7 +74,7 @@ protected:
 	bool stateChangedEvent(KviKvsObjectFunctionCall * c);
 
 	void makeConnections();
-protected slots:
+	protected slots:
 	void slotReadyRead();
 	void slotNewConnection();
 	void slotConnected();

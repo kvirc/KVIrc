@@ -140,7 +140,7 @@ protected:
 	bool jsClickEvent(KviKvsObjectFunctionCall * c);
 	bool jsMouseOverEvent(KviKvsObjectFunctionCall * c);
 	bool jsMouseOutEvent(KviKvsObjectFunctionCall * c);
-protected slots:
+	protected slots:
 	void slotLoadFinished(bool);
 	void slotLoadProgress(int);
 	void slotLoadStarted();
@@ -167,7 +167,7 @@ protected:
 	QFile * m_pFile;
 	QNetworkReply * m_pReply;
 	int m_Id;
-protected slots:
+	protected slots:
 	void slotReadyRead();
 	void slotReplyFinished();
 };

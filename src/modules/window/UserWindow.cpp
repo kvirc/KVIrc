@@ -34,7 +34,7 @@
 extern std::vector<UserWindow *> g_pUserWindowList;
 
 UserWindow::UserWindow(const char * pcName, QString & szIcon, KviConsoleWindow * pConsole, int iCreationFlags)
-    : KviWindow(KviWindow::UserWindow, pcName, pConsole)
+	: KviWindow(KviWindow::UserWindow, pcName, pConsole)
 {
 	g_pUserWindowList.push_back(this);
 

@@ -39,7 +39,7 @@ class KviMainWindow;
 class TermWidget : public QFrame
 {
 	Q_OBJECT
-	Q_PROPERTY(int KviProperty_ChildFocusOwner READ dummy)
+		Q_PROPERTY(int KviProperty_ChildFocusOwner READ dummy)
 public:
 	TermWidget(QWidget * par, bool bIsStandalone = false);
 	~TermWidget();
@@ -54,7 +54,7 @@ private:
 
 protected:
 	virtual void resizeEvent(QResizeEvent * e);
-protected slots:
+	protected slots:
 	void closeClicked();
 	void changeTitle(int i, const QString & str);
 	void notifySize(int, int);
@@ -64,7 +64,7 @@ public:
 	QWidget * konsoleWidget() { return m_pKonsoleWidget ? m_pKonsoleWidget : this; };
 	virtual QSize sizeHint() const;
 	int dummy() const { return 0; };
-protected slots:
+	protected slots:
 	void konsoleDestroyed();
 	void autoClose();
 };
@@ -77,7 +77,7 @@ class TermWidget : public QObject
 	Q_OBJECT
 public:
 	TermWidget()
-	    : QObject()
+		: QObject()
 	{
 	}
 };

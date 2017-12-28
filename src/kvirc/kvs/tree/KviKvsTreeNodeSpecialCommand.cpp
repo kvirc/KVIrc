@@ -25,12 +25,12 @@
 #include "KviKvsTreeNodeSpecialCommand.h"
 
 KviKvsTreeNodeSpecialCommand::KviKvsTreeNodeSpecialCommand(const QChar * pLocation, const QString & szCmdName)
-    : KviKvsTreeNodeCommand(pLocation, szCmdName)
+	: KviKvsTreeNodeCommand(pLocation, szCmdName)
 {
 }
 
 KviKvsTreeNodeSpecialCommand::~KviKvsTreeNodeSpecialCommand()
-    = default;
+= default;
 
 void KviKvsTreeNodeSpecialCommand::contextDescription(QString & szBuffer)
 {

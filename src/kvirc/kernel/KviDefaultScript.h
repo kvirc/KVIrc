@@ -188,7 +188,7 @@ private:
 class KVIRC_API KviDefaultScriptDialog : public QDialog
 {
 	Q_OBJECT
-	friend class KviDefaultScriptManager;
+		friend class KviDefaultScriptManager;
 
 public:
 	/**
@@ -215,7 +215,7 @@ protected:
 	QCheckBox * m_pRaw;
 	QCheckBox * m_pToolbar;
 	QPushButton * m_pAdvancedButton;
-protected slots:
+	protected slots:
 	/**
 	* \brief Enables or disables all checkboxes
 	*

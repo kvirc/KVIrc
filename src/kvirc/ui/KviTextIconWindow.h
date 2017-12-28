@@ -86,7 +86,7 @@ private:
 	virtual bool eventFilter(QObject * o, QEvent * e);
 	void autoSelectBestMatchBasedOnOwnerText();
 
-public slots:
+	public slots:
 	/**
 	* \brief Fills in the text icon window
 	* \return void

@@ -30,7 +30,7 @@
 #include "KviKvsObjectClass.h"
 
 KviKvsTreeNodeSpecialCommandClassFunctionDefinition::KviKvsTreeNodeSpecialCommandClassFunctionDefinition(const QChar * pLocation, const QString & szName, const QString & szBuffer, const QString & szReminder, unsigned int uHandlerFlags)
-    : KviKvsTreeNode(pLocation)
+	: KviKvsTreeNode(pLocation)
 {
 	m_uHandlerFlags = uHandlerFlags;
 	m_szName = szName;
@@ -50,7 +50,7 @@ void KviKvsTreeNodeSpecialCommandClassFunctionDefinition::contextDescription(QSt
 }
 
 KviKvsTreeNodeSpecialCommandClass::KviKvsTreeNodeSpecialCommandClass(const QChar * pLocation, KviKvsTreeNodeDataList * pParams)
-    : KviKvsTreeNodeSpecialCommand(pLocation, "class")
+	: KviKvsTreeNodeSpecialCommand(pLocation, "class")
 {
 	m_pParams = pParams;
 	m_pParams->setParent(this);

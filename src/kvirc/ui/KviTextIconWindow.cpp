@@ -41,7 +41,7 @@
 #include <QScrollBar>
 
 KviTextIconWindow::KviTextIconWindow()
-    : QWidget(nullptr, Qt::Popup)
+	: QWidget(nullptr, Qt::Popup)
 {
 	m_pOwner = nullptr;
 	m_bAltMode = false;
@@ -141,36 +141,36 @@ bool KviTextIconWindow::eventFilter(QObject * o, QEvent * e)
 
 		switch(ev->key())
 		{
-			case Qt::Key_Left:
-			case Qt::Key_Right:
-			case Qt::Key_Up:
-			case Qt::Key_Down:
-				return false; // let it handle arrow navigation
-				break;
-			case Qt::Key_Space:
-			case Qt::Key_Return:
-				cellSelected(m_pTable->currentRow(), m_pTable->currentColumn());
-				return false;
-				break;
-			case Qt::Key_Tab:
-				//avoid the text edit field to move to the icon cells using tab
-				return false;
-				break;
-			case Qt::Key_Escape:
-				doHide();
-				break;
-			default:
-				// redirect to owner
-				if(m_pOwner->inherits("KviInputEditor"))
-				{
-					if(e->type() == QEvent::KeyPress)
-						((KviInputEditor *)m_pOwner)->keyPressEvent(ev);
-					else
-						((KviInputEditor *)m_pOwner)->keyReleaseEvent(ev);
-					autoSelectBestMatchBasedOnOwnerText();
-					return true;
-				}
-				break;
+		case Qt::Key_Left:
+		case Qt::Key_Right:
+		case Qt::Key_Up:
+		case Qt::Key_Down:
+			return false; // let it handle arrow navigation
+			break;
+		case Qt::Key_Space:
+		case Qt::Key_Return:
+			cellSelected(m_pTable->currentRow(), m_pTable->currentColumn());
+			return false;
+			break;
+		case Qt::Key_Tab:
+			//avoid the text edit field to move to the icon cells using tab
+			return false;
+			break;
+		case Qt::Key_Escape:
+			doHide();
+			break;
+		default:
+			// redirect to owner
+			if(m_pOwner->inherits("KviInputEditor"))
+			{
+				if(e->type() == QEvent::KeyPress)
+					((KviInputEditor *)m_pOwner)->keyPressEvent(ev);
+				else
+					((KviInputEditor *)m_pOwner)->keyReleaseEvent(ev);
+				autoSelectBestMatchBasedOnOwnerText();
+				return true;
+			}
+			break;
 		}
 	}
 

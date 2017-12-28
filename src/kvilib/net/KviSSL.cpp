@@ -171,38 +171,38 @@ static DH * my_get_dh(int keylength)
 	BIGNUM *bp, *bg;
 	switch(keylength)
 	{
-		case 512:
-			dh = dh_512;
-			p = dh512_p;
-			g = dh512_g;
-			sp = sizeof(dh512_p);
-			sg = sizeof(dh512_g);
-			break;
-		case 1024:
-			dh = dh_1024;
-			p = dh1024_p;
-			g = dh1024_g;
-			sp = sizeof(dh1024_p);
-			sg = sizeof(dh1024_g);
-			break;
-		case 2048:
-			dh = dh_2048;
-			p = dh2048_p;
-			g = dh2048_g;
-			sp = sizeof(dh2048_p);
-			sg = sizeof(dh2048_g);
-			break;
-		case 4096:
-			dh = dh_4096;
-			p = dh4096_p;
-			g = dh4096_g;
-			sp = sizeof(dh4096_p);
-			sg = sizeof(dh4096_g);
-			break;
-		default:
-			// What the hell do you want from me ?
-			qDebug("OpenSSL is asking for a DH param with keylen %d: no way :D", keylength);
-			break;
+	case 512:
+		dh = dh_512;
+		p = dh512_p;
+		g = dh512_g;
+		sp = sizeof(dh512_p);
+		sg = sizeof(dh512_g);
+		break;
+	case 1024:
+		dh = dh_1024;
+		p = dh1024_p;
+		g = dh1024_g;
+		sp = sizeof(dh1024_p);
+		sg = sizeof(dh1024_g);
+		break;
+	case 2048:
+		dh = dh_2048;
+		p = dh2048_p;
+		g = dh2048_g;
+		sp = sizeof(dh2048_p);
+		sg = sizeof(dh2048_g);
+		break;
+	case 4096:
+		dh = dh_4096;
+		p = dh4096_p;
+		g = dh4096_g;
+		sp = sizeof(dh4096_p);
+		sg = sizeof(dh4096_g);
+		break;
+	default:
+		// What the hell do you want from me ?
+		qDebug("OpenSSL is asking for a DH param with keylen %d: no way :D", keylength);
+		break;
 	}
 
 	if(dh)
@@ -322,8 +322,8 @@ void KviSSL::shutdown()
 {
 	if(m_pSSL)
 	{
-//avoid to die on a SIGPIPE if the connection has close (SSL_shutdown can call send())
-//see bug #440
+		//avoid to die on a SIGPIPE if the connection has close (SSL_shutdown can call send())
+		//see bug #440
 
 #if !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
 		// ignore SIGPIPE
@@ -508,36 +508,36 @@ KviSSL::Result KviSSL::connectOrAcceptError(int ret)
 {
 	switch(SSL_get_error(m_pSSL, ret))
 	{
-		case SSL_ERROR_NONE:
-			return Success;
-			break;
-		case SSL_ERROR_WANT_READ:
-			return WantRead;
-			break;
-		case SSL_ERROR_WANT_WRITE:
-			return WantWrite;
-			break;
-		case SSL_ERROR_ZERO_RETURN:
-			return RemoteEndClosedConnection;
-			break;
-		case SSL_ERROR_WANT_X509_LOOKUP:
-			return ObscureError;
-			break;
-		case SSL_ERROR_SYSCALL:
-		{
-			if(getLastError(true) != 0)
-				return SSLError;
-			if(ret == 0)
-				return RemoteEndClosedConnection;
-			return SyscallError;
-		}
+	case SSL_ERROR_NONE:
+		return Success;
 		break;
-		case SSL_ERROR_SSL:
+	case SSL_ERROR_WANT_READ:
+		return WantRead;
+		break;
+	case SSL_ERROR_WANT_WRITE:
+		return WantWrite;
+		break;
+	case SSL_ERROR_ZERO_RETURN:
+		return RemoteEndClosedConnection;
+		break;
+	case SSL_ERROR_WANT_X509_LOOKUP:
+		return ObscureError;
+		break;
+	case SSL_ERROR_SYSCALL:
+	{
+		if(getLastError(true) != 0)
 			return SSLError;
-			break;
-		default:
-			return UnknownError;
-			break;
+		if(ret == 0)
+			return RemoteEndClosedConnection;
+		return SyscallError;
+	}
+	break;
+	case SSL_ERROR_SSL:
+		return SSLError;
+		break;
+	default:
+		return UnknownError;
+		break;
 	}
 	return UnknownError;
 }
@@ -560,30 +560,30 @@ KviSSL::Result KviSSL::getProtocolError(int ret)
 		return NotInitialized;
 	switch(SSL_get_error(m_pSSL, ret))
 	{
-		case SSL_ERROR_NONE:
-			return Success;
-			break;
-		case SSL_ERROR_WANT_READ:
-			return WantRead;
-			break;
-		case SSL_ERROR_WANT_WRITE:
-			return WantWrite;
-			break;
-		case SSL_ERROR_ZERO_RETURN:
-			return ZeroReturn;
-			break;
-		case SSL_ERROR_WANT_X509_LOOKUP:
-			return ObscureError;
-			break;
-		case SSL_ERROR_SYSCALL:
-			return SyscallError;
-			break;
-		case SSL_ERROR_SSL:
-			return SSLError;
-			break;
-		default:
-			return UnknownError;
-			break;
+	case SSL_ERROR_NONE:
+		return Success;
+		break;
+	case SSL_ERROR_WANT_READ:
+		return WantRead;
+		break;
+	case SSL_ERROR_WANT_WRITE:
+		return WantWrite;
+		break;
+	case SSL_ERROR_ZERO_RETURN:
+		return ZeroReturn;
+		break;
+	case SSL_ERROR_WANT_X509_LOOKUP:
+		return ObscureError;
+		break;
+	case SSL_ERROR_SYSCALL:
+		return SyscallError;
+		break;
+	case SSL_ERROR_SSL:
+		return SSLError;
+		break;
+	default:
+		return UnknownError;
+		break;
 	}
 	return UnknownError;
 }
@@ -715,7 +715,6 @@ int KviSSLCertificate::fingerprintDigestId()
 	if(NID == NID_undef)
 	{
 		return 0; // unknown digest function: it means the signature can't be verified: the certificate can't be trusted
-
 	}
 
 	const EVP_MD * mdType = nullptr;
@@ -911,7 +910,7 @@ KviSSLCipherInfo::KviSSLCipherInfo(SSL_CIPHER * c, SSL * s)
 }
 
 KviSSLCipherInfo::~KviSSLCipherInfo()
-    = default;
+= default;
 
 #ifdef COMPILE_ON_WINDOWS
 

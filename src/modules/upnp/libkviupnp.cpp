@@ -116,17 +116,17 @@ static bool upnp_kvs_cmd_addPortMapping(KviKvsModuleCommandCall * c)
 	KviKvsVariant * pSw;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("port", KVS_PT_INT, 0, iPort)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("port", KVS_PT_INT, 0, iPort)
+		KVSM_PARAMETERS_END(c)
 
-	if((pSw = c->switches()->find('a', "fake-address")))
-	{
-		pSw->asString(szLocalIp);
-	}
-	else
-	{
-		kvi_getLocalHostAddress(szLocalIp);
-	}
+		if((pSw = c->switches()->find('a', "fake-address")))
+		{
+			pSw->asString(szLocalIp);
+		}
+		else
+		{
+			kvi_getLocalHostAddress(szLocalIp);
+		}
 
 	g_pManager->addPortMapping("TCP", "", iPort, szLocalIp, iPort, "KVIrc UPnP module", true, 0);
 	return true;
@@ -156,10 +156,10 @@ static bool upnp_kvs_cmd_delPortMapping(KviKvsModuleCommandCall * c)
 	kvs_int_t iPort;
 	QString tmp;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("port", KVS_PT_INT, 0, iPort)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("port", KVS_PT_INT, 0, iPort)
+		KVSM_PARAMETERS_END(c)
 
-	g_pManager->deletePortMapping("TCP", "", iPort);
+		g_pManager->deletePortMapping("TCP", "", iPort);
 	return true;
 }
 
@@ -222,12 +222,12 @@ static bool upnp_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "UPnP",  // module name
-    "4.0.0", // module version
-    "Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com),",
-    "Universal Plug and Play",
-    upnp_module_init,
-    upnp_module_can_unload,
-    0,
-    upnp_module_cleanup,
-    0)
+	"UPnP",  // module name
+	"4.0.0", // module version
+	"Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com),",
+	"Universal Plug and Play",
+	upnp_module_init,
+	upnp_module_can_unload,
+	0,
+	upnp_module_cleanup,
+	0)

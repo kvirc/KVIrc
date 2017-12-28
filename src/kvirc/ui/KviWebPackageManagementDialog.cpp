@@ -57,7 +57,7 @@
 #include <QShowEvent>
 
 KviWebPackageManagementDialog::KviWebPackageManagementDialog(QWidget * pParent)
-    : QWidget(pParent)
+	: QWidget(pParent)
 {
 	setAttribute(Qt::WA_DeleteOnClose);
 
@@ -101,7 +101,7 @@ KviWebPackageManagementDialog::KviWebPackageManagementDialog(QWidget * pParent)
 }
 
 KviWebPackageManagementDialog::~KviWebPackageManagementDialog()
-    = default;
+= default;
 
 void KviWebPackageManagementDialog::setPackagePageUrl(const QString & szUrl)
 {

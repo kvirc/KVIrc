@@ -111,7 +111,6 @@ void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 
 	if(!stateflag)
 	{
-
 		char * buffer = ogg_sync_buffer(&oy, stream->size());
 		memcpy(buffer, stream->data(), stream->size());
 		ogg_sync_wrote(&oy, stream->size());
@@ -204,8 +203,8 @@ void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 		thda = true;
 		td = th_decode_alloc(&ti, ts);
 		qDebug("Ogg logical stream %lx is Theora %dx%d %.02f fps",
-		    to.serialno, ti.pic_width, ti.pic_height,
-		    (double)ti.fps_numerator / ti.fps_denominator);
+			to.serialno, ti.pic_width, ti.pic_height,
+			(double)ti.fps_numerator / ti.fps_denominator);
 
 		geometry.pic_w = ti.pic_width;
 		geometry.pic_h = ti.pic_height;
@@ -217,13 +216,13 @@ void KviOggTheoraDecoder::addData(KviDataBuffer * stream)
 		px_fmt = ti.pixel_fmt;
 		switch(ti.pixel_fmt)
 		{
-			case TH_PF_444:
-				qDebug(" 4:4:4 video");
-				break;
-			default:
-				qDebug(" video  (UNSUPPORTED Chroma sampling!)");
-				return;
-				break;
+		case TH_PF_444:
+			qDebug(" 4:4:4 video");
+			break;
+		default:
+			qDebug(" video  (UNSUPPORTED Chroma sampling!)");
+			return;
+			break;
 		}
 		th_decode_ctl(td, TH_DECCTL_GET_PPLEVEL_MAX, &pp_level_max, sizeof(pp_level_max));
 		pp_level = pp_level_max;

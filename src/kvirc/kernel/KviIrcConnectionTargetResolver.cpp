@@ -51,7 +51,7 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 KviIrcConnectionTargetResolver::KviIrcConnectionTargetResolver(KviIrcConnection * pConnection)
-    : QObject()
+	: QObject()
 {
 	m_pConnection = pConnection;
 	m_pTarget = nullptr;
@@ -152,19 +152,19 @@ void KviIrcConnectionTargetResolver::asyncStartResolve()
 	}
 
 	m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-	    __tr2qs("Attempting %Q to %Q (%Q) on port %u"),
-	    m_pTarget->server()->useSSL() ? &(__tr2qs("secure connection")) : &(__tr2qs("connection")),
-	    &(m_pTarget->server()->hostName()),
-	    &(m_pTarget->network()->name()),
-	    m_pTarget->server()->port());
+		__tr2qs("Attempting %Q to %Q (%Q) on port %u"),
+		m_pTarget->server()->useSSL() ? &(__tr2qs("secure connection")) : &(__tr2qs("connection")),
+		&(m_pTarget->server()->hostName()),
+		&(m_pTarget->network()->name()),
+		m_pTarget->server()->port());
 
 	if(m_pTarget->proxy())
 	{
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-		    __tr2qs("Attempting to 'bounce' on proxy %s on port %u (protocol %s)"),
-		    m_pTarget->proxy()->hostname().toUtf8().data(),
-		    m_pTarget->proxy()->port(),
-		    m_pTarget->proxy()->protocolName().toUtf8().data());
+			__tr2qs("Attempting to 'bounce' on proxy %s on port %u (protocol %s)"),
+			m_pTarget->proxy()->hostname().toUtf8().data(),
+			m_pTarget->proxy()->port(),
+			m_pTarget->proxy()->protocolName().toUtf8().data());
 
 		lookupProxyHostname();
 	}
@@ -194,10 +194,10 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 	{
 		if(!_OUTPUT_QUIET)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-			    __tr2qs("Using cached proxy IP address (%s)"),
-			    m_pTarget->proxy()->ip().toUtf8().data());
+				__tr2qs("Using cached proxy IP address (%s)"),
+				m_pTarget->proxy()->ip().toUtf8().data());
 		if(m_pTarget->proxy()->protocol() != KviProxy::Http
-		    && m_pTarget->proxy()->protocol() != KviProxy::Socks5)
+			&& m_pTarget->proxy()->protocol() != KviProxy::Socks5)
 			lookupServerHostname();
 		else
 			terminate(Success, KviError::Success);
@@ -230,7 +230,6 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 		}
 		else
 		{
-
 			if(m_pProxyDns)
 			{
 				qDebug("Something weird is happening, m_pProxyDns is non-zero in lookupProxyHostname()");
@@ -242,12 +241,12 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 			connect(m_pProxyDns, SIGNAL(lookupDone(KviDnsResolver *)), this, SLOT(proxyLookupTerminated(KviDnsResolver *)));
 
 			if(!m_pProxyDns->lookup(m_pTarget->proxy()->hostname(),
-			       m_pTarget->proxy()->isIPv6() ? KviDnsResolver::IPv6 : KviDnsResolver::IPv4))
+				m_pTarget->proxy()->isIPv6() ? KviDnsResolver::IPv6 : KviDnsResolver::IPv4))
 			{
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,
-				    __tr2qs("Unable to look up the IRC proxy hostname: Can't start the DNS slave"));
+					__tr2qs("Unable to look up the IRC proxy hostname: Can't start the DNS slave"));
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,
-				    __tr2qs("Resuming direct server connection"));
+					__tr2qs("Resuming direct server connection"));
 				// FIXME: #warning "Option for resuming direct connection or not ?"
 				delete m_pProxyDns;
 				m_pProxyDns = nullptr;
@@ -258,8 +257,8 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 			{
 				if(!_OUTPUT_MUTE)
 					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-					    __tr2qs("Looking up the proxy hostname (%s)..."),
-					    m_pTarget->proxy()->hostname().toUtf8().data());
+						__tr2qs("Looking up the proxy hostname (%s)..."),
+						m_pTarget->proxy()->hostname().toUtf8().data());
 			}
 		}
 	}
@@ -271,11 +270,11 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDnsResolver *)
 	{
 		QString szErr = m_pProxyDns->errorString();
 		m_pConsole->output(KVI_OUT_SYSTEMERROR,
-		    __tr2qs("Can't find the proxy IP address: %Q"),
-		    &szErr);
+			__tr2qs("Can't find the proxy IP address: %Q"),
+			&szErr);
 		// FIXME: #warning "Option to resume the direct connection if proxy failed ?"
 		m_pConsole->output(KVI_OUT_SYSTEMERROR,
-		    __tr2qs("Resuming direct server connection"));
+			__tr2qs("Resuming direct server connection"));
 		m_pTarget->clearProxy();
 	}
 	else
@@ -283,7 +282,7 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDnsResolver *)
 		QString szFirstIpAddress = m_pProxyDns->firstIpAddress();
 		if(!_OUTPUT_MUTE)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-			    __tr2qs("Proxy hostname resolved to %Q"), &szFirstIpAddress);
+				__tr2qs("Proxy hostname resolved to %Q"), &szFirstIpAddress);
 
 		m_pTarget->proxy()->setIp(m_pProxyDns->firstIpAddress());
 		g_pProxyDataBase->updateProxyIp(m_pTarget->proxy()->ip().toUtf8().data(), szFirstIpAddress.toUtf8().data());
@@ -294,7 +293,7 @@ void KviIrcConnectionTargetResolver::proxyLookupTerminated(KviDnsResolver *)
 	if(m_pTarget->proxy())
 	{
 		if(m_pTarget->proxy()->protocol() == KviProxy::Http
-		    || m_pTarget->proxy()->protocol() == KviProxy::Socks5)
+			|| m_pTarget->proxy()->protocol() == KviProxy::Socks5)
 		{
 			terminate(Success, KviError::Success);
 			return;
@@ -324,8 +323,8 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 	{
 		if(!_OUTPUT_QUIET)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-			    __tr2qs("Using cached server IP address (%s)"),
-			    m_pTarget->server()->ip().toUtf8().data());
+				__tr2qs("Using cached server IP address (%s)"),
+				m_pTarget->server()->ip().toUtf8().data());
 		haveServerIp();
 	}
 	else
@@ -357,20 +356,20 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 			}
 			m_pServerDns = new KviDnsResolver();
 			connect(m_pServerDns, SIGNAL(lookupDone(KviDnsResolver *)), this,
-			    SLOT(serverLookupTerminated(KviDnsResolver *)));
+				SLOT(serverLookupTerminated(KviDnsResolver *)));
 			if(!m_pServerDns->lookup(m_pTarget->server()->hostName(),
-			       m_pTarget->server()->isIPv6() ? KviDnsResolver::IPv6 : KviDnsResolver::IPv4))
+				m_pTarget->server()->isIPv6() ? KviDnsResolver::IPv6 : KviDnsResolver::IPv4))
 			{
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
-				    __tr2qs("Unable to look up the server hostname: Can't start the DNS slave"));
+					__tr2qs("Unable to look up the server hostname: Can't start the DNS slave"));
 				terminate(Error, KviError::InternalError);
 			}
 			else
 			{
 				if(!_OUTPUT_MUTE)
 					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-					    __tr2qs("Looking up the server hostname (%s)..."),
-					    m_pTarget->server()->hostName().toUtf8().data());
+						__tr2qs("Looking up the server hostname (%s)..."),
+						m_pTarget->server()->hostName().toUtf8().data());
 			}
 		}
 	}
@@ -382,15 +381,15 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 	{
 		QString szErr = m_pServerDns->errorString();
 		m_pConsole->output(KVI_OUT_SYSTEMERROR,
-		    __tr2qs("Can't find the server IP address: %Q"),
-		    &szErr);
+			__tr2qs("Can't find the server IP address: %Q"),
+			&szErr);
 
 #ifdef COMPILE_IPV6_SUPPORT
 		if(!(m_pTarget->server()->isIPv6()))
 		{
 			m_pConsole->output(KVI_OUT_SYSTEMERROR,
-			    __tr2qs("If this server is an IPv6 one, try /server -i %Q"),
-			    &(m_pTarget->server()->hostName()));
+				__tr2qs("If this server is an IPv6 one, try /server -i %Q"),
+				&(m_pTarget->server()->hostName()));
 		}
 #endif
 		terminate(Error, m_pServerDns->error());
@@ -405,8 +404,8 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 		{
 			if(!_OUTPUT_MUTE)
 				m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-				    __tr2qs("Server has %d IP addresses, picking a random one"),
-				    m_pServerDns->ipAddressCount());
+					__tr2qs("Server has %d IP addresses, picking a random one"),
+					m_pServerDns->ipAddressCount());
 
 			int r = ::rand() % m_pServerDns->ipAddressCount();
 			szIpAddress = m_pServerDns->ipAddressList()[r];
@@ -415,8 +414,8 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 		{
 			if(!_OUTPUT_MUTE)
 				m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-				    __tr2qs("Server has %d IP addresses, using the first one"),
-				    m_pServerDns->ipAddressCount());
+					__tr2qs("Server has %d IP addresses, using the first one"),
+					m_pServerDns->ipAddressCount());
 			szIpAddress = m_pServerDns->firstIpAddress();
 		}
 	}
@@ -427,8 +426,8 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 
 	if(!_OUTPUT_MUTE)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-		    __tr2qs("Server hostname resolved to %Q"),
-		    &szIpAddress);
+			__tr2qs("Server hostname resolved to %Q"),
+			&szIpAddress);
 	m_pTarget->server()->setIp(szIpAddress);
 
 	const QString & szFirstHostname = m_pServerDns->hostName();
@@ -437,9 +436,9 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 	{
 		if(!_OUTPUT_QUIET)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-			    __tr2qs("Real hostname for %Q is %Q"),
-			    &(m_pTarget->server()->hostName()),
-			    &szFirstHostname);
+				__tr2qs("Real hostname for %Q is %Q"),
+				&(m_pTarget->server()->hostName()),
+				&szFirstHostname);
 		m_pTarget->server()->setHostName(szFirstHostname);
 	}
 
@@ -452,7 +451,7 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDnsResolver *)
 
 bool KviIrcConnectionTargetResolver::validateLocalAddress(const QString & szAddress, QString & szBuffer)
 {
-// szAddress may be an ip address or an interface name
+	// szAddress may be an ip address or an interface name
 #ifdef COMPILE_IPV6_SUPPORT
 	if(m_pTarget->server()->isIPv6())
 	{
@@ -494,21 +493,21 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 			{
 				if(!_OUTPUT_MUTE)
 					m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-					    __tr2qs("The specified bind address (%Q) is not valid"),
-					    &szBindAddress);
+						__tr2qs("The specified bind address (%Q) is not valid"),
+						&szBindAddress);
 			}
 			else
 			{
 				if(!_OUTPUT_MUTE)
 					m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-					    __tr2qs("The specified bind address (%Q) is not valid (the interface it refers to might be down)"),
-					    &(szBindAddress));
+						__tr2qs("The specified bind address (%Q) is not valid (the interface it refers to might be down)"),
+						&(szBindAddress));
 			}
 		}
 	}
 	else
 	{
-// the options specify a bind address ?
+		// the options specify a bind address ?
 #ifdef COMPILE_IPV6_SUPPORT
 		if(m_pTarget->server()->isIPv6())
 		{
@@ -523,8 +522,8 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 						{
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-								    __tr2qs("The system-wide IPv6 bind address (%s) is not valid"),
-								    KVI_OPTION_STRING(KviOption_stringIPv6ConnectionBindAddress).toUtf8().data());
+									__tr2qs("The system-wide IPv6 bind address (%s) is not valid"),
+									KVI_OPTION_STRING(KviOption_stringIPv6ConnectionBindAddress).toUtf8().data());
 							KVI_OPTION_BOOL(KviOption_boolBindIrcIPv6ConnectionsToSpecifiedAddress) = false;
 						}
 						else
@@ -532,8 +531,8 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 							// this is an interface address: might be down
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-								    __tr2qs("The system-wide IPv6 bind address (%s) is not valid (the interface it refers to might be down)"),
-								    KVI_OPTION_STRING(KviOption_stringIPv6ConnectionBindAddress).toUtf8().data());
+									__tr2qs("The system-wide IPv6 bind address (%s) is not valid (the interface it refers to might be down)"),
+									KVI_OPTION_STRING(KviOption_stringIPv6ConnectionBindAddress).toUtf8().data());
 						}
 					}
 				}
@@ -558,8 +557,8 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 						{
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-								    __tr2qs("The system-wide IPv4 bind address (%s) is not valid"),
-								    KVI_OPTION_STRING(KviOption_stringIPv4ConnectionBindAddress).toUtf8().data());
+									__tr2qs("The system-wide IPv4 bind address (%s) is not valid"),
+									KVI_OPTION_STRING(KviOption_stringIPv4ConnectionBindAddress).toUtf8().data());
 							KVI_OPTION_BOOL(KviOption_boolBindIrcIPv4ConnectionsToSpecifiedAddress) = false;
 						}
 						else
@@ -567,8 +566,8 @@ void KviIrcConnectionTargetResolver::haveServerIp()
 							// this is an interface address: might be down
 							if(!_OUTPUT_MUTE)
 								m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-								    __tr2qs("The system-wide IPv4 bind address (%s) is not valid (the interface it refers to might be down)"),
-								    KVI_OPTION_STRING(KviOption_stringIPv4ConnectionBindAddress).toUtf8().data());
+									__tr2qs("The system-wide IPv4 bind address (%s) is not valid (the interface it refers to might be down)"),
+									KVI_OPTION_STRING(KviOption_stringIPv4ConnectionBindAddress).toUtf8().data());
 						}
 					}
 				}

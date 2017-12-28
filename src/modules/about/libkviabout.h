@@ -48,8 +48,6 @@ public:
 	virtual void resizeEvent(QResizeEvent *e);
 };
 
-
-
 class KviDlgAbout : public QDialog
 {
 	Q_OBJECT

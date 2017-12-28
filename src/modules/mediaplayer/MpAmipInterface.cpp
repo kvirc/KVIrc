@@ -103,17 +103,17 @@ static QTextCodec * mediaplayer_get_codec()
 }
 
 MP_IMPLEMENT_DESCRIPTOR(
-    MpAmipInterface,
-    "amip",
-    __tr2qs_ctx(
-        "An interface for the AMIP plugin.\n"
-        "You can download it from http://amip.tools-for.net\n"
-        "To use this interface you must "
-        "install AMIP plugin for your player.",
-        "mediaplayer"))
+	MpAmipInterface,
+	"amip",
+	__tr2qs_ctx(
+		"An interface for the AMIP plugin.\n"
+		"You can download it from http://amip.tools-for.net\n"
+		"To use this interface you must "
+		"install AMIP plugin for your player.",
+		"mediaplayer"))
 
-MpAmipInterface::MpAmipInterface()
-    : MpInterface()
+	MpAmipInterface::MpAmipInterface()
+	: MpInterface()
 {
 	if(!amip_dll)
 	{
@@ -218,18 +218,18 @@ MpInterface::PlayerStatus MpAmipInterface::status()
 	int ret = eval_int("var_stat");
 	switch(ret)
 	{
-		case 0:
-			return MpInterface::Stopped;
-			break;
-		case 3:
-			return MpInterface::Paused;
-			break;
-		case 1:
-			return MpInterface::Playing;
-			break;
-		default:
-			return MpInterface::Unknown;
-			break;
+	case 0:
+		return MpInterface::Stopped;
+		break;
+	case 3:
+		return MpInterface::Paused;
+		break;
+	case 1:
+		return MpInterface::Playing;
+		break;
+	default:
+		return MpInterface::Unknown;
+		break;
 	}
 	return MpInterface::Unknown;
 }

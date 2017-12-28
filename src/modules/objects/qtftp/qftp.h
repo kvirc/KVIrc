@@ -140,7 +140,7 @@ public:
 	Error error() const;
 	QString errorString() const;
 
-public Q_SLOTS:
+	public Q_SLOTS:
 	void abort();
 
 Q_SIGNALS:
@@ -156,7 +156,7 @@ Q_SIGNALS:
 
 private:
 	Q_DISABLE_COPY(QFtp)
-	QScopedPointer<QFtpPrivate> d;
+		QScopedPointer<QFtpPrivate> d;
 
 	void _q_startNextCommand();
 	void _q_piFinished(const QString &);
@@ -168,8 +168,8 @@ private:
 class QFtpPI;
 
 /*
-    The QFtpDTP (DTP = Data Transfer Process) controls all client side
-    data transfer between the client and server.
+	The QFtpDTP (DTP = Data Transfer Process) controls all client side
+	data transfer between the client and server.
 */
 class QFtpDTP : public QObject
 {
@@ -216,7 +216,7 @@ signals:
 
 	void connectState(int);
 
-private slots:
+	private slots:
 	void socketConnected();
 	void socketReadyRead();
 	void socketError(QAbstractSocket::SocketError);
@@ -282,14 +282,14 @@ public:
 	bool transferConnectionExtended;
 
 	QFtpDTP dtp; // the PI has a DTP which is not the design of RFC 959, but it
-	             // makes the design simpler this way
+				 // makes the design simpler this way
 signals:
 	void connectState(int);
 	void finished(const QString &);
 	void error(int, const QString &);
 	void rawFtpReply(int, const QString &);
 
-private slots:
+	private slots:
 	void hostFound();
 	void connected();
 	void connectionClosed();

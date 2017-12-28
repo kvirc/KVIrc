@@ -32,7 +32,7 @@
 #include "KviOptions.h"
 
 KviKvsReport::KviKvsReport(Type t, const QString & szContext, const QString & szMessage, const QString & szLocation, KviWindow * pWindow)
-    : m_eType(t), m_szContext(szContext), m_szMessage(szMessage), m_szLocation(szLocation), m_pWindow(pWindow)
+	: m_eType(t), m_szContext(szContext), m_szMessage(szMessage), m_szLocation(szLocation), m_pWindow(pWindow)
 {
 	m_pCallStack = nullptr;
 	m_pCodeListing = nullptr;
@@ -190,22 +190,22 @@ void KviKvsReport::report(KviKvsReport * r, KviWindow * pOutput)
 
 	switch(r->type())
 	{
-		case KviKvsReport::ParserWarning:
-			out = KVI_OUT_PARSERWARNING;
-			pOutput->output(out, __tr2qs_ctx("[KVS]%c Warning: %Q", "kvs"), KviControlCodes::Bold, &(r->message()));
-			break;
-		case KviKvsReport::ParserError:
-			out = KVI_OUT_PARSERERROR;
-			pOutput->output(out, __tr2qs_ctx("[KVS]%c Compilation error: %Q", "kvs"), KviControlCodes::Bold, &(r->message()));
-			break;
-		case KviKvsReport::RunTimeWarning:
-			out = KVI_OUT_PARSERWARNING;
-			pOutput->output(out, __tr2qs_ctx("[KVS]%c Warning: %Q", "kvs"), KviControlCodes::Bold, &(r->message()));
-			break;
-		case KviKvsReport::RunTimeError:
-			out = KVI_OUT_PARSERERROR;
-			pOutput->output(out, __tr2qs_ctx("[KVS]%c Runtime error: %Q", "kvs"), KviControlCodes::Bold, &(r->message()));
-			break;
+	case KviKvsReport::ParserWarning:
+		out = KVI_OUT_PARSERWARNING;
+		pOutput->output(out, __tr2qs_ctx("[KVS]%c Warning: %Q", "kvs"), KviControlCodes::Bold, &(r->message()));
+		break;
+	case KviKvsReport::ParserError:
+		out = KVI_OUT_PARSERERROR;
+		pOutput->output(out, __tr2qs_ctx("[KVS]%c Compilation error: %Q", "kvs"), KviControlCodes::Bold, &(r->message()));
+		break;
+	case KviKvsReport::RunTimeWarning:
+		out = KVI_OUT_PARSERWARNING;
+		pOutput->output(out, __tr2qs_ctx("[KVS]%c Warning: %Q", "kvs"), KviControlCodes::Bold, &(r->message()));
+		break;
+	case KviKvsReport::RunTimeError:
+		out = KVI_OUT_PARSERERROR;
+		pOutput->output(out, __tr2qs_ctx("[KVS]%c Runtime error: %Q", "kvs"), KviControlCodes::Bold, &(r->message()));
+		break;
 	}
 
 	if(r->location().isEmpty())

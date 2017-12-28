@@ -33,7 +33,7 @@
 class OptionsWidget_ctcpFloodProtection : public KviOptionsWidget
 {
 	Q_OBJECT
-	//	Q_CLASSINFO("help","ctcpfloodprotectionoptions")
+		//	Q_CLASSINFO("help","ctcpfloodprotectionoptions")
 public:
 	OptionsWidget_ctcpFloodProtection(QWidget * parent);
 	~OptionsWidget_ctcpFloodProtection();

@@ -31,7 +31,7 @@
 #include <QLabel>
 
 OptionsWidget_antispam::OptionsWidget_antispam(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("antispam_options_widget");
 	createLayout();
@@ -51,7 +51,7 @@ OptionsWidget_antispam::OptionsWidget_antispam(QWidget * parent)
 }
 
 OptionsWidget_antispam::~OptionsWidget_antispam()
-    = default;
+= default;
 
 void OptionsWidget_antispam::reenableStuff(bool)
 {

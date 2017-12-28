@@ -43,7 +43,7 @@ class KviRegisteredUsersListView : public QTreeWidget
 	Q_OBJECT
 public:
 	KviRegisteredUsersListView(QWidget *);
-	~KviRegisteredUsersListView(){};
+	~KviRegisteredUsersListView() {};
 
 protected:
 	void mousePressEvent(QMouseEvent * e);
@@ -55,8 +55,8 @@ class RegisteredUsersDialogItemDelegate : public QStyledItemDelegate
 {
 public:
 	RegisteredUsersDialogItemDelegate(KviRegisteredUsersListView * pWidget = 0)
-	    : QStyledItemDelegate(pWidget){};
-	~RegisteredUsersDialogItemDelegate(){};
+		: QStyledItemDelegate(pWidget) {};
+	~RegisteredUsersDialogItemDelegate() {};
 	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
 	void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
 };
@@ -72,10 +72,10 @@ public:
 
 protected:
 	RegisteredUsersDialogItemBase(Types type, KviRegisteredUsersListView * par)
-	    : QTreeWidgetItem(par), m_iType(type){};
+		: QTreeWidgetItem(par), m_iType(type) {};
 	RegisteredUsersDialogItemBase(Types type, QTreeWidgetItem * par)
-	    : QTreeWidgetItem(par), m_iType(type){};
-	~RegisteredUsersDialogItemBase(){};
+		: QTreeWidgetItem(par), m_iType(type) {};
+	~RegisteredUsersDialogItemBase() {};
 
 private:
 	RegisteredUsersDialogItemBase::Types m_iType;
@@ -91,7 +91,7 @@ protected:
 
 public:
 	RegisteredUsersGroupItem(KviRegisteredUsersListView * par, KviRegisteredUserGroup * g)
-	    : RegisteredUsersDialogItemBase(Group, par), m_pGroup(g)
+		: RegisteredUsersDialogItemBase(Group, par), m_pGroup(g)
 	{
 		setText(0, m_pGroup->name());
 	}
@@ -142,7 +142,7 @@ protected:
 	void editItem(RegisteredUsersDialogItem * i);
 	void editGroup(KviRegisteredUserGroup * group);
 	virtual void closeEvent(QCloseEvent *);
-protected slots:
+	protected slots:
 	void cancelClicked();
 	void okClicked();
 	void addClicked();

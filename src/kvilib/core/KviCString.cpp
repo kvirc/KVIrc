@@ -402,14 +402,13 @@ bool kvi_matchWildExprCS(const char *m1,const char *m2)
 		}
 	}
 	return (!(*m2));                     //m1 surely finished, so for the match, m2 must be finished too
-
 }
 */
 
 bool kvi_matchWildExprWithTerminator(const char * m1, const char * m2, char terminator,
-    const char ** r1, const char ** r2)
+	const char ** r1, const char ** r2)
 {
-//Matches two regular expressions containging wildcards
+	//Matches two regular expressions containging wildcards
 
 #define NOT_AT_END(__str) (*__str && (*__str != terminator))
 
@@ -565,122 +564,122 @@ int kvi_vsnprintf(char * buffer, int len, const char * fmt, kvi_va_list list)
 		++fmt; //skip this '%'
 		switch(*fmt)
 		{
-			case 's': //string
-				argString = kvi_va_arg(list, char *);
-				if(!argString)
-					continue;
-				argValue = (long)strlen(argString);
-				//check for space...
-				if(len <= argValue)
-					return (-1); //not enough space for buffer and terminator
-				while(*argString)
-					*p++ = *argString++;
-				len -= argValue;
+		case 's': //string
+			argString = kvi_va_arg(list, char *);
+			if(!argString)
 				continue;
-			case 'd': //signed integer
-				argValue = kvi_va_arg(list, int);
-				if(argValue < 0)
-				{ //negative integer
-					*p++ = '-';
-					if(--len == 0)
-						return (-1);
-					argValue = -argValue; //need to have it positive
-					// most negative integer exception (avoid completely senseless (non digit) responses)
-					if(argValue < 0)
-						argValue = 0; //we get -0 here
-				}
-				//write the number in a temporary buffer
-				pNumBuf = numberBuffer;
-				do
-				{
-					tmp = argValue / 10;
-					*pNumBuf++ = argValue - (tmp * 10) + '0';
-				} while((argValue = tmp));
-				//copy now....
-				argUValue = pNumBuf - numberBuffer; //length of the number string
-				if(((uint)len) <= argUValue)
-					return (-1); //not enough space for number and terminator
-				do
-				{
-					*p++ = *--pNumBuf;
-				} while(pNumBuf != numberBuffer);
-				len -= argUValue;
-				continue;
-			case 'u':                                       //unsigned integer
-				argUValue = kvi_va_arg(list, unsigned int); //many implementations place int here
-				//write the number in a temporary buffer
-				pNumBuf = numberBuffer;
-				do
-				{
-					tmp = argUValue / 10;
-					*pNumBuf++ = argUValue - (tmp * 10) + '0';
-				} while((argUValue = tmp));
-				//copy now....
-				argValue = pNumBuf - numberBuffer; //length of the number string
-				if(len <= argValue)
-					return (-1); //not enough space for number and terminator
-				do
-				{
-					*p++ = *--pNumBuf;
-				} while(pNumBuf != numberBuffer);
-				len -= argValue;
-				continue;
-			case 'x':                                       // hexadecimal unsigned integer
-				argUValue = kvi_va_arg(list, unsigned int); //many implementations place int here
-				//write the number in a temporary buffer
-				pNumBuf = numberBuffer;
-				do
-				{
-					tmp = argUValue / 16;
-					*pNumBuf++ = hexdigits[argUValue % 16];
-				} while((argUValue = tmp));
-				//copy now....
-				argValue = pNumBuf - numberBuffer; //length of the number string
-				if(len <= argValue)
-					return (-1); //not enough space for number and terminator
-				do
-				{
-					*p++ = *--pNumBuf;
-				} while(pNumBuf != numberBuffer);
-				len -= argValue;
-				continue;
-			case 'c': //char
-				//
-				// I'm not sure about this...
-				// In the linux kernel source the
-				// unsigned char is extracted from an integer type.
-				// We assume that gcc stacks a char argument
-				// as sizeof(int) bytes value.
-				// Is this always true ?
-				//
-				*p++ = (char)kvi_va_arg(list, int);
-				--len;
-				continue;
-			case 'Q': // QString! (this should almost never happen)
-			{
-				QString * s = kvi_va_arg(list, QString *);
-				QByteArray cs = (*s).toUtf8();
-				const char * t = cs.data();
-				if(!t)
-					continue; // nothing to do
-				//check for space...
-				if(len <= (int)cs.length())
-					return (-1); //not enough space for buffer and terminator
-				while(*t)
-					*p++ = *t++;
-				len -= cs.length();
-				continue;
-			}
-			default:        //a normal percent
-				*p++ = '%'; //write it
+			argValue = (long)strlen(argString);
+			//check for space...
+			if(len <= argValue)
+				return (-1); //not enough space for buffer and terminator
+			while(*argString)
+				*p++ = *argString++;
+			len -= argValue;
+			continue;
+		case 'd': //signed integer
+			argValue = kvi_va_arg(list, int);
+			if(argValue < 0)
+			{ //negative integer
+				*p++ = '-';
 				if(--len == 0)
-					return (-1); //not enough space for next char or terminator
-				if(*fmt)
-				{                //this if is just in case that we have a % at the end of the string.
-					*p++ = *fmt; //and write this char
-					--len;
-				}
-				continue;
+					return (-1);
+				argValue = -argValue; //need to have it positive
+				// most negative integer exception (avoid completely senseless (non digit) responses)
+				if(argValue < 0)
+					argValue = 0; //we get -0 here
+			}
+			//write the number in a temporary buffer
+			pNumBuf = numberBuffer;
+			do
+			{
+				tmp = argValue / 10;
+				*pNumBuf++ = argValue - (tmp * 10) + '0';
+			} while((argValue = tmp));
+			//copy now....
+			argUValue = pNumBuf - numberBuffer; //length of the number string
+			if(((uint)len) <= argUValue)
+				return (-1); //not enough space for number and terminator
+			do
+			{
+				*p++ = *--pNumBuf;
+			} while(pNumBuf != numberBuffer);
+			len -= argUValue;
+			continue;
+		case 'u':                                       //unsigned integer
+			argUValue = kvi_va_arg(list, unsigned int); //many implementations place int here
+			//write the number in a temporary buffer
+			pNumBuf = numberBuffer;
+			do
+			{
+				tmp = argUValue / 10;
+				*pNumBuf++ = argUValue - (tmp * 10) + '0';
+			} while((argUValue = tmp));
+			//copy now....
+			argValue = pNumBuf - numberBuffer; //length of the number string
+			if(len <= argValue)
+				return (-1); //not enough space for number and terminator
+			do
+			{
+				*p++ = *--pNumBuf;
+			} while(pNumBuf != numberBuffer);
+			len -= argValue;
+			continue;
+		case 'x':                                       // hexadecimal unsigned integer
+			argUValue = kvi_va_arg(list, unsigned int); //many implementations place int here
+			//write the number in a temporary buffer
+			pNumBuf = numberBuffer;
+			do
+			{
+				tmp = argUValue / 16;
+				*pNumBuf++ = hexdigits[argUValue % 16];
+			} while((argUValue = tmp));
+			//copy now....
+			argValue = pNumBuf - numberBuffer; //length of the number string
+			if(len <= argValue)
+				return (-1); //not enough space for number and terminator
+			do
+			{
+				*p++ = *--pNumBuf;
+			} while(pNumBuf != numberBuffer);
+			len -= argValue;
+			continue;
+		case 'c': //char
+			//
+			// I'm not sure about this...
+			// In the linux kernel source the
+			// unsigned char is extracted from an integer type.
+			// We assume that gcc stacks a char argument
+			// as sizeof(int) bytes value.
+			// Is this always true ?
+			//
+			*p++ = (char)kvi_va_arg(list, int);
+			--len;
+			continue;
+		case 'Q': // QString! (this should almost never happen)
+		{
+			QString * s = kvi_va_arg(list, QString *);
+			QByteArray cs = (*s).toUtf8();
+			const char * t = cs.data();
+			if(!t)
+				continue; // nothing to do
+			//check for space...
+			if(len <= (int)cs.length())
+				return (-1); //not enough space for buffer and terminator
+			while(*t)
+				*p++ = *t++;
+			len -= cs.length();
+			continue;
+		}
+		default:        //a normal percent
+			*p++ = '%'; //write it
+			if(--len == 0)
+				return (-1); //not enough space for next char or terminator
+			if(*fmt)
+			{                //this if is just in case that we have a % at the end of the string.
+				*p++ = *fmt; //and write this char
+				--len;
+			}
+			continue;
 		}
 	}
 	if(len < 1)
@@ -723,92 +722,92 @@ int kvi_irc_vsnprintf(char * buffer, const char * fmt, kvi_va_list list, bool * 
 		++fmt; //skip this '%'
 		switch(*fmt)
 		{
-			case 's': //string
-				argString = kvi_va_arg(list, char *);
-				if(!argString)
-					continue;
-				//check for space...
-				while(*argString)
-				{
-					*p++ = *argString++;
-					if(--len < 3)
-						goto truncate;
-				}
+		case 's': //string
+			argString = kvi_va_arg(list, char *);
+			if(!argString)
 				continue;
-			case 'Q': // QString! (this should almost never happen)
+			//check for space...
+			while(*argString)
 			{
-				QString * s = kvi_va_arg(list, QString *);
-				QByteArray cs = (*s).toUtf8();
-				const char * t = cs.data();
-				if(!t)
-					continue; // nothing to do
-				while(*t)
-				{
-					*p++ = *t++;
-					if(--len < 3)
-						goto truncate;
-				}
-				continue;
+				*p++ = *argString++;
+				if(--len < 3)
+					goto truncate;
 			}
-			case 'd': //signed integer
-				argValue = kvi_va_arg(list, int);
+			continue;
+		case 'Q': // QString! (this should almost never happen)
+		{
+			QString * s = kvi_va_arg(list, QString *);
+			QByteArray cs = (*s).toUtf8();
+			const char * t = cs.data();
+			if(!t)
+				continue; // nothing to do
+			while(*t)
+			{
+				*p++ = *t++;
+				if(--len < 3)
+					goto truncate;
+			}
+			continue;
+		}
+		case 'd': //signed integer
+			argValue = kvi_va_arg(list, int);
+			if(argValue < 0)
+			{ //negative integer
+				*p++ = '-';
+				if(--len < 3)
+					goto truncate;    //place just for CRLF
+				argValue = -argValue; //need to have it positive
 				if(argValue < 0)
-				{ //negative integer
-					*p++ = '-';
-					if(--len < 3)
-						goto truncate;    //place just for CRLF
-					argValue = -argValue; //need to have it positive
-					if(argValue < 0)
-						argValue = 0; // -0 (hack the exception)
-				}
-				//write the number in a temporary buffer
-				pNumBuf = numberBuffer;
-				do
-				{
-					tmp = argValue / 10;
-					*pNumBuf++ = argValue - (tmp * 10) + '0';
-				} while((argValue = tmp));
-				//copy now....
-				do
-				{
-					*p++ = *--pNumBuf;
-					if(--len < 3)
-						goto truncate;
-				} while(pNumBuf != numberBuffer);
-				continue;
-			case 'u':                                       //unsigned integer
-				argUValue = kvi_va_arg(list, unsigned int); //many implementations place int here
-				//write the number in a temporary buffer
-				pNumBuf = numberBuffer;
-				do
-				{
-					tmp = argUValue / 10;
-					*pNumBuf++ = argUValue - (tmp * 10) + '0';
-				} while((argUValue = tmp));
-				//copy now....
+					argValue = 0; // -0 (hack the exception)
+			}
+			//write the number in a temporary buffer
+			pNumBuf = numberBuffer;
+			do
+			{
+				tmp = argValue / 10;
+				*pNumBuf++ = argValue - (tmp * 10) + '0';
+			} while((argValue = tmp));
+			//copy now....
+			do
+			{
+				*p++ = *--pNumBuf;
 				if(--len < 3)
-					goto truncate; //no place for digits
-				do
-				{
-					*p++ = *--pNumBuf;
-					if(--len < 3)
-						goto truncate;
-				} while(pNumBuf != numberBuffer);
-				continue;
-			case 'c': //char
-				*p++ = (char)kvi_va_arg(list, int);
+					goto truncate;
+			} while(pNumBuf != numberBuffer);
+			continue;
+		case 'u':                                       //unsigned integer
+			argUValue = kvi_va_arg(list, unsigned int); //many implementations place int here
+			//write the number in a temporary buffer
+			pNumBuf = numberBuffer;
+			do
+			{
+				tmp = argUValue / 10;
+				*pNumBuf++ = argUValue - (tmp * 10) + '0';
+			} while((argUValue = tmp));
+			//copy now....
+			if(--len < 3)
+				goto truncate; //no place for digits
+			do
+			{
+				*p++ = *--pNumBuf;
+				if(--len < 3)
+					goto truncate;
+			} while(pNumBuf != numberBuffer);
+			continue;
+		case 'c': //char
+			*p++ = (char)kvi_va_arg(list, int);
+			--len;
+			continue;
+		default:        //a normal percent
+			*p++ = '%'; //write it
+			if(--len < 3)
+				goto truncate; //not enough space for next char
+			if(*fmt)
+			{                //this if is just in case that we have a % at the end of the string.
+				*p++ = *fmt; //and write this char
 				--len;
-				continue;
-			default:        //a normal percent
-				*p++ = '%'; //write it
-				if(--len < 3)
-					goto truncate; //not enough space for next char
-				if(*fmt)
-				{                //this if is just in case that we have a % at the end of the string.
-					*p++ = *fmt; //and write this char
-					--len;
-				}
-				continue;
+			}
+			continue;
 		}
 	}
 	//successful finish
@@ -1292,22 +1291,22 @@ void KviCString::bufferToBase64(const char * buffer, int len)
 	}
 	switch(len)
 	{
-		case 2:
-			aux1 = (unsigned char)*buffer++;
-			aux2 = (unsigned char)*buffer++;
-			*aux_ptr++ = base64_chars[(aux1 & 0xFC) >> 2];
-			*aux_ptr++ = base64_chars[((aux1 & 0x03) << 4) | ((aux2 & 0xF0) >> 4)];
-			*aux_ptr++ = base64_chars[((aux2 & 0x0F) << 2)];
-			*aux_ptr++ = '=';
-			break;
-		case 1:
-			aux1 = (unsigned char)*buffer++;
-			aux2 = (unsigned char)*buffer++;
-			*aux_ptr++ = base64_chars[(aux1 & 0xFC) >> 2];
-			*aux_ptr++ = base64_chars[((aux1 & 0x03) << 4)];
-			*aux_ptr++ = '=';
-			*aux_ptr++ = '=';
-			break;
+	case 2:
+		aux1 = (unsigned char)*buffer++;
+		aux2 = (unsigned char)*buffer++;
+		*aux_ptr++ = base64_chars[(aux1 & 0xFC) >> 2];
+		*aux_ptr++ = base64_chars[((aux1 & 0x03) << 4) | ((aux2 & 0xF0) >> 4)];
+		*aux_ptr++ = base64_chars[((aux2 & 0x0F) << 2)];
+		*aux_ptr++ = '=';
+		break;
+	case 1:
+		aux1 = (unsigned char)*buffer++;
+		aux2 = (unsigned char)*buffer++;
+		*aux_ptr++ = base64_chars[(aux1 & 0xFC) >> 2];
+		*aux_ptr++ = base64_chars[((aux1 & 0x03) << 4)];
+		*aux_ptr++ = '=';
+		*aux_ptr++ = '=';
+		break;
 	}
 	*aux_ptr = 0;
 }
@@ -1925,52 +1924,52 @@ KviCString & KviCString::hexEncodeWhiteSpace()
 		//	000 001 002 003 004 005 006 007   008 009 010 011 012 013 014 015
 		//	NUL SOH STX ETX EOT ENQ ACK BEL   BS  HT  LF  VT  FF  CR  SO  SI
 			1  ,1  ,1  ,1  ,1  ,1  ,1  ,1    ,1  ,1  ,1  ,1  ,1  ,1  ,1  ,1  ,
-		//	016 017 018 019 020 021 022 023   024 025 026 027 028 029 030 031
-		//	DLE DC1 DC2 DC3 DC4 NAK SYN ETB   CAN EM  SUB ESC FS  GS  RS  US
-			1  ,1  ,1  ,1  ,1  ,1  ,1  ,1    ,1  ,1  ,1  ,1  ,1  ,1  ,1  ,1  ,
-		//	032 033 034 035 036 037 038 039   040 041 042 043 044 045 046 047
-		//	    !   "   #   $   %   &   '     (   )   *   +   ,   -   .   /
-			1  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-		//	048 049 050 051 052 053 054 055   056 057 058 059 060 061 062 063
-		//	0   1   2   3   4   5   6   7     8   9   :   ;   <   =   >   ?
-			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-		//	064 065 066 067 068 069 070 071   072 073 074 075 076 077 078 079
-		//	@   A   B   C   D   E   F   G     H   I   J   K   L   M   N   O
-			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-		//	080 081 082 083 084 085 086 087   088 089 090 091 092 093 094 095
-		//	P   Q   R   S   T   U   V   W     X   Y   Z   [   \   ]   ^   _
-			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-		//	096 097 098 099 100 101 102 103   104 105 106 107 108 109 110 111
-		//	`   a   b   c   d   e   f   g     h   i   j   k   l   m   n   o
-			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-		//	112 113 114 115 116 117 118 119   120 121 122 123 124 125 126 127
-		//	p   q   r   s   t   u   v   w     x   y   z   {   |   }   ~   
-			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-		//	128 129 130 131 132 133 134 135   136 137 138 139 140 141 142 143
-		//
-			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-		//	144 145 146 147 148 149 150 151   152 153 154 155 156 157 158 159
-		//
-			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-		//	160 161 162 163 164 165 166 167   168 169 170 171 172 173 174 175
-		//
-			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-		//	176 177 178 179 180 181 182 183   184 185 186 187 188 189 190 191
-		//
-			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-		//	192 193 194 195 196 197 198 199   200 201 202 203 204 205 206 207
-		//	�  �  �  �  �  �  �  �    �  �  �  �  �  �  �  �
-			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-		//	208 209 210 211 212 213 214 215   216 217 218 219 220 221 222 223
-		//	�  �  �  �  �  �  �  �    �  �  �  �  �  �  �  �
-			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-		//	224 225 226 227 228 229 230 231   232 233 234 235 236 237 238 239
-		//	�  �  �  �  �  �  �  �    �  �  �  �  �  �  �  �
-			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
-		//	240 241 242 243 244 245 246 247   248 249 250 251 252 253 254 255
-		//	�  �  �  �  �  �  �  �
-			0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0
-		// clang-format on
+			//	016 017 018 019 020 021 022 023   024 025 026 027 028 029 030 031
+			//	DLE DC1 DC2 DC3 DC4 NAK SYN ETB   CAN EM  SUB ESC FS  GS  RS  US
+				1  ,1  ,1  ,1  ,1  ,1  ,1  ,1    ,1  ,1  ,1  ,1  ,1  ,1  ,1  ,1  ,
+				//	032 033 034 035 036 037 038 039   040 041 042 043 044 045 046 047
+				//	    !   "   #   $   %   &   '     (   )   *   +   ,   -   .   /
+					1  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+					//	048 049 050 051 052 053 054 055   056 057 058 059 060 061 062 063
+					//	0   1   2   3   4   5   6   7     8   9   :   ;   <   =   >   ?
+						0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+						//	064 065 066 067 068 069 070 071   072 073 074 075 076 077 078 079
+						//	@   A   B   C   D   E   F   G     H   I   J   K   L   M   N   O
+							0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+							//	080 081 082 083 084 085 086 087   088 089 090 091 092 093 094 095
+							//	P   Q   R   S   T   U   V   W     X   Y   Z   [   \   ]   ^   _
+								0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+								//	096 097 098 099 100 101 102 103   104 105 106 107 108 109 110 111
+								//	`   a   b   c   d   e   f   g     h   i   j   k   l   m   n   o
+									0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+									//	112 113 114 115 116 117 118 119   120 121 122 123 124 125 126 127
+									//	p   q   r   s   t   u   v   w     x   y   z   {   |   }   ~   
+										0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+										//	128 129 130 131 132 133 134 135   136 137 138 139 140 141 142 143
+										//
+											0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+											//	144 145 146 147 148 149 150 151   152 153 154 155 156 157 158 159
+											//
+												0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+												//	160 161 162 163 164 165 166 167   168 169 170 171 172 173 174 175
+												//
+													0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+													//	176 177 178 179 180 181 182 183   184 185 186 187 188 189 190 191
+													//
+														0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+														//	192 193 194 195 196 197 198 199   200 201 202 203 204 205 206 207
+														//	�  �  �  �  �  �  �  �    �  �  �  �  �  �  �  �
+															0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+															//	208 209 210 211 212 213 214 215   216 217 218 219 220 221 222 223
+															//	�  �  �  �  �  �  �  �    �  �  �  �  �  �  �  �
+																0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+																//	224 225 226 227 228 229 230 231   232 233 234 235 236 237 238 239
+																//	�  �  �  �  �  �  �  �    �  �  �  �  �  �  �  �
+																	0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+																	//	240 241 242 243 244 245 246 247   248 249 250 251 252 253 254 255
+																	//	�  �  �  �  �  �  �  �
+																		0  ,0  ,0  ,0  ,0  ,0  ,0  ,0    ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0
+																		// clang-format on
 	};
 
 	return hexEncodeWithTable(ascii_jump_table);

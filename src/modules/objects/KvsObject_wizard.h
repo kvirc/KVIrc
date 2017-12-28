@@ -72,7 +72,7 @@ public:
 
 protected:
 	KvsObject_wizard * m_pParentScript;
-protected slots:
+	protected slots:
 	void slotNextClicked();
 	void slotBackClicked();
 };

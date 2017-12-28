@@ -35,7 +35,7 @@
 #include <QLabel>
 
 OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
-    : KviOptionsWidget(pParent)
+	: KviOptionsWidget(pParent)
 {
 	setObjectName("ircoutput_options_widget");
 	createLayout();
@@ -85,10 +85,10 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 
 	addBoolSelector(0, 3, 1, 3, __tr2qs_ctx("Show extended server information", "options"), KviOption_boolShowExtendedServerInfo);
 	addBoolSelector(0, 4, 1, 4, __tr2qs_ctx("Show server pings", "options"), KviOption_boolShowPingPong);
-	
+
 	b = addBoolSelector(0, 5, 1, 5, __tr2qs_ctx("Show own part messages", "options"), KviOption_boolShowOwnParts);
 	mergeTip(b, __tr2qs_ctx("When enabled, the current user's part messages will be shown in the console.<br>"
-	                        "When <b>Keep Channel Open</b> is enabled on part, this message will be shown in the dead channel instead.", "options"));
+		"When <b>Keep Channel Open</b> is enabled on part, this message will be shown in the dead channel instead.", "options"));
 
 	addBoolSelector(0, 6, 1, 6, __tr2qs_ctx("Show compact mode changes", "options"), KviOption_boolShowCompactModeChanges);
 
@@ -96,7 +96,7 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 }
 
 OptionsWidget_ircOutput::~OptionsWidget_ircOutput()
-    = default;
+= default;
 
 void OptionsWidget_ircOutput::commit()
 {

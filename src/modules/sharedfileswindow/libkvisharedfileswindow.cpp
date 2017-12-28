@@ -88,12 +88,12 @@ static bool sharedfileswindow_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "SharedFilesWindow",
-    "4.0.0",
-    "Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)",
-    "Shared files window extension",
-    sharedfileswindow_module_init,
-    sharedfileswindow_module_can_unload,
-    0,
-    sharedfileswindow_module_cleanup,
-    "sharedfileswindow")
+	"SharedFilesWindow",
+	"4.0.0",
+	"Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)",
+	"Shared files window extension",
+	sharedfileswindow_module_init,
+	sharedfileswindow_module_can_unload,
+	0,
+	sharedfileswindow_module_cleanup,
+	"sharedfileswindow")

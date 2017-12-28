@@ -74,7 +74,7 @@ protected:
 	void mediaFillBox();
 	virtual void commit();
 	virtual void showEvent(QShowEvent * e);
-protected slots:
+	protected slots:
 	void soundTest();
 	void soundAutoDetect();
 	void mediaTest();

@@ -97,16 +97,16 @@ KviPythonInterpreter::KviPythonInterpreter()
 
 	// hook in the kvirc error handling routines
 	QString szPreCode = QString(
-	    "import kvirc\n"
-	    "import sys\n"
-	    "class kvirc_stderr_grabber:\n\tdef write(self,s):\n\t\tkvirc.error(s)\n"
-	    "sys.stderr=kvirc_stderr_grabber()\n");
+		"import kvirc\n"
+		"import sys\n"
+		"class kvirc_stderr_grabber:\n\tdef write(self,s):\n\t\tkvirc.error(s)\n"
+		"sys.stderr=kvirc_stderr_grabber()\n");
 
 	PyRun_SimpleString(szPreCode.toUtf8().data());
 }
 
 bool KviPythonInterpreter::execute(QString szCode, QStringList & lArgs,
-    QString & szRetVal, QString & szError, QStringList &)
+	QString & szRetVal, QString & szError, QStringList &)
 {
 	if(!m_uptrThreadState)
 	{
@@ -244,14 +244,14 @@ static bool pythoncore_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "PythonCore", // module name
-    "4.0.0",      // module version
-    "Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)\n"
-    "Copyright (C) 2009 Fabio Bas (ctrlaltca at libero dot it)\n"
-    "Copyright (C) 2016 Matt Ullman (staticfox at staticfox dot net)",
-    "Python Scripting Engine Core",
-    pythoncore_module_init,
-    pythoncore_module_can_unload,
-    pythoncore_module_ctrl,
-    pythoncore_module_cleanup,
-    "python")
+	"PythonCore", // module name
+	"4.0.0",      // module version
+	"Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)\n"
+	"Copyright (C) 2009 Fabio Bas (ctrlaltca at libero dot it)\n"
+	"Copyright (C) 2016 Matt Ullman (staticfox at staticfox dot net)",
+	"Python Scripting Engine Core",
+	pythoncore_module_init,
+	pythoncore_module_can_unload,
+	pythoncore_module_ctrl,
+	pythoncore_module_cleanup,
+	"python")

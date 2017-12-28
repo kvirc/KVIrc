@@ -24,11 +24,11 @@
 //=============================================================================
 
 /***************************************************************************
-                          XmlFunctions.cpp -  description
-                             -------------------
-    begin                : Sun Jul 24 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  XmlFunctions.cpp -  description
+							 -------------------
+	begin                : Sun Jul 24 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #ifndef XMLFUNCTIONS_H
@@ -37,12 +37,12 @@
 #include <QDomNode>
 #include <QDebug>
 
-/**
- * Some helper functions to make the handling of QDom easier.
- *
- * @author Diederik van der Boor
- * @ingroup NetworkExtra
- */
+ /**
+  * Some helper functions to make the handling of QDom easier.
+  *
+  * @author Diederik van der Boor
+  * @ingroup NetworkExtra
+  */
 class XmlFunctions
 {
 public:
@@ -52,7 +52,7 @@ public:
 	static QString getNodeAttribute(const QDomNode & node, const QString & attribute);
 	// Helper function, get a specific child node
 	static QDomNode getNodeChildByKey(const QDomNodeList & childNodes,
-	    const QString & keyTagName, const QString & keyValue);
+		const QString & keyTagName, const QString & keyValue);
 	// Helper function, get the text value of a node
 	static QString getNodeValue(const QDomNode & rootNode, const QString & path);
 	// Helper function, get the source XML of a node.

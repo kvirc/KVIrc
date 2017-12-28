@@ -43,13 +43,12 @@
 
 namespace KviEnvironment
 {
-
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	inline QString getVariable(const QString & szName)
 	{
 		LPTSTR szRet = (LPTSTR)::malloc(MAX_ENV_SIZE * sizeof(TCHAR));
 		QString szValue;
-		if (GetEnvironmentVariable(szName.toStdWString().c_str(), szRet, MAX_ENV_SIZE))
+		if(GetEnvironmentVariable(szName.toStdWString().c_str(), szRet, MAX_ENV_SIZE))
 			szValue = QString::fromStdWString(szRet);
 		::free(szRet);
 		return szValue;

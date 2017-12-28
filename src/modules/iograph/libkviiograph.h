@@ -41,7 +41,7 @@ class KviIOGraphWidget : public QWidget
 	Q_OBJECT
 public:
 	KviIOGraphWidget(QWidget * parent);
-	~KviIOGraphWidget(){};
+	~KviIOGraphWidget() {};
 
 protected:
 	QQueue<unsigned int> m_sendRates;

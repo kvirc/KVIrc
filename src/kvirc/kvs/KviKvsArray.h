@@ -64,7 +64,7 @@ public:
 	~KviKvsArray();
 
 protected:
-	KviKvsVariant ** m_pData;
+	KviKvsVariant * * m_pData;
 	kvs_uint_t m_uSize;
 	kvs_uint_t m_uAllocSize;
 

@@ -28,13 +28,13 @@
 #include <math.h>
 
 KviKvsTreeNodeExpression::KviKvsTreeNodeExpression(const QChar * pLocation)
-    : KviKvsTreeNodeData(pLocation)
+	: KviKvsTreeNodeData(pLocation)
 {
 	m_pParentExpression = nullptr;
 }
 
 KviKvsTreeNodeExpression::~KviKvsTreeNodeExpression()
-    = default;
+= default;
 
 void KviKvsTreeNodeExpression::contextDescription(QString & szBuffer)
 {
@@ -90,7 +90,7 @@ int KviKvsTreeNodeExpression::firstBinaryOperator()
 }
 
 KviKvsTreeNodeExpressionVariableOperand::KviKvsTreeNodeExpressionVariableOperand(const QChar * pLocation, KviKvsTreeNodeData * pData)
-    : KviKvsTreeNodeExpression(pLocation)
+	: KviKvsTreeNodeExpression(pLocation)
 {
 	m_pData = pData;
 	m_pData->setParent(this);
@@ -120,7 +120,7 @@ bool KviKvsTreeNodeExpressionVariableOperand::evaluateReadOnly(KviKvsRunTimeCont
 }
 
 KviKvsTreeNodeExpressionConstantOperand::KviKvsTreeNodeExpressionConstantOperand(const QChar * pLocation, KviKvsVariant * pConstant)
-    : KviKvsTreeNodeExpression(pLocation)
+	: KviKvsTreeNodeExpression(pLocation)
 {
 	m_pConstant = pConstant;
 }
@@ -150,12 +150,12 @@ bool KviKvsTreeNodeExpressionConstantOperand::evaluateReadOnly(KviKvsRunTimeCont
 }
 
 KviKvsTreeNodeExpressionOperator::KviKvsTreeNodeExpressionOperator(const QChar * pLocation)
-    : KviKvsTreeNodeExpression(pLocation)
+	: KviKvsTreeNodeExpression(pLocation)
 {
 }
 
 KviKvsTreeNodeExpressionOperator::~KviKvsTreeNodeExpressionOperator()
-    = default;
+= default;
 
 void KviKvsTreeNodeExpressionOperator::contextDescription(QString & szBuffer)
 {
@@ -168,7 +168,7 @@ void KviKvsTreeNodeExpressionOperator::dump(const char * prefix)
 }
 
 KviKvsTreeNodeExpressionUnaryOperator::KviKvsTreeNodeExpressionUnaryOperator(const QChar * pLocation, KviKvsTreeNodeExpression * pData)
-    : KviKvsTreeNodeExpressionOperator(pLocation)
+	: KviKvsTreeNodeExpressionOperator(pLocation)
 {
 	m_pData = pData;
 	m_pData->setParent(this);
@@ -208,12 +208,12 @@ bool KviKvsTreeNodeExpressionUnaryOperator::evaluateOperand(KviKvsRunTimeContext
 }
 
 KviKvsTreeNodeExpressionUnaryOperatorNegate::KviKvsTreeNodeExpressionUnaryOperatorNegate(const QChar * pLocation, KviKvsTreeNodeExpression * pData)
-    : KviKvsTreeNodeExpressionUnaryOperator(pLocation, pData)
+	: KviKvsTreeNodeExpressionUnaryOperator(pLocation, pData)
 {
 }
 
 KviKvsTreeNodeExpressionUnaryOperatorNegate::~KviKvsTreeNodeExpressionUnaryOperatorNegate()
-    = default;
+= default;
 
 void KviKvsTreeNodeExpressionUnaryOperatorNegate::contextDescription(QString & szBuffer)
 {
@@ -245,12 +245,12 @@ bool KviKvsTreeNodeExpressionUnaryOperatorNegate::evaluateReadOnly(KviKvsRunTime
 }
 
 KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot::KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot(const QChar * pLocation, KviKvsTreeNodeExpression * pData)
-    : KviKvsTreeNodeExpressionUnaryOperator(pLocation, pData)
+	: KviKvsTreeNodeExpressionUnaryOperator(pLocation, pData)
 {
 }
 
 KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot::~KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot()
-    = default;
+= default;
 
 void KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot::contextDescription(QString & szBuffer)
 {
@@ -282,12 +282,12 @@ bool KviKvsTreeNodeExpressionUnaryOperatorBitwiseNot::evaluateReadOnly(KviKvsRun
 }
 
 KviKvsTreeNodeExpressionUnaryOperatorLogicalNot::KviKvsTreeNodeExpressionUnaryOperatorLogicalNot(const QChar * pLocation, KviKvsTreeNodeExpression * pData)
-    : KviKvsTreeNodeExpressionUnaryOperator(pLocation, pData)
+	: KviKvsTreeNodeExpressionUnaryOperator(pLocation, pData)
 {
 }
 
 KviKvsTreeNodeExpressionUnaryOperatorLogicalNot::~KviKvsTreeNodeExpressionUnaryOperatorLogicalNot()
-    = default;
+= default;
 
 void KviKvsTreeNodeExpressionUnaryOperatorLogicalNot::contextDescription(QString & szBuffer)
 {
@@ -318,7 +318,7 @@ bool KviKvsTreeNodeExpressionUnaryOperatorLogicalNot::evaluateReadOnly(KviKvsRun
 }
 
 KviKvsTreeNodeExpressionBinaryOperator::KviKvsTreeNodeExpressionBinaryOperator(const QChar * pLocation)
-    : KviKvsTreeNodeExpressionOperator(pLocation)
+	: KviKvsTreeNodeExpressionOperator(pLocation)
 {
 	m_pLeft = nullptr;
 	m_pRight = nullptr;

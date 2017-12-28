@@ -123,78 +123,77 @@ bool KvsObject_vBox::init(KviKvsRunTimeContext * pContext, KviKvsVariantList * p
 KVSO_CLASS_FUNCTION(vBox, setMargin)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iMargin;
+		kvs_int_t iMargin;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("margin", KVS_PT_INT, 0, iMargin)
-	KVSO_PARAMETERS_END(c)
-	((KviTalVBox *)widget())->setMargin(iMargin);
+		KVSO_PARAMETER("margin", KVS_PT_INT, 0, iMargin)
+		KVSO_PARAMETERS_END(c)
+		((KviTalVBox *)widget())->setMargin(iMargin);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(vBox, setSpacing)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iSpacing;
+		kvs_int_t iSpacing;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("spacing", KVS_PT_INT, 0, iSpacing)
-	KVSO_PARAMETERS_END(c)
-	((KviTalVBox *)widget())->setSpacing(iSpacing);
+		KVSO_PARAMETER("spacing", KVS_PT_INT, 0, iSpacing)
+		KVSO_PARAMETERS_END(c)
+		((KviTalVBox *)widget())->setSpacing(iSpacing);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(vBox, setStretchFactor)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	kvs_uint_t uStretch;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETER("stretch", KVS_PT_UNSIGNEDINTEGER, 0, uStretch)
-	KVSO_PARAMETERS_END(c)
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETER("stretch", KVS_PT_UNSIGNEDINTEGER, 0, uStretch)
+		KVSO_PARAMETERS_END(c)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	return true;
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	if(((KvsObject_widget *)pObject)->widget()->parentWidget() != widget())
-	{
-		c->warning(__tr2qs_ctx("The widget must be a child of this vbox", "objects"));
-		return true;
-	}
+		if(((KvsObject_widget *)pObject)->widget()->parentWidget() != widget())
+		{
+			c->warning(__tr2qs_ctx("The widget must be a child of this vbox", "objects"));
+			return true;
+		}
 	((KviTalVBox *)widget())->setStretchFactor(((QWidget *)(pObject->object())), uStretch);
 	return true;
 }
 KVSO_CLASS_FUNCTION(vBox, addStretch)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iStretch;
+		kvs_int_t iStretch;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("stretch", KVS_PT_INT, 0, iStretch)
-	KVSO_PARAMETERS_END(c)
-	((KviTalVBox *)widget())->addStretch(iStretch);
+		KVSO_PARAMETER("stretch", KVS_PT_INT, 0, iStretch)
+		KVSO_PARAMETERS_END(c)
+		((KviTalVBox *)widget())->addStretch(iStretch);
 	return true;
 }
 KVSO_CLASS_FUNCTION(vBox, setAlignment)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QStringList alignment;
+		QStringList alignment;
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETER("alignment", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, alignment)
-	KVSO_PARAMETERS_END(c)
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETER("alignment", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, alignment)
+		KVSO_PARAMETERS_END(c)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	if(((KvsObject_widget *)pObject)->widget()->parentWidget() != widget())
-	{
-		c->warning(__tr2qs_ctx("The widget must be a child of this hbox", "objects"));
-		return true;
-	}
+		if(((KvsObject_widget *)pObject)->widget()->parentWidget() != widget())
+		{
+			c->warning(__tr2qs_ctx("The widget must be a child of this hbox", "objects"));
+			return true;
+		}
 
 	int align, sum = 0;
 	for(auto & it : alignment)
 	{
-
 		align = 0;
 		for(unsigned int j = 0; j < align_num; j++)
 		{

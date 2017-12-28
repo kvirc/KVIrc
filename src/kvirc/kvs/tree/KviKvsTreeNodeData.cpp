@@ -26,12 +26,12 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeData::KviKvsTreeNodeData(const QChar * pLocation)
-    : KviKvsTreeNode(pLocation), m_pEndingLocation(nullptr)
+	: KviKvsTreeNode(pLocation), m_pEndingLocation(nullptr)
 {
 }
 
 KviKvsTreeNodeData::~KviKvsTreeNodeData()
-    = default;
+= default;
 
 void KviKvsTreeNodeData::contextDescription(QString & szBuffer)
 {

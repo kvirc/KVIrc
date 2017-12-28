@@ -102,7 +102,7 @@ private:
 	void delayedNotifySession();
 	void delayedIsOnSession();
 	void delayedUserhostSession();
-private slots:
+	private slots:
 	void newNotifySession();
 	void newIsOnSession();
 	void newUserhostSession();

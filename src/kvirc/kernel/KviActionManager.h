@@ -103,15 +103,15 @@ protected:
 	void customizeToolBarsDialogDestroyed();
 	void tryFindCurrentToolBar();
 	void delayedRegisterAccelerators(); // this is called ONCE by KviMainWindow, at startup
-protected slots:
+	protected slots:
 	void actionDestroyed();
 signals:
 	void beginCustomizeToolBars();
 	void endCustomizeToolBars();
 	void currentToolBarChanged();    // emitted only when customizing!
 	void removeActionsHintRequest(); // connected by the KviCustomToolBarDialog to flash the trashcan
-	                                 // when the user tries to remove an action from the toolbar
-	                                 // and it fails to drag it on the trashcan
+									 // when the user tries to remove an action from the toolbar
+									 // and it fails to drag it on the trashcan
 };
 
 #define ACTION_POPUP_ITEM(__name, __popup)                               \

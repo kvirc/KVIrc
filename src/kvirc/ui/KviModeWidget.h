@@ -46,7 +46,7 @@ protected:
 	void mouseDoubleClickEvent(QMouseEvent * e);
 	void keyReleaseEvent(QKeyEvent * e);
 	bool modeNeedsParameterOnlyWhenSet(char cMode);
-public slots:
+	public slots:
 	void editorReturnPressed();
 signals:
 	void setMode(QString & szMode);

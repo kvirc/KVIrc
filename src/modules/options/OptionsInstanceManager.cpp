@@ -1,5 +1,3 @@
-
-
 //=============================================================================
 //
 //   File : OptionsInstanceManager.cpp
@@ -651,9 +649,8 @@ static const char * g_szName_OptionsWidget_windowListClassic = KVI_OPTIONS_WIDGE
 static const char * g_szClassName_OptionsWidget_windowListClassic = "OptionsWidget_windowListClassic";
 
 OptionsInstanceManager::OptionsInstanceManager()
-    : QObject(nullptr)
+	: QObject(nullptr)
 {
-
 	//qDebug("Instantiating");
 	// Create the global widget dict : case sensitive, do not copy keys
 	m_pInstanceTree = new KviPointerList<OptionsWidgetInstanceEntry>;

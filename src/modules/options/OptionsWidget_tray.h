@@ -49,7 +49,7 @@ protected:
 #endif
 	KviBoolSelector * m_pCloseInTray;
 	KviTalGroupBox * m_pLevelsGroup;
-protected slots:
+	protected slots:
 	void setEnabled(bool);
 };
 

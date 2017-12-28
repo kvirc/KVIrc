@@ -44,7 +44,7 @@
 static QAction * g_pDraggedAction = nullptr;
 
 KviCustomToolBar::KviCustomToolBar(KviCustomToolBarDescriptor * pDesc, const QString & szLabel, Qt::ToolBarArea type, const char * pcName)
-    : KviToolBar(szLabel, type, pcName)
+	: KviToolBar(szLabel, type, pcName)
 {
 	m_pDescriptor = pDesc;
 	m_pFilteredChildren = nullptr;
@@ -274,7 +274,7 @@ bool KviCustomToolBar::eventFilter(QObject * o, QEvent * e)
 			if(o->isWidgetType())
 			{
 				if(
-				    o->inherits("KviToolBarGraphicalApplet") || o->inherits("QToolButton"))
+					o->inherits("KviToolBarGraphicalApplet") || o->inherits("QToolButton"))
 				{
 					QWidget * pMovedWidget = (QWidget *)o;
 					g_pDraggedAction = actionForWidget(pMovedWidget);
@@ -344,7 +344,7 @@ bool KviCustomToolBar::eventFilter(QObject * o, QEvent * e)
 }
 
 KviCustomToolBarSeparator::KviCustomToolBarSeparator(KviCustomToolBar * pParent, const char * pcName)
-    : QWidget(pParent)
+	: QWidget(pParent)
 {
 	setObjectName(pcName);
 	m_pToolBar = pParent;

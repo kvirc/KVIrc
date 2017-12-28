@@ -130,11 +130,11 @@ protected:
 	void enterEvent(QEvent * e) override;
 	bool eventFilter(QObject * pEdit, QEvent * e) override;
 	void keyPressEvent(QKeyEvent * e) override;
-public slots:
+	public slots:
 	void hideNow();
 	void toggleLineEdit();
 	void slotTabCloseRequested(int index);
-protected slots:
+	protected slots:
 	void blink();
 	void heartbeat();
 	void returnPressed();

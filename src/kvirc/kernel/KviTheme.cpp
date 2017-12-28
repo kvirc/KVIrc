@@ -40,55 +40,55 @@
 #define QIMAGE_SCALE_MIN Qt::KeepAspectRatio
 
 KviThemeInfo::KviThemeInfo()
-    : KviHeapObject()
+	: KviHeapObject()
 {
 }
 
 KviThemeInfo::~KviThemeInfo()
-    = default;
+= default;
 
 void KviThemeInfo::setDirectoryAndLocation(const QString & szDirectory, Location eLocation)
 {
 	switch(eLocation)
 	{
-		case Auto:
-			g_pApp->getLocalKvircDirectory(m_szDirectory, KviApplication::Themes, szDirectory);
+	case Auto:
+		g_pApp->getLocalKvircDirectory(m_szDirectory, KviApplication::Themes, szDirectory);
+		if(KviFileUtils::directoryExists(m_szDirectory))
+		{
+			m_eLocation = User;
+		}
+		else
+		{
+			g_pApp->getGlobalKvircDirectory(m_szDirectory, KviApplication::Themes, szDirectory);
 			if(KviFileUtils::directoryExists(m_szDirectory))
 			{
-				m_eLocation = User;
+				m_eLocation = Builtin;
 			}
 			else
 			{
-				g_pApp->getGlobalKvircDirectory(m_szDirectory, KviApplication::Themes, szDirectory);
-				if(KviFileUtils::directoryExists(m_szDirectory))
-				{
-					m_eLocation = Builtin;
-				}
-				else
-				{
-					m_eLocation = External;
-					m_szDirectory = szDirectory;
-					m_szSubdirectory = KviFileUtils::extractFileName(szDirectory, false);
-				}
+				m_eLocation = External;
+				m_szDirectory = szDirectory;
+				m_szSubdirectory = KviFileUtils::extractFileName(szDirectory, false);
 			}
-			break;
-		case Builtin:
-			m_eLocation = eLocation;
-			m_szSubdirectory = szDirectory;
-			g_pApp->getGlobalKvircDirectory(m_szDirectory, KviApplication::Themes, m_szSubdirectory);
-			break;
-		case User:
-			m_eLocation = eLocation;
-			m_szSubdirectory = szDirectory;
-			g_pApp->getLocalKvircDirectory(m_szDirectory, KviApplication::Themes, m_szSubdirectory);
-			break;
-		default: // assume external
-		{
-			m_eLocation = External;
-			m_szDirectory = szDirectory;
-			m_szSubdirectory = KviFileUtils::extractFileName(szDirectory, false);
 		}
 		break;
+	case Builtin:
+		m_eLocation = eLocation;
+		m_szSubdirectory = szDirectory;
+		g_pApp->getGlobalKvircDirectory(m_szDirectory, KviApplication::Themes, m_szSubdirectory);
+		break;
+	case User:
+		m_eLocation = eLocation;
+		m_szSubdirectory = szDirectory;
+		g_pApp->getLocalKvircDirectory(m_szDirectory, KviApplication::Themes, m_szSubdirectory);
+		break;
+	default: // assume external
+	{
+		m_eLocation = External;
+		m_szDirectory = szDirectory;
+		m_szSubdirectory = KviFileUtils::extractFileName(szDirectory, false);
+	}
+	break;
 	}
 
 	KviQString::ensureLastCharIs(m_szDirectory, QChar(KVI_PATH_SEPARATOR_CHAR));
@@ -320,15 +320,15 @@ namespace KviTheme
 		QString szThemePath;
 		switch(eLocation)
 		{
-			case KviThemeInfo::Builtin:
-				g_pApp->getGlobalKvircDirectory(szThemePath, KviApplication::Themes);
-				break;
-			case KviThemeInfo::User:
-				g_pApp->getLocalKvircDirectory(szThemePath, KviApplication::Themes);
-				break;
-			default:
-				return;
-				break;
+		case KviThemeInfo::Builtin:
+			g_pApp->getGlobalKvircDirectory(szThemePath, KviApplication::Themes);
+			break;
+		case KviThemeInfo::User:
+			g_pApp->getLocalKvircDirectory(szThemePath, KviApplication::Themes);
+			break;
+		default:
+			return;
+			break;
 		}
 
 		QDir d(szThemePath);

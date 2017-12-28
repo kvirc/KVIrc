@@ -39,7 +39,7 @@
 #include <QString>
 
 KviModeEditor::KviModeEditor(QWidget * par, KviWindowToolPageButton * button, const char * name, KviChannelWindow * pChan)
-    : KviWindowToolWidget(par, button)
+	: KviWindowToolWidget(par, button)
 {
 	setObjectName(name);
 	m_pChannel = pChan;

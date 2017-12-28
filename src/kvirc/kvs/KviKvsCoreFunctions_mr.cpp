@@ -102,12 +102,12 @@ namespace KviKvsCoreFunctions
 		kvs_uint_t maskType;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("nickname", KVS_PT_STRING, KVS_PF_OPTIONAL, szNick)
-		KVSCF_PARAMETER("maskType", KVS_PT_UINT, KVS_PF_OPTIONAL, maskType)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("nickname", KVS_PT_STRING, KVS_PF_OPTIONAL, szNick)
+			KVSCF_PARAMETER("maskType", KVS_PT_UINT, KVS_PF_OPTIONAL, maskType)
+			KVSCF_PARAMETERS_END
 
-		if(maskType > 26)
-			maskType = 0;
+			if(maskType > 26)
+				maskType = 0;
 
 		KviConsoleWindow * c = KVSCF_pContext->window()->console();
 		if(c && c->isConnected())
@@ -155,10 +155,10 @@ namespace KviKvsCoreFunctions
 		kvs_uint_t uCntx;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("irc_context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uCntx)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("irc_context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uCntx)
+			KVSCF_PARAMETERS_END
 
-		KviConsoleWindow * cns = nullptr;
+			KviConsoleWindow * cns = nullptr;
 
 		if(KVSCF_pParams->count() > 0)
 		{
@@ -227,10 +227,10 @@ namespace KviKvsCoreFunctions
 	{
 		QString szName;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("msg_type_color_set_name", KVS_PT_NONEMPTYSTRING, 0, szName)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("msg_type_color_set_name", KVS_PT_NONEMPTYSTRING, 0, szName)
+			KVSCF_PARAMETERS_END
 
-		QString tmp = "msgtype";
+			QString tmp = "msgtype";
 		tmp += szName;
 		for(int i = 0; i < KVI_NUM_MSGTYPE_OPTIONS; i++)
 		{
@@ -278,13 +278,13 @@ namespace KviKvsCoreFunctions
 		KviKvsVariantList vList;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("className", KVS_PT_NONEMPTYSTRING, 0, szClassName)
-		KVSCF_PARAMETER("parentHandle", KVS_PT_HOBJECT, KVS_PF_OPTIONAL, hParent)
-		KVSCF_PARAMETER("name", KVS_PT_STRING, KVS_PF_OPTIONAL, szName)
-		KVSCF_PARAMETER("parameterList", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, vList)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("className", KVS_PT_NONEMPTYSTRING, 0, szClassName)
+			KVSCF_PARAMETER("parentHandle", KVS_PT_HOBJECT, KVS_PF_OPTIONAL, hParent)
+			KVSCF_PARAMETER("name", KVS_PT_STRING, KVS_PF_OPTIONAL, szName)
+			KVSCF_PARAMETER("parameterList", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, vList)
+			KVSCF_PARAMETERS_END
 
-		KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
+			KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
 		if(!pClass)
 		{
 			KVSCF_pContext->error(__tr2qs_ctx("Class '%Q' is not defined", "kvs"), &szClassName);
@@ -417,9 +417,9 @@ namespace KviKvsCoreFunctions
 		QString szOpt;
 		// FIXME: This should return a variant in general
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("optionName", KVS_PT_NONEMPTYSTRING, 0, szOpt)
-		KVSCF_PARAMETERS_END
-		QString tmp;
+			KVSCF_PARAMETER("optionName", KVS_PT_NONEMPTYSTRING, 0, szOpt)
+			KVSCF_PARAMETERS_END
+			QString tmp;
 		if(g_pApp->getOptionString(szOpt, tmp))
 			KVSCF_pRetBuffer->setString(tmp);
 		else
@@ -462,20 +462,20 @@ namespace KviKvsCoreFunctions
 		QString szName;
 		kvs_uint_t uContextId;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("query_name", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szName)
-		KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("query_name", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szName)
+			KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
+			KVSCF_PARAMETERS_END
 
-		KviWindow * wnd = nullptr;
+			KviWindow * wnd = nullptr;
 		if(KVSCF_pParams->count() > 1)
 		{
 			KviConsoleWindow * cns = g_pApp->findConsole(uContextId);
 			if(cns && cns->connection())
 				wnd = cns->connection()->findQuery(szName);
-			else if (!cns)
+			else if(!cns)
 				KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)", "kvs"), uContextId);
 		}
-		else if (KVSCF_pParams->count() == 1)
+		else if(KVSCF_pParams->count() == 1)
 		{
 			if(KVSCF_pContext->window()->connection())
 				wnd = KVSCF_pContext->window()->connection()->findQuery(szName);
@@ -547,12 +547,12 @@ namespace KviKvsCoreFunctions
 		kvs_uint_t uMax;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("max", KVS_PT_UINT, KVS_PF_OPTIONAL, uMax)
-		KVSCF_PARAMETERS_END
-		if(KVSCF_pParams->count() > 0)
-			KVSCF_pRetBuffer->setInteger(::rand() % (uMax + 1));
-		else
-			KVSCF_pRetBuffer->setInteger(::rand());
+			KVSCF_PARAMETER("max", KVS_PT_UINT, KVS_PF_OPTIONAL, uMax)
+			KVSCF_PARAMETERS_END
+			if(KVSCF_pParams->count() > 0)
+				KVSCF_pRetBuffer->setInteger(::rand() % (uMax + 1));
+			else
+				KVSCF_pRetBuffer->setInteger(::rand());
 		return true;
 	}
 
@@ -589,10 +589,10 @@ namespace KviKvsCoreFunctions
 	{
 		KviKvsVariant * v;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
+			KVSCF_PARAMETERS_END
 
-		kvs_real_t dVal;
+			kvs_real_t dVal;
 		if(v->asReal(dVal))
 			KVSCF_pRetBuffer->setReal(dVal);
 		else
@@ -642,10 +642,10 @@ namespace KviKvsCoreFunctions
 		QString szNick;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
+			KVSCF_PARAMETERS_END
 
-		KviConsoleWindow * c = KVSCF_pContext->window()->console();
+			KviConsoleWindow * c = KVSCF_pContext->window()->console();
 		if(c && c->isConnected())
 		{
 			KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick);
@@ -706,19 +706,19 @@ namespace KviKvsCoreFunctions
 		KviKvsArrayCast a;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("data", KVS_PT_ARRAYCAST, 0, a)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("data", KVS_PT_ARRAYCAST, 0, a)
+			KVSCF_PARAMETERS_END
 
-		if(a.array())
-		{
-			KviKvsArray * arry = new KviKvsArray(*(a.array()));
-			arry->rsort();
-			KVSCF_pRetBuffer->setArray(arry);
-		}
-		else
-		{
-			KVSCF_pRetBuffer->setArray(new KviKvsArray());
-		}
+			if(a.array())
+			{
+				KviKvsArray * arry = new KviKvsArray(*(a.array()));
+				arry->rsort();
+				KVSCF_pRetBuffer->setArray(arry);
+			}
+			else
+			{
+				KVSCF_pRetBuffer->setArray(new KviKvsArray());
+			}
 		return true;
 	}
 };

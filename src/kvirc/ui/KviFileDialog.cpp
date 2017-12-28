@@ -39,13 +39,13 @@
 extern KviMediaManager * g_pMediaManager;
 
 KviFileDialog::KviFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char * name, bool bModal)
-    : KviTalFileDialog(szDirName, szFilter, pParent, name, bModal)
+	: KviTalFileDialog(szDirName, szFilter, pParent, name, bModal)
 {
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KviIconManager::Folder))));
 }
 
 KviFileDialog::~KviFileDialog()
-    = default;
+= default;
 
 /*
 void KviFileDialog::goKvirc()
@@ -117,12 +117,12 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 
 			switch(QMessageBox::information(pParent, __tr2qs("File Already Exists - KVIrc"), szTmp, QMessageBox::Yes, QMessageBox::No | QMessageBox::Default, QMessageBox::Cancel | QMessageBox::Escape))
 			{
-				case QMessageBox::Cancel:
-					return false;
-					break;
-				case QMessageBox::Yes:
-					return true;
-					break;
+			case QMessageBox::Cancel:
+				return false;
+				break;
+			case QMessageBox::Yes:
+				return true;
+				break;
 			}
 		}
 	}
@@ -135,7 +135,7 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 	pDialog->setWindowTitle(szCaption);
 	// 190
 	pDialog->setFileMode(KviTalFileDialog::AnyFile);
-//pDialog->setShowHiddenFiles(showHidden);
+	//pDialog->setShowHiddenFiles(showHidden);
 #ifdef COMPILE_KDE4_SUPPORT
 	pDialog->setKeepLocation(true);
 #endif
@@ -161,14 +161,14 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 
 				switch(QMessageBox::information(pDialog, __tr2qs("File Already Exists - KVIrc"), szTmp, QMessageBox::Yes, QMessageBox::No | QMessageBox::Default, QMessageBox::Cancel | QMessageBox::Escape))
 				{
-					case QMessageBox::Cancel:
-						delete pDialog;
-						return false;
-						break;
-					case QMessageBox::Yes:
-						delete pDialog;
-						return true;
-						break;
+				case QMessageBox::Cancel:
+					delete pDialog;
+					return false;
+					break;
+				case QMessageBox::Yes:
+					delete pDialog;
+					return true;
+					break;
 				}
 			}
 			else
@@ -208,7 +208,7 @@ bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCa
 #endif
 
 	KviFileDialog * pDialog = new KviFileDialog(szInitial,
-	    szFilter, pParent, "directory_name_dialog", true);
+		szFilter, pParent, "directory_name_dialog", true);
 	pDialog->setWindowTitle(szCaption);
 	// Move to tal and settle matters there?
 	pDialog->setFileMode(KviTalFileDialog::Directory);

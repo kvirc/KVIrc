@@ -26,7 +26,7 @@
 #include "KviKvsRunTimeContext.h"
 
 KviKvsTreeNodeSwitchList::KviKvsTreeNodeSwitchList(const QChar * pLocation)
-    : KviKvsTreeNode(pLocation)
+	: KviKvsTreeNode(pLocation)
 {
 	m_pShortSwitchDict = nullptr;
 	m_pLongSwitchDict = nullptr;
@@ -51,7 +51,7 @@ void KviKvsTreeNodeSwitchList::dump(const char * prefix)
 #if 0
 	if(m_pShortSwitchDict)
 	{
-		KviPointerHashTableIterator<int,KviKvsTreeNodeData> it(*m_pShortSwitchDict);
+		KviPointerHashTableIterator<int, KviKvsTreeNodeData> it(*m_pShortSwitchDict);
 		while(it.current())
 		{
 			QString tmp = prefix;
@@ -65,7 +65,7 @@ void KviKvsTreeNodeSwitchList::dump(const char * prefix)
 	}
 	if(m_pLongSwitchDict)
 	{
-		KviPointerHashTableIterator<QString,KviKvsTreeNodeData> it(*m_pLongSwitchDict);
+		KviPointerHashTableIterator<QString, KviKvsTreeNodeData> it(*m_pLongSwitchDict);
 		while(it.current())
 		{
 			QString tmp = prefix;

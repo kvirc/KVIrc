@@ -40,15 +40,15 @@
 // FIXME: This module doesn't ???? properly when auto-detection is performed!
 
 OptionsWidget_sound::OptionsWidget_sound(QWidget * pParent)
-    : KviOptionsWidget(pParent)
+	: KviOptionsWidget(pParent)
 {
 }
 
 OptionsWidget_sound::~OptionsWidget_sound()
-    = default;
+= default;
 
 OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	m_bFirstShow = true;
 
@@ -73,8 +73,8 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 	g = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("Media Player", "options"), true);
 
 	KviTalToolTip::add(g, __tr2qs_ctx("This allows you to select the preferred media player to be used with "
-	                                  "the mediaplayer.* module commands and functions.",
-	                          "options"));
+		"the mediaplayer.* module commands and functions.",
+		"options"));
 
 	h = new KviTalHBox(g);
 	setBasicTip(h, g_stringOptionsTable[KviOption_stringPreferredMediaPlayer].name);
@@ -144,7 +144,7 @@ OptionsWidget_soundGeneral::OptionsWidget_soundGeneral(QWidget * parent)
 }
 
 OptionsWidget_soundGeneral::~OptionsWidget_soundGeneral()
-    = default;
+= default;
 
 void OptionsWidget_soundGeneral::showEvent(QShowEvent *)
 {
@@ -320,7 +320,7 @@ void OptionsWidget_soundGeneral::commit()
 }
 
 OptionsWidget_sounds::OptionsWidget_sounds(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("sound_options_widget");
 	createLayout();
@@ -340,4 +340,4 @@ OptionsWidget_sounds::OptionsWidget_sounds(QWidget * parent)
 }
 
 OptionsWidget_sounds::~OptionsWidget_sounds()
-    = default;
+= default;

@@ -42,7 +42,7 @@ extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
 KviThemedLineEdit::KviThemedLineEdit(QWidget * par, KviWindow * pWindow, const char * name)
-    : QLineEdit(par)
+	: QLineEdit(par)
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
@@ -62,7 +62,7 @@ KviThemedLineEdit::KviThemedLineEdit(QWidget * par, KviWindow * pWindow, const c
 }
 
 KviThemedLineEdit::~KviThemedLineEdit()
-    = default;
+= default;
 
 void KviThemedLineEdit::applyOptions()
 {
@@ -72,12 +72,12 @@ void KviThemedLineEdit::applyOptions()
 	bool bIsTrasparent = false;
 #endif
 	QString szStyle = QString("QLineEdit { background: %1; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6; margin: 1px; }")
-	                      .arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
-	                      .arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
-	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
-	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
-	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
-	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
+		.arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
+		.arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
+		.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
+		.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
+		.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
+		.arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
 	setStyleSheet(szStyle);
 	update();
 }

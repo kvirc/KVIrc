@@ -42,7 +42,7 @@
 extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 
 KviCtcpPageDialog::KviCtcpPageDialog()
-    : QWidget(nullptr, Qt::WindowStaysOnTopHint | Qt::Tool | Qt::Dialog | Qt::Window)
+	: QWidget(nullptr, Qt::WindowStaysOnTopHint | Qt::Tool | Qt::Dialog | Qt::Window)
 {
 	setObjectName("kvirc_ctcppage_dialog");
 	setWindowTitle(__tr2qs("CTCP Page - KVIrc"));
@@ -86,17 +86,17 @@ void KviCtcpPageDialog::addPage(const QString & szNick, const QString & szUser, 
 	QDateTime date = QDateTime::currentDateTime();
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
-		case 0:
-			// this is the equivalent to an empty date.toString() call, but it's needed
-			// to ensure qt4 will use the default() locale and not the system() one
-			szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
-			break;
-		case 1:
-			szDate = date.toString(Qt::ISODate);
-			break;
-		case 2:
-			szDate = date.toString(Qt::SystemLocaleShortDate);
-			break;
+	case 0:
+		// this is the equivalent to an empty date.toString() call, but it's needed
+		// to ensure qt4 will use the default() locale and not the system() one
+		szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
+		break;
+	case 1:
+		szDate = date.toString(Qt::ISODate);
+		break;
+	case 2:
+		szDate = date.toString(Qt::SystemLocaleShortDate);
+		break;
 	}
 
 	QString tmp = "";

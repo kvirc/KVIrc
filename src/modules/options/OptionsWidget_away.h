@@ -42,7 +42,7 @@ protected:
 	KviBoolSelector * m_pEnableAwayNick;
 	KviStringSelector * m_pCustomAwayNick;
 	KviBoolSelector * m_pEnableCustomAwayNick;
-public slots:
+	public slots:
 	void enableCustomAwayText(bool);
 	void enableAwayMessage(bool);
 };

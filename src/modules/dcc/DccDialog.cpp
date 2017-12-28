@@ -58,7 +58,7 @@ void DccDialog::forgetDescriptor()
 }
 
 DccAcceptDialog::DccAcceptDialog(DccBroker * br, DccDescriptor * dcc, const QString & text, const QString & capt)
-    : QWidget(nullptr), DccDialog(br, dcc)
+	: QWidget(nullptr), DccDialog(br, dcc)
 {
 	setObjectName("dcc_accept_box");
 	//QVBoxLayout * vb = new QVBoxLayout(this,4,4);
@@ -90,7 +90,7 @@ DccAcceptDialog::DccAcceptDialog(DccBroker * br, DccDescriptor * dcc, const QStr
 }
 
 DccAcceptDialog::~DccAcceptDialog()
-    = default;
+= default;
 
 void DccAcceptDialog::acceptClicked()
 {
@@ -125,7 +125,7 @@ void DccAcceptDialog::showEvent(QShowEvent * e)
 }
 
 DccRenameDialog::DccRenameDialog(DccBroker * br, DccDescriptor * dcc, const QString & text, bool bDisableResume)
-    : QWidget(nullptr), DccDialog(br, dcc)
+	: QWidget(nullptr), DccDialog(br, dcc)
 {
 	setObjectName("dcc_rename_box");
 	//QVBoxLayout * vb = new QVBoxLayout(this,4,4);
@@ -166,7 +166,7 @@ DccRenameDialog::DccRenameDialog(DccBroker * br, DccDescriptor * dcc, const QStr
 }
 
 DccRenameDialog::~DccRenameDialog()
-    = default;
+= default;
 
 void DccRenameDialog::closeEvent(QCloseEvent * e)
 {

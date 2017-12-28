@@ -158,10 +158,10 @@ public:
 	*/
 	unsigned int id() { return m_uId; };
 
-/**
-	* \brief Returns true if the socket is a Secure Socket Layer (SSL)
-	* \return bool
-	*/
+	/**
+		* \brief Returns true if the socket is a Secure Socket Layer (SSL)
+		* \return bool
+		*/
 #ifdef COMPILE_SSL_SUPPORT
 	bool usingSSL()
 	{
@@ -495,7 +495,7 @@ private:
 	* \return void
 	*/
 	void outputSocketError(const QString & szMsg);
-protected slots:
+	protected slots:
 	/**
 	* \brief Called when the connection timeouts
 	* \return void

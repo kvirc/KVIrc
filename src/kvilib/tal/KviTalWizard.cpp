@@ -152,7 +152,7 @@ public:
 };
 
 KviTalWizard::KviTalWizard(QWidget * pParent)
-    : QDialog(pParent)
+	: QDialog(pParent)
 {
 	m_p = new KviTalWizardPrivate;
 	m_p->pPageList = new KviPointerList<KviTalWizardPageData>;
@@ -189,10 +189,10 @@ KviTalWizard::KviTalWizard(QWidget * pParent)
 	m_p->pCancelButton = new QPushButton(__tr("Cancel"), pButtonBox);
 	m_p->pCancelButton->setMinimumWidth(80);
 	QObject::connect(
-	    m_p->pCancelButton,
-	    SIGNAL(clicked()),
-	    this,
-	    SLOT(cancelButtonClicked()));
+		m_p->pCancelButton,
+		SIGNAL(clicked()),
+		this,
+		SLOT(cancelButtonClicked()));
 
 	QWidget * pSpacer = new QWidget(pButtonBox);
 	pSpacer->setFixedWidth(4);
@@ -200,10 +200,10 @@ KviTalWizard::KviTalWizard(QWidget * pParent)
 	m_p->pHelpButton = new QPushButton(__tr("Help"), pButtonBox);
 	m_p->pHelpButton->setMinimumWidth(80);
 	QObject::connect(
-	    m_p->pHelpButton,
-	    SIGNAL(clicked()),
-	    this,
-	    SLOT(helpButtonClicked()));
+		m_p->pHelpButton,
+		SIGNAL(clicked()),
+		this,
+		SLOT(helpButtonClicked()));
 
 	QWidget * pLargeSpacer = new QWidget(pButtonBox);
 	pLargeSpacer->setMinimumWidth(50);
@@ -214,10 +214,10 @@ KviTalWizard::KviTalWizard(QWidget * pParent)
 	m_p->pBackButton = new QPushButton(szText, pButtonBox);
 	m_p->pBackButton->setMinimumWidth(80);
 	QObject::connect(
-	    m_p->pBackButton,
-	    SIGNAL(clicked()),
-	    this,
-	    SLOT(backButtonClicked()));
+		m_p->pBackButton,
+		SIGNAL(clicked()),
+		this,
+		SLOT(backButtonClicked()));
 
 	m_p->pNextSpacer = new QWidget(pButtonBox);
 	m_p->pNextSpacer->setFixedWidth(4);
@@ -227,10 +227,10 @@ KviTalWizard::KviTalWizard(QWidget * pParent)
 	m_p->pNextButton = new QPushButton(szText, pButtonBox);
 	m_p->pNextButton->setMinimumWidth(80);
 	QObject::connect(
-	    m_p->pNextButton,
-	    SIGNAL(clicked()),
-	    this,
-	    SLOT(nextButtonClicked()));
+		m_p->pNextButton,
+		SIGNAL(clicked()),
+		this,
+		SLOT(nextButtonClicked()));
 
 	m_p->pFinishSpacer = new QWidget(pButtonBox);
 	m_p->pFinishSpacer->setFixedWidth(4);
@@ -238,10 +238,10 @@ KviTalWizard::KviTalWizard(QWidget * pParent)
 	m_p->pFinishButton = new QPushButton(__tr("Finish"), pButtonBox);
 	m_p->pFinishButton->setMinimumWidth(80);
 	QObject::connect(
-	    m_p->pFinishButton,
-	    SIGNAL(clicked()),
-	    this,
-	    SLOT(finishButtonClicked()));
+		m_p->pFinishButton,
+		SIGNAL(clicked()),
+		this,
+		SLOT(finishButtonClicked()));
 
 	m_p->pLayout->setMargin(8);
 	m_p->pLayout->setSpacing(4);
@@ -359,9 +359,9 @@ void KviTalWizard::setCurrentPage(KviTalWizardPageData * pData)
 		QColor clrWin = pal.color(QPalette::Normal, QPalette::Window);
 		QColor clrTxt = pal.color(QPalette::Normal, QPalette::WindowText);
 		QColor clrMid = qRgb(
-		    (clrWin.red() + clrTxt.red()) / 2,
-		    (clrWin.green() + clrTxt.green()) / 2,
-		    (clrWin.blue() + clrTxt.blue()) / 2);
+			(clrWin.red() + clrTxt.red()) / 2,
+			(clrWin.green() + clrTxt.green()) / 2,
+			(clrWin.blue() + clrTxt.blue()) / 2);
 
 		szSteps = "<font color=\"";
 		szSteps += clrMid.name();

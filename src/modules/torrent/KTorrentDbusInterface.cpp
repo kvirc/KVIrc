@@ -34,14 +34,14 @@
 #include <QTimer>
 
 TORR_IMPLEMENT_DESCRIPTOR(
-    KTorrentDbusInterface,
-    "ktorrentdbus",
-    __tr2qs_ctx(
-        "An interface for KDE's KTorrent client.\n"
-        "Download it from http://www.ktorrent.org\n",
-        "torrent"))
+	KTorrentDbusInterface,
+	"ktorrentdbus",
+	__tr2qs_ctx(
+		"An interface for KDE's KTorrent client.\n"
+		"Download it from http://www.ktorrent.org\n",
+		"torrent"))
 
-KTorrentDbusInterface::KTorrentDbusInterface()
+	KTorrentDbusInterface::KTorrentDbusInterface()
 {
 	// make sure we have a list of files,
 	// otherwise functions dealing would

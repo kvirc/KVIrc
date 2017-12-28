@@ -166,7 +166,7 @@ protected:
 
 protected:
 	virtual void closeEvent(QCloseEvent * e);
-protected slots:
+	protected slots:
 	void okClicked();
 	void cancelClicked();
 };
@@ -251,7 +251,7 @@ protected:
 	void outputAndLog(const QString & s);
 	void outputAndLog(int msgtype, const QString & s);
 	KviWindow * eventWindow();
-protected slots:
+	protected slots:
 	void connectionInProgress();
 	void sslError(const char * msg);
 	void startingSSLHandshake();
@@ -260,7 +260,7 @@ protected slots:
 	void bandwidthDialogDestroyed();
 	void configureBandwidth();
 	void resumeTimedOut();
-public slots:
+	public slots:
 	void abort();
 	void retryDCC();
 	void retryTDCC();

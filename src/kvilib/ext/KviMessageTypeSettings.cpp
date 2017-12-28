@@ -50,7 +50,7 @@ KviMessageTypeSettings::KviMessageTypeSettings(const KviMessageTypeSettings & ms
 }
 
 KviMessageTypeSettings::~KviMessageTypeSettings()
-    = default;
+= default;
 
 KviMessageTypeSettings & KviMessageTypeSettings::operator=(const KviMessageTypeSettings & msg)
-    = default;
+= default;

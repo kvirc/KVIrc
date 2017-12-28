@@ -41,7 +41,7 @@ KviIrcConnectionStateData::KviIrcConnectionStateData()
 }
 
 KviIrcConnectionStateData::~KviIrcConnectionStateData()
-    = default;
+= default;
 
 void KviIrcConnectionStateData::changeEnabledCapList(const QString & szCapList)
 {
@@ -60,16 +60,16 @@ void KviIrcConnectionStateData::changeEnabledCapList(const QString & szCapList)
 
 		switch(szCap[0].unicode())
 		{
-			case '-':
-				bRemove = true;
+		case '-':
+			bRemove = true;
 			// fall through
-			case '~':
-			case '=':
-				szCap.remove(0, 1);
-				break;
-			default:
-				// ok
-				break;
+		case '~':
+		case '=':
+			szCap.remove(0, 1);
+			break;
+		default:
+			// ok
+			break;
 		}
 
 		szCap = szCap.toLower();

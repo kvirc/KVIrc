@@ -141,41 +141,41 @@ bool KvsObject_comboBox::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 KVSO_CLASS_FUNCTION(comboBox, insertItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iIndex;
+		kvs_int_t iIndex;
 	QString szItem;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("item", KVS_PT_STRING, 0, szItem)
-	KVSO_PARAMETER("index", KVS_PT_INT, KVS_PF_OPTIONAL, iIndex)
-	KVSO_PARAMETERS_END(c)
-	if(c->paramCount() == 1)
-		((QComboBox *)widget())->addItem(szItem);
-	else
-		((QComboBox *)widget())->insertItem(iIndex, szItem);
+		KVSO_PARAMETER("item", KVS_PT_STRING, 0, szItem)
+		KVSO_PARAMETER("index", KVS_PT_INT, KVS_PF_OPTIONAL, iIndex)
+		KVSO_PARAMETERS_END(c)
+		if(c->paramCount() == 1)
+			((QComboBox *)widget())->addItem(szItem);
+		else
+			((QComboBox *)widget())->insertItem(iIndex, szItem);
 	return true;
 }
 KVSO_CLASS_FUNCTION(comboBox, clear)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QComboBox *)widget())->clear();
+		((QComboBox *)widget())->clear();
 	return true;
 }
 KVSO_CLASS_FUNCTION(comboBox, changeItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t uIndex, cnt;
+		kvs_uint_t uIndex, cnt;
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
-	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
-	KVSO_PARAMETERS_END(c)
-	if(szText.isEmpty())
-		c->warning(__tr2qs_ctx("No string parameter given - using empty string", "objects"));
+		KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
+		KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
+		KVSO_PARAMETERS_END(c)
+		if(szText.isEmpty())
+			c->warning(__tr2qs_ctx("No string parameter given - using empty string", "objects"));
 	if(uIndex >= (cnt = ((QComboBox *)widget())->count()))
 	{
 		c->warning(__tr2qs_ctx("Item index [%d] is too big - defaulting to "
-		                       "$count() - 1 [%d]",
-		               "objects"),
-		    uIndex, cnt);
+			"$count() - 1 [%d]",
+			"objects"),
+			uIndex, cnt);
 		uIndex = cnt - 1;
 	}
 	((QComboBox *)widget())->setItemText(uIndex, szText);
@@ -184,18 +184,18 @@ KVSO_CLASS_FUNCTION(comboBox, changeItem)
 KVSO_CLASS_FUNCTION(comboBox, removeItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t uIndex, cnt;
+		kvs_uint_t uIndex, cnt;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
-	KVSO_PARAMETERS_END(c)
-	if(uIndex >= (cnt = ((QComboBox *)widget())->count()))
-	{
-		c->warning(__tr2qs_ctx("Item index [%d] is too big - defaulting to "
-		                       "$count() - 1 [%d]",
-		               "objects"),
-		    uIndex, cnt);
-		uIndex = cnt - 1;
-	}
+		KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
+		KVSO_PARAMETERS_END(c)
+		if(uIndex >= (cnt = ((QComboBox *)widget())->count()))
+		{
+			c->warning(__tr2qs_ctx("Item index [%d] is too big - defaulting to "
+				"$count() - 1 [%d]",
+				"objects"),
+				uIndex, cnt);
+			uIndex = cnt - 1;
+		}
 
 	((QComboBox *)widget())->removeItem(uIndex);
 
@@ -204,104 +204,104 @@ KVSO_CLASS_FUNCTION(comboBox, removeItem)
 KVSO_CLASS_FUNCTION(comboBox, setMaxCount)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t iMax;
+		kvs_uint_t iMax;
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("count", KVS_PT_UNSIGNEDINTEGER, 0, iMax)
-	KVSO_PARAMETERS_END(c)
-	((QComboBox *)widget())->setMaxCount(iMax);
+		KVSO_PARAMETER("count", KVS_PT_UNSIGNEDINTEGER, 0, iMax)
+		KVSO_PARAMETERS_END(c)
+		((QComboBox *)widget())->setMaxCount(iMax);
 	return true;
 }
 KVSO_CLASS_FUNCTION(comboBox, maxCount)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(((QComboBox *)widget())->maxCount());
+		c->returnValue()->setInteger(((QComboBox *)widget())->maxCount());
 	return true;
 }
 KVSO_CLASS_FUNCTION(comboBox, count)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(((QComboBox *)widget())->count());
+		c->returnValue()->setInteger(((QComboBox *)widget())->count());
 	return true;
 }
 KVSO_CLASS_FUNCTION(comboBox, current)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setString(((QComboBox *)widget())->currentText());
+		c->returnValue()->setString(((QComboBox *)widget())->currentText());
 	return true;
 }
 KVSO_CLASS_FUNCTION(comboBox, currentItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(((QComboBox *)widget())->currentIndex());
+		c->returnValue()->setInteger(((QComboBox *)widget())->currentIndex());
 	return true;
 }
 KVSO_CLASS_FUNCTION(comboBox, textLineEdit)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setString(((QComboBox *)widget())->lineEdit()->text());
+		c->returnValue()->setString(((QComboBox *)widget())->lineEdit()->text());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(comboBox, setEditable)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bFlag;
+		bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bflag", KVS_PT_BOOLEAN, 0, bFlag)
-	KVSO_PARAMETERS_END(c)
-	((QComboBox *)widget())->setEditable(bFlag);
+		KVSO_PARAMETER("bflag", KVS_PT_BOOLEAN, 0, bFlag)
+		KVSO_PARAMETERS_END(c)
+		((QComboBox *)widget())->setEditable(bFlag);
 	return true;
 }
 KVSO_CLASS_FUNCTION(comboBox, setTextLineEdit)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szText;
+		QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
-	KVSO_PARAMETERS_END(c)
-	((QComboBox *)widget())->lineEdit()->setText(szText);
+		KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
+		KVSO_PARAMETERS_END(c)
+		((QComboBox *)widget())->lineEdit()->setText(szText);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(comboBox, editable)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(((QComboBox *)widget())->isEditable());
+		c->returnValue()->setBoolean(((QComboBox *)widget())->isEditable());
 	return true;
 }
 KVSO_CLASS_FUNCTION(comboBox, setEditText)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szText;
+		QString szText;
 	bool bQuiet = false;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
-	KVSO_PARAMETER("quiet", KVS_PT_BOOLEAN, KVS_PF_OPTIONAL, bQuiet)
-	KVSO_PARAMETERS_END(c)
-	if(szText.isEmpty() && !bQuiet)
-		c->warning(__tr2qs_ctx("No string parameter given - using empty string", "objects"));
+		KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
+		KVSO_PARAMETER("quiet", KVS_PT_BOOLEAN, KVS_PF_OPTIONAL, bQuiet)
+		KVSO_PARAMETERS_END(c)
+		if(szText.isEmpty() && !bQuiet)
+			c->warning(__tr2qs_ctx("No string parameter given - using empty string", "objects"));
 	((QComboBox *)widget())->setEditText(szText);
 	return true;
 }
 KVSO_CLASS_FUNCTION(comboBox, textAt)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t uIndex;
+		kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
-	KVSO_PARAMETERS_END(c)
-	c->returnValue()->setString(((QComboBox *)widget())->itemText(uIndex));
+		KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
+		KVSO_PARAMETERS_END(c)
+		c->returnValue()->setString(((QComboBox *)widget())->itemText(uIndex));
 	return true;
 }
 KVSO_CLASS_FUNCTION(comboBox, setCurrentItem)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t uIndex;
+		kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
-	KVSO_PARAMETERS_END(c)
-	((QComboBox *)widget())->setCurrentIndex(uIndex);
+		KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
+		KVSO_PARAMETERS_END(c)
+		((QComboBox *)widget())->setCurrentIndex(uIndex);
 	return true;
 }
 KVSO_CLASS_FUNCTION(comboBox, popup)
@@ -315,24 +315,24 @@ KVSO_CLASS_FUNCTION(comboBox, popup)
 KVSO_CLASS_FUNCTION(comboBox, setInsertionPolicy)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szPolicy;
+		QString szPolicy;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("policy", KVS_PT_STRING, 0, szPolicy)
-	KVSO_PARAMETERS_END(c)
-	if(KviQString::equalCI(szPolicy, "NoInsertion"))
-		((QComboBox *)widget())->setInsertPolicy(QComboBox::NoInsert);
-	else if(KviQString::equalCI(szPolicy, "AtTop"))
-		((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAtTop);
-	else if(KviQString::equalCI(szPolicy, "AtBotton"))
-		((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAtBottom);
-	else if(KviQString::equalCI(szPolicy, "AtCurrent"))
-		((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAtCurrent);
-	else if(KviQString::equalCI(szPolicy, "AfterCurrent"))
-		((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAfterCurrent);
-	else if(KviQString::equalCI(szPolicy, "BeforeCurrent"))
-		((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertBeforeCurrent);
-	else
-		c->warning(__tr2qs_ctx("Invalid insertion policy '%Q'", "objects"), &szPolicy);
+		KVSO_PARAMETER("policy", KVS_PT_STRING, 0, szPolicy)
+		KVSO_PARAMETERS_END(c)
+		if(KviQString::equalCI(szPolicy, "NoInsertion"))
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::NoInsert);
+		else if(KviQString::equalCI(szPolicy, "AtTop"))
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAtTop);
+		else if(KviQString::equalCI(szPolicy, "AtBotton"))
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAtBottom);
+		else if(KviQString::equalCI(szPolicy, "AtCurrent"))
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAtCurrent);
+		else if(KviQString::equalCI(szPolicy, "AfterCurrent"))
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAfterCurrent);
+		else if(KviQString::equalCI(szPolicy, "BeforeCurrent"))
+			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertBeforeCurrent);
+		else
+			c->warning(__tr2qs_ctx("Invalid insertion policy '%Q'", "objects"), &szPolicy);
 	return true;
 }
 

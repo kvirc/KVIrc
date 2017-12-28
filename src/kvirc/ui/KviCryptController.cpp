@@ -49,7 +49,7 @@ extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 extern KVIRC_API KviModuleManager * g_pModuleManager;
 
 KviEngineListBoxItem::KviEngineListBoxItem(KviTalListWidget * pList, KviCryptEngineDescription * pDesc, const char * pcModName)
-    : KviTalListWidgetText(pList, pDesc->m_szName)
+	: KviTalListWidgetText(pList, pDesc->m_szName)
 {
 	m_szName = pDesc->m_szName;
 	m_szAuthor = pDesc->m_szAuthor;
@@ -60,10 +60,10 @@ KviEngineListBoxItem::KviEngineListBoxItem(KviTalListWidget * pList, KviCryptEng
 }
 
 KviEngineListBoxItem::~KviEngineListBoxItem()
-    = default;
+= default;
 
 KviCryptController::KviCryptController(QWidget * pParent, KviWindowToolPageButton * pButton, KviWindow * pWnd, KviCryptSessionInfo * pInfo)
-    : KviWindowToolWidget(pParent, pButton)
+	: KviWindowToolWidget(pParent, pButton)
 {
 	// Load the known encryption modules
 	(void)g_pModuleManager->loadModulesByCaps("crypt");
@@ -249,7 +249,6 @@ void KviCryptController::enableWidgets(bool bEnabled)
 
 void KviCryptController::noEnginesAvailable()
 {
-
 	m_pEnableCheck->setEnabled(false);
 	enableWidgets(false);
 	m_pDescriptionText->setText(__tr2qs("Sorry, no encryption engines available"));

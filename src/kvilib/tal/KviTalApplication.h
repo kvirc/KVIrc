@@ -75,7 +75,7 @@ public:
 	*/
 	virtual void saveConfiguration() = 0;
 
-public Q_SLOTS:
+	public Q_SLOTS:
 	/**
 	* \brief Commits the data and save the session
 	* \param manager The session manager

@@ -39,12 +39,12 @@ class RawTreeWidget : public QTreeWidget
 {
 public:
 	RawTreeWidget(QWidget * par)
-	    : QTreeWidget(par){};
+		: QTreeWidget(par) {};
 	void updateItem(QTreeWidgetItem * item)
 	{
 		update(indexFromItem(item, 0));
 	};
-	~RawTreeWidget(){};
+	~RawTreeWidget() {};
 };
 
 class RawTreeWidgetItem : public QTreeWidgetItem
@@ -54,7 +54,7 @@ public:
 
 public:
 	RawTreeWidgetItem(QTreeWidget * par, int idx, bool bEnabled);
-	~RawTreeWidgetItem(){};
+	~RawTreeWidgetItem() {};
 
 public:
 	void setEnabled(bool bEnabled)
@@ -71,12 +71,12 @@ class RawHandlerTreeWidgetItem : public QTreeWidgetItem
 {
 public:
 	RawHandlerTreeWidgetItem(QTreeWidgetItem * par, const QString & name, const QString & buffer, bool bEnabled)
-	    : QTreeWidgetItem(par), m_szBuffer(buffer), m_bEnabled(bEnabled)
+		: QTreeWidgetItem(par), m_szBuffer(buffer), m_bEnabled(bEnabled)
 	{
 		setText(0, name);
 		setEnabled(bEnabled);
 	};
-	~RawHandlerTreeWidgetItem(){};
+	~RawHandlerTreeWidgetItem() {};
 
 public:
 	void setEnabled(bool bEnabled)
@@ -112,7 +112,7 @@ public:
 	void saveLastEditedItem();
 	void getUniqueHandlerName(RawTreeWidgetItem * it, QString & buffer);
 	void getExportEventBuffer(QString & szBuffer, RawHandlerTreeWidgetItem * it);
-protected slots:
+	protected slots:
 	void currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *);
 	void customContextMenuRequested(const QPoint & pnt);
 	void toggleCurrentHandlerEnabled();
@@ -145,7 +145,7 @@ protected:
 	virtual void getConfigGroupName(QString & szName);
 	virtual void saveProperties(KviConfigurationFile *);
 	virtual void loadProperties(KviConfigurationFile *);
-protected slots:
+	protected slots:
 	void cancelClicked();
 	void okClicked();
 	void applyClicked();

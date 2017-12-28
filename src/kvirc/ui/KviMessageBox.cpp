@@ -78,9 +78,9 @@ namespace KviMessageBox
 		bRet = (KMessageBox::questionYesNo(nullptr, s, caption) == KMessageBox::Yes);
 #else
 		bRet = (QMessageBox::information(0, caption, s,
-		            QMessageBox::Yes | QMessageBox::Default,
-		            QMessageBox::No | QMessageBox::Escape)
-		    == QMessageBox::Yes);
+			QMessageBox::Yes | QMessageBox::Default,
+			QMessageBox::No | QMessageBox::Escape)
+			== QMessageBox::Yes);
 #endif
 		return bRet;
 	}

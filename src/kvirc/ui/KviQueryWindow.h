@@ -297,7 +297,7 @@ protected:
 	virtual void triggerCreationEvents();
 
 	virtual void resizeEvent(QResizeEvent *);
-protected slots:
+	protected slots:
 	/**
 	* \brief Triggers the OnQueryPopupRequest event
 	* \return void

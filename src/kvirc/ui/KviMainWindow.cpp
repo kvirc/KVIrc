@@ -92,7 +92,7 @@ extern KviConfigurationFile * g_pWinPropertiesConfig;
 KVIRC_API KviMainWindow * g_pMainWindow = nullptr; // the one and only frame object
 
 KviMainWindow::KviMainWindow(QWidget * pParent)
-    : KviTalMainWindow(pParent, "kvirc_frame")
+	: KviTalMainWindow(pParent, "kvirc_frame")
 {
 	g_pMainWindow = this;
 	setAttribute(Qt::WA_DeleteOnClose);
@@ -164,9 +164,9 @@ KviMainWindow::KviMainWindow(QWidget * pParent)
 	}
 
 	resize(KVI_OPTION_RECT(KviOption_rectFrameGeometry).width(),
-	    KVI_OPTION_RECT(KviOption_rectFrameGeometry).height());
+		KVI_OPTION_RECT(KviOption_rectFrameGeometry).height());
 	move(KVI_OPTION_RECT(KviOption_rectFrameGeometry).x(),
-	    KVI_OPTION_RECT(KviOption_rectFrameGeometry).y());
+		KVI_OPTION_RECT(KviOption_rectFrameGeometry).y());
 
 	if(KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized))
 		showMaximized();
@@ -180,7 +180,7 @@ KviMainWindow::~KviMainWindow()
 {
 	KVI_OPTION_BOOL(KviOption_boolFrameIsMaximized) = isMaximized();
 	KVI_OPTION_RECT(KviOption_rectFrameGeometry) = QRect(pos().x(), pos().y(),
-	    size().width(), size().height());
+		size().width(), size().height());
 
 	KVI_OPTION_BOOL(KviOption_boolStatusBarVisible) = m_pStatusBar ? true : false;
 
@@ -460,7 +460,7 @@ void KviMainWindow::closeWindow(KviWindow * wnd)
 
 	// forget it...
 	const auto iter = std::find(m_WinList.begin(), m_WinList.end(), wnd);
-	if (iter != m_WinList.end())
+	if(iter != m_WinList.end())
 		m_WinList.erase(iter);
 
 #if 0
@@ -589,7 +589,6 @@ void KviMainWindow::addWindow(KviWindow * wnd, bool bShow)
 	}
 	else
 	{
-
 		dockWindow(wnd);
 		wnd->triggerCreationEvents();
 		if(bShow)
@@ -806,9 +805,8 @@ void KviMainWindow::changeEvent(QEvent * e)
 #ifndef COMPILE_ON_MAC
 	// For Qt5 this should be used to minimize to tray
 	if(
-	    (e->type() == QEvent::WindowStateChange) && (windowState() & Qt::WindowMinimized) && KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && e->spontaneous())
+		(e->type() == QEvent::WindowStateChange) && (windowState() & Qt::WindowMinimized) && KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && e->spontaneous())
 	{
-
 		if(!trayIcon())
 		{
 			executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
@@ -887,17 +885,17 @@ void KviMainWindow::closeEvent(QCloseEvent * e)
 
 			switch(QMessageBox::warning(this, __tr2qs("Confirm Close - KVIrc"), txt, __tr2qs("&Yes"), __tr2qs("&Always"), __tr2qs("&No"), 2, 2))
 			{
-				case 0:
-					// ok to close
-					break;
-				case 1:
-					// ok to close but don't ask again
-					KVI_OPTION_BOOL(KviOption_boolConfirmCloseWhenThereAreConnections) = false;
-					break;
-				case 2:
-					e->ignore();
-					return;
-					break;
+			case 0:
+				// ok to close
+				break;
+			case 1:
+				// ok to close but don't ask again
+				KVI_OPTION_BOOL(KviOption_boolConfirmCloseWhenThereAreConnections) = false;
+				break;
+			case 2:
+				e->ignore();
+				return;
+				break;
 			}
 		}
 	}
@@ -934,7 +932,7 @@ void KviMainWindow::hideEvent(QHideEvent * e)
 void KviMainWindow::resizeEvent(QResizeEvent * e)
 {
 	KVI_OPTION_RECT(KviOption_rectFrameGeometry) = QRect(pos().x(), pos().y(),
-	    size().width(), size().height());
+		size().width(), size().height());
 	KviTalMainWindow::resizeEvent(e);
 }
 
@@ -955,12 +953,12 @@ void KviMainWindow::updatePseudoTransparency()
 	if(uOpacity < 100)
 	{
 		SetWindowLong(reinterpret_cast<HWND>(effectiveWinId()), GWL_EXSTYLE,
-		    GetWindowLong(reinterpret_cast<HWND>(effectiveWinId()), GWL_EXSTYLE) | Q_WS_EX_LAYERED);
+			GetWindowLong(reinterpret_cast<HWND>(effectiveWinId()), GWL_EXSTYLE) | Q_WS_EX_LAYERED);
 	}
 	else
 	{
 		SetWindowLong(reinterpret_cast<HWND>(effectiveWinId()), GWL_EXSTYLE,
-		    GetWindowLong(reinterpret_cast<HWND>(effectiveWinId()), GWL_EXSTYLE) & ~Q_WS_EX_LAYERED);
+			GetWindowLong(reinterpret_cast<HWND>(effectiveWinId()), GWL_EXSTYLE) & ~Q_WS_EX_LAYERED);
 	}
 #endif
 	if(g_pShadedParentGlobalDesktopBackground)
@@ -978,7 +976,7 @@ void KviMainWindow::updatePseudoTransparency()
 void KviMainWindow::moveEvent(QMoveEvent * e)
 {
 	KVI_OPTION_RECT(KviOption_rectFrameGeometry) = QRect(pos().x(), pos().y(),
-	    size().width(), size().height());
+		size().width(), size().height());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	updatePseudoTransparency();
 #endif
@@ -1026,7 +1024,7 @@ void KviMainWindow::toggleMenuBar()
 			QMessageBox pMsgBox;
 			QCheckBox cb(__tr2qs("Do not show this message again"));
 			pMsgBox.setText(__tr2qs("This will hide the menu bar completely. "
-			                        "You can show it again by pressing %1.").arg(QString(KVI_SHORTCUTS_TOGGLE_MENU_BAR)));
+				"You can show it again by pressing %1.").arg(QString(KVI_SHORTCUTS_TOGGLE_MENU_BAR)));
 			pMsgBox.setWindowTitle(__tr2qs("Hide Menu Bar - KVIrc"));
 			pMsgBox.setIcon(QMessageBox::Icon::Information);
 			pMsgBox.addButton(QMessageBox::Ok);
@@ -1128,10 +1126,10 @@ void KviMainWindow::fillToolBarsPopup(QMenu * p)
 		p->addSeparator();
 
 	p->addAction(
-	    *(g_pIconManager->getSmallIcon(KviIconManager::ToolBarEditor)),
-	    __tr2qs("Customize..."),
-	    this,
-	    SLOT(customizeToolBars()));
+		*(g_pIconManager->getSmallIcon(KviIconManager::ToolBarEditor)),
+		__tr2qs("Customize..."),
+		this,
+		SLOT(customizeToolBars()));
 }
 
 void KviMainWindow::customizeToolBars()
@@ -1365,7 +1363,6 @@ void KviMainWindow::setIconSize(unsigned int uSize)
 
 void KviMainWindow::setButtonStyle(unsigned int uStyle)
 {
-
 	KVI_OPTION_UINT(KviOption_uintToolBarButtonStyle) = uStyle;
 
 	for(auto & t : m_pModuleExtensionToolBarList)

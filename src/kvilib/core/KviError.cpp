@@ -191,95 +191,95 @@ namespace KviError
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		switch(iErrNo)
 		{
-			case EBADF:
-				return KviError::BadFileDescriptor;
-				break;
-			case WSAEINVAL:
-			case WSAEFAULT:
-			case EFAULT:
-				return KviError::OutOfAddressSpace;
-				break;
-			case WSAECONNREFUSED:
-				return KviError::ConnectionRefused;
-				break;
-			case WSAENOTSOCK:
-				return KviError::KernelNetworkingPanic;
-				break;
-			case WSAETIMEDOUT:
-				return KviError::ConnectionTimedOut;
-				break;
-			case WSAENETUNREACH:
-				return KviError::NetworkUnreachable;
-				break;
-			case EPIPE:
-				return KviError::BrokenPipe;
-				break;
-			case WSAENOTCONN:
-				return KviError::SocketNotConnected;
-				break;
-			case WSAEACCES:
-				return KviError::AccessDenied;
-				break;
-			case WSAEADDRINUSE:
-				return KviError::AddressAlreadyInUse;
-				break;
-			case WSAEADDRNOTAVAIL:
-				return KviError::CantAssignRequestedAddress;
-				break;
-			case WSAEAFNOSUPPORT:
-				return KviError::UnsupportedAddressFamily;
-				break;
-			case WSAECONNRESET:
-				return KviError::ConnectionResetByPeer;
-				break;
-			case WSAEHOSTUNREACH:
-				return KviError::HostUnreachable;
-				break;
+		case EBADF:
+			return KviError::BadFileDescriptor;
+			break;
+		case WSAEINVAL:
+		case WSAEFAULT:
+		case EFAULT:
+			return KviError::OutOfAddressSpace;
+			break;
+		case WSAECONNREFUSED:
+			return KviError::ConnectionRefused;
+			break;
+		case WSAENOTSOCK:
+			return KviError::KernelNetworkingPanic;
+			break;
+		case WSAETIMEDOUT:
+			return KviError::ConnectionTimedOut;
+			break;
+		case WSAENETUNREACH:
+			return KviError::NetworkUnreachable;
+			break;
+		case EPIPE:
+			return KviError::BrokenPipe;
+			break;
+		case WSAENOTCONN:
+			return KviError::SocketNotConnected;
+			break;
+		case WSAEACCES:
+			return KviError::AccessDenied;
+			break;
+		case WSAEADDRINUSE:
+			return KviError::AddressAlreadyInUse;
+			break;
+		case WSAEADDRNOTAVAIL:
+			return KviError::CantAssignRequestedAddress;
+			break;
+		case WSAEAFNOSUPPORT:
+			return KviError::UnsupportedAddressFamily;
+			break;
+		case WSAECONNRESET:
+			return KviError::ConnectionResetByPeer;
+			break;
+		case WSAEHOSTUNREACH:
+			return KviError::HostUnreachable;
+			break;
 			// Unhandled error...pass errno to the strerror function
-			default:
-				return KviError::UnknownError;
-				break;
+		default:
+			return KviError::UnknownError;
+			break;
 		}
 #else
 		switch(iErrNo)
 		{
-			case EBADF:
-				return KviError::BadFileDescriptor;
-				break;
-			case EFAULT:
-				return KviError::OutOfAddressSpace;
-				break;
-			case ECONNREFUSED:
-				return KviError::ConnectionRefused;
-				break;
-			case ENOTSOCK:
-				return KviError::KernelNetworkingPanic;
-				break;
-			case ETIMEDOUT:
-				return KviError::ConnectionTimedOut;
-				break;
-			case ENETUNREACH:
-				return KviError::NetworkUnreachable;
-				break;
-			case EPIPE:
-				return KviError::BrokenPipe;
-				break;
-			case ENOTCONN:
-				return KviError::SocketNotConnected;
-				break;
-			case ENOBUFS:
-				return KviError::InsufficientResources;
-				break;
-			case ECONNRESET:
-				return KviError::ConnectionResetByPeer;
-				break;
-			case EHOSTUNREACH:
-				return KviError::HostUnreachable;
-				break;
+		case EBADF:
+			return KviError::BadFileDescriptor;
+			break;
+		case EFAULT:
+			return KviError::OutOfAddressSpace;
+			break;
+		case ECONNREFUSED:
+			return KviError::ConnectionRefused;
+			break;
+		case ENOTSOCK:
+			return KviError::KernelNetworkingPanic;
+			break;
+		case ETIMEDOUT:
+			return KviError::ConnectionTimedOut;
+			break;
+		case ENETUNREACH:
+			return KviError::NetworkUnreachable;
+			break;
+		case EPIPE:
+			return KviError::BrokenPipe;
+			break;
+		case ENOTCONN:
+			return KviError::SocketNotConnected;
+			break;
+		case ENOBUFS:
+			return KviError::InsufficientResources;
+			break;
+		case ECONNRESET:
+			return KviError::ConnectionResetByPeer;
+			break;
+		case EHOSTUNREACH:
+			return KviError::HostUnreachable;
+			break;
 			// Unhandled error...pass errno to the strerror function
-			default:
-				return KviError::UnknownError;
-				break;
+		default:
+			return KviError::UnknownError;
+			break;
 		}
 #endif
 	}

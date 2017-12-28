@@ -79,7 +79,7 @@ KviKvsModuleInterface::~KviKvsModuleInterface()
 void KviKvsModuleInterface::completeCommand(const QString & szCommandBegin, std::vector<QString> & pMatches)
 {
 	COMPLETE_WORD_BY_DICT(szCommandBegin, pMatches, KviKvsModuleSimpleCommandExecRoutine, m_pModuleSimpleCommandExecRoutineDict)
-	COMPLETE_WORD_BY_DICT(szCommandBegin, pMatches, KviKvsModuleCallbackCommandExecRoutine, m_pModuleCallbackCommandExecRoutineDict)
+		COMPLETE_WORD_BY_DICT(szCommandBegin, pMatches, KviKvsModuleCallbackCommandExecRoutine, m_pModuleCallbackCommandExecRoutineDict)
 }
 
 void KviKvsModuleInterface::completeFunction(const QString & szFunctionBegin, std::vector<QString> & pMatches)

@@ -36,7 +36,7 @@ extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
 KviThemedTreeWidget::KviThemedTreeWidget(QWidget * par, KviWindow * pWindow, const char * name)
-    : QTreeWidget(par)
+	: QTreeWidget(par)
 {
 	setObjectName(name);
 	m_pKviWindow = pWindow;
@@ -45,7 +45,7 @@ KviThemedTreeWidget::KviThemedTreeWidget(QWidget * par, KviWindow * pWindow, con
 }
 
 KviThemedTreeWidget::~KviThemedTreeWidget()
-    = default;
+= default;
 
 void KviThemedTreeWidget::applyOptions()
 {
@@ -56,12 +56,12 @@ void KviThemedTreeWidget::applyOptions()
 #endif
 
 	QString szStyle = QString("QTreeWidget { background: %1; background-clip: content; color: %2; font-family: %3; font-size: %4pt; font-weight: %5; font-style: %6;}")
-	                      .arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
-	                      .arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
-	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
-	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
-	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
-	                      .arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
+		.arg(bIsTrasparent ? "transparent" : KVI_OPTION_COLOR(KviOption_colorLabelBackground).name())
+		.arg(bIsTrasparent ? KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()).name() : KVI_OPTION_COLOR(KviOption_colorLabelForeground).name())
+		.arg(KVI_OPTION_FONT(KviOption_fontLabel).family())
+		.arg(KVI_OPTION_FONT(KviOption_fontLabel).pointSize())
+		.arg(KVI_OPTION_FONT(KviOption_fontLabel).weight() == QFont::Bold ? "bold" : "normal")
+		.arg(KVI_OPTION_FONT(KviOption_fontLabel).style() == QFont::StyleItalic ? "italic" : "normal");
 
 	setStyleSheet(szStyle);
 	update();

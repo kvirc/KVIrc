@@ -28,7 +28,7 @@
 #include <QChildEvent>
 
 KviTalVBox::KviTalVBox(QWidget * pParent, char * pcName)
-    : QWidget(pParent)
+	: QWidget(pParent)
 {
 	setObjectName(pcName);
 
@@ -40,7 +40,7 @@ KviTalVBox::KviTalVBox(QWidget * pParent, char * pcName)
 }
 
 KviTalVBox::~KviTalVBox()
-    = default;
+= default;
 
 void KviTalVBox::childEvent(QChildEvent * e)
 {
@@ -51,14 +51,14 @@ void KviTalVBox::childEvent(QChildEvent * e)
 
 	switch(e->type())
 	{
-		case QEvent::ChildAdded:
-			m_pLayout->addWidget((QWidget *)(e->child()));
-			break;
-		case QEvent::ChildRemoved:
-			m_pLayout->removeWidget((QWidget *)(e->child()));
-			break;
-		default:
-			break;
+	case QEvent::ChildAdded:
+		m_pLayout->addWidget((QWidget *)(e->child()));
+		break;
+	case QEvent::ChildRemoved:
+		m_pLayout->removeWidget((QWidget *)(e->child()));
+		break;
+	default:
+		break;
 	}
 }
 

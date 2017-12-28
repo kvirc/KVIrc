@@ -68,7 +68,7 @@ void stopIdentService()
 }
 
 KviIdentSentinel::KviIdentSentinel()
-    : QObject(nullptr)
+	: QObject(nullptr)
 {
 }
 
@@ -149,7 +149,7 @@ KviIdentRequest::~KviIdentRequest()
 }
 
 KviIdentDaemon::KviIdentDaemon()
-    : KviSensitiveThread()
+	: KviSensitiveThread()
 {
 	m_szUser = KVI_OPTION_STRING(KviOption_stringIdentdUser);
 	if(m_szUser.isEmpty())
@@ -273,9 +273,9 @@ void KviIdentDaemon::run()
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		/*
 			 * under windows, ipv6 hosts behind an ipv4 NAT can use Teredo to be reachable from the outer internet using their
-                         * ipv6 address; the default protection level doesn't permit this, so we need to set this socket option
+						 * ipv6 address; the default protection level doesn't permit this, so we need to set this socket option
 			 * see bug ticket #393
-                         */
+						 */
 		int iPlu = KVI_PROTECTION_LEVEL_UNRESTRICTED;
 		if(!kvi_socket_setsockopt(m_sock6, KVI_IPPROTO_IPV6, KVI_IPV6_PROTECTION_LEVEL, (const void *)&iPlu, sizeof(iPlu)))
 		{
@@ -383,7 +383,6 @@ ipv6_failure:
 			msleep(100);
 		else
 		{
-
 			if(m_sock != KVI_INVALID_SOCKET)
 			{
 				if(FD_ISSET(m_sock, &rs))
@@ -465,7 +464,6 @@ ipv6_failure:
 
 			for(r = m_pRequestList->first(); r; r = m_pRequestList->next())
 			{
-
 				int idx = r->m_szData.findFirstIdx('\n');
 
 				if(idx != -1)
@@ -494,7 +492,6 @@ ipv6_failure:
 					}
 					else
 					{
-
 						postMessage(__tr("Empty request (EOT ?)"), r, szReq.ptr());
 
 						dying.append(r);
@@ -545,7 +542,6 @@ exit_thread:
 		kvi_socket_close(m_sock6);
 	delete m_pRequestList;
 	m_pRequestList = nullptr;
-
 }
 
 /*
@@ -621,12 +617,12 @@ static bool ident_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Ident",                                                        // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Ident service",
-    ident_module_init,
-    ident_module_can_unload,
-    0,
-    ident_module_cleanup,
-    0)
+	"Ident",                                                        // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Ident service",
+	ident_module_init,
+	ident_module_can_unload,
+	0,
+	ident_module_cleanup,
+	0)

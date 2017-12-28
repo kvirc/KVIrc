@@ -76,7 +76,7 @@ public:
 		id = idCounter.fetchAndAddRelaxed(1);
 	}
 	virtual ~QHttpRequest()
-	    = default;
+		= default;
 
 	virtual void start(QHttp *) = 0;
 	virtual bool hasRequestHeader();
@@ -97,12 +97,12 @@ class QHttpPrivate
 public:
 	Q_DECLARE_PUBLIC(QHttp)
 
-	inline QHttpPrivate(QHttp * parent)
-	    : socket(nullptr), reconnectAttempts(2),
-	      deleteSocket(0), state(QHttp::Unconnected),
-	      error(QHttp::NoError), port(0), mode(QHttp::ConnectionModeHttp),
-	      toDevice(nullptr), postDevice(nullptr), bytesDone(0), chunkedSize(-1),
-	      repost(false), pendingPost(false), q_ptr(parent)
+		inline QHttpPrivate(QHttp * parent)
+		: socket(nullptr), reconnectAttempts(2),
+		deleteSocket(0), state(QHttp::Unconnected),
+		error(QHttp::NoError), port(0), mode(QHttp::ConnectionModeHttp),
+		toDevice(nullptr), postDevice(nullptr), bytesDone(0), chunkedSize(-1),
+		repost(false), pendingPost(false), q_ptr(parent)
 	{
 	}
 
@@ -347,7 +347,7 @@ class QHttpSetHostRequest : public QHttpRequest
 {
 public:
 	QHttpSetHostRequest(const QString & h, quint16 p, QHttp::ConnectionMode m)
-	    : hostName(h), port(p), mode(m)
+		: hostName(h), port(p), mode(m)
 	{
 	}
 
@@ -379,7 +379,7 @@ void QHttpSetHostRequest::start(QHttp * http)
 	{
 		// SSL requested but no SSL support compiled in
 		http->d->finishedWithError(QLatin1String(QT_TRANSLATE_NOOP("QHttp", "HTTPS connection requested but SSL support not compiled in")),
-		    QHttp::UnknownError);
+			QHttp::UnknownError);
 		return;
 	}
 #endif
@@ -546,58 +546,58 @@ public:
  *
  ****************************************************/
 
-/*!
-    \class QHttpHeader
-    \obsolete
-    \brief The QHttpHeader class contains header information for HTTP.
+ /*!
+	 \class QHttpHeader
+	 \obsolete
+	 \brief The QHttpHeader class contains header information for HTTP.
 
-    \ingroup network
-    \inmodule QtNetwork
+	 \ingroup network
+	 \inmodule QtNetwork
 
-    In most cases you should use the more specialized derivatives of
-    this class, QHttpResponseHeader and QHttpRequestHeader, rather
-    than directly using QHttpHeader.
+	 In most cases you should use the more specialized derivatives of
+	 this class, QHttpResponseHeader and QHttpRequestHeader, rather
+	 than directly using QHttpHeader.
 
-    QHttpHeader provides the HTTP header fields. A HTTP header field
-    consists of a name followed by a colon, a single space, and the
-    field value. (See RFC 1945.) Field names are case-insensitive. A
-    typical header field looks like this:
-    \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 0
+	 QHttpHeader provides the HTTP header fields. A HTTP header field
+	 consists of a name followed by a colon, a single space, and the
+	 field value. (See RFC 1945.) Field names are case-insensitive. A
+	 typical header field looks like this:
+	 \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 0
 
-    In the API the header field name is called the "key" and the
-    content is called the "value". You can get and set a header
-    field's value by using its key with value() and setValue(), e.g.
-    \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 1
+	 In the API the header field name is called the "key" and the
+	 content is called the "value". You can get and set a header
+	 field's value by using its key with value() and setValue(), e.g.
+	 \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 1
 
-    Some fields are so common that getters and setters are provided
-    for them as a convenient alternative to using \l value() and
-    \l setValue(), e.g. contentLength() and contentType(),
-    setContentLength() and setContentType().
+	 Some fields are so common that getters and setters are provided
+	 for them as a convenient alternative to using \l value() and
+	 \l setValue(), e.g. contentLength() and contentType(),
+	 setContentLength() and setContentType().
 
-    Each header key has a \e single value associated with it. If you
-    set the value for a key which already exists the previous value
-    will be discarded.
+	 Each header key has a \e single value associated with it. If you
+	 set the value for a key which already exists the previous value
+	 will be discarded.
 
-    \sa QHttpRequestHeader QHttpResponseHeader
-*/
+	 \sa QHttpRequestHeader QHttpResponseHeader
+ */
 
-/*!
-    \fn int QHttpHeader::majorVersion() const
+ /*!
+	 \fn int QHttpHeader::majorVersion() const
 
-    Returns the major protocol-version of the HTTP header.
-*/
+	 Returns the major protocol-version of the HTTP header.
+ */
 
-/*!
-    \fn int QHttpHeader::minorVersion() const
+ /*!
+	 \fn int QHttpHeader::minorVersion() const
 
-    Returns the minor protocol-version of the HTTP header.
-*/
+	 Returns the minor protocol-version of the HTTP header.
+ */
 
-/*!
-        Constructs an empty HTTP header.
-*/
+ /*!
+		 Constructs an empty HTTP header.
+ */
 QHttpHeader::QHttpHeader()
-    : d_ptr(new QHttpHeaderPrivate)
+	: d_ptr(new QHttpHeaderPrivate)
 {
 	Q_D(QHttpHeader);
 	d->q_ptr = this;
@@ -605,10 +605,10 @@ QHttpHeader::QHttpHeader()
 }
 
 /*!
-        Constructs a copy of \a header.
+		Constructs a copy of \a header.
 */
 QHttpHeader::QHttpHeader(const QHttpHeader & header)
-    : d_ptr(new QHttpHeaderPrivate)
+	: d_ptr(new QHttpHeaderPrivate)
 {
 	Q_D(QHttpHeader);
 	d->q_ptr = this;
@@ -617,15 +617,15 @@ QHttpHeader::QHttpHeader(const QHttpHeader & header)
 }
 
 /*!
-    Constructs a HTTP header for \a str.
+	Constructs a HTTP header for \a str.
 
-    This constructor parses the string \a str for header fields and
-    adds this information. The \a str should consist of one or more
-    "\r\n" delimited lines; each of these lines should have the format
-    key, colon, space, value.
+	This constructor parses the string \a str for header fields and
+	adds this information. The \a str should consist of one or more
+	"\r\n" delimited lines; each of these lines should have the format
+	key, colon, space, value.
 */
 QHttpHeader::QHttpHeader(const QString & str)
-    : d_ptr(new QHttpHeaderPrivate)
+	: d_ptr(new QHttpHeaderPrivate)
 {
 	Q_D(QHttpHeader);
 	d->q_ptr = this;
@@ -636,7 +636,7 @@ QHttpHeader::QHttpHeader(const QString & str)
 /*! \internal
  */
 QHttpHeader::QHttpHeader(QHttpHeaderPrivate & dd, const QString & str)
-    : d_ptr(&dd)
+	: d_ptr(&dd)
 {
 	Q_D(QHttpHeader);
 	d->q_ptr = this;
@@ -648,7 +648,7 @@ QHttpHeader::QHttpHeader(QHttpHeaderPrivate & dd, const QString & str)
 /*! \internal
  */
 QHttpHeader::QHttpHeader(QHttpHeaderPrivate & dd, const QHttpHeader & header)
-    : d_ptr(&dd)
+	: d_ptr(&dd)
 {
 	Q_D(QHttpHeader);
 	d->q_ptr = this;
@@ -656,13 +656,13 @@ QHttpHeader::QHttpHeader(QHttpHeaderPrivate & dd, const QHttpHeader & header)
 	d->values = header.d_func()->values;
 }
 /*!
-    Destructor.
+	Destructor.
 */
 QHttpHeader::~QHttpHeader()
-    = default;
+= default;
 
 /*!
-    Assigns \a h and returns a reference to this http header.
+	Assigns \a h and returns a reference to this http header.
 */
 QHttpHeader & QHttpHeader::operator=(const QHttpHeader & h)
 {
@@ -673,9 +673,9 @@ QHttpHeader & QHttpHeader::operator=(const QHttpHeader & h)
 }
 
 /*!
-    Returns true if the HTTP header is valid; otherwise returns false.
+	Returns true if the HTTP header is valid; otherwise returns false.
 
-    A QHttpHeader is invalid if it was created by parsing a malformed string.
+	A QHttpHeader is invalid if it was created by parsing a malformed string.
 */
 bool QHttpHeader::isValid() const
 {
@@ -684,13 +684,13 @@ bool QHttpHeader::isValid() const
 }
 
 /*! \internal
-    Parses the HTTP header string \a str for header fields and adds
-    the keys/values it finds. If the string is not parsed successfully
-    the QHttpHeader becomes \link isValid() invalid\endlink.
+	Parses the HTTP header string \a str for header fields and adds
+	the keys/values it finds. If the string is not parsed successfully
+	the QHttpHeader becomes \link isValid() invalid\endlink.
 
-    Returns true if \a str was successfully parsed; otherwise returns false.
+	Returns true if \a str was successfully parsed; otherwise returns false.
 
-    \sa toString()
+	\sa toString()
 */
 bool QHttpHeader::parse(const QString & str)
 {
@@ -749,10 +749,10 @@ void QHttpHeader::setValid(bool v)
 }
 
 /*!
-    Returns the first value for the entry with the given \a key. If no entry
-    has this \a key, an empty string is returned.
+	Returns the first value for the entry with the given \a key. If no entry
+	has this \a key, an empty string is returned.
 
-    \sa setValue() removeValue() hasKey() keys()
+	\sa setValue() removeValue() hasKey() keys()
 */
 QString QHttpHeader::value(const QString & key) const
 {
@@ -769,8 +769,8 @@ QString QHttpHeader::value(const QString & key) const
 }
 
 /*!
-    Returns all the entries with the given \a key. If no entry
-    has this \a key, an empty string list is returned.
+	Returns all the entries with the given \a key. If no entry
+	has this \a key, an empty string list is returned.
 */
 QStringList QHttpHeader::allValues(const QString & key) const
 {
@@ -788,9 +788,9 @@ QStringList QHttpHeader::allValues(const QString & key) const
 }
 
 /*!
-    Returns a list of the keys in the HTTP header.
+	Returns a list of the keys in the HTTP header.
 
-    \sa hasKey()
+	\sa hasKey()
 */
 QStringList QHttpHeader::keys() const
 {
@@ -813,10 +813,10 @@ QStringList QHttpHeader::keys() const
 }
 
 /*!
-    Returns true if the HTTP header has an entry with the given \a
-    key; otherwise returns false.
+	Returns true if the HTTP header has an entry with the given \a
+	key; otherwise returns false.
 
-    \sa value() setValue() keys()
+	\sa value() setValue() keys()
 */
 bool QHttpHeader::hasKey(const QString & key) const
 {
@@ -833,14 +833,14 @@ bool QHttpHeader::hasKey(const QString & key) const
 }
 
 /*!
-    Sets the value of the entry with the \a key to \a value.
+	Sets the value of the entry with the \a key to \a value.
 
-    If no entry with \a key exists, a new entry with the given \a key
-    and \a value is created. If an entry with the \a key already
-    exists, the first value is discarded and replaced with the given
-    \a value.
+	If no entry with \a key exists, a new entry with the given \a key
+	and \a value is created. If an entry with the \a key already
+	exists, the first value is discarded and replaced with the given
+	\a value.
 
-    \sa value() hasKey() removeValue()
+	\sa value() hasKey() removeValue()
 */
 void QHttpHeader::setValue(const QString & key, const QString & value)
 {
@@ -861,7 +861,7 @@ void QHttpHeader::setValue(const QString & key, const QString & value)
 }
 
 /*!
-    Sets the header entries to be the list of key value pairs in \a values.
+	Sets the header entries to be the list of key value pairs in \a values.
 */
 void QHttpHeader::setValues(const QList<QPair<QString, QString>> & values)
 {
@@ -870,7 +870,7 @@ void QHttpHeader::setValues(const QList<QPair<QString, QString>> & values)
 }
 
 /*!
-    Adds a new entry with the \a key and \a value.
+	Adds a new entry with the \a key and \a value.
 */
 void QHttpHeader::addValue(const QString & key, const QString & value)
 {
@@ -879,7 +879,7 @@ void QHttpHeader::addValue(const QString & key, const QString & value)
 }
 
 /*!
-    Returns all the entries in the header.
+	Returns all the entries in the header.
 */
 QList<QPair<QString, QString>> QHttpHeader::values() const
 {
@@ -888,9 +888,9 @@ QList<QPair<QString, QString>> QHttpHeader::values() const
 }
 
 /*!
-    Removes the entry with the key \a key from the HTTP header.
+	Removes the entry with the key \a key from the HTTP header.
 
-    \sa value() setValue()
+	\sa value() setValue()
 */
 void QHttpHeader::removeValue(const QString & key)
 {
@@ -909,7 +909,7 @@ void QHttpHeader::removeValue(const QString & key)
 }
 
 /*!
-    Removes all the entries with the key \a key from the HTTP header.
+	Removes all the entries with the key \a key from the HTTP header.
 */
 void QHttpHeader::removeAllValues(const QString & key)
 {
@@ -928,12 +928,12 @@ void QHttpHeader::removeAllValues(const QString & key)
 }
 
 /*! \internal
-    Parses the single HTTP header line \a line which has the format
-    key, colon, space, value, and adds key/value to the headers. The
-    linenumber is \a number. Returns true if the line was successfully
-    parsed and the key/value added; otherwise returns false.
+	Parses the single HTTP header line \a line which has the format
+	key, colon, space, value, and adds key/value to the headers. The
+	linenumber is \a number. Returns true if the line was successfully
+	parsed and the key/value added; otherwise returns false.
 
-    \sa parse()
+	\sa parse()
 */
 bool QHttpHeader::parseLine(const QString & line, int)
 {
@@ -947,11 +947,11 @@ bool QHttpHeader::parseLine(const QString & line, int)
 }
 
 /*!
-    Returns a string representation of the HTTP header.
+	Returns a string representation of the HTTP header.
 
-    The string is suitable for use by the constructor that takes a
-    QString. It consists of lines with the format: key, colon, space,
-    value, "\r\n".
+	The string is suitable for use by the constructor that takes a
+	QString. It consists of lines with the format: key, colon, space,
+	value, "\r\n".
 */
 QString QHttpHeader::toString() const
 {
@@ -971,10 +971,10 @@ QString QHttpHeader::toString() const
 }
 
 /*!
-    Returns true if the header has an entry for the special HTTP
-    header field \c content-length; otherwise returns false.
+	Returns true if the header has an entry for the special HTTP
+	header field \c content-length; otherwise returns false.
 
-    \sa contentLength() setContentLength()
+	\sa contentLength() setContentLength()
 */
 bool QHttpHeader::hasContentLength() const
 {
@@ -982,10 +982,10 @@ bool QHttpHeader::hasContentLength() const
 }
 
 /*!
-    Returns the value of the special HTTP header field \c
-    content-length.
+	Returns the value of the special HTTP header field \c
+	content-length.
 
-    \sa setContentLength() hasContentLength()
+	\sa setContentLength() hasContentLength()
 */
 uint QHttpHeader::contentLength() const
 {
@@ -993,10 +993,10 @@ uint QHttpHeader::contentLength() const
 }
 
 /*!
-    Sets the value of the special HTTP header field \c content-length
-    to \a len.
+	Sets the value of the special HTTP header field \c content-length
+	to \a len.
 
-    \sa contentLength() hasContentLength()
+	\sa contentLength() hasContentLength()
 */
 void QHttpHeader::setContentLength(int len)
 {
@@ -1004,10 +1004,10 @@ void QHttpHeader::setContentLength(int len)
 }
 
 /*!
-    Returns true if the header has an entry for the special HTTP
-    header field \c content-type; otherwise returns false.
+	Returns true if the header has an entry for the special HTTP
+	header field \c content-type; otherwise returns false.
 
-    \sa contentType() setContentType()
+	\sa contentType() setContentType()
 */
 bool QHttpHeader::hasContentType() const
 {
@@ -1015,9 +1015,9 @@ bool QHttpHeader::hasContentType() const
 }
 
 /*!
-    Returns the value of the special HTTP header field \c content-type.
+	Returns the value of the special HTTP header field \c content-type.
 
-    \sa setContentType() hasContentType()
+	\sa setContentType() hasContentType()
 */
 QString QHttpHeader::contentType() const
 {
@@ -1033,10 +1033,10 @@ QString QHttpHeader::contentType() const
 }
 
 /*!
-    Sets the value of the special HTTP header field \c content-type to
-    \a type.
+	Sets the value of the special HTTP header field \c content-type to
+	\a type.
 
-    \sa contentType() hasContentType()
+	\sa contentType() hasContentType()
 */
 void QHttpHeader::setContentType(const QString & type)
 {
@@ -1059,41 +1059,41 @@ public:
  *
  ****************************************************/
 
-/*!
-    \class QHttpResponseHeader
-    \obsolete
-    \brief The QHttpResponseHeader class contains response header information for HTTP.
+ /*!
+	 \class QHttpResponseHeader
+	 \obsolete
+	 \brief The QHttpResponseHeader class contains response header information for HTTP.
 
-    \ingroup network
-    \inmodule QtNetwork
+	 \ingroup network
+	 \inmodule QtNetwork
 
-    This class is used by the QHttp class to report the header
-    information that the client received from the server.
+	 This class is used by the QHttp class to report the header
+	 information that the client received from the server.
 
-    HTTP responses have a status code that indicates the status of the
-    response. This code is a 3-digit integer result code (for details
-    see to RFC 1945). In addition to the status code, you can also
-    specify a human-readable text that describes the reason for the
-    code ("reason phrase"). This class allows you to get the status
-    code and the reason phrase.
+	 HTTP responses have a status code that indicates the status of the
+	 response. This code is a 3-digit integer result code (for details
+	 see to RFC 1945). In addition to the status code, you can also
+	 specify a human-readable text that describes the reason for the
+	 code ("reason phrase"). This class allows you to get the status
+	 code and the reason phrase.
 
-    \sa QHttpRequestHeader, QHttp, {HTTP Example}
-*/
+	 \sa QHttpRequestHeader, QHttp, {HTTP Example}
+ */
 
-/*!
-    Constructs an empty HTTP response header.
-*/
+ /*!
+	 Constructs an empty HTTP response header.
+ */
 QHttpResponseHeader::QHttpResponseHeader()
-    : QHttpHeader(*new QHttpResponseHeaderPrivate)
+	: QHttpHeader(*new QHttpResponseHeaderPrivate)
 {
 	setValid(false);
 }
 
 /*!
-    Constructs a copy of \a header.
+	Constructs a copy of \a header.
 */
 QHttpResponseHeader::QHttpResponseHeader(const QHttpResponseHeader & header)
-    : QHttpHeader(*new QHttpResponseHeaderPrivate, header)
+	: QHttpHeader(*new QHttpResponseHeaderPrivate, header)
 {
 	Q_D(QHttpResponseHeader);
 	d->statCode = header.d_func()->statCode;
@@ -1103,7 +1103,7 @@ QHttpResponseHeader::QHttpResponseHeader(const QHttpResponseHeader & header)
 }
 
 /*!
-    Copies the contents of \a header into this QHttpResponseHeader.
+	Copies the contents of \a header into this QHttpResponseHeader.
 */
 QHttpResponseHeader & QHttpResponseHeader::operator=(const QHttpResponseHeader & header)
 {
@@ -1117,41 +1117,41 @@ QHttpResponseHeader & QHttpResponseHeader::operator=(const QHttpResponseHeader &
 }
 
 /*!
-    Constructs a HTTP response header from the string \a str. The
-    string is parsed and the information is set. The \a str should
-    consist of one or more "\r\n" delimited lines; the first line should be the
-    status-line (format: HTTP-version, space, status-code, space,
-    reason-phrase); each of remaining lines should have the format key, colon,
-    space, value.
+	Constructs a HTTP response header from the string \a str. The
+	string is parsed and the information is set. The \a str should
+	consist of one or more "\r\n" delimited lines; the first line should be the
+	status-line (format: HTTP-version, space, status-code, space,
+	reason-phrase); each of remaining lines should have the format key, colon,
+	space, value.
 */
 QHttpResponseHeader::QHttpResponseHeader(const QString & str)
-    : QHttpHeader(*new QHttpResponseHeaderPrivate)
+	: QHttpHeader(*new QHttpResponseHeaderPrivate)
 {
 	parse(str);
 }
 
 /*!
-    \since 4.1
+	\since 4.1
 
-    Constructs a QHttpResponseHeader, setting the status code to \a code, the
-    reason phrase to \a text and the protocol-version to \a majorVer and \a
-    minorVer.
+	Constructs a QHttpResponseHeader, setting the status code to \a code, the
+	reason phrase to \a text and the protocol-version to \a majorVer and \a
+	minorVer.
 
-    \sa statusCode() reasonPhrase() majorVersion() minorVersion()
+	\sa statusCode() reasonPhrase() majorVersion() minorVersion()
 */
 QHttpResponseHeader::QHttpResponseHeader(int code, const QString & text, int majorVer, int minorVer)
-    : QHttpHeader(*new QHttpResponseHeaderPrivate)
+	: QHttpHeader(*new QHttpResponseHeaderPrivate)
 {
 	setStatusLine(code, text, majorVer, minorVer);
 }
 
 /*!
-    \since 4.1
+	\since 4.1
 
-    Sets the status code to \a code, the reason phrase to \a text and
-    the protocol-version to \a majorVer and \a minorVer.
+	Sets the status code to \a code, the reason phrase to \a text and
+	the protocol-version to \a majorVer and \a minorVer.
 
-    \sa statusCode() reasonPhrase() majorVersion() minorVersion()
+	\sa statusCode() reasonPhrase() majorVersion() minorVersion()
 */
 void QHttpResponseHeader::setStatusLine(int code, const QString & text, int majorVer, int minorVer)
 {
@@ -1164,9 +1164,9 @@ void QHttpResponseHeader::setStatusLine(int code, const QString & text, int majo
 }
 
 /*!
-    Returns the status code of the HTTP response header.
+	Returns the status code of the HTTP response header.
 
-    \sa reasonPhrase() majorVersion() minorVersion()
+	\sa reasonPhrase() majorVersion() minorVersion()
 */
 int QHttpResponseHeader::statusCode() const
 {
@@ -1175,9 +1175,9 @@ int QHttpResponseHeader::statusCode() const
 }
 
 /*!
-    Returns the reason phrase of the HTTP response header.
+	Returns the reason phrase of the HTTP response header.
 
-    \sa statusCode() majorVersion() minorVersion()
+	\sa statusCode() majorVersion() minorVersion()
 */
 QString QHttpResponseHeader::reasonPhrase() const
 {
@@ -1186,9 +1186,9 @@ QString QHttpResponseHeader::reasonPhrase() const
 }
 
 /*!
-    Returns the major protocol-version of the HTTP response header.
+	Returns the major protocol-version of the HTTP response header.
 
-    \sa minorVersion() statusCode() reasonPhrase()
+	\sa minorVersion() statusCode() reasonPhrase()
 */
 int QHttpResponseHeader::majorVersion() const
 {
@@ -1197,9 +1197,9 @@ int QHttpResponseHeader::majorVersion() const
 }
 
 /*!
-    Returns the minor protocol-version of the HTTP response header.
+	Returns the minor protocol-version of the HTTP response header.
 
-    \sa majorVersion() statusCode() reasonPhrase()
+	\sa majorVersion() statusCode() reasonPhrase()
 */
 int QHttpResponseHeader::minorVersion() const
 {
@@ -1269,54 +1269,54 @@ public:
  *
  ****************************************************/
 
-/*!
-    \class QHttpRequestHeader
-    \obsolete
-    \brief The QHttpRequestHeader class contains request header information for HTTP.
+ /*!
+	 \class QHttpRequestHeader
+	 \obsolete
+	 \brief The QHttpRequestHeader class contains request header information for HTTP.
 
-    \ingroup network
-    \inmodule QtNetwork
+	 \ingroup network
+	 \inmodule QtNetwork
 
-    This class is used in the QHttp class to report the header
-    information if the client requests something from the server.
+	 This class is used in the QHttp class to report the header
+	 information if the client requests something from the server.
 
-    HTTP requests have a method which describes the request's action.
-    The most common requests are "GET" and "POST". In addition to the
-    request method the header also includes a request-URI to specify
-    the location for the method to use.
+	 HTTP requests have a method which describes the request's action.
+	 The most common requests are "GET" and "POST". In addition to the
+	 request method the header also includes a request-URI to specify
+	 the location for the method to use.
 
-    The method, request-URI and protocol-version can be set using a
-    constructor or later using setRequest(). The values can be
-    obtained using method(), path(), majorVersion() and
-    minorVersion().
+	 The method, request-URI and protocol-version can be set using a
+	 constructor or later using setRequest(). The values can be
+	 obtained using method(), path(), majorVersion() and
+	 minorVersion().
 
-    Note that the request-URI must be in the format expected by the
-    HTTP server. That is, all reserved characters must be encoded in
-    %HH (where HH are two hexadecimal digits). See
-    QUrl::toPercentEncoding() for more information.
+	 Note that the request-URI must be in the format expected by the
+	 HTTP server. That is, all reserved characters must be encoded in
+	 %HH (where HH are two hexadecimal digits). See
+	 QUrl::toPercentEncoding() for more information.
 
-    Important inherited functions: setValue() and value().
+	 Important inherited functions: setValue() and value().
 
-    \sa QHttpResponseHeader QHttp
-*/
+	 \sa QHttpResponseHeader QHttp
+ */
 
-/*!
-    Constructs an empty HTTP request header.
-*/
+ /*!
+	 Constructs an empty HTTP request header.
+ */
 QHttpRequestHeader::QHttpRequestHeader()
-    : QHttpHeader(*new QHttpRequestHeaderPrivate)
+	: QHttpHeader(*new QHttpRequestHeaderPrivate)
 {
 	setValid(false);
 }
 
 /*!
-    Constructs a HTTP request header for the method \a method, the
-    request-URI \a path and the protocol-version \a majorVer and \a
-    minorVer. The \a path argument must be properly encoded for an
-    HTTP request.
+	Constructs a HTTP request header for the method \a method, the
+	request-URI \a path and the protocol-version \a majorVer and \a
+	minorVer. The \a path argument must be properly encoded for an
+	HTTP request.
 */
 QHttpRequestHeader::QHttpRequestHeader(const QString & method, const QString & path, int majorVer, int minorVer)
-    : QHttpHeader(*new QHttpRequestHeaderPrivate)
+	: QHttpHeader(*new QHttpRequestHeaderPrivate)
 {
 	Q_D(QHttpRequestHeader);
 	d->m = method;
@@ -1326,10 +1326,10 @@ QHttpRequestHeader::QHttpRequestHeader(const QString & method, const QString & p
 }
 
 /*!
-    Constructs a copy of \a header.
+	Constructs a copy of \a header.
 */
 QHttpRequestHeader::QHttpRequestHeader(const QHttpRequestHeader & header)
-    : QHttpHeader(*new QHttpRequestHeaderPrivate, header)
+	: QHttpHeader(*new QHttpRequestHeaderPrivate, header)
 {
 	Q_D(QHttpRequestHeader);
 	d->m = header.d_func()->m;
@@ -1339,7 +1339,7 @@ QHttpRequestHeader::QHttpRequestHeader(const QHttpRequestHeader & header)
 }
 
 /*!
-    Copies the content of \a header into this QHttpRequestHeader
+	Copies the content of \a header into this QHttpRequestHeader
 */
 QHttpRequestHeader & QHttpRequestHeader::operator=(const QHttpRequestHeader & header)
 {
@@ -1353,25 +1353,25 @@ QHttpRequestHeader & QHttpRequestHeader::operator=(const QHttpRequestHeader & he
 }
 
 /*!
-    Constructs a HTTP request header from the string \a str. The \a
-    str should consist of one or more "\r\n" delimited lines; the first line
-    should be the request-line (format: method, space, request-URI, space
-    HTTP-version); each of the remaining lines should have the format key,
-    colon, space, value.
+	Constructs a HTTP request header from the string \a str. The \a
+	str should consist of one or more "\r\n" delimited lines; the first line
+	should be the request-line (format: method, space, request-URI, space
+	HTTP-version); each of the remaining lines should have the format key,
+	colon, space, value.
 */
 QHttpRequestHeader::QHttpRequestHeader(const QString & str)
-    : QHttpHeader(*new QHttpRequestHeaderPrivate)
+	: QHttpHeader(*new QHttpRequestHeaderPrivate)
 {
 	parse(str);
 }
 
 /*!
-    This function sets the request method to \a method, the
-    request-URI to \a path and the protocol-version to \a majorVer and
-    \a minorVer. The \a path argument must be properly encoded for an
-    HTTP request.
+	This function sets the request method to \a method, the
+	request-URI to \a path and the protocol-version to \a majorVer and
+	\a minorVer. The \a path argument must be properly encoded for an
+	HTTP request.
 
-    \sa method() path() majorVersion() minorVersion()
+	\sa method() path() majorVersion() minorVersion()
 */
 void QHttpRequestHeader::setRequest(const QString & method, const QString & path, int majorVer, int minorVer)
 {
@@ -1384,9 +1384,9 @@ void QHttpRequestHeader::setRequest(const QString & method, const QString & path
 }
 
 /*!
-    Returns the method of the HTTP request header.
+	Returns the method of the HTTP request header.
 
-    \sa path() majorVersion() minorVersion() setRequest()
+	\sa path() majorVersion() minorVersion() setRequest()
 */
 QString QHttpRequestHeader::method() const
 {
@@ -1395,9 +1395,9 @@ QString QHttpRequestHeader::method() const
 }
 
 /*!
-    Returns the request-URI of the HTTP request header.
+	Returns the request-URI of the HTTP request header.
 
-    \sa method() majorVersion() minorVersion() setRequest()
+	\sa method() majorVersion() minorVersion() setRequest()
 */
 QString QHttpRequestHeader::path() const
 {
@@ -1406,9 +1406,9 @@ QString QHttpRequestHeader::path() const
 }
 
 /*!
-    Returns the major protocol-version of the HTTP request header.
+	Returns the major protocol-version of the HTTP request header.
 
-    \sa minorVersion() method() path() setRequest()
+	\sa minorVersion() method() path() setRequest()
 */
 int QHttpRequestHeader::majorVersion() const
 {
@@ -1417,9 +1417,9 @@ int QHttpRequestHeader::majorVersion() const
 }
 
 /*!
-    Returns the minor protocol-version of the HTTP request header.
+	Returns the minor protocol-version of the HTTP request header.
 
-    \sa majorVersion() method() path() setRequest()
+	\sa majorVersion() method() path() setRequest()
 */
 int QHttpRequestHeader::minorVersion() const
 {
@@ -1473,130 +1473,129 @@ QString QHttpRequestHeader::toString() const
  * QHttp
  *
  ****************************************************/
-/*!
-    \class QHttp
-    \obsolete
-    \reentrant
+ /*!
+	 \class QHttp
+	 \obsolete
+	 \reentrant
 
-    \brief The QHttp class provides an implementation of the HTTP protocol.
+	 \brief The QHttp class provides an implementation of the HTTP protocol.
 
-    \ingroup network
-    \inmodule QtNetwork
+	 \ingroup network
+	 \inmodule QtNetwork
 
+	 This class provides a direct interface to HTTP that allows you to
+	 download and upload data with the HTTP protocol.
+	 However, for new applications, it is
+	 recommended to use QNetworkAccessManager and QNetworkReply, as
+	 those classes possess a simpler, yet more powerful API
+	 and a more modern protocol implementation.
 
-    This class provides a direct interface to HTTP that allows you to
-    download and upload data with the HTTP protocol.
-    However, for new applications, it is
-    recommended to use QNetworkAccessManager and QNetworkReply, as
-    those classes possess a simpler, yet more powerful API
-    and a more modern protocol implementation.
+	 The class works asynchronously, so there are no blocking
+	 functions. If an operation cannot be executed immediately, the
+	 function will still return straight away and the operation will be
+	 scheduled for later execution. The results of scheduled operations
+	 are reported via signals. This approach depends on the event loop
+	 being in operation.
 
-    The class works asynchronously, so there are no blocking
-    functions. If an operation cannot be executed immediately, the
-    function will still return straight away and the operation will be
-    scheduled for later execution. The results of scheduled operations
-    are reported via signals. This approach depends on the event loop
-    being in operation.
+	 The operations that can be scheduled (they are called "requests"
+	 in the rest of the documentation) are the following: setHost(),
+	 get(), post(), head() and request().
 
-    The operations that can be scheduled (they are called "requests"
-    in the rest of the documentation) are the following: setHost(),
-    get(), post(), head() and request().
+	 All of these requests return a unique identifier that allows you
+	 to keep track of the request that is currently executed. When the
+	 execution of a request starts, the requestStarted() signal with
+	 the identifier is emitted and when the request is finished, the
+	 requestFinished() signal is emitted with the identifier and a bool
+	 that indicates if the request finished with an error.
 
-    All of these requests return a unique identifier that allows you
-    to keep track of the request that is currently executed. When the
-    execution of a request starts, the requestStarted() signal with
-    the identifier is emitted and when the request is finished, the
-    requestFinished() signal is emitted with the identifier and a bool
-    that indicates if the request finished with an error.
+	 To make an HTTP request you must set up suitable HTTP headers. The
+	 following example demonstrates how to request the main HTML page
+	 from the Qt website (i.e., the URL \c http://qt.digia.com/index.html):
 
-    To make an HTTP request you must set up suitable HTTP headers. The
-    following example demonstrates how to request the main HTML page
-    from the Qt website (i.e., the URL \c http://qt.digia.com/index.html):
+	 \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 2
 
-    \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 2
+	 For the common HTTP requests \c GET, \c POST and \c HEAD, QHttp
+	 provides the convenience functions get(), post() and head(). They
+	 already use a reasonable header and if you don't have to set
+	 special header fields, they are easier to use. The above example
+	 can also be written as:
 
-    For the common HTTP requests \c GET, \c POST and \c HEAD, QHttp
-    provides the convenience functions get(), post() and head(). They
-    already use a reasonable header and if you don't have to set
-    special header fields, they are easier to use. The above example
-    can also be written as:
+	 \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 3
 
-    \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 3
+	 For this example the following sequence of signals is emitted
+	 (with small variations, depending on network traffic, etc.):
 
-    For this example the following sequence of signals is emitted
-    (with small variations, depending on network traffic, etc.):
+	 \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 4
 
-    \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 4
+	 The dataSendProgress() and dataReadProgress() signals in the above
+	 example are useful if you want to show a \link QProgressBar
+	 progress bar\endlink to inform the user about the progress of the
+	 download. The second argument is the total size of data. In
+	 certain cases it is not possible to know the total amount in
+	 advance, in which case the second argument is 0. (If you connect
+	 to a QProgressBar a total of 0 results in a busy indicator.)
 
-    The dataSendProgress() and dataReadProgress() signals in the above
-    example are useful if you want to show a \link QProgressBar
-    progress bar\endlink to inform the user about the progress of the
-    download. The second argument is the total size of data. In
-    certain cases it is not possible to know the total amount in
-    advance, in which case the second argument is 0. (If you connect
-    to a QProgressBar a total of 0 results in a busy indicator.)
+	 When the response header is read, it is reported with the
+	 responseHeaderReceived() signal.
 
-    When the response header is read, it is reported with the
-    responseHeaderReceived() signal.
+	 The readyRead() signal tells you that there is data ready to be
+	 read. The amount of data can then be queried with the
+	 bytesAvailable() function and it can be read with the read()
+	 or readAll() functions.
 
-    The readyRead() signal tells you that there is data ready to be
-    read. The amount of data can then be queried with the
-    bytesAvailable() function and it can be read with the read()
-    or readAll() functions.
+	 If an error occurs during the execution of one of the commands in
+	 a sequence of commands, all the pending commands (i.e. scheduled,
+	 but not yet executed commands) are cleared and no signals are
+	 emitted for them.
 
-    If an error occurs during the execution of one of the commands in
-    a sequence of commands, all the pending commands (i.e. scheduled,
-    but not yet executed commands) are cleared and no signals are
-    emitted for them.
+	 For example, if you have the following sequence of requests
 
-    For example, if you have the following sequence of requests
+	 \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 5
 
-    \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 5
+	 and the get() request fails because the host lookup fails, then
+	 the post() request is never executed and the signals would look
+	 like this:
 
-    and the get() request fails because the host lookup fails, then
-    the post() request is never executed and the signals would look
-    like this:
+	 \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 6
 
-    \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 6
+	 You can then get details about the error with the error() and
+	 errorString() functions. Note that only unexpected behavior, like
+	 network failure is considered as an error. If the server response
+	 contains an error status, like a 404 response, this is reported as
+	 a normal response case. So you should always check the \link
+	 QHttpResponseHeader::statusCode() status code \endlink of the
+	 response header.
 
-    You can then get details about the error with the error() and
-    errorString() functions. Note that only unexpected behavior, like
-    network failure is considered as an error. If the server response
-    contains an error status, like a 404 response, this is reported as
-    a normal response case. So you should always check the \link
-    QHttpResponseHeader::statusCode() status code \endlink of the
-    response header.
+	 The functions currentId() and currentRequest() provide more
+	 information about the currently executing request.
 
-    The functions currentId() and currentRequest() provide more
-    information about the currently executing request.
+	 The functions hasPendingRequests() and clearPendingRequests()
+	 allow you to query and clear the list of pending requests.
 
-    The functions hasPendingRequests() and clearPendingRequests()
-    allow you to query and clear the list of pending requests.
+	 \sa QFtp, QNetworkAccessManager, QNetworkRequest, QNetworkReply,
+		 {HTTP Example}, {Torrent Example}
+ */
 
-    \sa QFtp, QNetworkAccessManager, QNetworkRequest, QNetworkReply,
-        {HTTP Example}, {Torrent Example}
-*/
-
-/*!
-    Constructs a QHttp object. The \a parent parameter is passed on
-    to the QObject constructor.
-*/
+ /*!
+	 Constructs a QHttp object. The \a parent parameter is passed on
+	 to the QObject constructor.
+ */
 QHttp::QHttp(QObject * parent)
-    : QObject(parent), d(new QHttpPrivate(this))
+	: QObject(parent), d(new QHttpPrivate(this))
 {
 	d->init();
 }
 
 /*!
-    Constructs a QHttp object. Subsequent requests are done by
-    connecting to the server \a hostName on port \a port.
+	Constructs a QHttp object. Subsequent requests are done by
+	connecting to the server \a hostName on port \a port.
 
-    The \a parent parameter is passed on to the QObject constructor.
+	The \a parent parameter is passed on to the QObject constructor.
 
-    \sa setHost()
+	\sa setHost()
 */
 QHttp::QHttp(const QString & hostName, quint16 port, QObject * parent)
-    : QObject(parent), d(new QHttpPrivate(this))
+	: QObject(parent), d(new QHttpPrivate(this))
 {
 	d->init();
 
@@ -1605,19 +1604,19 @@ QHttp::QHttp(const QString & hostName, quint16 port, QObject * parent)
 }
 
 /*!
-    Constructs a QHttp object. Subsequent requests are done by
-    connecting to the server \a hostName on port \a port using the
-    connection mode \a mode.
+	Constructs a QHttp object. Subsequent requests are done by
+	connecting to the server \a hostName on port \a port using the
+	connection mode \a mode.
 
-    If port is 0, it will use the default port for the \a mode used
-    (80 for Http and 443 for Https).
+	If port is 0, it will use the default port for the \a mode used
+	(80 for Http and 443 for Https).
 
-    The \a parent parameter is passed on to the QObject constructor.
+	The \a parent parameter is passed on to the QObject constructor.
 
-    \sa setHost()
+	\sa setHost()
 */
 QHttp::QHttp(const QString & hostName, ConnectionMode mode, quint16 port, QObject * parent)
-    : QObject(parent), d(new QHttpPrivate(this))
+	: QObject(parent), d(new QHttpPrivate(this))
 {
 	d->init();
 
@@ -1638,8 +1637,8 @@ void QHttpPrivate::init()
 }
 
 /*!
-    Destroys the QHttp object. If there is an open connection, it is
-    closed.
+	Destroys the QHttp object. If there is an open connection, it is
+	closed.
 */
 QHttp::~QHttp()
 {
@@ -1690,235 +1689,235 @@ void QHttp::_q_continuePost()
 }
 
 /*!
-    \enum QHttp::ConnectionMode
-    \since 4.3
+	\enum QHttp::ConnectionMode
+	\since 4.3
 
-    This enum is used to specify the mode of connection to use:
+	This enum is used to specify the mode of connection to use:
 
-    \value ConnectionModeHttp The connection is a regular HTTP connection to the server
-    \value ConnectionModeHttps The HTTPS protocol is used and the connection is encrypted using SSL.
+	\value ConnectionModeHttp The connection is a regular HTTP connection to the server
+	\value ConnectionModeHttps The HTTPS protocol is used and the connection is encrypted using SSL.
 
-    When using the HTTPS mode, care should be taken to connect to the sslErrors signal, and
-    handle possible SSL errors.
+	When using the HTTPS mode, care should be taken to connect to the sslErrors signal, and
+	handle possible SSL errors.
 
-    \sa QSslSocket
+	\sa QSslSocket
 */
 
 /*!
-    \enum QHttp::State
+	\enum QHttp::State
 
-    This enum is used to specify the state the client is in:
+	This enum is used to specify the state the client is in:
 
-    \value Unconnected There is no connection to the host.
-    \value HostLookup A host name lookup is in progress.
-    \value Connecting An attempt to connect to the host is in progress.
-    \value Sending The client is sending its request to the server.
-    \value Reading The client's request has been sent and the client
-    is reading the server's response.
-    \value Connected The connection to the host is open, but the client is
-    neither sending a request, nor waiting for a response.
-    \value Closing The connection is closing down, but is not yet
-    closed. (The state will be \c Unconnected when the connection is
-    closed.)
+	\value Unconnected There is no connection to the host.
+	\value HostLookup A host name lookup is in progress.
+	\value Connecting An attempt to connect to the host is in progress.
+	\value Sending The client is sending its request to the server.
+	\value Reading The client's request has been sent and the client
+	is reading the server's response.
+	\value Connected The connection to the host is open, but the client is
+	neither sending a request, nor waiting for a response.
+	\value Closing The connection is closing down, but is not yet
+	closed. (The state will be \c Unconnected when the connection is
+	closed.)
 
-    \sa stateChanged() state()
+	\sa stateChanged() state()
 */
 
 /*!  \enum QHttp::Error
 
-    This enum identifies the error that occurred.
+	This enum identifies the error that occurred.
 
-    \value NoError No error occurred.
-    \value HostNotFound The host name lookup failed.
-    \value ConnectionRefused The server refused the connection.
-    \value UnexpectedClose The server closed the connection unexpectedly.
-    \value InvalidResponseHeader The server sent an invalid response header.
-    \value WrongContentLength The client could not read the content correctly
-    because an error with respect to the content length occurred.
-    \value Aborted The request was aborted with abort().
-    \value ProxyAuthenticationRequiredError QHttp is using a proxy, and the
-    proxy server requires authentication to establish a connection.
-    \value AuthenticationRequiredError The web server requires authentication
-    to complete the request.
-    \value UnknownError An error other than those specified above
-    occurred.
+	\value NoError No error occurred.
+	\value HostNotFound The host name lookup failed.
+	\value ConnectionRefused The server refused the connection.
+	\value UnexpectedClose The server closed the connection unexpectedly.
+	\value InvalidResponseHeader The server sent an invalid response header.
+	\value WrongContentLength The client could not read the content correctly
+	because an error with respect to the content length occurred.
+	\value Aborted The request was aborted with abort().
+	\value ProxyAuthenticationRequiredError QHttp is using a proxy, and the
+	proxy server requires authentication to establish a connection.
+	\value AuthenticationRequiredError The web server requires authentication
+	to complete the request.
+	\value UnknownError An error other than those specified above
+	occurred.
 
-    \sa error()
+	\sa error()
 */
 
 /*!
-    \fn void QHttp::stateChanged(int state)
+	\fn void QHttp::stateChanged(int state)
 
-    This signal is emitted when the state of the QHttp object changes.
-    The argument \a state is the new state of the connection; it is
-    one of the \l State values.
+	This signal is emitted when the state of the QHttp object changes.
+	The argument \a state is the new state of the connection; it is
+	one of the \l State values.
 
-    This usually happens when a request is started, but it can also
-    happen when the server closes the connection or when a call to
-    close() succeeded.
+	This usually happens when a request is started, but it can also
+	happen when the server closes the connection or when a call to
+	close() succeeded.
 
-    \sa get() post() head() request() close() state() State
+	\sa get() post() head() request() close() state() State
 */
 
 /*!
-    \fn void QHttp::responseHeaderReceived(const QHttpResponseHeader &resp);
+	\fn void QHttp::responseHeaderReceived(const QHttpResponseHeader &resp);
 
-    This signal is emitted when the HTTP header of a server response
-    is available. The header is passed in \a resp.
+	This signal is emitted when the HTTP header of a server response
+	is available. The header is passed in \a resp.
 
-    \sa get() post() head() request() readyRead()
+	\sa get() post() head() request() readyRead()
 */
 
 /*!
-    \fn void QHttp::readyRead(const QHttpResponseHeader &resp)
+	\fn void QHttp::readyRead(const QHttpResponseHeader &resp)
 
-    This signal is emitted when there is new response data to read.
+	This signal is emitted when there is new response data to read.
 
-    If you specified a device in the request where the data should be
-    written to, then this signal is \e not emitted; instead the data
-    is written directly to the device.
+	If you specified a device in the request where the data should be
+	written to, then this signal is \e not emitted; instead the data
+	is written directly to the device.
 
-    The response header is passed in \a resp.
+	The response header is passed in \a resp.
 
-    You can read the data with the readAll() or read() functions
+	You can read the data with the readAll() or read() functions
 
-    This signal is useful if you want to process the data in chunks as
-    soon as it becomes available. If you are only interested in the
-    complete data, just connect to the requestFinished() signal and
-    read the data then instead.
+	This signal is useful if you want to process the data in chunks as
+	soon as it becomes available. If you are only interested in the
+	complete data, just connect to the requestFinished() signal and
+	read the data then instead.
 
-    \sa get() post() request() readAll() read() bytesAvailable()
+	\sa get() post() request() readAll() read() bytesAvailable()
 */
 
 /*!
-    \fn void QHttp::dataSendProgress(int done, int total)
+	\fn void QHttp::dataSendProgress(int done, int total)
 
-    This signal is emitted when this object sends data to a HTTP
-    server to inform it about the progress of the upload.
+	This signal is emitted when this object sends data to a HTTP
+	server to inform it about the progress of the upload.
 
-    \a done is the amount of data that has already arrived and \a
-    total is the total amount of data. It is possible that the total
-    amount of data that should be transferred cannot be determined, in
-    which case \a total is 0.(If you connect to a QProgressBar, the
-    progress bar shows a busy indicator if the total is 0).
+	\a done is the amount of data that has already arrived and \a
+	total is the total amount of data. It is possible that the total
+	amount of data that should be transferred cannot be determined, in
+	which case \a total is 0.(If you connect to a QProgressBar, the
+	progress bar shows a busy indicator if the total is 0).
 
-    \warning \a done and \a total are not necessarily the size in
-    bytes, since for large files these values might need to be
-    "scaled" to avoid overflow.
+	\warning \a done and \a total are not necessarily the size in
+	bytes, since for large files these values might need to be
+	"scaled" to avoid overflow.
 
-    \sa dataReadProgress(), post(), request(), QProgressBar
+	\sa dataReadProgress(), post(), request(), QProgressBar
 */
 
 /*!
-    \fn void QHttp::dataReadProgress(int done, int total)
+	\fn void QHttp::dataReadProgress(int done, int total)
 
-    This signal is emitted when this object reads data from a HTTP
-    server to indicate the current progress of the download.
+	This signal is emitted when this object reads data from a HTTP
+	server to indicate the current progress of the download.
 
-    \a done is the amount of data that has already arrived and \a
-    total is the total amount of data. It is possible that the total
-    amount of data that should be transferred cannot be determined, in
-    which case \a total is 0.(If you connect to a QProgressBar, the
-    progress bar shows a busy indicator if the total is 0).
+	\a done is the amount of data that has already arrived and \a
+	total is the total amount of data. It is possible that the total
+	amount of data that should be transferred cannot be determined, in
+	which case \a total is 0.(If you connect to a QProgressBar, the
+	progress bar shows a busy indicator if the total is 0).
 
-    \warning \a done and \a total are not necessarily the size in
-    bytes, since for large files these values might need to be
-    "scaled" to avoid overflow.
+	\warning \a done and \a total are not necessarily the size in
+	bytes, since for large files these values might need to be
+	"scaled" to avoid overflow.
 
-    \sa dataSendProgress() get() post() request() QProgressBar
+	\sa dataSendProgress() get() post() request() QProgressBar
 */
 
 /*!
-    \fn void QHttp::requestStarted(int id)
+	\fn void QHttp::requestStarted(int id)
 
-    This signal is emitted when processing the request identified by
-    \a id starts.
+	This signal is emitted when processing the request identified by
+	\a id starts.
 
-    \sa requestFinished() done()
+	\sa requestFinished() done()
 */
 
 /*!
-    \fn void QHttp::requestFinished(int id, bool error)
+	\fn void QHttp::requestFinished(int id, bool error)
 
-    This signal is emitted when processing the request identified by
-    \a id has finished. \a error is true if an error occurred during
-    the processing; otherwise \a error is false.
+	This signal is emitted when processing the request identified by
+	\a id has finished. \a error is true if an error occurred during
+	the processing; otherwise \a error is false.
 
-    \sa requestStarted() done() error() errorString()
+	\sa requestStarted() done() error() errorString()
 */
 
 /*!
-    \fn void QHttp::done(bool error)
+	\fn void QHttp::done(bool error)
 
-    This signal is emitted when the last pending request has finished;
-    (it is emitted after the last request's requestFinished() signal).
-    \a error is true if an error occurred during the processing;
-    otherwise \a error is false.
+	This signal is emitted when the last pending request has finished;
+	(it is emitted after the last request's requestFinished() signal).
+	\a error is true if an error occurred during the processing;
+	otherwise \a error is false.
 
-    \sa requestFinished() error() errorString()
+	\sa requestFinished() error() errorString()
 */
 
 #ifndef QT_NO_NETWORKPROXY
 
 /*!
-    \fn void QHttp::proxyAuthenticationRequired(const QNetworkProxy &proxy, QAuthenticator *authenticator)
-    \since 4.3
+	\fn void QHttp::proxyAuthenticationRequired(const QNetworkProxy &proxy, QAuthenticator *authenticator)
+	\since 4.3
 
-    This signal can be emitted when a \a proxy that requires
-    authentication is used. The \a authenticator object can then be
-    filled in with the required details to allow authentication and
-    continue the connection.
+	This signal can be emitted when a \a proxy that requires
+	authentication is used. The \a authenticator object can then be
+	filled in with the required details to allow authentication and
+	continue the connection.
 
-    \note It is not possible to use a QueuedConnection to connect to
-    this signal, as the connection will fail if the authenticator has
-    not been filled in with new information when the signal returns.
+	\note It is not possible to use a QueuedConnection to connect to
+	this signal, as the connection will fail if the authenticator has
+	not been filled in with new information when the signal returns.
 
-    \sa QAuthenticator, QNetworkProxy
+	\sa QAuthenticator, QNetworkProxy
 */
 
 #endif
 
 /*!
-    \fn void QHttp::authenticationRequired(const QString &hostname, quint16 port, QAuthenticator *authenticator)
-    \since 4.3
+	\fn void QHttp::authenticationRequired(const QString &hostname, quint16 port, QAuthenticator *authenticator)
+	\since 4.3
 
-    This signal can be emitted when a web server on a given \a hostname and \a
-    port requires authentication. The \a authenticator object can then be
-    filled in with the required details to allow authentication and continue
-    the connection.
+	This signal can be emitted when a web server on a given \a hostname and \a
+	port requires authentication. The \a authenticator object can then be
+	filled in with the required details to allow authentication and continue
+	the connection.
 
-    \note It is not possible to use a QueuedConnection to connect to
-    this signal, as the connection will fail if the authenticator has
-    not been filled in with new information when the signal returns.
+	\note It is not possible to use a QueuedConnection to connect to
+	this signal, as the connection will fail if the authenticator has
+	not been filled in with new information when the signal returns.
 
-    \sa QAuthenticator, QNetworkProxy
+	\sa QAuthenticator, QNetworkProxy
 */
 
 /*!
-    \fn void QHttp::sslErrors(const QList<QSslError> &errors)
-    \since 4.3
+	\fn void QHttp::sslErrors(const QList<QSslError> &errors)
+	\since 4.3
 
-    Forwards the sslErrors signal from the QSslSocket used in QHttp. \a errors
-    is the list of errors that occurred during the SSL handshake. Unless you
-    call ignoreSslErrors() from within a slot connected to this signal when an
-    error occurs, QHttp will tear down the connection immediately after
-    emitting the signal.
+	Forwards the sslErrors signal from the QSslSocket used in QHttp. \a errors
+	is the list of errors that occurred during the SSL handshake. Unless you
+	call ignoreSslErrors() from within a slot connected to this signal when an
+	error occurs, QHttp will tear down the connection immediately after
+	emitting the signal.
 
-    \sa QSslSocket QSslSocket::ignoreSslErrors()
+	\sa QSslSocket QSslSocket::ignoreSslErrors()
 */
 
 /*!
-    Aborts the current request and deletes all scheduled requests.
+	Aborts the current request and deletes all scheduled requests.
 
-    For the current request, the requestFinished() signal with the \c
-    error argument \c true is emitted. For all other requests that are
-    affected by the abort(), no signals are emitted.
+	For the current request, the requestFinished() signal with the \c
+	error argument \c true is emitted. For all other requests that are
+	affected by the abort(), no signals are emitted.
 
-    Since this slot also deletes the scheduled requests, there are no
-    requests left and the done() signal is emitted (with the \c error
-    argument \c true).
+	Since this slot also deletes the scheduled requests, there are no
+	requests left and the done() signal is emitted (with the \c error
+	argument \c true).
 
-    \sa clearPendingRequests()
+	\sa clearPendingRequests()
 */
 void QHttp::abort()
 {
@@ -1933,10 +1932,10 @@ void QHttp::abort()
 }
 
 /*!
-    Returns the number of bytes that can be read from the response
-    content at the moment.
+	Returns the number of bytes that can be read from the response
+	content at the moment.
 
-    \sa get() post() request() readyRead() read() readAll()
+	\sa get() post() request() readyRead() read() readAll()
 */
 qint64 QHttp::bytesAvailable() const
 {
@@ -1948,14 +1947,14 @@ qint64 QHttp::bytesAvailable() const
 
 /*! \fn qint64 QHttp::readBlock(char *data, quint64 maxlen)
 
-    Use read() instead.
+	Use read() instead.
 */
 
 /*!
-    Reads \a maxlen bytes from the response content into \a data and
-    returns the number of bytes read. Returns -1 if an error occurred.
+	Reads \a maxlen bytes from the response content into \a data and
+	returns the number of bytes read. Returns -1 if an error occurred.
 
-    \sa get() post() request() readyRead() bytesAvailable() readAll()
+	\sa get() post() request() readyRead() bytesAvailable() readAll()
 */
 qint64 QHttp::read(char * data, qint64 maxlen)
 {
@@ -1984,9 +1983,9 @@ qint64 QHttp::read(char * data, qint64 maxlen)
 }
 
 /*!
-    Reads all the bytes from the response content and returns them.
+	Reads all the bytes from the response content and returns them.
 
-    \sa get() post() request() readyRead() bytesAvailable() read()
+	\sa get() post() request() readyRead() bytesAvailable() read()
 */
 QByteArray QHttp::readAll()
 {
@@ -1999,10 +1998,10 @@ QByteArray QHttp::readAll()
 }
 
 /*!
-    Returns the identifier of the HTTP request being executed or 0 if
-    there is no request being executed (i.e. they've all finished).
+	Returns the identifier of the HTTP request being executed or 0 if
+	there is no request being executed (i.e. they've all finished).
 
-    \sa currentRequest()
+	\sa currentRequest()
 */
 int QHttp::currentId() const
 {
@@ -2012,12 +2011,12 @@ int QHttp::currentId() const
 }
 
 /*!
-    Returns the request header of the HTTP request being executed. If
-    the request is one issued by setHost() or close(), it
-    returns an invalid request header, i.e.
-    QHttpRequestHeader::isValid() returns false.
+	Returns the request header of the HTTP request being executed. If
+	the request is one issued by setHost() or close(), it
+	returns an invalid request header, i.e.
+	QHttpRequestHeader::isValid() returns false.
 
-    \sa currentId()
+	\sa currentId()
 */
 QHttpRequestHeader QHttp::currentRequest() const
 {
@@ -2031,11 +2030,11 @@ QHttpRequestHeader QHttp::currentRequest() const
 }
 
 /*!
-    Returns the received response header of the most recently finished HTTP
-    request. If no response has yet been received
-    QHttpResponseHeader::isValid() will return false.
+	Returns the received response header of the most recently finished HTTP
+	request. If no response has yet been received
+	QHttpResponseHeader::isValid() will return false.
 
-    \sa currentRequest()
+	\sa currentRequest()
 */
 QHttpResponseHeader QHttp::lastResponse() const
 {
@@ -2043,14 +2042,14 @@ QHttpResponseHeader QHttp::lastResponse() const
 }
 
 /*!
-    Returns the QIODevice pointer that is used as the data source of the HTTP
-    request being executed. If there is no current request or if the request
-    does not use an IO device as the data source, this function returns 0.
+	Returns the QIODevice pointer that is used as the data source of the HTTP
+	request being executed. If there is no current request or if the request
+	does not use an IO device as the data source, this function returns 0.
 
-    This function can be used to delete the QIODevice in the slot connected to
-    the requestFinished() signal.
+	This function can be used to delete the QIODevice in the slot connected to
+	the requestFinished() signal.
 
-    \sa currentDestinationDevice() post() request()
+	\sa currentDestinationDevice() post() request()
 */
 QIODevice * QHttp::currentSourceDevice() const
 {
@@ -2060,14 +2059,14 @@ QIODevice * QHttp::currentSourceDevice() const
 }
 
 /*!
-    Returns the QIODevice pointer that is used as to store the data of the HTTP
-    request being executed. If there is no current request or if the request
-    does not store the data to an IO device, this function returns 0.
+	Returns the QIODevice pointer that is used as to store the data of the HTTP
+	request being executed. If there is no current request or if the request
+	does not store the data to an IO device, this function returns 0.
 
-    This function can be used to delete the QIODevice in the slot connected to
-    the requestFinished() signal.
+	This function can be used to delete the QIODevice in the slot connected to
+	the requestFinished() signal.
 
-    \sa currentSourceDevice() get() post() request()
+	\sa currentSourceDevice() get() post() request()
 */
 QIODevice * QHttp::currentDestinationDevice() const
 {
@@ -2077,13 +2076,13 @@ QIODevice * QHttp::currentDestinationDevice() const
 }
 
 /*!
-    Returns true if there are any requests scheduled that have not yet
-    been executed; otherwise returns false.
+	Returns true if there are any requests scheduled that have not yet
+	been executed; otherwise returns false.
 
-    The request that is being executed is \e not considered as a
-    scheduled request.
+	The request that is being executed is \e not considered as a
+	scheduled request.
 
-    \sa clearPendingRequests() currentId() currentRequest()
+	\sa clearPendingRequests() currentId() currentRequest()
 */
 bool QHttp::hasPendingRequests() const
 {
@@ -2091,11 +2090,11 @@ bool QHttp::hasPendingRequests() const
 }
 
 /*!
-    Deletes all pending requests from the list of scheduled requests.
-    This does not affect the request that is being executed. If
-    you want to stop this as well, use abort().
+	Deletes all pending requests from the list of scheduled requests.
+	This does not affect the request that is being executed. If
+	you want to stop this as well, use abort().
 
-    \sa hasPendingRequests() abort()
+	\sa hasPendingRequests() abort()
 */
 void QHttp::clearPendingRequests()
 {
@@ -2105,19 +2104,19 @@ void QHttp::clearPendingRequests()
 }
 
 /*!
-    Sets the HTTP server that is used for requests to \a hostName on
-    port \a port.
+	Sets the HTTP server that is used for requests to \a hostName on
+	port \a port.
 
-    The function does not block; instead, it returns immediately. The request
-    is scheduled, and its execution is performed asynchronously. The
-    function returns a unique identifier which is passed by
-    requestStarted() and requestFinished().
+	The function does not block; instead, it returns immediately. The request
+	is scheduled, and its execution is performed asynchronously. The
+	function returns a unique identifier which is passed by
+	requestStarted() and requestFinished().
 
-    When the request is started the requestStarted() signal is
-    emitted. When it is finished the requestFinished() signal is
-    emitted.
+	When the request is started the requestStarted() signal is
+	emitted. When it is finished the requestFinished() signal is
+	emitted.
 
-    \sa get() post() head() request() requestStarted() requestFinished() done()
+	\sa get() post() head() request() requestStarted() requestFinished() done()
 */
 int QHttp::setHost(const QString & hostName, quint16 port)
 {
@@ -2125,22 +2124,22 @@ int QHttp::setHost(const QString & hostName, quint16 port)
 }
 
 /*!
-    Sets the HTTP server that is used for requests to \a hostName on
-    port \a port using the connection mode \a mode.
+	Sets the HTTP server that is used for requests to \a hostName on
+	port \a port using the connection mode \a mode.
 
-    If port is 0, it will use the default port for the \a mode used
-    (80 for HTTP and 443 for HTTPS).
+	If port is 0, it will use the default port for the \a mode used
+	(80 for HTTP and 443 for HTTPS).
 
-    The function does not block; instead, it returns immediately. The request
-    is scheduled, and its execution is performed asynchronously. The
-    function returns a unique identifier which is passed by
-    requestStarted() and requestFinished().
+	The function does not block; instead, it returns immediately. The request
+	is scheduled, and its execution is performed asynchronously. The
+	function returns a unique identifier which is passed by
+	requestStarted() and requestFinished().
 
-    When the request is started the requestStarted() signal is
-    emitted. When it is finished the requestFinished() signal is
-    emitted.
+	When the request is started the requestStarted() signal is
+	emitted. When it is finished the requestFinished() signal is
+	emitted.
 
-    \sa get() post() head() request() requestStarted() requestFinished() done()
+	\sa get() post() head() request() requestStarted() requestFinished() done()
 */
 int QHttp::setHost(const QString & hostName, ConnectionMode mode, quint16 port)
 {
@@ -2154,25 +2153,25 @@ int QHttp::setHost(const QString & hostName, ConnectionMode mode, quint16 port)
 }
 
 /*!
-    Replaces the internal QTcpSocket that QHttp uses with \a
-    socket. This is useful if you want to use your own custom QTcpSocket
-    subclass instead of the plain QTcpSocket that QHttp uses by default.
-    QHttp does not take ownership of the socket, and will not delete \a
-    socket when destroyed.
+	Replaces the internal QTcpSocket that QHttp uses with \a
+	socket. This is useful if you want to use your own custom QTcpSocket
+	subclass instead of the plain QTcpSocket that QHttp uses by default.
+	QHttp does not take ownership of the socket, and will not delete \a
+	socket when destroyed.
 
-    The function does not block; instead, it returns immediately. The request
-    is scheduled, and its execution is performed asynchronously. The
-    function returns a unique identifier which is passed by
-    requestStarted() and requestFinished().
+	The function does not block; instead, it returns immediately. The request
+	is scheduled, and its execution is performed asynchronously. The
+	function returns a unique identifier which is passed by
+	requestStarted() and requestFinished().
 
-    When the request is started the requestStarted() signal is
-    emitted. When it is finished the requestFinished() signal is
-    emitted.
+	When the request is started the requestStarted() signal is
+	emitted. When it is finished the requestFinished() signal is
+	emitted.
 
-    Note: If QHttp is used in a non-GUI thread that runs its own event
-    loop, you must move \a socket to that thread before calling setSocket().
+	Note: If QHttp is used in a non-GUI thread that runs its own event
+	loop, you must move \a socket to that thread before calling setSocket().
 
-    \sa QObject::moveToThread(), {Thread Support in Qt}
+	\sa QObject::moveToThread(), {Thread Support in Qt}
 */
 int QHttp::setSocket(QTcpSocket * socket)
 {
@@ -2180,17 +2179,17 @@ int QHttp::setSocket(QTcpSocket * socket)
 }
 
 /*!
-    This function sets the user name \a userName and password \a
-    password for web pages that require authentication.
+	This function sets the user name \a userName and password \a
+	password for web pages that require authentication.
 
-    The function does not block; instead, it returns immediately. The request
-    is scheduled, and its execution is performed asynchronously. The
-    function returns a unique identifier which is passed by
-    requestStarted() and requestFinished().
+	The function does not block; instead, it returns immediately. The request
+	is scheduled, and its execution is performed asynchronously. The
+	function returns a unique identifier which is passed by
+	requestStarted() and requestFinished().
 
-    When the request is started the requestStarted() signal is
-    emitted. When it is finished the requestFinished() signal is
-    emitted.
+	When the request is started the requestStarted() signal is
+	emitted. When it is finished the requestFinished() signal is
+	emitted.
 */
 int QHttp::setUser(const QString & userName, const QString & password)
 {
@@ -2200,44 +2199,44 @@ int QHttp::setUser(const QString & userName, const QString & password)
 #ifndef QT_NO_NETWORKPROXY
 
 /*!
-    Enables HTTP proxy support, using the proxy server \a host on port \a
-    port. \a username and \a password can be provided if the proxy server
-    requires authentication.
+	Enables HTTP proxy support, using the proxy server \a host on port \a
+	port. \a username and \a password can be provided if the proxy server
+	requires authentication.
 
-    Example:
+	Example:
 
-    \snippet doc/src/snippets/code/src_network_access_qhttp.cpp 7
+	\snippet doc/src/snippets/code/src_network_access_qhttp.cpp 7
 
-    QHttp supports non-transparent web proxy servers only, such as the Squid
-    Web proxy cache server (from \l http://www.squid.org/). For transparent
-    proxying, such as SOCKS5, use QNetworkProxy instead.
+	QHttp supports non-transparent web proxy servers only, such as the Squid
+	Web proxy cache server (from \l http://www.squid.org/). For transparent
+	proxying, such as SOCKS5, use QNetworkProxy instead.
 
-    \note setProxy() has to be called before setHost() for it to take effect.
-    If setProxy() is called after setHost(), then it will not apply until after
-    setHost() is called again.
+	\note setProxy() has to be called before setHost() for it to take effect.
+	If setProxy() is called after setHost(), then it will not apply until after
+	setHost() is called again.
 
-    \sa QFtp::setProxy()
+	\sa QFtp::setProxy()
 */
 int QHttp::setProxy(const QString & host, int port,
-    const QString & username, const QString & password)
+	const QString & username, const QString & password)
 {
 	QNetworkProxy proxy(QNetworkProxy::HttpProxy, host, port, username, password);
 	return d->addRequest(new QHttpSetProxyRequest(proxy));
 }
 
 /*!
-    \overload
+	\overload
 
-    Enables HTTP proxy support using the proxy settings from \a
-    proxy. If \a proxy is a transparent proxy, QHttp will call
-    QAbstractSocket::setProxy() on the underlying socket. If the type
-    is QNetworkProxy::HttpCachingProxy, QHttp will behave like the
-    previous function.
+	Enables HTTP proxy support using the proxy settings from \a
+	proxy. If \a proxy is a transparent proxy, QHttp will call
+	QAbstractSocket::setProxy() on the underlying socket. If the type
+	is QNetworkProxy::HttpCachingProxy, QHttp will behave like the
+	previous function.
 
-    \note for compatibility with Qt 4.3, if the proxy type is
-    QNetworkProxy::HttpProxy and the request type is unencrypted (that
-    is, ConnectionModeHttp), QHttp will treat the proxy as a caching
-    proxy.
+	\note for compatibility with Qt 4.3, if the proxy type is
+	QNetworkProxy::HttpProxy and the request type is unencrypted (that
+	is, ConnectionModeHttp), QHttp will treat the proxy as a caching
+	proxy.
 */
 int QHttp::setProxy(const QNetworkProxy & proxy)
 {
@@ -2247,35 +2246,35 @@ int QHttp::setProxy(const QNetworkProxy & proxy)
 #endif
 
 /*!
-    Sends a get request for \a path to the server set by setHost() or
-    as specified in the constructor.
+	Sends a get request for \a path to the server set by setHost() or
+	as specified in the constructor.
 
-    \a path must be a absolute path like \c /index.html or an
-    absolute URI like \c http://example.com/index.html and
-    must be encoded with either QUrl::toPercentEncoding() or
-    QUrl::encodedPath().
+	\a path must be a absolute path like \c /index.html or an
+	absolute URI like \c http://example.com/index.html and
+	must be encoded with either QUrl::toPercentEncoding() or
+	QUrl::encodedPath().
 
-    If the IO device \a to is 0 the readyRead() signal is emitted
-    every time new content data is available to read.
+	If the IO device \a to is 0 the readyRead() signal is emitted
+	every time new content data is available to read.
 
-    If the IO device \a to is not 0, the content data of the response
-    is written directly to the device. Make sure that the \a to
-    pointer is valid for the duration of the operation (it is safe to
-    delete it when the requestFinished() signal is emitted).
+	If the IO device \a to is not 0, the content data of the response
+	is written directly to the device. Make sure that the \a to
+	pointer is valid for the duration of the operation (it is safe to
+	delete it when the requestFinished() signal is emitted).
 
-    \section1 Request Processing
+	\section1 Request Processing
 
-    The function does not block; instead, it returns immediately. The request
-    is scheduled, and its execution is performed asynchronously. The
-    function returns a unique identifier which is passed by
-    requestStarted() and requestFinished().
+	The function does not block; instead, it returns immediately. The request
+	is scheduled, and its execution is performed asynchronously. The
+	function returns a unique identifier which is passed by
+	requestStarted() and requestFinished().
 
-    When the request is started the requestStarted() signal is
-    emitted. When it is finished the requestFinished() signal is
-    emitted.
+	When the request is started the requestStarted() signal is
+	emitted. When it is finished the requestFinished() signal is
+	emitted.
 
-    \sa setHost(), post(), head(), request(), requestStarted(),
-    requestFinished(), done()
+	\sa setHost(), post(), head(), request(), requestStarted(),
+	requestFinished(), done()
 */
 int QHttp::get(const QString & path, QIODevice * to)
 {
@@ -2285,34 +2284,34 @@ int QHttp::get(const QString & path, QIODevice * to)
 }
 
 /*!
-    Sends a post request for \a path to the server set by setHost() or
-    as specified in the constructor.
+	Sends a post request for \a path to the server set by setHost() or
+	as specified in the constructor.
 
-    \a path must be an absolute path like \c /index.html or an
-    absolute URI like \c http://example.com/index.html and
-    must be encoded with either QUrl::toPercentEncoding() or
-    QUrl::encodedPath().
+	\a path must be an absolute path like \c /index.html or an
+	absolute URI like \c http://example.com/index.html and
+	must be encoded with either QUrl::toPercentEncoding() or
+	QUrl::encodedPath().
 
-    The incoming data comes via the \a data IO device.
+	The incoming data comes via the \a data IO device.
 
-    If the IO device \a to is 0 the readyRead() signal is emitted
-    every time new content data is available to read.
+	If the IO device \a to is 0 the readyRead() signal is emitted
+	every time new content data is available to read.
 
-    If the IO device \a to is not 0, the content data of the response
-    is written directly to the device. Make sure that the \a to
-    pointer is valid for the duration of the operation (it is safe to
-    delete it when the requestFinished() signal is emitted).
+	If the IO device \a to is not 0, the content data of the response
+	is written directly to the device. Make sure that the \a to
+	pointer is valid for the duration of the operation (it is safe to
+	delete it when the requestFinished() signal is emitted).
 
-    The function does not block; instead, it returns immediately. The request
-    is scheduled, and its execution is performed asynchronously. The
-    function returns a unique identifier which is passed by
-    requestStarted() and requestFinished().
+	The function does not block; instead, it returns immediately. The request
+	is scheduled, and its execution is performed asynchronously. The
+	function returns a unique identifier which is passed by
+	requestStarted() and requestFinished().
 
-    When the request is started the requestStarted() signal is
-    emitted. When it is finished the requestFinished() signal is
-    emitted.
+	When the request is started the requestStarted() signal is
+	emitted. When it is finished the requestFinished() signal is
+	emitted.
 
-    \sa setHost() get() head() request() requestStarted() requestFinished() done()
+	\sa setHost() get() head() request() requestStarted() requestFinished() done()
 */
 int QHttp::post(const QString & path, QIODevice * data, QIODevice * to)
 {
@@ -2322,9 +2321,9 @@ int QHttp::post(const QString & path, QIODevice * data, QIODevice * to)
 }
 
 /*!
-    \overload
+	\overload
 
-    \a data is used as the content data of the HTTP request.
+	\a data is used as the content data of the HTTP request.
 */
 int QHttp::post(const QString & path, const QByteArray & data, QIODevice * to)
 {
@@ -2334,22 +2333,22 @@ int QHttp::post(const QString & path, const QByteArray & data, QIODevice * to)
 }
 
 /*!
-    Sends a header request for \a path to the server set by setHost()
-    or as specified in the constructor.
+	Sends a header request for \a path to the server set by setHost()
+	or as specified in the constructor.
 
-    \a path must be an absolute path like \c /index.html or an
-    absolute URI like \c http://example.com/index.html.
+	\a path must be an absolute path like \c /index.html or an
+	absolute URI like \c http://example.com/index.html.
 
-    The function does not block; instead, it returns immediately. The request
-    is scheduled, and its execution is performed asynchronously. The
-    function returns a unique identifier which is passed by
-    requestStarted() and requestFinished().
+	The function does not block; instead, it returns immediately. The request
+	is scheduled, and its execution is performed asynchronously. The
+	function returns a unique identifier which is passed by
+	requestStarted() and requestFinished().
 
-    When the request is started the requestStarted() signal is
-    emitted. When it is finished the requestFinished() signal is
-    emitted.
+	When the request is started the requestStarted() signal is
+	emitted. When it is finished the requestFinished() signal is
+	emitted.
 
-    \sa setHost() get() post() request() requestStarted() requestFinished() done()
+	\sa setHost() get() post() request() requestStarted() requestFinished() done()
 */
 int QHttp::head(const QString & path)
 {
@@ -2359,31 +2358,31 @@ int QHttp::head(const QString & path)
 }
 
 /*!
-    Sends a request to the server set by setHost() or as specified in
-    the constructor. Uses the \a header as the HTTP request header.
-    You are responsible for setting up a header that is appropriate
-    for your request.
+	Sends a request to the server set by setHost() or as specified in
+	the constructor. Uses the \a header as the HTTP request header.
+	You are responsible for setting up a header that is appropriate
+	for your request.
 
-    The incoming data comes via the \a data IO device.
+	The incoming data comes via the \a data IO device.
 
-    If the IO device \a to is 0 the readyRead() signal is emitted
-    every time new content data is available to read.
+	If the IO device \a to is 0 the readyRead() signal is emitted
+	every time new content data is available to read.
 
-    If the IO device \a to is not 0, the content data of the response
-    is written directly to the device. Make sure that the \a to
-    pointer is valid for the duration of the operation (it is safe to
-    delete it when the requestFinished() signal is emitted).
+	If the IO device \a to is not 0, the content data of the response
+	is written directly to the device. Make sure that the \a to
+	pointer is valid for the duration of the operation (it is safe to
+	delete it when the requestFinished() signal is emitted).
 
-    The function does not block; instead, it returns immediately. The request
-    is scheduled, and its execution is performed asynchronously. The
-    function returns a unique identifier which is passed by
-    requestStarted() and requestFinished().
+	The function does not block; instead, it returns immediately. The request
+	is scheduled, and its execution is performed asynchronously. The
+	function returns a unique identifier which is passed by
+	requestStarted() and requestFinished().
 
-    When the request is started the requestStarted() signal is
-    emitted. When it is finished the requestFinished() signal is
-    emitted.
+	When the request is started the requestStarted() signal is
+	emitted. When it is finished the requestFinished() signal is
+	emitted.
 
-    \sa setHost() get() post() head() requestStarted() requestFinished() done()
+	\sa setHost() get() post() head() requestStarted() requestFinished() done()
 */
 int QHttp::request(const QHttpRequestHeader & header, QIODevice * data, QIODevice * to)
 {
@@ -2391,9 +2390,9 @@ int QHttp::request(const QHttpRequestHeader & header, QIODevice * data, QIODevic
 }
 
 /*!
-    \overload
+	\overload
 
-    \a data is used as the content data of the HTTP request.
+	\a data is used as the content data of the HTTP request.
 */
 int QHttp::request(const QHttpRequestHeader & header, const QByteArray & data, QIODevice * to)
 {
@@ -2401,28 +2400,28 @@ int QHttp::request(const QHttpRequestHeader & header, const QByteArray & data, Q
 }
 
 /*!
-    Closes the connection; this is useful if you have a keep-alive
-    connection and want to close it.
+	Closes the connection; this is useful if you have a keep-alive
+	connection and want to close it.
 
-    For the requests issued with get(), post() and head(), QHttp sets
-    the connection to be keep-alive. You can also do this using the
-    header you pass to the request() function. QHttp only closes the
-    connection to the HTTP server if the response header requires it
-    to do so.
+	For the requests issued with get(), post() and head(), QHttp sets
+	the connection to be keep-alive. You can also do this using the
+	header you pass to the request() function. QHttp only closes the
+	connection to the HTTP server if the response header requires it
+	to do so.
 
-    The function does not block; instead, it returns immediately. The request
-    is scheduled, and its execution is performed asynchronously. The
-    function returns a unique identifier which is passed by
-    requestStarted() and requestFinished().
+	The function does not block; instead, it returns immediately. The request
+	is scheduled, and its execution is performed asynchronously. The
+	function returns a unique identifier which is passed by
+	requestStarted() and requestFinished().
 
-    When the request is started the requestStarted() signal is
-    emitted. When it is finished the requestFinished() signal is
-    emitted.
+	When the request is started the requestStarted() signal is
+	emitted. When it is finished the requestFinished() signal is
+	emitted.
 
-    If you want to close the connection immediately, you have to use
-    abort() instead.
+	If you want to close the connection immediately, you have to use
+	abort() instead.
 
-    \sa stateChanged() abort() requestStarted() requestFinished() done()
+	\sa stateChanged() abort() requestStarted() requestFinished() done()
 */
 int QHttp::close()
 {
@@ -2430,9 +2429,9 @@ int QHttp::close()
 }
 
 /*!
-    \obsolete
+	\obsolete
 
-    Behaves the same as close().
+	Behaves the same as close().
 */
 int QHttp::closeConnection()
 {
@@ -2488,7 +2487,7 @@ void QHttpPrivate::_q_slotSendRequest()
 	if(hostName.isNull())
 	{
 		finishedWithError(QLatin1String(QT_TRANSLATE_NOOP("QHttp", "No server set to connect to")),
-		    QHttp::UnknownError);
+			QHttp::UnknownError);
 		return;
 	}
 
@@ -2579,11 +2578,11 @@ void QHttpPrivate::_q_slotSendRequest()
 	// Do we need to setup a new connection or can we reuse an
 	// existing one?
 	if(socket->peerName() != connectionHost || socket->peerPort() != connectionPort
-	    || socket->state() != QTcpSocket::ConnectedState
+		|| socket->state() != QTcpSocket::ConnectedState
 #ifndef QT_NO_OPENSSL
-	    || (sslSocket && sslSocket->isEncrypted() != (mode == QHttp::ConnectionModeHttps))
+		|| (sslSocket && sslSocket->isEncrypted() != (mode == QHttp::ConnectionModeHttps))
 #endif
-	        )
+		)
 	{
 		socket->blockSignals(true);
 		socket->abort();
@@ -2743,34 +2742,34 @@ void QHttpPrivate::_q_slotError(QAbstractSocket::SocketError err)
 	{
 		switch(err)
 		{
-			case QTcpSocket::ConnectionRefusedError:
-				finishedWithError(QLatin1String(QT_TRANSLATE_NOOP("QHttp", "Connection refused (or timed out)")), QHttp::ConnectionRefused);
-				break;
-			case QTcpSocket::HostNotFoundError:
-				finishedWithError(QString::fromLatin1(QT_TRANSLATE_NOOP("QHttp", "Host %1 not found"))
-				                      .arg(socket->peerName()),
-				    QHttp::HostNotFound);
-				break;
-			case QTcpSocket::RemoteHostClosedError:
-				if(state == QHttp::Sending && reconnectAttempts--)
-				{
-					setState(QHttp::Closing);
-					setState(QHttp::Unconnected);
-					socket->blockSignals(true);
-					socket->abort();
-					socket->blockSignals(false);
-					QMetaObject::invokeMethod(q, "_q_slotSendRequest", Qt::QueuedConnection);
-					return;
-				}
-				break;
+		case QTcpSocket::ConnectionRefusedError:
+			finishedWithError(QLatin1String(QT_TRANSLATE_NOOP("QHttp", "Connection refused (or timed out)")), QHttp::ConnectionRefused);
+			break;
+		case QTcpSocket::HostNotFoundError:
+			finishedWithError(QString::fromLatin1(QT_TRANSLATE_NOOP("QHttp", "Host %1 not found"))
+				.arg(socket->peerName()),
+				QHttp::HostNotFound);
+			break;
+		case QTcpSocket::RemoteHostClosedError:
+			if(state == QHttp::Sending && reconnectAttempts--)
+			{
+				setState(QHttp::Closing);
+				setState(QHttp::Unconnected);
+				socket->blockSignals(true);
+				socket->abort();
+				socket->blockSignals(false);
+				QMetaObject::invokeMethod(q, "_q_slotSendRequest", Qt::QueuedConnection);
+				return;
+			}
+			break;
 #ifndef QT_NO_NETWORKPROXY
-			case QTcpSocket::ProxyAuthenticationRequiredError:
-				finishedWithError(socket->errorString(), QHttp::ProxyAuthenticationRequiredError);
-				break;
+		case QTcpSocket::ProxyAuthenticationRequiredError:
+			finishedWithError(socket->errorString(), QHttp::ProxyAuthenticationRequiredError);
+			break;
 #endif
-			default:
-				finishedWithError(QLatin1String(QT_TRANSLATE_NOOP("QHttp", "HTTP request failed")), QHttp::UnknownError);
-				break;
+		default:
+			finishedWithError(QLatin1String(QT_TRANSLATE_NOOP("QHttp", "HTTP request failed")), QHttp::UnknownError);
+			break;
 		}
 	}
 
@@ -2802,8 +2801,8 @@ void QHttpPrivate::postMoreData()
 	if(!postDevice)
 		return;
 
-// the following is backported code from Qt 4.6 QNetworkAccessManager.
-// We also have to check the encryptedBytesToWrite() if it is an SSL socket.
+	// the following is backported code from Qt 4.6 QNetworkAccessManager.
+	// We also have to check the encryptedBytesToWrite() if it is an SSL socket.
 #ifndef QT_NO_OPENSSL
 	QSslSocket * sslSocket = qobject_cast<QSslSocket *>(socket);
 	// if it is really an ssl socket, check more than just bytesToWrite()
@@ -2831,7 +2830,7 @@ void QHttpPrivate::postMoreData()
 
 		socket->write(arr, n);
 	}
-}
+	}
 
 void QHttpPrivate::_q_slotReadyRead()
 {
@@ -2872,7 +2871,7 @@ void QHttpPrivate::_q_slotReadyRead()
 		if(!response.isValid())
 		{
 			finishedWithError(QLatin1String(QT_TRANSLATE_NOOP("QHttp", "Invalid HTTP response header")),
-			    QHttp::InvalidResponseHeader);
+				QHttp::InvalidResponseHeader);
 			closeConn();
 			return;
 		}
@@ -2882,11 +2881,11 @@ void QHttpPrivate::_q_slotReadyRead()
 		{ // (Proxy) Authentication required
 			QHttpAuthenticator * auth =
 #ifndef QT_NO_NETWORKPROXY
-			    statusCode == 407
-			    ? &proxyAuthenticator
-			    :
+				statusCode == 407
+				? &proxyAuthenticator
+				:
 #endif
-			    &authenticator;
+				&authenticator;
 			if(auth->isNull())
 				auth->detach();
 			QHttpAuthenticatorPrivate * priv = QHttpAuthenticatorPrivate::getPrivate(*auth);
@@ -2925,7 +2924,7 @@ void QHttpPrivate::_q_slotReadyRead()
 			else if(priv->phase == QHttpAuthenticatorPrivate::Invalid)
 			{
 				finishedWithError(QLatin1String(QT_TRANSLATE_NOOP("QHttp", "Unknown authentication method")),
-				    QHttp::AuthenticationRequiredError);
+					QHttp::AuthenticationRequiredError);
 				closeConn();
 				return;
 			}
@@ -2936,11 +2935,11 @@ void QHttpPrivate::_q_slotReadyRead()
 #ifndef QT_NO_NETWORKPROXY
 				if(statusCode == 407)
 					finishedWithError(QLatin1String(QT_TRANSLATE_NOOP("QHttp", "Proxy authentication required")),
-					    QHttp::ProxyAuthenticationRequiredError);
+						QHttp::ProxyAuthenticationRequiredError);
 				else
 #endif
 					finishedWithError(QLatin1String(QT_TRANSLATE_NOOP("QHttp", "Authentication required")),
-					    QHttp::AuthenticationRequiredError);
+						QHttp::AuthenticationRequiredError);
 				closeConn();
 				return;
 			}
@@ -2948,7 +2947,7 @@ void QHttpPrivate::_q_slotReadyRead()
 			{
 				// close the connection if it isn't already and reconnect using the chosen authentication method
 				bool willClose = (response.value(QLatin1String("proxy-connection")).toLower() == QLatin1String("close"))
-				    || (response.value(QLatin1String("connection")).toLower() == QLatin1String("close"));
+					|| (response.value(QLatin1String("connection")).toLower() == QLatin1String("close"));
 				if(willClose)
 				{
 					if(socket)
@@ -3039,7 +3038,7 @@ void QHttpPrivate::_q_slotReadyRead()
 					if(!ok)
 					{
 						finishedWithError(QLatin1String(QT_TRANSLATE_NOOP("QHttp", "Invalid HTTP chunked body")),
-						    QHttp::WrongContentLength);
+							QHttp::WrongContentLength);
 						closeConn();
 						delete arr;
 						return;
@@ -3092,7 +3091,7 @@ void QHttpPrivate::_q_slotReadyRead()
 					if(tmp[0] != '\r' || tmp[1] != '\n')
 					{
 						finishedWithError(QLatin1String(QT_TRANSLATE_NOOP("QHttp", "Invalid HTTP chunked body")),
-						    QHttp::WrongContentLength);
+							QHttp::WrongContentLength);
 						closeConn();
 						delete arr;
 						return;
@@ -3208,10 +3207,10 @@ void QHttpPrivate::_q_slotDoFinished()
 }
 
 /*!
-    Returns the current state of the object. When the state changes,
-    the stateChanged() signal is emitted.
+	Returns the current state of the object. When the state changes,
+	the stateChanged() signal is emitted.
 
-    \sa State stateChanged()
+	\sa State stateChanged()
 */
 QHttp::State QHttp::state() const
 {
@@ -3219,11 +3218,11 @@ QHttp::State QHttp::state() const
 }
 
 /*!
-    Returns the last error that occurred. This is useful to find out
-    what happened when receiving a requestFinished() or a done()
-    signal with the \c error argument \c true.
+	Returns the last error that occurred. This is useful to find out
+	what happened when receiving a requestFinished() or a done()
+	signal with the \c error argument \c true.
 
-    If you start a new request, the error status is reset to \c NoError.
+	If you start a new request, the error status is reset to \c NoError.
 */
 QHttp::Error QHttp::error() const
 {
@@ -3231,10 +3230,10 @@ QHttp::Error QHttp::error() const
 }
 
 /*!
-    Returns a human-readable description of the last error that
-    occurred. This is useful to present a error message to the user
-    when receiving a requestFinished() or a done() signal with the \c
-    error argument \c true.
+	Returns a human-readable description of the last error that
+	occurred. This is useful to present a error message to the user
+	when receiving a requestFinished() or a done() signal with the \c
+	error argument \c true.
 */
 QString QHttp::errorString() const
 {
@@ -3302,31 +3301,31 @@ void QHttpPrivate::setSock(QTcpSocket * sock)
 	QObject::connect(socket, SIGNAL(readyRead()), q, SLOT(_q_slotReadyRead()));
 	QObject::connect(socket, SIGNAL(error(QAbstractSocket::SocketError)), q, SLOT(_q_slotError(QAbstractSocket::SocketError)));
 	QObject::connect(socket, SIGNAL(bytesWritten(qint64)),
-	    q, SLOT(_q_slotBytesWritten(qint64)));
+		q, SLOT(_q_slotBytesWritten(qint64)));
 #ifndef QT_NO_NETWORKPROXY
 	QObject::connect(socket, SIGNAL(proxyAuthenticationRequired(QNetworkProxy, QAuthenticator *)),
-	    q, SIGNAL(proxyAuthenticationRequired(QNetworkProxy, QAuthenticator *)));
+		q, SIGNAL(proxyAuthenticationRequired(QNetworkProxy, QAuthenticator *)));
 #endif
 
 #ifndef QT_NO_OPENSSL
 	if(qobject_cast<QSslSocket *>(socket))
 	{
 		QObject::connect(socket, SIGNAL(sslErrors(QList<QSslError>)),
-		    q, SIGNAL(sslErrors(QList<QSslError>)));
+			q, SIGNAL(sslErrors(QList<QSslError>)));
 		QObject::connect(socket, SIGNAL(encryptedBytesWritten(qint64)),
-		    q, SLOT(_q_slotEncryptedBytesWritten(qint64)));
+			q, SLOT(_q_slotEncryptedBytesWritten(qint64)));
 	}
 #endif
 }
 
 /*!
-    Tells the QSslSocket used for the Http connection to ignore the errors
-    reported in the sslErrors() signal.
+	Tells the QSslSocket used for the Http connection to ignore the errors
+	reported in the sslErrors() signal.
 
-    Note that this function must be called from within a slot connected to the
-    sslErrors() signal to have any effect.
+	Note that this function must be called from within a slot connected to the
+	sslErrors() signal to have any effect.
 
-    \sa QSslSocket QSslSocket::sslErrors()
+	\sa QSslSocket QSslSocket::sslErrors()
 */
 #ifndef QT_NO_OPENSSL
 void QHttp::ignoreSslErrors()

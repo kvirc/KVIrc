@@ -62,7 +62,7 @@ public:
 
 protected:
 	bool validate();
-protected slots:
+	protected slots:
 	void okPressed();
 };
 
@@ -79,7 +79,7 @@ protected:
 	QPushButton * m_pAddRuleButton;
 	QPushButton * m_pDelRuleButton;
 	QPushButton * m_pEditRuleButton;
-protected slots:
+	protected slots:
 	void enableDisableNickServControls();
 	void addNickServRule();
 	void delNickServRule();

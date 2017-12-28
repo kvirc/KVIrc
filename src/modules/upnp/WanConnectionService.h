@@ -24,11 +24,11 @@
 //=============================================================================
 
 /***************************************************************************
-                          WanConnectionService.h -  description
-                             -------------------
-    begin                : Mon Jul 25 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  WanConnectionService.h -  description
+							 -------------------
+	begin                : Mon Jul 25 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #ifndef UPNP_WANCONNECTIONSERVICE_H
@@ -39,7 +39,6 @@
 
 namespace UPnP
 {
-
 	struct PortMapping
 	{
 		QString protocol;
@@ -72,8 +71,8 @@ namespace UPnP
 
 		// Add a port mapping
 		void addPortMapping(const QString & protocol, const QString & remoteHost, int externalPort,
-		    const QString & internalClient, int internalPort, const QString & description,
-		    bool enabled = true, int leaseDuration = 0);
+			const QString & internalClient, int internalPort, const QString & description,
+			bool enabled = true, int leaseDuration = 0);
 		// Delete a port mapping
 		void deletePortMapping(const QString & protocol, const QString & remoteHost, int externalPort);
 

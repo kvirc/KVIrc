@@ -89,8 +89,8 @@ class ChannelTreeWidget : public KviThemedTreeWidget
 	friend class ChannelTreeWidgetItemData;
 	Q_OBJECT
 public:
-	ChannelTreeWidget(QWidget * par, KviWindow * pWindow, const char * name) : KviThemedTreeWidget(par, pWindow, name){};
-	~ChannelTreeWidget(){};
+	ChannelTreeWidget(QWidget * par, KviWindow * pWindow, const char * name) : KviThemedTreeWidget(par, pWindow, name) {};
+	~ChannelTreeWidget() {};
 	ChannelTreeWidgetItem * itemFromIndex(const QModelIndex & index) const { return (ChannelTreeWidgetItem *)KviThemedTreeWidget::itemFromIndex(index); };
 };
 
@@ -126,7 +126,7 @@ protected:
 	virtual void applyOptions();
 	virtual void resizeEvent(QResizeEvent * e);
 	virtual void getBaseLogFileName(QString & szBuffer);
-protected slots:
+	protected slots:
 	void flush();
 	void itemDoubleClicked(QTreeWidgetItem * it, int);
 	void requestList();

@@ -100,7 +100,7 @@
 			[example]
 				[cmd]if[/cmd](%myobject)
 					[cmd]echo[/cmd] "Object created!"
-				else 
+				else
 					[cmd]echo[/cmd] "Object creation failed!"
 			[/example]
 			You can also test the object ID's for equality:
@@ -178,7 +178,7 @@
 						%test = "will this persist?"
 					}
 
-					anotherfunc() 
+					anotherfunc()
 					{
 						[cmd]echo[/cmd] "var: %test"
 					}
@@ -385,8 +385,8 @@
 					{
 						[fnc:$this]$$[/fnc]-&gt;%lang = $0
 						[cmd]return[/cmd] 1
-					} 
-					else 
+					}
+					else
 					{
 						[cmd]echo[/cmd] I don't know that language ($0)
 						[cmd]echo[/cmd] defaulting to English
@@ -399,7 +399,7 @@
 				{
 					[cmd]if[/cmd]([fnc:$this]$$[/fnc]-&gt;%lang == italian)
 						[cmd]echo[/cmd] Ciao mondo!
-					else 
+					else
 						[fnc:$this]$$[/fnc]-&gt;$helloworld:sayhello()
 				}
 			}
@@ -629,12 +629,12 @@
 			destructor.
 	*/
 
-// we use a char * pointer just to store a number
-// we don't use void * just because incrementing a void pointer doesn't look that good
+	// we use a char * pointer just to store a number
+	// we don't use void * just because incrementing a void pointer doesn't look that good
 static char * g_hNextObjectHandle = (char *)nullptr;
 
 KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass, KviKvsObject * pParent, const QString & szName)
-    : QObject(pParent), m_pClass{pClass}, m_szName{szName}
+	: QObject(pParent), m_pClass{ pClass }, m_szName{ szName }
 {
 	setObjectName(szName);
 
@@ -938,13 +938,13 @@ int KviKvsObject::emitSignal(const QString & sigName, KviKvsObjectFunctionCall *
 			if(KviKvsKernel::instance()->objectController()->lookupObject(hTarget) && it.current())
 			{
 				pOuterCall->warning(
-				    __tr2qs_ctx("Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from object '%Q::%Q': disconnecting", "kvs"),
-				    &(s->szSlot),
-				    &(s->pTargetObject->getClass()->name()),
-				    &(s->pTargetObject->getName()),
-				    &(sigName),
-				    &(getClass()->name()),
-				    &m_szName);
+					__tr2qs_ctx("Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from object '%Q::%Q': disconnecting", "kvs"),
+					&(s->szSlot),
+					&(s->pTargetObject->getClass()->name()),
+					&(s->pTargetObject->getName()),
+					&(sigName),
+					&(getClass()->name()),
+					&m_szName);
 
 				if(!pDis)
 				{
@@ -957,10 +957,10 @@ int KviKvsObject::emitSignal(const QString & sigName, KviKvsObjectFunctionCall *
 			{
 				// else destroyed in the call! (already disconnected)
 				pOuterCall->warning(
-				    __tr2qs_ctx("Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'", "kvs"),
-				    &(sigName),
-				    &(getClass()->name()),
-				    &m_szName);
+					__tr2qs_ctx("Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'", "kvs"),
+					&(sigName),
+					&(getClass()->name()),
+					&m_szName);
 			}
 		}
 
@@ -1043,11 +1043,11 @@ bool KviKvsObject::function_findChild(KviKvsObjectFunctionCall * c)
 {
 	QString szClass, szName;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("className", KVS_PT_STRING, KVS_PF_OPTIONAL, szClass)
-	KVSO_PARAMETER("objectName", KVS_PT_STRING, KVS_PF_OPTIONAL, szName)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("className", KVS_PT_STRING, KVS_PF_OPTIONAL, szClass)
+		KVSO_PARAMETER("objectName", KVS_PT_STRING, KVS_PF_OPTIONAL, szName)
+		KVSO_PARAMETERS_END(c)
 
-	KviKvsObject * o = findChild(szClass, szName);
+		KviKvsObject * o = findChild(szClass, szName);
 	c->returnValue()->setHObject(o ? o->handle() : (kvs_hobject_t) nullptr);
 
 	return true;
@@ -1058,11 +1058,11 @@ bool KviKvsObject::function_emit(KviKvsObjectFunctionCall * c)
 	QString szSignal;
 	KviKvsVariantList vList;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("signal", KVS_PT_NONEMPTYSTRING, 0, szSignal)
-	KVSO_PARAMETER("params", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, vList)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("signal", KVS_PT_NONEMPTYSTRING, 0, szSignal)
+		KVSO_PARAMETER("params", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, vList)
+		KVSO_PARAMETERS_END(c)
 
-	emitSignal(szSignal, c, &vList);
+		emitSignal(szSignal, c, &vList);
 	return true;
 }
 
@@ -1070,10 +1070,10 @@ bool KviKvsObject::function_startTimer(KviKvsObjectFunctionCall * c)
 {
 	kvs_uint_t timeout;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("timeout", KVS_PT_UINT, 0, timeout)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("timeout", KVS_PT_UINT, 0, timeout)
+		KVSO_PARAMETERS_END(c)
 
-	c->returnValue()->setInteger((kvs_int_t)(startTimer(timeout)));
+		c->returnValue()->setInteger((kvs_int_t)(startTimer(timeout)));
 	return true;
 }
 
@@ -1081,9 +1081,9 @@ bool KviKvsObject::function_killTimer(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t id;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("timerId", KVS_PT_INT, 0, id)
-	KVSO_PARAMETERS_END(c)
-	killTimer(id);
+		KVSO_PARAMETER("timerId", KVS_PT_INT, 0, id)
+		KVSO_PARAMETERS_END(c)
+		killTimer(id);
 	return true;
 }
 
@@ -1091,10 +1091,10 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 {
 	bool bArray = false;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bArray", KVS_PT_BOOL, KVS_PF_OPTIONAL, bArray)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("bArray", KVS_PT_BOOL, KVS_PF_OPTIONAL, bArray)
+		KVSO_PARAMETERS_END(c)
 
-	c->returnValue()->setNothing();
+		c->returnValue()->setNothing();
 
 	KviKvsArray * a = bArray ? new KviKvsArray() : nullptr;
 
@@ -1162,11 +1162,11 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 	QString szName;
 	KviKvsVariant * v;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("propertyName", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSO_PARAMETER("propertyValue", KVS_PT_VARIANT, 0, v)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("propertyName", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSO_PARAMETER("propertyValue", KVS_PT_VARIANT, 0, v)
+		KVSO_PARAMETERS_END(c)
 
-	c->returnValue()->setNothing();
+		c->returnValue()->setNothing();
 
 	if(!m_pObject)
 	{
@@ -1220,198 +1220,198 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 
 	switch(vv.type())
 	{
-		case QVariant::Int:
-		{
-			kvs_int_t i;
-			if(!v->asInteger(i))
-				WRONG_TYPE("integer")
+	case QVariant::Int:
+	{
+		kvs_int_t i;
+		if(!v->asInteger(i))
+			WRONG_TYPE("integer")
 			m_pObject->setProperty(szName.toUtf8().data(), QVariant((int)i));
-		}
-		break;
-		case QVariant::UInt:
-		{
-			kvs_int_t i;
-			if(!v->asInteger(i))
-				WRONG_TYPE("unsigned integer")
+	}
+	break;
+	case QVariant::UInt:
+	{
+		kvs_int_t i;
+		if(!v->asInteger(i))
+			WRONG_TYPE("unsigned integer")
 			if(i < 0)
 				WRONG_TYPE("unsigned integer")
-			m_pObject->setProperty(szName.toUtf8().data(), QVariant((unsigned int)i));
-		}
-		break;
-		case QVariant::Double:
-		{
-			kvs_real_t i;
-			if(!v->asReal(i))
-				WRONG_TYPE("real")
+				m_pObject->setProperty(szName.toUtf8().data(), QVariant((unsigned int)i));
+	}
+	break;
+	case QVariant::Double:
+	{
+		kvs_real_t i;
+		if(!v->asReal(i))
+			WRONG_TYPE("real")
 			m_pObject->setProperty(szName.toUtf8().data(), QVariant((double)i));
-		}
+	}
+	break;
+	case QVariant::Bool:
+		m_pObject->setProperty(szName.toUtf8().data(), QVariant(v->asBoolean()));
 		break;
-		case QVariant::Bool:
-			m_pObject->setProperty(szName.toUtf8().data(), QVariant(v->asBoolean()));
-			break;
-		case QVariant::String:
-		{
-			QString s;
-			v->asString(s);
-			m_pObject->setProperty(szName.toUtf8().data(), QVariant(s));
-		}
-		break;
-		case QVariant::ByteArray:
-		{
-			QString s;
-			v->asString(s);
-			m_pObject->setProperty(szName.toUtf8().data(), QVariant(s.toUtf8()));
-		}
-		break;
-		case QVariant::Point:
-		{
-			if(!v->isArray())
-				WRONG_TYPE("array(integer,integer)")
+	case QVariant::String:
+	{
+		QString s;
+		v->asString(s);
+		m_pObject->setProperty(szName.toUtf8().data(), QVariant(s));
+	}
+	break;
+	case QVariant::ByteArray:
+	{
+		QString s;
+		v->asString(s);
+		m_pObject->setProperty(szName.toUtf8().data(), QVariant(s.toUtf8()));
+	}
+	break;
+	case QVariant::Point:
+	{
+		if(!v->isArray())
+			WRONG_TYPE("array(integer,integer)")
 			KviKvsArray * a = v->array();
-			KviKvsVariant * x = a->at(0);
-			KviKvsVariant * y = a->at(1);
-			if(!x || !y)
-				WRONG_TYPE("array(integer,integer)")
+		KviKvsVariant * x = a->at(0);
+		KviKvsVariant * y = a->at(1);
+		if(!x || !y)
+			WRONG_TYPE("array(integer,integer)")
 			kvs_int_t iX, iY;
-			if(!x->asInteger(iX) || !y->asInteger(iY))
-				WRONG_TYPE("array(integer,integer)")
+		if(!x->asInteger(iX) || !y->asInteger(iY))
+			WRONG_TYPE("array(integer,integer)")
 			m_pObject->setProperty(szName.toUtf8().data(), QVariant(QPoint(iX, iY)));
-		}
-		break;
-		case QVariant::Size:
-		{
-			if(!v->isArray())
-				WRONG_TYPE("array(integer,integer)")
+	}
+	break;
+	case QVariant::Size:
+	{
+		if(!v->isArray())
+			WRONG_TYPE("array(integer,integer)")
 			KviKvsArray * a = v->array();
-			KviKvsVariant * w = a->at(0);
-			KviKvsVariant * h = a->at(1);
-			if(!w || !h)
-				WRONG_TYPE("array(integer,integer)")
+		KviKvsVariant * w = a->at(0);
+		KviKvsVariant * h = a->at(1);
+		if(!w || !h)
+			WRONG_TYPE("array(integer,integer)")
 			kvs_int_t iW, iH;
-			if(!w->asInteger(iW) || !h->asInteger(iH))
-				WRONG_TYPE("array(integer,integer)")
+		if(!w->asInteger(iW) || !h->asInteger(iH))
+			WRONG_TYPE("array(integer,integer)")
 			m_pObject->setProperty(szName.toUtf8().data(), QVariant(QSize(iW, iH)));
-		}
-		break;
-		case QVariant::Rect:
-		{
-			if(!v->isArray())
-				WRONG_TYPE("array(integer,integer,integer,integer)")
+	}
+	break;
+	case QVariant::Rect:
+	{
+		if(!v->isArray())
+			WRONG_TYPE("array(integer,integer,integer,integer)")
 			KviKvsArray * a = v->array();
-			KviKvsVariant * x = a->at(0);
-			KviKvsVariant * y = a->at(1);
-			KviKvsVariant * w = a->at(2);
-			KviKvsVariant * h = a->at(3);
-			if(!x || !y || !w || !h)
-				WRONG_TYPE("array(integer,integer,integer,integer)")
+		KviKvsVariant * x = a->at(0);
+		KviKvsVariant * y = a->at(1);
+		KviKvsVariant * w = a->at(2);
+		KviKvsVariant * h = a->at(3);
+		if(!x || !y || !w || !h)
+			WRONG_TYPE("array(integer,integer,integer,integer)")
 			kvs_int_t iX, iY, iW, iH;
-			if(!x->asInteger(iX) || !y->asInteger(iY) || !w->asInteger(iW) || !h->asInteger(iH))
-				WRONG_TYPE("array(integer,integer,integer,integer)")
+		if(!x->asInteger(iX) || !y->asInteger(iY) || !w->asInteger(iW) || !h->asInteger(iH))
+			WRONG_TYPE("array(integer,integer,integer,integer)")
 			m_pObject->setProperty(szName.toUtf8().data(), QVariant(QRect(iX, iY, iW, iH)));
-		}
-		break;
+	}
+	break;
 
-		case QVariant::Color:
-		{
-			if(!v->isArray())
-				WRONG_TYPE("array(integer,integer,integer)")
+	case QVariant::Color:
+	{
+		if(!v->isArray())
+			WRONG_TYPE("array(integer,integer,integer)")
 			KviKvsArray * a = v->array();
-			KviKvsVariant * r = a->at(0);
-			KviKvsVariant * g = a->at(1);
-			KviKvsVariant * b = a->at(3);
-			if(!r || !g || !b)
-				WRONG_TYPE("array(integer,integer,integer)")
+		KviKvsVariant * r = a->at(0);
+		KviKvsVariant * g = a->at(1);
+		KviKvsVariant * b = a->at(3);
+		if(!r || !g || !b)
+			WRONG_TYPE("array(integer,integer,integer)")
 			kvs_int_t iR, iG, iB;
-			if(!r->asInteger(iR) || !g->asInteger(iG) || !b->asInteger(iB))
-				WRONG_TYPE("array(integer,integer,integer)")
+		if(!r->asInteger(iR) || !g->asInteger(iG) || !b->asInteger(iB))
+			WRONG_TYPE("array(integer,integer,integer)")
 			m_pObject->setProperty(szName.toUtf8().data(), QVariant(QColor(iR, iG, iB)));
-		}
-		break;
-		case QVariant::Font:
-		{
-			if(!v->isArray())
-				WRONG_TYPE("array(string,integer,string)")
+	}
+	break;
+	case QVariant::Font:
+	{
+		if(!v->isArray())
+			WRONG_TYPE("array(string,integer,string)")
 			KviKvsArray * a = v->array();
-			KviKvsVariant * ff = a->at(0);
-			KviKvsVariant * ps = a->at(1);
-			KviKvsVariant * fl = a->at(3);
-			if(!ff || !ps)
-				WRONG_TYPE("array(string,integer,string)")
+		KviKvsVariant * ff = a->at(0);
+		KviKvsVariant * ps = a->at(1);
+		KviKvsVariant * fl = a->at(3);
+		if(!ff || !ps)
+			WRONG_TYPE("array(string,integer,string)")
 			kvs_int_t iPs;
-			if(!ps->asInteger(iPs))
-				WRONG_TYPE("array(string,integer,string)")
+		if(!ps->asInteger(iPs))
+			WRONG_TYPE("array(string,integer,string)")
 			QString szFf, szFl;
-			ff->asString(szFf);
-			if(fl)
-				fl->asString(szFl);
-			QFont fnt;
-			fnt.setFamily(szFf);
-			fnt.setPointSize(iPs);
-			if(szFl.indexOf('b', Qt::CaseInsensitive) != -1)
-				fnt.setBold(true);
-			if(szFl.indexOf('i', Qt::CaseInsensitive) != -1)
-				fnt.setItalic(true);
-			if(szFl.indexOf('u', Qt::CaseInsensitive) != -1)
-				fnt.setUnderline(true);
-			if(szFl.indexOf('o', Qt::CaseInsensitive) != -1)
-				fnt.setOverline(true);
-			if(szFl.indexOf('f', Qt::CaseInsensitive) != -1)
-				fnt.setFixedPitch(true);
-			if(szFl.indexOf('s', Qt::CaseInsensitive) != -1)
-				fnt.setStrikeOut(true);
-			m_pObject->setProperty(szName.toUtf8().data(), QVariant(fnt));
-		}
-		break;
-		case QVariant::Pixmap | QVariant::Icon:
+		ff->asString(szFf);
+		if(fl)
+			fl->asString(szFl);
+		QFont fnt;
+		fnt.setFamily(szFf);
+		fnt.setPointSize(iPs);
+		if(szFl.indexOf('b', Qt::CaseInsensitive) != -1)
+			fnt.setBold(true);
+		if(szFl.indexOf('i', Qt::CaseInsensitive) != -1)
+			fnt.setItalic(true);
+		if(szFl.indexOf('u', Qt::CaseInsensitive) != -1)
+			fnt.setUnderline(true);
+		if(szFl.indexOf('o', Qt::CaseInsensitive) != -1)
+			fnt.setOverline(true);
+		if(szFl.indexOf('f', Qt::CaseInsensitive) != -1)
+			fnt.setFixedPitch(true);
+		if(szFl.indexOf('s', Qt::CaseInsensitive) != -1)
+			fnt.setStrikeOut(true);
+		m_pObject->setProperty(szName.toUtf8().data(), QVariant(fnt));
+	}
+	break;
+	case QVariant::Pixmap | QVariant::Icon:
+	{
+		if(v->isHObject())
 		{
-			if(v->isHObject())
+			if(v->hobject() == (kvs_hobject_t) nullptr)
 			{
-				if(v->hobject() == (kvs_hobject_t) nullptr)
-				{
-					// null pixmap
-					if(vv.type() == QVariant::Pixmap)
-						m_pObject->setProperty(szName.toUtf8().data(), QVariant(QPixmap()));
-					else
-						m_pObject->setProperty(szName.toUtf8().data(), QVariant(QIcon()));
-				}
+				// null pixmap
+				if(vv.type() == QVariant::Pixmap)
+					m_pObject->setProperty(szName.toUtf8().data(), QVariant(QPixmap()));
 				else
-				{
-					KviKvsObject * pix = KviKvsKernel::instance()->objectController()->lookupObject(v->hobject());
-					if(!pix->inherits("KviScriptPixmapObject"))
-						c->warning(__tr2qs_ctx("A pixmap object, an image_id or an image file path is required for this property", "kvs"));
-					else
-					{
-						QVariant pixv = pix->property("pixmap");
-						if(vv.type() == QVariant::Pixmap)
-							m_pObject->setProperty(szName.toUtf8().data(), QVariant(pixv.value<QPixmap>()));
-						else
-							m_pObject->setProperty(szName.toUtf8().data(), QVariant(QIcon(pixv.value<QPixmap>())));
-					}
-				}
+					m_pObject->setProperty(szName.toUtf8().data(), QVariant(QIcon()));
 			}
 			else
 			{
-				QString szStr;
-				v->asString(szStr);
-				QPixmap * pPix = g_pIconManager->getImage(szStr);
-				if(pPix)
-				{
-					if(vv.type() == QVariant::Pixmap)
-						m_pObject->setProperty(szName.toUtf8().data(), QVariant(*pPix));
-					else
-						m_pObject->setProperty(szName.toUtf8().data(), QVariant(QIcon(*pPix)));
-				}
+				KviKvsObject * pix = KviKvsKernel::instance()->objectController()->lookupObject(v->hobject());
+				if(!pix->inherits("KviScriptPixmapObject"))
+					c->warning(__tr2qs_ctx("A pixmap object, an image_id or an image file path is required for this property", "kvs"));
 				else
-					c->warning(__tr2qs_ctx("Can't find the requested image", "kvs"));
+				{
+					QVariant pixv = pix->property("pixmap");
+					if(vv.type() == QVariant::Pixmap)
+						m_pObject->setProperty(szName.toUtf8().data(), QVariant(pixv.value<QPixmap>()));
+					else
+						m_pObject->setProperty(szName.toUtf8().data(), QVariant(QIcon(pixv.value<QPixmap>())));
+				}
 			}
 		}
+		else
+		{
+			QString szStr;
+			v->asString(szStr);
+			QPixmap * pPix = g_pIconManager->getImage(szStr);
+			if(pPix)
+			{
+				if(vv.type() == QVariant::Pixmap)
+					m_pObject->setProperty(szName.toUtf8().data(), QVariant(*pPix));
+				else
+					m_pObject->setProperty(szName.toUtf8().data(), QVariant(QIcon(*pPix)));
+			}
+			else
+				c->warning(__tr2qs_ctx("Can't find the requested image", "kvs"));
+		}
+	}
 
+	break;
+
+	default:
+		c->warning(__tr2qs_ctx("Property '%Q' for object named '%Q' of class '%Q' has an unsupported data type", "kvs"), &szName, &m_szName, &(m_pClass->name()));
+		c->returnValue()->setNothing();
 		break;
-
-		default:
-			c->warning(__tr2qs_ctx("Property '%Q' for object named '%Q' of class '%Q' has an unsupported data type", "kvs"), &szName, &m_szName, &(m_pClass->name()));
-			c->returnValue()->setNothing();
-			break;
 	}
 	return true;
 }
@@ -1421,18 +1421,18 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	QString szName;
 	bool bNoerror;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("propertyName", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSO_PARAMETER("bNowarning", KVS_PT_BOOL, KVS_PF_OPTIONAL, bNoerror)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("propertyName", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSO_PARAMETER("bNowarning", KVS_PT_BOOL, KVS_PF_OPTIONAL, bNoerror)
+		KVSO_PARAMETERS_END(c)
 
-	if(!m_pObject)
-	{
-		// there are no Qt properties at all
-		c->returnValue()->setNothing();
-		if(!bNoerror)
-			c->warning(__tr2qs_ctx("The object named '%Q' of class '%Q' has no Qt properties", "kvs"), &m_szName, &(m_pClass->name()));
-		return true;
-	}
+		if(!m_pObject)
+		{
+			// there are no Qt properties at all
+			c->returnValue()->setNothing();
+			if(!bNoerror)
+				c->warning(__tr2qs_ctx("The object named '%Q' of class '%Q' has no Qt properties", "kvs"), &m_szName, &(m_pClass->name()));
+			return true;
+		}
 
 	int idx = m_pObject->metaObject()->indexOfProperty(szName.toUtf8().data());
 	if(idx < 0)
@@ -1468,95 +1468,95 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 
 	switch(v.type())
 	{
-		case QVariant::Int:
-			c->returnValue()->setInteger((kvs_int_t)v.toInt());
-			break;
-		case QVariant::Double:
-			c->returnValue()->setReal((kvs_int_t)v.toDouble());
-			break;
-		case QVariant::UInt:
-			c->returnValue()->setInteger((kvs_int_t)v.toUInt());
-			break;
-		case QVariant::Bool:
-			c->returnValue()->setBoolean(v.toBool());
-			break;
-		case QVariant::String:
-			c->returnValue()->setString(v.toString());
-			break;
-		case QVariant::ByteArray:
-			c->returnValue()->setString(QString::fromUtf8(v.toByteArray().data()));
-			break;
-		case QVariant::Point:
+	case QVariant::Int:
+		c->returnValue()->setInteger((kvs_int_t)v.toInt());
+		break;
+	case QVariant::Double:
+		c->returnValue()->setReal((kvs_int_t)v.toDouble());
+		break;
+	case QVariant::UInt:
+		c->returnValue()->setInteger((kvs_int_t)v.toUInt());
+		break;
+	case QVariant::Bool:
+		c->returnValue()->setBoolean(v.toBool());
+		break;
+	case QVariant::String:
+		c->returnValue()->setString(v.toString());
+		break;
+	case QVariant::ByteArray:
+		c->returnValue()->setString(QString::fromUtf8(v.toByteArray().data()));
+		break;
+	case QVariant::Point:
+	{
+		QPoint p = v.toPoint();
+		KviKvsArray * a = new KviKvsArray();
+		a->set(0, new KviKvsVariant((kvs_int_t)p.x()));
+		a->set(1, new KviKvsVariant((kvs_int_t)p.y()));
+		c->returnValue()->setArray(a);
+	}
+	break;
+	case QVariant::Size:
+	{
+		QSize p = v.toSize();
+		KviKvsArray * a = new KviKvsArray();
+		a->set(0, new KviKvsVariant((kvs_int_t)p.width()));
+		a->set(1, new KviKvsVariant((kvs_int_t)p.height()));
+		c->returnValue()->setArray(a);
+	}
+	break;
+	case QVariant::Rect:
+	{
+		QRect p = v.toRect();
+		KviKvsArray * a = new KviKvsArray();
+		a->set(0, new KviKvsVariant((kvs_int_t)p.x()));
+		a->set(1, new KviKvsVariant((kvs_int_t)p.y()));
+		a->set(2, new KviKvsVariant((kvs_int_t)p.width()));
+		a->set(3, new KviKvsVariant((kvs_int_t)p.height()));
+		c->returnValue()->setArray(a);
+	}
+	break;
+	case QVariant::Color:
+	{
+		QColor clr = v.value<QColor>();
+		KviKvsArray * a = new KviKvsArray();
+		a->set(0, new KviKvsVariant((kvs_int_t)clr.red()));
+		a->set(1, new KviKvsVariant((kvs_int_t)clr.green()));
+		a->set(2, new KviKvsVariant((kvs_int_t)clr.blue()));
+		c->returnValue()->setArray(a);
+	}
+	break;
+	case QVariant::Font:
+	{
+		QFont f = v.value<QFont>();
+		KviKvsArray * a = new KviKvsArray();
+		a->set(0, new KviKvsVariant(f.family()));
+		a->set(1, new KviKvsVariant((kvs_int_t)f.pointSize()));
+		QString szFlags;
+		if(f.bold())
+			szFlags += "b";
+		if(f.underline())
+			szFlags += "u";
+		if(f.overline())
+			szFlags += "o";
+		if(f.strikeOut())
+			szFlags += "s";
+		if(f.fixedPitch())
+			szFlags += "f";
+		if(f.italic())
+			szFlags += "i";
+		a->set(2, new KviKvsVariant(szFlags));
+		c->returnValue()->setArray(a);
+	}
+	break;
+	default:
+		if(bNoerror)
+			c->returnValue()->setString("Unsupported_data_type");
+		else
 		{
-			QPoint p = v.toPoint();
-			KviKvsArray * a = new KviKvsArray();
-			a->set(0, new KviKvsVariant((kvs_int_t)p.x()));
-			a->set(1, new KviKvsVariant((kvs_int_t)p.y()));
-			c->returnValue()->setArray(a);
+			c->warning(__tr2qs_ctx("Property '%Q' for object named '%Q' of class '%Q' has an unsupported data type", "kvs"), &szName, &m_szName, &(m_pClass->name()));
+			c->returnValue()->setNothing();
 		}
 		break;
-		case QVariant::Size:
-		{
-			QSize p = v.toSize();
-			KviKvsArray * a = new KviKvsArray();
-			a->set(0, new KviKvsVariant((kvs_int_t)p.width()));
-			a->set(1, new KviKvsVariant((kvs_int_t)p.height()));
-			c->returnValue()->setArray(a);
-		}
-		break;
-		case QVariant::Rect:
-		{
-			QRect p = v.toRect();
-			KviKvsArray * a = new KviKvsArray();
-			a->set(0, new KviKvsVariant((kvs_int_t)p.x()));
-			a->set(1, new KviKvsVariant((kvs_int_t)p.y()));
-			a->set(2, new KviKvsVariant((kvs_int_t)p.width()));
-			a->set(3, new KviKvsVariant((kvs_int_t)p.height()));
-			c->returnValue()->setArray(a);
-		}
-		break;
-		case QVariant::Color:
-		{
-			QColor clr = v.value<QColor>();
-			KviKvsArray * a = new KviKvsArray();
-			a->set(0, new KviKvsVariant((kvs_int_t)clr.red()));
-			a->set(1, new KviKvsVariant((kvs_int_t)clr.green()));
-			a->set(2, new KviKvsVariant((kvs_int_t)clr.blue()));
-			c->returnValue()->setArray(a);
-		}
-		break;
-		case QVariant::Font:
-		{
-			QFont f = v.value<QFont>();
-			KviKvsArray * a = new KviKvsArray();
-			a->set(0, new KviKvsVariant(f.family()));
-			a->set(1, new KviKvsVariant((kvs_int_t)f.pointSize()));
-			QString szFlags;
-			if(f.bold())
-				szFlags += "b";
-			if(f.underline())
-				szFlags += "u";
-			if(f.overline())
-				szFlags += "o";
-			if(f.strikeOut())
-				szFlags += "s";
-			if(f.fixedPitch())
-				szFlags += "f";
-			if(f.italic())
-				szFlags += "i";
-			a->set(2, new KviKvsVariant(szFlags));
-			c->returnValue()->setArray(a);
-		}
-		break;
-		default:
-			if(bNoerror)
-				c->returnValue()->setString("Unsupported_data_type");
-			else
-			{
-				c->warning(__tr2qs_ctx("Property '%Q' for object named '%Q' of class '%Q' has an unsupported data type", "kvs"), &szName, &m_szName, &(m_pClass->name()));
-				c->returnValue()->setNothing();
-			}
-			break;
 	}
 	return true;
 }
@@ -1739,12 +1739,12 @@ bool KviKvsObject::callFunction(KviKvsObject * pCaller, const QString & fncName,
 }
 
 bool KviKvsObject::callFunction(
-    KviKvsObject * pCaller,
-    const QString & fncName,
-    const QString & classOverride,
-    KviKvsRunTimeContext * pContext,
-    KviKvsVariant * pRetVal,
-    KviKvsVariantList * pParams)
+	KviKvsObject * pCaller,
+	const QString & fncName,
+	const QString & classOverride,
+	KviKvsRunTimeContext * pContext,
+	KviKvsVariant * pRetVal,
+	KviKvsVariantList * pParams)
 {
 	KviKvsObjectFunctionHandler * h = lookupFunctionHandler(fncName, classOverride);
 

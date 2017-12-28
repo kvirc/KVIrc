@@ -44,7 +44,7 @@ public:
 };
 
 KviDnsResolver::KviDnsResolver(QObject * pParent)
-    : QObject(pParent)
+	: QObject(pParent)
 {
 	m_pPrivateData = new KviDnsResolverPrivate;
 	m_pPrivateData->eState = Idle;
@@ -99,12 +99,12 @@ void KviDnsResolver::slotHostLookupTerminated(const QHostInfo & oHostInfo)
 
 		switch(oHostInfo.error())
 		{
-			case QHostInfo::HostNotFound:
-				m_pPrivateData->eError = KviError::HostNotFound;
-				break;
-			default:
-				m_pPrivateData->eError = KviError::DNSQueryFailed;
-				break;
+		case QHostInfo::HostNotFound:
+			m_pPrivateData->eError = KviError::HostNotFound;
+			break;
+		default:
+			m_pPrivateData->eError = KviError::DNSQueryFailed;
+			break;
 		}
 
 		m_pPrivateData->szError = oHostInfo.errorString();
@@ -128,25 +128,25 @@ void KviDnsResolver::slotHostLookupTerminated(const QHostInfo & oHostInfo)
 	{
 		switch(m_pPrivateData->eQueryType)
 		{
-			case IPv4:
-				if(oAddress.protocol() == QAbstractSocket::IPv4Protocol)
-					m_pPrivateData->pAddressList->append(new QString(oAddress.toString()));
-				break;
-			case IPv6:
-				if(oAddress.protocol() == QAbstractSocket::IPv6Protocol)
-					m_pPrivateData->pAddressList->append(new QString(oAddress.toString()));
-				break;
-			case Any:
+		case IPv4:
+			if(oAddress.protocol() == QAbstractSocket::IPv4Protocol)
 				m_pPrivateData->pAddressList->append(new QString(oAddress.toString()));
-				break;
-			default:
-				KVI_ASSERT_MSG(false, "Invalid DNS query type!");
-				m_pPrivateData->eState = Failure;
-				m_pPrivateData->eError = KviError::InternalError;
-				m_pPrivateData->szError = __tr2qs("Internal error: unhandled DNS query type");
-				emit lookupDone(this);
-				return;
-				break;
+			break;
+		case IPv6:
+			if(oAddress.protocol() == QAbstractSocket::IPv6Protocol)
+				m_pPrivateData->pAddressList->append(new QString(oAddress.toString()));
+			break;
+		case Any:
+			m_pPrivateData->pAddressList->append(new QString(oAddress.toString()));
+			break;
+		default:
+			KVI_ASSERT_MSG(false, "Invalid DNS query type!");
+			m_pPrivateData->eState = Failure;
+			m_pPrivateData->eError = KviError::InternalError;
+			m_pPrivateData->szError = __tr2qs("Internal error: unhandled DNS query type");
+			emit lookupDone(this);
+			return;
+			break;
 		}
 	}
 

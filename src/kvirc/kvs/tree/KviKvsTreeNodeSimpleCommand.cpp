@@ -26,12 +26,12 @@
 #include "KviKvsTreeNodeDataList.h"
 
 KviKvsTreeNodeSimpleCommand::KviKvsTreeNodeSimpleCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params)
-    : KviKvsTreeNodeCommandWithParameters(pLocation, szCmdName, params)
+	: KviKvsTreeNodeCommandWithParameters(pLocation, szCmdName, params)
 {
 }
 
 KviKvsTreeNodeSimpleCommand::~KviKvsTreeNodeSimpleCommand()
-    = default;
+= default;
 
 void KviKvsTreeNodeSimpleCommand::contextDescription(QString & szBuffer)
 {

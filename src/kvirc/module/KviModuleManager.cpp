@@ -267,10 +267,10 @@ bool KviModuleManager::loadModule(const QString & modName)
 			KviConsoleWindow * pWnd = g_pMainWindow->firstConsole();
 			if(pWnd) // this may be NULL when the app is starting up
 				pWnd->output(
-				    KVI_OUT_VERBOSE,
-				    __tr2qs("Loaded module '%s' (%s)"),
-				    modName.toUtf8().data(),
-				    szName.toUtf8().data());
+					KVI_OUT_VERBOSE,
+					__tr2qs("Loaded module '%s' (%s)"),
+					modName.toUtf8().data(),
+					szName.toUtf8().data());
 		}
 	}
 	return true;
@@ -311,7 +311,7 @@ bool KviModuleManager::unloadModule(KviModule * module)
 	{
 		if(g_pMainWindow)
 			g_pMainWindow->firstConsole()->output(KVI_OUT_VERBOSE,
-			    __tr2qs("Unloaded module '%s'"), szModName.toUtf8().data());
+				__tr2qs("Unloaded module '%s'"), szModName.toUtf8().data());
 	}
 	return true;
 }

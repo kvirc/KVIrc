@@ -123,7 +123,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall * c, KviConsoleWindow
 					{
 						if(c)
 							c->warning(__tr2qs_ctx("Can't retrieve a suitable local IPv4 address", "dcc"),
-							    KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data());
+								KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data());
 						return false;
 					}
 				}
@@ -146,7 +146,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall * c, KviConsoleWindow
 					KVI_OPTION_BOOL(KviOption_boolDccListenOnSpecifiedInterfaceByDefault) = false;
 					if(c)
 						c->warning(__tr2qs_ctx("Can't listen on default interface '%s': fix it in the options dialog, disabling the option (so the next DCC will work)", "dcc"),
-						    KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data());
+							KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data());
 					return false;
 				}
 #ifdef COMPILE_IPV6_SUPPORT

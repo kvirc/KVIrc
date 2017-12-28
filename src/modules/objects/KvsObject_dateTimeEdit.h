@@ -50,7 +50,7 @@ protected:
 	bool dateTimeChangedEvent(KviKvsObjectFunctionCall * c);
 	bool dateChangedEvent(KviKvsObjectFunctionCall * c);
 
-protected slots:
+	protected slots:
 	void slotDateTimeChanged(const QDateTime &);
 	void slotDateChanged(const QDate &);
 	void slotTimeChanged(const QTime &);

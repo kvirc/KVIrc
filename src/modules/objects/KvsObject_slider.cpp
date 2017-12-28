@@ -129,71 +129,71 @@ KVSO_END_CONSTRUCTOR(KvsObject_slider)
 bool KvsObject_slider::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QSlider)
-	connect(widget(), SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));
+		connect(widget(), SIGNAL(valueChanged(int)), this, SLOT(valueChanged(int)));
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(slider, setTracking)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	((QSlider *)widget())->setTracking(bEnabled);
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		((QSlider *)widget())->setTracking(bEnabled);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(slider, setValue)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iValue;
+		kvs_int_t iValue;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("value", KVS_PT_INT, 0, iValue)
-	KVSO_PARAMETERS_END(c)
-	((QSlider *)widget())->setValue(iValue);
+		KVSO_PARAMETER("value", KVS_PT_INT, 0, iValue)
+		KVSO_PARAMETERS_END(c)
+		((QSlider *)widget())->setValue(iValue);
 	return true;
 }
 KVSO_CLASS_FUNCTION(slider, setMinValue)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iMinvalue;
+		kvs_int_t iMinvalue;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("minimum_value", KVS_PT_INT, 0, iMinvalue)
-	KVSO_PARAMETERS_END(c)
-	((QSlider *)widget())->setMinimum(iMinvalue);
+		KVSO_PARAMETER("minimum_value", KVS_PT_INT, 0, iMinvalue)
+		KVSO_PARAMETERS_END(c)
+		((QSlider *)widget())->setMinimum(iMinvalue);
 	return true;
 }
 KVSO_CLASS_FUNCTION(slider, setMaxValue)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iMaxvalue;
+		kvs_int_t iMaxvalue;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("max_value", KVS_PT_INT, 0, iMaxvalue)
-	KVSO_PARAMETERS_END(c)
-	((QSlider *)widget())->setMaximum(iMaxvalue);
+		KVSO_PARAMETER("max_value", KVS_PT_INT, 0, iMaxvalue)
+		KVSO_PARAMETERS_END(c)
+		((QSlider *)widget())->setMaximum(iMaxvalue);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(slider, setLineStep)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iLinestep;
+		kvs_int_t iLinestep;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("line_step", KVS_PT_INT, 0, iLinestep)
-	KVSO_PARAMETERS_END(c)
-	((QSlider *)widget())->setSingleStep(iLinestep);
+		KVSO_PARAMETER("line_step", KVS_PT_INT, 0, iLinestep)
+		KVSO_PARAMETERS_END(c)
+		((QSlider *)widget())->setSingleStep(iLinestep);
 	return true;
 }
 KVSO_CLASS_FUNCTION(slider, setPageStep)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iPagestep;
+		kvs_int_t iPagestep;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("page_step", KVS_PT_INT, 0, iPagestep)
-	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QSlider *)widget())->setPageStep(iPagestep);
+		KVSO_PARAMETER("page_step", KVS_PT_INT, 0, iPagestep)
+		KVSO_PARAMETERS_END(c)
+		if(widget())
+			((QSlider *)widget())->setPageStep(iPagestep);
 	return true;
 }
 
@@ -201,81 +201,81 @@ KVSO_CLASS_FUNCTION(slider, setTickInterval)
 {
 	kvs_int_t iInterval;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("tick_interval", KVS_PT_INT, 0, iInterval)
-	KVSO_PARAMETERS_END(c)
-	((QSlider *)widget())->setTickInterval(iInterval);
+		KVSO_PARAMETER("tick_interval", KVS_PT_INT, 0, iInterval)
+		KVSO_PARAMETERS_END(c)
+		((QSlider *)widget())->setTickInterval(iInterval);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(slider, value)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(((QSlider *)widget())->value());
+		c->returnValue()->setInteger(((QSlider *)widget())->value());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(slider, minValue)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(((QSlider *)widget())->minimum());
+		c->returnValue()->setInteger(((QSlider *)widget())->minimum());
 	return true;
 }
 KVSO_CLASS_FUNCTION(slider, maxValue)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(((QSlider *)widget())->maximum());
+		c->returnValue()->setInteger(((QSlider *)widget())->maximum());
 	return true;
 }
 KVSO_CLASS_FUNCTION(slider, lineStep)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(((QSlider *)widget())->singleStep());
+		c->returnValue()->setInteger(((QSlider *)widget())->singleStep());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(slider, pageStep)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(((QSlider *)widget())->pageStep());
+		c->returnValue()->setInteger(((QSlider *)widget())->pageStep());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(slider, setTickmarks)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szTick;
+		QString szTick;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("tick_marks", KVS_PT_STRING, 0, szTick)
-	KVSO_PARAMETERS_END(c)
-	if(KviQString::equalCI(szTick, "NoMarks"))
-		((QSlider *)widget())->setTickPosition(QSlider::NoTicks);
-	else if(KviQString::equalCI(szTick, "Both"))
-		((QSlider *)widget())->setTickPosition(QSlider::TicksBothSides);
-	else if(KviQString::equalCI(szTick, "Above"))
-		((QSlider *)widget())->setTickPosition(QSlider::TicksAbove);
-	else if(KviQString::equalCI(szTick, "Below"))
-		((QSlider *)widget())->setTickPosition(QSlider::TicksBelow);
-	else if(KviQString::equalCI(szTick, "Left"))
-		((QSlider *)widget())->setTickPosition(QSlider::TicksLeft);
-	else if(KviQString::equalCI(szTick, "Right"))
-		((QSlider *)widget())->setTickPosition(QSlider::TicksRight);
-	else
-		c->warning(__tr2qs_ctx("Unknown tickmark '%Q'", "objects"), &szTick);
+		KVSO_PARAMETER("tick_marks", KVS_PT_STRING, 0, szTick)
+		KVSO_PARAMETERS_END(c)
+		if(KviQString::equalCI(szTick, "NoMarks"))
+			((QSlider *)widget())->setTickPosition(QSlider::NoTicks);
+		else if(KviQString::equalCI(szTick, "Both"))
+			((QSlider *)widget())->setTickPosition(QSlider::TicksBothSides);
+		else if(KviQString::equalCI(szTick, "Above"))
+			((QSlider *)widget())->setTickPosition(QSlider::TicksAbove);
+		else if(KviQString::equalCI(szTick, "Below"))
+			((QSlider *)widget())->setTickPosition(QSlider::TicksBelow);
+		else if(KviQString::equalCI(szTick, "Left"))
+			((QSlider *)widget())->setTickPosition(QSlider::TicksLeft);
+		else if(KviQString::equalCI(szTick, "Right"))
+			((QSlider *)widget())->setTickPosition(QSlider::TicksRight);
+		else
+			c->warning(__tr2qs_ctx("Unknown tickmark '%Q'", "objects"), &szTick);
 	return true;
 }
 KVSO_CLASS_FUNCTION(slider, setOrientation)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szOrientation;
+		QString szOrientation;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("orientation", KVS_PT_STRING, 0, szOrientation)
-	KVSO_PARAMETERS_END(c)
-	if(KviQString::equalCI(szOrientation, "Horizontal"))
-		((QSlider *)widget())->setOrientation(Qt::Horizontal);
-	else if(KviQString::equalCI(szOrientation, "Vertical"))
-		((QSlider *)widget())->setOrientation(Qt::Vertical);
-	else
-		c->warning(__tr2qs_ctx("Unknown orientation '%Q'", "objects"), &szOrientation);
+		KVSO_PARAMETER("orientation", KVS_PT_STRING, 0, szOrientation)
+		KVSO_PARAMETERS_END(c)
+		if(KviQString::equalCI(szOrientation, "Horizontal"))
+			((QSlider *)widget())->setOrientation(Qt::Horizontal);
+		else if(KviQString::equalCI(szOrientation, "Vertical"))
+			((QSlider *)widget())->setOrientation(Qt::Vertical);
+		else
+			c->warning(__tr2qs_ctx("Unknown orientation '%Q'", "objects"), &szOrientation);
 	return true;
 }
 KVSO_CLASS_FUNCTION(slider, valueChangedEvent)

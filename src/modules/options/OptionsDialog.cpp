@@ -59,7 +59,7 @@ extern KVIRC_API KviApplication * g_pApp;
 extern OptionsInstanceManager * g_pOptionsInstanceManager;
 
 OptionsDialogFrontWidget::OptionsDialogFrontWidget(QWidget * parent, const QString & szText)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("general_options_front_widget");
 	createLayout();
@@ -70,10 +70,10 @@ OptionsDialogFrontWidget::OptionsDialogFrontWidget(QWidget * parent, const QStri
 }
 
 OptionsDialogFrontWidget::~OptionsDialogFrontWidget()
-    = default;
+= default;
 
 OptionsDialogTreeWidgetItem::OptionsDialogTreeWidgetItem(QTreeWidget * parent, OptionsWidgetInstanceEntry * e)
-    : QTreeWidgetItem()
+	: QTreeWidgetItem()
 {
 	m_pInstanceEntry = e;
 	m_pOptionsWidget = nullptr;
@@ -83,7 +83,7 @@ OptionsDialogTreeWidgetItem::OptionsDialogTreeWidgetItem(QTreeWidget * parent, O
 }
 
 OptionsDialogTreeWidgetItem::OptionsDialogTreeWidgetItem(QTreeWidgetItem * parent, OptionsWidgetInstanceEntry * e)
-    : QTreeWidgetItem()
+	: QTreeWidgetItem()
 {
 	m_pInstanceEntry = e;
 	m_pOptionsWidget = nullptr;
@@ -93,10 +93,10 @@ OptionsDialogTreeWidgetItem::OptionsDialogTreeWidgetItem(QTreeWidgetItem * paren
 }
 
 OptionsDialogTreeWidgetItem::~OptionsDialogTreeWidgetItem()
-    = default;
+= default;
 
 OptionsDialog::OptionsDialog(QWidget * par, const QString & szGroup, bool bModal)
-    : QDialog(par)
+	: QDialog(par)
 {
 	setObjectName("general_options_dialog");
 
@@ -120,46 +120,46 @@ OptionsDialog::OptionsDialog(QWidget * par, const QString & szGroup, bool bModal
 	}
 
 	QString szDialog = __tr2qs_ctx("This dialog contains a set of KVIrc settings.<br> Use the icons "
-	                               "on the left to navigate through the option pages. The text box in the "
-	                               "bottom left corner is a small search engine. It will highlight the "
-	                               "pages that contain options related to the search term you have entered.",
-	    "options");
+		"on the left to navigate through the option pages. The text box in the "
+		"bottom left corner is a small search engine. It will highlight the "
+		"pages that contain options related to the search term you have entered.",
+		"options");
 
 	QString szInfoTips;
 	szInfoTips = __tr2qs_ctx("Many settings have tooltips that can be shown by holding "
-	                         "the cursor over their label for a few seconds.",
-	    "options");
+		"the cursor over their label for a few seconds.",
+		"options");
 
 	QString szOkCancelButtons = __tr2qs_ctx("When you have finished, click \"<b>OK</b>\" to accept your changes "
-	                                        "or \"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit your "
-	                                        "changes without closing the window.",
-	    "options");
+		"or \"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit your "
+		"changes without closing the window.",
+		"options");
 
 	// clang-format off
 	QString szFrontText = QString(
-			"<table width=\"100%\" height=\"100%\" valign=\"top\" align=\"center\" cellpadding=\"4\">" \
-				"<tr>" \
-					"<td bgcolor=\"#303030\" valign=\"top\">" \
-						"<center><h1><font color=\"#FFFFFF\">%1</font></h1></center>" \
-					"</td>" \
-				"</tr>" \
-				"<tr>" \
-					"<td valign=\"bottom\">" \
-						"<p>" \
-							"%2" \
-						"</p>" \
-						"<br style=\"line-height:5px;\"/>" \
-						"<p>" \
-							"%3" \
-						"</p>" \
-						"<br style=\"line-height:5px;\"/>" \
-						"<p>" \
-							"%4" \
-						"</p>" \
-					"</td>" \
-				"</tr>" \
-			"</table>"
-		).arg(szDialogTitle, szDialog, szInfoTips, szOkCancelButtons);
+		"<table width=\"100%\" height=\"100%\" valign=\"top\" align=\"center\" cellpadding=\"4\">" \
+		"<tr>" \
+		"<td bgcolor=\"#303030\" valign=\"top\">" \
+		"<center><h1><font color=\"#FFFFFF\">%1</font></h1></center>" \
+		"</td>" \
+		"</tr>" \
+		"<tr>" \
+		"<td valign=\"bottom\">" \
+		"<p>" \
+		"%2" \
+		"</p>" \
+		"<br style=\"line-height:5px;\"/>" \
+		"<p>" \
+		"%3" \
+		"</p>" \
+		"<br style=\"line-height:5px;\"/>" \
+		"<p>" \
+		"%4" \
+		"</p>" \
+		"</td>" \
+		"</tr>" \
+		"</table>"
+	).arg(szDialogTitle, szDialog, szInfoTips, szOkCancelButtons);
 	// clang-format on
 
 	QString szCaption = szDialogTitle + " - KVIrc";
@@ -199,12 +199,12 @@ OptionsDialog::OptionsDialog(QWidget * par, const QString & szGroup, bool bModal
 	connect(m_pSearchLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(searchLineEditTextChanged(const QString &)));
 
 	QString szTip = __tr2qs_ctx("<p>This is the search tool for this options dialog.</p>"
-	                            "<p>You can enter a search term either in your native "
-	                            "language or in English and press the button on the right. "
-	                            "The pages that contain some options related to the "
-	                            "search term will be highlighted and you will be able "
-	                            "to quickly find them.</p><p>Try \"nickname\" for example.</p>",
-	    "options");
+		"<p>You can enter a search term either in your native "
+		"language or in English and press the button on the right. "
+		"The pages that contain some options related to the "
+		"search term will be highlighted and you will be able "
+		"to quickly find them.</p><p>Try \"nickname\" for example.</p>",
+		"options");
 	KviTalToolTip::add(m_pSearchLineEdit, szTip);
 	KviTalToolTip::add(m_pSearchButton, szTip);
 
@@ -263,13 +263,13 @@ OptionsDialog::OptionsDialog(QWidget * par, const QString & szGroup, bool bModal
 	{
 		if(KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).y() < 5)
 			KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry)
-			    .setY(5);
+			.setY(5);
 
 		//setGeometry(KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry));
 		resize(KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).width(),
-		    KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).height());
+			KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).height());
 		move(KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).x(),
-		    KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).y());
+			KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).y());
 	}
 
 	new QShortcut(Qt::Key_Escape, this, SLOT(close()));
@@ -409,7 +409,7 @@ bool OptionsDialog::recursiveSearch(OptionsDialogTreeWidgetItem * pItem, const Q
 			bFoundSomethingHere = true;
 	}
 
-	if (!bCleaningUp)
+	if(!bCleaningUp)
 	{
 		QStringList szInstanceKeywords = pItem->m_pInstanceEntry->szKeywords.split(QChar(','));
 		// debug all the "search keywords" for each entry in the options tree
@@ -475,7 +475,7 @@ void OptionsDialog::clearSearch()
 	m_pTreeWidget->setUpdatesEnabled(false);
 
 	QTreeWidgetItemIterator it(m_pTreeWidget);
-	while (*it) {
+	while(*it) {
 		recursiveSearch(((OptionsDialogTreeWidgetItem *)* it), QStringList());
 		++it;
 	}

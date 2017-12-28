@@ -83,7 +83,7 @@ static void kvi_ipcSetRemoteCommand(Window w, const char * command)
 	::memcpy(buffer + 8, command, len);
 
 	XChangeProperty(kvi_ipc_get_xdisplay(), w, kvi_atom_ipc_remote_command,
-	    XA_STRING, 8, PropModeReplace, (const unsigned char *)buffer, len + 8);
+		XA_STRING, 8, PropModeReplace, (const unsigned char *)buffer, len + 8);
 
 	::free(buffer);
 }
@@ -95,7 +95,7 @@ static Window kvi_x11_findIpcSentinel(Window win)
 	unsigned long nItems, after;
 	unsigned char * data = nullptr;
 	if(XGetWindowProperty(kvi_ipc_get_xdisplay(), win, kvi_atom_ipc_sentinel_window,
-		   0, 32, false, XA_STRING, &type, &format, &nItems, &after, &data) == Success)
+		0, 32, false, XA_STRING, &type, &format, &nItems, &after, &data) == Success)
 	{
 		if((type == XA_STRING) && (format == 8))
 		{
@@ -133,7 +133,6 @@ static Window kvi_x11_findIpcSentinel(Window win)
 }
 #endif //!COMPILE_NO_X
 
-
 #define KVI_WINDOWS_IPC_MESSAGE 0x2FACE5
 
 bool kvi_sendIpcMessage(const char * message)
@@ -151,11 +150,11 @@ bool kvi_sendIpcMessage(const char * message)
 		if(!::SendMessageTimeout(hSentinel, WM_COPYDATA, (WPARAM)nullptr, (LPARAM)&cpd, SMTO_BLOCK, 1000, &dwResult))
 		{
 			DWORD errorMessageID = ::GetLastError();
-			if (errorMessageID)
+			if(errorMessageID)
 			{
 				LPSTR messageBuffer = nullptr;
 				size_t size = FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
-											 nullptr, errorMessageID, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)&messageBuffer, 0, nullptr);
+					nullptr, errorMessageID, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), (LPSTR)&messageBuffer, 0, nullptr);
 
 				std::string winMessage(messageBuffer, size);
 
@@ -199,7 +198,7 @@ KviIpcSentinel::KviIpcSentinel() : QWidget(nullptr)
 	kvi_ipcLoadAtoms();
 
 	XChangeProperty(kvi_ipc_get_xdisplay(), winId(), kvi_atom_ipc_sentinel_window, XA_STRING, 8,
-	    PropModeReplace, (const unsigned char *)kvi_sentinel_id.ptr(), kvi_sentinel_id.len());
+		PropModeReplace, (const unsigned char *)kvi_sentinel_id.ptr(), kvi_sentinel_id.len());
 
 	kvi_ipcSetRemoteCommand(winId(), "");
 #endif //!COMPILE_NO_X && !COMPILE_ON_WINDOWS
@@ -247,7 +246,7 @@ bool KviIpcSentinel::x11GetRemoteMessage()
 	KviCString szData;
 
 	if(XGetWindowProperty(kvi_ipc_get_xdisplay(), winId(), kvi_atom_ipc_remote_command,
-		   0, 1024, false, XA_STRING, &type, &format, &nItems, &after, &data) == Success)
+		0, 1024, false, XA_STRING, &type, &format, &nItems, &after, &data) == Success)
 	{
 		if((type == XA_STRING) && (format == 8) && (nItems > 8) && data)
 		{
@@ -286,25 +285,24 @@ bool KviIpcSentinel::x11Event(XEvent * e)
 // Have to rely on the sole PropertyNotify instead :(
 
 extern "C" {
+	typedef struct
+	{
+		kvi_u8_t response_type;
+		kvi_u8_t pad0;
+		kvi_u16_t sequence;
+		kvi_u32_t pad[7];
+		kvi_u32_t full_sequence;
+	} fake_xcb_generic_event_t;
 
-typedef struct
-{
-	kvi_u8_t response_type;
-	kvi_u8_t pad0;
-	kvi_u16_t sequence;
-	kvi_u32_t pad[7];
-	kvi_u32_t full_sequence;
-} fake_xcb_generic_event_t;
-
-typedef struct
-{
-	kvi_u8_t response_type;
-	kvi_u8_t pad0;
-	kvi_u16_t sequence;
-	kvi_u32_t window;
-	kvi_u32_t atom;
-	// .. other stuff follows, but we don't care
-} fake_xcb_property_notify_event_t;
+	typedef struct
+	{
+		kvi_u8_t response_type;
+		kvi_u8_t pad0;
+		kvi_u16_t sequence;
+		kvi_u32_t window;
+		kvi_u32_t atom;
+		// .. other stuff follows, but we don't care
+	} fake_xcb_property_notify_event_t;
 
 #define FAKE_XCB_PROPERTY_NOTIFY 28
 }

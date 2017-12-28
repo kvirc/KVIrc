@@ -120,10 +120,10 @@ void KviKvsKernel::completeCommand(const QString & szCommandBegin, std::vector<Q
 	{
 		// no module name inside
 		COMPLETE_COMMAND_BY_DICT(KviKvsCoreSimpleCommandExecRoutine, m_pCoreSimpleCommandExecRoutineDict)
-		COMPLETE_COMMAND_BY_DICT(KviKvsSpecialCommandParsingRoutine, m_pSpecialCommandParsingRoutineDict)
-		COMPLETE_COMMAND_BY_DICT(KviKvsCoreCallbackCommandExecRoutine, m_pCoreCallbackCommandExecRoutineDict)
+			COMPLETE_COMMAND_BY_DICT(KviKvsSpecialCommandParsingRoutine, m_pSpecialCommandParsingRoutineDict)
+			COMPLETE_COMMAND_BY_DICT(KviKvsCoreCallbackCommandExecRoutine, m_pCoreCallbackCommandExecRoutineDict)
 
-		g_pModuleManager->completeModuleNames(szCommandBegin, pMatches);
+			g_pModuleManager->completeModuleNames(szCommandBegin, pMatches);
 
 		KviKvsAliasManager::instance()->completeCommand(szCommandBegin, pMatches);
 	}

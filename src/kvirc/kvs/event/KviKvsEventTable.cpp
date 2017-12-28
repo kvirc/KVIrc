@@ -198,30 +198,30 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnURL",
-	    "$0 = URL"),
+		"$0 = URL"),
 
-	/*
-		@doc: onerror
-		@type:
-			event
-		@title:
-			OnError
-		@short:
-			Triggered when an ERROR message is received from the server
-		@parameters:
-			$0 = Message source
-			$1 = Error reason
-		@window:
-			Console
-		@description:
-			Triggered when an ERROR message is received from the server.[br]
-			$0 is the message (server) source but be aware that it often happens to be empty.[br]
-			Calling 'halt' in this event will stop the default output.[br]
-	*/
+		/*
+			@doc: onerror
+			@type:
+				event
+			@title:
+				OnError
+			@short:
+				Triggered when an ERROR message is received from the server
+			@parameters:
+				$0 = Message source
+				$1 = Error reason
+			@window:
+				Console
+			@description:
+				Triggered when an ERROR message is received from the server.[br]
+				$0 is the message (server) source but be aware that it often happens to be empty.[br]
+				Calling 'halt' in this event will stop the default output.[br]
+		*/
 
-	EVENT("OnError",
-	    "$0 = Message source\n"
-	    "$1 = Error reason"),
+		EVENT("OnError",
+			"$0 = Message source\n"
+			"$1 = Error reason"),
 
 	/*
 		@doc: onaccelkeypressed
@@ -248,7 +248,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnAccelKeyPressed",
-	    "$0 = Keys"),
+		"$0 = Keys"),
 
 	/*
 		@doc: onhighlight
@@ -288,13 +288,13 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnHighlight",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Message\n"
-	    "$4 = Highlight word\n"
-	    "$5 = Message type\n"
-	    "$6 = Is action"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Message\n"
+		"$4 = Highlight word\n"
+		"$5 = Message type\n"
+		"$6 = Is action"),
 
 	/*
 		@doc: onwindowactivated
@@ -340,7 +340,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnNotifyOnline",
-	    "$0 = Nickname"),
+		"$0 = Nickname"),
 
 	/*
 		@doc: onnotifyoffline
@@ -366,7 +366,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnNotifyOffline",
-	    "$0 = Nickname"),
+		"$0 = Nickname"),
 
 	/*
 		@doc: onping
@@ -387,8 +387,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnPing",
-	    "$0 = Server\n"
-	    "$1 = Message parameters"),
+		"$0 = Server\n"
+		"$1 = Message parameters"),
 
 	/*
 		@doc: onpong
@@ -409,8 +409,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnPong",
-	    "$0 = Server\n"
-	    "$1 = Pong message parameters"),
+		"$0 = Server\n"
+		"$1 = Pong message parameters"),
 
 	/*
 		@doc: onlagalarmtimeup
@@ -430,8 +430,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnLagAlarmTimeUp",
-	    "$0 = Server\n"
-	    "$1 = Lag time in milliseconds"),
+		"$0 = Server\n"
+		"$1 = Lag time in milliseconds"),
 
 	/*
 		@doc: onlagalarmtimedown
@@ -451,8 +451,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnLagAlarmTimeDown",
-	    "$0 = Server\n"
-	    "$1 = Lag time in milliseconds"),
+		"$0 = Server\n"
+		"$1 = Lag time in milliseconds"),
 
 	/*
 		@doc: onlagcheck
@@ -472,8 +472,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnLagCheck",
-	    "$0 = Server\n"
-	    "$1 = Lag time in milliseconds"),
+		"$0 = Server\n"
+		"$1 = Lag time in milliseconds"),
 
 	/*
 		@doc: ontextinput
@@ -505,7 +505,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnTextInput",
-	    "$0 = Text"),
+		"$0 = Text"),
 
 	/*
 		@doc: onnotifylistdefaultactionrequest
@@ -527,7 +527,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnNotifyListDefaultActionRequest",
-	    "$0 = Nickname"),
+		"$0 = Nickname"),
 
 	/*
 		@doc: onwallops
@@ -551,10 +551,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnWallops",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Message text"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Message text"),
 
 	/*
 		@doc: OnIgnoredMessage
@@ -578,12 +578,12 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnIgnoredMessage",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Message target\n"
-	    "$4 = Message\n"
-	    "$5 = Message tags"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Message target\n"
+		"$4 = Message\n"
+		"$5 = Message tags"),
 
 	/*
 		@doc: onservernotice
@@ -605,8 +605,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnServerNotice",
-	    "$0 = Source nickname\n"
-	    "$1 = Message"),
+		"$0 = Source nickname\n"
+		"$1 = Message"),
 
 	// Connection
 	/*
@@ -722,8 +722,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnNetsplit",
-	    "$0 = Server1\n"
-	    "$1 = Server2"),
+		"$0 = Server1\n"
+		"$1 = Server2"),
 
 	/*
 		@doc: ondisconnectrequest
@@ -776,10 +776,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnHTTPGetTerminated",
-	    "$0 = Status\n"
-	    "$1 = Remote URL\n"
-	    "$2 = Local file\n"
-	    "$3 = Magic identifier"),
+		"$0 = Status\n"
+		"$1 = Remote URL\n"
+		"$2 = Local file\n"
+		"$3 = Magic identifier"),
 
 	/*
 		@doc: onunhandledliteral
@@ -804,9 +804,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnUnhandledLiteral",
-	    "$0 = Source mask\n"
-	    "$1 = Message\n"
-	    "$2- = Parameters"),
+		"$0 = Source mask\n"
+		"$1 = Message\n"
+		"$2- = Parameters"),
 
 	/*
 		@doc: onoutboundtraffic
@@ -829,7 +829,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnOutboundTraffic",
-	    "$0 = Outbound string"),
+		"$0 = Outbound string"),
 
 	// Popups
 	/*
@@ -918,8 +918,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 			The window that the user has clicked in.
 		@description:
 			This event is here to allow easy customization of the window popup (it was builtin in KVIrc version prior to 3.0.0).[br]
- 			Actually it is triggered when the user middle-clicks in a text view (or right-clicks with the Ctrl key pressed).[br]
- 			You should use it to popup your own version of the window popup that should interface the logging and window-behaviour functions.
+			Actually it is triggered when the user middle-clicks in a text view (or right-clicks with the Ctrl key pressed).[br]
+			You should use it to popup your own version of the window popup that should interface the logging and window-behaviour functions.
 	*/
 
 	EVENT("OnWindowPopupRequest", ""),
@@ -946,9 +946,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnHostLinkPopupRequest",
-	    "$0 = Actual name\n"
-	    "$1 = Visible name\n"
-	    "$2 = Command name"),
+		"$0 = Actual name\n"
+		"$1 = Visible name\n"
+		"$2 = Command name"),
 
 	/*
 		@doc: onurllinkpopuprequest
@@ -977,9 +977,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnURLLinkPopupRequest",
-	    "$0 = Actual name\n"
-	    "$1 = Visible name\n"
-	    "$2 = Command name"),
+		"$0 = Actual name\n"
+		"$1 = Visible name\n"
+		"$2 = Command name"),
 
 	/*
 		@doc: onserverlinkpopuprequest
@@ -1010,9 +1010,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnServerLinkPopupRequest",
-	    "$0 = Actual name\n"
-	    "$1 = Visible name\n"
-	    "$2 = Command name"),
+		"$0 = Actual name\n"
+		"$1 = Visible name\n"
+		"$2 = Command name"),
 
 	/*
 		@doc: onchannellinkpopuprequest
@@ -1041,9 +1041,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelLinkPopupRequest",
-	    "$0 = Actual name\n"
-	    "$1 = Visible name\n"
-	    "$2 = Command name"),
+		"$0 = Actual name\n"
+		"$1 = Visible name\n"
+		"$2 = Command name"),
 
 	/*
 		@doc: onnicklinkpopuprequest
@@ -1075,9 +1075,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnNickLinkPopupRequest",
-	    "$0 = Actual name\n"
-	    "$1 = Visible name\n"
-	    "$2 = Command name"),
+		"$0 = Actual name\n"
+		"$1 = Visible name\n"
+		"$2 = Command name"),
 
 	/*
 		@doc: onquerynickpopuprequest
@@ -1105,9 +1105,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQueryNickPopupRequest",
-	    "$0 = Actual name\n"
-	    "$1 = Visible name\n"
-	    "$2 = Command name"),
+		"$0 = Actual name\n"
+		"$1 = Visible name\n"
+		"$2 = Command name"),
 
 	/*
 		@doc: onchannelnickpopuprequest
@@ -1134,7 +1134,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelNickPopupRequest",
-	    "$0 = Nickname list"),
+		"$0 = Nickname list"),
 
 	/*
 		@doc: onnotifylistpopuprequest
@@ -1156,7 +1156,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnNotifyListPopupRequest",
-	    "$0 = Nickname list"),
+		"$0 = Nickname list"),
 
 	/*
 		@doc: ondccchatpopuprequest
@@ -1183,7 +1183,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCChatPopupRequest",
-	    "$0 = DCC session ID"),
+		"$0 = DCC session ID"),
 
 	// Channels
 	/*
@@ -1234,7 +1234,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelSync",
-	    "$0 = Channel sync time in milliseconds"),
+		"$0 = Channel sync time in milliseconds"),
 
 	/*
 		@doc: onchannelmessage
@@ -1267,13 +1267,13 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelMessage",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Message\n"
-	    "$4 = Target mode prefixes\n"
-	    "$5 = Was encrypted\n"
-	    "$6 = Message tags"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Message\n"
+		"$4 = Target mode prefixes\n"
+		"$5 = Was encrypted\n"
+		"$6 = Message tags"),
 
 	/*
 		@doc: onchannelnotice
@@ -1304,11 +1304,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelNotice",
-	    "$0 = Source nickname\n"
-	    "$1 = Message\n"
-	    "$2 = Target\n"
-	    "$3 = Was encrypted\n"
-	    "$4 = Message tags"),
+		"$0 = Source nickname\n"
+		"$1 = Message\n"
+		"$2 = Target\n"
+		"$3 = Was encrypted\n"
+		"$4 = Message tags"),
 
 	// Queries
 	/*
@@ -1348,12 +1348,12 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQueryMessage",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Message\n"
-	    "$4 = Was encrypted\n"
-	    "$5 = Message tags"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Message\n"
+		"$4 = Was encrypted\n"
+		"$5 = Message tags"),
 
 	/*
 		@doc: onquerynotice
@@ -1382,12 +1382,12 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQueryNotice",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Message\n"
-	    "$4 = Was encrypted\n"
-	    "$5 = Message tags"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Message\n"
+		"$4 = Was encrypted\n"
+		"$5 = Message tags"),
 
 	/*
 		@doc: onquerywindowrequest
@@ -1422,11 +1422,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQueryWindowRequest",
-	    "$0 = Source nickname\n"
-	    "$1 = Source user\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Message\n"
-	    "$4 = Message tags"),
+		"$0 = Source nickname\n"
+		"$1 = Source user\n"
+		"$2 = Source hostname\n"
+		"$3 = Message\n"
+		"$4 = Message tags"),
 
 	/*
 		@doc: onquerywindowcreated
@@ -1478,9 +1478,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQueryTargetAdded",
-	    "$0 = Nickname\n"
-	    "$1 = Username (may be *)\n"
-	    "$2 = Hostname (may be *)"),
+		"$0 = Nickname\n"
+		"$1 = Username (may be *)\n"
+		"$2 = Hostname (may be *)"),
 
 	/*
 		@doc: OnQueryFileDropped
@@ -1501,8 +1501,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQueryFileDropped",
-	    "$0 = Source nickname\n"
-	    "$1 = File dropped"),
+		"$0 = Source nickname\n"
+		"$1 = File dropped"),
 
 	// Actions
 	/*
@@ -1525,7 +1525,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeAway",
-	    "$0- = Server message trailing"),
+		"$0- = Server message trailing"),
 
 	/*
 		@doc: onmeback
@@ -1550,8 +1550,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeBack",
-	    "$0 = Away start time\n"
-	    "$1- = Server message trailing"),
+		"$0 = Away start time\n"
+		"$1- = Server message trailing"),
 
 	/*
 		@doc: onjoin
@@ -1577,9 +1577,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnJoin",
-	    "$0 = Nickname\n"
-	    "$1 = Username\n"
-	    "$2 = Hostname"),
+		"$0 = Nickname\n"
+		"$1 = Username\n"
+		"$2 = Hostname"),
 
 	/*
 		@doc: onmejoin
@@ -1636,10 +1636,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnPart",
-	    "$0 = Nickname\n"
-	    "$1 = Username\n"
-	    "$2 = Hostname\n"
-	    "$3 = Part message"),
+		"$0 = Nickname\n"
+		"$1 = Username\n"
+		"$2 = Hostname\n"
+		"$3 = Part message"),
 
 	/*
 		@doc: onmepart
@@ -1670,7 +1670,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMePart",
-	    "$0 = Part message"),
+		"$0 = Part message"),
 
 	/*
 		@doc: onkick
@@ -1703,11 +1703,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnKick",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Kicked nickname\n"
-	    "$4 = Reason"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Kicked nickname\n"
+		"$4 = Reason"),
 
 	/*
 		@doc: onmekick
@@ -1740,10 +1740,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeKick",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Reason"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Reason"),
 
 	/*
 		@doc: ontopic
@@ -1774,10 +1774,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnTopic",
-	    "$0 = Nickname\n"
-	    "$1 = Username\n"
-	    "$2 = Hostname\n"
-	    "$3 = Topic"),
+		"$0 = Nickname\n"
+		"$1 = Username\n"
+		"$2 = Hostname\n"
+		"$3 = Topic"),
 
 	/*
 		@doc: onquit
@@ -1815,11 +1815,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQuit",
-	    "$0 = Nickname\n"
-	    "$1 = Username\n"
-	    "$2 = Hostname\n"
-	    "$3 = Quit message\n"
-	    "$4 = Channels"),
+		"$0 = Nickname\n"
+		"$1 = Username\n"
+		"$2 = Hostname\n"
+		"$3 = Quit message\n"
+		"$4 = Channels"),
 
 	// IRC modes
 	/*
@@ -1845,11 +1845,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelModeChange",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Mode flags\n"
-	    "$4 = Mode params"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Mode flags\n"
+		"$4 = Mode params"),
 
 	/*
 		@doc: onusermodechange
@@ -1871,7 +1871,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnUserModeChange",
-	    "$0 = Mode flags"),
+		"$0 = Mode flags"),
 
 	/*
 		@doc: onban
@@ -1895,10 +1895,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnBan",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Ban mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Ban mask"),
 
 	/*
 		@doc: onunban
@@ -1922,10 +1922,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnUnBan",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Ban mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Ban mask"),
 
 	/*
 		@doc: onmeban
@@ -1949,10 +1949,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeBan",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Ban mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Ban mask"),
 
 	/*
 		@doc: onmeunban
@@ -1976,10 +1976,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeUnban",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Ban mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Ban mask"),
 
 	/*
 		@doc: onbanexception
@@ -2003,10 +2003,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnBanException",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Ban exception mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Ban exception mask"),
 
 	/*
 		@doc: onbanexceptionremove
@@ -2030,10 +2030,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnBanExceptionRemove",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Ban exception mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Ban exception mask"),
 
 	/*
 		@doc: onmebanexception
@@ -2057,10 +2057,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeBanException",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Mask"),
 
 	/*
 		@doc: onmebanexceptionremove
@@ -2084,10 +2084,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeBanExceptionRemove",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Mask"),
 
 	/*
 		@doc: oninvite
@@ -2109,10 +2109,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnInvite",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Channel"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Channel"),
 
 	/*
 		@doc: oninviteexception
@@ -2136,10 +2136,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnInviteException",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Target mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Target mask"),
 
 	/*
 		@doc: oninviteexceptionremove
@@ -2163,10 +2163,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnInviteExceptionRemove",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Target mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Target mask"),
 
 	/*
 		@doc: onmeinviteexception
@@ -2191,10 +2191,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeInviteException",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Mask"),
 
 	/*
 		@doc: onmeinviteexceptionremove
@@ -2219,10 +2219,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeInviteExceptionRemove",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Mask"),
 
 	/*
 		@doc: onlimitset
@@ -2246,10 +2246,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnLimitSet",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Limit"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Limit"),
 
 	/*
 		@doc: onlimitunset
@@ -2272,9 +2272,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnLimitUnset",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onkeyset
@@ -2298,10 +2298,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnKeySet",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Key"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Key"),
 
 	/*
 		@doc: onkeyunset
@@ -2324,9 +2324,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnKeyUnset",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onnickchange
@@ -2351,10 +2351,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnNickChange",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = New nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = New nickname"),
 
 	/*
 		@doc: onmenickchange
@@ -2377,8 +2377,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeNickChange",
-	    "$0 = Old nickname\n"
-	    "$1 = New nickname"),
+		"$0 = Old nickname\n"
+		"$1 = New nickname"),
 
 	/*
 		@doc: onchanowner
@@ -2402,10 +2402,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChanOwner",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Target nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Target nickname"),
 
 	/*
 		@doc: ondechanowner
@@ -2429,10 +2429,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeChanOwner",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Target nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Target nickname"),
 
 	/*
 		@doc: onmechanowner
@@ -2455,9 +2455,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeChanOwner",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onmedechanowner
@@ -2480,9 +2480,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeChanOwner",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onchanadmin
@@ -2506,10 +2506,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChanAdmin",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Target nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Target nickname"),
 
 	/*
 		@doc: ondechanadmin
@@ -2533,10 +2533,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeChanAdmin",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Target nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Target nickname"),
 
 	/*
 		@doc: onmechanadmin
@@ -2559,9 +2559,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeChanAdmin",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onmedechanadmin
@@ -2584,9 +2584,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeChanAdmin",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onop
@@ -2610,10 +2610,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Opped nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Opped nickname"),
 
 	/*
 		@doc: ondeop
@@ -2637,10 +2637,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Deopped nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Deopped nickname"),
 
 	/*
 		@doc: onmeop
@@ -2663,9 +2663,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onmedeop
@@ -2688,9 +2688,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onhalfop
@@ -2714,10 +2714,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnHalfOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Halfopped nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Halfopped nickname"),
 
 	/*
 		@doc: ondehalfop
@@ -2741,10 +2741,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeHalfOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Dehalfopped nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Dehalfopped nickname"),
 
 	/*
 		@doc: onmehalfop
@@ -2767,9 +2767,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeHalfOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onmedehalfop
@@ -2792,9 +2792,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeHalfOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onvoice
@@ -2818,10 +2818,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnVoice",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Voiced nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Voiced nickname"),
 
 	/*
 		@doc: ondevoice
@@ -2845,10 +2845,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeVoice",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Devoiced nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Devoiced nickname"),
 
 	/*
 		@doc: onmevoice
@@ -2871,9 +2871,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeVoice",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onmedevoice
@@ -2896,9 +2896,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeVoice",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onuserop
@@ -2922,10 +2922,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnUserOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Useropped nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Useropped nickname"),
 
 	/*
 		@doc: ondeuserop
@@ -2949,10 +2949,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeUserOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Deuseropped nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Deuseropped nickname"),
 
 	/*
 		@doc: onmeuserop
@@ -2975,9 +2975,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeUserOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onmedeuserop
@@ -3000,9 +3000,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeUserOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onircop
@@ -3026,10 +3026,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnIrcOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Ircopped nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Ircopped nickname"),
 
 	/*
 		@doc: ondeircop
@@ -3053,10 +3053,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDeIrcOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Deircopped nickname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Deircopped nickname"),
 
 	/*
 		@doc: onmeircop
@@ -3079,9 +3079,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeIrcOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	/*
 		@doc: onmedeircop
@@ -3104,9 +3104,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeDeIrcOp",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname"),
 
 	// Services
 	/*
@@ -3136,11 +3136,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChanServNotice",
-	    "$0 = ChanServ nickname\n"
-	    "$1 = ChanServ username\n"
-	    "$2 = ChanServ hostname\n"
-	    "$3 = Message\n"
-	    "$4 = Message tags"),
+		"$0 = ChanServ nickname\n"
+		"$1 = ChanServ username\n"
+		"$2 = ChanServ hostname\n"
+		"$3 = Message\n"
+		"$4 = Message tags"),
 
 	/*
 		@doc: onnickservnotice
@@ -3170,11 +3170,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnNickServNotice",
-	    "$0 = NickServ nickname\n"
-	    "$1 = NickServ username\n"
-	    "$2 = NickServ hostname\n"
-	    "$3 = Message\n"
-	    "$4 = Message tags"),
+		"$0 = NickServ nickname\n"
+		"$1 = NickServ username\n"
+		"$2 = NickServ hostname\n"
+		"$3 = Message\n"
+		"$4 = Message tags"),
 
 	/*
 		@doc: OnNickServAuth
@@ -3228,13 +3228,13 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnAction",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Message target\n"
-	    "$4 = Action message text\n"
-	    "$5 = Message tags\n"
-	    "$6 = Was encrypted"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Message target\n"
+		"$4 = Action message text\n"
+		"$5 = Message tags\n"
+		"$6 = Was encrypted"),
 
 	/*
 		@doc: onmeaction
@@ -3263,8 +3263,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeAction",
-	    "$0 = Action message text\n"
-	    "$1 = Action target"),
+		"$0 = Action message text\n"
+		"$1 = Action target"),
 
 	/*
 		@doc: onctcprequest
@@ -3292,12 +3292,12 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnCTCPRequest",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Target\n"
-	    "$4 = CTCP type\n"
-	    "$5- = CTCP parameters"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Target\n"
+		"$4 = CTCP type\n"
+		"$5- = CTCP parameters"),
 
 	/*
 		@doc: onctcpreply
@@ -3325,12 +3325,12 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnCTCPReply",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Target\n"
-	    "$4 = CTCP type\n"
-	    "$5- = CTCP parameters"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Target\n"
+		"$4 = CTCP type\n"
+		"$5- = CTCP parameters"),
 
 	/*
 		@doc: onctcpflood
@@ -3357,12 +3357,12 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnCTCPFlood",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Target\n"
-	    "$4 = CTCP type\n"
-	    "$5- = CTCP parameters"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Target\n"
+		"$4 = CTCP type\n"
+		"$5- = CTCP parameters"),
 
 	/*
 		@doc: ondccsessioncreated
@@ -3383,7 +3383,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCSessionCreated",
-	    "$0 = DCC session ID"),
+		"$0 = DCC session ID"),
 
 	/*
 		@doc: ondccsessiondestroyed
@@ -3404,7 +3404,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCSessionDestroyed",
-	    "$0 = DCC session ID"),
+		"$0 = DCC session ID"),
 
 	/*
 		@doc: ondccchatwindowcreated
@@ -3431,7 +3431,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCChatWindowCreated",
-	    "$0 = DCC session ID"),
+		"$0 = DCC session ID"),
 
 	/*
 		@doc: ondccchatconnectioninprogress
@@ -3456,7 +3456,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCChatConnectionInProgress",
-	    "$0 = DCC session ID"),
+		"$0 = DCC session ID"),
 
 	/*
 		@doc: ondccchatconnected
@@ -3479,7 +3479,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCChatConnected",
-	    "$0 = DCC session ID"),
+		"$0 = DCC session ID"),
 
 	/*
 		@doc: ondccchatmessage
@@ -3503,8 +3503,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCChatMessage",
-	    "$0 = Message text\n"
-	    "$1 = DCC session ID"),
+		"$0 = Message text\n"
+		"$1 = DCC session ID"),
 
 	/*
 		@doc: ondccchaterror
@@ -3533,8 +3533,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCChatError",
-	    "$0 = Error message\n"
-	    "$1 = DCC session ID"),
+		"$0 = Error message\n"
+		"$1 = DCC session ID"),
 
 	/*
 		@doc: ondccchatdisconnected
@@ -3557,7 +3557,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCChatDisconnected",
-	    "$0 = DCC session ID"),
+		"$0 = DCC session ID"),
 
 	/*
 		@doc: ondccchatwindowclosing
@@ -3580,7 +3580,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCChatWindowClosing",
-	    "$0 = DCC session ID"),
+		"$0 = DCC session ID"),
 
 	/*
 		@doc: ondccfiletransferconnectioninprogress
@@ -3611,7 +3611,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCFileTransferConnectionInProgress",
-	    "$0 = DCC session ID"),
+		"$0 = DCC session ID"),
 
 	/*
 		@doc: ondccfiletransferbegin
@@ -3637,7 +3637,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCFileTransferBegin",
-	    "$0 = DCC session ID"),
+		"$0 = DCC session ID"),
 
 	/*
 		@doc: ondccfiletransfersuccess
@@ -3664,8 +3664,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCFileTransferSuccess",
-	    "$0 = Bytes transferred\n"
-	    "$1 = DCC session ID"),
+		"$0 = Bytes transferred\n"
+		"$1 = DCC session ID"),
 
 	/*
 		@doc: ondccfiletransferfailed
@@ -3694,9 +3694,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnDCCFileTransferFailed",
-	    "$0 = Failure reason\n"
-	    "$1 = Bytes transferred\n"
-	    "$2 = DCC session ID"),
+		"$0 = Failure reason\n"
+		"$1 = Bytes transferred\n"
+		"$2 = DCC session ID"),
 
 	// Link clicks
 	/*
@@ -3717,7 +3717,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelNickLinkClick",
-	    "$0 = Nickname list"),
+		"$0 = Nickname list"),
 
 	/*
 		@doc: OnQueryNickLinkClick
@@ -3737,7 +3737,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQueryNickLinkClick",
-	    "$0 = Nickname list"),
+		"$0 = Nickname list"),
 
 	/*
 		@doc: OnConsoleNickLinkClick
@@ -3757,7 +3757,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnConsoleNickLinkClick",
-	    "$0 = Nickname"),
+		"$0 = Nickname"),
 
 	/*
 		@doc: OnHostLinkClick
@@ -3777,7 +3777,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnHostLinkClick",
-	    "$0 = Hostname"),
+		"$0 = Hostname"),
 
 	/*
 		@doc: OnURLLinkClick
@@ -3797,7 +3797,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnURLLinkClick",
-	    "$0 = URL"),
+		"$0 = URL"),
 
 	/*
 		@doc: OnChannelLinkClick
@@ -3817,7 +3817,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelLinkClick",
-	    "$0 = Channel name"),
+		"$0 = Channel name"),
 
 	/*
 		@doc: OnServerLinkClick
@@ -3837,7 +3837,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnServerLinkClick",
-	    "$0 = Server name"),
+		"$0 = Server name"),
 
 	/*
 		@doc: ontextviewdoublecliked
@@ -3891,9 +3891,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnNickLinkDefaultActionRequest",
-	    "$0 = Actual name\n"
-	    "$1 = Visible name\n"
-	    "$2 = Command name"),
+		"$0 = Actual name\n"
+		"$1 = Visible name\n"
+		"$2 = Command name"),
 
 	/*
 		@doc: onchannelnickdefaultactionrequest
@@ -3913,7 +3913,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnChannelNickDefaultActionRequest",
-	    "$0 = Nickname list"),
+		"$0 = Nickname list"),
 
 	/*
 		@doc: onquerynickdefaultactionrequest
@@ -3940,9 +3940,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQueryNickDefaultActionRequest",
-	    "$0 = Actual name\n"
-	    "$1 = Visible name\n"
-	    "$2 = Command name"),
+		"$0 = Actual name\n"
+		"$1 = Visible name\n"
+		"$2 = Command name"),
 
 	/*
 		@doc: onwindowtitlerequest
@@ -3965,8 +3965,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnWindowTitleRequest",
-	    "$0 = Window ID\n"
-	    "$1 = Default window title"),
+		"$0 = Window ID\n"
+		"$1 = Default window title"),
 
 	/*
 		@doc: oninputbarpaste
@@ -3990,8 +3990,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnInputBarPaste",
-	    "$0 = Window ID\n"
-	    "$1 = Pasted text"),
+		"$0 = Window ID\n"
+		"$1 = Pasted text"),
 
 	/*
 		@doc: onmemoservnotice
@@ -4020,11 +4020,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMemoServNotice",
-	    "$0 = MemoServ nickname\n"
-	    "$1 = MemoServ username\n"
-	    "$2 = MemoServ hostname\n"
-	    "$3 = Message\n"
-	    "$4 = Message tags"),
+		"$0 = MemoServ nickname\n"
+		"$1 = MemoServ username\n"
+		"$2 = MemoServ hostname\n"
+		"$3 = Message\n"
+		"$4 = Message tags"),
 
 	/*
 		@doc: onbroadcastnotice
@@ -4051,11 +4051,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnBroadcastNotice",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Target\n"
-	    "$4 = Message"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Target\n"
+		"$4 = Message"),
 
 	/*
 		@doc: onquietban
@@ -4079,10 +4079,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQuietBan",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Ban mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Ban mask"),
 
 	/*
 		@doc: onquietunban
@@ -4106,10 +4106,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnQuietUnban",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Ban mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Ban mask"),
 
 	/*
 		@doc: onmequietban
@@ -4133,10 +4133,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeQuietBan",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Ban mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Ban mask"),
 
 	/*
 		@doc: onmequietunban
@@ -4160,10 +4160,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeQuietUnban",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Ban mask"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Ban mask"),
 
 	/*
 		@doc: onmehostchange
@@ -4183,8 +4183,8 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnMeHostChange",
-	    "$0 = Source server\n"
-	    "$1 = New hostname"),
+		"$0 = Source server\n"
+		"$1 = New hostname"),
 
 	/*
 		@doc: onhostchange
@@ -4211,11 +4211,11 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnHostChange",
-	    "$0 = Source nickname\n"
-	    "$1 = Source old username\n"
-	    "$2 = Source old hostname\n"
-	    "$3 = Source new username\n"
-	    "$4 = Source new hostname"),
+		"$0 = Source nickname\n"
+		"$1 = Source old username\n"
+		"$2 = Source old hostname\n"
+		"$3 = Source new username\n"
+		"$4 = Source new hostname"),
 
 	/*
 		@doc: onaccount
@@ -4239,10 +4239,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnAccount",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Source account name"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Source account name"),
 
 	/*
 		@doc: onaway
@@ -4268,10 +4268,10 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnAway",
-	    "$0 = Source nickname\n"
-	    "$1 = Source username\n"
-	    "$2 = Source hostname\n"
-	    "$3 = Away message"),
+		"$0 = Source nickname\n"
+		"$1 = Source username\n"
+		"$2 = Source hostname\n"
+		"$3 = Away message"),
 
 	/*
 		@doc: oncap
@@ -4292,7 +4292,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS] = {
 	*/
 
 	EVENT("OnCap",
-	    "$0 = Server\n"
-	    "$1 = Command\n"
-	    "$2 = Protocols"),
+		"$0 = Server\n"
+		"$1 = Command\n"
+		"$2 = Protocols"),
 };

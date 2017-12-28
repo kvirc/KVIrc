@@ -35,16 +35,16 @@
 #include "KviTalToolTip.h"
 
 OptionsWidget_alertsAndHighlighting::OptionsWidget_alertsAndHighlighting(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("highlighting_options_widget");
 }
 
 OptionsWidget_alertsAndHighlighting::~OptionsWidget_alertsAndHighlighting()
-    = default;
+= default;
 
 OptionsWidget_highlighting::OptionsWidget_highlighting(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("highlighting_options_widget");
 	createLayout();
@@ -73,14 +73,14 @@ OptionsWidget_highlighting::OptionsWidget_highlighting(QWidget * parent)
 	g->addWidget(m_pHighlightAllOccurencesRadioButton, 0, 0, 1, 2);
 	m_pHighlightAllOccurencesRadioButton->setChecked(KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting));
 	KviTalToolTip::add(m_pHighlightAllOccurencesRadioButton, __tr2qs_ctx("This selection will cause KVIrc to search for the highlighted words or "
-                                                                             "nicknames inside the whole text. This will also highlight parts of words.<br>"
-                                                                             "(e.g. if your nickname is Mark then Markus will be highlighted too).", "options"));
+		"nicknames inside the whole text. This will also highlight parts of words.<br>"
+		"(e.g. if your nickname is Mark then Markus will be highlighted too).", "options"));
 
 	m_pHighlightWholeWordsOnlyRadioButton = new QRadioButton(__tr2qs_ctx("Highlight only whole words splitting on space and on:", "options"), gbox);
 	g->addWidget(m_pHighlightWholeWordsOnlyRadioButton, 1, 0, 1, 1);
 	m_pHighlightWholeWordsOnlyRadioButton->setChecked(!KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting));
 	KviTalToolTip::add(m_pHighlightWholeWordsOnlyRadioButton, __tr2qs_ctx("This selection will first split the string on the specified boundaries<br>"
-                                                                              "(including space) and then will compare all the parts with the highlighted words.", "options"));
+		"(including space) and then will compare all the parts with the highlighted words.", "options"));
 
 	m_pWordSplitterCharactersEdit = new QLineEdit(gbox);
 	m_pWordSplitterCharactersEdit->setText(KVI_OPTION_STRING(KviOption_stringWordSplitters));
@@ -94,17 +94,17 @@ OptionsWidget_highlighting::OptionsWidget_highlighting(QWidget * parent)
 	b = addBoolSelector(gbox, __tr2qs_ctx("Flash the system taskbar entry on highlighted messages", "options"),
 		KviOption_boolFlashWindowOnHighlightedMessages);
 	mergeTip(b, __tr2qs_ctx("If this option is enabled, KVIrc will (attempt to) flash the system taskbar entry when "
-                                "a highlighted message is printed and KVIrc is not the active window.", "options"));
+		"a highlighted message is printed and KVIrc is not the active window.", "options"));
 
 	b = addBoolSelector(gbox, __tr2qs_ctx("Popup the notifier window on highlighted messages", "options"), KviOption_boolPopupNotifierOnHighlightedMessages);
 	mergeTip(b, __tr2qs_ctx("If this option is enabled, KVIrc will popup a little notifier window in the low right corner of your desktop when a highlighted message "
-                                "is printed and KVIrc is not the active window.", "options"));
+		"is printed and KVIrc is not the active window.", "options"));
 
 	addRowSpacer(0, 6, 0, 6);
 }
 
 OptionsWidget_highlighting::~OptionsWidget_highlighting()
-    = default;
+= default;
 
 void OptionsWidget_highlighting::commit()
 {
@@ -115,7 +115,7 @@ void OptionsWidget_highlighting::commit()
 }
 
 OptionsWidget_alerts::OptionsWidget_alerts(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("highlighting_options_widget");
 	createLayout();
@@ -123,8 +123,8 @@ OptionsWidget_alerts::OptionsWidget_alerts(QWidget * parent)
 	KviTalGroupBox * g = addGroupBox(0, 0, 0, 0, Qt::Horizontal, __tr2qs_ctx("Alert Restrictions", "options"));
 	KviBoolSelector * b3 = addBoolSelector(g, __tr2qs_ctx("Restrict alert", "options"), KviOption_boolHighlightOnlyNormalMsg);
 	mergeTip(b3, __tr2qs_ctx("If this option is enabled, KVIrc will alert in the window list only if a normal message is received in a channel. "
-	                         "Actions like joins, parts and mode changes will be ignored.<br> This is useful if you are in channels with a high rate "
-	                         "of traffic and only want to be alerted for messages that are interesting to you.", "options"));
+		"Actions like joins, parts and mode changes will be ignored.<br> This is useful if you are in channels with a high rate "
+		"of traffic and only want to be alerted for messages that are interesting to you.", "options"));
 
 	KviBoolSelector * b4 = addBoolSelector(g, __tr2qs_ctx("Alert for highlighted words", "options"), KviOption_boolHighlightOnlyNormalMsgHighlightInChanToo,
 		KVI_OPTION_BOOL(KviOption_boolHighlightOnlyNormalMsg));
@@ -149,6 +149,6 @@ OptionsWidget_alerts::OptionsWidget_alerts(QWidget * parent)
 }
 
 OptionsWidget_alerts::~OptionsWidget_alerts()
-    = default;
+= default;
 
 #endif //_OPTW_HIGHLIGHTING_CPP_

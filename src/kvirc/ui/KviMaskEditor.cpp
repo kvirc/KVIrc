@@ -39,24 +39,24 @@
 #include <QValidator>
 
 KviMaskItem::KviMaskItem(QTreeWidget * pParent, KviMaskEntry * pEntry)
-    : QTreeWidgetItem(pParent), m_Mask(*pEntry)
+	: QTreeWidgetItem(pParent), m_Mask(*pEntry)
 {
 	QString szDate;
 	QDateTime date;
 	date.setTime_t(mask()->uSetAt);
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
-		case 0:
-			// this is the equivalent to an empty date.toString() call, but it's needed
-			// to ensure qt4 will use the default() locale and not the system() one
-			szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
-			break;
-		case 1:
-			szDate = date.toString(Qt::ISODate);
-			break;
-		case 2:
-			szDate = date.toString(Qt::SystemLocaleShortDate);
-			break;
+	case 0:
+		// this is the equivalent to an empty date.toString() call, but it's needed
+		// to ensure qt4 will use the default() locale and not the system() one
+		szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
+		break;
+	case 1:
+		szDate = date.toString(Qt::ISODate);
+		break;
+	case 2:
+		szDate = date.toString(Qt::SystemLocaleShortDate);
+		break;
 	}
 	setText(0, mask()->szMask);
 	setText(1, mask()->szSetBy);
@@ -64,10 +64,10 @@ KviMaskItem::KviMaskItem(QTreeWidget * pParent, KviMaskEntry * pEntry)
 }
 
 KviMaskItem::~KviMaskItem()
-    = default;
+= default;
 
 KviMaskInputDialog::KviMaskInputDialog(const QString & szMask, KviMaskEditor * pEditor, KviChannelWindow * pChannel)
-    : QDialog(pEditor)
+	: QDialog(pEditor)
 {
 	m_pChannel = pChannel;
 	m_pEditor = pEditor;
@@ -96,31 +96,31 @@ KviMaskInputDialog::KviMaskInputDialog(const QString & szMask, KviMaskEditor * p
 }
 
 KviMaskInputDialog::~KviMaskInputDialog()
-    = default;
+= default;
 
 void KviMaskInputDialog::accept()
 {
 	if(m_szOldMask.isEmpty())
 	{
 		m_pChannel->connection()->sendFmtData("MODE %s +%c %s",
-		    m_pChannel->connection()->encodeText(m_pChannel->target()).data(),
-		    m_pEditor->flag(),
-		    m_pChannel->connection()->encodeText(m_pEdit->text()).data());
+			m_pChannel->connection()->encodeText(m_pChannel->target()).data(),
+			m_pEditor->flag(),
+			m_pChannel->connection()->encodeText(m_pEdit->text()).data());
 	}
 	else
 	{
 		m_pChannel->connection()->sendFmtData("MODE %s -%c+%c %s %s",
-		    m_pChannel->connection()->encodeText(m_pChannel->target()).data(),
-		    m_pEditor->flag(),
-		    m_pEditor->flag(),
-		    m_pChannel->connection()->encodeText(m_szOldMask).data(),
-		    m_pChannel->connection()->encodeText(m_pEdit->text()).data());
+			m_pChannel->connection()->encodeText(m_pChannel->target()).data(),
+			m_pEditor->flag(),
+			m_pEditor->flag(),
+			m_pChannel->connection()->encodeText(m_szOldMask).data(),
+			m_pChannel->connection()->encodeText(m_pEdit->text()).data());
 	}
 	QDialog::accept();
 }
 
 KviMaskEditor::KviMaskEditor(QWidget * par, KviChannelWindow * pChannel, KviWindowToolPageButton * button, std::vector<KviMaskEntry *> maskList, char cMode, const char * name)
-    : KviWindowToolWidget(par, button)
+	: KviWindowToolWidget(par, button)
 {
 	setObjectName(name);
 	m_pChannel = pChannel;
@@ -141,25 +141,25 @@ KviMaskEditor::KviMaskEditor(QWidget * par, KviChannelWindow * pChannel, KviWind
 		szDescription = __tr2qs("Mode \"%1\" masks").arg(cMode);
 	switch(cMode)
 	{
-		case 'b':
-			m_eIcon = KviIconManager::Ban;
-			break;
-		case 'e':
-			m_eIcon = KviIconManager::BanExcept;
-			break;
-		case 'I':
-			m_eIcon = KviIconManager::InviteExcept;
-			break;
-		case 'a':
-			m_eIcon = KviIconManager::ChanAdmin;
-			break;
-		case 'q':
-			// this could also be quiet bans..
-			m_eIcon = KviIconManager::Kick;
-			break;
-		default:
-			m_eIcon = KviIconManager::Ban;
-			break;
+	case 'b':
+		m_eIcon = KviIconManager::Ban;
+		break;
+	case 'e':
+		m_eIcon = KviIconManager::BanExcept;
+		break;
+	case 'I':
+		m_eIcon = KviIconManager::InviteExcept;
+		break;
+	case 'a':
+		m_eIcon = KviIconManager::ChanAdmin;
+		break;
+	case 'q':
+		// this could also be quiet bans..
+		m_eIcon = KviIconManager::Kick;
+		break;
+	default:
+		m_eIcon = KviIconManager::Ban;
+		break;
 	}
 
 	KviTalHBox * pTitleLayout = new KviTalHBox(this);
@@ -235,7 +235,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par, KviChannelWindow * pChannel, KviWind
 }
 
 KviMaskEditor::~KviMaskEditor()
-    = default;
+= default;
 
 void KviMaskEditor::updateOpStatus()
 {

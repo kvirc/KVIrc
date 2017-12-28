@@ -122,7 +122,7 @@ namespace KviTimeUtils
 	* \return void
 	*/
 	KVILIB_API void secondsToDaysHoursMinsSecs(unsigned int uSecs,
-	    unsigned int * uD, unsigned int * uH, unsigned int * uM, unsigned int * uS);
+		unsigned int * uD, unsigned int * uH, unsigned int * uM, unsigned int * uS);
 
 	/** \enum FormatTimeSpanFlags */
 	enum FormatTimeSpanFlags

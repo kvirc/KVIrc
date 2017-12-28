@@ -25,7 +25,7 @@
 #include "KviKvsTreeNodeIndirectData.h"
 
 KviKvsTreeNodeIndirectData::KviKvsTreeNodeIndirectData(const QChar * pLocation, KviKvsTreeNodeData * pSource)
-    : KviKvsTreeNodeData(pLocation)
+	: KviKvsTreeNodeData(pLocation)
 {
 	m_pSource = pSource;
 	m_pSource->setParent(this);

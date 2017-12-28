@@ -133,11 +133,11 @@ bool KvsObject_toolButton::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 KVSO_CLASS_FUNCTION(toolButton, setImage)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString icon;
+		QString icon;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("icon_id", KVS_PT_STRING, 0, icon)
-	KVSO_PARAMETERS_END(c)
-	QPixmap * pix = g_pIconManager->getImage(icon);
+		KVSO_PARAMETER("icon_id", KVS_PT_STRING, 0, icon)
+		KVSO_PARAMETERS_END(c)
+		QPixmap * pix = g_pIconManager->getImage(icon);
 	if(pix)
 		((QToolButton *)widget())->setIcon(QIcon(*pix));
 	else
@@ -148,95 +148,95 @@ KVSO_CLASS_FUNCTION(toolButton, setImage)
 KVSO_CLASS_FUNCTION(toolButton, setUsesBigPixmap)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	((QToolButton *)widget())->setIconSize(bEnabled ? QSize(32, 32) : QSize(22, 22));
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		((QToolButton *)widget())->setIconSize(bEnabled ? QSize(32, 32) : QSize(22, 22));
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(toolButton, usesBigPixmap)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(((QToolButton *)widget())->iconSize().height() > 22);
+		c->returnValue()->setBoolean(((QToolButton *)widget())->iconSize().height() > 22);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(toolButton, setUsesTextLabel)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	((QToolButton *)widget())->setToolButtonStyle(bEnabled ? Qt::ToolButtonTextUnderIcon : Qt::ToolButtonIconOnly);
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		((QToolButton *)widget())->setToolButtonStyle(bEnabled ? Qt::ToolButtonTextUnderIcon : Qt::ToolButtonIconOnly);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(toolButton, usesTextLabel)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(((QToolButton *)widget())->toolButtonStyle() != Qt::ToolButtonIconOnly);
+		c->returnValue()->setBoolean(((QToolButton *)widget())->toolButtonStyle() != Qt::ToolButtonIconOnly);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(toolButton, setAutoRaise)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	((QToolButton *)widget())->setAutoRaise(bEnabled);
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		((QToolButton *)widget())->setAutoRaise(bEnabled);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(toolButton, autoRaise)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(((QToolButton *)widget())->autoRaise());
+		c->returnValue()->setBoolean(((QToolButton *)widget())->autoRaise());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(toolButton, setOn)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	((QToolButton *)widget())->setChecked(bEnabled);
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		((QToolButton *)widget())->setChecked(bEnabled);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(toolButton, setToggleButton)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	((QToolButton *)widget())->setCheckable(bEnabled);
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		((QToolButton *)widget())->setCheckable(bEnabled);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(toolButton, toggle)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QToolButton *)widget())->toggle();
+		((QToolButton *)widget())->toggle();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(toolButton, setTextLabel)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szLabel, szTip;
+		QString szLabel, szTip;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
-	KVSO_PARAMETER("tooltip", KVS_PT_STRING, KVS_PF_OPTIONAL, szTip)
-	KVSO_PARAMETERS_END(c)
-	((QToolButton *)widget())->setText(szLabel);
+		KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
+		KVSO_PARAMETER("tooltip", KVS_PT_STRING, KVS_PF_OPTIONAL, szTip)
+		KVSO_PARAMETERS_END(c)
+		((QToolButton *)widget())->setText(szLabel);
 	if(!szTip.isEmpty())
 		((QToolButton *)widget())->setToolTip(szTip);
 	return true;
@@ -245,19 +245,19 @@ KVSO_CLASS_FUNCTION(toolButton, setTextLabel)
 KVSO_CLASS_FUNCTION(toolButton, textLabel)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setString(((QToolButton *)widget())->text());
+		c->returnValue()->setString(((QToolButton *)widget())->text());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(toolButton, setPopup)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * ob;
+		KviKvsObject * ob;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
-	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
+		ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob)
 	{
 		c->warning(__tr2qs_ctx("Widget parameter is not an object", "objects"));
@@ -280,30 +280,30 @@ KVSO_CLASS_FUNCTION(toolButton, setPopup)
 KVSO_CLASS_FUNCTION(toolButton, openPopup)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QToolButton *)widget())->showMenu();
+		((QToolButton *)widget())->showMenu();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(toolButton, setTextPosition)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szPos;
+		QString szPos;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("position", KVS_PT_STRING, 0, szPos)
-	KVSO_PARAMETERS_END(c)
-	if(KviQString::equalCI(szPos, "BesideIcon"))
-		((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-	else if(KviQString::equalCI(szPos, "BelowIcon"))
-		((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-	else
-		c->warning(__tr2qs_ctx("Unknown text position '%Q'", "objects"), &szPos);
+		KVSO_PARAMETER("position", KVS_PT_STRING, 0, szPos)
+		KVSO_PARAMETERS_END(c)
+		if(KviQString::equalCI(szPos, "BesideIcon"))
+			((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+		else if(KviQString::equalCI(szPos, "BelowIcon"))
+			((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
+		else
+			c->warning(__tr2qs_ctx("Unknown text position '%Q'", "objects"), &szPos);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(toolButton, textPosition)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szPos = "BelowIcon";
+		QString szPos = "BelowIcon";
 	if((((QToolButton *)widget())->toolButtonStyle()) == (Qt::ToolButtonTextBesideIcon))
 		szPos = "BesideIcon";
 	c->returnValue()->setString(szPos);

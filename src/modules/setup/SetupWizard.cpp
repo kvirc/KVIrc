@@ -72,7 +72,7 @@ extern QString szMircIni;
 #endif
 
 SetupPage::SetupPage(SetupWizard * w)
-    : QWidget(w)
+	: QWidget(w)
 {
 	QGridLayout * g = new QGridLayout(this);
 
@@ -126,10 +126,10 @@ SetupPage::SetupPage(SetupWizard * w)
 }
 
 SetupPage::~SetupPage()
-    = default;
+= default;
 
 SetupWizard::SetupWizard()
-    : KviTalWizard(nullptr)
+	: KviTalWizard(nullptr)
 {
 	setWindowTitle(__tr2qs("Setup Wizard - KVIrc"));
 
@@ -156,14 +156,14 @@ SetupWizard::SetupWizard()
 
 	// here we go...
 	QString szText = __tr2qs("<p>"
-	                         "<h2>Welcome :)</h2>"
-	                         "This is your first time running this version of KVIrc.<br>"
-	                         "This wizard will guide you through the few steps "
-	                         "required to complete the setup.<br><br>"
-	                         "If you had a previous version of KVIrc installed, no worries. You will "
-	                         "have a chance to preserve the old configuration."
-	                         "</p>"
-	                         "<p>Click \"<b>Next</b>\" to proceed.</p>");
+		"<h2>Welcome :)</h2>"
+		"This is your first time running this version of KVIrc.<br>"
+		"This wizard will guide you through the few steps "
+		"required to complete the setup.<br><br>"
+		"If you had a previous version of KVIrc installed, no worries. You will "
+		"have a chance to preserve the old configuration."
+		"</p>"
+		"<p>Click \"<b>Next</b>\" to proceed.</p>");
 
 	m_pWelcome->m_pTextLabel->setText(szText);
 
@@ -172,20 +172,20 @@ SetupWizard::SetupWizard()
 	setBackEnabled(m_pWelcome, false);
 	setHelpEnabled(m_pWelcome, false);
 
-//
-// License
-//
+	//
+	// License
+	//
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW) //it have been already shown by installer
 	SetupPage * m_pLicense = new SetupPage(this);
 	m_pLicense->m_pTextLabel->setText(__tr2qs(
-	    "<p>All of the files in this distribution are covered by the GPL. "
-	    "In human terms this can be read as follows:<br>"
-	    "<ul>"
-	    "<li><b>KVIrc is free</b>, use it, have fun! <b>:)</b></li>"
-	    "<li>If you use <b>any</b> part of KVIrc in your own project, you <b>must</b> release that project under the same license.</li>"
-	    "</ul></p>"
-	    "<p>The \"legalese\" version of the license is shown in the box below.</p>"));
+		"<p>All of the files in this distribution are covered by the GPL. "
+		"In human terms this can be read as follows:<br>"
+		"<ul>"
+		"<li><b>KVIrc is free</b>, use it, have fun! <b>:)</b></li>"
+		"<li>If you use <b>any</b> part of KVIrc in your own project, you <b>must</b> release that project under the same license.</li>"
+		"</ul></p>"
+		"<p>The \"legalese\" version of the license is shown in the box below.</p>"));
 
 	QTextEdit * ed = new QTextEdit(m_pLicense->m_pVBox);
 	ed->setReadOnly(true);
@@ -196,8 +196,8 @@ SetupWizard::SetupWizard()
 	if(!KviFileUtils::loadFile(szLicensePath, szLicense))
 	{
 		szLicense = __tr("Oops! Can't find the license file.\n"
-		                 "It MUST be included in the distribution...\n"
-		                 "Please report to <pragma at kvirc dot net>");
+			"It MUST be included in the distribution...\n"
+			"Please report to <pragma at kvirc dot net>");
 	}
 	ed->setText(szLicense);
 
@@ -216,14 +216,14 @@ SetupWizard::SetupWizard()
 	m_pDirectory = new SetupPage(this);
 
 	m_pDirectory->m_pTextLabel->setText(__tr2qs("<p>Please choose a folder for "
-	                                            "KVIrc to store its settings and other data, and another for downloaded files. "
-	                                            "Make sure that you have permission to write to both folders.<br><br>"
-	                                            "The suggested locations are fine in most cases. If you don't know what "
-	                                            "this is about, just click \"<b>Next</b>\".<br><br>"
-	                                            "If you had a previous version of KVIrc installed, you can choose "
-	                                            "the existing directory for the settings, and your configuration "
-	                                            "will be preserved."
-	                                            "</p>"));
+		"KVIrc to store its settings and other data, and another for downloaded files. "
+		"Make sure that you have permission to write to both folders.<br><br>"
+		"The suggested locations are fine in most cases. If you don't know what "
+		"this is about, just click \"<b>Next</b>\".<br><br>"
+		"If you had a previous version of KVIrc installed, you can choose "
+		"the existing directory for the settings, and your configuration "
+		"will be preserved."
+		"</p>"));
 
 	QString tmp;
 
@@ -313,11 +313,11 @@ SetupWizard::SetupWizard()
 	m_pIdentity = new SetupPage(this);
 
 	m_pIdentity->m_pTextLabel->setText(__tr2qs("Please choose a nickname.<br><br>"
-	                                           "Your nickname is the name that other IRC users will know you by. "
-	                                           "It can't contain spaces or punctuation. Some IRC networks will shorten your nickname if it is more than 32 characters "
-	                                           "long.<br><br>"
-	                                           "If in doubt, just enter the first nick that comes to mind. "
-	                                           "You will be able to change it later in the Identity properties, or with the /NICK command."));
+		"Your nickname is the name that other IRC users will know you by. "
+		"It can't contain spaces or punctuation. Some IRC networks will shorten your nickname if it is more than 32 characters "
+		"long.<br><br>"
+		"If in doubt, just enter the first nick that comes to mind. "
+		"You will be able to change it later in the Identity properties, or with the /NICK command."));
 
 	KviTalGroupBox * gbox = new KviTalGroupBox(Qt::Horizontal, QString(), m_pIdentity->m_pVBox);
 
@@ -406,13 +406,13 @@ SetupWizard::SetupWizard()
 
 	m_pTheme = new SetupPage(this);
 	m_pTheme->m_pTextLabel->setText(__tr2qs(
-	    "<p>Here you can choose the default appearance of KVIrc.<br><br>"
-	    "The Fancy theme uses icons, a transparent background and a lot of colors. "
-	    "The Minimalist theme is designed for low-color displays "
-	    "or for \"console\" extremists; it's more or less white text on a black background.<br><br>"
-	    "If you had a previous version of KVIrc installed, you can choose to not apply any theme "
-	    "in order to preserve your current visual settings.<br><br>"
-	    "If you don't know what to choose, just use the default.</p>"));
+		"<p>Here you can choose the default appearance of KVIrc.<br><br>"
+		"The Fancy theme uses icons, a transparent background and a lot of colors. "
+		"The Minimalist theme is designed for low-color displays "
+		"or for \"console\" extremists; it's more or less white text on a black background.<br><br>"
+		"If you had a previous version of KVIrc installed, you can choose to not apply any theme "
+		"in order to preserve your current visual settings.<br><br>"
+		"If you don't know what to choose, just use the default.</p>"));
 
 	m_pThemeButtonGroup = new QGroupBox(m_pTheme->m_pVBox);
 
@@ -474,13 +474,13 @@ SetupWizard::SetupWizard()
 	m_pDesktopIntegration = new SetupPage(this);
 
 	szText = __tr2qs(
-	    "<p>"
-	    "Here you can choose how much KVIrc will integrate with "
-	    "your system."
-	    "<br><br>"
-	    "The default settings are fine for most users so if "
-	    "you're in doubt just click \"<b>Finish</b>\" to continue."
-	    "</p>");
+		"<p>"
+		"Here you can choose how much KVIrc will integrate with "
+		"your system."
+		"<br><br>"
+		"The default settings are fine for most users so if "
+		"you're in doubt just click \"<b>Finish</b>\" to continue."
+		"</p>");
 
 	m_pDesktopIntegration->m_pTextLabel->setText(szText);
 
@@ -503,7 +503,7 @@ SetupWizard::SetupWizard()
 	setHelpEnabled(m_pDesktopIntegration, false);
 	setFinishEnabled(m_pDesktopIntegration, true);
 
-// Preconfigured values
+	// Preconfigured values
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	QString szTmp;
 	g_pApp->getGlobalKvircDirectory(szTmp, KviApplication::Config, "preinstalled.kvc");
@@ -524,19 +524,19 @@ SetupWizard::SetupWizard()
 		{
 			switch(iDir)
 			{
-				case 1:
-					m_pDirUseNew->toggle();
-					setPageEnabled(m_pDirectory, false);
-					break;
-				case 2:
-					m_pDirMakePortable->toggle();
-					setPageEnabled(m_pDirectory, false);
-					break;
+			case 1:
+				m_pDirUseNew->toggle();
+				setPageEnabled(m_pDirectory, false);
+				break;
+			case 2:
+				m_pDirMakePortable->toggle();
+				setPageEnabled(m_pDirectory, false);
+				break;
 			}
 		}
 	}
 
-//mIRC import
+	//mIRC import
 #define QUERY_BUFFER 2048
 	char * buffer;
 	DWORD len = QUERY_BUFFER;
@@ -717,9 +717,9 @@ void SetupWizard::chooseOldDataPath()
 {
 	// FIXME: We'd like to show hidden directories here ($HOME/.kvirc is hidden)...
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(
-	    m_pDataPathEdit->text(),
-	    __tr2qs("Choose an Existing Configuration Folder - KVIrc Setup"),
-	    this);
+		m_pDataPathEdit->text(),
+		__tr2qs("Choose an Existing Configuration Folder - KVIrc Setup"),
+		this);
 
 	if(szBuffer.isEmpty())
 		return;
@@ -730,17 +730,17 @@ void SetupWizard::chooseOldDataPath()
 	if(!g_pApp->checkLocalKvircDirectory(szBuffer))
 	{
 		if(
-		    QMessageBox::question(
-		        this,
-		        __tr2qs("Confirm Setting Configuration Folder - KVIrc Setup"),
-		        __tr2qs("The folder %1 doesn't seem to be a valid KVIrc settings folder. Do you want to use it anyway?")
-		            .arg(szBuffer),
-		        __tr2qs("&Yes"),
-		        __tr2qs("&No"),
-		        QString(),
-		        0,
-		        1)
-		    == 0)
+			QMessageBox::question(
+				this,
+				__tr2qs("Confirm Setting Configuration Folder - KVIrc Setup"),
+				__tr2qs("The folder %1 doesn't seem to be a valid KVIrc settings folder. Do you want to use it anyway?")
+				.arg(szBuffer),
+				__tr2qs("&Yes"),
+				__tr2qs("&No"),
+				QString(),
+				0,
+				1)
+			== 0)
 			m_pOldDataPathEdit->setText(szBuffer);
 	}
 	else
@@ -752,9 +752,9 @@ void SetupWizard::chooseOldDataPath()
 void SetupWizard::chooseDataPath()
 {
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(
-	    m_pDataPathEdit->text(),
-	    __tr2qs("Choose a Configuration Folder - KVIrc Setup"),
-	    this);
+		m_pDataPathEdit->text(),
+		__tr2qs("Choose a Configuration Folder - KVIrc Setup"),
+		this);
 	KviFileUtils::adjustFilePath(szBuffer);
 	if(!szBuffer.isEmpty())
 	{
@@ -766,9 +766,9 @@ void SetupWizard::chooseDataPath()
 void SetupWizard::chooseIncomingPath()
 {
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(
-	    m_pIncomingPathEdit->text(),
-	    __tr2qs("Choose a Download Folder - KVIrc Setup"),
-	    this);
+		m_pIncomingPathEdit->text(),
+		__tr2qs("Choose a Download Folder - KVIrc Setup"),
+		this);
 	KviFileUtils::adjustFilePath(szBuffer);
 	if(!szBuffer.isEmpty())
 	{
@@ -802,12 +802,12 @@ void SetupWizard::makeLink()
 
 	// Dig in the registry looking up the Desktop path
 	if(RegOpenKeyEx(HKEY_CURRENT_USER,
-	       TEXT("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders"),
-	       0, KEY_QUERY_VALUE, &hCU)
-	    == ERROR_SUCCESS)
+		TEXT("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders"),
+		0, KEY_QUERY_VALUE, &hCU)
+		== ERROR_SUCCESS)
 	{
 		RegQueryValueEx(hCU, TEXT("Desktop"), NULL, &lpType,
-		    (unsigned char *)&szLink, &ulSize);
+			(unsigned char *)&szLink, &ulSize);
 		RegCloseKey(hCU);
 	}
 
@@ -826,8 +826,8 @@ void SetupWizard::makeLink()
 
 	// Get a pointer to the IShellLink interface: this is kinda ugly :)
 	if(CoCreateInstance(CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER,
-	       IID_IShellLink, (void **)&psl)
-	    == S_OK)
+		IID_IShellLink, (void **)&psl)
+		== S_OK)
 	{
 		// just for fun, lookup another shell interface
 
@@ -862,15 +862,15 @@ void SetupWizard::makeLink()
 	tmp.append("kvirc.desktop");
 
 	QString contents = "[Desktop Entry]\n"
-	                   "GenericName=IRC Client\n"
-	                   "Comment=Connect to Internet Relay Chat\n"
-	                   "Exec=kvirc -m %u\n"
-	                   "Icon=kvirc\n"
-	                   "MapNotify=true\n"
-	                   "Name=KVIrc\n"
-	                   "Terminal=false\n"
-	                   "Type=Application\n"
-	                   "X-KDE-SubstituteUID=false\n";
+		"GenericName=IRC Client\n"
+		"Comment=Connect to Internet Relay Chat\n"
+		"Exec=kvirc -m %u\n"
+		"Icon=kvirc\n"
+		"MapNotify=true\n"
+		"Name=KVIrc\n"
+		"Terminal=false\n"
+		"Type=Application\n"
+		"X-KDE-SubstituteUID=false\n";
 
 	KviFileUtils::writeFile(tmp, contents, false);
 #endif //COMPILE_KDE_SUPPORT
@@ -880,44 +880,44 @@ void SetupWizard::setUrlHandlers()
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	QString szReg = "REGEDIT4\r\n"
-	                "\r\n"
-	                "[HKEY_CLASSES_ROOT\\irc]\r\n"
-	                "@=\"URL:IRC Protocol\"\r\n"
-	                "\"IRC Protocol\"=\"http://www.kvirc.net/\"\r\n"
-	                "\"EditFlags\"=hex:02,00,00,00\r\n"
-	                "\"URL Protocol\"="
-	                "\r\n"
-	                "\r\n"
-	                "[HKEY_CLASSES_ROOT\\irc\\DefaultIcon]\r\n"
-	                "@=\"\\\"@KVIRCEXECUTABLE@\\\"\"\r\n"
-	                "\r\n"
-	                "[HKEY_CLASSES_ROOT\\irc\\shell]\r\n"
-	                "@=\"\"\r\n"
-	                "\r\n"
-	                "[HKEY_CLASSES_ROOT\\irc\\shell\\open]\r\n"
-	                "\"EditFlags\"=hex:01,00,00,00\r\n"
-	                "\r\n"
-	                "[HKEY_CLASSES_ROOT\\irc\\shell\\open\\command]\r\n"
-	                "@=\"\\\"@KVIRCEXECUTABLE@\\\" %1\"\r\n"
-	                "\r\n"
-	                "[HKEY_CLASSES_ROOT\\irc6]\r\n"
-	                "@=\"URL:IRC6 Protocol\"\r\n"
-	                "\"IRC6 Protocol\"=\"http://www.kvirc.net/\"\r\n"
-	                "\"EditFlags\"=hex:02,00,00,00\r\n"
-	                "\"URL Protocol\"="
-	                "\r\n"
-	                "\r\n"
-	                "[HKEY_CLASSES_ROOT\\irc6\\DefaultIcon]\r\n"
-	                "@=\"\\\"@KVIRCEXECUTABLE@\\\"\"\r\n"
-	                "\r\n"
-	                "[HKEY_CLASSES_ROOT\\irc6\\shell]\r\n"
-	                "@=\"\"\r\n"
-	                "\r\n"
-	                "[HKEY_CLASSES_ROOT\\irc6\\shell\\open]\r\n"
-	                "\"EditFlags\"=hex:01,00,00,00\r\n"
-	                "\r\n"
-	                "[HKEY_CLASSES_ROOT\\irc6\\shell\\open\\command]\r\n"
-	                "@=\"\\\"@KVIRCEXECUTABLE@\\\" %1\"\r\n";
+		"\r\n"
+		"[HKEY_CLASSES_ROOT\\irc]\r\n"
+		"@=\"URL:IRC Protocol\"\r\n"
+		"\"IRC Protocol\"=\"http://www.kvirc.net/\"\r\n"
+		"\"EditFlags\"=hex:02,00,00,00\r\n"
+		"\"URL Protocol\"="
+		"\r\n"
+		"\r\n"
+		"[HKEY_CLASSES_ROOT\\irc\\DefaultIcon]\r\n"
+		"@=\"\\\"@KVIRCEXECUTABLE@\\\"\"\r\n"
+		"\r\n"
+		"[HKEY_CLASSES_ROOT\\irc\\shell]\r\n"
+		"@=\"\"\r\n"
+		"\r\n"
+		"[HKEY_CLASSES_ROOT\\irc\\shell\\open]\r\n"
+		"\"EditFlags\"=hex:01,00,00,00\r\n"
+		"\r\n"
+		"[HKEY_CLASSES_ROOT\\irc\\shell\\open\\command]\r\n"
+		"@=\"\\\"@KVIRCEXECUTABLE@\\\" %1\"\r\n"
+		"\r\n"
+		"[HKEY_CLASSES_ROOT\\irc6]\r\n"
+		"@=\"URL:IRC6 Protocol\"\r\n"
+		"\"IRC6 Protocol\"=\"http://www.kvirc.net/\"\r\n"
+		"\"EditFlags\"=hex:02,00,00,00\r\n"
+		"\"URL Protocol\"="
+		"\r\n"
+		"\r\n"
+		"[HKEY_CLASSES_ROOT\\irc6\\DefaultIcon]\r\n"
+		"@=\"\\\"@KVIRCEXECUTABLE@\\\"\"\r\n"
+		"\r\n"
+		"[HKEY_CLASSES_ROOT\\irc6\\shell]\r\n"
+		"@=\"\"\r\n"
+		"\r\n"
+		"[HKEY_CLASSES_ROOT\\irc6\\shell\\open]\r\n"
+		"\"EditFlags\"=hex:01,00,00,00\r\n"
+		"\r\n"
+		"[HKEY_CLASSES_ROOT\\irc6\\shell\\open\\command]\r\n"
+		"@=\"\\\"@KVIRCEXECUTABLE@\\\" %1\"\r\n";
 
 	QString szKvircExec = g_pApp->m_szGlobalKvircDir;
 	szKvircExec.append("\\kvirc.exe");
@@ -941,9 +941,9 @@ void SetupWizard::setUrlHandlers()
 void SetupWizard::reject()
 {
 	if(QMessageBox::warning(this, __tr2qs("Confirm Setup Abort - KVIrc Setup"),
-	       __tr2qs("You have chosen to abort the setup.<br>KVIrc can't run until you complete this procedure.<br><br>Do you really wish to abort?"),
-	       QMessageBox::Yes, QMessageBox::No | QMessageBox::Default | QMessageBox::Escape)
-	    != QMessageBox::Yes)
+		__tr2qs("You have chosen to abort the setup.<br>KVIrc can't run until you complete this procedure.<br><br>Do you really wish to abort?"),
+		QMessageBox::Yes, QMessageBox::No | QMessageBox::Default | QMessageBox::Escape)
+		!= QMessageBox::Yes)
 		return;
 
 	KviTalWizard::reject();
@@ -979,8 +979,8 @@ void SetupWizard::accept()
 			if(!KviFileUtils::makeDir(szDir))
 			{
 				KviMessageBox::warning(__tr("Can't create directory %s.\n"
-				                            "You may not have write permission "
-				                            "for that path. Please go back and choose another directory."));
+					"You may not have write permission "
+					"for that path. Please go back and choose another directory."));
 				setCurrentPage(m_pDirectory);
 				return;
 			}
@@ -1006,8 +1006,8 @@ void SetupWizard::accept()
 			if(!KviFileUtils::makeDir(szDir))
 			{
 				KviMessageBox::warning(__tr("Can't create directory %s.\n"
-				                            "You may not have write permission for that path.\n"
-				                            "Please go back and choose another directory."));
+					"You may not have write permission for that path.\n"
+					"Please go back and choose another directory."));
 				setCurrentPage(m_pDirectory);
 				return;
 			}
@@ -1061,7 +1061,7 @@ void SetupWizard::accept()
 
 			if(KVI_OPTION_STRING(KviOption_stringNickname1).length() > 32)
 				KVI_OPTION_STRING(KviOption_stringNickname1)
-				    .truncate(32);
+				.truncate(32);
 
 			if(KVI_OPTION_STRING(KviOption_stringNickname1).isEmpty())
 				KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_DEFAULT_NICKNAME1;
@@ -1091,21 +1091,21 @@ void SetupWizard::accept()
 				KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge) = "";
 			else
 				KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge)
-				    .setNum(i);
+				.setNum(i);
 
 			switch(m_pGenderCombo->currentIndex())
 			{
-				case 1:
-					// this should be in English
-					KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "Female";
-					break;
-				case 2:
-					// this should be in English
-					KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "Male";
-					break;
-				default:
-					KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "";
-					break;
+			case 1:
+				// this should be in English
+				KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "Female";
+				break;
+			case 2:
+				// this should be in English
+				KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "Male";
+				break;
+			default:
+				KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender) = "";
+				break;
 			}
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)

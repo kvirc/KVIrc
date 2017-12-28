@@ -73,10 +73,10 @@ bool KviNickServRule::load(KviConfigurationFile * cfg, const QString & szPrefix)
 }
 
 KviNickServRule * KviNickServRule::createInstance(const QString & szRegisteredNick,
-    const QString & szNickServMask,
-    const QString & szMessageRegexp,
-    const QString & szIdentifyCommand,
-    const QString & szServerMask)
+	const QString & szNickServMask,
+	const QString & szMessageRegexp,
+	const QString & szIdentifyCommand,
+	const QString & szServerMask)
 {
 	return new KviNickServRule(szRegisteredNick, szNickServMask, szMessageRegexp, szIdentifyCommand, szServerMask);
 }

@@ -297,13 +297,13 @@ KVSO_CLASS_FUNCTION(xmlReader, parse)
 	KviKvsVariant * pVariantData;
 
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("string_or_memorybuffer_object", KVS_PT_VARIANT, 0, pVariantData)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("string_or_memorybuffer_object", KVS_PT_VARIANT, 0, pVariantData)
+		KVSO_PARAMETERS_END(c)
 #ifdef QT_NO_XML
-	fatalError(__tr2qs_ctx("XML support not available in the Qt library"));
+		fatalError(__tr2qs_ctx("XML support not available in the Qt library"));
 	c->returnValue()->setBoolean(false);
 #else
-	m_szLastError = "";
+		m_szLastError = "";
 	KviXmlHandler handler(this);
 	QXmlInputSource source;
 

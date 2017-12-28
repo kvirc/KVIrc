@@ -125,7 +125,7 @@ protected:
 	void internalScheduleFrameChange(uint delay, KviAnimatedPixmapInterface * receiver);
 	void internalNotifyDelete(KviAnimatedPixmapInterface * receiver);
 
-protected slots:
+	protected slots:
 	virtual void timeoutEvent();
 
 public:

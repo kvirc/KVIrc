@@ -50,9 +50,9 @@
 // signal to the QSocketNotifier::activated() signal.
 
 KviSignalHandler::KviSignalHandler(QObject *parent)
-		: QObject(parent)
+	: QObject(parent)
 {
-	if (::socketpair(AF_UNIX, SOCK_STREAM, 0, fd))
+	if(::socketpair(AF_UNIX, SOCK_STREAM, 0, fd))
 		qFatal("Couldn't create socketpair");
 
 	sn = new QSocketNotifier(fd[1], QSocketNotifier::Read, this);
@@ -74,7 +74,7 @@ bool kvi_signalHandlerSetup()
 
 	return
 		sigaction(SIGTERM, &sa, 0) == 0 &&
-		sigaction(SIGINT , &sa, 0) == 0;
+		sigaction(SIGINT, &sa, 0) == 0;
 }
 
 // In your Unix signal handlers, you write a byte to the write end of

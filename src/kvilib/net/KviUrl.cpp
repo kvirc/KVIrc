@@ -27,7 +27,7 @@
 #include <QUrl>
 
 KviUrl::KviUrl()
-    = default;
+= default;
 
 KviUrl::KviUrl(const char * szUrl)
 {
@@ -42,10 +42,10 @@ KviUrl::KviUrl(const QString & szUrl)
 }
 
 KviUrl::KviUrl(const KviUrl &)
-    = default;
+= default;
 
 KviUrl::~KviUrl()
-    = default;
+= default;
 
 void KviUrl::parse()
 {
@@ -74,4 +74,4 @@ KviUrl & KviUrl::operator=(const QString & szUrl)
 }
 
 KviUrl & KviUrl::operator=(const KviUrl &)
-    = default;
+= default;

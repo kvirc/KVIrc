@@ -53,7 +53,7 @@ protected:
 	void showEvent(QShowEvent * e) override;
 	void childEvent(QChildEvent * e) override;
 	void reject() override;
-protected slots:
+	protected slots:
 	void okClicked();
 	void cancelClicked();
 	void optionsWidgetDestroyed();

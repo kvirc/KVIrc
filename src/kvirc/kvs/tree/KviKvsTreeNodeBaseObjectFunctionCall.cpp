@@ -27,13 +27,13 @@
 #include "KviKvsVariant.h"
 
 KviKvsTreeNodeBaseObjectFunctionCall::KviKvsTreeNodeBaseObjectFunctionCall(const QChar * pLocation, const QString & szBaseClass, const QString & szFncName, KviKvsTreeNodeDataList * pParams)
-    : KviKvsTreeNodeObjectFunctionCall(pLocation, szFncName, pParams)
+	: KviKvsTreeNodeObjectFunctionCall(pLocation, szFncName, pParams)
 {
 	m_szBaseClass = szBaseClass;
 }
 
 KviKvsTreeNodeBaseObjectFunctionCall::~KviKvsTreeNodeBaseObjectFunctionCall()
-    = default;
+= default;
 
 void KviKvsTreeNodeBaseObjectFunctionCall::contextDescription(QString & szBuffer)
 {

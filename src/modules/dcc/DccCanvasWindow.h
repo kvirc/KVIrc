@@ -62,7 +62,7 @@ protected:
 	virtual bool event(QEvent * e);
 	virtual void ownMessage(const char * text, bool bUserFeedback = true);
 	virtual void ownAction(const char * text);
-protected slots:
+	protected slots:
 	void handleMarshalError(int err);
 	void connected();
 };

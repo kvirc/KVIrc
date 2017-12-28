@@ -27,57 +27,57 @@
 #include "KviWindow.h"
 
 KviKvsAction::KviKvsAction(
-    QObject * pParent,
-    const QString & szName,
-    const QString & szScriptCode,
-    const QString & szVisibleName,
-    const QString & szDescription,
-    KviActionCategory * pCategory,
-    const QString & szBigIconId,
-    const QString & szSmallIconId,
-    unsigned int uFlags,
-    const QString & szKeySequence)
-    : KviAction(
-          pParent,
-          szName,
-          szVisibleName,
-          szDescription,
-          pCategory,
-          szBigIconId,
-          szSmallIconId,
-          uFlags,
-          szKeySequence)
+	QObject * pParent,
+	const QString & szName,
+	const QString & szScriptCode,
+	const QString & szVisibleName,
+	const QString & szDescription,
+	KviActionCategory * pCategory,
+	const QString & szBigIconId,
+	const QString & szSmallIconId,
+	unsigned int uFlags,
+	const QString & szKeySequence)
+	: KviAction(
+		pParent,
+		szName,
+		szVisibleName,
+		szDescription,
+		pCategory,
+		szBigIconId,
+		szSmallIconId,
+		uFlags,
+		szKeySequence)
 {
 	m_szScript = QString(szScriptCode);
 }
 
 KviKvsAction::KviKvsAction(
-    QObject * pParent,
-    const QString & szName,
-    const QString & szScriptCode,
-    const QString & szVisibleName,
-    const QString & szDescription,
-    KviActionCategory * pCategory,
-    const QString & szBigIconId,
-    KviIconManager::SmallIcon eSmallIcon,
-    unsigned int uFlags,
-    const QString & szKeySequence)
-    : KviAction(
-          pParent,
-          szName,
-          szVisibleName,
-          szDescription,
-          pCategory,
-          szBigIconId,
-          eSmallIcon,
-          uFlags,
-          szKeySequence)
+	QObject * pParent,
+	const QString & szName,
+	const QString & szScriptCode,
+	const QString & szVisibleName,
+	const QString & szDescription,
+	KviActionCategory * pCategory,
+	const QString & szBigIconId,
+	KviIconManager::SmallIcon eSmallIcon,
+	unsigned int uFlags,
+	const QString & szKeySequence)
+	: KviAction(
+		pParent,
+		szName,
+		szVisibleName,
+		szDescription,
+		pCategory,
+		szBigIconId,
+		eSmallIcon,
+		uFlags,
+		szKeySequence)
 {
 	m_szScript = QString(szScriptCode);
 }
 
 KviKvsAction::~KviKvsAction()
-    = default;
+= default;
 
 const QString & KviKvsAction::scriptCode()
 {

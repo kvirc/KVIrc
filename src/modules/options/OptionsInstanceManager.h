@@ -1,5 +1,3 @@
-
-
 #ifndef __OPTIONS_INSTANCES_H__
 #define __OPTIONS_INSTANCES_H__
 
@@ -79,7 +77,7 @@ protected:
 	OptionsWidgetInstanceEntry * findInstanceEntry(const char * pcName, KviPointerList<OptionsWidgetInstanceEntry> * pList);
 	OptionsWidgetInstanceEntry * findInstanceEntry(const QObject * pObj, KviPointerList<OptionsWidgetInstanceEntry> * pList);
 	void deleteInstanceTree(KviPointerList<OptionsWidgetInstanceEntry> * pList);
-protected slots:
+	protected slots:
 	void widgetDestroyed();
 };
 

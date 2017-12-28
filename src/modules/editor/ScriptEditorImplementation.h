@@ -46,7 +46,7 @@ class ScriptEditorSyntaxHighlighter;
 class ScriptEditorWidget final : public QTextEdit
 {
 	Q_OBJECT
-	Q_PROPERTY(bool contextSensitiveHelp READ contextSensitiveHelp)
+		Q_PROPERTY(bool contextSensitiveHelp READ contextSensitiveHelp)
 public:
 	ScriptEditorWidget(QWidget * pParent);
 	virtual ~ScriptEditorWidget();
@@ -76,13 +76,13 @@ public:
 	QString textUnderCursor() const;
 	void updateOptions();
 	bool contextSensitiveHelp() const;
-public slots:
+	public slots:
 	void checkReadyCompleter();
 	void insertCompletion(const QString & szCompletion);
 	void slotFind();
 	void slotHelp();
 	void slotReplace();
-protected slots:
+	protected slots:
 	void asyncCompleterCreation();
 signals:
 	void keyPressed();
@@ -102,7 +102,7 @@ private:
 	std::vector<KviSelectorInterface *> m_pSelectorInterfaceList;
 	KviColorSelector * addColorSelector(QWidget * pParent, const QString & txt, QColor * pOption, bool bEnabled);
 
-protected slots:
+	protected slots:
 	void okClicked();
 };
 
@@ -181,7 +181,7 @@ private:
 	void focusInEvent(QFocusEvent * e) override;
 	void loadOptions();
 	void saveOptions();
-protected slots:
+	protected slots:
 	void saveToFile();
 	void loadFromFile();
 	void configureColors();
@@ -212,7 +212,7 @@ private:
 	QPushButton * m_pReplaceButton;
 	QCheckBox * m_pCheckReplaceAll;
 	QWidget * m_pParent;
-private slots:
+	private slots:
 	void textChanged(const QString &);
 	void slotReplace();
 	void slotNextFind();

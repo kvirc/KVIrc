@@ -115,16 +115,16 @@ bool KvsObject_dockWindow::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 KVSO_CLASS_FUNCTION(dockWindow, addWidget)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_hobject_t hWidget;
+		kvs_hobject_t hWidget;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hWidget)
-	KVSO_PARAMETERS_END(c)
-	if(hWidget == (kvs_hobject_t) nullptr)
-	{
-		// null widget ?
-		c->warning(__tr2qs_ctx("Can't add a null object", "objects"));
-		return true;
-	}
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hWidget)
+		KVSO_PARAMETERS_END(c)
+		if(hWidget == (kvs_hobject_t) nullptr)
+		{
+			// null widget ?
+			c->warning(__tr2qs_ctx("Can't add a null object", "objects"));
+			return true;
+		}
 
 	KviKvsObject * pWidget = KviKvsKernel::instance()->objectController()->lookupObject(hWidget);
 	if(!pWidget)
@@ -157,11 +157,11 @@ KVSO_CLASS_FUNCTION(dockWindow, addWidget)
 KVSO_CLASS_FUNCTION(dockWindow, setAllowedDockAreas)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szFlags;
+		QString szFlags;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("docks", KVS_PT_STRING, 0, szFlags)
-	KVSO_PARAMETERS_END(c)
-	Qt::DockWidgetAreas fAreas = Qt::NoDockWidgetArea;
+		KVSO_PARAMETER("docks", KVS_PT_STRING, 0, szFlags)
+		KVSO_PARAMETERS_END(c)
+		Qt::DockWidgetAreas fAreas = Qt::NoDockWidgetArea;
 	if(szFlags.indexOf('t', Qt::CaseInsensitive) >= 0)
 		fAreas |= Qt::TopDockWidgetArea;
 	if(szFlags.indexOf('l', Qt::CaseInsensitive) >= 0)
@@ -185,11 +185,11 @@ KVSO_CLASS_FUNCTION(dockWindow, setAllowedDockAreas)
 KVSO_CLASS_FUNCTION(dockWindow, dock)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szDock;
+		QString szDock;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("dock", KVS_PT_STRING, 0, szDock)
-	KVSO_PARAMETERS_END(c)
-	g_pMainWindow->removeDockWidget(_pDockWindow);
+		KVSO_PARAMETER("dock", KVS_PT_STRING, 0, szDock)
+		KVSO_PARAMETERS_END(c)
+		g_pMainWindow->removeDockWidget(_pDockWindow);
 	if(szDock.indexOf('m', Qt::CaseInsensitive) == -1)
 		_pDockWindow->setFloating(false);
 	if(szDock.indexOf('t', Qt::CaseInsensitive) != -1)

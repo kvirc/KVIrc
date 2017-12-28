@@ -29,12 +29,12 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeHashReferenceAssert::KviKvsTreeNodeHashReferenceAssert(const QChar * pLocation, KviKvsTreeNodeData * pSource)
-    : KviKvsTreeNodeIndirectData(pLocation, pSource)
+	: KviKvsTreeNodeIndirectData(pLocation, pSource)
 {
 }
 
 KviKvsTreeNodeHashReferenceAssert::~KviKvsTreeNodeHashReferenceAssert()
-    = default;
+= default;
 
 bool KviKvsTreeNodeHashReferenceAssert::isReadOnly()
 {

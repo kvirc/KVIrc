@@ -64,7 +64,7 @@ protected:
 	bool popup(KviKvsObjectFunctionCall * c);
 	bool textChangedEvent(KviKvsObjectFunctionCall * c);
 	bool activatedEvent(KviKvsObjectFunctionCall * c);
-protected slots:
+	protected slots:
 	void editTextChanged(const QString &);
 	void slotActivated(int);
 };

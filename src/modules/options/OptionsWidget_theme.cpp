@@ -33,7 +33,7 @@
 #include <QLayout>
 
 OptionsWidget_theme::OptionsWidget_theme(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	createLayout();
 
@@ -41,17 +41,17 @@ OptionsWidget_theme::OptionsWidget_theme(QWidget * parent)
 	KviTalToolTip::add(b, __tr2qs_ctx("This option will force a static font for every widget that has no specific font setting", "options"));
 	addBoolSelector(0, 0, 1, 0, __tr2qs_ctx("Show icons in popup menus", "options"), KviOption_boolShowIconsInPopupMenus);
 	KviFontSelector * f = addFontSelector(0, 2, 1, 2, __tr2qs_ctx("Global application font:", "options"), KviOption_fontApplication,
-	    KVI_OPTION_BOOL(KviOption_boolUseGlobalApplicationFont));
+		KVI_OPTION_BOOL(KviOption_boolUseGlobalApplicationFont));
 	connect(b, SIGNAL(toggled(bool)), f, SLOT(setEnabled(bool)));
 
 	addRowSpacer(0, 3, 1, 3);
 }
 
 OptionsWidget_theme::~OptionsWidget_theme()
-    = default;
+= default;
 
 OptionsWidget_themeTransparency::OptionsWidget_themeTransparency(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	createLayout();
@@ -62,46 +62,46 @@ OptionsWidget_themeTransparency::OptionsWidget_themeTransparency(QWidget * paren
 	m_pUseTransparencyBoolSelector = addBoolSelector(0, 1, 1, 1, __tr2qs_ctx("Enable transparency", "options"), KviOption_boolUseGlobalPseudoTransparency);
 #ifdef COMPILE_X11_SUPPORT
 	mergeTip(m_pUseTransparencyBoolSelector,
-	    __tr2qs_ctx("This option makes all KVIrc windows look "
-	                "transparent.<br>You must choose a blending "
-	                "background image below or check the "
-	                "\"Use compositing for real transparency\" option.",
-	             "options"));
+		__tr2qs_ctx("This option makes all KVIrc windows look "
+			"transparent.<br>You must choose a blending "
+			"background image below or check the "
+			"\"Use compositing for real transparency\" option.",
+			"options"));
 #elif defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	mergeTip(m_pUseTransparencyBoolSelector,
-	    __tr2qs_ctx("This option makes all KVIrc windows look "
-	                "transparent.<br>You must choose a blending "
-	                "background image below or check the "
-	                "\"Use desktop background for transparency\" option.",
-	             "options"));
+		__tr2qs_ctx("This option makes all KVIrc windows look "
+			"transparent.<br>You must choose a blending "
+			"background image below or check the "
+			"\"Use desktop background for transparency\" option.",
+			"options"));
 #else
 	mergeTip(m_pUseTransparencyBoolSelector,
-	    __tr2qs_ctx("This option makes all KVIrc windows look "
-	                "like transparent.<br>You must choose a blending "
-	                "background image below.",
-	             "options"));
+		__tr2qs_ctx("This option makes all KVIrc windows look "
+			"like transparent.<br>You must choose a blending "
+			"background image below.",
+			"options"));
 #endif
 
 	u = addUIntSelector(0, 2, 1, 2, __tr2qs_ctx("Child window opacity:", "options"), KviOption_uintGlobalTransparencyChildFadeFactor, 0, 100, 35,
-	    KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+		KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 	u->setSuffix("%");
 	connect(m_pUseTransparencyBoolSelector, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
 
 	u = addUIntSelector(0, 3, 1, 3, __tr2qs_ctx("Parent window opacity:", "options"), KviOption_uintGlobalTransparencyParentFadeFactor, 0, 100, 10,
-	    KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+		KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 	u->setSuffix("%");
 	connect(m_pUseTransparencyBoolSelector, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
 
 	KviColorSelector * c = addColorSelector(0, 4, 1, 4, __tr2qs_ctx("Blend color:", "options"), KviOption_colorGlobalTransparencyFade,
-	    KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+		KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 	connect(m_pUseTransparencyBoolSelector, SIGNAL(toggled(bool)), c, SLOT(setEnabled(bool)));
 
 #ifdef COMPILE_X11_SUPPORT
 	m_pUseCompositingForTransparencyBoolSelector = addBoolSelector(0, 5, 1, 5, __tr2qs_ctx("Use compositing for real transparency", "options"), KviOption_boolUseCompositingForTransparency,
-	    KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+		KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 
 	m_pGlobalBackgroundPixmapSelector = addPixmapSelector(0, 6, 1, 6, __tr2qs_ctx("Transparency blend image:", "options"), KviOption_pixmapGlobalTransparencyBackground,
-	    KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) && !KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency));
+		KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) && !KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency));
 	layout()->setRowStretch(6, 1);
 
 	if(g_pApp->supportsCompositing())
@@ -118,17 +118,17 @@ OptionsWidget_themeTransparency::OptionsWidget_themeTransparency(QWidget * paren
 
 #elif defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_pUseWindowsFakeDesktopTransparencyBoolSelector = addBoolSelector(0, 5, 1, 5, __tr2qs_ctx("Use desktop background for transparency", "options"), KviOption_boolUseWindowsDesktopForTransparency,
-	    KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+		KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 
 	m_pGlobalBackgroundPixmapSelector = addPixmapSelector(0, 6, 1, 6, __tr2qs_ctx("Transparency blend image:", "options"), KviOption_pixmapGlobalTransparencyBackground,
-	    KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) && !KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency));
+		KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) && !KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency));
 	layout()->setRowStretch(6, 1);
 
 	connect(m_pUseTransparencyBoolSelector, SIGNAL(toggled(bool)), m_pUseWindowsFakeDesktopTransparencyBoolSelector, SLOT(setEnabled(bool)));
 	connect(m_pUseWindowsFakeDesktopTransparencyBoolSelector, SIGNAL(toggled(bool)), this, SLOT(enableGlobalBackgroundPixmapSelector(bool)));
 #else
 	m_pGlobalBackgroundPixmapSelector = addPixmapSelector(0, 5, 1, 5, __tr2qs_ctx("Transparency blend image:", "options"), KviOption_pixmapGlobalTransparencyBackground,
-	    KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
+		KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 	layout()->setRowStretch(5, 1);
 #endif //!COMPILE_X11_SUPPORT
 
@@ -141,7 +141,7 @@ OptionsWidget_themeTransparency::OptionsWidget_themeTransparency(QWidget * paren
 }
 
 OptionsWidget_themeTransparency::~OptionsWidget_themeTransparency()
-    = default;
+= default;
 
 void OptionsWidget_themeTransparency::enableGlobalBackgroundPixmapSelector(bool)
 {
@@ -157,7 +157,7 @@ void OptionsWidget_themeTransparency::enableGlobalBackgroundPixmapSelector(bool)
 }
 
 OptionsWidget_themeToolBarApplets::OptionsWidget_themeToolBarApplets(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	createLayout();
 
@@ -171,4 +171,4 @@ OptionsWidget_themeToolBarApplets::OptionsWidget_themeToolBarApplets(QWidget * p
 }
 
 OptionsWidget_themeToolBarApplets::~OptionsWidget_themeToolBarApplets()
-    = default;
+= default;

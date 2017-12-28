@@ -122,7 +122,7 @@ private:
 
 public:
 	KviSoundPlayerEntry(SoundSystemPlayRoutine pPlayRoutine, SoundSystemCleanupRoutine pCleanupRoutine)
-	    : m_pPlayRoutine(pPlayRoutine), m_pCleanupRoutine(pCleanupRoutine)
+		: m_pPlayRoutine(pPlayRoutine), m_pCleanupRoutine(pCleanupRoutine)
 	{
 	}
 

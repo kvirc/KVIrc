@@ -175,7 +175,7 @@ static KviModule * g_pPythonCoreModule = nullptr;
 		[example]
 			[cmd]python.begin[/cmd]("","Hello world!","Now I CAN",1,2,3)
 			for l in range(0,5):
-			    kvirc.echo(aArgs[l])
+				kvirc.echo(aArgs[l])
 			[cmd]python.end[/cmd]
 		[/example]
 		[big]Accessing the KVIrc scripting context from python[/big]
@@ -380,15 +380,15 @@ static bool python_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 	QString szCode, szContext;
 	KviKvsVariantList vList;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("code", KVS_PT_STRING, 0, szCode)
-	KVSM_PARAMETER("context", KVS_PT_STRING, KVS_PF_OPTIONAL, szContext)
-	KVSM_PARAMETER("args", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, vList)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("code", KVS_PT_STRING, 0, szCode)
+		KVSM_PARAMETER("context", KVS_PT_STRING, KVS_PF_OPTIONAL, szContext)
+		KVSM_PARAMETER("args", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, vList)
+		KVSM_PARAMETERS_END(c)
 
-	KVS_CHECK_MODULE_STATE(m, c)
+		KVS_CHECK_MODULE_STATE(m, c)
 
 #ifdef COMPILE_PYTHON_SUPPORT
-	KviPythonCoreCtrlCommand_execute ex;
+		KviPythonCoreCtrlCommand_execute ex;
 	ex.uSize = sizeof(KviPythonCoreCtrlCommand_execute);
 	ex.pKvsContext = c->context();
 	ex.szContext = szContext;
@@ -457,13 +457,13 @@ static bool python_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 {
 	QString szContext;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("context", KVS_PT_NONEMPTYSTRING, 0, szContext)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("context", KVS_PT_NONEMPTYSTRING, 0, szContext)
+		KVSM_PARAMETERS_END(c)
 
-	KVS_CHECK_MODULE_STATE(m, c)
+		KVS_CHECK_MODULE_STATE(m, c)
 
 #ifdef COMPILE_PYTHON_SUPPORT
-	KviPythonCoreCtrlCommand_destroy ex;
+		KviPythonCoreCtrlCommand_destroy ex;
 	ex.uSize = sizeof(KviPythonCoreCtrlCommand_destroy);
 	ex.szContext = szContext;
 
@@ -521,12 +521,12 @@ static bool python_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Python",                                                         // module name
-    "4.0.0",                                                          // module version
-    "Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org", // author & (C)
-    "Python Scripting Engine",
-    python_module_init,
-    0,
-    0,
-    python_module_cleanup,
-    "python")
+	"Python",                                                         // module name
+	"4.0.0",                                                          // module version
+	"Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org", // author & (C)
+	"Python Scripting Engine",
+	python_module_init,
+	0,
+	0,
+	python_module_cleanup,
+	"python")

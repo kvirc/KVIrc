@@ -31,7 +31,7 @@
 #include <QLayout>
 
 OptionsWidget_ignore::OptionsWidget_ignore(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("ignore_options_widget");
 	createLayout();
@@ -43,14 +43,14 @@ OptionsWidget_ignore::OptionsWidget_ignore(QWidget * parent)
 	connect(m_pIgnorePrivmsg, SIGNAL(toggled(bool)), this, SLOT(enableVerbose(bool)));
 
 	m_pVerboseIgnore = addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Use verbose ignore (show messages in console)", "options"),
-	    KviOption_boolVerboseIgnore,
-	    KVI_OPTION_BOOL(KviOption_boolEnableIgnoreOnPrivMsg) || KVI_OPTION_BOOL(KviOption_boolEnableIgnoreOnNotice));
+		KviOption_boolVerboseIgnore,
+		KVI_OPTION_BOOL(KviOption_boolEnableIgnoreOnPrivMsg) || KVI_OPTION_BOOL(KviOption_boolEnableIgnoreOnNotice));
 
 	addRowSpacer(0, 2, 0, 2);
 }
 
 OptionsWidget_ignore::~OptionsWidget_ignore()
-    = default;
+= default;
 
 void OptionsWidget_ignore::enableVerbose(bool)
 {

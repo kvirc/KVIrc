@@ -50,7 +50,6 @@
 
 namespace KviSSLMaster
 {
-
 	KVIRC_API void printSSLCipherInfo(KviWindow * wnd, const char * description, KviSSLCipherInfo * c)
 	{
 		wnd->output(KVI_OUT_SSL, __tr2qs("[SSL]: %c%s"), KviControlCodes::Bold, description);
@@ -127,53 +126,53 @@ namespace KviSSLMaster
 		if(KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate))
 		{
 			switch(s->useCertificateFile(
-			    KVI_OPTION_STRING(KviOption_stringSSLCertificatePath),
-			    KVI_OPTION_STRING(KviOption_stringSSLCertificatePass)))
+				KVI_OPTION_STRING(KviOption_stringSSLCertificatePath),
+				KVI_OPTION_STRING(KviOption_stringSSLCertificatePass)))
 			{
-				case KviSSL::Success:
-					if(wnd)
-						wnd->output(KVI_OUT_SSL, __tr2qs("[%s]: [SSL]: Using certificate file %s"), contextString, KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data());
-					break;
-				case KviSSL::FileIoError:
-					if(wnd)
-						wnd->output(KVI_OUT_SSL, __tr2qs("[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"), contextString, KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data());
-					break;
-				default:
-				{
-					KviCString buffer;
-					while(s->getLastErrorString(buffer))
-					{
-						if(wnd)
-							wnd->output(KVI_OUT_SSL, __tr2qs("[%s]: [SSL ERROR]: %s"), contextString, buffer.ptr());
-					}
-				}
+			case KviSSL::Success:
+				if(wnd)
+					wnd->output(KVI_OUT_SSL, __tr2qs("[%s]: [SSL]: Using certificate file %s"), contextString, KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data());
 				break;
+			case KviSSL::FileIoError:
+				if(wnd)
+					wnd->output(KVI_OUT_SSL, __tr2qs("[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"), contextString, KVI_OPTION_STRING(KviOption_stringSSLCertificatePath).toUtf8().data());
+				break;
+			default:
+			{
+				KviCString buffer;
+				while(s->getLastErrorString(buffer))
+				{
+					if(wnd)
+						wnd->output(KVI_OUT_SSL, __tr2qs("[%s]: [SSL ERROR]: %s"), contextString, buffer.ptr());
+				}
+			}
+			break;
 			}
 		}
 		if(KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey))
 		{
 			switch(s->usePrivateKeyFile(
-			    KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath),
-			    KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPass)))
+				KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath),
+				KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPass)))
 			{
-				case KviSSL::Success:
-					if(wnd)
-						wnd->output(KVI_OUT_SSL, __tr2qs("[%s]: [SSL]: Using private key file %s"), contextString, KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).toUtf8().data());
-					break;
-				case KviSSL::FileIoError:
-					if(wnd)
-						wnd->output(KVI_OUT_SSL, __tr2qs("[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"), contextString, KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).toUtf8().data());
-					break;
-				default:
-				{
-					KviCString buffer;
-					while(s->getLastErrorString(buffer))
-					{
-						if(wnd)
-							wnd->output(KVI_OUT_SSL, __tr2qs("[%s]: [SSL ERROR]: %s"), contextString, buffer.ptr());
-					}
-				}
+			case KviSSL::Success:
+				if(wnd)
+					wnd->output(KVI_OUT_SSL, __tr2qs("[%s]: [SSL]: Using private key file %s"), contextString, KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).toUtf8().data());
 				break;
+			case KviSSL::FileIoError:
+				if(wnd)
+					wnd->output(KVI_OUT_SSL, __tr2qs("[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"), contextString, KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPath).toUtf8().data());
+				break;
+			default:
+			{
+				KviCString buffer;
+				while(s->getLastErrorString(buffer))
+				{
+					if(wnd)
+						wnd->output(KVI_OUT_SSL, __tr2qs("[%s]: [SSL ERROR]: %s"), contextString, buffer.ptr());
+				}
+			}
+			break;
 			}
 		}
 
@@ -191,9 +190,9 @@ namespace KviSSLMaster
 		delete s;
 	}
 
-/*
- * Used for $certificate() and $dcc.getSSLCertInfo() function
- */
+	/*
+	 * Used for $certificate() and $dcc.getSSLCertInfo() function
+	 */
 	KVIRC_API bool getSSLCertInfo(KviSSLCertificate * pCert, QString szQuery, QString szOptionalParam, KviKvsVariant * pRetBuffer)
 	{
 		pRetBuffer->setString("");

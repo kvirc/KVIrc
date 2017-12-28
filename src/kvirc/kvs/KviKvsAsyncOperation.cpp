@@ -27,7 +27,7 @@
 #include "KviWindow.h"
 
 KviKvsAsyncOperation::KviKvsAsyncOperation(KviWindow * pWnd)
-    : QObject()
+	: QObject()
 {
 	m_pWnd = pWnd;
 	KviKvsKernel::instance()->asyncOperationManager()->registerOperation(this);

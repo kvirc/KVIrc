@@ -78,7 +78,7 @@ protected:
 private:
 	KviWindowListItem * lastItem();
 	bool bReverseSort;
-public slots:
+	public slots:
 	void sort();
 	void reverseSort();
 };
@@ -112,7 +112,7 @@ public:
 
 protected:
 	virtual void moveEvent(QMoveEvent *);
-protected slots:
+	protected slots:
 	void tipRequest(KviDynamicToolTip * tip, const QPoint & pnt);
 };
 
@@ -124,8 +124,8 @@ class KVIRC_API KviTreeWindowListItemDelegate : public QStyledItemDelegate
 	Q_OBJECT
 public:
 	KviTreeWindowListItemDelegate(QAbstractItemView * pWidget = 0)
-	    : QStyledItemDelegate(pWidget){};
-	~KviTreeWindowListItemDelegate(){};
+		: QStyledItemDelegate(pWidget) {};
+	~KviTreeWindowListItemDelegate() {};
 	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
 	void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
 };

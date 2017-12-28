@@ -50,7 +50,7 @@ protected:
 	bool activatedEvent(KviKvsObjectFunctionCall * c);
 	bool highlightedEvent(KviKvsObjectFunctionCall * c);
 
-protected slots:
+	protected slots:
 	void slottriggered(QAction *);
 	void slothovered(QAction *);
 	void aboutToDie(QObject *);

@@ -50,7 +50,7 @@
 static KviPointerList<KviCryptEngine> * g_pEngineList = nullptr;
 
 KviLamerizerEngine::KviLamerizerEngine(bool bLight)
-    : KviCryptEngine()
+	: KviCryptEngine()
 {
 	m_bLight = bLight;
 	g_pEngineList->append(this);
@@ -255,12 +255,12 @@ static bool lamerizer_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Lamerizer crypt engine",
-    "4.0.0",
-    "Szymon Stefanek <pragma at kvirc dot net> \n Jan Wagner <istari@kvirc.net>",
-    "Exports the lamerizer text transformation engine",
-    lamerizer_module_init,
-    lamerizer_module_can_unload,
-    0,
-    lamerizer_module_cleanup,
-    0)
+	"Lamerizer crypt engine",
+	"4.0.0",
+	"Szymon Stefanek <pragma at kvirc dot net> \n Jan Wagner <istari@kvirc.net>",
+	"Exports the lamerizer text transformation engine",
+	lamerizer_module_init,
+	lamerizer_module_can_unload,
+	0,
+	lamerizer_module_cleanup,
+	0)

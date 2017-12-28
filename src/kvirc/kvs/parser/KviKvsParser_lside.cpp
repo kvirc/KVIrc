@@ -87,40 +87,40 @@ KviKvsTreeNodeData * KviKvsParser::parseOperationRightSide(bool bPreferNumeric)
 	{
 		switch(KVSP_curCharUnicode)
 		{
-			case 0:
+		case 0:
+			goto end_of_the_param;
+			break;
+		case '\n':
+		case '\r':
+		case ';':
+			KVSP_skipChar;
+			goto end_of_the_param;
+			break;
+		case ' ':
+		case '\t':
+			skipSpaces();
+			if(KVSP_curCharIsEndOfCommand)
+			{
 				goto end_of_the_param;
-				break;
-			case '\n':
-			case '\r':
-			case ';':
-				KVSP_skipChar;
-				goto end_of_the_param;
-				break;
-			case ' ':
-			case '\t':
-				skipSpaces();
-				if(KVSP_curCharIsEndOfCommand)
-				{
-					goto end_of_the_param;
-				}
-				else
-				{
-					// separate by single spaces
-					bPreferNumeric = false; // this can't be a number
-					l->append(new KviKvsTreeNodeConstantData(KVSP_curCharPointer, new KviKvsVariant(QString(" "))));
-				}
-				break;
-			default:
-				// anything else is a parameter
-				KviKvsTreeNodeData * p = parseCommandParameter(bPreferNumeric);
-				if(!p)
-				{
-					// this is an error
-					delete l;
-					return nullptr;
-				}
-				l->append(p);
-				break;
+			}
+			else
+			{
+				// separate by single spaces
+				bPreferNumeric = false; // this can't be a number
+				l->append(new KviKvsTreeNodeConstantData(KVSP_curCharPointer, new KviKvsVariant(QString(" "))));
+			}
+			break;
+		default:
+			// anything else is a parameter
+			KviKvsTreeNodeData * p = parseCommandParameter(bPreferNumeric);
+			if(!p)
+			{
+				// this is an error
+				delete l;
+				return nullptr;
+			}
+			l->append(p);
+			break;
 		}
 	}
 
@@ -512,47 +512,47 @@ KviKvsTreeNodeData * KviKvsParser::parseBindingOperationParameter()
 	{
 		switch(KVSP_curCharUnicode)
 		{
-			case 0:
-			case '/':
-			case '\n':
-			case '\r':
-				// not a part of a parameter
-				goto end_of_function_parameter;
-				break;
-			case '$':
-			case '%':
-			case '@':
-			{
-				// this may be a data reference
-				KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
-				if(!p)
-				{
-					// this is an error
-					delete l;
-					return nullptr;
-				}
-				l->append(p);
-			}
+		case 0:
+		case '/':
+		case '\n':
+		case '\r':
+			// not a part of a parameter
+			goto end_of_function_parameter;
 			break;
-			case '"':
+		case '$':
+		case '%':
+		case '@':
+		{
+			// this may be a data reference
+			KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
+			if(!p)
 			{
-				// this is a string
-				KviKvsTreeNodeData * p = parseStringParameter();
-				if(!p)
-				{
-					// this is an error
-					delete l;
-					return nullptr;
-				}
-				l->append(p);
+				// this is an error
+				delete l;
+				return nullptr;
 			}
-			break;
-			default:
+			l->append(p);
+		}
+		break;
+		case '"':
+		{
+			// this is a string
+			KviKvsTreeNodeData * p = parseStringParameter();
+			if(!p)
 			{
-				// anything else is a literal
-				l->append(parseBindingOperationLiteralParameter());
+				// this is an error
+				delete l;
+				return nullptr;
 			}
-			break;
+			l->append(p);
+		}
+		break;
+		default:
+		{
+			// anything else is a literal
+			l->append(parseBindingOperationLiteralParameter());
+		}
+		break;
 		}
 	}
 end_of_function_parameter:
@@ -683,209 +683,209 @@ KviKvsTreeNodeOperation * KviKvsParser::parseOperation()
 
 	switch(KVSP_curCharUnicode)
 	{
-		case '=':
+	case '=':
+	{
+		KVSP_skipChar;
+		if(KVSP_curCharUnicode == '~')
 		{
 			KVSP_skipChar;
-			if(KVSP_curCharUnicode == '~')
+			skipSpaces();
+			if(KVSP_curCharIsEndOfCommand)
+			{
+				error(KVSP_curCharPointer, __tr2qs_ctx("Missing right side operand for the binding operator '=~'", "kvs"));
+				return nullptr;
+			}
+			return parseBindingOperation();
+		}
+		else
+		{
+			skipSpaces();
+			KviKvsTreeNodeData * d = parseOperationRightSide(true);
+			if(!d)
+				return nullptr; // error
+			return new KviKvsTreeNodeOperationAssignment(pBegin, d);
+		}
+	}
+	break;
+	case '+':
+		KVSP_skipChar;
+		switch(KVSP_curCharUnicode)
+		{
+		case '+':
+			// operator ++
+			KVSP_skipChar;
+			skipSpaces();
+			if(!KVSP_curCharIsEndOfCommand)
+			{
+				warning(KVSP_curCharPointer, __tr2qs_ctx("Trailing garbage ignored after operator '++'", "kvs"));
+			}
+			while(!KVSP_curCharIsEndOfCommand)
+				KVSP_skipChar;
+			if(!KVSP_curCharIsEndOfBuffer)
+				KVSP_skipChar;
+			return new KviKvsTreeNodeOperationIncrement(pBegin);
+			break;
+		case '=':
+			// operator +=
+			KVSP_skipChar;
+			skipSpaces();
+			if(KVSP_curCharIsEndOfCommand)
+			{
+				error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '+='", "kvs"));
+				return nullptr;
+			}
+			KviKvsTreeNodeData * d = parseOperationRightSide(true);
+			if(!d)
+				return nullptr; // error
+			return new KviKvsTreeNodeOperationSelfSum(pBegin, d);
+			break;
+		}
+		break;
+	case '-':
+		KVSP_skipChar;
+		switch(KVSP_curCharUnicode)
+		{
+		case '-':
+			KVSP_skipChar;
+			// operator --
+			skipSpaces();
+			if(!KVSP_curCharIsEndOfCommand)
+			{
+				warning(KVSP_curCharPointer, __tr2qs_ctx("Trailing garbage ignored after operator '--'", "kvs"));
+			}
+			while(!KVSP_curCharIsEndOfCommand)
+				KVSP_skipChar;
+			if(!KVSP_curCharIsEndOfBuffer)
+				KVSP_skipChar;
+			return new KviKvsTreeNodeOperationDecrement(pBegin);
+			break;
+		case '>':
+			warning(KVSP_curCharPointer, __tr2qs_ctx("This looks a lot like an object handle dereferencing operator '->' but in fact it isn't. Maybe you forgot a '$' just after?", "kvs"));
+			break;
+		case '=':
+			// operator -=
+			KVSP_skipChar;
+			skipSpaces();
+			if(KVSP_curCharIsEndOfCommand)
+			{
+				error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '-='", "kvs"));
+				return nullptr;
+			}
+			KviKvsTreeNodeData * d = parseOperationRightSide(true);
+			if(!d)
+				return nullptr; // error
+			return new KviKvsTreeNodeOperationSelfSubtraction(pBegin, d);
+			break;
+		}
+		break;
+	case '<':
+		KVSP_skipChar;
+		switch(KVSP_curCharUnicode)
+		{
+		case '<':
+			KVSP_skipChar;
+			if(KVSP_curCharUnicode == '=')
 			{
 				KVSP_skipChar;
 				skipSpaces();
 				if(KVSP_curCharIsEndOfCommand)
 				{
-					error(KVSP_curCharPointer, __tr2qs_ctx("Missing right side operand for the binding operator '=~'", "kvs"));
+					error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '<<='", "kvs"));
 					return nullptr;
 				}
-				return parseBindingOperation();
+				KviKvsTreeNodeData * d = parseOperationRightSide(true);
+				if(!d)
+					return nullptr; // error
+				return new KviKvsTreeNodeOperationSelfShl(pBegin, d);
 			}
 			else
 			{
 				skipSpaces();
-				KviKvsTreeNodeData * d = parseOperationRightSide(true);
+				if(KVSP_curCharIsEndOfCommand)
+				{
+					error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '<<'", "kvs"));
+					return nullptr;
+				}
+				KviKvsTreeNodeData * d = parseOperationRightSide();
 				if(!d)
 					return nullptr; // error
-				return new KviKvsTreeNodeOperationAssignment(pBegin, d);
+				return new KviKvsTreeNodeOperationStringAppendWithSpace(pBegin, d);
 			}
+			break;
+		case ',':
+		{
+			KVSP_skipChar;
+			skipSpaces();
+			if(KVSP_curCharIsEndOfCommand)
+			{
+				error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '<,'", "kvs"));
+				return nullptr;
+			}
+			KviKvsTreeNodeData * d = parseOperationRightSide();
+			if(!d)
+				return nullptr; // error
+			return new KviKvsTreeNodeOperationStringAppendWithComma(pBegin, d);
 		}
 		break;
 		case '+':
+		{
 			KVSP_skipChar;
-			switch(KVSP_curCharUnicode)
+			skipSpaces();
+			if(KVSP_curCharIsEndOfCommand)
 			{
-				case '+':
-					// operator ++
-					KVSP_skipChar;
-					skipSpaces();
-					if(!KVSP_curCharIsEndOfCommand)
-					{
-						warning(KVSP_curCharPointer, __tr2qs_ctx("Trailing garbage ignored after operator '++'", "kvs"));
-					}
-					while(!KVSP_curCharIsEndOfCommand)
-						KVSP_skipChar;
-					if(!KVSP_curCharIsEndOfBuffer)
-						KVSP_skipChar;
-					return new KviKvsTreeNodeOperationIncrement(pBegin);
-					break;
-				case '=':
-					// operator +=
-					KVSP_skipChar;
-					skipSpaces();
-					if(KVSP_curCharIsEndOfCommand)
-					{
-						error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '+='", "kvs"));
-						return nullptr;
-					}
-					KviKvsTreeNodeData * d = parseOperationRightSide(true);
-					if(!d)
-						return nullptr; // error
-					return new KviKvsTreeNodeOperationSelfSum(pBegin, d);
-					break;
+				error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '<+'", "kvs"));
+				return nullptr;
 			}
-			break;
-		case '-':
-			KVSP_skipChar;
-			switch(KVSP_curCharUnicode)
-			{
-				case '-':
-					KVSP_skipChar;
-					// operator --
-					skipSpaces();
-					if(!KVSP_curCharIsEndOfCommand)
-					{
-						warning(KVSP_curCharPointer, __tr2qs_ctx("Trailing garbage ignored after operator '--'", "kvs"));
-					}
-					while(!KVSP_curCharIsEndOfCommand)
-						KVSP_skipChar;
-					if(!KVSP_curCharIsEndOfBuffer)
-						KVSP_skipChar;
-					return new KviKvsTreeNodeOperationDecrement(pBegin);
-					break;
-				case '>':
-					warning(KVSP_curCharPointer, __tr2qs_ctx("This looks a lot like an object handle dereferencing operator '->' but in fact it isn't. Maybe you forgot a '$' just after?", "kvs"));
-					break;
-				case '=':
-					// operator -=
-					KVSP_skipChar;
-					skipSpaces();
-					if(KVSP_curCharIsEndOfCommand)
-					{
-						error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '-='", "kvs"));
-						return nullptr;
-					}
-					KviKvsTreeNodeData * d = parseOperationRightSide(true);
-					if(!d)
-						return nullptr; // error
-					return new KviKvsTreeNodeOperationSelfSubtraction(pBegin, d);
-					break;
-			}
-			break;
-		case '<':
-			KVSP_skipChar;
-			switch(KVSP_curCharUnicode)
-			{
-				case '<':
-					KVSP_skipChar;
-					if(KVSP_curCharUnicode == '=')
-					{
-						KVSP_skipChar;
-						skipSpaces();
-						if(KVSP_curCharIsEndOfCommand)
-						{
-							error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '<<='", "kvs"));
-							return nullptr;
-						}
-						KviKvsTreeNodeData * d = parseOperationRightSide(true);
-						if(!d)
-							return nullptr; // error
-						return new KviKvsTreeNodeOperationSelfShl(pBegin, d);
-					}
-					else
-					{
-						skipSpaces();
-						if(KVSP_curCharIsEndOfCommand)
-						{
-							error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '<<'", "kvs"));
-							return nullptr;
-						}
-						KviKvsTreeNodeData * d = parseOperationRightSide();
-						if(!d)
-							return nullptr; // error
-						return new KviKvsTreeNodeOperationStringAppendWithSpace(pBegin, d);
-					}
-					break;
-				case ',':
-				{
-					KVSP_skipChar;
-					skipSpaces();
-					if(KVSP_curCharIsEndOfCommand)
-					{
-						error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '<,'", "kvs"));
-						return nullptr;
-					}
-					KviKvsTreeNodeData * d = parseOperationRightSide();
-					if(!d)
-						return nullptr; // error
-					return new KviKvsTreeNodeOperationStringAppendWithComma(pBegin, d);
-				}
-				break;
-				case '+':
-				{
-					KVSP_skipChar;
-					skipSpaces();
-					if(KVSP_curCharIsEndOfCommand)
-					{
-						error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '<+'", "kvs"));
-						return nullptr;
-					}
-					KviKvsTreeNodeData * d = parseOperationRightSide();
-					if(!d)
-						return nullptr; // error
-					return new KviKvsTreeNodeOperationArrayAppend(pBegin, d);
-				}
-				break;
-			}
-			break;
+			KviKvsTreeNodeData * d = parseOperationRightSide();
+			if(!d)
+				return nullptr; // error
+			return new KviKvsTreeNodeOperationArrayAppend(pBegin, d);
+		}
+		break;
+		}
+		break;
+	case '>':
+		KVSP_skipChar;
+		switch(KVSP_curCharUnicode)
+		{
 		case '>':
 			KVSP_skipChar;
-			switch(KVSP_curCharUnicode)
+			if(KVSP_curCharUnicode == '=')
 			{
-				case '>':
-					KVSP_skipChar;
-					if(KVSP_curCharUnicode == '=')
-					{
-						KVSP_skipChar;
-						skipSpaces();
-						if(KVSP_curCharIsEndOfCommand)
-						{
-							error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '>>='", "kvs"));
-							return nullptr;
-						}
-						KviKvsTreeNodeData * d = parseOperationRightSide(true);
-						if(!d)
-							return nullptr; // error
-						return new KviKvsTreeNodeOperationSelfShr(pBegin, d);
-					}
-					break;
+				KVSP_skipChar;
+				skipSpaces();
+				if(KVSP_curCharIsEndOfCommand)
+				{
+					error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '>>='", "kvs"));
+					return nullptr;
+				}
+				KviKvsTreeNodeData * d = parseOperationRightSide(true);
+				if(!d)
+					return nullptr; // error
+				return new KviKvsTreeNodeOperationSelfShr(pBegin, d);
 			}
 			break;
-		case '.':
+		}
+		break;
+	case '.':
+		KVSP_skipChar;
+		switch(KVSP_curCharUnicode)
+		{
+		case '=':
 			KVSP_skipChar;
-			switch(KVSP_curCharUnicode)
+			skipSpaces();
+			if(KVSP_curCharIsEndOfCommand)
 			{
-				case '=':
-					KVSP_skipChar;
-					skipSpaces();
-					if(KVSP_curCharIsEndOfCommand)
-					{
-						error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '.='", "kvs"));
-						return nullptr;
-					}
-					KviKvsTreeNodeData * d = parseOperationRightSide();
-					if(!d)
-						return nullptr; // error
-					return new KviKvsTreeNodeOperationStringAppend(pBegin, d);
-					break;
+				error(KVSP_curCharPointer, __tr2qs_ctx("Missing right operand for operator '.='", "kvs"));
+				return nullptr;
 			}
+			KviKvsTreeNodeData * d = parseOperationRightSide();
+			if(!d)
+				return nullptr; // error
+			return new KviKvsTreeNodeOperationStringAppend(pBegin, d);
 			break;
+		}
+		break;
 #define SELF_OPERATOR(__opchar, __opstr, __class)                                                                        \
 	case __opchar:                                                                                                       \
 		KVSP_skipChar;                                                                                                   \
@@ -906,7 +906,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseOperation()
 				break;                                                                                                   \
 		}                                                                                                                \
 		break;
-			SELF_OPERATOR('*', "*", KviKvsTreeNodeOperationSelfMultiplication)
+		SELF_OPERATOR('*', "*", KviKvsTreeNodeOperationSelfMultiplication)
 			SELF_OPERATOR('/', "/", KviKvsTreeNodeOperationSelfDivision)
 			SELF_OPERATOR('%', "%", KviKvsTreeNodeOperationSelfModulus)
 			SELF_OPERATOR('|', "|", KviKvsTreeNodeOperationSelfOr)

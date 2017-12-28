@@ -46,7 +46,7 @@ protected:
 	KviKvsVariant * m_pMagic;
 	KviKvsScript * m_pCallback;
 	QString m_szQuery;
-protected slots:
+	protected slots:
 	void lookupTerminated(KviDnsResolver *);
 	void dnsStartFailed();
 };

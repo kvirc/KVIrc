@@ -123,14 +123,14 @@ KVSO_END_DESTRUCTOR(KvsObject_ftp)
 KVSO_CLASS_FUNCTION(ftp, functionConnect)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
-	QString szHost;
+		QString szHost;
 	kvs_uint_t uRemotePort;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("host", KVS_PT_STRING, 0, szHost)
-	KVSO_PARAMETER("remote_port", KVS_PT_UNSIGNEDINTEGER, KVS_PF_OPTIONAL, uRemotePort)
-	KVSO_PARAMETERS_END(c)
-	if(!uRemotePort)
-		uRemotePort = 21;
+		KVSO_PARAMETER("host", KVS_PT_STRING, 0, szHost)
+		KVSO_PARAMETER("remote_port", KVS_PT_UNSIGNEDINTEGER, KVS_PF_OPTIONAL, uRemotePort)
+		KVSO_PARAMETERS_END(c)
+		if(!uRemotePort)
+			uRemotePort = 21;
 	kvs_uint_t id = 0;
 	id = m_pFtp->connectToHost(szHost, uRemotePort);
 	c->returnValue()->setInteger(id);
@@ -140,12 +140,12 @@ KVSO_CLASS_FUNCTION(ftp, functionConnect)
 KVSO_CLASS_FUNCTION(ftp, login)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
-	QString szUser, szPass;
+		QString szUser, szPass;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("user", KVS_PT_STRING, 0, szUser)
-	KVSO_PARAMETER("password", KVS_PT_STRING, 0, szPass)
-	KVSO_PARAMETERS_END(c)
-	int id = m_pFtp->login(szUser, szPass);
+		KVSO_PARAMETER("user", KVS_PT_STRING, 0, szUser)
+		KVSO_PARAMETER("password", KVS_PT_STRING, 0, szPass)
+		KVSO_PARAMETERS_END(c)
+		int id = m_pFtp->login(szUser, szPass);
 	c->returnValue()->setInteger(id);
 	return true;
 }
@@ -153,12 +153,12 @@ KVSO_CLASS_FUNCTION(ftp, login)
 KVSO_CLASS_FUNCTION(ftp, get)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
-	QString szFile, szDest;
+		QString szFile, szDest;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("remote_filename", KVS_PT_STRING, 0, szFile)
-	KVSO_PARAMETER("local_filename", KVS_PT_STRING, 0, szDest)
-	KVSO_PARAMETERS_END(c)
-	QFile * pFile;
+		KVSO_PARAMETER("remote_filename", KVS_PT_STRING, 0, szFile)
+		KVSO_PARAMETER("local_filename", KVS_PT_STRING, 0, szDest)
+		KVSO_PARAMETERS_END(c)
+		QFile * pFile;
 	pFile = new QFile(szDest);
 	pFile->open(QIODevice::WriteOnly);
 	int id = m_pFtp->get(szFile, pFile);
@@ -168,12 +168,12 @@ KVSO_CLASS_FUNCTION(ftp, get)
 KVSO_CLASS_FUNCTION(ftp, put)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
-	QString szRemoteFile, szLocaleFile;
+		QString szRemoteFile, szLocaleFile;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("locale_filename", KVS_PT_STRING, 0, szLocaleFile)
-	KVSO_PARAMETER("remote_filename", KVS_PT_STRING, 0, szRemoteFile)
-	KVSO_PARAMETERS_END(c)
-	QFile * pFile;
+		KVSO_PARAMETER("locale_filename", KVS_PT_STRING, 0, szLocaleFile)
+		KVSO_PARAMETER("remote_filename", KVS_PT_STRING, 0, szRemoteFile)
+		KVSO_PARAMETERS_END(c)
+		QFile * pFile;
 	pFile = new QFile(szLocaleFile);
 	pFile->open(QIODevice::ReadOnly);
 	int id = m_pFtp->put(pFile, szRemoteFile);
@@ -183,11 +183,11 @@ KVSO_CLASS_FUNCTION(ftp, put)
 KVSO_CLASS_FUNCTION(ftp, cd)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
-	QString szPath;
+		QString szPath;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("remote_filename", KVS_PT_STRING, 0, szPath)
-	KVSO_PARAMETERS_END(c)
-	int id = m_pFtp->cd(szPath);
+		KVSO_PARAMETER("remote_filename", KVS_PT_STRING, 0, szPath)
+		KVSO_PARAMETERS_END(c)
+		int id = m_pFtp->cd(szPath);
 	c->returnValue()->setInteger(id);
 	return true;
 }
@@ -195,11 +195,11 @@ KVSO_CLASS_FUNCTION(ftp, cd)
 KVSO_CLASS_FUNCTION(ftp, list)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
-	QString szPath;
+		QString szPath;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("remote_dir", KVS_PT_STRING, 0, szPath)
-	KVSO_PARAMETERS_END(c)
-	int id = m_pFtp->list(szPath);
+		KVSO_PARAMETER("remote_dir", KVS_PT_STRING, 0, szPath)
+		KVSO_PARAMETERS_END(c)
+		int id = m_pFtp->list(szPath);
 	c->returnValue()->setInteger(id);
 	return true;
 }
@@ -207,14 +207,14 @@ KVSO_CLASS_FUNCTION(ftp, list)
 KVSO_CLASS_FUNCTION(ftp, abort)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
-	m_pFtp->abort();
+		m_pFtp->abort();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(ftp, close)
 {
 	CHECK_INTERNAL_POINTER(m_pFtp)
-	m_pFtp->close();
+		m_pFtp->close();
 	return true;
 }
 
@@ -231,57 +231,57 @@ void KvsObject_ftp::slotCommandFinished(int iId, bool bError)
 
 	switch(m_pFtp->currentCommand())
 	{
-		case QFtp::None:
-			szCommand = "none";
-			break;
-		case QFtp::SetTransferMode:
-			szCommand = "setTransferMode";
-			break;
-		case QFtp::SetProxy:
-			szCommand = "setProxy";
-			break;
-		case QFtp::ConnectToHost:
-			szCommand = "connectToHost";
-			break;
-		case QFtp::Login:
-			szCommand = "login";
-			break;
-		case QFtp::Close:
-			szCommand = "close";
-			break;
-		case QFtp::List:
-			szCommand = "list";
-			break;
-		case QFtp::Cd:
-			szCommand = "cd";
-			break;
-		case QFtp::Get:
-		{
-			delete m_pFtp->currentDevice();
-			szCommand = "get";
-			break;
-		}
-		case QFtp::Put:
-		{
-			delete m_pFtp->currentDevice();
-			szCommand = "put";
-			break;
-		}
-		case QFtp::Remove:
-			szCommand = "remove";
-			break;
-		case QFtp::Mkdir:
-			szCommand = "mkdir";
-			break;
-		case QFtp::Rmdir:
-			szCommand = "rmdir";
-			break;
-		case QFtp::Rename:
-			szCommand = "rename";
-			break;
-		case QFtp::RawCommand:
-			szCommand = "rawCommand";
-			break;
+	case QFtp::None:
+		szCommand = "none";
+		break;
+	case QFtp::SetTransferMode:
+		szCommand = "setTransferMode";
+		break;
+	case QFtp::SetProxy:
+		szCommand = "setProxy";
+		break;
+	case QFtp::ConnectToHost:
+		szCommand = "connectToHost";
+		break;
+	case QFtp::Login:
+		szCommand = "login";
+		break;
+	case QFtp::Close:
+		szCommand = "close";
+		break;
+	case QFtp::List:
+		szCommand = "list";
+		break;
+	case QFtp::Cd:
+		szCommand = "cd";
+		break;
+	case QFtp::Get:
+	{
+		delete m_pFtp->currentDevice();
+		szCommand = "get";
+		break;
+	}
+	case QFtp::Put:
+	{
+		delete m_pFtp->currentDevice();
+		szCommand = "put";
+		break;
+	}
+	case QFtp::Remove:
+		szCommand = "remove";
+		break;
+	case QFtp::Mkdir:
+		szCommand = "mkdir";
+		break;
+	case QFtp::Rmdir:
+		szCommand = "rmdir";
+		break;
+	case QFtp::Rename:
+		szCommand = "rename";
+		break;
+	case QFtp::RawCommand:
+		szCommand = "rawCommand";
+		break;
 	}
 
 	KviKvsVariantList lParams;

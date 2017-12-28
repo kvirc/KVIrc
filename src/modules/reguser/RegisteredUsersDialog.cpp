@@ -76,7 +76,7 @@
 extern RegisteredUsersDialog * g_pRegisteredUsersDialog;
 
 KviRegisteredUsersListView::KviRegisteredUsersListView(QWidget * par)
-    : QTreeWidget(par)
+	: QTreeWidget(par)
 {
 	setColumnCount(2);
 
@@ -94,10 +94,10 @@ KviRegisteredUsersListView::KviRegisteredUsersListView(QWidget * par)
 	setSortingEnabled(true);
 
 	setToolTip(__tr2qs_ctx("This is the list of registered users. "
-	                       "KVIrc can automatically recognize and associate properties to them.<br>"
-	                       "Use the buttons on the right to add, edit and remove entries. "
-	                       "The \"notify\" column allows you to quickly add users to the notify list. "
-	                       "Notify list fine-tuning can be performed by editing the entry properties.", "register"));
+		"KVIrc can automatically recognize and associate properties to them.<br>"
+		"Use the buttons on the right to add, edit and remove entries. "
+		"The \"notify\" column allows you to quickly add users to the notify list. "
+		"Notify list fine-tuning can be performed by editing the entry properties.", "register"));
 }
 
 void KviRegisteredUsersListView::mousePressEvent(QMouseEvent * e)
@@ -112,7 +112,7 @@ void KviRegisteredUsersListView::mousePressEvent(QMouseEvent * e)
 }
 
 RegisteredUsersDialogItem::RegisteredUsersDialogItem(QTreeWidgetItem * par, KviRegisteredUser * u)
-    : RegisteredUsersDialogItemBase(User, par), m_pUser(u)
+	: RegisteredUsersDialogItemBase(User, par), m_pUser(u)
 {
 	QString szTmp;
 	QString t = "<b>";
@@ -149,7 +149,7 @@ RegisteredUsersDialogItem::RegisteredUsersDialogItem(QTreeWidgetItem * par, KviR
 }
 
 RegisteredUsersDialogItem::~RegisteredUsersDialogItem()
-    = default;
+= default;
 
 QString RegisteredUsersDialogItem::key(int, bool) const
 {
@@ -158,7 +158,6 @@ QString RegisteredUsersDialogItem::key(int, bool) const
 
 void RegisteredUsersDialogItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {
-
 	RegisteredUsersDialogItemBase * item = static_cast<RegisteredUsersDialogItemBase *>(index.internalPointer());
 
 	if(item->type() == RegisteredUsersDialogItemBase::Group)
@@ -224,7 +223,7 @@ QSize RegisteredUsersDialogItemDelegate::sizeHint(const QStyleOptionViewItem & o
 }
 
 RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
-    : QWidget(par)
+	: QWidget(par)
 {
 	g_pRegisteredUsersDialog = this;
 
@@ -325,11 +324,11 @@ RegisteredUsersDialog::RegisteredUsersDialog(QWidget * par)
 	{
 		if(KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry).y() < 5)
 			KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry)
-			    .setY(5);
+			.setY(5);
 
 		//setGeometry(KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry));
 		resize(KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry).width(),
-		    KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry).height());
+			KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry).height());
 
 		QRect rect = g_pApp->desktop()->screenGeometry(g_pMainWindow);
 		move(rect.x() + ((rect.width() - KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry).width()) / 2), rect.y() + ((rect.height() - KVI_OPTION_RECT(KviOption_rectRegisteredUsersDialogGeometry).height()) / 2));
@@ -426,7 +425,7 @@ void RegisteredUsersDialog::addGroupClicked()
 {
 	bool ok;
 	QString text = QInputDialog::getText(this, "Add Group Name - KVIrc",
-	    __tr2qs_ctx("Group name:", "register"), QLineEdit::Normal, QString(), &ok);
+		__tr2qs_ctx("Group name:", "register"), QLineEdit::Normal, QString(), &ok);
 
 	if(ok && !text.isEmpty())
 	{
@@ -440,7 +439,7 @@ void RegisteredUsersDialog::editGroup(KviRegisteredUserGroup * group)
 	bool ok;
 
 	QString text = QInputDialog::getText(this, "Change Group Name - KVIrc",
-	    __tr2qs_ctx("Group name:", "register"), QLineEdit::Normal, group->name(), &ok);
+		__tr2qs_ctx("Group name:", "register"), QLineEdit::Normal, group->name(), &ok);
 
 	if(ok && !text.isEmpty())
 	{
@@ -488,7 +487,7 @@ void RegisteredUsersDialog::rightButtonPressed(QTreeWidgetItem * pItem, QPoint p
 			for(KviPointerHashTableEntry<QString, KviRegisteredUserGroup> * g = pGroups->firstEntry(); g; g = pGroups->nextEntry())
 			{
 				groups->addAction(g->key())
-				    ->setData(g->data()->name());
+					->setData(g->data()->name());
 			}
 
 			connect(groups, SIGNAL(triggered(QAction *)), this, SLOT(moveToGroupMenuClicked(QAction *)));
@@ -799,7 +798,7 @@ void RegisteredUsersDialog::exportClicked()
 			QString avatar;
 			if(u->getProperty("avatar", avatar))
 			{
-				std::unique_ptr<KviAvatar> av{g_pIconManager->getAvatar(QString(), avatar)};
+				std::unique_ptr<KviAvatar> av{ g_pIconManager->getAvatar(QString(), avatar) };
 				if(av)
 				{
 					if(!av->pixmap()->isNull())

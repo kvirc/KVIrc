@@ -29,7 +29,7 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeSpecialCommandIf::KviKvsTreeNodeSpecialCommandIf(const QChar * pLocation, KviKvsTreeNodeExpression * e, KviKvsTreeNodeInstruction * pIf, KviKvsTreeNodeInstruction * pElse)
-    : KviKvsTreeNodeSpecialCommand(pLocation, "if")
+	: KviKvsTreeNodeSpecialCommand(pLocation, "if")
 {
 	m_pExpression = e;
 	m_pExpression->setParent(this);

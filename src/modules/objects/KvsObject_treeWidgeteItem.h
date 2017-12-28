@@ -34,7 +34,7 @@ class KvsObject_treeWidgetItem : public KviKvsObject
 {
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_treeWidgetItem)
-	void childDestroyed();
+		void childDestroyed();
 
 protected:
 	QTreeWidgetItem * m_pTreeWidgetItem;

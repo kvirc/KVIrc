@@ -35,7 +35,7 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeScopeOperator::KviKvsTreeNodeScopeOperator(const QChar * pLocation, KviKvsTreeNodeData * pObject, KviKvsTreeNodeData * pData)
-    : KviKvsTreeNodeData(pLocation)
+	: KviKvsTreeNodeData(pLocation)
 {
 	m_pObjectReference = pObject;
 	m_pObjectReference->setParent(this);

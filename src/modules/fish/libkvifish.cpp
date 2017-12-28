@@ -164,8 +164,8 @@ bool fish_event_onQueryNotice(KviKvsModuleEventCall * c)
 		if(szMessage.startsWith("DH1080_INIT_cbc ", Qt::CaseSensitive))
 		{
 			c->window()->console()->connection()->sendFmtData("NOTICE %s :DH1080_FINISH_cbc %sA",
-			    c->window()->console()->connection()->encodeText(szNick).data(),
-			    szTmp.data());
+				c->window()->console()->connection()->encodeText(szNick).data(),
+				szTmp.data());
 		}
 		else
 		{
@@ -280,10 +280,10 @@ static bool fish_cmd_keyx(KviKvsModuleCommandCall * c)
 {
 	QString szTarget;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("target", KVS_PT_NONEMPTYSTRING, 0, szTarget)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("target", KVS_PT_NONEMPTYSTRING, 0, szTarget)
+		KVSM_PARAMETERS_END(c)
 
-	unsigned char * szMyPubKey = nullptr;
+		unsigned char * szMyPubKey = nullptr;
 	KviCString szHisPubKey, szTmp;
 	int iMyPubKeyLen, *pMyPubKeyLen = &iMyPubKeyLen;
 	if(!fish_DH1080_gen(&szMyPubKey, pMyPubKeyLen))
@@ -291,8 +291,8 @@ static bool fish_cmd_keyx(KviKvsModuleCommandCall * c)
 
 	szTmp.bufferToBase64((char *)szMyPubKey, iMyPubKeyLen);
 	c->window()->console()->connection()->sendFmtData("NOTICE %s :DH1080_INIT %sA",
-	    c->window()->console()->connection()->encodeText(szTarget).data(),
-	    szTmp.ptr());
+		c->window()->console()->connection()->encodeText(szTarget).data(),
+		szTmp.ptr());
 
 	c->window()->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("FiSH: sent my DH1080 public key to %1, waiting for reply...").arg(szTarget));
 	return true;
@@ -334,12 +334,12 @@ static bool fish_module_can_unload(KviModule *)
 //
 
 KVIRC_MODULE(
-    "FISH crypt engine",
-    "4.0.0",
-    "Fabio Bas <ctrlaltca at gmail dot com>",
-    "A FISH implementation",
-    fish_module_init,
-    fish_module_can_unload,
-    0,
-    fish_module_cleanup,
-    0)
+	"FISH crypt engine",
+	"4.0.0",
+	"Fabio Bas <ctrlaltca at gmail dot com>",
+	"A FISH implementation",
+	fish_module_init,
+	fish_module_can_unload,
+	0,
+	fish_module_cleanup,
+	0)

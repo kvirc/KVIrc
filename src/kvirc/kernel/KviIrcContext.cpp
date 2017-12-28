@@ -69,7 +69,7 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 KviIrcContext::KviIrcContext(KviConsoleWindow * pConsole)
-    : QObject(nullptr)
+	: QObject(nullptr)
 {
 	m_uId = g_uNextIrcContextId;
 	g_uNextIrcContextId++;
@@ -345,7 +345,7 @@ void KviIrcContext::connectButtonClicked()
 			destroyAsynchronousConnectionData();
 
 			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR,
-			    __tr2qs("Reconnect attempt aborted"));
+				__tr2qs("Reconnect attempt aborted"));
 
 			if(m_eState == KviIrcContext::PendingReconnection)
 				setState(Idle);
@@ -389,7 +389,7 @@ void KviIrcContext::connectToCurrentServer()
 		{
 			// an empty server might mean "reuse the last server in context"
 			if(
-			    m_pAsynchronousConnectionData->bUseLastServerInContext && m_pSavedAsynchronousConnectionData)
+				m_pAsynchronousConnectionData->bUseLastServerInContext && m_pSavedAsynchronousConnectionData)
 			{
 				// reuse the saved connection data
 				// the server for sure
@@ -520,13 +520,13 @@ void KviIrcContext::connectToCurrentServer()
 		delete m_pConnection;
 
 	m_pConnection = new KviIrcConnection(
-	    this,
-	    new KviIrcConnectionTarget(
-	        net,
-	        srv,
-	        prx,
-	        szBindAddress),
-	    new KviUserIdentity(*pIdentity));
+		this,
+		new KviIrcConnectionTarget(
+			net,
+			srv,
+			prx,
+			szBindAddress),
+		new KviUserIdentity(*pIdentity));
 
 	setState(Connecting);
 
@@ -570,8 +570,8 @@ void KviIrcContext::connectionFailed(int iError)
 		return; // this may happen in the destructor!
 
 	m_pConsole->output(KVI_OUT_SYSTEMERROR,
-	    __tr2qs("Connection attempt failed [%s]"),
-	    m_pConnection->target()->server()->hostName().toUtf8().data());
+		__tr2qs("Connection attempt failed [%s]"),
+		m_pConnection->target()->server()->hostName().toUtf8().data());
 
 	// if the connection has been aborted by the user then just go idle
 	if(iError == KviError::OperationAborted)
@@ -661,10 +661,10 @@ void KviIrcContext::connectionEstablished()
 	if(!bStopOutput)
 	{
 		m_pConsole->output(KVI_OUT_CONNECTION, __tr2qs("%Q established [%s (%s:%u)]"),
-		    connection()->link()->socket()->usingSSL() ? &(__tr2qs("Secure connection")) : &(__tr2qs("Connection")),
-		    connection()->target()->server()->hostName().toUtf8().data(),
-		    connection()->target()->server()->ip().toUtf8().data(),
-		    connection()->target()->server()->port());
+			connection()->link()->socket()->usingSSL() ? &(__tr2qs("Secure connection")) : &(__tr2qs("Connection")),
+			connection()->target()->server()->hostName().toUtf8().data(),
+			connection()->target()->server()->ip().toUtf8().data(),
+			connection()->target()->server()->port());
 	}
 
 	// Add to recent server list (build the URL of type irc[6]://<server>:<port>
@@ -732,9 +732,9 @@ void KviIrcContext::connectionTerminated()
 	if(!bStopOutput)
 	{
 		m_pConsole->output(KVI_OUT_CONNECTION, __tr2qs("Connection terminated [%s (%s:%u)]"),
-		    oldServer.hostName().toUtf8().data(),
-		    oldServer.ip().toUtf8().data(),
-		    oldServer.port());
+			oldServer.hostName().toUtf8().data(),
+			oldServer.ip().toUtf8().data(),
+			oldServer.port());
 	}
 
 	// do reconnect
@@ -801,62 +801,62 @@ void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQu
 
 	switch(m_eState)
 	{
-		case Connected:
+	case Connected:
+	{
+		// was connected : send a quit and abort the connection
+		bool bQuitSentJustNow = false;
+
+		if(!connection()->stateData()->sentQuit())
 		{
-			// was connected : send a quit and abort the connection
-			bool bQuitSentJustNow = false;
-
-			if(!connection()->stateData()->sentQuit())
-			{
-				KVS_TRIGGER_EVENT_0(KviEvent_OnDisconnectRequest, m_pConsole);
-				QString szQuit = szQuitMsg;
-				if(szQuit.isEmpty())
-					szQuit = KVI_OPTION_STRING(KviOption_stringQuitMessage);
-				KviQString::escapeKvs(&szQuit, KviQString::PermitVariables | KviQString::PermitFunctions);
-				QString buffer;
-				KviKvsVariant ret;
-				if(KviKvsScript::evaluate(szQuit, console(), nullptr, &ret))
-					ret.asString(buffer);
-				else
-					buffer = szQuit;
-				QByteArray dat = connection()->encodeText(buffer);
-				connection()->stateData()->setSentQuit();
-				connection()->sendFmtData("QUIT :%s", dat.data() ? dat.data() : ""); // here theoretically we COULD get disconnected
-				bQuitSentJustNow = true;
-			} // else it was already sent anyway
-
-			if(KVI_OPTION_BOOL(KviOption_boolForceBrutalQuit) || bForce || (!bQuitSentJustNow))
-			{
-				if(!bQuitSentJustNow)
-				{
-					// idle for some milliseconds in order to allow the quit message to reach
-					// the remote end without breaking the connection
-					KviThread::msleep(100);
-				}
-
-				// and brutally abort the connection (if it still exists!!!)
-				if(connection())
-					connection()->abort();
-			}
+			KVS_TRIGGER_EVENT_0(KviEvent_OnDisconnectRequest, m_pConsole);
+			QString szQuit = szQuitMsg;
+			if(szQuit.isEmpty())
+				szQuit = KVI_OPTION_STRING(KviOption_stringQuitMessage);
+			KviQString::escapeKvs(&szQuit, KviQString::PermitVariables | KviQString::PermitFunctions);
+			QString buffer;
+			KviKvsVariant ret;
+			if(KviKvsScript::evaluate(szQuit, console(), nullptr, &ret))
+				ret.asString(buffer);
 			else
-			{
-				if(bQuitSentJustNow)
-					m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Sent QUIT, waiting for the server to close the connection..."));
-			}
-		}
-		break;
-		case PendingReconnection:
-		case Connecting:
-		case LoggingIn:
-			// was waiting for connection or login, just abort it: it will trigger an error anyway
-			// though act as if we sent the quit message, so we'll not treat the disconnection as "unexpected".
+				buffer = szQuit;
+			QByteArray dat = connection()->encodeText(buffer);
 			connection()->stateData()->setSentQuit();
-			connection()->abort();
-			break;
-		default:
-			// should never end here!
-			KVI_ASSERT(false);
-			break;
+			connection()->sendFmtData("QUIT :%s", dat.data() ? dat.data() : ""); // here theoretically we COULD get disconnected
+			bQuitSentJustNow = true;
+		} // else it was already sent anyway
+
+		if(KVI_OPTION_BOOL(KviOption_boolForceBrutalQuit) || bForce || (!bQuitSentJustNow))
+		{
+			if(!bQuitSentJustNow)
+			{
+				// idle for some milliseconds in order to allow the quit message to reach
+				// the remote end without breaking the connection
+				KviThread::msleep(100);
+			}
+
+			// and brutally abort the connection (if it still exists!!!)
+			if(connection())
+				connection()->abort();
+		}
+		else
+		{
+			if(bQuitSentJustNow)
+				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Sent QUIT, waiting for the server to close the connection..."));
+		}
+	}
+	break;
+	case PendingReconnection:
+	case Connecting:
+	case LoggingIn:
+		// was waiting for connection or login, just abort it: it will trigger an error anyway
+		// though act as if we sent the quit message, so we'll not treat the disconnection as "unexpected".
+		connection()->stateData()->setSentQuit();
+		connection()->abort();
+		break;
+	default:
+		// should never end here!
+		KVI_ASSERT(false);
+		break;
 	}
 }
 

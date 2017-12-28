@@ -52,7 +52,7 @@ class LogViewListView : public QTreeWidget
 	Q_OBJECT
 public:
 	LogViewListView(QWidget *);
-	~LogViewListView(){};
+	~LogViewListView() {};
 
 protected:
 	void mousePressEvent(QMouseEvent * pEvent);
@@ -126,7 +126,7 @@ protected:
 	virtual void fillCaptionBuffers();
 	virtual void die();
 	virtual QSize sizeHint() const;
-protected slots:
+	protected slots:
 	void rightButtonClicked(QTreeWidgetItem *, const QPoint &);
 	void itemSelected(QTreeWidgetItem * pItem, QTreeWidgetItem *);
 	void deleteCurrent();

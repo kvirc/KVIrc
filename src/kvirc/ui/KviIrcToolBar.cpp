@@ -55,7 +55,7 @@ extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 static KviPointerList<KviToolBarGraphicalApplet> * g_pToolBarGraphicalAppletList = nullptr;
 
 KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par, const char * name)
-    : QWidget(par)
+	: QWidget(par)
 {
 	setObjectName(name);
 	if(!g_pToolBarGraphicalAppletList)
@@ -79,7 +79,7 @@ KviToolBarGraphicalApplet::KviToolBarGraphicalApplet(QWidget * par, const char *
 		KVI_OPTION_UINT(KviOption_uintIrcContextAppletWidth) = 32;
 
 	resize(KVI_OPTION_UINT(KviOption_uintIrcContextAppletWidth),
-	    KVI_OPTION_UINT(KviOption_uintToolBarIconSize));
+		KVI_OPTION_UINT(KviOption_uintToolBarIconSize));
 }
 
 KviToolBarGraphicalApplet::~KviToolBarGraphicalApplet()
@@ -195,14 +195,14 @@ void KviToolBarGraphicalApplet::drawContents(QPainter *)
 //
 
 KviIrcContextDisplay::KviIrcContextDisplay(QWidget * par, const char * name)
-    : KviToolBarGraphicalApplet(par, name)
+	: KviToolBarGraphicalApplet(par, name)
 {
 	KviDynamicToolTip * tip = new KviDynamicToolTip(this);
 	connect(tip, SIGNAL(tipRequest(KviDynamicToolTip *, const QPoint &)), this, SLOT(tipRequest(KviDynamicToolTip *, const QPoint &)));
 }
 
 KviIrcContextDisplay::~KviIrcContextDisplay()
-    = default;
+= default;
 
 void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 {
@@ -315,7 +315,7 @@ void KviIrcContextDisplay::tipRequest(KviDynamicToolTip * tip, const QPoint &)
 	}
 	else
 	{
-		txt =  sbr;
+		txt = sbr;
 		txt += __tr2qs("No IRC context");
 		txt += ebr;
 	}
@@ -358,11 +358,11 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 				else if(ic->userInfo()->userMode().isEmpty())
 					nick += ic->currentNickName();
 
-					if(ic->userInfo()->isAway())
-					{
-						nick += space + sprtr + space;
-						nick += __tr2qs("is away");
-					}
+				if(ic->userInfo()->isAway())
+				{
+					nick += space + sprtr + space;
+					nick += __tr2qs("is away");
+				}
 
 				else
 				{
@@ -373,7 +373,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 						nick += space + sprtr;
 					}
 				}
-				serv =  __tr2qs("Using server");
+				serv = __tr2qs("Using server");
 				serv += cln + space;
 				serv += ic->currentServerName();
 				if(ic->lagMeter() && (KVI_OPTION_BOOL(KviOption_boolShowLagOnContextDisplay)))
@@ -422,7 +422,7 @@ void KviIrcContextDisplay::drawContents(QPainter * p)
 		QColor base = palette().window().color();
 		QColor cntx = KVI_OPTION_ICCOLOR(c->context()->id() % KVI_NUM_ICCOLOR_OPTIONS);
 		base.setRgb((base.red() + cntx.red()) >> 1, (base.green() + cntx.green()) >> 1,
-		    (base.blue() + cntx.blue()) >> 1);
+			(base.blue() + cntx.blue()) >> 1);
 
 		p->fillRect(2, 2, KVI_APPLETIRCCONTEXTINDICATORWIDTH - 2, height() - 4, base);
 	}

@@ -302,9 +302,9 @@ static bool math_kvs_fnc_isnan(KviKvsModuleFunctionCall * c)
 {
 	kvs_real_t dReal;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("value", KVS_PT_REAL, 0, dReal)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setBoolean(std::isnan(dReal));
+		KVSM_PARAMETER("value", KVS_PT_REAL, 0, dReal)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setBoolean(std::isnan(dReal));
 	return true;
 }
 
@@ -326,9 +326,9 @@ static bool math_kvs_fnc_isinf(KviKvsModuleFunctionCall * c)
 {
 	kvs_real_t dReal;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("value", KVS_PT_REAL, 0, dReal)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setBoolean(std::isinf(dReal));
+		KVSM_PARAMETER("value", KVS_PT_REAL, 0, dReal)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setBoolean(std::isinf(dReal));
 	return true;
 }
 
@@ -350,10 +350,10 @@ static bool math_kvs_fnc_pow(KviKvsModuleFunctionCall * c)
 {
 	kvs_real_t dA, dB;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("a", KVS_PT_REAL, 0, dA)
-	KVSM_PARAMETER("b", KVS_PT_REAL, 0, dB)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setReal(pow(dA, dB));
+		KVSM_PARAMETER("a", KVS_PT_REAL, 0, dA)
+		KVSM_PARAMETER("b", KVS_PT_REAL, 0, dB)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setReal(pow(dA, dB));
 	return true;
 }
 
@@ -443,14 +443,14 @@ static bool math_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Math",  // module name
-    "4.0.0", // module version
-    "Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net),"
-    "Tonino Imbesi (grifisx at barmes dot org),"
-    "Alessandro Carbone (elfonol at gmail dot com)",
-    "Mathematical function module",
-    math_module_init,
-    0,
-    0,
-    math_module_cleanup,
-    0)
+	"Math",  // module name
+	"4.0.0", // module version
+	"Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net),"
+	"Tonino Imbesi (grifisx at barmes dot org),"
+	"Alessandro Carbone (elfonol at gmail dot com)",
+	"Mathematical function module",
+	math_module_init,
+	0,
+	0,
+	math_module_cleanup,
+	0)

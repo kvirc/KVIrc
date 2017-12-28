@@ -65,7 +65,7 @@
 #endif
 
 KviMediaManager::KviMediaManager()
-    : KviMutex()
+	: KviMutex()
 {
 	m_pMediaTypeList = new KviPointerList<KviMediaType>;
 	m_pMediaTypeList->setAutoDelete(true);
@@ -195,7 +195,7 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename, bool bCheck
 	KviCString szFile = filename;
 	szFile.cutToLast('/', true);
 
-// first of all, lstat() the file
+	// first of all, lstat() the file
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	struct _stat st;
 	if(_stat(szFullPath.ptr(), &st) != 0)
@@ -212,7 +212,7 @@ KviMediaType * KviMediaManager::findMediaType(const char * filename, bool bCheck
 	}
 	else
 	{
-// If it is a link, stat() the link target
+		// If it is a link, stat() the link target
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 		if(S_ISLNK(st.st_mode))
 		{

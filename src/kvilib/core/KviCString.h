@@ -492,7 +492,7 @@ __KVI_EXTERN KVILIB_API bool kvi_matchWildExpr(register const char * m1, registe
 // Same as kvi_matchWildExpr but with an additional char that acts as string terminator
 // If there is a match this function returns true and puts the pointers where it stopped in r1 and r2
 __KVI_EXTERN KVILIB_API bool kvi_matchWildExprWithTerminator(register const char * m1, register const char * m2, char terminator,
-    const char ** r1, const char ** r2);
+	const char ** r1, const char ** r2);
 
 // Returns true if the wildcard expression exp matches the string str
 __KVI_EXTERN KVILIB_API bool kvi_matchStringCI(register const char * exp, register const char * str);

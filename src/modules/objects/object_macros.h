@@ -80,14 +80,12 @@
 	__className::__className(KviKvsObjectClass * pClass, KviKvsObject * pParent, const QString & szName) \
 	    : __baseClass(pClass, pParent, szName)                                                           \
 	{
-
 #define KVSO_END_CONSTRUCTOR(__className) \
 	}
 
 #define KVSO_BEGIN_DESTRUCTOR(__className) \
 	__className::~__className()            \
 	{
-
 #define KVSO_END_DESTRUCTOR(__className) \
 	}
 

@@ -101,17 +101,17 @@ bool KvsObject_colorDialog::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 KVSO_CLASS_FUNCTION(colorDialog, setCurrentColor)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iCol1, iCol2, iCol3, iOpacity;
+		kvs_int_t iCol1, iCol2, iCol3, iOpacity;
 	QString szColorMode, szColor;
 	KviKvsVariant *var1, *var2, *var3;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("Color_1_Or_Colorname", KVS_PT_VARIANT, 0, var1)
-	KVSO_PARAMETER("Color_2", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var2)
-	KVSO_PARAMETER("Colo3_3", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var3)
-	KVSO_PARAMETER("opacity", KVS_PT_INT, KVS_PF_OPTIONAL, iOpacity)
-	KVSO_PARAMETER("color_mode", KVS_PT_STRING, KVS_PF_OPTIONAL, szColorMode)
-	KVSO_PARAMETERS_END(c)
-	QColor col;
+		KVSO_PARAMETER("Color_1_Or_Colorname", KVS_PT_VARIANT, 0, var1)
+		KVSO_PARAMETER("Color_2", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var2)
+		KVSO_PARAMETER("Colo3_3", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var3)
+		KVSO_PARAMETER("opacity", KVS_PT_INT, KVS_PF_OPTIONAL, iOpacity)
+		KVSO_PARAMETER("color_mode", KVS_PT_STRING, KVS_PF_OPTIONAL, szColorMode)
+		KVSO_PARAMETERS_END(c)
+		QColor col;
 	if(!var1->asInteger(iCol1))
 	{
 		var1->asString(szColor);
@@ -161,12 +161,12 @@ KVSO_CLASS_FUNCTION(colorDialog, setCurrentColor)
 KVSO_CLASS_FUNCTION(colorDialog, setOptions)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QStringList szOptions;
+		QStringList szOptions;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("szOptions", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, szOptions)
-	KVSO_PARAMETERS_END(c)
-	if(!widget())
-		return true;
+		KVSO_PARAMETER("szOptions", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, szOptions)
+		KVSO_PARAMETERS_END(c)
+		if(!widget())
+			return true;
 	int colorDialogOption, sum = 0;
 	for(auto & szOption : szOptions)
 	{

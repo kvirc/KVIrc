@@ -42,7 +42,7 @@ protected:
 	KviBoolSelector * m_b2;
 	KviBoolSelector * m_b3;
 	KviStringListSelector * m_sl;
-protected slots:
+	protected slots:
 	void reenableStuff(bool);
 };
 

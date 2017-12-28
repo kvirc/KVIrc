@@ -96,7 +96,7 @@ public:
 	bool handleResumeAccepted(const char * filename, const char * port, const char * szZeroPortTag);
 	bool handleResumeRequest(KviDccRequest * dcc, const char * filename, const char * port, unsigned long filePos, const char * szZeroPortTag);
 
-public slots:
+	public slots:
 	void rsendExecute(DccDialog * box, DccDescriptor * dcc);
 	void rsendExecute(DccDescriptor * dcc);
 

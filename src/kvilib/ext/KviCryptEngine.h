@@ -44,7 +44,7 @@ class KviCString;
 class KviCryptEngine;
 
 typedef KviCryptEngine * (*crypt_engine_allocator_func)();
-typedef void (*crypt_engine_deallocator_func)(KviCryptEngine *);
+typedef void(*crypt_engine_deallocator_func)(KviCryptEngine *);
 #endif //COMPILE_CRYPT_SUPPORT
 
 // we must include this declaration to make moc happy even
@@ -53,7 +53,7 @@ typedef void (*crypt_engine_deallocator_func)(KviCryptEngine *);
 class KVILIB_API KviCryptEngine : public QObject, public KviHeapObject
 {
 	Q_OBJECT
-	friend class KviCryptEngineManager;
+		friend class KviCryptEngineManager;
 
 public:
 	enum EngineFlag

@@ -28,12 +28,12 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeAliasFunctionCall::KviKvsTreeNodeAliasFunctionCall(const QChar * pLocation, const QString & szAliasName, KviKvsTreeNodeDataList * pParams)
-    : KviKvsTreeNodeFunctionCall(pLocation, szAliasName, pParams)
+	: KviKvsTreeNodeFunctionCall(pLocation, szAliasName, pParams)
 {
 }
 
 KviKvsTreeNodeAliasFunctionCall::~KviKvsTreeNodeAliasFunctionCall()
-    = default;
+= default;
 
 void KviKvsTreeNodeAliasFunctionCall::contextDescription(QString & szBuffer)
 {

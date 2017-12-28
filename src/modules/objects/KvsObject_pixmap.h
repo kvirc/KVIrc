@@ -35,10 +35,10 @@
 class KvsObject_pixmap : public KviKvsObject
 {
 	Q_OBJECT
-	//	Q_PROPERTY(QPixmap pixmap READ getPixmap)
+		//	Q_PROPERTY(QPixmap pixmap READ getPixmap)
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_pixmap)
-	enum Type
+		enum Type
 	{
 		Pixmap,
 		AnimatedPixmap,
@@ -109,7 +109,7 @@ protected:
 	bool setPixel(KviKvsObjectFunctionCall * c);
 	bool pixel(KviKvsObjectFunctionCall * c);
 	bool frameChangedEvent(KviKvsObjectFunctionCall * c);
-protected slots:
+	protected slots:
 	void frameChanged();
 };
 

@@ -156,7 +156,7 @@ public:
 		NoNotifications = 7 // this is 1|2|4 implies NoWindowFlashing and NoNotifier
 	};
 	void outputPrivmsg(KviWindow * wnd, int type, const QString & nick,
-	    const QString & user, const QString & host, const QString & msg, int iFlags = 0, const QString & prefix = QString(), const QString & suffix = QString(), const QDateTime & datetime = QDateTime());
+		const QString & user, const QString & host, const QString & msg, int iFlags = 0, const QString & prefix = QString(), const QString & suffix = QString(), const QDateTime & datetime = QDateTime());
 	// this applies highlighting to the specified message
 	// and triggers the OnHighlight event.
 	// it returns KVI_OUT_HIGHLIGHT if highlighting was applied
@@ -212,11 +212,11 @@ public:
 	*/
 	bool isHighlightedChannel(const QString & szChan) { return m_pTmpHighLightedChannels->contains(szChan, Qt::CaseInsensitive); };
 
-public slots:
+	public slots:
 	void updateUri();
 	void executeInternalCommand(int index);
 	void recentUrlsChanged();
-protected slots:
+	protected slots:
 	void ircUriChanged(const QString &);
 	void toggleNotifyView();
 	void textViewRightClicked();

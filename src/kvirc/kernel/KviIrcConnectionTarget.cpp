@@ -29,10 +29,10 @@
 #include "KviProxyDataBase.h"
 
 KviIrcConnectionTarget::KviIrcConnectionTarget(
-    const KviIrcNetwork * pNetwork,
-    const KviIrcServer * pServer,
-    const KviProxy * pProxy,
-    const QString & szBindAddress)
+	const KviIrcNetwork * pNetwork,
+	const KviIrcServer * pServer,
+	const KviProxy * pProxy,
+	const QString & szBindAddress)
 {
 	m_pNetwork = new KviIrcNetwork(*pNetwork);
 	m_pServer = new KviIrcServer(*pServer);

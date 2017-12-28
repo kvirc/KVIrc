@@ -46,7 +46,7 @@
 extern std::unordered_set<CodeTesterWindow *> g_pCodeTesterWindowList;
 
 CodeTesterWindow::CodeTesterWindow()
-    : KviWindow(KviWindow::ScriptEditor, "codetester", nullptr)
+	: KviWindow(KviWindow::ScriptEditor, "codetester", nullptr)
 {
 	g_pCodeTesterWindowList.insert(this);
 	setObjectName("code_tester");
@@ -75,7 +75,7 @@ CodeTesterWindow::CodeTesterWindow()
 
 	m_pIrcView = new KviIrcView(m_pSplitter, this);
 
-	QList<int> li { width() / 2, width() / 2 };
+	QList<int> li{ width() / 2, width() / 2 };
 	m_pSplitter->setSizes(li);
 }
 
@@ -91,7 +91,7 @@ void CodeTesterWindow::execute()
 	m_pEditor->getText(buffer);
 	KviConsoleWindow * pConsole = g_pApp->activeConsole();
 	QStringList slParams = m_pParams->text().split(';');
-	KviKvsVariantList params{&slParams};
+	KviKvsVariantList params{ &slParams };
 	KviKvsScript::run(buffer, this, &params);
 }
 

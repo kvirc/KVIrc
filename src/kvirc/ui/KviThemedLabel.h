@@ -33,7 +33,7 @@ class KviWindow;
 class KVIRC_API KviThemedLabel : public QLabel
 {
 	Q_OBJECT
-	Q_PROPERTY(int TransparencyCapable READ dummyRead)
+		Q_PROPERTY(int TransparencyCapable READ dummyRead)
 public:
 	KviThemedLabel(QWidget * par, KviWindow * pWindow, const char * name);
 	~KviThemedLabel();

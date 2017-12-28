@@ -33,14 +33,14 @@
 #include <QByteArray>
 
 KviModeWidget::KviModeWidget(QWidget * par, KviChannelWindow * chan, const char * name)
-    : KviThemedLineEdit(par, chan, name)
+	: KviThemedLineEdit(par, chan, name)
 {
 	m_pChannel = chan;
 	reset();
 }
 
 KviModeWidget::~KviModeWidget()
-    = default;
+= default;
 
 void KviModeWidget::reset()
 {
@@ -70,16 +70,16 @@ void KviModeWidget::keyReleaseEvent(QKeyEvent * e)
 {
 	switch(e->key())
 	{
-		case Qt::Key_Return:
-		case Qt::Key_Enter:
-			editorReturnPressed();
-			break;
-		case Qt::Key_Escape:
-			reset();
-			break;
-		default:
-			KviThemedLineEdit::keyReleaseEvent(e);
-			break;
+	case Qt::Key_Return:
+	case Qt::Key_Enter:
+		editorReturnPressed();
+		break;
+	case Qt::Key_Escape:
+		reset();
+		break;
+	default:
+		KviThemedLineEdit::keyReleaseEvent(e);
+		break;
 	}
 }
 

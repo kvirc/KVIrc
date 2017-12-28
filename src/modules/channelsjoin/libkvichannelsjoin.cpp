@@ -36,7 +36,7 @@ ChannelsJoinDialog * g_pChannelsWindow = nullptr;
 QRect g_rectChannelsJoinGeometry;
 
 /*
- 	@doc: channelsjoin.open
+	@doc: channelsjoin.open
 	@type:
 		command
 	@title:
@@ -97,12 +97,12 @@ static bool channelsjoin_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "ChannelsJoin",
-    "4.0.0",
-    "Copyright (C) 2001-2006 Juanjo Alvarez (juanjux@yahoo.es), Alexey (wizard@opendoor.ru)",
-    "Window to join channels in a GUI",
-    channelsjoin_module_init,
-    channelsjoin_module_can_unload,
-    0,
-    channelsjoin_module_cleanup,
-    0)
+	"ChannelsJoin",
+	"4.0.0",
+	"Copyright (C) 2001-2006 Juanjo Alvarez (juanjux@yahoo.es), Alexey (wizard@opendoor.ru)",
+	"Window to join channels in a GUI",
+	channelsjoin_module_init,
+	channelsjoin_module_can_unload,
+	0,
+	channelsjoin_module_cleanup,
+	0)

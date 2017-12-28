@@ -62,7 +62,9 @@ class KVIRC_API KviHybridServerInfo : public KviBasicIrcServerInfo
 	// This is a major IRCd that most modern forks are based off of
 public:
 	KviHybridServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviBasicIrcServerInfo(pParent, version) { ; };
+		: KviBasicIrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -75,7 +77,9 @@ class KVIRC_API KviIrcdRatboxIrcServerInfo : public KviHybridServerInfo
 	// efnet
 public:
 	KviIrcdRatboxIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviHybridServerInfo(pParent, version) { ; };
+		: KviHybridServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -88,7 +92,9 @@ class KVIRC_API KviCharybdisServerInfo : public KviIrcdRatboxIrcServerInfo
 {
 public:
 	KviCharybdisServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviIrcdRatboxIrcServerInfo(pParent, version) { ; };
+		: KviIrcdRatboxIrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -101,7 +107,9 @@ class KVIRC_API KviIrcdSevenIrcServerInfo : public KviCharybdisServerInfo
 	// freenode
 public:
 	KviIrcdSevenIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviCharybdisServerInfo(pParent, version) { ; };
+		: KviCharybdisServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
 	virtual char getRegisterModeChar() { return 0; };
@@ -113,7 +121,9 @@ class KVIRC_API KviPlexusIrcServerInfo : public KviHybridServerInfo
 	// rizon; note: plexus is an extension to hybrid
 public:
 	KviPlexusIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviHybridServerInfo(pParent, version) { ; };
+		: KviHybridServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -126,7 +136,9 @@ class KVIRC_API KviOftcIrcServerInfo : public KviHybridServerInfo
 	// oftc; note: hybrid+oftc is an extension to hybrid
 public:
 	KviOftcIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviHybridServerInfo(pParent, version) { ; };
+		: KviHybridServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -144,7 +156,9 @@ class KVIRC_API KviIrcuIrcServerInfo : public KviBasicIrcServerInfo
 	// undernet
 public:
 	KviIrcuIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviBasicIrcServerInfo(pParent, version) { ; };
+		: KviBasicIrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -159,7 +173,9 @@ class KVIRC_API KviSnircdIrcServerInfo : public KviIrcuIrcServerInfo
 	// quakenet; note: snird is an extension to ircu
 public:
 	KviSnircdIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviIrcuIrcServerInfo(pParent, version) { ; };
+		: KviIrcuIrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -172,7 +188,9 @@ class KVIRC_API KviDarenetIrcServerInfo : public KviIrcuIrcServerInfo
 	// darenet; note: u2+ircd-darenet is an extension to ircu
 public:
 	KviDarenetIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviIrcuIrcServerInfo(pParent, version) { ; };
+		: KviIrcuIrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -189,7 +207,9 @@ class KVIRC_API KviUnrealIrcServerInfo : public KviBasicIrcServerInfo
 {
 public:
 	KviUnrealIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviBasicIrcServerInfo(pParent, version) { ; };
+		: KviBasicIrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual char getRegisterModeChar() { return 'r'; };
 	virtual const char * getSoftware() { return "Unreal"; };
@@ -203,7 +223,9 @@ class KVIRC_API KviUnreal32IrcServerInfo : public KviUnrealIrcServerInfo
 	// as a base class.
 public:
 	KviUnreal32IrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviUnrealIrcServerInfo(pParent, version) { ; };
+		: KviUnrealIrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -214,7 +236,9 @@ class KVIRC_API KviUnreal40IrcServerInfo : public KviUnreal32IrcServerInfo
 {
 public:
 	KviUnreal40IrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviUnreal32IrcServerInfo(pParent, version) { ; };
+		: KviUnreal32IrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual const char * getSoftware() { return "Unreal40"; };
@@ -225,7 +249,9 @@ class KVIRC_API KviCritenIrcServerInfo : public KviBasicIrcServerInfo
 	// abjects
 public:
 	KviCritenIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviBasicIrcServerInfo(pParent, version) { ; };
+		: KviBasicIrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -239,7 +265,9 @@ class KVIRC_API KviNemesisIrcServerInfo : public KviCritenIrcServerInfo
 	// criten
 public:
 	KviNemesisIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviCritenIrcServerInfo(pParent, version) { ; };
+		: KviCritenIrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const char * getSoftware() { return "Nemesis"; };
 };
 
@@ -247,7 +275,9 @@ class KVIRC_API KviNemesis20IrcServerInfo : public KviUnreal32IrcServerInfo
 {
 public:
 	KviNemesis20IrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviUnreal32IrcServerInfo(pParent, version) { ; };
+		: KviUnreal32IrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const char * getSoftware() { return "Nemesis2.0"; };
 	virtual bool getNeedsOperToSetS() { return false; };
 };
@@ -257,7 +287,9 @@ class KVIRC_API KviBahamutIrcServerInfo : public KviBasicIrcServerInfo
 	// dalnet, azzurranet
 public:
 	KviBahamutIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviBasicIrcServerInfo(pParent, version) { ; };
+		: KviBasicIrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
@@ -271,7 +303,9 @@ class KVIRC_API KviHyperionIrcServerInfo : public KviBasicIrcServerInfo
 	// legacy freenode : no longer maintained
 public:
 	KviHyperionIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviBasicIrcServerInfo(pParent, version) { ; };
+		: KviBasicIrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);
 	virtual char getRegisterModeChar() { return 'e'; };
@@ -284,7 +318,9 @@ class KVIRC_API KviInspIRCdIrcServerInfo : public KviBasicIrcServerInfo
 	// chatspike
 public:
 	KviInspIRCdIrcServerInfo(KviIrcConnectionServerInfo * pParent = 0, const QString & version = KviQString::Empty)
-	    : KviBasicIrcServerInfo(pParent, version) { ; };
+		: KviBasicIrcServerInfo(pParent, version) {
+		;
+	};
 	virtual const QString & getChannelModeDescription(char mode);
 	virtual const QString & getUserModeDescription(QChar mode);
 	virtual QChar getUserModeRequirement(QChar mode);

@@ -38,7 +38,7 @@ public:
 	StatusBarApplet(KviStatusBar * parent, KviStatusBarAppletDescriptor * desc);
 	virtual ~StatusBarApplet();
 	static void selfRegister(KviStatusBar * bar);
-private slots:
+	private slots:
 	void update();
 };
 

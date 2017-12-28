@@ -59,12 +59,12 @@ extern KviColorWindow * g_pColorWindow;
 extern QStringList * g_pRecentTopicList;
 
 KviTopicListBoxItemDelegate::KviTopicListBoxItemDelegate(QAbstractItemView * pWidget)
-    : KviTalIconAndRichTextItemDelegate(pWidget)
+	: KviTalIconAndRichTextItemDelegate(pWidget)
 {
 }
 
 KviTopicListBoxItemDelegate::~KviTopicListBoxItemDelegate()
-    = default;
+= default;
 
 QSize KviTopicListBoxItemDelegate::sizeHint(const QStyleOptionViewItem &, const QModelIndex & index) const
 {
@@ -84,12 +84,12 @@ void KviTopicListBoxItemDelegate::paint(QPainter * p, const QStyleOptionViewItem
 }
 
 KviTopicListBoxItem::KviTopicListBoxItem(KviTalListWidget * listbox, const QString & text)
-    : KviTalListWidgetText(listbox, text)
+	: KviTalListWidgetText(listbox, text)
 {
 }
 
 KviTopicListBoxItem::~KviTopicListBoxItem()
-    = default;
+= default;
 
 int KviTopicListBoxItem::width(const KviTalListWidget * lb) const
 {
@@ -97,7 +97,7 @@ int KviTopicListBoxItem::width(const KviTalListWidget * lb) const
 }
 
 KviTopicWidget::KviTopicWidget(QWidget * par, KviChannelWindow * pChannel, const char * name)
-    : QWidget(par)
+	: QWidget(par)
 {
 	setObjectName(name);
 	m_pKviChannelWindow = pChannel;
@@ -240,12 +240,12 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 				if(curBack > 16)
 				{
 					p->fillRect(curX, rect.y() + 2, wdth, rect.height() - 4,
-					    cg.text());
+						cg.text());
 				}
 				else
 				{
 					p->fillRect(curX, rect.y() + 2, wdth, rect.height() - 4,
-					    KVI_OPTION_MIRCCOLOR(curBack));
+						KVI_OPTION_MIRCCOLOR(curBack));
 				}
 			}
 
@@ -271,77 +271,77 @@ void KviTopicWidget::paintColoredText(QPainter * p, QString text, const QPalette
 
 		switch(c)
 		{
-			case KviControlCodes::Bold:
-				curBold = !curBold;
-				++idx;
-				break;
-			case KviControlCodes::Italic:
-				curItalic = !curItalic;
-				++idx;
-				break;
-			case KviControlCodes::Underline:
-				curUnderline = !curUnderline;
-				++idx;
-				break;
-			case KviControlCodes::Reverse:
+		case KviControlCodes::Bold:
+			curBold = !curBold;
+			++idx;
+			break;
+		case KviControlCodes::Italic:
+			curItalic = !curItalic;
+			++idx;
+			break;
+		case KviControlCodes::Underline:
+			curUnderline = !curUnderline;
+			++idx;
+			break;
+		case KviControlCodes::Reverse:
+		{
+			char auxBack = curBack;
+			curBack = curFore;
+			curFore = auxBack;
+		}
+		++idx;
+		break;
+		case KviControlCodes::Reset:
+			curFore = KVI_LABEL_DEF_FORE;
+			curBack = KVI_LABEL_DEF_BACK;
+			curBold = false;
+			curItalic = false;
+			curUnderline = false;
+			++idx;
+			break;
+		case KviControlCodes::Color:
+		{
+			++idx;
+			unsigned char fore;
+			unsigned char back;
+			idx = KviControlCodes::getUnicodeColorBytes(text, idx, &fore, &back);
+			if(fore != KviControlCodes::NoChange)
 			{
-				char auxBack = curBack;
-				curBack = curFore;
-				curFore = auxBack;
+				curFore = fore;
+				if(back != KviControlCodes::NoChange)
+					curBack = back;
 			}
-				++idx;
-				break;
-			case KviControlCodes::Reset:
-				curFore = KVI_LABEL_DEF_FORE;
+			else
+			{
+				// only a CTRL+K
 				curBack = KVI_LABEL_DEF_BACK;
-				curBold = false;
-				curItalic = false;
-				curUnderline = false;
-				++idx;
-				break;
-			case KviControlCodes::Color:
-			{
-				++idx;
-				unsigned char fore;
-				unsigned char back;
-				idx = KviControlCodes::getUnicodeColorBytes(text, idx, &fore, &back);
-				if(fore != KviControlCodes::NoChange)
-				{
-					curFore = fore;
-					if(back != KviControlCodes::NoChange)
-						curBack = back;
-				}
-				else
-				{
-					// only a CTRL+K
-					curBack = KVI_LABEL_DEF_BACK;
-					curFore = KVI_LABEL_DEF_FORE;
-				}
+				curFore = KVI_LABEL_DEF_FORE;
 			}
-			break;
-			case KviControlCodes::Icon:
+		}
+		break;
+		case KviControlCodes::Icon:
+		{
+			++idx;
+
+			unsigned int icoStart = idx;
+			while((idx < (unsigned int)text.length()) && (text[(int)idx].unicode() > 32))
+				idx++;
+
+			KviCString lookupString = text.mid(icoStart, idx - icoStart);
+
+			KviTextIcon * icon = g_pTextIconManager->lookupTextIcon(lookupString.ptr());
+			if(icon)
 			{
-				++idx;
-
-				unsigned int icoStart = idx;
-				while((idx < (unsigned int)text.length()) && (text[(int)idx].unicode() > 32))
-					idx++;
-
-				KviCString lookupString = text.mid(icoStart, idx - icoStart);
-
-				KviTextIcon * icon = g_pTextIconManager->lookupTextIcon(lookupString.ptr());
-				if(icon)
-				{
-					QPixmap * pigzmap = icon->pixmap();
-					p->drawPixmap(curX, (baseline + 2) - pigzmap->height(), *(pigzmap));
-					curX += pigzmap->width();
-				}
-				else
-				{
-					idx = icoStart;
-				}
+				QPixmap * pigzmap = icon->pixmap();
+				p->drawPixmap(curX, (baseline + 2) - pigzmap->height(), *(pigzmap));
+				curX += pigzmap->width();
 			}
-			break;
+			else
+			{
+				idx = icoStart;
+			}
+		}
+		break;
 		}
 	}
 }
@@ -527,7 +527,6 @@ void KviTopicWidget::switchMode()
 
 void KviTopicWidget::mousePressEvent(QMouseEvent * e)
 {
-
 	if(!(e->button() & Qt::RightButton))
 		return;
 	if(!m_pContextPopup)
@@ -564,52 +563,52 @@ bool KviTopicWidget::eventFilter(QObject * object, QEvent * e)
 	{
 		switch(e->type())
 		{
-			case QEvent::MouseButtonPress:
-				if(m_pCompletionBox->rect().contains(((QMouseEvent *)e)->pos()))
+		case QEvent::MouseButtonPress:
+			if(m_pCompletionBox->rect().contains(((QMouseEvent *)e)->pos()))
+			{
+				complete();
+				return true;
+			}
+			break;
+		case QEvent::MouseButtonRelease:
+			if(m_pCompletionBox->rect().contains(((QMouseEvent *)e)->pos()))
+			{
+				QMouseEvent tmp(QEvent::MouseButtonDblClick,
+					((QMouseEvent *)e)->pos(), ((QMouseEvent *)e)->button(), ((QMouseEvent *)e)->buttons(), ((QMouseEvent *)e)->modifiers());
+				// will hide popup
+				QApplication::sendEvent(object, &tmp);
+				return true;
+			}
+			else
+			{
+				if(m_pCompletionBox->isVisible())
+					popDownListBox();
+			}
+			break;
+		case QEvent::KeyPress:
+			switch(((QKeyEvent *)e)->key())
+			{
+			case Qt::Key_Up:
+			case Qt::Key_Down:
+				if(!(((QKeyEvent *)e)->modifiers() & Qt::AltModifier))
+					break;
+			case Qt::Key_F4:
+			case Qt::Key_Escape:
+				if(m_pCompletionBox->isVisible())
 				{
-					complete();
+					popDownListBox();
 					return true;
 				}
-				break;
-			case QEvent::MouseButtonRelease:
-				if(m_pCompletionBox->rect().contains(((QMouseEvent *)e)->pos()))
-				{
-					QMouseEvent tmp(QEvent::MouseButtonDblClick,
-					    ((QMouseEvent *)e)->pos(), ((QMouseEvent *)e)->button(), ((QMouseEvent *)e)->buttons(), ((QMouseEvent *)e)->modifiers());
-					// will hide popup
-					QApplication::sendEvent(object, &tmp);
-					return true;
-				}
-				else
-				{
-					if(m_pCompletionBox->isVisible())
-						popDownListBox();
-				}
-				break;
-			case QEvent::KeyPress:
-				switch(((QKeyEvent *)e)->key())
-				{
-					case Qt::Key_Up:
-					case Qt::Key_Down:
-						if(!(((QKeyEvent *)e)->modifiers() & Qt::AltModifier))
-							break;
-					case Qt::Key_F4:
-					case Qt::Key_Escape:
-						if(m_pCompletionBox->isVisible())
-						{
-							popDownListBox();
-							return true;
-						}
-						break;
-					default:
-						break;
-				}
-				break;
-			case QEvent::Hide:
-				popDownListBox();
 				break;
 			default:
 				break;
+			}
+			break;
+		case QEvent::Hide:
+			popDownListBox();
+			break;
+		default:
+			break;
 		}
 	}
 	return QWidget::eventFilter(object, e);
@@ -721,29 +720,29 @@ QChar KviTopicWidget::getSubstituteChar(unsigned short control_code)
 {
 	switch(control_code)
 	{
-		case KviControlCodes::Color:
-			return QChar('K');
-			break;
-		case KviControlCodes::Bold:
-			return QChar('B');
-			break;
-		case KviControlCodes::Italic:
-			return QChar('I');
-			break;
-		case KviControlCodes::Reset:
-			return QChar('O');
-			break;
-		case KviControlCodes::Reverse:
-			return QChar('R');
-			break;
-		case KviControlCodes::Underline:
-			return QChar('U');
-			break;
-		case KviControlCodes::Icon:
-			return QChar('E');
-			break;
-		default:
-			return QChar(control_code);
-			break;
+	case KviControlCodes::Color:
+		return QChar('K');
+		break;
+	case KviControlCodes::Bold:
+		return QChar('B');
+		break;
+	case KviControlCodes::Italic:
+		return QChar('I');
+		break;
+	case KviControlCodes::Reset:
+		return QChar('O');
+		break;
+	case KviControlCodes::Reverse:
+		return QChar('R');
+		break;
+	case KviControlCodes::Underline:
+		return QChar('U');
+		break;
+	case KviControlCodes::Icon:
+		return QChar('E');
+		break;
+	default:
+		return QChar(control_code);
+		break;
 	}
 }

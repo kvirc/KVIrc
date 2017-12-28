@@ -63,7 +63,7 @@ public:
 protected:
 	virtual void showEvent(QShowEvent * e);
 	virtual void closeEvent(QCloseEvent * e);
-protected slots:
+	protected slots:
 	void closeClicked();
 	void newToolBar();
 	void deleteToolBar();
@@ -97,7 +97,7 @@ public:
 	const QString & id() { return m_szId; };
 	const QString & label() { return m_szLabel; };
 	const QString & iconId() { return m_szIconId; };
-protected slots:
+	protected slots:
 	void okClicked();
 	void advancedClicked();
 	void iconButtonClicked();
@@ -122,9 +122,9 @@ protected:
 protected:
 	virtual void dragEnterEvent(QDragEnterEvent * e);
 	virtual void dropEvent(QDropEvent * e);
-public slots:
+	public slots:
 	void flash();
-protected slots:
+	protected slots:
 	void heartbeat();
 };
 

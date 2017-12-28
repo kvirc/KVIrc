@@ -98,11 +98,11 @@ static bool spaste_kvs_cmd_file(KviKvsModuleCommandCall * c)
 {
 	QString szFile, szWindow;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("file name", KVS_PT_STRING, 0, szFile)
-	KVSM_PARAMETER("window", KVS_PT_STRING, KVS_PF_OPTIONAL, szWindow)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("file name", KVS_PT_STRING, 0, szFile)
+		KVSM_PARAMETER("window", KVS_PT_STRING, KVS_PF_OPTIONAL, szWindow)
+		KVSM_PARAMETERS_END(c)
 
-	KviWindow * window = spaste_kvs_find_window(szWindow, c);
+		KviWindow * window = spaste_kvs_find_window(szWindow, c);
 	if(!window)
 		return false;
 
@@ -161,9 +161,9 @@ static bool spaste_kvs_cmd_clipboard(KviKvsModuleCommandCall * c)
 {
 	QString szWindow;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("window", KVS_PT_STRING, KVS_PF_OPTIONAL, szWindow)
-	KVSM_PARAMETERS_END(c)
-	KviWindow * window = spaste_kvs_find_window(szWindow, c);
+		KVSM_PARAMETER("window", KVS_PT_STRING, KVS_PF_OPTIONAL, szWindow)
+		KVSM_PARAMETERS_END(c)
+		KviWindow * window = spaste_kvs_find_window(szWindow, c);
 	if(!window)
 		return false;
 
@@ -209,15 +209,15 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 {
 	kvs_uint_t iId = 0;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("delay", KVS_PT_UNSIGNEDINTEGER, KVS_PF_OPTIONAL, iId)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("delay", KVS_PT_UNSIGNEDINTEGER, KVS_PF_OPTIONAL, iId)
+		KVSM_PARAMETERS_END(c)
 
-	if(c->hasSwitch('a', "all")) //Delete all spaste's
-	{
-		while(g_pControllerList->first())
-			delete g_pControllerList->first();
-		return true;
-	}
+		if(c->hasSwitch('a', "all")) //Delete all spaste's
+		{
+			while(g_pControllerList->first())
+				delete g_pControllerList->first();
+			return true;
+		}
 
 	KviPointerListIterator<SlowPasteController> it(*g_pControllerList);
 	SlowPasteController * item;
@@ -310,9 +310,9 @@ static bool spaste_kvs_cmd_setdelay(KviKvsModuleCommandCall * c)
 {
 	kvs_int_t delay;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("delay", KVS_PT_INTEGER, 0, delay)
-	KVSM_PARAMETERS_END(c)
-	KVI_OPTION_UINT(KviOption_uintPasteDelay) = delay;
+		KVSM_PARAMETER("delay", KVS_PT_INTEGER, 0, delay)
+		KVSM_PARAMETERS_END(c)
+		KVI_OPTION_UINT(KviOption_uintPasteDelay) = delay;
 	return true;
 }
 
@@ -345,12 +345,12 @@ static bool spaste_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "SPaste",                                     // module name
-    "4.0.0",                                      // module version
-    "(C) 2002 Juanjo Alvarez (juanjux@yahoo.es)", // author & (C)
-    "Delayed paste commands",
-    spaste_module_init,
-    spaste_module_can_unload,
-    0,
-    spaste_module_cleanup,
-    0)
+	"SPaste",                                     // module name
+	"4.0.0",                                      // module version
+	"(C) 2002 Juanjo Alvarez (juanjux@yahoo.es)", // author & (C)
+	"Delayed paste commands",
+	spaste_module_init,
+	spaste_module_can_unload,
+	0,
+	spaste_module_cleanup,
+	0)

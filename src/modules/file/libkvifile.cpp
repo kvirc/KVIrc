@@ -96,12 +96,12 @@ static bool file_kvs_cmd_copy(KviKvsModuleCommandCall * c)
 {
 	QString szSrc, szDst;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("source", KVS_PT_NONEMPTYSTRING, 0, szSrc)
-	KVSM_PARAMETER("destination", KVS_PT_NONEMPTYSTRING, 0, szDst)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("source", KVS_PT_NONEMPTYSTRING, 0, szSrc)
+		KVSM_PARAMETER("destination", KVS_PT_NONEMPTYSTRING, 0, szDst)
+		KVSM_PARAMETERS_END(c)
 
-	if(szSrc.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szSrc);
+		if(szSrc.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szSrc);
 	if(szDst.left(2) != "\\\\")
 		KviFileUtils::adjustFilePath(szDst);
 	if(KviFileUtils::fileExists(szDst) && !c->switches()->find('o', "overwrite"))
@@ -139,17 +139,17 @@ static bool file_kvs_cmd_addimagepath(KviKvsModuleCommandCall * c)
 {
 	QString szDst;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("path", KVS_PT_NONEMPTYSTRING, 0, szDst)
-	KVSM_PARAMETERS_END(c)
-	if(szDst.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szDst);
+		KVSM_PARAMETER("path", KVS_PT_NONEMPTYSTRING, 0, szDst)
+		KVSM_PARAMETERS_END(c)
+		if(szDst.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szDst);
 
 	//QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).find(szDst);
 	int iIndex = KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).indexOf(szDst);
 	//if(it == KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).end())
 	if(iIndex == -1)
 		KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths)
-		    .append(szDst);
+		.append(szDst);
 	return true;
 }
 
@@ -174,17 +174,17 @@ static bool file_kvs_cmd_delimagepath(KviKvsModuleCommandCall * c)
 {
 	QString szDst;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("path", KVS_PT_NONEMPTYSTRING, 0, szDst)
-	KVSM_PARAMETERS_END(c)
-	if(szDst.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szDst);
+		KVSM_PARAMETER("path", KVS_PT_NONEMPTYSTRING, 0, szDst)
+		KVSM_PARAMETERS_END(c)
+		if(szDst.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szDst);
 
 	//QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).find(szDst);
 	int iIndex = KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).indexOf(szDst);
 	//if(it == KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths).end())
 	if(iIndex != -1)
 		KVI_OPTION_STRINGLIST(KviOption_stringlistImageSearchPaths)
-		    .removeAt(iIndex);
+		.removeAt(iIndex);
 	return true;
 }
 
@@ -224,11 +224,11 @@ static bool file_kvs_cmd_write(KviKvsModuleCommandCall * c)
 {
 	QString szFileName, szData;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSM_PARAMETER("data", KVS_PT_NONEMPTYSTRING, 0, szData)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szFileName);
+		KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSM_PARAMETER("data", KVS_PT_NONEMPTYSTRING, 0, szData)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szFileName);
 	bool bRet;
 	if(c->switches()->find('l', "local-8-bit"))
 		bRet = KviFileUtils::writeFileLocal8Bit(szFileName, szData, c->switches()->find('a', "append"));
@@ -280,12 +280,12 @@ static bool file_kvs_cmd_writeBytes(KviKvsModuleCommandCall * c)
 	KviKvsArray * pArray = nullptr;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSM_PARAMETER("dataArray", KVS_PT_ARRAY, 0, pArray)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSM_PARAMETER("dataArray", KVS_PT_ARRAY, 0, pArray)
+		KVSM_PARAMETERS_END(c)
 
-	if(szFileName.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szFileName);
+		if(szFileName.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szFileName);
 
 	if(!pArray)
 		return c->error(__tr2qs("Missing data array"));
@@ -349,12 +349,12 @@ static bool file_kvs_cmd_rename(KviKvsModuleCommandCall * c)
 {
 	QString szOld, szNew;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("oldname", KVS_PT_NONEMPTYSTRING, 0, szOld)
-	KVSM_PARAMETER("newname", KVS_PT_NONEMPTYSTRING, 0, szNew)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("oldname", KVS_PT_NONEMPTYSTRING, 0, szOld)
+		KVSM_PARAMETER("newname", KVS_PT_NONEMPTYSTRING, 0, szNew)
+		KVSM_PARAMETERS_END(c)
 
-	if(szOld.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szOld);
+		if(szOld.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szOld);
 	if(szNew.left(2) != "\\\\")
 		KviFileUtils::adjustFilePath(szNew);
 
@@ -396,10 +396,10 @@ static bool file_kvs_cmd_mkdir(KviKvsModuleCommandCall * c)
 {
 	QString szDir;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("directory", KVS_PT_NONEMPTYSTRING, 0, szDir)
-	KVSM_PARAMETERS_END(c)
-	if(szDir.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szDir);
+		KVSM_PARAMETER("directory", KVS_PT_NONEMPTYSTRING, 0, szDir)
+		KVSM_PARAMETERS_END(c)
+		if(szDir.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szDir);
 	if(!KviFileUtils::makeDir(szDir))
 	{
 		if(!c->switches()->find('q', "quiet"))
@@ -436,10 +436,10 @@ static bool file_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 {
 	QString szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szFileName);
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szFileName);
 	if(!KviFileUtils::removeFile(szFileName))
 	{
 		if(!c->switches()->find('q', "quiet"))
@@ -477,10 +477,10 @@ static bool file_kvs_cmd_rmdir(KviKvsModuleCommandCall * c)
 {
 	QString szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szFileName);
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szFileName);
 	if(!KviFileUtils::removeDir(szFileName))
 	{
 		if(!c->switches()->find('q', "quiet"))
@@ -515,10 +515,10 @@ static bool file_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 {
 	QString szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_STRING, 0, szFileName)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szFileName);
+		KVSM_PARAMETER("filename", KVS_PT_STRING, 0, szFileName)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szFileName);
 	QFileInfo f(szFileName);
 	c->returnValue()->setBoolean(f.exists());
 	return true;
@@ -544,10 +544,10 @@ static bool file_kvs_fnc_type(KviKvsModuleFunctionCall * c)
 {
 	QString szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szFileName);
+		KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szFileName);
 	QFileInfo f(szFileName);
 	if(f.isFile())
 		c->returnValue()->setString("f");
@@ -578,10 +578,10 @@ static bool file_kvs_fnc_size(KviKvsModuleFunctionCall * c)
 {
 	QString szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szFileName);
+		KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szFileName);
 	QFileInfo f(szFileName);
 	c->returnValue()->setInteger(f.size());
 	return true;
@@ -606,10 +606,10 @@ static bool file_kvs_fnc_allSizes(KviKvsModuleFunctionCall * c)
 {
 	QString szDir;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("directory", KVS_PT_NONEMPTYSTRING, 0, szDir)
-	KVSM_PARAMETERS_END(c)
-	if(szDir.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szDir);
+		KVSM_PARAMETER("directory", KVS_PT_NONEMPTYSTRING, 0, szDir)
+		KVSM_PARAMETERS_END(c)
+		if(szDir.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szDir);
 
 	QDir d(szDir);
 	if(!d.exists())
@@ -668,9 +668,9 @@ static bool file_kvs_fnc_fixpath(KviKvsModuleFunctionCall * c)
 {
 	QString szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_STRING, 0, szFileName)
-	KVSM_PARAMETERS_END(c)
-	KviFileUtils::adjustFilePath(szFileName);
+		KVSM_PARAMETER("filename", KVS_PT_STRING, 0, szFileName)
+		KVSM_PARAMETERS_END(c)
+		KviFileUtils::adjustFilePath(szFileName);
 	c->returnValue()->setString(szFileName);
 	return true;
 }
@@ -746,13 +746,13 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 {
 	QString szDir, szFlags, szFilter;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("directory", KVS_PT_NONEMPTYSTRING, 0, szDir)
-	KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
-	KVSM_PARAMETER("filter", KVS_PT_STRING, KVS_PF_OPTIONAL, szFilter)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("directory", KVS_PT_NONEMPTYSTRING, 0, szDir)
+		KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
+		KVSM_PARAMETER("filter", KVS_PT_STRING, KVS_PF_OPTIONAL, szFilter)
+		KVSM_PARAMETERS_END(c)
 
-	if(szDir.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szDir);
+		if(szDir.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szDir);
 
 	QDir d(szDir);
 	if(!d.exists())
@@ -863,12 +863,12 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 	kvs_uint_t uSize;
 	QString szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSM_PARAMETER("size", KVS_PT_UINT, KVS_PF_OPTIONAL, uSize)
-	KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szFileName);
+		KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSM_PARAMETER("size", KVS_PT_UINT, KVS_PF_OPTIONAL, uSize)
+		KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szFileName);
 
 	QFile f(szFileName);
 	if(!f.open(QIODevice::ReadOnly))
@@ -953,11 +953,11 @@ static bool file_kvs_fnc_readBytes(KviKvsModuleFunctionCall * c)
 	kvs_uint_t uSize;
 	QString szFlags;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSM_PARAMETER("size", KVS_PT_UINT, KVS_PF_OPTIONAL, uSize)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szFileName);
+		KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSM_PARAMETER("size", KVS_PT_UINT, KVS_PF_OPTIONAL, uSize)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szFileName);
 
 	QFile f(szFileName);
 	if(!f.open(QIODevice::ReadOnly))
@@ -1052,13 +1052,13 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 	kvs_int_t iStartLine;
 	kvs_int_t iCount;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSM_PARAMETER("startline", KVS_PT_INT, KVS_PF_OPTIONAL, iStartLine)
-	KVSM_PARAMETER("count", KVS_PT_INT, KVS_PF_OPTIONAL, iCount)
-	KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szFileName);
+		KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSM_PARAMETER("startline", KVS_PT_INT, KVS_PF_OPTIONAL, iStartLine)
+		KVSM_PARAMETER("count", KVS_PT_INT, KVS_PF_OPTIONAL, iCount)
+		KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szFileName);
 
 	QFile f(szFileName);
 
@@ -1162,12 +1162,12 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 	QString szFileName, szFlags;
 	KviKvsArrayCast a;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSM_PARAMETER("lines", KVS_PT_ARRAYCAST, 0, a)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSM_PARAMETER("lines", KVS_PT_ARRAYCAST, 0, a)
+		KVSM_PARAMETERS_END(c)
 
-	if(szFileName.left(2) != "\\\\")
-		KviFileUtils::adjustFilePath(szFileName);
+		if(szFileName.left(2) != "\\\\")
+			KviFileUtils::adjustFilePath(szFileName);
 
 	KviFile f(szFileName);
 
@@ -1241,10 +1241,10 @@ static bool file_kvs_fnc_localdir(KviKvsModuleFunctionCall * c)
 {
 	QString szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("relative_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.isEmpty())
-		szFileName.append(KVI_PATH_SEPARATOR_CHAR);
+		KVSM_PARAMETER("relative_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.isEmpty())
+			szFileName.append(KVI_PATH_SEPARATOR_CHAR);
 	QString szPath;
 	g_pApp->getLocalKvircDirectory(szPath, KviApplication::None, szFileName);
 	KviFileUtils::adjustFilePath(szPath);
@@ -1274,10 +1274,10 @@ static bool file_kvs_fnc_homedir(KviKvsModuleFunctionCall * c)
 {
 	QString szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("relative_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.isEmpty())
-		szFileName.append(KVI_PATH_SEPARATOR_CHAR);
+		KVSM_PARAMETER("relative_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.isEmpty())
+			szFileName.append(KVI_PATH_SEPARATOR_CHAR);
 	QString szPath = QDir::homePath();
 	KviQString::ensureLastCharIs(szPath, KVI_PATH_SEPARATOR_CHAR);
 	szPath.append(szFileName);
@@ -1309,10 +1309,10 @@ static bool file_kvs_fnc_rootdir(KviKvsModuleFunctionCall * c)
 {
 	QString szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("relative_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.isEmpty())
-		szFileName.append(KVI_PATH_SEPARATOR_CHAR);
+		KVSM_PARAMETER("relative_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.isEmpty())
+			szFileName.append(KVI_PATH_SEPARATOR_CHAR);
 	QString szPath = QDir::rootPath();
 	KviQString::ensureLastCharIs(szPath, KVI_PATH_SEPARATOR_CHAR);
 	szPath.append(szFileName);
@@ -1343,10 +1343,10 @@ static bool file_kvs_fnc_cwd(KviKvsModuleFunctionCall * c)
 {
 	QString szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("relative_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.isEmpty())
-		szFileName.append(KVI_PATH_SEPARATOR_CHAR);
+		KVSM_PARAMETER("relative_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.isEmpty())
+			szFileName.append(KVI_PATH_SEPARATOR_CHAR);
 	QString szPath = QDir::currentPath();
 	KviQString::ensureLastCharIs(szPath, KVI_PATH_SEPARATOR_CHAR);
 	szPath.append(szFileName);
@@ -1386,10 +1386,10 @@ static bool file_kvs_fnc_globaldir(KviKvsModuleFunctionCall * c)
 {
 	QString szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("relative_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
-	KVSM_PARAMETERS_END(c)
-	if(szFileName.isEmpty())
-		szFileName.append(KVI_PATH_SEPARATOR_CHAR);
+		KVSM_PARAMETER("relative_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
+		KVSM_PARAMETERS_END(c)
+		if(szFileName.isEmpty())
+			szFileName.append(KVI_PATH_SEPARATOR_CHAR);
 	QString szPath;
 	g_pApp->getGlobalKvircDirectory(szPath, KviApplication::None, szFileName);
 	KviFileUtils::adjustFilePath(szPath);
@@ -1421,9 +1421,9 @@ static bool file_kvs_fnc_extractpath(KviKvsModuleFunctionCall * c)
 {
 	QString szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filepath", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setString(QFileInfo(szFileName).absolutePath());
+		KVSM_PARAMETER("filepath", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setString(QFileInfo(szFileName).absolutePath());
 	return true;
 }
 
@@ -1450,9 +1450,9 @@ static bool file_kvs_fnc_extractfilename(KviKvsModuleFunctionCall * c)
 {
 	QString szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filepath", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSM_PARAMETERS_END(c)
-	KviFileUtils::extractFileName(szFileName);
+		KVSM_PARAMETER("filepath", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSM_PARAMETERS_END(c)
+		KviFileUtils::extractFileName(szFileName);
 	KviQString::cutToLast(szFileName, KVI_PATH_SEPARATOR_CHAR);
 	c->returnValue()->setString(szFileName);
 	return true;
@@ -1479,17 +1479,17 @@ static bool file_kvs_fnc_diskSpace(KviKvsModuleFunctionCall * c)
 {
 	QString szPath;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("dir_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szPath)
-	KVSM_PARAMETERS_END(c)
-	if(szPath.isEmpty())
-		szPath = ".";
+		KVSM_PARAMETER("dir_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szPath)
+		KVSM_PARAMETERS_END(c)
+		if(szPath.isEmpty())
+			szPath = ".";
 
 	long long int fTotal;
 	long long int fFree;
-// this for win
+	// this for win
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	ULARGE_INTEGER free, total;
-	if (GetDiskFreeSpaceEx(szPath.toStdWString().c_str(), NULL, &total, &free) == 0) {
+	if(GetDiskFreeSpaceEx(szPath.toStdWString().c_str(), NULL, &total, &free) == 0) {
 		c->warning(__tr2qs("An error occurred retrieving the amount of free space in '%Q'"), &szPath);
 		return true;
 	}
@@ -1499,7 +1499,7 @@ static bool file_kvs_fnc_diskSpace(KviKvsModuleFunctionCall * c)
 	// this one for linux and macos
 	auto pcPath = szPath.toUtf8();
 	struct statvfs stFileSystem;
-	if (statvfs(pcPath.data(), &stFileSystem) == -1) {
+	if(statvfs(pcPath.data(), &stFileSystem) == -1) {
 		c->warning(__tr2qs("An error occurred retrieving the amount of free space in '%Q'"), &szPath);
 		return true;
 	}
@@ -1535,11 +1535,11 @@ static bool file_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	QString szFile, szAlgo, szResult;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("data", KVS_PT_NONEMPTYSTRING, 0, szFile)
-	KVSM_PARAMETER("algorithm", KVS_PT_STRING, KVS_PF_OPTIONAL, szAlgo)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("data", KVS_PT_NONEMPTYSTRING, 0, szFile)
+		KVSM_PARAMETER("algorithm", KVS_PT_STRING, KVS_PF_OPTIONAL, szAlgo)
+		KVSM_PARAMETERS_END(c)
 
-	KviFileUtils::adjustFilePath(szFile);
+		KviFileUtils::adjustFilePath(szFile);
 
 	QFile file(szFile);
 	if(!file.open(QIODevice::ReadOnly))
@@ -1647,11 +1647,11 @@ static bool file_kvs_fnc_time(KviKvsModuleFunctionCall * c)
 	QString szFileName, szType;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_STRING, 0, szFileName)
-	KVSM_PARAMETER("type", KVS_PT_STRING, KVS_PF_OPTIONAL, szType)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("filename", KVS_PT_STRING, 0, szFileName)
+		KVSM_PARAMETER("type", KVS_PT_STRING, KVS_PF_OPTIONAL, szType)
+		KVSM_PARAMETERS_END(c)
 
-	KviFileUtils::adjustFilePath(szFileName);
+		KviFileUtils::adjustFilePath(szFileName);
 	QFileInfo f(szFileName);
 
 	QDateTime time;
@@ -1726,14 +1726,14 @@ static bool file_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "File",  // module name
-    "4.0.0", // module version
-    "Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)"
-    "          (C) 2010 Elvio Basello (hell at hellvis69 dot netsons dot org)"
-    "          (C) 2012 Elvio Basello (hellvis69 at gmail dot com)", // author & (C)
-    "Interface to the file system",
-    file_module_init,
-    0,
-    0,
-    file_module_cleanup,
-    0)
+	"File",  // module name
+	"4.0.0", // module version
+	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)"
+	"          (C) 2010 Elvio Basello (hell at hellvis69 dot netsons dot org)"
+	"          (C) 2012 Elvio Basello (hellvis69 at gmail dot com)", // author & (C)
+	"Interface to the file system",
+	file_module_init,
+	0,
+	0,
+	file_module_cleanup,
+	0)

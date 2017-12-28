@@ -61,7 +61,7 @@ public:
 };
 
 KviPackageWriter::KviPackageWriter()
-    : KviPackageIOEngine()
+	: KviPackageIOEngine()
 {
 	m_p = new KviPackageWriterPrivate();
 	m_p->pDataFields = new KviPointerList<KviPackageWriterDataField>();
@@ -175,10 +175,10 @@ bool KviPackageWriter::packFile(KviFile * pFile, KviPackageWriterDataField * pDa
 
 	kvi_u32_t uSize = source.size();
 
-// Flags
+	// Flags
 #ifdef COMPILE_ZLIB_SUPPORT
 	kvi_u32_t uFlags = pDataField->m_bFileAllowCompression ? (uSize > 64 ? KVI_PACKAGE_DATAFIELD_FLAG_FILE_DEFLATE : 0)
-	                                                       : 0;
+		: 0;
 #else
 	kvi_u32_t uFlags = 0;
 #endif
@@ -309,7 +309,6 @@ bool KviPackageWriter::packFile(KviFile * pFile, KviPackageWriterDataField * pDa
 				zstr.next_out = obuffer;
 				zstr.avail_out = BUFFER_SIZE;
 			}
-
 		} while(ret == Z_OK);
 
 		// store the compressed data size
@@ -377,7 +376,6 @@ bool KviPackageWriter::pack(const QString & szFileName, kvi_u32_t uPackFlags)
 
 bool KviPackageWriter::packInternal(const QString & szFileName, kvi_u32_t)
 {
-
 	KviFile f(szFileName);
 	if(!f.open(QFile::WriteOnly | QFile::Truncate))
 	{
@@ -464,14 +462,14 @@ bool KviPackageWriter::packInternal(const QString & szFileName, kvi_u32_t)
 
 		switch(pDataField->m_uType)
 		{
-			case KVI_PACKAGE_DATAFIELD_TYPE_FILE:
-				if(!packFile(&f, pDataField))
-					return false;
-				break;
-			default:
-				setLastError(__tr2qs("Internal error"));
+		case KVI_PACKAGE_DATAFIELD_TYPE_FILE:
+			if(!packFile(&f, pDataField))
 				return false;
-				break;
+			break;
+		default:
+			setLastError(__tr2qs("Internal error"));
+			return false;
+			break;
 		}
 
 		kvi_file_offset_t savedEndOffset = f.pos();

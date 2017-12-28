@@ -141,7 +141,7 @@ signals:
 class KviKvsWidget : public QWidget
 {
 	Q_OBJECT
-	Q_PROPERTY(QSize sizeHint READ sizeHint)
+		Q_PROPERTY(QSize sizeHint READ sizeHint)
 public:
 	KviKvsWidget(KvsObject_widget * ob, QWidget * par);
 	virtual ~KviKvsWidget();

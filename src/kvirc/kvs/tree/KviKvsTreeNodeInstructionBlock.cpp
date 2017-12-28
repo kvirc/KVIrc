@@ -26,7 +26,7 @@
 #include "KviKvsRunTimeContext.h"
 
 KviKvsTreeNodeInstructionBlock::KviKvsTreeNodeInstructionBlock(const QChar * pLocation)
-    : KviKvsTreeNodeInstruction(pLocation)
+	: KviKvsTreeNodeInstruction(pLocation)
 {
 	m_pInstructionList = new KviPointerList<KviKvsTreeNodeInstruction>;
 	m_pInstructionList->setAutoDelete(true);

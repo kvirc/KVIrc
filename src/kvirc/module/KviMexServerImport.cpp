@@ -25,9 +25,9 @@
 #include "KviMexServerImport.h"
 
 KviMexServerImport::KviMexServerImport(KviModuleExtensionDescriptor * d)
-    : QObject(), KviModuleExtension(d)
+	: QObject(), KviModuleExtension(d)
 {
 }
 
 KviMexServerImport::~KviMexServerImport()
-    = default;
+= default;

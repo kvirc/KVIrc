@@ -43,7 +43,7 @@ protected:
 	bool setChecked(KviKvsObjectFunctionCall * c);
 	bool setImage(KviKvsObjectFunctionCall * c);
 	bool toggleEvent(KviKvsObjectFunctionCall * c);
-protected slots:
+	protected slots:
 	void toggled(bool b);
 };
 

@@ -107,7 +107,7 @@ static bool logview_module_ctrl(KviModule *, const char * pcOperation, void * pP
 	if(!pData)
 		return false;
 
-	LogFile log{pData->szName};
+	LogFile log{ pData->szName };
 	int iId = LogFile::PlainText;
 	if(pData->szType == QLatin1String("html"))
 		iId = LogFile::HTML;
@@ -118,13 +118,13 @@ static bool logview_module_ctrl(KviModule *, const char * pcOperation, void * pP
 }
 
 KVIRC_MODULE(
-    "KVIrc Log Viewer Widget",
-    "4.0.0",
-    "Copyright (C) 2000 Juanjo Alvarez <juanjux@yahoo.es>\n"
-    "	2011 Elvio Basello (hellvis69 at gmail dot com)",
-    "A structured log file viewer",
-    logview_module_init,
-    logview_module_can_unload,
-    logview_module_ctrl,
-    logview_module_cleanup,
-    "logview")
+	"KVIrc Log Viewer Widget",
+	"4.0.0",
+	"Copyright (C) 2000 Juanjo Alvarez <juanjux@yahoo.es>\n"
+	"	2011 Elvio Basello (hellvis69 at gmail dot com)",
+	"A structured log file viewer",
+	logview_module_init,
+	logview_module_can_unload,
+	logview_module_ctrl,
+	logview_module_cleanup,
+	"logview")

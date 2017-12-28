@@ -58,7 +58,7 @@ public:
 	bool readyReadStdoutEvent(KviKvsObjectFunctionCall * c);
 	bool readyReadStderrEvent(KviKvsObjectFunctionCall * c);
 
-protected slots:
+	protected slots:
 	void slotReadStdout();
 	void slotReadStderr();
 };

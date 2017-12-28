@@ -273,16 +273,16 @@ bool KviKvsScript::parse(KviWindow * pOutput, int iRunFlags)
 
 	switch(m_pData->m_eType)
 	{
-		case Expression:
-			m_pData->m_pTree = p.parseAsExpression(m_pData->m_pBuffer, iFlags);
-			break;
-		case Parameter:
-			m_pData->m_pTree = p.parseAsParameter(m_pData->m_pBuffer, iFlags);
-			break;
-		case InstructionList:
-		default:
-			m_pData->m_pTree = p.parse(m_pData->m_pBuffer, iFlags);
-			break;
+	case Expression:
+		m_pData->m_pTree = p.parseAsExpression(m_pData->m_pBuffer, iFlags);
+		break;
+	case Parameter:
+		m_pData->m_pTree = p.parseAsParameter(m_pData->m_pBuffer, iFlags);
+		break;
+	case InstructionList:
+	default:
+		m_pData->m_pTree = p.parse(m_pData->m_pBuffer, iFlags);
+		break;
 	}
 
 	//qDebug("\n\nDUMPING SCRIPT");

@@ -53,7 +53,7 @@ protected:
 	KviStringSelector * m_pMailtoHandler;
 	KviStringSelector * m_pFileHandler;
 	KviStringSelector * m_pOtherHandler;
-public slots:
+	public slots:
 	void toggleEditors(bool);
 };
 

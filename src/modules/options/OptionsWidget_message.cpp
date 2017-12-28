@@ -50,15 +50,15 @@ extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
 OptionsWidget_message::OptionsWidget_message(QWidget * pParent)
-    : KviOptionsWidget(pParent)
+	: KviOptionsWidget(pParent)
 {
 }
 
 OptionsWidget_message::~OptionsWidget_message()
-    = default;
+= default;
 
 OptionsWidget_privmsg::OptionsWidget_privmsg(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("privmsg_options_widget");
 	createLayout();
@@ -101,23 +101,23 @@ OptionsWidget_privmsg::OptionsWidget_privmsg(QWidget * parent)
 
 	l->setEnabled(KVI_OPTION_BOOL(KviOption_boolUseExtendedPrivmsgView));
 	connect(b,
-	    SIGNAL(toggled(bool)),
-	    l,
-	    SLOT(setEnabled(bool)));
+		SIGNAL(toggled(bool)),
+		l,
+		SLOT(setEnabled(bool)));
 
 	KviTalVBox * vb = new KviTalVBox(g);
 	vb->setSpacing(5);
 
 	connect(
-	    b,
-	    SIGNAL(toggled(bool)),
-	    addStringSelector(vb, __tr2qs_ctx("Prefix:", "options"), KviOption_stringExtendedPrivmsgPrefix, KVI_OPTION_BOOL(KviOption_boolUseExtendedPrivmsgView)),
-	    SLOT(setEnabled(bool)));
+		b,
+		SIGNAL(toggled(bool)),
+		addStringSelector(vb, __tr2qs_ctx("Prefix:", "options"), KviOption_stringExtendedPrivmsgPrefix, KVI_OPTION_BOOL(KviOption_boolUseExtendedPrivmsgView)),
+		SLOT(setEnabled(bool)));
 	connect(
-	    b,
-	    SIGNAL(toggled(bool)),
-	    addStringSelector(vb, __tr2qs_ctx("Postfix:", "options"), KviOption_stringExtendedPrivmsgPostfix, KVI_OPTION_BOOL(KviOption_boolUseExtendedPrivmsgView)),
-	    SLOT(setEnabled(bool)));
+		b,
+		SIGNAL(toggled(bool)),
+		addStringSelector(vb, __tr2qs_ctx("Postfix:", "options"), KviOption_stringExtendedPrivmsgPostfix, KVI_OPTION_BOOL(KviOption_boolUseExtendedPrivmsgView)),
+		SLOT(setEnabled(bool)));
 	addRowSpacer(0, 3, 0, 3);
 }
 
@@ -127,10 +127,10 @@ void OptionsWidget_privmsg::enableDisableSmartColorSelector(bool)
 }
 
 OptionsWidget_privmsg::~OptionsWidget_privmsg()
-    = default;
+= default;
 
 OptionsWidget_timestamp::OptionsWidget_timestamp(QWidget * pParent)
-    : KviOptionsWidget(pParent)
+	: KviOptionsWidget(pParent)
 {
 	createLayout();
 	m_pUseTimestampSelector = addBoolSelector(0, 0, 0, 0, __tr2qs_ctx("Show timestamp", "options"), KviOption_boolIrcViewTimestamp);
@@ -157,7 +157,7 @@ OptionsWidget_timestamp::OptionsWidget_timestamp(QWidget * pParent)
 }
 
 OptionsWidget_timestamp::~OptionsWidget_timestamp()
-    = default;
+= default;
 
 void OptionsWidget_timestamp::enableDisableTimestampSelector(bool)
 {
@@ -165,7 +165,7 @@ void OptionsWidget_timestamp::enableDisableTimestampSelector(bool)
 }
 
 OptionsWidget_standardColors::OptionsWidget_standardColors(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("stdcolors");
 	createLayout();
@@ -174,11 +174,11 @@ OptionsWidget_standardColors::OptionsWidget_standardColors(QWidget * parent)
 		m_pColorSelector[i] = addColorSelector(i % 4, i / 4, i % 4, i / 4, QString("%1:").arg(i), &(KVI_OPTION_MIRCCOLOR(i)));
 
 	QLabel * l = addLabel(0, 4, 3, 4, __tr2qs_ctx(
-	                                      "Please note that this is a set of standard IRC colors. "
-	                                      "You can adjust them a bit, make them darker or lighter but you "
-	                                      "shouldn't change their fundamental tint. "
-	                                      "Black should stay black, dark green should still remain a green darker than the light one.",
-	                                      "options"));
+		"Please note that this is a set of standard IRC colors. "
+		"You can adjust them a bit, make them darker or lighter but you "
+		"shouldn't change their fundamental tint. "
+		"Black should stay black, dark green should still remain a green darker than the light one.",
+		"options"));
 	l->setAlignment(Qt::AlignLeft);
 
 	addRowSpacer(0, 5, 3, 5);
@@ -191,7 +191,7 @@ OptionsWidget_standardColors::OptionsWidget_standardColors(QWidget * parent)
 }
 
 OptionsWidget_standardColors::~OptionsWidget_standardColors()
-    = default;
+= default;
 
 void OptionsWidget_standardColors::resetToDefaults()
 {
@@ -214,7 +214,7 @@ void OptionsWidget_standardColors::resetToDefaults()
 }
 
 MessageListWidgetItem::MessageListWidgetItem(MessageListWidget * l, int optId)
-    : KviTalListWidgetItem(l)
+	: KviTalListWidgetItem(l)
 {
 	m_iOptId = optId;
 	m_pMsgType = new KviMessageTypeSettings(KVI_OPTION_MSGTYPE(optId));
@@ -237,7 +237,6 @@ MessageListWidgetItem::~MessageListWidgetItem()
 
 void MessageListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const
 {
-
 	const KviTalListWidget * tb = (const KviTalListWidget *)parent();
 	MessageListWidgetItem * it = static_cast<MessageListWidgetItem *>(index.internalPointer());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -308,9 +307,8 @@ void MessageListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 }
 
 MessageColorListWidgetItem::MessageColorListWidgetItem(KviTalListWidget * b, int idx)
-    : KviTalListWidgetText(b, QString())
+	: KviTalListWidgetText(b, QString())
 {
-
 	m_iClrIdx = idx;
 	if((idx < 0) || (idx > 15))
 	{
@@ -325,11 +323,10 @@ MessageColorListWidgetItem::MessageColorListWidgetItem(KviTalListWidget * b, int
 }
 
 MessageColorListWidgetItem::~MessageColorListWidgetItem()
-    = default;
+= default;
 
 void MessageColorListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const
 {
-
 	if(opt.state & QStyle::State_Selected)
 	{
 		QColor clr;
@@ -363,7 +360,7 @@ void MessageColorListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionV
 }
 
 OptionsWidget_messageColors::OptionsWidget_messageColors(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("messages");
 
@@ -623,7 +620,6 @@ void OptionsWidget_messageColors::save()
 
 void OptionsWidget_messageColors::load()
 {
-
 	QString szName;
 	QString szInit;
 	g_pApp->getLocalKvircDirectory(szInit, KviApplication::MsgColors);
@@ -640,7 +636,7 @@ void OptionsWidget_messageColors::load()
 	int dummy; // make gcc happy
 	dummy = symlink(szGlobal.toLocal8Bit().data(), szLocal.toLocal8Bit().data());
 	Q_UNUSED(dummy);
-// FIXME: Do it also on windows...
+	// FIXME: Do it also on windows...
 #endif
 
 	if(KviFileDialog::askForOpenFileName(szName, __tr2qs_ctx("Select a File - KVIrc", "options"), szInit, QString(), false, true, this))

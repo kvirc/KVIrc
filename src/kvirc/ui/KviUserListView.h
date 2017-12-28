@@ -134,7 +134,7 @@ public:
 class KVIRC_API KviUserListEntry : public QObject
 {
 	Q_OBJECT
-	friend class KviUserListView;
+		friend class KviUserListView;
 	friend class KviUserListViewArea;
 public:
 	/**
@@ -214,7 +214,7 @@ protected:
 	*/
 	void recalcSize();
 
-private slots:
+	private slots:
 	void avatarFrameChanged();
 	void avatarDestroyed();
 };
@@ -805,7 +805,7 @@ protected:
 
 	virtual void resizeEvent(QResizeEvent * e);
 
-public slots:
+	public slots:
 	/**
 	* \brief Called when an animated avatar is updated (every frame)
 	* \return void
@@ -822,7 +822,7 @@ class KVIRC_API KviUserListViewArea : public QWidget
 	friend class KviUserListView;
 
 	Q_OBJECT
-	Q_PROPERTY(int TransparencyCapable READ dummyRead)
+		Q_PROPERTY(int TransparencyCapable READ dummyRead)
 public:
 	/**
 	* \brief Constructs the user listview area object
@@ -860,7 +860,7 @@ protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual void wheelEvent(QWheelEvent * e);
 	virtual void keyPressEvent(QKeyEvent * e);
-protected slots:
+	protected slots:
 
 	/**
 	* \brief Called when the scrollbar is moved

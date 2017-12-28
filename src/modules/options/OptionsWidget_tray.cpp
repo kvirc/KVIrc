@@ -33,7 +33,7 @@
 #include <QLayout>
 
 OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("tray_options_widget");
 	createLayout();
@@ -43,8 +43,8 @@ OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
 	m_pMinimizeInTray = addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Minimize in tray", "options"), KviOption_boolMinimizeInTray);
 #ifdef COMPILE_KDE_SUPPORT
 	QString szTip = __tr2qs_ctx("Take into account that if you're using KDE, this won't work if "
-	                            "you've set \"Keep window thumbnails\" as \"Always\" at \"Desktop Effects\" "
-	                            "advanced settings.", "options");
+		"you've set \"Keep window thumbnails\" as \"Always\" at \"Desktop Effects\" "
+		"advanced settings.", "options");
 
 	mergeTip(m_pMinimizeInTray, szTip);
 #endif
@@ -68,7 +68,7 @@ OptionsWidget_tray::OptionsWidget_tray(QWidget * parent)
 }
 
 OptionsWidget_tray::~OptionsWidget_tray()
-    = default;
+= default;
 
 void OptionsWidget_tray::setEnabled(bool)
 {

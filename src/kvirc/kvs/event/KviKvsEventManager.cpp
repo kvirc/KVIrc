@@ -461,40 +461,40 @@ bool KviKvsEventManager::triggerHandlers(KviPointerList<KviKvsEventHandler> * pH
 	{
 		switch(h->type())
 		{
-			case KviKvsEventHandler::Script:
+		case KviKvsEventHandler::Script:
+		{
+			if(((KviKvsScriptEventHandler *)h)->isEnabled())
 			{
-				if(((KviKvsScriptEventHandler *)h)->isEnabled())
-				{
-					KviKvsScript * s = ((KviKvsScriptEventHandler *)h)->script();
-					KviKvsScript copy(*s);
-					KviKvsVariant retVal;
-					int iRet = copy.run(pWnd, pParams, &retVal, KviKvsScript::PreserveParams);
-					if(!iRet)
-					{
-						// error! disable the handler if it's broken
-						if(KVI_OPTION_BOOL(KviOption_boolDisableBrokenEventHandlers))
-						{
-							((KviKvsScriptEventHandler *)h)->setEnabled(false);
-							pWnd->output(KVI_OUT_PARSERERROR, __tr2qs_ctx("Event handler %Q is broken: disabling", "kvs"), &(s->name()));
-							emit eventHandlerDisabled(s->name());
-						}
-					}
-					if(!bGotHalt)
-						bGotHalt = (iRet & KviKvsScript::HaltEncountered);
-				}
-			}
-			break;
-			case KviKvsEventHandler::Module:
-			{
-				KviModule * m = (KviModule *)((KviKvsModuleEventHandler *)h)->moduleInterface();
-				KviKvsModuleEventHandlerRoutine * proc = ((KviKvsModuleEventHandler *)h)->handlerRoutine();
+				KviKvsScript * s = ((KviKvsScriptEventHandler *)h)->script();
+				KviKvsScript copy(*s);
 				KviKvsVariant retVal;
-				KviKvsRunTimeContext ctx(nullptr, pWnd, pParams, &retVal);
-				KviKvsModuleEventCall call(m, &ctx, pParams);
-				if(!(*proc)(&call))
-					bGotHalt = true;
+				int iRet = copy.run(pWnd, pParams, &retVal, KviKvsScript::PreserveParams);
+				if(!iRet)
+				{
+					// error! disable the handler if it's broken
+					if(KVI_OPTION_BOOL(KviOption_boolDisableBrokenEventHandlers))
+					{
+						((KviKvsScriptEventHandler *)h)->setEnabled(false);
+						pWnd->output(KVI_OUT_PARSERERROR, __tr2qs_ctx("Event handler %Q is broken: disabling", "kvs"), &(s->name()));
+						emit eventHandlerDisabled(s->name());
+					}
+				}
+				if(!bGotHalt)
+					bGotHalt = (iRet & KviKvsScript::HaltEncountered);
 			}
-			break;
+		}
+		break;
+		case KviKvsEventHandler::Module:
+		{
+			KviModule * m = (KviModule *)((KviKvsModuleEventHandler *)h)->moduleInterface();
+			KviKvsModuleEventHandlerRoutine * proc = ((KviKvsModuleEventHandler *)h)->handlerRoutine();
+			KviKvsVariant retVal;
+			KviKvsRunTimeContext ctx(nullptr, pWnd, pParams, &retVal);
+			KviKvsModuleEventCall call(m, &ctx, pParams);
+			if(!(*proc)(&call))
+				bGotHalt = true;
+		}
+		break;
 		}
 	}
 	return bGotHalt;
@@ -643,6 +643,6 @@ void KviKvsEventManager::cleanHandlerName(QString & szHandlerName)
 {
 	static QRegExp re(KVI_KVS_EVENT_HANDLER_NAME_INVALID_CHARS_REG_EXP);
 	szHandlerName.replace(re, "");
-	if (szHandlerName.isEmpty())
+	if(szHandlerName.isEmpty())
 		szHandlerName = "unnamed";
 }

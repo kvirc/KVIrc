@@ -254,7 +254,7 @@ private:
 
 public:
 	KviSmartTextCodec(const char * szName, QTextCodec * pChildCodec, bool bSendInUtf8)
-	    : QTextCodec()
+		: QTextCodec()
 	{
 		Q_ASSERT(pChildCodec);
 

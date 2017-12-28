@@ -35,7 +35,7 @@
 #include "KviLocale.h"
 
 WebThemeInterfaceDialog::WebThemeInterfaceDialog(QWidget * par)
-    : KviWebPackageManagementDialog(par)
+	: KviWebPackageManagementDialog(par)
 {
 	setWindowTitle(__tr2qs_ctx("Download Themes - KVIrc", "theme"));
 
@@ -48,11 +48,11 @@ WebThemeInterfaceDialog::WebThemeInterfaceDialog(QWidget * par)
 	m_szGlobalThemesPath += KVI_PATH_SEPARATOR_CHAR;
 
 	setPackagePageUrl(
-	    QString::fromLatin1("http://www.kvirc.de/app/themes.php?version=" KVI_VERSION "&lang=%1")
-	        .arg(KviLocale::instance()->localeName()));
+		QString::fromLatin1("http://www.kvirc.de/app/themes.php?version=" KVI_VERSION "&lang=%1")
+		.arg(KviLocale::instance()->localeName()));
 }
 WebThemeInterfaceDialog::~WebThemeInterfaceDialog()
-    = default;
+= default;
 
 bool WebThemeInterfaceDialog::installPackage(const QString & szPath, QString & szError)
 {

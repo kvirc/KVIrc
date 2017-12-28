@@ -30,7 +30,7 @@
 #include <QLayout>
 
 OptionsWidget_away::OptionsWidget_away(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("away_options_widget");
 

@@ -47,10 +47,10 @@ class FileTransferWidget : public KviTalTableWidget
 {
 	friend class FileTransferItemDelegate;
 	Q_OBJECT
-	Q_PROPERTY(int TransparencyCapable READ dummyRead)
+		Q_PROPERTY(int TransparencyCapable READ dummyRead)
 public:
 	FileTransferWidget(QWidget * pParent);
-	~FileTransferWidget(){};
+	~FileTransferWidget() {};
 	void paintEvent(QPaintEvent * event);
 	int dummyRead() const { return 0; };
 protected:
@@ -82,15 +82,15 @@ class FileTransferItemDelegate : public KviTalIconAndRichTextItemDelegate
 	Q_OBJECT
 public:
 	FileTransferItemDelegate(QAbstractItemView * pWidget = 0)
-	    : KviTalIconAndRichTextItemDelegate(pWidget){};
-	~FileTransferItemDelegate(){};
+		: KviTalIconAndRichTextItemDelegate(pWidget) {};
+	~FileTransferItemDelegate() {};
 	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
 	void paint(QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
 };
 
 class FileTransferWindow : public KviWindow
 #if 0
-	,public KviModuleExtension
+	, public KviModuleExtension
 #endif
 {
 	friend class FileTransferItem;
@@ -99,9 +99,9 @@ class FileTransferWindow : public KviWindow
 public:
 	FileTransferWindow(
 #if 0
-			KviModuleExtensionDescriptor * d
+		KviModuleExtensionDescriptor * d
 #endif
-	    );
+	);
 	~FileTransferWindow();
 
 protected:
@@ -130,7 +130,7 @@ protected:
 public:
 	virtual QSize sizeHint() const;
 	int lineSpacing() { return m_iLineSpacing; };
-protected slots:
+	protected slots:
 	void transferRegistered(KviFileTransfer * t);
 	void transferUnregistering(KviFileTransfer * t);
 	void rightButtonPressed(FileTransferItem * it, const QPoint & pnt);

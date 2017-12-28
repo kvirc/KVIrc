@@ -63,7 +63,7 @@ protected:
 	KviBoolSelector * m_pUseWindowsFakeDesktopTransparencyBoolSelector;
 #endif
 #endif
-protected slots:
+	protected slots:
 	void enableGlobalBackgroundPixmapSelector(bool);
 };
 

@@ -99,7 +99,7 @@
 			[/comment]
 			%I=0
 			while (%I<100)
-				
+
 				%X=$rand(500)
 				%Y=$rand(480)
 				%Widget=$new(ws,%Workspace)
@@ -203,15 +203,15 @@ bool KvsObject_workspace::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 KVSO_CLASS_FUNCTION(workspace, addSubWindow)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
 
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	QMdiSubWindow * pMdi = ((QMdiArea *)object())->addSubWindow(((QWidget *)(pObject->object())));
+		QMdiSubWindow * pMdi = ((QMdiArea *)object())->addSubWindow(((QWidget *)(pObject->object())));
 	pWidgetDict->insert(hObject, pMdi);
 	((QMdiArea *)object())->setActiveSubWindow(pMdi);
 	return true;
@@ -219,15 +219,15 @@ KVSO_CLASS_FUNCTION(workspace, addSubWindow)
 KVSO_CLASS_FUNCTION(workspace, removeSubWindow)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
 
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	QMdiSubWindow * pMdiSubWindow = pWidgetDict->value(hObject);
+		QMdiSubWindow * pMdiSubWindow = pWidgetDict->value(hObject);
 	if(pMdiSubWindow)
 	{
 		((QMdiArea *)object())->removeSubWindow(pMdiSubWindow);
@@ -243,47 +243,47 @@ KVSO_CLASS_FUNCTION(workspace, removeSubWindow)
 KVSO_CLASS_FUNCTION(workspace, cascade)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QMdiArea *)widget())->cascadeSubWindows();
+		((QMdiArea *)widget())->cascadeSubWindows();
 	return true;
 }
 KVSO_CLASS_FUNCTION(workspace, tile)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QMdiArea *)widget())->tileSubWindows();
+		((QMdiArea *)widget())->tileSubWindows();
 	return true;
 }
 KVSO_CLASS_FUNCTION(workspace, closeActiveWindow)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QMdiArea *)widget())->closeActiveSubWindow();
+		((QMdiArea *)widget())->closeActiveSubWindow();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(workspace, closeAllWindows)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QMdiArea *)widget())->closeAllSubWindows();
+		((QMdiArea *)widget())->closeAllSubWindows();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(workspace, activateNextWindow)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QMdiArea *)widget())->activateNextSubWindow();
+		((QMdiArea *)widget())->activateNextSubWindow();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(workspace, activatePrevWindow)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QMdiArea *)widget())->activatePreviousSubWindow();
+		((QMdiArea *)widget())->activatePreviousSubWindow();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(workspace, activeWindow)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QMdiSubWindow * pActiveMdi = ((QMdiArea *)widget())->activeSubWindow();
+		QMdiSubWindow * pActiveMdi = ((QMdiArea *)widget())->activeSubWindow();
 	if(pActiveMdi)
 	{
 		QHashIterator<kvs_hobject_t, QMdiSubWindow *> t(*pWidgetDict);
@@ -307,7 +307,7 @@ KVSO_CLASS_FUNCTION(workspace, activeWindow)
 KVSO_CLASS_FUNCTION(workspace, scrollBarsEnabled)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	if(((QMdiArea *)widget())->verticalScrollBarPolicy() != Qt::ScrollBarAlwaysOff)
 		bEnabled = true;
 	else
@@ -319,19 +319,19 @@ KVSO_CLASS_FUNCTION(workspace, scrollBarsEnabled)
 KVSO_CLASS_FUNCTION(workspace, setscrollBarsEnabled)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	if(bEnabled)
-	{
-		((QMdiArea *)widget())->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-		((QMdiArea *)widget())->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-	}
-	else
-	{
-		((QMdiArea *)widget())->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-		((QMdiArea *)widget())->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	}
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		if(bEnabled)
+		{
+			((QMdiArea *)widget())->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+			((QMdiArea *)widget())->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+		}
+		else
+		{
+			((QMdiArea *)widget())->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+			((QMdiArea *)widget())->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+		}
 	return true;
 }
