@@ -120,11 +120,11 @@ p " </head>";
 p " <body bgcolor=\"#FFFFFF\" text=\"#000000\" link=\"#FF0000\"><center>";
 
 
-p " <h4>";
+p " <h4><font color=\"#000000\">";
 p "This is a partial list of the people that have ";
 p "contributed in some way to the KVIrc project.<br><br>";
 p "Honor and glory to:<br>";
-p " </h4>";
+p " </fon></h4>";
 
 $i = 0;
 $cnt++;
