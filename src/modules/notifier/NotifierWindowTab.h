@@ -99,7 +99,7 @@ protected:
 	void mouseDoubleClickEvent(QMouseEvent * e) override;
 	void resizeEvent(QResizeEvent * e) override;
 	void paintEvent(QPaintEvent * e) override;
-private slots:
+	private slots:
 	/**
 	* \brief Emitted when the scrollbar range is changed
 	* \return void

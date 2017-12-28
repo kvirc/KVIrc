@@ -56,7 +56,7 @@ extern QPixmap * g_pShadedParentGlobalDesktopBackground;
 #endif
 
 KviWindowStack::KviWindowStack(QWidget * parent, const char * pcName)
-    : QStackedWidget(parent)
+	: QStackedWidget(parent)
 {
 	setObjectName(pcName);
 	setFrameShape(NoFrame);
@@ -73,7 +73,7 @@ KviWindowStack::KviWindowStack(QWidget * parent, const char * pcName)
 }
 
 KviWindowStack::~KviWindowStack()
-    = default;
+= default;
 
 void KviWindowStack::currentWindowChanged(int iIdx)
 {

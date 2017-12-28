@@ -42,7 +42,7 @@ class KviKvsVariantList;
 class KVIRC_API KviKvsEventManager : public QObject
 {
 	Q_OBJECT
-	friend class KviModule; // compatibility only!
+		friend class KviModule; // compatibility only!
 protected:                  // it only can be created and destroyed by KviKvsAliasManager::init()/done()
 	KviKvsEventManager();
 	~KviKvsEventManager();

@@ -24,11 +24,11 @@
 //=============================================================================
 
 /***************************************************************************
-                          Service.h  -  description
-                             -------------------
-    begin                : Sun Jul 24 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  Service.h  -  description
+							 -------------------
+	begin                : Sun Jul 24 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #ifndef UPNP_CONTROLPOINT_H
@@ -41,7 +41,6 @@
 
 namespace UPnP
 {
-
 	// A datablock to make the exchange
 	// of service information easier
 	struct ServiceParameters
@@ -95,7 +94,7 @@ namespace UPnP
 		// The control point received a response to callInformationUrl()
 		virtual void gotInformationResponse(const QDomNode & response);
 
-	private slots:
+		private slots:
 		// The QHttp object retrieved data.
 		void slotRequestFinished();
 

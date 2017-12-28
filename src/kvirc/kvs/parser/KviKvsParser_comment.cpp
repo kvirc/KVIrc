@@ -35,55 +35,55 @@ KviKvsTreeNode * KviKvsParser::parseComment()
 
 	switch(KVSP_curCharUnicode)
 	{
-		case '#': // bash style
+	case '#': // bash style
+		skipToNextLine();
+		break;
+	case '/':
+		KVSP_skipChar;
+		switch(KVSP_curCharUnicode)
+		{
+		case '/':
+			// c++ style
 			skipToNextLine();
 			break;
-		case '/':
+		case '*':
+		{
+			const QChar * pBegin = KVSP_curCharPointer;
+			// c style, multiline
 			KVSP_skipChar;
-			switch(KVSP_curCharUnicode)
+			for(;;)
 			{
-				case '/':
-					// c++ style
-					skipToNextLine();
-					break;
-				case '*':
+				switch(KVSP_curCharUnicode)
 				{
-					const QChar * pBegin = KVSP_curCharPointer;
-					// c style, multiline
-					KVSP_skipChar;
-					for(;;)
-					{
-						switch(KVSP_curCharUnicode)
-						{
-							case 0:
-								warning(pBegin, __tr2qs_ctx("Unterminated c-style multi-line comment", "kvs"));
-								error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in multi-line comment", "kvs"));
-								return nullptr;
-								break;
-							case '*':
-								while(KVSP_curCharUnicode == '*')
-									KVSP_skipChar;
-								if(KVSP_curCharUnicode == '/')
-								{
-									KVSP_skipChar;
-									return nullptr;
-								}
-								break;
-						}
-						KVSP_skipChar;
-					}
-				}
-				break;
-				default:
-					error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected character '%q' (Unicode %x) after a slash (is it a typo or a malformed comment begin?)", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
+				case 0:
+					warning(pBegin, __tr2qs_ctx("Unterminated c-style multi-line comment", "kvs"));
+					error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected end of script in multi-line comment", "kvs"));
 					return nullptr;
 					break;
+				case '*':
+					while(KVSP_curCharUnicode == '*')
+						KVSP_skipChar;
+					if(KVSP_curCharUnicode == '/')
+					{
+						KVSP_skipChar;
+						return nullptr;
+					}
+					break;
+				}
+				KVSP_skipChar;
 			}
-			break;
+		}
+		break;
 		default:
-			// shouldn't be here :/
-			KVSP_ASSERT(false);
+			error(KVSP_curCharPointer, __tr2qs_ctx("Unexpected character '%q' (Unicode %x) after a slash (is it a typo or a malformed comment begin?)", "kvs"), KVSP_curCharPointer, KVSP_curCharUnicode);
+			return nullptr;
 			break;
+		}
+		break;
+	default:
+		// shouldn't be here :/
+		KVSP_ASSERT(false);
+		break;
 	}
 	return nullptr;
 }

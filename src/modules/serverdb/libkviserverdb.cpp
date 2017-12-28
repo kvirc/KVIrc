@@ -119,14 +119,14 @@ static bool serverdb_kvs_fnc_networkExists(KviKvsModuleFunctionCall * c)
 	QString szNetwork;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("network_name", KVS_PT_STRING, 0, szNetwork)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("network_name", KVS_PT_STRING, 0, szNetwork)
+		KVSM_PARAMETERS_END(c)
 
-	if(szNetwork.isEmpty())
-	{
-		c->error(__tr2qs_ctx("You must provide the network name as parameter", "serverdb"));
-		return false;
-	}
+		if(szNetwork.isEmpty())
+		{
+			c->error(__tr2qs_ctx("You must provide the network name as parameter", "serverdb"));
+			return false;
+		}
 
 	KviIrcNetwork * pNetwork = g_pServerDataBase->findNetwork(szNetwork);
 	if(!pNetwork)
@@ -162,15 +162,15 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 	QString szServer, szNetwork;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("server_name", KVS_PT_STRING, 0, szServer)
-	KVSM_PARAMETER("network_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szNetwork)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("server_name", KVS_PT_STRING, 0, szServer)
+		KVSM_PARAMETER("network_name", KVS_PT_STRING, KVS_PF_OPTIONAL, szNetwork)
+		KVSM_PARAMETERS_END(c)
 
-	if(szServer.isEmpty())
-	{
-		c->error(__tr2qs_ctx("You must provide the server name as parameter", "serverdb"));
-		return false;
-	}
+		if(szServer.isEmpty())
+		{
+			c->error(__tr2qs_ctx("You must provide the server name as parameter", "serverdb"));
+			return false;
+		}
 
 	if(!szNetwork.isEmpty())
 	{
@@ -860,14 +860,14 @@ static bool serverdb_kvs_cmd_addNetwork(KviKvsModuleCommandCall * c)
 	QString szNetName, szNetwork;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("network_name", KVS_PT_STRING, 0, szNetName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("network_name", KVS_PT_STRING, 0, szNetName)
+		KVSM_PARAMETERS_END(c)
 
-	if(szNetName.isEmpty())
-	{
-		c->error(__tr2qs_ctx("You must provide the network name as parameter", "serverdb"));
-		return false;
-	}
+		if(szNetName.isEmpty())
+		{
+			c->error(__tr2qs_ctx("You must provide the network name as parameter", "serverdb"));
+			return false;
+		}
 
 	KviIrcNetwork * pNetwork = g_pServerDataBase->findNetwork(szNetName);
 	if(pNetwork)
@@ -936,15 +936,15 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 	QString szNetwork, szServer;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("network_name", KVS_PT_STRING, 0, szNetwork)
-	KVSM_PARAMETER("server_name", KVS_PT_STRING, 0, szServer)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("network_name", KVS_PT_STRING, 0, szNetwork)
+		KVSM_PARAMETER("server_name", KVS_PT_STRING, 0, szServer)
+		KVSM_PARAMETERS_END(c)
 
-	if(szNetwork.isEmpty())
-	{
-		c->error(__tr2qs_ctx("You must provide the network name as parameter", "serverdb"));
-		return false;
-	}
+		if(szNetwork.isEmpty())
+		{
+			c->error(__tr2qs_ctx("You must provide the network name as parameter", "serverdb"));
+			return false;
+		}
 
 	if(szServer.isEmpty())
 	{
@@ -1568,8 +1568,8 @@ static bool serverdb_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m, "serverEncoding", serverdb_kvs_fnc_serverEncoding);
 	KVSM_REGISTER_FUNCTION(m, "serverTextEncoding", serverdb_kvs_fnc_serverTextEncoding);
 	KVSM_REGISTER_FUNCTION(m, "serverId", serverdb_kvs_fnc_serverId)
-	KVSM_REGISTER_FUNCTION(m, "serverIp", serverdb_kvs_fnc_serverIp)
-	KVSM_REGISTER_FUNCTION(m, "serverLoginCommand", serverdb_kvs_fnc_serverLoginCommand);
+		KVSM_REGISTER_FUNCTION(m, "serverIp", serverdb_kvs_fnc_serverIp)
+		KVSM_REGISTER_FUNCTION(m, "serverLoginCommand", serverdb_kvs_fnc_serverLoginCommand);
 	KVSM_REGISTER_FUNCTION(m, "serverNickName", serverdb_kvs_fnc_serverNickName);
 	KVSM_REGISTER_FUNCTION(m, "serverPassword", serverdb_kvs_fnc_serverPassword);
 	KVSM_REGISTER_FUNCTION(m, "serverPort", serverdb_kvs_fnc_serverPort);
@@ -1617,12 +1617,12 @@ static bool serverdb_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "ServerDB",                                                        // module name
-    "4.0.0",                                                           // module version
-    "Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)", // author & (C)
-    "IRC serverDB related functions",
-    serverdb_module_init,
-    serverdb_module_can_unload,
-    0,
-    serverdb_module_cleanup,
-    "serverdb")
+	"ServerDB",                                                        // module name
+	"4.0.0",                                                           // module version
+	"Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)", // author & (C)
+	"IRC serverDB related functions",
+	serverdb_module_init,
+	serverdb_module_can_unload,
+	0,
+	serverdb_module_cleanup,
+	"serverdb")

@@ -45,7 +45,7 @@ public:
 class KVIRC_API KviLagMeter : public QObject
 {
 	Q_OBJECT
-	friend class KviIrcConnection;
+		friend class KviIrcConnection;
 
 protected:
 	KviLagMeter(KviIrcConnection * c);

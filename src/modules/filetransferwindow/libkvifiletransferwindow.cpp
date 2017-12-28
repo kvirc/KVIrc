@@ -94,7 +94,6 @@ static bool filetransferwindow_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 static bool filetransferwindow_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 {
-
 	if(c->hasSwitch('a', QString::fromLatin1("all")))
 		KviFileTransferManager::instance()->killAllTransfers();
 	else
@@ -125,12 +124,12 @@ static bool filetransferwindow_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "FileTransferWindow",
-    "4.0.0",
-    "Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)",
-    "File Transfer Window Extension",
-    filetransferwindow_module_init,
-    filetransferwindow_module_can_unload,
-    0,
-    filetransferwindow_module_cleanup,
-    "filetransferwindow")
+	"FileTransferWindow",
+	"4.0.0",
+	"Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)",
+	"File Transfer Window Extension",
+	filetransferwindow_module_init,
+	filetransferwindow_module_can_unload,
+	0,
+	filetransferwindow_module_cleanup,
+	"filetransferwindow")

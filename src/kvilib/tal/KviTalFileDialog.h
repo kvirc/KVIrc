@@ -113,7 +113,7 @@ public:
 #if defined(COMPILE_KDE4_SUPPORT)
 		// QFileDialog allows making new directories...kfiledialog not :/
 		return KFileDialog::getExistingDirectory(KUrl(szDir), pParent, szCaption);
-//return getExistingDirectory(dir,parent,caption);
+		//return getExistingDirectory(dir,parent,caption);
 #else  //!defined(COMPILE_KDE4_SUPPORT)
 		return getExistingDirectory(pParent, szCaption, szDir);
 #endif //!defined(COMPILE_KDE4_SUPPORT)

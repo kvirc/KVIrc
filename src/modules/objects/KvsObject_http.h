@@ -71,7 +71,7 @@ protected:
 	bool functionSslErrorsEvent(KviKvsObjectFunctionCall * c);
 #endif
 
-protected slots:
+	protected slots:
 	void slotRequestFinished(int id, bool error);
 	void slotDone(bool error);
 	void slotRequestStarted(int id);

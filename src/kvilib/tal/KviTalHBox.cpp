@@ -54,7 +54,7 @@ const int align_cod[] = {
 #define align_num (sizeof(align_tbl) / sizeof(align_tbl[0]))
 
 KviTalHBox::KviTalHBox(QWidget * pParent, char * pcName)
-    : QWidget(pParent)
+	: QWidget(pParent)
 {
 	setObjectName(pcName);
 
@@ -66,7 +66,7 @@ KviTalHBox::KviTalHBox(QWidget * pParent, char * pcName)
 }
 
 KviTalHBox::~KviTalHBox()
-    = default;
+= default;
 
 void KviTalHBox::childEvent(QChildEvent * e)
 {
@@ -77,14 +77,14 @@ void KviTalHBox::childEvent(QChildEvent * e)
 
 	switch(e->type())
 	{
-		case QEvent::ChildAdded:
-			m_pLayout->addWidget((QWidget *)(e->child()));
-			break;
-		case QEvent::ChildRemoved:
-			m_pLayout->removeWidget((QWidget *)(e->child()));
-			break;
-		default:
-			break;
+	case QEvent::ChildAdded:
+		m_pLayout->addWidget((QWidget *)(e->child()));
+		break;
+	case QEvent::ChildRemoved:
+		m_pLayout->removeWidget((QWidget *)(e->child()));
+		break;
+	default:
+		break;
 	}
 }
 

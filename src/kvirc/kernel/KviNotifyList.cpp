@@ -118,7 +118,7 @@
 // Basic NotifyListManager: this does completely nothing
 
 KviNotifyListManager::KviNotifyListManager(KviIrcConnection * pConnection)
-    : QObject(nullptr)
+	: QObject(nullptr)
 {
 	setObjectName("notify_list_manager");
 	m_pConnection = pConnection;
@@ -126,7 +126,7 @@ KviNotifyListManager::KviNotifyListManager(KviIrcConnection * pConnection)
 }
 
 KviNotifyListManager::~KviNotifyListManager()
-    = default;
+= default;
 
 void KviNotifyListManager::start()
 {
@@ -323,7 +323,7 @@ void KviNotifyListManager::notifyOffLine(const QString & szNick, const QString &
 //
 
 KviIsOnNotifyListManager::KviIsOnNotifyListManager(KviIrcConnection * pConnection)
-    : KviNotifyListManager(pConnection)
+	: KviNotifyListManager(pConnection)
 {
 	connect(&m_pDelayedNotifyTimer, SIGNAL(timeout()), this, SLOT(newNotifySession()));
 	connect(&m_pDelayedIsOnTimer, SIGNAL(timeout()), this, SLOT(newIsOnSession()));
@@ -400,8 +400,8 @@ void KviIsOnNotifyListManager::delayedNotifySession()
 		// don't allow the user to suicide
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-			    __tr2qs("Notify list: Timeout (%d sec) is too short, resetting to something more reasonable (15 sec)"),
-			    iTimeout);
+				__tr2qs("Notify list: Timeout (%d sec) is too short, resetting to something more reasonable (15 sec)"),
+				iTimeout);
 		iTimeout = 15;
 		KVI_OPTION_UINT(KviOption_uintNotifyListCheckTimeInSecs) = 15;
 	}
@@ -441,8 +441,8 @@ void KviIsOnNotifyListManager::delayedIsOnSession()
 		// don't allow the user to suicide
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-			    __tr2qs("Notify list: ISON delay (%d sec) is too short, resetting to something more reasonable (5 sec)"),
-			    iTimeout);
+				__tr2qs("Notify list: ISON delay (%d sec) is too short, resetting to something more reasonable (5 sec)"),
+				iTimeout);
 		iTimeout = 5;
 		KVI_OPTION_UINT(KviOption_uintNotifyListIsOnDelayTimeInSecs) = 5;
 	}
@@ -719,8 +719,8 @@ void KviIsOnNotifyListManager::delayedUserhostSession()
 		// don't allow the user to suicide
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-			    __tr2qs("Notify list: USERHOST delay (%d sec) is too short, resetting to something more reasonable (5 sec)"),
-			    iTimeout);
+				__tr2qs("Notify list: USERHOST delay (%d sec) is too short, resetting to something more reasonable (5 sec)"),
+				iTimeout);
 		iTimeout = 5;
 		KVI_OPTION_UINT(KviOption_uintNotifyListUserhostDelayTimeInSecs) = 5;
 	}
@@ -930,7 +930,7 @@ void KviIsOnNotifyListManager::stop()
 //
 
 KviStupidNotifyListManager::KviStupidNotifyListManager(KviIrcConnection * pConnection)
-    : KviNotifyListManager(pConnection)
+	: KviNotifyListManager(pConnection)
 {
 	m_iRestartTimer = 0;
 }
@@ -1034,8 +1034,8 @@ bool KviStupidNotifyListManager::handleIsOn(KviIrcMessage * msg)
 			// don't allow the user to suicide
 			if(_OUTPUT_VERBOSE)
 				m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-				    __tr2qs("Notify list: Timeout (%d sec) is too short, resetting to something more reasonable (5 sec)"),
-				    iTimeout);
+					__tr2qs("Notify list: Timeout (%d sec) is too short, resetting to something more reasonable (5 sec)"),
+					iTimeout);
 			iTimeout = 5;
 			KVI_OPTION_UINT(KviOption_uintNotifyListCheckTimeInSecs) = 5;
 		}
@@ -1093,7 +1093,7 @@ void KviStupidNotifyListManager::buildNickList()
 //
 
 KviWatchNotifyListManager::KviWatchNotifyListManager(KviIrcConnection * pConnection)
-    : KviNotifyListManager(pConnection)
+	: KviNotifyListManager(pConnection)
 {
 }
 
@@ -1181,13 +1181,13 @@ bool KviWatchNotifyListManager::doMatchUser(KviIrcMessage * msg, const QString &
 					{
 						// This is a reply to a /watch +something (should not happen, unless the user is messing) or to /watch l (user requested)
 						notifyOnLine(mask.nick(), mask.user(), mask.host(),
-						    __tr2qs("watch entry listing requested by user"), false);
+							__tr2qs("watch entry listing requested by user"), false);
 					}
 					else
 					{
 						// This is a RPL_LOGON.... we're desynched ?
 						notifyOnLine(mask.nick(), mask.user(), mask.host(),
-						    __tr2qs("possible watch list desync"), false);
+							__tr2qs("possible watch list desync"), false);
 					}
 				}
 			}
@@ -1199,15 +1199,15 @@ bool KviWatchNotifyListManager::doMatchUser(KviIrcMessage * msg, const QString &
 					// has been online just a sec ago, but now the mask does not match
 					// prolly the reguserdb has been changed
 					notifyOffLine(mask.nick(), mask.user(), mask.host(),
-					    __tr2qs("registration mask changed or desync with the watch service"));
+						__tr2qs("registration mask changed or desync with the watch service"));
 				}
 				else
 				{
 					// has never been online
 					if(_OUTPUT_VERBOSE)
 						m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
-						    __tr("Notify list: \r!n\r%Q\r appears to be online, but the mask [%Q@\r!h\r%Q\r] does not match (watch: registration mask does not match, or nickname is being used by someone else)"),
-						    &(mask.nick()), &(mask.user()), &(mask.host()));
+							__tr("Notify list: \r!n\r%Q\r appears to be online, but the mask [%Q@\r!h\r%Q\r] does not match (watch: registration mask does not match, or nickname is being used by someone else)"),
+							&(mask.nick()), &(mask.user()), &(mask.host()));
 				}
 			}
 		}
@@ -1215,7 +1215,7 @@ bool KviWatchNotifyListManager::doMatchUser(KviIrcMessage * msg, const QString &
 		{
 			// oops... unexpected inconsistency.... reguser db modified ?
 			m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-			    __tr2qs("Notify list: Unexpected inconsistency, registered user DB modified? (watch: restarting)"));
+				__tr2qs("Notify list: Unexpected inconsistency, registered user DB modified? (watch: restarting)"));
 			stop();
 			start();
 			return false; // critical... exit from the call stack

@@ -42,7 +42,7 @@
 #include <QDirIterator>
 
 PackAddonDialog::PackAddonDialog(QWidget * pParent)
-    : QWizard(pParent)
+	: QWizard(pParent)
 {
 	setMinimumSize(400, 350);
 	setObjectName("addon_package_wizard");
@@ -119,7 +119,7 @@ PackAddonDialog::PackAddonDialog(QWidget * pParent)
 }
 
 PackAddonDialog::~PackAddonDialog()
-    = default;
+= default;
 
 void PackAddonDialog::accept()
 {
@@ -154,12 +154,12 @@ bool PackAddonDialog::packAddon()
 	if(QFile::exists(info.szSavePath))
 	{
 		if(QMessageBox::question(
-		       this,
-		       __tr2qs_ctx("Exporting Addon Confirmation - KVIrc", "addon"),
-		       __tr2qs_ctx("File %1 already exists. Do you want to overwrite it?", "addon").arg(info.szSavePath),
-		       QMessageBox::Yes,
-		       QMessageBox::No)
-		    == QMessageBox::No)
+			this,
+			__tr2qs_ctx("Exporting Addon Confirmation - KVIrc", "addon"),
+			__tr2qs_ctx("File %1 already exists. Do you want to overwrite it?", "addon").arg(info.szSavePath),
+			QMessageBox::Yes,
+			QMessageBox::No)
+			== QMessageBox::No)
 			return false;
 	}
 
@@ -177,8 +177,8 @@ bool PackAddonDialog::packAddon()
 	if(!AddonFunctions::pack(info, szError))
 	{
 		QMessageBox::critical(this,
-		    __tr2qs_ctx("Addon Packaging - KVIrc", "addon"),
-		    szError, QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+			__tr2qs_ctx("Addon Packaging - KVIrc", "addon"),
+			szError, QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
 		return false;
 	}
 
@@ -188,7 +188,7 @@ bool PackAddonDialog::packAddon()
 }
 
 PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent)
-    : QWizardPage(pParent)
+	: QWizardPage(pParent)
 {
 	setObjectName("addon_package_info_page");
 	setTitle(__tr2qs_ctx("Package Information", "addon"));
@@ -249,10 +249,10 @@ PackAddonInfoPackageWidget::PackAddonInfoPackageWidget(PackAddonDialog * pParent
 }
 
 PackAddonInfoPackageWidget::~PackAddonInfoPackageWidget()
-    = default;
+= default;
 
 PackAddonFileSelectionWidget::PackAddonFileSelectionWidget(PackAddonDialog * pParent)
-    : QWizardPage(pParent)
+	: QWizardPage(pParent)
 {
 	setObjectName("addon_package_file_page");
 	setTitle(__tr2qs_ctx("Package Files", "addon"));
@@ -274,10 +274,10 @@ PackAddonFileSelectionWidget::PackAddonFileSelectionWidget(PackAddonDialog * pPa
 }
 
 PackAddonFileSelectionWidget::~PackAddonFileSelectionWidget()
-    = default;
+= default;
 
 PackAddonSaveSelectionWidget::PackAddonSaveSelectionWidget(PackAddonDialog * pParent)
-    : QWizardPage(pParent)
+	: QWizardPage(pParent)
 {
 	setObjectName("addon_package_save_page");
 	setTitle(__tr2qs_ctx("Save Package", "addon"));
@@ -287,12 +287,12 @@ PackAddonSaveSelectionWidget::PackAddonSaveSelectionWidget(PackAddonDialog * pPa
 
 	// Select save path
 	m_pSavePathSelector = new KviFileSelector(
-	    this,
-	    __tr2qs_ctx("Select save path:", "addon"),
-	    &m_szFilePath,
-	    true,
-	    KviFileSelector::ChooseSaveFileName | KviFileSelector::VerticalLayout,
-	    KVI_FILTER_ADDON);
+		this,
+		__tr2qs_ctx("Select save path:", "addon"),
+		&m_szFilePath,
+		true,
+		KviFileSelector::ChooseSaveFileName | KviFileSelector::VerticalLayout,
+		KVI_FILTER_ADDON);
 	pLayout->addWidget(m_pSavePathSelector);
 
 	// Store data in the fields
@@ -300,7 +300,7 @@ PackAddonSaveSelectionWidget::PackAddonSaveSelectionWidget(PackAddonDialog * pPa
 }
 
 PackAddonSaveSelectionWidget::~PackAddonSaveSelectionWidget()
-    = default;
+= default;
 
 void PackAddonSaveSelectionWidget::initializePage()
 {
@@ -319,7 +319,7 @@ void PackAddonSaveSelectionWidget::initializePage()
 }
 
 PackAddonSummaryInfoWidget::PackAddonSummaryInfoWidget(PackAddonDialog * pParent)
-    : QWizardPage(pParent)
+	: QWizardPage(pParent)
 {
 	setObjectName("addon_package_summary_info_page");
 	setTitle(__tr2qs_ctx("Final Information", "addon"));
@@ -331,7 +331,7 @@ PackAddonSummaryInfoWidget::PackAddonSummaryInfoWidget(PackAddonDialog * pParent
 }
 
 PackAddonSummaryInfoWidget::~PackAddonSummaryInfoWidget()
-    = default;
+= default;
 
 void PackAddonSummaryInfoWidget::initializePage()
 {
@@ -383,7 +383,7 @@ void PackAddonSummaryInfoWidget::initializePage()
 }
 
 PackAddonSummaryFilesWidget::PackAddonSummaryFilesWidget(PackAddonDialog * pParent)
-    : QDialog(pParent)
+	: QDialog(pParent)
 {
 	setObjectName("addon_package_summary_file_dialog");
 	setWindowTitle(__tr2qs_ctx("File Summary Review - KVIrc", "addon"));
@@ -412,7 +412,7 @@ PackAddonSummaryFilesWidget::PackAddonSummaryFilesWidget(PackAddonDialog * pPare
 }
 
 PackAddonSummaryFilesWidget::~PackAddonSummaryFilesWidget()
-    = default;
+= default;
 
 void PackAddonSummaryFilesWidget::accept()
 {

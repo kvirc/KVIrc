@@ -25,12 +25,12 @@
 #include "KviKvsTreeNodeArrayOrHashElement.h"
 
 KviKvsTreeNodeArrayOrHashElement::KviKvsTreeNodeArrayOrHashElement(const QChar * pLocation, KviKvsTreeNodeData * pSource)
-    : KviKvsTreeNodeIndirectData(pLocation, pSource)
+	: KviKvsTreeNodeIndirectData(pLocation, pSource)
 {
 }
 
 KviKvsTreeNodeArrayOrHashElement::~KviKvsTreeNodeArrayOrHashElement()
-    = default;
+= default;
 bool KviKvsTreeNodeArrayOrHashElement::isReadOnly()
 {
 	return m_pSource->isReadOnly();

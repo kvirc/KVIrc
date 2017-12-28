@@ -137,7 +137,7 @@ protected:
 	void stopTalking();
 	void startConnection();
 	int getMixerVolume(void) const;
-protected slots:
+	protected slots:
 	void handleMarshalError(KviError::Code eError);
 	void connected();
 	void updateInfo();
@@ -184,7 +184,6 @@ public:
 	void addChild(KviVoiceParty * pChild);
 };
 
-
 KviVoiceParty::KviVoiceParty(const QString &szNick,const QString &szIp,unsigned short uPort)
 : m_szIp(szIp), m_uPort(uPort), m_szNick(szNick)
 {
@@ -212,7 +211,6 @@ public:
 	KviVoiceAudioEncoder();
 	~KviVoiceAudioEncoder();
 public:
-
 };
 
 class KviVoiceAudioDecoder
@@ -254,55 +252,43 @@ KviVoiceLink::~KviVoiceLink()
 
 class KviVoice_r8000s16eL_to_r8000s16eB_Transformer
 {
-
 }
 
 class KviVoice_r8000s16eB_to_r8000s16eL_Transformer
 {
-
 }
 
 class KviVoice_r11025s16eL_to_r11025s16eB_Transformer
 {
-
 }
 
 class KviVoice_r11025s16eB_to_r11025s16eL_Transformer
 {
-
 }
 
 class KviVoice_r11025s16eL_to_r8000s16eL_Transformer
 {
-
 }
 
 class KviVoice_r11025s16eL_to_r8000s16eB_Transformer
 {
-
 }
 
 class KviVoice_r11025s16eB_to_r8000s16eL_Transformer
 {
-
 }
 
 class KviVoice_r8000s16eL_to_r11025s16eL_Transformer
 {
-
 }
 
 class KviVoice_r8000s16eL_to_r11025s16eB_Transformer
 {
-
 }
 
 class KviVoice_r8000s16eB_to_r11025s16eL_Transformer
 {
-
 }
-
-
 
 class KviVoiceConference
 {
@@ -362,7 +348,6 @@ void KviVoiceConference::conferenceThreadMain()
 			mixLocalAndOtherIncomingDataStreams()
 			compressAndSendOtherIncomingDataStreams()
 		}
-
 	}
 }
 
@@ -374,7 +359,6 @@ void KviVoiceConference::conferenceThread()
 
 	shutdownUdpSocket();
 }
-
 
 */
 
@@ -421,7 +405,6 @@ void KviVoiceConference::conferenceThread()
 // <local id>: word
 // <payload len>: word
 // <payload>
-
 
 // Payload format:
 

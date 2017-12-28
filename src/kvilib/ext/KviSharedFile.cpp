@@ -37,4 +37,4 @@ KviSharedFile::KviSharedFile(const QString & szName, const QString & szAbsPath, 
 }
 
 KviSharedFile::~KviSharedFile()
-    = default;
+= default;

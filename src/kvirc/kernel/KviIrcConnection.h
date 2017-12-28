@@ -950,7 +950,7 @@ private:
 	* \return void
 	*/
 	void setupSrvCodec();
-public slots:
+	public slots:
 	/**
 	* \brief Called when we unhighlight all channels
 	* \return void
@@ -968,7 +968,7 @@ public slots:
 	* \return void
 	*/
 	void restartNotifyList();
-private slots:
+	private slots:
 	/**
 	* \brief Called when the hostname lookup is finished
 	* \return void

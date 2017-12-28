@@ -37,10 +37,10 @@ protected:
 
 public:
 	KviKvsObjectFunctionCall(KviKvsRunTimeContext * pContext,
-	    KviKvsVariantList * pParams,
-	    KviKvsVariant * pResult)
-	    : KviKvsRunTimeCall(pContext, pParams), m_pResult(pResult){};
-	~KviKvsObjectFunctionCall(){};
+		KviKvsVariantList * pParams,
+		KviKvsVariant * pResult)
+		: KviKvsRunTimeCall(pContext, pParams), m_pResult(pResult) {};
+	~KviKvsObjectFunctionCall() {};
 
 public:
 	KviKvsVariant * returnValue() { return m_pResult; };

@@ -27,12 +27,12 @@
 #include "KviKvsVariant.h"
 
 KviKvsTreeNodeParameterCount::KviKvsTreeNodeParameterCount(const QChar * pLocation)
-    : KviKvsTreeNodeData(pLocation)
+	: KviKvsTreeNodeData(pLocation)
 {
 }
 
 KviKvsTreeNodeParameterCount::~KviKvsTreeNodeParameterCount()
-    = default;
+= default;
 
 void KviKvsTreeNodeParameterCount::contextDescription(QString & szBuffer)
 {

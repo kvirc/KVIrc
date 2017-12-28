@@ -50,7 +50,7 @@ public:
 		fillCaptionBuffers();
 	};
 	void resizeEvent(QResizeEvent * e) override;
-protected slots:
+	protected slots:
 	void centralWidgetObjectDestroyed();
 	void centralWidgetDestroyed();
 };

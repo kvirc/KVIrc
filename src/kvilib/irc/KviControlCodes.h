@@ -177,7 +177,9 @@ namespace KviControlCodes
 #if 0
 	extern KVILIB_API const char * getColorBytes(const char * pcData, unsigned char * pcByte1, unsigned char * pcByte2);
 	inline const QChar * getUnicodeColorBytes(const QChar * pData, unsigned char * pcByte1, unsigned char * pcByte2)
-		{ return (QChar *)getColorBytesW((const kvi_wchar_t *)pData,pcByte1,pcByte2); }
+	{
+		return (QChar *)getColorBytesW((const kvi_wchar_t *)pData, pcByte1, pcByte2);
+	}
 #endif
 }
 

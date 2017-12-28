@@ -43,8 +43,8 @@ public:
 
 public:
 	KviImageDialogItem(KviTalListWidget * b, const QPixmap & thumb, const QString & szFile, const QString & image_id, const QString & szTipText = QString(), bool bIsFolder = false)
-	    : KviTalListWidgetPixmap(b, thumb, szFile), m_bIsFolder(bIsFolder), m_szImageId(image_id), m_szTipText(szTipText){};
-	~KviImageDialogItem(){};
+		: KviTalListWidgetPixmap(b, thumb, szFile), m_bIsFolder(bIsFolder), m_szImageId(image_id), m_szTipText(szTipText) {};
+	~KviImageDialogItem() {};
 
 public:
 	bool isFolder() { return m_bIsFolder; };
@@ -65,11 +65,11 @@ class KVIRC_API KviImageDialog : public QDialog
 	Q_OBJECT
 public:
 	KviImageDialog(QWidget * par,
-	    const QString & szCaption = QString(),
-	    int types = KID_TYPE_ALL,
-	    int initialType = 0,
-	    const QString & szInitialDir = QString(),
-	    int maxPreviewFileSize = 256000, bool modal = false);
+		const QString & szCaption = QString(),
+		int types = KID_TYPE_ALL,
+		int initialType = 0,
+		const QString & szInitialDir = QString(),
+		int maxPreviewFileSize = 256000, bool modal = false);
 	virtual ~KviImageDialog();
 
 protected:
@@ -98,7 +98,7 @@ protected:
 	void startJob(int type, const QString & szInitialPath = QString());
 	void jobTerminated();
 	virtual void closeEvent(QCloseEvent * e);
-protected slots:
+	protected slots:
 	void okClicked();
 	void cancelClicked();
 	void heartbeat();

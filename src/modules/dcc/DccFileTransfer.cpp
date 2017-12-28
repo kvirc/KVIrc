@@ -88,7 +88,7 @@ static QPixmap * g_pDccFileTransferIcon = nullptr;
 //#warning "Otherwise, when left undispatched we will be leaking memory (event class destroyed but not the data ptr)"
 
 DccRecvThread::DccRecvThread(QObject * par, kvi_socket_t fd, KviDccRecvThreadOptions * opt)
-    : DccThread(par, fd)
+	: DccThread(par, fd)
 {
 	m_pOpt = opt;
 	m_uAverageSpeed = 0;
@@ -154,25 +154,25 @@ bool DccRecvThread::sendAck(qint64 filePos, bool bUse64BitAck)
 
 	if(iRet < 0)
 	{
-// Reported error. If it's EAGAIN or EINTR then no data has been sent.
+		// Reported error. If it's EAGAIN or EINTR then no data has been sent.
 #ifdef COMPILE_SSL_SUPPORT
 		if(m_pSSL)
 		{
 			// dropping ack when no serious ssl error occurred
 			switch(m_pSSL->getProtocolError(iRet))
 			{
-				case KviSSL::ZeroReturn:
+			case KviSSL::ZeroReturn:
 				//return false; check eagain
-				case KviSSL::Success:
-				case KviSSL::WantRead:
-				case KviSSL::WantWrite:
-					return true;
-					break;
-				default:
-					// Raise unknown SSL ERROR
-					postErrorEvent(KviError::SSLError);
-					return false;
-					break;
+			case KviSSL::Success:
+			case KviSSL::WantRead:
+			case KviSSL::WantWrite:
+				return true;
+				break;
+			default:
+				// Raise unknown SSL ERROR
+				postErrorEvent(KviError::SSLError);
+				return false;
+				break;
 			}
 
 			return false;
@@ -442,7 +442,7 @@ void DccRecvThread::run()
 					else
 					{
 						updateStats();
-// Read problem...
+						// Read problem...
 
 #ifdef COMPILE_SSL_SUPPORT
 						if(m_pSSL)
@@ -450,40 +450,40 @@ void DccRecvThread::run()
 							// ssl error....?
 							switch(m_pSSL->getProtocolError(readLen))
 							{
-								case KviSSL::ZeroReturn:
-									//check again not necessary a connection closure!
-									//if (!handleInvalidSocketRead(readLen)
-									// break;
-									readLen = 0;
-									break;
-								case KviSSL::Success:
-								case KviSSL::WantRead:
-								case KviSSL::WantWrite:
-									// hmmm... DO NOT CALL handleInvalidSocketRead
-									break;
-								case KviSSL::SyscallError:
-								{
-									int iE = m_pSSL->getLastError(true);
-									if(iE != 0)
-									{
-										raiseSSLError();
-										postErrorEvent(KviError::SSLError);
-										goto exit_dcc;
-									}
-								}
+							case KviSSL::ZeroReturn:
+								//check again not necessary a connection closure!
+								//if (!handleInvalidSocketRead(readLen)
+								// break;
+								readLen = 0;
 								break;
-								case KviSSL::SSLError:
+							case KviSSL::Success:
+							case KviSSL::WantRead:
+							case KviSSL::WantWrite:
+								// hmmm... DO NOT CALL handleInvalidSocketRead
+								break;
+							case KviSSL::SyscallError:
+							{
+								int iE = m_pSSL->getLastError(true);
+								if(iE != 0)
 								{
 									raiseSSLError();
 									postErrorEvent(KviError::SSLError);
 									goto exit_dcc;
 								}
+							}
+							break;
+							case KviSSL::SSLError:
+							{
+								raiseSSLError();
+								postErrorEvent(KviError::SSLError);
+								goto exit_dcc;
+							}
+							break;
+							default:
+								// Raise unknown SSL ERROR
+								postErrorEvent(KviError::SSLError);
+								goto exit_dcc;
 								break;
-								default:
-									// Raise unknown SSL ERROR
-									postErrorEvent(KviError::SSLError);
-									goto exit_dcc;
-									break;
 							}
 						}
 #endif
@@ -601,7 +601,7 @@ void DccRecvThread::doneGetInfo()
 }
 
 DccSendThread::DccSendThread(QObject * par, kvi_socket_t fd, KviDccSendThreadOptions * opt)
-    : DccThread(par, fd)
+	: DccThread(par, fd)
 {
 	m_pOpt = opt;
 	// stats
@@ -805,7 +805,6 @@ void DccSendThread::run()
 							}
 							else
 							{
-
 								uTotLastAck = iNewAck;
 							}
 							iBytesInAckBuffer = 0;
@@ -819,40 +818,39 @@ void DccSendThread::run()
 							// ssl error....?
 							switch(m_pSSL->getProtocolError(readLen))
 							{
-
-								case KviSSL::ZeroReturn:
-									//if (!handleInvalidSocketRead(readLen)
-									// break;
-									readLen = 0;
-									break;
-								case KviSSL::Success:
-								case KviSSL::WantRead:
-								case KviSSL::WantWrite:
-									// hmmm...
-									break;
-								case KviSSL::SyscallError:
-								{
-									int iE = m_pSSL->getLastError(true);
-									if(iE != 0)
-									{
-										raiseSSLError();
-										postErrorEvent(KviError::SSLError);
-										goto exit_dcc;
-									}
-								}
+							case KviSSL::ZeroReturn:
+								//if (!handleInvalidSocketRead(readLen)
+								// break;
+								readLen = 0;
 								break;
-								case KviSSL::SSLError:
+							case KviSSL::Success:
+							case KviSSL::WantRead:
+							case KviSSL::WantWrite:
+								// hmmm...
+								break;
+							case KviSSL::SyscallError:
+							{
+								int iE = m_pSSL->getLastError(true);
+								if(iE != 0)
 								{
 									raiseSSLError();
 									postErrorEvent(KviError::SSLError);
 									goto exit_dcc;
 								}
+							}
+							break;
+							case KviSSL::SSLError:
+							{
+								raiseSSLError();
+								postErrorEvent(KviError::SSLError);
+								goto exit_dcc;
+							}
+							break;
+							default:
+								// Raise unknown SSL ERROR
+								postErrorEvent(KviError::SSLError);
+								goto exit_dcc;
 								break;
-								default:
-									// Raise unknown SSL ERROR
-									postErrorEvent(KviError::SSLError);
-									goto exit_dcc;
-									break;
 							}
 						}
 
@@ -916,38 +914,37 @@ void DccSendThread::run()
 										// ssl error....?
 										switch(m_pSSL->getProtocolError(readLen))
 										{
-
-											case KviSSL::ZeroReturn:
-												readLen = 0;
-												break;
-											case KviSSL::Success:
-											case KviSSL::WantRead:
-											case KviSSL::WantWrite:
-												// hmmm...
-												break;
-											case KviSSL::SyscallError:
-											{
-												int iE = m_pSSL->getLastError(true);
-												if(iE != 0)
-												{
-													raiseSSLError();
-													postErrorEvent(KviError::SSLError);
-													goto exit_dcc;
-												}
-											}
+										case KviSSL::ZeroReturn:
+											readLen = 0;
 											break;
-											case KviSSL::SSLError:
+										case KviSSL::Success:
+										case KviSSL::WantRead:
+										case KviSSL::WantWrite:
+											// hmmm...
+											break;
+										case KviSSL::SyscallError:
+										{
+											int iE = m_pSSL->getLastError(true);
+											if(iE != 0)
 											{
 												raiseSSLError();
 												postErrorEvent(KviError::SSLError);
 												goto exit_dcc;
 											}
+										}
+										break;
+										case KviSSL::SSLError:
+										{
+											raiseSSLError();
+											postErrorEvent(KviError::SSLError);
+											goto exit_dcc;
+										}
+										break;
+										default:
+											// Raise unknown SSL ERROR
+											postErrorEvent(KviError::SSLError);
+											goto exit_dcc;
 											break;
-											default:
-												// Raise unknown SSL ERROR
-												postErrorEvent(KviError::SSLError);
-												goto exit_dcc;
-												break;
 										}
 									}
 
@@ -1003,7 +1000,7 @@ void DccSendThread::run()
 								postErrorEvent(KviError::FileIOError);
 								break;
 							}
-// send it out
+							// send it out
 
 #ifdef COMPILE_SSL_SUPPORT
 							if(m_pSSL)
@@ -1028,43 +1025,43 @@ void DccSendThread::run()
 										// ops...might be an SSL error
 										switch(m_pSSL->getProtocolError(written))
 										{
-											case KviSSL::Success:
-											case KviSSL::WantWrite:
-											case KviSSL::WantRead:
-												// Async continue...
-												goto handle_system_error;
-												break;
-											case KviSSL::SyscallError:
-												if(written == 0)
+										case KviSSL::Success:
+										case KviSSL::WantWrite:
+										case KviSSL::WantRead:
+											// Async continue...
+											goto handle_system_error;
+											break;
+										case KviSSL::SyscallError:
+											if(written == 0)
+											{
+												raiseSSLError();
+												postErrorEvent(KviError::RemoteEndClosedConnection);
+												goto exit_dcc;
+											}
+											else
+											{
+												int iSSLErr = m_pSSL->getLastError(true);
+												if(iSSLErr != 0)
 												{
 													raiseSSLError();
-													postErrorEvent(KviError::RemoteEndClosedConnection);
+													postErrorEvent(KviError::SSLError);
 													goto exit_dcc;
 												}
 												else
 												{
-													int iSSLErr = m_pSSL->getLastError(true);
-													if(iSSLErr != 0)
-													{
-														raiseSSLError();
-														postErrorEvent(KviError::SSLError);
-														goto exit_dcc;
-													}
-													else
-													{
-														goto handle_system_error;
-													}
+													goto handle_system_error;
 												}
-												break;
-											case KviSSL::SSLError:
-												raiseSSLError();
-												postErrorEvent(KviError::SSLError);
-												goto exit_dcc;
-												break;
-											default:
-												postErrorEvent(KviError::SSLError);
-												goto exit_dcc;
-												break;
+											}
+											break;
+										case KviSSL::SSLError:
+											raiseSSLError();
+											postErrorEvent(KviError::SSLError);
+											goto exit_dcc;
+											break;
+										default:
+											postErrorEvent(KviError::SSLError);
+											goto exit_dcc;
+											break;
 										}
 									}
 
@@ -1186,7 +1183,7 @@ void DccSendThread::doneGetInfo()
 }
 
 DccFileTransfer::DccFileTransfer(DccDescriptor * dcc)
-    : KviFileTransfer()
+	: KviFileTransfer()
 {
 	init(); // ensure we're initialized
 	g_pDccFileTransfers->append(this);
@@ -1302,21 +1299,21 @@ void DccFileTransfer::startConnection()
 		if(m_pDescriptor->isZeroPortRequest())
 		{
 			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC RESUME %s %s %s %s%c",
-			    m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-			    0x01,
-			    m_pDescriptor->console()->connection()->encodeText(fName).data(),
-			    m_pDescriptor->szPort.toUtf8().data(),
-			    m_pDescriptor->szLocalFileSize.toUtf8().data(),
-			    m_pDescriptor->zeroPortRequestTag(), 0x01);
+				m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+				0x01,
+				m_pDescriptor->console()->connection()->encodeText(fName).data(),
+				m_pDescriptor->szPort.toUtf8().data(),
+				m_pDescriptor->szLocalFileSize.toUtf8().data(),
+				m_pDescriptor->zeroPortRequestTag(), 0x01);
 		}
 		else
 		{
 			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC RESUME %s %s %s%c",
-			    m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-			    0x01,
-			    m_pDescriptor->console()->connection()->encodeText(fName).data(),
-			    m_pDescriptor->szPort.toUtf8().data(),
-			    m_pDescriptor->szLocalFileSize.toUtf8().data(), 0x01);
+				m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+				0x01,
+				m_pDescriptor->console()->connection()->encodeText(fName).data(),
+				m_pDescriptor->szPort.toUtf8().data(),
+				m_pDescriptor->szLocalFileSize.toUtf8().data(), 0x01);
 		}
 		m_szStatusString = __tr2qs_ctx("Sent DCC RESUME request to %1, waiting for ACCEPT", "dcc").arg(m_pDescriptor->szNick);
 		outputAndLog(m_szStatusString);
@@ -1490,21 +1487,21 @@ void DccFileTransfer::fillStatusString(QString & szBuffer)
 {
 	switch(m_eGeneralStatus)
 	{
-		case Connecting:
-			szBuffer = "connecting";
-			break;
-		case Transferring:
-			szBuffer = "transferring";
-			break;
-		case Failure:
-			szBuffer = "failure";
-			break;
-		case Success:
-			szBuffer = "success";
-			break;
-		default:
-			szBuffer = "unknown";
-			break;
+	case Connecting:
+		szBuffer = "connecting";
+		break;
+	case Transferring:
+		szBuffer = "transferring";
+		break;
+	case Failure:
+		szBuffer = "failure";
+		break;
+	case Success:
+		szBuffer = "success";
+		break;
+	default:
+		szBuffer = "unknown";
+		break;
 	}
 }
 
@@ -1648,234 +1645,232 @@ void DccFileTransfer::displayPaint(QPainter * p, int column, QRect rect)
 
 	switch(column)
 	{
-		case COLUMN_TRANSFERTYPE:
+	case COLUMN_TRANSFERTYPE:
+	{
+		if(!g_pDccFileTransferIcon)
+			break;
+		int xoffset = 0;
+		int yoffset = 0;
+		if(m_pDescriptor->bRecvFile)
+			yoffset = 64;
+		switch(m_eGeneralStatus)
 		{
-			if(!g_pDccFileTransferIcon)
-				break;
-			int xoffset = 0;
-			int yoffset = 0;
-			if(m_pDescriptor->bRecvFile)
-				yoffset = 64;
-			switch(m_eGeneralStatus)
+		case Connecting:
+			xoffset = 0;
+			break;
+		case Transferring:
+			xoffset = 48;
+			break;
+		case Success:
+			xoffset = 96;
+			break;
+		case Failure:
+			xoffset = 144;
+			break;
+		}
+		// 48 is width, 64 is height
+		p->drawPixmap(width / 2 - 48 / 2, rect.top() + height / 2 - 64 / 2, *g_pDccFileTransferIcon, xoffset, yoffset, 48, 64);
+	}
+	break;
+	case COLUMN_FILEINFO:
+	{
+		QFontMetrics fm(p->font());
+
+		QString szFrom = __tr2qs_ctx("From: ", "dcc");
+		QString szTo = __tr2qs_ctx("To: ", "dcc");
+
+		int daW1 = fm.width(szFrom);
+		int daW2 = fm.width(szTo);
+		if(daW1 < daW2)
+			daW1 = daW2;
+		int iLineSpacing = fm.lineSpacing();
+
+		int iY = rect.top() + 4;
+
+		p->setPen(Qt::black);
+
+		KviCString szRemote(KviCString::Format, "dcc://%s@%s:%s/%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data(),
+			m_pDescriptor->szFileName.toUtf8().data());
+
+		p->drawText(rect.left() + 4 + daW1, iY, width - (8 + daW1), height - 8, Qt::AlignTop | Qt::AlignLeft,
+			m_pDescriptor->bRecvFile ? szRemote.ptr() : m_pDescriptor->szLocalFileName.toUtf8().data());
+		iY += iLineSpacing;
+
+		p->drawText(rect.left() + 4 + daW1, iY, width - (8 + daW1), height - 8, Qt::AlignTop | Qt::AlignLeft,
+			m_pDescriptor->bRecvFile ? m_pDescriptor->szLocalFileName.toUtf8().data() : szRemote.ptr());
+		iY += iLineSpacing;
+
+		p->setPen(Qt::darkGray);
+
+		p->drawText(rect.left() + 4, rect.top() + 4, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, szFrom);
+		p->drawText(rect.left() + 4, rect.top() + 4 + iLineSpacing, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, szTo);
+
+		p->setPen(QColor(180, 180, 200));
+
+		iLineSpacing += 2;
+
+		p->drawRect(rect.left() + 4, rect.top() + height - (iLineSpacing + 4), width - 8, iLineSpacing);
+		p->fillRect(rect.left() + 5, rect.top() + height - (iLineSpacing + 3), width - 10, iLineSpacing - 2, bIsTerminated ? QColor(210, 210, 210) : QColor(190, 190, 240));
+
+		p->setPen(Qt::black);
+
+		p->drawText(rect.left() + 7, rect.top() + height - (iLineSpacing + 4), width - 14, iLineSpacing, Qt::AlignVCenter | Qt::AlignLeft, m_szStatusString);
+	}
+	break;
+	case COLUMN_PROGRESS:
+	{
+		QFontMetrics fm(p->font());
+
+		int iW = width - 8;
+		uint uAvgBandwidth = 0;
+		uint uInstantSpeed = 0;
+		quint64 uAckedBytes = 0;
+		quint64 uTransferred = 0;
+		int iEta = -1;
+
+		if(m_pDescriptor->bRecvFile)
+		{
+			if(m_pSlaveRecvThread)
 			{
-				case Connecting:
-					xoffset = 0;
-					break;
-				case Transferring:
-					xoffset = 48;
-					break;
-				case Success:
-					xoffset = 96;
-					break;
-				case Failure:
-					xoffset = 144;
-					break;
+				m_pSlaveRecvThread->initGetInfo();
+				uAvgBandwidth = m_pSlaveRecvThread->averageSpeed();
+				uInstantSpeed = m_pSlaveRecvThread->instantSpeed();
+				uTransferred = m_pSlaveRecvThread->filePosition();
+				m_pSlaveRecvThread->doneGetInfo();
 			}
-			// 48 is width, 64 is height
-			p->drawPixmap(width / 2 - 48 / 2, rect.top() + height / 2 - 64 / 2, *g_pDccFileTransferIcon, xoffset, yoffset, 48, 64);
 		}
-		break;
-		case COLUMN_FILEINFO:
+		else
 		{
-
-			QFontMetrics fm(p->font());
-
-			QString szFrom = __tr2qs_ctx("From: ", "dcc");
-			QString szTo = __tr2qs_ctx("To: ", "dcc");
-
-			int daW1 = fm.width(szFrom);
-			int daW2 = fm.width(szTo);
-			if(daW1 < daW2)
-				daW1 = daW2;
-			int iLineSpacing = fm.lineSpacing();
-
-			int iY = rect.top() + 4;
-
-			p->setPen(Qt::black);
-
-			KviCString szRemote(KviCString::Format, "dcc://%s@%s:%s/%s", m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data(),
-			    m_pDescriptor->szFileName.toUtf8().data());
-
-			p->drawText(rect.left() + 4 + daW1, iY, width - (8 + daW1), height - 8, Qt::AlignTop | Qt::AlignLeft,
-			    m_pDescriptor->bRecvFile ? szRemote.ptr() : m_pDescriptor->szLocalFileName.toUtf8().data());
-			iY += iLineSpacing;
-
-			p->drawText(rect.left() + 4 + daW1, iY, width - (8 + daW1), height - 8, Qt::AlignTop | Qt::AlignLeft,
-			    m_pDescriptor->bRecvFile ? m_pDescriptor->szLocalFileName.toUtf8().data() : szRemote.ptr());
-			iY += iLineSpacing;
-
-			p->setPen(Qt::darkGray);
-
-			p->drawText(rect.left() + 4, rect.top() + 4, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, szFrom);
-			p->drawText(rect.left() + 4, rect.top() + 4 + iLineSpacing, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, szTo);
-
-			p->setPen(QColor(180, 180, 200));
-
-			iLineSpacing += 2;
-
-			p->drawRect(rect.left() + 4, rect.top() + height - (iLineSpacing + 4), width - 8, iLineSpacing);
-			p->fillRect(rect.left() + 5, rect.top() + height - (iLineSpacing + 3), width - 10, iLineSpacing - 2, bIsTerminated ? QColor(210, 210, 210) : QColor(190, 190, 240));
-
-			p->setPen(Qt::black);
-
-			p->drawText(rect.left() + 7, rect.top() + height - (iLineSpacing + 4), width - 14, iLineSpacing, Qt::AlignVCenter | Qt::AlignLeft, m_szStatusString);
-		}
-		break;
-		case COLUMN_PROGRESS:
-		{
-
-			QFontMetrics fm(p->font());
-
-			int iW = width - 8;
-			uint uAvgBandwidth = 0;
-			uint uInstantSpeed = 0;
-			quint64 uAckedBytes = 0;
-			quint64 uTransferred = 0;
-			int iEta = -1;
-
-			if(m_pDescriptor->bRecvFile)
+			if(m_pSlaveSendThread)
 			{
-				if(m_pSlaveRecvThread)
-				{
-					m_pSlaveRecvThread->initGetInfo();
-					uAvgBandwidth = m_pSlaveRecvThread->averageSpeed();
-					uInstantSpeed = m_pSlaveRecvThread->instantSpeed();
-					uTransferred = m_pSlaveRecvThread->filePosition();
-					m_pSlaveRecvThread->doneGetInfo();
-				}
+				m_pSlaveSendThread->initGetInfo();
+				uAvgBandwidth = m_pSlaveSendThread->averageSpeed();
+				uInstantSpeed = m_pSlaveSendThread->instantSpeed();
+				uTransferred = m_pSlaveSendThread->filePosition();
+				uAckedBytes = m_pSlaveSendThread->ackedBytes();
+				m_pSlaveSendThread->doneGetInfo();
+			}
+		}
+
+		p->setPen(bIsTerminated ? Qt::lightGray : QColor(210, 210, 240));
+		p->drawRect(rect.left() + 4, rect.top() + 4, iW, 12);
+
+		iW -= 2;
+
+		if(m_uTotalFileSize > 0)
+		{
+			if(uAvgBandwidth > 0)
+			{
+				quint64 uRemaining = m_uTotalFileSize - uTransferred;
+				iEta = uRemaining / uAvgBandwidth;
+			}
+
+			if(!m_pDescriptor->bNoAcks && (uAckedBytes > 0) && (uAckedBytes < uTransferred))
+			{
+				// we are sending a file and are getting acks
+
+				double dPerc1 = (double)(((double)uTransferred) * 100.0) / (double)m_uTotalFileSize;
+				int iL1 = (int)((((double)iW) * dPerc1) / 100.0);
+				double dPerc2 = (double)(((double)uAckedBytes) * 100.0) / (double)m_uTotalFileSize;
+				int iL2 = (int)((((double)iW) * dPerc2) / 100.0);
+				int iW2 = iL1 - iL2;
+				if(iW2 > 0)
+					p->fillRect(rect.left() + 5 + iL2, rect.top() + 5, iW2, 10, bIsTerminated ? QColor(150, 130, 110) : QColor(220, 170, 100));
+				p->fillRect(rect.left() + 5, rect.top() + 5, iL2, 10, bIsTerminated ? QColor(140, 110, 110) : QColor(200, 100, 100));
+
+				txt = QString(__tr2qs_ctx("%1 of %2 (%3%)", "dcc")).arg(KviQString::makeSizeReadable(uAckedBytes)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc2, 0, 'f', 2);
 			}
 			else
 			{
-				if(m_pSlaveSendThread)
-				{
-					m_pSlaveSendThread->initGetInfo();
-					uAvgBandwidth = m_pSlaveSendThread->averageSpeed();
-					uInstantSpeed = m_pSlaveSendThread->instantSpeed();
-					uTransferred = m_pSlaveSendThread->filePosition();
-					uAckedBytes = m_pSlaveSendThread->ackedBytes();
-					m_pSlaveSendThread->doneGetInfo();
-				}
+				// we are receiving a file or not sending acks
+				double dPerc = (double)(((double)uTransferred) * 100.0) / (double)m_uTotalFileSize;
+				int iL = (int)((((double)iW) * dPerc) / 100.0);
+				p->fillRect(rect.left() + 5, rect.top() + 5, iL, 10, bIsTerminated ? QColor(140, 110, 110) : QColor(200, 100, 100));
+
+				txt = QString(__tr2qs_ctx("%1 of %2 (%3%)", "dcc")).arg(KviQString::makeSizeReadable(uTransferred)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc, 0, 'f', 2);
 			}
+		}
+		else
+		{
+			txt = QString(__tr2qs_ctx("%1", "dcc")).arg(KviQString::makeSizeReadable(uTransferred));
+		}
 
-			p->setPen(bIsTerminated ? Qt::lightGray : QColor(210, 210, 240));
-			p->drawRect(rect.left() + 4, rect.top() + 4, iW, 12);
+		p->setPen(Qt::black);
 
-			iW -= 2;
+		p->drawText(rect.left() + 4, rect.top() + 19, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, txt);
 
-			if(m_uTotalFileSize > 0)
+		int iLeftHalf = (iW - 2) / 2;
+		int iRightHalf = iW - (iLeftHalf + 1);
+		int iLineSpacing = fm.lineSpacing() + 2;
+
+		if(!bIsTerminated)
+		{
+			txt = __tr2qs_ctx("Speed:", "dcc");
+			txt += " ";
+
+			QString tmpisp;
+			KviNetUtils::formatNetworkBandwidthString(tmpisp, uInstantSpeed);
+			txt += tmpisp;
+			txt += " [";
+		}
+		else
+		{
+			txt = "";
+		}
+
+		txt += __tr2qs_ctx("Average:", "dcc");
+		txt += " ";
+		QString tmpspd;
+		KviNetUtils::formatNetworkBandwidthString(tmpspd, uAvgBandwidth);
+		txt += tmpspd;
+
+		if(!bIsTerminated)
+		{
+			txt += "]";
+		}
+
+		int iDaH = height - (iLineSpacing + 4);
+
+		p->setPen(QColor(180, 180, 200));
+		p->drawRect(rect.left() + 4, rect.top() + iDaH, iLeftHalf, iLineSpacing);
+		p->fillRect(rect.left() + 5, rect.top() + iDaH + 1, iLeftHalf - 2, iLineSpacing - 2, bIsTerminated ? QColor(210, 210, 210) : QColor(190, 190, 240));
+		p->setPen(bIsTerminated ? Qt::darkGray : Qt::black);
+		p->drawText(rect.left() + 6, rect.top() + iDaH, iLeftHalf - 4, iLineSpacing, Qt::AlignLeft | Qt::AlignVCenter, txt);
+
+		if(bIsTerminated)
+		{
+			if((m_tTransferStartTime != 0) && (m_tTransferEndTime != 0))
 			{
-				if(uAvgBandwidth > 0)
-				{
-					quint64 uRemaining = m_uTotalFileSize - uTransferred;
-					iEta = uRemaining / uAvgBandwidth;
-				}
-
-				if(!m_pDescriptor->bNoAcks && (uAckedBytes > 0) && (uAckedBytes < uTransferred))
-				{
-					// we are sending a file and are getting acks
-
-					double dPerc1 = (double)(((double)uTransferred) * 100.0) / (double)m_uTotalFileSize;
-					int iL1 = (int)((((double)iW) * dPerc1) / 100.0);
-					double dPerc2 = (double)(((double)uAckedBytes) * 100.0) / (double)m_uTotalFileSize;
-					int iL2 = (int)((((double)iW) * dPerc2) / 100.0);
-					int iW2 = iL1 - iL2;
-					if(iW2 > 0)
-						p->fillRect(rect.left() + 5 + iL2, rect.top() + 5, iW2, 10, bIsTerminated ? QColor(150, 130, 110) : QColor(220, 170, 100));
-					p->fillRect(rect.left() + 5, rect.top() + 5, iL2, 10, bIsTerminated ? QColor(140, 110, 110) : QColor(200, 100, 100));
-
-					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)", "dcc")).arg(KviQString::makeSizeReadable(uAckedBytes)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc2, 0, 'f', 2);
-				}
-				else
-				{
-					// we are receiving a file or not sending acks
-					double dPerc = (double)(((double)uTransferred) * 100.0) / (double)m_uTotalFileSize;
-					int iL = (int)((((double)iW) * dPerc) / 100.0);
-					p->fillRect(rect.left() + 5, rect.top() + 5, iL, 10, bIsTerminated ? QColor(140, 110, 110) : QColor(200, 100, 100));
-
-					txt = QString(__tr2qs_ctx("%1 of %2 (%3%)", "dcc")).arg(KviQString::makeSizeReadable(uTransferred)).arg(KviQString::makeSizeReadable(m_uTotalFileSize)).arg(dPerc, 0, 'f', 2);
-				}
-			}
-			else
-			{
-				txt = QString(__tr2qs_ctx("%1", "dcc")).arg(KviQString::makeSizeReadable(uTransferred));
-			}
-
-			p->setPen(Qt::black);
-
-			p->drawText(rect.left() + 4, rect.top() + 19, width - 8, height - 8, Qt::AlignTop | Qt::AlignLeft, txt);
-
-			int iLeftHalf = (iW - 2) / 2;
-			int iRightHalf = iW - (iLeftHalf + 1);
-			int iLineSpacing = fm.lineSpacing() + 2;
-
-			if(!bIsTerminated)
-			{
-				txt = __tr2qs_ctx("Speed:", "dcc");
-				txt += " ";
-
-				QString tmpisp;
-				KviNetUtils::formatNetworkBandwidthString(tmpisp, uInstantSpeed);
-				txt += tmpisp;
-				txt += " [";
+				QString tot = KviTimeUtils::formatTimeInterval(kvi_timeSpan(m_tTransferEndTime, m_tTransferStartTime), KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
+				txt = "Total: ";
+				txt += tot;
 			}
 			else
 			{
 				txt = "";
 			}
-
-			txt += __tr2qs_ctx("Average:", "dcc");
-			txt += " ";
-			QString tmpspd;
-			KviNetUtils::formatNetworkBandwidthString(tmpspd, uAvgBandwidth);
-			txt += tmpspd;
-
-			if(!bIsTerminated)
+		}
+		else
+		{
+			if(iEta >= 0)
 			{
-				txt += "]";
-			}
-
-			int iDaH = height - (iLineSpacing + 4);
-
-			p->setPen(QColor(180, 180, 200));
-			p->drawRect(rect.left() + 4, rect.top() + iDaH, iLeftHalf, iLineSpacing);
-			p->fillRect(rect.left() + 5, rect.top() + iDaH + 1, iLeftHalf - 2, iLineSpacing - 2, bIsTerminated ? QColor(210, 210, 210) : QColor(190, 190, 240));
-			p->setPen(bIsTerminated ? Qt::darkGray : Qt::black);
-			p->drawText(rect.left() + 6, rect.top() + iDaH, iLeftHalf - 4, iLineSpacing, Qt::AlignLeft | Qt::AlignVCenter, txt);
-
-			if(bIsTerminated)
-			{
-				if((m_tTransferStartTime != 0) && (m_tTransferEndTime != 0))
-				{
-					QString tot = KviTimeUtils::formatTimeInterval(kvi_timeSpan(m_tTransferEndTime, m_tTransferStartTime), KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
-					txt = "Total: ";
-					txt += tot;
-				}
-				else
-				{
-					txt = "";
-				}
+				QString eta = KviTimeUtils::formatTimeInterval(iEta, KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
+				txt = "ETA: ";
+				txt += eta;
 			}
 			else
 			{
-				if(iEta >= 0)
-				{
-					QString eta = KviTimeUtils::formatTimeInterval(iEta, KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
-					txt = "ETA: ";
-					txt += eta;
-				}
-				else
-				{
-					txt = "ETA: ?";
-				}
+				txt = "ETA: ?";
 			}
-
-			p->setPen(QColor(180, 180, 200));
-			p->drawRect(rect.left() + width - (4 + iRightHalf), rect.top() + iDaH, iRightHalf, iLineSpacing);
-			p->fillRect(rect.left() + width - (3 + iRightHalf), rect.top() + iDaH + 1, iRightHalf - 2, iLineSpacing - 2, bIsTerminated ? QColor(210, 210, 210) : QColor(190, 190, 240));
-			p->setPen(bIsTerminated ? Qt::darkGray : Qt::black);
-			p->drawText(rect.left() + width - (2 + iRightHalf), rect.top() + iDaH, iRightHalf - 4, iLineSpacing, Qt::AlignLeft | Qt::AlignVCenter, txt);
 		}
-		break;
+
+		p->setPen(QColor(180, 180, 200));
+		p->drawRect(rect.left() + width - (4 + iRightHalf), rect.top() + iDaH, iRightHalf, iLineSpacing);
+		p->fillRect(rect.left() + width - (3 + iRightHalf), rect.top() + iDaH + 1, iRightHalf - 2, iLineSpacing - 2, bIsTerminated ? QColor(210, 210, 210) : QColor(190, 190, 240));
+		p->setPen(bIsTerminated ? Qt::darkGray : Qt::black);
+		p->drawText(rect.left() + width - (2 + iRightHalf), rect.top() + iDaH, iRightHalf - 4, iLineSpacing, Qt::AlignLeft | Qt::AlignVCenter, txt);
+	}
+	break;
 	}
 }
 
@@ -2113,23 +2108,23 @@ void DccFileTransfer::connectionInProgress()
 				szReq.prepend("S");
 #endif
 			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %s %s %s %s%c",
-			    m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-			    0x01,
-			    m_pDescriptor->console()->connection()->encodeText(szReq.ptr()).data(),
-			    m_pDescriptor->console()->connection()->encodeText(fName).data(),
-			    ip.toUtf8().data(), port.ptr(),
-			    m_pDescriptor->szFileSize.toUtf8().data(), m_pDescriptor->zeroPortRequestTag(), 0x01);
+				m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+				0x01,
+				m_pDescriptor->console()->connection()->encodeText(szReq.ptr()).data(),
+				m_pDescriptor->console()->connection()->encodeText(fName).data(),
+				ip.toUtf8().data(), port.ptr(),
+				m_pDescriptor->szFileSize.toUtf8().data(), m_pDescriptor->zeroPortRequestTag(), 0x01);
 		}
 		else
 		{
 			szReq = m_szDccType;
 			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %s %s %Q%c",
-			    m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-			    0x01,
-			    m_pDescriptor->console()->connection()->encodeText(szReq.ptr()).data(),
-			    m_pDescriptor->console()->connection()->encodeText(fName).data(),
-			    ip.toUtf8().data(), port.ptr(),
-			    &(m_pDescriptor->szLocalFileSize), 0x01);
+				m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+				0x01,
+				m_pDescriptor->console()->connection()->encodeText(szReq.ptr()).data(),
+				m_pDescriptor->console()->connection()->encodeText(fName).data(),
+				ip.toUtf8().data(), port.ptr(),
+				&(m_pDescriptor->szLocalFileSize), 0x01);
 		}
 		outputAndLog(__tr2qs_ctx("Sent DCC %1 request to %2, waiting for remote client to connect...", "dcc").arg(szReq.ptr(), m_pDescriptor->szNick));
 	}
@@ -2164,80 +2159,80 @@ bool DccFileTransfer::event(QEvent * e)
 	{
 		switch(((KviThreadEvent *)e)->id())
 		{
-			case KVI_DCC_THREAD_EVENT_ERROR:
+		case KVI_DCC_THREAD_EVENT_ERROR:
+		{
+			KviError::Code * pError = ((KviThreadDataEvent<KviError::Code> *)e)->getData();
+			QString szErrorString = KviError::getDescription(*pError);
+			delete pError;
+			if(m_pDescriptor->bRecvFile)
+				g_pApp->fileDownloadTerminated(false, m_pDescriptor->szFileName.toUtf8().data(), m_pDescriptor->szLocalFileName.toUtf8().data(), m_pDescriptor->szNick.toUtf8().data(), szErrorString.toUtf8().data());
+
+			m_szStatusString = __tr2qs_ctx("Transfer failed: ", "dcc");
+			m_szStatusString += szErrorString;
+			m_eGeneralStatus = Failure;
+			m_tTransferEndTime = kvi_unixTime();
+
+			KVS_TRIGGER_EVENT_3(KviEvent_OnDCCFileTransferFailed,
+				eventWindow(),
+				szErrorString,
+				(kvs_int_t)(m_pSlaveRecvThread ? m_pSlaveRecvThread->receivedBytes() : m_pSlaveSendThread->sentBytes()),
+				m_pDescriptor->idString());
+
+			outputAndLog(KVI_OUT_DCCERROR, m_szStatusString);
+			displayUpdate();
+			return true;
+		}
+		break;
+		case KVI_DCC_THREAD_EVENT_SUCCESS:
+		{
+			// FIXME: for >= 3.2.0 change this text to
+			// File Upload/Download terminated, or something like this
+			if(KVI_OPTION_BOOL(KviOption_boolNotifyDccSendSuccessInConsole))
 			{
-				KviError::Code * pError = ((KviThreadDataEvent<KviError::Code> *)e)->getData();
-				QString szErrorString = KviError::getDescription(*pError);
-				delete pError;
-				if(m_pDescriptor->bRecvFile)
-					g_pApp->fileDownloadTerminated(false, m_pDescriptor->szFileName.toUtf8().data(), m_pDescriptor->szLocalFileName.toUtf8().data(), m_pDescriptor->szNick.toUtf8().data(), szErrorString.toUtf8().data());
-
-				m_szStatusString = __tr2qs_ctx("Transfer failed: ", "dcc");
-				m_szStatusString += szErrorString;
-				m_eGeneralStatus = Failure;
-				m_tTransferEndTime = kvi_unixTime();
-
-				KVS_TRIGGER_EVENT_3(KviEvent_OnDCCFileTransferFailed,
-				    eventWindow(),
-				    szErrorString,
-				    (kvs_int_t)(m_pSlaveRecvThread ? m_pSlaveRecvThread->receivedBytes() : m_pSlaveSendThread->sentBytes()),
-				    m_pDescriptor->idString());
-
-				outputAndLog(KVI_OUT_DCCERROR, m_szStatusString);
-				displayUpdate();
-				return true;
+				KviConsoleWindow * c;
+				if(!g_pApp->windowExists(m_pDescriptor->console()))
+					c = g_pApp->activeConsole();
+				else
+					c = m_pDescriptor->console();
+				c->output(KVI_OUT_DCCMSG, __tr2qs_ctx("DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]%Q\r%Q\r", "dcc"),
+					m_pDescriptor->bIsTdcc ? (m_pDescriptor->bRecvFile ? "TRECV" : "TSEND") : (m_pDescriptor->bRecvFile ? "RECV" : "SEND"),
+					&(m_pDescriptor->szNick), &(m_pDescriptor->szIp), &(m_pDescriptor->szPort),
+					&(KVI_OPTION_STRING(KviOption_stringUrlFileCommand)),
+					&(m_pDescriptor->szLocalFileName));
 			}
+
+			if(m_pDescriptor->bRecvFile)
+				g_pApp->fileDownloadTerminated(true, m_pDescriptor->szFileName.toUtf8().data(), m_pDescriptor->szLocalFileName.toUtf8().data(), m_pDescriptor->szNick.toUtf8().data());
+			m_szStatusString = __tr2qs_ctx("Transfer completed", "dcc");
+			outputAndLog(m_szStatusString);
+			m_eGeneralStatus = Success;
+			m_tTransferEndTime = kvi_unixTime();
+			if(m_pResumeTimer)
+				delete m_pResumeTimer;
+
+			KVS_TRIGGER_EVENT_2(KviEvent_OnDCCFileTransferSuccess,
+				eventWindow(),
+				(kvs_int_t)(m_pSlaveRecvThread ? m_pSlaveRecvThread->receivedBytes() : m_pSlaveSendThread->sentBytes()),
+				m_pDescriptor->idString());
+
+			displayUpdate();
+
+			if(KVI_OPTION_BOOL(KviOption_boolAutoCloseDccSendOnSuccess))
+				die();
+			return true;
+		}
+		break;
+		case KVI_DCC_THREAD_EVENT_MESSAGE:
+		{
+			KviCString * str = ((KviThreadDataEvent<KviCString> *)e)->getData();
+			outputAndLog(QString(__tr_no_xgettext_ctx(str->ptr(), "dcc")));
+			delete str;
+			return true;
+		}
+		break;
+		default:
+			qDebug("Invalid event type %d received", ((KviThreadEvent *)e)->id());
 			break;
-			case KVI_DCC_THREAD_EVENT_SUCCESS:
-			{
-				// FIXME: for >= 3.2.0 change this text to
-				// File Upload/Download terminated, or something like this
-				if(KVI_OPTION_BOOL(KviOption_boolNotifyDccSendSuccessInConsole))
-				{
-					KviConsoleWindow * c;
-					if(!g_pApp->windowExists(m_pDescriptor->console()))
-						c = g_pApp->activeConsole();
-					else
-						c = m_pDescriptor->console();
-					c->output(KVI_OUT_DCCMSG, __tr2qs_ctx("DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]%Q\r%Q\r", "dcc"),
-					    m_pDescriptor->bIsTdcc ? (m_pDescriptor->bRecvFile ? "TRECV" : "TSEND") : (m_pDescriptor->bRecvFile ? "RECV" : "SEND"),
-					    &(m_pDescriptor->szNick), &(m_pDescriptor->szIp), &(m_pDescriptor->szPort),
-					    &(KVI_OPTION_STRING(KviOption_stringUrlFileCommand)),
-					    &(m_pDescriptor->szLocalFileName));
-				}
-
-				if(m_pDescriptor->bRecvFile)
-					g_pApp->fileDownloadTerminated(true, m_pDescriptor->szFileName.toUtf8().data(), m_pDescriptor->szLocalFileName.toUtf8().data(), m_pDescriptor->szNick.toUtf8().data());
-				m_szStatusString = __tr2qs_ctx("Transfer completed", "dcc");
-				outputAndLog(m_szStatusString);
-				m_eGeneralStatus = Success;
-				m_tTransferEndTime = kvi_unixTime();
-				if(m_pResumeTimer)
-					delete m_pResumeTimer;
-
-				KVS_TRIGGER_EVENT_2(KviEvent_OnDCCFileTransferSuccess,
-				    eventWindow(),
-				    (kvs_int_t)(m_pSlaveRecvThread ? m_pSlaveRecvThread->receivedBytes() : m_pSlaveSendThread->sentBytes()),
-				    m_pDescriptor->idString());
-
-				displayUpdate();
-
-				if(KVI_OPTION_BOOL(KviOption_boolAutoCloseDccSendOnSuccess))
-					die();
-				return true;
-			}
-			break;
-			case KVI_DCC_THREAD_EVENT_MESSAGE:
-			{
-				KviCString * str = ((KviThreadDataEvent<KviCString> *)e)->getData();
-				outputAndLog(QString(__tr_no_xgettext_ctx(str->ptr(), "dcc")));
-				delete str;
-				return true;
-			}
-			break;
-			default:
-				qDebug("Invalid event type %d received", ((KviThreadEvent *)e)->id());
-				break;
 		}
 	}
 	return KviFileTransfer::event(e);
@@ -2396,10 +2391,10 @@ bool DccFileTransfer::doResume(const char * filename, const char * port, quint64
 		{
 			if(_OUTPUT_VERBOSE)
 				outputAndLog(
-				    KVI_OUT_DCCMSG,
-				    __tr2qs_ctx("Invalid RESUME request: invalid file name (got '%1' but should be '%2')", "dcc")
-				        .arg(filename)
-				        .arg(m_pDescriptor->szFileName));
+					KVI_OUT_DCCMSG,
+					__tr2qs_ctx("Invalid RESUME request: invalid file name (got '%1' but should be '%2')", "dcc")
+					.arg(filename)
+					.arg(m_pDescriptor->szFileName));
 			return false; // bad file name
 		}
 
@@ -2431,12 +2426,12 @@ bool DccFileTransfer::doResume(const char * filename, const char * port, quint64
 	KviIrcServerParser::encodeCtcpParameter(filename, szBuffy);
 
 	m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC ACCEPT %s %s %s%c",
-	    m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-	    0x01,
-	    m_pDescriptor->console()->connection()->encodeText(szBuffy.ptr()).data(),
-	    port,
-	    m_pDescriptor->console()->connection()->encodeText(QString::number(filePos)).data(),
-	    0x01);
+		m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+		0x01,
+		m_pDescriptor->console()->connection()->encodeText(szBuffy.ptr()).data(),
+		port,
+		m_pDescriptor->console()->connection()->encodeText(QString::number(filePos)).data(),
+		0x01);
 
 	return true;
 }
@@ -2454,7 +2449,7 @@ DccThread * DccFileTransfer::getSlaveThread()
 }
 
 DccFileTransferBandwidthDialog::DccFileTransferBandwidthDialog(QWidget * pParent, DccFileTransfer * t)
-    : QDialog(pParent)
+	: QDialog(pParent)
 {
 	QGridLayout * g = new QGridLayout(this);
 
@@ -2500,7 +2495,7 @@ DccFileTransferBandwidthDialog::DccFileTransferBandwidthDialog(QWidget * pParent
 }
 
 DccFileTransferBandwidthDialog::~DccFileTransferBandwidthDialog()
-    = default;
+= default;
 
 void DccFileTransferBandwidthDialog::okClicked()
 {

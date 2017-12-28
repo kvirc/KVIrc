@@ -98,7 +98,7 @@ protected:
 	virtual void triggerDestructionEvents();
 	void startConnection();
 	virtual DccThread * getSlaveThread() { return m_pSlaveThread; };
-protected slots:
+	protected slots:
 	void handleMarshalError(KviError::Code eError);
 	void connected();
 	void sslError(const char * msg);

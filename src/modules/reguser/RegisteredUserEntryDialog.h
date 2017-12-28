@@ -62,7 +62,7 @@ protected:
 protected:
 	void fillData();
 	virtual void closeEvent(QCloseEvent *);
-protected slots:
+	protected slots:
 	void okClicked();
 	void addClicked();
 	void delClicked();
@@ -83,7 +83,7 @@ protected:
 	QLineEdit * m_pHostEdit;
 
 	virtual void closeEvent(QCloseEvent *);
-protected slots:
+	protected slots:
 	void okClicked();
 };
 
@@ -130,7 +130,7 @@ protected:
 	QCheckBox * m_pIgnoreHighlight;
 
 	virtual void closeEvent(QCloseEvent *);
-protected slots:
+	protected slots:
 	void okClicked();
 	void addMaskClicked();
 	void delMaskClicked();

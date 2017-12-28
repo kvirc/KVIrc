@@ -215,14 +215,14 @@ KVSO_END_DESTRUCTOR(KvsObject_http)
 bool KvsObject_http::functionSetHost(KviKvsObjectFunctionCall * c)
 {
 	CHECK_INTERNAL_POINTER(m_pHttp)
-	QString szHost;
+		QString szHost;
 	QString szConnectionType;
 	kvs_uint_t uRemotePort;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("host", KVS_PT_STRING, 0, szHost)
-	KVSO_PARAMETER("remote_port", KVS_PT_UNSIGNEDINTEGER, KVS_PF_OPTIONAL, uRemotePort)
-	KVSO_PARAMETERS_END(c)
-	QUrl url(szHost);
+		KVSO_PARAMETER("host", KVS_PT_STRING, 0, szHost)
+		KVSO_PARAMETER("remote_port", KVS_PT_UNSIGNEDINTEGER, KVS_PF_OPTIONAL, uRemotePort)
+		KVSO_PARAMETERS_END(c)
+		QUrl url(szHost);
 	if(!url.isValid())
 	{
 		c->warning(__tr2qs_ctx("Host '%Q' is not a valid URL", "objects"), &szHost);
@@ -250,47 +250,47 @@ bool KvsObject_http::functionSetHost(KviKvsObjectFunctionCall * c)
 bool KvsObject_http::functionCurrentId(KviKvsObjectFunctionCall * c)
 {
 	CHECK_INTERNAL_POINTER(m_pHttp)
-	c->returnValue()->setInteger(m_pHttp->currentId());
+		c->returnValue()->setInteger(m_pHttp->currentId());
 	return true;
 }
 bool KvsObject_http::functionSetUser(KviKvsObjectFunctionCall * c)
 {
 	CHECK_INTERNAL_POINTER(m_pHttp)
-	QString szUser;
+		QString szUser;
 	QString szPass;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("user", KVS_PT_STRING, 0, szUser)
-	KVSO_PARAMETER("password", KVS_PT_STRING, 0, szPass)
-	KVSO_PARAMETERS_END(c)
-	m_pHttp->setUser(szUser, szPass);
+		KVSO_PARAMETER("user", KVS_PT_STRING, 0, szUser)
+		KVSO_PARAMETER("password", KVS_PT_STRING, 0, szPass)
+		KVSO_PARAMETERS_END(c)
+		m_pHttp->setUser(szUser, szPass);
 	return true;
 }
 bool KvsObject_http::functionSetProxy(KviKvsObjectFunctionCall * c)
 {
 	CHECK_INTERNAL_POINTER(m_pHttp)
-	QString szHost;
+		QString szHost;
 	QString szUser, szPass;
 	kvs_uint_t uRemotePort;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("host", KVS_PT_STRING, 0, szHost)
-	KVSO_PARAMETER("remote_port", KVS_PT_UNSIGNEDINTEGER, KVS_PF_OPTIONAL, uRemotePort)
-	KVSO_PARAMETER("user", KVS_PT_STRING, KVS_PF_OPTIONAL, szUser)
-	KVSO_PARAMETER("pass", KVS_PT_STRING, KVS_PF_OPTIONAL, szPass)
-	KVSO_PARAMETERS_END(c)
-	m_pHttp->setProxy(szHost, uRemotePort, szUser, szPass);
+		KVSO_PARAMETER("host", KVS_PT_STRING, 0, szHost)
+		KVSO_PARAMETER("remote_port", KVS_PT_UNSIGNEDINTEGER, KVS_PF_OPTIONAL, uRemotePort)
+		KVSO_PARAMETER("user", KVS_PT_STRING, KVS_PF_OPTIONAL, szUser)
+		KVSO_PARAMETER("pass", KVS_PT_STRING, KVS_PF_OPTIONAL, szPass)
+		KVSO_PARAMETERS_END(c)
+		m_pHttp->setProxy(szHost, uRemotePort, szUser, szPass);
 	return true;
 }
 
 bool KvsObject_http::functionGet(KviKvsObjectFunctionCall * c)
 {
 	CHECK_INTERNAL_POINTER(m_pHttp)
-	QString szPath, szDest;
+		QString szPath, szDest;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("remote_path", KVS_PT_STRING, 0, szPath)
-	KVSO_PARAMETER("local_filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szDest)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("remote_path", KVS_PT_STRING, 0, szPath)
+		KVSO_PARAMETER("local_filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szDest)
+		KVSO_PARAMETERS_END(c)
 
-	QFile * pFile = nullptr;
+		QFile * pFile = nullptr;
 	if(!szDest.isEmpty())
 	{
 		pFile = new QFile(szDest);
@@ -317,13 +317,13 @@ bool KvsObject_http::functionGet(KviKvsObjectFunctionCall * c)
 bool KvsObject_http::functionPost(KviKvsObjectFunctionCall * c)
 {
 	CHECK_INTERNAL_POINTER(m_pHttp)
-	QString szPath, szDest, szData;
+		QString szPath, szDest, szData;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("remote_path", KVS_PT_STRING, 0, szPath)
-	KVSO_PARAMETER("post_data", KVS_PT_STRING, 0, szData)
-	KVSO_PARAMETER("local_filename", KVS_PT_STRING, 0, szDest)
-	KVSO_PARAMETERS_END(c)
-	QFile * pFile = nullptr;
+		KVSO_PARAMETER("remote_path", KVS_PT_STRING, 0, szPath)
+		KVSO_PARAMETER("post_data", KVS_PT_STRING, 0, szData)
+		KVSO_PARAMETER("local_filename", KVS_PT_STRING, 0, szDest)
+		KVSO_PARAMETERS_END(c)
+		QFile * pFile = nullptr;
 	if(!szDest.isEmpty())
 	{
 		pFile = new QFile(szDest);
@@ -343,29 +343,29 @@ bool KvsObject_http::functionPost(KviKvsObjectFunctionCall * c)
 bool KvsObject_http::functionAbort(KviKvsObjectFunctionCall * c)
 {
 	CHECK_INTERNAL_POINTER(m_pHttp)
-	m_bAbort = true;
+		m_bAbort = true;
 	m_pHttp->abort();
 	return true;
 }
 bool KvsObject_http::functionReadAll(KviKvsObjectFunctionCall * c)
 {
 	CHECK_INTERNAL_POINTER(m_pHttp)
-	c->returnValue()->setString(m_pHttp->readAll());
+		c->returnValue()->setString(m_pHttp->readAll());
 	return true;
 }
 bool KvsObject_http::functionErrorString(KviKvsObjectFunctionCall * c)
 {
 	CHECK_INTERNAL_POINTER(m_pHttp)
-	c->returnValue()->setString(m_pHttp->errorString());
+		c->returnValue()->setString(m_pHttp->errorString());
 	return true;
 }
 bool KvsObject_http::functionFollowRedirect(KviKvsObjectFunctionCall * c)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("enable", KVS_PT_BOOLEAN, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	m_bEnableForceRedirect = bEnabled;
+		KVSO_PARAMETER("enable", KVS_PT_BOOLEAN, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		m_bEnableForceRedirect = bEnabled;
 	return true;
 }
 //signals & slots
@@ -378,7 +378,6 @@ bool KvsObject_http::functionRequestFinishedEvent(KviKvsObjectFunctionCall * c)
 
 void KvsObject_http::slotRequestFinished(int id, bool error)
 {
-
 	if(m_bAbort)
 	{
 		m_bAbort = false;
@@ -485,24 +484,24 @@ void KvsObject_http::slotResponseHeaderReceived(const QHttpResponseHeader & r)
 	QString szResponse;
 	switch(r.statusCode())
 	{
-		case 200:
-			szResponse = "OK";
-			break;
-		case 301:
-			szResponse = "Moved Permanently";
-			break;
-		case 302:
-			szResponse = "Found";
-			break;
-		case 303:
-			szResponse = "See Other";
-			break;
-		case 307:
-			szResponse = "Temporary Redirect";
-			break;
-		default:
-			szResponse = r.reasonPhrase();
-			m_bAbort = true;
+	case 200:
+		szResponse = "OK";
+		break;
+	case 301:
+		szResponse = "Moved Permanently";
+		break;
+	case 302:
+		szResponse = "Found";
+		break;
+	case 303:
+		szResponse = "See Other";
+		break;
+	case 307:
+		szResponse = "Temporary Redirect";
+		break;
+	default:
+		szResponse = r.reasonPhrase();
+		m_bAbort = true;
 	}
 	if(r.statusCode() == 400)
 	{
@@ -518,24 +517,24 @@ void KvsObject_http::slotReadyRead(const QHttpResponseHeader & r)
 	QString szResponse;
 	switch(r.statusCode())
 	{
-		case 200:
-			szResponse = "OK";
-			break;
-		case 301:
-			szResponse = "Moved Permanently";
-			break;
-		case 302:
-			szResponse = "Found";
-			break;
-		case 303:
-			szResponse = "See Other";
-			break;
-		case 307:
-			szResponse = "Temporary Redirect";
-			break;
-		default:
-			szResponse = r.reasonPhrase();
-			m_bAbort = true;
+	case 200:
+		szResponse = "OK";
+		break;
+	case 301:
+		szResponse = "Moved Permanently";
+		break;
+	case 302:
+		szResponse = "Found";
+		break;
+	case 303:
+		szResponse = "See Other";
+		break;
+	case 307:
+		szResponse = "Temporary Redirect";
+		break;
+	default:
+		szResponse = r.reasonPhrase();
+		m_bAbort = true;
 	}
 	KviKvsVariantList lParams;
 	lParams.append(new KviKvsVariant(szResponse));
@@ -593,7 +592,6 @@ void KvsObject_http::slotSslErrors(QList<QSslError> sslerrors)
 
 bool KvsObject_http::functionSslErrorsEvent(KviKvsObjectFunctionCall * c)
 {
-
 	emitSignal("sslErrors", c, c->params());
 	return true;
 }

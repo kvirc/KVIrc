@@ -37,7 +37,7 @@
 /*
 	@doc: pixmap
 	@keyterms:
-	    pixmap object class
+		pixmap object class
 	@title:
 		pixmap class
 	@type:
@@ -116,11 +116,11 @@ KVSO_END_CONSTRUCTOR(KvsObject_pixmap)
 KVSO_BEGIN_DESTRUCTOR(KvsObject_pixmap)
 emit aboutToDie();
 if(m_pPixmap)
-	delete m_pPixmap;
+delete m_pPixmap;
 if(m_pAnimatedPixmap)
-	delete m_pAnimatedPixmap;
+delete m_pAnimatedPixmap;
 if(m_pImage)
-	delete m_pImage;
+delete m_pImage;
 KVSO_END_CONSTRUCTOR(KvsObject_pixmap)
 
 KVSO_CLASS_FUNCTION(pixmap, fill)
@@ -129,14 +129,14 @@ KVSO_CLASS_FUNCTION(pixmap, fill)
 	QString szColorMode, szColor;
 	KviKvsVariant *var1, *var2, *var3;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("Color_1_Or_Colorname", KVS_PT_VARIANT, 0, var1)
-	KVSO_PARAMETER("Color_2", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var2)
-	KVSO_PARAMETER("Colo3_3", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var3)
-	KVSO_PARAMETER("color_mode", KVS_PT_STRING, KVS_PF_OPTIONAL, szColorMode)
-	KVSO_PARAMETER("opacity", KVS_PT_INT, KVS_PF_OPTIONAL, iOpacity)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("Color_1_Or_Colorname", KVS_PT_VARIANT, 0, var1)
+		KVSO_PARAMETER("Color_2", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var2)
+		KVSO_PARAMETER("Colo3_3", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var3)
+		KVSO_PARAMETER("color_mode", KVS_PT_STRING, KVS_PF_OPTIONAL, szColorMode)
+		KVSO_PARAMETER("opacity", KVS_PT_INT, KVS_PF_OPTIONAL, iOpacity)
+		KVSO_PARAMETERS_END(c)
 
-	QColor col;
+		QColor col;
 	if(!var1->asInteger(iCol1))
 	{
 		var1->asString(szColor);
@@ -204,30 +204,30 @@ KVSO_CLASS_FUNCTION(pixmap, resize)
 {
 	kvs_int_t iWidth, iHeight;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("width", KVS_PT_INTEGER, 0, iWidth)
-	KVSO_PARAMETER("height", KVS_PT_INTEGER, 0, iHeight)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("width", KVS_PT_INTEGER, 0, iWidth)
+		KVSO_PARAMETER("height", KVS_PT_INTEGER, 0, iHeight)
+		KVSO_PARAMETERS_END(c)
 
-	if(m_currentType == Image)
-	{
-		if(m_pImage)
+		if(m_currentType == Image)
 		{
-			delete m_pImage;
-			m_pImage = nullptr;
+			if(m_pImage)
+			{
+				delete m_pImage;
+				m_pImage = nullptr;
+			}
 		}
-	}
-	else if(m_currentType == AnimatedPixmap)
-	{
-		if(m_pAnimatedPixmap)
+		else if(m_currentType == AnimatedPixmap)
 		{
-			delete m_pAnimatedPixmap;
-			m_pAnimatedPixmap = nullptr;
+			if(m_pAnimatedPixmap)
+			{
+				delete m_pAnimatedPixmap;
+				m_pAnimatedPixmap = nullptr;
+			}
 		}
-	}
-	else if(m_pPixmap)
-	{
-		delete m_pPixmap;
-	}
+		else if(m_pPixmap)
+		{
+			delete m_pPixmap;
+		}
 	m_currentType = Image;
 	m_pImage = new QImage(iWidth, iHeight, QImage::Format_ARGB32_Premultiplied);
 	m_pImage->fill(Qt::transparent);
@@ -240,16 +240,16 @@ KVSO_CLASS_FUNCTION(pixmap, setPixel)
 	QString szColorMode, szColor;
 	KviKvsVariant *var1, *var2, *var3;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("x", KVS_PT_INTEGER, 0, iX)
-	KVSO_PARAMETER("y", KVS_PT_INTEGER, 0, iY)
-	KVSO_PARAMETER("Color_1_Or_Colorname", KVS_PT_VARIANT, 0, var1)
-	KVSO_PARAMETER("Color_2", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var2)
-	KVSO_PARAMETER("Colo3_3", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var3)
-	KVSO_PARAMETER("color_mode", KVS_PT_STRING, KVS_PF_OPTIONAL, szColorMode)
-	KVSO_PARAMETER("opacity", KVS_PT_INT, KVS_PF_OPTIONAL, iOpacity)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("x", KVS_PT_INTEGER, 0, iX)
+		KVSO_PARAMETER("y", KVS_PT_INTEGER, 0, iY)
+		KVSO_PARAMETER("Color_1_Or_Colorname", KVS_PT_VARIANT, 0, var1)
+		KVSO_PARAMETER("Color_2", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var2)
+		KVSO_PARAMETER("Colo3_3", KVS_PT_VARIANT, KVS_PF_OPTIONAL, var3)
+		KVSO_PARAMETER("color_mode", KVS_PT_STRING, KVS_PF_OPTIONAL, szColorMode)
+		KVSO_PARAMETER("opacity", KVS_PT_INT, KVS_PF_OPTIONAL, iOpacity)
+		KVSO_PARAMETERS_END(c)
 
-	QColor col;
+		QColor col;
 	if(!var1->asInteger(iCol1))
 	{
 		var1->asString(szColor);
@@ -316,31 +316,31 @@ KVSO_CLASS_FUNCTION(pixmap, pixel)
 	kvs_int_t iX, iY;
 	QString szFlags;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("x", KVS_PT_INTEGER, 0, iX)
-	KVSO_PARAMETER("y", KVS_PT_INTEGER, 0, iY)
-	KVSO_PARAMETER("b", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("x", KVS_PT_INTEGER, 0, iX)
+		KVSO_PARAMETER("y", KVS_PT_INTEGER, 0, iY)
+		KVSO_PARAMETER("b", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
+		KVSO_PARAMETERS_END(c)
 
-	if(m_currentType == AnimatedPixmap)
-	{
-		c->warning(__tr2qs_ctx("AnimatedPixmap not supported", "objects"));
-		return true;
-	}
-	else if((m_currentType == Image && !m_pImage) || (m_currentType == Pixmap && !m_pPixmap))
-	{
-		c->error(__tr2qs_ctx("The pixmap is null", "objects"));
-		return false;
-	}
-	else if(m_currentType == Pixmap)
-	{
-		// 		qDebug("mpimage %i",m_pImage);
-		// 		qDebug("pixmap %i %i",m_pPixmap->width(),m_pPixmap->height());
-		delete m_pImage;
-		m_pImage = new QImage();
-		*m_pImage = m_pPixmap->toImage();
-		delete m_pPixmap;
-		m_pPixmap = nullptr;
-	}
+		if(m_currentType == AnimatedPixmap)
+		{
+			c->warning(__tr2qs_ctx("AnimatedPixmap not supported", "objects"));
+			return true;
+		}
+		else if((m_currentType == Image && !m_pImage) || (m_currentType == Pixmap && !m_pPixmap))
+		{
+			c->error(__tr2qs_ctx("The pixmap is null", "objects"));
+			return false;
+		}
+		else if(m_currentType == Pixmap)
+		{
+			// 		qDebug("mpimage %i",m_pImage);
+			// 		qDebug("pixmap %i %i",m_pPixmap->width(),m_pPixmap->height());
+			delete m_pImage;
+			m_pImage = new QImage();
+			*m_pImage = m_pPixmap->toImage();
+			delete m_pPixmap;
+			m_pPixmap = nullptr;
+		}
 	m_currentType = Image;
 	QRgb rgb = m_pImage->pixel(iX, iY);
 	QColor col(rgb);
@@ -372,11 +372,11 @@ KVSO_CLASS_FUNCTION(pixmap, rotate)
 	kvs_real_t dAngle;
 	QString szAxis;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("angle", KVS_PT_DOUBLE, 0, dAngle)
-	KVSO_PARAMETER("axis", KVS_PT_STRING, KVS_PF_OPTIONAL, szAxis)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("angle", KVS_PT_DOUBLE, 0, dAngle)
+		KVSO_PARAMETER("axis", KVS_PT_STRING, KVS_PF_OPTIONAL, szAxis)
+		KVSO_PARAMETERS_END(c)
 
-	Qt::Axis axis = Qt::ZAxis;
+		Qt::Axis axis = Qt::ZAxis;
 	if(!szAxis.isEmpty())
 	{
 		if(KviQString::equalCI(szAxis, "XAxis"))
@@ -426,28 +426,28 @@ KVSO_CLASS_FUNCTION(pixmap, mirrored)
 	bool bHorizontal, bVertical;
 
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bHorizontal", KVS_PT_BOOLEAN, 0, bHorizontal)
-	KVSO_PARAMETER("bVertical", KVS_PT_BOOLEAN, 0, bVertical)
-	KVSO_PARAMETERS_END(c)
-	if(m_currentType == Pixmap)
-	{
-		if(m_pPixmap)
+		KVSO_PARAMETER("bHorizontal", KVS_PT_BOOLEAN, 0, bHorizontal)
+		KVSO_PARAMETER("bVertical", KVS_PT_BOOLEAN, 0, bVertical)
+		KVSO_PARAMETERS_END(c)
+		if(m_currentType == Pixmap)
 		{
-			if(!m_pImage)
-				m_pImage = new QImage();
-			*m_pImage = m_pPixmap->toImage();
+			if(m_pPixmap)
+			{
+				if(!m_pImage)
+					m_pImage = new QImage();
+				*m_pImage = m_pPixmap->toImage();
+			}
+			else
+			{
+				c->error(__tr2qs_ctx("The pixmap is null", "objects"));
+				return false;
+			}
 		}
-		else
+		else if(m_currentType == AnimatedPixmap)
 		{
-			c->error(__tr2qs_ctx("The pixmap is null", "objects"));
-			return false;
+			c->warning(__tr2qs_ctx("AnimatedPixmap not supported", "objects"));
+			return true;
 		}
-	}
-	else if(m_currentType == AnimatedPixmap)
-	{
-		c->warning(__tr2qs_ctx("AnimatedPixmap not supported", "objects"));
-		return true;
-	}
 
 	if(!m_pImage)
 	{
@@ -464,11 +464,11 @@ KVSO_CLASS_FUNCTION(pixmap, scale)
 	kvs_int_t iWidth, iHeight;
 	QString szAspectRatio;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("width", KVS_PT_INTEGER, 0, iWidth)
-	KVSO_PARAMETER("height", KVS_PT_INTEGER, 0, iHeight)
-	KVSO_PARAMETER("aspect_ratio", KVS_PT_STRING, KVS_PF_OPTIONAL, szAspectRatio)
-	KVSO_PARAMETERS_END(c)
-	Qt::AspectRatioMode ratio = Qt::KeepAspectRatio;
+		KVSO_PARAMETER("width", KVS_PT_INTEGER, 0, iWidth)
+		KVSO_PARAMETER("height", KVS_PT_INTEGER, 0, iHeight)
+		KVSO_PARAMETER("aspect_ratio", KVS_PT_STRING, KVS_PF_OPTIONAL, szAspectRatio)
+		KVSO_PARAMETERS_END(c)
+		Qt::AspectRatioMode ratio = Qt::KeepAspectRatio;
 	if(!szAspectRatio.isEmpty())
 	{
 		if(KviQString::equalCI(szAspectRatio, "IgnoreAspectRatio"))
@@ -508,14 +508,14 @@ KVSO_CLASS_FUNCTION(pixmap, loadAnimation)
 {
 	QString szFile;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("file", KVS_PT_STRING, 0, szFile)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("file", KVS_PT_STRING, 0, szFile)
+		KVSO_PARAMETERS_END(c)
 
-	if(!QFile::exists(szFile))
-	{
-		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.", "objects"), &szFile);
-		return true;
-	}
+		if(!QFile::exists(szFile))
+		{
+			c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.", "objects"), &szFile);
+			return true;
+		}
 	if(m_pAnimatedPixmap)
 	{
 		delete m_pAnimatedPixmap;
@@ -551,14 +551,14 @@ KVSO_CLASS_FUNCTION(pixmap, load)
 {
 	QString szFile;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("file", KVS_PT_STRING, 0, szFile)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("file", KVS_PT_STRING, 0, szFile)
+		KVSO_PARAMETERS_END(c)
 
-	if(!QFile::exists(szFile))
-	{
-		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.", "objects"), &szFile);
-		return true;
-	}
+		if(!QFile::exists(szFile))
+		{
+			c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.", "objects"), &szFile);
+			return true;
+		}
 	if(!m_pImage)
 		m_pImage = new QImage();
 	m_currentType = Image;
@@ -570,37 +570,37 @@ KVSO_CLASS_FUNCTION(pixmap, save)
 {
 	QString szFile;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("file", KVS_PT_STRING, 0, szFile)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("file", KVS_PT_STRING, 0, szFile)
+		KVSO_PARAMETERS_END(c)
 
-	if(m_currentType == Pixmap)
-	{
-		if(m_pPixmap)
+		if(m_currentType == Pixmap)
 		{
-			m_pPixmap->save(szFile);
+			if(m_pPixmap)
+			{
+				m_pPixmap->save(szFile);
+			}
+			else
+			{
+				c->error(__tr2qs_ctx("The pixmap is null", "objects"));
+				return false;
+			}
+		}
+		else if(m_currentType == Image)
+		{
+			if(m_pImage)
+			{
+				m_pImage->save(szFile);
+			}
+			else
+			{
+				c->error(__tr2qs_ctx("The pixmap is null", "objects"));
+				return false;
+			}
 		}
 		else
 		{
-			c->error(__tr2qs_ctx("The pixmap is null", "objects"));
-			return false;
+			m_pAnimatedPixmap->pixmap()->save(szFile);
 		}
-	}
-	else if(m_currentType == Image)
-	{
-		if(m_pImage)
-		{
-			m_pImage->save(szFile);
-		}
-		else
-		{
-			c->error(__tr2qs_ctx("The pixmap is null", "objects"));
-			return false;
-		}
-	}
-	else
-	{
-		m_pAnimatedPixmap->pixmap()->save(szFile);
-	}
 	return true;
 }
 
@@ -627,10 +627,10 @@ KVSO_CLASS_FUNCTION(pixmap, loadFromMemoryBuffer)
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("hobject", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("hobject", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
 
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!pObject)
 	{
 		c->warning(__tr2qs_ctx("Buffer parameter is not an object", "objects"));
@@ -655,24 +655,23 @@ KVSO_CLASS_FUNCTION(pixmap, loadFromMemoryBuffer)
 KVSO_CLASS_FUNCTION(pixmap, grabWidget)
 {
 	CHECK_INTERNAL_POINTER(m_pPixmap)
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
 
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	if(m_pAnimatedPixmap)
-	{
-		delete m_pAnimatedPixmap;
-		m_pAnimatedPixmap = nullptr;
-	}
+		if(m_pAnimatedPixmap)
+		{
+			delete m_pAnimatedPixmap;
+			m_pAnimatedPixmap = nullptr;
+		}
 	if(!m_pPixmap)
 		m_pPixmap = new QPixmap();
 	*m_pPixmap = QPixmap::grabWidget(((KvsObject_widget *)pObject)->widget());
 	return true;
-
 }
 
 KVSO_CLASS_FUNCTION(pixmap, height)

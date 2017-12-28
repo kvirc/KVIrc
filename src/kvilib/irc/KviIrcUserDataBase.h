@@ -133,7 +133,7 @@ public:
 	* \return void
 	*/
 	void setupConnectionWithReguserDb();
-protected slots:
+	protected slots:
 	/**
 	* \brief Slot called when a registered user is changed or removed
 	* \param szUser The user changed

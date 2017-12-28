@@ -38,13 +38,13 @@
 KviIrcServerParser * g_pServerParser = nullptr;
 
 KviIrcServerParser::KviIrcServerParser()
-    : QObject(nullptr)
+	: QObject(nullptr)
 {
 	setObjectName("server_parser");
 }
 
 KviIrcServerParser::~KviIrcServerParser()
-    = default;
+= default;
 
 void KviIrcServerParser::parseMessage(const char * message, KviIrcConnection * pConnection)
 {
@@ -134,18 +134,18 @@ void KviIrcServerParser::parseMessage(const char * message, KviIrcConnection * p
 		if(msg.unrecognized())
 		{
 			pConnection->console()->output(KVI_OUT_UNRECOGNIZED,
-			    __tr2qs("[Server parser]: encountered problems while parsing the following message:"));
+				__tr2qs("[Server parser]: encountered problems while parsing the following message:"));
 			pConnection->console()->output(KVI_OUT_UNRECOGNIZED,
-			    __tr2qs("[Server parser]: [%s][%s] %Q"), msg.prefix(), msg.command(), &szWText);
+				__tr2qs("[Server parser]: [%s][%s] %Q"), msg.prefix(), msg.command(), &szWText);
 			pConnection->console()->output(KVI_OUT_UNRECOGNIZED,
-			    __tr2qs("[Server parser]: %s"), m_szLastParserError.ptr());
+				__tr2qs("[Server parser]: %s"), m_szLastParserError.ptr());
 		}
 		else
 		{
 			// ignore spurious CRLF pairs (some servers send them a lot) unless we want PARANOID output
 			if((!msg.isEmpty()) || _OUTPUT_PARANOIC)
 				pConnection->console()->output(KVI_OUT_UNHANDLED,
-				    "[%s][%s] %Q", msg.prefix(), msg.command(), &szWText);
+					"[%s][%s] %Q", msg.prefix(), msg.command(), &szWText);
 		}
 	}
 }

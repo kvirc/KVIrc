@@ -53,21 +53,21 @@ extern QPixmap * g_pActivityMeterPixmap;
 // KviTreeWindowListItem
 
 KviTreeWindowListItem::KviTreeWindowListItem(QTreeWidget * par, KviWindow * wnd)
-    : QTreeWidgetItem(par), KviWindowListItem(wnd)
+	: QTreeWidgetItem(par), KviWindowListItem(wnd)
 {
 	applyOptions();
 	captionChanged();
 }
 
 KviTreeWindowListItem::KviTreeWindowListItem(KviTreeWindowListItem * par, KviWindow * wnd)
-    : QTreeWidgetItem(par), KviWindowListItem(wnd)
+	: QTreeWidgetItem(par), KviWindowListItem(wnd)
 {
 	applyOptions();
 	captionChanged();
 }
 
 KviTreeWindowListItem::~KviTreeWindowListItem()
-    = default;
+= default;
 
 void KviTreeWindowListItem::applyOptions()
 {
@@ -81,25 +81,25 @@ void KviTreeWindowListItem::captionChanged()
 
 	switch(m_pWindow->type())
 	{
-		case KviWindow::Console:
-		{
-			KviWindowListBase::getTextForConsole(szText, (KviConsoleWindow *)m_pWindow);
-		}
+	case KviWindow::Console:
+	{
+		KviWindowListBase::getTextForConsole(szText, (KviConsoleWindow *)m_pWindow);
+	}
+	break;
+	case KviWindow::Channel:
+	case KviWindow::DeadChannel:
+		if(KVI_OPTION_BOOL(KviOption_boolShowUserFlagForChannelsInWindowList))
+			szText = ((KviChannelWindow *)m_pWindow)->nameWithUserFlag();
+		else
+			szText = ((KviChannelWindow *)m_pWindow)->target();
 		break;
-		case KviWindow::Channel:
-		case KviWindow::DeadChannel:
-			if(KVI_OPTION_BOOL(KviOption_boolShowUserFlagForChannelsInWindowList))
-				szText = ((KviChannelWindow *)m_pWindow)->nameWithUserFlag();
-			else
-				szText = ((KviChannelWindow *)m_pWindow)->target();
-			break;
-		case KviWindow::Query:
-		case KviWindow::DeadQuery:
-			szText = m_pWindow->windowName();
-			break;
-		default:
-			szText = m_pWindow->plainTextCaption();
-			break;
+	case KviWindow::Query:
+	case KviWindow::DeadQuery:
+		szText = m_pWindow->windowName();
+		break;
+	default:
+		szText = m_pWindow->plainTextCaption();
+		break;
 	}
 
 	if(m_pWindow->isMinimized())
@@ -197,7 +197,7 @@ QString KviTreeWindowListItem::key() const
 // KviTreeWindowListTreeWidget
 
 KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
-    : QTreeWidget(par)
+	: QTreeWidget(par)
 {
 	setObjectName("tree_windowlist");
 	bReverseSort = false;
@@ -213,7 +213,7 @@ KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
 }
 
 KviTreeWindowListTreeWidget::~KviTreeWindowListTreeWidget()
-    = default;
+= default;
 
 void KviTreeWindowListTreeWidget::mouseMoveEvent(QMouseEvent *)
 {
@@ -245,7 +245,7 @@ void KviTreeWindowListTreeWidget::wheelEvent(QWheelEvent * e)
 			return;
 
 		if(
-		    ((e->delta() < 0) && (pBar->value() < pBar->maximum())) || ((e->delta() > 0) && (pBar->value() > pBar->minimum())))
+			((e->delta() < 0) && (pBar->value() < pBar->maximum())) || ((e->delta() > 0) && (pBar->value() > pBar->minimum())))
 			QApplication::sendEvent(pBar, e);
 	}
 }
@@ -372,7 +372,7 @@ void KviTreeWindowListTreeWidget::paintEvent(QPaintEvent * event)
 // KviTreeWindowList
 
 KviTreeWindowList::KviTreeWindowList()
-    : KviWindowListBase()
+	: KviWindowListBase()
 {
 	m_pTreeWidget = new KviTreeWindowListTreeWidget(this);
 	m_pTreeWidget->setColumnWidth(0, 135);
@@ -399,7 +399,7 @@ KviTreeWindowList::KviTreeWindowList()
 }
 
 KviTreeWindowList::~KviTreeWindowList()
-    = default;
+= default;
 
 void KviTreeWindowList::updatePseudoTransparency()
 {
@@ -596,7 +596,7 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			QColor col(KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 			col.setAlpha(127);
 
-	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			if(treeWidget->style()->inherits("QStyleSheetStyle") || treeWidget->style()->inherits("QWindowsVistaStyle"))
 			{
 				// The Windows style does not honor our colors. It uses the system ones instead.
@@ -605,12 +605,12 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			}
 			else
 			{
-	#endif
+#endif
 				opt.palette.setColor(QPalette::Highlight, col);
 				treeWidget->style()->drawPrimitive(QStyle::PE_PanelItemViewItem, &opt, p, treeWidget);
-	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			}
-	#endif
+#endif
 		}
 #endif
 	}
@@ -622,54 +622,54 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 
 	switch(pWindow->type())
 	{
-		case KviWindow::Console:
+	case KviWindow::Console:
+	{
+		if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIrcContextIndicator))
 		{
-			if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIrcContextIndicator))
+			QColor base = option.palette.window().color();
+			QColor cntx = KVI_OPTION_ICCOLOR(pWindow->console()->context()->id() % KVI_NUM_ICCOLOR_OPTIONS);
+			base.setRgb((base.red() + cntx.red()) >> 1, (base.green() + cntx.green()) >> 1,
+				(base.blue() + cntx.blue()) >> 1);
+			p->fillRect(im + 2, yPixmap, 14, 15, base);
+			if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
 			{
-				QColor base = option.palette.window().color();
-				QColor cntx = KVI_OPTION_ICCOLOR(pWindow->console()->context()->id() % KVI_NUM_ICCOLOR_OPTIONS);
-				base.setRgb((base.red() + cntx.red()) >> 1, (base.green() + cntx.green()) >> 1,
-				    (base.blue() + cntx.blue()) >> 1);
-				p->fillRect(im + 2, yPixmap, 14, 15, base);
-				if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
-				{
-					p->drawPixmap(im + 20, yPixmap, *(pWindow->myIconPtr()));
-					cRect.setLeft(cRect.left() + 37);
-				}
-				else
-				{
-					cRect.setLeft(cRect.left() + 20);
-				}
+				p->drawPixmap(im + 20, yPixmap, *(pWindow->myIconPtr()));
+				cRect.setLeft(cRect.left() + 37);
 			}
 			else
 			{
-				if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
-				{
-					p->drawPixmap(im, yPixmap, *(pWindow->myIconPtr()));
-					cRect.setLeft(cRect.left() + 17);
-				}
+				cRect.setLeft(cRect.left() + 20);
 			}
-			//console window: bold font
-			QFont f = p->font();
-			f.setBold(true);
-			p->setFont(f);
 		}
-		break;
-		case KviWindow::Channel:
-		case KviWindow::DeadChannel:
-		case KviWindow::Query:
-		case KviWindow::DeadQuery:
-		default:
+		else
+		{
 			if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
 			{
 				p->drawPixmap(im, yPixmap, *(pWindow->myIconPtr()));
 				cRect.setLeft(cRect.left() + 17);
 			}
-			//channels, other windows: normal font
-			QFont f = p->font();
-			f.setBold(false);
-			p->setFont(f);
-			break;
+		}
+		//console window: bold font
+		QFont f = p->font();
+		f.setBold(true);
+		p->setFont(f);
+	}
+	break;
+	case KviWindow::Channel:
+	case KviWindow::DeadChannel:
+	case KviWindow::Query:
+	case KviWindow::DeadQuery:
+	default:
+		if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
+		{
+			p->drawPixmap(im, yPixmap, *(pWindow->myIconPtr()));
+			cRect.setLeft(cRect.left() + 17);
+		}
+		//channels, other windows: normal font
+		QFont f = p->font();
+		f.setBold(false);
+		p->setFont(f);
+		break;
 	}
 
 	// paint the channel activity meter
@@ -703,24 +703,24 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 
 		switch(iHighlightLevel)
 		{
-			case 0:
-				iLevel = KviOption_colorTreeWindowListForeground;
-				break;
-			case 1:
-				iLevel = KviOption_colorTreeWindowListHighlight1Foreground;
-				break;
-			case 2:
-				iLevel = KviOption_colorTreeWindowListHighlight2Foreground;
-				break;
-			case 3:
-				iLevel = KviOption_colorTreeWindowListHighlight3Foreground;
-				break;
-			case 4:
-				iLevel = KviOption_colorTreeWindowListHighlight4Foreground;
-				break;
-			default:
-				iLevel = KviOption_colorTreeWindowListHighlight5Foreground;
-				break;
+		case 0:
+			iLevel = KviOption_colorTreeWindowListForeground;
+			break;
+		case 1:
+			iLevel = KviOption_colorTreeWindowListHighlight1Foreground;
+			break;
+		case 2:
+			iLevel = KviOption_colorTreeWindowListHighlight2Foreground;
+			break;
+		case 3:
+			iLevel = KviOption_colorTreeWindowListHighlight3Foreground;
+			break;
+		case 4:
+			iLevel = KviOption_colorTreeWindowListHighlight4Foreground;
+			break;
+		default:
+			iLevel = KviOption_colorTreeWindowListHighlight5Foreground;
+			break;
 		}
 
 		p->setPen(KVI_OPTION_COLOR(iLevel));

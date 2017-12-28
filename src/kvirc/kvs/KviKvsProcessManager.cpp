@@ -32,7 +32,7 @@
 //#include <QSysInfo>
 
 KviKvsProcessAsyncOperation::KviKvsProcessAsyncOperation(KviKvsProcessDescriptorData * d)
-    : KviKvsAsyncOperation(d->pWnd)
+	: KviKvsAsyncOperation(d->pWnd)
 {
 	m_pData = d;
 	m_pProcess = nullptr;
@@ -85,7 +85,7 @@ bool KviKvsProcessAsyncOperation::start()
 			// [02:50:21] <kode54> if ( QApplication::winVersion() & Qt::WV_NT_based )
 			// [02:50:41] <kode54> I see another implementation using that, maybe it is the official way of detecting that :[
 			szShell = !(QSysInfo::WindowsVersion & QSysInfo::WV_DOS_based) ? "cmd.exe /c" : "command.com /c";
-// Thnx kode54 :)
+			// Thnx kode54 :)
 #else
 			szShell = "sh -c";
 #endif
@@ -194,25 +194,25 @@ bool KviKvsProcessAsyncOperation::trigger(CallbackEvent e, const QString & szDat
 
 		switch(e)
 		{
-			case EventStdout:
-				params.append(new KviKvsVariant(QString("stdout")));
-				break;
-			case EventStderr:
-				params.append(new KviKvsVariant(QString("stderr")));
-				break;
-			case EventTerminated:
-				params.append(new KviKvsVariant(QString("terminated")));
-				break;
-			case EventStarted:
-				params.append(new KviKvsVariant(QString("started")));
-				break;
-			case EventPing:
-				params.append(new KviKvsVariant(QString("ping")));
-				break;
-			default:
-				qDebug("Oops! Unknown trigger() CallbackEvent parameter in QProcessDescriptor::trigger()");
-				return false;
-				break;
+		case EventStdout:
+			params.append(new KviKvsVariant(QString("stdout")));
+			break;
+		case EventStderr:
+			params.append(new KviKvsVariant(QString("stderr")));
+			break;
+		case EventTerminated:
+			params.append(new KviKvsVariant(QString("terminated")));
+			break;
+		case EventStarted:
+			params.append(new KviKvsVariant(QString("started")));
+			break;
+		case EventPing:
+			params.append(new KviKvsVariant(QString("ping")));
+			break;
+		default:
+			qDebug("Oops! Unknown trigger() CallbackEvent parameter in QProcessDescriptor::trigger()");
+			return false;
+			break;
 		}
 
 		params.append(new KviKvsVariant(szData));
@@ -228,7 +228,7 @@ bool KviKvsProcessAsyncOperation::trigger(CallbackEvent e, const QString & szDat
 		if(!iRet)
 		{
 			m_pData->pWnd->output(KVI_OUT_PARSERERROR,
-			    __tr2qs_ctx("Error triggered from process callback handler: killing process", "kvs"));
+				__tr2qs_ctx("Error triggered from process callback handler: killing process", "kvs"));
 			return true;
 		}
 

@@ -28,7 +28,7 @@
 #include <QHelpEvent>
 
 KviTalToolTipHelper::KviTalToolTipHelper(KviTalToolTip * pToolTip, QWidget * pWidget)
-    : QObject(pWidget)
+	: QObject(pWidget)
 {
 	m_pToolTip = pToolTip;
 	pWidget->installEventFilter(this);
@@ -86,7 +86,6 @@ void KviTalToolTip::add(QWidget * widget, const QString & text)
 
 void KviTalToolTip::remove(QWidget * widget)
 {
-
 	widget->setToolTip("");
 }
 

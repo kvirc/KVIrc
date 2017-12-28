@@ -84,7 +84,7 @@ namespace KviNickColors
 		int iBestMatch = -1;
 		char * comb = (char *)KviMemory::allocate(6);
 		int numm = 0;
-// TODO handle KVI_TRANSPARENT and KVI_NOCHANGE (ticket #812)
+		// TODO handle KVI_TRANSPARENT and KVI_NOCHANGE (ticket #812)
 #if defined(COMPILE_ON_WINDOWS) && !(defined(MINGW))
 		_snprintf(comb, 6, "%d,%d", iFore % 16, iBack % 16);
 #else

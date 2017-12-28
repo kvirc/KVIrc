@@ -84,10 +84,10 @@ namespace KviKvsCoreFunctions
 	{
 		kvs_uint_t uContextId;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
+			KVSCF_PARAMETERS_END
 
-		KviWindow * wnd = nullptr;
+			KviWindow * wnd = nullptr;
 		if(KVSCF_pParams->count() > 0)
 		{
 			KviConsoleWindow * cons = g_pApp->findConsole(uContextId);
@@ -124,10 +124,10 @@ namespace KviKvsCoreFunctions
 	{
 		QString szAliasName;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("alias_name", KVS_PT_STRING, 0, szAliasName)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("alias_name", KVS_PT_STRING, 0, szAliasName)
+			KVSCF_PARAMETERS_END
 
-		const KviKvsScript * pAlias = KviKvsAliasManager::instance()->lookup(szAliasName);
+			const KviKvsScript * pAlias = KviKvsAliasManager::instance()->lookup(szAliasName);
 		if(pAlias)
 			KVSCF_pRetBuffer->setString(pAlias->code());
 		else
@@ -179,10 +179,10 @@ namespace KviKvsCoreFunctions
 	{
 		QString szAscii;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("ascii_string", KVS_PT_STRING, 0, szAscii)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("ascii_string", KVS_PT_STRING, 0, szAscii)
+			KVSCF_PARAMETERS_END
 
-		KviCString tmp1(szAscii);
+			KviCString tmp1(szAscii);
 		if(tmp1.len() > 0)
 		{
 			KviCString tmp2;
@@ -223,10 +223,10 @@ namespace KviKvsCoreFunctions
 	{
 		QString szAscii;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("ascii_string", KVS_PT_STRING, 0, szAscii)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("ascii_string", KVS_PT_STRING, 0, szAscii)
+			KVSCF_PARAMETERS_END
 
-		KviCString tmp1(szAscii);
+			KviCString tmp1(szAscii);
 		if(tmp1.len() > 0)
 		{
 			KviCString tmp2;
@@ -301,10 +301,10 @@ namespace KviKvsCoreFunctions
 		kvs_uint_t uCntx;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("irc_context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uCntx)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("irc_context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uCntx)
+			KVSCF_PARAMETERS_END
 
-		KviConsoleWindow * cns = nullptr;
+			KviConsoleWindow * cns = nullptr;
 
 		if(KVSCF_pParams->count() > 0)
 		{
@@ -378,10 +378,10 @@ namespace KviKvsCoreFunctions
 	{
 		QString szBase64;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("base64_encoded_string", KVS_PT_STRING, 0, szBase64)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("base64_encoded_string", KVS_PT_STRING, 0, szBase64)
+			KVSCF_PARAMETERS_END
 
-		KviCString tmp1(szBase64);
+			KviCString tmp1(szBase64);
 		char * buf;
 		int len = tmp1.base64ToBuffer(&buf, true);
 		QString szRet(buf);
@@ -436,10 +436,10 @@ namespace KviKvsCoreFunctions
 	{
 		KviKvsVariant * v;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
+			KVSCF_PARAMETERS_END
 
-		kvs_int_t iVal;
+			kvs_int_t iVal;
 		v->castToInteger(iVal);
 		KVSCF_pRetBuffer->setBoolean(iVal);
 		return true;
@@ -496,15 +496,15 @@ namespace KviKvsCoreFunctions
 		QString szParam1;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("query", KVS_PT_STRING, 0, szQuery)
-		KVSCF_PARAMETER("param1", KVS_PT_STRING, KVS_PF_OPTIONAL, szParam1)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("query", KVS_PT_STRING, 0, szQuery)
+			KVSCF_PARAMETER("param1", KVS_PT_STRING, KVS_PF_OPTIONAL, szParam1)
+			KVSCF_PARAMETERS_END
 
 #ifndef COMPILE_SSL_SUPPORT
-		KVSCF_pContext->warning(__tr2qs("This executable was built without SSL support"));
+			KVSCF_pContext->warning(__tr2qs("This executable was built without SSL support"));
 		return true;
 #else
-		KviSSL::globalSSLInit();
+			KviSSL::globalSSLInit();
 		X509 * cert = nullptr;
 
 		if(!KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate))
@@ -585,17 +585,17 @@ namespace KviKvsCoreFunctions
 		QString szName;
 		kvs_uint_t uContextId;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("channel_name", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szName)
-		KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("channel_name", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szName)
+			KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
+			KVSCF_PARAMETERS_END
 
-		KviWindow * wnd = nullptr;
+			KviWindow * wnd = nullptr;
 		if(KVSCF_pParams->count() > 1)
 		{
 			KviConsoleWindow * cns = g_pApp->findConsole(uContextId);
 			if(cns && cns->connection())
 				wnd = cns->connection()->findChannel(szName);
-			else if (!cns)
+			else if(!cns)
 				KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)", "kvs"), uContextId);
 		}
 		else if(KVSCF_pParams->count() == 1)
@@ -642,13 +642,13 @@ namespace KviKvsCoreFunctions
 	{
 		kvs_uint_t ac;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("unicode_value", KVS_PT_UINT, 0, ac)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("unicode_value", KVS_PT_UINT, 0, ac)
+			KVSCF_PARAMETERS_END
 
-		if(ac != 0 && ac < 65536)
-			KVSCF_pRetBuffer->setString(QString(QChar((unsigned short)ac)));
-		else
-			KVSCF_pRetBuffer->setString(QString());
+			if(ac != 0 && ac < 65536)
+				KVSCF_pRetBuffer->setString(QString(QChar((unsigned short)ac)));
+			else
+				KVSCF_pRetBuffer->setString(QString());
 		return true;
 	}
 
@@ -672,9 +672,9 @@ namespace KviKvsCoreFunctions
 		QString szClassName;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("className", KVS_PT_NONEMPTYSTRING, 0, szClassName)
-		KVSCF_PARAMETERS_END
-		KVSCF_pRetBuffer->setBoolean(KviKvsKernel::instance()->objectController()->lookupClass(szClassName) != nullptr);
+			KVSCF_PARAMETER("className", KVS_PT_NONEMPTYSTRING, 0, szClassName)
+			KVSCF_PARAMETERS_END
+			KVSCF_pRetBuffer->setBoolean(KviKvsKernel::instance()->objectController()->lookupClass(szClassName) != nullptr);
 		return true;
 	}
 
@@ -706,10 +706,10 @@ namespace KviKvsCoreFunctions
 	{
 		kvs_uint_t uContextId;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("context_id", KVS_PT_UINT, KVS_PF_OPTIONAL, uContextId)
+			KVSCF_PARAMETERS_END
 
-		KviConsoleWindow * cons;
+			KviConsoleWindow * cons;
 		if(KVSCF_pParams->count() > 0)
 		{
 			cons = g_pApp->findConsole(uContextId);
@@ -761,11 +761,11 @@ namespace KviKvsCoreFunctions
 	{
 		QString szServer, szNick;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("server", KVS_PT_STRING, KVS_PF_OPTIONAL, szServer)
-		KVSCF_PARAMETER("nick", KVS_PT_STRING, KVS_PF_OPTIONAL, szNick)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("server", KVS_PT_STRING, KVS_PF_OPTIONAL, szServer)
+			KVSCF_PARAMETER("nick", KVS_PT_STRING, KVS_PF_OPTIONAL, szNick)
+			KVSCF_PARAMETERS_END
 
-		KviConsoleWindow * cons;
+			KviConsoleWindow * cons;
 		if(!szServer.isEmpty() || !szNick.isEmpty())
 			cons = g_pApp->findConsole(szServer, szNick);
 		else
@@ -898,16 +898,16 @@ namespace KviKvsCoreFunctions
 		QString szFormat;
 		kvs_int_t iTime;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("format", KVS_PT_NONEMPTYSTRING, 0, szFormat)
-		KVSCF_PARAMETER("unixtime", KVS_PT_INT, KVS_PF_OPTIONAL, iTime)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("format", KVS_PT_NONEMPTYSTRING, 0, szFormat)
+			KVSCF_PARAMETER("unixtime", KVS_PT_INT, KVS_PF_OPTIONAL, iTime)
+			KVSCF_PARAMETERS_END
 
-		// strftime() is not sufficient, as shown by #769, the following is
-		// derived from KDateTime (not a copy, but the structure is similar,
-		// which isn't surprising), but limited/extended to the required set of
-		// functionality.
-		// The reason for this is platform independent.
-		QDateTime qDt;
+			// strftime() is not sufficient, as shown by #769, the following is
+			// derived from KDateTime (not a copy, but the structure is similar,
+			// which isn't surprising), but limited/extended to the required set of
+			// functionality.
+			// The reason for this is platform independent.
+			QDateTime qDt;
 		QString szFmtTime;
 		int iLength, iVal, iTemp, iLocalTzH, iLocalTzM, iUtcH, iUtcM, iTzOffset;
 		int iTzOffsetH, iTzOffsetM;
@@ -936,160 +936,160 @@ namespace KviKvsCoreFunctions
 				// FIXME: G, g, U, x, X, Z not implemented yet.
 				//
 				// E and O probably never will be implemented.
-				case 'a': // the abbreviated localized day name (e.g.
-					// 'Mon' to 'Sun'). Uses
-					// QDate::shortDayName().
-					szFmtTime += qDt.toString("ddd");
-					break;
-				case 'A': // the long localized day name (e.g.
-					// 'Monday' to 'Qt::Sunday'). Uses
-					// QDate::longDayName().
-					szFmtTime += qDt.toString("dddd");
-					break;
-				case 'b': // the abbreviated localized month name
-				case 'h': // (e.g. 'Jan' to 'Dec'). Uses
-					// QDate::shortMonthName().
-					szFmtTime += qDt.toString("MMM");
-					break;
-				case 'B': // the long localized month name (e.g.
-					// 'January' to 'December'). Uses
-					// QDate::longMonthName().
-					szFmtTime += qDt.toString("MMMM");
-					break;
-				case 'c': // If the format is Qt::TextDate, the string
-					// is formatted in the default way.
-					szFmtTime += qDt.toString(Qt::TextDate);
-					break;
-				case 'C': // 2-digit "century" (yyyy/100)
-					iVal = qDt.date().year() / 100;
-					break;
-				case 'd': // the day as number with a leading zero
-					// (01 to 31)
-					cDiv = '0';
+			case 'a': // the abbreviated localized day name (e.g.
+				// 'Mon' to 'Sun'). Uses
+				// QDate::shortDayName().
+				szFmtTime += qDt.toString("ddd");
+				break;
+			case 'A': // the long localized day name (e.g.
+				// 'Monday' to 'Qt::Sunday'). Uses
+				// QDate::longDayName().
+				szFmtTime += qDt.toString("dddd");
+				break;
+			case 'b': // the abbreviated localized month name
+			case 'h': // (e.g. 'Jan' to 'Dec'). Uses
+				// QDate::shortMonthName().
+				szFmtTime += qDt.toString("MMM");
+				break;
+			case 'B': // the long localized month name (e.g.
+				// 'January' to 'December'). Uses
+				// QDate::longMonthName().
+				szFmtTime += qDt.toString("MMMM");
+				break;
+			case 'c': // If the format is Qt::TextDate, the string
+				// is formatted in the default way.
+				szFmtTime += qDt.toString(Qt::TextDate);
+				break;
+			case 'C': // 2-digit "century" (yyyy/100)
+				iVal = qDt.date().year() / 100;
+				break;
+			case 'd': // the day as number with a leading zero
+				// (01 to 31)
+				cDiv = '0';
 				// break omitted on purpose, NEXT MUST BE 'e'
-				case 'e': // 2-character wide day representation,
-					// space padded
-					iVal = qDt.date().day();
-					break;
-				case 'D': // American formatting
-					szFmtTime += qDt.toString("MM/dd/yy");
-					break;
-				case 'F': // yyyy-MM-dd (ISO 8601)
-					szFmtTime += qDt.date().toString(Qt::ISODate);
-					break;
-				case 'H': // the hour with a leading zero (00 to 23)
-					cDiv = '0';
+			case 'e': // 2-character wide day representation,
+				// space padded
+				iVal = qDt.date().day();
+				break;
+			case 'D': // American formatting
+				szFmtTime += qDt.toString("MM/dd/yy");
+				break;
+			case 'F': // yyyy-MM-dd (ISO 8601)
+				szFmtTime += qDt.date().toString(Qt::ISODate);
+				break;
+			case 'H': // the hour with a leading zero (00 to 23)
+				cDiv = '0';
 				// no break; on purpose (NEXT MUST BE case 'k')
-				case 'k': // same as H, only that single-character values
-					// are prefixed with a space
-					iVal = qDt.time().hour();
-					break;
-				case 'I': // hour, 01 - 12
-					cDiv = '0';
+			case 'k': // same as H, only that single-character values
+				// are prefixed with a space
+				iVal = qDt.time().hour();
+				break;
+			case 'I': // hour, 01 - 12
+				cDiv = '0';
 				// fall through to 'l'
-				case 'l': // hour, 1 - 12
-					iVal = (qDt.time().hour() + 11) % 12 + 1;
-					break;
-				case 'j': // day of the year (001 to 365/366)
-					iVal = qDt.date().dayOfYear();
-					iLength = 3;
-					cDiv = '0';
-					break;
-				case 'M': // minutes (00 to 59)
-					szFmtTime += qDt.toString("mm");
-					break;
-				case 'm': // month (01-12)
-					szFmtTime += qDt.toString("MM");
-					break;
-				case 'n': // newline
-					szFmtTime += "\n";
-					break;
-				case 'p': // AM/PM
-					// FIXME: l10n for the am/pm? Maybe we can
-					//        draw it from a different source?
-					//        Qt doesn't offer l10n strings
-					//        for this.
-					if(qDt.time().hour() < 12)
-						szFmtTime += "AM";
-					else
-						szFmtTime += "PM";
-					break;
-				case 'P': // am/pm, the same FIXME as for p applies.
-					if(qDt.time().hour() < 12)
-						szFmtTime += "am";
-					else
-						szFmtTime += "pm";
-					break;
-				case 'r': // "I:M:S p"
-					szFmtTime += qDt.toString("hh:mm:ss AP");
-					break;
-				case 'R': // "H:M"
-					szFmtTime += qDt.toString("hh:mm");
-					break;
-				case 's': // seconds since epoch (currently 1970-01-01 00:00:00 UTC)
-					szFmtTime += QString::number(qDt.toTime_t());
-					break;
-				case 'S': // seconds (00-60)
-					cDiv = '0';
-					iVal = qDt.time().second();
-					break;
-				case 't': // Tab
-					szFmtTime += "\t";
-					break;
-				case 'T': // H:M:S
-					szFmtTime += qDt.toString("hh:mm:ss");
-					break;
-				case 'u': // day of the week (1-7)
-					iVal = qDt.date().dayOfWeek();
-					iLength = 1;
-					break;
-				case 'V': // week of the year (ISO 8601)
-				case 'W': // W is not entirely correct, but that's a
-					// lot easier this way.
-					iVal = qDt.date().weekNumber();
-					cDiv = '0';
-					break;
-				case 'w': // day of week (0-6, 0==Sunday)
-					iTemp = qDt.date().dayOfWeek();
-					if(iTemp == Qt::Sunday)
-						iTemp = 0;
-					szFmtTime += QString::number(iTemp);
-					break;
-				case 'y': // year (2-character)
-					szFmtTime += qDt.toString("yy");
-					break;
-				case 'Y': // year (4-character)
-					szFmtTime += qDt.toString("yyyy");
-					break;
-				case 'z': // numerical timezone offset
-					iLocalTzH = qDt.time().hour();
-					iLocalTzM = qDt.time().minute();
-					iUtcH = qDt.toUTC().time().hour();
-					iUtcM = qDt.toUTC().time().minute();
-					iTzOffsetH = iLocalTzH - iUtcH;
-					iTzOffsetM = iLocalTzM - iUtcM;
-					iTzOffset = iTzOffsetH * 100 + iTzOffsetM;
+			case 'l': // hour, 1 - 12
+				iVal = (qDt.time().hour() + 11) % 12 + 1;
+				break;
+			case 'j': // day of the year (001 to 365/366)
+				iVal = qDt.date().dayOfYear();
+				iLength = 3;
+				cDiv = '0';
+				break;
+			case 'M': // minutes (00 to 59)
+				szFmtTime += qDt.toString("mm");
+				break;
+			case 'm': // month (01-12)
+				szFmtTime += qDt.toString("MM");
+				break;
+			case 'n': // newline
+				szFmtTime += "\n";
+				break;
+			case 'p': // AM/PM
+				// FIXME: l10n for the am/pm? Maybe we can
+				//        draw it from a different source?
+				//        Qt doesn't offer l10n strings
+				//        for this.
+				if(qDt.time().hour() < 12)
+					szFmtTime += "AM";
+				else
+					szFmtTime += "PM";
+				break;
+			case 'P': // am/pm, the same FIXME as for p applies.
+				if(qDt.time().hour() < 12)
+					szFmtTime += "am";
+				else
+					szFmtTime += "pm";
+				break;
+			case 'r': // "I:M:S p"
+				szFmtTime += qDt.toString("hh:mm:ss AP");
+				break;
+			case 'R': // "H:M"
+				szFmtTime += qDt.toString("hh:mm");
+				break;
+			case 's': // seconds since epoch (currently 1970-01-01 00:00:00 UTC)
+				szFmtTime += QString::number(qDt.toTime_t());
+				break;
+			case 'S': // seconds (00-60)
+				cDiv = '0';
+				iVal = qDt.time().second();
+				break;
+			case 't': // Tab
+				szFmtTime += "\t";
+				break;
+			case 'T': // H:M:S
+				szFmtTime += qDt.toString("hh:mm:ss");
+				break;
+			case 'u': // day of the week (1-7)
+				iVal = qDt.date().dayOfWeek();
+				iLength = 1;
+				break;
+			case 'V': // week of the year (ISO 8601)
+			case 'W': // W is not entirely correct, but that's a
+				// lot easier this way.
+				iVal = qDt.date().weekNumber();
+				cDiv = '0';
+				break;
+			case 'w': // day of week (0-6, 0==Sunday)
+				iTemp = qDt.date().dayOfWeek();
+				if(iTemp == Qt::Sunday)
+					iTemp = 0;
+				szFmtTime += QString::number(iTemp);
+				break;
+			case 'y': // year (2-character)
+				szFmtTime += qDt.toString("yy");
+				break;
+			case 'Y': // year (4-character)
+				szFmtTime += qDt.toString("yyyy");
+				break;
+			case 'z': // numerical timezone offset
+				iLocalTzH = qDt.time().hour();
+				iLocalTzM = qDt.time().minute();
+				iUtcH = qDt.toUTC().time().hour();
+				iUtcM = qDt.toUTC().time().minute();
+				iTzOffsetH = iLocalTzH - iUtcH;
+				iTzOffsetM = iLocalTzM - iUtcM;
+				iTzOffset = iTzOffsetH * 100 + iTzOffsetM;
 
-					//clamp to -12:00 / +12:00 (ticket #924)
-					if(iTzOffset < 1200)
-						iTzOffset += 2400;
+				//clamp to -12:00 / +12:00 (ticket #924)
+				if(iTzOffset < 1200)
+					iTzOffset += 2400;
 
-					if(iTzOffset > 1200)
-						iTzOffset -= 2400;
+				if(iTzOffset > 1200)
+					iTzOffset -= 2400;
 
-					if(iTzOffset > 0)
-						szFmtTime += "+";
+				if(iTzOffset > 0)
+					szFmtTime += "+";
 
-					szFmtTime += QString("%1").arg(iTzOffset, 4, 10, QChar('0'));
-					break;
+				szFmtTime += QString("%1").arg(iTzOffset, 4, 10, QChar('0'));
+				break;
 				// FIXME
 				// The abbrev. time zone name is a little bit trickier,
 				// as I don't want to reimplement KTimeZone, but can't
 				// use KTimeZone. I'll need to do some research on this.
 				//case 'Z':   // TZ abbrev.
 				//    szFmtTime +=
-				default:
-					szFmtTime += i;
+			default:
+				szFmtTime += i;
 			}
 
 			if(iVal != 0x8000000)
@@ -1131,11 +1131,11 @@ namespace KviKvsCoreFunctions
 	{
 		QString szData;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("text", KVS_PT_STRING, KVS_PF_OPTIONAL, szData)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("text", KVS_PT_STRING, KVS_PF_OPTIONAL, szData)
+			KVSCF_PARAMETERS_END
 
-		if(!szData.isEmpty())
-			KviQString::escapeKvs(&szData);
+			if(!szData.isEmpty())
+				KviQString::escapeKvs(&szData);
 
 		KVSCF_pRetBuffer->setString(szData);
 		return true;
@@ -1228,20 +1228,20 @@ namespace KviKvsCoreFunctions
 	{
 		QString szFeature;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("test_feature", KVS_PT_STRING, KVS_PF_OPTIONAL, szFeature)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("test_feature", KVS_PT_STRING, KVS_PF_OPTIONAL, szFeature)
+			KVSCF_PARAMETERS_END
 
-		if(!szFeature.isEmpty())
-		{
-			KVSCF_pRetBuffer->setBoolean(feature_list.contains(szFeature, Qt::CaseInsensitive));
-		}
-		else
-		{
-			KviKvsArray * a = new KviKvsArray();
-			for(auto&& f : feature_list)
-				a->append(new KviKvsVariant(f));
-			KVSCF_pRetBuffer->setArray(a);
-		}
+			if(!szFeature.isEmpty())
+			{
+				KVSCF_pRetBuffer->setBoolean(feature_list.contains(szFeature, Qt::CaseInsensitive));
+			}
+			else
+			{
+				KviKvsArray * a = new KviKvsArray();
+				for(auto&& f : feature_list)
+					a->append(new KviKvsVariant(f));
+				KVSCF_pRetBuffer->setArray(a);
+			}
 
 		return true;
 	}
@@ -1305,39 +1305,39 @@ namespace KviKvsCoreFunctions
 		{
 			switch(v->type())
 			{
-				case KviKvsVariantData::Array:
+			case KviKvsVariantData::Array:
+			{
+				KviKvsArray * z = v->array();
+				unsigned int uSize = z->size();
+				unsigned int uIdx2 = 0;
+				while(uIdx2 < uSize)
 				{
-					KviKvsArray * z = v->array();
-					unsigned int uSize = z->size();
-					unsigned int uIdx2 = 0;
-					while(uIdx2 < uSize)
-					{
-						KviKvsVariant * pInternal = z->at(uIdx2);
-						if(pInternal)
-							a->set(uIdx, new KviKvsVariant(*pInternal));
-						// else
-						//	don't set anything: just leave empty entry (nothing)
-						uIdx++;
-						uIdx2++;
-					}
-				}
-				break;
-				case KviKvsVariantData::Hash:
-				{
-					KviKvsHash * h = v->hash();
-					KviKvsHashIterator it(*(h->dict()));
-					while(KviKvsVariant * pInternal = it.current())
-					{
+					KviKvsVariant * pInternal = z->at(uIdx2);
+					if(pInternal)
 						a->set(uIdx, new KviKvsVariant(*pInternal));
-						uIdx++;
-						++it;
-					}
-				}
-				break;
-				default:
-					a->set(uIdx, new KviKvsVariant(*v));
+					// else
+					//	don't set anything: just leave empty entry (nothing)
 					uIdx++;
-					break;
+					uIdx2++;
+				}
+			}
+			break;
+			case KviKvsVariantData::Hash:
+			{
+				KviKvsHash * h = v->hash();
+				KviKvsHashIterator it(*(h->dict()));
+				while(KviKvsVariant * pInternal = it.current())
+				{
+					a->set(uIdx, new KviKvsVariant(*pInternal));
+					uIdx++;
+					++it;
+				}
+			}
+			break;
+			default:
+				a->set(uIdx, new KviKvsVariant(*v));
+				uIdx++;
+				break;
 			}
 		}
 		return true;
@@ -1376,12 +1376,12 @@ namespace KviKvsCoreFunctions
 	{
 		QString szLinkText, szCmd, szToolTip;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("link_text", KVS_PT_NONEMPTYSTRING, 0, szLinkText)
-		KVSCF_PARAMETER("double_click_command", KVS_PT_STRING, 0, szCmd)
-		KVSCF_PARAMETER("tooltip_text", KVS_PT_STRING, KVS_PF_OPTIONAL, szToolTip)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("link_text", KVS_PT_NONEMPTYSTRING, 0, szLinkText)
+			KVSCF_PARAMETER("double_click_command", KVS_PT_STRING, 0, szCmd)
+			KVSCF_PARAMETER("tooltip_text", KVS_PT_STRING, KVS_PF_OPTIONAL, szToolTip)
+			KVSCF_PARAMETERS_END
 
-		QString szPart = QString("[!dbl]%1").arg(szCmd);
+			QString szPart = QString("[!dbl]%1").arg(szCmd);
 		if(!szToolTip.isEmpty())
 			KviQString::appendFormatted(szPart, "[!txt]%Q", &szToolTip);
 		QString szLink = QString("\r!%1\r%2\r").arg(szPart, szLinkText);

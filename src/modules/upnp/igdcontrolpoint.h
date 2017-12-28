@@ -24,11 +24,11 @@
 //=============================================================================
 
 /***************************************************************************
-                          igdcontrolpoint.cpp -  description
-                             -------------------
-    begin                : Mon Jul 25 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  igdcontrolpoint.cpp -  description
+							 -------------------
+	begin                : Mon Jul 25 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #ifndef UPNP_IGDCONTROLPOINT_H
@@ -38,7 +38,6 @@
 
 namespace UPnP
 {
-
 	class SsdpConnection;
 	class RootService;
 	class WanConnectionService;
@@ -75,7 +74,7 @@ namespace UPnP
 		// Delete a port mapping
 		void deletePortMapping(const QString & protocol, const QString & remoteHost, int externalPort);
 
-	private slots:
+		private slots:
 		// The IGD was queried for it's services
 		void slotDeviceQueried(bool error);
 		// A WAN connection query was finished

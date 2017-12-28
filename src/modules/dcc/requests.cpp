@@ -71,17 +71,17 @@ extern DccBroker * g_pDccBroker;
 static void dcc_module_reply_errmsg(KviDccRequest * dcc, const QString & errText)
 {
 	dcc->ctcpMsg->msg->console()->connection()->sendFmtData(
-	    "NOTICE %s :%cERRMSG %s%c",
-	    dcc->ctcpMsg->msg->console()->connection()->encodeText(dcc->ctcpMsg->pSource->nick()).data(), 0x01,
-	    dcc->ctcpMsg->msg->console()->connection()->encodeText(errText).data(), 0x01);
+		"NOTICE %s :%cERRMSG %s%c",
+		dcc->ctcpMsg->msg->console()->connection()->encodeText(dcc->ctcpMsg->pSource->nick()).data(), 0x01,
+		dcc->ctcpMsg->msg->console()->connection()->encodeText(errText).data(), 0x01);
 }
 
 static void dcc_module_request_error(KviDccRequest * dcc, const QString & errText)
 {
 	dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
-	    __tr2qs_ctx("Unable to process the above request: %Q, %Q", "dcc"),
-	    &errText,
-	    KVI_OPTION_BOOL(KviOption_boolNotifyFailedDccHandshakes) ? &(__tr2qs_ctx("Ignoring and notifying failure", "dcc")) : &(__tr2qs_ctx("Ignoring", "dcc")));
+		__tr2qs_ctx("Unable to process the above request: %Q, %Q", "dcc"),
+		&errText,
+		KVI_OPTION_BOOL(KviOption_boolNotifyFailedDccHandshakes) ? &(__tr2qs_ctx("Ignoring and notifying failure", "dcc")) : &(__tr2qs_ctx("Ignoring", "dcc")));
 
 	if(KVI_OPTION_BOOL(KviOption_boolNotifyFailedDccHandshakes))
 	{
@@ -266,7 +266,7 @@ static void dccModuleParseDccChat(KviDccRequest * dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-			    __tr2qs_ctx("The above request is broken: the second parameter is '%s' and should be 'chat', trying to continue", "dcc"), dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request is broken: the second parameter is '%s' and should be 'chat', trying to continue", "dcc"), dcc->szParam1.ptr());
 		}
 	}
 
@@ -333,7 +333,7 @@ static void dccModuleParseDccChat(KviDccRequest * dcc)
 				//         request, but since we don't encourage bugs, we don't do it :D
 				//         Mail me at pragma at kvirc dot net if you really think it's necessary.
 				dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-				    __tr2qs_ctx("The above request is broken: it looks like a zero port tag acknowledge but I have either never seen this tag or it was sent more than 120 seconds ago", "dcc"));
+					__tr2qs_ctx("The above request is broken: it looks like a zero port tag acknowledge but I have either never seen this tag or it was sent more than 120 seconds ago", "dcc"));
 				dcc_module_request_error(dcc, __tr2qs_ctx("It seems that I haven't requested this DCC chat", "dcc"));
 				delete d;
 				return;
@@ -462,7 +462,7 @@ static void dccModuleParseDccSend(KviDccRequest * dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-			    __tr2qs_ctx("The above request is broken: the fourth parameter should be the file size but doesn't appear to be an unsigned number; trying to continue", "dcc"), dcc->szParam4.ptr());
+				__tr2qs_ctx("The above request is broken: the fourth parameter should be the file size but doesn't appear to be an unsigned number; trying to continue", "dcc"), dcc->szParam4.ptr());
 		}
 		dcc->szParam4 = __tr2qs_ctx("<unknown size>", "dcc");
 	}
@@ -472,7 +472,7 @@ static void dccModuleParseDccSend(KviDccRequest * dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-			    __tr2qs_ctx("The above request is broken: the filename contains path components, stripping the leading path and trying to continue", "dcc"), dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request is broken: the filename contains path components, stripping the leading path and trying to continue", "dcc"), dcc->szParam1.ptr());
 		}
 		dcc->szParam1.cutToLast('/');
 	}
@@ -482,7 +482,7 @@ static void dccModuleParseDccSend(KviDccRequest * dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-			    __tr2qs_ctx("The above request is broken: the filename contains path components, stripping the leading path and trying to continue", "dcc"), dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request is broken: the filename contains path components, stripping the leading path and trying to continue", "dcc"), dcc->szParam1.ptr());
 		}
 		dcc->szParam1.cutToLast("%2F");
 	}
@@ -624,7 +624,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->outputNoFmt(KVI_OUT_DCCMSG,
-			    __tr2qs_ctx("The above request has resume file size missing, assuming a resume file size of 0", "dcc"));
+				__tr2qs_ctx("The above request has resume file size missing, assuming a resume file size of 0", "dcc"));
 		}
 		dcc->szParam4 = "0";
 	}
@@ -634,7 +634,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-			    __tr2qs_ctx("The above request is broken: the filename contains path components, stripping the leading path and trying to continue", "dcc"), dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request is broken: the filename contains path components, stripping the leading path and trying to continue", "dcc"), dcc->szParam1.ptr());
 		}
 		dcc->szParam1.cutToLast('/');
 	}
@@ -657,7 +657,6 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 	KviSharedFile * o = g_pSharedFilesManager->lookupSharedFile(dcc->szParam1.ptr(), dcc->ctcpMsg->pSource, 0);
 	if(o)
 	{
-
 		unsigned int uResumeSize = dcc->szParam4.toUInt(); // this will NEVER fail
 		if(uResumeSize >= o->fileSize())
 		{
@@ -713,15 +712,14 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 	}
 	else
 	{
-
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-		    __tr2qs_ctx("%Q [%Q@%Q] is ready to receive the file \"%s\"", "dcc"),
-		    &(dcc->ctcpMsg->pSource->nick()),
-		    &(dcc->ctcpMsg->pSource->user()),
-		    &(dcc->ctcpMsg->pSource->host()),
-		    dcc->szParam1.ptr());
+			__tr2qs_ctx("%Q [%Q@%Q] is ready to receive the file \"%s\"", "dcc"),
+			&(dcc->ctcpMsg->pSource->nick()),
+			&(dcc->ctcpMsg->pSource->user()),
+			&(dcc->ctcpMsg->pSource->host()),
+			dcc->szParam1.ptr());
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-		    __tr2qs_ctx("The remote client is listening on interface %s and port %s", "dcc"), dcc->szParam2.ptr(), dcc->szParam3.ptr());
+			__tr2qs_ctx("The remote client is listening on interface %s and port %s", "dcc"), dcc->szParam2.ptr(), dcc->szParam3.ptr());
 		KviCString szSwitches = "-c";
 		if(bTurboExtension)
 			szSwitches.prepend("-t ");
@@ -730,13 +728,13 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 			szSwitches.prepend("-s ");
 #endif
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-		    __tr2qs_ctx("Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c to send the file (or double-click on the socket)", "dcc"),
-		    KviControlCodes::Bold,
-		    szSwitches.ptr(),
-		    dcc->szParam2.ptr(), dcc->szParam3.ptr(), &(dcc->ctcpMsg->pSource->nick()),
-		    szSwitches.ptr(),
-		    dcc->szParam2.ptr(), dcc->szParam3.ptr(), &(dcc->ctcpMsg->pSource->nick()),
-		    KviControlCodes::Bold);
+			__tr2qs_ctx("Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c to send the file (or double-click on the socket)", "dcc"),
+			KviControlCodes::Bold,
+			szSwitches.ptr(),
+			dcc->szParam2.ptr(), dcc->szParam3.ptr(), &(dcc->ctcpMsg->pSource->nick()),
+			szSwitches.ptr(),
+			dcc->szParam2.ptr(), dcc->szParam3.ptr(), &(dcc->ctcpMsg->pSource->nick()),
+			KviControlCodes::Bold);
 	}
 }
 
@@ -764,7 +762,7 @@ static void dccModuleParseDccRSend(KviDccRequest * dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-			    __tr2qs_ctx("The above request is broken: the fourth parameter should be the file size but doesn't appear to be an unsigned number; trying to continue", "dcc"), dcc->szParam2.ptr());
+				__tr2qs_ctx("The above request is broken: the fourth parameter should be the file size but doesn't appear to be an unsigned number; trying to continue", "dcc"), dcc->szParam2.ptr());
 		}
 		dcc->szParam2 = __tr_ctx("<unknown size>", "dcc");
 	}
@@ -774,7 +772,7 @@ static void dccModuleParseDccRSend(KviDccRequest * dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-			    __tr2qs_ctx("The above request is broken: the filename contains path components, stripping the leading path and trying to continue", "dcc"), dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request is broken: the filename contains path components, stripping the leading path and trying to continue", "dcc"), dcc->szParam1.ptr());
 		}
 		dcc->szParam1.cutToLast('/');
 	}
@@ -805,7 +803,7 @@ static void dccModuleParseDccRSend(KviDccRequest * dcc)
 	if(!dcc_kvs_get_listen_ip_address(nullptr, d->console(), tmp))
 	{
 		d->console()->output(KVI_OUT_DCCMSG,
-		    __tr2qs_ctx("No suitable interface to listen on, trying to continue anyway...", "dcc"));
+			__tr2qs_ctx("No suitable interface to listen on, trying to continue anyway...", "dcc"));
 		d->szListenIp = "0.0.0.0";
 	}
 	else
@@ -924,19 +922,19 @@ static void dccModuleParseDccGet(KviDccRequest * dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-			    __tr2qs_ctx("Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering DCC %s since we can't accept incoming connections (user option)", "dcc"),
-			    &(dcc->ctcpMsg->pSource->nick()),
-			    &(dcc->ctcpMsg->pSource->user()),
-			    &(dcc->ctcpMsg->pSource->host()), dcc->szParam1.ptr(),
-			    &(o->absFilePath()), szSubproto.ptr());
+				__tr2qs_ctx("Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering DCC %s since we can't accept incoming connections (user option)", "dcc"),
+				&(dcc->ctcpMsg->pSource->nick()),
+				&(dcc->ctcpMsg->pSource->user()),
+				&(dcc->ctcpMsg->pSource->host()), dcc->szParam1.ptr(),
+				&(o->absFilePath()), szSubproto.ptr());
 		}
 
 		dcc->pConsole->connection()->sendFmtData("PRIVMSG %s :%cDCC %s %s %s%c",
-		    dcc->pConsole->connection()->encodeText(dcc->ctcpMsg->pSource->nick()).data(),
-		    0x01, szSubproto.ptr(),
-		    dcc->pConsole->connection()->encodeText(dcc->szParam1.ptr()).data(),
-		    dcc->pConsole->connection()->encodeText(QString::number(o->fileSize())).data(),
-		    0x01);
+			dcc->pConsole->connection()->encodeText(dcc->ctcpMsg->pSource->nick()).data(),
+			0x01, szSubproto.ptr(),
+			dcc->pConsole->connection()->encodeText(dcc->szParam1.ptr()).data(),
+			dcc->pConsole->connection()->encodeText(QString::number(o->fileSize())).data(),
+			0x01);
 		return;
 	}
 
@@ -952,7 +950,7 @@ static void dccModuleParseDccGet(KviDccRequest * dcc)
 	if(!dcc_kvs_get_listen_ip_address(nullptr, d->console(), tmp))
 	{
 		d->console()->output(KVI_OUT_DCCMSG,
-		    __tr2qs_ctx("No suitable interface to listen on, trying to continue anyway...", "dcc"));
+			__tr2qs_ctx("No suitable interface to listen on, trying to continue anyway...", "dcc"));
 		d->szListenIp = "0.0.0.0";
 	}
 	else
@@ -984,12 +982,12 @@ static void dccModuleParseDccGet(KviDccRequest * dcc)
 	if(!dcc->ctcpMsg->msg->haltOutput())
 	{
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-		    __tr2qs_ctx("Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering DCC %Q", "dcc"),
-		    &(dcc->ctcpMsg->pSource->nick()),
-		    &(dcc->ctcpMsg->pSource->user()),
-		    &(dcc->ctcpMsg->pSource->host()),
-		    dcc->szParam1.ptr(),
-		    &(o->absFilePath()), &(d->szType));
+			__tr2qs_ctx("Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering DCC %Q", "dcc"),
+			&(dcc->ctcpMsg->pSource->nick()),
+			&(dcc->ctcpMsg->pSource->user()),
+			&(dcc->ctcpMsg->pSource->host()),
+			dcc->szParam1.ptr(),
+			&(o->absFilePath()), &(d->szType));
 	}
 	d->triggerCreationEvent();
 	g_pDccBroker->sendFileExecute(nullptr, d);
@@ -1020,7 +1018,7 @@ static void dccModuleParseDccVoice(KviDccRequest * dcc)
 	if(!dcc->ctcpMsg->msg->haltOutput())
 	{
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
-		    __tr2qs_ctx("The above request can't be accepted: DCC VOICE support not enabled at compilation time ", "dcc"));
+			__tr2qs_ctx("The above request can't be accepted: DCC VOICE support not enabled at compilation time ", "dcc"));
 		return;
 	}
 #endif
@@ -1030,7 +1028,7 @@ static void dccModuleParseDccVoice(KviDccRequest * dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
-			    __tr2qs_ctx("The above request can't be accepted: unsupported codec '%s'", "dcc"), dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request can't be accepted: unsupported codec '%s'", "dcc"), dcc->szParam1.ptr());
 			return;
 		}
 	}
@@ -1043,7 +1041,7 @@ static void dccModuleParseDccVoice(KviDccRequest * dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
-			    __tr2qs_ctx("The above request appears to be broken: invalid sample-rate '%s', defaulting to 8000", "dcc"), dcc->szParam4.ptr());
+				__tr2qs_ctx("The above request appears to be broken: invalid sample-rate '%s', defaulting to 8000", "dcc"), dcc->szParam4.ptr());
 		}
 		iSampleRate = 8000;
 	}
@@ -1093,7 +1091,7 @@ static void dccModuleParseDccVideo(KviDccRequest * dcc)
 	if(!dcc->ctcpMsg->msg->haltOutput())
 	{
 		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
-		    __tr2qs_ctx("The above request can't be accepted: DCC VIDEO support not enabled at compilation time ", "dcc"));
+			__tr2qs_ctx("The above request can't be accepted: DCC VIDEO support not enabled at compilation time ", "dcc"));
 		return;
 	}
 #else
@@ -1103,7 +1101,7 @@ static void dccModuleParseDccVideo(KviDccRequest * dcc)
 		if(!dcc->ctcpMsg->msg->haltOutput())
 		{
 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
-			    __tr2qs_ctx("The above request can't be accepted: unsupported codec '%s'", "dcc"), dcc->szParam1.ptr());
+				__tr2qs_ctx("The above request can't be accepted: unsupported codec '%s'", "dcc"), dcc->szParam1.ptr());
 			return;
 		}
 	}
@@ -1175,7 +1173,7 @@ static void dccModuleParseDccList(KviDccRequest *)
 	// FIXME!
 }
 
-typedef void (*dccParseProc)(KviDccRequest *);
+typedef void(*dccParseProc)(KviDccRequest *);
 typedef struct _dccParseProcEntry
 {
 	const char * type;

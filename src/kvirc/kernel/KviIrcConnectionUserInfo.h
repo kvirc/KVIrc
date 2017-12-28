@@ -36,7 +36,7 @@ class KVIRC_API KviIrcConnectionUserInfo
 
 protected:
 	KviIrcConnectionUserInfo();
-	~KviIrcConnectionUserInfo(){};
+	~KviIrcConnectionUserInfo() {};
 
 private:
 	QString m_szRealName;    // the actual real name sent from the server

@@ -26,12 +26,12 @@
 #include "KviKvsRunTimeContext.h"
 
 KviKvsTreeNodeGlobalVariable::KviKvsTreeNodeGlobalVariable(const QChar * pLocation, const QString & szIdentifier)
-    : KviKvsTreeNodeVariable(pLocation, szIdentifier)
+	: KviKvsTreeNodeVariable(pLocation, szIdentifier)
 {
 }
 
 KviKvsTreeNodeGlobalVariable::~KviKvsTreeNodeGlobalVariable()
-    = default;
+= default;
 
 void KviKvsTreeNodeGlobalVariable::contextDescription(QString & szBuffer)
 {

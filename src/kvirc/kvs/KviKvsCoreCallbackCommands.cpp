@@ -135,11 +135,11 @@ namespace KviKvsCoreCallbackCommands
 		QString szQuery;
 		KviKvsVariant * pMagicPtr;
 		KVSCCC_PARAMETERS_BEGIN
-		KVSCCC_PARAMETER("dnsquery", KVS_PT_NONEMPTYSTRING, 0, szQuery)
-		KVSCCC_PARAMETER("magic", KVS_PT_VARIANT, KVS_PF_OPTIONAL, pMagicPtr)
-		KVSCCC_PARAMETERS_END
+			KVSCCC_PARAMETER("dnsquery", KVS_PT_NONEMPTYSTRING, 0, szQuery)
+			KVSCCC_PARAMETER("magic", KVS_PT_VARIANT, KVS_PF_OPTIONAL, pMagicPtr)
+			KVSCCC_PARAMETERS_END
 
-		KviDnsResolver::QueryType queryType = KviDnsResolver::IPv4;
+			KviDnsResolver::QueryType queryType = KviDnsResolver::IPv4;
 		if(KVSCCC_pSwitches->find('i', "ipv6"))
 			queryType = KviDnsResolver::IPv6;
 		if(KVSCCC_pSwitches->find('a', "any"))
@@ -148,11 +148,11 @@ namespace KviKvsCoreCallbackCommands
 		KviKvsVariant * pMagic = pMagicPtr ? new KviKvsVariant(*pMagicPtr) : new KviKvsVariant();
 
 		new KviKvsAsyncDnsOperation(
-		    KVSCCC_pContext->window(),
-		    szQuery,
-		    queryType,
-		    new KviKvsScript(*KVSCCC_pCallback),
-		    pMagic);
+			KVSCCC_pContext->window(),
+			szQuery,
+			queryType,
+			new KviKvsScript(*KVSCCC_pCallback),
+			pMagic);
 
 		return true;
 	}
@@ -290,7 +290,6 @@ namespace KviKvsCoreCallbackCommands
 		}
 		else
 		{
-
 			if(tmp.endsWith("@"))
 			{
 				KVSCCC_pContext->error(__tr2qs_ctx("Found an empty alias name within a namespace", "kvs"));
@@ -363,13 +362,13 @@ namespace KviKvsCoreCallbackCommands
 		QString szNick;
 		KviKvsVariant * pMagic;
 		KVSCCC_PARAMETERS_BEGIN
-		KVSCCC_PARAMETER("nickname", KVS_PT_NONEMPTYSTRING, 0, szNick)
-		KVSCCC_PARAMETER("magic", KVS_PT_VARIANT, KVS_PF_OPTIONAL, pMagic)
-		KVSCCC_PARAMETERS_END
+			KVSCCC_PARAMETER("nickname", KVS_PT_NONEMPTYSTRING, 0, szNick)
+			KVSCCC_PARAMETER("magic", KVS_PT_VARIANT, KVS_PF_OPTIONAL, pMagic)
+			KVSCCC_PARAMETERS_END
 
-		KVSCCC_REQUIRE_CONNECTION
+			KVSCCC_REQUIRE_CONNECTION
 
-		QByteArray szN = KVSCCC_pConnection->encodeText(szNick);
+			QByteArray szN = KVSCCC_pConnection->encodeText(szNick);
 
 		KviAsyncWhoisInfo * info = new KviAsyncWhoisInfo();
 		info->pCallback = new KviKvsScript(*KVSCCC_pCallback);
@@ -442,13 +441,13 @@ namespace KviKvsCoreCallbackCommands
 		KviKvsVariant * pUnused;
 		QString szName, szIcon, szLabel;
 		KVSCCC_PARAMETERS_BEGIN
-		KVSCCC_PARAMETER("type_unused", KVS_PT_VARIANT, 0, pUnused)
-		KVSCCC_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
-		KVSCCC_PARAMETER("icon", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szIcon)
-		KVSCCC_PARAMETER("label", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szLabel)
-		KVSCCC_PARAMETERS_END
+			KVSCCC_PARAMETER("type_unused", KVS_PT_VARIANT, 0, pUnused)
+			KVSCCC_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+			KVSCCC_PARAMETER("icon", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szIcon)
+			KVSCCC_PARAMETER("label", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szLabel)
+			KVSCCC_PARAMETERS_END
 
-		KviScriptUserButton * pButton = nullptr;
+			KviScriptUserButton * pButton = nullptr;
 
 		if(!KVSCCC_pWindow->buttonContainer())
 		{
@@ -543,11 +542,11 @@ namespace KviKvsCoreCallbackCommands
 	{
 		QString szEventName, szHandlerName;
 		KVSCCC_PARAMETERS_BEGIN
-		KVSCCC_PARAMETER("event_name", KVS_PT_NONEMPTYSTRING, 0, szEventName)
-		KVSCCC_PARAMETER("handler_name", KVS_PT_NONEMPTYSTRING, 0, szHandlerName)
-		KVSCCC_PARAMETERS_END
+			KVSCCC_PARAMETER("event_name", KVS_PT_NONEMPTYSTRING, 0, szEventName)
+			KVSCCC_PARAMETER("handler_name", KVS_PT_NONEMPTYSTRING, 0, szHandlerName)
+			KVSCCC_PARAMETERS_END
 
-		bool bOk;
+			bool bOk;
 		int iNumber = szEventName.toInt(&bOk);
 		bool bIsRaw = (bOk && (iNumber >= 0) && (iNumber < 1000));
 
@@ -940,11 +939,11 @@ namespace KviKvsCoreCallbackCommands
 		QString szCommandline;
 		KviKvsVariant * pMagic;
 		KVSCCC_PARAMETERS_BEGIN
-		KVSCCC_PARAMETER("commandline", KVS_PT_NONEMPTYSTRING, 0, szCommandline)
-		KVSCCC_PARAMETER("magic", KVS_PT_VARIANT, KVS_PF_OPTIONAL, pMagic)
-		KVSCCC_PARAMETERS_END
+			KVSCCC_PARAMETER("commandline", KVS_PT_NONEMPTYSTRING, 0, szCommandline)
+			KVSCCC_PARAMETER("magic", KVS_PT_VARIANT, KVS_PF_OPTIONAL, pMagic)
+			KVSCCC_PARAMETERS_END
 
-		int f = 0;
+			int f = 0;
 
 		if(KVSCCC_pSwitches->find('t', "trigger-termination") != nullptr)
 			f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERTERMINATED;
@@ -1040,11 +1039,11 @@ namespace KviKvsCoreCallbackCommands
 		kvs_hobject_t hObject;
 		QString szFunctionName;
 		KVSCCC_PARAMETERS_BEGIN
-		KVSCCC_PARAMETER("object_handle", KVS_PT_HOBJECT, 0, hObject)
-		KVSCCC_PARAMETER("function_name", KVS_PT_NONEMPTYSTRING, 0, szFunctionName)
-		KVSCCC_PARAMETERS_END
+			KVSCCC_PARAMETER("object_handle", KVS_PT_HOBJECT, 0, hObject)
+			KVSCCC_PARAMETER("function_name", KVS_PT_NONEMPTYSTRING, 0, szFunctionName)
+			KVSCCC_PARAMETERS_END
 
-		KviKvsObject * o = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+			KviKvsObject * o = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 		if(!o)
 		{
 			KVSCCC_pContext->error(__tr2qs_ctx("The specified object does not exist", "kvs"));

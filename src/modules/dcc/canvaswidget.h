@@ -266,7 +266,7 @@ protected:
 	virtual void contentsMousePressEvent(QMouseEvent * e);
 	virtual void contentsMouseMoveEvent(QMouseEvent * e);
 	virtual void contentsMouseReleaseEvent(QMouseEvent * e);
-public slots:
+	public slots:
 	void insertRectangle();
 	void insertRichText();
 	void insertLine();
@@ -305,7 +305,7 @@ public:
 
 public:
 	void editItem(QCanvasItem * it);
-protected slots:
+	protected slots:
 	void cellEdited(int row, int col);
 signals:
 	void propertyChanged(const QString & s, const QVariant & v);

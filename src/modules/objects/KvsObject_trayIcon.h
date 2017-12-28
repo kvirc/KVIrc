@@ -47,7 +47,7 @@ protected:
 	bool activatedEvent(KviKvsObjectFunctionCall * c);
 	bool messageClickedEvent(KviKvsObjectFunctionCall * c);
 
-protected slots:
+	protected slots:
 	void slotActivated(QSystemTrayIcon::ActivationReason);
 	void slotMessageClicked();
 };

@@ -77,12 +77,12 @@ static bool socketspy_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "SocketSpy",                                                    // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "SocketSpy IRC socket traffic monitor",
-    socketspy_module_init,
-    socketspy_module_can_unload,
-    0,
-    socketspy_module_cleanup,
-    0)
+	"SocketSpy",                                                    // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"SocketSpy IRC socket traffic monitor",
+	socketspy_module_init,
+	socketspy_module_can_unload,
+	0,
+	socketspy_module_cleanup,
+	0)

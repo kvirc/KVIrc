@@ -36,7 +36,7 @@
 static KviFileTransferManager * g_pFileTransferManager = nullptr;
 
 KviFileTransferManager::KviFileTransferManager()
-    : QObject()
+	: QObject()
 {
 	m_pTransferWindow = nullptr;
 }
@@ -66,10 +66,10 @@ void KviFileTransferManager::cleanup()
 
 void KviFileTransferManager::killAllTransfers()
 {
-	while (true)
+	while(true)
 	{
 		const auto tIt = m_pTransferList.rbegin();
-		if (tIt == m_pTransferList.rend())
+		if(tIt == m_pTransferList.rend())
 			break;
 		const auto t = *tIt;
 		t->die();
@@ -79,11 +79,11 @@ void KviFileTransferManager::killAllTransfers()
 void KviFileTransferManager::killTerminatedTransfers()
 {
 	std::vector<KviFileTransfer *> copyterm;
-	for (auto & f : m_pTransferList)
-		if (f->terminated())
+	for(auto & f : m_pTransferList)
+		if(f->terminated())
 			copyterm.push_back(f);
 
-	for (auto & f : copyterm)
+	for(auto & f : copyterm)
 		f->die();
 }
 
@@ -121,7 +121,7 @@ void KviFileTransferManager::unregisterTransfer(KviFileTransfer * t)
 }
 
 KviFileTransfer::KviFileTransfer()
-    : QObject()
+	: QObject()
 {
 	m_pDisplayItem = nullptr;
 	m_iId = g_pApp->getGloballyUniqueId();

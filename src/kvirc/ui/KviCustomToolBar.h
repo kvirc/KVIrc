@@ -63,7 +63,7 @@ protected:
 	void unfilterChild(QObject * o);
 	virtual void paintEvent(QPaintEvent * e);
 	void syncDescriptor();
-protected slots:
+	protected slots:
 	void beginCustomize();
 	void endCustomize();
 	void filteredChildDestroyed();

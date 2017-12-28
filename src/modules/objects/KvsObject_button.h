@@ -44,7 +44,7 @@ protected:
 	bool setImage(KviKvsObjectFunctionCall * c);
 	bool clickEvent(KviKvsObjectFunctionCall * c);
 
-protected slots:
+	protected slots:
 	void slotClicked();
 };
 

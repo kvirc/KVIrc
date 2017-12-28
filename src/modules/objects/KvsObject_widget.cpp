@@ -61,12 +61,12 @@
 #endif
 
 KviKvsWidget::KviKvsWidget(KvsObject_widget * object, QWidget * par)
-    : QWidget(par), m_pObject(object)
+	: QWidget(par), m_pObject(object)
 {
 }
 
 KviKvsWidget::~KviKvsWidget()
-    = default;
+= default;
 
 QSize KviKvsWidget::sizeHint() const
 {
@@ -736,271 +736,271 @@ bool KvsObject_widget::eventFilter(QObject * o, QEvent * e)
 
 		switch(e->type())
 		{
-			case QEvent::ContextMenu:
-			{
-				QPoint iPoint = widget()->mapFromGlobal(((QContextMenuEvent *)e)->globalPos());
-				KviKvsVariantList params(new KviKvsVariant((kvs_int_t)iPoint.x()), new KviKvsVariant((kvs_int_t)iPoint.y()));
-				callFunction(this, "customContextMenuRequestedEvent", &oReturnBuffer, &params);
-				break;
-			}
-			case QEvent::Shortcut:
-			{
-				KviKvsVariantList params(new KviKvsVariant((kvs_int_t)((QShortcutEvent *)e)->shortcutId()));
-				callFunction(this, "shortCutEvent", &oReturnBuffer, &params);
-				break;
-			}
-			case QEvent::ToolTip:
-			{
-				QHelpEvent * helpEvent = static_cast<QHelpEvent *>(e);
-				QPoint point = helpEvent->pos();
-				QString szTooltip = "";
-				KviKvsVariant * tipret = new KviKvsVariant(szTooltip);
-				KviKvsVariantList params(new KviKvsVariant((kvs_int_t)point.x()), new KviKvsVariant((kvs_int_t)point.y()));
-				callFunction(this, "maybeTipEvent", tipret, &params);
-				tipret->asString(szTooltip);
-				if(!szTooltip.isEmpty())
-					QToolTip::showText(helpEvent->globalPos(), szTooltip);
-				break;
-			}
-			case QEvent::Paint:
-			{
-				QRect rect = ((QPaintEvent *)e)->rect();
-				KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("painter");
-				KviKvsVariantList params;
-				KviKvsObject * pObject = pClass->allocateInstance(nullptr, "internalpainter", m_pContext, &params);
-				QPainter p(widget());
-				((KvsObject_painter *)pObject)->setInternalPainter(&p);
-				p.setClipRect(rect);
-				kvs_hobject_t hobj = pObject->handle();
-				KviKvsVariantList params2(new KviKvsVariant(hobj), new KviKvsVariant((kvs_int_t)rect.x()), new KviKvsVariant((kvs_int_t)rect.y()), new KviKvsVariant((kvs_int_t)rect.width()), new KviKvsVariant((kvs_int_t)rect.height()));
-				callFunction(this, "paintEvent", &oReturnBuffer, &params2);
-				pObject = KviKvsKernel::instance()->objectController()->lookupObject(hobj);
-				if(pObject)
-					pObject->dieNow();
-				break;
-			}
+		case QEvent::ContextMenu:
+		{
+			QPoint iPoint = widget()->mapFromGlobal(((QContextMenuEvent *)e)->globalPos());
+			KviKvsVariantList params(new KviKvsVariant((kvs_int_t)iPoint.x()), new KviKvsVariant((kvs_int_t)iPoint.y()));
+			callFunction(this, "customContextMenuRequestedEvent", &oReturnBuffer, &params);
+			break;
+		}
+		case QEvent::Shortcut:
+		{
+			KviKvsVariantList params(new KviKvsVariant((kvs_int_t)((QShortcutEvent *)e)->shortcutId()));
+			callFunction(this, "shortCutEvent", &oReturnBuffer, &params);
+			break;
+		}
+		case QEvent::ToolTip:
+		{
+			QHelpEvent * helpEvent = static_cast<QHelpEvent *>(e);
+			QPoint point = helpEvent->pos();
+			QString szTooltip = "";
+			KviKvsVariant * tipret = new KviKvsVariant(szTooltip);
+			KviKvsVariantList params(new KviKvsVariant((kvs_int_t)point.x()), new KviKvsVariant((kvs_int_t)point.y()));
+			callFunction(this, "maybeTipEvent", tipret, &params);
+			tipret->asString(szTooltip);
+			if(!szTooltip.isEmpty())
+				QToolTip::showText(helpEvent->globalPos(), szTooltip);
+			break;
+		}
+		case QEvent::Paint:
+		{
+			QRect rect = ((QPaintEvent *)e)->rect();
+			KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("painter");
+			KviKvsVariantList params;
+			KviKvsObject * pObject = pClass->allocateInstance(nullptr, "internalpainter", m_pContext, &params);
+			QPainter p(widget());
+			((KvsObject_painter *)pObject)->setInternalPainter(&p);
+			p.setClipRect(rect);
+			kvs_hobject_t hobj = pObject->handle();
+			KviKvsVariantList params2(new KviKvsVariant(hobj), new KviKvsVariant((kvs_int_t)rect.x()), new KviKvsVariant((kvs_int_t)rect.y()), new KviKvsVariant((kvs_int_t)rect.width()), new KviKvsVariant((kvs_int_t)rect.height()));
+			callFunction(this, "paintEvent", &oReturnBuffer, &params2);
+			pObject = KviKvsKernel::instance()->objectController()->lookupObject(hobj);
+			if(pObject)
+				pObject->dieNow();
+			break;
+		}
 
-			case QEvent::KeyPress:
+		case QEvent::KeyPress:
+		{
+			QString tmp = "";
+			switch(((QKeyEvent *)e)->key())
 			{
-				QString tmp = "";
-				switch(((QKeyEvent *)e)->key())
-				{
-					case Qt::Key_Return:
-						tmp = "Return";
-						break;
-					case Qt::Key_Down:
-						tmp = "Down";
-						break;
-					case Qt::Key_Up:
-						tmp = "Up";
-						break;
-					case Qt::Key_Left:
-						tmp = "Left";
-						break;
-					case Qt::Key_Right:
-						tmp = "Right";
-						break;
-					case Qt::Key_Shift:
-						tmp = "Shift";
-						break;
-					case Qt::Key_Control:
-						tmp = "Ctrl";
-						break;
-					case Qt::Key_Alt:
-						tmp = "Alt";
-						break;
-					case Qt::Key_CapsLock:
-						tmp = "CapsLock";
-						break;
-					case Qt::Key_Backspace:
-						tmp = "Backspace";
-						break;
-					case Qt::Key_Delete:
-						tmp = "Del";
-						break;
-					case Qt::Key_Enter:
-						tmp = "Enter";
-						break;
-					case Qt::Key_Escape:
-						tmp = "Esc";
-						break;
-					case Qt::Key_0:
-						tmp = "0";
-						break;
-					case Qt::Key_1:
-						tmp = "1";
-						break;
-					case Qt::Key_2:
-						tmp = "2";
-						break;
-					case Qt::Key_3:
-						tmp = "3";
-						break;
-					case Qt::Key_4:
-						tmp = "4";
-						break;
-					case Qt::Key_5:
-						tmp = "5";
-						break;
-					case Qt::Key_6:
-						tmp = "6";
-						break;
-					case Qt::Key_7:
-						tmp = "7";
-						break;
-					case Qt::Key_8:
-						tmp = "8";
-						break;
-					case Qt::Key_9:
-						tmp = "9";
-						break;
-					case Qt::Key_Plus:
-						tmp = "+";
-						break;
-					case Qt::Key_Minus:
-						tmp = "-";
-						break;
-					case Qt::Key_Slash:
-						tmp = "/";
-						break;
-					case Qt::Key_Asterisk:
-						tmp = "*";
-						break;
-					case Qt::Key_Period:
-						tmp = ".";
-						break;
-					case Qt::Key_ParenLeft:
-						tmp = "(";
-						break;
-					case Qt::Key_ParenRight:
-						tmp = ")";
-						break;
-					case Qt::Key_Equal:
-						tmp = "=";
-						break;
-					case Qt::Key_AsciiCircum:
-						tmp = "^";
-						break;
-					default:
-						if(!((QKeyEvent *)e)->text().isEmpty())
-							tmp = ((QKeyEvent *)e)->text();
-				}
-
-				KviKvsVariantList params(new KviKvsVariant(tmp));
-				callFunction(this, "keyPressEvent", nullptr, &params);
-			}
-			break;
-			case QEvent::MouseButtonPress:
-			{
-				if(((QMouseEvent *)e)->button() & Qt::LeftButton)
-					aparam = 0;
-				else
-				{
-					if(((QMouseEvent *)e)->button() & Qt::RightButton)
-						aparam = 1;
-					else
-						aparam = 2;
-				}
-				KviKvsVariantList lParams;
-				lParams.append(new KviKvsVariant((kvs_int_t)aparam));
-				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
-				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
-				if(!callFunction(this, "mousePressEvent", &oReturnBuffer, &lParams))
-					brokenhandler = true; // ignore results of a broken event handler
-			}
-			break;
-			case QEvent::MouseButtonRelease:
-			{
-				if(((QMouseEvent *)e)->button() & Qt::LeftButton)
-					aparam = 0;
-				else
-				{
-					if(((QMouseEvent *)e)->button() & Qt::RightButton)
-						aparam = 1;
-					else
-						aparam = 2;
-				}
-				KviKvsVariantList lParams;
-				lParams.append(new KviKvsVariant((kvs_int_t)aparam));
-				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
-				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
-				if(!callFunction(this, "mouseReleaseEvent", &oReturnBuffer, &lParams))
-					brokenhandler = true; // ignore results of a broken event handler
-			}
-			break;
-			case QEvent::MouseButtonDblClick:
-			{
-				if(((QMouseEvent *)e)->button() & Qt::LeftButton)
-					aparam = 0;
-				else
-				{
-					if(((QMouseEvent *)e)->button() & Qt::RightButton)
-						aparam = 1;
-					else
-						aparam = 2;
-				}
-				KviKvsVariantList lParams;
-				lParams.append(new KviKvsVariant((kvs_int_t)aparam));
-				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
-				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
-				if(!callFunction(this, "mouseDoubleClickEvent", nullptr, &lParams))
-					brokenhandler = true; // ignore results of a broken event handler
-			}
-
-			break;
-			case QEvent::MouseMove:
-			{
-				KviKvsVariantList lParams;
-				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
-				lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
-				if(!callFunction(this, "mouseMoveEvent", nullptr, &lParams))
-					brokenhandler = true; // ignore results of a broken event handler
-			}
-			break;
-			case QEvent::FocusIn:
-				if(!callFunction(this, "focusInEvent", &oReturnBuffer, nullptr))
-					brokenhandler = true;
+			case Qt::Key_Return:
+				tmp = "Return";
 				break;
-			case QEvent::FocusOut:
-				if(!callFunction(this, "focusOutEvent", &oReturnBuffer, nullptr))
-					brokenhandler = true;
+			case Qt::Key_Down:
+				tmp = "Down";
 				break;
-			case QEvent::Resize:
-			{
-				KviKvsVariantList lParams;
-				lParams.append(new KviKvsVariant((kvs_int_t)((QResizeEvent *)e)->size().width()));
-				lParams.append(new KviKvsVariant((kvs_int_t)((QResizeEvent *)e)->size().height()));
-				if(!callFunction(this, "resizeEvent", &oReturnBuffer, &lParams))
-					brokenhandler = true;
+			case Qt::Key_Up:
+				tmp = "Up";
 				break;
-			}
-			case QEvent::Move:
-				if(!callFunction(this, "moveEvent", &oReturnBuffer, nullptr))
-					brokenhandler = true;
+			case Qt::Key_Left:
+				tmp = "Left";
 				break;
-			case QEvent::Close:
-				if(!callFunction(this, "closeEvent", &oReturnBuffer, nullptr))
-					brokenhandler = true;
+			case Qt::Key_Right:
+				tmp = "Right";
 				break;
-			case QEvent::Enter:
-				if(!callFunction(this, "mouseEnterEvent", &oReturnBuffer, nullptr))
-					brokenhandler = true;
+			case Qt::Key_Shift:
+				tmp = "Shift";
 				break;
-			case QEvent::Leave:
-				if(!callFunction(this, "mouseLeaveEvent", &oReturnBuffer, nullptr))
-					brokenhandler = true;
+			case Qt::Key_Control:
+				tmp = "Ctrl";
 				break;
-			case QEvent::Show:
-				if(!callFunction(this, "showEvent", &oReturnBuffer, nullptr))
-					brokenhandler = true;
+			case Qt::Key_Alt:
+				tmp = "Alt";
 				break;
-			case QEvent::Hide:
-				if(!callFunction(this, "hideEvent", &oReturnBuffer, nullptr))
-					ret = false;
+			case Qt::Key_CapsLock:
+				tmp = "CapsLock";
+				break;
+			case Qt::Key_Backspace:
+				tmp = "Backspace";
+				break;
+			case Qt::Key_Delete:
+				tmp = "Del";
+				break;
+			case Qt::Key_Enter:
+				tmp = "Enter";
+				break;
+			case Qt::Key_Escape:
+				tmp = "Esc";
+				break;
+			case Qt::Key_0:
+				tmp = "0";
+				break;
+			case Qt::Key_1:
+				tmp = "1";
+				break;
+			case Qt::Key_2:
+				tmp = "2";
+				break;
+			case Qt::Key_3:
+				tmp = "3";
+				break;
+			case Qt::Key_4:
+				tmp = "4";
+				break;
+			case Qt::Key_5:
+				tmp = "5";
+				break;
+			case Qt::Key_6:
+				tmp = "6";
+				break;
+			case Qt::Key_7:
+				tmp = "7";
+				break;
+			case Qt::Key_8:
+				tmp = "8";
+				break;
+			case Qt::Key_9:
+				tmp = "9";
+				break;
+			case Qt::Key_Plus:
+				tmp = "+";
+				break;
+			case Qt::Key_Minus:
+				tmp = "-";
+				break;
+			case Qt::Key_Slash:
+				tmp = "/";
+				break;
+			case Qt::Key_Asterisk:
+				tmp = "*";
+				break;
+			case Qt::Key_Period:
+				tmp = ".";
+				break;
+			case Qt::Key_ParenLeft:
+				tmp = "(";
+				break;
+			case Qt::Key_ParenRight:
+				tmp = ")";
+				break;
+			case Qt::Key_Equal:
+				tmp = "=";
+				break;
+			case Qt::Key_AsciiCircum:
+				tmp = "^";
 				break;
 			default:
-				return KviKvsObject::eventFilter(o, e);
-				break;
+				if(!((QKeyEvent *)e)->text().isEmpty())
+					tmp = ((QKeyEvent *)e)->text();
+			}
+
+			KviKvsVariantList params(new KviKvsVariant(tmp));
+			callFunction(this, "keyPressEvent", nullptr, &params);
+		}
+		break;
+		case QEvent::MouseButtonPress:
+		{
+			if(((QMouseEvent *)e)->button() & Qt::LeftButton)
+				aparam = 0;
+			else
+			{
+				if(((QMouseEvent *)e)->button() & Qt::RightButton)
+					aparam = 1;
+				else
+					aparam = 2;
+			}
+			KviKvsVariantList lParams;
+			lParams.append(new KviKvsVariant((kvs_int_t)aparam));
+			lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
+			lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
+			if(!callFunction(this, "mousePressEvent", &oReturnBuffer, &lParams))
+				brokenhandler = true; // ignore results of a broken event handler
+		}
+		break;
+		case QEvent::MouseButtonRelease:
+		{
+			if(((QMouseEvent *)e)->button() & Qt::LeftButton)
+				aparam = 0;
+			else
+			{
+				if(((QMouseEvent *)e)->button() & Qt::RightButton)
+					aparam = 1;
+				else
+					aparam = 2;
+			}
+			KviKvsVariantList lParams;
+			lParams.append(new KviKvsVariant((kvs_int_t)aparam));
+			lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
+			lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
+			if(!callFunction(this, "mouseReleaseEvent", &oReturnBuffer, &lParams))
+				brokenhandler = true; // ignore results of a broken event handler
+		}
+		break;
+		case QEvent::MouseButtonDblClick:
+		{
+			if(((QMouseEvent *)e)->button() & Qt::LeftButton)
+				aparam = 0;
+			else
+			{
+				if(((QMouseEvent *)e)->button() & Qt::RightButton)
+					aparam = 1;
+				else
+					aparam = 2;
+			}
+			KviKvsVariantList lParams;
+			lParams.append(new KviKvsVariant((kvs_int_t)aparam));
+			lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
+			lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
+			if(!callFunction(this, "mouseDoubleClickEvent", nullptr, &lParams))
+				brokenhandler = true; // ignore results of a broken event handler
+		}
+
+		break;
+		case QEvent::MouseMove:
+		{
+			KviKvsVariantList lParams;
+			lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().x()));
+			lParams.append(new KviKvsVariant((kvs_int_t)((QMouseEvent *)e)->pos().y()));
+			if(!callFunction(this, "mouseMoveEvent", nullptr, &lParams))
+				brokenhandler = true; // ignore results of a broken event handler
+		}
+		break;
+		case QEvent::FocusIn:
+			if(!callFunction(this, "focusInEvent", &oReturnBuffer, nullptr))
+				brokenhandler = true;
+			break;
+		case QEvent::FocusOut:
+			if(!callFunction(this, "focusOutEvent", &oReturnBuffer, nullptr))
+				brokenhandler = true;
+			break;
+		case QEvent::Resize:
+		{
+			KviKvsVariantList lParams;
+			lParams.append(new KviKvsVariant((kvs_int_t)((QResizeEvent *)e)->size().width()));
+			lParams.append(new KviKvsVariant((kvs_int_t)((QResizeEvent *)e)->size().height()));
+			if(!callFunction(this, "resizeEvent", &oReturnBuffer, &lParams))
+				brokenhandler = true;
+			break;
+		}
+		case QEvent::Move:
+			if(!callFunction(this, "moveEvent", &oReturnBuffer, nullptr))
+				brokenhandler = true;
+			break;
+		case QEvent::Close:
+			if(!callFunction(this, "closeEvent", &oReturnBuffer, nullptr))
+				brokenhandler = true;
+			break;
+		case QEvent::Enter:
+			if(!callFunction(this, "mouseEnterEvent", &oReturnBuffer, nullptr))
+				brokenhandler = true;
+			break;
+		case QEvent::Leave:
+			if(!callFunction(this, "mouseLeaveEvent", &oReturnBuffer, nullptr))
+				brokenhandler = true;
+			break;
+		case QEvent::Show:
+			if(!callFunction(this, "showEvent", &oReturnBuffer, nullptr))
+				brokenhandler = true;
+			break;
+		case QEvent::Hide:
+			if(!callFunction(this, "hideEvent", &oReturnBuffer, nullptr))
+				ret = false;
+			break;
+		default:
+			return KviKvsObject::eventFilter(o, e);
+			break;
 		}
 		if(!brokenhandler)
 		{
@@ -1016,7 +1016,7 @@ bool KvsObject_widget::eventFilter(QObject * o, QEvent * e)
 KVSO_CLASS_FUNCTION(widget, show)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QWidget * wid = widget();
+		QWidget * wid = widget();
 	wid->show();
 	return true;
 }
@@ -1024,42 +1024,42 @@ KVSO_CLASS_FUNCTION(widget, show)
 KVSO_CLASS_FUNCTION(widget, update)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iX, iY, iW, iH;
+		kvs_int_t iX, iY, iW, iH;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("x", KVS_PT_INT, KVS_PF_OPTIONAL, iX)
-	KVSO_PARAMETER("y", KVS_PT_INT, KVS_PF_OPTIONAL, iY)
-	KVSO_PARAMETER("w", KVS_PT_INT, KVS_PF_OPTIONAL, iW)
-	KVSO_PARAMETER("h", KVS_PT_INT, KVS_PF_OPTIONAL, iH)
-	KVSO_PARAMETERS_END(c)
-	if(iW || iH)
-		widget()->update(QRect(iX, iY, iW, iH));
-	else
-		widget()->update();
+		KVSO_PARAMETER("x", KVS_PT_INT, KVS_PF_OPTIONAL, iX)
+		KVSO_PARAMETER("y", KVS_PT_INT, KVS_PF_OPTIONAL, iY)
+		KVSO_PARAMETER("w", KVS_PT_INT, KVS_PF_OPTIONAL, iW)
+		KVSO_PARAMETER("h", KVS_PT_INT, KVS_PF_OPTIONAL, iH)
+		KVSO_PARAMETERS_END(c)
+		if(iW || iH)
+			widget()->update(QRect(iX, iY, iW, iH));
+		else
+			widget()->update();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setEnabled)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	widget()->setEnabled(bEnabled);
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		widget()->setEnabled(bEnabled);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, isEnabled)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(widget()->isEnabled());
+		c->returnValue()->setBoolean(widget()->isEnabled());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, fontDescent)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QFontMetrics fm = widget()->fontMetrics();
+		QFontMetrics fm = widget()->fontMetrics();
 	int d = fm.descent();
 	c->returnValue()->setInteger(d);
 	return true;
@@ -1068,7 +1068,7 @@ KVSO_CLASS_FUNCTION(widget, fontDescent)
 KVSO_CLASS_FUNCTION(widget, fontAscent)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QFontMetrics fm = widget()->fontMetrics();
+		QFontMetrics fm = widget()->fontMetrics();
 	int d = fm.ascent();
 	c->returnValue()->setInteger(d);
 	return true;
@@ -1077,39 +1077,39 @@ KVSO_CLASS_FUNCTION(widget, fontAscent)
 KVSO_CLASS_FUNCTION(widget, repaint)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	widget()->repaint();
+		widget()->repaint();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, fontMetricsWidth)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString m_szStr;
+		QString m_szStr;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("string", KVS_PT_STRING, 0, m_szStr)
-	KVSO_PARAMETERS_END(c)
-	c->returnValue()->setInteger(widget()->fontMetrics().width(m_szStr));
+		KVSO_PARAMETER("string", KVS_PT_STRING, 0, m_szStr)
+		KVSO_PARAMETERS_END(c)
+		c->returnValue()->setInteger(widget()->fontMetrics().width(m_szStr));
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, fontMetricsHeight)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	int fm = widget()->fontMetrics().height();
+		int fm = widget()->fontMetrics().height();
 	c->returnValue()->setInteger(fm);
 	return true;
 }
 KVSO_CLASS_FUNCTION(widget, fontMetricsLineSpacing)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	int fm = widget()->fontMetrics().lineSpacing();
+		int fm = widget()->fontMetrics().lineSpacing();
 	c->returnValue()->setInteger(fm);
 	return true;
 }
 KVSO_CLASS_FUNCTION(widget, screenResolution)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsArray * a = new KviKvsArray();
+		KviKvsArray * a = new KviKvsArray();
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
 	a->set(0, new KviKvsVariant((kvs_int_t)rect.width()));
 	a->set(1, new KviKvsVariant((kvs_int_t)rect.height()));
@@ -1120,7 +1120,7 @@ KVSO_CLASS_FUNCTION(widget, screenResolution)
 KVSO_CLASS_FUNCTION(widget, geometry)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QRect r = widget() ? widget()->geometry() : QRect(0, 0, 0, 0);
+		QRect r = widget() ? widget()->geometry() : QRect(0, 0, 0, 0);
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0, new KviKvsVariant((kvs_int_t)r.x()));
 	a->set(1, new KviKvsVariant((kvs_int_t)r.y()));
@@ -1133,73 +1133,73 @@ KVSO_CLASS_FUNCTION(widget, geometry)
 KVSO_CLASS_FUNCTION(widget, setGeometry)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsVariant * pXOrArray;
+		KviKvsVariant * pXOrArray;
 	kvs_int_t iX, iY, iW, iH;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("x_or_array", KVS_PT_VARIANT, 0, pXOrArray)
-	KVSO_PARAMETER("y", KVS_PT_INT, KVS_PF_OPTIONAL, iY)
-	KVSO_PARAMETER("w", KVS_PT_INT, KVS_PF_OPTIONAL, iW)
-	KVSO_PARAMETER("h", KVS_PT_INT, KVS_PF_OPTIONAL, iH)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("x_or_array", KVS_PT_VARIANT, 0, pXOrArray)
+		KVSO_PARAMETER("y", KVS_PT_INT, KVS_PF_OPTIONAL, iY)
+		KVSO_PARAMETER("w", KVS_PT_INT, KVS_PF_OPTIONAL, iW)
+		KVSO_PARAMETER("h", KVS_PT_INT, KVS_PF_OPTIONAL, iH)
+		KVSO_PARAMETERS_END(c)
 
-	// this is a little bit tricky: we accept two syntax versions
-	// (this is something like a C++ overload)
-	// $setGeometry(x,y,w,h) OR $setGeometry($array(x,y,w,h))
+		// this is a little bit tricky: we accept two syntax versions
+		// (this is something like a C++ overload)
+		// $setGeometry(x,y,w,h) OR $setGeometry($array(x,y,w,h))
 
-	// For this purpose we ask the parameter processing engine
-	// to return the first parameter as variant and we manually check its data type
-	// We also set the following three parameters as optional
-	// so the user can either pass one or four parameters.
+		// For this purpose we ask the parameter processing engine
+		// to return the first parameter as variant and we manually check its data type
+		// We also set the following three parameters as optional
+		// so the user can either pass one or four parameters.
 
-	// Because of this trick, we must check the parameter consistency
-	// manually.
+		// Because of this trick, we must check the parameter consistency
+		// manually.
 
-	if(pXOrArray->isArray())
-	{
-		// the user has passed a complete geometry array as first parameter
-		// make sure it has at least 4 elements
-		if(pXOrArray->array()->size() < 4)
+		if(pXOrArray->isArray())
 		{
-			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 4 elements", "objects"));
-			return false;
+			// the user has passed a complete geometry array as first parameter
+			// make sure it has at least 4 elements
+			if(pXOrArray->array()->size() < 4)
+			{
+				c->error(__tr2qs_ctx("The array passed as parameter must contain at least 4 elements", "objects"));
+				return false;
+			}
+			// we must also manually extract the data from the array
+			KviKvsVariant * pX = pXOrArray->array()->at(0);
+			KviKvsVariant * pY = pXOrArray->array()->at(1);
+			KviKvsVariant * pW = pXOrArray->array()->at(2);
+			KviKvsVariant * pH = pXOrArray->array()->at(3);
+			// note that some of the array elements may be empty in fact
+			// a null value returned by KviKvsArray::at() means that
+			// no parameter was set in that place
+			if(!(pX && pY && pW && pH))
+			{
+				c->error(__tr2qs_ctx("One of the geometry array parameters is empty", "objects"));
+				return false;
+			}
+			if(!(pX->asInteger(iX) && pY->asInteger(iY) && pW->asInteger(iW) && pH->asInteger(iH)))
+			{
+				c->error(__tr2qs_ctx("One of the geometry array parameters didn't evaluate to an integer", "objects"));
+				return false;
+			}
+			// ok: the params are correct
 		}
-		// we must also manually extract the data from the array
-		KviKvsVariant * pX = pXOrArray->array()->at(0);
-		KviKvsVariant * pY = pXOrArray->array()->at(1);
-		KviKvsVariant * pW = pXOrArray->array()->at(2);
-		KviKvsVariant * pH = pXOrArray->array()->at(3);
-		// note that some of the array elements may be empty in fact
-		// a null value returned by KviKvsArray::at() means that
-		// no parameter was set in that place
-		if(!(pX && pY && pW && pH))
+		else
 		{
-			c->error(__tr2qs_ctx("One of the geometry array parameters is empty", "objects"));
-			return false;
+			// The user passed something else as first parameter
+			// make sure that it is an integer.
+			// Also make sure that we really have 4 parameters
+			if(c->params()->count() < 4)
+			{
+				c->error(__tr2qs_ctx("$setGeometry() requires either an array as first parameter or four integers", "objects"));
+				return false;
+			}
+			if(!pXOrArray->asInteger(iX))
+			{
+				c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer", "objects"));
+				return false;
+			}
+			// ok: the params are correct
 		}
-		if(!(pX->asInteger(iX) && pY->asInteger(iY) && pW->asInteger(iW) && pH->asInteger(iH)))
-		{
-			c->error(__tr2qs_ctx("One of the geometry array parameters didn't evaluate to an integer", "objects"));
-			return false;
-		}
-		// ok: the params are correct
-	}
-	else
-	{
-		// The user passed something else as first parameter
-		// make sure that it is an integer.
-		// Also make sure that we really have 4 parameters
-		if(c->params()->count() < 4)
-		{
-			c->error(__tr2qs_ctx("$setGeometry() requires either an array as first parameter or four integers", "objects"));
-			return false;
-		}
-		if(!pXOrArray->asInteger(iX))
-		{
-			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer", "objects"));
-			return false;
-		}
-		// ok: the params are correct
-	}
 
 	widget()->setGeometry(iX, iY, iW, iH);
 
@@ -1209,12 +1209,12 @@ KVSO_CLASS_FUNCTION(widget, setGeometry)
 KVSO_CLASS_FUNCTION(widget, mapToGlobal)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iX, iY;
+		kvs_int_t iX, iY;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("x", KVS_PT_INT, 0, iX)
-	KVSO_PARAMETER("y", KVS_PT_INT, 0, iY)
-	KVSO_PARAMETERS_END(c)
-	QPoint point = widget()->mapToGlobal(QPoint(iX, iY));
+		KVSO_PARAMETER("x", KVS_PT_INT, 0, iX)
+		KVSO_PARAMETER("y", KVS_PT_INT, 0, iY)
+		KVSO_PARAMETERS_END(c)
+		QPoint point = widget()->mapToGlobal(QPoint(iX, iY));
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0, new KviKvsVariant((kvs_int_t)point.x()));
 	a->set(1, new KviKvsVariant((kvs_int_t)point.y()));
@@ -1225,12 +1225,12 @@ KVSO_CLASS_FUNCTION(widget, mapToGlobal)
 KVSO_CLASS_FUNCTION(widget, mapFromGlobal)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iX, iY;
+		kvs_int_t iX, iY;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("x", KVS_PT_INT, 0, iX)
-	KVSO_PARAMETER("y", KVS_PT_INT, 0, iY)
-	KVSO_PARAMETERS_END(c)
-	QPoint point = widget()->mapFromGlobal(QPoint(iX, iY));
+		KVSO_PARAMETER("x", KVS_PT_INT, 0, iX)
+		KVSO_PARAMETER("y", KVS_PT_INT, 0, iY)
+		KVSO_PARAMETERS_END(c)
+		QPoint point = widget()->mapFromGlobal(QPoint(iX, iY));
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0, new KviKvsVariant((kvs_int_t)point.x()));
 	a->set(1, new KviKvsVariant((kvs_int_t)point.y()));
@@ -1241,7 +1241,7 @@ KVSO_CLASS_FUNCTION(widget, mapFromGlobal)
 KVSO_CLASS_FUNCTION(widget, centerToScreen)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+		QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
 	widget()->move((rect.width() - widget()->width()) / 2, (rect.height() - widget()->height()) / 2);
 	return true;
 }
@@ -1249,79 +1249,79 @@ KVSO_CLASS_FUNCTION(widget, centerToScreen)
 KVSO_CLASS_FUNCTION(widget, setForegroundColor)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsVariant * pColArray;
+		KviKvsVariant * pColArray;
 	kvs_int_t iColR, iColG, iColB;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("hex_rgb_array_or_red", KVS_PT_VARIANT, 0, pColArray)
-	KVSO_PARAMETER("green", KVS_PT_INT, KVS_PF_OPTIONAL, iColG)
-	KVSO_PARAMETER("blue", KVS_PT_INT, KVS_PF_OPTIONAL, iColB)
-	KVSO_PARAMETERS_END(c)
-	if(pColArray->isArray())
-	{
-		if(pColArray->array()->size() < 3)
+		KVSO_PARAMETER("hex_rgb_array_or_red", KVS_PT_VARIANT, 0, pColArray)
+		KVSO_PARAMETER("green", KVS_PT_INT, KVS_PF_OPTIONAL, iColG)
+		KVSO_PARAMETER("blue", KVS_PT_INT, KVS_PF_OPTIONAL, iColB)
+		KVSO_PARAMETERS_END(c)
+		if(pColArray->isArray())
 		{
-			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements", "objects"));
-			return false;
-		}
-		KviKvsVariant * pColR = pColArray->array()->at(0);
-		KviKvsVariant * pColG = pColArray->array()->at(1);
-		KviKvsVariant * pColB = pColArray->array()->at(2);
-
-		if(!(pColR && pColG && pColB))
-		{
-			c->error(__tr2qs_ctx("One of the colors array parameters is empty", "objects"));
-			return false;
-		}
-
-		if(!(pColR->asInteger(iColR) && pColG->asInteger(iColG) && pColB->asInteger(iColB)))
-		{
-			c->error(__tr2qs_ctx("One of the colors array parameters didn't evaluate to an integer", "objects"));
-			return false;
-		}
-	}
-	else
-	{
-		QColor color;
-		if(c->params()->count() == 1)
-		{
-			if(pColArray->isString())
+			if(pColArray->array()->size() < 3)
 			{
-				QString szColor;
-				pColArray->asString(szColor);
-				// maybe a color name?
-				color.setNamedColor(szColor);
-				if(!color.isValid())
+				c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements", "objects"));
+				return false;
+			}
+			KviKvsVariant * pColR = pColArray->array()->at(0);
+			KviKvsVariant * pColG = pColArray->array()->at(1);
+			KviKvsVariant * pColB = pColArray->array()->at(2);
+
+			if(!(pColR && pColG && pColB))
+			{
+				c->error(__tr2qs_ctx("One of the colors array parameters is empty", "objects"));
+				return false;
+			}
+
+			if(!(pColR->asInteger(iColR) && pColG->asInteger(iColG) && pColB->asInteger(iColB)))
+			{
+				c->error(__tr2qs_ctx("One of the colors array parameters didn't evaluate to an integer", "objects"));
+				return false;
+			}
+		}
+		else
+		{
+			QColor color;
+			if(c->params()->count() == 1)
+			{
+				if(pColArray->isString())
 				{
-					// itsn't a color name: let try with an hex triplette
-					color.setNamedColor("#" + szColor);
+					QString szColor;
+					pColArray->asString(szColor);
+					// maybe a color name?
+					color.setNamedColor(szColor);
 					if(!color.isValid())
 					{
-						c->warning(__tr2qs_ctx("Not a valid color!", "objects"));
-						return true;
+						// itsn't a color name: let try with an hex triplette
+						color.setNamedColor("#" + szColor);
+						if(!color.isValid())
+						{
+							c->warning(__tr2qs_ctx("Not a valid color!", "objects"));
+							return true;
+						}
 					}
 				}
-			}
-			else
-			{
-				c->warning(__tr2qs_ctx("Not a valid color!", "objects"));
+				else
+				{
+					c->warning(__tr2qs_ctx("Not a valid color!", "objects"));
+					return true;
+				}
+				QPalette p = widget()->palette();
+				p.setColor(widget()->foregroundRole(), color);
+				widget()->setPalette(p);
 				return true;
 			}
-			QPalette p = widget()->palette();
-			p.setColor(widget()->foregroundRole(), color);
-			widget()->setPalette(p);
-			return true;
+			if(c->params()->count() < 3)
+			{
+				c->error(__tr2qs_ctx("$setForegroundColor requires either an array as first parameter, one hex string or color name, or three integers", "objects"));
+				return false;
+			}
+			if(!pColArray->asInteger(iColR))
+			{
+				c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer", "objects"));
+				return false;
+			}
 		}
-		if(c->params()->count() < 3)
-		{
-			c->error(__tr2qs_ctx("$setForegroundColor requires either an array as first parameter, one hex string or color name, or three integers", "objects"));
-			return false;
-		}
-		if(!pColArray->asInteger(iColR))
-		{
-			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer", "objects"));
-			return false;
-		}
-	}
 
 	QPalette p = widget()->palette();
 	p.setColor(widget()->foregroundRole(), QColor(iColR, iColG, iColB));
@@ -1332,79 +1332,79 @@ KVSO_CLASS_FUNCTION(widget, setForegroundColor)
 KVSO_CLASS_FUNCTION(widget, setBackgroundColor)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsVariant * pColArray;
+		KviKvsVariant * pColArray;
 	kvs_int_t iColR, iColG, iColB;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("name_hex_rgb_array_or_red", KVS_PT_VARIANT, 0, pColArray)
-	KVSO_PARAMETER("green", KVS_PT_INT, KVS_PF_OPTIONAL, iColG)
-	KVSO_PARAMETER("blue", KVS_PT_INT, KVS_PF_OPTIONAL, iColB)
-	KVSO_PARAMETERS_END(c)
-	if(pColArray->isArray())
-	{
-		if(pColArray->array()->size() < 3)
+		KVSO_PARAMETER("name_hex_rgb_array_or_red", KVS_PT_VARIANT, 0, pColArray)
+		KVSO_PARAMETER("green", KVS_PT_INT, KVS_PF_OPTIONAL, iColG)
+		KVSO_PARAMETER("blue", KVS_PT_INT, KVS_PF_OPTIONAL, iColB)
+		KVSO_PARAMETERS_END(c)
+		if(pColArray->isArray())
 		{
-			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements", "objects"));
-			return false;
-		}
-		KviKvsVariant * pColR = pColArray->array()->at(0);
-		KviKvsVariant * pColG = pColArray->array()->at(1);
-		KviKvsVariant * pColB = pColArray->array()->at(2);
-
-		if(!(pColR && pColG && pColB))
-		{
-			c->error(__tr2qs_ctx("One of the colors array parameters is empty", "objects"));
-			return false;
-		}
-
-		if(!(pColR->asInteger(iColR) && pColG->asInteger(iColG) && pColB->asInteger(iColB)))
-		{
-			c->error(__tr2qs_ctx("One of the colors array parameters didn't evaluate to an integer", "objects"));
-			return false;
-		}
-	}
-	else
-	{
-		QColor color;
-		if(c->params()->count() == 1)
-		{
-			if(pColArray->isString())
+			if(pColArray->array()->size() < 3)
 			{
-				QString szColor;
-				pColArray->asString(szColor);
-				// maybe a color name?
-				color.setNamedColor(szColor);
-				if(!color.isValid())
+				c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements", "objects"));
+				return false;
+			}
+			KviKvsVariant * pColR = pColArray->array()->at(0);
+			KviKvsVariant * pColG = pColArray->array()->at(1);
+			KviKvsVariant * pColB = pColArray->array()->at(2);
+
+			if(!(pColR && pColG && pColB))
+			{
+				c->error(__tr2qs_ctx("One of the colors array parameters is empty", "objects"));
+				return false;
+			}
+
+			if(!(pColR->asInteger(iColR) && pColG->asInteger(iColG) && pColB->asInteger(iColB)))
+			{
+				c->error(__tr2qs_ctx("One of the colors array parameters didn't evaluate to an integer", "objects"));
+				return false;
+			}
+		}
+		else
+		{
+			QColor color;
+			if(c->params()->count() == 1)
+			{
+				if(pColArray->isString())
 				{
-					// itsn't a color name: let try with an hex triplette
-					color.setNamedColor("#" + szColor);
+					QString szColor;
+					pColArray->asString(szColor);
+					// maybe a color name?
+					color.setNamedColor(szColor);
 					if(!color.isValid())
 					{
-						c->warning(__tr2qs_ctx("Not a valid color!", "objects"));
-						return true;
+						// itsn't a color name: let try with an hex triplette
+						color.setNamedColor("#" + szColor);
+						if(!color.isValid())
+						{
+							c->warning(__tr2qs_ctx("Not a valid color!", "objects"));
+							return true;
+						}
 					}
 				}
-			}
-			else
-			{
-				c->warning(__tr2qs_ctx("Not a valid color!", "objects"));
+				else
+				{
+					c->warning(__tr2qs_ctx("Not a valid color!", "objects"));
+					return true;
+				}
+				QPalette p = widget()->palette();
+				p.setColor(widget()->backgroundRole(), color);
+				widget()->setPalette(p);
 				return true;
 			}
-			QPalette p = widget()->palette();
-			p.setColor(widget()->backgroundRole(), color);
-			widget()->setPalette(p);
-			return true;
+			if(c->params()->count() < 3)
+			{
+				c->error(__tr2qs_ctx("$setBackgroundColor requires either an array as first parameter, one hex string or color name, or three integers", "objects"));
+				return false;
+			}
+			if(!pColArray->asInteger(iColR))
+			{
+				c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer", "objects"));
+				return false;
+			}
 		}
-		if(c->params()->count() < 3)
-		{
-			c->error(__tr2qs_ctx("$setBackgroundColor requires either an array as first parameter, one hex string or color name, or three integers", "objects"));
-			return false;
-		}
-		if(!pColArray->asInteger(iColR))
-		{
-			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer", "objects"));
-			return false;
-		}
-	}
 
 	QPalette p = widget()->palette();
 	p.setColor(widget()->backgroundRole(), QColor(iColR, iColG, iColB));
@@ -1415,7 +1415,7 @@ KVSO_CLASS_FUNCTION(widget, setBackgroundColor)
 KVSO_CLASS_FUNCTION(widget, backgroundColor)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QColor col = widget()->palette().color(widget()->backgroundRole());
+		QColor col = widget()->palette().color(widget()->backgroundRole());
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0, new KviKvsVariant((kvs_int_t)col.red()));
 	a->set(1, new KviKvsVariant((kvs_int_t)col.green()));
@@ -1427,7 +1427,7 @@ KVSO_CLASS_FUNCTION(widget, backgroundColor)
 KVSO_CLASS_FUNCTION(widget, foregroundColor)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QColor col = widget()->palette().color(widget()->foregroundRole());
+		QColor col = widget()->palette().color(widget()->foregroundRole());
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0, new KviKvsVariant((kvs_int_t)col.red()));
 	a->set(1, new KviKvsVariant((kvs_int_t)col.green()));
@@ -1439,218 +1439,218 @@ KVSO_CLASS_FUNCTION(widget, foregroundColor)
 KVSO_CLASS_FUNCTION(widget, parentWidget)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	if(parentScriptWidget())
-		c->returnValue()->setHObject(parentObject()->handle());
-	else
-		c->returnValue()->setHObject((kvs_hobject_t) nullptr);
+		if(parentScriptWidget())
+			c->returnValue()->setHObject(parentObject()->handle());
+		else
+			c->returnValue()->setHObject((kvs_hobject_t) nullptr);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setMouseTracking)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	widget()->setMouseTracking(bEnabled);
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		widget()->setMouseTracking(bEnabled);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setWindowTitle)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szWindowTitle;
+		QString szWindowTitle;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("title", KVS_PT_STRING, 0, szWindowTitle)
-	KVSO_PARAMETERS_END(c)
-	widget()->setWindowTitle(szWindowTitle);
+		KVSO_PARAMETER("title", KVS_PT_STRING, 0, szWindowTitle)
+		KVSO_PARAMETERS_END(c)
+		widget()->setWindowTitle(szWindowTitle);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, windowTitle)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setString(widget()->windowTitle().toUtf8().data());
+		c->returnValue()->setString(widget()->windowTitle().toUtf8().data());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, isTopLevel)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(widget()->isTopLevel());
+		c->returnValue()->setBoolean(widget()->isTopLevel());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, isVisible)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(widget()->isVisible());
+		c->returnValue()->setBoolean(widget()->isVisible());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, raise)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	widget()->raise();
+		widget()->raise();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, lower)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	widget()->lower();
+		widget()->lower();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, hasFocus)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(widget()->hasFocus());
+		c->returnValue()->setBoolean(widget()->hasFocus());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setFocus)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	widget()->setFocus();
+		widget()->setFocus();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, hide)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	widget()->hide();
+		widget()->hide();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setToolTip)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szTooltip;
+		QString szTooltip;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("tooltip", KVS_PT_STRING, 0, szTooltip)
-	KVSO_PARAMETERS_END(c)
-	widget()->setToolTip(szTooltip);
+		KVSO_PARAMETER("tooltip", KVS_PT_STRING, 0, szTooltip)
+		KVSO_PARAMETERS_END(c)
+		widget()->setToolTip(szTooltip);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, x)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(widget()->x());
+		c->returnValue()->setInteger(widget()->x());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, y)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(widget()->y());
+		c->returnValue()->setInteger(widget()->y());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, width)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(widget()->width());
+		c->returnValue()->setInteger(widget()->width());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, height)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(widget()->height());
+		c->returnValue()->setInteger(widget()->height());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setMinimumWidth)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iW;
+		kvs_int_t iW;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("w", KVS_PT_INT, 0, iW)
-	KVSO_PARAMETERS_END(c)
-	widget()->setMinimumWidth(iW);
+		KVSO_PARAMETER("w", KVS_PT_INT, 0, iW)
+		KVSO_PARAMETERS_END(c)
+		widget()->setMinimumWidth(iW);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setMinimumHeight)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iH;
+		kvs_int_t iH;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("h", KVS_PT_INT, 0, iH)
-	KVSO_PARAMETERS_END(c)
-	widget()->setMinimumHeight(iH);
+		KVSO_PARAMETER("h", KVS_PT_INT, 0, iH)
+		KVSO_PARAMETERS_END(c)
+		widget()->setMinimumHeight(iH);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setMaximumWidth)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iW;
+		kvs_int_t iW;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("w", KVS_PT_INT, 0, iW)
-	KVSO_PARAMETERS_END(c)
-	widget()->setMaximumWidth(iW);
+		KVSO_PARAMETER("w", KVS_PT_INT, 0, iW)
+		KVSO_PARAMETERS_END(c)
+		widget()->setMaximumWidth(iW);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setMaximumHeight)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iH;
+		kvs_int_t iH;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("h", KVS_PT_INT, 0, iH)
-	KVSO_PARAMETERS_END(c)
-	widget()->setMaximumHeight(iH);
+		KVSO_PARAMETER("h", KVS_PT_INT, 0, iH)
+		KVSO_PARAMETERS_END(c)
+		widget()->setMaximumHeight(iH);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setFixedWidth)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iW;
+		kvs_int_t iW;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("w", KVS_PT_INT, 0, iW)
-	KVSO_PARAMETERS_END(c)
-	widget()->setFixedWidth(iW);
+		KVSO_PARAMETER("w", KVS_PT_INT, 0, iW)
+		KVSO_PARAMETERS_END(c)
+		widget()->setFixedWidth(iW);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setFixedHeight)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iH;
+		kvs_int_t iH;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("h", KVS_PT_INT, 0, iH)
-	KVSO_PARAMETERS_END(c)
-	widget()->setFixedHeight(iH);
+		KVSO_PARAMETER("h", KVS_PT_INT, 0, iH)
+		KVSO_PARAMETERS_END(c)
+		widget()->setFixedHeight(iH);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setFixedSize)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iW, iH;
+		kvs_int_t iW, iH;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("w", KVS_PT_INT, 0, iW)
-	KVSO_PARAMETER("h", KVS_PT_INT, 0, iH)
-	KVSO_PARAMETERS_END(c)
-	widget()->setFixedSize(iW, iH);
+		KVSO_PARAMETER("w", KVS_PT_INT, 0, iW)
+		KVSO_PARAMETER("h", KVS_PT_INT, 0, iH)
+		KVSO_PARAMETERS_END(c)
+		widget()->setFixedSize(iW, iH);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setSizePolicy)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szHorizontal, szVertical;
+		QString szHorizontal, szVertical;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("h", KVS_PT_STRING, 0, szHorizontal)
-	KVSO_PARAMETER("v", KVS_PT_STRING, 0, szVertical)
-	KVSO_PARAMETERS_END(c)
+		KVSO_PARAMETER("h", KVS_PT_STRING, 0, szHorizontal)
+		KVSO_PARAMETER("v", KVS_PT_STRING, 0, szVertical)
+		KVSO_PARAMETERS_END(c)
 
-	QSizePolicy::Policy hPolicy = QSizePolicy::Preferred;
+		QSizePolicy::Policy hPolicy = QSizePolicy::Preferred;
 	if(KviQString::equalCI(szHorizontal, "Fixed"))
 		hPolicy = QSizePolicy::Fixed;
 	else if(KviQString::equalCI(szHorizontal, "Minimum"))
@@ -1694,47 +1694,47 @@ KVSO_CLASS_FUNCTION(widget, setSizePolicy)
 KVSO_CLASS_FUNCTION(widget, move)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iX, iY;
+		kvs_int_t iX, iY;
 	KviKvsVariant * pXOrArray;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("x_or_array", KVS_PT_VARIANT, 0, pXOrArray)
-	KVSO_PARAMETER("y", KVS_PT_INT, KVS_PF_OPTIONAL, iY)
-	KVSO_PARAMETERS_END(c)
-	if(pXOrArray->isArray())
-	{
-		if(pXOrArray->array()->size() < 2)
+		KVSO_PARAMETER("x_or_array", KVS_PT_VARIANT, 0, pXOrArray)
+		KVSO_PARAMETER("y", KVS_PT_INT, KVS_PF_OPTIONAL, iY)
+		KVSO_PARAMETERS_END(c)
+		if(pXOrArray->isArray())
 		{
-			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 2 elements", "objects"));
-			return false;
+			if(pXOrArray->array()->size() < 2)
+			{
+				c->error(__tr2qs_ctx("The array passed as parameter must contain at least 2 elements", "objects"));
+				return false;
+			}
+			KviKvsVariant * pX = pXOrArray->array()->at(0);
+			KviKvsVariant * pY = pXOrArray->array()->at(1);
+			if(!(pX && pY))
+			{
+				c->error(__tr2qs_ctx("One of the move array parameters is empty", "objects"));
+				return false;
+			}
+			if(!(pX->asInteger(iX) && pY->asInteger(iY)))
+			{
+				c->error(__tr2qs_ctx("One of the move array parameters didn't evaluate to an integer", "objects"));
+				return false;
+			}
+			// ok: the params are correct
 		}
-		KviKvsVariant * pX = pXOrArray->array()->at(0);
-		KviKvsVariant * pY = pXOrArray->array()->at(1);
-		if(!(pX && pY))
+		else
 		{
-			c->error(__tr2qs_ctx("One of the move array parameters is empty", "objects"));
-			return false;
+			if(c->params()->count() < 2)
+			{
+				c->error(__tr2qs_ctx("$move() requires either an array as first parameter or two integers", "objects"));
+				return false;
+			}
+			if(!pXOrArray->asInteger(iX))
+			{
+				c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer", "objects"));
+				return false;
+			}
+			// ok: the params are correct
 		}
-		if(!(pX->asInteger(iX) && pY->asInteger(iY)))
-		{
-			c->error(__tr2qs_ctx("One of the move array parameters didn't evaluate to an integer", "objects"));
-			return false;
-		}
-		// ok: the params are correct
-	}
-	else
-	{
-		if(c->params()->count() < 2)
-		{
-			c->error(__tr2qs_ctx("$move() requires either an array as first parameter or two integers", "objects"));
-			return false;
-		}
-		if(!pXOrArray->asInteger(iX))
-		{
-			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer", "objects"));
-			return false;
-		}
-		// ok: the params are correct
-	}
 	widget()->move(QPoint(iX, iY));
 	return true;
 }
@@ -1742,7 +1742,7 @@ KVSO_CLASS_FUNCTION(widget, move)
 KVSO_CLASS_FUNCTION(widget, sizeHint)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QSize sizehint = widget()->sizeHint();
+		QSize sizehint = widget()->sizeHint();
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0, new KviKvsVariant((kvs_int_t)sizehint.width()));
 	a->set(1, new KviKvsVariant((kvs_int_t)sizehint.height()));
@@ -1753,47 +1753,47 @@ KVSO_CLASS_FUNCTION(widget, sizeHint)
 KVSO_CLASS_FUNCTION(widget, resize)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsVariant * pWOrArray;
+		KviKvsVariant * pWOrArray;
 	kvs_int_t iW, iH;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("width_or_array", KVS_PT_VARIANT, 0, pWOrArray)
-	KVSO_PARAMETER("height", KVS_PT_INT, KVS_PF_OPTIONAL, iH)
-	KVSO_PARAMETERS_END(c)
-	if(pWOrArray->isArray())
-	{
-		if(pWOrArray->array()->size() < 2)
+		KVSO_PARAMETER("width_or_array", KVS_PT_VARIANT, 0, pWOrArray)
+		KVSO_PARAMETER("height", KVS_PT_INT, KVS_PF_OPTIONAL, iH)
+		KVSO_PARAMETERS_END(c)
+		if(pWOrArray->isArray())
 		{
-			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 2 elements", "objects"));
-			return false;
+			if(pWOrArray->array()->size() < 2)
+			{
+				c->error(__tr2qs_ctx("The array passed as parameter must contain at least 2 elements", "objects"));
+				return false;
+			}
+			KviKvsVariant * pW = pWOrArray->array()->at(0);
+			KviKvsVariant * pH = pWOrArray->array()->at(1);
+			if(!(pW && pH))
+			{
+				c->error(__tr2qs_ctx("One of the resize array parameters is empty", "objects"));
+				return false;
+			}
+			if(!(pW->asInteger(iW) && pH->asInteger(iH)))
+			{
+				c->error(__tr2qs_ctx("One of the resize array parameters didn't evaluate to an integer", "objects"));
+				return false;
+			}
+			// ok: the params are correct
 		}
-		KviKvsVariant * pW = pWOrArray->array()->at(0);
-		KviKvsVariant * pH = pWOrArray->array()->at(1);
-		if(!(pW && pH))
+		else
 		{
-			c->error(__tr2qs_ctx("One of the resize array parameters is empty", "objects"));
-			return false;
+			if(c->params()->count() < 2)
+			{
+				c->error(__tr2qs_ctx("$resize() requires either an array as first parameter or two integers", "objects"));
+				return false;
+			}
+			if(!pWOrArray->asInteger(iW))
+			{
+				c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer", "objects"));
+				return false;
+			}
+			// ok: the params are correct
 		}
-		if(!(pW->asInteger(iW) && pH->asInteger(iH)))
-		{
-			c->error(__tr2qs_ctx("One of the resize array parameters didn't evaluate to an integer", "objects"));
-			return false;
-		}
-		// ok: the params are correct
-	}
-	else
-	{
-		if(c->params()->count() < 2)
-		{
-			c->error(__tr2qs_ctx("$resize() requires either an array as first parameter or two integers", "objects"));
-			return false;
-		}
-		if(!pWOrArray->asInteger(iW))
-		{
-			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer", "objects"));
-			return false;
-		}
-		// ok: the params are correct
-	}
 	widget()->resize(QSize(iW, iH));
 	return true;
 }
@@ -1801,31 +1801,31 @@ KVSO_CLASS_FUNCTION(widget, resize)
 KVSO_CLASS_FUNCTION(widget, setFocusPolicy)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szMode;
+		QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("focus", KVS_PT_STRING, 0, szMode)
-	KVSO_PARAMETERS_END(c)
-	if(KviQString::equalCI(szMode, "TabFocus"))
-		widget()->setFocusPolicy(QT_WIDGET_TABFOCUS);
-	else if(KviQString::equalCI(szMode, "ClickFocus"))
-		widget()->setFocusPolicy(QT_WIDGET_CLICKFOCUS);
-	else if(KviQString::equalCI(szMode, "StrongFocus"))
-		widget()->setFocusPolicy(QT_WIDGET_STRONGFOCUS);
-	else if(KviQString::equalCI(szMode, "NoFocus"))
-		widget()->setFocusPolicy(QT_WIDGET_NOFOCUS);
-	else
-		c->warning(__tr2qs_ctx("Invalid parameters", "objects"));
+		KVSO_PARAMETER("focus", KVS_PT_STRING, 0, szMode)
+		KVSO_PARAMETERS_END(c)
+		if(KviQString::equalCI(szMode, "TabFocus"))
+			widget()->setFocusPolicy(QT_WIDGET_TABFOCUS);
+		else if(KviQString::equalCI(szMode, "ClickFocus"))
+			widget()->setFocusPolicy(QT_WIDGET_CLICKFOCUS);
+		else if(KviQString::equalCI(szMode, "StrongFocus"))
+			widget()->setFocusPolicy(QT_WIDGET_STRONGFOCUS);
+		else if(KviQString::equalCI(szMode, "NoFocus"))
+			widget()->setFocusPolicy(QT_WIDGET_NOFOCUS);
+		else
+			c->warning(__tr2qs_ctx("Invalid parameters", "objects"));
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setWFlags)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QStringList wflags;
+		QStringList wflags;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget_flags", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, wflags)
-	KVSO_PARAMETERS_END(c)
-	Qt::WindowFlags flag, sum = nullptr;
+		KVSO_PARAMETER("widget_flags", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, wflags)
+		KVSO_PARAMETERS_END(c)
+		Qt::WindowFlags flag, sum = nullptr;
 	for(auto & it : wflags)
 	{
 		flag = nullptr;
@@ -1849,15 +1849,15 @@ KVSO_CLASS_FUNCTION(widget, setWFlags)
 KVSO_CLASS_FUNCTION(widget, setFont)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szFamily;
+		QString szFamily;
 	QStringList szListStyle;
 	kvs_int_t iSize;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("family", KVS_PT_STRING, 0, szFamily)
-	KVSO_PARAMETER("size", KVS_PT_INTEGER, 0, iSize)
-	KVSO_PARAMETER("style", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, szListStyle)
-	KVSO_PARAMETERS_END(c)
-	QFont font = widget()->font();
+		KVSO_PARAMETER("family", KVS_PT_STRING, 0, szFamily)
+		KVSO_PARAMETER("size", KVS_PT_INTEGER, 0, iSize)
+		KVSO_PARAMETER("style", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, szListStyle)
+		KVSO_PARAMETERS_END(c)
+		QFont font = widget()->font();
 	if(!szFamily.isEmpty())
 		font.setFamily(szFamily);
 	if(iSize)
@@ -1887,15 +1887,15 @@ KVSO_CLASS_FUNCTION(widget, setFont)
 KVSO_CLASS_FUNCTION(widget, addWidgetToWrappedLayout)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * ob;
+		KviKvsObject * ob;
 	kvs_uint_t uCol, uRow;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETER("col", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
-	KVSO_PARAMETER("row", KVS_PT_UNSIGNEDINTEGER, 0, uRow)
-	KVSO_PARAMETERS_END(c)
-	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETER("col", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
+		KVSO_PARAMETER("row", KVS_PT_UNSIGNEDINTEGER, 0, uRow)
+		KVSO_PARAMETERS_END(c)
+		ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob)
 	{
 		c->warning(__tr2qs_ctx("Widget parameter is not an object", "objects"));
@@ -1923,12 +1923,12 @@ KVSO_CLASS_FUNCTION(widget, addWidgetToWrappedLayout)
 KVSO_CLASS_FUNCTION(widget, setParent)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * ob;
+		KviKvsObject * ob;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, KVS_PF_OPTIONAL, hObject)
-	KVSO_PARAMETERS_END(c)
-	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, KVS_PF_OPTIONAL, hObject)
+		KVSO_PARAMETERS_END(c)
+		ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 
 	if(!widget())
 		return true;
@@ -1950,11 +1950,11 @@ KVSO_CLASS_FUNCTION(widget, setParent)
 KVSO_CLASS_FUNCTION(widget, setWindowIcon)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString icon;
+		QString icon;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("icon", KVS_PT_STRING, 0, icon)
-	KVSO_PARAMETERS_END(c)
-	QPixmap * pix = g_pIconManager->getImage(icon);
+		KVSO_PARAMETER("icon", KVS_PT_STRING, 0, icon)
+		KVSO_PARAMETERS_END(c)
+		QPixmap * pix = g_pIconManager->getImage(icon);
 	if(pix)
 		widget()->setWindowIcon(QIcon(*pix));
 	return true;
@@ -1963,11 +1963,11 @@ KVSO_CLASS_FUNCTION(widget, setWindowIcon)
 KVSO_CLASS_FUNCTION(widget, setBackgroundImage)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString image;
+		QString image;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("image", KVS_PT_STRING, 0, image)
-	KVSO_PARAMETERS_END(c)
-	QPixmap * pix = g_pIconManager->getImage(image);
+		KVSO_PARAMETER("image", KVS_PT_STRING, 0, image)
+		KVSO_PARAMETERS_END(c)
+		QPixmap * pix = g_pIconManager->getImage(image);
 	if(pix)
 	{
 		QPalette palette = widget()->palette();
@@ -1985,26 +1985,26 @@ KVSO_CLASS_FUNCTION(widget, setBackgroundImage)
 KVSO_CLASS_FUNCTION(widget, globalCursorX)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(QCursor::pos().x());
+		c->returnValue()->setInteger(QCursor::pos().x());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, globalCursorY)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(QCursor::pos().y());
+		c->returnValue()->setInteger(QCursor::pos().y());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setMask)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * obj;
+		KviKvsObject * obj;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("pixmap", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
-	obj = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("pixmap", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
+		obj = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!obj)
 	{
 		c->warning(__tr2qs_ctx("Pixmap parameter is not an object", "objects"));
@@ -2026,13 +2026,13 @@ KVSO_CLASS_FUNCTION(widget, setMask)
 KVSO_CLASS_FUNCTION(widget, setAttribute)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString attribute;
+		QString attribute;
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget_atribute", KVS_PT_STRING, 0, attribute)
-	KVSO_PARAMETER("bool_flag", KVS_PT_BOOLEAN, 0, bFlag)
-	KVSO_PARAMETERS_END(c)
-	bool found = false;
+		KVSO_PARAMETER("widget_atribute", KVS_PT_STRING, 0, attribute)
+		KVSO_PARAMETER("bool_flag", KVS_PT_BOOLEAN, 0, bFlag)
+		KVSO_PARAMETERS_END(c)
+		bool found = false;
 	unsigned int j = 0;
 	for(; j < widgetattributes_num; j++)
 	{
@@ -2052,12 +2052,12 @@ KVSO_CLASS_FUNCTION(widget, setAttribute)
 KVSO_CLASS_FUNCTION(widget, colorPalette)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szColorRole, szColorGroup;
+		QString szColorRole, szColorGroup;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("color_role", KVS_PT_STRING, 0, szColorRole)
-	KVSO_PARAMETER("color_group", KVS_PT_STRING, 0, szColorGroup)
-	KVSO_PARAMETERS_END(c)
-	bool found = false;
+		KVSO_PARAMETER("color_role", KVS_PT_STRING, 0, szColorRole)
+		KVSO_PARAMETER("color_group", KVS_PT_STRING, 0, szColorGroup)
+		KVSO_PARAMETERS_END(c)
+		bool found = false;
 	unsigned int j = 0;
 	for(; j < colorrole_num; j++)
 	{
@@ -2096,22 +2096,22 @@ KVSO_CLASS_FUNCTION(widget, colorPalette)
 KVSO_CLASS_FUNCTION(widget, setStyleSheet)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szStyleSheet;
+		QString szStyleSheet;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("style_sheet", KVS_PT_STRING, 0, szStyleSheet)
-	KVSO_PARAMETERS_END(c)
-	widget()->setStyleSheet(szStyleSheet);
+		KVSO_PARAMETER("style_sheet", KVS_PT_STRING, 0, szStyleSheet)
+		KVSO_PARAMETERS_END(c)
+		widget()->setStyleSheet(szStyleSheet);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, setKeyShortcut)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szKey;
+		QString szKey;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("key", KVS_PT_STRING, 0, szKey)
-	KVSO_PARAMETERS_END(c)
-	szKey.prepend("&");
+		KVSO_PARAMETER("key", KVS_PT_STRING, 0, szKey)
+		KVSO_PARAMETERS_END(c)
+		szKey.prepend("&");
 	c->returnValue()->setInteger((kvs_int_t)widget()->grabShortcut(QKeySequence::mnemonic(szKey)));
 	return true;
 }
@@ -2119,27 +2119,27 @@ KVSO_CLASS_FUNCTION(widget, setKeyShortcut)
 KVSO_CLASS_FUNCTION(widget, insertIntoStatusBar)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	if(g_pMainWindow->mainStatusBar())
-		g_pMainWindow->mainStatusBar()->insertPermanentWidgetAtTheEnd(widget(), 0);
+		if(g_pMainWindow->mainStatusBar())
+			g_pMainWindow->mainStatusBar()->insertPermanentWidgetAtTheEnd(widget(), 0);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(widget, removeFromStatusBar)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	g_pMainWindow->statusBar()->removeWidget(widget());
+		g_pMainWindow->statusBar()->removeWidget(widget());
 	return true;
 }
 KVSO_CLASS_FUNCTION(widget, grab)
 {
 	qDebug("Grab");
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * ob;
+		KviKvsObject * ob;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
-	qDebug("Get widget");
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
+		qDebug("Get widget");
 	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob)
 	{

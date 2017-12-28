@@ -46,7 +46,6 @@
 
 namespace KviMemory
 {
-
 #ifdef COMPILE_MEMORY_PROFILE
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -166,7 +165,6 @@ namespace KviMemory
 	{
 		memcpy(dst_ptr, src_ptr, len);
 	}
-
 } // namespace KviMemory
 
 #endif //_KVI_MALLOC_H_

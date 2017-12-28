@@ -93,15 +93,15 @@ bool KvsObject_textBrowser::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 KVSO_CLASS_FUNCTION(textBrowser, setSource)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szFile;
+		QString szFile;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("file_name", KVS_PT_STRING, 0, szFile)
-	KVSO_PARAMETERS_END(c)
-	if(!QFile::exists(szFile))
-	{
-		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.", "objects"), &szFile);
-		return true;
-	}
+		KVSO_PARAMETER("file_name", KVS_PT_STRING, 0, szFile)
+		KVSO_PARAMETERS_END(c)
+		if(!QFile::exists(szFile))
+		{
+			c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.", "objects"), &szFile);
+			return true;
+		}
 	((QTextBrowser *)widget())->setSource(QUrl::fromLocalFile(szFile));
 	return true;
 }
@@ -109,28 +109,28 @@ KVSO_CLASS_FUNCTION(textBrowser, setSource)
 KVSO_CLASS_FUNCTION(textBrowser, forward)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QTextBrowser *)widget())->forward();
+		((QTextBrowser *)widget())->forward();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(textBrowser, backward)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QTextBrowser *)widget())->backward();
+		((QTextBrowser *)widget())->backward();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(textBrowser, home)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QTextBrowser *)widget())->home();
+		((QTextBrowser *)widget())->home();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(textBrowser, reload)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QTextBrowser *)widget())->reload();
+		((QTextBrowser *)widget())->reload();
 	return true;
 }
 

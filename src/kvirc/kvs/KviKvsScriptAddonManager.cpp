@@ -35,12 +35,12 @@
 KviKvsScriptAddonManager * KviKvsScriptAddonManager::m_pInstance = nullptr;
 
 KviKvsScriptAddon::KviKvsScriptAddon(
-    const QString & szName,
-    const QString & szVersion,
-    const QString & szVisibleNameCode,
-    const QString & szDescriptionCode,
-    const QString & szUninstallCallbackCode,
-    const QString & szIconId) : KviHeapObject(), m_szName(szName), m_szVersion(szVersion), m_szIconId(szIconId)
+	const QString & szName,
+	const QString & szVersion,
+	const QString & szVisibleNameCode,
+	const QString & szDescriptionCode,
+	const QString & szUninstallCallbackCode,
+	const QString & szIconId) : KviHeapObject(), m_szName(szName), m_szVersion(szVersion), m_szIconId(szIconId)
 {
 	allocateScripts(szVisibleNameCode, szDescriptionCode, szUninstallCallbackCode);
 	m_pConfigureCallback = nullptr;
@@ -48,7 +48,7 @@ KviKvsScriptAddon::KviKvsScriptAddon(
 }
 
 KviKvsScriptAddon::KviKvsScriptAddon(const KviKvsScriptAddon & a)
-    : KviHeapObject()
+	: KviHeapObject()
 {
 	m_szName = a.m_szName;
 	m_szVersion = a.m_szVersion;
@@ -61,7 +61,7 @@ KviKvsScriptAddon::KviKvsScriptAddon(const KviKvsScriptAddon & a)
 }
 
 KviKvsScriptAddon::KviKvsScriptAddon()
-    : KviHeapObject()
+	: KviHeapObject()
 {
 	m_pVisibleNameScript = nullptr;
 	m_pDescriptionScript = nullptr;
@@ -369,12 +369,12 @@ bool KviKvsScriptAddonManager::registerAddon(KviKvsScriptAddonRegistrationData *
 	if(findAddon(d->szName))
 		return false;
 	KviKvsScriptAddon * a = new KviKvsScriptAddon(
-	    d->szName,
-	    d->szVersion,
-	    d->szVisibleNameScript,
-	    d->szDescriptionScript,
-	    d->szUninstallCallbackScript,
-	    d->szIconId);
+		d->szName,
+		d->szVersion,
+		d->szVisibleNameScript,
+		d->szDescriptionScript,
+		d->szUninstallCallbackScript,
+		d->szIconId);
 	m_pAddonDict->replace(d->szName, a);
 	return true;
 }

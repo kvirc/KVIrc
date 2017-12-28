@@ -46,10 +46,10 @@ protected:
 
 public:
 	KviKvsModuleRunTimeCall(KviModule * pModule,
-	    KviKvsRunTimeContext * pContext,
-	    KviKvsVariantList * pParams)
-	    : KviKvsRunTimeCall(pContext, pParams), m_pModule(pModule) {}
-	~KviKvsModuleRunTimeCall(){};
+		KviKvsRunTimeContext * pContext,
+		KviKvsVariantList * pParams)
+		: KviKvsRunTimeCall(pContext, pParams), m_pModule(pModule) {}
+	~KviKvsModuleRunTimeCall() {};
 
 public:
 	KviModule * module() { return m_pModule; };
@@ -59,10 +59,10 @@ class KVIRC_API KviKvsModuleEventCall : public KviKvsModuleRunTimeCall
 {
 public:
 	KviKvsModuleEventCall(KviModule * pModule,
-	    KviKvsRunTimeContext * pContext,
-	    KviKvsVariantList * pParams)
-	    : KviKvsModuleRunTimeCall(pModule, pContext, pParams){};
-	~KviKvsModuleEventCall(){};
+		KviKvsRunTimeContext * pContext,
+		KviKvsVariantList * pParams)
+		: KviKvsModuleRunTimeCall(pModule, pContext, pParams) {};
+	~KviKvsModuleEventCall() {};
 };
 
 class KVIRC_API KviKvsModuleCommandCall : public KviKvsModuleRunTimeCall
@@ -72,11 +72,11 @@ protected:
 
 public:
 	KviKvsModuleCommandCall(KviModule * pModule,
-	    KviKvsRunTimeContext * pContext,
-	    KviKvsVariantList * pParams,
-	    KviKvsSwitchList * pSwitches)
-	    : KviKvsModuleRunTimeCall(pModule, pContext, pParams), m_pSwitchList(pSwitches){};
-	~KviKvsModuleCommandCall(){};
+		KviKvsRunTimeContext * pContext,
+		KviKvsVariantList * pParams,
+		KviKvsSwitchList * pSwitches)
+		: KviKvsModuleRunTimeCall(pModule, pContext, pParams), m_pSwitchList(pSwitches) {};
+	~KviKvsModuleCommandCall() {};
 
 public:
 	KviKvsSwitchList * switches() { return m_pSwitchList; };
@@ -94,13 +94,13 @@ protected:
 	KviKvsTreeNodeDataList * m_pParameterDataList; // core subtree that rappresents the parameter list
 public:
 	KviKvsModuleCallbackCommandCall(KviModule * pModule,
-	    KviKvsRunTimeContext * pContext,
-	    KviKvsVariantList * pParams,
-	    KviKvsSwitchList * pSwitches,
-	    const KviKvsScript * pCallback,
-	    KviKvsTreeNodeDataList * pDataList)
-	    : KviKvsModuleCommandCall(pModule, pContext, pParams, pSwitches), m_pCallback(pCallback), m_pParameterDataList(pDataList){};
-	~KviKvsModuleCallbackCommandCall(){};
+		KviKvsRunTimeContext * pContext,
+		KviKvsVariantList * pParams,
+		KviKvsSwitchList * pSwitches,
+		const KviKvsScript * pCallback,
+		KviKvsTreeNodeDataList * pDataList)
+		: KviKvsModuleCommandCall(pModule, pContext, pParams, pSwitches), m_pCallback(pCallback), m_pParameterDataList(pDataList) {};
+	~KviKvsModuleCallbackCommandCall() {};
 
 public:
 	// Never NULL, but may have empty code
@@ -117,20 +117,20 @@ protected:
 
 public:
 	KviKvsModuleFunctionCall(KviModule * pModule,
-	    KviKvsRunTimeContext * pContext,
-	    KviKvsVariantList * pParams,
-	    KviKvsVariant * pResult)
-	    : KviKvsModuleRunTimeCall(pModule, pContext, pParams), m_pResult(pResult){};
-	~KviKvsModuleFunctionCall(){};
+		KviKvsRunTimeContext * pContext,
+		KviKvsVariantList * pParams,
+		KviKvsVariant * pResult)
+		: KviKvsModuleRunTimeCall(pModule, pContext, pParams), m_pResult(pResult) {};
+	~KviKvsModuleFunctionCall() {};
 
 public:
 	KviKvsVariant * returnValue() { return m_pResult; };
 };
 
-typedef bool (*KviKvsModuleSimpleCommandExecRoutine)(KviKvsModuleCommandCall * c);
-typedef bool (*KviKvsModuleFunctionExecRoutine)(KviKvsModuleFunctionCall * c);
-typedef bool (*KviKvsModuleCallbackCommandExecRoutine)(KviKvsModuleCallbackCommandCall * c);
-typedef bool (*KviKvsModuleEventHandlerRoutine)(KviKvsModuleEventCall * c);
+typedef bool(*KviKvsModuleSimpleCommandExecRoutine)(KviKvsModuleCommandCall * c);
+typedef bool(*KviKvsModuleFunctionExecRoutine)(KviKvsModuleFunctionCall * c);
+typedef bool(*KviKvsModuleCallbackCommandExecRoutine)(KviKvsModuleCallbackCommandCall * c);
+typedef bool(*KviKvsModuleEventHandlerRoutine)(KviKvsModuleEventCall * c);
 
 class KVIRC_API KviKvsModuleInterface
 {

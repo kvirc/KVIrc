@@ -115,7 +115,7 @@ protected:
 	void createNewItemBelowLastSelected(PopupTreeWidgetItem::Type t);
 	void createNewItemInsideLastSelected(PopupTreeWidgetItem::Type t);
 	PopupTreeWidgetItem * findMatchingItem(KviKvsPopupMenuItem * it, PopupTreeWidgetItem * item);
-protected slots:
+	protected slots:
 	void contextCut();
 	void contextCopy();
 	void contextRemove();
@@ -178,7 +178,7 @@ public:
 public:
 	void commit();
 	void exportPopups(bool);
-protected slots:
+	protected slots:
 	void currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem * prev);
 	void customContextMenuRequested(const QPoint & pnt);
 	void newPopup();
@@ -212,7 +212,7 @@ private:
 	void getConfigGroupName(QString & szName) override { szName = "popupeditor"; };
 	void saveProperties(KviConfigurationFile *) override {};
 	void loadProperties(KviConfigurationFile *) override {};
-private slots:
+	private slots:
 	void cancelClicked() { close(); };
 	void okClicked();
 	void applyClicked() { m_pEditor->commit(); };

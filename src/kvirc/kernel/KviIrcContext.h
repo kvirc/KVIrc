@@ -157,7 +157,7 @@ public:
 	void unregisterDataStreamMonitor(KviIrcDataStreamMonitor * m);
 
 	void terminateConnectionRequest(bool bForce, const QString & szQuitMessage = QString(), bool bSimulateUnexpectedDisconnect = false);
-public slots:
+	public slots:
 	void closeAllDeadChannels();
 	void closeAllDeadQueries();
 
@@ -184,7 +184,7 @@ protected:
 	void connectionTerminated();
 signals:
 	void stateChanged();
-protected slots:
+	protected slots:
 	void asynchronousConnect();
 };
 

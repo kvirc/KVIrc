@@ -67,7 +67,7 @@ private:
 	KviBoolSelector * m_pDBusNotifier;
 #endif
 #ifdef COMPILE_KDE_SUPPORT
-private slots:
+	private slots:
 	void toggleNotifierProtocol(bool);
 #endif
 };

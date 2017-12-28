@@ -107,7 +107,7 @@ protected:
 	bool showRow(KviKvsObjectFunctionCall * c);
 	bool resizeRowsToContents(KviKvsObjectFunctionCall * c);
 	bool resizeColumnsToContents(KviKvsObjectFunctionCall * c);
-protected slots:
+	protected slots:
 	void slotItemEntered(QTableWidgetItem *);
 	void cellActivated(int iRow, int iCol);
 	void cellDoubleClicked(int iRow, int iCol);

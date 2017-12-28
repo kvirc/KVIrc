@@ -337,7 +337,7 @@ int KviOggTheoraEncoder::fetch_and_process_video_packet(quint8 * videoYuv, th_en
 }
 
 int KviOggTheoraEncoder::fetch_and_process_video(quint8 * videoYuv, ogg_page * videopage,
-    ogg_stream_state * to, th_enc_ctx * td, int videoflag)
+	ogg_stream_state * to, th_enc_ctx * td, int videoflag)
 {
 	ogg_packet op;
 	int ret;

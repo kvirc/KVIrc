@@ -77,34 +77,34 @@ KVSO_END_CONSTRUCTOR(KvsObject_toolBar)
 bool KvsObject_toolBar::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QToolBar)
-	return true;
+		return true;
 }
 
 KVSO_CLASS_FUNCTION(toolBar, addSeparator)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QToolBar *)widget())->addSeparator();
+		((QToolBar *)widget())->addSeparator();
 	return true;
 }
 KVSO_CLASS_FUNCTION(toolBar, setLabel)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szLabel;
+		QString szLabel;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
-	KVSO_PARAMETERS_END(c)
-	((QToolBar *)widget())->setWindowTitle(szLabel);
+		KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
+		KVSO_PARAMETERS_END(c)
+		((QToolBar *)widget())->setWindowTitle(szLabel);
 	return true;
 }
 KVSO_CLASS_FUNCTION(toolBar, label)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setString(((QToolBar *)widget())->windowTitle());
+		c->returnValue()->setString(((QToolBar *)widget())->windowTitle());
 	return true;
 }
 KVSO_CLASS_FUNCTION(toolBar, clear)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	((QToolBar *)object())->clear();
+		((QToolBar *)object())->clear();
 	return true;
 }

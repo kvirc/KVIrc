@@ -51,7 +51,7 @@ namespace KviHtmlGenerator
 			unsigned int uStart = uIdx;
 
 			while(
-			    (c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Italic) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Icon) && ((c != ':') || bIgnoreIcons) && ((c != ';') || bIgnoreIcons) && ((c != '=') || bIgnoreIcons))
+				(c != KviControlCodes::Color) && (c != KviControlCodes::Bold) && (c != KviControlCodes::Italic) && (c != KviControlCodes::Underline) && (c != KviControlCodes::Reverse) && (c != KviControlCodes::Reset) && (c != KviControlCodes::Icon) && ((c != ':') || bIgnoreIcons) && ((c != ';') || bIgnoreIcons) && ((c != '=') || bIgnoreIcons))
 			{
 				bIgnoreIcons = false;
 				if(c == '&')
@@ -169,165 +169,123 @@ namespace KviHtmlGenerator
 
 			switch(c)
 			{
-				case KviControlCodes::Bold:
+			case KviControlCodes::Bold:
+			{
+				bCurBold = !bCurBold;
+				++uIdx;
+				break;
+			}
+			case KviControlCodes::Italic:
+			{
+				bCurItalic = !bCurItalic;
+				++uIdx;
+				break;
+			}
+			case KviControlCodes::Underline:
+			{
+				bCurUnderline = !bCurUnderline;
+				++uIdx;
+				break;
+			}
+			case KviControlCodes::Reverse:
+			{
+				std::swap(uCurFore, uCurBack);
+				++uIdx;
+				break;
+			}
+			case KviControlCodes::Reset:
+			{
+				uCurFore = Foreground;
+				uCurBack = Background;
+				bCurBold = false;
+				bCurItalic = false;
+				bCurUnderline = false;
+				++uIdx;
+				break;
+			}
+			case KviControlCodes::Color:
+			{
+				++uIdx;
+				unsigned char ucFore;
+				unsigned char ucBack;
+				uIdx = KviControlCodes::getUnicodeColorBytes(szTxt, uIdx, &ucFore, &ucBack);
+				if(ucFore != KviControlCodes::NoChange)
 				{
-					bCurBold = !bCurBold;
-					++uIdx;
-					break;
+					uCurFore = ucFore;
+					if(ucBack != KviControlCodes::NoChange)
+						uCurBack = ucBack;
 				}
-				case KviControlCodes::Italic:
+				else
 				{
-					bCurItalic = !bCurItalic;
-					++uIdx;
-					break;
-				}
-				case KviControlCodes::Underline:
-				{
-					bCurUnderline = !bCurUnderline;
-					++uIdx;
-					break;
-				}
-				case KviControlCodes::Reverse:
-				{
-					std::swap(uCurFore, uCurBack);
-					++uIdx;
-					break;
-				}
-				case KviControlCodes::Reset:
-				{
-					uCurFore = Foreground;
+					// only a Ctrl+K
 					uCurBack = Background;
-					bCurBold = false;
-					bCurItalic = false;
-					bCurUnderline = false;
-					++uIdx;
-					break;
+					uCurFore = Foreground;
 				}
-				case KviControlCodes::Color:
+				break;
+			}
+			case ':':
+			case ';':
+			case '=':
+			{
+				//potential emoticon, got eyes
+				if(bShowIcons)
 				{
 					++uIdx;
-					unsigned char ucFore;
-					unsigned char ucBack;
-					uIdx = KviControlCodes::getUnicodeColorBytes(szTxt, uIdx, &ucFore, &ucBack);
-					if(ucFore != KviControlCodes::NoChange)
-					{
-						uCurFore = ucFore;
-						if(ucBack != KviControlCodes::NoChange)
-							uCurBack = ucBack;
-					}
-					else
-					{
-						// only a Ctrl+K
-						uCurBack = Background;
-						uCurFore = Foreground;
-					}
-					break;
-				}
-				case ':':
-				case ';':
-				case '=':
-				{
-					//potential emoticon, got eyes
-					if(bShowIcons)
-					{
-						++uIdx;
-						QString szLookup;
-						szLookup.append(QChar(c));
-						unsigned short uIsEmoticon = 0;
-						unsigned int uIcoStart = uIdx;
+					QString szLookup;
+					szLookup.append(QChar(c));
+					unsigned short uIsEmoticon = 0;
+					unsigned int uIcoStart = uIdx;
 
-						if(uIdx < (unsigned int)szTxt.length())
-						{
-							//look up for a nose
-							if(szTxt[(int)uIdx] == '-')
-							{
-								szLookup.append('-');
-								uIdx++;
-							}
-						}
-
-						if(uIdx < (unsigned int)szTxt.length())
-						{
-							//look up for a mouth
-							unsigned short uMouth = szTxt[(int)uIdx].unicode();
-							switch(uMouth)
-							{
-								case ')':
-								case '(':
-								case '/':
-								case 'D':
-								case 'P':
-								case 'S':
-								case 'O':
-								case '*':
-								case '|':
-									szLookup += QChar(uMouth);
-									uIsEmoticon++;
-									uIdx++;
-									break;
-								default:
-									break;
-							}
-						}
-
-						if(uIdx < (unsigned int)szTxt.length())
-						{
-							//look up for a space
-							if(szTxt[(int)uIdx] == ' ')
-								uIsEmoticon++;
-						}
-						else
-						{
-							//got a smile at the end of the szTxt
-							uIsEmoticon++;
-						}
-
-						if(uIsEmoticon > 1)
-						{
-							KviTextIcon * pIcon = g_pTextIconManager->lookupTextIcon(szLookup);
-							// do we have that emoticon-icon association ?
-							if(pIcon)
-							{
-								szResult.append("<img src=\"");
-								szResult.append(g_pIconManager->getSmallIconResourceName(pIcon->id()));
-								if(uCurBack != Background)
-								{
-									szResult.append("\" style=\"background-color:");
-									szResult.append(KVI_OPTION_MIRCCOLOR(uCurBack).name());
-								}
-								szResult.append("\" />");
-							}
-							else
-							{
-								bIgnoreIcons = true;
-								uIdx = uIcoStart - 1;
-							}
-						}
-						else
-						{
-							bIgnoreIcons = true;
-							uIdx = uIcoStart - 1;
-						}
-					}
-					else
+					if(uIdx < (unsigned int)szTxt.length())
 					{
-						bIgnoreIcons = true;
-					}
-
-					break;
-				}
-				case KviControlCodes::Icon:
-				{
-					++uIdx;
-					if(bShowIcons)
-					{
-						unsigned int uIcoStart = uIdx;
-						while((uIdx < (unsigned int)szTxt.length()) && (szTxt[(int)uIdx].unicode() > 32))
+						//look up for a nose
+						if(szTxt[(int)uIdx] == '-')
+						{
+							szLookup.append('-');
 							uIdx++;
+						}
+					}
 
-						QString szLookup = szTxt.mid(uIcoStart, uIdx - uIcoStart);
+					if(uIdx < (unsigned int)szTxt.length())
+					{
+						//look up for a mouth
+						unsigned short uMouth = szTxt[(int)uIdx].unicode();
+						switch(uMouth)
+						{
+						case ')':
+						case '(':
+						case '/':
+						case 'D':
+						case 'P':
+						case 'S':
+						case 'O':
+						case '*':
+						case '|':
+							szLookup += QChar(uMouth);
+							uIsEmoticon++;
+							uIdx++;
+							break;
+						default:
+							break;
+						}
+					}
 
+					if(uIdx < (unsigned int)szTxt.length())
+					{
+						//look up for a space
+						if(szTxt[(int)uIdx] == ' ')
+							uIsEmoticon++;
+					}
+					else
+					{
+						//got a smile at the end of the szTxt
+						uIsEmoticon++;
+					}
+
+					if(uIsEmoticon > 1)
+					{
 						KviTextIcon * pIcon = g_pTextIconManager->lookupTextIcon(szLookup);
+						// do we have that emoticon-icon association ?
 						if(pIcon)
 						{
 							szResult.append("<img src=\"");
@@ -341,11 +299,53 @@ namespace KviHtmlGenerator
 						}
 						else
 						{
-							uIdx = uIcoStart;
+							bIgnoreIcons = true;
+							uIdx = uIcoStart - 1;
 						}
 					}
-					break;
+					else
+					{
+						bIgnoreIcons = true;
+						uIdx = uIcoStart - 1;
+					}
 				}
+				else
+				{
+					bIgnoreIcons = true;
+				}
+
+				break;
+			}
+			case KviControlCodes::Icon:
+			{
+				++uIdx;
+				if(bShowIcons)
+				{
+					unsigned int uIcoStart = uIdx;
+					while((uIdx < (unsigned int)szTxt.length()) && (szTxt[(int)uIdx].unicode() > 32))
+						uIdx++;
+
+					QString szLookup = szTxt.mid(uIcoStart, uIdx - uIcoStart);
+
+					KviTextIcon * pIcon = g_pTextIconManager->lookupTextIcon(szLookup);
+					if(pIcon)
+					{
+						szResult.append("<img src=\"");
+						szResult.append(g_pIconManager->getSmallIconResourceName(pIcon->id()));
+						if(uCurBack != Background)
+						{
+							szResult.append("\" style=\"background-color:");
+							szResult.append(KVI_OPTION_MIRCCOLOR(uCurBack).name());
+						}
+						szResult.append("\" />");
+					}
+					else
+					{
+						uIdx = uIcoStart;
+					}
+				}
+				break;
+			}
 			}
 		}
 		szResult.append("</qt>");

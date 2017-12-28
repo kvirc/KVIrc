@@ -31,7 +31,7 @@
 #include <QLabel>
 
 OptionsWidget_uparser::OptionsWidget_uparser(QWidget * parent)
-    : KviOptionsWidget(parent, "uparser_options_widget")
+	: KviOptionsWidget(parent, "uparser_options_widget")
 {
 	createLayout();
 
@@ -52,19 +52,19 @@ OptionsWidget_uparser::OptionsWidget_uparser(QWidget * parent)
 
 	b = addBoolSelector(0, 8, 0, 8, __tr2qs_ctx("Relay errors and warnings to debug window", "options"), KviOption_boolScriptErrorsToDebugWindow);
 	mergeTip(b, __tr2qs_ctx("This option will show the script errors and warnings "
-	                        "also in the special debug window. This makes tracking of scripts that might "
-	                        "be running in several windows far easier. The messages in the debug window "
-	                        "also contain a deeper call stack which will help you to identify the "
-	                        "scripting problems.", "options"));
+		"also in the special debug window. This makes tracking of scripts that might "
+		"be running in several windows far easier. The messages in the debug window "
+		"also contain a deeper call stack which will help you to identify the "
+		"scripting problems.", "options"));
 
 	b1 = addBoolSelector(0, 9, 0, 9, __tr2qs_ctx("Create debug window without focus", "options"), KviOption_boolShowMinimizedDebugWindow);
 	mergeTip(b1, __tr2qs_ctx("This option prevents the debug window "
-	                         "from opening and diverting application focus.<br>"
-	                         "Enable this if you don't like the debug window "
-	                         "popping up while you're typing something in a channel.", "options"));
+		"from opening and diverting application focus.<br>"
+		"Enable this if you don't like the debug window "
+		"popping up while you're typing something in a channel.", "options"));
 
 	addRowSpacer(0, 10, 0, 10);
 }
 
 OptionsWidget_uparser::~OptionsWidget_uparser()
-    = default;
+= default;

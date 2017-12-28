@@ -39,12 +39,12 @@
 //
 
 KviPackageReader::KviPackageReader()
-    : KviPackageIOEngine()
+	: KviPackageIOEngine()
 {
 }
 
 KviPackageReader::~KviPackageReader()
-    = default;
+= default;
 
 bool KviPackageReader::readHeaderInternal(KviFile * pFile, const QString &)
 {
@@ -97,28 +97,28 @@ bool KviPackageReader::readHeaderInternal(KviFile * pFile, const QString &)
 			return readError();
 		switch(uFieldType)
 		{
-			case KVI_PACKAGE_INFOFIELD_TYPE_STRING:
+		case KVI_PACKAGE_INFOFIELD_TYPE_STRING:
+		{
+			QString szValue;
+			if(!pFile->load(szValue))
+				return readError();
+			stringInfoFields()->replace(szKey, new QString(szValue));
+		}
+		break;
+		case KVI_PACKAGE_INFOFIELD_TYPE_BINARYBUFFER:
+		{
+			QByteArray * pbValue = new QByteArray();
+			if(!pFile->load(*pbValue))
 			{
-				QString szValue;
-				if(!pFile->load(szValue))
-					return readError();
-				stringInfoFields()->replace(szKey, new QString(szValue));
+				delete pbValue;
+				return readError();
 			}
+			binaryInfoFields()->replace(szKey, pbValue);
+		}
+		break;
+		default:
+			setLastError(__tr2qs("Invalid info field: the package is probably corrupt"));
 			break;
-			case KVI_PACKAGE_INFOFIELD_TYPE_BINARYBUFFER:
-			{
-				QByteArray * pbValue = new QByteArray();
-				if(!pFile->load(*pbValue))
-				{
-					delete pbValue;
-					return readError();
-				}
-				binaryInfoFields()->replace(szKey, pbValue);
-			}
-			break;
-			default:
-				setLastError(__tr2qs("Invalid info field: the package is probably corrupt"));
-				break;
 		}
 		uIdx++;
 	}
@@ -198,7 +198,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile, const QString & szUnpackPath)
 	if(!pFile->load(uSize))
 		return readError();
 
-// FilePayload
+	// FilePayload
 #ifdef COMPILE_ZLIB_SUPPORT
 	if(uFlags & KVI_PACKAGE_DATAFIELD_FLAG_FILE_DEFLATE)
 	{
@@ -318,7 +318,6 @@ bool KviPackageReader::unpackFile(KviFile * pFile, const QString & szUnpackPath)
 				zstr.next_out = obuffer;
 				zstr.avail_out = BUFFER_SIZE;
 			}
-
 		} while((ret == Z_OK) || (ret == Z_BUF_ERROR));
 
 		inflateEnd(&zstr);
@@ -365,7 +364,7 @@ bool KviPackageReader::unpackFile(KviFile * pFile, const QString & szUnpackPath)
 			if(iToRead > BUFFER_SIZE)
 				iToRead = BUFFER_SIZE;
 		}
-//qDebug("finish to read %i and index %i",iReaded,pFile->pos());
+		//qDebug("finish to read %i and index %i",iReaded,pFile->pos());
 #ifdef COMPILE_ZLIB_SUPPORT
 	}
 #endif
@@ -392,7 +391,6 @@ bool KviPackageReader::unpack(const QString & szLocalFileName, const QString & s
 
 bool KviPackageReader::unpackInternal(const QString & szLocalFileName, const QString & szUnpackPath, kvi_u32_t uUnpackFlags)
 {
-
 	KviFile f(szLocalFileName);
 	if(!f.open(QFile::ReadOnly))
 	{
@@ -427,14 +425,14 @@ bool KviPackageReader::unpackInternal(const QString & szLocalFileName, const QSt
 
 		switch(uDataFieldType)
 		{
-			case KVI_PACKAGE_DATAFIELD_TYPE_FILE:
-				if(!unpackFile(&f, szUnpackPath))
-					return false;
-				break;
-			default:
-				setLastError(__tr2qs("Invalid data field: the package is probably corrupt"));
+		case KVI_PACKAGE_DATAFIELD_TYPE_FILE:
+			if(!unpackFile(&f, szUnpackPath))
 				return false;
-				break;
+			break;
+		default:
+			setLastError(__tr2qs("Invalid data field: the package is probably corrupt"));
+			return false;
+			break;
 		}
 	}
 

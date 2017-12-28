@@ -73,7 +73,7 @@ extern DccBroker * g_pDccBroker;
 //
 
 DccChatWindow::DccChatWindow(DccDescriptor * dcc, const char * name)
-    : DccWindow(KviWindow::DccChat, name, dcc)
+	: DccWindow(KviWindow::DccChat, name, dcc)
 {
 	m_pButtonBox = new KviTalHBox(this);
 
@@ -237,7 +237,7 @@ void DccChatWindow::connectionInProgress()
 
 			m_pDescriptor->console()->connection()->sendData(m_pDescriptor->console()->connection()->encodeText(szReq).data());
 			output(KVI_OUT_DCCMSG, __tr2qs_ctx("Sent DCC %Q request to %Q, waiting for the remote client to connect...", "dcc"),
-			    &(m_pDescriptor->szType), &(m_pDescriptor->szNick));
+				&(m_pDescriptor->szType), &(m_pDescriptor->szNick));
 			//qDebug(m_pDescriptor->szNick);
 		}
 		else
@@ -277,11 +277,11 @@ void DccChatWindow::fillCaptionBuffers()
 {
 	QString tmp = QString("DCC %1 %2@%3:%4").arg(
 #ifdef COMPILE_SSL_SUPPORT
-	    m_pDescriptor->bIsSSL ? "SChat" : "Chat",
+		m_pDescriptor->bIsSSL ? "SChat" : "Chat",
 #else
-	    "Chat",
+		"Chat",
 #endif
-	    m_pDescriptor->szNick, m_pDescriptor->szIp, m_pDescriptor->szPort);
+		m_pDescriptor->szNick, m_pDescriptor->szIp, m_pDescriptor->szPort);
 
 	m_szPlainTextCaption = tmp;
 }
@@ -320,37 +320,37 @@ void DccChatWindow::ownMessage(const QString & text, bool bUserFeedback)
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(-1);
 				switch(cryptSessionInfo()->m_pEngine->encrypt(d, encrypted))
 				{
-					case KviCryptEngine::Encrypted:
+				case KviCryptEngine::Encrypted:
+				{
+					KviCString buf(KviCString::Format, "%s\r\n", encrypted.ptr());
+					m_pSlaveThread->sendRawData(buf.ptr(), buf.len());
+					if(bUserFeedback)
+						g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_OWNPRIVMSGCRYPTED,
+							m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
+							m_pDescriptor->szLocalHost.toUtf8().data(), text, KviConsoleWindow::NoNotifications);
+				}
+				break;
+				case KviCryptEngine::Encoded:
+				{
+					KviCString buf(KviCString::Format, "%s\r\n", encrypted.ptr());
+					m_pSlaveThread->sendRawData(buf.ptr(), buf.len());
+					if(bUserFeedback)
 					{
-						KviCString buf(KviCString::Format, "%s\r\n", encrypted.ptr());
-						m_pSlaveThread->sendRawData(buf.ptr(), buf.len());
-						if(bUserFeedback)
-							g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_OWNPRIVMSGCRYPTED,
-							    m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
-							    m_pDescriptor->szLocalHost.toUtf8().data(), text, KviConsoleWindow::NoNotifications);
+						QString encr = decodeText(encrypted.ptr());
+						g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG,
+							m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
+							m_pDescriptor->szLocalHost.toUtf8().data(), encr, KviConsoleWindow::NoNotifications);
 					}
-					break;
-					case KviCryptEngine::Encoded:
-					{
-						KviCString buf(KviCString::Format, "%s\r\n", encrypted.ptr());
-						m_pSlaveThread->sendRawData(buf.ptr(), buf.len());
-						if(bUserFeedback)
-						{
-							QString encr = decodeText(encrypted.ptr());
-							g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG,
-							    m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
-							    m_pDescriptor->szLocalHost.toUtf8().data(), encr, KviConsoleWindow::NoNotifications);
-						}
-					}
-					break;
-					default: // also case KviCryptEngine::EncryptError
-					{
-						QString szErr = cryptSessionInfo()->m_pEngine->lastError();
-						output(KVI_OUT_SYSTEMERROR,
-						    __tr2qs_ctx("The encryption engine was not able to encrypt the current message (%Q): %Q, no data was sent to the remote end", "dcc"),
-						    &text, &szErr);
-					}
-					break;
+				}
+				break;
+				default: // also case KviCryptEngine::EncryptError
+				{
+					QString szErr = cryptSessionInfo()->m_pEngine->lastError();
+					output(KVI_OUT_SYSTEMERROR,
+						__tr2qs_ctx("The encryption engine was not able to encrypt the current message (%Q): %Q, no data was sent to the remote end", "dcc"),
+						&text, &szErr);
+				}
+				break;
 				}
 				return;
 			}
@@ -363,8 +363,8 @@ void DccChatWindow::ownMessage(const QString & text, bool bUserFeedback)
 
 				if(bUserFeedback)
 					g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG,
-					    m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
-					    m_pDescriptor->szLocalHost.toUtf8().data(), tmp, KviConsoleWindow::NoNotifications);
+						m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
+						m_pDescriptor->szLocalHost.toUtf8().data(), tmp, KviConsoleWindow::NoNotifications);
 				return;
 			}
 		}
@@ -375,8 +375,8 @@ void DccChatWindow::ownMessage(const QString & text, bool bUserFeedback)
 
 	if(bUserFeedback)
 		g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG,
-		    m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
-		    m_pDescriptor->szLocalHost.toUtf8().data(), text, KviConsoleWindow::NoNotifications);
+			m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
+			m_pDescriptor->szLocalHost.toUtf8().data(), text, KviConsoleWindow::NoNotifications);
 }
 
 const QString & DccChatWindow::localNick()
@@ -421,112 +421,111 @@ bool DccChatWindow::event(QEvent * e)
 	{
 		switch(((KviThreadEvent *)e)->id())
 		{
-			case KVI_DCC_THREAD_EVENT_ERROR:
+		case KVI_DCC_THREAD_EVENT_ERROR:
+		{
+			KviError::Code * pError = ((KviThreadDataEvent<KviError::Code> *)e)->getData();
+			QString szErr = KviError::getDescription(*pError);
+			if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatError, this, szErr, m_pDescriptor->idString()))
+				output(KVI_OUT_DCCERROR, __tr2qs_ctx("ERROR: %Q", "dcc"), &szErr);
+			KVS_TRIGGER_EVENT_1(KviEvent_OnDCCChatDisconnected, this, m_pDescriptor->idString());
+			delete pError;
+			return true;
+		}
+		break;
+		case KVI_DCC_THREAD_EVENT_DATA:
+		{
+			KviCString * encoded = ((KviThreadDataEvent<KviCString> *)e)->getData();
+			KviCString d = KviCString(decodeText(encoded->ptr()));
+			if(d.firstCharIs(0x01))
 			{
-				KviError::Code * pError = ((KviThreadDataEvent<KviError::Code> *)e)->getData();
-				QString szErr = KviError::getDescription(*pError);
-				if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatError, this, szErr, m_pDescriptor->idString()))
-					output(KVI_OUT_DCCERROR, __tr2qs_ctx("ERROR: %Q", "dcc"), &szErr);
-				KVS_TRIGGER_EVENT_1(KviEvent_OnDCCChatDisconnected, this, m_pDescriptor->idString());
-				delete pError;
-				return true;
-			}
-			break;
-			case KVI_DCC_THREAD_EVENT_DATA:
-			{
-				KviCString * encoded = ((KviThreadDataEvent<KviCString> *)e)->getData();
-				KviCString d = KviCString(decodeText(encoded->ptr()));
-				if(d.firstCharIs(0x01))
+				d.cutLeft(1);
+				if(d.lastCharIs(0x01))
+					d.cutRight(1);
+				if(kvi_strEqualCIN("ACTION", d.ptr(), 6))
+					d.cutLeft(6);
+				d.stripLeftWhiteSpace();
+				output(KVI_OUT_ACTION, "%Q %s", &(m_pDescriptor->szNick), d.ptr());
+				if(!hasAttention(KviWindow::MainWindowIsVisible))
 				{
-					d.cutLeft(1);
-					if(d.lastCharIs(0x01))
-						d.cutRight(1);
-					if(kvi_strEqualCIN("ACTION", d.ptr(), 6))
-						d.cutLeft(6);
-					d.stripLeftWhiteSpace();
-					output(KVI_OUT_ACTION, "%Q %s", &(m_pDescriptor->szNick), d.ptr());
-					if(!hasAttention(KviWindow::MainWindowIsVisible))
+					if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
 					{
-						if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
+						demandAttention();
+					}
+					if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
+					{
+						QString szMsg = "<b>";
+						szMsg += m_pDescriptor->szNick;
+						szMsg += "</b> ";
+						szMsg += KviQString::toHtmlEscaped(QString(d.ptr()));
+						//qDebug("KviIrcServerParser_ctcp.cpp:975 debug: %s",szMsg.data());
+						g_pApp->notifierMessage(this, KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(), szMsg, KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+					}
+				}
+			}
+			else
+			{
+#ifdef COMPILE_CRYPT_SUPPORT
+				if(KviCryptSessionInfo * cinf = cryptSessionInfo())
+				{
+					if(cinf->m_bDoDecrypt)
+					{
+						KviCString decryptedStuff;
+						switch(cinf->m_pEngine->decrypt(d.ptr(), decryptedStuff))
 						{
-							demandAttention();
+						case KviCryptEngine::DecryptOkWasEncrypted:
+						case KviCryptEngine::DecryptOkWasEncoded:
+						case KviCryptEngine::DecryptOkWasPlainText:
+							if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage, this, QString(decryptedStuff.ptr()), m_pDescriptor->idString()))
+							{
+								g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_DCCCHATMSG,
+									m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szUser.toUtf8().data(),
+									m_pDescriptor->szHost.toUtf8().data(), decryptedStuff.ptr());
+							}
+							delete encoded;
+							return true;
+							break;
+
+						default: // also case KviCryptEngine::DecryptError
+						{
+							QString szErr = cinf->m_pEngine->lastError();
+							output(KVI_OUT_SYSTEMERROR,
+								__tr2qs_ctx("The following message appears to be encrypted, but the encryption engine failed to decode it: %Q", "dcc"),
+								&szErr);
 						}
-						if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
-						{
-							QString szMsg = "<b>";
-							szMsg += m_pDescriptor->szNick;
-							szMsg += "</b> ";
-							szMsg += KviQString::toHtmlEscaped(QString(d.ptr()));
-							//qDebug("KviIrcServerParser_ctcp.cpp:975 debug: %s",szMsg.data());
-							g_pApp->notifierMessage(this, KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(), szMsg, KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+						break;
 						}
 					}
 				}
 				else
 				{
-
-#ifdef COMPILE_CRYPT_SUPPORT
-					if(KviCryptSessionInfo * cinf = cryptSessionInfo())
+#endif
+					// FIXME!
+					if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage, this, QString(d.ptr()), m_pDescriptor->idString()))
 					{
-						if(cinf->m_bDoDecrypt)
+						g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_DCCCHATMSG,
+							m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szUser.toUtf8().data(),
+							m_pDescriptor->szHost.toUtf8().data(), d.ptr());
+						if(!hasAttention(KviWindow::MainWindowIsVisible))
 						{
-							KviCString decryptedStuff;
-							switch(cinf->m_pEngine->decrypt(d.ptr(), decryptedStuff))
+							if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
 							{
-								case KviCryptEngine::DecryptOkWasEncrypted:
-								case KviCryptEngine::DecryptOkWasEncoded:
-								case KviCryptEngine::DecryptOkWasPlainText:
-									if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage, this, QString(decryptedStuff.ptr()), m_pDescriptor->idString()))
-									{
-										g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_DCCCHATMSG,
-										    m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szUser.toUtf8().data(),
-										    m_pDescriptor->szHost.toUtf8().data(), decryptedStuff.ptr());
-									}
-									delete encoded;
-									return true;
-									break;
-
-								default: // also case KviCryptEngine::DecryptError
-								{
-									QString szErr = cinf->m_pEngine->lastError();
-									output(KVI_OUT_SYSTEMERROR,
-									    __tr2qs_ctx("The following message appears to be encrypted, but the encryption engine failed to decode it: %Q", "dcc"),
-									    &szErr);
-								}
-								break;
+								demandAttention();
+							}
+							if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
+							{
+								QString szMsg = KviQString::toHtmlEscaped(QString(d.ptr()));
+								g_pApp->notifierMessage(this, KviIconManager::DccChatMsg, szMsg, KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 							}
 						}
 					}
-					else
-					{
-#endif
-						// FIXME!
-						if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage, this, QString(d.ptr()), m_pDescriptor->idString()))
-						{
-							g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_DCCCHATMSG,
-							    m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szUser.toUtf8().data(),
-							    m_pDescriptor->szHost.toUtf8().data(), d.ptr());
-							if(!hasAttention(KviWindow::MainWindowIsVisible))
-							{
-								if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
-								{
-									demandAttention();
-								}
-								if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
-								{
-									QString szMsg = KviQString::toHtmlEscaped(QString(d.ptr()));
-									g_pApp->notifierMessage(this, KviIconManager::DccChatMsg, szMsg, KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
-								}
-							}
-						}
 #ifdef COMPILE_CRYPT_SUPPORT
-					}
-#endif
 				}
-				delete encoded;
-				return true;
+#endif
 			}
-			break;
+			delete encoded;
+			return true;
+		}
+		break;
 		}
 	}
 	return KviWindow::event(e);
@@ -544,7 +543,7 @@ void DccChatWindow::resizeEvent(QResizeEvent *)
 QSize DccChatWindow::sizeHint() const
 {
 	QSize ret(m_pIrcView->sizeHint().width(),
-	    m_pIrcView->sizeHint().height() + m_pInput->heightHint());
+		m_pIrcView->sizeHint().height() + m_pInput->heightHint());
 	return ret;
 }
 
@@ -582,9 +581,9 @@ void DccChatWindow::connected()
 	if(!KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnDCCChatConnected, this, m_pDescriptor->idString()))
 	{
 		output(KVI_OUT_DCCMSG, __tr2qs_ctx("Connected to %Q:%Q", "dcc"),
-		    &(m_pMarshal->remoteIp()), &(m_pMarshal->remotePort()));
+			&(m_pMarshal->remoteIp()), &(m_pMarshal->remotePort()));
 		output(KVI_OUT_DCCMSG, __tr2qs_ctx("Local end is %Q:%Q", "dcc"),
-		    &(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
+			&(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
 #ifdef COMPILE_SSL_SUPPORT
 		QString tmp = QString("DCC: %1 %2@%3:%4").arg(m_pDescriptor->bIsSSL ? "SChat" : "Chat", m_pDescriptor->szNick, m_pDescriptor->szIp, m_pDescriptor->szPort);
 #else
@@ -599,7 +598,7 @@ void DccChatWindow::connected()
 //
 
 DccChatThread::DccChatThread(KviWindow * wnd, kvi_socket_t fd)
-    : DccThread(wnd, fd)
+	: DccThread(wnd, fd)
 {
 }
 
@@ -660,43 +659,42 @@ void DccChatThread::run()
 				}
 				else
 				{
-
 #ifdef COMPILE_SSL_SUPPORT
 					if(m_pSSL)
 					{
 						// ssl error....?
 						switch(m_pSSL->getProtocolError(readLen))
 						{
-							case KviSSL::ZeroReturn:
-								readLen = 0;
-								break;
-							case KviSSL::WantRead:
-							case KviSSL::WantWrite:
-								// hmmm...
-								break;
-							case KviSSL::SyscallError:
-							{
-								int iE = m_pSSL->getLastError(true);
-								if(iE != 0)
-								{
-									raiseSSLError();
-									postErrorEvent(KviError::SSLError);
-									goto out_of_the_loop;
-								}
-							}
+						case KviSSL::ZeroReturn:
+							readLen = 0;
 							break;
-							case KviSSL::SSLError:
+						case KviSSL::WantRead:
+						case KviSSL::WantWrite:
+							// hmmm...
+							break;
+						case KviSSL::SyscallError:
+						{
+							int iE = m_pSSL->getLastError(true);
+							if(iE != 0)
 							{
 								raiseSSLError();
 								postErrorEvent(KviError::SSLError);
 								goto out_of_the_loop;
 							}
+						}
+						break;
+						case KviSSL::SSLError:
+						{
+							raiseSSLError();
+							postErrorEvent(KviError::SSLError);
+							goto out_of_the_loop;
+						}
+						break;
+						default:
+							// Raise unknown SSL ERROR
+							postErrorEvent(KviError::SSLError);
+							goto out_of_the_loop;
 							break;
-							default:
-								// Raise unknown SSL ERROR
-								postErrorEvent(KviError::SSLError);
-								goto out_of_the_loop;
-								break;
 						}
 					}
 #endif
@@ -856,46 +854,46 @@ bool DccChatThread::tryFlushOutBuffers()
 				// ops...might be an SSL error
 				switch(m_pSSL->getProtocolError(sentLen))
 				{
-					case KviSSL::WantWrite:
-					case KviSSL::WantRead:
-						// Async continue...
-						goto handle_system_error;
-						break;
-					case KviSSL::SyscallError:
-						if(sentLen == 0)
+				case KviSSL::WantWrite:
+				case KviSSL::WantRead:
+					// Async continue...
+					goto handle_system_error;
+					break;
+				case KviSSL::SyscallError:
+					if(sentLen == 0)
+					{
+						raiseSSLError();
+						postErrorEvent(KviError::RemoteEndClosedConnection);
+						bRet = false;
+						goto out_of_the_loop;
+					}
+					else
+					{
+						int iSSLErr = m_pSSL->getLastError(true);
+						if(iSSLErr != 0)
 						{
 							raiseSSLError();
-							postErrorEvent(KviError::RemoteEndClosedConnection);
+							postErrorEvent(KviError::SSLError);
 							bRet = false;
 							goto out_of_the_loop;
 						}
 						else
 						{
-							int iSSLErr = m_pSSL->getLastError(true);
-							if(iSSLErr != 0)
-							{
-								raiseSSLError();
-								postErrorEvent(KviError::SSLError);
-								bRet = false;
-								goto out_of_the_loop;
-							}
-							else
-							{
-								goto handle_system_error;
-							}
+							goto handle_system_error;
 						}
-						break;
-					case KviSSL::SSLError:
-						raiseSSLError();
-						postErrorEvent(KviError::SSLError);
-						bRet = false;
-						goto out_of_the_loop;
-						break;
-					default:
-						postErrorEvent(KviError::SSLError);
-						bRet = false;
-						goto out_of_the_loop;
-						break;
+					}
+					break;
+				case KviSSL::SSLError:
+					raiseSSLError();
+					postErrorEvent(KviError::SSLError);
+					bRet = false;
+					goto out_of_the_loop;
+					break;
+				default:
+					postErrorEvent(KviError::SSLError);
+					bRet = false;
+					goto out_of_the_loop;
+					break;
 				}
 			}
 #endif

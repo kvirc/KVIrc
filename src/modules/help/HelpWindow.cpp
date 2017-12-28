@@ -49,7 +49,7 @@ extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
 
 //bool g_bIndexingDone = false;
 HelpWindow::HelpWindow(const char * name)
-    : KviWindow(KviWindow::Help, name)
+	: KviWindow(KviWindow::Help, name)
 {
 	g_pHelpWindowList->append(this);
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
@@ -215,7 +215,7 @@ void HelpWindow::startSearch()
 				if(s.contains('*'))
 				{
 					QMessageBox::warning(this, __tr2qs("Full Text Search - KVIrc"),
-					    __tr2qs("Using a wildcard within phrases is not allowed."));
+						__tr2qs("Using a wildcard within phrases is not allowed."));
 					return;
 				}
 				seqWords += s.split(' ', QString::SkipEmptyParts);
@@ -226,7 +226,7 @@ void HelpWindow::startSearch()
 		else
 		{
 			QMessageBox::warning(this, __tr2qs("Full Text Search - KVIrc"),
-			    __tr2qs("The closing quotation mark is missing."));
+				__tr2qs("The closing quotation mark is missing."));
 			return;
 		}
 	}

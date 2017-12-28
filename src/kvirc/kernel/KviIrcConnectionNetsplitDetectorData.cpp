@@ -30,4 +30,4 @@ KviIrcConnectionNetsplitDetectorData::KviIrcConnectionNetsplitDetectorData()
 }
 
 KviIrcConnectionNetsplitDetectorData::~KviIrcConnectionNetsplitDetectorData()
-    = default;
+= default;

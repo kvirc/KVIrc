@@ -97,7 +97,7 @@ private:
 
 public:
 	bool start();
-private slots:
+	private slots:
 	void maxRunTimeExpired();
 	void ping();
 	void readStdout();

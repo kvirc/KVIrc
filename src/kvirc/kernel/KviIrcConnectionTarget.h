@@ -40,10 +40,10 @@ public:
 	// pServer is a shallow pointer: this class makes a copy of it internally, must NOT be null
 	// pProxy may be null if a proxy is not desired. this class makes a copy of it internally
 	KviIrcConnectionTarget(
-	    const KviIrcNetwork * pNetwork,
-	    const KviIrcServer * pServer,
-	    const KviProxy * pProxy = 0,
-	    const QString & szBindAddress = QString());
+		const KviIrcNetwork * pNetwork,
+		const KviIrcServer * pServer,
+		const KviProxy * pProxy = 0,
+		const QString & szBindAddress = QString());
 	~KviIrcConnectionTarget();
 
 private:

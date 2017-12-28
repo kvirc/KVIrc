@@ -24,11 +24,11 @@
 //=============================================================================
 
 /***************************************************************************
-                          Manager.cpp -  description
-                             -------------------
-    begin                : Fri Aug 05 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  Manager.cpp -  description
+							 -------------------
+	begin                : Fri Aug 05 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #include "Manager.h"
@@ -41,13 +41,12 @@
 
 namespace UPnP
 {
-
 	// Set the static variable
 	Manager * Manager::m_pInstance(nullptr);
 
 	// The constructor
 	Manager::Manager()
-	    : m_pActiveIgdControlPoint(nullptr), m_bBroadcastFailed(false), m_bBroadcastFoundIt(false), m_pSsdpConnection(nullptr), m_pSsdpTimer(nullptr)
+		: m_pActiveIgdControlPoint(nullptr), m_bBroadcastFailed(false), m_bBroadcastFoundIt(false), m_pSsdpConnection(nullptr), m_pSsdpTimer(nullptr)
 	{
 	}
 
@@ -67,7 +66,7 @@ namespace UPnP
 		// Create the SSDP object to detect devices
 		m_pSsdpConnection = new SsdpConnection();
 		connect(m_pSsdpConnection, SIGNAL(deviceFound(const QString &, int, const QString &)),
-		    this, SLOT(slotDeviceFound(const QString &, int, const QString &)));
+			this, SLOT(slotDeviceFound(const QString &, int, const QString &)));
 
 		// Create a timer
 		m_pSsdpTimer = new QTimer(this);
@@ -149,5 +148,4 @@ namespace UPnP
 			m_pActiveIgdControlPoint->initialize();
 		}
 	}
-
 } // end of namespace

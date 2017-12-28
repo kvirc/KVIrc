@@ -33,8 +33,8 @@ class MpInterface
 public:
 	// don't do any initialization in the constructor
 	// implement lazy initialization in each function instead
-	MpInterface(){};
-	virtual ~MpInterface(){};
+	MpInterface() {};
+	virtual ~MpInterface() {};
 
 protected:
 	QString m_szLastError;
@@ -188,8 +188,8 @@ protected:
 class MpInterfaceDescriptor
 {
 public:
-	MpInterfaceDescriptor(){};
-	virtual ~MpInterfaceDescriptor(){};
+	MpInterfaceDescriptor() {};
+	virtual ~MpInterfaceDescriptor() {};
 
 public:
 	virtual const QString & name() = 0;

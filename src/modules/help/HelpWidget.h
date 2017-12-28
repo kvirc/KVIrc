@@ -63,7 +63,7 @@ private:
 #endif
 	bool m_bIsStandalone;
 
-protected slots:
+	protected slots:
 	void showIndex();
 #ifdef COMPILE_WEBKIT_SUPPORT
 	void slotLoadFinished(bool ok);

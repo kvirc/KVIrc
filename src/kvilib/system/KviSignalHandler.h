@@ -43,7 +43,7 @@ public:
 
 	static void unixSignalHandler(int unused);
 
-public slots:
+	public slots:
 	// Qt signal handler
 	void handleSignal();
 

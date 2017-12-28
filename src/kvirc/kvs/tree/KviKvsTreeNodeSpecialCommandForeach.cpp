@@ -31,7 +31,7 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeSpecialCommandForeach::KviKvsTreeNodeSpecialCommandForeach(const QChar * pLocation, KviKvsTreeNodeData * pVar, KviKvsTreeNodeDataList * pArgs, KviKvsTreeNodeInstruction * pLoop)
-    : KviKvsTreeNodeSpecialCommand(pLocation, "foreach")
+	: KviKvsTreeNodeSpecialCommand(pLocation, "foreach")
 {
 	m_pIterationVariable = pVar;
 	m_pIterationVariable->setParent(this);
@@ -83,85 +83,21 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 	{
 		switch(pArg->type())
 		{
-			case KviKvsVariantData::Array:
+		case KviKvsVariantData::Array:
+		{
+			unsigned int uCnt = pArg->array()->size();
+			unsigned int idx = 0;
+			while(idx < uCnt)
 			{
-				unsigned int uCnt = pArg->array()->size();
-				unsigned int idx = 0;
-				while(idx < uCnt)
+				// we evaluate this each time (as it may actually be killed at each iteration)
+				// FIXME: maybe some kind of reference counting or a observer pattern might be a bit more efficient here
+				//        (but might be far less efficient everywhere else...)
+				KviKvsRWEvaluationResult * v = m_pIterationVariable->evaluateReadWrite(c);
+				if(!v)
+					return false;
+				KviKvsVariant * pOne = pArg->array()->at(idx);
+				if(pOne)
 				{
-					// we evaluate this each time (as it may actually be killed at each iteration)
-					// FIXME: maybe some kind of reference counting or a observer pattern might be a bit more efficient here
-					//        (but might be far less efficient everywhere else...)
-					KviKvsRWEvaluationResult * v = m_pIterationVariable->evaluateReadWrite(c);
-					if(!v)
-						return false;
-					KviKvsVariant * pOne = pArg->array()->at(idx);
-					if(pOne)
-					{
-						if(bIncludeEmptyScalars || (!pOne->isEmpty()))
-						{
-							v->result()->copyFrom(*pOne);
-						}
-						else
-						{
-							delete v; // we're done with it for this iteration
-							idx++;
-							continue;
-						}
-					}
-					else
-					{
-						if(bIncludeEmptyScalars)
-						{
-							v->result()->setNothing();
-						}
-						else
-						{
-							delete v; // we're done with it for this iteration
-							idx++;
-							continue;
-						}
-					}
-					delete v; // we're done with it for this iteration
-
-					if(!m_pLoop->execute(c))
-					{
-						if(c->error())
-							return false;
-
-						// break allowed!
-						if(c->breakPending())
-						{
-							c->handleBreak();
-							return true;
-						}
-
-						if(c->continuePending())
-						{
-							c->handleContinue();
-							idx++;
-							continue;
-						}
-
-						return false; // propagate the false return value
-					}
-
-					idx++;
-				}
-			}
-			break;
-			case KviKvsVariantData::Hash:
-			{
-				KviKvsHashIterator it(*(pArg->hash()->dict()));
-				while(KviKvsVariant * pOne = it.current())
-				{
-					// we evaluate this each time (as it may actually be killed at each iteration)
-					// FIXME: maybe some kind of reference counting or a observer pattern might be a bit more efficient here
-					//        (but might be far less efficient everywhere else...)
-					KviKvsRWEvaluationResult * v = m_pIterationVariable->evaluateReadWrite(c);
-					if(!v)
-						return false;
-
 					if(bIncludeEmptyScalars || (!pOne->isEmpty()))
 					{
 						v->result()->copyFrom(*pOne);
@@ -169,71 +105,135 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 					else
 					{
 						delete v; // we're done with it for this iteration
+						idx++;
+						continue;
+					}
+				}
+				else
+				{
+					if(bIncludeEmptyScalars)
+					{
+						v->result()->setNothing();
+					}
+					else
+					{
+						delete v; // we're done with it for this iteration
+						idx++;
+						continue;
+					}
+				}
+				delete v; // we're done with it for this iteration
+
+				if(!m_pLoop->execute(c))
+				{
+					if(c->error())
+						return false;
+
+					// break allowed!
+					if(c->breakPending())
+					{
+						c->handleBreak();
+						return true;
+					}
+
+					if(c->continuePending())
+					{
+						c->handleContinue();
+						idx++;
+						continue;
+					}
+
+					return false; // propagate the false return value
+				}
+
+				idx++;
+			}
+		}
+		break;
+		case KviKvsVariantData::Hash:
+		{
+			KviKvsHashIterator it(*(pArg->hash()->dict()));
+			while(KviKvsVariant * pOne = it.current())
+			{
+				// we evaluate this each time (as it may actually be killed at each iteration)
+				// FIXME: maybe some kind of reference counting or a observer pattern might be a bit more efficient here
+				//        (but might be far less efficient everywhere else...)
+				KviKvsRWEvaluationResult * v = m_pIterationVariable->evaluateReadWrite(c);
+				if(!v)
+					return false;
+
+				if(bIncludeEmptyScalars || (!pOne->isEmpty()))
+				{
+					v->result()->copyFrom(*pOne);
+				}
+				else
+				{
+					delete v; // we're done with it for this iteration
+					++it;
+					continue;
+				}
+				delete v; // we're done with it for this iteration
+
+				if(!m_pLoop->execute(c))
+				{
+					if(c->error())
+						return false;
+
+					// break allowed!
+					if(c->breakPending())
+					{
+						c->handleBreak();
+						return true;
+					}
+
+					if(c->continuePending())
+					{
+						c->handleContinue();
 						++it;
 						continue;
 					}
-					delete v; // we're done with it for this iteration
 
-					if(!m_pLoop->execute(c))
+					return false; // propagate the false return value
+				}
+
+				++it;
+			}
+		}
+		break;
+		default:
+			if(bIncludeEmptyScalars || (!pArg->isEqualToNothing()))
+			{
+				// we evaluate this each time (as it may actually be killed at each iteration)
+				// FIXME: maybe some kind of reference counting or a observer pattern might be a bit more efficient here
+				//        (but might be far less efficient everywhere else...)
+				KviKvsRWEvaluationResult * v = m_pIterationVariable->evaluateReadWrite(c);
+				if(!v)
+					return false;
+				v->result()->copyFrom(*pArg);
+				delete v; // we're done with it for this iteration
+
+				if(!m_pLoop->execute(c))
+				{
+					if(c->error())
+						return false;
+
+					// break allowed!
+					if(c->breakPending())
 					{
-						if(c->error())
-							return false;
-
-						// break allowed!
-						if(c->breakPending())
-						{
-							c->handleBreak();
-							return true;
-						}
-
-						if(c->continuePending())
-						{
-							c->handleContinue();
-							++it;
-							continue;
-						}
-
-						return false; // propagate the false return value
+						c->handleBreak();
+						return true;
 					}
 
-					++it;
+					if(c->continuePending())
+					{
+						c->handleContinue();
+						continue;
+					}
+
+					return false; // propagate the false return value
 				}
 			}
 			break;
-			default:
-				if(bIncludeEmptyScalars || (!pArg->isEqualToNothing()))
-				{
-					// we evaluate this each time (as it may actually be killed at each iteration)
-					// FIXME: maybe some kind of reference counting or a observer pattern might be a bit more efficient here
-					//        (but might be far less efficient everywhere else...)
-					KviKvsRWEvaluationResult * v = m_pIterationVariable->evaluateReadWrite(c);
-					if(!v)
-						return false;
-					v->result()->copyFrom(*pArg);
-					delete v; // we're done with it for this iteration
-
-					if(!m_pLoop->execute(c))
-					{
-						if(c->error())
-							return false;
-
-						// break allowed!
-						if(c->breakPending())
-						{
-							c->handleBreak();
-							return true;
-						}
-
-						if(c->continuePending())
-						{
-							c->handleContinue();
-							continue;
-						}
-
-						return false; // propagate the false return value
-					}
-				}
-				break;
 		}
 	}
 

@@ -118,7 +118,7 @@ static DccVoiceCodec * kvi_dcc_voice_get_codec(const char * codecName)
 }
 
 DccVoiceThread::DccVoiceThread(KviWindow * wnd, kvi_socket_t fd, KviDccVoiceThreadOptions * opt)
-    : DccThread(wnd, fd)
+	: DccThread(wnd, fd)
 {
 #ifndef COMPILE_DISABLE_DCC_VOICE
 	m_pOpt = opt;
@@ -217,7 +217,7 @@ bool DccVoiceThread::openSoundcard(int mode)
 	if(speed != m_pOpt->iSampleRate)
 	{
 		KviCString tmp(KviCString::Format, __tr2qs_ctx("WARNING: failed to set the requested sample rate (%d): the device used closest match (%d)", "dcc").toUtf8().data(),
-		    m_pOpt->iSampleRate, speed);
+			m_pOpt->iSampleRate, speed);
 		postMessageEvent(tmp.ptr());
 	}
 
@@ -359,9 +359,9 @@ bool DccVoiceThread::readWriteStep()
 			  //			m_uSleepTime += 100;
 			  //		}
 		}     // else {
-		      //		m_uSleepTime += 100;
-		      //		}
-		      //#warning "Usleep here ?"
+			  //		m_uSleepTime += 100;
+			  //		}
+			  //#warning "Usleep here ?"
 	}         // else {
 //		if(!(m_bPlaying || m_bRecording))
 //		{
@@ -689,7 +689,7 @@ exit_dcc:
 }
 
 DccVoiceWindow::DccVoiceWindow(DccDescriptor * dcc, const char * name)
-    : DccWindow(KviWindow::DccVoice, name, dcc)
+	: DccWindow(KviWindow::DccVoice, name, dcc)
 {
 	m_pDescriptor = dcc;
 	m_pSlaveThread = nullptr;
@@ -803,9 +803,8 @@ void DccVoiceWindow::connectionInProgress()
 	}
 	else
 	{
-
 		output(KVI_OUT_DCCMSG, __tr2qs_ctx("Listening on interface %Q port %Q", "dcc"),
-		    &(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
+			&(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
 
 		if(m_pDescriptor->bSendRequest)
 		{
@@ -819,11 +818,11 @@ void DccVoiceWindow::connectionInProgress()
 			}
 
 			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC VOICE %s %Q %s %d%c",
-			    m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-			    0x01, m_pDescriptor->szCodec.ptr(),
-			    &ip, port.ptr(), m_pDescriptor->iSampleRate, 0x01);
+				m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+				0x01, m_pDescriptor->szCodec.ptr(),
+				&ip, port.ptr(), m_pDescriptor->iSampleRate, 0x01);
 			output(KVI_OUT_DCCMSG, __tr2qs_ctx("Sent DCC VOICE (%s) request to %Q, waiting for the remote client to connect...", "dcc"),
-			    m_pDescriptor->szCodec.ptr(), &(m_pDescriptor->szNick));
+				m_pDescriptor->szCodec.ptr(), &(m_pDescriptor->szNick));
 		}
 		else
 			output(KVI_OUT_DCCMSG, __tr2qs_ctx("DCC VOICE request not sent: awaiting manual connections", "dcc"));
@@ -834,7 +833,7 @@ const QString & DccVoiceWindow::target()
 {
 	// This may change on the fly...
 	m_szTarget.sprintf("%s@%s:%s",
-	    m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
+		m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data());
 	return m_szTarget;
 }
 
@@ -846,8 +845,8 @@ void DccVoiceWindow::getBaseLogFileName(QString & buffer)
 void DccVoiceWindow::fillCaptionBuffers()
 {
 	KviCString tmp(KviCString::Format, "DCC Voice %s@%s:%s %s",
-	    m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data(),
-	    m_pDescriptor->szLocalFileName.toUtf8().data());
+		m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data(),
+		m_pDescriptor->szLocalFileName.toUtf8().data());
 
 	m_szPlainTextCaption = tmp;
 }
@@ -863,53 +862,53 @@ bool DccVoiceWindow::event(QEvent * e)
 	{
 		switch(((KviThreadEvent *)e)->id())
 		{
-			case KVI_DCC_THREAD_EVENT_ERROR:
+		case KVI_DCC_THREAD_EVENT_ERROR:
+		{
+			KviError::Code * pError = ((KviThreadDataEvent<KviError::Code> *)e)->getData();
+			QString ssss = KviError::getDescription(*pError);
+			output(KVI_OUT_DCCERROR, __tr2qs_ctx("ERROR: %Q", "dcc"), &(ssss));
+			delete pError;
+			m_pUpdateTimer->stop();
+			updateInfo();
+			m_pTalkButton->setEnabled(false);
+			m_pRecordingLabel->setEnabled(false);
+			m_pPlayingLabel->setEnabled(false);
+			return true;
+		}
+		break;
+		case KVI_DCC_THREAD_EVENT_MESSAGE:
+		{
+			KviCString * str = ((KviThreadDataEvent<KviCString> *)e)->getData();
+			outputNoFmt(KVI_OUT_DCCMSG, __tr_no_xgettext_ctx(str->ptr(), "dcc"));
+			delete str;
+			return true;
+		}
+		break;
+		case KVI_DCC_THREAD_EVENT_ACTION:
+		{
+			int * act = ((KviThreadDataEvent<int> *)e)->getData();
+			switch(*act)
 			{
-				KviError::Code * pError = ((KviThreadDataEvent<KviError::Code> *)e)->getData();
-				QString ssss = KviError::getDescription(*pError);
-				output(KVI_OUT_DCCERROR, __tr2qs_ctx("ERROR: %Q", "dcc"), &(ssss));
-				delete pError;
-				m_pUpdateTimer->stop();
-				updateInfo();
-				m_pTalkButton->setEnabled(false);
-				m_pRecordingLabel->setEnabled(false);
-				m_pPlayingLabel->setEnabled(false);
-				return true;
-			}
-			break;
-			case KVI_DCC_THREAD_EVENT_MESSAGE:
-			{
-				KviCString * str = ((KviThreadDataEvent<KviCString> *)e)->getData();
-				outputNoFmt(KVI_OUT_DCCMSG, __tr_no_xgettext_ctx(str->ptr(), "dcc"));
-				delete str;
-				return true;
-			}
-			break;
-			case KVI_DCC_THREAD_EVENT_ACTION:
-			{
-				int * act = ((KviThreadDataEvent<int> *)e)->getData();
-				switch(*act)
-				{
-					case KVI_DCC_VOICE_THREAD_ACTION_START_RECORDING:
-						m_pRecordingLabel->setEnabled(true);
-						break;
-					case KVI_DCC_VOICE_THREAD_ACTION_STOP_RECORDING:
-						m_pRecordingLabel->setEnabled(false);
-						break;
-					case KVI_DCC_VOICE_THREAD_ACTION_START_PLAYING:
-						m_pPlayingLabel->setEnabled(true);
-						break;
-					case KVI_DCC_VOICE_THREAD_ACTION_STOP_PLAYING:
-						m_pPlayingLabel->setEnabled(false);
-						break;
-				}
-				delete act;
-				return true;
-			}
-			break;
-			default:
-				qDebug("Invalid event type %d received", ((KviThreadEvent *)e)->id());
+			case KVI_DCC_VOICE_THREAD_ACTION_START_RECORDING:
+				m_pRecordingLabel->setEnabled(true);
 				break;
+			case KVI_DCC_VOICE_THREAD_ACTION_STOP_RECORDING:
+				m_pRecordingLabel->setEnabled(false);
+				break;
+			case KVI_DCC_VOICE_THREAD_ACTION_START_PLAYING:
+				m_pPlayingLabel->setEnabled(true);
+				break;
+			case KVI_DCC_VOICE_THREAD_ACTION_STOP_PLAYING:
+				m_pPlayingLabel->setEnabled(false);
+				break;
+			}
+			delete act;
+			return true;
+		}
+		break;
+		default:
+			qDebug("Invalid event type %d received", ((KviThreadEvent *)e)->id());
+			break;
 		}
 	}
 
@@ -959,9 +958,9 @@ void DccVoiceWindow::handleMarshalError(KviError::Code eError)
 void DccVoiceWindow::connected()
 {
 	output(KVI_OUT_DCCMSG, __tr2qs_ctx("Connected to %Q:%Q", "dcc"),
-	    &(m_pMarshal->remoteIp()), &(m_pMarshal->remotePort()));
+		&(m_pMarshal->remoteIp()), &(m_pMarshal->remotePort()));
 	output(KVI_OUT_DCCMSG, __tr2qs_ctx("Local end is %Q:%Q", "dcc"),
-	    &(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
+		&(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
 	if(!(m_pDescriptor->bActive))
 	{
 		m_pDescriptor->szIp = m_pMarshal->remoteIp();

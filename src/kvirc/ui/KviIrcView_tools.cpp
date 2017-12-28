@@ -52,7 +52,7 @@
 //
 
 KviIrcMessageCheckListItem::KviIrcMessageCheckListItem(QTreeWidget * par, KviIrcViewToolWidget * w, int id)
-    : QTreeWidgetItem(par)
+	: QTreeWidgetItem(par)
 {
 	m_iId = id;
 	setFlags(Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable);
@@ -63,10 +63,10 @@ KviIrcMessageCheckListItem::KviIrcMessageCheckListItem(QTreeWidget * par, KviIrc
 }
 
 KviIrcMessageCheckListItem::~KviIrcMessageCheckListItem()
-    = default;
+= default;
 
 KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * pParent)
-    : QWidget(pParent)
+	: QWidget(pParent)
 {
 	m_pIrcView = pParent;
 	setAutoFillBackground(true);
@@ -181,8 +181,8 @@ void KviIrcViewToolWidget::toggleOptions()
 	{
 		m_pOptionsWidget->adjustSize();
 		QPoint p = QPoint(
-		    m_pOptionsButton->pos().x() + m_pOptionsButton->width() - m_pOptionsWidget->width(),
-		    m_pOptionsButton->pos().y() - m_pOptionsWidget->height());
+			m_pOptionsButton->pos().x() + m_pOptionsButton->width() - m_pOptionsWidget->width(),
+			m_pOptionsButton->pos().y() - m_pOptionsWidget->height());
 		m_pOptionsWidget->popup(mapToGlobal(p));
 	}
 }
@@ -295,13 +295,13 @@ void KviIrcViewToolWidget::findNext()
 //
 
 KviIrcViewToolTip::KviIrcViewToolTip(KviIrcView * pView)
-    : KviTalToolTip(pView)
+	: KviTalToolTip(pView)
 {
 	m_pView = pView;
 }
 
 KviIrcViewToolTip::~KviIrcViewToolTip()
-    = default;
+= default;
 
 void KviIrcViewToolTip::maybeTip(const QPoint & pnt)
 {

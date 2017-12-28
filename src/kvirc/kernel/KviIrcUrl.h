@@ -52,7 +52,6 @@ typedef struct _KviIrcUrlParts
 
 namespace KviIrcUrl
 {
-
 	enum KviIrcUrlParserError
 	{
 		InvalidProtocol = 1,

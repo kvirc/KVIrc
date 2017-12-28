@@ -278,11 +278,11 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 			else
 			{
 				delete ins; // in fact we don't need it, it will be reparsed the first time it is called
-				            // Q: Couldn't we actually use the already parsed tree ?
-				            // A: No: the tree must be reparsed in a new parser context
-				            //    since we're keeping track of global and local variables...
-				            //    The locals of this context are NOT the same as the locals
-				            //    of the other context.
+							// Q: Couldn't we actually use the already parsed tree ?
+							// A: No: the tree must be reparsed in a new parser context
+							//    since we're keeping track of global and local variables...
+							//    The locals of this context are NOT the same as the locals
+							//    of the other context.
 			}
 
 			QString szCallbackName = szIdentifier;

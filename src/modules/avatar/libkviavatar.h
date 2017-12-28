@@ -47,7 +47,7 @@ protected:
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 	const QString & avatarName() { return m_szAvatarName; };
-protected slots:
+	protected slots:
 	void okClicked();
 	void cancelClicked();
 	void chooseFileClicked();

@@ -40,7 +40,7 @@ protected:
 public:
 	// the event name and the parameter description are NOT translated
 	KviKvsEvent(const char * szEventName, const char * szParameterDescription)
-	    : m_szName(szEventName), m_szParameterDescription(szParameterDescription), m_pHandlers(0){};
+		: m_szName(szEventName), m_szParameterDescription(szParameterDescription), m_pHandlers(0) {};
 	~KviKvsEvent();
 	void clear();
 	void clearScriptHandlers();

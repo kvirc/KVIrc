@@ -27,13 +27,13 @@
 #include "KviKvsVariant.h"
 
 KviKvsTreeNodeSingleParameterIdentifier::KviKvsTreeNodeSingleParameterIdentifier(const QChar * pLocation, int iStart)
-    : KviKvsTreeNodeData(pLocation)
+	: KviKvsTreeNodeData(pLocation)
 {
 	m_iStart = iStart;
 }
 
 KviKvsTreeNodeSingleParameterIdentifier::~KviKvsTreeNodeSingleParameterIdentifier()
-    = default;
+= default;
 
 void KviKvsTreeNodeSingleParameterIdentifier::contextDescription(QString & szBuffer)
 {

@@ -58,7 +58,7 @@ KviKvsTimer::~KviKvsTimer()
 KviKvsTimerManager * KviKvsTimerManager::m_pInstance = nullptr;
 
 KviKvsTimerManager::KviKvsTimerManager()
-    : QObject()
+	: QObject()
 {
 	m_pTimerDictById = new KviPointerHashTable<int, KviKvsTimer>(17);
 	m_pTimerDictById->setAutoDelete(false);
@@ -227,10 +227,10 @@ void KviKvsTimerManager::timerEvent(QTimerEvent * e)
 
 	m_iCurrentTimer = t->id();
 	bool bRet = copy.run(t->window(),
-	    t->parameterList(),
-	    nullptr,
-	    KviKvsScript::PreserveParams,
-	    t->runTimeData());
+		t->parameterList(),
+		nullptr,
+		KviKvsScript::PreserveParams,
+		t->runTimeData());
 
 	m_iCurrentTimer = 0;
 

@@ -39,7 +39,7 @@
 extern KviPointerList<SlowPasteController> * g_pControllerList;
 
 SlowPasteController::SlowPasteController(KviWindow * w, int id)
-    : m_pClipBuff(nullptr), m_pFile(nullptr), m_pId(id), m_pWindow(w)
+	: m_pClipBuff(nullptr), m_pFile(nullptr), m_pId(id), m_pWindow(w)
 {
 	g_pControllerList->append(this);
 	//m_pWindow = w;

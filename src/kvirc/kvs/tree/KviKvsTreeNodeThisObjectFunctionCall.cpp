@@ -26,12 +26,12 @@
 #include "KviKvsObject.h"
 
 KviKvsTreeNodeThisObjectFunctionCall::KviKvsTreeNodeThisObjectFunctionCall(const QChar * pLocation, const QString & szFncName, KviKvsTreeNodeDataList * pParams)
-    : KviKvsTreeNodeObjectFunctionCall(pLocation, szFncName, pParams)
+	: KviKvsTreeNodeObjectFunctionCall(pLocation, szFncName, pParams)
 {
 }
 
 KviKvsTreeNodeThisObjectFunctionCall::~KviKvsTreeNodeThisObjectFunctionCall()
-    = default;
+= default;
 
 void KviKvsTreeNodeThisObjectFunctionCall::contextDescription(QString & szBuffer)
 {

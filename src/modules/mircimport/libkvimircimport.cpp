@@ -45,7 +45,7 @@ KviMircServersIniImport * g_pMircServersIniImport = nullptr;
 KviRemoteMircServersIniImport * g_pRemoteMircServersIniImport = nullptr;
 
 KviMircServersIniImport::KviMircServersIniImport(KviModuleExtensionDescriptor * d)
-    : KviMexServerImport(d)
+	: KviMexServerImport(d)
 {
 }
 
@@ -144,7 +144,7 @@ void KviMircServersIniImport::die()
 #define KVI_WWWMIRCCOUK_SERVERSINI "http://www.mirc.co.uk/servers.ini"
 
 KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircServersIniImport * f)
-    : KviTalWizard(nullptr)
+	: KviTalWizard(nullptr)
 {
 	QString capt = __tr2qs("Remote mIRC servers.ini - Import Wizard");
 	setWindowTitle(capt);
@@ -157,7 +157,7 @@ KviRemoteMircServerImportWizard::KviRemoteMircServerImportWizard(KviRemoteMircSe
 	QLabel * l = new QLabel(this);
 	l->setWordWrap(true);
 	l->setText(__tr2qs("<center><b>Welcome!</b></center><br>This wizard will guide you in the process of "
-	                   "downloading a list of IRC servers. Please click \"<b>Next</b>\" to begin the operation."));
+		"downloading a list of IRC servers. Please click \"<b>Next</b>\" to begin the operation."));
 	addPage(l, capt);
 
 	KviTalVBox * vb = new KviTalVBox(this);
@@ -274,7 +274,7 @@ void KviRemoteMircServerImportWizard::getListTerminated(bool bSuccess)
 }
 
 KviRemoteMircServersIniImport::KviRemoteMircServersIniImport(KviModuleExtensionDescriptor * d)
-    : KviMircServersIniImport(d)
+	: KviMircServersIniImport(d)
 {
 	m_pWizard = nullptr;
 }
@@ -330,17 +330,17 @@ static bool mircimport_module_init(KviModule * m)
 	}
 
 	KviModuleExtensionDescriptor * d = m->registerExtension("serverimport",
-	    "mIRC servers.ini import filter",
-	    __tr("Import from servers.ini"),
-	    mircimport_local_filter_alloc);
+		"mIRC servers.ini import filter",
+		__tr("Import from servers.ini"),
+		mircimport_local_filter_alloc);
 
 	if(d && pix)
 		d->setIcon(*pix);
 
 	d = m->registerExtension("serverimport",
-	    "Remote mIRC servers.ini import filter",
-	    __tr("Import from http://www.mirc.co.uk/servers.ini"),
-	    mircimport_remote_filter_alloc);
+		"Remote mIRC servers.ini import filter",
+		__tr("Import from http://www.mirc.co.uk/servers.ini"),
+		mircimport_remote_filter_alloc);
 
 	if(d && pix)
 		d->setIcon(*pix);
@@ -368,12 +368,12 @@ static bool mircimport_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "mIRCimport",                                                   // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "mIRC servers.ini importer",
-    mircimport_module_init,
-    mircimport_module_can_unload,
-    0,
-    mircimport_module_cleanup,
-    0)
+	"mIRCimport",                                                   // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"mIRC servers.ini importer",
+	mircimport_module_init,
+	mircimport_module_can_unload,
+	0,
+	mircimport_module_cleanup,
+	0)

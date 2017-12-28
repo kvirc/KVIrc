@@ -60,7 +60,7 @@ protected:
 	bool clickEvent(KviKvsObjectFunctionCall * c);
 signals:
 	void clicked();
-protected slots:
+	protected slots:
 	void slotClicked();
 };
 

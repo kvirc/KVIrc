@@ -30,17 +30,17 @@
 #include <QByteArray>
 
 KviFile::KviFile()
-    : QFile()
+	: QFile()
 {
 }
 
 KviFile::KviFile(const QString & szName)
-    : QFile(szName)
+	: QFile(szName)
 {
 }
 
 KviFile::~KviFile()
-    = default;
+= default;
 
 bool KviFile::save(kvi_u8_t t)
 {

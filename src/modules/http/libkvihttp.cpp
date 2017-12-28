@@ -61,14 +61,14 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c, QString & szUrl, 
 		else
 		{
 			if(!KviFileDialog::askForSaveFileName(
-			       szFileName,
-			       __tr2qs_ctx("Choose a filename to save", "http"),
-			       QString(),
-			       QString(),
-			       false,
-			       false,
-			       true,
-			       g_pMainWindow))
+				szFileName,
+				__tr2qs_ctx("Choose a filename to save", "http"),
+				QString(),
+				QString(),
+				false,
+				false,
+				true,
+				g_pMainWindow))
 				return true;
 			if(szFileName.isEmpty())
 				return true;
@@ -271,11 +271,11 @@ static bool http_kvs_cmd_get(KviKvsModuleCommandCall * c)
 {
 	QString szUrl, szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("url", KVS_PT_NONEMPTYSTRING, 0, szUrl)
-	KVSM_PARAMETER("filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("url", KVS_PT_NONEMPTYSTRING, 0, szUrl)
+		KVSM_PARAMETER("filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
+		KVSM_PARAMETERS_END(c)
 
-	return http_kvs_complete_get(c, szUrl, szFileName, QString());
+		return http_kvs_complete_get(c, szUrl, szFileName, QString());
 }
 /*
 	@doc: http.asyncGet
@@ -310,11 +310,11 @@ static bool http_kvs_cmd_asyncGet(KviKvsModuleCallbackCommandCall * c)
 {
 	QString szUrl, szFileName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("url", KVS_PT_NONEMPTYSTRING, 0, szUrl)
-	KVSM_PARAMETER("filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("url", KVS_PT_NONEMPTYSTRING, 0, szUrl)
+		KVSM_PARAMETER("filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szFileName)
+		KVSM_PARAMETERS_END(c)
 
-	return http_kvs_complete_get(c, szUrl, szFileName, c->callback()->code());
+		return http_kvs_complete_get(c, szUrl, szFileName, c->callback()->code());
 }
 
 static bool http_module_init(KviModule * m)
@@ -339,12 +339,12 @@ static bool http_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Http",                                                         // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "HTTP interface for KVIrc",
-    http_module_init,
-    http_module_can_unload,
-    0,
-    http_module_cleanup,
-    "http")
+	"Http",                                                         // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"HTTP interface for KVIrc",
+	http_module_init,
+	http_module_can_unload,
+	0,
+	http_module_cleanup,
+	"http")

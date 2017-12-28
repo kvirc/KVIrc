@@ -87,30 +87,30 @@ LogFile::LogFile(const QString & szName)
 
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
-		case 1:
-			m_date = QDate::fromString(szDate, Qt::ISODate);
-			break;
-		case 2:
-			m_date = QDate::fromString(szDate, Qt::SystemLocaleShortDate);
-			if(!m_date.isValid())
+	case 1:
+		m_date = QDate::fromString(szDate, Qt::ISODate);
+		break;
+	case 2:
+		m_date = QDate::fromString(szDate, Qt::SystemLocaleShortDate);
+		if(!m_date.isValid())
+		{
+			// some locale date formats use '/' as a separator; we change them to '-'
+			// when creating log files. Try to reverse that change here
+			QString szUnescapedDate = szDate;
+			szUnescapedDate.replace('-', KVI_PATH_SEPARATOR_CHAR);
+			m_date = QDate::fromString(szUnescapedDate, Qt::SystemLocaleShortDate);
+			if(m_date.isValid())
 			{
-				// some locale date formats use '/' as a separator; we change them to '-'
-				// when creating log files. Try to reverse that change here
-				QString szUnescapedDate = szDate;
-				szUnescapedDate.replace('-', KVI_PATH_SEPARATOR_CHAR);
-				m_date = QDate::fromString(szUnescapedDate, Qt::SystemLocaleShortDate);
-				if(m_date.isValid())
-				{
-					//qt4 defaults to 1900 for years. So "11" means "1911" instead of "2011".. what a pity
-					if(m_date.year() < 1990)
-						m_date = m_date.addYears(100);
-				}
+				//qt4 defaults to 1900 for years. So "11" means "1911" instead of "2011".. what a pity
+				if(m_date.year() < 1990)
+					m_date = m_date.addYears(100);
 			}
-			break;
-		case 0:
-		default:
-			m_date = QDate::fromString(szDate, "yyyy.MM.dd");
-			break;
+		}
+		break;
+	case 0:
+	default:
+		m_date = QDate::fromString(szDate, "yyyy.MM.dd");
+		break;
 	}
 	if(!m_date.isValid())
 	{

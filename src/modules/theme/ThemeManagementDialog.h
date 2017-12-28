@@ -87,7 +87,7 @@ public:
 protected:
 	void fillThemeBox(bool bBuiltin);
 	virtual void closeEvent(QCloseEvent * e);
-protected slots:
+	protected slots:
 	void saveCurrentTheme();
 	void getMoreThemes();
 	void installFromFile();

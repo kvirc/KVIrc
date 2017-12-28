@@ -193,7 +193,7 @@ private:
 	void resetData();
 	void resetInternalStatus();
 
-private slots:
+	private slots:
 	void slotSocketReadDataReady();
 	void slotSocketDisconnected();
 	void slotSocketConnected();

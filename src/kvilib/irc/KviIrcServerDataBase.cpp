@@ -309,7 +309,7 @@ search_finished:
 		}
 	}
 #else
-	}
+}
 #endif
 	pSrv->setPort(pDef->bPortIsValid ? pDef->uPort : 6667);
 	pSrv->setLinkFilter(pDef->szLinkFilter);
@@ -327,7 +327,7 @@ search_finished:
 }
 
 void parseMircServerRecord(QString szEntry, QString & szNet,
-    QString & szDescription, QString & szHost, QString & szPort, bool & bSsl, kvi_u32_t & uPort)
+	QString & szDescription, QString & szHost, QString & szPort, bool & bSsl, kvi_u32_t & uPort)
 {
 	bSsl = false;
 	int iIdx = szEntry.indexOf("SERVER:", 0, Qt::CaseSensitive);
@@ -397,7 +397,7 @@ void KviIrcServerDataBase::importFromMircIni(const QString & szFilename, const Q
 				kvi_u32_t uPort = 0;
 
 				parseMircServerRecord(szEntry, szNet,
-				    szDescription, szHost, szPort, bSsl, uPort);
+					szDescription, szHost, szPort, bSsl, uPort);
 
 				recentServers << (bSsl ? "ircs://" : "irc://") + szHost + ":" + szPort;
 			}
@@ -427,7 +427,7 @@ void KviIrcServerDataBase::importFromMircIni(const QString & szFilename, const Q
 					bDefault = true;
 
 				parseMircServerRecord(szEntry, szNet,
-				    szDescription, szHost, szPort, bSsl, uPort);
+					szDescription, szHost, szPort, bSsl, uPort);
 
 				KviIrcNetwork * pNet = findNetwork(szNet);
 

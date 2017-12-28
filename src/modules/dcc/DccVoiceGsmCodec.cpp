@@ -34,9 +34,9 @@
 #define GSM_UNPACKED_FRAME_SIZE_IN_SHORTS 160
 
 void * (*gsm_session_create)() = 0;
-void (*gsm_session_destroy)(void *) = 0;
-void (*gsm_session_encode)(void *, short *, unsigned char *) = 0;
-int (*gsm_session_decode)(void *, unsigned char *, short *) = 0;
+void(*gsm_session_destroy)(void *) = 0;
+void(*gsm_session_encode)(void *, short *, unsigned char *) = 0;
+int(*gsm_session_decode)(void *, unsigned char *, short *) = 0;
 
 void * g_pGSMCodecLibraryHandle = 0;
 
@@ -50,9 +50,9 @@ bool kvi_gsm_codec_init()
 		return false; // no way to open it
 
 	gsm_session_create = (void * (*)())dlsym(g_pGSMCodecLibraryHandle, "gsm_create");
-	gsm_session_destroy = (void (*)(void *))dlsym(g_pGSMCodecLibraryHandle, "gsm_destroy");
-	gsm_session_encode = (void (*)(void *, short *, unsigned char *))dlsym(g_pGSMCodecLibraryHandle, "gsm_encode");
-	gsm_session_decode = (int (*)(void *, unsigned char *, short *))dlsym(g_pGSMCodecLibraryHandle, "gsm_decode");
+	gsm_session_destroy = (void(*)(void *))dlsym(g_pGSMCodecLibraryHandle, "gsm_destroy");
+	gsm_session_encode = (void(*)(void *, short *, unsigned char *))dlsym(g_pGSMCodecLibraryHandle, "gsm_encode");
+	gsm_session_decode = (int(*)(void *, unsigned char *, short *))dlsym(g_pGSMCodecLibraryHandle, "gsm_decode");
 
 	if(!(gsm_session_create && gsm_session_destroy && gsm_session_encode && gsm_session_decode))
 	{
@@ -73,7 +73,7 @@ void kvi_gsm_codec_done()
 }
 
 DccVoiceGsmCodec::DccVoiceGsmCodec()
-    : DccVoiceCodec()
+	: DccVoiceCodec()
 {
 	m_pEncodeState = gsm_session_create();
 	m_pDecodeState = gsm_session_create();

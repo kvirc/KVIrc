@@ -57,7 +57,7 @@ public:
 	KviPointerHashTable<QString, KviSharedFileList> * sharedFileListDict() { return m_pSharedListDict; };
 private:
 	void doInsert(KviSharedFileList * l, KviSharedFile * o);
-private slots:
+	private slots:
 	void cleanup();
 signals:
 	void sharedFilesChanged(); // emitted when the list is cleared at once

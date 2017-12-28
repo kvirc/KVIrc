@@ -192,22 +192,22 @@ bool KviPerlInterpreter::init()
 	// I just haven't tried :D
 
 	szInitCode = QString(
-	                 "{\n"
-	                 "package KVIrc;\n"
-	                 "require Exporter;\n"
-	                 "our @ISA = qw(Exporter);\n"
-	                 "1;\n"
-	                 "}\n"
-	                 "$g_szContext = \"%1\";\n"
-	                 "$g_bExecuteQuiet = 0;\n"
-	                 "$SIG{__WARN__} = sub\n"
-	                 "{\n"
-	                 "	my($p,$f,$l,$x);\n"
-	                 "	($p,$f,$l) = caller;\n"
-	                 "	KVIrc::internalWarning(\"At line \".$l.\" of Perl code: \");\n"
-	                 "	KVIrc::internalWarning(join(' ',@_));\n"
-	                 "}\n")
-	                 .arg(m_szContextName);
+		"{\n"
+		"package KVIrc;\n"
+		"require Exporter;\n"
+		"our @ISA = qw(Exporter);\n"
+		"1;\n"
+		"}\n"
+		"$g_szContext = \"%1\";\n"
+		"$g_bExecuteQuiet = 0;\n"
+		"$SIG{__WARN__} = sub\n"
+		"{\n"
+		"	my($p,$f,$l,$x);\n"
+		"	($p,$f,$l) = caller;\n"
+		"	KVIrc::internalWarning(\"At line \".$l.\" of Perl code: \");\n"
+		"	KVIrc::internalWarning(join(' ',@_));\n"
+		"}\n")
+		.arg(m_szContextName);
 
 	eval_pv(szInitCode.toUtf8().data(), false);
 	return true;
@@ -237,11 +237,11 @@ QString KviPerlInterpreter::svToQString(SV * sv)
 }
 
 bool KviPerlInterpreter::execute(
-    const QString & szCode,
-    QStringList & args,
-    QString & szRetVal,
-    QString & szError,
-    QStringList & lWarnings)
+	const QString & szCode,
+	QStringList & args,
+	QString & szRetVal,
+	QString & szError,
+	QStringList & lWarnings)
 {
 	if(!m_pInterpreter)
 	{
@@ -424,7 +424,7 @@ static bool perlcore_module_cleanup(KviModule *)
 	perlcore_destroy_all_interpreters();
 	delete g_pInterpreters;
 	g_pInterpreters = nullptr;
-// ifdef workaround for #842
+	// ifdef workaround for #842
 #ifndef COMPILE_ON_MAC
 	PERL_SYS_TERM();
 #endif
@@ -437,7 +437,7 @@ static bool perlcore_module_can_unload(KviModule *)
 #ifdef COMPILE_PERL_SUPPORT
 	return false;
 	/* return (g_pInterpreters->count() == 0);
-	 * Perlcore module can't be cleanly unloaded since PERL_SYS_INIT3 
+	 * Perlcore module can't be cleanly unloaded since PERL_SYS_INIT3
 	 * and PERL_SYS_TERM should never be called more than once (#1105)
 	 */
 #endif // COMPILE_PERL_SUPPORT
@@ -445,12 +445,12 @@ static bool perlcore_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "PerlCore",                                                     // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Perl scripting engine core",
-    perlcore_module_init,
-    perlcore_module_can_unload,
-    perlcore_module_ctrl,
-    perlcore_module_cleanup,
-    "perl")
+	"PerlCore",                                                     // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Perl scripting engine core",
+	perlcore_module_init,
+	perlcore_module_can_unload,
+	perlcore_module_ctrl,
+	perlcore_module_cleanup,
+	"perl")

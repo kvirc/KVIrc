@@ -63,7 +63,7 @@
 extern LogViewWindow * g_pLogViewWindow;
 
 LogViewListView::LogViewListView(QWidget * pParent)
-    : QTreeWidget(pParent)
+	: QTreeWidget(pParent)
 {
 	header()->setSortIndicatorShown(true);
 	setColumnCount(1);
@@ -86,7 +86,7 @@ void LogViewListView::mousePressEvent(QMouseEvent * pEvent)
 }
 
 LogViewWindow::LogViewWindow()
-    : KviWindow(KviWindow::LogView, "log")
+	: KviWindow(KviWindow::LogView, "log")
 {
 	g_pLogViewWindow = this;
 	//m_pLogViewWidget = new KviLogViewWidget(this);
@@ -432,7 +432,7 @@ void LogViewWindow::itemSelected(QTreeWidgetItem * it, QTreeWidgetItem *)
 	{
 		QString szNum = line.section(' ', 0, 0);
 		iMsgType = szNum.toInt(&bOk);
-		if(iMsgType < 0 || iMsgType > (KVI_NUM_MSGTYPE_OPTIONS - 1))
+		if(iMsgType < 0 || iMsgType >(KVI_NUM_MSGTYPE_OPTIONS - 1))
 			iMsgType = 0;
 		if(bOk)
 			outputNoFmt(iMsgType, line.section(' ', 1), KviIrcView::NoRepaint | KviIrcView::NoTimestamp);
@@ -474,11 +474,11 @@ void LogViewWindow::deleteCurrent()
 		if(!pItem->fileName().isNull())
 		{
 			if(QMessageBox::question(
-			       this,
-			       __tr2qs_ctx("Confirm Current User Log Deletion", "log"),
-			       __tr2qs_ctx("Do you really wish to delete this log?", "log"),
-			       __tr2qs("Yes"), __tr2qs("No"), nullptr, 1)
-			    != 0)
+				this,
+				__tr2qs_ctx("Confirm Current User Log Deletion", "log"),
+				__tr2qs_ctx("Do you really wish to delete this log?", "log"),
+				__tr2qs("Yes"), __tr2qs("No"), nullptr, 1)
+				!= 0)
 				return;
 
 			KviFileUtils::removeFile(pItem->fileName());
@@ -492,11 +492,11 @@ void LogViewWindow::deleteCurrent()
 	}
 
 	if(QMessageBox::question(
-	       this,
-	       __tr2qs_ctx("Confirm Current User Logs Deletion", "log"),
-	       __tr2qs_ctx("Do you really wish to delete all these logs?", "log"),
-	       __tr2qs("Yes"), __tr2qs("No"), nullptr, 1)
-	    != 0)
+		this,
+		__tr2qs_ctx("Confirm Current User Logs Deletion", "log"),
+		__tr2qs_ctx("Do you really wish to delete all these logs?", "log"),
+		__tr2qs("Yes"), __tr2qs("No"), nullptr, 1)
+		!= 0)
 		return;
 	KviPointerList<LogListViewItem> itemsList;
 	itemsList.setAutoDelete(false);
@@ -605,14 +605,14 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 
 	// Getting output file path from the user, with overwrite confirmation
 	if(!KviFileDialog::askForSaveFileName(
-	       szLog,
-	       __tr2qs_ctx("Export Log - KVIrc", "log"),
-	       szLog,
-	       QString(),
-	       false,
-	       true,
-	       true,
-	       this))
+		szLog,
+		__tr2qs_ctx("Export Log - KVIrc", "log"),
+		szLog,
+		QString(),
+		false,
+		true,
+		true,
+		this))
 		return;
 
 	/* Save export directory - this directory path is also used in the HTML export
@@ -628,203 +628,203 @@ void LogViewWindow::createLog(LogFile * pLog, int iId, QString * pszFile)
 
 	switch(iId)
 	{
-		case LogFile::PlainText:
+	case LogFile::PlainText:
+	{
+		/* Only append extension if it isn't there already (e.g. a specific
+		 * file is to be overwritten) */
+		if(!szLog.endsWith(".txt"))
+			szLog += ".txt";
+
+		// Scan the file
+		for(auto & line : lines)
 		{
-			/* Only append extension if it isn't there already (e.g. a specific
-			 * file is to be overwritten) */
-			if(!szLog.endsWith(".txt"))
-				szLog += ".txt";
+			szTmp = line;
+			szLine = KviControlCodes::stripControlBytes(szTmp);
 
-			// Scan the file
-			for(auto & line : lines)
-			{
-				szTmp = line;
-				szLine = KviControlCodes::stripControlBytes(szTmp);
+			// Remove icons' code
+			rx.setPattern("^\\d{1,3}\\s");
+			szLine.replace(rx, "");
 
-				// Remove icons' code
-				rx.setPattern("^\\d{1,3}\\s");
-				szLine.replace(rx, "");
+			// Remove link from a user speaking, deal with (and keep) various ranks
+			// e.g.: <!ncHelLViS69>  -->  <HelLViS69>
+			rx.setPattern("\\s<([+%@&~!]?)!nc");
+			szLine.replace(rx, " <\\1");
 
-				// Remove link from a user speaking, deal with (and keep) various ranks
-				// e.g.: <!ncHelLViS69>  -->  <HelLViS69>
-				rx.setPattern("\\s<([+%@&~!]?)!nc");
-				szLine.replace(rx, " <\\1");
+			// Remove link from a nick in a mask
+			// e.g.: !nFoo [~bar@!hfoo.bar]  -->  Foo [~bar@!hfoo.bar]
+			rx.setPattern("\\s!n");
+			szLine.replace(rx, " ");
 
-				// Remove link from a nick in a mask
-				// e.g.: !nFoo [~bar@!hfoo.bar]  -->  Foo [~bar@!hfoo.bar]
-				rx.setPattern("\\s!n");
-				szLine.replace(rx, " ");
+			// Remove link from a host in a mask
+			// e.g.: Foo [~bar@!hfoo.bar]  -->  Foo [~bar@foo.bar]
+			rx.setPattern("@!h");
+			szLine.replace(rx, "@");
 
-				// Remove link from a host in a mask
-				// e.g.: Foo [~bar@!hfoo.bar]  -->  Foo [~bar@foo.bar]
-				rx.setPattern("@!h");
-				szLine.replace(rx, "@");
+			// Remove link from a channel
+			// e.g.: !c#KVIrc  -->  #KVIrc
+			rx.setPattern("!c#");
+			szLine.replace(rx, "#");
 
-				// Remove link from a channel
-				// e.g.: !c#KVIrc  -->  #KVIrc
-				rx.setPattern("!c#");
-				szLine.replace(rx, "#");
+			szOutputBuffer += szLine;
+			szOutputBuffer += "\n";
+		}
 
-				szOutputBuffer += szLine;
-				szOutputBuffer += "\n";
-			}
+		break;
+	}
+	case LogFile::HTML:
+	{
+		/* Only append extension if it isn't there already (e.g. a specific
+		 * file is to be overwritten) */
+		if(!szLog.endsWith(".html"))
+			szLog += ".html";
 
+		szTmp = QString("KVIrc %1 %2").arg(KVI_VERSION).arg(KVI_RELEASE_NAME);
+		QString szNick = "";
+		bool bFirstLine = true;
+
+		QString szTitle;
+		switch(pLog->type())
+		{
+		case LogFile::Channel:
+			szTitle = __tr2qs_ctx("Channel %1 on %2", "log").arg(pLog->name(), pLog->network());
+			break;
+		case LogFile::Console:
+			szTitle = __tr2qs_ctx("Console on %1", "log").arg(pLog->network());
+			break;
+		case LogFile::Query:
+			szTitle = __tr2qs_ctx("Query with: %1 on %2", "log").arg(pLog->name(), pLog->network());
+			break;
+		case LogFile::DccChat:
+			szTitle = __tr2qs_ctx("DCC Chat with: %1", "log").arg(pLog->name());
+			break;
+		case LogFile::Other:
+			szTitle = __tr2qs_ctx("Something on: %1", "log").arg(pLog->network());
 			break;
 		}
-		case LogFile::HTML:
+
+		// Prepare HTML document
+		szOutputBuffer += "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n";
+		szOutputBuffer += "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n";
+		szOutputBuffer += "<head>\n";
+		szOutputBuffer += "\t<meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=utf-8\" />\n";
+		szOutputBuffer += "\t<meta name=\"author\" content=\"" + szTmp + "\" />\n";
+		szOutputBuffer += "\t<title>" + szTitle + "</title>\n";
+		szOutputBuffer += "</head>\n<body>\n";
+		szOutputBuffer += "<h2>" + szTitle + "</h2>\n<h3>Date: " + szDate + "</h3>\n";
+
+		// Scan the file
+		for(auto & line : lines)
 		{
-			/* Only append extension if it isn't there already (e.g. a specific
-			 * file is to be overwritten) */
-			if(!szLog.endsWith(".html"))
-				szLog += ".html";
+			szTmp = line;
 
-			szTmp = QString("KVIrc %1 %2").arg(KVI_VERSION).arg(KVI_RELEASE_NAME);
-			QString szNick = "";
-			bool bFirstLine = true;
+			// Find who has talked
+			QString szTmpNick = szTmp.section(" ", 2, 2);
+			if((szTmpNick.left(1) != "<") && (szTmpNick.right(1) != ">"))
+				szTmpNick = "";
 
-			QString szTitle;
-			switch(pLog->type())
+			// locate msgtype
+			QString szNum = szTmp.section(' ', 0, 0);
+			bool bOk;
+			int iMsgType = szNum.toInt(&bOk);
+
+			// only human text for now...
+			if(iMsgType != 24 && iMsgType != 25 && iMsgType != 26)
+				continue;
+
+			// remove msgtype tag
+			szTmp = szTmp.remove(0, szNum.length() + 1);
+
+			szTmp = KviHtmlGenerator::convertToHtml(szTmp, true);
+
+			// insert msgtype icon at start of the current text line
+			KviMessageTypeSettings msg(KVI_OPTION_MSGTYPE(iMsgType));
+			QString szIcon = g_pIconManager->getSmallIconResourceName((KviIconManager::SmallIcon)msg.pixId());
+			szTmp.prepend("<img src=\"" + szIcon + "\" alt=\"\" /> ");
+
+			/*
+			 * Check if the nick who has talked is the same of the above line.
+			 * If so, we have to put the line as it is, otherwise we have to
+			 * open a new paragraph
+			 */
+			if(szTmpNick != szNick)
 			{
-				case LogFile::Channel:
-					szTitle = __tr2qs_ctx("Channel %1 on %2", "log").arg(pLog->name(), pLog->network());
-					break;
-				case LogFile::Console:
-					szTitle = __tr2qs_ctx("Console on %1", "log").arg(pLog->network());
-					break;
-				case LogFile::Query:
-					szTitle = __tr2qs_ctx("Query with: %1 on %2", "log").arg(pLog->name(), pLog->network());
-					break;
-				case LogFile::DccChat:
-					szTitle = __tr2qs_ctx("DCC Chat with: %1", "log").arg(pLog->name());
-					break;
-				case LogFile::Other:
-					szTitle = __tr2qs_ctx("Something on: %1", "log").arg(pLog->network());
-					break;
-			}
-
-			// Prepare HTML document
-			szOutputBuffer += "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.1//EN\" \"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd\">\n";
-			szOutputBuffer += "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\">\n";
-			szOutputBuffer += "<head>\n";
-			szOutputBuffer += "\t<meta http-equiv=\"content-type\" content=\"application/xhtml+xml; charset=utf-8\" />\n";
-			szOutputBuffer += "\t<meta name=\"author\" content=\"" + szTmp + "\" />\n";
-			szOutputBuffer += "\t<title>" + szTitle + "</title>\n";
-			szOutputBuffer += "</head>\n<body>\n";
-			szOutputBuffer += "<h2>" + szTitle + "</h2>\n<h3>Date: " + szDate + "</h3>\n";
-
-			// Scan the file
-			for(auto & line : lines)
-			{
-				szTmp = line;
-
-				// Find who has talked
-				QString szTmpNick = szTmp.section(" ", 2, 2);
-				if((szTmpNick.left(1) != "<") && (szTmpNick.right(1) != ">"))
-					szTmpNick = "";
-
-				// locate msgtype
-				QString szNum = szTmp.section(' ', 0, 0);
-				bool bOk;
-				int iMsgType = szNum.toInt(&bOk);
-
-				// only human text for now...
-				if(iMsgType != 24 && iMsgType != 25 && iMsgType != 26)
-					continue;
-
-				// remove msgtype tag
-				szTmp = szTmp.remove(0, szNum.length() + 1);
-
-				szTmp = KviHtmlGenerator::convertToHtml(szTmp, true);
-
-				// insert msgtype icon at start of the current text line
-				KviMessageTypeSettings msg(KVI_OPTION_MSGTYPE(iMsgType));
-				QString szIcon = g_pIconManager->getSmallIconResourceName((KviIconManager::SmallIcon)msg.pixId());
-				szTmp.prepend("<img src=\"" + szIcon + "\" alt=\"\" /> ");
-
 				/*
-				 * Check if the nick who has talked is the same of the above line.
-				 * If so, we have to put the line as it is, otherwise we have to
-				 * open a new paragraph
+				 * People is not the same, close the paragraph opened
+				 * before and open a new one
 				 */
-				if(szTmpNick != szNick)
-				{
-					/*
-					 * People is not the same, close the paragraph opened
-					 * before and open a new one
-					 */
-					if(!bFirstLine)
-						szOutputBuffer += "</p>\n";
-					szTmp.prepend("<p>");
+				if(!bFirstLine)
+					szOutputBuffer += "</p>\n";
+				szTmp.prepend("<p>");
 
-					szNick = szTmpNick;
-				}
-				else
-				{
-					// Break the line
-					szTmp.prepend("<br />\n");
-				}
-
-				szOutputBuffer += szTmp;
-				bFirstLine = false;
+				szNick = szTmpNick;
 			}
-
-			// Close the last paragraph
-			szOutputBuffer += "</p>\n";
-
-			// regexp to search all embedded icons
-			rx.setPattern("<img src=\"smallicons:([^\"]+)");
-			int iIndex = szOutputBuffer.indexOf(rx);
-			QStringList szImagesList;
-
-			// search for icons
-			while(iIndex >= 0)
+			else
 			{
-				int iLength = rx.matchedLength();
-				QString szCap = rx.cap(1);
-
-				// if the icon isn't in the images list then add
-				if(szImagesList.indexOf(szCap) == -1)
-					szImagesList.append(szCap);
-				iIndex = szOutputBuffer.indexOf(rx, iIndex + iLength);
+				// Break the line
+				szTmp.prepend("<br />\n");
 			}
 
-			// get current theme path
-			QString szCurrentThemePath;
-			g_pApp->getLocalKvircDirectory(szCurrentThemePath, KviApplication::Themes, KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
-			szCurrentThemePath += KVI_PATH_SEPARATOR_CHAR;
-
-			// current coresmall path
-			szCurrentThemePath += "coresmall";
-			szCurrentThemePath += KVI_PATH_SEPARATOR_CHAR;
-
-			// check if coresmall exists in current theme
-			if(!KviFileUtils::directoryExists(szCurrentThemePath))
-			{
-				// get global coresmall path
-				g_pApp->getGlobalKvircDirectory(szCurrentThemePath, KviApplication::Pics, "coresmall");
-				KviQString::ensureLastCharIs(szCurrentThemePath, QChar(KVI_PATH_SEPARATOR_CHAR));
-			}
-
-			// copy all icons to the log destination folder
-			for(int i = 0; i < szImagesList.count(); i++)
-			{
-				QString szSourceFile = szCurrentThemePath + szImagesList.at(i);
-				QString szDestFile = szLogDir + szImagesList.at(i);
-				KviFileUtils::copyFile(szSourceFile, szDestFile);
-			}
-
-			// remove internal tags
-			rx.setPattern("<qt>|</qt>|smallicons:");
-			szOutputBuffer.replace(rx, "");
-			szOutputBuffer.replace(">!nc", ">");
-			szOutputBuffer.replace("@!nc", "@");
-			szOutputBuffer.replace("%!nc", "%");
-
-			// Close the document
-			szOutputBuffer += "</body>\n</html>\n";
-
-			break;
+			szOutputBuffer += szTmp;
+			bFirstLine = false;
 		}
+
+		// Close the last paragraph
+		szOutputBuffer += "</p>\n";
+
+		// regexp to search all embedded icons
+		rx.setPattern("<img src=\"smallicons:([^\"]+)");
+		int iIndex = szOutputBuffer.indexOf(rx);
+		QStringList szImagesList;
+
+		// search for icons
+		while(iIndex >= 0)
+		{
+			int iLength = rx.matchedLength();
+			QString szCap = rx.cap(1);
+
+			// if the icon isn't in the images list then add
+			if(szImagesList.indexOf(szCap) == -1)
+				szImagesList.append(szCap);
+			iIndex = szOutputBuffer.indexOf(rx, iIndex + iLength);
+		}
+
+		// get current theme path
+		QString szCurrentThemePath;
+		g_pApp->getLocalKvircDirectory(szCurrentThemePath, KviApplication::Themes, KVI_OPTION_STRING(KviOption_stringIconThemeSubdir));
+		szCurrentThemePath += KVI_PATH_SEPARATOR_CHAR;
+
+		// current coresmall path
+		szCurrentThemePath += "coresmall";
+		szCurrentThemePath += KVI_PATH_SEPARATOR_CHAR;
+
+		// check if coresmall exists in current theme
+		if(!KviFileUtils::directoryExists(szCurrentThemePath))
+		{
+			// get global coresmall path
+			g_pApp->getGlobalKvircDirectory(szCurrentThemePath, KviApplication::Pics, "coresmall");
+			KviQString::ensureLastCharIs(szCurrentThemePath, QChar(KVI_PATH_SEPARATOR_CHAR));
+		}
+
+		// copy all icons to the log destination folder
+		for(int i = 0; i < szImagesList.count(); i++)
+		{
+			QString szSourceFile = szCurrentThemePath + szImagesList.at(i);
+			QString szDestFile = szLogDir + szImagesList.at(i);
+			KviFileUtils::copyFile(szSourceFile, szDestFile);
+		}
+
+		// remove internal tags
+		rx.setPattern("<qt>|</qt>|smallicons:");
+		szOutputBuffer.replace(rx, "");
+		szOutputBuffer.replace(">!nc", ">");
+		szOutputBuffer.replace("@!nc", "@");
+		szOutputBuffer.replace("%!nc", "%");
+
+		// Close the document
+		szOutputBuffer += "</body>\n</html>\n";
+
+		break;
+	}
 	}
 
 	// File overwriting already dealt with when file path was obtained

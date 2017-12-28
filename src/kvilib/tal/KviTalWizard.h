@@ -158,7 +158,7 @@ protected:
 
 protected:
 	void setCurrentPage(KviTalWizardPageData * pData);
-protected slots:
+	protected slots:
 	void backButtonClicked();
 	void nextButtonClicked();
 	void helpButtonClicked();

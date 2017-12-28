@@ -101,12 +101,12 @@ typedef struct _KviCtcpMessageParseStruct
 class KVIRC_API KviExternalServerDataParser
 {
 public:
-	KviExternalServerDataParser(){};
-	virtual ~KviExternalServerDataParser(){};
+	KviExternalServerDataParser() {};
+	virtual ~KviExternalServerDataParser() {};
 
 public:
-	virtual void processData(KviIrcMessage *){};
-	virtual void control(int){};
+	virtual void processData(KviIrcMessage *) {};
+	virtual void control(int) {};
 	virtual void die() { delete this; };
 };
 

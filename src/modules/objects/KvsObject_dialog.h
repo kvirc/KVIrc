@@ -29,7 +29,6 @@
 
 class KvsObject_dialog : public KvsObject_widget
 {
-
 public:
 	KVSO_DECLARE_OBJECT(KvsObject_dialog)
 public:

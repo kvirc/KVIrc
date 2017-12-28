@@ -52,7 +52,7 @@ public:
 	/**
 	* \brief Destroys the treenode object
 	*/
-	virtual ~KviKvsTreeNode(){};
+	virtual ~KviKvsTreeNode() {};
 
 protected:
 	KviKvsTreeNode * m_pParent;

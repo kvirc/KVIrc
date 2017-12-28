@@ -31,7 +31,7 @@
 KviUserIdentityManager * KviUserIdentityManager::m_pInstance = nullptr;
 
 KviUserIdentityManager::KviUserIdentityManager()
-    : KviHeapObject()
+	: KviHeapObject()
 {
 	m_pIdentityDict = new KviPointerHashTable<QString, KviUserIdentity>();
 	m_pIdentityDict->setAutoDelete(true);

@@ -41,7 +41,7 @@ QString KviOptionsWidget::m_szBasicTipStart; // empty decl
 QString KviOptionsWidget::m_szBasicTipEnd;
 
 KviOptionsWidget::KviOptionsWidget(QWidget * parent, const char * name, bool)
-    : QFrame(parent), KviSelectorInterface()
+	: QFrame(parent), KviSelectorInterface()
 {
 	if(name)
 		setObjectName(name);
@@ -356,8 +356,8 @@ KviPixmapSelector * KviOptionsWidget::addPixmapSelector(int x1, int y1, int x2, 
 }
 
 KviUIntSelector * KviOptionsWidget::addUIntSelector(int x1, int y1, int x2, int y2, const QString & txt,
-    unsigned int * pOption, unsigned int uLowBound,
-    unsigned int uHighBound, unsigned int uDefault, bool bEnabled)
+	unsigned int * pOption, unsigned int uLowBound,
+	unsigned int uHighBound, unsigned int uDefault, bool bEnabled)
 {
 	KviUIntSelector * u = new KviUIntSelector(this, txt, pOption, uLowBound, uHighBound, uDefault, bEnabled, false);
 	addWidgetToLayout(u, x1, y1, x2, y2);
@@ -366,8 +366,8 @@ KviUIntSelector * KviOptionsWidget::addUIntSelector(int x1, int y1, int x2, int 
 }
 
 KviUIntSelector * KviOptionsWidget::addUIntSelector(QWidget * pParent, const QString & txt,
-    unsigned int * pOption, unsigned int uLowBound,
-    unsigned int uHighBound, unsigned int uDefault, bool bEnabled)
+	unsigned int * pOption, unsigned int uLowBound,
+	unsigned int uHighBound, unsigned int uDefault, bool bEnabled)
 {
 	KviUIntSelector * u = new KviUIntSelector(pParent, txt, pOption, uLowBound, uHighBound, uDefault, bEnabled, false);
 	m_pSelectorInterfaceList->append(u);
@@ -375,8 +375,8 @@ KviUIntSelector * KviOptionsWidget::addUIntSelector(QWidget * pParent, const QSt
 }
 
 KviUIntSelector * KviOptionsWidget::addUIntSelector(int x1, int y1, int x2, int y2, const QString & txt,
-    int optId, unsigned int uLowBound,
-    unsigned int uHighBound, unsigned int uDefault, bool bEnabled)
+	int optId, unsigned int uLowBound,
+	unsigned int uHighBound, unsigned int uDefault, bool bEnabled)
 {
 	m_iResetFlags |= (g_uintOptionsTable[optId].flags & KviOption_resetMask);
 	KviUIntSelector * d = addUIntSelector(x1, y1, x2, y2, txt, &(KVI_OPTION_UINT(optId)), uLowBound, uHighBound, uDefault, bEnabled);
@@ -387,8 +387,8 @@ KviUIntSelector * KviOptionsWidget::addUIntSelector(int x1, int y1, int x2, int 
 }
 
 KviUIntSelector * KviOptionsWidget::addUIntSelector(QWidget * pParent, const QString & txt,
-    int optId, unsigned int uLowBound,
-    unsigned int uHighBound, unsigned int uDefault, bool bEnabled)
+	int optId, unsigned int uLowBound,
+	unsigned int uHighBound, unsigned int uDefault, bool bEnabled)
 {
 	m_iResetFlags |= (g_uintOptionsTable[optId].flags & KviOption_resetMask);
 	KviUIntSelector * d = addUIntSelector(pParent, txt, &(KVI_OPTION_UINT(optId)), uLowBound, uHighBound, uDefault, bEnabled);
@@ -399,8 +399,8 @@ KviUIntSelector * KviOptionsWidget::addUIntSelector(QWidget * pParent, const QSt
 }
 
 KviUIntSelector * KviOptionsWidget::addUShortIntSelector(int x1, int y1, int x2, int y2, const QString & txt,
-    unsigned short int * pOption, unsigned int uLowBound,
-    unsigned int uHighBound, unsigned int uDefault, bool bEnabled)
+	unsigned short int * pOption, unsigned int uLowBound,
+	unsigned int uHighBound, unsigned int uDefault, bool bEnabled)
 {
 	KviUIntSelector * u = new KviUIntSelector(this, txt, (unsigned int *)pOption, uLowBound, uHighBound, uDefault, bEnabled, true);
 	addWidgetToLayout(u, x1, y1, x2, y2);

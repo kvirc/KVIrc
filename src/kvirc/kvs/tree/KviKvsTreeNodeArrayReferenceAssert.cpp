@@ -30,12 +30,12 @@
 #include "KviKvsObject.h"
 
 KviKvsTreeNodeArrayReferenceAssert::KviKvsTreeNodeArrayReferenceAssert(const QChar * pLocation, KviKvsTreeNodeData * pSource)
-    : KviKvsTreeNodeIndirectData(pLocation, pSource)
+	: KviKvsTreeNodeIndirectData(pLocation, pSource)
 {
 }
 
 KviKvsTreeNodeArrayReferenceAssert::~KviKvsTreeNodeArrayReferenceAssert()
-    = default;
+= default;
 
 bool KviKvsTreeNodeArrayReferenceAssert::isReadOnly()
 {

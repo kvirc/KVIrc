@@ -123,16 +123,16 @@ public:
 	KviStringSelector * addStringSelector(QWidget * pParent, const QString & txt, int optId, bool bEnabled = true);
 
 	KviUIntSelector * addUIntSelector(int x1, int y1, int x2, int y2, const QString & txt, unsigned int * pOption,
-	    unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
+		unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
 	KviUIntSelector * addUIntSelector(QWidget * pParent, const QString & txt, unsigned int * pOption,
-	    unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
+		unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
 	KviUIntSelector * addUIntSelector(int x1, int y1, int x2, int y2, const QString & txt, int optId,
-	    unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
+		unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
 	KviUIntSelector * addUIntSelector(QWidget * pParent, const QString & txt, int optId,
-	    unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
+		unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
 
 	KviUIntSelector * addUShortIntSelector(int x1, int y1, int x2, int y2, const QString & txt, unsigned short int * pOption,
-	    unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
+		unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled = true);
 
 	QLabel * addLabel(int x1, int y1, int x2, int y2, const QString & text, bool bEnabled = true);
 	QLabel * addLabel(QWidget * pParent, const QString & text, bool bEnabled = true);
@@ -155,7 +155,7 @@ public:
 
 	virtual bool eventFilter(QObject * watched, QEvent * e);
 
-protected slots:
+	protected slots:
 	// this is internal to the options dialog (options module)
 	// it attempts to show all the hidden subitems (usually the "Advanced...") page
 	// and switch to the first of them

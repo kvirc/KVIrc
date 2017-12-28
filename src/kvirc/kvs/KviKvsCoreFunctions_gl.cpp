@@ -82,10 +82,10 @@ namespace KviKvsCoreFunctions
 		QString szNick;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
+			KVSCF_PARAMETERS_END
 
-		KviConsoleWindow * c = KVSCF_pContext->window()->console();
+			KviConsoleWindow * c = KVSCF_pContext->window()->console();
 		if(c && c->isConnected())
 		{
 			KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick);
@@ -93,14 +93,14 @@ namespace KviKvsCoreFunctions
 			{
 				switch(e->gender())
 				{
-					case KviIrcUserEntry::Male:
-						KVSCF_pRetBuffer->setString(QStringLiteral("male"));
-						break;
-					case KviIrcUserEntry::Female:
-						KVSCF_pRetBuffer->setString(QStringLiteral("female"));
-						break;
-					default:
-						KVSCF_pRetBuffer->setString(QStringLiteral("unknown"));
+				case KviIrcUserEntry::Male:
+					KVSCF_pRetBuffer->setString(QStringLiteral("male"));
+					break;
+				case KviIrcUserEntry::Female:
+					KVSCF_pRetBuffer->setString(QStringLiteral("female"));
+					break;
+				default:
+					KVSCF_pRetBuffer->setString(QStringLiteral("unknown"));
 				}
 				return true;
 			}
@@ -216,10 +216,10 @@ namespace KviKvsCoreFunctions
 	{
 		QString szHex;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("hex_encoded_string", KVS_PT_STRING, 0, szHex)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("hex_encoded_string", KVS_PT_STRING, 0, szHex)
+			KVSCF_PARAMETERS_END
 
-		KviCString tmp1(szHex);
+			KviCString tmp1(szHex);
 		char * buf;
 		int len = tmp1.hexToBuffer(&buf, true);
 		KVSCF_pRetBuffer->setString(QString(QByteArray(buf, len)));
@@ -265,10 +265,10 @@ namespace KviKvsCoreFunctions
 		QString szNick;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
+			KVSCF_PARAMETERS_END
 
-		KviConsoleWindow * c = KVSCF_pContext->window()->console();
+			KviConsoleWindow * c = KVSCF_pContext->window()->console();
 		if(c && c->isConnected())
 		{
 			KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick);
@@ -407,10 +407,10 @@ namespace KviKvsCoreFunctions
 	{
 		QString szName;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("iconName", KVS_PT_NONEMPTYSTRING, 0, szName)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("iconName", KVS_PT_NONEMPTYSTRING, 0, szName)
+			KVSCF_PARAMETERS_END
 
-		KVSCF_pRetBuffer->setInteger(g_pIconManager->getSmallIconIdFromName(szName));
+			KVSCF_pRetBuffer->setInteger(g_pIconManager->getSmallIconIdFromName(szName));
 		return true;
 	}
 
@@ -450,13 +450,13 @@ namespace KviKvsCoreFunctions
 	{
 		kvs_uint_t uIco;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("iconid", KVS_PT_UINT, 0, uIco)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("iconid", KVS_PT_UINT, 0, uIco)
+			KVSCF_PARAMETERS_END
 
-		if(uIco < KviIconManager::IconCount)
-			KVSCF_pRetBuffer->setString(g_pIconManager->getSmallIconName(uIco));
-		else
-			KVSCF_pRetBuffer->setNothing();
+			if(uIco < KviIconManager::IconCount)
+				KVSCF_pRetBuffer->setString(g_pIconManager->getSmallIconName(uIco));
+			else
+				KVSCF_pRetBuffer->setNothing();
 		return true;
 	}
 
@@ -540,10 +540,10 @@ namespace KviKvsCoreFunctions
 	{
 		KviKvsVariant * v;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
+			KVSCF_PARAMETERS_END
 
-		kvs_int_t iVal;
+			kvs_int_t iVal;
 		v->castToInteger(iVal);
 		KVSCF_pRetBuffer->setInteger(iVal);
 		return true;
@@ -587,10 +587,10 @@ namespace KviKvsCoreFunctions
 		QString szNick;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
+			KVSCF_PARAMETERS_END
 
-		KviConsoleWindow * c = KVSCF_pContext->window()->console();
+			KviConsoleWindow * c = KVSCF_pContext->window()->console();
 		if(c && c->isConnected())
 		{
 			KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick);
@@ -673,10 +673,10 @@ namespace KviKvsCoreFunctions
 	{
 		KviKvsVariant * v;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
+			KVSCF_PARAMETERS_END
 
-		KVSCF_pRetBuffer->setBoolean(v->isEmpty());
+			KVSCF_pRetBuffer->setBoolean(v->isEmpty());
 		return true;
 	}
 	//FIXME: documentation
@@ -703,11 +703,11 @@ namespace KviKvsCoreFunctions
 		KviKvsScriptEventHandler * h = nullptr;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("event_name", KVS_PT_NONEMPTYSTRING, 0, szEventName)
-		KVSCF_PARAMETER("handler_name", KVS_PT_NONEMPTYSTRING, 0, szHandlerName)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("event_name", KVS_PT_NONEMPTYSTRING, 0, szEventName)
+			KVSCF_PARAMETER("handler_name", KVS_PT_NONEMPTYSTRING, 0, szHandlerName)
+			KVSCF_PARAMETERS_END
 
-		bool bOk;
+			bool bOk;
 		int iNumber = szEventName.toInt(&bOk);
 
 		// is raw event?
@@ -753,10 +753,10 @@ namespace KviKvsCoreFunctions
 	{
 		KviKvsVariant * v;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
+			KVSCF_PARAMETERS_END
 
-		KviKvsNumber n;
+			KviKvsNumber n;
 		KVSCF_pRetBuffer->setBoolean(v->asNumber(n));
 		return true;
 	}
@@ -787,10 +787,10 @@ namespace KviKvsCoreFunctions
 	{
 		KviKvsVariant * v;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("data", KVS_PT_VARIANT, 0, v)
+			KVSCF_PARAMETERS_END
 
-		KVSCF_pRetBuffer->setBoolean(!v->isEmpty());
+			KVSCF_pRetBuffer->setBoolean(!v->isEmpty());
 		return true;
 	}
 
@@ -815,9 +815,9 @@ namespace KviKvsCoreFunctions
 		QString szName;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("timerName", KVS_PT_NONEMPTYSTRING, 0, szName)
-		KVSCF_PARAMETERS_END
-		KVSCF_pRetBuffer->setBoolean(KviKvsTimerManager::instance()->timerExists(szName));
+			KVSCF_PARAMETER("timerName", KVS_PT_NONEMPTYSTRING, 0, szName)
+			KVSCF_PARAMETERS_END
+			KVSCF_pRetBuffer->setBoolean(KviKvsTimerManager::instance()->timerExists(szName));
 		return true;
 	}
 
@@ -846,10 +846,10 @@ namespace KviKvsCoreFunctions
 		QString szNick;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
+			KVSCF_PARAMETERS_END
 
-		KviConsoleWindow * c = KVSCF_pContext->window()->console();
+			KviConsoleWindow * c = KVSCF_pContext->window()->console();
 		if(c && c->isConnected())
 		{
 			KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick);
@@ -887,11 +887,11 @@ namespace KviKvsCoreFunctions
 	{
 		kvs_uint_t iFore, iBack;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("foreground", KVS_PT_UINT, KVS_PF_OPTIONAL, iFore)
-		KVSCF_PARAMETER("background", KVS_PT_UINT, KVS_PF_OPTIONAL, iBack)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("foreground", KVS_PT_UINT, KVS_PF_OPTIONAL, iFore)
+			KVSCF_PARAMETER("background", KVS_PT_UINT, KVS_PF_OPTIONAL, iBack)
+			KVSCF_PARAMETERS_END
 
-		QString szRet = QChar(KviControlCodes::Color);
+			QString szRet = QChar(KviControlCodes::Color);
 		if(KVSCF_pParams->count() > 0)
 		{
 			KviQString::appendFormatted(szRet, "%u", iFore);
@@ -924,10 +924,10 @@ namespace KviKvsCoreFunctions
 	{
 		KviKvsHash * pHash = nullptr;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("hash", KVS_PT_HASH, KVS_PF_OPTIONAL, pHash)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("hash", KVS_PT_HASH, KVS_PF_OPTIONAL, pHash)
+			KVSCF_PARAMETERS_END
 
-		KviKvsArray * a = new KviKvsArray();
+			KviKvsArray * a = new KviKvsArray();
 
 		// we have to support an empty hash, returning an empty array (ticket #940)
 		if(pHash)
@@ -966,10 +966,10 @@ namespace KviKvsCoreFunctions
 		QString szType;
 
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("type", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szType)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("type", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szType)
+			KVSCF_PARAMETERS_END
 
-		QString szLocale = KviLocale::instance()->localeName();
+			QString szLocale = KviLocale::instance()->localeName();
 		if(szType == QLatin1String("lang"))
 			KVSCF_pRetBuffer->setString(szLocale.left(5));
 		else if(szType == QLatin1String("short"))
@@ -1002,11 +1002,11 @@ namespace KviKvsCoreFunctions
 	{
 		KviKvsVariant * pVar;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("value", KVS_PT_VARIANT, 0, pVar)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("value", KVS_PT_VARIANT, 0, pVar)
+			KVSCF_PARAMETERS_END
 
-		switch(pVar->type())
-		{
+			switch(pVar->type())
+			{
 			case KviKvsVariantData::Array:
 				KVSCF_pRetBuffer->setInteger(pVar->array()->size());
 				break;
@@ -1022,7 +1022,7 @@ namespace KviKvsCoreFunctions
 				pVar->asString(tmp);
 				KVSCF_pRetBuffer->setInteger(tmp.length());
 			}
-		}
+			}
 		return true;
 	}
 
@@ -1088,11 +1088,11 @@ namespace KviKvsCoreFunctions
 	{
 		QString szData, szType;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("text", KVS_PT_NONEMPTYSTRING, 0, szData)
-		KVSCF_PARAMETER("type", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szType)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("text", KVS_PT_NONEMPTYSTRING, 0, szData)
+			KVSCF_PARAMETER("type", KVS_PT_NONEMPTYSTRING, KVS_PF_OPTIONAL, szType)
+			KVSCF_PARAMETERS_END
 
-		QString szRet("\r!");
+			QString szRet("\r!");
 		if(szType == QLatin1String("nick"))
 			szRet.append("n\r");
 		else if(szType == QLatin1String("channel"))
@@ -1134,11 +1134,11 @@ namespace KviKvsCoreFunctions
 	{
 		QString szText, szFlags;
 		KVSCF_PARAMETERS_BEGIN
-		KVSCF_PARAMETER("text", KVS_PT_STRING, KVS_PF_OPTIONAL, szText)
-		KVSCF_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
-		KVSCF_PARAMETERS_END
+			KVSCF_PARAMETER("text", KVS_PT_STRING, KVS_PF_OPTIONAL, szText)
+			KVSCF_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
+			KVSCF_PARAMETERS_END
 
-		bool bCaseSensitive = szFlags.indexOf('s', 0, Qt::CaseInsensitive) != -1;
+			bool bCaseSensitive = szFlags.indexOf('s', 0, Qt::CaseInsensitive) != -1;
 		bool bRegexp = szFlags.indexOf('r', 0, Qt::CaseInsensitive) != -1;
 		bool bMatch = !szText.isEmpty();
 

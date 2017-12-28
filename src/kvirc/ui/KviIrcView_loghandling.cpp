@@ -144,18 +144,18 @@ const QString & KviIrcView::lastMessageText()
 	{
 		switch(pCur->iMsgType)
 		{
-			case KVI_OUT_CHANPRIVMSG:
-			case KVI_OUT_CHANPRIVMSGCRYPTED:
-			case KVI_OUT_CHANNELNOTICE:
-			case KVI_OUT_CHANNELNOTICECRYPTED:
-			case KVI_OUT_ACTION:
-			case KVI_OUT_ACTIONCRYPTED:
-			case KVI_OUT_OWNACTION:
-			case KVI_OUT_OWNACTIONCRYPTED:
-			case KVI_OUT_OWNPRIVMSG:
-			case KVI_OUT_OWNPRIVMSGCRYPTED:
-			case KVI_OUT_HIGHLIGHT:
-				return pCur->szText;
+		case KVI_OUT_CHANPRIVMSG:
+		case KVI_OUT_CHANPRIVMSGCRYPTED:
+		case KVI_OUT_CHANNELNOTICE:
+		case KVI_OUT_CHANNELNOTICECRYPTED:
+		case KVI_OUT_ACTION:
+		case KVI_OUT_ACTIONCRYPTED:
+		case KVI_OUT_OWNACTION:
+		case KVI_OUT_OWNACTIONCRYPTED:
+		case KVI_OUT_OWNPRIVMSG:
+		case KVI_OUT_OWNPRIVMSGCRYPTED:
+		case KVI_OUT_HIGHLIGHT:
+			return pCur->szText;
 		}
 		pCur = pCur->pPrev;
 	}
@@ -257,24 +257,24 @@ void KviIrcView::add2Log(const QString & szBuffer, const QDateTime & aDate, int 
 		QDateTime date = aDate.isValid() ? aDate : QDateTime::currentDateTime();
 		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 		{
-			case 0:
-				szDate = date.toString("[hh:mm:ss] ");
-				break;
-			case 1:
-				szDate = date.toString(Qt::ISODate);
-				if (date.timeSpec() == Qt::LocalTime)
-				{
-					// Log milliseconds. QDateTime.fromString can parse them already.
-					// However, the format is more complicated if a timezone is present,
-					// so only log them for local time.
-					szDate += date.toString(".zzz");
-				}
-				szDate += " ";
-				break;
-			case 2:
-				szDate = date.toString(Qt::SystemLocaleShortDate);
-				szDate += " ";
-				break;
+		case 0:
+			szDate = date.toString("[hh:mm:ss] ");
+			break;
+		case 1:
+			szDate = date.toString(Qt::ISODate);
+			if(date.timeSpec() == Qt::LocalTime)
+			{
+				// Log milliseconds. QDateTime.fromString can parse them already.
+				// However, the format is more complicated if a timezone is present,
+				// so only log them for local time.
+				szDate += date.toString(".zzz");
+			}
+			szDate += " ";
+			break;
+		case 2:
+			szDate = date.toString(Qt::SystemLocaleShortDate);
+			szDate += " ";
+			break;
 		}
 
 		tmp = szDate.toUtf8();

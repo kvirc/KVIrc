@@ -80,7 +80,7 @@ protected:
 	virtual void closeEvent(QCloseEvent * e);
 	virtual void done(int r);
 	void start();
-protected slots:
+	protected slots:
 	void getListMessage(const QString & message);
 	void getListTerminated(bool bSuccess);
 	void pageSelected(const QString & title);

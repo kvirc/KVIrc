@@ -79,7 +79,7 @@ private:
 
 public:
 	virtual void commit();
-protected slots:
+	protected slots:
 	void itemSelectionChanged();
 	void currentItemChanged(QTableWidgetItem * cur, QTableWidgetItem * prev);
 	void addClicked();

@@ -91,13 +91,13 @@ void KviImageDialogItem::paint(QPainter * p)
 }
 
 KviImageDialog::KviImageDialog(QWidget * par,
-    const QString & szCaption,
-    int types,
-    int initialType,
-    const QString & szInitialDir,
-    int maxPreviewFileSize,
-    bool modal)
-    : QDialog(par)
+	const QString & szCaption,
+	int types,
+	int initialType,
+	const QString & szInitialDir,
+	int maxPreviewFileSize,
+	bool modal)
+	: QDialog(par)
 {
 	m_szInitialPath = szInitialDir;
 	setModal(modal);
@@ -225,94 +225,94 @@ void KviImageDialog::heartbeat()
 
 	switch(m_iJobType)
 	{
-		case KID_TYPE_BUILTIN_IMAGES_SMALL:
+	case KID_TYPE_BUILTIN_IMAGES_SMALL:
+	{
+		if(m_iJobIndexHelper >= KviIconManager::IconCount)
 		{
-			if(m_iJobIndexHelper >= KviIconManager::IconCount)
-			{
-				jobTerminated();
-				return;
-			}
-			int max = m_iJobIndexHelper + 15;
-			if(max > KviIconManager::IconCount)
-				max = KviIconManager::IconCount;
-			while(m_iJobIndexHelper < max)
-			{
-				QString szId = g_pIconManager->getSmallIconName(m_iJobIndexHelper);
-				QString szTip;
-				szTip = QString(__tr2qs("Builtin $icon(%1) [index %2]")).arg(szId).arg(m_iJobIndexHelper);
-				QString szImageId = "$icon(";
-				szImageId += szId;
-				szImageId += ")";
-				new KviImageDialogItem(m_pListBox, *(g_pIconManager->getSmallIcon(m_iJobIndexHelper)), szId, szImageId, szTip);
-				m_iJobIndexHelper++;
-			}
+			jobTerminated();
+			return;
 		}
-		break;
-		case KID_TYPE_FULL_PATH:
+		int max = m_iJobIndexHelper + 15;
+		if(max > KviIconManager::IconCount)
+			max = KviIconManager::IconCount;
+		while(m_iJobIndexHelper < max)
 		{
+			QString szId = g_pIconManager->getSmallIconName(m_iJobIndexHelper);
+			QString szTip;
+			szTip = QString(__tr2qs("Builtin $icon(%1) [index %2]")).arg(szId).arg(m_iJobIndexHelper);
+			QString szImageId = "$icon(";
+			szImageId += szId;
+			szImageId += ")";
+			new KviImageDialogItem(m_pListBox, *(g_pIconManager->getSmallIcon(m_iJobIndexHelper)), szId, szImageId, szTip);
 			m_iJobIndexHelper++;
-			if(m_lJobFileList.isEmpty())
-			{
-				jobTerminated();
-				return;
-			}
-			int idx = 0;
-			while((idx < 20) && (!m_lJobFileList.isEmpty()))
-			{
-				QString szFile = m_lJobFileList.first();
-				m_lJobFileList.removeAll(szFile);
-				QString szPath = m_szJobPath;
-				szPath += KVI_PATH_SEPARATOR;
-				szPath += szFile;
-				QFileInfo fi(szPath);
-				idx += fi.size() / 128000; // we do less entries when have big files to read
-				if(fi.isDir())
-				{
-					if(szFile != ".")
-					{
-						QString tip = szFile;
-						tip += "<br><hr>";
-						tip += __tr2qs("directory");
-						new KviImageDialogItem(m_pListBox, *(g_pIconManager->getBigIcon(KVI_BIGICON_FOLDER)), szFile, szPath, tip, true);
-					}
-				}
-				else
-				{
-					if(((int)fi.size()) < m_iMaxPreviewFileSize)
-					{
-						QImage i(szPath);
-						if(i.isNull())
-							continue;
-						QPixmap pix;
-						if((i.width() > 80) || (i.height() > 80))
-							pix = QPixmap::fromImage(i.scaled(80, 80, Qt::KeepAspectRatio));
-						else
-							pix = QPixmap::fromImage(i);
-
-						QString tip = szFile;
-						tip += "<br><hr>";
-						QString sz;
-						sz.setNum(i.width());
-						tip += sz;
-						tip += " x ";
-						sz.setNum(i.height());
-						tip += sz;
-						tip += " ";
-						tip += __tr2qs("pixels");
-						tip += "<br>";
-						sz.setNum(fi.size());
-						tip += sz;
-						tip += " ";
-						tip += __tr2qs("bytes");
-						tip += "<br>";
-
-						new KviImageDialogItem(m_pListBox, pix, szFile, szPath, tip);
-					}
-				}
-				idx++;
-			}
 		}
-		break;
+	}
+	break;
+	case KID_TYPE_FULL_PATH:
+	{
+		m_iJobIndexHelper++;
+		if(m_lJobFileList.isEmpty())
+		{
+			jobTerminated();
+			return;
+		}
+		int idx = 0;
+		while((idx < 20) && (!m_lJobFileList.isEmpty()))
+		{
+			QString szFile = m_lJobFileList.first();
+			m_lJobFileList.removeAll(szFile);
+			QString szPath = m_szJobPath;
+			szPath += KVI_PATH_SEPARATOR;
+			szPath += szFile;
+			QFileInfo fi(szPath);
+			idx += fi.size() / 128000; // we do less entries when have big files to read
+			if(fi.isDir())
+			{
+				if(szFile != ".")
+				{
+					QString tip = szFile;
+					tip += "<br><hr>";
+					tip += __tr2qs("directory");
+					new KviImageDialogItem(m_pListBox, *(g_pIconManager->getBigIcon(KVI_BIGICON_FOLDER)), szFile, szPath, tip, true);
+				}
+			}
+			else
+			{
+				if(((int)fi.size()) < m_iMaxPreviewFileSize)
+				{
+					QImage i(szPath);
+					if(i.isNull())
+						continue;
+					QPixmap pix;
+					if((i.width() > 80) || (i.height() > 80))
+						pix = QPixmap::fromImage(i.scaled(80, 80, Qt::KeepAspectRatio));
+					else
+						pix = QPixmap::fromImage(i);
+
+					QString tip = szFile;
+					tip += "<br><hr>";
+					QString sz;
+					sz.setNum(i.width());
+					tip += sz;
+					tip += " x ";
+					sz.setNum(i.height());
+					tip += sz;
+					tip += " ";
+					tip += __tr2qs("pixels");
+					tip += "<br>";
+					sz.setNum(fi.size());
+					tip += sz;
+					tip += " ";
+					tip += __tr2qs("bytes");
+					tip += "<br>";
+
+					new KviImageDialogItem(m_pListBox, pix, szFile, szPath, tip);
+				}
+			}
+			idx++;
+		}
+	}
+	break;
 	}
 }
 

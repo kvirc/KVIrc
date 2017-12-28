@@ -109,7 +109,7 @@ protected:
 	KviFileSelector * m_pImageSelector;
 	QLabel * m_pImageLabel;
 	QString m_szImagePath;
-protected slots:
+	protected slots:
 	void imageSelectionChanged(const QString & szImagePath);
 };
 

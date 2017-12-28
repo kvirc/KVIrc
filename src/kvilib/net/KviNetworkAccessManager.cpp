@@ -25,7 +25,7 @@
 #include "KviNetworkAccessManager.h"
 
 KviNetworkAccessManager::KviNetworkAccessManager()
-    = default;
+= default;
 
 KviNetworkAccessManager::~KviNetworkAccessManager()
-    = default;
+= default;

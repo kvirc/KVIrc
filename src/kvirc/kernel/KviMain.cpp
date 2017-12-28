@@ -351,7 +351,7 @@ int main(int argc, char ** argv)
 	a.createFile = false;
 	a.bForceNewSession = false;
 	a.bShowPopup = false,
-	a.bExecuteCommandAndClose = false;
+		a.bExecuteCommandAndClose = false;
 
 	int iRetCode = parseArgs(&a);
 
@@ -364,17 +364,17 @@ int main(int argc, char ** argv)
 #ifdef COMPILE_KDE4_SUPPORT
 	// KDE4
 	KAboutData * pAboutData = new KAboutData( // FIXME: this is never deleted ? Should it be ?
-	    "kvirc",                              // internal program name
-	    "kvirc",                              // message catalogue name
-	    ki18n("KVIrc"),                       // user-visible program name
-	    KVI_VERSION,                          // program version
-	    ki18n("Visual IRC Client"),           // description
-	    KAboutData::License_GPL,              // license
-	    ki18n("(c) 1998-2016 The KVIrc Development Team"),
-	    ki18n("???"),                           // *some other text* ????
-	    "http://www.kvirc.net",                 // homepage
-	    "https://github.com/kvirc/KVIrc/issues" // bug address
-	    );
+		"kvirc",                              // internal program name
+		"kvirc",                              // message catalogue name
+		ki18n("KVIrc"),                       // user-visible program name
+		KVI_VERSION,                          // program version
+		ki18n("Visual IRC Client"),           // description
+		KAboutData::License_GPL,              // license
+		ki18n("(c) 1998-2016 The KVIrc Development Team"),
+		ki18n("???"),                           // *some other text* ????
+		"http://www.kvirc.net",                 // homepage
+		"https://github.com/kvirc/KVIrc/issues" // bug address
+	);
 
 	//fake argc/argv initialization: kde will use argv[0] as out appName in some dialogs
 	// (eg: kdebase/workspace/kwin/killer/killer.cpp)
@@ -382,16 +382,16 @@ int main(int argc, char ** argv)
 #else  //!COMPILE_KDE4_SUPPORT
 	// KDE5
 	KAboutData * pAboutData = new KAboutData(  // FIXME: this is never deleted ? Should it be ?
-	    "kvirc",                               // internal program name
-	    "KVIrc",                               // user-visible program name
-	    KVI_VERSION,                           // program version
-	    ki18n("Visual IRC Client").toString(), // description
-	    KAboutLicense::GPL,                    // license
-	    "(c) 1998-2016 The KVIrc Development Team",
-	    "???",                                  // *some other text* ????
-	    "http://www.kvirc.net",                 // homepage
-	    "https://github.com/kvirc/KVIrc/issues" // bug address
-	    );
+		"kvirc",                               // internal program name
+		"KVIrc",                               // user-visible program name
+		KVI_VERSION,                           // program version
+		ki18n("Visual IRC Client").toString(), // description
+		KAboutLicense::GPL,                    // license
+		"(c) 1998-2016 The KVIrc Development Team",
+		"???",                                  // *some other text* ????
+		"http://www.kvirc.net",                 // homepage
+		"https://github.com/kvirc/KVIrc/issues" // bug address
+	);
 #endif //!COMPILE_KDE4_SUPPORT
 #endif
 
@@ -425,27 +425,27 @@ int main(int argc, char ** argv)
 		szRemoteCommand.append(a.szExecRemoteCommand);
 	}
 
-/*
-		FIXME: There is a race condition in the IPC mechanism.
-			If one starts two instances of kvirc one immediately after another
-			then both instances may run through kvi_sendIpcMessage
-			without finding the sentinel window and thus both may decide
-			to start.
-			A weak file locking mechanism should be used too...
+	/*
+			FIXME: There is a race condition in the IPC mechanism.
+				If one starts two instances of kvirc one immediately after another
+				then both instances may run through kvi_sendIpcMessage
+				without finding the sentinel window and thus both may decide
+				to start.
+				A weak file locking mechanism should be used too...
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	QString szLock = convertSeparators(cleanDirPath(QDir::homePath() + "/.kvirc.lock"));
-#else
-	QString szLock = convertSeparators(cleanDirPath(QDir::homePath() + "/.kvirc.lock"));
-#endif
+	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+		QString szLock = convertSeparators(cleanDirPath(QDir::homePath() + "/.kvirc.lock"));
+	#else
+		QString szLock = convertSeparators(cleanDirPath(QDir::homePath() + "/.kvirc.lock"));
+	#endif
 
-	QFileInfo inf(szLock);
-	bool bLocked = false;
-	if(inf.exists())
-	{
-		iLocked = inf.lastModified().secsTo(QDateTime::currentDateTime());
-	}
-	*/
+		QFileInfo inf(szLock);
+		bool bLocked = false;
+		if(inf.exists())
+		{
+			iLocked = inf.lastModified().secsTo(QDateTime::currentDateTime());
+		}
+		*/
 
 #ifndef COMPILE_NO_IPC
 	if(!a.bForceNewSession)

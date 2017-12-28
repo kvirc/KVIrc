@@ -232,23 +232,23 @@ void KviIrcMessage::parseMessageTags()
 						break;
 					switch(m_szMessageTags.at(i))
 					{
-						case ':':
-							szValue += ';';
-							break;
-						case 's':
-							szValue += ' ';
-							break;
-						case '0':
-							szValue += '\0';
-							break;
-						case 'r':
-							szValue += '\r';
-							break;
-						case 'n':
-							szValue += '\n';
-							break;
-						default:
-							szValue += m_szMessageTags.at(i);
+					case ':':
+						szValue += ';';
+						break;
+					case 's':
+						szValue += ' ';
+						break;
+					case '0':
+						szValue += '\0';
+						break;
+					case 'r':
+						szValue += '\r';
+						break;
+					case 'n':
+						szValue += '\n';
+						break;
+					default:
+						szValue += m_szMessageTags.at(i);
 					}
 				}
 				else

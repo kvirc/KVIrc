@@ -169,7 +169,6 @@ private:
 	* \return bool
 	*/
 	bool addFileInternal(const QFileInfo * fi, const QString & szLocalFileName, const QString & szTargetFileName, kvi_u32_t uAddFileFlags = 0);
-
 }; // class KviPackageWriter
 
 #endif //_KviPackageWriter_h_

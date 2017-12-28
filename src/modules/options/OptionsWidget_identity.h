@@ -72,7 +72,7 @@ protected:
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 	const QString & avatarName() { return m_szAvatarName; };
-protected slots:
+	protected slots:
 	void okClicked();
 	void cancelClicked();
 	void chooseFileClicked();
@@ -97,7 +97,7 @@ protected:
 	virtual void closeEvent(QCloseEvent * e);
 	const QString & localFileName() { return m_szLocalFileName; };
 	const QString & errorMessage() { return m_szErrorMessage; };
-protected slots:
+	protected slots:
 	void startDownload();
 	void cancelClicked();
 	void downloadTerminated(bool bSuccess);
@@ -123,7 +123,7 @@ protected:
 
 public:
 	bool editProfile(KviIdentityProfile * pProfile);
-protected slots:
+	protected slots:
 	void toggleButton();
 };
 
@@ -157,7 +157,7 @@ protected:
 
 	QComboBox * m_pAgeCombo;
 	QComboBox * m_pGenderCombo;
-protected slots:
+	protected slots:
 	void setNickAlternatives();
 
 protected:
@@ -182,7 +182,7 @@ protected:
 	QPushButton * m_pChooseAvatarButton;
 	KviPixmap * m_pLocalAvatar;
 	KviPixmapPreview * m_pAvatarPreview;
-protected slots:
+	protected slots:
 	void chooseAvatar();
 
 protected:
@@ -237,7 +237,7 @@ protected:
 
 public:
 	virtual void commit();
-protected slots:
+	protected slots:
 	void toggleControls();
 	void addProfileEntry();
 	void editProfileEntry();

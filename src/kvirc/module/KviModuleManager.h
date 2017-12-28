@@ -60,7 +60,7 @@ public:
 
 protected:
 	void completeModuleNames(const QString & path, const QString & work, std::vector<QString> & matches);
-public slots:
+	public slots:
 	void cleanupUnusedModules();
 signals:
 	void moduleAboutToUnload(KviModule * m);

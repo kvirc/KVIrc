@@ -37,8 +37,8 @@ class KVILIB_API KviTalListWidget : public QListWidget
 public:
 	KviTalListWidget(QWidget * pParent, QString name, Qt::WindowType f = Qt::Widget);
 	KviTalListWidget(QWidget * pParent)
-	    : QListWidget(pParent){};
-	virtual ~KviTalListWidget(){};
+		: QListWidget(pParent) {};
+	virtual ~KviTalListWidget() {};
 
 protected:
 	virtual bool event(QEvent * e);
@@ -51,13 +51,13 @@ class KVILIB_API KviTalListWidgetItem : public QListWidgetItem
 {
 public:
 	KviTalListWidgetItem()
-	    : QListWidgetItem(){};
+		: QListWidgetItem() {};
 	KviTalListWidgetItem(KviTalListWidget * pParent)
-	    : QListWidgetItem(pParent){};
+		: QListWidgetItem(pParent) {};
 	KviTalListWidgetItem(KviTalListWidget * pParent, QString & label)
-	    : QListWidgetItem(label, pParent){};
+		: QListWidgetItem(label, pParent) {};
 	KviTalListWidget * listWidget() { return (KviTalListWidget *)QListWidgetItem::listWidget(); };
-	virtual ~KviTalListWidgetItem(){};
+	virtual ~KviTalListWidgetItem() {};
 };
 
 class KVILIB_API KviTalListWidgetText : public KviTalListWidgetItem
@@ -108,7 +108,7 @@ protected:
 
 private:
 	Q_DISABLE_COPY(KviTalListWidgetPixmap)
-	QPixmap pm;
+		QPixmap pm;
 };
 
 #endif // _KVI_TAL_LISTWIDGET_H_

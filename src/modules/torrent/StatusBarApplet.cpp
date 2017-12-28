@@ -33,7 +33,7 @@
 #include "QTimer"
 
 StatusBarApplet::StatusBarApplet(KviStatusBar * parent, KviStatusBarAppletDescriptor * desc)
-    : KviStatusBarApplet(parent, desc)
+	: KviStatusBarApplet(parent, desc)
 {
 	QTimer * timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(update()));
@@ -45,7 +45,7 @@ StatusBarApplet::StatusBarApplet(KviStatusBar * parent, KviStatusBarAppletDescri
 }
 
 StatusBarApplet::~StatusBarApplet()
-    = default;
+= default;
 
 static KviStatusBarApplet * CreateTorrentClientApplet(KviStatusBar * bar, KviStatusBarAppletDescriptor * desc)
 {
@@ -57,10 +57,10 @@ static KviStatusBarApplet * CreateTorrentClientApplet(KviStatusBar * bar, KviSta
 void StatusBarApplet::selfRegister(KviStatusBar * bar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
-	    __tr2qs_ctx("Torrent Client", "torrent"),
-	    "torrentapplet",
-	    CreateTorrentClientApplet,
-	    "torrent", *(g_pIconManager->getSmallIcon(KviIconManager::Away)));
+		__tr2qs_ctx("Torrent Client", "torrent"),
+		"torrentapplet",
+		CreateTorrentClientApplet,
+		"torrent", *(g_pIconManager->getSmallIcon(KviIconManager::Away)));
 
 	bar->registerAppletDescriptor(d);
 }
@@ -81,10 +81,10 @@ void StatusBarApplet::update()
 	if(TorrentInterface::selected())
 	{
 		QString msg = QString("up: %1 K/s (%2), dn: %3 K/s (%4)")
-		                  .arg(TorrentInterface::selected()->speedUp(), 2)
-		                  .arg(formatSize(TorrentInterface::selected()->trafficUp()))
-		                  .arg(TorrentInterface::selected()->speedDown(), 2)
-		                  .arg(formatSize(TorrentInterface::selected()->trafficDown()));
+			.arg(TorrentInterface::selected()->speedUp(), 2)
+			.arg(formatSize(TorrentInterface::selected()->trafficUp()))
+			.arg(TorrentInterface::selected()->speedDown(), 2)
+			.arg(formatSize(TorrentInterface::selected()->trafficDown()));
 
 		setText(msg);
 	}

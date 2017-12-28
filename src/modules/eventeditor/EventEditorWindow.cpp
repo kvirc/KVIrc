@@ -52,7 +52,7 @@
 extern EventEditorWindow * g_pEventEditorWindow;
 
 EventEditorEventTreeWidgetItem::EventEditorEventTreeWidgetItem(QTreeWidget * par, unsigned int uEvIdx, const QString & name, const QString & params)
-    : QTreeWidgetItem(par), m_uEventIdx(uEvIdx), m_szParams(params)
+	: QTreeWidgetItem(par), m_uEventIdx(uEvIdx), m_szParams(params)
 {
 	setName(name);
 }
@@ -64,7 +64,7 @@ void EventEditorEventTreeWidgetItem::setName(const QString & szName)
 }
 
 EventEditorHandlerTreeWidgetItem::EventEditorHandlerTreeWidgetItem(QTreeWidgetItem * par, const QString & name, const QString & buffer, bool bEnabled)
-    : QTreeWidgetItem(par), m_szBuffer(buffer)
+	: QTreeWidgetItem(par), m_szBuffer(buffer)
 {
 	m_cPos = 0;
 	setEnabled(bEnabled); //this updates the icon too
@@ -84,7 +84,7 @@ void EventEditorHandlerTreeWidgetItem::setEnabled(const bool bEnabled)
 }
 
 EventEditor::EventEditor(QWidget * par)
-    : QWidget(par)
+	: QWidget(par)
 {
 	setObjectName("event_editor");
 
@@ -159,7 +159,7 @@ void EventEditor::oneTimeSetup()
 				if(s->type() == KviKvsEventHandler::Script)
 				{
 					new EventEditorHandlerTreeWidgetItem(it, ((KviKvsScriptEventHandler *)s)->name(),
-					    ((KviKvsScriptEventHandler *)s)->code(), ((KviKvsScriptEventHandler *)s)->isEnabled());
+						((KviKvsScriptEventHandler *)s)->code(), ((KviKvsScriptEventHandler *)s)->isEnabled());
 				}
 			}
 		}
@@ -168,7 +168,7 @@ void EventEditor::oneTimeSetup()
 
 	connect(m_pTreeWidget, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)));
 	connect(m_pTreeWidget, SIGNAL(rightButtonPressed(QTreeWidgetItem *, QPoint)),
-	    this, SLOT(itemPressed(QTreeWidgetItem *, QPoint)));
+		this, SLOT(itemPressed(QTreeWidgetItem *, QPoint)));
 	connect(KviKvsEventManager::instance(), SIGNAL(eventHandlerDisabled(const QString &)), this, SLOT(eventHandlerDisabled(const QString &)));
 	m_pContextPopup = new QMenu(this);
 	m_pTreeWidget->sortItems(0, Qt::AscendingOrder);
@@ -181,7 +181,7 @@ void EventEditor::eventHandlerDisabled(const QString & szHandler)
 
 	QTreeWidgetItem * pSelectedItem = nullptr;
 	QList <QTreeWidgetItem *> itemList = m_pTreeWidget->selectedItems();
-	if (!itemList.isEmpty())
+	if(!itemList.isEmpty())
 	{
 		pSelectedItem = itemList.first();
 	}
@@ -196,7 +196,7 @@ void EventEditor::eventHandlerDisabled(const QString & szHandler)
 			if(KviQString::equalCI(szHandlerName, ((EventEditorHandlerTreeWidgetItem *)pItem->child(j))->name()))
 			{
 				((EventEditorHandlerTreeWidgetItem *)pItem->child(j))->setEnabled(false);
-				if (pItem->child(j) == pSelectedItem)
+				if(pItem->child(j) == pSelectedItem)
 					m_pIsEnabled->setChecked(false);
 				return;
 			}
@@ -205,7 +205,7 @@ void EventEditor::eventHandlerDisabled(const QString & szHandler)
 }
 
 EventEditorTreeWidget::EventEditorTreeWidget(QWidget * par)
-    : QTreeWidget(par)
+	: QTreeWidget(par)
 {
 	setColumnCount(1);
 	setHeaderLabel(__tr2qs_ctx("Event", "editor"));
@@ -238,28 +238,28 @@ void EventEditor::itemPressed(QTreeWidgetItem * it, const QPoint & pnt)
 			QString tmp;
 			if(!(((EventEditorHandlerTreeWidgetItem *)it)->m_bEnabled))
 				m_pContextPopup->addAction(
-				    *(g_pIconManager->getSmallIcon(KviIconManager::Handler)),
-				    __tr2qs_ctx("&Enable Handler", "editor"), this, SLOT(toggleCurrentHandlerEnabled()));
+					*(g_pIconManager->getSmallIcon(KviIconManager::Handler)),
+					__tr2qs_ctx("&Enable Handler", "editor"), this, SLOT(toggleCurrentHandlerEnabled()));
 			else
 				m_pContextPopup->addAction(
-				    *(g_pIconManager->getSmallIcon(KviIconManager::HandlerDisabled)),
-				    __tr2qs_ctx("&Disable Handler", "editor"), this, SLOT(toggleCurrentHandlerEnabled()));
+					*(g_pIconManager->getSmallIcon(KviIconManager::HandlerDisabled)),
+					__tr2qs_ctx("&Disable Handler", "editor"), this, SLOT(toggleCurrentHandlerEnabled()));
 
 			m_pContextPopup->addAction(
-			    *(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
-			    __tr2qs_ctx("Re&move Handler", "editor"),
-			    this, SLOT(removeCurrentHandler()));
+				*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
+				__tr2qs_ctx("Re&move Handler", "editor"),
+				this, SLOT(removeCurrentHandler()));
 			m_pContextPopup->addAction(
-			    *(g_pIconManager->getSmallIcon(KviIconManager::Save)),
-			    __tr2qs_ctx("&Export Handler to...", "editor"),
-			    this, SLOT(exportCurrentHandler()));
+				*(g_pIconManager->getSmallIcon(KviIconManager::Save)),
+				__tr2qs_ctx("&Export Handler to...", "editor"),
+				this, SLOT(exportCurrentHandler()));
 		}
 		else
 		{
 			m_pContextPopup->addAction(
-			    *(g_pIconManager->getSmallIcon(KviIconManager::Handler)),
-			    __tr2qs_ctx("&New Handler", "editor"),
-			    this, SLOT(addHandlerForCurrentEvent()));
+				*(g_pIconManager->getSmallIcon(KviIconManager::Handler)),
+				__tr2qs_ctx("&New Handler", "editor"),
+				this, SLOT(addHandlerForCurrentEvent()));
 		}
 
 		m_pContextPopup->popup(pnt);
@@ -282,7 +282,7 @@ void EventEditor::getUniqueHandlerName(EventEditorEventTreeWidgetItem * it, QStr
 		bFound = false;
 
 		for(int i = 0; i < it->childCount(); i++)
-		//for(EventEditorHandlerTreeWidgetItem * ch = (EventEditorHandlerTreeWidgetItem *)(it->firstChild());ch;ch = (EventEditorHandlerTreeWidgetItem *)ch->nextSibling())
+			//for(EventEditorHandlerTreeWidgetItem * ch = (EventEditorHandlerTreeWidgetItem *)(it->firstChild());ch;ch = (EventEditorHandlerTreeWidgetItem *)ch->nextSibling())
 		{
 			if(KviQString::equalCI(newName, ((EventEditorHandlerTreeWidgetItem *)it->child(i))->m_szName))
 			{
@@ -375,10 +375,10 @@ void EventEditor::commit()
 				QTreeWidgetItem * ch = it->child(j);
 				szContext = QString("%1::%2").arg(((EventEditorEventTreeWidgetItem *)it)->m_szName, ((EventEditorHandlerTreeWidgetItem *)ch)->m_szName);
 				KviKvsScriptEventHandler * s = KviKvsScriptEventHandler::createInstance( // msvc workaround
-				    ((EventEditorHandlerTreeWidgetItem *)ch)->m_szName,
-				    szContext,
-				    ((EventEditorHandlerTreeWidgetItem *)ch)->m_szBuffer,
-				    ((EventEditorHandlerTreeWidgetItem *)ch)->m_bEnabled);
+					((EventEditorHandlerTreeWidgetItem *)ch)->m_szName,
+					szContext,
+					((EventEditorHandlerTreeWidgetItem *)ch)->m_szBuffer,
+					((EventEditorHandlerTreeWidgetItem *)ch)->m_bEnabled);
 
 				KviKvsEventManager::instance()->addAppHandler(((EventEditorEventTreeWidgetItem *)it)->m_uEventIdx, s);
 			}
@@ -555,7 +555,7 @@ void EventEditor::exportAllEvents()
 }
 
 EventEditorWindow::EventEditorWindow()
-    : KviWindow(KviWindow::ScriptEditor, "eventeditor", nullptr)
+	: KviWindow(KviWindow::ScriptEditor, "eventeditor", nullptr)
 {
 	g_pEventEditorWindow = this;
 

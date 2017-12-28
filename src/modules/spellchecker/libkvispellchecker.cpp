@@ -47,11 +47,11 @@ static KviPointerList<EnchantDict> * g_pEnchantDicts = nullptr;
 */
 
 static void spellchecker_enumerate_dicts(
-    const char * szLang,
-    const char * /*szName*/,
-    const char * szDesc,
-    const char * /*szFile*/,
-    void * pData)
+	const char * szLang,
+	const char * /*szName*/,
+	const char * szDesc,
+	const char * /*szFile*/,
+	void * pData)
 {
 	KviKvsHash * pHash = reinterpret_cast<KviKvsHash *>(pData);
 	pHash->set(szLang, new KviKvsVariant(szDesc));
@@ -60,8 +60,8 @@ static void spellchecker_enumerate_dicts(
 static bool spellchecker_kvs_available_dictionaries(KviKvsModuleFunctionCall * c)
 {
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETERS_END(c)
-	KviKvsHash * pHash = new KviKvsHash;
+		KVSM_PARAMETERS_END(c)
+		KviKvsHash * pHash = new KviKvsHash;
 	enchant_broker_list_dicts(g_pEnchantBroker, spellchecker_enumerate_dicts, pHash);
 	c->returnValue()->setHash(pHash);
 	return true;
@@ -85,9 +85,9 @@ static bool spellchecker_kvs_check(KviKvsModuleFunctionCall * c)
 {
 	QString szWord;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("word", KVS_PT_STRING, 0, szWord)
-	KVSM_PARAMETERS_END(c)
-	QByteArray utf8 = szWord.toUtf8();
+		KVSM_PARAMETER("word", KVS_PT_STRING, 0, szWord)
+		KVSM_PARAMETERS_END(c)
+		QByteArray utf8 = szWord.toUtf8();
 	bool bResult = g_pEnchantDicts->isEmpty();
 	KviPointerListIterator<EnchantDict> it(*g_pEnchantDicts);
 	for(bool b = it.moveFirst(); b; b = it.moveNext())
@@ -117,10 +117,10 @@ static bool spellchecker_kvs_suggestions(KviKvsModuleFunctionCall * c)
 {
 	QString szWord;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("word", KVS_PT_STRING, 0, szWord)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("word", KVS_PT_STRING, 0, szWord)
+		KVSM_PARAMETERS_END(c)
 
-	QHash<QString, int> hAllSuggestions;
+		QHash<QString, int> hAllSuggestions;
 
 	if(!g_pEnchantDicts->isEmpty())
 	{
@@ -187,8 +187,8 @@ static void spellchecker_reload_dicts()
 static bool spellchecker_kvs_reload_dictionaries(KviKvsModuleCommandCall * c)
 {
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETERS_END(c)
-	spellchecker_reload_dicts();
+		KVSM_PARAMETERS_END(c)
+		spellchecker_reload_dicts();
 	return true;
 }
 
@@ -219,12 +219,12 @@ static bool spellchecker_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "SpellChecker",                                                  // module name
-    "4.0.0",                                                         // module version
-    "Copyright (C) 2014 Alexey Sokolov (sokolov at google dot com)", // author & (C)
-    "Spell checker",
-    spellchecker_module_init,
-    0,
-    0,
-    spellchecker_module_cleanup,
-    0)
+	"SpellChecker",                                                  // module name
+	"4.0.0",                                                         // module version
+	"Copyright (C) 2014 Alexey Sokolov (sokolov at google dot com)", // author & (C)
+	"Spell checker",
+	spellchecker_module_init,
+	0,
+	0,
+	spellchecker_module_cleanup,
+	0)

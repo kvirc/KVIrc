@@ -57,14 +57,14 @@ static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 	QString szProxy;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("proxy", KVS_PT_STRING, 0, szProxy)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("proxy", KVS_PT_STRING, 0, szProxy)
+		KVSM_PARAMETERS_END(c)
 
-	if(szProxy.isEmpty())
-	{
-		c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter", "serverdb"));
-		return false;
-	}
+		if(szProxy.isEmpty())
+		{
+			c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter", "serverdb"));
+			return false;
+		}
 
 	KviProxy objProxy;
 	objProxy.setHostname(szProxy);
@@ -80,15 +80,15 @@ static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 
 	switch(pRecord->protocol())
 	{
-		case KviProxy::Socks4:
-			szProtocol = "Socks4";
-			break;
-		case KviProxy::Socks5:
-			szProtocol = "Socks5";
-			break;
-		case KviProxy::Http:
-			szProtocol = "Http";
-			break;
+	case KviProxy::Socks4:
+		szProtocol = "Socks4";
+		break;
+	case KviProxy::Socks5:
+		szProtocol = "Socks5";
+		break;
+	case KviProxy::Http:
+		szProtocol = "Http";
+		break;
 	}
 
 	c->returnValue()->setString(szProtocol);
@@ -101,10 +101,10 @@ static bool proxydb_get_helperer(KviKvsModuleFunctionCall * c, QString * szProxy
 	QString szTmp;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("proxy", KVS_PT_STRING, 0, szTmp)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("proxy", KVS_PT_STRING, 0, szTmp)
+		KVSM_PARAMETERS_END(c)
 
-	*szProxy = szTmp;
+		*szProxy = szTmp;
 	return true;
 }
 
@@ -291,14 +291,14 @@ static bool proxydb_kvs_cmd_addProxy(KviKvsModuleCommandCall * c)
 	QString szProxy;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("proxy_name", KVS_PT_STRING, 0, szProxy)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("proxy_name", KVS_PT_STRING, 0, szProxy)
+		KVSM_PARAMETERS_END(c)
 
-	if(szProxy.isEmpty())
-	{
-		c->error(__tr2qs_ctx("You must provide the proxy name as parameter", "serverdb"));
-		return false;
-	}
+		if(szProxy.isEmpty())
+		{
+			c->error(__tr2qs_ctx("You must provide the proxy name as parameter", "serverdb"));
+			return false;
+		}
 
 	std::unique_ptr<KviProxy> pProxy(new KviProxy());
 	pProxy->setHostname(szProxy);
@@ -384,15 +384,15 @@ static bool proxydb_kvs_cmd_setPort(KviKvsModuleCommandCall * c)
 	bool bOk;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("proxy", KVS_PT_STRING, 0, szProxy)
-	KVSM_PARAMETER("port", KVS_PT_STRING, 0, szPort)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("proxy", KVS_PT_STRING, 0, szProxy)
+		KVSM_PARAMETER("port", KVS_PT_STRING, 0, szPort)
+		KVSM_PARAMETERS_END(c)
 
-	if(szProxy.isEmpty())
-	{
-		c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter", "serverdb"));
-		return false;
-	}
+		if(szProxy.isEmpty())
+		{
+			c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter", "serverdb"));
+			return false;
+		}
 
 	if(szPort.isEmpty())
 	{
@@ -457,15 +457,15 @@ static bool proxydb_kvs_cmd_setIp(KviKvsModuleCommandCall * c)
 	QString szProxy, szIp;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("proxy", KVS_PT_STRING, 0, szProxy)
-	KVSM_PARAMETER("ip", KVS_PT_STRING, 0, szIp)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("proxy", KVS_PT_STRING, 0, szProxy)
+		KVSM_PARAMETER("ip", KVS_PT_STRING, 0, szIp)
+		KVSM_PARAMETERS_END(c)
 
-	if(szProxy.isEmpty())
-	{
-		c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter", "serverdb"));
-		return false;
-	}
+		if(szProxy.isEmpty())
+		{
+			c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter", "serverdb"));
+			return false;
+		}
 
 	if(szIp.isEmpty())
 	{
@@ -529,15 +529,15 @@ static bool proxydb_kvs_cmd_setIPv6(KviKvsModuleCommandCall * c)
 	bool bIPv6;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("proxy", KVS_PT_STRING, 0, szProxy)
-	KVSM_PARAMETER("ipv6", KVS_PT_BOOLEAN, 0, bIPv6)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("proxy", KVS_PT_STRING, 0, szProxy)
+		KVSM_PARAMETER("ipv6", KVS_PT_BOOLEAN, 0, bIPv6)
+		KVSM_PARAMETERS_END(c)
 
-	if(szProxy.isEmpty())
-	{
-		c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter", "serverdb"));
-		return false;
-	}
+		if(szProxy.isEmpty())
+		{
+			c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter", "serverdb"));
+			return false;
+		}
 
 	KviProxy objProxy;
 	objProxy.setHostname(szProxy);
@@ -586,15 +586,15 @@ static bool proxydb_kvs_cmd_setProtocol(KviKvsModuleCommandCall * c)
 	QString szProxy, szProtocol;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("proxy", KVS_PT_STRING, 0, szProxy)
-	KVSM_PARAMETER("protocol", KVS_PT_STRING, 0, szProtocol)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("proxy", KVS_PT_STRING, 0, szProxy)
+		KVSM_PARAMETER("protocol", KVS_PT_STRING, 0, szProtocol)
+		KVSM_PARAMETERS_END(c)
 
-	if(szProxy.isEmpty())
-	{
-		c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter", "serverdb"));
-		return false;
-	}
+		if(szProxy.isEmpty())
+		{
+			c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter", "serverdb"));
+			return false;
+		}
 
 	if(szProtocol.isEmpty())
 	{
@@ -779,12 +779,12 @@ static bool proxydb_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "ProxyDB",                                                         // module name
-    "4.0.0",                                                           // module version
-    "Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)", // author & (C)
-    "IRC proxy serverDB related functions",
-    proxydb_module_init,
-    proxydb_module_can_unload,
-    0,
-    proxydb_module_cleanup,
-    "serverdb")
+	"ProxyDB",                                                         // module name
+	"4.0.0",                                                           // module version
+	"Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)", // author & (C)
+	"IRC proxy serverDB related functions",
+	proxydb_module_init,
+	proxydb_module_can_unload,
+	0,
+	proxydb_module_cleanup,
+	"serverdb")

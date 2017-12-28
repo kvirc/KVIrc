@@ -112,7 +112,7 @@ signals:
 	void indexingProgress(int);
 	void indexingEnd();
 
-private slots:
+	private slots:
 	void setLastWinClosed();
 	void filterNext();
 

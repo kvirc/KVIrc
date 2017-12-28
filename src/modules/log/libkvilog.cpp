@@ -88,10 +88,10 @@ static bool log_kvs_cmd_start(KviKvsModuleCommandCall * c)
 {
 	QString szFile;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szFile)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szFile)
+		KVSM_PARAMETERS_END(c)
 
-	KviWindow * pWnd = c->window();
+		KviWindow * pWnd = c->window();
 	if(c->hasSwitch('w', "window"))
 	{
 		QString szWindow;
@@ -260,10 +260,10 @@ static bool log_kvs_fnc_file(KviKvsModuleFunctionCall * c)
 	QString szWindow, szBuffer;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWindow)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("window id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWindow)
+		KVSM_PARAMETERS_END(c)
 
-	KviWindow * pWnd = c->window();
+		KviWindow * pWnd = c->window();
 
 	if(!szWindow.isEmpty())
 	{
@@ -308,12 +308,12 @@ static bool log_kvs_fnc_export(KviKvsModuleFunctionCall * c)
 	QString szFile, szType;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFile)
-	KVSM_PARAMETER("type", KVS_PT_STRING, KVS_PF_OPTIONAL, szType)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFile)
+		KVSM_PARAMETER("type", KVS_PT_STRING, KVS_PF_OPTIONAL, szType)
+		KVSM_PARAMETERS_END(c)
 
-	if(szType.isEmpty())
-		szType = "txt";
+		if(szType.isEmpty())
+			szType = "txt";
 
 	KviModule * m = g_pModuleManager->getModule("logview");
 	if(!m)
@@ -354,13 +354,13 @@ static bool log_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Log",   // module name
-    "4.0.0", // module version
-    "Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)\n"
-    "	2011 Elvio Basello (hellvis69 at gmail dot com)", // author & (C)
-    "User interface to the logging system for KVIrc",
-    log_module_init,
-    0,
-    0,
-    log_module_cleanup,
-    0)
+	"Log",   // module name
+	"4.0.0", // module version
+	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)\n"
+	"	2011 Elvio Basello (hellvis69 at gmail dot com)", // author & (C)
+	"User interface to the logging system for KVIrc",
+	log_module_init,
+	0,
+	0,
+	log_module_cleanup,
+	0)

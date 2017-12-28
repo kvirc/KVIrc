@@ -37,7 +37,7 @@
 extern std::unordered_set<SocketSpyWindow *> g_pSocketSpyWindowList;
 
 SocketSpyWindow::SocketSpyWindow(KviConsoleWindow * lpConsole)
-    : KviWindow(KviWindow::SocketSpy, "socket_spy", lpConsole), KviIrcDataStreamMonitor(lpConsole->context())
+	: KviWindow(KviWindow::SocketSpy, "socket_spy", lpConsole), KviIrcDataStreamMonitor(lpConsole->context())
 {
 	g_pSocketSpyWindowList.insert(this);
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);

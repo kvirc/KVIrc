@@ -44,7 +44,7 @@ public:
 
 public:
 	EventEditorEventTreeWidgetItem(QTreeWidget * par, unsigned int uEvIdx, const QString & name, const QString & params);
-	~EventEditorEventTreeWidgetItem(){};
+	~EventEditorEventTreeWidgetItem() {};
 
 public:
 	void setName(const QString & szName);
@@ -61,7 +61,7 @@ public:
 
 public:
 	EventEditorHandlerTreeWidgetItem(QTreeWidgetItem * par, const QString & name, const QString & buffer, bool bEnabled);
-	~EventEditorHandlerTreeWidgetItem(){};
+	~EventEditorHandlerTreeWidgetItem() {};
 
 public:
 	const int & cursorPosition() { return m_cPos; };
@@ -81,7 +81,7 @@ class EventEditorTreeWidget : public QTreeWidget
 	Q_OBJECT
 public:
 	EventEditorTreeWidget(QWidget *);
-	~EventEditorTreeWidget(){};
+	~EventEditorTreeWidget() {};
 
 protected:
 	void mousePressEvent(QMouseEvent * e);
@@ -110,7 +110,7 @@ public:
 	void saveLastEditedItem();
 	void getUniqueHandlerName(EventEditorEventTreeWidgetItem * it, QString & buffer);
 	void getExportEventBuffer(QString & szBuffer, EventEditorHandlerTreeWidgetItem * it);
-protected slots:
+	protected slots:
 	void currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem *);
 	void itemPressed(QTreeWidgetItem * it, const QPoint & pnt);
 	void toggleCurrentHandlerEnabled();
@@ -143,7 +143,7 @@ protected:
 	virtual void getConfigGroupName(QString & szName);
 	virtual void saveProperties(KviConfigurationFile *);
 	virtual void loadProperties(KviConfigurationFile *);
-protected slots:
+	protected slots:
 	void cancelClicked();
 	void okClicked();
 	void applyClicked();

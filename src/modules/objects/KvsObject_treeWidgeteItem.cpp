@@ -152,7 +152,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_treeWidgetItem)
 KVSO_BEGIN_DESTRUCTOR(KvsObject_treeWidgetItem)
 
 if(m_pTreeWidgetItem)
-	delete m_pTreeWidgetItem;
+delete m_pTreeWidgetItem;
 
 KVSO_END_CONSTRUCTOR(KvsObject_treeWidgetItem)
 
@@ -190,12 +190,12 @@ void KvsObject_treeWidgetItem::childDestroyed()
 }
 
 KviKvsStandardTreeWidgetItem::KviKvsStandardTreeWidgetItem(KvsObject_treeWidgetItem * ob, QTreeWidget * par)
-    : QTreeWidgetItem(par), m_pMasterObject(ob)
+	: QTreeWidgetItem(par), m_pMasterObject(ob)
 {
 }
 
 KviKvsStandardTreeWidgetItem::KviKvsStandardTreeWidgetItem(KvsObject_treeWidgetItem * ob, QTreeWidgetItem * par)
-    : QTreeWidgetItem(par), m_pMasterObject(ob)
+	: QTreeWidgetItem(par), m_pMasterObject(ob)
 {
 }
 
@@ -221,11 +221,11 @@ KVSO_CLASS_FUNCTION(treeWidgetItem, setText)
 	kvs_uint_t uCol;
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
-	KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
-	KVSO_PARAMETERS_END(c)
-	if(m_pTreeWidgetItem)
-		m_pTreeWidgetItem->setText(uCol, szText);
+		KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
+		KVSO_PARAMETER("text", KVS_PT_STRING, 0, szText)
+		KVSO_PARAMETERS_END(c)
+		if(m_pTreeWidgetItem)
+			m_pTreeWidgetItem->setText(uCol, szText);
 	return true;
 }
 
@@ -233,10 +233,10 @@ KVSO_CLASS_FUNCTION(treeWidgetItem, setItemEditable)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	if(m_pTreeWidgetItem)
-		m_pTreeWidgetItem->setFlags(bEnabled ? m_pTreeWidgetItem->flags() | Qt::ItemIsEditable : m_pTreeWidgetItem->flags() & ~Qt::ItemIsEditable);
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		if(m_pTreeWidgetItem)
+			m_pTreeWidgetItem->setFlags(bEnabled ? m_pTreeWidgetItem->flags() | Qt::ItemIsEditable : m_pTreeWidgetItem->flags() & ~Qt::ItemIsEditable);
 	return true;
 }
 KVSO_CLASS_FUNCTION(treeWidgetItem, isItemEditable)
@@ -253,9 +253,9 @@ KVSO_CLASS_FUNCTION(treeWidgetItem, setFlags)
 {
 	QStringList itemflags;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("flags", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, itemflags)
-	KVSO_PARAMETERS_END(c)
-	int flag, sum = 0;
+		KVSO_PARAMETER("flags", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, itemflags)
+		KVSO_PARAMETERS_END(c)
+		int flag, sum = 0;
 	for(int i = 0; i < itemflags.count(); i++)
 	{
 		flag = 0;
@@ -286,10 +286,10 @@ KVSO_CLASS_FUNCTION(treeWidgetItem, setEnabled)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	if(m_pTreeWidgetItem)
-		m_pTreeWidgetItem->setFlags(bEnabled ? m_pTreeWidgetItem->flags() | Qt::ItemIsEnabled : m_pTreeWidgetItem->flags() & ~Qt::ItemIsEnabled);
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		if(m_pTreeWidgetItem)
+			m_pTreeWidgetItem->setFlags(bEnabled ? m_pTreeWidgetItem->flags() | Qt::ItemIsEnabled : m_pTreeWidgetItem->flags() & ~Qt::ItemIsEnabled);
 	return true;
 }
 
@@ -308,10 +308,10 @@ KVSO_CLASS_FUNCTION(treeWidgetItem, setOpen)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	if(m_pTreeWidgetItem)
-		m_pTreeWidgetItem->setExpanded(bEnabled);
+		KVSO_PARAMETER("bEnabled", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		if(m_pTreeWidgetItem)
+			m_pTreeWidgetItem->setExpanded(bEnabled);
 	return true;
 }
 
@@ -330,10 +330,10 @@ KVSO_CLASS_FUNCTION(treeWidgetItem, setChecked)
 {
 	bool bChecked;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bChecked", KVS_PT_BOOL, 0, bChecked)
-	KVSO_PARAMETERS_END(c)
-	if(!m_pTreeWidgetItem)
-		return true;
+		KVSO_PARAMETER("bChecked", KVS_PT_BOOL, 0, bChecked)
+		KVSO_PARAMETERS_END(c)
+		if(!m_pTreeWidgetItem)
+			return true;
 	((QTreeWidgetItem *)m_pTreeWidgetItem)->setCheckState(0, bChecked ? Qt::Checked : Qt::Unchecked);
 	return true;
 }
@@ -353,10 +353,10 @@ KVSO_CLASS_FUNCTION(treeWidgetItem, setCheckable)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bCheckable", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	if(!m_pTreeWidgetItem)
-		return true;
+		KVSO_PARAMETER("bCheckable", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		if(!m_pTreeWidgetItem)
+			return true;
 	m_pTreeWidgetItem->setFlags(bEnabled ? m_pTreeWidgetItem->flags() | Qt::ItemIsUserCheckable : m_pTreeWidgetItem->flags() & ~Qt::ItemIsUserCheckable);
 	return true;
 }
@@ -376,10 +376,10 @@ KVSO_CLASS_FUNCTION(treeWidgetItem, text)
 {
 	kvs_uint_t uCol;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
-	KVSO_PARAMETERS_END(c)
-	if(m_pTreeWidgetItem)
-		c->returnValue()->setString(m_pTreeWidgetItem->text(uCol));
+		KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
+		KVSO_PARAMETERS_END(c)
+		if(m_pTreeWidgetItem)
+			c->returnValue()->setString(m_pTreeWidgetItem->text(uCol));
 	return true;
 }
 
@@ -390,10 +390,10 @@ KVSO_CLASS_FUNCTION(treeWidgetItem, setPixmap)
 	kvs_hobject_t obHpixmap;
 	KviKvsVariant * vPixmap;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
-	KVSO_PARAMETER("pixmap", KVS_PT_VARIANT, 0, vPixmap)
-	KVSO_PARAMETERS_END(c)
-	QPixmap * pix = nullptr;
+		KVSO_PARAMETER("column", KVS_PT_UNSIGNEDINTEGER, 0, uCol)
+		KVSO_PARAMETER("pixmap", KVS_PT_VARIANT, 0, vPixmap)
+		KVSO_PARAMETERS_END(c)
+		QPixmap * pix = nullptr;
 	if(vPixmap->isEmpty())
 	{
 		m_pTreeWidgetItem->setIcon(uCol, QIcon());

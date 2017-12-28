@@ -32,7 +32,7 @@
 #include <QLayout>
 
 OptionsWidget_lag::OptionsWidget_lag(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("lag_options_widget");
 	createLayout();
@@ -44,11 +44,11 @@ OptionsWidget_lag::OptionsWidget_lag(QWidget * parent)
 		KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine));
 	pInterval->setSuffix(__tr2qs_ctx(" msec", "options"));
 	mergeTip(pInterval, __tr2qs_ctx("This option allows you to set the lag meter heartbeat interval.<br>"
-                                        "The lower the heartbeat interval the higher will be the accuracy of the lag check "
-                                        "but also higher CPU usage and data traffic to the server.<br>"
-                                        "Please note that this is NOT the interval between pings sent to the server: "
-                                        "the pings (if any) will be sent really less often. "
-                                        "5000 is a reasonable value.", "options"));
+		"The lower the heartbeat interval the higher will be the accuracy of the lag check "
+		"but also higher CPU usage and data traffic to the server.<br>"
+		"Please note that this is NOT the interval between pings sent to the server: "
+		"the pings (if any) will be sent really less often. "
+		"5000 is a reasonable value.", "options"));
 
 	connect(pUse, SIGNAL(toggled(bool)), pInterval, SLOT(setEnabled(bool)));
 
@@ -56,9 +56,9 @@ OptionsWidget_lag::OptionsWidget_lag(QWidget * parent)
 		KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine));
 	pAlarm->setSuffix(__tr2qs_ctx(" msec", "options"));
 	mergeTip(pAlarm, __tr2qs_ctx("This option controls the threshold for the "
-                                     "OnLagAlarmTimeUp and OnLagAlarmTimeDown events. When the lag goes above "
-	                             "the threshold OnLagAlarmTimeUp will be triggered and when the lag falls "
-	                             "back below the threshold then OnLagAlarmTimeDown will be triggered", "options"));
+		"OnLagAlarmTimeUp and OnLagAlarmTimeDown events. When the lag goes above "
+		"the threshold OnLagAlarmTimeUp will be triggered and when the lag falls "
+		"back below the threshold then OnLagAlarmTimeDown will be triggered", "options"));
 
 	connect(pUse, SIGNAL(toggled(bool)), pAlarm, SLOT(setEnabled(bool)));
 
@@ -73,4 +73,4 @@ OptionsWidget_lag::OptionsWidget_lag(QWidget * parent)
 }
 
 OptionsWidget_lag::~OptionsWidget_lag()
-    = default;
+= default;

@@ -48,13 +48,12 @@
 
 static bool tmphighlight_kvs_cmd_addnick(KviKvsModuleCommandCall * c)
 {
-
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
-	KVSM_PARAMETERS_END(c)
-	if(!c->window()->console())
-		return c->context()->errorNoIrcContext();
+		KVSM_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
+		KVSM_PARAMETERS_END(c)
+		if(!c->window()->console())
+			return c->context()->errorNoIrcContext();
 	if(c->window()->console()->isNotConnected())
 		return c->context()->errorNoIrcContext();
 
@@ -91,10 +90,10 @@ static bool tmphighlight_kvs_cmd_removenick(KviKvsModuleCommandCall * c)
 {
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
-	KVSM_PARAMETERS_END(c)
-	if(!c->window()->console())
-		return c->context()->errorNoIrcContext();
+		KVSM_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
+		KVSM_PARAMETERS_END(c)
+		if(!c->window()->console())
+			return c->context()->errorNoIrcContext();
 	if(c->window()->console()->isNotConnected())
 		return c->context()->errorNoIrcContext();
 
@@ -134,21 +133,21 @@ static bool tmphighlight_kvs_cmd_addchannel(KviKvsModuleCommandCall * c)
 	QString szWnd;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)
-	KVSM_PARAMETERS_END(c)
-	if(c->parameterList()->count() == 0)
-	{
-		pWnd = c->window();
-	}
-	else
-	{
-		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
-		if(!pWnd)
+		KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)
+		KVSM_PARAMETERS_END(c)
+		if(c->parameterList()->count() == 0)
 		{
-			c->warning(__tr2qs("Unable to find a window with the specified window ID"));
-			return false;
+			pWnd = c->window();
 		}
-	}
+		else
+		{
+			pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
+			if(!pWnd)
+			{
+				c->warning(__tr2qs("Unable to find a window with the specified window ID"));
+				return false;
+			}
+		}
 
 	if(!pWnd->console())
 		return c->context()->errorNoIrcContext();
@@ -190,21 +189,21 @@ static bool tmphighlight_kvs_cmd_removechannel(KviKvsModuleCommandCall * c)
 	QString szWnd;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)
-	KVSM_PARAMETERS_END(c)
-	if(c->parameterList()->count() == 0)
-	{
-		pWnd = c->window();
-	}
-	else
-	{
-		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
-		if(!pWnd)
+		KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)
+		KVSM_PARAMETERS_END(c)
+		if(c->parameterList()->count() == 0)
 		{
-			c->warning(__tr2qs("Unable to find a window with the specified window ID"));
-			return false;
+			pWnd = c->window();
 		}
-	}
+		else
+		{
+			pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
+			if(!pWnd)
+			{
+				c->warning(__tr2qs("Unable to find a window with the specified window ID"));
+				return false;
+			}
+		}
 
 	if(!pWnd->console())
 		return c->context()->errorNoIrcContext();
@@ -244,10 +243,10 @@ static bool tmphighlight_kvs_fnc_isnickhighlighted(KviKvsModuleFunctionCall * c)
 {
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
-	KVSM_PARAMETERS_END(c)
-	if(!c->window()->console())
-		return c->context()->errorNoIrcContext();
+		KVSM_PARAMETER("nick", KVS_PT_NONEMPTYSTRING, 0, szNick)
+		KVSM_PARAMETERS_END(c)
+		if(!c->window()->console())
+			return c->context()->errorNoIrcContext();
 	if(c->window()->console()->isNotConnected())
 		return c->context()->errorNoIrcContext();
 
@@ -284,21 +283,21 @@ static bool tmphighlight_kvs_fnc_ischannelhighlighted(KviKvsModuleFunctionCall *
 	QString szWnd;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)
-	KVSM_PARAMETERS_END(c)
-	if(c->parameterList()->count() == 0)
-	{
-		pWnd = c->window();
-	}
-	else
-	{
-		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
-		if(!pWnd)
+		KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)
+		KVSM_PARAMETERS_END(c)
+		if(c->parameterList()->count() == 0)
 		{
-			c->warning(__tr2qs("Unable to find a window with the specified window ID"));
-			return false;
+			pWnd = c->window();
 		}
-	}
+		else
+		{
+			pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
+			if(!pWnd)
+			{
+				c->warning(__tr2qs("Unable to find a window with the specified window ID"));
+				return false;
+			}
+		}
 
 	if(!pWnd->console())
 		return c->context()->errorNoIrcContext();
@@ -337,13 +336,13 @@ static bool tmphighlight_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "TmpHighlight", // module name
-    "4.0.0",        // module version
-    "(C) 2002 Juanjo Alvarez (juanjux@yahoo.es)"
-    "(C) 2009 Fabio Bas (ctrlaltca at libero dot it)", // author & (C)
-    "Temporary highlighting of channels and nicknames",
-    tmphighlight_module_init,
-    tmphighlight_module_can_unload,
-    0,
-    tmphighlight_module_cleanup,
-    0)
+	"TmpHighlight", // module name
+	"4.0.0",        // module version
+	"(C) 2002 Juanjo Alvarez (juanjux@yahoo.es)"
+	"(C) 2009 Fabio Bas (ctrlaltca at libero dot it)", // author & (C)
+	"Temporary highlighting of channels and nicknames",
+	tmphighlight_module_init,
+	tmphighlight_module_can_unload,
+	0,
+	tmphighlight_module_cleanup,
+	0)

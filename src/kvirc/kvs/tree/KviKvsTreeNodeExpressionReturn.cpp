@@ -28,7 +28,7 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeExpressionReturn::KviKvsTreeNodeExpressionReturn(const QChar * pLocation, KviKvsTreeNodeExpression * pExpression)
-    : KviKvsTreeNodeInstruction(pLocation)
+	: KviKvsTreeNodeInstruction(pLocation)
 {
 	m_pExpression = pExpression;
 	m_pExpression->setParent(this);

@@ -48,7 +48,7 @@ public:
 	virtual void setButtonPixmap(const QPixmap & pix) { setIcon(pix); };
 	void setButtonText(const QString & text) { setText(text); };
 	virtual KviWindow * window();
-protected slots:
+	protected slots:
 	void btnClicked();
 };
 

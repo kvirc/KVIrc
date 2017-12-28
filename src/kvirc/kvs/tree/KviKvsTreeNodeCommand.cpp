@@ -26,7 +26,7 @@
 #include "KviKvsTreeNodeSwitchList.h"
 
 KviKvsTreeNodeCommand::KviKvsTreeNodeCommand(const QChar * pLocation, const QString & szCmdName)
-    : KviKvsTreeNodeInstruction(pLocation)
+	: KviKvsTreeNodeInstruction(pLocation)
 {
 	m_szCmdName = szCmdName;
 	m_pSwitches = nullptr;

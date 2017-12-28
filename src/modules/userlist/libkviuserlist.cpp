@@ -107,12 +107,12 @@ static bool userlist_kvs_fnc_selected(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
 
-	if(pWnd->type() != KviWindow::Channel)
-	{
-		c->warning(__tr2qs_ctx("The specified window is not a channel", "kvs"));
-		c->returnValue()->setNothing();
-		return true;
-	}
+		if(pWnd->type() != KviWindow::Channel)
+		{
+			c->warning(__tr2qs_ctx("The specified window is not a channel", "kvs"));
+			c->returnValue()->setNothing();
+			return true;
+		}
 
 	KviKvsArray * a = new KviKvsArray();
 
@@ -131,11 +131,11 @@ static bool userlist_kvs_cmd_select(KviKvsModuleCommandCall * c)
 {
 	GET_KVS_WINDOW_ID_AND_NICK
 
-	if(pWnd->type() != KviWindow::Channel)
-	{
-		c->warning(__tr2qs_ctx("The specified window is not a channel", "kvs"));
-		return true;
-	}
+		if(pWnd->type() != KviWindow::Channel)
+		{
+			c->warning(__tr2qs_ctx("The specified window is not a channel", "kvs"));
+			return true;
+		}
 
 	((KviUserListView *)((KviChannelWindow *)pWnd)->userListView())->select(szNick);
 	return true;
@@ -145,11 +145,11 @@ static bool userlist_kvs_cmd_ensureVisible(KviKvsModuleCommandCall * c)
 {
 	GET_KVS_WINDOW_ID_AND_NICK
 
-	if(pWnd->type() != KviWindow::Channel)
-	{
-		c->warning(__tr2qs_ctx("The specified window is not a channel", "kvs"));
-		return true;
-	}
+		if(pWnd->type() != KviWindow::Channel)
+		{
+			c->warning(__tr2qs_ctx("The specified window is not a channel", "kvs"));
+			return true;
+		}
 
 	((KviUserListView *)((KviChannelWindow *)pWnd)->userListView())->ensureVisible(szNick);
 	return true;
@@ -175,12 +175,12 @@ static bool userlist_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Userlist",                                                  // module name
-    "4.0.0",                                                     // module version
-    "Copyright (C) 2010 Fabio Bas (ctrlaltca at gmail dot com)", // author & (C)
-    "KVIrc userlist management functions",
-    userlist_module_init,
-    userlist_module_can_unload,
-    0,
-    userlist_module_cleanup,
-    0)
+	"Userlist",                                                  // module name
+	"4.0.0",                                                     // module version
+	"Copyright (C) 2010 Fabio Bas (ctrlaltca at gmail dot com)", // author & (C)
+	"KVIrc userlist management functions",
+	userlist_module_init,
+	userlist_module_can_unload,
+	0,
+	userlist_module_cleanup,
+	0)

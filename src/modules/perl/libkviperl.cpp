@@ -417,15 +417,15 @@ static bool perl_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 	QString szCode, szContext;
 	KviKvsVariantList vList;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("code", KVS_PT_STRING, 0, szCode)
-	KVSM_PARAMETER("context", KVS_PT_STRING, KVS_PF_OPTIONAL, szContext)
-	KVSM_PARAMETER("args", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, vList)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("code", KVS_PT_STRING, 0, szCode)
+		KVSM_PARAMETER("context", KVS_PT_STRING, KVS_PF_OPTIONAL, szContext)
+		KVSM_PARAMETER("args", KVS_PT_VARIANTLIST, KVS_PF_OPTIONAL, vList)
+		KVSM_PARAMETERS_END(c)
 
-	KVS_CHECK_MODULE_STATE(m, c)
+		KVS_CHECK_MODULE_STATE(m, c)
 
 #ifdef COMPILE_PERL_SUPPORT
-	KviPerlCoreCtrlCommand_execute ex;
+		KviPerlCoreCtrlCommand_execute ex;
 	ex.uSize = sizeof(KviPerlCoreCtrlCommand_execute);
 	ex.pKvsContext = c->context();
 	ex.szContext = szContext;
@@ -455,7 +455,6 @@ static bool perl_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 	{
 		if(!c->switches()->find('q', "quiet"))
 		{
-
 			if(c->switches()->find('f', "fail-on-error"))
 			{
 				c->warning(__tr2qs_ctx("Perl execution error:", "perl"));
@@ -504,13 +503,13 @@ static bool perl_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 {
 	QString szContext;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("context", KVS_PT_NONEMPTYSTRING, 0, szContext)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("context", KVS_PT_NONEMPTYSTRING, 0, szContext)
+		KVSM_PARAMETERS_END(c)
 
-	KVS_CHECK_MODULE_STATE(m, c)
+		KVS_CHECK_MODULE_STATE(m, c)
 
 #ifdef COMPILE_PERL_SUPPORT
-	KviPerlCoreCtrlCommand_destroy ex;
+		KviPerlCoreCtrlCommand_destroy ex;
 	ex.uSize = sizeof(KviPerlCoreCtrlCommand_destroy);
 	ex.szContext = szContext;
 
@@ -557,7 +556,7 @@ static bool perl_module_init(KviModule * m)
 
 	KVSM_REGISTER_FUNCTION(m, "isAvailable", perl_kvs_fnc_isAvailable);
 
-// FIXME: perl.isSupported()
+	// FIXME: perl.isSupported()
 #ifdef COMPILE_PERL_SUPPORT
 	g_pPerlCoreModule = g_pModuleManager->getModule("perlcore");
 #endif // COMPILE_PERL_SUPPORT
@@ -570,12 +569,12 @@ static bool perl_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Perl",                                                         // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Perl scripting engine",
-    perl_module_init,
-    0,
-    0,
-    perl_module_cleanup,
-    "perl")
+	"Perl",                                                         // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Perl scripting engine",
+	perl_module_init,
+	0,
+	0,
+	perl_module_cleanup,
+	"perl")

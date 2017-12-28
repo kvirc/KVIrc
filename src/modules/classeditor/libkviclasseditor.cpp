@@ -38,7 +38,7 @@ KviModule * g_pClassEditorModule = nullptr;
 	@title:
 		classeditor.open
 	@short:
-                Shows the class editor
+				Shows the class editor
 	@syntax:
 		classeditor.open
 	@description:
@@ -79,12 +79,12 @@ static bool classeditor_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "ClassEditor",                                                      // module name
-    "4.0.0",                                                            // module version
-    "Copyright (C) 2010 Carbone Alessandro (elfonol at gmail dot com)", // author & (C)
-    "Editor for the script classes",
-    classeditor_module_init,
-    classeditor_module_can_unload,
-    0,
-    classeditor_module_cleanup,
-    "editor")
+	"ClassEditor",                                                      // module name
+	"4.0.0",                                                            // module version
+	"Copyright (C) 2010 Carbone Alessandro (elfonol at gmail dot com)", // author & (C)
+	"Editor for the script classes",
+	classeditor_module_init,
+	classeditor_module_can_unload,
+	0,
+	classeditor_module_cleanup,
+	"editor")

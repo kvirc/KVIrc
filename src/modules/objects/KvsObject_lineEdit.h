@@ -77,7 +77,7 @@ protected:
 	bool textChangedEvent(KviKvsObjectFunctionCall * c);
 
 	bool setInputValidator(KviKvsObjectFunctionCall * c);
-protected slots:
+	protected slots:
 	void slotreturnPressed();
 	void slotlostFocus();
 	void slottextChanged(const QString &);

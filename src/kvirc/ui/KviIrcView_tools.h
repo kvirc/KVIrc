@@ -125,7 +125,7 @@ public:
 	void focusStringToFind();
 	inline bool messageEnabled(int msg_type) { return m_pFilterItems[msg_type]->isOn(); };
 	void forceRepaint();
-protected slots:
+	protected slots:
 	void findPrev();
 	void findNext();
 	void findNextHelper(QString unused);

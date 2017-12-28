@@ -58,9 +58,9 @@ static TorrentInterface * auto_detect_torrent_client(KviWindow * pOut = nullptr)
 			if(pOut)
 			{
 				pOut->output(KVI_OUT_TORRENT,
-				    __tr2qs_ctx("Trying torrent client interface \"%Q\": score %d", "torrent"),
-				    &d->name(),
-				    iScore);
+					__tr2qs_ctx("Trying torrent client interface \"%Q\": score %d", "torrent"),
+					&d->name(),
+					iScore);
 			}
 		}
 	}
@@ -70,14 +70,14 @@ static TorrentInterface * auto_detect_torrent_client(KviWindow * pOut = nullptr)
 		KVI_OPTION_STRING(KviOption_stringPreferredTorrentClient) = pDBest->name();
 		if(pOut)
 			pOut->output(KVI_OUT_TORRENT,
-			    __tr2qs_ctx("Choosing torrent client interface \"%Q\"", "torrent"),
-			    &pDBest->name());
+				__tr2qs_ctx("Choosing torrent client interface \"%Q\"", "torrent"),
+				&pDBest->name());
 	}
 	else
 	{
 		if(pOut)
 			pOut->outputNoFmt(KVI_OUT_TORRENT,
-			    __tr2qs_ctx("Seems that there is no usable torrent client on this machine", "torrent"));
+				__tr2qs_ctx("Seems that there is no usable torrent client on this machine", "torrent"));
 	}
 
 	return pBest;
@@ -686,28 +686,28 @@ TC_KVS_COMMAND(setClient)
 	QString client;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("client", KVS_PT_STRING, 0, client)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("client", KVS_PT_STRING, 0, client)
+		KVSM_PARAMETERS_END(c)
 
-	for(TorrentInterfaceDescriptor * d = g_pDescriptorList->first(); d; d = g_pDescriptorList->next())
-	{
-		if(d->name() == client)
+		for(TorrentInterfaceDescriptor * d = g_pDescriptorList->first(); d; d = g_pDescriptorList->next())
 		{
-			TorrentInterface::select(d->instance());
-			KVI_OPTION_STRING(KviOption_stringPreferredTorrentClient) = client;
+			if(d->name() == client)
+			{
+				TorrentInterface::select(d->instance());
+				KVI_OPTION_STRING(KviOption_stringPreferredTorrentClient) = client;
 
-			if(!c->hasSwitch('q', "quiet"))
-				c->window()->output(KVI_OUT_TORRENT,
-				    __tr2qs_ctx("Using client interface \"%Q\".", "torrent"),
-				    &client);
-			return true;
+				if(!c->hasSwitch('q', "quiet"))
+					c->window()->output(KVI_OUT_TORRENT,
+						__tr2qs_ctx("Using client interface \"%Q\".", "torrent"),
+						&client);
+				return true;
+			}
 		}
-	}
 
 	if(!c->hasSwitch('q', "quiet"))
 		c->window()->output(KVI_OUT_TORRENT,
-		    __tr2qs_ctx("Invalid client interface \"%Q\"!", "torrent"),
-		    &client);
+			__tr2qs_ctx("Invalid client interface \"%Q\"!", "torrent"),
+			&client);
 
 	return false;
 }
@@ -836,29 +836,29 @@ static bool torrent_module_init(KviModule * m)
 	TC_KVS_REGCMD(detect, "detect");
 	TC_KVS_REGCMD(setClient, "setClient");
 	TC_KVS_REGCMD(start, "start")
-	TC_KVS_REGCMD(stop, "stop")
-	TC_KVS_REGCMD(announce, "announce")
-	TC_KVS_REGCMD(startAll, "startAll")
-	TC_KVS_REGCMD(stopAll, "stopAll")
-	TC_KVS_REGCMD(setMaxUploadSpeed, "setMaxUploadSpeed")
-	TC_KVS_REGCMD(setMaxDownloadSpeed, "setMaxDownloadSpeed")
-	TC_KVS_REGCMD(setFilePriority, "setFilePriority")
-	TC_KVS_REGFNC(client, "client")
-	TC_KVS_REGFNC(clientList, "clientList")
-	TC_KVS_REGFNC(maxUploadSpeed, "maxUploadSpeed")
-	TC_KVS_REGFNC(maxDownloadSpeed, "maxDownloadSpeed")
-	TC_KVS_REGFNC(speedUp, "speedUp")
-	TC_KVS_REGFNC(speedDown, "speedDown")
-	TC_KVS_REGFNC(trafficUp, "trafficUp")
-	TC_KVS_REGFNC(trafficDown, "trafficDown")
-	TC_KVS_REGFNC(count, "count")
-	TC_KVS_REGFNC(name, "name")
-	TC_KVS_REGFNC(state, "state")
-	TC_KVS_REGFNC(fileCount, "fileCount")
-	TC_KVS_REGFNC(fileName, "fileName")
-	TC_KVS_REGFNC(filePriority, "filePriority")
+		TC_KVS_REGCMD(stop, "stop")
+		TC_KVS_REGCMD(announce, "announce")
+		TC_KVS_REGCMD(startAll, "startAll")
+		TC_KVS_REGCMD(stopAll, "stopAll")
+		TC_KVS_REGCMD(setMaxUploadSpeed, "setMaxUploadSpeed")
+		TC_KVS_REGCMD(setMaxDownloadSpeed, "setMaxDownloadSpeed")
+		TC_KVS_REGCMD(setFilePriority, "setFilePriority")
+		TC_KVS_REGFNC(client, "client")
+		TC_KVS_REGFNC(clientList, "clientList")
+		TC_KVS_REGFNC(maxUploadSpeed, "maxUploadSpeed")
+		TC_KVS_REGFNC(maxDownloadSpeed, "maxDownloadSpeed")
+		TC_KVS_REGFNC(speedUp, "speedUp")
+		TC_KVS_REGFNC(speedDown, "speedDown")
+		TC_KVS_REGFNC(trafficUp, "trafficUp")
+		TC_KVS_REGFNC(trafficDown, "trafficDown")
+		TC_KVS_REGFNC(count, "count")
+		TC_KVS_REGFNC(name, "name")
+		TC_KVS_REGFNC(state, "state")
+		TC_KVS_REGFNC(fileCount, "fileCount")
+		TC_KVS_REGFNC(fileName, "fileName")
+		TC_KVS_REGFNC(filePriority, "filePriority")
 
-	g_pDescriptorList = new KviPointerList<TorrentInterfaceDescriptor>;
+		g_pDescriptorList = new KviPointerList<TorrentInterfaceDescriptor>;
 	g_pDescriptorList->setAutoDelete(true);
 
 #ifdef COMPILE_KDE_SUPPORT
@@ -903,13 +903,13 @@ static bool torrent_module_ctrl(KviModule *, const char *, void *) // KviModule 
 }
 
 KVIRC_MODULE(
-    "Torrent",
-    "4.0.0",
-    "Copyright (C) 2007 Alexander Stillich (torque at pltn dot org)"
-    "              2008 Fabio Bas (ctrlaltca at gmail dot com)",
-    "Interface to various torrent clients",
-    torrent_module_init,
-    torrent_module_can_unload,
-    torrent_module_ctrl,
-    torrent_module_cleanup,
-    "torrent")
+	"Torrent",
+	"4.0.0",
+	"Copyright (C) 2007 Alexander Stillich (torque at pltn dot org)"
+	"              2008 Fabio Bas (ctrlaltca at gmail dot com)",
+	"Interface to various torrent clients",
+	torrent_module_init,
+	torrent_module_can_unload,
+	torrent_module_ctrl,
+	torrent_module_cleanup,
+	"torrent")

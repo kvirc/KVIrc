@@ -83,54 +83,53 @@ KVSO_END_CONSTRUCTOR(KvsObject_memoryBuffer)
 KVSO_CLASS_FUNCTION(memoryBuffer, clear)
 {
 	CHECK_INTERNAL_POINTER(m_pBuffer)
-	m_pBuffer->clear();
+		m_pBuffer->clear();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(memoryBuffer, loadFromFile)
 {
 	CHECK_INTERNAL_POINTER(m_pBuffer)
-	QString szFileName;
+		QString szFileName;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSO_PARAMETERS_END(c)
-	if(KviFileUtils::fileExists(szFileName))
-	{
-
-		KviFile f(szFileName);
-		qDebug("loading file %s", szFileName.toUtf8().data());
-		if(f.open(QIODevice::ReadOnly))
+		KVSO_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSO_PARAMETERS_END(c)
+		if(KviFileUtils::fileExists(szFileName))
 		{
-			m_pBuffer->resize(f.size());
-			f.read(m_pBuffer->data(), f.size());
-			f.close();
+			KviFile f(szFileName);
+			qDebug("loading file %s", szFileName.toUtf8().data());
+			if(f.open(QIODevice::ReadOnly))
+			{
+				m_pBuffer->resize(f.size());
+				f.read(m_pBuffer->data(), f.size());
+				f.close();
+			}
+			else
+				qDebug("Error in loaded file!");
 		}
 		else
-			qDebug("Error in loaded file!");
-	}
-	else
-		c->warning(__tr2qs_ctx("The file '%Q' doesn't exist", "objects"), &szFileName);
+			c->warning(__tr2qs_ctx("The file '%Q' doesn't exist", "objects"), &szFileName);
 	return true;
 }
 KVSO_CLASS_FUNCTION(memoryBuffer, size)
 {
 	CHECK_INTERNAL_POINTER(m_pBuffer)
-	c->returnValue()->setInteger((kvs_int_t)m_pBuffer->size());
+		c->returnValue()->setInteger((kvs_int_t)m_pBuffer->size());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(memoryBuffer, readByteAt)
 {
 	CHECK_INTERNAL_POINTER(m_pBuffer)
-	kvs_int_t iIdx;
+		kvs_int_t iIdx;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("index", KVS_PT_INT, 0, iIdx)
-	KVSO_PARAMETERS_END(c)
-	if(iIdx > m_pBuffer->size())
-	{
-		c->warning(__tr2qs_ctx("Index '%I' out of the buffer size", "objects"), &iIdx);
-		return true;
-	}
+		KVSO_PARAMETER("index", KVS_PT_INT, 0, iIdx)
+		KVSO_PARAMETERS_END(c)
+		if(iIdx > m_pBuffer->size())
+		{
+			c->warning(__tr2qs_ctx("Index '%I' out of the buffer size", "objects"), &iIdx);
+			return true;
+		}
 	unsigned char ch = m_pBuffer->at(iIdx);
 	c->returnValue()->setInteger(ch);
 	return true;
@@ -138,11 +137,11 @@ KVSO_CLASS_FUNCTION(memoryBuffer, readByteAt)
 KVSO_CLASS_FUNCTION(memoryBuffer, saveToFile)
 {
 	CHECK_INTERNAL_POINTER(m_pBuffer)
-	QString szFileName;
+		QString szFileName;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
-	KVSO_PARAMETERS_END(c)
-	KviFile f(szFileName);
+		KVSO_PARAMETER("filename", KVS_PT_NONEMPTYSTRING, 0, szFileName)
+		KVSO_PARAMETERS_END(c)
+		KviFile f(szFileName);
 	if(f.open(QIODevice::WriteOnly))
 	{
 		f.write(m_pBuffer->data(), m_pBuffer->size());

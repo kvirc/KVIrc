@@ -84,12 +84,12 @@ static bool toolbareditor_module_cleanup(KviModule * m)
 }
 
 KVIRC_MODULE(
-    "ToolbarEditor",                                                // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Editor for the scriptable toolbars",
-    toolbareditor_module_init,
-    toolbareditor_module_can_unload,
-    0,
-    toolbareditor_module_cleanup,
-    "editor")
+	"ToolbarEditor",                                                // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Editor for the scriptable toolbars",
+	toolbareditor_module_init,
+	toolbareditor_module_can_unload,
+	0,
+	toolbareditor_module_cleanup,
+	"editor")

@@ -61,8 +61,8 @@ public:
 	* \return KviAvatar
 	*/
 	KviAvatar(const QString & szLocalPath,
-	    const QString & szName,
-	    const QSize & scaleOnLoad = QSize());
+		const QString & szName,
+		const QSize & scaleOnLoad = QSize());
 
 	/**
 	* \brief Destroys the avatar object

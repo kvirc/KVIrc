@@ -74,7 +74,7 @@ public:
 private:
 	void grabActivityInfo();
 	bool event(QEvent * e) override;
-private slots:
+	private slots:
 	void fillContextPopup();
 	void toggleParentFrame();
 	void doAway(bool);

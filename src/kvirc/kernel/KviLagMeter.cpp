@@ -39,7 +39,7 @@
 #include <algorithm>
 
 KviLagMeter::KviLagMeter(KviIrcConnection * c)
-    : QObject()
+	: QObject()
 {
 	m_pConnection = c;
 	m_uLag = 0;
@@ -95,7 +95,7 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 		if((!m_bOnAlarm) && (m_uLag > KVI_OPTION_UINT(KviOption_uintLagAlarmTime)))
 		{
 			KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnLagAlarmTimeUp,
-			    m_pConnection->console(), m_pConnection->serverInfo()->name(), QString(szLag.ptr()));
+				m_pConnection->console(), m_pConnection->serverInfo()->name(), QString(szLag.ptr()));
 			if(bDeletionSignal)
 				return; // killed, probably by a quit -f -u
 			m_bOnAlarm = true;
@@ -103,14 +103,14 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 		else if(m_bOnAlarm)
 		{
 			KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnLagAlarmTimeDown,
-			    m_pConnection->console(), m_pConnection->serverInfo()->name(), QString(szLag.ptr()));
+				m_pConnection->console(), m_pConnection->serverInfo()->name(), QString(szLag.ptr()));
 			if(bDeletionSignal)
 				return; // killed, probably by a quit -f -u
 			m_bOnAlarm = false;
 		}
 
 		KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnLagCheck,
-		    m_pConnection->console(), m_pConnection->serverInfo()->name(), QString(szLag.ptr()));
+			m_pConnection->console(), m_pConnection->serverInfo()->name(), QString(szLag.ptr()));
 		if(bDeletionSignal)
 			return; // killed, probably by a quit -f -u
 
@@ -166,8 +166,8 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 		// this is the first our own lag check since the last successful one: use the ping
 		lagCheckRegister("@ping@", 70); // the ping may be fooled easily
 		m_pConnection->sendFmtData("PING %s %s",
-		    m_pConnection->encodeText(m_pConnection->userInfo()->nickName()).data(),
-		    m_pConnection->encodeText(m_pConnection->serverInfo()->name()).data());
+			m_pConnection->encodeText(m_pConnection->userInfo()->nickName()).data(),
+			m_pConnection->encodeText(m_pConnection->serverInfo()->name()).data());
 		m_tFirstOwnCheck = tv.tv_sec;
 	}
 	else
@@ -180,10 +180,10 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 		KviCString tmp(KviCString::Format, "%d%d-yeah-:)", tv.tv_sec, tv.tv_usec);
 		lagCheckRegister(tmp.ptr(), 100); // almost impossible to fool
 		m_pConnection->sendFmtData("NOTICE %s :%cLAGCHECK %s%c",
-		    m_pConnection->encodeText(m_pConnection->userInfo()->nickName()).data(),
-		    0x01,
-		    tmp.ptr(),
-		    0x01);
+			m_pConnection->encodeText(m_pConnection->userInfo()->nickName()).data(),
+			0x01,
+			tmp.ptr(),
+			0x01);
 	}
 	m_tLastOwnCheck = tv.tv_sec;
 }

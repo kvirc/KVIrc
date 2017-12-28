@@ -24,11 +24,11 @@
 //=============================================================================
 
 /***************************************************************************
-                          SsdpConnection.h -  description
-                             -------------------
-    begin                : Fri Jul 29 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  SsdpConnection.h -  description
+							 -------------------
+	begin                : Fri Jul 29 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #ifndef UPNP_SSDPCONNECTION_H
@@ -40,7 +40,6 @@ class QUdpSocket;
 
 namespace UPnP
 {
-
 	/**
  * The Simple Service Discovery Protocol allows UPnP clients
  * to discover UPnP devices on a network.
@@ -62,7 +61,7 @@ namespace UPnP
 
 		void queryDevices(int bindPort = 1500);
 
-	private slots:
+		private slots:
 		// Data was received by the socket
 		void slotDataReceived();
 

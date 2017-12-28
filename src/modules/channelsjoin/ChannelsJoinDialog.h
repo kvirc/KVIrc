@@ -52,7 +52,7 @@ class ChannelsJoinDialogTreeWidget : public QTreeWidget
 	Q_OBJECT
 public:
 	ChannelsJoinDialogTreeWidget(QWidget * par)
-	    : QTreeWidget(par){};
+		: QTreeWidget(par) {};
 
 	~ChannelsJoinDialogTreeWidget()
 	{
@@ -78,7 +78,7 @@ protected:
 class ChannelsJoinDialog : public QDialog
 {
 	Q_OBJECT
-	friend class ChannelsJoinDialogTreeWidget;
+		friend class ChannelsJoinDialogTreeWidget;
 
 public:
 	/**
@@ -138,7 +138,7 @@ public:
 	* \return void
 	*/
 	void itemSelected();
-protected slots:
+	protected slots:
 	/**
 	* \brief Called when the text changes
 	* \return void

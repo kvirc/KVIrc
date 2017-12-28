@@ -35,7 +35,7 @@
 #include <QTimer>
 
 KviKvsAsyncDnsOperation::KviKvsAsyncDnsOperation(KviWindow * pWnd, QString & szQuery, KviDnsResolver::QueryType eType, KviKvsScript * pCallback, KviKvsVariant * pMagic)
-    : KviKvsAsyncOperation(pWnd)
+	: KviKvsAsyncOperation(pWnd)
 {
 	m_pDns = new KviDnsResolver();
 	m_szQuery = szQuery;

@@ -60,7 +60,7 @@ protected:
 	bool currentChangedEvent(KviKvsObjectFunctionCall * c);
 	bool tabCloseRequestEvent(KviKvsObjectFunctionCall * c);
 
-protected slots:
+	protected slots:
 	void slotCurrentChanged(int);
 	void slotTabCloseRequest(int);
 };

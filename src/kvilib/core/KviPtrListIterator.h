@@ -28,15 +28,14 @@
 
 template<typename T>
 class KviPtrListIterator {
-
 	KviPointerList<T> * ptrList;
 	T * c;
 
 public:
 
 	explicit KviPtrListIterator(KviPointerList<T> * ptrList, T *c)
-	: ptrList(ptrList),
-	  c(c)
+		: ptrList(ptrList),
+		c(c)
 	{
 	}
 
@@ -55,7 +54,6 @@ public:
 	{
 		return this->c != other.c;
 	}
-
 };
 
 template<typename T>

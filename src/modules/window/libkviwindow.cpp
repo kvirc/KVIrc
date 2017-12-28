@@ -120,17 +120,17 @@ std::vector<UserWindow *> g_pUserWindowList;
 static bool window_kvs_cmd_clearOutput(KviKvsModuleCommandCall * c)
 {
 	GET_KVS_WINDOW_ID
-	if(pWnd)
-	{
-		if(pWnd->view())
-			pWnd->view()->clearBuffer();
-		if(pWnd->type() == KviWindow::Channel)
+		if(pWnd)
 		{
-			KviChannelWindow * chan = (KviChannelWindow *)pWnd;
-			if(chan->messageView())
-				chan->messageView()->clearBuffer();
+			if(pWnd->view())
+				pWnd->view()->clearBuffer();
+			if(pWnd->type() == KviWindow::Channel)
+			{
+				KviChannelWindow * chan = (KviChannelWindow *)pWnd;
+				if(chan->messageView())
+					chan->messageView()->clearBuffer();
+			}
 		}
-	}
 	return true;
 }
 
@@ -155,10 +155,10 @@ static bool window_kvs_cmd_clearOutput(KviKvsModuleCommandCall * c)
 static bool window_kvs_cmd_close(KviKvsModuleCommandCall * c)
 {
 	GET_KVS_WINDOW_ID
-	if(pWnd)
-	{
-		pWnd->delayedClose();
-	}
+		if(pWnd)
+		{
+			pWnd->delayedClose();
+		}
 	return true;
 }
 
@@ -184,10 +184,10 @@ static bool window_kvs_cmd_close(KviKvsModuleCommandCall * c)
 static bool window_kvs_cmd_dock(KviKvsModuleCommandCall * c)
 {
 	GET_KVS_WINDOW_ID
-	if(pWnd)
-	{
-		pWnd->dock();
-	}
+		if(pWnd)
+		{
+			pWnd->dock();
+		}
 	return true;
 }
 
@@ -213,10 +213,10 @@ static bool window_kvs_cmd_dock(KviKvsModuleCommandCall * c)
 static bool window_kvs_cmd_undock(KviKvsModuleCommandCall * c)
 {
 	GET_KVS_WINDOW_ID
-	if(pWnd)
-	{
-		pWnd->undock();
-	}
+		if(pWnd)
+		{
+			pWnd->undock();
+		}
 	return true;
 }
 
@@ -242,17 +242,17 @@ static bool window_kvs_cmd_undock(KviKvsModuleCommandCall * c)
 static bool window_kvs_cmd_splitView(KviKvsModuleCommandCall * c)
 {
 	GET_KVS_WINDOW_ID
-	if(pWnd && pWnd->type() == KviWindow::Channel)
-	{
-		KviChannelWindow * chan = (KviChannelWindow *)pWnd;
-		if(!chan->messageView())
-			chan->toggleDoubleView();
-	}
-	else
-	{
-		if(!c->hasSwitch('q', "quiet"))
-			c->warning(__tr2qs("The window with ID '%s' isn't a channel window."), szWnd.toUtf8().data());
-	}
+		if(pWnd && pWnd->type() == KviWindow::Channel)
+		{
+			KviChannelWindow * chan = (KviChannelWindow *)pWnd;
+			if(!chan->messageView())
+				chan->toggleDoubleView();
+		}
+		else
+		{
+			if(!c->hasSwitch('q', "quiet"))
+				c->warning(__tr2qs("The window with ID '%s' isn't a channel window."), szWnd.toUtf8().data());
+		}
 	return true;
 }
 
@@ -278,17 +278,17 @@ static bool window_kvs_cmd_splitView(KviKvsModuleCommandCall * c)
 static bool window_kvs_cmd_unsplitView(KviKvsModuleCommandCall * c)
 {
 	GET_KVS_WINDOW_ID
-	if(pWnd && pWnd->type() == KviWindow::Channel)
-	{
-		KviChannelWindow * chan = (KviChannelWindow *)pWnd;
-		if(chan->messageView())
-			chan->toggleDoubleView();
-	}
-	else
-	{
-		if(!c->hasSwitch('q', "quiet"))
-			c->warning(__tr2qs("The window with ID '%s' isn't a channel window."), szWnd.toUtf8().data());
-	}
+		if(pWnd && pWnd->type() == KviWindow::Channel)
+		{
+			KviChannelWindow * chan = (KviChannelWindow *)pWnd;
+			if(chan->messageView())
+				chan->toggleDoubleView();
+		}
+		else
+		{
+			if(!c->hasSwitch('q', "quiet"))
+				c->warning(__tr2qs("The window with ID '%s' isn't a channel window."), szWnd.toUtf8().data());
+		}
 	return true;
 }
 
@@ -316,10 +316,10 @@ static bool window_kvs_cmd_unsplitView(KviKvsModuleCommandCall * c)
 static bool window_kvs_cmd_activate(KviKvsModuleCommandCall * c)
 {
 	GET_KVS_WINDOW_ID
-	if(pWnd)
-	{
-		pWnd->autoRaise();
-	}
+		if(pWnd)
+		{
+			pWnd->autoRaise();
+		}
 	return true;
 }
 
@@ -352,10 +352,10 @@ static bool window_kvs_cmd_activate(KviKvsModuleCommandCall * c)
 static bool window_kvs_cmd_demandAttention(KviKvsModuleCommandCall * c)
 {
 	GET_KVS_WINDOW_ID
-	if(pWnd)
-	{
-		pWnd->demandAttention();
-	}
+		if(pWnd)
+		{
+			pWnd->demandAttention();
+		}
 	return true;
 }
 
@@ -383,16 +383,16 @@ static bool window_kvs_cmd_demandAttention(KviKvsModuleCommandCall * c)
 static bool window_kvs_fnc_activityLevel(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		unsigned int v, t;
-		pWnd->activityMeter(&v, &t);
-		c->returnValue()->setInteger(v);
-	}
-	else
-	{
-		c->returnValue()->setInteger(0);
-	}
+		if(pWnd)
+		{
+			unsigned int v, t;
+			pWnd->activityMeter(&v, &t);
+			c->returnValue()->setInteger(v);
+		}
+		else
+		{
+			c->returnValue()->setInteger(0);
+		}
 	return true;
 }
 
@@ -424,16 +424,16 @@ static bool window_kvs_fnc_activityLevel(KviKvsModuleFunctionCall * c)
 static bool window_kvs_fnc_activityTemperature(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		unsigned int v, t;
-		pWnd->activityMeter(&v, &t);
-		c->returnValue()->setInteger(t);
-	}
-	else
-	{
-		c->returnValue()->setInteger(0);
-	}
+		if(pWnd)
+		{
+			unsigned int v, t;
+			pWnd->activityMeter(&v, &t);
+			c->returnValue()->setInteger(t);
+		}
+		else
+		{
+			c->returnValue()->setInteger(0);
+		}
 	return true;
 }
 
@@ -459,10 +459,10 @@ static bool window_kvs_fnc_activityTemperature(KviKvsModuleFunctionCall * c)
 static bool window_kvs_fnc_isDocked(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		c->returnValue()->setBoolean(pWnd->parentWidget() ? true : false);
-	}
+		if(pWnd)
+		{
+			c->returnValue()->setBoolean(pWnd->parentWidget() ? true : false);
+		}
 	return true;
 }
 
@@ -488,8 +488,8 @@ static bool window_kvs_fnc_isSplitView(KviKvsModuleFunctionCall * c)
 {
 	c->returnValue()->setBoolean(false);
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd && pWnd->type() == KviWindow::Channel)
-		c->returnValue()->setBoolean(((KviChannelWindow *)pWnd)->messageView() ? true : false);
+		if(pWnd && pWnd->type() == KviWindow::Channel)
+			c->returnValue()->setBoolean(((KviChannelWindow *)pWnd)->messageView() ? true : false);
 	return true;
 }
 
@@ -515,12 +515,12 @@ static bool window_kvs_fnc_isSplitView(KviKvsModuleFunctionCall * c)
 static bool window_kvs_fnc_hasInput(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		c->returnValue()->setBoolean(pWnd->input() ? true : false);
-	}
-	else
-		c->returnValue()->setBoolean(false);
+		if(pWnd)
+		{
+			c->returnValue()->setBoolean(pWnd->input() ? true : false);
+		}
+		else
+			c->returnValue()->setBoolean(false);
 	return true;
 }
 
@@ -549,13 +549,13 @@ static bool window_kvs_fnc_hasInput(KviKvsModuleFunctionCall * c)
 static bool window_kvs_fnc_hasUserFocus(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		bool b = (pWnd == g_pActiveWindow) && pWnd->isActiveWindow();
-		c->returnValue()->setBoolean(b ? true : false);
-	}
-	else
-		c->returnValue()->setBoolean(false);
+		if(pWnd)
+		{
+			bool b = (pWnd == g_pActiveWindow) && pWnd->isActiveWindow();
+			c->returnValue()->setBoolean(b ? true : false);
+		}
+		else
+			c->returnValue()->setBoolean(false);
 	return true;
 }
 
@@ -581,10 +581,10 @@ static bool window_kvs_fnc_hasUserFocus(KviKvsModuleFunctionCall * c)
 static bool window_kvs_fnc_console(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		c->returnValue()->setInteger(pWnd->console() ? QString(pWnd->console()->id()).toInt() : 0);
-	}
+		if(pWnd)
+		{
+			c->returnValue()->setInteger(pWnd->console() ? QString(pWnd->console()->id()).toInt() : 0);
+		}
 	return true;
 }
 
@@ -610,12 +610,12 @@ static bool window_kvs_fnc_console(KviKvsModuleFunctionCall * c)
 static bool window_kvs_fnc_hasOutput(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		c->returnValue()->setBoolean(pWnd->view() ? true : false);
-	}
-	else
-		c->returnValue()->setBoolean(false);
+		if(pWnd)
+		{
+			c->returnValue()->setBoolean(pWnd->view() ? true : false);
+		}
+		else
+			c->returnValue()->setBoolean(false);
 	return true;
 }
 
@@ -637,12 +637,12 @@ static bool window_kvs_fnc_hasOutput(KviKvsModuleFunctionCall * c)
 static bool window_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		c->returnValue()->setBoolean(true);
-	}
-	else
-		c->returnValue()->setBoolean(false);
+		if(pWnd)
+		{
+			c->returnValue()->setBoolean(true);
+		}
+		else
+			c->returnValue()->setBoolean(false);
 	return true;
 }
 
@@ -675,23 +675,23 @@ static bool window_kvs_cmd_highlight(KviKvsModuleCommandCall * c)
 	kvs_uint_t level;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("level", KVS_PT_UINT, 0, level)
-	KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)
-	KVSM_PARAMETERS_END(c)
-	if(c->parameterList()->count() == 1)
-	{
-		pWnd = c->window();
-	}
-	else
-	{
-		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
-		if(!pWnd)
+		KVSM_PARAMETER("level", KVS_PT_UINT, 0, level)
+		KVSM_PARAMETER("window_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szWnd)
+		KVSM_PARAMETERS_END(c)
+		if(c->parameterList()->count() == 1)
 		{
-			if(!c->hasSwitch('q', "quiet"))
-				c->warning(__tr2qs("The window with ID '%s' doesn't exist"), szWnd.toUtf8().data());
-			return true;
+			pWnd = c->window();
 		}
-	}
+		else
+		{
+			pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
+			if(!pWnd)
+			{
+				if(!c->hasSwitch('q', "quiet"))
+					c->warning(__tr2qs("The window with ID '%s' doesn't exist"), szWnd.toUtf8().data());
+				return true;
+			}
+		}
 
 	//force the previous level to be lower
 	pWnd->unhighlight();
@@ -728,16 +728,16 @@ static bool window_kvs_cmd_highlight(KviKvsModuleCommandCall * c)
 static bool window_kvs_fnc_highlightLevel(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		unsigned int v;
-		pWnd->highlightMeter(&v);
-		c->returnValue()->setInteger(v);
-	}
-	else
-	{
-		c->returnValue()->setInteger(0);
-	}
+		if(pWnd)
+		{
+			unsigned int v;
+			pWnd->highlightMeter(&v);
+			c->returnValue()->setInteger(v);
+		}
+		else
+		{
+			c->returnValue()->setInteger(0);
+		}
 	return true;
 }
 
@@ -762,10 +762,10 @@ static bool window_kvs_fnc_highlightLevel(KviKvsModuleFunctionCall * c)
 static bool window_kvs_fnc_type(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		c->returnValue()->setString(pWnd->typeString());
-	}
+		if(pWnd)
+		{
+			c->returnValue()->setString(pWnd->typeString());
+		}
 	return true;
 }
 
@@ -790,10 +790,10 @@ static bool window_kvs_fnc_type(KviKvsModuleFunctionCall * c)
 static bool window_kvs_fnc_context(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		c->returnValue()->setInteger(pWnd->context() ? pWnd->context()->id() : 0);
-	}
+		if(pWnd)
+		{
+			c->returnValue()->setInteger(pWnd->context() ? pWnd->context()->id() : 0);
+		}
 	return true;
 }
 
@@ -818,10 +818,10 @@ static bool window_kvs_fnc_context(KviKvsModuleFunctionCall * c)
 static bool window_kvs_fnc_caption(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		c->returnValue()->setString(pWnd->plainTextCaption());
-	}
+		if(pWnd)
+		{
+			c->returnValue()->setString(pWnd->plainTextCaption());
+		}
 	return true;
 }
 
@@ -923,10 +923,10 @@ static bool window_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	QString szContext;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("type", KVS_PT_STRING, 0, szType)
-	KVSM_PARAMETER("irc_context_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szContext)
-	KVSM_PARAMETERS_END(c)
-	KviKvsArray * pArray = new KviKvsArray();
+		KVSM_PARAMETER("type", KVS_PT_STRING, 0, szType)
+		KVSM_PARAMETER("irc_context_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szContext)
+		KVSM_PARAMETERS_END(c)
+		KviKvsArray * pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
 
 	if(szType.isEmpty())
@@ -1113,15 +1113,14 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	QString szIcon;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
-	KVSM_PARAMETER("caption", KVS_PT_STRING, KVS_PF_OPTIONAL, szCaption)
-	KVSM_PARAMETER("irc_context", KVS_PT_UINT, KVS_PF_OPTIONAL, uCtx)
-	KVSM_PARAMETER("icon", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
-	KVSM_PARAMETERS_END(c)
-	QPixmap * pPix = g_pIconManager->getImage(szIcon);
+		KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
+		KVSM_PARAMETER("caption", KVS_PT_STRING, KVS_PF_OPTIONAL, szCaption)
+		KVSM_PARAMETER("irc_context", KVS_PT_UINT, KVS_PF_OPTIONAL, uCtx)
+		KVSM_PARAMETER("icon", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
+		KVSM_PARAMETERS_END(c)
+		QPixmap * pPix = g_pIconManager->getImage(szIcon);
 	if(!pPix)
 	{
-
 		c->warning(__tr2qs("The specified icon doesn't exist: switching to 'none'"));
 		szIcon.prepend("$icon(");
 		szIcon.append(")");
@@ -1141,10 +1140,10 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	}
 
 	UserWindow * pWnd = new UserWindow(
-	    szCaption.toUtf8().data(),
-	    szIcon,
-	    pConsole,
-	    iFlags);
+		szCaption.toUtf8().data(),
+		szIcon,
+		pConsole,
+		iFlags);
 
 	g_pMainWindow->addWindow(pWnd, !szFlags.contains('m'));
 
@@ -1178,11 +1177,11 @@ static bool window_kvs_cmd_setWindowTitle(KviKvsModuleCommandCall * c)
 	QString szPlain;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
-	KVSM_PARAMETER("plain_text_caption", KVS_PT_STRING, 0, szPlain)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
+		KVSM_PARAMETER("plain_text_caption", KVS_PT_STRING, 0, szPlain)
+		KVSM_PARAMETERS_END(c)
 
-	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
+		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q', "quiet"))
@@ -1228,11 +1227,11 @@ static bool window_kvs_cmd_setInputText(KviKvsModuleCommandCall * c)
 	QString szText;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
-	KVSM_PARAMETER("text", KVS_PT_STRING, 0, szText)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
+		KVSM_PARAMETER("text", KVS_PT_STRING, 0, szText)
+		KVSM_PARAMETERS_END(c)
 
-	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
+		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q', "quiet"))
@@ -1272,11 +1271,11 @@ static bool window_kvs_cmd_insertInInputText(KviKvsModuleCommandCall * c)
 	QString szText;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
-	KVSM_PARAMETER("text", KVS_PT_STRING, 0, szText)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
+		KVSM_PARAMETER("text", KVS_PT_STRING, 0, szText)
+		KVSM_PARAMETERS_END(c)
 
-	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
+		pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q', "quiet"))
@@ -1311,11 +1310,11 @@ static bool window_kvs_cmd_insertInInputText(KviKvsModuleCommandCall * c)
 static bool window_kvs_fnc_inputText(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
-		if(pWnd->input())
-			c->returnValue()->setString(pWnd->input()->text());
-	}
+		if(pWnd)
+		{
+			if(pWnd->input())
+				c->returnValue()->setString(pWnd->input()->text());
+		}
 	return true;
 }
 
@@ -1344,11 +1343,11 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 	QString szWnd;
 	QString szBackground;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
-	KVSM_PARAMETER("background_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szBackground)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
+		KVSM_PARAMETER("background_path", KVS_PT_STRING, KVS_PF_OPTIONAL, szBackground)
+		KVSM_PARAMETERS_END(c)
 
-	KviWindow * pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
+		KviWindow * pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
 	{
 		if(!c->hasSwitch('q', "quiet"))
@@ -1405,10 +1404,10 @@ static bool window_kvs_cmd_setBackground(KviKvsModuleCommandCall * c)
 static bool window_kvs_cmd_savePropertiesAsDefault(KviKvsModuleCommandCall * c)
 {
 	GET_KVS_WINDOW_ID
-	if(pWnd)
-	{
-		pWnd->savePropertiesAsDefault();
-	}
+		if(pWnd)
+		{
+			pWnd->savePropertiesAsDefault();
+		}
 	return true;
 }
 
@@ -1505,13 +1504,13 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 	QString szDecryptKey;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
-	KVSM_PARAMETER("enginename", KVS_PT_STRING, KVS_PF_OPTIONAL, szEngine)
-	KVSM_PARAMETER("hex_encrypt_key", KVS_PT_STRING, KVS_PF_OPTIONAL, szEncryptKey)
-	KVSM_PARAMETER("hex_decrypt_key", KVS_PT_STRING, KVS_PF_OPTIONAL, szDecryptKey)
-	KVSM_PARAMETERS_END(c)
-	if(szDecryptKey.isEmpty())
-		szDecryptKey = szEncryptKey;
+		KVSM_PARAMETER("window_id", KVS_PT_STRING, 0, szWnd)
+		KVSM_PARAMETER("enginename", KVS_PT_STRING, KVS_PF_OPTIONAL, szEngine)
+		KVSM_PARAMETER("hex_encrypt_key", KVS_PT_STRING, KVS_PF_OPTIONAL, szEncryptKey)
+		KVSM_PARAMETER("hex_decrypt_key", KVS_PT_STRING, KVS_PF_OPTIONAL, szDecryptKey)
+		KVSM_PARAMETERS_END(c)
+		if(szDecryptKey.isEmpty())
+			szDecryptKey = szEncryptKey;
 #ifdef COMPILE_CRYPT_SUPPORT
 	KviWindow * pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
 	if(!pWnd)
@@ -1599,15 +1598,15 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 static bool window_kvs_fnc_cryptEngine(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_FNC_WINDOW_ID
-	if(pWnd)
-	{
+		if(pWnd)
+		{
 #ifdef COMPILE_CRYPT_SUPPORT
-		if(KviCryptSessionInfo * pCryptSessionInfo = pWnd->cryptSessionInfo())
-			c->returnValue()->setString(pCryptSessionInfo->m_szEngineName);
+			if(KviCryptSessionInfo * pCryptSessionInfo = pWnd->cryptSessionInfo())
+				c->returnValue()->setString(pCryptSessionInfo->m_szEngineName);
 #else  //!COMPILE_CRYPT_SUPPORT
-// do nothing
+			// do nothing
 #endif //!COMPILE_CRYPT_SUPPORT
-	}
+		}
 	return true;
 }
 
@@ -1683,12 +1682,12 @@ static bool window_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Window",                                                            // module name
-    "4.0.0",                                                             // module version
-    "Copyright (C) 2001-2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "KVIrc window management functions",
-    window_module_init,
-    window_module_can_unload,
-    0,
-    window_module_cleanup,
-    0)
+	"Window",                                                            // module name
+	"4.0.0",                                                             // module version
+	"Copyright (C) 2001-2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"KVIrc window management functions",
+	window_module_init,
+	window_module_can_unload,
+	0,
+	window_module_cleanup,
+	0)

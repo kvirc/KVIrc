@@ -72,12 +72,12 @@ bool KvsObject_mainWindow::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 KVSO_CLASS_FUNCTION(mainWindow, setCentralWidget)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!pObject)
 	{
 		c->warning(__tr2qs_ctx("Widget parameter is not an object", "objects"));

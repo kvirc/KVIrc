@@ -687,13 +687,13 @@ protected:
 	* \return void
 	*/
 	void initQResourceBackend();
-public slots:
+	public slots:
 	/**
 	* \brief Shows the table of icons
 	* \return void
 	*/
 	void showIconWidget();
-protected slots:
+	protected slots:
 	/**
 	* \brief Called when we close the table of icons
 	* \return void

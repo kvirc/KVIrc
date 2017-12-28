@@ -185,7 +185,7 @@ KVSO_END_DESTRUCTOR(KvsObject_tabWidget)
 bool KvsObject_tabWidget::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QTabWidget)
-	connect(widget(), SIGNAL(currentChanged(int)), this, SLOT(slotCurrentChanged(int)));
+		connect(widget(), SIGNAL(currentChanged(int)), this, SLOT(slotCurrentChanged(int)));
 	connect(widget(), SIGNAL(tabCloseRequested(int)), this, SLOT(slotTabCloseRequest(int)));
 
 	return true;
@@ -193,28 +193,28 @@ bool KvsObject_tabWidget::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 KVSO_CLASS_FUNCTION(tabWidget, setTabsClosable)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bClosable;
+		bool bClosable;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bool_flag", KVS_PT_BOOLEAN, 0, bClosable)
-	KVSO_PARAMETERS_END(c)
-	((QTabWidget *)widget())->setTabsClosable(bClosable);
+		KVSO_PARAMETER("bool_flag", KVS_PT_BOOLEAN, 0, bClosable)
+		KVSO_PARAMETERS_END(c)
+		((QTabWidget *)widget())->setTabsClosable(bClosable);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(tabWidget, addTab)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	QString szLabel, szIcon;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
-	KVSO_PARAMETER("icon_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
-	KVSO_PARAMETERS_END(c)
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
+		KVSO_PARAMETER("icon_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
+		KVSO_PARAMETERS_END(c)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	QPixmap * pix = g_pIconManager->getImage(szIcon);
+		QPixmap * pix = g_pIconManager->getImage(szIcon);
 	if(pix)
 	{
 		((QTabWidget *)widget())->addTab(((QWidget *)(pObject->object())), QIcon(*pix), szLabel);
@@ -229,15 +229,15 @@ KVSO_CLASS_FUNCTION(tabWidget, addTab)
 KVSO_CLASS_FUNCTION(tabWidget, indexOf)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	QString szLabel, szIcon;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	int iIdx = ((QTabWidget *)widget())->indexOf(((KvsObject_widget *)pObject)->widget());
+		int iIdx = ((QTabWidget *)widget())->indexOf(((KvsObject_widget *)pObject)->widget());
 	c->returnValue()->setInteger((kvs_int_t)iIdx);
 	return true;
 }
@@ -245,33 +245,33 @@ KVSO_CLASS_FUNCTION(tabWidget, indexOf)
 KVSO_CLASS_FUNCTION(tabWidget, widgetAt)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iIndex;
+		kvs_int_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("index", KVS_PT_INTEGER, 0, iIndex)
-	KVSO_PARAMETERS_END(c)
-	if(iIndex >= tabsList.count() || iIndex < 0)
-		c->returnValue()->setHObject((kvs_hobject_t) nullptr);
-	else
-		c->returnValue()->setHObject(tabsList.at(iIndex));
+		KVSO_PARAMETER("index", KVS_PT_INTEGER, 0, iIndex)
+		KVSO_PARAMETERS_END(c)
+		if(iIndex >= tabsList.count() || iIndex < 0)
+			c->returnValue()->setHObject((kvs_hobject_t) nullptr);
+		else
+			c->returnValue()->setHObject(tabsList.at(iIndex));
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(tabWidget, insertTab)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	QString szLabel, szIcon;
 	kvs_uint_t uIndex;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("tab_widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
-	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
-	KVSO_PARAMETER("icon_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
-	KVSO_PARAMETERS_END(c)
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("tab_widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
+		KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, uIndex)
+		KVSO_PARAMETER("icon_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
+		KVSO_PARAMETERS_END(c)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	QPixmap * pix = g_pIconManager->getImage(szIcon);
+		QPixmap * pix = g_pIconManager->getImage(szIcon);
 	if(pix)
 		((QTabWidget *)widget())->insertTab(uIndex, (QWidget *)(pObject->object()), QIcon(*pix), szLabel);
 	else
@@ -283,26 +283,26 @@ KVSO_CLASS_FUNCTION(tabWidget, insertTab)
 KVSO_CLASS_FUNCTION(tabWidget, setCurrentPage)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t iIndex;
+		kvs_uint_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, iIndex)
-	KVSO_PARAMETERS_END(c)
-	((QTabWidget *)widget())->setCurrentIndex(iIndex);
+		KVSO_PARAMETER("index", KVS_PT_UNSIGNEDINTEGER, 0, iIndex)
+		KVSO_PARAMETERS_END(c)
+		((QTabWidget *)widget())->setCurrentIndex(iIndex);
 	return true;
 }
 KVSO_CLASS_FUNCTION(tabWidget, setTabToolTip)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	QString szTooltip;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("tab_widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETER("tooltip", KVS_PT_STRING, 0, szTooltip)
-	KVSO_PARAMETERS_END(c)
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("tab_widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETER("tooltip", KVS_PT_STRING, 0, szTooltip)
+		KVSO_PARAMETERS_END(c)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	int iIdx = ((QTabWidget *)widget())->indexOf(((QWidget *)(pObject->object())));
+		int iIdx = ((QTabWidget *)widget())->indexOf(((QWidget *)(pObject->object())));
 	if(iIdx == -1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab ", "objects"));
@@ -314,14 +314,14 @@ KVSO_CLASS_FUNCTION(tabWidget, setTabToolTip)
 KVSO_CLASS_FUNCTION(tabWidget, removeTabToolTip)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("tab_widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("tab_widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	int iIdx = ((QTabWidget *)widget())->indexOf(((QWidget *)(pObject->object())));
+		int iIdx = ((QTabWidget *)widget())->indexOf(((QWidget *)(pObject->object())));
 	if(iIdx == -1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab ", "objects"));
@@ -334,16 +334,16 @@ KVSO_CLASS_FUNCTION(tabWidget, removeTabToolTip)
 KVSO_CLASS_FUNCTION(tabWidget, setTabLabel)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	QString szLabel;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("tab_widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETER("tooltip", KVS_PT_STRING, 0, szLabel)
-	KVSO_PARAMETERS_END(c)
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("tab_widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETER("tooltip", KVS_PT_STRING, 0, szLabel)
+		KVSO_PARAMETERS_END(c)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	int iIdx = ((QTabWidget *)widget())->indexOf(((QWidget *)(pObject->object())));
+		int iIdx = ((QTabWidget *)widget())->indexOf(((QWidget *)(pObject->object())));
 	if(iIdx == -1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab ", "objects"));
@@ -355,18 +355,18 @@ KVSO_CLASS_FUNCTION(tabWidget, setTabLabel)
 KVSO_CLASS_FUNCTION(tabWidget, currentPageIndex)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	int index = ((QTabWidget *)widget())->currentIndex();
+		int index = ((QTabWidget *)widget())->currentIndex();
 	c->returnValue()->setInteger(index);
 	return true;
 }
 KVSO_CLASS_FUNCTION(tabWidget, tabLabel)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t uIndex;
+		kvs_int_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("index", KVS_PT_INT, 0, uIndex)
-	KVSO_PARAMETERS_END(c)
-	QString label = ((QTabWidget *)widget())->tabText(uIndex);
+		KVSO_PARAMETER("index", KVS_PT_INT, 0, uIndex)
+		KVSO_PARAMETERS_END(c)
+		QString label = ((QTabWidget *)widget())->tabText(uIndex);
 	c->returnValue()->setString(label);
 	return true;
 }
@@ -374,7 +374,7 @@ KVSO_CLASS_FUNCTION(tabWidget, tabLabel)
 KVSO_CLASS_FUNCTION(tabWidget, count)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	int count = ((QTabWidget *)widget())->count();
+		int count = ((QTabWidget *)widget())->count();
 	c->returnValue()->setInteger(count);
 	return true;
 }
@@ -382,7 +382,7 @@ KVSO_CLASS_FUNCTION(tabWidget, count)
 KVSO_CLASS_FUNCTION(tabWidget, currentTabLabel)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	int i = ((QTabWidget *)widget())->currentIndex();
+		int i = ((QTabWidget *)widget())->currentIndex();
 	QString label = ((QTabWidget *)widget())->tabText(i);
 	c->returnValue()->setString(label);
 	return true;
@@ -390,14 +390,14 @@ KVSO_CLASS_FUNCTION(tabWidget, currentTabLabel)
 KVSO_CLASS_FUNCTION(tabWidget, removePage)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("tab_widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("tab_widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	int iIdx = ((QTabWidget *)widget())->indexOf(((QWidget *)(pObject->object())));
+		int iIdx = ((QTabWidget *)widget())->indexOf(((QWidget *)(pObject->object())));
 	if(iIdx == -1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab ", "objects"));
@@ -411,17 +411,17 @@ KVSO_CLASS_FUNCTION(tabWidget, removePage)
 KVSO_CLASS_FUNCTION(tabWidget, changeTab)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	KviKvsObject * pObject;
+		KviKvsObject * pObject;
 	QString szLabel, szIcon;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("tab_widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
-	KVSO_PARAMETER("icon_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
-	KVSO_PARAMETERS_END(c)
-	pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("tab_widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETER("label", KVS_PT_STRING, 0, szLabel)
+		KVSO_PARAMETER("icon_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szIcon)
+		KVSO_PARAMETERS_END(c)
+		pObject = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
-	int iIdx = ((QTabWidget *)widget())->indexOf(((QWidget *)(pObject->object())));
+		int iIdx = ((QTabWidget *)widget())->indexOf(((QWidget *)(pObject->object())));
 	if(iIdx == -1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab", "objects"));
@@ -437,16 +437,16 @@ KVSO_CLASS_FUNCTION(tabWidget, changeTab)
 KVSO_CLASS_FUNCTION(tabWidget, setTabPosition)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szPos;
+		QString szPos;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("tab_position", KVS_PT_STRING, 0, szPos)
-	KVSO_PARAMETERS_END(c)
-	if(KviQString::equalCI(szPos, "Top"))
-		((QTabWidget *)widget())->setTabPosition(QTabWidget::North);
-	else if(KviQString::equalCI(szPos, "Bottom"))
-		((QTabWidget *)widget())->setTabPosition(QTabWidget::South);
-	else
-		c->warning(__tr2qs_ctx("Unknown position '%Q'", "objects"), &szPos);
+		KVSO_PARAMETER("tab_position", KVS_PT_STRING, 0, szPos)
+		KVSO_PARAMETERS_END(c)
+		if(KviQString::equalCI(szPos, "Top"))
+			((QTabWidget *)widget())->setTabPosition(QTabWidget::North);
+		else if(KviQString::equalCI(szPos, "Bottom"))
+			((QTabWidget *)widget())->setTabPosition(QTabWidget::South);
+		else
+			c->warning(__tr2qs_ctx("Unknown position '%Q'", "objects"), &szPos);
 	return true;
 }
 

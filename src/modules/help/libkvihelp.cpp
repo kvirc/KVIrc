@@ -86,15 +86,15 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	QDir dirHelp;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("document", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szParam)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("document", KVS_PT_STRING, KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING, szParam)
+		KVSM_PARAMETERS_END(c)
 
-	// no document => index
-	if(szParam.isEmpty())
-	{
-		szParam = QString("index.html");
-		qDebug("No file, use default at path %s", szDoc.toUtf8().data());
-	}
+		// no document => index
+		if(szParam.isEmpty())
+		{
+			szParam = QString("index.html");
+			qDebug("No file, use default at path %s", szDoc.toUtf8().data());
+		}
 
 	/*
 	 * Path checking order:
@@ -103,7 +103,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	 * 3) global help (in kvirc directory)
 	 */
 
-	// try absolute path
+	 // try absolute path
 	QFileInfo f(szParam);
 	if(!f.exists() || !f.isAbsolute())
 	{
@@ -190,7 +190,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 			w->textBrowser()->setSource(QUrl::fromLocalFile(f.absoluteFilePath()));
 #endif
 			HelpWindow * pHelpWindow = g_pHelpWindowList->first();
-			if (pHelpWindow)
+			if(pHelpWindow)
 				pHelpWindow->delayedAutoRaise();
 			return true;
 		}
@@ -263,12 +263,12 @@ static bool help_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Help",                                                         // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Help browser extension",
-    help_module_init,
-    help_module_can_unload,
-    0,
-    help_module_cleanup,
-    0)
+	"Help",                                                         // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Help browser extension",
+	help_module_init,
+	help_module_can_unload,
+	0,
+	help_module_cleanup,
+	0)

@@ -89,7 +89,7 @@ namespace KviTimeUtils
 	}
 
 	void secondsToDaysHoursMinsSecs(unsigned int uSecs,
-	    unsigned int * uD, unsigned int * uH, unsigned int * uM, unsigned int * uS)
+		unsigned int * uD, unsigned int * uH, unsigned int * uM, unsigned int * uS)
 	{
 		*uD = uSecs / 86400;
 		uSecs = uSecs % 86400;

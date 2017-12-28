@@ -28,12 +28,12 @@
 #include "KviLocale.h"
 
 KviTranslator::KviTranslator(QObject * pParent)
-    : QTranslator(pParent)
+	: QTranslator(pParent)
 {
 }
 
 KviTranslator::~KviTranslator()
-    = default;
+= default;
 
 QString KviTranslator::translate(const char *, const char * pcMessage, const char *) const
 {

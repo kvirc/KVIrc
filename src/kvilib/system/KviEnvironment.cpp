@@ -30,7 +30,6 @@
 
 namespace KviEnvironment
 {
-
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 
 	bool setVariable(const QString & szName, const QString & szValue)
@@ -42,7 +41,7 @@ namespace KviEnvironment
 #else
 #ifdef HAVE_PUTENV
 		int iLen1 = name.length()
-		int iLen2 = value.length();
+			int iLen2 = value.length();
 		char * buf = (char *)KviMemory::allocate(iLen1 + iLen2 + 2);
 		KviMemory::move(buf, name.data(), iLen1);
 		*(buf + iLen1) = '=';
@@ -89,7 +88,7 @@ namespace KviEnvironment
 			} // else this system sux
 		}
 #else
-// no setenv, no putenv.. what the hell of system is this ?
+		// no setenv, no putenv.. what the hell of system is this ?
 #endif
 #endif
 	}

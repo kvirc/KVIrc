@@ -43,7 +43,7 @@ protected:
 	void setOkButton(const QString &);
 	void setCancelButton(const QString &);
 	void addTab(QWidget *, const QString &);
-protected slots:
+	protected slots:
 	void okPressed();
 	void cancelPressed();
 

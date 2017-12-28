@@ -54,7 +54,7 @@ protected:
 	bool setOrientation(KviKvsObjectFunctionCall * c);
 	bool valueChangedEvent(KviKvsObjectFunctionCall * c);
 
-protected slots:
+	protected slots:
 	void valueChanged(int);
 };
 

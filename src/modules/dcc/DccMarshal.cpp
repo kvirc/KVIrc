@@ -37,7 +37,7 @@
 #include <QTimer>
 
 DccMarshal::DccMarshal(DccMarshalOutputContext * ctx)
-    : QObject(nullptr)
+	: QObject(nullptr)
 {
 	setObjectName("dcc_marshal");
 	m_pSn = nullptr;
@@ -170,7 +170,7 @@ void DccMarshal::doListen()
 
 #ifdef COMPILE_IPV6_SUPPORT
 	m_fd = kvi_socket_create(m_bIPv6 ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,
-	    KVI_SOCKET_TYPE_STREAM, KVI_SOCKET_PROTO_TCP);
+		KVI_SOCKET_TYPE_STREAM, KVI_SOCKET_PROTO_TCP);
 #else
 	m_fd = kvi_socket_create(KVI_SOCKET_PF_INET, KVI_SOCKET_TYPE_STREAM, KVI_SOCKET_PROTO_TCP);
 #endif
@@ -235,7 +235,6 @@ void DccMarshal::doListen()
 				}
 				m_uPort++;
 			}
-
 		} while((!bBindSuccess) && (m_uPort <= KVI_OPTION_UINT(KviOption_uintDccMaxPort)));
 
 		if(!bBindSuccess)
@@ -253,7 +252,7 @@ void DccMarshal::doListen()
 		return;
 	}
 
-// Reread the port in case we're binding to a random one (0)
+	// Reread the port in case we're binding to a random one (0)
 
 #ifdef COMPILE_IPV6_SUPPORT
 	KviSockaddr sareal(0, m_bIPv6);
@@ -356,13 +355,13 @@ void DccMarshal::doConnect()
 		return;
 	}
 
-// create the socket
+	// create the socket
 #ifdef COMPILE_IPV6_SUPPORT
 	m_fd = kvi_socket_create(m_bIPv6 ? KVI_SOCKET_PF_INET6 : KVI_SOCKET_PF_INET,
-	    KVI_SOCKET_TYPE_STREAM, KVI_SOCKET_PROTO_TCP);
+		KVI_SOCKET_TYPE_STREAM, KVI_SOCKET_PROTO_TCP);
 #else
 	m_fd = kvi_socket_create(KVI_SOCKET_PF_INET,
-	    KVI_SOCKET_TYPE_STREAM, KVI_SOCKET_PROTO_TCP);
+		KVI_SOCKET_TYPE_STREAM, KVI_SOCKET_PROTO_TCP);
 #endif
 	if(m_fd == KVI_INVALID_SOCKET)
 	{
@@ -378,7 +377,7 @@ void DccMarshal::doConnect()
 		return;
 	}
 
-// fill the sockaddr structure
+	// fill the sockaddr structure
 
 #ifdef COMPILE_IPV6_SUPPORT
 	KviSockaddr sa(m_szIp.toUtf8().data(), m_uPort, m_bIPv6);
@@ -406,7 +405,7 @@ void DccMarshal::doConnect()
 				// Zero error ?...let's look closer
 				int iSize = sizeof(int);
 				if(!kvi_socket_getsockopt(m_fd, SOL_SOCKET, SO_ERROR,
-				       (void *)&sockError, &iSize))
+					(void *)&sockError, &iSize))
 					sockError = 0;
 			}
 			// Die
@@ -606,55 +605,55 @@ void DccMarshal::doSSLHandshake(int)
 
 	switch(r)
 	{
-		case KviSSL::Success:
-			// done!
-			//			qDebug("EMITTING CONNECTED");
-			emit connected();
-			//			qDebug("CONNECTED EMITTED");
-			break;
-		case KviSSL::WantRead:
-			m_pSn = new QSocketNotifier((int)m_fd, QSocketNotifier::Read);
-			QObject::connect(m_pSn, SIGNAL(activated(int)), this, SLOT(doSSLHandshake(int)));
-			m_pSn->setEnabled(true);
-			break;
-		case KviSSL::WantWrite:
+	case KviSSL::Success:
+		// done!
+		//			qDebug("EMITTING CONNECTED");
+		emit connected();
+		//			qDebug("CONNECTED EMITTED");
+		break;
+	case KviSSL::WantRead:
+		m_pSn = new QSocketNotifier((int)m_fd, QSocketNotifier::Read);
+		QObject::connect(m_pSn, SIGNAL(activated(int)), this, SLOT(doSSLHandshake(int)));
+		m_pSn->setEnabled(true);
+		break;
+	case KviSSL::WantWrite:
+		m_pSn = new QSocketNotifier((int)m_fd, QSocketNotifier::Write);
+		QObject::connect(m_pSn, SIGNAL(activated(int)), this, SLOT(doSSLHandshake(int)));
+		m_pSn->setEnabled(true);
+		break;
+	case KviSSL::RemoteEndClosedConnection:
+		reset();
+		emit error(KviError::RemoteEndClosedConnection);
+		break;
+	case KviSSL::SyscallError:
+	{
+		// syscall problem
+		int err = kvi_socket_error();
+		if(kvi_socket_recoverableError(err))
+		{
+			// can recover ? (EAGAIN, EINTR ?)
 			m_pSn = new QSocketNotifier((int)m_fd, QSocketNotifier::Write);
 			QObject::connect(m_pSn, SIGNAL(activated(int)), this, SLOT(doSSLHandshake(int)));
 			m_pSn->setEnabled(true);
-			break;
-		case KviSSL::RemoteEndClosedConnection:
-			reset();
-			emit error(KviError::RemoteEndClosedConnection);
-			break;
-		case KviSSL::SyscallError:
-		{
-			// syscall problem
-			int err = kvi_socket_error();
-			if(kvi_socket_recoverableError(err))
-			{
-				// can recover ? (EAGAIN, EINTR ?)
-				m_pSn = new QSocketNotifier((int)m_fd, QSocketNotifier::Write);
-				QObject::connect(m_pSn, SIGNAL(activated(int)), this, SLOT(doSSLHandshake(int)));
-				m_pSn->setEnabled(true);
-				return;
-			}
-			else
-			{
-				// Declare problems :)
-				reset();
-				emit error(err ? KviError::translateSystemError(err) : KviError::UnknownError);
-			}
+			return;
 		}
-		break;
-		default:
+		else
 		{
-			KviCString buffer;
-			while(m_pSSL->getLastErrorString(buffer))
-				emit sslError(buffer.ptr());
+			// Declare problems :)
 			reset();
-			emit error(KviError::SSLError);
+			emit error(err ? KviError::translateSystemError(err) : KviError::UnknownError);
 		}
-		break;
+	}
+	break;
+	default:
+	{
+		KviCString buffer;
+		while(m_pSSL->getLastErrorString(buffer))
+			emit sslError(buffer.ptr());
+		reset();
+		emit error(KviError::SSLError);
+	}
+	break;
 	}
 #else  //!COMPILE_SSL_SUPPORT
 	qDebug("Oops! SSL handshake without SSL support! Aborting!");

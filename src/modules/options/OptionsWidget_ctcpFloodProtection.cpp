@@ -72,7 +72,7 @@
 */
 
 OptionsWidget_ctcpFloodProtection::OptionsWidget_ctcpFloodProtection(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("ctcpfloodprotection_options_widget");
 
@@ -107,4 +107,4 @@ OptionsWidget_ctcpFloodProtection::OptionsWidget_ctcpFloodProtection(QWidget * p
 }
 
 OptionsWidget_ctcpFloodProtection::~OptionsWidget_ctcpFloodProtection()
-    = default;
+= default;

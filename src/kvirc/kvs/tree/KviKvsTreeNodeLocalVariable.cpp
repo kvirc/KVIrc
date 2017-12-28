@@ -26,12 +26,12 @@
 #include "KviKvsRunTimeContext.h"
 
 KviKvsTreeNodeLocalVariable::KviKvsTreeNodeLocalVariable(const QChar * pLocation, const QString & szIdentifier)
-    : KviKvsTreeNodeVariable(pLocation, szIdentifier)
+	: KviKvsTreeNodeVariable(pLocation, szIdentifier)
 {
 }
 
 KviKvsTreeNodeLocalVariable::~KviKvsTreeNodeLocalVariable()
-    = default;
+= default;
 
 void KviKvsTreeNodeLocalVariable::contextDescription(QString & szBuffer)
 {
@@ -60,8 +60,8 @@ bool KviKvsTreeNodeLocalVariable::evaluateReadOnly(KviKvsRunTimeContext * c, Kvi
 KviKvsRWEvaluationResult * KviKvsTreeNodeLocalVariable::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
 	return new KviKvsHashElement(
-	    nullptr,
-	    c->localVariables()->get(m_szIdentifier),
-	    c->localVariables(),
-	    m_szIdentifier);
+		nullptr,
+		c->localVariables()->get(m_szIdentifier),
+		c->localVariables(),
+		m_szIdentifier);
 }

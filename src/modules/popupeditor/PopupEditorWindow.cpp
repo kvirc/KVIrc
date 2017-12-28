@@ -55,13 +55,13 @@ extern PopupEditorWindow * g_pPopupEditorWindow;
 
 //KviPopupEntryItem
 PopupTreeWidgetItem::PopupTreeWidgetItem(QTreeWidget * pTreeWidget, PopupTreeWidgetItem * after, Type t)
-    : QTreeWidgetItem(pTreeWidget, after), m_type(t)
+	: QTreeWidgetItem(pTreeWidget, after), m_type(t)
 {
 	init();
 }
 
 PopupTreeWidgetItem::PopupTreeWidgetItem(PopupTreeWidgetItem * parent, PopupTreeWidgetItem * after, Type t)
-    : QTreeWidgetItem(parent, after), m_type(t)
+	: QTreeWidgetItem(parent, after), m_type(t)
 {
 	init();
 }
@@ -70,32 +70,32 @@ void PopupTreeWidgetItem::init()
 {
 	switch(m_type)
 	{
-		case Item:
-			setText(1, __tr2qs_ctx("Item", "editor"));
-			break;
-		case Menu:
-			setText(1, __tr2qs_ctx("Submenu", "editor"));
-			break;
-		case ExtMenu:
-			setText(1, __tr2qs_ctx("External Menu", "editor"));
-			break;
-		case Separator:
-			setText(0, "-----------------------");
-			setText(1, __tr2qs_ctx("Separator", "editor"));
-			break;
-		case Label:
-			setText(1, __tr2qs_ctx("Label", "editor"));
-			break;
-		case Epilogue:
-			setText(0, __tr2qs_ctx("### Epilogue ###", "editor"));
-			setText(1, __tr2qs_ctx("Epilogue", "editor"));
-			break;
-		case Prologue:
-			setText(0, __tr2qs_ctx("### Prologue ###", "editor"));
-			setText(1, __tr2qs_ctx("Prologue", "editor"));
-			break;
-		default:
-			break;
+	case Item:
+		setText(1, __tr2qs_ctx("Item", "editor"));
+		break;
+	case Menu:
+		setText(1, __tr2qs_ctx("Submenu", "editor"));
+		break;
+	case ExtMenu:
+		setText(1, __tr2qs_ctx("External Menu", "editor"));
+		break;
+	case Separator:
+		setText(0, "-----------------------");
+		setText(1, __tr2qs_ctx("Separator", "editor"));
+		break;
+	case Label:
+		setText(1, __tr2qs_ctx("Label", "editor"));
+		break;
+	case Epilogue:
+		setText(0, __tr2qs_ctx("### Epilogue ###", "editor"));
+		setText(1, __tr2qs_ctx("Epilogue", "editor"));
+		break;
+	case Prologue:
+		setText(0, __tr2qs_ctx("### Prologue ###", "editor"));
+		setText(1, __tr2qs_ctx("Prologue", "editor"));
+		break;
+	default:
+		break;
 	}
 }
 
@@ -103,15 +103,15 @@ void PopupTreeWidgetItem::setItemText(const QString & szText)
 {
 	switch(m_type)
 	{
-		case Item:
-		case Menu:
-		case Label:
-		case ExtMenu:
-			m_szText = szText;
-			setText(0, szText);
-			break;
-		default:
-			break;
+	case Item:
+	case Menu:
+	case Label:
+	case ExtMenu:
+		m_szText = szText;
+		setText(0, szText);
+		break;
+	default:
+		break;
 	}
 }
 
@@ -119,15 +119,15 @@ void PopupTreeWidgetItem::setCondition(const QString & szCondition)
 {
 	switch(m_type)
 	{
-		case Item:
-		case Menu:
-		case Label:
-		case ExtMenu:
-		case Separator:
-			m_szCondition = szCondition;
-			break;
-		default:
-			break;
+	case Item:
+	case Menu:
+	case Label:
+	case ExtMenu:
+	case Separator:
+		m_szCondition = szCondition;
+		break;
+	default:
+		break;
 	}
 }
 
@@ -135,14 +135,14 @@ void PopupTreeWidgetItem::setCode(const QString & szCode)
 {
 	switch(m_type)
 	{
-		case Item:
-		case Epilogue:
-		case Prologue:
-		case ExtMenu:
-			m_szCode = szCode;
-			break;
-		default:
-			break;
+	case Item:
+	case Epilogue:
+	case Prologue:
+	case ExtMenu:
+		m_szCode = szCode;
+		break;
+	default:
+		break;
 	}
 }
 
@@ -155,26 +155,26 @@ void PopupTreeWidgetItem::setIcon(const QString & szIcon)
 {
 	switch(m_type)
 	{
-		case Item:
-		case Menu:
-		case Label:
-		case ExtMenu:
-			m_szIcon = szIcon;
-			{
-				QPixmap * pix = g_pIconManager->getImage(szIcon);
-				if(pix)
-					QTreeWidgetItem::setIcon(0, QIcon(*pix));
-				else
-					QTreeWidgetItem::setIcon(0, QIcon());
-			}
-			break;
-		default:
-			break;
+	case Item:
+	case Menu:
+	case Label:
+	case ExtMenu:
+		m_szIcon = szIcon;
+		{
+			QPixmap * pix = g_pIconManager->getImage(szIcon);
+			if(pix)
+				QTreeWidgetItem::setIcon(0, QIcon(*pix));
+			else
+				QTreeWidgetItem::setIcon(0, QIcon());
+		}
+		break;
+	default:
+		break;
 	}
 }
 
 SinglePopupEditor::SinglePopupEditor(QWidget * par)
-    : QWidget(par)
+	: QWidget(par)
 {
 	m_pLastSelectedItem = nullptr;
 	m_pContextPopup = new QMenu(this);
@@ -212,7 +212,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 
 	connect(m_pTreeWidget, SIGNAL(itemSelectionChanged()), this, SLOT(selectionChanged()));
 	connect(m_pTreeWidget, SIGNAL(customContextMenuRequested(const QPoint &)),
-	    this, SLOT(customContextMenuRequested(const QPoint &)));
+		this, SLOT(customContextMenuRequested(const QPoint &)));
 
 	m_pEditor = KviScriptEditor::createInstance(spl);
 
@@ -223,7 +223,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 
 	m_pTextEditor = new QLineEdit(this);
 	m_pTextEditor->setToolTip(
-	    __tr2qs_ctx("<b>Visible text</b><br>May contain identifiers that will be evaluated at popup call time.<br>For labels, this text can contain also limited HTML tags.", "editor"));
+		__tr2qs_ctx("<b>Visible text</b><br>May contain identifiers that will be evaluated at popup call time.<br>For labels, this text can contain also limited HTML tags.", "editor"));
 	g->addWidget(m_pTextEditor, 2, 1, 1, 2);
 
 	l = new QLabel(__tr2qs_ctx("Condition:", "editor"), this);
@@ -232,7 +232,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 
 	m_pConditionEditor = new QLineEdit(this);
 	m_pConditionEditor->setToolTip(
-	    __tr2qs_ctx("<b>Boolean condition</b><br>Will be evaluated at popup call time in order to decide if this entry has to be shown.<br>An empty condition evaluates to true.", "editor"));
+		__tr2qs_ctx("<b>Boolean condition</b><br>Will be evaluated at popup call time in order to decide if this entry has to be shown.<br>An empty condition evaluates to true.", "editor"));
 	g->addWidget(m_pConditionEditor, 3, 1, 1, 2);
 
 	l = new QLabel(__tr2qs_ctx("Icon:", "editor"), this);
@@ -241,7 +241,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 
 	m_pIconEditor = new QLineEdit(this);
 	m_pIconEditor->setToolTip(
-	    __tr2qs_ctx("<b>Icon identifier</b><br>May be an internal icon ID, an absolute path or a relative path.<br>Portable scripts should never use absolute paths.", "editor"));
+		__tr2qs_ctx("<b>Icon identifier</b><br>May be an internal icon ID, an absolute path or a relative path.<br>Portable scripts should never use absolute paths.", "editor"));
 	g->addWidget(m_pIconEditor, 4, 1, 1, 2);
 
 	l = new QLabel(__tr2qs_ctx("External menu:", "editor"), this);
@@ -250,7 +250,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 
 	m_pExtNameEditor = new QLineEdit(this);
 	m_pExtNameEditor->setToolTip(
-	    __tr2qs_ctx("<b>External menu name</b><br>This allows one to nest externally defined popup menus. The popup menu with the specified name will be looked up at menu setup time.", "editor"));
+		__tr2qs_ctx("<b>External menu name</b><br>This allows one to nest externally defined popup menus. The popup menu with the specified name will be looked up at menu setup time.", "editor"));
 	g->addWidget(m_pExtNameEditor, 5, 1, 1, 2);
 
 	l = new QLabel(__tr2qs_ctx("Item ID:", "editor"), this);
@@ -259,7 +259,7 @@ SinglePopupEditor::SinglePopupEditor(QWidget * par)
 
 	m_pIdEditor = new QLineEdit(this);
 	m_pIdEditor->setToolTip(
-	    __tr2qs_ctx("<b>Item ID</b><br>This will allow you to use delpopupitem later.", "editor"));
+		__tr2qs_ctx("<b>Item ID</b><br>This will allow you to use delpopupitem later.", "editor"));
 	g->addWidget(m_pIdEditor, 6, 1, 1, 2);
 	g->setColumnStretch(1, 1);
 	g->setRowStretch(1, 1);
@@ -274,7 +274,6 @@ SinglePopupEditor::~SinglePopupEditor()
 
 void SinglePopupEditor::testPopup()
 {
-
 	if(m_pTestPopup)
 		delete m_pTestPopup;
 	m_pTestPopup = getMenu();
@@ -292,7 +291,6 @@ void SinglePopupEditor::testPopup()
 
 PopupTreeWidgetItem * SinglePopupEditor::findMatchingItem(KviKvsPopupMenuItem * it, PopupTreeWidgetItem * item)
 {
-
 	if(it->type() != KviKvsPopupMenuItem::Item)
 		goto not_this_one;
 	if(item->m_type != PopupTreeWidgetItem::Item)
@@ -358,7 +356,6 @@ not_this_one:
 
 void SinglePopupEditor::testModeMenuItemClicked(KviKvsPopupMenuItem * it)
 {
-
 	saveLastSelectedItem(); // that's the first thingie
 	// find the matching item and set it as current
 	int count = m_pTreeWidget->topLevelItemCount();
@@ -393,74 +390,74 @@ void SinglePopupEditor::customContextMenuRequested(const QPoint & pos)
 
 	m_pContextPopup->addAction(__tr2qs_ctx("New Separator Below", "editor"), this, SLOT(contextNewSeparatorBelow()));
 	m_pContextPopup->addAction(__tr2qs_ctx("New Separator Above", "editor"), this, SLOT(contextNewSeparatorAbove()))
-	    ->setEnabled(it);
+		->setEnabled(it);
 	m_pContextPopup->addAction(__tr2qs_ctx("New Separator Inside", "editor"), this, SLOT(contextNewSeparatorInside()))
-	    ->setEnabled(it && bIsMenu);
+		->setEnabled(it && bIsMenu);
 
 	m_pContextPopup->addSeparator();
 
 	m_pContextPopup->addAction(__tr2qs_ctx("New Label Below", "editor"), this, SLOT(contextNewLabelBelow()));
 	m_pContextPopup->addAction(__tr2qs_ctx("New Label Above", "editor"), this, SLOT(contextNewLabelAbove()))
-	    ->setEnabled(it);
+		->setEnabled(it);
 	m_pContextPopup->addAction(__tr2qs_ctx("New Label Inside", "editor"), this, SLOT(contextNewLabelInside()))
-	    ->setEnabled(it && bIsMenu);
+		->setEnabled(it && bIsMenu);
 
 	m_pContextPopup->addSeparator();
 
 	m_pContextPopup->addAction(__tr2qs_ctx("New Item Below", "editor"), this, SLOT(contextNewItemBelow()));
 	m_pContextPopup->addAction(__tr2qs_ctx("New Item Above", "editor"), this, SLOT(contextNewItemAbove()))
-	    ->setEnabled(it);
+		->setEnabled(it);
 	m_pContextPopup->addAction(__tr2qs_ctx("New Item Inside", "editor"), this, SLOT(contextNewItemInside()))
-	    ->setEnabled(it && bIsMenu);
+		->setEnabled(it && bIsMenu);
 
 	m_pContextPopup->addSeparator();
 
 	m_pContextPopup->addAction(__tr2qs_ctx("New Menu Below", "editor"), this, SLOT(contextNewMenuBelow()));
 	m_pContextPopup->addAction(__tr2qs_ctx("New Menu Above", "editor"), this, SLOT(contextNewMenuAbove()))
-	    ->setEnabled(it);
+		->setEnabled(it);
 	m_pContextPopup->addAction(__tr2qs_ctx("New Menu Inside", "editor"), this, SLOT(contextNewMenuInside()))
-	    ->setEnabled(it && bIsMenu);
+		->setEnabled(it && bIsMenu);
 
 	m_pContextPopup->addSeparator();
 
 	m_pContextPopup->addAction(__tr2qs_ctx("New External Menu Below", "editor"), this, SLOT(contextNewExtMenuBelow()));
 	m_pContextPopup->addAction(__tr2qs_ctx("New External Menu Above", "editor"), this, SLOT(contextNewExtMenuAbove()))
-	    ->setEnabled(it);
+		->setEnabled(it);
 	m_pContextPopup->addAction(__tr2qs_ctx("New External Menu Inside", "editor"), this, SLOT(contextNewExtMenuInside()))
-	    ->setEnabled(it && bIsMenu);
+		->setEnabled(it && bIsMenu);
 
 	m_pContextPopup->addSeparator();
 
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Cut)),
-	    __tr2qs_ctx("Cu&t", "editor"), this, SLOT(contextCut()))
-	    ->setEnabled(it);
+		__tr2qs_ctx("Cu&t", "editor"), this, SLOT(contextCut()))
+		->setEnabled(it);
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Copy)),
-	    __tr2qs_ctx("&Copy", "editor"), this, SLOT(contextCopy()))
-	    ->setEnabled(it);
+		__tr2qs_ctx("&Copy", "editor"), this, SLOT(contextCopy()))
+		->setEnabled(it);
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
-	    __tr2qs_ctx("Re&move", "editor"), this, SLOT(contextRemove()))
-	    ->setEnabled(it);
+		__tr2qs_ctx("Re&move", "editor"), this, SLOT(contextRemove()))
+		->setEnabled(it);
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
-	    __tr2qs_ctx("&Paste Below", "editor"), this, SLOT(contextPasteBelow()))
-	    ->setEnabled(m_pClipboard);
+		__tr2qs_ctx("&Paste Below", "editor"), this, SLOT(contextPasteBelow()))
+		->setEnabled(m_pClipboard);
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
-	    __tr2qs_ctx("Paste Above", "editor"), this, SLOT(contextPasteAbove()))
-	    ->setEnabled(it && m_pClipboard);
+		__tr2qs_ctx("Paste Above", "editor"), this, SLOT(contextPasteAbove()))
+		->setEnabled(it && m_pClipboard);
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Paste)),
-	    __tr2qs_ctx("Paste Inside", "editor"), this, SLOT(contextPasteInside()))
-	    ->setEnabled(it && bIsMenu && m_pClipboard);
+		__tr2qs_ctx("Paste Inside", "editor"), this, SLOT(contextPasteInside()))
+		->setEnabled(it && bIsMenu && m_pClipboard);
 
 	bool bSeparatorInserted = false;
 
 	m_pContextPopup->addSeparator();
 	bSeparatorInserted = true;
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Prologue)),
-	    __tr2qs_ctx("New Menu Prologue", "editor"), this, SLOT(contextNewPrologue()));
+		__tr2qs_ctx("New Menu Prologue", "editor"), this, SLOT(contextNewPrologue()));
 
 	if(!bSeparatorInserted)
 		m_pContextPopup->addSeparator();
 	m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Epilogue)),
-	    __tr2qs_ctx("New Menu Epilogue", "editor"), this, SLOT(contextNewEpilogue()));
+		__tr2qs_ctx("New Menu Epilogue", "editor"), this, SLOT(contextNewEpilogue()));
 
 	m_pContextPopup->popup(QCursor::pos());
 }
@@ -690,55 +687,55 @@ void SinglePopupEditor::saveLastSelectedItem()
 
 	switch(m_pLastSelectedItem->m_type)
 	{
-		case PopupTreeWidgetItem::Prologue:
-		case PopupTreeWidgetItem::Epilogue:
-		case PopupTreeWidgetItem::Item:
-		{
-			QString tmpx;
-			m_pEditor->getText(tmpx);
-			m_pLastSelectedItem->setCode(tmpx);
-		}
+	case PopupTreeWidgetItem::Prologue:
+	case PopupTreeWidgetItem::Epilogue:
+	case PopupTreeWidgetItem::Item:
+	{
+		QString tmpx;
+		m_pEditor->getText(tmpx);
+		m_pLastSelectedItem->setCode(tmpx);
+	}
+	break;
+	default:
 		break;
-		default:
-			break;
 	}
 
 	m_pLastSelectedItem->setId(m_pIdEditor->text());
 
 	switch(m_pLastSelectedItem->m_type)
 	{
-		case PopupTreeWidgetItem::Menu:
-		case PopupTreeWidgetItem::ExtMenu:
-		case PopupTreeWidgetItem::Item:
-			m_pLastSelectedItem->setIcon(m_pIconEditor->text());
-			break;
-		default:
-			break;
+	case PopupTreeWidgetItem::Menu:
+	case PopupTreeWidgetItem::ExtMenu:
+	case PopupTreeWidgetItem::Item:
+		m_pLastSelectedItem->setIcon(m_pIconEditor->text());
+		break;
+	default:
+		break;
 	}
 
 	switch(m_pLastSelectedItem->m_type)
 	{
-		case PopupTreeWidgetItem::Menu:
-		case PopupTreeWidgetItem::Item:
-		case PopupTreeWidgetItem::Label:
-		case PopupTreeWidgetItem::ExtMenu:
-			m_pLastSelectedItem->setItemText(m_pTextEditor->text());
-			break;
-		default:
-			break;
+	case PopupTreeWidgetItem::Menu:
+	case PopupTreeWidgetItem::Item:
+	case PopupTreeWidgetItem::Label:
+	case PopupTreeWidgetItem::ExtMenu:
+		m_pLastSelectedItem->setItemText(m_pTextEditor->text());
+		break;
+	default:
+		break;
 	}
 
 	switch(m_pLastSelectedItem->m_type)
 	{
-		case PopupTreeWidgetItem::Menu:
-		case PopupTreeWidgetItem::Item:
-		case PopupTreeWidgetItem::Label:
-		case PopupTreeWidgetItem::ExtMenu:
-		case PopupTreeWidgetItem::Separator:
-			m_pLastSelectedItem->setCondition(m_pConditionEditor->text());
-			break;
-		default:
-			break;
+	case PopupTreeWidgetItem::Menu:
+	case PopupTreeWidgetItem::Item:
+	case PopupTreeWidgetItem::Label:
+	case PopupTreeWidgetItem::ExtMenu:
+	case PopupTreeWidgetItem::Separator:
+		m_pLastSelectedItem->setCondition(m_pConditionEditor->text());
+		break;
+	default:
+		break;
 	}
 
 	if(m_pLastSelectedItem->m_type == PopupTreeWidgetItem::ExtMenu)
@@ -752,53 +749,53 @@ void SinglePopupEditor::addItemToMenu(KviKvsPopupMenu * p, PopupTreeWidgetItem *
 	it->m_szId = it->m_szId.trimmed();
 	switch(it->m_type)
 	{
-		case PopupTreeWidgetItem::Prologue:
-			it->m_szCode = it->m_szCode.trimmed();
-			p->addPrologue(it->m_szId, it->m_szCode);
-			break;
-		case PopupTreeWidgetItem::Epilogue:
-			it->m_szCode = it->m_szCode.trimmed();
-			p->addEpilogue(it->m_szId, it->m_szCode);
-			break;
-		case PopupTreeWidgetItem::Separator:
-			it->m_szCondition = it->m_szCondition.trimmed();
-			p->addSeparator(it->m_szId, it->m_szCondition);
-			break;
-		case PopupTreeWidgetItem::Label:
-			it->m_szText = it->m_szText.trimmed();
-			it->m_szCondition = it->m_szCondition.trimmed();
-			it->m_szIcon = it->m_szIcon.trimmed();
-			p->addLabel(it->m_szId, it->m_szText, it->m_szIcon, it->m_szCondition);
-			break;
-		case PopupTreeWidgetItem::Item:
-			it->m_szText = it->m_szText.trimmed();
-			it->m_szIcon = it->m_szIcon.trimmed();
-			it->m_szCondition = it->m_szCondition.trimmed();
-			it->m_szCode = it->m_szCode.trimmed();
-			p->addItem(it->m_szId, it->m_szCode, it->m_szText, it->m_szIcon, it->m_szCondition);
-			break;
-		case PopupTreeWidgetItem::ExtMenu:
-			it->m_szText = it->m_szText.trimmed();
-			it->m_szIcon = it->m_szIcon.trimmed();
-			it->m_szCondition = it->m_szCondition.trimmed();
-			it->m_szCode = it->m_szCode.trimmed(); // <-- this is the ext name in fact
-			p->addExtPopup(it->m_szId, it->m_szCode, it->m_szText, it->m_szIcon, it->m_szCondition);
-			break;
-		case PopupTreeWidgetItem::Menu:
-		{
-			it->m_szText = it->m_szText.trimmed();
-			it->m_szIcon = it->m_szIcon.trimmed();
-			it->m_szCondition = it->m_szCondition.trimmed();
-			KviKvsPopupMenu * menu = p->addPopup(it->m_szId, it->m_szText, it->m_szIcon, it->m_szCondition);
-			int count = it->childCount();
-			for(int i = 0; i < count; i++)
-			{
-				addItemToMenu(menu, (PopupTreeWidgetItem *)it->child(i));
-			}
-		}
+	case PopupTreeWidgetItem::Prologue:
+		it->m_szCode = it->m_szCode.trimmed();
+		p->addPrologue(it->m_szId, it->m_szCode);
 		break;
-		default:
-			break;
+	case PopupTreeWidgetItem::Epilogue:
+		it->m_szCode = it->m_szCode.trimmed();
+		p->addEpilogue(it->m_szId, it->m_szCode);
+		break;
+	case PopupTreeWidgetItem::Separator:
+		it->m_szCondition = it->m_szCondition.trimmed();
+		p->addSeparator(it->m_szId, it->m_szCondition);
+		break;
+	case PopupTreeWidgetItem::Label:
+		it->m_szText = it->m_szText.trimmed();
+		it->m_szCondition = it->m_szCondition.trimmed();
+		it->m_szIcon = it->m_szIcon.trimmed();
+		p->addLabel(it->m_szId, it->m_szText, it->m_szIcon, it->m_szCondition);
+		break;
+	case PopupTreeWidgetItem::Item:
+		it->m_szText = it->m_szText.trimmed();
+		it->m_szIcon = it->m_szIcon.trimmed();
+		it->m_szCondition = it->m_szCondition.trimmed();
+		it->m_szCode = it->m_szCode.trimmed();
+		p->addItem(it->m_szId, it->m_szCode, it->m_szText, it->m_szIcon, it->m_szCondition);
+		break;
+	case PopupTreeWidgetItem::ExtMenu:
+		it->m_szText = it->m_szText.trimmed();
+		it->m_szIcon = it->m_szIcon.trimmed();
+		it->m_szCondition = it->m_szCondition.trimmed();
+		it->m_szCode = it->m_szCode.trimmed(); // <-- this is the ext name in fact
+		p->addExtPopup(it->m_szId, it->m_szCode, it->m_szText, it->m_szIcon, it->m_szCondition);
+		break;
+	case PopupTreeWidgetItem::Menu:
+	{
+		it->m_szText = it->m_szText.trimmed();
+		it->m_szIcon = it->m_szIcon.trimmed();
+		it->m_szCondition = it->m_szCondition.trimmed();
+		KviKvsPopupMenu * menu = p->addPopup(it->m_szId, it->m_szText, it->m_szIcon, it->m_szCondition);
+		int count = it->childCount();
+		for(int i = 0; i < count; i++)
+		{
+			addItemToMenu(menu, (PopupTreeWidgetItem *)it->child(i));
+		}
+	}
+	break;
+	default:
+		break;
 	}
 }
 
@@ -845,54 +842,54 @@ void SinglePopupEditor::selectionChanged()
 
 		switch(((PopupTreeWidgetItem *)it)->m_type)
 		{
-			case PopupTreeWidgetItem::Prologue:
-			case PopupTreeWidgetItem::Epilogue:
-			case PopupTreeWidgetItem::Item:
-				m_pEditor->setText(((PopupTreeWidgetItem *)it)->m_szCode);
-				bEditorEnabled = true;
-				break;
-			default:
-				break;
+		case PopupTreeWidgetItem::Prologue:
+		case PopupTreeWidgetItem::Epilogue:
+		case PopupTreeWidgetItem::Item:
+			m_pEditor->setText(((PopupTreeWidgetItem *)it)->m_szCode);
+			bEditorEnabled = true;
+			break;
+		default:
+			break;
 		}
 
 		switch(((PopupTreeWidgetItem *)it)->m_type)
 		{
-			case PopupTreeWidgetItem::Menu:
-			case PopupTreeWidgetItem::Item:
-			case PopupTreeWidgetItem::Label:
-			case PopupTreeWidgetItem::ExtMenu:
-				m_pIconEditor->setText(((PopupTreeWidgetItem *)it)->m_szIcon);
-				bIconEditorEnabled = true;
-				break;
-			default:
-				break;
+		case PopupTreeWidgetItem::Menu:
+		case PopupTreeWidgetItem::Item:
+		case PopupTreeWidgetItem::Label:
+		case PopupTreeWidgetItem::ExtMenu:
+			m_pIconEditor->setText(((PopupTreeWidgetItem *)it)->m_szIcon);
+			bIconEditorEnabled = true;
+			break;
+		default:
+			break;
 		}
 
 		switch(((PopupTreeWidgetItem *)it)->m_type)
 		{
-			case PopupTreeWidgetItem::Menu:
-			case PopupTreeWidgetItem::Item:
-			case PopupTreeWidgetItem::Label:
-			case PopupTreeWidgetItem::ExtMenu:
-				m_pTextEditor->setText(((PopupTreeWidgetItem *)it)->m_szText);
-				bTextEditorEnabled = true;
-				break;
-			default:
-				break;
+		case PopupTreeWidgetItem::Menu:
+		case PopupTreeWidgetItem::Item:
+		case PopupTreeWidgetItem::Label:
+		case PopupTreeWidgetItem::ExtMenu:
+			m_pTextEditor->setText(((PopupTreeWidgetItem *)it)->m_szText);
+			bTextEditorEnabled = true;
+			break;
+		default:
+			break;
 		}
 
 		switch(((PopupTreeWidgetItem *)it)->m_type)
 		{
-			case PopupTreeWidgetItem::Menu:
-			case PopupTreeWidgetItem::Item:
-			case PopupTreeWidgetItem::Label:
-			case PopupTreeWidgetItem::ExtMenu:
-			case PopupTreeWidgetItem::Separator:
-				m_pConditionEditor->setText(((PopupTreeWidgetItem *)it)->m_szCondition);
-				bConditionEditorEnabled = true;
-				break;
-			default:
-				break;
+		case PopupTreeWidgetItem::Menu:
+		case PopupTreeWidgetItem::Item:
+		case PopupTreeWidgetItem::Label:
+		case PopupTreeWidgetItem::ExtMenu:
+		case PopupTreeWidgetItem::Separator:
+			m_pConditionEditor->setText(((PopupTreeWidgetItem *)it)->m_szCondition);
+			bConditionEditorEnabled = true;
+			break;
+		default:
+			break;
 		}
 
 		if(((PopupTreeWidgetItem *)it)->m_type == PopupTreeWidgetItem::ExtMenu)
@@ -943,59 +940,59 @@ void SinglePopupEditor::populateMenu(KviKvsPopupMenu * pop, PopupTreeWidgetItem 
 	{
 		switch(item->type())
 		{
-			case KviKvsPopupMenuItem::Item:
-				if(par)
-					theItem = new PopupTreeWidgetItem(par, theItem, PopupTreeWidgetItem::Item);
-				else
-					theItem = new PopupTreeWidgetItem(m_pTreeWidget, theItem, PopupTreeWidgetItem::Item);
-				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString());
-				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString());
-				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
-				theItem->setCode(item->kvsCode() ? item->kvsCode()->code() : QString());
-				theItem->setId(item->name());
-				break;
-			case KviKvsPopupMenuItem::ExtMenu:
-				if(par)
-					theItem = new PopupTreeWidgetItem(par, theItem, PopupTreeWidgetItem::ExtMenu);
-				else
-					theItem = new PopupTreeWidgetItem(m_pTreeWidget, theItem, PopupTreeWidgetItem::ExtMenu);
-				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString());
-				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString());
-				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
-				theItem->setCode(((KviKvsPopupMenuItemExtMenu *)item)->extName());
-				theItem->setId(item->name());
-				break;
-			case KviKvsPopupMenuItem::Label:
-				if(par)
-					theItem = new PopupTreeWidgetItem(par, theItem, PopupTreeWidgetItem::Label);
-				else
-					theItem = new PopupTreeWidgetItem(m_pTreeWidget, theItem, PopupTreeWidgetItem::Label);
-				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString());
-				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString());
-				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
-				theItem->setId(item->name());
-				break;
-			case KviKvsPopupMenuItem::Separator:
-				if(par)
-					theItem = new PopupTreeWidgetItem(par, theItem, PopupTreeWidgetItem::Separator);
-				else
-					theItem = new PopupTreeWidgetItem(m_pTreeWidget, theItem, PopupTreeWidgetItem::Separator);
-				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
-				theItem->setId(item->name());
-				break;
-			case KviKvsPopupMenuItem::Menu:
-				if(par)
-					theItem = new PopupTreeWidgetItem(par, theItem, PopupTreeWidgetItem::Menu);
-				else
-					theItem = new PopupTreeWidgetItem(m_pTreeWidget, theItem, PopupTreeWidgetItem::Menu);
-				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString());
-				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString());
-				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
-				theItem->setId(item->name());
-				populateMenu(((KviKvsPopupMenuItemMenu *)item)->menu(), theItem, nullptr);
-				break;
-			default:
-				break;
+		case KviKvsPopupMenuItem::Item:
+			if(par)
+				theItem = new PopupTreeWidgetItem(par, theItem, PopupTreeWidgetItem::Item);
+			else
+				theItem = new PopupTreeWidgetItem(m_pTreeWidget, theItem, PopupTreeWidgetItem::Item);
+			theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString());
+			theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString());
+			theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
+			theItem->setCode(item->kvsCode() ? item->kvsCode()->code() : QString());
+			theItem->setId(item->name());
+			break;
+		case KviKvsPopupMenuItem::ExtMenu:
+			if(par)
+				theItem = new PopupTreeWidgetItem(par, theItem, PopupTreeWidgetItem::ExtMenu);
+			else
+				theItem = new PopupTreeWidgetItem(m_pTreeWidget, theItem, PopupTreeWidgetItem::ExtMenu);
+			theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString());
+			theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString());
+			theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
+			theItem->setCode(((KviKvsPopupMenuItemExtMenu *)item)->extName());
+			theItem->setId(item->name());
+			break;
+		case KviKvsPopupMenuItem::Label:
+			if(par)
+				theItem = new PopupTreeWidgetItem(par, theItem, PopupTreeWidgetItem::Label);
+			else
+				theItem = new PopupTreeWidgetItem(m_pTreeWidget, theItem, PopupTreeWidgetItem::Label);
+			theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString());
+			theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString());
+			theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
+			theItem->setId(item->name());
+			break;
+		case KviKvsPopupMenuItem::Separator:
+			if(par)
+				theItem = new PopupTreeWidgetItem(par, theItem, PopupTreeWidgetItem::Separator);
+			else
+				theItem = new PopupTreeWidgetItem(m_pTreeWidget, theItem, PopupTreeWidgetItem::Separator);
+			theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
+			theItem->setId(item->name());
+			break;
+		case KviKvsPopupMenuItem::Menu:
+			if(par)
+				theItem = new PopupTreeWidgetItem(par, theItem, PopupTreeWidgetItem::Menu);
+			else
+				theItem = new PopupTreeWidgetItem(m_pTreeWidget, theItem, PopupTreeWidgetItem::Menu);
+			theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString());
+			theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString());
+			theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
+			theItem->setId(item->name());
+			populateMenu(((KviKvsPopupMenuItemMenu *)item)->menu(), theItem, nullptr);
+			break;
+		default:
+			break;
 		}
 	}
 
@@ -1049,7 +1046,7 @@ void SinglePopupEditor::edit(MenuTreeWidgetItem * it)
 }
 
 MenuTreeWidgetItem::MenuTreeWidgetItem(QTreeWidget * par, KviKvsPopupMenu * popup)
-    : QTreeWidgetItem(par)
+	: QTreeWidgetItem(par)
 {
 	setIcon(0, *(g_pIconManager->getSmallIcon(KviIconManager::Popup)));
 	setText(0, popup->popupName());
@@ -1068,7 +1065,7 @@ void MenuTreeWidgetItem::replacePopup(KviKvsPopupMenu * popup)
 }
 
 PopupEditorWidget::PopupEditorWidget(QWidget * par)
-    : QWidget(par)
+	: QWidget(par)
 {
 	m_bSaving = false;
 
@@ -1153,9 +1150,9 @@ void PopupEditorWidget::popupRefresh(const QString & szName)
 			if(ch == m_pLastEditedItem)
 			{
 				if(
-				    QMessageBox::warning(nullptr, __tr2qs_ctx("Confirm Overwriting Current - KVIrc", "editor"),
-				        __tr2qs_ctx("An external script has changed the popup you are currently editing. Do you want to accept the external changes?", "editor"),
-				        QMessageBox::Yes, QMessageBox::No | QMessageBox::Default | QMessageBox::Escape) != QMessageBox::Yes)
+					QMessageBox::warning(nullptr, __tr2qs_ctx("Confirm Overwriting Current - KVIrc", "editor"),
+						__tr2qs_ctx("An external script has changed the popup you are currently editing. Do you want to accept the external changes?", "editor"),
+						QMessageBox::Yes, QMessageBox::No | QMessageBox::Default | QMessageBox::Escape) != QMessageBox::Yes)
 					return;
 			}
 			KviKvsPopupMenu * pCopy = new KviKvsPopupMenu(szName);
@@ -1184,15 +1181,15 @@ void PopupEditorWidget::customContextMenuRequested(const QPoint & pos)
 		m_pContextPopup->clear();
 
 		m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Popup)),
-		    __tr2qs_ctx("&New Popup", "editor"), this, SLOT(newPopup()));
+			__tr2qs_ctx("&New Popup", "editor"), this, SLOT(newPopup()));
 
 		m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Discard)),
-		    __tr2qs_ctx("Re&move Popup", "editor"), this, SLOT(removeCurrentPopup()))
-		    ->setEnabled(it);
+			__tr2qs_ctx("Re&move Popup", "editor"), this, SLOT(removeCurrentPopup()))
+			->setEnabled(it);
 
 		m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Save)),
-		    __tr2qs_ctx("&Export Popup to...", "editor"), this, SLOT(exportCurrentPopup()))
-		    ->setEnabled(it);
+			__tr2qs_ctx("&Export Popup to...", "editor"), this, SLOT(exportCurrentPopup()))
+			->setEnabled(it);
 
 		m_pContextPopup->popup(QCursor::pos());
 	}
@@ -1201,7 +1198,7 @@ void PopupEditorWidget::customContextMenuRequested(const QPoint & pos)
 		m_pEmptyContextPopup->clear();
 
 		m_pEmptyContextPopup->addAction(*(g_pIconManager->getSmallIcon(KviIconManager::Popup)),
-		    __tr2qs_ctx("&New Popup", "editor"), this, SLOT(newPopup()));
+			__tr2qs_ctx("&New Popup", "editor"), this, SLOT(newPopup()));
 		m_pEmptyContextPopup->popup(QCursor::pos());
 	}
 }
@@ -1408,7 +1405,7 @@ void PopupEditorWidget::getUniquePopupName(MenuTreeWidgetItem * item, QString & 
 }
 
 PopupEditorWindow::PopupEditorWindow()
-    : KviWindow(KviWindow::ScriptEditor, "popupeditor", nullptr)
+	: KviWindow(KviWindow::ScriptEditor, "popupeditor", nullptr)
 {
 	g_pPopupEditorWindow = this;
 

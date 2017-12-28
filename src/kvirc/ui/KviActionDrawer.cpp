@@ -40,7 +40,7 @@
 #include <QMouseEvent>
 
 KviActionDrawer::KviActionDrawer(QWidget * pParent)
-    : QTabWidget(pParent)
+	: QTabWidget(pParent)
 {
 }
 
@@ -83,7 +83,7 @@ void KviActionDrawer::fill()
 }
 
 KviActionDrawerPage::KviActionDrawerPage(QWidget * pParent, const QString & szDescription)
-    : QWidget(pParent)
+	: QWidget(pParent)
 {
 	QGridLayout * pLayout = new QGridLayout(this);
 
@@ -104,7 +104,7 @@ void KviActionDrawerPage::add(KviAction * pAction)
 }
 
 KviActionDrawerPageListWidget::KviActionDrawerPageListWidget(KviActionDrawerPage * pParent)
-    : KviTalListWidget(pParent)
+	: KviTalListWidget(pParent)
 {
 	KviTalIconAndRichTextItemDelegate * pItemDelegate = new KviTalIconAndRichTextItemDelegate(this);
 	setItemDelegate(pItemDelegate);
@@ -148,8 +148,8 @@ void KviActionDrawerPageListWidget::resizeEvent(QResizeEvent * e)
 }
 
 KviActionDrawerPageListWidgetItem::KviActionDrawerPageListWidgetItem(KviTalListWidget * pList, KviAction * pAction)
-    : KviTalListWidgetItem(pList),
-      m_szName(pAction->name())
+	: KviTalListWidgetItem(pList),
+	m_szName(pAction->name())
 {
 	QString szText = "<b>" + pAction->visibleName() + "</b>";
 	if(pAction->isKviUserActionNeverOverrideThis())

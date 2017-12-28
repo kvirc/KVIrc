@@ -62,7 +62,7 @@
 #include <QDateTime>
 
 KviStatusBarAppletDescriptor::KviStatusBarAppletDescriptor(const QString & szVisibleName, const QString & szInternalName, CreateAppletCallback pProc, const QString & szPreloadModule, const QPixmap & pixIcon)
-    : KviHeapObject()
+	: KviHeapObject()
 {
 	static int s_iAppletDescriptorUniqueId = 0;
 	m_iId = s_iAppletDescriptorUniqueId;
@@ -104,7 +104,7 @@ void KviStatusBarAppletDescriptor::unregisterApplet(KviStatusBarApplet * a)
 }
 
 KviStatusBarApplet::KviStatusBarApplet(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
-    : QLabel(pParent), m_pStatusBar(pParent), m_pDescriptor(pDescriptor)
+	: QLabel(pParent), m_pStatusBar(pParent), m_pDescriptor(pDescriptor)
 {
 	setAutoFillBackground(false);
 	m_pDescriptor->registerApplet(this);
@@ -124,7 +124,7 @@ QString KviStatusBarApplet::tipText(const QPoint &)
 
 // Away applet
 KviStatusBarAwayIndicator::KviStatusBarAwayIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
-    : KviStatusBarApplet(pParent, pDescriptor)
+	: KviStatusBarApplet(pParent, pDescriptor)
 {
 	m_bAwayOnAllContexts = false;
 	connect(pParent->frame(), SIGNAL(activeContextChanged()), this, SLOT(updateDisplay()));
@@ -138,7 +138,7 @@ KviStatusBarAwayIndicator::KviStatusBarAwayIndicator(KviStatusBar * pParent, Kvi
 }
 
 KviStatusBarAwayIndicator::~KviStatusBarAwayIndicator()
-    = default;
+= default;
 
 void KviStatusBarAwayIndicator::updateDisplay()
 {
@@ -165,7 +165,7 @@ void KviStatusBarAwayIndicator::fillContextPopup(QMenu * p)
 {
 	QAction * pAction = p->addAction(__tr2qs("Apply to all IRC contexts"), this, SLOT(toggleContext()));
 	pAction->setCheckable(true),
-	    pAction->setChecked(m_bAwayOnAllContexts);
+		pAction->setChecked(m_bAwayOnAllContexts);
 }
 
 void KviStatusBarAwayIndicator::loadState(const char * pcPrefix, KviConfigurationFile * pCfg)
@@ -191,7 +191,7 @@ KviStatusBarApplet * CreateStatusBarAwayIndicator(KviStatusBar * pBar, KviStatus
 void KviStatusBarAwayIndicator::selfRegister(KviStatusBar * pBar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
-	    __tr2qs("Away Indicator"), "awayindicator", CreateStatusBarAwayIndicator, "", *(g_pIconManager->getSmallIcon(KviIconManager::Away)));
+		__tr2qs("Away Indicator"), "awayindicator", CreateStatusBarAwayIndicator, "", *(g_pIconManager->getSmallIcon(KviIconManager::Away)));
 	pBar->registerAppletDescriptor(d);
 }
 
@@ -248,7 +248,7 @@ not_connected:
 
 // Lag indicator applet
 KviStatusBarLagIndicator::KviStatusBarLagIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
-    : KviStatusBarApplet(pParent, pDescriptor)
+	: KviStatusBarApplet(pParent, pDescriptor)
 {
 	connect(pParent->frame(), SIGNAL(activeContextChanged()), this, SLOT(updateDisplay()));
 	connect(pParent->frame(), SIGNAL(activeContextStateChanged()), this, SLOT(updateDisplay()));
@@ -364,13 +364,13 @@ KviStatusBarApplet * CreateStatusBarLagIndicator(KviStatusBar * pBar, KviStatusB
 void KviStatusBarLagIndicator::selfRegister(KviStatusBar * pBar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
-	    __tr2qs("Lag Indicator"), "lagindicator", CreateStatusBarLagIndicator, "", *(g_pIconManager->getSmallIcon(KviIconManager::ServerPing)));
+		__tr2qs("Lag Indicator"), "lagindicator", CreateStatusBarLagIndicator, "", *(g_pIconManager->getSmallIcon(KviIconManager::ServerPing)));
 	pBar->registerAppletDescriptor(d);
 }
 
 // Clock applet
 KviStatusBarClock::KviStatusBarClock(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
-    : KviStatusBarApplet(pParent, pDescriptor)
+	: KviStatusBarApplet(pParent, pDescriptor)
 {
 	m_bUtc = false;
 	m_b24h = true;
@@ -381,7 +381,7 @@ KviStatusBarClock::KviStatusBarClock(KviStatusBar * pParent, KviStatusBarAppletD
 }
 
 KviStatusBarClock::~KviStatusBarClock()
-    = default;
+= default;
 
 void KviStatusBarClock::adjustMinWidth()
 {
@@ -409,12 +409,12 @@ void KviStatusBarClock::timerEvent(QTimerEvent *)
 
 	switch(m_iType)
 	{
-		case KviStatusBarClock::HMS:
-			szTmp = m_b24h ? time.toString("HH:mm:ss") : time.toString("hh:mm:ss AP");
-			break;
-		case KviStatusBarClock::HM:
-			szTmp = m_b24h ? time.toString("HH:mm") : time.toString("hh:mm AP");
-			break;
+	case KviStatusBarClock::HMS:
+		szTmp = m_b24h ? time.toString("HH:mm:ss") : time.toString("hh:mm:ss AP");
+		break;
+	case KviStatusBarClock::HM:
+		szTmp = m_b24h ? time.toString("HH:mm") : time.toString("hh:mm AP");
+		break;
 	}
 
 	setText(szTmp);
@@ -498,13 +498,13 @@ KviStatusBarApplet * CreateStatusBarClock(KviStatusBar * pBar, KviStatusBarApple
 void KviStatusBarClock::selfRegister(KviStatusBar * pBar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
-	    __tr2qs("Simple Clock"), "clock", CreateStatusBarClock, "", *(g_pIconManager->getSmallIcon(KviIconManager::Time)));
+		__tr2qs("Simple Clock"), "clock", CreateStatusBarClock, "", *(g_pIconManager->getSmallIcon(KviIconManager::Time)));
 	pBar->registerAppletDescriptor(d);
 }
 
 // Connection timer applet
 KviStatusBarConnectionTimer::KviStatusBarConnectionTimer(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
-    : KviStatusBarApplet(pParent, pDescriptor)
+	: KviStatusBarApplet(pParent, pDescriptor)
 {
 	startTimer(1000);
 	m_bTotal = 0;
@@ -514,7 +514,7 @@ KviStatusBarConnectionTimer::KviStatusBarConnectionTimer(KviStatusBar * pParent,
 }
 
 KviStatusBarConnectionTimer::~KviStatusBarConnectionTimer()
-    = default;
+= default;
 //g_pApp->topmostConnectedConsole()
 void KviStatusBarConnectionTimer::timerEvent(QTimerEvent *)
 {
@@ -580,19 +580,19 @@ KviStatusBarApplet * CreateStatusBarConnectionTimer(KviStatusBar * pBar, KviStat
 void KviStatusBarConnectionTimer::selfRegister(KviStatusBar * pBar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
-	    __tr2qs("Connection Timer"), "connectiontimer", CreateStatusBarConnectionTimer, "", *(g_pIconManager->getSmallIcon(KviIconManager::Time)));
+		__tr2qs("Connection Timer"), "connectiontimer", CreateStatusBarConnectionTimer, "", *(g_pIconManager->getSmallIcon(KviIconManager::Time)));
 	pBar->registerAppletDescriptor(d);
 }
 
 // Separator applet
 KviStatusBarSeparator::KviStatusBarSeparator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
-    : KviStatusBarApplet(pParent, pDescriptor)
+	: KviStatusBarApplet(pParent, pDescriptor)
 {
 	setFrameStyle(QFrame::VLine | QFrame::Sunken);
 }
 
 KviStatusBarSeparator::~KviStatusBarSeparator()
-    = default;
+= default;
 
 KviStatusBarApplet * CreateStatusBarSeparator(KviStatusBar * pBar, KviStatusBarAppletDescriptor * pDescriptor)
 {
@@ -604,13 +604,13 @@ KviStatusBarApplet * CreateStatusBarSeparator(KviStatusBar * pBar, KviStatusBarA
 void KviStatusBarSeparator::selfRegister(KviStatusBar * pBar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
-	    __tr2qs("Separator"), "separator", CreateStatusBarSeparator);
+		__tr2qs("Separator"), "separator", CreateStatusBarSeparator);
 	pBar->registerAppletDescriptor(d);
 }
 
 // Update applet
 KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
-    : KviStatusBarApplet(pParent, pDescriptor)
+	: KviStatusBarApplet(pParent, pDescriptor)
 {
 	m_bCheckDone = false;
 	m_bCheckFailed = false;
@@ -626,7 +626,7 @@ KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,
 }
 
 KviStatusBarUpdateIndicator::~KviStatusBarUpdateIndicator()
-    = default;
+= default;
 
 void KviStatusBarUpdateIndicator::updateDisplay()
 {
@@ -688,7 +688,7 @@ KviStatusBarApplet * CreateStatusBarUpdateIndicator(KviStatusBar * pBar, KviStat
 void KviStatusBarUpdateIndicator::selfRegister(KviStatusBar * pBar)
 {
 	KviStatusBarAppletDescriptor * d = new KviStatusBarAppletDescriptor(
-	    __tr2qs("Update Indicator"), "updateindicator", CreateStatusBarUpdateIndicator, "", *(g_pIconManager->getSmallIcon(KviIconManager::Update)));
+		__tr2qs("Update Indicator"), "updateindicator", CreateStatusBarUpdateIndicator, "", *(g_pIconManager->getSmallIcon(KviIconManager::Update)));
 	pBar->registerAppletDescriptor(d);
 }
 

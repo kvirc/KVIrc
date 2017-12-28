@@ -45,7 +45,7 @@ public:
 	int getId(void) { return m_pId; };
 	KviWindow * window(void) { return m_pWindow; };
 	//void stop(void);
-protected slots:
+	protected slots:
 	void pasteFile(void);
 	void pasteClipboard(void);
 

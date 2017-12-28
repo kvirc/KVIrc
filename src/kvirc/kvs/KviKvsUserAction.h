@@ -36,16 +36,16 @@ class KVIRC_API KviKvsUserAction : public KviKvsAction
 	Q_OBJECT
 public:
 	KviKvsUserAction(
-	    QObject * pParent,
-	    const QString & szName,
-	    const QString & szScriptCode,
-	    const QString & szVisibleNameCode,
-	    const QString & szDescriptionCode,
-	    const QString & szCategory,
-	    const QString & szBigIconId,
-	    const QString & szSmallIconId,
-	    unsigned int uFlags,
-	    const QString & szKeySequence = QString());
+		QObject * pParent,
+		const QString & szName,
+		const QString & szScriptCode,
+		const QString & szVisibleNameCode,
+		const QString & szDescriptionCode,
+		const QString & szCategory,
+		const QString & szBigIconId,
+		const QString & szSmallIconId,
+		unsigned int uFlags,
+		const QString & szKeySequence = QString());
 	KviKvsUserAction(QObject * pParent);
 	~KviKvsUserAction();
 
@@ -54,16 +54,16 @@ public:
 	// instead of the new operator.
 	// See KviHeapObject.cpp for an explanation.
 	static KviKvsUserAction * createInstance(
-	    QObject * pParent,
-	    const QString & szName,
-	    const QString & szScriptCode,
-	    const QString & szVisibleNameCode,
-	    const QString & szDescriptionCode,
-	    const QString & szCategory,
-	    const QString & szBigIconId,
-	    const QString & szSmallIcon,
-	    unsigned int uFlags,
-	    const QString & szKeySequence = QString());
+		QObject * pParent,
+		const QString & szName,
+		const QString & szScriptCode,
+		const QString & szVisibleNameCode,
+		const QString & szDescriptionCode,
+		const QString & szCategory,
+		const QString & szBigIconId,
+		const QString & szSmallIcon,
+		unsigned int uFlags,
+		const QString & szKeySequence = QString());
 	void suicide() { delete this; };
 protected:
 	QString m_szCategory;
@@ -82,16 +82,16 @@ public:
 	const QString & descriptionCode();
 	const QString & category() { return m_szCategory; };
 	static void exportToKvs(
-	    QString & szBuffer,
-	    const QString & szName,
-	    const QString & szScriptCode,
-	    const QString & szVisibleName,
-	    const QString & szDescription,
-	    const QString & szCategory,
-	    const QString & szBigIcon,
-	    const QString & szSmallIcon,
-	    unsigned int uFlags,
-	    const QString & szKeySequence);
+		QString & szBuffer,
+		const QString & szName,
+		const QString & szScriptCode,
+		const QString & szVisibleName,
+		const QString & szDescription,
+		const QString & szCategory,
+		const QString & szBigIcon,
+		const QString & szSmallIcon,
+		unsigned int uFlags,
+		const QString & szKeySequence);
 	void exportToKvs(QString & szBuffer);
 };
 

@@ -32,13 +32,13 @@
 #include "KviKvsRunTimeContext.h"
 
 KviKvsTreeNodeModuleCallbackCommand::KviKvsTreeNodeModuleCallbackCommand(const QChar * pLocation, const QString & szModuleName, const QString & szCmdName, KviKvsTreeNodeDataList * params, KviKvsScript * pCallback)
-    : KviKvsTreeNodeCallbackCommand(pLocation, szCmdName, params, pCallback)
+	: KviKvsTreeNodeCallbackCommand(pLocation, szCmdName, params, pCallback)
 {
 	m_szModuleName = szModuleName;
 }
 
 KviKvsTreeNodeModuleCallbackCommand::~KviKvsTreeNodeModuleCallbackCommand()
-    = default;
+= default;
 
 void KviKvsTreeNodeModuleCallbackCommand::contextDescription(QString & szBuffer)
 {

@@ -95,7 +95,7 @@ public:
 	// causes the resolver to terminate with iLastError == KviError_operationAborted
 	// the terminated() signal is emitted.
 	void abort();
-protected slots:
+	protected slots:
 	void asyncStartResolve();
 	void serverLookupTerminated(KviDnsResolver *);
 	void proxyLookupTerminated(KviDnsResolver *);

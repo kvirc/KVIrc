@@ -74,7 +74,7 @@ extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 extern FileTransferWindow * g_pFileTransferWindow;
 
 FileTransferItem::FileTransferItem(FileTransferWidget * v, KviFileTransfer * t)
-    : KviTalTableWidgetItemEx(v)
+	: KviTalTableWidgetItemEx(v)
 {
 	m_pTransfer = t;
 	m_pTransfer->setDisplayItem(this);
@@ -124,7 +124,7 @@ QString FileTransferItem::key(int, bool) const
 }
 
 FileTransferWidget::FileTransferWidget(QWidget * pParent)
-    : KviTalTableWidget(pParent)
+	: KviTalTableWidget(pParent)
 {
 	//hide the header
 	verticalHeader()->hide();
@@ -142,8 +142,8 @@ FileTransferWidget::FileTransferWidget(QWidget * pParent)
 
 	QStringList colHeaders;
 	colHeaders << __tr2qs_ctx("Type", "filetransferwindow")
-	           << __tr2qs_ctx("Information", "filetransferwindow")
-	           << __tr2qs_ctx("Progress", "filetransferwindow");
+		<< __tr2qs_ctx("Information", "filetransferwindow")
+		<< __tr2qs_ctx("Progress", "filetransferwindow");
 	setHorizontalHeaderLabels(colHeaders);
 	//default column widths
 	setColumnWidth(0, FILETRANSFERW_CELLSIZE);
@@ -255,8 +255,8 @@ FileTransferWindow::FileTransferWindow(
 #if 0
 	KviModuleExtensionDescriptor * d
 #endif
-    )
-    : KviWindow(KviWindow::Tool, "file transfer window", nullptr)
+)
+	: KviWindow(KviWindow::Tool, "file transfer window", nullptr)
 #if 0
 	, KviModuleExtension(d)
 #endif
@@ -299,7 +299,7 @@ FileTransferWindow::FileTransferWindow(
 	m_pTableWidget->installEventFilter(this);
 
 	connect(m_pTableWidget, SIGNAL(rightButtonPressed(FileTransferItem *, QPoint)),
-	    this, SLOT(rightButtonPressed(FileTransferItem *, QPoint)));
+		this, SLOT(rightButtonPressed(FileTransferItem *, QPoint)));
 	connect(m_pTableWidget, SIGNAL(doubleClicked(FileTransferItem *, const QPoint &)), this, SLOT(doubleClicked(FileTransferItem *, const QPoint &)));
 	fillTransferView();
 
@@ -328,13 +328,13 @@ bool FileTransferWindow::eventFilter(QObject * obj, QEvent * ev)
 			QKeyEvent * keyEvent = (QKeyEvent *)ev;
 			switch(keyEvent->key())
 			{
-				case Qt::Key_Delete:
-					if(m_pTableWidget->currentItem())
-					{
-						delete m_pTableWidget->currentItem();
-						return true;
-					}
-					break;
+			case Qt::Key_Delete:
+				if(m_pTableWidget->currentItem())
+				{
+					delete m_pTableWidget->currentItem();
+					return true;
+				}
+				break;
 			}
 		}
 	}
@@ -423,7 +423,6 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 		FileTransferItem * i = (FileTransferItem *)it;
 		if(i->transfer())
 		{
-
 			QString szFile = i->transfer()->localFileName();
 			if(!szFile.isEmpty())
 			{
@@ -470,11 +469,11 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 				int idx = 0;
 
 				for(KService::List::Iterator itOffers = offers.begin();
-				    itOffers != offers.end(); ++itOffers)
+					itOffers != offers.end(); ++itOffers)
 				{
 					pAction = m_pOpenFilePopup->addAction(
-					    SmallIcon((*itOffers).data()->icon()),
-					    (*itOffers).data()->name());
+						SmallIcon((*itOffers).data()->icon()),
+						(*itOffers).data()->name());
 					pAction->setData(idx);
 					idx++;
 				}
@@ -491,7 +490,7 @@ void FileTransferWindow::rightButtonPressed(FileTransferItem * it, const QPoint 
 				m_pLocalFilePopup->addSeparator();
 #endif //COMPILE_KDE4_SUPPORT
 
-//-| Grifisx & Noldor |-
+				//-| Grifisx & Noldor |-
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 				pAction = m_pLocalFilePopup->addAction(__tr2qs_ctx("&Open", "filetransferwindow"), this, SLOT(openLocalFile()));
 				pAction->setData(-1);
@@ -578,7 +577,7 @@ void FileTransferWindow::openFilePopupActivated(QAction * pAction)
 
 	int idx = 0;
 	for(KService::List::Iterator itOffers = offers.begin();
-	    itOffers != offers.end(); ++itOffers)
+		itOffers != offers.end(); ++itOffers)
 	{
 		if(idx == ip)
 		{
@@ -596,7 +595,7 @@ void FileTransferWindow::openFilePopupActivated(QAction * pAction)
 
 void FileTransferWindow::openLocalFileTerminal()
 {
-//-| Grifisx & Noldor |-
+	//-| Grifisx & Noldor |-
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)
@@ -644,19 +643,19 @@ void FileTransferWindow::deleteLocalFile()
 	QString szTmp = QString(__tr2qs_ctx("Do you really want to delete the file %1?", "filetransferwindow")).arg(szName);
 
 	if(QMessageBox::warning(this, __tr2qs_ctx("Confirm File Delete - KVIrc", "filetransferwindow"),
-	       szTmp, __tr2qs_ctx("Yes", "filetransferwindow"), __tr2qs_ctx("No", "filetransferwindow"))
-	    != 0)
+		szTmp, __tr2qs_ctx("Yes", "filetransferwindow"), __tr2qs_ctx("No", "filetransferwindow"))
+		!= 0)
 		return;
 
 	if(!QFile::remove(szName))
 		QMessageBox::warning(this, __tr2qs_ctx("Deleting File Failed - KVIrc", "filetransferwindow"),
-		    __tr2qs_ctx("Failed to remove the file", "filetransferwindow"),
-		    __tr2qs_ctx("OK", "filetransferwindow"));
+			__tr2qs_ctx("Failed to remove the file", "filetransferwindow"),
+			__tr2qs_ctx("OK", "filetransferwindow"));
 }
 
 void FileTransferWindow::openLocalFile()
 {
-//-| Grifisx & Noldor |-
+	//-| Grifisx & Noldor |-
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 
 	KviFileTransfer * t = selectedTransfer();
@@ -697,7 +696,7 @@ void FileTransferWindow::openLocalFile()
 
 void FileTransferWindow::openLocalFileWith()
 {
-//-| Grifisx & Noldor |-
+	//-| Grifisx & Noldor |-
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)
@@ -740,7 +739,7 @@ void FileTransferWindow::copyLocalFileToClipboard()
 
 void FileTransferWindow::openLocalFileFolder()
 {
-//-| Grifisx & Noldor|-
+	//-| Grifisx & Noldor|-
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KviFileTransfer * t = selectedTransfer();
 	if(!t)

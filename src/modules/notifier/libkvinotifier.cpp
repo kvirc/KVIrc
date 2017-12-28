@@ -114,11 +114,11 @@ static bool notifier_kvs_cmd_message(KviKvsModuleCommandCall * c)
 {
 	QString szMessage;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("message", KVS_PT_STRING, 0, szMessage)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("message", KVS_PT_STRING, 0, szMessage)
+		KVSM_PARAMETERS_END(c)
 
-	if(!g_pNotifierWindow)
-		g_pNotifierWindow = new NotifierWindow();
+		if(!g_pNotifierWindow)
+			g_pNotifierWindow = new NotifierWindow();
 
 	QString szIco = "";
 	QString szWnd = "";
@@ -304,13 +304,13 @@ static bool notifier_module_ctrl(KviModule *, const char * pcOperation, void * p
 }
 
 KVIRC_MODULE(
-    "Notifier",
-    "4.0.0",
-    "Copyright (C) 2005 Iacopo Palazzi (iakko at siena dot linux dot it)\n"
-    "              2010 Elvio Basello (hell at hellvis69 dot netsons dot org)",
-    "KVIrc Client - Taskbar Notifier",
-    notifier_module_init,
-    notifier_module_can_unload,
-    notifier_module_ctrl,
-    notifier_module_cleanup,
-    "notifier")
+	"Notifier",
+	"4.0.0",
+	"Copyright (C) 2005 Iacopo Palazzi (iakko at siena dot linux dot it)\n"
+	"              2010 Elvio Basello (hell at hellvis69 dot netsons dot org)",
+	"KVIrc Client - Taskbar Notifier",
+	notifier_module_init,
+	notifier_module_can_unload,
+	notifier_module_ctrl,
+	notifier_module_cleanup,
+	"notifier")

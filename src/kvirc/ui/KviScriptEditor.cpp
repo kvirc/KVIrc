@@ -44,7 +44,7 @@ void KviScriptEditor::getText(QString & txt)
 }
 
 static KviScriptEditor * (*editorModuleCreateScriptEditor)(QWidget *);
-static void (*editorModuleDestroyScriptEditor)(KviScriptEditor *);
+static void(*editorModuleDestroyScriptEditor)(KviScriptEditor *);
 
 KviScriptEditor * KviScriptEditor::createInstance(QWidget * par)
 {
@@ -71,7 +71,7 @@ void KviScriptEditor::destroyInstance(KviScriptEditor * e)
 		return;
 	}
 
-	editorModuleDestroyScriptEditor = (void (*)(KviScriptEditor *))m->getSymbol("editor_module_destroyScriptEditor");
+	editorModuleDestroyScriptEditor = (void(*)(KviScriptEditor *))m->getSymbol("editor_module_destroyScriptEditor");
 
 	if(!editorModuleDestroyScriptEditor)
 	{

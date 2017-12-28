@@ -33,10 +33,10 @@ KviKvsRWEvaluationResult::KviKvsRWEvaluationResult(KviKvsRWEvaluationResult * pP
 }
 
 KviKvsRWEvaluationResult::~KviKvsRWEvaluationResult()
-    = default;
+= default;
 
 KviKvsArrayElement::KviKvsArrayElement(KviKvsRWEvaluationResult * pParent, KviKvsVariant * pVariant, KviKvsArray * pArray, int iKey)
-    : KviKvsRWEvaluationResult(pParent, pVariant)
+	: KviKvsRWEvaluationResult(pParent, pVariant)
 {
 	m_pArray = pArray;
 	m_iKey = iKey;
@@ -51,7 +51,7 @@ KviKvsArrayElement::~KviKvsArrayElement()
 }
 
 KviKvsHashElement::KviKvsHashElement(KviKvsRWEvaluationResult * pParent, KviKvsVariant * pVariant, KviKvsHash * pHash, const QString & szKey)
-    : KviKvsRWEvaluationResult(pParent, pVariant)
+	: KviKvsRWEvaluationResult(pParent, pVariant)
 {
 	m_pHash = pHash;
 	m_szKey = szKey;

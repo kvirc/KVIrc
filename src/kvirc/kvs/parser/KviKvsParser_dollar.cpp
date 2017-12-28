@@ -331,7 +331,6 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 	}
 	else
 	{
-
 		if(bInObjScope)
 		{
 			// object function call (our parent will be a scope operator)

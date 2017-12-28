@@ -59,11 +59,11 @@ protected:
 
 public:
 	KviWindow * kviWindow() { return m_pWindow; };
-	virtual void captionChanged(){};
-	virtual void highlight(int){};
-	virtual void setProgress(int){};
+	virtual void captionChanged() {};
+	virtual void highlight(int) {};
+	virtual void setProgress(int) {};
 	virtual bool active() { return false; };
-	virtual void unhighlight(){};
+	virtual void unhighlight() {};
 	int progress() { return m_iProgress; };
 	int highlightLevel() { return m_iHighlightLevel; };
 };
@@ -90,7 +90,7 @@ protected:
 public:
 	virtual KviWindowListItem * addItem(KviWindow *) { return 0; };
 	virtual bool removeItem(KviWindowListItem *) { return false; };
-	virtual void setActiveItem(KviWindowListItem *){};
+	virtual void setActiveItem(KviWindowListItem *) {};
 	virtual KviWindowListItem * firstItem() { return 0; };
 	virtual KviWindowListItem * lastItem(void) { return 0; }
 	virtual KviWindowListItem * nextItem() { return 0; };
@@ -98,12 +98,12 @@ public:
 	virtual KviWindowListItem * item(int number);
 	virtual bool setIterationPointer(KviWindowListItem *) { return false; };
 	virtual void switchWindow(bool bNext, bool bInContextOnly, bool bHighlightedOnly = false);
-	virtual void updatePseudoTransparency(){};
+	virtual void updatePseudoTransparency() {};
 	virtual void applyOptions();
 	virtual void wheelEvent(QWheelEvent * e);
 	static void getTextForConsole(QString & szText, KviConsoleWindow * pConsole);
 	Qt::DockWidgetArea currentDockArea() { return currentArea; };
-protected slots:
+	protected slots:
 	virtual void updateActivityMeter();
 	void updateDockLocation(Qt::DockWidgetArea newArea);
 };
@@ -151,7 +151,7 @@ public:
 
 protected:
 	void setActive(bool bActive);
-protected slots:
+	protected slots:
 	void tipRequest(KviDynamicToolTip * tip, const QPoint & pnt);
 };
 
@@ -207,7 +207,7 @@ public:
 	virtual bool setIterationPointer(KviWindowListItem * it);
 	virtual void updateActivityMeter();
 	virtual void applyOptions();
-protected slots:
+	protected slots:
 	void orientationChangedSlot(Qt::Orientation o);
 	void doLayout();
 };
@@ -217,7 +217,7 @@ class KVIRC_API KviWindowListTitleWidget : public QWidget
 	Q_OBJECT
 public:
 	KviWindowListTitleWidget(KviWindowListBase * parent) { m_pParent = parent; };
-	~KviWindowListTitleWidget(){};
+	~KviWindowListTitleWidget() {};
 
 private:
 	KviWindowListBase * m_pParent;

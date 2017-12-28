@@ -27,14 +27,14 @@
 #include "KviKvsVariant.h"
 
 KviKvsTreeNodeMultipleParameterIdentifier::KviKvsTreeNodeMultipleParameterIdentifier(const QChar * pLocation, int iStart, int iEnd)
-    : KviKvsTreeNodeData(pLocation)
+	: KviKvsTreeNodeData(pLocation)
 {
 	m_iStart = iStart;
 	m_iEnd = iEnd;
 }
 
 KviKvsTreeNodeMultipleParameterIdentifier::~KviKvsTreeNodeMultipleParameterIdentifier()
-    = default;
+= default;
 
 void KviKvsTreeNodeMultipleParameterIdentifier::contextDescription(QString & szBuffer)
 {

@@ -32,7 +32,7 @@
 #include <QMouseEvent>
 
 KviColorWindow::KviColorWindow()
-    : QWidget(nullptr)
+	: QWidget(nullptr)
 {
 	setObjectName("toplevel_color_window");
 	setWindowFlags(Qt::Popup);
@@ -89,7 +89,7 @@ void KviColorWindow::mousePressEvent(QMouseEvent * e)
 {
 	QString szStr;
 	if(!(
-	       (e->pos().x() < 0) || (e->pos().x() > width()) || (e->pos().y() < 0) || (e->pos().y() > height())))
+		(e->pos().x() < 0) || (e->pos().x() > width()) || (e->pos().y() < 0) || (e->pos().y() > height())))
 	{
 		int iKey = e->x() / 18;
 		if(e->x() < 36 && e->y() > 18)

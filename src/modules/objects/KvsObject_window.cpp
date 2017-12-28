@@ -32,12 +32,12 @@
 #include "KviMainWindow.h"
 
 KviKvsScriptWindowWindow::KviKvsScriptWindowWindow(const QString & szName)
-    : KviWindow(KviWindow::ScriptObject, szName)
+	: KviWindow(KviWindow::ScriptObject, szName)
 {
 }
 
 KviKvsScriptWindowWindow::~KviKvsScriptWindowWindow()
-    = default;
+= default;
 
 void KviKvsScriptWindowWindow::setCentralWidget(KvsObject_widget * o, QWidget * w)
 {
@@ -108,7 +108,7 @@ KVSO_END_CONSTRUCTOR(KvsObject_window)
 
 KVSO_BEGIN_DESTRUCTOR(KvsObject_window)
 if(widget())
-	g_pMainWindow->closeWindow(((KviKvsScriptWindowWindow *)widget()));
+g_pMainWindow->closeWindow(((KviKvsScriptWindowWindow *)widget()));
 KVSO_END_CONSTRUCTOR(KvsObject_window)
 
 bool KvsObject_window::init(KviKvsRunTimeContext *, KviKvsVariantList *)
@@ -123,22 +123,22 @@ bool KvsObject_window::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 KVSO_CLASS_FUNCTION(window, setWindowTitle)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szCaption;
+		QString szCaption;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("caption", KVS_PT_STRING, 0, szCaption)
-	KVSO_PARAMETERS_END(c)
-	((KviKvsScriptWindowWindow *)widget())->setWindowTitleString(szCaption);
+		KVSO_PARAMETER("caption", KVS_PT_STRING, 0, szCaption)
+		KVSO_PARAMETERS_END(c)
+		((KviKvsScriptWindowWindow *)widget())->setWindowTitleString(szCaption);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(window, setIcon)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szIcon;
+		QString szIcon;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("icon", KVS_PT_STRING, 0, szIcon)
-	KVSO_PARAMETERS_END(c)
-	QPixmap * pix = g_pIconManager->getImage(szIcon);
+		KVSO_PARAMETER("icon", KVS_PT_STRING, 0, szIcon)
+		KVSO_PARAMETERS_END(c)
+		QPixmap * pix = g_pIconManager->getImage(szIcon);
 	if(pix)
 		((KviKvsScriptWindowWindow *)widget())->setIcon(pix);
 	return true;
@@ -148,12 +148,12 @@ KVSO_CLASS_FUNCTION(window, setCentralWidget)
 {
 	CHECK_INTERNAL_POINTER(widget())
 
-	KviKvsObject * ob;
+		KviKvsObject * ob;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
-	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
+		ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
 		c->warning(__tr2qs_ctx("Can't add a non-widget object", "objects"));

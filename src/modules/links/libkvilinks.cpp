@@ -61,7 +61,6 @@ std::unordered_set<LinksWindow *> g_pLinksWindowList;
 
 static bool links_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-
 	// FIND ME
 	if(!c->window()->context())
 		return c->context()->errorNoIrcContext();
@@ -87,7 +86,7 @@ static bool links_module_init(KviModule * m)
 
 static bool links_module_cleanup(KviModule *)
 {
-	while (!g_pLinksWindowList.empty())
+	while(!g_pLinksWindowList.empty())
 		(*g_pLinksWindowList.begin())->die();
 	return true;
 }
@@ -98,12 +97,12 @@ static bool links_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Links",                                                             // module name
-    "4.0.0",                                                             // module version
-    "Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Links window extension",
-    links_module_init,
-    links_module_can_unload,
-    0,
-    links_module_cleanup,
-    0)
+	"Links",                                                             // module name
+	"4.0.0",                                                             // module version
+	"Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Links window extension",
+	links_module_init,
+	links_module_can_unload,
+	0,
+	links_module_cleanup,
+	0)

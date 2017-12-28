@@ -36,7 +36,7 @@ class LogListViewItem : public QTreeWidgetItem
 public:
 	LogListViewItem(QTreeWidgetItem * pPar, LogFile::Type eType, LogFile * pLog);
 	LogListViewItem(QTreeWidget * pPar, LogFile::Type eType, LogFile * pLog);
-	~LogListViewItem(){};
+	~LogListViewItem() {};
 
 public:
 	LogFile::Type m_eType;
@@ -51,7 +51,7 @@ class LogListViewItemFolder : public LogListViewItem
 {
 public:
 	LogListViewItemFolder(QTreeWidgetItem * pPar, const QString & szLabel);
-	~LogListViewItemFolder(){};
+	~LogListViewItemFolder() {};
 
 public:
 };
@@ -60,14 +60,14 @@ class LogListViewItemType : public LogListViewItem
 {
 public:
 	LogListViewItemType(QTreeWidget * pPar, LogFile::Type eType);
-	~LogListViewItemType(){};
+	~LogListViewItemType() {};
 };
 
 class LogListViewLog : public LogListViewItem
 {
 public:
 	LogListViewLog(QTreeWidgetItem * pPar, LogFile::Type eType, LogFile * pLog);
-	~LogListViewLog(){};
+	~LogListViewLog() {};
 	virtual QString fileName() const { return m_pFileData->fileName(); };
 protected:
 	bool operator<(const QTreeWidgetItem & other) const

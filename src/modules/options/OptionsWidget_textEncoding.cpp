@@ -39,7 +39,7 @@
 QString g_szPrevSetLocale;
 
 OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("textencoding_options_widget");
 	createLayout();
@@ -189,7 +189,7 @@ OptionsWidget_textEncoding::OptionsWidget_textEncoding(QWidget * parent)
 }
 
 OptionsWidget_textEncoding::~OptionsWidget_textEncoding()
-    = default;
+= default;
 
 void OptionsWidget_textEncoding::commit()
 {

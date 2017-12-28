@@ -81,7 +81,7 @@
 static KviSoundPlayer * g_pSoundPlayer = nullptr;
 
 KviSoundPlayer::KviSoundPlayer()
-    : QObject()
+	: QObject()
 {
 	m_pThreadList = new KviPointerList<KviSoundThread>;
 	m_pThreadList->setAutoDelete(true);
@@ -377,11 +377,11 @@ bool KviSoundPlayer::play(const QString & szFileName)
 	if(!e)
 	{
 		if(
-		    (!KVI_OPTION_STRING(KviOption_stringSoundSystem).isEmpty()) && (!KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringSoundSystem), "unknown")))
+			(!KVI_OPTION_STRING(KviOption_stringSoundSystem).isEmpty()) && (!KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringSoundSystem), "unknown")))
 		{
 			qDebug(
-			    "Sound system '%s' is not valid, you may want to re-configure it in the options dialog...",
-			    KVI_OPTION_STRING(KviOption_stringSoundSystem).toUtf8().data());
+				"Sound system '%s' is not valid, you may want to re-configure it in the options dialog...",
+				KVI_OPTION_STRING(KviOption_stringSoundSystem).toUtf8().data());
 			return false; // detection already attempted (and failed?)
 		}
 
@@ -406,7 +406,7 @@ bool KviSoundPlayer::play(const QString & szFileName)
 }
 
 KviSoundThread::KviSoundThread(const QString & szFileName)
-    : KviThread()
+	: KviThread()
 {
 	g_pSoundPlayer->registerSoundThread(this);
 	m_szFileName = szFileName;
@@ -440,12 +440,12 @@ void KviSoundThread::run()
 #ifdef COMPILE_OSS_SUPPORT
 #ifdef COMPILE_AUDIOFILE_SUPPORT
 KviOssAudiofileSoundThread::KviOssAudiofileSoundThread(const QString & szFileName)
-    : KviSoundThread(szFileName)
+	: KviSoundThread(szFileName)
 {
 }
 
 KviOssAudiofileSoundThread::~KviOssAudiofileSoundThread()
-    = default;
+= default;
 
 void KviOssAudiofileSoundThread::play()
 {
@@ -536,12 +536,12 @@ exit_thread:
 #endif //COMPILE_AUDIOFILE_SUPPORT
 
 KviOssSoundThread::KviOssSoundThread(const QString & szFileName)
-    : KviSoundThread(szFileName)
+	: KviSoundThread(szFileName)
 {
 }
 
 KviOssSoundThread::~KviOssSoundThread()
-    = default;
+= default;
 
 void KviOssSoundThread::play()
 {
@@ -634,7 +634,7 @@ exit_thread:
 #ifdef COMPILE_ESD_SUPPORT
 
 KviEsdSoundThread::KviEsdSoundThread(const QString & szFileName)
-    : KviSoundThread(szFileName)
+	: KviSoundThread(szFileName)
 {
 }
 
@@ -680,14 +680,14 @@ static bool snd_kvs_cmd_play(KviKvsModuleCommandCall * c)
 {
 	QString szFile;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("file name", KVS_PT_STRING, 0, szFile)
-	KVSM_PARAMETERS_END(c)
-	if(szFile.isEmpty() || (!KviFileUtils::fileExists(szFile)))
-	{
-		if(!c->hasSwitch('q', "quiet"))
-			c->warning(__tr2qs("Sound file '%Q' not found"), &szFile);
-		return true;
-	}
+		KVSM_PARAMETER("file name", KVS_PT_STRING, 0, szFile)
+		KVSM_PARAMETERS_END(c)
+		if(szFile.isEmpty() || (!KviFileUtils::fileExists(szFile)))
+		{
+			if(!c->hasSwitch('q', "quiet"))
+				c->warning(__tr2qs("Sound file '%Q' not found"), &szFile);
+			return true;
+		}
 
 	if(!g_pSoundPlayer->play(szFile))
 	{
@@ -729,8 +729,8 @@ static bool snd_kvs_cmd_autodetect(KviKvsModuleCommandCall * c)
 static bool snd_kvs_cmd_mute(KviKvsModuleCommandCall * c)
 {
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETERS_END(c)
-	g_pSoundPlayer->setMuted(true);
+		KVSM_PARAMETERS_END(c)
+		g_pSoundPlayer->setMuted(true);
 	return true;
 }
 
@@ -751,8 +751,8 @@ static bool snd_kvs_cmd_mute(KviKvsModuleCommandCall * c)
 static bool snd_kvs_cmd_unmute(KviKvsModuleCommandCall * c)
 {
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETERS_END(c)
-	g_pSoundPlayer->setMuted(false);
+		KVSM_PARAMETERS_END(c)
+		g_pSoundPlayer->setMuted(false);
 	return true;
 }
 
@@ -827,13 +827,13 @@ static bool snd_module_ctrl(KviModule *, const char * operation, void * param)
 }
 
 KVIRC_MODULE(
-    "Sound", // module name
-    "4.0.0", // module version
-    "(C) 2002 Szymon Stefanek (pragma at kvirc dot net),"
-    "Juanjo Alvarez (juanjux at yahoo dot es)", // author & (C)
-    "Sound playing commands",
-    snd_module_init,
-    snd_module_can_unload,
-    snd_module_ctrl,
-    snd_module_cleanup,
-    0)
+	"Sound", // module name
+	"4.0.0", // module version
+	"(C) 2002 Szymon Stefanek (pragma at kvirc dot net),"
+	"Juanjo Alvarez (juanjux at yahoo dot es)", // author & (C)
+	"Sound playing commands",
+	snd_module_init,
+	snd_module_can_unload,
+	snd_module_ctrl,
+	snd_module_cleanup,
+	0)

@@ -118,11 +118,11 @@ KVSO_END_DESTRUCTOR(KvsObject_trayIcon)
 KVSO_CLASS_FUNCTION(trayIcon, setIcon)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
-	QString szIcon;
+		QString szIcon;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("icon", KVS_PT_STRING, 0, szIcon)
-	KVSO_PARAMETERS_END(c)
-	QPixmap * pix = g_pIconManager->getImage(szIcon);
+		KVSO_PARAMETER("icon", KVS_PT_STRING, 0, szIcon)
+		KVSO_PARAMETERS_END(c)
+		QPixmap * pix = g_pIconManager->getImage(szIcon);
 	if(pix)
 		m_pTrayIcon->setIcon(*pix);
 	return true;
@@ -130,44 +130,44 @@ KVSO_CLASS_FUNCTION(trayIcon, setIcon)
 KVSO_CLASS_FUNCTION(trayIcon, setTooltip)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
-	QString szTooltip;
+		QString szTooltip;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("icon", KVS_PT_STRING, 0, szTooltip)
-	KVSO_PARAMETERS_END(c)
-	m_pTrayIcon->setToolTip(szTooltip);
+		KVSO_PARAMETER("icon", KVS_PT_STRING, 0, szTooltip)
+		KVSO_PARAMETERS_END(c)
+		m_pTrayIcon->setToolTip(szTooltip);
 	return true;
 }
 KVSO_CLASS_FUNCTION(trayIcon, show)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
-	m_pTrayIcon->show();
+		m_pTrayIcon->show();
 	return true;
 }
 KVSO_CLASS_FUNCTION(trayIcon, hide)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
-	m_pTrayIcon->show();
+		m_pTrayIcon->show();
 	return true;
 }
 KVSO_CLASS_FUNCTION(trayIcon, isVisible)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
-	c->returnValue()->setBoolean(m_pTrayIcon->isVisible());
+		c->returnValue()->setBoolean(m_pTrayIcon->isVisible());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(trayIcon, showMessage)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
-	QString szMessage, szTitle, szMessageIcon;
+		QString szMessage, szTitle, szMessageIcon;
 	kvs_uint_t uTimeout;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("title", KVS_PT_STRING, 0, szTitle)
-	KVSO_PARAMETER("message", KVS_PT_STRING, 0, szMessage)
-	KVSO_PARAMETER("icon", KVS_PT_STRING, 0, szMessageIcon)
-	KVSO_PARAMETER("timeout", KVS_PT_UINT, 0, uTimeout)
-	KVSO_PARAMETERS_END(c)
-	QSystemTrayIcon::MessageIcon message = QSystemTrayIcon::NoIcon;
+		KVSO_PARAMETER("title", KVS_PT_STRING, 0, szTitle)
+		KVSO_PARAMETER("message", KVS_PT_STRING, 0, szMessage)
+		KVSO_PARAMETER("icon", KVS_PT_STRING, 0, szMessageIcon)
+		KVSO_PARAMETER("timeout", KVS_PT_UINT, 0, uTimeout)
+		KVSO_PARAMETERS_END(c)
+		QSystemTrayIcon::MessageIcon message = QSystemTrayIcon::NoIcon;
 	if(KviQString::equalCI(szMessageIcon, "NoIcon"))
 		message = QSystemTrayIcon::NoIcon;
 	else if(KviQString::equalCI(szMessageIcon, "Information"))
@@ -185,12 +185,12 @@ KVSO_CLASS_FUNCTION(trayIcon, showMessage)
 KVSO_CLASS_FUNCTION(trayIcon, setContextMenu)
 {
 	CHECK_INTERNAL_POINTER(m_pTrayIcon)
-	KviKvsObject * ob;
+		KviKvsObject * ob;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
-	KVSO_PARAMETERS_END(c)
-	ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		KVSO_PARAMETER("widget", KVS_PT_HOBJECT, 0, hObject)
+		KVSO_PARAMETERS_END(c)
+		ob = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob)
 	{
 		c->warning(__tr2qs_ctx("Widget parameter is not an object", "objects"));

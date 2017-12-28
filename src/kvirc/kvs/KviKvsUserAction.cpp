@@ -32,26 +32,26 @@
 #include "KviCommandFormatter.h"
 
 KviKvsUserAction::KviKvsUserAction(QObject * pParent,
-    const QString & szName,
-    const QString & szScriptCode,
-    const QString & szVisibleNameCode,
-    const QString & szDescriptionCode,
-    const QString & szCategory,
-    const QString & szBigIconId,
-    const QString & szSmallIconId,
-    unsigned int uFlags,
-    const QString & szKeySequence)
-    : KviKvsAction(
-          pParent,
-          szName,
-          szScriptCode,
-          szVisibleNameCode,
-          szDescriptionCode,
-          nullptr,
-          szBigIconId,
-          szSmallIconId,
-          uFlags,
-          szKeySequence)
+	const QString & szName,
+	const QString & szScriptCode,
+	const QString & szVisibleNameCode,
+	const QString & szDescriptionCode,
+	const QString & szCategory,
+	const QString & szBigIconId,
+	const QString & szSmallIconId,
+	unsigned int uFlags,
+	const QString & szKeySequence)
+	: KviKvsAction(
+		pParent,
+		szName,
+		szScriptCode,
+		szVisibleNameCode,
+		szDescriptionCode,
+		nullptr,
+		szBigIconId,
+		szSmallIconId,
+		uFlags,
+		szKeySequence)
 {
 	QString szKvsName = "action::";
 	szKvsName += szName;
@@ -69,7 +69,7 @@ KviKvsUserAction::KviKvsUserAction(QObject * pParent,
 }
 
 KviKvsUserAction::KviKvsUserAction(QObject * pParent)
-    : KviKvsAction(pParent, QString(), QString(), QString(), QString(), nullptr, QString(), QString())
+	: KviKvsAction(pParent, QString(), QString(), QString(), QString(), nullptr, QString(), QString())
 {
 	// needs loading!
 	m_pDescriptionScript = nullptr;
@@ -85,56 +85,56 @@ KviKvsUserAction::~KviKvsUserAction()
 }
 
 KviKvsUserAction * KviKvsUserAction::createInstance(
-    QObject * pParent,
-    const QString & szName,
-    const QString & szScriptCode,
-    const QString & szVisibleNameCode,
-    const QString & szDescriptionCode,
-    const QString & szCategory,
-    const QString & szBigIconId,
-    const QString & szSmallIconId,
-    unsigned int uFlags,
-    const QString & szKeySequence)
+	QObject * pParent,
+	const QString & szName,
+	const QString & szScriptCode,
+	const QString & szVisibleNameCode,
+	const QString & szDescriptionCode,
+	const QString & szCategory,
+	const QString & szBigIconId,
+	const QString & szSmallIconId,
+	unsigned int uFlags,
+	const QString & szKeySequence)
 {
 	return new KviKvsUserAction(
-	    pParent,
-	    szName,
-	    szScriptCode,
-	    szVisibleNameCode,
-	    szDescriptionCode,
-	    szCategory,
-	    szBigIconId,
-	    szSmallIconId,
-	    uFlags,
-	    szKeySequence);
+		pParent,
+		szName,
+		szScriptCode,
+		szVisibleNameCode,
+		szDescriptionCode,
+		szCategory,
+		szBigIconId,
+		szSmallIconId,
+		uFlags,
+		szKeySequence);
 }
 
 void KviKvsUserAction::exportToKvs(QString & szBuffer)
 {
 	exportToKvs(
-	    szBuffer,
-	    m_szName,
-	    scriptCode(),
-	    visibleNameCode(),
-	    descriptionCode(),
-	    m_szCategory,
-	    m_szBigIconId,
-	    m_szSmallIconId,
-	    m_uFlags,
-	    m_szKeySequence);
+		szBuffer,
+		m_szName,
+		scriptCode(),
+		visibleNameCode(),
+		descriptionCode(),
+		m_szCategory,
+		m_szBigIconId,
+		m_szSmallIconId,
+		m_uFlags,
+		m_szKeySequence);
 }
 
 void KviKvsUserAction::exportToKvs(
-    QString & szBuffer,
-    const QString & szName,
-    const QString & szScriptCode,
-    const QString & szVisibleName,
-    const QString & szDescription,
-    const QString & szCategory,
-    const QString & szBigIconId,
-    const QString & szSmallIconId,
-    unsigned int uFlags,
-    const QString & szKeySequence)
+	QString & szBuffer,
+	const QString & szName,
+	const QString & szScriptCode,
+	const QString & szVisibleName,
+	const QString & szDescription,
+	const QString & szCategory,
+	const QString & szBigIconId,
+	const QString & szSmallIconId,
+	unsigned int uFlags,
+	const QString & szKeySequence)
 {
 	szBuffer += "action.create";
 	if(uFlags & NeedsContext)

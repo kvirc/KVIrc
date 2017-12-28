@@ -177,7 +177,7 @@ protected:
 	virtual void focusInEvent(QFocusEvent * e);
 	virtual void setFocusProxy(QWidget * w);
 	virtual void keyPressEvent(QKeyEvent * e);
-public slots:
+	public slots:
 	/**
 	* \brief Toggles the multiline editor
 	* \param bOn Whether to activate the multiline editor
@@ -208,7 +208,7 @@ public slots:
 	* \return void
 	*/
 	void toggleToolButtons();
-private slots:
+	private slots:
 	/**
 	* \brief Toggles multiline
 	* \return void

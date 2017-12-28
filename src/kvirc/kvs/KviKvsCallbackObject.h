@@ -63,12 +63,12 @@ public:
 
 public:
 	KviKvsCallbackObject(
-	    const QString & szCallbackSource, // the name of this callback (should identify its source, like "dialog.message"): displayed in error messages
-	    KviWindow * pTargetWindow,        // the window that this callback should be triggered in (can be zero: to execute in the first available console)
-	    const QString & szCallbackCode,   // the callback code (may be empty!)
-	    KviKvsVariantList * pMagicParams, // magic parameters that should be passed to the callback (this class makes a copy of them)
-	    unsigned int uFlags = 0           // a combination of CallbackFlags
-	    );
+		const QString & szCallbackSource, // the name of this callback (should identify its source, like "dialog.message"): displayed in error messages
+		KviWindow * pTargetWindow,        // the window that this callback should be triggered in (can be zero: to execute in the first available console)
+		const QString & szCallbackCode,   // the callback code (may be empty!)
+		KviKvsVariantList * pMagicParams, // magic parameters that should be passed to the callback (this class makes a copy of them)
+		unsigned int uFlags = 0           // a combination of CallbackFlags
+	);
 	virtual ~KviKvsCallbackObject();
 
 protected:

@@ -33,7 +33,7 @@ class KviWindow;
 class KVIRC_API KviThemedLineEdit : public QLineEdit
 {
 	Q_OBJECT
-	Q_PROPERTY(int TransparencyCapable READ dummyRead)
+		Q_PROPERTY(int TransparencyCapable READ dummyRead)
 public:
 	KviThemedLineEdit(QWidget * par, KviWindow * pWindow, const char * name);
 	~KviThemedLineEdit();

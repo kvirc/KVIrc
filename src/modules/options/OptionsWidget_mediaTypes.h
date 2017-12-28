@@ -77,7 +77,7 @@ private:
 	void saveLastItem();
 	void enableOrDisable();
 	void setLineEdits();
-private slots:
+	private slots:
 	void currentItemChanged(QTreeWidgetItem * it, QTreeWidgetItem * prev);
 	void newMediaType();
 	void delMediaType();

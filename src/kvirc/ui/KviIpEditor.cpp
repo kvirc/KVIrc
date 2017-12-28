@@ -31,7 +31,7 @@
 // FIXME: #warning "THIS COULD GO INTO libkvioptions ?"
 
 KviIpEditor::KviIpEditor(QWidget * parent, AddressType addrType, const QString & ipAddr, const char * name)
-    : QLineEdit(parent)
+	: QLineEdit(parent)
 {
 	setObjectName(name);
 	setAddressType(addrType);
@@ -46,48 +46,48 @@ void KviIpEditor::setAddressType(AddressType addrType)
 		QString tmp = text();
 		QRegExp rx("(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])");
 		setValidator(new QRegExpValidator(rx, this));
-		setText(QHostAddress{QHostAddress::AnyIPv4}.toString());
-		if (!tmp.isEmpty())
+		setText(QHostAddress{ QHostAddress::AnyIPv4 }.toString());
+		if(!tmp.isEmpty())
 			setAddress(tmp);
 	}
-	else if (addrType == IPv6)
+	else if(addrType == IPv6)
 	{
 		m_addrType = addrType;
 		QString tmp = text();
 		QRegExp rx("[0-9a-fA-F:]*|::[fF]{4}:(?:(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])\\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9][0-9]|[0-9])");
 		setValidator(new QRegExpValidator(rx, this));
-		setText(QHostAddress{QHostAddress::AnyIPv6}.toString());
-		if (!tmp.isEmpty())
+		setText(QHostAddress{ QHostAddress::AnyIPv6 }.toString());
+		if(!tmp.isEmpty())
 			setAddress(tmp);
 	}
 }
 
 bool KviIpEditor::isValid() const
 {
-	return !QHostAddress{text()}.isNull();
+	return !QHostAddress{ text() }.isNull();
 }
 
 bool KviIpEditor::setAddress(const QString & ipAddr)
 {
-	QHostAddress addr{ipAddr};
+	QHostAddress addr{ ipAddr };
 	if(addr.isNull())
 		return false;
 
 	if(m_addrType == IPv4)
-		setText(QHostAddress{addr.toIPv4Address()}.toString());
+		setText(QHostAddress{ addr.toIPv4Address() }.toString());
 	else
-		setText(QHostAddress{addr.toIPv6Address()}.toString());
+		setText(QHostAddress{ addr.toIPv6Address() }.toString());
 
 	return true;
 }
 
 QString KviIpEditor::address() const
 {
-	QHostAddress addr{text()};
+	QHostAddress addr{ text() };
 	if(addr.isNull())
 		return "";
 	if(m_addrType == IPv6)
-		return QHostAddress{addr.toIPv6Address()}.toString();
+		return QHostAddress{ addr.toIPv6Address() }.toString();
 	else
-		return QHostAddress{addr.toIPv4Address()}.toString();
+		return QHostAddress{ addr.toIPv4Address() }.toString();
 }

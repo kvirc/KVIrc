@@ -255,7 +255,7 @@ void KviConsoleWindow::getUserTipText(const QString & nick, KviIrcUserEntry * e,
 
 	KviRegisteredUserMask * u = g_pRegisteredUserDataBase->findMatchingMask(nick, e->user(), e->host());
 
-	buffer =  "<table>";
+	buffer = "<table>";
 	buffer += tds;
 
 	buffer += KviQString::toHtmlEscaped(nick);
@@ -445,7 +445,7 @@ void KviConsoleWindow::ircUriChanged(const QString & text)
 	if(iStatus & KviIrcUrl::InvalidProtocol || iStatus & KviIrcUrl::InvalidUrl)
 	{
 		KviMessageBox::warning(__tr2qs("KVIrc can only recognize irc://, irc6://, ircs:// or ircs6:// URL's\n"
-		                               "The URL you provided is invalid. Check spelling and try again"));
+			"The URL you provided is invalid. Check spelling and try again"));
 	}
 	m_pInput->setFocus();
 }
@@ -503,7 +503,7 @@ void KviConsoleWindow::connectionAttached()
 	// Update log file name
 	if(KVI_OPTION_BOOL(KviOption_boolAutoLogConsole))
 	{
-		if (m_pIrcView->isLogging())
+		if(m_pIrcView->isLogging())
 			m_pIrcView->stopLogging();
 		m_pIrcView->startLogging();
 	}
@@ -526,24 +526,24 @@ void KviConsoleWindow::closeEvent(QCloseEvent * e)
 			if(!KVI_OPTION_BOOL(KviOption_boolAlwaysDisconnectClosingConnectedConsole))
 			{
 				switch(QMessageBox::warning(this,
-				    __tr2qs("Confirm Close - KVIrc"),
-				    __tr2qs("You have just attempted to close a console window with an active connection inside.\n"
-				            "Are you sure you wish to terminate the connection?"),
-				    __tr2qs("&Yes"),
-				    __tr2qs("&Always"),
-				    __tr2qs("&No"),
-				    2, 2))
+					__tr2qs("Confirm Close - KVIrc"),
+					__tr2qs("You have just attempted to close a console window with an active connection inside.\n"
+						"Are you sure you wish to terminate the connection?"),
+					__tr2qs("&Yes"),
+					__tr2qs("&Always"),
+					__tr2qs("&No"),
+					2, 2))
 				{
-					case 0:
-						// nothing here
-						break;
-					case 1:
-						KVI_OPTION_BOOL(KviOption_boolAlwaysDisconnectClosingConnectedConsole) = true;
-						break;
-					default: // 2 = no
-						e->ignore();
-						return;
-						break;
+				case 0:
+					// nothing here
+					break;
+				case 1:
+					KVI_OPTION_BOOL(KviOption_boolAlwaysDisconnectClosingConnectedConsole) = true;
+					break;
+				default: // 2 = no
+					e->ignore();
+					return;
+					break;
 				}
 			}
 			// ask the context to terminate the connection gracefully
@@ -561,23 +561,23 @@ void KviConsoleWindow::closeEvent(QCloseEvent * e)
 	if(!KVI_OPTION_BOOL(KviOption_boolAlwaysQuitKVIrcClosingLastConsole))
 	{
 		switch(QMessageBox::warning(this,
-		    __tr2qs("Confirm Close - KVIrc"),
-		    __tr2qs("You have just attempted to close the last console window.\nAre you sure you wish to quit KVIrc?"),
-		    __tr2qs("&Always"),
-		    __tr2qs("&Yes"),
-		    __tr2qs("&No"),
-		    2, 2))
+			__tr2qs("Confirm Close - KVIrc"),
+			__tr2qs("You have just attempted to close the last console window.\nAre you sure you wish to quit KVIrc?"),
+			__tr2qs("&Always"),
+			__tr2qs("&Yes"),
+			__tr2qs("&No"),
+			2, 2))
 		{
-			case 0:
-				KVI_OPTION_BOOL(KviOption_boolAlwaysQuitKVIrcClosingLastConsole) = true;
-				break;
-			case 1:
-				// nothing here
-				break;
-			default: // 2 = no
-				e->ignore();
-				return;
-				break;
+		case 0:
+			KVI_OPTION_BOOL(KviOption_boolAlwaysQuitKVIrcClosingLastConsole) = true;
+			break;
+		case 1:
+			// nothing here
+			break;
+		default: // 2 = no
+			e->ignore();
+			return;
+			break;
 		}
 	}
 
@@ -595,16 +595,16 @@ int KviConsoleWindow::triggerOnHighlight(KviWindow * pWnd, int iType, const QStr
 	}
 	if(!KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound).isEmpty() && pWnd && !pWnd->hasAttention())
 	{
-		KviKvsVariantList soundParams{new KviKvsVariant{KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound)}};
+		KviKvsVariantList soundParams{ new KviKvsVariant{KVI_OPTION_STRING(KviOption_stringOnHighlightedMessageSound)} };
 		KviKvsScript::run("snd.play $0", nullptr, &soundParams);
 	}
 
 	QString szMessageType = QString("%1").arg(iType);
 
 	if(KVS_TRIGGER_EVENT_7_HALTED(KviEvent_OnHighlight,
-	    pWnd, szNick, szUser, szHost,
-	    szMsg, szTrigger,
-	    szMessageType, (iType == KVI_OUT_ACTION || iType == KVI_OUT_ACTIONCRYPTED)))
+		pWnd, szNick, szUser, szHost,
+		szMsg, szTrigger,
+		szMessageType, (iType == KVI_OUT_ACTION || iType == KVI_OUT_ACTIONCRYPTED)))
 		return -1;
 	return KVI_OUT_HIGHLIGHT;
 }
@@ -642,10 +642,10 @@ int KviConsoleWindow::applyHighlighting(KviWindow * wnd, int type, const QString
 		{
 			if(!szPattern.isEmpty())
 				rgxHlite.setPattern(
-				    QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(QRegExp::escape(szPattern), QRegExp::escape(connection()->userInfo()->nickName())));
+					QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(QRegExp::escape(szPattern), QRegExp::escape(connection()->userInfo()->nickName())));
 			else
 				rgxHlite.setPattern(
-				    QString("(?:\\s|^)%1(?:\\s|$)").arg(QRegExp::escape(connection()->userInfo()->nickName())));
+					QString("(?:\\s|^)%1(?:\\s|$)").arg(QRegExp::escape(connection()->userInfo()->nickName())));
 			rgxHlite.setCaseSensitivity(cs);
 			if(szStripMsg.contains(rgxHlite))
 				return triggerOnHighlight(wnd, type, nick, user, host, szMsg, connection()->userInfo()->nickName());
@@ -668,10 +668,10 @@ int KviConsoleWindow::applyHighlighting(KviWindow * wnd, int type, const QString
 			{
 				if(!szPattern.isEmpty())
 					rgxHlite.setPattern(
-					    QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(QRegExp::escape(szPattern), QRegExp::escape(it)));
+						QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(QRegExp::escape(szPattern), QRegExp::escape(it)));
 				else
 					rgxHlite.setPattern(
-					    QString("(?:\\s|^)%1(?:\\s|$)").arg(QRegExp::escape(it)));
+						QString("(?:\\s|^)%1(?:\\s|$)").arg(QRegExp::escape(it)));
 				rgxHlite.setCaseSensitivity(cs);
 				if(szStripMsg.contains(rgxHlite))
 					return triggerOnHighlight(wnd, type, nick, user, host, szMsg, it);
@@ -702,15 +702,15 @@ int KviConsoleWindow::applyHighlighting(KviWindow * wnd, int type, const QString
 }
 
 void KviConsoleWindow::outputPrivmsg(KviWindow * wnd,
-    int type,
-    const QString & daNick,
-    const QString & daUser,
-    const QString & daHost,
-    const QString & msg,
-    int iFlags,
-    const QString & prefix,
-    const QString & suffix,
-    const QDateTime & datetime)
+	int type,
+	const QString & daNick,
+	const QString & daUser,
+	const QString & daHost,
+	const QString & msg,
+	int iFlags,
+	const QString & prefix,
+	const QString & suffix,
+	const QDateTime & datetime)
 {
 	// FIXME: #warning "THIS IS USED BY WINDOWS THAT ARE NOT BOUND TO THIS IRC CONTEXT"
 	// FIXME: #warning "REMEMBER IT IN ESCAPE COMMANDS"
@@ -718,7 +718,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow * wnd,
 
 	bool bIsChan = (wnd->type() == KviWindow::Channel);
 	bool bIsNotice = ((type == KVI_OUT_CHANNELNOTICE) || (type == KVI_OUT_CHANNELNOTICECRYPTED)
-	    || (type == KVI_OUT_QUERYNOTICE) || (type == KVI_OUT_QUERYNOTICECRYPTED));
+		|| (type == KVI_OUT_QUERYNOTICE) || (type == KVI_OUT_QUERYNOTICECRYPTED));
 
 	QString nick = daNick; // not that beautiful.. :/
 	QString user = daUser;
@@ -849,7 +849,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow * wnd,
 		{
 			static QString pre1("*");
 			static QString suf1("* ");
-			szMessage =  prefix.isEmpty() ? pre1 : prefix;
+			szMessage = prefix.isEmpty() ? pre1 : prefix;
 			szMessage += szNick;
 			szMessage += suffix.isEmpty() ? suf1 : suffix;
 		}
@@ -857,7 +857,7 @@ void KviConsoleWindow::outputPrivmsg(KviWindow * wnd,
 		{
 			static QString pre2("<");
 			static QString suf2("> ");
-			szMessage =  prefix.isEmpty() ? pre2 : prefix;
+			szMessage = prefix.isEmpty() ? pre2 : prefix;
 			szMessage += szNick;
 			szMessage += suffix.isEmpty() ? suf2 : suffix;
 		}
@@ -1145,45 +1145,45 @@ void KviConsoleWindow::fillStatusString()
 {
 	switch(context()->state())
 	{
-		case KviIrcContext::Idle:
-			m_szStatusString = __tr2qs("No connection");
-			break;
-		case KviIrcContext::PendingReconnection:
-			m_szStatusString = __tr2qs("Waiting to reconnect...");
-			break;
-		case KviIrcContext::Connecting:
-			m_szStatusString = __tr2qs("Connection in progress...");
-			break;
-		case KviIrcContext::LoggingIn:
-			m_szStatusString = __tr2qs("Login in progress...");
-			break;
-		case KviIrcContext::Connected:
-			m_szStatusString = connection()->userInfo()->nickName();
-			if(!connection()->userInfo()->userMode().isEmpty())
-			{
-				m_szStatusString += " (+";
-				m_szStatusString += connection()->userInfo()->userMode();
+	case KviIrcContext::Idle:
+		m_szStatusString = __tr2qs("No connection");
+		break;
+	case KviIrcContext::PendingReconnection:
+		m_szStatusString = __tr2qs("Waiting to reconnect...");
+		break;
+	case KviIrcContext::Connecting:
+		m_szStatusString = __tr2qs("Connection in progress...");
+		break;
+	case KviIrcContext::LoggingIn:
+		m_szStatusString = __tr2qs("Login in progress...");
+		break;
+	case KviIrcContext::Connected:
+		m_szStatusString = connection()->userInfo()->nickName();
+		if(!connection()->userInfo()->userMode().isEmpty())
+		{
+			m_szStatusString += " (+";
+			m_szStatusString += connection()->userInfo()->userMode();
 
-				if(connection()->userInfo()->isAway())
-				{
-					m_szStatusString += QChar(' ');
-					m_szStatusString += __tr2qs("away");
-				}
+			if(connection()->userInfo()->isAway())
+			{
+				m_szStatusString += QChar(' ');
+				m_szStatusString += __tr2qs("away");
+			}
+			m_szStatusString += QChar(')');
+		}
+		else
+		{
+			if(connection()->userInfo()->isAway())
+			{
+				m_szStatusString += " (";
+				m_szStatusString += __tr2qs("away");
 				m_szStatusString += QChar(')');
 			}
-			else
-			{
-				if(connection()->userInfo()->isAway())
-				{
-					m_szStatusString += " (";
-					m_szStatusString += __tr2qs("away");
-					m_szStatusString += QChar(')');
-				}
-			}
+		}
 
-			m_szStatusString += __tr2qs(" on ");
-			m_szStatusString += connection()->serverInfo()->name();
-			break;
+		m_szStatusString += __tr2qs(" on ");
+		m_szStatusString += connection()->serverInfo()->name();
+		break;
 	}
 }
 
@@ -1273,17 +1273,17 @@ void KviConsoleWindow::getWindowListTipText(QString & buffer)
 		date.setTime_t(connection()->statistics()->connectionStartTime());
 		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 		{
-			case 0:
-				// this is the equivalent to an empty date.toString() call, but it's needed
-				// to ensure qt4 will use the default() locale and not the system() one
-				szTmp = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
-				break;
-			case 1:
-				szTmp = date.toString(Qt::ISODate);
-				break;
-			case 2:
-				szTmp = date.toString(Qt::SystemLocaleShortDate);
-				break;
+		case 0:
+			// this is the equivalent to an empty date.toString() call, but it's needed
+			// to ensure qt4 will use the default() locale and not the system() one
+			szTmp = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
+			break;
+		case 1:
+			szTmp = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szTmp = date.toString(Qt::SystemLocaleShortDate);
+			break;
 		}
 
 		buffer += nrs;
@@ -1297,7 +1297,7 @@ void KviConsoleWindow::getWindowListTipText(QString & buffer)
 		buffer += html_br;
 
 		QString tspan = KviTimeUtils::formatTimeInterval((unsigned int)(kvi_secondsSince(connection()->statistics()->connectionStartTime())),
-		    KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
+			KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
 
 		buffer += __tr2qs("Online for");
 		buffer += html_cln;
@@ -1309,7 +1309,7 @@ void KviConsoleWindow::getWindowListTipText(QString & buffer)
 		buffer += enr + "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 
 		tspan = KviTimeUtils::formatTimeInterval((unsigned int)(kvi_secondsSince(connection()->statistics()->lastMessageTime())),
-		    KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
+			KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
 
 		buffer += __tr2qs("Server idle for");
 		buffer += html_cln;

@@ -165,7 +165,7 @@ class KviKvsPopupMenuItemLabel;
 class KVIRC_API KviKvsPopupMenuItemLabelHelper : public QObject
 {
 	Q_OBJECT
-	friend class KviKvsPopupMenuItemLabel;
+		friend class KviKvsPopupMenuItemLabel;
 
 protected:
 	KviKvsPopupMenuItemLabelHelper(KviKvsPopupMenuItemLabel * pItem);
@@ -173,7 +173,7 @@ protected:
 
 protected:
 	KviKvsPopupMenuItemLabel * m_pItem = nullptr;
-protected slots:
+	protected slots:
 	void labelDestroyed();
 };
 
@@ -269,7 +269,7 @@ public:
 class KVIRC_API KviKvsPopupMenu : public QMenu
 {
 	Q_OBJECT
-	friend class KviKvsPopupMenuItemMenu;
+		friend class KviKvsPopupMenuItemMenu;
 	friend class KviKvsPopupManager;
 	friend class KviSinglePopupEditor;
 
@@ -325,12 +325,12 @@ protected:
 	void executeEpilogues(KviKvsPopupMenuTopLevelData * pData);
 	void load(const QString & prefix, KviConfigurationFile * cfg);
 	void save(const QString & prefix, KviConfigurationFile * cfg);
-private slots:
+	private slots:
 	void setupMenuContents();
 
 protected:
 	void clearMenuContents();
-protected slots:
+	protected slots:
 	void itemClicked(QAction * pAction);
 signals:
 	void testModeItemClicked(KviKvsPopupMenuItem * it);

@@ -54,7 +54,7 @@ protected:
 protected:
 	virtual void showEvent(QShowEvent * e);
 	virtual void closeEvent(QCloseEvent * e);
-protected slots:
+	protected slots:
 	void die();
 };
 

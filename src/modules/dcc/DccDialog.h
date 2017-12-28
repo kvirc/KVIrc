@@ -52,7 +52,7 @@ public:
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 	virtual void showEvent(QShowEvent * e);
-private slots:
+	private slots:
 	void acceptClicked();
 	void rejectClicked();
 signals:
@@ -70,7 +70,7 @@ public:
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 	virtual void showEvent(QShowEvent * e);
-private slots:
+	private slots:
 	void renameClicked();
 	void overwriteClicked();
 	void resumeClicked();

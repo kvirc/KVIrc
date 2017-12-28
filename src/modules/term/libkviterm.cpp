@@ -69,8 +69,8 @@ static bool term_kvs_cmd_open(KviKvsModuleCommandCall * c)
 #ifdef COMPILE_KDE4_SUPPORT
 	c->module()->lock(); // multiple locks are allowed
 	if(
-	    c->hasSwitch('m', "mdi") || // compat only
-	    c->hasSwitch('d', "dockable"))
+		c->hasSwitch('m', "mdi") || // compat only
+		c->hasSwitch('d', "dockable"))
 	{
 		TermWindow * w = new TermWindow("Terminal emulator");
 		g_pMainWindow->addWindow(w);
@@ -107,12 +107,12 @@ static bool term_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Term",                                                         // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Terminal emulator extension based on the KonsolePart KDE class",
-    term_module_init,
-    0,
-    0,
-    term_module_cleanup,
-    0)
+	"Term",                                                         // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Terminal emulator extension based on the KonsolePart KDE class",
+	term_module_init,
+	0,
+	0,
+	term_module_cleanup,
+	0)

@@ -31,7 +31,7 @@
 #include <QTextBrowser>
 
 KviHtmlDialog::KviHtmlDialog(QWidget * pParent, KviHtmlDialogData * pData)
-    : QDialog(pParent)
+	: QDialog(pParent)
 {
 	m_pData = pData;
 
@@ -120,7 +120,7 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent, KviHtmlDialogData * pData)
 }
 
 KviHtmlDialog::~KviHtmlDialog()
-    = default;
+= default;
 
 void KviHtmlDialog::button1Pressed()
 {

@@ -46,7 +46,7 @@ protected:
 	bool home(KviKvsObjectFunctionCall * c);
 	bool reload(KviKvsObjectFunctionCall * c);
 	bool linkClickedEvent(KviKvsObjectFunctionCall * c);
-protected slots:
+	protected slots:
 	void anchorClicked(const QUrl &);
 };
 

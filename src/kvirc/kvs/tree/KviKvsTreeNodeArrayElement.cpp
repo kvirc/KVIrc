@@ -29,7 +29,7 @@
 #include "KviKvsObject.h"
 
 KviKvsTreeNodeArrayElement::KviKvsTreeNodeArrayElement(const QChar * pLocation, KviKvsTreeNodeData * pSource, KviKvsTreeNodeExpression * pIndex)
-    : KviKvsTreeNodeArrayOrHashElement(pLocation, pSource)
+	: KviKvsTreeNodeArrayOrHashElement(pLocation, pSource)
 {
 	m_pIndex = pIndex;
 	m_pIndex->setParent(this);

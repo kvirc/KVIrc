@@ -192,15 +192,15 @@ extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 //
 
 KviIrcView::KviIrcView(QWidget * parent, KviWindow * pWnd)
-    : QWidget(parent)
+	: QWidget(parent)
 {
 	setObjectName("irc_view");
 	// Ok...here we go
 	// initialize the initializable
 
 	setAttribute(Qt::WA_NoSystemBackground); // This disables automatic qt double buffering
-	                                         // 	setAttribute(Qt::WA_OpaquePaintEvent);
-	                                         // 	setAttribute(Qt::WA_PaintOnScreen); // disable qt backing store (that would force us to trigger repaint() instead of the 10 times faster paintEvent(0))
+											 // 	setAttribute(Qt::WA_OpaquePaintEvent);
+											 // 	setAttribute(Qt::WA_PaintOnScreen); // disable qt backing store (that would force us to trigger repaint() instead of the 10 times faster paintEvent(0))
 
 	m_iFlushTimer = 0;
 	m_pToolsPopup = nullptr;
@@ -377,8 +377,8 @@ void KviIrcView::showEvent(QShowEvent * e)
 	if(!pWin)
 		return; // huh ?
 
-	QObject::disconnect(pWin,SIGNAL(screenChanged(QScreen *)),this,SLOT(screenChanged(QScreen *)));
-	QObject::connect(pWin,SIGNAL(screenChanged(QScreen *)),this,SLOT(screenChanged(QScreen *)));
+	QObject::disconnect(pWin, SIGNAL(screenChanged(QScreen *)), this, SLOT(screenChanged(QScreen *)));
+	QObject::connect(pWin, SIGNAL(screenChanged(QScreen *)), this, SLOT(screenChanged(QScreen *)));
 }
 
 void KviIrcView::screenChanged(QScreen *)
@@ -386,7 +386,6 @@ void KviIrcView::screenChanged(QScreen *)
 	// Changing screen can change DPI. Reset font so metrics are recomputed.
 	setFont(font());
 }
-
 
 //
 // The IrcView : options
@@ -522,7 +521,6 @@ void KviIrcView::setTimestamp(bool bTimestamp)
 {
 	m_bTimestamp = bTimestamp;
 
-
 // STATS FOR A BUFFER FULL OF HIGHLY COLORED STRINGS, HIGHLY WRAPPED
 //
 // Lines = 1024 (322425 bytes - 314 KB) (avg 314 bytes per line), well :)
@@ -555,7 +553,6 @@ void KviIrcView::setTimestamp(bool bTimestamp)
 //	qDebug("string bytes = %u (%u KB)",nStringBytes,nStringBytes / 1024);
 //	qDebug("attributes = %u (%u bytes - %u KB)",nAttributes,nAttrBytes,nAttrBytes / 1024);
 //	qDebug("blocks = %u (%u bytes - %u KB)\n",nBlocks,nBlockBytes,nBlockBytes / 1024);
-
 }
 */
 void KviIrcView::scrollBarPositionChanged(int newValue)
@@ -600,7 +597,7 @@ void KviIrcView::postUpdateEvent()
 
 	if(m_iUnprocessedPaintEventRequests == 3)
 	{
-// Three unprocessed paint events...do it now
+		// Three unprocessed paint events...do it now
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 		if(!((KVI_OPTION_PIXMAP(KviOption_pixmapIrcViewBackground).pixmap()) || m_pPrivateBackgroundPixmap || g_pShadedChildGlobalDesktopBackground || KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency)))
 			fastScroll(3);
@@ -770,21 +767,21 @@ bool KviIrcView::messageShouldGoToMessageView(int iMsgType)
 {
 	switch(iMsgType)
 	{
-		case KVI_OUT_CHANPRIVMSG:
-		case KVI_OUT_CHANPRIVMSGCRYPTED:
-		case KVI_OUT_CHANNELNOTICE:
-		case KVI_OUT_CHANNELNOTICECRYPTED:
-		case KVI_OUT_ACTION:
-		case KVI_OUT_ACTIONCRYPTED:
-		case KVI_OUT_OWNACTION:
-		case KVI_OUT_OWNACTIONCRYPTED:
-		case KVI_OUT_OWNPRIVMSG:
-		case KVI_OUT_OWNPRIVMSGCRYPTED:
-		case KVI_OUT_HIGHLIGHT:
-			return true;
-			break;
-		default:
-			break; // fall down
+	case KVI_OUT_CHANPRIVMSG:
+	case KVI_OUT_CHANPRIVMSGCRYPTED:
+	case KVI_OUT_CHANNELNOTICE:
+	case KVI_OUT_CHANNELNOTICECRYPTED:
+	case KVI_OUT_ACTION:
+	case KVI_OUT_ACTIONCRYPTED:
+	case KVI_OUT_OWNACTION:
+	case KVI_OUT_OWNACTIONCRYPTED:
+	case KVI_OUT_OWNPRIVMSG:
+	case KVI_OUT_OWNPRIVMSGCRYPTED:
+	case KVI_OUT_HIGHLIGHT:
+		return true;
+		break;
+	default:
+		break; // fall down
 	}
 
 	return false;
@@ -1131,7 +1128,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 	 * wrapped at the right edge of this control).
 	 */
 
-	// Have lines visible
+	 // Have lines visible
 	int curBottomCoord = widgetHeight - KVI_IRCVIEW_VERTICAL_BORDER;
 	int maxLineWidth = widgetWidth - KVI_IRCVIEW_DOUBLEBORDER_WIDTH;
 	int defLeftCoord = KVI_IRCVIEW_HORIZONTAL_BORDER;
@@ -1219,72 +1216,72 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 				// normal block
 				switch(block->pChunk->type)
 				{
-					case KviControlCodes::Color:
-						if(block->pChunk->colors.fore != KviControlCodes::NoChange)
-						{
-							curFore = block->pChunk->colors.fore;
-							if(block->pChunk->colors.back != KviControlCodes::NoChange)
-								curBack = block->pChunk->colors.back;
-						}
-						else
-						{
-							/*
-							* When KVIrc encounters a Ctrl+K code without any trailing numbers, we then
-							* use KVIrc's default color value defined by the user in the Options dialog.
-							*/
-							curFore = defaultFore;
-							curBack = defaultBack;
-						}
-						break;
-					case KviControlCodes::Escape:
-						foreBeforeEscape = curFore;
-						if(block->pChunk->colors.fore != KviControlCodes::NoChange)
-							curFore = block->pChunk->colors.fore;
-						if(m_pLastLinkUnderMouse == block)
-							curLink = true;
-						break;
-					case KviControlCodes::UnEscape:
-						curLink = false;
-						curFore = foreBeforeEscape;
-						break;
-					case KviControlCodes::Bold:
-						curBold = !curBold;
-						break;
-					case KviControlCodes::Italic:
-						curItalic = !curItalic;
-						break;
-					case KviControlCodes::Underline:
-						curUnderline = !curUnderline;
-						break;
-					case KviControlCodes::Reset:
-						curBold = false;
-						curItalic = false;
-						curUnderline = false;
-						bacWasTransp = false;
+				case KviControlCodes::Color:
+					if(block->pChunk->colors.fore != KviControlCodes::NoChange)
+					{
+						curFore = block->pChunk->colors.fore;
+						if(block->pChunk->colors.back != KviControlCodes::NoChange)
+							curBack = block->pChunk->colors.back;
+					}
+					else
+					{
+						/*
+						* When KVIrc encounters a Ctrl+K code without any trailing numbers, we then
+						* use KVIrc's default color value defined by the user in the Options dialog.
+						*/
 						curFore = defaultFore;
 						curBack = defaultBack;
-						break;
-					case KviControlCodes::Reverse:
-						// this should be "reversed colors"
-						char aux = curBack;
-						if(bacWasTransp)
-						{
-							curBack = KviControlCodes::Transparent;
-						}
-						else
-						{
-							curBack = curFore;
-						}
-						if(aux == KviControlCodes::Transparent)
-						{
-							curFore = (char)KVI_DEF_BACK;
-						}
-						else
-						{
-							curFore = aux;
-						}
-						bacWasTransp = (aux == KviControlCodes::Transparent);
-						break;
+					}
+					break;
+				case KviControlCodes::Escape:
+					foreBeforeEscape = curFore;
+					if(block->pChunk->colors.fore != KviControlCodes::NoChange)
+						curFore = block->pChunk->colors.fore;
+					if(m_pLastLinkUnderMouse == block)
+						curLink = true;
+					break;
+				case KviControlCodes::UnEscape:
+					curLink = false;
+					curFore = foreBeforeEscape;
+					break;
+				case KviControlCodes::Bold:
+					curBold = !curBold;
+					break;
+				case KviControlCodes::Italic:
+					curItalic = !curItalic;
+					break;
+				case KviControlCodes::Underline:
+					curUnderline = !curUnderline;
+					break;
+				case KviControlCodes::Reset:
+					curBold = false;
+					curItalic = false;
+					curUnderline = false;
+					bacWasTransp = false;
+					curFore = defaultFore;
+					curBack = defaultBack;
+					break;
+				case KviControlCodes::Reverse:
+					// this should be "reversed colors"
+					char aux = curBack;
+					if(bacWasTransp)
+					{
+						curBack = KviControlCodes::Transparent;
+					}
+					else
+					{
+						curBack = curFore;
+					}
+					if(aux == KviControlCodes::Transparent)
+					{
+						curFore = (char)KVI_DEF_BACK;
+					}
+					else
+					{
+						curFore = aux;
+					}
+					bacWasTransp = (aux == KviControlCodes::Transparent);
+					break;
 					//case KviControlCodes::Icon:
 					//case KviControlCodes::UnIcon:
 						// does nothing
@@ -1301,14 +1298,14 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 				curBottomCoord += m_iFontLineSpacing;
 			}
 
-//
-// Here we run really out of bounds :)))))
-// A couple of macros that could work well as functions...
-// but since there are really many params to be passed
-// and push & pop calls take clock cycles
-// my paranoid mind decided to go for the macro way.
-// This is NOT good programming
-//
+			//
+			// Here we run really out of bounds :)))))
+			// A couple of macros that could work well as functions...
+			// but since there are really many params to be passed
+			// and push & pop calls take clock cycles
+			// my paranoid mind decided to go for the macro way.
+			// This is NOT good programming
+			//
 
 #define SET_PEN(_color, _custom)                                                             \
 	if(((unsigned char)_color) < 16)                                                         \
@@ -1411,46 +1408,46 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 				{
 					switch(m_pWrappedBlockSelectionInfo->selection_type)
 					{
-						case KVI_IRCVIEW_BLOCK_SELECTION_TOTAL:
-							DRAW_SELECTED_TEXT(pCurTextLine->szText, block->block_start,
-							    block->block_len, block->block_width)
+					case KVI_IRCVIEW_BLOCK_SELECTION_TOTAL:
+						DRAW_SELECTED_TEXT(pCurTextLine->szText, block->block_start,
+							block->block_len, block->block_width)
 							break;
-						case KVI_IRCVIEW_BLOCK_SELECTION_LEFT:
-							DRAW_SELECTED_TEXT(pCurTextLine->szText, block->block_start,
-							    m_pWrappedBlockSelectionInfo->part_1_length,
-							    m_pWrappedBlockSelectionInfo->part_1_width)
+					case KVI_IRCVIEW_BLOCK_SELECTION_LEFT:
+						DRAW_SELECTED_TEXT(pCurTextLine->szText, block->block_start,
+							m_pWrappedBlockSelectionInfo->part_1_length,
+							m_pWrappedBlockSelectionInfo->part_1_width)
 							DRAW_NORMAL_TEXT(pCurTextLine->szText, block->block_start + m_pWrappedBlockSelectionInfo->part_1_length,
-							    m_pWrappedBlockSelectionInfo->part_2_length,
-							    m_pWrappedBlockSelectionInfo->part_2_width)
+								m_pWrappedBlockSelectionInfo->part_2_length,
+								m_pWrappedBlockSelectionInfo->part_2_width)
 							break;
-						case KVI_IRCVIEW_BLOCK_SELECTION_RIGHT:
-							DRAW_NORMAL_TEXT(pCurTextLine->szText, block->block_start,
-							    m_pWrappedBlockSelectionInfo->part_1_length,
-							    m_pWrappedBlockSelectionInfo->part_1_width)
+					case KVI_IRCVIEW_BLOCK_SELECTION_RIGHT:
+						DRAW_NORMAL_TEXT(pCurTextLine->szText, block->block_start,
+							m_pWrappedBlockSelectionInfo->part_1_length,
+							m_pWrappedBlockSelectionInfo->part_1_width)
 							DRAW_SELECTED_TEXT(pCurTextLine->szText, block->block_start + m_pWrappedBlockSelectionInfo->part_1_length,
-							    m_pWrappedBlockSelectionInfo->part_2_length,
-							    m_pWrappedBlockSelectionInfo->part_2_width)
+								m_pWrappedBlockSelectionInfo->part_2_length,
+								m_pWrappedBlockSelectionInfo->part_2_width)
 							break;
-						case KVI_IRCVIEW_BLOCK_SELECTION_CENTRAL:
-							DRAW_NORMAL_TEXT(pCurTextLine->szText, block->block_start,
-							    m_pWrappedBlockSelectionInfo->part_1_length,
-							    m_pWrappedBlockSelectionInfo->part_1_width)
+					case KVI_IRCVIEW_BLOCK_SELECTION_CENTRAL:
+						DRAW_NORMAL_TEXT(pCurTextLine->szText, block->block_start,
+							m_pWrappedBlockSelectionInfo->part_1_length,
+							m_pWrappedBlockSelectionInfo->part_1_width)
 							DRAW_SELECTED_TEXT(pCurTextLine->szText, block->block_start + m_pWrappedBlockSelectionInfo->part_1_length,
-							    m_pWrappedBlockSelectionInfo->part_2_length,
-							    m_pWrappedBlockSelectionInfo->part_2_width)
+								m_pWrappedBlockSelectionInfo->part_2_length,
+								m_pWrappedBlockSelectionInfo->part_2_width)
 							DRAW_NORMAL_TEXT(pCurTextLine->szText, block->block_start + m_pWrappedBlockSelectionInfo->part_1_length + m_pWrappedBlockSelectionInfo->part_2_length,
-							    m_pWrappedBlockSelectionInfo->part_3_length,
-							    m_pWrappedBlockSelectionInfo->part_3_width)
+								m_pWrappedBlockSelectionInfo->part_3_length,
+								m_pWrappedBlockSelectionInfo->part_3_width)
 							break;
-						case KVI_IRCVIEW_BLOCK_SELECTION_ICON:
-						{
-							int theWdth = block->block_width;
-							if(theWdth < 0)
-								theWdth = width() - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER + scrollbarWidth);
-							pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_SELECT).back()));
-							goto no_selection_paint;
-						}
-						break;
+					case KVI_IRCVIEW_BLOCK_SELECTION_ICON:
+					{
+						int theWdth = block->block_width;
+						if(theWdth < 0)
+							theWdth = width() - (curLeftCoord + KVI_IRCVIEW_HORIZONTAL_BORDER + scrollbarWidth);
+						pa.fillRect(curLeftCoord, curBottomCoord - m_iFontLineSpacing + m_iFontDescent, theWdth, m_iFontLineSpacing, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_SELECT).back()));
+						goto no_selection_paint;
+					}
+					break;
 					}
 				}
 				else
@@ -1475,7 +1472,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 			}
 			else
 			{
-			// No selection ...go fast!
+				// No selection ...go fast!
 			no_selection_paint:
 				if(block->pChunk && block->pChunk->type == KviControlCodes::Icon)
 				{
@@ -1530,7 +1527,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 
 					newFont = pa.font();
 					newFont.setStyle(curItalic ^ (normalFontStyle != QFont::StyleNormal) ? QFont::StyleItalic : QFont::StyleNormal);
-					if (m_bUseRealBold)
+					if(m_bUseRealBold)
 						newFont.setBold(bBold);
 					pa.setFont(newFont);
 
@@ -1542,7 +1539,7 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 
 					pa.drawText(curLeftCoord, curBottomCoord, pCurTextLine->szText.mid(block->block_start, block->block_len));
 
-					if (bBold && !m_bUseRealBold)
+					if(bBold && !m_bUseRealBold)
 					{
 						// Draw doubled font (simulate bold)
 						pa.drawText(curLeftCoord + 1, curBottomCoord, pCurTextLine->szText.mid(block->block_start, block->block_len));
@@ -1573,20 +1570,20 @@ void KviIrcView::paintEvent(QPaintEvent * p)
 
 				switch(KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle))
 				{
-					case 1:
-						pen.setStyle(Qt::DashLine);
-						break;
-					case 2:
-						pen.setStyle(Qt::SolidLine);
-						break;
-					case 3:
-						pen.setStyle(Qt::DashDotLine);
-						break;
-					case 4:
-						pen.setStyle(Qt::DashDotDotLine);
-						break;
-					default:
-						pen.setStyle(Qt::DotLine);
+				case 1:
+					pen.setStyle(Qt::DashLine);
+					break;
+				case 2:
+					pen.setStyle(Qt::SolidLine);
+					break;
+				case 3:
+					pen.setStyle(Qt::DashDotLine);
+					break;
+				case 4:
+					pen.setStyle(Qt::DashDotDotLine);
+					break;
+				default:
+					pen.setStyle(Qt::DotLine);
 				}
 
 				pa.setPen(pen);
@@ -2110,7 +2107,7 @@ void KviIrcView::recalcFontVariables(const QFont & font, const QFontInfo & fi)
 		fontBold.setBold(true);
 		QFontMetrics fmBold = QFontMetrics(fontBold);
 		for(unsigned short i = 32; i < 256; i++)
-			if (m_iFontCharacterWidth[i] && fmBold.width(QChar(i)) != m_iFontCharacterWidth[i])
+			if(m_iFontCharacterWidth[i] && fmBold.width(QChar(i)) != m_iFontCharacterWidth[i])
 			{
 				//printf("Char %d: %d != %d\n", i, fmBold.width(QChar(i)), m_iFontCharacterWidth[i]);
 				m_bUseRealBold = false;
@@ -2254,14 +2251,14 @@ void KviIrcView::chooseBackground()
 {
 	QString f;
 	if(
-	    !KviFileDialog::askForOpenFileName(
-	        f,
-	        __tr2qs("Choose the background image..."),
-	        QString(),
-	        QString(),
-	        false,
-	        true,
-	        this))
+		!KviFileDialog::askForOpenFileName(
+			f,
+			__tr2qs("Choose the background image..."),
+			QString(),
+			QString(),
+			false,
+			true,
+			this))
 		return;
 
 	if(f.isEmpty())
@@ -2464,7 +2461,6 @@ void KviIrcView::findNext(const QString & szText, bool bCaseS, bool bRegExp, boo
 			l = l->pNext;
 			if(!l)
 				l = m_pFirstLine;
-
 		} while(l != start);
 	}
 	m_pCursorLine = nullptr;
@@ -2489,7 +2485,6 @@ void KviIrcView::findPrev(const QString & szText, bool bCaseS, bool bRegExp, boo
 
 		do
 		{
-
 			if(m_pToolWidget)
 			{
 				if(!(m_pToolWidget->messageEnabled(l->iMsgType)))
@@ -2523,7 +2518,6 @@ void KviIrcView::findPrev(const QString & szText, bool bCaseS, bool bRegExp, boo
 			l = l->pPrev;
 			if(!l)
 				l = m_pLastLine;
-
 		} while(l != start);
 	}
 	m_pCursorLine = nullptr;
@@ -2620,13 +2614,13 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 			}
 			else
 			{
-			/*
-			 * Profane description: Once we get here, we know the correct line l, the correct row top coordinate iTop and
-			 * the index of the first chunk in this line i.
-			 * Calculate the left border of this row: if this is not the first one, add any margin.
-			 * Note: iLeft will contain the right border position of the current chunk.
-			 */
-				// this is not the first row of this line and the margin option is enabled?
+				/*
+				 * Profane description: Once we get here, we know the correct line l, the correct row top coordinate iTop and
+				 * the index of the first chunk in this line i.
+				 * Calculate the left border of this row: if this is not the first one, add any margin.
+				 * Note: iLeft will contain the right border position of the current chunk.
+				 */
+				 // this is not the first row of this line and the margin option is enabled?
 				if(iTop != firstRowTop)
 					if(KVI_OPTION_BOOL(KviOption_boolIrcViewWrapMargin))
 						iLeft += m_iWrapMargin;
@@ -2662,10 +2656,10 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 					oldIndex = retValue; oldLeft = iLeft;
 
 					curChar = l->szText.at(l->pBlocks[i].block_start + retValue);
-					if (curChar >= 0xD800 && curChar <= 0xDC00) // Surrogate pair
+					if(curChar >= 0xD800 && curChar <= 0xDC00) // Surrogate pair
 					{
 						iLeft += m_pFm->width(l->szText.mid(retValue), 2);
-						retValue+=2;
+						retValue += 2;
 					}
 					else
 					{
@@ -2678,7 +2672,7 @@ int KviIrcView::getVisibleCharIndexAt(KviIrcViewLine *, int xPos, int yPos)
 				// i.e. if the user starts selecting from the left half of a character, select that character too.
 				// This mimics the behavior of most other GUI applications.
 				int iMid = (oldLeft + iLeft) / 2;
-				if (xPos <= iMid)
+				if(xPos <= iMid)
 					retValue = oldIndex;
 
 				//printf("%d\n",l->pBlocks[i].block_start+retValue);
@@ -2774,12 +2768,12 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 			}
 			else
 			{
-			/*
-			 * Profane description: Once we get here, we know the correct line l, the correct row top coordinate iTop and
-			 * the index of the first chunk in this line i.
-			 * Calculate the left border of this row: if this is not the first one, add any margin.
-			 * Note: iLeft will contain the right border position of the current chunk.
-			 */
+				/*
+				 * Profane description: Once we get here, we know the correct line l, the correct row top coordinate iTop and
+				 * the index of the first chunk in this line i.
+				 * Calculate the left border of this row: if this is not the first one, add any margin.
+				 * Note: iLeft will contain the right border position of the current chunk.
+				 */
 				int iBlockWidth = 0;
 
 				// this is not the first row of this line and the margin option is enabled?
@@ -2869,9 +2863,9 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 							if(pRect)
 							{
 								*pRect = QRect(iLeftBorder,
-								    bHadWordWraps ? iLastEscapeBlockTop : iTop,
-								    iRightBorder,
-								    ((uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent);
+									bHadWordWraps ? iLastEscapeBlockTop : iTop,
+									iRightBorder,
+									((uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent);
 							}
 							if(linkCmd)
 							{
@@ -2892,25 +2886,25 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 										{
 											switch(l->pBlocks[iEndOfLInk].pChunk->type)
 											{
-												case KviControlCodes::Bold:
-												case KviControlCodes::Italic:
-												case KviControlCodes::Underline:
-												case KviControlCodes::Reverse:
-												case KviControlCodes::Reset:
-													szLink.append(QChar(l->pBlocks[iEndOfLInk].pChunk->type));
-													break;
-												case KviControlCodes::Color:
-													szLink.append(QChar(KviControlCodes::Color));
-													if(l->pBlocks[iEndOfLInk].pChunk->colors.fore != KviControlCodes::NoChange)
-													{
-														szLink.append(QString("%1").arg((int)(l->pBlocks[iEndOfLInk].pChunk->colors.fore)));
-													}
-													if(l->pBlocks[iEndOfLInk].pChunk->colors.back != KviControlCodes::NoChange)
-													{
-														szLink.append(QChar(','));
-														szLink.append(QString("%1").arg((int)(l->pBlocks[iEndOfLInk].pChunk->colors.back)));
-													}
-													break;
+											case KviControlCodes::Bold:
+											case KviControlCodes::Italic:
+											case KviControlCodes::Underline:
+											case KviControlCodes::Reverse:
+											case KviControlCodes::Reset:
+												szLink.append(QChar(l->pBlocks[iEndOfLInk].pChunk->type));
+												break;
+											case KviControlCodes::Color:
+												szLink.append(QChar(KviControlCodes::Color));
+												if(l->pBlocks[iEndOfLInk].pChunk->colors.fore != KviControlCodes::NoChange)
+												{
+													szLink.append(QString("%1").arg((int)(l->pBlocks[iEndOfLInk].pChunk->colors.fore)));
+												}
+												if(l->pBlocks[iEndOfLInk].pChunk->colors.back != KviControlCodes::NoChange)
+												{
+													szLink.append(QChar(','));
+													szLink.append(QString("%1").arg((int)(l->pBlocks[iEndOfLInk].pChunk->colors.back)));
+												}
+												break;
 											}
 											szLink.append(l->szText.mid(l->pBlocks[iEndOfLInk].block_start, l->pBlocks[iEndOfLInk].block_len));
 										}
@@ -2941,9 +2935,9 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos, int yPos, QRect
 							if(pRect)
 							{
 								*pRect = QRect(iLastLeft,
-								    bHadWordWraps ? firstRowTop : iTop,
-								    iBlockWidth,
-								    ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent);
+									bHadWordWraps ? firstRowTop : iTop,
+									iBlockWidth,
+									((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent);
 							}
 							if(linkCmd)
 							{

@@ -49,19 +49,19 @@ typedef struct _KviKvsSpecialCommandParsingRoutine
 	specialCommandParsingRoutine proc;
 } KviKvsSpecialCommandParsingRoutine;
 
-typedef bool (*coreSimpleCommandExecRoutine)(KviKvsRunTimeContext * c, KviKvsVariantList * pParams, KviKvsSwitchList * pSwitches);
+typedef bool(*coreSimpleCommandExecRoutine)(KviKvsRunTimeContext * c, KviKvsVariantList * pParams, KviKvsSwitchList * pSwitches);
 typedef struct _KviKvsCoreSimpleCommandExecRoutine
 {
 	coreSimpleCommandExecRoutine proc;
 } KviKvsCoreSimpleCommandExecRoutine;
 
-typedef bool (*coreFunctionExecRoutine)(KviKvsRunTimeContext * c, KviKvsVariantList * pParams, KviKvsVariant * pRetBuffer);
+typedef bool(*coreFunctionExecRoutine)(KviKvsRunTimeContext * c, KviKvsVariantList * pParams, KviKvsVariant * pRetBuffer);
 typedef struct _KviKvsCoreFunctionExecRoutine
 {
 	coreFunctionExecRoutine proc;
 } KviKvsCoreFunctionExecRoutine;
 
-typedef bool (*coreCallbackCommandExecRoutine)(KviKvsRunTimeContext * c, KviKvsVariantList * pParams, KviKvsSwitchList * pSwitches, const KviKvsScript * pCallback);
+typedef bool(*coreCallbackCommandExecRoutine)(KviKvsRunTimeContext * c, KviKvsVariantList * pParams, KviKvsSwitchList * pSwitches, const KviKvsScript * pCallback);
 typedef struct _KviKvsCoreCallbackCommandExecRoutine
 {
 	coreCallbackCommandExecRoutine proc;

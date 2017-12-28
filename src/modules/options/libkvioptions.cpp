@@ -95,10 +95,10 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 {
 	QString szGroup;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("options_group", KVS_PT_STRING, KVS_PF_OPTIONAL, szGroup)
-	KVSM_PARAMETERS_END(c)
-	if(szGroup.isEmpty())
-		szGroup = "general";
+		KVSM_PARAMETER("options_group", KVS_PT_STRING, KVS_PF_OPTIONAL, szGroup)
+		KVSM_PARAMETERS_END(c)
+		if(szGroup.isEmpty())
+			szGroup = "general";
 	if(szGroup != "general" && szGroup != "theme")
 	{
 		c->warning(__tr2qs_ctx("No such options_group %Q", "options"), &szGroup);
@@ -205,10 +205,10 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 {
 	QString szOption;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("option", KVS_PT_STRING, 0, szOption)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("option", KVS_PT_STRING, 0, szOption)
+		KVSM_PARAMETERS_END(c)
 
-	OptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(szOption.toUtf8().data());
+		OptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(szOption.toUtf8().data());
 	if(!e)
 	{
 		c->warning(__tr2qs_ctx("No such options page class name %Q", "options"), &szOption);
@@ -224,8 +224,8 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 	}
 
 	OptionsWidgetContainer * wc = new OptionsWidgetContainer(
-	    g_pMainWindow,
-	    !c->hasSwitch('n', "non-modal"));
+		g_pMainWindow,
+		!c->hasSwitch('n', "non-modal"));
 
 	wc->setup(g_pOptionsInstanceManager->getInstance(e, wc));
 
@@ -259,10 +259,10 @@ static bool options_kvs_fnc_isdialog(KviKvsModuleFunctionCall * c)
 {
 	QString szGroup;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("options_group", KVS_PT_STRING, KVS_PF_OPTIONAL, szGroup)
-	KVSM_PARAMETERS_END(c)
-	if(szGroup.isEmpty())
-		szGroup = "general";
+		KVSM_PARAMETER("options_group", KVS_PT_STRING, KVS_PF_OPTIONAL, szGroup)
+		KVSM_PARAMETERS_END(c)
+		if(szGroup.isEmpty())
+			szGroup = "general";
 	c->returnValue()->setBoolean(g_pOptionsDialogDict->find(szGroup));
 	return true;
 }
@@ -290,10 +290,10 @@ static bool options_kvs_cmd_close(KviKvsModuleCommandCall * c)
 {
 	QString szGroup;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("options_group", KVS_PT_STRING, KVS_PF_OPTIONAL, szGroup)
-	KVSM_PARAMETERS_END(c)
-	if(szGroup.isEmpty())
-		szGroup = "general";
+		KVSM_PARAMETER("options_group", KVS_PT_STRING, KVS_PF_OPTIONAL, szGroup)
+		KVSM_PARAMETERS_END(c)
+		if(szGroup.isEmpty())
+			szGroup = "general";
 
 	OptionsDialog * d = g_pOptionsDialogDict->find(szGroup);
 	if(d)
@@ -364,12 +364,12 @@ static bool options_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Options",                                                      // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Options Dialog",
-    options_module_init,
-    options_module_can_unload,
-    0,
-    options_module_cleanup,
-    "options")
+	"Options",                                                      // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Options Dialog",
+	options_module_init,
+	options_module_can_unload,
+	0,
+	options_module_cleanup,
+	"options")

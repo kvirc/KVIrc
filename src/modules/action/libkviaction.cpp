@@ -97,10 +97,10 @@ static bool action_kvs_cmd_trigger(KviKvsModuleCommandCall * c)
 {
 	QString szName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETERS_END(c)
 
-	KviAction * a = KviActionManager::instance()->getAction(szName);
+		KviAction * a = KviActionManager::instance()->getAction(szName);
 	if(a)
 	{
 		if(a->isEnabled())
@@ -152,10 +152,10 @@ static bool action_kvs_cmd_enable(KviKvsModuleCommandCall * c)
 {
 	QString szName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETERS_END(c)
 
-	KviAction * a = KviActionManager::instance()->getAction(szName);
+		KviAction * a = KviActionManager::instance()->getAction(szName);
 	if(a)
 	{
 		if(!a->isEnabled())
@@ -203,10 +203,10 @@ static bool action_kvs_cmd_disable(KviKvsModuleCommandCall * c)
 {
 	QString szName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETERS_END(c)
 
-	KviAction * a = KviActionManager::instance()->getAction(szName);
+		KviAction * a = KviActionManager::instance()->getAction(szName);
 	if(a)
 	{
 		if(a->isEnabled())
@@ -250,10 +250,10 @@ static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 {
 	QString szName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETERS_END(c)
 
-	KviAction * a = KviActionManager::instance()->getAction(szName);
+		KviAction * a = KviActionManager::instance()->getAction(szName);
 	if(a)
 	{
 		if(a->isKviUserActionNeverOverrideThis())
@@ -371,18 +371,18 @@ static bool action_kvs_cmd_create(KviKvsModuleCallbackCommandCall * c)
 	QString szName, szVisibleText, szDescription, szBigIconId, szSmallIconId;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETER_IGNORED("visible_label")
-	KVSM_PARAMETER_IGNORED("description")
-	KVSM_PARAMETER("big_icon_id", KVS_PT_NONEMPTYSTRING, 0, szBigIconId)
-	KVSM_PARAMETER("small_icon_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szSmallIconId)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETER_IGNORED("visible_label")
+		KVSM_PARAMETER_IGNORED("description")
+		KVSM_PARAMETER("big_icon_id", KVS_PT_NONEMPTYSTRING, 0, szBigIconId)
+		KVSM_PARAMETER("small_icon_id", KVS_PT_STRING, KVS_PF_OPTIONAL, szSmallIconId)
+		KVSM_PARAMETERS_END(c)
 
-	if(!(c->getParameterCode(1, szVisibleText) && c->getParameterCode(2, szDescription)))
-	{
-		c->error(__tr2qs("Internal error: call a head-shrinker"));
-		return false;
-	}
+		if(!(c->getParameterCode(1, szVisibleText) && c->getParameterCode(2, szDescription)))
+		{
+			c->error(__tr2qs("Internal error: call a head-shrinker"));
+			return false;
+		}
 
 	QString szCategory, szWindows, szKeySequence;
 
@@ -449,9 +449,9 @@ static bool action_kvs_cmd_create(KviKvsModuleCallbackCommandCall * c)
 		qDebug("action.validate has provided invalid flags: %d fixed to %d", iOldFlags, iFlags);
 
 	KviKvsUserAction * a = KviKvsUserAction::createInstance(KviActionManager::instance(),
-	    szName, szCmd, szVisibleText,
-	    szDescription, szCategory, szBigIconId,
-	    szSmallIconId, iFlags, szKeySequence);
+		szName, szCmd, szVisibleText,
+		szDescription, szCategory, szBigIconId,
+		szSmallIconId, iFlags, szKeySequence);
 
 	KviActionManager::instance()->registerAction(a);
 
@@ -477,9 +477,9 @@ static bool action_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("action_name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setBoolean(KviActionManager::instance()->getAction(szName) ? true : false);
+		KVSM_PARAMETER("action_name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETERS_END(c)
+		c->returnValue()->setBoolean(KviActionManager::instance()->getAction(szName) ? true : false);
 	return true;
 }
 
@@ -502,9 +502,9 @@ static bool action_kvs_fnc_isEnabled(KviKvsModuleFunctionCall * c)
 {
 	QString szName;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("action_name", KVS_PT_NONEMPTYSTRING, 0, szName)
-	KVSM_PARAMETERS_END(c)
-	KviAction * a = KviActionManager::instance()->getAction(szName);
+		KVSM_PARAMETER("action_name", KVS_PT_NONEMPTYSTRING, 0, szName)
+		KVSM_PARAMETERS_END(c)
+		KviAction * a = KviActionManager::instance()->getAction(szName);
 	if(a)
 		c->returnValue()->setBoolean(a->isEnabled());
 	else
@@ -534,12 +534,12 @@ static bool action_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "action",                                                       // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Interface to the system actions",
-    action_module_init,
-    0,
-    0,
-    action_module_cleanup,
-    0)
+	"action",                                                       // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Interface to the system actions",
+	action_module_init,
+	0,
+	0,
+	action_module_cleanup,
+	0)

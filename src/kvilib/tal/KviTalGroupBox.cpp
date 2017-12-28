@@ -27,7 +27,7 @@
 #include <QChildEvent>
 
 KviTalGroupBox::KviTalGroupBox(QWidget * pParent, char * pcName)
-    : QGroupBox(pParent)
+	: QGroupBox(pParent)
 {
 	setObjectName(pcName);
 	m_pLayout = new QHBoxLayout(this);
@@ -38,19 +38,19 @@ KviTalGroupBox::KviTalGroupBox(QWidget * pParent, char * pcName)
 }
 
 KviTalGroupBox::KviTalGroupBox(QWidget * pParent)
-    : QGroupBox(pParent)
+	: QGroupBox(pParent)
 {
 	m_pLayout = nullptr;
 }
 
 KviTalGroupBox::KviTalGroupBox(const QString & szTitle, QWidget * pParent)
-    : QGroupBox(szTitle, pParent)
+	: QGroupBox(szTitle, pParent)
 {
 	m_pLayout = nullptr;
 }
 
 KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation, QWidget * pParent)
-    : QGroupBox(pParent)
+	: QGroupBox(pParent)
 {
 	if(orientation == Qt::Vertical)
 		m_pLayout = new QHBoxLayout(this);
@@ -63,7 +63,7 @@ KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation, QWidget * pParent)
 }
 
 KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation, const QString & szTitle, QWidget * pParent)
-    : QGroupBox(szTitle, pParent)
+	: QGroupBox(szTitle, pParent)
 {
 	mOrientation = orientation;
 	if(orientation == Qt::Vertical)
@@ -77,7 +77,7 @@ KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation, const QString & szTi
 }
 
 KviTalGroupBox::~KviTalGroupBox()
-    = default;
+= default;
 
 void KviTalGroupBox::childEvent(QChildEvent * e)
 {
@@ -92,14 +92,14 @@ void KviTalGroupBox::childEvent(QChildEvent * e)
 
 	switch(e->type())
 	{
-		case QEvent::ChildAdded:
-			m_pLayout->addWidget((QWidget *)(e->child()));
-			break;
-		case QEvent::ChildRemoved:
-			m_pLayout->removeWidget((QWidget *)(e->child()));
-			break;
-		default:
-			break;
+	case QEvent::ChildAdded:
+		m_pLayout->addWidget((QWidget *)(e->child()));
+		break;
+	case QEvent::ChildRemoved:
+		m_pLayout->removeWidget((QWidget *)(e->child()));
+		break;
+	default:
+		break;
 	}
 }
 

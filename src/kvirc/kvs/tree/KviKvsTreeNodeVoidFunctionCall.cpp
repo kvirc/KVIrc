@@ -26,7 +26,7 @@
 #include "KviKvsRunTimeContext.h"
 
 KviKvsTreeNodeVoidFunctionCall::KviKvsTreeNodeVoidFunctionCall(const QChar * pLocation, KviKvsTreeNodeFunctionCall * r)
-    : KviKvsTreeNodeInstruction(pLocation)
+	: KviKvsTreeNodeInstruction(pLocation)
 {
 	m_pFunctionCall = r;
 }

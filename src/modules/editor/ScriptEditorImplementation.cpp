@@ -92,7 +92,7 @@ static bool bSemaphore = false;
 static bool bCompleterReady = false;
 
 ScriptEditorWidget::ScriptEditorWidget(QWidget * pParent)
-    : QTextEdit(pParent)
+	: QTextEdit(pParent)
 {
 	m_pSyntaxHighlighter = nullptr;
 	setTabStopWidth(48);
@@ -338,15 +338,15 @@ void ScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 	{
 		switch(e->key())
 		{
-			case Qt::Key_Enter:
-			case Qt::Key_Return:
-			case Qt::Key_Escape:
-			case Qt::Key_Tab:
-			case Qt::Key_Backtab:
-				e->ignore();
-				return;
-			default:
-				break;
+		case Qt::Key_Enter:
+		case Qt::Key_Return:
+		case Qt::Key_Escape:
+		case Qt::Key_Tab:
+		case Qt::Key_Backtab:
+			e->ignore();
+			return;
+		default:
+			break;
 		}
 	}
 
@@ -354,27 +354,27 @@ void ScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 	{
 		switch(e->key())
 		{
-			case Qt::Key_B:
-				insertPlainText("$b");
-				return;
-			case Qt::Key_I:
-				insertPlainText("$i");
-				return;
-			case Qt::Key_K:
-				insertPlainText("$k");
-				return;
-			case Qt::Key_O:
-				insertPlainText("$o");
-				return;
-			case Qt::Key_U:
-				insertPlainText("$u");
-				return;
-			case Qt::Key_Enter:
-			case Qt::Key_Return:
-			case Qt::Key_PageUp:
-				e->ignore(); // allow the parent to process it
-				return;
-				break;
+		case Qt::Key_B:
+			insertPlainText("$b");
+			return;
+		case Qt::Key_I:
+			insertPlainText("$i");
+			return;
+		case Qt::Key_K:
+			insertPlainText("$k");
+			return;
+		case Qt::Key_O:
+			insertPlainText("$o");
+			return;
+		case Qt::Key_U:
+			insertPlainText("$u");
+			return;
+		case Qt::Key_Enter:
+		case Qt::Key_Return:
+		case Qt::Key_PageUp:
+			e->ignore(); // allow the parent to process it
+			return;
+			break;
 		}
 	}
 	// Adapted from QT4 QCompleter example
@@ -443,7 +443,6 @@ QString ScriptEditorWidget::textUnderCursor() const
 
 bool ScriptEditorWidget::contextSensitiveHelp() const
 {
-
 	QRect r = cursorRect();
 	QTextCursor cur = cursorForPosition(QPoint(r.x(), r.y()));
 	cur.select(QTextCursor::WordUnderCursor);
@@ -454,7 +453,7 @@ bool ScriptEditorWidget::contextSensitiveHelp() const
 }
 
 ScriptEditorWidgetColorOptions::ScriptEditorWidgetColorOptions(QWidget * pParent)
-    : QDialog(pParent)
+	: QDialog(pParent)
 {
 	setWindowTitle(__tr2qs_ctx("Editor Configuration - KVIrc", "editor"));
 
@@ -506,7 +505,7 @@ void ScriptEditorWidgetColorOptions::okClicked()
 }
 
 ScriptEditorSyntaxHighlighter::ScriptEditorSyntaxHighlighter(ScriptEditorWidget * pWidget)
-    : QSyntaxHighlighter(pWidget), m_pTextEdit(pWidget)
+	: QSyntaxHighlighter(pWidget), m_pTextEdit(pWidget)
 {
 	// code adpated from QT4 example
 
@@ -539,7 +538,7 @@ ScriptEditorSyntaxHighlighter::ScriptEditorSyntaxHighlighter(ScriptEditorWidget 
 }
 
 ScriptEditorSyntaxHighlighter::~ScriptEditorSyntaxHighlighter()
-    = default;
+= default;
 
 void ScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 {
@@ -596,8 +595,8 @@ void ScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 
 	SKIP_SPACES
 
-	if(iIndexStart == szText.size())
-		return;
+		if(iIndexStart == szText.size())
+			return;
 
 	// check 'commands' and comments
 	int iCommandStart = iIndexStart;
@@ -605,46 +604,46 @@ void ScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 	{
 		switch(szText.at(iIndexStart).unicode())
 		{
-			case '#':
-				// single line comment, bash style
-				while(iIndexStart < szText.size() && szText.at(iIndexStart).unicode() != '\n')
-					iIndexStart++;
-				setFormat(iCommandStart, iIndexStart - iCommandStart, commentFormat);
-				break;
-			case '/':
-				if((iIndexStart + 1) < szText.size())
+		case '#':
+			// single line comment, bash style
+			while(iIndexStart < szText.size() && szText.at(iIndexStart).unicode() != '\n')
+				iIndexStart++;
+			setFormat(iCommandStart, iIndexStart - iCommandStart, commentFormat);
+			break;
+		case '/':
+			if((iIndexStart + 1) < szText.size())
+			{
+				if(szText.at(iIndexStart + 1).unicode() == '/')
 				{
-					if(szText.at(iIndexStart + 1).unicode() == '/')
-					{
-						// single line comment, c++ style
+					// single line comment, c++ style
+					iIndexStart++;
+					while(iIndexStart < szText.size() && szText.at(iIndexStart).unicode() != '\n')
 						iIndexStart++;
-						while(iIndexStart < szText.size() && szText.at(iIndexStart).unicode() != '\n')
-							iIndexStart++;
-						setFormat(iCommandStart, iIndexStart - iCommandStart, commentFormat);
-						break;
-					}
+					setFormat(iCommandStart, iIndexStart - iCommandStart, commentFormat);
+					break;
+				}
 
-					if(szText.at(iIndexStart + 1).unicode() == '*')
+				if(szText.at(iIndexStart + 1).unicode() == '*')
+				{
+					// multi line comment, c style
+					iIndexStart++;
+					setCurrentBlockState(1);
+					while(iIndexStart < szText.size())
 					{
-						// multi line comment, c style
-						iIndexStart++;
-						setCurrentBlockState(1);
-						while(iIndexStart < szText.size())
+						if((iIndexStart + 1) < szText.size())
 						{
-							if((iIndexStart + 1) < szText.size())
+							if(szText.at(iIndexStart).unicode() == '*' && szText.at(iIndexStart + 1).unicode() == '/')
 							{
-								if(szText.at(iIndexStart).unicode() == '*' && szText.at(iIndexStart + 1).unicode() == '/')
-								{
-									iIndexStart += 2;
-									setCurrentBlockState(0);
-									break;
-								}
+								iIndexStart += 2;
+								setCurrentBlockState(0);
+								break;
 							}
-							iIndexStart++;
 						}
-						setFormat(iCommandStart, iIndexStart - iCommandStart, commentFormat);
+						iIndexStart++;
+					}
+					setFormat(iCommandStart, iIndexStart - iCommandStart, commentFormat);
 
-						SKIP_SPACES
+					SKIP_SPACES
 
 						if(currentBlockState() == 0)
 						{
@@ -654,18 +653,18 @@ void ScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 						{
 							break;
 						}
-						// else fallback to command (a command can start at the end of a /* comment */)
-					}
-					// else not a comment, fallback to command
+					// else fallback to command (a command can start at the end of a /* comment */)
 				}
-			default:
-				//command
-				while(iIndexStart < szText.size() && (szText.at(iIndexStart).isLetterOrNumber() || (szText.at(iIndexStart).unicode() == '.') || (szText.at(iIndexStart).unicode() == '_') || (szText.at(iIndexStart).unicode() == ':')))
-				{
-					iIndexStart++;
-				}
-				setFormat(iCommandStart, iIndexStart - iCommandStart, keywordFormat);
-				break;
+				// else not a comment, fallback to command
+			}
+		default:
+			//command
+			while(iIndexStart < szText.size() && (szText.at(iIndexStart).isLetterOrNumber() || (szText.at(iIndexStart).unicode() == '.') || (szText.at(iIndexStart).unicode() == '_') || (szText.at(iIndexStart).unicode() == ':')))
+			{
+				iIndexStart++;
+			}
+			setFormat(iCommandStart, iIndexStart - iCommandStart, keywordFormat);
+			break;
 		}
 	}
 
@@ -702,7 +701,7 @@ void ScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 }
 
 ScriptEditorImplementation::ScriptEditorImplementation(QWidget * par)
-    : KviScriptEditor(par)
+	: KviScriptEditor(par)
 {
 	m_pOptionsDialog = nullptr;
 	if(g_pScriptEditorWindowList.empty())
@@ -863,9 +862,9 @@ void ScriptEditorImplementation::saveToFile()
 {
 	QString szFileName;
 	if(KviFileDialog::askForSaveFileName(szFileName,
-	       __tr2qs_ctx("Choose a Filename - KVIrc", "editor"),
-	       QString::null,
-	       QString::null, false, true, true, this))
+		__tr2qs_ctx("Choose a Filename - KVIrc", "editor"),
+		QString::null,
+		QString::null, false, true, true, this))
 	{
 		QString szBuffer = m_pEditor->toPlainText();
 
@@ -873,8 +872,8 @@ void ScriptEditorImplementation::saveToFile()
 		{
 			QString szTmp;
 			QMessageBox::warning(this,
-			    __tr2qs_ctx("Writing to File Failed - KVIrc", "editor"),
-			    szTmp = QString(__tr2qs_ctx("Can't open file %1 for writing.", "editor")).arg(szFileName));
+				__tr2qs_ctx("Writing to File Failed - KVIrc", "editor"),
+				szTmp = QString(__tr2qs_ctx("Can't open file %1 for writing.", "editor")).arg(szFileName));
 		}
 	}
 }
@@ -948,8 +947,8 @@ void ScriptEditorImplementation::loadFromFile()
 {
 	QString szFileName;
 	if(KviFileDialog::askForOpenFileName(szFileName,
-	       __tr2qs_ctx("Select a File - KVIrc", "editor"),
-	       QString::null, KVI_FILTER_SCRIPT, false, true, this))
+		__tr2qs_ctx("Select a File - KVIrc", "editor"),
+		QString::null, KVI_FILTER_SCRIPT, false, true, this))
 	{
 		QString szBuffer;
 		if(KviFileUtils::loadFile(szFileName, szBuffer))
@@ -961,8 +960,8 @@ void ScriptEditorImplementation::loadFromFile()
 		{
 			QString szTmp;
 			QMessageBox::warning(this,
-			    __tr2qs_ctx("Opening File Failed - KVIrc", "editor"),
-			    szTmp = QString(__tr2qs_ctx("Can't open file %1 for reading.", "editor")).arg(szFileName));
+				__tr2qs_ctx("Opening File Failed - KVIrc", "editor"),
+				szTmp = QString(__tr2qs_ctx("Can't open file %1 for reading.", "editor")).arg(szFileName));
 		}
 	}
 }
@@ -987,7 +986,7 @@ void ScriptEditorImplementation::optionsDialogFinished(int iResult)
 }
 
 ScriptEditorReplaceDialog::ScriptEditorReplaceDialog(QWidget * pParent, const QString & szName)
-    : QDialog(pParent)
+	: QDialog(pParent)
 {
 	setObjectName(szName);
 	setWindowTitle(__tr2qs("Find and Replace - KVIrc"));

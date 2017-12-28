@@ -74,7 +74,7 @@
 // FIXME: #warning "OnChannelFlood event...."
 
 KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString & szName)
-    : KviWindow(KviWindow::Channel, szName, lpConsole)
+	: KviWindow(KviWindow::Channel, szName, lpConsole)
 {
 	// Init some member variables
 	m_pInput = nullptr;
@@ -101,7 +101,7 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	m_pTopicWidget = new KviTopicWidget(m_pTopSplitter, this, "topic_widget");
 
 	connect(m_pTopicWidget, SIGNAL(topicSelected(const QString &)),
-	    this, SLOT(topicSelected(const QString &)));
+		this, SLOT(topicSelected(const QString &)));
 	// mode label follows the topic widget
 	m_pModeWidget = new KviModeWidget(m_pTopSplitter, this, "mode_");
 	KviTalToolTip::add(m_pModeWidget, __tr2qs("Channel modes"));
@@ -176,28 +176,28 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 			{
 				// must fix on/off icons here eventually once Ive patience to figure it out.
 				// to Un<somethings> is to undo/turn off :p blimey O'reilly.
-				case 'e':
-					eIconOn = KviIconManager::BanUnExcept;
-					eIconOff = KviIconManager::BanExcept;
-					break;
-				case 'I':
-					eIconOn = KviIconManager::InviteUnExcept;
-					eIconOff = KviIconManager::InviteExcept;
-					break;
-				case 'a':
-					eIconOn = KviIconManager::ChanUnAdmin;
-					eIconOff = KviIconManager::ChanAdmin;
-					break;
-				case 'q':
-					// this could also be quiet bans..
-					// on/off are inverted here on purpose because its broken somewhere, must fix eventually.
-					eIconOn = KviIconManager::KickOff;
-					eIconOff = KviIconManager::Kick;
-					break;
-				default:
-					eIconOn = KviIconManager::UnBan;
-					eIconOff = KviIconManager::Ban;
-					break;
+			case 'e':
+				eIconOn = KviIconManager::BanUnExcept;
+				eIconOff = KviIconManager::BanExcept;
+				break;
+			case 'I':
+				eIconOn = KviIconManager::InviteUnExcept;
+				eIconOff = KviIconManager::InviteExcept;
+				break;
+			case 'a':
+				eIconOn = KviIconManager::ChanUnAdmin;
+				eIconOff = KviIconManager::ChanAdmin;
+				break;
+			case 'q':
+				// this could also be quiet bans..
+				// on/off are inverted here on purpose because its broken somewhere, must fix eventually.
+				eIconOn = KviIconManager::KickOff;
+				eIconOff = KviIconManager::Kick;
+				break;
+			default:
+				eIconOn = KviIconManager::UnBan;
+				eIconOff = KviIconManager::Ban;
+				break;
 			}
 
 			pButton = new KviWindowToolPageButton(eIconOn, eIconOff, szDescription, buttonContainer(), false);
@@ -667,7 +667,7 @@ void KviChannelWindow::resizeEvent(QResizeEvent *)
 QSize KviChannelWindow::sizeHint() const
 {
 	QSize ret(m_pSplitter->sizeHint().width(),
-	    m_pIrcView->sizeHint().height() + m_pInput->heightHint() + m_pButtonBox->sizeHint().height());
+		m_pIrcView->sizeHint().height() + m_pInput->heightHint() + m_pButtonBox->sizeHint().height());
 	return ret;
 }
 
@@ -902,7 +902,6 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 	QString szOp = __tr2qs("operator");
 	QString szOps = __tr2qs("operators");
 
-
 	szBuffer += szHtmlTab;
 	szBuffer += szHtmlBold;
 
@@ -947,10 +946,8 @@ void KviChannelWindow::getWindowListTipText(QString & szBuffer)
 
 	szBuffer += p9;
 
-
 	szBuffer += szRowEnd;
 	szBuffer += szRowStart;
-
 
 	if(s.uIrcOp > 0)
 	{
@@ -1187,34 +1184,34 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(iMaxMsgLen);
 				switch(cryptSessionInfo()->m_pEngine->encrypt(pData, szEncrypted))
 				{
-					case KviCryptEngine::Encrypted:
-						if(!connection()->sendFmtData("PRIVMSG %s :%s", name.data(), szEncrypted.ptr()))
-							return;
-						if(bUserFeedback)
-							m_pConsole->outputPrivmsg(this, KVI_OUT_OWNPRIVMSGCRYPTED,
-							    QString(), QString(), QString(), szBuffer, KviConsoleWindow::NoNotifications);
-						break;
-					case KviCryptEngine::Encoded:
-					{
-						if(!connection()->sendFmtData("PRIVMSG %s :%s", name.data(), szEncrypted.ptr()))
-							return;
-						if(bUserFeedback)
-						{
-							// ugly, but we must redecode here
-							QString szRedecoded = decodeText(szEncrypted.ptr());
-							m_pConsole->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG,
-							    QString(), QString(), QString(), szRedecoded, KviConsoleWindow::NoNotifications);
-						}
-					}
+				case KviCryptEngine::Encrypted:
+					if(!connection()->sendFmtData("PRIVMSG %s :%s", name.data(), szEncrypted.ptr()))
+						return;
+					if(bUserFeedback)
+						m_pConsole->outputPrivmsg(this, KVI_OUT_OWNPRIVMSGCRYPTED,
+							QString(), QString(), QString(), szBuffer, KviConsoleWindow::NoNotifications);
 					break;
-					default: // also case KviCryptEngine::EncryptError
+				case KviCryptEngine::Encoded:
+				{
+					if(!connection()->sendFmtData("PRIVMSG %s :%s", name.data(), szEncrypted.ptr()))
+						return;
+					if(bUserFeedback)
 					{
-						QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
-						output(KVI_OUT_SYSTEMERROR,
-						    __tr2qs("The encryption engine was unable to encrypt the current message (%Q): %Q, no data sent to the server"),
-						    &szBuffer, &szEngineError);
+						// ugly, but we must redecode here
+						QString szRedecoded = decodeText(szEncrypted.ptr());
+						m_pConsole->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG,
+							QString(), QString(), QString(), szRedecoded, KviConsoleWindow::NoNotifications);
 					}
-					break;
+				}
+				break;
+				default: // also case KviCryptEngine::EncryptError
+				{
+					QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
+					output(KVI_OUT_SYSTEMERROR,
+						__tr2qs("The encryption engine was unable to encrypt the current message (%Q): %Q, no data sent to the server"),
+						&szBuffer, &szEngineError);
+				}
+				break;
 				}
 				userAction(connection()->currentNickName(), KVI_USERACTION_PRIVMSG);
 				return;
@@ -1262,7 +1259,7 @@ void KviChannelWindow::ownMessage(const QString & szBuffer, bool bUserFeedback)
 				// so we can safely use it as a divisor
 				fPosDiff = (float)iMaxMsgLen / szTmp.length();
 				iPos = (int)(iPos * fPosDiff); // cut the string at each cycle
-				                               //printf("OPTIMIZATION: fPosDiff %f, iPos %d\n", fPosDiff, iPos);
+											   //printf("OPTIMIZATION: fPosDiff %f, iPos %d\n", fPosDiff, iPos);
 			}
 			//printf("Multi message: %d optimization cyles", iC);
 
@@ -1367,32 +1364,32 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 			cryptSessionInfo()->m_pEngine->setMaxEncryptLen(iMaxMsgLen);
 			switch(cryptSessionInfo()->m_pEngine->encrypt(data.data(), szEncrypted))
 			{
-				case KviCryptEngine::Encrypted:
-				{
-					if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szEncrypted.ptr(), 0x01))
-						return;
+			case KviCryptEngine::Encrypted:
+			{
+				if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szEncrypted.ptr(), 0x01))
+					return;
 
-					output(KVI_OUT_OWNACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
-				}
-				break;
-				case KviCryptEngine::Encoded:
-				{
-					if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szEncrypted.ptr(), 0x01))
-						return;
+				output(KVI_OUT_OWNACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
+			}
+			break;
+			case KviCryptEngine::Encoded:
+			{
+				if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szEncrypted.ptr(), 0x01))
+					return;
 
-					// ugly, but we must redecode here
-					QString szRedecoded = decodeText(szEncrypted.ptr());
+				// ugly, but we must redecode here
+				QString szRedecoded = decodeText(szEncrypted.ptr());
 
-					output(KVI_OUT_OWNACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szRedecoded);
-				}
-				break;
-				default:
-				{
-					QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
-					output(KVI_OUT_SYSTEMERROR,
-					    __tr2qs("The encryption engine was unable to encrypt the current message (%Q): %Q, no data sent to the server"),
-					    &szBuffer, &szEngineError);
-				}
+				output(KVI_OUT_OWNACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szRedecoded);
+			}
+			break;
+			default:
+			{
+				QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
+				output(KVI_OUT_SYSTEMERROR,
+					__tr2qs("The encryption engine was unable to encrypt the current message (%Q): %Q, no data sent to the server"),
+					&szBuffer, &szEngineError);
+			}
 			}
 			userAction(szMyName, KVI_USERACTION_ACTION);
 			return;
@@ -1438,7 +1435,7 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 				// so we can safely use it as a divisor
 				fPosDiff = (float)iMaxMsgLen / szTmp.length();
 				iPos = (int)(iPos * fPosDiff); // cut the string at each cycle
-				                               //printf("OPTIMIZATION: fPosDiff %f, iPos %d\n", fPosDiff, iPos);
+											   //printf("OPTIMIZATION: fPosDiff %f, iPos %d\n", fPosDiff, iPos);
 			}
 			//printf("Multi message: %d optimization cyles", iC);
 			// now, do it the simple way: increment our index until we perfectly fit into the
@@ -1802,17 +1799,17 @@ void KviChannelWindow::topicSelected(const QString & szTopic)
 				KviCString szEncrypted;
 				switch(cryptSessionInfo()->m_pEngine->encrypt(pcData, szEncrypted))
 				{
-					case KviCryptEngine::Encrypted:
-					case KviCryptEngine::Encoded:
-						connection()->sendFmtData("TOPIC %s :%s", name.data(), szEncrypted.ptr());
-						return;
-						break;
-					default:
-						QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
-						output(KVI_OUT_SYSTEMERROR,
-						    __tr2qs("The encryption engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
-						    &szTopic, &szEngineError);
-						break;
+				case KviCryptEngine::Encrypted:
+				case KviCryptEngine::Encoded:
+					connection()->sendFmtData("TOPIC %s :%s", name.data(), szEncrypted.ptr());
+					return;
+					break;
+				default:
+					QString szEngineError = cryptSessionInfo()->m_pEngine->lastError();
+					output(KVI_OUT_SYSTEMERROR,
+						__tr2qs("The encryption engine was unable to encrypt the current message (%Q): %s, no data sent to the server"),
+						&szTopic, &szEngineError);
+					break;
 				}
 			}
 			else
@@ -1994,7 +1991,7 @@ void KviChannelWindow::updateModeLabel()
 	}
 
 	szTip += enr + snr + "<hr>";
-	szTip +=  __tr2qs("Double-click to edit...");
+	szTip += __tr2qs("Double-click to edit...");
 	szTip += enr;
 	szTip += "</table></body></html>";
 
@@ -2056,7 +2053,7 @@ void KviChannelWindow::checkChannelSync()
 KviIrcView * KviChannelWindow::lastClickedView() const
 {
 	if(m_pMessageView && m_pIrcView && m_pMessageView->lastMouseClickTime() >= m_pIrcView->lastMouseClickTime())
-			return m_pMessageView;
+		return m_pMessageView;
 
 	return m_pIrcView;
 }

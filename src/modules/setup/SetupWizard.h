@@ -111,14 +111,14 @@ public:
 	KviStringSelector * m_pRealNameSelector;
 	KviStringSelector * m_pLocationSelector;
 	KviStringSelector * m_pLanguagesSelector;
-//KviStringSelector * m_pOtherInfoSelector;
+	//KviStringSelector * m_pOtherInfoSelector;
 
-//Servers
-//KviTalGroupBox * m_pServersButtonGroup;
-//QRadioButton  * m_pServersChooseFromList;
-//QRadioButton  * m_pServersSpecifyManually;
-//QRadioButton  * m_pServersOpenIrcUrl;
-//QRadioButton  * m_pServersLoadConfig;
+	//Servers
+	//KviTalGroupBox * m_pServersButtonGroup;
+	//QRadioButton  * m_pServersChooseFromList;
+	//QRadioButton  * m_pServersSpecifyManually;
+	//QRadioButton  * m_pServersOpenIrcUrl;
+	//QRadioButton  * m_pServersLoadConfig;
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	QString m_szMircServerIniFile;
 	QCheckBox * m_pUseMircServerList;
@@ -139,7 +139,7 @@ protected:
 	void setUrlHandlers();
 	virtual void showEvent(QShowEvent * e);
 	void enableOrDisableIdentityPageNextButton();
-public slots:
+	public slots:
 	void chooseOldDataPath();
 	void chooseDataPath();
 	void chooseIncomingPath();

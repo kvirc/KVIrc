@@ -72,7 +72,7 @@ public:
 	int getDefaultItemRealIndex(int iDefaultIndex);
 	void addMenu(const QString & text, KviKvsPopupMenu * p, int index);
 	bool removeMenu(const QString & text);
-protected slots:
+	protected slots:
 	void menuDestroyed();
 
 	void setupMainPopup(QMenu * pop = nullptr);

@@ -35,7 +35,7 @@ KviProxy::KviProxy()
 }
 
 KviProxy::~KviProxy()
-    = default;
+= default;
 
 static const QStringList proxy_protocols_table{ "SOCKSv4", "SOCKSv5", "HTTP" };
 
@@ -43,14 +43,14 @@ const QString KviProxy::protocolName() const
 {
 	switch(m_protocol)
 	{
-		case Socks5:
-			return proxy_protocols_table[1];
-			break;
-		case Http:
-			return proxy_protocols_table[2];
-			break;
-		default:
-			return proxy_protocols_table[0];
+	case Socks5:
+		return proxy_protocols_table[1];
+		break;
+	case Http:
+		return proxy_protocols_table[2];
+		break;
+	default:
+		return proxy_protocols_table[0];
 	}
 }
 

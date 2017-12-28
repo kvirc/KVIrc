@@ -26,12 +26,12 @@
 #include "KviConfigurationFile.h"
 
 KviIdentityProfile::KviIdentityProfile()
-    : KviHeapObject()
+	: KviHeapObject()
 {
 }
 
 KviIdentityProfile::~KviIdentityProfile()
-    = default;
+= default;
 
 void KviIdentityProfile::copyFrom(const KviIdentityProfile & src)
 {

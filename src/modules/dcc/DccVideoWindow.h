@@ -110,7 +110,7 @@ protected:
 class DccVideoWindow : public DccWindow
 {
 	Q_OBJECT
-	friend class DccVideoThread;
+		friend class DccVideoThread;
 
 public:
 	DccVideoWindow(DccDescriptor * dcc, const char * name);
@@ -150,7 +150,7 @@ protected:
 	virtual void ownAction(const QString & text);
 	virtual void resizeEvent(QResizeEvent *);
 	virtual QSize sizeHint() const;
-protected slots:
+	protected slots:
 	void handleMarshalError(KviError::Code eError);
 	void connected();
 	void startOrStopTalking(bool bStart);

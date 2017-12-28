@@ -34,7 +34,7 @@
 #include <QRadioButton>
 
 OptionsWidget_urlHandlers::OptionsWidget_urlHandlers(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #define START_ROW 2
@@ -54,12 +54,12 @@ OptionsWidget_urlHandlers::OptionsWidget_urlHandlers(QWidget * parent)
 
 	switch(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum))
 	{
-		case 1:
-			m_pClickRadio->setChecked(true);
-			break;
-		case 2:
-			m_pDoubleClickRadio->setChecked(true);
-			break;
+	case 1:
+		m_pClickRadio->setChecked(true);
+		break;
+	case 2:
+		m_pDoubleClickRadio->setChecked(true);
+		break;
 	}
 
 	gbox = addGroupBox(0, 1, 0, 1, Qt::Horizontal, __tr2qs_ctx("Protocol Handler", "options"));
@@ -95,7 +95,7 @@ OptionsWidget_urlHandlers::OptionsWidget_urlHandlers(QWidget * parent)
 }
 
 OptionsWidget_urlHandlers::~OptionsWidget_urlHandlers()
-    = default;
+= default;
 
 void OptionsWidget_urlHandlers::toggleEditors(bool bToggled)
 {
@@ -118,60 +118,60 @@ void OptionsWidget_urlHandlers::commit()
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand)
-	    .replace("\\\\", "@MAGIC@");
+		.replace("\\\\", "@MAGIC@");
 	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand)
-	    .replace("\\", "\\\\");
+		.replace("\\", "\\\\");
 	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand)
-	    .replace("@MAGIC@", "\\\\");
+		.replace("@MAGIC@", "\\\\");
 
 	KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand)
-	    .replace("\\\\", "@MAGIC@");
+		.replace("\\\\", "@MAGIC@");
 	KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand)
-	    .replace("\\", "\\\\");
+		.replace("\\", "\\\\");
 	KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand)
-	    .replace("@MAGIC@", "\\\\");
+		.replace("@MAGIC@", "\\\\");
 
 	KVI_OPTION_STRING(KviOption_stringUrlFtpCommand)
-	    .replace("\\\\", "@MAGIC@");
+		.replace("\\\\", "@MAGIC@");
 	KVI_OPTION_STRING(KviOption_stringUrlFtpCommand)
-	    .replace("\\", "\\\\");
+		.replace("\\", "\\\\");
 	KVI_OPTION_STRING(KviOption_stringUrlFtpCommand)
-	    .replace("@MAGIC@", "\\\\");
+		.replace("@MAGIC@", "\\\\");
 
 	KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand)
-	    .replace("\\\\", "@MAGIC@");
+		.replace("\\\\", "@MAGIC@");
 	KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand)
-	    .replace("\\", "\\\\");
+		.replace("\\", "\\\\");
 	KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand)
-	    .replace("@MAGIC@", "\\\\");
+		.replace("@MAGIC@", "\\\\");
 
 	KVI_OPTION_STRING(KviOption_stringUrlFileCommand)
-	    .replace("\\\\", "@MAGIC@");
+		.replace("\\\\", "@MAGIC@");
 	KVI_OPTION_STRING(KviOption_stringUrlFileCommand)
-	    .replace("\\", "\\\\");
+		.replace("\\", "\\\\");
 	KVI_OPTION_STRING(KviOption_stringUrlFileCommand)
-	    .replace("@MAGIC@", "\\\\");
+		.replace("@MAGIC@", "\\\\");
 
 	KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand)
-	    .replace("\\\\", "@MAGIC@");
+		.replace("\\\\", "@MAGIC@");
 	KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand)
-	    .replace("\\", "\\\\");
+		.replace("\\", "\\\\");
 	KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand)
-	    .replace("@MAGIC@", "\\\\");
+		.replace("@MAGIC@", "\\\\");
 
 	//Check for escaped " in url handler ( \" )
 	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand)
-	    .replace("\\\\\"", "\\\"");
+		.replace("\\\\\"", "\\\"");
 	KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand)
-	    .replace("\\\\\"", "\\\"");
+		.replace("\\\\\"", "\\\"");
 	KVI_OPTION_STRING(KviOption_stringUrlFtpCommand)
-	    .replace("\\\\\"", "\\\"");
+		.replace("\\\\\"", "\\\"");
 	KVI_OPTION_STRING(KviOption_stringUrlMailtoCommand)
-	    .replace("\\\\\"", "\\\"");
+		.replace("\\\\\"", "\\\"");
 	KVI_OPTION_STRING(KviOption_stringUrlFileCommand)
-	    .replace("\\\\\"", "\\\"");
+		.replace("\\\\\"", "\\\"");
 	KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand)
-	    .replace("\\\\\"", "\\\"");
+		.replace("\\\\\"", "\\\"");
 #endif
 }
 

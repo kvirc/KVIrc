@@ -86,29 +86,29 @@ bool KvsObject_checkBox::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 KVSO_CLASS_FUNCTION(checkBox, isChecked)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(((QCheckBox *)widget())->isChecked());
+		c->returnValue()->setBoolean(((QCheckBox *)widget())->isChecked());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(checkBox, setChecked)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bChecked;
+		bool bChecked;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bChecked", KVS_PT_BOOL, KVS_PF_OPTIONAL, bChecked)
-	KVSO_PARAMETERS_END(c)
-	((QCheckBox *)widget())->setChecked(bChecked);
+		KVSO_PARAMETER("bChecked", KVS_PT_BOOL, KVS_PF_OPTIONAL, bChecked)
+		KVSO_PARAMETERS_END(c)
+		((QCheckBox *)widget())->setChecked(bChecked);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(checkBox, setText)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szText;
+		QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("<text>", KVS_PT_STRING, 0, szText)
-	KVSO_PARAMETERS_END(c)
-	((QCheckBox *)widget())->setText(szText);
+		KVSO_PARAMETER("<text>", KVS_PT_STRING, 0, szText)
+		KVSO_PARAMETERS_END(c)
+		((QCheckBox *)widget())->setText(szText);
 	return true;
 }
 

@@ -85,11 +85,11 @@ static bool config_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	QString szMode;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_STRING, 0, szFile)
-	KVSM_PARAMETER("mode", KVS_PT_STRING, KVS_PF_OPTIONAL, szMode)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("filename", KVS_PT_STRING, 0, szFile)
+		KVSM_PARAMETER("mode", KVS_PT_STRING, KVS_PF_OPTIONAL, szMode)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile::FileMode fileMode;
+		KviConfigurationFile::FileMode fileMode;
 
 	if(szMode.contains('r'))
 	{
@@ -160,10 +160,10 @@ static bool config_kvs_fnc_id(KviKvsModuleFunctionCall * c)
 	QString szFile;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("file", KVS_PT_STRING, 0, szFile)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("file", KVS_PT_STRING, 0, szFile)
+		KVSM_PARAMETERS_END(c)
 
-	KviFileUtils::adjustFilePath(szFile);
+		KviFileUtils::adjustFilePath(szFile);
 
 	QString szAbsFile;
 
@@ -215,12 +215,12 @@ static bool config_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 	QString szDefault;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
-	KVSM_PARAMETER("key", KVS_PT_STRING, 0, szKey)
-	KVSM_PARAMETER("default", KVS_PT_STRING, KVS_PF_OPTIONAL, szDefault)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
+		KVSM_PARAMETER("key", KVS_PT_STRING, 0, szKey)
+		KVSM_PARAMETER("default", KVS_PT_STRING, KVS_PF_OPTIONAL, szDefault)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
+		KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -255,10 +255,10 @@ static bool config_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 	QString szId;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
+		KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -295,10 +295,10 @@ static bool config_kvs_fnc_readonly(KviKvsModuleFunctionCall * c)
 	QString szId;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
+		KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -335,10 +335,10 @@ static bool config_kvs_fnc_filename(KviKvsModuleFunctionCall * c)
 	QString szId;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
+		KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -371,11 +371,11 @@ static bool config_kvs_fnc_hassection(KviKvsModuleFunctionCall * c)
 	QString szSect;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szSect)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szSect)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
+		KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -410,10 +410,10 @@ static bool config_kvs_fnc_sectionlist(KviKvsModuleFunctionCall * c)
 	QString szId;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
+		KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -456,10 +456,10 @@ static bool config_kvs_fnc_keylist(KviKvsModuleFunctionCall * c)
 	QString szId;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
+		KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -505,9 +505,9 @@ static bool config_kvs_fnc_keylist(KviKvsModuleFunctionCall * c)
 static bool config_kvs_fnc_filelist(KviKvsModuleFunctionCall * c)
 {
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETERS_END(c)
 
-	KviKvsArray * pArray = new KviKvsArray();
+		KviKvsArray * pArray = new KviKvsArray();
 	int id = 0;
 
 	KviPointerHashTableIterator<QString, KviConfigurationFile> it(*g_pConfigDict);
@@ -547,10 +547,10 @@ static bool config_kvs_cmd_close(KviKvsModuleCommandCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
+		KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -606,10 +606,10 @@ static bool config_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
+		KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -652,10 +652,10 @@ static bool config_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 {
 	QString szId;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
+		KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -697,11 +697,11 @@ static bool config_kvs_cmd_clearsection(KviKvsModuleCommandCall * c)
 	QString szId;
 	QString szSect;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
-	KVSM_PARAMETER("section", KVS_PT_STRING, 0, szSect)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
+		KVSM_PARAMETER("section", KVS_PT_STRING, 0, szSect)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
+		KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -748,12 +748,12 @@ static bool config_kvs_cmd_write(KviKvsModuleCommandCall * c)
 	QString szVal;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
-	KVSM_PARAMETER("key", KVS_PT_STRING, 0, szKey)
-	KVSM_PARAMETER("value", KVS_PT_STRING, 0, szVal)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
+		KVSM_PARAMETER("key", KVS_PT_STRING, 0, szKey)
+		KVSM_PARAMETER("value", KVS_PT_STRING, 0, szVal)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
+		KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -797,11 +797,11 @@ static bool config_kvs_cmd_setsection(KviKvsModuleCommandCall * c)
 	QString szSect;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
-	KVSM_PARAMETER("section", KVS_PT_STRING, 0, szSect)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("id", KVS_PT_STRING, 0, szId)
+		KVSM_PARAMETER("section", KVS_PT_STRING, 0, szSect)
+		KVSM_PARAMETERS_END(c)
 
-	KviConfigurationFile * cfg = g_pConfigDict->find(szId);
+		KviConfigurationFile * cfg = g_pConfigDict->find(szId);
 
 	if(cfg)
 	{
@@ -912,12 +912,12 @@ static bool config_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Config",                                                       // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Config file system for KVIrc",
-    config_module_init,
-    config_module_can_unload,
-    0,
-    config_module_cleanup,
-    0)
+	"Config",                                                       // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Config file system for KVIrc",
+	config_module_init,
+	config_module_can_unload,
+	0,
+	config_module_cleanup,
+	0)

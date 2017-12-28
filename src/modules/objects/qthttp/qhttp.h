@@ -135,7 +135,7 @@ protected:
 
 private:
 	Q_DECLARE_PRIVATE(QHttpResponseHeader)
-	friend class QHttpPrivate;
+		friend class QHttpPrivate;
 };
 
 class QHttpRequestHeaderPrivate;
@@ -213,8 +213,8 @@ public:
 
 #ifndef QT_NO_NETWORKPROXY
 	int setProxy(const QString & host, int port,
-	    const QString & username = QString(),
-	    const QString & password = QString());
+		const QString & username = QString(),
+		const QString & password = QString());
 	int setProxy(const QNetworkProxy & proxy);
 #endif
 
@@ -245,7 +245,7 @@ public:
 	Error error() const;
 	QString errorString() const;
 
-public Q_SLOTS:
+	public Q_SLOTS:
 	void abort();
 
 #ifndef QT_NO_OPENSSL
@@ -276,7 +276,7 @@ Q_SIGNALS:
 
 private:
 	Q_DISABLE_COPY(QHttp)
-	QScopedPointer<QHttpPrivate> d;
+		QScopedPointer<QHttpPrivate> d;
 
 	void _q_startNextRequest();
 	void _q_slotReadyRead();

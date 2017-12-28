@@ -108,7 +108,7 @@ protected:
 
 public:
 	void fillData(KviIrcNetwork * d);
-protected slots:
+	protected slots:
 	void enableDisableNickServControls();
 	void addNickServRule();
 	void delNickServRule();
@@ -156,7 +156,7 @@ protected:
 	KviChannelListSelector * m_pChannelListSelector;
 
 	QComboBox * m_pProxyEditor;
-protected slots:
+	protected slots:
 	void useDefaultInitUModeToggled(bool);
 	void portEditorTextChanged(const QString &);
 	void useCacheIpCheckToggled(bool);
@@ -217,7 +217,7 @@ private:
 	void saveLastItem();
 	IrcServerOptionsTreeWidgetItem * findNetItem(const QString & netname);
 	void selectBestServerByUrl(const QString & szUrl);
-protected slots:
+	protected slots:
 	void slotShowThisDialogAtStartupSelectorDestroyed();
 	void importerDead();
 	void importServer(const KviIrcServer & s, const QString & network);

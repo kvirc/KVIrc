@@ -24,11 +24,11 @@
 //=============================================================================
 
 /***************************************************************************
-                          Service.cpp  -  description
-                             -------------------
-    begin                : Sun Jul 24 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  Service.cpp  -  description
+							 -------------------
+	begin                : Sun Jul 24 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #include "Service.h"
@@ -39,18 +39,17 @@
 
 #include "KviNetworkAccessManager.h"
 
-//   This implementation was created with the help of the following documentation:
-//   http://www.upnp.org/standardizeddcps/documents/UPnP_IGD_1.0.zip
-//   http://zacbowling.com/upnp/
-//   http://www.knoxscape.com/Upnp/NAT.htm
-//   http://www.artima.com/spontaneous/upnp_digihome2.html
+ //   This implementation was created with the help of the following documentation:
+ //   http://www.upnp.org/standardizeddcps/documents/UPnP_IGD_1.0.zip
+ //   http://zacbowling.com/upnp/
+ //   http://www.knoxscape.com/Upnp/NAT.htm
+ //   http://www.artima.com/spontaneous/upnp_digihome2.html
 
 namespace UPnP
 {
-
 	// The constructor for information services
 	Service::Service(const QString & hostname, int port, const QString & informationUrl)
-	    : m_iPendingRequests(0), m_szBaseXmlPrefix("s"), m_szHostname(hostname), m_iPort(port)
+		: m_iPendingRequests(0), m_szBaseXmlPrefix("s"), m_szHostname(hostname), m_iPort(port)
 	{
 		m_szInformationUrl = informationUrl;
 		qDebug() << "UPnP::Service: created information service url='" << m_szInformationUrl << "'." << endl;
@@ -58,7 +57,7 @@ namespace UPnP
 
 	// The constructor for action services
 	Service::Service(const ServiceParameters & params)
-	    : m_szControlUrl(params.controlUrl), m_szInformationUrl(params.scpdUrl), m_iPendingRequests(0), m_szServiceId(params.serviceId), m_szServiceType(params.serviceType), m_szBaseXmlPrefix("s"), m_szHostname(params.hostname), m_iPort(params.port)
+		: m_szControlUrl(params.controlUrl), m_szInformationUrl(params.scpdUrl), m_iPendingRequests(0), m_szServiceId(params.serviceId), m_szServiceType(params.serviceType), m_szBaseXmlPrefix("s"), m_szHostname(params.hostname), m_iPort(params.port)
 	{
 		qDebug() << "CREATED UPnP::Service: url='" << m_szControlUrl << "' id='" << m_szServiceId << "'." << endl;
 	}
@@ -102,14 +101,14 @@ namespace UPnP
 		// this router wants us to use servicetype in the following requests
 
 		QString soapMessage = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n"
-		                      "<"
-		    + m_szBaseXmlPrefix + ":Envelope xmlns:" + m_szBaseXmlPrefix + "=\"http://schemas.xmlsoap.org/soap/envelope/\""
-		                                                                   " "
-		    + m_szBaseXmlPrefix + ":encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n"
-		                          " <"
-		    + m_szBaseXmlPrefix + ":Body>\n"
-		                          "  <"
-		    + prefix + ":" + actionName + " xmlns:" + prefix + "=\"" + m_szServiceType + "\">\n";
+			"<"
+			+ m_szBaseXmlPrefix + ":Envelope xmlns:" + m_szBaseXmlPrefix + "=\"http://schemas.xmlsoap.org/soap/envelope/\""
+			" "
+			+ m_szBaseXmlPrefix + ":encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n"
+			" <"
+			+ m_szBaseXmlPrefix + ":Body>\n"
+			"  <"
+			+ prefix + ":" + actionName + " xmlns:" + prefix + "=\"" + m_szServiceType + "\">\n";
 
 		// Do we have any arguments?
 		if(arguments != nullptr)
@@ -234,7 +233,7 @@ namespace UPnP
 		QDomDocument xml;
 
 		qDebug() << "Response:\n"
-		         << response << "\n---\n";
+			<< response << "\n---\n";
 
 		// Parse the XML
 		QString errorMessage;
@@ -310,5 +309,4 @@ namespace UPnP
 		m_iPendingRequests--;
 		emit queryFinished(error);
 	}
-
 } // end of namespace

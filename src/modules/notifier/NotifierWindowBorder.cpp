@@ -36,7 +36,7 @@ NotifierWindowBorder::NotifierWindowBorder(QSize s)
 }
 
 NotifierWindowBorder::~NotifierWindowBorder()
-    = default;
+= default;
 
 void NotifierWindowBorder::loadImages()
 {
@@ -171,15 +171,15 @@ void NotifierWindowBorder::setCloseIcon(int state)
 	m_eIconState = state;
 	switch(m_eIconState)
 	{
-		case WDG_ICON_OUT:
-			m_pixIconClose = m_pixIconClose_out;
-			break;
-		case WDG_ICON_OVER:
-			m_pixIconClose = m_pixIconClose_over;
-			break;
-		case WDG_ICON_CLICKED:
-			m_pixIconClose = m_pixIconClose_clicked;
-			break;
+	case WDG_ICON_OUT:
+		m_pixIconClose = m_pixIconClose_out;
+		break;
+	case WDG_ICON_OVER:
+		m_pixIconClose = m_pixIconClose_over;
+		break;
+	case WDG_ICON_CLICKED:
+		m_pixIconClose = m_pixIconClose_clicked;
+		break;
 	};
 }
 

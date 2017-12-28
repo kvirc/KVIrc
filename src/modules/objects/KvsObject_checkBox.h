@@ -41,7 +41,7 @@ protected:
 	bool isChecked(KviKvsObjectFunctionCall * c);
 	bool toggleEvent(KviKvsObjectFunctionCall * c);
 	bool setText(KviKvsObjectFunctionCall * c);
-protected slots:
+	protected slots:
 	void toggled(bool b);
 };
 #endif // !_CLASS_CHECKBOX_H_

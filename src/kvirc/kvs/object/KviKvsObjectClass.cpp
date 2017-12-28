@@ -37,10 +37,10 @@
 #include "KviLocale.h"
 
 KviKvsObjectClass::KviKvsObjectClass(
-    KviKvsObjectClass * pParent,
-    const QString & szName,
-    KviKvsObjectAllocateInstanceProc pProc,
-    bool bBuiltin)
+	KviKvsObjectClass * pParent,
+	const QString & szName,
+	KviKvsObjectAllocateInstanceProc pProc,
+	bool bBuiltin)
 {
 	m_pParentClass = pParent;
 	if(m_pParentClass)

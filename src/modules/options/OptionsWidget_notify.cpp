@@ -31,7 +31,7 @@
 #include <QLayout>
 
 OptionsWidget_notify::OptionsWidget_notify(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("notify_options_widget");
 	createLayout();
@@ -85,4 +85,4 @@ OptionsWidget_notify::OptionsWidget_notify(QWidget * parent)
 }
 
 OptionsWidget_notify::~OptionsWidget_notify()
-    = default;
+= default;

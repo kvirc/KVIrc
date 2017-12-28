@@ -49,7 +49,7 @@ public:
 	// directory where data is downloaded to
 	virtual QCString getTorrentDataDir(int i)=0;
 */
-	// number of files in torrent
+// number of files in torrent
 	virtual int fileCount(int i) = 0;
 	// name of file in torrent
 	virtual QString fileName(int i, int file) = 0;
@@ -71,9 +71,9 @@ public:
 
 	virtual bool addTorrent(const QCString &mrl);
 */
-	// returns state of torrent number i (Stopped, Stalled, Seeding, Downloading)
-	// this uses getTorrentInfo() to obtain the state and then
-	// returns it as string
+// returns state of torrent number i (Stopped, Stalled, Seeding, Downloading)
+// this uses getTorrentInfo() to obtain the state and then
+// returns it as string
 	virtual QString state(int i) = 0;
 
 	// name of torrent as displayed in client
@@ -105,8 +105,8 @@ protected:
 class TorrentInterfaceDescriptor
 {
 public:
-	TorrentInterfaceDescriptor(){};
-	virtual ~TorrentInterfaceDescriptor(){};
+	TorrentInterfaceDescriptor() {};
+	virtual ~TorrentInterfaceDescriptor() {};
 
 public:
 	virtual const QString & name() = 0;

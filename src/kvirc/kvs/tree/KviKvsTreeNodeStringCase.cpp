@@ -26,7 +26,7 @@
 #include "KviQString.h"
 
 KviKvsTreeNodeStringCast::KviKvsTreeNodeStringCast(const QChar * pLocation, KviKvsTreeNodeData * pChildData)
-    : KviKvsTreeNodeData(pLocation)
+	: KviKvsTreeNodeData(pLocation)
 {
 	m_pChildData = pChildData;
 	m_pChildData->setParent(this);

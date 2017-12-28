@@ -37,7 +37,7 @@
 #include <ctype.h>
 
 KviHistoryWindow::KviHistoryWindow(QWidget * pParent)
-    : QListWidget(pParent)
+	: QListWidget(pParent)
 {
 	m_pParent = pParent;
 	m_pOwner = nullptr;
@@ -84,7 +84,7 @@ void KviHistoryWindow::popup(KviInput * pOwner)
 void KviHistoryWindow::mousePressEvent(QMouseEvent * e)
 {
 	if(
-	    (e->pos().x() < 0) || (e->pos().x() > width()) || (e->pos().y() < 0) || (e->pos().y() > height()))
+		(e->pos().x() < 0) || (e->pos().x() > width()) || (e->pos().y() < 0) || (e->pos().y() > height()))
 		goto hideme;
 
 	QListWidget::mousePressEvent(e);
@@ -99,18 +99,18 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent * e)
 {
 	switch(e->key())
 	{
-		case Qt::Key_Up:
-		case Qt::Key_Down:
-		case Qt::Key_PageUp:
-		case Qt::Key_PageDown:
-		case Qt::Key_Return:
-			QListWidget::keyPressEvent(e);
-			return;
-			break;
-		case Qt::Key_Escape:
-			doHide();
-			return;
-			break;
+	case Qt::Key_Up:
+	case Qt::Key_Down:
+	case Qt::Key_PageUp:
+	case Qt::Key_PageDown:
+	case Qt::Key_Return:
+		QListWidget::keyPressEvent(e);
+		return;
+		break;
+	case Qt::Key_Escape:
+		doHide();
+		return;
+		break;
 	}
 
 	if(m_pOwner)
@@ -172,14 +172,14 @@ void KviHistoryWindow::hideEvent(QHideEvent *)
 }
 
 KviHistoryWindowWidget::KviHistoryWindowWidget()
-    : QWidget(nullptr)
+	: QWidget(nullptr)
 {
 	setWindowFlags(Qt::Popup);
 	m_pWindow = new KviHistoryWindow(this);
 }
 
 KviHistoryWindowWidget::~KviHistoryWindowWidget()
-    = default;
+= default;
 
 void KviHistoryWindowWidget::popup(KviInput * pOwner)
 {

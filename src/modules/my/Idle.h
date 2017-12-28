@@ -45,7 +45,7 @@ public:
 signals:
 	void secondsIdle(int);
 
-private slots:
+	private slots:
 	void doCheck();
 
 private:

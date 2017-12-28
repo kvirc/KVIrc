@@ -27,12 +27,12 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeSpecialCommandBreak::KviKvsTreeNodeSpecialCommandBreak(const QChar * pLocation)
-    : KviKvsTreeNodeSpecialCommand(pLocation, "break")
+	: KviKvsTreeNodeSpecialCommand(pLocation, "break")
 {
 }
 
 KviKvsTreeNodeSpecialCommandBreak::~KviKvsTreeNodeSpecialCommandBreak()
-    = default;
+= default;
 
 void KviKvsTreeNodeSpecialCommandBreak::contextDescription(QString & szBuffer)
 {

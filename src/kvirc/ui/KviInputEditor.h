@@ -89,8 +89,8 @@ class KVIRC_API KviInputEditor : public QWidget
 {
 	//Q_PROPERTY(int KviProperty_FocusOwner READ heightHint)
 	Q_PROPERTY(int TransparencyCapable READ heightHint)
-	Q_OBJECT
-	friend class KviTextIconWindow; // it uses insetIconCode(const QString &)
+		Q_OBJECT
+		friend class KviTextIconWindow; // it uses insetIconCode(const QString &)
 	friend class KviTopicWidget;    // it uses home()
 public:
 	/**
@@ -201,7 +201,7 @@ protected:
 		* \return EditCommand
 		*/
 		EditCommand(Type eType, const QString & szText, int iStartPosition)
-		    : m_eType(eType), m_szText(szText), m_iStartPosition(iStartPosition)
+			: m_eType(eType), m_szText(szText), m_iStartPosition(iStartPosition)
 		{
 		}
 
@@ -525,7 +525,7 @@ private:
 	*/
 	QFontMetricsF * getLastFontMetrics(const QFont & font);
 
-public slots:
+	public slots:
 	/**
 	* \brief Opens the icon popup with icon description
 	* \param iId The id of the icon
@@ -617,7 +617,7 @@ public slots:
 	* \return void
 	*/
 	void clear();
-private slots:
+	private slots:
 	/**
 	* \brief Opens the history popup
 	* \return void

@@ -76,11 +76,11 @@ Idle * g_pIdle;
 static bool my_kvs_fnc_nick(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_CONSOLE
-	if(wnd)
-	{
-		if(wnd->connection())
-			c->returnValue()->setString(wnd->connection()->userInfo()->nickName());
-	}
+		if(wnd)
+		{
+			if(wnd->connection())
+				c->returnValue()->setString(wnd->connection()->userInfo()->nickName());
+		}
 	return true;
 }
 
@@ -177,11 +177,11 @@ static bool my_kvs_fnc_globalIdle(KviKvsModuleFunctionCall * c)
 static bool my_kvs_fnc_umode(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_CONSOLE
-	if(wnd)
-	{
-		if(wnd->connection())
-			c->returnValue()->setString(wnd->connection()->userInfo()->userMode());
-	}
+		if(wnd)
+		{
+			if(wnd->connection())
+				c->returnValue()->setString(wnd->connection()->userInfo()->userMode());
+		}
 	return true;
 }
 
@@ -205,11 +205,11 @@ static bool my_kvs_fnc_umode(KviKvsModuleFunctionCall * c)
 static bool my_kvs_fnc_user(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_CONSOLE
-	if(wnd)
-	{
-		if(wnd->connection())
-			c->returnValue()->setString(wnd->connection()->userInfo()->userName());
-	}
+		if(wnd)
+		{
+			if(wnd->connection())
+				c->returnValue()->setString(wnd->connection()->userInfo()->userName());
+		}
 	return true;
 }
 
@@ -233,11 +233,11 @@ static bool my_kvs_fnc_user(KviKvsModuleFunctionCall * c)
 static bool my_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_CONSOLE
-	if(wnd)
-	{
-		if(wnd->connection())
-			c->returnValue()->setString(wnd->connection()->userInfo()->hostName());
-	}
+		if(wnd)
+		{
+			if(wnd->connection())
+				c->returnValue()->setString(wnd->connection()->userInfo()->hostName());
+		}
 	return true;
 }
 
@@ -264,11 +264,11 @@ static bool my_kvs_fnc_host(KviKvsModuleFunctionCall * c)
 static bool my_kvs_fnc_ip(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_CONSOLE
-	if(wnd)
-	{
-		if(wnd->connection())
-			c->returnValue()->setString(wnd->connection()->userInfo()->hostIp());
-	}
+		if(wnd)
+		{
+			if(wnd->connection())
+				c->returnValue()->setString(wnd->connection()->userInfo()->hostIp());
+		}
 	return true;
 }
 
@@ -291,13 +291,12 @@ static bool my_kvs_fnc_ip(KviKvsModuleFunctionCall * c)
 
 static bool my_kvs_fnc_serverIsIPV6(KviKvsModuleFunctionCall * c)
 {
-
 	GET_KVS_CONSOLE
-	if(wnd)
-	{
-		if(wnd->connection())
-			c->returnValue()->setBoolean(wnd->connection()->target()->server()->isIPv6());
-	}
+		if(wnd)
+		{
+			if(wnd->connection())
+				c->returnValue()->setBoolean(wnd->connection()->target()->server()->isIPv6());
+		}
 	return true;
 }
 
@@ -320,13 +319,12 @@ static bool my_kvs_fnc_serverIsIPV6(KviKvsModuleFunctionCall * c)
 
 static bool my_kvs_fnc_serverIsSSL(KviKvsModuleFunctionCall * c)
 {
-
 	GET_KVS_CONSOLE
-	if(wnd)
-	{
-		if(wnd->connection())
-			c->returnValue()->setBoolean(wnd->connection()->link()->socket()->usingSSL());
-	}
+		if(wnd)
+		{
+			if(wnd->connection())
+				c->returnValue()->setBoolean(wnd->connection()->link()->socket()->usingSSL());
+		}
 	return true;
 }
 
@@ -356,11 +354,11 @@ static bool my_kvs_fnc_serverIsSSL(KviKvsModuleFunctionCall * c)
 static bool my_kvs_fnc_server(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_CONSOLE
-	if(wnd)
-	{
-		if(wnd->connection())
-			c->returnValue()->setString(wnd->connection()->currentServerName());
-	}
+		if(wnd)
+		{
+			if(wnd->connection())
+				c->returnValue()->setString(wnd->connection()->currentServerName());
+		}
 	return true;
 }
 
@@ -384,11 +382,11 @@ static bool my_kvs_fnc_server(KviKvsModuleFunctionCall * c)
 static bool my_kvs_fnc_network(KviKvsModuleFunctionCall * c)
 {
 	GET_KVS_CONSOLE
-	if(wnd)
-	{
-		if(wnd->connection())
-			c->returnValue()->setString(wnd->currentNetworkName());
-	}
+		if(wnd)
+		{
+			if(wnd->connection())
+				c->returnValue()->setString(wnd->currentNetworkName());
+		}
 	return true;
 }
 
@@ -425,14 +423,14 @@ static bool my_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "My",    // module name
-    "4.0.0", // module version
-    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)"
-    "	(C) 2005 Tonino Imbesi (grifisx at barmes dot net)"
-    "	(C) 2005 Alessandro Carbone (elfonol at gmail dot com)", // author & (C)
-    "Scripting irc-context related functions",
-    my_module_init,
-    my_module_can_unload,
-    0,
-    my_module_cleanup,
-    0)
+	"My",    // module name
+	"4.0.0", // module version
+	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)"
+	"	(C) 2005 Tonino Imbesi (grifisx at barmes dot net)"
+	"	(C) 2005 Alessandro Carbone (elfonol at gmail dot com)", // author & (C)
+	"Scripting irc-context related functions",
+	my_module_init,
+	my_module_can_unload,
+	0,
+	my_module_cleanup,
+	0)

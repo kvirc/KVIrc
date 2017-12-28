@@ -119,7 +119,7 @@ public:
 
 protected:
 	void attachDevice(KviKvsObject * o, QPaintDevice * p);
-protected slots:
+	protected slots:
 	void detachDevice();
 
 private:

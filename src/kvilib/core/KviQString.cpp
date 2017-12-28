@@ -678,246 +678,246 @@ namespace KviQString
 			if(iRealLen == iAllocSize)
 				INCREMENT_MEM
 
-			//copy up to a '%'
-			if(pFmt->unicode() != '%')
-			{
-				*p++ = *pFmt;
-				iRealLen++;
-				continue;
-			}
+				//copy up to a '%'
+				if(pFmt->unicode() != '%')
+				{
+					*p++ = *pFmt;
+					iRealLen++;
+					continue;
+				}
 
 			++pFmt; //skip this '%'
 			switch(pFmt->unicode())
 			{
-				case 's': // char * string
+			case 's': // char * string
+			{
+				pcArgString = kvi_va_arg(list, char *);
+				if(!pcArgString)
 				{
-					pcArgString = kvi_va_arg(list, char *);
-					if(!pcArgString)
-					{
-						pcArgString = (char *)"[!NULL!]";
-					}
-					QString szStr(pcArgString);
-					if(szStr.isEmpty())
-					{
-						continue;
-					}
-					int iLen = szStr.length();
-					const QChar * pCh = szStr.unicode();
-					if(!pCh)
-					{
-						continue;
-					}
-					if((iAllocSize - iRealLen) < iLen)
-					{
-						INCREMENT_MEM_BY(iLen)
-					}
-					while(iLen--)
-					{
-						*p++ = *pCh++;
-					}
-					iRealLen += szStr.length();
+					pcArgString = (char *)"[!NULL!]";
+				}
+				QString szStr(pcArgString);
+				if(szStr.isEmpty())
+				{
 					continue;
 				}
-				case 'S': // KviCString * string
+				int iLen = szStr.length();
+				const QChar * pCh = szStr.unicode();
+				if(!pCh)
 				{
-					KviCString * szStr = kvi_va_arg(list, KviCString *);
-					if(!szStr)
-					{
-						continue;
-					}
-					if((iAllocSize - iRealLen) < szStr->len())
-					{
-						INCREMENT_MEM_BY(szStr->len())
-					}
-					pcArgString = szStr->ptr();
-					while(*pcArgString)
-					{
-						*p++ = QChar(*pcArgString++);
-					}
-					iRealLen += szStr->len();
 					continue;
 				}
-				case 'Q': // QString * string
+				if((iAllocSize - iRealLen) < iLen)
 				{
-					QString * szStr = kvi_va_arg(list, QString *);
-					if(!szStr)
-					{
-						continue;
-					}
-					if(szStr->isEmpty())
-					{
-						continue;
-					}
-					int iLen = szStr->length();
-					const QChar * pCh = szStr->unicode();
-					if(!pCh)
-					{
-						continue;
-					}
-					if((iAllocSize - iRealLen) < iLen)
-					{
-						INCREMENT_MEM_BY(iLen)
-					}
-					while(iLen--)
-					{
-						*p++ = *pCh++;
-					}
-					iRealLen += szStr->length();
+					INCREMENT_MEM_BY(iLen)
+				}
+				while(iLen--)
+				{
+					*p++ = *pCh++;
+				}
+				iRealLen += szStr.length();
+				continue;
+			}
+			case 'S': // KviCString * string
+			{
+				KviCString * szStr = kvi_va_arg(list, KviCString *);
+				if(!szStr)
+				{
 					continue;
 				}
-				case 'c': //char
+				if((iAllocSize - iRealLen) < szStr->len())
 				{
-					//
-					// I'm not sure about this...
-					// In the linux kernel source the
-					// unsigned char is extracted from an integer type.
-					// We assume that gcc stacks a char argument
-					// as sizeof(int) bytes value.
-					// Is this always true ?
-					//
-					*p++ = (char)kvi_va_arg(list, int);
+					INCREMENT_MEM_BY(szStr->len())
+				}
+				pcArgString = szStr->ptr();
+				while(*pcArgString)
+				{
+					*p++ = QChar(*pcArgString++);
+				}
+				iRealLen += szStr->len();
+				continue;
+			}
+			case 'Q': // QString * string
+			{
+				QString * szStr = kvi_va_arg(list, QString *);
+				if(!szStr)
+				{
+					continue;
+				}
+				if(szStr->isEmpty())
+				{
+					continue;
+				}
+				int iLen = szStr->length();
+				const QChar * pCh = szStr->unicode();
+				if(!pCh)
+				{
+					continue;
+				}
+				if((iAllocSize - iRealLen) < iLen)
+				{
+					INCREMENT_MEM_BY(iLen)
+				}
+				while(iLen--)
+				{
+					*p++ = *pCh++;
+				}
+				iRealLen += szStr->length();
+				continue;
+			}
+			case 'c': //char
+			{
+				//
+				// I'm not sure about this...
+				// In the linux kernel source the
+				// unsigned char is extracted from an integer type.
+				// We assume that gcc stacks a char argument
+				// as sizeof(int) bytes value.
+				// Is this always true ?
+				//
+				*p++ = (char)kvi_va_arg(list, int);
+				iRealLen++;
+				continue;
+			}
+			case 'q': // QChar *
+			{
+				//
+				// I'm not sure about this...
+				// In the linux kernel source the
+				// unsigned char is extracted from an integer type.
+				// We assume that gcc stacks a char argument
+				// as sizeof(int) bytes value.
+				// Is this always true ?
+				//
+				*p++ = *((QChar *)kvi_va_arg(list, QChar *));
+				iRealLen++;
+				continue;
+			}
+			case 'd': //signed integer
+			{
+				lArgValue = kvi_va_arg(list, int);
+				if(lArgValue < 0)
+				{
+					//negative integer
+					*p++ = '-';
 					iRealLen++;
-					continue;
-				}
-				case 'q': // QChar *
-				{
-					//
-					// I'm not sure about this...
-					// In the linux kernel source the
-					// unsigned char is extracted from an integer type.
-					// We assume that gcc stacks a char argument
-					// as sizeof(int) bytes value.
-					// Is this always true ?
-					//
-					*p++ = *((QChar *)kvi_va_arg(list, QChar *));
-					iRealLen++;
-					continue;
-				}
-				case 'd': //signed integer
-				{
-					lArgValue = kvi_va_arg(list, int);
+					//need to have it positive. most negative integer exception (avoid completely senseless (non digit) responses)
+					lArgValue = -lArgValue;
 					if(lArgValue < 0)
 					{
-						//negative integer
-						*p++ = '-';
-						iRealLen++;
-						//need to have it positive. most negative integer exception (avoid completely senseless (non digit) responses)
-						lArgValue = -lArgValue;
-						if(lArgValue < 0)
-						{
-							//we get -0 here
-							lArgValue = 0;
-						}
+						//we get -0 here
+						lArgValue = 0;
 					}
-					//write the number in a temporary buffer
-					pcNumBuf = cNumberBuffer;
-					do
-					{
-						iTmp = lArgValue / 10;
-						*pcNumBuf++ = lArgValue - (iTmp * 10) + '0';
-					} while((lArgValue = iTmp));
-					//copy now....
-					ulArgValue = pcNumBuf - cNumberBuffer; //length of the number string
-					if((iAllocSize - iRealLen) < (int)ulArgValue)
-					{
-						INCREMENT_MEM_BY(ulArgValue)
-					}
-					do
-					{
-						*p++ = QChar(*--pcNumBuf);
-					} while(pcNumBuf != cNumberBuffer);
-					iRealLen += ulArgValue;
-					continue;
 				}
-				case 'u': //unsigned integer
+				//write the number in a temporary buffer
+				pcNumBuf = cNumberBuffer;
+				do
 				{
-					ulArgValue = kvi_va_arg(list, unsigned int); //many implementations place int here
-					//write the number in a temporary buffer
-					pcNumBuf = cNumberBuffer;
-					do
-					{
-						iTmp = ulArgValue / 10;
-						*pcNumBuf++ = ulArgValue - (iTmp * 10) + '0';
-					} while((ulArgValue = iTmp));
-					//copy now....
-					lArgValue = pcNumBuf - cNumberBuffer; //length of the number string
-					if((iAllocSize - iRealLen) < lArgValue)
-					{
-						INCREMENT_MEM_BY(lArgValue)
-					}
-					do
-					{
-						*p++ = *--pcNumBuf;
-					} while(pcNumBuf != cNumberBuffer);
-					iRealLen += lArgValue;
-					continue;
+					iTmp = lArgValue / 10;
+					*pcNumBuf++ = lArgValue - (iTmp * 10) + '0';
+				} while((lArgValue = iTmp));
+				//copy now....
+				ulArgValue = pcNumBuf - cNumberBuffer; //length of the number string
+				if((iAllocSize - iRealLen) < (int)ulArgValue)
+				{
+					INCREMENT_MEM_BY(ulArgValue)
 				}
-				case 'h':
-				case 'x': // hexadecimal unsigned integer
+				do
 				{
-					static char cHexSmallDigits[] = "0123456789abcdef";
-					ulArgValue = kvi_va_arg(list, unsigned int); //many implementations place int here
-					//write the number in a temporary buffer
-					pcNumBuf = cNumberBuffer;
-					do
-					{
-						iTmp = ulArgValue / 16;
-						*pcNumBuf++ = cHexSmallDigits[ulArgValue - (iTmp * 16)];
-					} while((ulArgValue = iTmp));
-					//copy now....
-					lArgValue = pcNumBuf - cNumberBuffer; //length of the number string
-					if((iAllocSize - iRealLen) < lArgValue)
-					{
-						INCREMENT_MEM_BY(lArgValue)
-					}
-					do
-					{
-						*p++ = *--pcNumBuf;
-					} while(pcNumBuf != cNumberBuffer);
-					iRealLen += lArgValue;
-					continue;
+					*p++ = QChar(*--pcNumBuf);
+				} while(pcNumBuf != cNumberBuffer);
+				iRealLen += ulArgValue;
+				continue;
+			}
+			case 'u': //unsigned integer
+			{
+				ulArgValue = kvi_va_arg(list, unsigned int); //many implementations place int here
+				//write the number in a temporary buffer
+				pcNumBuf = cNumberBuffer;
+				do
+				{
+					iTmp = ulArgValue / 10;
+					*pcNumBuf++ = ulArgValue - (iTmp * 10) + '0';
+				} while((ulArgValue = iTmp));
+				//copy now....
+				lArgValue = pcNumBuf - cNumberBuffer; //length of the number string
+				if((iAllocSize - iRealLen) < lArgValue)
+				{
+					INCREMENT_MEM_BY(lArgValue)
 				}
-				case 'H':
-				case 'X': // hexadecimal unsigned integer
+				do
 				{
-					static char cHexBigDigits[] = "0123456789ABCDEF";
-					ulArgValue = kvi_va_arg(list, unsigned int); //many implementations place int here
-					//write the number in a temporary buffer
-					pcNumBuf = cNumberBuffer;
-					do
-					{
-						iTmp = ulArgValue / 16;
-						*pcNumBuf++ = cHexBigDigits[ulArgValue - (iTmp * 16)];
-					} while((ulArgValue = iTmp));
-					//copy now....
-					lArgValue = pcNumBuf - cNumberBuffer; //length of the number string
-					if((iAllocSize - iRealLen) < lArgValue)
-					{
-						INCREMENT_MEM_BY(lArgValue)
-					}
-					do
-					{
-						*p++ = *--pcNumBuf;
-					} while(pcNumBuf != cNumberBuffer);
-					iRealLen += lArgValue;
-					continue;
+					*p++ = *--pcNumBuf;
+				} while(pcNumBuf != cNumberBuffer);
+				iRealLen += lArgValue;
+				continue;
+			}
+			case 'h':
+			case 'x': // hexadecimal unsigned integer
+			{
+				static char cHexSmallDigits[] = "0123456789abcdef";
+				ulArgValue = kvi_va_arg(list, unsigned int); //many implementations place int here
+				//write the number in a temporary buffer
+				pcNumBuf = cNumberBuffer;
+				do
+				{
+					iTmp = ulArgValue / 16;
+					*pcNumBuf++ = cHexSmallDigits[ulArgValue - (iTmp * 16)];
+				} while((ulArgValue = iTmp));
+				//copy now....
+				lArgValue = pcNumBuf - cNumberBuffer; //length of the number string
+				if((iAllocSize - iRealLen) < lArgValue)
+				{
+					INCREMENT_MEM_BY(lArgValue)
 				}
-				default:
+				do
 				{
-					// a normal percent followed by some char
-					*p++ = '%'; //write it
+					*p++ = *--pcNumBuf;
+				} while(pcNumBuf != cNumberBuffer);
+				iRealLen += lArgValue;
+				continue;
+			}
+			case 'H':
+			case 'X': // hexadecimal unsigned integer
+			{
+				static char cHexBigDigits[] = "0123456789ABCDEF";
+				ulArgValue = kvi_va_arg(list, unsigned int); //many implementations place int here
+				//write the number in a temporary buffer
+				pcNumBuf = cNumberBuffer;
+				do
+				{
+					iTmp = ulArgValue / 16;
+					*pcNumBuf++ = cHexBigDigits[ulArgValue - (iTmp * 16)];
+				} while((ulArgValue = iTmp));
+				//copy now....
+				lArgValue = pcNumBuf - cNumberBuffer; //length of the number string
+				if((iAllocSize - iRealLen) < lArgValue)
+				{
+					INCREMENT_MEM_BY(lArgValue)
+				}
+				do
+				{
+					*p++ = *--pcNumBuf;
+				} while(pcNumBuf != cNumberBuffer);
+				iRealLen += lArgValue;
+				continue;
+			}
+			default:
+			{
+				// a normal percent followed by some char
+				*p++ = '%'; //write it
+				iRealLen++;
+				if(pFmt->unicode())
+				{
+					if(iRealLen == iAllocSize)
+					{
+						INCREMENT_MEM
+					}
+					*p++ = *pFmt;
 					iRealLen++;
-					if(pFmt->unicode())
-					{
-						if(iRealLen == iAllocSize)
-						{
-							INCREMENT_MEM
-						}
-						*p++ = *pFmt;
-						iRealLen++;
-					}
-					continue;
 				}
+				continue;
+			}
 			}
 		}
 

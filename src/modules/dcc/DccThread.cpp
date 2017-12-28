@@ -36,7 +36,7 @@
 #endif
 
 DccThread::DccThread(QObject * par, kvi_socket_t fd)
-    : KviSensitiveThread()
+	: KviSensitiveThread()
 {
 	m_pParent = par;
 	m_fd = fd;

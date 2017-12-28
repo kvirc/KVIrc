@@ -201,7 +201,7 @@ KVIRC_API KviCryptEngineManager * g_pCryptEngineManager = nullptr;
 #include <QStyleFactory>
 
 KviApplication::KviApplication(int & argc, char ** argv)
-    : KviTalApplication(argc, argv)
+	: KviTalApplication(argc, argv)
 {
 	setApplicationName("KVIrc");
 	setApplicationVersion(KVIRC_VERSION_RELEASE);
@@ -228,7 +228,7 @@ KviApplication::KviApplication(int & argc, char ** argv)
 	m_bPortable = KviFileUtils::fileExists(g_pApp->applicationDirPath() + KVI_PATH_SEPARATOR_CHAR + "portable");
 #endif
 
-//note: the early qApp->style() call leads to a crash on osx
+	//note: the early qApp->style() call leads to a crash on osx
 #if !defined(COMPILE_ENABLE_GTKSTYLE) && !defined(COMPILE_ON_MAC)
 	// workaround for gtk+ style forcing a crappy white background (ticket #777, #964, #1009, ..)
 	if(QString("QGtkStyle").compare(qApp->style()->metaObject()->className()) == 0)
@@ -290,9 +290,9 @@ void KviApplication::setup()
 	QString szPluginsDir;
 	getGlobalKvircDirectory(szPluginsDir, None, "qt-plugins/");
 	addLibraryPath(szPluginsDir);
-//MessageBox(0,QApplication::libraryPaths().join(";").toLocal8Bit().data(),"KVIrc",0);
-//KviMessageBox::information(libraryPaths().join(";"));
-//qDebug("%1",loader.isLoaded());
+	//MessageBox(0,QApplication::libraryPaths().join(";").toLocal8Bit().data(),"KVIrc",0);
+	//KviMessageBox::information(libraryPaths().join(";"));
+	//qDebug("%1",loader.isLoaded());
 #endif
 
 	// Make sure that the C strings are translated to utf8
@@ -435,7 +435,7 @@ void KviApplication::setup()
 	else
 		KviDefaultScriptManager::instance()->loadEmptyConfig();
 
-// Eventually initialize the crypt engine manager
+	// Eventually initialize the crypt engine manager
 #ifdef COMPILE_CRYPT_SUPPORT
 	g_pCryptEngineManager = new KviCryptEngineManager();
 #endif
@@ -582,7 +582,7 @@ KviApplication::~KviApplication()
 	saveInputHistory();
 	KviInputHistory::done();
 	delete g_pInputPopup;
-//delete g_pScriptObjectController;
+	//delete g_pScriptObjectController;
 #ifdef COMPILE_CRYPT_SUPPORT
 	delete g_pCryptEngineManager;
 #endif
@@ -591,7 +591,7 @@ KviApplication::~KviApplication()
 #endif
 	m_PendingAvatarChanges.clear();
 	KviAnimatedPixmapCache::done();
-// Kill the thread manager.... all the slave threads should have been already terminated ...
+	// Kill the thread manager.... all the slave threads should have been already terminated ...
 #ifdef COMPILE_SSL_SUPPORT
 	KviSSL::globalDestroy();
 #endif
@@ -645,12 +645,12 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 
 	1: env: DBus, KDE
 	   opt: a: enabled, enabled   -> KDE
-	        b: enabled, disabled  -> DBus
-	        c: disabled, disabled -> KVIrc
+			b: enabled, disabled  -> DBus
+			c: disabled, disabled -> KVIrc
 
 	2: env: DBus, no KDE
 	   opt: a: enabled  -> DBus
-	        b: disabled -> KVIrc
+			b: disabled -> KVIrc
 
 	3: env: no DBus, no KDE -> KVIrc
 	 ______           __________           ______________
@@ -705,16 +705,16 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 				KviFileUtils::makeDir(inf.absolutePath());
 
 				QString szKNotifyConfig = QString::fromUtf8(
-				    "[Global]\n"
-				    "IconName=kvirc\n"
-				    "Comment=The K-Visual IRC Client\n"
-				    "Name=kvirc\n"
-				    "\n"
-				    "[Event/incomingMessage]\n"
-				    "Name=KVIrc\n"
-				    "Comment=Someone sent us a message\n"
-				    "Action=Popup|Taskbar\n"
-				    "Persistent=true\n");
+					"[Global]\n"
+					"IconName=kvirc\n"
+					"Comment=The K-Visual IRC Client\n"
+					"Name=kvirc\n"
+					"\n"
+					"[Event/incomingMessage]\n"
+					"Name=KVIrc\n"
+					"Comment=Someone sent us a message\n"
+					"Action=Popup|Taskbar\n"
+					"Persistent=true\n");
 
 				KviFileUtils::writeFile(szFileName, szKNotifyConfig);
 			}
@@ -730,46 +730,46 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 		KviIconManager::SmallIcon eIcon = KviIconManager::None;
 		switch(pWnd->type())
 		{
-			case KviWindow::Console:
-				eIcon = KviIconManager::Links;
-				break;
-			case KviWindow::Channel:
-				eIcon = KviIconManager::Channel;
-				break;
-			case KviWindow::Query:
-			{
-				KviQueryWindow * pQuery = KVI_DYNAMIC(KviQueryWindow *, pWnd);
-				if(!pQuery)
-					break;
-
-				KviUserListEntry * pEntry = pQuery->userListView()->findEntry(pWnd->target());
-				if(!pEntry)
-					break;
-
-				KviAvatar * pAvatar = pEntry->globalData()->avatar();
-				if(!pAvatar)
-					break;
-
-				pIcon = pAvatar->pixmap();
-				if(!pIcon)
-					eIcon = KviIconManager::Query;
-			}
+		case KviWindow::Console:
+			eIcon = KviIconManager::Links;
 			break;
-			case KviWindow::SocketSpy:
-				eIcon = KviIconManager::Spy;
+		case KviWindow::Channel:
+			eIcon = KviIconManager::Channel;
+			break;
+		case KviWindow::Query:
+		{
+			KviQueryWindow * pQuery = KVI_DYNAMIC(KviQueryWindow *, pWnd);
+			if(!pQuery)
 				break;
-			case KviWindow::DccChat:
-				eIcon = KviIconManager::DccMsg;
+
+			KviUserListEntry * pEntry = pQuery->userListView()->findEntry(pWnd->target());
+			if(!pEntry)
 				break;
-			case KviWindow::DccTransfer:
-				eIcon = KviIconManager::Dcc;
+
+			KviAvatar * pAvatar = pEntry->globalData()->avatar();
+			if(!pAvatar)
 				break;
-			case KviWindow::UserWindow:
-				eIcon = KviIconManager::UserWindow;
-				break;
-			case KviWindow::Debug:
-				eIcon = KviIconManager::Bomb;
-				break;
+
+			pIcon = pAvatar->pixmap();
+			if(!pIcon)
+				eIcon = KviIconManager::Query;
+		}
+		break;
+		case KviWindow::SocketSpy:
+			eIcon = KviIconManager::Spy;
+			break;
+		case KviWindow::DccChat:
+			eIcon = KviIconManager::DccMsg;
+			break;
+		case KviWindow::DccTransfer:
+			eIcon = KviIconManager::Dcc;
+			break;
+		case KviWindow::UserWindow:
+			eIcon = KviIconManager::UserWindow;
+			break;
+		case KviWindow::Debug:
+			eIcon = KviIconManager::Bomb;
+			break;
 			//KviWindow::DeadChannel
 			//KviWindow::DeadQuery
 			//KviWindow::Editor
@@ -786,10 +786,10 @@ void KviApplication::notifierMessage(KviWindow * pWnd, int iIconId, const QStrin
 			//KviWindow::ScriptObject
 			//KviWindow::LogView
 			//KviWindow::Offer
-			case KviWindow::Unknown:
-			default:
-				eIcon = KviIconManager::KVIrc;
-				break;
+		case KviWindow::Unknown:
+		default:
+			eIcon = KviIconManager::KVIrc;
+			break;
 		}
 
 		if(!pIcon)
@@ -951,25 +951,25 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 	if(!KviDefaultScriptManager::instance()->isDefscriptUpToDate())
 	{
 		switch(
-		    QMessageBox::question(nullptr, __tr2qs("Update Default Scripts - KVIrc"),
-		        __tr2qs("<b>Your KVirc installation has been updated successfully.</b><br><br>"
-		                "KVIrc's default scripts should also be updated. "
-		                "<b>Do you want to restore the default scripts?</b><br><br>"
-		                "Hint: If you choose \"No\" you can always restore the "
-		                "default scripts by selecting the appropriate entry from the \"Scripting\" menu later."),
-		        __tr2qs("No and Don't Ask Me Again"), __tr2qs("No"), __tr2qs("Yes"), 1, 1))
+			QMessageBox::question(nullptr, __tr2qs("Update Default Scripts - KVIrc"),
+				__tr2qs("<b>Your KVirc installation has been updated successfully.</b><br><br>"
+					"KVIrc's default scripts should also be updated. "
+					"<b>Do you want to restore the default scripts?</b><br><br>"
+					"Hint: If you choose \"No\" you can always restore the "
+					"default scripts by selecting the appropriate entry from the \"Scripting\" menu later."),
+				__tr2qs("No and Don't Ask Me Again"), __tr2qs("No"), __tr2qs("Yes"), 1, 1))
 		{
-			case 0:
-				KVI_OPTION_BOOL(KviOption_boolDoNotSuggestRestoreDefaultScript) = true;
-				return;
-				break;
-			case 1:
-				// we want to execute the next checks, don't return now
-				break;
-			default:
-				restoreDefaultScript();
-				// we want to execute the next checks after the attempted restore, don't return now
-				break;
+		case 0:
+			KVI_OPTION_BOOL(KviOption_boolDoNotSuggestRestoreDefaultScript) = true;
+			return;
+			break;
+		case 1:
+			// we want to execute the next checks, don't return now
+			break;
+		default:
+			restoreDefaultScript();
+			// we want to execute the next checks after the attempted restore, don't return now
+			break;
 		}
 	}
 
@@ -1015,24 +1015,24 @@ void KviApplication::checkSuggestRestoreDefaultScript()
 	bSuggestedOnce = true;
 
 	switch(
-	    QMessageBox::question(nullptr, __tr2qs("Detected Installation Issues - KVIrc"),
-	        __tr2qs("<b>Your KVIrc installation is incomplete.</b><br><br>"
-	                "You seem to be missing some of the features that the KVIrc default scripts provide. "
-	                "<b>Do you want to restore the default scripts?</b><br><br>"
-	                "Hint: If you choose \"No\" you can always restore the "
-	                "default scripts by selecting the appropriate entry from the \"Scripting\" menu later."),
-	        __tr2qs("No and Don't Ask Me Again"), __tr2qs("No"), __tr2qs("Yes"), 1, 1))
+		QMessageBox::question(nullptr, __tr2qs("Detected Installation Issues - KVIrc"),
+			__tr2qs("<b>Your KVIrc installation is incomplete.</b><br><br>"
+				"You seem to be missing some of the features that the KVIrc default scripts provide. "
+				"<b>Do you want to restore the default scripts?</b><br><br>"
+				"Hint: If you choose \"No\" you can always restore the "
+				"default scripts by selecting the appropriate entry from the \"Scripting\" menu later."),
+			__tr2qs("No and Don't Ask Me Again"), __tr2qs("No"), __tr2qs("Yes"), 1, 1))
 	{
-		case 0:
-			KVI_OPTION_BOOL(KviOption_boolDoNotSuggestRestoreDefaultScript) = true;
-			return;
-			break;
-		case 1:
-			return;
-			break;
-		default:
-			restoreDefaultScript();
-			break;
+	case 0:
+		KVI_OPTION_BOOL(KviOption_boolDoNotSuggestRestoreDefaultScript) = true;
+		return;
+		break;
+	case 1:
+		return;
+		break;
+	default:
+		restoreDefaultScript();
+		break;
 	}
 }
 
@@ -1070,7 +1070,7 @@ void KviApplication::ipcMessage(char * pcMessage)
 			szCmd.cutRight(szCmd.len() - (iIdx + 1));
 		pConsole->output(KVI_OUT_SYSTEMMESSAGE, __tr2qs("Remote command received (%s ...)"), szCmd.ptr());
 	}
-	if (kvi_strEqualCIN(pcMessage, "openurl ", 8))
+	if(kvi_strEqualCIN(pcMessage, "openurl ", 8))
 	{
 		// there actually is no reliable way of raising the main window, but we try our best!
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -1093,11 +1093,11 @@ void KviApplication::setAvatarFromOptions()
 }
 
 void KviApplication::setAvatarOnFileReceived(
-    KviConsoleWindow * pConsole,
-    const QString & szRemoteUrl,
-    const QString & szNick,
-    const QString & szUser,
-    const QString & szHost)
+	KviConsoleWindow * pConsole,
+	const QString & szRemoteUrl,
+	const QString & szNick,
+	const QString & szUser,
+	const QString & szHost)
 {
 	if(m_PendingAvatarChanges.size() >= KVI_MAX_PENDING_AVATARS) // can't be...
 		// kill an entry to make space
@@ -1114,9 +1114,9 @@ void KviApplication::setAvatarOnFileReceived(
 }
 
 KviPendingAvatarChange * KviApplication::findPendingAvatarChange(
-    KviConsoleWindow * pConsole,
-    const QString & szNick,
-    const QString & szRemoteUrl)
+	KviConsoleWindow * pConsole,
+	const QString & szNick,
+	const QString & szRemoteUrl)
 {
 	for(auto & upAvatarPair : m_PendingAvatarChanges)
 	{
@@ -1135,14 +1135,13 @@ KviPendingAvatarChange * KviApplication::findPendingAvatarChange(
 }
 
 void KviApplication::fileDownloadTerminated(
-    bool bSuccess,
-    const QString & szRemoteUrl,
-    const QString & szLocalFileName,
-    const QString & szNick,
-    const QString & szError,
-    bool bQuiet)
+	bool bSuccess,
+	const QString & szRemoteUrl,
+	const QString & szLocalFileName,
+	const QString & szNick,
+	const QString & szError,
+	bool bQuiet)
 {
-
 	KviPendingAvatarChange * pAvatar = findPendingAvatarChange(nullptr, szNick, szRemoteUrl);
 
 	if(pAvatar == nullptr)
@@ -1192,11 +1191,11 @@ void KviApplication::fileDownloadTerminated(
 		if(windowExists(pAvatar->pConsole))
 		{
 			pAvatar->pConsole->setAvatar(
-			    pAvatar->szNick,
-			    pAvatar->szUser,
-			    pAvatar->szHost,
-			    szLocalFileName,
-			    (KviQString::equalCIN("http://", szRemoteUrl, 7) || KviQString::equalCIN("https://", szRemoteUrl, 8)) ? szRemoteUrl : QString());
+				pAvatar->szNick,
+				pAvatar->szUser,
+				pAvatar->szHost,
+				szLocalFileName,
+				(KviQString::equalCIN("http://", szRemoteUrl, 7) || KviQString::equalCIN("https://", szRemoteUrl, 8)) ? szRemoteUrl : QString());
 		}
 	}
 	else
@@ -1204,7 +1203,7 @@ void KviApplication::fileDownloadTerminated(
 		if((!_OUTPUT_MUTE) && (!bQuiet))
 		{
 			pAvatar->pConsole->output(KVI_OUT_AVATAR, __tr2qs("Avatar download failed for %Q!%Q@%Q and URL %Q: %Q"),
-			    &(pAvatar->szNick), &(pAvatar->szUser), &(pAvatar->szHost), &(szRemoteUrl), &(szError));
+				&(pAvatar->szNick), &(pAvatar->szUser), &(pAvatar->szHost), &(szRemoteUrl), &(szError));
 		}
 	}
 
@@ -1299,27 +1298,27 @@ void KviApplication::updatePseudoTransparency()
 		else
 #endif // COMPILE_ON_WINDOWS || COMPILE_ON_MINGW
 
-		if(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap())
-		{
-			createGlobalBackgrounds(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap());
-		}
-		else
-		{
-			//destroy pseudo transparency pixmaps
-			destroyPseudoTransparency();
-//if we get here, no pseudo transparency method can be used / is enabled.
+			if(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap())
+			{
+				createGlobalBackgrounds(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap());
+			}
+			else
+			{
+				//destroy pseudo transparency pixmaps
+				destroyPseudoTransparency();
+				//if we get here, no pseudo transparency method can be used / is enabled.
 #ifdef COMPILE_X11_SUPPORT
 			//under x11, we still have to check real transparency methods
-			if(!KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency))
-			{
-				//real transparency is off => turn off transparency support at all
-				KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
-			}
+				if(!KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency))
+				{
+					//real transparency is off => turn off transparency support at all
+					KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
+				}
 #else
 			// on other platforms, no way to proceed
-			KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
+				KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
 #endif // COMPILE_X11_SUPPORT
-		}
+			}
 	}
 	else
 	{
@@ -1790,7 +1789,7 @@ KviConsoleWindow * KviApplication::activeConsole()
 static void merge_to_stringlist_option(const QString & szItem, int iOption, int iMaxEntries)
 {
 	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(iOption).begin();
-	    it != KVI_OPTION_STRINGLIST(iOption).end(); ++it)
+		it != KVI_OPTION_STRINGLIST(iOption).end(); ++it)
 	{
 		// Do a case-insensitive search (for nicknames, servers, and channels)
 		if(!QString::compare(szItem.toLower(), (*it).toLower()))
@@ -1804,10 +1803,10 @@ static void merge_to_stringlist_option(const QString & szItem, int iOption, int 
 	while(KVI_OPTION_STRINGLIST(iOption).count() >= iMaxEntries)
 	{
 		KVI_OPTION_STRINGLIST(iOption)
-		    .erase(KVI_OPTION_STRINGLIST(iOption).isEmpty() ? KVI_OPTION_STRINGLIST(iOption).end() : --KVI_OPTION_STRINGLIST(iOption).end());
+			.erase(KVI_OPTION_STRINGLIST(iOption).isEmpty() ? KVI_OPTION_STRINGLIST(iOption).end() : --KVI_OPTION_STRINGLIST(iOption).end());
 	}
 	KVI_OPTION_STRINGLIST(iOption)
-	    .prepend(szItem);
+		.prepend(szItem);
 }
 
 void KviApplication::addRecentUrl(const QString & szText)
@@ -1878,7 +1877,7 @@ void KviApplication::saveRecentChannels()
 	QString szTmp;
 
 	KVI_OPTION_STRINGLIST(KviOption_stringlistRecentChannels)
-	    .clear();
+		.clear();
 
 	KviPointerHashTableIterator<QString, QStringList> it(*m_pRecentChannelDict);
 
@@ -1890,7 +1889,7 @@ void KviApplication::saveRecentChannels()
 			szTmp.append(KVI_RECENT_CHANNELS_SEPARATOR);
 			szTmp.append(it.currentKey());
 			KVI_OPTION_STRINGLIST(KviOption_stringlistRecentChannels)
-			    .append(szTmp);
+				.append(szTmp);
 		}
 	}
 }
@@ -1972,7 +1971,7 @@ void KviApplication::heartbeat(kvi_time_t tNow)
 	{
 		// FIXME: this has huge precision problems...
 		KVI_OPTION_UINT(KviOption_uintTotalConnectionTime)
-		++;
+			++;
 	}
 
 	if(pTm && !pTm->tm_hour && !pTm->tm_min && !pTm->tm_sec)

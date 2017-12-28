@@ -76,12 +76,12 @@ static bool raweditor_module_cleanup(KviModule *)
 }
 
 KVIRC_MODULE(
-    "RawEditor",                                                    // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Editor for the script RAW events",
-    raweditor_module_init,
-    raweditor_module_can_unload,
-    0,
-    raweditor_module_cleanup,
-    "editor")
+	"RawEditor",                                                    // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Editor for the script RAW events",
+	raweditor_module_init,
+	raweditor_module_can_unload,
+	0,
+	raweditor_module_cleanup,
+	"editor")

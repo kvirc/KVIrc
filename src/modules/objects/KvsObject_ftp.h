@@ -53,7 +53,7 @@ protected:
 	bool stateChangedEvent(KviKvsObjectFunctionCall * c);
 	bool abort(KviKvsObjectFunctionCall * c);
 	bool close(KviKvsObjectFunctionCall * c);
-protected slots:
+	protected slots:
 	void slotCommandFinished(int id, bool error);
 	void slotCommandStarted(int id);
 	void slotDataTransferProgress(qint64 done, qint64 total);

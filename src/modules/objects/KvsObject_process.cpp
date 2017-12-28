@@ -198,12 +198,11 @@ KVSO_END_CONSTRUCTOR(KvsObject_process)
 
 KVSO_CLASS_FUNCTION(process, addArgument)
 {
-
 	QString szArgument;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("argument", KVS_PT_NONEMPTYSTRING, 0, szArgument)
-	KVSO_PARAMETERS_END(c)
-	m_szArgs.append(szArgument);
+		KVSO_PARAMETER("argument", KVS_PT_NONEMPTYSTRING, 0, szArgument)
+		KVSO_PARAMETERS_END(c)
+		m_szArgs.append(szArgument);
 	return true;
 }
 
@@ -211,7 +210,7 @@ KVSO_CLASS_FUNCTION(process, addArgument)
 KVSO_CLASS_FUNCTION(process, startProcess)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	QString szcmd;
+		QString szcmd;
 
 	szcmd = m_szArgs.takeFirst();
 	m_pProcess->start(szcmd, m_szArgs);
@@ -226,7 +225,7 @@ KVSO_CLASS_FUNCTION(process, startProcess)
 KVSO_CLASS_FUNCTION(process, readStderr)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	QString ng_Process = m_pProcess->readAllStandardError();
+		QString ng_Process = m_pProcess->readAllStandardError();
 	c->returnValue()->setString(ng_Process);
 	return true;
 }
@@ -235,7 +234,7 @@ KVSO_CLASS_FUNCTION(process, readStderr)
 KVSO_CLASS_FUNCTION(process, readStdout)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	QString ng_Process = m_pProcess->readAllStandardOutput();
+		QString ng_Process = m_pProcess->readAllStandardOutput();
 	c->returnValue()->setString(ng_Process);
 	return true;
 }
@@ -254,20 +253,20 @@ KVSO_CLASS_FUNCTION(process, readyReadStderrEvent)
 KVSO_CLASS_FUNCTION(process, writeToStdin)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	QString szCommand;
+		QString szCommand;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("command", KVS_PT_STRING, 0, szCommand)
-	KVSO_PARAMETERS_END(c)
-	if(m_pProcess)
-		m_pProcess->write(szCommand.toUtf8().data());
+		KVSO_PARAMETER("command", KVS_PT_STRING, 0, szCommand)
+		KVSO_PARAMETERS_END(c)
+		if(m_pProcess)
+			m_pProcess->write(szCommand.toUtf8().data());
 	return true;
 }
 //-->The 3 Closing process functions
 KVSO_CLASS_FUNCTION(process, closekill)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	//I try to  to terminate the process the nice way....
-	m_pProcess->terminate();
+		//I try to  to terminate the process the nice way....
+		m_pProcess->terminate();
 	//If the process is still running after 5 seconds, I'll terminate the process in the hard way.
 	QTimer::singleShot(5000, m_pProcess, SLOT(kill()));
 	return true;
@@ -275,34 +274,34 @@ KVSO_CLASS_FUNCTION(process, closekill)
 KVSO_CLASS_FUNCTION(process, kill)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	m_pProcess->kill();
+		m_pProcess->kill();
 	return true;
 }
 KVSO_CLASS_FUNCTION(process, tryTerminate)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	m_pProcess->terminate();
+		m_pProcess->terminate();
 	return true;
 }
 //-->Close the standard input.
 KVSO_CLASS_FUNCTION(process, closeStdin)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	m_pProcess->closeReadChannel(QProcess::StandardOutput);
+		m_pProcess->closeReadChannel(QProcess::StandardOutput);
 	return true;
 }
 //->Returns if the process still runnig
 KVSO_CLASS_FUNCTION(process, isRunning)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	c->returnValue()->setBoolean(m_pProcess->state() == QProcess::Running);
+		c->returnValue()->setBoolean(m_pProcess->state() == QProcess::Running);
 	return true;
 }
 //->Returns if the process exited.
 KVSO_CLASS_FUNCTION(process, normalExit)
 {
 	CHECK_INTERNAL_POINTER(m_pProcess)
-	c->returnValue()->setBoolean(m_pProcess->state() == QProcess::NotRunning && m_pProcess->exitStatus() == QProcess::NormalExit);
+		c->returnValue()->setBoolean(m_pProcess->state() == QProcess::NotRunning && m_pProcess->exitStatus() == QProcess::NormalExit);
 	return true;
 }
 

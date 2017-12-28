@@ -29,7 +29,7 @@
 #include <QString>
 
 KviPixmap::KviPixmap()
-    = default;
+= default;
 
 KviPixmap::KviPixmap(const char * path)
 {

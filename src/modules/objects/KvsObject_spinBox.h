@@ -55,7 +55,7 @@ protected:
 
 	bool valueChangedEvent(KviKvsObjectFunctionCall * c);
 
-protected slots:
+	protected slots:
 	void valueChanged(int);
 };
 

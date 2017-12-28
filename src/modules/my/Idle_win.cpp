@@ -41,9 +41,9 @@ public:
 	}
 
 	BOOL(__stdcall * GetLastInputInfo)
-	(PLASTINPUTINFO);
+		(PLASTINPUTINFO);
 	DWORD(__stdcall * IdleUIGetLastInputTime)
-	(void);
+		(void);
 	QLibrary * lib;
 };
 

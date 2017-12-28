@@ -47,7 +47,7 @@ private:
 	QLabel * m_pModeLabel;
 	QLineEdit * m_pParams;
 
-private slots:
+	private slots:
 	void execute();
 
 protected:
@@ -55,8 +55,8 @@ protected:
 	virtual void fillCaptionBuffers();
 	virtual void resizeEvent(QResizeEvent * e);
 	virtual void getConfigGroupName(QString & szName);
-	virtual void saveProperties(KviConfigurationFile *){};
-	virtual void loadProperties(KviConfigurationFile *){};
+	virtual void saveProperties(KviConfigurationFile *) {};
+	virtual void loadProperties(KviConfigurationFile *) {};
 };
 
 #endif //_CODETESTER_H_

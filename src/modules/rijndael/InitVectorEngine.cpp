@@ -29,7 +29,6 @@
 
 namespace InitVectorEngine
 {
-
 	bool bDidInit = false;
 
 	int fillRandomIV(unsigned char * pIn, int iLen)

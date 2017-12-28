@@ -28,7 +28,7 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeSpecialCommandUnset::KviKvsTreeNodeSpecialCommandUnset(const QChar * pLocation, KviPointerList<KviKvsTreeNodeVariable> * pVariableList)
-    : KviKvsTreeNodeSpecialCommand(pLocation, "unset")
+	: KviKvsTreeNodeSpecialCommand(pLocation, "unset")
 {
 	m_pVariableList = pVariableList;
 	for(KviKvsTreeNodeVariable * pVar = m_pVariableList->first(); pVar; pVar = m_pVariableList->next())

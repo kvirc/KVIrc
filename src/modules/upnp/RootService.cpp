@@ -24,11 +24,11 @@
 //=============================================================================
 
 /***************************************************************************
-                          RootService.cpp -  description
-                             -------------------
-    begin                : Mon Jul 25 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  RootService.cpp -  description
+							 -------------------
+	begin                : Mon Jul 25 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #include "RootService.h"
@@ -44,13 +44,13 @@ namespace UPnP
 {
 	// The constructor
 	RootService::RootService(const QString & hostname, int port, const QString & rootUrl)
-	    : Service(hostname, port, rootUrl), m_szHostname(hostname), m_iPort(port)
+		: Service(hostname, port, rootUrl), m_szHostname(hostname), m_iPort(port)
 	{
 	}
 
 	// The destructor
 	RootService::~RootService()
-	    = default;
+		= default;
 
 	// Recursively add all devices and embedded devices to the deviceServices_ map
 	void RootService::addDeviceServices(const QDomNode & device)
@@ -75,7 +75,7 @@ namespace UPnP
 		// Insert the given device node
 		// The "key" is the device/UDN tag, the value is a list of device/serviceList/service nodes
 		m_deviceServices.insert(XmlFunctions::getNodeValue(device, "/UDN"),
-		    device.namedItem("serviceList").childNodes());
+			device.namedItem("serviceList").childNodes());
 
 		// Find all embedded device nodes
 		QDomNodeList embeddedDevices = device.namedItem("deviceList").childNodes();
@@ -174,7 +174,7 @@ namespace UPnP
 		else
 		{
 			qWarning() << "UPnP::RootService::getServiceByType -"
-			           << " type '" << serviceType << "' not found for device '" << deviceUdn << "'." << endl;
+				<< " type '" << serviceType << "' not found for device '" << deviceUdn << "'." << endl;
 
 			return false;
 		}
@@ -201,5 +201,4 @@ namespace UPnP
 	{
 		callInformationUrl();
 	}
-
 } // end of namespae

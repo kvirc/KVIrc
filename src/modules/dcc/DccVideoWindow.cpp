@@ -83,7 +83,7 @@ static DccVideoCodec * kvi_dcc_video_get_codec(const char * codecName)
 }
 
 DccVideoThread::DccVideoThread(KviWindow * wnd, kvi_socket_t fd, KviDccVideoThreadOptions * opt)
-    : DccThread(wnd, fd)
+	: DccThread(wnd, fd)
 {
 	m_pOpt = opt;
 	m_bPlaying = false;
@@ -393,7 +393,7 @@ exit_dcc:
 }
 
 DccVideoWindow::DccVideoWindow(DccDescriptor * dcc, const char * name)
-    : DccWindow(KviWindow::DccVideo, name, dcc)
+	: DccWindow(KviWindow::DccVideo, name, dcc)
 {
 	m_pDescriptor = dcc;
 	m_pSlaveThread = 0;
@@ -578,7 +578,7 @@ void DccVideoWindow::resizeEvent(QResizeEvent *)
 QSize DccVideoWindow::sizeHint() const
 {
 	QSize ret(m_pSplitter->sizeHint().width(),
-	    m_pContainerWidget->sizeHint().height() + m_pButtonBox->sizeHint().height());
+		m_pContainerWidget->sizeHint().height() + m_pButtonBox->sizeHint().height());
 	return ret;
 }
 
@@ -625,9 +625,8 @@ void DccVideoWindow::connectionInProgress()
 	}
 	else
 	{
-
 		output(KVI_OUT_DCCMSG, __tr2qs_ctx("Listening on interface %Q port %Q", "dcc"),
-		    &(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
+			&(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
 
 		if(m_pDescriptor->bSendRequest)
 		{
@@ -641,11 +640,11 @@ void DccVideoWindow::connectionInProgress()
 			}
 
 			m_pDescriptor->console()->connection()->sendFmtData("PRIVMSG %s :%cDCC VIDEO %s %Q %s %d%c",
-			    m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
-			    0x01, m_pDescriptor->szCodec.ptr(),
-			    &ip, port.ptr(), m_pDescriptor->iSampleRate, 0x01);
+				m_pDescriptor->console()->connection()->encodeText(m_pDescriptor->szNick).data(),
+				0x01, m_pDescriptor->szCodec.ptr(),
+				&ip, port.ptr(), m_pDescriptor->iSampleRate, 0x01);
 			output(KVI_OUT_DCCMSG, __tr2qs_ctx("Sent DCC VIDEO (%s) request to %Q, waiting for the remote client to connect...", "dcc"),
-			    m_pDescriptor->szCodec.ptr(), &(m_pDescriptor->szNick));
+				m_pDescriptor->szCodec.ptr(), &(m_pDescriptor->szNick));
 		}
 		else
 			output(KVI_OUT_DCCMSG, __tr2qs_ctx("DCC VIDEO request not sent: awaiting manual connection", "dcc"));
@@ -670,8 +669,8 @@ void DccVideoWindow::getBaseLogFileName(QString & buffer)
 void DccVideoWindow::fillCaptionBuffers()
 {
 	KviCString tmp(KviCString::Format, "DCC Video %s@%s:%s %s",
-	    m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data(),
-	    m_pDescriptor->szLocalFileName.toUtf8().data());
+		m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szIp.toUtf8().data(), m_pDescriptor->szPort.toUtf8().data(),
+		m_pDescriptor->szLocalFileName.toUtf8().data());
 
 	m_szPlainTextCaption = tmp;
 }
@@ -705,37 +704,37 @@ void DccVideoWindow::ownMessage(const QString & text, bool bUserFeedback)
 				cryptSessionInfo()->m_pEngine->setMaxEncryptLen(-1);
 				switch(cryptSessionInfo()->m_pEngine->encrypt(d, encrypted))
 				{
-					case KviCryptEngine::Encrypted:
+				case KviCryptEngine::Encrypted:
+				{
+					KviCString buf(KviCString::Format, "%s\r\n", encrypted.ptr());
+					m_tmpTextDataOut.append(buf.ptr(), buf.len());
+					if(bUserFeedback)
+						g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_OWNPRIVMSGCRYPTED,
+							m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
+							m_pDescriptor->szLocalHost.toUtf8().data(), text, KviConsoleWindow::NoNotifications);
+				}
+				break;
+				case KviCryptEngine::Encoded:
+				{
+					KviCString buf(KviCString::Format, "%s\r\n", encrypted.ptr());
+					m_tmpTextDataOut.append(buf.ptr(), buf.len());
+					if(bUserFeedback)
 					{
-						KviCString buf(KviCString::Format, "%s\r\n", encrypted.ptr());
-						m_tmpTextDataOut.append(buf.ptr(), buf.len());
-						if(bUserFeedback)
-							g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_OWNPRIVMSGCRYPTED,
-							    m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
-							    m_pDescriptor->szLocalHost.toUtf8().data(), text, KviConsoleWindow::NoNotifications);
+						QString encr = decodeText(encrypted.ptr());
+						g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG,
+							m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
+							m_pDescriptor->szLocalHost.toUtf8().data(), encr, KviConsoleWindow::NoNotifications);
 					}
-					break;
-					case KviCryptEngine::Encoded:
-					{
-						KviCString buf(KviCString::Format, "%s\r\n", encrypted.ptr());
-						m_tmpTextDataOut.append(buf.ptr(), buf.len());
-						if(bUserFeedback)
-						{
-							QString encr = decodeText(encrypted.ptr());
-							g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG,
-							    m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
-							    m_pDescriptor->szLocalHost.toUtf8().data(), encr, KviConsoleWindow::NoNotifications);
-						}
-					}
-					break;
-					default: // also case KviCryptEngine::EncryptError
-					{
-						QString szErr = cryptSessionInfo()->m_pEngine->lastError();
-						output(KVI_OUT_SYSTEMERROR,
-						    __tr2qs_ctx("The encryption engine was not able to encrypt the current message (%Q): %Q, no data was sent to the remote end", "dcc"),
-						    &text, &szErr);
-					}
-					break;
+				}
+				break;
+				default: // also case KviCryptEngine::EncryptError
+				{
+					QString szErr = cryptSessionInfo()->m_pEngine->lastError();
+					output(KVI_OUT_SYSTEMERROR,
+						__tr2qs_ctx("The encryption engine was not able to encrypt the current message (%Q): %Q, no data was sent to the remote end", "dcc"),
+						&text, &szErr);
+				}
+				break;
 				}
 				return;
 			}
@@ -748,8 +747,8 @@ void DccVideoWindow::ownMessage(const QString & text, bool bUserFeedback)
 
 				if(bUserFeedback)
 					g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG,
-					    m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
-					    m_pDescriptor->szLocalHost.toUtf8().data(), tmp, KviConsoleWindow::NoNotifications);
+						m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
+						m_pDescriptor->szLocalHost.toUtf8().data(), tmp, KviConsoleWindow::NoNotifications);
 				return;
 			}
 		}
@@ -760,8 +759,8 @@ void DccVideoWindow::ownMessage(const QString & text, bool bUserFeedback)
 
 	if(bUserFeedback)
 		g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_OWNPRIVMSG,
-		    m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
-		    m_pDescriptor->szLocalHost.toUtf8().data(), text, KviConsoleWindow::NoNotifications);
+			m_pDescriptor->szLocalNick.toUtf8().data(), m_pDescriptor->szLocalUser.toUtf8().data(),
+			m_pDescriptor->szLocalHost.toUtf8().data(), text, KviConsoleWindow::NoNotifications);
 }
 
 const QString & DccVideoWindow::localNick()
@@ -806,142 +805,141 @@ bool DccVideoWindow::event(QEvent * e)
 	{
 		switch(((KviThreadEvent *)e)->id())
 		{
-			case KVI_DCC_THREAD_EVENT_ERROR:
+		case KVI_DCC_THREAD_EVENT_ERROR:
+		{
+			KviError::Code * pError = ((KviThreadDataEvent<KviError::Code> *)e)->getData();
+			QString ssss = KviError::getDescription(*pError);
+			output(KVI_OUT_DCCERROR, __tr2qs_ctx("ERROR: %Q", "dcc"), &(ssss));
+			delete pError;
+			return true;
+		}
+		break;
+		case KVI_DCC_THREAD_EVENT_DATA:
+		{
+			KviCString * encoded = ((KviThreadDataEvent<KviCString> *)e)->getData();
+			KviCString d = KviCString(decodeText(encoded->ptr()));
+			if(d.firstCharIs(0x01))
 			{
-				KviError::Code * pError = ((KviThreadDataEvent<KviError::Code> *)e)->getData();
-				QString ssss = KviError::getDescription(*pError);
-				output(KVI_OUT_DCCERROR, __tr2qs_ctx("ERROR: %Q", "dcc"), &(ssss));
-				delete pError;
-				return true;
-			}
-			break;
-			case KVI_DCC_THREAD_EVENT_DATA:
-			{
-				KviCString * encoded = ((KviThreadDataEvent<KviCString> *)e)->getData();
-				KviCString d = KviCString(decodeText(encoded->ptr()));
-				if(d.firstCharIs(0x01))
+				d.cutLeft(1);
+				if(d.lastCharIs(0x01))
+					d.cutRight(1);
+				if(kvi_strEqualCIN("ACTION", d.ptr(), 6))
+					d.cutLeft(6);
+				d.stripLeftWhiteSpace();
+				output(KVI_OUT_ACTION, "%Q %s", &(m_pDescriptor->szNick), d.ptr());
+				if(!hasAttention(KviWindow::MainWindowIsVisible))
 				{
-					d.cutLeft(1);
-					if(d.lastCharIs(0x01))
-						d.cutRight(1);
-					if(kvi_strEqualCIN("ACTION", d.ptr(), 6))
-						d.cutLeft(6);
-					d.stripLeftWhiteSpace();
-					output(KVI_OUT_ACTION, "%Q %s", &(m_pDescriptor->szNick), d.ptr());
-					if(!hasAttention(KviWindow::MainWindowIsVisible))
+					if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
 					{
-						if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
+						demandAttention();
+					}
+					if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
+					{
+						QString szMsg = "<b>";
+						szMsg += m_pDescriptor->szNick;
+						szMsg += "</b> ";
+						szMsg += KviQString::toHtmlEscaped(QString(d.ptr()));
+						//qDebug("KviIrcServerParser_ctcp.cpp:975 debug: %s",szMsg.data());
+						g_pApp->notifierMessage(this, KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(), szMsg, KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+					}
+				}
+			}
+			else
+			{
+#ifdef COMPILE_CRYPT_SUPPORT
+				if(KviCryptSessionInfo * cinf = cryptSessionInfo())
+				{
+					if(cinf->m_bDoDecrypt)
+					{
+						KviCString decryptedStuff;
+						switch(cinf->m_pEngine->decrypt(d.ptr(), decryptedStuff))
 						{
-							demandAttention();
+						case KviCryptEngine::DecryptOkWasEncrypted:
+						case KviCryptEngine::DecryptOkWasEncoded:
+						case KviCryptEngine::DecryptOkWasPlainText:
+							if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage, this, QString(decryptedStuff.ptr()), m_pDescriptor->idString()))
+							{
+								g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_DCCCHATMSG,
+									m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szUser.toUtf8().data(),
+									m_pDescriptor->szHost.toUtf8().data(), decryptedStuff.ptr());
+							}
+							delete encoded;
+							return true;
+							break;
+
+						default: // also case KviCryptEngine::DecryptError
+						{
+							QString szErr = cinf->m_pEngine->lastError();
+							output(KVI_OUT_SYSTEMERROR,
+								__tr2qs_ctx("The following message appears to be encrypted, but the encryption engine failed to decode it: %Q", "dcc"),
+								&szErr);
 						}
-						if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
-						{
-							QString szMsg = "<b>";
-							szMsg += m_pDescriptor->szNick;
-							szMsg += "</b> ";
-							szMsg += KviQString::toHtmlEscaped(QString(d.ptr()));
-							//qDebug("KviIrcServerParser_ctcp.cpp:975 debug: %s",szMsg.data());
-							g_pApp->notifierMessage(this, KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(), szMsg, KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+						break;
 						}
 					}
 				}
 				else
 				{
-
-#ifdef COMPILE_CRYPT_SUPPORT
-					if(KviCryptSessionInfo * cinf = cryptSessionInfo())
+#endif
+					// FIXME!
+					if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage, this, QString(d.ptr()), m_pDescriptor->idString()))
 					{
-						if(cinf->m_bDoDecrypt)
+						g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_DCCCHATMSG,
+							m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szUser.toUtf8().data(),
+							m_pDescriptor->szHost.toUtf8().data(), d.ptr());
+						if(!hasAttention(KviWindow::MainWindowIsVisible))
 						{
-							KviCString decryptedStuff;
-							switch(cinf->m_pEngine->decrypt(d.ptr(), decryptedStuff))
+							if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
 							{
-								case KviCryptEngine::DecryptOkWasEncrypted:
-								case KviCryptEngine::DecryptOkWasEncoded:
-								case KviCryptEngine::DecryptOkWasPlainText:
-									if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage, this, QString(decryptedStuff.ptr()), m_pDescriptor->idString()))
-									{
-										g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_DCCCHATMSG,
-										    m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szUser.toUtf8().data(),
-										    m_pDescriptor->szHost.toUtf8().data(), decryptedStuff.ptr());
-									}
-									delete encoded;
-									return true;
-									break;
-
-								default: // also case KviCryptEngine::DecryptError
-								{
-									QString szErr = cinf->m_pEngine->lastError();
-									output(KVI_OUT_SYSTEMERROR,
-									    __tr2qs_ctx("The following message appears to be encrypted, but the encryption engine failed to decode it: %Q", "dcc"),
-									    &szErr);
-								}
-								break;
+								demandAttention();
+							}
+							if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
+							{
+								QString szMsg = KviQString::toHtmlEscaped(QString(d.ptr()));
+								g_pApp->notifierMessage(this, KviIconManager::DccChatMsg, szMsg, KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 							}
 						}
 					}
-					else
-					{
-#endif
-						// FIXME!
-						if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage, this, QString(d.ptr()), m_pDescriptor->idString()))
-						{
-							g_pMainWindow->firstConsole()->outputPrivmsg(this, KVI_OUT_DCCCHATMSG,
-							    m_pDescriptor->szNick.toUtf8().data(), m_pDescriptor->szUser.toUtf8().data(),
-							    m_pDescriptor->szHost.toUtf8().data(), d.ptr());
-							if(!hasAttention(KviWindow::MainWindowIsVisible))
-							{
-								if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
-								{
-									demandAttention();
-								}
-								if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
-								{
-									QString szMsg = KviQString::toHtmlEscaped(QString(d.ptr()));
-									g_pApp->notifierMessage(this, KviIconManager::DccChatMsg, szMsg, KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
-								}
-							}
-						}
 #ifdef COMPILE_CRYPT_SUPPORT
-					}
+				}
 #endif
-				}
-				delete encoded;
-				return true;
 			}
+			delete encoded;
+			return true;
+		}
 
-			case KVI_DCC_THREAD_EVENT_MESSAGE:
+		case KVI_DCC_THREAD_EVENT_MESSAGE:
+		{
+			KviCString * str = ((KviThreadDataEvent<KviCString> *)e)->getData();
+			outputNoFmt(KVI_OUT_DCCMSG, __tr_no_xgettext_ctx(str->ptr(), "dcc"));
+			delete str;
+			return true;
+		}
+		break;
+		case KVI_DCC_THREAD_EVENT_ACTION:
+		{
+			int * act = ((KviThreadDataEvent<int> *)e)->getData();
+			switch(*act)
 			{
-				KviCString * str = ((KviThreadDataEvent<KviCString> *)e)->getData();
-				outputNoFmt(KVI_OUT_DCCMSG, __tr_no_xgettext_ctx(str->ptr(), "dcc"));
-				delete str;
-				return true;
-			}
-			break;
-			case KVI_DCC_THREAD_EVENT_ACTION:
-			{
-				int * act = ((KviThreadDataEvent<int> *)e)->getData();
-				switch(*act)
-				{
-					case KVI_DCC_VIDEO_THREAD_ACTION_START_RECORDING:
-						break;
-					case KVI_DCC_VIDEO_THREAD_ACTION_STOP_RECORDING:
-						break;
-					case KVI_DCC_VIDEO_THREAD_ACTION_START_PLAYING:
-						break;
-					case KVI_DCC_VIDEO_THREAD_ACTION_STOP_PLAYING:
-						break;
-					case KVI_DCC_VIDEO_THREAD_ACTION_GRAB_FRAME:
-						m_pCameraView->render(m_pCameraImage);
-						break;
-				}
-				delete act;
-				return true;
-			}
-			break;
-			default:
-				qDebug("Invalid event type %d received", ((KviThreadEvent *)e)->id());
+			case KVI_DCC_VIDEO_THREAD_ACTION_START_RECORDING:
 				break;
+			case KVI_DCC_VIDEO_THREAD_ACTION_STOP_RECORDING:
+				break;
+			case KVI_DCC_VIDEO_THREAD_ACTION_START_PLAYING:
+				break;
+			case KVI_DCC_VIDEO_THREAD_ACTION_STOP_PLAYING:
+				break;
+			case KVI_DCC_VIDEO_THREAD_ACTION_GRAB_FRAME:
+				m_pCameraView->render(m_pCameraImage);
+				break;
+			}
+			delete act;
+			return true;
+		}
+		break;
+		default:
+			qDebug("Invalid event type %d received", ((KviThreadEvent *)e)->id());
+			break;
 		}
 	}
 
@@ -957,9 +955,9 @@ void DccVideoWindow::handleMarshalError(KviError::Code eError)
 void DccVideoWindow::connected()
 {
 	output(KVI_OUT_DCCMSG, __tr2qs_ctx("Connected to %Q:%Q", "dcc"),
-	    &(m_pMarshal->remoteIp()), &(m_pMarshal->remotePort()));
+		&(m_pMarshal->remoteIp()), &(m_pMarshal->remotePort()));
 	output(KVI_OUT_DCCMSG, __tr2qs_ctx("Local end is %Q:%Q", "dcc"),
-	    &(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
+		&(m_pMarshal->localIp()), &(m_pMarshal->localPort()));
 	if(!(m_pDescriptor->bActive))
 	{
 		m_pDescriptor->szIp = m_pMarshal->remoteIp();

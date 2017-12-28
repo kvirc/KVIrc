@@ -45,26 +45,26 @@ class KVIRC_API KviScriptEditor : public QWidget
 {
 	Q_OBJECT
 protected:
-	KviScriptEditor(QWidget * par) : QWidget(par){};
+	KviScriptEditor(QWidget * par) : QWidget(par) {};
 
 protected:
 	QLineEdit * m_pFindLineedit;
 
 public:
 	virtual void setText(const char * txt) { setText(QByteArray(txt)); };
-	virtual void setText(const QByteArray & txt){};
+	virtual void setText(const QByteArray & txt) {};
 	virtual void setText(const QString & txt);
-	virtual void getText(QByteArray & txt){};
+	virtual void getText(QByteArray & txt) {};
 	virtual void getText(QString & txt);
-	virtual void setInfoText(const QString & text){};
-	virtual void setFindText(const QString & text){};
-	virtual void setCursorPosition(int){};
-	virtual void setReadOnly(bool bReadonly){};
+	virtual void setInfoText(const QString & text) {};
+	virtual void setFindText(const QString & text) {};
+	virtual void setCursorPosition(int) {};
+	virtual void setReadOnly(bool bReadonly) {};
 	virtual int getCursor() { return 0; };
-	virtual void setFindLineeditReadOnly(bool b){};
+	virtual void setFindLineeditReadOnly(bool b) {};
 	virtual bool isModified() { return false; };
-	virtual void setUnHighlightedText(const QString & szText){};
-	virtual void setModified(bool){};
+	virtual void setUnHighlightedText(const QString & szText) {};
+	virtual void setModified(bool) {};
 	static KviScriptEditor * getDummyEditor(QWidget * par) { return new KviScriptEditor(par); };
 	static KviScriptEditor * createInstance(QWidget * par);
 	static void destroyInstance(KviScriptEditor * e);

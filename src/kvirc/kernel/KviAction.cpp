@@ -36,33 +36,33 @@
 #include <QMenu>
 
 KviAction::KviAction(QObject * pParent, QString szName, QString szVisibleName, QString szDescription, KviActionCategory * pCategory, QString szBigIconId, QString szSmallIconId, unsigned int uFlags, QString szKeySequence)
-    : QObject(pParent),
-      m_szName(std::move(szName)),
-      m_szVisibleName(std::move(szVisibleName)),
-      m_szDescription(std::move(szDescription)),
-      m_pCategory(pCategory),
-      m_szBigIconId(std::move(szBigIconId)),
-      m_szSmallIconId(std::move(szSmallIconId)),
-      m_eSmallIcon(KviIconManager::None),
-      m_uInternalFlags(KviAction::Enabled),
-      m_uFlags(uFlags),
-      m_szKeySequence(std::move(szKeySequence)),
-      m_pAccel()
+	: QObject(pParent),
+	m_szName(std::move(szName)),
+	m_szVisibleName(std::move(szVisibleName)),
+	m_szDescription(std::move(szDescription)),
+	m_pCategory(pCategory),
+	m_szBigIconId(std::move(szBigIconId)),
+	m_szSmallIconId(std::move(szSmallIconId)),
+	m_eSmallIcon(KviIconManager::None),
+	m_uInternalFlags(KviAction::Enabled),
+	m_uFlags(uFlags),
+	m_szKeySequence(std::move(szKeySequence)),
+	m_pAccel()
 {
 }
 
 KviAction::KviAction(QObject * pParent, QString szName, QString szVisibleName, QString szDescription, KviActionCategory * pCategory, QString szBigIconId, KviIconManager::SmallIcon eSmallIcon, unsigned int uFlags, QString szKeySequence)
-    : QObject(pParent),
-      m_szName(std::move(szName)),
-      m_szVisibleName(std::move(szVisibleName)),
-      m_szDescription(std::move(szDescription)),
-      m_pCategory(pCategory),
-      m_szBigIconId(std::move(szBigIconId)),
-      m_eSmallIcon(std::move(eSmallIcon)),
-      m_uInternalFlags(KviAction::Enabled),
-      m_uFlags(uFlags),
-      m_szKeySequence(std::move(szKeySequence)),
-      m_pAccel()
+	: QObject(pParent),
+	m_szName(std::move(szName)),
+	m_szVisibleName(std::move(szVisibleName)),
+	m_szDescription(std::move(szDescription)),
+	m_pCategory(pCategory),
+	m_szBigIconId(std::move(szBigIconId)),
+	m_eSmallIcon(std::move(eSmallIcon)),
+	m_uInternalFlags(KviAction::Enabled),
+	m_uFlags(uFlags),
+	m_szKeySequence(std::move(szKeySequence)),
+	m_pAccel()
 {
 }
 
@@ -118,10 +118,9 @@ void KviAction::setEnabled(bool bEnabled)
 
 	for(auto & pAction : m_pActionList)
 	{
-		if (pAction->isEnabled() != bEnabled)
+		if(pAction->isEnabled() != bEnabled)
 			pAction->setEnabled(bEnabled);
 	}
-
 }
 
 int KviAction::validateFlags(int iFlagsToValidate)
@@ -181,15 +180,15 @@ void KviAction::setup()
 			{
 				switch(pContext->state())
 				{
-					case KviIrcContext::LoggingIn:
-						setEnabled(m_uFlags & EnableAtLogin);
-						break;
-					case KviIrcContext::Connected:
-						setEnabled(true);
-						break;
-					default:
-						setEnabled(false);
-						break;
+				case KviIrcContext::LoggingIn:
+					setEnabled(m_uFlags & EnableAtLogin);
+					break;
+				case KviIrcContext::Connected:
+					setEnabled(true);
+					break;
+				default:
+					setEnabled(false);
+					break;
 				}
 			}
 		}
@@ -248,22 +247,22 @@ void KviAction::activeWindowChanged()
 	{
 		switch(g_pMainWindow->activeContext()->state())
 		{
-			case KviIrcContext::LoggingIn:
-				if(!(m_uFlags & EnableAtLogin))
-				{
-					if(isEnabled())
-						setEnabled(false);
-					return;
-				}
-				break;
-			case KviIrcContext::Connected:
-				// this is ok
-				break;
-			default:
+		case KviIrcContext::LoggingIn:
+			if(!(m_uFlags & EnableAtLogin))
+			{
 				if(isEnabled())
 					setEnabled(false);
 				return;
-				break;
+			}
+			break;
+		case KviIrcContext::Connected:
+			// this is ok
+			break;
+		default:
+			if(isEnabled())
+				setEnabled(false);
+			return;
+			break;
 		}
 	}
 
@@ -276,93 +275,93 @@ void KviAction::activeWindowChanged()
 
 	switch(g_pActiveWindow->type())
 	{
-		case KviWindow::Console:
-			if(m_uFlags & WindowConsole)
+	case KviWindow::Console:
+		if(m_uFlags & WindowConsole)
+		{
+			if(m_uFlags & WindowOnlyIfUsersSelected)
 			{
-				if(m_uFlags & WindowOnlyIfUsersSelected)
-				{
-					bool bEnabled = ((KviConsoleWindow *)g_pActiveWindow)->selectedCount() > 0;
-					if(bEnabled != isEnabled())
-						setEnabled(bEnabled);
-				}
-				else
-				{
-					if(!isEnabled())
-						setEnabled(true);
-				}
-			}
-			else
-			{
-				if(isEnabled())
-					setEnabled(false);
-			}
-			break;
-		case KviWindow::Channel:
-			if(m_uFlags & WindowChannel)
-			{
-				if(m_uFlags & WindowOnlyIfUsersSelected)
-				{
-					bool bEnabled = ((KviChannelWindow *)g_pActiveWindow)->selectedCount() > 0;
-					if(bEnabled != isEnabled())
-						setEnabled(bEnabled);
-				}
-				else
-				{
-					if(!isEnabled())
-						setEnabled(true);
-				}
-			}
-			else
-			{
-				if(isEnabled())
-					setEnabled(false);
-			}
-			break;
-		case KviWindow::Query:
-			if(m_uFlags & WindowQuery)
-			{
-				if(m_uFlags & WindowOnlyIfUsersSelected)
-				{
-					bool bEnabled = ((KviQueryWindow *)g_pActiveWindow)->selectedCount() > 0;
-					if(bEnabled != isEnabled())
-						setEnabled(bEnabled);
-				}
-				else
-				{
-					if(!isEnabled())
-						setEnabled(true);
-				}
-			}
-			else
-			{
-				if(isEnabled())
-					setEnabled(false);
-			}
-			break;
-		case KviWindow::DccChat:
-			if(m_uFlags & WindowDccChat)
-			{
-				if(!isEnabled())
-					setEnabled(true);
-			}
-			else
-			{
-				if(isEnabled())
-					setEnabled(false);
-			}
-			break;
-		default:
-			if(m_uFlags & InternalWindowMask)
-			{
-				if(isEnabled())
-					setEnabled(false);
+				bool bEnabled = ((KviConsoleWindow *)g_pActiveWindow)->selectedCount() > 0;
+				if(bEnabled != isEnabled())
+					setEnabled(bEnabled);
 			}
 			else
 			{
 				if(!isEnabled())
 					setEnabled(true);
 			}
-			break;
+		}
+		else
+		{
+			if(isEnabled())
+				setEnabled(false);
+		}
+		break;
+	case KviWindow::Channel:
+		if(m_uFlags & WindowChannel)
+		{
+			if(m_uFlags & WindowOnlyIfUsersSelected)
+			{
+				bool bEnabled = ((KviChannelWindow *)g_pActiveWindow)->selectedCount() > 0;
+				if(bEnabled != isEnabled())
+					setEnabled(bEnabled);
+			}
+			else
+			{
+				if(!isEnabled())
+					setEnabled(true);
+			}
+		}
+		else
+		{
+			if(isEnabled())
+				setEnabled(false);
+		}
+		break;
+	case KviWindow::Query:
+		if(m_uFlags & WindowQuery)
+		{
+			if(m_uFlags & WindowOnlyIfUsersSelected)
+			{
+				bool bEnabled = ((KviQueryWindow *)g_pActiveWindow)->selectedCount() > 0;
+				if(bEnabled != isEnabled())
+					setEnabled(bEnabled);
+			}
+			else
+			{
+				if(!isEnabled())
+					setEnabled(true);
+			}
+		}
+		else
+		{
+			if(isEnabled())
+				setEnabled(false);
+		}
+		break;
+	case KviWindow::DccChat:
+		if(m_uFlags & WindowDccChat)
+		{
+			if(!isEnabled())
+				setEnabled(true);
+		}
+		else
+		{
+			if(isEnabled())
+				setEnabled(false);
+		}
+		break;
+	default:
+		if(m_uFlags & InternalWindowMask)
+		{
+			if(isEnabled())
+				setEnabled(false);
+		}
+		else
+		{
+			if(!isEnabled())
+				setEnabled(true);
+		}
+		break;
 	}
 }
 
@@ -372,58 +371,58 @@ void KviAction::activeWindowSelectionStateChanged(bool bSelectedNow)
 	// and thus also m_uFlags & InternalWindowMask
 	switch(g_pActiveWindow->type())
 	{
-		case KviWindow::Console:
-			if(m_uFlags & WindowConsole)
-			{
-				if(bSelectedNow != isEnabled())
-					setEnabled(bSelectedNow);
-			}
-			else
-			{
-				if(isEnabled())
-					setEnabled(false);
-			}
-			break;
-		case KviWindow::Channel:
-			if(m_uFlags & WindowChannel)
-			{
-				if(bSelectedNow != isEnabled())
-					setEnabled(bSelectedNow);
-			}
-			else
-			{
-				if(isEnabled())
-					setEnabled(false);
-			}
-			break;
-		case KviWindow::Query:
-			if(m_uFlags & WindowQuery)
-			{
-				if(bSelectedNow != isEnabled())
-					setEnabled(bSelectedNow);
-			}
-			else
-			{
-				if(isEnabled())
-					setEnabled(false);
-			}
-			break;
-		case KviWindow::DccChat:
-			if(m_uFlags & WindowDccChat)
-			{
-				if(!isEnabled())
-					setEnabled(true);
-			}
-			else
-			{
-				if(isEnabled())
-					setEnabled(false);
-			}
-			break;
-		default:
+	case KviWindow::Console:
+		if(m_uFlags & WindowConsole)
+		{
+			if(bSelectedNow != isEnabled())
+				setEnabled(bSelectedNow);
+		}
+		else
+		{
 			if(isEnabled())
 				setEnabled(false);
-			break;
+		}
+		break;
+	case KviWindow::Channel:
+		if(m_uFlags & WindowChannel)
+		{
+			if(bSelectedNow != isEnabled())
+				setEnabled(bSelectedNow);
+		}
+		else
+		{
+			if(isEnabled())
+				setEnabled(false);
+		}
+		break;
+	case KviWindow::Query:
+		if(m_uFlags & WindowQuery)
+		{
+			if(bSelectedNow != isEnabled())
+				setEnabled(bSelectedNow);
+		}
+		else
+		{
+			if(isEnabled())
+				setEnabled(false);
+		}
+		break;
+	case KviWindow::DccChat:
+		if(m_uFlags & WindowDccChat)
+		{
+			if(!isEnabled())
+				setEnabled(true);
+		}
+		else
+		{
+			if(isEnabled())
+				setEnabled(false);
+		}
+		break;
+	default:
+		if(isEnabled())
+			setEnabled(false);
+		break;
 	}
 }
 
@@ -452,31 +451,31 @@ void KviAction::activeContextStateChanged()
 	{
 		switch(pContext->state())
 		{
-			case KviIrcContext::Idle:
-			case KviIrcContext::Connecting:
-				if(isEnabled())
-					setEnabled(false);
-				break;
-			case KviIrcContext::LoggingIn:
-				if(m_uFlags & EnableAtLogin)
-				{
-					if(!isEnabled())
-						setEnabled(true);
-				}
-				else
-				{
-					if(isEnabled())
-						setEnabled(false);
-				}
-				break;
-			case KviIrcContext::Connected:
+		case KviIrcContext::Idle:
+		case KviIrcContext::Connecting:
+			if(isEnabled())
+				setEnabled(false);
+			break;
+		case KviIrcContext::LoggingIn:
+			if(m_uFlags & EnableAtLogin)
+			{
 				if(!isEnabled())
 					setEnabled(true);
-				break;
-			default:
+			}
+			else
+			{
 				if(isEnabled())
 					setEnabled(false);
-				break;
+			}
+			break;
+		case KviIrcContext::Connected:
+			if(!isEnabled())
+				setEnabled(true);
+			break;
+		default:
+			if(isEnabled())
+				setEnabled(false);
+			break;
 		}
 	}
 	else

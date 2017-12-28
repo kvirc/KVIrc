@@ -91,109 +91,109 @@ KVSO_END_CONSTRUCTOR(KvsObject_lcd)
 bool KvsObject_lcd::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 {
 	SET_OBJECT(QLCDNumber)
-	return true;
+		return true;
 }
 
 KVSO_CLASS_FUNCTION(lcd, displayInt)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iDigit;
+		kvs_int_t iDigit;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("number", KVS_PT_INT, 0, iDigit)
-	KVSO_PARAMETERS_END(c)
-	((QLCDNumber *)widget())->display((int)iDigit);
+		KVSO_PARAMETER("number", KVS_PT_INT, 0, iDigit)
+		KVSO_PARAMETERS_END(c)
+		((QLCDNumber *)widget())->display((int)iDigit);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lcd, displayStr)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szText;
+		QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("number", KVS_PT_STRING, 0, szText)
-	KVSO_PARAMETERS_END(c)
-	((QLCDNumber *)widget())->display(szText);
+		KVSO_PARAMETER("number", KVS_PT_STRING, 0, szText)
+		KVSO_PARAMETERS_END(c)
+		((QLCDNumber *)widget())->display(szText);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lcd, displayDouble)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_real_t dDigit;
+		kvs_real_t dDigit;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("number", KVS_PT_DOUBLE, 0, dDigit)
-	KVSO_PARAMETERS_END(c)
-	((QLCDNumber *)widget())->display(dDigit);
+		KVSO_PARAMETER("number", KVS_PT_DOUBLE, 0, dDigit)
+		KVSO_PARAMETERS_END(c)
+		((QLCDNumber *)widget())->display(dDigit);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lcd, setMode)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szMode;
+		QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("mode", KVS_PT_STRING, 0, szMode)
-	KVSO_PARAMETERS_END(c)
-	if(KviQString::equalCI(szMode, "HEX"))
-		((QLCDNumber *)widget())->setHexMode();
-	else if(KviQString::equalCI(szMode, "DEC"))
-		((QLCDNumber *)widget())->setDecMode();
-	else if(KviQString::equalCI(szMode, "BIN"))
-		((QLCDNumber *)widget())->setBinMode();
-	else if(KviQString::equalCI(szMode, "OCT"))
-		((QLCDNumber *)widget())->setOctMode();
-	else
-		c->warning(__tr2qs_ctx("Unknown mode '%Q'", "objects"), &szMode);
+		KVSO_PARAMETER("mode", KVS_PT_STRING, 0, szMode)
+		KVSO_PARAMETERS_END(c)
+		if(KviQString::equalCI(szMode, "HEX"))
+			((QLCDNumber *)widget())->setHexMode();
+		else if(KviQString::equalCI(szMode, "DEC"))
+			((QLCDNumber *)widget())->setDecMode();
+		else if(KviQString::equalCI(szMode, "BIN"))
+			((QLCDNumber *)widget())->setBinMode();
+		else if(KviQString::equalCI(szMode, "OCT"))
+			((QLCDNumber *)widget())->setOctMode();
+		else
+			c->warning(__tr2qs_ctx("Unknown mode '%Q'", "objects"), &szMode);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lcd, setSegmentStyle)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szStyle;
+		QString szStyle;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("style", KVS_PT_STRING, 0, szStyle)
-	KVSO_PARAMETERS_END(c)
-	if(KviQString::equalCI(szStyle, "Outline"))
-		((QLCDNumber *)widget())->setSegmentStyle(QLCDNumber::Outline);
-	else if(KviQString::equalCI(szStyle, "Filled"))
-		((QLCDNumber *)widget())->setSegmentStyle(QLCDNumber::Filled);
-	else if(KviQString::equalCI(szStyle, "Flat"))
-		((QLCDNumber *)widget())->setSegmentStyle(QLCDNumber::Flat);
-	else
-		c->warning(__tr2qs_ctx("Unknown segment style '%Q'", "objects"), &szStyle);
+		KVSO_PARAMETER("style", KVS_PT_STRING, 0, szStyle)
+		KVSO_PARAMETERS_END(c)
+		if(KviQString::equalCI(szStyle, "Outline"))
+			((QLCDNumber *)widget())->setSegmentStyle(QLCDNumber::Outline);
+		else if(KviQString::equalCI(szStyle, "Filled"))
+			((QLCDNumber *)widget())->setSegmentStyle(QLCDNumber::Filled);
+		else if(KviQString::equalCI(szStyle, "Flat"))
+			((QLCDNumber *)widget())->setSegmentStyle(QLCDNumber::Flat);
+		else
+			c->warning(__tr2qs_ctx("Unknown segment style '%Q'", "objects"), &szStyle);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lcd, setNumDigits)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_real_t digit;
+		kvs_real_t digit;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("digit", KVS_PT_DOUBLE, 0, digit)
-	KVSO_PARAMETERS_END(c)
-	((QLCDNumber *)widget())->setDigitCount((int)digit);
+		KVSO_PARAMETER("digit", KVS_PT_DOUBLE, 0, digit)
+		KVSO_PARAMETERS_END(c)
+		((QLCDNumber *)widget())->setDigitCount((int)digit);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lcd, setSmallDecimalPoint)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bFlag;
+		bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bFlag", KVS_PT_BOOLEAN, 0, bFlag)
-	KVSO_PARAMETERS_END(c)
-	((QLCDNumber *)widget())->setSmallDecimalPoint(bFlag);
+		KVSO_PARAMETER("bFlag", KVS_PT_BOOLEAN, 0, bFlag)
+		KVSO_PARAMETERS_END(c)
+		((QLCDNumber *)widget())->setSmallDecimalPoint(bFlag);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lcd, checkOverflow)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_real_t iDigit;
+		kvs_real_t iDigit;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("digit", KVS_PT_DOUBLE, 0, iDigit)
-	KVSO_PARAMETERS_END(c)
-	c->returnValue()->setBoolean(((QLCDNumber *)widget())->checkOverflow(iDigit));
+		KVSO_PARAMETER("digit", KVS_PT_DOUBLE, 0, iDigit)
+		KVSO_PARAMETERS_END(c)
+		c->returnValue()->setBoolean(((QLCDNumber *)widget())->checkOverflow(iDigit));
 	return true;
 }

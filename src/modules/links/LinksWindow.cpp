@@ -48,7 +48,7 @@
 extern std::unordered_set<LinksWindow *> g_pLinksWindowList;
 
 LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
-    : KviWindow(KviWindow::Links, "links", lpConsole), KviExternalServerDataParser()
+	: KviWindow(KviWindow::Links, "links", lpConsole), KviExternalServerDataParser()
 {
 	g_pLinksWindowList.insert(this);
 
@@ -71,7 +71,7 @@ LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
 	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter, this, "info_label");
 
 	connect(lpConsole->context(), SIGNAL(stateChanged()),
-	    this, SLOT(connectionStateChange()));
+		this, SLOT(connectionStateChange()));
 
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal, this);
 	m_pSplitter->setObjectName("splitter");
@@ -84,7 +84,7 @@ LinksWindow::LinksWindow(KviConsoleWindow * lpConsole)
 	m_pListView = new LinksListView(m_pVertSplitter, this, "links_treewidget");
 
 	connect(m_pListView, SIGNAL(rightButtonPressed(QTreeWidgetItem *, const QPoint &)),
-	    this, SLOT(showHostPopup(QTreeWidgetItem *, const QPoint &)));
+		this, SLOT(showHostPopup(QTreeWidgetItem *, const QPoint &)));
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter, this);
 
@@ -154,7 +154,7 @@ void LinksWindow::resizeEvent(QResizeEvent *)
 QSize LinksWindow::sizeHint() const
 {
 	QSize ret(m_pSplitter->sizeHint().width(),
-	    m_pSplitter->sizeHint().height() + m_pTopSplitter->sizeHint().height());
+		m_pSplitter->sizeHint().height() + m_pTopSplitter->sizeHint().height());
 	return ret;
 }
 
@@ -172,12 +172,12 @@ void LinksWindow::control(int message)
 {
 	switch(message)
 	{
-		case EXTERNAL_SERVER_DATA_PARSER_CONTROL_RESET:
-			reset();
-			break;
-		case EXTERNAL_SERVER_DATA_PARSER_CONTROL_ENDOFDATA:
-			endOfLinks();
-			break;
+	case EXTERNAL_SERVER_DATA_PARSER_CONTROL_RESET:
+		reset();
+		break;
+	case EXTERNAL_SERVER_DATA_PARSER_CONTROL_ENDOFDATA:
+		endOfLinks();
+		break;
 	}
 }
 
@@ -249,7 +249,7 @@ void LinksWindow::endOfLinks()
 			if(!it)
 			{
 				output(KVI_OUT_SYSTEMERROR, __tr2qs("Broken link: missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"),
-				    l->parent.ptr(), l->host.ptr(), l->hops, l->description.ptr());
+					l->parent.ptr(), l->host.ptr(), l->hops, l->description.ptr());
 				brokenLinks++;
 				QString szTmp = QString(__tr2qs("%1: Parent link %2")).arg(l->description.ptr(), l->parent.ptr());
 				KviCString tmp2(KviCString::Format, "%d", l->hops);
@@ -506,7 +506,7 @@ void LinksWindow::applyOptions()
 }
 
 LinksListView::LinksListView(QWidget * par, KviWindow * wnd, const char * txt)
-    : KviThemedTreeWidget(par, wnd, txt)
+	: KviThemedTreeWidget(par, wnd, txt)
 {
 	header()->setSortIndicatorShown(true);
 	setColumnCount(3);

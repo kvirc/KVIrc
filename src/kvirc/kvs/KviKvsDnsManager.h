@@ -39,11 +39,11 @@ class KviKvsDnsObject
 {
 public:
 	KviKvsDnsObject(KviDnsResolver * pDns,
-	    KviWindow * pWnd,
-	    const QString & szQuery,
-	    bool bRebindOnWindowClose = true,
-	    KviKvsScript * pCallback = 0,
-	    KviKvsVariantList * pParameterList = 0);
+		KviWindow * pWnd,
+		const QString & szQuery,
+		bool bRebindOnWindowClose = true,
+		KviKvsScript * pCallback = 0,
+		KviKvsVariantList * pParameterList = 0);
 	~KviKvsDnsObject();
 
 protected:
@@ -81,7 +81,7 @@ public:
 	static void done();
 
 	void addDns(KviKvsDnsObject * pObject);
-protected slots:
+	protected slots:
 	void dnsLookupTerminated(KviDnsResolver * pDns);
 
 private:

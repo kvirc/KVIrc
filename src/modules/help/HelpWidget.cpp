@@ -52,7 +52,7 @@ extern KviPointerList<HelpWidget> * g_pHelpWidgetList;
 #define HIGHLIGHT_FLAGS QWebPage::HighlightAllOccurrences
 
 HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
-    : QWidget(par)
+	: QWidget(par)
 {
 	setObjectName("help_widget");
 	setMinimumWidth(80);
@@ -179,7 +179,7 @@ void HelpWidget::slotZoomOut()
 #else
 
 HelpWidget::HelpWidget(QWidget * par, bool bIsStandalone)
-    : QWidget(par)
+	: QWidget(par)
 {
 	setObjectName("help_widget");
 	setMinimumWidth(80);

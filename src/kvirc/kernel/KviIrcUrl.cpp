@@ -58,12 +58,12 @@ bool KviIrcUrl::parse(const char * url, KviCString & cmdBuffer, int contextSpec)
 	cmdBuffer = "server ";
 	switch(contextSpec)
 	{
-		case KVI_IRCURL_CONTEXT_FIRSTFREE:
-			cmdBuffer.append("-u ");
-			break;
-		case KVI_IRCURL_CONTEXT_NEW:
-			cmdBuffer.append("-n ");
-			break;
+	case KVI_IRCURL_CONTEXT_FIRSTFREE:
+		cmdBuffer.append("-u ");
+		break;
+	case KVI_IRCURL_CONTEXT_NEW:
+		cmdBuffer.append("-n ");
+		break;
 	}
 	if(urlParts.bIPv6)
 		cmdBuffer.append(" -i ");
@@ -174,10 +174,8 @@ void KviIrcUrl::makeJoinCmd(const QStringList & chans, QString & szJoinCommand)
 	QString szChannels, szProtectedChannels, szPasswords, szCurPass, szCurChan;
 	if(chans.count() != 0)
 	{
-
 		for(const auto & chan : chans)
 		{
-
 			szCurPass = chan.section('?', 1);
 			if(szCurPass.isEmpty())
 			{
@@ -244,7 +242,7 @@ int KviIrcUrl::run(const QString & text, int contextSpec, KviConsoleWindow * pCo
 			{
 				KviIrcServer * server = pTmpConsole->connection()->target()->server();
 				if(
-				    (server->hostName() == parts.szHost) && (server->port() == parts.iPort) && (server->useSSL() == parts.bSsl) && (server->isIPv6() == parts.bIPv6))
+					(server->hostName() == parts.szHost) && (server->port() == parts.iPort) && (server->useSSL() == parts.bSsl) && (server->isIPv6() == parts.bIPv6))
 				{
 					pConsole = pTmpConsole;
 					bAlreadyConnected = true;
@@ -275,7 +273,7 @@ int KviIrcUrl::run(const QString & text, int contextSpec, KviConsoleWindow * pCo
 				{
 					KviIrcServer * server = pTmpConsole->connection()->target()->server();
 					if(
-					    (server->hostName() == parts.szHost) && (server->port() == parts.iPort) && (server->useSSL() == parts.bSsl) && (server->isIPv6() == parts.bIPv6))
+						(server->hostName() == parts.szHost) && (server->port() == parts.iPort) && (server->useSSL() == parts.bSsl) && (server->isIPv6() == parts.bIPv6))
 					{
 						pConsole = pTmpConsole;
 						bAlreadyConnected = true;

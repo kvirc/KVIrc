@@ -47,7 +47,6 @@
 
 namespace ThemeFunctions
 {
-
 	static bool notAValidThemePackage(QString & szError)
 	{
 		szError = __tr2qs_ctx("The selected file doesn't seem to be a valid KVIrc theme package", "theme");
@@ -192,17 +191,17 @@ namespace ThemeFunctions
 			QString szDetailsBuffer;
 
 			getThemeHtmlDescription(
-			    szDetailsBuffer,
-			    szThemeName,
-			    szThemeVersion,
-			    szThemeDescription,
-			    szThemeSubdirectory,
-			    szThemeApplication,
-			    szThemeAuthor,
-			    szThemeDate,
-			    szThemeEngineVersion,
-			    pixScreenshot,
-			    iIdx, &hd);
+				szDetailsBuffer,
+				szThemeName,
+				szThemeVersion,
+				szThemeDescription,
+				szThemeSubdirectory,
+				szThemeApplication,
+				szThemeAuthor,
+				szThemeDate,
+				szThemeEngineVersion,
+				pixScreenshot,
+				iIdx, &hd);
 
 			if(iIdx > 0)
 				szDetails += "<hr>";
@@ -237,32 +236,32 @@ namespace ThemeFunctions
 		// clang-format off
 		hd.szHtmlText = QString(
 			"<html bgcolor=\"#ffffff\">" \
-				"<body bgcolor=\"#ffffff\">" \
-					"<p><center>" \
-						"<h2>%1 %2</h2>" \
-					"</center></p>" \
-					"<p><center>" \
-						"<img src=\"theme_dialog_pack_image\">" \
-					"</center></p>" \
-					"<p><center>" \
-						"<i>%3</i>" \
-					"</center></p>" \
-					"<p><center>" \
-						"%4: <b>%5</b><br>" \
-						"%6: <b>%7</b><br>" \
-					"</center></p>" \
-					"<p><center>" \
-						"<font color=\"#808080\">" \
-							"%8: %9<br>" \
-						"</font>" \
-					"</center></p>" \
-					"%10" \
-					"<br>" \
-					"<p><center>" \
-						"<a href=\"theme_dialog_details\">%11</a>" \
-					"</center></p>" \
-				"</body>" \
-			"</html>").arg(szPackageName,szPackageVersion,szPackageDescription,szAuthor,szPackageAuthor,szCreatedAt,szPackageDate,szCreatedOn,szPackageApplication).arg(szWarnings,szShowDetails);
+			"<body bgcolor=\"#ffffff\">" \
+			"<p><center>" \
+			"<h2>%1 %2</h2>" \
+			"</center></p>" \
+			"<p><center>" \
+			"<img src=\"theme_dialog_pack_image\">" \
+			"</center></p>" \
+			"<p><center>" \
+			"<i>%3</i>" \
+			"</center></p>" \
+			"<p><center>" \
+			"%4: <b>%5</b><br>" \
+			"%6: <b>%7</b><br>" \
+			"</center></p>" \
+			"<p><center>" \
+			"<font color=\"#808080\">" \
+			"%8: %9<br>" \
+			"</font>" \
+			"</center></p>" \
+			"%10" \
+			"<br>" \
+			"<p><center>" \
+			"<a href=\"theme_dialog_details\">%11</a>" \
+			"</center></p>" \
+			"</body>" \
+			"</html>").arg(szPackageName, szPackageVersion, szPackageDescription, szAuthor, szPackageAuthor, szCreatedAt, szPackageDate, szCreatedOn, szPackageApplication).arg(szWarnings, szShowDetails);
 		// clang-format on
 
 		hd.addImageResource("theme_dialog_pack_image", pix);
@@ -301,18 +300,18 @@ namespace ThemeFunctions
 	}
 
 	void getThemeHtmlDescription(
-	    QString & szBuffer,
-	    const QString & szThemeName,
-	    const QString & szThemeVersion,
-	    const QString & szThemeDescription,
-	    const QString & szThemeSubdirectory,
-	    const QString & szThemeApplication,
-	    const QString & szThemeAuthor,
-	    const QString & szThemeDate,
-	    const QString & szThemeThemeEngineVersion,
-	    const QPixmap & pixScreenshot,
-	    int iUniqueIndexInDocument,
-	    KviHtmlDialogData * hd)
+		QString & szBuffer,
+		const QString & szThemeName,
+		const QString & szThemeVersion,
+		const QString & szThemeDescription,
+		const QString & szThemeSubdirectory,
+		const QString & szThemeApplication,
+		const QString & szThemeAuthor,
+		const QString & szThemeDate,
+		const QString & szThemeThemeEngineVersion,
+		const QPixmap & pixScreenshot,
+		int iUniqueIndexInDocument,
+		KviHtmlDialogData * hd)
 	{
 		QString szAuthor = __tr2qs_ctx("Author", "theme");
 		QString szCreatedAt = __tr2qs_ctx("Created at", "theme");
@@ -340,23 +339,23 @@ namespace ThemeFunctions
 		// clang-format off
 		szBuffer = QString(
 			"<p><center>" \
-				"<h2>%1 %2</h2>" \
+			"<h2>%1 %2</h2>" \
 			"</center></p>" \
 			"%3" \
 			"<p><center>" \
-				"<i>%4</i>" \
+			"<i>%4</i>" \
 			"</center></p>" \
 			"<p><center>" \
-				"%5: <b>%6</b><br>" \
-				"%7: <b>%8</b><br>" \
+			"%5: <b>%6</b><br>" \
+			"%7: <b>%8</b><br>" \
 			"</center></p>" \
 			"<p><center>" \
-				"<font color=\"#808080\">" \
-					"%9: %10<br>" \
-					"%11: %12<br>" \
-					"%13: %14<br>" \
-				"</font>" \
-			"</center></p>").arg(szThemeName,szThemeVersion,szScreenshot,szThemeDescription,szAuthor,szThemeAuthor,szCreatedAt,szThemeDate,szCreatedOn).arg(szThemeApplication,szThemeEngineVersion,szThemeThemeEngineVersion,szSubdirectory,szThemeSubdirectory);
+			"<font color=\"#808080\">" \
+			"%9: %10<br>" \
+			"%11: %12<br>" \
+			"%13: %14<br>" \
+			"</font>" \
+			"</center></p>").arg(szThemeName, szThemeVersion, szScreenshot, szThemeDescription, szAuthor, szThemeAuthor, szCreatedAt, szThemeDate, szCreatedOn).arg(szThemeApplication, szThemeEngineVersion, szThemeThemeEngineVersion, szSubdirectory, szThemeSubdirectory);
 		// clang-format on
 	}
 
@@ -388,14 +387,14 @@ namespace ThemeFunctions
 	}
 
 	bool packageThemes(
-	    const QString & szPackagePath,
-	    const QString & szPackageName,
-	    const QString & szPackageVersion,
-	    const QString & szPackageDescription,
-	    const QString & szPackageAuthor,
-	    const QString & szPackageImagePath,
-	    KviPointerList<KviThemeInfo> & lThemeInfoList,
-	    QString & szError)
+		const QString & szPackagePath,
+		const QString & szPackageName,
+		const QString & szPackageVersion,
+		const QString & szPackageDescription,
+		const QString & szPackageAuthor,
+		const QString & szPackageImagePath,
+		KviPointerList<KviThemeInfo> & lThemeInfoList,
+		QString & szError)
 	{
 		if(szPackagePath.isEmpty())
 		{

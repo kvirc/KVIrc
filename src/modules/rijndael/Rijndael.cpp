@@ -1019,21 +1019,21 @@ int Rijndael::init(Mode mode, Direction dir, const UINT8 * key, KeyLength keyLen
 	// And check the key length
 	switch(keyLen)
 	{
-		case Key16Bytes:
-			uKeyLenInBytes = 16;
-			m_uRounds = 10;
-			break;
-		case Key24Bytes:
-			uKeyLenInBytes = 24;
-			m_uRounds = 12;
-			break;
-		case Key32Bytes:
-			uKeyLenInBytes = 32;
-			m_uRounds = 14;
-			break;
-		default:
-			return RIJNDAEL_UNSUPPORTED_KEY_LENGTH;
-			break;
+	case Key16Bytes:
+		uKeyLenInBytes = 16;
+		m_uRounds = 10;
+		break;
+	case Key24Bytes:
+		uKeyLenInBytes = 24;
+		m_uRounds = 12;
+		break;
+	case Key32Bytes:
+		uKeyLenInBytes = 32;
+		m_uRounds = 14;
+		break;
+	default:
+		return RIJNDAEL_UNSUPPORTED_KEY_LENGTH;
+		break;
 	}
 	// The number of rounds is calculated as
 	// m_uRounds = (m_uKeyLenInBits / 32) + 6;
@@ -1077,73 +1077,73 @@ int Rijndael::blockEncrypt(const UINT8 * input, int inputLen, UINT8 * outBuffer,
 
 	switch(m_mode)
 	{
-		case ECB:
-			for(i = numBlocks; i > 0; i--)
-			{
-				encrypt(input, outBuffer);
-				input += 16;
-				outBuffer += 16;
-			}
-			break;
-		case CBC:
-			((UINT32 *)block)[0] = ((UINT32 *)m_initVector)[0] ^ ((const UINT32 *)input)[0];
-			((UINT32 *)block)[1] = ((UINT32 *)m_initVector)[1] ^ ((UINT32 *)input)[1];
-			((UINT32 *)block)[2] = ((UINT32 *)m_initVector)[2] ^ ((UINT32 *)input)[2];
-			((UINT32 *)block)[3] = ((UINT32 *)m_initVector)[3] ^ ((UINT32 *)input)[3];
+	case ECB:
+		for(i = numBlocks; i > 0; i--)
+		{
+			encrypt(input, outBuffer);
+			input += 16;
+			outBuffer += 16;
+		}
+		break;
+	case CBC:
+		((UINT32 *)block)[0] = ((UINT32 *)m_initVector)[0] ^ ((const UINT32 *)input)[0];
+		((UINT32 *)block)[1] = ((UINT32 *)m_initVector)[1] ^ ((UINT32 *)input)[1];
+		((UINT32 *)block)[2] = ((UINT32 *)m_initVector)[2] ^ ((UINT32 *)input)[2];
+		((UINT32 *)block)[3] = ((UINT32 *)m_initVector)[3] ^ ((UINT32 *)input)[3];
+		encrypt(block, outBuffer);
+		input += 16;
+		for(i = numBlocks - 1; i > 0; i--)
+		{
+			((UINT32 *)block)[0] = ((UINT32 *)outBuffer)[0] ^ ((UINT32 *)input)[0];
+			((UINT32 *)block)[1] = ((UINT32 *)outBuffer)[1] ^ ((UINT32 *)input)[1];
+			((UINT32 *)block)[2] = ((UINT32 *)outBuffer)[2] ^ ((UINT32 *)input)[2];
+			((UINT32 *)block)[3] = ((UINT32 *)outBuffer)[3] ^ ((UINT32 *)input)[3];
+			outBuffer += 16;
 			encrypt(block, outBuffer);
 			input += 16;
-			for(i = numBlocks - 1; i > 0; i--)
-			{
-				((UINT32 *)block)[0] = ((UINT32 *)outBuffer)[0] ^ ((UINT32 *)input)[0];
-				((UINT32 *)block)[1] = ((UINT32 *)outBuffer)[1] ^ ((UINT32 *)input)[1];
-				((UINT32 *)block)[2] = ((UINT32 *)outBuffer)[2] ^ ((UINT32 *)input)[2];
-				((UINT32 *)block)[3] = ((UINT32 *)outBuffer)[3] ^ ((UINT32 *)input)[3];
-				outBuffer += 16;
-				encrypt(block, outBuffer);
-				input += 16;
-			}
-			break;
-		case CFB1:
+		}
+		break;
+	case CFB1:
 #if STRICT_ALIGN
-			KviMemory::move(iv, m_initVector, 16);
+		KviMemory::move(iv, m_initVector, 16);
 #else  /* !STRICT_ALIGN */
-			*((UINT32 *)iv[0]) = *((UINT32 *)(m_initVector));
-			*((UINT32 *)iv[1]) = *((UINT32 *)(m_initVector + 4));
-			*((UINT32 *)iv[2]) = *((UINT32 *)(m_initVector + 8));
-			*((UINT32 *)iv[3]) = *((UINT32 *)(m_initVector + 12));
+		*((UINT32 *)iv[0]) = *((UINT32 *)(m_initVector));
+		*((UINT32 *)iv[1]) = *((UINT32 *)(m_initVector + 4));
+		*((UINT32 *)iv[2]) = *((UINT32 *)(m_initVector + 8));
+		*((UINT32 *)iv[3]) = *((UINT32 *)(m_initVector + 12));
 #endif /* ?STRICT_ALIGN */
-			for(i = numBlocks; i > 0; i--)
+		for(i = numBlocks; i > 0; i--)
+		{
+			for(k = 0; k < 128; k++)
 			{
-				for(k = 0; k < 128; k++)
-				{
-					*((UINT32 *)block) = *((UINT32 *)iv[0]);
-					*((UINT32 *)(block + 4)) = *((UINT32 *)iv[1]);
-					*((UINT32 *)(block + 8)) = *((UINT32 *)iv[2]);
-					*((UINT32 *)(block + 12)) = *((UINT32 *)iv[3]);
-					encrypt(block, block);
-					outBuffer[k / 8] ^= (block[0] & 0x80) >> (k & 7);
-					iv[0][0] = (iv[0][0] << 1) | (iv[0][1] >> 7);
-					iv[0][1] = (iv[0][1] << 1) | (iv[0][2] >> 7);
-					iv[0][2] = (iv[0][2] << 1) | (iv[0][3] >> 7);
-					iv[0][3] = (iv[0][3] << 1) | (iv[1][0] >> 7);
-					iv[1][0] = (iv[1][0] << 1) | (iv[1][1] >> 7);
-					iv[1][1] = (iv[1][1] << 1) | (iv[1][2] >> 7);
-					iv[1][2] = (iv[1][2] << 1) | (iv[1][3] >> 7);
-					iv[1][3] = (iv[1][3] << 1) | (iv[2][0] >> 7);
-					iv[2][0] = (iv[2][0] << 1) | (iv[2][1] >> 7);
-					iv[2][1] = (iv[2][1] << 1) | (iv[2][2] >> 7);
-					iv[2][2] = (iv[2][2] << 1) | (iv[2][3] >> 7);
-					iv[2][3] = (iv[2][3] << 1) | (iv[3][0] >> 7);
-					iv[3][0] = (iv[3][0] << 1) | (iv[3][1] >> 7);
-					iv[3][1] = (iv[3][1] << 1) | (iv[3][2] >> 7);
-					iv[3][2] = (iv[3][2] << 1) | (iv[3][3] >> 7);
-					iv[3][3] = (iv[3][3] << 1) | ((outBuffer[k / 8] >> (7 - (k & 7))) & 1);
-				}
+				*((UINT32 *)block) = *((UINT32 *)iv[0]);
+				*((UINT32 *)(block + 4)) = *((UINT32 *)iv[1]);
+				*((UINT32 *)(block + 8)) = *((UINT32 *)iv[2]);
+				*((UINT32 *)(block + 12)) = *((UINT32 *)iv[3]);
+				encrypt(block, block);
+				outBuffer[k / 8] ^= (block[0] & 0x80) >> (k & 7);
+				iv[0][0] = (iv[0][0] << 1) | (iv[0][1] >> 7);
+				iv[0][1] = (iv[0][1] << 1) | (iv[0][2] >> 7);
+				iv[0][2] = (iv[0][2] << 1) | (iv[0][3] >> 7);
+				iv[0][3] = (iv[0][3] << 1) | (iv[1][0] >> 7);
+				iv[1][0] = (iv[1][0] << 1) | (iv[1][1] >> 7);
+				iv[1][1] = (iv[1][1] << 1) | (iv[1][2] >> 7);
+				iv[1][2] = (iv[1][2] << 1) | (iv[1][3] >> 7);
+				iv[1][3] = (iv[1][3] << 1) | (iv[2][0] >> 7);
+				iv[2][0] = (iv[2][0] << 1) | (iv[2][1] >> 7);
+				iv[2][1] = (iv[2][1] << 1) | (iv[2][2] >> 7);
+				iv[2][2] = (iv[2][2] << 1) | (iv[2][3] >> 7);
+				iv[2][3] = (iv[2][3] << 1) | (iv[3][0] >> 7);
+				iv[3][0] = (iv[3][0] << 1) | (iv[3][1] >> 7);
+				iv[3][1] = (iv[3][1] << 1) | (iv[3][2] >> 7);
+				iv[3][2] = (iv[3][2] << 1) | (iv[3][3] >> 7);
+				iv[3][3] = (iv[3][3] << 1) | ((outBuffer[k / 8] >> (7 - (k & 7))) & 1);
 			}
-			break;
-		default:
-			return -1;
-			break;
+		}
+		break;
+	default:
+		return -1;
+		break;
 	}
 
 	return 128 * numBlocks;
@@ -1170,47 +1170,47 @@ int Rijndael::padEncrypt(const UINT8 * input, int inputOctets, UINT8 * outBuffer
 
 	switch(m_mode)
 	{
-		case ECB:
-			for(i = numBlocks; i > 0; i--)
-			{
-				encrypt(input, outBuffer);
-				input += 16;
-				outBuffer += 16;
-			}
-			padLen = 16 - (inputOctets - 16 * numBlocks);
-			//			assert(padLen > 0 && padLen <= 16);
-			KviMemory::move(block, input, 16 - padLen);
-			KviMemory::set(block + 16 - padLen, padLen, padLen);
+	case ECB:
+		for(i = numBlocks; i > 0; i--)
+		{
+			encrypt(input, outBuffer);
+			input += 16;
+			outBuffer += 16;
+		}
+		padLen = 16 - (inputOctets - 16 * numBlocks);
+		//			assert(padLen > 0 && padLen <= 16);
+		KviMemory::move(block, input, 16 - padLen);
+		KviMemory::set(block + 16 - padLen, padLen, padLen);
+		encrypt(block, outBuffer);
+		break;
+	case CBC:
+		iv = m_initVector;
+		for(i = numBlocks; i > 0; i--)
+		{
+			((UINT32 *)block)[0] = ((UINT32 *)input)[0] ^ ((UINT32 *)iv)[0];
+			((UINT32 *)block)[1] = ((UINT32 *)input)[1] ^ ((UINT32 *)iv)[1];
+			((UINT32 *)block)[2] = ((UINT32 *)input)[2] ^ ((UINT32 *)iv)[2];
+			((UINT32 *)block)[3] = ((UINT32 *)input)[3] ^ ((UINT32 *)iv)[3];
 			encrypt(block, outBuffer);
-			break;
-		case CBC:
-			iv = m_initVector;
-			for(i = numBlocks; i > 0; i--)
-			{
-				((UINT32 *)block)[0] = ((UINT32 *)input)[0] ^ ((UINT32 *)iv)[0];
-				((UINT32 *)block)[1] = ((UINT32 *)input)[1] ^ ((UINT32 *)iv)[1];
-				((UINT32 *)block)[2] = ((UINT32 *)input)[2] ^ ((UINT32 *)iv)[2];
-				((UINT32 *)block)[3] = ((UINT32 *)input)[3] ^ ((UINT32 *)iv)[3];
-				encrypt(block, outBuffer);
-				iv = outBuffer;
-				input += 16;
-				outBuffer += 16;
-			}
-			padLen = 16 - (inputOctets - 16 * numBlocks);
-			//			assert(padLen > 0 && padLen <= 16); // DO SOMETHING HERE ?
-			for(i = 0; i < 16 - padLen; i++)
-			{
-				block[i] = input[i] ^ iv[i];
-			}
-			for(i = 16 - padLen; i < 16; i++)
-			{
-				block[i] = (UINT8)padLen ^ iv[i];
-			}
-			encrypt(block, outBuffer);
-			break;
-		default:
-			return -1;
-			break;
+			iv = outBuffer;
+			input += 16;
+			outBuffer += 16;
+		}
+		padLen = 16 - (inputOctets - 16 * numBlocks);
+		//			assert(padLen > 0 && padLen <= 16); // DO SOMETHING HERE ?
+		for(i = 0; i < 16 - padLen; i++)
+		{
+			block[i] = input[i] ^ iv[i];
+		}
+		for(i = 16 - padLen; i < 16; i++)
+		{
+			block[i] = (UINT8)padLen ^ iv[i];
+		}
+		encrypt(block, outBuffer);
+		break;
+	default:
+		return -1;
+		break;
 	}
 
 	return 16 * (numBlocks + 1);
@@ -1237,88 +1237,88 @@ int Rijndael::blockDecrypt(const UINT8 * input, int inputLen, UINT8 * outBuffer,
 
 	switch(m_mode)
 	{
-		case ECB:
-			for(i = numBlocks; i > 0; i--)
-			{
-				decrypt(input, outBuffer);
-				input += 16;
-				outBuffer += 16;
-			}
-			break;
-		case CBC:
+	case ECB:
+		for(i = numBlocks; i > 0; i--)
+		{
+			decrypt(input, outBuffer);
+			input += 16;
+			outBuffer += 16;
+		}
+		break;
+	case CBC:
 #if STRICT_ALIGN
-			KviMemory::move(iv, m_initVector, 16);
+		KviMemory::move(iv, m_initVector, 16);
 #else
-			*((UINT32 *)iv[0]) = *((UINT32 *)(m_initVector));
-			*((UINT32 *)iv[1]) = *((UINT32 *)(m_initVector + 4));
-			*((UINT32 *)iv[2]) = *((UINT32 *)(m_initVector + 8));
-			*((UINT32 *)iv[3]) = *((UINT32 *)(m_initVector + 12));
+		*((UINT32 *)iv[0]) = *((UINT32 *)(m_initVector));
+		*((UINT32 *)iv[1]) = *((UINT32 *)(m_initVector + 4));
+		*((UINT32 *)iv[2]) = *((UINT32 *)(m_initVector + 8));
+		*((UINT32 *)iv[3]) = *((UINT32 *)(m_initVector + 12));
 #endif
-			for(i = numBlocks; i > 0; i--)
-			{
-				decrypt(input, block);
-				((UINT32 *)block)[0] ^= *((UINT32 *)iv[0]);
-				((UINT32 *)block)[1] ^= *((UINT32 *)iv[1]);
-				((UINT32 *)block)[2] ^= *((UINT32 *)iv[2]);
-				((UINT32 *)block)[3] ^= *((UINT32 *)iv[3]);
+		for(i = numBlocks; i > 0; i--)
+		{
+			decrypt(input, block);
+			((UINT32 *)block)[0] ^= *((UINT32 *)iv[0]);
+			((UINT32 *)block)[1] ^= *((UINT32 *)iv[1]);
+			((UINT32 *)block)[2] ^= *((UINT32 *)iv[2]);
+			((UINT32 *)block)[3] ^= *((UINT32 *)iv[3]);
 #if STRICT_ALIGN
-				KviMemory::move(iv, input, 16);
-				KviMemory::move(outBuf, block, 16);
+			KviMemory::move(iv, input, 16);
+			KviMemory::move(outBuf, block, 16);
 #else
-				*((UINT32 *)iv[0]) = ((UINT32 *)input)[0];
-				((UINT32 *)outBuffer)[0] = ((UINT32 *)block)[0];
-				*((UINT32 *)iv[1]) = ((UINT32 *)input)[1];
-				((UINT32 *)outBuffer)[1] = ((UINT32 *)block)[1];
-				*((UINT32 *)iv[2]) = ((UINT32 *)input)[2];
-				((UINT32 *)outBuffer)[2] = ((UINT32 *)block)[2];
-				*((UINT32 *)iv[3]) = ((UINT32 *)input)[3];
-				((UINT32 *)outBuffer)[3] = ((UINT32 *)block)[3];
+			*((UINT32 *)iv[0]) = ((UINT32 *)input)[0];
+			((UINT32 *)outBuffer)[0] = ((UINT32 *)block)[0];
+			*((UINT32 *)iv[1]) = ((UINT32 *)input)[1];
+			((UINT32 *)outBuffer)[1] = ((UINT32 *)block)[1];
+			*((UINT32 *)iv[2]) = ((UINT32 *)input)[2];
+			((UINT32 *)outBuffer)[2] = ((UINT32 *)block)[2];
+			*((UINT32 *)iv[3]) = ((UINT32 *)input)[3];
+			((UINT32 *)outBuffer)[3] = ((UINT32 *)block)[3];
 #endif
-				input += 16;
-				outBuffer += 16;
-			}
-			break;
-		case CFB1:
+			input += 16;
+			outBuffer += 16;
+		}
+		break;
+	case CFB1:
 #if STRICT_ALIGN
-			KviMemory::move(iv, m_initVector, 16);
+		KviMemory::move(iv, m_initVector, 16);
 #else
-			*((UINT32 *)iv[0]) = *((UINT32 *)(m_initVector));
-			*((UINT32 *)iv[1]) = *((UINT32 *)(m_initVector + 4));
-			*((UINT32 *)iv[2]) = *((UINT32 *)(m_initVector + 8));
-			*((UINT32 *)iv[3]) = *((UINT32 *)(m_initVector + 12));
+		*((UINT32 *)iv[0]) = *((UINT32 *)(m_initVector));
+		*((UINT32 *)iv[1]) = *((UINT32 *)(m_initVector + 4));
+		*((UINT32 *)iv[2]) = *((UINT32 *)(m_initVector + 8));
+		*((UINT32 *)iv[3]) = *((UINT32 *)(m_initVector + 12));
 #endif
-			for(i = numBlocks; i > 0; i--)
+		for(i = numBlocks; i > 0; i--)
+		{
+			for(k = 0; k < 128; k++)
 			{
-				for(k = 0; k < 128; k++)
-				{
-					*((UINT32 *)block) = *((UINT32 *)iv[0]);
-					*((UINT32 *)(block + 4)) = *((UINT32 *)iv[1]);
-					*((UINT32 *)(block + 8)) = *((UINT32 *)iv[2]);
-					*((UINT32 *)(block + 12)) = *((UINT32 *)iv[3]);
-					encrypt(block, block);
-					iv[0][0] = (iv[0][0] << 1) | (iv[0][1] >> 7);
-					iv[0][1] = (iv[0][1] << 1) | (iv[0][2] >> 7);
-					iv[0][2] = (iv[0][2] << 1) | (iv[0][3] >> 7);
-					iv[0][3] = (iv[0][3] << 1) | (iv[1][0] >> 7);
-					iv[1][0] = (iv[1][0] << 1) | (iv[1][1] >> 7);
-					iv[1][1] = (iv[1][1] << 1) | (iv[1][2] >> 7);
-					iv[1][2] = (iv[1][2] << 1) | (iv[1][3] >> 7);
-					iv[1][3] = (iv[1][3] << 1) | (iv[2][0] >> 7);
-					iv[2][0] = (iv[2][0] << 1) | (iv[2][1] >> 7);
-					iv[2][1] = (iv[2][1] << 1) | (iv[2][2] >> 7);
-					iv[2][2] = (iv[2][2] << 1) | (iv[2][3] >> 7);
-					iv[2][3] = (iv[2][3] << 1) | (iv[3][0] >> 7);
-					iv[3][0] = (iv[3][0] << 1) | (iv[3][1] >> 7);
-					iv[3][1] = (iv[3][1] << 1) | (iv[3][2] >> 7);
-					iv[3][2] = (iv[3][2] << 1) | (iv[3][3] >> 7);
-					iv[3][3] = (iv[3][3] << 1) | ((input[k / 8] >> (7 - (k & 7))) & 1);
-					outBuffer[k / 8] ^= (block[0] & 0x80) >> (k & 7);
-				}
+				*((UINT32 *)block) = *((UINT32 *)iv[0]);
+				*((UINT32 *)(block + 4)) = *((UINT32 *)iv[1]);
+				*((UINT32 *)(block + 8)) = *((UINT32 *)iv[2]);
+				*((UINT32 *)(block + 12)) = *((UINT32 *)iv[3]);
+				encrypt(block, block);
+				iv[0][0] = (iv[0][0] << 1) | (iv[0][1] >> 7);
+				iv[0][1] = (iv[0][1] << 1) | (iv[0][2] >> 7);
+				iv[0][2] = (iv[0][2] << 1) | (iv[0][3] >> 7);
+				iv[0][3] = (iv[0][3] << 1) | (iv[1][0] >> 7);
+				iv[1][0] = (iv[1][0] << 1) | (iv[1][1] >> 7);
+				iv[1][1] = (iv[1][1] << 1) | (iv[1][2] >> 7);
+				iv[1][2] = (iv[1][2] << 1) | (iv[1][3] >> 7);
+				iv[1][3] = (iv[1][3] << 1) | (iv[2][0] >> 7);
+				iv[2][0] = (iv[2][0] << 1) | (iv[2][1] >> 7);
+				iv[2][1] = (iv[2][1] << 1) | (iv[2][2] >> 7);
+				iv[2][2] = (iv[2][2] << 1) | (iv[2][3] >> 7);
+				iv[2][3] = (iv[2][3] << 1) | (iv[3][0] >> 7);
+				iv[3][0] = (iv[3][0] << 1) | (iv[3][1] >> 7);
+				iv[3][1] = (iv[3][1] << 1) | (iv[3][2] >> 7);
+				iv[3][2] = (iv[3][2] << 1) | (iv[3][3] >> 7);
+				iv[3][3] = (iv[3][3] << 1) | ((input[k / 8] >> (7 - (k & 7))) & 1);
+				outBuffer[k / 8] ^= (block[0] & 0x80) >> (k & 7);
 			}
-			break;
-		default:
-			return -1;
-			break;
+		}
+		break;
+	default:
+		return -1;
+		break;
 	}
 
 	return 128 * numBlocks;
@@ -1349,60 +1349,60 @@ int Rijndael::padDecrypt(const UINT8 * input, int inputOctets, UINT8 * outBuffer
 
 	switch(m_mode)
 	{
-		case ECB:
-			for(i = numBlocks - 1; i > 0; i--)
-			{
-				decrypt(input, outBuffer);
-				input += 16;
-				outBuffer += 16;
-			}
+	case ECB:
+		for(i = numBlocks - 1; i > 0; i--)
+		{
+			decrypt(input, outBuffer);
+			input += 16;
+			outBuffer += 16;
+		}
 
-			decrypt(input, block);
-			padLen = block[15];
-			if(padLen >= 16)
+		decrypt(input, block);
+		padLen = block[15];
+		if(padLen >= 16)
+			return RIJNDAEL_CORRUPTED_DATA;
+		for(i = 16 - padLen; i < 16; i++)
+		{
+			if(block[i] != padLen)
 				return RIJNDAEL_CORRUPTED_DATA;
-			for(i = 16 - padLen; i < 16; i++)
-			{
-				if(block[i] != padLen)
-					return RIJNDAEL_CORRUPTED_DATA;
-			}
-			KviMemory::move(outBuffer, block, 16 - padLen);
-			break;
-		case CBC:
-			KviMemory::move(iv, m_initVector, 16);
-			/* all blocks but last */
-			for(i = numBlocks - 1; i > 0; i--)
-			{
-				decrypt(input, block);
-				((UINT32 *)block)[0] ^= iv[0];
-				((UINT32 *)block)[1] ^= iv[1];
-				((UINT32 *)block)[2] ^= iv[2];
-				((UINT32 *)block)[3] ^= iv[3];
-				KviMemory::move(iv, input, 16);
-				KviMemory::move(outBuffer, block, 16);
-				input += 16;
-				outBuffer += 16;
-			}
-			/* last block */
+		}
+		KviMemory::move(outBuffer, block, 16 - padLen);
+		break;
+	case CBC:
+		KviMemory::move(iv, m_initVector, 16);
+		/* all blocks but last */
+		for(i = numBlocks - 1; i > 0; i--)
+		{
 			decrypt(input, block);
 			((UINT32 *)block)[0] ^= iv[0];
 			((UINT32 *)block)[1] ^= iv[1];
 			((UINT32 *)block)[2] ^= iv[2];
 			((UINT32 *)block)[3] ^= iv[3];
-			padLen = block[15];
-			if(padLen <= 0 || padLen > 16)
+			KviMemory::move(iv, input, 16);
+			KviMemory::move(outBuffer, block, 16);
+			input += 16;
+			outBuffer += 16;
+		}
+		/* last block */
+		decrypt(input, block);
+		((UINT32 *)block)[0] ^= iv[0];
+		((UINT32 *)block)[1] ^= iv[1];
+		((UINT32 *)block)[2] ^= iv[2];
+		((UINT32 *)block)[3] ^= iv[3];
+		padLen = block[15];
+		if(padLen <= 0 || padLen > 16)
+			return RIJNDAEL_CORRUPTED_DATA;
+		for(i = 16 - padLen; i < 16; i++)
+		{
+			if(block[i] != padLen)
 				return RIJNDAEL_CORRUPTED_DATA;
-			for(i = 16 - padLen; i < 16; i++)
-			{
-				if(block[i] != padLen)
-					return RIJNDAEL_CORRUPTED_DATA;
-			}
-			KviMemory::move(outBuffer, block, 16 - padLen);
-			break;
+		}
+		KviMemory::move(outBuffer, block, 16 - padLen);
+		break;
 
-		default:
-			return -1;
-			break;
+	default:
+		return -1;
+		break;
 	}
 
 	return 16 * numBlocks - padLen;
@@ -1519,21 +1519,21 @@ void Rijndael::encrypt(const UINT8 a[16], UINT8 b[16])
 	*((UINT32 *)temp[2]) = *((UINT32 *)(a + 8)) ^ *((UINT32 *)m_expandedKey[0][2]);
 	*((UINT32 *)temp[3]) = *((UINT32 *)(a + 12)) ^ *((UINT32 *)m_expandedKey[0][3]);
 	*((UINT32 *)(b)) = *((UINT32 *)T1[temp[0][0]])
-	    ^ *((UINT32 *)T2[temp[1][1]])
-	    ^ *((UINT32 *)T3[temp[2][2]])
-	    ^ *((UINT32 *)T4[temp[3][3]]);
+		^ *((UINT32 *)T2[temp[1][1]])
+		^ *((UINT32 *)T3[temp[2][2]])
+		^ *((UINT32 *)T4[temp[3][3]]);
 	*((UINT32 *)(b + 4)) = *((UINT32 *)T1[temp[1][0]])
-	    ^ *((UINT32 *)T2[temp[2][1]])
-	    ^ *((UINT32 *)T3[temp[3][2]])
-	    ^ *((UINT32 *)T4[temp[0][3]]);
+		^ *((UINT32 *)T2[temp[2][1]])
+		^ *((UINT32 *)T3[temp[3][2]])
+		^ *((UINT32 *)T4[temp[0][3]]);
 	*((UINT32 *)(b + 8)) = *((UINT32 *)T1[temp[2][0]])
-	    ^ *((UINT32 *)T2[temp[3][1]])
-	    ^ *((UINT32 *)T3[temp[0][2]])
-	    ^ *((UINT32 *)T4[temp[1][3]]);
+		^ *((UINT32 *)T2[temp[3][1]])
+		^ *((UINT32 *)T3[temp[0][2]])
+		^ *((UINT32 *)T4[temp[1][3]]);
 	*((UINT32 *)(b + 12)) = *((UINT32 *)T1[temp[3][0]])
-	    ^ *((UINT32 *)T2[temp[0][1]])
-	    ^ *((UINT32 *)T3[temp[1][2]])
-	    ^ *((UINT32 *)T4[temp[2][3]]);
+		^ *((UINT32 *)T2[temp[0][1]])
+		^ *((UINT32 *)T3[temp[1][2]])
+		^ *((UINT32 *)T4[temp[2][3]]);
 	for(r = 1; r < m_uRounds - 1; r++)
 	{
 		*((UINT32 *)temp[0]) = *((UINT32 *)(b)) ^ *((UINT32 *)m_expandedKey[r][0]);
@@ -1542,21 +1542,21 @@ void Rijndael::encrypt(const UINT8 a[16], UINT8 b[16])
 		*((UINT32 *)temp[3]) = *((UINT32 *)(b + 12)) ^ *((UINT32 *)m_expandedKey[r][3]);
 
 		*((UINT32 *)(b)) = *((UINT32 *)T1[temp[0][0]])
-		    ^ *((UINT32 *)T2[temp[1][1]])
-		    ^ *((UINT32 *)T3[temp[2][2]])
-		    ^ *((UINT32 *)T4[temp[3][3]]);
+			^ *((UINT32 *)T2[temp[1][1]])
+			^ *((UINT32 *)T3[temp[2][2]])
+			^ *((UINT32 *)T4[temp[3][3]]);
 		*((UINT32 *)(b + 4)) = *((UINT32 *)T1[temp[1][0]])
-		    ^ *((UINT32 *)T2[temp[2][1]])
-		    ^ *((UINT32 *)T3[temp[3][2]])
-		    ^ *((UINT32 *)T4[temp[0][3]]);
+			^ *((UINT32 *)T2[temp[2][1]])
+			^ *((UINT32 *)T3[temp[3][2]])
+			^ *((UINT32 *)T4[temp[0][3]]);
 		*((UINT32 *)(b + 8)) = *((UINT32 *)T1[temp[2][0]])
-		    ^ *((UINT32 *)T2[temp[3][1]])
-		    ^ *((UINT32 *)T3[temp[0][2]])
-		    ^ *((UINT32 *)T4[temp[1][3]]);
+			^ *((UINT32 *)T2[temp[3][1]])
+			^ *((UINT32 *)T3[temp[0][2]])
+			^ *((UINT32 *)T4[temp[1][3]]);
 		*((UINT32 *)(b + 12)) = *((UINT32 *)T1[temp[3][0]])
-		    ^ *((UINT32 *)T2[temp[0][1]])
-		    ^ *((UINT32 *)T3[temp[1][2]])
-		    ^ *((UINT32 *)T4[temp[2][3]]);
+			^ *((UINT32 *)T2[temp[0][1]])
+			^ *((UINT32 *)T3[temp[1][2]])
+			^ *((UINT32 *)T4[temp[2][3]]);
 	}
 	*((UINT32 *)temp[0]) = *((UINT32 *)(b)) ^ *((UINT32 *)m_expandedKey[m_uRounds - 1][0]);
 	*((UINT32 *)temp[1]) = *((UINT32 *)(b + 4)) ^ *((UINT32 *)m_expandedKey[m_uRounds - 1][1]);
@@ -1595,21 +1595,21 @@ void Rijndael::decrypt(const UINT8 a[16], UINT8 b[16])
 	*((UINT32 *)temp[3]) = *((UINT32 *)(a + 12)) ^ *((UINT32 *)m_expandedKey[m_uRounds][3]);
 
 	*((UINT32 *)(b)) = *((UINT32 *)T5[temp[0][0]])
-	    ^ *((UINT32 *)T6[temp[3][1]])
-	    ^ *((UINT32 *)T7[temp[2][2]])
-	    ^ *((UINT32 *)T8[temp[1][3]]);
+		^ *((UINT32 *)T6[temp[3][1]])
+		^ *((UINT32 *)T7[temp[2][2]])
+		^ *((UINT32 *)T8[temp[1][3]]);
 	*((UINT32 *)(b + 4)) = *((UINT32 *)T5[temp[1][0]])
-	    ^ *((UINT32 *)T6[temp[0][1]])
-	    ^ *((UINT32 *)T7[temp[3][2]])
-	    ^ *((UINT32 *)T8[temp[2][3]]);
+		^ *((UINT32 *)T6[temp[0][1]])
+		^ *((UINT32 *)T7[temp[3][2]])
+		^ *((UINT32 *)T8[temp[2][3]]);
 	*((UINT32 *)(b + 8)) = *((UINT32 *)T5[temp[2][0]])
-	    ^ *((UINT32 *)T6[temp[1][1]])
-	    ^ *((UINT32 *)T7[temp[0][2]])
-	    ^ *((UINT32 *)T8[temp[3][3]]);
+		^ *((UINT32 *)T6[temp[1][1]])
+		^ *((UINT32 *)T7[temp[0][2]])
+		^ *((UINT32 *)T8[temp[3][3]]);
 	*((UINT32 *)(b + 12)) = *((UINT32 *)T5[temp[3][0]])
-	    ^ *((UINT32 *)T6[temp[2][1]])
-	    ^ *((UINT32 *)T7[temp[1][2]])
-	    ^ *((UINT32 *)T8[temp[0][3]]);
+		^ *((UINT32 *)T6[temp[2][1]])
+		^ *((UINT32 *)T7[temp[1][2]])
+		^ *((UINT32 *)T8[temp[0][3]]);
 	for(r = m_uRounds - 1; r > 1; r--)
 	{
 		*((UINT32 *)temp[0]) = *((UINT32 *)(b)) ^ *((UINT32 *)m_expandedKey[r][0]);
@@ -1617,21 +1617,21 @@ void Rijndael::decrypt(const UINT8 a[16], UINT8 b[16])
 		*((UINT32 *)temp[2]) = *((UINT32 *)(b + 8)) ^ *((UINT32 *)m_expandedKey[r][2]);
 		*((UINT32 *)temp[3]) = *((UINT32 *)(b + 12)) ^ *((UINT32 *)m_expandedKey[r][3]);
 		*((UINT32 *)(b)) = *((UINT32 *)T5[temp[0][0]])
-		    ^ *((UINT32 *)T6[temp[3][1]])
-		    ^ *((UINT32 *)T7[temp[2][2]])
-		    ^ *((UINT32 *)T8[temp[1][3]]);
+			^ *((UINT32 *)T6[temp[3][1]])
+			^ *((UINT32 *)T7[temp[2][2]])
+			^ *((UINT32 *)T8[temp[1][3]]);
 		*((UINT32 *)(b + 4)) = *((UINT32 *)T5[temp[1][0]])
-		    ^ *((UINT32 *)T6[temp[0][1]])
-		    ^ *((UINT32 *)T7[temp[3][2]])
-		    ^ *((UINT32 *)T8[temp[2][3]]);
+			^ *((UINT32 *)T6[temp[0][1]])
+			^ *((UINT32 *)T7[temp[3][2]])
+			^ *((UINT32 *)T8[temp[2][3]]);
 		*((UINT32 *)(b + 8)) = *((UINT32 *)T5[temp[2][0]])
-		    ^ *((UINT32 *)T6[temp[1][1]])
-		    ^ *((UINT32 *)T7[temp[0][2]])
-		    ^ *((UINT32 *)T8[temp[3][3]]);
+			^ *((UINT32 *)T6[temp[1][1]])
+			^ *((UINT32 *)T7[temp[0][2]])
+			^ *((UINT32 *)T8[temp[3][3]]);
 		*((UINT32 *)(b + 12)) = *((UINT32 *)T5[temp[3][0]])
-		    ^ *((UINT32 *)T6[temp[2][1]])
-		    ^ *((UINT32 *)T7[temp[1][2]])
-		    ^ *((UINT32 *)T8[temp[0][3]]);
+			^ *((UINT32 *)T6[temp[2][1]])
+			^ *((UINT32 *)T7[temp[1][2]])
+			^ *((UINT32 *)T8[temp[0][3]]);
 	}
 
 	*((UINT32 *)temp[0]) = *((UINT32 *)(b)) ^ *((UINT32 *)m_expandedKey[1][0]);

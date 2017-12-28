@@ -84,7 +84,7 @@ public:
 #else
 	QTextBrowser * textBrowser();
 #endif
-public slots:
+	public slots:
 	void indexSelected(QListWidgetItem *);
 	void searchInIndex(const QString & s);
 	void showIndexTopic();

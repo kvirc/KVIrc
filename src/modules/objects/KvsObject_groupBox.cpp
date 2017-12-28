@@ -174,126 +174,126 @@ bool KvsObject_groupBox::init(KviKvsRunTimeContext *, KviKvsVariantList *)
 KVSO_CLASS_FUNCTION(groupBox, setTitle)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szTitle;
+		QString szTitle;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("title", KVS_PT_STRING, 0, szTitle)
-	KVSO_PARAMETERS_END(c)
-	((KviTalGroupBox *)widget())->setTitle(szTitle);
+		KVSO_PARAMETER("title", KVS_PT_STRING, 0, szTitle)
+		KVSO_PARAMETERS_END(c)
+		((KviTalGroupBox *)widget())->setTitle(szTitle);
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupBox, title)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setString(((KviTalGroupBox *)widget())->title());
+		c->returnValue()->setString(((KviTalGroupBox *)widget())->title());
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupBox, setFlat)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bFlag", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	((KviTalGroupBox *)widget())->setFlat(bEnabled);
+		KVSO_PARAMETER("bFlag", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		((KviTalGroupBox *)widget())->setFlat(bEnabled);
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupBox, isFlat)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isFlat());
+		c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isFlat());
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupBox, setCheckable)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bFlag", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	((KviTalGroupBox *)widget())->setCheckable(bEnabled);
+		KVSO_PARAMETER("bFlag", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		((KviTalGroupBox *)widget())->setCheckable(bEnabled);
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupBox, isCheckable)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isCheckable());
+		c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isCheckable());
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupBox, setChecked)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	bool bEnabled;
+		bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("bFlag", KVS_PT_BOOL, 0, bEnabled)
-	KVSO_PARAMETERS_END(c)
-	((KviTalGroupBox *)widget())->setChecked(bEnabled);
+		KVSO_PARAMETER("bFlag", KVS_PT_BOOL, 0, bEnabled)
+		KVSO_PARAMETERS_END(c)
+		((KviTalGroupBox *)widget())->setChecked(bEnabled);
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupBox, isChecked)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isChecked());
+		c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isChecked());
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupBox, setInsideMargin)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t uMargin;
+		kvs_uint_t uMargin;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("margin", KVS_PT_UNSIGNEDINTEGER, 0, uMargin)
-	KVSO_PARAMETERS_END(c)
-	((KviTalGroupBox *)widget())->setInsideMargin(uMargin);
+		KVSO_PARAMETER("margin", KVS_PT_UNSIGNEDINTEGER, 0, uMargin)
+		KVSO_PARAMETERS_END(c)
+		((KviTalGroupBox *)widget())->setInsideMargin(uMargin);
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupBox, insideMargin)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(((KviTalGroupBox *)widget())->insideMargin());
+		c->returnValue()->setInteger(((KviTalGroupBox *)widget())->insideMargin());
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupBox, setInsideSpacing)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t uSpacing;
+		kvs_uint_t uSpacing;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("spacing", KVS_PT_UNSIGNEDINTEGER, 0, uSpacing)
-	KVSO_PARAMETERS_END(c)
-	((KviTalGroupBox *)widget())->setInsideSpacing(uSpacing);
+		KVSO_PARAMETER("spacing", KVS_PT_UNSIGNEDINTEGER, 0, uSpacing)
+		KVSO_PARAMETERS_END(c)
+		((KviTalGroupBox *)widget())->setInsideSpacing(uSpacing);
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupBox, insideSpacing)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setInteger(((KviTalGroupBox *)widget())->insideSpacing());
+		c->returnValue()->setInteger(((KviTalGroupBox *)widget())->insideSpacing());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(groupBox, addSpace)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t iSpace;
+		kvs_uint_t iSpace;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("columns", KVS_PT_UNSIGNEDINTEGER, 0, iSpace)
-	KVSO_PARAMETERS_END(c)
-	(((KviTalGroupBox *)widget())->addSpace(iSpace));
+		KVSO_PARAMETER("columns", KVS_PT_UNSIGNEDINTEGER, 0, iSpace)
+		KVSO_PARAMETERS_END(c)
+		(((KviTalGroupBox *)widget())->addSpace(iSpace));
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(groupBox, setAlignment)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szAlign;
+		QString szAlign;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("alignment", KVS_PT_STRING, 0, szAlign)
-	KVSO_PARAMETERS_END(c)
-	for(unsigned int i = 0; i < align_num; i++)
-	{
-		if(KviQString::equalCI(szAlign, align_tbl[i]))
+		KVSO_PARAMETER("alignment", KVS_PT_STRING, 0, szAlign)
+		KVSO_PARAMETERS_END(c)
+		for(unsigned int i = 0; i < align_num; i++)
 		{
-			((KviTalGroupBox *)widget())->setAlignment(align_cod[i]);
-			return true;
+			if(KviQString::equalCI(szAlign, align_tbl[i]))
+			{
+				((KviTalGroupBox *)widget())->setAlignment(align_cod[i]);
+				return true;
+			}
 		}
-	}
 	c->warning(__tr2qs_ctx("Unknown alignment '%Q'", "objets"), &szAlign);
 	return true;
 }
@@ -301,7 +301,7 @@ KVSO_CLASS_FUNCTION(groupBox, setAlignment)
 KVSO_CLASS_FUNCTION(groupBox, alignment)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	int mode = ((KviTalGroupBox *)widget())->alignment();
+		int mode = ((KviTalGroupBox *)widget())->alignment();
 	QString szAlignment = "";
 	for(unsigned int i = 0; i < align_num; i++)
 	{
@@ -318,16 +318,16 @@ KVSO_CLASS_FUNCTION(groupBox, alignment)
 KVSO_CLASS_FUNCTION(groupBox, setOrientation)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	QString szMode;
+		QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
-	KVSO_PARAMETER("orientation", KVS_PT_STRING, 0, szMode)
-	KVSO_PARAMETERS_END(c)
-	if(KviQString::equalCI(szMode, "Horizontal"))
-		((KviTalGroupBox *)widget())->setOrientation(Qt::Vertical);
-	else if(KviQString::equalCI(szMode, "Vertical"))
-		((KviTalGroupBox *)widget())->setOrientation(Qt::Horizontal);
-	else
-		c->warning(__tr2qs_ctx("Unknown orientation '%Q'", "objects"), &szMode);
+		KVSO_PARAMETER("orientation", KVS_PT_STRING, 0, szMode)
+		KVSO_PARAMETERS_END(c)
+		if(KviQString::equalCI(szMode, "Horizontal"))
+			((KviTalGroupBox *)widget())->setOrientation(Qt::Vertical);
+		else if(KviQString::equalCI(szMode, "Vertical"))
+			((KviTalGroupBox *)widget())->setOrientation(Qt::Horizontal);
+		else
+			c->warning(__tr2qs_ctx("Unknown orientation '%Q'", "objects"), &szMode);
 
 	return true;
 }

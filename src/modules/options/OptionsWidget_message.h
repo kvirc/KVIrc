@@ -68,7 +68,7 @@ public:
 	KviBoolSelector * m_pSpecialSmartColorSelector;
 	KviBoolSelector * m_pUseSmartColorWithBackgroundSelector;
 	KviMircTextColorSelector * m_pSmartColorSelector;
-protected slots:
+	protected slots:
 	void enableDisableSmartColorSelector(bool);
 };
 
@@ -90,7 +90,7 @@ public:
 	KviBoolSelector * m_pUseTimestampSelector;
 	KviBoolSelector * m_pSpecialTimestampColorSelector;
 	KviMircTextColorSelector * m_pTimestampColorSelector;
-protected slots:
+	protected slots:
 	void enableDisableTimestampSelector(bool);
 };
 
@@ -105,8 +105,8 @@ class MessageListWidget : public KviTalListWidget
 {
 	Q_OBJECT
 public:
-	MessageListWidget(QWidget * par) : KviTalListWidget(par){};
-	~MessageListWidget(){};
+	MessageListWidget(QWidget * par) : KviTalListWidget(par) {};
+	~MessageListWidget() {};
 };
 
 class MessageListWidgetItemDelegate : public QItemDelegate
@@ -114,8 +114,8 @@ class MessageListWidgetItemDelegate : public QItemDelegate
 	Q_OBJECT
 public:
 	MessageListWidgetItemDelegate(QAbstractItemView * pWidget = 0)
-	    : QItemDelegate(pWidget){};
-	~MessageListWidgetItemDelegate(){};
+		: QItemDelegate(pWidget) {};
+	~MessageListWidgetItemDelegate() {};
 	void paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const;
 };
 
@@ -152,15 +152,15 @@ class MessageColorListWidgetItemDelegate : public QItemDelegate
 	Q_OBJECT
 public:
 	MessageColorListWidgetItemDelegate(QAbstractItemView * pWidget = 0)
-	    : QItemDelegate(pWidget){};
-	~MessageColorListWidgetItemDelegate(){};
+		: QItemDelegate(pWidget) {};
+	~MessageColorListWidgetItemDelegate() {};
 	void paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const;
 };
 
 class OptionsWidget_messageColors : public KviOptionsWidget
 {
 	Q_OBJECT
-	friend class KviTalListWidget;
+		friend class KviTalListWidget;
 
 public:
 	OptionsWidget_messageColors(QWidget * parent);
@@ -183,7 +183,7 @@ public:
 
 public:
 	void saveLastItem();
-protected slots:
+	protected slots:
 	void itemChanged();
 	void colorChanged();
 	void iconButtonClicked();
@@ -209,7 +209,7 @@ public:
 
 private:
 	KviColorSelector * m_pColorSelector[16];
-private slots:
+	private slots:
 	void resetToDefaults();
 };
 

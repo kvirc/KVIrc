@@ -65,8 +65,8 @@ public:
 class KVIRC_API KviTopicWidget : public QWidget
 {
 	Q_OBJECT
-	Q_PROPERTY(int TransparencyCapable READ dummyRead)
-	friend class KviChannelWindow;
+		Q_PROPERTY(int TransparencyCapable READ dummyRead)
+		friend class KviChannelWindow;
 	friend class KviTalListWidget;
 
 public:
@@ -119,7 +119,7 @@ public:
 	void applyOptions();
 
 	static void paintColoredText(QPainter * p, QString szText, const QPalette & palette, const QRect & rect);
-protected slots:
+	protected slots:
 	void acceptClicked();
 	void discardClicked();
 	void historyClicked();

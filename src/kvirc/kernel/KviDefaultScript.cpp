@@ -44,7 +44,7 @@ KviDefaultScriptManager * KviDefaultScriptManager::m_pSelf = nullptr;
 unsigned int KviDefaultScriptManager::m_uCount = 0;
 
 KviDefaultScriptManager::KviDefaultScriptManager()
-    : QObject()
+	: QObject()
 {
 	m_bNoNeedToRestore = false;
 
@@ -76,7 +76,7 @@ KviDefaultScriptManager::KviDefaultScriptManager()
 }
 
 KviDefaultScriptManager::~KviDefaultScriptManager()
-    = default;
+= default;
 
 void KviDefaultScriptManager::init()
 {
@@ -247,39 +247,39 @@ bool KviDefaultScriptManager::compareVersions(QString & szConfig, QString * pszE
 	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp, szTmp2, m_szVersion)
 
-	szTmp = "ActionVersion";
+		szTmp = "ActionVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp, szTmp2, m_szAction)
 
-	szTmp = "AddonVersion";
+		szTmp = "AddonVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp, szTmp2, m_szAction)
 
-	szTmp = "AliasVersion";
+		szTmp = "AliasVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp, szTmp2, m_szAlias)
 
-	szTmp = "ClassVersion";
+		szTmp = "ClassVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp, szTmp2, m_szClass)
 
-	szTmp = "EventVersion";
+		szTmp = "EventVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp, szTmp2, m_szEvent)
 
-	szTmp = "PopupVersion";
+		szTmp = "PopupVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp, szTmp2, m_szPopup)
 
-	szTmp = "RawVersion";
+		szTmp = "RawVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp, szTmp2, m_szRaw)
 
-	szTmp = "ToolbarVersion";
+		szTmp = "ToolbarVersion";
 	szTmp2 = oConfig.readEntry(szTmp);
 	CHECK(szTmp, szTmp2, m_szToolbar)
 
-	return true;
+		return true;
 }
 
 void KviDefaultScriptManager::load(const QString & szConfigFile)
@@ -319,39 +319,39 @@ void KviDefaultScriptManager::loadInternal(KviConfigurationFile * pCfg)
 	m_szVersion = pCfg->readEntry(szTmp, szEmptyVersion);
 	IS_EMPTY(m_szVersion, szEmptyVersion)
 
-	szTmp = "Date";
+		szTmp = "Date";
 	m_szDate = pCfg->readEntry(szTmp, szEmptyDate);
 	IS_EMPTY(m_szDate, szEmptyDate)
 
-	szTmp = "ActionVersion";
+		szTmp = "ActionVersion";
 	m_szAction = pCfg->readEntry(szTmp, szEmptyVersion);
 	IS_EMPTY(m_szAction, szEmptyVersion)
 
-	szTmp = "AddonVersion";
+		szTmp = "AddonVersion";
 	m_szAddon = pCfg->readEntry(szTmp, szEmptyVersion);
 	IS_EMPTY(m_szAddon, szEmptyVersion)
 
-	szTmp = "AliasVersion";
+		szTmp = "AliasVersion";
 	m_szAlias = pCfg->readEntry(szTmp, szEmptyVersion);
 	IS_EMPTY(m_szAlias, szEmptyVersion)
 
-	szTmp = "ClassVersion";
+		szTmp = "ClassVersion";
 	m_szClass = pCfg->readEntry(szTmp, szEmptyVersion);
 	IS_EMPTY(m_szClass, szEmptyVersion)
 
-	szTmp = "EventVersion";
+		szTmp = "EventVersion";
 	m_szEvent = pCfg->readEntry(szTmp, szEmptyVersion);
 	IS_EMPTY(m_szEvent, szEmptyVersion)
 
-	szTmp = "PopupVersion";
+		szTmp = "PopupVersion";
 	m_szPopup = pCfg->readEntry(szTmp, szEmptyVersion);
 	IS_EMPTY(m_szPopup, szEmptyVersion)
 
-	szTmp = "RawVersion";
+		szTmp = "RawVersion";
 	m_szRaw = pCfg->readEntry(szTmp, szEmptyVersion);
 	IS_EMPTY(m_szRaw, szEmptyVersion)
 
-	szTmp = "ToolbarVersion";
+		szTmp = "ToolbarVersion";
 	m_szToolbar = pCfg->readEntry(szTmp, szEmptyVersion);
 	IS_EMPTY(m_szToolbar, szEmptyVersion)
 }
@@ -399,7 +399,7 @@ void KviDefaultScriptManager::saveInternal(KviConfigurationFile * pCfg)
 }
 
 KviDefaultScriptDialog::KviDefaultScriptDialog()
-    : QDialog()
+	: QDialog()
 {
 	setObjectName("restore_default_script");
 	setWindowTitle(__tr2qs("Restore Default - KVIrc"));
@@ -493,7 +493,7 @@ KviDefaultScriptDialog::KviDefaultScriptDialog()
 }
 
 KviDefaultScriptDialog::~KviDefaultScriptDialog()
-    = default;
+= default;
 
 void KviDefaultScriptDialog::toggleAll(bool)
 {

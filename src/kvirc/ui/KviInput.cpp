@@ -70,7 +70,7 @@ extern KviHistoryWindowWidget * g_pHistoryWindow;
 extern QMenu * g_pInputPopup;
 
 KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
-    : QWidget(pPar)
+	: QWidget(pPar)
 {
 	setObjectName("input_widget");
 	m_pLayout = new QGridLayout(this);
@@ -226,57 +226,57 @@ void KviInput::keyPressEvent(QKeyEvent * e)
 	{
 		switch(e->key())
 		{
-			case Qt::Key_Enter:
-			case Qt::Key_Return:
+		case Qt::Key_Enter:
+		case Qt::Key_Return:
+		{
+			if(m_pMultiLineEditor)
 			{
-				if(m_pMultiLineEditor)
+				QString szText;
+				m_pMultiLineEditor->getText(szText);
+				if(szText.isEmpty())
+					return;
+				if(KVI_OPTION_BOOL(KviOption_boolWarnAboutPastingMultipleLines))
 				{
-					QString szText;
-					m_pMultiLineEditor->getText(szText);
-					if(szText.isEmpty())
-						return;
-					if(KVI_OPTION_BOOL(KviOption_boolWarnAboutPastingMultipleLines))
+					if(szText.length() > 256)
 					{
-						if(szText.length() > 256)
+						if(szText[0] != '/')
 						{
-							if(szText[0] != '/')
+							int nLines = szText.count('\n') + 1;
+							if(nLines > 15)
 							{
-								int nLines = szText.count('\n') + 1;
-								if(nLines > 15)
-								{
-									QMessageBox pMsgBox;
-									pMsgBox.setText(__tr2qs("You're about to send a message with %1 lines of text.<br><br>"
-									                        "This warning is here to prevent you from accidentally "
-									                        "pasting and sending a really large, potentially unedited message from your clipboard.<br><br>"
-									                        "Some IRC servers may also consider %1 lines of text a flood, "
-									                        "in which case you will be disconnected from said server.<br><br>"
-									                        "Do you still want the message to be sent?").arg(nLines));
+								QMessageBox pMsgBox;
+								pMsgBox.setText(__tr2qs("You're about to send a message with %1 lines of text.<br><br>"
+									"This warning is here to prevent you from accidentally "
+									"pasting and sending a really large, potentially unedited message from your clipboard.<br><br>"
+									"Some IRC servers may also consider %1 lines of text a flood, "
+									"in which case you will be disconnected from said server.<br><br>"
+									"Do you still want the message to be sent?").arg(nLines));
 
-									pMsgBox.setWindowTitle(__tr2qs("Confirm Sending a Large Message - KVIrc"));
-									pMsgBox.setIcon(QMessageBox::Question);
-									QAbstractButton * pAlwaysButton = pMsgBox.addButton(__tr2qs("Always"), QMessageBox::YesRole);
-									/* QAbstractButton *pYesButton = */ pMsgBox.addButton(__tr2qs("Yes"), QMessageBox::YesRole);
-									QAbstractButton * pNoButton = pMsgBox.addButton(__tr2qs("No"), QMessageBox::NoRole);
-									pMsgBox.setDefaultButton(qobject_cast<QPushButton *>(pNoButton));
-									pMsgBox.exec();
-									if(pMsgBox.clickedButton() == pAlwaysButton)
-									{
-										KVI_OPTION_BOOL(KviOption_boolWarnAboutPastingMultipleLines) = false;
-									}
-									else if(pMsgBox.clickedButton() == pNoButton || pMsgBox.clickedButton() == nullptr)
-									{
-										return;
-									}
+								pMsgBox.setWindowTitle(__tr2qs("Confirm Sending a Large Message - KVIrc"));
+								pMsgBox.setIcon(QMessageBox::Question);
+								QAbstractButton * pAlwaysButton = pMsgBox.addButton(__tr2qs("Always"), QMessageBox::YesRole);
+								/* QAbstractButton *pYesButton = */ pMsgBox.addButton(__tr2qs("Yes"), QMessageBox::YesRole);
+								QAbstractButton * pNoButton = pMsgBox.addButton(__tr2qs("No"), QMessageBox::NoRole);
+								pMsgBox.setDefaultButton(qobject_cast<QPushButton *>(pNoButton));
+								pMsgBox.exec();
+								if(pMsgBox.clickedButton() == pAlwaysButton)
+								{
+									KVI_OPTION_BOOL(KviOption_boolWarnAboutPastingMultipleLines) = false;
+								}
+								else if(pMsgBox.clickedButton() == pNoButton || pMsgBox.clickedButton() == nullptr)
+								{
+									return;
 								}
 							}
 						}
 					}
-					szText.replace('\t', QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput), ' ')); //expand tabs to spaces
-					KviUserInput::parse(szText, m_pWindow, QString(), m_pCommandlineModeButton->isChecked());
-					m_pMultiLineEditor->setText("");
 				}
+				szText.replace('\t', QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput), ' ')); //expand tabs to spaces
+				KviUserInput::parse(szText, m_pWindow, QString(), m_pCommandlineModeButton->isChecked());
+				m_pMultiLineEditor->setText("");
 			}
-			break;
+		}
+		break;
 		}
 	}
 }

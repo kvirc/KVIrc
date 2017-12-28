@@ -33,7 +33,7 @@ class KviWindow;
 class KVIRC_API KviThemedComboBox : public QComboBox
 {
 	Q_OBJECT
-	Q_PROPERTY(int TransparencyCapable READ dummyRead)
+		Q_PROPERTY(int TransparencyCapable READ dummyRead)
 public:
 	KviThemedComboBox(QWidget * par, KviWindow * pWindow, const char * name);
 	~KviThemedComboBox();

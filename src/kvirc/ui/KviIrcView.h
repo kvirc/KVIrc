@@ -59,9 +59,9 @@ typedef struct _KviIrcViewWrappedBlockSelectionInfoTag KviIrcViewWrappedBlockSel
 class KVIRC_API KviIrcView : public QWidget
 {
 	Q_OBJECT
-	Q_PROPERTY(int TransparencyCapable READ dummyRead)
-	// we cannot #ifdef due to a bug in moc
-	Q_PROPERTY(bool usePaintOnScreen READ getPaintOnScreen WRITE setPaintOnScreen)
+		Q_PROPERTY(int TransparencyCapable READ dummyRead)
+		// we cannot #ifdef due to a bug in moc
+		Q_PROPERTY(bool usePaintOnScreen READ getPaintOnScreen WRITE setPaintOnScreen)
 public:
 	friend class KviIrcViewToolTip;
 	friend class KviIrcViewToolWidget;
@@ -248,7 +248,7 @@ private:
 	bool checkMarkerArea(const QPoint & mousePos);
 	void addControlCharacter(KviIrcViewLineChunk * pC, QString & szSelectionText);
 	void reapplyMessageColors();
-public slots:
+	public slots:
 	void flushLog();
 	void showToolsPopup();
 	void clearBuffer();
@@ -259,7 +259,7 @@ public slots:
 	void chooseFont();
 	void chooseBackground();
 	void resetBackground();
-protected slots:
+	protected slots:
 	virtual void scrollBarPositionChanged(int newValue);
 	void screenChanged(QScreen *);
 	void masterDead();

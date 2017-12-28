@@ -46,105 +46,105 @@ void KviApplication::getGlobalKvircDirectory(QString & szData, KvircSubdir dir, 
 
 	switch(dir)
 	{
-		case None:
-			break;
-		case Pics:
-			szData.append("pics");
-			break;
-		case Modules:
+	case None:
+		break;
+	case Pics:
+		szData.append("pics");
+		break;
+	case Modules:
 #ifdef KVIRC_MODULES_DIR
-			szData = KVIRC_MODULES_DIR;
+		szData = KVIRC_MODULES_DIR;
 #else
-			szData.append("modules");
+		szData.append("modules");
 #endif
-			break;
-		case Plugins:
-			szData.append("modules");
-			break;
-		case EasyPlugins:
-			szData.append("easyplugins");
-			break;
-		case ConfigPlugins:
-			KviQString::appendFormatted(szData, "config%smodules", KVI_PATH_SEPARATOR);
-			break;
-		case ConfigScripts:
-			KviQString::appendFormatted(szData, "config%sscripts", KVI_PATH_SEPARATOR);
-			break;
-		case Help:
-			szData.append("help");
+		break;
+	case Plugins:
+		szData.append("modules");
+		break;
+	case EasyPlugins:
+		szData.append("easyplugins");
+		break;
+	case ConfigPlugins:
+		KviQString::appendFormatted(szData, "config%smodules", KVI_PATH_SEPARATOR);
+		break;
+	case ConfigScripts:
+		KviQString::appendFormatted(szData, "config%sscripts", KVI_PATH_SEPARATOR);
+		break;
+	case Help:
+		szData.append("help");
+		{
+			// Localized help
+			QString tmp = KviLocale::instance()->localeName();
+			tmp.prepend(KVI_PATH_SEPARATOR_CHAR);
+			tmp.prepend(szData);
+			if(KviFileUtils::directoryExists(tmp))
+				szData = tmp;
+			else
 			{
-				// Localized help
-				QString tmp = KviLocale::instance()->localeName();
-				tmp.prepend(KVI_PATH_SEPARATOR_CHAR);
-				tmp.prepend(szData);
+				tmp = szData;
+				KviQString::appendFormatted(tmp, "%sen", KVI_PATH_SEPARATOR);
 				if(KviFileUtils::directoryExists(tmp))
 					szData = tmp;
-				else
-				{
-					tmp = szData;
-					KviQString::appendFormatted(tmp, "%sen", KVI_PATH_SEPARATOR);
-					if(KviFileUtils::directoryExists(tmp))
-						szData = tmp;
-				}
 			}
-			break;
-		case HelpEN:
-			KviQString::appendFormatted(szData, "help%sen", KVI_PATH_SEPARATOR);
-			break;
-		case HelpNoIntl:
-			szData.append("help");
-			break;
-		case Log:
-			qDebug("WARNING Global log directory requested!");
-			break;
-		case Incoming:
-			qDebug("WARNING Global incoming directory requested!");
-			break;
-		case Trash:
-			qDebug("WARNING Global trash directory requested!");
-			break;
-		case Config:
-			szData.append("config");
-			break;
-		case Audio:
-			szData.append("audio");
-			break;
-		case Scripts:
-			szData.append("scripts");
-			break;
-		case MsgColors:
-			szData.append("msgcolors");
-			break;
-		case Charmaps:
-			szData.append("charmaps");
-			break;
-		case Avatars:
-			szData.append("avatars");
-			break;
-		case DefScript:
-			szData.append("defscript");
-			break;
-		case License:
-			szData.append("license");
-			break;
-		case Filters:
-			szData.append("filters");
-			break;
-		case Locale:
-			szData.append("locale");
-			break;
-		case Tmp:
-			qDebug("WARNING Global tmp directory requested!");
-			break;
-		case Themes:
-			szData.append("themes");
-			break;
-		case Classes:
-			szData.append("classes");
-			break;
-		case SmallIcons:
-			szData.append("pics" KVI_PATH_SEPARATOR KVI_SMALLICONS_SUBDIRECTORY);
-			break;
+		}
+		break;
+	case HelpEN:
+		KviQString::appendFormatted(szData, "help%sen", KVI_PATH_SEPARATOR);
+		break;
+	case HelpNoIntl:
+		szData.append("help");
+		break;
+	case Log:
+		qDebug("WARNING Global log directory requested!");
+		break;
+	case Incoming:
+		qDebug("WARNING Global incoming directory requested!");
+		break;
+	case Trash:
+		qDebug("WARNING Global trash directory requested!");
+		break;
+	case Config:
+		szData.append("config");
+		break;
+	case Audio:
+		szData.append("audio");
+		break;
+	case Scripts:
+		szData.append("scripts");
+		break;
+	case MsgColors:
+		szData.append("msgcolors");
+		break;
+	case Charmaps:
+		szData.append("charmaps");
+		break;
+	case Avatars:
+		szData.append("avatars");
+		break;
+	case DefScript:
+		szData.append("defscript");
+		break;
+	case License:
+		szData.append("license");
+		break;
+	case Filters:
+		szData.append("filters");
+		break;
+	case Locale:
+		szData.append("locale");
+		break;
+	case Tmp:
+		qDebug("WARNING Global tmp directory requested!");
+		break;
+	case Themes:
+		szData.append("themes");
+		break;
+	case Classes:
+		szData.append("classes");
+		break;
+	case SmallIcons:
+		szData.append("pics" KVI_PATH_SEPARATOR KVI_SMALLICONS_SUBDIRECTORY);
+		break;
 	}
 
 	if(!appendFile.isEmpty())
@@ -163,136 +163,136 @@ void KviApplication::getLocalKvircDirectory(QString & szData, KvircSubdir dir, c
 
 	switch(dir)
 	{
-		case None:
-			break;
-		case Pics:
-			szData.append("pics");
-			break;
-		case EasyPlugins:
-			szData.append("easyplugins");
-			break;
-		case Config:
-			szData.append("config");
-			break;
-		case ConfigPlugins:
-			szData.append("config" KVI_PATH_SEPARATOR "modules");
-			break;
-		case ConfigScripts:
-			szData.append("config" KVI_PATH_SEPARATOR "scripts");
-			break;
-		case Log:
-			szData = KVI_OPTION_STRING(KviOption_stringLogsPath);
-			// we should take special care here
-			// the user is likely to mess the path behind our back
-			// try to recover from most common problems
-			while(szData.endsWith(KVI_PATH_SEPARATOR_CHAR))
-				szData = szData.remove(szData.length() - 1, 1);
-			if(szData.isEmpty())
+	case None:
+		break;
+	case Pics:
+		szData.append("pics");
+		break;
+	case EasyPlugins:
+		szData.append("easyplugins");
+		break;
+	case Config:
+		szData.append("config");
+		break;
+	case ConfigPlugins:
+		szData.append("config" KVI_PATH_SEPARATOR "modules");
+		break;
+	case ConfigScripts:
+		szData.append("config" KVI_PATH_SEPARATOR "scripts");
+		break;
+	case Log:
+		szData = KVI_OPTION_STRING(KviOption_stringLogsPath);
+		// we should take special care here
+		// the user is likely to mess the path behind our back
+		// try to recover from most common problems
+		while(szData.endsWith(KVI_PATH_SEPARATOR_CHAR))
+			szData = szData.remove(szData.length() - 1, 1);
+		if(szData.isEmpty())
+		{
+			szData = m_szLocalKvircDir;
+			if(!szData.endsWith(QString(QChar(KVI_PATH_SEPARATOR_CHAR))))
+				szData.append(KVI_PATH_SEPARATOR_CHAR);
+			szData.append("log");
+			KVI_OPTION_STRING(KviOption_stringLogsPath) = szData;
+		}
+		break;
+	case Incoming:
+		szData = KVI_OPTION_STRING(KviOption_stringIncomingPath);
+		// we should take special care here
+		// the user is likely to mess the path behind our back
+		// try to recover from most common problems
+		while(szData.endsWith(KVI_PATH_SEPARATOR_CHAR))
+			szData = szData.remove(szData.length() - 1, 1);
+		if(szData.isEmpty())
+		{
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+			if(m_bPortable)
 			{
 				szData = m_szLocalKvircDir;
-				if(!szData.endsWith(QString(QChar(KVI_PATH_SEPARATOR_CHAR))))
-					szData.append(KVI_PATH_SEPARATOR_CHAR);
-				szData.append("log");
-				KVI_OPTION_STRING(KviOption_stringLogsPath) = szData;
 			}
-			break;
-		case Incoming:
-			szData = KVI_OPTION_STRING(KviOption_stringIncomingPath);
-			// we should take special care here
-			// the user is likely to mess the path behind our back
-			// try to recover from most common problems
-			while(szData.endsWith(KVI_PATH_SEPARATOR_CHAR))
-				szData = szData.remove(szData.length() - 1, 1);
-			if(szData.isEmpty())
+			else
 			{
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-				if(m_bPortable)
-				{
-					szData = m_szLocalKvircDir;
-				}
-				else
-				{
 #endif
-					szData = QDir::homePath();
+				szData = QDir::homePath();
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-				}
-#endif
-				if(!szData.endsWith(QString(QChar(KVI_PATH_SEPARATOR_CHAR))))
-					szData.append(KVI_PATH_SEPARATOR_CHAR);
-				szData.append(KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME);
-				KVI_OPTION_STRING(KviOption_stringIncomingPath) = szData;
 			}
-			break;
-		case Help:
-			szData.append("help");
+#endif
+			if(!szData.endsWith(QString(QChar(KVI_PATH_SEPARATOR_CHAR))))
+				szData.append(KVI_PATH_SEPARATOR_CHAR);
+			szData.append(KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME);
+			KVI_OPTION_STRING(KviOption_stringIncomingPath) = szData;
+		}
+		break;
+	case Help:
+		szData.append("help");
+		{
+			// Localized help
+			QString tmp = KviLocale::instance()->localeName();
+			tmp.prepend(KVI_PATH_SEPARATOR_CHAR);
+			tmp.prepend(szData);
+			if(KviFileUtils::directoryExists(tmp))
+				szData = tmp;
+			else
 			{
-				// Localized help
-				QString tmp = KviLocale::instance()->localeName();
-				tmp.prepend(KVI_PATH_SEPARATOR_CHAR);
-				tmp.prepend(szData);
+				tmp = szData;
+				tmp.append(KVI_PATH_SEPARATOR "en");
 				if(KviFileUtils::directoryExists(tmp))
 					szData = tmp;
-				else
-				{
-					tmp = szData;
-					tmp.append(KVI_PATH_SEPARATOR "en");
-					if(KviFileUtils::directoryExists(tmp))
-						szData = tmp;
-				}
 			}
-			break;
-		case HelpEN:
-			szData.append("help" KVI_PATH_SEPARATOR "en");
-			break;
-		case HelpNoIntl:
-			szData.append("help");
-			break;
-		case Audio:
-			szData.append("audio");
-			break;
-		case Scripts:
-			szData.append("scripts");
-			break;
-		case Modules:
-		case Plugins:
-			szData.append("modules");
-			break;
-		case Trash:
-			szData.append("trash");
-			break;
-		case MsgColors:
-			szData.append("msgcolors");
-			break;
-		case Charmaps:
-			szData.append("charmaps");
-			break;
-		case Avatars:
-			szData.append("avatars");
-			break;
-		case License:
-			szData.append("license");
-			break;
-		case Filters:
-			szData.append("filters");
-			break;
-		case Tmp:
-			szData.append("tmp");
-			break;
-		case Locale:
-			szData.append("locale");
-			break;
-		case Themes:
-			szData.append("themes");
-			break;
-		case DefScript:
-			szData.append("defscript"); /* should never happen! */
-			break;
-		case Classes:
-			szData.append("classes");
-			break;
-		case SmallIcons:
-			szData.append("pics" KVI_PATH_SEPARATOR KVI_SMALLICONS_SUBDIRECTORY);
-			break;
+		}
+		break;
+	case HelpEN:
+		szData.append("help" KVI_PATH_SEPARATOR "en");
+		break;
+	case HelpNoIntl:
+		szData.append("help");
+		break;
+	case Audio:
+		szData.append("audio");
+		break;
+	case Scripts:
+		szData.append("scripts");
+		break;
+	case Modules:
+	case Plugins:
+		szData.append("modules");
+		break;
+	case Trash:
+		szData.append("trash");
+		break;
+	case MsgColors:
+		szData.append("msgcolors");
+		break;
+	case Charmaps:
+		szData.append("charmaps");
+		break;
+	case Avatars:
+		szData.append("avatars");
+		break;
+	case License:
+		szData.append("license");
+		break;
+	case Filters:
+		szData.append("filters");
+		break;
+	case Tmp:
+		szData.append("tmp");
+		break;
+	case Locale:
+		szData.append("locale");
+		break;
+	case Themes:
+		szData.append("themes");
+		break;
+	case DefScript:
+		szData.append("defscript"); /* should never happen! */
+		break;
+	case Classes:
+		szData.append("classes");
+		break;
+	case SmallIcons:
+		szData.append("pics" KVI_PATH_SEPARATOR KVI_SMALLICONS_SUBDIRECTORY);
+		break;
 	}
 	if(bCreateIfNeeded)
 		KviFileUtils::makeDir(szData);

@@ -102,7 +102,7 @@ protected:
 	QRadioButton * m_pConsoleRadio;
 	QRadioButton * m_pActiveRadio;
 	QRadioButton * m_pQuietRadio;
-public slots:
+	public slots:
 	void enableIpv4InIpv6(bool);
 };
 

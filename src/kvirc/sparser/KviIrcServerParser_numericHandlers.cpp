@@ -150,12 +150,12 @@ void KviIrcServerParser::parseNumeric004(KviIrcMessage * msg)
 		if(!_OUTPUT_QUIET)
 		{
 			msg->console()->output(KVI_OUT_SYSTEMWARNING, __tr2qs(
-			                                                  "One or more standard mode flags are missing in the server available modes.\n"
-			                                                  "This is caused either by a non RFC1459-compliant IRC daemon or a broken server reply.\n"
-			                                                  "Server umodes seem to be '%s' and channel modes seem to be '%s'.\n"
-			                                                  "Ignoring this reply and assuming that the basic set of modes is available.\n"
-			                                                  "If you have strange problems, try changing the server."),
-			    umodes.ptr(), chanmodes.ptr());
+				"One or more standard mode flags are missing in the server available modes.\n"
+				"This is caused either by a non RFC1459-compliant IRC daemon or a broken server reply.\n"
+				"Server umodes seem to be '%s' and channel modes seem to be '%s'.\n"
+				"Ignoring this reply and assuming that the basic set of modes is available.\n"
+				"If you have strange problems, try changing the server."),
+				umodes.ptr(), chanmodes.ptr());
 		}
 		umodes = "oiws";         // standard support
 		chanmodes = "obtkmlvsn"; // standard support
@@ -212,8 +212,8 @@ void KviIrcServerParser::parseNumeric004(KviIrcMessage * msg)
 	// FIXME: #warning "TO ACTIVE ? OR TO CONSOLE ?"
 	if(!_OUTPUT_MUTE && !msg->haltOutput())
 		msg->console()->output(KVI_OUT_SERVERINFO,
-		    __tr2qs("Server %Q version %S supporting user modes '%S' and channel modes '%S'"),
-		    &szServer, &version, &umodes, &chanmodes);
+			__tr2qs("Server %Q version %S supporting user modes '%S' and channel modes '%S'"),
+			&szServer, &version, &umodes, &chanmodes);
 }
 
 void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
@@ -325,7 +325,6 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 				msg->connection()->serverInfo()->setSupportsCodePages(true);
 				if((!_OUTPUT_MUTE) && (!msg->haltOutput()) && KVI_OPTION_BOOL(KviOption_boolShowExtendedServerInfo))
 					msg->console()->outputNoFmt(KVI_OUT_SERVERINFO, __tr2qs("This server supports the CODEPAGE command, it will be used"));
-
 			}
 			else if(kvi_strEqualCIN("CHANMODES=", p, 10))
 			{
@@ -361,7 +360,6 @@ void KviIrcServerParser::parseNumeric005(KviIrcMessage * msg)
 
 				if((!_OUTPUT_MUTE) && (!msg->haltOutput()) && KVI_OPTION_BOOL(KviOption_boolShowExtendedServerInfo))
 					msg->console()->outputNoFmt(KVI_OUT_SERVERINFO, __tr2qs("This server supports the CODEPAGE command, it will be used"));
-
 			}
 			else if(kvi_strEqualCIN("WHOX", p, 4))
 			{
@@ -466,8 +464,8 @@ void KviIrcServerParser::parseNumeric020(KviIrcMessage * msg)
 	{
 		QString szWText = msg->console()->decodeText(msg->safeTrailing());
 		msg->console()->output(
-		    KVI_OUT_CONNECTION, "%c\r!s\r%s\r%c: %Q", KviControlCodes::Bold,
-		    msg->safePrefix(), KviControlCodes::Bold, &szWText);
+			KVI_OUT_CONNECTION, "%c\r!s\r%s\r%c: %Q", KviControlCodes::Bold,
+			msg->safePrefix(), KviControlCodes::Bold, &szWText);
 	}
 }
 
@@ -526,9 +524,9 @@ void KviIrcServerParser::parseNumericNames(KviIrcMessage * msg)
 			// and make it join
 			if(!mask.nick().isEmpty())
 				chan->join(mask.nick(),
-				    mask.hasUser() ? mask.user() : QString(),
-				    mask.hasHost() ? mask.host() : QString(),
-				    iFlags);
+					mask.hasUser() ? mask.user() : QString(),
+					mask.hasHost() ? mask.host() : QString(),
+					iFlags);
 			*aux = ' ';
 			*aux = save;
 			// run to the next nick (or the end)
@@ -609,7 +607,7 @@ void KviIrcServerParser::parseNumericTopic(KviIrcMessage * msg)
 
 		DECRYPT_IF_NEEDED(chan, msg->safeTrailing(), KVI_OUT_TOPIC, KVI_OUT_TOPICCRYPTED, szBuffer, txtptr, msgtype)
 
-		QString szTopic = chan->decodeText(txtptr);
+			QString szTopic = chan->decodeText(txtptr);
 
 		chan->topicWidget()->setTopic(szTopic);
 		chan->topicWidget()->setTopicSetBy(__tr2qs("(unknown)"));
@@ -622,7 +620,7 @@ void KviIrcServerParser::parseNumericTopic(KviIrcMessage * msg)
 
 		QString szTopic = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_TOPIC, __tr2qs("Topic for \r!c\r%Q\r is: %Q"),
-		    &szChan, &szTopic);
+			&szChan, &szTopic);
 	}
 }
 
@@ -642,7 +640,7 @@ void KviIrcServerParser::parseNumericNoTopic(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_TOPIC, __tr2qs("No topic is set for channel \r!c\r%Q\r"),
-		    &szChan);
+			&szChan);
 	}
 }
 
@@ -666,17 +664,17 @@ void KviIrcServerParser::parseNumericTopicWhoTime(KviIrcMessage * msg)
 
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
-		case 0:
-			// this is the equivalent to an empty date.toString() call, but it's needed
-			// to ensure qt4 will use the default() locale and not the system() one
-			szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
-			break;
-		case 1:
-			szDate = date.toString(Qt::ISODate);
-			break;
-		case 2:
-			szDate = date.toString(Qt::SystemLocaleShortDate);
-			break;
+	case 0:
+		// this is the equivalent to an empty date.toString() call, but it's needed
+		// to ensure qt4 will use the default() locale and not the system() one
+		szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
+		break;
+	case 1:
+		szDate = date.toString(Qt::ISODate);
+		break;
+	case 2:
+		szDate = date.toString(Qt::SystemLocaleShortDate);
+		break;
 	}
 
 	QString szWho = msg->connection()->decodeText(msg->safeParam(2));
@@ -709,12 +707,12 @@ void KviIrcServerParser::parseNumericTopicWhoTime(KviIrcMessage * msg)
 		if(bOk)
 		{
 			pOut->output(KVI_OUT_TOPIC, __tr2qs("Topic for \r!c\r%Q\r was set by %Q on %Q"),
-			    &szChan, &szDisplayableWho, &szDate);
+				&szChan, &szDisplayableWho, &szDate);
 		}
 		else
 		{
 			pOut->output(KVI_OUT_TOPIC, __tr2qs("Topic for \r!c\r%Q\r was set by %Q"),
-			    &szChan, &szDisplayableWho);
+				&szChan, &szDisplayableWho);
 		}
 	}
 }
@@ -735,12 +733,12 @@ void KviIrcServerParser::parseNumericChannelModeIs(KviIrcMessage * msg)
 		if((!szChan.isEmpty()) && IS_CHANNEL_TYPE_FLAG(szChan[0]))
 		{
 			pOut->output(KVI_OUT_CHANMODE, __tr2qs("Channel mode for \r!c\r%Q\r is %s"),
-			    &szChan, msg->safeParam(2));
+				&szChan, msg->safeParam(2));
 		}
 		else
 		{
 			pOut->output(KVI_OUT_MODE, __tr2qs("User mode for \r!n\r%Q\r is %s"),
-			    &szChan, msg->safeParam(2));
+				&szChan, msg->safeParam(2));
 		}
 	}
 }
@@ -757,17 +755,17 @@ void getDateTimeStringFromCharTimeT(QString & szBuffer, const char * time_t_stri
 
 		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 		{
-			case 0:
-				// this is the equivalent to an empty date.toString() call, but it's needed
-				// to ensure qt4 will use the default() locale and not the system() one
-				szBuffer = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
-				break;
-			case 1:
-				szBuffer = date.toString(Qt::ISODate);
-				break;
-			case 2:
-				szBuffer = date.toString(Qt::SystemLocaleShortDate);
-				break;
+		case 0:
+			// this is the equivalent to an empty date.toString() call, but it's needed
+			// to ensure qt4 will use the default() locale and not the system() one
+			szBuffer = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
+			break;
+		case 1:
+			szBuffer = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szBuffer = date.toString(Qt::SystemLocaleShortDate);
+			break;
 		}
 	}
 	else
@@ -795,7 +793,7 @@ void KviIrcServerParser::parseNumeric367(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_BAN, __tr2qs("%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"),
-		    &(__tr2qs("Ban listing")), &szChan, 'b', &banmask, &bansetby, &bansetat);
+			&(__tr2qs("Ban listing")), &szChan, 'b', &banmask, &bansetby, &bansetat);
 	}
 }
 
@@ -975,15 +973,15 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage * msg)
 		QString szAway = bAway ? __tr2qs("Yes") : __tr2qs("No");
 
 		pOut->output(KVI_OUT_WHO,
-		    __tr2qs("WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name%c: %Q"),
-		    KviControlCodes::Bold, &szNick, KviControlCodes::Bold,
-		    &szUser, &szHost, KviControlCodes::Underline,
-		    KviControlCodes::Underline, &szChan, KviControlCodes::Underline,
-		    KviControlCodes::Underline, &szServ, KviControlCodes::Underline,
-		    KviControlCodes::Underline, iHops, KviControlCodes::Underline, KviControlCodes::Underline,
-		    &szFlag, KviControlCodes::Underline, KviControlCodes::Underline,
-		    &szAway, KviControlCodes::Underline,
-		    KviControlCodes::Underline, &szReal);
+			__tr2qs("WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name%c: %Q"),
+			KviControlCodes::Bold, &szNick, KviControlCodes::Bold,
+			&szUser, &szHost, KviControlCodes::Underline,
+			KviControlCodes::Underline, &szChan, KviControlCodes::Underline,
+			KviControlCodes::Underline, &szServ, KviControlCodes::Underline,
+			KviControlCodes::Underline, iHops, KviControlCodes::Underline, KviControlCodes::Underline,
+			&szFlag, KviControlCodes::Underline, KviControlCodes::Underline,
+			&szAway, KviControlCodes::Underline,
+			KviControlCodes::Underline, &szReal);
 	}
 }
 
@@ -1010,7 +1008,7 @@ void KviIrcServerParser::parseNumericWhospcrpl(KviIrcMessage * msg)
 			KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoRepliesToActiveWindow) && chan ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 
 			pOut->output(KVI_OUT_UNHANDLED,
-			    "[%s][%s] %Q", msg->prefix(), msg->command(), &szWText);
+				"[%s][%s] %Q", msg->prefix(), msg->command(), &szWText);
 			return;
 		}
 	}
@@ -1144,14 +1142,14 @@ void KviIrcServerParser::parseLoginNicknameProblem(KviIrcMessage * msg)
 	QString szChoiceDescriptionBuffer;
 
 	QString szNextNick = msg->connection()->pickNextLoginNickName(
-	    false, // false = fallback to random choices, then give up with an empty string
-	    msg->connection()->decodeText(msg->safeParam(1)),
-	    szChoiceDescriptionBuffer);
+		false, // false = fallback to random choices, then give up with an empty string
+		msg->connection()->decodeText(msg->safeParam(1)),
+		szChoiceDescriptionBuffer);
 
 	if(szNextNick.isEmpty())
 	{
 		msg->console()->output(KVI_OUT_NICKNAMEPROBLEM,
-		    __tr2qs("The server is refusing all the login nicknames: giving up, you must send the nickname manually"));
+			__tr2qs("The server is refusing all the login nicknames: giving up, you must send the nickname manually"));
 		return;
 	}
 
@@ -1163,11 +1161,11 @@ void KviIrcServerParser::parseLoginNicknameProblem(KviIrcMessage * msg)
 	if(!msg->haltOutput())
 	{
 		msg->console()->output(
-		    KVI_OUT_NICKNAMEPROBLEM,
-		    __tr2qs("No way to login as \r!n\r%1\r: the server said '%2: %3'")
-		        .arg(msg->connection()->decodeText(msg->safeParam(1)))
-		        .arg(msg->numeric())
-		        .arg(msg->connection()->decodeText(msg->safeTrailing())));
+			KVI_OUT_NICKNAMEPROBLEM,
+			__tr2qs("No way to login as \r!n\r%1\r: the server said '%2: %3'")
+			.arg(msg->connection()->decodeText(msg->safeParam(1)))
+			.arg(msg->numeric())
+			.arg(msg->connection()->decodeText(msg->safeTrailing())));
 
 		QString szOut = __tr2qs("Trying to use %1 as nickname").arg(szNextNick);
 		if(_OUTPUT_VERBOSE)
@@ -1215,7 +1213,7 @@ void KviIrcServerParser::parseNumericBanOnChan(KviIrcMessage * msg)
 		QString szChannel = msg->connection()->decodeText(msg->safeParam(2));
 		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_JOINERROR,
-		    "\r!c\r%Q\r: %Q", &szChannel, &szWText);
+			"\r!c\r%Q\r: %Q", &szChannel, &szWText);
 	}
 }
 
@@ -1269,7 +1267,7 @@ void KviIrcServerParser::parseNumericForward(KviIrcMessage * msg)
 		// what we are doing is concatenating the generic server notice prefix
 		// with a more useful message so gettext can parse our final output easier.
 		pOut->output(KVI_OUT_SERVERNOTICE, msg->serverTime(),
-		    "[\r!s\r%Q\r]: " + __tr2qs("You are being forwarded from %Q to %Q"), &pref, &szOldChan, &szNewChan);
+			"[\r!s\r%Q\r]: " + __tr2qs("You are being forwarded from %Q to %Q"), &pref, &szOldChan, &szNewChan);
 	}
 }
 
@@ -1288,7 +1286,7 @@ void KviIrcServerParser::parseNumericCantJoinChannel(KviIrcMessage * msg)
 		QString szChannel = msg->connection()->decodeText(msg->safeParam(1));
 		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_JOINERROR,
-		    "\r!c\r%Q\r: %Q", &szChannel, &szWText);
+			"\r!c\r%Q\r: %Q", &szChannel, &szWText);
 	}
 }
 
@@ -1364,7 +1362,7 @@ void KviIrcServerParser::parseCommandSyntaxHelp(KviIrcMessage * msg)
 		QString szCommand = msg->connection()->decodeText(msg->safeParam(1));
 		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_HELP,
-		    __tr2qs("Command syntax %Q: %Q"), &szCommand, &szWText); // Pragma: wheee..... that should be in English :D
+			__tr2qs("Command syntax %Q: %Q"), &szCommand, &szWText); // Pragma: wheee..... that should be in English :D
 	}
 }
 
@@ -1480,7 +1478,7 @@ void KviIrcServerParser::parseCommandEndOfHelp(KviIrcMessage * msg)
 		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		QString szCommand = msg->connection()->decodeText(msg->safeParam(1));
 		pOut->output(KVI_OUT_HELP,
-		    __tr2qs("End of help about %Q"), &szCommand);
+			__tr2qs("End of help about %Q"), &szCommand);
 	}
 }
 
@@ -1503,7 +1501,7 @@ void KviIrcServerParser::parseNumericNicknameProblem(KviIrcMessage * msg)
 			QString szNk = msg->connection()->decodeText(msg->safeParam(1));
 			QString szWText = msg->connection()->decodeText(msg->safeTrailing());
 			msg->console()->output(KVI_OUT_NICKNAMEPROBLEM,
-			    "\r!n\r%Q\r: %Q", &szNk, &szWText);
+				"\r!n\r%Q\r: %Q", &szNk, &szWText);
 		}
 	}
 }
@@ -1539,7 +1537,7 @@ void KviIrcServerParser::parseNumericWhoisAway(KviIrcMessage * msg)
 		if(!pOut)
 			pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_WHOISUSER, __tr2qs("%c\r!n\r%Q\r%c is away: %Q"),
-		    KviControlCodes::Bold, &szNk, KviControlCodes::Bold, &szWText);
+			KviControlCodes::Bold, &szNk, KviControlCodes::Bold, &szWText);
 	}
 }
 
@@ -1595,13 +1593,13 @@ void KviIrcServerParser::parseNumericWhoisUser(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(
-		    KVI_OUT_WHOISUSER, __tr2qs("%c\r!n\r%Q\r%c is %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"), KviControlCodes::Bold,
-		    &szNick, KviControlCodes::Bold, KviControlCodes::Underline, &szNick,
-		    &szUser, &szHost, KviControlCodes::Underline);
+			KVI_OUT_WHOISUSER, __tr2qs("%c\r!n\r%Q\r%c is %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"), KviControlCodes::Bold,
+			&szNick, KviControlCodes::Bold, KviControlCodes::Underline, &szNick,
+			&szUser, &szHost, KviControlCodes::Underline);
 
 		pOut->output(
-		    KVI_OUT_WHOISUSER, __tr2qs("%c\r!n\r%Q\r%c's real name: %Q"), KviControlCodes::Bold,
-		    &szNick, KviControlCodes::Bold, &szReal);
+			KVI_OUT_WHOISUSER, __tr2qs("%c\r!n\r%Q\r%c's real name: %Q"), KviControlCodes::Bold,
+			&szNick, KviControlCodes::Bold, &szReal);
 	}
 }
 
@@ -1621,12 +1619,12 @@ void KviIrcServerParser::parseNumericWhowasUser(KviIrcMessage * msg)
 
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(
-		    KVI_OUT_WHOISUSER, __tr2qs("%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"), KviControlCodes::Bold,
-		    &szNick, KviControlCodes::Bold, KviControlCodes::Underline, &szNick,
-		    &szUser, &szHost, KviControlCodes::Underline);
+			KVI_OUT_WHOISUSER, __tr2qs("%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"), KviControlCodes::Bold,
+			&szNick, KviControlCodes::Bold, KviControlCodes::Underline, &szNick,
+			&szUser, &szHost, KviControlCodes::Underline);
 		pOut->output(
-		    KVI_OUT_WHOISUSER, __tr2qs("%c\r!n\r%Q\r%c's real name was: %Q"), KviControlCodes::Bold,
-		    &szNick, KviControlCodes::Bold, &szReal);
+			KVI_OUT_WHOISUSER, __tr2qs("%c\r!n\r%Q\r%c's real name was: %Q"), KviControlCodes::Bold,
+			&szNick, KviControlCodes::Bold, &szReal);
 	}
 }
 
@@ -1661,7 +1659,6 @@ void KviIrcServerParser::parseNumericWhoisChannels(KviIrcMessage * msg)
 			int i = 0;
 			while(i < len)
 			{
-
 				if(IS_CHANNEL_TYPE_FLAG(szCur[i]) && (!IS_USER_MODE_PREFIX(szCur[i])))
 					break;
 				i++;
@@ -1694,8 +1691,8 @@ void KviIrcServerParser::parseNumericWhoisChannels(KviIrcMessage * msg)
 		}
 
 		pOut->output(
-		    KVI_OUT_WHOISCHANNELS, __tr2qs("%c\r!n\r%Q\r%c's channels: %Q"), KviControlCodes::Bold,
-		    &szNick, KviControlCodes::Bold, &szChanList);
+			KVI_OUT_WHOISCHANNELS, __tr2qs("%c\r!n\r%Q\r%c's channels: %Q"), KviControlCodes::Bold,
+			&szNick, KviControlCodes::Bold, &szChanList);
 	}
 }
 
@@ -1741,8 +1738,8 @@ void KviIrcServerParser::parseNumericWhoisIdle(KviIrcMessage * msg)
 		unsigned int uMins = uTime / 60;
 		uTime = uTime % 60;
 		pOut->output(
-		    KVI_OUT_WHOISIDLE, __tr2qs("%c\r!n\r%Q\r%c's idle time: %ud %uh %um %us"), KviControlCodes::Bold,
-		    &szNick, KviControlCodes::Bold, uDays, uHours, uMins, uTime);
+			KVI_OUT_WHOISIDLE, __tr2qs("%c\r!n\r%Q\r%c's idle time: %ud %uh %um %us"), KviControlCodes::Bold,
+			&szNick, KviControlCodes::Bold, uDays, uHours, uMins, uTime);
 
 		uTime = sign.toUInt(&bOk);
 		if(bOk)
@@ -1753,22 +1750,22 @@ void KviIrcServerParser::parseNumericWhoisIdle(KviIrcMessage * msg)
 
 			switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 			{
-				case 0:
-					// this is the equivalent to an empty date.toString() call, but it's needed
-					// to ensure qt4 will use the default() locale and not the system() one
-					szTmp = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
-					break;
-				case 1:
-					szTmp = date.toString(Qt::ISODate);
-					break;
-				case 2:
-					szTmp = date.toString(Qt::SystemLocaleShortDate);
-					break;
+			case 0:
+				// this is the equivalent to an empty date.toString() call, but it's needed
+				// to ensure qt4 will use the default() locale and not the system() one
+				szTmp = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
+				break;
+			case 1:
+				szTmp = date.toString(Qt::ISODate);
+				break;
+			case 2:
+				szTmp = date.toString(Qt::SystemLocaleShortDate);
+				break;
 			}
 
 			pOut->output(
-			    KVI_OUT_WHOISIDLE, __tr2qs("%c\r!n\r%Q\r%c's signon time: %Q"), KviControlCodes::Bold,
-			    &szNick, KviControlCodes::Bold, &szTmp);
+				KVI_OUT_WHOISIDLE, __tr2qs("%c\r!n\r%Q\r%c's signon time: %Q"), KviControlCodes::Bold,
+				&szNick, KviControlCodes::Bold, &szTmp);
 		}
 	}
 }
@@ -1807,8 +1804,8 @@ void KviIrcServerParser::parseNumericWhoisServer(KviIrcMessage * msg)
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		QString szWText = pOut->decodeText(msg->safeTrailing());
 		pOut->output(
-		    KVI_OUT_WHOISSERVER, __tr2qs("%c\r!n\r%Q\r%c's server: \r!s\r%Q\r - %Q"), KviControlCodes::Bold,
-		    &szNick, KviControlCodes::Bold, &szServ, &szWText);
+			KVI_OUT_WHOISSERVER, __tr2qs("%c\r!n\r%Q\r%c's server: \r!s\r%Q\r - %Q"), KviControlCodes::Bold,
+			&szNick, KviControlCodes::Bold, &szServ, &szWText);
 	}
 }
 
@@ -1833,8 +1830,8 @@ void KviIrcServerParser::parseNumericWhoisAuth(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(
-		    KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c is authenticated as %Q"), KviControlCodes::Bold,
-		    &szNick, KviControlCodes::Bold, &szAuth);
+			KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c is authenticated as %Q"), KviControlCodes::Bold,
+			&szNick, KviControlCodes::Bold, &szAuth);
 	}
 }
 
@@ -1851,8 +1848,8 @@ void KviIrcServerParser::parseNumericWhoisRegistered(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(
-		    KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c is a registered nickname"), KviControlCodes::Bold,
-		    &szNick, KviControlCodes::Bold);
+			KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c is a registered nickname"), KviControlCodes::Bold,
+			&szNick, KviControlCodes::Bold);
 	}
 }
 
@@ -1887,14 +1884,14 @@ void KviIrcServerParser::parseNumericWhoisActually(KviIrcMessage * msg)
 		if(szOth.contains(QChar(',')))
 		{
 			pOut->output(
-			    KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c's actual user@host: %Q, actual IP: %Q"), KviControlCodes::Bold,
-			    &szNick, KviControlCodes::Bold, &szUserHost, &szIpAddr);
+				KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c's actual user@host: %Q, actual IP: %Q"), KviControlCodes::Bold,
+				&szNick, KviControlCodes::Bold, &szUserHost, &szIpAddr);
 		}
 		else
 		{
 			pOut->output(
-			    KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c's actual host: %Q"), KviControlCodes::Bold,
-			    &szNick, KviControlCodes::Bold, &szUserHost);
+				KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c's actual host: %Q"), KviControlCodes::Bold,
+				&szNick, KviControlCodes::Bold, &szUserHost);
 		}
 	}
 }
@@ -1926,8 +1923,8 @@ void KviIrcServerParser::parseNumericWhoisOther(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(
-		    KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c's info: %Q"), KviControlCodes::Bold,
-		    &szNick, KviControlCodes::Bold, &szOth);
+			KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c's info: %Q"), KviControlCodes::Bold,
+			&szNick, KviControlCodes::Bold, &szOth);
 	}
 }
 
@@ -1975,8 +1972,8 @@ void KviIrcServerParser::parseNumericEndOfWhois(KviIrcMessage * msg)
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		QString pref = msg->connection()->decodeText(msg->safePrefix());
 		pOut->output(
-		    KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"), KviControlCodes::Bold,
-		    &szNick, KviControlCodes::Bold, &pref);
+			KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"), KviControlCodes::Bold,
+			&szNick, KviControlCodes::Bold, &pref);
 	}
 }
 
@@ -1993,8 +1990,8 @@ void KviIrcServerParser::parseNumericEndOfWhowas(KviIrcMessage * msg)
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		QString pref = msg->connection()->decodeText(msg->safePrefix());
 		pOut->output(
-		    KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c WHOWAS info from \r!s\r%Q\r"), KviControlCodes::Bold,
-		    &szNick, KviControlCodes::Bold, &pref);
+			KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c WHOWAS info from \r!s\r%Q\r"), KviControlCodes::Bold,
+			&szNick, KviControlCodes::Bold, &pref);
 	}
 }
 
@@ -2039,7 +2036,7 @@ void KviIrcServerParser::parseNumericNoSuchNick(KviIrcMessage * msg)
 		//}
 		QString szWText = pOut->decodeText(msg->safeTrailing());
 		pOut->output(KVI_OUT_NICKNAMEPROBLEM, "\r!n\r%Q\r: %Q",
-		    &szNick, &szWText);
+			&szNick, &szWText);
 	}
 }
 
@@ -2086,17 +2083,17 @@ void KviIrcServerParser::parseNumericCreationTime(KviIrcMessage * msg)
 	QString szDate;
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
-		case 0:
-			// this is the equivalent to an empty date.toString() call, but it's needed
-			// to ensure qt4 will use the default() locale and not the system() one
-			szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
-			break;
-		case 1:
-			szDate = date.toString(Qt::ISODate);
-			break;
-		case 2:
-			szDate = date.toString(Qt::SystemLocaleShortDate);
-			break;
+	case 0:
+		// this is the equivalent to an empty date.toString() call, but it's needed
+		// to ensure qt4 will use the default() locale and not the system() one
+		szDate = QLocale().toString(date, "ddd MMM d hh:mm:ss yyyy");
+		break;
+	case 1:
+		szDate = date.toString(Qt::ISODate);
+		break;
+	case 2:
+		szDate = date.toString(Qt::SystemLocaleShortDate);
+		break;
 	}
 
 	if(chan)
@@ -2110,7 +2107,7 @@ void KviIrcServerParser::parseNumericCreationTime(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_CREATIONTIME, __tr2qs("Channel \r!c\r%Q\r was created at %Q"),
-		    &szChan, &szDate);
+			&szChan, &szDate);
 	}
 }
 
@@ -2291,8 +2288,8 @@ void KviIrcServerParser::parseNumericBackFromAway(KviIrcMessage * msg)
 		{
 			int uTimeDiff = bWasAway ? (kvi_unixTime() - msg->connection()->userInfo()->awayTime()) : 0;
 			pOut->output(KVI_OUT_AWAY, __tr2qs("[Leaving away status after %ud %uh %um %us]: %Q"),
-			    uTimeDiff / 86400, (uTimeDiff % 86400) / 3600, (uTimeDiff % 3600) / 60, uTimeDiff % 60,
-			    &szWText);
+				uTimeDiff / 86400, (uTimeDiff % 86400) / 3600, (uTimeDiff % 3600) / 60, uTimeDiff % 60,
+				&szWText);
 		}
 		else
 		{
@@ -2387,7 +2384,7 @@ void KviIrcServerParser::parseNumericWatch(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_UNHANDLED,
-		    "[%s][%s] %s", msg->prefix(), msg->command(), msg->allParams());
+			"[%s][%s] %s", msg->prefix(), msg->command(), msg->allParams());
 	}
 }
 
@@ -2468,7 +2465,7 @@ void KviIrcServerParser::parseNumericTryAgain(KviIrcMessage * msg)
 
 		// Bank on the IRCd providing a useful explanation.
 		pOut->output(KVI_OUT_GENERICERROR, __tr2qs("Unable to use command %Q. %Q"),
-		    &szCmd, &szComment);
+			&szCmd, &szComment);
 	}
 }
 
@@ -2605,13 +2602,13 @@ void KviIrcServerParser::parseNumeric742(KviIrcMessage * msg)
 	if(chan)
 	{
 		chan->output(KVI_OUT_GENERICERROR, __tr2qs("Can't set mode %Q on %Q due to it having an active MLOCK policy, including modes %Q."),
-		    &mode, &szChan, &lock);
+			&mode, &szChan, &lock);
 	}
 	else
 	{
 		KviWindow * pOut = static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_GENERICERROR, __tr2qs("Can't set mode %Q on %Q due to it having an active MLOCK policy, including modes %Q."),
-		    &mode, &szChan, &lock);
+			&mode, &szChan, &lock);
 	}
 }
 
@@ -2776,7 +2773,7 @@ void KviIrcServerParser::parseNumericCodePageSet(KviIrcMessage * msg)
 	{
 		QString szMe = msg->connection()->decodeText(msg->safeParam(0));
 		if((szMe == msg->connection()->currentNickName() || szMe == "*") //fix for pre-login codepage message
-		    && KviLocale::instance()->codecForName(encoding.toUtf8().data()))
+			&& KviLocale::instance()->codecForName(encoding.toUtf8().data()))
 		{
 			msg->console()->output(KVI_OUT_TEXTENCODING, __tr2qs("Your encoding is now %Q"), &encoding);
 			msg->console()->setTextEncoding(encoding);
@@ -2786,7 +2783,7 @@ void KviIrcServerParser::parseNumericCodePageSet(KviIrcMessage * msg)
 		{
 			QString szWText = msg->connection()->decodeText(msg->allParams());
 			msg->connection()->console()->output(KVI_OUT_UNHANDLED,
-			    "[%s][%s] %Q", msg->prefix(), msg->command(), &szWText);
+				"[%s][%s] %Q", msg->prefix(), msg->command(), &szWText);
 		}
 	}
 }
@@ -2809,8 +2806,8 @@ void KviIrcServerParser::parseNumericCodePageScheme(KviIrcMessage * msg)
 			KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolWhoisRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 			QString szWText = pOut->decodeText(msg->safeTrailing());
 			pOut->output(
-			    KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c's codepage is %Q: %Q"), KviControlCodes::Bold,
-			    &szNick, KviControlCodes::Bold, &szCodepage, &szWText);
+				KVI_OUT_WHOISOTHER, __tr2qs("%c\r!n\r%Q\r%c's codepage is %Q: %Q"), KviControlCodes::Bold,
+				&szNick, KviControlCodes::Bold, &szCodepage, &szWText);
 		}
 	}
 	else
@@ -2820,7 +2817,7 @@ void KviIrcServerParser::parseNumericCodePageScheme(KviIrcMessage * msg)
 		{
 			QString szWText = msg->connection()->decodeText(msg->allParams());
 			msg->connection()->console()->output(KVI_OUT_UNHANDLED,
-			    "[%s][%s] %Q", msg->prefix(), msg->command(), &szWText);
+				"[%s][%s] %Q", msg->prefix(), msg->command(), &szWText);
 		}
 	}
 }
@@ -2910,19 +2907,19 @@ void KviIrcServerParser::parseNumericStartTls(KviIrcMessage * msg)
 
 	switch(msg->numeric())
 	{
-		case RPL_STARTTLSOK:
-			//670 is used on some ircd as a whois reply: these ircds will not be able to
-			//support starttls anyway.. see ticket #682
-			if(!msg->connection()->stateData()->sentStartTls())
-			{
-				parseNumericWhoisOther(msg);
-				return;
-			}
-			bEnable = true;
-			break;
-		case RPL_STARTTLSFAIL:
-			bEnable = false;
-			break;
+	case RPL_STARTTLSOK:
+		//670 is used on some ircd as a whois reply: these ircds will not be able to
+		//support starttls anyway.. see ticket #682
+		if(!msg->connection()->stateData()->sentStartTls())
+		{
+			parseNumericWhoisOther(msg);
+			return;
+		}
+		bEnable = true;
+		break;
+	case RPL_STARTTLSFAIL:
+		bEnable = false;
+		break;
 	}
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -3063,7 +3060,7 @@ void KviIrcServerParser::parseNumericOftcQuietList(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_BAN, __tr2qs("%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"),
-		    &(__tr2qs("mode listing")), &szChan, chMode, &banmask, &bansetby, &bansetat);
+			&(__tr2qs("mode listing")), &szChan, chMode, &banmask, &bansetby, &bansetat);
 	}
 }
 
@@ -3090,7 +3087,7 @@ void KviIrcServerParser::parseNumericQuietList(KviIrcMessage * msg)
 	{
 		KviWindow * pOut = chan ? chan : KVI_OPTION_BOOL(KviOption_boolServerRepliesToActiveWindow) ? msg->console()->activeWindow() : static_cast<KviWindow *>(msg->console());
 		pOut->output(KVI_OUT_BAN, __tr2qs("%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"),
-		    &(__tr2qs("mode listing")), &szChan, chMode, &banmask, &bansetby, &bansetat);
+			&(__tr2qs("mode listing")), &szChan, chMode, &banmask, &bansetby, &bansetat);
 	}
 }
 

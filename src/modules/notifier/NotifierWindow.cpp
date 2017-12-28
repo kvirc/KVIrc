@@ -52,14 +52,14 @@
 extern NotifierWindow * g_pNotifierWindow;
 
 NotifierWindow::NotifierWindow()
-    : QWidget(nullptr, Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
+	: QWidget(nullptr, Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-          | Qt::Tool)
+		| Qt::Tool)
 #else
 #ifndef COMPILE_ON_MAC
-              | Qt::Tool | Qt::X11BypassWindowManagerHint
+	| Qt::Tool | Qt::X11BypassWindowManagerHint
 #endif
-          )
+	)
 #endif
 {
 	setObjectName("kvirc_notifier_window");
@@ -79,10 +79,10 @@ NotifierWindow::NotifierWindow()
 	QRect r = pDesktop->availableGeometry(pDesktop->primaryScreen());
 
 	m_wndRect.setRect(
-	    r.x() + r.width() - (WDG_MIN_WIDTH + SPACING),
-	    r.y() + r.height() - (WDG_MIN_HEIGHT + SPACING),
-	    WDG_MIN_WIDTH,
-	    WDG_MIN_HEIGHT);
+		r.x() + r.width() - (WDG_MIN_WIDTH + SPACING),
+		r.y() + r.height() - (WDG_MIN_HEIGHT + SPACING),
+		WDG_MIN_WIDTH,
+		WDG_MIN_HEIGHT);
 
 	m_pWndTabs = new QTabWidget(this);
 	m_pWndTabs->setUsesScrollButtons(true);
@@ -287,51 +287,51 @@ void NotifierWindow::doShow(bool bDoAnimate)
 
 	switch(m_eState)
 	{
-		case Showing:
-			// already showing up
-			return;
-			break;
-		case Visible:
-			// already visible
-			return;
-			break;
-		case Hiding:
-			// ops.. hiding!
-			m_eState = Showing;
-			break;
-		case Hidden:
-			stopShowHideTimer();
-			stopBlinkTimer();
+	case Showing:
+		// already showing up
+		return;
+		break;
+	case Visible:
+		// already visible
+		return;
+		break;
+	case Hiding:
+		// ops.. hiding!
+		m_eState = Showing;
+		break;
+	case Hidden:
+		stopShowHideTimer();
+		stopBlinkTimer();
 
-			m_bDragging = false;
-			m_bCloseDown = false;
-			m_bPrevDown = false;
-			m_bNextDown = false;
-			m_bWriteDown = false;
-			m_bBlinkOn = false;
-			if(bDoAnimate)
-			{
-				m_pShowHideTimer = new QTimer();
-				connect(m_pShowHideTimer, SIGNAL(timeout()), this, SLOT(heartbeat()));
-				m_dOpacity = OPACITY_STEP;
-				m_eState = Showing;
-				m_bCrashShowWorkAround = true;
-				setWindowOpacity(m_dOpacity);
-				show();
-				m_pShowHideTimer->start(40);
-				m_bCrashShowWorkAround = false;
-			}
-			else
-			{
-				m_dOpacity = 1.0;
-				m_eState = Visible;
-				show();
-				startBlinking();
-				startAutoHideTimer();
-			}
-			break;
-		default:
-			break;
+		m_bDragging = false;
+		m_bCloseDown = false;
+		m_bPrevDown = false;
+		m_bNextDown = false;
+		m_bWriteDown = false;
+		m_bBlinkOn = false;
+		if(bDoAnimate)
+		{
+			m_pShowHideTimer = new QTimer();
+			connect(m_pShowHideTimer, SIGNAL(timeout()), this, SLOT(heartbeat()));
+			m_dOpacity = OPACITY_STEP;
+			m_eState = Showing;
+			m_bCrashShowWorkAround = true;
+			setWindowOpacity(m_dOpacity);
+			show();
+			m_pShowHideTimer->start(40);
+			m_bCrashShowWorkAround = false;
+		}
+		else
+		{
+			m_dOpacity = 1.0;
+			m_eState = Visible;
+			show();
+			startBlinking();
+			startAutoHideTimer();
+		}
+		break;
+	default:
+		break;
 	}
 }
 
@@ -351,86 +351,86 @@ void NotifierWindow::heartbeat()
 {
 	switch(m_eState)
 	{
-		case Hidden:
-			hideNow();
-			break;
-		case Visible:
-			stopShowHideTimer();
-			m_dOpacity = 1.0;
+	case Hidden:
+		hideNow();
+		break;
+	case Visible:
+		stopShowHideTimer();
+		m_dOpacity = 1.0;
+		if(!isVisible())
+			show();
+		else
+			update();
+		break;
+	case Showing:
+		// if the main window got attention while
+		// showing up then just hide now
+		if(shouldHideIfMainWindowGotAttention())
+		{
+			m_eState = Hiding;
+		}
+		else
+		{
+			m_dOpacity += OPACITY_STEP;
+			double targetOpacity = isActiveWindow() ? KVI_OPTION_UINT(KviOption_uintNotifierActiveTransparency) : KVI_OPTION_UINT(KviOption_uintNotifierInactiveTransparency);
+
+			targetOpacity /= 100;
+			if(m_dOpacity >= targetOpacity)
+			{
+				m_dOpacity = targetOpacity;
+				m_eState = Visible;
+				stopShowHideTimer();
+				startBlinking();
+				startAutoHideTimer();
+			}
+
 			if(!isVisible())
 				show();
-			else
-				update();
-			break;
-		case Showing:
-			// if the main window got attention while
-			// showing up then just hide now
-			if(shouldHideIfMainWindowGotAttention())
-			{
-				m_eState = Hiding;
-			}
-			else
-			{
-				m_dOpacity += OPACITY_STEP;
-				double targetOpacity = isActiveWindow() ? KVI_OPTION_UINT(KviOption_uintNotifierActiveTransparency) : KVI_OPTION_UINT(KviOption_uintNotifierInactiveTransparency);
-
-				targetOpacity /= 100;
-				if(m_dOpacity >= targetOpacity)
-				{
-					m_dOpacity = targetOpacity;
-					m_eState = Visible;
-					stopShowHideTimer();
-					startBlinking();
-					startAutoHideTimer();
-				}
-
-				if(!isVisible())
-					show();
-				setWindowOpacity(m_dOpacity);
-				update();
-			}
-			break;
-		case FocusingOn:
-		{
-			double targetOpacity = KVI_OPTION_UINT(KviOption_uintNotifierActiveTransparency);
-			targetOpacity /= 100;
-			bool bIncreasing = targetOpacity > m_dOpacity;
-			m_dOpacity += bIncreasing ? OPACITY_STEP : -(OPACITY_STEP);
-			if((bIncreasing && (m_dOpacity >= targetOpacity)) || (!bIncreasing && (m_dOpacity <= targetOpacity)))
-			{
-				m_dOpacity = targetOpacity;
-				m_eState = Visible;
-				stopShowHideTimer();
-			}
-
 			setWindowOpacity(m_dOpacity);
+			update();
 		}
-			break;
-		case FocusingOff:
+		break;
+	case FocusingOn:
+	{
+		double targetOpacity = KVI_OPTION_UINT(KviOption_uintNotifierActiveTransparency);
+		targetOpacity /= 100;
+		bool bIncreasing = targetOpacity > m_dOpacity;
+		m_dOpacity += bIncreasing ? OPACITY_STEP : -(OPACITY_STEP);
+		if((bIncreasing && (m_dOpacity >= targetOpacity)) || (!bIncreasing && (m_dOpacity <= targetOpacity)))
 		{
-			double targetOpacity = KVI_OPTION_UINT(KviOption_uintNotifierInactiveTransparency);
-			targetOpacity /= 100;
-			bool bIncreasing = targetOpacity > m_dOpacity;
-			m_dOpacity += bIncreasing ? OPACITY_STEP : -(OPACITY_STEP);
-
-			if((bIncreasing && (m_dOpacity >= targetOpacity)) || (!bIncreasing && (m_dOpacity <= targetOpacity)))
-			{
-				m_dOpacity = targetOpacity;
-				m_eState = Visible;
-				stopShowHideTimer();
-			}
-
-			setWindowOpacity(m_dOpacity);
+			m_dOpacity = targetOpacity;
+			m_eState = Visible;
+			stopShowHideTimer();
 		}
-			break;
-		case Hiding:
-			m_dOpacity -= OPACITY_STEP;
-			setWindowOpacity(m_dOpacity);
-			if(m_dOpacity <= 0.0)
-				hideNow();
-			else
-				update();
-			break;
+
+		setWindowOpacity(m_dOpacity);
+	}
+	break;
+	case FocusingOff:
+	{
+		double targetOpacity = KVI_OPTION_UINT(KviOption_uintNotifierInactiveTransparency);
+		targetOpacity /= 100;
+		bool bIncreasing = targetOpacity > m_dOpacity;
+		m_dOpacity += bIncreasing ? OPACITY_STEP : -(OPACITY_STEP);
+
+		if((bIncreasing && (m_dOpacity >= targetOpacity)) || (!bIncreasing && (m_dOpacity <= targetOpacity)))
+		{
+			m_dOpacity = targetOpacity;
+			m_eState = Visible;
+			stopShowHideTimer();
+		}
+
+		setWindowOpacity(m_dOpacity);
+	}
+	break;
+	case Hiding:
+		m_dOpacity -= OPACITY_STEP;
+		setWindowOpacity(m_dOpacity);
+		if(m_dOpacity <= 0.0)
+			hideNow();
+		else
+			update();
+		break;
 	}
 }
 
@@ -450,52 +450,51 @@ void NotifierWindow::doHide(bool bDoAnimate)
 	stopAutoHideTimer();
 	switch(m_eState)
 	{
-		case Hiding:
-			// already hiding up
-			if(!bDoAnimate)
-				hideNow();
-			return;
-			break;
-		case Hidden:
-			// already hidden
-			if(isVisible())
-				hideNow();
-			return;
-			break;
-		case Showing:
-			// ops.. hiding!
-			if(!bDoAnimate)
-				hideNow();
-			else
-			{
-				// continue animating, but hide
-				m_eState = Hiding;
-			}
-			break;
-		case Visible:
-			stopBlinkTimer();
-			stopShowHideTimer();
-			if((!bDoAnimate) || (x() != m_pWndBorder->x()) || (y() != m_pWndBorder->y()))
-			{
-
-				// the user asked to not animate or
-				// the window has been moved and the animation would suck anyway
-				// just hide quickly
-				hideNow();
-			}
-			else
-			{
-				m_pShowHideTimer = new QTimer();
-				connect(m_pShowHideTimer, SIGNAL(timeout()), this, SLOT(heartbeat()));
-				m_dOpacity = 1.0 - OPACITY_STEP;
-				m_eState = Hiding;
-				setWindowOpacity(m_dOpacity);
-				update();
-				m_pShowHideTimer->start(40);
-			}
-			break;
-		default:
-			break;
+	case Hiding:
+		// already hiding up
+		if(!bDoAnimate)
+			hideNow();
+		return;
+		break;
+	case Hidden:
+		// already hidden
+		if(isVisible())
+			hideNow();
+		return;
+		break;
+	case Showing:
+		// ops.. hiding!
+		if(!bDoAnimate)
+			hideNow();
+		else
+		{
+			// continue animating, but hide
+			m_eState = Hiding;
+		}
+		break;
+	case Visible:
+		stopBlinkTimer();
+		stopShowHideTimer();
+		if((!bDoAnimate) || (x() != m_pWndBorder->x()) || (y() != m_pWndBorder->y()))
+		{
+			// the user asked to not animate or
+			// the window has been moved and the animation would suck anyway
+			// just hide quickly
+			hideNow();
+		}
+		else
+		{
+			m_pShowHideTimer = new QTimer();
+			connect(m_pShowHideTimer, SIGNAL(timeout()), this, SLOT(heartbeat()));
+			m_dOpacity = 1.0 - OPACITY_STEP;
+			m_eState = Hiding;
+			setWindowOpacity(m_dOpacity);
+			update();
+			m_pShowHideTimer->start(40);
+		}
+		break;
+	default:
+		break;
 	}
 }
 

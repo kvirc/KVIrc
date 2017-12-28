@@ -80,9 +80,9 @@ static QByteArray qNtlmPhase3(QHttpAuthenticatorPrivate * ctx, const QByteArray 
 
   QHttpAuthenticator supports the following authentication methods:
   \list
-    \o Basic
-    \o NTLM version 1
-    \o Digest-MD5
+	\o Basic
+	\o NTLM version 1
+	\o Digest-MD5
   \endlist
 
   Note that, in particular, NTLM version 2 is not supported.
@@ -106,8 +106,8 @@ static QByteArray qNtlmPhase3(QHttpAuthenticatorPrivate * ctx, const QByteArray 
   \section2 Basic
 
   \table
-    \header \o Option \o Direction \o Description
-    \row \o \tt{realm} \o Incoming \o Contains the realm of the authentication, the same as realm()
+	\header \o Option \o Direction \o Description
+	\row \o \tt{realm} \o Incoming \o Contains the realm of the authentication, the same as realm()
   \endtable
 
   The Basic authentication mechanism supports no outgoing options.
@@ -119,8 +119,8 @@ static QByteArray qNtlmPhase3(QHttpAuthenticatorPrivate * ctx, const QByteArray 
   \section2 Digest-MD5
 
   \table
-    \header \o Option \o Direction \o Description
-    \row \o \tt{realm} \o Incoming \o Contains the realm of the authentication, the same as realm()
+	\header \o Option \o Direction \o Description
+	\row \o \tt{realm} \o Incoming \o Contains the realm of the authentication, the same as realm()
   \endtable
 
   The Digest-MD5 authentication mechanism supports no outgoing options.
@@ -132,7 +132,7 @@ static QByteArray qNtlmPhase3(QHttpAuthenticatorPrivate * ctx, const QByteArray 
   Constructs an empty authentication object
 */
 QHttpAuthenticator::QHttpAuthenticator()
-    : d(nullptr)
+	: d(nullptr)
 {
 }
 
@@ -146,17 +146,17 @@ QHttpAuthenticator::~QHttpAuthenticator()
 }
 
 /*!
-    Constructs a copy of \a other.
+	Constructs a copy of \a other.
 */
 QHttpAuthenticator::QHttpAuthenticator(const QHttpAuthenticator & other)
-    : d(other.d)
+	: d(other.d)
 {
 	if(d)
 		d->ref.ref();
 }
 
 /*!
-    Assigns the contents of \a other to this authenticator.
+	Assigns the contents of \a other to this authenticator.
 */
 QHttpAuthenticator & QHttpAuthenticator::operator=(const QHttpAuthenticator & other)
 {
@@ -173,18 +173,18 @@ QHttpAuthenticator & QHttpAuthenticator::operator=(const QHttpAuthenticator & ot
 }
 
 /*!
-    Returns true if this authenticator is identical to \a other; otherwise
-    returns false.
+	Returns true if this authenticator is identical to \a other; otherwise
+	returns false.
 */
 bool QHttpAuthenticator::operator==(const QHttpAuthenticator & other) const
 {
 	if(d == other.d)
 		return true;
 	return d->user == other.d->user
-	    && d->password == other.d->password
-	    && d->realm == other.d->realm
-	    && d->method == other.d->method
-	    && d->options == other.d->options;
+		&& d->password == other.d->password
+		&& d->realm == other.d->realm
+		&& d->method == other.d->method
+		&& d->options == other.d->options;
 }
 
 QHttpAuthenticator & QHttpAuthenticator::operator=(const QAuthenticator & auth)
@@ -207,10 +207,10 @@ QAuthenticator QHttpAuthenticator::toQAuthenticator()
 }
 
 /*!
-    \fn bool QHttpAuthenticator::operator!=(const QHttpAuthenticator &other) const
+	\fn bool QHttpAuthenticator::operator!=(const QHttpAuthenticator &other) const
 
-    Returns true if this authenticator is different from \a other; otherwise
-    returns false.
+	Returns true if this authenticator is different from \a other; otherwise
+	returns false.
 */
 
 /*!
@@ -233,27 +233,27 @@ void QHttpAuthenticator::setUser(const QString & user)
 
 	switch(d->method)
 	{
-		case QHttpAuthenticatorPrivate::Ntlm:
-			if((separatorPosn = user.indexOf(QLatin1String("\\"))) != -1)
-			{
-				//domain name is present
-				d->realm.clear();
-				d->userDomain = user.left(separatorPosn);
-				d->extractedUser = user.mid(separatorPosn + 1);
-				d->user = user;
-			}
-			else
-			{
-				d->extractedUser = user;
-				d->user = user;
-				d->realm.clear();
-				d->userDomain.clear();
-			}
-			break;
-		default:
+	case QHttpAuthenticatorPrivate::Ntlm:
+		if((separatorPosn = user.indexOf(QLatin1String("\\"))) != -1)
+		{
+			//domain name is present
+			d->realm.clear();
+			d->userDomain = user.left(separatorPosn);
+			d->extractedUser = user.mid(separatorPosn + 1);
 			d->user = user;
+		}
+		else
+		{
+			d->extractedUser = user;
+			d->user = user;
+			d->realm.clear();
 			d->userDomain.clear();
-			break;
+		}
+		break;
+	default:
+		d->user = user;
+		d->userDomain.clear();
+		break;
 	}
 }
 
@@ -301,12 +301,12 @@ QString QHttpAuthenticator::realm() const
 }
 
 /*!
-    \since 4.7
-    Returns the value related to option \a opt if it was set by the server.
-    See \l{QHttpAuthenticator#Options} for more information on incoming options.
-    If option \a opt isn't found, an invalid QVariant will be returned.
+	\since 4.7
+	Returns the value related to option \a opt if it was set by the server.
+	See \l{QHttpAuthenticator#Options} for more information on incoming options.
+	If option \a opt isn't found, an invalid QVariant will be returned.
 
-    \sa options(), QHttpAuthenticator#Options
+	\sa options(), QHttpAuthenticator#Options
 */
 QVariant QHttpAuthenticator::option(const QString & opt) const
 {
@@ -314,12 +314,12 @@ QVariant QHttpAuthenticator::option(const QString & opt) const
 }
 
 /*!
-    \since 4.7
-    Returns all incoming options set in this QHttpAuthenticator object by parsing
-    the server reply. See \l{QHttpAuthenticator#Options} for more information
-    on incoming options.
+	\since 4.7
+	Returns all incoming options set in this QHttpAuthenticator object by parsing
+	the server reply. See \l{QHttpAuthenticator#Options} for more information
+	on incoming options.
 
-    \sa option(), QHttpAuthenticator#Options
+	\sa option(), QHttpAuthenticator#Options
 */
 QVariantHash QHttpAuthenticator::options() const
 {
@@ -327,12 +327,12 @@ QVariantHash QHttpAuthenticator::options() const
 }
 
 /*!
-    \since 4.7
+	\since 4.7
 
-    Sets the outgoing option \a opt to value \a value.
-    See \l{QHttpAuthenticator#Options} for more information on outgoing options.
+	Sets the outgoing option \a opt to value \a value.
+	See \l{QHttpAuthenticator#Options} for more information on outgoing options.
 
-    \sa options(), option(), QHttpAuthenticator#Options
+	\sa options(), option(), QHttpAuthenticator#Options
 */
 void QHttpAuthenticator::setOption(const QString & opt, const QVariant & value)
 {
@@ -341,7 +341,7 @@ void QHttpAuthenticator::setOption(const QString & opt, const QVariant & value)
 }
 
 /*!
-    Returns true if the authenticator is null.
+	Returns true if the authenticator is null.
 */
 bool QHttpAuthenticator::isNull() const
 {
@@ -349,11 +349,11 @@ bool QHttpAuthenticator::isNull() const
 }
 
 QHttpAuthenticatorPrivate::QHttpAuthenticatorPrivate()
-    : ref(0), method(None), hasFailed(false), phase(Start), nonceCount(0)
+	: ref(0), method(None), hasFailed(false), phase(Start), nonceCount(0)
 {
 	cnonce = QCryptographicHash::hash(QByteArray::number(qrand(), 16) + QByteArray::number(qrand(), 16),
-	             QCryptographicHash::Md5)
-	             .toHex();
+		QCryptographicHash::Md5)
+		.toHex();
 	nonceCount = 0;
 }
 
@@ -378,14 +378,14 @@ void QHttpAuthenticatorPrivate::parseHttpResponse(const QList<QPair<QByteArray, 
 
 	method = None;
 	/*
-      Fun from the HTTP 1.1 specs, that we currently ignore:
+	  Fun from the HTTP 1.1 specs, that we currently ignore:
 
-      User agents are advised to take special care in parsing the WWW-
-      Authenticate field value as it might contain more than one challenge,
-      or if more than one WWW-Authenticate header field is provided, the
-      contents of a challenge itself can contain a comma-separated list of
-      authentication parameters.
-    */
+	  User agents are advised to take special care in parsing the WWW-
+	  Authenticate field value as it might contain more than one challenge,
+	  or if more than one WWW-Authenticate header field is provided, the
+	  contents of a challenge itself can contain a comma-separated list of
+	  authentication parameters.
+	*/
 
 	QByteArray headerVal;
 	for(const auto & current : values)
@@ -415,27 +415,27 @@ void QHttpAuthenticatorPrivate::parseHttpResponse(const QList<QPair<QByteArray, 
 
 	switch(method)
 	{
-		case Basic:
-			this->options[QLatin1String("realm")] = realm = QString::fromLatin1(options.value("realm"));
-			if(user.isEmpty() && password.isEmpty())
-				phase = Done;
-			break;
-		case Ntlm:
-			// #### extract from header
-			break;
-		case DigestMd5:
-		{
-			this->options[QLatin1String("realm")] = realm = QString::fromLatin1(options.value("realm"));
-			if(options.value("stale").toLower() == "true")
-				phase = Start;
-			if(user.isEmpty() && password.isEmpty())
-				phase = Done;
-			break;
-		}
-		default:
-			realm.clear();
-			challenge = QByteArray();
-			phase = Invalid;
+	case Basic:
+		this->options[QLatin1String("realm")] = realm = QString::fromLatin1(options.value("realm"));
+		if(user.isEmpty() && password.isEmpty())
+			phase = Done;
+		break;
+	case Ntlm:
+		// #### extract from header
+		break;
+	case DigestMd5:
+	{
+		this->options[QLatin1String("realm")] = realm = QString::fromLatin1(options.value("realm"));
+		if(options.value("stale").toLower() == "true")
+			phase = Start;
+		if(user.isEmpty() && password.isEmpty())
+			phase = Done;
+		break;
+	}
+	default:
+		realm.clear();
+		challenge = QByteArray();
+		phase = Invalid;
 	}
 }
 
@@ -445,56 +445,56 @@ QByteArray QHttpAuthenticatorPrivate::calculateResponse(const QByteArray & reque
 	const char * methodString = nullptr;
 	switch(method)
 	{
-		case QHttpAuthenticatorPrivate::None:
-			methodString = "";
+	case QHttpAuthenticatorPrivate::None:
+		methodString = "";
+		phase = Done;
+		break;
+	case QHttpAuthenticatorPrivate::Plain:
+		response = '\0' + user.toUtf8() + '\0' + password.toUtf8();
+		phase = Done;
+		break;
+	case QHttpAuthenticatorPrivate::Basic:
+		methodString = "Basic ";
+		response = user.toLatin1() + ':' + password.toLatin1();
+		response = response.toBase64();
+		phase = Done;
+		break;
+	case QHttpAuthenticatorPrivate::Login:
+		if(challenge.contains("VXNlciBOYW1lAA=="))
+		{
+			response = user.toUtf8().toBase64();
+			phase = Phase2;
+		}
+		else if(challenge.contains("UGFzc3dvcmQA"))
+		{
+			response = password.toUtf8().toBase64();
 			phase = Done;
-			break;
-		case QHttpAuthenticatorPrivate::Plain:
-			response = '\0' + user.toUtf8() + '\0' + password.toUtf8();
-			phase = Done;
-			break;
-		case QHttpAuthenticatorPrivate::Basic:
-			methodString = "Basic ";
-			response = user.toLatin1() + ':' + password.toLatin1();
-			response = response.toBase64();
-			phase = Done;
-			break;
-		case QHttpAuthenticatorPrivate::Login:
-			if(challenge.contains("VXNlciBOYW1lAA=="))
-			{
-				response = user.toUtf8().toBase64();
-				phase = Phase2;
-			}
-			else if(challenge.contains("UGFzc3dvcmQA"))
-			{
-				response = password.toUtf8().toBase64();
+		}
+		break;
+	case QHttpAuthenticatorPrivate::CramMd5:
+		break;
+	case QHttpAuthenticatorPrivate::DigestMd5:
+		methodString = "Digest ";
+		response = digestMd5Response(challenge, requestMethod, path);
+		phase = Done;
+		break;
+	case QHttpAuthenticatorPrivate::Ntlm:
+		methodString = "NTLM ";
+		if(challenge.isEmpty())
+		{
+			response = qNtlmPhase1().toBase64();
+			if(user.isEmpty())
 				phase = Done;
-			}
-			break;
-		case QHttpAuthenticatorPrivate::CramMd5:
-			break;
-		case QHttpAuthenticatorPrivate::DigestMd5:
-			methodString = "Digest ";
-			response = digestMd5Response(challenge, requestMethod, path);
-			phase = Done;
-			break;
-		case QHttpAuthenticatorPrivate::Ntlm:
-			methodString = "NTLM ";
-			if(challenge.isEmpty())
-			{
-				response = qNtlmPhase1().toBase64();
-				if(user.isEmpty())
-					phase = Done;
-				else
-					phase = Phase2;
-			}
 			else
-			{
-				response = qNtlmPhase3(this, QByteArray::fromBase64(challenge)).toBase64();
-				phase = Done;
-			}
+				phase = Phase2;
+		}
+		else
+		{
+			response = qNtlmPhase3(this, QByteArray::fromBase64(challenge)).toBase64();
+			phase = Done;
+		}
 
-			break;
+		break;
 	}
 	return QByteArray(methodString) + response;
 }
@@ -584,18 +584,18 @@ QHash<QByteArray, QByteArray> QHttpAuthenticatorPrivate::parseDigestAuthenticati
 
 /* calculate request-digest/response-digest as per HTTP Digest spec */
 static QByteArray digestMd5ResponseHelper(
-    const QByteArray & alg,
-    const QByteArray & userName,
-    const QByteArray & realm,
-    const QByteArray & password,
-    const QByteArray & nonce,      /* nonce from server */
-    const QByteArray & nonceCount, /* 8 hex digits */
-    const QByteArray & cNonce,     /* client nonce */
-    const QByteArray & qop,        /* qop-value: "", "auth", "auth-int" */
-    const QByteArray & method,     /* method from the request */
-    const QByteArray & digestUri,  /* requested URL */
-    const QByteArray & hEntity     /* H(entity body) if qop="auth-int" */
-    )
+	const QByteArray & alg,
+	const QByteArray & userName,
+	const QByteArray & realm,
+	const QByteArray & password,
+	const QByteArray & nonce,      /* nonce from server */
+	const QByteArray & nonceCount, /* 8 hex digits */
+	const QByteArray & cNonce,     /* client nonce */
+	const QByteArray & qop,        /* qop-value: "", "auth", "auth-int" */
+	const QByteArray & method,     /* method from the request */
+	const QByteArray & digestUri,  /* requested URL */
+	const QByteArray & hEntity     /* H(entity body) if qop="auth-int" */
+)
 {
 	QCryptographicHash hash(QCryptographicHash::Md5);
 	hash.addData(userName);
@@ -666,10 +666,10 @@ QByteArray QHttpAuthenticatorPrivate::digestMd5Response(const QByteArray & chall
 
 	//    qDebug() << "calculating digest: method=" << method << "path=" << path;
 	QByteArray response = digestMd5ResponseHelper(options.value("algorithm"), user.toLatin1(),
-	    realm.toLatin1(), password.toLatin1(),
-	    nonce, nonceCountString,
-	    cnonce, qop, method,
-	    path, QByteArray());
+		realm.toLatin1(), password.toLatin1(),
+		nonce, nonceCountString,
+		cnonce, qop, method,
+		path, QByteArray());
 
 	QByteArray credentials;
 	credentials += "username=\"" + user.toLatin1() + "\", ";
@@ -701,139 +701,139 @@ QByteArray QHttpAuthenticatorPrivate::digestMd5Response(const QByteArray & chall
  * This software is released under the MIT license.
  */
 
-/*
- * Indicates that Unicode strings are supported for use in security
- * buffer data.
- */
+ /*
+  * Indicates that Unicode strings are supported for use in security
+  * buffer data.
+  */
 #define NTLMSSP_NEGOTIATE_UNICODE 0x00000001
 
-/*
- * Indicates that OEM strings are supported for use in security buffer data.
- */
+  /*
+   * Indicates that OEM strings are supported for use in security buffer data.
+   */
 #define NTLMSSP_NEGOTIATE_OEM 0x00000002
 
-/*
- * Requests that the server's authentication realm be included in the
- * Type 2 message.
- */
+   /*
+	* Requests that the server's authentication realm be included in the
+	* Type 2 message.
+	*/
 #define NTLMSSP_REQUEST_TARGET 0x00000004
 
-/*
- * Specifies that authenticated communication between the client and server
- * should carry a digital signature (message integrity).
- */
+	/*
+	 * Specifies that authenticated communication between the client and server
+	 * should carry a digital signature (message integrity).
+	 */
 #define NTLMSSP_NEGOTIATE_SIGN 0x00000010
 
-/*
- * Specifies that authenticated communication between the client and server
- * should be encrypted (message confidentiality).
- */
+	 /*
+	  * Specifies that authenticated communication between the client and server
+	  * should be encrypted (message confidentiality).
+	  */
 #define NTLMSSP_NEGOTIATE_SEAL 0x00000020
 
-/*
- * Indicates that datagram authentication is being used.
- */
+	  /*
+	   * Indicates that datagram authentication is being used.
+	   */
 #define NTLMSSP_NEGOTIATE_DATAGRAM 0x00000040
 
-/*
- * Indicates that the LAN Manager session key should be
- * used for signing and sealing authenticated communications.
- */
+	   /*
+		* Indicates that the LAN Manager session key should be
+		* used for signing and sealing authenticated communications.
+		*/
 #define NTLMSSP_NEGOTIATE_LM_KEY 0x00000080
 
-/*
- * Indicates that NTLM authentication is being used.
- */
+		/*
+		 * Indicates that NTLM authentication is being used.
+		 */
 #define NTLMSSP_NEGOTIATE_NTLM 0x00000200
 
-/*
- * Sent by the client in the Type 1 message to indicate that the name of the
- * domain in which the client workstation has membership is included in the
- * message. This is used by the server to determine whether the client is
- * eligible for local authentication.
- */
+		 /*
+		  * Sent by the client in the Type 1 message to indicate that the name of the
+		  * domain in which the client workstation has membership is included in the
+		  * message. This is used by the server to determine whether the client is
+		  * eligible for local authentication.
+		  */
 #define NTLMSSP_NEGOTIATE_DOMAIN_SUPPLIED 0x00001000
 
-/*
- * Sent by the client in the Type 1 message to indicate that the client
- * workstation's name is included in the message. This is used by the server
- * to determine whether the client is eligible for local authentication.
- */
+		  /*
+		   * Sent by the client in the Type 1 message to indicate that the client
+		   * workstation's name is included in the message. This is used by the server
+		   * to determine whether the client is eligible for local authentication.
+		   */
 #define NTLMSSP_NEGOTIATE_WORKSTATION_SUPPLIED 0x00002000
 
-/*
- * Sent by the server to indicate that the server and client are on the same
- * machine. Implies that the client may use the established local credentials
- * for authentication instead of calculating a response to the challenge.
- */
+		   /*
+			* Sent by the server to indicate that the server and client are on the same
+			* machine. Implies that the client may use the established local credentials
+			* for authentication instead of calculating a response to the challenge.
+			*/
 #define NTLMSSP_NEGOTIATE_LOCAL_CALL 0x00004000
 
-/*
- * Indicates that authenticated communication between the client and server
- * should be signed with a "dummy" signature.
- */
+			/*
+			 * Indicates that authenticated communication between the client and server
+			 * should be signed with a "dummy" signature.
+			 */
 #define NTLMSSP_NEGOTIATE_ALWAYS_SIGN 0x00008000
 
-/*
- * Sent by the server in the Type 2 message to indicate that the target
- * authentication realm is a domain.
- */
+			 /*
+			  * Sent by the server in the Type 2 message to indicate that the target
+			  * authentication realm is a domain.
+			  */
 #define NTLMSSP_TARGET_TYPE_DOMAIN 0x00010000
 
-/*
- * Sent by the server in the Type 2 message to indicate that the target
- * authentication realm is a server.
- */
+			  /*
+			   * Sent by the server in the Type 2 message to indicate that the target
+			   * authentication realm is a server.
+			   */
 #define NTLMSSP_TARGET_TYPE_SERVER 0x00020000
 
-/*
- * Sent by the server in the Type 2 message to indicate that the target
- * authentication realm is a share. Presumably, this is for share-level
- * authentication. Usage is unclear.
- */
+			   /*
+				* Sent by the server in the Type 2 message to indicate that the target
+				* authentication realm is a share. Presumably, this is for share-level
+				* authentication. Usage is unclear.
+				*/
 #define NTLMSSP_TARGET_TYPE_SHARE 0x00040000
 
-/*
- * Indicates that the NTLM2 signing and sealing scheme should be used for
- * protecting authenticated communications. Note that this refers to a
- * particular session security scheme, and is not related to the use of
- * NTLMv2 authentication.
- */
+				/*
+				 * Indicates that the NTLM2 signing and sealing scheme should be used for
+				 * protecting authenticated communications. Note that this refers to a
+				 * particular session security scheme, and is not related to the use of
+				 * NTLMv2 authentication.
+				 */
 #define NTLMSSP_NEGOTIATE_NTLM2 0x00080000
 
-/*
- * Sent by the server in the Type 2 message to indicate that it is including
- * a Target Information block in the message. The Target Information block
- * is used in the calculation of the NTLMv2 response.
- */
+				 /*
+				  * Sent by the server in the Type 2 message to indicate that it is including
+				  * a Target Information block in the message. The Target Information block
+				  * is used in the calculation of the NTLMv2 response.
+				  */
 #define NTLMSSP_NEGOTIATE_TARGET_INFO 0x00800000
 
-/*
- * Indicates that 128-bit encryption is supported.
- */
+				  /*
+				   * Indicates that 128-bit encryption is supported.
+				   */
 #define NTLMSSP_NEGOTIATE_128 0x20000000
 
-/*
- * Indicates that the client will provide an encrypted master session key in
- * the "Session Key" field of the Type 3 message. This is used in signing and
- * sealing, and is RC4-encrypted using the previous session key as the
- * encryption key.
- */
+				   /*
+					* Indicates that the client will provide an encrypted master session key in
+					* the "Session Key" field of the Type 3 message. This is used in signing and
+					* sealing, and is RC4-encrypted using the previous session key as the
+					* encryption key.
+					*/
 #define NTLMSSP_NEGOTIATE_KEY_EXCHANGE 0x40000000
 
-/*
- * Indicates that 56-bit encryption is supported.
- */
+					/*
+					 * Indicates that 56-bit encryption is supported.
+					 */
 #define NTLMSSP_NEGOTIATE_56 0x80000000
 
-/*
- * AvId values
- */
+					 /*
+					  * AvId values
+					  */
 #define AVTIMESTAMP 7
 
-//#define NTLMV1_CLIENT
+					  //#define NTLMV1_CLIENT
 
-//************************Global variables***************************
+					  //************************Global variables***************************
 
 const int blockSize = 64;  //As per RFC2104 Block-size is 512 bits
 const int nDigestLen = 16; //Trunctaion Length of the Hmac-Md5 digest
@@ -853,8 +853,8 @@ const quint8 hirespversion = 1;
 
 /*
    TODO:
-    - Fix unicode handling
-    - add v2 handling
+	- Fix unicode handling
+	- add v2 handling
 */
 
 class QNtlmBuffer
@@ -1205,18 +1205,18 @@ QByteArray qEncodeHmacMd5(QByteArray & key, const QByteArray & message)
 	// H((K0 xor opad )|| H((K0 xor ipad) || text))
 
 	/*hmacDigest should not be less than half the length of the HMAC output
-      (to match the birthday attack bound) and not less than 80 bits
-      (a suitable lower bound on the number of bits that need to be
-      predicted by an attacker).
-      Refer RFC 2104 for more details on truncation part */
+	  (to match the birthday attack bound) and not less than 80 bits
+	  (a suitable lower bound on the number of bits that need to be
+	  predicted by an attacker).
+	  Refer RFC 2104 for more details on truncation part */
 
-	/*MD5 hash always returns 16 byte digest only and HMAC-MD5 spec
-      (RFC 2104) also says digest length should be 16 bytes*/
+	  /*MD5 hash always returns 16 byte digest only and HMAC-MD5 spec
+		(RFC 2104) also says digest length should be 16 bytes*/
 	return hmacDigest;
 }
 
 static QByteArray qCreatev2Hash(const QHttpAuthenticatorPrivate * ctx,
-    QNtlmPhase3Block * phase3)
+	QNtlmPhase3Block * phase3)
 {
 	Q_ASSERT(phase3 != nullptr);
 	// since v2 Hash is need for both NTLMv2 and LMv2 it is calculated
@@ -1273,8 +1273,8 @@ static QByteArray qExtractServerTime(const QByteArray & targetInfoBuff)
 }
 
 static QByteArray qEncodeNtlmv2Response(const QHttpAuthenticatorPrivate * ctx,
-    const QNtlmPhase2Block & ch,
-    QNtlmPhase3Block * phase3)
+	const QNtlmPhase2Block & ch,
+	QNtlmPhase3Block * phase3)
 {
 	Q_ASSERT(phase3 != nullptr);
 	// return value stored in phase3
@@ -1307,7 +1307,7 @@ static QByteArray qEncodeNtlmv2Response(const QHttpAuthenticatorPrivate * ctx,
 	else
 	{
 		QDateTime currentTime(QDate::currentDate(),
-		    QTime::currentTime(), Qt::UTC);
+			QTime::currentTime(), Qt::UTC);
 
 		// number of seconds between 1601 and epoc(1970)
 		// 369 years, 89 leap years
@@ -1331,7 +1331,7 @@ static QByteArray qEncodeNtlmv2Response(const QHttpAuthenticatorPrivate * ctx,
 	if(ch.targetInfo.len > 0)
 	{
 		ds.writeRawData(ch.targetInfoBuff.constData(),
-		    ch.targetInfoBuff.size());
+			ch.targetInfoBuff.size());
 	}
 
 	//Reserved
@@ -1348,8 +1348,8 @@ static QByteArray qEncodeNtlmv2Response(const QHttpAuthenticatorPrivate * ctx,
 }
 
 static QByteArray qEncodeLmv2Response(const QHttpAuthenticatorPrivate * ctx,
-    const QNtlmPhase2Block & ch,
-    QNtlmPhase3Block * phase3)
+	const QNtlmPhase2Block & ch,
+	QNtlmPhase3Block * phase3)
 {
 	Q_ASSERT(phase3 != nullptr);
 	// return value stored in phase3
@@ -1449,7 +1449,7 @@ static QByteArray qNtlmPhase3(QHttpAuthenticatorPrivate * ctx, const QByteArray 
 	offset = qEncodeNtlmString(pb.workstation, offset, ctx->workstation, unicode);
 	pb.workstationStr = ctx->workstation;
 
-// Get LM response
+	// Get LM response
 #ifdef NTLMV1_CLIENT
 	pb.lmResponseBuf = qEncodeLmResponse(ctx, ch);
 #else
@@ -1464,7 +1464,7 @@ static QByteArray qNtlmPhase3(QHttpAuthenticatorPrivate * ctx, const QByteArray 
 #endif
 	offset = qEncodeNtlmBuffer(pb.lmResponse, offset, pb.lmResponseBuf);
 
-// Get NTLM response
+	// Get NTLM response
 #ifdef NTLMV1_CLIENT
 	pb.ntlmResponseBuf = qEncodeNtlmResponse(ctx, ch);
 #else

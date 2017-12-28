@@ -29,12 +29,12 @@
 #include "KviLocale.h"
 
 KviKvsTreeNodeHashCount::KviKvsTreeNodeHashCount(const QChar * pLocation, KviKvsTreeNodeData * pSource)
-    : KviKvsTreeNodeIndirectData(pLocation, pSource)
+	: KviKvsTreeNodeIndirectData(pLocation, pSource)
 {
 }
 
 KviKvsTreeNodeHashCount::~KviKvsTreeNodeHashCount()
-    = default;
+= default;
 
 void KviKvsTreeNodeHashCount::contextDescription(QString & szBuffer)
 {

@@ -105,7 +105,7 @@ static QAction * g_pMdiWindowSystemTextEncodingDefaultAction = nullptr;
 unsigned long int g_uUniqueWindowId = 1;
 
 KviWindow::KviWindow(Type eType, const QString & szName, KviConsoleWindow * lpConsole)
-    : QWidget(nullptr)
+	: QWidget(nullptr)
 {
 	m_uId = g_uUniqueWindowId;
 	g_uUniqueWindowId++;
@@ -188,15 +188,15 @@ bool KviWindow::hasAttention(AttentionLevel eLevel)
 	{
 		switch(eLevel)
 		{
-			case VisibleAndActive:
-				return (g_pMainWindow->isActiveWindow() && g_pActiveWindow == this);
-				break;
-			case MainWindowIsVisible:
-				return g_pMainWindow->isActiveWindow();
-				break;
-			default:
-				return false;
-				break;
+		case VisibleAndActive:
+			return (g_pMainWindow->isActiveWindow() && g_pActiveWindow == this);
+			break;
+		case MainWindowIsVisible:
+			return g_pMainWindow->isActiveWindow();
+			break;
+		default:
+			return false;
+			break;
 		}
 	}
 	else
@@ -533,16 +533,16 @@ void KviWindow::getDefaultLogFileName(QString & szBuffer, QDate date, bool bGzip
 
 	switch(uDatetimeFormat)
 	{
-		case 1:
-			szDate = date.toString(Qt::ISODate);
-			break;
-		case 2:
-			szDate = date.toString(Qt::SystemLocaleShortDate);
-			break;
-		case 0:
-		default:
-			szDate = date.toString("yyyy.MM.dd");
-			break;
+	case 1:
+		szDate = date.toString(Qt::ISODate);
+		break;
+	case 2:
+		szDate = date.toString(Qt::SystemLocaleShortDate);
+		break;
+	case 0:
+	default:
+		szDate = date.toString("yyyy.MM.dd");
+		break;
 	}
 	szDate.replace('_', '-'); // this would confuse the log viewer
 	KviFileUtils::cleanFileName(szDate);
@@ -922,7 +922,7 @@ void KviWindow::inputMethodEvent(QInputMethodEvent * e)
 	m_bProcessingInputEvent = true;
 
 	if(
-	    m_pLastFocusedChild && m_pLastFocusedChild->hasFocus() && m_pLastFocusedChild->isVisible())
+		m_pLastFocusedChild && m_pLastFocusedChild->hasFocus() && m_pLastFocusedChild->isVisible())
 	{
 		KviApplication::sendEvent(m_pLastFocusedChild, e);
 		m_bProcessingInputEvent = false;
@@ -930,7 +930,7 @@ void KviWindow::inputMethodEvent(QInputMethodEvent * e)
 	}
 
 	if(
-	    m_pFocusHandler && (m_pFocusHandler != m_pLastFocusedChild) && m_pFocusHandler->hasFocus() && m_pFocusHandler->isVisible())
+		m_pFocusHandler && (m_pFocusHandler != m_pLastFocusedChild) && m_pFocusHandler->hasFocus() && m_pFocusHandler->isVisible())
 	{
 		KviApplication::sendEvent(m_pFocusHandler, e);
 		m_bProcessingInputEvent = false;
@@ -1010,27 +1010,27 @@ bool KviWindow::eventFilter(QObject * pObject, QEvent * pEvent)
 {
 	switch(pEvent->type())
 	{
-		case QEvent::FocusIn:
-			// a child got focused
-			m_pLastFocusedChild = (QWidget *)pObject;
-			if(g_pActiveWindow != this)
-				g_pMainWindow->windowActivated(this);
-			break;
-		case QEvent::Enter:
-			// this is a handler moved here from KviMdiChild::eventFilter
-			if(QApplication::overrideCursor())
-				QApplication::restoreOverrideCursor();
-			break;
-		case QEvent::ChildAdded:
-			if(((QChildEvent *)pEvent)->child()->isWidgetType())
-				childInserted((QWidget *)((QChildEvent *)pEvent)->child());
-			break;
-		case QEvent::ChildRemoved:
-			if(((QChildEvent *)pEvent)->child()->isWidgetType())
-				childRemoved((QWidget *)((QChildEvent *)pEvent)->child());
-			break;
-		default: /* make gcc happy */
-			break;
+	case QEvent::FocusIn:
+		// a child got focused
+		m_pLastFocusedChild = (QWidget *)pObject;
+		if(g_pActiveWindow != this)
+			g_pMainWindow->windowActivated(this);
+		break;
+	case QEvent::Enter:
+		// this is a handler moved here from KviMdiChild::eventFilter
+		if(QApplication::overrideCursor())
+			QApplication::restoreOverrideCursor();
+		break;
+	case QEvent::ChildAdded:
+		if(((QChildEvent *)pEvent)->child()->isWidgetType())
+			childInserted((QWidget *)((QChildEvent *)pEvent)->child());
+		break;
+	case QEvent::ChildRemoved:
+		if(((QChildEvent *)pEvent)->child()->isWidgetType())
+			childRemoved((QWidget *)((QChildEvent *)pEvent)->child());
+		break;
+	default: /* make gcc happy */
+		break;
 	}
 	return false;
 }
@@ -1197,9 +1197,9 @@ void KviWindow::internalOutput(KviIrcView * pView, int iMsgType, const kvi_wchar
 		if((iMsgType != KVI_OUT_CHANPRIVMSG) && (iMsgType != KVI_OUT_CHANPRIVMSGCRYPTED))
 		{
 			if(!(
-			       (
-			           KVI_OPTION_BOOL(KviOption_boolHighlightOnlyNormalMsgQueryToo) && ((iMsgType == KVI_OUT_QUERYPRIVMSG) || (iMsgType == KVI_OUT_QUERYTRACE) || (iMsgType == KVI_OUT_QUERYPRIVMSGCRYPTED) || (iMsgType == KVI_OUT_QUERYNOTICE) || (iMsgType == KVI_OUT_QUERYNOTICECRYPTED)))
-			       || (KVI_OPTION_BOOL(KviOption_boolHighlightOnlyNormalMsgHighlightInChanToo) && (iMsgType == KVI_OUT_HIGHLIGHT))))
+				(
+					KVI_OPTION_BOOL(KviOption_boolHighlightOnlyNormalMsgQueryToo) && ((iMsgType == KVI_OUT_QUERYPRIVMSG) || (iMsgType == KVI_OUT_QUERYTRACE) || (iMsgType == KVI_OUT_QUERYPRIVMSGCRYPTED) || (iMsgType == KVI_OUT_QUERYNOTICE) || (iMsgType == KVI_OUT_QUERYNOTICECRYPTED)))
+				|| (KVI_OPTION_BOOL(KviOption_boolHighlightOnlyNormalMsgHighlightInChanToo) && (iMsgType == KVI_OUT_HIGHLIGHT))))
 				return;
 		}
 	}
@@ -1399,14 +1399,14 @@ void KviWindow::pasteLastLog()
 	QDate checkDate = date.addDays(iInterval);
 
 	unsigned int uMaxLines = KVI_OPTION_UINT(bChannel ? KviOption_uintLinesToPasteOnChannelJoin : KviOption_uintLinesToPasteOnQueryJoin);
-	if (!uMaxLines)
+	if(!uMaxLines)
 		return;
 
 	std::vector<std::tuple<QString, QDate, int>> vLines;
 
-	for (; date >= checkDate; date = date.addDays(-1))
-		for (int iGzip = 0; iGzip <= 1; iGzip++)
-			for (unsigned int uDatetimeFormat = 0; uDatetimeFormat < 3; uDatetimeFormat++)
+	for(; date >= checkDate; date = date.addDays(-1))
+		for(int iGzip = 0; iGzip <= 1; iGzip++)
+			for(unsigned int uDatetimeFormat = 0; uDatetimeFormat < 3; uDatetimeFormat++)
 			{
 				bool bGzip = !!iGzip;
 
@@ -1414,7 +1414,7 @@ void KviWindow::pasteLastLog()
 				getDefaultLogFileName(szFileName, date, bGzip, uDatetimeFormat);
 
 				QFileInfo fi(szFileName);
-				if (!fi.exists() || !fi.isFile())
+				if(!fi.exists() || !fi.isFile())
 					continue;
 
 				// Load the log
@@ -1426,31 +1426,31 @@ void KviWindow::pasteLastLog()
 				QList<QByteArray> list = log.split('\n');
 				unsigned int uCount = list.size();
 
-				while (uCount)
+				while(uCount)
 				{
 					vLines.emplace_back(QString(list.at(--uCount)), date, uDatetimeFormat);
 
-					if (vLines.size() == uMaxLines)
+					if(vLines.size() == uMaxLines)
 						goto enough;
 				}
 			}
 
-	if (vLines.empty())
+	if(vLines.empty())
 		return;
 
 enough:
 	QString szDummy = __tr2qs("Starting last log");
 	output(KVI_OUT_LOG, szDummy);
 
-	for (auto logIter = vLines.rbegin(); logIter != vLines.rend(); ++logIter)
+	for(auto logIter = vLines.rbegin(); logIter != vLines.rend(); ++logIter)
 	{
-		QString & szLine      = std::get<0>(*logIter);
+		QString & szLine = std::get<0>(*logIter);
 		const QDate & logDate = std::get<1>(*logIter);
-		int uDatetimeFormat   = std::get<2>(*logIter);
+		int uDatetimeFormat = std::get<2>(*logIter);
 
 		bool ok;
 		int msgType = szLine.section(' ', 0, 0).toInt(&ok);
-		if (ok)
+		if(ok)
 			szLine = szLine.section(' ', 1);
 		else
 			msgType = KVI_OUT_LOG;
@@ -1458,48 +1458,48 @@ enough:
 		QDateTime date;
 		switch(uDatetimeFormat)
 		{
-			case 0:
+		case 0:
+		{
+			QTime time = QTime::fromString(szLine.section(' ', 0, 0), "[hh:mm:ss]");
+			if(time.isValid())
 			{
-				QTime time = QTime::fromString(szLine.section(' ', 0, 0), "[hh:mm:ss]");
-				if (time.isValid())
-				{
-					date = QDateTime(logDate, time);
-					szLine = szLine.section(' ', 1);
-				}
-				break;
+				date = QDateTime(logDate, time);
+				szLine = szLine.section(' ', 1);
 			}
-			case 1:
-				date = QDateTime::fromString(szLine.section(' ', 0, 0), Qt::ISODate);
-				if (date.isValid())
-					szLine = szLine.section(' ', 1);
-				break;
-			case 2:
+			break;
+		}
+		case 1:
+			date = QDateTime::fromString(szLine.section(' ', 0, 0), Qt::ISODate);
+			if(date.isValid())
+				szLine = szLine.section(' ', 1);
+			break;
+		case 2:
+		{
+			// The system-locale format is hairy, because it has no clear delimiter.
+			// Count how many spaces a typical time format has,
+			// and assume that that number is not going to change.
+			static int iSpaceCount = -1;
+			if(iSpaceCount == -1)
 			{
-				// The system-locale format is hairy, because it has no clear delimiter.
-				// Count how many spaces a typical time format has,
-				// and assume that that number is not going to change.
-				static int iSpaceCount = -1;
-				if (iSpaceCount == -1)
-				{
-					QString szTypicalDate = QDateTime::currentDateTime().toString(Qt::SystemLocaleShortDate);
-					iSpaceCount = szTypicalDate.count(' ');
-				}
-				date = QDateTime::fromString(szLine.section(' ', 0, iSpaceCount), Qt::SystemLocaleShortDate);
-				if (date.isValid())
-				{
-					szLine = szLine.section(' ', iSpaceCount+1);
+				QString szTypicalDate = QDateTime::currentDateTime().toString(Qt::SystemLocaleShortDate);
+				iSpaceCount = szTypicalDate.count(' ');
+			}
+			date = QDateTime::fromString(szLine.section(' ', 0, iSpaceCount), Qt::SystemLocaleShortDate);
+			if(date.isValid())
+			{
+				szLine = szLine.section(' ', iSpaceCount + 1);
 
-					// Work around Qt bug:
-					// if the date string contains a two-digit year, it may be
-					// parsed in the wrong century (i.e. 1916 instead of 2016).
-					if (logDate.year() == date.date().year() + 100)
-						date = date.addYears(100);
-				}
-				break;
+				// Work around Qt bug:
+				// if the date string contains a two-digit year, it may be
+				// parsed in the wrong century (i.e. 1916 instead of 2016).
+				if(logDate.year() == date.date().year() + 100)
+					date = date.addYears(100);
 			}
+			break;
+		}
 		}
 
-		if (szLine.isEmpty())
+		if(szLine.isEmpty())
 			continue;
 
 		// Print the line in the channel buffer

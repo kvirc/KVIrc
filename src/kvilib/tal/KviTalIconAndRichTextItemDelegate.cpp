@@ -33,12 +33,12 @@
 #define LVI_AFTER_ICON (LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING)
 
 KviTalIconAndRichTextItemDelegate::KviTalIconAndRichTextItemDelegate(QAbstractItemView * pWidget)
-    : QStyledItemDelegate(pWidget), m_pParent(pWidget), m_oMinimumSize(0, 0), m_oIconSize(LVI_ICON_SIZE, LVI_ICON_SIZE)
+	: QStyledItemDelegate(pWidget), m_pParent(pWidget), m_oMinimumSize(0, 0), m_oIconSize(LVI_ICON_SIZE, LVI_ICON_SIZE)
 {
 }
 
 KviTalIconAndRichTextItemDelegate::~KviTalIconAndRichTextItemDelegate()
-    = default;
+= default;
 
 void KviTalIconAndRichTextItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {
@@ -78,9 +78,9 @@ void KviTalIconAndRichTextItemDelegate::paint(QPainter * pPainter, const QStyleO
 		int w = m_oIconSize.width();
 
 		pPainter->drawPixmap(
-		    x + ((w - pix.width()) / 2),
-		    y,
-		    pix);
+			x + ((w - pix.width()) / 2),
+			y,
+			pix);
 	}
 
 	QTextDocument doc;

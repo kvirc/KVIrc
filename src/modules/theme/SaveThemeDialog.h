@@ -59,7 +59,7 @@ protected:
 protected:
 	void accept() override;
 	bool saveTheme();
-protected slots:
+	protected slots:
 	void makeScreenshot();
 	void imageSelectionChanged(const QString & szImagePath);
 };

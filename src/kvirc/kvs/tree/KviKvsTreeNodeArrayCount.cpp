@@ -29,12 +29,12 @@
 #include "KviKvsObject.h"
 
 KviKvsTreeNodeArrayCount::KviKvsTreeNodeArrayCount(const QChar * pLocation, KviKvsTreeNodeData * pSource)
-    : KviKvsTreeNodeIndirectData(pLocation, pSource)
+	: KviKvsTreeNodeIndirectData(pLocation, pSource)
 {
 }
 
 KviKvsTreeNodeArrayCount::~KviKvsTreeNodeArrayCount()
-    = default;
+= default;
 
 void KviKvsTreeNodeArrayCount::contextDescription(QString & szBuffer)
 {

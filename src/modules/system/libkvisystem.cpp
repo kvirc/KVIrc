@@ -205,10 +205,10 @@ static bool system_kvs_fnc_getenv(KviKvsModuleFunctionCall * c)
 	QString szVariable;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("variable", KVS_PT_NONEMPTYSTRING, 0, szVariable)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("variable", KVS_PT_NONEMPTYSTRING, 0, szVariable)
+		KVSM_PARAMETERS_END(c)
 
-	c->returnValue()->setString(KviEnvironment::getVariable(szVariable));
+		c->returnValue()->setString(KviEnvironment::getVariable(szVariable));
 	return true;
 }
 
@@ -269,9 +269,9 @@ static bool system_kvs_cmd_setClipboard(KviKvsModuleCommandCall * c)
 	QString szValue;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("data", KVS_PT_STRING, KVS_PF_OPTIONAL, szValue)
-	KVSM_PARAMETERS_END(c)
-	g_pApp->clipboard()->setText(szValue, QClipboard::Clipboard);
+		KVSM_PARAMETER("data", KVS_PT_STRING, KVS_PF_OPTIONAL, szValue)
+		KVSM_PARAMETERS_END(c)
+		g_pApp->clipboard()->setText(szValue, QClipboard::Clipboard);
 	return true;
 }
 
@@ -301,9 +301,9 @@ static bool system_kvs_cmd_setSelection(KviKvsModuleCommandCall * c)
 {
 	QString szValue;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("data", KVS_PT_STRING, KVS_PF_OPTIONAL, szValue)
-	KVSM_PARAMETERS_END(c)
-	g_pApp->clipboard()->setText(szValue, QClipboard::Selection);
+		KVSM_PARAMETER("data", KVS_PT_STRING, KVS_PF_OPTIONAL, szValue)
+		KVSM_PARAMETERS_END(c)
+		g_pApp->clipboard()->setText(szValue, QClipboard::Selection);
 	return true;
 }
 
@@ -362,10 +362,10 @@ static bool system_kvs_fnc_checkModule(KviKvsModuleFunctionCall * c)
 	QString szModuleName;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("module_name", KVS_PT_STRING, 0, szModuleName)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("module_name", KVS_PT_STRING, 0, szModuleName)
+		KVSM_PARAMETERS_END(c)
 
-	c->returnValue()->setBoolean(g_pModuleManager->loadModule(szModuleName));
+		c->returnValue()->setBoolean(g_pModuleManager->loadModule(szModuleName));
 	return true;
 }
 
@@ -447,18 +447,18 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall * c)
 	bool bRemoteTest = false;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("service", KVS_PT_NONEMPTYSTRING, 0, szService)
-	KVSM_PARAMETER("path", KVS_PT_NONEMPTYSTRING, 0, szPath)
-	KVSM_PARAMETER("interface", KVS_PT_NONEMPTYSTRING, 0, szInterface)
-	KVSM_PARAMETER("method", KVS_PT_NONEMPTYSTRING, 0, szMethod)
-	KVSM_PARAMETER("bus_type", KVS_PT_STRING, KVS_PF_OPTIONAL, szBusType)
-	KVSM_PARAMETER("parameter_list", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, parms)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("service", KVS_PT_NONEMPTYSTRING, 0, szService)
+		KVSM_PARAMETER("path", KVS_PT_NONEMPTYSTRING, 0, szPath)
+		KVSM_PARAMETER("interface", KVS_PT_NONEMPTYSTRING, 0, szInterface)
+		KVSM_PARAMETER("method", KVS_PT_NONEMPTYSTRING, 0, szMethod)
+		KVSM_PARAMETER("bus_type", KVS_PT_STRING, KVS_PF_OPTIONAL, szBusType)
+		KVSM_PARAMETER("parameter_list", KVS_PT_STRINGLIST, KVS_PF_OPTIONAL, parms)
+		KVSM_PARAMETERS_END(c)
 
 #ifdef COMPILE_DBUS_SUPPORT
 
-	if(szBusType.isEmpty())
-		szBusType = "session";
+		if(szBusType.isEmpty())
+			szBusType = "session";
 
 	QDBusConnection busType("");
 
@@ -576,46 +576,46 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall * c)
 	{
 		switch(v.type())
 		{
-			case QVariant::Bool:
-				c->returnValue()->setInteger(v.toBool() ? 1 : 0);
-				break;
-			case QVariant::String:
-				c->returnValue()->setString(v.toString());
-				break;
-			case QVariant::ByteArray:
-				c->returnValue()->setString(v.toByteArray().data());
-				break;
-			case QVariant::UInt:
-				c->returnValue()->setInteger(v.toUInt());
-				break;
-			case QVariant::Int:
-				c->returnValue()->setInteger(v.toInt());
-				break;
-			case QVariant::StringList:
+		case QVariant::Bool:
+			c->returnValue()->setInteger(v.toBool() ? 1 : 0);
+			break;
+		case QVariant::String:
+			c->returnValue()->setString(v.toString());
+			break;
+		case QVariant::ByteArray:
+			c->returnValue()->setString(v.toByteArray().data());
+			break;
+		case QVariant::UInt:
+			c->returnValue()->setInteger(v.toUInt());
+			break;
+		case QVariant::Int:
+			c->returnValue()->setInteger(v.toInt());
+			break;
+		case QVariant::StringList:
+		{
+			QStringList csl(v.toStringList());
+			KviKvsArray * arry = new KviKvsArray();
+			int idx = 0;
+			for(auto & iter : csl)
 			{
-				QStringList csl(v.toStringList());
-				KviKvsArray * arry = new KviKvsArray();
-				int idx = 0;
-				for(auto & iter : csl)
-				{
-					arry->set(idx, new KviKvsVariant(iter));
-					idx++;
-				}
-				c->returnValue()->setArray(arry);
-				break;
+				arry->set(idx, new KviKvsVariant(iter));
+				idx++;
 			}
-			case QVariant::Invalid:
-				//method returns void
-				c->returnValue()->setString("");
-				break;
-			default:
-				c->warning(__tr2qs("Unsupported D-Bus call return type %s"), v.typeName());
-				break;
+			c->returnValue()->setArray(arry);
+			break;
+		}
+		case QVariant::Invalid:
+			//method returns void
+			c->returnValue()->setString("");
+			break;
+		default:
+			c->warning(__tr2qs("Unsupported D-Bus call return type %s"), v.typeName());
+			break;
 		}
 	}
 
 #else
-	c->warning(__tr2qs("D-Bus calls are available only under UNIX"));
+		c->warning(__tr2qs("D-Bus calls are available only under UNIX"));
 #endif
 	return true;
 }
@@ -644,14 +644,14 @@ static bool system_kvs_cmd_setenv(KviKvsModuleCommandCall * c)
 	QString szVariable, szValue;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("variable", KVS_PT_NONEMPTYSTRING, 0, szVariable)
-	KVSM_PARAMETER("value", KVS_PT_STRING, KVS_PF_OPTIONAL, szValue)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("variable", KVS_PT_NONEMPTYSTRING, 0, szVariable)
+		KVSM_PARAMETER("value", KVS_PT_STRING, KVS_PF_OPTIONAL, szValue)
+		KVSM_PARAMETERS_END(c)
 
-	if(szValue.isEmpty())
-		KviEnvironment::unsetVariable(szVariable);
-	else
-		KviEnvironment::setVariable(szVariable, szValue);
+		if(szValue.isEmpty())
+			KviEnvironment::unsetVariable(szVariable);
+		else
+			KviEnvironment::setVariable(szVariable, szValue);
 	return true;
 }
 
@@ -732,11 +732,11 @@ static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall * c)
 	QString szCommand;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("command", KVS_PT_NONEMPTYSTRING, KVS_PF_APPENDREMAINING, szCommand)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("command", KVS_PT_NONEMPTYSTRING, KVS_PF_APPENDREMAINING, szCommand)
+		KVSM_PARAMETERS_END(c)
 
-	if(szCommand.isEmpty())
-		return c->error(__tr2qs("No command specified"));
+		if(szCommand.isEmpty())
+			return c->error(__tr2qs("No command specified"));
 
 	QString szTerminal;
 	QStringList args;
@@ -816,12 +816,12 @@ static bool system_kvs_fnc_ntohi(KviKvsModuleFunctionCall * c)
 	kvs_uint_t uBytes;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("value", KVS_PT_INT, 0, iValue)
-	KVSM_PARAMETER("bytecount", KVS_PT_UINT, KVS_PF_OPTIONAL, uBytes)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("value", KVS_PT_INT, 0, iValue)
+		KVSM_PARAMETER("bytecount", KVS_PT_UINT, KVS_PF_OPTIONAL, uBytes)
+		KVSM_PARAMETERS_END(c)
 
-	switch(uBytes)
-	{
+		switch(uBytes)
+		{
 		case 0:
 			c->returnValue()->setInteger((kvs_int_t)KviByteOrder::networkByteOrderToLocalCpu32((kvi_u32_t)iValue));
 			break;
@@ -840,7 +840,7 @@ static bool system_kvs_fnc_ntohi(KviKvsModuleFunctionCall * c)
 		default:
 			return c->error(__tr2qs("Bad bytecount specification: 1, 2, 4 and 8 are allowed"));
 			break;
-	}
+		}
 
 	return true;
 }
@@ -872,12 +872,12 @@ static bool system_kvs_fnc_htoni(KviKvsModuleFunctionCall * c)
 	kvs_uint_t uBytes;
 
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("value", KVS_PT_INT, 0, iValue)
-	KVSM_PARAMETER("bytecount", KVS_PT_UINT, KVS_PF_OPTIONAL, uBytes)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("value", KVS_PT_INT, 0, iValue)
+		KVSM_PARAMETER("bytecount", KVS_PT_UINT, KVS_PF_OPTIONAL, uBytes)
+		KVSM_PARAMETERS_END(c)
 
-	switch(uBytes)
-	{
+		switch(uBytes)
+		{
 		case 0:
 			c->returnValue()->setInteger((kvs_int_t)KviByteOrder::localCpuToNetworkByteOrder32((kvi_u32_t)iValue));
 			break;
@@ -896,7 +896,7 @@ static bool system_kvs_fnc_htoni(KviKvsModuleFunctionCall * c)
 		default:
 			return c->error(__tr2qs("Bad bytecount specification: 1, 2, 4 and 8 are allowed"));
 			break;
-	}
+		}
 
 	return true;
 }
@@ -944,14 +944,14 @@ static bool system_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "System", // module name
-    "4.0.0",  // module version
-    "Copyright	(C) 2001 Szymon Stefanek (pragma at kvirc dot net)"
-    "		(C) 2005 Tonino Imbesi (grifisx at barmes dot org)"
-    "		(C) 2005 Alessandro Carbone (elfonol at gmail dot com)", // author & (C)
-    "System information module",
-    system_module_init,
-    system_module_can_unload,
-    0,
-    system_module_cleanup,
-    0)
+	"System", // module name
+	"4.0.0",  // module version
+	"Copyright	(C) 2001 Szymon Stefanek (pragma at kvirc dot net)"
+	"		(C) 2005 Tonino Imbesi (grifisx at barmes dot org)"
+	"		(C) 2005 Alessandro Carbone (elfonol at gmail dot com)", // author & (C)
+	"System information module",
+	system_module_init,
+	system_module_can_unload,
+	0,
+	system_module_cleanup,
+	0)

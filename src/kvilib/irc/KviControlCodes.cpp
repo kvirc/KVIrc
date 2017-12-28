@@ -42,29 +42,29 @@ namespace KviControlCodes
 		{
 			switch(szData[i].unicode())
 			{
-				case KviControlCodes::Underline:
-				case KviControlCodes::Bold:
-				case KviControlCodes::Italic:
-				case KviControlCodes::Reset:
-				case KviControlCodes::Reverse:
-				case KviControlCodes::CryptEscape:
-				case KviControlCodes::CTCP:
-				case KviControlCodes::Icon:
-					if(i != iBegin)
-						szRet += szData.mid(iBegin, i - iBegin);
-					i++;
-					iBegin = i;
-					break;
-				case KviControlCodes::Color:
-					if(i != iBegin)
-						szRet += szData.mid(iBegin, i - iBegin);
-					i++;
-					i = getUnicodeColorBytes(szData, i, &c1, &c2);
-					iBegin = i;
-					break;
-				default:
-					i++;
-					break;
+			case KviControlCodes::Underline:
+			case KviControlCodes::Bold:
+			case KviControlCodes::Italic:
+			case KviControlCodes::Reset:
+			case KviControlCodes::Reverse:
+			case KviControlCodes::CryptEscape:
+			case KviControlCodes::CTCP:
+			case KviControlCodes::Icon:
+				if(i != iBegin)
+					szRet += szData.mid(iBegin, i - iBegin);
+				i++;
+				iBegin = i;
+				break;
+			case KviControlCodes::Color:
+				if(i != iBegin)
+					szRet += szData.mid(iBegin, i - iBegin);
+				i++;
+				i = getUnicodeColorBytes(szData, i, &c1, &c2);
+				iBegin = i;
+				break;
+			default:
+				i++;
+				break;
 			}
 		}
 		if(i != iBegin)
@@ -251,58 +251,63 @@ namespace KviControlCodes
 		//
 
 		//First we can have a digit or a comma
-		if(((*pcData >= '0') && (*pcData <='9')))
+		if(((*pcData >= '0') && (*pcData <= '9')))
 		{
 			//Something interesting ok.
-			(*pcByte1)=(*pcData)-'0'; //store the code
+			(*pcByte1) = (*pcData) - '0'; //store the code
 			pcData++;     //and check the next
-			if(((*pcData >= '0') && (*pcData <= '9'))||(*pcData==','))
+			if(((*pcData >= '0') && (*pcData <= '9')) || (*pcData == ','))
 			{
 				//Yes we can understand it
-				if(*pcData==',')
+				if(*pcData == ',')
 				{
 					//A comma, need to check for background
 					pcData++;
-				} else {
+				}
+				else {
 					//A number
-					(*pcByte1)=((((*pcByte1)*10)+((*pcData)-'0'))%16);
+					(*pcByte1) = ((((*pcByte1) * 10) + ((*pcData) - '0')) % 16);
 					pcData++;
-					if(*pcData==',')
+					if(*pcData == ',')
 					{
 						//A comma, need to check for background
 						pcData++;
-					} else {
+					}
+					else {
 						//Senseless return
-						(*pcByte2)=KviControlCodes::NoChange;
+						(*pcByte2) = KviControlCodes::NoChange;
 						return pcData;
 					}
 				}
-			} else {
+			}
+			else {
 				//Senseless character control code OK and return
-				(*pcByte2)=KviControlCodes::NoChange;
+				(*pcByte2) = KviControlCodes::NoChange;
 				return pcData;
 			}
-		} else {
+		}
+		else {
 			//Senseless character : only a Ctrl+K code
-			(*pcByte1)=KviControlCodes::NoChange;
-			(*pcByte2)=KviControlCodes::NoChange;
+			(*pcByte1) = KviControlCodes::NoChange;
+			(*pcByte2) = KviControlCodes::NoChange;
 			return pcData;
 		}
 
-		if((*pcData >= '0') && (*pcData <='9'))
+		if((*pcData >= '0') && (*pcData <= '9'))
 		{
 			//Background, a color code
-			(*pcByte2)=(*pcData)-'0';
+			(*pcByte2) = (*pcData) - '0';
 			pcData++;
-			if((*pcData >= '0') && (*pcData <='9'))
+			if((*pcData >= '0') && (*pcData <= '9'))
 			{
-				(*pcByte2)=((((*pcByte2)*10)+((*pcData)-'0'))%16);
+				(*pcByte2) = ((((*pcByte2) * 10) + ((*pcData) - '0')) % 16);
 				pcData++;
 			}
 			return pcData;
-		} else {
-			(*pcByte2)=KviControlCodes::NoChange;
-			return pcData-1;
+		}
+		else {
+			(*pcByte2) = KviControlCodes::NoChange;
+			return pcData - 1;
 		}
 	}
 #endif

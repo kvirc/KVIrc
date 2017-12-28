@@ -78,7 +78,7 @@
 */
 
 KviSharedFilesManager::KviSharedFilesManager()
-    : QObject()
+	: QObject()
 {
 	m_pSharedListDict = new KviPointerHashTable<QString, KviSharedFileList>();
 	m_pSharedListDict->setAutoDelete(true);

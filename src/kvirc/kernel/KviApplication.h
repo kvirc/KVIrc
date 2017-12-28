@@ -207,7 +207,7 @@ public:
 	inline void emitRecentUrlsChanged() { emit(recentUrlsChanged()); };
 	 */
 
-	// KviApplication.cpp (Saving options)
+	 // KviApplication.cpp (Saving options)
 	void saveIrcServerDataBase();
 	void saveProxyDataBase();
 	void saveRecentEntries();
@@ -379,7 +379,7 @@ private:
 	void createGlobalBackgrounds(QPixmap * pix);
 	void destroyPseudoTransparency();
 #endif //COMPILE_PSEUDO_TRANSPARENCY
-public slots:
+	public slots:
 	// KviApplication.cpp : Slots
 	void saveConfiguration();
 	void updateGui();

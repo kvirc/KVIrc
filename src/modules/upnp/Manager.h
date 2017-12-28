@@ -24,11 +24,11 @@
 //=============================================================================
 
 /***************************************************************************
-                          Manager.h -  description
-                             -------------------
-    begin                : Fri Aug 05 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  Manager.h -  description
+							 -------------------
+	begin                : Fri Aug 05 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #ifndef UPNPMANAGER_H
@@ -43,7 +43,6 @@
 
 namespace UPnP
 {
-
 	/**
  * The manager class is the public interface used by other networking classes.
  * It's implemented as singleton to provide easy access by other classes.
@@ -75,14 +74,14 @@ namespace UPnP
 		// Delete a port mapping
 		void deletePortMapping(const QString & protocol, const QString & remoteHost, int externalPort);
 
-	private slots:
+		private slots:
 		// The broadcast failed
 		void slotBroadcastTimeout();
 		// A device was discovered by the SSDP broadcast
 		void slotDeviceFound(const QString & hostname, int port, const QString & rootUrl);
 
 	private: // private methods
-		     // The constructor  (it's a singleton)
+			 // The constructor  (it's a singleton)
 		Manager();
 		// Disable the copy constructor
 		Manager(const Manager &);
@@ -107,7 +106,6 @@ namespace UPnP
 		// The timer to detect a broadcast timeout
 		QTimer * m_pSsdpTimer;
 	};
-
 } // End of namespace
 
 #endif

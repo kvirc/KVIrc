@@ -151,7 +151,7 @@ public:
 	void freeAccelleratorKeySequence(QString & key);
 	// called by children windows when they have updated their titles.
 	void updateWindowTitle(KviWindow * wnd);
-public slots:
+	public slots:
 	void newConsole();
 	void executeInternalCommand(int index);
 	void toggleStatusBar();
@@ -193,7 +193,7 @@ protected:
 
 	void updatePseudoTransparency();
 	void installAccelerators();
-protected slots:
+	protected slots:
 	void switchToNextWindow();
 	void switchToPrevWindow();
 	void switchToNextHighlightedWindow();

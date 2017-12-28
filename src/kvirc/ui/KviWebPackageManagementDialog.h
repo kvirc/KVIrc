@@ -76,14 +76,13 @@ protected:
 	virtual bool packageIsInstalled(const QString & szId, const QString & szVersion) = 0;
 	virtual bool installPackage(const QString & szPath, QString & szError) = 0;
 
-protected slots:
+	protected slots:
 
 	void slotLoadFinished(bool ok);
 	void slotLoadProgress(int iProgress);
 	void slotDataTransferProgress(qint64 iDone, qint64 iTotal);
 	void slotCommandFinished();
 	void slotLinkClicked(const QUrl & url);
-
 }; // class KviWebPackageManagementDialog
 
 #endif //COMPILE_WEBKIT_SUPPORT

@@ -36,7 +36,7 @@ class KVIRC_API KviKvsTreeNodeSpecialCommandClassFunctionDefinition : public Kvi
 {
 public:
 	KviKvsTreeNodeSpecialCommandClassFunctionDefinition(const QChar * pLocation, const QString & szName, const QString & szBuffer, const QString & szReminder, unsigned int uHandlerFlags);
-	virtual ~KviKvsTreeNodeSpecialCommandClassFunctionDefinition(){};
+	virtual ~KviKvsTreeNodeSpecialCommandClassFunctionDefinition() {};
 
 protected:
 	QString m_szName;

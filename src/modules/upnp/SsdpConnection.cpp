@@ -24,11 +24,11 @@
 //=============================================================================
 
 /***************************************************************************
-                          SsdpConnection.cpp -  description
-                             -------------------
-    begin                : Fri Jul 29 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  SsdpConnection.cpp -  description
+							 -------------------
+	begin                : Fri Jul 29 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #include "SsdpConnection.h"
@@ -42,9 +42,8 @@
 
 namespace UPnP
 {
-
 	SsdpConnection::SsdpConnection()
-	    : QObject()
+		: QObject()
 	{
 		m_pSocket = new QUdpSocket();
 		connect(m_pSocket, SIGNAL(readyRead()), this, SLOT(slotDataReceived()));
@@ -120,11 +119,11 @@ namespace UPnP
 		QHostAddress address("239.255.255.250");
 
 		QString data = "M-SEARCH * HTTP/1.1\r\n"
-		               "Host:239.255.255.250:1900\r\n"
-		               "ST:urn:schemas-upnp-org:device:InternetGatewayDevice:1\r\n"
-		               "Man:\"ssdp:discover\"\r\n"
-		               "MX:3\r\n"
-		               "\r\n";
+			"Host:239.255.255.250:1900\r\n"
+			"ST:urn:schemas-upnp-org:device:InternetGatewayDevice:1\r\n"
+			"Man:\"ssdp:discover\"\r\n"
+			"MX:3\r\n"
+			"\r\n";
 
 		// Bind the socket to a certain port
 		bool success = m_pSocket->bind(bindPort);
@@ -142,5 +141,4 @@ namespace UPnP
 			qDebug() << "UPnP::SsdpConnection: failed to send the UPnP broadcast packet." << endl;
 		}
 	}
-
 } // end of namespace

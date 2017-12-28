@@ -33,7 +33,7 @@
 #include <QRadioButton>
 
 OptionsWidget_connection::OptionsWidget_connection(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("connection_options_widget");
 	createLayout();
@@ -65,24 +65,24 @@ OptionsWidget_connection::OptionsWidget_connection(QWidget * parent)
 
 	b = addBoolSelector(gbox, __tr2qs_ctx("Automatically reconnect", "options"), KviOption_boolAutoReconnectOnUnexpectedDisconnect);
 	mergeTip(b, __tr2qs_ctx("This option will enable auto-reconnecting after an unexpected disconnect. "
-	                        "An unexpected disconnect is the <b>termination</b> of a <b>fully connected IRC session</b> "
-	                        "that was <b>not requested by the user</b> by the means of the QUIT message."
-	                        "<p><b>Warning:</b> If you use /RAW to send a QUIT message to the server, "
-	                        "this option will not behave correctly, since does not detect the outgoing "
-	                        "QUIT message and will attempt to reconnect after the server has closed the connection. "
-	                        "For this reason, always use the /QUIT command to close your connections. "
-	                        "This option may also behave incorrectly with bouncers that support "
-	                        "detaching, in this case a solution could be to prepare an alias that sends the "
-	                        "bouncer \"detach\" command immediately before the \"quit\" command.<br>"
-	                        "<tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p>",
-	                "options"));
+		"An unexpected disconnect is the <b>termination</b> of a <b>fully connected IRC session</b> "
+		"that was <b>not requested by the user</b> by the means of the QUIT message."
+		"<p><b>Warning:</b> If you use /RAW to send a QUIT message to the server, "
+		"this option will not behave correctly, since does not detect the outgoing "
+		"QUIT message and will attempt to reconnect after the server has closed the connection. "
+		"For this reason, always use the /QUIT command to close your connections. "
+		"This option may also behave incorrectly with bouncers that support "
+		"detaching, in this case a solution could be to prepare an alias that sends the "
+		"bouncer \"detach\" command immediately before the \"quit\" command.<br>"
+		"<tt>alias(bncdetach){ raw bouncer detach; quit; }</tt></p>",
+		"options"));
 
 	KviUIntSelector * u = addUIntSelector(gbox, __tr2qs_ctx("Maximum attempts (0 = unlimited):", "options"),
-	    KviOption_uintMaxAutoReconnectAttempts, 0, 100, 5, KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
+		KviOption_uintMaxAutoReconnectAttempts, 0, 100, 5, KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
 	connect(b, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
 
 	u = addUIntSelector(gbox, __tr2qs_ctx("Delay between attempts:", "options"), KviOption_uintAutoReconnectDelay, 0, 86400, 5,
-	    KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
+		KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
 	u->setSuffix(__tr2qs_ctx(" sec", "options"));
 	connect(b, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
 
@@ -92,10 +92,10 @@ OptionsWidget_connection::OptionsWidget_connection(QWidget * parent)
 }
 
 OptionsWidget_connection::~OptionsWidget_connection()
-    = default;
+= default;
 
 OptionsWidget_connectionSsl::OptionsWidget_connectionSsl(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("ssl_options_widget");
 	createLayout();
@@ -109,14 +109,14 @@ OptionsWidget_connectionSsl::OptionsWidget_connectionSsl(QWidget * parent)
 	KviTalGroupBox * gbox = addGroupBox(0, 0, 0, 0, Qt::Horizontal, __tr2qs_ctx("Certificate", "options"));
 
 	b = addBoolSelector(gbox, __tr2qs_ctx("Use SSL certificate (PEM format only)", "options"),
-	    KviOption_boolUseSSLCertificate, true);
+		KviOption_boolUseSSLCertificate, true);
 
 	f = addFileSelector(gbox, __tr2qs_ctx("Certificate location:", "options"), KviOption_stringSSLCertificatePath,
-	    KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate));
+		KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate));
 	connect(b, SIGNAL(toggled(bool)), f, SLOT(setEnabled(bool)));
 
 	p = new KviPasswordSelector(gbox, __tr2qs_ctx("Certificate password:", "options"), &(KVI_OPTION_STRING(KviOption_stringSSLCertificatePass)),
-	    KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate));
+		KVI_OPTION_BOOL(KviOption_boolUseSSLCertificate));
 	setBasicTip(p, g_stringOptionsTable[KviOption_stringSSLCertificatePass].name);
 	connect(b, SIGNAL(toggled(bool)), p, SLOT(setEnabled(bool)));
 
@@ -124,11 +124,11 @@ OptionsWidget_connectionSsl::OptionsWidget_connectionSsl(QWidget * parent)
 
 	b = addBoolSelector(gbox, __tr2qs_ctx("Use SSL private key", "options"), KviOption_boolUseSSLPrivateKey, true);
 	f = addFileSelector(gbox, __tr2qs_ctx("Private key location:", "options"), KviOption_stringSSLPrivateKeyPath,
-	    KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey));
+		KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey));
 	connect(b, SIGNAL(toggled(bool)), f, SLOT(setEnabled(bool)));
 
 	p = addPasswordSelector(gbox, __tr2qs_ctx("Private key password:", "options"), &(KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPass)),
-	    KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey));
+		KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey));
 	setBasicTip(p, g_stringOptionsTable[KviOption_stringSSLPrivateKeyPass].name);
 	connect(b, SIGNAL(toggled(bool)), p, SLOT(setEnabled(bool)));
 
@@ -139,10 +139,10 @@ OptionsWidget_connectionSsl::OptionsWidget_connectionSsl(QWidget * parent)
 }
 
 OptionsWidget_connectionSsl::~OptionsWidget_connectionSsl()
-    = default;
+= default;
 
 OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("transport_options_widget");
 	createLayout();
@@ -159,7 +159,7 @@ OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
 	u->setSuffix(__tr2qs_ctx(" msec", "options"));
 	b = addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Limit outgoing traffic per connection", "options"), KviOption_boolLimitOutgoingTraffic);
 	u = addUIntSelector(0, 2, 0, 2, __tr2qs_ctx("Limit to 1 message every:", "options"),
-	    KviOption_uintOutgoingTrafficLimitUSeconds, 10000, 2000000, 10000001, KVI_OPTION_BOOL(KviOption_boolLimitOutgoingTraffic));
+		KviOption_uintOutgoingTrafficLimitUSeconds, 10000, 2000000, 10000001, KVI_OPTION_BOOL(KviOption_boolLimitOutgoingTraffic));
 	u->setSuffix(__tr2qs_ctx(" usec", "options"));
 	mergeTip(u, __tr2qs_ctx("Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</b>", "options"));
 	connect(b, SIGNAL(toggled(bool)), u, SLOT(setEnabled(bool)));
@@ -177,21 +177,21 @@ OptionsWidget_connectionSocket::OptionsWidget_connectionSocket(QWidget * parent)
 
 	b = addBoolSelector(0, 4, 0, 4, __tr2qs_ctx("Pick random IP address for round-robin servers", "options"), KviOption_boolPickRandomIpAddressForRoundRobinServers);
 	mergeTip(b, __tr2qs_ctx("This option will cause the KVIrc networking stack to pick up "
-	                        "a random entry when multiple IP address are retrieved for a server "
-	                        "DNS lookup. This is harmless and can fix some problems with caching "
-	                        "DNS servers that do not properly rotate the records as the authoritative "
-	                        "ones would do. On the other hand, you might want to disable it if "
-	                        "you want to rely on the DNS server to provide the best choice.",
-	                "options"));
+		"a random entry when multiple IP address are retrieved for a server "
+		"DNS lookup. This is harmless and can fix some problems with caching "
+		"DNS servers that do not properly rotate the records as the authoritative "
+		"ones would do. On the other hand, you might want to disable it if "
+		"you want to rely on the DNS server to provide the best choice.",
+		"options"));
 
 	addRowSpacer(0, 5, 0, 5);
 }
 
 OptionsWidget_connectionSocket::~OptionsWidget_connectionSocket()
-    = default;
+= default;
 
 OptionsWidget_identService::OptionsWidget_identService(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("ident_options_widget");
 	createLayout();
@@ -215,15 +215,15 @@ OptionsWidget_identService::OptionsWidget_identService(QWidget * parent)
 
 	switch(KVI_OPTION_UINT(KviOption_uintIdentdOutputMode))
 	{
-		case KviIdentdOutputMode::Quiet:
-			m_pQuietRadio->setChecked(true);
-			break;
-		case KviIdentdOutputMode::ToConsole:
-			m_pConsoleRadio->setChecked(true);
-			break;
-		case KviIdentdOutputMode::ToActiveWindow:
-			m_pActiveRadio->setChecked(true);
-			break;
+	case KviIdentdOutputMode::Quiet:
+		m_pQuietRadio->setChecked(true);
+		break;
+	case KviIdentdOutputMode::ToConsole:
+		m_pConsoleRadio->setChecked(true);
+		break;
+	case KviIdentdOutputMode::ToActiveWindow:
+		m_pActiveRadio->setChecked(true);
+		break;
 	}
 
 	KviBoolSelector * b;
@@ -245,7 +245,7 @@ OptionsWidget_identService::OptionsWidget_identService(QWidget * parent)
 	gbox = addGroupBox(0, 3, 0, 3, Qt::Horizontal, __tr2qs_ctx("IPv6 Settings", "options"), KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 
 	m_pEnableIpv6 = addBoolSelector(gbox, __tr2qs_ctx("Enable service for IPv6", "options"), KviOption_boolIdentdEnableIPv6,
-	    KVI_OPTION_BOOL(KviOption_boolUseIdentService));
+		KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 #ifdef COMPILE_IPV6_SUPPORT
 	connect(m_pEnableIdent, SIGNAL(toggled(bool)), m_pEnableIpv6, SLOT(setEnabled(bool)));
 	connect(m_pEnableIpv6, SIGNAL(toggled(bool)), this, SLOT(enableIpv4InIpv6(bool)));
@@ -253,32 +253,32 @@ OptionsWidget_identService::OptionsWidget_identService(QWidget * parent)
 	m_pEnableIpv6->setEnabled(false);
 #endif
 	m_pIpv4InIpv6 = addBoolSelector(gbox, __tr2qs_ctx("IP stack treats IPv4 as part of IPv6 namespace", "options"), KviOption_boolIdentdIPv6ContainsIPv4,
-	    KVI_OPTION_BOOL(KviOption_boolUseIdentService) && KVI_OPTION_BOOL(KviOption_boolIdentdEnableIPv6));
+		KVI_OPTION_BOOL(KviOption_boolUseIdentService) && KVI_OPTION_BOOL(KviOption_boolIdentdEnableIPv6));
 	connect(m_pEnableIdent, SIGNAL(toggled(bool)), gbox, SLOT(setEnabled(bool)));
 
 	addLabel(0, 4, 0, 4,
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	    __tr2qs_ctx("<p><b>Warning:</b><br>"
-	                "This is a <b>non RFC 1413 compliant</b> Ident daemon that implements "
-	                "only a limited subset of the Identification Protocol specifications. If it is possible, install a "
-	                "real Ident daemon.</p>",
-	             "options")
+		__tr2qs_ctx("<p><b>Warning:</b><br>"
+			"This is a <b>non RFC 1413 compliant</b> Ident daemon that implements "
+			"only a limited subset of the Identification Protocol specifications. If it is possible, install a "
+			"real Ident daemon.</p>",
+			"options")
 #else
-	    __tr2qs_ctx("<p><b>Warning:</b><br>"
-	                "This is a <b>non RFC 1413 compliant</b> Ident daemon that implements "
-	                "only a limited subset of the <b>Identification Protocol</b> specifications.<br>"
-	                "On UNIX, you may also need root privileges to bind to the auth port (113).<br>"
-	                "It is <b>highly recommended</b> that a <b>real</b> system-wide Ident daemon be used instead, "
-	                "or none at all if Ident is not required.</p>",
-	             "options")
+		__tr2qs_ctx("<p><b>Warning:</b><br>"
+			"This is a <b>non RFC 1413 compliant</b> Ident daemon that implements "
+			"only a limited subset of the <b>Identification Protocol</b> specifications.<br>"
+			"On UNIX, you may also need root privileges to bind to the auth port (113).<br>"
+			"It is <b>highly recommended</b> that a <b>real</b> system-wide Ident daemon be used instead, "
+			"or none at all if Ident is not required.</p>",
+			"options")
 #endif
-	        );
+	);
 
 	addRowSpacer(0, 5, 0, 5);
 }
 
 OptionsWidget_identService::~OptionsWidget_identService()
-    = default;
+= default;
 
 void OptionsWidget_identService::commit()
 {
@@ -299,10 +299,10 @@ void OptionsWidget_identService::enableIpv4InIpv6(bool)
 }
 
 OptionsWidget_connectionAdvanced::OptionsWidget_connectionAdvanced(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("connection_advanced_options_widget");
 }
 
 OptionsWidget_connectionAdvanced::~OptionsWidget_connectionAdvanced()
-    = default;
+= default;

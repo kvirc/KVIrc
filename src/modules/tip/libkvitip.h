@@ -65,7 +65,7 @@ protected:
 public:
 	bool openConfig(QString filename, bool bEnsureExists = true);
 	void closeConfig();
-public slots:
+	public slots:
 	void nextTip();
 	void prevTip();
 };

@@ -61,7 +61,7 @@ class UrlDialogTreeWidget : public QTreeWidget
 	Q_OBJECT
 public:
 	UrlDialogTreeWidget(QWidget *);
-	~UrlDialogTreeWidget(){};
+	~UrlDialogTreeWidget() {};
 
 protected:
 	void mousePressEvent(QMouseEvent * e);
@@ -90,7 +90,7 @@ public:
 	UrlDialogTreeWidget * m_pUrlList;
 	void addUrl(QString url, QString window, QString count, QString timestamp);
 	//	void saveProperties();
-protected slots:
+	protected slots:
 	void config();
 	void help();
 	void saveList();
@@ -118,7 +118,7 @@ private:
 	QListWidget * m_pBanList;
 	QPushButton * m_pAddBtn;
 	QPushButton * m_pRemoveBtn;
-protected slots:
+	protected slots:
 	void enableClicked();
 	void addBan();
 	void removeBan();
@@ -137,7 +137,7 @@ private:
 	QCheckBox * cb[cbnum];
 	BanFrame * m_pBanFrame;
 	void closeEvent(QCloseEvent *);
-protected slots:
+	protected slots:
 	void acceptbtn();
 	void discardbtn();
 };

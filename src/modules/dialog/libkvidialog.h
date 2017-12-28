@@ -38,17 +38,17 @@ class KviKvsCallbackMessageBox : public QMessageBox, public KviKvsCallbackObject
 	Q_OBJECT
 public:
 	KviKvsCallbackMessageBox(
-	    const QString & szCaption,
-	    const QString & szText,
-	    const QString & szIcon,
-	    const QString & szButton0,
-	    const QString & szButton1,
-	    const QString & szButton2,
-	    const QString & szCode,
-	    KviKvsVariantList * pMagicParams,
-	    KviWindow * pWindow, bool modal = false);
+		const QString & szCaption,
+		const QString & szText,
+		const QString & szIcon,
+		const QString & szButton0,
+		const QString & szButton1,
+		const QString & szButton2,
+		const QString & szCode,
+		KviKvsVariantList * pMagicParams,
+		KviWindow * pWindow, bool modal = false);
 	~KviKvsCallbackMessageBox();
-protected slots:
+	protected slots:
 	virtual void done(int code);
 };
 
@@ -57,18 +57,18 @@ class KviKvsCallbackTextInput : public QDialog, public KviKvsCallbackObject
 	Q_OBJECT
 public:
 	KviKvsCallbackTextInput(
-	    const QString & szCaption,
-	    const QString & szLabel,
-	    const QString & szDefaultText,
-	    const QString & szIcon,
-	    bool bMultiLine,
-	    bool bPassword,
-	    const QString & szButton0,
-	    const QString & szButton1,
-	    const QString & szButton2,
-	    const QString & szCode,
-	    KviKvsVariantList * pMagicParams,
-	    KviWindow * pWindow, bool modal = false);
+		const QString & szCaption,
+		const QString & szLabel,
+		const QString & szDefaultText,
+		const QString & szIcon,
+		bool bMultiLine,
+		bool bPassword,
+		const QString & szButton0,
+		const QString & szButton1,
+		const QString & szButton2,
+		const QString & szCode,
+		KviKvsVariantList * pMagicParams,
+		KviWindow * pWindow, bool modal = false);
 	~KviKvsCallbackTextInput();
 
 protected:
@@ -81,7 +81,7 @@ protected:
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 	virtual void showEvent(QShowEvent * e);
-protected slots:
+	protected slots:
 	void b0Clicked();
 	void b1Clicked();
 	void b2Clicked();
@@ -93,12 +93,12 @@ class KviKvsCallbackFileDialog : public KviFileDialog, public KviKvsCallbackObje
 	Q_OBJECT
 public:
 	KviKvsCallbackFileDialog(
-	    const QString & szCaption,
-	    const QString & szInitialSelection,
-	    const QString & szFilter,
-	    const QString & szCode,
-	    KviKvsVariantList * pMagicParams,
-	    KviWindow * pWindow, bool modal = false);
+		const QString & szCaption,
+		const QString & szInitialSelection,
+		const QString & szFilter,
+		const QString & szCode,
+		KviKvsVariantList * pMagicParams,
+		KviWindow * pWindow, bool modal = false);
 	~KviKvsCallbackFileDialog();
 
 protected:
@@ -110,13 +110,13 @@ class KviKvsCallbackImageDialog : public KviImageDialog, public KviKvsCallbackOb
 	Q_OBJECT
 public:
 	KviKvsCallbackImageDialog(
-	    const QString & szCaption,
-	    const QString & szInitialSelection,
-	    int iType,
-	    int iMaxSize,
-	    const QString & szCode,
-	    KviKvsVariantList * pMagicParams,
-	    KviWindow * pWindow, bool modal = false);
+		const QString & szCaption,
+		const QString & szInitialSelection,
+		int iType,
+		int iMaxSize,
+		const QString & szCode,
+		KviKvsVariantList * pMagicParams,
+		KviWindow * pWindow, bool modal = false);
 	~KviKvsCallbackImageDialog();
 
 protected:

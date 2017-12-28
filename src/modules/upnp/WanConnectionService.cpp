@@ -24,11 +24,11 @@
 //=============================================================================
 
 /***************************************************************************
-                          WanConnectionService.cpp -  description
-                             -------------------
-    begin                : Mon Jul 25 2005
-    copyright            : (C) 2005 by Diederik van der Boor
-    email                : vdboor --at-- codingdomain.com
+						  WanConnectionService.cpp -  description
+							 -------------------
+	begin                : Mon Jul 25 2005
+	copyright            : (C) 2005 by Diederik van der Boor
+	email                : vdboor --at-- codingdomain.com
  ***************************************************************************/
 
 #include "WanConnectionService.h"
@@ -36,21 +36,20 @@
 
 namespace UPnP
 {
-
 	// The constructor
 	WanConnectionService::WanConnectionService(const ServiceParameters & params)
-	    : Service(params), m_bNatEnabled(false)
+		: Service(params), m_bNatEnabled(false)
 	{
 	}
 
 	// The destructor
 	WanConnectionService::~WanConnectionService()
-	    = default;
+		= default;
 
 	// Add a port mapping
 	void WanConnectionService::addPortMapping(const QString & protocol, const QString & remoteHost, int externalPort,
-	    const QString & internalClient, int internalPort, const QString & description,
-	    bool enabled, int leaseDuration)
+		const QString & internalClient, int internalPort, const QString & description,
+		bool enabled, int leaseDuration)
 	{
 		QMap<QString, QString> arguments;
 		arguments["NewProtocol"] = protocol;
@@ -96,7 +95,7 @@ namespace UPnP
 	void WanConnectionService::gotActionResponse(const QString & responseType, const QMap<QString, QString> & resultValues)
 	{
 		qDebug() << "UPnP::WanConnectionService: parsing action response:"
-		         << " type='" << responseType << "'." << endl;
+			<< " type='" << responseType << "'." << endl;
 
 		// Check the message type
 		if(responseType == "GetExternalIPAddressResponse")
@@ -132,8 +131,8 @@ namespace UPnP
 			m_lPortMappings.append(map);
 
 			qDebug() << "UPnP::WanConnectionService - Received mapping: " << map->protocol << " " << map->remoteHost << ":" << map->externalPort
-			         << " to " << map->internalClient << ":" << map->internalPort
-			         << "    max " << map->leaseDuration << "s '" << map->description << "' " << (map->enabled ? "enabled" : "disabled") << endl;
+				<< " to " << map->internalClient << ":" << map->internalPort
+				<< "    max " << map->leaseDuration << "s '" << map->description << "' " << (map->enabled ? "enabled" : "disabled") << endl;
 		}
 		else if(responseType == "AddPortMappingResponse")
 		{
@@ -146,7 +145,7 @@ namespace UPnP
 		else
 		{
 			qDebug() << "UPnP::WanConnectionService - Unexpected response type"
-			         << " '" << responseType << "' encountered." << endl;
+				<< " '" << responseType << "' encountered." << endl;
 		}
 	}
 
@@ -169,5 +168,4 @@ namespace UPnP
 		arguments["NewPortMappingIndex"] = QString::number(index);
 		callAction("GetGenericPortMappingEntry", arguments, "m");
 	}
-
 } // End of namespace

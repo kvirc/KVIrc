@@ -69,15 +69,15 @@ class KviSubmenuAction : public KviKvsAction
 	Q_OBJECT
 public:
 	KviSubmenuAction(
-	    QObject * pParent,
-	    const QString & szName,
-	    const QString & szScriptCode,
-	    const QString & szVisibleName,
-	    const QString & szDescription,
-	    KviActionCategory * pCategory = NULL,
-	    const QString & szBigIconId = QString(),
-	    KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
-	    unsigned int uFlags = 0);
+		QObject * pParent,
+		const QString & szName,
+		const QString & szScriptCode,
+		const QString & szVisibleName,
+		const QString & szDescription,
+		KviActionCategory * pCategory = NULL,
+		const QString & szBigIconId = QString(),
+		KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
+		unsigned int uFlags = 0);
 	~KviSubmenuAction();
 
 protected:
@@ -89,7 +89,7 @@ protected:
 public:
 	virtual bool addToPopupMenu(QMenu * pMenu);
 	virtual QAction * addToCustomToolBar(KviCustomToolBar * pTool);
-protected slots:
+	protected slots:
 	virtual void popupAboutToShow();
 	virtual void popupActivated(QAction * pAction);
 };
@@ -99,7 +99,7 @@ class KviJoinChannelAction : public KviSubmenuAction
 	Q_OBJECT
 public:
 	KviJoinChannelAction(QObject * pParent);
-protected slots:
+	protected slots:
 	virtual void popupAboutToShow();
 	virtual void popupActivated(QAction * pAction);
 };
@@ -109,7 +109,7 @@ class KviChangeNickAction : public KviSubmenuAction
 	Q_OBJECT
 public:
 	KviChangeNickAction(QObject * pParent);
-protected slots:
+	protected slots:
 	void popupAboutToShow();
 	void popupActivated(QAction * pAction);
 };
@@ -119,7 +119,7 @@ class KviConnectToServerAction : public KviSubmenuAction
 	Q_OBJECT
 public:
 	KviConnectToServerAction(QObject * pParent);
-protected slots:
+	protected slots:
 	void popupAboutToShow();
 	void popupActivated(QAction * pAction);
 };
@@ -129,7 +129,7 @@ class KviChangeUserModeAction : public KviSubmenuAction
 	Q_OBJECT
 public:
 	KviChangeUserModeAction(QObject * pParent);
-protected slots:
+	protected slots:
 	void popupAboutToShow();
 	void popupActivated(QAction * pAction);
 };
@@ -139,7 +139,7 @@ class KviIrcToolsAction : public KviSubmenuAction
 	Q_OBJECT
 public:
 	KviIrcToolsAction(QObject * pParent);
-protected slots:
+	protected slots:
 	void popupAboutToShow();
 	void popupActivated(QAction * pAction);
 };
@@ -149,7 +149,7 @@ class KviIrcOperationsAction : public KviSubmenuAction
 	Q_OBJECT
 public:
 	KviIrcOperationsAction(QObject * pParent);
-protected slots:
+	protected slots:
 	void popupAboutToShow();
 	void popupActivated(QAction * pAction);
 };

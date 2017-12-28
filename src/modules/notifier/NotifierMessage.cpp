@@ -33,7 +33,7 @@
 #include <QResizeEvent>
 
 NotifierMessage::NotifierMessage(QPixmap * pPixmap, const QString & szText)
-    : m_szText{szText}, m_pPixmap{pPixmap}
+	: m_szText{ szText }, m_pPixmap{ pPixmap }
 {
 	m_pHBox = new QHBoxLayout(this);
 	m_pHBox->setSpacing(SPACING);

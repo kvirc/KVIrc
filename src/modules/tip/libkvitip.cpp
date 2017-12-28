@@ -40,7 +40,7 @@
 TipWindow * g_pTipWindow = nullptr;
 
 TipFrame::TipFrame(QWidget * par)
-    : QFrame(par)
+	: QFrame(par)
 {
 	QString buffer;
 	m_pLabel1 = new QLabel(this);
@@ -250,11 +250,11 @@ static bool tip_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 	QString szTipfilename;
 	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETER("filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szTipfilename)
-	KVSM_PARAMETERS_END(c)
+		KVSM_PARAMETER("filename", KVS_PT_STRING, KVS_PF_OPTIONAL, szTipfilename)
+		KVSM_PARAMETERS_END(c)
 
-	if(!g_pTipWindow)
-		g_pTipWindow = new TipWindow();
+		if(!g_pTipWindow)
+			g_pTipWindow = new TipWindow();
 	if(!szTipfilename.isEmpty())
 		g_pTipWindow->openConfig(szTipfilename);
 	g_pTipWindow->nextTip();
@@ -281,12 +281,12 @@ static bool tip_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Tip",                                                          // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "\"Did you know...\" tip",
-    tip_module_init,
-    tip_module_can_unload,
-    0,
-    tip_module_cleanup,
-    0)
+	"Tip",                                                          // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"\"Did you know...\" tip",
+	tip_module_init,
+	tip_module_can_unload,
+	0,
+	tip_module_cleanup,
+	0)

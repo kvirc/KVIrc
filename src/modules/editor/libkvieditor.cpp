@@ -74,20 +74,20 @@ static bool editor_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "Editor",                                                       // module name
-    "4.0.0",                                                        // module version
-    "Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
-    "Text editor extension",
-    editor_module_init,
-    editor_module_can_unload,
-    0,
-    editor_module_cleanup,
-    "editor")
+	"Editor",                                                       // module name
+	"4.0.0",                                                        // module version
+	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Text editor extension",
+	editor_module_init,
+	editor_module_can_unload,
+	0,
+	editor_module_cleanup,
+	"editor")
 
-// We want C linkage on this one: we want to be able to dlsym() it with a simple name
-// FIXME: Is this portable enough ? Or is better to have a table entry ?
+	// We want C linkage on this one: we want to be able to dlsym() it with a simple name
+	// FIXME: Is this portable enough ? Or is better to have a table entry ?
 
-KVIMODULEEXPORTFUNC KviScriptEditor * editor_module_createScriptEditor(QWidget * par)
+	KVIMODULEEXPORTFUNC KviScriptEditor * editor_module_createScriptEditor(QWidget * par)
 {
 	return new ScriptEditorImplementation(par);
 }

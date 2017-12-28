@@ -31,15 +31,15 @@
 #include <QLayout>
 
 OptionsWidget_ircViewTheme::OptionsWidget_ircViewTheme(QWidget * pParent)
-    : KviOptionsWidget(pParent)
+	: KviOptionsWidget(pParent)
 {
 }
 
 OptionsWidget_ircViewTheme::~OptionsWidget_ircViewTheme()
-    = default;
+= default;
 
 OptionsWidget_ircViewLook::OptionsWidget_ircViewLook(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("ircviewlook_options_widget");
 	createLayout();
@@ -73,66 +73,66 @@ OptionsWidget_ircViewLook::OptionsWidget_ircViewLook(QWidget * parent)
 
 	switch(KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign) & Qt::AlignHorizontal_Mask)
 	{
-		case Qt::AlignLeft:
-			m_pHorizontalAlign->setCurrentIndex(1);
-			break;
-		case Qt::AlignRight:
-			m_pHorizontalAlign->setCurrentIndex(2);
-			break;
-		case Qt::AlignHCenter:
-			m_pHorizontalAlign->setCurrentIndex(3);
-			break;
-		default:
-			m_pHorizontalAlign->setCurrentIndex(0);
+	case Qt::AlignLeft:
+		m_pHorizontalAlign->setCurrentIndex(1);
+		break;
+	case Qt::AlignRight:
+		m_pHorizontalAlign->setCurrentIndex(2);
+		break;
+	case Qt::AlignHCenter:
+		m_pHorizontalAlign->setCurrentIndex(3);
+		break;
+	default:
+		m_pHorizontalAlign->setCurrentIndex(0);
 	}
 
 	switch(KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign) & Qt::AlignVertical_Mask)
 	{
-		case Qt::AlignTop:
-			m_pVerticalAlign->setCurrentIndex(1);
-			break;
-		case Qt::AlignBottom:
-			m_pVerticalAlign->setCurrentIndex(2);
-			break;
-		case Qt::AlignVCenter:
-			m_pVerticalAlign->setCurrentIndex(3);
-			break;
-		default:
-			m_pVerticalAlign->setCurrentIndex(0);
+	case Qt::AlignTop:
+		m_pVerticalAlign->setCurrentIndex(1);
+		break;
+	case Qt::AlignBottom:
+		m_pVerticalAlign->setCurrentIndex(2);
+		break;
+	case Qt::AlignVCenter:
+		m_pVerticalAlign->setCurrentIndex(3);
+		break;
+	default:
+		m_pVerticalAlign->setCurrentIndex(0);
 	}
 
 	layout()->setRowStretch(2, 1);
 }
 
 OptionsWidget_ircViewLook::~OptionsWidget_ircViewLook()
-    = default;
+= default;
 
 void OptionsWidget_ircViewLook::commit()
 {
 	int iFlags = 0;
 	switch(m_pHorizontalAlign->currentIndex())
 	{
-		case 1:
-			iFlags |= Qt::AlignLeft;
-			break;
-		case 2:
-			iFlags |= Qt::AlignRight;
-			break;
-		case 3:
-			iFlags |= Qt::AlignHCenter;
-			break;
+	case 1:
+		iFlags |= Qt::AlignLeft;
+		break;
+	case 2:
+		iFlags |= Qt::AlignRight;
+		break;
+	case 3:
+		iFlags |= Qt::AlignHCenter;
+		break;
 	}
 	switch(m_pVerticalAlign->currentIndex())
 	{
-		case 1:
-			iFlags |= Qt::AlignTop;
-			break;
-		case 2:
-			iFlags |= Qt::AlignBottom;
-			break;
-		case 3:
-			iFlags |= Qt::AlignVCenter;
-			break;
+	case 1:
+		iFlags |= Qt::AlignTop;
+		break;
+	case 2:
+		iFlags |= Qt::AlignBottom;
+		break;
+	case 3:
+		iFlags |= Qt::AlignVCenter;
+		break;
 	}
 
 	KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign) = iFlags;
@@ -140,7 +140,7 @@ void OptionsWidget_ircViewLook::commit()
 }
 
 OptionsWidget_ircViewFeatures::OptionsWidget_ircViewFeatures(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("ircviewfeatures_options_widget");
 	createLayout();
@@ -168,10 +168,10 @@ OptionsWidget_ircViewFeatures::OptionsWidget_ircViewFeatures(QWidget * parent)
 }
 
 OptionsWidget_ircViewFeatures::~OptionsWidget_ircViewFeatures()
-    = default;
+= default;
 
 OptionsWidget_ircViewMarker::OptionsWidget_ircViewMarker(QWidget * parent)
-    : KviOptionsWidget(parent)
+	: KviOptionsWidget(parent)
 {
 	setObjectName("ircviewmarker_options_widget");
 	createLayout();
@@ -201,7 +201,7 @@ OptionsWidget_ircViewMarker::OptionsWidget_ircViewMarker(QWidget * parent)
 }
 
 OptionsWidget_ircViewMarker::~OptionsWidget_ircViewMarker()
-    = default;
+= default;
 
 void OptionsWidget_ircViewMarker::commit()
 {

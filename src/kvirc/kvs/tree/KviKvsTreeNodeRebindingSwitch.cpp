@@ -30,7 +30,7 @@
 #include "KviKvsRunTimeContext.h"
 
 KviKvsTreeNodeRebindingSwitch::KviKvsTreeNodeRebindingSwitch(const QChar * pLocation, KviKvsTreeNodeData * pTargetWindow, KviKvsTreeNodeCommand * pChildCommand)
-    : KviKvsTreeNodeCommand(pLocation, pChildCommand->commandName())
+	: KviKvsTreeNodeCommand(pLocation, pChildCommand->commandName())
 {
 	m_pTargetWindow = pTargetWindow;
 	m_pTargetWindow->setParent(this);

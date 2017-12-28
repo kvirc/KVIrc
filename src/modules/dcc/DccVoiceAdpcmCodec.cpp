@@ -256,7 +256,7 @@ void ADPCM_uncompress(char indata[], short outdata[], int len, ADPCM_state * sta
 }
 
 DccVoiceAdpcmCodec::DccVoiceAdpcmCodec()
-    : DccVoiceCodec()
+	: DccVoiceCodec()
 {
 	m_pEncodeState = new ADPCM_state;
 	m_pEncodeState->index = 0;

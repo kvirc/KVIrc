@@ -99,7 +99,7 @@ private:
 	virtual void mousePressEvent(QMouseEvent * e);
 	virtual void timerEvent(QTimerEvent * e);
 	virtual void hideEvent(QHideEvent * e);
-public slots:
+	public slots:
 	/**
 	* \brief Called when the owner is dead
 	* \return void

@@ -69,7 +69,7 @@ static QPixmap * g_pDock2 = nullptr;
 static QPixmap * g_pDock3 = nullptr;
 
 KviTrayIconWidget::KviTrayIconWidget()
-    : QSystemTrayIcon(g_pMainWindow), m_Tip(g_pMainWindow, "dock_tooltip"), m_CurrentPixmap(ICON_SIZE, ICON_SIZE)
+	: QSystemTrayIcon(g_pMainWindow), m_Tip(g_pMainWindow, "dock_tooltip"), m_CurrentPixmap(ICON_SIZE, ICON_SIZE)
 {
 	g_pTrayIcon = this;
 	m_pContextPopup = new QMenu(nullptr);
@@ -142,7 +142,7 @@ void KviTrayIconWidget::executeInternalCommand(bool)
 	if(pQaction == nullptr)
 	{
 		qDebug("Conversion from QObject::sender() to QAction* failed. libkvitrayicon.cpp %d",
-		    __LINE__);
+			__LINE__);
 		return;
 	}
 
@@ -201,7 +201,6 @@ bool KviTrayIconWidget::event(QEvent * e)
 
 		for(KviWindowListItem * b = t->firstItem(); b; b = t->nextItem())
 		{
-
 			if(b->kviWindow()->view())
 			{
 				if(b->kviWindow()->view()->haveUnreadedMessages())
@@ -270,7 +269,7 @@ void KviTrayIconWidget::doAway(bool)
 					if(szReason.isEmpty())
 						szReason = __tr2qs("Away from keyboard.");
 					pConsole->connection()->sendFmtData("AWAY :%s",
-					    pConsole->connection()->encodeText(szReason).data());
+						pConsole->connection()->encodeText(szReason).data());
 				}
 			}
 		}
@@ -292,7 +291,7 @@ void KviTrayIconWidget::doAway(bool)
 					if(szReason.isEmpty())
 						szReason = __tr2qs("Away from keyboard.");
 					pConsole->connection()->sendFmtData("AWAY :%s",
-					    pConsole->connection()->encodeText(szReason).data());
+						pConsole->connection()->encodeText(szReason).data());
 				}
 			}
 		}
@@ -437,26 +436,26 @@ void KviTrayIconWidget::refresh()
 	else
 	{
 		thisRestrictionOfQt4IsNotNice.drawPixmap(0, 0, ICON_SIZE / 2, ICON_SIZE / 2,
-		    m_iOther ? ((m_iOther == 2) ? *g_pDock3 : *g_pDock2)
-		             : *g_pDock1,
-		    0, 0, ICON_SIZE / 2, ICON_SIZE / 2);
+			m_iOther ? ((m_iOther == 2) ? *g_pDock3 : *g_pDock2)
+			: *g_pDock1,
+			0, 0, ICON_SIZE / 2, ICON_SIZE / 2);
 
 		thisRestrictionOfQt4IsNotNice.drawPixmap(0, ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2,
-		    m_iConsoles ? ((m_iConsoles == 2) ? *g_pDock3 : *g_pDock2)
-		                : *g_pDock1,
-		    0, ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2);
+			m_iConsoles ? ((m_iConsoles == 2) ? *g_pDock3 : *g_pDock2)
+			: *g_pDock1,
+			0, ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2);
 
 		thisRestrictionOfQt4IsNotNice.drawPixmap(ICON_SIZE / 2, 0, ICON_SIZE / 2, ICON_SIZE / 2,
-		    m_iQueries ? ((m_iQueries == 2)
-		                                                 ? *g_pDock3
-		                                                 : *g_pDock2)
-		               : *g_pDock1,
-		    ICON_SIZE / 2, 0, ICON_SIZE / 2, ICON_SIZE / 2);
+			m_iQueries ? ((m_iQueries == 2)
+				? *g_pDock3
+				: *g_pDock2)
+			: *g_pDock1,
+			ICON_SIZE / 2, 0, ICON_SIZE / 2, ICON_SIZE / 2);
 
 		thisRestrictionOfQt4IsNotNice.drawPixmap(ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2,
-		    m_iChannels ? ((m_iChannels == 2) ? *g_pDock3 : *g_pDock2)
-		                : *g_pDock1,
-		    ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2);
+			m_iChannels ? ((m_iChannels == 2) ? *g_pDock3 : *g_pDock2)
+			: *g_pDock1,
+			ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2, ICON_SIZE / 2);
 	}
 	updateIcon();
 }
@@ -465,23 +464,23 @@ void KviTrayIconWidget::activatedSlot(QSystemTrayIcon::ActivationReason reason)
 {
 	switch(reason)
 	{
-		case QSystemTrayIcon::Trigger:
-// This is single click
+	case QSystemTrayIcon::Trigger:
+		// This is single click
 #ifdef COMPILE_ON_MAC
 			// On MacOSX one can only single-left-click the icon.
 			// This activates the context menu and is quite confusing if it *also* hides the kvirc window.
 			// So on mac we only _show_ the main window if it's hidden and the CloseInTray option is enabled.
-			if((KVI_OPTION_BOOL(KviOption_boolCloseInTray) || KVI_OPTION_BOOL(KviOption_boolMinimizeInTray))
-			    && ((!g_pMainWindow->isVisible()) || g_pMainWindow->isMinimized()))
-				toggleParentFrame();
+		if((KVI_OPTION_BOOL(KviOption_boolCloseInTray) || KVI_OPTION_BOOL(KviOption_boolMinimizeInTray))
+			&& ((!g_pMainWindow->isVisible()) || g_pMainWindow->isMinimized()))
+			toggleParentFrame();
 #else  //!COMPILE_ON_MAC
 			// on other platforms we always toggle the window
-			toggleParentFrame();
+		toggleParentFrame();
 #endif //!COMPILE_ON_MAC
-			break;
-		default:
-			// we do nothing at this time
-			break;
+		break;
+	default:
+		// we do nothing at this time
+		break;
 	}
 }
 
@@ -517,22 +516,22 @@ void KviTrayIconWidget::grabActivityInfo()
 			unsigned int iLevel = b->highlightLevel();
 			switch(b->kviWindow()->type())
 			{
-				case KviWindow::Console:
-					if(m_iConsoles < iLevel)
-						m_iConsoles = iLevel;
-					break;
-				case KviWindow::Channel:
-					if(m_iChannels < iLevel)
-						m_iChannels = iLevel;
-					break;
-				case KviWindow::Query:
-					if(m_iQueries < iLevel)
-						m_iQueries = iLevel;
-					break;
-				default:
-					if(m_iOther < iLevel)
-						m_iOther = iLevel;
-					break;
+			case KviWindow::Console:
+				if(m_iConsoles < iLevel)
+					m_iConsoles = iLevel;
+				break;
+			case KviWindow::Channel:
+				if(m_iChannels < iLevel)
+					m_iChannels = iLevel;
+				break;
+			case KviWindow::Query:
+				if(m_iQueries < iLevel)
+					m_iQueries = iLevel;
+				break;
+			default:
+				if(m_iOther < iLevel)
+					m_iOther = iLevel;
+				break;
 			}
 		}
 		else
@@ -551,22 +550,22 @@ void KviTrayIconWidget::grabActivityInfo()
 				if(iLevel > 0)
 					switch(b->kviWindow()->type())
 					{
-						case KviWindow::Console:
-							if(m_iConsoles < iLevel)
-								m_iConsoles = iLevel;
-							break;
-						case KviWindow::Channel:
-							if(m_iChannels < iLevel)
-								m_iChannels = iLevel;
-							break;
-						case KviWindow::Query:
-							if(m_iQueries < iLevel)
-								m_iQueries = iLevel;
-							break;
-						default:
-							if(m_iOther < iLevel)
-								m_iOther = iLevel;
-							break;
+					case KviWindow::Console:
+						if(m_iConsoles < iLevel)
+							m_iConsoles = iLevel;
+						break;
+					case KviWindow::Channel:
+						if(m_iChannels < iLevel)
+							m_iChannels = iLevel;
+						break;
+					case KviWindow::Query:
+						if(m_iQueries < iLevel)
+							m_iQueries = iLevel;
+						break;
+					default:
+						if(m_iOther < iLevel)
+							m_iOther = iLevel;
+						break;
 					}
 			}
 		}
@@ -778,14 +777,14 @@ static bool trayicon_module_can_unload(KviModule *)
 }
 
 KVIRC_MODULE(
-    "KVIrc Tray Icon Implementation",
-    "4.0.0",
-    "Copyright (C) 2001 Szymon Stefanek <pragma at kvirc dot net>"
-    "Copyright (C) 2007 Alexey Uzhva <alexey at kvirc dot ru>"
-    "Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dot org>",
-    "Exports the /trayicon.* interface\n",
-    trayicon_module_init,
-    trayicon_module_can_unload,
-    0,
-    trayicon_module_cleanup,
-    0)
+	"KVIrc Tray Icon Implementation",
+	"4.0.0",
+	"Copyright (C) 2001 Szymon Stefanek <pragma at kvirc dot net>"
+	"Copyright (C) 2007 Alexey Uzhva <alexey at kvirc dot ru>"
+	"Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dot org>",
+	"Exports the /trayicon.* interface\n",
+	trayicon_module_init,
+	trayicon_module_can_unload,
+	0,
+	trayicon_module_cleanup,
+	0)

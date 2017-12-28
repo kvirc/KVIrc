@@ -28,12 +28,12 @@
 #include "KviKvsHash.h"
 
 KviKvsTreeNodeObjectField::KviKvsTreeNodeObjectField(const QChar * pLocation, const QString & szIdentifier)
-    : KviKvsTreeNodeVariable(pLocation, szIdentifier)
+	: KviKvsTreeNodeVariable(pLocation, szIdentifier)
 {
 }
 
 KviKvsTreeNodeObjectField::~KviKvsTreeNodeObjectField()
-    = default;
+= default;
 
 void KviKvsTreeNodeObjectField::contextDescription(QString & szBuffer)
 {

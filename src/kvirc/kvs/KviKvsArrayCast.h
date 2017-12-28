@@ -35,7 +35,7 @@ protected:
 
 public:
 	KviKvsArrayCast()
-	    : m_pArray(0){};
+		: m_pArray(0) {};
 	~KviKvsArrayCast();
 
 public:

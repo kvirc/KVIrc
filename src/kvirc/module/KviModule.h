@@ -56,8 +56,8 @@ class KviModule;
 class KviCString;
 class QLibrary;
 
-typedef bool (*KviModuleSystemRoutine)(KviModule *);
-typedef bool (*KviModuleCtrlRoutine)(KviModule *, const char *, void *);
+typedef bool(*KviModuleSystemRoutine)(KviModule *);
+typedef bool(*KviModuleCtrlRoutine)(KviModule *, const char *, void *);
 
 typedef struct _KviModuleInfo
 {

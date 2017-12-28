@@ -52,7 +52,7 @@
 #include <QBuffer>
 
 PackThemeDialog::PackThemeDialog(QWidget * pParent, KviPointerList<KviThemeInfo> * pThemeInfoList)
-    : QWizard(pParent)
+	: QWizard(pParent)
 {
 	setWindowTitle(__tr2qs_ctx("Export Theme - KVIrc", "theme"));
 	setMinimumSize(400, 350);
@@ -128,7 +128,7 @@ PackThemeDialog::PackThemeDialog(QWidget * pParent, KviPointerList<KviThemeInfo>
 }
 
 PackThemeDataWidget::PackThemeDataWidget(PackThemeDialog * pParent)
-    : QWizardPage(pParent)
+	: QWizardPage(pParent)
 {
 	setObjectName("theme_package_data_page");
 	setTitle(__tr2qs_ctx("Theme Data", "theme"));
@@ -204,17 +204,17 @@ void PackThemeDataWidget::parseThemes(KviPointerList<KviThemeInfo> * pThemeInfoL
 		}
 
 		ThemeFunctions::getThemeHtmlDescription(
-		    szThemeDescription,
-		    pThemeInfo->name(),
-		    pThemeInfo->version(),
-		    pThemeInfo->description(),
-		    pThemeInfo->subdirectory(),
-		    pThemeInfo->application(),
-		    pThemeInfo->author(),
-		    pThemeInfo->date(),
-		    pThemeInfo->themeEngineVersion(),
-		    pThemeInfo->smallScreenshot(),
-		    iIdx);
+			szThemeDescription,
+			pThemeInfo->name(),
+			pThemeInfo->version(),
+			pThemeInfo->description(),
+			pThemeInfo->subdirectory(),
+			pThemeInfo->application(),
+			pThemeInfo->author(),
+			pThemeInfo->date(),
+			pThemeInfo->themeEngineVersion(),
+			pThemeInfo->smallScreenshot(),
+			iIdx);
 
 		if(iIdx > 0)
 			szThemesDescription += "<hr>";
@@ -239,10 +239,10 @@ void PackThemeDataWidget::parseThemes(KviPointerList<KviThemeInfo> * pThemeInfoL
 }
 
 PackThemeDataWidget::~PackThemeDataWidget()
-    = default;
+= default;
 
 PackThemeInfoWidget::PackThemeInfoWidget(PackThemeDialog * pParent)
-    : QWizardPage(pParent)
+	: QWizardPage(pParent)
 {
 	setObjectName("theme_package_info_page");
 	setTitle(__tr2qs_ctx("Package Information", "theme"));
@@ -308,10 +308,10 @@ void PackThemeInfoWidget::initializePage()
 }
 
 PackThemeInfoWidget::~PackThemeInfoWidget()
-    = default;
+= default;
 
 PackThemeImageWidget::PackThemeImageWidget(PackThemeDialog * pParent)
-    : QWizardPage(pParent)
+	: QWizardPage(pParent)
 {
 	setObjectName("theme_package_image_page");
 	setTitle(__tr2qs_ctx("Icon/Screenshot", "theme"));
@@ -333,7 +333,7 @@ PackThemeImageWidget::PackThemeImageWidget(PackThemeDialog * pParent)
 }
 
 PackThemeImageWidget::~PackThemeImageWidget()
-    = default;
+= default;
 
 void PackThemeImageWidget::imageSelectionChanged(const QString & szImagePath)
 {
@@ -355,14 +355,14 @@ void PackThemeImageWidget::imageSelectionChanged(const QString & szImagePath)
 	}
 
 	QMessageBox::critical(this, __tr2qs_ctx("Export Theme - KVIrc", "theme"), __tr2qs_ctx("Failed to load the selected image!", "theme"),
-	    QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+		QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
 
 	m_pImageSelector->setSelection("");
 	m_pImageLabel->setPixmap(QPixmap());
 }
 
 PackThemeSaveWidget::PackThemeSaveWidget(PackThemeDialog * pParent)
-    : QWizardPage(pParent)
+	: QWizardPage(pParent)
 {
 	setObjectName("theme_package_save_page");
 	setTitle(__tr2qs_ctx("Package Path", "theme"));
@@ -385,23 +385,23 @@ PackThemeSaveWidget::PackThemeSaveWidget(PackThemeDialog * pParent)
 }
 
 PackThemeSaveWidget::~PackThemeSaveWidget()
-    = default;
+= default;
 
 void PackThemeSaveWidget::initializePage()
 {
 	m_szPackagePath = field("packageSavePath").toString();
 }
 #if 0
-	if(!szScreenshotPath.isEmpty())
-	{
-		m_pImageSelector->setSelection(szScreenshotPath);
-		imageSelectionChanged(szScreenshotPath);
-	}
+if(!szScreenshotPath.isEmpty())
+{
+	m_pImageSelector->setSelection(szScreenshotPath);
+	imageSelectionChanged(szScreenshotPath);
+}
 }
 #endif
 
 PackThemeDialog::~PackThemeDialog()
-    = default;
+= default;
 
 void PackThemeDialog::accept()
 {
@@ -423,26 +423,26 @@ bool PackThemeDialog::packTheme()
 	QString szError;
 
 	if(!ThemeFunctions::packageThemes(
-	       m_szPackagePath,
-	       m_szName,
-	       m_szVersion,
-	       m_szDescription,
-	       m_szAuthor,
-	       m_szImagePath,
-	       *m_pThemeInfoList,
-	       szError))
+		m_szPackagePath,
+		m_szName,
+		m_szVersion,
+		m_szDescription,
+		m_szAuthor,
+		m_szImagePath,
+		*m_pThemeInfoList,
+		szError))
 	{
 		QMessageBox::critical(this,
-		    __tr2qs_ctx("Export Theme - KVIrc", "theme"),
-		    szError,
-		    QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+			__tr2qs_ctx("Export Theme - KVIrc", "theme"),
+			szError,
+			QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
 		return false;
 	}
 
 	QMessageBox::information(this,
-	    __tr2qs_ctx("Exporting Theme - KVIrc", "theme"),
-	    __tr2qs("Theme package saved successfully."),
-	    QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
+		__tr2qs_ctx("Exporting Theme - KVIrc", "theme"),
+		__tr2qs("Theme package saved successfully."),
+		QMessageBox::Ok, QMessageBox::NoButton, QMessageBox::NoButton);
 
 	return true;
 }

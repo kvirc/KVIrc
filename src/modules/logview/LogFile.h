@@ -82,8 +82,8 @@ public:
 	{
 		PlainText, /**< export log in plain text file */
 		HTML       /**< export log in a HTML archive */
-		           //XML        /**< export log in a XML file */
-		           //DB         /**< export log in a database file */
+				   //XML        /**< export log in a XML file */
+				   //DB         /**< export log in a database file */
 	};
 
 	/**

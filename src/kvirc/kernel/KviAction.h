@@ -71,9 +71,9 @@ public:
 	* \return KviActionCategory
 	*/
 	KviActionCategory(QString szName, QString szVisibleName, QString szDescription)
-	    : m_szName(std::move(szName)),
-	      m_szVisibleName(std::move(szVisibleName)),
-	      m_szDescription(std::move(szDescription))
+		: m_szName(std::move(szName)),
+		m_szVisibleName(std::move(szVisibleName)),
+		m_szDescription(std::move(szDescription))
 	{
 	}
 
@@ -152,15 +152,15 @@ public:
 	* \return KviAction
 	*/
 	KviAction(
-	    QObject * pParent,
-	    QString szName,
-	    QString szVisibleName,
-	    QString szDescription,
-	    KviActionCategory * pCategory = nullptr,
-	    QString szBigIconId = QString(),
-	    QString szSmallIconId = QString(),
-	    unsigned int uFlags = 0,
-	    QString szKeySequence = QString());
+		QObject * pParent,
+		QString szName,
+		QString szVisibleName,
+		QString szDescription,
+		KviActionCategory * pCategory = nullptr,
+		QString szBigIconId = QString(),
+		QString szSmallIconId = QString(),
+		unsigned int uFlags = 0,
+		QString szKeySequence = QString());
 
 	/**
 	* \brief Constructs the action object
@@ -181,15 +181,15 @@ public:
 	* \return KviAction
 	*/
 	KviAction(
-	    QObject * pParent,
-	    QString szName,
-	    QString szVisibleName,
-	    QString szDescription,
-	    KviActionCategory * pCategory = nullptr,
-	    QString szBigIconId = QString(),
-	    KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
-	    unsigned int uFlags = 0,
-	    QString szKeySequence = QString());
+		QObject * pParent,
+		QString szName,
+		QString szVisibleName,
+		QString szDescription,
+		KviActionCategory * pCategory = nullptr,
+		QString szBigIconId = QString(),
+		KviIconManager::SmallIcon eSmallIcon = KviIconManager::None,
+		unsigned int uFlags = 0,
+		QString szKeySequence = QString());
 
 	/**
 	* \brief Destroys the action object
@@ -355,7 +355,7 @@ protected:
 	* \return void
 	*/
 	void registerAction(QAction * pAction);
-public slots:
+	public slots:
 	/**
 	* \brief Activates the action
 	*
@@ -364,7 +364,7 @@ public slots:
 	* \return void
 	*/
 	virtual void activate();
-protected slots:
+	protected slots:
 	/**
 	* \brief Removes the action from the list
 	*

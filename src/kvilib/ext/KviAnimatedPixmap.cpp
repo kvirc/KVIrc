@@ -27,20 +27,20 @@
 #include <QImageReader>
 
 KviAnimatedPixmap::KviAnimatedPixmap(QString fileName, int iWidth, int iHeight)
-    : QObject(),
-      m_szFileName(fileName),
-      m_uCurrentFrameNumber(0),
-      m_iStarted(0)
+	: QObject(),
+	m_szFileName(fileName),
+	m_uCurrentFrameNumber(0),
+	m_iStarted(0)
 {
 	m_pFrameData = KviAnimatedPixmapCache::load(fileName, iWidth, iHeight);
 }
 
 KviAnimatedPixmap::KviAnimatedPixmap(const KviAnimatedPixmap & source)
-    : QObject(),
-      m_szFileName(source.m_szFileName),
-      m_pFrameData(source.m_pFrameData),
-      m_uCurrentFrameNumber(source.m_uCurrentFrameNumber),
-      m_iStarted(0)
+	: QObject(),
+	m_szFileName(source.m_szFileName),
+	m_pFrameData(source.m_pFrameData),
+	m_uCurrentFrameNumber(source.m_uCurrentFrameNumber),
+	m_iStarted(0)
 {
 	m_pFrameData->refs++;
 }

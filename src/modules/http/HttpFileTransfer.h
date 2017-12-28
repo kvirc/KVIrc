@@ -91,7 +91,7 @@ public:
 	virtual bool active();
 	virtual QString tipText();
 	virtual QString localFileName();
-protected slots:
+	protected slots:
 	void statusMessage(const QString & txt);
 	void transferTerminated(bool bSuccess);
 	void headersReceived(KviPointerHashTable<const char *, KviCString> * h);

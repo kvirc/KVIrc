@@ -27,7 +27,7 @@
 #ifdef COMPILE_KDE_SUPPORT
 
 KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
-    : KMainWindow(pParent)
+	: KMainWindow(pParent)
 {
 	//setWindowTitle(pcName);
 	setObjectName(pcName);
@@ -35,7 +35,7 @@ KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
 
 #else //!COMPILE_KDE_SUPPORT
 KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
-    : QMainWindow(pParent)
+	: QMainWindow(pParent)
 {
 	setObjectName(pcName);
 }
@@ -43,4 +43,4 @@ KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
 #endif //!COMPILE_KDE_SUPPORT
 
 KviTalMainWindow::~KviTalMainWindow()
-    = default;
+= default;

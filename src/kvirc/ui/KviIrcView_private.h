@@ -89,7 +89,7 @@ typedef struct _KviIrcViewLineChunk
 		unsigned char back; // optional background color for KVI_TEXT_COLOR attribute
 		unsigned char fore; // optional foreground color for KVI_TEXT_COLOR attribute (used also for KVI_TEXT_ESCAPE!!!)
 	} _KVI_PACKED colors;   // anonymous
-	                        //	QColor customBack;
+							//	QColor customBack;
 	QColor customFore;
 } /*_KVI_PACKED*/ KviIrcViewLineChunk;
 

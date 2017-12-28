@@ -46,11 +46,11 @@
 class KVIRC_API KviSelectorInterface
 {
 public:
-	KviSelectorInterface(){};
-	virtual ~KviSelectorInterface(){};
+	KviSelectorInterface() {};
+	virtual ~KviSelectorInterface() {};
 
 public:
-	virtual void commit(){};
+	virtual void commit() {};
 	virtual QString textForSearch() { return QString(); };
 	virtual QWidget * widgetToHighlight() { return 0; };
 };
@@ -60,7 +60,7 @@ class KVIRC_API KviBoolSelector : public QCheckBox, public KviSelectorInterface
 	Q_OBJECT
 public:
 	KviBoolSelector(QWidget * par, const QString & txt, bool * pOption, bool bEnabled);
-	~KviBoolSelector(){};
+	~KviBoolSelector() {};
 
 private:
 	bool * m_pOption;
@@ -69,7 +69,7 @@ public:
 	virtual void commit();
 	QString textForSearch() { return text(); };
 	QWidget * widgetToHighlight() { return (QWidget *)this; };
-public slots:
+	public slots:
 	void setNotEnabled(bool bNotEnabled);
 	void setEnabled(bool bEnabled);
 };
@@ -95,7 +95,7 @@ public:
 	QWidget * widgetToHighlight() { return (QWidget *)m_pLabel; };
 	QLineEdit * lineEdit() { return m_pLineEdit; };
 	QString currentText() { return m_pLineEdit->text(); };
-public slots:
+	public slots:
 	virtual void setEnabled(bool bEnabled);
 };
 
@@ -119,9 +119,9 @@ public:
 	void setMinimumLabelWidth(unsigned int uWidth) { m_pLabel->setMinimumWidth(uWidth); };
 	virtual void commit();
 	void setText(const QString & text);
-public slots:
+	public slots:
 	virtual void setEnabled(bool bEnabled);
-protected slots:
+	protected slots:
 	void checkToggled(int state);
 };
 
@@ -139,9 +139,9 @@ protected:
 public:
 	QString text();
 	void setText(const QString & text);
-public slots:
+	public slots:
 	virtual void setEnabled(bool bEnabled);
-protected slots:
+	protected slots:
 	void checkToggled(int state);
 };
 
@@ -178,7 +178,7 @@ public:
 	void setImagePath(const QString & path);
 	virtual void commit();
 	virtual void setEnabled(bool bEnabled);
-protected slots:
+	protected slots:
 	void checkBoxToggled(bool bEnabled);
 	void choosePixmap();
 };
@@ -188,8 +188,8 @@ class KVIRC_API KviUIntSelector : public KviTalHBox, public KviSelectorInterface
 	Q_OBJECT
 public:
 	KviUIntSelector(QWidget * par, const QString & txt, unsigned int * pOption,
-	    unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled, bool bShortInt = false);
-	~KviUIntSelector(){};
+		unsigned int uLowBound, unsigned int uHighBound, unsigned int uDefault, bool bEnabled, bool bShortInt = false);
+	~KviUIntSelector() {};
 
 private:
 	QLabel * m_pLabel;
@@ -207,17 +207,17 @@ public:
 	virtual void setPrefix(const QString & txt);
 	virtual void setSuffix(const QString & txt);
 	virtual void commit();
-public slots:
+	public slots:
 	virtual void setEnabled(bool bEnabled);
 };
 
 class KVIRC_API KviFileSelector : public QWidget, public KviSelectorInterface
 {
 	Q_OBJECT
-	Q_PROPERTY(QString tmpFile READ tmpFile WRITE setTmpFile)
+		Q_PROPERTY(QString tmpFile READ tmpFile WRITE setTmpFile)
 public:
 	KviFileSelector(QWidget * par, const QString & txt, QString * pOption, bool bEnabled, unsigned int uFlags = 0, const QString & szFilter = QString());
-	~KviFileSelector(){};
+	~KviFileSelector() {};
 
 public:
 	enum Flags
@@ -243,9 +243,9 @@ public:
 	void setSelection(const QString & szSelection);
 signals:
 	void selectionChanged(const QString & szNewValue);
-public slots:
+	public slots:
 	virtual void setEnabled(bool bEnabled);
-private slots:
+	private slots:
 	void browseClicked();
 
 protected:
@@ -257,7 +257,7 @@ class KVIRC_API KviDirectorySelector : public KviFileSelector
 	Q_OBJECT
 public:
 	KviDirectorySelector(QWidget * par, const QString & txt, QString * pOption, bool bEnabled, unsigned int uFlags = 0);
-	~KviDirectorySelector(){};
+	~KviDirectorySelector() {};
 
 protected:
 	virtual void select();
@@ -268,7 +268,7 @@ class KVIRC_API KviColorSelector : public KviTalHBox, public KviSelectorInterfac
 	Q_OBJECT
 public:
 	KviColorSelector(QWidget * par, const QString & txt, QColor * pOption, bool bEnabled);
-	~KviColorSelector(){};
+	~KviColorSelector() {};
 
 private:
 	QLabel * m_pLabel;
@@ -285,9 +285,9 @@ public:
 
 private:
 	void setButtonPalette(QColor * pOption);
-private slots:
+	private slots:
 	void changeClicked();
-public slots:
+	public slots:
 	virtual void setEnabled(bool bEnabled);
 };
 
@@ -296,7 +296,7 @@ class KVIRC_API KviFontSelector : public KviTalHBox, public KviSelectorInterface
 	Q_OBJECT
 public:
 	KviFontSelector(QWidget * par, const QString & txt, QFont * pOption, bool bEnabled);
-	~KviFontSelector(){};
+	~KviFontSelector() {};
 
 private:
 	QLabel * m_pLabel;
@@ -309,9 +309,9 @@ public:
 	QWidget * widgetToHighlight() { return (QWidget *)m_pLabel; };
 private:
 	void setButtonFont(QFont * pOption);
-public slots:
+	public slots:
 	virtual void setEnabled(bool bEnabled);
-private slots:
+	private slots:
 	void changeClicked();
 };
 
@@ -334,9 +334,9 @@ public:
 	virtual void commit();
 	QString textForSearch() { return m_pLabel->text(); };
 	QWidget * widgetToHighlight() { return (QWidget *)m_pLabel; };
-public slots:
+	public slots:
 	virtual void setEnabled(bool bEnabled);
-private slots:
+	private slots:
 	void textChanged(const QString & str);
 	void itemSelectionChanged();
 	void addClicked();
@@ -366,7 +366,7 @@ private:
 public:
 	virtual void commit();
 	virtual void setEnabled(bool bEnabled);
-protected slots:
+	protected slots:
 	void buttonClicked();
 	void foreSelected(QAction * pAction);
 	void backSelected(QAction * pAction);
@@ -384,7 +384,7 @@ public:
 
 protected:
 	QPushButton * m_pPlayButton;
-private slots:
+	private slots:
 	void playSound();
 
 public:
@@ -398,7 +398,7 @@ private:
 
 public:
 	KviChanTreeViewItem(QTreeWidget * pList, QString szChan, QString szPass);
-	~KviChanTreeViewItem(){};
+	~KviChanTreeViewItem() {};
 
 	const QString & pass() { return m_szPass; }
 };
@@ -424,7 +424,7 @@ public:
 	QString textForSearch() { return m_pLabel->text(); };
 	QWidget * widgetToHighlight() { return (QWidget *)m_pLabel; };
 	virtual void setEnabled(bool bEnabled);
-private slots:
+	private slots:
 	void textChanged(const QString & str);
 	void itemSelectionChanged();
 	void addClicked();

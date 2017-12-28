@@ -117,12 +117,12 @@ public:
 
 public:
 	KviInputEditorTextBlock(const QChar * p, int len)
-	    : szText(p, len)
+		: szText(p, len)
 	{
 	}
 
 	KviInputEditorTextBlock(const QString & text)
-	    : szText(text)
+		: szText(text)
 	{
 	}
 };
@@ -138,7 +138,7 @@ public:
 };
 
 KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView * pView)
-    : QWidget(pPar)
+	: QWidget(pPar)
 {
 	m_p = new KviInputEditorPrivate();
 	m_p->bTextBlocksDirty = true;
@@ -416,7 +416,7 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, std
 			static QString szQuit("quit");
 
 			if(
-			    (szCommand != szMe) && (szCommand != szMsg) && (szCommand != szSay) && (szCommand != szPart) && (szCommand != szQuit))
+				(szCommand != szMe) && (szCommand != szMsg) && (szCommand != szSay) && (szCommand != szPart) && (szCommand != szQuit))
 			{
 				// the command parameters usually have no spellcheckable text
 				ADD_SPELLCHECKER_BLOCK(lBuffer, QString(pCommandBlockBegin, e - pCommandBlockBegin), 0, false, false);
@@ -434,63 +434,63 @@ void KviInputEditor::splitTextIntoSpellCheckerBlocks(const QString & szText, std
 	{
 		switch(p->category())
 		{
-			case QChar::Letter_Uppercase:
-			case QChar::Letter_Lowercase:
-			case QChar::Letter_Titlecase:
-			case QChar::Letter_Modifier:
-			case QChar::Letter_Other:
-				if(!pWordBegin)
+		case QChar::Letter_Uppercase:
+		case QChar::Letter_Lowercase:
+		case QChar::Letter_Titlecase:
+		case QChar::Letter_Modifier:
+		case QChar::Letter_Other:
+			if(!pWordBegin)
+			{
+				// a word starts here
+				if(pNonWordBegin)
 				{
-					// a word starts here
-					if(pNonWordBegin)
-					{
-						ADD_SPELLCHECKER_BLOCK(lBuffer, QString(pNonWordBegin, p - pNonWordBegin), pNonWordBegin - pBufferBegin, false, false);
-						pNonWordBegin = nullptr;
-					}
-					pWordBegin = p;
+					ADD_SPELLCHECKER_BLOCK(lBuffer, QString(pNonWordBegin, p - pNonWordBegin), pNonWordBegin - pBufferBegin, false, false);
+					pNonWordBegin = nullptr;
+				}
+				pWordBegin = p;
+			}
+			else
+			{
+				// we're already in a word, go on
+			}
+			break;
+		case QChar::Number_DecimalDigit:
+		case QChar::Number_Letter:
+		case QChar::Number_Other:
+			if(!pWordBegin && !pNonWordBegin)
+				pNonWordBegin = p; // start a non-word
+									   // else just go ahead keeping current state
+			break;
+		default:
+			if(!pNonWordBegin)
+			{
+				if(p->unicode() == '\'')
+				{
+					// special case for the ' character which can be part of a word in many languages
+					if(!pWordBegin)            // word not started
+						pNonWordBegin = p; // then start a nonwod
+											   // else keep current state
 				}
 				else
 				{
-					// we're already in a word, go on
-				}
-				break;
-			case QChar::Number_DecimalDigit:
-			case QChar::Number_Letter:
-			case QChar::Number_Other:
-				if(!pWordBegin && !pNonWordBegin)
-					pNonWordBegin = p; // start a non-word
-				                           // else just go ahead keeping current state
-				break;
-			default:
-				if(!pNonWordBegin)
-				{
-					if(p->unicode() == '\'')
+					if(pWordBegin)
 					{
-						// special case for the ' character which can be part of a word in many languages
-						if(!pWordBegin)            // word not started
-							pNonWordBegin = p; // then start a nonwod
-						                           // else keep current state
-					}
-					else
-					{
-						if(pWordBegin)
-						{
-							// a word to spellcheck
-							if((p - 1)->unicode() == '\'') // exclude the trailing ' from the word
-								p--;                   // go back one char, so it will become a non-word
+						// a word to spellcheck
+						if((p - 1)->unicode() == '\'') // exclude the trailing ' from the word
+							p--;                   // go back one char, so it will become a non-word
 
-							QString szWord(pWordBegin, p - pWordBegin);
-							ADD_SPELLCHECKER_BLOCK(lBuffer, szWord, pWordBegin - pBufferBegin, true, checkWordSpelling(szWord));
-							pWordBegin = nullptr;
-						}
-						pNonWordBegin = p;
+						QString szWord(pWordBegin, p - pWordBegin);
+						ADD_SPELLCHECKER_BLOCK(lBuffer, szWord, pWordBegin - pBufferBegin, true, checkWordSpelling(szWord));
+						pWordBegin = nullptr;
 					}
+					pNonWordBegin = p;
 				}
-				else
-				{
-					// already in a non-word
-				}
-				break;
+			}
+			else
+			{
+				// already in a non-word
+			}
+			break;
 		}
 
 		p++;
@@ -581,67 +581,67 @@ void KviInputEditor::rebuildTextBlocks()
 			// control char
 			switch(c)
 			{
-				case KviControlCodes::Bold:
-					if(uFlags & KviInputEditorTextBlock::IsBold)
-						uFlags &= ~KviInputEditorTextBlock::IsBold;
-					else
-						uFlags |= KviInputEditorTextBlock::IsBold;
-					break;
-				case KviControlCodes::Italic:
-					if(uFlags & KviInputEditorTextBlock::IsItalic)
-						uFlags &= ~KviInputEditorTextBlock::IsItalic;
-					else
-						uFlags |= KviInputEditorTextBlock::IsItalic;
-					break;
-				case KviControlCodes::Underline:
-					if(uFlags & KviInputEditorTextBlock::IsUnderline)
-						uFlags &= ~KviInputEditorTextBlock::IsUnderline;
-					else
-						uFlags |= KviInputEditorTextBlock::IsUnderline;
-					break;
-				case KviControlCodes::Reset:
-					uCurFore = KVI_INPUT_DEF_FORE;
-					uCurBack = KVI_INPUT_DEF_BACK;
-					uFlags = 0;
-					break;
-				case KviControlCodes::Reverse:
-				{
-					char cAuxClr = uCurFore;
-					uCurFore = uCurBack;
-					uCurBack = cAuxClr;
-				}
+			case KviControlCodes::Bold:
+				if(uFlags & KviInputEditorTextBlock::IsBold)
+					uFlags &= ~KviInputEditorTextBlock::IsBold;
+				else
+					uFlags |= KviInputEditorTextBlock::IsBold;
 				break;
-				case KviControlCodes::CryptEscape:
-				case KviControlCodes::Icon:
-					// makes a single block
-					break;
-				case KviControlCodes::Color:
+			case KviControlCodes::Italic:
+				if(uFlags & KviInputEditorTextBlock::IsItalic)
+					uFlags &= ~KviInputEditorTextBlock::IsItalic;
+				else
+					uFlags |= KviInputEditorTextBlock::IsItalic;
+				break;
+			case KviControlCodes::Underline:
+				if(uFlags & KviInputEditorTextBlock::IsUnderline)
+					uFlags &= ~KviInputEditorTextBlock::IsUnderline;
+				else
+					uFlags |= KviInputEditorTextBlock::IsUnderline;
+				break;
+			case KviControlCodes::Reset:
+				uCurFore = KVI_INPUT_DEF_FORE;
+				uCurBack = KVI_INPUT_DEF_BACK;
+				uFlags = 0;
+				break;
+			case KviControlCodes::Reverse:
+			{
+				char cAuxClr = uCurFore;
+				uCurFore = uCurBack;
+				uCurBack = cAuxClr;
+			}
+			break;
+			case KviControlCodes::CryptEscape:
+			case KviControlCodes::Icon:
+				// makes a single block
+				break;
+			case KviControlCodes::Color:
+			{
+				p++;
+				if(p < e)
 				{
-					p++;
-					if(p < e)
+					unsigned char uFore;
+					unsigned char uBack;
+					/* int iNextChar = */ KviControlCodes::getUnicodeColorBytes(spb->szText, p - spb->szText.unicode(), &uFore, &uBack);
+					if(uFore != KviControlCodes::NoChange)
 					{
-						unsigned char uFore;
-						unsigned char uBack;
-						/* int iNextChar = */ KviControlCodes::getUnicodeColorBytes(spb->szText, p - spb->szText.unicode(), &uFore, &uBack);
-						if(uFore != KviControlCodes::NoChange)
-						{
-							uCurFore = uFore;
-							if(uBack != KviControlCodes::NoChange)
-								uCurBack = uBack;
-						}
-						else
-						{
-							// ONLY a Ctrl+K
-							uCurBack = KVI_INPUT_DEF_BACK;
-							uCurFore = KVI_INPUT_DEF_FORE;
-						}
+						uCurFore = uFore;
+						if(uBack != KviControlCodes::NoChange)
+							uCurBack = uBack;
 					}
-					p--; // there is a p++ below
+					else
+					{
+						// ONLY a Ctrl+K
+						uCurBack = KVI_INPUT_DEF_BACK;
+						uCurFore = KVI_INPUT_DEF_FORE;
+					}
 				}
+				p--; // there is a p++ below
+			}
+			break;
+			default:
+				Q_ASSERT(false);
 				break;
-				default:
-					Q_ASSERT(false);
-					break;
 			}
 
 			QChar cSubstitute = getSubstituteChar(c);
@@ -659,14 +659,13 @@ void KviInputEditor::rebuildTextBlocks()
 
 	// apply selection marks too
 	if(
-	    (m_iSelectionEnd <= m_iSelectionBegin) || (m_iSelectionEnd == -1) || (m_iSelectionBegin == -1) || (m_iSelectionBegin > m_szTextBuffer.length()))
+		(m_iSelectionEnd <= m_iSelectionBegin) || (m_iSelectionEnd == -1) || (m_iSelectionBegin == -1) || (m_iSelectionBegin > m_szTextBuffer.length()))
 	{
 		m_iSelectionEnd = -1;
 		m_iSelectionBegin = -1;
 	}
 	else
 	{
-
 		int iCurStart = 0;
 		int cnt = m_p->lTextBlocks.count();
 
@@ -909,8 +908,7 @@ void KviInputEditor::drawContents(QPainter * p)
 						p->fillRect(QRectF(fCurX, iTop, pBlock->fWidth, iBottom - iTop), KVI_OPTION_MIRCCOLOR(pBlock->uBackground));
 				}
 
-
-				if (pBlock->uFlags & KviInputEditorTextBlock::IsItalic)
+				if(pBlock->uFlags & KviInputEditorTextBlock::IsItalic)
 				{
 					QFont newFont = p->font();
 					newFont.setStyle(normalFontStyle == QFont::StyleNormal ? QFont::StyleItalic : QFont::StyleNormal);
@@ -933,7 +931,7 @@ void KviInputEditor::drawContents(QPainter * p)
 					p->drawLine(QPointF(fCurX, iY), QPointF(fCurX + pBlock->fWidth, iY));
 				}
 
-				if (pBlock->uFlags & KviInputEditorTextBlock::IsItalic)
+				if(pBlock->uFlags & KviInputEditorTextBlock::IsItalic)
 				{
 					QFont newFont = p->font();
 					newFont.setStyle(normalFontStyle);
@@ -961,33 +959,33 @@ QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
 {
 	switch(uControlCode)
 	{
-		case KviControlCodes::Color:
-			return QChar('K');
-			break;
-		case KviControlCodes::Bold:
-			return QChar('B');
-			break;
-		case KviControlCodes::Italic:
-			return QChar('I');
-			break;
-		case KviControlCodes::Reset:
-			return QChar('O');
-			break;
-		case KviControlCodes::Reverse:
-			return QChar('R');
-			break;
-		case KviControlCodes::Underline:
-			return QChar('U');
-			break;
-		case KviControlCodes::CryptEscape:
-			return QChar('P');
-			break;
-		case KviControlCodes::Icon:
-			return QChar('E');
-			break;
-		default:
-			return QChar(uControlCode);
-			break;
+	case KviControlCodes::Color:
+		return QChar('K');
+		break;
+	case KviControlCodes::Bold:
+		return QChar('B');
+		break;
+	case KviControlCodes::Italic:
+		return QChar('I');
+		break;
+	case KviControlCodes::Reset:
+		return QChar('O');
+		break;
+	case KviControlCodes::Reverse:
+		return QChar('R');
+		break;
+	case KviControlCodes::Underline:
+		return QChar('U');
+		break;
+	case KviControlCodes::CryptEscape:
+		return QChar('P');
+		break;
+	case KviControlCodes::Icon:
+		return QChar('E');
+		break;
+	default:
+		return QChar(uControlCode);
+		break;
 	}
 }
 
@@ -1163,21 +1161,21 @@ void KviInputEditor::showContextPopup(const QPoint & pos)
 	}
 #endif
 
-/*
- * With Qt5 the use of input method composing works, but we are unable to query the list of
- * available ims and change the active one. By now Qt5's QInputMethod lacks several methods,
- * check it again on newer qt versions!
- */
-	// Qt4 code, needs to be re-implemented in >= Qt5
-	// See above for more info.
-	//
-	// QInputContext * qic = g_pApp->inputContext();
-	// if(qic)
-	// {
-	// 	QList<QAction *> imActions = qic->actions();
-	// 	for(int i = 0; i < imActions.size(); ++i)
-	// 		g_pInputPopup->addAction(imActions.at(i));
-	// }
+	/*
+	 * With Qt5 the use of input method composing works, but we are unable to query the list of
+	 * available ims and change the active one. By now Qt5's QInputMethod lacks several methods,
+	 * check it again on newer qt versions!
+	 */
+	 // Qt4 code, needs to be re-implemented in >= Qt5
+	 // See above for more info.
+	 //
+	 // QInputContext * qic = g_pApp->inputContext();
+	 // if(qic)
+	 // {
+	 // 	QList<QAction *> imActions = qic->actions();
+	 // 	for(int i = 0; i < imActions.size(); ++i)
+	 // 		g_pInputPopup->addAction(imActions.at(i));
+	 // }
 
 	g_pInputPopup->popup(pos);
 }
@@ -1235,7 +1233,6 @@ void KviInputEditor::fillSpellCheckerCorrectionsPopup()
 	}
 	else
 	{
-
 		pLabel->setText(__tr2qs("Spelling Suggestions for '%1'").arg(pCurrentBlock->szText));
 		m_SpellCheckerPopup.addAction(pWidgetAction);
 
@@ -1831,15 +1828,15 @@ QVariant KviInputEditor::inputMethodQuery(Qt::InputMethodQuery query) const
 {
 	switch(query)
 	{
-		case Qt::ImEnabled:
-			return QVariant(true);
-			break;
-		case Qt::ImHints:
-			return QVariant(0);
-			break;
-		default:
-			// fall down
-			break;
+	case Qt::ImEnabled:
+		return QVariant(true);
+		break;
+	case Qt::ImHints:
+		return QVariant(0);
+		break;
+	default:
+		// fall down
+		break;
 	}
 
 	return QWidget::inputMethodQuery(query);
@@ -2006,36 +2003,36 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 
 	switch(e->key())
 	{
-		case Qt::Key_Backspace:
-			if(!m_bReadOnly)
-				backspaceHit();
-			return;
-			break;
-		case Qt::Key_Delete:
-			if(!m_bReadOnly)
-				deleteHit();
-			return;
-			break;
-		case Qt::Key_Return:
-		case Qt::Key_Enter:
-			if(!m_bReadOnly)
-				returnHit();
-			return;
-			break;
+	case Qt::Key_Backspace:
+		if(!m_bReadOnly)
+			backspaceHit();
+		return;
+		break;
+	case Qt::Key_Delete:
+		if(!m_bReadOnly)
+			deleteHit();
+		return;
+		break;
+	case Qt::Key_Return:
+	case Qt::Key_Enter:
+		if(!m_bReadOnly)
+			returnHit();
+		return;
+		break;
 	}
 
 	if(e->modifiers() & Qt::ControlModifier)
 	{
 		switch(e->key())
 		{
-			case Qt::Key_J:
-			{
-				break; //avoid Ctrl+J from inserting a linefeed
-			}
-			default:
-				if(!m_bReadOnly)
-					insertText(e->text());
-				break;
+		case Qt::Key_J:
+		{
+			break; //avoid Ctrl+J from inserting a linefeed
+		}
+		default:
+			if(!m_bReadOnly)
+				insertText(e->text());
+			break;
 		}
 		return;
 	}
@@ -2152,7 +2149,7 @@ void KviInputEditor::completion(bool bShift)
 		return;
 	}
 
-	int iOffset{0};
+	int iOffset{ 0 };
 	if(KviQString::equalCI(m_szTextBuffer.left(5), "/help"))
 		iOffset = 1;
 
@@ -2295,9 +2292,9 @@ void KviInputEditor::completion(bool bShift)
 			szMatch = tmp.front();
 			auto predicate =
 				[bIsDir](const QChar & a, const QChar & b)
-				{
-					return bIsDir ? (a.unicode() == b.unicode()) : (a.toLower().unicode() == b.toLower().unicode());
-				};
+			{
+				return bIsDir ? (a.unicode() == b.unicode()) : (a.toLower().unicode() == b.toLower().unicode());
+			};
 
 			for(auto szTmp : tmp)
 			{
@@ -2640,21 +2637,21 @@ void KviInputEditor::undo()
 
 	switch(pCommand->type())
 	{
-		case EditCommand::InsertText:
-			m_szTextBuffer.remove(pCommand->startPosition(), pCommand->text().length());
-			m_p->bTextBlocksDirty = true;
-			moveCursorTo(pCommand->startPosition());
-			break;
-		case EditCommand::RemoveText:
-			m_szTextBuffer.insert(pCommand->startPosition(), pCommand->text());
-			m_p->bTextBlocksDirty = true;
-			moveCursorTo(pCommand->startPosition() + pCommand->text().length());
-			break;
-		default:
-			Q_ASSERT_X(false, "KviInputEditor::undo", "Unexpected EditCommand type");
-			delete pCommand; // argh
-			return;
-			break;
+	case EditCommand::InsertText:
+		m_szTextBuffer.remove(pCommand->startPosition(), pCommand->text().length());
+		m_p->bTextBlocksDirty = true;
+		moveCursorTo(pCommand->startPosition());
+		break;
+	case EditCommand::RemoveText:
+		m_szTextBuffer.insert(pCommand->startPosition(), pCommand->text());
+		m_p->bTextBlocksDirty = true;
+		moveCursorTo(pCommand->startPosition() + pCommand->text().length());
+		break;
+	default:
+		Q_ASSERT_X(false, "KviInputEditor::undo", "Unexpected EditCommand type");
+		delete pCommand; // argh
+		return;
+		break;
 	}
 
 	m_RedoStack.push_back(pCommand);
@@ -2680,21 +2677,21 @@ void KviInputEditor::redo()
 
 	switch(pCommand->type())
 	{
-		case EditCommand::InsertText:
-			m_szTextBuffer.insert(pCommand->startPosition(), pCommand->text());
-			m_p->bTextBlocksDirty = true;
-			moveCursorTo(pCommand->startPosition() + pCommand->text().length());
-			break;
-		case EditCommand::RemoveText:
-			m_szTextBuffer.remove(pCommand->startPosition(), pCommand->text().length());
-			m_p->bTextBlocksDirty = true;
-			moveCursorTo(pCommand->startPosition());
-			break;
-		default:
-			Q_ASSERT_X(false, "KviInputEditor::redo", "Unexpected EditCommand type");
-			delete pCommand; // argh
-			return;
-			break;
+	case EditCommand::InsertText:
+		m_szTextBuffer.insert(pCommand->startPosition(), pCommand->text());
+		m_p->bTextBlocksDirty = true;
+		moveCursorTo(pCommand->startPosition() + pCommand->text().length());
+		break;
+	case EditCommand::RemoveText:
+		m_szTextBuffer.remove(pCommand->startPosition(), pCommand->text().length());
+		m_p->bTextBlocksDirty = true;
+		moveCursorTo(pCommand->startPosition());
+		break;
+	default:
+		Q_ASSERT_X(false, "KviInputEditor::redo", "Unexpected EditCommand type");
+		delete pCommand; // argh
+		return;
+		break;
 	}
 
 	m_UndoStack.push_back(pCommand);
