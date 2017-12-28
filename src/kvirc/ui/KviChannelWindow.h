@@ -182,7 +182,7 @@ protected:
 	QString m_szNameWithUserFlag;
 	QStringList * m_pTmpHighLighted;
 	unsigned int m_uActionHistoryHotActionCount;
-	std::vector<KviChannelAction *> m_ActionHistory;
+	QList<KviChannelAction *> m_lActionHistory;
 	kvi_time_t m_tLastReceivedWhoReply;
 	QList<int> m_VertSplitterSizesList;
 	QList<int> m_SplitterSizesList;
