@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : KviLagMeter.cpp
-//   Creation date : Fri Oct 18 13:31:36 CEST 1999 by Juanjo Álvarez
+//   Creation date : Fri Oct 18 13:31:36 CEST 1999 by Juanjo ï¿½lvarez
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 1999 Juanjo Álvarez
+//   Copyright (C) 1999 Juanjo ï¿½lvarez
 //   Copyright (C) 2000-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -65,6 +65,8 @@ KviLagMeter::~KviLagMeter()
 {
 	if(m_pDeletionSignal)
 		*m_pDeletionSignal = true;
+		
+	qDeleteAll(m_lCheckList);
 }
 
 unsigned int KviLagMeter::secondsSinceLastCompleted()
@@ -131,11 +133,11 @@ void KviLagMeter::timerEvent(QTimerEvent *)
 
 	// the last completed check has been completed a lot of time ago
 	// do we have some checks on the queue ?
-	if(m_CheckList.size() > 0)
+	if(m_lCheckList.count() > 0)
 	{
 		// if the first registered check is not too outdated
 		// we wait a little more for it to return
-		KviLagCheck * c = m_CheckList.front();
+		KviLagCheck * c = m_lCheckList.first();
 		if(c)
 		{
 			if((tv.tv_sec - c->lSecs) <= 10)
@@ -195,20 +197,20 @@ void KviLagMeter::lagCheckRegister(const char * key, unsigned int uReliability)
 	if(_OUTPUT_PARANOIC)
 		m_pConnection->console()->output(KVI_OUT_VERBOSE, __tr2qs("Registered lag check with reliability %u (%s)"), uReliability, key);
 
-	KviLagCheck * c = new KviLagCheck;
+	KviLagCheck * c = new KviLagCheck();
 	c->szKey = key;
 	struct timeval tv;
 	kvi_gettimeofday(&tv);
 	c->lSecs = tv.tv_sec;
 	c->lUSecs = tv.tv_usec;
 	c->uReliability = uReliability <= 100 ? uReliability : 100;
-	m_CheckList.push_back(c);
-	while(m_CheckList.size() > 30)
+	m_lCheckList.append(c);
+	while(m_lCheckList.size() > 30)
 	{
 		// we're fried :/
 		// either our ping mechanism is not working
 		// or the server is stoned...
-		m_CheckList.erase(m_CheckList.begin());
+		delete m_lCheckList.takeFirst();
 	}
 }
 
@@ -216,7 +218,7 @@ bool KviLagMeter::lagCheckComplete(const char * key)
 {
 	// find this lag check
 	KviLagCheck * c = nullptr;
-	for(auto cc : m_CheckList)
+	for(auto cc : m_lCheckList)
 	{
 		if(kvi_strEqualCS(cc->szKey.ptr(), key))
 		{
@@ -226,9 +228,10 @@ bool KviLagMeter::lagCheckComplete(const char * key)
 	}
 	if(!c)
 		return false; // not found
+
 	// kill any earlier lag checks (IRC is a sequential proto)
-	while(m_CheckList.front() != c)
-		m_CheckList.erase(m_CheckList.begin());
+	while(m_lCheckList.first() != c)
+		delete m_lCheckList.takeFirst();
 
 	if(_OUTPUT_PARANOIC)
 		m_pConnection->console()->output(KVI_OUT_VERBOSE, __tr2qs("Lag check completed (%s)"), key);
@@ -262,7 +265,7 @@ bool KviLagMeter::lagCheckComplete(const char * key)
 	m_tFirstOwnCheck = 0;
 	m_uLastReliability = c->uReliability;
 
-	m_CheckList.erase(m_CheckList.begin());
+	delete m_lCheckList.takeFirst();
 
 	return true;
 }
@@ -272,7 +275,13 @@ void KviLagMeter::lagCheckAbort(const char * key)
 	if(_OUTPUT_PARANOIC)
 		m_pConnection->console()->output(KVI_OUT_VERBOSE, __tr2qs("Lag check aborted (%s)"), key);
 
-	for(auto c : m_CheckList)
+	QList<KviLagCheck *> lAborted;
+
+	for(auto c : m_lCheckList)
+	{
 		if(kvi_strEqualCS(c->szKey.ptr(), key))
-			m_CheckList.erase(std::remove(m_CheckList.begin(), m_CheckList.end(), c), m_CheckList.end());
+			lAborted.append(c);
+	}
+	
+	qDeleteAll(lAborted);
 }

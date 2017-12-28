@@ -3,10 +3,10 @@
 //=============================================================================
 //
 //   File : KviLagMeter.h
-//   Creation date : Fri Oct 18 13:30:26 CEST 1999 by Juanjo Álvarez
+//   Creation date : Fri Oct 18 13:30:26 CEST 1999 by Juanjo ï¿½lvarez
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 1999 Juanjo Álvarez
+//   Copyright (C) 1999 Juanjo ï¿½lvarez
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -29,8 +29,7 @@
 #include "KviCString.h"
 
 #include <QObject>
-
-#include <vector>
+#include <QList>
 
 class KviIrcConnection;
 
@@ -58,7 +57,7 @@ protected:
 	unsigned int m_uLastEmittedLag;  // last emitted lag
 	long m_tLastCompleted;           // time when the last lag was completed (gettimeofday!)
 	unsigned int m_uLastReliability; // how much reliable was the last completed check ?
-	std::vector<KviLagCheck *> m_CheckList;
+	QList<KviLagCheck *> m_lCheckList;
 	long m_tFirstOwnCheck; // time when the first ping after a completed check was sent
 	long m_tLastOwnCheck;  // time when the last ping was sent
 	bool m_bOnAlarm;
