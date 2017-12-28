@@ -8,7 +8,7 @@ static const char * g_szAboutText = "" \
 "This is a partial list of the people that have " \
 "contributed in some way to the KVIrc project.<br><br>" \
 "Honor and glory to:<br>" \
-"</fon></h4>" \
+"</font></h4>" \
 "<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
 "<font color=\"#000000\" size=\"+3\"><b>Core developers</b></font>" \

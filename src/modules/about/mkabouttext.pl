@@ -124,7 +124,7 @@ p " <h4><font color=\"#000000\">";
 p "This is a partial list of the people that have ";
 p "contributed in some way to the KVIrc project.<br><br>";
 p "Honor and glory to:<br>";
-p " </fon></h4>";
+p " </font></h4>";
 
 $i = 0;
 $cnt++;
