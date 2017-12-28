@@ -67,7 +67,6 @@ public:
 	const int & cursorPosition() { return m_cPos; };
 	void setCursorPosition(const int & cPos)
 	{
-		qDebug("set cursor to %d", cPos);
 		m_cPos = cPos;
 	};
 

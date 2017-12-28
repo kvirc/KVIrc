@@ -1498,6 +1498,7 @@ namespace KviKvsCoreSimpleCommands
 		}
 		else
 		{
+			KviKvsEventManager::instance()->cleanHandlerName(szHandlerName);
 			iNumber = KviKvsEventManager::instance()->findAppEventIndexByName(szEventName);
 			if(!KviKvsEventManager::instance()->isValidAppEvent(iNumber))
 			{

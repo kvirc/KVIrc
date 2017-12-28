@@ -530,6 +530,10 @@ namespace KviKvsCoreCallbackCommands
 			list instead of being added.[br]
 			The <event_name> may be one of the KVIrc builtin event names
 			or a numeric code (from 0 to 999) of a RAW server message.[br]
+			<handler_name> can only contain alphanumeric characters. If the
+			provided handler name contains invalid characters, they are
+			silently removed. If the provided handler name does not contain
+			a single valid character, the handler will be named "unnamed".[br]
 			If the -q switch is specified then the command runs in quiet mode.
 		@seealso:
 			[cmd]eventctl[/cmd] [fnc]$iseventenabled[/fnc]
@@ -558,6 +562,7 @@ namespace KviKvsCoreCallbackCommands
 		}
 		else
 		{
+			KviKvsEventManager::instance()->cleanHandlerName(szHandlerName);
 			iNumber = KviKvsEventManager::instance()->findAppEventIndexByName(szEventName);
 			if(!KviKvsEventManager::instance()->isValidAppEvent(iNumber))
 			{

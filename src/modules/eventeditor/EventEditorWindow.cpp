@@ -123,9 +123,13 @@ EventEditor::EventEditor(QWidget * par)
 	m_pNameEditor->setText(__tr2qs_ctx("No item selected", "editor"));
 	m_pNameEditor->setToolTip(__tr2qs_ctx("Edit the event handler name.", "editor"));
 	m_pNameEditor->setEnabled(false);
+	QRegExpValidator * pValidator = new QRegExpValidator(QRegExp(KVI_KVS_EVENT_HANDLER_NAME_REG_EXP), this);
+	m_pNameEditor->setValidator(pValidator);
+	m_pNameEditor->setEnabled(false);
 
 	m_pEditor = KviScriptEditor::createInstance(box);
 	m_pEditor->setFocus();
+	m_pEditor->setEnabled(false);
 	m_bOneTimeSetupDone = false;
 	m_pLastEditedItem = nullptr;
 }
@@ -391,8 +395,7 @@ void EventEditor::saveLastEditedItem()
 		return;
 	((EventEditorHandlerTreeWidgetItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
 	QString buffer = m_pNameEditor->text();
-	//not-so elaborate fix for #218, we'd better rework this
-	buffer.replace(QRegExp("[^A-Za-z0-9_]"), "");
+	KviKvsEventManager::instance()->cleanHandlerName(buffer);
 	if(!KviQString::equalCI(buffer, m_pLastEditedItem->m_szName))
 	{
 		getUniqueHandlerName((EventEditorEventTreeWidgetItem *)(m_pLastEditedItem->parent()), buffer);
