@@ -577,12 +577,10 @@ found_tab:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 			// Found tab. Artificial end of block.
 			APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr);
-			// Artificial block with a run of tabs
+			// Artificial block with a single tab
 			NEW_LINE_CHUNK(KviControlCodes::ArbitraryBreak);
 			data_ptr = p;
 			p++;
-			while(*p == '\t')
-				p++;
 			APPEND_LAST_TEXT_BLOCK(data_ptr, p - data_ptr);
 			NEW_LINE_CHUNK(KviControlCodes::ArbitraryBreak);
 			data_ptr = p;
