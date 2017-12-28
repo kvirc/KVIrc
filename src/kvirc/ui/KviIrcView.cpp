@@ -105,6 +105,7 @@
 #include <QFontDialog>
 #include <QByteArray>
 #include <QMenu>
+#include <QWindow>
 
 #include <time.h>
 
@@ -369,6 +370,23 @@ KviIrcView::~KviIrcView()
 	delete m_pToolTip;
 	delete m_pWrappedBlockSelectionInfo;
 }
+
+void KviIrcView::showEvent(QShowEvent * e)
+{
+	QWindow * pWin = topLevelWidget()->windowHandle();
+	if(!pWin)
+		return; // huh ?
+
+	QObject::disconnect(pWin,SIGNAL(screenChanged(QScreen *)),this,SLOT(screenChanged(QScreen *)));
+	QObject::connect(pWin,SIGNAL(screenChanged(QScreen *)),this,SLOT(screenChanged(QScreen *)));
+}
+
+void KviIrcView::screenChanged(QScreen *)
+{
+	// Changing screen can change DPI. Reset font so metrics are recomputed.
+	setFont(font());
+}
+
 
 //
 // The IrcView : options
