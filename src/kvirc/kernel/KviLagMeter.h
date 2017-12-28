@@ -3,10 +3,10 @@
 //=============================================================================
 //
 //   File : KviLagMeter.h
-//   Creation date : Fri Oct 18 13:30:26 CEST 1999 by Juanjo �lvarez
+//   Creation date : Fri Oct 18 13:30:26 CEST 1999 by Juanjo Álvarez
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 1999 Juanjo �lvarez
+//   Copyright (C) 1999 Juanjo Álvarez
 //   Copyright (C) 2002-2010 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
