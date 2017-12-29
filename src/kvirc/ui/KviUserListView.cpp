@@ -245,7 +245,6 @@ KviUserListView::KviUserListView(QWidget * pParent, KviWindowToolPageButton * pB
 	m_ieEntries = 0;
 	m_iIEntries = 0;
 	m_iSelectedCount = 0;
-	m_CompletionList = nullptr;
 
 	applyOptions();
 }
@@ -257,7 +256,6 @@ KviUserListView::~KviUserListView()
 	delete m_pToolTip;
 	delete m_pViewArea;
 	delete m_pUsersLabel;
-	delete m_CompletionList;
 }
 
 void KviUserListView::emitRightClick()
@@ -487,115 +485,60 @@ void KviUserListView::completeNickBashLike(const QString & szBegin, std::vector<
 	}
 }
 
-bool KviUserListView::completeNickStandard(const QString & szBegin, QString & szSkipAfter, QString & szBuffer, bool bAppendMask)
+bool KviUserListView::completeNickStandard(const QString & szBegin, const QString & szSkipAfter, QString & szBuffer, bool bAppendMask)
 {
-	// For normal nickname completion, we'll build a list of matching nicknames in order,
-	// then look through it to the next nickname each time Tab is pressed.
-	if (m_CompletionList == nullptr)
-	{
-		// No list; build it.
-		m_CompletionList = new std::list<QString>();
-
-		KviUserListEntry * pEntry = m_pHeadItem;
-
-		for(KviUserListEntry * pEntry = m_pHeadItem; pEntry; pEntry = pEntry->m_pNext)
-		{
-			// FIXME: completion should skip my own nick or place it as last entry in the chain (?)
-
-			//	if(KviConsoleWindow * c = m_pKviWindow->console())
-			//	{
-			//		if(kvi_strEqualCI(entry->m_szNick.ptr(),c->currentNickName())
-			//	}
-
-			if(pEntry->m_szNick.length() >= szBegin.length())
-			{
-				bool bEqual = KviQString::equalCIN(szBegin, pEntry->m_szNick, szBegin.length());
-				if(!bEqual && KVI_OPTION_BOOL(KviOption_boolIgnoreSpecialCharactersInNickCompletion))
-				{
-					QString szTmp = pEntry->m_szNick;
-					szTmp.remove(QRegExp("[^a-zA-Z0-9]"));
-					bEqual = KviQString::equalCIN(szBegin, szTmp, szBegin.length());
-				}
-
-				if(bEqual)
-				{
-					// Matching entry; insert it into the list.
-					std::list<QString>::iterator it;
-					switch (KVI_OPTION_UINT(KviOption_uintNickCompletionOrder))
-					{
-						case 0:  // As listed
-							m_CompletionList->push_back(pEntry->m_szNick);
-							break;
-						case 1:  // Alphabetical
-							for (it = m_CompletionList->begin(); it != m_CompletionList->end(); ++it)
-							{
-								if ((KviQString::cmpCI(pEntry->m_szNick, *it,
-									KVI_OPTION_BOOL(KviOption_boolPlaceNickWithNonAlphaCharsAtEnd)) < 0))
-								{
-									break;
-								}
-							}
-							m_CompletionList->insert(it, pEntry->m_szNick);
-							break;
-						default:  // Last action time
-							for (it = m_CompletionList->begin(); it != m_CompletionList->end(); ++it)
-							{
-								if (pEntry->m_lastActionTime > (*m_pEntryDict->find(*it)).m_lastActionTime)
-								{
-									break;
-								}
-							}
-							m_CompletionList->insert(it, pEntry->m_szNick);
-							break;
-					}
-
-				}
-			}
-		}
-	}
-
-	// The list exists; find the next match.
-	std::list<QString>::iterator it = m_CompletionList->begin();
+	KviUserListEntry * pEntry = m_pHeadItem;
 
 	if(!szSkipAfter.isEmpty())
 	{
-		while(it != m_CompletionList->end())
+		while(pEntry)
 		{
-			if(KviQString::equalCI(szSkipAfter, *it))
+			if(KviQString::equalCI(szSkipAfter, pEntry->m_szNick))
 			{
-				++it;
+				pEntry = pEntry->m_pNext;
 				break;
 			}
-			++it;
+			pEntry = pEntry->m_pNext;
 		}
 	}
 
-	if(it != m_CompletionList->end())
+	// FIXME: completion should skip my own nick or place it as last entry in the chain (?)
+
+	//	if(KviConsoleWindow * c = m_pKviWindow->console())
+	//	{
+	//		if(kvi_strEqualCI(entry->m_szNick.ptr(),c->currentNickName())
+	//	}
+
+	// Ok...now the real completion
+	while(pEntry)
 	{
-		szSkipAfter = *it;
-		szBuffer = *it;
-		if(bAppendMask)
+		if(pEntry->m_szNick.length() >= szBegin.length())
 		{
-			KviUserListEntry * entry = m_pEntryDict->find(*it);
-			if (entry)
+			bool bEqual = KviQString::equalCIN(szBegin, pEntry->m_szNick, szBegin.length());
+			if(!bEqual && KVI_OPTION_BOOL(KviOption_boolIgnoreSpecialCharactersInNickCompletion))
 			{
-				szBuffer += "!";
-				szBuffer += entry->m_pGlobalData->user();
-				szBuffer += "@";
-				szBuffer += entry->m_pGlobalData->host();
+				QString szTmp = pEntry->m_szNick;
+				szTmp.remove(QRegExp("[^a-zA-Z0-9]"));
+				bEqual = KviQString::equalCIN(szBegin, szTmp, szBegin.length());
 			}
-			else
+
+			if(bEqual)
 			{
-				// They left the user list during the completion session.
-				szBuffer += "!*@*";
+				// This is ok.
+				szBuffer = pEntry->m_szNick;
+				if(bAppendMask)
+				{
+					szBuffer += "!";
+					szBuffer += pEntry->m_pGlobalData->user();
+					szBuffer += "@";
+					szBuffer += pEntry->m_pGlobalData->host();
+				}
+				return true;
 			}
 		}
-		return true;
+		pEntry = pEntry->m_pNext;
 	}
 
-	// No more matches; delete the list.
-	delete m_CompletionList;
-	m_CompletionList = nullptr;
 	return false;
 }
 

@@ -2368,12 +2368,10 @@ void KviInputEditor::standardNickCompletion(bool bAddMask, QString & szWord, boo
 
 		if(m_pUserListView->completeNickStandard(szWord, m_szLastCompletedNick, szBuffer, bAddMask))
 		{
-			// Because szBuffer does not necessarily equal the completed nickname,
-			// completeNickStandard will update m_szLastCompletedNick with the nickname.
-
 			// completed: save the buffer
 			m_szLastCompletionBuffer = m_szTextBuffer;
 			m_iLastCompletionCursorPosition = m_iCursorPosition;
+			m_szLastCompletedNick = szBuffer;
 			standardNickCompletionInsertCompletedText(szWord, szBuffer, bFirstWordInLine, bInCommand);
 			m_bLastCompletionFinished = 0;
 			// REPAINT CALLED FROM OUTSIDE!
@@ -2399,6 +2397,7 @@ void KviInputEditor::standardNickCompletion(bool bAddMask, QString & szWord, boo
 		if(m_pUserListView->completeNickStandard(szWord, m_szLastCompletedNick, szBuffer, bAddMask))
 		{
 			// completed
+			m_szLastCompletedNick = szBuffer;
 			standardNickCompletionInsertCompletedText(szWord, szBuffer, bFirstWordInLine, bInCommand);
 			m_bLastCompletionFinished = 0;
 			// REPAINT CALLED FROM OUTSIDE!
@@ -2418,12 +2417,12 @@ void KviInputEditor::standardNickCompletion(bool bAddMask, QString & szWord, boo
 	//getWordBeforeCursor(word,&bFirstWordInLine);
 	if(szWord.isEmpty())
 		return;
-	m_szLastCompletedNick = "";
-	if(m_pUserListView->completeNickStandard(szWord, m_szLastCompletedNick, szBuffer, bAddMask))
+	if(m_pUserListView->completeNickStandard(szWord, "", szBuffer, bAddMask))
 	{
 		// completed
 		m_szLastCompletionBuffer = m_szTextBuffer;
 		m_iLastCompletionCursorPosition = m_iCursorPosition;
+		m_szLastCompletedNick = szBuffer;
 		standardNickCompletionInsertCompletedText(szWord, szBuffer, bFirstWordInLine, bInCommand);
 		m_bLastCompletionFinished = 0;
 		// REPAINT CALLED FROM OUTSIDE!

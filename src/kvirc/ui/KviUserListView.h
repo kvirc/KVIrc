@@ -276,8 +276,6 @@ protected:
 	int m_iIEntries;
 	KviWindow * m_pKviWindow;
 
-	std::list<QString> * m_CompletionList;
-
 public:
 	/**
 	* \brief Updates the list view area
@@ -722,12 +720,12 @@ public:
 	* It looks for the letters typed, if it found at least a result, it
 	* cycles through the completed nicknames
 	* \param szBegin The starting of the nick
-	* \param szSkipAfter The string to skip after the nick is completed. Will be updated with the completed nickname.
+	* \param szSkipAfter The string to skip after the nick is completed
 	* \param szBuffer The buffer where to store the data
 	* \param bAppendMask Whether to append the complete mask
 	* \return bool
 	*/
-	bool completeNickStandard(const QString & szBegin, QString & szSkipAfter, QString & szBuffer, bool bAppendMask);
+	bool completeNickStandard(const QString & szBegin, const QString & szSkipAfter, QString & szBuffer, bool bAppendMask);
 
 	/**
 	* \brief Completes the nick in Bash-like behaviour

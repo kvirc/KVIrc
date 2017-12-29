@@ -636,8 +636,7 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS] = {
 	UINT_OPTION("ToolBarButtonStyle", 0, KviOption_groupTheme), // 0 = Qt::ToolButtonIconOnly
 	UINT_OPTION("MaximumBlowFishKeySize", 56, KviOption_sectFlagNone),
 	UINT_OPTION("CustomCursorWidth", 1, KviOption_resetUpdateGui),
-	UINT_OPTION("UserListMinimumWidth", 100, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
-	UINT_OPTION("NickCompletionOrder", 2, KviOption_sectFlagNone)
+	UINT_OPTION("UserListMinimumWidth", 100, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme)
 };
 
 #define FONT_OPTION(_name, _face, _size, _flags) \
