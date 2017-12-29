@@ -61,7 +61,7 @@ public:
 	OptionsWidget_inputFeatures(QWidget * parent);
 	~OptionsWidget_inputFeatures();
 
-	void commit() override;
+	virtual void commit();
 };
 
 #endif //!_OPTW_INPUT_H_
