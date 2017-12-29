@@ -69,14 +69,6 @@ KviOptionsWidget::~KviOptionsWidget()
 	delete m_pSelectorInterfaceList;
 }
 
-void KviOptionsWidget::setBasicTip(QWidget * w, const QString & optionName)
-{
-	QString tmp = m_szBasicTipStart;
-	tmp += optionName;
-	tmp += m_szBasicTipEnd;
-	KviTalToolTip::add(w, tmp);
-}
-
 void KviOptionsWidget::mergeTip(QWidget * w, const QString & tip)
 {
 	static QString begin = "<table width=\"100%\"><tr><td bgcolor=\"#fefef0\"><font color=\"#000000\">";
@@ -217,7 +209,10 @@ KviDirectorySelector * KviOptionsWidget::addDirectorySelector(int x1, int y1, in
 	m_iResetFlags |= (g_stringOptionsTable[optId].flags & KviOption_resetMask);
 	KviDirectorySelector * d = addDirectorySelector(x1, y1, x2, y2, txt, &(KVI_OPTION_STRING(optId)), bEnabled);
 
-	setBasicTip(d, g_stringOptionsTable[optId].name);
+	QString tmp = m_szBasicTipStart;
+	tmp += g_stringOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 
 	return d;
 }
@@ -227,7 +222,10 @@ KviDirectorySelector * KviOptionsWidget::addDirectorySelector(QWidget * pParent,
 	m_iResetFlags |= (g_stringOptionsTable[optId].flags & KviOption_resetMask);
 	KviDirectorySelector * d = addDirectorySelector(pParent, txt, &(KVI_OPTION_STRING(optId)), bEnabled);
 
-	setBasicTip(d, g_stringOptionsTable[optId].name);
+	QString tmp = m_szBasicTipStart;
+	tmp += g_stringOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 
 	return d;
 }
@@ -252,7 +250,10 @@ KviFileSelector * KviOptionsWidget::addFileSelector(int x1, int y1, int x2, int 
 	m_iResetFlags |= (g_stringOptionsTable[optId].flags & KviOption_resetMask);
 	KviFileSelector * d = addFileSelector(x1, y1, x2, y2, txt, &(KVI_OPTION_STRING(optId)), bEnabled);
 
-	setBasicTip(d, g_stringOptionsTable[optId].name);
+	QString tmp = m_szBasicTipStart;
+	tmp += g_stringOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 
 	return d;
 }
@@ -262,7 +263,10 @@ KviFileSelector * KviOptionsWidget::addFileSelector(QWidget * pParent, const QSt
 	m_iResetFlags |= (g_stringOptionsTable[optId].flags & KviOption_resetMask);
 	KviFileSelector * d = addFileSelector(pParent, txt, &(KVI_OPTION_STRING(optId)), bEnabled);
 
-	setBasicTip(d, g_stringOptionsTable[optId].name);
+	QString tmp = m_szBasicTipStart;
+	tmp += g_stringOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 
 	return d;
 }
@@ -287,7 +291,10 @@ KviSoundSelector * KviOptionsWidget::addSoundSelector(int x1, int y1, int x2, in
 	m_iResetFlags |= (g_stringOptionsTable[optId].flags & KviOption_resetMask);
 	KviSoundSelector * d = addSoundSelector(x1, y1, x2, y2, txt, &(KVI_OPTION_STRING(optId)), bEnabled);
 
-	setBasicTip(d, g_stringOptionsTable[optId].name);
+	QString tmp = m_szBasicTipStart;
+	tmp += g_stringOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 
 	return d;
 }
@@ -297,7 +304,10 @@ KviSoundSelector * KviOptionsWidget::addSoundSelector(QWidget * pParent, const Q
 	m_iResetFlags |= (g_stringOptionsTable[optId].flags & KviOption_resetMask);
 	KviSoundSelector * d = addSoundSelector(pParent, txt, &(KVI_OPTION_STRING(optId)), bEnabled);
 
-	setBasicTip(d, g_stringOptionsTable[optId].name);
+	QString tmp = m_szBasicTipStart;
+	tmp += g_stringOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 
 	return d;
 }
@@ -321,9 +331,10 @@ KviBoolSelector * KviOptionsWidget::addBoolSelector(int x1, int y1, int x2, int 
 {
 	m_iResetFlags |= (g_boolOptionsTable[optId].flags & KviOption_resetMask);
 	KviBoolSelector * d = addBoolSelector(x1, y1, x2, y2, txt, &(KVI_OPTION_BOOL(optId)), bEnabled);
-
-	setBasicTip(d, g_boolOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_boolOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -331,9 +342,10 @@ KviBoolSelector * KviOptionsWidget::addBoolSelector(QWidget * pParent, const QSt
 {
 	m_iResetFlags |= (g_boolOptionsTable[optId].flags & KviOption_resetMask);
 	KviBoolSelector * d = addBoolSelector(pParent, txt, &(KVI_OPTION_BOOL(optId)), bEnabled);
-
-	setBasicTip(d, g_boolOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_boolOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -349,9 +361,10 @@ KviPixmapSelector * KviOptionsWidget::addPixmapSelector(int x1, int y1, int x2, 
 {
 	m_iResetFlags |= (g_pixmapOptionsTable[optId].flags & KviOption_resetMask);
 	KviPixmapSelector * d = addPixmapSelector(x1, y1, x2, y2, txt, &(KVI_OPTION_PIXMAP(optId)), bEnabled);
-
-	setBasicTip(d, g_pixmapOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_pixmapOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -380,9 +393,10 @@ KviUIntSelector * KviOptionsWidget::addUIntSelector(int x1, int y1, int x2, int 
 {
 	m_iResetFlags |= (g_uintOptionsTable[optId].flags & KviOption_resetMask);
 	KviUIntSelector * d = addUIntSelector(x1, y1, x2, y2, txt, &(KVI_OPTION_UINT(optId)), uLowBound, uHighBound, uDefault, bEnabled);
-
-	setBasicTip(d, g_uintOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_uintOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -392,9 +406,10 @@ KviUIntSelector * KviOptionsWidget::addUIntSelector(QWidget * pParent, const QSt
 {
 	m_iResetFlags |= (g_uintOptionsTable[optId].flags & KviOption_resetMask);
 	KviUIntSelector * d = addUIntSelector(pParent, txt, &(KVI_OPTION_UINT(optId)), uLowBound, uHighBound, uDefault, bEnabled);
-
-	setBasicTip(d, g_uintOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_uintOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -427,9 +442,10 @@ KviStringSelector * KviOptionsWidget::addStringSelector(int x1, int y1, int x2, 
 {
 	m_iResetFlags |= (g_stringOptionsTable[optId].flags & KviOption_resetMask);
 	KviStringSelector * d = addStringSelector(x1, y1, x2, y2, txt, &(KVI_OPTION_STRING(optId)), bEnabled);
-
-	setBasicTip(d, g_stringOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_stringOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -437,9 +453,10 @@ KviStringSelector * KviOptionsWidget::addStringSelector(QWidget * pParent, const
 {
 	m_iResetFlags |= (g_stringOptionsTable[optId].flags & KviOption_resetMask);
 	KviStringSelector * d = addStringSelector(pParent, txt, &(KVI_OPTION_STRING(optId)), bEnabled);
-
-	setBasicTip(d, g_stringOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_stringOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -462,9 +479,10 @@ KviPasswordSelector * KviOptionsWidget::addPasswordSelector(int x1, int y1, int 
 {
 	m_iResetFlags |= (g_stringOptionsTable[optId].flags & KviOption_resetMask);
 	KviPasswordSelector * d = addPasswordSelector(x1, y1, x2, y2, txt, &(KVI_OPTION_STRING(optId)), bEnabled);
-
-	setBasicTip(d, g_stringOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_stringOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -472,9 +490,10 @@ KviPasswordSelector * KviOptionsWidget::addPasswordSelector(QWidget * pParent, c
 {
 	m_iResetFlags |= (g_stringOptionsTable[optId].flags & KviOption_resetMask);
 	KviPasswordSelector * d = addPasswordSelector(pParent, txt, &(KVI_OPTION_STRING(optId)), bEnabled);
-
-	setBasicTip(d, g_stringOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_stringOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -490,9 +509,10 @@ KviStringListSelector * KviOptionsWidget::addStringListSelector(int x1, int y1, 
 {
 	m_iResetFlags |= (g_stringlistOptionsTable[optId].flags & KviOption_resetMask);
 	KviStringListSelector * d = addStringListSelector(x1, y1, x2, y2, txt, &(KVI_OPTION_STRINGLIST(optId)), bEnabled);
-
-	setBasicTip(d, g_stringlistOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_stringlistOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -515,9 +535,10 @@ KviColorSelector * KviOptionsWidget::addColorSelector(int x1, int y1, int x2, in
 {
 	m_iResetFlags |= (g_colorOptionsTable[optId].flags & KviOption_resetMask);
 	KviColorSelector * d = addColorSelector(x1, y1, x2, y2, txt, &(KVI_OPTION_COLOR(optId)), bEnabled);
-
-	setBasicTip(d, g_colorOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_colorOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -525,9 +546,10 @@ KviColorSelector * KviOptionsWidget::addColorSelector(QWidget * pParent, const Q
 {
 	m_iResetFlags |= (g_colorOptionsTable[optId].flags & KviOption_resetMask);
 	KviColorSelector * d = addColorSelector(pParent, txt, &(KVI_OPTION_COLOR(optId)), bEnabled);
-
-	setBasicTip(d, g_colorOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_colorOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -551,9 +573,10 @@ KviMircTextColorSelector * KviOptionsWidget::addMircTextColorSelector(int x1, in
 	m_iResetFlags |= (g_uintOptionsTable[optForeId].flags & KviOption_resetMask);
 	m_iResetFlags |= (g_uintOptionsTable[optBackId].flags & KviOption_resetMask);
 	KviMircTextColorSelector * d = addMircTextColorSelector(x1, y1, x2, y2, txt, &(KVI_OPTION_UINT(optForeId)), &(KVI_OPTION_UINT(optBackId)), bEnabled);
-
-	setBasicTip(d, g_uintOptionsTable[optForeId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_uintOptionsTable[optForeId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -562,9 +585,10 @@ KviMircTextColorSelector * KviOptionsWidget::addMircTextColorSelector(QWidget * 
 	m_iResetFlags |= (g_uintOptionsTable[optForeId].flags & KviOption_resetMask);
 	m_iResetFlags |= (g_uintOptionsTable[optBackId].flags & KviOption_resetMask);
 	KviMircTextColorSelector * d = addMircTextColorSelector(pParent, txt, &(KVI_OPTION_UINT(optForeId)), &(KVI_OPTION_UINT(optBackId)), bEnabled);
-
-	setBasicTip(d, g_uintOptionsTable[optForeId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_uintOptionsTable[optForeId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -587,9 +611,10 @@ KviFontSelector * KviOptionsWidget::addFontSelector(int x1, int y1, int x2, int 
 {
 	m_iResetFlags |= (g_fontOptionsTable[optId].flags & KviOption_resetMask);
 	KviFontSelector * d = addFontSelector(x1, y1, x2, y2, txt, &(KVI_OPTION_FONT(optId)), bEnabled);
-
-	setBasicTip(d, g_fontOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_fontOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 
@@ -597,9 +622,10 @@ KviFontSelector * KviOptionsWidget::addFontSelector(QWidget * pParent, const QSt
 {
 	m_iResetFlags |= (g_fontOptionsTable[optId].flags & KviOption_resetMask);
 	KviFontSelector * d = addFontSelector(pParent, txt, &(KVI_OPTION_FONT(optId)), bEnabled);
-
-	setBasicTip(d, g_fontOptionsTable[optId].name);
-
+	QString tmp = m_szBasicTipStart;
+	tmp += g_fontOptionsTable[optId].name;
+	tmp += m_szBasicTipEnd;
+	KviTalToolTip::add(d, tmp);
 	return d;
 }
 

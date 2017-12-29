@@ -41,11 +41,9 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 	createLayout();
 
 	QLabel * pLabel = new QLabel(__tr2qs_ctx("Output verbosity:", "options"), this);
-	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintOutputVerbosityLevel].name);
 	addWidgetToLayout(pLabel, 0, 0, 0, 0);
 
 	m_pVerbosityCombo = new QComboBox(this);
-	setBasicTip(m_pVerbosityCombo, g_uintOptionsTable[KviOption_uintOutputVerbosityLevel].name);
 	m_pVerbosityCombo->addItem(__tr2qs_ctx("Mute", "options"));
 	m_pVerbosityCombo->addItem(__tr2qs_ctx("Quiet", "options"));
 	m_pVerbosityCombo->addItem(__tr2qs_ctx("Normal", "options"));
@@ -58,11 +56,9 @@ OptionsWidget_ircOutput::OptionsWidget_ircOutput(QWidget * pParent)
 	m_pVerbosityCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel));
 
 	pLabel = new QLabel(__tr2qs_ctx("DateTime format:", "options"), this);
-	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintOutputDatetimeFormat].name);
 	addWidgetToLayout(pLabel, 0, 1, 0, 1);
 
 	m_pDatetimeCombo = new QComboBox(this);
-	setBasicTip(m_pDatetimeCombo, g_uintOptionsTable[KviOption_uintOutputDatetimeFormat].name);
 	m_pDatetimeCombo->addItem(__tr2qs_ctx("Classic format", "options"));
 	m_pDatetimeCombo->addItem(__tr2qs_ctx("ISO 8601 format", "options"));
 	m_pDatetimeCombo->addItem(__tr2qs_ctx("System locale format", "options"));

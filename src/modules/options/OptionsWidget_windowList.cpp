@@ -123,16 +123,12 @@ OptionsWidget_windowListTreeBackground::OptionsWidget_windowListTreeBackground(Q
 
 	addPixmapSelector(0, 1, 1, 1, __tr2qs_ctx("Background image:", "options"), KviOption_pixmapTreeWindowListBackground);
 
-	QLabel * pLabel = addLabel(0, 2, 0, 2, __tr2qs_ctx("Horizontal align:", "options"));
-	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintTreeWindowListPixmapAlign].name);
+	addLabel(0, 2, 0, 2, __tr2qs_ctx("Horizontal align:", "options"));
 	m_pHorizontalAlign = new QComboBox(this);
-	setBasicTip(m_pHorizontalAlign, g_uintOptionsTable[KviOption_uintTreeWindowListPixmapAlign].name);
 	addWidgetToLayout(m_pHorizontalAlign, 1, 2, 1, 2);
 
-	pLabel = addLabel(0, 3, 0, 3, __tr2qs_ctx("Vertical align:", "options"));
-	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintTreeWindowListPixmapAlign].name);
+	addLabel(0, 3, 0, 3, __tr2qs_ctx("Vertical align:", "options"));
 	m_pVerticalAlign = new QComboBox(this);
-	setBasicTip(m_pVerticalAlign, g_uintOptionsTable[KviOption_uintTreeWindowListPixmapAlign].name);
 	addWidgetToLayout(m_pVerticalAlign, 1, 3, 1, 3);
 
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Tile", "options"));

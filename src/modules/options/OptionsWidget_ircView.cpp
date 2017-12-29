@@ -49,16 +49,12 @@ OptionsWidget_ircViewLook::OptionsWidget_ircViewLook(QWidget * parent)
 
 	addPixmapSelector(0, 2, 1, 2, __tr2qs_ctx("Background image:", "options"), KviOption_pixmapIrcViewBackground);
 
-	QLabel * pLabel = addLabel(0, 3, 0, 3, __tr2qs_ctx("Horizontal align:", "options"));
-	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintIrcViewPixmapAlign].name);
+	addLabel(0, 3, 0, 3, __tr2qs_ctx("Horizontal align:", "options"));
 	m_pHorizontalAlign = new QComboBox(this);
-	setBasicTip(m_pHorizontalAlign, g_uintOptionsTable[KviOption_uintIrcViewPixmapAlign].name);
 	addWidgetToLayout(m_pHorizontalAlign, 1, 3, 1, 3);
 
-	pLabel = addLabel(0, 4, 0, 4, __tr2qs_ctx("Vertical align:", "options"));
-	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintIrcViewPixmapAlign].name);
+	addLabel(0, 4, 0, 4, __tr2qs_ctx("Vertical align:", "options"));
 	m_pVerticalAlign = new QComboBox(this);
-	setBasicTip(m_pVerticalAlign, g_uintOptionsTable[KviOption_uintIrcViewPixmapAlign].name);
 	addWidgetToLayout(m_pVerticalAlign, 1, 4, 1, 4);
 
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Tile", "options"));
@@ -182,10 +178,8 @@ OptionsWidget_ircViewMarker::OptionsWidget_ircViewMarker(QWidget * parent)
 	KviUIntSelector * s = addUIntSelector(0, 2, 1, 2, __tr2qs_ctx("Marker size:", "options"), KviOption_uintIrcViewMarkerSize, 1, 5, 1);
 	s->setSuffix(__tr2qs_ctx(" pixels", "options"));
 
-	QLabel * pLabel = addLabel(0, 3, 0, 3, __tr2qs_ctx("Marker style:", "options"));
-	setBasicTip(pLabel, g_uintOptionsTable[KviOption_uintIrcViewMarkerStyle].name);
+	addLabel(0, 3, 0, 3, __tr2qs_ctx("Marker style:", "options"));
 	m_pMarkerStyle = new QComboBox(this);
-	setBasicTip(m_pMarkerStyle, g_uintOptionsTable[KviOption_uintIrcViewMarkerStyle].name);
 	addWidgetToLayout(m_pMarkerStyle, 1, 3, 1, 3);
 
 	addRowSpacer(0, 4, 0, 4);
