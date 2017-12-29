@@ -55,13 +55,11 @@ class OptionsWidget_inputFeatures : public KviOptionsWidget
 {
 	Q_OBJECT
 private:
-	QComboBox * m_pCompletionOrderCombo;
+	QComboBox * m_pNickCompletionOrder;
 
 public:
 	OptionsWidget_inputFeatures(QWidget * parent);
 	~OptionsWidget_inputFeatures();
-
-	virtual void commit();
 };
 
 #endif //!_OPTW_INPUT_H_

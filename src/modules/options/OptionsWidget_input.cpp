@@ -159,24 +159,10 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 
 	addBoolSelector(g, __tr2qs_ctx("Ignore special characters in nick completion", "options"), KviOption_boolIgnoreSpecialCharactersInNickCompletion);
 
-	KviTalHBox * hb = new KviTalHBox(g);
-
-	QLabel * l = new QLabel(__tr2qs_ctx("Nickname completion order:", "options"), hb);
-	l->setMinimumWidth(120);
-
-	m_pCompletionOrderCombo = new QComboBox(hb);
-	m_pCompletionOrderCombo->addItem(__tr2qs_ctx("As listed", "options"));
-	m_pCompletionOrderCombo->addItem(__tr2qs_ctx("Alphabetical", "options"));
-	m_pCompletionOrderCombo->addItem(__tr2qs_ctx("By last action time", "options"));
-
-	// TODO: add the tooltip
-
-	if (KVI_OPTION_UINT(KviOption_uintNickCompletionOrder) < 3)
-		m_pCompletionOrderCombo->setCurrentIndex(KVI_OPTION_UINT(KviOption_uintNickCompletionOrder));
-	else
-		m_pCompletionOrderCombo->setCurrentIndex(2);
-
-	hb->setStretchFactor(m_pCompletionOrderCombo, 1);
+	// TODO: Add a combo box for KviOption_uintNickCompletionOrder
+	// 0: as listed
+	// 1: alphabetical
+	// 2: by last action time
 
 	KviBoolSelector * d = addBoolSelector(0, 7, 0, 7, __tr2qs_ctx("Use a custom cursor width", "options"), KviOption_boolEnableCustomCursorWidth);
 	KviUIntSelector * f = addUIntSelector(0, 8, 0, 8, __tr2qs_ctx("Custom cursor width:", "options"), KviOption_uintCustomCursorWidth, 1, 24, 8, KVI_OPTION_BOOL(KviOption_boolEnableCustomCursorWidth));
@@ -187,8 +173,3 @@ OptionsWidget_inputFeatures::OptionsWidget_inputFeatures(QWidget * parent)
 
 OptionsWidget_inputFeatures::~OptionsWidget_inputFeatures()
     = default;
-
-void OptionsWidget_inputFeatures::commit()
-{
-	KVI_OPTION_UINT(KviOption_uintNickCompletionOrder) = m_pCompletionOrderCombo->currentIndex();
-}
