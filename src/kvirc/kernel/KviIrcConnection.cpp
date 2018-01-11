@@ -77,13 +77,9 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 KviIrcConnection::KviIrcConnection(KviIrcContext * pContext, KviIrcConnectionTarget * pTarget, KviUserIdentity * pIdentity)
-    : QObject()
+    : QObject(), m_pContext(pContext), m_pTarget(pTarget), m_pUserIdentity(pIdentity)
 {
-	m_bIdentdAttached = false;
-	m_pContext = pContext;
 	m_pConsole = pContext->console();
-	m_pTarget = pTarget;
-	m_pUserIdentity = pIdentity;
 	m_pLink = new KviIrcLink(this);
 	m_pUserDataBase = new KviIrcUserDataBase();
 	m_pUserInfo = new KviIrcConnectionUserInfo();
@@ -92,12 +88,7 @@ KviIrcConnection::KviIrcConnection(KviIrcContext * pContext, KviIrcConnectionTar
 	m_pAntiCtcpFloodData = new KviIrcConnectionAntiCtcpFloodData();
 	m_pNetsplitDetectorData = new KviIrcConnectionNetsplitDetectorData();
 	m_pAsyncWhoisData = new KviIrcConnectionAsyncWhoisData();
-	m_pStatistics = new KviIrcConnectionStatistics();
-	m_pNotifyListTimer = nullptr;
-	m_pNotifyListManager = nullptr;
-	m_pLocalhostDns = nullptr;
-	m_pLagMeter = nullptr;
-	m_eState = Idle;
+	m_pStatistics = std::unique_ptr<KviIrcConnectionStatistics>(new KviIrcConnectionStatistics);
 	m_pRequestQueue = new KviIrcConnectionRequestQueue();
 	setupSrvCodec();
 	setupTextCodec();
@@ -136,7 +127,6 @@ KviIrcConnection::~KviIrcConnection()
 	delete m_pAntiCtcpFloodData;
 	delete m_pNetsplitDetectorData;
 	delete m_pAsyncWhoisData;
-	delete m_pStatistics;
 	delete m_pUserIdentity;
 	m_pRequestQueue->deleteLater();
 }

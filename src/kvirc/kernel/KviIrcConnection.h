@@ -38,6 +38,7 @@
 #include <QByteArray>
 #include <QStringList>
 
+#include <memory>
 #include <utility>
 #include <vector>
 
@@ -121,6 +122,8 @@ protected:
 	*/
 	KviIrcConnection(KviIrcContext * pContext, KviIrcConnectionTarget * pTarget, KviUserIdentity * pIdentity);
 
+	KviIrcConnection() = delete;
+
 	/**
 	* \brief Destroys a KviIrcConnection object. KviConsoleWindow uses this.
 	*/
@@ -142,8 +145,8 @@ private:
 	KviConsoleWindow * m_pConsole; // shallow, never null
 	KviIrcContext * m_pContext;    // shallow, never null
 
-	State m_eState;
-	bool m_bIdentdAttached;
+	State m_eState = Idle;
+	bool m_bIdentdAttached = false;
 
 	KviIrcConnectionTarget * m_pTarget; // owned, never null
 
@@ -165,18 +168,18 @@ private:
 
 	KviIrcUserDataBase * m_pUserDataBase; // owned, never null
 
-	KviNotifyListManager * m_pNotifyListManager; // owned, see restartNotifyList()
-	QTimer * m_pNotifyListTimer;                 // delayed startup timer for the notify lists
+	KviNotifyListManager * m_pNotifyListManager = nullptr; // owned, see restartNotifyList()
+	QTimer * m_pNotifyListTimer = nullptr;       // delayed startup timer for the notify lists
 
-	KviLagMeter * m_pLagMeter; // owned, may be null (when not running)
+	KviLagMeter * m_pLagMeter = nullptr; // owned, may be null (when not running)
 
 	KviIrcConnectionAntiCtcpFloodData * m_pAntiCtcpFloodData;       // owned, never null
 	KviIrcConnectionNetsplitDetectorData * m_pNetsplitDetectorData; // owned, never null
 	KviIrcConnectionAsyncWhoisData * m_pAsyncWhoisData;             // owned, never null
 
-	KviIrcConnectionStatistics * m_pStatistics; // owned, never null
+	std::unique_ptr<KviIrcConnectionStatistics> m_pStatistics; // owned, never null
 
-	KviDnsResolver * m_pLocalhostDns; // FIXME: this should go to an aux structure
+	KviDnsResolver * m_pLocalhostDns = nullptr; // FIXME: this should go to an aux structure
 
 	QTextCodec * m_pSrvCodec;                       // connection codec: never null
 	QTextCodec * m_pTextCodec;                      // connection codec: never null
@@ -327,7 +330,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionStatistics *
 	*/
-	KviIrcConnectionStatistics * statistics() { return m_pStatistics; };
+	KviIrcConnectionStatistics * statistics() { return m_pStatistics.get(); };
 
 	/**
 	* \brief Returns a pointer to the current KviNotifyListManager.
