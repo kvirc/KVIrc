@@ -122,6 +122,8 @@ protected:
 	*/
 	KviIrcConnection(KviIrcContext * pContext, KviIrcConnectionTarget * pTarget, KviUserIdentity * pIdentity);
 
+	KviIrcConnection() = delete;
+
 	/**
 	* \brief Destroys a KviIrcConnection object. KviConsoleWindow uses this.
 	*/
