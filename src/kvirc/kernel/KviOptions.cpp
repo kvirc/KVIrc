@@ -430,7 +430,10 @@ KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST_OPTIONS] = {
 	STRINGLIST_OPTION("ImageSearchPaths", KviOption_sectFlagFrame | KviOption_encodePath),
 	STRINGLIST_OPTION("RecentIrcUrls", KviOption_sectFlagRecent),
 	STRINGLIST_OPTION("SpellCheckerDictionaries", KviOption_sectFlagInput),
-	STRINGLIST_OPTION("WhitelistedAvatarDomains", KviOption_sectFlagIrcView)
+
+	// TODO: Regex? Wildcard?
+	KviStringListOption(KVI_STRINGLIST_OPTIONS_PREFIX "WhitelistedAvatarDomains",
+		QStringList({"i.imgur.com", "google.com"}), KviOption_sectFlagIrcView)
 };
 
 #define MIRC_COLOR_OPTION(_num, _red, _green, _blue)                               \
