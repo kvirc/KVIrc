@@ -170,7 +170,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolUseAntiSpamOnNotice 78                                   /* ircengine::antispam */
 #define KviOption_boolSetLastAvatarAsDefaultForRegisteredUsers 79              /* irc::ctcp::avatar */
 #define KviOption_boolCantAcceptIncomingDccConnections 80                      /* dcc::general */
-#define KviOption_boolIgnoreCtcpAvatar 81                                      /* irc::ctcp::floodprotection */
+#define KviOption_boolEnableCtcpAvatar 81                                      /* irc::ctcp::floodprotection */
 #define KviOption_boolCtcpRepliesToActiveWindow 82                             /* ctcp */
 #define KviOption_boolAutoAcceptDccCanvas 83
 #define KviOption_boolNotifyDccSendSuccessInNotifier 84                        /* dcc::send */
@@ -436,8 +436,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_stringlistImageSearchPaths 6                                 /* ??? */
 #define KviOption_stringlistRecentIrcUrls 7                                    /* internal */
 #define KviOption_stringlistSpellCheckerDictionaries 8                         /* spellchecker */
+#define KviOption_stringlistWhitelistedAvatarDomains 9                         /* Whitelisted avatar domains */
 
-#define KVI_NUM_STRINGLIST_OPTIONS 9
+#define KVI_NUM_STRINGLIST_OPTIONS 10
 
 #define KVI_COLOR_OPTIONS_PREFIX "color"
 #define KVI_COLOR_OPTIONS_PREFIX_LEN 5
@@ -595,8 +596,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_uintMaximumBlowFishKeySize 80
 #define KviOption_uintCustomCursorWidth 81                                    /* Interface */
 #define KviOption_uintUserListMinimumWidth 82
+#define KviOption_uintCtcpUserInfoGenderUint 83								  /* irc::ctcp::kvirc */
 
-#define KVI_NUM_UINT_OPTIONS 83
+#define KVI_NUM_UINT_OPTIONS 84
 
 namespace KviIdentdOutputMode
 {

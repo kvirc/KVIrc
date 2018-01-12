@@ -120,7 +120,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("NotifyDccSendSuccessInConsole", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccSend", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccChat", false, KviOption_sectFlagDcc),
-	BOOL_OPTION("AutoAcceptIncomingAvatars", true, KviOption_sectFlagDcc),
+	BOOL_OPTION("AutoAcceptIncomingAvatars", true, KviOption_sectFlagDcc), // phase out for the whitelist?
 	BOOL_OPTION("UseNickCompletionPostfixForFirstWordOnly", true, KviOption_sectFlagInput),
 	BOOL_OPTION("UseWindowListIcons", true, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("CreateMinimizedDccSendWhenAutoAccepted", true, KviOption_sectFlagDcc),
@@ -142,7 +142,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("UseAntiSpamOnNotice", false, KviOption_sectFlagAntiSpam),
 	BOOL_OPTION("SetLastAvatarAsDefaultForRegisteredUsers", true, KviOption_sectFlagAvatar),
 	BOOL_OPTION("CantAcceptIncomingDccConnections", false, KviOption_sectFlagDcc),
-	BOOL_OPTION("IgnoreCtcpAvatar", false, KviOption_sectFlagCtcp),
+	BOOL_OPTION("EnableCtcpAvatar", false, KviOption_sectFlagCtcp | KviOption_resetUpdateGui),
 	BOOL_OPTION("CtcpRepliesToActiveWindow", true, KviOption_sectFlagCtcp),
 	BOOL_OPTION("AutoAcceptDccCanvas", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("NotifyDccSendSuccessInNotifier", true, KviOption_sectFlagDcc),
@@ -429,7 +429,8 @@ KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST_OPTIONS] = {
 	STRINGLIST_OPTION("ModuleExtensionToolbars", KviOption_sectFlagFrame),
 	STRINGLIST_OPTION("ImageSearchPaths", KviOption_sectFlagFrame | KviOption_encodePath),
 	STRINGLIST_OPTION("RecentIrcUrls", KviOption_sectFlagRecent),
-	STRINGLIST_OPTION("SpellCheckerDictionaries", KviOption_sectFlagInput)
+	STRINGLIST_OPTION("SpellCheckerDictionaries", KviOption_sectFlagInput),
+	STRINGLIST_OPTION("WhitelistedAvatarDomains", KviOption_sectFlagIrcView)
 };
 
 #define MIRC_COLOR_OPTION(_num, _red, _green, _blue)                               \
@@ -636,7 +637,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS] = {
 	UINT_OPTION("ToolBarButtonStyle", 0, KviOption_groupTheme), // 0 = Qt::ToolButtonIconOnly
 	UINT_OPTION("MaximumBlowFishKeySize", 56, KviOption_sectFlagNone),
 	UINT_OPTION("CustomCursorWidth", 1, KviOption_resetUpdateGui),
-	UINT_OPTION("UserListMinimumWidth", 100, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme)
+	UINT_OPTION("UserListMinimumWidth", 100, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
+	UINT_OPTION("CtcpUserInfoGenderUint", 0, KviOption_sectFlagCtcp)
 };
 
 #define FONT_OPTION(_name, _face, _size, _flags) \

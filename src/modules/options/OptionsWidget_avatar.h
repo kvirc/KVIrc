@@ -27,7 +27,7 @@
 #include "KviOptionsWidget.h"
 
 #define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_avatar KviIconManager::Avatar
-#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatar __tr2qs_no_lookup("Avatars")
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatar __tr2qs_no_lookup("Avatar Configuration")
 #define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_avatar OptionsWidget_tools
 #define KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_avatar 9
 #define KVI_OPTIONS_WIDGET_MINIMAL_USER_EXPERIENCE_LEVEL_OptionsWidget_avatar 2
@@ -38,6 +38,30 @@ class OptionsWidget_avatar : public KviOptionsWidget
 public:
 	OptionsWidget_avatar(QWidget * parent);
 	~OptionsWidget_avatar();
+};
+
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_avatarBasic KviIconManager::QueryTrace
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatarBasic __tr2qs_no_lookup("Basic")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_avatarBasic OptionsWidget_avatar
+
+class OptionsWidget_avatarBasic : public KviOptionsWidget
+{
+	Q_OBJECT
+public:
+	OptionsWidget_avatarBasic(QWidget * parent);
+	~OptionsWidget_avatarBasic();
+};
+
+#define KVI_OPTIONS_WIDGET_ICON_OptionsWidget_avatarAdvanced KviIconManager::Warning
+#define KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatarAdvanced __tr2qs_no_lookup("Advanced")
+#define KVI_OPTIONS_WIDGET_PARENT_OptionsWidget_avatarAdvanced OptionsWidget_avatar
+
+class OptionsWidget_avatarAdvanced : public KviOptionsWidget
+{
+	Q_OBJECT
+public:
+	OptionsWidget_avatarAdvanced(QWidget * parent);
+	~OptionsWidget_avatarAdvanced();
 };
 
 #endif //!_OPTW_AVATAR_H_

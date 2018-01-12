@@ -91,6 +91,7 @@
 
 #include <QMenu>
 #include <algorithm>
+#include <iostream>
 
 #ifndef COMPILE_NO_IPC
 #include "KviIpcSentinel.h"
@@ -345,6 +346,7 @@ void KviApplication::setup()
 
 	// Load the win properties config
 	getLocalKvircDirectory(szTmp, Config, KVI_CONFIGFILE_WINPROPERTIES);
+	kvi_debug("Loading config file %Q", &szTmp);
 	g_pWinPropertiesConfig = new KviConfigurationFile(szTmp, KviConfigurationFile::ReadWrite);
 
 	// Load the server database

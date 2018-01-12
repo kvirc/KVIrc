@@ -187,7 +187,7 @@ done
 cat >> OptionsInstanceManager.cpp <<EOF
 
 OptionsInstanceManager::OptionsInstanceManager()
-: QObject(0)
+	: QObject(0)
 {
 
 	//qDebug("Instantiating");
@@ -231,43 +231,43 @@ printclass()
 	echo "$3	e$1 = new OptionsWidgetInstanceEntry;"  >> $TARGET
 	echo -n "$3	e$1->createProc = &class$2"  >> $TARGET
 		echo "_createInstanceProc;"  >> $TARGET
-	echo "$3	e$1->pWidget = 0;" >> $TARGET
+	echo "$3	e$1->pWidget = nullptr;" >> $TARGET
 	echo "$3	e$1->szClassName = g_szClassName_$2;" >> $TARGET
 	echo "$3	e$1->eIcon = KVI_OPTIONS_WIDGET_ICON_$2;" >> $TARGET
 
-	echo "$3	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_$2" >> $TARGET
+	echo "$3#ifdef KVI_OPTIONS_WIDGET_PRIORITY_$2" >> $TARGET
 	echo "$3	e$1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_$2;" >> $TARGET
-	echo "$3	#else" >> $TARGET
+	echo "$3#else" >> $TARGET
 	echo "$3	e$1->iPriority = 0;" >> $TARGET
-	echo "$3	#endif" >> $TARGET
+	echo "$3#endif" >> $TARGET
 
-	echo "$3	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_$2" >> $TARGET
+	echo "$3#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_$2" >> $TARGET
 	echo "$3	e$1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_$2 \",\" KVI_OPTIONS_WIDGET_KEYWORDS_$2;" >> $TARGET
-	echo "$3	#else" >> $TARGET
+	echo "$3#else" >> $TARGET
 	echo "$3	e$1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_$2;" >> $TARGET
-	echo "$3	#endif" >> $TARGET
-	echo "$3	e$1->szKeywords = __tr2qs_ctx_no_xgettext(e$1->szKeywordsNoLocale.toUtf8().data(),\"options\");" >> $TARGET
+	echo "$3#endif" >> $TARGET
+	echo "$3	e$1->szKeywords = __tr2qs_ctx_no_xgettext(e$1->szKeywordsNoLocale.toUtf8().data(), \"options\");" >> $TARGET
 
-	echo "$3	#ifdef KVI_OPTIONS_WIDGET_GROUP_$2" >> $TARGET
+	echo "$3#ifdef KVI_OPTIONS_WIDGET_GROUP_$2" >> $TARGET
 	echo "$3	e$1->szGroup = KVI_OPTIONS_WIDGET_GROUP_$2;" >> $TARGET
-	echo "$3	#else" >> $TARGET
+	echo "$3#else" >> $TARGET
 	echo "$3	e$1->szGroup = \"general\";" >> $TARGET
-	echo "$3	#endif" >> $TARGET
+	echo "$3#endif" >> $TARGET
 
-	echo "$3	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_$2" >> $TARGET
+	echo "$3#ifdef KVI_OPTIONS_WIDGET_CONTAINER_$2" >> $TARGET
 	echo "$3	e$1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_$2;" >> $TARGET
-	echo "$3	#else" >> $TARGET
+	echo "$3#else" >> $TARGET
 	echo "$3	e$1->bIsContainer = false;" >> $TARGET
-	echo "$3	#endif" >> $TARGET
+	echo "$3#endif" >> $TARGET
 
-	echo "$3	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_$2" >> $TARGET
+	echo "$3#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_$2" >> $TARGET
 	echo "$3	e$1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_$2;" >> $TARGET
-	echo "$3	#else" >> $TARGET
+	echo "$3#else" >> $TARGET
 	echo "$3	e$1->bIsNotContained = false;" >> $TARGET
-	echo "$3	#endif" >> $TARGET
+	echo "$3#endif" >> $TARGET
 
 	echo "$3	e$1->szNameNoLocale = g_szName_$2;" >> $TARGET
-	echo "$3	e$1->szName = __tr2qs_ctx_no_xgettext(g_szName_$2,\"options\");" >> $TARGET
+	echo "$3	e$1->szName = __tr2qs_ctx_no_xgettext(g_szName_$2, \"options\");" >> $TARGET
 
 	if [ "$1" = "0" ]; then
 		echo "$3	m_pInstanceTree->append(e$1);" >> $TARGET
@@ -288,9 +288,9 @@ addchildren()
 				echo "$3	e$1->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;" >> $TARGET
 				echo "$3	e$1->pChildList->setAutoDelete(true);" >> $TARGET
 				NEXTLEVEL=`expr $1 + 1`
-				addchildren $NEXTLEVEL $achild "$3	"
+				addchildren $NEXTLEVEL $achild "$3"
 			else
-				echo "$3	e$1->pChildList = 0;" >> $TARGET
+				echo "$3	e$1->pChildList = nullptr;" >> $TARGET
 			fi
 		done
 	fi
@@ -339,14 +339,14 @@ OptionsInstanceManager::~OptionsInstanceManager()
 void OptionsInstanceManager::cleanup(KviModule *)
 {
 	deleteInstanceTree(m_pInstanceTree);
-	m_pInstanceTree = 0;
+	m_pInstanceTree = nullptr;
 }
 
 void OptionsInstanceManager::widgetDestroyed()
 {
-	OptionsWidgetInstanceEntry * pEntry = findInstanceEntry(sender(),m_pInstanceTree);
+	OptionsWidgetInstanceEntry * pEntry = findInstanceEntry(sender(), m_pInstanceTree);
 	if(pEntry)
-		pEntry->pWidget = 0;
+		pEntry->pWidget = nullptr;
 	if(g_iOptionWidgetInstances > 0)
 		g_iOptionWidgetInstances--;
 
@@ -355,7 +355,7 @@ void OptionsInstanceManager::widgetDestroyed()
 KviOptionsWidget * OptionsInstanceManager::getInstance(OptionsWidgetInstanceEntry * pEntry, QWidget * pPar)
 {
 	if(!pEntry)
-		return NULL;
+		return nullptr;
 
 #if 0
 	if(pEntry->pWidget)
@@ -365,7 +365,7 @@ KviOptionsWidget * OptionsInstanceManager::getInstance(OptionsWidgetInstanceEntr
 			QWidget * pOldPar = (QWidget *)pEntry->pWidget->parent();
 			pEntry->pWidget->setParent(pPar);
 			pOldPar->deleteLater();
-			pEntry->pWidget = 0;
+			pEntry->pWidget = nullptr;
 		}
 	}
 #endif
@@ -433,13 +433,13 @@ OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const QOb
 				return pEntry;
 			if(pEntry->pChildList)
 			{
-				OptionsWidgetInstanceEntry * pEntry2 = findInstanceEntry(pObj,pEntry->pChildList);
+				OptionsWidgetInstanceEntry * pEntry2 = findInstanceEntry(pObj, pEntry->pChildList);
 				if(pEntry2)
 					return pEntry2;
 			}
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const char * pcName, KviPointerList<OptionsWidgetInstanceEntry> * pList)
@@ -452,18 +452,18 @@ OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const cha
 				return pEntry;
 			if(pEntry->pChildList)
 			{
-				OptionsWidgetInstanceEntry * pEntry2 = findInstanceEntry(pcName,pEntry->pChildList);
+				OptionsWidgetInstanceEntry * pEntry2 = findInstanceEntry(pcName, pEntry->pChildList);
 				if(pEntry2)
 					return pEntry2;
 			}
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const char * pcName)
 {
-	return findInstanceEntry(pcName,m_pInstanceTree);
+	return findInstanceEntry(pcName, m_pInstanceTree);
 }
 
 EOF

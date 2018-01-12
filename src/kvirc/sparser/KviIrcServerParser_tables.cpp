@@ -52,29 +52,29 @@ KviLiteralMessageParseStruct KviIrcServerParser::m_literalParseProcTable[] = {
 	// clang-format on
 };
 
+// Regular CTCPs + Old Avatar handler
 #define REQ(f) parseCtcpRequest##f
 #define RPL(f) parseCtcpReply##f
-
 KviCtcpMessageParseStruct KviIrcServerParser::m_ctcpParseProcTable[] = {
 	// clang-format off
+	{ "PING"       , PTM(REQ(Ping))       , PTM(RPL(Ping))     , 0 },
 	{ "ACTION"     , PTM(REQ(Action))     , PTM(REQ(Action))   , 0 },
+	{ "VERSION"    , PTM(REQ(Version))    , PTM(RPL(Generic))  , 0 },
+	{ "DCC"        , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
+	{ "XDCC"       , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
+	{ "TDCC"       , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
+	{ "FINGER"     , PTM(REQ(Finger))     , PTM(RPL(Generic))  , 0 },
+	{ "TIME"       , PTM(REQ(Time))       , PTM(RPL(Generic))  , 0 },
+	{ "KVIRC"      , PTM(REQ(Kvirc))      , PTM(RPL(Kvirc))    , 0 },
 	{ "AVATAR"     , PTM(REQ(Avatar))     , PTM(RPL(Avatar))   , 0 },
 	{ "CLIENTINFO" , PTM(REQ(Clientinfo)) , PTM(RPL(Generic))  , 0 },
-	{ "DCC"        , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
-	{ "FINGER"     , PTM(REQ(Finger))     , PTM(RPL(Generic))  , 0 },
 	{ "LAGCHECK"   , nullptr              , PTM(RPL(Lagcheck)) , KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT },
 	{ "PAGE"       , PTM(REQ(Page))       , PTM(RPL(Generic))  , 0 },
-	{ "PING"       , PTM(REQ(Ping))       , PTM(RPL(Ping))     , 0 },
 	{ "SOURCE"     , PTM(REQ(Source))     , PTM(RPL(Generic))  , 0 },
-	{ "TDCC"       , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
-	{ "TIME"       , PTM(REQ(Time))       , PTM(RPL(Generic))  , 0 },
 	{ "USERINFO"   , PTM(REQ(Userinfo))   , PTM(RPL(Userinfo)) , 0 },
-	{ "VERSION"    , PTM(REQ(Version))    , PTM(RPL(Generic))  , 0 },
-	{ "XDCC"       , PTM(REQ(Dcc))        , PTM(REQ(Dcc))      , 0 },
 	{ nullptr      , nullptr              , nullptr            , 0 }
 	// clang-format on
 };
-
 #undef REQ
 #undef RPL
 

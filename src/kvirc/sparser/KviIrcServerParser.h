@@ -282,6 +282,10 @@ private:
 	void parseCtcpRequestAction(KviCtcpMessage * msg);
 	void parseCtcpRequestTime(KviCtcpMessage * msg);
 	void parseCtcpRequestAvatar(KviCtcpMessage * msg);
+	void parseCtcpRequestKvirc(KviCtcpMessage * msg);
+	void parseCtcpKvirc(KviCtcpMessage * msg, bool received_data_back);
+
+private:
 	void parseCtcpRequestDcc(KviCtcpMessage * msg);
 	void parseCtcpRequestPage(KviCtcpMessage * msg);
 	void parseCtcpReplyAvatar(KviCtcpMessage * msg);
@@ -289,6 +293,7 @@ private:
 	void parseCtcpReplyGeneric(KviCtcpMessage * msg);
 	void parseCtcpReplyPing(KviCtcpMessage * msg);
 	void parseCtcpReplyLagcheck(KviCtcpMessage * msg);
+	void parseCtcpReplyKvirc(KviCtcpMessage * msg);
 	//	void parseCtcpReply(const char * msg_ptr,KviIrcUser &source,const char * target);
 	// STARTTLS support
 	void parseNumericStartTls(KviIrcMessage * msg);
@@ -300,6 +305,10 @@ private:
 	// IRCv3 stuffs
 	void parseLiteralAccount(KviIrcMessage * msg);
 	void parseLiteralChghost(KviIrcMessage * msg);
+
+public:
+	static void parseCtcpKvircGender(KviIrcServerParser *, KviCtcpMessage * msg, bool received_data_back);
+	static void parseCtcpKvircAvatar(KviIrcServerParser *, KviCtcpMessage * msg, bool received_data_back);
 
 public:
 	static void encodeCtcpParameter(const char * param, KviCString & buffer, bool bSpaceBreaks = true);
