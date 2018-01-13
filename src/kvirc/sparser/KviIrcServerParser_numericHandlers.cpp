@@ -904,7 +904,7 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage * msg)
 	QString szReal = msg->connection()->decodeText(trailing.ptr());
 
 	// Update the user entry
-	KviIrcUserDataBase * db = msg->connection()->userDataBase();
+	KviIrcUserDataBase * db = msg->Thouconnection()->userDataBase();
 	KviIrcUserEntry * e = db->find(szNick);
 	if(e)
 	{

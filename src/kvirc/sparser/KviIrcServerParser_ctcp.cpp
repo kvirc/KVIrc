@@ -383,12 +383,14 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 static constexpr uint64_t CTCP_KVI_MAX = 2;
 #define CTCP_KVI_FLAG_GENDER (1 << 0)
 #define CTCP_KVI_FLAG_AVATAR (1 << 1)
+#define CTCP_KVI_FLAG_AGE    (1 << 2)
 
 using ctcp_request_parser = std::function<void(KviIrcServerParser *, KviCtcpMessage *, bool)>;
 #define KVI_CTCP_METHOD(_method) KviIrcServerParser::parseCtcpKvirc##_method
 const std::unordered_map<int, ctcp_request_parser> ctcp_request_parse_map ({
 	{ CTCP_KVI_FLAG_GENDER, KVI_CTCP_METHOD(Gender) },
 	{ CTCP_KVI_FLAG_AVATAR, KVI_CTCP_METHOD(Avatar) },
+	// { CTCP_KVI_FLAG_AGE   , KVI_CTCP_METHOD(Avatar) },
 });
 #undef KVI_CTCP_METHOD
 
@@ -1104,80 +1106,80 @@ void KviIrcServerParser::parseCtcpRequestPing(KviCtcpMessage * msg)
 
 void KviIrcServerParser::parseCtcpReplyPing(KviCtcpMessage * msg)
 {
-	if(!msg->msg->haltOutput())
+	if(msg->msg->haltOutput())
+		return;
+
+	KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolCtcpRepliesToActiveWindow) ? msg->msg->console()->activeWindow() : msg->msg->console();
+
+	bool bIsChannel = false;
+
+	if(!IS_ME(msg->msg, msg->szTarget))
 	{
-		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolCtcpRepliesToActiveWindow) ? msg->msg->console()->activeWindow() : msg->msg->console();
-
-		bool bIsChannel = false;
-
-		if(!IS_ME(msg->msg, msg->szTarget))
+		// Channel ctcp request!
+		pOut = msg->msg->connection()->findChannel(msg->szTarget);
+		if(!pOut)
 		{
-			// Channel ctcp request!
-			pOut = msg->msg->connection()->findChannel(msg->szTarget);
-			if(!pOut)
-			{
-				pOut = msg->msg->console();
-				pOut->output(KVI_OUT_SYSTEMWARNING,
-				    __tr2qs("The following CTCP PING reply has unrecognized target \"%Q\""),
-				    &(msg->szTarget));
-			}
-			else
-				bIsChannel = true;
-		}
-
-		unsigned int uSecs;
-		unsigned int uMSecs = 0;
-
-		KviCString szTime;
-
-		struct timeval tv;
-		kvi_gettimeofday(&tv);
-
-		msg->pData = this->extractCtcpParameter(msg->pData, szTime, true);
-
-		bool bOk;
-
-		if(szTime.contains('.'))
-		{
-			KviCString szUSecs = szTime;
-			szUSecs.cutToFirst('.');
-			szTime.cutFromFirst('.');
-
-			uMSecs = szUSecs.toUInt(&bOk);
-			if(!bOk)
-			{
-				uMSecs = 0;
-				tv.tv_usec = 0;
-			}
+			pOut = msg->msg->console();
+			pOut->output(KVI_OUT_SYSTEMWARNING,
+			    __tr2qs("The following CTCP PING reply has unrecognized target \"%Q\""),
+			    &(msg->szTarget));
 		}
 		else
-			tv.tv_usec = 0;
-
-		uSecs = szTime.toUInt(&bOk);
-		if(!bOk)
-			pOut->output(KVI_OUT_SYSTEMWARNING,
-			    __tr2qs("The following CTCP PING reply has a broken time identifier \"%S\", don't trust the displayed time"), &szTime);
-
-		unsigned int uDiffSecs = tv.tv_sec - uSecs;
-
-		while(uMSecs > 1000000)
-			uMSecs /= 10; // precision too high?
-		if(((unsigned int)tv.tv_usec) < uMSecs)
-		{
-			tv.tv_usec += 1000000;
-			if(uDiffSecs > 0)
-				uDiffSecs--;
-		}
-		unsigned int uDiffMSecs = (tv.tv_usec - uMSecs) / 1000;
-
-		QString szWhat = bIsChannel ? __tr2qs("Channel CTCP") : QString("CTCP");
-
-		pOut->output(
-		    msg->bUnknown ? KVI_OUT_CTCPREPLYUNKNOWN : KVI_OUT_CTCPREPLY,
-		    __tr2qs("%Q PING reply from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %u sec %u msec"),
-		    &szWhat, &(msg->pSource->nick()),
-		    &(msg->pSource->user()), &(msg->pSource->host()), uDiffSecs, uDiffMSecs);
+			bIsChannel = true;
 	}
+
+	unsigned int uSecs;
+	unsigned int uMSecs = 0;
+
+	KviCString szTime;
+
+	struct timeval tv;
+	kvi_gettimeofday(&tv);
+
+	msg->pData = this->extractCtcpParameter(msg->pData, szTime, true);
+
+	bool bOk;
+
+	if(szTime.contains('.'))
+	{
+		KviCString szUSecs = szTime;
+		szUSecs.cutToFirst('.');
+		szTime.cutFromFirst('.');
+
+		uMSecs = szUSecs.toUInt(&bOk);
+		if(!bOk)
+		{
+			uMSecs = 0;
+			tv.tv_usec = 0;
+		}
+	}
+	else
+		tv.tv_usec = 0;
+
+	uSecs = szTime.toUInt(&bOk);
+	if(!bOk)
+		pOut->output(KVI_OUT_SYSTEMWARNING,
+		    __tr2qs("The following CTCP PING reply has a broken time identifier \"%S\", don't trust the displayed time"), &szTime);
+
+	unsigned int uDiffSecs = tv.tv_sec - uSecs;
+
+	while(uMSecs > 1000000)
+		uMSecs /= 10; // precision too high?
+	if(((unsigned int)tv.tv_usec) < uMSecs)
+	{
+		tv.tv_usec += 1000000;
+		if(uDiffSecs > 0)
+			uDiffSecs--;
+	}
+	unsigned int uDiffMSecs = (tv.tv_usec - uMSecs) / 1000;
+
+	QString szWhat = bIsChannel ? __tr2qs("Channel CTCP") : QString("CTCP");
+
+	pOut->output(
+	    msg->bUnknown ? KVI_OUT_CTCPREPLYUNKNOWN : KVI_OUT_CTCPREPLY,
+	    __tr2qs("%Q PING reply from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %u sec %u msec"),
+	    &szWhat, &(msg->pSource->nick()),
+	    &(msg->pSource->user()), &(msg->pSource->host()), uDiffSecs, uDiffMSecs);
 }
 
 void KviIrcServerParser::parseCtcpRequestVersion(KviCtcpMessage * msg)
@@ -1664,7 +1666,12 @@ void KviIrcServerParser::parseCtcpKvirc(KviCtcpMessage * msg, bool received_data
 	try {
 		requests = std::stoi(std::string{msg->pData});
 	} catch (std::exception&) {
-		// Log failure
+		msg->msg->console()->output(KVI_OUT_SYSTEMWARNING,
+		    __tr2qs("Invalid KVIRC CTCP %Q command from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q %S)"),
+		    &(msg->pData),
+		    &(msg->pSource->nick()),
+		    &(msg->pSource->user()), &(msg->pSource->host()),
+		    &msg->szTag, &aux);
 		return;
 	}
 
