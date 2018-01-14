@@ -45,7 +45,7 @@ OptionsWidget_avatarBasic::OptionsWidget_avatarBasic(QWidget * parent)
 	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0, 0, 0, 0, Qt::Horizontal, __tr2qs_ctx("Enable CTCP Avatars", "options"));
-	KviBoolSelector * b = addBoolSelector(g, __tr2qs_ctx("Enable Avatars (hover)", "options"), KviOption_boolEnableCtcpAvatar);
+	KviBoolSelector * b = addBoolSelector(g, __tr2qs_ctx("Enable Avatars (hover)", "options"), KviOption_boolEnableKviCtcpAvatar);
 	mergeTip(b, __tr2qs_ctx("This option enables CTCP Avatars, a feature that allows KVIrc clients to share"
 							 " avatars with each other via CTCP and DCC. Note, that this does come with its"
 							 " security implications as transfering avatars over DCC can be dangerous."
@@ -59,7 +59,7 @@ OptionsWidget_avatarBasic::OptionsWidget_avatarBasic(QWidget * parent)
 	KviStringListSelector * sl = addStringListSelector(0, 1, 0, 1,
 		__tr2qs_ctx("Allowed domains", "options"),
 		KviOption_stringlistWhitelistedAvatarDomains,
-		KVI_OPTION_BOOL(KviOption_boolEnableCtcpAvatar)
+		KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar)
 	);
 
 	connect(b, SIGNAL(toggled(bool)), sl, SLOT(setEnabled(bool)));

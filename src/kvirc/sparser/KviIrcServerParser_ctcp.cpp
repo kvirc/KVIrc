@@ -377,14 +377,6 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		[/pre]
 */
 
-// KVIrc CTCP protocol
-#define CTCP_KVI_PATCHLEVEL  1
-
-static constexpr uint64_t CTCP_KVI_MAX = 2;
-#define CTCP_KVI_FLAG_GENDER (1 << 0)
-#define CTCP_KVI_FLAG_AVATAR (1 << 1)
-#define CTCP_KVI_FLAG_AGE    (1 << 2)
-
 using ctcp_request_parser = std::function<void(KviIrcServerParser *, KviCtcpMessage *, bool)>;
 #define KVI_CTCP_METHOD(_method) KviIrcServerParser::parseCtcpKvirc##_method
 const std::unordered_map<int, ctcp_request_parser> ctcp_request_parse_map ({
@@ -1667,11 +1659,11 @@ void KviIrcServerParser::parseCtcpKvirc(KviCtcpMessage * msg, bool received_data
 		requests = std::stoi(std::string{msg->pData});
 	} catch (std::exception&) {
 		msg->msg->console()->output(KVI_OUT_SYSTEMWARNING,
-		    __tr2qs("Invalid KVIRC CTCP %Q command from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q %S)"),
+		    __tr2qs("Invalid KVIRC CTCP %Q command from \r!n\r%Q\r [%Q@\r!h\r%Q\r]"),
 		    &(msg->pData),
 		    &(msg->pSource->nick()),
 		    &(msg->pSource->user()), &(msg->pSource->host()),
-		    &msg->szTag, &aux);
+		    &msg->szTag);
 		return;
 	}
 
@@ -1717,7 +1709,7 @@ void KviIrcServerParser::parseCtcpReplyKvirc(KviCtcpMessage * msg)
 void KviIrcServerParser::parseCtcpRequestAvatar(KviCtcpMessage * msg)
 {
 	// AVATAR
-	if(KVI_OPTION_BOOL(KviOption_boolEnableCtcpAvatar))
+	if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar))
 	{
 		QString szGenderTag = " ";
 		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m", Qt::CaseInsensitive))

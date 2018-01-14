@@ -170,7 +170,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolUseAntiSpamOnNotice 78                                   /* ircengine::antispam */
 #define KviOption_boolSetLastAvatarAsDefaultForRegisteredUsers 79              /* irc::ctcp::avatar */
 #define KviOption_boolCantAcceptIncomingDccConnections 80                      /* dcc::general */
-#define KviOption_boolEnableCtcpAvatar 81                                      /* irc::ctcp::floodprotection */
+#define KviOption_boolEnableKviCtcpAvatar 81                                   /* irc::ctcp::floodprotection */
 #define KviOption_boolCtcpRepliesToActiveWindow 82                             /* ctcp */
 #define KviOption_boolAutoAcceptDccCanvas 83
 #define KviOption_boolNotifyDccSendSuccessInNotifier 84                        /* dcc::send */
@@ -301,13 +301,13 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolCreateMinimizedChannels 209
 #define KviOption_boolShowNetworkNameForConsoleWindowListEntry 210
 #define KviOption_boolDrawGenderIcons 211
-#define KviOption_boolPrependGenderInfoToRealname 212
+#define KviOption_boolEnableKviCtcpGender 212
 #define KviOption_boolUseIdentServiceOnlyOnConnect 213                         /* connection::ident */
 #define KviOption_boolUseSystemUrlHandlers 214                                 /* Windoze only*/
 #define KviOption_boolScaleAvatarsOnLoad 215
 #define KviOption_boolNotifierFading 216                                       /* interface::notifier */
 #define KviOption_boolPickRandomIpAddressForRoundRobinServers 217
-#define KviOption_boolPrependAvatarInfoToRealname 218
+#define KviOption_boolEnableKvircExtensions 218
 #define KviOption_boolEnableAnimatedAvatars 219
 #define KviOption_boolEnableAnimatedSmiles 220
 #define KviOption_boolPlaceNickWithNonAlphaCharsAtEnd 221
@@ -325,7 +325,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolDisableQuietBanListRequestOnJoin 233                     /* channel */
 #define KviOption_boolUseWindowListCloseButton 234                             /* irc::output */
 #define KviOption_boolFrameIsMaximized 235                                     /* internal */
-#define KviOption_boolPrependNickColorInfoToRealname 236
+#define KviOption_boolEnableKviCtcpNickColor 236
 #define KviOption_boolDontShowNotifierIfActiveWindowIsFullScreen 237           /* notifier */
 #define KviOption_boolWheelScrollsWindowsList 238
 #define KviOption_boolAcceptMismatchedPortDccResumeRequests 239                /* dcc::send */

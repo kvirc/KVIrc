@@ -72,6 +72,27 @@ class KviUserIdentity;
 class KviIdentityProfileSet;
 class KviCString;
 
+
+// KVIrc CTCP protocol
+// Note that this must be always be above
+// the gender since we pack it with the field.
+#define CTCP_KVI_PATCHLEVEL     (1 << 3)
+
+// This gets sent along with the version in the realname
+// part of USER. Legacy.
+#define CTCP_KVI_GENDER_MALE    (1 << 0)
+#define CTCP_KVI_GENDER_FEMALE  (1 << 1)
+#define CTCP_KVI_SHARE_AVATAR   (1 << 2)
+
+// Request flags, tells the remote user what we're
+// interested in.
+static constexpr uint64_t CTCP_KVI_MAX = 3;
+#define CTCP_KVI_REQUESTING  (1 << 0)
+#define CTCP_KVI_FLAG_GENDER (1 << 1)
+#define CTCP_KVI_FLAG_AVATAR (1 << 2)
+// #define CTCP_KVI_FLAG_AGE    (1 << 3)
+// #define CTCP_KVI_IDLE_TIME   (1 << 4)
+
 /**
 * \class KviIrcConnection
 * \brief An abstraction of a connection to an IRC server

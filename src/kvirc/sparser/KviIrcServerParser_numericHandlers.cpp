@@ -904,7 +904,7 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage * msg)
 	QString szReal = msg->connection()->decodeText(trailing.ptr());
 
 	// Update the user entry
-	KviIrcUserDataBase * db = msg->Thouconnection()->userDataBase();
+	KviIrcUserDataBase * db = msg->connection()->userDataBase();
 	KviIrcUserEntry * e = db->find(szNick);
 	if(e)
 	{
@@ -935,7 +935,9 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage * msg)
 			//still no avatar? check if the user is exposing the fact that he's got one
 			if(!e->avatar())
 			{
-				if((szReal[0].unicode() == KviControlCodes::Color) && (szReal[1].unicode() & 4) && (szReal[2].unicode() == KviControlCodes::Reset))
+				const bool has_avatar = szReal[1].unicode() & CTCP_KVI_SHARE_AVATAR;
+
+				if((szReal[0].unicode() == KviControlCodes::Color) && has_avatar && (szReal[2].unicode() == KviControlCodes::Reset))
 				{
 					if(KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars) && !e->avatarRequested())
 					{
@@ -1072,9 +1074,36 @@ void KviIrcServerParser::parseNumericWhospcrpl(KviIrcMessage * msg)
 					msg->console()->checkDefaultAvatar(e, szNick, szUser, szHost);
 				}
 				//still no avatar? check if the user is exposing the fact that he's got one
+				// TODO - Store remote's KVIrc protocol version (if e->avatar() || e->kvi_version())
 				if(!e->avatar())
 				{
-					if((szReal[0].unicode() == KviControlCodes::Color) && (szReal[1].unicode() & 4) && (szReal[2].unicode() == KviControlCodes::Reset))
+					// TODO - Send our cababilities. The avatar stuff is kind of legacy,
+					// so it'd work something like this...
+					//
+					// if supports_kvi_ctcp == false: only request avatar if they're advertising
+					// if supports_kvi_ctcp:
+					//     // request what we want
+					//     uint32_t req_flags = CTCP_KVI_REQUESTING;
+					//     if (want_age)       req_flags |= CTCP_KVI_FLAG_AGE
+					//     if (want_idle_time) req_flags |= CTCP_KVI_IDLE_TIME
+					//
+					// Making the request look like:
+					//     PRIVMSG someuser :0x01KVIRC0x01 25
+					//
+					// Then we can play the parameter ordering game. Since the repsonse
+					// would be something like:
+					//     n!u@h PRIVMSG BlindSight :0x01KVIRC0x01 24 23 45
+					// In which `24` represents the bitmask'd version of the flags the client
+					// is sending, 23 would be the age, and 45 represents idle time in seconds.
+					// This will only work for single-parameter arguments, so it will need to
+					// be expanded somehow (avatars could be a URL if it fits, otherwise we could
+					// just instantiate a DCC session after the reply is sent.
+					const bool supports_kvi_ctcp = szReal[1].unicode() >= CTCP_KVI_PATCHLEVEL;
+
+					// Legacy
+					const bool has_avatar = szReal[1].unicode() & CTCP_KVI_SHARE_AVATAR;
+
+					if((szReal[0].unicode() == KviControlCodes::Color) && has_avatar && (szReal[2].unicode() == KviControlCodes::Reset))
 					{
 						if(KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars) && !e->avatarRequested())
 						{
