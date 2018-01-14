@@ -26,24 +26,24 @@
 #define _KVI_OPTIONS_CPP_
 
 #include "KviOptions.h"
-#include "kvi_defaults.h"
-#include "KviConfigurationFile.h"
-#include "KviApplication.h"
-#include "KviIconManager.h"
-#include "KviControlCodes.h"
-#include "KviLocale.h"
 #include "kvi_confignames.h"
-#include "KviWindow.h"
+#include "kvi_defaults.h"
 #include "kvi_out.h"
-#include "KviStringConversion.h"
 #include "kvi_settings.h"
-#include "KviMainWindow.h"
-#include "KviInternalCommand.h"
-#include "KviTheme.h"
+#include "KviApplication.h"
+#include "KviConfigurationFile.h"
+#include "KviControlCodes.h"
 #include "KviFileUtils.h"
+#include "KviIconManager.h"
+#include "KviInternalCommand.h"
+#include "KviLocale.h"
+#include "KviMainWindow.h"
+#include "KviStringConversion.h"
+#include "KviTheme.h"
+#include "KviWindow.h"
 
-#include <QMessageBox>
 #include <QDir>
+#include <QMessageBox>
 #include <QStringList>
 
 // KviApplication.cpp
@@ -858,9 +858,7 @@ static void config_set_section(int flag, KviConfigurationFile * cfg)
 {
 	int index = flag & KviOption_sectMask;
 	if((index < KVI_NUM_OPTION_SECT_FLAGS) && (index >= 0))
-	{
 		cfg->setGroup(options_section_table[index]);
-	}
 	else
 		cfg->setGroup(""); // Default group
 }
@@ -1008,9 +1006,7 @@ namespace KviTheme
 		}
 
 		if(!options.save(szThemeDirPath + KVI_THEMEINFO_FILE_NAME))
-		{
 			return false;
-		}
 
 		KviConfigurationFile cfg(szThemeDirPath + KVI_THEMEDATA_FILE_NAME, KviConfigurationFile::Write);
 
@@ -1209,13 +1205,9 @@ namespace KviTheme
 					QString szVal = cfg.readEntry(g_pixmapOptionsTable[i].name, "").trimmed();
 					QString szBuffer;
 					if(!szVal.isEmpty())
-					{
 						g_pApp->findImage(szBuffer, szVal);
-					}
 					else
-					{
 						szBuffer = szVal;
-					}
 
 					KviStringConversion::fromString(szBuffer, g_pixmapOptionsTable[i].option);
 
@@ -1298,15 +1290,11 @@ void KviApplication::optionResetUpdate(int flags)
 	}
 
 	if(flags & KviOption_resetUpdateAppFont)
-	{
 		updateApplicationFont();
-	}
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(flags & KviOption_resetUpdatePseudoTransparency)
-	{
 		triggerUpdatePseudoTransparency();
-	}
 #endif
 
 	if(flags & KviOption_resetRestartIdentd)
@@ -1319,34 +1307,22 @@ void KviApplication::optionResetUpdate(int flags)
 	}
 
 	if(flags & KviOption_resetUpdateGui)
-	{
 		triggerUpdateGui();
-	}
 
 	if(flags & KviOption_resetUpdateWindowList)
-	{
 		g_pMainWindow->recreateWindowList();
-	}
 
 	if(flags & KviOption_resetRestartNotifyList)
-	{
 		g_pApp->restartNotifyLists();
-	}
 
 	if(flags & KviOption_resetRestartLagMeter)
-	{
 		g_pApp->restartLagMeters();
-	}
 
 	if(flags & KviOption_resetRecentChannels)
-	{
 		g_pApp->buildRecentChannels();
-	}
 
 	if(flags & KviOption_resetUpdateNotifier)
-	{
 		emit updateNotifier();
-	}
 }
 
 bool KviApplication::setOptionValue(const QString & optName, const QString & value)
@@ -1367,13 +1343,9 @@ bool KviApplication::setOptionValue(const QString & optName, const QString & val
 		QString szVal = value.trimmed();
 		QString szBuffer;
 		if(!szVal.isEmpty())
-		{
 			findImage(szBuffer, szVal);
-		}
 		else
-		{
 			szBuffer = szVal;
-		}
 
 		for(auto & i : g_pixmapOptionsTable)
 		{

@@ -71,23 +71,22 @@ bool KviIrcUrl::parse(const char * url, KviCString & cmdBuffer, int contextSpec)
 		cmdBuffer.append(" -s ");
 
 	QString channels, passwords;
-	QStringList splitted;
 
 	if(urlParts.chanList.size())
 	{
 		for(int i = 0; i < urlParts.chanList.size(); ++i)
 		{
-			splitted = urlParts.chanList[i].split("?");
+			QStringList splitted = urlParts.chanList[i].split("?");
 			if(i)
-				channels.append(",");
-			if(!(splitted[0].startsWith("#") || splitted[0].startsWith("!") || splitted[0].startsWith("&")))
-				channels.append("#");
+				channels.append(',');
+			if(!(splitted[0].startsWith('#') || splitted[0].startsWith('!') || splitted[0].startsWith('&')))
+				channels.append('#');
 			channels.append(splitted[0]);
 
 			if(splitted.size() > 1)
 			{
 				if(i)
-					passwords.append(",");
+					passwords.append(',');
 				passwords.append(splitted[1]);
 			}
 		}
@@ -103,7 +102,7 @@ bool KviIrcUrl::parse(const char * url, KviCString & cmdBuffer, int contextSpec)
 	return true;
 }
 
-void KviIrcUrl::split(QString url, KviIrcUrlParts & result)
+void KviIrcUrl::split(const QString & url, KviIrcUrlParts & result)
 {
 	// irc[s][6]://<server>[:<port>][/<channel>[?<pass>]][[,<channel>[?<pass>]]
 
@@ -153,26 +152,26 @@ void KviIrcUrl::join(QString & uri, KviIrcServer * server)
 		uri = "irc";
 
 		if(server->useSSL())
-			uri.append("s");
+			uri.append('s');
 		if(server->isIPv6())
-			uri.append("6");
+			uri.append('6');
 
 		uri.append("://");
 		if(server->isIPv6() && server->hostName().contains(':'))
-			uri.append("[");
+			uri.append('[');
 		uri.append(server->hostName());
 		if(server->isIPv6() && server->hostName().contains(':'))
-			uri.append("]");
+			uri.append(']');
 		if(server->port() != 6667)
 			uri.append(QString(":%1").arg(server->port()));
-		uri.append("/");
+		uri.append('/');
 	}
 }
 
 void KviIrcUrl::makeJoinCmd(const QStringList & chans, QString & szJoinCommand)
 {
 	QString szChannels, szProtectedChannels, szPasswords, szCurPass, szCurChan;
-	if(chans.count() != 0)
+	if(!chans.isEmpty())
 	{
 
 		for(const auto & chan : chans)
@@ -182,7 +181,7 @@ void KviIrcUrl::makeJoinCmd(const QStringList & chans, QString & szJoinCommand)
 			if(szCurPass.isEmpty())
 			{
 				if(!szChannels.isEmpty())
-					szChannels.append(",");
+					szChannels.append(',');
 				szCurChan = chan.section('?', 0, 0);
 				if(!(szCurChan[0] == '#' || szCurChan[0] == '&' || szCurChan[0] == '!'))
 					szCurChan.prepend('#');
@@ -191,7 +190,7 @@ void KviIrcUrl::makeJoinCmd(const QStringList & chans, QString & szJoinCommand)
 			else
 			{
 				if(!szProtectedChannels.isEmpty())
-					szProtectedChannels.append(",");
+					szProtectedChannels.append(',');
 				szCurChan = chan.section('?', 0, 0);
 				if(!(szCurChan[0] == '#' || szCurChan[0] == '&' || szCurChan[0] == '!'))
 					szCurChan.prepend('#');

@@ -25,16 +25,16 @@
 #define _KVI_TEXTICONMANAGER_CPP_
 
 #include "KviTextIconManager.h"
-#include "KviFileUtils.h"
-#include "KviCString.h"
-#include "KviConfigurationFile.h"
-#include "KviApplication.h"
 #include "kvi_confignames.h"
 #include "KviAnimatedPixmap.h"
+#include "KviApplication.h"
+#include "KviConfigurationFile.h"
+#include "KviCString.h"
+#include "KviFileUtils.h"
 #include "KviOptions.h"
 
-#include <QPixmap>
 #include <QFile>
+#include <QPixmap>
 #include <vector>
 
 static KviTextIconAssocEntry default_associations[] = {
@@ -58,11 +58,11 @@ static KviTextIconAssocEntry default_associations[] = {
 KVIRC_API KviTextIconManager * g_pTextIconManager = nullptr;
 
 KviTextIcon::KviTextIcon(KviIconManager::SmallIcon eIcon)
-    : m_eIcon(eIcon), m_pAnimatedPixmap(nullptr)
+    : m_eIcon(eIcon)
 {
 }
 
-KviTextIcon::KviTextIcon(QString szFile)
+KviTextIcon::KviTextIcon(const QString & szFile)
     : m_eIcon(KviIconManager::None), m_szFileName(szFile)
 {
 	QString szRetPath;
@@ -75,10 +75,6 @@ KviTextIcon::KviTextIcon(QString szFile)
 		else
 			m_pAnimatedPixmap->stop();
 	}
-	else
-	{
-		m_pAnimatedPixmap = nullptr;
-	}
 }
 
 KviTextIcon::KviTextIcon(KviTextIcon * pIcon)
@@ -87,8 +83,6 @@ KviTextIcon::KviTextIcon(KviTextIcon * pIcon)
 	m_szFileName = pIcon->m_szFileName;
 	if(pIcon->m_pAnimatedPixmap)
 		m_pAnimatedPixmap = new KviAnimatedPixmap(*(pIcon->m_pAnimatedPixmap));
-	else
-		m_pAnimatedPixmap = nullptr;
 }
 
 KviTextIcon::~KviTextIcon()
@@ -100,16 +94,16 @@ KviTextIcon::~KviTextIcon()
 void KviTextIcon::setId(KviIconManager::SmallIcon eIcon)
 {
 	m_eIcon = eIcon;
-	m_szFileName = QString();
+	m_szFileName.clear();
 }
 
 void KviTextIcon::setId(int iIcon)
 {
 	m_eIcon = g_pIconManager->iconName(iIcon);
-	m_szFileName = QString();
+	m_szFileName.clear();
 }
 
-void KviTextIcon::setFilename(QString szFileName)
+void KviTextIcon::setFilename(const QString & szFileName)
 {
 	m_eIcon = KviIconManager::None;
 	QString szRetPath;
@@ -187,7 +181,6 @@ void KviTextIconManager::load()
 {
 	QString szTmp;
 	int iUpd = 0;
-	QString szPath;
 
 	if(g_pApp->getReadOnlyConfigPath(szTmp, KVI_CONFIGFILE_TEXTICONS))
 		iUpd = load(szTmp, false);

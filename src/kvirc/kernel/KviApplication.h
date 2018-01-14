@@ -180,11 +180,8 @@ public:
 	void setup(); // THIS SHOULD BE PRIVATE! (but is accessed from KviMain.cpp)
 
 #ifdef COMPILE_KDE_SUPPORT
-	void setAboutData(KAboutData * pAboutData)
-	{
-		m_pAboutData = pAboutData;
-	};
-	KAboutData * aboutData() { return m_pAboutData; };
+	void setAboutData(KAboutData * pAboutData) { m_pAboutData = pAboutData; }
+	KAboutData * aboutData() const { return m_pAboutData; }
 #endif
 
 #ifndef COMPILE_NO_IPC
@@ -193,9 +190,9 @@ public:
 
 	static int getGloballyUniqueId(); // returns an unique integer identifier across the application
 
-	bool firstTimeRun() const { return m_bFirstTimeRun; };
-	bool kviClosingDown() const { return m_bClosingDown; };
-	void setKviClosingDown() { m_bClosingDown = true; };
+	bool firstTimeRun() const { return m_bFirstTimeRun; }
+	bool kviClosingDown() const { return m_bClosingDown; }
+	void setKviClosingDown() { m_bClosingDown = true; }
 
 	bool supportsCompositing();
 
@@ -204,7 +201,7 @@ public:
 
 	/*
 	Unused
-	inline void emitRecentUrlsChanged() { emit(recentUrlsChanged()); };
+	void emitRecentUrlsChanged() { emit(recentUrlsChanged()); }
 	 */
 
 	// KviApplication.cpp (Saving options)
@@ -345,7 +342,7 @@ protected:
 	void unregisterWindow(KviWindow * wnd);
 	void frameDestructorCallback();
 	void heartbeat(kvi_time_t tNow);
-	virtual void timerEvent(QTimerEvent * e);
+	void timerEvent(QTimerEvent * e) override;
 
 private:
 	// KviApplication_setup.cpp : Setup stuff

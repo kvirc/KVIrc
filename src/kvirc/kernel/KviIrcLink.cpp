@@ -50,9 +50,8 @@ extern KVIRC_API KviIrcServerDataBase * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
 KviIrcLink::KviIrcLink(KviIrcConnection * pConnection)
-    : QObject()
+    : QObject(), m_pConnection(pConnection)
 {
-	m_pConnection = pConnection;
 	m_pTarget = pConnection->target();
 	m_pConsole = m_pConnection->console();
 
@@ -63,8 +62,6 @@ KviIrcLink::KviIrcLink(KviIrcConnection * pConnection)
 	m_pReadBuffer = nullptr; // incoming data buffer
 	m_uReadBufferLen = 0;    // incoming data buffer length
 	m_uReadPackets = 0;      // total packets read per session
-
-	m_eState = Idle;
 }
 
 KviIrcLink::~KviIrcLink()

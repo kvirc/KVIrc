@@ -259,7 +259,7 @@ void KviIrcConnection::serverInfoReceived(const QString & szServerName, const QS
 	g_pMainWindow->childConnectionServerInfoChange(this);
 }
 
-const QString & KviIrcConnection::currentNetworkName()
+const QString & KviIrcConnection::currentNetworkName() const
 {
 	return m_pServerInfo->networkName();
 }
@@ -1663,7 +1663,7 @@ bool KviIrcConnection::changeUserMode(char cMode, bool bSet)
 
 void KviIrcConnection::gatherChannelAndPasswordPairs(std::vector<std::pair<QString, QString>> & lChannelsAndPasses)
 {
-	for(auto & c : m_pChannelList)
+	for(const auto & c : m_pChannelList)
 		lChannelsAndPasses.emplace_back(
 		    c->windowName(),
 		    c->hasChannelMode('k') ? c->channelModeParam('k') : QString());
@@ -1671,7 +1671,7 @@ void KviIrcConnection::gatherChannelAndPasswordPairs(std::vector<std::pair<QStri
 
 void KviIrcConnection::gatherQueryNames(QStringList & lQueryNames)
 {
-	for(auto & q : m_pQueryList)
+	for(const auto & q : m_pQueryList)
 		lQueryNames.append(q->target());
 }
 
@@ -1692,7 +1692,6 @@ void KviIrcConnection::joinChannels(const std::vector<std::pair<QString, QString
 
 	// We send the channel list in chunks to avoid overflowing the 510 character limit on the message.
 	QString szChans, szPasses;
-	QString szCommand;
 
 	for(auto & oChanAndPass : lSorted)
 	{
@@ -1711,22 +1710,22 @@ void KviIrcConnection::joinChannels(const std::vector<std::pair<QString, QString
 		// empirical limit
 		if((szChans.length() + szPasses.length()) > 450)
 		{
-			szCommand = szChans;
+			QString szCommand = szChans;
 			if(!szPasses.isEmpty())
 			{
-				szCommand.append(" ");
+				szCommand.append(' ');
 				szCommand.append(szPasses);
 			}
 			sendFmtData("JOIN %s", encodeText(szCommand).data());
-			szChans = QString();
-			szPasses = QString();
+			szChans.clear();
+			szPasses.clear();
 		}
 	}
 
-	szCommand = szChans;
+	QString szCommand = szChans;
 	if(!szPasses.isEmpty())
 	{
-		szCommand.append(" ");
+		szCommand.append(' ');
 		szCommand.append(szPasses);
 	}
 	sendFmtData("JOIN %s", encodeText(szCommand).data());
@@ -1761,10 +1760,7 @@ void KviIrcConnection::loginComplete(const QString & szNickName)
 
 	g_pApp->addRecentNickname(szNickName);
 
-	bool bHaltOutput = false;
-	bHaltOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRC, m_pConsole);
-
-	if(!bHaltOutput)
+	if(!KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRC, m_pConsole))
 		m_pConsole->outputNoFmt(KVI_OUT_IRC, __tr2qs("Login operations complete, happy ircing!"));
 
 	resurrectDeadQueries();
@@ -2002,17 +1998,17 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 	}
 }
 
-const QString & KviIrcConnection::currentServerName()
+const QString & KviIrcConnection::currentServerName() const
 {
 	return serverInfo()->name();
 }
 
-const QString & KviIrcConnection::currentNickName()
+const QString & KviIrcConnection::currentNickName() const
 {
 	return userInfo()->nickName();
 }
 
-const QString & KviIrcConnection::currentUserName()
+const QString & KviIrcConnection::currentUserName() const
 {
 	return userInfo()->userName();
 }

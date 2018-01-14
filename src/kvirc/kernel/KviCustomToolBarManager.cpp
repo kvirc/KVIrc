@@ -71,24 +71,18 @@ QString KviCustomToolBarManager::idForNewToolBar(const QString & szTemplate)
 {
 	QString s;
 	QString szTT = szTemplate.toLower();
-	szTT.remove(" ");
+	szTT.remove(' ');
 	szTT.remove("$tr");
-	szTT.remove("(");
-	szTT.remove(")");
-	szTT.remove("\"");
-	int idx = 0;
-	for(;;)
+	szTT.remove('(');
+	szTT.remove(')');
+	szTT.remove('"');
+	for(int idx = 0;; idx++)
 	{
 		s = szTT;
 		if(idx > 0)
-		{
-			QString tmp;
-			tmp.setNum(idx);
-			s += tmp;
-		}
+			s += QString::number(idx);
 		if(!m_pDescriptors->find(s))
 			return s;
-		idx++;
 	}
 	return s;
 }
@@ -160,7 +154,7 @@ int KviCustomToolBarManager::visibleToolBarCount()
 	KviPointerHashTableIterator<QString, KviCustomToolBarDescriptor> it(*m_pDescriptors);
 	while(KviCustomToolBarDescriptor * d = it.current())
 	{
-		if(d->toolBar() != nullptr)
+		if(d->toolBar())
 			cnt++;
 		++it;
 	}

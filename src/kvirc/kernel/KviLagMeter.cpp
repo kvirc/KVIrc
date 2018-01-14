@@ -39,18 +39,8 @@
 #include <algorithm>
 
 KviLagMeter::KviLagMeter(KviIrcConnection * c)
-    : QObject()
+    : QObject(), m_pConnection(c)
 {
-	m_pConnection = c;
-	m_uLag = 0;
-	m_uLastEmittedLag = 0;
-	m_uLastReliability = 0;
-	m_tLastCompleted = 0;
-	m_tLastOwnCheck = 0;
-	m_tFirstOwnCheck = 0;
-	m_bOnAlarm = false;
-	m_pDeletionSignal = nullptr;
-
 	// FIXME: We could use the KviIrcConnection::heartbeat() here!
 	if(KVI_OPTION_UINT(KviOption_uintLagMeterHeartbeat) < 2000)
 		KVI_OPTION_UINT(KviOption_uintLagMeterHeartbeat) = 2000; // kinda absurd

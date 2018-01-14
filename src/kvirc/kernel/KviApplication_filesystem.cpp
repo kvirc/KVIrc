@@ -443,7 +443,7 @@ bool KviApplication::mapImageFile(QString & szRetPath, const QString & filename)
 
 	QString szBestMatch;
 
-	while(szRetPath.indexOf(KVI_PATH_SEPARATOR) != -1)
+	while(szRetPath.contains(KVI_PATH_SEPARATOR))
 	{
 		KviQString::cutToFirst(szRetPath, KVI_PATH_SEPARATOR);
 

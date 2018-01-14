@@ -32,14 +32,14 @@
 #include "KviFileUtils.h"
 #include "KviOptions.h"
 
-#include <QLayout>
-#include <QLabel>
-#include <QCursor>
-#include <QEvent>
 #include <QCloseEvent>
-#include <QIcon>
+#include <QCursor>
 #include <QDir>
 #include <QDrag>
+#include <QEvent>
+#include <QIcon>
+#include <QLabel>
+#include <QLayout>
 #include <QMimeData>
 
 /*
@@ -425,13 +425,6 @@ static const char * g_szIconNames[KviIconManager::IconCount] = {
 	"ownactioncrypted"      // 341
 };
 
-KviIconWidget::KviIconWidget()
-    : QWidget(nullptr)
-{
-	setObjectName("global_icon_widget");
-	init();
-}
-
 KviIconWidget::KviIconWidget(QWidget * pPar)
     : QWidget(pPar)
 {
@@ -449,20 +442,19 @@ void KviIconWidget::init()
 		iRows++;
 
 	QGridLayout * pLayout = new QGridLayout(this);
-	int i;
-	for(i = 0; i < 20; i++)
+	for(int i = 0; i < 20; i++)
 	{
 		KviCString szTmp(KviCString::Format, "%d", i);
 		QLabel * pLabel = new QLabel(szTmp.ptr(), this);
 		pLayout->addWidget(pLabel, 0, i + 1);
 	}
-	for(i = 0; i < iRows; i++)
+	for(int i = 0; i < iRows; i++)
 	{
 		KviCString szTmp(KviCString::Format, "%d", i * 20);
 		QLabel * pLabel = new QLabel(szTmp.ptr(), this);
 		pLayout->addWidget(pLabel, i + 1, 0);
 	}
-	for(i = 0; i < KviIconManager::IconCount; i++)
+	for(int i = 0; i < KviIconManager::IconCount; i++)
 	{
 		KviCString szTmp(KviCString::Format, "%d", i);
 		QLabel * pLabel = new QLabel(this);
@@ -543,18 +535,10 @@ void KviCachedPixmap::updateLastAccessTime()
 
 KviIconManager::KviIconManager()
 {
-	for(int i = 0; i < IconCount; i++)
-		m_smallIcons[i] = nullptr;
-
 	initQResourceBackend();
 
 	m_pCachedImages = new KviPointerHashTable<QString, KviCachedPixmap>(21, true);
 	m_pCachedImages->setAutoDelete(true);
-
-	m_uCacheTotalSize = 0;
-	m_uCacheMaxSize = 1024 * 1024; // 1 MB
-
-	m_pIconWidget = nullptr;
 
 	QString szBuffer;
 
@@ -564,8 +548,6 @@ KviIconManager::KviIconManager()
 
 	g_pApp->findImage(szBuffer, KVI_ACTIVITYMETER_IMAGE_NAME);
 	g_pActivityMeterPixmap = new QPixmap(szBuffer);
-
-	m_pIconNames = nullptr;
 }
 
 KviIconManager::~KviIconManager()

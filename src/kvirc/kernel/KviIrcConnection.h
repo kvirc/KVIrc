@@ -34,8 +34,8 @@
 #include "KviQString.h"
 #include "KviTimeUtils.h"
 
-#include <QObject>
 #include <QByteArray>
+#include <QObject>
 #include <QStringList>
 
 #include <memory>
@@ -122,8 +122,6 @@ protected:
 	*/
 	KviIrcConnection(KviIrcContext * pContext, KviIrcConnectionTarget * pTarget, KviUserIdentity * pIdentity);
 
-	KviIrcConnection() = delete;
-
 	/**
 	* \brief Destroys a KviIrcConnection object. KviConsoleWindow uses this.
 	*/
@@ -191,7 +189,7 @@ public:
 	* The pointer is never NULL
 	* \return KviConsoleWindow *
 	*/
-	KviConsoleWindow * console() { return m_pConsole; };
+	KviConsoleWindow * console() const { return m_pConsole; }
 
 	/**
 	* \brief Returns a pointer to the owning KviIrcContext.
@@ -199,7 +197,7 @@ public:
 	* The returned value is never NULL
 	* \return KviIrcContext *
 	*/
-	KviIrcContext * context() { return m_pContext; };
+	KviIrcContext * context() const { return m_pContext; }
 
 	/**
 	* \brief Returns the target of this connection.
@@ -209,7 +207,7 @@ public:
 	* The returned pointer is never NULL.
 	* \return KviIrcConnectionTarget *
 	*/
-	KviIrcConnectionTarget * target() { return m_pTarget; };
+	KviIrcConnectionTarget * target() const { return m_pTarget; }
 
 	/**
 	* \brief Returns the underlying KviIrcLink object
@@ -217,13 +215,13 @@ public:
 	* The returned pointer is never NULL.
 	* \return KviIrcLink *
 	*/
-	KviIrcLink * link() { return m_pLink; };
+	KviIrcLink * link() const { return m_pLink; }
 
 	/**
 	* \brief Returns the current state of the connection
 	* \return State
 	*/
-	State state() { return m_eState; };
+	State state() const { return m_eState; }
 
 	/**
 	* \brief Returns a pointer to the big connection user database.
@@ -232,7 +230,7 @@ public:
 	* The returned pointer is never NULL.
 	* \return KviIrcUserDataBase *
 	*/
-	KviIrcUserDataBase * userDataBase() { return m_pUserDataBase; };
+	KviIrcUserDataBase * userDataBase() const { return m_pUserDataBase; }
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionUserInfo object
@@ -245,7 +243,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionUserInfo *
 	*/
-	KviIrcConnectionUserInfo * userInfo() { return m_pUserInfo; };
+	KviIrcConnectionUserInfo * userInfo() const { return m_pUserInfo; }
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionServerInfo object
@@ -259,7 +257,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionServerInfo *
 	*/
-	KviIrcConnectionServerInfo * serverInfo() { return m_pServerInfo; };
+	KviIrcConnectionServerInfo * serverInfo() const { return m_pServerInfo; }
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionStateData object
@@ -273,7 +271,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionStateData *
 	*/
-	KviIrcConnectionStateData * stateData() { return m_pStateData; };
+	KviIrcConnectionStateData * stateData() const { return m_pStateData; }
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionAntiCtcpFloodData object
@@ -285,10 +283,10 @@ public:
 	* only forwarded here.
 	* \return KviIrcConnectionAntiCtcpFloodData *
 	*/
-	KviIrcConnectionAntiCtcpFloodData * antiCtcpFloodData()
+	KviIrcConnectionAntiCtcpFloodData * antiCtcpFloodData() const
 	{
 		return m_pAntiCtcpFloodData;
-	};
+	}
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionNetsplitDetectorData object
@@ -300,10 +298,10 @@ public:
 	* only forwarded here.
 	* \return KviIrcConnectionNetsplitDetectorData *
 	*/
-	KviIrcConnectionNetsplitDetectorData * netsplitDetectorData()
+	KviIrcConnectionNetsplitDetectorData * netsplitDetectorData() const
 	{
 		return m_pNetsplitDetectorData;
-	};
+	}
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionAsyncWhoisData object
@@ -315,10 +313,10 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionAsyncWhoisData *
 	*/
-	KviIrcConnectionAsyncWhoisData * asyncWhoisData()
+	KviIrcConnectionAsyncWhoisData * asyncWhoisData() const
 	{
 		return m_pAsyncWhoisData;
-	};
+	}
 
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionStatistics object
@@ -330,7 +328,7 @@ public:
 	* forwarded here.
 	* \return KviIrcConnectionStatistics *
 	*/
-	KviIrcConnectionStatistics * statistics() { return m_pStatistics.get(); };
+	KviIrcConnectionStatistics * statistics() const { return m_pStatistics.get(); }
 
 	/**
 	* \brief Returns a pointer to the current KviNotifyListManager.
@@ -339,10 +337,10 @@ public:
 	* the current connection.
 	* \return KviNotifyListManager *
 	*/
-	KviNotifyListManager * notifyListManager()
+	KviNotifyListManager * notifyListManager() const
 	{
 		return m_pNotifyListManager;
-	};
+	}
 
 	/**
 	* \brief Returns a pointer to the current KviLagMeter.
@@ -351,13 +349,13 @@ public:
 	* current connection.
 	* \return KviLagMeter *
 	*/
-	KviLagMeter * lagMeter() { return m_pLagMeter; };
+	KviLagMeter * lagMeter() const { return m_pLagMeter; }
 
 	/**
 	* \brief Returns a pointer to the current KviIrcConnectionRequestQueue.
 	* \return KviIrcConnectionRequestQueue *
 	*/
-	KviIrcConnectionRequestQueue * requestQueue() { return m_pRequestQueue; };
+	KviIrcConnectionRequestQueue * requestQueue() const { return m_pRequestQueue; }
 
 	/**
 	* \brief Returns the list of the channels bound to the current connection.
@@ -365,31 +363,31 @@ public:
 	* The pointer itself is never null (though the list may be empty).
 	* \return & std::vector<KviChannelWindow *>
 	*/
-	std::vector<KviChannelWindow *> & channelList() { return m_pChannelList; };
+	std::vector<KviChannelWindow *> & channelList() { return m_pChannelList; }
 
 	/**
 	* \brief Helper that provides a shortcut for really common access to serverInfo()->networkName()
 	* \return const QString &
 	*/
-	const QString & currentNetworkName();
+	const QString & currentNetworkName() const;
 
 	/**
 	* \brief Helper that provides a shortcut for really common access to userInfo()->nickName()
 	* \return const QString &
 	*/
-	const QString & currentNickName();
+	const QString & currentNickName() const;
 
 	/**
 	* \brief Helper that provides a shortcut for really common access to userInfo()->userName()
 	* \return const QString &
 	*/
-	const QString & currentUserName();
+	const QString & currentUserName() const;
 
 	/**
 	* \brief Helper that provides a shortcut for really common access to serverInfo()->name()
 	* \return const QString &
 	*/
-	const QString & currentServerName();
+	const QString & currentServerName() const;
 
 	//
 	// Channel management
@@ -496,7 +494,7 @@ public:
 	* The returned pointer is never NULL (the list may be empty though).
 	* \return std::vector<KviQueryWindow *> &
 	*/
-	std::vector<KviQueryWindow *> & queryList() { return m_pQueryList; };
+	std::vector<KviQueryWindow *> & queryList() { return m_pQueryList; }
 
 	///
 	/// Visibility mode for createQuery()
@@ -669,7 +667,7 @@ public:
 	* windows. The returned pointer may be null if things really went wrong.
 	* \return QTextCodec *
 	*/
-	QTextCodec * textCodec() { return m_pTextCodec; };
+	QTextCodec * textCodec() const { return m_pTextCodec; }
 
 	/**
 	* \brief Returns a pointer to the current global codec for inbound data.
@@ -678,7 +676,7 @@ public:
 	* windows. The returned pointer may be null if things really went wrong.
 	* \return QTextCodec *
 	*/
-	QTextCodec * serverCodec() { return m_pSrvCodec; };
+	QTextCodec * serverCodec() const { return m_pSrvCodec; }
 
 	/**
 	* \brief Sets the global encoding for this connection.

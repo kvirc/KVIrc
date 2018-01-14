@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "KviPointerList.h"
 #include "KviIrcConnectionAsyncData.h"
 
 #include <QString>
@@ -36,6 +35,10 @@ class KviWindow;
 
 class KVIRC_API KviAsyncWhoisInfo
 {
+public:
+	KviAsyncWhoisInfo();
+	~KviAsyncWhoisInfo();
+
 public:
 	QString szNick;
 	QString szUser;
@@ -51,10 +54,6 @@ public:
 	KviKvsScript * pCallback = nullptr;
 	KviKvsVariant * pMagic = nullptr;
 	KviWindow * pWindow = nullptr;
-
-public:
-	KviAsyncWhoisInfo();
-	~KviAsyncWhoisInfo();
 };
 
 // KviIrcConnectionAsyncWhoisData is now recreated using a template

@@ -32,14 +32,16 @@
 */
 
 #include "kvi_settings.h"
-#include "KviCString.h"
 #include "KviAvatar.h"
-#include "KviTimeUtils.h"
+#include "KviCString.h"
 #include "KviPointerHashTable.h"
+#include "KviTimeUtils.h"
 
-#include <QPixmap>
 #include <QObject>
+#include <QPixmap>
 #include <QWidget>
+
+#include <array>
 
 #define KVI_BIGICON_DISCONNECTED "kvi_bigicon_disconnected.png"
 #define KVI_BIGICON_CONNECTING "kvi_bigicon_connecting.png"
@@ -106,7 +108,7 @@ public:
 private:
 	QString m_szPath;
 	kvi_time_t m_tLastAccess;
-	QPixmap * m_pPixmap;
+	QPixmap * m_pPixmap = nullptr;
 	unsigned int m_uSize;
 
 public:
@@ -114,25 +116,25 @@ public:
 	* \brief Returns the image
 	* \return QPixmap *
 	*/
-	QPixmap * pixmap() { return m_pPixmap; };
+	QPixmap * pixmap() const { return m_pPixmap; }
 
 	/**
 	* \brief Returns the path of the image
 	* \return const QString &
 	*/
-	const QString & path() { return m_szPath; };
+	const QString & path() const { return m_szPath; }
 
 	/**
 	* \brief Returns the size of the image
 	* \return unsigned int
 	*/
-	unsigned int size() { return m_uSize; };
+	unsigned int size() const { return m_uSize; }
 
 	/**
 	* \brief Returns the time the image was last accessed
 	* \return kvi_time_t
 	*/
-	kvi_time_t lastAccessTime() { return m_tLastAccess; };
+	kvi_time_t lastAccessTime() const { return m_tLastAccess; }
 
 	/**
 	* \brief Updates the time the image was last accessed
@@ -523,12 +525,12 @@ public:
 	~KviIconManager();
 
 private:
-	QPixmap * m_smallIcons[IconCount];
-	KviIconWidget * m_pIconWidget;
-	KviPointerHashTable<QString, KviCachedPixmap> * m_pCachedImages;
-	KviPointerHashTable<QString, int> * m_pIconNames;
-	unsigned int m_uCacheTotalSize;
-	unsigned int m_uCacheMaxSize;
+	std::array<QPixmap *,IconCount> m_smallIcons = { nullptr };
+	KviIconWidget * m_pIconWidget = nullptr;
+	KviPointerHashTable<QString, KviCachedPixmap> * m_pCachedImages = nullptr;
+	KviPointerHashTable<QString, int> * m_pIconNames = nullptr;
+	unsigned int m_uCacheTotalSize = 0;
+	unsigned int m_uCacheMaxSize = 1024 * 1024; // 1 MiB
 
 public:
 	/**
@@ -543,7 +545,7 @@ public:
 	*
 	* \return QPixmap *
 	*/
-	QPixmap * getImage(const QString & szId, bool bCanBeNumber = true, QString * pRetPath = 0);
+	QPixmap * getImage(const QString & szId, bool bCanBeNumber = true, QString * pRetPath = nullptr);
 
 	/**
 	* \brief Returns the cached pixmap of the image
@@ -575,8 +577,8 @@ public:
 	QPixmap * getPixmap(const QString & szName)
 	{
 		KviCachedPixmap * pPix = getPixmapWithCache(szName);
-		return pPix ? pPix->pixmap() : 0;
-	};
+		return pPix ? pPix->pixmap() : nullptr;
+	}
 
 	/**
 	* \brief Returns the big icon
@@ -594,7 +596,7 @@ public:
 	* is returned
 	* \return QPixmap *
 	*/
-	QPixmap * getSmallIcon(SmallIcon eIcon) { return eIcon < IconCount ? (m_smallIcons[eIcon] ? m_smallIcons[eIcon] : loadSmallIcon(eIcon)) : 0; };
+	QPixmap * getSmallIcon(SmallIcon eIcon) { return eIcon < IconCount ? (m_smallIcons[eIcon] ? m_smallIcons[eIcon] : loadSmallIcon(eIcon)) : nullptr; }
 
 	/**
 	* \brief Returns the small icon
@@ -603,7 +605,7 @@ public:
 	* is returned. This is provided for convenience
 	* \return QPixmap *
 	*/
-	QPixmap * getSmallIcon(int iIcon) { return iIcon < IconCount ? (m_smallIcons[iIcon] ? m_smallIcons[iIcon] : loadSmallIcon(iIcon)) : 0; };
+	QPixmap * getSmallIcon(int iIcon) { return iIcon < IconCount ? (m_smallIcons[iIcon] ? m_smallIcons[iIcon] : loadSmallIcon(iIcon)) : nullptr; }
 
 	/**
 	* \brief Returns the name of the small icon
@@ -711,16 +713,10 @@ class KVIRC_API KviIconWidget : public QWidget
 public:
 	/**
 	* \brief Constructs the icon table widget
-	* \return KviIconWidget
-	*/
-	KviIconWidget();
-
-	/**
-	* \brief Constructs the icon table widget
 	* \param pPar The parent object
 	* \return KviIconWidget
 	*/
-	KviIconWidget(QWidget * pPar);
+	KviIconWidget(QWidget * pPar = nullptr);
 
 	/**
 	* \brief Destroys the icon table widget
@@ -734,8 +730,8 @@ protected:
 	*/
 	void init();
 
-	virtual void closeEvent(QCloseEvent * pEvent);
-	virtual bool eventFilter(QObject * pObject, QEvent * pEvent);
+	void closeEvent(QCloseEvent * pEvent) override;
+	bool eventFilter(QObject * pObject, QEvent * pEvent) override;
 signals:
 	/**
 	* \brief Emitted when we close the table widget

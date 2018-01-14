@@ -82,19 +82,19 @@ public:
 	* \brief Returns the name of the category
 	* \return const QString &
 	*/
-	const QString & name() const { return m_szName; };
+	const QString & name() const { return m_szName; }
 
 	/**
 	* \brief Returns the visible name of the category
 	* \return const QString &
 	*/
-	const QString & visibleName() const { return m_szVisibleName; };
+	const QString & visibleName() const { return m_szVisibleName; }
 
 	/**
 	* \brief Returns the description of the category
 	* \return const QString &
 	*/
-	const QString & description() const { return m_szDescription; };
+	const QString & description() const { return m_szDescription; }
 };
 
 /**
@@ -200,7 +200,7 @@ protected:
 	QString m_szName;
 	QString m_szVisibleName;
 	QString m_szDescription;
-	KviActionCategory * m_pCategory;
+	KviActionCategory * m_pCategory = nullptr;
 	QString m_szBigIconId;
 	QString m_szSmallIconId; // this is alternative to m_eSmallIcon
 	KviIconManager::SmallIcon m_eSmallIcon;
@@ -222,7 +222,7 @@ public:
 	* \brief Returns the name of the action
 	* \return const QString &
 	*/
-	const QString & name() const { return m_szName; };
+	const QString & name() const { return m_szName; }
 
 	/**
 	* \brief Returns the visible name of the action
@@ -240,37 +240,37 @@ public:
 	* \brief Returns the shortcut of the action
 	* \return const QString &
 	*/
-	const QString & keySequence() const { return m_szKeySequence; };
+	const QString & keySequence() const { return m_szKeySequence; }
 
 	/**
 	* \brief Returns the id of the big icon associated to the action
 	* \return const QString &
 	*/
-	const QString & bigIconId() const { return m_szBigIconId; };
+	const QString & bigIconId() const { return m_szBigIconId; }
 
 	/**
 	* \brief Returns the id of the small icon associated to the action
 	* \return const QString &
 	*/
-	const QString & smallIconId() const { return m_szSmallIconId; };
+	const QString & smallIconId() const { return m_szSmallIconId; }
 
 	/**
 	* \brief Returns the category of the action
 	* \return const QString &
 	*/
-	KviActionCategory * category() const { return m_pCategory; };
+	KviActionCategory * category() const { return m_pCategory; }
 
 	/**
 	* \brief Returns true if the action is enabled
 	* \return bool
 	*/
-	bool isEnabled() const { return (m_uInternalFlags & KviAction::Enabled); };
+	bool isEnabled() const { return (m_uInternalFlags & KviAction::Enabled); }
 
 	/**
 	* \brief Returns the flag associated to the action
 	* \return unsigned int
 	*/
-	unsigned int flags() { return m_uFlags; };
+	unsigned int flags() const { return m_uFlags; }
 
 	/**
 	* \brief Returns true if the action is user-defined
@@ -316,14 +316,14 @@ public:
 	* \brief Destroys itself. Maybe the best function in the whole APIs :)
 	* \return void
 	*/
-	void suicide() { delete this; };
+	void suicide() { delete this; }
 protected:
 	/**
 	* \brief Returns true if the setup is finished
 	* \note Called once before the FIRST button or menu item is created
 	* \return bool
 	*/
-	bool setupDone() const { return (m_uInternalFlags & KviAction::SetupDone); };
+	bool setupDone() const { return (m_uInternalFlags & KviAction::SetupDone); }
 
 	/**
 	* \brief Enables or disables the action upon starting KVIrc
@@ -335,7 +335,7 @@ protected:
 	* \brief Returns the list of actions associated to the action
 	* \return std::unordered_set<QAction *>
 	*/
-	std::unordered_set<QAction *> const & actionList() const { return m_pActionList; };
+	std::unordered_set<QAction *> const & actionList() const { return m_pActionList; }
 
 	/**
 	* \brief Registers the action shortcut in the application

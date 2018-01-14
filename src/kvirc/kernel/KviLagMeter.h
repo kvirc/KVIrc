@@ -33,9 +33,8 @@
 
 class KviIrcConnection;
 
-class KviLagCheck
+struct KviLagCheck
 {
-public:
 	KviCString szKey;
 	long lSecs; // since epoch
 	long lUSecs;
@@ -44,35 +43,35 @@ public:
 
 class KVIRC_API KviLagMeter : public QObject
 {
-	Q_OBJECT
 	friend class KviIrcConnection;
+	Q_OBJECT
 
 protected:
 	KviLagMeter(KviIrcConnection * c);
 	~KviLagMeter();
 
 protected:
-	KviIrcConnection * m_pConnection;
-	unsigned int m_uLag;             // last computed lag
-	unsigned int m_uLastEmittedLag;  // last emitted lag
-	long m_tLastCompleted;           // time when the last lag was completed (gettimeofday!)
-	unsigned int m_uLastReliability; // how much reliable was the last completed check ?
+	KviIrcConnection * m_pConnection = nullptr;
+	unsigned int m_uLag = 0;             // last computed lag
+	unsigned int m_uLastEmittedLag = 0;  // last emitted lag
+	long m_tLastCompleted = 0;           // time when the last lag was completed (gettimeofday!)
+	unsigned int m_uLastReliability = 0; // how much reliable was the last completed check ?
 	QList<KviLagCheck *> m_lCheckList;
-	long m_tFirstOwnCheck; // time when the first ping after a completed check was sent
-	long m_tLastOwnCheck;  // time when the last ping was sent
-	bool m_bOnAlarm;
-	bool * m_pDeletionSignal; // we use this to signal our own delete
+	long m_tFirstOwnCheck = 0; // time when the first ping after a completed check was sent
+	long m_tLastOwnCheck = 0;  // time when the last ping was sent
+	bool m_bOnAlarm = false;
+	bool * m_pDeletionSignal = nullptr; // we use this to signal our own delete
 public:
 	// lag checks should be done only against the user's server
 	// please make SURE that the key is unique!
 	void lagCheckRegister(const char * key, unsigned int uReliability = 50);
 	bool lagCheckComplete(const char * key);
 	void lagCheckAbort(const char * key);
-	unsigned int lag() { return m_uLag; };
+	unsigned int lag() const { return m_uLag; }
 	unsigned int secondsSinceLastCompleted();
 
 protected:
-	virtual void timerEvent(QTimerEvent * e);
+	void timerEvent(QTimerEvent * e) override;
 };
 
 #endif // _KVI_LAGMETER_H_

@@ -83,21 +83,21 @@ public:
 
 protected:
 	KviConsoleWindow * m_pConsole; // shallow, never null
-	KviIrcConnection * m_pConnection;
+	KviIrcConnection * m_pConnection = nullptr;
 
 	unsigned int m_uId; // this irc context id
 
-	State m_eState; // this context state
+	State m_eState = Idle; // this context state
 
 	// permanent links and list window
-	KviExternalServerDataParser * m_pLinksWindow;
-	KviExternalServerDataParser * m_pListWindow;
+	KviExternalServerDataParser * m_pLinksWindow = nullptr;
+	KviExternalServerDataParser * m_pListWindow = nullptr;
 
-	KviAsynchronousConnectionData * m_pAsynchronousConnectionData;      // owned, may be null
-	KviAsynchronousConnectionData * m_pSavedAsynchronousConnectionData; // owned, may be null, this is used to reconnect to the last server in this context
+	KviAsynchronousConnectionData * m_pAsynchronousConnectionData = nullptr;      // owned, may be null
+	KviAsynchronousConnectionData * m_pSavedAsynchronousConnectionData = nullptr; // owned, may be null, this is used to reconnect to the last server in this context
 
-	unsigned int m_uConnectAttemptCount;
-	QTimer * m_pReconnectTimer;
+	unsigned int m_uConnectAttemptCount = 1;
+	QTimer * m_pReconnectTimer = nullptr;
 
 	std::vector<KviIrcDataStreamMonitor *> m_pMonitorList; // owned, may be empty
 
@@ -110,15 +110,15 @@ protected:
 	int m_iHeartbeatTimerId;
 
 public:
-	inline unsigned int id() { return m_uId; };
+	unsigned int id() const { return m_uId; }
 	// never null and always the same!
-	inline KviConsoleWindow * console() { return m_pConsole; };
+	KviConsoleWindow * console() const { return m_pConsole; }
 	// may be null and may change!
-	inline KviIrcConnection * connection() { return m_pConnection; };
+	KviIrcConnection * connection() const { return m_pConnection; }
 	// state
-	inline State state() { return m_eState; };
-	inline bool isConnected() { return m_eState == Connected; };
-	inline bool isLoggingIn() { return m_eState == LoggingIn; };
+	State state() const { return m_eState; }
+	bool isConnected() const { return m_eState == Connected; }
+	bool isLoggingIn() const { return m_eState == LoggingIn; }
 	// dead channels and queries
 	bool unregisterDeadChannel(KviChannelWindow * c);
 	bool unregisterDeadQuery(KviQueryWindow * q);
@@ -133,20 +133,20 @@ public:
 	void registerContextWindow(KviWindow * pWnd);
 	bool unregisterContextWindow(KviWindow * pWnd);
 
-	inline std::vector<KviIrcDataStreamMonitor *> & monitorList() { return m_pMonitorList; }
+	std::vector<KviIrcDataStreamMonitor *> & monitorList() { return m_pMonitorList; }
 
 	// links window
 	void createLinksWindow();
-	inline void setLinksWindowPointer(KviExternalServerDataParser * l) { m_pLinksWindow = l; }
-	inline KviExternalServerDataParser * linksWindow() const { return m_pLinksWindow; }
+	void setLinksWindowPointer(KviExternalServerDataParser * l) { m_pLinksWindow = l; }
+	KviExternalServerDataParser * linksWindow() const { return m_pLinksWindow; }
 
 	// list window
 	void createListWindow();
-	inline void setListWindowPointer(KviExternalServerDataParser * l) { m_pListWindow = l; }
-	inline KviExternalServerDataParser * listWindow() const { return m_pListWindow; }
+	void setListWindowPointer(KviExternalServerDataParser * l) { m_pListWindow = l; }
+	KviExternalServerDataParser * listWindow() const { return m_pListWindow; }
 
 	void setAsynchronousConnectionData(KviAsynchronousConnectionData * d);
-	inline KviAsynchronousConnectionData * asynchronousConnectionData() const { return m_pAsynchronousConnectionData; }
+	KviAsynchronousConnectionData * asynchronousConnectionData() const { return m_pAsynchronousConnectionData; }
 	void destroyAsynchronousConnectionData();
 	// used by KviConsoleWindow (for now) and KviUserParser
 	void connectToCurrentServer();
@@ -171,10 +171,10 @@ protected:
 	// called by KviIrcConnection
 	void loginComplete();
 	// our heartbeat timer event
-	virtual void timerEvent(QTimerEvent * e);
+	void timerEvent(QTimerEvent * e) override;
 
 public:
-	void connectOrDisconnect() { connectButtonClicked(); };
+	void connectOrDisconnect() { connectButtonClicked(); }
 protected:
 	//
 	// KviIrcConnection interface

@@ -88,8 +88,6 @@ static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS] = {
 const char * kvi_getInternalCommandBuffer(int idx)
 {
 	if(idx > 0 && idx < KVI_NUM_INTERNAL_COMMANDS)
-	{
 		return internalCommandTable[idx];
-	}
 	return internalCommandTable[0];
 }
