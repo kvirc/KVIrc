@@ -951,34 +951,37 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage * msg)
 				const bool supports_kvi_ctcp = supported(szReal[1].unicode() >= CTCP_KVI_PATCHLEVEL);
 				const bool legacy_avatar = supported(szReal[1].unicode() & CTCP_KVI_SHARE_AVATAR);
 				const uint32_t patch_level = get_ctcp_kvi_patchlevel(szReal[1].unicode());
+				std::stringstream patch_level_string;
+				patch_level_string << "CTCP_KVI_PATCHLEVEL " << patch_level;
 
 				KviLog(LogType::Debug) <<"Checking for supported REALNAME avatar... "<<
 					(
-						supports_kvi_ctcp ? ("CTCP_KVI_PATCHLEVEL " + patch_level)
+						supports_kvi_ctcp ? patch_level_string.str()
 						    : legacy_avatar ? ("legacy")
 						    : "none"
 					);
 
-				if(legacy_avatar && KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar) && KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars) && !e->avatarRequested())
+				if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar) && KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars) && !e->avatarRequested())
 				{
 					QByteArray d = msg->connection()->encodeText(szNick);
 					msg->connection()->sendFmtData("%s %s :%c%s%c", "PRIVMSG", d.data(), 0x01, "AVATAR", 0x01);
 					KviLog(LogType::Info) <<"Requesting legacy AVATAR... ";
 					e->setAvatarRequested();
-				} else if (supports_kvi_ctcp) {
-					KviLog(LogType::Info) <<"Starting KVIRC CTCP Handshake via CTCP_KVI_PATCHLEVEL "<<patch_level;
-
-					std::stringstream ss;
-					ss << msg->connection()->encodeText(szNick).data() << " PRIVMSG :" << 0x01 << "KVIRC" << 0x01;
-					uint32_t send_flags = CTCP_KVI_REQUESTING;
-					if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpGender))
-						send_flags |= CTCP_KVI_FLAG_GENDER;
-					if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar))
-						send_flags |= CTCP_KVI_FLAG_GENDER;
-					ss << " " << send_flags;
-
-					msg->connection()->sendData(ss.str().c_str());
 				}
+				// else if (supports_kvi_ctcp) {
+				// 	KviLog(LogType::Info) <<"Starting KVIRC CTCP Handshake via CTCP_KVI_PATCHLEVEL "<<patch_level;
+
+				// 	std::stringstream ss;
+				// 	ss << msg->connection()->encodeText(szNick).data() << " PRIVMSG :" << 0x01 << "KVIRC" << 0x01;
+				// 	uint32_t send_flags = CTCP_KVI_REQUESTING;
+				// 	if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpGender))
+				// 		send_flags |= CTCP_KVI_FLAG_GENDER;
+				// 	if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar))
+				// 		send_flags |= CTCP_KVI_FLAG_GENDER;
+				// 	ss << " " << send_flags;
+
+				// 	msg->connection()->sendData(ss.str().c_str());
+				// }
 			}
 		}
 
@@ -1143,36 +1146,40 @@ void KviIrcServerParser::parseNumericWhospcrpl(KviIrcMessage * msg)
 						            && szReal[2].unicode() == KviControlCodes::Reset;
 					};
 
+					const bool supports_kvi_ctcp = supported(szReal[1].unicode() >= CTCP_KVI_PATCHLEVEL);
 					const bool legacy_avatar = supported(szReal[1].unicode() & CTCP_KVI_SHARE_AVATAR);
 					const uint32_t patch_level = get_ctcp_kvi_patchlevel(szReal[1].unicode());
+					std::stringstream patch_level_string;
+					patch_level_string << "CTCP_KVI_PATCHLEVEL " << patch_level;
 
 					KviLog(LogType::Debug) <<"Checking for supported REALNAME avatar... "<<
-					(
-						patch_level ? ("CTCP_KVI_PATCHLEVEL " + patch_level)
-							: legacy_avatar ? ("legacy")
-							: "none"
-					);
+						(
+							supports_kvi_ctcp ? patch_level_string.str()
+							    : legacy_avatar ? ("legacy")
+							    : "none"
+						);
 
-					if(legacy_avatar && KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars) && !e->avatarRequested())
+					if(KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars) && !e->avatarRequested())
 					{
 						QByteArray d = msg->connection()->encodeText(szNick);
 						msg->connection()->sendFmtData("%s %s :%c%s%c", "PRIVMSG", d.data(), 0x01, "AVATAR", 0x01);
 						KviLog(LogType::Info) <<"Requesting legacy AVATAR... ";
 						e->setAvatarRequested();
-					} else if (patch_level) {
-						KviLog(LogType::Info) <<"Starting KVIRC CTCP Handshake via CTCP_KVI_PATCHLEVEL "<<patch_level;
-
-						std::stringstream ss;
-						ss << msg->connection()->encodeText(szNick).data() << " PRIVMSG :" << 0x01 << "KVIRC" << 0x01;
-						uint32_t send_flags = CTCP_KVI_REQUESTING;
-						if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpGender))
-							send_flags |= CTCP_KVI_FLAG_GENDER;
-						if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar))
-							send_flags |= CTCP_KVI_FLAG_GENDER;
-						ss << " " << send_flags;
-
-						msg->connection()->sendData(ss.str().c_str());
 					}
+					// else if (patch_level) {
+					// 	KviLog(LogType::Info) <<"Starting KVIRC CTCP Handshake via CTCP_KVI_PATCHLEVEL "<<patch_level;
+
+					// 	std::stringstream ss;
+					// 	ss << msg->connection()->encodeText(szNick).data() << " PRIVMSG :" << 0x01 << "KVIRC" << 0x01;
+					// 	uint32_t send_flags = CTCP_KVI_REQUESTING;
+					// 	if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpGender))
+					// 		send_flags |= CTCP_KVI_FLAG_GENDER;
+					// 	if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar))
+					// 		send_flags |= CTCP_KVI_FLAG_GENDER;
+					// 	ss << " " << send_flags;
+
+					// 	msg->connection()->sendData(ss.str().c_str());
+					// }
 				}
 			}
 			//this has to be done after the avatar part

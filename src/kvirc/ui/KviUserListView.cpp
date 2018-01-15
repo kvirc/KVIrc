@@ -123,15 +123,13 @@ void KviUserListEntry::updateAvatarData()
 {
 	detachAvatarData();
 
-	// if(!KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))
-	// 	return;
+	if(!KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))
+		return;
 
 	KviAvatar * pAv = m_pGlobalData->avatar();
 
-	if(!pAv) {
-		m_bHasAv = false;
+	if(!pAv)
 		return;
-	}
 
 	m_bHasAv = true;
 

@@ -327,7 +327,7 @@ void KviIrcServerParser::parseLiteralJoin(KviIrcMessage * msg)
 			chan->updateCaption();
 
 		// FIXME: #warning "Trigger also OnMeVoice and OnMeOp here ?"
-		if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar) && !(it->globalData()->avatar()))
+		if(!(it->globalData()->avatar()))
 		{
 			KviAvatar * av = console->defaultAvatarFromOptions();
 			if(av)
