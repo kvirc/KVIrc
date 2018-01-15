@@ -42,7 +42,6 @@
 #include "KviIrcUserDataBase.h"
 #include "KviApplication.h"
 #include "KviRegisteredUserDataBase.h"
-#include "kvi_debug.h"
 #include "KviTimeUtils.h"
 #include "KviUserAction.h"
 #include "KviIrcConnection.h"
@@ -59,6 +58,7 @@
 #include "KviIrcNetwork.h"
 #include "kvi_settings.h"
 #include "KviIrcMessage.h"
+#include "KviLog.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"
@@ -327,7 +327,7 @@ void KviIrcServerParser::parseLiteralJoin(KviIrcMessage * msg)
 			chan->updateCaption();
 
 		// FIXME: #warning "Trigger also OnMeVoice and OnMeOp here ?"
-		if(!(it->globalData()->avatar()))
+		if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar) && !(it->globalData()->avatar()))
 		{
 			KviAvatar * av = console->defaultAvatarFromOptions();
 			if(av)
@@ -354,17 +354,19 @@ void KviIrcServerParser::parseLiteralJoin(KviIrcMessage * msg)
 	}
 	else
 	{
-		// This must be someone else...(or desync)
-		int iFlags = 0;
-		iFlags = msg->connection()->serverInfo()->modeFlagFromModeChar(chExtMode);
 
-		KviUserListEntry * it = chan->join(szNick, szUser, szHost, iFlags);
+		if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar)) {
+			// This must be someone else...(or desync)
+			int iFlags = 0;
+			iFlags = msg->connection()->serverInfo()->modeFlagFromModeChar(chExtMode);
+			KviUserListEntry *it = chan->join(szNick, szUser, szHost, iFlags);
 
-		// FIXME: #warning "Trigger also OnVoice and OnOp here ?"
-		// Note: checkDefaultAvatar() makes a KviRegisteredUser lookup
-		//       if later it is needed, make it return a pointer
-		if(!(it->globalData()->avatar()))
-			console->checkDefaultAvatar(it->globalData(), szNick, szUser, szHost);
+			// FIXME: #warning "Trigger also OnVoice and OnOp here ?"
+			// Note: checkDefaultAvatar() makes a KviRegisteredUser lookup
+			//       if later it is needed, make it return a pointer
+			if(!(it->globalData()->avatar()))
+				console->checkDefaultAvatar(it->globalData(), szNick, szUser, szHost);
+		}
 
 		if(KVS_TRIGGER_EVENT_3_HALTED(KviEvent_OnJoin, chan, szNick, szUser, szHost))
 			msg->setHaltOutput();
@@ -912,6 +914,9 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 				ctcp.bIgnored = false;
 				ctcp.bIsFlood = false;
 				ctcp.bUnknown = false;
+
+				KviLog(LogType::Info) <<"Initiating CTCP request from "<<szSourceNick.toStdString();
+
 				parseCtcpRequest(&ctcp);
 				return;
 			}
@@ -1132,6 +1137,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 						pOut = aWin;
 					else
 					{
+						// std::find()
 						for(auto & c : pConnection->channelList())
 						{
 							if(c->isOn(szOtherNick))

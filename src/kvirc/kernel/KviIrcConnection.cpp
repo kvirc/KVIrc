@@ -788,7 +788,7 @@ bool KviIrcConnection::sendFmtData(const char * pcFmt, ...)
 	QString szMsg = QString::fromLatin1((const char *)(pData->data()), iLen - 2);
 
 	// notify the monitors
-	for(auto & m : context()->monitorList())
+	for(const auto & m : context()->monitorList())
 	{
 		if(m->outgoingMessage(szMsg.toLatin1().data()))
 		{
@@ -1586,7 +1586,7 @@ void KviIrcConnection::loginToIrcServer()
 	KviIrcUserEntry * e = userDataBase()->find(userInfo()->nickName());
 
 	// our nick should be there!
-	if(e && !e->avatar())
+	if(e && !e->avatar() && KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar))
 	{
 		KviAvatar * av = m_pConsole->defaultAvatarFromOptions();
 		if(av)

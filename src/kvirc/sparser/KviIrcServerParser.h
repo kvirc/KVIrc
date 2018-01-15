@@ -283,7 +283,6 @@ private:
 	void parseCtcpRequestTime(KviCtcpMessage * msg);
 	void parseCtcpRequestAvatar(KviCtcpMessage * msg);
 	void parseCtcpRequestKvirc(KviCtcpMessage * msg);
-	void parseCtcpKvirc(KviCtcpMessage * msg, bool received_data_back);
 
 private:
 	void parseCtcpRequestDcc(KviCtcpMessage * msg);
@@ -305,10 +304,6 @@ private:
 	// IRCv3 stuffs
 	void parseLiteralAccount(KviIrcMessage * msg);
 	void parseLiteralChghost(KviIrcMessage * msg);
-
-public:
-	static void parseCtcpKvircGender(KviIrcServerParser *, KviCtcpMessage * msg, bool received_data_back);
-	static void parseCtcpKvircAvatar(KviIrcServerParser *, KviCtcpMessage * msg, bool received_data_back);
 
 public:
 	static void encodeCtcpParameter(const char * param, KviCString & buffer, bool bSpaceBreaks = true);

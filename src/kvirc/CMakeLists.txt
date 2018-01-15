@@ -73,6 +73,7 @@ set(kvirc_SRCS
 	ui/KviWindowStack.cpp
 	ui/KviTreeWindowList.cpp
 	sparser/KviAntiSpam.cpp
+	sparser/KviCtcpExtensionParser.cpp
 	sparser/KviIrcMessage.cpp
 	sparser/KviIrcServerParser_ctcp.cpp
 	sparser/KviIrcServerParser_literalHandlers.cpp

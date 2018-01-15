@@ -98,6 +98,7 @@ protected:
 	int m_nRefs;
 	bool m_bBot;
 	bool m_bAvatarRequested;
+	bool m_bExtensionsRequested;
 
 	bool m_bNotFoundRegUserLookup; //wtf?
 	QString m_szRegisteredUserName;
@@ -328,6 +329,17 @@ public:
 	* \brief Mark that kvirc is trying (already tried) to get user's avatar
 	*/
 	void setAvatarRequested() { m_bAvatarRequested = true; };
+
+	/**
+	* \brief Returns true if kvirc already made an attempt to request user's extensions
+	* \return bool
+	*/
+	bool extensionsRequested() const { return m_bExtensionsRequested; };
+
+	/**
+	* \brief Mark that kvirc is trying (already tried) to get user's extensions
+	*/
+	void setExtensionsRequested() { m_bExtensionsRequested = true; };
 
 	/**
 	* \brief Returns the account name (if any)

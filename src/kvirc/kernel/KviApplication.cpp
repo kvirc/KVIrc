@@ -87,6 +87,8 @@
 #include "KviPtrListIterator.h"
 #include "KviIrcNetwork.h"
 #include "KviRuntimeInfo.h"
+#include "KviBuildInfo.h"
+#include "KviLog.h"
 
 #include <QMenu>
 #include <algorithm>
@@ -245,6 +247,9 @@ void KviApplication::setup()
 	// This is a really critical phase since in general subsystems depend
 	// on each other and we must activate them in the right order.
 	// Don't move stuff around unless you really know what you're doing.
+	KviLog(LogType::Debug) << "--- Booting";
+	KviLog(LogType::Debug) << "Starting KVIrc " << KVI_VERSION << " " << KVI_RELEASE_NAME
+		<< " " << KviBuildInfo::buildRevision();
 
 	// Initialize the random number generator
 	::srand(::time(nullptr));
@@ -460,6 +465,7 @@ void KviApplication::setup()
 	// check if this is the first time this version of KVIrc runs...
 	if(firstTimeRun())
 	{
+		KviLog(LogType::Debug) << "First boot, running initial setup";
 		// Finish the setup...
 		setupFinish();
 		// ensure mainwindow is visible
@@ -468,9 +474,7 @@ void KviApplication::setup()
 
 	// hello world!
 	m_bSetupDone = true;
-
-	// We're REALLY up and running!
-	// kill the splash screen
+	KviLog(LogType::Debug) << "Completed setup";
 
 	if(KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart))
 		g_pMainWindow->executeInternalCommand(KVI_INTERNALCOMMAND_SERVERSJOIN_OPEN);

@@ -56,6 +56,7 @@
 #include "KviBuildInfo.h"
 #include "KviIrcConnectionServerInfo.h"
 #include "KviIrcMessage.h"
+#include "KviCtcpExtensionParser.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"
@@ -63,9 +64,6 @@
 #endif //COMPILE_CRYPT_SUPPORT
 
 #include <stdlib.h>
-
-#include <unordered_map>
-#include <functional>
 
 #include <QDateTime>
 #include <QLocale>
@@ -376,15 +374,6 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 			RESUME
 		[/pre]
 */
-
-using ctcp_request_parser = std::function<void(KviIrcServerParser *, KviCtcpMessage *, bool)>;
-#define KVI_CTCP_METHOD(_method) KviIrcServerParser::parseCtcpKvirc##_method
-const std::unordered_map<int, ctcp_request_parser> ctcp_request_parse_map ({
-	{ CTCP_KVI_FLAG_GENDER, KVI_CTCP_METHOD(Gender) },
-	{ CTCP_KVI_FLAG_AVATAR, KVI_CTCP_METHOD(Avatar) },
-	// { CTCP_KVI_FLAG_AGE   , KVI_CTCP_METHOD(Avatar) },
-});
-#undef KVI_CTCP_METHOD
 
 void KviIrcServerParser::encodeCtcpParameter(const char * param, KviCString & buffer, bool bSpaceBreaks)
 {
@@ -1651,56 +1640,14 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 	}
 }
 
-void KviIrcServerParser::parseCtcpKvirc(KviCtcpMessage * msg, bool received_data_back)
-{
-	uint64_t requests = 0;
-
-	try {
-		requests = std::stoi(std::string{msg->pData});
-	} catch (std::exception&) {
-		msg->msg->console()->output(KVI_OUT_SYSTEMWARNING,
-		    __tr2qs("Invalid KVIRC CTCP %Q command from \r!n\r%Q\r [%Q@\r!h\r%Q\r]"),
-		    &(msg->pData),
-		    &(msg->pSource->nick()),
-		    &(msg->pSource->user()), &(msg->pSource->host()),
-		    &msg->szTag);
-		return;
-	}
-
-	for (size_t ii = 0; ii < CTCP_KVI_MAX; ++ii)
-	{
-		const uint32_t flag = (1 << ii);
-		if (requests & flag)
-		{
-			auto got = ctcp_request_parse_map.find(flag);
-			if (got != ctcp_request_parse_map.end()) {
-				auto f = got->second;
-				f(this, msg, received_data_back);
-			}
-		}
-	}
-}
-
-// Static method, used with ctcp_request_parse_map
-void KviIrcServerParser::parseCtcpKvircGender(KviIrcServerParser *parser, KviCtcpMessage * msg, bool received_data_back)
-{
-	// TODO - Implement
-}
-
-// Static method, used with ctcp_request_parse_map
-void KviIrcServerParser::parseCtcpKvircAvatar(KviIrcServerParser *parser, KviCtcpMessage * msg, bool received_data_back)
-{
-	// TODO - Implement
-}
-
 void KviIrcServerParser::parseCtcpRequestKvirc(KviCtcpMessage * msg)
 {
-	this->parseCtcpKvirc(msg, false);
+	KviExtension::parse_extension(this, msg, false);
 }
 
 void KviIrcServerParser::parseCtcpReplyKvirc(KviCtcpMessage * msg)
 {
-	this->parseCtcpKvirc(msg, true);
+	KviExtension::parse_extension(this, msg, false);
 }
 
 // FIXME: #warning "UTSNAME ?...AND OTHER INFO ?...SYSTEM IDLE TIME ?...KVIRC IDLE TIME ?"
@@ -1785,6 +1732,9 @@ void KviIrcServerParser::parseCtcpReplyAvatar(KviCtcpMessage * msg)
 {
 	QString szRemoteFile;
 	QString szGender;
+
+	if (!KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar))
+		return;
 
 	QString buf = msg->msg->console()->decodeText(msg->pData);
 	buf = this->extractCtcpParameter(buf.toUtf8().data(), szRemoteFile, true);

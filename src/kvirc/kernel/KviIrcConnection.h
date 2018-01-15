@@ -84,6 +84,13 @@ class KviCString;
 #define CTCP_KVI_GENDER_FEMALE  (1 << 1)
 #define CTCP_KVI_SHARE_AVATAR   (1 << 2)
 
+constexpr uint32_t
+get_ctcp_kvi_patchlevel(int patchlevel)
+{
+	return (patchlevel &~
+		(CTCP_KVI_GENDER_MALE|CTCP_KVI_GENDER_FEMALE|CTCP_KVI_SHARE_AVATAR));
+}
+
 // Request flags, tells the remote user what we're
 // interested in.
 static constexpr uint64_t CTCP_KVI_MAX = 3;
