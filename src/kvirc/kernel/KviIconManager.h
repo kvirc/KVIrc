@@ -525,7 +525,7 @@ public:
 	~KviIconManager();
 
 private:
-	std::array<QPixmap *,IconCount> m_smallIcons = { nullptr };
+	std::array<QPixmap *,IconCount> m_smallIcons = { { nullptr } };
 	KviIconWidget * m_pIconWidget = nullptr;
 	KviPointerHashTable<QString, KviCachedPixmap> * m_pCachedImages = nullptr;
 	KviPointerHashTable<QString, int> * m_pIconNames = nullptr;
