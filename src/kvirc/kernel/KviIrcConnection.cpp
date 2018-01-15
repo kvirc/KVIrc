@@ -47,7 +47,6 @@
 #include "KviMainWindow.h"
 #include "KviMexLinkFilter.h"
 #include "KviMemory.h"
-#include "kvi_debug.h"
 #include "KviChannelWindow.h"
 #include "KviQueryWindow.h"
 #include "KviApplication.h"
@@ -66,6 +65,7 @@
 #include "KviSASL.h"
 #include "KviNickColors.h"
 #include "KviIrcNetwork.h"
+#include "KviLog.h"
 
 #include <QTimer>
 #include <QTextCodec>
@@ -1586,15 +1586,21 @@ void KviIrcConnection::loginToIrcServer()
 	KviIrcUserEntry * e = userDataBase()->find(userInfo()->nickName());
 
 	// our nick should be there!
-	if(e && !e->avatar() && KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar))
+	if(e && !e->avatar())
 	{
-		KviAvatar * av = m_pConsole->defaultAvatarFromOptions();
-		if(av)
-		{
-			e->setAvatar(av);
-			m_pConsole->notifyListView()->avatarChanged(userInfo()->nickName());
+		if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar)) {
+			KviAvatar * av = m_pConsole->defaultAvatarFromOptions();
+
+			if(av) {
+				e->setAvatar(av);
+				m_pConsole->notifyListView()->avatarChanged(userInfo()->nickName());
+			}
+		} else {
+			e->forgetAvatar();
 		}
-	} // else buuug, couldn't find our nick
+	} else {
+		KviLog(LogType::Error) <<"Unable to find our user entry for nick "<<userInfo()->nickName();
+	}
 
 	if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m", Qt::CaseInsensitive))
 		e->setGender(KviIrcUserEntry::Male);

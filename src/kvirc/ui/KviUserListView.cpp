@@ -357,13 +357,19 @@ void KviUserListView::applyOptions()
 	m_pViewArea->m_pScrollBar->setValue(0);
 
 	m_iTotalHeight = 0;
-	while(pEntry)
-	{
-		pEntry->updateAvatarData();
+
+	while(pEntry) {
+		if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar)) {
+			pEntry->updateAvatarData()
+		} else {
+			pEntry->detachAvatarData();
+		}
+
 		pEntry->recalcSize();
 		m_iTotalHeight += pEntry->m_iHeight;
 		pEntry = pEntry->m_pNext;
 	}
+
 	updateScrollBarRange();
 	m_pUsersLabel->setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
 	resizeEvent(nullptr); // this will call update() too

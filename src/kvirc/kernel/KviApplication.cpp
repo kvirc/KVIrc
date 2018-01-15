@@ -1195,6 +1195,7 @@ void KviApplication::fileDownloadTerminated(
 	{
 		if(windowExists(pAvatar->pConsole))
 		{
+			// Check for whitelisted domains
 			pAvatar->pConsole->setAvatar(
 			    pAvatar->szNick,
 			    pAvatar->szUser,
