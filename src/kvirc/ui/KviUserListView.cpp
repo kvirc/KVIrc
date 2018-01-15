@@ -123,6 +123,9 @@ void KviUserListEntry::updateAvatarData()
 {
 	detachAvatarData();
 
+	// if(!KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))
+	// 	return;
+
 	KviAvatar * pAv = m_pGlobalData->avatar();
 
 	if(!pAv) {
@@ -131,9 +134,6 @@ void KviUserListEntry::updateAvatarData()
 	}
 
 	m_bHasAv = true;
-
-	if(!KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))
-		return;
 
 	if(
 	    KVI_OPTION_BOOL(KviOption_boolScaleAvatars) && ((!KVI_OPTION_BOOL(KviOption_boolDoNotUpscaleAvatars)) || ((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) || ((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))))
@@ -458,6 +458,7 @@ void KviUserListView::animatedAvatarUpdated(KviUserListEntry * e)
 		iCurBottom = iCurTop + pEntry->m_iHeight;
 		if(pEntry == e)
 		{
+			KVI_ASSERT_MSG(pEntry->m_pAvatarPixmap, "461: pEntry object has a null AvatarPixmap");
 			rct.setX(iBaseX);
 			rct.setY(iCurTop + iBaseY);
 			rct.setWidth(pEntry->m_pAvatarPixmap->pixmap()->size().width());
@@ -1497,6 +1498,7 @@ KviUserListEntry * KviUserListView::itemAt(const QPoint & pnt, QRect * pRect)
 	int iCurTop = KVI_USERLIST_BORDER_WIDTH - m_pViewArea->m_iTopItemOffset;
 	int iCurBottom = 0;
 	KviUserListEntry * pEntry = m_pTopItem;
+
 	while(pEntry && (iCurTop <= m_pViewArea->height()))
 	{
 		iCurBottom = iCurTop + pEntry->m_iHeight;

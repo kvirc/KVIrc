@@ -26,6 +26,7 @@
 
 #include <QtGlobal>
 
+#include <kvirc/kernel/KviLog.h>
 #include "kvi_sysconfig.h"
 
 /**
@@ -43,6 +44,9 @@
 #define kvi_fatal(fmt, arg...) \
 	do                         \
 	{                          \
+		char buf[255];         \
+		snprintf(buf, sizeof(buf), fmt, __VA_ARGS__); \
+		KviLog(LogType::Fatal) <<"[kvi_fatal] "<<buf; \
 		qFatal(fmt, ##arg);    \
 		abort();               \
 	} while(0)
@@ -57,6 +61,9 @@
 #define kvi_fatal(fmt, ...)       \
 	do                            \
 	{                             \
+		char buf[255];            \
+		snprintf(buf, sizeof(buf), fmt, __VA_ARGS__); \
+		KviLog(LogType::Fatal) <<"[kvi_fatal] "<<buf; \
 		qFatal(fmt, __VA_ARGS__); \
 		abort();                  \
 	} while(0)
@@ -69,8 +76,10 @@
 #define KVI_ASSERT(condition)                                                                                       \
 	do                                                                                                              \
 	{                                                                                                               \
-		if(!(condition))                                                                                            \
+		if(!(condition)) {                                                                                          \
+			KviLog(LogType::Fatal) <<"[ASSERT FAILED] ("<<#condition<<") in "<<KVI_PRETTY_FUNCTION<<" at "<<__FILE__<<":"<<__LINE__; \
 			qFatal("[ASSERT FAILED] (" #condition ") in %s at %s:%u", KVI_PRETTY_FUNCTION, __FILE__, __LINE__);     \
+		}                                                                                                           \
 	} while(0)
 
 #define KVI_ASSERT_MSG(condition, message)                                                                          \
@@ -78,6 +87,8 @@
 	{                                                                                                               \
 		if(!(condition))                                                                                            \
 		{                                                                                                           \
+			KviLog(LogType::Fatal) <<"[ASSERT FAILED] ("<<#condition<<") in "<<KVI_PRETTY_FUNCTION<<" at "<<__FILE__<<":"<<__LINE__; \
+			KviLog(LogType::Fatal) <<"[ASSERT FAILED] "<<message;                                                   \
 			qFatal("[ASSERT FAILED] (" #condition ") in %s at %s:%u", KVI_PRETTY_FUNCTION, __FILE__, __LINE__);     \
 			qFatal("[ASSERT FAILED] " message);                                                                     \
 		}                                                                                                           \

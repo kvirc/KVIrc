@@ -354,19 +354,16 @@ void KviIrcServerParser::parseLiteralJoin(KviIrcMessage * msg)
 	}
 	else
 	{
+		// This must be someone else...(or desync)
+		int iFlags = 0;
+		iFlags = msg->connection()->serverInfo()->modeFlagFromModeChar(chExtMode);
+		KviUserListEntry *it = chan->join(szNick, szUser, szHost, iFlags);
 
-		if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar)) {
-			// This must be someone else...(or desync)
-			int iFlags = 0;
-			iFlags = msg->connection()->serverInfo()->modeFlagFromModeChar(chExtMode);
-			KviUserListEntry *it = chan->join(szNick, szUser, szHost, iFlags);
-
-			// FIXME: #warning "Trigger also OnVoice and OnOp here ?"
-			// Note: checkDefaultAvatar() makes a KviRegisteredUser lookup
-			//       if later it is needed, make it return a pointer
-			if(!(it->globalData()->avatar()))
-				console->checkDefaultAvatar(it->globalData(), szNick, szUser, szHost);
-		}
+		// FIXME: #warning "Trigger also OnVoice and OnOp here ?"
+		// Note: checkDefaultAvatar() makes a KviRegisteredUser lookup
+		//       if later it is needed, make it return a pointer
+		if(!(it->globalData()->avatar()))
+			console->checkDefaultAvatar(it->globalData(), szNick, szUser, szHost);
 
 		if(KVS_TRIGGER_EVENT_3_HALTED(KviEvent_OnJoin, chan, szNick, szUser, szHost))
 			msg->setHaltOutput();

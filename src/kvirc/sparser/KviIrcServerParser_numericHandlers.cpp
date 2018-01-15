@@ -1143,13 +1143,12 @@ void KviIrcServerParser::parseNumericWhospcrpl(KviIrcMessage * msg)
 						            && szReal[2].unicode() == KviControlCodes::Reset;
 					};
 
-					const bool supports_kvi_ctcp = supported(szReal[1].unicode() >= CTCP_KVI_PATCHLEVEL);
 					const bool legacy_avatar = supported(szReal[1].unicode() & CTCP_KVI_SHARE_AVATAR);
 					const uint32_t patch_level = get_ctcp_kvi_patchlevel(szReal[1].unicode());
 
 					KviLog(LogType::Debug) <<"Checking for supported REALNAME avatar... "<<
 					(
-						supports_kvi_ctcp ? ("CTCP_KVI_PATCHLEVEL " + patch_level)
+						patch_level ? ("CTCP_KVI_PATCHLEVEL " + patch_level)
 							: legacy_avatar ? ("legacy")
 							: "none"
 					);
@@ -1160,7 +1159,7 @@ void KviIrcServerParser::parseNumericWhospcrpl(KviIrcMessage * msg)
 						msg->connection()->sendFmtData("%s %s :%c%s%c", "PRIVMSG", d.data(), 0x01, "AVATAR", 0x01);
 						KviLog(LogType::Info) <<"Requesting legacy AVATAR... ";
 						e->setAvatarRequested();
-					} else if (supports_kvi_ctcp) {
+					} else if (patch_level) {
 						KviLog(LogType::Info) <<"Starting KVIRC CTCP Handshake via CTCP_KVI_PATCHLEVEL "<<patch_level;
 
 						std::stringstream ss;
