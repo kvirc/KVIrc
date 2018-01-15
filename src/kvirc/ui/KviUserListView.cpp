@@ -360,7 +360,7 @@ void KviUserListView::applyOptions()
 
 	while(pEntry) {
 		if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar)) {
-			pEntry->updateAvatarData()
+			pEntry->updateAvatarData();
 		} else {
 			pEntry->detachAvatarData();
 		}

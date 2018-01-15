@@ -928,7 +928,7 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage * msg)
 		// the avatar should never be cached nor requested).
 		if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar) && !IS_ME(msg, szNick))
 		{
-			KviLog(LogType::Debug) << "[RPL_WHOREPLY] !IS_ME("<<&msg<<", "<<szNick.toStdString()<<")";
+			// KviLog(LogType::Debug) << "[RPL_WHOREPLY] !IS_ME("<<&msg<<", "<<szNick.toStdString()<<")";
 			//no avatar? check for a cached one
 			if(!e->avatar())
 			{
@@ -955,8 +955,8 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage * msg)
 				KviLog(LogType::Debug) <<"Checking for supported REALNAME avatar... "<<
 					(
 						supports_kvi_ctcp ? ("CTCP_KVI_PATCHLEVEL " + patch_level)
-							: legacy_avatar ? ("legacy")
-							: "none"
+						    : legacy_avatar ? ("legacy")
+						    : "none"
 					);
 
 				if(legacy_avatar && KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar) && KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars) && !e->avatarRequested())
@@ -1082,8 +1082,8 @@ void KviIrcServerParser::parseNumericWhospcrpl(KviIrcMessage * msg)
 		KviIrcUserEntry * e = db->find(szNick);
 		if(e)
 		{
-			KviLog(LogType::Debug) << "[RPL_WHOSPCRPL] Found KviIrcUserEntry on channel "
-				<<szChan.toStdString()<<" for user "<<szNick.toStdString();
+			// KviLog(LogType::Debug) << "[RPL_WHOSPCRPL] Found KviIrcUserEntry on channel "
+			// 	<<szChan.toStdString()<<" for user "<<szNick.toStdString();
 
 			if(bHops)
 				e->setHops(hops);
