@@ -1940,7 +1940,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 					p.drawPixmap(iAvatarAndTextX, iTheY, *pPix);
 					iTheY += pPix->height() + 1;
 					KviLog(LogType::Debug) <<"Setting Avatar for "<<pEntry->m_szNick;
-				} else {
+				} else if (bShowGender) {
 					// User will have a KVIrc icon showing, indicating extra data
 					// is available.
 					QPixmap * pIco = g_pIconManager->getSmallIcon(KviIconManager::KVIrc);
