@@ -604,7 +604,7 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS] = {
 	UINT_OPTION("TimeStampBackground", KviControlCodes::Transparent, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	UINT_OPTION("UserExperienceLevel", 1, KviOption_sectFlagUser),
 	UINT_OPTION("ClassicWindowListMaximumButtonWidth", 100, KviOption_sectFlagGeometry | KviOption_resetUpdateGui | KviOption_groupTheme),
-	UINT_OPTION("DefaultBanType", 7, KviOption_sectFlagIrcSocket),
+	UINT_OPTION("DefaultBanType", 9, KviOption_sectFlagIrcSocket),
 	UINT_OPTION("IrcViewPixmapAlign", 0, KviOption_sectFlagIrcView | KviOption_groupTheme),
 	UINT_OPTION("UserListPixmapAlign", 0, KviOption_sectFlagFrame | KviOption_groupTheme),
 	UINT_OPTION("ToolBarAppletPixmapAlign", 0, KviOption_sectFlagFrame | KviOption_groupTheme),
