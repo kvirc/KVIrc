@@ -100,7 +100,6 @@ OptionsWidget_ctcpFloodProtection::OptionsWidget_ctcpFloodProtection(QWidget * p
 	addBoolSelector(g, __tr2qs_ctx("SOURCE", "options"), KviOption_boolIgnoreCtcpSource);
 	addBoolSelector(g, __tr2qs_ctx("TIME", "options"), KviOption_boolIgnoreCtcpTime);
 	addBoolSelector(g, __tr2qs_ctx("PAGE", "options"), KviOption_boolIgnoreCtcpPage);
-	addBoolSelector(g, __tr2qs_ctx("AVATAR", "options"), KviOption_boolIgnoreCtcpAvatar);
 	addBoolSelector(g, __tr2qs_ctx("DCC/TDCC", "options"), KviOption_boolIgnoreCtcpDcc);
 
 	addRowSpacer(0, 3, 1, 3);

@@ -233,14 +233,17 @@ OptionsWidget_userListFeatures::OptionsWidget_userListFeatures(QWidget * parent)
 	                        "<b>Please note</b> dragging method may not be as reliable and values set may be lost randomly, "
 	                        "However values will never be less than the width you specified.", "options"));
 
-	addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Show gender icons", "options"), KviOption_boolDrawGenderIcons);
+	KviBoolSelector * b = addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Show compability icon", "options"), KviOption_boolDrawGenderIcons);
+	mergeTip(b, __tr2qs_ctx("Signify's that the user has a KVIrc compatible client "
+							"when in-line avatars are disabled, otherwise, client "
+							"specific information.", "options"));
 	addBoolSelector(0, 2, 0, 2, __tr2qs_ctx("Show user rank channel icons", "options"), KviOption_boolShowUserChannelIcons);
 	addBoolSelector(0, 3, 0, 3, __tr2qs_ctx("Show user channel activity indicator", "options"), KviOption_boolShowUserChannelState);
 	addBoolSelector(0, 4, 0, 4, __tr2qs_ctx("Show label with userlist stats", "options"), KviOption_boolShowUserListStatisticLabel);
 	addBoolSelector(0, 5, 0, 5, __tr2qs_ctx("Enable user tooltip", "options"), KviOption_boolShowUserListViewToolTips);
 	addBoolSelector(0, 6, 0, 6, __tr2qs_ctx("Show avatars in userlist", "options"), KviOption_boolShowAvatarsInUserlist);
 	addBoolSelector(0, 7, 0, 7, __tr2qs_ctx("Enable animated avatars", "options"), KviOption_boolEnableAnimatedAvatars);
-	KviBoolSelector * b = addBoolSelector(0, 8, 0, 8, __tr2qs_ctx("Place nicks starting with non-alpha characters (such as _COOL_BOY_) last", "options"), KviOption_boolPlaceNickWithNonAlphaCharsAtEnd);
+	b = addBoolSelector(0, 8, 0, 8, __tr2qs_ctx("Place nicks starting with non-alpha characters (such as _COOL_BOY_) last", "options"), KviOption_boolPlaceNickWithNonAlphaCharsAtEnd);
 	mergeTip(b, __tr2qs_ctx("All nicknames which include characters such as [ ] ^ _ &lt; &gt; | etc. "
 	                        "will be sorted last in userlist after all regular nicknames.<br>"
 	                        "Select this option if you prefer to see regular nicknames sorted topmost "

@@ -53,11 +53,14 @@
 #include "KviKvsVariantList.h"
 #include "KviIdentityProfileSet.h"
 #include "KviIrcMessage.h"
+#include "KviLog.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"
 #include "KviCryptController.h"
 #endif
+
+#include <sstream>
 
 #include <QPixmap>
 #include <QDateTime>
@@ -923,27 +926,62 @@ void KviIrcServerParser::parseNumericWhoReply(KviIrcMessage * msg)
 
 		// Check for the avatar unless the entry refers to the local user (in which case
 		// the avatar should never be cached nor requested).
-		if(!IS_ME(msg, szNick))
+		if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar) && !IS_ME(msg, szNick))
 		{
+			// KviLog(LogType::Debug) << "[RPL_WHOREPLY] !IS_ME("<<&msg<<", "<<szNick.toStdString()<<")";
 			//no avatar? check for a cached one
 			if(!e->avatar())
 			{
+				KviLog(LogType::Debug) << "[RPL_WHOREPLY] Checking default avatar for "<<szNick.toStdString();
 				// FIXME: #warning "THE AVATAR SHOULD BE RESIZED TO MATCH THE MAX WIDTH/HEIGHT"
 				// maybe now we can match this user ?
 				msg->console()->checkDefaultAvatar(e, szNick, szUser, szHost);
+				KviLog(LogType::Debug) << "[RPL_WHOREPLY] "<<(e->avatar() ? "Found" : "Could not find")
+					<<" cached avatar for "<<szNick.toStdString();
 			}
 			//still no avatar? check if the user is exposing the fact that he's got one
 			if(!e->avatar())
 			{
-				if((szReal[0].unicode() == KviControlCodes::Color) && (szReal[1].unicode() & 4) && (szReal[2].unicode() == KviControlCodes::Reset))
+
+				auto supported = [&](const auto flag) -> bool {
+					return flag && szReal[0].unicode() == KviControlCodes::Color
+					            && szReal[2].unicode() == KviControlCodes::Reset;
+				};
+
+				const bool supports_kvi_ctcp = supported(szReal[1].unicode() >= CTCP_KVI_PATCHLEVEL);
+				const bool legacy_avatar = supported(szReal[1].unicode() & CTCP_KVI_SHARE_AVATAR);
+				const uint32_t patch_level = get_ctcp_kvi_patchlevel(szReal[1].unicode());
+				std::stringstream patch_level_string;
+				patch_level_string << "CTCP_KVI_PATCHLEVEL " << patch_level;
+
+				KviLog(LogType::Debug) <<"Checking for supported REALNAME avatar... "<<
+					(
+						supports_kvi_ctcp ? patch_level_string.str()
+						    : legacy_avatar ? ("legacy")
+						    : "none"
+					);
+
+				if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar) && KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars) && !e->avatarRequested())
 				{
-					if(KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars) && !e->avatarRequested())
-					{
-						QByteArray d = msg->connection()->encodeText(szNick);
-						msg->connection()->sendFmtData("%s %s :%c%s%c", "PRIVMSG", d.data(), 0x01, "AVATAR", 0x01);
-						e->setAvatarRequested();
-					}
+					QByteArray d = msg->connection()->encodeText(szNick);
+					msg->connection()->sendFmtData("%s %s :%c%s%c", "PRIVMSG", d.data(), 0x01, "AVATAR", 0x01);
+					KviLog(LogType::Info) <<"Requesting legacy AVATAR... ";
+					e->setAvatarRequested();
 				}
+				// else if (supports_kvi_ctcp) {
+				// 	KviLog(LogType::Info) <<"Starting KVIRC CTCP Handshake via CTCP_KVI_PATCHLEVEL "<<patch_level;
+
+				// 	std::stringstream ss;
+				// 	ss << msg->connection()->encodeText(szNick).data() << " PRIVMSG :" << 0x01 << "KVIRC" << 0x01;
+				// 	uint32_t send_flags = CTCP_KVI_REQUESTING;
+				// 	if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpGender))
+				// 		send_flags |= CTCP_KVI_FLAG_GENDER;
+				// 	if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar))
+				// 		send_flags |= CTCP_KVI_FLAG_GENDER;
+				// 	ss << " " << send_flags;
+
+				// 	msg->connection()->sendData(ss.str().c_str());
+				// }
 			}
 		}
 
@@ -1016,6 +1054,7 @@ void KviIrcServerParser::parseNumericWhospcrpl(KviIrcMessage * msg)
 	}
 	else
 	{
+		KviLog(LogType::Debug) << "[RPL_WHOSPCRPL] Unable to find channel "<<szChan.toStdString();
 		return;
 	}
 
@@ -1046,6 +1085,9 @@ void KviIrcServerParser::parseNumericWhospcrpl(KviIrcMessage * msg)
 		KviIrcUserEntry * e = db->find(szNick);
 		if(e)
 		{
+			// KviLog(LogType::Debug) << "[RPL_WHOSPCRPL] Found KviIrcUserEntry on channel "
+			// 	<<szChan.toStdString()<<" for user "<<szNick.toStdString();
+
 			if(bHops)
 				e->setHops(hops);
 			e->setUser(szUser);
@@ -1057,32 +1099,87 @@ void KviIrcServerParser::parseNumericWhospcrpl(KviIrcMessage * msg)
 			e->setAccountName(szAcct == "0" ? "" : szAcct);
 
 			KviQueryWindow * q = msg->connection()->findQuery(szNick);
-			if(q)
-				q->updateLabelText();
+			if(q) q->updateLabelText();
 
 			// Check for the avatar unless the entry refers to the local user (in which case
 			// the avatar should never be cached nor requested).
-			if(!IS_ME(msg, szNick))
+			if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar) && !IS_ME(msg, szNick))
 			{
+				KviLog(LogType::Debug) << "[RPL_WHOSPCRPL] !IS_ME("<<&msg<<", "<<szNick.toStdString()<<")";
 				//no avatar? check for a cached one
 				if(!e->avatar())
 				{
+					KviLog(LogType::Debug) << "[RPL_WHOSPCRPL] Checking default avatar for "<<szNick.toStdString();
 					// FIXME: #warning "THE AVATAR SHOULD BE RESIZED TO MATCH THE MAX WIDTH/HEIGHT"
 					// maybe now we can match this user ?
 					msg->console()->checkDefaultAvatar(e, szNick, szUser, szHost);
+					KviLog(LogType::Debug) << "[RPL_WHOSPCRPL] "<<(e->avatar() ? "Found" : "Could not find")
+						<<" cached avatar for "<<szNick.toStdString();
 				}
 				//still no avatar? check if the user is exposing the fact that he's got one
+				// TODO - Store remote's KVIrc protocol version (if e->avatar() || e->kvi_version())
 				if(!e->avatar())
 				{
-					if((szReal[0].unicode() == KviControlCodes::Color) && (szReal[1].unicode() & 4) && (szReal[2].unicode() == KviControlCodes::Reset))
+					// TODO - Send our cababilities. The avatar stuff is kind of legacy,
+					// so it'd work something like this...
+					//
+					// if supports_kvi_ctcp == false: only request avatar if they're advertising
+					// if supports_kvi_ctcp:
+					//     // request what we want
+					//     uint32_t req_flags = CTCP_KVI_REQUESTING;
+					//     if (want_age)       req_flags |= CTCP_KVI_FLAG_AGE
+					//     if (want_idle_time) req_flags |= CTCP_KVI_IDLE_TIME
+					//
+					// Making the request look like:
+					//     PRIVMSG someuser :0x01KVIRC0x01 25
+					//
+					// Then we can play the parameter ordering game. Since the repsonse
+					// would be something like:
+					//     n!u@h PRIVMSG BlindSight :0x01KVIRC0x01 24 23 45
+					// In which `24` represents the bitmask'd version of the flags the client
+					// is sending, 23 would be the age, and 45 represents idle time in seconds.
+					// This will only work for single-parameter arguments, so it will need to
+					// be expanded somehow (avatars could be a URL if it fits, otherwise we could
+					// just instantiate a DCC session after the reply is sent.
+					auto supported = [&](const auto flag) -> bool {
+						return flag && szReal[0].unicode() == KviControlCodes::Color
+						            && szReal[2].unicode() == KviControlCodes::Reset;
+					};
+
+					const bool supports_kvi_ctcp = supported(szReal[1].unicode() >= CTCP_KVI_PATCHLEVEL);
+					const bool legacy_avatar = supported(szReal[1].unicode() & CTCP_KVI_SHARE_AVATAR);
+					const uint32_t patch_level = get_ctcp_kvi_patchlevel(szReal[1].unicode());
+					std::stringstream patch_level_string;
+					patch_level_string << "CTCP_KVI_PATCHLEVEL " << patch_level;
+
+					KviLog(LogType::Debug) <<"Checking for supported REALNAME avatar... "<<
+						(
+							supports_kvi_ctcp ? patch_level_string.str()
+							    : legacy_avatar ? ("legacy")
+							    : "none"
+						);
+
+					if(KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars) && !e->avatarRequested())
 					{
-						if(KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars) && !e->avatarRequested())
-						{
-							QByteArray d = msg->connection()->encodeText(szNick);
-							msg->connection()->sendFmtData("%s %s :%c%s%c", "PRIVMSG", d.data(), 0x01, "AVATAR", 0x01);
-							e->setAvatarRequested();
-						}
+						QByteArray d = msg->connection()->encodeText(szNick);
+						msg->connection()->sendFmtData("%s %s :%c%s%c", "PRIVMSG", d.data(), 0x01, "AVATAR", 0x01);
+						KviLog(LogType::Info) <<"Requesting legacy AVATAR... ";
+						e->setAvatarRequested();
 					}
+					// else if (patch_level) {
+					// 	KviLog(LogType::Info) <<"Starting KVIRC CTCP Handshake via CTCP_KVI_PATCHLEVEL "<<patch_level;
+
+					// 	std::stringstream ss;
+					// 	ss << msg->connection()->encodeText(szNick).data() << " PRIVMSG :" << 0x01 << "KVIRC" << 0x01;
+					// 	uint32_t send_flags = CTCP_KVI_REQUESTING;
+					// 	if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpGender))
+					// 		send_flags |= CTCP_KVI_FLAG_GENDER;
+					// 	if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar))
+					// 		send_flags |= CTCP_KVI_FLAG_GENDER;
+					// 	ss << " " << send_flags;
+
+					// 	msg->connection()->sendData(ss.str().c_str());
+					// }
 				}
 			}
 			//this has to be done after the avatar part
@@ -1573,7 +1670,7 @@ void KviIrcServerParser::parseNumericWhoisUser(KviIrcMessage * msg)
 
 		// Check for the avatar unless the entry refers to the local user (in which case
 		// the avatar should never be cached nor requested).
-		if(!IS_ME(msg, szNick) && !e->avatar())
+		if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar) && !IS_ME(msg, szNick) && !e->avatar())
 		{
 			// FIXME: #warning "THE AVATAR SHOULD BE RESIZED TO MATCH THE MAX WIDTH/HEIGHT"
 			// maybe now we can match this user ?

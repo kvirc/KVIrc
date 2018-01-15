@@ -100,6 +100,16 @@ KviOptionsWidget * classOptionsWidget_avatar_createInstanceProc(QWidget * parent
 	return new OptionsWidget_avatar(parent);
 }
 
+KviOptionsWidget * classOptionsWidget_avatarBasic_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_avatarBasic(parent);
+}
+
+KviOptionsWidget * classOptionsWidget_avatarAdvanced_createInstanceProc(QWidget * parent)
+{
+	return new OptionsWidget_avatarAdvanced(parent);
+}
+
 KviOptionsWidget * classOptionsWidget_away_createInstanceProc(QWidget * parent)
 {
 	return new OptionsWidget_away(parent);
@@ -485,6 +495,8 @@ KviOptionsWidget * classOptionsWidget_windowListClassic_createInstanceProc(QWidg
 	return new OptionsWidget_windowListClassic(parent);
 }
 
+
+
 static const char * g_szName_OptionsWidget_alertsAndHighlighting = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_alertsAndHighlighting;
 static const char * g_szClassName_OptionsWidget_alertsAndHighlighting = "OptionsWidget_alertsAndHighlighting";
 static const char * g_szName_OptionsWidget_highlighting = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_highlighting;
@@ -495,6 +507,10 @@ static const char * g_szName_OptionsWidget_antispam = KVI_OPTIONS_WIDGET_NAME_Op
 static const char * g_szClassName_OptionsWidget_antispam = "OptionsWidget_antispam";
 static const char * g_szName_OptionsWidget_avatar = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatar;
 static const char * g_szClassName_OptionsWidget_avatar = "OptionsWidget_avatar";
+static const char * g_szName_OptionsWidget_avatarBasic = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatarBasic;
+static const char * g_szClassName_OptionsWidget_avatarBasic = "OptionsWidget_avatarBasic";
+static const char * g_szName_OptionsWidget_avatarAdvanced = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatarAdvanced;
+static const char * g_szClassName_OptionsWidget_avatarAdvanced = "OptionsWidget_avatarAdvanced";
 static const char * g_szName_OptionsWidget_away = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_away;
 static const char * g_szClassName_OptionsWidget_away = "OptionsWidget_away";
 static const char * g_szName_OptionsWidget_channel = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_channel;
@@ -651,13 +667,14 @@ static const char * g_szName_OptionsWidget_windowListClassic = KVI_OPTIONS_WIDGE
 static const char * g_szClassName_OptionsWidget_windowListClassic = "OptionsWidget_windowListClassic";
 
 OptionsInstanceManager::OptionsInstanceManager()
-    : QObject(nullptr)
+	: QObject(nullptr)
 {
 
 	//qDebug("Instantiating");
 	// Create the global widget dict : case sensitive, do not copy keys
 	m_pInstanceTree = new KviPointerList<OptionsWidgetInstanceEntry>;
 	m_pInstanceTree->setAutoDelete(true);
+
 
 	OptionsWidgetInstanceEntry * e0;
 	e0 = new OptionsWidgetInstanceEntry;
@@ -2451,7 +2468,81 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e2->szNameNoLocale = g_szName_OptionsWidget_avatar;
 	e2->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_avatar, "options");
 	e1->pChildList->append(e2);
-	e2->pChildList = nullptr;
+
+	e2->pChildList = new KviPointerList<OptionsWidgetInstanceEntry>;
+	e2->pChildList->setAutoDelete(true);
+
+	e3 = new OptionsWidgetInstanceEntry;
+	e3->createProc = &classOptionsWidget_avatarBasic_createInstanceProc;
+	e3->pWidget = nullptr;
+	e3->szClassName = g_szClassName_OptionsWidget_avatarBasic;
+	e3->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_avatarBasic;
+#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_avatarBasic
+	e3->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_avatarBasic;
+#else
+	e3->iPriority = 0;
+#endif
+#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_avatarBasic
+	e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatarBasic "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_avatarBasic;
+#else
+	e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatarBasic;
+#endif
+	e3->szKeywords = __tr2qs_ctx_no_xgettext(e3->szKeywordsNoLocale.toUtf8().data(), "options");
+#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_avatarBasic
+	e3->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_avatarBasic;
+#else
+	e3->szGroup = "general";
+#endif
+#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_avatarBasic
+	e3->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_avatarBasic;
+#else
+	e3->bIsContainer = false;
+#endif
+#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_avatarBasic
+	e3->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_avatarBasic;
+#else
+	e3->bIsNotContained = false;
+#endif
+	e3->szNameNoLocale = g_szName_OptionsWidget_avatarBasic;
+	e3->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_avatarBasic, "options");
+	e2->pChildList->append(e3);
+	e3->pChildList = nullptr;
+
+	e3 = new OptionsWidgetInstanceEntry;
+	e3->createProc = &classOptionsWidget_avatarAdvanced_createInstanceProc;
+	e3->pWidget = nullptr;
+	e3->szClassName = g_szClassName_OptionsWidget_avatarAdvanced;
+	e3->eIcon = KVI_OPTIONS_WIDGET_ICON_OptionsWidget_avatarAdvanced;
+#ifdef KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_avatarAdvanced
+	e3->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_OptionsWidget_avatarAdvanced;
+#else
+	e3->iPriority = 0;
+#endif
+#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_avatarAdvanced
+	e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatarAdvanced "," KVI_OPTIONS_WIDGET_KEYWORDS_OptionsWidget_avatarAdvanced;
+#else
+	e3->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_NAME_OptionsWidget_avatarAdvanced;
+#endif
+	e3->szKeywords = __tr2qs_ctx_no_xgettext(e3->szKeywordsNoLocale.toUtf8().data(), "options");
+#ifdef KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_avatarAdvanced
+	e3->szGroup = KVI_OPTIONS_WIDGET_GROUP_OptionsWidget_avatarAdvanced;
+#else
+	e3->szGroup = "general";
+#endif
+#ifdef KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_avatarAdvanced
+	e3->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_OptionsWidget_avatarAdvanced;
+#else
+	e3->bIsContainer = false;
+#endif
+#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_avatarAdvanced
+	e3->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_OptionsWidget_avatarAdvanced;
+#else
+	e3->bIsNotContained = false;
+#endif
+	e3->szNameNoLocale = g_szName_OptionsWidget_avatarAdvanced;
+	e3->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_avatarAdvanced, "options");
+	e2->pChildList->append(e3);
+	e3->pChildList = nullptr;
 
 	e2 = new OptionsWidgetInstanceEntry;
 	e2->createProc = &classOptionsWidget_away_createInstanceProc;
@@ -3650,6 +3741,7 @@ OptionsInstanceManager::OptionsInstanceManager()
 	e1->szName = __tr2qs_ctx_no_xgettext(g_szName_OptionsWidget_windowListClassic, "options");
 	e0->pChildList->append(e1);
 	e1->pChildList = nullptr;
+
 }
 
 void OptionsInstanceManager::deleteInstanceTree(KviPointerList<OptionsWidgetInstanceEntry> * pList)
@@ -3662,13 +3754,11 @@ void OptionsInstanceManager::deleteInstanceTree(KviPointerList<OptionsWidgetInst
 			{
 				if(pEntry->pWidget->parent()->inherits("OptionsWidgetContainer"))
 				{
-					disconnect(pEntry->pWidget, SIGNAL(destroyed()), this, SLOT(widgetDestroyed()));
+					disconnect(pEntry->pWidget,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
 					delete pEntry->pWidget->parent();
-					pEntry->pWidget = nullptr;
-				}
-				else
-				{
-					qDebug("Oops! Have I deleted the options dialog?");
+					pEntry->pWidget =  0;
+				} else {
+					qDebug("Oops! i have deleted the options dialog ?");
 				}
 			} //else qDebug("Class %s has no widget",e->szName);
 			if(pEntry->pChildList)
@@ -3697,6 +3787,7 @@ void OptionsInstanceManager::widgetDestroyed()
 		pEntry->pWidget = nullptr;
 	if(g_iOptionWidgetInstances > 0)
 		g_iOptionWidgetInstances--;
+
 }
 
 KviOptionsWidget * OptionsInstanceManager::getInstance(OptionsWidgetInstanceEntry * pEntry, QWidget * pPar)
@@ -3712,7 +3803,7 @@ KviOptionsWidget * OptionsInstanceManager::getInstance(OptionsWidgetInstanceEntr
 			QWidget * pOldPar = (QWidget *)pEntry->pWidget->parent();
 			pEntry->pWidget->setParent(pPar);
 			pOldPar->deleteLater();
-			pEntry->pWidget = 0;
+			pEntry->pWidget = nullptr;
 		}
 	}
 #endif
@@ -3721,7 +3812,7 @@ KviOptionsWidget * OptionsInstanceManager::getInstance(OptionsWidgetInstanceEntr
 	{
 		pEntry->pWidget = pEntry->createProc(pPar);
 		g_iOptionWidgetInstances++;
-		connect(pEntry->pWidget, SIGNAL(destroyed()), this, SLOT(widgetDestroyed()));
+		connect(pEntry->pWidget,SIGNAL(destroyed()),this,SLOT(widgetDestroyed()));
 	}
 
 	if(pEntry->pWidget->parent() != pPar)
@@ -3756,14 +3847,14 @@ KviOptionsWidget * OptionsInstanceManager::getInstance(OptionsWidgetInstanceEntr
 						iIdx++;
 						pEntry3 = tmpList.next();
 					}
-					tmpList.insert(iIdx, pEntry2);
+					tmpList.insert(iIdx,pEntry2);
 				}
 			}
 
 			for(OptionsWidgetInstanceEntry * pEntry4 = tmpList.last(); pEntry4; pEntry4 = tmpList.prev())
 			{
-				KviOptionsWidget * pOpt = getInstance(pEntry4, pEntry->pWidget->tabWidget());
-				pEntry->pWidget->addOptionsWidget(pEntry4->szName, *(g_pIconManager->getSmallIcon(pEntry4->eIcon)), pOpt);
+				KviOptionsWidget * pOpt = getInstance(pEntry4,pEntry->pWidget->tabWidget());
+				pEntry->pWidget->addOptionsWidget(pEntry4->szName,*(g_pIconManager->getSmallIcon(pEntry4->eIcon)),pOpt);
 			}
 		}
 	}
@@ -3795,7 +3886,7 @@ OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const cha
 	{
 		for(OptionsWidgetInstanceEntry * pEntry = pList->first(); pEntry; pEntry = pList->next())
 		{
-			if(kvi_strEqualCI(pEntry->szClassName, pcName))
+			if(kvi_strEqualCI(pEntry->szClassName,pcName))
 				return pEntry;
 			if(pEntry->pChildList)
 			{
@@ -3812,3 +3903,4 @@ OptionsWidgetInstanceEntry * OptionsInstanceManager::findInstanceEntry(const cha
 {
 	return findInstanceEntry(pcName, m_pInstanceTree);
 }
+

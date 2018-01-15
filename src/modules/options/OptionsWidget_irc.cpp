@@ -69,9 +69,9 @@ OptionsWidget_ircAdvanced::OptionsWidget_ircAdvanced(QWidget * parent)
 	                        "to close the connection.<br>"
 	                        "Note that if you use this, your QUIT message may be not displayed.","options"));
 
-	addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Prepend gender info to real name", "options"), KviOption_boolPrependGenderInfoToRealname);
-	addBoolSelector(0, 2, 0, 2, __tr2qs_ctx("Prepend avatar info to real name", "options"), KviOption_boolPrependAvatarInfoToRealname);
-	b = addBoolSelector(0, 3, 0, 3, __tr2qs_ctx("Prepend smart nick color info to real name", "options"), KviOption_boolPrependNickColorInfoToRealname);
+	addBoolSelector(0, 2, 0, 2, __tr2qs_ctx("Enable KVIrc extensions (Avatars, gender, etc)", "options"), KviOption_boolEnableKvircExtensions);
+	addBoolSelector(0, 1, 0, 1, __tr2qs_ctx("Share gender information (KVIrc extension)", "options"), KviOption_boolEnableKviCtcpGender);
+	b = addBoolSelector(0, 3, 0, 3, __tr2qs_ctx("Share nickname color", "options"), KviOption_boolEnableKviCtcpNickColor);
 	mergeTip(b, __tr2qs_ctx("This feature will not work if you have chosen your "
 	                        "nick background color to be transparent.", "options"));
 

@@ -282,6 +282,9 @@ private:
 	void parseCtcpRequestAction(KviCtcpMessage * msg);
 	void parseCtcpRequestTime(KviCtcpMessage * msg);
 	void parseCtcpRequestAvatar(KviCtcpMessage * msg);
+	void parseCtcpRequestKvirc(KviCtcpMessage * msg);
+
+private:
 	void parseCtcpRequestDcc(KviCtcpMessage * msg);
 	void parseCtcpRequestPage(KviCtcpMessage * msg);
 	void parseCtcpReplyAvatar(KviCtcpMessage * msg);
@@ -289,6 +292,7 @@ private:
 	void parseCtcpReplyGeneric(KviCtcpMessage * msg);
 	void parseCtcpReplyPing(KviCtcpMessage * msg);
 	void parseCtcpReplyLagcheck(KviCtcpMessage * msg);
+	void parseCtcpReplyKvirc(KviCtcpMessage * msg);
 	//	void parseCtcpReply(const char * msg_ptr,KviIrcUser &source,const char * target);
 	// STARTTLS support
 	void parseNumericStartTls(KviIrcMessage * msg);

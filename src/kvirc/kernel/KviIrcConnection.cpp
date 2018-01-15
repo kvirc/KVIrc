@@ -47,7 +47,6 @@
 #include "KviMainWindow.h"
 #include "KviMexLinkFilter.h"
 #include "KviMemory.h"
-#include "kvi_debug.h"
 #include "KviChannelWindow.h"
 #include "KviQueryWindow.h"
 #include "KviApplication.h"
@@ -66,6 +65,7 @@
 #include "KviSASL.h"
 #include "KviNickColors.h"
 #include "KviIrcNetwork.h"
+#include "KviLog.h"
 
 #include <QTimer>
 #include <QTextCodec>
@@ -788,7 +788,7 @@ bool KviIrcConnection::sendFmtData(const char * pcFmt, ...)
 	QString szMsg = QString::fromLatin1((const char *)(pData->data()), iLen - 2);
 
 	// notify the monitors
-	for(auto & m : context()->monitorList())
+	for(const auto & m : context()->monitorList())
 	{
 		if(m->outgoingMessage(szMsg.toLatin1().data()))
 		{
@@ -1536,21 +1536,21 @@ void KviIrcConnection::loginToIrcServer()
 		return;
 
 	unsigned int iGenderAvatarTag = 0;
+	if(KVI_OPTION_BOOL(KviOption_boolEnableKvircExtensions))
+		iGenderAvatarTag |= CTCP_KVI_PATCHLEVEL;
 
-	if(KVI_OPTION_BOOL(KviOption_boolPrependGenderInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).isEmpty())
+	if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpGender) && !KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).isEmpty())
 	{
 		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m", Qt::CaseInsensitive))
-			iGenderAvatarTag |= 1;
+			iGenderAvatarTag |= CTCP_KVI_GENDER_MALE;
 		else if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("f", Qt::CaseInsensitive))
-			iGenderAvatarTag |= 2;
+			iGenderAvatarTag |= CTCP_KVI_GENDER_FEMALE;
 	}
 
-	if(KVI_OPTION_BOOL(KviOption_boolPrependAvatarInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty())
-	{
-		iGenderAvatarTag |= 4;
-	}
+	if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar) && !KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty())
+		iGenderAvatarTag |= CTCP_KVI_SHARE_AVATAR;
 
-	if(KVI_OPTION_BOOL(KviOption_boolPrependNickColorInfoToRealname) && KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
+	if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpNickColor) && KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
 	{
 		QString szTags;
 		int iBack = KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground);
@@ -1588,13 +1588,19 @@ void KviIrcConnection::loginToIrcServer()
 	// our nick should be there!
 	if(e && !e->avatar())
 	{
-		KviAvatar * av = m_pConsole->defaultAvatarFromOptions();
-		if(av)
-		{
-			e->setAvatar(av);
-			m_pConsole->notifyListView()->avatarChanged(userInfo()->nickName());
+		if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar)) {
+			KviAvatar * av = m_pConsole->defaultAvatarFromOptions();
+
+			if(av) {
+				e->setAvatar(av);
+				m_pConsole->notifyListView()->avatarChanged(userInfo()->nickName());
+			}
+		} else {
+			e->forgetAvatar();
 		}
-	} // else buuug, couldn't find our nick
+	} else {
+		KviLog(LogType::Error) <<"Unable to find our user entry for nick "<<userInfo()->nickName();
+	}
 
 	if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m", Qt::CaseInsensitive))
 		e->setGender(KviIrcUserEntry::Male);

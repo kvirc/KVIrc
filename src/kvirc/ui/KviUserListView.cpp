@@ -24,7 +24,6 @@
 
 #define _KVI_USERLISTVIEW_CPP_
 
-#include "kvi_debug.h"
 #include "KviUserListView.h"
 #include "kvi_settings.h"
 #include "KviLocale.h"
@@ -45,6 +44,7 @@
 #include "KviIrcConnection.h"
 #include "KviIrcConnectionServerInfo.h"
 #include "KviPixmapUtils.h"
+#include "KviLog.h"
 
 #include <QLabel>
 #include <QScrollBar>
@@ -130,6 +130,8 @@ void KviUserListEntry::updateAvatarData()
 
 	if(!pAv)
 		return;
+
+	m_bHasAv = true;
 
 	if(
 	    KVI_OPTION_BOOL(KviOption_boolScaleAvatars) && ((!KVI_OPTION_BOOL(KviOption_boolDoNotUpscaleAvatars)) || ((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) || ((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))))
@@ -357,13 +359,19 @@ void KviUserListView::applyOptions()
 	m_pViewArea->m_pScrollBar->setValue(0);
 
 	m_iTotalHeight = 0;
-	while(pEntry)
-	{
-		pEntry->updateAvatarData();
+
+	while(pEntry) {
+		if (KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar)) {
+			pEntry->updateAvatarData();
+		} else {
+			pEntry->detachAvatarData();
+		}
+
 		pEntry->recalcSize();
 		m_iTotalHeight += pEntry->m_iHeight;
 		pEntry = pEntry->m_pNext;
 	}
+
 	updateScrollBarRange();
 	m_pUsersLabel->setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
 	resizeEvent(nullptr); // this will call update() too
@@ -448,6 +456,7 @@ void KviUserListView::animatedAvatarUpdated(KviUserListEntry * e)
 		iCurBottom = iCurTop + pEntry->m_iHeight;
 		if(pEntry == e)
 		{
+			KVI_ASSERT_MSG(pEntry->m_pAvatarPixmap, "461: pEntry object has a null AvatarPixmap");
 			rct.setX(iBaseX);
 			rct.setY(iCurTop + iBaseY);
 			rct.setWidth(pEntry->m_pAvatarPixmap->pixmap()->size().width());
@@ -1487,6 +1496,7 @@ KviUserListEntry * KviUserListView::itemAt(const QPoint & pnt, QRect * pRect)
 	int iCurTop = KVI_USERLIST_BORDER_WIDTH - m_pViewArea->m_iTopItemOffset;
 	int iCurBottom = 0;
 	KviUserListEntry * pEntry = m_pTopItem;
+
 	while(pEntry && (iCurTop <= m_pViewArea->height()))
 	{
 		iCurBottom = iCurTop + pEntry->m_iHeight;
@@ -1922,32 +1932,49 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 			}
 			iTheY += 2;
 
-			if(KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist))
-			{
-				if(pEntry->m_pAvatarPixmap)
-				{
+			bool have_avatar_icon = false;
+			if (pEntry->m_bHasAv) {
+				if(KVI_OPTION_BOOL(KviOption_boolShowAvatarsInUserlist)) {
+					// User will have their avatar shown
 					QPixmap * pPix = pEntry->m_pAvatarPixmap->pixmap();
 					p.drawPixmap(iAvatarAndTextX, iTheY, *pPix);
 					iTheY += pPix->height() + 1;
+					// KviLog(LogType::Debug) <<"Setting Avatar for "<<pEntry->m_szNick;
+				} else if (bShowGender) {
+					// User will have a KVIrc icon showing, indicating extra data
+					// is available.
+					QPixmap * pIco = g_pIconManager->getSmallIcon(KviIconManager::KVIrc);
+					p.drawPixmap(iTheX, iTheY + (m_pListView->m_iFontHeight - 16) / 2, *pIco);
+					iTheX += KVI_USERLIST_ICON_WIDTH + KVI_USERLIST_ICON_MARGIN;
+					have_avatar_icon = true;
+					// KviLog(LogType::Debug) <<"Setting icon(A) for "
+					// 	<<pEntry->m_szNick<<" to KviIconManager::KVIrc";
 				}
 			}
 
-			if(bShowGender)
+			if(!have_avatar_icon && bShowGender)
 			{
 				if(pEntry->globalData()->isIrcOp())
 				{
 					QPixmap * pIco = g_pIconManager->getSmallIcon(KviIconManager::AlienIrcOp);
 					p.drawPixmap(iTheX, iTheY + (m_pListView->m_iFontHeight - 16) / 2, *pIco);
+					// KviLog(LogType::Debug) <<"Setting icon for "
+					// 	<<pEntry->m_szNick<<" to KviIconManager::AlienIrcOp";
 				}
 				else if(pEntry->globalData()->gender() != KviIrcUserEntry::Unknown)
 				{
-					QPixmap * pIco = g_pIconManager->getSmallIcon((pEntry->globalData()->gender() == KviIrcUserEntry::Male) ? KviIconManager::SexMale : KviIconManager::SexFemale);
+					const auto gender_icon = (pEntry->globalData()->gender() == KviIrcUserEntry::Male) ? KviIconManager::SexMale : KviIconManager::SexFemale;
+					QPixmap * pIco = g_pIconManager->getSmallIcon(gender_icon);
 					p.drawPixmap(iTheX, iTheY + (m_pListView->m_iFontHeight - 16) / 2, *pIco);
+					// KviLog(LogType::Debug) <<"Setting icon for "
+					// 	<<pEntry->m_szNick<<" to "<<gender_icon;
 				}
 				else if(pEntry->globalData()->isBot())
 				{
 					QPixmap * pIco = g_pIconManager->getSmallIcon(KviIconManager::IrcBot);
 					p.drawPixmap(iTheX, iTheY + (m_pListView->m_iFontHeight - 16) / 2, *pIco);
+					// KviLog(LogType::Debug) <<"Setting icon for "
+					// 	<<pEntry->m_szNick<<" to KviIconManager::IrcBot";
 				}
 				iTheX += KVI_USERLIST_ICON_WIDTH + KVI_USERLIST_ICON_MARGIN;
 			}

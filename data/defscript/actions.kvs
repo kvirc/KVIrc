@@ -27,7 +27,7 @@ action.create -w=xcqd -t=tools ("optionctrlr", $tr("Global Option Controllers"),
 	%ProtectSource = $option(boolIgnoreCTCPSource)
 	%ProtectTime = $option(boolIgnoreCTCPTime)
 	%ProtectPage = $option(boolIgnoreCTCPPage)
-	%ProtectAvatar = $option(boolIgnoreCTCPAvatar)
+	%ProtectAvatar = $option(boolEnableCtcpAvatar)
 	%ProtectDCC = $option(boolIgnoreCTCPDCC)
 
 	# Add Join Suppression Variables
@@ -245,15 +245,15 @@ action.create -w=xcqd -t=tools ("optionctrlr", $tr("Global Option Controllers"),
 	{
 		if(%ProtectAvatar)
 		{
-			option boolIgnoreCTCPAvatar 0
-			echo -i = $msgtype(GenericStatus) $tr("Disabled ignore for CTCP AVATAR")
+			option boolEnableCtcpAvatar 0
+			echo -i = $msgtype(GenericStatus) $tr("Enabled CTCP AVATARs")
 		}
 		else
 		{
-			option boolIgnoreCTCPAvatar 1
-			echo -i = $msgtype(GenericStatus) $tr("Enabled ignore for CTCP AVATAR")
+			option boolEnableCtcpAvatar 1
+			echo -i = $msgtype(GenericStatus) $tr("Enabled CTCP AVATARs")
 		}
-		%ProtectAvatar = $option(boolIgnoreCTCPAvatar)
+		%ProtectAvatar = $option(boolEnableCtcpAvatar)
 	}
 	objects.connect %checkboxavatar clicked %checkboxavatar checkbox
 
@@ -374,7 +374,7 @@ action.create -w=xcqd -t=tools ("optionctrlr", $tr("Global Option Controllers"),
 		## And kill dialog on close
 		delete -q $$
 
-		# Unset all the variables: after delete so %Pdisplay is definitely unset 
+		# Unset all the variables: after delete so %Pdisplay is definitely unset
 		unset %PDisplay, %ProtectPing, %ProtectFinger, %ProtectVersion, %ProtectUserinfo \
 		%ProtectClientinfo, %ProtectSource, %ProtectTime, %ProtectPage, %ProtectAvatar   \
 		%ProtectDCC, %IsJoinEnabled, %IsPartEnabled, %IsQuitEnabled

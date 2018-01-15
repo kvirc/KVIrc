@@ -42,7 +42,6 @@
 #include "KviIrcUserDataBase.h"
 #include "KviApplication.h"
 #include "KviRegisteredUserDataBase.h"
-#include "kvi_debug.h"
 #include "KviTimeUtils.h"
 #include "KviUserAction.h"
 #include "KviIrcConnection.h"
@@ -59,6 +58,7 @@
 #include "KviIrcNetwork.h"
 #include "kvi_settings.h"
 #include "KviIrcMessage.h"
+#include "KviLog.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"
@@ -357,8 +357,7 @@ void KviIrcServerParser::parseLiteralJoin(KviIrcMessage * msg)
 		// This must be someone else...(or desync)
 		int iFlags = 0;
 		iFlags = msg->connection()->serverInfo()->modeFlagFromModeChar(chExtMode);
-
-		KviUserListEntry * it = chan->join(szNick, szUser, szHost, iFlags);
+		KviUserListEntry *it = chan->join(szNick, szUser, szHost, iFlags);
 
 		// FIXME: #warning "Trigger also OnVoice and OnOp here ?"
 		// Note: checkDefaultAvatar() makes a KviRegisteredUser lookup
@@ -912,6 +911,9 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 				ctcp.bIgnored = false;
 				ctcp.bIsFlood = false;
 				ctcp.bUnknown = false;
+
+				KviLog(LogType::Info) <<"Initiating CTCP request from "<<szSourceNick.toStdString();
+
 				parseCtcpRequest(&ctcp);
 				return;
 			}
@@ -1132,6 +1134,7 @@ void KviIrcServerParser::parseLiteralPrivmsg(KviIrcMessage * msg)
 						pOut = aWin;
 					else
 					{
+						// std::find()
 						for(auto & c : pConnection->channelList())
 						{
 							if(c->isOn(szOtherNick))

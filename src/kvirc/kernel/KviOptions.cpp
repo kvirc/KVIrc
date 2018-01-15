@@ -120,7 +120,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("NotifyDccSendSuccessInConsole", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccSend", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccChat", false, KviOption_sectFlagDcc),
-	BOOL_OPTION("AutoAcceptIncomingAvatars", true, KviOption_sectFlagDcc),
+	BOOL_OPTION("AutoAcceptIncomingAvatars", true, KviOption_sectFlagDcc), // phase out for the whitelist?
 	BOOL_OPTION("UseNickCompletionPostfixForFirstWordOnly", true, KviOption_sectFlagInput),
 	BOOL_OPTION("UseWindowListIcons", true, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("CreateMinimizedDccSendWhenAutoAccepted", true, KviOption_sectFlagDcc),
@@ -142,7 +142,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("UseAntiSpamOnNotice", false, KviOption_sectFlagAntiSpam),
 	BOOL_OPTION("SetLastAvatarAsDefaultForRegisteredUsers", true, KviOption_sectFlagAvatar),
 	BOOL_OPTION("CantAcceptIncomingDccConnections", false, KviOption_sectFlagDcc),
-	BOOL_OPTION("IgnoreCtcpAvatar", false, KviOption_sectFlagCtcp),
+	BOOL_OPTION("EnableKviCtcpAvatar", false, KviOption_sectFlagCtcp | KviOption_resetUpdateGui),
 	BOOL_OPTION("CtcpRepliesToActiveWindow", true, KviOption_sectFlagCtcp),
 	BOOL_OPTION("AutoAcceptDccCanvas", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("NotifyDccSendSuccessInNotifier", true, KviOption_sectFlagDcc),
@@ -244,7 +244,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("EnableInputHistory", true, KviOption_sectFlagInput | KviOption_resetUpdateGui),
 	BOOL_OPTION("UseSpecialColorForTimestamp", true, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("EnableAwayListUpdates", true, KviOption_sectFlagFrame),
-	BOOL_OPTION("ShowAvatarsInUserlist", true, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("ShowAvatarsInUserlist", false, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ShowUserListStatisticLabel", true, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 #ifdef COMPILE_ON_MAC
 	BOOL_OPTION("ShowIconsInPopupMenus", false, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme | KviOption_resetReloadImages),
@@ -281,13 +281,13 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("CreateMinimizedChannels", false, KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowNetworkNameForConsoleWindowListEntry", true, KviOption_sectFlagFrame | KviOption_resetUpdateGui),
 	BOOL_OPTION("DrawGenderIcons", true, KviOption_sectFlagFrame | KviOption_resetUpdateGui | KviOption_groupTheme),
-	BOOL_OPTION("PrependGenderInfoToRealname", true, KviOption_sectFlagConnection),
+	BOOL_OPTION("EnableKviCtcpGender", false, KviOption_sectFlagConnection),
 	BOOL_OPTION("UseIdentServiceOnlyOnConnect", true, KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
 	BOOL_OPTION("UseSystemUrlHandlers", true, KviOption_sectFlagUrl),
 	BOOL_OPTION("ScaleAvatarsOnLoad", true, KviOption_sectFlagAvatar),
 	BOOL_OPTION("NotifierFading", true, KviOption_sectFlagFrame),
 	BOOL_OPTION("PickRandomIpAddressForRoundRobinServers", true, KviOption_sectFlagConnection),
-	BOOL_OPTION("PrependAvatarInfoToRealname", true, KviOption_sectFlagConnection),
+	BOOL_OPTION("EnableKvircExtensions", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("EnableAnimatedAvatars", true, KviOption_sectFlagGui | KviOption_resetUpdateGui),
 	BOOL_OPTION("EnableAnimatedSmiles", true, KviOption_sectFlagGui | KviOption_resetUpdateGui),
 	BOOL_OPTION("PlaceNickWithNonAlphaCharsAtEnd", true, KviOption_sectFlagGui | KviOption_resetUpdateGui),
@@ -305,7 +305,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("DisableQuietBanListRequestOnJoin", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("UseWindowListCloseButton", false, KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("FrameIsMaximized", false, KviOption_sectFlagGeometry),
-	BOOL_OPTION("PrependNickColorInfoToRealname", true, KviOption_sectFlagConnection),
+	BOOL_OPTION("EnableKviCtcpNickColor", true, KviOption_sectFlagConnection),
 	BOOL_OPTION("DontShowNotifierIfActiveWindowIsFullScreen", true, KviOption_sectFlagFrame),
 	BOOL_OPTION("WheelScrollsWindowsList", true, KviOption_sectFlagWindowList),
 	BOOL_OPTION("AcceptMismatchedPortDccResumeRequests", false, KviOption_sectFlagDcc),
@@ -429,7 +429,11 @@ KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST_OPTIONS] = {
 	STRINGLIST_OPTION("ModuleExtensionToolbars", KviOption_sectFlagFrame),
 	STRINGLIST_OPTION("ImageSearchPaths", KviOption_sectFlagFrame | KviOption_encodePath),
 	STRINGLIST_OPTION("RecentIrcUrls", KviOption_sectFlagRecent),
-	STRINGLIST_OPTION("SpellCheckerDictionaries", KviOption_sectFlagInput)
+	STRINGLIST_OPTION("SpellCheckerDictionaries", KviOption_sectFlagInput),
+
+	// TODO: Regex? Wildcard?
+	KviStringListOption(KVI_STRINGLIST_OPTIONS_PREFIX "WhitelistedAvatarDomains",
+		QStringList({"i.imgur.com", "google.com"}), KviOption_sectFlagIrcView)
 };
 
 #define MIRC_COLOR_OPTION(_num, _red, _green, _blue)                               \
@@ -636,7 +640,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS] = {
 	UINT_OPTION("ToolBarButtonStyle", 0, KviOption_groupTheme), // 0 = Qt::ToolButtonIconOnly
 	UINT_OPTION("MaximumBlowFishKeySize", 56, KviOption_sectFlagNone),
 	UINT_OPTION("CustomCursorWidth", 1, KviOption_resetUpdateGui),
-	UINT_OPTION("UserListMinimumWidth", 100, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme)
+	UINT_OPTION("UserListMinimumWidth", 100, KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
+	UINT_OPTION("CtcpUserInfoGenderUint", 0, KviOption_sectFlagCtcp)
 };
 
 #define FONT_OPTION(_name, _face, _size, _flags) \

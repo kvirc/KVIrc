@@ -1220,6 +1220,8 @@ if(WIN32)
 	configure_file(${PROJECT_SOURCE_DIR}/cmake/version.h.cmake ${PROJECT_SOURCE_DIR}/data/resources_win32/version.h)
 endif()
 
+
+include_directories(${CMAKE_SOURCE_DIR}/src/)
 include_directories(${PROJECT_BINARY_DIR})
 
 

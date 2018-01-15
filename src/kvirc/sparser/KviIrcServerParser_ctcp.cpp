@@ -56,6 +56,7 @@
 #include "KviBuildInfo.h"
 #include "KviIrcConnectionServerInfo.h"
 #include "KviIrcMessage.h"
+#include "KviCtcpExtensionParser.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 #include "KviCryptEngine.h"
@@ -810,7 +811,7 @@ const char * KviIrcServerParser::extractCtcpParameter(const char * p_msg_ptr, QS
 
 void KviIrcServerParser::parseCtcpRequest(KviCtcpMessage * msg)
 {
-	msg->pData = extractCtcpParameter(msg->pData, msg->szTag);
+	msg->pData = this->extractCtcpParameter(msg->pData, msg->szTag);
 
 	bool bAction = KviQString::equalCI(msg->szTag, "ACTION");
 
@@ -877,6 +878,7 @@ void KviIrcServerParser::parseCtcpRequest(KviCtcpMessage * msg)
 				        szData))
 					return;
 			}
+
 			(this->*(m_ctcpParseProcTable[i].req))(msg);
 			return;
 		}
@@ -898,12 +900,12 @@ void KviIrcServerParser::parseCtcpRequest(KviCtcpMessage * msg)
 
 	// unknown
 	msg->bUnknown = true;
-	echoCtcpRequest(msg);
+	this->echoCtcpRequest(msg);
 }
 
 void KviIrcServerParser::parseCtcpReply(KviCtcpMessage * msg)
 {
-	msg->pData = extractCtcpParameter(msg->pData, msg->szTag);
+	msg->pData = this->extractCtcpParameter(msg->pData, msg->szTag);
 
 	for(int i = 0; m_ctcpParseProcTable[i].msgName; i++)
 	{
@@ -1074,91 +1076,91 @@ void KviIrcServerParser::parseCtcpRequestPing(KviCtcpMessage * msg)
 	{
 		if(!KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpPing))
 		{
-			replyCtcp(msg, msg->msg->connection()->encodeText(msg->pData));
+			this->replyCtcp(msg, msg->msg->connection()->encodeText(msg->pData));
 		}
 		else
 			msg->bIgnored = true;
 	}
 
-	echoCtcpRequest(msg);
+	this->echoCtcpRequest(msg);
 }
 
 void KviIrcServerParser::parseCtcpReplyPing(KviCtcpMessage * msg)
 {
-	if(!msg->msg->haltOutput())
+	if(msg->msg->haltOutput())
+		return;
+
+	KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolCtcpRepliesToActiveWindow) ? msg->msg->console()->activeWindow() : msg->msg->console();
+
+	bool bIsChannel = false;
+
+	if(!IS_ME(msg->msg, msg->szTarget))
 	{
-		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolCtcpRepliesToActiveWindow) ? msg->msg->console()->activeWindow() : msg->msg->console();
-
-		bool bIsChannel = false;
-
-		if(!IS_ME(msg->msg, msg->szTarget))
+		// Channel ctcp request!
+		pOut = msg->msg->connection()->findChannel(msg->szTarget);
+		if(!pOut)
 		{
-			// Channel ctcp request!
-			pOut = msg->msg->connection()->findChannel(msg->szTarget);
-			if(!pOut)
-			{
-				pOut = msg->msg->console();
-				pOut->output(KVI_OUT_SYSTEMWARNING,
-				    __tr2qs("The following CTCP PING reply has unrecognized target \"%Q\""),
-				    &(msg->szTarget));
-			}
-			else
-				bIsChannel = true;
-		}
-
-		unsigned int uSecs;
-		unsigned int uMSecs = 0;
-
-		KviCString szTime;
-
-		struct timeval tv;
-		kvi_gettimeofday(&tv);
-
-		msg->pData = extractCtcpParameter(msg->pData, szTime, true);
-
-		bool bOk;
-
-		if(szTime.contains('.'))
-		{
-			KviCString szUSecs = szTime;
-			szUSecs.cutToFirst('.');
-			szTime.cutFromFirst('.');
-
-			uMSecs = szUSecs.toUInt(&bOk);
-			if(!bOk)
-			{
-				uMSecs = 0;
-				tv.tv_usec = 0;
-			}
+			pOut = msg->msg->console();
+			pOut->output(KVI_OUT_SYSTEMWARNING,
+			    __tr2qs("The following CTCP PING reply has unrecognized target \"%Q\""),
+			    &(msg->szTarget));
 		}
 		else
-			tv.tv_usec = 0;
-
-		uSecs = szTime.toUInt(&bOk);
-		if(!bOk)
-			pOut->output(KVI_OUT_SYSTEMWARNING,
-			    __tr2qs("The following CTCP PING reply has a broken time identifier \"%S\", don't trust the displayed time"), &szTime);
-
-		unsigned int uDiffSecs = tv.tv_sec - uSecs;
-
-		while(uMSecs > 1000000)
-			uMSecs /= 10; // precision too high?
-		if(((unsigned int)tv.tv_usec) < uMSecs)
-		{
-			tv.tv_usec += 1000000;
-			if(uDiffSecs > 0)
-				uDiffSecs--;
-		}
-		unsigned int uDiffMSecs = (tv.tv_usec - uMSecs) / 1000;
-
-		QString szWhat = bIsChannel ? __tr2qs("Channel CTCP") : QString("CTCP");
-
-		pOut->output(
-		    msg->bUnknown ? KVI_OUT_CTCPREPLYUNKNOWN : KVI_OUT_CTCPREPLY,
-		    __tr2qs("%Q PING reply from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %u sec %u msec"),
-		    &szWhat, &(msg->pSource->nick()),
-		    &(msg->pSource->user()), &(msg->pSource->host()), uDiffSecs, uDiffMSecs);
+			bIsChannel = true;
 	}
+
+	unsigned int uSecs;
+	unsigned int uMSecs = 0;
+
+	KviCString szTime;
+
+	struct timeval tv;
+	kvi_gettimeofday(&tv);
+
+	msg->pData = this->extractCtcpParameter(msg->pData, szTime, true);
+
+	bool bOk;
+
+	if(szTime.contains('.'))
+	{
+		KviCString szUSecs = szTime;
+		szUSecs.cutToFirst('.');
+		szTime.cutFromFirst('.');
+
+		uMSecs = szUSecs.toUInt(&bOk);
+		if(!bOk)
+		{
+			uMSecs = 0;
+			tv.tv_usec = 0;
+		}
+	}
+	else
+		tv.tv_usec = 0;
+
+	uSecs = szTime.toUInt(&bOk);
+	if(!bOk)
+		pOut->output(KVI_OUT_SYSTEMWARNING,
+		    __tr2qs("The following CTCP PING reply has a broken time identifier \"%S\", don't trust the displayed time"), &szTime);
+
+	unsigned int uDiffSecs = tv.tv_sec - uSecs;
+
+	while(uMSecs > 1000000)
+		uMSecs /= 10; // precision too high?
+	if(((unsigned int)tv.tv_usec) < uMSecs)
+	{
+		tv.tv_usec += 1000000;
+		if(uDiffSecs > 0)
+			uDiffSecs--;
+	}
+	unsigned int uDiffMSecs = (tv.tv_usec - uMSecs) / 1000;
+
+	QString szWhat = bIsChannel ? __tr2qs("Channel CTCP") : QString("CTCP");
+
+	pOut->output(
+	    msg->bUnknown ? KVI_OUT_CTCPREPLYUNKNOWN : KVI_OUT_CTCPREPLY,
+	    __tr2qs("%Q PING reply from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %u sec %u msec"),
+	    &szWhat, &(msg->pSource->nick()),
+	    &(msg->pSource->user()), &(msg->pSource->host()), uDiffSecs, uDiffMSecs);
 }
 
 void KviIrcServerParser::parseCtcpRequestVersion(KviCtcpMessage * msg)
@@ -1191,13 +1193,13 @@ void KviIrcServerParser::parseCtcpRequestVersion(KviCtcpMessage * msg)
 					szVersion.append(sz);
 				}
 			}
-			replyCtcp(msg, szVersion);
+			this->replyCtcp(msg, szVersion);
 		}
 		else
 			msg->bIgnored = true;
 	}
 
-	echoCtcpRequest(msg);
+	this->echoCtcpRequest(msg);
 }
 
 void KviIrcServerParser::parseCtcpRequestUserinfo(KviCtcpMessage * msg)
@@ -1241,13 +1243,13 @@ void KviIrcServerParser::parseCtcpRequestUserinfo(KviCtcpMessage * msg)
 			}
 			if(szReply.isEmpty())
 				szReply = KVI_DEFAULT_CTCP_USERINFO_REPLY;
-			replyCtcp(msg, szReply);
+			this->replyCtcp(msg, szReply);
 		}
 		else
 			msg->bIgnored = true;
 	}
 
-	echoCtcpRequest(msg);
+	this->echoCtcpRequest(msg);
 }
 
 // FIXME: KEEP THIS TABLE UP TO DATE
@@ -1277,7 +1279,7 @@ void KviIrcServerParser::parseCtcpRequestClientinfo(KviCtcpMessage * msg)
 		if(!KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpClientinfo))
 		{
 			KviCString szTag;
-			msg->pData = extractCtcpParameter(msg->pData, szTag, false);
+			msg->pData = this->extractCtcpParameter(msg->pData, szTag, false);
 			szTag.trim();
 			szTag.toUpperISO88591();
 			if(szTag.isEmpty())
@@ -1290,7 +1292,7 @@ void KviIrcServerParser::parseCtcpRequestClientinfo(KviCtcpMessage * msg)
 						reply += ",";
 				}
 				reply += " - Use 'CLIENTINFO <tag>' for a description of each tag";
-				replyCtcp(msg, reply);
+				this->replyCtcp(msg, reply);
 			}
 			else
 			{
@@ -1300,7 +1302,7 @@ void KviIrcServerParser::parseCtcpRequestClientinfo(KviCtcpMessage * msg)
 					if(kvi_strEqualCS(ctcpTagTable[i][0], szTag.ptr()))
 					{
 						KviCString reply(KviCString::Format, "%s: %s", ctcpTagTable[i][0], ctcpTagTable[i][1]);
-						replyCtcp(msg, reply.ptr());
+						this->replyCtcp(msg, reply.ptr());
 						bFound = true;
 					}
 				}
@@ -1308,7 +1310,7 @@ void KviIrcServerParser::parseCtcpRequestClientinfo(KviCtcpMessage * msg)
 				{
 					msg->szTag = "ERRMSG";
 					KviCString reply(KviCString::Format, "Unsupported tag %s", szTag.ptr());
-					replyCtcp(msg, reply.ptr());
+					this->replyCtcp(msg, reply.ptr());
 				}
 			}
 		}
@@ -1316,7 +1318,7 @@ void KviIrcServerParser::parseCtcpRequestClientinfo(KviCtcpMessage * msg)
 			msg->bIgnored = true;
 	}
 
-	echoCtcpRequest(msg);
+	this->echoCtcpRequest(msg);
 }
 
 void KviIrcServerParser::parseCtcpRequestFinger(KviCtcpMessage * msg)
@@ -1333,13 +1335,13 @@ void KviIrcServerParser::parseCtcpRequestFinger(KviCtcpMessage * msg)
 				username = msg->msg->connection()->userInfo()->userName();
 			// FIXME: #warning "UTSNAME ?...AND OTHER INFO ?...SYSTEM IDLE TIME ?...KVIRC IDLE TIME ?"
 			KviCString reply(KviCString::Format, "%s", username.ptr());
-			replyCtcp(msg, reply.ptr());
+			this->replyCtcp(msg, reply.ptr());
 		}
 		else
 			msg->bIgnored = true;
 	}
 
-	echoCtcpRequest(msg);
+	this->echoCtcpRequest(msg);
 }
 
 void KviIrcServerParser::parseCtcpRequestSource(KviCtcpMessage * msg)
@@ -1354,13 +1356,13 @@ void KviIrcServerParser::parseCtcpRequestSource(KviCtcpMessage * msg)
 				version += " :";
 				version += KVI_OPTION_STRING(KviOption_stringCtcpSourcePostfix);
 			}
-			replyCtcp(msg, version);
+			this->replyCtcp(msg, version);
 		}
 		else
 			msg->bIgnored = true;
 	}
 
-	echoCtcpRequest(msg);
+	this->echoCtcpRequest(msg);
 }
 
 void KviIrcServerParser::parseCtcpRequestTime(KviCtcpMessage * msg)
@@ -1385,13 +1387,13 @@ void KviIrcServerParser::parseCtcpRequestTime(KviCtcpMessage * msg)
 					szTmp = date.toString(Qt::SystemLocaleShortDate);
 					break;
 			}
-			replyCtcp(msg, szTmp);
+			this->replyCtcp(msg, szTmp);
 		}
 		else
 			msg->bIgnored = true;
 	}
 
-	echoCtcpRequest(msg);
+	this->echoCtcpRequest(msg);
 }
 
 void KviIrcServerParser::parseCtcpRequestPage(KviCtcpMessage * msg)
@@ -1404,7 +1406,7 @@ void KviIrcServerParser::parseCtcpRequestPage(KviCtcpMessage * msg)
 			if(KVI_OPTION_STRING(KviOption_stringCtcpPageReply).isEmpty())
 				KVI_OPTION_STRING(KviOption_stringCtcpPageReply) = KVI_DEFAULT_CTCP_PAGE_REPLY;
 
-			replyCtcp(msg, KVI_OPTION_STRING(KviOption_stringCtcpPageReply));
+			this->replyCtcp(msg, KVI_OPTION_STRING(KviOption_stringCtcpPageReply));
 
 			bool bIsChannel = !IS_ME(msg->msg, msg->szTarget);
 
@@ -1423,7 +1425,7 @@ void KviIrcServerParser::parseCtcpRequestPage(KviCtcpMessage * msg)
 			msg->bIgnored = true;
 	}
 
-	echoCtcpRequest(msg);
+	this->echoCtcpRequest(msg);
 }
 
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -1470,7 +1472,7 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 {
 	KviCString szData8(msg->pData);
 	// CTCP ACTION is a special exception... most clients do not encode/decode it.
-	//msg->pData = extractCtcpParameter(msg->pData,szData8,false);
+	//msg->pData = this->extractCtcpParameter(msg->pData,szData8,false);
 
 	KviWindow * pOut = nullptr;
 	bool bIsChannel = msg->msg->connection()->serverInfo()->supportedChannelTypes().indexOf(msg->szTarget[0]) != -1;
@@ -1638,11 +1640,23 @@ void KviIrcServerParser::parseCtcpRequestAction(KviCtcpMessage * msg)
 	}
 }
 
+void KviIrcServerParser::parseCtcpRequestKvirc(KviCtcpMessage * msg)
+{
+	KviExtension::parse_extension(this, msg, false);
+}
+
+void KviIrcServerParser::parseCtcpReplyKvirc(KviCtcpMessage * msg)
+{
+	KviExtension::parse_extension(this, msg, false);
+}
+
 // FIXME: #warning "UTSNAME ?...AND OTHER INFO ?...SYSTEM IDLE TIME ?...KVIRC IDLE TIME ?"
+
+// Send them our Gendr & Avatar (Legacy)
 void KviIrcServerParser::parseCtcpRequestAvatar(KviCtcpMessage * msg)
 {
 	// AVATAR
-	if(!KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpAvatar))
+	if(KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar))
 	{
 		QString szGenderTag = " ";
 		if(KVI_OPTION_STRING(KviOption_stringCtcpUserInfoGender).startsWith("m", Qt::CaseInsensitive))
@@ -1692,7 +1706,7 @@ void KviIrcServerParser::parseCtcpRequestAvatar(KviCtcpMessage * msg)
 				}
 
 				szReply.append(szGenderTag);
-				replyCtcp(msg, szReply);
+				this->replyCtcp(msg, szReply);
 			}
 		}
 		else
@@ -1705,23 +1719,26 @@ void KviIrcServerParser::parseCtcpRequestAvatar(KviCtcpMessage * msg)
 					msg->bIgnored = true;
 			}
 			if(!msg->bIgnored)
-				replyCtcp(msg, "");
+				this->replyCtcp(msg, "");
 		}
 	}
 	else
 		msg->bIgnored = true;
 
-	echoCtcpRequest(msg);
+	this->echoCtcpRequest(msg);
 }
 
 void KviIrcServerParser::parseCtcpReplyAvatar(KviCtcpMessage * msg)
 {
 	QString szRemoteFile;
 	QString szGender;
-	QString decoded = msg->msg->console()->decodeText(msg->pData);
 
-	decoded = extractCtcpParameter(decoded.toUtf8().data(), szRemoteFile, true);
-	decoded = extractCtcpParameter(decoded.toUtf8().data(), szGender, true);
+	if (!KVI_OPTION_BOOL(KviOption_boolEnableKviCtcpAvatar))
+		return;
+
+	QString buf = msg->msg->console()->decodeText(msg->pData);
+	buf = this->extractCtcpParameter(buf.toUtf8().data(), szRemoteFile, true);
+	buf = this->extractCtcpParameter(buf.toUtf8().data(), szGender, true);
 	szRemoteFile = szRemoteFile.trimmed();
 
 	bool bPrivate = IS_ME(msg->msg, msg->szTarget);
@@ -1878,12 +1895,12 @@ void KviIrcServerParser::parseCtcpRequestDcc(KviCtcpMessage * msg)
 {
 	KviDccRequest p;
 	KviCString aux = msg->pData;
-	msg->pData = extractCtcpParameter(msg->pData, p.szType, true, true);
-	msg->pData = extractCtcpParameter(msg->pData, p.szParam1);
-	msg->pData = extractCtcpParameter(msg->pData, p.szParam2);
-	msg->pData = extractCtcpParameter(msg->pData, p.szParam3);
-	msg->pData = extractCtcpParameter(msg->pData, p.szParam4);
-	msg->pData = extractCtcpParameter(msg->pData, p.szParam5);
+	msg->pData = this->extractCtcpParameter(msg->pData, p.szType, true, true);
+	msg->pData = this->extractCtcpParameter(msg->pData, p.szParam1);
+	msg->pData = this->extractCtcpParameter(msg->pData, p.szParam2);
+	msg->pData = this->extractCtcpParameter(msg->pData, p.szParam3);
+	msg->pData = this->extractCtcpParameter(msg->pData, p.szParam4);
+	msg->pData = this->extractCtcpParameter(msg->pData, p.szParam5);
 	p.ctcpMsg = msg;
 	p.bIPv6 = msg->msg->console()->isIPv6Connection();
 	p.pConsole = msg->msg->console();
@@ -1951,7 +1968,7 @@ void KviIrcServerParser::parseCtcpRequestDcc(KviCtcpMessage * msg)
 	else
 	{
 		// That's flood
-		echoCtcpRequest(msg);
+		this->echoCtcpRequest(msg);
 	}
 }
 
@@ -2006,7 +2023,7 @@ void KviIrcServerParser::parseCtcpReplyLagcheck(KviCtcpMessage * msg)
 {
 	// this is an internal CTCP used for checking lag
 	KviCString szTag;
-	msg->pData = extractCtcpParameter(msg->pData, szTag, true);
+	msg->pData = this->extractCtcpParameter(msg->pData, szTag, true);
 	if(msg->msg->console()->connection()->lagMeter())
 		msg->msg->console()->connection()->lagMeter()->lagCheckComplete(szTag.ptr());
 }

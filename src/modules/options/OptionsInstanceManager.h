@@ -41,23 +41,25 @@
 
 typedef struct _OptionsWidgetInstanceEntry OptionsWidgetInstanceEntry;
 
+
 typedef struct _OptionsWidgetInstanceEntry
 {
-	KviOptionsWidget * (*createProc)(QWidget *);
-	KviOptionsWidget * pWidget; // singleton
-	KviIconManager::SmallIcon eIcon;
-	QString szName;
-	QString szNameNoLocale;
-	const char * szClassName;
-	int iPriority;
-	QString szKeywords;
-	QString szKeywordsNoLocale;
-	QString szGroup;
-	bool bIsContainer;
-	bool bIsNotContained;
+	KviOptionsWidget                           * (*createProc)(QWidget *);
+	KviOptionsWidget                           * pWidget;   // singleton
+	KviIconManager::SmallIcon                    eIcon;
+	QString                                      szName;
+	QString                                      szNameNoLocale;
+	const char                                 * szClassName;
+	int                                          iPriority;
+	QString                                      szKeywords;
+	QString                                      szKeywordsNoLocale;
+	QString                                      szGroup;
+	bool                                         bIsContainer;
+	bool                                         bIsNotContained;
 	KviPointerList<OptionsWidgetInstanceEntry> * pChildList;
-	bool bDoInsert; // a helper for OptionsDialog::fillListView()
+	bool                                         bDoInsert; // a helper for OptionsDialog::fillListView()
 } OptionsWidgetInstanceEntry;
+
 
 class OptionsInstanceManager : public QObject
 {
@@ -65,16 +67,13 @@ class OptionsInstanceManager : public QObject
 public:
 	OptionsInstanceManager();
 	virtual ~OptionsInstanceManager();
-
 protected:
 	KviPointerList<OptionsWidgetInstanceEntry> * m_pInstanceTree;
-
 public:
-	KviPointerList<OptionsWidgetInstanceEntry> * instanceEntryTree() { return m_pInstanceTree; };
+	KviPointerList<OptionsWidgetInstanceEntry> * instanceEntryTree(){ return m_pInstanceTree; };
 	KviOptionsWidget * getInstance(OptionsWidgetInstanceEntry * pEntry, QWidget * pPar);
 	OptionsWidgetInstanceEntry * findInstanceEntry(const char * pcName);
 	void cleanup(KviModule *);
-
 protected:
 	OptionsWidgetInstanceEntry * findInstanceEntry(const char * pcName, KviPointerList<OptionsWidgetInstanceEntry> * pList);
 	OptionsWidgetInstanceEntry * findInstanceEntry(const QObject * pObj, KviPointerList<OptionsWidgetInstanceEntry> * pList);
@@ -84,3 +83,4 @@ protected slots:
 };
 
 #endif //__OPTIONS_INSTANCES_H__
+

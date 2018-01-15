@@ -24,6 +24,8 @@
 
 #include <typeinfo>
 
+#include "KviLog.h"
+
 #define STRINGIFY_(x) #x
 #define STRINGIFY(x) STRINGIFY_(x)
 
@@ -50,8 +52,8 @@ namespace KviCast
 
 		if(newPointer == nullptr)
 		{
-			qDebug("KviCast::dynamic: Conversion from %s to %s failed: %s in %s (%s).",
-			    typeid(P).name(), typeid(T).name(), func, file, expr);
+			KviLog(LogType::Error) << "KviCast::dynamic: Conversion from "<<typeid(P).name()
+				<<" to "<<typeid(T).name()<<" failed: "<<func<<" in "<<file<<" ("<<expr<<").";
 		}
 
 		return newPointer;
