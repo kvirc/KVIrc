@@ -244,7 +244,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS] = {
 	BOOL_OPTION("EnableInputHistory", true, KviOption_sectFlagInput | KviOption_resetUpdateGui),
 	BOOL_OPTION("UseSpecialColorForTimestamp", true, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("EnableAwayListUpdates", true, KviOption_sectFlagFrame),
-	BOOL_OPTION("ShowAvatarsInUserlist", true, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("ShowAvatarsInUserlist", false, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("ShowUserListStatisticLabel", true, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 #ifdef COMPILE_ON_MAC
 	BOOL_OPTION("ShowIconsInPopupMenus", false, KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme | KviOption_resetReloadImages),

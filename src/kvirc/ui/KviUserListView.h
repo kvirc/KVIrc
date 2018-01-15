@@ -164,6 +164,7 @@ protected:
 
 	int m_iHeight;
 	bool m_bSelected;
+	bool m_bHasAv;
 	KviUserListEntry * m_pNext;
 	KviUserListEntry * m_pPrev;
 	KviAnimatedPixmap * m_pAvatarPixmap;
