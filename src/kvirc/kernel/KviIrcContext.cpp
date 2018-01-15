@@ -447,7 +447,7 @@ void KviIrcContext::connectToCurrentServer()
 		else
 			m_pConsole->outputNoFmt(KVI_OUT_SYSTEMERROR, __tr2qs("No servers available. Check the options dialog or use the /SERVER command"));
 		destroyAsynchronousConnectionData();
-;
+		return;
 	}
 
 	if(!net)
