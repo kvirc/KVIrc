@@ -146,7 +146,6 @@ build_script:
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - nmake install VERBOSE=1
     - c:\cygwin\bin\ls -l release/
-    - mklink /H "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\redist\MSVC\14.12.25810\vcredist_%arch%.exe" "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\redist\MSVC\14.12.25810\vc_redist.%arch%.exe" #temp workaround to vc_redist til updating Qt to 5.9.4/5.10.1 (windeployqt bug). NSIS script need to be fixed before removing this line
     - ps: |
         $env:Path += ";c:/Qt/$env:qt_ver/bin"
         if ($env:cmake_build_type -eq "Debug") {
