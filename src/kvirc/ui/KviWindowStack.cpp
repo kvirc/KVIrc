@@ -87,7 +87,13 @@ void KviWindowStack::addWindow(KviWindow * pWnd)
 
 void KviWindowStack::showAndActivate(KviWindow * pWnd)
 {
-	setCurrentWidget(pWnd);
+	if(pWnd->isDocked())
+		setCurrentWidget(pWnd);
+	else
+	{
+		pWnd->raise();
+		pWnd->activateWindow();
+	}
 
 	if(!pWnd->hasFocus())
 		pWnd->setFocus();
