@@ -134,8 +134,6 @@ void KviModeWidget::processModeChanges()
 		if(iModes == iModesPerLine)
 		{
 			sendModeChanges(std::move(szModeChanges), std::move(params));
-//			szModeChanges.clear();
-//			params.clear();
 			iModes = 0;
 		}
 	}
@@ -154,8 +152,6 @@ void KviModeWidget::processModeChanges()
 		if(iModes == iModesPerLine)
 		{
 			sendModeChanges(std::move(szModeChanges), std::move(params));
-//			szModeChanges.clear();
-//			params.clear();
 			iModes = 0;
 		}
 	}
