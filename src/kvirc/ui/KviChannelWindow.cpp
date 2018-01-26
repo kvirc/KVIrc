@@ -103,9 +103,9 @@ KviChannelWindow::KviChannelWindow(KviConsoleWindow * lpConsole, const QString &
 	connect(m_pTopicWidget, SIGNAL(topicSelected(const QString &)),
 	    this, SLOT(topicSelected(const QString &)));
 	// mode label follows the topic widget
-	m_pModeWidget = new KviModeWidget(m_pTopSplitter, this, "mode_");
+	m_pModeWidget = new KviModeWidget(m_pTopSplitter, *this, "mode_");
 	KviTalToolTip::add(m_pModeWidget, __tr2qs("Channel modes"));
-	connect(m_pModeWidget, SIGNAL(setMode(QString &)), this, SLOT(setMode(QString &)));
+	connect(m_pModeWidget, SIGNAL(setMode(const QString &)), this, SLOT(setMode(const QString &)));
 
 	createTextEncodingButton(m_pButtonContainer);
 
@@ -503,7 +503,7 @@ void KviChannelWindow::toggleModeEditor()
 	else
 	{
 		m_pModeEditor = new KviModeEditor(m_pSplitter, m_pModeEditorButton, "mode_editor", this);
-		connect(m_pModeEditor, SIGNAL(setMode(QString &)), this, SLOT(setMode(QString &)));
+		connect(m_pModeEditor, SIGNAL(setMode(const QString &)), this, SLOT(setMode(const QString &)));
 		connect(m_pModeEditor, SIGNAL(done()), this, SLOT(modeSelectorDone()));
 		m_pModeEditor->show();
 		//setFocusHandlerNoClass(m_pInput,m_pModeEditor,"QLineEdit");
@@ -518,7 +518,7 @@ void KviChannelWindow::modeSelectorDone()
 		toggleModeEditor();
 }
 
-void KviChannelWindow::setMode(QString & szMode)
+void KviChannelWindow::setMode(const QString & szMode)
 {
 	if(!connection())
 		return;
@@ -719,13 +719,15 @@ void KviChannelWindow::getChannelModeString(QString & szBuffer)
 		szBuffer.append(QChar(iter.first));
 }
 
-void KviChannelWindow::getChannelModeStringWithEmbeddedParams(QString & szBuffer)
+QString KviChannelWindow::getChannelModeStringWithEmbeddedParams()
 {
-	szBuffer = m_szChannelMode;
+	QString szBuffer = m_szChannelMode;
 
 	//add modes that use a parameter
 	for(auto iter : m_szChannelParameterModes)
 		szBuffer.append(QString(" %1:%2").arg(QChar(iter.first)).arg(iter.second));
+
+	return szBuffer;
 }
 
 bool KviChannelWindow::setOp(const QString & szNick, bool bOp, bool bIsMe)

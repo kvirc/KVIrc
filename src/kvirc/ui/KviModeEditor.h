@@ -57,7 +57,7 @@ protected:
 	const QString * getModeDescription(char cMode);
 	bool modeNeedsParameterOnlyWhenSet(char cMode);
 signals:
-	void setMode(QString & szMode);
+	void setMode(const QString & szMode);
 	void done();
 protected slots:
 	void checkBoxToggled(bool bChecked);
