@@ -1102,7 +1102,7 @@ namespace KviQString
 			szWildcard = szExp;
 		}
 
-		QRegExp re(szWildcard, bCs ? Qt::CaseSensitive : Qt::CaseInsensitive, bIsRegExp ? QRegExp::RegExp : QRegExp::Wildcard);
+		QRegExp re(szWildcard, bCs ? Qt::CaseSensitive : Qt::CaseInsensitive, bIsRegExp ? QRegExp::RegExp2 : QRegExp::Wildcard);
 
 		if(bExact)
 			return re.exactMatch(szStr);

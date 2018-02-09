@@ -1144,9 +1144,9 @@ static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETER("flags", KVS_PT_STRING, KVS_PF_OPTIONAL, szFlags)
 	KVSM_PARAMETER("case", KVS_PT_BOOL, KVS_PF_OPTIONAL, bCase)
 	KVSM_PARAMETERS_END(c)
-	bool bRegExp = szFlags.indexOf('r', 0, Qt::CaseInsensitive) != -1;
-	bool bExact  = szFlags.indexOf('e', 0, Qt::CaseInsensitive) != -1;
-	bool bIs = KviQString::matchString(szWildcard, szString, bRegExp, bExact, bCase ? true : false);
+	bool bRegExp = szFlags.contains('r', Qt::CaseInsensitive);
+	bool bExact  = szFlags.contains('e', Qt::CaseInsensitive);
+	bool bIs = KviQString::matchString(szWildcard, szString, bRegExp, bExact, bCase);
 	c->returnValue()->setBoolean(bIs);
 	return true;
 }
@@ -1476,7 +1476,7 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	QString szRet;
-	bool bSkipEmpty = szFlags.indexOf('n', 0, Qt::CaseInsensitive) != -1;
+	bool bSkipEmpty = szFlags.contains('n', Qt::CaseInsensitive);
 
 	bool bFirst = true;
 
@@ -1578,15 +1578,15 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 
 	KviKvsArray * a = ac.array();
 
-	bool bCaseSensitive = szFlags.indexOf('s', 0, Qt::CaseInsensitive) != -1;
-	bool bRegexp = szFlags.indexOf('r', 0, Qt::CaseInsensitive) != -1;
-	bool bWild = szFlags.indexOf('w', 0, Qt::CaseInsensitive) != -1;
+	bool bCaseSensitive = szFlags.contains('s', Qt::CaseInsensitive);
+	bool bRegexp = szFlags.contains('r', Qt::CaseInsensitive);
+	bool bWild = szFlags.contains('w', Qt::CaseInsensitive);
 
 	// FIXME: The sub pattern matching does not belong to grep.
 	// FIXME: DO NOT DOCUMENT FLAGS p and x (they should be removed)
 	// 2015.08.24: Left for compatibility: remove in some years :)
-	bool bSubPatterns = szFlags.indexOf('p', 0, Qt::CaseInsensitive) != -1;
-	bool bExcludeCompleteMatch = szFlags.indexOf('x', 0, Qt::CaseInsensitive) != -1;
+	bool bSubPatterns = szFlags.contains('p', Qt::CaseInsensitive);
+	bool bExcludeCompleteMatch = szFlags.contains('x', Qt::CaseInsensitive);
 	// 2015.08.24: End of "left for compatibility": remove in some years :)
 
 	int idx = 0;
@@ -1595,7 +1595,7 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 	int i = 0;
 	if(bRegexp || bWild)
 	{
-		QRegExp re(szMatch, bCaseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive, bRegexp ? QRegExp::RegExp : QRegExp::Wildcard);
+		QRegExp re(szMatch, bCaseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive, bRegexp ? QRegExp::RegExp2 : QRegExp::Wildcard);
 		while(idx < cnt)
 		{
 			KviKvsVariant * v = a->at(idx);
@@ -1648,7 +1648,7 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 			{
 				QString sz;
 				v->asString(sz);
-				if(sz.indexOf(szMatch, 0, bCaseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive) != -1)
+				if(sz.contains(szMatch, bCaseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive))
 				{
 					n->set(i, new KviKvsVariant(sz));
 					i++;
@@ -1743,7 +1743,7 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 
 	QVector<QStringRef> list;
 	if(bWild || bContainsR)
-		list = szStr.splitRef(QRegExp{szSep, sensitivity, bWild ? QRegExp::Wildcard : QRegExp::RegExp}, splitBehavior);
+		list = szStr.splitRef(QRegExp{szSep, sensitivity, bWild ? QRegExp::Wildcard : QRegExp::RegExp2}, splitBehavior);
 	else
 		list = szStr.splitRef(szSep, splitBehavior, sensitivity);
 
@@ -1774,10 +1774,10 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 	if(iMaxItems == 0)
 		return true;
 
-	bool bWild = szFla.indexOf('w', 0, Qt::CaseInsensitive) != -1;
-	bool bContainsR = szFla.indexOf('r', 0, Qt::CaseInsensitive) != -1;
-	bool bCaseSensitive = szFla.indexOf('s', 0, Qt::CaseInsensitive) != -1;
-	bool bNoEmpty = szFla.indexOf('n', 0, Qt::CaseInsensitive) != -1;
+	bool bWild = szFla.contains('w', Qt::CaseInsensitive);
+	bool bContainsR = szFla.contains('r', Qt::CaseInsensitive);
+	bool bCaseSensitive = szFla.contains('s', Qt::CaseInsensitive);
+	bool bNoEmpty = szFla.contains('n', Qt::CaseInsensitive);
 
 	int id = 0;
 
@@ -1787,7 +1787,7 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 
 	if(bContainsR || bWild)
 	{
-		QRegExp re(szSep, bCaseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive, bWild ? QRegExp::Wildcard : QRegExp::RegExp);
+		QRegExp re(szSep, bCaseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive, bWild ? QRegExp::Wildcard : QRegExp::RegExp2);
 
 		while((iMatch != -1) && (iMatch < iStrLen) && ((id < (iMaxItems - 1)) || (iMaxItems < 0)))
 		{
