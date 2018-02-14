@@ -32,7 +32,7 @@ VERSION='4:4.9.2'
 VERSION1='4.9.2'
 TMPFILE=$(mktemp)
 TMPGPG=$(mktemp)
-DIST_PPA="trusty xenial zesty artful"
+DIST_PPA="trusty xenial artful bionic"
 PPANAME=kvirc
 
 dchppa_pkg(){
@@ -129,15 +129,6 @@ else
     DIST_PPA="trusty"
     PPANAME=kvirc-qt5.5
     dchppa_pkg
-    #DIST_PPA="trusty wily xenial"
-    #rm -f ../*ppa*
-    #PPANAME=kvirc-dbg
-    #dch -a "DCMAKE_BUILD_TYPE=Debug"
-    #cat >> debian/rules << EOF
-#override_dh_strip:
-#
-#EOF
-#    dchppa_pkg
 fi
 
 

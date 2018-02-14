@@ -10,15 +10,20 @@ DEBIAN_CODENAME = $(shell echo $$DIST)
 ifeq "$(DEBIAN_CODENAME)" ""
 	DEBIAN_CODENAME = $(shell dpkg-parsechangelog | awk '/^Distribution: / {print $$2}')
 endif
-ifneq (,$(filter $(DEBIAN_CODENAME), buster sid stretch))
-	CONTROL = control.sid
-else
-	CONTROL = control.jessie
-endif
+
+# We don't install all files upstream wants to. Those files get added to
+# the following variable which gives us a cleaner buildd output (idea taken
+# from the mesa package).
+NOT_INSTALLED := \
+				usr/lib/$(DEB_HOST_MULTIARCH)/libkvilib.so \
+				usr/bin/kvirc-config \
+				usr/share/kvirc/4.9/license/LICENSE-GPLV2 \
+				usr/share/kvirc/4.9/license/LICENSE-OPENSSL \
+				usr/share/kvirc/4.9/license/COPYING \
+				usr/share/pixmaps/kvirc.png
 
 override_dh_auto_configure:
-	cp debian/$(CONTROL) debian/control
-	dh_auto_configure --parallel -- -DCMAKE_BUILD_TYPE=Release \
+	dh_auto_configure -- -DCMAKE_BUILD_TYPE=Release \
 			-DWANT_COEXISTENCE=OFF \
 			-DWANT_ESD=OFF -DWANT_OSS=OFF \
 			-DWANT_STRIP=OFF \
@@ -26,19 +31,12 @@ override_dh_auto_configure:
 			-DLIB_SUFFIX="/$(DEB_HOST_MULTIARCH)"
 
 override_dh_install:
-	rm debian/tmp/usr/share/pixmaps/kvirc.png debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libkvilib.so
+	set -e; for file in $(NOT_INSTALLED); do rm debian/tmp/$$file; done
 	dh_install
-
-#override_dh_builddeb:
-#	dh_builddeb -- -Zxz -z9
 
 override_dh_makeshlibs:
 	dh_makeshlibs -V -plibkvilib4
 
-override_dh_auto_clean:
-	cp debian/$(CONTROL) debian/control
-	dh_auto_clean
-
 %:
-	dh $@ --parallel --dbg-package=kvirc-dbg
+	dh $@ --parallel
 
