@@ -1374,7 +1374,11 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 					if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c", name.data(), 0x01, szEncrypted.ptr(), 0x01))
 						return;
 
-					output(KVI_OUT_OWNACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szTmpBuffer);
+					QString szBuf = "\r!nc\r";
+					szBuf += szMyName;
+					szBuf += "\r ";
+					szBuf += szTmpBuffer;
+					outputMessage(KVI_OUT_OWNACTIONCRYPTED, szBuf);
 				}
 				break;
 				case KviCryptEngine::Encoded:
@@ -1385,7 +1389,11 @@ void KviChannelWindow::ownAction(const QString & szBuffer)
 					// ugly, but we must redecode here
 					QString szRedecoded = decodeText(szEncrypted.ptr());
 
-					output(KVI_OUT_OWNACTIONCRYPTED, "\r!nc\r%Q\r %Q", &szMyName, &szRedecoded);
+					QString szBuf = "\r!nc\r";
+					szBuf += szMyName;
+					szBuf += "\r ";
+					szBuf += szRedecoded;
+					outputMessage(KVI_OUT_OWNACTIONCRYPTED, szBuf);
 				}
 				break;
 				default:
