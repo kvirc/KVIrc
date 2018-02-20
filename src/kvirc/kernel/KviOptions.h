@@ -212,7 +212,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolDccSendFakeAddressByDefault 120                          /* dcc::general */
 #define KviOption_boolUseWindowListActivityMeter 121                           /* irc::output */
 #define KviOption_boolCloseServerWidgetAfterConnect 122                        /* IMPLEMENTATION NEEDED !!! */
-//#define KviOption_boolShowIdentityDialogAsToplevel 123                         /* ??? */  //UNUSED
+#define KviOption_boolPrioritizeLastActionTime 123
 #define KviOption_boolShowUserChannelIcons 124                                 /* look & feel::interface features::userlist */
 #define KviOption_boolShowUserChannelState 125                                 /* look & feel::interface features::userlist */
 #define KviOption_boolEnableIgnoreOnPrivMsg 126                                /* irc::ignore */
