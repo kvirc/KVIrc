@@ -59,11 +59,7 @@ OptionsWidget_logging::OptionsWidget_logging(QWidget * parent)
 	mergeTip(us, __tr2qs_ctx("Save logs with the current interval.<br>"
 	                         "Set to 0 to disable this feature", "options"));
 
-#ifdef COMPILE_ZLIB_SUPPORT
-	addBoolSelector(0, 6, 0, 6, __tr2qs_ctx("Compress logs", "options"), KviOption_boolGzipLogs);
-#endif
-
-	addRowSpacer(0, 7, 0, 7);
+	addRowSpacer(0, 6, 0, 6);
 }
 
 OptionsWidget_logging::~OptionsWidget_logging()

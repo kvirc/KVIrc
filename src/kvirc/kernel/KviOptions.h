@@ -275,7 +275,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption, QStringList)
 #define KviOption_boolShowMinimizedDebugWindow 183                             /* parser */
 #define KviOption_boolShowExtendedInfoInQueryLabel 184                         /* query */
 #define KviOption_boolUseUserListColorsAsNickColors 185                        /* irc::usermessages */
-#define KviOption_boolGzipLogs 186                                             /* ircengine::logging */
+#define KviOption_boolGzipLogs 186                                             /* ircengine::logging - no longer available, see https://github.com/kvirc/KVIrc/issues/2353 */
 #define KviOption_boolUseFullWordHighlighting 187                              /* highlight */
 #define KviOption_boolNotifierFlashing 188                                     /* interface::notifier */
 #define KviOption_boolCommandlineInUserFriendlyModeByDefault 189               /* interface::input */
