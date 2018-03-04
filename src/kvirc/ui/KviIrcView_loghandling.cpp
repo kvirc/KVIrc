@@ -34,6 +34,10 @@
 #include "KviQString.h"
 #include "KviWindow.h"
 
+#ifdef COMPILE_ZLIB_SUPPORT
+#include <zlib.h>
+#endif
+
 #include <QFileInfo>
 #include <QFile>
 #include <QDateTime>
@@ -48,6 +52,30 @@ void KviIrcView::stopLogging()
 		QString szLogEnd = QString(__tr2qs("### Log session terminated ###"));
 		add2Log(szLogEnd, date, KVI_OUT_LOG, true);
 		m_pLogFile->close();
+#ifdef COMPILE_ZLIB_SUPPORT
+		if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
+		{
+			if(m_pLogFile->open(QIODevice::ReadOnly))
+			{
+				QByteArray bytes;
+				bytes = m_pLogFile->readAll();
+				m_pLogFile->close();
+				QFileInfo fi(*m_pLogFile);
+				QString szFname = fi.absolutePath() + QString("/") + fi.completeBaseName();
+				gzFile file = gzopen(QTextCodec::codecForLocale()->fromUnicode(szFname).data(), "ab9");
+				if(file)
+				{
+					gzwrite(file, bytes.data(), bytes.size());
+					gzclose(file);
+					m_pLogFile->remove();
+				}
+				else
+				{
+					qDebug("Can't open compressed stream");
+				}
+			}
+		}
+#endif
 		delete m_pLogFile;
 		m_pLogFile = nullptr;
 	}
@@ -76,7 +104,34 @@ void KviIrcView::flushLog()
 {
 	if(m_pLogFile)
 	{
-		m_pLogFile->flush();
+#ifdef COMPILE_ZLIB_SUPPORT
+		if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
+		{
+			m_pLogFile->close();
+			if(m_pLogFile->open(QIODevice::ReadOnly))
+			{
+				QByteArray bytes;
+				bytes = m_pLogFile->readAll();
+				m_pLogFile->close();
+				QFileInfo fi(*m_pLogFile);
+				QString szFname = fi.absolutePath() + QString("/") + fi.completeBaseName();
+				gzFile file = gzopen(QTextCodec::codecForLocale()->fromUnicode(szFname).data(), "ab9");
+				if(file)
+				{
+					gzwrite(file, bytes.data(), bytes.size());
+					gzclose(file);
+					m_pLogFile->remove();
+				}
+				else
+				{
+					qDebug("Can't open compressed stream");
+				}
+			}
+			m_pLogFile->open(QIODevice::Append | QIODevice::WriteOnly);
+		}
+		else
+#endif
+			m_pLogFile->flush();
 	}
 	else if(m_pMasterView)
 		m_pMasterView->flushLog();
@@ -139,6 +194,11 @@ bool KviIrcView::startLogging(const QString & fname, bool bPrependCurBuffer)
 			return false;
 		m_pKviWindow->getDefaultLogFileName(szFname);
 	}
+
+#ifdef COMPILE_ZLIB_SUPPORT
+	if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
+		szFname += ".tmp";
+#endif
 
 	m_pLogFile = new QFile(szFname);
 

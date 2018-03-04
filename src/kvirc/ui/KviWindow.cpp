@@ -504,9 +504,7 @@ void KviWindow::getConfigGroupName(QString & szBuffer)
 
 void KviWindow::getDefaultLogFileName(QString & szBuffer)
 {
-	/* KviOption_boolGzipLogs is no longer available - see
-	 * https://github.com/kvirc/KVIrc/issues/2353 */
-	return getDefaultLogFileName(szBuffer, QDate::currentDate(), false,
+	return getDefaultLogFileName(szBuffer, QDate::currentDate(), KVI_OPTION_BOOL(KviOption_boolGzipLogs),
 		KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat));
 }
 
