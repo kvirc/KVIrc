@@ -137,6 +137,9 @@ AliasEditorWidget::AliasEditorWidget(QWidget * par)
 
 	m_pTreeWidget = new AliasEditorTreeWidget(box);
 
+	QPushButton * btn = new QPushButton(__tr2qs_ctx("&Export All to...", "editor"), box);
+	connect(btn, SIGNAL(clicked()), this, SLOT(exportAll()));
+
 	box = new KviTalVBox(m_pSplitter);
 	KviTalHBox * hbox = new KviTalHBox(box);
 	hbox->setSpacing(0);
