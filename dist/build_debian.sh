@@ -123,7 +123,6 @@ else
     gpgkey
     tmpgpg
     test -f ~/.dput.cf || dputcf
-    sed "s/Release/Debug/g" -i debian/rules
     dchppa_pkg
     rm -f ../*ppa*
     DIST_PPA="trusty"

@@ -14,9 +14,10 @@ Forwarded: no
 
 --- a/cmake/kvirc4.desktop.cmake
 +++ b/cmake/kvirc4.desktop.cmake
-@@ -16,4 +16,4 @@ Exec=${KVIRC_BINARYNAME} -m %u
+@@ -16,4 +17,5 @@ Exec=${KVIRC_BINARYNAME} -m %u
  Icon=kvirc
  Type=Application
  MimeType=application/x-kva;application/x-kvt;
 -Categories=Qt;Network;IRCClient;
 +Categories=Qt;KDE;Network;IRCClient;
++Keywords=IM;Chat;

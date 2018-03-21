@@ -1,0 +1,3 @@
+version=3
+https://github.com/kvirc/KVIrc/releases \
+.*[^n]/(?:|v|version-|version|release-|r|REL_|rel-|KVIrc?|kvirc?(?:_|-))(\d[^\s/]*)\.(?:tar\.xz|txz|tar\.bz2|tbz2|tar\.gz|tgz)

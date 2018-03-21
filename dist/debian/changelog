@@ -1,3 +1,54 @@
+kvirc (4:4.9.3~git-7269-g7689d8b21-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 7689d8b2100f3077b647d8de6915473e511993ed
+  * Date: 1520200190
+  * git changelog:
+  *  7689d8b21 - Revert "Remove gzipped logs as an option"
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Fri, 16 Mar 2018 11:11:08 +0300
+
+kvirc (4:4.9.3~git-7268-gaa64034f9-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: aa64034f955f6b8221e8e844363009dfba738553
+  * Date: 1520026828
+  * git changelog:
+  *  aa64034f9 - Remove gzipped logs as an option
+  *  a5e2ea29c - Lag Meter: Change units to the more standard
+    millisecond. Fixes #1577
+  *  4d87c75b4 - CMakeLists: Detect and use libenchant 2.x
+  *  9d4c5a651 - spellchecker: Stop trying to load invalid dictionaries.
+  *  53ee86788 - Add option to prioritize nick tab completion by last
+    action time. Implements #2216
+  *  1f2f28f90 - KviChannelWindow: Fix encrypted own CTCP ACTION
+    messages being sent to the wrong split view.
+  *  235542674 - Adjust defaults for avatar settings. Fixes #2340
+  *  eb0d1f79e - I/O themes: Fix highlights not being logged in I/O
+    themes
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sat, 03 Mar 2018 16:16:10 +0300
+
+kvirc (4:4.9.3~git-7260-g166f0f553-1) unstable; urgency=medium
+
+  * Compile
+  * URL: https://github.com/kvirc/KVIrc.git
+  * Branch: master
+  * Commit: 166f0f5534f90b14abd5b1fde1905ce926e149cc
+  * Date: 1518631003
+  * git changelog:
+  *  166f0f553 - PPA update:
+  *  4f3cd78f2 - Update Freenode server locations for "asimov", "adams"
+    & "pratchett". Replace dead "zelazny" with "niven" (London). (#2348)
+  *  bed7de9c1 - QRegExp: Enable greedy quantifiers in regex pattern
+    matching.
+
+ -- Alexander Pozdnyakov <almipo@mail.ru>  Sun, 18 Feb 2018 12:29:20 +0300
+
 kvirc (4:4.9.2~git-7257-g7c3520fef-1) unstable; urgency=medium
 
   * Compile

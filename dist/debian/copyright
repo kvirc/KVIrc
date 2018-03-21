@@ -1,246 +1,108 @@
-This package was debianized by Andrea Briganti <kbytesys@tin.it>  on
-Wed,  8 Sep 2004 18:49:44 +0100 and reworked by Raúl Sánchez Siles
-<rasasi78@gmail.com> on Thu, 17 Apr 2008 09:49:21 +0200
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: kvirc
+Upstream-Contact: Szymon Stefanek <kvirc@tin.it>
+Source: https://github.com/kvirc/KVIrc
 
-It was updated to 4.0.0 pre-release (svn 20090126) by Roderick B. Greening <roderick.greening@gmail.com>
-on Mon, 26 Jan 2009 12:15:00 -330
+Files: *
+Copyright: 2002-2018 Szymon Stefanek <kvirc@tin.it> and "The KVIrc Development Team".
+License: GPL-2+ with OpenSSL exception
+ This is the KVIrc IRC Client license.
+ .
+ It is based on the GNU General Public License either version 2, or
+ (at your option) any later version. The full text of versions 2 and 3 of
+ the GPL can be found respectively in the files LICENSE-GPLV2 and LICENSE-GPLV3.
+ KVIrc License contains all the GPL terms and conditions and adds a special
+ exception (see "OpenSSL Exception" below) to the distribution limitations.
+ .
+ Note that the GPL is copyrighted by the Free Software Foundation,
+ but the instance of code that it refers to is copyrighted by
+ Szymon Stefanek and other members of the KVIrc Development Team.
+ .
+ The source code for all versions of KVIrc is available at http://www.kvirc.net
+ .
+ Have fun!
+ Szymon Stefanek :)
+ .
+ On Debian GNU/Linux systems, the complete text of the GNU General Public
+ License version 2 and version 3 can be found in
+ `/usr/share/common-licenses/GPL-2' and `/usr/share/common-licenses/GPL-3',
+ .respectively.
+ .
+                        _OpenSSL Exception_
+ .
+ 0. Definitions
+ .
+ "KVIrc" means KVIrc software licensed under version 2 or any later
+ version of the GNU General Public License (collectively, "GPL"), or a
+ work based on such software and licensed under the GPL.
+ .
+ "OpenSSL" means OpenSSL toolkit software distributed by the OpenSSL
+ Project and licensed under the OpenSSL Licenses, or a work based on such
+ software and licensed under the OpenSSL Licenses.
+ .
+ "OpenSSL Licenses" means the OpenSSL License and Original SSLeay License
+ under which the OpenSSL Project distributes the OpenSSL toolkit software,
+ as those licenses appear in the file LICENSE-OPENSSL.
+ .
+ 1. Exception
+ .
+ You have permission to copy, modify, propagate, and distribute a work
+ formed by combining OpenSSL with KVIrc, or a work derivative of such a
+ combination, even if such copying, modification, propagation, or
+ distribution would otherwise violate the terms of the GPL. You must
+ comply with the GPL in all respects for all of the code used other than
+ OpenSSL.
+ .
+ You may include this OpenSSL Exception and its grant of permissions when
+ you distribute KVIrc. Inclusion of this notice with such a
+ distribution constitutes a grant of such permission. If you do not wish
+ to grant these permissions, remove this section entitled "OpenSSL
+ Exception" from your distribution.
 
-The Debian packaging is
-Copyright (C) 2009-2010 Raul Sánchez Siles <rasasi78@gmail.com>
-Copyright (C) 2009-2010 Kai Wasserbäch <debian@carbon-project.org>
-and is licensed under the GPLv2, which can be found at
-'/usr/share/common-licenses/GPL-2' on Debian GNU/Linux systems.
+Files: cmake/modules/FindLibV4L2.cmake
+Copyright: 2002 Kitware, Inc., Insight Consortium
+           2009 Jaroslav Reznik <jreznik@redhat.com> 
+License: other
 
-It was downloaded from www.kvirc.net
+Files: cmake/modules/FindPhonon.cmake
+Copyright: 2002 Kitware, Inc., Insight Consortium
+           2008 Matthias Kretz <kretz@kde.org> 
+License: other
 
-Upstream Author: Szymon Stefanek <kvirc@tin.it>
+Files: cmake/modules/FindTheora.cmake
+Copyright: 2002 Kitware, Inc., Insight Consortium
+           2006-2007 Laurent Montel <montel@kde.org> 
+License: other
 
-License:
-This is the KVIrc IRC Client license.
+License: other
+ Copyright (c) 2002 Kitware, Inc., Insight Consortium
+ All rights reserved.
+ .
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+ .
+  * Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.
+ .
+  * Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ .
+  * The names of Kitware, Inc., the Insight Consortium, or the names of
+    any consortium members, or of any contributors, may not be used to
+    endorse or promote products derived from this software without
+    specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER AND CONTRIBUTORS
+ ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHORS OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-It is based on the GNU General Public License either version 2, or
-(at your option) any later version. The full text of versions 2 and 3 of
-the GPL can be found respectively in the files LICENSE-GPLV2 and LICENSE-GPLV3.
-KVIrc License contains all the GPL terms and conditions and adds a special
-exception (see "OpenSSL Exception" below) to the distribution limitations.
-
-Note that the GPL is copyrighted by the Free Software Foundation,
-but the instance of code that it refers to is copyrighted by
-Szymon Stefanek and other members of the KVIrc Development Team.
-
-The source code for all versions of KVIrc is available at http://www.kvirc.net
-
-Have fun!
-Szymon Stefanek :)
-
-On Debian GNU/Linux systems, the complete text of the GNU General Public
-License version 2 and version 3 can be found in
-`/usr/share/common-licenses/GPL-2' and `/usr/share/common-licenses/GPL-3',
-respectively.
-
-                       _OpenSSL Exception_
-
-0. Definitions
-
-"KVIrc" means KVIrc software licensed under version 2 or any later
-version of the GNU General Public License (collectively, "GPL"), or a
-work based on such software and licensed under the GPL.
-
-"OpenSSL" means OpenSSL toolkit software distributed by the OpenSSL
-Project and licensed under the OpenSSL Licenses, or a work based on such
-software and licensed under the OpenSSL Licenses.
-
-"OpenSSL Licenses" means the OpenSSL License and Original SSLeay License
-under which the OpenSSL Project distributes the OpenSSL toolkit software,
-as those licenses appear in the file LICENSE-OPENSSL.
-
-1. Exception
-
-You have permission to copy, modify, propagate, and distribute a work
-formed by combining OpenSSL with KVIrc, or a work derivative of such a
-combination, even if such copying, modification, propagation, or
-distribution would otherwise violate the terms of the GPL. You must
-comply with the GPL in all respects for all of the code used other than
-OpenSSL.
-
-You may include this OpenSSL Exception and its grant of permissions when
-you distribute KVIrc. Inclusion of this notice with such a
-distribution constitutes a grant of such permission. If you do not wish
-to grant these permissions, remove this section entitled "OpenSSL
-Exception" from your distribution.
-
-
-Copyright
-
-KVIrc:
-
-    Copyright 2002-2015 Szymon Stefanek <kvirc@tin.it> and "The KVIrc
-    Development Team".
-
---
-
-src/kvirc/sparser/kvi_numeric.h:
-
-    Copyright (C) 1990 Jarkko Oikarinen
-
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 1, or (at your option)
-    any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301 USA
-
-On Debian GNU/Linux systems, the complete text of the GNU General Public License
-(version 1) can be found in `/usr/share/common-licenses/GPL-1'.
---
-
-src/modules/my/idle.cpp
-src/modules/my/idle.h
-src/modules/my/idle_mac.cpp
-src/modules/my/idle_win.cpp
-src/modules/my/idle_x11.cpp:
-
-    Copyright (C) 2003 Justin Karneges
-
-    This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Lesser General Public
-    License as published by the Free Software Foundation; either
-    version 2.1 of the License, or (at your option) any later version.
-
-    This library is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Lesser General Public License for more details.
-
-    You should have received a copy of the GNU Lesser General Public
-    License along with this library; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
-    02110-1301, USA.
-
-On Debian GNU/Linux systems, the complete text of the GNU Lesser General Public
-License can be found in `/usr/share/common-licenses/LGPL-2.1'.
---
-
-For the following files, the license and copyright holders are different:
-    * cmake/modules/FindLibV4L2.cmake   [CMAKE1]
-    * cmake/modules/FindPhonon.cmake    [CMAKE2]
-    * cmake/modules/FindTheora.cmake    [CMAKE3]
-
-    Upstream Authors:
-      Copyright ©      2009 Jaroslav Reznik <jreznik@redhat.com>    [CMAKE1]
-      Copyright ©      2008 Matthias Kretz <kretz@kde.org>          [CMAKE2]
-      Copyright © 2006-2007 Laurent Montel <montel@kde.org>         [CMAKE3]
-
-    License:
-      Copyright (c) 2002 Kitware, Inc., Insight Consortium
-      All rights reserved.
-
-      Redistribution and use in source and binary forms, with or without
-      modification, are permitted provided that the following conditions are
-      met:
-
-       * Redistributions of source code must retain the above copyright notice,
-         this list of conditions and the following disclaimer.
-
-       * Redistributions in binary form must reproduce the above copyright
-         notice, this list of conditions and the following disclaimer in the
-         documentation and/or other materials provided with the distribution.
-
-       * The names of Kitware, Inc., the Insight Consortium, or the names of
-         any consortium members, or of any contributors, may not be used to
-         endorse or promote products derived from this software without
-         specific prior written permission.
-
-      THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER AND CONTRIBUTORS
-      ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-      LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-      PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHORS OR
-      CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-      EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-      PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-      PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-      LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-      NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-      SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
---
-
-For the following files, the license and copyright holders are different:
-   * src/kvilib/ext/avdevice/bayer.cpp
-   * src/kvilib/ext/avdevice/bayer.h
-   * src/kvilib/ext/avdevice/sonix_compress.h
-   * src/kvilib/ext/avdevice/sonix_compress.cpp
-
-  Upstream Authors:
-    Copyright (C) 2004 Takafumi Mizuno <taka-qce@ls-a.jp>
-    Copyright (C) 2009 Szymon Stefanek <pragma@kvirc.net>
-
-  License:
-    Copyright (c) The Regents of the University of California.
-    All rights reserved.
-
-    Redistribution and use in source and binary forms, with or without
-    modification, are permitted provided that the following conditions
-    are met:
-    1. Redistributions of source code must retain the above copyright
-       notice, this list of conditions and the following disclaimer.
-    2. Redistributions in binary form must reproduce the above copyright
-       notice, this list of conditions and the following disclaimer in the
-       documentation and/or other materials provided with the distribution.
-
-    THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
-    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-    ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
-    FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-    DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
-    OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
-    HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
-    OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
-    SUCH DAMAGE.
---
-
-For the following files, the license and copyright holders are different:
-   * src/kvilib/ext/avdevice/dummyvideodevice.cpp
-   * src/kvilib/ext/avdevice/dummyvideodevice.h
-   * src/kvilib/ext/avdevice/videodevice.cpp
-   * src/kvilib/ext/avdevice/videodevice.h
-   * src/kvilib/ext/avdevice/videodevicepool.cpp
-   * src/kvilib/ext/avdevice/videodevicepool.h
-   * src/kvilib/ext/avdevice/videoinput.cpp
-   * src/kvilib/ext/avdevice/videoinput.h
-
-  Upstream Authors:
-    Copyright (C) 2002-2009 Kopete developers <kopete-devel@kde.org>
-    Copyright (C)      2009 Alan Jones <skyphyr@gmail.com>
-    Copyright (C)      2009 Szymon Stefanek <pragma@kvirc.net>
-    Copyright (C)      2010 Frank Schaefer <fschaefer.oss@googlemail.com>
-    Copyright (C) 2005-2006 Cláudio da Silveira Pinheiro <taupter@gmail.com>
-
-  License:
-    The license for the eight files named above is either GPLv2 (or later),
-    which can be found in `/usr/share/common-licenses/GPL-2' on Debian systems,
-    or LGPLv2 (or later), which can be found in 
-    `/usr/share/common-licenses/LGPL-2' on Debian systems.
---
-
-For the following files, the license and copyright holders are different:
-    * src/kvilib/ext/avdevice/videodevicevector.cpp
-    * src/kvilib/ext/avdevice/videodevicevector.h
-
-  Upstream Authors:
-    Copyright (C) 2002-2009 Kopete developers <kopete-devel@kde.org>
-    Copyright (C)      2009 Alan Jones <skyphyr@gmail.com>
-    Copyright (C)      2009 Szymon Stefanek <pragma@kvirc.net>
-
-  License:
-    The license for the two files named above is GPLv3 or (at your option) any
-    later version. The GPLv3 can be found in `/usr/share/common-licenses/GPL-3'
-    on Debian systems.
