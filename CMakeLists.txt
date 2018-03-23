@@ -151,16 +151,7 @@ endif()
 list(APPEND CMAKE_KVIRC_BUILD_FLAGS MANDIR=${MANDIR_PREFIX})
 
 # Get the build date
-try_run(TEST_DID_RUN TEST_DID_COMPILE "${CMAKE_BINARY_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/datetime.cpp" OUTPUT_VARIABLE TEST_BUILD_DATE)
-if(TEST_DID_COMPILE)
-	string(REGEX MATCH "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] [A-Z][A-Z][A-Z]" CMAKE_KVIRC_BUILD_DATE "${TEST_BUILD_DATE}")
-else()
-	message(STATUS " Test datetime program failed to compile:")
-	message(STATUS " ----------------------------------------")
-	message(STATUS "${TEST_BUILD_DATE}")
-	message(STATUS " ----------------------------------------")
-	set(CMAKE_KVIRC_BUILD_DATE "ERROR ")
-endif()
+string(TIMESTAMP CMAKE_KVIRC_BUILD_DATE "%Y-%m-%d %H:%M:%S UTC" UTC)
 
 # Set var to link with, for later use
 set(LIBS)
