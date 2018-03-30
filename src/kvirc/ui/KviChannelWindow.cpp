@@ -692,7 +692,7 @@ void KviChannelWindow::setChannelModeWithParam(char cMode, QString & szParam)
 	if(szParam.isEmpty())
 		m_szChannelParameterModes.erase(cMode);
 	else
-		m_szChannelParameterModes.emplace(cMode, szParam);
+		m_szChannelParameterModes[cMode] = szParam;
 	updateModeLabel();
 	updateCaption();
 }
