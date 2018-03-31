@@ -28,15 +28,14 @@ Depends: libkvilib4 (= ${binary:Version}),
  ${misc:Depends}
 Multi-Arch: foreign
 Description: Next generation IRC client with module support
- A highly configurable graphical IRC client with an MDI interface,
- built-in scripting language, support for IRC DCC, drag & drop file
- browsing, and much more. KVIrc uses the KDE widget set, can be extended
- using its own scripting language, integrates with KDE, and supports
- custom plugins.
+ A highly configurable graphical IRC client, with powerful and flexible
+ built-in scripting language, supports IRC DCC, DCC over SSL, Spell-checking,
+ drag & drop, file browsing, and much more.
+ KVIrc can be extended using its own scripting language, integrate with KDE,
+ and supports custom add-ons/scripts and themes.
  .
- If you're looking for a simple and plain IRC client, KVIrc is probably the
- wrong choice as it is rather big. But if you want a highly customizable client
- you won't regret the installation.
+ If you're looking for powerful highly customizable client, you have found it.
+ You won't regret installing KVIrc.
 
 Package: libkvilib4
 Architecture: any
@@ -46,11 +45,11 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
 Recommends: kvirc (= ${binary:Version})
 Multi-Arch: same
 Description: KVIrc (IRC client) base library
- A highly configurable graphical IRC client with an MDI interface,
- built-in scripting language, support for IRC DCC, drag & drop file
- browsing, and much more. KVIrc uses the KDE widget set, can be extended
- using its own scripting language, integrates with KDE, and supports
- custom plugins.
+ A highly configurable graphical IRC client, with powerful and flexible
+ built-in scripting language, supports IRC DCC, DCC over SSL, Spell-checking,
+ drag & drop, file browsing, and much more.
+ KVIrc can be extended using its own scripting language, integrate with KDE,
+ and supports custom add-ons/scripts and themes.
  .
  This package contains the main library of KVIrc.
 
@@ -64,11 +63,11 @@ Depends: libkvilib4 (= ${binary:Version}),
 Recommends: kvirc (= ${binary:Version})
 Multi-Arch: same
 Description: KVIrc (IRC client) modules
- A highly configurable graphical IRC client with an MDI interface,
- built-in scripting language, support for IRC DCC, drag & drop file
- browsing, and much more. KVIrc uses the KDE widget set, can be extended
- using its own scripting language, integrates with KDE, and supports
- custom plugins.
+ A highly configurable graphical IRC client, with powerful and flexible
+ built-in scripting language, supports IRC DCC, DCC over SSL, Spell-checking,
+ drag & drop, file browsing, and much more.
+ KVIrc can be extended using its own scripting language, integrate with KDE,
+ and supports custom add-ons/scripts and themes.
  .
  This package contains all modules for KVIrc.
 
