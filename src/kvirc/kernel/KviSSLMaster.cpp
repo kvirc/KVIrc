@@ -64,7 +64,7 @@ namespace KviSSLMaster
 	{
 		wnd->output(KVI_OUT_SSL, __tr2qs("[SSL]: %c%s"), KviControlCodes::Bold, description);
 		wnd->output(KVI_OUT_SSL, __tr2qs("[SSL]:  Version: %c%d"), KviControlCodes::Bold, c->version());
-		wnd->output(KVI_OUT_SSL, __tr2qs("[SSL]:  Serial number: %c%d"), KviControlCodes::Bold, c->serialNumber());
+		wnd->output(KVI_OUT_SSL, __tr2qs("[SSL]:  Serial number: %c%lld"), KviControlCodes::Bold, c->serialNumber());
 		wnd->output(KVI_OUT_SSL, __tr2qs("[SSL]:  Subject:"));
 		wnd->output(KVI_OUT_SSL, __tr2qs("[SSL]:     Common name: %c%s"), KviControlCodes::Bold, c->subjectCommonName());
 		wnd->output(KVI_OUT_SSL, __tr2qs("[SSL]:     Organization: %c%s"), KviControlCodes::Bold, c->subjectOrganization());

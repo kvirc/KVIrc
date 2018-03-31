@@ -864,8 +864,16 @@ void KviSSLCertificate::extractPubKeyInfo()
 void KviSSLCertificate::extractSerialNumber()
 {
 	ASN1_INTEGER * i = X509_get_serialNumber(m_pX509);
-	if(i)
+	if (i)
+	{
+#if OPENSSL_VERSION_NUMBER >= 0x10100005L
+		int res = ASN1_INTEGER_get_int64(&m_iSerialNumber, i);
+		if (res != 0)
+			m_iSerialNumber = -1;
+#else
 		m_iSerialNumber = ASN1_INTEGER_get(i);
+#endif
+	}
 	else
 		m_iSerialNumber = -1;
 }
