@@ -53,7 +53,7 @@ protected:
 	KviPointerHashTable<const char *, KviCString> * m_pIssuer;
 	int m_iPubKeyBits;
 	KviCString m_szPubKeyType;
-	kvi_i64_t m_iSerialNumber;
+	KviCString m_szSerialNumber;
 	int m_iVersion;
 	KviCString m_szSignatureType;
 	KviCString m_szSignatureContents;
@@ -92,7 +92,7 @@ public:
 	int publicKeyBits() { return m_iPubKeyBits; };
 	const char * publicKeyType() { return m_szPubKeyType.ptr(); };
 
-	kvi_i64_t serialNumber() { return m_iSerialNumber; };
+	const char * serialNumber() { return m_szSerialNumber.len() ? m_szSerialNumber.ptr() : nullptr; };
 
 	int version() { return m_iVersion; };
 

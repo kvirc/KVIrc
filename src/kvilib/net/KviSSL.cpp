@@ -863,19 +863,22 @@ void KviSSLCertificate::extractPubKeyInfo()
 
 void KviSSLCertificate::extractSerialNumber()
 {
+	m_szSerialNumber = KviCString();
 	ASN1_INTEGER * i = X509_get_serialNumber(m_pX509);
 	if (i)
 	{
-#if OPENSSL_VERSION_NUMBER >= 0x10100005L
-		int res = ASN1_INTEGER_get_int64(&m_iSerialNumber, i);
-		if (res != 0)
-			m_iSerialNumber = -1;
-#else
-		m_iSerialNumber = ASN1_INTEGER_get(i);
-#endif
+		BIGNUM * bn = ASN1_INTEGER_to_BN(i, nullptr);
+		if (bn)
+		{
+			char *str = BN_bn2dec(bn);
+			if (str)
+			{
+				m_szSerialNumber = KviCString(str);
+				OPENSSL_free(str);
+			}
+			BN_free(bn);
+		}
 	}
-	else
-		m_iSerialNumber = -1;
 }
 
 void KviSSLCertificate::extractSignature()
