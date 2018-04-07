@@ -7,17 +7,9 @@ set(license
 )
 set(howto
 	README
-	FAQ
-	INSTALL.txt
-	INSTALL-MacOS.txt
 	INSTALL-Win32.txt
 	INSTALL-Win64.txt
-	addon.howto.txt
-	firefox.hack.txt
 	hackers.guide.txt
-	scripting.faq.txt
-	themes.howto.txt
-	translations.howto.txt
 	ui-style.tips.txt
 )
 
