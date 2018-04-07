@@ -60,10 +60,20 @@ matrix:
     fast_finish: true
 install:
     - ps: |
+        if ((Test-Path "c:\OpenSSL-$env:ssl_arch") -And ((Get-Item "c:\OpenSSL-$env:ssl_arch\bin\ssleay32.dll").VersionInfo.ProductVersion -eq '1.0.2o')) {
+            echo "using preinstalled openssl"
+        } else {
+            echo "preinstalled openssl not found or not present in requested version, this is pretty sad."
+            echo "downloading openssl 1.0.2o package, don't worry, be happy!"
+            Invoke-WebRequest "https://slproweb.com/download/$($env:ssl_arch)OpenSSL-1_0_2o.exe" -OutFile c:\openssl-setup.exe
+            echo "installing openssl"
+            Start-Process -Wait -FilePath c:\openssl-setup.exe -ArgumentList "/silent /verysilent /sp- /suppressmsgboxes"
+        }
+    - c:\cygwin\bin\find /cygdrive/c/OpenSSL-%ssl_arch% "-type" f
+    - ps: |
         choco install strawberryperl -y $env:choco_arch
         # Strawberry perl doesn't support MSVC, but we force the support.
         c:\cygwin\bin\bash -c "/bin/cat .appveyor.perl >> /cygdrive/c/Strawberry/perl/lib/core/config.h"
-        c:\cygwin\bin\touch /cygdrive/c/Strawberry/kvirc_workaround
     - ps: |
         c:\msys64\usr\bin\pacman -Q
         c:\msys64\usr\bin\pacman -S --noconfirm $env:mingw_fourple-enchant
