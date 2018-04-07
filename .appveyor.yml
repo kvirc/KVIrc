@@ -2,7 +2,7 @@ version: 0.0.0.0.1-branch-{branch}-build-{build}
 image: Visual Studio 2017
 cache:
     - c:\spellcheck-dicts -> .appveyor.yml
-    - c:\Tools\vcpkg\installed
+    - c:\Tools\vcpkg\installed -> .appveyor.yml
 environment:
     matrix:
         - cmake_build_type: Release
