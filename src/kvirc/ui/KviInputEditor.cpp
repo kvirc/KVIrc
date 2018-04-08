@@ -3186,10 +3186,10 @@ void KviInputEditor::clearSelection()
 
 void KviInputEditor::homeInternal()
 {
+	clearSelection();
+
 	if(m_iCursorPosition <= 0)
 		return;
-
-	clearSelection();
 
 	home();
 }
