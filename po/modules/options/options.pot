@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: KVIrc 4.9.2\n"
+"Project-Id-Version: KVIrc 4.9.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-24 17:33+0200\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,14 +60,14 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/OptionsDialog.cpp:233
-#: src/modules/options/OptionsWidgetContainer.cpp:107
+#: src/modules/options/OptionsWidgetContainer.cpp:105
 #: src/modules/options/OptionsWidget_identity.cpp:239
 #: src/modules/options/OptionsWidget_servers.cpp:368
 msgid "&OK"
 msgstr ""
 
 #: src/modules/options/OptionsDialog.cpp:235
-#: src/modules/options/OptionsWidgetContainer.cpp:108
+#: src/modules/options/OptionsWidgetContainer.cpp:106
 msgid "Close this dialog, accepting all changes."
 msgstr ""
 
@@ -80,7 +80,7 @@ msgid "Commit all changes immediately."
 msgstr ""
 
 #: src/modules/options/OptionsDialog.cpp:248
-#: src/modules/options/OptionsWidgetContainer.cpp:115
+#: src/modules/options/OptionsWidgetContainer.cpp:113
 #: src/modules/options/OptionsWidget_identity.cpp:97
 #: src/modules/options/OptionsWidget_identity.cpp:245
 #: src/modules/options/OptionsWidget_identity.cpp:968
@@ -91,7 +91,7 @@ msgid "Cancel"
 msgstr ""
 
 #: src/modules/options/OptionsDialog.cpp:250
-#: src/modules/options/OptionsWidgetContainer.cpp:116
+#: src/modules/options/OptionsWidgetContainer.cpp:114
 msgid "Close this dialog, discarding all changes."
 msgstr ""
 
@@ -280,12 +280,12 @@ msgstr ""
 #: src/modules/options/OptionsWidget_avatar.cpp:55
 #: src/modules/options/OptionsWidget_avatar.cpp:62
 #: src/modules/options/OptionsWidget_avatar.cpp:65
-#: src/modules/options/OptionsWidget_input.cpp:164
+#: src/modules/options/OptionsWidget_input.cpp:167
 #: src/modules/options/OptionsWidget_ircView.cpp:179
 #: src/modules/options/OptionsWidget_userList.cpp:227
-#: src/modules/options/OptionsWidget_windowList.cpp:204
-#: src/modules/options/OptionsWidget_windowList.cpp:233
-#: src/modules/options/OptionsWidget_windowList.cpp:236
+#: src/modules/options/OptionsWidget_windowList.cpp:221
+#: src/modules/options/OptionsWidget_windowList.cpp:250
+#: src/modules/options/OptionsWidget_windowList.cpp:253
 msgid " pixels"
 msgstr ""
 
@@ -1484,7 +1484,7 @@ msgid "&Browse..."
 msgstr ""
 
 #: src/modules/options/OptionsWidget_identity.cpp:268
-#: src/modules/options/OptionsWidget_message.cpp:639
+#: src/modules/options/OptionsWidget_message.cpp:646
 #: src/modules/options/OptionsWidget_textIcons.cpp:190
 msgid "Select a File - KVIrc"
 msgstr ""
@@ -1847,8 +1847,8 @@ msgstr ""
 #: src/modules/options/OptionsWidget_notifier.cpp:39
 #: src/modules/options/OptionsWidget_topicLabel.cpp:35
 #: src/modules/options/OptionsWidget_userList.cpp:47
-#: src/modules/options/OptionsWidget_windowList.cpp:76
-#: src/modules/options/OptionsWidget_windowList.cpp:221
+#: src/modules/options/OptionsWidget_windowList.cpp:93
+#: src/modules/options/OptionsWidget_windowList.cpp:238
 msgid "Font:"
 msgstr ""
 
@@ -1888,21 +1888,21 @@ msgstr ""
 #: src/modules/options/OptionsWidget_theme.cpp:168
 #: src/modules/options/OptionsWidget_topicLabel.cpp:38
 #: src/modules/options/OptionsWidget_userList.cpp:131
-#: src/modules/options/OptionsWidget_windowList.cpp:106
+#: src/modules/options/OptionsWidget_windowList.cpp:123
 msgid "Background image:"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_input.cpp:48
 #: src/modules/options/OptionsWidget_ircView.cpp:52
 #: src/modules/options/OptionsWidget_notifier.cpp:47
-#: src/modules/options/OptionsWidget_windowList.cpp:108
+#: src/modules/options/OptionsWidget_windowList.cpp:125
 msgid "Horizontal align:"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_input.cpp:52
 #: src/modules/options/OptionsWidget_ircView.cpp:56
 #: src/modules/options/OptionsWidget_notifier.cpp:51
-#: src/modules/options/OptionsWidget_windowList.cpp:112
+#: src/modules/options/OptionsWidget_windowList.cpp:129
 msgid "Vertical align:"
 msgstr ""
 
@@ -1914,8 +1914,8 @@ msgstr ""
 #: src/modules/options/OptionsWidget_notifier.cpp:60
 #: src/modules/options/OptionsWidget_userList.cpp:141
 #: src/modules/options/OptionsWidget_userList.cpp:146
-#: src/modules/options/OptionsWidget_windowList.cpp:116
-#: src/modules/options/OptionsWidget_windowList.cpp:121
+#: src/modules/options/OptionsWidget_windowList.cpp:133
+#: src/modules/options/OptionsWidget_windowList.cpp:138
 msgid "Tile"
 msgstr ""
 
@@ -1923,7 +1923,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_ircView.cpp:61
 #: src/modules/options/OptionsWidget_notifier.cpp:56
 #: src/modules/options/OptionsWidget_userList.cpp:142
-#: src/modules/options/OptionsWidget_windowList.cpp:117
+#: src/modules/options/OptionsWidget_windowList.cpp:134
 msgid "Left"
 msgstr ""
 
@@ -1931,7 +1931,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_ircView.cpp:62
 #: src/modules/options/OptionsWidget_notifier.cpp:57
 #: src/modules/options/OptionsWidget_userList.cpp:143
-#: src/modules/options/OptionsWidget_windowList.cpp:118
+#: src/modules/options/OptionsWidget_windowList.cpp:135
 msgid "Right"
 msgstr ""
 
@@ -1943,8 +1943,8 @@ msgstr ""
 #: src/modules/options/OptionsWidget_notifier.cpp:63
 #: src/modules/options/OptionsWidget_userList.cpp:144
 #: src/modules/options/OptionsWidget_userList.cpp:149
-#: src/modules/options/OptionsWidget_windowList.cpp:119
-#: src/modules/options/OptionsWidget_windowList.cpp:124
+#: src/modules/options/OptionsWidget_windowList.cpp:136
+#: src/modules/options/OptionsWidget_windowList.cpp:141
 msgid "Center"
 msgstr ""
 
@@ -1952,7 +1952,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_ircView.cpp:66
 #: src/modules/options/OptionsWidget_notifier.cpp:61
 #: src/modules/options/OptionsWidget_userList.cpp:147
-#: src/modules/options/OptionsWidget_windowList.cpp:122
+#: src/modules/options/OptionsWidget_windowList.cpp:139
 msgid "Top"
 msgstr ""
 
@@ -1960,7 +1960,7 @@ msgstr ""
 #: src/modules/options/OptionsWidget_ircView.cpp:67
 #: src/modules/options/OptionsWidget_notifier.cpp:62
 #: src/modules/options/OptionsWidget_userList.cpp:148
-#: src/modules/options/OptionsWidget_windowList.cpp:123
+#: src/modules/options/OptionsWidget_windowList.cpp:140
 msgid "Bottom"
 msgstr ""
 
@@ -2004,23 +2004,27 @@ msgstr ""
 msgid "Use zsh-like nick completion"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_input.cpp:157
-msgid "Nick completion postfix string:"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_input.cpp:158
-msgid "Use the completion postfix string for the first word only"
+#: src/modules/options/OptionsWidget_input.cpp:154
+msgid "Prioritize nick completion by last action time"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_input.cpp:160
-msgid "Ignore special characters in nick completion"
+msgid "Nick completion postfix string:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_input.cpp:162
-msgid "Use a custom cursor width"
+#: src/modules/options/OptionsWidget_input.cpp:161
+msgid "Use the completion postfix string for the first word only"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_input.cpp:163
+msgid "Ignore special characters in nick completion"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_input.cpp:165
+msgid "Use a custom cursor width"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_input.cpp:166
 msgid "Custom cursor width:"
 msgstr ""
 
@@ -2510,58 +2514,62 @@ msgid "Smart nickname colors"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_message.cpp:78
-msgid "Use specified colors for own nick:"
+msgid "Use a background color for smart nickname colors"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:85
+#: src/modules/options/OptionsWidget_message.cpp:82
+msgid "Use specified smart colors for own nick:"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_message.cpp:92
 msgid "Use same colors as in the userlist"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:88
+#: src/modules/options/OptionsWidget_message.cpp:95
 msgid "Show nicknames in bold"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:89
+#: src/modules/options/OptionsWidget_message.cpp:96
 msgid "Show user and host"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:90
+#: src/modules/options/OptionsWidget_message.cpp:97
 msgid "Show channel mode prefix"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:91
+#: src/modules/options/OptionsWidget_message.cpp:98
 msgid "User-defined prefix and postfix"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:93
+#: src/modules/options/OptionsWidget_message.cpp:100
 msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:107
+#: src/modules/options/OptionsWidget_message.cpp:114
 msgid "Prefix:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:112
+#: src/modules/options/OptionsWidget_message.cpp:119
 msgid "Postfix:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:129
+#: src/modules/options/OptionsWidget_message.cpp:136
 msgid "Show timestamp"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:132
+#: src/modules/options/OptionsWidget_message.cpp:139
 msgid "Use UTC time for timestamp"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:139
+#: src/modules/options/OptionsWidget_message.cpp:146
 msgid "Use special color for timestamps:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:145
+#: src/modules/options/OptionsWidget_message.cpp:152
 msgid "Timestamp format:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:170
+#: src/modules/options/OptionsWidget_message.cpp:177
 msgid ""
 "Please note that this is a set of standard IRC colors. You can adjust them a "
 "bit, make them darker or lighter but you shouldn't change their fundamental "
@@ -2569,39 +2577,39 @@ msgid ""
 "than the light one."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:181
+#: src/modules/options/OptionsWidget_message.cpp:188
 msgid "Reset to Default"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:310
+#: src/modules/options/OptionsWidget_message.cpp:317
 msgid "Transparent"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:380
+#: src/modules/options/OptionsWidget_message.cpp:387
 msgid "Background:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:393
+#: src/modules/options/OptionsWidget_message.cpp:400
 msgid "Foreground:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:405
+#: src/modules/options/OptionsWidget_message.cpp:412
 msgid "Alert level:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:428
+#: src/modules/options/OptionsWidget_message.cpp:435
 msgid "Log this"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:432
+#: src/modules/options/OptionsWidget_message.cpp:439
 msgid "Load from..."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:434
+#: src/modules/options/OptionsWidget_message.cpp:441
 msgid "Save As..."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.cpp:585
+#: src/modules/options/OptionsWidget_message.cpp:592
 msgid "Enter a Filename - KVIrc"
 msgstr ""
 
@@ -3720,19 +3728,19 @@ msgstr ""
 msgid "This allows you to select encoding of winamp messages."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_sound.cpp:335
+#: src/modules/options/OptionsWidget_sound.cpp:324
 msgid "New query opened:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_sound.cpp:338
+#: src/modules/options/OptionsWidget_sound.cpp:327
 msgid "New message in inactive query:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_sound.cpp:341
+#: src/modules/options/OptionsWidget_sound.cpp:330
 msgid "Highlighted message in inactive window:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_sound.cpp:344
+#: src/modules/options/OptionsWidget_sound.cpp:333
 msgid "When I am kicked:"
 msgstr ""
 
@@ -4032,16 +4040,16 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.cpp:50
 #: src/modules/options/OptionsWidget_userList.cpp:128
-#: src/modules/options/OptionsWidget_windowList.cpp:80
-#: src/modules/options/OptionsWidget_windowList.cpp:103
-#: src/modules/options/OptionsWidget_windowList.cpp:223
+#: src/modules/options/OptionsWidget_windowList.cpp:97
+#: src/modules/options/OptionsWidget_windowList.cpp:120
+#: src/modules/options/OptionsWidget_windowList.cpp:240
 msgid "Normal:"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.cpp:51
 #: src/modules/options/OptionsWidget_userList.cpp:129
-#: src/modules/options/OptionsWidget_windowList.cpp:81
-#: src/modules/options/OptionsWidget_windowList.cpp:104
+#: src/modules/options/OptionsWidget_windowList.cpp:98
+#: src/modules/options/OptionsWidget_windowList.cpp:121
 msgid "Selected:"
 msgstr ""
 
@@ -4110,7 +4118,7 @@ msgid "Dotted Grid"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.cpp:127
-#: src/modules/options/OptionsWidget_windowList.cpp:102
+#: src/modules/options/OptionsWidget_windowList.cpp:119
 msgid "Background Colors"
 msgstr ""
 
@@ -4123,7 +4131,7 @@ msgid "Vertical alignment:"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.cpp:226
-#: src/modules/options/OptionsWidget_windowList.cpp:203
+#: src/modules/options/OptionsWidget_windowList.cpp:220
 msgid "Minimum width:"
 msgstr ""
 
@@ -4179,23 +4187,31 @@ msgid ""
 "<br><br><b>Note:</b> Changes to this option requires KVIrc restart."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:37
-msgid "Show tree window list"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_windowList.cpp:38
-msgid "Sort windows by name"
-msgstr ""
-
 #: src/modules/options/OptionsWidget_windowList.cpp:39
-msgid "Show window icons in window list"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_windowList.cpp:40
-msgid "Show activity meter in window list"
+msgid "Window list type:"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_windowList.cpp:41
+msgid "Tree"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_windowList.cpp:42
+msgid "Classic"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_windowList.cpp:46
+msgid "Sort windows by name"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_windowList.cpp:47
+msgid "Show window icons in window list"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_windowList.cpp:48
+msgid "Show activity meter in window list"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_windowList.cpp:49
 msgid ""
 "This option enables the usage of the window list activity meter. Each window "
 "entry will have a small indicator of the activity that is going on in that "
@@ -4207,84 +4223,84 @@ msgid ""
 "causes the indicator to be shaded blue."
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:49
+#: src/modules/options/OptionsWidget_windowList.cpp:57
 msgid "Show IRC context indicator in window list"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:50
-msgid "Show close button on window list items"
-msgstr ""
-
-#: src/modules/options/OptionsWidget_windowList.cpp:51
+#: src/modules/options/OptionsWidget_windowList.cpp:58
 msgid "Enable window tooltips"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:52
+#: src/modules/options/OptionsWidget_windowList.cpp:59
 msgid "Allow the window list to be moved"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:53
+#: src/modules/options/OptionsWidget_windowList.cpp:60
 msgid "Show user flag for channels"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:78
-#: src/modules/options/OptionsWidget_windowList.cpp:222
+#: src/modules/options/OptionsWidget_windowList.cpp:95
+#: src/modules/options/OptionsWidget_windowList.cpp:239
 msgid "Text/Alert Colors"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:82
-#: src/modules/options/OptionsWidget_windowList.cpp:225
+#: src/modules/options/OptionsWidget_windowList.cpp:99
+#: src/modules/options/OptionsWidget_windowList.cpp:242
 msgid "Alert level 1:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:83
-#: src/modules/options/OptionsWidget_windowList.cpp:226
+#: src/modules/options/OptionsWidget_windowList.cpp:100
+#: src/modules/options/OptionsWidget_windowList.cpp:243
 msgid "Alert level 2:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:84
-#: src/modules/options/OptionsWidget_windowList.cpp:227
+#: src/modules/options/OptionsWidget_windowList.cpp:101
+#: src/modules/options/OptionsWidget_windowList.cpp:244
 msgid "Alert level 3:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:85
-#: src/modules/options/OptionsWidget_windowList.cpp:228
+#: src/modules/options/OptionsWidget_windowList.cpp:102
+#: src/modules/options/OptionsWidget_windowList.cpp:245
 msgid "Alert level 4:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:86
-#: src/modules/options/OptionsWidget_windowList.cpp:229
+#: src/modules/options/OptionsWidget_windowList.cpp:103
+#: src/modules/options/OptionsWidget_windowList.cpp:246
 msgid "Alert level 5:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:88
-#: src/modules/options/OptionsWidget_windowList.cpp:231
+#: src/modules/options/OptionsWidget_windowList.cpp:105
+#: src/modules/options/OptionsWidget_windowList.cpp:248
 msgid "Progress bar color:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:205
+#: src/modules/options/OptionsWidget_windowList.cpp:222
 msgid ""
 "Mouse wheel changes the active window instead of scrolling the scrollbar"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:224
+#: src/modules/options/OptionsWidget_windowList.cpp:241
 msgid "Minimized:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:232
+#: src/modules/options/OptionsWidget_windowList.cpp:249
 msgid "Minimum width of buttons:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:234
+#: src/modules/options/OptionsWidget_windowList.cpp:251
 msgid "Set maximum button width"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:235
+#: src/modules/options/OptionsWidget_windowList.cpp:252
 msgid "Maximum width of buttons:"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.cpp:237
+#: src/modules/options/OptionsWidget_windowList.cpp:254
 msgid "Use flat buttons"
+msgstr ""
+
+#: src/modules/options/OptionsWidget_windowList.cpp:255
+msgid "Show close button on window list items"
 msgstr ""
 
 #: src/modules/options/libkvioptions.cpp:104
@@ -4421,7 +4437,7 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_ircView.h:69
 #: src/modules/options/OptionsWidget_userList.h:104
-#: src/modules/options/OptionsWidget_windowList.h:95
+#: src/modules/options/OptionsWidget_windowList.h:101
 msgid "Features"
 msgstr ""
 
@@ -4465,27 +4481,27 @@ msgstr ""
 msgid "theme,privmsg,output,format"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.h:75
+#: src/modules/options/OptionsWidget_message.h:76
 msgid "Timestamp"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.h:79
+#: src/modules/options/OptionsWidget_message.h:80
 msgid "time,timestamp"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.h:97
+#: src/modules/options/OptionsWidget_message.h:98
 msgid "Message Decorations"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.h:98
+#: src/modules/options/OptionsWidget_message.h:99
 msgid "theme,icons,colors,messages,output"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.h:196
+#: src/modules/options/OptionsWidget_message.h:197
 msgid "Color Set"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_message.h:197
+#: src/modules/options/OptionsWidget_message.h:198
 msgid "theme,colors,messages,output"
 msgstr ""
 
@@ -4572,11 +4588,11 @@ msgstr ""
 
 #: src/modules/options/OptionsWidget_theme.h:33
 #: src/modules/options/OptionsWidget_windowList.h:34
-#: src/modules/options/OptionsWidget_windowList.h:48
-#: src/modules/options/OptionsWidget_windowList.h:63
-#: src/modules/options/OptionsWidget_windowList.h:77
-#: src/modules/options/OptionsWidget_windowList.h:97
-#: src/modules/options/OptionsWidget_windowList.h:112
+#: src/modules/options/OptionsWidget_windowList.h:54
+#: src/modules/options/OptionsWidget_windowList.h:69
+#: src/modules/options/OptionsWidget_windowList.h:83
+#: src/modules/options/OptionsWidget_windowList.h:103
+#: src/modules/options/OptionsWidget_windowList.h:118
 msgid "theme"
 msgstr ""
 
@@ -4641,7 +4657,7 @@ msgid "theme,userlist,channel"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.h:46
-#: src/modules/options/OptionsWidget_windowList.h:75
+#: src/modules/options/OptionsWidget_windowList.h:81
 msgid "Background"
 msgstr ""
 
@@ -4650,7 +4666,7 @@ msgid "theme,userlist,channel,background"
 msgstr ""
 
 #: src/modules/options/OptionsWidget_userList.h:68
-#: src/modules/options/OptionsWidget_windowList.h:61
+#: src/modules/options/OptionsWidget_windowList.h:67
 msgid "Foreground"
 msgstr ""
 
@@ -4674,10 +4690,10 @@ msgstr ""
 msgid "Window List"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.h:46
+#: src/modules/options/OptionsWidget_windowList.h:52
 msgid "Tree Window List"
 msgstr ""
 
-#: src/modules/options/OptionsWidget_windowList.h:109
+#: src/modules/options/OptionsWidget_windowList.h:115
 msgid "Classic Window List"
 msgstr ""

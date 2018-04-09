@@ -1,32 +1,33 @@
-# translation of log.po to Ukrainian
-# This file is distributed under the same license as the PACKAGE package.
-# Copyright (C) YEAR THE PACKAGE' COPYRIGHT HOLDER.
-# Belyaev Stanislav <belyaev-st@yandex.ru>, 2007.
-# Igor Paliychuk <mansonigor@gmail.com>, 2012.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+#
+# Translators:
+# Belyaev Stanislav <belyaev-st@yandex.ru>, 2007
+# igorko <mansonigor@gmail.com>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: log_uk\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2012-04-11 21:17+0300\n"
-"Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
-"Language-Team: Ukrainian\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-22 12:41+0000\n"
+"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
+"Language-Team: Ukrainian (http://www.transifex.com/kvirc/KVIrc/language/"
+"uk/)\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Virtaal 0.7.0\n"
 
 #: src/modules/logview/LogViewWindow.cpp:366
 msgid "%1 on %2"
 msgstr "%1 на %2"
 
 #: src/modules/logview/LogViewWindow.cpp:173
-#, fuzzy
 msgid "Apply Filter"
-msgstr "Застосувати фільтр"
+msgstr ""
 
 #: src/modules/log/libkvilog.cpp:120
 msgid "Can't log to file '%1'"
@@ -40,58 +41,53 @@ msgstr "Скасувати"
 msgid "Channel"
 msgstr "Канал"
 
-#: src/modules/logview/LogViewWindow.cpp:686
+#: src/modules/logview/LogViewWindow.cpp:689
 msgid "Channel %1 on %2"
 msgstr "Канал %1 на %2"
 
-#: src/modules/logview/LogViewWindow.cpp:475
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:478
 msgid "Confirm Current User Log Deletion"
-msgstr "Підтвердження видалення журналу"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:493
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:496
 msgid "Confirm Current User Logs Deletion"
-msgstr "Підтвердження видалення журналів"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:81
 msgid "Console"
 msgstr "Консоль"
 
-#: src/modules/logview/LogViewWindow.cpp:689
+#: src/modules/logview/LogViewWindow.cpp:692
 msgid "Console on %1"
 msgstr "Консоль на %1"
 
 #: src/modules/logview/LogViewWindow.cpp:142
-#, fuzzy
 msgid "Contents Filter"
-msgstr "Фільтр вмісту"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:77
 msgid "DCC Chat"
 msgstr "DCC-балачка"
 
-#: src/modules/logview/LogViewWindow.cpp:695
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:698
 msgid "DCC Chat with: %1"
-msgstr "DCC-чат з %1"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:494
+#: src/modules/logview/LogViewWindow.cpp:497
 msgid "Do you really wish to delete all these logs?"
 msgstr "Ви дійсно хочете видалити всі ці журнали?"
 
-#: src/modules/logview/LogViewWindow.cpp:476
+#: src/modules/logview/LogViewWindow.cpp:479
 msgid "Do you really wish to delete this log?"
 msgstr "Ви дійсно хочете видалити цей журнал?"
 
-#: src/modules/logview/LogViewWindow.cpp:606
+#: src/modules/logview/LogViewWindow.cpp:609
 msgid "Export Log - KVIrc"
 msgstr "Експортую журнал - KVIrc"
 
-#: src/modules/logview/LogViewWindow.cpp:456
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:459
 msgid "Export Log File to"
-msgstr "Експортувати журнал до"
+msgstr ""
 
 #: src/modules/log/libkvilog.cpp:331
 msgid "Failed to export the log '%1'"
@@ -106,9 +102,8 @@ msgid "Filter"
 msgstr "Фільтр"
 
 #: src/modules/logview/LogViewWindow.cpp:194
-#, fuzzy
 msgid "HTML Archive"
-msgstr "HTML архів"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:109
 msgid "Index"
@@ -132,47 +127,40 @@ msgstr "Маска назви журналу:"
 
 #: src/modules/log/libkvilog.cpp:109 src/modules/log/libkvilog.cpp:167
 #: src/modules/log/libkvilog.cpp:219
-#, fuzzy
 msgid "Missing window ID after the 'w' switch"
-msgstr "Відсутній id вікна після перемикача 'w'"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:165
-#, fuzzy
 msgid "Only newer than:"
-msgstr "Лише новіші ніж"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:157
-#, fuzzy
 msgid "Only older than:"
-msgstr "Лише старіші ніж"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:85
 msgid "Other"
 msgstr "Інше"
 
 #: src/modules/logview/LogViewWindow.cpp:192
-#, fuzzy
 msgid "Plain Text File"
-msgstr "звичайний текстовий файл "
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:73
 msgid "Query"
 msgstr "Приват"
 
-#: src/modules/logview/LogViewWindow.cpp:692
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:695
 msgid "Query with: %1 on %2"
-msgstr "Приват з %1 на %2"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:452
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:455
 msgid "Remove All Log Files Within This Folder"
-msgstr "Видалити всі журнали в цій теці"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:457
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:460
 msgid "Remove Log File"
-msgstr "Видалити файл журналу"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:133
 msgid "Show DCC chat logs"
@@ -194,10 +182,9 @@ msgstr "Показати інші логи"
 msgid "Show query logs"
 msgstr "Показати логи приватів"
 
-#: src/modules/logview/LogViewWindow.cpp:698
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:701
 msgid "Something on: %1"
-msgstr "Щось на %1"
+msgstr ""
 
 #: src/modules/log/libkvilog.cpp:124
 msgid "This window has no logging capabilities"
@@ -209,15 +196,5 @@ msgid "Window '%1' not found"
 msgstr "Вікно '%1' не знайдене"
 
 #: src/modules/log/libkvilog.cpp:273
-#, fuzzy
 msgid "Window with ID '%1' not found, returning empty string"
-msgstr "Вікно з id '%1' не знайдене, повертаю порожній рядок"
-
-#~ msgid "Browse Log Files"
-#~ msgstr "Перегляд файлів журналу"
-
-#~ msgid "File '%1' already exists. Do you want to overwrite it?"
-#~ msgstr "Файл '%1' вже існує. Хочете переписати його?"
-
-#~ msgid "Ops.. internal error"
-#~ msgstr "Ой.. внутрішня помилка"
+msgstr ""

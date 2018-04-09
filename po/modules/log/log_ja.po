@@ -1,52 +1,52 @@
-# Japanese translation for logview (KVIrc module)
-# Copyright (C) 2010 KVIrc Development Team
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-# Tadashi Jokagi <elf@elf.no-ip.org>, 2010.
 #
+# Translators:
+# Tadashi Jokagi <elf@elf.no-ip.org>, 2010
 msgid ""
 msgstr ""
-"Project-Id-Version: logview_ja\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2010-07-26 16:10+0900\n"
-"Last-Translator: Tadashi Jokagi <elf@elf.no-ip.org>\n"
-"Language-Team: Japanese <elf@elf.no-ip.org>\n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-22 12:41+0000\n"
+"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
+"Language-Team: Japanese (http://www.transifex.com/kvirc/KVIrc/language/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: src/modules/logview/LogViewWindow.cpp:366
 msgid "%1 on %2"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:173
-#, fuzzy
 msgid "Apply Filter"
-msgstr "フィルターの適用"
+msgstr ""
 
 #: src/modules/log/libkvilog.cpp:120
 msgid "Can't log to file '%1'"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:104
-#, fuzzy
 msgid "Cancel"
-msgstr "チャンネル"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:69
 msgid "Channel"
 msgstr "チャンネル"
 
-#: src/modules/logview/LogViewWindow.cpp:686
+#: src/modules/logview/LogViewWindow.cpp:689
 msgid "Channel %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:475
+#: src/modules/logview/LogViewWindow.cpp:478
 msgid "Confirm Current User Log Deletion"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:493
+#: src/modules/logview/LogViewWindow.cpp:496
 msgid "Confirm Current User Logs Deletion"
 msgstr ""
 
@@ -54,42 +54,37 @@ msgstr ""
 msgid "Console"
 msgstr "コンソール"
 
-#: src/modules/logview/LogViewWindow.cpp:689
+#: src/modules/logview/LogViewWindow.cpp:692
 msgid "Console on %1"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:142
-#, fuzzy
 msgid "Contents Filter"
-msgstr "内容によるフィルター"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:77
 msgid "DCC Chat"
 msgstr "DCC チャット"
 
-#: src/modules/logview/LogViewWindow.cpp:695
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:698
 msgid "DCC Chat with: %1"
-msgstr "DCC チャット"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:494
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:497
 msgid "Do you really wish to delete all these logs?"
-msgstr "全チャンネル/問い合わせのログ ファイルを削除する"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:476
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:479
 msgid "Do you really wish to delete this log?"
-msgstr "全チャンネル/問い合わせのログ ファイルを削除する"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:606
+#: src/modules/logview/LogViewWindow.cpp:609
 msgid "Export Log - KVIrc"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:456
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:459
 msgid "Export Log File to"
-msgstr "ログ ファイル"
+msgstr ""
 
 #: src/modules/log/libkvilog.cpp:331
 msgid "Failed to export the log '%1'"
@@ -108,9 +103,8 @@ msgid "HTML Archive"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:109
-#, fuzzy
 msgid "Index"
-msgstr "索引"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:70
 msgid "Log File"
@@ -134,41 +128,36 @@ msgid "Missing window ID after the 'w' switch"
 msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:165
-#, fuzzy
 msgid "Only newer than:"
-msgstr "より新しいもののみ"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:157
-#, fuzzy
 msgid "Only older than:"
-msgstr "より古いもののみ"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:85
 msgid "Other"
 msgstr "その他"
 
 #: src/modules/logview/LogViewWindow.cpp:192
-#, fuzzy
 msgid "Plain Text File"
-msgstr "内容によるフィルター"
+msgstr ""
 
 #: src/modules/logview/LogViewWidget.cpp:73
 msgid "Query"
 msgstr "問い合わせ"
 
-#: src/modules/logview/LogViewWindow.cpp:692
+#: src/modules/logview/LogViewWindow.cpp:695
 msgid "Query with: %1 on %2"
 msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:452
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:455
 msgid "Remove All Log Files Within This Folder"
-msgstr "ファイルの削除"
+msgstr ""
 
-#: src/modules/logview/LogViewWindow.cpp:457
-#, fuzzy
+#: src/modules/logview/LogViewWindow.cpp:460
 msgid "Remove Log File"
-msgstr "ファイルの削除"
+msgstr ""
 
 #: src/modules/logview/LogViewWindow.cpp:133
 msgid "Show DCC chat logs"
@@ -190,7 +179,7 @@ msgstr "その他のログの表示"
 msgid "Show query logs"
 msgstr "問い合わせのログの表示"
 
-#: src/modules/logview/LogViewWindow.cpp:698
+#: src/modules/logview/LogViewWindow.cpp:701
 msgid "Something on: %1"
 msgstr ""
 
@@ -206,16 +195,3 @@ msgstr ""
 #: src/modules/log/libkvilog.cpp:273
 msgid "Window with ID '%1' not found, returning empty string"
 msgstr ""
-
-#~ msgid "Abort filtering"
-#~ msgstr "フィルター処理の中断"
-
-#, fuzzy
-#~ msgid "Browse Log Files"
-#~ msgstr "ログファイルの参照(&L)"
-
-#~ msgid "Filtering files..."
-#~ msgstr "ファイルをフィルター処理しています..."
-
-#~ msgid "Remove all these channel/query log files"
-#~ msgstr "全チャンネル/問い合わせのログ ファイルを削除する"

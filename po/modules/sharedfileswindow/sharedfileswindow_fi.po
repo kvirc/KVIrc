@@ -1,52 +1,52 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# Santeri Piippo <aleksanteri4028@gmail.com>, 2007.
+# This file is distributed under the same license as the KVIrc package.
 #
-#, fuzzy
+# Translators:
+# Santeri Piippo <aleksanteri4028@gmail.com>, 2007
 msgid ""
 msgstr ""
-"Project-Id-Version: sharedfileswindow_fi\n"
+"Project-Id-Version: KVIrc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 21:04+0200\n"
-"PO-Revision-Date: 2007-11-27 19:58+0200\n"
-"Last-Translator: Santeri Piippo <aleksanteri4028@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2018-04-09 14:46+0200\n"
+"PO-Revision-Date: 2017-09-22 12:41+0000\n"
+"Last-Translator: ctrlaltca <ctrlaltca@gmail.com>\n"
+"Language-Team: Finnish (http://www.transifex.com/kvirc/KVIrc/language/fi/)\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:237
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:238
 msgid "&Add..."
 msgstr "&Lisää..."
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:72
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:73
 msgid "&Browse..."
 msgstr "&Selaa..."
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:241
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:242
 msgid "&Edit"
 msgstr "&Muokkaa"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:92
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:93
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:96
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:97
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:173
-#, fuzzy
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:174
 msgid "Error Opening File - KVIrc"
-msgstr "Muokkaa jaettua tiedostoa - KVIrc"
+msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:82
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:83
 msgid "Expire at:"
 msgstr "Poistuu:"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:221
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:222
 msgid "Expires"
 msgstr "Poistuu"
 
@@ -55,7 +55,7 @@ msgstr "Poistuu"
 msgid "Expires in %d hours %d minutes %d seconds"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:66
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:67
 msgid "File path:"
 msgstr "Polku:"
 
@@ -64,19 +64,17 @@ msgstr "Polku:"
 msgid "File: %s (%u bytes)"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:218
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:219
 msgid "Filename"
 msgstr "Tiedostonimi"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:154
-#, fuzzy
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:155
 msgid "Invalid Expiry Time - KVIrc"
-msgstr "Vääränmuotoinen poistumisaika"
+msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:164
-#, fuzzy
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:165
 msgid "Invalid Share Name - KVIrc"
-msgstr "Vääränmuotoinen jaosnimi"
+msgstr ""
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:100
 msgid "Invalid timeout, ignoring"
@@ -86,20 +84,20 @@ msgstr ""
 msgid "Invalid visible name: using default"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:219
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:220
 msgid "Mask"
 msgstr "Maski"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:220
-#, fuzzy, c-format
+#, c-format
 msgid "Mask: %s"
-msgstr "Maski"
+msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:217
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:218
 msgid "Name"
 msgstr "Nimi"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:196
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:197
 msgid "Never"
 msgstr "Ei koskaan"
 
@@ -111,9 +109,9 @@ msgstr ""
 msgid "No sharedfile with visible name '%Q' and user mask '%Q'"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:158
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:166
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:175
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:159
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:167
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:176
 msgid "OK"
 msgstr "OK"
 
@@ -121,43 +119,39 @@ msgstr "OK"
 msgid "Oops! Failed to add the sharedfile..."
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:239
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:240
 msgid "Re&move"
 msgstr "&Poista"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:60
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:61
 msgid "Share name:"
 msgstr "Jaosnimi:"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:58
-#, fuzzy
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:59
 msgid "Shared File Configuration - KVIrc"
-msgstr "Muokkaa jaettua tiedostoa - KVIrc"
+msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:359
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:360
 msgid "Shared Files"
 msgstr "Jaetut tiedostot"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:155
-#, fuzzy
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:156
 msgid ""
 "The expiry date/time is in the past: please either remove the \"Expires at"
 "\"check mark or specify a expiry date/time in the future"
 msgstr ""
-"Poistumisaika/päiväys on menneisyydessä: poista joko \"poistuu\" -valinta "
-"tai valitse aika/päiväys tulevaisuudesta"
 
 #: src/modules/sharedfile/libkvisharedfile.cpp:83
 msgid "The file '%Q' is not readable"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:174
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:175
 msgid "The file doesn't exist or it is not readable, please check the path"
 msgstr ""
 "Tiedosto ei joko ole olemassa tai sitä ei voi lukea, ole hyvä ja tarkista "
 "polku"
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:165
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:166
 msgid "The share name can't be empty, please correct it"
 msgstr "Jaosnimi ei voi olla tyhjä, ole hyvä ja korjaa se"
 
@@ -166,12 +160,6 @@ msgstr "Jaosnimi ei voi olla tyhjä, ole hyvä ja korjaa se"
 msgid "Total: %d sharedfile"
 msgstr ""
 
-#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:76
+#: src/modules/sharedfileswindow/SharedFilesWindow.cpp:77
 msgid "User mask:"
 msgstr "Käyttäjämaski:"
-
-#~ msgid "Can't open the file"
-#~ msgstr "Ei voida avata tiedostoa"
-
-#~ msgid "Manage S&hared Files"
-#~ msgstr "Järjestä &jaettuja tiedostoja"
