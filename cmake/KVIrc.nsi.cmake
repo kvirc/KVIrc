@@ -299,40 +299,6 @@ Function LaunchKVIrc
    ShellExecAsUser::ShellExecAsUser "" "$INSTDIR\@KVIRC_BINARYNAME@.exe" ""
 FunctionEnd
 
-Function RemoveAutostartShortcuts
-  ; Remove user created startup shortcuts
-  ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" "Common Startup"
-  StrLen $R1 "$R0"
-  ${If} $R1 > 0
-    StrCpy $R0 "\KVIrc.lnk" $R1
-    Delete "$R0"
-  ${EndIf}
-
-  ReadRegStr $R0 HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" "Common Startup"
-  StrLen $R1 "$R0"
-  ${If} $R1 > 0
-    StrCpy $R0 "\KVIrc.lnk" $R1
-    Delete "$R0"
-  ${EndIf}
-FunctionEnd
-
-Function un.RemoveAutostartShortcuts
-  ; Remove user created startup shortcuts
-  ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" "Common Startup"
-  StrLen $R1 "$R0"
-  ${If} $R1 > 0
-    StrCpy $R0 "\KVIrc.lnk" $R1
-    Delete "$R0"
-  ${EndIf}
-
-  ReadRegStr $R0 HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" "Common Startup"
-  StrLen $R1 "$R0"
-  ${If} $R1 > 0
-    StrCpy $R0 "\KVIrc.lnk" $R1
-    Delete "$R0"
-  ${EndIf}
-FunctionEnd
-
 Function CheckUserInstallRights
   ClearErrors
   UserInfo::GetName
