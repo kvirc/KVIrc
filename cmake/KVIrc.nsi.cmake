@@ -76,8 +76,6 @@ LangString StartMenuSection ${LANG_ENGLISH} "Start menu"
 LangString StartMenuSectionDescr ${LANG_ENGLISH} "Create start menu icon"
 LangString MsgUninstallOldInstaller ${LANG_ENGLISH} "Previous versions of KVIrc must be uninstalled."
 LangString KVIrcIsRunning ${LANG_ENGLISH} "An instance of KVIrc is currently running. Exit KVIrc and then try again."
-LangString WinampSection ${LANG_ENGLISH} "Winamp plugin"
-LangString WinampSectionDescr ${LANG_ENGLISH} "Install Winamp plugin"
 LangString WinVerUnsupported ${LANG_ENGLISH} "KVIrc does not support the currently running Windows version.$\r$\nWindows 7 or higher is required."
 
 !include ".\translations\*.nsi"
@@ -141,12 +139,6 @@ Section $(TraySection) TraySection_IDX
   CreateShortCut "$QUICKLAUNCH\KVIrc.lnk" "$INSTDIR\@KVIRC_BINARYNAME@.exe" "" "$INSTDIR\@KVIRC_BINARYNAME@.exe" 0 "" "" $(ProgramDescription)
 SectionEnd
 
-Section $(WinampSection) WinampSection_IDX
-  ReadRegStr $R0 HKCU Software\Winamp ""
-  IfFileExists "$R0\winamp.exe" 0 +2
-  Rename "$INSTDIR\modules\gen_kvirc.dll" "$R0\Plugins\gen_kvirc.dll"
-SectionEnd
-
 ;--------------------------------
 ; Descriptions
 
@@ -159,8 +151,6 @@ SectionEnd
         $(DesktopSectionDescr)
 !insertmacro MUI_DESCRIPTION_TEXT ${TraySection_IDX} \
         $(TraySectionDescr)
-!insertmacro MUI_DESCRIPTION_TEXT ${WinampSection_IDX} \
-        $(WinampSectionDescr)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 
@@ -179,10 +169,6 @@ Function .onInit
         ; change install dir
         StrCpy $INSTDIR $PROGRAMFILES64\KVIrc
     ${EndIf}
-
-    ReadRegStr $R0 HKCU Software\Winamp ""
-    IfFileExists "$R0\winamp.exe" continue 0
-        SectionSetFlags ${WinampSection_IDX} 16 # 10000 in binary: disabled+unchecked
 continue:
 
 
@@ -253,11 +239,6 @@ Section !un.$(UnGeneralFiles)
     Delete "$INSTDIR\*.exe"
     Delete "$INSTDIR\*.ini"
     RMDir "$INSTDIR"
-
-    ReadRegStr $R0 HKCU Software\Winamp ""
-        IfFileExists "$R0\Plugins\gen_kvirc.dll" 0 +2
-        Delete "$R0\Plugins\gen_kvirc.dll"
-
 SectionEnd
 
 ;Remove local data dir
