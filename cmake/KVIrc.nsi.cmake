@@ -280,37 +280,6 @@ Function LaunchKVIrc
    ShellExecAsUser::ShellExecAsUser "" "$INSTDIR\@KVIRC_BINARYNAME@.exe" ""
 FunctionEnd
 
-Function CheckUserInstallRights
-  ClearErrors
-  UserInfo::GetName
-  IfErrors Win9x
-  Pop $0
-  UserInfo::GetAccountType
-  Pop $1
-
-  StrCmp $1 "Admin" 0 +3
-    StrCpy $1 "HKLM"
-  Goto done
-  StrCmp $1 "Power" 0 +3
-    StrCpy $1 "HKLM"
-  Goto done
-  StrCmp $1 "User" 0 +3
-    StrCpy $1 "HKCU"
-  Goto done
-  StrCmp $1 "Guest" 0 +3
-    StrCpy $1 "NONE"
-  Goto done
-  ; Unknown error
-    StrCpy $1 "NONE"
-  Goto done
-
-  Win9x:
-    StrCpy $1 "HKLM"
-
-  done:
-    Push $1
-FunctionEnd
-
 Function CloseKVIrcInstances
 ; Waits for all running instances of KVIrc to close
     Push $0 ;saving stack
