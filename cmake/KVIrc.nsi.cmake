@@ -44,7 +44,6 @@ Var LocalDir
 !define MUI_FINISHPAGE_RUN
 !define MUI_FINISHPAGE_RUN_TEXT "Start KVIrc"
 !define MUI_FINISHPAGE_RUN_FUNCTION "LaunchKVIrc"
-!insertmacro MUI_PAGE_FINISH
 
 ; Pages
 !insertmacro MUI_PAGE_LICENSE "release\License\COPYING"
@@ -56,10 +55,6 @@ Var LocalDir
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_COMPONENTS
 !insertmacro MUI_UNPAGE_INSTFILES
-
-;--------------------------------
-!insertmacro MUI_RESERVEFILE_LANGDLL
-ReserveFile "${NSISDIR}\Plugins\x86-unicode\UserInfo.dll"
 
 !insertmacro MUI_LANGUAGE "English"
 LangString UnLocalDataDescr ${LANG_ENGLISH} "This will delete your settings, themes and logs. Keep it unchecked if you plan to reinstall KVIrc later."
@@ -169,8 +164,6 @@ Function .onInit
         ; change install dir
         StrCpy $INSTDIR $PROGRAMFILES64\KVIrc
     ${EndIf}
-continue:
-
 
     SetShellVarContext all
     ; Remove old installer, check for 32-bit first, we don't want both installed
@@ -201,9 +194,6 @@ uninst:
 done:
 
 FunctionEnd
-
-;Function .onInstSuccess
-;FunctionEnd
 
 ;--------------------------------
 ; Uninstaller
@@ -276,8 +266,7 @@ FunctionEnd
 ; Functions
 
 Function LaunchKVIrc
-   SetOutPath $INSTDIR
-   ShellExecAsUser::ShellExecAsUser "" "$INSTDIR\@KVIRC_BINARYNAME@.exe" ""
+  Exec '"$WINDIR\explorer.exe" "$INSTDIR\@KVIRC_BINARYNAME@.exe"'
 FunctionEnd
 
 Function CloseKVIrcInstances
