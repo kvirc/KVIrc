@@ -40,7 +40,11 @@ Var LocalDir
 !define MUI_LANGDLL_REGISTRY_KEY "Software\KVIrc"
 !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 !define MUI_LANGDLL_ALWAYSSHOW
-!define MUI_FINISHPAGE_RUN "$INSTDIR\@KVIRC_BINARYNAME@.exe"
+
+!define MUI_FINISHPAGE_RUN
+!define MUI_FINISHPAGE_RUN_TEXT "Start KVIrc"
+!define MUI_FINISHPAGE_RUN_FUNCTION "LaunchKVIrc"
+!insertmacro MUI_PAGE_FINISH
 
 ; Pages
 !insertmacro MUI_PAGE_LICENSE "release\License\COPYING"
@@ -289,6 +293,11 @@ FunctionEnd
 
 ;--------------------------------
 ; Functions
+
+Function LaunchKVIrc
+   SetOutPath $INSTDIR
+   ShellExecAsUser::ShellExecAsUser "" "$INSTDIR\@KVIRC_BINARYNAME@.exe" ""
+FunctionEnd
 
 Function RemoveAutostartShortcuts
   ; Remove user created startup shortcuts
