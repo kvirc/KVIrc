@@ -43,7 +43,7 @@ Var LocalDir
 !define MUI_FINISHPAGE_RUN "$INSTDIR\@KVIRC_BINARYNAME@.exe"
 
 ; Pages
-!insertmacro MUI_PAGE_LICENSE "release\License\COPYING"
+!insertmacro MUI_PAGE_LICENSE "release\License\ABOUT-LICENSE"
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
