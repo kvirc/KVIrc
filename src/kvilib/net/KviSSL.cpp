@@ -862,7 +862,7 @@ void KviSSLCertificate::extractPubKeyInfo()
 
 void KviSSLCertificate::extractSerialNumber()
 {
-	m_szSerialNumber = KviCString();
+	m_szSerialNumber.clear();
 	ASN1_INTEGER * i = X509_get_serialNumber(m_pX509);
 	if(i)
 	{
