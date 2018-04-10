@@ -6,9 +6,6 @@ set(license
 	LICENSE-GPLV2
 	LICENSE-OPENSSL
 )
-set(howto
-	README
-)
 
 # User documentation
 if(PERL_FOUND)
@@ -67,13 +64,10 @@ endif()
 if(UNIX)
 	if(APPLE)
 		install(FILES ${license} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/license)
-		install(FILES ${howto} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/doc)
 	else()
 		# Assume linux
 		install(FILES ${license} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/license/)
-		install(FILES ${howto} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/doc/)
 	endif()
 elseif(WIN32)
 	install(FILES ${license} DESTINATION ${CMAKE_INSTALL_PREFIX}/license/)
-	install(FILES ${howto} DESTINATION ${CMAKE_INSTALL_PREFIX}/doc/)
 endif()
