@@ -1,9 +1,7 @@
 # CMakeLists for doc/
 
 set(license
-	COPYING
 	LICENSE-AMIP
-	LICENSE-GPLV2
 	LICENSE-OPENSSL
 )
 
