@@ -3,7 +3,7 @@
 set(license
 	LICENSE-AMIP
 	LICENSE-OPENSSL
-	./COPYING
+	../COPYING
 )
 
 # User documentation
