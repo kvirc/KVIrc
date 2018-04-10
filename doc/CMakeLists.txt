@@ -1,10 +1,13 @@
 # CMakeLists for doc/
 
 set(license
-	LICENSE-AMIP
+	ABOUT-LICENSE
 	LICENSE-OPENSSL
 	../COPYING
 )
+if(WIN32)
+	list(APPEND license LICENSE-AMIP)
+endif()
 
 # User documentation
 if(PERL_FOUND)

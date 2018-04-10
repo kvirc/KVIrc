@@ -220,7 +220,7 @@ AboutDialog::AboutDialog()
 	QString szLicense;
 
 	QString szLicensePath;
-	g_pApp->getGlobalKvircDirectory(szLicensePath, KviApplication::License, "COPYING");
+	g_pApp->getGlobalKvircDirectory(szLicensePath, KviApplication::License, "ABOUT-LICENSE");
 
 	if(!KviFileUtils::loadFile(szLicensePath, szLicense))
 	{
