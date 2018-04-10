@@ -42,6 +42,6 @@ If you want to compile KVIrc on your chosen platform, we have guides on how to d
 
 ## License
 
-[![KVIrc GPLv2+](https://img.shields.io/badge/KVIrc-GPLv2+-blue.svg)](./doc/LICENSE-GPLV2)
+[![KVIrc GPLv2+](https://img.shields.io/badge/KVIrc-GPLv2+-blue.svg)](./COPYING)
 [![OpenSSL](https://img.shields.io/badge/OpenSSL-Licence-orange.svg)](./doc/LICENSE-OPENSSL)
-[![OpenSSL exception](https://img.shields.io/badge/OpenSSL-Exception-orange.svg)](./doc/COPYING)
+[![OpenSSL exception](https://img.shields.io/badge/OpenSSL-Exception-orange.svg)](./doc/LICENSE-OPENSSL)
