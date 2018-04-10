@@ -1,8 +1,8 @@
 # ![KVIrc-Midnight](https://github.com/kvirc/KVIrc/wiki/images/KVIrc-midnight.png) KVIrc
 
-[![Travis Build Status](https://img.shields.io/travis/kvirc/KVIrc.svg?label=Linux%20%2F%20OS%20X)](https://travis-ci.org/kvirc/KVIrc)
-[![AppVeyor Build status](https://img.shields.io/appveyor/ci/DarthGandalf/KVIrc/master.svg?label=Windows)](https://ci.appveyor.com/project/DarthGandalf/kvirc/branch/master)
-[![Coverity Scan Build Status](https://img.shields.io/coverity/scan/6841.svg)](https://scan.coverity.com/projects/kvirc-coverity)
+[![Travis Build Status](https://travis-ci.org/kvirc/KVIrc.svg?branch=master)](https://travis-ci.org/kvirc/KVIrc)
+[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/j6tjel0eaeyixcbn/branch/master?svg=true)](https://ci.appveyor.com/project/DarthGandalf/kvirc/branch/master)
+[![Coverity Scan Build Status](https://scan.coverity.com/projects/6841/badge.svg)](https://scan.coverity.com/projects/kvirc-coverity)
 
 <!--![KVIrc logo](../master/data/icons/128x128/kvirc.png "KVIrc - The visual IRC client for the masses!") -->
 
