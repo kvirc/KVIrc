@@ -59,6 +59,10 @@ environment:
 matrix:
     fast_finish: true
 install:
+    # - systeminfo
+    # - c:\cygwin\bin\uname -a
+    # - c:\cygwin\bin\cat /proc/cpuinfo
+    # - c:\cygwin\bin\cat /proc/meminfo
     - ps: |
         if ((Test-Path "c:\OpenSSL-$env:ssl_arch") -And ((Get-Item "c:\OpenSSL-$env:ssl_arch\bin\ssleay32.dll").VersionInfo.ProductVersion -eq '1.0.2o')) {
             echo "using preinstalled openssl"
@@ -96,6 +100,11 @@ install:
             (New-Object Net.WebClient).DownloadFile('https://sourceforge.net/projects/wordlist/files/speller/2017.08.24/hunspell-en_GB-ise-2017.08.24.zip', 'c:\spellcheck-dicts\zip\en_GB-ise.zip')
             c:\cygwin\bin\bash -lc "cd /cygdrive/c/spellcheck-dicts/unzip; 7z x -y ../zip/en_US.zip; 7z x -y ../zip/en_GB-ize.zip; 7z x -y ../zip/en_GB-ise.zip"
         }
+    - ps: |
+        (New-Object Net.WebClient).DownloadFile('https://github.com/lordmulder/stdutils/releases/download/1.13/StdUtils.2018-03-29.zip', 'c:\StdUtils.2018-03-29.zip')
+        7z e -o"C:\Program Files (x86)\NSIS\Plugins\x86-unicode" c:\StdUtils.2018-03-29.zip Plugins\Unicode\*.dll
+        7z e -o"C:\Program Files (x86)\NSIS\Include" c:\StdUtils.2018-03-29.zip Include\*.nsh
+    # - c:\cygwin\bin\find "/cygdrive/c/Program Files (x86)/NSIS" "-type" f
 build_script:
     - mkdir build
     - cd build
@@ -108,6 +117,7 @@ build_script:
         cmake .. "-GNMake Makefiles" "-DCMAKE_TOOLCHAIN_FILE=C:/Tools/vcpkg/scripts/buildsystems/vcpkg.cmake" "-DCMAKE_BUILD_TYPE=$env:cmake_build_type" "-DCMAKE_PREFIX_PATH=c:/Qt/$env:qt_ver" "-DOPENSSL_ROOT_DIR=c:/OpenSSL-$env:ssl_arch" "-DWANT_PERL=YES" "-DPERL_EXECUTABLE=c:/Strawberry/perl/bin/perl.exe" "-DWANT_PHONON=NO" "-DCMAKE_START_TEMP_FILE=" "-DCMAKE_END_TEMP_FILE=" "-DCMAKE_VERBOSE_MAKEFILE=1" "-DEnchant_FOUND=1" "-DEnchant_INCLUDE_DIRS=c:/enchant-headers;$env:mingw_root/include/enchant;$env:mingw_root/include/glib-2.0" "-DEnchant_LDFLAGS=$env:mingw_root/lib/libenchant.dll.a" "-DWANT_KDE=NO" "-DWANT_PYTHON=YES" "-DWANT_QTWEBKIT=NO"
     - ps: Push-AppveyorArtifact CMakeCache.txt
     - nmake install VERBOSE=1
+    # - c:\cygwin\bin\ls -l release/
     - ps: |
         $env:Path += ";c:/Qt/$env:qt_ver/bin"
         if ($env:cmake_build_type -eq "Debug") {
