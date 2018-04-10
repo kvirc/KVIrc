@@ -2,15 +2,12 @@
 
 set(license
 	COPYING
+	LICENSE-AMIP
 	LICENSE-GPLV2
 	LICENSE-OPENSSL
 )
 set(howto
 	README
-	INSTALL-Win32.txt
-	INSTALL-Win64.txt
-	hackers.guide.txt
-	ui-style.tips.txt
 )
 
 # User documentation
