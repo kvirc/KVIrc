@@ -1,25 +1,13 @@
 # CMakeLists for doc/
 
 set(license
-	COPYING
-	LICENSE-GPLV2
+	ABOUT-LICENSE
 	LICENSE-OPENSSL
+	../COPYING
 )
-set(howto
-	README
-	FAQ
-	INSTALL.txt
-	INSTALL-MacOS.txt
-	INSTALL-Win32.txt
-	INSTALL-Win64.txt
-	addon.howto.txt
-	firefox.hack.txt
-	hackers.guide.txt
-	scripting.faq.txt
-	themes.howto.txt
-	translations.howto.txt
-	ui-style.tips.txt
-)
+if(WIN32)
+	list(APPEND license LICENSE-AMIP)
+endif()
 
 # User documentation
 if(PERL_FOUND)
@@ -78,13 +66,10 @@ endif()
 if(UNIX)
 	if(APPLE)
 		install(FILES ${license} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/license)
-		install(FILES ${howto} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/doc)
 	else()
 		# Assume linux
 		install(FILES ${license} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/license/)
-		install(FILES ${howto} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/doc/)
 	endif()
 elseif(WIN32)
 	install(FILES ${license} DESTINATION ${CMAKE_INSTALL_PREFIX}/license/)
-	install(FILES ${howto} DESTINATION ${CMAKE_INSTALL_PREFIX}/doc/)
 endif()
