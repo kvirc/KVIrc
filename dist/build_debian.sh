@@ -27,7 +27,7 @@ DIR=$(pwd)
 BUILDDIR="${DIR}/build"
 cd .. && GITDIR=$(pwd)
 PKG_NAME=kvirc
-SVNGITBZR="~"
+SVNGITBZR="~git-"
 VERSION='4:4.9.3'
 VERSION1='4.9.3'
 TMPFILE=$(mktemp)
@@ -90,12 +90,15 @@ gpg --allow-secret-key-import --import ${DIR}/secret.gpg
 test -d $BUILDDIR && rm -rf ${BUILDDIR}
 mkdir -p $BUILDDIR
 cd $GITDIR
-dat=$(git describe --dirty)
+abbrevcommit=$(git log -1 --abbrev-commit | grep -i "^commit" | awk '{print $2}')
+numcommit=$(git log | grep "^Date:" | wc -l)
+dat="${numcommit}-${abbrevcommit}"
+#dat=$(git describe --dirty)
 branch=$(git branch | grep "\*" | sed 's/\* //g')
 commit=$(git log -1 | grep -i "^commit" | awk '{print $2}')
 datct=$(git log -n 1 --format=%ct)
 
-test -z "${dat}" && dat="git-9999-$(git describe --always)"
+test -z "${dat}" && dat="git-99999-$(git describe --always)"
 test -z "${branch}" && branch="travis_debian"
 
 if [ ! -z "$PPA" ]
