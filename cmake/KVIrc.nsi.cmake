@@ -6,6 +6,7 @@
 !include "LogicLib.nsh"
 !include "WinVer.nsh"
 !include "x64.nsh"
+!include "StdUtils.nsh"
 
 Name "@NICENAME@"
 !define VERSION '@CMAKE_KVIRC_VERSION_RELEASE@'
@@ -266,7 +267,7 @@ FunctionEnd
 ; Functions
 
 Function LaunchKVIrc
-  Exec '"$WINDIR\explorer.exe" "$INSTDIR\@KVIRC_BINARYNAME@.exe"'
+  ${StdUtils.ExecShellAsUser} $0 "$INSTDIR\@KVIRC_BINARYNAME@.exe" "open" ""
 FunctionEnd
 
 Function CloseKVIrcInstances
