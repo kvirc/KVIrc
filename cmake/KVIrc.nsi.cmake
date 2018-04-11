@@ -12,13 +12,14 @@ Name "@NICENAME@"
 !define VERSION '@CMAKE_KVIRC_VERSION_RELEASE@'
 !define RELEASE_NAME '@CMAKE_KVIRC_VERSION_CODENAME@'
 !define /date GIT_VERSION '@CMAKE_KVIRC_BUILD_REVISION@'
+!define KVIRC_BUILD_REVISION '@CMAKE_KVIRC_BUILD_REVISION@'
 !define URL_ABOUT 'http://www.kvirc.net/'
 !define URL_SUPPORT 'http://www.kvirc.net/'
 !define URL_UPDATE 'http://www.kvirc.net/'
 !define PUBLISHER 'Szymon Stefanek and The KVIrc Development Team'
 
 ; Git release, e.g. KVIrc-4.3.2-dev-git-5465-ge352609.exe
-OutFile KVIrc-${VERSION}-dev-${GIT_VERSION}.exe
+OutFile KVIrc-${KVIRC_BUILD_REVISION}.exe
 ; Stable version, e.g. KVIrc-4.2.0-Equilibrium.exe
 ;OutFile KVIrc-${VERSION}-${RELEASE_NAME}.exe
 
