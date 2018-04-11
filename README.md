@@ -9,7 +9,7 @@
 Welcome to the development and bug tracker for the KVIrc project.
 
 KVIrc is a free and portable IRC client leveraging the Qt GUI toolkit.
-KVIrc is written by Szymon Stefanek and the KVIrc development team, with contributions and support of many IRC addicted developers around the world.
+KVIrc is written by Szymon Stefanek and the KVIrc development team, with [contributions](https://github.com/kvirc/KVIrc/graphs/contributors) and support of many IRC addicted developers around the world.
 
 ## Getting Involved
 
@@ -28,13 +28,13 @@ KVIrc is written by Szymon Stefanek and the KVIrc development team, with contrib
 
 ## Downloads
 
-Try one of our fresh off-the-press [nightly builds for Windows, Ubuntu and Debian](https://github.com/kvirc/KVIrc/wiki/Downloading-KVIrcs-nightly-source-or-binaries).
+Try one of our fresh off-the-press [nightly builds](https://github.com/kvirc/KVIrc/wiki/Downloading-KVIrcs-nightly-source-or-binaries) for Windows, Ubuntu and Debian.
 
-We're also looking for volunteer packagers and maintainers to other Linux distributions, that can help us extend KVIrc's availability in other OS's.
+We're also looking for volunteer packagers and maintainers to other Linux distributions, that can help us extend KVIrc's availability in other operating systems.
 
-## Install and Compile
+## Compile Your Own
 
-If you want to compile KVIrc on your chosen platform, we have guides on how to do that for a few popuplar platforms:
+If you want to compile KVIrc on your chosen platform, we have guides on how to do that for a few popular ones:
 
 * [Linux](https://github.com/kvirc/KVIrc/wiki/installation)
 * [macOS](https://github.com/kvirc/KVIrc/wiki/Compiling-KVIrc-on-macOS)
