@@ -16,7 +16,7 @@ set_property(TARGET ${kvi_module_name} PROPERTY CXX_STANDARD_REQUIRED ON)
 target_link_libraries(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${LIBS})
 
 if(Qt5Widgets_FOUND)
-	qt5_use_modules(${kvi_module_name} ${qt5_kvirc_modules})
+	target_link_libraries(${kvi_module_name} ${qt5_kvirc_modules})
 endif()
 
 set_target_properties(${kvi_module_name} PROPERTIES LINK_FLAGS "${MODULE_ADDITIONAL_LINK_FLAGS}")
