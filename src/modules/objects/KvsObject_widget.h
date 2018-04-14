@@ -49,11 +49,11 @@ protected:
 	virtual bool init(KviKvsRunTimeContext * pContext, KviKvsVariantList * pParams);
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-	QWebView * m_pWebview;
+	QWebView * m_pWebview = nullptr;
 #endif
 	virtual bool eventFilter(QObject * o, QEvent * e);
-	KviKvsRunTimeContext * m_pContext;
-	QGraphicsDropShadowEffect * pGraphicsEffect;
+	KviKvsRunTimeContext * m_pContext = nullptr;
+	QGraphicsDropShadowEffect * pGraphicsEffect = nullptr;
 	// ok, it is clear that we're messing with the naming conventions for the
 	// object classes :D
 	// let's try to use this one:

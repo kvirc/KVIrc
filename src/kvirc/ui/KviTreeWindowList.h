@@ -92,7 +92,7 @@ public:
 
 private:
 	KviTreeWindowListTreeWidget * m_pTreeWidget;
-	KviTreeWindowListItem * m_pCurrentItem;
+	KviTreeWindowListItem * m_pCurrentItem = nullptr;
 	KviDynamicToolTip * m_pToolTip;
 	QStyledItemDelegate * m_pItemDelegate;
 

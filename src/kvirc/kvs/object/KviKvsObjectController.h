@@ -47,7 +47,7 @@ protected:
 	KviPointerList<KviKvsObject> * m_pTopLevelObjectList;
 	KviPointerHashTable<void *, KviKvsObject> * m_pObjectDict;
 	KviPointerHashTable<QString, KviKvsObjectClass> * m_pClassDict;
-	KviKvsObjectClass * m_pObjectClass; //base class
+	KviKvsObjectClass * m_pObjectClass = nullptr; //base class
 protected:
 	// the classes and the objects register themselves with the controller
 	void registerObject(KviKvsObject * pObject);

@@ -226,10 +226,6 @@ public:
 
 protected:
 	QLabel * m_pLabelInfo;
-	QLabel * m_pLabelAuthor;
-	QLabel * m_pPackageName;
-	QLabel * m_pPackageVersion;
-	QLabel * m_pPackageDescription;
 
 protected:
 	/**

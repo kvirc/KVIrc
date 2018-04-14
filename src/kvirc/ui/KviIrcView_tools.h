@@ -68,7 +68,6 @@ public:
 	~KviIrcMessageCheckListItem();
 
 private:
-	QCheckBox * m_pCbox;
 	int m_iId;
 	KviIrcViewToolWidget * m_pToolWidget;
 

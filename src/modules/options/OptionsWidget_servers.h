@@ -193,18 +193,15 @@ protected:
 	QMenu * m_pImportPopup;
 	KviIrcServer * m_pClipboard;
 	QPushButton * m_pConnectCurrent;
-	QPushButton * m_pConnectNew;
 	IrcServerOptionsTreeWidgetItem * m_pLastEditedItem;
 	IrcServerDetailsWidget * m_pServerDetailsDialog;
 	IrcNetworkDetailsWidget * m_pNetworkDetailsDialog;
 	KviMexServerImport * m_pImportFilter;
 	KviBoolSelector * m_pShowThisDialogAtStartupSelector;
-	KviBoolSelector * m_pShowFavoritesOnly;
 
 	QToolButton * m_pNewServerButton;
 	QToolButton * m_pNewNetworkButton;
 	QToolButton * m_pRemoveButton;
-	QToolButton * m_pFavoriteServer;
 	QToolButton * m_pCopyServerButton;
 	QToolButton * m_pPasteServerButton;
 	QToolButton * m_pImportButton;

@@ -74,8 +74,8 @@ private:
 	uint m_uAverageSpeed;
 	uint m_uInstantSpeed;
 	quint64 m_uFilePosition;
-	quint64 m_uAckedBytes;
-	quint64 m_uTotalSentBytes;
+	quint64 m_uAckedBytes = 0;
+	quint64 m_uTotalSentBytes = 0;
 	// internal
 	unsigned long m_uStartTime;
 	unsigned long m_uInstantSpeedInterval;

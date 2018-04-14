@@ -79,9 +79,6 @@ public:
 
 protected:
 	ActionData * m_pActionData;
-	//QSimpleRichText * m_pText;
-	QTextDocument * m_pText;
-	QPixmap * m_pIcon;
 	QTreeWidget * m_pTreeWidget;
 	QString m_szKey;
 

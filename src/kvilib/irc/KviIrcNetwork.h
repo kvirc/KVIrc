@@ -85,7 +85,7 @@ protected:
 	bool m_bAutoConnect;                     /**< autoconnect */
 	QString m_szUserIdentityId;              /**< The user identity to use for this server: if empty then use the global primary identity moved from KviIrcServerDataBaseRecord */
 	KviPointerList<KviIrcServer> * m_pServerList;
-	KviIrcServer * m_pCurrentServer;
+	KviIrcServer * m_pCurrentServer = nullptr;
 
 public:
 	/**
