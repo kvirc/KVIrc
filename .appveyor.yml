@@ -156,7 +156,11 @@ build_script:
     - '"c:\Program Files (x86)\NSIS\makensis.exe" KVIrc.nsi'
     - ps: |
         $exe = dir -name *.exe
-        $new_name = $exe.Replace(".exe", "-$env:arch.$env:cmake_build_type.exe")
+        if ($env:cmake_build_type -eq "Debug") {
+            $new_name = $exe.Replace(".exe", "-$env:arch-$env:cmake_build_type.exe")
+        } else {
+            $new_name = $exe.Replace(".exe", "-$env:arch.exe")
+        }
         Push-AppveyorArtifact $exe -FileName $new_name
         $cmake_name = $exe.Replace(".exe", "-$env:arch.cmake.txt")
         Push-AppveyorArtifact CMakeCache.txt -FileName $cmake_name
